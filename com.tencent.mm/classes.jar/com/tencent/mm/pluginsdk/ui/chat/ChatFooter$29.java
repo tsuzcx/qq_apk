@@ -1,28 +1,25 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import android.view.KeyEvent;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChatFooter$29
-  implements TextView.OnEditorActionListener
+  implements Runnable
 {
   ChatFooter$29(ChatFooter paramChatFooter) {}
   
-  public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public final void run()
   {
-    if ((paramInt == 4) || ((paramInt == 0) && (ChatFooter.h(this.sgd))))
-    {
-      ChatFooter.i(this.sgd).performClick();
-      return true;
-    }
-    return false;
+    AppMethodBeat.i(155435);
+    ChatFooter.a(this.vXU, true);
+    this.vXU.setToSendTextColor(true);
+    ChatFooter.aq(this.vXU).showSoftInput(ChatFooter.a(this.vXU), 0);
+    AppMethodBeat.o(155435);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.ChatFooter.29
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.remittance.bankcard.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class BankRemitDetailUI$2
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class BankRemitDetailUI$2
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.BankRemitDetailUI", "click finish btn");
-    this.nwC.finish();
+    AppMethodBeat.i(44595);
+    ab.i("MicroMsg.BankRemitDetailUI", "click finish btn");
+    this.qhE.finish();
+    AppMethodBeat.o(44595);
   }
 }
 

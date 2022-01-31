@@ -13,19 +13,19 @@ final class c$1
   public final void onClick(View paramView)
   {
     paramView = (NavigationMenuItemView)paramView;
-    this.dT.p(true);
+    this.eV.o(true);
     paramView = paramView.getItemData();
-    boolean bool = this.dT.dm.a(paramView, this.dT, 0);
+    boolean bool = this.eV.eq.a(paramView, this.eV, 0);
     if ((paramView != null) && (paramView.isCheckable()) && (bool)) {
-      this.dT.dM.d(paramView);
+      this.eV.eO.d(paramView);
     }
-    this.dT.p(false);
-    this.dT.o(false);
+    this.eV.o(false);
+    this.eV.n(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.design.internal.c.1
  * JD-Core Version:    0.7.0.1
  */

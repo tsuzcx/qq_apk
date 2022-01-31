@@ -1,0 +1,20 @@
+package com.tencent.mm.plugin.card.ui.v2;
+
+import a.f.a.a;
+import a.l;
+
+@l(eaO={1, 1, 13})
+final class b
+  implements Runnable
+{
+  b(a parama)
+  {
+    this.bLN = parama;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+ * Qualified Name:     com.tencent.mm.plugin.card.ui.v2.b
+ * JD-Core Version:    0.7.0.1
+ */

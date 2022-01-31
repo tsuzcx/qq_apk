@@ -5,30 +5,31 @@ import android.net.Uri;
 
 public final class d
 {
+  public static boolean Bhe;
+  public static long Bhf;
+  public static String Bhg;
+  public static int Bhh = 480;
   private static boolean DEBUG = false;
   private static int SDK_VERSION;
-  public static int olc;
-  public static Context pZI = null;
-  private static final Uri pZJ = Uri.parse("content://com.lbe.security.miui.permmgr/active");
-  private static String sImei;
-  private static String soY;
-  public static boolean wJE = false;
-  public static long wJF = 0L;
-  public static String wJG = null;
-  public static int wJH;
+  public static int qZk;
+  private static String sImei = null;
+  public static Context tFk = null;
+  private static final Uri tFl = Uri.parse("content://com.lbe.security.miui.permmgr/active");
+  private static String whF;
   
   static
   {
+    Bhe = false;
+    Bhf = 0L;
+    Bhg = null;
     SDK_VERSION = -1;
-    soY = null;
-    olc = 320;
-    wJH = 480;
-    sImei = null;
+    whF = null;
+    qZk = 320;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.c.d
  * JD-Core Version:    0.7.0.1
  */

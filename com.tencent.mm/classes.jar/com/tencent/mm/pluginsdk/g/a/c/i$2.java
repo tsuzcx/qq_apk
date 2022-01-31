@@ -1,6 +1,7 @@
 package com.tencent.mm.pluginsdk.g.a.c;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,14 +12,16 @@ final class i$2
   
   public final void run()
   {
-    Iterator localIterator = this.rXv.iterator();
+    AppMethodBeat.i(79572);
+    Iterator localIterator = this.vOm.iterator();
     while (localIterator.hasNext())
     {
       d locald = (d)localIterator.next();
-      if (bk.pm(locald.acb()).equals(this.fDU.groupId)) {
-        locald.a(this.rWl, this.fDU);
+      if (bo.nullAsNil(locald.avS()).equals(this.gWk.groupId)) {
+        locald.alE(this.vNc);
       }
     }
+    AppMethodBeat.o(79572);
   }
 }
 

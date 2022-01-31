@@ -1,101 +1,133 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.net.wifi.WifiInfo;
-import android.os.Bundle;
-import android.os.RemoteException;
-import com.tencent.mm.plugin.webview.model.an;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.model.as;
+import com.tencent.mm.plugin.webview.model.as.j;
+import com.tencent.mm.plugin.webview.model.as.k;
+import com.tencent.mm.plugin.webview.stub.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.qqvideo.proxy.api.IUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class h
+  extends a
+  implements IUtils
 {
-  public static h rnm = new h();
-  private String bIB;
-  private String bssid;
-  boolean dYj = false;
-  com.tencent.mm.plugin.webview.stub.d gGn = null;
-  private int networkType;
-  String oAk;
-  String rnn;
-  private String ssid;
-  
-  public final void CD(int paramInt)
+  public h(WebViewUI paramWebViewUI)
   {
-    y.v("MicroMsg.WebViewReportUtil", "onReceivedError traceid %s", new Object[] { this.oAk });
-    if (bk.bl(this.oAk)) {
-      return;
-    }
-    f(3, "", paramInt);
+    super(paramWebViewUI);
   }
   
-  public final void close()
+  public final void httpproxyReport(String... paramVarArgs)
   {
-    y.v("MicroMsg.WebViewReportUtil", "close traceid %s", new Object[] { this.oAk });
-    this.dYj = true;
-    if (bk.bl(this.oAk)) {
-      return;
+    AppMethodBeat.i(7589);
+    Object localObject = ddt().uVh.dcq();
+    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
+    {
+      paramVarArgs = ddt().uVh.dcq();
+      localObject = ddt().igU;
+      if ((paramVarArgs.uWW == null) || (paramVarArgs.uWW.size() == 0) || (localObject == null)) {
+        AppMethodBeat.o(7589);
+      }
     }
-    jdMethod_if(4);
-    this.oAk = null;
+    else
+    {
+      if (((as.k)localObject).uWW == null) {
+        ((as.k)localObject).uWW = new ArrayList();
+      }
+      for (;;)
+      {
+        int i = 0;
+        while (i < paramVarArgs.length)
+        {
+          ab.i("MicroMsg.WebviewReporter", "WebViewVideoProxyReporter report info = %s", new Object[] { paramVarArgs[i] });
+          ((as.k)localObject).uWW.add(paramVarArgs[i]);
+          i += 1;
+        }
+        break;
+        ((as.k)localObject).uWW.clear();
+      }
+    }
+    g.a((d)localObject, 12033, paramVarArgs.uWW);
+    paramVarArgs.uWW.clear();
+    AppMethodBeat.o(7589);
   }
   
-  final void f(int paramInt1, String paramString, int paramInt2)
+  public final void idKeyReport(String paramString1, String paramString2, String paramString3)
   {
-    com.tencent.mm.modelsns.d locald = new com.tencent.mm.modelsns.d();
-    locald.j("20adInfo", this.oAk + ",");
-    locald.j("21optype", paramInt1 + ",");
-    locald.j("22sessionId", this.bIB + ",");
-    locald.j("23currURL", this.rnn + ",");
-    locald.j("24referURL", paramString + ",");
-    locald.j("25errCode", paramInt2 + ",");
-    locald.j("26networkType", this.networkType + ",");
-    locald.j("27timeStamp", bk.UY() + ",");
-    locald.j("28ssid", this.ssid + ",");
-    locald.j("29bssid", this.bssid + ",");
-    y.i("MicroMsg.WebViewReportUtil", "report logbuffer adPageOp(13791): optype:%d, sessionId:%s, currUrl:%s, referUrl:%s, errCode:%d, networkType:%d", new Object[] { Integer.valueOf(paramInt1), this.bIB, this.rnn, paramString, Integer.valueOf(paramInt2), Integer.valueOf(this.networkType) });
-    com.tencent.mm.plugin.report.service.h.nFQ.f(13791, new Object[] { locald });
-    if (this.gGn == null)
+    AppMethodBeat.i(7590);
+    ab.i("MicroMsg.WebViewUI.UtilsImpl", "idkey report, id = %s, key = %s, value = %s", new Object[] { paramString1, paramString2, paramString3 });
+    if ((!bo.isNullOrNil(paramString1)) && (!bo.isNullOrNil(paramString2)) && (!bo.isNullOrNil(paramString3)))
     {
-      y.e("MicroMsg.WebViewReportUtil", "report invoker null");
-      return;
+      int i = bo.getInt(paramString1, 0);
+      int j = bo.getInt(paramString2, 0);
+      int k = bo.getInt(paramString3, 0);
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(i, j, k, false);
     }
-    paramString = new Bundle();
-    paramString.putString("ad_report_data_str", locald.toString());
-    try
+    AppMethodBeat.o(7590);
+  }
+  
+  public final void javaUtilLog(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(7588);
+    switch (paramInt)
     {
-      this.gGn.r(1295, paramString);
-      return;
     }
-    catch (RemoteException paramString)
+    for (;;)
     {
-      y.e("MicroMsg.WebViewReportUtil", "report: exp:%s", new Object[] { paramString });
+      AppMethodBeat.o(7588);
+      return;
+      ab.d(paramString1, paramString2);
+      AppMethodBeat.o(7588);
+      return;
+      ab.e(paramString1, paramString2);
+      AppMethodBeat.o(7588);
+      return;
+      ab.i(paramString1, paramString2);
+      AppMethodBeat.o(7588);
+      return;
+      ab.v(paramString1, paramString2);
+      AppMethodBeat.o(7588);
+      return;
+      ab.w(paramString1, paramString2);
     }
   }
   
-  public final void fA(String paramString1, String paramString2)
+  public final void kvReport(String... paramVarArgs)
   {
-    y.i("MicroMsg.WebViewReportUtil", "setting traceid " + paramString1 + ",usename " + paramString2);
-    this.oAk = paramString1;
-    this.networkType = an.ccb();
-    this.bIB = ad.bB(paramString2 + bk.UY());
-    paramString1 = aq.getWifiInfo(ae.getContext());
-    if (paramString1 == null) {
-      this.ssid = "";
-    }
-    for (this.bssid = "";; this.bssid = paramString1.getBSSID())
+    AppMethodBeat.i(7591);
+    Object localObject = ddt().uVh.dcr();
+    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
     {
-      this.dYj = false;
-      return;
-      this.ssid = paramString1.getSSID();
+      paramVarArgs = ddt().uVh.dcr();
+      localObject = ddt().igU;
+      if ((paramVarArgs.uWW == null) || (paramVarArgs.uWW.size() == 0) || (localObject == null)) {
+        AppMethodBeat.o(7591);
+      }
     }
-  }
-  
-  final void jdMethod_if(int paramInt)
-  {
-    f(paramInt, "", 0);
+    else
+    {
+      if (((as.j)localObject).uWW == null) {
+        ((as.j)localObject).uWW = new ArrayList();
+      }
+      for (;;)
+      {
+        int i = 0;
+        while (i < paramVarArgs.length)
+        {
+          ab.i("MicroMsg.WebviewReporter", "WebViewVideoDownloadReporter report info = %s", new Object[] { paramVarArgs[i] });
+          ((as.j)localObject).uWW.add(paramVarArgs[i]);
+          i += 1;
+        }
+        break;
+        ((as.j)localObject).uWW.clear();
+      }
+    }
+    g.a((d)localObject, 12666, paramVarArgs.uWW);
+    paramVarArgs.uWW.clear();
+    AppMethodBeat.o(7591);
   }
 }
 

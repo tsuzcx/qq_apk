@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class JsApiChooseVideo$a$3
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class JsApiChooseVideo$a$3
   
   public final void run()
   {
-    JsApiChooseVideo.a.a(this.gvZ).aYY = -1;
-    JsApiChooseVideo.a.a(this.gvZ).gvW = JsApiChooseVideo.a.a(this.gvZ, this.gwa, JsApiChooseVideo.a.c(this.gvZ).gvV);
-    JsApiChooseVideo.a.d(this.gvZ, JsApiChooseVideo.a.a(this.gvZ));
+    AppMethodBeat.i(131284);
+    JsApiChooseVideo.a.a(this.hRK).bpE = -1;
+    JsApiChooseVideo.a.a(this.hRK).hRH = JsApiChooseVideo.a.a(this.hRK, this.hRL, JsApiChooseVideo.a.c(this.hRK).hRG);
+    JsApiChooseVideo.a.d(this.hRK, JsApiChooseVideo.a.a(this.hRK));
+    AppMethodBeat.o(131284);
   }
 }
 

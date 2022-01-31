@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/kl" android:layout_width="255.0dip" android:layout_height="wrap_content" android:minHeight="220.0dip"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ah9" android:background="#fff3f3f3" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/aul" android:layout_width="220.0dip" android:layout_height="106.599976dip" />
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:layout_gravity="center" android:id="@id/ag0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" android:text="@string/a_x" />
+    <ImageView android:layout_width="64.0dip" android:layout_height="47.0dip" android:src="@raw/card_empty_icon" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/h6" android:id="@id/ah_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/ai4" android:alpha="0.2" />
 </LinearLayout>

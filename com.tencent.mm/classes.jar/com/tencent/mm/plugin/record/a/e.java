@@ -1,20 +1,31 @@
 package com.tencent.mm.plugin.record.a;
 
-import com.tencent.mm.sdk.e.d;
-import com.tencent.mm.sdk.e.f;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.g;
+import com.tencent.mm.sdk.e.j;
 import java.util.List;
 
 public abstract interface e
-  extends d<g>, f
+  extends com.tencent.mm.sdk.e.d<i>, g
 {
-  public static final String[] dXp = { i.a(g.buS, "RecordMessageInfo") };
+  public static final String[] SQL_CREATE = { j.getCreateSQLs(i.info, "RecordCDNInfo") };
   
-  public abstract List<g> bvu();
+  public abstract List<i> Ck(int paramInt);
   
-  public abstract g wA(int paramInt);
+  public abstract i XR(String paramString);
   
-  public abstract void wz(int paramInt);
+  public abstract void a(d paramd);
+  
+  public abstract boolean a(i parami);
+  
+  public abstract boolean a(i parami, String... paramVarArgs);
+  
+  public abstract void b(d paramd);
+  
+  public abstract boolean b(i parami);
+  
+  public abstract boolean b(i parami, String... paramVarArgs);
+  
+  public abstract List<i> cfM();
 }
 
 

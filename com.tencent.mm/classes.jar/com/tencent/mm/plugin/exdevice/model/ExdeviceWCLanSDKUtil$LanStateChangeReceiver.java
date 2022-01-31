@@ -5,9 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
-import com.tencent.mm.h.a.dv;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.dy;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class ExdeviceWCLanSDKUtil$LanStateChangeReceiver
   extends BroadcastReceiver
@@ -16,27 +17,29 @@ public class ExdeviceWCLanSDKUtil$LanStateChangeReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
+    AppMethodBeat.i(19289);
     if ("android.net.wifi.STATE_CHANGE".equals(paramIntent.getAction()))
     {
       paramContext = paramIntent.getParcelableExtra("networkInfo");
       if (paramContext != null) {
         if (((NetworkInfo)paramContext).getState() != NetworkInfo.State.CONNECTED) {
-          break label121;
+          break label126;
         }
       }
     }
-    label121:
+    label126:
     for (boolean bool = true;; bool = false)
     {
-      y.d("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "isConnected =" + bool);
-      if ((this.jvF.jvC) || (this.jvF.jvB != bool))
+      ab.d("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "isConnected =".concat(String.valueOf(bool)));
+      if ((this.lFe.lFb) || (this.lFe.lFa != bool))
       {
-        paramContext = new dv();
-        paramContext.bKt.bKu = bool;
-        a.udP.m(paramContext);
-        this.jvF.jvC = false;
-        this.jvF.jvB = bool;
+        paramContext = new dy();
+        paramContext.crN.crO = bool;
+        a.ymk.l(paramContext);
+        this.lFe.lFb = false;
+        this.lFe.lFa = bool;
       }
+      AppMethodBeat.o(19289);
       return;
     }
   }

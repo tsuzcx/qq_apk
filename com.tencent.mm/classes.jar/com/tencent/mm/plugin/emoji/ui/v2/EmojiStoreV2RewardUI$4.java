@@ -6,10 +6,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
-import com.tencent.mm.plugin.emoji.f.b;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMFormInputView;
-import com.tencent.mm.ui.s;
 
 final class EmojiStoreV2RewardUI$4
   implements TextWatcher
@@ -18,8 +16,9 @@ final class EmojiStoreV2RewardUI$4
   
   public final void afterTextChanged(Editable paramEditable)
   {
+    AppMethodBeat.i(53698);
     float f1;
-    if (EmojiStoreV2RewardUI.h(this.jhK) != null) {
+    if (EmojiStoreV2RewardUI.h(this.lqH) != null) {
       if ((paramEditable != null) && (paramEditable.length() > 0))
       {
         String str = paramEditable.toString();
@@ -37,17 +36,19 @@ final class EmojiStoreV2RewardUI$4
     }
     catch (NumberFormatException paramEditable)
     {
-      label87:
-      break label87;
+      label92:
+      break label92;
     }
     if ((f1 > 200.0F) || (f1 < 1.0F))
     {
-      EmojiStoreV2RewardUI.e(this.jhK).getContentEditText().setTextColor(this.jhK.mController.uMN.getResources().getColor(f.b.red));
-      EmojiStoreV2RewardUI.h(this.jhK).setEnabled(false);
+      EmojiStoreV2RewardUI.e(this.lqH).getContentEditText().setTextColor(this.lqH.getContext().getResources().getColor(2131690391));
+      EmojiStoreV2RewardUI.h(this.lqH).setEnabled(false);
+      AppMethodBeat.o(53698);
       return;
     }
-    EmojiStoreV2RewardUI.e(this.jhK).getContentEditText().setTextColor(this.jhK.mController.uMN.getResources().getColor(f.b.normal_text_color));
-    EmojiStoreV2RewardUI.h(this.jhK).setEnabled(true);
+    EmojiStoreV2RewardUI.e(this.lqH).getContentEditText().setTextColor(this.lqH.getContext().getResources().getColor(2131690322));
+    EmojiStoreV2RewardUI.h(this.lqH).setEnabled(true);
+    AppMethodBeat.o(53698);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -56,7 +57,7 @@ final class EmojiStoreV2RewardUI$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardUI.4
  * JD-Core Version:    0.7.0.1
  */

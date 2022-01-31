@@ -1,15 +1,23 @@
 package com.tencent.mm.pluginsdk.g.a.c;
 
-import com.tencent.mm.sdk.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class u
   implements ThreadFactory
 {
-  private static final AtomicInteger rXW = new AtomicInteger(1);
-  private final AtomicInteger eqH = new AtomicInteger(1);
-  private String eqI;
+  private static final AtomicInteger vON;
+  private final AtomicInteger cfV;
+  private String cfW;
+  
+  static
+  {
+    AppMethodBeat.i(79640);
+    vON = new AtomicInteger(1);
+    AppMethodBeat.o(79640);
+  }
   
   public u()
   {
@@ -18,15 +26,20 @@ public final class u
   
   public u(String paramString1, String paramString2)
   {
-    this.eqI = String.format("%s-%d-%s-", new Object[] { paramString1, Integer.valueOf(rXW.getAndIncrement()), paramString2 });
+    AppMethodBeat.i(79638);
+    this.cfV = new AtomicInteger(1);
+    this.cfW = String.format("%s-%d-%s-", new Object[] { paramString1, Integer.valueOf(vON.getAndIncrement()), paramString2 });
+    AppMethodBeat.o(79638);
   }
   
   public final Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = e.c(paramRunnable, this.eqI + this.eqH.getAndIncrement(), 1);
+    AppMethodBeat.i(79639);
+    paramRunnable = d.a(paramRunnable, this.cfW + this.cfV.getAndIncrement(), 1);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
     }
+    AppMethodBeat.o(79639);
     return paramRunnable;
   }
 }

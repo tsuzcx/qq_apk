@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.brandservice.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mm.ui.tools.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.tools.q;
 
 final class BizSearchDetailPageUI$4
   implements View.OnTouchListener
@@ -12,16 +13,18 @@ final class BizSearchDetailPageUI$4
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (BizSearchDetailPageUI.f(this.icA) != null) {
-      BizSearchDetailPageUI.f(this.icA).clearFocus();
+    AppMethodBeat.i(13878);
+    if (BizSearchDetailPageUI.f(this.jTp) != null) {
+      BizSearchDetailPageUI.f(this.jTp).clearFocus();
     }
-    this.icA.XM();
+    this.jTp.hideVKB();
+    AppMethodBeat.o(13878);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.BizSearchDetailPageUI.4
  * JD-Core Version:    0.7.0.1
  */

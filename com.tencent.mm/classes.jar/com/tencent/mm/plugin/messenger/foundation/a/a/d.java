@@ -4,7 +4,7 @@ import com.tencent.mm.storage.av;
 
 public abstract interface d
 {
-  public abstract av Hq(String paramString);
+  public abstract av Tc(String paramString);
   
   public abstract boolean p(long paramLong, String paramString);
 }

@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.View;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.preference.MMPreference;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsPrivacyUI$1
   implements Runnable
@@ -12,10 +10,12 @@ final class SettingsPrivacyUI$1
   
   public final void run()
   {
-    View localView = ((com.tencent.mm.ui.base.preference.a)SettingsPrivacyUI.a(this.nVz)).a(this.doB, this.nVz.lwE);
+    AppMethodBeat.i(127407);
+    View localView = ((com.tencent.mm.ui.base.preference.a)SettingsPrivacyUI.a(this.qJI)).a(this.efX, this.qJI.getListView());
     if (localView != null) {
-      com.tencent.mm.ui.g.a.a(this.nVz.mController.uMN, localView);
+      com.tencent.mm.ui.h.a.b(this.qJI.getContext(), localView);
     }
+    AppMethodBeat.o(127407);
   }
 }
 

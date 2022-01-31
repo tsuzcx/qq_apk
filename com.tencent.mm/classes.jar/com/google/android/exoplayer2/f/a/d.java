@@ -9,86 +9,86 @@ import java.util.PriorityQueue;
 abstract class d
   implements com.google.android.exoplayer2.f.e
 {
-  private long aHL;
-  private final LinkedList<h> aNI = new LinkedList();
-  final LinkedList<i> aNJ;
-  private final PriorityQueue<h> aNK;
-  private h aNL;
+  private long aOF;
+  private final LinkedList<h> aVc = new LinkedList();
+  final LinkedList<i> aVd;
+  private final PriorityQueue<h> aVe;
+  private h aVf;
   
   public d()
   {
     int i = 0;
     while (i < 10)
     {
-      this.aNI.add(new h());
+      this.aVc.add(new h());
       i += 1;
     }
-    this.aNJ = new LinkedList();
+    this.aVd = new LinkedList();
     i = j;
     while (i < 2)
     {
-      this.aNJ.add(new e(this));
+      this.aVd.add(new e(this));
       i += 1;
     }
-    this.aNK = new PriorityQueue();
+    this.aVe = new PriorityQueue();
   }
   
   private void c(h paramh)
   {
     paramh.clear();
-    this.aNI.add(paramh);
-  }
-  
-  public void R(long paramLong)
-  {
-    this.aHL = paramLong;
+    this.aVc.add(paramh);
   }
   
   protected abstract void a(h paramh);
   
+  public void aa(long paramLong)
+  {
+    this.aOF = paramLong;
+  }
+  
   public void b(h paramh)
   {
     boolean bool;
-    if (paramh == this.aNL)
+    if (paramh == this.aVf)
     {
       bool = true;
-      a.aB(bool);
-      if (!paramh.ly()) {
+      a.checkArgument(bool);
+      if (!paramh.nD()) {
         break label37;
       }
       c(paramh);
     }
     for (;;)
     {
-      this.aNL = null;
+      this.aVf = null;
       return;
       bool = false;
       break;
       label37:
-      this.aNK.add(paramh);
+      this.aVe.add(paramh);
     }
   }
   
   public void flush()
   {
-    this.aHL = 0L;
-    while (!this.aNK.isEmpty()) {
-      c((h)this.aNK.poll());
+    this.aOF = 0L;
+    while (!this.aVe.isEmpty()) {
+      c((h)this.aVe.poll());
     }
-    if (this.aNL != null)
+    if (this.aVf != null)
     {
-      c(this.aNL);
-      this.aNL = null;
+      c(this.aVf);
+      this.aVf = null;
     }
   }
   
-  protected abstract boolean np();
+  protected abstract boolean pM();
   
-  protected abstract com.google.android.exoplayer2.f.d nq();
+  protected abstract com.google.android.exoplayer2.f.d pN();
   
-  public i nt()
+  public i pQ()
   {
-    if (this.aNJ.isEmpty()) {
+    if (this.aVd.isEmpty()) {
       return null;
     }
     h localh;
@@ -98,41 +98,41 @@ abstract class d
       do
       {
         c(localh);
-        if ((this.aNK.isEmpty()) || (((h)this.aNK.peek()).ayE > this.aHL)) {
+        if ((this.aVe.isEmpty()) || (((h)this.aVe.peek()).aAT > this.aOF)) {
           break;
         }
-        localh = (h)this.aNK.poll();
-        if (localh.lz())
+        localh = (h)this.aVe.poll();
+        if (localh.nE())
         {
-          localObject = (i)this.aNJ.pollFirst();
-          ((i)localObject).cG(4);
+          localObject = (i)this.aVd.pollFirst();
+          ((i)localObject).db(4);
           c(localh);
           return localObject;
         }
         a(localh);
-      } while (!np());
-      localObject = nq();
-    } while (localh.ly());
-    i locali = (i)this.aNJ.pollFirst();
-    locali.a(localh.ayE, (com.google.android.exoplayer2.f.d)localObject, 9223372036854775807L);
+      } while (!pM());
+      localObject = pN();
+    } while (localh.nD());
+    i locali = (i)this.aVd.pollFirst();
+    locali.a(localh.aAT, (com.google.android.exoplayer2.f.d)localObject, 9223372036854775807L);
     c(localh);
     return locali;
     return null;
   }
   
-  public h nu()
+  public h pR()
   {
-    if (this.aNL == null) {}
+    if (this.aVf == null) {}
     for (boolean bool = true;; bool = false)
     {
-      a.aC(bool);
-      if (!this.aNI.isEmpty()) {
+      a.checkState(bool);
+      if (!this.aVc.isEmpty()) {
         break;
       }
       return null;
     }
-    this.aNL = ((h)this.aNI.pollFirst());
-    return this.aNL;
+    this.aVf = ((h)this.aVc.pollFirst());
+    return this.aVf;
   }
   
   public void release() {}

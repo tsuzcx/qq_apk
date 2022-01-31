@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.traceroute.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class NetworkDiagnoseAllInOneUI$1$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class NetworkDiagnoseAllInOneUI$1$1
   
   public final void run()
   {
-    NetworkDiagnoseAllInOneUI.b(this.pJf.pJe);
+    AppMethodBeat.i(25991);
+    NetworkDiagnoseAllInOneUI.b(this.tnt.tns);
+    AppMethodBeat.o(25991);
   }
 }
 

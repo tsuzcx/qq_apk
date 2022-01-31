@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="" android:key="wallet_transfer_title_tips" />
-    <Preference android:title="@string/f4k" android:key="wallet_transfer_realtime" android:widgetLayout="@layout/ad3" android:layout="@layout/ab8" />
-    <Preference android:title="@string/f4j" android:key="wallet_transfer_2h" android:widgetLayout="@layout/ad3" android:layout="@layout/ab8" />
-    <Preference android:title="@string/f4i" android:key="wallet_transfer_24h" android:widgetLayout="@layout/ad3" android:layout="@layout/ab8" />
+    <PreferenceSmallCategory android:key="settings_tag_name_category" />
+    <Preference android:title="@string/eto" android:key="settings_tag_name" android:layout="@layout/afi" />
+    <PreferenceTitleCategory android:title="@string/etq" android:key="outside" />
+    <PreferenceTitleCategory android:title="@string/etp" android:key="black" />
+    <PreferenceTitleCategory android:title="@string/etl" android:key="group" />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
+    <PreferenceSmallCategory android:key="delete_tag_name_category" />
+    <Preference android:title="@string/e7y" android:key="delete_tag_name" android:layout="@layout/aap" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

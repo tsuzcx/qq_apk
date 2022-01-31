@@ -1,48 +1,54 @@
 package com.google.android.gms.auth.api.credentials;
 
 import android.net.Uri;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 public class Credential$Builder
 {
   private String mName;
-  private final String zzGV;
-  private Uri zzajf;
-  private List<IdToken> zzajg;
-  private String zzajh;
-  private String zzaji;
-  private String zzajj;
-  private String zzajk;
-  private String zzajl;
-  private String zzajm;
+  private String zzbx;
+  private final String zzci;
+  private Uri zzcj;
+  private List<IdToken> zzck;
+  private String zzcl;
+  private String zzcm;
+  private String zzcn;
+  private String zzco;
+  private String zzcp;
   
   public Credential$Builder(Credential paramCredential)
   {
-    this.zzGV = Credential.zza(paramCredential);
-    this.mName = Credential.zzb(paramCredential);
-    this.zzajf = Credential.zzc(paramCredential);
-    this.zzajg = Credential.zzd(paramCredential);
-    this.zzajh = Credential.zze(paramCredential);
-    this.zzaji = Credential.zzf(paramCredential);
-    this.zzajj = Credential.zzg(paramCredential);
-    this.zzajk = Credential.zzh(paramCredential);
-    this.zzajl = Credential.zzi(paramCredential);
-    this.zzajm = Credential.zzj(paramCredential);
+    AppMethodBeat.i(50308);
+    this.zzci = Credential.zzd(paramCredential);
+    this.mName = Credential.zze(paramCredential);
+    this.zzcj = Credential.zzf(paramCredential);
+    this.zzck = Credential.zzg(paramCredential);
+    this.zzcl = Credential.zzh(paramCredential);
+    this.zzbx = Credential.zzi(paramCredential);
+    this.zzcm = Credential.zzj(paramCredential);
+    this.zzcn = Credential.zzk(paramCredential);
+    this.zzco = Credential.zzl(paramCredential);
+    this.zzcp = Credential.zzm(paramCredential);
+    AppMethodBeat.o(50308);
   }
   
   public Credential$Builder(String paramString)
   {
-    this.zzGV = paramString;
+    this.zzci = paramString;
   }
   
   public Credential build()
   {
-    return new Credential(4, this.zzGV, this.mName, this.zzajf, this.zzajg, this.zzajh, this.zzaji, this.zzajj, this.zzajk, this.zzajl, this.zzajm);
+    AppMethodBeat.i(50309);
+    Credential localCredential = new Credential(this.zzci, this.mName, this.zzcj, this.zzck, this.zzcl, this.zzbx, this.zzcm, this.zzcn, this.zzco, this.zzcp);
+    AppMethodBeat.o(50309);
+    return localCredential;
   }
   
   public Builder setAccountType(String paramString)
   {
-    this.zzaji = paramString;
+    this.zzbx = paramString;
     return this;
   }
   
@@ -54,13 +60,13 @@ public class Credential$Builder
   
   public Builder setPassword(String paramString)
   {
-    this.zzajh = paramString;
+    this.zzcl = paramString;
     return this;
   }
   
   public Builder setProfilePictureUri(Uri paramUri)
   {
-    this.zzajf = paramUri;
+    this.zzcj = paramUri;
     return this;
   }
 }

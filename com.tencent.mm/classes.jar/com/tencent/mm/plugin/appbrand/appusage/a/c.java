@@ -1,45 +1,82 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
-import com.tencent.mm.protocal.c.bjt;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b.a;
+import com.tencent.mm.modelgeo.d;
+import com.tencent.mm.plugin.appbrand.t.e;
+import com.tencent.mm.pointers.PBool;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.concurrent.TimeUnit;
 
-public class c
-  extends i<b>
+public final class c
 {
-  public static final String[] dUb = { i.a(b.buS, "AppBrandRecommendWxa") };
-  public e dXw;
+  private static float hcY = 0.0F;
+  private static float hcZ = 0.0F;
+  private static volatile long hda = 0L;
+  private boolean hdb = false;
+  private c.a hdc;
   
-  public c(e parame)
+  public static boolean axK()
   {
-    super(parame, b.buS, "AppBrandRecommendWxa", null);
-    this.dXw = parame;
+    AppMethodBeat.i(129740);
+    if ((hcZ == -85.0F) || (hcY == -1000.0F))
+    {
+      AppMethodBeat.o(129740);
+      return false;
+    }
+    if (bo.aoy() - hda < 300000L) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      AppMethodBeat.o(129740);
+      return false;
+    }
+    AppMethodBeat.o(129740);
+    return true;
   }
   
-  public final void t(LinkedList<bjt> paramLinkedList)
+  public static float getLatitude()
   {
-    y.i("MicroMsg.AppBrandRecommendWxaStorage", "addRecommendWxaList()");
-    Object localObject = new LinkedList();
-    ((LinkedList)localObject).addAll(paramLinkedList);
-    paramLinkedList = ((LinkedList)localObject).iterator();
-    while (paramLinkedList.hasNext())
+    return hcZ;
+  }
+  
+  public static float getLongitude()
+  {
+    return hcY;
+  }
+  
+  public final void a(c.a parama)
+  {
+    this.hdc = parama;
+  }
+  
+  public final boolean axJ()
+  {
+    return this.hdc != null;
+  }
+  
+  public final void axL()
+  {
+    AppMethodBeat.i(129741);
+    if (this.hdb)
     {
-      localObject = (bjt)paramLinkedList.next();
-      b localb = new b();
-      localb.field_appId = ((bjt)localObject).bOL;
-      localb.field_userName = ((bjt)localObject).username;
-      localb.field_nickName = ((bjt)localObject).nickname;
-      localb.field_logo = ((bjt)localObject).mTc;
-      localb.field_sessionId = ((bjt)localObject).bah;
-      localb.field_descInfo = ((bjt)localObject).tDy;
-      localb.field_evaluateScore = ((bjt)localObject).tDz;
-      localb.field_words = ((bjt)localObject).tDB;
-      localb.field_recommendWxa = ((bjt)localObject);
-      b(localb);
+      AppMethodBeat.o(129741);
+      return;
     }
+    ab.i("MicroMsg.Recommend.AppBrandRecommendLocationGet", "startLocation");
+    this.hdb = true;
+    Object localObject = new PBool();
+    PBool localPBool = new PBool();
+    ((PBool)localObject).value = false;
+    localPBool.value = false;
+    ap localap = new ap(Looper.getMainLooper(), new c.1(this, localPBool, (PBool)localObject), false);
+    long l = TimeUnit.SECONDS.toMillis(20L);
+    localap.ag(l, l);
+    localObject = (b.a)e.bq(new c.2(this, (PBool)localObject, localPBool));
+    d.agQ().b((b.a)localObject, false);
+    AppMethodBeat.o(129741);
   }
 }
 

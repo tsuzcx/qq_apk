@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.webview.fts;
 
 import android.os.Bundle;
 import android.os.RemoteException;
-import com.tencent.mm.plugin.fts.a.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
@@ -21,64 +21,70 @@ final class b$1$1
   
   public final void run()
   {
-    Object localObject1;
+    AppMethodBeat.i(5672);
+    JSONObject localJSONObject1;
     JSONArray localJSONArray;
-    if (this.qZc.qZt != 0)
+    if (this.uOJ.uOY != 0)
     {
-      y.i("MicroMsg.FTS.FTSWebViewLogic", "historySearchResultListener callback， id %d", new Object[] { Integer.valueOf(this.qZc.qZt) });
-      g localg = h.Db(this.qZc.qZt);
-      localObject1 = this.ktw.ktu.bVk;
-      localObject3 = this.qZd;
+      ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "historySearchResultListener callback， id %d", new Object[] { Integer.valueOf(this.uOJ.uOY) });
+      g localg = h.KW(this.uOJ.uOY);
+      localObject2 = this.uOK;
       try
       {
-        y.i("MicroMsg.MsgHandler", "onGetSearchHistory %s", new Object[] { ((ArrayList)localObject3).toString() });
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("ret", 0);
-        localObject2 = new JSONArray();
+        ab.i("MicroMsg.MsgHandler", "onGetSearchHistory %s", new Object[] { ((ArrayList)localObject2).toString() });
+        localJSONObject1 = new JSONObject();
+        localJSONObject1.put("ret", 0);
+        localObject1 = new JSONArray();
         localJSONArray = new JSONArray();
-        localObject3 = ((ArrayList)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
+        localObject2 = ((ArrayList)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          String str = (String)((Iterator)localObject3).next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("word", str);
-          localJSONObject.put("id", System.currentTimeMillis());
-          localJSONObject.put("timeStamp", System.currentTimeMillis());
-          localJSONArray.put(localJSONObject);
-          continue;
-          return;
+          String str = (String)((Iterator)localObject2).next();
+          JSONObject localJSONObject2 = new JSONObject();
+          localJSONObject2.put("word", str);
+          localJSONObject2.put("id", System.currentTimeMillis());
+          localJSONObject2.put("timeStamp", System.currentTimeMillis());
+          localJSONArray.put(localJSONObject2);
         }
+        AppMethodBeat.o(5672);
       }
       catch (JSONException localJSONException)
       {
-        y.printErrStackTrace("MicroMsg.MsgHandler", localJSONException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.MsgHandler", localJSONException, "", new Object[0]);
       }
     }
-    Object localObject3 = new JSONObject();
-    ((JSONObject)localObject3).put("items", localJSONArray);
-    ((JSONArray)localObject2).put(localObject3);
-    ((JSONObject)localObject1).put("data", localObject2);
-    Object localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("data", ((JSONObject)localObject1).toString());
+    else
+    {
+      return;
+    }
+    Object localObject2 = new JSONObject();
+    ((JSONObject)localObject2).put("items", localJSONArray);
+    ((JSONArray)localObject1).put(localObject2);
+    localJSONObject1.put("data", localObject1);
+    Object localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("data", localJSONObject1.toString());
     try
     {
-      if (localJSONException.rgh != null)
+      if (localJSONException.uWu != null)
       {
-        localJSONException.rgh.b(143, (Bundle)localObject2);
+        localJSONException.uWu.e(143, (Bundle)localObject1);
+        AppMethodBeat.o(5672);
         return;
       }
     }
     catch (RemoteException localRemoteException)
     {
-      y.w("MicroMsg.MsgHandler", "onGetSearchHistory exception" + localRemoteException.getMessage());
+      ab.w("MicroMsg.MsgHandler", "onGetSearchHistory exception" + localRemoteException.getMessage());
+      AppMethodBeat.o(5672);
       return;
     }
-    y.i("MicroMsg.MsgHandler", "callbacker is null");
+    ab.i("MicroMsg.MsgHandler", "callbacker is null");
+    AppMethodBeat.o(5672);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.b.1.1
  * JD-Core Version:    0.7.0.1
  */

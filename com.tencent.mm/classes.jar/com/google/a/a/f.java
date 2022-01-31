@@ -12,12 +12,12 @@ public final class f
     if (paramObject != null)
     {
       if (!(paramObject instanceof e)) {
-        break label409;
+        break label395;
       }
       int m = paramStringBuffer1.length();
       if (paramString != null)
       {
-        paramStringBuffer2.append(paramStringBuffer1).append(aJ(paramString)).append(" <\n");
+        paramStringBuffer2.append(paramStringBuffer1).append(bg(paramString)).append(" <\n");
         paramStringBuffer1.append("  ");
       }
       Class localClass = paramObject.getClass();
@@ -65,7 +65,7 @@ public final class f
         {
           try
           {
-            localObject2 = localClass.getMethod("has" + str, new Class[0]);
+            localObject2 = localClass.getMethod("has".concat(String.valueOf(str)), new Class[0]);
             if (!((Boolean)((Method)localObject2).invoke(paramObject, new Object[0])).booleanValue()) {}
           }
           catch (NoSuchMethodException localNoSuchMethodException2)
@@ -74,7 +74,7 @@ public final class f
           }
           try
           {
-            localObject2 = localClass.getMethod("get" + str, new Class[0]);
+            localObject2 = localClass.getMethod("get".concat(String.valueOf(str)), new Class[0]);
             a(str, ((Method)localObject2).invoke(paramObject, new Object[0]), paramStringBuffer1, paramStringBuffer2);
           }
           catch (NoSuchMethodException localNoSuchMethodException1) {}
@@ -88,8 +88,8 @@ public final class f
       }
     }
     return;
-    label409:
-    paramString = aJ(paramString);
+    label395:
+    paramString = bg(paramString);
     paramStringBuffer2.append(paramStringBuffer1).append(paramString).append(": ");
     if ((paramObject instanceof String))
     {
@@ -102,7 +102,7 @@ public final class f
           paramString = paramObject.substring(0, 200) + "[...]";
         }
       }
-      paramString = aK(paramString);
+      paramString = escapeString(paramString);
       paramStringBuffer2.append("\"").append(paramString).append("\"");
     }
     for (;;)
@@ -146,7 +146,7 @@ public final class f
     paramStringBuffer.append('"');
   }
   
-  private static String aJ(String paramString)
+  private static String bg(String paramString)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
@@ -170,7 +170,23 @@ public final class f
     return localStringBuffer.toString();
   }
   
-  private static String aK(String paramString)
+  public static <T extends e> String c(T paramT)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    try
+    {
+      a(null, paramT, new StringBuffer(), localStringBuffer);
+      return localStringBuffer.toString();
+    }
+    catch (IllegalAccessException paramT)
+    {
+      return "Error printing proto: " + paramT.getMessage();
+    }
+    catch (InvocationTargetException paramT) {}
+    return "Error printing proto: " + paramT.getMessage();
+  }
+  
+  private static String escapeString(String paramString)
   {
     int j = paramString.length();
     StringBuilder localStringBuilder = new StringBuilder(j);
@@ -190,29 +206,10 @@ public final class f
     }
     return localStringBuilder.toString();
   }
-  
-  public static <T extends e> String c(T paramT)
-  {
-    if (paramT == null) {
-      return "";
-    }
-    StringBuffer localStringBuffer = new StringBuffer();
-    try
-    {
-      a(null, paramT, new StringBuffer(), localStringBuffer);
-      return localStringBuffer.toString();
-    }
-    catch (IllegalAccessException paramT)
-    {
-      return "Error printing proto: " + paramT.getMessage();
-    }
-    catch (InvocationTargetException paramT) {}
-    return "Error printing proto: " + paramT.getMessage();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.a.a.f
  * JD-Core Version:    0.7.0.1
  */

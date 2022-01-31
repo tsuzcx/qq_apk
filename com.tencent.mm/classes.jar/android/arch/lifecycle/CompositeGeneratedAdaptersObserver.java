@@ -3,18 +3,18 @@ package android.arch.lifecycle;
 public class CompositeGeneratedAdaptersObserver
   implements GenericLifecycleObserver
 {
-  private final GeneratedAdapter[] ca;
+  private final GeneratedAdapter[] ce;
   
   CompositeGeneratedAdaptersObserver(GeneratedAdapter[] paramArrayOfGeneratedAdapter)
   {
-    this.ca = paramArrayOfGeneratedAdapter;
+    this.ce = paramArrayOfGeneratedAdapter;
   }
   
   public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
     int j = 0;
     MethodCallsLogger localMethodCallsLogger = new MethodCallsLogger();
-    GeneratedAdapter[] arrayOfGeneratedAdapter = this.ca;
+    GeneratedAdapter[] arrayOfGeneratedAdapter = this.ce;
     int k = arrayOfGeneratedAdapter.length;
     int i = 0;
     while (i < k)
@@ -22,7 +22,7 @@ public class CompositeGeneratedAdaptersObserver
       arrayOfGeneratedAdapter[i].callMethods(paramLifecycleOwner, paramEvent, false, localMethodCallsLogger);
       i += 1;
     }
-    arrayOfGeneratedAdapter = this.ca;
+    arrayOfGeneratedAdapter = this.ce;
     k = arrayOfGeneratedAdapter.length;
     i = j;
     while (i < k)

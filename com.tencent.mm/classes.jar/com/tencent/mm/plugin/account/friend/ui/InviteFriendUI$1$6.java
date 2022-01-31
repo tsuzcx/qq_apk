@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.a.a.a;
 import com.tencent.mm.plugin.account.friend.a.o;
@@ -9,11 +10,13 @@ final class InviteFriendUI$1$6
 {
   InviteFriendUI$1$6(InviteFriendUI.1 param1) {}
   
-  public final void cw(boolean paramBoolean)
+  public final void dz(boolean paramBoolean)
   {
+    AppMethodBeat.i(108576);
     if (paramBoolean) {
-      ((o)((a)g.t(a.class)).getGoogleFriendStorage()).ab(InviteFriendUI.d(this.fhW.fhT), 1);
+      ((o)((a)g.G(a.class)).getGoogleFriendStorage()).aj(InviteFriendUI.d(this.gzD.gzA), 1);
     }
+    AppMethodBeat.o(108576);
   }
 }
 

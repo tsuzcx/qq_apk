@@ -3,33 +3,42 @@ package com.tencent.mm.plugin.appbrand.wxawidget.console;
 import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class f
 {
-  public static boolean cy(View paramView)
+  public static boolean da(View paramView)
   {
-    if (paramView == null) {}
-    InputMethodManager localInputMethodManager;
-    do
+    AppMethodBeat.i(11172);
+    if (paramView == null)
     {
-      do
-      {
-        return false;
-        localInputMethodManager = (InputMethodManager)paramView.getContext().getSystemService("input_method");
-      } while (localInputMethodManager == null);
-      paramView = paramView.getWindowToken();
-    } while (paramView == null);
+      AppMethodBeat.o(11172);
+      return false;
+    }
+    InputMethodManager localInputMethodManager = (InputMethodManager)paramView.getContext().getSystemService("input_method");
+    if (localInputMethodManager == null)
+    {
+      AppMethodBeat.o(11172);
+      return false;
+    }
+    paramView = paramView.getWindowToken();
+    if (paramView == null)
+    {
+      AppMethodBeat.o(11172);
+      return false;
+    }
     try
     {
       bool = localInputMethodManager.hideSoftInputFromWindow(paramView, 0);
+      AppMethodBeat.o(11172);
       return bool;
     }
     catch (IllegalArgumentException paramView)
     {
       for (;;)
       {
-        y.e("MicroMsg.InputMethodHelper", "hide VKB(View) exception %s", new Object[] { paramView });
+        ab.e("MicroMsg.InputMethodHelper", "hide VKB(View) exception %s", new Object[] { paramView });
         boolean bool = false;
       }
     }

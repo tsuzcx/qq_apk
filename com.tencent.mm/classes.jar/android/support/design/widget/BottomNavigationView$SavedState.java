@@ -10,12 +10,12 @@ class BottomNavigationView$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new BottomNavigationView.SavedState.1();
-  Bundle fi;
+  Bundle gh;
   
   public BottomNavigationView$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
   {
     super(paramParcel, paramClassLoader);
-    this.fi = paramParcel.readBundle(paramClassLoader);
+    this.gh = paramParcel.readBundle(paramClassLoader);
   }
   
   public BottomNavigationView$SavedState(Parcelable paramParcelable)
@@ -26,7 +26,7 @@ class BottomNavigationView$SavedState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeBundle(this.fi);
+    paramParcel.writeBundle(this.gh);
   }
 }
 

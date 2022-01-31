@@ -5,7 +5,7 @@ public final class c$az
 {
   public c$az()
   {
-    super("doSearchOperation", "", 10000, false);
+    super("disablePullDownRefresh", "disablePullDownRefresh", 205, false);
   }
 }
 

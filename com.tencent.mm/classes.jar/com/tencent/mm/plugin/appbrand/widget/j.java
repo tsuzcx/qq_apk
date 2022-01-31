@@ -1,60 +1,172 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import com.tencent.mm.h.c.cq;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.azp;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class j
-  extends cq
+  extends com.tencent.mm.sdk.e.j<k>
 {
-  public static final c.a fCU;
+  public static final String ime;
   
   static
   {
-    c.a locala = new c.a();
-    locala.ujL = new Field[8];
-    locala.columns = new String[9];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appIdHash";
-    locala.ujN.put("appIdHash", "INTEGER");
-    localStringBuilder.append(" appIdHash INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "appId";
-    locala.ujN.put("appId", "TEXT");
-    localStringBuilder.append(" appId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "pkgType";
-    locala.ujN.put("pkgType", "INTEGER");
-    localStringBuilder.append(" pkgType INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "widgetType";
-    locala.ujN.put("widgetType", "INTEGER");
-    localStringBuilder.append(" widgetType INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "launchAction";
-    locala.ujN.put("launchAction", "BLOB");
-    localStringBuilder.append(" launchAction BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "jsApiInfo";
-    locala.ujN.put("jsApiInfo", "BLOB");
-    localStringBuilder.append(" jsApiInfo BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "versionInfo";
-    locala.ujN.put("versionInfo", "BLOB");
-    localStringBuilder.append(" versionInfo BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "widgetSetting";
-    locala.ujN.put("widgetSetting", "BLOB");
-    localStringBuilder.append(" widgetSetting BLOB");
-    locala.columns[8] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    fCU = locala;
+    AppMethodBeat.i(70660);
+    ime = com.tencent.mm.sdk.e.j.getCreateSQLs(k.gUb, "LaunchWxaWidgetRespData");
+    AppMethodBeat.o(70660);
   }
   
-  protected final c.a rM()
+  public j(e parame)
   {
-    return fCU;
+    super(parame, k.gUb, "LaunchWxaWidgetRespData", k.INDEX_CREATE);
+  }
+  
+  private boolean a(k paramk, boolean paramBoolean)
+  {
+    AppMethodBeat.i(70654);
+    paramk.field_appIdHash = paramk.field_appId.hashCode();
+    super.insertNotify(paramk, paramBoolean);
+    paramBoolean = a(paramk, new String[] { "appId" });
+    AppMethodBeat.o(70654);
+    return paramBoolean;
+  }
+  
+  private boolean a(k paramk, boolean paramBoolean, String... paramVarArgs)
+  {
+    AppMethodBeat.i(70655);
+    int i;
+    if (!bo.Q(paramVarArgs)) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < paramVarArgs.length)
+      {
+        if (paramVarArgs[i].equals("appId"))
+        {
+          paramVarArgs[i] = "appIdHash";
+          paramk.field_appIdHash = paramk.field_appId.hashCode();
+        }
+      }
+      else
+      {
+        paramBoolean = super.updateNotify(paramk, paramBoolean, paramVarArgs);
+        AppMethodBeat.o(70655);
+        return paramBoolean;
+      }
+      i += 1;
+    }
+  }
+  
+  public final k V(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(70652);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(70652);
+      return null;
+    }
+    k localk = new k();
+    localk.field_appIdHash = paramString.hashCode();
+    localk.field_appId = paramString;
+    localk.field_pkgType = paramInt1;
+    localk.field_widgetType = paramInt2;
+    if (a(localk, new String[] { "appId", "pkgType", "widgetType" }))
+    {
+      AppMethodBeat.o(70652);
+      return localk;
+    }
+    AppMethodBeat.o(70652);
+    return null;
+  }
+  
+  public final k a(String paramString, int paramInt1, int paramInt2, azp paramazp)
+  {
+    AppMethodBeat.i(70651);
+    if ((bo.isNullOrNil(paramString)) || (paramazp == null))
+    {
+      AppMethodBeat.o(70651);
+      return null;
+    }
+    k localk = new k();
+    localk.field_appIdHash = paramString.hashCode();
+    localk.field_appId = paramString;
+    localk.field_pkgType = paramInt1;
+    localk.field_widgetType = paramInt2;
+    if (!a(localk, new String[] { "appId", "pkgType", "widgetType" }))
+    {
+      paramInt2 = 1;
+      if (com.tencent.mm.plugin.appbrand.s.k.a(localk.field_launchAction, paramazp.xpa)) {
+        break label291;
+      }
+      localk.field_launchAction = paramazp.xpa;
+    }
+    label261:
+    label291:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (!com.tencent.mm.plugin.appbrand.s.k.a(localk.field_jsApiInfo, paramazp.xoU))
+      {
+        localk.field_jsApiInfo = paramazp.xoU;
+        paramInt1 = 1;
+      }
+      if (!com.tencent.mm.plugin.appbrand.s.k.a(localk.field_versionInfo, paramazp.xpb))
+      {
+        localk.field_versionInfo = paramazp.xpb;
+        paramInt1 = 1;
+      }
+      if (!com.tencent.mm.plugin.appbrand.s.k.a(localk.field_widgetSetting, paramazp.xpc))
+      {
+        localk.field_widgetSetting = paramazp.xpc;
+        paramInt1 = 1;
+      }
+      if (paramInt1 != 0)
+      {
+        if (paramInt2 == 0) {
+          break label261;
+        }
+        a(localk, false);
+      }
+      for (;;)
+      {
+        if (paramInt1 != 0) {
+          a(localk, new String[] { "appId", "pkgType", "widgetType" });
+        }
+        AppMethodBeat.o(70651);
+        return localk;
+        paramInt2 = 0;
+        break;
+        a(localk, false, new String[] { "appId", "pkgType", "widgetType" });
+      }
+    }
+  }
+  
+  public final boolean a(k paramk, String... paramVarArgs)
+  {
+    AppMethodBeat.i(70653);
+    int i;
+    if (!bo.Q(paramVarArgs)) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < paramVarArgs.length)
+      {
+        if (paramVarArgs[i].equals("appId"))
+        {
+          paramVarArgs[i] = "appIdHash";
+          paramk.field_appIdHash = paramk.field_appId.hashCode();
+        }
+      }
+      else
+      {
+        boolean bool = super.get(paramk, paramVarArgs);
+        AppMethodBeat.o(70653);
+        return bool;
+      }
+      i += 1;
+    }
   }
 }
 

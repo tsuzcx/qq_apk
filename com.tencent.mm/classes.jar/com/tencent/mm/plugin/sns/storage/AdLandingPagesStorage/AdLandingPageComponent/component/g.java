@@ -1,98 +1,102 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.h;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.h.a;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.plugin.webview.ui.tools.widget.c;
+import com.tencent.mm.plugin.webview.ui.tools.widget.c.a;
+import com.tencent.mm.plugin.webview.ui.tools.widget.f;
+import com.tencent.mm.plugin.webview.ui.tools.widget.f.a;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.xweb.WebView;
 
 public final class g
-  extends b
+  extends h
 {
-  private LinearLayout kjd;
-  private View oFA;
-  private ImageView oFB;
-  private ImageView oFp;
-  private TextView oFq;
-  private LinearLayout oFr;
-  int oFs;
-  h oFz;
-  
-  public g(Context paramContext, h paramh, ViewGroup paramViewGroup)
+  public g(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t paramt, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramh, paramViewGroup);
-    this.oFz = paramh;
+    super(paramContext, paramt, paramViewGroup);
   }
   
-  public final boolean ah(JSONObject paramJSONObject)
+  protected final void cqP()
   {
-    if (!super.ah(paramJSONObject)) {
-      return false;
-    }
-    try
+    AppMethodBeat.i(37062);
+    WebView localWebView;
+    Object localObject;
+    String str1;
+    if ((ac)crb() != null)
     {
-      paramJSONObject.put("clickCount", this.oFs);
-      return true;
+      localWebView = (WebView)getView();
+      localObject = (ac)crb();
+      if ((TextUtils.isEmpty(((ac)localObject).url)) || (TextUtils.isEmpty(crc().cFe))) {
+        break label182;
+      }
+      String str2 = AdLandingPagesProxy.getInstance().getUin();
+      str1 = ae.m(((ac)localObject).url, new String[] { "uxinfo=" + crc().cFe, "uin=".concat(String.valueOf(str2)) });
+      if (((ac)localObject).subType != 1) {
+        break label190;
+      }
+      localObject = AdLandingPagesProxy.getInstance().getAdVoteInfo(((ac)localObject).url, crc().cFe, str2);
+      if (bo.isNullOrNil((String)localObject)) {
+        break label190;
+      }
+      str1 = str1 + "&" + (String)localObject;
     }
-    catch (JSONException paramJSONObject)
-    {
-      y.printErrStackTrace("AdLandingBorderedComp", paramJSONObject, "", new Object[0]);
-    }
-    return false;
-  }
-  
-  public final View bFf()
-  {
-    View localView = this.contentView;
-    this.oFB = ((ImageView)localView.findViewById(i.f.left_icon));
-    this.oFp = ((ImageView)localView.findViewById(i.f.right_arrow));
-    this.oFq = ((TextView)localView.findViewById(i.f.desc));
-    this.oFr = ((LinearLayout)localView.findViewById(i.f.innter_container));
-    this.kjd = ((LinearLayout)localView.findViewById(i.f.container));
-    this.oFA = this.oFr;
-    return this.contentView;
-  }
-  
-  protected final void bFj()
-  {
-    this.oFq.setText(this.oFz.oCw.lCM);
-    if (this.oFz.oDo)
-    {
-      this.oFB.setImageDrawable(a.g(this.context, i.e.lbs_w));
-      this.oFp.setImageDrawable(a.g(this.context, i.e.right_arrow_w));
-      this.oFq.setTextColor(-16777216);
-      this.oFr.setBackgroundResource(i.e.adlanding_comp_click_dark);
-    }
+    label182:
+    label190:
     for (;;)
     {
-      this.oFr.setPadding((int)this.oFz.oDk, 0, (int)this.oFz.oDl, 0);
-      this.kjd.setPadding(0, (int)this.oFz.oDi, 0, (int)this.oFz.oDj);
-      a(this.oFr);
-      g.1 local1 = new g.1(this);
-      if (this.oFA != null) {
-        this.oFA.setOnClickListener(local1);
-      }
+      localWebView.loadUrl(str1);
+      AppMethodBeat.o(37062);
       return;
-      this.oFB.setImageDrawable(a.g(this.context, i.e.lbs));
-      this.oFp.setImageDrawable(a.g(this.context, i.e.right_arrow));
-      this.oFq.setTextColor(-1);
-      this.oFr.setBackgroundResource(i.e.adlanding_comp_click_light);
+      str1 = ((ac)localObject).url;
     }
   }
   
-  protected final int getLayout()
+  protected final void cqQ()
   {
-    return i.g.sns_ad_native_landing_pages_item_lbs;
+    AppMethodBeat.i(37063);
+    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.rve.paddingLeft, (int)this.rve.paddingTop, (int)this.rve.paddingRight, (int)this.rve.paddingBottom);
+    }
+    this.contentView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(37063);
+  }
+  
+  protected final View cqR()
+  {
+    AppMethodBeat.i(37064);
+    MMWebView localMMWebView = f.a.vsl.dz(this.context);
+    localMMWebView.getSettings().dYu();
+    localMMWebView.getSettings().dYy();
+    localMMWebView.getSettings().dYx();
+    localMMWebView.setWebViewClient(c.a.vsk.a(localMMWebView, false, new g.1(this)));
+    AppMethodBeat.o(37064);
+    return localMMWebView;
+  }
+  
+  public final void cqz()
+  {
+    AppMethodBeat.i(37065);
+    super.cqz();
+    WebView localWebView = (WebView)getView();
+    if ((localWebView != null) && (localWebView.getParent() != null))
+    {
+      ((ViewGroup)localWebView.getParent()).removeView(localWebView);
+      localWebView.setTag(null);
+      localWebView.destroy();
+    }
+    this.contentView = null;
+    AppMethodBeat.o(37065);
   }
 }
 

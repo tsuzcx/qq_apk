@@ -1,194 +1,205 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.SpannableString;
-import android.view.View;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet_core.c.e;
-import com.tencent.mm.plugin.wallet_core.c.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet_core.c.h;
+import com.tencent.mm.plugin.wallet_core.c.w;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.plugin.wallet_core.model.q;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemGroupView;
 import com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemView;
-import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.c.abv;
-import com.tencent.mm.protocal.c.ft;
-import com.tencent.mm.protocal.c.rv;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.protocal.protobuf.agn;
+import com.tencent.mm.protocal.protobuf.hc;
+import com.tencent.mm.protocal.protobuf.vq;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.c;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @com.tencent.mm.ui.base.a(19)
 public class WalletSwitchVerifyPhoneUI
   extends WalletBaseUI
 {
-  private SwitchPhoneItemGroupView qGF;
-  private List<ft> qGG;
-  public boolean qGH = false;
+  private SwitchPhoneItemGroupView utL;
+  private List<hc> utM;
+  public boolean utN = false;
   
-  private void bTP()
+  private void cRL()
   {
-    y.i("MicroMsg.WalletSwitchVerifyPhoneUI", "directToNext()");
-    Authen localAuthen = (Authen)this.BX.getParcelable("key_authen");
-    Bankcard localBankcard = (Bankcard)this.BX.getParcelable("key_bankcard");
-    ElementQuery localElementQuery = o.bVA().Qp(localBankcard.field_bankcardType);
-    this.BX.putParcelable("elemt_query", localElementQuery);
-    localAuthen.mOb = localBankcard.field_bankcardType;
-    localAuthen.mOc = localBankcard.field_bindSerial;
-    localBankcard.field_bankPhone = localElementQuery.qvi;
-    this.BX.putBoolean("key_balance_change_phone_need_confirm_phone", true);
-    this.BX.putBoolean("key_is_changing_balance_phone_num", true);
-    this.BX.putInt("key_err_code", 418);
-    com.tencent.mm.wallet_core.a.j(this, this.BX);
+    AppMethodBeat.i(47677);
+    ab.i("MicroMsg.WalletSwitchVerifyPhoneUI", "directToNext()");
+    Authen localAuthen = (Authen)getInput().getParcelable("key_authen");
+    Bankcard localBankcard = (Bankcard)getInput().getParcelable("key_bankcard");
+    if ((localAuthen == null) || (localBankcard == null))
+    {
+      ab.w("MicroMsg.WalletSwitchVerifyPhoneUI", "authen or bankcard is null");
+      AppMethodBeat.o(47677);
+      return;
+    }
+    ElementQuery localElementQuery = t.cTV().afh(localBankcard.field_bankcardType);
+    getInput().putParcelable("elemt_query", localElementQuery);
+    localAuthen.poq = localBankcard.field_bankcardType;
+    localAuthen.por = localBankcard.field_bindSerial;
+    localBankcard.field_bankPhone = localElementQuery.uhA;
+    getInput().putBoolean("key_balance_change_phone_need_confirm_phone", true);
+    getInput().putBoolean("key_is_changing_balance_phone_num", true);
+    getInput().putInt("key_err_code", 418);
+    com.tencent.mm.wallet_core.a.j(this, getInput());
+    AppMethodBeat.o(47677);
   }
   
-  protected final boolean bTZ()
+  public int getLayoutId()
+  {
+    return 2130971257;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(47674);
+    this.utL = ((SwitchPhoneItemGroupView)findViewById(2131829408));
+    this.utL.setOnItemSelectListener(new WalletSwitchVerifyPhoneUI.1(this));
+    AppMethodBeat.o(47674);
+  }
+  
+  public boolean needConfirmFinish()
   {
     return true;
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, final m paramm)
-  {
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      if ((paramm instanceof e))
-      {
-        paramString = (e)paramm;
-        this.qGG = ((e)paramm).qqy.taW;
-        Collections.sort(this.qGG, new Comparator() {});
-        if (paramString.qqy.taX != null)
-        {
-          paramString = paramString.qqy.taX;
-          this.BX.putString("key_true_name", paramString.qsJ);
-          this.BX.putString("key_cre_name", paramString.sPW);
-          this.BX.putString("key_cre_type", paramString.qyx);
-        }
-        if ((this.qGG == null) || (this.qGG.isEmpty()))
-        {
-          y.i("MicroMsg.WalletSwitchVerifyPhoneUI", "empty mobile info");
-          return true;
-        }
-        paramInt1 = this.qGG.size() - 1;
-        label149:
-        if (paramInt1 >= 0)
-        {
-          paramm = (ft)this.qGG.get(paramInt1);
-          if (!paramm.szN.equals("cft")) {
-            break label441;
-          }
-          SwitchPhoneItemView localSwitchPhoneItemView = new SwitchPhoneItemView(this.mController.uMN);
-          if (!paramm.szO.equals("1")) {
-            break label304;
-          }
-          paramString = getString(a.i.wallet_switch_phone_debit_card);
-          label219:
-          paramString = getString(a.i.wallet_switch_phone_card_hint, new Object[] { paramm.lnT, paramString, paramm.szP });
-          if (!this.qGH) {
-            break label315;
-          }
-          paramString = new SpannableString(paramString);
-          localSwitchPhoneItemView.setTag(Integer.valueOf(paramInt1));
-          localSwitchPhoneItemView.a(paramm.qqU, paramString);
-          this.qGF.a(localSwitchPhoneItemView, 0);
-        }
-        for (;;)
-        {
-          label267:
-          paramInt1 -= 1;
-          break label149;
-          break;
-          label304:
-          paramString = getString(a.i.wallet_switch_phone_credit_card);
-          break label219;
-          label315:
-          String str1 = getString(a.i.wallet_switch_phone_update);
-          h localh = new h(this);
-          String str2 = paramString + "，";
-          localh.mColor = getResources().getColor(a.c.blue_text_color);
-          paramString = new SpannableString(str2 + str1);
-          paramString.setSpan(localh, str2.length(), str2.length() + str1.length(), 33);
-          localh.qDo = new h.a()
-          {
-            public final void onClick(View paramAnonymousView)
-            {
-              y.d("MicroMsg.WalletSwitchVerifyPhoneUI", "span click");
-              WalletSwitchVerifyPhoneUI.a(WalletSwitchVerifyPhoneUI.this, paramm);
-            }
-          };
-          break label267;
-          label441:
-          paramString = new SwitchPhoneItemView(this.mController.uMN);
-          paramString.setTag(Integer.valueOf(paramInt1));
-          paramString.a(paramm.qqU, getString(a.i.wallet_switch_phone_wx_bind_phone));
-          this.qGF.a(paramString, 0);
-        }
-      }
-      if ((paramm instanceof t)) {
-        bTP();
-      }
-    }
-    return false;
-  }
-  
-  protected final int getLayoutId()
-  {
-    return a.g.wallet_switch_verify_phone_ui;
-  }
-  
-  protected final void initView()
-  {
-    this.qGF = ((SwitchPhoneItemGroupView)findViewById(a.f.phone_number_container));
-    this.qGF.setOnItemSelectListener(new WalletSwitchVerifyPhoneUI.1(this));
-  }
-  
   public void onCreate(Bundle paramBundle)
   {
-    overridePendingTransition(a.a.push_up_in, a.a.anim_not_change);
+    AppMethodBeat.i(47673);
+    overridePendingTransition(2131034230, 2131034130);
     super.onCreate(paramBundle);
-    setMMTitle(getString(a.i.wallet_switch_phone_title_1));
+    setMMTitle(getString(2131305668));
     initView();
-    this.qGH = this.BX.getBoolean("key_block_bind_new_card", false);
-    if (!this.qGH)
+    this.utN = getInput().getBoolean("key_block_bind_new_card", false);
+    if (!this.utN)
     {
-      paramBundle = new SwitchPhoneItemView(this.mController.uMN);
+      paramBundle = new SwitchPhoneItemView(getContext());
       paramBundle.setTag(Integer.valueOf(-1));
-      paramBundle.a(getString(a.i.wallet_switch_phone_bind_new_card), null);
-      this.qGF.a(paramBundle, -1);
+      paramBundle.a(getString(2131305664), null);
+      this.utL.a(paramBundle, -1);
     }
-    if ((cNj() != null) && (cNj().aTh() == "PayProcess") && (this.BX.getInt("key_can_verify_tail", 0) == 1))
+    if ((getProcess() != null) && (getProcess().bzC().equals("PayProcess")) && (getInput().getInt("key_can_verify_tail", 0) == 1))
     {
-      y.i("MicroMsg.WalletSwitchVerifyPhoneUI", "show verify id card item");
-      paramBundle = getString(a.i.wallet_idcard_item_text);
-      SwitchPhoneItemView localSwitchPhoneItemView = new SwitchPhoneItemView(this.mController.uMN, a.g.wallet_switch_verify_phone_idcard_item);
+      ab.i("MicroMsg.WalletSwitchVerifyPhoneUI", "show verify id card item");
+      paramBundle = getString(2131305100);
+      SwitchPhoneItemView localSwitchPhoneItemView = new SwitchPhoneItemView(getContext(), 2130971255);
       localSwitchPhoneItemView.setTag(Integer.valueOf(-2));
       localSwitchPhoneItemView.a(paramBundle, null);
-      this.qGF.a(localSwitchPhoneItemView, -1);
+      this.utL.a(localSwitchPhoneItemView, -1);
     }
-    kh(1667);
-    kh(461);
-    kh(1505);
-    a(new e(bTO()), true, true);
+    addSceneEndListener(1667);
+    addSceneEndListener(461);
+    addSceneEndListener(1505);
+    doSceneProgress(new h(getPayReqKey()));
+    AppMethodBeat.o(47673);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(47675);
     super.onDestroy();
-    ki(1667);
-    ki(461);
-    ki(1505);
+    removeSceneEndListener(1667);
+    removeSceneEndListener(461);
+    removeSceneEndListener(1505);
+    AppMethodBeat.o(47675);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(47676);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      if ((paramm instanceof h))
+      {
+        paramString = (h)paramm;
+        this.utM = ((h)paramm).ubu.wZn;
+        if (this.utM != null) {
+          Collections.sort(this.utM, new WalletSwitchVerifyPhoneUI.2(this));
+        }
+        if (paramString.ubu.wZo != null)
+        {
+          paramString = paramString.ubu.wZo;
+          getInput().putString("key_true_name", paramString.ueu);
+          getInput().putString("key_cre_name", paramString.wOr);
+          getInput().putString("key_cre_type", paramString.ulg);
+        }
+        if ((this.utM == null) || (this.utM.isEmpty()))
+        {
+          ab.i("MicroMsg.WalletSwitchVerifyPhoneUI", "empty mobile info");
+          AppMethodBeat.o(47676);
+          return true;
+        }
+        paramInt1 = this.utM.size() - 1;
+        label172:
+        if (paramInt1 >= 0)
+        {
+          paramm = (hc)this.utM.get(paramInt1);
+          if (!paramm.wtO.equals("cft")) {
+            break label462;
+          }
+          SwitchPhoneItemView localSwitchPhoneItemView = new SwitchPhoneItemView(getContext());
+          if (!paramm.wtP.equals("1")) {
+            break label325;
+          }
+          paramString = getString(2131305667);
+          label240:
+          paramString = getString(2131305665, new Object[] { paramm.nLq, paramString, paramm.wtQ });
+          if (!this.utN) {
+            break label336;
+          }
+          paramString = new SpannableString(paramString);
+          localSwitchPhoneItemView.setTag(Integer.valueOf(paramInt1));
+          localSwitchPhoneItemView.a(paramm.ubQ, paramString);
+          this.utL.a(localSwitchPhoneItemView, 0);
+        }
+        for (;;)
+        {
+          label288:
+          paramInt1 -= 1;
+          break label172;
+          break;
+          label325:
+          paramString = getString(2131305666);
+          break label240;
+          label336:
+          String str1 = getString(2131305670);
+          j localj = new j(this);
+          String str2 = paramString + "，";
+          localj.mColor = getResources().getColor(2131689771);
+          paramString = new SpannableString(str2 + str1);
+          paramString.setSpan(localj, str2.length(), str2.length() + str1.length(), 33);
+          localj.uqj = new WalletSwitchVerifyPhoneUI.3(this, paramm);
+          break label288;
+          label462:
+          paramString = new SwitchPhoneItemView(getContext());
+          paramString.setTag(Integer.valueOf(paramInt1));
+          paramString.a(paramm.ubQ, getString(2131305671));
+          this.utL.a(paramString, 0);
+        }
+      }
+      if ((paramm instanceof w)) {
+        cRL();
+      }
+    }
+    AppMethodBeat.o(47676);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

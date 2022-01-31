@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.boots;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.plugin.boots.c.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.bi;
+import com.tencent.mm.sdk.b.c;
 
 final class PluginBoots$1
-  implements h.d
+  extends c<bi>
 {
-  PluginBoots$1(PluginBoots paramPluginBoots) {}
-  
-  public final String[] rK()
+  PluginBoots$1(PluginBoots paramPluginBoots)
   {
-    return a.dXp;
+    AppMethodBeat.i(90514);
+    this.__eventId = bi.class.getName().hashCode();
+    AppMethodBeat.o(90514);
   }
 }
 

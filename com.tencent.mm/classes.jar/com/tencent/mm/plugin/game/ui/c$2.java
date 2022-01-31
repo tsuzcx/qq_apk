@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.h.c.r;
-import com.tencent.mm.plugin.game.model.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.t;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$2
   implements DialogInterface.OnClickListener
@@ -14,9 +14,11 @@ final class c$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    h.nFQ.f(14217, new Object[] { this.kWS.kOM.field_appId, Integer.valueOf(6), "", this.kWS.kOM.cvy, Integer.valueOf(2) });
+    AppMethodBeat.i(111699);
+    h.qsU.e(14217, new Object[] { this.nuU.nmJ.field_appId, Integer.valueOf(6), "", this.nuU.nmJ.djJ, Integer.valueOf(2) });
     paramDialogInterface.dismiss();
-    y.i("MicroMsg.CommonGameClickLinstener", "addDownloadTask not wifi, user cancel");
+    ab.i("MicroMsg.CommonGameClickLinstener", "addDownloadTask not wifi, user cancel");
+    AppMethodBeat.o(111699);
   }
 }
 

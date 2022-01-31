@@ -2,93 +2,123 @@ package com.tencent.mm.ui.conversation.a;
 
 import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.storage.z;
 import java.lang.ref.WeakReference;
 
 public final class a
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  int arO = 0;
-  private View hNa = null;
-  b vUh;
-  private d vUi;
-  a.a vUj;
+  b Amd;
+  private d Ame;
+  a Amf;
+  int aug;
+  private View jIo;
   
   public a(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(34632);
+    this.aug = 0;
+    this.jIo = null;
     if (this.view != null)
     {
-      this.hNa = this.view.findViewById(R.h.adlist);
-      this.vUi = new d();
-      this.vUi.vUn = this.hNa;
-      this.vUi.vUo = ((Button)this.view.findViewById(R.h.ad_close));
-      this.vUi.vUo.setOnClickListener(new a.1(this));
-      this.hNa.setOnClickListener(new a.2(this));
+      this.jIo = this.view.findViewById(2131821112);
+      this.Ame = new d();
+      this.Ame.Amj = this.jIo;
+      this.Ame.Amk = ((Button)this.view.findViewById(2131821113));
+      this.Ame.Amk.setOnClickListener(new a.1(this));
+      this.jIo.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(34629);
+          if ((a.this.Amd != null) && (a.this.Amf != null))
+          {
+            paramAnonymousView = a.this.Amd.QF(a.this.aug);
+            a.this.Amf.iA(paramAnonymousView.Ami.id, paramAnonymousView.Ami.url);
+          }
+          AppMethodBeat.o(34629);
+        }
+      });
     }
+    AppMethodBeat.o(34632);
   }
   
-  public final boolean apu()
+  public final boolean aMK()
   {
-    this.vUh = new b((Context)this.sdy.get());
-    this.vUj = new a.3(this);
-    com.tencent.mm.pluginsdk.h.a.a locala = com.tencent.mm.pluginsdk.h.a.a.eW(ae.getContext());
-    if (this.vUh != null)
+    AppMethodBeat.i(34635);
+    this.Amd = new b((Context)this.vUD.get());
+    this.Amf = new a.3(this);
+    com.tencent.mm.pluginsdk.h.a.a locala = com.tencent.mm.pluginsdk.h.a.a.fV(ah.getContext());
+    if (this.Amd != null)
     {
       if (locala != null)
       {
-        this.vUh.vUl = locala;
-        this.vUh.yc();
-        if ((this.vUh != null) && (this.vUh.getCount() > 0) && (this.vUh.HT(0).a(this.vUi) == 0)) {}
+        this.Amd.Amh = locala;
+        this.Amd.Ku();
+        if ((this.Amd != null) && (this.Amd.getCount() > 0) && (this.Amd.QF(0).a(this.Ame) == 0)) {}
         for (int i = 1; i != 0; i = 0)
         {
-          y.i("MicroMsg.ADBanner", "refreshAndReturnIsVisible[true]");
+          ab.i("MicroMsg.ADBanner", "refreshAndReturnIsVisible[true]");
           setVisibility(0);
+          AppMethodBeat.o(34635);
           return true;
         }
       }
       setVisibility(8);
     }
     setVisibility(8);
+    AppMethodBeat.o(34635);
     return false;
   }
   
   public final void destroy()
   {
-    if (g.DN().Dc())
+    AppMethodBeat.i(34633);
+    if (g.RJ().QU())
     {
-      au.Hx();
-      com.tencent.mm.model.c.Dz().b(this.vUh);
+      aw.aaz();
+      com.tencent.mm.model.c.Ru().b(this.Amd);
     }
+    AppMethodBeat.o(34633);
   }
   
   public final int getLayoutId()
   {
-    return R.i.adlist_item;
+    return 2130968645;
   }
   
   public final void release()
   {
-    this.vUh = null;
+    this.Amd = null;
   }
   
   public final void setVisibility(int paramInt)
   {
-    if (this.hNa != null) {
-      this.hNa.setVisibility(paramInt);
+    AppMethodBeat.i(34634);
+    if (this.jIo != null) {
+      this.jIo.setVisibility(paramInt);
     }
+    AppMethodBeat.o(34634);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void ahA(String paramString);
+    
+    public abstract void iA(String paramString1, String paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.a
  * JD-Core Version:    0.7.0.1
  */

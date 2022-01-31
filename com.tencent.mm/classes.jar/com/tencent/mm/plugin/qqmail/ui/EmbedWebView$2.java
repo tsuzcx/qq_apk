@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.view.View;
 import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EmbedWebView$2
   implements Runnable
@@ -10,15 +11,20 @@ final class EmbedWebView$2
   
   public final void run()
   {
-    View localView = (View)this.nhy.getParent();
-    if (localView == null) {}
-    do
+    AppMethodBeat.i(68279);
+    View localView = (View)this.pML.getParent();
+    if (localView == null)
     {
+      AppMethodBeat.o(68279);
       return;
-      localView = (View)localView.getParent();
-    } while ((localView == null) || (!(localView instanceof ScrollView)));
-    EmbedWebView.a(this.nhy);
-    localView.setOnTouchListener(new EmbedWebView.2.1(this));
+    }
+    localView = (View)localView.getParent();
+    if ((localView != null) && ((localView instanceof ScrollView)))
+    {
+      EmbedWebView.a(this.pML);
+      localView.setOnTouchListener(new EmbedWebView.2.1(this));
+    }
+    AppMethodBeat.o(68279);
   }
 }
 

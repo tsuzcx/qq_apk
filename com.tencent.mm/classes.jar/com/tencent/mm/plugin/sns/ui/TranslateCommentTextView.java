@@ -5,43 +5,48 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TranslateCommentTextView
   extends LinearLayout
 {
-  public SnsTranslateResultView oXv;
-  public MaskTextView pkz;
+  public SnsTranslateResultView rPT;
+  public MaskTextView sdc;
   
   public TranslateCommentTextView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(39904);
     init();
+    AppMethodBeat.o(39904);
   }
   
   public TranslateCommentTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(39905);
     init();
+    AppMethodBeat.o(39905);
   }
   
   private void init()
   {
-    LayoutInflater.from(getContext()).inflate(i.g.timeline_comment_translate_item_layout, this);
-    this.pkz = ((MaskTextView)findViewById(i.f.comment_textview));
-    this.oXv = ((SnsTranslateResultView)findViewById(i.f.sns_translate_result_view));
-    this.oXv.setVisibility(8);
+    AppMethodBeat.i(39906);
+    LayoutInflater.from(getContext()).inflate(2130970995, this);
+    this.sdc = ((MaskTextView)findViewById(2131828492));
+    this.rPT = ((SnsTranslateResultView)findViewById(2131827943));
+    this.rPT.setVisibility(8);
+    AppMethodBeat.o(39906);
   }
   
   public TextView getOriginCommentTextView()
   {
-    return this.pkz;
+    return this.sdc;
   }
   
   public SnsTranslateResultView getTranslateResultView()
   {
-    return this.oXv;
+    return this.rPT;
   }
 }
 

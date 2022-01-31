@@ -1,21 +1,19 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import com.tencent.luggage.e.c;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$11
-  extends c
+  implements View.OnClickListener
 {
   e$11(e parame) {}
   
-  public final String name()
+  public final void onClick(View paramView)
   {
-    return "onJsApiReady";
-  }
-  
-  public final JSONObject pV()
-  {
-    return null;
+    AppMethodBeat.i(6021);
+    this.uRQ.bFu();
+    AppMethodBeat.o(6021);
   }
 }
 

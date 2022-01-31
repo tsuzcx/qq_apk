@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import com.tencent.mm.ui.base.preference.MMPreference;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.f;
 
 final class ExdeviceDeviceProfileUI$7$1
@@ -10,12 +10,14 @@ final class ExdeviceDeviceProfileUI$7$1
   
   public final void run()
   {
-    ExdeviceDeviceProfileUI.a(this.jDj.jDf, (DeviceProfileHeaderPreference)this.jDj.jDf.vdd.add("device_profile_header"));
+    AppMethodBeat.i(19943);
+    ExdeviceDeviceProfileUI.a(this.lMI.lMD, (DeviceProfileHeaderPreference)this.lMI.lMD.getPreferenceScreen().atx("device_profile_header"));
+    AppMethodBeat.o(19943);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceDeviceProfileUI.7.1
  * JD-Core Version:    0.7.0.1
  */

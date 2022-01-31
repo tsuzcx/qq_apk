@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice.service;
 
 final class y$f
 {
-  public long jvT;
+  public long lFs;
   public byte[] mData;
 }
 

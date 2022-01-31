@@ -5,7 +5,7 @@ import android.view.MotionEvent;
 public abstract interface d
   extends c
 {
-  public abstract boolean z(MotionEvent paramMotionEvent);
+  public abstract boolean I(MotionEvent paramMotionEvent);
 }
 
 

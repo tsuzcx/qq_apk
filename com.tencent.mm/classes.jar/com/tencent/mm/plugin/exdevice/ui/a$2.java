@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$2
   implements View.OnClickListener
@@ -12,10 +13,12 @@ final class a$2
   
   public final void onClick(View paramView)
   {
-    paramView = a.b(this.jDT);
+    AppMethodBeat.i(20003);
+    paramView = a.b(this.lNr);
     Intent localIntent = new Intent(paramView, ExdeviceProfileUI.class);
-    localIntent.putExtra("username", this.egy);
+    localIntent.putExtra("username", this.fwC);
     paramView.startActivity(localIntent);
+    AppMethodBeat.o(20003);
   }
 }
 

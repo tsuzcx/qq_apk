@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.voip;
 
 public abstract interface HeadsetPlugReceiver$a
 {
-  public abstract void eH(boolean paramBoolean);
+  public abstract void gj(boolean paramBoolean);
 }
 
 

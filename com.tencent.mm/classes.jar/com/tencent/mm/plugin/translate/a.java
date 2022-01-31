@@ -1,63 +1,83 @@
 package com.tencent.mm.plugin.translate;
 
 import android.os.Looper;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.g.a.tt;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.translate.a.c.a;
 import com.tencent.mm.plugin.translate.a.c.b;
 import com.tencent.mm.plugin.translate.a.d;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.az;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Queue;
 
 public final class a
-  implements ar
+  implements at
 {
-  ah handler = new ah(Looper.getMainLooper());
-  com.tencent.mm.plugin.translate.a.c pKs = c.b.pKG;
-  av pKt = new av(5, "ProcessTranslatedMessage", 1, Looper.getMainLooper());
-  private c.a pKu = new a.1(this);
-  private com.tencent.mm.sdk.b.c pKv = new a.2(this);
-  private com.tencent.mm.sdk.b.c pKw = new a.3(this);
+  ak handler;
+  com.tencent.mm.plugin.translate.a.c toF;
+  az toG;
+  private c.a toH;
+  private com.tencent.mm.sdk.b.c toI;
+  private com.tencent.mm.sdk.b.c toJ;
   
-  public final void bh(boolean paramBoolean)
+  public a()
   {
-    com.tencent.mm.plugin.translate.a.c localc = this.pKs;
-    c.a locala = this.pKu;
-    if ((locala == null) || (localc.dFz.contains(locala))) {}
+    AppMethodBeat.i(26055);
+    this.toF = c.b.toT;
+    this.toG = new az(5, "ProcessTranslatedMessage", 1, Looper.getMainLooper());
+    this.toH = new a.1(this);
+    this.handler = new ak(Looper.getMainLooper());
+    this.toI = new com.tencent.mm.sdk.b.c() {};
+    this.toJ = new a.3(this);
+    AppMethodBeat.o(26055);
+  }
+  
+  public final void clearPluginData(int paramInt) {}
+  
+  public final HashMap<Integer, h.d> getBaseDBFactories()
+  {
+    return null;
+  }
+  
+  public final void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(26056);
+    com.tencent.mm.plugin.translate.a.c localc = this.toF;
+    c.a locala = this.toH;
+    if ((locala == null) || (localc.eDb.contains(locala))) {}
     for (;;)
     {
-      com.tencent.mm.sdk.b.a.udP.c(this.pKv);
-      com.tencent.mm.sdk.b.a.udP.c(this.pKw);
+      com.tencent.mm.sdk.b.a.ymk.c(this.toI);
+      com.tencent.mm.sdk.b.a.ymk.c(this.toJ);
+      AppMethodBeat.o(26056);
       return;
-      localc.dFz.add(locala);
+      localc.eDb.add(locala);
     }
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
   public final void onAccountRelease()
   {
-    com.tencent.mm.sdk.b.a.udP.d(this.pKv);
-    com.tencent.mm.sdk.b.a.udP.d(this.pKw);
-    com.tencent.mm.plugin.translate.a.c localc = this.pKs;
-    Object localObject = this.pKu;
-    if ((localObject == null) || (!localc.dFz.contains(localObject))) {}
+    AppMethodBeat.i(26057);
+    com.tencent.mm.sdk.b.a.ymk.d(this.toI);
+    com.tencent.mm.sdk.b.a.ymk.d(this.toJ);
+    com.tencent.mm.plugin.translate.a.c localc = this.toF;
+    Object localObject = this.toH;
+    if ((localObject == null) || (!localc.eDb.contains(localObject))) {}
     for (;;)
     {
-      localc = this.pKs;
-      if (localc.pKD == null) {
+      localc = this.toF;
+      if (localc.toQ == null) {
         break;
       }
-      localObject = localc.pKD;
+      localObject = localc.toQ;
       int j = localObject.length;
       int i = 0;
       while (i < j)
@@ -65,33 +85,31 @@ public final class a
         f localf = localObject[i];
         if (localf != null)
         {
-          au.Dk().b(631, localf);
-          if (localf.pKN != null)
+          aw.Rc().b(631, localf);
+          if (localf.toZ != null)
           {
-            localf.pKP.stopTimer();
-            au.Dk().c(localf.pKN);
+            localf.tpb.stopTimer();
+            aw.Rc().a(localf.toZ);
           }
-          localf.bOX();
-          localf.pKL = null;
+          localf.cKU();
+          localf.toX = null;
         }
         i += 1;
       }
-      localc.dFz.remove(localObject);
+      localc.eDb.remove(localObject);
     }
-    localc.pKF.clear();
-    localc.pKE.clear();
-    localc.dFz.clear();
-    localc.iks = 0;
+    localc.toS.clear();
+    localc.toR.clear();
+    localc.eDb.clear();
+    localc.evn = 0;
+    AppMethodBeat.o(26057);
   }
   
-  public final HashMap<Integer, h.d> xe()
-  {
-    return null;
-  }
+  public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.translate.a
  * JD-Core Version:    0.7.0.1
  */

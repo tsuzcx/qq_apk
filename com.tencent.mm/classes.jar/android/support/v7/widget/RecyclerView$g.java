@@ -7,35 +7,35 @@ final class RecyclerView$g
 {
   RecyclerView$g(RecyclerView paramRecyclerView) {}
   
-  public final void m(RecyclerView.v paramv)
+  public final void n(RecyclerView.v paramv)
   {
     boolean bool = true;
-    paramv.ag(true);
-    if ((paramv.aik != null) && (paramv.ail == null)) {
-      paramv.aik = null;
+    paramv.ap(true);
+    if ((paramv.akA != null) && (paramv.akB == null)) {
+      paramv.akA = null;
     }
-    paramv.ail = null;
+    paramv.akB = null;
     RecyclerView localRecyclerView;
     Object localObject;
-    u localu;
+    s locals;
     int i;
-    if (!RecyclerView.v.u(paramv))
+    if (!RecyclerView.v.z(paramv))
     {
-      localRecyclerView = this.agK;
-      localObject = paramv.aie;
-      localRecyclerView.ho();
-      localu = localRecyclerView.afB;
-      i = localu.abh.indexOfChild((View)localObject);
+      localRecyclerView = this.aja;
+      localObject = paramv.aku;
+      localRecyclerView.iP();
+      locals = localRecyclerView.ahR;
+      i = locals.abS.indexOfChild((View)localObject);
       if (i != -1) {
         break label155;
       }
-      localu.aR((View)localObject);
+      locals.aZ((View)localObject);
       i = 1;
       if (i != 0)
       {
-        localObject = RecyclerView.bf((View)localObject);
-        localRecyclerView.afy.p((RecyclerView.v)localObject);
-        localRecyclerView.afy.o((RecyclerView.v)localObject);
+        localObject = RecyclerView.bp((View)localObject);
+        localRecyclerView.ahO.t((RecyclerView.v)localObject);
+        localRecyclerView.ahO.s((RecyclerView.v)localObject);
       }
       if (i != 0) {
         break label206;
@@ -43,17 +43,17 @@ final class RecyclerView$g
     }
     for (;;)
     {
-      localRecyclerView.ac(bool);
-      if ((i == 0) && (paramv.il())) {
-        this.agK.removeDetachedView(paramv.aie, false);
+      localRecyclerView.al(bool);
+      if ((i == 0) && (paramv.jW())) {
+        this.aja.removeDetachedView(paramv.aku, false);
       }
       return;
       label155:
-      if (localu.abi.get(i))
+      if (locals.abT.get(i))
       {
-        localu.abi.bu(i);
-        localu.aR((View)localObject);
-        localu.abh.removeViewAt(i);
+        locals.abT.bu(i);
+        locals.aZ((View)localObject);
+        locals.abS.removeViewAt(i);
         i = 1;
         break;
       }

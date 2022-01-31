@@ -47,7 +47,7 @@ public abstract class Observable<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wcdb.Observable
  * JD-Core Version:    0.7.0.1
  */

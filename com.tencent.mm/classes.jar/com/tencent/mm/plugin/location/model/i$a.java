@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.location.model;
 
 public abstract interface i$a
 {
-  public abstract void u(double paramDouble);
+  public abstract void x(double paramDouble);
 }
 
 

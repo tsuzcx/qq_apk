@@ -25,9 +25,9 @@ public abstract class Vending<_Struct, _Index, _Change>
   private boolean k = false;
   private boolean l = false;
   private Vending.g<_Index> m = new Vending.g((byte)0);
-  private volatile com.tencent.mm.vending.b.c n = new Vending.1(this, d.wtY);
-  private volatile com.tencent.mm.vending.b.c o = new com.tencent.mm.vending.b.c(d.wtY) {};
-  private Vending.h<_Index, i<_Struct, _Index>> p = new Vending.h();
+  private volatile com.tencent.mm.vending.b.c n = new Vending.1(this, d.AOW);
+  private volatile com.tencent.mm.vending.b.c o = new com.tencent.mm.vending.b.c(d.AOW) {};
+  private Vending.h<_Index, Vending.i<_Struct, _Index>> p = new Vending.h();
   private boolean q = false;
   
   public Vending()
@@ -38,41 +38,10 @@ public abstract class Vending<_Struct, _Index, _Change>
   public Vending(Looper paramLooper)
   {
     this.c = paramLooper;
-    this.d = com.tencent.mm.vending.i.b.cLg().a.getLooper();
-    this.p.wtk = new Vending.3(this);
+    this.d = com.tencent.mm.vending.i.b.dQw().a.getLooper();
+    this.p.AOf = new Vending.3(this);
     this.a = new c(this.c, this.d);
-    this.a.wtm = new c.a()
-    {
-      public final void cKQ()
-      {
-        com.tencent.mm.vending.f.a.i("Vending", "%s beforeSynchronize", new Object[] { Vending.this });
-        Vending.b(Vending.this).cKS();
-      }
-      
-      public final void cKR()
-      {
-        com.tencent.mm.vending.f.a.i("Vending", "%s afterSynchronize", new Object[] { Vending.this });
-        if (Vending.e(Vending.this) != null) {
-          Vending.e(Vending.this).cKU();
-        }
-      }
-      
-      public final void synchronizing(int paramAnonymousInt, Object paramAnonymousObject)
-      {
-        com.tencent.mm.vending.f.a.i("Vending", "%s synchronizing", new Object[] { Vending.this });
-        Vending.this.b.clear();
-        Vending.b(Vending.this).cKS();
-        Vending.c(Vending.this).removeCallbacksAndMessages(null);
-        if (paramAnonymousInt == 2) {
-          paramAnonymousObject = Vending.this.prepareVendingDataAsynchronous();
-        }
-        if ((paramAnonymousInt == 2) || (paramAnonymousInt == 1)) {
-          Vending.this.applyChangeSynchronized(paramAnonymousObject);
-        }
-        Vending.this.synchronizing(paramAnonymousInt, paramAnonymousObject);
-        Vending.d(Vending.this).clear();
-      }
-    };
+    this.a.AOh = new Vending.4(this);
     this.e = new Vending.5(this, this.c);
     this.f = new Vending.6(this, this.d);
     this.h = new Vending.c(this.d, new Vending.7(this));
@@ -87,7 +56,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     if (this.g.get()) {
       return null;
     }
-    i locali = getLock(param_Index);
+    Vending.i locali = getLock(param_Index);
     if (invalidIndex(param_Index)) {
       return locali.b;
     }
@@ -103,7 +72,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     if (!this.b.contains(???)) {
       return;
     }
-    i locali = getLock(param_Index);
+    Vending.i locali = getLock(param_Index);
     synchronized (locali.c)
     {
       locali.g = false;
@@ -113,7 +82,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     }
   }
   
-  private void a(i<_Struct, _Index> parami)
+  private void a(Vending.i<_Struct, _Index> parami)
   {
     if (parami.h)
     {
@@ -123,14 +92,14 @@ public abstract class Vending<_Struct, _Index, _Change>
     this.e.sendMessage(this.e.obtainMessage(1, parami));
   }
   
-  private void a(i<_Struct, _Index> parami, _Index param_Index, _Struct param_Struct)
+  private void a(Vending.i<_Struct, _Index> parami, _Index param_Index, _Struct param_Struct)
   {
     parami.b = param_Struct;
     parami.a = param_Index;
     parami.d = false;
     parami.e = false;
     parami.f = true;
-    if (this.m.wtj == parami) {
+    if (this.m.AOe == parami) {
       parami.h = true;
     }
     parami.c.notify();
@@ -142,7 +111,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     while (this.o == null) {
       return;
     }
-    this.o.a(f.cj(param_Index));
+    this.o.a(f.cO(param_Index));
   }
   
   private void a(_Index param_Index, boolean paramBoolean)
@@ -151,7 +120,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     if (this.g.get()) {
       return;
     }
-    i locali = getLock(param_Index);
+    Vending.i locali = getLock(param_Index);
     synchronized (locali.c)
     {
       if (locali.f)
@@ -179,7 +148,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     }
     if (paramBoolean)
     {
-      this.a.m(2, null);
+      this.a.t(2, null);
       return;
     }
     synchronized (this.j)
@@ -200,7 +169,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     this.f.post(new Vending.8(this));
   }
   
-  private boolean a(i<_Struct, _Index> parami, _Index param_Index)
+  private boolean a(Vending.i<_Struct, _Index> parami, _Index param_Index)
   {
     synchronized (parami.c)
     {
@@ -219,9 +188,9 @@ public abstract class Vending<_Struct, _Index, _Change>
     }
   }
   
-  private i<_Struct, _Index> b(i<_Struct, _Index> parami, _Index param_Index)
+  private Vending.i<_Struct, _Index> b(Vending.i<_Struct, _Index> parami, _Index param_Index)
   {
-    if (!com.tencent.mm.vending.i.b.cLg().a.isAlive())
+    if (!com.tencent.mm.vending.i.b.dQw().a.isAlive())
     {
       com.tencent.mm.vending.f.a.e("Vending", "Vending thread is not running!", new Object[0]);
       return parami;
@@ -236,8 +205,8 @@ public abstract class Vending<_Struct, _Index, _Change>
         return parami;
       }
     }
-    this.m.wti.a = param_Index;
-    this.m.wtj = parami;
+    this.m.AOd.a = param_Index;
+    this.m.AOe = parami;
     com.tencent.mm.vending.f.a.i("Vending", "%s waiting %s", new Object[] { this, param_Index });
     long l1 = System.nanoTime();
     try
@@ -258,7 +227,7 @@ public abstract class Vending<_Struct, _Index, _Change>
   private _Struct b(_Index param_Index)
   {
     if (invalidIndex(param_Index)) {}
-    i locali;
+    Vending.i locali;
     do
     {
       return null;
@@ -269,14 +238,14 @@ public abstract class Vending<_Struct, _Index, _Change>
   
   private void b()
   {
-    if (this.m.wti.a != null)
+    if (this.m.AOd.a != null)
     {
-      com.tencent.mm.vending.f.a.e("Vending", "Catch deadlock! Tell Carl! .. " + this.m.wti.a, new Object[0]);
-      if (this.m.wtj == null) {}
+      com.tencent.mm.vending.f.a.e("Vending", "Catch deadlock! Tell Carl! .. " + this.m.AOd.a, new Object[0]);
+      if (this.m.AOe == null) {}
     }
-    synchronized (this.m.wtj.c)
+    synchronized (this.m.AOe.c)
     {
-      this.m.wtj.c.notify();
+      this.m.AOe.c.notify();
       this.m.a();
       return;
     }
@@ -289,10 +258,10 @@ public abstract class Vending<_Struct, _Index, _Change>
     }
     com.tencent.mm.vending.f.a.i("Vending", "Vending.callPrepareVendingData()", new Object[0]);
     Object localObject = prepareVendingDataAsynchronous();
-    this.a.m(1, localObject);
+    this.a.t(1, localObject);
   }
   
-  private boolean c(i<_Struct, _Index> parami, _Index param_Index)
+  private boolean c(Vending.i<_Struct, _Index> parami, _Index param_Index)
   {
     if (invalidIndex(param_Index)) {
       return false;
@@ -303,10 +272,10 @@ public abstract class Vending<_Struct, _Index, _Change>
       return false;
     }
     Vending.c localc = this.h;
-    if (!localc.wtc.get()) {}
+    if (!localc.ANX.get()) {}
     synchronized (localc.b)
     {
-      localc.a.put(param_Index, Vending.c.b.wtf);
+      localc.a.put(param_Index, Vending.c.b.AOa);
       localc.e.sendMessageAtFrontOfQueue(localc.e.obtainMessage(0, param_Index));
       requestIndexImpl(parami, param_Index);
       return true;
@@ -320,15 +289,15 @@ public abstract class Vending<_Struct, _Index, _Change>
   
   public com.tencent.mm.vending.b.b<Vending.a> addVendingDataChangedCallback(Vending.a parama)
   {
-    return this.n.aj(parama);
+    return this.n.at(parama);
   }
   
   public com.tencent.mm.vending.b.b<Vending.b> addVendingDataResolvedCallback(Vending.b paramb)
   {
-    return this.o.aj(paramb);
+    return this.o.at(paramb);
   }
   
-  public abstract void applyChangeSynchronized(_Change param_Change);
+  protected abstract void applyChangeSynchronized(_Change param_Change);
   
   public final void dead()
   {
@@ -337,12 +306,12 @@ public abstract class Vending<_Struct, _Index, _Change>
     this.g.set(true);
     this.f.removeCallbacksAndMessages(null);
     this.e.removeCallbacksAndMessages(null);
-    this.h.wtc.set(true);
-    this.h.cKS();
+    this.h.ANX.set(true);
+    this.h.dQi();
     this.f.sendMessage(this.f.obtainMessage(2));
   }
   
-  public Vending<_Struct, _Index, _Change>.d defer(_Index param_Index)
+  protected Vending<_Struct, _Index, _Change>.d defer(_Index param_Index)
   {
     looperCheckForVending();
     if (!this.q)
@@ -356,7 +325,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     return param_Index;
   }
   
-  public abstract void destroyAsynchronous();
+  protected abstract void destroyAsynchronous();
   
   public void freezeDataChange()
   {
@@ -375,15 +344,15 @@ public abstract class Vending<_Struct, _Index, _Change>
     return a(param_Index);
   }
   
-  protected i<_Struct, _Index> getLock(_Index param_Index)
+  protected Vending.i<_Struct, _Index> getLock(_Index param_Index)
   {
     synchronized (this.i)
     {
-      i locali2 = (i)this.p.get(param_Index);
-      i locali1 = locali2;
+      Vending.i locali2 = (Vending.i)this.p.get(param_Index);
+      Vending.i locali1 = locali2;
       if (locali2 == null)
       {
-        locali1 = new i();
+        locali1 = new Vending.i();
         this.p.put(param_Index, locali1);
       }
       return locali1;
@@ -417,7 +386,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     }
   }
   
-  public void looperCheckForVending()
+  protected void looperCheckForVending()
   {
     if (Looper.myLooper() != this.d) {
       throw new IllegalAccessError("Call from wrong looper");
@@ -448,16 +417,16 @@ public abstract class Vending<_Struct, _Index, _Change>
     return param_Index.b;
   }
   
-  protected i<_Struct, _Index> peekLock(_Index param_Index)
+  protected Vending.i<_Struct, _Index> peekLock(_Index param_Index)
   {
     synchronized (this.i)
     {
-      param_Index = (i)this.p.get(param_Index);
+      param_Index = (Vending.i)this.p.get(param_Index);
       return param_Index;
     }
   }
   
-  public abstract _Change prepareVendingDataAsynchronous();
+  protected abstract _Change prepareVendingDataAsynchronous();
   
   public void removeVendingDataChangedCallback(Vending.a parama)
   {
@@ -479,9 +448,9 @@ public abstract class Vending<_Struct, _Index, _Change>
     a(param_Index, true);
   }
   
-  protected void requestIndexImpl(i<_Struct, _Index> parami, _Index param_Index) {}
+  protected void requestIndexImpl(Vending.i<_Struct, _Index> parami, _Index param_Index) {}
   
-  public abstract _Struct resolveAsynchronous(_Index param_Index);
+  protected abstract _Struct resolveAsynchronous(_Index param_Index);
   
   public void resolvedClear()
   {
@@ -489,7 +458,7 @@ public abstract class Vending<_Struct, _Index, _Change>
     if (this.g.get()) {
       return;
     }
-    this.a.m(3, null);
+    this.a.t(3, null);
   }
   
   protected void synchronizing(int paramInt, Object paramObject) {}
@@ -509,18 +478,6 @@ public abstract class Vending<_Struct, _Index, _Change>
       }
       return;
     }
-  }
-  
-  static final class i<_Struct, _Index>
-  {
-    _Index a;
-    _Struct b;
-    byte[] c = new byte[0];
-    boolean d = false;
-    boolean e = false;
-    boolean f = false;
-    boolean g = false;
-    boolean h = false;
   }
 }
 

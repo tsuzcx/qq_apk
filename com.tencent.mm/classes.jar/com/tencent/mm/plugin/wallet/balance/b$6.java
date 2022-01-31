@@ -1,50 +1,48 @@
 package com.tencent.mm.plugin.wallet.balance;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet.pay.a.e.j;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.p;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.c;
+import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 
 final class b$6
-  extends com.tencent.mm.wallet_core.d.g
+  extends g
 {
   b$6(b paramb, MMActivity paramMMActivity, i parami)
   {
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt1 == 0)
+    AppMethodBeat.i(45210);
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramm instanceof j)))
     {
-      bool1 = bool2;
-      if (paramInt2 == 0)
-      {
-        bool1 = bool2;
-        if ((paramm instanceof com.tencent.mm.plugin.wallet.pay.a.e.g))
-        {
-          paramString = (com.tencent.mm.plugin.wallet.pay.a.e.g)paramm;
-          if (paramString.qno) {
-            b.C(this.qfj).putParcelable("key_orders", paramString.qmc);
-          }
-          this.qfj.a(this.gfb, 0, b.D(this.qfj));
-          bool1 = true;
-        }
+      paramString = (j)paramm;
+      if (paramString.isPaySuccess) {
+        b.D(this.tLW).putParcelable("key_orders", paramString.tVr);
       }
+      this.tLW.a(this.hwZ, 0, b.E(this.tLW));
+      AppMethodBeat.o(45210);
+      return true;
     }
-    return bool1;
+    AppMethodBeat.o(45210);
+    return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
-    paramVarArgs = (p)paramVarArgs[0];
-    Orders localOrders = (Orders)b.E(this.qfj).getParcelable("key_orders");
-    this.wBd.a(new com.tencent.mm.plugin.wallet.pay.a.e.g(paramVarArgs, localOrders), true, 1);
+    AppMethodBeat.i(45211);
+    paramVarArgs = (u)paramVarArgs[0];
+    Orders localOrders = (Orders)b.F(this.tLW).getParcelable("key_orders");
+    this.AXB.a(new j(paramVarArgs, localOrders), true, 1);
+    AppMethodBeat.o(45211);
     return true;
   }
 }

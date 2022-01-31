@@ -1,23 +1,30 @@
 package com.tencent.mm.plugin.wallet_core;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.plugin.wallet_core.a.a;
-import com.tencent.mm.plugin.wallet_core.model.o;
+import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
-    return new a();
+    AppMethodBeat.i(46465);
+    a locala = new a();
+    AppMethodBeat.o(46465);
+    return locala;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new o();
+    AppMethodBeat.i(46466);
+    t localt = new t();
+    AppMethodBeat.o(46466);
+    return localt;
   }
   
   public b getContactWidgetFactory()

@@ -8,13 +8,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.order.model.MallOrderDetailObject.HelpCenter;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.d;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,93 +19,107 @@ import java.util.List;
 public final class j
   extends Preference
 {
-  List<MallOrderDetailObject.HelpCenter> mOA = new LinkedList();
-  View.OnClickListener mOnClickListener = null;
-  String mRH;
-  View.OnClickListener mRI = null;
-  private View mView = null;
+  View.OnClickListener mOnClickListener;
+  private View mView;
+  List<MallOrderDetailObject.HelpCenter> poQ;
+  String prU;
+  View.OnClickListener prV;
   
   public j(Context paramContext)
   {
     super(paramContext);
-    setLayoutResource(a.g.mall_order_multi_button_pref);
+    AppMethodBeat.i(43924);
+    this.mView = null;
+    this.mOnClickListener = null;
+    this.prV = null;
+    this.poQ = new LinkedList();
+    setLayoutResource(2130970104);
+    AppMethodBeat.o(43924);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(43925);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
-    return this.mView;
+    paramView = this.mView;
+    AppMethodBeat.o(43925);
+    return paramView;
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(43926);
     super.onBindView(paramView);
-    paramView = (LinearLayout)paramView.findViewById(a.f.mall_order_multi_button);
+    paramView = (LinearLayout)paramView.findViewById(2131826012);
     paramView.removeAllViews();
-    if (this.mOA == null) {
+    if (this.poQ == null)
+    {
+      AppMethodBeat.o(43926);
       return;
     }
     int i;
-    if ((!bk.bl(this.mRH)) && (this.mRI != null))
+    if ((!bo.isNullOrNil(this.prU)) && (this.prV != null))
     {
-      i = this.mOA.size();
+      i = this.poQ.size();
       if (i != 0) {
-        break label449;
+        break label455;
       }
       i = -1;
     }
-    label449:
+    label455:
     for (;;)
     {
       int j = 0;
       int k = 0;
+      Object localObject;
       for (;;)
       {
-        if (j < this.mOA.size())
+        if (j < this.poQ.size())
         {
-          localObject = (MallOrderDetailObject.HelpCenter)this.mOA.get(j);
+          localObject = (MallOrderDetailObject.HelpCenter)this.poQ.get(j);
           TextView localTextView = new TextView(this.mContext);
-          localTextView.setTextColor(this.mContext.getResources().getColor(a.c.black));
-          localTextView.setTextSize(0, a.aa(this.mContext, a.d.NormalTextSize));
+          localTextView.setTextColor(this.mContext.getResources().getColor(2131689763));
+          localTextView.setTextSize(0, a.ao(this.mContext, 2131427809));
           localTextView.setIncludeFontPadding(false);
           localTextView.setText(((MallOrderDetailObject.HelpCenter)localObject).name);
           localTextView.setTag(localObject);
           localTextView.setGravity(17);
           localTextView.setOnClickListener(this.mOnClickListener);
           if (k == i) {
-            localTextView.setTextColor(this.mContext.getResources().getColor(a.c.green_text_color));
+            localTextView.setTextColor(this.mContext.getResources().getColor(2131690139));
           }
           paramView.addView(localTextView, new LinearLayout.LayoutParams(0, -2, 1.0F));
           if (k < i)
           {
             localObject = new View(this.mContext);
-            ((View)localObject).setBackgroundColor(this.mContext.getResources().getColor(a.c.small_line_color));
-            paramView.addView((View)localObject, new LinearLayout.LayoutParams(a.aa(this.mContext, a.d.DividerSmallHeight), -1));
+            ((View)localObject).setBackgroundColor(this.mContext.getResources().getColor(2131690471));
+            paramView.addView((View)localObject, new LinearLayout.LayoutParams(a.ao(this.mContext, 2131427577), -1));
           }
           k += 1;
           j += 1;
           continue;
-          i = this.mOA.size() - 1;
+          i = this.poQ.size() - 1;
           break;
         }
       }
-      if ((bk.bl(this.mRH)) || (this.mRI == null)) {
-        break;
+      if ((!bo.isNullOrNil(this.prU)) && (this.prV != null))
+      {
+        localObject = new TextView(this.mContext);
+        ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131689763));
+        ((TextView)localObject).setTextSize(0, a.ao(this.mContext, 2131427809));
+        ((TextView)localObject).setIncludeFontPadding(false);
+        ((TextView)localObject).setText(this.prU);
+        ((TextView)localObject).setGravity(17);
+        ((TextView)localObject).setOnClickListener(this.prV);
+        if (k == i) {
+          ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131690139));
+        }
+        paramView.addView((View)localObject, new LinearLayout.LayoutParams(0, -2, 1.0F));
       }
-      Object localObject = new TextView(this.mContext);
-      ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(a.c.black));
-      ((TextView)localObject).setTextSize(0, a.aa(this.mContext, a.d.NormalTextSize));
-      ((TextView)localObject).setIncludeFontPadding(false);
-      ((TextView)localObject).setText(this.mRH);
-      ((TextView)localObject).setGravity(17);
-      ((TextView)localObject).setOnClickListener(this.mRI);
-      if (k == i) {
-        ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(a.c.green_text_color));
-      }
-      paramView.addView((View)localObject, new LinearLayout.LayoutParams(0, -2, 1.0F));
+      AppMethodBeat.o(43926);
       return;
     }
   }

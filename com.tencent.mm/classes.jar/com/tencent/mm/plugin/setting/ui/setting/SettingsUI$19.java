@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bv;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.model.bx;
+import com.tencent.mm.model.r;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class SettingsUI$19
   implements f
@@ -13,16 +14,18 @@ final class SettingsUI$19
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    paramString = at.dVC.L("login_weixin_username", "");
-    if (bv.dXJ.iT(paramString)) {
-      bv.dXJ.l(paramString, "last_logout_no_pwd_ticket", "");
+    AppMethodBeat.i(127581);
+    paramString = r.Zn();
+    if (bx.fnO.pH(paramString)) {
+      bx.fnO.n(paramString, "last_logout_no_pwd_ticket", "");
     }
-    ai.d(new SettingsUI.19.1(this));
+    al.d(new SettingsUI.19.1(this));
+    AppMethodBeat.o(127581);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsUI.19
  * JD-Core Version:    0.7.0.1
  */

@@ -40,7 +40,7 @@ public abstract interface l
       return true;
     }
     
-    private static final class a
+    static final class a
       implements l
     {
       private IBinder mRemote;
@@ -54,77 +54,83 @@ public abstract interface l
       public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, r paramr, byte[] paramArrayOfByte)
       {
         // Byte code:
-        //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   3: astore 7
-        //   5: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   8: astore 8
-        //   10: aload 7
-        //   12: ldc 28
-        //   14: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   17: aload 7
-        //   19: iload_1
-        //   20: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-        //   23: aload 7
-        //   25: iload_2
-        //   26: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-        //   29: aload 7
-        //   31: iload_3
-        //   32: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-        //   35: aload 7
-        //   37: aload 4
-        //   39: invokevirtual 39	android/os/Parcel:writeString	(Ljava/lang/String;)V
-        //   42: aload 5
-        //   44: ifnull +58 -> 102
+        //   0: ldc 21
+        //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   5: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   8: astore 7
+        //   10: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   13: astore 8
+        //   15: aload 7
+        //   17: ldc 35
+        //   19: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   22: aload 7
+        //   24: iload_1
+        //   25: invokevirtual 42	android/os/Parcel:writeInt	(I)V
+        //   28: aload 7
+        //   30: iload_2
+        //   31: invokevirtual 42	android/os/Parcel:writeInt	(I)V
+        //   34: aload 7
+        //   36: iload_3
+        //   37: invokevirtual 42	android/os/Parcel:writeInt	(I)V
+        //   40: aload 7
+        //   42: aload 4
+        //   44: invokevirtual 45	android/os/Parcel:writeString	(Ljava/lang/String;)V
         //   47: aload 5
-        //   49: invokeinterface 45 1 0
-        //   54: astore 4
-        //   56: aload 7
-        //   58: aload 4
-        //   60: invokevirtual 48	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
-        //   63: aload 7
-        //   65: aload 6
-        //   67: invokevirtual 52	android/os/Parcel:writeByteArray	([B)V
-        //   70: aload_0
-        //   71: getfield 18	com/tencent/mm/network/l$a$a:mRemote	Landroid/os/IBinder;
-        //   74: iconst_1
-        //   75: aload 7
-        //   77: aload 8
-        //   79: iconst_0
-        //   80: invokeinterface 58 5 0
-        //   85: pop
-        //   86: aload 8
-        //   88: invokevirtual 61	android/os/Parcel:readException	()V
+        //   49: ifnull +63 -> 112
+        //   52: aload 5
+        //   54: invokeinterface 51 1 0
+        //   59: astore 4
+        //   61: aload 7
+        //   63: aload 4
+        //   65: invokevirtual 54	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+        //   68: aload 7
+        //   70: aload 6
+        //   72: invokevirtual 58	android/os/Parcel:writeByteArray	([B)V
+        //   75: aload_0
+        //   76: getfield 18	com/tencent/mm/network/l$a$a:mRemote	Landroid/os/IBinder;
+        //   79: iconst_1
+        //   80: aload 7
+        //   82: aload 8
+        //   84: iconst_0
+        //   85: invokeinterface 64 5 0
+        //   90: pop
         //   91: aload 8
-        //   93: invokevirtual 64	android/os/Parcel:recycle	()V
-        //   96: aload 7
-        //   98: invokevirtual 64	android/os/Parcel:recycle	()V
-        //   101: return
-        //   102: aconst_null
-        //   103: astore 4
-        //   105: goto -49 -> 56
-        //   108: astore 4
-        //   110: aload 8
-        //   112: invokevirtual 64	android/os/Parcel:recycle	()V
-        //   115: aload 7
-        //   117: invokevirtual 64	android/os/Parcel:recycle	()V
-        //   120: aload 4
-        //   122: athrow
+        //   93: invokevirtual 67	android/os/Parcel:readException	()V
+        //   96: aload 8
+        //   98: invokevirtual 70	android/os/Parcel:recycle	()V
+        //   101: aload 7
+        //   103: invokevirtual 70	android/os/Parcel:recycle	()V
+        //   106: ldc 21
+        //   108: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   111: return
+        //   112: aconst_null
+        //   113: astore 4
+        //   115: goto -54 -> 61
+        //   118: astore 4
+        //   120: aload 8
+        //   122: invokevirtual 70	android/os/Parcel:recycle	()V
+        //   125: aload 7
+        //   127: invokevirtual 70	android/os/Parcel:recycle	()V
+        //   130: ldc 21
+        //   132: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   135: aload 4
+        //   137: athrow
         // Local variable table:
         //   start	length	slot	name	signature
-        //   0	123	0	this	a
-        //   0	123	1	paramInt1	int
-        //   0	123	2	paramInt2	int
-        //   0	123	3	paramInt3	int
-        //   0	123	4	paramString	String
-        //   0	123	5	paramr	r
-        //   0	123	6	paramArrayOfByte	byte[]
-        //   3	113	7	localParcel1	Parcel
-        //   8	103	8	localParcel2	Parcel
+        //   0	138	0	this	a
+        //   0	138	1	paramInt1	int
+        //   0	138	2	paramInt2	int
+        //   0	138	3	paramInt3	int
+        //   0	138	4	paramString	String
+        //   0	138	5	paramr	r
+        //   0	138	6	paramArrayOfByte	byte[]
+        //   8	118	7	localParcel1	Parcel
+        //   13	108	8	localParcel2	Parcel
         // Exception table:
         //   from	to	target	type
-        //   10	42	108	finally
-        //   47	56	108	finally
-        //   56	91	108	finally
+        //   15	47	118	finally
+        //   52	61	118	finally
+        //   61	96	118	finally
       }
       
       public final IBinder asBinder()

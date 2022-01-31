@@ -1,9 +1,12 @@
 package com.tencent.mm.ui.transmit;
 
-import com.tencent.mm.as.i;
-import com.tencent.mm.as.m.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.i;
+import com.tencent.mm.at.m.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bi;
 
 final class MsgRetransmitUI$9
@@ -13,18 +16,21 @@ final class MsgRetransmitUI$9
   
   public final void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    y.i("MicroMsg.MsgRetransmitUI", "cdntra  NetSceneUploadMsgImgForCdn ret:[%d,%d]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(35071);
+    ab.i("MicroMsg.MsgRetransmitUI", "cdntra  NetSceneUploadMsgImgForCdn ret:[%d,%d]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      i.iL((int)this.eps);
-      i.iK((int)this.eps);
+      i.lz((int)this.fFS);
+      i.ly((int)this.fFS);
+      AppMethodBeat.o(35071);
       return;
     }
-    bi localbi = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().fd(this.vjf);
+    bi localbi = ((j)g.E(j.class)).bPQ().kB(this.zyf);
     localbi.setStatus(2);
-    localbi.bf(paramLong);
-    ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().a(this.vjf, localbi);
-    i.iK((int)this.eps);
+    localbi.fP(paramLong);
+    ((j)g.E(j.class)).bPQ().a(this.zyf, localbi);
+    i.ly((int)this.fFS);
+    AppMethodBeat.o(35071);
   }
 }
 

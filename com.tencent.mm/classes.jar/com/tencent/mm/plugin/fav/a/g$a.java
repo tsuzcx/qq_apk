@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fav.a;
 
 abstract interface g$a
 {
-  public abstract void tn(String paramString);
+  public abstract void log(String paramString);
 }
 
 

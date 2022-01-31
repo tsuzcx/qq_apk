@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsTimeLineUI$30
-  implements TestTimeForSns.a
+  implements MenuItem.OnMenuItemClickListener
 {
   SnsTimeLineUI$30(SnsTimeLineUI paramSnsTimeLineUI) {}
   
-  public final void aXH()
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    y.i("MicroMsg.SnsTimeLineUI", "sns has drawed");
-    SnsTimeLineUI.z(this.pfC).post(new SnsTimeLineUI.30.1(this));
+    AppMethodBeat.i(155739);
+    SnsTimeLineUI.I(this.rYv);
+    AppMethodBeat.o(155739);
+    return true;
   }
 }
 

@@ -1,132 +1,161 @@
 package com.tencent.mm.plugin.qmessage.a;
 
-import com.tencent.mm.ah.e.d;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bu;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.d;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.bw;
 import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.qmessage.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.be;
 import java.util.HashMap;
 
 public final class g
-  implements ar
+  implements at
 {
-  private static HashMap<Integer, h.d> dgp;
-  private e ncB;
-  private f ncC = new f();
-  private a ncD = new a();
-  private b ncE = new b();
+  private static HashMap<Integer, h.d> baseDBFactories;
+  private e pHT;
+  private f pHU;
+  private a pHV;
+  private b pHW;
   
   static
   {
+    AppMethodBeat.i(24095);
     HashMap localHashMap = new HashMap();
-    dgp = localHashMap;
+    baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("QCONTACT_TABLE".hashCode()), new g.1());
+    AppMethodBeat.o(24095);
   }
   
-  private static g btj()
+  public g()
   {
-    au.Hq();
-    g localg2 = (g)bu.iR("plugin.qmessage");
+    AppMethodBeat.i(24087);
+    this.pHU = new f();
+    this.pHV = new a();
+    this.pHW = new b();
+    AppMethodBeat.o(24087);
+  }
+  
+  private static g cdq()
+  {
+    AppMethodBeat.i(24088);
+    aw.aat();
+    g localg2 = (g)bw.pF("plugin.qmessage");
     g localg1 = localg2;
     if (localg2 == null)
     {
       localg1 = new g();
-      au.Hq().a("plugin.qmessage", localg1);
+      aw.aat().a("plugin.qmessage", localg1);
     }
+    AppMethodBeat.o(24088);
     return localg1;
   }
   
-  public static e btk()
+  public static e cdr()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (btj().ncB == null)
+    AppMethodBeat.i(24089);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    if (cdq().pHT == null)
     {
-      g localg = btj();
-      au.Hx();
-      localg.ncB = new e(c.Dv());
+      localObject = cdq();
+      aw.aaz();
+      ((g)localObject).pHT = new e(c.Rq());
     }
-    return btj().ncB;
+    Object localObject = cdq().pHT;
+    AppMethodBeat.o(24089);
+    return localObject;
   }
   
-  public static void btl()
+  public static void cds()
   {
-    au.Hx();
-    if (c.FB().abv("qmessage") == null)
+    AppMethodBeat.i(24092);
+    aw.aaz();
+    if (c.YF().arH("qmessage") == null)
     {
       localObject = new ak();
       ((ak)localObject).setUsername("qmessage");
       ((ak)localObject).setContent("");
-      ((ak)localObject).ba(bk.UY());
-      ((ak)localObject).fA(0);
-      ((ak)localObject).fy(0);
-      au.Hx();
-      c.FB().d((ak)localObject);
+      ((ak)localObject).fK(bo.aoy());
+      ((ak)localObject).hL(0);
+      ((ak)localObject).hJ(0);
+      aw.aaz();
+      c.YF().d((ak)localObject);
+      AppMethodBeat.o(24092);
       return;
     }
-    au.Hx();
-    Object localObject = c.Fy().HA("qmessage");
+    aw.aaz();
+    Object localObject = c.YC().Tm("qmessage");
     ak localak = new ak();
     localak.setUsername("qmessage");
     if (localObject == null) {}
-    for (localObject = "";; localObject = ((cs)localObject).field_content)
+    for (localObject = "";; localObject = ((dd)localObject).field_content)
     {
       localak.setContent((String)localObject);
-      localak.ba(bk.UY());
-      localak.fA(0);
-      localak.fy(0);
-      au.Hx();
-      c.FB().a(localak, "qmessage");
+      localak.fK(bo.aoy());
+      localak.hL(0);
+      localak.hJ(0);
+      aw.aaz();
+      c.YF().a(localak, "qmessage");
+      AppMethodBeat.o(24092);
       return;
     }
   }
   
-  public static void btm()
+  public static void cdt()
   {
-    bd.HO();
-    au.Hx();
-    c.FB().HH("@qqim");
-    au.Hx();
-    c.FB().abu("qmessage");
+    AppMethodBeat.i(24093);
+    bf.aaN();
+    aw.aaz();
+    c.YF().arG("@qqim");
+    aw.aaz();
+    c.YF().arF("qmessage");
+    AppMethodBeat.o(24093);
   }
   
-  public final void bh(boolean paramBoolean)
+  public final void clearPluginData(int paramInt)
   {
-    e.d.a(Integer.valueOf(36), this.ncC);
-    e.d.a(Integer.valueOf(39), this.ncC);
-    com.tencent.mm.sdk.b.a.udP.c(this.ncD);
-    com.tencent.mm.sdk.b.a.udP.c(this.ncE);
-  }
-  
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt)
-  {
-    y.d("MicroMsg.SubCoreQMsg", "clear plugin");
+    AppMethodBeat.i(24091);
+    ab.d("MicroMsg.SubCoreQMsg", "clear plugin");
     if ((paramInt & 0x20) != 0) {
-      btm();
+      cdt();
     }
+    AppMethodBeat.o(24091);
+  }
+  
+  public final HashMap<Integer, h.d> getBaseDBFactories()
+  {
+    return baseDBFactories;
+  }
+  
+  public final void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(24094);
+    e.d.a(Integer.valueOf(36), this.pHU);
+    e.d.a(Integer.valueOf(39), this.pHU);
+    com.tencent.mm.sdk.b.a.ymk.c(this.pHV);
+    com.tencent.mm.sdk.b.a.ymk.c(this.pHW);
+    AppMethodBeat.o(24094);
   }
   
   public final void onAccountRelease()
   {
-    e.d.b(Integer.valueOf(36), this.ncC);
-    e.d.b(Integer.valueOf(39), this.ncC);
-    com.tencent.mm.sdk.b.a.udP.d(this.ncD);
-    com.tencent.mm.sdk.b.a.udP.d(this.ncE);
+    AppMethodBeat.i(24090);
+    e.d.b(Integer.valueOf(36), this.pHU);
+    e.d.b(Integer.valueOf(39), this.pHU);
+    com.tencent.mm.sdk.b.a.ymk.d(this.pHV);
+    com.tencent.mm.sdk.b.a.ymk.d(this.pHW);
+    AppMethodBeat.o(24090);
   }
   
-  public final HashMap<Integer, h.d> xe()
-  {
-    return dgp;
-  }
+  public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 

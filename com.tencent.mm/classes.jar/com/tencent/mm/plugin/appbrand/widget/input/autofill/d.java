@@ -1,56 +1,33 @@
 package com.tencent.mm.plugin.appbrand.widget.input.autofill;
 
 import android.widget.EditText;
-import android.widget.ListAdapter;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.widget.input.aa;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.widget.input.ab;
 import com.tencent.mm.plugin.appbrand.widget.input.d.a.a;
 import java.lang.ref.WeakReference;
-import java.util.List;
 
 public final class d
 {
-  public static <Input extends EditText,  extends aa> void a(q paramq, Input paramInput, a.a parama)
+  public static <Input extends EditText,  extends ab> void a(v paramv, Input paramInput, a.a parama)
   {
-    if (!((aa)paramInput).arU()) {
+    AppMethodBeat.i(123904);
+    if (!((ab)paramInput).aQY())
+    {
+      AppMethodBeat.o(123904);
       return;
     }
-    paramq = new WeakReference(paramq);
-    paramq = new d.1(new WeakReference(paramInput), paramq);
-    paramInput = ((aa)paramInput).getAutoFillController();
-    Object localObject = parama.hyg;
-    paramInput.hwQ = new a(paramInput.hwK.getContext(), (List)localObject);
-    paramInput.hwQ.hwD = paramInput.hwO;
-    localObject = paramInput.hwL;
-    a locala = paramInput.hwQ;
-    if (((AutoFillListPopupWindowBase)localObject).mObserver == null)
+    paramv = new WeakReference(paramv);
+    paramv = new d.1(new WeakReference(paramInput), paramv);
+    paramInput = ((ab)paramInput).getAutoFillController();
+    paramInput.s(parama.jqq);
+    paramInput.a(paramv);
+    if ("screen".equalsIgnoreCase(parama.jqp)) {}
+    for (paramv = f.jpv;; paramv = f.jpw)
     {
-      ((AutoFillListPopupWindowBase)localObject).mObserver = new AutoFillListPopupWindowBase.c((AutoFillListPopupWindowBase)localObject, (byte)0);
-      ((AutoFillListPopupWindowBase)localObject).NK = locala;
-      if (((AutoFillListPopupWindowBase)localObject).NK != null) {
-        locala.registerDataSetObserver(((AutoFillListPopupWindowBase)localObject).mObserver);
-      }
-      if (((AutoFillListPopupWindowBase)localObject).hxe != null) {
-        ((AutoFillListPopupWindowBase)localObject).hxe.setAdapter(((AutoFillListPopupWindowBase)localObject).NK);
-      }
-      paramInput.hwO.hwW = paramq;
-      if (!"screen".equalsIgnoreCase(parama.hyf)) {
-        break label220;
-      }
-    }
-    label220:
-    for (paramq = f.hxl;; paramq = f.hxm)
-    {
-      if (paramq != null) {
-        paramInput.hwP = paramq;
-      }
-      paramInput.asy();
+      paramInput.a(paramv);
+      AppMethodBeat.o(123904);
       return;
-      if (((AutoFillListPopupWindowBase)localObject).NK == null) {
-        break;
-      }
-      ((AutoFillListPopupWindowBase)localObject).NK.unregisterDataSetObserver(((AutoFillListPopupWindowBase)localObject).mObserver);
-      break;
     }
   }
 }

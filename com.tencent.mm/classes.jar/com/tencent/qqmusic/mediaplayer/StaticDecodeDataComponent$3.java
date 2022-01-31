@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class StaticDecodeDataComponent$3
   implements Runnable
 {
@@ -7,7 +9,9 @@ class StaticDecodeDataComponent$3
   
   public void run()
   {
+    AppMethodBeat.i(104482);
     this.this$0.mCallback.playerStopped(this.this$0.mCorePlayer);
+    AppMethodBeat.o(104482);
   }
 }
 

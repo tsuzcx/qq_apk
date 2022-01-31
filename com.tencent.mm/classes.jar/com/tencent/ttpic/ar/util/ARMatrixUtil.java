@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.hardware.SensorManager;
 import android.opengl.Matrix;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.ar.sensor.orientationProvider.ImprovedOrientationSensor2Provider;
 import com.tencent.ttpic.ar.sensor.orientationProvider.OrientationProvider;
 import com.tencent.ttpic.ar.sensor.orientationProvider.SimpleOrientationSensorProvider;
@@ -13,7 +14,7 @@ import java.util.HashSet;
 
 public class ARMatrixUtil
 {
-  private static String[] blackList = { "XIAOMI_Redmi_Note_2" };
+  private static String[] blackList;
   private static HashSet<String> blackSet;
   public static float cameraRightX;
   public static float cameraRightY;
@@ -27,11 +28,11 @@ public class ARMatrixUtil
   private static boolean canUseImprovedSensorProvider;
   public static float far;
   public static boolean isFrontCamera;
-  private static boolean isInBlackList = false;
+  private static boolean isInBlackList;
   private static boolean isProjectionMatInitialized;
   private static float[] mMVPMatrix;
-  private static float[] mProjectionMatrix = new float[16];
-  private static float[] mViewMatrix = new float[16];
+  private static float[] mProjectionMatrix;
+  private static float[] mViewMatrix;
   public static float near;
   public static float nearRectHeight;
   public static float nearRectWidth;
@@ -41,13 +42,20 @@ public class ARMatrixUtil
   
   static
   {
+    AppMethodBeat.i(81763);
+    mProjectionMatrix = new float[16];
+    mViewMatrix = new float[16];
     mMVPMatrix = new float[16];
     canUseImprovedSensorProvider = true;
     blackSet = new HashSet();
+    blackList = new String[] { "XIAOMI_Redmi_Note_2" };
+    isInBlackList = false;
+    AppMethodBeat.o(81763);
   }
   
   public static float[] calProjectionMatrix(float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(81750);
     if (!isProjectionMatInitialized)
     {
       nearRectWidth = 56.25F;
@@ -62,38 +70,52 @@ public class ARMatrixUtil
       Matrix.frustumM(mProjectionMatrix, 0, f1, f2, f3, f4, near, far);
       isProjectionMatInitialized = true;
     }
-    return mProjectionMatrix;
+    float[] arrayOfFloat = mProjectionMatrix;
+    AppMethodBeat.o(81750);
+    return arrayOfFloat;
   }
   
   public static float[] calViewMatrix()
   {
+    AppMethodBeat.i(81751);
     Matrix.setLookAtM(mViewMatrix, 0, 0.0F, 0.0F, 0.0F, cameraX, cameraY, cameraZ, cameraUpX, cameraUpY, cameraUpZ);
-    return mViewMatrix;
+    float[] arrayOfFloat = mViewMatrix;
+    AppMethodBeat.o(81751);
+    return arrayOfFloat;
   }
   
   private static void changeToSimpleOrientationProvider()
   {
+    AppMethodBeat.i(81756);
     orientationProvider.stop();
     SimpleOrientationSensorProvider localSimpleOrientationSensorProvider = new SimpleOrientationSensorProvider((SensorManager)VideoGlobalContext.getContext().getSystemService("sensor"));
     orientationProvider = localSimpleOrientationSensorProvider;
     localSimpleOrientationSensorProvider.start();
+    AppMethodBeat.o(81756);
   }
   
   private static float cos(float paramFloat)
   {
-    return (float)Math.cos(paramFloat);
+    AppMethodBeat.i(81759);
+    paramFloat = (float)Math.cos(paramFloat);
+    AppMethodBeat.o(81759);
+    return paramFloat;
   }
   
   public static float[] getMovedMVPMatrix(float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(81749);
     calProjectionMatrix(paramFloat1, paramFloat2);
     calViewMatrix();
     Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
-    return mMVPMatrix;
+    float[] arrayOfFloat = mMVPMatrix;
+    AppMethodBeat.o(81749);
+    return arrayOfFloat;
   }
   
   private static void getRotation44(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
+    AppMethodBeat.i(81757);
     float[] arrayOfFloat = new float[3];
     int i = 0;
     while (i < 3)
@@ -111,25 +133,33 @@ public class ARMatrixUtil
     paramArrayOfFloat2[9] = ((sin(arrayOfFloat[0]) * sin(arrayOfFloat[1]) * cos(arrayOfFloat[2]) - cos(arrayOfFloat[0]) * sin(arrayOfFloat[2])) * 1.0F);
     paramArrayOfFloat2[10] = (cos(arrayOfFloat[1]) * cos(arrayOfFloat[2]) * 1.0F);
     paramArrayOfFloat2[15] = 1.0F;
+    AppMethodBeat.o(81757);
   }
   
   private static boolean hasGyroscope()
   {
-    return VideoGlobalContext.getContext().getPackageManager().hasSystemFeature("android.hardware.sensor.gyroscope");
+    AppMethodBeat.i(81760);
+    boolean bool = VideoGlobalContext.getContext().getPackageManager().hasSystemFeature("android.hardware.sensor.gyroscope");
+    AppMethodBeat.o(81760);
+    return bool;
   }
   
   private static boolean isSensorDataNaN(float[] paramArrayOfFloat)
   {
-    boolean bool = false;
-    if ((Float.isNaN(paramArrayOfFloat[0])) || (Float.isNaN(paramArrayOfFloat[1])) || (Float.isNaN(paramArrayOfFloat[2]))) {
-      bool = true;
+    AppMethodBeat.i(81755);
+    if ((Float.isNaN(paramArrayOfFloat[0])) || (Float.isNaN(paramArrayOfFloat[1])) || (Float.isNaN(paramArrayOfFloat[2])))
+    {
+      AppMethodBeat.o(81755);
+      return true;
     }
-    return bool;
+    AppMethodBeat.o(81755);
+    return false;
   }
   
   public static void setIsInBlackList(String paramString)
   {
     boolean bool2 = false;
+    AppMethodBeat.i(81762);
     String[] arrayOfString = blackList;
     int j = arrayOfString.length;
     int i = 0;
@@ -148,10 +178,12 @@ public class ARMatrixUtil
       }
     }
     isInBlackList = bool1;
+    AppMethodBeat.o(81762);
   }
   
   public static void setOrientationVector(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
+    AppMethodBeat.i(81748);
     float f = paramFloat1;
     if (isFrontCamera) {
       f = -paramFloat1;
@@ -192,33 +224,39 @@ public class ARMatrixUtil
     cameraUpX = arrayOfFloat[0];
     cameraUpY = arrayOfFloat[1];
     cameraUpZ = arrayOfFloat[2];
+    AppMethodBeat.o(81748);
   }
   
   private static float sin(float paramFloat)
   {
-    return (float)Math.sin(paramFloat);
+    AppMethodBeat.i(81758);
+    paramFloat = (float)Math.sin(paramFloat);
+    AppMethodBeat.o(81758);
+    return paramFloat;
   }
   
   public static void startOrientationSensor()
   {
+    AppMethodBeat.i(81752);
     boolean bool;
     if (orientationProvider == null)
     {
       if ((!hasGyroscope()) || (isInBlackList)) {
-        break label58;
+        break label68;
       }
       bool = true;
       canUseImprovedSensorProvider = bool;
       if (!bool) {
-        break label63;
+        break label73;
       }
     }
-    label58:
-    label63:
+    label68:
+    label73:
     for (Object localObject = new ImprovedOrientationSensor2Provider((SensorManager)VideoGlobalContext.getContext().getSystemService("sensor"));; localObject = new SimpleOrientationSensorProvider((SensorManager)VideoGlobalContext.getContext().getSystemService("sensor")))
     {
       orientationProvider = (OrientationProvider)localObject;
       orientationProvider.start();
+      AppMethodBeat.o(81752);
       return;
       bool = false;
       break;
@@ -227,19 +265,23 @@ public class ARMatrixUtil
   
   public static void stopOrientationSensor()
   {
+    AppMethodBeat.i(81753);
     if (orientationProvider != null) {
       orientationProvider.stop();
     }
+    AppMethodBeat.o(81753);
   }
   
   public static void updateOrientation()
   {
+    AppMethodBeat.i(81754);
     float[] arrayOfFloat2 = new float[3];
     orientationProvider.getEulerAngles(arrayOfFloat2);
     if ((canUseImprovedSensorProvider) && (isSensorDataNaN(arrayOfFloat2)))
     {
       changeToSimpleOrientationProvider();
       canUseImprovedSensorProvider = false;
+      AppMethodBeat.o(81754);
       return;
     }
     float[] arrayOfFloat1 = new float[16];
@@ -247,6 +289,7 @@ public class ARMatrixUtil
     arrayOfFloat2 = new float[16];
     Matrix.multiplyMM(arrayOfFloat2, 0, new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F }, 0, arrayOfFloat1, 0);
     setOrientationVector(arrayOfFloat2[4], arrayOfFloat2[6], arrayOfFloat2[5], -arrayOfFloat2[8], -arrayOfFloat2[10], -arrayOfFloat2[9]);
+    AppMethodBeat.o(81754);
   }
   
   public static void updateRenderSize(int paramInt1, int paramInt2)
@@ -263,6 +306,7 @@ public class ARMatrixUtil
   
   private static float[] vectorNormalization(float[] paramArrayOfFloat)
   {
+    AppMethodBeat.i(81761);
     float[] arrayOfFloat = new float[3];
     float f = (float)Math.sqrt(paramArrayOfFloat[0] * paramArrayOfFloat[0] + paramArrayOfFloat[1] * paramArrayOfFloat[1] + paramArrayOfFloat[2] * paramArrayOfFloat[2]);
     if (f > 0.0D)
@@ -271,12 +315,13 @@ public class ARMatrixUtil
       paramArrayOfFloat[1] /= f;
       paramArrayOfFloat[2] /= f;
     }
+    AppMethodBeat.o(81761);
     return arrayOfFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.ttpic.ar.util.ARMatrixUtil
  * JD-Core Version:    0.7.0.1
  */

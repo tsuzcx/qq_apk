@@ -1,50 +1,26 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
-import android.animation.ValueAnimator;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FTSVoiceInputLayoutImpl$2
-  implements View.OnTouchListener
+  implements View.OnLongClickListener
 {
   FTSVoiceInputLayoutImpl$2(FTSVoiceInputLayoutImpl paramFTSVoiceInputLayoutImpl) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final boolean onLongClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      return false;
-    case 0: 
-      FTSVoiceInputLayoutImpl.a(this.kFs, false);
-      FTSVoiceInputLayoutImpl.a(this.kFs, bk.UZ());
-      y.d("MicroMsg.VoiceInputLayoutImp", "btn onTouch ACTION_DOWN currentState %s longClickStartTime %s", new Object[] { Integer.valueOf(this.kFs.kFU), Long.valueOf(FTSVoiceInputLayoutImpl.b(this.kFs)) });
-      paramView = FTSVoiceInputLayoutImpl.a(this.kFs);
-      y.d("MicroMsg.VoiceInputDrawable", "readyPressState %s", new Object[] { Integer.valueOf(paramView.kFU) });
-      paramView.kFU = 6;
-      paramView.hsF.cancel();
-      paramView.kFN = 0.0F;
-      paramView.invalidateSelf();
-      this.kFs.y(false, false);
-      FTSVoiceInputLayoutImpl.c(this.kFs);
-      return false;
-    }
-    y.d("MicroMsg.VoiceInputLayoutImp", "btn onTouch ACTION_UP currentState %s longClickDown %s", new Object[] { Integer.valueOf(this.kFs.kFU), Boolean.valueOf(FTSVoiceInputLayoutImpl.d(this.kFs)) });
-    if (FTSVoiceInputLayoutImpl.d(this.kFs))
-    {
-      this.kFs.y(true, false);
-      FTSVoiceInputLayoutImpl.a(this.kFs, false);
-      FTSVoiceInputLayoutImpl.a(this.kFs, 0L);
-    }
-    for (;;)
-    {
-      FTSVoiceInputLayoutImpl.e(this.kFs);
-      return false;
-      this.kFs.y(false, true);
-    }
+    AppMethodBeat.i(62182);
+    ab.d("MicroMsg.FTSVoiceInputLayoutImpl", "btn onLongClickListener currentState %s", new Object[] { Integer.valueOf(this.ncg.currentState) });
+    FTSVoiceInputLayoutImpl.a(this.ncg, true);
+    paramView = FTSVoiceInputLayoutImpl.b(this.ncg);
+    ab.d("MicroMsg.FTSVoiceInputDrawable", "longClickState %s", new Object[] { Integer.valueOf(paramView.currentState) });
+    paramView.currentState = 7;
+    paramView.invalidateSelf();
+    AppMethodBeat.o(62182);
+    return true;
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.sport.ui;
 
 final class SportChartView$b
 {
-  int ghE;
-  String nRs = "";
-  boolean puj;
+  int hAu;
+  String qFq = "";
+  boolean sqz;
   long timestamp;
   float x;
   float y;
@@ -13,7 +13,7 @@ final class SportChartView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.ui.SportChartView.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.widget.ImageView;
 final class WelabAppInfoUI$b
   extends RecyclerView.v
 {
-  public ImageView rEM;
+  public ImageView vvv;
   
   public WelabAppInfoUI$b(WelabAppInfoUI paramWelabAppInfoUI, View paramView)
   {

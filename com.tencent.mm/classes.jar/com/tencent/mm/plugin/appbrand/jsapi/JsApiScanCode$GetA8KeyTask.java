@@ -2,50 +2,66 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.ah.w;
-import com.tencent.mm.modelsimple.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.w;
+import com.tencent.mm.modelsimple.j;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 
 public class JsApiScanCode$GetA8KeyTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<GetA8KeyTask> CREATOR = new JsApiScanCode.GetA8KeyTask.2();
+  public static final Parcelable.Creator<GetA8KeyTask> CREATOR;
   public int actionCode;
-  public int bIj;
-  public int bIk;
-  public String ghx;
-  public String ghy;
-  public Runnable ghz;
+  public int cpE;
+  public int cpF;
+  public String hzI;
+  public String hzJ;
+  public Runnable hzK;
   
-  public final void Zu()
+  static
   {
-    h localh = new h(this.ghx, 36, this.bIj, this.bIk, null, (int)System.currentTimeMillis(), new byte[0]);
-    w.a(localh.dmK, new JsApiScanCode.GetA8KeyTask.1(this, localh), true);
+    AppMethodBeat.i(130565);
+    CREATOR = new JsApiScanCode.GetA8KeyTask.2();
+    AppMethodBeat.o(130565);
   }
   
-  public final void Zv()
+  public final void ata()
   {
-    if (this.ghz != null) {
-      this.ghz.run();
+    AppMethodBeat.i(130559);
+    j localj = new j(this.hzI, 36, this.cpE, this.cpF, null, (int)System.currentTimeMillis(), new byte[0]);
+    w.a(localj.rr, new JsApiScanCode.GetA8KeyTask.1(this, localj), true);
+    AppMethodBeat.o(130559);
+  }
+  
+  public final void atb()
+  {
+    AppMethodBeat.i(130560);
+    if (this.hzK != null) {
+      this.hzK.run();
     }
+    AppMethodBeat.o(130560);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
-    this.ghx = paramParcel.readString();
+    AppMethodBeat.i(130562);
+    this.hzI = paramParcel.readString();
     this.actionCode = paramParcel.readInt();
-    this.ghy = paramParcel.readString();
-    this.bIj = paramParcel.readInt();
-    this.bIk = paramParcel.readInt();
+    this.hzJ = paramParcel.readString();
+    this.cpE = paramParcel.readInt();
+    this.cpF = paramParcel.readInt();
+    AppMethodBeat.o(130562);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.ghx);
+    AppMethodBeat.i(130561);
+    paramParcel.writeString(this.hzI);
     paramParcel.writeInt(this.actionCode);
-    paramParcel.writeString(this.ghy);
-    paramParcel.writeInt(this.bIj);
-    paramParcel.writeInt(this.bIk);
+    paramParcel.writeString(this.hzJ);
+    paramParcel.writeInt(this.cpE);
+    paramParcel.writeInt(this.cpF);
+    AppMethodBeat.o(130561);
   }
 }
 

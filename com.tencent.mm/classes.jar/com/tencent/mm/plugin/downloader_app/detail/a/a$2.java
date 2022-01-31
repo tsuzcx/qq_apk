@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.downloader_app.detail.a;
 
 import android.content.Context;
 import android.widget.Toast;
-import com.tencent.mm.plugin.downloader_app.b.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$2
   implements Runnable
@@ -11,7 +11,9 @@ final class a$2
   
   public final void run()
   {
-    Toast.makeText(this.val$context, this.val$context.getString(b.h.game_download_sdcard_unavailable), 0).show();
+    AppMethodBeat.i(136065);
+    Toast.makeText(this.val$context, this.val$context.getString(2131300364), 0).show();
+    AppMethodBeat.o(136065);
   }
 }
 

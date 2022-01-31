@@ -1,28 +1,20 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.ui;
 
-import com.tencent.mm.plugin.walletlock.a.g;
-import com.tencent.mm.plugin.walletlock.fingerprint.a.d.a;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FingerprintWalletLockUI$8
-  implements d.a
+  implements View.OnClickListener
 {
   FingerprintWalletLockUI$8(FingerprintWalletLockUI paramFingerprintWalletLockUI) {}
   
-  public final void ai(int paramInt, String paramString)
+  public final void onClick(View paramView)
   {
-    y.i("MicroMsg.FingerprintWalletLockUI", "prepare onFinish errCode: %d, errMsg: %s, time: %d", new Object[] { Integer.valueOf(paramInt), paramString, Long.valueOf(System.currentTimeMillis()) });
-    if (FingerprintWalletLockUI.c(this.qPy))
-    {
-      y.i("MicroMsg.FingerprintWalletLockUI", "alvinluo has cancelled and return");
-      return;
-    }
-    if (paramInt == 0)
-    {
-      FingerprintWalletLockUI.h(this.qPy);
-      return;
-    }
-    FingerprintWalletLockUI.b(this.qPy, this.qPy.getString(a.g.wallet_lock_fingerprint_system_error));
+    AppMethodBeat.i(51505);
+    FingerprintWalletLockUI.cXH();
+    FingerprintWalletLockUI.a(this.uEG, "user cancel setting fingerprint lock");
+    AppMethodBeat.o(51505);
   }
 }
 

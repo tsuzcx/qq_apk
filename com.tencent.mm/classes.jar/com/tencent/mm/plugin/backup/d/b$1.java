@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.backup.d;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.backup.g.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$1
   implements Runnable
@@ -13,13 +14,15 @@ final class b$1
   
   public final void run()
   {
-    Object localObject = b.atS().atV();
+    AppMethodBeat.i(17235);
+    Object localObject = b.aTr().aTu();
     String str = this.val$url;
-    y.w("MicroMsg.BackupMoveRecoverServer", "~~~~~~~~~~~~  start by url:%s", new Object[] { str });
-    com.tencent.mm.plugin.backup.g.b.auQ();
-    au.Dk().a(595, ((c)localObject).hIg);
+    ab.w("MicroMsg.BackupMoveRecoverServer", "~~~~~~~~~~~~  start by url:%s", new Object[] { str });
+    com.tencent.mm.plugin.backup.g.b.aUs();
+    aw.Rc().a(595, ((c)localObject).jBE);
     localObject = new e(str);
-    au.Dk().a((m)localObject, 0);
+    aw.Rc().a((m)localObject, 0);
+    AppMethodBeat.o(17235);
   }
 }
 

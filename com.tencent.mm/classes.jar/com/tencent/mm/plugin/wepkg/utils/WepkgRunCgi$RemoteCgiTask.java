@@ -2,54 +2,74 @@ package com.tencent.mm.plugin.wepkg.utils;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w;
-import com.tencent.mm.ah.w.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w;
+import com.tencent.mm.ai.w.a;
 import com.tencent.mm.plugin.wepkg.ipc.WepkgMainProcessTask;
 
 public final class WepkgRunCgi$RemoteCgiTask
   extends WepkgMainProcessTask
   implements w.a
 {
-  public static final Parcelable.Creator<RemoteCgiTask> CREATOR = new WepkgRunCgi.RemoteCgiTask.1();
-  private String ghs;
-  private int jsT;
-  private int jtf;
-  public int rQo = 0;
-  private b rQp;
-  public b rQq;
-  public WepkgRunCgi.a rQr;
+  public static final Parcelable.Creator<RemoteCgiTask> CREATOR;
+  private String hyJ;
+  private int lCE;
+  private int lCs;
+  public int vHg;
+  private b vHh;
+  public b vHi;
+  public WepkgRunCgi.a vHj;
   
-  public WepkgRunCgi$RemoteCgiTask() {}
+  static
+  {
+    AppMethodBeat.i(63646);
+    CREATOR = new WepkgRunCgi.RemoteCgiTask.1();
+    AppMethodBeat.o(63646);
+  }
+  
+  public WepkgRunCgi$RemoteCgiTask()
+  {
+    this.vHg = 0;
+  }
   
   WepkgRunCgi$RemoteCgiTask(Parcel paramParcel)
   {
-    e(paramParcel);
-  }
-  
-  public final void Zu()
-  {
-    w.a(this.rQq, this, true);
-  }
-  
-  public final void Zv()
-  {
-    d.aa(this);
-    if (this.rQr != null) {
-      this.rQr.a(this.jtf, this.jsT, this.ghs, this.rQp);
-    }
+    AppMethodBeat.i(63645);
+    this.vHg = 0;
+    f(paramParcel);
+    AppMethodBeat.o(63645);
   }
   
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
-    this.jtf = paramInt1;
-    this.jsT = paramInt2;
-    this.ghs = paramString;
-    this.rQp = paramb;
-    this.rQo = 2;
-    pQ();
+    AppMethodBeat.i(63641);
+    this.lCE = paramInt1;
+    this.lCs = paramInt2;
+    this.hyJ = paramString;
+    this.vHh = paramb;
+    this.vHg = 2;
+    tU();
+    AppMethodBeat.o(63641);
     return 0;
+  }
+  
+  public final void ata()
+  {
+    AppMethodBeat.i(63640);
+    w.a(this.vHi, this, true);
+    AppMethodBeat.o(63640);
+  }
+  
+  public final void atb()
+  {
+    AppMethodBeat.i(63642);
+    d.ai(this);
+    if (this.vHj != null) {
+      this.vHj.a(this.lCE, this.lCs, this.hyJ, this.vHh);
+    }
+    AppMethodBeat.o(63642);
   }
   
   public final int describeContents()
@@ -57,45 +77,53 @@ public final class WepkgRunCgi$RemoteCgiTask
     return 0;
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
-    super.e(paramParcel);
-    this.rQo = paramParcel.readInt();
-    switch (this.rQo)
+    AppMethodBeat.i(63644);
+    super.f(paramParcel);
+    this.vHg = paramParcel.readInt();
+    switch (this.vHg)
     {
-    default: 
-      return;
-    case 1: 
-      this.rQq = WepkgRunCgi.k(paramParcel);
-      return;
     }
-    this.jtf = paramParcel.readInt();
-    this.jsT = paramParcel.readInt();
-    this.ghs = paramParcel.readString();
-    this.rQp = WepkgRunCgi.k(paramParcel);
+    for (;;)
+    {
+      AppMethodBeat.o(63644);
+      return;
+      this.vHi = WepkgRunCgi.n(paramParcel);
+      AppMethodBeat.o(63644);
+      return;
+      this.lCE = paramParcel.readInt();
+      this.lCs = paramParcel.readInt();
+      this.hyJ = paramParcel.readString();
+      this.vHh = WepkgRunCgi.n(paramParcel);
+    }
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(63643);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeInt(this.rQo);
-    switch (this.rQo)
+    paramParcel.writeInt(this.vHg);
+    switch (this.vHg)
     {
-    default: 
-      return;
-    case 1: 
-      WepkgRunCgi.a(this.rQq, paramParcel);
-      return;
     }
-    paramParcel.writeInt(this.jtf);
-    paramParcel.writeInt(this.jsT);
-    paramParcel.writeString(this.ghs);
-    WepkgRunCgi.a(this.rQp, paramParcel);
+    for (;;)
+    {
+      AppMethodBeat.o(63643);
+      return;
+      WepkgRunCgi.a(this.vHi, paramParcel);
+      AppMethodBeat.o(63643);
+      return;
+      paramParcel.writeInt(this.lCE);
+      paramParcel.writeInt(this.lCs);
+      paramParcel.writeString(this.hyJ);
+      WepkgRunCgi.a(this.vHh, paramParcel);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.utils.WepkgRunCgi.RemoteCgiTask
  * JD-Core Version:    0.7.0.1
  */

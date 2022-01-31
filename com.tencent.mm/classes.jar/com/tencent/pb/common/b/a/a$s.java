@@ -6,130 +6,130 @@ import com.google.a.a.e;
 public final class a$s
   extends e
 {
-  public long sDc = 0L;
-  public long sDd = 0L;
-  public String uhh = "";
+  public int BeA = 0;
+  public long BeB = 0L;
+  public int BeC = 0;
+  public String Bee = "";
+  public String Bew = "";
+  public String Bex = "";
+  public int Bey = 1;
+  public long Bez = 0L;
+  public String ffY = "";
   public String username = "";
-  public String wGD = "";
-  public String wGV = "";
-  public String wGW = "";
-  public int wGX = 1;
-  public String wGY = "";
-  public long wGZ = 0L;
-  public int wHa = 0;
-  public long wHb = 0L;
-  public int wHc = 0;
+  public long wyE = 0L;
+  public long wyF = 0L;
+  public String ypl = "";
   
   public a$s()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.sDc != 0L) {
-      paramb.h(1, this.sDc);
+    if (this.wyE != 0L) {
+      paramb.m(1, this.wyE);
     }
-    if (!this.wGV.equals("")) {
-      paramb.d(2, this.wGV);
+    if (!this.Bew.equals("")) {
+      paramb.e(2, this.Bew);
     }
-    if (!this.wGW.equals("")) {
-      paramb.d(3, this.wGW);
+    if (!this.Bex.equals("")) {
+      paramb.e(3, this.Bex);
     }
-    if (this.wGX != 1) {
-      paramb.aL(4, this.wGX);
+    if (this.Bey != 1) {
+      paramb.bj(4, this.Bey);
     }
     if (!this.username.equals("")) {
-      paramb.d(5, this.username);
+      paramb.e(5, this.username);
     }
-    if (!this.wGY.equals("")) {
-      paramb.d(6, this.wGY);
+    if (!this.ffY.equals("")) {
+      paramb.e(6, this.ffY);
     }
-    if (!this.wGD.equals("")) {
-      paramb.d(7, this.wGD);
+    if (!this.Bee.equals("")) {
+      paramb.e(7, this.Bee);
     }
-    if (this.wGZ != 0L) {
-      paramb.h(8, this.wGZ);
+    if (this.Bez != 0L) {
+      paramb.m(8, this.Bez);
     }
-    if (this.wHa != 0) {
-      paramb.aM(9, this.wHa);
+    if (this.BeA != 0) {
+      paramb.bk(9, this.BeA);
     }
-    if (!this.uhh.equals("")) {
-      paramb.d(10, this.uhh);
+    if (!this.ypl.equals("")) {
+      paramb.e(10, this.ypl);
     }
-    if (this.wHb != 0L) {
-      paramb.h(11, this.wHb);
+    if (this.BeB != 0L) {
+      paramb.m(11, this.BeB);
     }
-    if (this.wHc != 0) {
-      paramb.aM(12, this.wHc);
+    if (this.BeC != 0) {
+      paramb.bk(12, this.BeC);
     }
-    if (this.sDd != 0L) {
-      paramb.h(13, this.sDd);
+    if (this.wyF != 0L) {
+      paramb.m(13, this.wyF);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
-    if (this.sDc != 0L) {
-      i = j + b.j(1, this.sDc);
+    if (this.wyE != 0L) {
+      i = j + b.o(1, this.wyE);
     }
     j = i;
-    if (!this.wGV.equals("")) {
-      j = i + b.e(2, this.wGV);
+    if (!this.Bew.equals("")) {
+      j = i + b.f(2, this.Bew);
     }
     i = j;
-    if (!this.wGW.equals("")) {
-      i = j + b.e(3, this.wGW);
+    if (!this.Bex.equals("")) {
+      i = j + b.f(3, this.Bex);
     }
     j = i;
-    if (this.wGX != 1) {
-      j = i + b.aN(4, this.wGX);
+    if (this.Bey != 1) {
+      j = i + b.bl(4, this.Bey);
     }
     i = j;
     if (!this.username.equals("")) {
-      i = j + b.e(5, this.username);
+      i = j + b.f(5, this.username);
     }
     j = i;
-    if (!this.wGY.equals("")) {
-      j = i + b.e(6, this.wGY);
+    if (!this.ffY.equals("")) {
+      j = i + b.f(6, this.ffY);
     }
     i = j;
-    if (!this.wGD.equals("")) {
-      i = j + b.e(7, this.wGD);
+    if (!this.Bee.equals("")) {
+      i = j + b.f(7, this.Bee);
     }
     j = i;
-    if (this.wGZ != 0L) {
-      j = i + b.j(8, this.wGZ);
+    if (this.Bez != 0L) {
+      j = i + b.o(8, this.Bez);
     }
     i = j;
-    if (this.wHa != 0) {
-      i = j + b.aO(9, this.wHa);
+    if (this.BeA != 0) {
+      i = j + b.bm(9, this.BeA);
     }
     j = i;
-    if (!this.uhh.equals("")) {
-      j = i + b.e(10, this.uhh);
+    if (!this.ypl.equals("")) {
+      j = i + b.f(10, this.ypl);
     }
     i = j;
-    if (this.wHb != 0L) {
-      i = j + b.j(11, this.wHb);
+    if (this.BeB != 0L) {
+      i = j + b.o(11, this.BeB);
     }
     j = i;
-    if (this.wHc != 0) {
-      j = i + b.aO(12, this.wHc);
+    if (this.BeC != 0) {
+      j = i + b.bm(12, this.BeC);
     }
     i = j;
-    if (this.sDd != 0L) {
-      i = j + b.j(13, this.sDd);
+    if (this.wyF != 0L) {
+      i = j + b.o(13, this.wyF);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.s
  * JD-Core Version:    0.7.0.1
  */

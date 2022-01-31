@@ -1,16 +1,21 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.f.a;
+import com.tencent.mm.plugin.webview.model.ai;
 
 final class SDKOAuthFriendUI$2
-  implements View.OnClickListener
+  implements Runnable
 {
-  SDKOAuthFriendUI$2(SDKOAuthFriendUI paramSDKOAuthFriendUI, int paramInt) {}
+  SDKOAuthFriendUI$2(SDKOAuthFriendUI paramSDKOAuthFriendUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    SDKOAuthFriendUI.a(this.rlO, this.rlP);
+    AppMethodBeat.i(153176);
+    a.vtM.a(SDKOAuthFriendUI.a(this.vbr), SDKOAuthFriendUI.b(this.vbr), 0, SDKOAuthFriendUI.c(this.vbr), 3, 1, 0);
+    SDKOAuthFriendUI.d(this.vbr).JU(-2);
+    this.vbr.finish();
+    AppMethodBeat.o(153176);
   }
 }
 

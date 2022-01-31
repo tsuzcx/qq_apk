@@ -1,9 +1,16 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class c$1
   implements Runnable
 {
-  public final void run() {}
+  public final void run()
+  {
+    AppMethodBeat.i(105587);
+    c.access$000();
+    AppMethodBeat.o(105587);
+  }
 }
 
 

@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.card.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.b.g;
 import com.tencent.mm.plugin.card.d.q;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$1
   implements Runnable
@@ -12,11 +13,13 @@ final class b$1
   
   public final void run()
   {
-    y.i("MicroMsg.CardAcitivityLifecycleListener", "CardAcitivityLifecycleListener on activity from background to foreground！doUpdateOfflineDynamicCard!");
-    g localg = am.aAI();
+    AppMethodBeat.i(88237);
+    ab.i("MicroMsg.CardAcitivityLifecycleListener", "CardAcitivityLifecycleListener on activity from background to foreground！doUpdateOfflineDynamicCard!");
+    g localg = am.bct();
     if (localg != null) {
-      localg.a(q.izl);
+      localg.a(q.kCs);
     }
+    AppMethodBeat.o(88237);
   }
 }
 

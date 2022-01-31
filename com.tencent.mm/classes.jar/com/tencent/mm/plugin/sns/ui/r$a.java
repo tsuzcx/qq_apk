@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 public abstract interface r$a
 {
-  public abstract void bHi();
+  public abstract void ctm();
 }
 
 

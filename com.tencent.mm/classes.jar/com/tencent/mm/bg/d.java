@@ -1,9 +1,28 @@
 package com.tencent.mm.bg;
 
-public final class d
+public abstract interface d
 {
-  public static a eEX;
-  public static b eEY;
+  public abstract void aX(String paramString1, String paramString2);
+  
+  public abstract void akV();
+  
+  public abstract void akW();
+  
+  public abstract void akX();
+  
+  public abstract void akY();
+  
+  public abstract void akZ();
+  
+  public abstract void ala();
+  
+  public abstract void i(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void mh(int paramInt);
+  
+  public abstract void t(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void uM(String paramString);
 }
 
 

@@ -7,6 +7,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,148 +16,161 @@ public class TextViewMultilineEllipse
   extends View
 {
   private Context context;
-  private TextPaint gI;
-  private String hnV;
-  private int lgJ;
-  private int oSA;
-  private String oSB;
-  private String oSC;
-  private boolean oSD;
-  private int oSE;
-  private boolean oSF;
-  private boolean oSG;
-  private TextViewMultilineEllipse.a pjF;
-  private TextViewMultilineEllipse.a pjG;
-  private int textSize = -1;
+  private TextPaint hB;
+  private boolean kiY;
+  private int kja;
+  private String mText;
+  private int rKt;
+  private String rKu;
+  private String rKv;
+  private boolean rKw;
+  private int rKx;
+  private boolean rKy;
+  private TextViewMultilineEllipse.a scj;
+  private TextViewMultilineEllipse.a sck;
+  private int textSize;
   
   public TextViewMultilineEllipse(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(39846);
+    this.textSize = -1;
     this.context = paramContext;
-    this.oSG = false;
-    this.oSD = true;
-    this.oSF = false;
-    this.lgJ = -1;
-    this.oSB = "...";
-    this.oSC = "";
-    this.oSE = -16776961;
-    this.pjF = new TextViewMultilineEllipse.a();
-    this.pjG = new TextViewMultilineEllipse.a();
-    this.gI = new TextPaint();
-    this.gI.setAntiAlias(true);
+    this.kiY = false;
+    this.rKw = true;
+    this.rKy = false;
+    this.kja = -1;
+    this.rKu = "...";
+    this.rKv = "";
+    this.rKx = -16776961;
+    this.scj = new TextViewMultilineEllipse.a();
+    this.sck = new TextViewMultilineEllipse.a();
+    this.hB = new TextPaint();
+    this.hB.setAntiAlias(true);
     if (this.textSize == -1)
     {
       this.textSize = BackwardSupportUtil.b.b(this.context, 12.0F);
-      this.gI.setTextSize(this.textSize);
+      this.hB.setTextSize(this.textSize);
     }
     for (;;)
     {
-      this.gI.setColor(-16777216);
-      this.gI.setTextAlign(Paint.Align.LEFT);
+      this.hB.setColor(-16777216);
+      this.hB.setTextAlign(Paint.Align.LEFT);
+      AppMethodBeat.o(39846);
       return;
-      this.gI.setTextSize(13.0F);
+      this.hB.setTextSize(13.0F);
     }
   }
   
-  private int yE(int paramInt)
+  private int EK(int paramInt)
   {
-    if (this.oSG) {}
-    for (paramInt = this.pjF.a(this.hnV, null, null, -1, paramInt - getPaddingLeft() - getPaddingRight(), this.gI);; paramInt = this.pjG.a(this.hnV, this.oSB, this.oSC, this.lgJ, paramInt - getPaddingLeft() - getPaddingRight(), this.gI)) {
-      return paramInt + getPaddingLeft() + getPaddingRight();
+    AppMethodBeat.i(39852);
+    if (this.kiY) {}
+    for (paramInt = this.scj.a(this.mText, paramInt - getPaddingLeft() - getPaddingRight(), this.hB);; paramInt = this.sck.a(this.mText, this.rKu, this.rKv, this.kja, paramInt - getPaddingLeft() - getPaddingRight(), this.hB))
+    {
+      int i = getPaddingLeft();
+      int j = getPaddingRight();
+      AppMethodBeat.o(39852);
+      return paramInt + i + j;
     }
   }
   
   public boolean getIsExpanded()
   {
-    return this.oSG;
+    return this.kiY;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(39851);
     super.onDraw(paramCanvas);
     TextViewMultilineEllipse.a locala;
     ArrayList localArrayList;
     float f2;
     float f1;
     int i;
-    label48:
+    label53:
     int j;
-    if (this.oSG)
+    if (this.kiY)
     {
-      locala = this.pjF;
-      localArrayList = this.pjF.oSM;
+      locala = this.scj;
+      localArrayList = this.scj.rKE;
       f2 = getPaddingLeft();
-      f1 = getPaddingTop() + -this.oSA;
+      f1 = getPaddingTop() + -this.rKt;
       i = 0;
       if (i >= localArrayList.size()) {
-        return;
+        break label307;
       }
       int[] arrayOfInt = (int[])localArrayList.get(i);
-      paramCanvas.drawText(this.hnV, arrayOfInt[0], arrayOfInt[1] + 1, f2, f1, this.gI);
-      if ((i == localArrayList.size() - 1) && (locala.oSL))
+      paramCanvas.drawText(this.mText, arrayOfInt[0], arrayOfInt[1] + 1, f2, f1, this.hB);
+      if ((i == localArrayList.size() - 1) && (locala.rKD))
       {
-        paramCanvas.drawText(this.oSB, locala.oSN + f2, f1, this.gI);
-        if (this.oSD)
+        paramCanvas.drawText(this.rKu, locala.rKF + f2, f1, this.hB);
+        if (this.rKw)
         {
-          j = this.gI.getColor();
-          this.gI.setColor(this.oSE);
-          if (!this.oSF) {
-            break label273;
+          j = this.hB.getColor();
+          this.hB.setColor(this.rKx);
+          if (!this.rKy) {
+            break label278;
           }
-          paramCanvas.drawText(this.oSC, paramCanvas.getWidth() - (locala.oSP + getPaddingRight() + getPaddingLeft()), f1, this.gI);
+          paramCanvas.drawText(this.rKv, paramCanvas.getWidth() - (locala.rKH + getPaddingRight() + getPaddingLeft()), f1, this.hB);
         }
       }
     }
     for (;;)
     {
-      this.gI.setColor(j);
-      f1 += -this.oSA + this.gI.descent();
+      this.hB.setColor(j);
+      f1 += -this.rKt + this.hB.descent();
       if (f1 > paramCanvas.getHeight()) {
-        return;
+        break label307;
       }
       i += 1;
-      break label48;
-      locala = this.pjG;
-      localArrayList = this.pjG.oSM;
+      break label53;
+      locala = this.sck;
+      localArrayList = this.sck.rKE;
       break;
-      label273:
-      paramCanvas.drawText(this.oSC, locala.oSN + locala.oSO + f2, f1, this.gI);
+      label278:
+      paramCanvas.drawText(this.rKv, locala.rKF + locala.rKG + f2, f1, this.hB);
     }
+    label307:
+    AppMethodBeat.o(39851);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(39850);
     int i = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     if (i == 1073741824) {
-      yE(paramInt1);
+      EK(paramInt1);
     }
     int k;
     for (;;)
     {
       k = View.MeasureSpec.getMode(paramInt2);
       i = View.MeasureSpec.getSize(paramInt2);
-      this.oSA = ((int)this.gI.ascent());
+      this.rKt = ((int)this.hB.ascent());
       if (k != 1073741824) {
         break;
       }
       paramInt2 = i;
       setMeasuredDimension(paramInt1, paramInt2);
+      AppMethodBeat.o(39850);
       return;
       if (i == -2147483648)
       {
-        paramInt1 = Math.min(yE(paramInt1), paramInt1);
+        paramInt1 = Math.min(EK(paramInt1), paramInt1);
       }
       else
       {
-        yE(paramInt1);
+        EK(paramInt1);
         paramInt1 = 0;
       }
     }
-    if (this.oSG) {}
-    for (paramInt2 = this.pjF.oSM.size();; paramInt2 = this.pjG.oSM.size())
+    if (this.kiY) {}
+    for (paramInt2 = this.scj.rKE.size();; paramInt2 = this.sck.rKE.size())
     {
-      int j = paramInt2 * (int)(-this.oSA + this.gI.descent()) + getPaddingTop() + getPaddingBottom();
+      int j = paramInt2 * (int)(-this.rKt + this.hB.descent()) + getPaddingTop() + getPaddingBottom();
       paramInt2 = j;
       if (k != -2147483648) {
         break;
@@ -168,57 +182,63 @@ public class TextViewMultilineEllipse
   
   public void setColorEllpsizeMore(int paramInt)
   {
-    this.oSE = paramInt;
+    this.rKx = paramInt;
   }
   
   public void setDrawEllipsizeMoreString(boolean paramBoolean)
   {
-    this.oSD = paramBoolean;
+    this.rKw = paramBoolean;
   }
   
   public void setEllipsis(String paramString)
   {
-    this.oSB = paramString;
+    this.rKu = paramString;
   }
   
   public void setEllipsisMore(String paramString)
   {
-    this.oSC = paramString;
+    this.rKv = paramString;
   }
   
   public void setMaxLines(int paramInt)
   {
-    this.lgJ = paramInt;
+    this.kja = paramInt;
   }
   
   public void setRightAlignEllipsizeMoreString(boolean paramBoolean)
   {
-    this.oSF = paramBoolean;
+    this.rKy = paramBoolean;
   }
   
   public void setText(String paramString)
   {
-    this.hnV = paramString;
+    AppMethodBeat.i(39847);
+    this.mText = paramString;
     requestLayout();
     invalidate();
+    AppMethodBeat.o(39847);
   }
   
   public void setTextColor(int paramInt)
   {
-    this.gI.setColor(paramInt);
+    AppMethodBeat.i(39849);
+    this.hB.setColor(paramInt);
     invalidate();
+    AppMethodBeat.o(39849);
   }
   
   public void setTextSize(int paramInt)
   {
-    this.gI.setTextSize(paramInt);
+    AppMethodBeat.i(39848);
+    this.hB.setTextSize(paramInt);
     requestLayout();
     invalidate();
+    AppMethodBeat.o(39848);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.TextViewMultilineEllipse
  * JD-Core Version:    0.7.0.1
  */

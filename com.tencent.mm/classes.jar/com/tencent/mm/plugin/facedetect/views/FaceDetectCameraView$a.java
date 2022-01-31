@@ -2,55 +2,59 @@ package com.tencent.mm.plugin.facedetect.views;
 
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.FaceCharacteristicsResult;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.lang.ref.WeakReference;
 
 final class FaceDetectCameraView$a
-  extends ah
+  extends ak
 {
-  private WeakReference<FaceDetectCameraView> Hz;
+  private WeakReference<FaceDetectCameraView> Hg;
   
   private FaceDetectCameraView$a(FaceDetectCameraView paramFaceDetectCameraView)
   {
     super(Looper.getMainLooper());
-    this.Hz = new WeakReference(paramFaceDetectCameraView);
+    AppMethodBeat.i(574);
+    this.Hg = new WeakReference(paramFaceDetectCameraView);
+    AppMethodBeat.o(574);
   }
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(575);
     super.handleMessage(paramMessage);
-    if ((this.Hz == null) || (this.Hz.get() == null)) {
-      y.e("MicroMsg.FaceDetectCameraView", "hy: no referenced view. exit");
-    }
-    label29:
-    do
+    if ((this.Hg == null) || (this.Hg.get() == null))
     {
-      do
-      {
-        do
-        {
-          break label29;
-          do
-          {
-            return;
-          } while (paramMessage.what != 1);
-          paramMessage = (FaceCharacteristicsResult)paramMessage.obj;
-          if (!FaceCharacteristicsResult.qJ(paramMessage.errCode)) {
-            break;
-          }
-        } while (FaceDetectCameraView.a((FaceDetectCameraView)this.Hz.get()) == null);
-        FaceDetectCameraView.a((FaceDetectCameraView)this.Hz.get()).d(paramMessage);
-        return;
-        if (!FaceCharacteristicsResult.qI(paramMessage.errCode)) {
-          break;
-        }
-      } while (FaceDetectCameraView.a((FaceDetectCameraView)this.Hz.get()) == null);
-      FaceDetectCameraView.a((FaceDetectCameraView)this.Hz.get()).a(paramMessage.errCode, paramMessage.aox);
+      ab.e("MicroMsg.FaceDetectCameraView", "hy: no referenced view. exit");
+      AppMethodBeat.o(575);
       return;
-    } while (FaceDetectCameraView.a((FaceDetectCameraView)this.Hz.get()) == null);
-    FaceDetectCameraView.a((FaceDetectCameraView)this.Hz.get()).c(paramMessage);
+    }
+    if (paramMessage.what == 1)
+    {
+      paramMessage = (FaceCharacteristicsResult)paramMessage.obj;
+      if (FaceCharacteristicsResult.vE(paramMessage.errCode))
+      {
+        if (FaceDetectCameraView.a((FaceDetectCameraView)this.Hg.get()) != null)
+        {
+          FaceDetectCameraView.a((FaceDetectCameraView)this.Hg.get()).d(paramMessage);
+          AppMethodBeat.o(575);
+        }
+      }
+      else if (FaceCharacteristicsResult.vD(paramMessage.errCode))
+      {
+        if (FaceDetectCameraView.a((FaceDetectCameraView)this.Hg.get()) != null)
+        {
+          FaceDetectCameraView.a((FaceDetectCameraView)this.Hg.get()).a(paramMessage.errCode, paramMessage.errMsg);
+          AppMethodBeat.o(575);
+        }
+      }
+      else if (FaceDetectCameraView.a((FaceDetectCameraView)this.Hg.get()) != null) {
+        FaceDetectCameraView.a((FaceDetectCameraView)this.Hg.get()).c(paramMessage);
+      }
+    }
+    AppMethodBeat.o(575);
   }
 }
 

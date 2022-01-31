@@ -3,13 +3,14 @@ package com.tencent.mm.plugin.appbrand.ui.banner;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.a;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.mm.plugin.appbrand.config.h;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -18,113 +19,130 @@ import java.util.Set;
 
 public final class AppBrandStickyBannerLogic$a
 {
-  private static final AppBrandStickyBannerLogic.Watcher hfJ = new AppBrandStickyBannerLogic.Watcher();
-  private static final Set<f> hfK = new HashSet();
-  private static final HashMap<String, Boolean> hfL = new HashMap();
-  private static final HashMap<String, f> hfM = new HashMap();
-  private static final c hfN = new c();
-  private static final Map<String, String> hfO = new HashMap();
+  private static final AppBrandStickyBannerLogic.Watcher iQX;
+  private static final Set<f> iQY;
+  private static final HashMap<String, Boolean> iQZ;
+  private static final HashMap<String, f> iRa;
+  private static final c iRb;
+  private static final Map<String, String> iRc;
+  
+  static
+  {
+    AppMethodBeat.i(133287);
+    iQX = new AppBrandStickyBannerLogic.Watcher();
+    iQY = new HashSet();
+    iQZ = new HashMap();
+    iRa = new HashMap();
+    iRb = new c();
+    iRc = new HashMap();
+    AppMethodBeat.o(133287);
+  }
   
   public static void a(Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    if (bk.bl(paramString1)) {
+    AppMethodBeat.i(133281);
+    if (bo.isNullOrNil(paramString1))
+    {
+      AppMethodBeat.o(133281);
       return;
     }
     if (paramContext == null) {
-      paramContext = ae.getContext();
+      paramContext = ah.getContext();
     }
     for (;;)
     {
-      for (;;)
+      Intent localIntent = new Intent().setClassName(paramContext, "com.tencent.mm.ui.LauncherUI").addFlags(268435456).addFlags(67108864).addFlags(536870912);
+      synchronized (iRc)
       {
-        Intent localIntent = new Intent().setClassName(paramContext, "com.tencent.mm.ui.LauncherUI").addFlags(268435456).addFlags(67108864).addFlags(536870912);
-        synchronized (hfO)
-        {
-          String str = (String)hfO.get(paramString1);
-          b.a(localIntent, paramString1, paramInt, paramString2, paramString3, bk.pm(str));
-          paramContext.startActivity(localIntent);
-          if (!(paramContext instanceof Activity)) {
-            break;
-          }
-          try
-          {
-            ((Activity)paramContext).moveTaskToBack(false);
-            return;
-          }
-          catch (Exception paramContext)
-          {
-            y.e("MicroMsg.AppBrandStickyBannerLogic.ClientLogic", "stickOnChatting e = %s", new Object[] { paramContext.getMessage() });
-            return;
-          }
-        }
+        String str = (String)iRc.get(paramString1);
+        b.a(localIntent, paramString1, paramInt, paramString2, paramString3, bo.nullAsNil(str));
+        paramContext.startActivity(localIntent);
+        if (!(paramContext instanceof Activity)) {}
       }
+      AppMethodBeat.o(133281);
+      return;
     }
   }
   
-  public static boolean apw()
+  public static boolean aMM()
   {
+    AppMethodBeat.i(133282);
     AppBrandStickyBannerLogic.access$200();
+    AppMethodBeat.o(133282);
     return false;
   }
   
-  static void bc(String paramString, int paramInt)
+  static void bx(String paramString, int paramInt)
   {
-    synchronized (hfK)
+    AppMethodBeat.i(133280);
+    synchronized (iQY)
     {
-      Iterator localIterator = hfK.iterator();
+      Iterator localIterator = iQY.iterator();
       if (localIterator.hasNext()) {
-        ((f)localIterator.next()).aP(paramString, paramInt);
+        ((f)localIterator.next()).bf(paramString, paramInt);
       }
     }
+    AppMethodBeat.o(133280);
   }
   
   public static void c(f paramf)
   {
+    AppMethodBeat.i(133283);
     if (paramf != null) {
-      synchronized (hfK)
+      synchronized (iQY)
       {
-        hfK.remove(paramf);
+        iQY.remove(paramf);
+        AppMethodBeat.o(133283);
         return;
       }
     }
+    AppMethodBeat.o(133283);
   }
   
-  public static void cg(String paramString1, String paramString2)
+  public static void cV(String paramString1, String paramString2)
   {
-    if (bk.bl(paramString1)) {}
-    for (;;)
+    AppMethodBeat.i(133286);
+    if (bo.isNullOrNil(paramString1))
     {
+      AppMethodBeat.o(133286);
       return;
-      synchronized (hfO)
+    }
+    synchronized (iRc)
+    {
+      iRc.put(paramString1, bo.nullAsNil(paramString2));
+      ??? = a.xM(paramString1);
+      if (??? == null)
       {
-        hfO.put(paramString1, bk.pm(paramString2));
-        ??? = a.qo(paramString1);
-        if (??? == null) {
-          continue;
-        }
-        AppBrandMainProcessService.a(AppBrandStickyBannerLogic.OperateTask.o(paramString1, ((AppBrandSysConfigWC)???).fPS.fEM, paramString2));
+        AppMethodBeat.o(133286);
         return;
       }
     }
+    AppBrandMainProcessService.a(AppBrandStickyBannerLogic.OperateTask.o(paramString1, ((h)???).hiX.gXe, paramString2));
+    AppMethodBeat.o(133286);
   }
   
   public static void d(f paramf)
   {
-    hfJ.hfS = ae.getProcessName();
-    AppBrandMainProcessService.a(hfJ);
+    AppMethodBeat.i(133284);
+    iQX.iRg = ah.getProcessName();
+    AppBrandMainProcessService.a(iQX);
     if (paramf != null) {
-      synchronized (hfK)
+      synchronized (iQY)
       {
-        hfK.add(paramf);
+        iQY.add(paramf);
+        AppMethodBeat.o(133284);
         return;
       }
     }
+    AppMethodBeat.o(133284);
   }
   
-  public static void wz(String paramString)
+  public static void release(String paramString)
   {
-    hfL.remove(paramString);
-    y.i("MicroMsg.AppBrandStickyBannerLogic", "release(%s)", new Object[] { paramString });
+    AppMethodBeat.i(133285);
+    iQZ.remove(paramString);
+    ab.i("MicroMsg.AppBrandStickyBannerLogic", "release(%s)", new Object[] { paramString });
+    AppMethodBeat.o(133285);
   }
 }
 

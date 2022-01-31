@@ -1,8 +1,6 @@
 package com.tencent.mm.plugin.wear.model.e;
 
-import com.tencent.mm.plugin.wear.model.d;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -11,44 +9,51 @@ import java.util.List;
 
 public abstract class a
 {
-  protected boolean Bg(int paramInt)
+  protected boolean IS(int paramInt)
   {
     return false;
   }
   
-  protected boolean Bh(int paramInt)
+  protected boolean IT(int paramInt)
   {
     return false;
   }
   
-  public boolean Bi(int paramInt)
+  public boolean IU(int paramInt)
   {
     return false;
   }
   
-  public final void b(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
+  public abstract List<Integer> cYL();
+  
+  public boolean cYM()
+  {
+    return true;
+  }
+  
+  public final void d(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
     Object localObject = paramArrayOfByte;
-    if (Bh(paramInt3))
+    if (IT(paramInt3))
     {
       localObject = paramArrayOfByte;
       if (paramArrayOfByte != null)
       {
-        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.bYL().qRu.bd(paramArrayOfByte);
+        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.cYy().uGC.bE(paramArrayOfByte);
         localObject = paramArrayOfByte;
         if (paramArrayOfByte == null) {
-          y.e("MicroMsg.Wear.BaseHttpServer", "request data decrypt error");
+          ab.e("MicroMsg.Wear.BaseHttpServer", "request data decrypt error");
         }
       }
     }
     do
     {
       return;
-      localObject = p(paramInt3, (byte[])localObject);
-    } while (!bYZ());
+      localObject = q(paramInt3, (byte[])localObject);
+    } while (!cYM());
     paramArrayOfByte = (byte[])localObject;
-    if (Bg(paramInt3)) {
-      paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.bYL().qRu.be((byte[])localObject);
+    if (IS(paramInt3)) {
+      paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.cYy().uGC.bF((byte[])localObject);
     }
     localObject = new ByteArrayOutputStream();
     DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
@@ -64,32 +69,25 @@ public abstract class a
           localDataOutputStream.writeInt(paramArrayOfByte.length);
           localDataOutputStream.write(paramArrayOfByte);
           paramArrayOfByte = ((ByteArrayOutputStream)localObject).toByteArray();
-          y.i("MicroMsg.Wear.BaseHttpServer", "send data funId=%d length=%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramArrayOfByte.length) });
-          if (Bi(paramInt3)) {
+          ab.i("MicroMsg.Wear.BaseHttpServer", "send data funId=%d length=%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramArrayOfByte.length) });
+          if (IU(paramInt3)) {
             break;
           }
-          com.tencent.mm.plugin.wear.model.a.bYL().qRu.bc(paramArrayOfByte);
+          com.tencent.mm.plugin.wear.model.a.cYy().uGC.bD(paramArrayOfByte);
           return;
         }
       }
       catch (IOException paramArrayOfByte)
       {
-        y.printErrStackTrace("MicroMsg.Wear.BaseHttpServer", paramArrayOfByte, "gen response data error connectType=%d, sessionId=%d, funId=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+        ab.printErrStackTrace("MicroMsg.Wear.BaseHttpServer", paramArrayOfByte, "gen response data error connectType=%d, sessionId=%d, funId=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
         return;
       }
       localDataOutputStream.writeInt(0);
     }
-    e.post(new a.1(this, paramArrayOfByte), "WearSendResponseTask");
+    com.tencent.mm.sdk.g.d.post(new a.1(this, paramArrayOfByte), "WearSendResponseTask");
   }
   
-  public abstract List<Integer> bYY();
-  
-  public boolean bYZ()
-  {
-    return true;
-  }
-  
-  protected abstract byte[] p(int paramInt, byte[] paramArrayOfByte);
+  protected abstract byte[] q(int paramInt, byte[] paramArrayOfByte);
 }
 
 

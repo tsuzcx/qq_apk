@@ -2,81 +2,95 @@ package com.tencent.mm.booter.notification.queue;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.notification.NotificationItem;
 import com.tencent.mm.m.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 
 public final class NotificationQueue
 {
-  public NotificationQueue.ParcelNotificationQueue djO;
+  public NotificationQueue.ParcelNotificationQueue ebi;
   
   private void save()
   {
-    if (this.djO == null) {}
-    do
+    AppMethodBeat.i(138161);
+    if (this.ebi == null)
     {
+      AppMethodBeat.o(138161);
       return;
-      y.d("MicroMsg.NotificationCustomQueue", "jacks save: %d", new Object[] { Integer.valueOf(this.djO.size()) });
-    } while (!this.djO.isEmpty());
-    f.zO().edit().putString("com.tencent.preference.notification.queue", "").apply();
-    if (this.djO == null) {
-      restore();
     }
-    y.d("MicroMsg.NotificationCustomQueue", "jacks _reset: %d", new Object[] { Integer.valueOf(this.djO.size()) });
-  }
-  
-  public final boolean c(NotificationItem paramNotificationItem)
-  {
-    try
+    ab.d("MicroMsg.NotificationCustomQueue", "jacks save: %d", new Object[] { Integer.valueOf(this.ebi.size()) });
+    if (this.ebi.isEmpty())
     {
-      if (this.djO == null) {
+      f.Mv().edit().putString("com.tencent.preference.notification.queue", "").apply();
+      if (this.ebi == null) {
         restore();
       }
-      boolean bool = this.djO.remove(paramNotificationItem);
-      if (bool) {
-        save();
-      }
-      return bool;
+      ab.d("MicroMsg.NotificationCustomQueue", "jacks _reset: %d", new Object[] { Integer.valueOf(this.ebi.size()) });
+      AppMethodBeat.o(138161);
+      return;
     }
-    finally {}
+    AppMethodBeat.o(138161);
   }
   
   public final boolean d(NotificationItem paramNotificationItem)
   {
     try
     {
-      if (this.djO == null) {
+      AppMethodBeat.i(15984);
+      if (this.ebi == null) {
         restore();
       }
-      boolean bool = this.djO.add(paramNotificationItem);
+      boolean bool = this.ebi.remove(paramNotificationItem);
       if (bool) {
         save();
       }
+      AppMethodBeat.o(15984);
       return bool;
     }
     finally {}
   }
   
-  public final NotificationItem fY(int paramInt)
+  public final boolean e(NotificationItem paramNotificationItem)
+  {
+    try
+    {
+      AppMethodBeat.i(15986);
+      if (this.ebi == null) {
+        restore();
+      }
+      boolean bool = this.ebi.add(paramNotificationItem);
+      if (bool) {
+        save();
+      }
+      AppMethodBeat.o(15986);
+      return bool;
+    }
+    finally {}
+  }
+  
+  public final NotificationItem im(int paramInt)
   {
     for (;;)
     {
       try
       {
-        if (this.djO == null) {
+        AppMethodBeat.i(15985);
+        if (this.ebi == null) {
           restore();
         }
-        Iterator localIterator = this.djO.iterator();
+        Iterator localIterator = this.ebi.iterator();
         if (localIterator.hasNext())
         {
           NotificationItem localNotificationItem = (NotificationItem)localIterator.next();
           if (localNotificationItem.id != paramInt) {
             continue;
           }
-          if ((localNotificationItem != null) && (this.djO.remove(localNotificationItem))) {
+          if ((localNotificationItem != null) && (this.ebi.remove(localNotificationItem))) {
             save();
           }
+          AppMethodBeat.o(15985);
           return localNotificationItem;
         }
       }
@@ -89,19 +103,32 @@ public final class NotificationQueue
   {
     try
     {
-      y.d("MicroMsg.NotificationCustomQueue", "jacks _restore");
-      if (this.djO == null) {
-        this.djO = new NotificationQueue.ParcelNotificationQueue();
+      AppMethodBeat.i(15983);
+      ab.d("MicroMsg.NotificationCustomQueue", "jacks _restore");
+      if (this.ebi == null) {
+        this.ebi = new NotificationQueue.ParcelNotificationQueue();
       }
-      y.d("MicroMsg.NotificationCustomQueue", "jacks _restore: %d", new Object[] { Integer.valueOf(this.djO.size()) });
+      ab.d("MicroMsg.NotificationCustomQueue", "jacks _restore: %d", new Object[] { Integer.valueOf(this.ebi.size()) });
+      AppMethodBeat.o(15983);
       return;
     }
     finally {}
   }
+  
+  public final int size()
+  {
+    AppMethodBeat.i(15987);
+    if (this.ebi == null) {
+      restore();
+    }
+    int i = this.ebi.size();
+    AppMethodBeat.o(15987);
+    return i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.booter.notification.queue.NotificationQueue
  * JD-Core Version:    0.7.0.1
  */

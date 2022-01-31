@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ComposeUI$7
   implements View.OnClickListener
@@ -11,10 +12,12 @@ final class ComposeUI$7
   
   public final void onClick(View paramView)
   {
-    ComposeUI.z(this.ngJ).setVisibility(8);
-    ComposeUI.A(this.ngJ).setVisibility(0);
-    ComposeUI.B(this.ngJ).setVisibility(0);
-    ComposeUI.z(this.ngJ).post(new ComposeUI.7.1(this));
+    AppMethodBeat.i(68174);
+    ComposeUI.z(this.pLX).setVisibility(8);
+    ComposeUI.A(this.pLX).setVisibility(0);
+    ComposeUI.B(this.pLX).setVisibility(0);
+    ComposeUI.z(this.pLX).post(new ComposeUI.7.1(this));
+    AppMethodBeat.o(68174);
   }
 }
 

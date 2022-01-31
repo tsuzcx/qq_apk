@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.notification.a;
 
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.an;
+import com.tencent.mm.model.aw;
 
 final class a$1$1$1$1
   implements Runnable
@@ -10,12 +11,14 @@ final class a$1$1$1$1
   
   public final void run()
   {
-    au.getNotification().k(this.mIr.mIo, this.mIr.mIq.mIm);
-    if (this.mIr.mIq.mIn.mIl.mIk)
+    AppMethodBeat.i(23091);
+    aw.getNotification().n(this.piy.piv, this.piy.pix.pit);
+    if (this.piy.pix.piu.pis.pir)
     {
-      this.mIr.mIq.mIn.mIl.mIk = false;
-      au.getNotification().bd(false);
+      this.piy.pix.piu.pis.pir = false;
+      aw.getNotification().bF(false);
     }
+    AppMethodBeat.o(23091);
   }
 }
 

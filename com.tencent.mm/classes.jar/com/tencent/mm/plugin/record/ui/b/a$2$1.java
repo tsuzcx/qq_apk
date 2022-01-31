@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.record.ui.b;
 
 import android.content.Context;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.mz;
-import com.tencent.mm.h.a.nb;
-import com.tencent.mm.h.a.nb.a;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.nw;
+import com.tencent.mm.g.a.ny;
+import com.tencent.mm.g.a.ny.a;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.widget.a.b;
+import com.tencent.mm.ui.widget.b.d;
 import java.util.Map;
 
 final class a$2$1
@@ -17,48 +20,80 @@ final class a$2$1
 {
   a$2$1(a.2 param2) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    nb localnb;
-    if (a.2.a(this.nuv).sVO == 0)
+    AppMethodBeat.i(24337);
+    paraml.clear();
+    this.qaj.qag.mAF.setFooterView(null);
+    if (a.2.a(this.qaj).wTK == 0)
     {
-      if (a.2.b(this.nuv).aPX()) {
-        paraml.e(2, a.2.c(this.nuv).getString(R.l.favorite_share_with_friend));
+      if (a.2.b(this.qaj).bwl()) {
+        paraml.e(2, a.2.c(this.qaj).getString(2131299826));
       }
-      if (a.2.b(this.nuv).aPY()) {
-        paraml.e(1, a.2.c(this.nuv).getString(R.l.favorite_post_to_sns));
+      if (a.2.b(this.qaj).bwm()) {
+        paraml.e(1, a.2.c(this.qaj).getString(2131299779));
       }
-      paraml.e(3, a.2.c(this.nuv).getString(R.l.favorite_save_image));
-      localnb = (nb)this.nuv.nus.kbT.get(a.2.d(this.nuv));
-      if (localnb == null) {
-        break label265;
-      }
-      if (!bk.bl(localnb.bWI.result))
+      paraml.e(3, a.2.c(this.qaj).getString(2131299819));
+      a.a locala = (a.a)this.qaj.qag.mwr.get(a.2.d(this.qaj));
+      if ((locala != null) && (locala.mwA != null))
       {
-        if (!com.tencent.mm.plugin.scanner.a.wM(localnb.bWI.bIj)) {
-          break label172;
+        if (!bo.isNullOrNil(locala.mwA.cEy.result))
+        {
+          d locald = this.qaj.qag.mAF;
+          Object localObject2 = this.qaj.qag;
+          Context localContext = a.2.c(this.qaj);
+          Object localObject1 = locala.mwA;
+          if (!com.tencent.mm.plugin.scanner.a.CB(((ny)localObject1).cEy.cpE)) {
+            if (com.tencent.mm.plugin.scanner.a.ba(((ny)localObject1).cEy.cpE, ((ny)localObject1).cEy.result))
+            {
+              paraml = localContext.getString(2131302341);
+              localObject2 = new a.3((a)localObject2, (ny)localObject1, localContext);
+              if (!com.tencent.mm.plugin.scanner.a.ba(((ny)localObject1).cEy.cpE, ((ny)localObject1).cEy.result)) {
+                break label411;
+              }
+              localObject1 = new b(localContext);
+              if (!bo.isNullOrNil(locala.mwB)) {
+                break label402;
+              }
+              label305:
+              ((b)localObject1).setTitle(paraml);
+              ((b)localObject1).setSubtitle(localContext.getString(2131302340));
+              if (!bo.isNullOrNil(locala.mwC)) {
+                com.tencent.mm.at.a.a.ahM().a(locala.mwC, ((b)localObject1).getIcon());
+              }
+              ((b)localObject1).setOnClickListener((View.OnClickListener)localObject2);
+            }
+          }
+          for (paraml = (l)localObject1;; paraml = (l)localObject1)
+          {
+            locald.setFooterView(paraml);
+            AppMethodBeat.o(24337);
+            return;
+            if (com.tencent.mm.plugin.scanner.a.CA(((ny)localObject1).cEy.cpE))
+            {
+              paraml = localContext.getString(2131302335);
+              break;
+            }
+            paraml = localContext.getString(2131302336);
+            break;
+            label402:
+            paraml = locala.mwB;
+            break label305;
+            label411:
+            localObject1 = new com.tencent.mm.ui.widget.a.a(localContext);
+            ((com.tencent.mm.ui.widget.a.a)localObject1).setTitle(paraml);
+            ((com.tencent.mm.ui.widget.a.a)localObject1).setOnClickListener((View.OnClickListener)localObject2);
+          }
         }
-        paraml.e(4, a.2.c(this.nuv).getString(R.l.recog_qbar_of_image_file));
+      }
+      else
+      {
+        paraml = new nw();
+        paraml.cEv.filePath = a.2.d(this.qaj);
+        com.tencent.mm.sdk.b.a.ymk.l(paraml);
       }
     }
-    return;
-    label172:
-    if (com.tencent.mm.plugin.scanner.a.aD(localnb.bWI.bIj, localnb.bWI.result))
-    {
-      paraml.e(4, a.2.c(this.nuv).getString(R.l.recog_wxcode_of_image_file));
-      return;
-    }
-    if (com.tencent.mm.plugin.scanner.a.wL(localnb.bWI.bIj))
-    {
-      paraml.e(4, a.2.c(this.nuv).getString(R.l.recog_barcode_of_image_file));
-      return;
-    }
-    paraml.e(4, a.2.c(this.nuv).getString(R.l.recog_qbar_of_image_file));
-    return;
-    label265:
-    paraml = new mz();
-    paraml.bWF.filePath = a.2.d(this.nuv);
-    com.tencent.mm.sdk.b.a.udP.m(paraml);
+    AppMethodBeat.o(24337);
   }
 }
 

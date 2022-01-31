@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$4
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class b$4
   
   public final void run()
   {
-    a.g(b.a(this.pwh), this.dAA, false);
+    AppMethodBeat.i(25350);
+    a.g(b.a(this.sXN), this.euc, false);
+    AppMethodBeat.o(25350);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoiceTransTextUI$1
   implements View.OnClickListener
@@ -10,12 +11,14 @@ final class VoiceTransTextUI$1
   
   public final void onClick(View paramView)
   {
-    this.pyO.finish();
+    AppMethodBeat.i(25591);
+    this.taB.finish();
+    AppMethodBeat.o(25591);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.VoiceTransTextUI.1
  * JD-Core Version:    0.7.0.1
  */

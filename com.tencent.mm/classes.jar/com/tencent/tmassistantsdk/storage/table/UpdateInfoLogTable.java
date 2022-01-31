@@ -1,5 +1,7 @@
 package com.tencent.tmassistantsdk.storage.table;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class UpdateInfoLogTable
   extends BaseLogTable
 {
@@ -12,10 +14,12 @@ public class UpdateInfoLogTable
   {
     try
     {
+      AppMethodBeat.i(76211);
       if (mInstance == null) {
         mInstance = new UpdateInfoLogTable();
       }
       UpdateInfoLogTable localUpdateInfoLogTable = mInstance;
+      AppMethodBeat.o(76211);
       return localUpdateInfoLogTable;
     }
     finally {}
@@ -23,9 +27,14 @@ public class UpdateInfoLogTable
   
   protected String[] getAlterSQL(int paramInt)
   {
-    if (paramInt > 1) {
-      return new String[] { getCreateTableSQL() };
+    AppMethodBeat.i(76212);
+    if (paramInt > 1)
+    {
+      String str = getCreateTableSQL();
+      AppMethodBeat.o(76212);
+      return new String[] { str };
     }
+    AppMethodBeat.o(76212);
     return null;
   }
   
@@ -46,7 +55,7 @@ public class UpdateInfoLogTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.UpdateInfoLogTable
  * JD-Core Version:    0.7.0.1
  */

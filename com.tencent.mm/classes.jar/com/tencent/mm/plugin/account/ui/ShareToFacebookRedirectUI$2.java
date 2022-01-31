@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShareToFacebookRedirectUI$2
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class ShareToFacebookRedirectUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.fsJ.finish();
+    AppMethodBeat.i(125570);
+    this.gKl.finish();
+    AppMethodBeat.o(125570);
   }
 }
 

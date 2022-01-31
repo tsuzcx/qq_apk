@@ -1,125 +1,116 @@
 package com.tencent.mm.am;
 
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ai;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.sdk.platformtools.ab;
+
 public final class b
+  extends ai
 {
-  /* Error */
-  public static Object q(java.io.InputStream paramInputStream)
+  public final String getTag()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: new 10	java/io/ObjectInputStream
-    //   5: dup
-    //   6: aload_0
-    //   7: invokespecial 14	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   10: astore_1
-    //   11: aload_1
-    //   12: astore_0
-    //   13: aload_1
-    //   14: invokevirtual 18	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   17: astore_2
-    //   18: aload_2
-    //   19: astore_0
-    //   20: aload_1
-    //   21: invokevirtual 22	java/io/ObjectInputStream:close	()V
-    //   24: aload_0
-    //   25: areturn
-    //   26: astore_1
-    //   27: ldc 24
-    //   29: new 26	java/lang/StringBuilder
-    //   32: dup
-    //   33: ldc 28
-    //   35: invokespecial 31	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   38: aload_1
-    //   39: invokevirtual 35	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   42: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokestatic 48	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   51: aload_0
-    //   52: areturn
-    //   53: astore_2
-    //   54: aconst_null
-    //   55: astore_1
-    //   56: aload_1
-    //   57: astore_0
-    //   58: ldc 24
-    //   60: new 26	java/lang/StringBuilder
-    //   63: dup
-    //   64: ldc 50
-    //   66: invokespecial 31	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   69: aload_2
-    //   70: invokevirtual 35	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   73: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: invokestatic 48	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   82: aload_3
-    //   83: astore_0
-    //   84: aload_1
-    //   85: ifnull -61 -> 24
-    //   88: aload_1
-    //   89: invokevirtual 22	java/io/ObjectInputStream:close	()V
-    //   92: aconst_null
-    //   93: areturn
-    //   94: astore_0
-    //   95: ldc 24
-    //   97: new 26	java/lang/StringBuilder
-    //   100: dup
-    //   101: ldc 28
-    //   103: invokespecial 31	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   106: aload_0
-    //   107: invokevirtual 35	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   110: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   116: invokestatic 48	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   119: aconst_null
-    //   120: areturn
-    //   121: astore_1
-    //   122: aconst_null
-    //   123: astore_0
-    //   124: aload_0
-    //   125: ifnull +7 -> 132
-    //   128: aload_0
-    //   129: invokevirtual 22	java/io/ObjectInputStream:close	()V
-    //   132: aload_1
-    //   133: athrow
-    //   134: astore_0
-    //   135: ldc 24
-    //   137: new 26	java/lang/StringBuilder
-    //   140: dup
-    //   141: ldc 28
-    //   143: invokespecial 31	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   146: aload_0
-    //   147: invokevirtual 35	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   150: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   156: invokestatic 48	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   159: goto -27 -> 132
-    //   162: astore_1
-    //   163: goto -39 -> 124
-    //   166: astore_2
-    //   167: goto -111 -> 56
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	170	0	paramInputStream	java.io.InputStream
-    //   10	11	1	localObjectInputStream	java.io.ObjectInputStream
-    //   26	13	1	localException1	java.lang.Exception
-    //   55	34	1	localObject1	Object
-    //   121	12	1	localObject2	Object
-    //   162	1	1	localObject3	Object
-    //   17	2	2	localObject4	Object
-    //   53	17	2	localException2	java.lang.Exception
-    //   166	1	2	localException3	java.lang.Exception
-    //   1	82	3	localObject5	Object
-    // Exception table:
-    //   from	to	target	type
-    //   20	24	26	java/lang/Exception
-    //   2	11	53	java/lang/Exception
-    //   88	92	94	java/lang/Exception
-    //   2	11	121	finally
-    //   128	132	134	java/lang/Exception
-    //   13	18	162	finally
-    //   58	82	162	finally
-    //   13	18	166	java/lang/Exception
+    return "MicroMsg.App.BizPlaceTopDataTransfer";
+  }
+  
+  public final boolean kv(int paramInt)
+  {
+    return (paramInt != 0) && (paramInt < 637735215);
+  }
+  
+  public final void transfer(int paramInt)
+  {
+    AppMethodBeat.i(16430);
+    ab.d("MicroMsg.App.BizPlaceTopDataTransfer", "the previous version is %d", new Object[] { Integer.valueOf(paramInt) });
+    long l1;
+    long l2;
+    if (kv(paramInt))
+    {
+      ab.i("MicroMsg.App.BizPlaceTopDataTransfer", "begin biz place to top data transfer.");
+      l1 = System.currentTimeMillis();
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(336L, 0L, 1L, true);
+      aw.aaz();
+      com.tencent.mm.cg.h localh = c.Rq();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("select conv.username");
+      ((StringBuilder)localObject).append(" from ");
+      ((StringBuilder)localObject).append("rconversation");
+      ((StringBuilder)localObject).append(" as conv, ");
+      ((StringBuilder)localObject).append("rcontact");
+      ((StringBuilder)localObject).append(" as ct ");
+      ((StringBuilder)localObject).append(" where conv.");
+      ((StringBuilder)localObject).append("parentRef");
+      ((StringBuilder)localObject).append("='");
+      ((StringBuilder)localObject).append("officialaccounts");
+      ((StringBuilder)localObject).append("' and conv.");
+      ((StringBuilder)localObject).append("username");
+      ((StringBuilder)localObject).append(" = ct.");
+      ((StringBuilder)localObject).append("username");
+      ((StringBuilder)localObject).append(" and ct.");
+      ((StringBuilder)localObject).append("verifyFlag");
+      ((StringBuilder)localObject).append(" & ");
+      ((StringBuilder)localObject).append(8);
+      ((StringBuilder)localObject).append(" = 0");
+      localObject = ((StringBuilder)localObject).toString();
+      ab.v("MicroMsg.App.BizPlaceTopDataTransfer", "transfer query sql(%s)", new Object[] { localObject });
+      localObject = localh.a((String)localObject, null, 2);
+      if (localObject == null)
+      {
+        ab.i("MicroMsg.App.BizPlaceTopDataTransfer", "cursor is null.");
+        AppMethodBeat.o(16430);
+        return;
+      }
+      l2 = System.currentTimeMillis();
+      ab.i("MicroMsg.App.BizPlaceTopDataTransfer", "do biz place to top data transfer, query cost : %s msec.", new Object[] { Long.valueOf(l2 - l1) });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("update ");
+      localStringBuilder.append("rconversation");
+      localStringBuilder.append(" set ");
+      localStringBuilder.append("parentRef");
+      localStringBuilder.append("='' where ");
+      localStringBuilder.append("username");
+      localStringBuilder.append(" in (");
+      if (((Cursor)localObject).moveToFirst())
+      {
+        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(336L, 1L, 1L, true);
+        localStringBuilder.append("'");
+        localStringBuilder.append(((Cursor)localObject).getString(0));
+        localStringBuilder.append("'");
+        paramInt = 1;
+        while (((Cursor)localObject).moveToNext())
+        {
+          localStringBuilder.append(",");
+          localStringBuilder.append("'");
+          localStringBuilder.append(((Cursor)localObject).getString(0));
+          localStringBuilder.append("'");
+          paramInt += 1;
+        }
+      }
+      ((Cursor)localObject).close();
+      ab.i("MicroMsg.App.BizPlaceTopDataTransfer", "cursor count is 0.");
+      AppMethodBeat.o(16430);
+      return;
+      localStringBuilder.append(")");
+      String str = localStringBuilder.toString();
+      ab.i("MicroMsg.App.BizPlaceTopDataTransfer", "transfer update count(%d)", new Object[] { Integer.valueOf(paramInt) });
+      ab.v("MicroMsg.App.BizPlaceTopDataTransfer", "transfer update sql(%s)", new Object[] { str });
+      ((Cursor)localObject).close();
+      if (!localh.execSQL("rconversation", localStringBuilder.toString())) {
+        break label628;
+      }
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(336L, 2L, 1L, true);
+    }
+    for (;;)
+    {
+      long l3 = System.currentTimeMillis();
+      ab.i("MicroMsg.App.BizPlaceTopDataTransfer", "do biz place to top data transfer, update cost : %s msec,  total cost : %s msec.", new Object[] { Long.valueOf(l3 - l2), Long.valueOf(l3 - l1) });
+      AppMethodBeat.o(16430);
+      return;
+      label628:
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(336L, 3L, 1L, true);
+    }
   }
 }
 

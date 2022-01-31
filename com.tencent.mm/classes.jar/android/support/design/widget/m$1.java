@@ -10,8 +10,8 @@ final class m$1
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jO.jM == paramAnimator) {
-      this.jO.jM = null;
+    if (this.kM.kK == paramAnimator) {
+      this.kM.kK = null;
     }
   }
 }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.backup.c;
 
 public abstract interface a$a
 {
-  public abstract void b(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  public abstract void c(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
 }
 
 

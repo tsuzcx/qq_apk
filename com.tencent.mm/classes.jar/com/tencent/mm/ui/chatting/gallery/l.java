@@ -1,63 +1,83 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.as.d.a;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.at.d.a;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.HashSet;
 
 public final class l
   implements d.a
 {
-  private static l vxD;
-  HashSet<Long> vxE = new HashSet();
-  d.a vxF;
+  private static l zNP;
+  HashSet<Long> zNQ;
+  d.a zNR;
   
-  public static l cGI()
+  private l()
   {
-    if (vxD == null) {
-      vxD = new l();
+    AppMethodBeat.i(32399);
+    this.zNQ = new HashSet();
+    AppMethodBeat.o(32399);
+  }
+  
+  public static l dKQ()
+  {
+    AppMethodBeat.i(32400);
+    if (zNP == null) {
+      zNP = new l();
     }
-    return vxD;
+    l locall = zNP;
+    AppMethodBeat.o(32400);
+    return locall;
   }
   
   public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject)
   {
-    if (this.vxF != null) {
-      this.vxF.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject);
+    AppMethodBeat.i(32404);
+    if (this.zNR != null) {
+      this.zNR.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject);
     }
-    this.vxE.remove(Long.valueOf(paramLong2));
+    this.zNQ.remove(Long.valueOf(paramLong2));
+    AppMethodBeat.o(32404);
   }
   
   public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, m paramm)
   {
-    if (this.vxF != null) {
-      this.vxF.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject, paramInt3, paramInt4, paramm);
+    AppMethodBeat.i(32402);
+    if (this.zNR != null) {
+      this.zNR.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject, paramInt3, paramInt4, paramm);
     }
+    AppMethodBeat.o(32402);
   }
   
   public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, m paramm)
   {
-    if (this.vxF != null) {
-      this.vxF.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject, paramInt3, paramInt4, paramString, paramm);
+    AppMethodBeat.i(32403);
+    if (this.zNR != null) {
+      this.zNR.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject, paramInt3, paramInt4, paramString, paramm);
     }
     for (;;)
     {
-      this.vxE.remove(Long.valueOf(paramLong2));
+      this.zNQ.remove(Long.valueOf(paramLong2));
+      AppMethodBeat.o(32403);
       return;
-      au.Hx();
-      paramObject = com.tencent.mm.model.c.Fy().fd(paramLong2);
-      y.i("MicroMsg.ImageHDDownloadAndSaveMgr", "[oreh download_and_save] hdImg end at background, msgLocalId:%d", new Object[] { Long.valueOf(paramObject.field_msgId) });
-      c.b(ae.getContext(), paramObject, false);
+      aw.aaz();
+      paramObject = com.tencent.mm.model.c.YC().kB(paramLong2);
+      ab.i("MicroMsg.ImageHDDownloadAndSaveMgr", "[oreh download_and_save] hdImg end at background, msgLocalId:%d", new Object[] { Long.valueOf(paramObject.field_msgId) });
+      c.b(ah.getContext(), paramObject, false);
     }
   }
   
-  public final boolean ic(long paramLong)
+  public final boolean oO(long paramLong)
   {
-    return this.vxE.contains(Long.valueOf(paramLong));
+    AppMethodBeat.i(32401);
+    boolean bool = this.zNQ.contains(Long.valueOf(paramLong));
+    AppMethodBeat.o(32401);
+    return bool;
   }
 }
 

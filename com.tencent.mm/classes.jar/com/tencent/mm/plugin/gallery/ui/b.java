@@ -8,43 +8,46 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.AlbumItem;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.ImageMediaItem;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
-import com.tencent.mm.plugin.gallery.model.c;
+import com.tencent.mm.plugin.gallery.model.e;
 import com.tencent.mm.plugin.gallery.model.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.LinkedList;
 
 public final class b
   extends BaseAdapter
 {
-  private int kHp;
-  ArrayList<GalleryItem.AlbumItem> kIO;
-  GalleryItem.AlbumItem kIP;
-  String kIQ = "";
-  private int kIR = 0;
   private Context mContext;
+  private int ndz;
+  LinkedList<GalleryItem.AlbumItem> nfl;
+  GalleryItem.AlbumItem nfm;
+  String nfn;
+  private int nfo;
   
   public b(Context paramContext, int paramInt)
   {
+    AppMethodBeat.i(21447);
+    this.nfn = "";
+    this.nfo = 0;
     this.mContext = paramContext;
-    this.kIO = new ArrayList();
-    this.kHp = paramInt;
-    this.kIP = new GalleryItem.AlbumItem("", 0);
-    this.kIP.kGU = new GalleryItem.ImageMediaItem();
-    this.kIR = paramContext.getResources().getDimensionPixelSize(R.f.SmallPadding);
+    this.nfl = new LinkedList();
+    this.ndz = paramInt;
+    this.nfm = new GalleryItem.AlbumItem("", 0);
+    this.nfm.ndm = new GalleryItem.ImageMediaItem();
+    this.nfo = paramContext.getResources().getDimensionPixelSize(2131427854);
+    AppMethodBeat.o(21447);
   }
   
   public final int getCount()
   {
-    return this.kIO.size() + 1;
+    AppMethodBeat.i(21448);
+    int i = this.nfl.size();
+    AppMethodBeat.o(21448);
+    return i + 1;
   }
   
   public final long getItemId(int paramInt)
@@ -54,104 +57,120 @@ public final class b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    y.i("MicroMsg.GalleryAdapter", "duanyi test getview:" + paramInt);
-    GalleryItem.AlbumItem localAlbumItem = rW(paramInt);
+    AppMethodBeat.i(21450);
+    ab.i("MicroMsg.GalleryAdapter", "duanyi test getview:".concat(String.valueOf(paramInt)));
+    GalleryItem.AlbumItem localAlbumItem = wS(paramInt);
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(R.i.sd_card_medial_folder_item, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.mContext).inflate(2130970616, paramViewGroup, false);
       paramViewGroup = new a((byte)0);
-      paramViewGroup.kHQ = ((ImageView)paramView.findViewById(R.h.folder_thumb));
-      paramViewGroup.eXP = ((TextView)paramView.findViewById(R.h.folder_name));
-      paramViewGroup.kiI = ((ImageView)paramView.findViewById(R.h.video_mask));
-      paramViewGroup.kIS = ((TextView)paramView.findViewById(R.h.folder_count));
-      paramViewGroup.kIT = ((ImageView)paramView.findViewById(R.h.folder_selected_iv));
+      paramViewGroup.mZY = ((ImageView)paramView.findViewById(2131827461));
+      paramViewGroup.gpM = ((TextView)paramView.findViewById(2131827462));
+      paramViewGroup.mDn = ((ImageView)paramView.findViewById(2131825137));
+      paramViewGroup.nfp = ((TextView)paramView.findViewById(2131827463));
+      paramViewGroup.nfq = ((ImageView)paramView.findViewById(2131827464));
       paramView.setTag(paramViewGroup);
-      if (!this.kIQ.equals(localAlbumItem.kGT)) {
-        break label268;
+      if (!this.nfn.equals(localAlbumItem.ndl)) {
+        break label265;
       }
-      paramViewGroup.kIT.setVisibility(0);
-      label155:
+      paramViewGroup.nfq.setVisibility(0);
+      label148:
       if (paramInt != 0) {
-        break label315;
+        break label310;
       }
-      paramViewGroup.kHQ.setImageResource(R.g.pic_thumb_bg);
-      if (localAlbumItem.kGU != null) {
-        h.a(paramViewGroup.kHQ, localAlbumItem.kGU.getType(), localAlbumItem.aXs(), localAlbumItem.kGU.eAu, localAlbumItem.aXt());
+      paramViewGroup.mZY.setImageResource(2130839944);
+      if (localAlbumItem.ndm != null) {
+        h.a(paramViewGroup.mZY, localAlbumItem.ndm.getType(), localAlbumItem.Xi(), localAlbumItem.ndm.fQn, localAlbumItem.dbW());
       }
-      if (c.aXb().aXF() != 1) {
-        break label279;
+      if (e.bDQ().ndz != 1) {
+        break label276;
       }
-      paramViewGroup.eXP.setText(R.l.gallery_all_pic);
+      paramViewGroup.gpM.setText(2131300270);
     }
     for (;;)
     {
-      paramViewGroup.kHQ.setVisibility(0);
-      paramViewGroup.eXP.setVisibility(0);
-      paramViewGroup.kIS.setVisibility(8);
+      paramViewGroup.mZY.setVisibility(0);
+      paramViewGroup.gpM.setVisibility(0);
+      paramViewGroup.nfp.setVisibility(8);
+      AppMethodBeat.o(21450);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
       break;
-      label268:
-      paramViewGroup.kIT.setVisibility(4);
-      break label155;
-      label279:
-      if (c.aXb().aXF() == 3) {
-        paramViewGroup.eXP.setText(R.l.gallery_all_pic_and_video);
+      label265:
+      paramViewGroup.nfq.setVisibility(4);
+      break label148;
+      label276:
+      if (e.bDQ().ndz == 3) {
+        paramViewGroup.gpM.setText(2131300271);
       } else {
-        paramViewGroup.eXP.setText(R.l.gallery_all_video);
+        paramViewGroup.gpM.setText(2131300272);
       }
     }
-    label315:
-    paramViewGroup.kHQ.setVisibility(0);
-    paramViewGroup.eXP.setVisibility(0);
-    paramViewGroup.eXP.setText(localAlbumItem.kGT);
-    paramViewGroup.kIS.setVisibility(0);
-    paramViewGroup.kIS.setText(this.mContext.getString(R.l.gallery_pic_count, new Object[] { Integer.valueOf(localAlbumItem.bLO) }));
+    label310:
+    paramViewGroup.mZY.setVisibility(0);
+    paramViewGroup.gpM.setVisibility(0);
+    paramViewGroup.gpM.setText(localAlbumItem.ndl);
+    paramViewGroup.nfp.setVisibility(0);
+    paramViewGroup.nfp.setText(this.mContext.getString(2131300284, new Object[] { Integer.valueOf(localAlbumItem.cti) }));
     Object localObject;
-    if ((paramViewGroup.kiI != null) && (localAlbumItem.kGU != null))
+    if ((paramViewGroup.mDn != null) && (localAlbumItem.ndm != null))
     {
-      localObject = paramViewGroup.kiI;
-      if (localAlbumItem.kGU.getType() != 2) {
-        break label479;
+      localObject = paramViewGroup.mDn;
+      if (localAlbumItem.ndm.getType() == 2)
+      {
+        paramInt = 0;
+        ((ImageView)localObject).setVisibility(paramInt);
       }
     }
-    label479:
-    for (paramInt = 0;; paramInt = 8)
+    else
     {
-      ((ImageView)localObject).setVisibility(paramInt);
-      localObject = localAlbumItem.aXs();
-      if ((bk.bl((String)localObject)) || (localAlbumItem.kGU == null)) {
-        break;
+      localObject = localAlbumItem.Xi();
+      if ((bo.isNullOrNil((String)localObject)) || (localAlbumItem.ndm == null)) {
+        break label485;
       }
-      h.a(paramViewGroup.kHQ, localAlbumItem.kGU.getType(), (String)localObject, localAlbumItem.kGU.eAu, localAlbumItem.aXt());
-      return paramView;
+      h.a(paramViewGroup.mZY, localAlbumItem.ndm.getType(), (String)localObject, localAlbumItem.ndm.fQn, localAlbumItem.dbW());
     }
-    if ((localAlbumItem.kGU != null) && (localAlbumItem.kGU.getType() == 2))
+    for (;;)
     {
-      h.a(paramViewGroup.kHQ, localAlbumItem.kGU.getType(), null, localAlbumItem.kGU.eAu, localAlbumItem.aXt());
+      AppMethodBeat.o(21450);
       return paramView;
+      paramInt = 8;
+      break;
+      label485:
+      if ((localAlbumItem.ndm != null) && (localAlbumItem.ndm.getType() == 2))
+      {
+        h.a(paramViewGroup.mZY, localAlbumItem.ndm.getType(), null, localAlbumItem.ndm.fQn, localAlbumItem.dbW());
+      }
+      else
+      {
+        ab.e("MicroMsg.GalleryAdapter", "get folder failed");
+        paramViewGroup.mZY.setVisibility(8);
+        paramViewGroup.gpM.setVisibility(8);
+      }
     }
-    y.e("MicroMsg.GalleryAdapter", "get folder failed");
-    paramViewGroup.kHQ.setVisibility(8);
-    paramViewGroup.eXP.setVisibility(8);
-    return paramView;
   }
   
-  public final GalleryItem.AlbumItem rW(int paramInt)
+  public final GalleryItem.AlbumItem wS(int paramInt)
   {
-    if (paramInt == 0) {
-      return this.kIP;
+    AppMethodBeat.i(21449);
+    if (paramInt == 0)
+    {
+      localAlbumItem = this.nfm;
+      AppMethodBeat.o(21449);
+      return localAlbumItem;
     }
-    return (GalleryItem.AlbumItem)this.kIO.get(paramInt - 1);
+    GalleryItem.AlbumItem localAlbumItem = (GalleryItem.AlbumItem)this.nfl.get(paramInt - 1);
+    AppMethodBeat.o(21449);
+    return localAlbumItem;
   }
   
-  private static final class a
+  static final class a
   {
-    public TextView eXP;
-    public ImageView kHQ;
-    public TextView kIS;
-    public ImageView kIT;
-    public ImageView kiI;
+    public TextView gpM;
+    public ImageView mDn;
+    public ImageView mZY;
+    public TextView nfp;
+    public ImageView nfq;
   }
 }
 

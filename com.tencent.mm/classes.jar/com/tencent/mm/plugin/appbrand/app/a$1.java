@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.mm.plugin.appbrand.launching.h;
+import com.tencent.mm.plugin.appbrand.launching.m;
 
 final class a$1
-  implements a.a<h>
+  implements a.a<m>
 {}
 
 

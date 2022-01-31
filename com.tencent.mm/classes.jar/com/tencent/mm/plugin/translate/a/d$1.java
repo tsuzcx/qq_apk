@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.translate.a;
 
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class d$1
-  implements am.a
+  implements ap.a
 {
   d$1(d paramd) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (this.pKQ.pKM)
+    AppMethodBeat.i(26068);
+    if (this.tpc.toY)
     {
-      y.e("MicroMsg.WorkingTranslate", "this work is time out, index: %s", new Object[] { Integer.valueOf(this.pKQ.index) });
-      this.pKQ.bOX();
-      this.pKQ.pKO.a(-1, this.pKQ.pKL, null);
+      ab.e("MicroMsg.WorkingTranslate", "this work is time out, index: %s", new Object[] { Integer.valueOf(this.tpc.index) });
+      this.tpc.cKU();
+      this.tpc.tpa.a(-1, this.tpc.toX, null);
     }
+    AppMethodBeat.o(26068);
     return false;
   }
 }

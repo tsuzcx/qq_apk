@@ -3,6 +3,7 @@ package com.tencent.mm.ui.tools;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShareImageRedirectUI$2
   implements DialogInterface.OnClickListener
@@ -11,8 +12,10 @@ final class ShareImageRedirectUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.weF.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
-    this.weF.finish();
+    AppMethodBeat.i(34929);
+    this.Axv.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    this.Axv.finish();
+    AppMethodBeat.o(34929);
   }
 }
 

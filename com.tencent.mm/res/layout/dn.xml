@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/uf" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/p1"
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/a4c" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/d2" android:gravity="center" android:id="@id/ug" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ld" />
-    <android.support.v7.widget.RecyclerView android:id="@id/uh" android:background="@color/d5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:paddingLeft="@dimen/la" android:paddingRight="@dimen/la" android:layout_width="wrap_content" android:layout_height="@dimen/n9">
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/ev" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView android:background="@color/a0a" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

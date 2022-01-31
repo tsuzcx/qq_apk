@@ -1,15 +1,19 @@
 package com.tencent.mm.plugin.appbrand.widget.input.autofill;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class b$a
   implements h
 {
-  h hwW;
+  h jpg;
   
   public void a(String paramString, h.a parama)
   {
-    if (this.hwW != null) {
-      this.hwW.a(paramString, parama);
+    AppMethodBeat.i(123889);
+    if (this.jpg != null) {
+      this.jpg.a(paramString, parama);
     }
+    AppMethodBeat.o(123889);
   }
 }
 

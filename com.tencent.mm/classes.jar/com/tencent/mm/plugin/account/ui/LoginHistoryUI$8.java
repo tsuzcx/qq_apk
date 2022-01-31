@@ -9,7 +9,7 @@ final class LoginHistoryUI$8
   
   public final void a(ProgressDialog paramProgressDialog)
   {
-    this.fnc.dnm = paramProgressDialog;
+    this.gEw.eeN = paramProgressDialog;
   }
 }
 

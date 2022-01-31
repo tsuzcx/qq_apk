@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.location.model;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class o$1
-  extends ah
+  extends ak
 {
   o$1(o paramo, Looper paramLooper)
   {
@@ -14,17 +15,23 @@ final class o$1
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(113383);
     super.handleMessage(paramMessage);
-    if (paramMessage == null) {
+    if (paramMessage == null)
+    {
+      AppMethodBeat.o(113383);
       return;
     }
-    o localo = this.lEk;
+    o localo = this.obx;
     switch (paramMessage.what)
     {
-    default: 
-      return;
     }
-    localo.beg();
+    for (;;)
+    {
+      AppMethodBeat.o(113383);
+      return;
+      localo.bLA();
+    }
   }
 }
 

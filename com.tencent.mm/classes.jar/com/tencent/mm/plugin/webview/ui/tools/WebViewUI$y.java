@@ -1,115 +1,53 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.model.an;
-import com.tencent.mm.plugin.webview.model.an.i;
-import com.tencent.mm.plugin.webview.model.an.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.qqvideo.proxy.api.IUtils;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.b;
+import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WebViewUI$y
-  implements IUtils
+  implements b
 {
   private WebViewUI$y(WebViewUI paramWebViewUI) {}
   
-  public final void httpproxyReport(String... paramVarArgs)
+  public final boolean ait(String paramString)
   {
-    Object localObject = this.rpH.rfg.ccn();
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
+    AppMethodBeat.i(7979);
+    try
     {
-      paramVarArgs = this.rpH.rfg.ccn();
-      localObject = this.rpH.gGn;
-      if ((paramVarArgs.rgI != null) && (paramVarArgs.rgI.size() != 0) && (localObject != null)) {}
-    }
-    else
-    {
-      if (((an.j)localObject).rgI == null) {
-        ((an.j)localObject).rgI = new ArrayList();
-      }
-      for (;;)
+      if (!this.vgz.igU.isSDCardAvailable())
       {
-        int i = 0;
-        while (i < paramVarArgs.length)
-        {
-          y.i("MicroMsg.WebviewReporter", "WebViewVideoProxyReporter report info = %s", new Object[] { paramVarArgs[i] });
-          ((an.j)localObject).rgI.add(paramVarArgs[i]);
-          i += 1;
-        }
-        break;
-        ((an.j)localObject).rgI.clear();
+        this.vgz.igU.a(2, null, this.vgz.hashCode());
+        AppMethodBeat.o(7979);
+        return true;
       }
     }
-    e.a((d)localObject, 12033, paramVarArgs.rgI);
-    paramVarArgs.rgI.clear();
+    catch (Exception paramString)
+    {
+      ab.e("MicroMsg.WebViewUI", "edw handleUrl, ex = " + paramString.getMessage());
+      AppMethodBeat.o(7979);
+      return false;
+    }
+    WebViewUI.f(this.vgz, paramString.substring(19));
+    ab.i("MicroMsg.WebViewUI", "viewimage currentUrl :" + WebViewUI.R(this.vgz));
+    u.a(this.vgz.pOd, "weixin://private/gethtml/", "'<head>' + document.getElementsByTagName('head')[0].innerHTML + '</head><body>' + document.getElementsByTagName('body')[0].innerHTML + '</body>'", WebViewUI.S(this.vgz));
+    AppMethodBeat.o(7979);
+    return true;
   }
   
-  public final void idKeyReport(String paramString1, String paramString2, String paramString3)
+  public final boolean aiz(String paramString)
   {
-    y.i("MicroMsg.WebViewUI", "idkey report, id = %s, key = %s, value = %s", new Object[] { paramString1, paramString2, paramString3 });
-    if ((!bk.bl(paramString1)) && (!bk.bl(paramString2)) && (!bk.bl(paramString3)))
+    AppMethodBeat.i(7978);
+    if (bo.isNullOrNil(paramString))
     {
-      int i = bk.getInt(paramString1, 0);
-      int j = bk.getInt(paramString2, 0);
-      int k = bk.getInt(paramString3, 0);
-      h.nFQ.a(i, j, k, false);
+      AppMethodBeat.o(7978);
+      return false;
     }
-  }
-  
-  public final void javaUtilLog(int paramInt, String paramString1, String paramString2)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 3: 
-      y.d(paramString1, paramString2);
-      return;
-    case 6: 
-      y.e(paramString1, paramString2);
-      return;
-    case 4: 
-      y.i(paramString1, paramString2);
-      return;
-    case 2: 
-      y.v(paramString1, paramString2);
-      return;
-    }
-    y.w(paramString1, paramString2);
-  }
-  
-  public final void kvReport(String... paramVarArgs)
-  {
-    Object localObject = this.rpH.rfg.cco();
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
-    {
-      paramVarArgs = this.rpH.rfg.cco();
-      localObject = this.rpH.gGn;
-      if ((paramVarArgs.rgI != null) && (paramVarArgs.rgI.size() != 0) && (localObject != null)) {}
-    }
-    else
-    {
-      if (((an.i)localObject).rgI == null) {
-        ((an.i)localObject).rgI = new ArrayList();
-      }
-      for (;;)
-      {
-        int i = 0;
-        while (i < paramVarArgs.length)
-        {
-          y.i("MicroMsg.WebviewReporter", "WebViewVideoDownloadReporter report info = %s", new Object[] { paramVarArgs[i] });
-          ((an.i)localObject).rgI.add(paramVarArgs[i]);
-          i += 1;
-        }
-        break;
-        ((an.i)localObject).rgI.clear();
-      }
-    }
-    e.a((d)localObject, 12666, paramVarArgs.rgI);
-    paramVarArgs.rgI.clear();
+    boolean bool = u.x(paramString, "weixin://viewimage/");
+    AppMethodBeat.o(7978);
+    return bool;
   }
 }
 

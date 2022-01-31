@@ -1,5 +1,6 @@
 package com.tencent.luggage.bridge;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -8,18 +9,22 @@ class e
 {
   protected e(b paramb)
   {
-    this.bhj = paramb;
-    this.bhk = new JSONObject();
+    AppMethodBeat.i(90717);
+    this.bxJ = paramb;
+    this.bxK = new JSONObject();
+    AppMethodBeat.o(90717);
   }
   
-  final void b(Map<String, Object> paramMap)
+  final void c(Map<String, Object> paramMap)
   {
-    this.bhk = new JSONObject(paramMap);
+    AppMethodBeat.i(90718);
+    this.bxK = new JSONObject(paramMap);
+    AppMethodBeat.o(90718);
   }
   
   final void c(JSONObject paramJSONObject)
   {
-    this.bhk = paramJSONObject;
+    this.bxK = paramJSONObject;
   }
 }
 

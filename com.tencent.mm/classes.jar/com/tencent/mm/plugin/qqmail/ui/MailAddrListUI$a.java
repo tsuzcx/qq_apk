@@ -7,14 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import com.tencent.mm.plugin.qqmail.b.d;
-import com.tencent.mm.plugin.qqmail.b.e;
-import com.tencent.mm.plugin.qqmail.b.f;
-import com.tencent.mm.plugin.qqmail.b.g;
-import com.tencent.mm.plugin.qqmail.b.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.a;
 import com.tencent.mm.plugin.qqmail.b.o;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,21 +19,40 @@ final class MailAddrListUI$a
   extends BaseAdapter
 {
   private final Context context;
-  boolean nib = false;
-  boolean nic = false;
-  Map<String, o> nid = new HashMap();
+  boolean pNo;
+  boolean pNp;
+  Map<String, o> pNq;
   
   public MailAddrListUI$a(MailAddrListUI paramMailAddrListUI, Context paramContext)
   {
+    AppMethodBeat.i(68318);
+    this.pNo = false;
+    this.pNp = false;
+    this.pNq = new HashMap();
     this.context = paramContext;
+    AppMethodBeat.o(68318);
+  }
+  
+  private int BZ(int paramInt)
+  {
+    if (this.pNp) {
+      return paramInt;
+    }
+    if (paramInt == 0) {
+      return 0;
+    }
+    return paramInt - 1;
   }
   
   private static String d(o paramo)
   {
-    if (paramo == null) {
+    AppMethodBeat.i(68324);
+    if (paramo == null)
+    {
+      AppMethodBeat.o(68324);
       return null;
     }
-    paramo = a.Le(paramo.ndQ);
+    paramo = a.Xn(paramo.pJg);
     if (paramo.length() > 1) {}
     for (char c = paramo.charAt(0);; c = '~') {
       switch (c)
@@ -45,32 +60,49 @@ final class MailAddrListUI$a
       case '|': 
       case '}': 
       default: 
-        if (!bk.m(c)) {
-          break label102;
+        if (!bo.C(c)) {
+          break label130;
         }
+        AppMethodBeat.o(68324);
         return String.valueOf(c);
       }
     }
     c = paramo.charAt(1);
-    if (bk.n(c)) {
+    if (bo.D(c))
+    {
+      AppMethodBeat.o(68324);
       return String.valueOf(c);
     }
+    AppMethodBeat.o(68324);
     return "~";
+    AppMethodBeat.o(68324);
     return "~";
-    label102:
+    label130:
+    AppMethodBeat.o(68324);
     return "~";
   }
   
   private TextView getTitleTextView()
   {
+    AppMethodBeat.i(68322);
     TextView localTextView = new TextView(this.context);
-    localTextView.setBackgroundResource(b.e.list_thicklinecell_bg);
+    localTextView.setBackgroundResource(2130839285);
     localTextView.setTextColor(-16777216);
-    localTextView.setTextSize(0, this.nia.getResources().getDimensionPixelSize(b.d.HintTextSize));
-    int i = this.nia.getResources().getDimensionPixelSize(b.d.LargePadding);
-    int j = this.nia.getResources().getDimensionPixelSize(b.d.SmallPadding);
+    localTextView.setTextSize(0, this.pNn.getResources().getDimensionPixelSize(2131427758));
+    int i = this.pNn.getResources().getDimensionPixelSize(2131427772);
+    int j = this.pNn.getResources().getDimensionPixelSize(2131427854);
     localTextView.setPadding(j, i, j, j);
+    AppMethodBeat.o(68322);
     return localTextView;
+  }
+  
+  public final o Ca(int paramInt)
+  {
+    AppMethodBeat.i(68325);
+    paramInt = BZ(paramInt);
+    o localo = (o)MailAddrListUI.c(this.pNn).get(paramInt);
+    AppMethodBeat.o(68325);
+    return localo;
   }
   
   public final boolean areAllItemsEnabled()
@@ -78,32 +110,42 @@ final class MailAddrListUI$a
     return false;
   }
   
-  public final int bug()
-  {
-    return this.nid.size();
-  }
-  
   public final void c(o paramo)
   {
-    this.nid.put(paramo.lCF, paramo);
+    AppMethodBeat.i(68319);
+    this.pNq.put(paramo.nZR, paramo);
+    AppMethodBeat.o(68319);
+  }
+  
+  public final int ces()
+  {
+    AppMethodBeat.i(68320);
+    int i = this.pNq.size();
+    AppMethodBeat.o(68320);
+    return i;
   }
   
   public final int getCount()
   {
-    int j = MailAddrListUI.c(this.nia).size();
-    int i;
-    if (j == 0) {
-      if (this.nib) {
-        i = 1;
-      }
-    }
-    do
+    AppMethodBeat.i(68321);
+    int i = MailAddrListUI.c(this.pNn).size();
+    if (i == 0)
     {
-      return i;
+      if (this.pNo)
+      {
+        AppMethodBeat.o(68321);
+        return 1;
+      }
+      AppMethodBeat.o(68321);
       return 0;
-      i = j;
-    } while (this.nic);
-    return j + 1;
+    }
+    if (this.pNp)
+    {
+      AppMethodBeat.o(68321);
+      return i;
+    }
+    AppMethodBeat.o(68321);
+    return i + 1;
   }
   
   public final long getItemId(int paramInt)
@@ -113,99 +155,99 @@ final class MailAddrListUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(68323);
     if (paramInt == 0)
     {
-      if (this.nib)
+      if (this.pNo)
       {
         paramView = getTitleTextView();
-        paramView.setText(b.j.plugin_qqmail_composeui_addr_list_search_empty);
-        paramInt = this.nia.getResources().getDimensionPixelSize(b.d.LargePadding);
+        paramView.setText(2131302118);
+        paramInt = this.pNn.getResources().getDimensionPixelSize(2131427772);
         paramView.setPadding(paramInt, paramInt, paramInt, paramInt);
-        paramView.setTextSize(0, this.nia.getResources().getDimensionPixelSize(b.d.BigTextSize));
+        paramView.setTextSize(0, this.pNn.getResources().getDimensionPixelSize(2131427501));
         paramView.setGravity(17);
+        AppMethodBeat.o(68323);
         return paramView;
       }
-      if (!this.nic)
+      if (!this.pNp)
       {
         paramView = getTitleTextView();
-        paramView.setText(b.j.plugin_qqmail_composeui_addr_list_recent_contacts);
+        paramView.setText(2131302117);
+        AppMethodBeat.o(68323);
         return paramView;
       }
     }
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramViewGroup = new MailAddrListUI.a.a(this);
-      paramView = View.inflate(this.context, b.g.qqmail_addrlist_item, null);
-      paramViewGroup.nie = ((TextView)paramView.findViewById(b.f.qqmail_addrlist_item_category));
-      paramViewGroup.fhD = ((TextView)paramView.findViewById(b.f.qqmail_addrlist_item_name_tv));
-      paramViewGroup.nif = ((TextView)paramView.findViewById(b.f.qqmail_addrlist_item_addr_iv));
-      paramViewGroup.eXQ = ((CheckBox)paramView.findViewById(b.f.qqmail_addrlist_item_select_cb));
+      paramViewGroup = new a();
+      paramView = View.inflate(this.context, 2130970482, null);
+      paramViewGroup.pNr = ((TextView)paramView.findViewById(2131826883));
+      paramViewGroup.gzk = ((TextView)paramView.findViewById(2131826885));
+      paramViewGroup.pNs = ((TextView)paramView.findViewById(2131826886));
+      paramViewGroup.gpN = ((CheckBox)paramView.findViewById(2131826887));
       paramView.setTag(paramViewGroup);
-      o localo = wo(paramInt);
-      if ((this.nic) || (paramInt <= 10)) {
-        break label365;
+      o localo = Ca(paramInt);
+      if ((this.pNp) || (paramInt <= 10)) {
+        break label376;
       }
-      Object localObject = wo(paramInt - 1);
+      Object localObject = Ca(paramInt - 1);
       if (paramInt == 11) {
         localObject = null;
       }
       String str = d(localo);
       localObject = d((o)localObject);
       if (str == null) {
-        break label353;
+        break label364;
       }
       if (str.equals(localObject)) {
-        break label341;
+        break label352;
       }
-      paramViewGroup.nie.setText(str.toUpperCase());
-      paramViewGroup.nie.setVisibility(0);
-      label273:
-      paramViewGroup.fhD.setText(localo.name);
-      paramViewGroup.nif.setText(localo.lCF);
-      paramViewGroup = paramViewGroup.eXQ;
-      if (this.nid.get(localo.lCF) == null) {
-        break label377;
+      paramViewGroup.pNr.setText(str.toUpperCase());
+      paramViewGroup.pNr.setVisibility(0);
+      label279:
+      paramViewGroup.gzk.setText(localo.name);
+      paramViewGroup.pNs.setText(localo.nZR);
+      paramViewGroup = paramViewGroup.gpN;
+      if (this.pNq.get(localo.nZR) == null) {
+        break label388;
       }
     }
-    label341:
-    label353:
-    label365:
-    label377:
+    label388:
     for (boolean bool = true;; bool = false)
     {
       paramViewGroup.setChecked(bool);
+      AppMethodBeat.o(68323);
       return paramView;
-      paramViewGroup = (MailAddrListUI.a.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
       break;
-      paramViewGroup.nie.setVisibility(8);
-      break label273;
-      paramViewGroup.nie.setVisibility(8);
-      break label273;
-      paramViewGroup.nie.setVisibility(8);
-      break label273;
+      label352:
+      paramViewGroup.pNr.setVisibility(8);
+      break label279;
+      label364:
+      paramViewGroup.pNr.setVisibility(8);
+      break label279;
+      label376:
+      paramViewGroup.pNr.setVisibility(8);
+      break label279;
     }
   }
   
   public final boolean isEnabled(int paramInt)
   {
     if (paramInt == 0) {
-      return this.nic;
+      return this.pNp;
     }
     return true;
   }
   
-  public final o wo(int paramInt)
+  final class a
   {
-    if (this.nic) {}
-    for (;;)
-    {
-      return (o)MailAddrListUI.c(this.nia).get(paramInt);
-      if (paramInt == 0) {
-        paramInt = 0;
-      } else {
-        paramInt -= 1;
-      }
-    }
+    CheckBox gpN;
+    TextView gzk;
+    TextView pNr;
+    TextView pNs;
+    
+    a() {}
   }
 }
 

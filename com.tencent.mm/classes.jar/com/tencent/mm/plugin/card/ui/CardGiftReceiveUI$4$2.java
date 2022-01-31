@@ -4,10 +4,10 @@ import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x;
-import com.tencent.mm.plugin.card.a.f;
 import com.tencent.mm.plugin.card.model.CardGiftInfo;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class CardGiftReceiveUI$4$2
   implements Runnable
@@ -16,24 +16,27 @@ final class CardGiftReceiveUI$4$2
   
   public final void run()
   {
-    if (CardGiftReceiveUI.f(this.iuw.iuv).getVisibility() != 8) {
-      CardGiftReceiveUI.f(this.iuw.iuv).setVisibility(8);
+    AppMethodBeat.i(88419);
+    if (CardGiftReceiveUI.f(this.kvB.kvA).getVisibility() != 8) {
+      CardGiftReceiveUI.f(this.kvB.kvA).setVisibility(8);
     }
-    if ((!bk.bl(this.eGX)) && (!bk.bl(CardGiftReceiveUI.b(this.iuw.iuv).ilI)) && (this.eGX.equals(CardGiftReceiveUI.b(this.iuw.iuv).ilI))) {
-      CardGiftReceiveUI.h(this.iuw.iuv).setVisibility(0);
+    if ((!bo.isNullOrNil(this.fWN)) && (!bo.isNullOrNil(CardGiftReceiveUI.b(this.kvB.kvA).kmF)) && (this.fWN.equals(CardGiftReceiveUI.b(this.kvB.kvA).kmF))) {
+      CardGiftReceiveUI.h(this.kvB.kvA).setVisibility(0);
     }
     Bitmap localBitmap;
     for (;;)
     {
-      localBitmap = x.pg(this.val$filePath);
+      localBitmap = x.wx(this.val$filePath);
       if (localBitmap != null) {
         break;
       }
-      CardGiftReceiveUI.i(this.iuw.iuv).setImageResource(a.f.download_image_icon);
+      CardGiftReceiveUI.i(this.kvB.kvA).setImageResource(2131231253);
+      AppMethodBeat.o(88419);
       return;
-      CardGiftReceiveUI.h(this.iuw.iuv).setVisibility(8);
+      CardGiftReceiveUI.h(this.kvB.kvA).setVisibility(8);
     }
-    CardGiftReceiveUI.i(this.iuw.iuv).setImageBitmap(localBitmap);
+    CardGiftReceiveUI.i(this.kvB.kvA).setImageBitmap(localBitmap);
+    AppMethodBeat.o(88419);
   }
 }
 

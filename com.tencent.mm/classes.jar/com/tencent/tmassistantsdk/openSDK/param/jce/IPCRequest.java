@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.openSDK.param.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class IPCRequest
   extends JceStruct
@@ -22,6 +23,7 @@ public final class IPCRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(75999);
     if (cache_head == null) {
       cache_head = new IPCHead();
     }
@@ -33,14 +35,17 @@ public final class IPCRequest
       ((byte[])arrayOfByte)[0] = 0;
     }
     this.body = ((byte[])paramJceInputStream.read(cache_body, 1, false));
+    AppMethodBeat.o(75999);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(75998);
     paramJceOutputStream.write(this.head, 0);
     if (this.body != null) {
       paramJceOutputStream.write(this.body, 1);
     }
+    AppMethodBeat.o(75998);
   }
 }
 

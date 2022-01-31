@@ -1,34 +1,44 @@
 package com.tencent.mm.plugin.game.commlib;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class e
 {
-  private static LinkedList<String> kMe = new LinkedList();
-  private static final String kMf = ae.getPackageName();
-  private static final String kMg = ae.getPackageName() + ":tools";
+  private static LinkedList<String> niY;
+  private static final String niZ;
+  private static final String nja;
   
   static
   {
-    kMe.add(kMg);
+    AppMethodBeat.i(116988);
+    niY = new LinkedList();
+    niZ = ah.getPackageName();
+    nja = ah.getPackageName() + ":tools";
+    niY.add(nja);
+    AppMethodBeat.o(116988);
   }
   
-  public static void EA(String paramString)
+  public static void PO(String paramString)
   {
-    if ((paramString.equals(kMf)) || (kMe.contains(paramString))) {
-      a.aYj();
+    AppMethodBeat.i(116986);
+    if ((paramString.equals(niZ)) || (niY.contains(paramString))) {
+      a.bEY();
     }
+    AppMethodBeat.o(116986);
   }
   
-  public static void aYs()
+  public static void bFk()
   {
-    Iterator localIterator = kMe.iterator();
+    AppMethodBeat.i(116987);
+    Iterator localIterator = niY.iterator();
     while (localIterator.hasNext()) {
       f.a((String)localIterator.next(), null, e.a.class, null);
     }
+    AppMethodBeat.o(116987);
   }
 }
 

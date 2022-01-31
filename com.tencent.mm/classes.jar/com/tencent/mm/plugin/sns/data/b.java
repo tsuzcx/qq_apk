@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.sns.data;
 
-import com.tencent.mm.plugin.sns.ui.be;
+import com.tencent.mm.plugin.sns.ui.bc;
 
 public final class b
 {
-  public String bJQ;
-  public long eAA;
-  public String fVM;
-  public be omM;
-  public long omN = 0L;
+  public long cIo;
+  public String crk;
+  public String hpq;
   public int position;
+  public bc rba;
+  public long rbb = 0L;
   
-  public b(be parambe, int paramInt, String paramString1, long paramLong, String paramString2)
+  public b(bc parambc, int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    this.omM = parambe;
+    this.rba = parambc;
     this.position = paramInt;
-    this.bJQ = paramString1;
-    this.eAA = paramLong;
-    this.fVM = paramString2;
+    this.crk = paramString1;
+    this.cIo = paramLong;
+    this.hpq = paramString2;
   }
 }
 

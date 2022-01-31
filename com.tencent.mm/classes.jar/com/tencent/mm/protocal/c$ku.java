@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$ku
+final class c$ku
   extends c.g
 {
-  public c$ku()
+  c$ku()
   {
-    super("WNNativeAsyncCallback", "WNNativeAsyncCallback", 10006, false);
+    super("updateAppMessageShareData", "updateAppMessageShareData", 326, false);
   }
 }
 

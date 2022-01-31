@@ -3,7 +3,8 @@ package com.tencent.mm.ui.base;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMEditText;
 
@@ -14,17 +15,19 @@ final class h$12
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(106415);
     boolean bool = true;
-    if (this.qHy != null) {
-      bool = this.qHy.m(this.uUb.getText().toString().trim());
+    if (this.uwb != null) {
+      bool = this.uwb.onFinish(this.ziC.getText().toString().trim());
     }
     if (bool)
     {
       paramDialogInterface.dismiss();
       if ((this.val$context instanceof MMActivity)) {
-        ai.d(new h.12.1(this));
+        al.d(new h.12.1(this));
       }
     }
+    AppMethodBeat.o(106415);
   }
 }
 

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.Map;
 
 public final class m$c
@@ -11,25 +12,30 @@ public final class m$c
   public String thumbUrl;
   public String title;
   
-  public static c My(String paramString)
+  public static c Zg(String paramString)
   {
-    paramString = bn.s(paramString, "product");
-    if (paramString != null) {
+    AppMethodBeat.i(24673);
+    Map localMap = br.F(paramString, "product");
+    if (localMap != null) {}
+    for (;;)
+    {
       try
       {
-        c localc = new c();
-        localc.title = bk.pm((String)paramString.get(".product.title"));
-        localc.thumbUrl = bk.pm((String)paramString.get(".product.thumburl"));
-        localc.id = bk.pm((String)paramString.get(".product.product_id"));
-        return localc;
+        paramString = new c();
+        paramString.title = bo.nullAsNil((String)localMap.get(".product.title"));
+        paramString.thumbUrl = bo.nullAsNil((String)localMap.get(".product.thumburl"));
+        paramString.id = bo.nullAsNil((String)localMap.get(".product.product_id"));
+        AppMethodBeat.o(24673);
+        return paramString;
       }
       catch (Exception paramString)
       {
-        y.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
-        return null;
+        ab.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
+        paramString = null;
+        continue;
       }
+      paramString = null;
     }
-    return null;
   }
 }
 

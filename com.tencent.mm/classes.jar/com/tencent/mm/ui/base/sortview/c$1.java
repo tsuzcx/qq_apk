@@ -1,13 +1,18 @@
 package com.tencent.mm.ui.base.sortview;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.List;
+
 final class c$1
   implements Runnable
 {
-  c$1(c paramc) {}
+  c$1(c paramc, List paramList) {}
   
   public final void run()
   {
-    this.vel.dM(c.a(this.vel));
+    AppMethodBeat.i(107309);
+    c.a(this.zsL, this.zsK);
+    AppMethodBeat.o(107309);
   }
 }
 

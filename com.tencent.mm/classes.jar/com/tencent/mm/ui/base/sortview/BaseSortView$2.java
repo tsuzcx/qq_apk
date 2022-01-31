@@ -3,6 +3,7 @@ package com.tencent.mm.ui.base.sortview;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseSortView$2
   implements AdapterView.OnItemClickListener
@@ -11,9 +12,11 @@ final class BaseSortView$2
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (BaseSortView.c(this.veh) != null) {
-      BaseSortView.c(this.veh).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    AppMethodBeat.i(107305);
+    if (BaseSortView.c(this.zsH) != null) {
+      BaseSortView.c(this.zsH).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
+    AppMethodBeat.o(107305);
   }
 }
 

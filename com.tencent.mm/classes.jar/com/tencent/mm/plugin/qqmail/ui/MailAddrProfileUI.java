@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.plugin.qqmail.b.j;
-import com.tencent.mm.plugin.qqmail.b.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -12,54 +12,66 @@ import com.tencent.mm.ui.base.preference.f;
 public class MailAddrProfileUI
   extends MMPreference
 {
-  private f dnn;
-  private String lCF;
+  private String nZR;
   private String name;
-  private boolean nih;
+  private boolean pNu;
+  private f screen;
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
   {
-    if (paramPreference.mKey.equals("mail_compose_btn"))
-    {
-      paramf = new Intent(this, ComposeUI.class);
-      paramf.putExtra("composeType", 4);
-      paramf.putExtra("toList", new String[] { this.name + " " + this.lCF });
-      startActivity(paramf);
-      finish();
-    }
-    return false;
+    return 2131165247;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(b.j.invite_friend_title);
-    this.dnn = this.vdd;
-    ((KeyValuePreference)this.dnn.add("mail_receiver_info_name")).setSummary(this.name);
-    ((KeyValuePreference)this.dnn.add("mail_receiver_info_addr")).setSummary(getIntent().getStringExtra("addr"));
-    Preference localPreference = this.dnn.add("mail_compose_btn");
-    if (!this.nih) {
-      this.dnn.c(localPreference);
+    AppMethodBeat.i(68335);
+    setMMTitle(2131300756);
+    this.screen = getPreferenceScreen();
+    ((KeyValuePreference)this.screen.atx("mail_receiver_info_name")).setSummary(this.name);
+    ((KeyValuePreference)this.screen.atx("mail_receiver_info_addr")).setSummary(getIntent().getStringExtra("addr"));
+    Preference localPreference = this.screen.atx("mail_compose_btn");
+    if (!this.pNu) {
+      this.screen.d(localPreference);
     }
     setBackBtn(new MailAddrProfileUI.1(this));
+    AppMethodBeat.o(68335);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(68334);
     super.onCreate(paramBundle);
     this.name = getIntent().getStringExtra("name");
-    this.lCF = getIntent().getStringExtra("addr");
-    this.nih = getIntent().getBooleanExtra("can_compose", false);
+    this.nZR = getIntent().getStringExtra("addr");
+    this.pNu = getIntent().getBooleanExtra("can_compose", false);
     initView();
+    AppMethodBeat.o(68334);
   }
   
-  public final int xj()
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    return b.k.mail_receiver_info;
+    AppMethodBeat.i(68336);
+    if (paramPreference.mKey.equals("mail_compose_btn"))
+    {
+      paramf = new Intent(this, ComposeUI.class);
+      paramf.putExtra("composeType", 4);
+      paramf.putExtra("toList", new String[] { this.name + " " + this.nZR });
+      startActivity(paramf);
+      finish();
+    }
+    AppMethodBeat.o(68336);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailAddrProfileUI
  * JD-Core Version:    0.7.0.1
  */

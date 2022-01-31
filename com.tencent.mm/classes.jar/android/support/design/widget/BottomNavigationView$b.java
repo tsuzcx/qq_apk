@@ -2,7 +2,7 @@ package android.support.design.widget;
 
 public abstract interface BottomNavigationView$b
 {
-  public abstract boolean at();
+  public abstract boolean aX();
 }
 
 

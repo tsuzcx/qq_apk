@@ -1,125 +1,140 @@
 package com.google.android.exoplayer2;
 
-import com.google.android.exoplayer2.g.f;
+import com.google.android.exoplayer2.g.g;
 import com.google.android.exoplayer2.h.b;
-import com.google.android.exoplayer2.h.j;
-import com.google.android.exoplayer2.i.t;
+import com.google.android.exoplayer2.h.k;
+import com.google.android.exoplayer2.i.p;
+import com.google.android.exoplayer2.i.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.PriorityQueue;
 
 public final class c
   implements m
 {
-  private final j asQ;
-  private final long asR;
-  private final long asS;
-  private final long asT;
-  private final long asU;
-  private final com.google.android.exoplayer2.i.m asV;
-  private int asW;
-  private boolean asX;
+  private final k avi;
+  private final long avj;
+  private final long avk;
+  private final long avl;
+  private final long avm;
+  private final p avn;
+  private int avo;
+  private boolean avp;
   
   public c()
   {
-    this(new j());
+    this(new k());
+    AppMethodBeat.i(94746);
+    AppMethodBeat.o(94746);
   }
   
-  private c(j paramj)
+  private c(k paramk)
   {
-    this(paramj, (byte)0);
+    this(paramk, (byte)0);
   }
   
-  private c(j paramj, byte paramByte)
+  private c(k paramk, byte paramByte)
   {
-    this(paramj, '\000');
+    this(paramk, '\000');
   }
   
-  private c(j paramj, char paramChar)
+  private c(k paramk, char paramChar)
   {
-    this.asQ = paramj;
-    this.asR = 15000000L;
-    this.asS = 30000000L;
-    this.asT = 2500000L;
-    this.asU = 5000000L;
-    this.asV = null;
+    this.avi = paramk;
+    this.avj = 15000000L;
+    this.avk = 30000000L;
+    this.avl = 2500000L;
+    this.avm = 5000000L;
+    this.avn = null;
   }
   
   private void reset(boolean paramBoolean)
   {
-    this.asW = 0;
-    if ((this.asV != null) && (this.asX)) {
-      this.asV.oo();
+    AppMethodBeat.i(94752);
+    this.avo = 0;
+    if ((this.avn != null) && (this.avp)) {
+      this.avn.ra();
     }
-    this.asX = false;
+    this.avp = false;
     if (paramBoolean) {
-      this.asQ.reset();
+      this.avi.reset();
     }
+    AppMethodBeat.o(94752);
   }
   
-  public final void a(r[] paramArrayOfr, f paramf)
+  public final void a(r[] paramArrayOfr, g paramg)
   {
     int i = 0;
-    this.asW = 0;
+    AppMethodBeat.i(94748);
+    this.avo = 0;
     while (i < paramArrayOfr.length)
     {
-      if (paramf.aQG[i] != null) {
-        this.asW += t.dG(paramArrayOfr[i].getTrackType());
+      if (paramg.aYk[i] != null) {
+        this.avo += x.eu(paramArrayOfr[i].getTrackType());
       }
       i += 1;
     }
-    this.asQ.dw(this.asW);
+    this.avi.ek(this.avo);
+    AppMethodBeat.o(94748);
   }
   
   public final boolean c(long paramLong, boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (long l = this.asU; (l <= 0L) || (paramLong >= l); l = this.asT) {
+    for (long l = this.avm; (l <= 0L) || (paramLong >= l); l = this.avl) {
       return true;
     }
     return false;
   }
   
-  public final void kA()
+  public final void mG()
   {
+    AppMethodBeat.i(94747);
     reset(false);
+    AppMethodBeat.o(94747);
   }
   
-  public final void kB()
+  public final void mH()
   {
+    AppMethodBeat.i(94750);
     reset(true);
+    AppMethodBeat.o(94750);
   }
   
-  public final b kC()
+  public final b mI()
   {
-    return this.asQ;
+    return this.avi;
   }
   
   public final void onStopped()
   {
+    AppMethodBeat.i(94749);
     reset(true);
+    AppMethodBeat.o(94749);
   }
   
-  public final boolean s(long paramLong)
+  public final boolean q(long paramLong)
   {
     boolean bool2 = false;
+    AppMethodBeat.i(94751);
     int i;
     int j;
-    com.google.android.exoplayer2.i.m localm;
-    if (paramLong > this.asS)
+    boolean bool1;
+    p localp;
+    if (paramLong > this.avk)
     {
       i = 0;
-      if (this.asQ.nS() < this.asW) {
-        break label173;
+      if (this.avi.qp() < this.avo) {
+        break label187;
       }
       j = 1;
-      boolean bool3 = this.asX;
-      boolean bool1;
+      boolean bool3 = this.avp;
       if (i != 2)
       {
         bool1 = bool2;
         if (i == 1)
         {
           bool1 = bool2;
-          if (this.asX)
+          if (this.avp)
           {
             bool1 = bool2;
             if (j != 0) {}
@@ -130,34 +145,36 @@ public final class c
       {
         bool1 = true;
       }
-      this.asX = bool1;
-      if ((this.asV != null) && (this.asX != bool3))
+      this.avp = bool1;
+      if ((this.avn != null) && (this.avp != bool3))
       {
-        if (!this.asX) {
-          break label187;
+        if (!this.avp) {
+          break label206;
         }
-        localm = this.asV;
+        localp = this.avn;
       }
     }
     for (;;)
     {
-      synchronized (localm.lock)
+      synchronized (localp.lock)
       {
-        localm.aSD.add(Integer.valueOf(0));
-        localm.aSE = Math.max(localm.aSE, 0);
-        return this.asX;
-        if (paramLong < this.asR)
+        localp.bbe.add(Integer.valueOf(0));
+        localp.bbf = Math.max(localp.bbf, 0);
+        bool1 = this.avp;
+        AppMethodBeat.o(94751);
+        return bool1;
+        if (paramLong < this.avj)
         {
           i = 2;
           break;
         }
         i = 1;
         break;
-        label173:
+        label187:
         j = 0;
       }
-      label187:
-      this.asV.oo();
+      label206:
+      this.avn.ra();
     }
   }
 }

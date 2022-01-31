@@ -8,14 +8,14 @@ final class h$b
     super(paramh, (byte)0);
   }
   
-  protected final float aR()
+  protected final float bA()
   {
-    return this.iS.iK + this.iS.iL;
+    return this.jL.jD + this.jL.jE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.design.widget.h.b
  * JD-Core Version:    0.7.0.1
  */

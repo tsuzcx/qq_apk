@@ -17,7 +17,7 @@ public final class ah
   private final int height = 90;
   private final int width = 90;
   
-  protected final int b(int paramInt, Object... paramVarArgs)
+  public final int a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
@@ -29,12 +29,12 @@ public final class ah
       return 90;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject1 = c.f(paramVarArgs);
-      Object localObject2 = c.e(paramVarArgs);
-      Paint localPaint1 = c.i(paramVarArgs);
+      Object localObject1 = c.h(paramVarArgs);
+      Object localObject2 = c.g(paramVarArgs);
+      Paint localPaint1 = c.k(paramVarArgs);
       localPaint1.setFlags(385);
       localPaint1.setStyle(Paint.Style.FILL);
-      Paint localPaint2 = c.i(paramVarArgs);
+      Paint localPaint2 = c.k(paramVarArgs);
       localPaint2.setFlags(385);
       localPaint2.setStyle(Paint.Style.STROKE);
       localPaint1.setColor(-16777216);
@@ -57,7 +57,7 @@ public final class ah
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
       ((Paint)localObject1).setColor(2113929216);
-      localObject2 = c.j(paramVarArgs);
+      localObject2 = c.l(paramVarArgs);
       ((Path)localObject2).moveTo(0.0F, 0.0F);
       ((Path)localObject2).lineTo(90.0F, 0.0F);
       ((Path)localObject2).lineTo(90.0F, 90.0F);
@@ -69,7 +69,7 @@ public final class ah
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
       localPaint1.setColor(-1);
-      localObject1 = c.j(paramVarArgs);
+      localObject1 = c.l(paramVarArgs);
       ((Path)localObject1).moveTo(45.0F, 27.0F);
       ((Path)localObject1).cubicTo(47.761425F, 27.0F, 50.0F, 24.761423F, 50.0F, 22.0F);
       ((Path)localObject1).cubicTo(50.0F, 19.238577F, 47.761425F, 17.0F, 45.0F, 17.0F);
@@ -93,13 +93,13 @@ public final class ah
       localCanvas.restore();
       localCanvas.restore();
       localCanvas.restore();
-      c.h(paramVarArgs);
+      c.j(paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.ah
  * JD-Core Version:    0.7.0.1
  */

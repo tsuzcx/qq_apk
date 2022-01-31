@@ -1,34 +1,41 @@
 package com.tencent.mm.plugin.sns.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class b
   implements a
 {
-  public final int bvs()
+  public final int cfL()
   {
     return 11855;
   }
   
-  public final void c(Object... paramVarArgs)
+  public final void e(int paramInt, Object... paramVarArgs)
   {
-    f(0, paramVarArgs);
-  }
-  
-  public final void f(int paramInt, Object... paramVarArgs)
-  {
+    AppMethodBeat.i(35693);
     switch (paramInt)
     {
     default: 
-      y.e("Kv_11855", "unknown type %d", new Object[] { Integer.valueOf(paramInt) });
+      ab.e("Kv_11855", "unknown type %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(35693);
       return;
     case 0: 
     case 1: 
-      h.nFQ.f(11855, paramVarArgs);
+      h.qsU.e(11855, paramVarArgs);
+      AppMethodBeat.o(35693);
       return;
     }
-    h.nFQ.f(14646, paramVarArgs);
+    h.qsU.e(14646, paramVarArgs);
+    AppMethodBeat.o(35693);
+  }
+  
+  public final void u(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(35692);
+    e(0, paramVarArgs);
+    AppMethodBeat.o(35692);
   }
 }
 

@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.d;
 import com.tencent.mm.pluginsdk.f.h;
-import com.tencent.mm.protocal.c.byg;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ckx;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,28 +16,29 @@ import java.util.Set;
 final class m$a
   implements Runnable
 {
-  private String kIi;
+  private String nev;
   
   m$a(m paramm, String paramString)
   {
-    this.kIi = paramString;
+    this.nev = paramString;
   }
   
   public final void run()
   {
-    Object localObject1 = new File(this.kIi);
+    AppMethodBeat.i(1747);
+    Object localObject1 = new File(this.nev);
     Object localObject2;
     if (((File)localObject1).exists())
     {
       localObject1 = ((File)localObject1).listFiles();
-      int j = this.pFV.pFT.size();
-      int k = this.pFV.pFS.size();
+      int j = this.tjs.tjr.size();
+      int k = this.tjs.tjq.size();
       if (localObject1 != null) {}
       for (int i = localObject1.length;; i = 0)
       {
-        y.i("MicroMsg.TopStory.TopStoryPreloadMgr", "DeleteVideoCacheTask preloadSize: %d cacheSize: %d folderSize: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
+        ab.i("MicroMsg.TopStory.TopStoryPreloadMgr", "DeleteVideoCacheTask preloadSize: %d cacheSize: %d folderSize: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
         if ((localObject1 == null) || (localObject1.length <= 10)) {
-          break label454;
+          break label442;
         }
         localObject2 = new ArrayList(localObject1.length);
         j = localObject1.length;
@@ -48,34 +50,36 @@ final class m$a
         }
       }
       Collections.sort((List)localObject2, new m.a.1(this));
-      y.i("MicroMsg.TopStory.TopStoryPreloadMgr", "First: %s Last: %s", new Object[] { h.g("yyyy-MM-dd HH:mm:ss", ((File)((List)localObject2).get(0)).lastModified() / 1000L), h.g("yyyy-MM-dd HH:mm:ss", ((File)((List)localObject2).get(((List)localObject2).size() - 1)).lastModified() / 1000L) });
+      ab.i("MicroMsg.TopStory.TopStoryPreloadMgr", "First: %s Last: %s", new Object[] { h.formatTime("yyyy-MM-dd HH:mm:ss", ((File)((List)localObject2).get(0)).lastModified() / 1000L), h.formatTime("yyyy-MM-dd HH:mm:ss", ((File)((List)localObject2).get(((List)localObject2).size() - 1)).lastModified() / 1000L) });
       localObject2 = ((List)localObject2).subList(10, ((List)localObject2).size());
-      if (this.pFV.pEp == null) {
-        break label455;
+      if (this.tjs.thM == null) {
+        break label474;
       }
-      localObject1 = this.pFV.pEp.bNx().pGw;
+      localObject1 = this.tjs.thM.cJh().tjR;
       if (localObject1 == null) {
-        break label455;
+        break label474;
       }
     }
-    label454:
-    label455:
-    for (localObject1 = d.an(((byg)localObject1).tOx, ((byg)localObject1).tOy);; localObject1 = "")
+    label442:
+    label474:
+    for (localObject1 = d.aK(((ckx)localObject1).xVa, ((ckx)localObject1).xVb);; localObject1 = "")
     {
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         File localFile = (File)((Iterator)localObject2).next();
         String str = localFile.getName().split("\\.")[0];
-        if ((!str.equals(localObject1)) && (!this.pFV.pFT.contains(str)))
+        if ((!str.equals(localObject1)) && (!this.tjs.tjr.contains(str)))
         {
-          y.i("MicroMsg.TopStory.TopStoryPreloadMgr", "Delete cache video %s %s", new Object[] { localFile.getName(), h.g("yyyy-MM-dd HH:mm:ss", localFile.lastModified() / 1000L) });
-          this.pFV.pFS.remove(str);
+          ab.i("MicroMsg.TopStory.TopStoryPreloadMgr", "Delete cache video %s %s", new Object[] { localFile.getName(), h.formatTime("yyyy-MM-dd HH:mm:ss", localFile.lastModified() / 1000L) });
+          this.tjs.tjq.remove(str);
           localFile.delete();
-          continue;
-          y.i("MicroMsg.TopStory.TopStoryPreloadMgr", "DeleteVideoCacheTask folder %s not exist", new Object[] { this.kIi });
         }
       }
+      AppMethodBeat.o(1747);
+      return;
+      ab.i("MicroMsg.TopStory.TopStoryPreloadMgr", "DeleteVideoCacheTask folder %s not exist", new Object[] { this.nev });
+      AppMethodBeat.o(1747);
       return;
     }
   }

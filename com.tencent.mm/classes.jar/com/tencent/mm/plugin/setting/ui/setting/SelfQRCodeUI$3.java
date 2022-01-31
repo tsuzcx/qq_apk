@@ -1,21 +1,28 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-
 final class SelfQRCodeUI$3
-  implements View.OnClickListener
+  implements SelfQRCodeUI.a
 {
-  SelfQRCodeUI$3(SelfQRCodeUI paramSelfQRCodeUI) {}
+  SelfQRCodeUI$3(SelfQRCodeUI paramSelfQRCodeUI, byte[] paramArrayOfByte, String paramString) {}
   
-  public final void onClick(View paramView)
+  public final byte[] cjX()
   {
-    SelfQRCodeUI.f(this.nSB);
+    return this.qGB;
+  }
+  
+  public final String cjY()
+  {
+    return this.hEF;
+  }
+  
+  public final String cjZ()
+  {
+    return this.hEF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SelfQRCodeUI.3
  * JD-Core Version:    0.7.0.1
  */

@@ -4,13 +4,13 @@ import com.google.android.exoplayer2.Format;
 
 public final class a$a
 {
-  public final Format auL;
+  public final Format axd;
   public final String url;
   
   public a$a(String paramString, Format paramFormat)
   {
     this.url = paramString;
-    this.auL = paramFormat;
+    this.axd = paramFormat;
   }
 }
 

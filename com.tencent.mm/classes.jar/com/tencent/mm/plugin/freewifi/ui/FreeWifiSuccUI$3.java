@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.freewifi.ui;
 
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FreeWifiSuccUI$3
   implements CompoundButton.OnCheckedChangeListener
@@ -10,12 +11,15 @@ final class FreeWifiSuccUI$3
   
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
+    AppMethodBeat.i(21087);
     if (paramBoolean)
     {
-      FreeWifiSuccUI.a(this.ksY, true);
+      FreeWifiSuccUI.a(this.mOM, true);
+      AppMethodBeat.o(21087);
       return;
     }
-    FreeWifiSuccUI.a(this.ksY, false);
+    FreeWifiSuccUI.a(this.mOM, false);
+    AppMethodBeat.o(21087);
   }
 }
 

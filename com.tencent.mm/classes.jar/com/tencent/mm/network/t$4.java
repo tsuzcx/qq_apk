@@ -1,19 +1,22 @@
 package com.tencent.mm.network;
 
 import com.tencent.mars.mm.MMLogic;
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bj;
 
 final class t$4
-  extends bf<Object>
+  extends bj<Object>
 {
   t$4(t paramt, String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt)
   {
     super(1000L, null, (byte)0);
   }
   
-  protected final Object run()
+  public final Object run()
   {
-    MMLogic.setHostInfo(this.eNW, this.eNX, this.eNY);
+    AppMethodBeat.i(58554);
+    MMLogic.setHostInfo(this.gdK, this.gdL, this.gdM);
+    AppMethodBeat.o(58554);
     return null;
   }
 }

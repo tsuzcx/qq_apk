@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.websearch.widget.view;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.api.x;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.b.d.a;
 import java.util.Map;
 
 public final class a$4
@@ -12,16 +13,18 @@ public final class a$4
   
   public final void onDismiss()
   {
-    y.v("FTSSearchActionSheetMgr", "selected pos %d", new Object[] { Integer.valueOf(-1) });
-    if (this.qXx != null) {
-      this.qXx.eA(-1, this.val$id);
+    AppMethodBeat.i(91476);
+    ab.v("FTSSearchActionSheetMgr", "selected pos %d", new Object[] { Integer.valueOf(-1) });
+    if (this.uMM != null) {
+      this.uMM.gE(-1, this.val$id);
     }
-    a.b(this.qXw).remove(Integer.valueOf(this.val$id));
+    a.b(this.uML).remove(Integer.valueOf(this.val$id));
+    AppMethodBeat.o(91476);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.a.4
  * JD-Core Version:    0.7.0.1
  */

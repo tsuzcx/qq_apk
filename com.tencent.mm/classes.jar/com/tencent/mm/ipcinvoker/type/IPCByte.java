@@ -3,12 +3,20 @@ package com.tencent.mm.ipcinvoker.type;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class IPCByte
   implements Parcelable
 {
-  public static final Parcelable.Creator<IPCByte> CREATOR = new IPCByte.1();
+  public static final Parcelable.Creator<IPCByte> CREATOR;
   public byte value;
+  
+  static
+  {
+    AppMethodBeat.i(114139);
+    CREATOR = new IPCByte.1();
+    AppMethodBeat.o(114139);
+  }
   
   public int describeContents()
   {
@@ -17,30 +25,46 @@ public class IPCByte
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
+    AppMethodBeat.i(114138);
+    if (paramObject == this)
     {
+      AppMethodBeat.o(114138);
       return true;
-      if (!(paramObject instanceof IPCByte)) {
-        break;
-      }
-      paramObject = (IPCByte)paramObject;
-    } while (this.value == paramObject.value);
-    return false;
-    if ((paramObject instanceof Byte)) {
-      return paramObject.equals(Byte.valueOf(this.value));
     }
+    if ((paramObject instanceof IPCByte))
+    {
+      paramObject = (IPCByte)paramObject;
+      if (this.value == paramObject.value)
+      {
+        AppMethodBeat.o(114138);
+        return true;
+      }
+      AppMethodBeat.o(114138);
+      return false;
+    }
+    if ((paramObject instanceof Byte))
+    {
+      boolean bool = paramObject.equals(Byte.valueOf(this.value));
+      AppMethodBeat.o(114138);
+      return bool;
+    }
+    AppMethodBeat.o(114138);
     return false;
   }
   
   public String toString()
   {
-    return Integer.toString(this.value);
+    AppMethodBeat.i(114137);
+    String str = Integer.toString(this.value);
+    AppMethodBeat.o(114137);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(114136);
     paramParcel.writeByte(this.value);
+    AppMethodBeat.o(114136);
   }
 }
 

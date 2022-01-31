@@ -1,10 +1,14 @@
 package com.tencent.mm.plugin.downloader_app.a;
 
-import com.tencent.mm.kernel.b.a;
-
-public abstract interface b
-  extends a
-{}
+public final class b
+{
+  public String appId;
+  public long cmm;
+  public float hAP;
+  public boolean kZa;
+  public String lad;
+  public int progress;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar

@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.fts.ui;
 
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FTSMainUI$1
   implements Runnable
@@ -10,10 +11,12 @@ final class FTSMainUI$1
   
   public final void run()
   {
-    y.i("MicroMsg.FTS.FTSMainUI", "showSearchNetworkLayoutRunnable canShow %b", new Object[] { Boolean.valueOf(FTSMainUI.a(this.kCm)) });
-    if (FTSMainUI.a(this.kCm)) {
-      FTSMainUI.b(this.kCm).setVisibility(0);
+    AppMethodBeat.i(61866);
+    ab.i("MicroMsg.FTS.FTSMainUI", "showSearchNetworkLayoutRunnable canShow %b", new Object[] { Boolean.valueOf(FTSMainUI.a(this.mYi)) });
+    if (FTSMainUI.a(this.mYi)) {
+      FTSMainUI.b(this.mYi).setVisibility(0);
     }
+    AppMethodBeat.o(61866);
   }
 }
 

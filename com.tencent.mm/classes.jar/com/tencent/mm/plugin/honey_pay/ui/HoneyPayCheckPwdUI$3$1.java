@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.honey_pay.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class HoneyPayCheckPwdUI$3$1
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class HoneyPayCheckPwdUI$3$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HoneyPayCheckPwdUI.d(this.llp.llm);
+    AppMethodBeat.i(41836);
+    HoneyPayCheckPwdUI.d(this.nIL.nII);
+    AppMethodBeat.o(41836);
   }
 }
 

@@ -1,15 +1,6 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
-final class at
-{
-  TextView fcy;
-  ImageView hic;
-  TextView kZl;
-  TextView vGZ;
-}
+public final class at {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar

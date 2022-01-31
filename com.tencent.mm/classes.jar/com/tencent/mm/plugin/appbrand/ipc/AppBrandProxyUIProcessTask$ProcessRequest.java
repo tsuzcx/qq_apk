@@ -10,27 +10,27 @@ public abstract class AppBrandProxyUIProcessTask$ProcessRequest
   
   public AppBrandProxyUIProcessTask$ProcessRequest(Parcel paramParcel)
   {
-    h(paramParcel);
+    j(paramParcel);
   }
   
-  public boolean ahF()
+  protected boolean aBm()
   {
     return false;
   }
   
-  public String ahG()
+  protected String aBn()
   {
     return null;
   }
   
-  public abstract Class<? extends AppBrandProxyUIProcessTask> ahH();
+  protected abstract Class<? extends AppBrandProxyUIProcessTask> aBo();
   
   public int describeContents()
   {
     return 0;
   }
   
-  public void h(Parcel paramParcel) {}
+  protected void j(Parcel paramParcel) {}
   
   public void writeToParcel(Parcel paramParcel, int paramInt) {}
 }

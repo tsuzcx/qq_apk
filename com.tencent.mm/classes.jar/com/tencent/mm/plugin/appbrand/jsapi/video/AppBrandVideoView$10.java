@@ -4,176 +4,184 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.luggage.c.a.a.b;
-import com.tencent.luggage.c.a.a.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AppBrandVideoView$10
-  implements k.b
+  implements l.b
 {
   AppBrandVideoView$10(AppBrandVideoView paramAppBrandVideoView) {}
   
-  public final void ah(float paramFloat)
+  public final void aEX()
   {
-    if (!AppBrandVideoView.s(this.gDS)) {
-      return;
-    }
-    y.d("MicroMsg.AppBrandVideoView", "onAdjustVolume:" + paramFloat);
-    AppBrandVideoView.o(this.gDS).setPercent(paramFloat);
-    AppBrandVideoView.p(this.gDS).setText(a.e.luggage_app_brand_video_volume);
-    AppBrandVideoView.q(this.gDS).setImageResource(a.b.app_brand_video_volume_icon);
-    AppBrandVideoView.r(this.gDS).setVisibility(0);
-    AppBrandVideoView.j(this.gDS);
-  }
-  
-  public final void ai(float paramFloat)
-  {
-    if (!AppBrandVideoView.s(this.gDS)) {
-      return;
-    }
-    y.d("MicroMsg.AppBrandVideoView", "onAdjustBrightness:" + paramFloat);
-    AppBrandVideoView.o(this.gDS).setPercent(paramFloat);
-    AppBrandVideoView.p(this.gDS).setText(a.e.luggage_app_brand_video_brightness);
-    AppBrandVideoView.q(this.gDS).setImageResource(a.b.app_brand_video_brightness_icon);
-    AppBrandVideoView.r(this.gDS).setVisibility(0);
-    AppBrandVideoView.j(this.gDS);
-  }
-  
-  public final void akl()
-  {
-    y.d("MicroMsg.AppBrandVideoView", "onSingleTap");
-    if ((AppBrandVideoView.f(this.gDS)) && (AppBrandVideoView.g(this.gDS).getVisibility() != 0))
+    AppMethodBeat.i(126452);
+    ab.d("MicroMsg.AppBrandVideoView", "onSingleTap");
+    if ((AppBrandVideoView.f(this.icX)) && (AppBrandVideoView.g(this.icX).getVisibility() != 0))
     {
-      AppBrandVideoView.h(this.gDS).akI();
-      if (AppBrandVideoView.i(this.gDS)) {
-        AppBrandVideoView.j(this.gDS);
+      AppBrandVideoView.h(this.icX).aFo();
+      if (AppBrandVideoView.i(this.icX)) {
+        AppBrandVideoView.j(this.icX);
       }
     }
+    AppMethodBeat.o(126452);
   }
   
-  public final void akm()
+  public final void aEY()
   {
-    y.d("MicroMsg.AppBrandVideoView", "onDoubleTap");
-    if (AppBrandVideoView.k(this.gDS))
+    AppMethodBeat.i(126453);
+    ab.d("MicroMsg.AppBrandVideoView", "onDoubleTap");
+    if (AppBrandVideoView.k(this.icX))
     {
-      if (AppBrandVideoView.b(this.gDS).isPlaying()) {
-        this.gDS.pause();
-      }
-    }
-    else {
-      return;
-    }
-    this.gDS.start();
-  }
-  
-  public final void akn()
-  {
-    if (!AppBrandVideoView.l(this.gDS)) {
-      return;
-    }
-    AppBrandVideoView.m(this.gDS).setVisibility(0);
-    AppBrandVideoView.j(this.gDS);
-  }
-  
-  public final void ako()
-  {
-    if (!AppBrandVideoView.s(this.gDS)) {
-      return;
-    }
-    AppBrandVideoView.r(this.gDS).setVisibility(8);
-    AppBrandVideoView.n(this.gDS);
-  }
-  
-  public final void akp()
-  {
-    if (!AppBrandVideoView.s(this.gDS)) {
-      return;
-    }
-    AppBrandVideoView.r(this.gDS).setVisibility(8);
-    AppBrandVideoView.n(this.gDS);
-  }
-  
-  public final boolean akq()
-  {
-    return AppBrandVideoView.s(this.gDS);
-  }
-  
-  public final boolean akr()
-  {
-    return AppBrandVideoView.s(this.gDS);
-  }
-  
-  public final boolean aks()
-  {
-    return AppBrandVideoView.l(this.gDS);
-  }
-  
-  public final int f(int paramInt, float paramFloat)
-  {
-    int k = 180;
-    int j = 0;
-    int i = 0;
-    if (!AppBrandVideoView.l(this.gDS)) {
-      return i;
-    }
-    y.i("MicroMsg.AppBrandVideoView", "onDragProgress:" + paramInt + "/" + paramFloat);
-    i = AppBrandVideoView.b(this.gDS).getVideoDurationSec();
-    float f = this.gDS.getMeasuredWidth();
-    int m = getCurrentPosition();
-    paramFloat /= f;
-    if (i <= 180)
-    {
-      paramInt = i;
-      label98:
-      paramInt = (int)(paramInt * paramFloat) + m;
-      if (paramInt >= 0) {
-        break label246;
-      }
-      paramInt = j;
-    }
-    for (;;)
-    {
-      String str = l.ce(i * 1000L);
-      AppBrandVideoView.m(this.gDS).setText(l.ce(paramInt * 1000L) + "/" + str);
-      AppBrandVideoView.h(this.gDS).seek(paramInt);
-      i = paramInt;
-      if (!AppBrandVideoView.h(this.gDS).akH()) {
-        break;
-      }
-      AppBrandVideoView.h(this.gDS).akG();
-      return paramInt;
-      paramInt = k;
-      if (i <= 600) {
-        break label98;
-      }
-      if (i <= 1800)
+      if (AppBrandVideoView.b(this.icX).isPlaying())
       {
-        paramInt = 300;
-        break label98;
+        this.icX.pause();
+        AppMethodBeat.o(126453);
+        return;
       }
-      paramInt = 600;
-      break label98;
-      label246:
-      if (paramInt > i) {
-        paramInt = i;
-      }
+      this.icX.start();
     }
+    AppMethodBeat.o(126453);
   }
   
-  public final void g(int paramInt, float paramFloat)
+  public final void aEZ()
   {
-    if (!AppBrandVideoView.l(this.gDS)) {
+    AppMethodBeat.i(126454);
+    if (!AppBrandVideoView.l(this.icX))
+    {
+      AppMethodBeat.o(126454);
       return;
     }
-    AppBrandVideoView.m(this.gDS).setVisibility(8);
-    AppBrandVideoView.n(this.gDS);
-    y.i("MicroMsg.AppBrandVideoView", "onEndDragProgress: dragPosition=%d currentPositon=%d totalDistanceX=%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(AppBrandVideoView.b(this.gDS).getCurrPosSec()), Float.valueOf(paramFloat) });
-    this.gDS.D(paramInt, false);
+    AppBrandVideoView.m(this.icX).setVisibility(0);
+    AppBrandVideoView.j(this.icX);
+    AppMethodBeat.o(126454);
+  }
+  
+  public final void aFa()
+  {
+    AppMethodBeat.i(126460);
+    if (!AppBrandVideoView.s(this.icX))
+    {
+      AppMethodBeat.o(126460);
+      return;
+    }
+    AppBrandVideoView.r(this.icX).setVisibility(8);
+    AppBrandVideoView.n(this.icX);
+    AppMethodBeat.o(126460);
+  }
+  
+  public final void aFb()
+  {
+    AppMethodBeat.i(126461);
+    if (!AppBrandVideoView.s(this.icX))
+    {
+      AppMethodBeat.o(126461);
+      return;
+    }
+    AppBrandVideoView.r(this.icX).setVisibility(8);
+    AppBrandVideoView.n(this.icX);
+    AppMethodBeat.o(126461);
+  }
+  
+  public final boolean aFc()
+  {
+    AppMethodBeat.i(156829);
+    boolean bool = AppBrandVideoView.s(this.icX);
+    AppMethodBeat.o(156829);
+    return bool;
+  }
+  
+  public final boolean aFd()
+  {
+    AppMethodBeat.i(156830);
+    boolean bool = AppBrandVideoView.s(this.icX);
+    AppMethodBeat.o(156830);
+    return bool;
+  }
+  
+  public final boolean aFe()
+  {
+    AppMethodBeat.i(126464);
+    boolean bool = AppBrandVideoView.l(this.icX);
+    AppMethodBeat.o(126464);
+    return bool;
+  }
+  
+  public final void aw(float paramFloat)
+  {
+    AppMethodBeat.i(126458);
+    if (!AppBrandVideoView.s(this.icX))
+    {
+      AppMethodBeat.o(126458);
+      return;
+    }
+    ab.d("MicroMsg.AppBrandVideoView", "onAdjustVolume:".concat(String.valueOf(paramFloat)));
+    AppBrandVideoView.o(this.icX).setPercent(paramFloat);
+    AppBrandVideoView.p(this.icX).setText(2131301354);
+    AppBrandVideoView.q(this.icX).setImageResource(2130837788);
+    AppBrandVideoView.r(this.icX).setVisibility(0);
+    AppBrandVideoView.j(this.icX);
+    AppMethodBeat.o(126458);
+  }
+  
+  public final void ax(float paramFloat)
+  {
+    AppMethodBeat.i(126459);
+    if (!AppBrandVideoView.s(this.icX))
+    {
+      AppMethodBeat.o(126459);
+      return;
+    }
+    ab.d("MicroMsg.AppBrandVideoView", "onAdjustBrightness:".concat(String.valueOf(paramFloat)));
+    AppBrandVideoView.o(this.icX).setPercent(paramFloat);
+    AppBrandVideoView.p(this.icX).setText(2131301353);
+    AppBrandVideoView.q(this.icX).setImageResource(2130837780);
+    AppBrandVideoView.r(this.icX).setVisibility(0);
+    AppBrandVideoView.j(this.icX);
+    AppMethodBeat.o(126459);
   }
   
   public final int getCurrentPosition()
   {
-    return AppBrandVideoView.b(this.gDS).getCurrPosSec();
+    AppMethodBeat.i(126457);
+    int i = AppBrandVideoView.b(this.icX).getCurrPosSec();
+    AppMethodBeat.o(126457);
+    return i;
+  }
+  
+  public final int h(int paramInt, float paramFloat)
+  {
+    AppMethodBeat.i(126455);
+    if (!AppBrandVideoView.l(this.icX))
+    {
+      AppMethodBeat.o(126455);
+      return 0;
+    }
+    ab.i("MicroMsg.AppBrandVideoView", "onDragProgress:" + paramInt + "/" + paramFloat);
+    paramInt = AppBrandVideoView.b(this.icX).getVideoDurationSec();
+    int i = b.c(paramFloat, this.icX.getMeasuredWidth(), getCurrentPosition(), paramInt);
+    String str = m.ha(paramInt * 1000L);
+    AppBrandVideoView.m(this.icX).setText(m.ha(i * 1000L) + "/" + str);
+    AppBrandVideoView.h(this.icX).seek(i);
+    if (AppBrandVideoView.h(this.icX).Pk()) {
+      AppBrandVideoView.h(this.icX).aFn();
+    }
+    AppMethodBeat.o(126455);
+    return i;
+  }
+  
+  public final void i(int paramInt, float paramFloat)
+  {
+    AppMethodBeat.i(126456);
+    if (!AppBrandVideoView.l(this.icX))
+    {
+      AppMethodBeat.o(126456);
+      return;
+    }
+    AppBrandVideoView.m(this.icX).setVisibility(8);
+    AppBrandVideoView.n(this.icX);
+    ab.i("MicroMsg.AppBrandVideoView", "onEndDragProgress: dragPosition=%d currentPositon=%d totalDistanceX=%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(AppBrandVideoView.b(this.icX).getCurrPosSec()), Float.valueOf(paramFloat) });
+    this.icX.e(paramInt, false);
+    AppMethodBeat.o(126456);
   }
 }
 

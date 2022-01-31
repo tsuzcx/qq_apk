@@ -4,6 +4,7 @@ import android.opengl.EGLContext;
 import android.opengl.GLES20;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.config.MediaConfig;
 import com.tencent.ttpic.filter.ExpFilter;
 import com.tencent.ttpic.filter.FabbyExtractFilter;
@@ -21,6 +22,7 @@ class SegmentGLThread$1
   
   public void run()
   {
+    AppMethodBeat.i(83773);
     SegmentGLThread.access$002(this.this$0, new EglCore(this.val$shareContext, 0));
     SegmentGLThread.access$102(this.this$0, new OffscreenSurface(SegmentGLThread.access$000(this.this$0), MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT));
     SegmentGLThread.access$100(this.this$0).makeCurrent();
@@ -36,6 +38,8 @@ class SegmentGLThread$1
     GLES20.glGenTextures(SegmentGLThread.access$1100(this.this$0).length, SegmentGLThread.access$1100(this.this$0), 0);
     SegmentGLThread.access$1200(this.this$0, 1);
     ShaderManager.getInstance().clear();
+    SegmentGLThread.access$1302(this.this$0, true);
+    AppMethodBeat.o(83773);
   }
 }
 

@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.shake.c.a;
 public final class f$d
   extends f.c
 {
-  protected String nZG;
-  protected String nZH;
-  protected String nZI;
+  protected String qNQ;
+  protected String qNR;
+  protected String qNS;
 }
 
 

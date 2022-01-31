@@ -1,260 +1,343 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.os.Looper;
-import android.os.Message;
-import java.util.Vector;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class av
 {
-  boolean bUO = false;
-  Object lock = new byte[0];
-  String name = "";
-  int priority = 1;
-  ah uhA;
-  public LinkedBlockingQueue<a> uhx = new LinkedBlockingQueue();
-  private int uhy = 1;
-  Vector<b> uhz = new Vector();
+  public static aw ypi = null;
   
-  public av(int paramInt, String paramString)
+  public static String RC(String paramString)
   {
-    this(paramInt, paramString, 1);
+    AppMethodBeat.i(52203);
+    paramString = jdMethod_if(paramString, null);
+    AppMethodBeat.o(52203);
+    return paramString;
   }
   
-  public av(int paramInt1, String paramString, int paramInt2)
+  private static String aD(String paramString1, String paramString2, String paramString3)
   {
-    this(paramInt1, paramString, paramInt2, Looper.myLooper());
-  }
-  
-  public av(int paramInt1, String paramString, int paramInt2, Looper paramLooper)
-  {
-    this.uhy = paramInt2;
-    this.name = paramString;
-    this.priority = paramInt1;
-    paramString = paramLooper;
-    if (paramLooper == null)
+    AppMethodBeat.i(52211);
+    paramString1 = Pattern.compile(paramString1).matcher(paramString3);
+    if (paramString1.find())
     {
-      paramString = paramLooper;
-      if (Looper.getMainLooper() != null)
+      paramString1 = paramString1.replaceAll(paramString2);
+      AppMethodBeat.o(52211);
+      return paramString1;
+    }
+    AppMethodBeat.o(52211);
+    return paramString3;
+  }
+  
+  public static String apA(String paramString)
+  {
+    AppMethodBeat.i(52207);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(52207);
+      return "";
+    }
+    if (paramString.startsWith("+"))
+    {
+      AppMethodBeat.o(52207);
+      return paramString;
+    }
+    paramString = "+".concat(String.valueOf(paramString));
+    AppMethodBeat.o(52207);
+    return paramString;
+  }
+  
+  public static String apx(String paramString)
+  {
+    AppMethodBeat.i(52204);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(52204);
+      return paramString;
+    }
+    if (!bo.aqe(paramString).booleanValue())
+    {
+      AppMethodBeat.o(52204);
+      return paramString;
+    }
+    new av();
+    String str1 = "86";
+    Object localObject = paramString;
+    if (paramString.startsWith("+"))
+    {
+      String str2 = paramString.replace("+", "");
+      paramString = jdMethod_if(str2, null);
+      str1 = paramString;
+      localObject = str2;
+      if (paramString != null)
       {
-        paramString = Looper.getMainLooper();
-        y.i("QueueWorkerThread.QueueWorkerThread", "looper is null use MainLooper!");
+        localObject = str2.substring(paramString.length());
+        str1 = paramString;
       }
     }
-    this.uhA = new ah(paramString)
-    {
-      public final void handleMessage(Message paramAnonymousMessage)
-      {
-        if ((paramAnonymousMessage != null) && (paramAnonymousMessage.obj != null)) {
-          ((av.a)paramAnonymousMessage.obj).JT();
-        }
-      }
-    };
+    paramString = formatNumber(str1, (String)localObject);
+    AppMethodBeat.o(52204);
+    return paramString;
   }
   
-  public final int c(a parama)
+  public static String apy(String paramString)
   {
-    int j = 0;
-    int i;
-    if (parama == null)
+    AppMethodBeat.i(52205);
+    if (bo.isNullOrNil(paramString))
     {
-      y.e("QueueWorkerThread.QueueWorkerThread", "add empty thread object");
-      i = -1;
+      AppMethodBeat.o(52205);
+      return "";
     }
+    paramString = paramString.replaceAll("[\\.\\-\\ ]", "").trim();
+    AppMethodBeat.o(52205);
+    return paramString;
+  }
+  
+  public static String apz(String paramString)
+  {
+    AppMethodBeat.i(52206);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(52206);
+      return "";
+    }
+    paramString = paramString.replace("+", "");
+    AppMethodBeat.o(52206);
+    return paramString;
+  }
+  
+  private static int ew(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(52210);
+    Pattern localPattern = Pattern.compile(paramString);
+    paramString = "1";
+    int i = 0;
+    while ((i < paramInt) && (!localPattern.matcher(paramString).find()))
+    {
+      paramString = paramString + "1";
+      i += 1;
+    }
+    AppMethodBeat.o(52210);
+    return i + 1;
+  }
+  
+  public static String formatNumber(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(52209);
+    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)))
+    {
+      AppMethodBeat.o(52209);
+      return paramString2;
+    }
+    if (ypi == null) {
+      ypi = new aw();
+    }
+    Iterator localIterator1 = ypi.ypj.iterator();
+    aw.a locala;
+    String str;
+    aw.b localb;
+    int n;
+    int k;
+    label539:
     do
     {
+      StringBuffer localStringBuffer;
       do
       {
-        return i;
-        try
+        Iterator localIterator2;
+        while (!localIterator2.hasNext())
         {
-          if (!this.uhx.offer(parama, 1L, TimeUnit.MILLISECONDS))
+          do
           {
-            y.e("QueueWorkerThread.QueueWorkerThread", "add To Queue failed");
-            return -2;
+            if (!localIterator1.hasNext()) {
+              break;
+            }
+            locala = (aw.a)localIterator1.next();
+          } while ((locala.ypl == null) || (!paramString1.trim().toLowerCase().equals(locala.ypl.trim().toLowerCase())) || (locala.ypo == null));
+          str = apy(paramString2);
+          if ((str != null) && (str.length() > locala.ypm))
+          {
+            AppMethodBeat.o(52209);
+            return str;
           }
+          localIterator2 = locala.ypo.iterator();
         }
-        catch (Exception parama)
-        {
-          y.e("QueueWorkerThread.QueueWorkerThread", "add To Queue failed :" + parama.getMessage());
-          y.printErrStackTrace("QueueWorkerThread.QueueWorkerThread", parama, "", new Object[0]);
-          return -3;
+        localb = (aw.b)localIterator2.next();
+        if (!bo.isNullOrNil(localb.ypp)) {
+          break label539;
         }
-        if (this.uhz.size() == 0) {
+        if (locala.ypo.size() <= 1) {
           break;
         }
-        i = j;
-      } while (this.uhx.size() <= 0);
-      i = j;
-    } while (this.uhy <= this.uhz.size());
-    new b((byte)0).start();
-    return 0;
-  }
-  
-  @Deprecated
-  public final boolean crx()
-  {
-    return (this.uhz == null) || (this.uhz.size() == 0);
-  }
-  
-  public final void mw(boolean paramBoolean)
-  {
-    synchronized (this.lock)
-    {
-      this.bUO = paramBoolean;
-      if (!paramBoolean) {}
-      synchronized (this.lock)
+        localStringBuffer = new StringBuffer();
+        localStringBuffer.append(str);
+        m = str.length();
+      } while (m > ew(localb.ypr, locala.ypn));
+      while (localStringBuffer.toString().length() < locala.ypn) {
+        localStringBuffer.append("0");
+      }
+      paramString1 = aD(localb.ypr, localb.ypq, localStringBuffer.toString());
+      i = 0;
+      j = 0;
+      while (i < paramString1.length())
       {
-        this.lock.notifyAll();
-        return;
+        n = paramString1.charAt(i);
+        paramString2 = paramString1;
+        if (j >= m) {
+          paramString2 = paramString1.substring(0, i);
+        }
+        k = j;
+        if (n != 32)
+        {
+          k = j;
+          if (n != 45)
+          {
+            k = j;
+            if (n != 12290) {
+              k = j + 1;
+            }
+          }
+        }
+        i += 1;
+        j = k;
+        paramString1 = paramString2;
+      }
+      AppMethodBeat.o(52209);
+      return paramString1;
+      paramString1 = new StringBuffer();
+      paramString1.append(str);
+      m = str.length();
+      while (paramString1.toString().length() < locala.ypn) {
+        paramString1.append("0");
+      }
+      paramString1 = aD(localb.ypr, localb.ypq, paramString1.toString());
+      i = 0;
+      j = 0;
+      while (i < paramString1.length())
+      {
+        n = paramString1.charAt(i);
+        paramString2 = paramString1;
+        if (j >= m) {
+          paramString2 = paramString1.substring(0, i);
+        }
+        k = j;
+        if (n != 32)
+        {
+          k = j;
+          if (n != 45)
+          {
+            k = j;
+            if (n != 12290) {
+              k = j + 1;
+            }
+          }
+        }
+        i += 1;
+        j = k;
+        paramString1 = paramString2;
+      }
+      AppMethodBeat.o(52209);
+      return paramString1;
+    } while (!Pattern.compile(localb.ypp).matcher(str).lookingAt());
+    paramString1 = new StringBuffer();
+    paramString1.append(str);
+    int m = str.length();
+    while (paramString1.toString().length() < locala.ypn) {
+      paramString1.append(str.charAt(m - 1));
+    }
+    paramString1 = aD(localb.ypr, localb.ypq, paramString1.toString());
+    int i = 0;
+    int j = 0;
+    while (i < paramString1.length())
+    {
+      n = paramString1.charAt(i);
+      paramString2 = paramString1;
+      if (j >= m) {
+        paramString2 = paramString1.substring(0, i);
+      }
+      k = j;
+      if (n != 32)
+      {
+        k = j;
+        if (n != 45)
+        {
+          k = j;
+          if (n != 12290) {
+            k = j + 1;
+          }
+        }
+      }
+      i += 1;
+      j = k;
+      paramString1 = paramString2;
+    }
+    AppMethodBeat.o(52209);
+    return paramString1;
+    AppMethodBeat.o(52209);
+    return paramString2;
+  }
+  
+  public static String jdMethod_if(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(52202);
+    paramString1 = apy(paramString1).replace("+", "");
+    if (ypi == null) {
+      ypi = new aw();
+    }
+    int i;
+    if (bo.isNullOrNil(paramString2))
+    {
+      paramString2 = ypi.ypj.iterator();
+      do
+      {
+        do
+        {
+          if (!paramString2.hasNext()) {
+            break;
+          }
+          localObject = (aw.a)paramString2.next();
+        } while (!paramString1.startsWith(((aw.a)localObject).ypl));
+        i = paramString1.length() - ((aw.a)localObject).ypl.length();
+      } while ((i < ((aw.a)localObject).ypm) || (i > ((aw.a)localObject).ypn));
+      ab.i("MicroMsg.PhoneFormater", "[extractCountryCode] countrycode:%s country isocode: %s country.minlen:%d country.maxlen:%d", new Object[] { ((aw.a)localObject).ypl, ((aw.a)localObject).ypk, Integer.valueOf(((aw.a)localObject).ypn), Integer.valueOf(((aw.a)localObject).ypn) });
+      paramString1 = ((aw.a)localObject).ypl;
+      AppMethodBeat.o(52202);
+      return paramString1;
+    }
+    Object localObject = ypi.ypj.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      aw.a locala = (aw.a)((Iterator)localObject).next();
+      if (paramString1.startsWith(locala.ypl))
+      {
+        i = paramString1.length() - locala.ypl.length();
+        if ((i >= locala.ypm) && (i <= locala.ypn) && (paramString2.equalsIgnoreCase(locala.ypk)))
+        {
+          ab.i("MicroMsg.PhoneFormater", "[extractCountryCode] countrycode:%s country isocode: %s country.minlen:%d country.maxlen:%d", new Object[] { locala.ypl, locala.ypk, Integer.valueOf(locala.ypn), Integer.valueOf(locala.ypn) });
+          paramString1 = locala.ypl;
+          AppMethodBeat.o(52202);
+          return paramString1;
+        }
       }
     }
+    AppMethodBeat.o(52202);
+    return null;
   }
   
-  public static abstract interface a
+  public static String ig(String paramString1, String paramString2)
   {
-    public abstract boolean JS();
-    
-    public abstract boolean JT();
-  }
-  
-  final class b
-    extends Thread
-  {
-    private int rkR = 60;
-    
-    private b()
+    AppMethodBeat.i(52208);
+    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)))
     {
-      super();
-      setPriority(av.this.priority);
-      av.this.uhz.add(this);
+      AppMethodBeat.o(52208);
+      return "";
     }
-    
-    /* Error */
-    public final void run()
-    {
-      // Byte code:
-      //   0: aload_0
-      //   1: getfield 24	com/tencent/mm/sdk/platformtools/av$b:rkR	I
-      //   4: ifle +152 -> 156
-      //   7: aload_0
-      //   8: getfield 15	com/tencent/mm/sdk/platformtools/av$b:uhB	Lcom/tencent/mm/sdk/platformtools/av;
-      //   11: getfield 53	com/tencent/mm/sdk/platformtools/av:lock	Ljava/lang/Object;
-      //   14: astore_1
-      //   15: aload_1
-      //   16: monitorenter
-      //   17: aload_0
-      //   18: getfield 15	com/tencent/mm/sdk/platformtools/av$b:uhB	Lcom/tencent/mm/sdk/platformtools/av;
-      //   21: getfield 57	com/tencent/mm/sdk/platformtools/av:bUO	Z
-      //   24: ifeq +13 -> 37
-      //   27: aload_0
-      //   28: getfield 15	com/tencent/mm/sdk/platformtools/av$b:uhB	Lcom/tencent/mm/sdk/platformtools/av;
-      //   31: getfield 53	com/tencent/mm/sdk/platformtools/av:lock	Ljava/lang/Object;
-      //   34: invokevirtual 62	java/lang/Object:wait	()V
-      //   37: aload_1
-      //   38: monitorexit
-      //   39: aload_0
-      //   40: getfield 15	com/tencent/mm/sdk/platformtools/av$b:uhB	Lcom/tencent/mm/sdk/platformtools/av;
-      //   43: getfield 66	com/tencent/mm/sdk/platformtools/av:uhx	Ljava/util/concurrent/LinkedBlockingQueue;
-      //   46: ldc2_w 67
-      //   49: getstatic 74	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-      //   52: invokevirtual 80	java/util/concurrent/LinkedBlockingQueue:poll	(JLjava/util/concurrent/TimeUnit;)Ljava/lang/Object;
-      //   55: checkcast 82	com/tencent/mm/sdk/platformtools/av$a
-      //   58: astore_1
-      //   59: aload_1
-      //   60: ifnonnull +55 -> 115
-      //   63: aload_0
-      //   64: aload_0
-      //   65: getfield 24	com/tencent/mm/sdk/platformtools/av$b:rkR	I
-      //   68: iconst_1
-      //   69: isub
-      //   70: putfield 24	com/tencent/mm/sdk/platformtools/av$b:rkR	I
-      //   73: goto -73 -> 0
-      //   76: astore_2
-      //   77: ldc 84
-      //   79: aload_2
-      //   80: ldc 86
-      //   82: iconst_0
-      //   83: anewarray 59	java/lang/Object
-      //   86: invokestatic 92	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   89: goto -52 -> 37
-      //   92: astore_2
-      //   93: aload_1
-      //   94: monitorexit
-      //   95: aload_2
-      //   96: athrow
-      //   97: astore_1
-      //   98: ldc 84
-      //   100: aload_1
-      //   101: ldc 86
-      //   103: iconst_0
-      //   104: anewarray 59	java/lang/Object
-      //   107: invokestatic 92	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   110: aconst_null
-      //   111: astore_1
-      //   112: goto -53 -> 59
-      //   115: aload_0
-      //   116: bipush 60
-      //   118: putfield 24	com/tencent/mm/sdk/platformtools/av$b:rkR	I
-      //   121: aload_1
-      //   122: invokeinterface 96 1 0
-      //   127: ifeq -127 -> 0
-      //   130: aload_0
-      //   131: getfield 15	com/tencent/mm/sdk/platformtools/av$b:uhB	Lcom/tencent/mm/sdk/platformtools/av;
-      //   134: getfield 100	com/tencent/mm/sdk/platformtools/av:uhA	Lcom/tencent/mm/sdk/platformtools/ah;
-      //   137: aload_0
-      //   138: getfield 15	com/tencent/mm/sdk/platformtools/av$b:uhB	Lcom/tencent/mm/sdk/platformtools/av;
-      //   141: getfield 100	com/tencent/mm/sdk/platformtools/av:uhA	Lcom/tencent/mm/sdk/platformtools/ah;
-      //   144: iconst_0
-      //   145: aload_1
-      //   146: invokevirtual 106	com/tencent/mm/sdk/platformtools/ah:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-      //   149: invokevirtual 110	com/tencent/mm/sdk/platformtools/ah:sendMessage	(Landroid/os/Message;)Z
-      //   152: pop
-      //   153: goto -153 -> 0
-      //   156: aload_0
-      //   157: getfield 15	com/tencent/mm/sdk/platformtools/av$b:uhB	Lcom/tencent/mm/sdk/platformtools/av;
-      //   160: getfield 35	com/tencent/mm/sdk/platformtools/av:uhz	Ljava/util/Vector;
-      //   163: aload_0
-      //   164: invokevirtual 113	java/util/Vector:remove	(Ljava/lang/Object;)Z
-      //   167: pop
-      //   168: ldc 84
-      //   170: new 115	java/lang/StringBuilder
-      //   173: dup
-      //   174: ldc 117
-      //   176: invokespecial 118	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   179: aload_0
-      //   180: getfield 15	com/tencent/mm/sdk/platformtools/av$b:uhB	Lcom/tencent/mm/sdk/platformtools/av;
-      //   183: getfield 66	com/tencent/mm/sdk/platformtools/av:uhx	Ljava/util/concurrent/LinkedBlockingQueue;
-      //   186: invokevirtual 122	java/util/concurrent/LinkedBlockingQueue:size	()I
-      //   189: invokevirtual 126	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   192: ldc 128
-      //   194: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   197: aload_0
-      //   198: getfield 15	com/tencent/mm/sdk/platformtools/av$b:uhB	Lcom/tencent/mm/sdk/platformtools/av;
-      //   201: getfield 35	com/tencent/mm/sdk/platformtools/av:uhz	Ljava/util/Vector;
-      //   204: invokevirtual 132	java/util/Vector:size	()I
-      //   207: invokevirtual 126	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   210: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   213: invokestatic 140	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;)V
-      //   216: return
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	217	0	this	b
-      //   14	80	1	localObject1	Object
-      //   97	4	1	localException1	Exception
-      //   111	35	1	localObject2	Object
-      //   76	4	2	localException2	Exception
-      //   92	4	2	localObject3	Object
-      // Exception table:
-      //   from	to	target	type
-      //   17	37	76	java/lang/Exception
-      //   17	37	92	finally
-      //   37	39	92	finally
-      //   77	89	92	finally
-      //   93	95	92	finally
-      //   39	59	97	java/lang/Exception
-    }
+    paramString1 = paramString1 + "（+" + paramString2 + "）";
+    AppMethodBeat.o(52208);
+    return paramString1;
   }
 }
 

@@ -2,22 +2,28 @@ package com.tencent.mm.plugin.gallery.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
-import com.tencent.mm.R.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import android.support.v7.widget.RecyclerView.h;
+import android.support.v7.widget.RecyclerView.s;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class ImagePreviewUI$8
-  implements Runnable
+  extends RecyclerView.h
 {
   ImagePreviewUI$8(ImagePreviewUI paramImagePreviewUI) {}
   
-  public final void run()
+  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    int i = (int)ae.getContext().getResources().getDimension(R.f.LargePadding);
-    int j = this.kKb.getResources().getDisplayMetrics().widthPixels / 7;
-    ImagePreviewUI.o(this.kKb).getLayoutParams().height = (i * 2 + j);
-    ImagePreviewUI.o(this.kKb).smoothScrollToPosition(ImagePreviewUI.g(this.kKb).intValue());
+    AppMethodBeat.i(150881);
+    int i = (int)ah.getContext().getResources().getDimension(2131427772);
+    paramRect.left = (i / 2);
+    paramRect.bottom = i;
+    paramRect.top = i;
+    paramRect.right = (i / 2);
+    AppMethodBeat.o(150881);
   }
 }
 

@@ -1,27 +1,22 @@
 package com.tencent.mm.plugin.emoji.ui;
 
-import android.os.Message;
-import com.tencent.mm.plugin.emoji.f.h;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EmojiAddCustomDialogUI$1
-  extends ah
+  implements Runnable
 {
   EmojiAddCustomDialogUI$1(EmojiAddCustomDialogUI paramEmojiAddCustomDialogUI) {}
   
-  public final void handleMessage(Message paramMessage)
+  public final void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    EmojiAddCustomDialogUI.a(this.jcr, this.jcr.getString(f.h.emoji_store_watting_add));
+    AppMethodBeat.i(53269);
+    EmojiAddCustomDialogUI.a(this.lld, this.lld.getString(2131299263));
+    AppMethodBeat.o(53269);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.EmojiAddCustomDialogUI.1
  * JD-Core Version:    0.7.0.1
  */

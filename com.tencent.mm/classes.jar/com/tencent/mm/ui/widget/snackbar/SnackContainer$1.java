@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.widget.snackbar;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SnackContainer$1
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class SnackContainer$1
   
   public final void run()
   {
-    if (this.wqa.getVisibility() == 0) {
-      this.wqa.startAnimation(SnackContainer.a(this.wqa));
+    AppMethodBeat.i(112991);
+    if (this.AKD.getVisibility() == 0) {
+      this.AKD.startAnimation(SnackContainer.a(this.AKD));
     }
+    AppMethodBeat.o(112991);
   }
 }
 

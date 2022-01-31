@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="top" android:orientation="horizontal" android:background="@color/rz" android:paddingLeft="@dimen/a39" android:paddingTop="@dimen/a3_" android:paddingRight="@dimen/a39" android:paddingBottom="@dimen/a3_" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/s1" android:id="@id/crf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/a3a" android:includeFontPadding="false" />
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/s0" android:gravity="right" android:id="@id/crg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="false" />
-</LinearLayout>
+    <ListView android:id="@id/cqr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" />
+    <TextView android:textSize="@dimen/dq" android:textColor="@color/a8i" android:gravity="center" android:id="@id/cqs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/clw" android:layout_centerVertical="true" />
+</RelativeLayout>

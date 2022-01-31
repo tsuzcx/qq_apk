@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class g$1
   implements g.a
 {
-  public final void tn(String paramString)
+  public final void log(String paramString)
   {
-    y.d("MicroMsg.FavItemInfo", paramString);
+    AppMethodBeat.i(102630);
+    ab.d("MicroMsg.FavItemInfo", paramString);
+    AppMethodBeat.o(102630);
   }
 }
 

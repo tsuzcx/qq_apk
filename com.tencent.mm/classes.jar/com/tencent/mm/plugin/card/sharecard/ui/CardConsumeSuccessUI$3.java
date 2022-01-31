@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.card.sharecard.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class CardConsumeSuccessUI$3
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class CardConsumeSuccessUI$3
   
   public final void run()
   {
-    CardConsumeSuccessUI.d(this.iqb);
+    AppMethodBeat.i(88119);
+    CardConsumeSuccessUI.d(this.krj);
+    AppMethodBeat.o(88119);
   }
 }
 

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
 import com.tencent.mm.ui.tools.ActionBarSearchView.b;
 
@@ -11,31 +12,36 @@ final class c$3
 {
   c$3(c paramc) {}
   
-  public final void GH(String paramString)
+  public final void Sk(String paramString)
   {
-    y.d("MicroMsg.MMPoiMapUI", "searchText: %s", new Object[] { paramString });
-    c.a(this.lJp, paramString);
-    c.w(this.lJp).cAP();
-    c.y(this.lJp).setVisibility(8);
-    if (bk.bl(paramString))
+    AppMethodBeat.i(113596);
+    ab.d("MicroMsg.MMPoiMapUI", "searchText: %s", new Object[] { paramString });
+    c.a(this.ogD, paramString);
+    c.w(this.ogD).dDZ();
+    c.y(this.ogD).setVisibility(8);
+    if (bo.isNullOrNil(paramString))
     {
-      c.v(this.lJp).clean();
-      c.v(this.lJp).notifyDataSetChanged();
+      c.v(this.ogD).clean();
+      c.v(this.ogD).notifyDataSetChanged();
+      AppMethodBeat.o(113596);
       return;
     }
-    c.z(this.lJp);
+    c.z(this.ogD);
+    AppMethodBeat.o(113596);
   }
   
-  public final void Wn()
+  public final void apP()
   {
-    y.d("MicroMsg.MMPoiMapUI", "clear btn click");
-    c.v(this.lJp).clean();
-    c.v(this.lJp).notifyDataSetChanged();
+    AppMethodBeat.i(113597);
+    ab.d("MicroMsg.MMPoiMapUI", "clear btn click");
+    c.v(this.ogD).clean();
+    c.v(this.ogD).notifyDataSetChanged();
+    AppMethodBeat.o(113597);
   }
   
-  public final void beQ() {}
+  public final void bMl() {}
   
-  public final void beR() {}
+  public final void bMm() {}
 }
 
 

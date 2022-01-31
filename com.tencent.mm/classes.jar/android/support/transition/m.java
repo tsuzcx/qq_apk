@@ -11,13 +11,13 @@ final class m
   public final void a(ImageView paramImageView)
   {
     ImageView.ScaleType localScaleType = paramImageView.getScaleType();
-    paramImageView.setTag(z.a.save_scale_type, localScaleType);
+    paramImageView.setTag(2131820665, localScaleType);
     if (localScaleType == ImageView.ScaleType.MATRIX) {
-      paramImageView.setTag(z.a.save_image_matrix, paramImageView.getImageMatrix());
+      paramImageView.setTag(2131820663, paramImageView.getImageMatrix());
     }
     for (;;)
     {
-      paramImageView.setImageMatrix(p.ny);
+      paramImageView.setImageMatrix(p.ow);
       return;
       paramImageView.setScaleType(ImageView.ScaleType.MATRIX);
     }

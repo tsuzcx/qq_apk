@@ -1,24 +1,25 @@
 package com.tencent.mm.plugin.record.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.gf;
-import com.tencent.mm.h.a.gf.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gi;
+import com.tencent.mm.g.a.gi.b;
 import com.tencent.mm.model.r;
+import com.tencent.mm.model.s;
 import com.tencent.mm.plugin.fav.a.ae;
+import com.tencent.mm.plugin.fav.a.q;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.protocal.c.yp;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.record.b.n;
+import com.tencent.mm.plugin.record.b.v;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.acw;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.s;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,45 +27,63 @@ import java.util.List;
 public class FavRecordDetailUI
   extends RecordMsgBaseUI
 {
-  private boolean bTT = true;
-  private j.a kao = new FavRecordDetailUI.1(this);
-  private com.tencent.mm.plugin.fav.a.g kdn;
-  private long ntA = -1L;
-  private boolean ntB = true;
-  private boolean ntC = false;
+  private boolean cBz;
+  private k.a muK;
+  private com.tencent.mm.plugin.fav.a.g mxX;
+  private long pZh;
+  private boolean pZi;
+  private boolean pZj;
+  private i pZk;
   
-  protected final void bvD()
+  public FavRecordDetailUI()
   {
-    this.ntA = getIntent().getLongExtra("key_detail_info_id", -1L);
-    this.bTT = getIntent().getBooleanExtra("show_share", true);
-    this.kdn = com.tencent.mm.plugin.record.b.b.fu(this.ntA);
-    if (this.kdn == null)
+    AppMethodBeat.i(24210);
+    this.pZh = -1L;
+    this.cBz = true;
+    this.pZi = true;
+    this.pZj = false;
+    this.muK = new FavRecordDetailUI.1(this);
+    AppMethodBeat.o(24210);
+  }
+  
+  protected final void cfU()
+  {
+    AppMethodBeat.i(24212);
+    this.pZh = getIntent().getLongExtra("key_detail_info_id", -1L);
+    this.cBz = getIntent().getBooleanExtra("show_share", true);
+    this.mxX = com.tencent.mm.plugin.record.b.g.kY(this.pZh);
+    if (this.mxX == null)
     {
       finish();
+      AppMethodBeat.o(24212);
       return;
     }
-    E(this.kdn);
+    F(this.mxX);
     Object localObject1 = new b();
-    ((b)localObject1).khA = this.kdn;
-    ((b)localObject1).ntu = this.kdn.field_favProto.sXc;
-    Object localObject2 = ((b)localObject1).ntu;
+    ((b)localObject1).mCk = this.mxX;
+    ((b)localObject1).pZa = this.mxX.field_favProto.wVc;
+    ((b)localObject1).pZb = new v();
+    Object localObject2 = ((b)localObject1).pZa;
     if (localObject2 == null) {
-      this.ntB = false;
+      this.pZi = false;
     }
     for (;;)
     {
-      super.bvD();
-      this.ntS.a((a)localObject1);
-      localObject1 = ((b)localObject1).ntu;
+      super.cfU();
+      this.pZz.a((a)localObject1);
+      this.pZk = new i(this, this.pZz, (a)localObject1);
+      localObject1 = ((b)localObject1).pZa;
       if (localObject1 != null) {
-        e.post(new FavRecordDetailUI.4(this, (List)localObject1), "calc_fav_record_info");
+        com.tencent.mm.sdk.g.d.post(new FavRecordDetailUI.4(this, (List)localObject1), "calc_fav_record_info");
       }
-      ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().c(this.kao);
-      ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavCdnStorage().a(((d)this.ntS).ntw);
+      this.pZz.pZk = this.pZk;
+      ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().add(this.muK);
+      ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavCdnStorage().a(((d)this.pZz).pZd);
+      AppMethodBeat.o(24212);
       return;
       if (((List)localObject2).size() == 0)
       {
-        this.ntB = false;
+        this.pZi = false;
       }
       else
       {
@@ -72,178 +91,218 @@ public class FavRecordDetailUI
         for (;;)
         {
           if (((Iterator)localObject2).hasNext()) {
-            if (((xv)((Iterator)localObject2).next()).sVO != 0)
+            if (((aca)((Iterator)localObject2).next()).wTK != 0)
             {
-              this.ntB = false;
+              this.pZi = false;
               break;
             }
           }
         }
-        this.ntB = true;
+        this.pZi = true;
       }
     }
   }
   
-  protected final h bvE()
+  protected final h cfV()
   {
-    return new d(this, new c(this));
+    AppMethodBeat.i(24213);
+    d locald = new d(this, new c(this));
+    AppMethodBeat.o(24213);
+    return locald;
   }
   
-  protected final String bvF()
+  protected final String cfW()
   {
-    if ((14 == this.kdn.field_type) && (!bk.bl(this.kdn.field_favProto.title))) {
-      return this.kdn.field_favProto.title;
+    AppMethodBeat.i(24217);
+    Object localObject;
+    if ((14 == this.mxX.field_type) && (!bo.isNullOrNil(this.mxX.field_favProto.title))) {
+      localObject = this.mxX.field_favProto.title;
     }
-    yp localyp = this.kdn.field_favProto.sXa;
-    if ((localyp != null) && (!bk.bl(localyp.sWB)))
+    for (;;)
     {
-      String str2 = r.gV(localyp.sWB);
-      String str3;
-      String str1;
-      if (com.tencent.mm.model.q.Gj().equals(localyp.bRO))
+      AppMethodBeat.o(24217);
+      return localObject;
+      acw localacw = this.mxX.field_favProto.wVa;
+      if ((localacw != null) && (!bo.isNullOrNil(localacw.wUA)))
       {
-        str3 = com.tencent.mm.plugin.record.b.h.gW(localyp.toUser);
-        str1 = str2;
-        if (!bk.aM(str3, "").equals(localyp.toUser)) {
-          str1 = str2 + " - " + str3;
+        String str1 = s.nE(localacw.wUA);
+        String str2;
+        if (r.Zn().equals(localacw.czp))
+        {
+          str2 = n.nF(localacw.toUser);
+          localObject = str1;
+          if (!bo.bf(str2, "").equals(localacw.toUser)) {
+            localObject = str1 + " - " + str2;
+          }
+        }
+        for (;;)
+        {
+          ab.v("MicroMsg.FavRecordDetailUI", "display name, source from[%s] to[%s]", new Object[] { localacw.czp, localacw.toUser });
+          break;
+          str2 = n.nF(localacw.czp);
+          localObject = str1;
+          if (!bo.bf(str2, "").equals(localacw.czp)) {
+            localObject = str1 + " - " + str2;
+          }
         }
       }
-      for (;;)
-      {
-        y.v("MicroMsg.FavRecordDetailUI", "display name, source from[%s] to[%s]", new Object[] { localyp.bRO, localyp.toUser });
-        return str1;
-        str3 = com.tencent.mm.plugin.record.b.h.gW(localyp.bRO);
-        str1 = str2;
-        if (!bk.aM(str3, "").equals(localyp.bRO)) {
-          str1 = str2 + " - " + str3;
-        }
-      }
+      ab.v("MicroMsg.FavRecordDetailUI", "display name, from item info user[%s]", new Object[] { this.mxX.field_fromUser });
+      localObject = n.nF(this.mxX.field_fromUser);
     }
-    y.v("MicroMsg.FavRecordDetailUI", "display name, from item info user[%s]", new Object[] { this.kdn.field_fromUser });
-    return com.tencent.mm.plugin.record.b.h.gW(this.kdn.field_fromUser);
   }
   
-  protected final String bvG()
+  protected final String cfX()
   {
-    LinkedList localLinkedList = this.kdn.field_favProto.sXc;
-    if (localLinkedList.size() > 0) {
-      return ((xv)localLinkedList.getFirst()).sVE;
+    AppMethodBeat.i(24218);
+    Object localObject = this.mxX.field_favProto.wVc;
+    if (((LinkedList)localObject).size() > 0)
+    {
+      localObject = ((aca)((LinkedList)localObject).getFirst()).wTA;
+      AppMethodBeat.o(24218);
+      return localObject;
     }
+    AppMethodBeat.o(24218);
     return null;
   }
   
-  protected final String bvH()
+  protected final String cfY()
   {
-    LinkedList localLinkedList = this.kdn.field_favProto.sXc;
-    if (localLinkedList.size() > 0) {
-      return ((xv)localLinkedList.getLast()).sVE;
+    AppMethodBeat.i(24219);
+    Object localObject = this.mxX.field_favProto.wVc;
+    if (((LinkedList)localObject).size() > 0)
+    {
+      localObject = ((aca)((LinkedList)localObject).getLast()).wTA;
+      AppMethodBeat.o(24219);
+      return localObject;
     }
+    AppMethodBeat.o(24219);
     return null;
   }
   
-  protected final void bvI()
+  protected final void cfZ()
   {
-    if (!this.bTT) {
+    AppMethodBeat.i(24220);
+    if (!this.cBz)
+    {
+      AppMethodBeat.o(24220);
       return;
     }
-    addIconOptionMenu(0, R.l.top_item_desc_more, R.g.mm_title_btn_menu, new FavRecordDetailUI.2(this));
+    addIconOptionMenu(0, 2131304317, 2130839668, new FavRecordDetailUI.2(this));
+    AppMethodBeat.o(24220);
   }
   
   protected final void d(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Object localObject;
+    AppMethodBeat.i(24221);
     if ((4097 == paramInt1) && (-1 == paramInt2))
     {
-      localObject = new gf();
-      ((gf)localObject).bNF.type = 32;
-      ((gf)localObject).bNF.bIr = this.ntA;
-      com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject);
-      if (((gf)localObject).bNG.bNW) {
-        com.tencent.mm.ui.base.h.bC(this.mController.uMN, getString(R.l.Fav_NotDownload_CannotForward));
+      Object localObject = new gi();
+      ((gi)localObject).cuX.type = 32;
+      ((gi)localObject).cuX.cpM = this.pZh;
+      com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
+      if (((gi)localObject).cuY.cvo)
+      {
+        com.tencent.mm.ui.base.h.bO(getContext(), getString(2131296330));
+        AppMethodBeat.o(24221);
+        return;
+      }
+      if (paramIntent == null)
+      {
+        localObject = null;
+        if (paramIntent != null) {
+          break label230;
+        }
+      }
+      label230:
+      for (paramIntent = null;; paramIntent = paramIntent.getStringExtra("custom_send_text"))
+      {
+        p localp = com.tencent.mm.ui.base.h.b(getContext(), getString(2131299734), false, null);
+        gi localgi = new gi();
+        localgi.cuX.type = 13;
+        localgi.cuX.context = getContext();
+        localgi.cuX.toUser = ((String)localObject);
+        localgi.cuX.cvd = paramIntent;
+        localgi.cuX.cpM = this.pZh;
+        localgi.cuX.cvc = new FavRecordDetailUI.3(this, localp);
+        com.tencent.mm.sdk.b.a.ymk.l(localgi);
+        AppMethodBeat.o(24221);
+        return;
+        localObject = paramIntent.getStringExtra("Select_Conv_User");
+        break;
       }
     }
-    else
-    {
-      return;
-    }
-    if (paramIntent == null)
-    {
-      localObject = null;
-      if (paramIntent != null) {
-        break label221;
-      }
-    }
-    label221:
-    for (paramIntent = null;; paramIntent = paramIntent.getStringExtra("custom_send_text"))
-    {
-      p localp = com.tencent.mm.ui.base.h.b(this.mController.uMN, getString(R.l.favorite_forward_tips), false, null);
-      gf localgf = new gf();
-      localgf.bNF.type = 13;
-      localgf.bNF.context = this.mController.uMN;
-      localgf.bNF.toUser = ((String)localObject);
-      localgf.bNF.bNL = paramIntent;
-      localgf.bNF.bIr = this.ntA;
-      localgf.bNF.bNK = new FavRecordDetailUI.3(this, localp);
-      com.tencent.mm.sdk.b.a.udP.m(localgf);
-      return;
-      localObject = paramIntent.getStringExtra("Select_Conv_User");
-      break;
-    }
+    AppMethodBeat.o(24221);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(24211);
     super.onCreate(paramBundle);
+    AppMethodBeat.o(24211);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().d(this.kao);
-    if (this.ntS != null) {
-      ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavCdnStorage().b(((d)this.ntS).ntw);
+    AppMethodBeat.i(24216);
+    ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().remove(this.muK);
+    if (this.pZz != null) {
+      ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavCdnStorage().b(((d)this.pZz).pZd);
     }
-    this.ntC = true;
+    this.pZj = true;
+    this.pZk.cgg();
     super.onDestroy();
+    AppMethodBeat.o(24216);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(24214);
     super.onResume();
-    Object localObject2 = (b)((d)this.ntS).ntO;
+    Object localObject2 = (b)((d)this.pZz).pZv;
     com.tencent.mm.plugin.fav.a.g localg;
-    if (((b)localObject2).khA != null)
+    Object localObject1;
+    if (((b)localObject2).mCk != null)
     {
-      localg = com.tencent.mm.plugin.record.b.b.fu(((b)localObject2).khA.field_localId);
-      if ((localg != null) && (localg.field_favProto != null)) {
-        break label51;
+      localg = com.tencent.mm.plugin.record.b.g.kY(((b)localObject2).mCk.field_localId);
+      if ((localg == null) || (localg.field_favProto == null))
+      {
+        AppMethodBeat.o(24214);
+        return;
       }
-    }
-    for (;;)
-    {
-      return;
-      label51:
-      Object localObject1 = localg.field_favProto.sXc;
-      localObject2 = ((b)localObject2).ntu.iterator();
+      localObject1 = localg.field_favProto.wVc;
+      localObject2 = ((b)localObject2).pZa.iterator();
       do
       {
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
-      } while (((LinkedList)localObject1).contains((xv)((Iterator)localObject2).next()));
-      for (int i = 1; i != 0; i = 0)
+      } while (((LinkedList)localObject1).contains((aca)((Iterator)localObject2).next()));
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
       {
         localObject1 = new b();
-        ((b)localObject1).khA = localg;
-        ((b)localObject1).ntu = localg.field_favProto.sXc;
-        this.ntS.a((a)localObject1);
-        return;
+        ((b)localObject1).mCk = localg;
+        ((b)localObject1).pZa = localg.field_favProto.wVc;
+        this.pZz.a((a)localObject1);
       }
+      AppMethodBeat.o(24214);
+      return;
     }
   }
   
-  protected void onStop()
+  public void onStop()
   {
+    AppMethodBeat.i(24215);
     super.onStop();
+    AppMethodBeat.o(24215);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

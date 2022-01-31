@@ -1,16 +1,13 @@
 package com.tencent.liteav.screencapture;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-
 class a$2
   implements Runnable
 {
-  a$2(a parama, Handler paramHandler, HandlerThread paramHandlerThread) {}
+  a$2(a parama, boolean paramBoolean) {}
   
   public void run()
   {
-    this.c.a.post(new a.2.1(this));
+    this.b.i = this.a;
   }
 }
 

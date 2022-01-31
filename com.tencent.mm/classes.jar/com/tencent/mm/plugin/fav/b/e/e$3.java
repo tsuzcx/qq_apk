@@ -1,30 +1,38 @@
 package com.tencent.mm.plugin.fav.b.e;
 
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class e$3
-  implements am.a
+  implements ap.a
 {
   e$3(e parame) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
+    AppMethodBeat.i(5392);
     try
     {
-      e.d(this.kaR);
+      e.d(this.mvn);
+      AppMethodBeat.o(5392);
       return false;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.Fav.FavSendService", localException, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.Fav.FavSendService", localException, "", new Object[0]);
+      }
     }
-    return false;
   }
   
   public final String toString()
   {
-    return super.toString() + "|scenePusher";
+    AppMethodBeat.i(5393);
+    String str = super.toString() + "|scenePusher";
+    AppMethodBeat.o(5393);
+    return str;
   }
 }
 

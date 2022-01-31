@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.abtest;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$2
   implements Animation.AnimationListener
@@ -10,23 +11,25 @@ final class b$2
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.ojV.ojF != null) {
-      this.ojV.ojF.setVisibility(0);
+    AppMethodBeat.i(35671);
+    if (this.qYg.qXQ != null) {
+      this.qYg.qXQ.setVisibility(0);
     }
-    this.ojV.ojT = false;
-    this.ojV.ojR = true;
+    this.qYg.qYe = false;
+    this.qYg.qYc = true;
+    AppMethodBeat.o(35671);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    this.ojV.ojT = true;
+    this.qYg.qYe = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.abtest.b.2
  * JD-Core Version:    0.7.0.1
  */

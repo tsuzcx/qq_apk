@@ -2,10 +2,12 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.f.e;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.g.d;
 import java.util.LinkedList;
 
 final class UnfamiliarContactDetailUI$7$1
@@ -15,28 +17,30 @@ final class UnfamiliarContactDetailUI$7$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (UnfamiliarContactDetailUI.h(this.nXa.nWX) != null)
+    AppMethodBeat.i(127640);
+    if (UnfamiliarContactDetailUI.h(this.qLl.qLi) != null)
     {
-      g.DQ();
-      g.DO().dJT.a(681, UnfamiliarContactDetailUI.h(this.nXa.nWX));
-      paramDialogInterface = UnfamiliarContactDetailUI.h(this.nXa.nWX);
+      g.RM();
+      g.RK().eHt.a(681, UnfamiliarContactDetailUI.h(this.qLl.qLi));
+      paramDialogInterface = UnfamiliarContactDetailUI.h(this.qLl.qLi);
       paramDialogInterface.index = 0;
-      paramDialogInterface.mdx = 0;
-      paramDialogInterface.nXo = 0;
-      paramDialogInterface.nXp.clear();
-      paramDialogInterface.nXq.clear();
-      e.remove(paramDialogInterface);
-      if (paramDialogInterface.nXm != null) {
-        paramDialogInterface.nXm.bzB();
+      paramDialogInterface.oDT = 0;
+      paramDialogInterface.qLy = 0;
+      paramDialogInterface.qLz.clear();
+      paramDialogInterface.qLA.clear();
+      d.ysm.remove(paramDialogInterface);
+      if (paramDialogInterface.qLw != null) {
+        paramDialogInterface.qLw.ckL();
       }
-      e.post(paramDialogInterface, "delete_contact_task");
+      d.post(paramDialogInterface, "delete_contact_task");
     }
-    UnfamiliarContactDetailUI.b(this.nXa.nWX, false);
+    UnfamiliarContactDetailUI.b(this.qLl.qLi, false);
+    AppMethodBeat.o(127640);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.UnfamiliarContactDetailUI.7.1
  * JD-Core Version:    0.7.0.1
  */

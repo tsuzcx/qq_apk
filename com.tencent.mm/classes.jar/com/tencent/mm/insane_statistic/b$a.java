@@ -1,34 +1,43 @@
 package com.tencent.mm.insane_statistic;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.as.e;
-import com.tencent.mm.j.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.at.e;
+import com.tencent.mm.i.d;
 import com.tencent.mm.sdk.b.c;
 import com.tencent.mm.storage.bi;
 
 final class b$a
 {
-  bi bFH = null;
-  long dFT;
-  int dFU;
-  e dFV;
-  String dFW;
-  boolean dFX = false;
-  String dFY;
-  int dFZ = 0;
-  d dGa;
-  boolean dGb = false;
-  c dGc = new b.a.1(this);
-  c dGd = new b.a.2(this);
-  final b dmK;
+  bi cmQ;
+  String eDA;
+  int eDB;
+  d eDC;
+  boolean eDD;
+  c eDE;
+  c eDF;
+  long eDv;
+  int eDw;
+  e eDx;
+  String eDy;
+  boolean eDz;
+  final b rr;
   
   b$a(long paramLong, bi parambi, b paramb, boolean paramBoolean, int paramInt)
   {
-    this.dFT = paramLong;
-    this.bFH = parambi;
-    this.dmK = paramb;
-    this.dFU = paramInt;
-    this.dGb = paramBoolean;
+    AppMethodBeat.i(16180);
+    this.cmQ = null;
+    this.eDz = false;
+    this.eDB = 0;
+    this.eDD = false;
+    this.eDE = new b.a.1(this);
+    this.eDF = new b.a.2(this);
+    this.eDv = paramLong;
+    this.cmQ = parambi;
+    this.rr = paramb;
+    this.eDw = paramInt;
+    this.eDD = paramBoolean;
+    AppMethodBeat.o(16180);
   }
 }
 

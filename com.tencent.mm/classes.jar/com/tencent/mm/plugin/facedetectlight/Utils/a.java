@@ -1,41 +1,67 @@
 package com.tencent.mm.plugin.facedetectlight.Utils;
 
 import android.content.Context;
+import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class a
 {
-  private SensorManager aVT;
-  public a.a jXd;
-  private boolean jXe = false;
+  private SensorManager bmB;
+  private a.a mru;
+  private boolean mrv = false;
   
-  public final void de(Context paramContext)
+  public final void bvJ()
   {
-    if (this.jXe) {}
-    do
+    AppMethodBeat.i(141845);
+    if (this.mrv)
     {
+      AppMethodBeat.o(141845);
       return;
-      this.jXe = true;
-      new StringBuilder("lightSensor has started:").append(this.jXe);
-      this.aVT = ((SensorManager)paramContext.getApplicationContext().getSystemService("sensor"));
-      paramContext = this.aVT.getDefaultSensor(5);
-    } while (paramContext == null);
-    this.jXd = new a.a(this, (byte)0);
-    this.aVT.registerListener(this.jXd, paramContext, 3);
+    }
+    this.mrv = true;
+    new StringBuilder("lightSensor has started:").append(this.mrv);
+    this.bmB = ((SensorManager)ah.getContext().getSystemService("sensor"));
+    Sensor localSensor = this.bmB.getDefaultSensor(5);
+    if (localSensor != null)
+    {
+      this.mru = new a.a(this, (byte)0);
+      this.bmB.registerListener(this.mru, localSensor, 3);
+    }
+    AppMethodBeat.o(141845);
+  }
+  
+  public final float bvK()
+  {
+    AppMethodBeat.i(752);
+    if (this.mru != null)
+    {
+      new StringBuilder("Light lux: ").append(a.a.a(this.mru));
+      float f = a.a.a(this.mru);
+      AppMethodBeat.o(752);
+      return f;
+    }
+    AppMethodBeat.o(752);
+    return -1.0F;
   }
   
   public final void stop()
   {
-    if ((!this.jXe) || (this.aVT == null)) {
+    AppMethodBeat.i(753);
+    if ((!this.mrv) || (this.bmB == null))
+    {
+      AppMethodBeat.o(753);
       return;
     }
-    this.jXe = false;
-    this.aVT.unregisterListener(this.jXd);
+    this.mrv = false;
+    this.bmB.unregisterListener(this.mru);
+    AppMethodBeat.o(753);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.Utils.a
  * JD-Core Version:    0.7.0.1
  */

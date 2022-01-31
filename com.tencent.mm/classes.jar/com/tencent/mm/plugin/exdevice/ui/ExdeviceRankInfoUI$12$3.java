@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.R.k;
-import com.tencent.mm.plugin.sport.b.d;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sport.a.d;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class ExdeviceRankInfoUI$12$3
   implements Runnable
@@ -13,21 +13,25 @@ final class ExdeviceRankInfoUI$12$3
   
   public final void run()
   {
-    ExdeviceRankInfoUI.h(this.jFW.jFV);
-    if (!bk.bl(ExdeviceRankInfoUI.i(this.jFW.jFV))) {
-      this.jFW.jFV.addIconOptionMenu(0, R.k.actionbar_icon_dark_more, new MenuItem.OnMenuItemClickListener()
+    AppMethodBeat.i(20149);
+    ExdeviceRankInfoUI.h(this.lPu.lPt);
+    if (!bo.isNullOrNil(ExdeviceRankInfoUI.i(this.lPu.lPt))) {
+      this.lPu.lPt.addIconOptionMenu(0, 2131230740, new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          d.jdMethod_if(11);
-          ExdeviceRankInfoUI.j(ExdeviceRankInfoUI.12.3.this.jFW.jFV);
+          AppMethodBeat.i(20148);
+          d.kS(11);
+          ExdeviceRankInfoUI.j(ExdeviceRankInfoUI.12.3.this.lPu.lPt);
+          AppMethodBeat.o(20148);
           return true;
         }
       });
     }
-    if (ExdeviceRankInfoUI.k(this.jFW.jFV) != null) {
-      ExdeviceRankInfoUI.k(this.jFW.jFV).BQ(ExdeviceRankInfoUI.l(this.jFW.jFV));
+    if (ExdeviceRankInfoUI.k(this.lPu.lPt) != null) {
+      ExdeviceRankInfoUI.k(this.lPu.lPt).LS(ExdeviceRankInfoUI.l(this.lPu.lPt));
     }
+    AppMethodBeat.o(20149);
   }
 }
 

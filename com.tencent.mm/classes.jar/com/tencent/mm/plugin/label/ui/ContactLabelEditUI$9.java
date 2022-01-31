@@ -7,7 +7,7 @@ final class ContactLabelEditUI$9
 {
   ContactLabelEditUI$9(ContactLabelEditUI paramContactLabelEditUI) {}
   
-  public final boolean gk(int paramInt)
+  public final boolean iz(int paramInt)
   {
     return false;
   }

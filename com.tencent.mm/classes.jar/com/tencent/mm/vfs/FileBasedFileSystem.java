@@ -8,7 +8,8 @@ import android.system.ErrnoException;
 import android.system.Os;
 import android.system.OsConstants;
 import android.system.StructStat;
-import com.tencent.e.a.b;
+import com.tencent.f.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,11 +20,11 @@ import java.util.Map;
 public abstract class FileBasedFileSystem
   extends AbstractFileSystem
 {
+  private final String APn;
+  private final boolean APo;
+  private volatile String APp;
+  private volatile long APq = 512L;
   final boolean mReadOnly;
-  private final String wuo;
-  private final boolean wup;
-  private volatile String wuq;
-  private volatile long wur = 512L;
   
   protected FileBasedFileSystem(Parcel paramParcel)
   {
@@ -33,73 +34,48 @@ public abstract class FileBasedFileSystem
     if (str2 == null) {
       str1 = "";
     }
-    this.wuo = str1;
+    this.APn = str1;
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
       this.mReadOnly = bool;
-      if (!this.wuo.isEmpty()) {
+      if (!this.APn.isEmpty()) {
         break;
       }
-      this.wuq = this.wuo;
-      this.wup = true;
+      this.APp = this.APn;
+      this.APo = true;
       return;
     }
-    paramParcel = j.y(this.wuo, Collections.unmodifiableMap(FileSystemManager.cVw().xvU));
+    paramParcel = j.J(this.APn, Collections.unmodifiableMap(FileSystemManager.dQE().APJ));
     if (paramParcel != null)
     {
-      aeN(paramParcel);
-      this.wup = true;
+      avF(paramParcel);
+      this.APo = true;
       return;
     }
-    this.wuq = null;
-    this.wup = false;
+    this.APp = null;
+    this.APo = false;
   }
   
   protected FileBasedFileSystem(String paramString)
   {
-    this.wuo = paramString;
+    this.APn = paramString;
     this.mReadOnly = false;
-    if (this.wuo.isEmpty())
+    if (this.APn.isEmpty())
     {
-      this.wuq = this.wuo;
-      this.wup = true;
+      this.APp = this.APn;
+      this.APo = true;
       return;
     }
-    paramString = j.y(this.wuo, Collections.unmodifiableMap(FileSystemManager.cVw().xvU));
+    paramString = j.J(this.APn, Collections.unmodifiableMap(FileSystemManager.dQE().APJ));
     if (paramString != null)
     {
-      aeN(paramString);
-      this.wup = true;
+      avF(paramString);
+      this.APo = true;
       return;
     }
-    this.wuq = null;
-    this.wup = false;
-  }
-  
-  private FileSystem.a S(File paramFile)
-  {
-    String str1 = this.wuq;
-    if (paramFile.getPath().length() == str1.length()) {}
-    String str2;
-    int i;
-    for (str1 = "";; str1 = paramFile.getPath().substring(i + 1))
-    {
-      str2 = paramFile.getName();
-      if (Build.VERSION.SDK_INT < 21) {
-        break;
-      }
-      FileSystem.a locala = a.a(paramFile, this, str1, str2);
-      if (locala == null) {
-        break;
-      }
-      return locala;
-      i = str1.length();
-    }
-    boolean bool = paramFile.isDirectory();
-    long l1 = paramFile.length();
-    long l2 = this.wur;
-    return new FileSystem.a(this, str1, str2, l1, (this.wur - 1L ^ 0xFFFFFFFF) & l2 + l1 - 1L, paramFile.lastModified(), bool);
+    this.APp = null;
+    this.APo = false;
   }
   
   private List<FileSystem.a> a(File paramFile, ArrayList<FileSystem.a> paramArrayList)
@@ -119,11 +95,11 @@ public abstract class FileBasedFileSystem
         break;
       }
       paramFile = arrayOfFile[i];
-      FileSystem.a locala = S(paramFile);
+      FileSystem.a locala = ab(paramFile);
       if (locala != null)
       {
         paramArrayList.add(locala);
-        if (locala.wuv) {
+        if (locala.APu) {
           a(paramFile, paramArrayList);
         }
       }
@@ -131,7 +107,31 @@ public abstract class FileBasedFileSystem
     }
   }
   
-  private void aeN(String paramString)
+  private FileSystem.a ab(File paramFile)
+  {
+    String str1 = this.APp;
+    if (paramFile.getPath().length() == str1.length()) {}
+    String str2;
+    int i;
+    for (str1 = "";; str1 = paramFile.getPath().substring(i + 1))
+    {
+      str2 = paramFile.getName();
+      if (Build.VERSION.SDK_INT < 21) {
+        break;
+      }
+      return a.a(paramFile, this, str1, str2);
+      i = str1.length();
+    }
+    if (!paramFile.exists()) {
+      return null;
+    }
+    boolean bool = paramFile.isDirectory();
+    long l1 = paramFile.length();
+    long l2 = this.APq;
+    return new FileSystem.a(this, str1, str2, l1, (this.APq - 1L ^ 0xFFFFFFFF) & l2 + l1 - 1L, paramFile.lastModified(), bool);
+  }
+  
+  private void avF(String paramString)
   {
     File localFile = new File(paramString);
     try
@@ -154,7 +154,7 @@ public abstract class FileBasedFileSystem
         if ((i - 1 & i) != 0) {
           break label171;
         }
-        this.wur = i;
+        this.APq = i;
       }
       catch (Exception localException)
       {
@@ -162,11 +162,11 @@ public abstract class FileBasedFileSystem
         {
           int i;
           b.b("VFS.FileBasedFileSystem", localException, "Failed to retrieve block size.");
-          this.wur = 4096L;
+          this.APq = 4096L;
         }
       }
-      this.wuq = paramString.getPath();
-      b.i("VFS.FileBasedFileSystem", "Real path resolved: " + this.wuo + " => " + this.wuq);
+      this.APp = paramString.getPath();
+      b.i("VFS.FileBasedFileSystem", "Real path resolved: " + this.APn + " => " + this.APp);
       return;
     }
     catch (IOException paramString)
@@ -177,7 +177,7 @@ public abstract class FileBasedFileSystem
         continue;
         label171:
         b.w("VFS.FileBasedFileSystem", "Non-power-of-two block size: " + i + ", use default: 4096");
-        this.wur = 4096L;
+        this.APq = 4096L;
       }
     }
   }
@@ -213,9 +213,14 @@ public abstract class FileBasedFileSystem
     return bool2;
   }
   
-  public final List<FileSystem.a> J(String paramString, boolean paramBoolean)
+  public final boolean A(String paramString, long paramLong)
   {
-    Object localObject = new File(L(paramString, false));
+    return new File(P(paramString, true)).setLastModified(paramLong);
+  }
+  
+  public final List<FileSystem.a> N(String paramString, boolean paramBoolean)
+  {
+    Object localObject = new File(P(paramString, false));
     if (!((File)localObject).isDirectory()) {}
     do
     {
@@ -230,7 +235,7 @@ public abstract class FileBasedFileSystem
     int i = 0;
     while (i < j)
     {
-      FileSystem.a locala = S(localObject[i]);
+      FileSystem.a locala = ab(localObject[i]);
       if (locala != null) {
         paramString.add(locala);
       }
@@ -239,12 +244,12 @@ public abstract class FileBasedFileSystem
     return paramString;
   }
   
-  public final boolean K(String paramString, boolean paramBoolean)
+  public final boolean O(String paramString, boolean paramBoolean)
   {
     if ((paramString.isEmpty()) || (paramString.equals("/"))) {}
     for (boolean bool = true;; bool = false)
     {
-      paramString = new File(L(paramString, false));
+      paramString = new File(P(paramString, false));
       if (paramString.isDirectory()) {
         break;
       }
@@ -256,11 +261,11 @@ public abstract class FileBasedFileSystem
     return paramString.delete();
   }
   
-  public final String L(String paramString, boolean paramBoolean)
+  public final String P(String paramString, boolean paramBoolean)
   {
-    String str = this.wuq;
+    String str = this.APp;
     if (str == null) {
-      throw new IllegalStateException("Base path cannot be resolved: " + this.wuo);
+      throw new IllegalStateException("Base path cannot be resolved: " + this.APn);
     }
     if (paramString.isEmpty()) {
       return str;
@@ -268,7 +273,17 @@ public abstract class FileBasedFileSystem
     return str + '/' + paramString;
   }
   
-  public int Qd()
+  public final boolean aV(String paramString1, String paramString2)
+  {
+    paramString1 = P(paramString1, false);
+    paramString2 = P(paramString2, true);
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return false;
+    }
+    return new File(paramString1).renameTo(new File(paramString2));
+  }
+  
+  public int ajj()
   {
     int i = 56;
     if (!this.mReadOnly) {
@@ -277,22 +292,12 @@ public abstract class FileBasedFileSystem
     return i;
   }
   
-  public final boolean aC(String paramString1, String paramString2)
+  public final String dQz()
   {
-    paramString1 = L(paramString1, false);
-    paramString2 = L(paramString2, true);
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return false;
-    }
-    return new File(paramString1).renameTo(new File(paramString2));
-  }
-  
-  public final String cLh()
-  {
-    String str2 = this.wuq;
+    String str2 = this.APp;
     String str1 = str2;
     if (str2 == null) {
-      str1 = this.wuo;
+      str1 = this.APn;
     }
     return str1;
   }
@@ -305,7 +310,7 @@ public abstract class FileBasedFileSystem
   public final boolean exists(String paramString)
   {
     boolean bool2 = false;
-    paramString = L(paramString, false);
+    paramString = P(paramString, false);
     boolean bool1 = bool2;
     if (paramString != null)
     {
@@ -317,33 +322,33 @@ public abstract class FileBasedFileSystem
     return bool1;
   }
   
-  public final boolean jJ(String paramString)
+  public void q(Map<String, String> paramMap)
   {
-    paramString = L(paramString, false);
-    if (paramString == null) {
-      return false;
-    }
-    return new File(paramString).delete();
-  }
-  
-  public void m(Map<String, String> paramMap)
-  {
-    if (!this.wup)
+    if (!this.APo)
     {
-      String str = this.wuq;
-      paramMap = j.y(this.wuo, paramMap);
+      String str = this.APp;
+      paramMap = j.J(this.APn, paramMap);
       if ((paramMap != null) && (!paramMap.equals(str))) {
-        aeN(paramMap);
+        avF(paramMap);
       }
     }
     else
     {
       return;
     }
-    this.wuq = paramMap;
+    this.APp = paramMap;
   }
   
-  public final FileSystem.b mZ(String paramString)
+  public final boolean qD(String paramString)
+  {
+    paramString = P(paramString, false);
+    if (paramString == null) {
+      return false;
+    }
+    return new File(paramString).delete();
+  }
+  
+  public final FileSystem.b uk(String paramString)
   {
     Object localObject = paramString;
     if (paramString == null) {
@@ -353,15 +358,15 @@ public abstract class FileBasedFileSystem
     {
       try
       {
-        paramString = new StatFs(L((String)localObject, false));
+        paramString = new StatFs(P((String)localObject, false));
         localObject = new FileSystem.b();
         if (Build.VERSION.SDK_INT >= 18)
         {
-          ((FileSystem.b)localObject).uib = paramString.getBlockSizeLong();
-          ((FileSystem.b)localObject).uia = paramString.getAvailableBlocksLong();
-          ((FileSystem.b)localObject).uhY = paramString.getBlockCountLong();
-          ((FileSystem.b)localObject).wux = (((FileSystem.b)localObject).uia * ((FileSystem.b)localObject).uib);
-          ((FileSystem.b)localObject).wuy = (((FileSystem.b)localObject).uhY * ((FileSystem.b)localObject).uib);
+          ((FileSystem.b)localObject).yqh = paramString.getBlockSizeLong();
+          ((FileSystem.b)localObject).yqg = paramString.getAvailableBlocksLong();
+          ((FileSystem.b)localObject).yqe = paramString.getBlockCountLong();
+          ((FileSystem.b)localObject).APw = (((FileSystem.b)localObject).yqg * ((FileSystem.b)localObject).yqh);
+          ((FileSystem.b)localObject).bau = (((FileSystem.b)localObject).yqe * ((FileSystem.b)localObject).yqh);
           return localObject;
         }
       }
@@ -369,36 +374,31 @@ public abstract class FileBasedFileSystem
       {
         return null;
       }
-      ((FileSystem.b)localObject).uib = paramString.getBlockSize();
-      ((FileSystem.b)localObject).uia = paramString.getAvailableBlocks();
-      ((FileSystem.b)localObject).uhY = paramString.getBlockCount();
+      ((FileSystem.b)localObject).yqh = paramString.getBlockSize();
+      ((FileSystem.b)localObject).yqg = paramString.getAvailableBlocks();
+      ((FileSystem.b)localObject).yqe = paramString.getBlockCount();
     }
   }
   
-  public final FileSystem.a na(String paramString)
+  public final FileSystem.a ul(String paramString)
   {
-    return S(new File(L(paramString, false)));
+    return ab(new File(P(paramString, false)));
   }
   
-  public final boolean nb(String paramString)
+  public final boolean um(String paramString)
   {
-    paramString = L(paramString, true);
+    paramString = P(paramString, true);
     if (paramString == null) {
       return false;
     }
     return new File(paramString).mkdirs();
   }
   
-  public final boolean r(String paramString, long paramLong)
-  {
-    return new File(L(paramString, true)).setLastModified(paramLong);
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramInt = 1;
     paramParcel.writeInt(1);
-    paramParcel.writeString(this.wuo);
+    paramParcel.writeString(this.APn);
     if (this.mReadOnly) {}
     for (;;)
     {
@@ -409,21 +409,28 @@ public abstract class FileBasedFileSystem
   }
   
   @TargetApi(21)
-  private static final class a
+  static final class a
   {
     static FileSystem.a a(File paramFile, FileSystem paramFileSystem, String paramString1, String paramString2)
     {
+      AppMethodBeat.i(54503);
       try
       {
         paramFile = Os.stat(paramFile.getPath());
-        if (paramFile == null) {
+        if (paramFile == null)
+        {
+          AppMethodBeat.o(54503);
           return null;
         }
         boolean bool = OsConstants.S_ISDIR(paramFile.st_mode);
         paramFile = new FileSystem.a(paramFileSystem, paramString1, paramString2, paramFile.st_size, paramFile.st_blocks * 512L, 1000L * paramFile.st_mtime, bool);
+        AppMethodBeat.o(54503);
         return paramFile;
       }
-      catch (ErrnoException paramFile) {}
+      catch (ErrnoException paramFile)
+      {
+        AppMethodBeat.o(54503);
+      }
       return null;
     }
   }

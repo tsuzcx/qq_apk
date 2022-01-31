@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 
 final class BaseSOSWebViewUI$4
@@ -10,21 +11,23 @@ final class BaseSOSWebViewUI$4
   
   public final void run()
   {
-    if (BaseSOSWebViewUI.p(this.rtA) != null)
+    AppMethodBeat.i(8334);
+    if (this.vjG.getJsapi() != null)
     {
-      if ((this.rtB != null) && (this.rtB.getInt("isRefresh") == 1) && (this.rtB.getString("widgetId") != null)) {
-        BaseSOSWebViewUI.q(this.rtA).fC(this.rtB.getString("widgetId"), this.hdV);
+      if ((this.vjH != null) && (this.vjH.getInt("isRefresh") == 1) && (this.vjH.getString("widgetId") != null))
+      {
+        this.vjG.getJsapi().hz(this.vjH.getString("widgetId"), this.iOH);
+        AppMethodBeat.o(8334);
+        return;
       }
+      this.vjG.getJsapi().h(this.iOH, this.vjI, this.uPq);
     }
-    else {
-      return;
-    }
-    BaseSOSWebViewUI.r(this.rtA).f(this.hdV, this.rtC, this.qZI);
+    AppMethodBeat.o(8334);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.BaseSOSWebViewUI.4
  * JD-Core Version:    0.7.0.1
  */

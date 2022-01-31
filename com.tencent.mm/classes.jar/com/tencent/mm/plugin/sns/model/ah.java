@@ -1,39 +1,28 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.plugin.sns.storage.g;
-import com.tencent.mm.plugin.sns.storage.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.b;
 
 public final class ah
-  implements g
+  implements af
 {
-  HashMap<String, l> jIZ = new HashMap();
+  private b rhS;
+  private int scene = 0;
   
-  public final l NC(String paramString)
+  public final b coJ()
   {
-    return (l)this.jIZ.get(paramString);
-  }
-  
-  public final boolean a(l paraml)
-  {
-    if ((paraml == null) || (bk.bl(paraml.field_userName))) {
-      return false;
+    AppMethodBeat.i(36525);
+    if (this.rhS == null) {
+      this.rhS = new b();
     }
-    af.bDp().post(new ah.3(this, paraml));
-    return true;
+    b localb = this.rhS;
+    AppMethodBeat.o(36525);
+    return localb;
   }
   
-  public final boolean bDV()
+  public final int getScene()
   {
-    af.bDp().post(new ah.1(this));
-    return true;
-  }
-  
-  public final boolean bDW()
-  {
-    af.bDp().post(new ah.2(this));
-    return true;
+    return this.scene;
   }
 }
 

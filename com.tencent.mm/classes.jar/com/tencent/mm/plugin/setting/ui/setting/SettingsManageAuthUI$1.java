@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SettingsManageAuthUI$1
   implements AbsListView.OnScrollListener
@@ -11,15 +12,17 @@ final class SettingsManageAuthUI$1
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(127246);
     if (paramInt1 + paramInt2 == paramInt3)
     {
-      y.i("MicroMsg.SettingsManageAuthUI", "scroll to the end");
-      if (SettingsManageAuthUI.a(this.nUA) != null)
+      ab.i("MicroMsg.SettingsManageAuthUI", "scroll to the end");
+      if (SettingsManageAuthUI.a(this.qIF) != null)
       {
-        SettingsManageAuthUI.aK(SettingsManageAuthUI.a(this.nUA));
-        SettingsManageAuthUI.b(this.nUA);
+        SettingsManageAuthUI.bi(SettingsManageAuthUI.a(this.qIF));
+        SettingsManageAuthUI.b(this.qIF);
       }
     }
+    AppMethodBeat.o(127246);
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}

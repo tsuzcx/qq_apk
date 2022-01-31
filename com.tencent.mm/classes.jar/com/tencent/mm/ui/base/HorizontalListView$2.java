@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class HorizontalListView$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class HorizontalListView$2
   
   public final void run()
   {
-    this.uTr.requestLayout();
+    AppMethodBeat.i(106311);
+    this.zhR.requestLayout();
+    AppMethodBeat.o(106311);
   }
 }
 

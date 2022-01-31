@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.gif;
 
 import android.os.Process;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class d$6
   implements Runnable
@@ -12,71 +13,75 @@ final class d$6
   
   public final void run()
   {
-    if (d.h(this.lil))
+    AppMethodBeat.i(62385);
+    if (d.h(this.nFG))
     {
-      y.i("MicroMsg.GIF.MMGIFDrawable", "This gif had been recycle.");
+      ab.i("MicroMsg.GIF.MMGIFDrawable", "This gif had been recycle.");
+      AppMethodBeat.o(62385);
       return;
     }
     long l = System.currentTimeMillis();
-    if (d.b(this.lil) + 1 > d.i(this.lil) - 1) {
-      d.a(this.lil, -1);
+    if (d.b(this.nFG) + 1 > d.i(this.nFG) - 1) {
+      d.a(this.nFG, -1);
     }
-    d.a(this.lil, d.b(this.lil) + 1);
-    if (MMGIFJNI.drawFramePixels(d.e(this.lil), d.j(this.lil), d.k(this.lil))) {
-      d.l(this.lil);
+    d.a(this.nFG, d.b(this.nFG) + 1);
+    if (MMGIFJNI.drawFramePixels(d.e(this.nFG), d.j(this.nFG), d.k(this.nFG))) {
+      d.l(this.nFG);
     }
-    d.b(this.lil, System.currentTimeMillis() - l);
+    d.b(this.nFG, System.currentTimeMillis() - l);
     boolean bool;
     int i;
-    if (d.m(this.lil) != 0L)
+    if (d.m(this.nFG) != 0L)
     {
-      d.c(this.lil, d.m(this.lil) - d.n(this.lil) - d.o(this.lil));
-      if (d.g(this.lil) < 0L)
+      d.c(this.nFG, d.m(this.nFG) - d.n(this.nFG) - d.o(this.nFG));
+      if (d.g(this.nFG) < 0L)
       {
-        y.d("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(d.n(this.lil)), Long.valueOf(d.o(this.lil)), Long.valueOf(d.g(this.lil)), Long.valueOf(d.m(this.lil)), Integer.valueOf(d.k(this.lil)[5]) });
-        h.nFQ.a(401L, 0L, 1L, false);
-        h.nFQ.a(401L, 1L, Math.abs(d.g(this.lil)), false);
-        if (d.g(this.lil) < -100L)
+        ab.d("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(d.n(this.nFG)), Long.valueOf(d.o(this.nFG)), Long.valueOf(d.g(this.nFG)), Long.valueOf(d.m(this.nFG)), Integer.valueOf(d.k(this.nFG)[5]) });
+        h.qsU.idkeyStat(401L, 0L, 1L, false);
+        h.qsU.idkeyStat(401L, 1L, Math.abs(d.g(this.nFG)), false);
+        if (d.g(this.nFG) < -100L)
         {
           if ((!WXHardCoderJNI.hcGifEnable) && (!WXHardCoderJNI.hcGifFrameEnable)) {
-            break label458;
+            break label473;
           }
           bool = true;
-          WXHardCoderJNI.stopPerformace(bool, d.p(this.lil));
-          locald = this.lil;
+          WXHardCoderJNI.stopPerformance(bool, d.p(this.nFG));
+          locald = this.nFG;
           bool = WXHardCoderJNI.hcGifFrameEnable;
           int j = WXHardCoderJNI.hcGifFrameDelay;
           int k = WXHardCoderJNI.hcGifFrameCPU;
           int m = WXHardCoderJNI.hcGifFrameIO;
           if (!WXHardCoderJNI.hcGifFrameThr) {
-            break label464;
+            break label479;
           }
           i = Process.myTid();
-          label361:
+          label371:
           d.b(locald, WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifFrameTimeout, 602, WXHardCoderJNI.hcGifFrameAction, "MicroMsg.GIF.MMGIFDrawable"));
         }
       }
     }
-    d locald = this.lil;
-    Runnable localRunnable = d.f(this.lil);
-    if (d.g(this.lil) > 0L) {}
-    for (l = d.g(this.lil);; l = 0L)
+    d locald = this.nFG;
+    Runnable localRunnable = d.f(this.nFG);
+    if (d.g(this.nFG) > 0L) {}
+    for (l = d.g(this.nFG);; l = 0L)
     {
       d.a(locald, localRunnable, l);
-      if (d.k(this.lil)[2] != 1) {
-        break label475;
+      if (d.k(this.nFG)[2] != 1) {
+        break label490;
       }
-      d.d(this.lil, 5000L);
+      d.d(this.nFG, 5000L);
+      AppMethodBeat.o(62385);
       return;
-      label458:
+      label473:
       bool = false;
       break;
-      label464:
+      label479:
       i = 0;
-      break label361;
+      break label371;
     }
-    label475:
-    d.d(this.lil, d.k(this.lil)[4]);
+    label490:
+    d.d(this.nFG, d.k(this.nFG)[4]);
+    AppMethodBeat.o(62385);
   }
 }
 

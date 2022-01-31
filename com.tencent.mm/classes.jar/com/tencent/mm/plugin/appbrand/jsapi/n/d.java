@@ -1,41 +1,58 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.luggage.l.b.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.widget.input.m.a;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.af;
+import com.tencent.mm.plugin.appbrand.widget.picker.AppBrandEmptyPickerView;
+import com.tencent.mm.plugin.appbrand.widget.picker.a;
+import com.tencent.mm.plugin.appbrand.widget.picker.b;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import org.json.JSONObject;
 
-public final class d
-  extends a<o>
+abstract class d
+  extends b
 {
-  private static final int CTRL_INDEX = 105;
-  private static final String NAME = "showToast";
-  am fqP;
-  View gAr;
-  m.a gAs = null;
+  private int bxX;
+  WeakReference<e> hWK;
+  private m hyA;
   
-  private void lz(int paramInt)
+  abstract void H(JSONObject paramJSONObject);
+  
+  final void a(m paramm, e parame, JSONObject paramJSONObject, int paramInt)
   {
-    LinearLayout localLinearLayout = (LinearLayout)this.gAr.findViewById(a.b.show_toast_view_container);
-    LinearLayout.LayoutParams localLayoutParams2 = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
-    LinearLayout.LayoutParams localLayoutParams1 = localLayoutParams2;
-    if (localLayoutParams2 == null)
-    {
-      y.w("MicroMsg.JsApiShowToast", "layoutParams is null");
-      localLayoutParams1 = new LinearLayout.LayoutParams(-2, -2);
+    this.hyA = paramm;
+    this.hWK = new WeakReference(parame);
+    this.bxX = paramInt;
+    H(paramJSONObject);
+  }
+  
+  public final View aEv()
+  {
+    if (this.hWK == null) {
+      return null;
     }
-    localLayoutParams1.bottomMargin = paramInt;
-    localLinearLayout.setLayoutParams(localLayoutParams1);
+    return ((e)this.hWK.get()).vC().iux;
+  }
+  
+  final void aEw()
+  {
+    ah(AppBrandEmptyPickerView.class);
+    this.jrY.setOnResultListener(new d.1(this));
+    this.jrY.show();
+  }
+  
+  final void l(String paramString, Map<String, Object> paramMap)
+  {
+    if ((this.hWK != null) && (this.hWK.get() != null) && (this.hyA != null)) {
+      ((e)this.hWK.get()).h(this.bxX, this.hyA.j(paramString, paramMap));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.n.d
  * JD-Core Version:    0.7.0.1
  */

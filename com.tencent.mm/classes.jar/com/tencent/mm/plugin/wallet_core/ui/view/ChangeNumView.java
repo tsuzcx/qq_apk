@@ -9,10 +9,10 @@ public class ChangeNumView
 {
   private int max = 0;
   private int min = 0;
-  private int pyx = -1;
-  private int qHK = 0;
-  private boolean qHL = false;
-  private final int qHM = 100;
+  private int tal = -1;
+  private int uwv = 0;
+  private boolean uww = false;
+  private final int uwx = 100;
   
   public ChangeNumView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,12 +26,12 @@ public class ChangeNumView
   
   public void setInteral(int paramInt)
   {
-    this.pyx = paramInt;
+    this.tal = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.ChangeNumView
  * JD-Core Version:    0.7.0.1
  */

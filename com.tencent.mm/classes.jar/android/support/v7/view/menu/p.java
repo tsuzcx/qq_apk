@@ -6,9 +6,9 @@ public abstract interface p
   
   public static abstract interface a
   {
-    public abstract boolean T();
-    
     public abstract void a(j paramj);
+    
+    public abstract boolean aE();
     
     public abstract j getItemData();
   }

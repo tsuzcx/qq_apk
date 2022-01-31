@@ -5,10 +5,10 @@ import android.widget.TextView;
 
 final class CompressPreviewUI$b$a
 {
-  TextView fhD;
-  ImageView gSx;
-  TextView nhj;
-  ImageView nhk;
+  TextView gzk;
+  ImageView ivs;
+  TextView pMw;
+  ImageView pMx;
   
   private CompressPreviewUI$b$a(CompressPreviewUI.b paramb) {}
 }

@@ -1,19 +1,26 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.as.c;
-import com.tencent.mm.as.o;
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.c.c;
+import com.tencent.mm.pluginsdk.model.app.f;
 
 final class g$11
-  implements DialogInterface.OnCancelListener
+  implements c.c
 {
-  g$11(g paramg, String paramString, i parami) {}
+  g$11(g paramg, ProgressDialog paramProgressDialog, f paramf, String paramString1, String paramString2, i parami) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void B(Bitmap paramBitmap)
   {
-    o.OI().lV(this.eoz);
-    g.a(this.rzi, this.rzk, "send_service_app_msg:fail", null);
+    AppMethodBeat.i(154930);
+    if (this.vqx != null) {
+      this.vqx.dismiss();
+    }
+    g.a(this.vqm, this.jMp, "", this.bZZ, this.fEW, null, null, null, null);
+    this.vqm.a(this.uZa, "send_service_app_msg:ok", null);
+    g.eB(this.vqm, this.uZa);
+    AppMethodBeat.o(154930);
   }
 }
 

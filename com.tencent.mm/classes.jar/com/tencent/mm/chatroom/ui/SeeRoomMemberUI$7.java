@@ -2,7 +2,8 @@ package com.tencent.mm.chatroom.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.t;
 import com.tencent.mm.roomsdk.a.b.c;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +15,15 @@ final class SeeRoomMemberUI$7
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (s.ha(SeeRoomMemberUI.m(this.drs))) {
-      SeeRoomMemberUI.a(this.drs, this.dop.chatroomName, this.doq);
+    AppMethodBeat.i(104314);
+    if (t.nJ(SeeRoomMemberUI.m(this.eja))) {
+      SeeRoomMemberUI.a(this.eja, this.efM.chatroomName, this.efN);
     }
     paramDialogInterface = new ArrayList();
-    paramDialogInterface.addAll(this.dor);
-    paramDialogInterface.addAll(this.dos);
-    SeeRoomMemberUI.a(this.drs, paramDialogInterface);
+    paramDialogInterface.addAll(this.efO);
+    paramDialogInterface.addAll(this.efP);
+    SeeRoomMemberUI.a(this.eja, paramDialogInterface);
+    AppMethodBeat.o(104314);
   }
 }
 

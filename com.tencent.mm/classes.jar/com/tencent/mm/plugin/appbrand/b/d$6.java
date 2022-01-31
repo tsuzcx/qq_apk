@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.b;
 
 import android.os.Looper;
 import android.os.MessageQueue;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$6
   implements Runnable
@@ -10,7 +11,9 @@ final class d$6
   
   public final void run()
   {
+    AppMethodBeat.i(86843);
     Looper.myQueue().addIdleHandler(new d.6.1(this));
+    AppMethodBeat.o(86843);
   }
 }
 

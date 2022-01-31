@@ -1,87 +1,63 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.d;
 import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.basic.d.h;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class r
-  extends d
+  extends g
 {
-  private ByteBuffer r;
-  public int u = -1;
-  public int v;
-  public int w = -1;
+  private static String v = "GPUSharpen";
+  private int r;
+  private float s;
+  private int t;
+  private int u;
   
-  public r(String paramString)
+  public r()
   {
-    this("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nattribute vec4 inputTextureCoordinate2;\n \nvarying vec2 textureCoordinate;\nvarying vec2 textureCoordinate2;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n    textureCoordinate2 = inputTextureCoordinate2.xy;\n}", paramString);
+    this(0.0F);
   }
   
-  public r(String paramString1, String paramString2)
+  public r(float paramFloat)
   {
-    super(paramString1, paramString2);
-    a(g.a, false, true);
+    super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n\nuniform float imageWidthFactor; \nuniform float imageHeightFactor; \nuniform float sharpness;\n\nvarying vec2 textureCoordinate;\nvarying vec2 leftTextureCoordinate;\nvarying vec2 rightTextureCoordinate; \nvarying vec2 topTextureCoordinate;\nvarying vec2 bottomTextureCoordinate;\n\nvarying float centerMultiplier;\nvarying float edgeMultiplier;\n\nvoid main()\n{\n    gl_Position = position;\n    \n    mediump vec2 widthStep = vec2(imageWidthFactor, 0.0);\n    mediump vec2 heightStep = vec2(0.0, imageHeightFactor);\n    \n    textureCoordinate = inputTextureCoordinate.xy;\n    leftTextureCoordinate = inputTextureCoordinate.xy - widthStep;\n    rightTextureCoordinate = inputTextureCoordinate.xy + widthStep;\n    topTextureCoordinate = inputTextureCoordinate.xy + heightStep;     \n    bottomTextureCoordinate = inputTextureCoordinate.xy - heightStep;\n    \n    centerMultiplier = 1.0 + 4.0 * sharpness;\n    edgeMultiplier = sharpness;\n}", "precision highp float;\n\nvarying highp vec2 textureCoordinate;\nvarying highp vec2 leftTextureCoordinate;\nvarying highp vec2 rightTextureCoordinate; \nvarying highp vec2 topTextureCoordinate;\nvarying highp vec2 bottomTextureCoordinate;\n\nvarying highp float centerMultiplier;\nvarying highp float edgeMultiplier;\n\nuniform sampler2D inputImageTexture;\n\nvoid main()\n{\n    mediump vec3 textureColor = texture2D(inputImageTexture, textureCoordinate).rgb;\n    mediump vec3 leftTextureColor = texture2D(inputImageTexture, leftTextureCoordinate).rgb;\n    mediump vec3 rightTextureColor = texture2D(inputImageTexture, rightTextureCoordinate).rgb;\n    mediump vec3 topTextureColor = texture2D(inputImageTexture, topTextureCoordinate).rgb;\n    mediump vec3 bottomTextureColor = texture2D(inputImageTexture, bottomTextureCoordinate).rgb;\n\n    gl_FragColor = vec4((textureColor * centerMultiplier - (leftTextureColor * edgeMultiplier + rightTextureColor * edgeMultiplier + topTextureColor * edgeMultiplier + bottomTextureColor * edgeMultiplier)), 1.0);\n}");
+    this.s = paramFloat;
   }
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(float paramFloat)
   {
-    this.w = paramInt2;
-    return a(paramInt1, paramInt3, paramInt4);
+    AppMethodBeat.i(146342);
+    this.s = paramFloat;
+    TXCLog.i(v, "set Sharpness ".concat(String.valueOf(paramFloat)));
+    a(this.r, this.s);
+    AppMethodBeat.o(146342);
   }
   
-  public void a(g paramg, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramg = h.a(paramg, paramBoolean1, paramBoolean2);
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder());
-    FloatBuffer localFloatBuffer = localByteBuffer.asFloatBuffer();
-    localFloatBuffer.put(paramg);
-    localFloatBuffer.flip();
-    this.r = localByteBuffer;
-  }
-  
-  public int b(int paramInt1, int paramInt2)
-  {
-    this.w = paramInt2;
-    return a(paramInt1, this.m, this.n);
+    AppMethodBeat.i(146341);
+    super.a(paramInt1, paramInt2);
+    a(this.t, 1.0F / paramInt1);
+    a(this.u, 1.0F / paramInt2);
+    AppMethodBeat.o(146341);
   }
   
   public boolean b()
   {
+    AppMethodBeat.i(66980);
     boolean bool = super.b();
-    if (bool)
-    {
-      this.u = GLES20.glGetAttribLocation(p(), "inputTextureCoordinate2");
-      this.v = GLES20.glGetUniformLocation(p(), "inputImageTexture2");
-      GLES20.glEnableVertexAttribArray(this.u);
-    }
+    this.r = GLES20.glGetUniformLocation(p(), "sharpness");
+    this.t = GLES20.glGetUniformLocation(p(), "imageWidthFactor");
+    this.u = GLES20.glGetUniformLocation(p(), "imageHeightFactor");
+    a(this.s);
+    AppMethodBeat.o(66980);
     return bool;
-  }
-  
-  public void e()
-  {
-    super.e();
-  }
-  
-  protected void i()
-  {
-    GLES20.glActiveTexture(33987);
-    GLES20.glBindTexture(3553, this.w);
-    GLES20.glUniform1i(this.v, 3);
-    if (this.u != -1)
-    {
-      GLES20.glEnableVertexAttribArray(this.u);
-      this.r.position(0);
-      GLES20.glVertexAttribPointer(this.u, 2, 5126, false, 0, this.r);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.r
  * JD-Core Version:    0.7.0.1
  */

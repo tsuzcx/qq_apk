@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.widget.input.panel;
 
 public abstract interface f
 {
-  public abstract void append(String paramString);
+  public abstract void aRo();
   
-  public abstract void asj();
+  public abstract void append(String paramString);
 }
 
 

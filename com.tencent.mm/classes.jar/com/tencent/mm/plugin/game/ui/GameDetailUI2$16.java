@@ -2,10 +2,9 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.game.model.l;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.k;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class GameDetailUI2$16
   implements View.OnClickListener
@@ -14,18 +13,22 @@ final class GameDetailUI2$16
   
   public final void onClick(View paramView)
   {
-    if (GameDetailUI2.l(this.laq) == null)
+    AppMethodBeat.i(111857);
+    if (GameDetailUI2.l(this.nyn) == null)
     {
-      y.e("MicroMsg.GameDetailUI2", "Null appInfo");
+      ab.e("MicroMsg.GameDetailUI2", "Null appInfo");
+      AppMethodBeat.o(111857);
       return;
     }
-    if (GameDetailUI2.i(this.laq) == null)
+    if (GameDetailUI2.i(this.nyn) == null)
     {
-      y.e("MicroMsg.GameDetailUI2", "No DownloadInfo found");
+      ab.e("MicroMsg.GameDetailUI2", "No DownloadInfo found");
+      AppMethodBeat.o(111857);
       return;
     }
-    GameDetailUI2.i(this.laq).dz(this.laq.mController.uMN);
-    GameDetailUI2.m(this.laq).a(GameDetailUI2.l(this.laq), GameDetailUI2.i(this.laq));
+    GameDetailUI2.i(this.nyn).em(this.nyn.getContext());
+    GameDetailUI2.m(this.nyn).a(GameDetailUI2.l(this.nyn), GameDetailUI2.i(this.nyn));
+    AppMethodBeat.o(111857);
   }
 }
 

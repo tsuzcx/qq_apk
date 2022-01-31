@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.collector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.ConcurrentHashMap;
 
 final class a<K, V>
@@ -7,42 +8,65 @@ final class a<K, V>
 {
   public final boolean containsValue(Object paramObject)
   {
-    if (paramObject == null) {
+    AppMethodBeat.i(57023);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(57023);
       return false;
     }
-    return super.containsValue(paramObject);
+    boolean bool = super.containsValue(paramObject);
+    AppMethodBeat.o(57023);
+    return bool;
   }
   
   public final V get(Object paramObject)
   {
-    if (paramObject == null) {
+    AppMethodBeat.i(57020);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(57020);
       return null;
     }
-    return super.get(paramObject);
+    paramObject = super.get(paramObject);
+    AppMethodBeat.o(57020);
+    return paramObject;
   }
   
   public final V put(K paramK, V paramV)
   {
-    if (paramK == null) {
+    AppMethodBeat.i(57021);
+    if (paramK == null)
+    {
+      AppMethodBeat.o(57021);
       return null;
     }
-    if (paramV == null) {
-      return super.remove(paramK);
+    if (paramV == null)
+    {
+      paramK = super.remove(paramK);
+      AppMethodBeat.o(57021);
+      return paramK;
     }
-    return super.put(paramK, paramV);
+    paramK = super.put(paramK, paramV);
+    AppMethodBeat.o(57021);
+    return paramK;
   }
   
   public final V remove(Object paramObject)
   {
-    if (paramObject == null) {
+    AppMethodBeat.i(57022);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(57022);
       return null;
     }
-    return super.remove(paramObject);
+    paramObject = super.remove(paramObject);
+    AppMethodBeat.o(57022);
+    return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.a
  * JD-Core Version:    0.7.0.1
  */

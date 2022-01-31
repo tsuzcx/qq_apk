@@ -2,25 +2,27 @@ package com.tencent.filter.a;
 
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.GLSLRender;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d$a
   extends BaseFilter
 {
-  int apf;
-  int apg;
-  boolean bgP;
-  public boolean bgQ = true;
+  int arA;
+  int arz;
+  boolean bxq;
+  public boolean bxr = true;
   float radius = 0.5F;
   
   public d$a(boolean paramBoolean)
   {
-    super(GLSLRender.bcE);
-    this.bgP = paramBoolean;
+    super(GLSLRender.btg);
+    this.bxq = paramBoolean;
   }
   
-  private void pI()
+  private void tO()
   {
-    float f = Math.round(this.radius * 10.0F / 720.0F * this.apf);
+    AppMethodBeat.i(86431);
+    float f = Math.round(this.radius * 10.0F / 720.0F * this.arz);
     int i;
     if (f >= 1.0F)
     {
@@ -29,10 +31,11 @@ public final class d$a
     }
     for (;;)
     {
-      updateFragmentShader(ae.b(i, f, this.bgP, this.bgP));
+      updateFragmentShader(aj.b(i, f, this.bxq, this.bxq));
       clearGLSLSelf();
       ApplyGLSLFilter();
-      this.bgQ = false;
+      this.bxr = false;
+      AppMethodBeat.o(86431);
       return;
       i = 0;
     }
@@ -40,30 +43,34 @@ public final class d$a
   
   public final void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    this.apf = ((int)paramFloat1);
-    this.apg = ((int)paramFloat2);
-    pI();
+    AppMethodBeat.i(86432);
+    this.arz = ((int)paramFloat1);
+    this.arA = ((int)paramFloat2);
+    tO();
     super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.o(86432);
   }
   
   public final void W(float paramFloat)
   {
     this.radius = paramFloat;
-    this.bgQ = true;
+    this.bxr = true;
   }
   
   public final void beforeRender(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.bgQ) || (this.apf != paramInt2) || (this.apg != paramInt3)) {}
+    AppMethodBeat.i(86433);
+    if ((this.bxr) || (this.arz != paramInt2) || (this.arA != paramInt3)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.bgQ = bool;
-      if (this.bgQ)
+      this.bxr = bool;
+      if (this.bxr)
       {
-        this.apf = paramInt2;
-        this.apg = paramInt3;
-        pI();
+        this.arz = paramInt2;
+        this.arA = paramInt3;
+        tO();
       }
+      AppMethodBeat.o(86433);
       return;
     }
   }

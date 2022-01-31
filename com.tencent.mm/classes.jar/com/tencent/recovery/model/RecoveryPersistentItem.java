@@ -5,13 +5,13 @@ import android.os.Parcelable;
 public abstract class RecoveryPersistentItem
   implements Parcelable
 {
-  public abstract boolean afz(String paramString);
+  public abstract boolean awv(String paramString);
   
-  public abstract String cOC();
+  public abstract String dUr();
   
   public String toString()
   {
-    return cOC();
+    return dUr();
   }
 }
 

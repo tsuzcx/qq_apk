@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 final class d$1
-  extends ah
+  extends ak
 {
   d$1(d paramd, Looper paramLooper)
   {
@@ -17,24 +18,28 @@ final class d$1
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(8864);
     switch (paramMessage.what)
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (String)paramMessage.obj;
-      if (!bk.bl(paramMessage)) {
-        d.b(this.rxV).add(paramMessage);
-      }
-      d.c(this.rxV);
-      return;
     }
-    y.v("MicroMsg.JsApiHandler", "handle msg from wx done, msg = " + paramMessage.obj);
+    for (;;)
+    {
+      AppMethodBeat.o(8864);
+      return;
+      paramMessage = (String)paramMessage.obj;
+      if (!bo.isNullOrNil(paramMessage)) {
+        d.b(this.voP).add(paramMessage);
+      }
+      d.c(this.voP);
+      AppMethodBeat.o(8864);
+      return;
+      ab.v("MicroMsg.JsApiHandler", "handle msg from wx done, msg = " + paramMessage.obj);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.d.1
  * JD-Core Version:    0.7.0.1
  */

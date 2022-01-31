@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.plugin.sns.ui.be;
-import com.tencent.mm.protocal.c.bxk;
+import com.tencent.mm.plugin.sns.ui.bc;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
 
 public abstract interface e
 {
-  public abstract void a(int paramInt, String paramString, long paramLong, bxk parambxk, boolean paramBoolean);
+  public abstract void a(int paramInt, String paramString, long paramLong, TimeLineObject paramTimeLineObject, boolean paramBoolean);
   
-  public abstract void a(int paramInt, String paramString, long paramLong, bxk parambxk, boolean paramBoolean, be parambe);
+  public abstract void a(int paramInt, String paramString, long paramLong, TimeLineObject paramTimeLineObject, boolean paramBoolean, bc parambc);
 }
 
 

@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.freewifi.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class FreeWifiTestActivity$1
   implements View.OnClickListener
@@ -12,7 +13,9 @@ final class FreeWifiTestActivity$1
   
   public final void onClick(View paramView)
   {
-    Toast.makeText(ae.getContext(), "test message", 0).show();
+    AppMethodBeat.i(21108);
+    Toast.makeText(ah.getContext(), "test message", 0).show();
+    AppMethodBeat.o(21108);
   }
 }
 

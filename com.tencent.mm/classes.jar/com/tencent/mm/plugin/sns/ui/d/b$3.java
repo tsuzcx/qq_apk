@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.aq;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.plugin.sns.ui.ar;
-import com.tencent.mm.protocal.c.bxk;
+import com.tencent.mm.plugin.sns.ui.as;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
 
 final class b$3
   extends c
@@ -20,45 +20,54 @@ final class b$3
   
   public final void a(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    paramView = (ar)paramView.getTag();
-    paramContextMenuInfo = af.bDF().OA(paramView.bRV);
-    if (paramContextMenuInfo == null) {
+    AppMethodBeat.i(40243);
+    paramView = (as)paramView.getTag();
+    paramContextMenuInfo = ag.cpf().abu(paramView.czw);
+    if (paramContextMenuInfo == null)
+    {
+      AppMethodBeat.o(40243);
       return;
     }
-    paramContextMenu.add(0, 0, 0, this.ppl.activity.getString(i.j.app_copy));
-    if (d.SP("favorite")) {
-      paramContextMenu.add(0, 1, 0, this.ppl.activity.getString(i.j.plugin_favorite_opt));
+    paramContextMenu.add(0, 0, 0, this.skd.activity.getString(2131296895));
+    if (d.ahR("favorite")) {
+      paramContextMenu.add(0, 1, 0, this.skd.activity.getString(2131302102));
     }
-    bxk localbxk = paramContextMenuInfo.bGe();
-    if ((paramView.pbD) || ((localbxk != null) && (localbxk.tNt != 1) && (!paramView.pbE)))
+    TimeLineObject localTimeLineObject = paramContextMenuInfo.csh();
+    if ((paramView.rUm) || ((localTimeLineObject != null) && (localTimeLineObject.xTU != 1) && (!paramView.rUn)))
     {
-      if (paramView.bJh()) {
-        break label130;
+      if (paramView.cvI()) {
+        break label143;
       }
-      ap.a(paramContextMenu, true);
+      aq.a(paramContextMenu, true);
     }
     for (;;)
     {
       com.tencent.mm.plugin.sns.abtest.a.a(paramContextMenu, paramContextMenuInfo);
+      AppMethodBeat.o(40243);
       return;
-      label130:
-      ap.b(paramContextMenu, true);
+      label143:
+      aq.b(paramContextMenu, true);
     }
   }
   
-  public final boolean dd(View paramView)
+  public final boolean dU(View paramView)
   {
-    if ((paramView.getTag() instanceof ar))
+    AppMethodBeat.i(40244);
+    if ((paramView.getTag() instanceof as))
     {
-      Object localObject = (ar)paramView.getTag();
-      localObject = af.bDF().OA(((ar)localObject).bRV);
-      if (localObject == null) {
+      Object localObject = (as)paramView.getTag();
+      localObject = ag.cpf().abu(((as)localObject).czw);
+      if (localObject == null)
+      {
+        AppMethodBeat.o(40244);
         return false;
       }
-      String str = ((n)localObject).bGE();
-      this.ppl.poz.a(paramView, str, ((n)localObject).bGe());
+      String str = ((n)localObject).csH();
+      this.skd.sjr.a(paramView, str, ((n)localObject).csh());
+      AppMethodBeat.o(40244);
       return true;
     }
+    AppMethodBeat.o(40244);
     return false;
   }
 }

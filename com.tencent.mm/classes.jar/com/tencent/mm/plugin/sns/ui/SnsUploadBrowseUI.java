@@ -1,18 +1,22 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.mm.plugin.sns.g.b;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.aj;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.h.b;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ak;
 import com.tencent.mm.plugin.sns.model.g;
-import com.tencent.mm.protocal.c.awd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.h;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,129 +26,198 @@ public class SnsUploadBrowseUI
   extends SnsBaseGalleryUI
   implements s.a
 {
-  private int oVA = 0;
-  private ArrayList<String> piH = new ArrayList();
-  private HashMap<Integer, Boolean> piI = new HashMap();
+  private int rNV;
+  private ArrayList<String> sbj;
+  private HashMap<Integer, Boolean> sbk;
   
-  public final void bJR()
+  public SnsUploadBrowseUI()
   {
+    AppMethodBeat.i(39680);
+    this.sbj = new ArrayList();
+    this.rNV = 0;
+    this.sbk = new HashMap();
+    AppMethodBeat.o(39680);
+  }
+  
+  public final void cwv()
+  {
+    AppMethodBeat.i(39685);
     Intent localIntent = new Intent();
-    Object localObject = this.oVy.getFlipList();
-    if (localObject == null) {
+    Object localObject = this.rNT.getFlipList();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(39685);
       return;
     }
-    this.piH.clear();
+    this.sbj.clear();
     Iterator localIterator = ((List)localObject).iterator();
     if (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      localObject = af.getAccSnsTmpPath() + localb.bZK.lsK;
-      if (!localb.bZK.lsK.startsWith("pre_temp_extend_pic")) {
-        break label168;
+      localObject = ag.getAccSnsTmpPath() + localb.cIc.Id;
+      if (!localb.cIc.Id.startsWith("pre_temp_extend_pic")) {
+        break label183;
       }
-      localObject = localb.bZK.lsK.substring(19);
+      localObject = localb.cIc.Id.substring(19);
     }
-    label168:
+    label183:
     for (;;)
     {
-      this.piH.add(localObject);
+      this.sbj.add(localObject);
       break;
-      localIntent.putExtra("sns_gallery_temp_paths", this.piH);
-      localIntent.putExtra("sns_update_preview_image_count", this.piI.size());
-      this.piI.clear();
+      localIntent.putExtra("sns_gallery_temp_paths", this.sbj);
+      localIntent.putExtra("sns_update_preview_image_count", this.sbk.size());
+      this.sbk.clear();
       setResult(-1, localIntent);
       finish();
+      AppMethodBeat.o(39685);
       return;
     }
   }
-  
-  public final void cw(String paramString, int paramInt)
-  {
-    if (this.oVy != null) {
-      this.oVy.aPg();
-    }
-  }
-  
-  public final void cx(String paramString, int paramInt) {}
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(39686);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      y.d("MicroMsg.SnsUploadBrowseUI", "dispatchKeyEvent");
-      bJR();
+      ab.d("MicroMsg.SnsUploadBrowseUI", "dispatchKeyEvent");
+      cwv();
+      AppMethodBeat.o(39686);
       return true;
     }
-    return super.dispatchKeyEvent(paramKeyEvent);
+    boolean bool = super.dispatchKeyEvent(paramKeyEvent);
+    AppMethodBeat.o(39686);
+    return bool;
   }
   
-  protected final int getForceOrientation()
+  public final void ds(String paramString, int paramInt)
   {
-    return 4;
+    AppMethodBeat.i(39688);
+    if (this.rNT != null) {
+      this.rNT.bvl();
+    }
+    AppMethodBeat.o(39688);
   }
   
-  protected final int getLayoutId()
+  public final void dt(String paramString, int paramInt) {}
+  
+  public int getLayoutId()
   {
-    return i.g.sns_browse_img;
+    return 2130970810;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    String str = bk.aM(getIntent().getStringExtra("sns_gallery_userName"), "");
-    this.piH = getIntent().getStringArrayListExtra("sns_gallery_temp_paths");
-    if (this.piH == null) {
+    AppMethodBeat.i(39687);
+    String str = bo.bf(getIntent().getStringExtra("sns_gallery_userName"), "");
+    this.sbj = getIntent().getStringArrayListExtra("sns_gallery_temp_paths");
+    if (this.sbj == null)
+    {
+      AppMethodBeat.o(39687);
       return;
     }
-    this.oVA = getIntent().getIntExtra("sns_gallery_position", 0);
-    this.oVy = new SnsInfoFlip(this);
-    this.oVy.setEnableHorLongBmpMode(false);
-    this.oVy.setShowTitle(true);
-    af.getAccSnsTmpPath();
-    List localList = aj.cw(this.piH);
-    this.oVy.a(localList, str, this.oVA, this.oVt, this);
-    this.oVy.setOnPageSelectListener(new SnsUploadBrowseUI.1(this));
-    addView(this.oVy);
-    setBackBtn(new SnsUploadBrowseUI.2(this));
-    addIconOptionMenu(0, i.j.app_delete, i.e.mm_title_btn_delete_normal, new SnsUploadBrowseUI.3(this));
+    this.rNV = getIntent().getIntExtra("sns_gallery_position", 0);
+    this.rNT = new SnsInfoFlip(this);
+    this.rNT.setEnableHorLongBmpMode(false);
+    this.rNT.setShowTitle(true);
+    ag.getAccSnsTmpPath();
+    List localList = ak.db(this.sbj);
+    this.rNT.a(localList, str, this.rNV, this.rNO, this);
+    this.rNT.setOnPageSelectListener(new SnsUploadBrowseUI.1(this));
+    addView(this.rNT);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(39677);
+        SnsUploadBrowseUI.this.cwv();
+        AppMethodBeat.o(39677);
+        return true;
+      }
+    });
+    addIconOptionMenu(0, 2131296901, 2131231500, new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(39679);
+        h.a(SnsUploadBrowseUI.this, 2131303825, 2131297087, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        {
+          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+          {
+            AppMethodBeat.i(39678);
+            if (SnsUploadBrowseUI.this.rNT.cvm() == 0) {
+              SnsUploadBrowseUI.this.cwv();
+            }
+            AppMethodBeat.o(39678);
+          }
+        }, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
+        });
+        AppMethodBeat.o(39679);
+        return true;
+      }
+    });
+    AppMethodBeat.o(39687);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    y.i("MicroMsg.SnsUploadBrowseUI", "onAcvityResult requestCode:" + paramInt1);
-    if (paramInt2 != -1) {}
+    AppMethodBeat.i(39689);
+    ab.i("MicroMsg.SnsUploadBrowseUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    if (paramInt2 != -1)
+    {
+      AppMethodBeat.o(39689);
+      return;
+    }
+    AppMethodBeat.o(39689);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(39681);
     super.onCreate(paramBundle);
     initView();
+    AppMethodBeat.o(39681);
   }
   
   public void onDestroy()
   {
-    if (this.oVy != null)
+    AppMethodBeat.i(39682);
+    if (this.rNT != null)
     {
-      this.oVy.bIQ();
-      this.oVy.onDestroy();
+      this.rNT.cvl();
+      this.rNT.onDestroy();
     }
-    af.bDC().M(this);
+    ag.cpc().ah(this);
     super.onDestroy();
+    AppMethodBeat.o(39682);
   }
   
-  protected void onPause()
+  public void onPause()
   {
-    if (this.oVy != null) {
-      this.oVy.onPause();
+    AppMethodBeat.i(39684);
+    if (this.rNT != null) {
+      this.rNT.onPause();
     }
     super.onPause();
+    AppMethodBeat.o(39684);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(39683);
     super.onResume();
-    if (this.oVy != null) {
-      this.oVy.aPg();
+    if (this.rNT != null) {
+      this.rNT.bvl();
     }
+    AppMethodBeat.o(39683);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

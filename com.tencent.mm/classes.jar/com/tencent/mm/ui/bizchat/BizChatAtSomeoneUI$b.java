@@ -6,9 +6,9 @@ import com.tencent.mm.ui.base.MaskLayout;
 
 final class BizChatAtSomeoneUI$b
 {
-  public TextView drB;
-  public MaskLayout dsk;
-  public ImageView veu;
+  public MaskLayout ejS;
+  public TextView ejj;
+  public ImageView zsT;
 }
 
 

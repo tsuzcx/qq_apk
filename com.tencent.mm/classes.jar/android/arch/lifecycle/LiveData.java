@@ -9,54 +9,54 @@ import java.util.Map.Entry;
 
 public abstract class LiveData<T>
 {
-  private static final Object cp = new Object();
-  private final Object co = new Object();
-  private b<Observer<T>, LiveData<T>.ObserverWrapper> cq = new b();
-  private int cs = 0;
-  private volatile Object ct = cp;
-  private boolean cu;
-  private boolean cv;
-  private final Runnable cw = new Runnable()
+  private static final Object cK = new Object();
+  private final Object cJ = new Object();
+  private b<Observer<T>, LiveData<T>.ObserverWrapper> cL = new b();
+  private int cM = 0;
+  private volatile Object cN = cK;
+  int cO = -1;
+  private boolean cP;
+  private boolean cQ;
+  private final Runnable cR = new Runnable()
   {
     public void run()
     {
       synchronized (LiveData.a(LiveData.this))
       {
         Object localObject2 = LiveData.b(LiveData.this);
-        LiveData.a(LiveData.this, LiveData.Q());
+        LiveData.a(LiveData.this, LiveData.ao());
         LiveData.this.setValue(localObject2);
         return;
       }
     }
   };
-  private volatile Object mData = cp;
-  private int mVersion = -1;
+  private volatile Object mData = cK;
   
   private void a(LiveData<T>.ObserverWrapper paramLiveData)
   {
-    if (!paramLiveData.cA) {}
+    if (!paramLiveData.mActive) {}
     do
     {
       return;
-      if (!paramLiveData.R())
+      if (!paramLiveData.ap())
       {
-        paramLiveData.n(false);
+        paramLiveData.m(false);
         return;
       }
-    } while (paramLiveData.cB >= this.mVersion);
-    paramLiveData.cB = this.mVersion;
-    paramLiveData.cz.onChanged(this.mData);
+    } while (paramLiveData.cV >= this.cO);
+    paramLiveData.cV = this.cO;
+    paramLiveData.cU.onChanged(this.mData);
   }
   
   private void b(LiveData<T>.ObserverWrapper paramLiveData)
   {
-    if (this.cu)
+    if (this.cP)
     {
-      this.cv = true;
+      this.cQ = true;
       return;
     }
-    this.cu = true;
-    this.cv = false;
+    this.cP = true;
+    this.cQ = false;
     LiveData<T>.ObserverWrapper localLiveData;
     if (paramLiveData != null)
     {
@@ -66,12 +66,12 @@ public abstract class LiveData<T>
     for (;;)
     {
       paramLiveData = localLiveData;
-      if (this.cv) {
+      if (this.cQ) {
         break;
       }
-      this.cu = false;
+      this.cP = false;
       return;
-      b.d locald = this.cq.N();
+      b.d locald = this.cL.af();
       do
       {
         localLiveData = paramLiveData;
@@ -79,22 +79,24 @@ public abstract class LiveData<T>
           break;
         }
         a((ObserverWrapper)((Map.Entry)locald.next()).getValue());
-      } while (!this.cv);
+      } while (!this.cQ);
       localLiveData = paramLiveData;
     }
   }
   
   private static void z(String paramString)
   {
-    if (!a.M().bD.isMainThread()) {
+    if (!a.aa().bH.isMainThread()) {
       throw new IllegalStateException("Cannot invoke " + paramString + " on a background thread");
     }
   }
   
+  protected void an() {}
+  
   public T getValue()
   {
     Object localObject = this.mData;
-    if (localObject != cp) {
+    if (localObject != cK) {
       return localObject;
     }
     return null;
@@ -102,12 +104,12 @@ public abstract class LiveData<T>
   
   public boolean hasActiveObservers()
   {
-    return this.cs > 0;
+    return this.cM > 0;
   }
   
   public boolean hasObservers()
   {
-    return this.cq.mSize > 0;
+    return this.cL.mSize > 0;
   }
   
   public void observe(LifecycleOwner paramLifecycleOwner, Observer<T> paramObserver)
@@ -118,8 +120,8 @@ public abstract class LiveData<T>
     {
       return;
       localLifecycleBoundObserver = new LifecycleBoundObserver(paramLifecycleOwner, paramObserver);
-      paramObserver = (ObserverWrapper)this.cq.putIfAbsent(paramObserver, localLifecycleBoundObserver);
-      if ((paramObserver != null) && (!paramObserver.b(paramLifecycleOwner))) {
+      paramObserver = (ObserverWrapper)this.cL.putIfAbsent(paramObserver, localLifecycleBoundObserver);
+      if ((paramObserver != null) && (!paramObserver.c(paramLifecycleOwner))) {
         throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
       }
     } while (paramObserver != null);
@@ -129,36 +131,34 @@ public abstract class LiveData<T>
   public void observeForever(Observer<T> paramObserver)
   {
     AlwaysActiveObserver localAlwaysActiveObserver = new AlwaysActiveObserver(paramObserver);
-    paramObserver = (ObserverWrapper)this.cq.putIfAbsent(paramObserver, localAlwaysActiveObserver);
+    paramObserver = (ObserverWrapper)this.cL.putIfAbsent(paramObserver, localAlwaysActiveObserver);
     if ((paramObserver != null) && ((paramObserver instanceof LifecycleBoundObserver))) {
       throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
     }
     if (paramObserver != null) {
       return;
     }
-    localAlwaysActiveObserver.n(true);
+    localAlwaysActiveObserver.m(true);
   }
   
-  public void onActive() {}
-  
-  public void onInactive() {}
+  protected void onActive() {}
   
   protected void postValue(T paramT)
   {
     for (;;)
     {
-      synchronized (this.co)
+      synchronized (this.cJ)
       {
-        if (this.ct != cp) {
+        if (this.cN != cK) {
           break label47;
         }
         i = 1;
-        this.ct = paramT;
+        this.cN = paramT;
         if (i == 0) {
           return;
         }
       }
-      a.M().d(this.cw);
+      a.aa().d(this.cR);
       return;
       label47:
       int i = 0;
@@ -168,36 +168,36 @@ public abstract class LiveData<T>
   public void removeObserver(Observer<T> paramObserver)
   {
     z("removeObserver");
-    paramObserver = (ObserverWrapper)this.cq.remove(paramObserver);
+    paramObserver = (ObserverWrapper)this.cL.remove(paramObserver);
     if (paramObserver == null) {
       return;
     }
-    paramObserver.S();
-    paramObserver.n(false);
+    paramObserver.aq();
+    paramObserver.m(false);
   }
   
   public void removeObservers(LifecycleOwner paramLifecycleOwner)
   {
     z("removeObservers");
-    Iterator localIterator = this.cq.iterator();
+    Iterator localIterator = this.cL.iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((ObserverWrapper)localEntry.getValue()).b(paramLifecycleOwner)) {
+      if (((ObserverWrapper)localEntry.getValue()).c(paramLifecycleOwner)) {
         removeObserver((Observer)localEntry.getKey());
       }
     }
   }
   
-  public void setValue(T paramT)
+  protected void setValue(T paramT)
   {
     z("setValue");
-    this.mVersion += 1;
+    this.cO += 1;
     this.mData = paramT;
     b(null);
   }
   
-  private class AlwaysActiveObserver
+  class AlwaysActiveObserver
     extends LiveData<T>.ObserverWrapper
   {
     AlwaysActiveObserver()
@@ -205,7 +205,7 @@ public abstract class LiveData<T>
       super(localObserver);
     }
     
-    final boolean R()
+    final boolean ap()
     {
       return true;
     }
@@ -215,68 +215,68 @@ public abstract class LiveData<T>
     extends LiveData<T>.ObserverWrapper
     implements GenericLifecycleObserver
   {
-    final LifecycleOwner cy;
+    final LifecycleOwner cT;
     
     LifecycleBoundObserver(Observer<T> paramObserver)
     {
       super(localObserver);
-      this.cy = paramObserver;
+      this.cT = paramObserver;
     }
     
-    final boolean R()
+    final boolean ap()
     {
-      return this.cy.getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED);
+      return this.cT.getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED);
     }
     
-    final void S()
+    final void aq()
     {
-      this.cy.getLifecycle().removeObserver(this);
+      this.cT.getLifecycle().removeObserver(this);
     }
     
-    final boolean b(LifecycleOwner paramLifecycleOwner)
+    final boolean c(LifecycleOwner paramLifecycleOwner)
     {
-      return this.cy == paramLifecycleOwner;
+      return this.cT == paramLifecycleOwner;
     }
     
     public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
     {
-      if (this.cy.getLifecycle().getCurrentState() == Lifecycle.State.DESTROYED)
+      if (this.cT.getLifecycle().getCurrentState() == Lifecycle.State.DESTROYED)
       {
-        LiveData.this.removeObserver(this.cz);
+        LiveData.this.removeObserver(this.cU);
         return;
       }
-      n(R());
+      m(ap());
     }
   }
   
-  private abstract class ObserverWrapper
+  abstract class ObserverWrapper
   {
-    boolean cA;
-    int cB = -1;
-    final Observer<T> cz;
+    final Observer<T> cU;
+    int cV = -1;
+    boolean mActive;
     
     ObserverWrapper()
     {
       Object localObject;
-      this.cz = localObject;
+      this.cU = localObject;
     }
     
-    abstract boolean R();
+    abstract boolean ap();
     
-    void S() {}
+    void aq() {}
     
-    boolean b(LifecycleOwner paramLifecycleOwner)
+    boolean c(LifecycleOwner paramLifecycleOwner)
     {
       return false;
     }
     
-    final void n(boolean paramBoolean)
+    final void m(boolean paramBoolean)
     {
       int j = 1;
-      if (paramBoolean == this.cA) {
+      if (paramBoolean == this.mActive) {
         return;
       }
-      this.cA = paramBoolean;
+      this.mActive = paramBoolean;
       int i;
       label28:
       LiveData localLiveData;
@@ -286,20 +286,20 @@ public abstract class LiveData<T>
         i = 1;
         localLiveData = LiveData.this;
         k = LiveData.c(localLiveData);
-        if (!this.cA) {
+        if (!this.mActive) {
           break label121;
         }
       }
       for (;;)
       {
         LiveData.a(localLiveData, j + k);
-        if ((i != 0) && (this.cA)) {
+        if ((i != 0) && (this.mActive)) {
           LiveData.this.onActive();
         }
-        if ((LiveData.c(LiveData.this) == 0) && (!this.cA)) {
-          LiveData.this.onInactive();
+        if ((LiveData.c(LiveData.this) == 0) && (!this.mActive)) {
+          LiveData.this.an();
         }
-        if (!this.cA) {
+        if (!this.mActive) {
           break;
         }
         LiveData.a(LiveData.this, this);

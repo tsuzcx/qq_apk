@@ -2,41 +2,62 @@ package com.tencent.mm.plugin.fav.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class k
 {
-  public static String B(Context paramContext, int paramInt)
+  public static String L(Context paramContext, int paramInt)
   {
-    if (paramInt <= 0) {
-      return paramContext.getString(n.i.favorite_voice_length, new Object[] { Integer.valueOf(0) });
+    AppMethodBeat.i(74184);
+    if (paramInt <= 0)
+    {
+      paramContext = paramContext.getString(2131299855, new Object[] { Integer.valueOf(0) });
+      AppMethodBeat.o(74184);
+      return paramContext;
     }
     int i = paramInt / 60;
     paramInt %= 60;
-    if (i == 0) {
-      return paramContext.getString(n.i.favorite_voice_length, new Object[] { Integer.valueOf(paramInt) });
+    if (i == 0)
+    {
+      paramContext = paramContext.getString(2131299855, new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(74184);
+      return paramContext;
     }
-    return paramContext.getString(n.i.favorite_video_length, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+    paramContext = paramContext.getString(2131299854, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(74184);
+    return paramContext;
   }
   
-  public static String C(Context paramContext, int paramInt)
+  public static String M(Context paramContext, int paramInt)
   {
-    return "[" + paramContext.getResources().getString(paramInt) + "]";
+    AppMethodBeat.i(74186);
+    paramContext = "[" + paramContext.getResources().getString(paramInt) + "]";
+    AppMethodBeat.o(74186);
+    return paramContext;
   }
   
-  public static boolean CZ(String paramString)
+  public static boolean Ob(String paramString)
   {
-    if (bk.bl(paramString)) {}
-    while (paramString.equals(ae.getContext().getResources().getString(n.i.location_sub_title_location_with_bracket))) {
+    AppMethodBeat.i(74185);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(74185);
       return false;
     }
-    return true;
+    if (!paramString.equals(ah.getContext().getResources().getString(2131301115)))
+    {
+      AppMethodBeat.o(74185);
+      return true;
+    }
+    AppMethodBeat.o(74185);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.k
  * JD-Core Version:    0.7.0.1
  */

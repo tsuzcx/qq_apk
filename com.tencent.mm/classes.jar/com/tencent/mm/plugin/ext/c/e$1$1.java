@@ -1,24 +1,28 @@
 package com.tencent.mm.plugin.ext.c;
 
-import com.tencent.mm.plugin.facedetect.model.q;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.facedetect.model.r;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class e$1$1
-  implements q
+  implements r
 {
   e$1$1(e.1 param1) {}
   
-  public final void O(String paramString, int paramInt1, int paramInt2)
+  public final void ac(String paramString, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.ExtQrCodeHandler", "hy: result: %s, code type: %d, code version: %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (bk.bl(paramString))
+    AppMethodBeat.i(20417);
+    ab.i("MicroMsg.ExtQrCodeHandler", "hy: result: %s, code type: %d, code version: %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (bo.isNullOrNil(paramString))
     {
-      y.w("MicroMsg.ExtQrCodeHandler", "hy: not retrieved result!");
-      this.jLj.bS(null);
+      ab.w("MicroMsg.ExtQrCodeHandler", "hy: not retrieved result!");
+      this.mfn.cv(null);
+      AppMethodBeat.o(20417);
       return;
     }
-    this.jLj.bS(new e.a(paramInt1, paramString, paramInt2));
+    this.mfn.cv(new e.a(paramInt1, paramString, paramInt2));
+    AppMethodBeat.o(20417);
   }
 }
 

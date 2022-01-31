@@ -1,5 +1,7 @@
 package com.tencent.qqvideo.proxy.httpproxy;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class TVHttpProxyLoadLibrary$LibraryBrokenHandler
   implements Thread.UncaughtExceptionHandler
 {
@@ -13,12 +15,13 @@ class TVHttpProxyLoadLibrary$LibraryBrokenHandler
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
     int j = 1;
+    AppMethodBeat.i(124391);
     int i;
     if ((!(paramThrowable instanceof UnsatisfiedLinkError)) && ((!(paramThrowable instanceof NoSuchMethodError)) || (!paramThrowable.getMessage().matches(".*sig(nature)?[=:].*"))))
     {
       i = 0;
       if (i == 0) {
-        break label86;
+        break label96;
       }
     }
     for (;;)
@@ -32,12 +35,13 @@ class TVHttpProxyLoadLibrary$LibraryBrokenHandler
           localThrowable = new UnsatisfiedLinkError("Invalid JNI libraries detected and recovered.").initCause(paramThrowable);
         }
         this.mParent.uncaughtException(paramThread, localThrowable);
+        AppMethodBeat.o(124391);
         return;
       }
       catch (Exception localException) {}
       i = 1;
       break;
-      label86:
+      label96:
       i = 0;
     }
   }

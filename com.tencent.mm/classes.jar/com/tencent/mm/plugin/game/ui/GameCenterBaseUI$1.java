@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.game.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.a.b;
-import com.tencent.mm.plugin.game.model.r;
+import com.tencent.mm.plugin.game.api.d;
+import com.tencent.mm.plugin.game.model.q;
 
 final class GameCenterBaseUI$1
   implements Runnable
@@ -11,13 +12,15 @@ final class GameCenterBaseUI$1
   
   public final void run()
   {
-    GameCenterBaseUI.a(this.kYi);
-    if (this.kYi.kYc)
+    AppMethodBeat.i(111759);
+    GameCenterBaseUI.a(this.nwg);
+    if (this.nwg.nwa)
     {
-      GameCenterBaseUI.b(this.kYi);
-      ((b)g.r(b.class)).aYe();
-      r.aZq();
+      GameCenterBaseUI.b(this.nwg);
+      ((d)g.E(d.class)).bER();
+      q.bGq();
     }
+    AppMethodBeat.o(111759);
   }
 }
 

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
 import java.util.HashSet;
 
 final class AASelectContactUI$4
@@ -13,14 +13,16 @@ final class AASelectContactUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if ((AASelectContactUI.b(this.eXY) != null) && (AASelectContactUI.b(this.eXY).size() > 0) && (AASelectContactUI.b(this.eXY).size() <= AASelectContactUI.d(this.eXY)) && ((AASelectContactUI.b(this.eXY).size() != 1) || (!AASelectContactUI.b(this.eXY).contains(q.Gj())))) {
-      com.tencent.mm.ui.base.h.a(this.eXY, this.eXY.getString(a.i.aa_select_contact_back_confirm), null, this.eXY.getString(a.i.aa_select_contact_save), this.eXY.getString(a.i.aa_select_contact_not_save), false, new AASelectContactUI.4.1(this), new AASelectContactUI.4.2(this));
+    AppMethodBeat.i(40754);
+    if ((AASelectContactUI.b(this.gpV) != null) && (AASelectContactUI.b(this.gpV).size() > 0) && (AASelectContactUI.b(this.gpV).size() <= AASelectContactUI.d(this.gpV)) && ((AASelectContactUI.b(this.gpV).size() != 1) || (!AASelectContactUI.b(this.gpV).contains(r.Zn())))) {
+      com.tencent.mm.ui.base.h.a(this.gpV, this.gpV.getString(2131296384), null, this.gpV.getString(2131296388), this.gpV.getString(2131296387), false, new AASelectContactUI.4.1(this), new AASelectContactUI.4.2(this));
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h.nFQ.f(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(7) });
+      com.tencent.mm.plugin.report.service.h.qsU.e(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(7) });
+      AppMethodBeat.o(40754);
       return true;
-      this.eXY.finish();
+      this.gpV.finish();
     }
   }
 }

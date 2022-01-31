@@ -2,22 +2,33 @@ package com.tencent.mm.kiss.a;
 
 import android.os.Handler;
 import android.os.HandlerThread;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a dNf = new a();
-  public HandlerThread dNe = new HandlerThread("InflateThread", 5);
+  private static a eKQ;
+  public HandlerThread eKP;
   private Handler mHandler;
+  
+  static
+  {
+    AppMethodBeat.i(105675);
+    eKQ = new a();
+    AppMethodBeat.o(105675);
+  }
   
   private a()
   {
-    this.dNe.start();
-    this.mHandler = new Handler(this.dNe.getLooper());
+    AppMethodBeat.i(105674);
+    this.eKP = new HandlerThread("InflateThread", 5);
+    this.eKP.start();
+    this.mHandler = new Handler(this.eKP.getLooper());
+    AppMethodBeat.o(105674);
   }
   
-  public static a EC()
+  public static a SG()
   {
-    return dNf;
+    return eKQ;
   }
 }
 

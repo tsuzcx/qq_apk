@@ -3,213 +3,224 @@ package com.tencent.mm.plugin.appbrand.jsapi.auth;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.aa.a.d;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.protocal.c.arp;
-import com.tencent.mm.protocal.c.arr;
-import com.tencent.mm.protocal.c.bna;
-import com.tencent.mm.protocal.c.cms;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.protocal.protobuf.axu;
+import com.tencent.mm.protocal.protobuf.axw;
+import com.tencent.mm.protocal.protobuf.bwv;
+import com.tencent.mm.protocal.protobuf.dam;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.z.a.c;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
 class JsApiLogin$LoginTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<LoginTask> CREATOR = new JsApiLogin.LoginTask.3();
-  public String aox;
+  public static final Parcelable.Creator<LoginTask> CREATOR;
   public String appId;
   public String code;
   public String data;
   public int errCode;
-  public int fJy;
-  public String fXS;
-  public int fhr;
-  public int gfg;
-  public int ghm;
-  public String gif;
-  c gjH;
-  f gjI;
-  b gjJ;
-  public Bundle gjK;
-  public String gjL;
-  public String gjM;
-  public int gjN;
-  public int gjO;
-  public Bundle gjP;
-  int gjQ;
+  public String errMsg;
+  public int gyZ;
+  public String hBt;
+  public int hDA;
+  public String hDB;
+  public int hDH;
+  public Bundle hDI;
+  int hDJ;
+  f hDu;
+  h hDv;
+  d hDw;
+  public ArrayList<String> hDx;
+  public String hDy;
+  public String hDz;
+  public int hcr;
+  public int hry;
+  public int hzB;
   public String mAppName;
+  
+  static
+  {
+    AppMethodBeat.i(130871);
+    CREATOR = new JsApiLogin.LoginTask.3();
+    AppMethodBeat.o(130871);
+  }
   
   public JsApiLogin$LoginTask() {}
   
   public JsApiLogin$LoginTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(130862);
+    f(paramParcel);
+    AppMethodBeat.o(130862);
   }
   
-  private void a(String paramString1, Bundle paramBundle, int paramInt1, String paramString2, int paramInt2, int paramInt3, a parama)
+  public final void ata()
   {
-    Object localObject = (ArrayList)paramBundle.getSerializable("key_scope");
-    paramBundle = new LinkedList();
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      paramBundle.add((String)((Iterator)localObject).next());
-    }
-    paramString1 = new d(paramString1, paramBundle, paramInt1, paramString2, paramInt2, paramInt3, this.ghm, new JsApiLogin.LoginTask.5(this, parama, paramInt3));
-    if (paramString1.CB().tna == null) {
-      paramString1.CB().tna = new cms();
-    }
-    paramString1.CB().tna.tZu = this.gjQ;
-    g.Dk().a(paramString1, 0);
-  }
-  
-  public final void Zu()
-  {
-    Object localObject = new JsApiLogin.LoginTask.1(this);
-    if (this.gjL.equals("login"))
+    AppMethodBeat.i(130863);
+    Object localObject1 = new JsApiLogin.LoginTask.1(this);
+    Object localObject2;
+    if (this.hDy.equals("login"))
     {
-      y.i("MicroMsg.JsApiLogin", "start login");
-      localLinkedList = new LinkedList();
-      this.fhr = 1;
-      this.gif = "";
-      localObject = new com.tencent.mm.aa.a.c(this.appId, localLinkedList, this.fhr, "", this.gif, this.fJy, this.ghm, new JsApiLogin.LoginTask.4(this, (a)localObject));
-      if (((com.tencent.mm.aa.a.c)localObject).Cz().tna == null) {
-        ((com.tencent.mm.aa.a.c)localObject).Cz().tna = new cms();
+      ab.i("MicroMsg.JsApiLogin", "start login");
+      localObject2 = new LinkedList();
+      this.gyZ = 1;
+      this.hBt = "";
+      localObject1 = new c(this.appId, (LinkedList)localObject2, this.gyZ, "", this.hBt, this.hcr, this.hzB, new JsApiLogin.LoginTask.4(this, (JsApiLogin.LoginTask.a)localObject1));
+      if (((c)localObject1).Qs().xmR == null) {
+        ((c)localObject1).Qs().xmR = new dam();
       }
-      ((com.tencent.mm.aa.a.c)localObject).Cz().tna.tZu = this.gjQ;
-      g.Dk().a((m)localObject, 0);
-    }
-    while (!this.gjL.equals("loginConfirm"))
-    {
-      LinkedList localLinkedList;
+      ((c)localObject1).Qs().xmR.ygT = this.hDJ;
+      g.Rc().a((m)localObject1, 0);
+      AppMethodBeat.o(130863);
       return;
     }
-    y.i("MicroMsg.JsApiLogin", "start loginConfirm");
-    a(this.appId, this.gjK, this.fhr, this.gif, this.fJy, this.gjN, (a)localObject);
+    if (this.hDy.equals("loginConfirm"))
+    {
+      ab.i("MicroMsg.JsApiLogin", "start loginConfirm");
+      localObject2 = this.appId;
+      ArrayList localArrayList = this.hDx;
+      int i = this.gyZ;
+      String str = this.hBt;
+      int j = this.hcr;
+      int k = this.hDA;
+      localObject1 = new com.tencent.mm.z.a.d((String)localObject2, f.j(localArrayList), i, str, j, k, this.hzB, new JsApiLogin.LoginTask.5(this, (JsApiLogin.LoginTask.a)localObject1, k));
+      if (((com.tencent.mm.z.a.d)localObject1).Qu().xmR == null) {
+        ((com.tencent.mm.z.a.d)localObject1).Qu().xmR = new dam();
+      }
+      ((com.tencent.mm.z.a.d)localObject1).Qu().xmR.ygT = this.hDJ;
+      g.Rc().a((m)localObject1, 0);
+    }
+    AppMethodBeat.o(130863);
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    ahD();
-    if (!this.gjI.isRunning()) {
-      this.gjJ.aib();
-    }
-    do
+    AppMethodBeat.i(130864);
+    aBk();
+    if (!this.hDv.isRunning())
     {
+      this.hDw.aBV();
+      AppMethodBeat.o(130864);
       return;
-      if (this.gjM.equals("ok"))
+    }
+    Object localObject;
+    if (this.hDz.equals("ok"))
+    {
+      localObject = new HashMap();
+      ((Map)localObject).put("code", this.code);
+      localObject = this.hDu.j("ok", (Map)localObject);
+      this.hDv.h(this.hry, (String)localObject);
+      this.hDw.aBV();
+      AppMethodBeat.o(130864);
+      return;
+    }
+    if (this.hDz.equals("fail"))
+    {
+      if (bo.isNullOrNil(this.errMsg)) {}
+      for (localObject = String.format("fail:login error %s", new Object[] { Integer.valueOf(this.errCode) });; localObject = String.format("fail:%s", new Object[] { this.errMsg }))
       {
-        localObject = new HashMap();
-        ((Map)localObject).put("code", this.code);
-        localObject = this.gjH.h("ok", (Map)localObject);
-        this.gjI.C(this.gfg, (String)localObject);
-        this.gjJ.aib();
+        this.hDu.b(this.hDv, this.hry, (String)localObject);
+        this.hDw.aBV();
+        AppMethodBeat.o(130864);
         return;
       }
-      if (this.gjM.equals("fail"))
+    }
+    if (this.hDz.equals("needConfirm"))
+    {
+      localObject = new LinkedList();
+      int i = 0;
+      while (i < this.hDH)
       {
-        if (bk.bl(this.aox)) {}
-        for (localObject = String.format("fail:login error %s", new Object[] { Integer.valueOf(this.errCode) });; localObject = String.format("fail:%s", new Object[] { this.aox }))
+        byte[] arrayOfByte = this.hDI.getByteArray(String.valueOf(i));
+        bwv localbwv = new bwv();
+        try
         {
-          this.gjH.b(this.gjI, this.gfg, (String)localObject);
-          this.gjJ.aib();
+          localbwv.parseFrom(arrayOfByte);
+          ((LinkedList)localObject).add(localbwv);
+          i += 1;
+        }
+        catch (IOException localIOException)
+        {
+          ab.e("MicroMsg.JsApiLogin", "parse scope info error %s", new Object[] { localIOException.getMessage() });
+          ab.printErrStackTrace("MicroMsg.JsApiLogin", localIOException, "", new Object[0]);
+          this.hDu.b(this.hDv, this.hry, "fail:internal error scope error");
+          this.hDw.aBV();
+          AppMethodBeat.o(130864);
           return;
         }
       }
-    } while (!this.gjM.equals("needConfirm"));
-    Object localObject = new LinkedList();
-    int i = 0;
-    while (i < this.gjO)
-    {
-      byte[] arrayOfByte = this.gjP.getByteArray(String.valueOf(i));
-      bna localbna = new bna();
-      try
+      if (localIOException.size() > 0)
       {
-        localbna.aH(arrayOfByte);
-        ((LinkedList)localObject).add(localbna);
-        i += 1;
-      }
-      catch (IOException localIOException)
-      {
-        y.e("MicroMsg.JsApiLogin", "parse scope info error %s", new Object[] { localIOException.getMessage() });
-        y.printErrStackTrace("MicroMsg.JsApiLogin", localIOException, "", new Object[0]);
-        this.gjH.b(this.gjI, this.gfg, "fail:internal error scope error");
-        this.gjJ.aib();
+        al.d(new JsApiLogin.LoginTask.2(this, localIOException));
+        AppMethodBeat.o(130864);
         return;
       }
+      this.hDu.b(this.hDv, this.hry, "fail:internal error scope empty");
+      this.hDw.aBV();
     }
-    if (localIOException.size() > 0)
-    {
-      ai.d(new JsApiLogin.LoginTask.2(this, localIOException));
-      return;
-    }
-    this.gjH.b(this.gjI, this.gfg, "fail:internal error scope empty");
-    this.gjJ.aib();
+    AppMethodBeat.o(130864);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
+    AppMethodBeat.i(130865);
     this.data = paramParcel.readString();
-    this.gfg = paramParcel.readInt();
-    this.gjL = paramParcel.readString();
+    this.hry = paramParcel.readInt();
+    this.hDy = paramParcel.readString();
     this.appId = paramParcel.readString();
     this.code = paramParcel.readString();
-    this.gjM = paramParcel.readString();
-    this.gif = paramParcel.readString();
-    this.fhr = paramParcel.readInt();
+    this.hDz = paramParcel.readString();
+    this.hBt = paramParcel.readString();
+    this.gyZ = paramParcel.readInt();
     this.mAppName = paramParcel.readString();
-    this.fXS = paramParcel.readString();
-    this.gjO = paramParcel.readInt();
-    this.gjP = paramParcel.readBundle(JsApiLogin.class.getClassLoader());
-    this.gjK = paramParcel.readBundle(JsApiLogin.class.getClassLoader());
-    this.fJy = paramParcel.readInt();
-    this.gjN = paramParcel.readInt();
-    this.ghm = paramParcel.readInt();
-    this.gjQ = paramParcel.readInt();
+    this.hDB = paramParcel.readString();
+    this.hDH = paramParcel.readInt();
+    this.hDI = paramParcel.readBundle(JsApiLogin.class.getClassLoader());
+    this.hDx = paramParcel.createStringArrayList();
+    this.hcr = paramParcel.readInt();
+    this.hDA = paramParcel.readInt();
+    this.hzB = paramParcel.readInt();
+    this.hDJ = paramParcel.readInt();
     this.errCode = paramParcel.readInt();
-    this.aox = paramParcel.readString();
+    this.errMsg = paramParcel.readString();
+    AppMethodBeat.o(130865);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(130866);
     paramParcel.writeString(this.data);
-    paramParcel.writeInt(this.gfg);
-    paramParcel.writeString(this.gjL);
+    paramParcel.writeInt(this.hry);
+    paramParcel.writeString(this.hDy);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.code);
-    paramParcel.writeString(this.gjM);
-    paramParcel.writeString(this.gif);
-    paramParcel.writeInt(this.fhr);
+    paramParcel.writeString(this.hDz);
+    paramParcel.writeString(this.hBt);
+    paramParcel.writeInt(this.gyZ);
     paramParcel.writeString(this.mAppName);
-    paramParcel.writeString(this.fXS);
-    paramParcel.writeInt(this.gjO);
-    paramParcel.writeBundle(this.gjP);
-    paramParcel.writeBundle(this.gjK);
-    paramParcel.writeInt(this.fJy);
-    paramParcel.writeInt(this.gjN);
-    paramParcel.writeInt(this.ghm);
-    paramParcel.writeInt(this.gjQ);
+    paramParcel.writeString(this.hDB);
+    paramParcel.writeInt(this.hDH);
+    paramParcel.writeBundle(this.hDI);
+    paramParcel.writeStringList(this.hDx);
+    paramParcel.writeInt(this.hcr);
+    paramParcel.writeInt(this.hDA);
+    paramParcel.writeInt(this.hzB);
+    paramParcel.writeInt(this.hDJ);
     paramParcel.writeInt(this.errCode);
-    paramParcel.writeString(this.aox);
-  }
-  
-  static abstract interface a
-  {
-    public abstract void G(int paramInt, String paramString);
-    
-    public abstract void a(LinkedList<bna> paramLinkedList, String paramString1, String paramString2, String paramString3);
-    
-    public abstract void onSuccess(String paramString);
+    paramParcel.writeString(this.errMsg);
+    AppMethodBeat.o(130866);
   }
 }
 

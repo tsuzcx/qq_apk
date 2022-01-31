@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import android.app.Dialog;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.snackbar.b;
 
 final class NoteEditorUI$6$1
@@ -11,13 +11,15 @@ final class NoteEditorUI$6$1
   
   public final void run()
   {
-    this.rLV.kbH.dismiss();
-    b.h(this.rLV.rLT, this.rLV.rLT.getString(R.l.finish_sent));
+    AppMethodBeat.i(26999);
+    this.vCz.mwd.dismiss();
+    b.l(this.vCz.vCx, this.vCz.vCx.getString(2131299979));
+    AppMethodBeat.o(26999);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI.6.1
  * JD-Core Version:    0.7.0.1
  */

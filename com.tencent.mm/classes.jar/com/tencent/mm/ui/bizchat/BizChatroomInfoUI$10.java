@@ -2,6 +2,7 @@ package com.tencent.mm.ui.bizchat;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BizChatroomInfoUI$10
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class BizChatroomInfoUI$10
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BizChatroomInfoUI.d(this.vfX);
+    AppMethodBeat.i(30209);
+    BizChatroomInfoUI.d(this.zuv);
+    AppMethodBeat.o(30209);
   }
 }
 

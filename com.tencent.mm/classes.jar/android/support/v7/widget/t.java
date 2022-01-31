@@ -1,41 +1,36 @@
 package android.support.v7.widget;
 
-import android.content.Context;
-import android.content.res.ColorStateList;
+import android.support.v7.view.menu.o.a;
+import android.view.Menu;
+import android.view.Window.Callback;
 
-abstract interface t
+public abstract interface t
 {
-  public abstract float a(s params);
+  public abstract void a(Menu paramMenu, o.a parama);
   
-  public abstract void a(s params, float paramFloat);
+  public abstract void bc(int paramInt);
   
-  public abstract void a(s params, Context paramContext, ColorStateList paramColorStateList, float paramFloat1, float paramFloat2, float paramFloat3);
+  public abstract void eN();
   
-  public abstract void a(s params, ColorStateList paramColorStateList);
+  public abstract boolean gx();
   
-  public abstract float b(s params);
+  public abstract boolean gy();
   
-  public abstract void b(s params, float paramFloat);
+  public abstract void gz();
   
-  public abstract float c(s params);
+  public abstract boolean hideOverflowMenu();
   
-  public abstract void c(s params, float paramFloat);
+  public abstract boolean isOverflowMenuShowing();
   
-  public abstract float d(s params);
+  public abstract void setWindowCallback(Window.Callback paramCallback);
   
-  public abstract float e(s params);
+  public abstract void setWindowTitle(CharSequence paramCharSequence);
   
-  public abstract void f(s params);
-  
-  public abstract void g(s params);
-  
-  public abstract void gw();
-  
-  public abstract ColorStateList h(s params);
+  public abstract boolean showOverflowMenu();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v7.widget.t
  * JD-Core Version:    0.7.0.1
  */

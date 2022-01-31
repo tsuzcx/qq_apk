@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.ui.b;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.e;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 
@@ -9,7 +10,10 @@ public final class a
 {
   public final e a(Context paramContext, e.b paramb, int paramInt)
   {
-    return new com.tencent.mm.plugin.fts.ui.d.a(paramContext, paramb, paramInt);
+    AppMethodBeat.i(62040);
+    paramContext = new com.tencent.mm.plugin.fts.ui.d.a(paramContext, paramb, paramInt);
+    AppMethodBeat.o(62040);
+    return paramContext;
   }
   
   public final int getPriority()
@@ -24,7 +28,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

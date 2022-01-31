@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.facedetect.e;
 
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class a$1
   implements Runnable
@@ -10,24 +11,26 @@ final class a$1
   
   public final void run()
   {
-    if ((this.jTe == 90) || (this.jTe == 270))
+    AppMethodBeat.i(542);
+    if ((this.mnA == 90) || (this.mnA == 270))
     {
-      y.i("MicroMsg.FaceVideoRecorder", "hy: need make width and height upside down");
-      a.a(this.jTm, this.jTf);
-      a.b(this.jTm, this.jTg);
+      ab.i("MicroMsg.FaceVideoRecorder", "hy: need make width and height upside down");
+      a.a(this.mnI, this.mnB);
+      a.b(this.mnI, this.mnC);
     }
-    synchronized (a.a(this.jTm))
+    synchronized (a.a(this.mnI))
     {
-      a.c(this.jTm, this.jTe);
-      a.a(this.jTm, this.jTh);
-      a.d(this.jTm, this.jTi);
-      a.b(this.jTm);
-      a.c(this.jTm);
-      a.d(this.jTm);
-      ai.d(new a.1.1(this));
+      a.c(this.mnI, this.mnA);
+      a.a(this.mnI, this.mnD);
+      a.d(this.mnI, this.mnE);
+      a.b(this.mnI);
+      a.c(this.mnI);
+      a.d(this.mnI);
+      al.d(new a.1.1(this));
+      AppMethodBeat.o(542);
       return;
-      a.a(this.jTm, this.jTg);
-      a.b(this.jTm, this.jTf);
+      a.a(this.mnI, this.mnC);
+      a.b(this.mnI, this.mnB);
     }
   }
 }

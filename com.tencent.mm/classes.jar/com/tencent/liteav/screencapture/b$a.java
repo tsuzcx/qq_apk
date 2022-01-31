@@ -1,18 +1,12 @@
 package com.tencent.liteav.screencapture;
 
-import android.view.Surface;
-
-class b$a
+public abstract interface b$a
 {
-  Surface a;
-  int b;
-  int c;
-  
-  private b$a(b paramb) {}
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.liteav.screencapture.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,8 @@ import android.os.Handler.Callback;
 import android.os.IInterface;
 import android.os.Message;
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Proxy;
 import java.util.Map;
@@ -12,30 +13,41 @@ import java.util.Map;
 final class b$b
   implements Handler.Callback
 {
-  private final WeakReference<Object> mHF;
-  private final Handler.Callback mHG;
+  private final WeakReference<Object> phL;
+  private final Handler.Callback phM;
   
   b$b(b paramb, Object paramObject, Handler.Callback paramCallback)
   {
-    this.mHF = new WeakReference(paramObject);
-    this.mHG = paramCallback;
+    AppMethodBeat.i(10395);
+    this.phL = new WeakReference(paramObject);
+    this.phM = paramCallback;
+    AppMethodBeat.o(10395);
   }
   
-  private boolean l(Message paramMessage)
+  private boolean r(Message paramMessage)
   {
-    if (this.mHG != null) {
-      return this.mHG.handleMessage(paramMessage);
+    AppMethodBeat.i(10397);
+    if (this.phM != null)
+    {
+      boolean bool = this.phM.handleMessage(paramMessage);
+      AppMethodBeat.o(10397);
+      return bool;
     }
+    AppMethodBeat.o(10397);
     return false;
   }
   
   public final boolean handleMessage(Message paramMessage)
   {
-    Object localObject1 = this.mHF.get();
+    AppMethodBeat.i(10396);
+    Object localObject1 = this.phL.get();
+    boolean bool;
     if (localObject1 == null)
     {
-      y.e("MicroMsg.AED", "lost viewRootImpl instance, give up intercepting.");
-      return l(paramMessage);
+      ab.e("MicroMsg.AED", "lost viewRootImpl instance, give up intercepting.");
+      bool = r(paramMessage);
+      AppMethodBeat.o(10396);
+      return bool;
     }
     for (;;)
     {
@@ -44,8 +56,10 @@ final class b$b
         localView = (View)h.b(localObject1, "getView", null, new Object[0]);
         if (localView == null)
         {
-          y.e("MicroMsg.AED", "cannot find root view, give up intercepting.");
-          return l(paramMessage);
+          ab.e("MicroMsg.AED", "cannot find root view, give up intercepting.");
+          bool = r(paramMessage);
+          AppMethodBeat.o(10396);
+          return bool;
         }
         switch (paramMessage.what)
         {
@@ -54,7 +68,7 @@ final class b$b
       catch (Throwable localThrowable)
       {
         Integer localInteger;
-        b.a(this.mHC, localThrowable);
+        b.a(this.phI, localThrowable);
         continue;
         h.b(paramMessage.obj, "arg2", localThrowable);
         continue;
@@ -77,18 +91,22 @@ final class b$b
       if (localObject1 != null) {
         continue;
       }
-      y.w("MicroMsg.AED", "callback is null, give up intercepting, op: %s", new Object[] { Integer.valueOf(paramMessage.what) });
-      return l(paramMessage);
-      localObject1 = (IInterface)h.f(paramMessage.obj, "arg1");
+      ab.w("MicroMsg.AED", "callback is null, give up intercepting, op: %s", new Object[] { Integer.valueOf(paramMessage.what) });
+      bool = r(paramMessage);
+      AppMethodBeat.o(10396);
+      return bool;
+      localObject1 = (IInterface)h.g(paramMessage.obj, "arg1");
       continue;
-      localObject1 = (IInterface)h.f(paramMessage.obj, "arg2");
+      localObject1 = (IInterface)h.g(paramMessage.obj, "arg2");
       continue;
       localObject1 = (IInterface)paramMessage.obj;
     }
     if ((Proxy.isProxyClass(localObject1.getClass())) && ((Proxy.getInvocationHandler(localObject1) instanceof b.e)))
     {
-      y.w("MicroMsg.AED", "reused callback, skip rest works.");
-      return l(paramMessage);
+      ab.w("MicroMsg.AED", "reused callback, skip rest works.");
+      bool = r(paramMessage);
+      AppMethodBeat.o(10396);
+      return bool;
     }
     switch (paramMessage.what)
     {
@@ -107,14 +125,16 @@ final class b$b
     case 1023: 
       for (;;)
       {
-        localInteger = (Integer)b.c(this.mHC).remove(((IInterface)localObject1).asBinder());
+        localInteger = (Integer)b.c(this.phI).remove(((IInterface)localObject1).asBinder());
         if (localInteger != null) {
-          break label787;
+          break label847;
         }
-        y.w("MicroMsg.AED", "callback %s's binder is unmarked, give up intercept.", new Object[] { localObject1.getClass().getName() });
-        return l(paramMessage);
+        ab.w("MicroMsg.AED", "callback %s's binder is unmarked, give up intercept.", new Object[] { localObject1.getClass().getName() });
+        bool = r(paramMessage);
+        AppMethodBeat.o(10396);
+        return bool;
         if (paramMessage.what != 1022) {
-          break label1200;
+          break label1276;
         }
         i = paramMessage.arg1;
         localView = localView.findViewById(i);
@@ -132,44 +152,47 @@ final class b$b
         case 1021: 
           for (;;)
           {
-            localView = (View)h.b(localView, b.bpe(), h.b(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(i) });
+            localView = (View)h.b(localView, b.bXH(), h.b(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(i) });
             break;
-            i = ((Integer)h.f(paramMessage.obj, "argi1")).intValue();
+            i = ((Integer)h.g(paramMessage.obj, "argi1")).intValue();
             continue;
             i = paramMessage.arg2;
             continue;
-            i = ((Integer)h.f(paramMessage.obj, "argi2")).intValue();
+            i = ((Integer)h.g(paramMessage.obj, "argi2")).intValue();
             continue;
             i = paramMessage.arg1;
           }
-          i = ((Integer)h.f(paramMessage.obj, "argi3")).intValue();
+          i = ((Integer)h.g(paramMessage.obj, "argi3")).intValue();
           continue;
-          i = ((Integer)h.f(paramMessage.obj, "argi1")).intValue();
+          i = ((Integer)h.g(paramMessage.obj, "argi1")).intValue();
           continue;
           i = paramMessage.arg2;
           continue;
-          i = ((Integer)h.f(paramMessage.obj, "argi2")).intValue();
+          i = ((Integer)h.g(paramMessage.obj, "argi2")).intValue();
         }
       }
-      label787:
+      label847:
       j = paramMessage.what;
       switch (j)
       {
       }
       for (;;)
       {
-        return l(paramMessage);
+        bool = r(paramMessage);
+        AppMethodBeat.o(10396);
+        return bool;
         switch (paramMessage.what)
         {
         case 1: 
         case 1020: 
-          while (!b.a(this.mHC, j, localInteger.intValue(), localView))
+          while (!b.a(this.phI, j, localInteger.intValue(), localView))
           {
-            h.b(localObject1, b.bpf(), h.b(new Class[] { Boolean.TYPE, Integer.TYPE }), new Object[] { Boolean.valueOf(false), Integer.valueOf(i) });
+            h.b(localObject1, b.bXI(), h.b(new Class[] { Boolean.TYPE, Integer.TYPE }), new Object[] { Boolean.FALSE, Integer.valueOf(i) });
+            AppMethodBeat.o(10396);
             return true;
-            j = ((Integer)h.f(paramMessage.obj, "argi2")).intValue();
+            j = ((Integer)h.g(paramMessage.obj, "argi2")).intValue();
           }
-          localObject1 = (IInterface)Proxy.newProxyInstance(b.boZ(), localObject1.getClass().getInterfaces(), new b.b.1(this, (IInterface)localObject1, localInteger, localView));
+          localObject1 = (IInterface)Proxy.newProxyInstance(b.bXB(), localObject1.getClass().getInterfaces(), new b.b.1(this, (IInterface)localObject1, localInteger, localView));
           switch (paramMessage.what)
           {
           case 1: 

@@ -1,5 +1,6 @@
 package com.eclipsesource.v8;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -16,16 +17,20 @@ class V8ContextWrapper
   
   V8ContextWrapper(MultiContextV8 paramMultiContextV8, long paramLong)
   {
+    AppMethodBeat.i(75487);
     this.multiContextV8 = paramMultiContextV8;
     this.v8ContextPtr = paramLong;
     enterContext();
     this.v8ContextImpl = new V8ContextWrapper.V8ContextImpl(this, paramLong);
     this.proxy = ((V8Context)Proxy.newProxyInstance(V8ContextWrapper.class.getClassLoader(), new Class[] { V8Context.class }, this));
+    AppMethodBeat.o(75487);
   }
   
   private void enterContext()
   {
+    AppMethodBeat.i(75488);
     this.multiContextV8.enterContext(this);
+    AppMethodBeat.o(75488);
   }
   
   public V8Context context()
@@ -35,15 +40,24 @@ class V8ContextWrapper
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(75489);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(75489);
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (V8ContextWrapper)paramObject;
-    } while (this.v8ContextPtr == paramObject.v8ContextPtr);
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(75489);
+      return false;
+    }
+    paramObject = (V8ContextWrapper)paramObject;
+    if (this.v8ContextPtr == paramObject.v8ContextPtr)
+    {
+      AppMethodBeat.o(75489);
+      return true;
+    }
+    AppMethodBeat.o(75489);
     return false;
   }
   
@@ -59,16 +73,23 @@ class V8ContextWrapper
   
   public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    this.v8ContextImpl.checkReleased();
-    enterContext();
+    AppMethodBeat.i(75490);
+    if (!paramMethod.getName().equals("isReleased"))
+    {
+      this.v8ContextImpl.checkReleased();
+      enterContext();
+    }
     try
     {
       paramObject = paramMethod.invoke(this.v8ContextImpl, paramArrayOfObject);
+      AppMethodBeat.o(75490);
       return paramObject;
     }
     catch (InvocationTargetException paramObject)
     {
-      throw paramObject.getCause();
+      paramObject = paramObject.getCause();
+      AppMethodBeat.o(75490);
+      throw paramObject;
     }
   }
 }

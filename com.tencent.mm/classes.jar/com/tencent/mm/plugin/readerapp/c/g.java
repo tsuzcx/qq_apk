@@ -1,57 +1,77 @@
 package com.tencent.mm.plugin.readerapp.c;
 
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.d.a;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.bm;
+import com.tencent.mm.model.q;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.pluginsdk.model.q;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.pluginsdk.model.p;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.vfs.b;
 import java.util.HashMap;
 import java.util.List;
 
 public class g
-  implements ar
+  implements at
 {
-  private static HashMap<Integer, h.d> dgp;
-  private com.tencent.mm.model.bk nou;
-  private c nov = new c();
-  private a now = new a();
-  private d nox = new d();
-  private f noy = new f();
+  private static HashMap<Integer, h.d> baseDBFactories;
+  private bm pTI;
+  private c pTJ;
+  private a pTK;
+  private d pTL;
+  private f pTM;
   
   static
   {
+    AppMethodBeat.i(76783);
     HashMap localHashMap = new HashMap();
-    dgp = localHashMap;
+    baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("READERAPPINFO_TABLE".hashCode()), new g.1());
+    AppMethodBeat.o(76783);
+  }
+  
+  public g()
+  {
+    AppMethodBeat.i(76769);
+    this.pTJ = new c();
+    this.pTK = new a();
+    this.pTL = new d();
+    this.pTM = new f();
+    AppMethodBeat.o(76769);
   }
   
   private static void a(final int paramInt, g.a parama)
   {
-    if (!com.tencent.mm.kernel.g.DK())
+    AppMethodBeat.i(76780);
+    if (!com.tencent.mm.kernel.g.RG())
     {
       c(parama);
+      AppMethodBeat.o(76780);
       return;
     }
-    com.tencent.mm.kernel.g.DS().O(new Runnable()
+    com.tencent.mm.kernel.g.RO().ac(new Runnable()
     {
       public final void run()
       {
         int i = 0;
-        Object localObject = new b(com.tencent.mm.plugin.n.c.FG());
+        AppMethodBeat.i(76765);
+        Object localObject = new b(com.tencent.mm.plugin.i.c.YK());
         if ((!((b)localObject).exists()) || (!((b)localObject).isDirectory()))
         {
-          g.d(this.noz);
+          g.d(this.pTN);
+          AppMethodBeat.o(76765);
           return;
         }
-        localObject = ((b)localObject).cLt();
+        localObject = ((b)localObject).dQL();
         if ((localObject == null) || (localObject.length <= 0))
         {
-          g.d(this.noz);
+          g.d(this.pTN);
+          AppMethodBeat.o(76765);
           return;
         }
         String str1 = String.format("reader_%d_", new Object[] { Integer.valueOf(paramInt) });
@@ -66,120 +86,138 @@ public class g
           }
           i += 1;
         }
-        g.d(this.noz);
+        g.d(this.pTN);
+        AppMethodBeat.o(76765);
       }
       
       public final String toString()
       {
-        return super.toString() + "|deleteAllPic";
+        AppMethodBeat.i(76766);
+        String str = super.toString() + "|deleteAllPic";
+        AppMethodBeat.o(76766);
+        return str;
       }
     });
+    AppMethodBeat.o(76780);
   }
   
   public static void a(g.a parama)
   {
-    buZ().hV(20);
-    ((j)com.tencent.mm.kernel.g.r(j.class)).FB().abu("newsapp");
+    AppMethodBeat.i(76774);
+    cfl().kI(20);
+    ((j)com.tencent.mm.kernel.g.E(j.class)).YF().arF("newsapp");
     a(20, parama);
+    AppMethodBeat.o(76774);
   }
   
   public static void b(g.a parama)
   {
-    buZ().hV(11);
-    ((j)com.tencent.mm.kernel.g.r(j.class)).FB().abu("blogapp");
+    AppMethodBeat.i(76775);
+    cfl().kI(11);
+    ((j)com.tencent.mm.kernel.g.E(j.class)).YF().arF("blogapp");
     a(11, parama);
-  }
-  
-  private static g buY()
-  {
-    return (g)p.B(g.class);
-  }
-  
-  public static com.tencent.mm.model.bk buZ()
-  {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (buY().nou == null) {
-      buY().nou = new com.tencent.mm.model.bk(com.tencent.mm.kernel.g.DP().dKu);
-    }
-    return buY().nou;
+    AppMethodBeat.o(76775);
   }
   
   private static void c(g.a parama)
   {
-    ai.d(new g.2(parama));
+    AppMethodBeat.i(76779);
+    al.d(new g.2(parama));
+    AppMethodBeat.o(76779);
   }
   
-  public static void cl(String paramString, int paramInt)
+  private static void cG(List<bl> paramList)
   {
-    i(buZ().I(paramString, paramInt), paramInt);
-  }
-  
-  public static void ft(long paramLong)
-  {
-    i(buZ().bD(paramLong), 20);
-  }
-  
-  private static void i(List<bj> paramList, int paramInt)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
+    AppMethodBeat.i(141044);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      AppMethodBeat.o(141044);
       return;
     }
     int i = 0;
-    label16:
-    if (i < paramList.size())
+    while (i < paramList.size())
     {
-      if (i != 0) {
-        break label60;
-      }
-      com.tencent.mm.sdk.platformtools.bk.deleteFile(q.y(((bj)paramList.get(i)).Ia(), paramInt, "@T"));
-    }
-    for (;;)
-    {
+      bo.deleteFile(p.aln(((bl)paramList.get(i)).aaZ()));
       i += 1;
-      break label16;
-      break;
-      label60:
-      com.tencent.mm.sdk.platformtools.bk.deleteFile(q.y(((bj)paramList.get(i)).Ia(), paramInt, "@S"));
     }
+    AppMethodBeat.o(141044);
   }
   
-  public final void bh(boolean paramBoolean)
+  private static g cfk()
   {
-    d.a.a(this.nov);
-    com.tencent.mm.kernel.g.DS().O(new g.4(this));
-    com.tencent.mm.sdk.b.a.udP.c(this.now);
-    com.tencent.mm.sdk.b.a.udP.c(this.nox);
-    com.tencent.mm.sdk.b.a.udP.c(this.noy);
-    e locale = e.not;
-    e.init();
+    AppMethodBeat.i(76770);
+    g localg = (g)q.S(g.class);
+    AppMethodBeat.o(76770);
+    return localg;
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt)
+  public static bm cfl()
   {
+    AppMethodBeat.i(76771);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    if (cfk().pTI == null) {
+      cfk().pTI = new bm(com.tencent.mm.kernel.g.RL().eHS);
+    }
+    bm localbm = cfk().pTI;
+    AppMethodBeat.o(76771);
+    return localbm;
+  }
+  
+  public static void de(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(76777);
+    cG(cfl().Q(paramString, paramInt));
+    AppMethodBeat.o(76777);
+  }
+  
+  public static void kV(long paramLong)
+  {
+    AppMethodBeat.i(76776);
+    cG(cfl().gx(paramLong));
+    AppMethodBeat.o(76776);
+  }
+  
+  public void clearPluginData(int paramInt)
+  {
+    AppMethodBeat.i(76773);
     if ((0x80000 & paramInt) != 0) {
       a(null);
     }
     if ((0x40000 & paramInt) != 0) {
       b(null);
     }
+    AppMethodBeat.o(76773);
   }
   
-  public final void onAccountRelease()
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    d.a.b(this.nov);
-    com.tencent.mm.sdk.b.a.udP.d(this.now);
-    com.tencent.mm.sdk.b.a.udP.d(this.nox);
-    com.tencent.mm.sdk.b.a.udP.d(this.noy);
-    e locale = e.not;
-    e.release();
+    return baseDBFactories;
   }
   
-  public final HashMap<Integer, h.d> xe()
+  public void onAccountPostReset(boolean paramBoolean)
   {
-    return dgp;
+    AppMethodBeat.i(76781);
+    d.a.a(this.pTJ);
+    com.tencent.mm.kernel.g.RO().ac(new g.4(this));
+    com.tencent.mm.sdk.b.a.ymk.c(this.pTK);
+    com.tencent.mm.sdk.b.a.ymk.c(this.pTL);
+    com.tencent.mm.sdk.b.a.ymk.c(this.pTM);
+    e locale = e.pTH;
+    AppMethodBeat.o(76781);
   }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(76772);
+    d.a.b(this.pTJ);
+    com.tencent.mm.sdk.b.a.ymk.d(this.pTK);
+    com.tencent.mm.sdk.b.a.ymk.d(this.pTL);
+    com.tencent.mm.sdk.b.a.ymk.d(this.pTM);
+    e locale = e.pTH;
+    AppMethodBeat.o(76772);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

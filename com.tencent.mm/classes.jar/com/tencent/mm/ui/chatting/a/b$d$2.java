@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.chatting.gallery.h;
 import com.tencent.mm.ui.chatting.gallery.h.a;
 import java.util.ArrayList;
@@ -15,36 +16,38 @@ final class b$d$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(31136);
     boolean bool;
-    if (!this.vop.khV.isChecked())
+    if (!this.zDL.mCC.isChecked())
     {
       bool = true;
-      if (h.a.cGc().khB.size() >= 9) {
-        break label130;
+      if (h.a.dKg().mCl.size() >= 9) {
+        break label142;
       }
-      this.vop.khV.setChecked(bool);
+      this.zDL.mCC.setChecked(bool);
       if (bool) {
-        break label116;
+        break label128;
       }
-      this.vop.khT.setVisibility(8);
+      this.zDL.mCA.setVisibility(8);
     }
     for (;;)
     {
-      if (this.vop.vol.vok != null)
+      if (this.zDL.zDH.zDG != null)
       {
         int i = ((Integer)paramView.getTag()).intValue();
-        paramView = this.vop.vol.GZ(i);
-        this.vop.vol.vok.a(bool, paramView, i);
+        paramView = this.zDL.zDH.PC(i);
+        this.zDL.zDH.zDG.a(bool, paramView, i);
       }
+      AppMethodBeat.o(31136);
       return;
       bool = false;
       break;
-      label116:
-      this.vop.khT.setVisibility(0);
+      label128:
+      this.zDL.mCA.setVisibility(0);
       continue;
-      label130:
+      label142:
       if (!bool) {
-        this.vop.khV.setChecked(false);
+        this.zDL.mCC.setChecked(false);
       }
     }
   }

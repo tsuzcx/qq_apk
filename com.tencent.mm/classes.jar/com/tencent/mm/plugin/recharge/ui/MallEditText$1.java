@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.recharge.ui;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.AutoCompleteTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallEditText$1
   implements TextWatcher
@@ -15,8 +16,9 @@ final class MallEditText$1
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(44208);
     String str = paramCharSequence.toString();
-    paramInt2 = MallEditText.a(this.nqk).getSelectionStart();
+    paramInt2 = MallEditText.a(this.pVy).getSelectionStart();
     paramCharSequence = "";
     paramInt1 = paramInt2;
     int i;
@@ -32,27 +34,28 @@ final class MallEditText$1
       }
       paramCharSequence = paramCharSequence.toString();
       i = paramCharSequence.length();
-      if (i <= MallEditText.b(this.nqk)) {
-        break label205;
+      if (i <= MallEditText.b(this.pVy)) {
+        break label215;
       }
       if (((paramInt2 != 4) && (paramInt2 != 9)) || (paramInt3 != 1)) {
-        break label176;
+        break label186;
       }
       paramInt1 = paramInt2 + 1;
     }
     for (;;)
     {
-      MallEditText.a(this.nqk, i);
+      MallEditText.a(this.pVy, i);
       if (str.equals(paramCharSequence)) {
-        break label257;
+        break label272;
       }
-      MallEditText.a(this.nqk).setText(paramCharSequence);
-      if (paramInt1 >= MallEditText.b(this.nqk)) {
+      MallEditText.a(this.pVy).setText(paramCharSequence);
+      if (paramInt1 >= MallEditText.b(this.pVy)) {
         break;
       }
-      MallEditText.a(this.nqk).setSelection(paramInt1);
+      MallEditText.a(this.pVy).setSelection(paramInt1);
+      AppMethodBeat.o(44208);
       return;
-      label176:
+      label186:
       if (paramInt2 != 4)
       {
         paramInt1 = paramInt2;
@@ -65,9 +68,9 @@ final class MallEditText$1
         {
           paramInt1 = paramInt2 + paramInt3;
           continue;
-          label205:
+          label215:
           paramInt1 = paramInt2;
-          if (i < MallEditText.b(this.nqk)) {
+          if (i < MallEditText.b(this.pVy)) {
             if (paramInt2 != 4)
             {
               paramInt1 = paramInt2;
@@ -81,15 +84,17 @@ final class MallEditText$1
         }
       }
     }
-    MallEditText.a(this.nqk).setSelection(MallEditText.b(this.nqk));
+    MallEditText.a(this.pVy).setSelection(MallEditText.b(this.pVy));
+    AppMethodBeat.o(44208);
     return;
-    label257:
-    MallEditText.c(this.nqk);
+    label272:
+    MallEditText.c(this.pVy);
+    AppMethodBeat.o(44208);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.MallEditText.1
  * JD-Core Version:    0.7.0.1
  */

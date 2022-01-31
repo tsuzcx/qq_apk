@@ -2,61 +2,77 @@ package com.tencent.mm.plugin.ipcall.a;
 
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.a.g.b;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public final class a
 {
-  private static a lou = null;
-  private long endTime = -1L;
-  ah handler = new a.1(this, Looper.getMainLooper());
-  private boolean isLoading = false;
-  public ArrayList<a> lot = new ArrayList();
-  private long startTime = -1L;
+  private static a nLQ = null;
+  private long endTime;
+  ak handler;
+  private boolean isLoading;
+  public ArrayList<a.a> nLP;
+  private long startTime;
   
-  public static a bbR()
+  private a()
   {
-    if (lou == null) {
-      lou = new a();
-    }
-    return lou;
+    AppMethodBeat.i(21706);
+    this.isLoading = false;
+    this.nLP = new ArrayList();
+    this.startTime = -1L;
+    this.endTime = -1L;
+    this.handler = new a.1(this, Looper.getMainLooper());
+    AppMethodBeat.o(21706);
   }
   
-  public final void a(a parama, boolean paramBoolean)
+  public static a bIY()
   {
+    AppMethodBeat.i(21707);
+    if (nLQ == null) {
+      nLQ = new a();
+    }
+    a locala = nLQ;
+    AppMethodBeat.o(21707);
+    return locala;
+  }
+  
+  public final void a(a.a parama, boolean paramBoolean)
+  {
+    AppMethodBeat.i(21708);
     if (parama != null) {
-      this.lot.add(parama);
+      this.nLP.add(parama);
     }
-    if (this.isLoading) {
-      y.d("MicroMsg.IPCallAddressBookLoader", "loadAllAddressItem, isLoading is true, ignore");
-    }
-    do
+    if (this.isLoading)
     {
+      ab.d("MicroMsg.IPCallAddressBookLoader", "loadAllAddressItem, isLoading is true, ignore");
+      AppMethodBeat.o(21708);
       return;
-      this.startTime = System.currentTimeMillis();
-    } while ((b.bcL().size() != 0) && (paramBoolean));
-    y.d("MicroMsg.IPCallAddressBookLoader", "loadFromSystemAddressBook");
-    long l = System.currentTimeMillis();
-    new b();
-    parama = b.bcK();
-    y.d("MicroMsg.IPCallAddressBookLoader", "getAllAddressItemFromSystemPhoneBook, used %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    Message localMessage = this.handler.obtainMessage();
-    localMessage.obj = parama;
-    this.handler.sendMessage(localMessage);
-    this.isLoading = true;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void aog();
+    }
+    this.startTime = System.currentTimeMillis();
+    if ((b.bJS().size() == 0) || (!paramBoolean))
+    {
+      ab.d("MicroMsg.IPCallAddressBookLoader", "loadFromSystemAddressBook");
+      long l = System.currentTimeMillis();
+      new b();
+      parama = b.bJR();
+      ab.d("MicroMsg.IPCallAddressBookLoader", "getAllAddressItemFromSystemPhoneBook, used %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      Message localMessage = this.handler.obtainMessage();
+      localMessage.obj = parama;
+      this.handler.sendMessage(localMessage);
+      this.isLoading = true;
+      AppMethodBeat.o(21708);
+      return;
+    }
+    AppMethodBeat.o(21708);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.a
  * JD-Core Version:    0.7.0.1
  */

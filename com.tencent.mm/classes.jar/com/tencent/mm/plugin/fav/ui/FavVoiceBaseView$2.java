@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.fav.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.f;
 import com.tencent.mm.plugin.fav.a.n;
 import com.tencent.mm.r.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.t;
 
 final class FavVoiceBaseView$2
   implements View.OnClickListener
@@ -15,27 +16,34 @@ final class FavVoiceBaseView$2
   
   public final void onClick(View paramView)
   {
-    if ((a.bk(paramView.getContext())) || (a.bi(paramView.getContext()))) {}
-    do
+    AppMethodBeat.i(74169);
+    if ((a.bO(paramView.getContext())) || (a.bM(paramView.getContext())))
     {
+      AppMethodBeat.o(74169);
       return;
-      if ((!f.zF()) && (!bk.bl(FavVoiceBaseView.g(this.kdF))))
-      {
-        s.gM(paramView.getContext());
-        return;
-      }
-      if (!bk.aM(FavVoiceBaseView.g(this.kdF), "").equals(FavVoiceBaseView.h(this.kdF).path))
-      {
-        FavVoiceBaseView.i(this.kdF);
-        return;
-      }
-      if (FavVoiceBaseView.h(this.kdF).aQk())
-      {
-        this.kdF.aQm();
-        return;
-      }
-    } while (FavVoiceBaseView.j(this.kdF));
-    FavVoiceBaseView.i(this.kdF);
+    }
+    if ((!f.Mi()) && (!bo.isNullOrNil(FavVoiceBaseView.g(this.myp))))
+    {
+      t.ii(paramView.getContext());
+      AppMethodBeat.o(74169);
+      return;
+    }
+    if (!bo.bf(FavVoiceBaseView.g(this.myp), "").equals(FavVoiceBaseView.h(this.myp).path))
+    {
+      FavVoiceBaseView.i(this.myp);
+      AppMethodBeat.o(74169);
+      return;
+    }
+    if (FavVoiceBaseView.h(this.myp).bwz())
+    {
+      this.myp.bwB();
+      AppMethodBeat.o(74169);
+      return;
+    }
+    if (!FavVoiceBaseView.j(this.myp)) {
+      FavVoiceBaseView.i(this.myp);
+    }
+    AppMethodBeat.o(74169);
   }
 }
 

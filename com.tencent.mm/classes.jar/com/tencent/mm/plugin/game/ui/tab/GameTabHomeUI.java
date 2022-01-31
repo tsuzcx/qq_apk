@@ -1,96 +1,132 @@
 package com.tencent.mm.plugin.game.ui.tab;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.game.g.a;
-import com.tencent.mm.plugin.game.g.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.game.model.GameTabData;
 import com.tencent.mm.plugin.game.ui.GameCenterUI5;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 
 public class GameTabHomeUI
   extends GameCenterUI5
 {
-  private BroadcastReceiver lfT = new GameTabHomeUI.2(this);
-  public String lfW;
+  private BroadcastReceiver nDO;
+  public String nDR;
   
-  private void goBack()
+  public GameTabHomeUI()
   {
-    y.i("MicroMsg.GameTabHomeUI", "GameTabHomeUI goBack!");
-    if (bk.pm(getIntent().getStringExtra("jump_find_more_friends")).equals("jump_find_more_friends"))
+    AppMethodBeat.i(112252);
+    this.nDO = new GameTabHomeUI.2(this);
+    AppMethodBeat.o(112252);
+  }
+  
+  private void bHx()
+  {
+    AppMethodBeat.i(112259);
+    if (bo.nullAsNil(getIntent().getStringExtra("jump_find_more_friends")).equals("jump_find_more_friends"))
     {
       Intent localIntent = new Intent();
       localIntent.addFlags(67108864);
       localIntent.putExtra("preferred_tab", 2);
-      d.e(this, ".ui.LauncherUI", localIntent);
+      d.f(this, ".ui.LauncherUI", localIntent);
       finish();
-      overridePendingTransition(g.a.slide_left_in, g.a.slide_right_out);
-      y.i("MicroMsg.GameTabHomeUI", "back to FindMoreFriendsUI");
+      overridePendingTransition(2131034262, 2131034267);
+      ab.i("MicroMsg.GameTabHomeUI", "back to FindMoreFriendsUI");
     }
+    AppMethodBeat.o(112259);
+  }
+  
+  private void goBack()
+  {
+    AppMethodBeat.i(112258);
+    ab.i("MicroMsg.GameTabHomeUI", "GameTabHomeUI goBack!");
+    bHx();
     sendBroadcast(new Intent("com.tencent.mm.ACTION_EXIT"), "com.tencent.mm.permission.MM_MESSAGE");
+    AppMethodBeat.o(112258);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(112253);
     super.onCreate(paramBundle);
-    y.i("MicroMsg.GameTabHomeUI", "%s create", new Object[] { getClass().getSimpleName() });
+    ab.i("MicroMsg.GameTabHomeUI", "%s create", new Object[] { getClass().getSimpleName() });
     paramBundle = (GameTabData)getIntent().getParcelableExtra("tab_data");
-    this.lfW = getIntent().getStringExtra("tab_key");
-    GameTabWidget localGameTabWidget = (GameTabWidget)findViewById(g.e.tabwidget);
+    this.nDR = getIntent().getStringExtra("tab_key");
+    GameTabWidget localGameTabWidget = (GameTabWidget)findViewById(2131824431);
     a locala = new a(this);
     localGameTabWidget.setAdapter(locala);
-    locala.a(paramBundle, this.lfW);
+    locala.a(paramBundle, this.nDR);
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mm.ACTION_EXIT");
-    registerReceiver(this.lfT, paramBundle, "com.tencent.mm.permission.MM_MESSAGE", null);
+    registerReceiver(this.nDO, paramBundle, "com.tencent.mm.permission.MM_MESSAGE", null);
     setBackBtn(new GameTabHomeUI.1(this));
+    AppMethodBeat.o(112253);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(112256);
     super.onDestroy();
-    unregisterReceiver(this.lfT);
+    unregisterReceiver(this.nDO);
+    AppMethodBeat.o(112256);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(112257);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       goBack();
+      AppMethodBeat.o(112257);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(112257);
+    return bool;
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
+    AppMethodBeat.i(112255);
     super.onNewIntent(paramIntent);
-    if (paramIntent == null) {
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(112255);
       return;
     }
     setIntent(paramIntent);
     String str = paramIntent.getStringExtra("tab_key");
-    if (!bk.pm(this.lfW).equals(str))
+    if (!bo.nullAsNil(this.nDR).equals(str))
     {
-      y.i("MicroMsg.GameTabHomeUI", "reload %s. current_key:%s, next_key:%s", new Object[] { getClass().getSimpleName(), this.lfW, str });
+      ab.i("MicroMsg.GameTabHomeUI", "reload %s. current_key:%s, next_key:%s", new Object[] { getClass().getSimpleName(), this.nDR, str });
       finish();
       startActivity(paramIntent);
     }
-    overridePendingTransition(g.a.in_no_slide, g.a.in_no_slide);
+    overridePendingTransition(2131034195, 2131034195);
+    AppMethodBeat.o(112255);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(112254);
     super.onResume();
     if (getSwipeBackLayout() != null) {
       getSwipeBackLayout().setEnableGesture(false);
     }
+    AppMethodBeat.o(112254);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

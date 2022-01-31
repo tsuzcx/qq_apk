@@ -1,58 +1,49 @@
 package a;
 
-import a.d.a.a;
-import a.d.b.g;
-import java.io.Serializable;
+import a.f.a.a;
+import a.f.b.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class i<T>
-  implements b<T>, Serializable
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"lazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "lock", "", "mode", "Lkotlin/LazyThreadSafetyMode;", "kotlin-stdlib"}, eaR=1)
+public class i
 {
-  private final Object lock;
-  private a<? extends T> xob;
-  private volatile Object xoc;
-  
-  private i(a<? extends T> parama)
+  public static final <T> f<T> a(k paramk, a<? extends T> parama)
   {
-    this.xob = parama;
-    this.xoc = l.xog;
-    this.lock = this;
-  }
-  
-  public final T getValue()
-  {
-    Object localObject1 = this.xoc;
-    if (localObject1 != l.xog) {
-      return localObject1;
-    }
-    synchronized (this.lock)
+    AppMethodBeat.i(56366);
+    j.q(paramk, "mode");
+    j.q(parama, "initializer");
+    switch (h.bLo[paramk.ordinal()])
     {
-      localObject1 = this.xoc;
-      l locall = l.xog;
-      if (localObject1 != locall) {
-        return localObject1;
-      }
-      localObject1 = this.xob;
-      if (localObject1 == null) {
-        g.cUk();
-      }
-      localObject1 = ((a)localObject1).invoke();
-      this.xoc = localObject1;
-      this.xob = null;
+    default: 
+      paramk = new m();
+      AppMethodBeat.o(56366);
+      throw paramk;
+    case 1: 
+      paramk = (f)new s(parama, (byte)0);
+      AppMethodBeat.o(56366);
+      return paramk;
+    case 2: 
+      paramk = (f)new r(parama);
+      AppMethodBeat.o(56366);
+      return paramk;
     }
+    paramk = (f)new z(parama);
+    AppMethodBeat.o(56366);
+    return paramk;
   }
   
-  public final String toString()
+  public static final <T> f<T> j(a<? extends T> parama)
   {
-    if (this.xoc != l.xog) {}
-    for (int i = 1; i != 0; i = 0) {
-      return String.valueOf(getValue());
-    }
-    return "Lazy value not initialized yet.";
+    AppMethodBeat.i(56365);
+    j.q(parama, "initializer");
+    parama = (f)new s(parama, (byte)0);
+    AppMethodBeat.o(56365);
+    return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     a.i
  * JD-Core Version:    0.7.0.1
  */

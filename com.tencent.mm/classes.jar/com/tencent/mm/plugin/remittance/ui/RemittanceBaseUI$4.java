@@ -1,23 +1,27 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.remittance.model.v;
-import com.tencent.mm.plugin.wallet_core.model.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.wallet_core.ui.e;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
 
 final class RemittanceBaseUI$4
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  RemittanceBaseUI$4(RemittanceBaseUI paramRemittanceBaseUI, v paramv) {}
+  RemittanceBaseUI$4(RemittanceBaseUI paramRemittanceBaseUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onClick(View paramView)
   {
-    y.i("MicroMsg.RemittanceBaseUI", "goto h5: %s", new Object[] { this.nAI.bZo.iHx });
-    e.l(this.nAH.mController.uMN, this.nAI.bZo.iHx, false);
+    AppMethodBeat.i(142142);
+    f.a(this.qmk, this.qmk.mScene, RemittanceBaseUI.f(this.qmk), RemittanceBaseUI.b(this.qmk));
+    if (this.qmk.mScene == 1)
+    {
+      h.qsU.e(12689, new Object[] { Integer.valueOf(13), Integer.valueOf(1) });
+      AppMethodBeat.o(142142);
+      return;
+    }
+    h.qsU.e(12689, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
+    AppMethodBeat.o(142142);
   }
 }
 

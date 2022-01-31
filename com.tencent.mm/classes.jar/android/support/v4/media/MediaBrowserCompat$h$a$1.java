@@ -16,37 +16,37 @@ final class MediaBrowserCompat$h$a$1
   {
     if (MediaBrowserCompat.DEBUG)
     {
-      new StringBuilder("MediaServiceConnection.onServiceConnected name=").append(this.val$name).append(" binder=").append(this.AW);
-      this.AX.AV.dump();
+      new StringBuilder("MediaServiceConnection.onServiceConnected name=").append(this.val$name).append(" binder=").append(this.BI);
+      this.BJ.BH.dump();
     }
-    if (!this.AX.L("onServiceConnected")) {}
+    if (!this.BJ.M("onServiceConnected")) {}
     do
     {
       return;
-      this.AX.AV.AO = new MediaBrowserCompat.j(this.AW, this.AX.AV.AK);
-      this.AX.AV.AP = new Messenger(this.AX.AV.AL);
-      this.AX.AV.AL.a(this.AX.AV.AP);
-      this.AX.AV.mState = 2;
+      this.BJ.BH.BA = new MediaBrowserCompat.j(this.BI, this.BJ.BH.Bw);
+      this.BJ.BH.BB = new Messenger(this.BJ.BH.Bx);
+      this.BJ.BH.Bx.a(this.BJ.BH.BB);
+      this.BJ.BH.mState = 2;
       try
       {
         if (MediaBrowserCompat.DEBUG) {
-          this.AX.AV.dump();
+          this.BJ.BH.dump();
         }
-        MediaBrowserCompat.j localj = this.AX.AV.AO;
-        Context localContext = this.AX.AV.mContext;
-        Messenger localMessenger = this.AX.AV.AP;
+        MediaBrowserCompat.j localj = this.BJ.BH.BA;
+        Context localContext = this.BJ.BH.mContext;
+        Messenger localMessenger = this.BJ.BH.BB;
         Bundle localBundle = new Bundle();
         localBundle.putString("data_package_name", localContext.getPackageName());
-        localBundle.putBundle("data_root_hints", localj.AK);
+        localBundle.putBundle("data_root_hints", localj.Bw);
         localj.a(1, localBundle, localMessenger);
         return;
       }
       catch (RemoteException localRemoteException)
       {
-        new StringBuilder("RemoteException during connect for ").append(this.AX.AV.AR);
+        new StringBuilder("RemoteException during connect for ").append(this.BJ.BH.BD);
       }
     } while (!MediaBrowserCompat.DEBUG);
-    this.AX.AV.dump();
+    this.BJ.BH.dump();
   }
 }
 

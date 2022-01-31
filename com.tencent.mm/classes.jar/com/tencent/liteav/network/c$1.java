@@ -1,5 +1,6 @@
 package com.tencent.liteav.network;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import org.json.JSONObject;
 
@@ -13,7 +14,10 @@ class c$1
   
   public void run()
   {
-    if (this.c.a == null) {
+    AppMethodBeat.i(67619);
+    if (this.c.a == null)
+    {
+      AppMethodBeat.o(67619);
       return;
     }
     ArrayList localArrayList1 = new ArrayList();
@@ -32,11 +36,11 @@ class c$1
         {
           localObject2 = new JSONObject((String)localObject3);
           if (!((JSONObject)localObject2).has("use")) {
-            break label103;
+            break label118;
           }
           int j = ((JSONObject)localObject2).getInt("use");
           if (j != 0) {
-            break label103;
+            break label118;
           }
           localObject3 = localArrayList1;
         }
@@ -56,13 +60,14 @@ class c$1
           sleep(1000L, 0);
         }
         this.c.a.onFetchDone(0, (ArrayList)localObject3);
+        AppMethodBeat.o(67619);
         return;
       }
       catch (Exception localException1)
       {
         for (;;)
         {
-          label103:
+          label118:
           ArrayList localArrayList2;
           Object localObject1 = localArrayList2;
         }
@@ -73,7 +78,7 @@ class c$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.c.1
  * JD-Core Version:    0.7.0.1
  */

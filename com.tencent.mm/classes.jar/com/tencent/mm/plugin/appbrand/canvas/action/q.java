@@ -9,14 +9,14 @@ import android.graphics.RadialGradient;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader.TileMode;
-import com.tencent.luggage.j.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFillStyleActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.e;
-import com.tencent.mm.plugin.appbrand.u.h;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.appbrand.s.g;
+import com.tencent.mm.sdk.platformtools.bo;
 import org.json.JSONArray;
 
 public final class q
@@ -24,39 +24,53 @@ public final class q
 {
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
+    AppMethodBeat.i(103233);
     paramDrawActionArg = (SetFillStyleActionArg)paramDrawActionArg;
-    if (paramDrawActionArg == null) {
+    if (paramDrawActionArg == null)
+    {
+      AppMethodBeat.o(103233);
       return false;
     }
-    return paramDrawActionArg.a(paramd, paramCanvas);
+    boolean bool = paramDrawActionArg.a(paramd, paramCanvas);
+    AppMethodBeat.o(103233);
+    return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    if (paramJSONArray.length() < 2) {
+    AppMethodBeat.i(103232);
+    if (paramJSONArray.length() < 2)
+    {
+      AppMethodBeat.o(103232);
       return false;
     }
     Object localObject = paramJSONArray.optString(0);
-    paramCanvas = paramd.fLq;
+    paramCanvas = paramd.heC;
     float f1;
     float f2;
     float f3;
     JSONArray localJSONArray;
     if ("linear".equalsIgnoreCase((String)localObject))
     {
-      if (paramJSONArray.length() < 3) {
+      if (paramJSONArray.length() < 3)
+      {
+        AppMethodBeat.o(103232);
         return false;
       }
       paramd = paramJSONArray.optJSONArray(1);
-      if ((paramd == null) || (paramd.length() < 4)) {
+      if ((paramd == null) || (paramd.length() < 4))
+      {
+        AppMethodBeat.o(103232);
         return false;
       }
-      f1 = h.d(paramd, 0);
-      f2 = h.d(paramd, 1);
-      f3 = h.d(paramd, 2);
-      float f4 = h.d(paramd, 3);
+      f1 = g.d(paramd, 0);
+      f2 = g.d(paramd, 1);
+      f3 = g.d(paramd, 2);
+      float f4 = g.d(paramd, 3);
       paramd = paramJSONArray.optJSONArray(2);
-      if ((paramd == null) || (paramd.length() == 0)) {
+      if ((paramd == null) || (paramd.length() == 0))
+      {
+        AppMethodBeat.o(103232);
         return false;
       }
       paramJSONArray = new int[paramd.length()];
@@ -68,7 +82,7 @@ public final class q
         if (localJSONArray.length() >= 2)
         {
           localObject[i] = ((float)localJSONArray.optDouble(0));
-          paramJSONArray[i] = h.l(localJSONArray.optJSONArray(1));
+          paramJSONArray[i] = g.o(localJSONArray.optJSONArray(1));
         }
         i += 1;
       }
@@ -80,22 +94,28 @@ public final class q
       {
         for (;;)
         {
+          AppMethodBeat.o(103232);
           return true;
           if ("radial".equalsIgnoreCase((String)localObject))
           {
-            if (paramJSONArray.length() < 3) {
+            if (paramJSONArray.length() < 3)
+            {
+              AppMethodBeat.o(103232);
               return false;
             }
             paramd = paramJSONArray.optJSONArray(1);
-            if ((paramd == null) || (paramd.length() < 3)) {
+            if ((paramd == null) || (paramd.length() < 3))
+            {
+              AppMethodBeat.o(103232);
               return false;
             }
-            f1 = h.d(paramd, 0);
-            f2 = h.d(paramd, 1);
-            f3 = h.d(paramd, 2);
+            f1 = g.d(paramd, 0);
+            f2 = g.d(paramd, 1);
+            f3 = g.d(paramd, 2);
             if (f3 <= 0.0F)
             {
-              c.i("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle(radial) failed, sr(%s) <= 0.", new Object[] { Float.valueOf(f3) });
+              com.tencent.luggage.g.d.i("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle(radial) failed, sr(%s) <= 0.", new Object[] { Float.valueOf(f3) });
+              AppMethodBeat.o(103232);
               return false;
             }
             paramd = paramJSONArray.optJSONArray(2);
@@ -108,7 +128,7 @@ public final class q
               if (localJSONArray.length() >= 2)
               {
                 localObject[i] = ((float)localJSONArray.optDouble(0));
-                paramJSONArray[i] = h.l(localJSONArray.optJSONArray(1));
+                paramJSONArray[i] = g.o(localJSONArray.optJSONArray(1));
               }
               i += 1;
             }
@@ -120,25 +140,28 @@ public final class q
               break;
             }
             paramd = paramJSONArray.optJSONArray(1);
-            if ((paramd == null) || (paramd.length() < 4)) {
+            if ((paramd == null) || (paramd.length() < 4))
+            {
+              AppMethodBeat.o(103232);
               return false;
             }
             paramCanvas.setShader(null);
-            paramCanvas.setColor(h.l(paramd));
+            paramCanvas.setColor(g.o(paramd));
           }
         }
       } while (!"pattern".equalsIgnoreCase((String)localObject));
       localObject = paramJSONArray.optString(1);
       paramJSONArray = paramJSONArray.optString(2);
-      if (bk.bl((String)localObject))
+      if (bo.isNullOrNil((String)localObject))
       {
-        c.w("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle failed, type is pattern but image path is null or nil.");
+        com.tencent.luggage.g.d.w("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle failed, type is pattern but image path is null or nil.");
+        AppMethodBeat.o(103232);
         return false;
       }
-      paramd = paramd.fLv.a(paramd, (String)localObject);
+      paramd = paramd.heH.a(paramd, (String)localObject);
     } while ((paramd == null) || (paramd.isRecycled()));
-    int j = h.my(paramd.getWidth());
-    int k = h.my(paramd.getHeight());
+    int j = g.pO(paramd.getWidth());
+    int k = g.pO(paramd.getHeight());
     int i = -1;
     switch (paramJSONArray.hashCode())
     {
@@ -146,7 +169,7 @@ public final class q
       switch (i)
       {
       default: 
-        label592:
+        label648:
         paramd = null;
       }
       break;
@@ -156,26 +179,28 @@ public final class q
       paramCanvas.setShader(paramd);
       break;
       if (!paramJSONArray.equals("repeat")) {
-        break label592;
+        break label648;
       }
       i = 0;
-      break label592;
+      break label648;
       if (!paramJSONArray.equals("repeat-x")) {
-        break label592;
+        break label648;
       }
       i = 1;
-      break label592;
+      break label648;
       if (!paramJSONArray.equals("repeat-y")) {
-        break label592;
+        break label648;
       }
       i = 2;
-      break label592;
+      break label648;
       if (!paramJSONArray.equals("no-repeat")) {
-        break label592;
+        break label648;
       }
       i = 3;
-      break label592;
-      paramd = new BitmapShader(Bitmap.createScaledBitmap(paramd, j, k, false), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+      break label648;
+      paramd = Bitmap.createScaledBitmap(paramd, j, k, false);
+      paramJSONArray = Shader.TileMode.REPEAT;
+      paramd = new BitmapShader(paramd, paramJSONArray, paramJSONArray);
       continue;
       paramJSONArray = Bitmap.createBitmap(j, k + 1, Bitmap.Config.ARGB_8888);
       new Canvas(paramJSONArray).drawBitmap(paramd, new Rect(0, 0, paramd.getWidth(), paramd.getHeight()), new RectF(0.0F, 0.0F, j, k), null);
@@ -187,13 +212,17 @@ public final class q
       continue;
       paramJSONArray = Bitmap.createBitmap(j + 1, k + 1, Bitmap.Config.ARGB_8888);
       new Canvas(paramJSONArray).drawBitmap(paramd, new Rect(0, 0, paramd.getWidth(), paramd.getHeight()), new RectF(0.0F, 0.0F, j, k), null);
-      paramd = new BitmapShader(paramJSONArray, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+      paramd = Shader.TileMode.CLAMP;
+      paramd = new BitmapShader(paramJSONArray, paramd, paramd);
     }
   }
   
-  public final BaseDrawActionArg adE()
+  public final BaseDrawActionArg axW()
   {
-    return new SetFillStyleActionArg();
+    AppMethodBeat.i(103231);
+    SetFillStyleActionArg localSetFillStyleActionArg = new SetFillStyleActionArg();
+    AppMethodBeat.o(103231);
+    return localSetFillStyleActionArg;
   }
   
   public final String getMethod()
@@ -203,7 +232,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.q
  * JD-Core Version:    0.7.0.1
  */

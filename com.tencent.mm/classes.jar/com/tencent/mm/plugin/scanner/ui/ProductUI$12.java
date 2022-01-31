@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ProductUI$12
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class ProductUI$12
   
   public final void onClick(View paramView)
   {
-    ProductUI.j(this.nKF);
+    AppMethodBeat.i(81095);
+    ProductUI.l(this.qyh);
+    AppMethodBeat.o(81095);
   }
 }
 

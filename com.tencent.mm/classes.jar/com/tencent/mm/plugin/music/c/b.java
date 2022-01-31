@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.music.c;
 
 import android.text.TextUtils;
-import com.tencent.mm.plugin.music.e.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
@@ -18,82 +19,113 @@ import java.util.Set;
 public final class b
   implements Runnable
 {
-  public int dUg = 0;
-  public boolean isStop = true;
-  public boolean kaC;
-  public String mimeType = "";
-  private String myt = null;
-  public com.tencent.mm.av.e myu;
-  public a myv;
-  public float myw;
-  private long myx = 307200L;
-  public int myy = -1;
-  public b.b myz;
+  public int cfE;
+  public boolean isStop;
+  public String mimeType;
+  public boolean muY;
+  private String oYA;
+  public com.tencent.mm.aw.e oYB;
+  public a oYC;
+  public float oYD;
+  private long oYE;
+  public int oYF;
+  public b.b oYG;
   
-  public b(com.tencent.mm.av.e parame, a parama)
+  public b(com.tencent.mm.aw.e parame, a parama)
   {
-    this.myu = parame;
-    this.myv = parama;
+    AppMethodBeat.i(137466);
+    this.oYA = null;
+    this.oYE = 307200L;
+    this.isStop = true;
+    this.mimeType = "";
+    this.oYF = -1;
+    this.cfE = 0;
+    this.oYB = parame;
+    this.oYC = parama;
     int i;
     int j;
-    if ((parama.myo == 0L) && (parama.myp == 0L) && (parama.endFlag == 0))
+    if ((parama.oYv == 0L) && (parama.oYw == 0L) && (parama.endFlag == 0))
     {
       i = 1;
-      if ((parama.myq != 0L) || (parama.mys != 0L) || (parama.myr != 0)) {
-        break label144;
+      if ((parama.oYx != 0L) || (parama.oYz != 0L) || (parama.oYy != 0)) {
+        break label154;
       }
       j = 1;
-      label105:
+      label110:
       if ((i == 0) || (j == 0)) {
-        break label150;
+        break label160;
       }
       i = k;
-      label117:
+      label122:
       if (i == 0) {
-        break label155;
+        break label165;
       }
-      y.e("MicroMsg.Music.MusicDownloadTask", "downloadInfo is invalid");
+      ab.e("MicroMsg.Music.MusicDownloadTask", "downloadInfo is invalid");
     }
     for (;;)
     {
-      this.kaC = aq.isWifi(ae.getContext());
+      this.muY = at.isWifi(ah.getContext());
+      AppMethodBeat.o(137466);
       return;
       i = 0;
       break;
-      label144:
+      label154:
       j = 0;
-      break label105;
-      label150:
+      break label110;
+      label160:
       i = 0;
-      break label117;
-      label155:
-      y.i("MicroMsg.Music.MusicDownloadTask", "downloadInfo is valid");
+      break label122;
+      label165:
+      ab.i("MicroMsg.Music.MusicDownloadTask", "downloadInfo is valid");
     }
   }
   
-  private void F(long paramLong1, long paramLong2)
+  private static void Ab(int paramInt)
   {
-    if (this.kaC)
+    AppMethodBeat.i(137470);
+    com.tencent.mm.plugin.music.e.d locald = (com.tencent.mm.plugin.music.e.d)com.tencent.mm.plugin.music.f.c.b.am(com.tencent.mm.plugin.music.e.d.class);
+    if (locald != null) {
+      locald.Ag(paramInt);
+    }
+    AppMethodBeat.o(137470);
+  }
+  
+  private void Ac(int paramInt)
+  {
+    AppMethodBeat.i(137471);
+    this.oYA = null;
+    al.d(new b.a(this, paramInt));
+    AppMethodBeat.o(137471);
+  }
+  
+  private void R(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(137473);
+    if (this.muY)
     {
-      this.myv.myq = paramLong1;
-      this.myv.myr = 0;
-      this.myv.mys = paramLong2;
-      com.tencent.mm.plugin.music.cache.e.a(this.myu.eux, this.myv);
+      this.oYC.oYx = paramLong1;
+      this.oYC.oYy = 0;
+      this.oYC.oYz = paramLong2;
+      com.tencent.mm.plugin.music.cache.e.a(this.oYB.fKj, this.oYC);
     }
     for (;;)
     {
-      ai.d(new b.a(this, 3));
+      al.d(new b.a(this, 3));
+      AppMethodBeat.o(137473);
       return;
-      this.myv.myo = paramLong1;
-      this.myv.endFlag = 0;
-      this.myv.myp = paramLong2;
-      com.tencent.mm.plugin.music.cache.e.a(this.myu.eux, this.myv);
+      this.oYC.oYv = paramLong1;
+      this.oYC.endFlag = 0;
+      this.oYC.oYw = paramLong2;
+      com.tencent.mm.plugin.music.cache.e.a(this.oYB.fKj, this.oYC);
     }
   }
   
-  private static long[] Jv(String paramString)
+  private static long[] Vt(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(137474);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(137474);
       return null;
     }
     try
@@ -103,1671 +135,1667 @@ public final class b
       paramString = paramString[1].split("/");
       long l2 = Long.valueOf(paramString[0]).longValue();
       long l3 = Long.valueOf(paramString[1]).longValue();
+      AppMethodBeat.o(137474);
       return new long[] { l1, l2, l3 };
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(137474);
+    }
     return null;
   }
   
-  private void fl(long paramLong)
+  private void kJ(long paramLong)
   {
-    if (this.kaC)
+    AppMethodBeat.i(137472);
+    if (this.muY)
     {
-      this.myv.myq = paramLong;
-      this.myv.myr = 1;
-      this.myv.mys = paramLong;
-      com.tencent.mm.plugin.music.cache.e.a(this.myu.eux, this.myv);
+      this.oYC.oYx = paramLong;
+      this.oYC.oYy = 1;
+      this.oYC.oYz = paramLong;
+      com.tencent.mm.plugin.music.cache.e.a(this.oYB.fKj, this.oYC);
     }
     for (;;)
     {
-      ai.d(new b.a(this, 2));
+      al.d(new b.a(this, 2));
+      AppMethodBeat.o(137472);
       return;
-      this.myv.myo = paramLong;
-      this.myv.endFlag = 1;
-      this.myv.myp = paramLong;
-      com.tencent.mm.plugin.music.cache.e.a(this.myu.eux, this.myv);
+      this.oYC.oYv = paramLong;
+      this.oYC.endFlag = 1;
+      this.oYC.oYw = paramLong;
+      com.tencent.mm.plugin.music.cache.e.a(this.oYB.fKj, this.oYC);
     }
   }
   
-  private HttpURLConnection o(String paramString, Map<String, String> paramMap)
+  private HttpURLConnection u(String paramString, Map<String, String> paramMap)
   {
+    AppMethodBeat.i(137469);
     Object localObject1;
-    int i;
-    if (!TextUtils.isEmpty(this.myt))
+    if (!TextUtils.isEmpty(this.oYA))
     {
-      y.i("MicroMsg.Music.MusicDownloadTask", "use previous temp redirect URL to download , avoid to request source url and than redirect to 302 resp code");
-      paramString = this.myt;
+      ab.i("MicroMsg.Music.MusicDownloadTask", "use previous temp redirect URL to download , avoid to request source url and than redirect to 302 resp code");
+      paramString = this.oYA;
       localObject1 = null;
-      i = 0;
     }
-    for (;;)
+    for (int i = 0;; i = 0)
     {
-      if (localObject1 != null) {
-        ((HttpURLConnection)localObject1).disconnect();
-      }
-      y.i("MicroMsg.Music.MusicDownloadTask", "getUrlConnect, downloadUrl:%s", new Object[] { paramString });
-      Object localObject2 = k.bnl().myY;
-      localObject1 = new URL(paramString);
-      if (localObject2 != null) {
-        localObject1 = ((com.tencent.mm.plugin.music.e.a)localObject2).Jx(paramString);
-      }
-      localObject1 = (HttpURLConnection)((URL)localObject1).openConnection();
-      ((HttpURLConnection)localObject1).setRequestMethod("GET");
-      ((HttpURLConnection)localObject1).setConnectTimeout(25000);
-      ((HttpURLConnection)localObject1).setInstanceFollowRedirects(false);
-      paramString = paramMap.entrySet().iterator();
-      while (paramString.hasNext())
+      for (;;)
       {
-        localObject2 = (Map.Entry)paramString.next();
-        ((HttpURLConnection)localObject1).setRequestProperty((String)((Map.Entry)localObject2).getKey(), (String)((Map.Entry)localObject2).getValue());
-      }
-      int j = ((HttpURLConnection)localObject1).getResponseCode();
-      y.i("MicroMsg.Music.MusicDownloadTask", "getUrlConnect response:%d, redirectCount:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
-      if ((j == 300) || (j == 301) || (j == 302) || (j == 303) || (j == 307))
-      {
-        uF(j);
-        paramString = ((HttpURLConnection)localObject1).getRequestMethod();
-        if ((j != 307) || (paramString.equals("GET")) || (paramString.equals("HEAD"))) {}
-      }
-      while ((j == 200) || (j == 206))
-      {
-        return localObject1;
-        paramString = ((HttpURLConnection)localObject1).getHeaderField("Location");
-        if (paramString == null)
+        if (localObject1 != null) {}
+        try
         {
-          y.e("MicroMsg.Music.MusicDownloadTask", "Invalid redirect,  response:%d", new Object[] { Integer.valueOf(j) });
-          return localObject1;
+          ((HttpURLConnection)localObject1).getInputStream().close();
+          ((HttpURLConnection)localObject1).disconnect();
+          ab.i("MicroMsg.Music.MusicDownloadTask", "getUrlConnect, downloadUrl:%s", new Object[] { paramString });
+          Object localObject2 = k.bVH().oZe;
+          localObject1 = new URL(paramString);
+          if (localObject2 != null) {
+            localObject1 = ((com.tencent.mm.plugin.music.e.a)localObject2).Vv(paramString);
+          }
+          localObject1 = (HttpURLConnection)((URL)localObject1).openConnection();
+          ((HttpURLConnection)localObject1).setRequestMethod("GET");
+          ((HttpURLConnection)localObject1).setConnectTimeout(25000);
+          ((HttpURLConnection)localObject1).setInstanceFollowRedirects(false);
+          paramString = paramMap.entrySet().iterator();
+          while (paramString.hasNext())
+          {
+            localObject2 = (Map.Entry)paramString.next();
+            ((HttpURLConnection)localObject1).setRequestProperty((String)((Map.Entry)localObject2).getKey(), (String)((Map.Entry)localObject2).getValue());
+          }
         }
-        localObject2 = new URL(((HttpURLConnection)localObject1).getURL(), paramString);
-        y.i("MicroMsg.Music.MusicDownloadTask", "location:%s", new Object[] { paramString });
-        y.i("MicroMsg.Music.MusicDownloadTask", "tempUrl:%s", new Object[] { ((URL)localObject2).toString() });
-        if ((!((URL)localObject2).getProtocol().equals("https")) && (!((URL)localObject2).getProtocol().equals("http")))
+        catch (Exception localException)
         {
-          y.e("MicroMsg.Music.MusicDownloadTask", "Unsupported protocol redirect,  response:%d", new Object[] { Integer.valueOf(j) });
-          return localObject1;
+          for (;;)
+          {
+            ab.e("MicroMsg.Music.MusicDownloadTask", localException.getMessage());
+          }
+          int j = ((HttpURLConnection)localObject1).getResponseCode();
+          ab.i("MicroMsg.Music.MusicDownloadTask", "getUrlConnect response:%d, redirectCount:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+          if ((j == 300) || (j == 301) || (j == 302) || (j == 303) || (j == 307))
+          {
+            Ab(j);
+            paramString = ((HttpURLConnection)localObject1).getRequestMethod();
+            if ((j == 307) && (!paramString.equals("GET")) && (!paramString.equals("HEAD")))
+            {
+              AppMethodBeat.o(137469);
+              return localObject1;
+            }
+            paramString = ((HttpURLConnection)localObject1).getHeaderField("Location");
+            if (paramString == null)
+            {
+              ab.e("MicroMsg.Music.MusicDownloadTask", "Invalid redirect,  response:%d", new Object[] { Integer.valueOf(j) });
+              AppMethodBeat.o(137469);
+              return localObject1;
+            }
+            URL localURL = new URL(((HttpURLConnection)localObject1).getURL(), paramString);
+            ab.i("MicroMsg.Music.MusicDownloadTask", "location:%s", new Object[] { paramString });
+            ab.i("MicroMsg.Music.MusicDownloadTask", "tempUrl:%s", new Object[] { localURL.toString() });
+            if ((!localURL.getProtocol().equals("https")) && (!localURL.getProtocol().equals("http")))
+            {
+              ab.e("MicroMsg.Music.MusicDownloadTask", "Unsupported protocol redirect,  response:%d", new Object[] { Integer.valueOf(j) });
+              AppMethodBeat.o(137469);
+              return localObject1;
+            }
+            i += 1;
+            if (i > 5)
+            {
+              ab.e("MicroMsg.Music.MusicDownloadTask", "Too many redirects: ".concat(String.valueOf(i)));
+              AppMethodBeat.o(137469);
+              return localObject1;
+            }
+            paramString = localURL.toString();
+            this.oYA = paramString;
+          }
+          else
+          {
+            if ((j != 200) && (j != 206)) {
+              this.oYA = null;
+            }
+            AppMethodBeat.o(137469);
+            return localObject1;
+          }
         }
-        i += 1;
-        if (i > 5)
-        {
-          y.e("MicroMsg.Music.MusicDownloadTask", "Too many redirects: " + i);
-          return localObject1;
-        }
-        paramString = ((URL)localObject2).toString();
-        this.myt = paramString;
-        break;
       }
-      this.myt = null;
-      return localObject1;
       localObject1 = null;
-      i = 0;
     }
-  }
-  
-  private static void uF(int paramInt)
-  {
-    d locald = (d)com.tencent.mm.plugin.music.f.c.b.Q(d.class);
-    if (locald != null) {
-      locald.uK(paramInt);
-    }
-  }
-  
-  private void uG(int paramInt)
-  {
-    this.myt = null;
-    ai.d(new b.a(this, paramInt));
   }
   
   /* Error */
   public final void run()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   4: ifeq +4 -> 8
-    //   7: return
-    //   8: aconst_null
-    //   9: astore 33
-    //   11: aconst_null
-    //   12: astore 34
-    //   14: invokestatic 90	com/tencent/mm/sdk/platformtools/ae:getContext	()Landroid/content/Context;
-    //   17: invokestatic 350	com/tencent/mm/sdk/platformtools/aq:isNetworkConnected	(Landroid/content/Context;)Z
-    //   20: istore 32
-    //   22: aload_0
-    //   23: iconst_0
-    //   24: putfield 50	com/tencent/mm/plugin/music/c/b:dUg	I
-    //   27: aload_0
-    //   28: iconst_0
-    //   29: putfield 48	com/tencent/mm/plugin/music/c/b:myy	I
-    //   32: invokestatic 193	com/tencent/mm/plugin/music/e/k:bnl	()Lcom/tencent/mm/plugin/music/e/k;
-    //   35: getfield 197	com/tencent/mm/plugin/music/e/k:myY	Lcom/tencent/mm/plugin/music/e/a;
-    //   38: astore 35
-    //   40: iload 32
-    //   42: ifeq +504 -> 546
-    //   45: aload_0
-    //   46: getfield 98	com/tencent/mm/plugin/music/c/b:kaC	Z
-    //   49: ifeq +356 -> 405
-    //   52: aload_0
-    //   53: getfield 52	com/tencent/mm/plugin/music/c/b:myu	Lcom/tencent/mm/av/e;
-    //   56: getfield 353	com/tencent/mm/av/e:playUrl	Ljava/lang/String;
-    //   59: invokestatic 358	com/tencent/mm/plugin/music/cache/g:Jn	(Ljava/lang/String;)Z
-    //   62: istore 32
-    //   64: aload 34
-    //   66: astore 33
-    //   68: aload 35
-    //   70: ifnull +19 -> 89
-    //   73: aload 35
-    //   75: aload_0
-    //   76: getfield 52	com/tencent/mm/plugin/music/c/b:myu	Lcom/tencent/mm/av/e;
-    //   79: getfield 353	com/tencent/mm/av/e:playUrl	Ljava/lang/String;
-    //   82: invokeinterface 361 2 0
-    //   87: astore 33
-    //   89: ldc 76
-    //   91: ldc_w 363
-    //   94: iconst_1
-    //   95: anewarray 4	java/lang/Object
-    //   98: dup
-    //   99: iconst_0
-    //   100: aload 33
-    //   102: aastore
-    //   103: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   106: aload_0
-    //   107: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   110: getfield 68	com/tencent/mm/plugin/music/c/a:myq	J
-    //   113: lstore 6
-    //   115: aload_0
-    //   116: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   119: getfield 71	com/tencent/mm/plugin/music/c/a:mys	J
-    //   122: lstore 4
-    //   124: lload 4
-    //   126: lconst_0
-    //   127: lcmp
-    //   128: ifeq +13 -> 141
-    //   131: aload_0
-    //   132: lload 4
-    //   134: ldc2_w 364
-    //   137: ldiv
-    //   138: putfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   141: lload 6
+    //   0: ldc_w 373
+    //   3: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   10: ifeq +10 -> 20
+    //   13: ldc_w 373
+    //   16: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: return
+    //   20: aconst_null
+    //   21: astore 33
+    //   23: aconst_null
+    //   24: astore 34
+    //   26: invokestatic 97	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
+    //   29: invokestatic 376	com/tencent/mm/sdk/platformtools/at:isNetworkConnected	(Landroid/content/Context;)Z
+    //   32: istore 32
+    //   34: aload_0
+    //   35: iconst_0
+    //   36: putfield 57	com/tencent/mm/plugin/music/c/b:cfE	I
+    //   39: aload_0
+    //   40: iconst_0
+    //   41: putfield 55	com/tencent/mm/plugin/music/c/b:oYF	I
+    //   44: invokestatic 231	com/tencent/mm/plugin/music/e/k:bVH	()Lcom/tencent/mm/plugin/music/e/k;
+    //   47: getfield 235	com/tencent/mm/plugin/music/e/k:oZe	Lcom/tencent/mm/plugin/music/e/a;
+    //   50: astore 35
+    //   52: iload 32
+    //   54: ifeq +510 -> 564
+    //   57: aload_0
+    //   58: getfield 105	com/tencent/mm/plugin/music/c/b:muY	Z
+    //   61: ifeq +362 -> 423
+    //   64: aload_0
+    //   65: getfield 59	com/tencent/mm/plugin/music/c/b:oYB	Lcom/tencent/mm/aw/e;
+    //   68: getfield 379	com/tencent/mm/aw/e:playUrl	Ljava/lang/String;
+    //   71: invokestatic 384	com/tencent/mm/plugin/music/cache/g:Vk	(Ljava/lang/String;)Z
+    //   74: istore 32
+    //   76: aload 34
+    //   78: astore 33
+    //   80: aload 35
+    //   82: ifnull +19 -> 101
+    //   85: aload 35
+    //   87: aload_0
+    //   88: getfield 59	com/tencent/mm/plugin/music/c/b:oYB	Lcom/tencent/mm/aw/e;
+    //   91: getfield 379	com/tencent/mm/aw/e:playUrl	Ljava/lang/String;
+    //   94: invokeinterface 387 2 0
+    //   99: astore 33
+    //   101: ldc 83
+    //   103: ldc_w 389
+    //   106: iconst_1
+    //   107: anewarray 4	java/lang/Object
+    //   110: dup
+    //   111: iconst_0
+    //   112: aload 33
+    //   114: aastore
+    //   115: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   118: aload_0
+    //   119: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   122: getfield 75	com/tencent/mm/plugin/music/c/a:oYx	J
+    //   125: lstore 6
+    //   127: aload_0
+    //   128: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   131: getfield 78	com/tencent/mm/plugin/music/c/a:oYz	J
+    //   134: lstore 4
+    //   136: lload 4
+    //   138: lconst_0
+    //   139: lcmp
+    //   140: ifeq +13 -> 153
     //   143: aload_0
-    //   144: getfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   147: lcmp
-    //   148: ifge +227 -> 375
-    //   151: aload_0
-    //   152: getfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   155: lstore_2
-    //   156: aload_0
-    //   157: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   160: getfield 74	com/tencent/mm/plugin/music/c/a:myr	I
-    //   163: iconst_1
-    //   164: if_icmpne +232 -> 396
-    //   167: iconst_1
-    //   168: istore_1
-    //   169: aload 33
-    //   171: astore 34
-    //   173: aload_0
-    //   174: getfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   177: ldc2_w 366
-    //   180: lcmp
-    //   181: ifge +18 -> 199
-    //   184: aload_0
-    //   185: ldc2_w 366
-    //   188: putfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   191: ldc 76
-    //   193: ldc_w 369
-    //   196: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   199: new 371	java/io/File
-    //   202: dup
-    //   203: aload_0
-    //   204: getfield 52	com/tencent/mm/plugin/music/c/b:myu	Lcom/tencent/mm/av/e;
-    //   207: getfield 110	com/tencent/mm/av/e:eux	Ljava/lang/String;
-    //   210: aload_0
-    //   211: getfield 98	com/tencent/mm/plugin/music/c/b:kaC	Z
-    //   214: invokestatic 377	com/tencent/mm/plugin/music/h/b:aN	(Ljava/lang/String;Z)Ljava/lang/String;
-    //   217: invokespecial 378	java/io/File:<init>	(Ljava/lang/String;)V
-    //   220: astore 43
-    //   222: lload_2
-    //   223: lstore 8
-    //   225: lload 6
-    //   227: lstore_2
-    //   228: aload 43
-    //   230: invokevirtual 381	java/io/File:exists	()Z
-    //   233: ifne +56 -> 289
-    //   236: ldc 76
-    //   238: ldc_w 383
-    //   241: iconst_1
-    //   242: anewarray 4	java/lang/Object
-    //   245: dup
-    //   246: iconst_0
-    //   247: aload 43
-    //   249: invokevirtual 386	java/io/File:createNewFile	()Z
-    //   252: invokestatic 391	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   255: aastore
-    //   256: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   259: lconst_0
-    //   260: lstore_2
-    //   261: aload_0
-    //   262: getfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   265: lstore 8
-    //   267: iconst_0
-    //   268: istore_1
-    //   269: ldc 76
-    //   271: ldc_w 393
-    //   274: iconst_1
-    //   275: anewarray 4	java/lang/Object
-    //   278: dup
+    //   144: lload 4
+    //   146: ldc2_w 390
+    //   149: ldiv
+    //   150: putfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
+    //   153: lload 6
+    //   155: aload_0
+    //   156: getfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
+    //   159: lcmp
+    //   160: ifge +233 -> 393
+    //   163: aload_0
+    //   164: getfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
+    //   167: lstore_2
+    //   168: aload_0
+    //   169: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   172: getfield 81	com/tencent/mm/plugin/music/c/a:oYy	I
+    //   175: iconst_1
+    //   176: if_icmpne +238 -> 414
+    //   179: iconst_1
+    //   180: istore_1
+    //   181: aload 33
+    //   183: astore 34
+    //   185: aload_0
+    //   186: getfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
+    //   189: ldc2_w 392
+    //   192: lcmp
+    //   193: ifge +18 -> 211
+    //   196: aload_0
+    //   197: ldc2_w 392
+    //   200: putfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
+    //   203: ldc 83
+    //   205: ldc_w 395
+    //   208: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   211: new 397	java/io/File
+    //   214: dup
+    //   215: aload_0
+    //   216: getfield 59	com/tencent/mm/plugin/music/c/b:oYB	Lcom/tencent/mm/aw/e;
+    //   219: getfield 145	com/tencent/mm/aw/e:fKj	Ljava/lang/String;
+    //   222: aload_0
+    //   223: getfield 105	com/tencent/mm/plugin/music/c/b:muY	Z
+    //   226: invokestatic 403	com/tencent/mm/plugin/music/h/b:bc	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   229: invokespecial 404	java/io/File:<init>	(Ljava/lang/String;)V
+    //   232: astore 43
+    //   234: lload_2
+    //   235: lstore 8
+    //   237: lload 6
+    //   239: lstore_2
+    //   240: aload 43
+    //   242: invokevirtual 407	java/io/File:exists	()Z
+    //   245: ifne +56 -> 301
+    //   248: ldc 83
+    //   250: ldc_w 409
+    //   253: iconst_1
+    //   254: anewarray 4	java/lang/Object
+    //   257: dup
+    //   258: iconst_0
+    //   259: aload 43
+    //   261: invokevirtual 412	java/io/File:createNewFile	()Z
+    //   264: invokestatic 417	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   267: aastore
+    //   268: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   271: lconst_0
+    //   272: lstore_2
+    //   273: aload_0
+    //   274: getfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
+    //   277: lstore 8
     //   279: iconst_0
-    //   280: lload 8
-    //   282: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   285: aastore
-    //   286: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   289: ldc 76
-    //   291: ldc_w 398
-    //   294: iconst_3
-    //   295: anewarray 4	java/lang/Object
-    //   298: dup
-    //   299: iconst_0
-    //   300: lload_2
-    //   301: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   304: aastore
-    //   305: dup
-    //   306: iconst_1
-    //   307: aload 43
-    //   309: invokevirtual 401	java/io/File:length	()J
-    //   312: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   315: aastore
-    //   316: dup
-    //   317: iconst_2
-    //   318: lload 8
-    //   320: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   323: aastore
-    //   324: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   327: lload_2
-    //   328: aload_0
-    //   329: getfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   332: lcmp
-    //   333: iflt +12 -> 345
-    //   336: aload_0
-    //   337: getfield 403	com/tencent/mm/plugin/music/c/b:myw	F
-    //   340: fconst_0
-    //   341: fcmpl
-    //   342: ifeq +7 -> 349
-    //   345: iload_1
-    //   346: ifeq +456 -> 802
-    //   349: ldc 76
-    //   351: ldc_w 405
-    //   354: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   357: aload_0
-    //   358: iconst_1
-    //   359: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   362: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   365: dup
-    //   366: aload_0
-    //   367: iconst_1
-    //   368: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   371: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   374: return
-    //   375: lload 6
-    //   377: l2f
-    //   378: ldc_w 406
-    //   381: aload_0
-    //   382: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   385: getfield 71	com/tencent/mm/plugin/music/c/a:mys	J
-    //   388: l2f
-    //   389: fmul
-    //   390: fadd
-    //   391: f2l
-    //   392: lstore_2
-    //   393: goto -237 -> 156
-    //   396: iconst_0
-    //   397: istore_1
-    //   398: aload 33
-    //   400: astore 34
-    //   402: goto -229 -> 173
-    //   405: aload 35
-    //   407: ifnull +19 -> 426
-    //   410: aload 35
-    //   412: aload_0
-    //   413: getfield 52	com/tencent/mm/plugin/music/c/b:myu	Lcom/tencent/mm/av/e;
-    //   416: getfield 353	com/tencent/mm/av/e:playUrl	Ljava/lang/String;
-    //   419: invokeinterface 361 2 0
-    //   424: astore 33
-    //   426: ldc 76
-    //   428: ldc_w 363
-    //   431: iconst_1
-    //   432: anewarray 4	java/lang/Object
-    //   435: dup
-    //   436: iconst_0
-    //   437: aload 33
-    //   439: aastore
-    //   440: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   443: iconst_0
-    //   444: istore 32
-    //   446: aload_0
-    //   447: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   450: getfield 59	com/tencent/mm/plugin/music/c/a:myo	J
-    //   453: lstore 6
-    //   455: aload_0
-    //   456: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   459: getfield 62	com/tencent/mm/plugin/music/c/a:myp	J
-    //   462: lstore 4
-    //   464: lload 4
-    //   466: lconst_0
-    //   467: lcmp
-    //   468: ifeq +13 -> 481
-    //   471: aload_0
-    //   472: lload 4
-    //   474: ldc2_w 364
-    //   477: ldiv
-    //   478: putfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   481: lload 6
-    //   483: aload_0
-    //   484: getfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   487: lcmp
-    //   488: ifge +28 -> 516
-    //   491: aload_0
-    //   492: getfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   495: lstore_2
-    //   496: aload_0
-    //   497: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   500: getfield 65	com/tencent/mm/plugin/music/c/a:endFlag	I
-    //   503: iconst_1
-    //   504: if_icmpne +33 -> 537
-    //   507: iconst_1
-    //   508: istore_1
-    //   509: aload 33
-    //   511: astore 34
-    //   513: goto -340 -> 173
-    //   516: lload 6
-    //   518: l2f
-    //   519: ldc_w 406
-    //   522: aload_0
-    //   523: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   526: getfield 62	com/tencent/mm/plugin/music/c/a:myp	J
-    //   529: l2f
-    //   530: fmul
-    //   531: fadd
-    //   532: f2l
-    //   533: lstore_2
-    //   534: goto -38 -> 496
-    //   537: iconst_0
-    //   538: istore_1
-    //   539: aload 33
-    //   541: astore 34
-    //   543: goto -370 -> 173
-    //   546: aload_0
-    //   547: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   550: getfield 68	com/tencent/mm/plugin/music/c/a:myq	J
-    //   553: lconst_0
-    //   554: lcmp
-    //   555: ifeq +96 -> 651
-    //   558: aload_0
-    //   559: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   562: getfield 68	com/tencent/mm/plugin/music/c/a:myq	J
-    //   565: aload_0
-    //   566: getfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   569: lcmp
-    //   570: ifge +21 -> 591
-    //   573: aload_0
-    //   574: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   577: getfield 68	com/tencent/mm/plugin/music/c/a:myq	J
-    //   580: aload_0
-    //   581: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   584: getfield 71	com/tencent/mm/plugin/music/c/a:mys	J
+    //   280: istore_1
+    //   281: ldc 83
+    //   283: ldc_w 419
+    //   286: iconst_1
+    //   287: anewarray 4	java/lang/Object
+    //   290: dup
+    //   291: iconst_0
+    //   292: lload 8
+    //   294: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   297: aastore
+    //   298: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   301: ldc 83
+    //   303: ldc_w 424
+    //   306: iconst_3
+    //   307: anewarray 4	java/lang/Object
+    //   310: dup
+    //   311: iconst_0
+    //   312: lload_2
+    //   313: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   316: aastore
+    //   317: dup
+    //   318: iconst_1
+    //   319: aload 43
+    //   321: invokevirtual 427	java/io/File:length	()J
+    //   324: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   327: aastore
+    //   328: dup
+    //   329: iconst_2
+    //   330: lload 8
+    //   332: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   335: aastore
+    //   336: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   339: lload_2
+    //   340: aload_0
+    //   341: getfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
+    //   344: lcmp
+    //   345: iflt +12 -> 357
+    //   348: aload_0
+    //   349: getfield 429	com/tencent/mm/plugin/music/c/b:oYD	F
+    //   352: fconst_0
+    //   353: fcmpl
+    //   354: ifeq +7 -> 361
+    //   357: iload_1
+    //   358: ifeq +480 -> 838
+    //   361: ldc 83
+    //   363: ldc_w 431
+    //   366: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   369: aload_0
+    //   370: iconst_1
+    //   371: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   374: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   377: dup
+    //   378: aload_0
+    //   379: iconst_1
+    //   380: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   383: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   386: ldc_w 373
+    //   389: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   392: return
+    //   393: lload 6
+    //   395: l2f
+    //   396: ldc_w 432
+    //   399: aload_0
+    //   400: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   403: getfield 78	com/tencent/mm/plugin/music/c/a:oYz	J
+    //   406: l2f
+    //   407: fmul
+    //   408: fadd
+    //   409: f2l
+    //   410: lstore_2
+    //   411: goto -243 -> 168
+    //   414: iconst_0
+    //   415: istore_1
+    //   416: aload 33
+    //   418: astore 34
+    //   420: goto -235 -> 185
+    //   423: aload 35
+    //   425: ifnull +19 -> 444
+    //   428: aload 35
+    //   430: aload_0
+    //   431: getfield 59	com/tencent/mm/plugin/music/c/b:oYB	Lcom/tencent/mm/aw/e;
+    //   434: getfield 379	com/tencent/mm/aw/e:playUrl	Ljava/lang/String;
+    //   437: invokeinterface 387 2 0
+    //   442: astore 33
+    //   444: ldc 83
+    //   446: ldc_w 389
+    //   449: iconst_1
+    //   450: anewarray 4	java/lang/Object
+    //   453: dup
+    //   454: iconst_0
+    //   455: aload 33
+    //   457: aastore
+    //   458: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   461: iconst_0
+    //   462: istore 32
+    //   464: aload_0
+    //   465: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   468: getfield 66	com/tencent/mm/plugin/music/c/a:oYv	J
+    //   471: lstore 6
+    //   473: aload_0
+    //   474: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   477: getfield 69	com/tencent/mm/plugin/music/c/a:oYw	J
+    //   480: lstore 4
+    //   482: lload 4
+    //   484: lconst_0
+    //   485: lcmp
+    //   486: ifeq +13 -> 499
+    //   489: aload_0
+    //   490: lload 4
+    //   492: ldc2_w 390
+    //   495: ldiv
+    //   496: putfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
+    //   499: lload 6
+    //   501: aload_0
+    //   502: getfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
+    //   505: lcmp
+    //   506: ifge +28 -> 534
+    //   509: aload_0
+    //   510: getfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
+    //   513: lstore_2
+    //   514: aload_0
+    //   515: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   518: getfield 72	com/tencent/mm/plugin/music/c/a:endFlag	I
+    //   521: iconst_1
+    //   522: if_icmpne +33 -> 555
+    //   525: iconst_1
+    //   526: istore_1
+    //   527: aload 33
+    //   529: astore 34
+    //   531: goto -346 -> 185
+    //   534: lload 6
+    //   536: l2f
+    //   537: ldc_w 432
+    //   540: aload_0
+    //   541: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   544: getfield 69	com/tencent/mm/plugin/music/c/a:oYw	J
+    //   547: l2f
+    //   548: fmul
+    //   549: fadd
+    //   550: f2l
+    //   551: lstore_2
+    //   552: goto -38 -> 514
+    //   555: iconst_0
+    //   556: istore_1
+    //   557: aload 33
+    //   559: astore 34
+    //   561: goto -376 -> 185
+    //   564: aload_0
+    //   565: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   568: getfield 75	com/tencent/mm/plugin/music/c/a:oYx	J
+    //   571: lconst_0
+    //   572: lcmp
+    //   573: ifeq +102 -> 675
+    //   576: aload_0
+    //   577: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   580: getfield 75	com/tencent/mm/plugin/music/c/a:oYx	J
+    //   583: aload_0
+    //   584: getfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
     //   587: lcmp
-    //   588: ifne +63 -> 651
+    //   588: ifge +21 -> 609
     //   591: aload_0
-    //   592: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   595: getfield 68	com/tencent/mm/plugin/music/c/a:myq	J
-    //   598: l2f
-    //   599: aload_0
-    //   600: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   603: getfield 71	com/tencent/mm/plugin/music/c/a:mys	J
-    //   606: l2f
-    //   607: fdiv
-    //   608: aload_0
-    //   609: getfield 403	com/tencent/mm/plugin/music/c/b:myw	F
-    //   612: fsub
-    //   613: ldc_w 406
-    //   616: fcmpl
-    //   617: iflt +34 -> 651
-    //   620: ldc 76
-    //   622: ldc_w 405
-    //   625: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   628: aload_0
-    //   629: iconst_1
-    //   630: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   633: aload_0
-    //   634: iconst_1
-    //   635: putfield 98	com/tencent/mm/plugin/music/c/b:kaC	Z
-    //   638: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   641: dup
-    //   642: aload_0
-    //   643: iconst_1
-    //   644: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   647: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   650: return
+    //   592: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   595: getfield 75	com/tencent/mm/plugin/music/c/a:oYx	J
+    //   598: aload_0
+    //   599: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   602: getfield 78	com/tencent/mm/plugin/music/c/a:oYz	J
+    //   605: lcmp
+    //   606: ifne +69 -> 675
+    //   609: aload_0
+    //   610: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   613: getfield 75	com/tencent/mm/plugin/music/c/a:oYx	J
+    //   616: l2f
+    //   617: aload_0
+    //   618: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   621: getfield 78	com/tencent/mm/plugin/music/c/a:oYz	J
+    //   624: l2f
+    //   625: fdiv
+    //   626: aload_0
+    //   627: getfield 429	com/tencent/mm/plugin/music/c/b:oYD	F
+    //   630: fsub
+    //   631: ldc_w 432
+    //   634: fcmpl
+    //   635: iflt +40 -> 675
+    //   638: ldc 83
+    //   640: ldc_w 431
+    //   643: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   646: aload_0
+    //   647: iconst_1
+    //   648: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
     //   651: aload_0
-    //   652: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   655: getfield 59	com/tencent/mm/plugin/music/c/a:myo	J
-    //   658: lconst_0
-    //   659: lcmp
-    //   660: ifeq +96 -> 756
-    //   663: aload_0
-    //   664: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   667: getfield 59	com/tencent/mm/plugin/music/c/a:myo	J
-    //   670: aload_0
-    //   671: getfield 40	com/tencent/mm/plugin/music/c/b:myx	J
-    //   674: lcmp
-    //   675: ifge +21 -> 696
-    //   678: aload_0
-    //   679: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   682: getfield 59	com/tencent/mm/plugin/music/c/a:myo	J
-    //   685: aload_0
-    //   686: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   689: getfield 62	com/tencent/mm/plugin/music/c/a:myp	J
-    //   692: lcmp
-    //   693: ifne +63 -> 756
-    //   696: aload_0
-    //   697: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   700: getfield 59	com/tencent/mm/plugin/music/c/a:myo	J
-    //   703: l2f
-    //   704: aload_0
-    //   705: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   708: getfield 62	com/tencent/mm/plugin/music/c/a:myp	J
-    //   711: l2f
-    //   712: fdiv
-    //   713: aload_0
-    //   714: getfield 403	com/tencent/mm/plugin/music/c/b:myw	F
-    //   717: fsub
-    //   718: ldc_w 406
-    //   721: fcmpl
-    //   722: iflt +34 -> 756
-    //   725: ldc 76
-    //   727: ldc_w 405
-    //   730: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   733: aload_0
-    //   734: iconst_1
-    //   735: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   738: aload_0
-    //   739: iconst_0
-    //   740: putfield 98	com/tencent/mm/plugin/music/c/b:kaC	Z
-    //   743: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   746: dup
-    //   747: aload_0
-    //   748: iconst_1
-    //   749: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   752: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   755: return
-    //   756: ldc 76
-    //   758: ldc_w 408
-    //   761: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   764: aload_0
-    //   765: iconst_1
-    //   766: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   769: aload_0
-    //   770: iconst_4
-    //   771: invokespecial 410	com/tencent/mm/plugin/music/c/b:uG	(I)V
-    //   774: return
-    //   775: astore 33
-    //   777: ldc 76
-    //   779: aload 33
-    //   781: ldc_w 412
-    //   784: iconst_1
-    //   785: anewarray 4	java/lang/Object
-    //   788: dup
-    //   789: iconst_0
-    //   790: aload 43
-    //   792: invokevirtual 415	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   795: aastore
-    //   796: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   799: goto -540 -> 259
-    //   802: aload 34
-    //   804: invokestatic 135	com/tencent/mm/sdk/platformtools/bk:bl	(Ljava/lang/String;)Z
-    //   807: ifeq +30 -> 837
-    //   810: ldc 76
-    //   812: ldc_w 421
-    //   815: invokestatic 84	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   818: aload_0
-    //   819: iconst_1
-    //   820: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   823: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   826: dup
-    //   827: aload_0
-    //   828: bipush 254
-    //   830: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   833: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   836: return
-    //   837: aconst_null
-    //   838: astore 41
-    //   840: aconst_null
-    //   841: astore 40
-    //   843: aconst_null
-    //   844: astore 39
-    //   846: aconst_null
-    //   847: astore 35
-    //   849: aconst_null
-    //   850: astore 38
-    //   852: aconst_null
-    //   853: astore 42
-    //   855: aconst_null
-    //   856: astore 37
-    //   858: aload 43
-    //   860: invokevirtual 381	java/io/File:exists	()Z
-    //   863: ifne +253 -> 1116
-    //   866: aload_0
-    //   867: iconst_1
-    //   868: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   871: ldc 76
-    //   873: ldc_w 423
-    //   876: iconst_1
-    //   877: anewarray 4	java/lang/Object
-    //   880: dup
-    //   881: iconst_0
-    //   882: aload 43
-    //   884: invokevirtual 415	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   887: aastore
-    //   888: invokestatic 291	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   891: aload_0
-    //   892: bipush 19
-    //   894: invokespecial 410	com/tencent/mm/plugin/music/c/b:uG	(I)V
-    //   897: lload 4
-    //   899: lconst_0
-    //   900: lcmp
-    //   901: ifne +83 -> 984
-    //   904: lload_2
-    //   905: lconst_0
-    //   906: lcmp
-    //   907: ifle +77 -> 984
-    //   910: ldc 76
-    //   912: ldc_w 425
-    //   915: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   918: new 427	java/lang/NullPointerException
-    //   921: dup
-    //   922: invokespecial 428	java/lang/NullPointerException:<init>	()V
-    //   925: athrow
-    //   926: aload_0
-    //   927: lload_2
-    //   928: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   931: lload_2
-    //   932: ldc2_w 366
-    //   935: lcmp
-    //   936: ifge +15 -> 951
-    //   939: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   942: dup
-    //   943: aload_0
-    //   944: iconst_1
-    //   945: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   948: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   951: aload_0
-    //   952: iconst_1
-    //   953: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   956: ldc 76
-    //   958: ldc_w 432
-    //   961: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   964: return
-    //   965: astore 33
-    //   967: ldc 76
-    //   969: aload 33
-    //   971: ldc_w 434
-    //   974: iconst_0
-    //   975: anewarray 4	java/lang/Object
-    //   978: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   981: goto -55 -> 926
-    //   984: lload 4
-    //   986: lconst_0
-    //   987: lcmp
-    //   988: ifeq +47 -> 1035
-    //   991: lload_2
-    //   992: lload 4
-    //   994: lcmp
-    //   995: ifeq +40 -> 1035
-    //   998: ldc 76
-    //   1000: ldc_w 436
-    //   1003: iconst_2
-    //   1004: anewarray 4	java/lang/Object
-    //   1007: dup
-    //   1008: iconst_0
-    //   1009: lload 4
-    //   1011: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1014: aastore
-    //   1015: dup
-    //   1016: iconst_1
-    //   1017: lload_2
-    //   1018: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1021: aastore
-    //   1022: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1025: aload_0
-    //   1026: lload_2
-    //   1027: lload 4
-    //   1029: invokespecial 438	com/tencent/mm/plugin/music/c/b:F	(JJ)V
-    //   1032: goto -81 -> 951
-    //   1035: lload 4
-    //   1037: lconst_0
-    //   1038: lcmp
-    //   1039: ifeq +66 -> 1105
-    //   1042: lload_2
-    //   1043: lload 4
-    //   1045: lcmp
-    //   1046: ifne +59 -> 1105
-    //   1049: ldc 76
-    //   1051: ldc_w 440
-    //   1054: iconst_2
-    //   1055: anewarray 4	java/lang/Object
-    //   1058: dup
-    //   1059: iconst_0
-    //   1060: lload 4
-    //   1062: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1065: aastore
-    //   1066: dup
-    //   1067: iconst_1
-    //   1068: lload_2
-    //   1069: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1072: aastore
-    //   1073: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1076: aload_0
-    //   1077: lload 4
-    //   1079: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   1082: lload_2
-    //   1083: ldc2_w 366
+    //   652: iconst_1
+    //   653: putfield 105	com/tencent/mm/plugin/music/c/b:muY	Z
+    //   656: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   659: dup
+    //   660: aload_0
+    //   661: iconst_1
+    //   662: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   665: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   668: ldc_w 373
+    //   671: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   674: return
+    //   675: aload_0
+    //   676: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   679: getfield 66	com/tencent/mm/plugin/music/c/a:oYv	J
+    //   682: lconst_0
+    //   683: lcmp
+    //   684: ifeq +102 -> 786
+    //   687: aload_0
+    //   688: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   691: getfield 66	com/tencent/mm/plugin/music/c/a:oYv	J
+    //   694: aload_0
+    //   695: getfield 47	com/tencent/mm/plugin/music/c/b:oYE	J
+    //   698: lcmp
+    //   699: ifge +21 -> 720
+    //   702: aload_0
+    //   703: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   706: getfield 66	com/tencent/mm/plugin/music/c/a:oYv	J
+    //   709: aload_0
+    //   710: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   713: getfield 69	com/tencent/mm/plugin/music/c/a:oYw	J
+    //   716: lcmp
+    //   717: ifne +69 -> 786
+    //   720: aload_0
+    //   721: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   724: getfield 66	com/tencent/mm/plugin/music/c/a:oYv	J
+    //   727: l2f
+    //   728: aload_0
+    //   729: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   732: getfield 69	com/tencent/mm/plugin/music/c/a:oYw	J
+    //   735: l2f
+    //   736: fdiv
+    //   737: aload_0
+    //   738: getfield 429	com/tencent/mm/plugin/music/c/b:oYD	F
+    //   741: fsub
+    //   742: ldc_w 432
+    //   745: fcmpl
+    //   746: iflt +40 -> 786
+    //   749: ldc 83
+    //   751: ldc_w 431
+    //   754: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   757: aload_0
+    //   758: iconst_1
+    //   759: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   762: aload_0
+    //   763: iconst_0
+    //   764: putfield 105	com/tencent/mm/plugin/music/c/b:muY	Z
+    //   767: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   770: dup
+    //   771: aload_0
+    //   772: iconst_1
+    //   773: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   776: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   779: ldc_w 373
+    //   782: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   785: return
+    //   786: ldc 83
+    //   788: ldc_w 434
+    //   791: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   794: aload_0
+    //   795: iconst_1
+    //   796: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   799: aload_0
+    //   800: iconst_4
+    //   801: invokespecial 436	com/tencent/mm/plugin/music/c/b:Ac	(I)V
+    //   804: ldc_w 373
+    //   807: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   810: return
+    //   811: astore 33
+    //   813: ldc 83
+    //   815: aload 33
+    //   817: ldc_w 438
+    //   820: iconst_1
+    //   821: anewarray 4	java/lang/Object
+    //   824: dup
+    //   825: iconst_0
+    //   826: aload 43
+    //   828: invokevirtual 441	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   831: aastore
+    //   832: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   835: goto -564 -> 271
+    //   838: aload 34
+    //   840: invokestatic 162	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
+    //   843: ifeq +36 -> 879
+    //   846: ldc 83
+    //   848: ldc_w 447
+    //   851: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   854: aload_0
+    //   855: iconst_1
+    //   856: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   859: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   862: dup
+    //   863: aload_0
+    //   864: bipush 254
+    //   866: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   869: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   872: ldc_w 373
+    //   875: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   878: return
+    //   879: aconst_null
+    //   880: astore 40
+    //   882: aconst_null
+    //   883: astore 41
+    //   885: aconst_null
+    //   886: astore 39
+    //   888: aconst_null
+    //   889: astore 35
+    //   891: aconst_null
+    //   892: astore 38
+    //   894: aconst_null
+    //   895: astore 42
+    //   897: aconst_null
+    //   898: astore 37
+    //   900: aload 43
+    //   902: invokevirtual 407	java/io/File:exists	()Z
+    //   905: ifne +259 -> 1164
+    //   908: aload_0
+    //   909: iconst_1
+    //   910: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   913: ldc 83
+    //   915: ldc_w 449
+    //   918: iconst_1
+    //   919: anewarray 4	java/lang/Object
+    //   922: dup
+    //   923: iconst_0
+    //   924: aload 43
+    //   926: invokevirtual 441	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   929: aastore
+    //   930: invokestatic 330	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   933: aload_0
+    //   934: bipush 19
+    //   936: invokespecial 436	com/tencent/mm/plugin/music/c/b:Ac	(I)V
+    //   939: lload 4
+    //   941: lconst_0
+    //   942: lcmp
+    //   943: ifne +89 -> 1032
+    //   946: lload_2
+    //   947: lconst_0
+    //   948: lcmp
+    //   949: ifle +83 -> 1032
+    //   952: ldc 83
+    //   954: ldc_w 451
+    //   957: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   960: new 453	java/lang/NullPointerException
+    //   963: dup
+    //   964: invokespecial 454	java/lang/NullPointerException:<init>	()V
+    //   967: athrow
+    //   968: aload_0
+    //   969: lload_2
+    //   970: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   973: lload_2
+    //   974: ldc2_w 392
+    //   977: lcmp
+    //   978: ifge +15 -> 993
+    //   981: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   984: dup
+    //   985: aload_0
+    //   986: iconst_1
+    //   987: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   990: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   993: aload_0
+    //   994: iconst_1
+    //   995: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   998: ldc 83
+    //   1000: ldc_w 458
+    //   1003: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1006: ldc_w 373
+    //   1009: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1012: return
+    //   1013: astore 33
+    //   1015: ldc 83
+    //   1017: aload 33
+    //   1019: ldc_w 460
+    //   1022: iconst_0
+    //   1023: anewarray 4	java/lang/Object
+    //   1026: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1029: goto -61 -> 968
+    //   1032: lload 4
+    //   1034: lconst_0
+    //   1035: lcmp
+    //   1036: ifeq +47 -> 1083
+    //   1039: lload_2
+    //   1040: lload 4
+    //   1042: lcmp
+    //   1043: ifeq +40 -> 1083
+    //   1046: ldc 83
+    //   1048: ldc_w 462
+    //   1051: iconst_2
+    //   1052: anewarray 4	java/lang/Object
+    //   1055: dup
+    //   1056: iconst_0
+    //   1057: lload 4
+    //   1059: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1062: aastore
+    //   1063: dup
+    //   1064: iconst_1
+    //   1065: lload_2
+    //   1066: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1069: aastore
+    //   1070: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1073: aload_0
+    //   1074: lload_2
+    //   1075: lload 4
+    //   1077: invokespecial 464	com/tencent/mm/plugin/music/c/b:R	(JJ)V
+    //   1080: goto -87 -> 993
+    //   1083: lload 4
+    //   1085: lconst_0
     //   1086: lcmp
-    //   1087: ifge -136 -> 951
-    //   1090: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   1093: dup
-    //   1094: aload_0
-    //   1095: iconst_1
-    //   1096: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   1099: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   1102: goto -151 -> 951
-    //   1105: ldc 76
-    //   1107: ldc_w 442
-    //   1110: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1113: goto -162 -> 951
-    //   1116: new 444	java/io/RandomAccessFile
-    //   1119: dup
-    //   1120: aload 43
-    //   1122: ldc_w 446
-    //   1125: invokespecial 449	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   1128: astore 33
-    //   1130: ldc 76
-    //   1132: ldc_w 451
-    //   1135: iconst_1
-    //   1136: anewarray 4	java/lang/Object
-    //   1139: dup
-    //   1140: iconst_0
-    //   1141: aload 34
-    //   1143: aastore
-    //   1144: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1147: new 453	java/util/HashMap
-    //   1150: dup
-    //   1151: bipush 10
-    //   1153: invokespecial 455	java/util/HashMap:<init>	(I)V
-    //   1156: astore 36
-    //   1158: aload 36
-    //   1160: ldc_w 457
-    //   1163: ldc_w 459
-    //   1166: invokeinterface 463 3 0
-    //   1171: pop
-    //   1172: lload 8
-    //   1174: lload_2
-    //   1175: lcmp
-    //   1176: ifle +68 -> 1244
-    //   1179: ldc 76
-    //   1181: ldc_w 465
-    //   1184: iconst_2
-    //   1185: anewarray 4	java/lang/Object
-    //   1188: dup
-    //   1189: iconst_0
-    //   1190: lload_2
-    //   1191: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1194: aastore
-    //   1195: dup
-    //   1196: iconst_1
-    //   1197: lload 8
-    //   1199: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1202: aastore
-    //   1203: invokestatic 467	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1087: ifeq +66 -> 1153
+    //   1090: lload_2
+    //   1091: lload 4
+    //   1093: lcmp
+    //   1094: ifne +59 -> 1153
+    //   1097: ldc 83
+    //   1099: ldc_w 466
+    //   1102: iconst_2
+    //   1103: anewarray 4	java/lang/Object
+    //   1106: dup
+    //   1107: iconst_0
+    //   1108: lload 4
+    //   1110: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1113: aastore
+    //   1114: dup
+    //   1115: iconst_1
+    //   1116: lload_2
+    //   1117: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1120: aastore
+    //   1121: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1124: aload_0
+    //   1125: lload 4
+    //   1127: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   1130: lload_2
+    //   1131: ldc2_w 392
+    //   1134: lcmp
+    //   1135: ifge -142 -> 993
+    //   1138: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   1141: dup
+    //   1142: aload_0
+    //   1143: iconst_1
+    //   1144: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   1147: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   1150: goto -157 -> 993
+    //   1153: ldc 83
+    //   1155: ldc_w 468
+    //   1158: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1161: goto -168 -> 993
+    //   1164: new 470	java/io/RandomAccessFile
+    //   1167: dup
+    //   1168: aload 43
+    //   1170: ldc_w 472
+    //   1173: invokespecial 475	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   1176: astore 33
+    //   1178: ldc 83
+    //   1180: ldc_w 477
+    //   1183: iconst_1
+    //   1184: anewarray 4	java/lang/Object
+    //   1187: dup
+    //   1188: iconst_0
+    //   1189: aload 34
+    //   1191: aastore
+    //   1192: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1195: new 479	java/util/HashMap
+    //   1198: dup
+    //   1199: bipush 10
+    //   1201: invokespecial 481	java/util/HashMap:<init>	(I)V
+    //   1204: astore 36
     //   1206: aload 36
-    //   1208: ldc_w 469
-    //   1211: new 316	java/lang/StringBuilder
-    //   1214: dup
-    //   1215: ldc_w 471
-    //   1218: invokespecial 319	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1221: lload_2
-    //   1222: invokevirtual 474	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1225: ldc 149
-    //   1227: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1230: lload 8
-    //   1232: invokevirtual 474	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1235: invokevirtual 324	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1238: invokeinterface 463 3 0
-    //   1243: pop
-    //   1244: iload 32
-    //   1246: ifne +11 -> 1257
-    //   1249: aload 34
-    //   1251: invokestatic 482	com/tencent/mm/plugin/music/h/e:JK	(Ljava/lang/String;)Z
-    //   1254: ifeq +39 -> 1293
-    //   1257: ldc 76
-    //   1259: ldc_w 484
-    //   1262: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1265: aload 36
-    //   1267: ldc_w 486
-    //   1270: ldc_w 488
-    //   1273: invokeinterface 463 3 0
-    //   1278: pop
-    //   1279: aload 36
-    //   1281: ldc_w 490
-    //   1284: ldc_w 492
-    //   1287: invokeinterface 463 3 0
-    //   1292: pop
-    //   1293: aload 36
-    //   1295: ldc_w 494
-    //   1298: new 316	java/lang/StringBuilder
-    //   1301: dup
-    //   1302: invokespecial 495	java/lang/StringBuilder:<init>	()V
-    //   1305: ldc_w 497
-    //   1308: invokestatic 502	java/lang/System:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   1311: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1314: ldc_w 504
-    //   1317: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1320: invokestatic 90	com/tencent/mm/sdk/platformtools/ae:getContext	()Landroid/content/Context;
-    //   1323: invokestatic 508	com/tencent/mm/plugin/music/h/e:dT	(Landroid/content/Context;)Ljava/lang/String;
-    //   1326: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1329: invokevirtual 324	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1332: invokeinterface 463 3 0
-    //   1337: pop
-    //   1338: aload_0
-    //   1339: aload 34
+    //   1208: ldc_w 483
+    //   1211: ldc_w 485
+    //   1214: invokeinterface 489 3 0
+    //   1219: pop
+    //   1220: lload 8
+    //   1222: lload_2
+    //   1223: lcmp
+    //   1224: ifle +68 -> 1292
+    //   1227: ldc 83
+    //   1229: ldc_w 491
+    //   1232: iconst_2
+    //   1233: anewarray 4	java/lang/Object
+    //   1236: dup
+    //   1237: iconst_0
+    //   1238: lload_2
+    //   1239: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1242: aastore
+    //   1243: dup
+    //   1244: iconst_1
+    //   1245: lload 8
+    //   1247: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1250: aastore
+    //   1251: invokestatic 493	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1254: aload 36
+    //   1256: ldc_w 495
+    //   1259: new 497	java/lang/StringBuilder
+    //   1262: dup
+    //   1263: ldc_w 499
+    //   1266: invokespecial 500	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1269: lload_2
+    //   1270: invokevirtual 504	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1273: ldc 176
+    //   1275: invokevirtual 507	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1278: lload 8
+    //   1280: invokevirtual 504	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1283: invokevirtual 508	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1286: invokeinterface 489 3 0
+    //   1291: pop
+    //   1292: iload 32
+    //   1294: ifne +11 -> 1305
+    //   1297: aload 34
+    //   1299: invokestatic 513	com/tencent/mm/plugin/music/h/e:VJ	(Ljava/lang/String;)Z
+    //   1302: ifeq +39 -> 1341
+    //   1305: ldc 83
+    //   1307: ldc_w 515
+    //   1310: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1313: aload 36
+    //   1315: ldc_w 517
+    //   1318: ldc_w 519
+    //   1321: invokeinterface 489 3 0
+    //   1326: pop
+    //   1327: aload 36
+    //   1329: ldc_w 521
+    //   1332: ldc_w 523
+    //   1335: invokeinterface 489 3 0
+    //   1340: pop
     //   1341: aload 36
-    //   1343: invokespecial 510	com/tencent/mm/plugin/music/c/b:o	(Ljava/lang/String;Ljava/util/Map;)Ljava/net/HttpURLConnection;
-    //   1346: astore 34
-    //   1348: aload 34
-    //   1350: astore 37
-    //   1352: lload 4
-    //   1354: lstore 8
-    //   1356: lload_2
-    //   1357: lstore 6
-    //   1359: aload 33
-    //   1361: astore 36
-    //   1363: aload 38
-    //   1365: astore 35
-    //   1367: lload 4
-    //   1369: lstore 24
-    //   1371: lload_2
-    //   1372: lstore 14
-    //   1374: lload 4
-    //   1376: lstore 22
-    //   1378: lload_2
-    //   1379: lstore 12
-    //   1381: lload 4
-    //   1383: lstore 20
-    //   1385: lload_2
-    //   1386: lstore 18
-    //   1388: lload 4
-    //   1390: lstore 26
-    //   1392: lload_2
-    //   1393: lstore 10
-    //   1395: lload 4
-    //   1397: lstore 28
-    //   1399: lload_2
-    //   1400: lstore 16
-    //   1402: aload 34
-    //   1404: invokevirtual 262	java/net/HttpURLConnection:getResponseCode	()I
-    //   1407: istore_1
-    //   1408: iload_1
-    //   1409: sipush 200
-    //   1412: if_icmpeq +510 -> 1922
-    //   1415: iload_1
-    //   1416: sipush 206
-    //   1419: if_icmpeq +503 -> 1922
-    //   1422: aload 34
-    //   1424: astore 37
-    //   1426: lload 4
-    //   1428: lstore 8
-    //   1430: lload_2
-    //   1431: lstore 6
-    //   1433: aload 33
-    //   1435: astore 36
-    //   1437: aload 38
-    //   1439: astore 35
-    //   1441: lload 4
-    //   1443: lstore 24
-    //   1445: lload_2
-    //   1446: lstore 14
-    //   1448: lload 4
-    //   1450: lstore 22
-    //   1452: lload_2
-    //   1453: lstore 12
-    //   1455: lload 4
-    //   1457: lstore 20
-    //   1459: lload_2
-    //   1460: lstore 18
-    //   1462: lload 4
-    //   1464: lstore 26
-    //   1466: lload_2
-    //   1467: lstore 10
-    //   1469: lload 4
-    //   1471: lstore 28
-    //   1473: lload_2
-    //   1474: lstore 16
-    //   1476: iload_1
-    //   1477: invokestatic 272	com/tencent/mm/plugin/music/c/b:uF	(I)V
-    //   1480: aload 34
-    //   1482: astore 37
-    //   1484: lload 4
-    //   1486: lstore 8
-    //   1488: lload_2
-    //   1489: lstore 6
-    //   1491: aload 33
-    //   1493: astore 36
-    //   1495: aload 38
-    //   1497: astore 35
-    //   1499: lload 4
-    //   1501: lstore 24
-    //   1503: lload_2
-    //   1504: lstore 14
-    //   1506: lload 4
-    //   1508: lstore 22
-    //   1510: lload_2
-    //   1511: lstore 12
-    //   1513: lload 4
-    //   1515: lstore 20
-    //   1517: lload_2
-    //   1518: lstore 18
-    //   1520: lload 4
-    //   1522: lstore 26
-    //   1524: lload_2
-    //   1525: lstore 10
-    //   1527: lload 4
-    //   1529: lstore 28
-    //   1531: lload_2
-    //   1532: lstore 16
-    //   1534: ldc 76
-    //   1536: ldc_w 512
-    //   1539: iconst_1
-    //   1540: anewarray 4	java/lang/Object
-    //   1543: dup
-    //   1544: iconst_0
-    //   1545: iload_1
-    //   1546: invokestatic 269	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1549: aastore
-    //   1550: invokestatic 291	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1553: aload 34
-    //   1555: astore 37
-    //   1557: lload 4
-    //   1559: lstore 8
-    //   1561: lload_2
-    //   1562: lstore 6
-    //   1564: aload 33
-    //   1566: astore 36
-    //   1568: aload 38
-    //   1570: astore 35
-    //   1572: lload 4
-    //   1574: lstore 24
-    //   1576: lload_2
-    //   1577: lstore 14
-    //   1579: lload 4
-    //   1581: lstore 22
-    //   1583: lload_2
-    //   1584: lstore 12
-    //   1586: lload 4
-    //   1588: lstore 20
-    //   1590: lload_2
-    //   1591: lstore 18
-    //   1593: lload 4
-    //   1595: lstore 26
-    //   1597: lload_2
-    //   1598: lstore 10
-    //   1600: lload 4
-    //   1602: lstore 28
-    //   1604: lload_2
-    //   1605: lstore 16
-    //   1607: aload_0
-    //   1608: iload_1
-    //   1609: putfield 48	com/tencent/mm/plugin/music/c/b:myy	I
-    //   1612: aload 34
-    //   1614: astore 37
-    //   1616: lload 4
-    //   1618: lstore 8
-    //   1620: lload_2
-    //   1621: lstore 6
-    //   1623: aload 33
-    //   1625: astore 36
-    //   1627: aload 38
-    //   1629: astore 35
-    //   1631: lload 4
-    //   1633: lstore 24
-    //   1635: lload_2
-    //   1636: lstore 14
-    //   1638: lload 4
-    //   1640: lstore 22
-    //   1642: lload_2
-    //   1643: lstore 12
-    //   1645: lload 4
-    //   1647: lstore 20
-    //   1649: lload_2
-    //   1650: lstore 18
-    //   1652: lload 4
-    //   1654: lstore 26
-    //   1656: lload_2
-    //   1657: lstore 10
-    //   1659: lload 4
-    //   1661: lstore 28
-    //   1663: lload_2
-    //   1664: lstore 16
-    //   1666: aload_0
-    //   1667: iconst_m1
-    //   1668: invokespecial 410	com/tencent/mm/plugin/music/c/b:uG	(I)V
-    //   1671: lload 4
-    //   1673: lconst_0
-    //   1674: lcmp
-    //   1675: ifne +96 -> 1771
-    //   1678: lload_2
-    //   1679: lconst_0
-    //   1680: lcmp
-    //   1681: ifle +90 -> 1771
-    //   1684: ldc 76
-    //   1686: ldc_w 425
-    //   1689: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1692: aload 33
-    //   1694: lload_2
-    //   1695: invokevirtual 515	java/io/RandomAccessFile:setLength	(J)V
-    //   1698: aload_0
-    //   1699: lload_2
-    //   1700: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   1703: lload_2
-    //   1704: ldc2_w 366
-    //   1707: lcmp
-    //   1708: ifge +15 -> 1723
-    //   1711: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   1714: dup
-    //   1715: aload_0
-    //   1716: iconst_1
-    //   1717: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   1720: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   1723: aload 33
-    //   1725: invokevirtual 518	java/io/RandomAccessFile:close	()V
-    //   1728: aload 34
-    //   1730: ifnull +8 -> 1738
-    //   1733: aload 34
-    //   1735: invokevirtual 182	java/net/HttpURLConnection:disconnect	()V
-    //   1738: aload_0
-    //   1739: iconst_1
-    //   1740: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   1743: ldc 76
-    //   1745: ldc_w 432
-    //   1748: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1751: return
-    //   1752: astore 35
-    //   1754: ldc 76
-    //   1756: aload 35
-    //   1758: ldc_w 434
-    //   1761: iconst_0
-    //   1762: anewarray 4	java/lang/Object
-    //   1765: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1768: goto -70 -> 1698
-    //   1771: lload 4
-    //   1773: lconst_0
-    //   1774: lcmp
-    //   1775: ifeq +47 -> 1822
-    //   1778: lload_2
-    //   1779: lload 4
-    //   1781: lcmp
-    //   1782: ifeq +40 -> 1822
-    //   1785: ldc 76
-    //   1787: ldc_w 436
-    //   1790: iconst_2
-    //   1791: anewarray 4	java/lang/Object
-    //   1794: dup
-    //   1795: iconst_0
-    //   1796: lload 4
-    //   1798: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1801: aastore
-    //   1802: dup
-    //   1803: iconst_1
-    //   1804: lload_2
-    //   1805: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1808: aastore
-    //   1809: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1812: aload_0
-    //   1813: lload_2
-    //   1814: lload 4
-    //   1816: invokespecial 438	com/tencent/mm/plugin/music/c/b:F	(JJ)V
-    //   1819: goto -96 -> 1723
-    //   1822: lload 4
-    //   1824: lconst_0
-    //   1825: lcmp
-    //   1826: ifeq +66 -> 1892
-    //   1829: lload_2
-    //   1830: lload 4
-    //   1832: lcmp
-    //   1833: ifne +59 -> 1892
-    //   1836: ldc 76
-    //   1838: ldc_w 440
-    //   1841: iconst_2
-    //   1842: anewarray 4	java/lang/Object
-    //   1845: dup
-    //   1846: iconst_0
-    //   1847: lload 4
-    //   1849: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1852: aastore
-    //   1853: dup
-    //   1854: iconst_1
-    //   1855: lload_2
-    //   1856: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1859: aastore
-    //   1860: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1863: aload_0
-    //   1864: lload 4
-    //   1866: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   1869: lload_2
-    //   1870: ldc2_w 366
-    //   1873: lcmp
-    //   1874: ifge -151 -> 1723
-    //   1877: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   1880: dup
-    //   1881: aload_0
-    //   1882: iconst_1
-    //   1883: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   1886: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   1889: goto -166 -> 1723
-    //   1892: ldc 76
-    //   1894: ldc_w 442
-    //   1897: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1900: goto -177 -> 1723
-    //   1903: astore 33
-    //   1905: ldc 76
-    //   1907: aload 33
-    //   1909: ldc_w 434
-    //   1912: iconst_0
-    //   1913: anewarray 4	java/lang/Object
-    //   1916: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1919: goto -191 -> 1728
-    //   1922: aload 34
-    //   1924: astore 37
+    //   1343: ldc_w 525
+    //   1346: new 497	java/lang/StringBuilder
+    //   1349: dup
+    //   1350: invokespecial 526	java/lang/StringBuilder:<init>	()V
+    //   1353: ldc_w 528
+    //   1356: invokestatic 533	java/lang/System:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   1359: invokevirtual 507	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1362: ldc_w 535
+    //   1365: invokevirtual 507	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1368: invokestatic 97	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
+    //   1371: invokestatic 539	com/tencent/mm/plugin/music/h/e:eH	(Landroid/content/Context;)Ljava/lang/String;
+    //   1374: invokevirtual 507	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1377: invokevirtual 508	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1380: invokeinterface 489 3 0
+    //   1385: pop
+    //   1386: aload_0
+    //   1387: aload 34
+    //   1389: aload 36
+    //   1391: invokespecial 541	com/tencent/mm/plugin/music/c/b:u	(Ljava/lang/String;Ljava/util/Map;)Ljava/net/HttpURLConnection;
+    //   1394: astore 34
+    //   1396: aload 34
+    //   1398: astore 37
+    //   1400: lload 4
+    //   1402: lstore 8
+    //   1404: lload_2
+    //   1405: lstore 6
+    //   1407: aload 33
+    //   1409: astore 36
+    //   1411: aload 38
+    //   1413: astore 35
+    //   1415: lload 4
+    //   1417: lstore 26
+    //   1419: lload_2
+    //   1420: lstore 18
+    //   1422: lload 4
+    //   1424: lstore 20
+    //   1426: lload_2
+    //   1427: lstore 14
+    //   1429: lload 4
+    //   1431: lstore 22
+    //   1433: lload_2
+    //   1434: lstore 12
+    //   1436: lload 4
+    //   1438: lstore 24
+    //   1440: lload_2
+    //   1441: lstore 16
+    //   1443: lload 4
+    //   1445: lstore 28
+    //   1447: lload_2
+    //   1448: lstore 10
+    //   1450: aload 34
+    //   1452: invokevirtual 302	java/net/HttpURLConnection:getResponseCode	()I
+    //   1455: istore_1
+    //   1456: iload_1
+    //   1457: sipush 200
+    //   1460: if_icmpeq +539 -> 1999
+    //   1463: iload_1
+    //   1464: sipush 206
+    //   1467: if_icmpeq +532 -> 1999
+    //   1470: aload 34
+    //   1472: astore 37
+    //   1474: lload 4
+    //   1476: lstore 8
+    //   1478: lload_2
+    //   1479: lstore 6
+    //   1481: aload 33
+    //   1483: astore 36
+    //   1485: aload 38
+    //   1487: astore 35
+    //   1489: lload 4
+    //   1491: lstore 26
+    //   1493: lload_2
+    //   1494: lstore 18
+    //   1496: lload 4
+    //   1498: lstore 20
+    //   1500: lload_2
+    //   1501: lstore 14
+    //   1503: lload 4
+    //   1505: lstore 22
+    //   1507: lload_2
+    //   1508: lstore 12
+    //   1510: lload 4
+    //   1512: lstore 24
+    //   1514: lload_2
+    //   1515: lstore 16
+    //   1517: lload 4
+    //   1519: lstore 28
+    //   1521: lload_2
+    //   1522: lstore 10
+    //   1524: iload_1
+    //   1525: invokestatic 311	com/tencent/mm/plugin/music/c/b:Ab	(I)V
+    //   1528: aload 34
+    //   1530: astore 37
+    //   1532: lload 4
+    //   1534: lstore 8
+    //   1536: lload_2
+    //   1537: lstore 6
+    //   1539: aload 33
+    //   1541: astore 36
+    //   1543: aload 38
+    //   1545: astore 35
+    //   1547: lload 4
+    //   1549: lstore 26
+    //   1551: lload_2
+    //   1552: lstore 18
+    //   1554: lload 4
+    //   1556: lstore 20
+    //   1558: lload_2
+    //   1559: lstore 14
+    //   1561: lload 4
+    //   1563: lstore 22
+    //   1565: lload_2
+    //   1566: lstore 12
+    //   1568: lload 4
+    //   1570: lstore 24
+    //   1572: lload_2
+    //   1573: lstore 16
+    //   1575: lload 4
+    //   1577: lstore 28
+    //   1579: lload_2
+    //   1580: lstore 10
+    //   1582: ldc 83
+    //   1584: ldc_w 543
+    //   1587: iconst_1
+    //   1588: anewarray 4	java/lang/Object
+    //   1591: dup
+    //   1592: iconst_0
+    //   1593: iload_1
+    //   1594: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1597: aastore
+    //   1598: invokestatic 330	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1601: aload 34
+    //   1603: astore 37
+    //   1605: lload 4
+    //   1607: lstore 8
+    //   1609: lload_2
+    //   1610: lstore 6
+    //   1612: aload 33
+    //   1614: astore 36
+    //   1616: aload 38
+    //   1618: astore 35
+    //   1620: lload 4
+    //   1622: lstore 26
+    //   1624: lload_2
+    //   1625: lstore 18
+    //   1627: lload 4
+    //   1629: lstore 20
+    //   1631: lload_2
+    //   1632: lstore 14
+    //   1634: lload 4
+    //   1636: lstore 22
+    //   1638: lload_2
+    //   1639: lstore 12
+    //   1641: lload 4
+    //   1643: lstore 24
+    //   1645: lload_2
+    //   1646: lstore 16
+    //   1648: lload 4
+    //   1650: lstore 28
+    //   1652: lload_2
+    //   1653: lstore 10
+    //   1655: aload_0
+    //   1656: iload_1
+    //   1657: putfield 55	com/tencent/mm/plugin/music/c/b:oYF	I
+    //   1660: aload 34
+    //   1662: astore 37
+    //   1664: lload 4
+    //   1666: lstore 8
+    //   1668: lload_2
+    //   1669: lstore 6
+    //   1671: aload 33
+    //   1673: astore 36
+    //   1675: aload 38
+    //   1677: astore 35
+    //   1679: lload 4
+    //   1681: lstore 26
+    //   1683: lload_2
+    //   1684: lstore 18
+    //   1686: lload 4
+    //   1688: lstore 20
+    //   1690: lload_2
+    //   1691: lstore 14
+    //   1693: lload 4
+    //   1695: lstore 22
+    //   1697: lload_2
+    //   1698: lstore 12
+    //   1700: lload 4
+    //   1702: lstore 24
+    //   1704: lload_2
+    //   1705: lstore 16
+    //   1707: lload 4
+    //   1709: lstore 28
+    //   1711: lload_2
+    //   1712: lstore 10
+    //   1714: aload_0
+    //   1715: iconst_m1
+    //   1716: invokespecial 436	com/tencent/mm/plugin/music/c/b:Ac	(I)V
+    //   1719: lload 4
+    //   1721: lconst_0
+    //   1722: lcmp
+    //   1723: ifne +110 -> 1833
+    //   1726: lload_2
+    //   1727: lconst_0
+    //   1728: lcmp
+    //   1729: ifle +104 -> 1833
+    //   1732: ldc 83
+    //   1734: ldc_w 451
+    //   1737: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1740: aload 33
+    //   1742: lload_2
+    //   1743: invokevirtual 546	java/io/RandomAccessFile:setLength	(J)V
+    //   1746: aload_0
+    //   1747: lload_2
+    //   1748: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   1751: lload_2
+    //   1752: ldc2_w 392
+    //   1755: lcmp
+    //   1756: ifge +15 -> 1771
+    //   1759: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   1762: dup
+    //   1763: aload_0
+    //   1764: iconst_1
+    //   1765: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   1768: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   1771: aload 33
+    //   1773: invokevirtual 547	java/io/RandomAccessFile:close	()V
+    //   1776: aload 34
+    //   1778: ifnull +16 -> 1794
+    //   1781: aload 34
+    //   1783: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   1786: invokevirtual 217	java/io/InputStream:close	()V
+    //   1789: aload 34
+    //   1791: invokevirtual 220	java/net/HttpURLConnection:disconnect	()V
+    //   1794: aload_0
+    //   1795: iconst_1
+    //   1796: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   1799: ldc 83
+    //   1801: ldc_w 458
+    //   1804: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1807: ldc_w 373
+    //   1810: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1813: return
+    //   1814: astore 35
+    //   1816: ldc 83
+    //   1818: aload 35
+    //   1820: ldc_w 460
+    //   1823: iconst_0
+    //   1824: anewarray 4	java/lang/Object
+    //   1827: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1830: goto -84 -> 1746
+    //   1833: lload 4
+    //   1835: lconst_0
+    //   1836: lcmp
+    //   1837: ifeq +47 -> 1884
+    //   1840: lload_2
+    //   1841: lload 4
+    //   1843: lcmp
+    //   1844: ifeq +40 -> 1884
+    //   1847: ldc 83
+    //   1849: ldc_w 462
+    //   1852: iconst_2
+    //   1853: anewarray 4	java/lang/Object
+    //   1856: dup
+    //   1857: iconst_0
+    //   1858: lload 4
+    //   1860: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1863: aastore
+    //   1864: dup
+    //   1865: iconst_1
+    //   1866: lload_2
+    //   1867: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1870: aastore
+    //   1871: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1874: aload_0
+    //   1875: lload_2
+    //   1876: lload 4
+    //   1878: invokespecial 464	com/tencent/mm/plugin/music/c/b:R	(JJ)V
+    //   1881: goto -110 -> 1771
+    //   1884: lload 4
+    //   1886: lconst_0
+    //   1887: lcmp
+    //   1888: ifeq +66 -> 1954
+    //   1891: lload_2
+    //   1892: lload 4
+    //   1894: lcmp
+    //   1895: ifne +59 -> 1954
+    //   1898: ldc 83
+    //   1900: ldc_w 466
+    //   1903: iconst_2
+    //   1904: anewarray 4	java/lang/Object
+    //   1907: dup
+    //   1908: iconst_0
+    //   1909: lload 4
+    //   1911: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1914: aastore
+    //   1915: dup
+    //   1916: iconst_1
+    //   1917: lload_2
+    //   1918: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1921: aastore
+    //   1922: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1925: aload_0
     //   1926: lload 4
-    //   1928: lstore 8
-    //   1930: lload_2
-    //   1931: lstore 6
-    //   1933: aload 33
-    //   1935: astore 36
-    //   1937: aload 38
-    //   1939: astore 35
-    //   1941: lload 4
-    //   1943: lstore 24
-    //   1945: lload_2
-    //   1946: lstore 14
-    //   1948: lload 4
-    //   1950: lstore 22
-    //   1952: lload_2
-    //   1953: lstore 12
-    //   1955: lload 4
-    //   1957: lstore 20
-    //   1959: lload_2
-    //   1960: lstore 18
-    //   1962: lload 4
-    //   1964: lstore 26
-    //   1966: lload_2
-    //   1967: lstore 10
-    //   1969: lload 4
-    //   1971: lstore 28
-    //   1973: lload_2
-    //   1974: lstore 16
-    //   1976: ldc 76
-    //   1978: ldc_w 520
-    //   1981: iconst_1
-    //   1982: anewarray 4	java/lang/Object
-    //   1985: dup
-    //   1986: iconst_0
-    //   1987: iload_1
-    //   1988: invokestatic 269	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1991: aastore
-    //   1992: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1995: aload 34
-    //   1997: astore 37
-    //   1999: lload 4
-    //   2001: lstore 8
-    //   2003: lload_2
-    //   2004: lstore 6
-    //   2006: aload 33
-    //   2008: astore 36
-    //   2010: aload 38
-    //   2012: astore 35
-    //   2014: lload 4
-    //   2016: lstore 24
-    //   2018: lload_2
-    //   2019: lstore 14
-    //   2021: lload 4
-    //   2023: lstore 22
-    //   2025: lload_2
-    //   2026: lstore 12
-    //   2028: lload 4
-    //   2030: lstore 20
-    //   2032: lload_2
-    //   2033: lstore 18
-    //   2035: lload 4
-    //   2037: lstore 26
-    //   2039: lload_2
-    //   2040: lstore 10
-    //   2042: lload 4
-    //   2044: lstore 28
-    //   2046: lload_2
-    //   2047: lstore 16
-    //   2049: ldc 76
-    //   2051: new 316	java/lang/StringBuilder
-    //   2054: dup
-    //   2055: ldc_w 522
-    //   2058: invokespecial 319	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2061: aload 34
-    //   2063: ldc_w 494
-    //   2066: invokevirtual 525	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   2069: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2072: invokevirtual 324	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2075: invokestatic 527	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2078: aload 34
-    //   2080: astore 37
-    //   2082: lload 4
-    //   2084: lstore 8
-    //   2086: lload_2
-    //   2087: lstore 6
-    //   2089: aload 33
-    //   2091: astore 36
-    //   2093: aload 38
-    //   2095: astore 35
-    //   2097: lload 4
-    //   2099: lstore 24
-    //   2101: lload_2
-    //   2102: lstore 14
-    //   2104: lload 4
-    //   2106: lstore 22
-    //   2108: lload_2
-    //   2109: lstore 12
-    //   2111: lload 4
-    //   2113: lstore 20
-    //   2115: lload_2
-    //   2116: lstore 18
-    //   2118: lload 4
-    //   2120: lstore 26
-    //   2122: lload_2
-    //   2123: lstore 10
-    //   2125: lload 4
-    //   2127: lstore 28
-    //   2129: lload_2
-    //   2130: lstore 16
-    //   2132: aload 34
-    //   2134: invokevirtual 530	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
-    //   2137: astore 44
-    //   2139: aload 34
-    //   2141: astore 37
-    //   2143: lload 4
-    //   2145: lstore 8
-    //   2147: lload_2
-    //   2148: lstore 6
-    //   2150: aload 33
-    //   2152: astore 36
-    //   2154: aload 38
-    //   2156: astore 35
-    //   2158: lload 4
-    //   2160: lstore 24
-    //   2162: lload_2
-    //   2163: lstore 14
-    //   2165: lload 4
-    //   2167: lstore 22
-    //   2169: lload_2
-    //   2170: lstore 12
-    //   2172: lload 4
-    //   2174: lstore 20
-    //   2176: lload_2
-    //   2177: lstore 18
-    //   2179: lload 4
-    //   2181: lstore 26
-    //   2183: lload_2
-    //   2184: lstore 10
-    //   2186: lload 4
-    //   2188: lstore 28
-    //   2190: lload_2
-    //   2191: lstore 16
-    //   2193: ldc 76
-    //   2195: ldc_w 532
-    //   2198: iconst_1
-    //   2199: anewarray 4	java/lang/Object
-    //   2202: dup
-    //   2203: iconst_0
-    //   2204: aload 44
-    //   2206: aastore
-    //   2207: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   2210: aload 34
-    //   2212: astore 37
-    //   2214: lload 4
-    //   2216: lstore 8
-    //   2218: lload_2
-    //   2219: lstore 6
-    //   2221: aload 33
-    //   2223: astore 36
-    //   2225: aload 38
-    //   2227: astore 35
-    //   2229: lload 4
-    //   2231: lstore 24
-    //   2233: lload_2
-    //   2234: lstore 14
-    //   2236: lload 4
-    //   2238: lstore 22
-    //   2240: lload_2
-    //   2241: lstore 12
-    //   2243: lload 4
-    //   2245: lstore 20
-    //   2247: lload_2
-    //   2248: lstore 18
-    //   2250: lload 4
-    //   2252: lstore 26
-    //   2254: lload_2
-    //   2255: lstore 10
-    //   2257: lload 4
-    //   2259: lstore 28
-    //   2261: lload_2
-    //   2262: lstore 16
-    //   2264: aload_0
-    //   2265: aload 44
-    //   2267: putfield 46	com/tencent/mm/plugin/music/c/b:mimeType	Ljava/lang/String;
-    //   2270: aload 34
-    //   2272: astore 37
-    //   2274: lload 4
-    //   2276: lstore 8
-    //   2278: lload_2
-    //   2279: lstore 6
-    //   2281: aload 33
-    //   2283: astore 36
-    //   2285: aload 38
-    //   2287: astore 35
-    //   2289: lload 4
-    //   2291: lstore 24
-    //   2293: lload_2
-    //   2294: lstore 14
-    //   2296: lload 4
-    //   2298: lstore 22
-    //   2300: lload_2
-    //   2301: lstore 12
-    //   2303: lload 4
-    //   2305: lstore 20
-    //   2307: lload_2
-    //   2308: lstore 18
-    //   2310: lload 4
-    //   2312: lstore 26
-    //   2314: lload_2
-    //   2315: lstore 10
-    //   2317: lload 4
-    //   2319: lstore 28
-    //   2321: lload_2
-    //   2322: lstore 16
-    //   2324: aload_0
-    //   2325: getfield 46	com/tencent/mm/plugin/music/c/b:mimeType	Ljava/lang/String;
-    //   2328: invokestatic 175	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   2331: ifne +390 -> 2721
-    //   2334: aload 34
-    //   2336: astore 37
-    //   2338: lload 4
-    //   2340: lstore 8
-    //   2342: lload_2
-    //   2343: lstore 6
-    //   2345: aload 33
-    //   2347: astore 36
-    //   2349: aload 38
-    //   2351: astore 35
-    //   2353: lload 4
-    //   2355: lstore 24
-    //   2357: lload_2
-    //   2358: lstore 14
-    //   2360: lload 4
-    //   2362: lstore 22
-    //   2364: lload_2
-    //   2365: lstore 12
-    //   2367: lload 4
-    //   2369: lstore 20
-    //   2371: lload_2
-    //   2372: lstore 18
-    //   2374: lload 4
-    //   2376: lstore 26
-    //   2378: lload_2
-    //   2379: lstore 10
-    //   2381: lload 4
-    //   2383: lstore 28
-    //   2385: lload_2
-    //   2386: lstore 16
-    //   2388: aload_0
-    //   2389: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   2392: getfield 533	com/tencent/mm/plugin/music/c/a:mimeType	Ljava/lang/String;
-    //   2395: invokestatic 175	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   2398: ifeq +323 -> 2721
-    //   2401: aload 34
-    //   2403: astore 37
-    //   2405: lload 4
-    //   2407: lstore 8
-    //   2409: lload_2
-    //   2410: lstore 6
-    //   2412: aload 33
-    //   2414: astore 36
-    //   2416: aload 38
-    //   2418: astore 35
-    //   2420: lload 4
-    //   2422: lstore 24
-    //   2424: lload_2
-    //   2425: lstore 14
-    //   2427: lload 4
-    //   2429: lstore 22
-    //   2431: lload_2
-    //   2432: lstore 12
-    //   2434: lload 4
-    //   2436: lstore 20
-    //   2438: lload_2
-    //   2439: lstore 18
-    //   2441: lload 4
-    //   2443: lstore 26
-    //   2445: lload_2
-    //   2446: lstore 10
-    //   2448: lload 4
-    //   2450: lstore 28
-    //   2452: lload_2
-    //   2453: lstore 16
-    //   2455: aload_0
-    //   2456: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   2459: aload_0
-    //   2460: getfield 46	com/tencent/mm/plugin/music/c/b:mimeType	Ljava/lang/String;
-    //   2463: putfield 533	com/tencent/mm/plugin/music/c/a:mimeType	Ljava/lang/String;
-    //   2466: aload 34
-    //   2468: astore 37
-    //   2470: lload 4
-    //   2472: lstore 8
-    //   2474: lload_2
-    //   2475: lstore 6
-    //   2477: aload 33
-    //   2479: astore 36
-    //   2481: aload 38
-    //   2483: astore 35
-    //   2485: lload 4
-    //   2487: lstore 24
-    //   2489: lload_2
-    //   2490: lstore 14
-    //   2492: lload 4
-    //   2494: lstore 22
-    //   2496: lload_2
-    //   2497: lstore 12
-    //   2499: lload 4
-    //   2501: lstore 20
-    //   2503: lload_2
-    //   2504: lstore 18
-    //   2506: lload 4
-    //   2508: lstore 26
-    //   2510: lload_2
-    //   2511: lstore 10
-    //   2513: lload 4
-    //   2515: lstore 28
-    //   2517: lload_2
-    //   2518: lstore 16
-    //   2520: aload_0
-    //   2521: getfield 52	com/tencent/mm/plugin/music/c/b:myu	Lcom/tencent/mm/av/e;
-    //   2524: getfield 110	com/tencent/mm/av/e:eux	Ljava/lang/String;
-    //   2527: astore 45
-    //   2529: aload 34
-    //   2531: astore 37
-    //   2533: lload 4
-    //   2535: lstore 8
-    //   2537: lload_2
-    //   2538: lstore 6
-    //   2540: aload 33
-    //   2542: astore 36
-    //   2544: aload 38
-    //   2546: astore 35
-    //   2548: lload 4
-    //   2550: lstore 24
-    //   2552: lload_2
-    //   2553: lstore 14
-    //   2555: lload 4
-    //   2557: lstore 22
-    //   2559: lload_2
-    //   2560: lstore 12
+    //   1928: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   1931: lload_2
+    //   1932: ldc2_w 392
+    //   1935: lcmp
+    //   1936: ifge -165 -> 1771
+    //   1939: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   1942: dup
+    //   1943: aload_0
+    //   1944: iconst_1
+    //   1945: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   1948: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   1951: goto -180 -> 1771
+    //   1954: ldc 83
+    //   1956: ldc_w 468
+    //   1959: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1962: goto -191 -> 1771
+    //   1965: astore 33
+    //   1967: ldc 83
+    //   1969: aload 33
+    //   1971: ldc_w 460
+    //   1974: iconst_0
+    //   1975: anewarray 4	java/lang/Object
+    //   1978: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1981: goto -205 -> 1776
+    //   1984: astore 33
+    //   1986: ldc 83
+    //   1988: aload 33
+    //   1990: invokevirtual 298	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1993: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1996: goto -207 -> 1789
+    //   1999: aload 34
+    //   2001: astore 37
+    //   2003: lload 4
+    //   2005: lstore 8
+    //   2007: lload_2
+    //   2008: lstore 6
+    //   2010: aload 33
+    //   2012: astore 36
+    //   2014: aload 38
+    //   2016: astore 35
+    //   2018: lload 4
+    //   2020: lstore 26
+    //   2022: lload_2
+    //   2023: lstore 18
+    //   2025: lload 4
+    //   2027: lstore 20
+    //   2029: lload_2
+    //   2030: lstore 14
+    //   2032: lload 4
+    //   2034: lstore 22
+    //   2036: lload_2
+    //   2037: lstore 12
+    //   2039: lload 4
+    //   2041: lstore 24
+    //   2043: lload_2
+    //   2044: lstore 16
+    //   2046: lload 4
+    //   2048: lstore 28
+    //   2050: lload_2
+    //   2051: lstore 10
+    //   2053: ldc 83
+    //   2055: ldc_w 549
+    //   2058: iconst_1
+    //   2059: anewarray 4	java/lang/Object
+    //   2062: dup
+    //   2063: iconst_0
+    //   2064: iload_1
+    //   2065: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2068: aastore
+    //   2069: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   2072: aload 34
+    //   2074: astore 37
+    //   2076: lload 4
+    //   2078: lstore 8
+    //   2080: lload_2
+    //   2081: lstore 6
+    //   2083: aload 33
+    //   2085: astore 36
+    //   2087: aload 38
+    //   2089: astore 35
+    //   2091: lload 4
+    //   2093: lstore 26
+    //   2095: lload_2
+    //   2096: lstore 18
+    //   2098: lload 4
+    //   2100: lstore 20
+    //   2102: lload_2
+    //   2103: lstore 14
+    //   2105: lload 4
+    //   2107: lstore 22
+    //   2109: lload_2
+    //   2110: lstore 12
+    //   2112: lload 4
+    //   2114: lstore 24
+    //   2116: lload_2
+    //   2117: lstore 16
+    //   2119: lload 4
+    //   2121: lstore 28
+    //   2123: lload_2
+    //   2124: lstore 10
+    //   2126: ldc 83
+    //   2128: new 497	java/lang/StringBuilder
+    //   2131: dup
+    //   2132: ldc_w 551
+    //   2135: invokespecial 500	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2138: aload 34
+    //   2140: ldc_w 525
+    //   2143: invokevirtual 554	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   2146: invokevirtual 507	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2149: invokevirtual 508	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2152: invokestatic 556	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2155: aload 34
+    //   2157: astore 37
+    //   2159: lload 4
+    //   2161: lstore 8
+    //   2163: lload_2
+    //   2164: lstore 6
+    //   2166: aload 33
+    //   2168: astore 36
+    //   2170: aload 38
+    //   2172: astore 35
+    //   2174: lload 4
+    //   2176: lstore 26
+    //   2178: lload_2
+    //   2179: lstore 18
+    //   2181: lload 4
+    //   2183: lstore 20
+    //   2185: lload_2
+    //   2186: lstore 14
+    //   2188: lload 4
+    //   2190: lstore 22
+    //   2192: lload_2
+    //   2193: lstore 12
+    //   2195: lload 4
+    //   2197: lstore 24
+    //   2199: lload_2
+    //   2200: lstore 16
+    //   2202: lload 4
+    //   2204: lstore 28
+    //   2206: lload_2
+    //   2207: lstore 10
+    //   2209: aload 34
+    //   2211: invokevirtual 559	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
+    //   2214: astore 44
+    //   2216: aload 34
+    //   2218: astore 37
+    //   2220: lload 4
+    //   2222: lstore 8
+    //   2224: lload_2
+    //   2225: lstore 6
+    //   2227: aload 33
+    //   2229: astore 36
+    //   2231: aload 38
+    //   2233: astore 35
+    //   2235: lload 4
+    //   2237: lstore 26
+    //   2239: lload_2
+    //   2240: lstore 18
+    //   2242: lload 4
+    //   2244: lstore 20
+    //   2246: lload_2
+    //   2247: lstore 14
+    //   2249: lload 4
+    //   2251: lstore 22
+    //   2253: lload_2
+    //   2254: lstore 12
+    //   2256: lload 4
+    //   2258: lstore 24
+    //   2260: lload_2
+    //   2261: lstore 16
+    //   2263: lload 4
+    //   2265: lstore 28
+    //   2267: lload_2
+    //   2268: lstore 10
+    //   2270: ldc 83
+    //   2272: ldc_w 561
+    //   2275: iconst_1
+    //   2276: anewarray 4	java/lang/Object
+    //   2279: dup
+    //   2280: iconst_0
+    //   2281: aload 44
+    //   2283: aastore
+    //   2284: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   2287: aload 34
+    //   2289: astore 37
+    //   2291: lload 4
+    //   2293: lstore 8
+    //   2295: lload_2
+    //   2296: lstore 6
+    //   2298: aload 33
+    //   2300: astore 36
+    //   2302: aload 38
+    //   2304: astore 35
+    //   2306: lload 4
+    //   2308: lstore 26
+    //   2310: lload_2
+    //   2311: lstore 18
+    //   2313: lload 4
+    //   2315: lstore 20
+    //   2317: lload_2
+    //   2318: lstore 14
+    //   2320: lload 4
+    //   2322: lstore 22
+    //   2324: lload_2
+    //   2325: lstore 12
+    //   2327: lload 4
+    //   2329: lstore 24
+    //   2331: lload_2
+    //   2332: lstore 16
+    //   2334: lload 4
+    //   2336: lstore 28
+    //   2338: lload_2
+    //   2339: lstore 10
+    //   2341: aload_0
+    //   2342: aload 44
+    //   2344: putfield 53	com/tencent/mm/plugin/music/c/b:mimeType	Ljava/lang/String;
+    //   2347: aload 34
+    //   2349: astore 37
+    //   2351: lload 4
+    //   2353: lstore 8
+    //   2355: lload_2
+    //   2356: lstore 6
+    //   2358: aload 33
+    //   2360: astore 36
+    //   2362: aload 38
+    //   2364: astore 35
+    //   2366: lload 4
+    //   2368: lstore 26
+    //   2370: lload_2
+    //   2371: lstore 18
+    //   2373: lload 4
+    //   2375: lstore 20
+    //   2377: lload_2
+    //   2378: lstore 14
+    //   2380: lload 4
+    //   2382: lstore 22
+    //   2384: lload_2
+    //   2385: lstore 12
+    //   2387: lload 4
+    //   2389: lstore 24
+    //   2391: lload_2
+    //   2392: lstore 16
+    //   2394: lload 4
+    //   2396: lstore 28
+    //   2398: lload_2
+    //   2399: lstore 10
+    //   2401: aload_0
+    //   2402: getfield 53	com/tencent/mm/plugin/music/c/b:mimeType	Ljava/lang/String;
+    //   2405: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2408: ifne +390 -> 2798
+    //   2411: aload 34
+    //   2413: astore 37
+    //   2415: lload 4
+    //   2417: lstore 8
+    //   2419: lload_2
+    //   2420: lstore 6
+    //   2422: aload 33
+    //   2424: astore 36
+    //   2426: aload 38
+    //   2428: astore 35
+    //   2430: lload 4
+    //   2432: lstore 26
+    //   2434: lload_2
+    //   2435: lstore 18
+    //   2437: lload 4
+    //   2439: lstore 20
+    //   2441: lload_2
+    //   2442: lstore 14
+    //   2444: lload 4
+    //   2446: lstore 22
+    //   2448: lload_2
+    //   2449: lstore 12
+    //   2451: lload 4
+    //   2453: lstore 24
+    //   2455: lload_2
+    //   2456: lstore 16
+    //   2458: lload 4
+    //   2460: lstore 28
+    //   2462: lload_2
+    //   2463: lstore 10
+    //   2465: aload_0
+    //   2466: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   2469: getfield 562	com/tencent/mm/plugin/music/c/a:mimeType	Ljava/lang/String;
+    //   2472: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2475: ifeq +323 -> 2798
+    //   2478: aload 34
+    //   2480: astore 37
+    //   2482: lload 4
+    //   2484: lstore 8
+    //   2486: lload_2
+    //   2487: lstore 6
+    //   2489: aload 33
+    //   2491: astore 36
+    //   2493: aload 38
+    //   2495: astore 35
+    //   2497: lload 4
+    //   2499: lstore 26
+    //   2501: lload_2
+    //   2502: lstore 18
+    //   2504: lload 4
+    //   2506: lstore 20
+    //   2508: lload_2
+    //   2509: lstore 14
+    //   2511: lload 4
+    //   2513: lstore 22
+    //   2515: lload_2
+    //   2516: lstore 12
+    //   2518: lload 4
+    //   2520: lstore 24
+    //   2522: lload_2
+    //   2523: lstore 16
+    //   2525: lload 4
+    //   2527: lstore 28
+    //   2529: lload_2
+    //   2530: lstore 10
+    //   2532: aload_0
+    //   2533: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   2536: aload_0
+    //   2537: getfield 53	com/tencent/mm/plugin/music/c/b:mimeType	Ljava/lang/String;
+    //   2540: putfield 562	com/tencent/mm/plugin/music/c/a:mimeType	Ljava/lang/String;
+    //   2543: aload 34
+    //   2545: astore 37
+    //   2547: lload 4
+    //   2549: lstore 8
+    //   2551: lload_2
+    //   2552: lstore 6
+    //   2554: aload 33
+    //   2556: astore 36
+    //   2558: aload 38
+    //   2560: astore 35
     //   2562: lload 4
-    //   2564: lstore 20
+    //   2564: lstore 26
     //   2566: lload_2
     //   2567: lstore 18
     //   2569: lload 4
-    //   2571: lstore 26
+    //   2571: lstore 20
     //   2573: lload_2
-    //   2574: lstore 10
+    //   2574: lstore 14
     //   2576: lload 4
-    //   2578: lstore 28
+    //   2578: lstore 22
     //   2580: lload_2
-    //   2581: lstore 16
-    //   2583: aload_0
-    //   2584: getfield 46	com/tencent/mm/plugin/music/c/b:mimeType	Ljava/lang/String;
-    //   2587: astore 44
-    //   2589: aload 34
-    //   2591: astore 37
-    //   2593: lload 4
-    //   2595: lstore 8
-    //   2597: lload_2
-    //   2598: lstore 6
-    //   2600: aload 33
-    //   2602: astore 36
-    //   2604: aload 38
-    //   2606: astore 35
-    //   2608: lload 4
-    //   2610: lstore 24
-    //   2612: lload_2
-    //   2613: lstore 14
-    //   2615: lload 4
-    //   2617: lstore 22
-    //   2619: lload_2
-    //   2620: lstore 12
-    //   2622: lload 4
-    //   2624: lstore 20
-    //   2626: lload_2
-    //   2627: lstore 18
-    //   2629: lload 4
-    //   2631: lstore 26
-    //   2633: lload_2
-    //   2634: lstore 10
-    //   2636: lload 4
-    //   2638: lstore 28
-    //   2640: lload_2
-    //   2641: lstore 16
-    //   2643: invokestatic 536	com/tencent/mm/plugin/music/cache/e:bmM	()Z
-    //   2646: ifeq +1147 -> 3793
-    //   2649: aload 34
-    //   2651: astore 37
+    //   2581: lstore 12
+    //   2583: lload 4
+    //   2585: lstore 24
+    //   2587: lload_2
+    //   2588: lstore 16
+    //   2590: lload 4
+    //   2592: lstore 28
+    //   2594: lload_2
+    //   2595: lstore 10
+    //   2597: aload_0
+    //   2598: getfield 59	com/tencent/mm/plugin/music/c/b:oYB	Lcom/tencent/mm/aw/e;
+    //   2601: getfield 145	com/tencent/mm/aw/e:fKj	Ljava/lang/String;
+    //   2604: astore 45
+    //   2606: aload 34
+    //   2608: astore 37
+    //   2610: lload 4
+    //   2612: lstore 8
+    //   2614: lload_2
+    //   2615: lstore 6
+    //   2617: aload 33
+    //   2619: astore 36
+    //   2621: aload 38
+    //   2623: astore 35
+    //   2625: lload 4
+    //   2627: lstore 26
+    //   2629: lload_2
+    //   2630: lstore 18
+    //   2632: lload 4
+    //   2634: lstore 20
+    //   2636: lload_2
+    //   2637: lstore 14
+    //   2639: lload 4
+    //   2641: lstore 22
+    //   2643: lload_2
+    //   2644: lstore 12
+    //   2646: lload 4
+    //   2648: lstore 24
+    //   2650: lload_2
+    //   2651: lstore 16
     //   2653: lload 4
-    //   2655: lstore 8
+    //   2655: lstore 28
     //   2657: lload_2
-    //   2658: lstore 6
-    //   2660: aload 33
-    //   2662: astore 36
-    //   2664: aload 38
-    //   2666: astore 35
-    //   2668: lload 4
-    //   2670: lstore 24
-    //   2672: lload_2
-    //   2673: lstore 14
-    //   2675: lload 4
-    //   2677: lstore 22
-    //   2679: lload_2
-    //   2680: lstore 12
-    //   2682: lload 4
-    //   2684: lstore 20
-    //   2686: lload_2
-    //   2687: lstore 18
-    //   2689: lload 4
-    //   2691: lstore 26
-    //   2693: lload_2
-    //   2694: lstore 10
-    //   2696: lload 4
-    //   2698: lstore 28
-    //   2700: lload_2
-    //   2701: lstore 16
-    //   2703: ldc_w 538
-    //   2706: invokestatic 334	com/tencent/mm/plugin/music/f/c/b:Q	(Ljava/lang/Class;)Lcom/tencent/mm/plugin/music/f/c/a;
-    //   2709: checkcast 538	com/tencent/mm/plugin/music/cache/c
-    //   2712: aload 45
-    //   2714: aload 44
-    //   2716: invokeinterface 541 3 0
-    //   2721: aload 34
-    //   2723: astore 37
-    //   2725: lload 4
-    //   2727: lstore 8
-    //   2729: lload_2
-    //   2730: lstore 6
-    //   2732: aload 33
-    //   2734: astore 36
-    //   2736: aload 38
-    //   2738: astore 35
-    //   2740: lload 4
-    //   2742: lstore 24
-    //   2744: lload_2
-    //   2745: lstore 14
-    //   2747: lload 4
-    //   2749: lstore 22
-    //   2751: lload_2
-    //   2752: lstore 12
-    //   2754: lload 4
-    //   2756: lstore 20
-    //   2758: lload_2
-    //   2759: lstore 18
-    //   2761: lload 4
-    //   2763: lstore 26
-    //   2765: lload_2
-    //   2766: lstore 10
-    //   2768: lload 4
-    //   2770: lstore 28
-    //   2772: lload_2
-    //   2773: lstore 16
-    //   2775: aload 34
-    //   2777: ldc_w 543
-    //   2780: invokevirtual 287	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   2783: astore 45
-    //   2785: aload 34
-    //   2787: astore 37
-    //   2789: lload 4
-    //   2791: lstore 8
-    //   2793: lload_2
-    //   2794: lstore 6
-    //   2796: aload 33
-    //   2798: astore 36
-    //   2800: aload 38
-    //   2802: astore 35
-    //   2804: lload 4
-    //   2806: lstore 24
-    //   2808: lload_2
-    //   2809: lstore 14
-    //   2811: lload 4
-    //   2813: lstore 22
-    //   2815: lload_2
-    //   2816: lstore 12
-    //   2818: lload 4
-    //   2820: lstore 20
-    //   2822: lload_2
-    //   2823: lstore 18
-    //   2825: lload 4
-    //   2827: lstore 26
-    //   2829: lload_2
-    //   2830: lstore 10
-    //   2832: lload 4
-    //   2834: lstore 28
-    //   2836: lload_2
-    //   2837: lstore 16
-    //   2839: aload 45
-    //   2841: invokestatic 545	com/tencent/mm/plugin/music/c/b:Jv	(Ljava/lang/String;)[J
-    //   2844: astore 44
-    //   2846: aload 34
-    //   2848: astore 37
-    //   2850: lload 4
-    //   2852: lstore 8
-    //   2854: lload_2
-    //   2855: lstore 6
-    //   2857: aload 33
-    //   2859: astore 36
-    //   2861: aload 38
-    //   2863: astore 35
-    //   2865: lload 4
-    //   2867: lstore 24
-    //   2869: lload_2
-    //   2870: lstore 14
-    //   2872: lload 4
-    //   2874: lstore 22
-    //   2876: lload_2
-    //   2877: lstore 12
-    //   2879: lload 4
-    //   2881: lstore 20
-    //   2883: lload_2
-    //   2884: lstore 18
-    //   2886: lload 4
-    //   2888: lstore 26
-    //   2890: lload_2
-    //   2891: lstore 10
-    //   2893: lload 4
-    //   2895: lstore 28
-    //   2897: lload_2
-    //   2898: lstore 16
-    //   2900: aload 34
-    //   2902: ldc_w 547
-    //   2905: invokevirtual 287	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   2908: lconst_0
-    //   2909: invokestatic 551	com/tencent/mm/sdk/platformtools/bk:getLong	(Ljava/lang/String;J)J
-    //   2912: lstore 30
-    //   2914: aload 34
-    //   2916: astore 37
-    //   2918: lload 4
-    //   2920: lstore 8
-    //   2922: lload_2
-    //   2923: lstore 6
-    //   2925: aload 33
-    //   2927: astore 36
-    //   2929: aload 38
-    //   2931: astore 35
-    //   2933: lload 4
-    //   2935: lstore 24
-    //   2937: lload_2
-    //   2938: lstore 14
-    //   2940: lload 4
-    //   2942: lstore 22
-    //   2944: lload_2
-    //   2945: lstore 12
-    //   2947: lload 4
-    //   2949: lstore 20
-    //   2951: lload_2
-    //   2952: lstore 18
-    //   2954: lload 4
-    //   2956: lstore 26
-    //   2958: lload_2
-    //   2959: lstore 10
-    //   2961: lload 4
-    //   2963: lstore 28
-    //   2965: lload_2
-    //   2966: lstore 16
-    //   2968: ldc 76
-    //   2970: ldc_w 553
-    //   2973: iconst_2
-    //   2974: anewarray 4	java/lang/Object
-    //   2977: dup
-    //   2978: iconst_0
-    //   2979: aload 45
-    //   2981: aastore
-    //   2982: dup
-    //   2983: iconst_1
-    //   2984: lload 30
-    //   2986: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2989: aastore
-    //   2990: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   2993: aload 44
-    //   2995: ifnonnull +864 -> 3859
-    //   2998: aload 34
-    //   3000: astore 37
-    //   3002: lload 4
-    //   3004: lstore 8
-    //   3006: lload_2
-    //   3007: lstore 6
-    //   3009: aload 33
-    //   3011: astore 36
-    //   3013: aload 38
-    //   3015: astore 35
+    //   2658: lstore 10
+    //   2660: aload_0
+    //   2661: getfield 53	com/tencent/mm/plugin/music/c/b:mimeType	Ljava/lang/String;
+    //   2664: astore 44
+    //   2666: aload 34
+    //   2668: astore 37
+    //   2670: lload 4
+    //   2672: lstore 8
+    //   2674: lload_2
+    //   2675: lstore 6
+    //   2677: aload 33
+    //   2679: astore 36
+    //   2681: aload 38
+    //   2683: astore 35
+    //   2685: lload 4
+    //   2687: lstore 26
+    //   2689: lload_2
+    //   2690: lstore 18
+    //   2692: lload 4
+    //   2694: lstore 20
+    //   2696: lload_2
+    //   2697: lstore 14
+    //   2699: lload 4
+    //   2701: lstore 22
+    //   2703: lload_2
+    //   2704: lstore 12
+    //   2706: lload 4
+    //   2708: lstore 24
+    //   2710: lload_2
+    //   2711: lstore 16
+    //   2713: lload 4
+    //   2715: lstore 28
+    //   2717: lload_2
+    //   2718: lstore 10
+    //   2720: invokestatic 565	com/tencent/mm/plugin/music/cache/e:bVi	()Z
+    //   2723: ifeq +1161 -> 3884
+    //   2726: aload 34
+    //   2728: astore 37
+    //   2730: lload 4
+    //   2732: lstore 8
+    //   2734: lload_2
+    //   2735: lstore 6
+    //   2737: aload 33
+    //   2739: astore 36
+    //   2741: aload 38
+    //   2743: astore 35
+    //   2745: lload 4
+    //   2747: lstore 26
+    //   2749: lload_2
+    //   2750: lstore 18
+    //   2752: lload 4
+    //   2754: lstore 20
+    //   2756: lload_2
+    //   2757: lstore 14
+    //   2759: lload 4
+    //   2761: lstore 22
+    //   2763: lload_2
+    //   2764: lstore 12
+    //   2766: lload 4
+    //   2768: lstore 24
+    //   2770: lload_2
+    //   2771: lstore 16
+    //   2773: lload 4
+    //   2775: lstore 28
+    //   2777: lload_2
+    //   2778: lstore 10
+    //   2780: ldc_w 567
+    //   2783: invokestatic 123	com/tencent/mm/plugin/music/f/c/b:am	(Ljava/lang/Class;)Lcom/tencent/mm/plugin/music/f/c/a;
+    //   2786: checkcast 567	com/tencent/mm/plugin/music/cache/c
+    //   2789: aload 45
+    //   2791: aload 44
+    //   2793: invokeinterface 570 3 0
+    //   2798: aload 34
+    //   2800: astore 37
+    //   2802: lload 4
+    //   2804: lstore 8
+    //   2806: lload_2
+    //   2807: lstore 6
+    //   2809: aload 33
+    //   2811: astore 36
+    //   2813: aload 38
+    //   2815: astore 35
+    //   2817: lload 4
+    //   2819: lstore 26
+    //   2821: lload_2
+    //   2822: lstore 18
+    //   2824: lload 4
+    //   2826: lstore 20
+    //   2828: lload_2
+    //   2829: lstore 14
+    //   2831: lload 4
+    //   2833: lstore 22
+    //   2835: lload_2
+    //   2836: lstore 12
+    //   2838: lload 4
+    //   2840: lstore 24
+    //   2842: lload_2
+    //   2843: lstore 16
+    //   2845: lload 4
+    //   2847: lstore 28
+    //   2849: lload_2
+    //   2850: lstore 10
+    //   2852: aload 34
+    //   2854: ldc_w 572
+    //   2857: invokevirtual 326	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   2860: astore 45
+    //   2862: aload 34
+    //   2864: astore 37
+    //   2866: lload 4
+    //   2868: lstore 8
+    //   2870: lload_2
+    //   2871: lstore 6
+    //   2873: aload 33
+    //   2875: astore 36
+    //   2877: aload 38
+    //   2879: astore 35
+    //   2881: lload 4
+    //   2883: lstore 26
+    //   2885: lload_2
+    //   2886: lstore 18
+    //   2888: lload 4
+    //   2890: lstore 20
+    //   2892: lload_2
+    //   2893: lstore 14
+    //   2895: lload 4
+    //   2897: lstore 22
+    //   2899: lload_2
+    //   2900: lstore 12
+    //   2902: lload 4
+    //   2904: lstore 24
+    //   2906: lload_2
+    //   2907: lstore 16
+    //   2909: lload 4
+    //   2911: lstore 28
+    //   2913: lload_2
+    //   2914: lstore 10
+    //   2916: aload 45
+    //   2918: invokestatic 574	com/tencent/mm/plugin/music/c/b:Vt	(Ljava/lang/String;)[J
+    //   2921: astore 44
+    //   2923: aload 34
+    //   2925: astore 37
+    //   2927: lload 4
+    //   2929: lstore 8
+    //   2931: lload_2
+    //   2932: lstore 6
+    //   2934: aload 33
+    //   2936: astore 36
+    //   2938: aload 38
+    //   2940: astore 35
+    //   2942: lload 4
+    //   2944: lstore 26
+    //   2946: lload_2
+    //   2947: lstore 18
+    //   2949: lload 4
+    //   2951: lstore 20
+    //   2953: lload_2
+    //   2954: lstore 14
+    //   2956: lload 4
+    //   2958: lstore 22
+    //   2960: lload_2
+    //   2961: lstore 12
+    //   2963: lload 4
+    //   2965: lstore 24
+    //   2967: lload_2
+    //   2968: lstore 16
+    //   2970: lload 4
+    //   2972: lstore 28
+    //   2974: lload_2
+    //   2975: lstore 10
+    //   2977: aload 34
+    //   2979: ldc_w 576
+    //   2982: invokevirtual 326	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   2985: lconst_0
+    //   2986: invokestatic 580	com/tencent/mm/sdk/platformtools/bo:getLong	(Ljava/lang/String;J)J
+    //   2989: lstore 30
+    //   2991: aload 34
+    //   2993: astore 37
+    //   2995: lload 4
+    //   2997: lstore 8
+    //   2999: lload_2
+    //   3000: lstore 6
+    //   3002: aload 33
+    //   3004: astore 36
+    //   3006: aload 38
+    //   3008: astore 35
+    //   3010: lload 4
+    //   3012: lstore 26
+    //   3014: lload_2
+    //   3015: lstore 18
     //   3017: lload 4
-    //   3019: lstore 24
+    //   3019: lstore 20
     //   3021: lload_2
     //   3022: lstore 14
     //   3024: lload 4
@@ -1775,29 +1803,29 @@ public final class b
     //   3028: lload_2
     //   3029: lstore 12
     //   3031: lload 4
-    //   3033: lstore 20
+    //   3033: lstore 24
     //   3035: lload_2
-    //   3036: lstore 18
+    //   3036: lstore 16
     //   3038: lload 4
-    //   3040: lstore 26
+    //   3040: lstore 28
     //   3042: lload_2
     //   3043: lstore 10
-    //   3045: lload 4
-    //   3047: lstore 28
-    //   3049: lload_2
-    //   3050: lstore 16
-    //   3052: ldc 76
-    //   3054: ldc_w 555
-    //   3057: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3060: lload_2
-    //   3061: lstore 4
-    //   3063: lload_2
-    //   3064: lconst_0
-    //   3065: lcmp
-    //   3066: ifeq +3852 -> 6918
-    //   3069: lconst_0
-    //   3070: lstore 4
-    //   3072: goto +3846 -> 6918
+    //   3045: ldc 83
+    //   3047: ldc_w 582
+    //   3050: iconst_2
+    //   3051: anewarray 4	java/lang/Object
+    //   3054: dup
+    //   3055: iconst_0
+    //   3056: aload 45
+    //   3058: aastore
+    //   3059: dup
+    //   3060: iconst_1
+    //   3061: lload 30
+    //   3063: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   3066: aastore
+    //   3067: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   3070: aload 44
+    //   3072: ifnonnull +878 -> 3950
     //   3075: aload 34
     //   3077: astore 37
     //   3079: lload 4
@@ -1809,2410 +1837,2562 @@ public final class b
     //   3090: aload 38
     //   3092: astore 35
     //   3094: lload 4
-    //   3096: lstore 24
+    //   3096: lstore 26
     //   3098: lload_2
-    //   3099: lstore 14
+    //   3099: lstore 18
     //   3101: lload 4
-    //   3103: lstore 22
+    //   3103: lstore 20
     //   3105: lload_2
-    //   3106: lstore 12
+    //   3106: lstore 14
     //   3108: lload 4
-    //   3110: lstore 20
+    //   3110: lstore 22
     //   3112: lload_2
-    //   3113: lstore 18
+    //   3113: lstore 12
     //   3115: lload 4
-    //   3117: lstore 26
+    //   3117: lstore 24
     //   3119: lload_2
-    //   3120: lstore 10
+    //   3120: lstore 16
     //   3122: lload 4
     //   3124: lstore 28
     //   3126: lload_2
-    //   3127: lstore 16
-    //   3129: ldc 76
-    //   3131: ldc_w 557
-    //   3134: iconst_2
-    //   3135: anewarray 4	java/lang/Object
-    //   3138: dup
-    //   3139: iconst_0
-    //   3140: lload 30
-    //   3142: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   3145: aastore
-    //   3146: dup
-    //   3147: iconst_1
-    //   3148: lload_2
-    //   3149: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   3152: aastore
-    //   3153: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   3156: aload 34
-    //   3158: astore 37
-    //   3160: lload 4
-    //   3162: lstore 8
-    //   3164: lload_2
-    //   3165: lstore 6
-    //   3167: aload 33
-    //   3169: astore 36
-    //   3171: aload 38
-    //   3173: astore 35
-    //   3175: lload 4
-    //   3177: lstore 24
-    //   3179: lload_2
-    //   3180: lstore 14
-    //   3182: lload 4
-    //   3184: lstore 22
-    //   3186: lload_2
-    //   3187: lstore 12
-    //   3189: lload 4
-    //   3191: lstore 20
-    //   3193: lload_2
-    //   3194: lstore 18
-    //   3196: lload 4
-    //   3198: lstore 26
-    //   3200: lload_2
-    //   3201: lstore 10
-    //   3203: lload 4
-    //   3205: lstore 28
-    //   3207: lload_2
-    //   3208: lstore 16
-    //   3210: aload 33
-    //   3212: lload 30
-    //   3214: invokevirtual 515	java/io/RandomAccessFile:setLength	(J)V
-    //   3217: aload 34
-    //   3219: astore 37
-    //   3221: lload 4
-    //   3223: lstore 8
+    //   3127: lstore 10
+    //   3129: ldc 83
+    //   3131: ldc_w 584
+    //   3134: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3137: lload_2
+    //   3138: lstore 4
+    //   3140: lload_2
+    //   3141: lconst_0
+    //   3142: lcmp
+    //   3143: ifeq +4084 -> 7227
+    //   3146: lconst_0
+    //   3147: lstore 4
+    //   3149: goto +4078 -> 7227
+    //   3152: aload 34
+    //   3154: astore 37
+    //   3156: lload 4
+    //   3158: lstore 8
+    //   3160: lload_2
+    //   3161: lstore 6
+    //   3163: aload 33
+    //   3165: astore 36
+    //   3167: aload 38
+    //   3169: astore 35
+    //   3171: lload 4
+    //   3173: lstore 26
+    //   3175: lload_2
+    //   3176: lstore 18
+    //   3178: lload 4
+    //   3180: lstore 20
+    //   3182: lload_2
+    //   3183: lstore 14
+    //   3185: lload 4
+    //   3187: lstore 22
+    //   3189: lload_2
+    //   3190: lstore 12
+    //   3192: lload 4
+    //   3194: lstore 24
+    //   3196: lload_2
+    //   3197: lstore 16
+    //   3199: lload 4
+    //   3201: lstore 28
+    //   3203: lload_2
+    //   3204: lstore 10
+    //   3206: ldc 83
+    //   3208: ldc_w 586
+    //   3211: iconst_2
+    //   3212: anewarray 4	java/lang/Object
+    //   3215: dup
+    //   3216: iconst_0
+    //   3217: lload 30
+    //   3219: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   3222: aastore
+    //   3223: dup
+    //   3224: iconst_1
     //   3225: lload_2
-    //   3226: lstore 6
-    //   3228: aload 33
-    //   3230: astore 36
-    //   3232: aload 38
-    //   3234: astore 35
-    //   3236: lload 4
-    //   3238: lstore 24
-    //   3240: lload_2
-    //   3241: lstore 14
-    //   3243: lload 4
-    //   3245: lstore 22
-    //   3247: lload_2
-    //   3248: lstore 12
-    //   3250: lload 4
-    //   3252: lstore 20
-    //   3254: lload_2
-    //   3255: lstore 18
-    //   3257: lload 4
-    //   3259: lstore 26
-    //   3261: lload_2
-    //   3262: lstore 10
-    //   3264: lload 4
-    //   3266: lstore 28
-    //   3268: lload_2
-    //   3269: lstore 16
-    //   3271: aload 33
-    //   3273: lload_2
-    //   3274: invokevirtual 560	java/io/RandomAccessFile:seek	(J)V
-    //   3277: aload 34
-    //   3279: astore 37
-    //   3281: lload 4
-    //   3283: lstore 8
-    //   3285: lload_2
-    //   3286: lstore 6
-    //   3288: aload 33
-    //   3290: astore 36
-    //   3292: aload 38
-    //   3294: astore 35
-    //   3296: lload 4
-    //   3298: lstore 24
-    //   3300: lload_2
-    //   3301: lstore 14
-    //   3303: lload 4
-    //   3305: lstore 22
-    //   3307: lload_2
-    //   3308: lstore 12
-    //   3310: lload 4
-    //   3312: lstore 20
-    //   3314: lload_2
-    //   3315: lstore 18
-    //   3317: lload 4
-    //   3319: lstore 26
-    //   3321: lload_2
-    //   3322: lstore 10
-    //   3324: lload 4
-    //   3326: lstore 28
-    //   3328: lload_2
-    //   3329: lstore 16
-    //   3331: aload 34
-    //   3333: invokevirtual 564	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   3336: astore 38
-    //   3338: aload 38
-    //   3340: astore 35
-    //   3342: lload_2
-    //   3343: lstore 18
+    //   3226: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   3229: aastore
+    //   3230: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   3233: aload 34
+    //   3235: astore 37
+    //   3237: lload 4
+    //   3239: lstore 8
+    //   3241: lload_2
+    //   3242: lstore 6
+    //   3244: aload 33
+    //   3246: astore 36
+    //   3248: aload 38
+    //   3250: astore 35
+    //   3252: lload 4
+    //   3254: lstore 26
+    //   3256: lload_2
+    //   3257: lstore 18
+    //   3259: lload 4
+    //   3261: lstore 20
+    //   3263: lload_2
+    //   3264: lstore 14
+    //   3266: lload 4
+    //   3268: lstore 22
+    //   3270: lload_2
+    //   3271: lstore 12
+    //   3273: lload 4
+    //   3275: lstore 24
+    //   3277: lload_2
+    //   3278: lstore 16
+    //   3280: lload 4
+    //   3282: lstore 28
+    //   3284: lload_2
+    //   3285: lstore 10
+    //   3287: aload 33
+    //   3289: lload 30
+    //   3291: invokevirtual 546	java/io/RandomAccessFile:setLength	(J)V
+    //   3294: aload 34
+    //   3296: astore 37
+    //   3298: lload 4
+    //   3300: lstore 8
+    //   3302: lload_2
+    //   3303: lstore 6
+    //   3305: aload 33
+    //   3307: astore 36
+    //   3309: aload 38
+    //   3311: astore 35
+    //   3313: lload 4
+    //   3315: lstore 26
+    //   3317: lload_2
+    //   3318: lstore 18
+    //   3320: lload 4
+    //   3322: lstore 20
+    //   3324: lload_2
+    //   3325: lstore 14
+    //   3327: lload 4
+    //   3329: lstore 22
+    //   3331: lload_2
+    //   3332: lstore 12
+    //   3334: lload 4
+    //   3336: lstore 24
+    //   3338: lload_2
+    //   3339: lstore 16
+    //   3341: lload 4
+    //   3343: lstore 28
     //   3345: lload_2
-    //   3346: lstore 16
-    //   3348: lload_2
-    //   3349: lstore 14
-    //   3351: lload_2
-    //   3352: lstore 10
-    //   3354: lload_2
-    //   3355: lstore 8
-    //   3357: lload_2
-    //   3358: lstore 12
-    //   3360: sipush 4096
-    //   3363: newarray byte
-    //   3365: astore 36
-    //   3367: lload_2
-    //   3368: lstore 18
-    //   3370: lload_2
-    //   3371: lstore 16
-    //   3373: lload_2
-    //   3374: lstore 14
-    //   3376: lload_2
-    //   3377: lstore 10
-    //   3379: lload_2
-    //   3380: lstore 8
-    //   3382: lload_2
-    //   3383: lstore 12
-    //   3385: aload_0
-    //   3386: getfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   3389: ifne +1194 -> 4583
-    //   3392: lload_2
-    //   3393: lstore 18
-    //   3395: lload_2
-    //   3396: lstore 16
+    //   3346: lstore 10
+    //   3348: aload 33
+    //   3350: lload_2
+    //   3351: invokevirtual 589	java/io/RandomAccessFile:seek	(J)V
+    //   3354: aload 34
+    //   3356: astore 37
+    //   3358: lload 4
+    //   3360: lstore 8
+    //   3362: lload_2
+    //   3363: lstore 6
+    //   3365: aload 33
+    //   3367: astore 36
+    //   3369: aload 38
+    //   3371: astore 35
+    //   3373: lload 4
+    //   3375: lstore 26
+    //   3377: lload_2
+    //   3378: lstore 18
+    //   3380: lload 4
+    //   3382: lstore 20
+    //   3384: lload_2
+    //   3385: lstore 14
+    //   3387: lload 4
+    //   3389: lstore 22
+    //   3391: lload_2
+    //   3392: lstore 12
+    //   3394: lload 4
+    //   3396: lstore 24
     //   3398: lload_2
-    //   3399: lstore 14
-    //   3401: lload_2
-    //   3402: lstore 10
-    //   3404: lload_2
-    //   3405: lstore 8
-    //   3407: lload_2
-    //   3408: lstore 12
-    //   3410: aload 35
-    //   3412: aload 36
-    //   3414: invokevirtual 570	java/io/InputStream:read	([B)I
-    //   3417: istore_1
-    //   3418: iload_1
-    //   3419: ifle +1102 -> 4521
+    //   3399: lstore 16
+    //   3401: lload 4
+    //   3403: lstore 28
+    //   3405: lload_2
+    //   3406: lstore 10
+    //   3408: aload 34
+    //   3410: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   3413: astore 38
+    //   3415: aload 38
+    //   3417: astore 35
+    //   3419: lload_2
+    //   3420: lstore 16
     //   3422: lload_2
     //   3423: lstore 18
     //   3425: lload_2
-    //   3426: lstore 16
+    //   3426: lstore 12
     //   3428: lload_2
     //   3429: lstore 14
     //   3431: lload_2
-    //   3432: lstore 10
+    //   3432: lstore 8
     //   3434: lload_2
-    //   3435: lstore 8
-    //   3437: lload_2
-    //   3438: lstore 12
-    //   3440: aload 33
-    //   3442: aload 36
-    //   3444: iconst_0
-    //   3445: iload_1
-    //   3446: invokevirtual 574	java/io/RandomAccessFile:write	([BII)V
-    //   3449: lload_2
-    //   3450: iload_1
-    //   3451: i2l
-    //   3452: ladd
-    //   3453: lstore 6
-    //   3455: lload 6
-    //   3457: lstore 18
-    //   3459: lload 6
-    //   3461: lstore 16
-    //   3463: lload 6
-    //   3465: lstore 14
-    //   3467: lload 6
-    //   3469: lstore 10
-    //   3471: lload 6
-    //   3473: lstore 8
-    //   3475: lload 6
-    //   3477: lstore 12
-    //   3479: ldc 76
-    //   3481: ldc_w 576
-    //   3484: iconst_2
-    //   3485: anewarray 4	java/lang/Object
-    //   3488: dup
-    //   3489: iconst_0
-    //   3490: lload 6
-    //   3492: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   3495: aastore
-    //   3496: dup
-    //   3497: iconst_1
-    //   3498: lload 30
-    //   3500: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   3503: aastore
-    //   3504: invokestatic 579	com/tencent/mm/sdk/platformtools/y:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   3507: lload 6
-    //   3509: lstore 18
-    //   3511: lload 6
-    //   3513: lstore 16
-    //   3515: lload 6
-    //   3517: lstore 14
-    //   3519: lload 6
-    //   3521: lstore 10
-    //   3523: lload 6
-    //   3525: lstore 8
-    //   3527: lload 6
-    //   3529: lstore 12
-    //   3531: aload_0
-    //   3532: getfield 98	com/tencent/mm/plugin/music/c/b:kaC	Z
-    //   3535: ifeq +721 -> 4256
-    //   3538: lload 6
-    //   3540: lstore 18
-    //   3542: lload 6
-    //   3544: lstore 16
-    //   3546: lload 6
-    //   3548: lstore 14
-    //   3550: lload 6
-    //   3552: lstore 10
-    //   3554: lload 6
-    //   3556: lstore 8
-    //   3558: lload 6
-    //   3560: lstore 12
-    //   3562: aload_0
-    //   3563: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   3566: lload 6
-    //   3568: putfield 68	com/tencent/mm/plugin/music/c/a:myq	J
-    //   3571: lload 6
-    //   3573: lstore 18
-    //   3575: lload 6
-    //   3577: lstore 16
-    //   3579: lload 6
-    //   3581: lstore 14
-    //   3583: lload 6
-    //   3585: lstore 10
-    //   3587: lload 6
-    //   3589: lstore 8
-    //   3591: lload 6
-    //   3593: lstore 12
-    //   3595: aload_0
-    //   3596: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   3599: lload 30
-    //   3601: putfield 71	com/tencent/mm/plugin/music/c/a:mys	J
+    //   3435: lstore 10
+    //   3437: sipush 4096
+    //   3440: newarray byte
+    //   3442: astore 36
+    //   3444: lload_2
+    //   3445: lstore 16
+    //   3447: lload_2
+    //   3448: lstore 18
+    //   3450: lload_2
+    //   3451: lstore 12
+    //   3453: lload_2
+    //   3454: lstore 14
+    //   3456: lload_2
+    //   3457: lstore 8
+    //   3459: lload_2
+    //   3460: lstore 10
+    //   3462: aload_0
+    //   3463: getfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   3466: ifne +1251 -> 4717
+    //   3469: lload_2
+    //   3470: lstore 16
+    //   3472: lload_2
+    //   3473: lstore 18
+    //   3475: lload_2
+    //   3476: lstore 12
+    //   3478: lload_2
+    //   3479: lstore 14
+    //   3481: lload_2
+    //   3482: lstore 8
+    //   3484: lload_2
+    //   3485: lstore 10
+    //   3487: aload 35
+    //   3489: aload 36
+    //   3491: invokevirtual 593	java/io/InputStream:read	([B)I
+    //   3494: istore_1
+    //   3495: iload_1
+    //   3496: ifle +1159 -> 4655
+    //   3499: lload_2
+    //   3500: lstore 16
+    //   3502: lload_2
+    //   3503: lstore 18
+    //   3505: lload_2
+    //   3506: lstore 12
+    //   3508: lload_2
+    //   3509: lstore 14
+    //   3511: lload_2
+    //   3512: lstore 8
+    //   3514: lload_2
+    //   3515: lstore 10
+    //   3517: aload 33
+    //   3519: aload 36
+    //   3521: iconst_0
+    //   3522: iload_1
+    //   3523: invokevirtual 597	java/io/RandomAccessFile:write	([BII)V
+    //   3526: lload_2
+    //   3527: iload_1
+    //   3528: i2l
+    //   3529: ladd
+    //   3530: lstore 6
+    //   3532: lload 6
+    //   3534: lstore 16
+    //   3536: lload 6
+    //   3538: lstore 18
+    //   3540: lload 6
+    //   3542: lstore 12
+    //   3544: lload 6
+    //   3546: lstore 14
+    //   3548: lload 6
+    //   3550: lstore 8
+    //   3552: lload 6
+    //   3554: lstore 10
+    //   3556: ldc 83
+    //   3558: ldc_w 599
+    //   3561: iconst_2
+    //   3562: anewarray 4	java/lang/Object
+    //   3565: dup
+    //   3566: iconst_0
+    //   3567: lload 6
+    //   3569: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   3572: aastore
+    //   3573: dup
+    //   3574: iconst_1
+    //   3575: lload 30
+    //   3577: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   3580: aastore
+    //   3581: invokestatic 602	com/tencent/mm/sdk/platformtools/ab:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   3584: lload 6
+    //   3586: lstore 16
+    //   3588: lload 6
+    //   3590: lstore 18
+    //   3592: lload 6
+    //   3594: lstore 12
+    //   3596: lload 6
+    //   3598: lstore 14
+    //   3600: lload 6
+    //   3602: lstore 8
     //   3604: lload 6
-    //   3606: lstore_2
-    //   3607: lload 6
-    //   3609: ldc2_w 366
-    //   3612: lcmp
-    //   3613: iflt -246 -> 3367
-    //   3616: lload 6
-    //   3618: lstore 18
-    //   3620: lload 6
-    //   3622: lstore 16
-    //   3624: lload 6
-    //   3626: lstore 14
-    //   3628: lload 6
-    //   3630: lstore 10
-    //   3632: lload 6
-    //   3634: lstore 8
-    //   3636: lload 6
-    //   3638: lstore 12
-    //   3640: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   3643: dup
-    //   3644: aload_0
-    //   3645: iconst_1
-    //   3646: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   3649: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
+    //   3606: lstore 10
+    //   3608: aload_0
+    //   3609: getfield 105	com/tencent/mm/plugin/music/c/b:muY	Z
+    //   3612: ifeq +764 -> 4376
+    //   3615: lload 6
+    //   3617: lstore 16
+    //   3619: lload 6
+    //   3621: lstore 18
+    //   3623: lload 6
+    //   3625: lstore 12
+    //   3627: lload 6
+    //   3629: lstore 14
+    //   3631: lload 6
+    //   3633: lstore 8
+    //   3635: lload 6
+    //   3637: lstore 10
+    //   3639: aload_0
+    //   3640: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   3643: lload 6
+    //   3645: putfield 75	com/tencent/mm/plugin/music/c/a:oYx	J
+    //   3648: lload 6
+    //   3650: lstore 16
     //   3652: lload 6
-    //   3654: lstore_2
-    //   3655: goto -288 -> 3367
-    //   3658: astore 36
-    //   3660: lload 18
-    //   3662: lstore_2
-    //   3663: ldc 76
-    //   3665: aload 36
-    //   3667: ldc_w 581
-    //   3670: iconst_1
-    //   3671: anewarray 4	java/lang/Object
-    //   3674: dup
-    //   3675: iconst_0
-    //   3676: aload 43
-    //   3678: invokevirtual 415	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   3681: aastore
-    //   3682: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   3685: aload_0
-    //   3686: sipush 750
-    //   3689: putfield 50	com/tencent/mm/plugin/music/c/b:dUg	I
-    //   3692: aload_0
-    //   3693: iconst_5
-    //   3694: invokespecial 410	com/tencent/mm/plugin/music/c/b:uG	(I)V
-    //   3697: lload 4
-    //   3699: lconst_0
-    //   3700: lcmp
-    //   3701: ifne +1181 -> 4882
-    //   3704: lload_2
-    //   3705: lconst_0
-    //   3706: lcmp
-    //   3707: ifle +1175 -> 4882
-    //   3710: ldc 76
-    //   3712: ldc_w 425
-    //   3715: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3718: aload 33
-    //   3720: lload_2
-    //   3721: invokevirtual 515	java/io/RandomAccessFile:setLength	(J)V
-    //   3724: aload_0
-    //   3725: lload_2
-    //   3726: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   3729: lload_2
-    //   3730: ldc2_w 366
-    //   3733: lcmp
-    //   3734: ifge +15 -> 3749
-    //   3737: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   3740: dup
-    //   3741: aload_0
-    //   3742: iconst_1
-    //   3743: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   3746: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   3749: aload 35
-    //   3751: ifnull +8 -> 3759
-    //   3754: aload 35
-    //   3756: invokevirtual 582	java/io/InputStream:close	()V
-    //   3759: aload 33
-    //   3761: ifnull +8 -> 3769
-    //   3764: aload 33
-    //   3766: invokevirtual 518	java/io/RandomAccessFile:close	()V
-    //   3769: aload 34
-    //   3771: ifnull +8 -> 3779
-    //   3774: aload 34
-    //   3776: invokevirtual 182	java/net/HttpURLConnection:disconnect	()V
-    //   3779: aload_0
-    //   3780: iconst_1
-    //   3781: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   3784: ldc 76
-    //   3786: ldc_w 432
-    //   3789: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3792: return
-    //   3793: aload 34
-    //   3795: astore 37
-    //   3797: lload 4
-    //   3799: lstore 8
-    //   3801: lload_2
-    //   3802: lstore 6
-    //   3804: aload 33
-    //   3806: astore 36
-    //   3808: aload 38
-    //   3810: astore 35
-    //   3812: lload 4
-    //   3814: lstore 24
-    //   3816: lload_2
-    //   3817: lstore 14
-    //   3819: lload 4
-    //   3821: lstore 22
-    //   3823: lload_2
-    //   3824: lstore 12
-    //   3826: lload 4
-    //   3828: lstore 20
-    //   3830: lload_2
-    //   3831: lstore 18
-    //   3833: lload 4
-    //   3835: lstore 26
-    //   3837: lload_2
-    //   3838: lstore 10
-    //   3840: lload 4
-    //   3842: lstore 28
-    //   3844: lload_2
-    //   3845: lstore 16
-    //   3847: ldc_w 584
-    //   3850: ldc_w 586
-    //   3853: invokestatic 84	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3856: goto -1135 -> 2721
-    //   3859: lload_2
-    //   3860: lconst_0
-    //   3861: lcmp
-    //   3862: ifle +385 -> 4247
-    //   3865: lload_2
-    //   3866: aload 44
-    //   3868: iconst_0
-    //   3869: laload
-    //   3870: lcmp
-    //   3871: ifeq +376 -> 4247
-    //   3874: aload 34
-    //   3876: astore 37
-    //   3878: lload 4
-    //   3880: lstore 8
-    //   3882: lload_2
-    //   3883: lstore 6
-    //   3885: aload 33
-    //   3887: astore 36
-    //   3889: aload 38
-    //   3891: astore 35
-    //   3893: lload 4
-    //   3895: lstore 24
-    //   3897: lload_2
-    //   3898: lstore 14
-    //   3900: lload 4
-    //   3902: lstore 22
-    //   3904: lload_2
-    //   3905: lstore 12
-    //   3907: lload 4
-    //   3909: lstore 20
-    //   3911: lload_2
-    //   3912: lstore 18
-    //   3914: lload 4
-    //   3916: lstore 26
-    //   3918: lload_2
-    //   3919: lstore 10
-    //   3921: lload 4
-    //   3923: lstore 28
-    //   3925: lload_2
-    //   3926: lstore 16
-    //   3928: ldc 76
-    //   3930: ldc_w 588
-    //   3933: invokestatic 84	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3936: aload 34
-    //   3938: astore 37
-    //   3940: lload 4
-    //   3942: lstore 8
-    //   3944: lload_2
-    //   3945: lstore 6
-    //   3947: aload 33
-    //   3949: astore 36
-    //   3951: aload 38
-    //   3953: astore 35
-    //   3955: lload 4
-    //   3957: lstore 24
-    //   3959: lload_2
-    //   3960: lstore 14
-    //   3962: lload 4
-    //   3964: lstore 22
-    //   3966: lload_2
-    //   3967: lstore 12
+    //   3654: lstore 18
+    //   3656: lload 6
+    //   3658: lstore 12
+    //   3660: lload 6
+    //   3662: lstore 14
+    //   3664: lload 6
+    //   3666: lstore 8
+    //   3668: lload 6
+    //   3670: lstore 10
+    //   3672: aload_0
+    //   3673: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   3676: lload 30
+    //   3678: putfield 78	com/tencent/mm/plugin/music/c/a:oYz	J
+    //   3681: lload 6
+    //   3683: lstore_2
+    //   3684: lload 6
+    //   3686: ldc2_w 392
+    //   3689: lcmp
+    //   3690: iflt -246 -> 3444
+    //   3693: lload 6
+    //   3695: lstore 16
+    //   3697: lload 6
+    //   3699: lstore 18
+    //   3701: lload 6
+    //   3703: lstore 12
+    //   3705: lload 6
+    //   3707: lstore 14
+    //   3709: lload 6
+    //   3711: lstore 8
+    //   3713: lload 6
+    //   3715: lstore 10
+    //   3717: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   3720: dup
+    //   3721: aload_0
+    //   3722: iconst_1
+    //   3723: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   3726: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   3729: lload 6
+    //   3731: lstore_2
+    //   3732: goto -288 -> 3444
+    //   3735: astore 36
+    //   3737: lload 16
+    //   3739: lstore_2
+    //   3740: ldc 83
+    //   3742: aload 36
+    //   3744: ldc_w 604
+    //   3747: iconst_1
+    //   3748: anewarray 4	java/lang/Object
+    //   3751: dup
+    //   3752: iconst_0
+    //   3753: aload 43
+    //   3755: invokevirtual 441	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   3758: aastore
+    //   3759: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   3762: aload_0
+    //   3763: sipush 750
+    //   3766: putfield 57	com/tencent/mm/plugin/music/c/b:cfE	I
+    //   3769: aload_0
+    //   3770: iconst_5
+    //   3771: invokespecial 436	com/tencent/mm/plugin/music/c/b:Ac	(I)V
+    //   3774: lload 4
+    //   3776: lconst_0
+    //   3777: lcmp
+    //   3778: ifne +1267 -> 5045
+    //   3781: lload_2
+    //   3782: lconst_0
+    //   3783: lcmp
+    //   3784: ifle +1261 -> 5045
+    //   3787: ldc 83
+    //   3789: ldc_w 451
+    //   3792: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3795: aload 33
+    //   3797: lload_2
+    //   3798: invokevirtual 546	java/io/RandomAccessFile:setLength	(J)V
+    //   3801: aload_0
+    //   3802: lload_2
+    //   3803: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   3806: lload_2
+    //   3807: ldc2_w 392
+    //   3810: lcmp
+    //   3811: ifge +15 -> 3826
+    //   3814: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   3817: dup
+    //   3818: aload_0
+    //   3819: iconst_1
+    //   3820: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   3823: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   3826: aload 35
+    //   3828: ifnull +8 -> 3836
+    //   3831: aload 35
+    //   3833: invokevirtual 217	java/io/InputStream:close	()V
+    //   3836: aload 33
+    //   3838: ifnull +8 -> 3846
+    //   3841: aload 33
+    //   3843: invokevirtual 547	java/io/RandomAccessFile:close	()V
+    //   3846: aload 34
+    //   3848: ifnull +16 -> 3864
+    //   3851: aload 34
+    //   3853: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   3856: invokevirtual 217	java/io/InputStream:close	()V
+    //   3859: aload 34
+    //   3861: invokevirtual 220	java/net/HttpURLConnection:disconnect	()V
+    //   3864: aload_0
+    //   3865: iconst_1
+    //   3866: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   3869: ldc 83
+    //   3871: ldc_w 458
+    //   3874: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3877: ldc_w 373
+    //   3880: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   3883: return
+    //   3884: aload 34
+    //   3886: astore 37
+    //   3888: lload 4
+    //   3890: lstore 8
+    //   3892: lload_2
+    //   3893: lstore 6
+    //   3895: aload 33
+    //   3897: astore 36
+    //   3899: aload 38
+    //   3901: astore 35
+    //   3903: lload 4
+    //   3905: lstore 26
+    //   3907: lload_2
+    //   3908: lstore 18
+    //   3910: lload 4
+    //   3912: lstore 20
+    //   3914: lload_2
+    //   3915: lstore 14
+    //   3917: lload 4
+    //   3919: lstore 22
+    //   3921: lload_2
+    //   3922: lstore 12
+    //   3924: lload 4
+    //   3926: lstore 24
+    //   3928: lload_2
+    //   3929: lstore 16
+    //   3931: lload 4
+    //   3933: lstore 28
+    //   3935: lload_2
+    //   3936: lstore 10
+    //   3938: ldc_w 606
+    //   3941: ldc_w 608
+    //   3944: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3947: goto -1149 -> 2798
+    //   3950: lload_2
+    //   3951: lconst_0
+    //   3952: lcmp
+    //   3953: ifle +414 -> 4367
+    //   3956: lload_2
+    //   3957: aload 44
+    //   3959: iconst_0
+    //   3960: laload
+    //   3961: lcmp
+    //   3962: ifeq +405 -> 4367
+    //   3965: aload 34
+    //   3967: astore 37
     //   3969: lload 4
-    //   3971: lstore 20
+    //   3971: lstore 8
     //   3973: lload_2
-    //   3974: lstore 18
-    //   3976: lload 4
-    //   3978: lstore 26
-    //   3980: lload_2
-    //   3981: lstore 10
-    //   3983: lload 4
-    //   3985: lstore 28
-    //   3987: lload_2
-    //   3988: lstore 16
-    //   3990: aload_0
-    //   3991: bipush 6
-    //   3993: invokespecial 410	com/tencent/mm/plugin/music/c/b:uG	(I)V
-    //   3996: lload 4
-    //   3998: lconst_0
-    //   3999: lcmp
-    //   4000: ifne +96 -> 4096
-    //   4003: lload_2
-    //   4004: lconst_0
-    //   4005: lcmp
-    //   4006: ifle +90 -> 4096
-    //   4009: ldc 76
-    //   4011: ldc_w 425
-    //   4014: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   4017: aload 33
-    //   4019: lload_2
-    //   4020: invokevirtual 515	java/io/RandomAccessFile:setLength	(J)V
-    //   4023: aload_0
-    //   4024: lload_2
-    //   4025: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   4028: lload_2
-    //   4029: ldc2_w 366
-    //   4032: lcmp
-    //   4033: ifge +15 -> 4048
-    //   4036: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   4039: dup
-    //   4040: aload_0
-    //   4041: iconst_1
-    //   4042: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   4045: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   4048: aload 33
-    //   4050: invokevirtual 518	java/io/RandomAccessFile:close	()V
-    //   4053: aload 34
-    //   4055: ifnull +8 -> 4063
-    //   4058: aload 34
-    //   4060: invokevirtual 182	java/net/HttpURLConnection:disconnect	()V
-    //   4063: aload_0
-    //   4064: iconst_1
-    //   4065: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   4068: ldc 76
-    //   4070: ldc_w 432
-    //   4073: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   4076: return
-    //   4077: astore 35
-    //   4079: ldc 76
-    //   4081: aload 35
-    //   4083: ldc_w 434
-    //   4086: iconst_0
-    //   4087: anewarray 4	java/lang/Object
-    //   4090: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4093: goto -70 -> 4023
-    //   4096: lload 4
-    //   4098: lconst_0
-    //   4099: lcmp
-    //   4100: ifeq +47 -> 4147
-    //   4103: lload_2
-    //   4104: lload 4
-    //   4106: lcmp
-    //   4107: ifeq +40 -> 4147
-    //   4110: ldc 76
-    //   4112: ldc_w 436
-    //   4115: iconst_2
-    //   4116: anewarray 4	java/lang/Object
-    //   4119: dup
-    //   4120: iconst_0
-    //   4121: lload 4
-    //   4123: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4126: aastore
-    //   4127: dup
-    //   4128: iconst_1
-    //   4129: lload_2
-    //   4130: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4133: aastore
-    //   4134: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4137: aload_0
-    //   4138: lload_2
-    //   4139: lload 4
-    //   4141: invokespecial 438	com/tencent/mm/plugin/music/c/b:F	(JJ)V
-    //   4144: goto -96 -> 4048
-    //   4147: lload 4
-    //   4149: lconst_0
-    //   4150: lcmp
-    //   4151: ifeq +66 -> 4217
-    //   4154: lload_2
-    //   4155: lload 4
-    //   4157: lcmp
-    //   4158: ifne +59 -> 4217
-    //   4161: ldc 76
-    //   4163: ldc_w 440
-    //   4166: iconst_2
-    //   4167: anewarray 4	java/lang/Object
-    //   4170: dup
-    //   4171: iconst_0
-    //   4172: lload 4
-    //   4174: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4177: aastore
-    //   4178: dup
-    //   4179: iconst_1
-    //   4180: lload_2
-    //   4181: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4184: aastore
-    //   4185: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4188: aload_0
-    //   4189: lload 4
-    //   4191: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   4194: lload_2
-    //   4195: ldc2_w 366
-    //   4198: lcmp
-    //   4199: ifge -151 -> 4048
-    //   4202: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   4205: dup
-    //   4206: aload_0
-    //   4207: iconst_1
-    //   4208: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   4211: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   4214: goto -166 -> 4048
-    //   4217: ldc 76
-    //   4219: ldc_w 442
-    //   4222: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   4225: goto -177 -> 4048
-    //   4228: astore 33
-    //   4230: ldc 76
-    //   4232: aload 33
-    //   4234: ldc_w 434
-    //   4237: iconst_0
-    //   4238: anewarray 4	java/lang/Object
-    //   4241: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4244: goto -191 -> 4053
-    //   4247: aload 44
-    //   4249: iconst_2
-    //   4250: laload
-    //   4251: lstore 4
-    //   4253: goto +2676 -> 6929
-    //   4256: lload 6
-    //   4258: lstore 18
-    //   4260: lload 6
-    //   4262: lstore 16
-    //   4264: lload 6
-    //   4266: lstore 14
-    //   4268: lload 6
-    //   4270: lstore 10
-    //   4272: lload 6
-    //   4274: lstore 8
-    //   4276: lload 6
-    //   4278: lstore 12
-    //   4280: aload_0
-    //   4281: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   4284: lload 6
-    //   4286: putfield 59	com/tencent/mm/plugin/music/c/a:myo	J
-    //   4289: lload 6
-    //   4291: lstore 18
-    //   4293: lload 6
-    //   4295: lstore 16
-    //   4297: lload 6
-    //   4299: lstore 14
-    //   4301: lload 6
-    //   4303: lstore 10
-    //   4305: lload 6
-    //   4307: lstore 8
-    //   4309: lload 6
-    //   4311: lstore 12
-    //   4313: aload_0
-    //   4314: getfield 54	com/tencent/mm/plugin/music/c/b:myv	Lcom/tencent/mm/plugin/music/c/a;
-    //   4317: lload 30
-    //   4319: putfield 62	com/tencent/mm/plugin/music/c/a:myp	J
-    //   4322: goto -718 -> 3604
-    //   4325: astore 38
-    //   4327: aload 35
-    //   4329: astore 39
-    //   4331: lload 16
-    //   4333: lstore_2
-    //   4334: aload 34
-    //   4336: astore 37
-    //   4338: lload 4
-    //   4340: lstore 8
-    //   4342: lload_2
-    //   4343: lstore 6
-    //   4345: aload 33
-    //   4347: astore 36
-    //   4349: aload 39
-    //   4351: astore 35
-    //   4353: ldc 76
-    //   4355: aload 38
-    //   4357: ldc_w 581
-    //   4360: iconst_1
-    //   4361: anewarray 4	java/lang/Object
-    //   4364: dup
-    //   4365: iconst_0
-    //   4366: aload 43
-    //   4368: invokevirtual 415	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   4371: aastore
-    //   4372: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4375: aload 34
-    //   4377: astore 37
-    //   4379: lload 4
-    //   4381: lstore 8
-    //   4383: lload_2
-    //   4384: lstore 6
-    //   4386: aload 33
-    //   4388: astore 36
-    //   4390: aload 39
-    //   4392: astore 35
-    //   4394: aload_0
-    //   4395: sipush 751
-    //   4398: putfield 50	com/tencent/mm/plugin/music/c/b:dUg	I
-    //   4401: aload 34
-    //   4403: astore 37
-    //   4405: lload 4
-    //   4407: lstore 8
-    //   4409: lload_2
-    //   4410: lstore 6
-    //   4412: aload 33
-    //   4414: astore 36
-    //   4416: aload 39
-    //   4418: astore 35
-    //   4420: aload_0
-    //   4421: iconst_5
-    //   4422: invokespecial 410	com/tencent/mm/plugin/music/c/b:uG	(I)V
-    //   4425: lload 4
-    //   4427: lconst_0
-    //   4428: lcmp
-    //   4429: ifne +642 -> 5071
-    //   4432: lload_2
-    //   4433: lconst_0
-    //   4434: lcmp
-    //   4435: ifle +636 -> 5071
-    //   4438: ldc 76
-    //   4440: ldc_w 425
-    //   4443: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   4446: aload 33
-    //   4448: lload_2
-    //   4449: invokevirtual 515	java/io/RandomAccessFile:setLength	(J)V
-    //   4452: aload_0
-    //   4453: lload_2
-    //   4454: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   4457: lload_2
-    //   4458: ldc2_w 366
-    //   4461: lcmp
-    //   4462: ifge +15 -> 4477
-    //   4465: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   4468: dup
-    //   4469: aload_0
-    //   4470: iconst_1
-    //   4471: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   4474: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   4477: aload 39
-    //   4479: ifnull +8 -> 4487
-    //   4482: aload 39
-    //   4484: invokevirtual 582	java/io/InputStream:close	()V
-    //   4487: aload 33
-    //   4489: ifnull +8 -> 4497
-    //   4492: aload 33
-    //   4494: invokevirtual 518	java/io/RandomAccessFile:close	()V
-    //   4497: aload 34
-    //   4499: ifnull +8 -> 4507
-    //   4502: aload 34
-    //   4504: invokevirtual 182	java/net/HttpURLConnection:disconnect	()V
-    //   4507: aload_0
-    //   4508: iconst_1
-    //   4509: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   4512: ldc 76
-    //   4514: ldc_w 432
-    //   4517: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   4520: return
-    //   4521: lload_2
-    //   4522: lstore 18
-    //   4524: lload_2
-    //   4525: lstore 16
-    //   4527: lload_2
-    //   4528: lstore 14
-    //   4530: lload_2
-    //   4531: lstore 10
-    //   4533: lload_2
-    //   4534: lstore 8
-    //   4536: lload_2
-    //   4537: lstore 12
-    //   4539: ldc 76
-    //   4541: ldc_w 590
-    //   4544: iconst_4
-    //   4545: anewarray 4	java/lang/Object
-    //   4548: dup
-    //   4549: iconst_0
-    //   4550: iload_1
-    //   4551: invokestatic 269	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   4554: aastore
-    //   4555: dup
-    //   4556: iconst_1
-    //   4557: aload_0
-    //   4558: getfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   4561: invokestatic 391	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   4564: aastore
-    //   4565: dup
-    //   4566: iconst_2
-    //   4567: lload_2
-    //   4568: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4571: aastore
-    //   4572: dup
-    //   4573: iconst_3
-    //   4574: lload 30
-    //   4576: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4579: aastore
-    //   4580: invokestatic 291	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4583: lload 4
-    //   4585: lconst_0
-    //   4586: lcmp
-    //   4587: ifne +106 -> 4693
-    //   4590: lload_2
-    //   4591: lconst_0
-    //   4592: lcmp
-    //   4593: ifle +100 -> 4693
-    //   4596: ldc 76
-    //   4598: ldc_w 425
-    //   4601: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   4604: aload 33
-    //   4606: lload_2
-    //   4607: invokevirtual 515	java/io/RandomAccessFile:setLength	(J)V
-    //   4610: aload_0
-    //   4611: lload_2
-    //   4612: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   4615: lload_2
-    //   4616: ldc2_w 366
-    //   4619: lcmp
-    //   4620: ifge +15 -> 4635
-    //   4623: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   4626: dup
-    //   4627: aload_0
-    //   4628: iconst_1
-    //   4629: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   4632: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   4635: aload 35
-    //   4637: ifnull +8 -> 4645
-    //   4640: aload 35
-    //   4642: invokevirtual 582	java/io/InputStream:close	()V
-    //   4645: aload 33
-    //   4647: invokevirtual 518	java/io/RandomAccessFile:close	()V
-    //   4650: aload 34
-    //   4652: ifnull +8 -> 4660
-    //   4655: aload 34
-    //   4657: invokevirtual 182	java/net/HttpURLConnection:disconnect	()V
-    //   4660: aload_0
-    //   4661: iconst_1
-    //   4662: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   4665: ldc 76
-    //   4667: ldc_w 432
-    //   4670: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   4673: return
-    //   4674: astore 36
-    //   4676: ldc 76
-    //   4678: aload 36
-    //   4680: ldc_w 434
+    //   3974: lstore 6
+    //   3976: aload 33
+    //   3978: astore 36
+    //   3980: aload 38
+    //   3982: astore 35
+    //   3984: lload 4
+    //   3986: lstore 26
+    //   3988: lload_2
+    //   3989: lstore 18
+    //   3991: lload 4
+    //   3993: lstore 20
+    //   3995: lload_2
+    //   3996: lstore 14
+    //   3998: lload 4
+    //   4000: lstore 22
+    //   4002: lload_2
+    //   4003: lstore 12
+    //   4005: lload 4
+    //   4007: lstore 24
+    //   4009: lload_2
+    //   4010: lstore 16
+    //   4012: lload 4
+    //   4014: lstore 28
+    //   4016: lload_2
+    //   4017: lstore 10
+    //   4019: ldc 83
+    //   4021: ldc_w 610
+    //   4024: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4027: aload 34
+    //   4029: astore 37
+    //   4031: lload 4
+    //   4033: lstore 8
+    //   4035: lload_2
+    //   4036: lstore 6
+    //   4038: aload 33
+    //   4040: astore 36
+    //   4042: aload 38
+    //   4044: astore 35
+    //   4046: lload 4
+    //   4048: lstore 26
+    //   4050: lload_2
+    //   4051: lstore 18
+    //   4053: lload 4
+    //   4055: lstore 20
+    //   4057: lload_2
+    //   4058: lstore 14
+    //   4060: lload 4
+    //   4062: lstore 22
+    //   4064: lload_2
+    //   4065: lstore 12
+    //   4067: lload 4
+    //   4069: lstore 24
+    //   4071: lload_2
+    //   4072: lstore 16
+    //   4074: lload 4
+    //   4076: lstore 28
+    //   4078: lload_2
+    //   4079: lstore 10
+    //   4081: aload_0
+    //   4082: bipush 6
+    //   4084: invokespecial 436	com/tencent/mm/plugin/music/c/b:Ac	(I)V
+    //   4087: lload 4
+    //   4089: lconst_0
+    //   4090: lcmp
+    //   4091: ifne +110 -> 4201
+    //   4094: lload_2
+    //   4095: lconst_0
+    //   4096: lcmp
+    //   4097: ifle +104 -> 4201
+    //   4100: ldc 83
+    //   4102: ldc_w 451
+    //   4105: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4108: aload 33
+    //   4110: lload_2
+    //   4111: invokevirtual 546	java/io/RandomAccessFile:setLength	(J)V
+    //   4114: aload_0
+    //   4115: lload_2
+    //   4116: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   4119: lload_2
+    //   4120: ldc2_w 392
+    //   4123: lcmp
+    //   4124: ifge +15 -> 4139
+    //   4127: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   4130: dup
+    //   4131: aload_0
+    //   4132: iconst_1
+    //   4133: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   4136: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   4139: aload 33
+    //   4141: invokevirtual 547	java/io/RandomAccessFile:close	()V
+    //   4144: aload 34
+    //   4146: ifnull +16 -> 4162
+    //   4149: aload 34
+    //   4151: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   4154: invokevirtual 217	java/io/InputStream:close	()V
+    //   4157: aload 34
+    //   4159: invokevirtual 220	java/net/HttpURLConnection:disconnect	()V
+    //   4162: aload_0
+    //   4163: iconst_1
+    //   4164: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   4167: ldc 83
+    //   4169: ldc_w 458
+    //   4172: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4175: ldc_w 373
+    //   4178: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   4181: return
+    //   4182: astore 35
+    //   4184: ldc 83
+    //   4186: aload 35
+    //   4188: ldc_w 460
+    //   4191: iconst_0
+    //   4192: anewarray 4	java/lang/Object
+    //   4195: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   4198: goto -84 -> 4114
+    //   4201: lload 4
+    //   4203: lconst_0
+    //   4204: lcmp
+    //   4205: ifeq +47 -> 4252
+    //   4208: lload_2
+    //   4209: lload 4
+    //   4211: lcmp
+    //   4212: ifeq +40 -> 4252
+    //   4215: ldc 83
+    //   4217: ldc_w 462
+    //   4220: iconst_2
+    //   4221: anewarray 4	java/lang/Object
+    //   4224: dup
+    //   4225: iconst_0
+    //   4226: lload 4
+    //   4228: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   4231: aastore
+    //   4232: dup
+    //   4233: iconst_1
+    //   4234: lload_2
+    //   4235: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   4238: aastore
+    //   4239: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   4242: aload_0
+    //   4243: lload_2
+    //   4244: lload 4
+    //   4246: invokespecial 464	com/tencent/mm/plugin/music/c/b:R	(JJ)V
+    //   4249: goto -110 -> 4139
+    //   4252: lload 4
+    //   4254: lconst_0
+    //   4255: lcmp
+    //   4256: ifeq +66 -> 4322
+    //   4259: lload_2
+    //   4260: lload 4
+    //   4262: lcmp
+    //   4263: ifne +59 -> 4322
+    //   4266: ldc 83
+    //   4268: ldc_w 466
+    //   4271: iconst_2
+    //   4272: anewarray 4	java/lang/Object
+    //   4275: dup
+    //   4276: iconst_0
+    //   4277: lload 4
+    //   4279: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   4282: aastore
+    //   4283: dup
+    //   4284: iconst_1
+    //   4285: lload_2
+    //   4286: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   4289: aastore
+    //   4290: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   4293: aload_0
+    //   4294: lload 4
+    //   4296: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   4299: lload_2
+    //   4300: ldc2_w 392
+    //   4303: lcmp
+    //   4304: ifge -165 -> 4139
+    //   4307: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   4310: dup
+    //   4311: aload_0
+    //   4312: iconst_1
+    //   4313: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   4316: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   4319: goto -180 -> 4139
+    //   4322: ldc 83
+    //   4324: ldc_w 468
+    //   4327: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4330: goto -191 -> 4139
+    //   4333: astore 33
+    //   4335: ldc 83
+    //   4337: aload 33
+    //   4339: ldc_w 460
+    //   4342: iconst_0
+    //   4343: anewarray 4	java/lang/Object
+    //   4346: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   4349: goto -205 -> 4144
+    //   4352: astore 33
+    //   4354: ldc 83
+    //   4356: aload 33
+    //   4358: invokevirtual 298	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   4361: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4364: goto -207 -> 4157
+    //   4367: aload 44
+    //   4369: iconst_2
+    //   4370: laload
+    //   4371: lstore 4
+    //   4373: goto +2865 -> 7238
+    //   4376: lload 6
+    //   4378: lstore 16
+    //   4380: lload 6
+    //   4382: lstore 18
+    //   4384: lload 6
+    //   4386: lstore 12
+    //   4388: lload 6
+    //   4390: lstore 14
+    //   4392: lload 6
+    //   4394: lstore 8
+    //   4396: lload 6
+    //   4398: lstore 10
+    //   4400: aload_0
+    //   4401: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   4404: lload 6
+    //   4406: putfield 66	com/tencent/mm/plugin/music/c/a:oYv	J
+    //   4409: lload 6
+    //   4411: lstore 16
+    //   4413: lload 6
+    //   4415: lstore 18
+    //   4417: lload 6
+    //   4419: lstore 12
+    //   4421: lload 6
+    //   4423: lstore 14
+    //   4425: lload 6
+    //   4427: lstore 8
+    //   4429: lload 6
+    //   4431: lstore 10
+    //   4433: aload_0
+    //   4434: getfield 61	com/tencent/mm/plugin/music/c/b:oYC	Lcom/tencent/mm/plugin/music/c/a;
+    //   4437: lload 30
+    //   4439: putfield 69	com/tencent/mm/plugin/music/c/a:oYw	J
+    //   4442: goto -761 -> 3681
+    //   4445: astore 38
+    //   4447: aload 35
+    //   4449: astore 39
+    //   4451: lload 18
+    //   4453: lstore_2
+    //   4454: aload 34
+    //   4456: astore 37
+    //   4458: lload 4
+    //   4460: lstore 8
+    //   4462: lload_2
+    //   4463: lstore 6
+    //   4465: aload 33
+    //   4467: astore 36
+    //   4469: aload 39
+    //   4471: astore 35
+    //   4473: ldc 83
+    //   4475: aload 38
+    //   4477: ldc_w 604
+    //   4480: iconst_1
+    //   4481: anewarray 4	java/lang/Object
+    //   4484: dup
+    //   4485: iconst_0
+    //   4486: aload 43
+    //   4488: invokevirtual 441	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   4491: aastore
+    //   4492: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   4495: aload 34
+    //   4497: astore 37
+    //   4499: lload 4
+    //   4501: lstore 8
+    //   4503: lload_2
+    //   4504: lstore 6
+    //   4506: aload 33
+    //   4508: astore 36
+    //   4510: aload 39
+    //   4512: astore 35
+    //   4514: aload_0
+    //   4515: sipush 751
+    //   4518: putfield 57	com/tencent/mm/plugin/music/c/b:cfE	I
+    //   4521: aload 34
+    //   4523: astore 37
+    //   4525: lload 4
+    //   4527: lstore 8
+    //   4529: lload_2
+    //   4530: lstore 6
+    //   4532: aload 33
+    //   4534: astore 36
+    //   4536: aload 39
+    //   4538: astore 35
+    //   4540: aload_0
+    //   4541: iconst_5
+    //   4542: invokespecial 436	com/tencent/mm/plugin/music/c/b:Ac	(I)V
+    //   4545: lload 4
+    //   4547: lconst_0
+    //   4548: lcmp
+    //   4549: ifne +700 -> 5249
+    //   4552: lload_2
+    //   4553: lconst_0
+    //   4554: lcmp
+    //   4555: ifle +694 -> 5249
+    //   4558: ldc 83
+    //   4560: ldc_w 451
+    //   4563: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4566: aload 33
+    //   4568: lload_2
+    //   4569: invokevirtual 546	java/io/RandomAccessFile:setLength	(J)V
+    //   4572: aload_0
+    //   4573: lload_2
+    //   4574: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   4577: lload_2
+    //   4578: ldc2_w 392
+    //   4581: lcmp
+    //   4582: ifge +15 -> 4597
+    //   4585: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   4588: dup
+    //   4589: aload_0
+    //   4590: iconst_1
+    //   4591: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   4594: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   4597: aload 39
+    //   4599: ifnull +8 -> 4607
+    //   4602: aload 39
+    //   4604: invokevirtual 217	java/io/InputStream:close	()V
+    //   4607: aload 33
+    //   4609: ifnull +8 -> 4617
+    //   4612: aload 33
+    //   4614: invokevirtual 547	java/io/RandomAccessFile:close	()V
+    //   4617: aload 34
+    //   4619: ifnull +16 -> 4635
+    //   4622: aload 34
+    //   4624: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   4627: invokevirtual 217	java/io/InputStream:close	()V
+    //   4630: aload 34
+    //   4632: invokevirtual 220	java/net/HttpURLConnection:disconnect	()V
+    //   4635: aload_0
+    //   4636: iconst_1
+    //   4637: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   4640: ldc 83
+    //   4642: ldc_w 458
+    //   4645: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4648: ldc_w 373
+    //   4651: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   4654: return
+    //   4655: lload_2
+    //   4656: lstore 16
+    //   4658: lload_2
+    //   4659: lstore 18
+    //   4661: lload_2
+    //   4662: lstore 12
+    //   4664: lload_2
+    //   4665: lstore 14
+    //   4667: lload_2
+    //   4668: lstore 8
+    //   4670: lload_2
+    //   4671: lstore 10
+    //   4673: ldc 83
+    //   4675: ldc_w 612
+    //   4678: iconst_4
+    //   4679: anewarray 4	java/lang/Object
+    //   4682: dup
     //   4683: iconst_0
-    //   4684: anewarray 4	java/lang/Object
-    //   4687: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4690: goto -80 -> 4610
-    //   4693: lload 4
-    //   4695: lconst_0
-    //   4696: lcmp
-    //   4697: ifeq +47 -> 4744
-    //   4700: lload_2
-    //   4701: lload 4
-    //   4703: lcmp
-    //   4704: ifeq +40 -> 4744
-    //   4707: ldc 76
-    //   4709: ldc_w 436
-    //   4712: iconst_2
-    //   4713: anewarray 4	java/lang/Object
-    //   4716: dup
-    //   4717: iconst_0
-    //   4718: lload 4
-    //   4720: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4723: aastore
-    //   4724: dup
-    //   4725: iconst_1
-    //   4726: lload_2
-    //   4727: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4730: aastore
-    //   4731: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4734: aload_0
-    //   4735: lload_2
-    //   4736: lload 4
-    //   4738: invokespecial 438	com/tencent/mm/plugin/music/c/b:F	(JJ)V
-    //   4741: goto -106 -> 4635
-    //   4744: lload 4
-    //   4746: lconst_0
-    //   4747: lcmp
-    //   4748: ifeq +66 -> 4814
-    //   4751: lload_2
-    //   4752: lload 4
-    //   4754: lcmp
-    //   4755: ifne +59 -> 4814
-    //   4758: ldc 76
-    //   4760: ldc_w 440
-    //   4763: iconst_2
-    //   4764: anewarray 4	java/lang/Object
-    //   4767: dup
-    //   4768: iconst_0
-    //   4769: lload 4
-    //   4771: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4774: aastore
-    //   4775: dup
-    //   4776: iconst_1
-    //   4777: lload_2
-    //   4778: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4781: aastore
-    //   4782: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4785: aload_0
-    //   4786: lload 4
-    //   4788: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   4791: lload_2
-    //   4792: ldc2_w 366
-    //   4795: lcmp
-    //   4796: ifge -161 -> 4635
-    //   4799: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   4802: dup
-    //   4803: aload_0
-    //   4804: iconst_1
-    //   4805: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   4808: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   4811: goto -176 -> 4635
-    //   4814: ldc 76
-    //   4816: ldc_w 442
-    //   4819: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   4822: goto -187 -> 4635
-    //   4825: astore 35
-    //   4827: ldc 76
-    //   4829: aload 35
-    //   4831: ldc_w 592
-    //   4834: iconst_0
-    //   4835: anewarray 4	java/lang/Object
-    //   4838: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4841: goto -196 -> 4645
-    //   4844: astore 33
-    //   4846: ldc 76
-    //   4848: aload 33
-    //   4850: ldc_w 434
-    //   4853: iconst_0
-    //   4854: anewarray 4	java/lang/Object
-    //   4857: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4860: goto -210 -> 4650
-    //   4863: astore 36
-    //   4865: ldc 76
-    //   4867: aload 36
-    //   4869: ldc_w 434
-    //   4872: iconst_0
-    //   4873: anewarray 4	java/lang/Object
-    //   4876: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4879: goto -1155 -> 3724
-    //   4882: lload 4
-    //   4884: lconst_0
-    //   4885: lcmp
-    //   4886: ifeq +47 -> 4933
-    //   4889: lload_2
-    //   4890: lload 4
-    //   4892: lcmp
-    //   4893: ifeq +40 -> 4933
-    //   4896: ldc 76
-    //   4898: ldc_w 436
-    //   4901: iconst_2
-    //   4902: anewarray 4	java/lang/Object
-    //   4905: dup
-    //   4906: iconst_0
-    //   4907: lload 4
-    //   4909: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4912: aastore
-    //   4913: dup
-    //   4914: iconst_1
-    //   4915: lload_2
-    //   4916: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4919: aastore
-    //   4920: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4923: aload_0
-    //   4924: lload_2
-    //   4925: lload 4
-    //   4927: invokespecial 438	com/tencent/mm/plugin/music/c/b:F	(JJ)V
-    //   4930: goto -1181 -> 3749
-    //   4933: lload 4
-    //   4935: lconst_0
-    //   4936: lcmp
-    //   4937: ifeq +66 -> 5003
-    //   4940: lload_2
-    //   4941: lload 4
+    //   4684: iload_1
+    //   4685: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   4688: aastore
+    //   4689: dup
+    //   4690: iconst_1
+    //   4691: aload_0
+    //   4692: getfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   4695: invokestatic 417	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   4698: aastore
+    //   4699: dup
+    //   4700: iconst_2
+    //   4701: lload_2
+    //   4702: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   4705: aastore
+    //   4706: dup
+    //   4707: iconst_3
+    //   4708: lload 30
+    //   4710: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   4713: aastore
+    //   4714: invokestatic 330	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   4717: lload 4
+    //   4719: lconst_0
+    //   4720: lcmp
+    //   4721: ifne +120 -> 4841
+    //   4724: lload_2
+    //   4725: lconst_0
+    //   4726: lcmp
+    //   4727: ifle +114 -> 4841
+    //   4730: ldc 83
+    //   4732: ldc_w 451
+    //   4735: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4738: aload 33
+    //   4740: lload_2
+    //   4741: invokevirtual 546	java/io/RandomAccessFile:setLength	(J)V
+    //   4744: aload_0
+    //   4745: lload_2
+    //   4746: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   4749: lload_2
+    //   4750: ldc2_w 392
+    //   4753: lcmp
+    //   4754: ifge +15 -> 4769
+    //   4757: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   4760: dup
+    //   4761: aload_0
+    //   4762: iconst_1
+    //   4763: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   4766: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   4769: aload 35
+    //   4771: ifnull +8 -> 4779
+    //   4774: aload 35
+    //   4776: invokevirtual 217	java/io/InputStream:close	()V
+    //   4779: aload 33
+    //   4781: invokevirtual 547	java/io/RandomAccessFile:close	()V
+    //   4784: aload 34
+    //   4786: ifnull +16 -> 4802
+    //   4789: aload 34
+    //   4791: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   4794: invokevirtual 217	java/io/InputStream:close	()V
+    //   4797: aload 34
+    //   4799: invokevirtual 220	java/net/HttpURLConnection:disconnect	()V
+    //   4802: aload_0
+    //   4803: iconst_1
+    //   4804: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   4807: ldc 83
+    //   4809: ldc_w 458
+    //   4812: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4815: ldc_w 373
+    //   4818: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   4821: return
+    //   4822: astore 36
+    //   4824: ldc 83
+    //   4826: aload 36
+    //   4828: ldc_w 460
+    //   4831: iconst_0
+    //   4832: anewarray 4	java/lang/Object
+    //   4835: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   4838: goto -94 -> 4744
+    //   4841: lload 4
+    //   4843: lconst_0
+    //   4844: lcmp
+    //   4845: ifeq +47 -> 4892
+    //   4848: lload_2
+    //   4849: lload 4
+    //   4851: lcmp
+    //   4852: ifeq +40 -> 4892
+    //   4855: ldc 83
+    //   4857: ldc_w 462
+    //   4860: iconst_2
+    //   4861: anewarray 4	java/lang/Object
+    //   4864: dup
+    //   4865: iconst_0
+    //   4866: lload 4
+    //   4868: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   4871: aastore
+    //   4872: dup
+    //   4873: iconst_1
+    //   4874: lload_2
+    //   4875: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   4878: aastore
+    //   4879: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   4882: aload_0
+    //   4883: lload_2
+    //   4884: lload 4
+    //   4886: invokespecial 464	com/tencent/mm/plugin/music/c/b:R	(JJ)V
+    //   4889: goto -120 -> 4769
+    //   4892: lload 4
+    //   4894: lconst_0
+    //   4895: lcmp
+    //   4896: ifeq +66 -> 4962
+    //   4899: lload_2
+    //   4900: lload 4
+    //   4902: lcmp
+    //   4903: ifne +59 -> 4962
+    //   4906: ldc 83
+    //   4908: ldc_w 466
+    //   4911: iconst_2
+    //   4912: anewarray 4	java/lang/Object
+    //   4915: dup
+    //   4916: iconst_0
+    //   4917: lload 4
+    //   4919: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   4922: aastore
+    //   4923: dup
+    //   4924: iconst_1
+    //   4925: lload_2
+    //   4926: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   4929: aastore
+    //   4930: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   4933: aload_0
+    //   4934: lload 4
+    //   4936: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   4939: lload_2
+    //   4940: ldc2_w 392
     //   4943: lcmp
-    //   4944: ifne +59 -> 5003
-    //   4947: ldc 76
-    //   4949: ldc_w 440
-    //   4952: iconst_2
-    //   4953: anewarray 4	java/lang/Object
-    //   4956: dup
-    //   4957: iconst_0
-    //   4958: lload 4
-    //   4960: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4963: aastore
-    //   4964: dup
-    //   4965: iconst_1
-    //   4966: lload_2
-    //   4967: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   4970: aastore
-    //   4971: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   4974: aload_0
-    //   4975: lload 4
-    //   4977: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   4980: lload_2
-    //   4981: ldc2_w 366
-    //   4984: lcmp
-    //   4985: ifge -1236 -> 3749
-    //   4988: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   4991: dup
-    //   4992: aload_0
-    //   4993: iconst_1
-    //   4994: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   4997: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   5000: goto -1251 -> 3749
-    //   5003: ldc 76
-    //   5005: ldc_w 442
-    //   5008: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   5011: goto -1262 -> 3749
-    //   5014: astore 35
-    //   5016: ldc 76
-    //   5018: aload 35
-    //   5020: ldc_w 592
-    //   5023: iconst_0
-    //   5024: anewarray 4	java/lang/Object
-    //   5027: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5030: goto -1271 -> 3759
-    //   5033: astore 33
-    //   5035: ldc 76
-    //   5037: aload 33
-    //   5039: ldc_w 434
-    //   5042: iconst_0
-    //   5043: anewarray 4	java/lang/Object
-    //   5046: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5049: goto -1280 -> 3769
-    //   5052: astore 35
-    //   5054: ldc 76
-    //   5056: aload 35
-    //   5058: ldc_w 434
-    //   5061: iconst_0
-    //   5062: anewarray 4	java/lang/Object
-    //   5065: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5068: goto -616 -> 4452
-    //   5071: lload 4
-    //   5073: lconst_0
-    //   5074: lcmp
-    //   5075: ifeq +47 -> 5122
+    //   4944: ifge -175 -> 4769
+    //   4947: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   4950: dup
+    //   4951: aload_0
+    //   4952: iconst_1
+    //   4953: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   4956: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   4959: goto -190 -> 4769
+    //   4962: ldc 83
+    //   4964: ldc_w 468
+    //   4967: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4970: goto -201 -> 4769
+    //   4973: astore 35
+    //   4975: ldc 83
+    //   4977: aload 35
+    //   4979: ldc_w 614
+    //   4982: iconst_0
+    //   4983: anewarray 4	java/lang/Object
+    //   4986: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   4989: goto -210 -> 4779
+    //   4992: astore 33
+    //   4994: ldc 83
+    //   4996: aload 33
+    //   4998: ldc_w 460
+    //   5001: iconst_0
+    //   5002: anewarray 4	java/lang/Object
+    //   5005: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5008: goto -224 -> 4784
+    //   5011: astore 33
+    //   5013: ldc 83
+    //   5015: aload 33
+    //   5017: invokevirtual 298	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   5020: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   5023: goto -226 -> 4797
+    //   5026: astore 36
+    //   5028: ldc 83
+    //   5030: aload 36
+    //   5032: ldc_w 460
+    //   5035: iconst_0
+    //   5036: anewarray 4	java/lang/Object
+    //   5039: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5042: goto -1241 -> 3801
+    //   5045: lload 4
+    //   5047: lconst_0
+    //   5048: lcmp
+    //   5049: ifeq +47 -> 5096
+    //   5052: lload_2
+    //   5053: lload 4
+    //   5055: lcmp
+    //   5056: ifeq +40 -> 5096
+    //   5059: ldc 83
+    //   5061: ldc_w 462
+    //   5064: iconst_2
+    //   5065: anewarray 4	java/lang/Object
+    //   5068: dup
+    //   5069: iconst_0
+    //   5070: lload 4
+    //   5072: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5075: aastore
+    //   5076: dup
+    //   5077: iconst_1
     //   5078: lload_2
-    //   5079: lload 4
-    //   5081: lcmp
-    //   5082: ifeq +40 -> 5122
-    //   5085: ldc 76
-    //   5087: ldc_w 436
-    //   5090: iconst_2
-    //   5091: anewarray 4	java/lang/Object
-    //   5094: dup
-    //   5095: iconst_0
+    //   5079: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5082: aastore
+    //   5083: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5086: aload_0
+    //   5087: lload_2
+    //   5088: lload 4
+    //   5090: invokespecial 464	com/tencent/mm/plugin/music/c/b:R	(JJ)V
+    //   5093: goto -1267 -> 3826
     //   5096: lload 4
-    //   5098: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5101: aastore
-    //   5102: dup
-    //   5103: iconst_1
-    //   5104: lload_2
-    //   5105: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5108: aastore
-    //   5109: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5112: aload_0
-    //   5113: lload_2
-    //   5114: lload 4
-    //   5116: invokespecial 438	com/tencent/mm/plugin/music/c/b:F	(JJ)V
-    //   5119: goto -642 -> 4477
-    //   5122: lload 4
-    //   5124: lconst_0
-    //   5125: lcmp
-    //   5126: ifeq +66 -> 5192
+    //   5098: lconst_0
+    //   5099: lcmp
+    //   5100: ifeq +66 -> 5166
+    //   5103: lload_2
+    //   5104: lload 4
+    //   5106: lcmp
+    //   5107: ifne +59 -> 5166
+    //   5110: ldc 83
+    //   5112: ldc_w 466
+    //   5115: iconst_2
+    //   5116: anewarray 4	java/lang/Object
+    //   5119: dup
+    //   5120: iconst_0
+    //   5121: lload 4
+    //   5123: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5126: aastore
+    //   5127: dup
+    //   5128: iconst_1
     //   5129: lload_2
-    //   5130: lload 4
-    //   5132: lcmp
-    //   5133: ifne +59 -> 5192
-    //   5136: ldc 76
-    //   5138: ldc_w 440
-    //   5141: iconst_2
-    //   5142: anewarray 4	java/lang/Object
-    //   5145: dup
-    //   5146: iconst_0
-    //   5147: lload 4
-    //   5149: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5152: aastore
-    //   5153: dup
-    //   5154: iconst_1
-    //   5155: lload_2
-    //   5156: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5159: aastore
-    //   5160: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5163: aload_0
-    //   5164: lload 4
-    //   5166: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   5169: lload_2
-    //   5170: ldc2_w 366
-    //   5173: lcmp
-    //   5174: ifge -697 -> 4477
-    //   5177: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   5180: dup
-    //   5181: aload_0
-    //   5182: iconst_1
-    //   5183: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   5186: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   5189: goto -712 -> 4477
-    //   5192: ldc 76
-    //   5194: ldc_w 442
-    //   5197: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   5200: goto -723 -> 4477
-    //   5203: astore 35
-    //   5205: ldc 76
-    //   5207: aload 35
-    //   5209: ldc_w 592
-    //   5212: iconst_0
-    //   5213: anewarray 4	java/lang/Object
-    //   5216: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5219: goto -732 -> 4487
-    //   5222: astore 33
-    //   5224: ldc 76
-    //   5226: aload 33
-    //   5228: ldc_w 434
-    //   5231: iconst_0
-    //   5232: anewarray 4	java/lang/Object
-    //   5235: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5238: goto -741 -> 4497
-    //   5241: astore 38
-    //   5243: aconst_null
-    //   5244: astore 33
-    //   5246: aconst_null
-    //   5247: astore 34
-    //   5249: aload 41
-    //   5251: astore 39
-    //   5253: aload 34
-    //   5255: astore 37
+    //   5130: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5133: aastore
+    //   5134: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5137: aload_0
+    //   5138: lload 4
+    //   5140: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   5143: lload_2
+    //   5144: ldc2_w 392
+    //   5147: lcmp
+    //   5148: ifge -1322 -> 3826
+    //   5151: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   5154: dup
+    //   5155: aload_0
+    //   5156: iconst_1
+    //   5157: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   5160: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   5163: goto -1337 -> 3826
+    //   5166: ldc 83
+    //   5168: ldc_w 468
+    //   5171: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   5174: goto -1348 -> 3826
+    //   5177: astore 35
+    //   5179: ldc 83
+    //   5181: aload 35
+    //   5183: ldc_w 614
+    //   5186: iconst_0
+    //   5187: anewarray 4	java/lang/Object
+    //   5190: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5193: goto -1357 -> 3836
+    //   5196: astore 33
+    //   5198: ldc 83
+    //   5200: aload 33
+    //   5202: ldc_w 460
+    //   5205: iconst_0
+    //   5206: anewarray 4	java/lang/Object
+    //   5209: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5212: goto -1366 -> 3846
+    //   5215: astore 33
+    //   5217: ldc 83
+    //   5219: aload 33
+    //   5221: invokevirtual 298	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   5224: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   5227: goto -1368 -> 3859
+    //   5230: astore 35
+    //   5232: ldc 83
+    //   5234: aload 35
+    //   5236: ldc_w 460
+    //   5239: iconst_0
+    //   5240: anewarray 4	java/lang/Object
+    //   5243: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5246: goto -674 -> 4572
+    //   5249: lload 4
+    //   5251: lconst_0
+    //   5252: lcmp
+    //   5253: ifeq +47 -> 5300
+    //   5256: lload_2
     //   5257: lload 4
-    //   5259: lstore 8
-    //   5261: lload_2
-    //   5262: lstore 6
-    //   5264: aload 33
-    //   5266: astore 36
-    //   5268: aload 39
-    //   5270: astore 35
-    //   5272: ldc 76
-    //   5274: aload 38
-    //   5276: ldc_w 581
-    //   5279: iconst_1
-    //   5280: anewarray 4	java/lang/Object
-    //   5283: dup
-    //   5284: iconst_0
-    //   5285: aload 43
-    //   5287: invokevirtual 415	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   5290: aastore
-    //   5291: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5294: aload 34
-    //   5296: astore 37
-    //   5298: lload 4
-    //   5300: lstore 8
-    //   5302: lload_2
-    //   5303: lstore 6
-    //   5305: aload 33
-    //   5307: astore 36
-    //   5309: aload 39
-    //   5311: astore 35
-    //   5313: aload_0
-    //   5314: sipush 752
-    //   5317: putfield 50	com/tencent/mm/plugin/music/c/b:dUg	I
-    //   5320: aload 34
-    //   5322: astore 37
-    //   5324: lload 4
-    //   5326: lstore 8
-    //   5328: lload_2
-    //   5329: lstore 6
-    //   5331: aload 33
-    //   5333: astore 36
-    //   5335: aload 39
-    //   5337: astore 35
-    //   5339: aload_0
-    //   5340: iconst_5
-    //   5341: invokespecial 410	com/tencent/mm/plugin/music/c/b:uG	(I)V
-    //   5344: lload 4
-    //   5346: lconst_0
-    //   5347: lcmp
-    //   5348: ifne +111 -> 5459
-    //   5351: lload_2
-    //   5352: lconst_0
-    //   5353: lcmp
-    //   5354: ifle +105 -> 5459
-    //   5357: ldc 76
-    //   5359: ldc_w 425
-    //   5362: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   5365: aload 33
-    //   5367: lload_2
-    //   5368: invokevirtual 515	java/io/RandomAccessFile:setLength	(J)V
-    //   5371: aload_0
-    //   5372: lload_2
-    //   5373: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   5376: lload_2
-    //   5377: ldc2_w 366
-    //   5380: lcmp
-    //   5381: ifge +15 -> 5396
-    //   5384: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   5387: dup
-    //   5388: aload_0
-    //   5389: iconst_1
-    //   5390: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   5393: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   5396: aload 39
-    //   5398: ifnull +8 -> 5406
-    //   5401: aload 39
-    //   5403: invokevirtual 582	java/io/InputStream:close	()V
-    //   5406: aload 33
-    //   5408: ifnull +8 -> 5416
-    //   5411: aload 33
-    //   5413: invokevirtual 518	java/io/RandomAccessFile:close	()V
-    //   5416: aload 34
-    //   5418: ifnull +8 -> 5426
-    //   5421: aload 34
-    //   5423: invokevirtual 182	java/net/HttpURLConnection:disconnect	()V
-    //   5426: aload_0
-    //   5427: iconst_1
-    //   5428: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   5431: ldc 76
-    //   5433: ldc_w 432
-    //   5436: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   5439: return
-    //   5440: astore 35
-    //   5442: ldc 76
-    //   5444: aload 35
-    //   5446: ldc_w 434
-    //   5449: iconst_0
-    //   5450: anewarray 4	java/lang/Object
-    //   5453: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5456: goto -85 -> 5371
-    //   5459: lload 4
-    //   5461: lconst_0
-    //   5462: lcmp
-    //   5463: ifeq +47 -> 5510
-    //   5466: lload_2
-    //   5467: lload 4
-    //   5469: lcmp
-    //   5470: ifeq +40 -> 5510
-    //   5473: ldc 76
-    //   5475: ldc_w 436
-    //   5478: iconst_2
-    //   5479: anewarray 4	java/lang/Object
-    //   5482: dup
-    //   5483: iconst_0
-    //   5484: lload 4
-    //   5486: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5489: aastore
-    //   5490: dup
-    //   5491: iconst_1
-    //   5492: lload_2
-    //   5493: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5496: aastore
-    //   5497: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5500: aload_0
-    //   5501: lload_2
-    //   5502: lload 4
-    //   5504: invokespecial 438	com/tencent/mm/plugin/music/c/b:F	(JJ)V
-    //   5507: goto -111 -> 5396
-    //   5510: lload 4
-    //   5512: lconst_0
-    //   5513: lcmp
-    //   5514: ifeq +66 -> 5580
-    //   5517: lload_2
-    //   5518: lload 4
-    //   5520: lcmp
-    //   5521: ifne +59 -> 5580
-    //   5524: ldc 76
-    //   5526: ldc_w 440
-    //   5529: iconst_2
-    //   5530: anewarray 4	java/lang/Object
-    //   5533: dup
-    //   5534: iconst_0
-    //   5535: lload 4
-    //   5537: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5540: aastore
-    //   5541: dup
-    //   5542: iconst_1
-    //   5543: lload_2
-    //   5544: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5547: aastore
-    //   5548: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5551: aload_0
-    //   5552: lload 4
-    //   5554: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   5557: lload_2
-    //   5558: ldc2_w 366
-    //   5561: lcmp
-    //   5562: ifge -166 -> 5396
-    //   5565: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   5568: dup
-    //   5569: aload_0
-    //   5570: iconst_1
-    //   5571: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   5574: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   5577: goto -181 -> 5396
-    //   5580: ldc 76
-    //   5582: ldc_w 442
-    //   5585: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   5588: goto -192 -> 5396
-    //   5591: astore 35
-    //   5593: ldc 76
-    //   5595: aload 35
-    //   5597: ldc_w 592
-    //   5600: iconst_0
-    //   5601: anewarray 4	java/lang/Object
-    //   5604: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5607: goto -201 -> 5406
-    //   5610: astore 33
-    //   5612: ldc 76
-    //   5614: aload 33
-    //   5616: ldc_w 434
-    //   5619: iconst_0
-    //   5620: anewarray 4	java/lang/Object
-    //   5623: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5626: goto -210 -> 5416
-    //   5629: astore 38
-    //   5631: aconst_null
-    //   5632: astore 33
-    //   5634: aconst_null
-    //   5635: astore 34
-    //   5637: aload 40
-    //   5639: astore 39
-    //   5641: aload 34
-    //   5643: astore 37
-    //   5645: lload 4
-    //   5647: lstore 8
-    //   5649: lload_2
-    //   5650: lstore 6
-    //   5652: aload 33
-    //   5654: astore 36
-    //   5656: aload 39
-    //   5658: astore 35
-    //   5660: ldc 76
-    //   5662: aload 38
-    //   5664: ldc_w 581
-    //   5667: iconst_1
-    //   5668: anewarray 4	java/lang/Object
-    //   5671: dup
-    //   5672: iconst_0
-    //   5673: aload 43
-    //   5675: invokevirtual 415	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   5678: aastore
-    //   5679: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5682: aload 34
-    //   5684: astore 37
-    //   5686: lload 4
-    //   5688: lstore 8
-    //   5690: lload_2
-    //   5691: lstore 6
-    //   5693: aload 33
-    //   5695: astore 36
-    //   5697: aload 39
-    //   5699: astore 35
-    //   5701: aload_0
-    //   5702: sipush 753
-    //   5705: putfield 50	com/tencent/mm/plugin/music/c/b:dUg	I
-    //   5708: aload 34
-    //   5710: astore 37
-    //   5712: lload 4
-    //   5714: lstore 8
-    //   5716: lload_2
-    //   5717: lstore 6
-    //   5719: aload 33
-    //   5721: astore 36
-    //   5723: aload 39
-    //   5725: astore 35
-    //   5727: aload_0
-    //   5728: iconst_5
-    //   5729: invokespecial 410	com/tencent/mm/plugin/music/c/b:uG	(I)V
-    //   5732: lload 4
-    //   5734: lconst_0
-    //   5735: lcmp
-    //   5736: ifne +111 -> 5847
-    //   5739: lload_2
-    //   5740: lconst_0
-    //   5741: lcmp
-    //   5742: ifle +105 -> 5847
-    //   5745: ldc 76
-    //   5747: ldc_w 425
-    //   5750: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   5753: aload 33
-    //   5755: lload_2
-    //   5756: invokevirtual 515	java/io/RandomAccessFile:setLength	(J)V
-    //   5759: aload_0
-    //   5760: lload_2
-    //   5761: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
+    //   5259: lcmp
+    //   5260: ifeq +40 -> 5300
+    //   5263: ldc 83
+    //   5265: ldc_w 462
+    //   5268: iconst_2
+    //   5269: anewarray 4	java/lang/Object
+    //   5272: dup
+    //   5273: iconst_0
+    //   5274: lload 4
+    //   5276: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5279: aastore
+    //   5280: dup
+    //   5281: iconst_1
+    //   5282: lload_2
+    //   5283: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5286: aastore
+    //   5287: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5290: aload_0
+    //   5291: lload_2
+    //   5292: lload 4
+    //   5294: invokespecial 464	com/tencent/mm/plugin/music/c/b:R	(JJ)V
+    //   5297: goto -700 -> 4597
+    //   5300: lload 4
+    //   5302: lconst_0
+    //   5303: lcmp
+    //   5304: ifeq +66 -> 5370
+    //   5307: lload_2
+    //   5308: lload 4
+    //   5310: lcmp
+    //   5311: ifne +59 -> 5370
+    //   5314: ldc 83
+    //   5316: ldc_w 466
+    //   5319: iconst_2
+    //   5320: anewarray 4	java/lang/Object
+    //   5323: dup
+    //   5324: iconst_0
+    //   5325: lload 4
+    //   5327: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5330: aastore
+    //   5331: dup
+    //   5332: iconst_1
+    //   5333: lload_2
+    //   5334: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5337: aastore
+    //   5338: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5341: aload_0
+    //   5342: lload 4
+    //   5344: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   5347: lload_2
+    //   5348: ldc2_w 392
+    //   5351: lcmp
+    //   5352: ifge -755 -> 4597
+    //   5355: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   5358: dup
+    //   5359: aload_0
+    //   5360: iconst_1
+    //   5361: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   5364: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   5367: goto -770 -> 4597
+    //   5370: ldc 83
+    //   5372: ldc_w 468
+    //   5375: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   5378: goto -781 -> 4597
+    //   5381: astore 35
+    //   5383: ldc 83
+    //   5385: aload 35
+    //   5387: ldc_w 614
+    //   5390: iconst_0
+    //   5391: anewarray 4	java/lang/Object
+    //   5394: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5397: goto -790 -> 4607
+    //   5400: astore 33
+    //   5402: ldc 83
+    //   5404: aload 33
+    //   5406: ldc_w 460
+    //   5409: iconst_0
+    //   5410: anewarray 4	java/lang/Object
+    //   5413: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5416: goto -799 -> 4617
+    //   5419: astore 33
+    //   5421: ldc 83
+    //   5423: aload 33
+    //   5425: invokevirtual 298	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   5428: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   5431: goto -801 -> 4630
+    //   5434: astore 38
+    //   5436: aconst_null
+    //   5437: astore 33
+    //   5439: aconst_null
+    //   5440: astore 34
+    //   5442: aload 40
+    //   5444: astore 39
+    //   5446: aload 34
+    //   5448: astore 37
+    //   5450: lload 4
+    //   5452: lstore 8
+    //   5454: lload_2
+    //   5455: lstore 6
+    //   5457: aload 33
+    //   5459: astore 36
+    //   5461: aload 39
+    //   5463: astore 35
+    //   5465: ldc 83
+    //   5467: aload 38
+    //   5469: ldc_w 604
+    //   5472: iconst_1
+    //   5473: anewarray 4	java/lang/Object
+    //   5476: dup
+    //   5477: iconst_0
+    //   5478: aload 43
+    //   5480: invokevirtual 441	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   5483: aastore
+    //   5484: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5487: aload 34
+    //   5489: astore 37
+    //   5491: lload 4
+    //   5493: lstore 8
+    //   5495: lload_2
+    //   5496: lstore 6
+    //   5498: aload 33
+    //   5500: astore 36
+    //   5502: aload 39
+    //   5504: astore 35
+    //   5506: aload_0
+    //   5507: sipush 752
+    //   5510: putfield 57	com/tencent/mm/plugin/music/c/b:cfE	I
+    //   5513: aload 34
+    //   5515: astore 37
+    //   5517: lload 4
+    //   5519: lstore 8
+    //   5521: lload_2
+    //   5522: lstore 6
+    //   5524: aload 33
+    //   5526: astore 36
+    //   5528: aload 39
+    //   5530: astore 35
+    //   5532: aload_0
+    //   5533: iconst_5
+    //   5534: invokespecial 436	com/tencent/mm/plugin/music/c/b:Ac	(I)V
+    //   5537: lload 4
+    //   5539: lconst_0
+    //   5540: lcmp
+    //   5541: ifne +125 -> 5666
+    //   5544: lload_2
+    //   5545: lconst_0
+    //   5546: lcmp
+    //   5547: ifle +119 -> 5666
+    //   5550: ldc 83
+    //   5552: ldc_w 451
+    //   5555: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   5558: aload 33
+    //   5560: lload_2
+    //   5561: invokevirtual 546	java/io/RandomAccessFile:setLength	(J)V
+    //   5564: aload_0
+    //   5565: lload_2
+    //   5566: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   5569: lload_2
+    //   5570: ldc2_w 392
+    //   5573: lcmp
+    //   5574: ifge +15 -> 5589
+    //   5577: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   5580: dup
+    //   5581: aload_0
+    //   5582: iconst_1
+    //   5583: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   5586: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   5589: aload 39
+    //   5591: ifnull +8 -> 5599
+    //   5594: aload 39
+    //   5596: invokevirtual 217	java/io/InputStream:close	()V
+    //   5599: aload 33
+    //   5601: ifnull +8 -> 5609
+    //   5604: aload 33
+    //   5606: invokevirtual 547	java/io/RandomAccessFile:close	()V
+    //   5609: aload 34
+    //   5611: ifnull +16 -> 5627
+    //   5614: aload 34
+    //   5616: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   5619: invokevirtual 217	java/io/InputStream:close	()V
+    //   5622: aload 34
+    //   5624: invokevirtual 220	java/net/HttpURLConnection:disconnect	()V
+    //   5627: aload_0
+    //   5628: iconst_1
+    //   5629: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   5632: ldc 83
+    //   5634: ldc_w 458
+    //   5637: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   5640: ldc_w 373
+    //   5643: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   5646: return
+    //   5647: astore 35
+    //   5649: ldc 83
+    //   5651: aload 35
+    //   5653: ldc_w 460
+    //   5656: iconst_0
+    //   5657: anewarray 4	java/lang/Object
+    //   5660: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5663: goto -99 -> 5564
+    //   5666: lload 4
+    //   5668: lconst_0
+    //   5669: lcmp
+    //   5670: ifeq +47 -> 5717
+    //   5673: lload_2
+    //   5674: lload 4
+    //   5676: lcmp
+    //   5677: ifeq +40 -> 5717
+    //   5680: ldc 83
+    //   5682: ldc_w 462
+    //   5685: iconst_2
+    //   5686: anewarray 4	java/lang/Object
+    //   5689: dup
+    //   5690: iconst_0
+    //   5691: lload 4
+    //   5693: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5696: aastore
+    //   5697: dup
+    //   5698: iconst_1
+    //   5699: lload_2
+    //   5700: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5703: aastore
+    //   5704: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5707: aload_0
+    //   5708: lload_2
+    //   5709: lload 4
+    //   5711: invokespecial 464	com/tencent/mm/plugin/music/c/b:R	(JJ)V
+    //   5714: goto -125 -> 5589
+    //   5717: lload 4
+    //   5719: lconst_0
+    //   5720: lcmp
+    //   5721: ifeq +66 -> 5787
+    //   5724: lload_2
+    //   5725: lload 4
+    //   5727: lcmp
+    //   5728: ifne +59 -> 5787
+    //   5731: ldc 83
+    //   5733: ldc_w 466
+    //   5736: iconst_2
+    //   5737: anewarray 4	java/lang/Object
+    //   5740: dup
+    //   5741: iconst_0
+    //   5742: lload 4
+    //   5744: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5747: aastore
+    //   5748: dup
+    //   5749: iconst_1
+    //   5750: lload_2
+    //   5751: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   5754: aastore
+    //   5755: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5758: aload_0
+    //   5759: lload 4
+    //   5761: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
     //   5764: lload_2
-    //   5765: ldc2_w 366
+    //   5765: ldc2_w 392
     //   5768: lcmp
-    //   5769: ifge +15 -> 5784
+    //   5769: ifge -180 -> 5589
     //   5772: new 8	com/tencent/mm/plugin/music/c/b$a
     //   5775: dup
     //   5776: aload_0
     //   5777: iconst_1
-    //   5778: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   5781: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   5784: aload 39
-    //   5786: ifnull +8 -> 5794
-    //   5789: aload 39
-    //   5791: invokevirtual 582	java/io/InputStream:close	()V
-    //   5794: aload 33
-    //   5796: ifnull +8 -> 5804
-    //   5799: aload 33
-    //   5801: invokevirtual 518	java/io/RandomAccessFile:close	()V
-    //   5804: aload 34
-    //   5806: ifnull +8 -> 5814
-    //   5809: aload 34
-    //   5811: invokevirtual 182	java/net/HttpURLConnection:disconnect	()V
-    //   5814: aload_0
-    //   5815: iconst_1
-    //   5816: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   5819: ldc 76
-    //   5821: ldc_w 432
-    //   5824: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   5827: return
-    //   5828: astore 35
-    //   5830: ldc 76
-    //   5832: aload 35
-    //   5834: ldc_w 434
-    //   5837: iconst_0
-    //   5838: anewarray 4	java/lang/Object
-    //   5841: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5844: goto -85 -> 5759
-    //   5847: lload 4
-    //   5849: lconst_0
-    //   5850: lcmp
-    //   5851: ifeq +47 -> 5898
-    //   5854: lload_2
-    //   5855: lload 4
-    //   5857: lcmp
-    //   5858: ifeq +40 -> 5898
-    //   5861: ldc 76
-    //   5863: ldc_w 436
-    //   5866: iconst_2
-    //   5867: anewarray 4	java/lang/Object
-    //   5870: dup
-    //   5871: iconst_0
-    //   5872: lload 4
-    //   5874: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5877: aastore
-    //   5878: dup
-    //   5879: iconst_1
-    //   5880: lload_2
-    //   5881: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5884: aastore
-    //   5885: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5888: aload_0
-    //   5889: lload_2
-    //   5890: lload 4
-    //   5892: invokespecial 438	com/tencent/mm/plugin/music/c/b:F	(JJ)V
-    //   5895: goto -111 -> 5784
-    //   5898: lload 4
-    //   5900: lconst_0
-    //   5901: lcmp
-    //   5902: ifeq +66 -> 5968
-    //   5905: lload_2
-    //   5906: lload 4
-    //   5908: lcmp
-    //   5909: ifne +59 -> 5968
-    //   5912: ldc 76
-    //   5914: ldc_w 440
-    //   5917: iconst_2
-    //   5918: anewarray 4	java/lang/Object
-    //   5921: dup
-    //   5922: iconst_0
-    //   5923: lload 4
-    //   5925: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5928: aastore
-    //   5929: dup
-    //   5930: iconst_1
-    //   5931: lload_2
-    //   5932: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   5935: aastore
-    //   5936: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5939: aload_0
-    //   5940: lload 4
-    //   5942: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   5945: lload_2
-    //   5946: ldc2_w 366
-    //   5949: lcmp
-    //   5950: ifge -166 -> 5784
-    //   5953: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   5956: dup
-    //   5957: aload_0
-    //   5958: iconst_1
-    //   5959: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   5962: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   5965: goto -181 -> 5784
-    //   5968: ldc 76
-    //   5970: ldc_w 442
-    //   5973: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   5976: goto -192 -> 5784
-    //   5979: astore 35
-    //   5981: ldc 76
-    //   5983: aload 35
-    //   5985: ldc_w 592
-    //   5988: iconst_0
-    //   5989: anewarray 4	java/lang/Object
-    //   5992: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   5995: goto -201 -> 5794
-    //   5998: astore 33
-    //   6000: ldc 76
-    //   6002: aload 33
-    //   6004: ldc_w 434
-    //   6007: iconst_0
-    //   6008: anewarray 4	java/lang/Object
-    //   6011: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6014: goto -210 -> 5804
-    //   6017: astore 38
-    //   6019: aconst_null
-    //   6020: astore 33
-    //   6022: aconst_null
-    //   6023: astore 34
-    //   6025: aload 34
-    //   6027: astore 37
-    //   6029: lload 4
-    //   6031: lstore 8
-    //   6033: lload_2
-    //   6034: lstore 6
-    //   6036: aload 33
-    //   6038: astore 36
-    //   6040: aload 39
-    //   6042: astore 35
-    //   6044: ldc 76
-    //   6046: aload 38
-    //   6048: ldc_w 581
-    //   6051: iconst_1
-    //   6052: anewarray 4	java/lang/Object
-    //   6055: dup
-    //   6056: iconst_0
-    //   6057: aload 43
-    //   6059: invokevirtual 415	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   6062: aastore
-    //   6063: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6066: aload 34
-    //   6068: astore 37
-    //   6070: lload 4
-    //   6072: lstore 8
-    //   6074: lload_2
-    //   6075: lstore 6
-    //   6077: aload 33
-    //   6079: astore 36
-    //   6081: aload 39
-    //   6083: astore 35
-    //   6085: aload_0
-    //   6086: sipush 754
-    //   6089: putfield 50	com/tencent/mm/plugin/music/c/b:dUg	I
-    //   6092: aload 34
-    //   6094: astore 37
-    //   6096: lload 4
-    //   6098: lstore 8
-    //   6100: lload_2
-    //   6101: lstore 6
-    //   6103: aload 33
-    //   6105: astore 36
-    //   6107: aload 39
-    //   6109: astore 35
-    //   6111: aload_0
-    //   6112: iconst_5
-    //   6113: invokespecial 410	com/tencent/mm/plugin/music/c/b:uG	(I)V
-    //   6116: lload 4
-    //   6118: lconst_0
-    //   6119: lcmp
-    //   6120: ifne +111 -> 6231
-    //   6123: lload_2
-    //   6124: lconst_0
-    //   6125: lcmp
-    //   6126: ifle +105 -> 6231
-    //   6129: ldc 76
-    //   6131: ldc_w 425
-    //   6134: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   6137: aload 33
-    //   6139: lload_2
-    //   6140: invokevirtual 515	java/io/RandomAccessFile:setLength	(J)V
-    //   6143: aload_0
-    //   6144: lload_2
-    //   6145: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   6148: lload_2
-    //   6149: ldc2_w 366
-    //   6152: lcmp
-    //   6153: ifge +15 -> 6168
-    //   6156: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   6159: dup
-    //   6160: aload_0
-    //   6161: iconst_1
-    //   6162: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   6165: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   6168: aload 39
-    //   6170: ifnull +8 -> 6178
-    //   6173: aload 39
-    //   6175: invokevirtual 582	java/io/InputStream:close	()V
-    //   6178: aload 33
-    //   6180: ifnull +8 -> 6188
-    //   6183: aload 33
-    //   6185: invokevirtual 518	java/io/RandomAccessFile:close	()V
-    //   6188: aload 34
-    //   6190: ifnull +8 -> 6198
-    //   6193: aload 34
-    //   6195: invokevirtual 182	java/net/HttpURLConnection:disconnect	()V
-    //   6198: aload_0
-    //   6199: iconst_1
-    //   6200: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   6203: ldc 76
-    //   6205: ldc_w 432
-    //   6208: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   6211: return
-    //   6212: astore 35
-    //   6214: ldc 76
-    //   6216: aload 35
-    //   6218: ldc_w 434
-    //   6221: iconst_0
-    //   6222: anewarray 4	java/lang/Object
-    //   6225: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6228: goto -85 -> 6143
-    //   6231: lload 4
-    //   6233: lconst_0
-    //   6234: lcmp
-    //   6235: ifeq +47 -> 6282
-    //   6238: lload_2
-    //   6239: lload 4
-    //   6241: lcmp
-    //   6242: ifeq +40 -> 6282
-    //   6245: ldc 76
-    //   6247: ldc_w 436
-    //   6250: iconst_2
-    //   6251: anewarray 4	java/lang/Object
-    //   6254: dup
-    //   6255: iconst_0
-    //   6256: lload 4
-    //   6258: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   6261: aastore
-    //   6262: dup
-    //   6263: iconst_1
-    //   6264: lload_2
-    //   6265: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   6268: aastore
-    //   6269: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6272: aload_0
-    //   6273: lload_2
-    //   6274: lload 4
-    //   6276: invokespecial 438	com/tencent/mm/plugin/music/c/b:F	(JJ)V
-    //   6279: goto -111 -> 6168
-    //   6282: lload 4
-    //   6284: lconst_0
-    //   6285: lcmp
-    //   6286: ifeq +66 -> 6352
-    //   6289: lload_2
-    //   6290: lload 4
-    //   6292: lcmp
-    //   6293: ifne +59 -> 6352
-    //   6296: ldc 76
-    //   6298: ldc_w 440
-    //   6301: iconst_2
-    //   6302: anewarray 4	java/lang/Object
-    //   6305: dup
-    //   6306: iconst_0
-    //   6307: lload 4
-    //   6309: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   6312: aastore
-    //   6313: dup
-    //   6314: iconst_1
-    //   6315: lload_2
-    //   6316: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   6319: aastore
-    //   6320: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6323: aload_0
-    //   6324: lload 4
-    //   6326: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   6329: lload_2
-    //   6330: ldc2_w 366
-    //   6333: lcmp
-    //   6334: ifge -166 -> 6168
-    //   6337: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   6340: dup
-    //   6341: aload_0
-    //   6342: iconst_1
-    //   6343: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   6346: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   6349: goto -181 -> 6168
-    //   6352: ldc 76
-    //   6354: ldc_w 442
-    //   6357: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   6360: goto -192 -> 6168
-    //   6363: astore 35
-    //   6365: ldc 76
-    //   6367: aload 35
-    //   6369: ldc_w 592
-    //   6372: iconst_0
-    //   6373: anewarray 4	java/lang/Object
-    //   6376: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6379: goto -201 -> 6178
-    //   6382: astore 33
-    //   6384: ldc 76
-    //   6386: aload 33
-    //   6388: ldc_w 434
-    //   6391: iconst_0
-    //   6392: anewarray 4	java/lang/Object
-    //   6395: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6398: goto -210 -> 6188
-    //   6401: astore 38
-    //   6403: aconst_null
-    //   6404: astore 33
-    //   6406: aconst_null
-    //   6407: astore 34
-    //   6409: lload 4
-    //   6411: lconst_0
-    //   6412: lcmp
-    //   6413: ifne +113 -> 6526
-    //   6416: lload_2
-    //   6417: lconst_0
-    //   6418: lcmp
-    //   6419: ifle +107 -> 6526
-    //   6422: ldc 76
-    //   6424: ldc_w 425
-    //   6427: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   6430: aload 33
-    //   6432: lload_2
-    //   6433: invokevirtual 515	java/io/RandomAccessFile:setLength	(J)V
-    //   6436: aload_0
-    //   6437: lload_2
-    //   6438: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   6441: lload_2
-    //   6442: ldc2_w 366
-    //   6445: lcmp
-    //   6446: ifge +15 -> 6461
-    //   6449: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   6452: dup
-    //   6453: aload_0
-    //   6454: iconst_1
-    //   6455: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   6458: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   6461: aload 35
-    //   6463: ifnull +8 -> 6471
-    //   6466: aload 35
-    //   6468: invokevirtual 582	java/io/InputStream:close	()V
-    //   6471: aload 33
-    //   6473: ifnull +8 -> 6481
-    //   6476: aload 33
-    //   6478: invokevirtual 518	java/io/RandomAccessFile:close	()V
-    //   6481: aload 34
-    //   6483: ifnull +8 -> 6491
-    //   6486: aload 34
-    //   6488: invokevirtual 182	java/net/HttpURLConnection:disconnect	()V
-    //   6491: aload_0
-    //   6492: iconst_1
-    //   6493: putfield 42	com/tencent/mm/plugin/music/c/b:isStop	Z
-    //   6496: ldc 76
-    //   6498: ldc_w 432
-    //   6501: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   6504: aload 38
-    //   6506: athrow
-    //   6507: astore 36
-    //   6509: ldc 76
-    //   6511: aload 36
-    //   6513: ldc_w 434
-    //   6516: iconst_0
-    //   6517: anewarray 4	java/lang/Object
-    //   6520: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6523: goto -87 -> 6436
-    //   6526: lload 4
-    //   6528: lconst_0
-    //   6529: lcmp
-    //   6530: ifeq +47 -> 6577
-    //   6533: lload_2
-    //   6534: lload 4
-    //   6536: lcmp
-    //   6537: ifeq +40 -> 6577
-    //   6540: ldc 76
-    //   6542: ldc_w 436
-    //   6545: iconst_2
-    //   6546: anewarray 4	java/lang/Object
-    //   6549: dup
-    //   6550: iconst_0
-    //   6551: lload 4
-    //   6553: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   6556: aastore
-    //   6557: dup
-    //   6558: iconst_1
-    //   6559: lload_2
-    //   6560: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   6563: aastore
-    //   6564: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6567: aload_0
-    //   6568: lload_2
-    //   6569: lload 4
-    //   6571: invokespecial 438	com/tencent/mm/plugin/music/c/b:F	(JJ)V
-    //   6574: goto -113 -> 6461
-    //   6577: lload 4
-    //   6579: lconst_0
-    //   6580: lcmp
-    //   6581: ifeq +66 -> 6647
-    //   6584: lload_2
-    //   6585: lload 4
-    //   6587: lcmp
-    //   6588: ifne +59 -> 6647
-    //   6591: ldc 76
-    //   6593: ldc_w 440
-    //   6596: iconst_2
-    //   6597: anewarray 4	java/lang/Object
-    //   6600: dup
-    //   6601: iconst_0
-    //   6602: lload 4
-    //   6604: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   6607: aastore
-    //   6608: dup
-    //   6609: iconst_1
-    //   6610: lload_2
-    //   6611: invokestatic 396	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   6614: aastore
-    //   6615: invokestatic 187	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6618: aload_0
-    //   6619: lload 4
-    //   6621: invokespecial 430	com/tencent/mm/plugin/music/c/b:fl	(J)V
-    //   6624: lload_2
-    //   6625: ldc2_w 366
-    //   6628: lcmp
-    //   6629: ifge -168 -> 6461
-    //   6632: new 8	com/tencent/mm/plugin/music/c/b$a
-    //   6635: dup
-    //   6636: aload_0
-    //   6637: iconst_1
-    //   6638: invokespecial 119	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
-    //   6641: invokestatic 125	com/tencent/mm/sdk/platformtools/ai:d	(Ljava/lang/Runnable;)V
-    //   6644: goto -183 -> 6461
-    //   6647: ldc 76
-    //   6649: ldc_w 442
-    //   6652: invokestatic 103	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   6655: goto -194 -> 6461
-    //   6658: astore 35
-    //   6660: ldc 76
-    //   6662: aload 35
-    //   6664: ldc_w 592
-    //   6667: iconst_0
-    //   6668: anewarray 4	java/lang/Object
-    //   6671: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6674: goto -203 -> 6471
-    //   6677: astore 33
-    //   6679: ldc 76
-    //   6681: aload 33
-    //   6683: ldc_w 434
-    //   6686: iconst_0
-    //   6687: anewarray 4	java/lang/Object
-    //   6690: invokestatic 419	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   6693: goto -212 -> 6481
-    //   6696: astore 38
-    //   6698: aconst_null
-    //   6699: astore 34
-    //   6701: goto -292 -> 6409
-    //   6704: astore 38
-    //   6706: aload 37
-    //   6708: astore 34
-    //   6710: lload 8
-    //   6712: lstore 4
-    //   6714: lload 6
-    //   6716: lstore_2
-    //   6717: aload 36
-    //   6719: astore 33
-    //   6721: goto -312 -> 6409
-    //   6724: astore 38
-    //   6726: lload 14
-    //   6728: lstore_2
-    //   6729: goto -320 -> 6409
-    //   6732: astore 38
-    //   6734: goto -325 -> 6409
-    //   6737: astore 38
-    //   6739: aconst_null
-    //   6740: astore 34
-    //   6742: goto -717 -> 6025
-    //   6745: astore 38
-    //   6747: lload 24
-    //   6749: lstore 4
-    //   6751: lload 14
-    //   6753: lstore_2
-    //   6754: goto -729 -> 6025
-    //   6757: astore 38
-    //   6759: lload 10
-    //   6761: lstore_2
-    //   6762: aload 35
-    //   6764: astore 39
-    //   6766: goto -741 -> 6025
-    //   6769: astore 38
-    //   6771: aconst_null
-    //   6772: astore 34
-    //   6774: aload 40
-    //   6776: astore 39
-    //   6778: goto -1137 -> 5641
-    //   6781: astore 38
-    //   6783: lload 22
-    //   6785: lstore 4
-    //   6787: lload 12
-    //   6789: lstore_2
-    //   6790: aload 40
-    //   6792: astore 39
-    //   6794: goto -1153 -> 5641
-    //   6797: astore 38
-    //   6799: lload 8
-    //   6801: lstore_2
-    //   6802: aload 35
-    //   6804: astore 39
-    //   6806: goto -1165 -> 5641
-    //   6809: astore 38
-    //   6811: aconst_null
-    //   6812: astore 34
-    //   6814: aload 41
-    //   6816: astore 39
-    //   6818: goto -1565 -> 5253
-    //   6821: astore 38
-    //   6823: lload 20
-    //   6825: lstore 4
-    //   6827: lload 18
-    //   6829: lstore_2
-    //   6830: aload 41
-    //   6832: astore 39
-    //   6834: goto -1581 -> 5253
-    //   6837: astore 38
-    //   6839: lload 12
-    //   6841: lstore_2
-    //   6842: aload 35
-    //   6844: astore 39
-    //   6846: goto -1593 -> 5253
-    //   6849: astore 38
-    //   6851: aconst_null
-    //   6852: astore 33
-    //   6854: aconst_null
-    //   6855: astore 34
-    //   6857: aload 42
-    //   6859: astore 39
-    //   6861: goto -2527 -> 4334
-    //   6864: astore 38
-    //   6866: aconst_null
-    //   6867: astore 34
-    //   6869: aload 42
-    //   6871: astore 39
-    //   6873: goto -2539 -> 4334
-    //   6876: astore 38
-    //   6878: lload 26
-    //   6880: lstore 4
-    //   6882: lload 10
-    //   6884: lstore_2
-    //   6885: aload 42
-    //   6887: astore 39
-    //   6889: goto -2555 -> 4334
-    //   6892: astore 36
-    //   6894: aconst_null
-    //   6895: astore 35
-    //   6897: aconst_null
-    //   6898: astore 34
-    //   6900: aload 37
-    //   6902: astore 33
-    //   6904: goto -3241 -> 3663
-    //   6907: astore 36
-    //   6909: aconst_null
-    //   6910: astore 35
-    //   6912: aconst_null
-    //   6913: astore 34
-    //   6915: goto -3252 -> 3663
-    //   6918: lload 30
-    //   6920: lstore 6
-    //   6922: lload 4
-    //   6924: lstore_2
-    //   6925: lload 6
-    //   6927: lstore 4
-    //   6929: ldc2_w 593
-    //   6932: lstore 30
-    //   6934: lload 4
-    //   6936: lconst_0
-    //   6937: lcmp
-    //   6938: ifeq -3863 -> 3075
-    //   6941: lload 4
-    //   6943: lstore 30
-    //   6945: goto -3870 -> 3075
-    //   6948: astore 36
-    //   6950: aconst_null
-    //   6951: astore 35
-    //   6953: lload 28
-    //   6955: lstore 4
-    //   6957: lload 16
-    //   6959: lstore_2
-    //   6960: goto -3297 -> 3663
+    //   5778: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   5781: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   5784: goto -195 -> 5589
+    //   5787: ldc 83
+    //   5789: ldc_w 468
+    //   5792: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   5795: goto -206 -> 5589
+    //   5798: astore 35
+    //   5800: ldc 83
+    //   5802: aload 35
+    //   5804: ldc_w 614
+    //   5807: iconst_0
+    //   5808: anewarray 4	java/lang/Object
+    //   5811: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5814: goto -215 -> 5599
+    //   5817: astore 33
+    //   5819: ldc 83
+    //   5821: aload 33
+    //   5823: ldc_w 460
+    //   5826: iconst_0
+    //   5827: anewarray 4	java/lang/Object
+    //   5830: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5833: goto -224 -> 5609
+    //   5836: astore 33
+    //   5838: ldc 83
+    //   5840: aload 33
+    //   5842: invokevirtual 298	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   5845: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   5848: goto -226 -> 5622
+    //   5851: astore 38
+    //   5853: aconst_null
+    //   5854: astore 33
+    //   5856: aconst_null
+    //   5857: astore 34
+    //   5859: aload 41
+    //   5861: astore 39
+    //   5863: aload 34
+    //   5865: astore 37
+    //   5867: lload 4
+    //   5869: lstore 8
+    //   5871: lload_2
+    //   5872: lstore 6
+    //   5874: aload 33
+    //   5876: astore 36
+    //   5878: aload 39
+    //   5880: astore 35
+    //   5882: ldc 83
+    //   5884: aload 38
+    //   5886: ldc_w 604
+    //   5889: iconst_1
+    //   5890: anewarray 4	java/lang/Object
+    //   5893: dup
+    //   5894: iconst_0
+    //   5895: aload 43
+    //   5897: invokevirtual 441	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   5900: aastore
+    //   5901: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5904: aload 34
+    //   5906: astore 37
+    //   5908: lload 4
+    //   5910: lstore 8
+    //   5912: lload_2
+    //   5913: lstore 6
+    //   5915: aload 33
+    //   5917: astore 36
+    //   5919: aload 39
+    //   5921: astore 35
+    //   5923: aload_0
+    //   5924: sipush 753
+    //   5927: putfield 57	com/tencent/mm/plugin/music/c/b:cfE	I
+    //   5930: aload 34
+    //   5932: astore 37
+    //   5934: lload 4
+    //   5936: lstore 8
+    //   5938: lload_2
+    //   5939: lstore 6
+    //   5941: aload 33
+    //   5943: astore 36
+    //   5945: aload 39
+    //   5947: astore 35
+    //   5949: aload_0
+    //   5950: iconst_5
+    //   5951: invokespecial 436	com/tencent/mm/plugin/music/c/b:Ac	(I)V
+    //   5954: lload 4
+    //   5956: lconst_0
+    //   5957: lcmp
+    //   5958: ifne +125 -> 6083
+    //   5961: lload_2
+    //   5962: lconst_0
+    //   5963: lcmp
+    //   5964: ifle +119 -> 6083
+    //   5967: ldc 83
+    //   5969: ldc_w 451
+    //   5972: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   5975: aload 33
+    //   5977: lload_2
+    //   5978: invokevirtual 546	java/io/RandomAccessFile:setLength	(J)V
+    //   5981: aload_0
+    //   5982: lload_2
+    //   5983: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   5986: lload_2
+    //   5987: ldc2_w 392
+    //   5990: lcmp
+    //   5991: ifge +15 -> 6006
+    //   5994: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   5997: dup
+    //   5998: aload_0
+    //   5999: iconst_1
+    //   6000: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   6003: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   6006: aload 39
+    //   6008: ifnull +8 -> 6016
+    //   6011: aload 39
+    //   6013: invokevirtual 217	java/io/InputStream:close	()V
+    //   6016: aload 33
+    //   6018: ifnull +8 -> 6026
+    //   6021: aload 33
+    //   6023: invokevirtual 547	java/io/RandomAccessFile:close	()V
+    //   6026: aload 34
+    //   6028: ifnull +16 -> 6044
+    //   6031: aload 34
+    //   6033: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   6036: invokevirtual 217	java/io/InputStream:close	()V
+    //   6039: aload 34
+    //   6041: invokevirtual 220	java/net/HttpURLConnection:disconnect	()V
+    //   6044: aload_0
+    //   6045: iconst_1
+    //   6046: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   6049: ldc 83
+    //   6051: ldc_w 458
+    //   6054: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6057: ldc_w 373
+    //   6060: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   6063: return
+    //   6064: astore 35
+    //   6066: ldc 83
+    //   6068: aload 35
+    //   6070: ldc_w 460
+    //   6073: iconst_0
+    //   6074: anewarray 4	java/lang/Object
+    //   6077: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6080: goto -99 -> 5981
+    //   6083: lload 4
+    //   6085: lconst_0
+    //   6086: lcmp
+    //   6087: ifeq +47 -> 6134
+    //   6090: lload_2
+    //   6091: lload 4
+    //   6093: lcmp
+    //   6094: ifeq +40 -> 6134
+    //   6097: ldc 83
+    //   6099: ldc_w 462
+    //   6102: iconst_2
+    //   6103: anewarray 4	java/lang/Object
+    //   6106: dup
+    //   6107: iconst_0
+    //   6108: lload 4
+    //   6110: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6113: aastore
+    //   6114: dup
+    //   6115: iconst_1
+    //   6116: lload_2
+    //   6117: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6120: aastore
+    //   6121: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6124: aload_0
+    //   6125: lload_2
+    //   6126: lload 4
+    //   6128: invokespecial 464	com/tencent/mm/plugin/music/c/b:R	(JJ)V
+    //   6131: goto -125 -> 6006
+    //   6134: lload 4
+    //   6136: lconst_0
+    //   6137: lcmp
+    //   6138: ifeq +66 -> 6204
+    //   6141: lload_2
+    //   6142: lload 4
+    //   6144: lcmp
+    //   6145: ifne +59 -> 6204
+    //   6148: ldc 83
+    //   6150: ldc_w 466
+    //   6153: iconst_2
+    //   6154: anewarray 4	java/lang/Object
+    //   6157: dup
+    //   6158: iconst_0
+    //   6159: lload 4
+    //   6161: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6164: aastore
+    //   6165: dup
+    //   6166: iconst_1
+    //   6167: lload_2
+    //   6168: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6171: aastore
+    //   6172: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6175: aload_0
+    //   6176: lload 4
+    //   6178: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   6181: lload_2
+    //   6182: ldc2_w 392
+    //   6185: lcmp
+    //   6186: ifge -180 -> 6006
+    //   6189: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   6192: dup
+    //   6193: aload_0
+    //   6194: iconst_1
+    //   6195: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   6198: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   6201: goto -195 -> 6006
+    //   6204: ldc 83
+    //   6206: ldc_w 468
+    //   6209: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6212: goto -206 -> 6006
+    //   6215: astore 35
+    //   6217: ldc 83
+    //   6219: aload 35
+    //   6221: ldc_w 614
+    //   6224: iconst_0
+    //   6225: anewarray 4	java/lang/Object
+    //   6228: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6231: goto -215 -> 6016
+    //   6234: astore 33
+    //   6236: ldc 83
+    //   6238: aload 33
+    //   6240: ldc_w 460
+    //   6243: iconst_0
+    //   6244: anewarray 4	java/lang/Object
+    //   6247: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6250: goto -224 -> 6026
+    //   6253: astore 33
+    //   6255: ldc 83
+    //   6257: aload 33
+    //   6259: invokevirtual 298	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   6262: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6265: goto -226 -> 6039
+    //   6268: astore 38
+    //   6270: aconst_null
+    //   6271: astore 33
+    //   6273: aconst_null
+    //   6274: astore 34
+    //   6276: aload 34
+    //   6278: astore 37
+    //   6280: lload 4
+    //   6282: lstore 8
+    //   6284: lload_2
+    //   6285: lstore 6
+    //   6287: aload 33
+    //   6289: astore 36
+    //   6291: aload 39
+    //   6293: astore 35
+    //   6295: ldc 83
+    //   6297: aload 38
+    //   6299: ldc_w 604
+    //   6302: iconst_1
+    //   6303: anewarray 4	java/lang/Object
+    //   6306: dup
+    //   6307: iconst_0
+    //   6308: aload 43
+    //   6310: invokevirtual 441	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   6313: aastore
+    //   6314: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6317: aload 34
+    //   6319: astore 37
+    //   6321: lload 4
+    //   6323: lstore 8
+    //   6325: lload_2
+    //   6326: lstore 6
+    //   6328: aload 33
+    //   6330: astore 36
+    //   6332: aload 39
+    //   6334: astore 35
+    //   6336: aload_0
+    //   6337: sipush 754
+    //   6340: putfield 57	com/tencent/mm/plugin/music/c/b:cfE	I
+    //   6343: aload 34
+    //   6345: astore 37
+    //   6347: lload 4
+    //   6349: lstore 8
+    //   6351: lload_2
+    //   6352: lstore 6
+    //   6354: aload 33
+    //   6356: astore 36
+    //   6358: aload 39
+    //   6360: astore 35
+    //   6362: aload_0
+    //   6363: iconst_5
+    //   6364: invokespecial 436	com/tencent/mm/plugin/music/c/b:Ac	(I)V
+    //   6367: lload 4
+    //   6369: lconst_0
+    //   6370: lcmp
+    //   6371: ifne +125 -> 6496
+    //   6374: lload_2
+    //   6375: lconst_0
+    //   6376: lcmp
+    //   6377: ifle +119 -> 6496
+    //   6380: ldc 83
+    //   6382: ldc_w 451
+    //   6385: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6388: aload 33
+    //   6390: lload_2
+    //   6391: invokevirtual 546	java/io/RandomAccessFile:setLength	(J)V
+    //   6394: aload_0
+    //   6395: lload_2
+    //   6396: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   6399: lload_2
+    //   6400: ldc2_w 392
+    //   6403: lcmp
+    //   6404: ifge +15 -> 6419
+    //   6407: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   6410: dup
+    //   6411: aload_0
+    //   6412: iconst_1
+    //   6413: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   6416: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   6419: aload 39
+    //   6421: ifnull +8 -> 6429
+    //   6424: aload 39
+    //   6426: invokevirtual 217	java/io/InputStream:close	()V
+    //   6429: aload 33
+    //   6431: ifnull +8 -> 6439
+    //   6434: aload 33
+    //   6436: invokevirtual 547	java/io/RandomAccessFile:close	()V
+    //   6439: aload 34
+    //   6441: ifnull +16 -> 6457
+    //   6444: aload 34
+    //   6446: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   6449: invokevirtual 217	java/io/InputStream:close	()V
+    //   6452: aload 34
+    //   6454: invokevirtual 220	java/net/HttpURLConnection:disconnect	()V
+    //   6457: aload_0
+    //   6458: iconst_1
+    //   6459: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   6462: ldc 83
+    //   6464: ldc_w 458
+    //   6467: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6470: ldc_w 373
+    //   6473: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   6476: return
+    //   6477: astore 35
+    //   6479: ldc 83
+    //   6481: aload 35
+    //   6483: ldc_w 460
+    //   6486: iconst_0
+    //   6487: anewarray 4	java/lang/Object
+    //   6490: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6493: goto -99 -> 6394
+    //   6496: lload 4
+    //   6498: lconst_0
+    //   6499: lcmp
+    //   6500: ifeq +47 -> 6547
+    //   6503: lload_2
+    //   6504: lload 4
+    //   6506: lcmp
+    //   6507: ifeq +40 -> 6547
+    //   6510: ldc 83
+    //   6512: ldc_w 462
+    //   6515: iconst_2
+    //   6516: anewarray 4	java/lang/Object
+    //   6519: dup
+    //   6520: iconst_0
+    //   6521: lload 4
+    //   6523: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6526: aastore
+    //   6527: dup
+    //   6528: iconst_1
+    //   6529: lload_2
+    //   6530: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6533: aastore
+    //   6534: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6537: aload_0
+    //   6538: lload_2
+    //   6539: lload 4
+    //   6541: invokespecial 464	com/tencent/mm/plugin/music/c/b:R	(JJ)V
+    //   6544: goto -125 -> 6419
+    //   6547: lload 4
+    //   6549: lconst_0
+    //   6550: lcmp
+    //   6551: ifeq +66 -> 6617
+    //   6554: lload_2
+    //   6555: lload 4
+    //   6557: lcmp
+    //   6558: ifne +59 -> 6617
+    //   6561: ldc 83
+    //   6563: ldc_w 466
+    //   6566: iconst_2
+    //   6567: anewarray 4	java/lang/Object
+    //   6570: dup
+    //   6571: iconst_0
+    //   6572: lload 4
+    //   6574: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6577: aastore
+    //   6578: dup
+    //   6579: iconst_1
+    //   6580: lload_2
+    //   6581: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6584: aastore
+    //   6585: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6588: aload_0
+    //   6589: lload 4
+    //   6591: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   6594: lload_2
+    //   6595: ldc2_w 392
+    //   6598: lcmp
+    //   6599: ifge -180 -> 6419
+    //   6602: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   6605: dup
+    //   6606: aload_0
+    //   6607: iconst_1
+    //   6608: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   6611: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   6614: goto -195 -> 6419
+    //   6617: ldc 83
+    //   6619: ldc_w 468
+    //   6622: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6625: goto -206 -> 6419
+    //   6628: astore 35
+    //   6630: ldc 83
+    //   6632: aload 35
+    //   6634: ldc_w 614
+    //   6637: iconst_0
+    //   6638: anewarray 4	java/lang/Object
+    //   6641: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6644: goto -215 -> 6429
+    //   6647: astore 33
+    //   6649: ldc 83
+    //   6651: aload 33
+    //   6653: ldc_w 460
+    //   6656: iconst_0
+    //   6657: anewarray 4	java/lang/Object
+    //   6660: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6663: goto -224 -> 6439
+    //   6666: astore 33
+    //   6668: ldc 83
+    //   6670: aload 33
+    //   6672: invokevirtual 298	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   6675: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6678: goto -226 -> 6452
+    //   6681: astore 38
+    //   6683: aconst_null
+    //   6684: astore 33
+    //   6686: aconst_null
+    //   6687: astore 34
+    //   6689: lload 4
+    //   6691: lconst_0
+    //   6692: lcmp
+    //   6693: ifne +127 -> 6820
+    //   6696: lload_2
+    //   6697: lconst_0
+    //   6698: lcmp
+    //   6699: ifle +121 -> 6820
+    //   6702: ldc 83
+    //   6704: ldc_w 451
+    //   6707: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6710: aload 33
+    //   6712: lload_2
+    //   6713: invokevirtual 546	java/io/RandomAccessFile:setLength	(J)V
+    //   6716: aload_0
+    //   6717: lload_2
+    //   6718: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   6721: lload_2
+    //   6722: ldc2_w 392
+    //   6725: lcmp
+    //   6726: ifge +15 -> 6741
+    //   6729: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   6732: dup
+    //   6733: aload_0
+    //   6734: iconst_1
+    //   6735: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   6738: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   6741: aload 35
+    //   6743: ifnull +8 -> 6751
+    //   6746: aload 35
+    //   6748: invokevirtual 217	java/io/InputStream:close	()V
+    //   6751: aload 33
+    //   6753: ifnull +8 -> 6761
+    //   6756: aload 33
+    //   6758: invokevirtual 547	java/io/RandomAccessFile:close	()V
+    //   6761: aload 34
+    //   6763: ifnull +16 -> 6779
+    //   6766: aload 34
+    //   6768: invokevirtual 212	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   6771: invokevirtual 217	java/io/InputStream:close	()V
+    //   6774: aload 34
+    //   6776: invokevirtual 220	java/net/HttpURLConnection:disconnect	()V
+    //   6779: aload_0
+    //   6780: iconst_1
+    //   6781: putfield 49	com/tencent/mm/plugin/music/c/b:isStop	Z
+    //   6784: ldc 83
+    //   6786: ldc_w 458
+    //   6789: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6792: ldc_w 373
+    //   6795: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   6798: aload 38
+    //   6800: athrow
+    //   6801: astore 36
+    //   6803: ldc 83
+    //   6805: aload 36
+    //   6807: ldc_w 460
+    //   6810: iconst_0
+    //   6811: anewarray 4	java/lang/Object
+    //   6814: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6817: goto -101 -> 6716
+    //   6820: lload 4
+    //   6822: lconst_0
+    //   6823: lcmp
+    //   6824: ifeq +47 -> 6871
+    //   6827: lload_2
+    //   6828: lload 4
+    //   6830: lcmp
+    //   6831: ifeq +40 -> 6871
+    //   6834: ldc 83
+    //   6836: ldc_w 462
+    //   6839: iconst_2
+    //   6840: anewarray 4	java/lang/Object
+    //   6843: dup
+    //   6844: iconst_0
+    //   6845: lload 4
+    //   6847: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6850: aastore
+    //   6851: dup
+    //   6852: iconst_1
+    //   6853: lload_2
+    //   6854: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6857: aastore
+    //   6858: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6861: aload_0
+    //   6862: lload_2
+    //   6863: lload 4
+    //   6865: invokespecial 464	com/tencent/mm/plugin/music/c/b:R	(JJ)V
+    //   6868: goto -127 -> 6741
+    //   6871: lload 4
+    //   6873: lconst_0
+    //   6874: lcmp
+    //   6875: ifeq +66 -> 6941
+    //   6878: lload_2
+    //   6879: lload 4
+    //   6881: lcmp
+    //   6882: ifne +59 -> 6941
+    //   6885: ldc 83
+    //   6887: ldc_w 466
+    //   6890: iconst_2
+    //   6891: anewarray 4	java/lang/Object
+    //   6894: dup
+    //   6895: iconst_0
+    //   6896: lload 4
+    //   6898: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6901: aastore
+    //   6902: dup
+    //   6903: iconst_1
+    //   6904: lload_2
+    //   6905: invokestatic 422	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   6908: aastore
+    //   6909: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6912: aload_0
+    //   6913: lload 4
+    //   6915: invokespecial 456	com/tencent/mm/plugin/music/c/b:kJ	(J)V
+    //   6918: lload_2
+    //   6919: ldc2_w 392
+    //   6922: lcmp
+    //   6923: ifge -182 -> 6741
+    //   6926: new 8	com/tencent/mm/plugin/music/c/b$a
+    //   6929: dup
+    //   6930: aload_0
+    //   6931: iconst_1
+    //   6932: invokespecial 131	com/tencent/mm/plugin/music/c/b$a:<init>	(Lcom/tencent/mm/plugin/music/c/b;I)V
+    //   6935: invokestatic 137	com/tencent/mm/sdk/platformtools/al:d	(Ljava/lang/Runnable;)V
+    //   6938: goto -197 -> 6741
+    //   6941: ldc 83
+    //   6943: ldc_w 468
+    //   6946: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6949: goto -208 -> 6741
+    //   6952: astore 35
+    //   6954: ldc 83
+    //   6956: aload 35
+    //   6958: ldc_w 614
+    //   6961: iconst_0
+    //   6962: anewarray 4	java/lang/Object
+    //   6965: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6968: goto -217 -> 6751
+    //   6971: astore 33
+    //   6973: ldc 83
+    //   6975: aload 33
+    //   6977: ldc_w 460
+    //   6980: iconst_0
+    //   6981: anewarray 4	java/lang/Object
+    //   6984: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   6987: goto -226 -> 6761
+    //   6990: astore 33
+    //   6992: ldc 83
+    //   6994: aload 33
+    //   6996: invokevirtual 298	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   6999: invokestatic 91	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   7002: goto -228 -> 6774
+    //   7005: astore 38
+    //   7007: aconst_null
+    //   7008: astore 34
+    //   7010: goto -321 -> 6689
+    //   7013: astore 38
+    //   7015: aload 37
+    //   7017: astore 34
+    //   7019: lload 8
+    //   7021: lstore 4
+    //   7023: lload 6
+    //   7025: lstore_2
+    //   7026: aload 36
+    //   7028: astore 33
+    //   7030: goto -341 -> 6689
+    //   7033: astore 38
+    //   7035: lload 12
+    //   7037: lstore_2
+    //   7038: goto -349 -> 6689
+    //   7041: astore 38
+    //   7043: goto -354 -> 6689
+    //   7046: astore 38
+    //   7048: aconst_null
+    //   7049: astore 34
+    //   7051: goto -775 -> 6276
+    //   7054: astore 38
+    //   7056: lload 26
+    //   7058: lstore 4
+    //   7060: lload 18
+    //   7062: lstore_2
+    //   7063: goto -787 -> 6276
+    //   7066: astore 38
+    //   7068: lload 14
+    //   7070: lstore_2
+    //   7071: aload 35
+    //   7073: astore 39
+    //   7075: goto -799 -> 6276
+    //   7078: astore 38
+    //   7080: aconst_null
+    //   7081: astore 34
+    //   7083: aload 41
+    //   7085: astore 39
+    //   7087: goto -1224 -> 5863
+    //   7090: astore 38
+    //   7092: lload 20
+    //   7094: lstore 4
+    //   7096: lload 14
+    //   7098: lstore_2
+    //   7099: aload 41
+    //   7101: astore 39
+    //   7103: goto -1240 -> 5863
+    //   7106: astore 38
+    //   7108: lload 8
+    //   7110: lstore_2
+    //   7111: aload 35
+    //   7113: astore 39
+    //   7115: goto -1252 -> 5863
+    //   7118: astore 38
+    //   7120: aconst_null
+    //   7121: astore 34
+    //   7123: aload 40
+    //   7125: astore 39
+    //   7127: goto -1681 -> 5446
+    //   7130: astore 38
+    //   7132: lload 22
+    //   7134: lstore 4
+    //   7136: lload 12
+    //   7138: lstore_2
+    //   7139: aload 40
+    //   7141: astore 39
+    //   7143: goto -1697 -> 5446
+    //   7146: astore 38
+    //   7148: lload 10
+    //   7150: lstore_2
+    //   7151: aload 35
+    //   7153: astore 39
+    //   7155: goto -1709 -> 5446
+    //   7158: astore 38
+    //   7160: aconst_null
+    //   7161: astore 33
+    //   7163: aconst_null
+    //   7164: astore 34
+    //   7166: aload 42
+    //   7168: astore 39
+    //   7170: goto -2716 -> 4454
+    //   7173: astore 38
+    //   7175: aconst_null
+    //   7176: astore 34
+    //   7178: aload 42
+    //   7180: astore 39
+    //   7182: goto -2728 -> 4454
+    //   7185: astore 38
+    //   7187: lload 24
+    //   7189: lstore 4
+    //   7191: lload 16
+    //   7193: lstore_2
+    //   7194: aload 42
+    //   7196: astore 39
+    //   7198: goto -2744 -> 4454
+    //   7201: astore 36
+    //   7203: aconst_null
+    //   7204: astore 35
+    //   7206: aconst_null
+    //   7207: astore 34
+    //   7209: aload 37
+    //   7211: astore 33
+    //   7213: goto -3473 -> 3740
+    //   7216: astore 36
+    //   7218: aconst_null
+    //   7219: astore 35
+    //   7221: aconst_null
+    //   7222: astore 34
+    //   7224: goto -3484 -> 3740
+    //   7227: lload 30
+    //   7229: lstore 6
+    //   7231: lload 4
+    //   7233: lstore_2
+    //   7234: lload 6
+    //   7236: lstore 4
+    //   7238: ldc2_w 615
+    //   7241: lstore 30
+    //   7243: lload 4
+    //   7245: lconst_0
+    //   7246: lcmp
+    //   7247: ifeq -4095 -> 3152
+    //   7250: lload 4
+    //   7252: lstore 30
+    //   7254: goto -4102 -> 3152
+    //   7257: astore 36
+    //   7259: aconst_null
+    //   7260: astore 35
+    //   7262: lload 28
+    //   7264: lstore 4
+    //   7266: lload 10
+    //   7268: lstore_2
+    //   7269: goto -3529 -> 3740
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	6963	0	this	b
-    //   168	4383	1	i	int
-    //   155	6805	2	l1	long
-    //   122	6834	4	l2	long
-    //   113	6813	6	l3	long
-    //   223	6577	8	l4	long
-    //   1393	5490	10	l5	long
-    //   1379	5461	12	l6	long
-    //   1372	5380	14	l7	long
-    //   1400	5558	16	l8	long
-    //   1386	5442	18	l9	long
-    //   1383	5441	20	l10	long
-    //   1376	5408	22	l11	long
-    //   1369	5379	24	l12	long
-    //   1390	5489	26	l13	long
-    //   1397	5557	28	l14	long
-    //   2912	4032	30	l15	long
-    //   20	1225	32	bool	boolean
-    //   9	531	33	localObject1	Object
-    //   775	5	33	localIOException1	java.io.IOException
-    //   965	5	33	localIOException2	java.io.IOException
-    //   1128	596	33	localRandomAccessFile	java.io.RandomAccessFile
-    //   1903	2146	33	localIOException3	java.io.IOException
-    //   4228	418	33	localIOException4	java.io.IOException
-    //   4844	5	33	localIOException5	java.io.IOException
-    //   5033	5	33	localIOException6	java.io.IOException
-    //   5222	5	33	localIOException7	java.io.IOException
-    //   5244	168	33	localObject2	Object
-    //   5610	5	33	localIOException8	java.io.IOException
-    //   5632	168	33	localObject3	Object
-    //   5998	5	33	localIOException9	java.io.IOException
-    //   6020	164	33	localObject4	Object
-    //   6382	5	33	localIOException10	java.io.IOException
-    //   6404	73	33	localObject5	Object
-    //   6677	5	33	localIOException11	java.io.IOException
-    //   6719	184	33	localObject6	Object
-    //   12	6902	34	localObject7	Object
-    //   38	1592	35	localObject8	Object
-    //   1752	5	35	localIOException12	java.io.IOException
-    //   1939	2015	35	localObject9	Object
-    //   4077	251	35	localIOException13	java.io.IOException
-    //   4351	290	35	localObject10	Object
-    //   4825	5	35	localIOException14	java.io.IOException
-    //   5014	5	35	localIOException15	java.io.IOException
-    //   5052	5	35	localIOException16	java.io.IOException
-    //   5203	5	35	localIOException17	java.io.IOException
-    //   5270	68	35	localObject11	Object
-    //   5440	5	35	localIOException18	java.io.IOException
-    //   5591	5	35	localIOException19	java.io.IOException
-    //   5658	68	35	localObject12	Object
-    //   5828	5	35	localIOException20	java.io.IOException
-    //   5979	5	35	localIOException21	java.io.IOException
-    //   6042	68	35	localObject13	Object
-    //   6212	5	35	localIOException22	java.io.IOException
-    //   6363	104	35	localIOException23	java.io.IOException
-    //   6658	185	35	localIOException24	java.io.IOException
-    //   6895	57	35	localObject14	Object
-    //   1156	2287	36	localObject15	Object
-    //   3658	8	36	localProtocolException1	java.net.ProtocolException
-    //   3806	609	36	localIOException25	java.io.IOException
-    //   4674	5	36	localIOException26	java.io.IOException
-    //   4863	5	36	localIOException27	java.io.IOException
-    //   5266	840	36	localObject16	Object
-    //   6507	211	36	localIOException28	java.io.IOException
-    //   6892	1	36	localProtocolException2	java.net.ProtocolException
-    //   6907	1	36	localProtocolException3	java.net.ProtocolException
-    //   6948	1	36	localProtocolException4	java.net.ProtocolException
-    //   856	6045	37	localObject17	Object
-    //   850	3102	38	localInputStream	java.io.InputStream
-    //   4325	31	38	localNoRouteToHostException1	java.net.NoRouteToHostException
-    //   5241	34	38	localUnknownServiceException1	java.net.UnknownServiceException
-    //   5629	34	38	localIOException29	java.io.IOException
-    //   6017	30	38	localException1	Exception
-    //   6401	104	38	localObject18	Object
-    //   6696	1	38	localObject19	Object
-    //   6704	1	38	localObject20	Object
-    //   6724	1	38	localObject21	Object
-    //   6732	1	38	localObject22	Object
-    //   6737	1	38	localException2	Exception
-    //   6745	1	38	localException3	Exception
-    //   6757	1	38	localException4	Exception
-    //   6769	1	38	localIOException30	java.io.IOException
-    //   6781	1	38	localIOException31	java.io.IOException
-    //   6797	1	38	localIOException32	java.io.IOException
-    //   6809	1	38	localUnknownServiceException2	java.net.UnknownServiceException
-    //   6821	1	38	localUnknownServiceException3	java.net.UnknownServiceException
-    //   6837	1	38	localUnknownServiceException4	java.net.UnknownServiceException
-    //   6849	1	38	localNoRouteToHostException2	java.net.NoRouteToHostException
-    //   6864	1	38	localNoRouteToHostException3	java.net.NoRouteToHostException
-    //   6876	1	38	localNoRouteToHostException4	java.net.NoRouteToHostException
-    //   844	6044	39	localObject23	Object
-    //   841	5950	40	localObject24	Object
-    //   838	5993	41	localObject25	Object
-    //   853	6033	42	localObject26	Object
-    //   220	5838	43	localFile	java.io.File
-    //   2137	2111	44	localObject27	Object
-    //   2527	453	45	str	String
+    //   0	7272	0	this	b
+    //   180	4505	1	i	int
+    //   167	7102	2	l1	long
+    //   134	7131	4	l2	long
+    //   125	7110	6	l3	long
+    //   235	6874	8	l4	long
+    //   1448	5819	10	l5	long
+    //   1434	5703	12	l6	long
+    //   1427	5670	14	l7	long
+    //   1441	5751	16	l8	long
+    //   1420	5641	18	l9	long
+    //   1424	5669	20	l10	long
+    //   1431	5702	22	l11	long
+    //   1438	5750	24	l12	long
+    //   1417	5640	26	l13	long
+    //   1445	5818	28	l14	long
+    //   2989	4264	30	l15	long
+    //   32	1261	32	bool	boolean
+    //   21	537	33	localObject1	Object
+    //   811	5	33	localIOException1	java.io.IOException
+    //   1013	5	33	localIOException2	java.io.IOException
+    //   1176	596	33	localRandomAccessFile	java.io.RandomAccessFile
+    //   1965	5	33	localIOException3	java.io.IOException
+    //   1984	2156	33	localException1	Exception
+    //   4333	5	33	localIOException4	java.io.IOException
+    //   4352	428	33	localException2	Exception
+    //   4992	5	33	localIOException5	java.io.IOException
+    //   5011	5	33	localException3	Exception
+    //   5196	5	33	localIOException6	java.io.IOException
+    //   5215	5	33	localException4	Exception
+    //   5400	5	33	localIOException7	java.io.IOException
+    //   5419	5	33	localException5	Exception
+    //   5437	168	33	localObject2	Object
+    //   5817	5	33	localIOException8	java.io.IOException
+    //   5836	5	33	localException6	Exception
+    //   5854	168	33	localObject3	Object
+    //   6234	5	33	localIOException9	java.io.IOException
+    //   6253	5	33	localException7	Exception
+    //   6271	164	33	localObject4	Object
+    //   6647	5	33	localIOException10	java.io.IOException
+    //   6666	5	33	localException8	Exception
+    //   6684	73	33	localObject5	Object
+    //   6971	5	33	localIOException11	java.io.IOException
+    //   6990	5	33	localException9	Exception
+    //   7028	184	33	localObject6	Object
+    //   24	7199	34	localObject7	Object
+    //   50	1628	35	localObject8	Object
+    //   1814	5	35	localIOException12	java.io.IOException
+    //   2016	2029	35	localObject9	Object
+    //   4182	266	35	localIOException13	java.io.IOException
+    //   4471	304	35	localObject10	Object
+    //   4973	5	35	localIOException14	java.io.IOException
+    //   5177	5	35	localIOException15	java.io.IOException
+    //   5230	5	35	localIOException16	java.io.IOException
+    //   5381	5	35	localIOException17	java.io.IOException
+    //   5463	68	35	localObject11	Object
+    //   5647	5	35	localIOException18	java.io.IOException
+    //   5798	5	35	localIOException19	java.io.IOException
+    //   5880	68	35	localObject12	Object
+    //   6064	5	35	localIOException20	java.io.IOException
+    //   6215	5	35	localIOException21	java.io.IOException
+    //   6293	68	35	localObject13	Object
+    //   6477	5	35	localIOException22	java.io.IOException
+    //   6628	119	35	localIOException23	java.io.IOException
+    //   6952	200	35	localIOException24	java.io.IOException
+    //   7204	57	35	localObject14	Object
+    //   1204	2316	36	localObject15	Object
+    //   3735	8	36	localProtocolException1	java.net.ProtocolException
+    //   3897	638	36	localException10	Exception
+    //   4822	5	36	localIOException25	java.io.IOException
+    //   5026	5	36	localIOException26	java.io.IOException
+    //   5459	898	36	localObject16	Object
+    //   6801	226	36	localIOException27	java.io.IOException
+    //   7201	1	36	localProtocolException2	java.net.ProtocolException
+    //   7216	1	36	localProtocolException3	java.net.ProtocolException
+    //   7257	1	36	localProtocolException4	java.net.ProtocolException
+    //   898	6312	37	localObject17	Object
+    //   892	3151	38	localInputStream	InputStream
+    //   4445	31	38	localNoRouteToHostException1	java.net.NoRouteToHostException
+    //   5434	34	38	localUnknownServiceException1	java.net.UnknownServiceException
+    //   5851	34	38	localIOException28	java.io.IOException
+    //   6268	30	38	localException11	Exception
+    //   6681	118	38	localObject18	Object
+    //   7005	1	38	localObject19	Object
+    //   7013	1	38	localObject20	Object
+    //   7033	1	38	localObject21	Object
+    //   7041	1	38	localObject22	Object
+    //   7046	1	38	localException12	Exception
+    //   7054	1	38	localException13	Exception
+    //   7066	1	38	localException14	Exception
+    //   7078	1	38	localIOException29	java.io.IOException
+    //   7090	1	38	localIOException30	java.io.IOException
+    //   7106	1	38	localIOException31	java.io.IOException
+    //   7118	1	38	localUnknownServiceException2	java.net.UnknownServiceException
+    //   7130	1	38	localUnknownServiceException3	java.net.UnknownServiceException
+    //   7146	1	38	localUnknownServiceException4	java.net.UnknownServiceException
+    //   7158	1	38	localNoRouteToHostException2	java.net.NoRouteToHostException
+    //   7173	1	38	localNoRouteToHostException3	java.net.NoRouteToHostException
+    //   7185	1	38	localNoRouteToHostException4	java.net.NoRouteToHostException
+    //   886	6311	39	localObject23	Object
+    //   880	6260	40	localObject24	Object
+    //   883	6217	41	localObject25	Object
+    //   895	6300	42	localObject26	Object
+    //   232	6077	43	localFile	java.io.File
+    //   2214	2154	44	localObject27	Object
+    //   2604	453	45	str	String
     // Exception table:
     //   from	to	target	type
-    //   236	259	775	java/io/IOException
-    //   918	926	965	java/io/IOException
-    //   1692	1698	1752	java/io/IOException
-    //   1723	1728	1903	java/io/IOException
-    //   3360	3367	3658	java/net/ProtocolException
-    //   3385	3392	3658	java/net/ProtocolException
-    //   3410	3418	3658	java/net/ProtocolException
-    //   3440	3449	3658	java/net/ProtocolException
-    //   3479	3507	3658	java/net/ProtocolException
-    //   3531	3538	3658	java/net/ProtocolException
-    //   3562	3571	3658	java/net/ProtocolException
-    //   3595	3604	3658	java/net/ProtocolException
-    //   3640	3652	3658	java/net/ProtocolException
-    //   4280	4289	3658	java/net/ProtocolException
-    //   4313	4322	3658	java/net/ProtocolException
-    //   4539	4583	3658	java/net/ProtocolException
-    //   4017	4023	4077	java/io/IOException
-    //   4048	4053	4228	java/io/IOException
-    //   3360	3367	4325	java/net/NoRouteToHostException
-    //   3385	3392	4325	java/net/NoRouteToHostException
-    //   3410	3418	4325	java/net/NoRouteToHostException
-    //   3440	3449	4325	java/net/NoRouteToHostException
-    //   3479	3507	4325	java/net/NoRouteToHostException
-    //   3531	3538	4325	java/net/NoRouteToHostException
-    //   3562	3571	4325	java/net/NoRouteToHostException
-    //   3595	3604	4325	java/net/NoRouteToHostException
-    //   3640	3652	4325	java/net/NoRouteToHostException
-    //   4280	4289	4325	java/net/NoRouteToHostException
-    //   4313	4322	4325	java/net/NoRouteToHostException
-    //   4539	4583	4325	java/net/NoRouteToHostException
-    //   4604	4610	4674	java/io/IOException
-    //   4640	4645	4825	java/io/IOException
-    //   4645	4650	4844	java/io/IOException
-    //   3718	3724	4863	java/io/IOException
-    //   3754	3759	5014	java/io/IOException
-    //   3764	3769	5033	java/io/IOException
-    //   4446	4452	5052	java/io/IOException
-    //   4482	4487	5203	java/io/IOException
-    //   4492	4497	5222	java/io/IOException
-    //   858	897	5241	java/net/UnknownServiceException
-    //   1116	1130	5241	java/net/UnknownServiceException
-    //   5365	5371	5440	java/io/IOException
-    //   5401	5406	5591	java/io/IOException
-    //   5411	5416	5610	java/io/IOException
-    //   858	897	5629	java/io/IOException
-    //   1116	1130	5629	java/io/IOException
-    //   5753	5759	5828	java/io/IOException
-    //   5789	5794	5979	java/io/IOException
-    //   5799	5804	5998	java/io/IOException
-    //   858	897	6017	java/lang/Exception
-    //   1116	1130	6017	java/lang/Exception
-    //   6137	6143	6212	java/io/IOException
-    //   6173	6178	6363	java/io/IOException
-    //   6183	6188	6382	java/io/IOException
-    //   858	897	6401	finally
-    //   1116	1130	6401	finally
-    //   6430	6436	6507	java/io/IOException
-    //   6466	6471	6658	java/io/IOException
-    //   6476	6481	6677	java/io/IOException
-    //   1130	1172	6696	finally
-    //   1179	1244	6696	finally
-    //   1249	1257	6696	finally
-    //   1257	1293	6696	finally
-    //   1293	1348	6696	finally
-    //   1402	1408	6704	finally
-    //   1476	1480	6704	finally
-    //   1534	1553	6704	finally
-    //   1607	1612	6704	finally
-    //   1666	1671	6704	finally
-    //   1976	1995	6704	finally
-    //   2049	2078	6704	finally
-    //   2132	2139	6704	finally
-    //   2193	2210	6704	finally
-    //   2264	2270	6704	finally
-    //   2324	2334	6704	finally
-    //   2388	2401	6704	finally
-    //   2455	2466	6704	finally
-    //   2520	2529	6704	finally
-    //   2583	2589	6704	finally
-    //   2643	2649	6704	finally
-    //   2703	2721	6704	finally
-    //   2775	2785	6704	finally
-    //   2839	2846	6704	finally
-    //   2900	2914	6704	finally
-    //   2968	2993	6704	finally
-    //   3052	3060	6704	finally
-    //   3129	3156	6704	finally
-    //   3210	3217	6704	finally
-    //   3271	3277	6704	finally
-    //   3331	3338	6704	finally
-    //   3847	3856	6704	finally
-    //   3928	3936	6704	finally
-    //   3990	3996	6704	finally
-    //   4353	4375	6704	finally
-    //   4394	4401	6704	finally
-    //   4420	4425	6704	finally
-    //   5272	5294	6704	finally
-    //   5313	5320	6704	finally
-    //   5339	5344	6704	finally
-    //   5660	5682	6704	finally
-    //   5701	5708	6704	finally
-    //   5727	5732	6704	finally
-    //   6044	6066	6704	finally
-    //   6085	6092	6704	finally
-    //   6111	6116	6704	finally
-    //   3360	3367	6724	finally
-    //   3385	3392	6724	finally
-    //   3410	3418	6724	finally
-    //   3440	3449	6724	finally
-    //   3479	3507	6724	finally
-    //   3531	3538	6724	finally
-    //   3562	3571	6724	finally
-    //   3595	3604	6724	finally
-    //   3640	3652	6724	finally
-    //   4280	4289	6724	finally
-    //   4313	4322	6724	finally
-    //   4539	4583	6724	finally
-    //   3663	3697	6732	finally
-    //   1130	1172	6737	java/lang/Exception
-    //   1179	1244	6737	java/lang/Exception
-    //   1249	1257	6737	java/lang/Exception
-    //   1257	1293	6737	java/lang/Exception
-    //   1293	1348	6737	java/lang/Exception
-    //   1402	1408	6745	java/lang/Exception
-    //   1476	1480	6745	java/lang/Exception
-    //   1534	1553	6745	java/lang/Exception
-    //   1607	1612	6745	java/lang/Exception
-    //   1666	1671	6745	java/lang/Exception
-    //   1976	1995	6745	java/lang/Exception
-    //   2049	2078	6745	java/lang/Exception
-    //   2132	2139	6745	java/lang/Exception
-    //   2193	2210	6745	java/lang/Exception
-    //   2264	2270	6745	java/lang/Exception
-    //   2324	2334	6745	java/lang/Exception
-    //   2388	2401	6745	java/lang/Exception
-    //   2455	2466	6745	java/lang/Exception
-    //   2520	2529	6745	java/lang/Exception
-    //   2583	2589	6745	java/lang/Exception
-    //   2643	2649	6745	java/lang/Exception
-    //   2703	2721	6745	java/lang/Exception
-    //   2775	2785	6745	java/lang/Exception
-    //   2839	2846	6745	java/lang/Exception
-    //   2900	2914	6745	java/lang/Exception
-    //   2968	2993	6745	java/lang/Exception
-    //   3052	3060	6745	java/lang/Exception
-    //   3129	3156	6745	java/lang/Exception
-    //   3210	3217	6745	java/lang/Exception
-    //   3271	3277	6745	java/lang/Exception
-    //   3331	3338	6745	java/lang/Exception
-    //   3847	3856	6745	java/lang/Exception
-    //   3928	3936	6745	java/lang/Exception
-    //   3990	3996	6745	java/lang/Exception
-    //   3360	3367	6757	java/lang/Exception
-    //   3385	3392	6757	java/lang/Exception
-    //   3410	3418	6757	java/lang/Exception
-    //   3440	3449	6757	java/lang/Exception
-    //   3479	3507	6757	java/lang/Exception
-    //   3531	3538	6757	java/lang/Exception
-    //   3562	3571	6757	java/lang/Exception
-    //   3595	3604	6757	java/lang/Exception
-    //   3640	3652	6757	java/lang/Exception
-    //   4280	4289	6757	java/lang/Exception
-    //   4313	4322	6757	java/lang/Exception
-    //   4539	4583	6757	java/lang/Exception
-    //   1130	1172	6769	java/io/IOException
-    //   1179	1244	6769	java/io/IOException
-    //   1249	1257	6769	java/io/IOException
-    //   1257	1293	6769	java/io/IOException
-    //   1293	1348	6769	java/io/IOException
-    //   1402	1408	6781	java/io/IOException
-    //   1476	1480	6781	java/io/IOException
-    //   1534	1553	6781	java/io/IOException
-    //   1607	1612	6781	java/io/IOException
-    //   1666	1671	6781	java/io/IOException
-    //   1976	1995	6781	java/io/IOException
-    //   2049	2078	6781	java/io/IOException
-    //   2132	2139	6781	java/io/IOException
-    //   2193	2210	6781	java/io/IOException
-    //   2264	2270	6781	java/io/IOException
-    //   2324	2334	6781	java/io/IOException
-    //   2388	2401	6781	java/io/IOException
-    //   2455	2466	6781	java/io/IOException
-    //   2520	2529	6781	java/io/IOException
-    //   2583	2589	6781	java/io/IOException
-    //   2643	2649	6781	java/io/IOException
-    //   2703	2721	6781	java/io/IOException
-    //   2775	2785	6781	java/io/IOException
-    //   2839	2846	6781	java/io/IOException
-    //   2900	2914	6781	java/io/IOException
-    //   2968	2993	6781	java/io/IOException
-    //   3052	3060	6781	java/io/IOException
-    //   3129	3156	6781	java/io/IOException
-    //   3210	3217	6781	java/io/IOException
-    //   3271	3277	6781	java/io/IOException
-    //   3331	3338	6781	java/io/IOException
-    //   3847	3856	6781	java/io/IOException
-    //   3928	3936	6781	java/io/IOException
-    //   3990	3996	6781	java/io/IOException
-    //   3360	3367	6797	java/io/IOException
-    //   3385	3392	6797	java/io/IOException
-    //   3410	3418	6797	java/io/IOException
-    //   3440	3449	6797	java/io/IOException
-    //   3479	3507	6797	java/io/IOException
-    //   3531	3538	6797	java/io/IOException
-    //   3562	3571	6797	java/io/IOException
-    //   3595	3604	6797	java/io/IOException
-    //   3640	3652	6797	java/io/IOException
-    //   4280	4289	6797	java/io/IOException
-    //   4313	4322	6797	java/io/IOException
-    //   4539	4583	6797	java/io/IOException
-    //   1130	1172	6809	java/net/UnknownServiceException
-    //   1179	1244	6809	java/net/UnknownServiceException
-    //   1249	1257	6809	java/net/UnknownServiceException
-    //   1257	1293	6809	java/net/UnknownServiceException
-    //   1293	1348	6809	java/net/UnknownServiceException
-    //   1402	1408	6821	java/net/UnknownServiceException
-    //   1476	1480	6821	java/net/UnknownServiceException
-    //   1534	1553	6821	java/net/UnknownServiceException
-    //   1607	1612	6821	java/net/UnknownServiceException
-    //   1666	1671	6821	java/net/UnknownServiceException
-    //   1976	1995	6821	java/net/UnknownServiceException
-    //   2049	2078	6821	java/net/UnknownServiceException
-    //   2132	2139	6821	java/net/UnknownServiceException
-    //   2193	2210	6821	java/net/UnknownServiceException
-    //   2264	2270	6821	java/net/UnknownServiceException
-    //   2324	2334	6821	java/net/UnknownServiceException
-    //   2388	2401	6821	java/net/UnknownServiceException
-    //   2455	2466	6821	java/net/UnknownServiceException
-    //   2520	2529	6821	java/net/UnknownServiceException
-    //   2583	2589	6821	java/net/UnknownServiceException
-    //   2643	2649	6821	java/net/UnknownServiceException
-    //   2703	2721	6821	java/net/UnknownServiceException
-    //   2775	2785	6821	java/net/UnknownServiceException
-    //   2839	2846	6821	java/net/UnknownServiceException
-    //   2900	2914	6821	java/net/UnknownServiceException
-    //   2968	2993	6821	java/net/UnknownServiceException
-    //   3052	3060	6821	java/net/UnknownServiceException
-    //   3129	3156	6821	java/net/UnknownServiceException
-    //   3210	3217	6821	java/net/UnknownServiceException
-    //   3271	3277	6821	java/net/UnknownServiceException
-    //   3331	3338	6821	java/net/UnknownServiceException
-    //   3847	3856	6821	java/net/UnknownServiceException
-    //   3928	3936	6821	java/net/UnknownServiceException
-    //   3990	3996	6821	java/net/UnknownServiceException
-    //   3360	3367	6837	java/net/UnknownServiceException
-    //   3385	3392	6837	java/net/UnknownServiceException
-    //   3410	3418	6837	java/net/UnknownServiceException
-    //   3440	3449	6837	java/net/UnknownServiceException
-    //   3479	3507	6837	java/net/UnknownServiceException
-    //   3531	3538	6837	java/net/UnknownServiceException
-    //   3562	3571	6837	java/net/UnknownServiceException
-    //   3595	3604	6837	java/net/UnknownServiceException
-    //   3640	3652	6837	java/net/UnknownServiceException
-    //   4280	4289	6837	java/net/UnknownServiceException
-    //   4313	4322	6837	java/net/UnknownServiceException
-    //   4539	4583	6837	java/net/UnknownServiceException
-    //   858	897	6849	java/net/NoRouteToHostException
-    //   1116	1130	6849	java/net/NoRouteToHostException
-    //   1130	1172	6864	java/net/NoRouteToHostException
-    //   1179	1244	6864	java/net/NoRouteToHostException
-    //   1249	1257	6864	java/net/NoRouteToHostException
-    //   1257	1293	6864	java/net/NoRouteToHostException
-    //   1293	1348	6864	java/net/NoRouteToHostException
-    //   1402	1408	6876	java/net/NoRouteToHostException
-    //   1476	1480	6876	java/net/NoRouteToHostException
-    //   1534	1553	6876	java/net/NoRouteToHostException
-    //   1607	1612	6876	java/net/NoRouteToHostException
-    //   1666	1671	6876	java/net/NoRouteToHostException
-    //   1976	1995	6876	java/net/NoRouteToHostException
-    //   2049	2078	6876	java/net/NoRouteToHostException
-    //   2132	2139	6876	java/net/NoRouteToHostException
-    //   2193	2210	6876	java/net/NoRouteToHostException
-    //   2264	2270	6876	java/net/NoRouteToHostException
-    //   2324	2334	6876	java/net/NoRouteToHostException
-    //   2388	2401	6876	java/net/NoRouteToHostException
-    //   2455	2466	6876	java/net/NoRouteToHostException
-    //   2520	2529	6876	java/net/NoRouteToHostException
-    //   2583	2589	6876	java/net/NoRouteToHostException
-    //   2643	2649	6876	java/net/NoRouteToHostException
-    //   2703	2721	6876	java/net/NoRouteToHostException
-    //   2775	2785	6876	java/net/NoRouteToHostException
-    //   2839	2846	6876	java/net/NoRouteToHostException
-    //   2900	2914	6876	java/net/NoRouteToHostException
-    //   2968	2993	6876	java/net/NoRouteToHostException
-    //   3052	3060	6876	java/net/NoRouteToHostException
-    //   3129	3156	6876	java/net/NoRouteToHostException
-    //   3210	3217	6876	java/net/NoRouteToHostException
-    //   3271	3277	6876	java/net/NoRouteToHostException
-    //   3331	3338	6876	java/net/NoRouteToHostException
-    //   3847	3856	6876	java/net/NoRouteToHostException
-    //   3928	3936	6876	java/net/NoRouteToHostException
-    //   3990	3996	6876	java/net/NoRouteToHostException
-    //   858	897	6892	java/net/ProtocolException
-    //   1116	1130	6892	java/net/ProtocolException
-    //   1130	1172	6907	java/net/ProtocolException
-    //   1179	1244	6907	java/net/ProtocolException
-    //   1249	1257	6907	java/net/ProtocolException
-    //   1257	1293	6907	java/net/ProtocolException
-    //   1293	1348	6907	java/net/ProtocolException
-    //   1402	1408	6948	java/net/ProtocolException
-    //   1476	1480	6948	java/net/ProtocolException
-    //   1534	1553	6948	java/net/ProtocolException
-    //   1607	1612	6948	java/net/ProtocolException
-    //   1666	1671	6948	java/net/ProtocolException
-    //   1976	1995	6948	java/net/ProtocolException
-    //   2049	2078	6948	java/net/ProtocolException
-    //   2132	2139	6948	java/net/ProtocolException
-    //   2193	2210	6948	java/net/ProtocolException
-    //   2264	2270	6948	java/net/ProtocolException
-    //   2324	2334	6948	java/net/ProtocolException
-    //   2388	2401	6948	java/net/ProtocolException
-    //   2455	2466	6948	java/net/ProtocolException
-    //   2520	2529	6948	java/net/ProtocolException
-    //   2583	2589	6948	java/net/ProtocolException
-    //   2643	2649	6948	java/net/ProtocolException
-    //   2703	2721	6948	java/net/ProtocolException
-    //   2775	2785	6948	java/net/ProtocolException
-    //   2839	2846	6948	java/net/ProtocolException
-    //   2900	2914	6948	java/net/ProtocolException
-    //   2968	2993	6948	java/net/ProtocolException
-    //   3052	3060	6948	java/net/ProtocolException
-    //   3129	3156	6948	java/net/ProtocolException
-    //   3210	3217	6948	java/net/ProtocolException
-    //   3271	3277	6948	java/net/ProtocolException
-    //   3331	3338	6948	java/net/ProtocolException
-    //   3847	3856	6948	java/net/ProtocolException
-    //   3928	3936	6948	java/net/ProtocolException
-    //   3990	3996	6948	java/net/ProtocolException
+    //   248	271	811	java/io/IOException
+    //   960	968	1013	java/io/IOException
+    //   1740	1746	1814	java/io/IOException
+    //   1771	1776	1965	java/io/IOException
+    //   1781	1789	1984	java/lang/Exception
+    //   3437	3444	3735	java/net/ProtocolException
+    //   3462	3469	3735	java/net/ProtocolException
+    //   3487	3495	3735	java/net/ProtocolException
+    //   3517	3526	3735	java/net/ProtocolException
+    //   3556	3584	3735	java/net/ProtocolException
+    //   3608	3615	3735	java/net/ProtocolException
+    //   3639	3648	3735	java/net/ProtocolException
+    //   3672	3681	3735	java/net/ProtocolException
+    //   3717	3729	3735	java/net/ProtocolException
+    //   4400	4409	3735	java/net/ProtocolException
+    //   4433	4442	3735	java/net/ProtocolException
+    //   4673	4717	3735	java/net/ProtocolException
+    //   4108	4114	4182	java/io/IOException
+    //   4139	4144	4333	java/io/IOException
+    //   4149	4157	4352	java/lang/Exception
+    //   3437	3444	4445	java/net/NoRouteToHostException
+    //   3462	3469	4445	java/net/NoRouteToHostException
+    //   3487	3495	4445	java/net/NoRouteToHostException
+    //   3517	3526	4445	java/net/NoRouteToHostException
+    //   3556	3584	4445	java/net/NoRouteToHostException
+    //   3608	3615	4445	java/net/NoRouteToHostException
+    //   3639	3648	4445	java/net/NoRouteToHostException
+    //   3672	3681	4445	java/net/NoRouteToHostException
+    //   3717	3729	4445	java/net/NoRouteToHostException
+    //   4400	4409	4445	java/net/NoRouteToHostException
+    //   4433	4442	4445	java/net/NoRouteToHostException
+    //   4673	4717	4445	java/net/NoRouteToHostException
+    //   4738	4744	4822	java/io/IOException
+    //   4774	4779	4973	java/io/IOException
+    //   4779	4784	4992	java/io/IOException
+    //   4789	4797	5011	java/lang/Exception
+    //   3795	3801	5026	java/io/IOException
+    //   3831	3836	5177	java/io/IOException
+    //   3841	3846	5196	java/io/IOException
+    //   3851	3859	5215	java/lang/Exception
+    //   4566	4572	5230	java/io/IOException
+    //   4602	4607	5381	java/io/IOException
+    //   4612	4617	5400	java/io/IOException
+    //   4622	4630	5419	java/lang/Exception
+    //   900	939	5434	java/net/UnknownServiceException
+    //   1164	1178	5434	java/net/UnknownServiceException
+    //   5558	5564	5647	java/io/IOException
+    //   5594	5599	5798	java/io/IOException
+    //   5604	5609	5817	java/io/IOException
+    //   5614	5622	5836	java/lang/Exception
+    //   900	939	5851	java/io/IOException
+    //   1164	1178	5851	java/io/IOException
+    //   5975	5981	6064	java/io/IOException
+    //   6011	6016	6215	java/io/IOException
+    //   6021	6026	6234	java/io/IOException
+    //   6031	6039	6253	java/lang/Exception
+    //   900	939	6268	java/lang/Exception
+    //   1164	1178	6268	java/lang/Exception
+    //   6388	6394	6477	java/io/IOException
+    //   6424	6429	6628	java/io/IOException
+    //   6434	6439	6647	java/io/IOException
+    //   6444	6452	6666	java/lang/Exception
+    //   900	939	6681	finally
+    //   1164	1178	6681	finally
+    //   6710	6716	6801	java/io/IOException
+    //   6746	6751	6952	java/io/IOException
+    //   6756	6761	6971	java/io/IOException
+    //   6766	6774	6990	java/lang/Exception
+    //   1178	1220	7005	finally
+    //   1227	1292	7005	finally
+    //   1297	1305	7005	finally
+    //   1305	1341	7005	finally
+    //   1341	1396	7005	finally
+    //   1450	1456	7013	finally
+    //   1524	1528	7013	finally
+    //   1582	1601	7013	finally
+    //   1655	1660	7013	finally
+    //   1714	1719	7013	finally
+    //   2053	2072	7013	finally
+    //   2126	2155	7013	finally
+    //   2209	2216	7013	finally
+    //   2270	2287	7013	finally
+    //   2341	2347	7013	finally
+    //   2401	2411	7013	finally
+    //   2465	2478	7013	finally
+    //   2532	2543	7013	finally
+    //   2597	2606	7013	finally
+    //   2660	2666	7013	finally
+    //   2720	2726	7013	finally
+    //   2780	2798	7013	finally
+    //   2852	2862	7013	finally
+    //   2916	2923	7013	finally
+    //   2977	2991	7013	finally
+    //   3045	3070	7013	finally
+    //   3129	3137	7013	finally
+    //   3206	3233	7013	finally
+    //   3287	3294	7013	finally
+    //   3348	3354	7013	finally
+    //   3408	3415	7013	finally
+    //   3938	3947	7013	finally
+    //   4019	4027	7013	finally
+    //   4081	4087	7013	finally
+    //   4473	4495	7013	finally
+    //   4514	4521	7013	finally
+    //   4540	4545	7013	finally
+    //   5465	5487	7013	finally
+    //   5506	5513	7013	finally
+    //   5532	5537	7013	finally
+    //   5882	5904	7013	finally
+    //   5923	5930	7013	finally
+    //   5949	5954	7013	finally
+    //   6295	6317	7013	finally
+    //   6336	6343	7013	finally
+    //   6362	6367	7013	finally
+    //   3437	3444	7033	finally
+    //   3462	3469	7033	finally
+    //   3487	3495	7033	finally
+    //   3517	3526	7033	finally
+    //   3556	3584	7033	finally
+    //   3608	3615	7033	finally
+    //   3639	3648	7033	finally
+    //   3672	3681	7033	finally
+    //   3717	3729	7033	finally
+    //   4400	4409	7033	finally
+    //   4433	4442	7033	finally
+    //   4673	4717	7033	finally
+    //   3740	3774	7041	finally
+    //   1178	1220	7046	java/lang/Exception
+    //   1227	1292	7046	java/lang/Exception
+    //   1297	1305	7046	java/lang/Exception
+    //   1305	1341	7046	java/lang/Exception
+    //   1341	1396	7046	java/lang/Exception
+    //   1450	1456	7054	java/lang/Exception
+    //   1524	1528	7054	java/lang/Exception
+    //   1582	1601	7054	java/lang/Exception
+    //   1655	1660	7054	java/lang/Exception
+    //   1714	1719	7054	java/lang/Exception
+    //   2053	2072	7054	java/lang/Exception
+    //   2126	2155	7054	java/lang/Exception
+    //   2209	2216	7054	java/lang/Exception
+    //   2270	2287	7054	java/lang/Exception
+    //   2341	2347	7054	java/lang/Exception
+    //   2401	2411	7054	java/lang/Exception
+    //   2465	2478	7054	java/lang/Exception
+    //   2532	2543	7054	java/lang/Exception
+    //   2597	2606	7054	java/lang/Exception
+    //   2660	2666	7054	java/lang/Exception
+    //   2720	2726	7054	java/lang/Exception
+    //   2780	2798	7054	java/lang/Exception
+    //   2852	2862	7054	java/lang/Exception
+    //   2916	2923	7054	java/lang/Exception
+    //   2977	2991	7054	java/lang/Exception
+    //   3045	3070	7054	java/lang/Exception
+    //   3129	3137	7054	java/lang/Exception
+    //   3206	3233	7054	java/lang/Exception
+    //   3287	3294	7054	java/lang/Exception
+    //   3348	3354	7054	java/lang/Exception
+    //   3408	3415	7054	java/lang/Exception
+    //   3938	3947	7054	java/lang/Exception
+    //   4019	4027	7054	java/lang/Exception
+    //   4081	4087	7054	java/lang/Exception
+    //   3437	3444	7066	java/lang/Exception
+    //   3462	3469	7066	java/lang/Exception
+    //   3487	3495	7066	java/lang/Exception
+    //   3517	3526	7066	java/lang/Exception
+    //   3556	3584	7066	java/lang/Exception
+    //   3608	3615	7066	java/lang/Exception
+    //   3639	3648	7066	java/lang/Exception
+    //   3672	3681	7066	java/lang/Exception
+    //   3717	3729	7066	java/lang/Exception
+    //   4400	4409	7066	java/lang/Exception
+    //   4433	4442	7066	java/lang/Exception
+    //   4673	4717	7066	java/lang/Exception
+    //   1178	1220	7078	java/io/IOException
+    //   1227	1292	7078	java/io/IOException
+    //   1297	1305	7078	java/io/IOException
+    //   1305	1341	7078	java/io/IOException
+    //   1341	1396	7078	java/io/IOException
+    //   1450	1456	7090	java/io/IOException
+    //   1524	1528	7090	java/io/IOException
+    //   1582	1601	7090	java/io/IOException
+    //   1655	1660	7090	java/io/IOException
+    //   1714	1719	7090	java/io/IOException
+    //   2053	2072	7090	java/io/IOException
+    //   2126	2155	7090	java/io/IOException
+    //   2209	2216	7090	java/io/IOException
+    //   2270	2287	7090	java/io/IOException
+    //   2341	2347	7090	java/io/IOException
+    //   2401	2411	7090	java/io/IOException
+    //   2465	2478	7090	java/io/IOException
+    //   2532	2543	7090	java/io/IOException
+    //   2597	2606	7090	java/io/IOException
+    //   2660	2666	7090	java/io/IOException
+    //   2720	2726	7090	java/io/IOException
+    //   2780	2798	7090	java/io/IOException
+    //   2852	2862	7090	java/io/IOException
+    //   2916	2923	7090	java/io/IOException
+    //   2977	2991	7090	java/io/IOException
+    //   3045	3070	7090	java/io/IOException
+    //   3129	3137	7090	java/io/IOException
+    //   3206	3233	7090	java/io/IOException
+    //   3287	3294	7090	java/io/IOException
+    //   3348	3354	7090	java/io/IOException
+    //   3408	3415	7090	java/io/IOException
+    //   3938	3947	7090	java/io/IOException
+    //   4019	4027	7090	java/io/IOException
+    //   4081	4087	7090	java/io/IOException
+    //   3437	3444	7106	java/io/IOException
+    //   3462	3469	7106	java/io/IOException
+    //   3487	3495	7106	java/io/IOException
+    //   3517	3526	7106	java/io/IOException
+    //   3556	3584	7106	java/io/IOException
+    //   3608	3615	7106	java/io/IOException
+    //   3639	3648	7106	java/io/IOException
+    //   3672	3681	7106	java/io/IOException
+    //   3717	3729	7106	java/io/IOException
+    //   4400	4409	7106	java/io/IOException
+    //   4433	4442	7106	java/io/IOException
+    //   4673	4717	7106	java/io/IOException
+    //   1178	1220	7118	java/net/UnknownServiceException
+    //   1227	1292	7118	java/net/UnknownServiceException
+    //   1297	1305	7118	java/net/UnknownServiceException
+    //   1305	1341	7118	java/net/UnknownServiceException
+    //   1341	1396	7118	java/net/UnknownServiceException
+    //   1450	1456	7130	java/net/UnknownServiceException
+    //   1524	1528	7130	java/net/UnknownServiceException
+    //   1582	1601	7130	java/net/UnknownServiceException
+    //   1655	1660	7130	java/net/UnknownServiceException
+    //   1714	1719	7130	java/net/UnknownServiceException
+    //   2053	2072	7130	java/net/UnknownServiceException
+    //   2126	2155	7130	java/net/UnknownServiceException
+    //   2209	2216	7130	java/net/UnknownServiceException
+    //   2270	2287	7130	java/net/UnknownServiceException
+    //   2341	2347	7130	java/net/UnknownServiceException
+    //   2401	2411	7130	java/net/UnknownServiceException
+    //   2465	2478	7130	java/net/UnknownServiceException
+    //   2532	2543	7130	java/net/UnknownServiceException
+    //   2597	2606	7130	java/net/UnknownServiceException
+    //   2660	2666	7130	java/net/UnknownServiceException
+    //   2720	2726	7130	java/net/UnknownServiceException
+    //   2780	2798	7130	java/net/UnknownServiceException
+    //   2852	2862	7130	java/net/UnknownServiceException
+    //   2916	2923	7130	java/net/UnknownServiceException
+    //   2977	2991	7130	java/net/UnknownServiceException
+    //   3045	3070	7130	java/net/UnknownServiceException
+    //   3129	3137	7130	java/net/UnknownServiceException
+    //   3206	3233	7130	java/net/UnknownServiceException
+    //   3287	3294	7130	java/net/UnknownServiceException
+    //   3348	3354	7130	java/net/UnknownServiceException
+    //   3408	3415	7130	java/net/UnknownServiceException
+    //   3938	3947	7130	java/net/UnknownServiceException
+    //   4019	4027	7130	java/net/UnknownServiceException
+    //   4081	4087	7130	java/net/UnknownServiceException
+    //   3437	3444	7146	java/net/UnknownServiceException
+    //   3462	3469	7146	java/net/UnknownServiceException
+    //   3487	3495	7146	java/net/UnknownServiceException
+    //   3517	3526	7146	java/net/UnknownServiceException
+    //   3556	3584	7146	java/net/UnknownServiceException
+    //   3608	3615	7146	java/net/UnknownServiceException
+    //   3639	3648	7146	java/net/UnknownServiceException
+    //   3672	3681	7146	java/net/UnknownServiceException
+    //   3717	3729	7146	java/net/UnknownServiceException
+    //   4400	4409	7146	java/net/UnknownServiceException
+    //   4433	4442	7146	java/net/UnknownServiceException
+    //   4673	4717	7146	java/net/UnknownServiceException
+    //   900	939	7158	java/net/NoRouteToHostException
+    //   1164	1178	7158	java/net/NoRouteToHostException
+    //   1178	1220	7173	java/net/NoRouteToHostException
+    //   1227	1292	7173	java/net/NoRouteToHostException
+    //   1297	1305	7173	java/net/NoRouteToHostException
+    //   1305	1341	7173	java/net/NoRouteToHostException
+    //   1341	1396	7173	java/net/NoRouteToHostException
+    //   1450	1456	7185	java/net/NoRouteToHostException
+    //   1524	1528	7185	java/net/NoRouteToHostException
+    //   1582	1601	7185	java/net/NoRouteToHostException
+    //   1655	1660	7185	java/net/NoRouteToHostException
+    //   1714	1719	7185	java/net/NoRouteToHostException
+    //   2053	2072	7185	java/net/NoRouteToHostException
+    //   2126	2155	7185	java/net/NoRouteToHostException
+    //   2209	2216	7185	java/net/NoRouteToHostException
+    //   2270	2287	7185	java/net/NoRouteToHostException
+    //   2341	2347	7185	java/net/NoRouteToHostException
+    //   2401	2411	7185	java/net/NoRouteToHostException
+    //   2465	2478	7185	java/net/NoRouteToHostException
+    //   2532	2543	7185	java/net/NoRouteToHostException
+    //   2597	2606	7185	java/net/NoRouteToHostException
+    //   2660	2666	7185	java/net/NoRouteToHostException
+    //   2720	2726	7185	java/net/NoRouteToHostException
+    //   2780	2798	7185	java/net/NoRouteToHostException
+    //   2852	2862	7185	java/net/NoRouteToHostException
+    //   2916	2923	7185	java/net/NoRouteToHostException
+    //   2977	2991	7185	java/net/NoRouteToHostException
+    //   3045	3070	7185	java/net/NoRouteToHostException
+    //   3129	3137	7185	java/net/NoRouteToHostException
+    //   3206	3233	7185	java/net/NoRouteToHostException
+    //   3287	3294	7185	java/net/NoRouteToHostException
+    //   3348	3354	7185	java/net/NoRouteToHostException
+    //   3408	3415	7185	java/net/NoRouteToHostException
+    //   3938	3947	7185	java/net/NoRouteToHostException
+    //   4019	4027	7185	java/net/NoRouteToHostException
+    //   4081	4087	7185	java/net/NoRouteToHostException
+    //   900	939	7201	java/net/ProtocolException
+    //   1164	1178	7201	java/net/ProtocolException
+    //   1178	1220	7216	java/net/ProtocolException
+    //   1227	1292	7216	java/net/ProtocolException
+    //   1297	1305	7216	java/net/ProtocolException
+    //   1305	1341	7216	java/net/ProtocolException
+    //   1341	1396	7216	java/net/ProtocolException
+    //   1450	1456	7257	java/net/ProtocolException
+    //   1524	1528	7257	java/net/ProtocolException
+    //   1582	1601	7257	java/net/ProtocolException
+    //   1655	1660	7257	java/net/ProtocolException
+    //   1714	1719	7257	java/net/ProtocolException
+    //   2053	2072	7257	java/net/ProtocolException
+    //   2126	2155	7257	java/net/ProtocolException
+    //   2209	2216	7257	java/net/ProtocolException
+    //   2270	2287	7257	java/net/ProtocolException
+    //   2341	2347	7257	java/net/ProtocolException
+    //   2401	2411	7257	java/net/ProtocolException
+    //   2465	2478	7257	java/net/ProtocolException
+    //   2532	2543	7257	java/net/ProtocolException
+    //   2597	2606	7257	java/net/ProtocolException
+    //   2660	2666	7257	java/net/ProtocolException
+    //   2720	2726	7257	java/net/ProtocolException
+    //   2780	2798	7257	java/net/ProtocolException
+    //   2852	2862	7257	java/net/ProtocolException
+    //   2916	2923	7257	java/net/ProtocolException
+    //   2977	2991	7257	java/net/ProtocolException
+    //   3045	3070	7257	java/net/ProtocolException
+    //   3129	3137	7257	java/net/ProtocolException
+    //   3206	3233	7257	java/net/ProtocolException
+    //   3287	3294	7257	java/net/ProtocolException
+    //   3348	3354	7257	java/net/ProtocolException
+    //   3408	3415	7257	java/net/ProtocolException
+    //   3938	3947	7257	java/net/ProtocolException
+    //   4019	4027	7257	java/net/ProtocolException
+    //   4081	4087	7257	java/net/ProtocolException
   }
   
   public final void start()
   {
-    if (!this.isStop) {
+    AppMethodBeat.i(137467);
+    if (!this.isStop)
+    {
+      AppMethodBeat.o(137467);
       return;
     }
     this.isStop = false;
-    com.tencent.mm.sdk.f.e.post(this, "music_download_thread");
+    com.tencent.mm.sdk.g.d.post(this, "music_download_thread");
+    AppMethodBeat.o(137467);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.music.c.b
  * JD-Core Version:    0.7.0.1
  */

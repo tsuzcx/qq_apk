@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.expt.roomexpt;
 
 import android.widget.ArrayAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RoomExptDebugUI$7
   implements Runnable
@@ -9,8 +10,10 @@ final class RoomExptDebugUI$7
   
   public final void run()
   {
-    RoomExptDebugUI.d(this.jIW).notifyDataSetChanged();
-    RoomExptDebugUI.c(this.jIW);
+    AppMethodBeat.i(73597);
+    RoomExptDebugUI.d(this.mcY).notifyDataSetChanged();
+    RoomExptDebugUI.c(this.mcY);
+    AppMethodBeat.o(73597);
   }
 }
 

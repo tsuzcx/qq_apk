@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.d;
@@ -12,84 +13,94 @@ import com.tencent.mm.plugin.sight.decode.ui.VideoPlayView;
 import com.tencent.mm.plugin.sight.decode.ui.VideoPlayView.a;
 import com.tencent.mm.plugin.sns.a.b.a.a;
 import com.tencent.mm.plugin.sns.a.b.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class VideoAdPlayerUI$1
   implements VideoPlayView.a
 {
   VideoAdPlayerUI$1(VideoAdPlayerUI paramVideoAdPlayerUI) {}
   
-  public final void bBr()
+  public final void Dv(int paramInt)
   {
-    VideoAdPlayerUI.d(this.pkW).bH(false);
-    a locala = VideoAdPlayerUI.a(this.pkW).olx;
-    locala.omv += (int)bk.cp(VideoAdPlayerUI.a(this.pkW).olx.omz);
-    VideoAdPlayerUI.a(this.pkW, false);
-  }
-  
-  public final void bBs()
-  {
-    y.i("MicroMsg.VideoPlayerUI", "onPlayCompletion");
-    Object localObject = VideoAdPlayerUI.a(this.pkW).olx;
-    ((a)localObject).omu += 1;
-    VideoAdPlayerUI.a(this.pkW, false);
-    if (VideoAdPlayerUI.e(this.pkW) != 0)
+    AppMethodBeat.i(39911);
+    if (VideoAdPlayerUI.i(this.sdl) == 0)
     {
-      localObject = new i(13227, "1,2," + VideoAdPlayerUI.i(this.pkW) + "," + VideoAdPlayerUI.f(this.pkW) + "," + VideoAdPlayerUI.g(this.pkW) + "," + bk.UX() + "," + VideoAdPlayerUI.h(this.pkW) + "," + VideoAdPlayerUI.i(this.pkW), (int)bk.UX());
-      g.DQ();
-      g.DO().dJT.a((m)localObject, 0);
+      VideoAdPlayerUI.a(this.sdl, paramInt);
+      VideoAdPlayerUI.j(this.sdl).sdf = paramInt;
     }
+    AppMethodBeat.o(39911);
   }
   
-  public final void bBt()
+  public final void cmR()
   {
-    y.i("MicroMsg.VideoPlayerUI", "onPlayDownloadedPartComplete");
-    VideoAdPlayerUI.a(this.pkW, false);
-    VideoAdPlayerUI.c(this.pkW).bBo();
+    AppMethodBeat.i(39908);
+    VideoAdPlayerUI.d(this.sdl).cJ(false);
+    a locala = VideoAdPlayerUI.a(this.sdl).qZJ;
+    locala.raJ += (int)bo.av(VideoAdPlayerUI.a(this.sdl).qZJ.raN);
+    VideoAdPlayerUI.a(this.sdl, false);
+    AppMethodBeat.o(39908);
   }
   
-  public final void iQ(boolean paramBoolean)
+  public final void cmS()
   {
+    AppMethodBeat.i(39909);
+    ab.i("MicroMsg.VideoPlayerUI", "onPlayCompletion");
+    Object localObject = VideoAdPlayerUI.a(this.sdl).qZJ;
+    ((a)localObject).raI += 1;
+    VideoAdPlayerUI.a(this.sdl, false);
+    if (VideoAdPlayerUI.e(this.sdl) != 0)
+    {
+      localObject = new i(13227, "1,2," + VideoAdPlayerUI.i(this.sdl) + "," + VideoAdPlayerUI.f(this.sdl) + "," + VideoAdPlayerUI.g(this.sdl) + "," + bo.aox() + "," + VideoAdPlayerUI.h(this.sdl) + "," + VideoAdPlayerUI.i(this.sdl), (int)bo.aox());
+      g.RM();
+      g.RK().eHt.a((m)localObject, 0);
+    }
+    AppMethodBeat.o(39909);
+  }
+  
+  public final void cmT()
+  {
+    AppMethodBeat.i(39910);
+    ab.i("MicroMsg.VideoPlayerUI", "onPlayDownloadedPartComplete");
+    VideoAdPlayerUI.a(this.sdl, false);
+    VideoAdPlayerUI.c(this.sdl).cmO();
+    AppMethodBeat.o(39910);
+  }
+  
+  public final void kU(boolean paramBoolean)
+  {
+    AppMethodBeat.i(39907);
     Object localObject;
     if (paramBoolean)
     {
-      localObject = VideoAdPlayerUI.a(this.pkW).olx;
-      if (this.pkW.getResources().getConfiguration().orientation != 2) {
-        break label291;
+      localObject = VideoAdPlayerUI.a(this.sdl).qZJ;
+      if (this.sdl.getResources().getConfiguration().orientation != 2) {
+        break label301;
       }
     }
-    label291:
+    label301:
     for (int i = 2;; i = 1)
     {
-      ((a)localObject).omy = i;
-      VideoAdPlayerUI.a(this.pkW).olx.omz = bk.UZ();
-      VideoAdPlayerUI.a(this.pkW).olx.omx = 2;
-      VideoAdPlayerUI.a(this.pkW).olx.omv = 0;
-      if ((!VideoAdPlayerUI.b(this.pkW)) && ((int)VideoAdPlayerUI.c(this.pkW).getLastProgresstime() == 0))
+      ((a)localObject).raM = i;
+      VideoAdPlayerUI.a(this.sdl).qZJ.raN = bo.yB();
+      VideoAdPlayerUI.a(this.sdl).qZJ.raL = 2;
+      VideoAdPlayerUI.a(this.sdl).qZJ.raJ = 0;
+      if ((!VideoAdPlayerUI.b(this.sdl)) && ((int)VideoAdPlayerUI.c(this.sdl).getLastProgresstime() == 0))
       {
-        localObject = VideoAdPlayerUI.a(this.pkW).olx;
-        ((a)localObject).omt += 1;
+        localObject = VideoAdPlayerUI.a(this.sdl).qZJ;
+        ((a)localObject).raH += 1;
       }
-      VideoAdPlayerUI.a(this.pkW).olx.omz = bk.UZ();
-      VideoAdPlayerUI.d(this.pkW).a(VideoAdPlayerUI.c(this.pkW));
-      if (VideoAdPlayerUI.e(this.pkW) != 0)
+      VideoAdPlayerUI.a(this.sdl).qZJ.raN = bo.yB();
+      VideoAdPlayerUI.d(this.sdl).a(VideoAdPlayerUI.c(this.sdl));
+      if (VideoAdPlayerUI.e(this.sdl) != 0)
       {
-        localObject = new i(13227, "1,1,0," + VideoAdPlayerUI.f(this.pkW) + "," + VideoAdPlayerUI.g(this.pkW) + "," + bk.UX() + "," + VideoAdPlayerUI.h(this.pkW) + "," + VideoAdPlayerUI.i(this.pkW), (int)bk.UX());
-        g.DQ();
-        g.DO().dJT.a((m)localObject, 0);
+        localObject = new i(13227, "1,1,0," + VideoAdPlayerUI.f(this.sdl) + "," + VideoAdPlayerUI.g(this.sdl) + "," + bo.aox() + "," + VideoAdPlayerUI.h(this.sdl) + "," + VideoAdPlayerUI.i(this.sdl), (int)bo.aox());
+        g.RM();
+        g.RK().eHt.a((m)localObject, 0);
       }
-      VideoAdPlayerUI.a(this.pkW, true);
+      VideoAdPlayerUI.a(this.sdl, true);
+      AppMethodBeat.o(39907);
       return;
-    }
-  }
-  
-  public final void xv(int paramInt)
-  {
-    if (VideoAdPlayerUI.i(this.pkW) == 0)
-    {
-      VideoAdPlayerUI.a(this.pkW, paramInt);
-      VideoAdPlayerUI.j(this.pkW).pkD = paramInt;
     }
   }
 }

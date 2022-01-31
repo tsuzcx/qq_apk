@@ -1,5 +1,6 @@
 package org.xwalk.core.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,17 +12,28 @@ public class WebAddress
   static final int MATCH_GROUP_PATH = 5;
   static final int MATCH_GROUP_PORT = 4;
   static final int MATCH_GROUP_SCHEME = 1;
-  static Pattern sAddressPattern = Pattern.compile("(?:(http|https|file)\\:\\/\\/)?(?:([-A-Za-z0-9$_.+!*'(),;?&=]+(?:\\:[-A-Za-z0-9$_.+!*'(),;?&=]+)?)@)?([a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_-][a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_\\.-]*|\\[[0-9a-fA-F:\\.]+\\])?(?:\\:([0-9]*))?(\\/?[^#]*)?.*", 2);
+  static Pattern sAddressPattern;
   private String mAuthInfo;
   private String mHost;
   private String mPath;
   private int mPort;
   private String mScheme;
   
+  static
+  {
+    AppMethodBeat.i(86234);
+    sAddressPattern = Pattern.compile("(?:(http|https|file)\\:\\/\\/)?(?:([-A-Za-z0-9$_.+!*'(),;?&=]+(?:\\:[-A-Za-z0-9$_.+!*'(),;?&=]+)?)@)?([a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_-][a-zA-Z0-9 -퟿豈-﷏ﷰ-￯%_\\.-]*|\\[[0-9a-fA-F:\\.]+\\])?(?:\\:([0-9]*))?(\\/?[^#]*)?.*", 2);
+    AppMethodBeat.o(86234);
+  }
+  
   public WebAddress(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException();
+    AppMethodBeat.i(86232);
+    if (paramString == null)
+    {
+      paramString = new NullPointerException();
+      AppMethodBeat.o(86232);
+      throw paramString;
     }
     this.mScheme = "";
     this.mHost = "";
@@ -62,23 +74,28 @@ public class WebAddress
         else
         {
           if ((this.mPort != 443) || (!this.mScheme.equals(""))) {
-            break label259;
+            break label283;
           }
           this.mScheme = "https";
           if (this.mScheme.equals("")) {
             this.mScheme = "http";
           }
+          AppMethodBeat.o(86232);
           return;
         }
       }
       catch (NumberFormatException paramString)
       {
-        throw new WebAddress.ParseException("Bad port");
+        paramString = new WebAddress.ParseException("Bad port");
+        AppMethodBeat.o(86232);
+        throw paramString;
       }
-      this.mPath = ("/" + paramString);
+      this.mPath = "/".concat(String.valueOf(paramString));
       continue;
-      throw new WebAddress.ParseException("Bad address");
-      label259:
+      paramString = new WebAddress.ParseException("Bad address");
+      AppMethodBeat.o(86232);
+      throw paramString;
+      label283:
       if (this.mPort == -1) {
         if (this.mScheme.equals("https")) {
           this.mPort = 443;
@@ -141,8 +158,8 @@ public class WebAddress
   
   public String toString()
   {
+    AppMethodBeat.i(86233);
     String str2 = "";
-    String str1;
     if ((this.mPort == 443) || (!this.mScheme.equals("https")))
     {
       str1 = str2;
@@ -160,7 +177,9 @@ public class WebAddress
     if (this.mAuthInfo.length() > 0) {
       str2 = this.mAuthInfo + "@";
     }
-    return this.mScheme + "://" + str2 + this.mHost + str1 + this.mPath;
+    String str1 = this.mScheme + "://" + str2 + this.mHost + str1 + this.mPath;
+    AppMethodBeat.o(86233);
+    return str1;
   }
 }
 

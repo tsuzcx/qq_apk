@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.ui.base.h;
 
@@ -12,17 +13,19 @@ final class EmailVerifyUI$3
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(124761);
     paramView = new StringBuilder();
-    g.DN();
-    paramView = paramView.append(com.tencent.mm.kernel.a.Df()).append(",").append(getClass().getName()).append(",R500_250,");
-    g.DN();
-    com.tencent.mm.plugin.b.a.qk(com.tencent.mm.kernel.a.gd("R500_250") + ",3");
-    h.a(this.flz, q.j.regby_email_resend_verify_code, q.j.regby_email_err_tip_title, q.j.app_ok, q.j.app_cancel, new EmailVerifyUI.3.1(this), null);
+    g.RJ();
+    paramView = paramView.append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",R500_250,");
+    g.RJ();
+    com.tencent.mm.plugin.b.a.xE(com.tencent.mm.kernel.a.mx("R500_250") + ",3");
+    h.a(this.gCQ, 2131302395, 2131302385, 2131297018, 2131296888, new EmailVerifyUI.3.1(this), null);
+    AppMethodBeat.o(124761);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.EmailVerifyUI.3
  * JD-Core Version:    0.7.0.1
  */

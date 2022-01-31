@@ -1,12 +1,13 @@
 package com.tencent.mm.wallet_core.ui.formview;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
 public final class a$a
   extends a.b
 {
-  private int wCF = 1;
-  private WalletFormView wCG;
+  private int AYR;
+  private WalletFormView AYS;
   
   public a$a(WalletFormView paramWalletFormView)
   {
@@ -16,37 +17,51 @@ public final class a$a
   public a$a(WalletFormView paramWalletFormView, byte paramByte)
   {
     super((byte)0);
-    this.wCG = paramWalletFormView;
-    this.wCF = 1;
-    cNt();
+    AppMethodBeat.i(49368);
+    this.AYR = 1;
+    this.AYS = paramWalletFormView;
+    this.AYR = 1;
+    dSX();
+    AppMethodBeat.o(49368);
   }
   
-  private void cNt()
+  private void dSX()
   {
-    if (this.wCF == 1) {
-      if (this.wCG != null) {
-        this.wCG.setKeyListener(new a.a.1(this));
+    AppMethodBeat.i(49370);
+    if (this.AYR == 1)
+    {
+      if (this.AYS != null)
+      {
+        this.AYS.setKeyListener(new a.a.1(this));
+        AppMethodBeat.o(49370);
       }
     }
-    while (this.wCG == null) {
-      return;
+    else if (this.AYS != null) {
+      this.AYS.setInputType(1);
     }
-    this.wCG.setInputType(1);
+    AppMethodBeat.o(49370);
   }
   
-  public final void Jd(int paramInt)
+  public final void RY(int paramInt)
   {
-    this.wCF = paramInt;
-    cNt();
+    AppMethodBeat.i(49369);
+    this.AYR = paramInt;
+    dSX();
+    AppMethodBeat.o(49369);
   }
   
   public final boolean a(WalletFormView paramWalletFormView)
   {
-    int i = this.wCF;
-    if (paramWalletFormView.wCS == null) {
+    AppMethodBeat.i(49371);
+    int i = this.AYR;
+    if (paramWalletFormView.AZe == null)
+    {
+      AppMethodBeat.o(49371);
       return false;
     }
-    return paramWalletFormView.wCS.isAreaIDCardNum(i);
+    boolean bool = paramWalletFormView.AZe.isAreaIDCardNum(i);
+    AppMethodBeat.o(49371);
+    return bool;
   }
 }
 

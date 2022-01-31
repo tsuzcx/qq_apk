@@ -1,38 +1,81 @@
 package com.tencent.mm.ui.chatting.l;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.text.SpannableString;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.bi;
+import com.tencent.mm.ui.chatting.f.d.b;
+import java.util.List;
 
 public final class d
-  extends a
+  implements e<bi>
 {
-  public d(a.b paramb)
+  private Cursor Js;
+  private String ejr;
+  private long zQg;
+  private long zQh;
+  
+  public d(String paramString, long paramLong1, long paramLong2)
   {
-    super(paramb);
+    this.ejr = paramString;
+    this.zQg = paramLong1;
+    this.zQh = paramLong2;
   }
   
-  final CharSequence b(Map<String, String> paramMap, String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference)
+  public final void a(d.b paramb)
   {
-    paramBundle = (String)paramMap.get(paramString + ".title");
-    paramWeakReference = new a.a(this);
-    paramWeakReference.username = ((String)paramMap.get(paramString + ".username"));
-    paramWeakReference.eAl = ((String)paramMap.get(paramString + ".qrcode"));
-    paramMap = new SpannableString(paramBundle);
-    paramMap.setSpan(new d.1(this, paramWeakReference), 0, paramBundle.length(), 33);
-    return paramMap;
+    AppMethodBeat.i(32709);
+    aw.aaz();
+    this.Js = c.YC().A(this.ejr, this.zQg, this.zQh);
+    paramb.next();
+    AppMethodBeat.o(32709);
   }
   
-  final String cGZ()
+  public final void close()
   {
-    return "link_revoke_qrcode";
+    AppMethodBeat.i(32712);
+    this.Js.close();
+    AppMethodBeat.o(32712);
+  }
+  
+  public final int dwi()
+  {
+    AppMethodBeat.i(32710);
+    aw.aaz();
+    int i = c.YC().TA(this.ejr);
+    AppMethodBeat.o(32710);
+    return i;
+  }
+  
+  public final void fs(List<bi> paramList)
+  {
+    AppMethodBeat.i(32711);
+    try
+    {
+      this.Js.moveToFirst();
+      while (!this.Js.isAfterLast())
+      {
+        bi localbi = new bi();
+        localbi.convertFrom(this.Js);
+        paramList.add(localbi);
+        this.Js.moveToNext();
+      }
+      AppMethodBeat.o(32711);
+    }
+    catch (Exception paramList)
+    {
+      ab.printErrStackTrace("MicroMsg.ChattingLoader.ChattingSearchDataSource", paramList, "", new Object[0]);
+      AppMethodBeat.o(32711);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.l.d
  * JD-Core Version:    0.7.0.1
  */

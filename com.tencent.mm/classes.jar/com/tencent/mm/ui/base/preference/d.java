@@ -8,9 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.ui.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.w;
 import java.util.HashMap;
 import junit.framework.Assert;
 
@@ -18,45 +17,51 @@ final class d
   extends BaseAdapter
 {
   private final Context context;
-  protected int mTD = -1;
+  protected int pvJ;
   private final int style;
   protected String value;
-  protected final HashMap<CharSequence, c> values = new HashMap();
-  protected CharSequence[] vca;
-  protected CharSequence[] vcb;
+  protected final HashMap<CharSequence, c> values;
+  protected CharSequence[] zqB;
+  protected CharSequence[] zqC;
   
   public d(Context paramContext)
   {
+    AppMethodBeat.i(107151);
+    this.pvJ = -1;
+    this.values = new HashMap();
     this.context = paramContext;
     this.style = 1;
+    AppMethodBeat.o(107151);
   }
   
-  protected final void cBs()
+  protected final void dEH()
   {
     int i = 0;
-    if (this.vca == null) {
-      this.vca = new CharSequence[0];
+    AppMethodBeat.i(107152);
+    if (this.zqB == null) {
+      this.zqB = new CharSequence[0];
     }
-    if (this.vcb == null) {
-      this.vcb = new CharSequence[0];
+    if (this.zqC == null) {
+      this.zqC = new CharSequence[0];
     }
-    if (this.vca.length == this.vcb.length) {}
+    if (this.zqB.length == this.zqC.length) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("entries count different", bool);
       this.values.clear();
-      while (i < this.vcb.length)
+      while (i < this.zqC.length)
       {
-        c localc = new c(this.vca[i], 1048576 + i);
-        this.values.put(this.vcb[i], localc);
+        c localc = new c(this.zqB[i], 1048576 + i);
+        this.values.put(this.zqC[i], localc);
         i += 1;
       }
     }
+    AppMethodBeat.o(107152);
   }
   
   public final int getCount()
   {
-    return this.vcb.length;
+    return this.zqC.length;
   }
   
   public final Object getItem(int paramInt)
@@ -71,46 +76,42 @@ final class d
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(107153);
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramViewGroup = y.gt(this.context).inflate(a.h.mm_preference_dialog_item, null);
-      paramView = new a();
-      paramView.mTE = ((TextView)paramViewGroup.findViewById(a.g.text));
-      paramView.mTF = ((CheckBox)paramViewGroup.findViewById(a.g.check));
-      paramView.mTG = ((RadioButton)paramViewGroup.findViewById(a.g.radio));
+      paramViewGroup = w.hM(this.context).inflate(2130970227, null);
+      paramView = new d.a();
+      paramView.pvK = ((TextView)paramViewGroup.findViewById(2131820676));
+      paramView.pvL = ((CheckBox)paramViewGroup.findViewById(2131826235));
+      paramView.pvM = ((RadioButton)paramViewGroup.findViewById(2131820951));
       paramViewGroup.setTag(paramView);
     }
-    paramView = (a)paramViewGroup.getTag();
-    paramView.mTE.setText(this.vca[paramInt]);
+    paramView = (d.a)paramViewGroup.getTag();
+    paramView.pvK.setText(this.zqB[paramInt]);
     switch (this.style)
     {
     default: 
-      paramView.mTF.setVisibility(8);
-      paramView.mTG.setVisibility(8);
-      return paramViewGroup;
-    case 1: 
-      paramView.mTF.setVisibility(8);
-      paramView.mTG.setVisibility(0);
-      paramView.mTG.setChecked(this.vcb[paramInt].equals(this.value));
-      return paramViewGroup;
+      paramView.pvL.setVisibility(8);
+      paramView.pvM.setVisibility(8);
     }
-    paramView.mTF.setVisibility(0);
-    paramView.mTG.setVisibility(8);
-    paramView.mTF.setChecked(this.vcb[paramInt].equals(this.value));
-    return paramViewGroup;
-  }
-  
-  static final class a
-  {
-    TextView mTE;
-    CheckBox mTF;
-    RadioButton mTG;
+    for (;;)
+    {
+      AppMethodBeat.o(107153);
+      return paramViewGroup;
+      paramView.pvL.setVisibility(8);
+      paramView.pvM.setVisibility(0);
+      paramView.pvM.setChecked(this.zqC[paramInt].equals(this.value));
+      continue;
+      paramView.pvL.setVisibility(0);
+      paramView.pvM.setVisibility(8);
+      paramView.pvL.setChecked(this.zqC[paramInt].equals(this.value));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.d
  * JD-Core Version:    0.7.0.1
  */

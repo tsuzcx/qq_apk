@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.webview.fts.ui;
 
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bj;
 
 public final class b$2
-  extends bf<Boolean>
+  extends bj<Boolean>
 {
   public b$2(b paramb, Boolean paramBoolean, int paramInt)
   {

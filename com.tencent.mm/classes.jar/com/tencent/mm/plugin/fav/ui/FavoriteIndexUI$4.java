@@ -1,30 +1,24 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import android.app.Dialog;
-import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavoriteIndexUI$4
-  implements Runnable
+  implements View.OnClickListener
 {
-  FavoriteIndexUI$4(FavoriteIndexUI paramFavoriteIndexUI, List paramList, Dialog paramDialog) {}
+  FavoriteIndexUI$4(FavoriteIndexUI paramFavoriteIndexUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    b.bn(this.kbG);
-    ai.d(new Runnable()
-    {
-      public final void run()
-      {
-        FavoriteIndexUI.4.this.kbH.dismiss();
-      }
-      
-      public final String toString()
-      {
-        return super.toString() + "|batchDelFavItems";
-      }
-    });
+    AppMethodBeat.i(74222);
+    int i = ((Integer)paramView.getTag()).intValue();
+    paramView = new Intent();
+    paramView.putExtra("key_enter_fav_search_from", 0);
+    paramView.putExtra("key_preset_search_type", i);
+    FavoriteIndexUI.a(this.myP, paramView);
+    AppMethodBeat.o(74222);
   }
 }
 

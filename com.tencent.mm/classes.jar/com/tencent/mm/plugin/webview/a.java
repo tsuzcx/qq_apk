@@ -1,12 +1,21 @@
 package com.tencent.mm.plugin.webview;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
 import java.util.regex.Pattern;
 
 public final class a
 {
-  public static final Pattern qYo = Pattern.compile("(http|https)://mp.weixin.qq.com.*");
-  public static final String qYp = e.bkH + "vproxy";
+  public static final Pattern uNB;
+  public static final String uNC;
+  
+  static
+  {
+    AppMethodBeat.i(5610);
+    uNB = Pattern.compile("(http|https)://mp.weixin.qq.com.*");
+    uNC = e.eQz + "vproxy";
+    AppMethodBeat.o(5610);
+  }
 }
 
 

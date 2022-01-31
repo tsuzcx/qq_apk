@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.webview.luggage.permission;
 
-import com.tencent.luggage.e.a.a;
-import com.tencent.luggage.e.a.b;
+import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.e;
 import com.tencent.mm.protocal.c.g;
 import java.util.HashSet;
@@ -10,53 +11,63 @@ import java.util.Set;
 public final class c
   implements a
 {
-  private LuggageGetA8Key rbR;
-  private e rcp;
-  private Set<String> reM = new HashSet();
+  private LuggageGetA8Key uRC;
+  private e uSb;
+  private Set<String> uUU;
   
   public c(e parame, LuggageGetA8Key paramLuggageGetA8Key)
   {
-    this.rcp = parame;
-    this.rbR = paramLuggageGetA8Key;
+    AppMethodBeat.i(6490);
+    this.uUU = new HashSet();
+    this.uSb = parame;
+    this.uRC = paramLuggageGetA8Key;
+    AppMethodBeat.o(6490);
   }
   
-  public final void RS(String paramString)
+  public final void a(com.tencent.luggage.d.a.c paramc)
   {
-    this.reM.add(paramString);
+    AppMethodBeat.i(6492);
+    paramc.a(b.bzB);
+    AppMethodBeat.o(6492);
   }
   
-  public final void a(com.tencent.luggage.e.a.c paramc)
+  public final void a(String paramString, com.tencent.luggage.d.a.c paramc)
   {
-    paramc.a(b.bjc);
-  }
-  
-  public final void a(String paramString, com.tencent.luggage.e.a.c paramc)
-  {
-    if (this.reM.contains(paramString))
+    AppMethodBeat.i(6493);
+    if (this.uUU.contains(paramString))
     {
-      this.reM.remove(paramString);
-      paramc.a(b.bjc);
+      this.uUU.remove(paramString);
+      paramc.a(b.bzB);
+      AppMethodBeat.o(6493);
       return;
     }
-    LuggageGetA8Key localLuggageGetA8Key = this.rbR;
-    String str = this.rcp.getUrl();
-    paramString = com.tencent.mm.protocal.c.Xq(paramString);
+    LuggageGetA8Key localLuggageGetA8Key = this.uRC;
+    String str = this.uSb.getUrl();
+    paramString = com.tencent.mm.protocal.c.anm(paramString);
     int i;
     if (paramString == null)
     {
       i = -1;
-      if (!localLuggageGetA8Key.cO(str, i)) {
-        break label91;
+      if (!localLuggageGetA8Key.dN(str, i)) {
+        break label109;
       }
     }
-    label91:
-    for (paramString = b.bjc;; paramString = b.bjd)
+    label109:
+    for (paramString = b.bzB;; paramString = b.bzC)
     {
       paramc.a(paramString);
+      AppMethodBeat.o(6493);
       return;
-      i = paramString.coP();
+      i = paramString.dqm();
       break;
     }
+  }
+  
+  public final void agX(String paramString)
+  {
+    AppMethodBeat.i(6491);
+    this.uUU.add(paramString);
+    AppMethodBeat.o(6491);
   }
 }
 

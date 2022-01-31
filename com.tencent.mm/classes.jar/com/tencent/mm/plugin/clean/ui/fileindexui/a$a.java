@@ -7,11 +7,11 @@ import android.widget.TextView;
 
 final class a$a
 {
-  ImageView doU;
-  TextView eXO;
-  TextView eXP;
-  CheckBox eXQ;
-  RelativeLayout hIU;
+  ImageView egq;
+  TextView gpL;
+  TextView gpM;
+  CheckBox gpN;
+  RelativeLayout jCu;
   
   a$a(a parama) {}
 }

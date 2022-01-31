@@ -6,42 +6,45 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.nearby.b.d;
-import com.tencent.mm.plugin.nearby.b.e;
-import com.tencent.mm.plugin.nearby.b.g;
-import com.tencent.mm.plugin.nearby.b.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class CleanLocationHeaderView
   extends LinearLayout
 {
-  private ImageView heN;
-  private TextView mCH;
+  private ImageView iQd;
+  private TextView pcA;
   
   public CleanLocationHeaderView(Context paramContext)
   {
     super(paramContext);
-    ca(paramContext);
+    AppMethodBeat.i(55409);
+    aA(paramContext);
+    AppMethodBeat.o(55409);
   }
   
   public CleanLocationHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ca(paramContext);
+    AppMethodBeat.i(55408);
+    aA(paramContext);
+    AppMethodBeat.o(55408);
   }
   
-  private void ca(Context paramContext)
+  private void aA(Context paramContext)
   {
-    paramContext = View.inflate(paramContext, b.e.nearby_bindmobile_header_view, this);
-    this.mCH = ((TextView)paramContext.findViewById(b.d.nearby_header_text));
-    this.mCH.setSingleLine(false);
-    this.heN = ((ImageView)paramContext.findViewById(b.d.nearby_bind_icon));
-    this.mCH.setText(b.h.clean_loaction_header_title);
-    this.heN.setImageResource(b.g.peoplenearby_icon);
+    AppMethodBeat.i(55410);
+    paramContext = View.inflate(paramContext, 2130970342, this);
+    this.pcA = ((TextView)paramContext.findViewById(2131826487));
+    this.pcA.setSingleLine(false);
+    this.iQd = ((ImageView)paramContext.findViewById(2131826486));
+    this.pcA.setText(2131298381);
+    this.iQd.setImageResource(2131231857);
+    AppMethodBeat.o(55410);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.CleanLocationHeaderView
  * JD-Core Version:    0.7.0.1
  */

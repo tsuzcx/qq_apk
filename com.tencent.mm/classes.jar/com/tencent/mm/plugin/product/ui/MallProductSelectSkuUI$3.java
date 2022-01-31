@@ -1,33 +1,38 @@
 package com.tencent.mm.plugin.product.ui;
 
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallProductSelectSkuUI$3
   implements MallProductSelectAmountView.a
 {
   MallProductSelectSkuUI$3(MallProductSelectSkuUI paramMallProductSelectSkuUI) {}
   
-  public final void dC(int paramInt1, int paramInt2)
+  public final void fi(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(44108);
     switch (paramInt2)
     {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      MallProductSelectSkuUI.c(this.mUv).setText(a.i.mall_product_select_sku_amount_err);
-      MallProductSelectSkuUI.c(this.mUv).setVisibility(0);
-      return;
     }
-    MallProductSelectSkuUI.c(this.mUv).setText(this.mUv.getString(a.i.mall_product_select_sku_amount_limit_err, new Object[] { Integer.valueOf(paramInt1) }));
-    MallProductSelectSkuUI.c(this.mUv).setVisibility(0);
+    for (;;)
+    {
+      AppMethodBeat.o(44108);
+      return;
+      MallProductSelectSkuUI.c(this.pwB).setText(2131301478);
+      MallProductSelectSkuUI.c(this.pwB).setVisibility(0);
+      AppMethodBeat.o(44108);
+      return;
+      MallProductSelectSkuUI.c(this.pwB).setText(this.pwB.getString(2131301479, new Object[] { Integer.valueOf(paramInt1) }));
+      MallProductSelectSkuUI.c(this.pwB).setVisibility(0);
+    }
   }
   
-  public final void ex(int paramInt)
+  public final void gz(int paramInt)
   {
-    MallProductSelectSkuUI.b(this.mUv).mCount = paramInt;
-    MallProductSelectSkuUI.c(this.mUv).setVisibility(8);
+    AppMethodBeat.i(44107);
+    MallProductSelectSkuUI.b(this.pwB).mCount = paramInt;
+    MallProductSelectSkuUI.c(this.pwB).setVisibility(8);
+    AppMethodBeat.o(44107);
   }
 }
 

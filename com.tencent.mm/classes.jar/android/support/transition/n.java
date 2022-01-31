@@ -9,8 +9,8 @@ import java.lang.reflect.Method;
 final class n
   implements o
 {
-  private static Method rf;
-  private static boolean rg;
+  private static Method sd;
+  private static boolean se;
   
   public final void a(ImageView paramImageView) {}
   
@@ -18,18 +18,18 @@ final class n
   
   public final void a(ImageView paramImageView, Matrix paramMatrix)
   {
-    if (!rg) {}
+    if (!se) {}
     try
     {
       Method localMethod = ImageView.class.getDeclaredMethod("animateTransform", new Class[] { Matrix.class });
-      rf = localMethod;
+      sd = localMethod;
       localMethod.setAccessible(true);
       label32:
-      rg = true;
-      if (rf != null) {}
+      se = true;
+      if (sd != null) {}
       try
       {
-        rf.invoke(paramImageView, new Object[] { paramMatrix });
+        sd.invoke(paramImageView, new Object[] { paramMatrix });
         return;
       }
       catch (InvocationTargetException paramImageView)
@@ -46,7 +46,7 @@ final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.transition.n
  * JD-Core Version:    0.7.0.1
  */

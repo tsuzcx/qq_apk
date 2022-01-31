@@ -3,9 +3,8 @@ package com.tencent.mm.plugin.location.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class LocationExtUI$1
   implements View.OnClickListener
@@ -14,9 +13,11 @@ final class LocationExtUI$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(113431);
     paramView = new Intent();
-    paramView.putExtra("key_fav_result_list", LocationExtUI.a(this.lEO));
-    b.b(this.lEO.mController.uMN, ".ui.FavTagEditUI", paramView, 4098);
+    paramView.putExtra("key_fav_result_list", LocationExtUI.a(this.occ));
+    b.a(this.occ.getContext(), ".ui.FavTagEditUI", paramView, 4098);
+    AppMethodBeat.o(113431);
   }
 }
 

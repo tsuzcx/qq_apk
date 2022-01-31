@@ -4,16 +4,15 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.d.j;
 
 public class BankRemitDetailItemView
   extends LinearLayout
 {
-  private TextView haW;
-  private TextView iIV;
-  private boolean nwo = false;
+  private TextView iJG;
+  private TextView kPB;
+  private boolean qhq;
   
   public BankRemitDetailItemView(Context paramContext)
   {
@@ -23,50 +22,66 @@ public class BankRemitDetailItemView
   public BankRemitDetailItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(44589);
+    this.qhq = false;
     init();
+    AppMethodBeat.o(44589);
   }
   
   public BankRemitDetailItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(44590);
+    this.qhq = false;
     init();
+    AppMethodBeat.o(44590);
   }
   
   public BankRemitDetailItemView(Context paramContext, boolean paramBoolean)
   {
     super(paramContext);
-    this.nwo = paramBoolean;
+    AppMethodBeat.i(44588);
+    this.qhq = false;
+    this.qhq = paramBoolean;
     init();
+    AppMethodBeat.o(44588);
   }
   
   private void init()
   {
-    if (this.nwo) {
-      inflate(getContext(), a.g.bank_remit_detail_item_money_layout, this);
+    AppMethodBeat.i(44591);
+    if (this.qhq) {
+      inflate(getContext(), 2130968820, this);
     }
     for (;;)
     {
-      this.haW = ((TextView)findViewById(a.f.brdi_title_tv));
-      this.iIV = ((TextView)findViewById(a.f.brdi_desc_tv));
+      this.iJG = ((TextView)findViewById(2131821678));
+      this.kPB = ((TextView)findViewById(2131821679));
+      AppMethodBeat.o(44591);
       return;
-      inflate(getContext(), a.g.bank_remit_detail_item_comm_layout, this);
+      inflate(getContext(), 2130968819, this);
     }
   }
   
   public final void a(String paramString, CharSequence paramCharSequence, boolean paramBoolean)
   {
-    this.haW.setText(paramString);
+    AppMethodBeat.i(44592);
+    this.iJG.setText(paramString);
     if (paramBoolean)
     {
-      this.iIV.setText(j.a(getContext(), paramCharSequence, this.iIV.getTextSize()));
+      this.kPB.setText(j.b(getContext(), paramCharSequence, this.kPB.getTextSize()));
+      AppMethodBeat.o(44592);
       return;
     }
-    this.iIV.setText(paramCharSequence);
+    this.kPB.setText(paramCharSequence);
+    AppMethodBeat.o(44592);
   }
   
   public final void b(int paramInt, CharSequence paramCharSequence)
   {
+    AppMethodBeat.i(44593);
     a(getContext().getString(paramInt), paramCharSequence, false);
+    AppMethodBeat.o(44593);
   }
 }
 

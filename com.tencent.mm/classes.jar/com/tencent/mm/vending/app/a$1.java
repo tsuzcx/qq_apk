@@ -1,5 +1,6 @@
 package com.tencent.mm.vending.app;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 final class a$1
@@ -7,23 +8,26 @@ final class a$1
 {
   a$1(a parama) {}
   
-  protected final Object af(Class<?> paramClass)
+  public final Object aA(Class<?> paramClass)
   {
-    a.a locala = (a.a)this.wsR.c.get(paramClass);
+    AppMethodBeat.i(126094);
+    a.a locala = (a.a)this.ANM.c.get(paramClass);
     Object localObject;
     if (locala != null)
     {
       locala.c = true;
-      localObject = locala.Vw();
+      localObject = locala.aoU();
       locala.c = false;
       if (locala.b) {
-        locala.wsS = defer(paramClass);
+        locala.ANN = defer(paramClass);
       }
     }
     else
     {
+      AppMethodBeat.o(126094);
       return null;
     }
+    AppMethodBeat.o(126094);
     return localObject;
   }
 }

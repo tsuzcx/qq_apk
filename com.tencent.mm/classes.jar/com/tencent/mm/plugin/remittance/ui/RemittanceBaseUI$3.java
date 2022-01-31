@@ -1,23 +1,25 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.report.service.h;
+import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.wallet_core.ui.a;
 
 final class RemittanceBaseUI$3
-  implements View.OnClickListener
+  implements a
 {
   RemittanceBaseUI$3(RemittanceBaseUI paramRemittanceBaseUI) {}
   
-  public final void onClick(View paramView)
+  public final void onVisibleStateChange(boolean paramBoolean)
   {
-    c.a(this.nAH, this.nAH.fzn, RemittanceBaseUI.d(this.nAH), RemittanceBaseUI.a(this.nAH));
-    if (this.nAH.fzn == 1)
+    AppMethodBeat.i(142141);
+    if (paramBoolean)
     {
-      h.nFQ.f(12689, new Object[] { Integer.valueOf(13), Integer.valueOf(1) });
+      RemittanceBaseUI.a(this.qmk, this.qmk.nIO, this.qmk.gJr);
+      AppMethodBeat.o(142141);
       return;
     }
-    h.nFQ.f(12689, new Object[] { Integer.valueOf(4), Integer.valueOf(1) });
+    this.qmk.nIO.scrollTo(0, 0);
+    AppMethodBeat.o(142141);
   }
 }
 

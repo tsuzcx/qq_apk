@@ -1,11 +1,19 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a$a
 {
-  private boolean seO = true;
-  public boolean value = true;
+  private boolean vVS;
+  public boolean value;
   
-  public a$a(a parama) {}
+  public a$a(a parama)
+  {
+    AppMethodBeat.i(27784);
+    this.vVS = true;
+    this.value = true;
+    AppMethodBeat.o(27784);
+  }
 }
 
 

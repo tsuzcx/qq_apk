@@ -6,21 +6,21 @@ import android.widget.TextView;
 
 final class n$a
 {
-  public TextView doV;
-  public TextView gSy;
-  public LinearLayout ldB;
-  public ImageView ldC;
-  public LinearLayout ldD;
-  public ImageView ldE;
-  public TextView ldF;
-  public LinearLayout ldG;
-  public TextView ldH;
-  public ImageView ldI;
-  public ImageView ldJ;
-  public TextView ldK;
-  public TextView ldL;
-  public LinearLayout ldM;
-  public GameMessageListContainerView ldN;
+  public TextView egr;
+  public TextView ivt;
+  public TextView nBA;
+  public LinearLayout nBB;
+  public TextView nBC;
+  public ImageView nBD;
+  public ImageView nBE;
+  public TextView nBF;
+  public TextView nBG;
+  public LinearLayout nBH;
+  public GameMessageListContainerView nBI;
+  public LinearLayout nBw;
+  public ImageView nBx;
+  public LinearLayout nBy;
+  public ImageView nBz;
 }
 
 

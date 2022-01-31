@@ -2,29 +2,13 @@ package com.google.android.exoplayer2.c;
 
 public abstract interface e
 {
-  public abstract boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
+  public abstract int a(f paramf, k paramk);
   
-  public abstract void b(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public abstract void a(g paramg);
   
-  public abstract boolean b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
+  public abstract boolean a(f paramf);
   
-  public abstract int cK(int paramInt);
-  
-  public abstract void cL(int paramInt);
-  
-  public abstract void cM(int paramInt);
-  
-  public abstract long getLength();
-  
-  public abstract long getPosition();
-  
-  public abstract void lT();
-  
-  public abstract long lU();
-  
-  public abstract int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  public abstract void readFully(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public abstract void g(long paramLong1, long paramLong2);
 }
 
 

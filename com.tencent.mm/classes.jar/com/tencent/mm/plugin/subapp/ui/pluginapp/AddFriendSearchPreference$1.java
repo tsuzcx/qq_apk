@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.subapp.ui.pluginapp;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AddFriendSearchPreference$1
   implements View.OnClickListener
@@ -11,9 +12,19 @@ final class AddFriendSearchPreference$1
   
   public final void onClick(View paramView)
   {
-    if ((AddFriendSearchPreference.a(this.pxC) != null) && (AddFriendSearchPreference.b(this.pxC) != null) && (AddFriendSearchPreference.b(this.pxC).getText() != null)) {
-      AddFriendSearchPreference.b(this.pxC).getText().toString();
+    AppMethodBeat.i(25493);
+    if ((AddFriendSearchPreference.a(this.sZq) != null) && (AddFriendSearchPreference.b(this.sZq) != null))
+    {
+      if (AddFriendSearchPreference.b(this.sZq).getText() == null)
+      {
+        AddFriendSearchPreference.a(this.sZq);
+        AppMethodBeat.o(25493);
+        return;
+      }
+      AddFriendSearchPreference.a(this.sZq);
+      AddFriendSearchPreference.b(this.sZq).getText().toString();
     }
+    AppMethodBeat.o(25493);
   }
 }
 

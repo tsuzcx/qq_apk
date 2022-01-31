@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/p1"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/k5">
-        <ImageView android:id="@id/bn1" android:src="@drawable/aad" style="@style/il" />
-        <TextView android:id="@id/bn2" android:text="" style="@style/im" />
-        <TextView android:id="@id/bn3" android:text="" style="@style/in" />
-        <TextView android:id="@id/bn4" android:text="" style="@style/io" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:layout_marginBottom="15.0dip" style="@style/lo">
-        <ImageView android:layout_width="114.0dip" android:layout_height="18.0dip" android:src="@drawable/aak" />
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:orientation="vertical" android:id="@id/bqb" android:background="@color/o6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/bqc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <RelativeLayout android:id="@id/bog" android:background="@color/o6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/boh" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/b59" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="21.0dip" android:textColor="@color/a6q" android:id="@id/boi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="328.0dip" android:text="@string/bnv" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/bol" android:background="@color/o6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/bom" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/b61" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/bon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="237.0dip" android:layout_marginTop="253.0dip" android:src="@drawable/b60" />
+            <TextView android:textSize="24.0dip" android:textColor="@color/a6q" android:id="@id/boo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:text="@string/bnw" android:layout_below="@id/bom" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/bop" android:background="@color/o6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/boq" android:layout_width="100.0dip" android:layout_height="wrap_content" android:layout_marginTop="148.0dip" android:src="@drawable/b5y" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/bor" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/b65" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="21.0dip" android:textColor="@color/a6q" android:id="@id/bos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="323.0dip" android:text="@string/bnt" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <Button android:textSize="18.0dip" android:textColor="@color/a6q" android:id="@id/bqd" android:background="@drawable/nu" android:layout_width="200.0dip" android:layout_height="44.0dip" android:layout_marginBottom="150.0dip" android:text="@string/rc" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/nh" android:textColor="#ff6587cf" android:id="@id/bqe" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l2" android:text="@string/bme" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <Button android:id="@id/bqf" android:visibility="visible" style="@style/id" />
+    </RelativeLayout>
+</merge>

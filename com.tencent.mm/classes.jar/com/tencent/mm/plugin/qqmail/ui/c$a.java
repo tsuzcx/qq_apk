@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 public abstract class c$a
 {
-  public abstract void btI();
+  public abstract void cdT();
   
-  public abstract void btJ();
+  public abstract void cdU();
 }
 
 

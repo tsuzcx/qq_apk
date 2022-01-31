@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.facedetect.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FaceDetectConfirmUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -11,8 +12,10 @@ final class FaceDetectConfirmUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    y.i("MicroMsg.FaceDetectConfirmUI", "alvinluo cancel with back button");
-    FaceDetectConfirmUI.a(this.jQq);
+    AppMethodBeat.i(363);
+    ab.i("MicroMsg.FaceDetectConfirmUI", "alvinluo cancel with back button");
+    FaceDetectConfirmUI.a(this.mkL);
+    AppMethodBeat.o(363);
     return false;
   }
 }

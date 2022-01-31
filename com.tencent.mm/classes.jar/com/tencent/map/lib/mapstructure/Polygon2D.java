@@ -1,6 +1,7 @@
 package com.tencent.map.lib.mapstructure;
 
 import android.graphics.Point;
+import com.tencent.tencentmap.mapsdk.a.dg;
 
 public class Polygon2D
 {
@@ -12,6 +13,7 @@ public class Polygon2D
   public int centerX;
   public int centerY;
   public int[] color;
+  public int level = dg.c;
   public float originalRadius;
   public Point[] points;
   public int pointsCount;

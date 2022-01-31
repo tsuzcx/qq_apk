@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.radar.b;
 
+import a.l;
+
+@l(eaO={1, 1, 13})
 public final class f {}
 
 

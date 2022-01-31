@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.voiceprint.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoicePrintFinishUI$1
   implements View.OnClickListener
@@ -11,14 +12,16 @@ final class VoicePrintFinishUI$1
   
   public final void onClick(View paramView)
   {
-    if (VoicePrintFinishUI.a(this.pMz) == 72)
+    AppMethodBeat.i(26205);
+    if (VoicePrintFinishUI.a(this.tst) == 72)
     {
       paramView = new Intent();
-      paramView.setClass(this.pMz, VoiceUnLockUI.class);
+      paramView.setClass(this.tst, VoiceUnLockUI.class);
       paramView.putExtra("kscene_type", 73);
-      this.pMz.startActivity(paramView);
+      this.tst.startActivity(paramView);
     }
-    this.pMz.finish();
+    this.tst.finish();
+    AppMethodBeat.o(26205);
   }
 }
 

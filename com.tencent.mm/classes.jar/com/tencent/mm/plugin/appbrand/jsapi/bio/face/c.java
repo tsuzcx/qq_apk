@@ -3,17 +3,22 @@ package com.tencent.mm.plugin.appbrand.jsapi.bio.face;
 public final class c
   extends a
 {
-  public static final int CTRL_INDEX = 212;
-  public static final String NAME = "startFacialRecognitionVerify";
+  public static final int CTRL_INDEX = 478;
+  public static final String NAME = "startCustomFacialRecognitionVerifyAndUploadVideo";
   
-  protected final boolean ain()
+  protected final boolean aCg()
   {
-    return false;
+    return true;
   }
   
-  protected final String aio()
+  protected final String aCh()
   {
-    return "startFacialRecognitionVerify";
+    return "startCustomFacialRecognitionVerifyAndUploadVideo";
+  }
+  
+  protected final boolean aCi()
+  {
+    return false;
   }
 }
 

@@ -1,70 +1,78 @@
 package com.tencent.mm.plugin.facedetect.d;
 
-import com.tencent.mm.f.b.c.a;
-import com.tencent.mm.f.b.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.c.a;
+import com.tencent.mm.audio.b.g.a;
 import com.tencent.mm.modelvoiceaddr.a.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$2
   implements c.a
 {
-  short[] eMa;
+  short[] gbH;
   
   a$2(a parama) {}
   
-  public final void aU(int paramInt1, int paramInt2)
+  public final void bS(int paramInt1, int paramInt2)
   {
-    y.e("MicroMsg.FaceVoiceRecordLogic", "onRecError state = " + paramInt1 + " detailState = " + paramInt2);
-    this.jOW.aOH();
-    if (a.e(this.jOW) != null) {
-      a.e(this.jOW).onError(2);
+    AppMethodBeat.i(286);
+    ab.e("MicroMsg.FaceVoiceRecordLogic", "onRecError state = " + paramInt1 + " detailState = " + paramInt2);
+    this.mjm.buL();
+    if (a.e(this.mjm) != null) {
+      a.e(this.mjm).onError(2);
     }
+    AppMethodBeat.o(286);
   }
   
-  public final void r(byte[] paramArrayOfByte, int paramInt)
+  public final void s(byte[] paramArrayOfByte, int paramInt)
   {
     int j = 0;
-    y.d("MicroMsg.FaceVoiceRecordLogic", "OnRecPcmDataReady len: %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(285);
+    ab.d("MicroMsg.FaceVoiceRecordLogic", "OnRecPcmDataReady len: %d", new Object[] { Integer.valueOf(paramInt) });
     int i;
-    if (this.eMa != null)
+    if (this.gbH != null)
     {
       i = j;
-      if (this.eMa.length >= paramInt / 2) {}
+      if (this.gbH.length >= paramInt / 2) {}
     }
     else
     {
-      this.eMa = new short[paramInt / 2];
+      this.gbH = new short[paramInt / 2];
       i = j;
     }
     while (i < paramInt / 2)
     {
-      this.eMa[i] = ((short)(paramArrayOfByte[(i * 2)] & 0xFF | paramArrayOfByte[(i * 2 + 1)] << 8));
+      this.gbH[i] = ((short)(paramArrayOfByte[(i * 2)] & 0xFF | paramArrayOfByte[(i * 2 + 1)] << 8));
       i += 1;
     }
-    a.a(this.jOW, this.eMa, paramInt / 2);
-    if (a.g(this.jOW) != null)
+    a.a(this.mjm, this.gbH, paramInt / 2);
+    if (a.g(this.mjm) != null)
     {
-      a.g(this.jOW).d(this.eMa, paramInt / 2);
-      if (a.d(this.jOW) == null) {
-        break label249;
+      a.g(this.mjm).f(this.gbH, paramInt / 2);
+      if (a.d(this.mjm) == null) {
+        break label274;
       }
     }
-    label249:
-    for (paramInt = a.d(this.jOW).a(new g.a(paramArrayOfByte, paramInt));; paramInt = -1)
+    label274:
+    for (paramInt = a.d(this.mjm).a(new g.a(paramArrayOfByte, paramInt));; paramInt = -1)
     {
-      if ((-1 == paramInt) && (a.e(this.jOW) != null))
+      if ((-1 == paramInt) && (a.e(this.mjm) != null))
       {
-        a.e(this.jOW).onError(3);
-        this.jOW.aOH();
-        y.e("MicroMsg.FaceVoiceRecordLogic", "write to file failed");
+        a.e(this.mjm).onError(3);
+        this.mjm.buL();
+        ab.e("MicroMsg.FaceVoiceRecordLogic", "write to file failed");
+        AppMethodBeat.o(285);
+        return;
       }
+      AppMethodBeat.o(285);
       return;
-      if (a.e(this.jOW) != null)
+      if (a.e(this.mjm) != null)
       {
-        a.e(this.jOW).onError(1);
-        this.jOW.aOH();
+        a.e(this.mjm).onError(1);
+        this.mjm.buL();
       }
-      y.e("MicroMsg.FaceVoiceRecordLogic", "mVoiceSilentDetectAPI is null");
+      ab.e("MicroMsg.FaceVoiceRecordLogic", "mVoiceSilentDetectAPI is null");
+      AppMethodBeat.o(285);
       return;
     }
   }

@@ -1,13 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class d$3
   implements Runnable
 {
-  d$3(d paramd, i parami, String paramString, int paramInt) {}
+  d$3(d paramd, m paramm, String paramString, int paramInt) {}
   
   public final void run()
   {
-    d.a(this.geQ, this.geS, this.val$data, this.geT, false);
+    AppMethodBeat.i(91012);
+    d.a(this.hwL, this.hwN, this.val$data, this.hwO);
+    AppMethodBeat.o(91012);
   }
 }
 

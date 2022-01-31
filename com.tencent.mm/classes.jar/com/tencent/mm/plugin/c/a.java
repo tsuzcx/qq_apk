@@ -1,60 +1,99 @@
 package com.tencent.mm.plugin.c;
 
-import com.tencent.mm.cf.h;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.kernel.api.e;
+import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.b.c;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class a
-  implements com.tencent.mm.kernel.api.a, e, c
+  implements com.tencent.mm.kernel.api.a, com.tencent.mm.kernel.api.e, c
 {
-  private static final HashMap<Integer, h.d> dgp;
-  private static a fvO;
-  private com.tencent.mm.storage.g fvP;
+  private static final HashMap<Integer, h.d> baseDBFactories;
+  private static a gNu;
+  private com.tencent.mm.storage.g gNv;
   
   static
   {
+    AppMethodBeat.i(79051);
     HashMap localHashMap = new HashMap();
-    dgp = localHashMap;
-    localHashMap.put(Integer.valueOf("AddContactAntispamTicket".hashCode()), new h.d()
-    {
-      public final String[] rK()
-      {
-        return com.tencent.mm.storage.g.dXp;
-      }
-    });
+    baseDBFactories = localHashMap;
+    localHashMap.put(Integer.valueOf("AddContactAntispamTicket".hashCode()), new a.1());
+    AppMethodBeat.o(79051);
   }
   
-  public static a YT()
+  public static a asD()
   {
     try
     {
-      if (fvO == null) {
-        fvO = new a();
+      AppMethodBeat.i(79047);
+      if (gNu == null) {
+        gNu = new a();
       }
-      a locala = fvO;
+      a locala = gNu;
+      AppMethodBeat.o(79047);
       return locala;
     }
     finally {}
   }
   
-  public final com.tencent.mm.storage.g Ga()
+  public static boolean v(CharSequence paramCharSequence)
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    return this.fvP;
+    AppMethodBeat.i(79049);
+    if ((bo.aa(paramCharSequence)) || (!com.tencent.mm.kernel.g.RJ().eHg))
+    {
+      AppMethodBeat.o(79049);
+      return false;
+    }
+    try
+    {
+      String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("ClipProtectPattern");
+      if (!bo.isNullOrNil(str))
+      {
+        str = new String(Base64.decode(str, 0));
+        if (!bo.isNullOrNil(str))
+        {
+          boolean bool = Pattern.compile(str).matcher(paramCharSequence).matches();
+          if (bool)
+          {
+            AppMethodBeat.o(79049);
+            return true;
+          }
+        }
+      }
+    }
+    catch (Exception paramCharSequence)
+    {
+      AppMethodBeat.o(79049);
+    }
+    return false;
+  }
+  
+  public final com.tencent.mm.storage.g Zb()
+  {
+    AppMethodBeat.i(79048);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    com.tencent.mm.storage.g localg = this.gNv;
+    AppMethodBeat.o(79048);
+    return localg;
   }
   
   public final HashMap<Integer, h.d> collectDatabaseFactory()
   {
-    return dgp;
+    return baseDBFactories;
   }
   
   public final void onDataBaseClosed(h paramh1, h paramh2) {}
   
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
-    this.fvP = new com.tencent.mm.storage.g(paramh1);
+    AppMethodBeat.i(79050);
+    this.gNv = new com.tencent.mm.storage.g(paramh1);
+    AppMethodBeat.o(79050);
   }
 }
 

@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
-import android.text.TextUtils;
-import com.tencent.mm.plugin.websearch.api.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 
 final class FTSBaseWebViewUI$9
@@ -11,28 +10,11 @@ final class FTSBaseWebViewUI$9
   
   public final void run()
   {
-    int i;
-    String str1;
-    String str2;
-    if (FTSBaseWebViewUI.e(this.rtV) != null)
-    {
-      FTSBaseWebViewUI.f(this.rtV).a(this.rtV.getTotalQuery(), this.rtV.getInEditTextQuery(), this.rtV.cfw(), 0, null);
-      if (!TextUtils.isEmpty(this.rtV.getInEditTextQuery()))
-      {
-        i = FTSBaseWebViewUI.g(this.rtV);
-        str1 = this.rtV.bIB;
-        str2 = this.rtV.bVp;
-        if (this.rtV.rtQ != 0) {
-          break label116;
-        }
-      }
+    AppMethodBeat.i(8391);
+    if (this.vkg.uQS != null) {
+      this.vkg.uQS.a(this.vkg.getTotalQuery(), this.vkg.getInEditTextQuery(), this.vkg.dfD(), 0);
     }
-    label116:
-    for (boolean bool = true;; bool = false)
-    {
-      z.a(i, str1, str2, bool, this.rtV.getInEditTextQuery(), FTSBaseWebViewUI.h(this.rtV));
-      return;
-    }
+    AppMethodBeat.o(8391);
   }
 }
 

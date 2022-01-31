@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.os.Handler;
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.d;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.e;
 import java.util.List;
@@ -13,70 +14,91 @@ import junit.framework.Assert;
 public abstract class a
   implements e
 {
-  public boolean aEm = false;
-  public boolean apo = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.glN.apo;
-  public boolean glS = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.glN.glS;
-  public boolean glU = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.glN.glU;
-  public long gmA = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.glN.glY;
-  public j gmB;
-  private final Handler gmh = new Handler(Looper.getMainLooper());
-  public d gmv;
-  protected com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b gmw;
-  public b gmx;
-  private Runnable gmy = new a.1(this);
-  public long gmz = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.glN.glP;
+  public boolean aKX = false;
+  public boolean arI = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.hFM.arI;
+  private final Handler bTu = new Handler(Looper.getMainLooper());
+  public boolean hFR = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.hFM.hFR;
+  public boolean hFT = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.hFM.hFT;
+  public long hGA = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.hFM.hFX;
+  public j hGB;
+  protected d hGv;
+  protected com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b hGw;
+  public b hGx;
+  private Runnable hGy = new Runnable()
+  {
+    public final void run()
+    {
+      AppMethodBeat.i(94277);
+      if (a.this.aKX)
+      {
+        AppMethodBeat.o(94277);
+        return;
+      }
+      a.this.a(j.hHc);
+      a.this.done();
+      AppMethodBeat.o(94277);
+    }
+  };
+  public long hGz = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.hFM.hFO;
+  
+  private void aCq()
+  {
+    Assert.assertNotNull(this.hGv);
+    Assert.assertNotNull(this.hGw);
+    Assert.assertNotNull(this.hGx);
+  }
   
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b paramb)
   {
-    this.gmw = paramb;
+    this.hGw = paramb;
+  }
+  
+  public final void a(d paramd)
+  {
+    this.hGv = paramd;
   }
   
   public final void a(j paramj)
   {
-    this.gmB = paramj;
-    if (this.glS)
+    this.hGB = paramj;
+    if (this.hFR)
     {
-      this.gmh.post(new a.2(this, paramj));
+      this.bTu.post(new a.2(this, paramj));
       return;
     }
-    this.gmx.a(paramj);
+    this.hGx.a(paramj);
   }
   
-  public abstract void aiu();
+  public abstract void aCo();
   
-  public final void aiv()
+  public final void aCp()
   {
-    Assert.assertNotNull(this.gmv);
-    Assert.assertNotNull(this.gmw);
-    Assert.assertNotNull(this.gmx);
-    this.gmh.postDelayed(this.gmy, this.gmz);
-    aiu();
+    aCq();
+    this.bTu.postDelayed(this.hGy, this.hGz);
+    aCo();
   }
   
   public void b(j paramj) {}
   
   public final void done()
   {
-    this.gmh.removeCallbacks(this.gmy);
-    this.aEm = true;
-    b(this.gmB);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b localb = this.gmw;
-    Object localObject = this.gmB;
+    this.bTu.removeCallbacks(this.hGy);
+    this.aKX = true;
+    b(this.hGB);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b localb = this.hGw;
+    Object localObject = this.hGB;
     if (localObject != null) {}
     for (;;)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.BleConnectDispatcher", "actionCompleteCallback action:%s result:%s", new Object[] { this, localObject });
-      if (this != null)
-      {
-        if (!this.glU) {
-          break;
-        }
-        localb.ait();
+      if (!this.hFT) {
+        break;
       }
+      localb.aCn();
       return;
       localObject = "";
     }
-    localb.gmg.remove(this);
+    localb.hGf.remove(this);
   }
   
   public abstract String getName();
@@ -103,7 +125,7 @@ public abstract class a
   
   public String toString()
   {
-    return "Action{action='" + getName() + '\'' + ", debug=" + this.apo + ", mainThread=" + this.glS + ", serial=" + this.glU + '}';
+    return "Action{action='" + getName() + '\'' + ", debug=" + this.arI + ", mainThread=" + this.hFR + ", serial=" + this.hFT + '}';
   }
 }
 

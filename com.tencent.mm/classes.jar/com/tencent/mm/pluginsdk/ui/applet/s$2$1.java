@@ -2,43 +2,41 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.content.Context;
 import android.widget.EditText;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.comm.a.h;
-import com.tencent.mm.pluginsdk.model.m;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.base.h;
 import java.util.LinkedList;
 
 final class s$2$1
-  implements am.a
+  implements ap.a
 {
   s$2$1(s.2 param2) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
+    AppMethodBeat.i(79789);
     s locals;
-    String str;
-    if (this.sdt.sds.feu != null)
+    if (this.vUy.vUx.gwd != null)
     {
-      locals = this.sdt.sds;
-      str = this.sdt.sds.nge.getText().toString().trim();
+      locals = this.vUy.vUx;
+      String str = this.vUy.vUx.pLt.getText().toString().trim();
       Context localContext = locals.context;
-      locals.context.getString(a.h.app_tip);
-      locals.tipDialog = h.b(localContext, locals.context.getString(a.h.sendrequest_sending), true, new s.5(locals));
+      locals.context.getString(2131297087);
+      locals.tipDialog = h.b(localContext, locals.context.getString(2131303128), true, new s.5(locals));
       locals.content = str;
-      if ((locals.sdp.size() == 1) && (ad.aaU((String)locals.sdp.getFirst()))) {
-        locals.cmS();
+      if ((locals.vUs.size() != 1) || (!ad.arf((String)locals.vUs.getFirst()))) {
+        break label130;
       }
+      locals.dnK();
     }
-    else
+    for (;;)
     {
+      AppMethodBeat.o(79789);
       return false;
+      label130:
+      locals.dnv();
     }
-    g.DO().dJT.a(new m(2, locals.sdp, locals.nkB, str, ""), 0);
-    return false;
   }
 }
 

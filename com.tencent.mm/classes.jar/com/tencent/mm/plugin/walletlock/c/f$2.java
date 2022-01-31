@@ -1,109 +1,114 @@
 package com.tencent.mm.plugin.walletlock.c;
 
 import android.os.SystemClock;
-import com.tencent.mm.h.a.tl;
-import com.tencent.mm.h.a.tl.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vg;
+import com.tencent.mm.g.a.vg.a;
 import com.tencent.mm.plugin.walletlock.gesture.a.a;
 import com.tencent.mm.plugin.walletlock.gesture.a.b;
 import com.tencent.mm.plugin.walletlock.gesture.a.d;
 import com.tencent.mm.plugin.walletlock.gesture.a.e;
 import com.tencent.mm.plugin.walletlock.gesture.ui.GestureGuardLogicUI;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 
 final class f$2
-  extends c<tl>
+  extends c<vg>
 {
   f$2(f paramf)
   {
-    this.udX = tl.class.getName().hashCode();
+    AppMethodBeat.i(51708);
+    this.__eventId = vg.class.getName().hashCode();
+    AppMethodBeat.o(51708);
   }
   
-  private static boolean a(tl paramtl)
+  private static boolean a(vg paramvg)
   {
-    y.v("MicroMsg.WalletLockInitTask", "alvinluo gestureprotectListener request: %d, verfiyMaskOnCreate: %b, verfiyMaskOnResume: %b", new Object[] { Integer.valueOf(paramtl.cdG.cdI), Boolean.valueOf(i.qRd.bYE()), Boolean.valueOf(i.qRd.bYF()) });
-    switch (paramtl.cdG.cdI)
+    AppMethodBeat.i(51709);
+    ab.v("MicroMsg.WalletLockInitTask", "alvinluo gestureprotectListener request: %d, verfiyMaskOnCreate: %b, verfiyMaskOnResume: %b", new Object[] { Integer.valueOf(paramvg.cMq.cMs), Boolean.valueOf(i.uGl.cYo()), Boolean.valueOf(i.uGl.cYp()) });
+    switch (paramvg.cMq.cMs)
     {
     }
     for (;;)
     {
-      paramtl.cdG.activity = null;
+      paramvg.cMq.activity = null;
+      AppMethodBeat.o(51709);
       return false;
       long l1;
       long l2;
-      if (!(paramtl.cdG.activity instanceof GestureGuardLogicUI))
+      if (!(paramvg.cMq.activity instanceof GestureGuardLogicUI))
       {
-        if (!i.qRd.bYE())
+        if (!i.uGl.cYo())
         {
-          l1 = d.bXU();
+          l1 = d.cXC();
           l2 = (SystemClock.elapsedRealtime() - l1) / 1000L;
-          if ((l1 == -1L) || (l2 >= a.qPz) || ((b.bYd()) && (b.bYc())))
+          if ((l1 == -1L) || (l2 >= a.uEH) || ((b.cXL()) && (b.cXK())))
           {
-            y.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONCREATE indicates needs verify.");
-            paramtl.cdH.data = Integer.valueOf(17);
+            ab.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONCREATE indicates needs verify.");
+            paramvg.cMr.data = Integer.valueOf(17);
           }
           else
           {
-            y.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONCREATE indicates need not verify.");
-            paramtl.cdH.data = Integer.valueOf(16);
-            i.qRd.b(new WeakReference(paramtl.cdG.activity));
+            ab.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONCREATE indicates need not verify.");
+            paramvg.cMr.data = Integer.valueOf(16);
+            i.uGl.c(new WeakReference(paramvg.cMq.activity));
           }
         }
         else
         {
-          y.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONCREATE indicates need not verify.");
-          paramtl.cdH.data = Integer.valueOf(16);
-          i.qRd.b(new WeakReference(paramtl.cdG.activity));
-          i.qRd.kV(false);
+          ab.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONCREATE indicates need not verify.");
+          paramvg.cMr.data = Integer.valueOf(16);
+          i.uGl.c(new WeakReference(paramvg.cMq.activity));
+          i.uGl.oe(false);
         }
       }
       else
       {
-        y.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONCREATE indicates need not verify.");
-        paramtl.cdH.data = Integer.valueOf(16);
+        ab.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONCREATE indicates need not verify.");
+        paramvg.cMr.data = Integer.valueOf(16);
         continue;
-        if (!(paramtl.cdG.activity instanceof GestureGuardLogicUI))
+        if (!(paramvg.cMq.activity instanceof GestureGuardLogicUI))
         {
-          if (i.qRd.bYE())
+          if (i.uGl.cYo())
           {
-            y.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONRESUME indicates need not verify.");
-            i.qRd.kV(false);
-            i.qRd.kW(false);
-            paramtl.cdH.data = Integer.valueOf(16);
+            ab.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONRESUME indicates need not verify.");
+            i.uGl.oe(false);
+            i.uGl.of(false);
+            paramvg.cMr.data = Integer.valueOf(16);
           }
-          else if (i.qRd.bYF())
+          else if (i.uGl.cYp())
           {
-            y.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONRESUME indicates reenter.");
-            i.qRd.kV(false);
-            i.qRd.kW(false);
-            paramtl.cdH.data = Integer.valueOf(18);
+            ab.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONRESUME indicates reenter.");
+            i.uGl.oe(false);
+            i.uGl.of(false);
+            paramvg.cMr.data = Integer.valueOf(18);
           }
           else
           {
-            l1 = d.bXU();
+            l1 = d.cXC();
             l2 = (SystemClock.elapsedRealtime() - l1) / 1000L;
-            if (((l1 == -1L) || (l2 >= a.qPz) || (b.bYd())) && (b.bYc())) {
-              y.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONRESUME indicates needs verify.");
+            if (((l1 == -1L) || (l2 >= a.uEH) || (b.cXL())) && (b.cXK())) {
+              ab.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONRESUME indicates needs verify.");
             }
-            for (paramtl.cdH.data = Integer.valueOf(17);; paramtl.cdH.data = Integer.valueOf(16))
+            for (paramvg.cMr.data = Integer.valueOf(17);; paramvg.cMr.data = Integer.valueOf(16))
             {
-              i.qRd.b(new WeakReference(paramtl.cdG.activity));
+              i.uGl.c(new WeakReference(paramvg.cMq.activity));
               break;
-              y.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONRESUME indicates need not verify.");
+              ab.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONRESUME indicates need not verify.");
             }
           }
         }
         else
         {
-          y.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONRESUME indicates need not verify.");
-          paramtl.cdH.data = Integer.valueOf(16);
+          ab.d("MicroMsg.WalletLockInitTask", "REQUEST_PROTECT_ME_ONRESUME indicates need not verify.");
+          paramvg.cMr.data = Integer.valueOf(16);
           continue;
-          i.qRd.bYG();
+          i.uGl.cYq();
           continue;
-          paramtl.cdH.data = Boolean.valueOf(e.bYc());
+          paramvg.cMr.data = Boolean.valueOf(e.cXK());
           continue;
-          paramtl.cdH.data = Boolean.valueOf(b.bYd());
+          paramvg.cMr.data = Boolean.valueOf(b.cXL());
         }
       }
     }

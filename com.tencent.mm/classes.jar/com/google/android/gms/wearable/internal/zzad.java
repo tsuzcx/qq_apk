@@ -1,9 +1,6 @@
 package com.google.android.gms.wearable.internal;
 
-abstract interface zzad
-{
-  public abstract void zzb(zzr paramzzr);
-}
+final class zzad {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar

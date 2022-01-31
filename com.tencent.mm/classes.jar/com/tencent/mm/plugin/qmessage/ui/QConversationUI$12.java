@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qmessage.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
 
 final class QConversationUI$12
@@ -11,7 +12,9 @@ final class QConversationUI$12
   
   public final void onClick(View paramView)
   {
-    BackwardSupportUtil.c.a(QConversationUI.c(this.ncU));
+    AppMethodBeat.i(24138);
+    BackwardSupportUtil.c.a(QConversationUI.c(this.pIm));
+    AppMethodBeat.o(24138);
   }
 }
 

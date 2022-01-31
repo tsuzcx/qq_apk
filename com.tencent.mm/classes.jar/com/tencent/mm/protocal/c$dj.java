@@ -5,7 +5,7 @@ public final class c$dj
 {
   public c$dj()
   {
-    super("insertVideoPlayer", "", 10000, false);
+    super("gotoEmoticonPad", "", 10000, false);
   }
 }
 

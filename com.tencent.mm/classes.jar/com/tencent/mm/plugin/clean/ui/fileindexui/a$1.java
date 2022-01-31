@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashSet;
 
 final class a$1
@@ -11,15 +12,17 @@ final class a$1
   
   public final void onClick(View paramView)
   {
-    if (a.a(this.iCz).contains(Integer.valueOf(this.kX))) {
-      a.a(this.iCz).remove(Integer.valueOf(this.kX));
+    AppMethodBeat.i(18739);
+    if (a.a(this.kHG).contains(Integer.valueOf(this.lU))) {
+      a.a(this.kHG).remove(Integer.valueOf(this.lU));
     }
     for (;;)
     {
-      this.iCz.notifyDataSetChanged();
-      a.b(this.iCz).a(a.a(this.iCz));
+      this.kHG.notifyDataSetChanged();
+      a.b(this.kHG).a(a.a(this.kHG));
+      AppMethodBeat.o(18739);
       return;
-      a.a(this.iCz).add(Integer.valueOf(this.kX));
+      a.a(this.kHG).add(Integer.valueOf(this.lU));
     }
   }
 }

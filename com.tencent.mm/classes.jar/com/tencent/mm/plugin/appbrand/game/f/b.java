@@ -1,59 +1,40 @@
 package com.tencent.mm.plugin.appbrand.game.f;
 
-import com.tencent.mm.sdk.platformtools.y;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import com.tencent.luggage.game.page.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.page.s;
+import com.tencent.mm.plugin.appbrand.page.v;
 
+@SuppressLint({"ViewConstructor"})
 public final class b
+  extends s
 {
-  private static final long gdk = 100000000L;
-  private static final long gdl = 16666666L;
-  public long gdm = 16666666L;
-  private long gdn = -1L;
-  private boolean gdo = false;
-  
-  public static long lc(int paramInt)
+  public b(Context paramContext, o paramo)
   {
-    return 1000000000L / paramInt;
+    super(paramContext, paramo, new a((byte)0));
+    AppMethodBeat.i(143177);
+    AppMethodBeat.o(143177);
   }
   
-  public final void aho()
+  static final class a
+    extends f
   {
-    if (this.gdn == -1L) {
-      this.gdn = System.nanoTime();
-    }
-  }
-  
-  public final void cV(boolean paramBoolean)
-  {
-    long l;
-    if ((this.gdm > gdl) || (!paramBoolean) || (this.gdo))
+    public final v vw()
     {
-      this.gdo = true;
-      if (this.gdn != -1L)
-      {
-        l = System.nanoTime() - this.gdn;
-        if (l < this.gdm) {
-          l = this.gdm - l;
-        }
-      }
-    }
-    try
-    {
-      Thread.sleep(l / 1000000L, (int)(l % 1000000L));
-      this.gdn = System.nanoTime();
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        y.e("MicroMsg.WAGameFrameRateController", "Sleep unsuccessfully.");
-      }
+      AppMethodBeat.i(143176);
+      c localc = new c();
+      localc.a(new b.a.1(this));
+      AppMethodBeat.o(143176);
+      return localc;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.f.b
  * JD-Core Version:    0.7.0.1
  */

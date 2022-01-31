@@ -1,27 +1,30 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class QQFriendUI$3
   implements d.a
 {
   QQFriendUI$3(QQFriendUI paramQQFriendUI) {}
   
-  public final void jU(int paramInt)
+  public final void mQ(int paramInt)
   {
-    if (QQFriendUI.a(this.fis))
+    AppMethodBeat.i(108615);
+    if (QQFriendUI.a(this.gzZ))
     {
       if (paramInt <= 0) {
-        break label36;
+        break label46;
       }
-      QQFriendUI.b(this.fis).setVisibility(8);
+      QQFriendUI.b(this.gzZ).setVisibility(8);
     }
     for (;;)
     {
-      QQFriendUI.a(this.fis, false);
+      QQFriendUI.a(this.gzZ, false);
+      AppMethodBeat.o(108615);
       return;
-      label36:
-      QQFriendUI.b(this.fis).setVisibility(0);
+      label46:
+      QQFriendUI.b(this.gzZ).setVisibility(0);
     }
   }
 }

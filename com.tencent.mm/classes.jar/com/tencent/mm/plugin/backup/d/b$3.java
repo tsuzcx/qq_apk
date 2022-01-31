@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.backup.d;
 
 import android.os.PowerManager.WakeLock;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$3
   implements Runnable
@@ -9,14 +10,19 @@ final class b$3
   
   public final void run()
   {
+    AppMethodBeat.i(17237);
     try
     {
-      if ((b.a(this.hHG) != null) && (b.a(this.hHG).isHeld())) {
-        b.a(this.hHG).release();
+      if ((b.a(this.jBc) != null) && (b.a(this.jBc).isHeld())) {
+        b.a(this.jBc).release();
       }
+      AppMethodBeat.o(17237);
       return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(17237);
+    }
   }
 }
 

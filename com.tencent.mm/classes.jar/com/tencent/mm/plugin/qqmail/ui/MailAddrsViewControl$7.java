@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.AutoCompleteTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MailAddrsViewControl$7
   implements View.OnFocusChangeListener
@@ -11,19 +12,21 @@ final class MailAddrsViewControl$7
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (MailAddrsViewControl.g(this.nir) != null) {
-      MailAddrsViewControl.g(this.nir).ij(paramBoolean);
+    AppMethodBeat.i(68344);
+    if (MailAddrsViewControl.g(this.pNE) != null) {
+      MailAddrsViewControl.g(this.pNE).kk(paramBoolean);
     }
-    paramView = this.nir.nik.getEditableText().toString();
+    paramView = this.pNE.pNx.getEditableText().toString();
     if ((!paramBoolean) && (paramView.trim().length() > 0)) {
-      MailAddrsViewControl.a(this.nir, paramView, false);
+      MailAddrsViewControl.a(this.pNE, paramView, false);
     }
-    if ((MailAddrsViewControl.c(this.nir) != null) && (MailAddrsViewControl.c(this.nir).isSelected()))
+    if ((MailAddrsViewControl.c(this.pNE) != null) && (MailAddrsViewControl.c(this.pNE).isSelected()))
     {
-      MailAddrsViewControl.c(this.nir).setSelected(paramBoolean);
-      MailAddrsViewControl.a(this.nir, null);
+      MailAddrsViewControl.c(this.pNE).setSelected(paramBoolean);
+      MailAddrsViewControl.a(this.pNE, null);
     }
-    this.nir.buk();
+    this.pNE.cew();
+    AppMethodBeat.o(68344);
   }
 }
 

@@ -1,78 +1,105 @@
 package com.tencent.mm.d.a;
 
-import com.eclipsesource.v8.MultiContextV8;
-import com.eclipsesource.v8.V8Locker;
+import android.os.Looper;
 import com.eclipsesource.v8.V8ScriptException;
-import com.tencent.mm.plugin.appbrand.i.e;
-import com.tencent.mm.sdk.platformtools.y;
-import java.lang.reflect.UndeclaredThrowableException;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
+  implements d
 {
-  volatile boolean ahC = true;
-  final MultiContextV8 bzA;
-  private Thread bzB;
-  final ConcurrentLinkedQueue<Runnable> bzC = new ConcurrentLinkedQueue();
-  ConcurrentHashMap<Integer, e> bzD = new ConcurrentHashMap();
-  volatile boolean sn = false;
+  private d.a cbn;
+  private final h.a cbo;
+  private final Looper mLooper;
   
-  h(MultiContextV8 paramMultiContextV8)
+  h(Looper paramLooper)
   {
-    this.bzA = paramMultiContextV8;
-    this.bzB = new h.1(this);
-    paramMultiContextV8 = this.bzA.getV8Locker();
-    if (paramMultiContextV8.hasLock()) {
-      paramMultiContextV8.release();
-    }
-    this.bzB.start();
+    AppMethodBeat.i(113805);
+    this.cbn = null;
+    this.mLooper = paramLooper;
+    this.cbo = new h.a(this, paramLooper);
+    AppMethodBeat.o(113805);
   }
   
-  public final void i(Runnable arg1)
+  public final boolean Cl()
   {
-    if (Thread.currentThread().getId() == this.bzB.getId())
+    AppMethodBeat.i(113807);
+    if (this.mLooper.getThread().getId() == Thread.currentThread().getId())
     {
-      y.i("MicroMsg.J2V8.V8EngineLooper", "schedule same thread");
-      j(???);
-      return;
+      AppMethodBeat.o(113807);
+      return true;
     }
-    this.bzC.offer(???);
-    synchronized (this.bzC)
-    {
-      this.bzC.notify();
-      return;
-    }
+    AppMethodBeat.o(113807);
+    return false;
   }
   
-  final void j(Runnable paramRunnable)
+  public final void a(d.a parama)
   {
-    try
+    this.cbn = parama;
+  }
+  
+  final void c(V8ScriptException paramV8ScriptException)
+  {
+    AppMethodBeat.i(113811);
+    if (this.cbn != null) {
+      this.cbn.b(paramV8ScriptException);
+    }
+    AppMethodBeat.o(113811);
+  }
+  
+  public final void g(Runnable paramRunnable, long paramLong)
+  {
+    AppMethodBeat.i(113809);
+    this.cbo.postDelayed(paramRunnable, paramLong);
+    AppMethodBeat.o(113809);
+  }
+  
+  public final void loop()
+  {
+    AppMethodBeat.i(113806);
+    Looper.loop();
+    AppMethodBeat.o(113806);
+  }
+  
+  public final void m(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(113808);
+    if (paramRunnable == null)
     {
-      paramRunnable.run();
+      AppMethodBeat.o(113808);
       return;
     }
-    catch (V8ScriptException paramRunnable)
-    {
-      y.e("MicroMsg.J2V8.V8EngineLooper", "runTask contextTag:%d V8ScriptException: %s", new Object[] { Integer.valueOf(paramRunnable.getContextTag()), paramRunnable });
-      e locale = (e)this.bzD.get(Integer.valueOf(paramRunnable.getContextTag()));
-      if (locale != null)
+    if (Thread.currentThread().getId() == this.mLooper.getThread().getId()) {
+      try
       {
-        locale.x(paramRunnable.getJSMessage(), paramRunnable.getJSStackTrace());
+        paramRunnable.run();
+        AppMethodBeat.o(113808);
         return;
       }
-      y.e("MicroMsg.J2V8.V8EngineLooper", "runTask V8ScriptException jsHandler null");
-      return;
+      catch (V8ScriptException paramRunnable)
+      {
+        c(paramRunnable);
+        AppMethodBeat.o(113808);
+        return;
+      }
     }
-    catch (UndeclaredThrowableException paramRunnable)
-    {
-      y.e("MicroMsg.J2V8.V8EngineLooper", "runTask UndeclaredThrowableException: %s %s", new Object[] { paramRunnable, paramRunnable.getCause() });
-    }
+    this.cbo.post(paramRunnable);
+    AppMethodBeat.o(113808);
   }
+  
+  public final void pause() {}
+  
+  public final void quit()
+  {
+    AppMethodBeat.i(113810);
+    this.mLooper.quitSafely();
+    AppMethodBeat.o(113810);
+  }
+  
+  public final void resume() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.d.a.h
  * JD-Core Version:    0.7.0.1
  */

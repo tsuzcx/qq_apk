@@ -1,28 +1,34 @@
 package com.tencent.mm.plugin.fav.b.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$b
   extends com.tencent.mm.plugin.fts.a.a.a
 {
-  private long kau;
+  private long muQ;
   
   public b$b(b paramb, long paramLong)
   {
-    this.kau = paramLong;
+    this.muQ = paramLong;
   }
   
-  public final String afJ()
+  public final String aAn()
   {
-    return String.format("{favItemId: %d}", new Object[] { Long.valueOf(this.kau) });
+    AppMethodBeat.i(5305);
+    String str = String.format("{favItemId: %d}", new Object[] { Long.valueOf(this.muQ) });
+    AppMethodBeat.o(5305);
+    return str;
   }
   
   public final boolean execute()
   {
-    y.d("MicroMsg.FTS.FTS5SearchFavoriteLogic", "start to delete favorite item");
-    long l = this.kau;
-    this.kap.kam.c(c.kuO, l);
+    AppMethodBeat.i(5304);
+    ab.d("MicroMsg.FTS.FTS5SearchFavoriteLogic", "start to delete favorite item");
+    long l = this.muQ;
+    this.muL.muI.c(c.mQB, l);
+    AppMethodBeat.o(5304);
     return true;
   }
   
@@ -33,7 +39,7 @@ final class b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.a.b.b
  * JD-Core Version:    0.7.0.1
  */

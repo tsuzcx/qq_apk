@@ -1,5 +1,6 @@
 package com.tencent.mm.modelstat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.bi;
 
 final class b$2
@@ -9,7 +10,9 @@ final class b$2
   
   public final void run()
   {
-    b.a(this.eBG, this.dUH, this.eBH);
+    AppMethodBeat.i(78625);
+    b.a(this.fRx, this.fkQ, this.fRy);
+    AppMethodBeat.o(78625);
   }
 }
 

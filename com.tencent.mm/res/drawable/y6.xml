@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffe8e8e8" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/bgt" />
+    <item android:state_focused="true" android:drawable="@drawable/bgt" />
+    <item android:drawable="@drawable/bgs" />
+</selector>

@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.app.Dialog;
 import android.widget.Toast;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.c.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.a.c;
-import com.tencent.mm.ui.widget.a.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.b.c;
+import com.tencent.mm.ui.widget.b.c.a;
 import com.tencent.mm.vending.g.d.a;
 
 final class PaylistAAUI$15
@@ -14,43 +13,43 @@ final class PaylistAAUI$15
 {
   PaylistAAUI$15(PaylistAAUI paramPaylistAAUI) {}
   
-  public final void aE(Object paramObject)
+  public final void aX(Object paramObject)
   {
-    y.i("MicroMsg.PaylistAAUI", "aapay failed: %s", new Object[] { paramObject });
-    if (PaylistAAUI.d(this.eZM) != null) {
-      PaylistAAUI.d(this.eZM).dismiss();
-    }
+    AppMethodBeat.i(40884);
+    ab.i("MicroMsg.PaylistAAUI", "aapay failed: %s", new Object[] { paramObject });
+    this.grF.hideLoading();
     if (paramObject != null)
     {
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        str1 = paramObject.bQZ;
-        str2 = paramObject.lRE;
-        str3 = paramObject.lRF;
-        locala = new c.a(this.eZM);
-        locala.aeA(str1);
-        locala.aeD(str3).a(new PaylistAAUI.15.1(this, paramObject));
-        locala.aeE(str2);
-        locala.aoP().show();
-      }
-      while ((!(paramObject instanceof String)) || (paramObject.toString().equalsIgnoreCase("ok")))
-      {
-        String str1;
-        String str2;
-        String str3;
-        c.a locala;
+        String str1 = paramObject.cyA;
+        String str2 = paramObject.opC;
+        String str3 = paramObject.opD;
+        c.a locala = new c.a(this.grF);
+        locala.avn(str1);
+        locala.avs(str3).a(new PaylistAAUI.15.1(this, paramObject));
+        locala.avt(str2);
+        locala.aLZ().show();
+        AppMethodBeat.o(40884);
         return;
       }
-      Toast.makeText(this.eZM, paramObject.toString(), 1).show();
-      return;
+      if (((paramObject instanceof String)) && (!paramObject.toString().equalsIgnoreCase("ok")))
+      {
+        Toast.makeText(this.grF, paramObject.toString(), 1).show();
+        AppMethodBeat.o(40884);
+      }
     }
-    Toast.makeText(this.eZM, this.eZM.getString(a.i.aa_pay_failed), 1).show();
+    else
+    {
+      Toast.makeText(this.grF, this.grF.getString(2131296376), 1).show();
+    }
+    AppMethodBeat.o(40884);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.PaylistAAUI.15
  * JD-Core Version:    0.7.0.1
  */

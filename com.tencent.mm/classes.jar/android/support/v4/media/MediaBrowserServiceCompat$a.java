@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 public final class MediaBrowserServiceCompat$a
 {
-  final String AU;
+  final String BG;
   final Bundle mExtras;
 }
 

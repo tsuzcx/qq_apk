@@ -5,12 +5,12 @@ public final class c$eb
 {
   public c$eb()
   {
-    super("timelineCheckIn", "timeline_check_in", 64, false);
+    super("jumpToBizProfile", "jump_to_biz_profile", 61, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.eb
  * JD-Core Version:    0.7.0.1
  */

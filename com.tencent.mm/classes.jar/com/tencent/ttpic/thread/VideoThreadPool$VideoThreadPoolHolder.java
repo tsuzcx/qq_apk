@@ -1,8 +1,17 @@
 package com.tencent.ttpic.thread;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class VideoThreadPool$VideoThreadPoolHolder
 {
-  private static final VideoThreadPool INSTANCE = new VideoThreadPool(null);
+  private static final VideoThreadPool INSTANCE;
+  
+  static
+  {
+    AppMethodBeat.i(83791);
+    INSTANCE = new VideoThreadPool(null);
+    AppMethodBeat.o(83791);
+  }
 }
 
 

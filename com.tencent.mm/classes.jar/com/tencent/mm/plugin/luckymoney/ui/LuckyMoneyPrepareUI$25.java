@@ -1,39 +1,23 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tenpay.android.wechat.MyKeyboardWindow;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyPrepareUI$25
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  LuckyMoneyPrepareUI$25(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI, EditText paramEditText, View paramView, int paramInt) {}
+  LuckyMoneyPrepareUI$25(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.lXg.lMr.isShown()) && (!this.eYg)) {
-      if (this.lXg.mKeyboard != null) {
-        this.lXg.mKeyboard.setInputEditText(this.eYi);
-      }
-    }
-    do
-    {
-      return;
-      if ((!this.lXg.lMr.isShown()) && (!this.eYg))
-      {
-        ((InputMethodManager)this.lXg.mController.uMN.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-        new ah().postDelayed(new LuckyMoneyPrepareUI.25.1(this), 200L);
-        return;
-      }
-    } while (!this.eYg);
-    this.lXg.lMr.setVisibility(8);
-    ((InputMethodManager)this.lXg.mController.uMN.getSystemService("input_method")).showSoftInput(this.eYi, 0);
+    AppMethodBeat.i(42957);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setClass(this.owL.getContext(), LuckyMoneyMyRecordUI.class);
+    paramDialogInterface.putExtra("key_type", 1);
+    this.owL.startActivity(paramDialogInterface);
+    AppMethodBeat.o(42957);
   }
 }
 

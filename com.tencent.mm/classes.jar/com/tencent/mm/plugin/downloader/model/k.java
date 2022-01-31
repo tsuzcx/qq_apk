@@ -1,22 +1,75 @@
 package com.tencent.mm.plugin.downloader.model;
 
-public abstract interface k
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader.g.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+
+final class k
+  extends j
 {
-  public abstract void b(long paramLong, int paramInt, boolean paramBoolean);
+  public k(c paramc)
+  {
+    super(paramc);
+  }
   
-  public abstract void b(long paramLong, String paramString, boolean paramBoolean);
+  public final long a(a parama)
+  {
+    return 0L;
+  }
   
-  public abstract void cy(long paramLong);
+  public final long a(g paramg)
+  {
+    AppMethodBeat.i(2463);
+    if (bo.isNullOrNil(paramg.gWh))
+    {
+      AppMethodBeat.o(2463);
+      return -1L;
+    }
+    paramg = new Intent("android.intent.action.VIEW", Uri.parse(paramg.gWh));
+    paramg.addFlags(268435456);
+    try
+    {
+      ah.getContext().startActivity(paramg);
+      AppMethodBeat.o(2463);
+      return 0L;
+    }
+    catch (Exception paramg)
+    {
+      ab.e("MicroMsg.FileDownloaderImplNormal", "Add download task failed: " + paramg.toString());
+      AppMethodBeat.o(2463);
+    }
+    return -1L;
+  }
   
-  public abstract void cz(long paramLong);
+  public final FileDownloadTaskInfo iA(long paramLong)
+  {
+    AppMethodBeat.i(2464);
+    FileDownloadTaskInfo localFileDownloadTaskInfo = new FileDownloadTaskInfo();
+    localFileDownloadTaskInfo.id = paramLong;
+    localFileDownloadTaskInfo.status = -1;
+    AppMethodBeat.o(2464);
+    return localFileDownloadTaskInfo;
+  }
   
-  public abstract void k(long paramLong, String paramString);
+  public final boolean iB(long paramLong)
+  {
+    return false;
+  }
   
-  public abstract void onTaskPaused(long paramLong);
+  public final boolean iC(long paramLong)
+  {
+    return false;
+  }
   
-  public abstract void onTaskRemoved(long paramLong);
-  
-  public abstract void onTaskStarted(long paramLong, String paramString);
+  public final int iz(long paramLong)
+  {
+    return 1;
+  }
 }
 
 

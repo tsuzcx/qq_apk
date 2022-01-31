@@ -1,65 +1,39 @@
 package com.tencent.mm.app;
 
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cn.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import com.tencent.xweb.WebView;
-import java.util.HashSet;
-import java.util.Set;
 
 final class ToolsProfile$3
-  implements Application.ActivityLifecycleCallbacks
+  implements ap.a
 {
-  private int bxj = 0;
-  private Set<Activity> bxk = new HashSet();
-  
   ToolsProfile$3(ToolsProfile paramToolsProfile) {}
   
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  public final boolean onTimerExpired()
   {
-    this.bxj += 1;
-    this.bxk.add(paramActivity);
-  }
-  
-  public final void onActivityDestroyed(Activity paramActivity)
-  {
-    this.bxj -= 1;
-    y.d(ToolsProfile.access$000(), "onActivityDestroyed, after destroy, activityInstanceNum = %d", new Object[] { Integer.valueOf(this.bxj) });
-    if (this.bxj == 0)
+    AppMethodBeat.i(15408);
+    ab.i(ToolsProfile.access$000(), "onTimerExpired, check kill tools process");
+    if (ToolsProfile.a(this.bZj) == 0)
     {
-      ToolsProfile.a.te();
+      ToolsProfile.a.access$200();
       boolean bool = WebView.getCanReboot();
-      y.i(ToolsProfile.access$000(), "onActivityDestroyed, xwebCanReboot = %b", new Object[] { Boolean.valueOf(bool) });
-      if (bool) {
-        Process.killProcess(Process.myPid());
+      ab.i(ToolsProfile.access$000(), "onTimerExpired, xwebCanReboot = %b", new Object[] { Boolean.valueOf(bool) });
+      if ((bool) || (!ToolsProfile.a.isLocked()))
+      {
+        d.awm("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
+        AppMethodBeat.o(15408);
+        return false;
       }
     }
+    AppMethodBeat.o(15408);
+    return true;
   }
-  
-  public final void onActivityPaused(Activity paramActivity)
-  {
-    this.bxk.remove(paramActivity);
-    ToolsProfile.a.access$100();
-  }
-  
-  public final void onActivityResumed(Activity paramActivity)
-  {
-    if (!this.bxk.contains(paramActivity)) {
-      ToolsProfile.a.tf();
-    }
-  }
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity) {}
-  
-  public final void onActivityStopped(Activity paramActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.ToolsProfile.3
  * JD-Core Version:    0.7.0.1
  */

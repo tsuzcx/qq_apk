@@ -5,25 +5,26 @@ import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c$d
   extends RecyclerView.v
 {
-  TextView eXs;
+  TextView gpp;
   
   public c$d(c paramc, View paramView)
   {
     super(paramView);
-    this.eXs = ((TextView)paramView.findViewById(R.h.date_info));
-    this.eXs.setTextColor(c.a(paramc).getResources().getColor(R.e.fav_record_date_color));
-    paramView.findViewById(R.h.content).setBackgroundColor(c.a(paramc).getResources().getColor(R.e.fav_listitem_divider_bg));
+    AppMethodBeat.i(31153);
+    this.gpp = ((TextView)paramView.findViewById(2131824015));
+    this.gpp.setTextColor(c.a(paramc).getResources().getColor(2131690058));
+    paramView.findViewById(2131820946).setBackgroundColor(c.a(paramc).getResources().getColor(2131690052));
+    AppMethodBeat.o(31153);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.a.c.d
  * JD-Core Version:    0.7.0.1
  */

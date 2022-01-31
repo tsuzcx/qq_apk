@@ -1,31 +1,34 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import com.tencent.mm.h.a.by;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cb;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class WalletOfflineCoinPurseUI$35
-  implements am.a
+  implements ap.a
 {
   WalletOfflineCoinPurseUI$35(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    y.i("MicroMsg.WalletOfflineCoinPurseUI", "onTimerExpired, send ConsumedCardByOfflinePay event: %s", new Object[] { Boolean.valueOf(WalletOfflineCoinPurseUI.Q(this.mNj)) });
-    if (WalletOfflineCoinPurseUI.Q(this.mNj))
+    AppMethodBeat.i(43545);
+    ab.i("MicroMsg.WalletOfflineCoinPurseUI", "onTimerExpired, send ConsumedCardByOfflinePay event: %s", new Object[] { Boolean.valueOf(WalletOfflineCoinPurseUI.P(this.pny)) });
+    if (WalletOfflineCoinPurseUI.P(this.pny))
     {
-      by localby = new by();
-      localby.bIf.aYY = 0;
-      a.udP.m(localby);
+      cb localcb = new cb();
+      localcb.cpA.bpE = 0;
+      a.ymk.l(localcb);
     }
-    this.mNj.finish();
+    this.pny.finish();
+    AppMethodBeat.o(43545);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.35
  * JD-Core Version:    0.7.0.1
  */

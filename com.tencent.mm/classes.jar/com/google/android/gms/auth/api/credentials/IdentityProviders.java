@@ -1,7 +1,8 @@
 package com.google.android.gms.auth.api.credentials;
 
 import android.accounts.Account;
-import com.google.android.gms.common.internal.zzac;
+import com.google.android.gms.common.internal.Preconditions;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class IdentityProviders
 {
@@ -15,19 +16,25 @@ public final class IdentityProviders
   
   public static final String getIdentityProviderForAccount(Account paramAccount)
   {
-    zzac.zzb(paramAccount, "account cannot be null");
-    if ("com.google".equals(paramAccount.type)) {
+    AppMethodBeat.i(50354);
+    Preconditions.checkNotNull(paramAccount, "account cannot be null");
+    if ("com.google".equals(paramAccount.type))
+    {
+      AppMethodBeat.o(50354);
       return "https://accounts.google.com";
     }
-    if ("com.facebook.auth.login".equals(paramAccount.type)) {
+    if ("com.facebook.auth.login".equals(paramAccount.type))
+    {
+      AppMethodBeat.o(50354);
       return "https://www.facebook.com";
     }
+    AppMethodBeat.o(50354);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.gms.auth.api.credentials.IdentityProviders
  * JD-Core Version:    0.7.0.1
  */

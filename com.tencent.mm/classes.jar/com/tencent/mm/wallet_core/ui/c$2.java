@@ -3,9 +3,10 @@ package com.tencent.mm.wallet_core.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import com.tencent.mm.h.a.ck;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cn;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$2
   implements View.OnClickListener
@@ -14,11 +15,13 @@ final class c$2
   
   public final void onClick(View paramView)
   {
-    y.d("MicroMsg.OfflinePopupWindow", "on click know");
-    this.wCf.wCd.setVisibility(8);
-    paramView = new ck();
-    paramView.bIG.bIH = 1;
-    a.udP.m(paramView);
+    AppMethodBeat.i(49228);
+    ab.d("MicroMsg.OfflinePopupWindow", "on click know");
+    this.AYy.AYw.setVisibility(8);
+    paramView = new cn();
+    paramView.cqb.cqc = 1;
+    a.ymk.l(paramView);
+    AppMethodBeat.o(49228);
   }
 }
 

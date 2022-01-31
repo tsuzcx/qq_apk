@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class SnsUploadConfigView$1
@@ -13,17 +13,20 @@ final class SnsUploadConfigView$1
   
   public final void onClick(View paramView)
   {
-    if ((!SnsUploadConfigView.a(this.piZ)) && (SnsUploadConfigView.b(this.piZ)))
+    AppMethodBeat.i(39690);
+    if ((!SnsUploadConfigView.a(this.sbB)) && (SnsUploadConfigView.b(this.sbB)))
     {
-      h.h(this.val$context, i.j.sns_tag_privacy_qzone_conflict_tip, i.j.app_tip);
+      h.h(this.val$context, 2131303991, 2131297087);
+      AppMethodBeat.o(39690);
       return;
     }
-    paramView = this.piZ;
-    if (SnsUploadConfigView.a(this.piZ)) {}
+    paramView = this.sbB;
+    if (SnsUploadConfigView.a(this.sbB)) {}
     for (boolean bool = false;; bool = true)
     {
       SnsUploadConfigView.a(paramView, bool);
-      SnsUploadConfigView.c(this.piZ);
+      SnsUploadConfigView.c(this.sbB);
+      AppMethodBeat.o(39690);
       return;
     }
   }

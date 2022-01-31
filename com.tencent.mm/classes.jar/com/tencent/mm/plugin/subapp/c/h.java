@@ -1,168 +1,155 @@
 package com.tencent.mm.plugin.subapp.c;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.j;
 import com.tencent.mm.storage.bi;
 import java.io.File;
-import java.util.Map;
-import junit.framework.Assert;
 
 public final class h
 {
-  public static g PB(String paramString)
+  static boolean a(g paramg)
   {
-    Object localObject2 = d.bLX();
-    Object localObject1 = null;
-    String str = "SELECT filename, user, msgid, offset, filenowsize, totallen, status, createtime, lastmodifytime, clientid, voicelenght, msglocalid, human, voiceformat, nettimes, reserved1, reserved2" + " FROM VoiceRemindInfo WHERE filename= ?";
-    localObject2 = ((k)localObject2).dXw.a(str, new String[] { paramString }, 2);
-    paramString = localObject1;
-    if (((Cursor)localObject2).moveToFirst())
+    AppMethodBeat.i(25290);
+    if (paramg == null)
     {
-      paramString = new g();
-      paramString.d((Cursor)localObject2);
+      AppMethodBeat.o(25290);
+      return false;
     }
-    ((Cursor)localObject2).close();
+    if (paramg.bsY == -1)
+    {
+      AppMethodBeat.o(25290);
+      return false;
+    }
+    boolean bool = d.cGT().a(paramg.field_filename, paramg);
+    AppMethodBeat.o(25290);
+    return bool;
+  }
+  
+  private static boolean adR(String paramString)
+  {
+    AppMethodBeat.i(25287);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(25287);
+      return false;
+    }
+    d.cGT().qD(paramString);
+    vL(paramString);
+    boolean bool = new File(bE(paramString, false)).delete();
+    AppMethodBeat.o(25287);
+    return bool;
+  }
+  
+  public static c adS(String paramString)
+  {
+    AppMethodBeat.i(25291);
+    paramString = d.cGT().adU(bE(paramString, false));
+    AppMethodBeat.o(25291);
     return paramString;
   }
   
-  public static c PC(String paramString)
+  public static String bE(String paramString, boolean paramBoolean)
   {
-    k localk = d.bLX();
-    paramString = bh(paramString, false);
-    if (localk.pvY.get(paramString) == null) {
-      localk.pvY.put(paramString, new c(paramString));
-    }
-    return (c)localk.pvY.get(paramString);
-  }
-  
-  static boolean a(g paramg)
-  {
-    if (paramg == null) {}
-    k localk;
-    String str;
-    label72:
-    label77:
-    do
+    AppMethodBeat.i(25285);
+    aw.aaz();
+    paramString = j.b(com.tencent.mm.model.c.YN(), "recbiz_", paramString, ".rec", 2);
+    if (bo.isNullOrNil(paramString))
     {
-      do
-      {
-        return false;
-      } while (paramg.bcw == -1);
-      localk = d.bLX();
-      str = paramg.field_filename;
-      if (str.length() > 0)
-      {
-        bool = true;
-        Assert.assertTrue(bool);
-        if (paramg == null) {
-          break label72;
-        }
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        Assert.assertTrue(bool);
-        paramg = paramg.vf();
-        if (paramg.size() > 0) {
-          break label77;
-        }
-        y.e("MicroMsg.VoiceRemindStorage", "update failed, no values set");
-        return false;
-        bool = false;
-        break;
-      }
-    } while (localk.dXw.update("VoiceRemindInfo", paramg, "filename= ?", new String[] { str }) <= 0);
-    localk.doNotify();
-    return true;
-  }
-  
-  public static String bh(String paramString, boolean paramBoolean)
-  {
-    au.Hx();
-    String str = com.tencent.mm.sdk.platformtools.h.b(com.tencent.mm.model.c.FJ(), "recbiz_", paramString, ".rec", 2);
-    if (bk.bl(str)) {
-      paramString = null;
+      AppMethodBeat.o(25285);
+      return null;
     }
-    do
+    if (paramBoolean)
     {
-      do
-      {
-        return paramString;
-        paramString = str;
-      } while (paramBoolean);
-      paramString = str;
-    } while (!new File(str).exists());
-    return str;
+      AppMethodBeat.o(25285);
+      return paramString;
+    }
+    if (new File(paramString).exists())
+    {
+      AppMethodBeat.o(25285);
+      return paramString;
+    }
+    AppMethodBeat.o(25285);
+    return paramString;
   }
   
-  public static boolean nX(String paramString)
+  static void vL(String paramString)
   {
-    if (paramString == null) {
+    AppMethodBeat.i(25288);
+    d.cGT().vL(bE(paramString, false));
+    AppMethodBeat.o(25288);
+  }
+  
+  public static boolean vP(String paramString)
+  {
+    AppMethodBeat.i(25286);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(25286);
       return false;
     }
-    g localg = PB(paramString);
+    g localg = d.cGT().adV(paramString);
     if (localg == null)
     {
-      y.e("MicroMsg.VoiceRemindLogic", "Set error failed file:" + paramString);
+      ab.d("MicroMsg.VoiceRemindLogic", "cancel null record : ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(25286);
+      return true;
+    }
+    ab.d("MicroMsg.VoiceRemindLogic", "cancel record : " + paramString + " LocalId:" + localg.field_msglocalid);
+    if (localg.field_msglocalid != 0)
+    {
+      aw.aaz();
+      com.tencent.mm.model.c.YC().kC(localg.field_msglocalid);
+    }
+    boolean bool = adR(paramString);
+    AppMethodBeat.o(25286);
+    return bool;
+  }
+  
+  public static boolean vk(String paramString)
+  {
+    AppMethodBeat.i(25289);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(25289);
+      return false;
+    }
+    g localg = d.cGT().adV(paramString);
+    if (localg == null)
+    {
+      ab.e("MicroMsg.VoiceRemindLogic", "Set error failed file:".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(25289);
       return false;
     }
     localg.field_status = 98;
     localg.field_lastmodifytime = (System.currentTimeMillis() / 1000L);
-    localg.bcw = 320;
+    localg.bsY = 320;
     boolean bool = a(localg);
-    y.d("MicroMsg.VoiceRemindLogic", "setError file:" + paramString + " msgid:" + localg.field_msglocalid + " old stat:" + localg.field_status);
-    if ((localg.field_msglocalid == 0) || (bk.bl(localg.field_user)))
+    ab.d("MicroMsg.VoiceRemindLogic", "setError file:" + paramString + " msgid:" + localg.field_msglocalid + " old stat:" + localg.field_status);
+    if ((localg.field_msglocalid == 0) || (bo.isNullOrNil(localg.field_user)))
     {
-      y.e("MicroMsg.VoiceRemindLogic", "setError failed msg id:" + localg.field_msglocalid + " user:" + localg.field_user);
+      ab.e("MicroMsg.VoiceRemindLogic", "setError failed msg id:" + localg.field_msglocalid + " user:" + localg.field_user);
+      AppMethodBeat.o(25289);
       return bool;
     }
-    au.Hx();
-    paramString = com.tencent.mm.model.c.Fy().fd(localg.field_msglocalid);
+    aw.aaz();
+    paramString = com.tencent.mm.model.c.YC().kB(localg.field_msglocalid);
     paramString.setMsgId(localg.field_msglocalid);
     paramString.setStatus(5);
-    paramString.ec(localg.field_user);
+    paramString.kj(localg.field_user);
     paramString.setContent(f.d(localg.field_human, -1L, true));
-    au.Hx();
-    com.tencent.mm.model.c.Fy().a(paramString.field_msgId, paramString);
+    aw.aaz();
+    com.tencent.mm.model.c.YC().a(paramString.field_msgId, paramString);
+    AppMethodBeat.o(25289);
     return bool;
-  }
-  
-  public static boolean oC(String paramString)
-  {
-    if (paramString == null) {}
-    do
-    {
-      return false;
-      g localg = PB(paramString);
-      if (localg == null)
-      {
-        y.d("MicroMsg.VoiceRemindLogic", "cancel null record : " + paramString);
-        return true;
-      }
-      y.d("MicroMsg.VoiceRemindLogic", "cancel record : " + paramString + " LocalId:" + localg.field_msglocalid);
-      if (localg.field_msglocalid != 0)
-      {
-        au.Hx();
-        com.tencent.mm.model.c.Fy().fe(localg.field_msglocalid);
-      }
-    } while (paramString == null);
-    d.bLX().jJ(paramString);
-    oy(paramString);
-    return new File(bh(paramString, false)).delete();
-  }
-  
-  static void oy(String paramString)
-  {
-    d.bLX().oy(bh(paramString, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.c.h
  * JD-Core Version:    0.7.0.1
  */

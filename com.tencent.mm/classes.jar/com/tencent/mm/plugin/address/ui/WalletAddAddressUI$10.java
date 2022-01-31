@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.address.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletAddAddressUI$10
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class WalletAddAddressUI$10
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    WalletAddAddressUI.d(this.fvu);
+    AppMethodBeat.i(16939);
+    WalletAddAddressUI.d(this.gMZ);
+    AppMethodBeat.o(16939);
     return true;
   }
 }

@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
 import java.io.File;
 
@@ -30,39 +31,54 @@ public class WXEmojiObject
   
   private int getFileSize(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    do
+    AppMethodBeat.i(128245);
+    if ((paramString == null) || (paramString.length() == 0))
     {
+      AppMethodBeat.o(128245);
       return 0;
-      paramString = new File(paramString);
-    } while (!paramString.exists());
-    return (int)paramString.length();
+    }
+    paramString = new File(paramString);
+    if (!paramString.exists())
+    {
+      AppMethodBeat.o(128245);
+      return 0;
+    }
+    int i = (int)paramString.length();
+    AppMethodBeat.o(128245);
+    return i;
   }
   
   public boolean checkArgs()
   {
+    AppMethodBeat.i(128244);
     if (((this.emojiData == null) || (this.emojiData.length == 0)) && ((this.emojiPath == null) || (this.emojiPath.length() == 0)))
     {
       Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, both arguments is null");
+      AppMethodBeat.o(128244);
       return false;
     }
     if ((this.emojiData != null) && (this.emojiData.length > 10485760))
     {
       Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiData is too large");
+      AppMethodBeat.o(128244);
       return false;
     }
     if ((this.emojiPath != null) && (getFileSize(this.emojiPath) > 10485760))
     {
       Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiSize is too large");
+      AppMethodBeat.o(128244);
       return false;
     }
+    AppMethodBeat.o(128244);
     return true;
   }
   
   public void serialize(Bundle paramBundle)
   {
+    AppMethodBeat.i(128242);
     paramBundle.putByteArray("_wxemojiobject_emojiData", this.emojiData);
     paramBundle.putString("_wxemojiobject_emojiPath", this.emojiPath);
+    AppMethodBeat.o(128242);
   }
   
   public void setEmojiData(byte[] paramArrayOfByte)
@@ -82,13 +98,15 @@ public class WXEmojiObject
   
   public void unserialize(Bundle paramBundle)
   {
+    AppMethodBeat.i(128243);
     this.emojiData = paramBundle.getByteArray("_wxemojiobject_emojiData");
     this.emojiPath = paramBundle.getString("_wxemojiobject_emojiPath");
+    AppMethodBeat.o(128243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXEmojiObject
  * JD-Core Version:    0.7.0.1
  */

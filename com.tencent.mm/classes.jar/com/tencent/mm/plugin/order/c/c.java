@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.order.c;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -13,24 +14,34 @@ import java.util.regex.Pattern;
 
 public final class c
 {
-  private static HashMap<String, String> KN(String paramString)
+  private static HashMap<String, String> WO(String paramString)
   {
-    if (paramString == null) {}
-    do
+    AppMethodBeat.i(43934);
+    if (paramString == null)
     {
-      do
-      {
-        do
-        {
-          return null;
-          i = paramString.indexOf("action");
-        } while (i <= 0);
-        paramString = paramString.substring(i, paramString.length());
-      } while (TextUtils.isEmpty(paramString));
-      paramString = paramString.split("&");
-    } while (paramString == null);
+      AppMethodBeat.o(43934);
+      return null;
+    }
+    int i = paramString.indexOf("action");
+    if (i <= 0)
+    {
+      AppMethodBeat.o(43934);
+      return null;
+    }
+    paramString = paramString.substring(i, paramString.length());
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(43934);
+      return null;
+    }
+    paramString = paramString.split("&");
+    if (paramString == null)
+    {
+      AppMethodBeat.o(43934);
+      return null;
+    }
     HashMap localHashMap = new HashMap();
-    int i = 0;
+    i = 0;
     while (i < paramString.length)
     {
       String[] arrayOfString = paramString[i].split("=");
@@ -39,39 +50,47 @@ public final class c
       }
       i += 1;
     }
+    AppMethodBeat.o(43934);
     return localHashMap;
   }
   
   public static void a(Boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4)
   {
+    AppMethodBeat.i(43938);
     if (paramBoolean.booleanValue())
     {
-      h.nFQ.f(11030, new Object[] { paramString1, "", paramString3, paramString4 });
+      h.qsU.e(11030, new Object[] { paramString1, "", paramString3, paramString4 });
+      AppMethodBeat.o(43938);
       return;
     }
-    h.nFQ.f(11030, new Object[] { paramString1, paramString2, paramString3, paramString4 });
+    h.qsU.e(11030, new Object[] { paramString1, paramString2, paramString3, paramString4 });
+    AppMethodBeat.o(43938);
   }
   
-  public static void aC(Context paramContext, String paramString)
+  public static void aL(Context paramContext, String paramString)
   {
+    AppMethodBeat.i(43937);
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("showShare", false);
     localIntent.putExtra("pay_channel", 1);
     d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+    AppMethodBeat.o(43937);
   }
   
-  public static boolean aD(Context paramContext, String paramString)
+  public static boolean aM(Context paramContext, String paramString)
   {
-    y.v("MicroMsg.MallUtil", "jumpToUrl:" + paramString);
+    AppMethodBeat.i(43935);
+    ab.v("MicroMsg.MallUtil", "jumpToUrl:".concat(String.valueOf(paramString)));
     Intent localIntent = new Intent();
-    HashMap localHashMap = KN(paramString);
+    HashMap localHashMap = WO(paramString);
     if ((localHashMap != null) && (!localHashMap.isEmpty()))
     {
       paramString = (String)localHashMap.get("action");
-      if ((TextUtils.isEmpty(paramString)) || (!yS(paramString)))
+      if ((TextUtils.isEmpty(paramString)) || (!isNumeric(paramString)))
       {
-        y.e("MicroMsg.MallUtil", "jumpToUrl illegal action:" + paramString);
+        ab.e("MicroMsg.MallUtil", "jumpToUrl illegal action:".concat(String.valueOf(paramString)));
+        AppMethodBeat.o(43935);
         return false;
       }
       switch (Integer.valueOf(paramString).intValue())
@@ -80,13 +99,14 @@ public final class c
     }
     for (;;)
     {
+      AppMethodBeat.o(43935);
       return true;
       localIntent.putExtra("rawUrl", (String)localHashMap.get("3rdurl"));
       localIntent.putExtra("showShare", false);
       localIntent.putExtra("pay_channel", 1);
       d.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
       continue;
-      e.aa(paramContext, (String)localHashMap.get("username"));
+      e.ad(paramContext, (String)localHashMap.get("username"));
       continue;
       localIntent.putExtra("key_func_id", (String)localHashMap.get("functionid"));
       localIntent.putExtra("key_scene", 1);
@@ -99,31 +119,39 @@ public final class c
       if (TextUtils.isEmpty(paramString)) {
         break;
       }
-      aC(paramContext, paramString);
+      aL(paramContext, paramString);
     }
-    y.e("MicroMsg.MallUtil", "jumpToUrl illegal url:" + paramString);
+    ab.e("MicroMsg.MallUtil", "jumpToUrl illegal url:".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(43935);
     return false;
   }
   
-  public static void aE(Context paramContext, String paramString)
+  public static void aN(Context paramContext, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    AppMethodBeat.i(43936);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(43936);
       return;
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("key_product_id", paramString);
     localIntent.putExtra("key_product_scene", 5);
     d.b(paramContext, "product", ".ui.MallProductUI", localIntent);
+    AppMethodBeat.o(43936);
   }
   
-  public static boolean yS(String paramString)
+  public static boolean isNumeric(String paramString)
   {
-    return Pattern.compile("[0-9]*").matcher(paramString).matches();
+    AppMethodBeat.i(43933);
+    boolean bool = Pattern.compile("[0-9]*").matcher(paramString).matches();
+    AppMethodBeat.o(43933);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.order.c.c
  * JD-Core Version:    0.7.0.1
  */

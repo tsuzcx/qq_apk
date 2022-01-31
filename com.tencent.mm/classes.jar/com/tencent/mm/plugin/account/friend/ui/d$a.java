@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.account.friend.ui;
 
 public abstract interface d$a
 {
-  public abstract void jU(int paramInt);
+  public abstract void mQ(int paramInt);
 }
 
 

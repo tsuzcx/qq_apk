@@ -1,6 +1,7 @@
 package com.tencent.tmassistantsdk.util;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class QUABuilder
 {
@@ -16,15 +17,19 @@ public final class QUABuilder
   
   private String getAppSpec()
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("0");
-    localStringBuffer.append(this.mVersionName.subSequence(0, 1));
-    localStringBuffer.append(this.mBuildNo);
-    return localStringBuffer.toString();
+    AppMethodBeat.i(76273);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("0");
+    ((StringBuffer)localObject).append(this.mVersionName.subSequence(0, 1));
+    ((StringBuffer)localObject).append(this.mBuildNo);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(76273);
+    return localObject;
   }
   
   public final String get()
   {
+    AppMethodBeat.i(76272);
     String str = getAppSpec();
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("TMASDK_");
@@ -55,7 +60,9 @@ public final class QUABuilder
     localStringBuffer.append("NA");
     localStringBuffer.append("&");
     localStringBuffer.append("V3");
-    return localStringBuffer.toString();
+    str = localStringBuffer.toString();
+    AppMethodBeat.o(76272);
+    return str;
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wear.model;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$3
   extends BroadcastReceiver
@@ -11,9 +12,11 @@ final class i$3
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
+    AppMethodBeat.i(26348);
     if ((paramIntent.hasExtra("state")) && (paramIntent.getIntExtra("state", 2) == 0)) {
-      this.qSo.bYS();
+      this.uHv.cYF();
     }
+    AppMethodBeat.o(26348);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.backup.j;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.b.d;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 
@@ -7,19 +8,27 @@ public final class c
 {
   private static String TAG = "MicroMsg.BackupModelFactory";
   
-  public static d nU(int paramInt)
+  public static d rH(int paramInt)
   {
+    AppMethodBeat.i(18108);
     switch (paramInt)
     {
     case 0: 
     default: 
+      AppMethodBeat.o(18108);
       return null;
     case 1: 
-      return com.tencent.mm.plugin.backup.backuppcmodel.b.auw();
+      localObject = com.tencent.mm.plugin.backup.backuppcmodel.b.aTX();
+      AppMethodBeat.o(18108);
+      return localObject;
     case 2: 
-      return com.tencent.mm.plugin.backup.d.b.atS();
+      localObject = com.tencent.mm.plugin.backup.d.b.aTr();
+      AppMethodBeat.o(18108);
+      return localObject;
     }
-    return a.avr();
+    Object localObject = a.aUU();
+    AppMethodBeat.o(18108);
+    return localObject;
   }
 }
 

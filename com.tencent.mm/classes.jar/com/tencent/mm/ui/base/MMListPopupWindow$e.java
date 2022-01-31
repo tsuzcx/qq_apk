@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMListPopupWindow$e
   implements View.OnTouchListener
@@ -12,17 +13,19 @@ final class MMListPopupWindow$e
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(112518);
     int i = paramMotionEvent.getAction();
     int j = (int)paramMotionEvent.getX();
     int k = (int)paramMotionEvent.getY();
-    if ((i == 0) && (MMListPopupWindow.b(this.uWx) != null) && (MMListPopupWindow.b(this.uWx).isShowing()) && (j >= 0) && (j < MMListPopupWindow.b(this.uWx).getWidth()) && (k >= 0) && (k < MMListPopupWindow.b(this.uWx).getHeight())) {
-      MMListPopupWindow.d(this.uWx).postDelayed(MMListPopupWindow.c(this.uWx), 250L);
+    if ((i == 0) && (MMListPopupWindow.b(this.zkQ) != null) && (MMListPopupWindow.b(this.zkQ).isShowing()) && (j >= 0) && (j < MMListPopupWindow.b(this.zkQ).getWidth()) && (k >= 0) && (k < MMListPopupWindow.b(this.zkQ).getHeight())) {
+      MMListPopupWindow.d(this.zkQ).postDelayed(MMListPopupWindow.c(this.zkQ), 250L);
     }
     for (;;)
     {
+      AppMethodBeat.o(112518);
       return false;
       if (i == 1) {
-        MMListPopupWindow.d(this.uWx).removeCallbacks(MMListPopupWindow.c(this.uWx));
+        MMListPopupWindow.d(this.zkQ).removeCallbacks(MMListPopupWindow.c(this.zkQ));
       }
     }
   }

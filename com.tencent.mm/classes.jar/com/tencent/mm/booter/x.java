@@ -1,11 +1,14 @@
 package com.tencent.mm.booter;
 
+import android.content.Context;
+
 public final class x
-  extends q
 {
-  public x(c paramc)
+  Context context;
+  
+  public x(Context paramContext)
   {
-    super(paramc);
+    this.context = paramContext;
   }
 }
 

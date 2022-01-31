@@ -1,39 +1,49 @@
 package com.tencent.mm.plugin.hardwareopt.b;
 
-import com.tencent.mm.protocal.c.aoy;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.auq;
 
 public class a
 {
-  private static volatile a ljy = null;
-  private aoy ljz = null;
+  private static volatile a nGU = null;
+  private auq nGV = null;
   
-  public static a baO()
+  public static a bHP()
   {
-    if (ljy == null) {
+    AppMethodBeat.i(59273);
+    if (nGU == null) {
       try
       {
-        if (ljy == null) {
-          ljy = new a();
+        if (nGU == null) {
+          nGU = new a();
         }
-        a locala = ljy;
-        return locala;
+        a locala1 = nGU;
+        return locala1;
       }
-      finally {}
+      finally
+      {
+        AppMethodBeat.o(59273);
+      }
     }
-    return ljy;
+    a locala2 = nGU;
+    AppMethodBeat.o(59273);
+    return locala2;
   }
   
-  public final aoy baP()
+  public final auq bHQ()
   {
-    if (this.ljz == null) {
-      this.ljz = new aoy();
+    AppMethodBeat.i(59274);
+    if (this.nGV == null) {
+      this.nGV = new auq();
     }
-    return this.ljz;
+    auq localauq = this.nGV;
+    AppMethodBeat.o(59274);
+    return localauq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.hardwareopt.b.a
  * JD-Core Version:    0.7.0.1
  */

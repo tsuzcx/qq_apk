@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.fav;
 
-import com.tencent.mm.h.a.rd;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.sp;
 import com.tencent.mm.sdk.b.c;
 
 final class PluginFav$4
-  extends c<rd>
+  extends c<sp>
 {
   PluginFav$4(PluginFav paramPluginFav)
   {
-    this.udX = rd.class.getName().hashCode();
+    AppMethodBeat.i(5285);
+    this.__eventId = sp.class.getName().hashCode();
+    AppMethodBeat.o(5285);
   }
 }
 

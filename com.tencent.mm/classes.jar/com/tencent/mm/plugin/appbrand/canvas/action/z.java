@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
-import com.tencent.luggage.j.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
-import com.tencent.mm.plugin.appbrand.u.h;
+import com.tencent.mm.plugin.appbrand.s.g;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -19,22 +19,28 @@ public final class z
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    if (paramJSONArray.length() == 0) {
+    AppMethodBeat.i(103266);
+    if (paramJSONArray.length() == 0)
+    {
+      AppMethodBeat.o(103266);
       return false;
     }
     try
     {
-      h.m(paramJSONArray);
+      g.p(paramJSONArray);
+      AppMethodBeat.o(103266);
       return false;
     }
     catch (JSONException paramd)
     {
-      c.i("MicroMsg.SetLineHeight", "get 'lineHeight' error");
+      for (;;)
+      {
+        com.tencent.luggage.g.d.i("MicroMsg.SetLineHeight", "get 'lineHeight' error");
+      }
     }
-    return false;
   }
   
-  public final BaseDrawActionArg adE()
+  public final BaseDrawActionArg axW()
   {
     return null;
   }
@@ -46,7 +52,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.z
  * JD-Core Version:    0.7.0.1
  */

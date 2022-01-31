@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.fixtools;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FixToolsUplogUI$3
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class FixToolsUplogUI$3
   
   public final void onClick(View paramView)
   {
-    this.nRv.showDialog(1);
+    AppMethodBeat.i(126896);
+    this.qFt.showDialog(1);
+    AppMethodBeat.o(126896);
   }
 }
 

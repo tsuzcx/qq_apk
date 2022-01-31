@@ -1,14 +1,19 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$4
   implements s.a
 {
   a$4(a parama) {}
   
-  public final void bl(boolean paramBoolean)
+  public final void bL(boolean paramBoolean)
   {
-    String str = this.sbP.fiE;
-    a.a(this.sbP, paramBoolean, this.sbP.sbJ, str);
+    AppMethodBeat.i(79703);
+    String str = this.vSX.gAl;
+    a locala = this.vSX;
+    a.a(locala, paramBoolean, locala.vSQ, str);
+    AppMethodBeat.o(79703);
   }
 }
 

@@ -1,15 +1,16 @@
 package com.tencent.mm.ui.voicesearch;
 
-import com.tencent.mm.ag.d;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.d;
+import com.tencent.mm.ah.o;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.model.t;
 import com.tencent.mm.platformtools.aa;
 import com.tencent.mm.plugin.messenger.a.f;
-import com.tencent.mm.protocal.c.bnk;
-import com.tencent.mm.protocal.c.bnm;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bxf;
+import com.tencent.mm.protocal.protobuf.bxh;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,53 +22,55 @@ final class b$3
   
   public final void run()
   {
-    Object localObject1 = ((f)this.bEe).bhH();
-    y.d("MicroMsg.SearchResultAdapter", "count " + ((bnm)localObject1).tcA);
-    if (((bnm)localObject1).tcA > 0)
+    AppMethodBeat.i(35329);
+    Object localObject1 = ((f)this.ckS).bPI();
+    ab.d("MicroMsg.SearchResultAdapter", "count " + ((bxh)localObject1).xaS);
+    if (((bxh)localObject1).xaS > 0)
     {
-      localObject1 = ((bnm)localObject1).tcB.iterator();
+      localObject1 = ((bxh)localObject1).xaT.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (bnk)((Iterator)localObject1).next();
-        if (s.hI(((bnk)localObject2).tpg))
+        localObject2 = (bxf)((Iterator)localObject1).next();
+        if (t.ku(((bxf)localObject2).xpe))
         {
-          if (b.f(this.wiQ) == null) {
-            b.a(this.wiQ, new LinkedList());
+          if (b.f(this.ABH) == null) {
+            b.a(this.ABH, new LinkedList());
           }
-          b.f(this.wiQ).add(localObject2);
+          b.f(this.ABH).add(localObject2);
         }
       }
     }
-    Object localObject2 = aa.a(((bnm)localObject1).sQs);
-    y.d("MicroMsg.SearchResultAdapter", "user " + (String)localObject2);
-    if (bk.pm((String)localObject2).length() > 0)
+    Object localObject2 = aa.a(((bxh)localObject1).wOT);
+    ab.d("MicroMsg.SearchResultAdapter", "user ".concat(String.valueOf(localObject2)));
+    if (bo.nullAsNil((String)localObject2).length() > 0)
     {
-      bnk localbnk = new bnk();
-      localbnk.sQs = ((bnm)localObject1).sQs;
-      localbnk.tpg = ((bnm)localObject1).tpg;
-      localbnk.ffk = ((bnm)localObject1).ffk;
-      localbnk.tmw = ((bnm)localObject1).tmw;
-      localbnk.ffm = ((bnm)localObject1).ffm;
-      localbnk.ffq = ((bnm)localObject1).ffq;
-      localbnk.ffj = ((bnm)localObject1).ffj;
-      localbnk.ffi = ((bnm)localObject1).ffi;
-      localbnk.ffh = ((bnm)localObject1).ffh;
-      localbnk.tph = ((bnm)localObject1).tph;
-      localbnk.tpk = ((bnm)localObject1).tpk;
-      localbnk.tpi = ((bnm)localObject1).tpi;
-      localbnk.tpj = ((bnm)localObject1).tpj;
-      localbnk.tpm = ((bnm)localObject1).tpm;
-      o.JQ().h((String)localObject2, aa.a(((bnm)localObject1).svJ));
-      if (b.f(this.wiQ) == null) {
-        b.a(this.wiQ, new LinkedList());
+      bxf localbxf = new bxf();
+      localbxf.wOT = ((bxh)localObject1).wOT;
+      localbxf.xpe = ((bxh)localObject1).xpe;
+      localbxf.gwS = ((bxh)localObject1).gwS;
+      localbxf.xmi = ((bxh)localObject1).xmi;
+      localbxf.gwU = ((bxh)localObject1).gwU;
+      localbxf.gwY = ((bxh)localObject1).gwY;
+      localbxf.gwR = ((bxh)localObject1).gwR;
+      localbxf.gwQ = ((bxh)localObject1).gwQ;
+      localbxf.gwP = ((bxh)localObject1).gwP;
+      localbxf.xpf = ((bxh)localObject1).xpf;
+      localbxf.xpi = ((bxh)localObject1).xpi;
+      localbxf.xpg = ((bxh)localObject1).xpg;
+      localbxf.xph = ((bxh)localObject1).xph;
+      localbxf.xpk = ((bxh)localObject1).xpk;
+      o.acQ().n((String)localObject2, aa.a(((bxh)localObject1).woT));
+      if (b.f(this.ABH) == null) {
+        b.a(this.ABH, new LinkedList());
       }
-      b.f(this.wiQ).clear();
-      if (s.hI(localbnk.tpg)) {
-        b.f(this.wiQ).add(localbnk);
+      b.f(this.ABH).clear();
+      if (t.ku(localbxf.xpe)) {
+        b.f(this.ABH).add(localbxf);
       }
-      y.d("MicroMsg.SearchResultAdapter", "count " + b.f(this.wiQ).size());
+      ab.d("MicroMsg.SearchResultAdapter", "count " + b.f(this.ABH).size());
     }
-    b.b(this.wiQ, false);
+    b.b(this.ABH, false);
+    AppMethodBeat.o(35329);
   }
 }
 

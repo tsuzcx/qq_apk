@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class d$17
@@ -10,14 +11,17 @@ final class d$17
   
   public final void run()
   {
+    AppMethodBeat.i(8880);
     try
     {
-      d.d(this.rxV).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.fZS + ")", null);
+      d.d(this.voP).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.uUq + ")", null);
+      AppMethodBeat.o(8880);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.JsApiHandler", "onVideoUploadoadProgress fail, ex = %s", new Object[] { localException.getMessage() });
+      ab.e("MicroMsg.JsApiHandler", "onVideoUploadoadProgress fail, ex = %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(8880);
     }
   }
 }

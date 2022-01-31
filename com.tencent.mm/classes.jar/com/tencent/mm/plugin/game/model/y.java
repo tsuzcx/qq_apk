@@ -1,68 +1,71 @@
 package com.tencent.mm.plugin.game.model;
 
-import com.tencent.mm.plugin.game.d.dp;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bv.a;
+import com.tencent.mm.plugin.game.d.bo;
 import com.tencent.mm.plugin.game.d.e;
-import com.tencent.mm.plugin.game.d.q;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.game.f.d;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public class y
+public final class y
+  extends x
 {
-  public static d a(e parame)
+  private int mType;
+  public bo nop;
+  public LinkedList<c> noq;
+  private int nor;
+  
+  public y(a parama, int paramInt1, int paramInt2)
   {
-    if (parame == null)
+    AppMethodBeat.i(111359);
+    this.mType = 0;
+    this.nor = 0;
+    if (parama == null)
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.GamePBData", "Invalid pb object");
-      return null;
+      this.nop = new bo();
+      AppMethodBeat.o(111359);
+      return;
     }
-    if (bk.bl(parame.kRX))
+    this.nop = ((bo)parama);
+    this.mType = paramInt1;
+    this.nor = paramInt2;
+    parama = new LinkedList();
+    if (this.nop.ntf != null)
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.GamePBData", "No AppID field, abort");
-      return null;
+      paramInt1 = this.nor;
+      Iterator localIterator = this.nop.ntf.iterator();
+      paramInt1 += 1;
+      while (localIterator.hasNext())
+      {
+        c localc = a((e)localIterator.next());
+        if (localc != null)
+        {
+          switch (this.mType)
+          {
+          }
+          for (;;)
+          {
+            parama.add(localc);
+            break;
+            localc.scene = 16;
+            localc.cFj = 1601;
+            paramInt2 = paramInt1 + 1;
+            localc.position = paramInt1;
+            paramInt1 = paramInt2;
+            continue;
+            localc.scene = 15;
+            localc.cFj = 1501;
+            paramInt2 = paramInt1 + 1;
+            localc.position = paramInt1;
+            paramInt1 = paramInt2;
+          }
+        }
+      }
     }
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.GamePBData", "Parsing AppID: %s", new Object[] { parame.kRX });
-    d locald = new d();
-    locald.field_appId = parame.kRX;
-    locald.field_appName = parame.kRZ;
-    locald.field_appIconUrl = parame.kRY;
-    locald.field_appType = ",1,";
-    locald.field_packageName = parame.kSb;
-    locald.field_appVersion = parame.hQQ;
-    locald.field_appInfoFlag = parame.kSe;
-    if (parame.kSd != null)
-    {
-      locald.cN(parame.kSd.kSL);
-      locald.cQ(parame.kSd.kSM);
-      locald.fd(parame.kSd.kSP);
-      locald.cR(parame.kSd.kSN);
-      locald.kOq = parame.kSd.kSR;
-      locald.kOr = parame.kSd.kSQ;
-      locald.bOz = parame.kSd.kSS;
-    }
-    if ((parame.kSd != null) && (parame.kSd.kSO != null))
-    {
-      locald.cW(parame.kSd.kSO.kSL);
-      locald.cX(parame.kSd.kSO.kWv);
-      locald.cU(parame.kSd.kSO.kWw);
-      locald.cV(parame.kSd.kSO.kWx);
-      locald.fe(parame.kSd.kSO.kWz);
-    }
-    locald.kNX = parame.kRN;
-    locald.kNW = parame.kSa;
-    locald.status = parame.hQq;
-    locald.kNZ = parame.kRS;
-    locald.versionCode = parame.kSc;
-    locald.bGy = parame.kRU;
-    locald.kOb = parame.kSf;
-    locald.kOj = parame.kSk;
-    if ((parame.kSd != null) && (parame.kSd.kSO != null))
-    {
-      locald.kOc = parame.kSd.kSO.kWy;
-      locald.kOd = parame.kSd.kSO.kWA;
-      locald.kOe = parame.kSd.kSO.kWB;
-    }
-    locald.dlO = parame.kSm;
-    locald.kOs = parame.kSn;
-    return locald;
+    this.noq = parama;
+    d.ag(this.noq);
+    AppMethodBeat.o(111359);
   }
 }
 

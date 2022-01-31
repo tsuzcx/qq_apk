@@ -1,23 +1,19 @@
 package com.tencent.mm.plugin.sns.ui.b.a;
 
-import android.view.View;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.plugin.sns.ui.aj;
-import com.tencent.mm.plugin.sns.ui.d.b;
-import com.tencent.mm.protocal.c.bxk;
+import com.tencent.mm.plugin.sns.ui.b.b.b.a;
+import com.tencent.mm.ui.MMActivity;
 
 public abstract class a
 {
-  public View contentView;
-  public n oUH;
-  public View oVY;
-  protected b oWx;
-  protected bxk plP;
-  public aj plQ;
+  protected MMActivity hwZ;
+  protected b.a seT;
   
-  public abstract void aqU();
+  public final void a(b.a parama)
+  {
+    this.seT = parama;
+  }
   
-  public abstract void f(View paramView1, View paramView2);
+  public abstract void mi(long paramLong);
 }
 
 

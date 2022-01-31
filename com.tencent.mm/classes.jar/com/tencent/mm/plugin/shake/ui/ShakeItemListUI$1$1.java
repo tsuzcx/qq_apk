@@ -4,12 +4,12 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.shake.b.e;
 import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.plugin.shake.d.a.i.1;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class ShakeItemListUI$1$1
   implements DialogInterface.OnClickListener
@@ -18,34 +18,36 @@ final class ShakeItemListUI$1$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (ShakeItemListUI.a(this.obF.obE))
+    AppMethodBeat.i(24719);
+    switch (ShakeItemListUI.a(this.qPM.qPL))
     {
     }
     for (;;)
     {
-      ShakeItemListUI.b(this.obF.obE).yc();
-      ShakeItemListUI.c(this.obF.obE).setVisibility(8);
-      paramDialogInterface = (TextView)this.obF.obE.findViewById(R.h.nearby_friend_not_found);
-      paramDialogInterface.setText(ShakeItemListUI.xr(ShakeItemListUI.a(this.obF.obE)));
+      ShakeItemListUI.b(this.qPM.qPL).Ku();
+      ShakeItemListUI.c(this.qPM.qPL).setVisibility(8);
+      paramDialogInterface = (TextView)this.qPM.qPL.findViewById(2131826489);
+      paramDialogInterface.setText(ShakeItemListUI.Dr(ShakeItemListUI.a(this.qPM.qPL)));
       paramDialogInterface.setVisibility(0);
-      this.obF.obE.enableOptionMenu(false);
+      this.qPM.qPL.enableOptionMenu(false);
+      AppMethodBeat.o(24719);
       return;
-      m.bzU().xk(0);
-      m.bzU().bzL();
+      m.cln().Dj(0);
+      m.cln().clc();
       continue;
-      m.bzU().xk(0);
+      m.cln().Dj(0);
       continue;
-      au.DS().O(new i.1());
-      m.bzU().xk(4);
+      aw.RO().ac(new i.1());
+      m.cln().Dj(4);
       continue;
-      m.bzU().xk(7);
-      m.bzU().xk(6);
-      m.bzU().xk(8);
-      m.bzU().xk(9);
-      m.bzU().xk(10);
-      m.bzU().xk(12);
+      m.cln().Dj(7);
+      m.cln().Dj(6);
+      m.cln().Dj(8);
+      m.cln().Dj(9);
+      m.cln().Dj(10);
+      m.cln().Dj(12);
       continue;
-      m.bzU().xk(11);
+      m.cln().Dj(11);
     }
   }
 }

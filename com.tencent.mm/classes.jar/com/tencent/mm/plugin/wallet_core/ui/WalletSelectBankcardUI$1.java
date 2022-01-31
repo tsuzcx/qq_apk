@@ -1,19 +1,21 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletSelectBankcardUI$1
-  implements h.a
+  implements j.a
 {
   WalletSelectBankcardUI$1(WalletSelectBankcardUI paramWalletSelectBankcardUI) {}
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.WalletSelectBankcardUI", "hy: user clicked the phone.go to dial");
-    e.bG(this.qGy, this.qGy.getString(a.i.wallet_bankcard_detail_bankphone_number));
+    AppMethodBeat.i(47652);
+    ab.i("MicroMsg.WalletSelectBankcardUI", "hy: user clicked the phone.go to dial");
+    e.bT(this.utE, this.utE.getString(2131304853));
+    AppMethodBeat.o(47652);
   }
 }
 

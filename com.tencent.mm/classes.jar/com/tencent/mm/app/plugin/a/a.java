@@ -1,163 +1,183 @@
 package com.tencent.mm.app.plugin.a;
 
-import android.os.Looper;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ai.d;
-import com.tencent.mm.ai.d.b;
-import com.tencent.mm.ai.d.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.h.a.eb;
-import com.tencent.mm.h.a.ji;
-import com.tencent.mm.h.a.rb;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.d.b;
+import com.tencent.mm.aj.d.b.b;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.g.a.ee;
+import com.tencent.mm.g.a.jr;
+import com.tencent.mm.g.a.sn;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.t;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.chatting.e;
-import com.tencent.mm.ui.x;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
 {
-  private String byA;
-  public Map<String, Boolean> byB;
-  public boolean byC;
-  public com.tencent.mm.ui.chatting.c.a byx;
-  public a.b byy;
-  public a.a byz;
+  public a.b caA;
+  public a.a caB;
+  private String caC;
+  public Map<String, Boolean> caD;
+  public boolean caE;
+  public com.tencent.mm.ui.chatting.d.a caz;
   
-  public a(com.tencent.mm.ui.chatting.c.a parama)
+  public a(com.tencent.mm.ui.chatting.d.a parama)
   {
-    y.d("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now init the event listener");
-    this.byx = parama;
-    this.byC = true;
-    if (this.byy == null) {
-      this.byy = new a.b(this);
+    AppMethodBeat.i(15727);
+    ab.d("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now init the event listener");
+    this.caz = parama;
+    this.caE = true;
+    if (this.caA == null) {
+      this.caA = new a.b(this);
     }
-    com.tencent.mm.sdk.b.a.udP.c(this.byy);
-    if (this.byz == null) {
-      this.byz = new a.a(this);
+    com.tencent.mm.sdk.b.a.ymk.c(this.caA);
+    if (this.caB == null) {
+      this.caB = new a.a(this);
     }
-    com.tencent.mm.sdk.b.a.udP.c(this.byz);
+    com.tencent.mm.sdk.b.a.ymk.c(this.caB);
+    AppMethodBeat.o(15727);
   }
   
-  public static boolean a(d paramd)
+  public static boolean a(com.tencent.mm.aj.d paramd)
   {
-    if (paramd == null) {}
-    do
+    AppMethodBeat.i(15730);
+    if (paramd == null)
     {
-      do
+      AppMethodBeat.o(15730);
+      return false;
+    }
+    if (paramd != null)
+    {
+      paramd = paramd.cU(false);
+      if ((paramd != null) && (paramd.aeA() != null) && (paramd.aeA().aeJ()))
       {
-        return false;
-      } while (paramd == null);
-      paramd = paramd.bS(false);
-    } while ((paramd == null) || (paramd.LS() == null) || (!paramd.LS().Mc()));
-    return true;
+        AppMethodBeat.o(15730);
+        return true;
+      }
+    }
+    AppMethodBeat.o(15730);
+    return false;
   }
   
-  public final void a(final int paramInt, d paramd)
+  public final void a(final int paramInt, com.tencent.mm.aj.d paramd)
   {
-    if (this.byx == null) {
-      y.e("MicroMsg.exdevice.ChattingUIExDeviceLogic", "notifySwitchView, context is null, maybe has been released");
-    }
-    while ((!s.hl(this.byx.getTalkerUserName())) || (!a(paramd))) {
+    AppMethodBeat.i(15729);
+    if (this.caz == null)
+    {
+      ab.e("MicroMsg.exdevice.ChattingUIExDeviceLogic", "notifySwitchView, context is null, maybe has been released");
+      AppMethodBeat.o(15729);
       return;
     }
-    au.DS().O(new Runnable()
-    {
-      public final void run()
+    if ((t.nU(this.caz.getTalkerUserName())) && (a(paramd))) {
+      aw.RO().ac(new Runnable()
       {
-        if (1 == paramInt)
+        public final void run()
         {
-          localObject = new eb();
-          ((eb)localObject).bKB.op = 0;
-          ((eb)localObject).bKB.userName = a.this.byx.getTalkerUserName();
-          ((eb)localObject).bKB.context = a.this.byx.vtz.getContext();
-          com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-          if (a.this.byx.getTalkerUserName().equals("gh_43f2581f6fd6"))
+          AppMethodBeat.i(15723);
+          if (1 == paramInt)
           {
-            localObject = new rb();
-            ((rb)localObject).cap.action = 1;
-            com.tencent.mm.sdk.b.a.udP.a((b)localObject, Looper.getMainLooper());
+            localObject = new ee();
+            ((ee)localObject).crV.op = 0;
+            ((ee)localObject).crV.userName = a.this.caz.getTalkerUserName();
+            ((ee)localObject).crV.context = a.this.caz.zJz.getContext();
+            com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+            if (a.this.caz.getTalkerUserName().equals("gh_43f2581f6fd6"))
+            {
+              localObject = new sn();
+              ((sn)localObject).cIP.action = 1;
+              com.tencent.mm.sdk.b.a.ymk.a((b)localObject, com.tencent.mm.sdk.g.d.ysm.cjN());
+            }
           }
+          Object localObject = new jr();
+          ((jr)localObject).czg.opType = paramInt;
+          ((jr)localObject).czg.czi = 1;
+          ((jr)localObject).czg.czh = a.this.caz.getTalkerUserName();
+          com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+          AppMethodBeat.o(15723);
         }
-        Object localObject = new ji();
-        ((ji)localObject).bRE.opType = paramInt;
-        ((ji)localObject).bRE.bRG = 1;
-        ((ji)localObject).bRE.bRF = a.this.byx.getTalkerUserName();
-        com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-      }
-    });
+      });
+    }
+    AppMethodBeat.o(15729);
   }
   
   final void d(int paramInt, String paramString1, String paramString2)
   {
+    label117:
+    Map localMap;
     for (;;)
     {
-      d locald;
+      com.tencent.mm.aj.d locald;
       try
       {
-        y.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now connect state : %d", new Object[] { Integer.valueOf(paramInt) });
-        if ((this.byx == null) || (bk.bl(paramString1)))
+        AppMethodBeat.i(15728);
+        ab.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now connect state : %d", new Object[] { Integer.valueOf(paramInt) });
+        if ((this.caz == null) || (bo.isNullOrNil(paramString1)))
         {
-          y.w("MicroMsg.exdevice.ChattingUIExDeviceLogic", "context is null or brandName is null or nil.");
+          ab.w("MicroMsg.exdevice.ChattingUIExDeviceLogic", "context is null or brandName is null or nil.");
+          AppMethodBeat.o(15728);
           return;
         }
-        locald = f.kX(paramString1);
+        locald = f.rS(paramString1);
         if (!a(locald))
         {
-          y.w("MicroMsg.exdevice.ChattingUIExDeviceLogic", "It's not a biz, brandName(%s).", new Object[] { paramString1 });
+          ab.w("MicroMsg.exdevice.ChattingUIExDeviceLogic", "It's not a biz, brandName(%s).", new Object[] { paramString1 });
+          AppMethodBeat.o(15728);
           continue;
         }
-        if (this.byB != null) {
-          break label99;
+        if (this.caD != null) {
+          break label117;
         }
       }
       finally {}
-      this.byB = new HashMap();
-      label99:
-      Map localMap = this.byB;
-      if (!paramString1.equals(this.byA))
+      this.caD = new HashMap();
+      localMap = this.caD;
+      if (!paramString1.equals(this.caC))
       {
-        this.byA = paramString1;
+        this.caC = paramString1;
         localMap.clear();
       }
-      if (locald.bS(false).LS().efG == 1)
-      {
-        this.byx.vtz.setMMSubTitle(null);
+      if (locald.cU(false).aeA().fvI != 1) {
+        break;
       }
-      else
+      this.caz.zJz.setMMSubTitle(null);
+      AppMethodBeat.o(15728);
+    }
+    ab.d("MicroMsg.exdevice.ChattingUIExDeviceLogic", "connDeviceIds : (%s) , deviceId : (%s)", new Object[] { localMap, paramString2 });
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(15728);
+      break;
+      this.caz.zJz.setMMSubTitle(null);
+      AppMethodBeat.o(15728);
+      break;
+      if (localMap.size() == 0)
       {
-        y.d("MicroMsg.exdevice.ChattingUIExDeviceLogic", "connDeviceIds : (%s) , deviceId : (%s)", new Object[] { localMap, paramString2 });
-        switch (paramInt)
-        {
-        case -1: 
-          this.byx.vtz.setMMSubTitle(null);
-          break;
-        case 0: 
-          if (localMap.size() == 0) {
-            this.byx.vtz.setMMSubTitle(R.l.exdevice_device_status_none);
-          }
-          break;
-        case 2: 
-          localMap.put(paramString2, Boolean.valueOf(true));
-          this.byx.vtz.setMMSubTitle(this.byx.vtz.getString(R.l.exdevice_device_status_connected, new Object[] { Integer.valueOf(localMap.size()) }));
-          y.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now connected(deviceId : %s), set the tips gone", new Object[] { paramString2 });
-          break;
-        case 4: 
-          if (localMap.remove(paramString2) != null) {
-            y.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "disconnected(deviceId : %s) successfully.", new Object[] { paramString2 });
-          }
-          this.byx.vtz.setMMSubTitle(this.byx.vtz.getString(R.l.exdevice_device_status_connected, new Object[] { Integer.valueOf(localMap.size()) }));
-          break;
-        case 1: 
-          if (localMap.size() == 0) {
-            this.byx.vtz.setMMSubTitle(R.l.exdevice_device_status_connecting);
-          }
-          break;
+        this.caz.zJz.setMMSubTitle(2131299406);
+        AppMethodBeat.o(15728);
+        break;
+        localMap.put(paramString2, Boolean.TRUE);
+        this.caz.zJz.setMMSubTitle(this.caz.zJz.getString(2131299404, new Object[] { Integer.valueOf(localMap.size()) }));
+        ab.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now connected(deviceId : %s), set the tips gone", new Object[] { paramString2 });
+        AppMethodBeat.o(15728);
+        break;
+        if (localMap.remove(paramString2) != null) {
+          ab.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "disconnected(deviceId : %s) successfully.", new Object[] { paramString2 });
+        }
+        this.caz.zJz.setMMSubTitle(this.caz.zJz.getString(2131299404, new Object[] { Integer.valueOf(localMap.size()) }));
+        AppMethodBeat.o(15728);
+        break;
+        if (localMap.size() == 0) {
+          this.caz.zJz.setMMSubTitle(2131299405);
         }
       }
     }

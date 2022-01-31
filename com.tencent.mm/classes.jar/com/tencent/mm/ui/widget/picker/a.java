@@ -6,150 +6,141 @@ import android.support.design.widget.c;
 import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.Button;
-import android.widget.NumberPicker;
-import com.tencent.mm.ci.a.f;
-import com.tencent.mm.ci.a.g;
-import com.tencent.mm.ui.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.al;
 import java.util.Calendar;
 import java.util.Locale;
 
 public final class a
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private BottomSheetBehavior fK;
-  private Button fbO;
-  private Button hPe;
-  private View jdj;
+  private CustomDatePicker AIP;
+  public a.a AIQ;
+  private BottomSheetBehavior gE;
+  private Button gtF;
+  private View iDS;
+  private Button jIG;
   private Context mContext;
-  private c vAB;
-  private int vAC;
-  public CustomDatePicker won;
-  public a.a woo;
+  private c zRa;
+  private int zRb;
   
   public a(Context paramContext)
   {
+    AppMethodBeat.i(112812);
     this.mContext = paramContext;
-    this.vAB = new c(this.mContext);
-    this.jdj = View.inflate(this.mContext, a.g.date_picker_panel, null);
-    this.won = ((CustomDatePicker)this.jdj.findViewById(a.f.date_picker));
-    this.fbO = ((Button)this.jdj.findViewById(a.f.ok_btn));
-    this.fbO.setOnClickListener(new a.1(this));
-    this.hPe = ((Button)this.jdj.findViewById(a.f.cancel_btn));
-    this.hPe.setOnClickListener(new a.2(this));
-    this.vAB.setContentView(this.jdj);
-    this.vAB.setOnCancelListener(new a.3(this));
-    this.vAC = ap.fromDPToPix(this.mContext, 288);
-    this.fK = BottomSheetBehavior.i((View)this.jdj.getParent());
-    if (this.fK != null)
+    this.zRa = new c(this.mContext);
+    this.iDS = View.inflate(this.mContext, 2130969295, null);
+    this.AIP = ((CustomDatePicker)this.iDS.findViewById(2131823302));
+    this.gtF = ((Button)this.iDS.findViewById(2131823301));
+    this.gtF.setOnClickListener(new a.1(this));
+    this.jIG = ((Button)this.iDS.findViewById(2131822887));
+    this.jIG.setOnClickListener(new a.2(this));
+    this.zRa.setContentView(this.iDS);
+    this.zRa.setOnCancelListener(new a.3(this));
+    this.zRb = al.fromDPToPix(this.mContext, 288);
+    this.gE = BottomSheetBehavior.i((View)this.iDS.getParent());
+    if (this.gE != null)
     {
-      this.fK.u(this.vAC);
-      this.fK.fq = false;
+      this.gE.t(this.zRb);
+      this.gE.go = false;
     }
-    this.vAB.setOnDismissListener(new a.4(this));
+    this.zRa.setOnDismissListener(new a.4(this));
+    AppMethodBeat.o(112812);
   }
   
-  public final void Z(boolean paramBoolean1, boolean paramBoolean2)
+  public final void aA(int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = 0;
-    Object localObject;
-    if (this.won != null)
+    AppMethodBeat.i(112813);
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
     {
-      localObject = this.won;
-      ((CustomDatePicker)localObject).hzK = paramBoolean1;
-      ((CustomDatePicker)localObject).hzL = paramBoolean2;
-      if (((CustomDatePicker)localObject).hzM != null)
-      {
-        ((CustomDatePicker)localObject).hzM.setEnabled(true);
-        ((CustomDatePicker)localObject).hzM.setVisibility(0);
-      }
-      if (((CustomDatePicker)localObject).hzN != null)
-      {
-        ((CustomDatePicker)localObject).hzN.setEnabled(paramBoolean1);
-        NumberPicker localNumberPicker = ((CustomDatePicker)localObject).hzN;
-        if (!paramBoolean1) {
-          break label128;
-        }
-        i = 0;
-        localNumberPicker.setVisibility(i);
-      }
-      if (((CustomDatePicker)localObject).hzO != null)
-      {
-        ((CustomDatePicker)localObject).hzO.setEnabled(paramBoolean2);
-        localObject = ((CustomDatePicker)localObject).hzO;
-        if (!paramBoolean2) {
-          break label134;
-        }
-      }
-    }
-    label128:
-    label134:
-    for (int i = j;; i = 8)
-    {
-      ((NumberPicker)localObject).setVisibility(i);
-      return;
-      i = 8;
-      break;
-    }
-  }
-  
-  public final void ao(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0)) {}
-    while (this.won == null) {
+      AppMethodBeat.o(112813);
       return;
     }
-    this.won.an(paramInt1, paramInt2, paramInt3);
+    if (this.AIP != null) {
+      this.AIP.az(paramInt1, paramInt2, paramInt3);
+    }
+    AppMethodBeat.o(112813);
   }
   
-  public final void ap(int paramInt1, int paramInt2, int paramInt3)
+  public final void aB(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0)) {}
-    Calendar localCalendar;
-    do
+    AppMethodBeat.i(112815);
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
     {
+      AppMethodBeat.o(112815);
       return;
-      localCalendar = Calendar.getInstance(Locale.US);
-      localCalendar.set(paramInt1, paramInt2 - 1, paramInt3);
-    } while (this.won == null);
-    this.won.setMinDate(localCalendar.getTimeInMillis());
+    }
+    Calendar localCalendar = Calendar.getInstance(Locale.US);
+    localCalendar.set(paramInt1, paramInt2 - 1, paramInt3);
+    if (this.AIP != null) {
+      this.AIP.setMinDate(localCalendar.getTimeInMillis());
+    }
+    AppMethodBeat.o(112815);
   }
   
-  public final void aq(int paramInt1, int paramInt2, int paramInt3)
+  public final void aC(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0)) {}
-    Calendar localCalendar;
-    do
+    AppMethodBeat.i(112816);
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
     {
+      AppMethodBeat.o(112816);
       return;
-      localCalendar = Calendar.getInstance(Locale.US);
-      localCalendar.set(paramInt1, paramInt2 - 1, paramInt3);
-    } while (this.won == null);
-    this.won.setMaxDate(localCalendar.getTimeInMillis());
+    }
+    Calendar localCalendar = Calendar.getInstance(Locale.US);
+    localCalendar.set(paramInt1, paramInt2 - 1, paramInt3);
+    if (this.AIP != null) {
+      this.AIP.setMaxDate(localCalendar.getTimeInMillis());
+    }
+    AppMethodBeat.o(112816);
+  }
+  
+  public final void am(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(112814);
+    if (this.AIP != null) {
+      this.AIP.am(paramBoolean1, paramBoolean2);
+    }
+    AppMethodBeat.o(112814);
+  }
+  
+  public final String dPo()
+  {
+    AppMethodBeat.i(139660);
+    String str = null;
+    if (this.AIP != null) {
+      str = this.AIP.aRR();
+    }
+    AppMethodBeat.o(139660);
+    return str;
   }
   
   public final void hide()
   {
-    if (this.vAB != null) {
-      this.vAB.dismiss();
+    AppMethodBeat.i(112818);
+    if (this.zRa != null) {
+      this.zRa.dismiss();
     }
+    AppMethodBeat.o(112818);
   }
   
   public final void onGlobalLayout() {}
   
   public final void show()
   {
-    if (this.vAB != null)
+    AppMethodBeat.i(112817);
+    if (this.zRa != null)
     {
-      if (this.won != null) {
-        this.won.asO();
+      if (this.AIP != null) {
+        this.AIP.aRQ();
       }
-      this.vAB.show();
+      this.zRa.show();
     }
+    AppMethodBeat.o(112817);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.a
  * JD-Core Version:    0.7.0.1
  */

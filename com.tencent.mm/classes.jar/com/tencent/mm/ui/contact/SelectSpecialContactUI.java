@@ -1,65 +1,87 @@
 package com.tencent.mm.ui.contact;
 
+import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.ui.chatting.ChattingUI;
 import com.tencent.mm.ui.contact.a.a;
 
 public class SelectSpecialContactUI
   extends MMBaseSelectContactUI
 {
+  private int AeD;
   private String title;
-  private int vNa;
   
-  protected final boolean VC()
+  protected final void Kc()
+  {
+    AppMethodBeat.i(33916);
+    super.Kc();
+    this.title = getIntent().getStringExtra("titile");
+    this.AeD = getIntent().getIntExtra("list_attr", 0);
+    AppMethodBeat.o(33916);
+  }
+  
+  protected final boolean apa()
   {
     return false;
   }
   
-  protected final boolean VD()
+  protected final boolean apb()
   {
     return false;
   }
   
-  protected final String VE()
+  protected final String apc()
   {
     return this.title;
   }
   
-  protected final o VF()
+  protected final p apd()
   {
-    return new aa(this, getIntent().getStringExtra("filter_type"));
+    AppMethodBeat.i(33918);
+    ab localab = new ab(this, getIntent().getStringExtra("filter_type"));
+    AppMethodBeat.o(33918);
+    return localab;
   }
   
-  protected final m VG()
+  protected final n ape()
   {
     return null;
   }
   
-  public final void jP(int paramInt)
+  public final void mL(int paramInt)
   {
-    Object localObject = cHE().HK(paramInt);
-    if (localObject == null) {}
-    while (((a)localObject).dnp == null) {
+    AppMethodBeat.i(33917);
+    Object localObject = dLW().Qt(paramInt);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(33917);
       return;
     }
-    localObject = ((a)localObject).dnp.field_username;
-    y.i("MicroMsg.SelectSpecialContactUI", "ClickUser=%s", new Object[] { localObject });
+    if (((a)localObject).contact == null)
+    {
+      AppMethodBeat.o(33917);
+      return;
+    }
+    localObject = ((a)localObject).contact.field_username;
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SelectSpecialContactUI", "ClickUser=%s", new Object[] { localObject });
     Intent localIntent = new Intent();
-    if (s.fA(this.vNa, 16384))
+    if (t.hI(this.AeD, 16384))
     {
       localIntent.putExtra("Select_Contact", (String)localObject);
       setResult(-1, localIntent);
       finish();
+      AppMethodBeat.o(33917);
       return;
     }
-    if (s.fA(this.vNa, 32768))
+    if (t.hI(this.AeD, 32768))
     {
       localIntent.putExtra("Contact_User", (String)localObject);
+      localIntent.putExtra("CONTACT_INFO_UI_SOURCE", 20);
       d.b(this, "profile", ".ui.ContactInfoUI", localIntent);
-      finish();
+      AppMethodBeat.o(33917);
       return;
     }
     localIntent.setClass(this, ChattingUI.class);
@@ -67,13 +89,13 @@ public class SelectSpecialContactUI
     localIntent.putExtra("finish_direct", true);
     startActivity(localIntent);
     finish();
+    AppMethodBeat.o(33917);
   }
   
-  protected final void xK()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    super.xK();
-    this.title = getIntent().getStringExtra("titile");
-    this.vNa = getIntent().getIntExtra("list_attr", 0);
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

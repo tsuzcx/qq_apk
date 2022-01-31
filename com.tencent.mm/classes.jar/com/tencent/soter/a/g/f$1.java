@@ -1,5 +1,7 @@
 package com.tencent.soter.a.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class f$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class f$1
   
   public final void run()
   {
-    this.wQi.execute();
+    AppMethodBeat.i(10481);
+    this.BnI.execute();
+    AppMethodBeat.o(10481);
   }
 }
 

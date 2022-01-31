@@ -1,102 +1,82 @@
 package com.tencent.mm.a;
 
-import java.security.PublicKey;
-import javax.crypto.Cipher;
-
 public final class l
 {
-  public static byte[] a(byte[] paramArrayOfByte, PublicKey paramPublicKey)
+  public static byte[] c(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-    localCipher.init(2, paramPublicKey);
-    return localCipher.doFinal(paramArrayOfByte);
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+      return null;
+    }
+    return e(paramArrayOfByte1, paramArrayOfByte2);
   }
   
-  /* Error */
-  public static PublicKey m(android.content.Context paramContext, java.lang.String paramString)
+  public static byte[] d(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_0
-    //   3: invokevirtual 33	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   6: invokevirtual 39	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
-    //   9: aload_1
-    //   10: invokevirtual 45	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   13: astore_0
-    //   14: aload_0
-    //   15: astore_2
-    //   16: aload_0
-    //   17: invokevirtual 51	java/io/InputStream:available	()I
-    //   20: newarray byte
-    //   22: astore_1
-    //   23: aload_0
-    //   24: astore_2
-    //   25: aload_0
-    //   26: aload_1
-    //   27: invokevirtual 55	java/io/InputStream:read	([B)I
-    //   30: pop
-    //   31: aload_0
-    //   32: astore_2
-    //   33: aload_0
-    //   34: invokevirtual 59	java/io/InputStream:close	()V
-    //   37: aload_0
-    //   38: ifnull +7 -> 45
-    //   41: aload_0
-    //   42: invokevirtual 59	java/io/InputStream:close	()V
-    //   45: new 61	java/security/spec/X509EncodedKeySpec
-    //   48: dup
-    //   49: new 63	java/lang/String
-    //   52: dup
-    //   53: aload_1
-    //   54: invokespecial 67	java/lang/String:<init>	([B)V
-    //   57: ldc 69
-    //   59: ldc 71
-    //   61: invokevirtual 75	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   64: ldc 77
-    //   66: ldc 71
-    //   68: invokevirtual 75	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   71: ldc 79
-    //   73: ldc 71
-    //   75: invokevirtual 75	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   78: iconst_0
-    //   79: invokestatic 85	android/util/Base64:decode	(Ljava/lang/String;I)[B
-    //   82: invokespecial 86	java/security/spec/X509EncodedKeySpec:<init>	([B)V
-    //   85: astore_0
-    //   86: ldc 88
-    //   88: invokestatic 93	java/security/KeyFactory:getInstance	(Ljava/lang/String;)Ljava/security/KeyFactory;
-    //   91: aload_0
-    //   92: invokevirtual 97	java/security/KeyFactory:generatePublic	(Ljava/security/spec/KeySpec;)Ljava/security/PublicKey;
-    //   95: areturn
-    //   96: astore_0
-    //   97: aload_2
-    //   98: ifnull +7 -> 105
-    //   101: aload_2
-    //   102: invokevirtual 59	java/io/InputStream:close	()V
-    //   105: aload_0
-    //   106: athrow
-    //   107: astore_0
-    //   108: goto -63 -> 45
-    //   111: astore_1
-    //   112: goto -7 -> 105
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	115	0	paramContext	android.content.Context
-    //   0	115	1	paramString	java.lang.String
-    //   1	101	2	localContext	android.content.Context
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	96	finally
-    //   16	23	96	finally
-    //   25	31	96	finally
-    //   33	37	96	finally
-    //   41	45	107	java/io/IOException
-    //   101	105	111	java/io/IOException
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+      return null;
+    }
+    return e(paramArrayOfByte1, paramArrayOfByte2);
+  }
+  
+  private static byte[] e(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    paramArrayOfByte2 = y(paramArrayOfByte2);
+    byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    while (j < paramArrayOfByte1.length)
+    {
+      m = m + 1 & 0xFF;
+      k = (paramArrayOfByte2[m] & 0xFF) + k & 0xFF;
+      int i = paramArrayOfByte2[m];
+      paramArrayOfByte2[m] = paramArrayOfByte2[k];
+      paramArrayOfByte2[k] = i;
+      int n = paramArrayOfByte2[m];
+      int i1 = paramArrayOfByte2[k];
+      int i2 = paramArrayOfByte1[j];
+      arrayOfByte[j] = ((byte)(paramArrayOfByte2[((n & 0xFF) + (i1 & 0xFF) & 0xFF)] ^ i2));
+      j += 1;
+    }
+    return arrayOfByte;
+  }
+  
+  private static byte[] y(byte[] paramArrayOfByte)
+  {
+    byte[] arrayOfByte2 = new byte[256];
+    int j = 0;
+    while (j < 256)
+    {
+      arrayOfByte2[j] = ((byte)j);
+      j += 1;
+    }
+    byte[] arrayOfByte1;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      arrayOfByte1 = null;
+      return arrayOfByte1;
+    }
+    j = 0;
+    int m = 0;
+    int k = 0;
+    for (;;)
+    {
+      arrayOfByte1 = arrayOfByte2;
+      if (j >= 256) {
+        break;
+      }
+      m = (paramArrayOfByte[k] & 0xFF) + (arrayOfByte2[j] & 0xFF) + m & 0xFF;
+      int i = arrayOfByte2[j];
+      arrayOfByte2[j] = arrayOfByte2[m];
+      arrayOfByte2[m] = i;
+      k = (k + 1) % paramArrayOfByte.length;
+      j += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.a.l
  * JD-Core Version:    0.7.0.1
  */

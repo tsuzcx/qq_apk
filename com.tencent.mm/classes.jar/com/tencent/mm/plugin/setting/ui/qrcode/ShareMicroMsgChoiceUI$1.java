@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.qrcode;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShareMicroMsgChoiceUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class ShareMicroMsgChoiceUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.nRy.XM();
-    this.nRy.finish();
+    AppMethodBeat.i(126912);
+    this.qFw.hideVKB();
+    this.qFw.finish();
+    AppMethodBeat.o(126912);
     return true;
   }
 }

@@ -1,26 +1,45 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageButton;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.MMEditText;
 
 final class LuckyMoneyWishFooter$3
-  implements View.OnTouchListener
+  implements TextWatcher
 {
   LuckyMoneyWishFooter$3(LuckyMoneyWishFooter paramLuckyMoneyWishFooter) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final void afterTextChanged(Editable paramEditable)
   {
-    LuckyMoneyWishFooter.f(this.lXW);
-    LuckyMoneyWishFooter.g(this.lXW).setVisibility(8);
-    LuckyMoneyWishFooter.g(this.lXW).onPause();
-    LuckyMoneyWishFooter.e(this.lXW).setImageResource(a.e.chatting_setmode_biaoqing_btn);
-    LuckyMoneyWishFooter.a(this.lXW, 0);
-    return false;
+    AppMethodBeat.i(43049);
+    if (LuckyMoneyWishFooter.b(this.oxv).getText() == null)
+    {
+      AppMethodBeat.o(43049);
+      return;
+    }
+    LuckyMoneyWishFooter.b(this.oxv).requestFocus();
+    if ((paramEditable.length() > 0) && (paramEditable.toString().trim().length() > 0)) {}
+    for (int i = 1;; i = 0)
+    {
+      if ((i != 0) && (this.oxv.oxr))
+      {
+        LuckyMoneyWishFooter.a(this.oxv, true);
+        this.oxv.oxr = false;
+      }
+      if (i == 0)
+      {
+        LuckyMoneyWishFooter.a(this.oxv, false);
+        this.oxv.oxr = true;
+      }
+      AppMethodBeat.o(43049);
+      return;
+    }
   }
+  
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -4,15 +4,16 @@ import android.content.Context;
 import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.r;
+import com.tencent.mm.model.s;
+import com.tencent.mm.plugin.k.d;
 import com.tencent.mm.plugin.location.model.l;
 import com.tencent.mm.plugin.location.model.p;
 import com.tencent.mm.plugin.location.ui.impl.TrackPoint;
-import com.tencent.mm.plugin.p.d;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.MMHorList;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,48 +23,56 @@ public final class i
   implements h.c, k.a
 {
   private Context context;
-  private String dpx = "";
-  private ViewGroup lFX;
-  private View lFY;
-  private h lFZ;
-  private d lFy;
-  private j lGa;
-  private ArrayList<String> lGb;
-  private String lGc = "";
-  private boolean lGd = false;
-  public i.a lGe;
+  private String egT;
+  private d ocL;
+  private ViewGroup odk;
+  private View odl;
+  private h odm;
+  private j odn;
+  private ArrayList<String> odo;
+  private String odp;
+  private boolean odq;
+  public i.a odr;
   
   public i(Context paramContext, ViewGroup paramViewGroup, View paramView, String paramString, d paramd)
   {
-    this.lFX = paramViewGroup;
-    this.lFY = paramView;
+    AppMethodBeat.i(113512);
+    this.odp = "";
+    this.egT = "";
+    this.odq = false;
+    this.odk = paramViewGroup;
+    this.odl = paramView;
     this.context = paramContext;
-    this.lGb = new ArrayList();
-    this.dpx = paramString;
-    this.lFy = paramd;
+    this.odo = new ArrayList();
+    this.egT = paramString;
+    this.ocL = paramd;
     init();
+    AppMethodBeat.o(113512);
   }
   
   private void init()
   {
-    y.d("MicroMsg.ShareHeaderMgr", "init ShareHeaderMgr, roomname=%s", new Object[] { this.dpx });
-    this.lFZ = new h(this.context, this.lFY, this.dpx);
-    this.lFZ.lFP = this;
-    this.lGa = new j(this.context, this.lFX, this.dpx);
-    Iterator localIterator = l.bdY().nz(this.dpx).iterator();
+    AppMethodBeat.i(113513);
+    ab.d("MicroMsg.ShareHeaderMgr", "init ShareHeaderMgr, roomname=%s", new Object[] { this.egT });
+    this.odm = new h(this.context, this.odl, this.egT);
+    this.odm.odc = this;
+    this.odn = new j(this.context, this.odk, this.egT);
+    Iterator localIterator = l.bLs().uN(this.egT).iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      this.lGb.add(str);
+      this.odo.add(str);
     }
+    AppMethodBeat.o(113513);
   }
   
-  public final void G(ArrayList<String> paramArrayList)
+  public final void H(ArrayList<String> paramArrayList)
   {
-    y.d("MicroMsg.ShareHeaderMgr", "onRefreshMemberList, members.size=%d", new Object[] { Integer.valueOf(paramArrayList.size()) });
-    this.lFZ.G(paramArrayList);
-    j localj = this.lGa;
-    y.d("MicroMsg.ShareHeaderMsgMgr", "onRefreshMemberList, size=%d", new Object[] { Integer.valueOf(paramArrayList.size()) });
+    AppMethodBeat.i(113514);
+    ab.d("MicroMsg.ShareHeaderMgr", "onRefreshMemberList, members.size=%d", new Object[] { Integer.valueOf(paramArrayList.size()) });
+    this.odm.H(paramArrayList);
+    j localj = this.odn;
+    ab.d("MicroMsg.ShareHeaderMsgMgr", "onRefreshMemberList, size=%d", new Object[] { Integer.valueOf(paramArrayList.size()) });
     Object localObject2 = new ArrayList();
     Object localObject1 = new ArrayList();
     Iterator localIterator = paramArrayList.iterator();
@@ -71,11 +80,11 @@ public final class i
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      if (localj.lGg.indexOf(str) == -1) {
+      if (localj.odt.indexOf(str) == -1) {
         ((ArrayList)localObject2).add(str);
       }
     }
-    localIterator = localj.lGg.iterator();
+    localIterator = localj.odt.iterator();
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
@@ -83,178 +92,192 @@ public final class i
         ((ArrayList)localObject1).add(str);
       }
     }
-    if (localj.lGs)
+    if (localj.odF)
     {
-      localj.lGs = false;
+      localj.odF = false;
       if (((ArrayList)localObject2).size() > 0)
       {
         paramArrayList = ((ArrayList)localObject2).iterator();
         while (paramArrayList.hasNext())
         {
           localObject1 = (String)paramArrayList.next();
-          localj.lGg.add(localObject1);
+          localj.odt.add(localObject1);
         }
       }
-      localj.hi(false);
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (((ArrayList)localObject2).size() > 0)
-          {
-            paramArrayList = (String)((ArrayList)localObject2).get(0);
-            localj.lGg.add(paramArrayList);
-            if (!bk.bl(r.gV(paramArrayList)))
-            {
-              localj.mHandler.removeMessages(3);
-              localObject2 = Message.obtain();
-              ((Message)localObject2).what = 3;
-              ((Message)localObject2).obj = paramArrayList;
-              localj.mHandler.sendMessage((Message)localObject2);
-              localj.hi(true);
-            }
-          }
-        } while (((ArrayList)localObject1).size() <= 0);
-        paramArrayList = (String)((ArrayList)localObject1).get(0);
-      } while ((bk.bl(paramArrayList)) || (localj.lGg.indexOf(paramArrayList) == -1));
-      localj.lGg.remove(localj.lGg.indexOf(paramArrayList));
-    } while (bk.bl(r.gV(paramArrayList)));
-    localObject1 = Message.obtain();
-    ((Message)localObject1).what = 4;
-    ((Message)localObject1).obj = paramArrayList;
-    localj.mHandler.sendMessage((Message)localObject1);
-    localj.hi(true);
-  }
-  
-  public final void GE(String paramString)
-  {
-    if (this.lGe != null) {
-      this.lGe.GE(paramString);
-    }
-  }
-  
-  public final void GF(String paramString)
-  {
-    y.d("MicroMsg.ShareHeaderMgr", "onCurTalkerChange, username = %s", new Object[] { paramString });
-    if (this.lGd) {
+      localj.iS(false);
+      AppMethodBeat.o(113514);
       return;
     }
-    this.lGc = paramString;
-    paramString = this.lFZ;
-    Object localObject = this.lGc;
-    y.i("MicroMsg.ShareHeaderAvatarViewMgr", "onCurMemberChange, username=%s", new Object[] { localObject });
-    if (bk.bl((String)localObject))
+    if (((ArrayList)localObject2).size() > 0)
     {
-      paramString.beq();
-      label64:
-      paramString = this.lGa;
-      localObject = this.lGc;
-      y.d("MicroMsg.ShareHeaderMsgMgr", "onCurMemberChange, curMember=%s", new Object[] { localObject });
-      if (bk.bl((String)localObject)) {
-        break label188;
-      }
-      if (!bk.bl(r.gV((String)localObject)))
+      paramArrayList = (String)((ArrayList)localObject2).get(0);
+      localj.odt.add(paramArrayList);
+      if (!bo.isNullOrNil(s.nE(paramArrayList)))
       {
-        paramString.lGx = true;
+        localj.mHandler.removeMessages(3);
+        localObject2 = Message.obtain();
+        ((Message)localObject2).what = 3;
+        ((Message)localObject2).obj = paramArrayList;
+        localj.mHandler.sendMessage((Message)localObject2);
+        localj.iS(true);
+      }
+    }
+    if (((ArrayList)localObject1).size() > 0)
+    {
+      paramArrayList = (String)((ArrayList)localObject1).get(0);
+      if ((!bo.isNullOrNil(paramArrayList)) && (localj.odt.indexOf(paramArrayList) != -1))
+      {
+        localj.odt.remove(localj.odt.indexOf(paramArrayList));
+        if (!bo.isNullOrNil(s.nE(paramArrayList)))
+        {
+          localObject1 = Message.obtain();
+          ((Message)localObject1).what = 4;
+          ((Message)localObject1).obj = paramArrayList;
+          localj.mHandler.sendMessage((Message)localObject1);
+          localj.iS(true);
+        }
+      }
+    }
+    AppMethodBeat.o(113514);
+  }
+  
+  public final void Sh(String paramString)
+  {
+    AppMethodBeat.i(113515);
+    if (this.odr != null) {
+      this.odr.Sh(paramString);
+    }
+    AppMethodBeat.o(113515);
+  }
+  
+  public final void Si(String paramString)
+  {
+    AppMethodBeat.i(113517);
+    ab.d("MicroMsg.ShareHeaderMgr", "onCurTalkerChange, username = %s", new Object[] { paramString });
+    if (this.odq)
+    {
+      AppMethodBeat.o(113517);
+      return;
+    }
+    this.odp = paramString;
+    paramString = this.odm;
+    Object localObject = this.odp;
+    ab.i("MicroMsg.ShareHeaderAvatarViewMgr", "onCurMemberChange, username=%s", new Object[] { localObject });
+    if (bo.isNullOrNil((String)localObject))
+    {
+      paramString.bLK();
+      paramString = this.odn;
+      localObject = this.odp;
+      ab.d("MicroMsg.ShareHeaderMsgMgr", "onCurMemberChange, curMember=%s", new Object[] { localObject });
+      if (bo.isNullOrNil((String)localObject)) {
+        break label203;
+      }
+      if (!bo.isNullOrNil(s.nE((String)localObject)))
+      {
+        paramString.odK = true;
         paramString.mHandler.removeMessages(5);
         Message localMessage = Message.obtain();
         localMessage.what = 5;
         localMessage.obj = localObject;
         paramString.mHandler.sendMessageAtFrontOfQueue(localMessage);
       }
-      paramString.hi(true);
+      paramString.iS(true);
     }
     for (;;)
     {
-      paramString = this.lFy.getViewByItag(this.lGc);
-      if (!(paramString instanceof TrackPoint)) {
-        break;
+      paramString = this.ocL.getViewByItag(this.odp);
+      if ((paramString instanceof TrackPoint)) {
+        ((TrackPoint)paramString).set2Top();
       }
-      ((TrackPoint)paramString).set2Top();
+      AppMethodBeat.o(113517);
       return;
-      paramString.beq();
-      paramString.GB((String)localObject);
-      break label64;
-      label188:
-      paramString.lGx = false;
+      paramString.bLK();
+      paramString.Se((String)localObject);
+      break;
+      label203:
+      paramString.odK = false;
       paramString.mHandler.removeMessages(10);
       localObject = Message.obtain();
       ((Message)localObject).what = 10;
       paramString.mHandler.sendMessage((Message)localObject);
-      paramString.hi(true);
+      paramString.iS(true);
     }
   }
   
-  public final void GG(String paramString)
+  public final void Sj(String paramString)
   {
-    j localj = this.lGa;
-    y.d("MicroMsg.ShareHeaderMsgMgr", "onTalkConflict, username=%s", new Object[] { paramString });
-    if ((!bk.bl(paramString)) && (!bk.bl(r.gV(paramString))))
+    AppMethodBeat.i(113520);
+    j localj = this.odn;
+    ab.d("MicroMsg.ShareHeaderMsgMgr", "onTalkConflict, username=%s", new Object[] { paramString });
+    if ((!bo.isNullOrNil(paramString)) && (!bo.isNullOrNil(s.nE(paramString))))
     {
-      localj.lGx = true;
+      localj.odK = true;
       localj.mHandler.removeMessages(7);
       paramString = Message.obtain();
       paramString.what = 7;
       localj.mHandler.sendMessageAtFrontOfQueue(paramString);
     }
+    AppMethodBeat.o(113520);
   }
   
-  public final void beu()
+  public final void bLO()
   {
-    y.d("MicroMsg.ShareHeaderMgr", "onMyselfTalking");
-    this.lGd = true;
-    String str = q.Gj();
-    this.lFZ.beq();
-    this.lFZ.GB(str);
-    Object localObject = this.lGa;
-    y.d("MicroMsg.ShareHeaderMsgMgr", "onMyselfTalking");
+    AppMethodBeat.i(113516);
+    ab.d("MicroMsg.ShareHeaderMgr", "onMyselfTalking");
+    this.odq = true;
+    String str = r.Zn();
+    this.odm.bLK();
+    this.odm.Se(str);
+    Object localObject = this.odn;
+    ab.d("MicroMsg.ShareHeaderMsgMgr", "onMyselfTalking");
     ((j)localObject).mHandler.removeMessages(6);
     ((j)localObject).mHandler.removeMessages(5);
     Message localMessage = Message.obtain();
     localMessage.what = 6;
     ((j)localObject).mHandler.sendMessageAtFrontOfQueue(localMessage);
-    localObject = this.lFy.getViewByItag(str);
+    localObject = this.ocL.getViewByItag(str);
     if ((localObject instanceof TrackPoint)) {
       ((TrackPoint)localObject).set2Top();
     }
-    this.lGc = str;
+    this.odp = str;
+    AppMethodBeat.o(113516);
   }
   
-  public final void bev()
+  public final void bLP()
   {
-    y.i("MicroMsg.ShareHeaderMgr", "onMyselfFinishTalking");
-    Object localObject1 = this.lFZ;
-    Object localObject2 = q.Gj();
-    y.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberFinishTalking, username=%s", new Object[] { localObject2 });
-    if (((h)localObject1).lFN.GD((String)localObject2))
+    AppMethodBeat.i(113518);
+    ab.i("MicroMsg.ShareHeaderMgr", "onMyselfFinishTalking");
+    Object localObject1 = this.odm;
+    Object localObject2 = r.Zn();
+    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberFinishTalking, username=%s", new Object[] { localObject2 });
+    if (((h)localObject1).oda.Sg((String)localObject2))
     {
-      ((h)localObject1).lFN.GC((String)localObject2).bet();
-      ((h)localObject1).lFN.notifyDataSetChanged();
-      ((h)localObject1).lFM.invalidate();
+      ((h)localObject1).oda.Sf((String)localObject2).bLN();
+      ((h)localObject1).oda.notifyDataSetChanged();
+      ((h)localObject1).ocZ.invalidate();
     }
-    localObject1 = this.lGa;
-    y.d("MicroMsg.ShareHeaderMsgMgr", "onMyselfFinishTalking");
+    localObject1 = this.odn;
+    ab.d("MicroMsg.ShareHeaderMsgMgr", "onMyselfFinishTalking");
     ((j)localObject1).mHandler.removeMessages(9);
     ((j)localObject1).mHandler.removeMessages(10);
     localObject2 = Message.obtain();
     ((Message)localObject2).what = 9;
     ((j)localObject1).mHandler.sendMessage((Message)localObject2);
-    this.lGc = "";
-    this.lGd = false;
+    this.odp = "";
+    this.odq = false;
+    AppMethodBeat.o(113518);
   }
   
-  public final void bew()
+  public final void bLQ()
   {
-    j localj = this.lGa;
-    y.d("MicroMsg.ShareHeaderMsgMgr", "onPrepareTalking");
+    AppMethodBeat.i(113519);
+    j localj = this.odn;
+    ab.d("MicroMsg.ShareHeaderMsgMgr", "onPrepareTalking");
     localj.mHandler.removeMessages(8);
     Message localMessage = Message.obtain();
     localMessage.what = 8;
     localj.mHandler.sendMessageAtFrontOfQueue(localMessage);
+    AppMethodBeat.o(113519);
   }
 }
 

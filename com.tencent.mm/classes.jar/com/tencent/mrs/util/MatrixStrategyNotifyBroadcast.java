@@ -4,10 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.matrix.d.b;
+import com.tencent.matrix.g.c;
 import com.tencent.matrix.mrs.core.MatrixReport;
 import com.tencent.matrix.mrs.core.MrsCallback;
-import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.sdk.platformtools.w;
 
 public class MatrixStrategyNotifyBroadcast
   extends BroadcastReceiver
@@ -15,13 +15,13 @@ public class MatrixStrategyNotifyBroadcast
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     if (paramIntent == null) {
-      b.e("Matrix.StrategyNotifyBroadcast", "MatrixStrategyNotifyBroadcast intent == null", new Object[0]);
+      c.e("Matrix.StrategyNotifyBroadcast", "MatrixStrategyNotifyBroadcast intent == null", new Object[0]);
     }
     do
     {
       return;
-      paramContext = t.j(paramIntent, "strategy");
-      b.i("Matrix.StrategyNotifyBroadcast", "receive MatrixStrategyNotifyBroadcast, process: %s, strategy:%s", new Object[] { MatrixReport.with().getProcessName(), paramContext });
+      paramContext = w.n(paramIntent, "strategy");
+      c.i("Matrix.StrategyNotifyBroadcast", "receive MatrixStrategyNotifyBroadcast, process: %s, strategy:%s", new Object[] { MatrixReport.with().getProcessName(), paramContext });
     } while (TextUtils.isEmpty(paramContext));
     MatrixReport.getMrsCallback().onStrategyNotify(paramContext, false);
   }

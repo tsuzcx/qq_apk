@@ -8,112 +8,137 @@ import android.view.Display;
 import android.view.WindowManager;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.compatible.e.ac;
 import com.tencent.mm.compatible.e.c;
 import com.tencent.mm.compatible.e.d;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.model.au;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.scanner.util.b.a;
-import com.tencent.mm.plugin.scanner.util.j;
-import com.tencent.mm.plugin.scanner.util.r;
-import com.tencent.mm.protocal.c.azk;
+import com.tencent.mm.plugin.scanner.util.l;
+import com.tencent.mm.plugin.scanner.util.t;
+import com.tencent.mm.protocal.protobuf.bgn;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class o
   extends i
-  implements com.tencent.mm.ah.f, b.a
+  implements com.tencent.mm.ai.f, b.a
 {
-  private int igH;
-  int nLQ = 0;
-  int nLR = 2;
-  private long nLS;
-  private final int nLT = 184;
-  private final int nLU = 46;
-  private final int nLX = 50;
-  com.tencent.mm.plugin.scanner.a.f nMc;
-  private int nMd = 0;
-  private TextView nMe;
-  private TextView nMf;
-  private final int nMg = 5000;
-  private final int nMh = 8000;
-  private ah nMi = new o.1(this);
+  private int cnU;
+  private final int qzA;
+  private final int qzB;
+  private final int qzE;
+  com.tencent.mm.plugin.scanner.model.f qzJ;
+  private int qzK;
+  private TextView qzL;
+  private TextView qzM;
+  private final int qzN;
+  private final int qzO;
+  private ak qzP;
+  int qzx;
+  int qzy;
+  private long qzz;
   
   public o(i.b paramb, Point paramPoint)
   {
     super(paramb, paramPoint, (byte)0);
-    dG(184, 46);
-    y.d("MicroMsg.scanner.ScanModeOCR", "frameRectWidth = [%s], frameRectHeight = [%s]", new Object[] { Integer.valueOf(this.nLx), Integer.valueOf(this.nLy) });
-    this.igH = ((int)(System.currentTimeMillis() & 0xFFFFFFFF));
+    AppMethodBeat.i(81186);
+    this.qzx = 0;
+    this.qzy = 2;
+    this.qzK = 0;
+    this.qzA = 184;
+    this.qzB = 46;
+    this.qzE = 50;
+    this.qzN = 5000;
+    this.qzO = 8000;
+    this.qzP = new o.1(this);
+    fo(184, 46);
+    ab.d("MicroMsg.scanner.ScanModeOCR", "frameRectWidth = [%s], frameRectHeight = [%s]", new Object[] { Integer.valueOf(this.qzc), Integer.valueOf(this.qzd) });
+    this.cnU = ((int)(System.currentTimeMillis() & 0xFFFFFFFF));
+    AppMethodBeat.o(81186);
   }
   
-  private void bxR()
+  private void ciS()
   {
-    if (this.nLB == null)
+    AppMethodBeat.i(81193);
+    if (this.qzg == null)
     {
-      y.e("MicroMsg.scanner.ScanModeOCR", "dealWithNetWork(), scanUICallback == null");
+      ab.e("MicroMsg.scanner.ScanModeOCR", "dealWithNetWork(), scanUICallback == null");
+      AppMethodBeat.o(81193);
       return;
     }
-    if ((au.Dk().KG() == 6) || (au.Dk().KG() == 4))
+    if ((g.Rc().adt() == 6) || (g.Rc().adt() == 4))
     {
-      this.nLB.fD(0L);
+      this.qzg.lg(0L);
+      AppMethodBeat.o(81193);
       return;
     }
-    this.nMe.setText("");
-    this.nMf.setText("");
-    this.nLB.ix(true);
+    this.qzL.setText("");
+    this.qzM.setText("");
+    this.qzg.kA(true);
+    AppMethodBeat.o(81193);
   }
   
-  private void eB(String paramString1, String paramString2)
+  private void gc(String paramString1, String paramString2)
   {
-    if (!bk.bl(paramString1))
+    AppMethodBeat.i(81197);
+    if (!bo.isNullOrNil(paramString1))
     {
-      this.gSy.setVisibility(8);
-      this.nMe.setText(paramString1);
-      this.nMe.setVisibility(0);
+      this.ivt.setVisibility(8);
+      this.qzL.setText(paramString1);
+      this.qzL.setVisibility(0);
     }
-    while (!bk.bl(paramString2))
+    while (!bo.isNullOrNil(paramString2))
     {
-      this.gSy.setVisibility(8);
-      this.nMf.setText(paramString2);
-      this.nMf.setVisibility(0);
+      this.ivt.setVisibility(8);
+      this.qzM.setText(paramString2);
+      this.qzM.setVisibility(0);
+      AppMethodBeat.o(81197);
       return;
-      this.nMe.setText("");
+      this.qzL.setText("");
     }
-    this.nMf.setText("");
+    this.qzM.setText("");
+    AppMethodBeat.o(81197);
   }
   
-  public final void C(Bundle paramBundle) {}
-  
-  protected final Rect D(boolean paramBoolean1, boolean paramBoolean2)
+  protected final Rect H(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramBoolean1) || (this.nLu == null))
+    AppMethodBeat.i(81189);
+    if ((paramBoolean1) || (this.qyZ == null))
     {
-      if (r.byE())
+      if (t.cjO())
       {
-        Point localPoint = new Point();
-        this.nLB.getContext().getWindowManager().getDefaultDisplay().getRealSize(localPoint);
-        this.nLu = new Rect(0, 0, localPoint.x, localPoint.y);
+        localObject = new Point();
+        this.qzg.getContext().getWindowManager().getDefaultDisplay().getRealSize((Point)localObject);
+        this.qyZ = new Rect(0, 0, ((Point)localObject).x, ((Point)localObject).y);
       }
     }
-    else {
-      return this.nLu;
+    else
+    {
+      localObject = this.qyZ;
+      AppMethodBeat.o(81189);
+      return localObject;
     }
-    return super.D(paramBoolean1, paramBoolean2);
+    Object localObject = super.H(paramBoolean1, paramBoolean2);
+    AppMethodBeat.o(81189);
+    return localObject;
   }
   
-  public final void b(int paramInt1, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
+  public final void T(Bundle paramBundle) {}
+  
+  public final void a(int paramInt1, String paramString1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3, String paramString2)
   {
-    if (this.nLB == null)
+    AppMethodBeat.i(151677);
+    if (this.qzg == null)
     {
-      y.w("MicroMsg.scanner.ScanModeOCR", "scanUICallback == null");
+      ab.w("MicroMsg.scanner.ScanModeOCR", "scanUICallback == null");
+      AppMethodBeat.o(151677);
       return;
     }
     if ((paramArrayOfByte2 == null) || (paramArrayOfByte2.length <= 0))
@@ -122,232 +147,265 @@ public final class o
       if (paramArrayOfByte2 == null)
       {
         bool = true;
-        y.w("MicroMsg.scanner.ScanModeOCR", "greyData null:[%s]", new Object[] { Boolean.valueOf(bool) });
-        if ((System.currentTimeMillis() - this.nLS <= 1840L) || (((j)this.nLv).nPt != true)) {
-          break label111;
+        ab.w("MicroMsg.scanner.ScanModeOCR", "greyData null:[%s]", new Object[] { Boolean.valueOf(bool) });
+        if ((System.currentTimeMillis() - this.qzz <= 1840L) || (((l)this.qza).qDm != true)) {
+          break label126;
         }
-        this.nLS = System.currentTimeMillis();
-        this.nLB.fD(0L);
+        this.qzz = System.currentTimeMillis();
+        this.qzg.lg(0L);
       }
       for (;;)
       {
-        this.nMd = 0;
+        this.qzK = 0;
+        AppMethodBeat.o(151677);
         return;
         bool = false;
         break;
-        label111:
-        this.nLB.fC(40L);
+        label126:
+        this.qzg.lf(40L);
       }
     }
-    if (this.nLQ >= this.nLR)
+    if (this.qzx >= this.qzy)
     {
-      if ((System.currentTimeMillis() - this.nLS > 1840L) && (((j)this.nLv).nPt == true))
+      if ((System.currentTimeMillis() - this.qzz > 1840L) && (((l)this.qza).qDm == true))
       {
-        this.nLS = System.currentTimeMillis();
-        this.nLB.fD(0L);
+        this.qzz = System.currentTimeMillis();
+        this.qzg.lg(0L);
       }
       for (;;)
       {
-        y.w("MicroMsg.scanner.ScanModeOCR", "hasDoSceneCount[%s], maxDoSceneCount[%s]", new Object[] { Integer.valueOf(this.nLQ), Integer.valueOf(this.nLR) });
+        ab.w("MicroMsg.scanner.ScanModeOCR", "hasDoSceneCount[%s], maxDoSceneCount[%s]", new Object[] { Integer.valueOf(this.qzx), Integer.valueOf(this.qzy) });
+        AppMethodBeat.o(151677);
         return;
-        this.nLB.fC(40L);
+        this.qzg.lf(40L);
       }
     }
-    this.nMc = new com.tencent.mm.plugin.scanner.a.f(paramArrayOfByte2, "en", "zh_CN", this.igH);
-    au.Dk().a(this.nMc, 0);
-    this.nLQ += 1;
-    this.nMi.removeMessages(0);
-    if (aq.is2G(this.nLB.getContext()))
+    this.qzJ = new com.tencent.mm.plugin.scanner.model.f(paramArrayOfByte2, "en", "zh_CN", this.cnU);
+    g.Rc().a(this.qzJ, 0);
+    this.qzx += 1;
+    this.qzP.removeMessages(0);
+    if (at.is2G(this.qzg.getContext()))
     {
-      this.nMi.sendEmptyMessageDelayed(0, 8000L);
-      this.nLC += paramArrayOfByte2.length;
-      y.d("MicroMsg.scanner.ScanModeOCR", "totalNetworkFlow[%s], hasTakePicNum[%s], maxDoSceneCount[%s]", new Object[] { Integer.valueOf(this.nLC), Integer.valueOf(this.nMd), Integer.valueOf(this.nLR) });
-      if ((System.currentTimeMillis() - this.nLS <= 1840L) || (((j)this.nLv).nPt != true)) {
-        break label462;
+      this.qzP.sendEmptyMessageDelayed(0, 8000L);
+      this.qzh += paramArrayOfByte2.length;
+      ab.d("MicroMsg.scanner.ScanModeOCR", "totalNetworkFlow[%s], hasTakePicNum[%s], maxDoSceneCount[%s]", new Object[] { Integer.valueOf(this.qzh), Integer.valueOf(this.qzK), Integer.valueOf(this.qzy) });
+      if ((System.currentTimeMillis() - this.qzz <= 1840L) || (((l)this.qza).qDm != true)) {
+        break label490;
       }
-      this.nLS = System.currentTimeMillis();
-      this.nLB.fD(0L);
+      this.qzz = System.currentTimeMillis();
+      this.qzg.lg(0L);
     }
     for (;;)
     {
-      y.v("MicroMsg.scanner.ScanModeOCR", "onDecodeFinished:" + this.nLQ + "," + this.nMd);
+      ab.v("MicroMsg.scanner.ScanModeOCR", "onDecodeFinished:" + this.qzx + "," + this.qzK);
+      AppMethodBeat.o(151677);
       return;
-      this.nMi.sendEmptyMessageDelayed(0, 5000L);
+      this.qzP.sendEmptyMessageDelayed(0, 5000L);
       break;
-      label462:
-      this.nLB.fC(40L);
+      label490:
+      this.qzg.lf(40L);
     }
   }
   
-  protected final void bxo()
+  protected final void cil()
   {
-    if (this.nLB == null)
+    AppMethodBeat.i(81192);
+    if (this.qzg == null)
     {
-      y.w("MicroMsg.scanner.ScanModeOCR", "scanUICallback == null");
+      ab.w("MicroMsg.scanner.ScanModeOCR", "scanUICallback == null");
+      AppMethodBeat.o(81192);
       return;
     }
-    bxR();
+    ciS();
+    AppMethodBeat.o(81192);
   }
   
-  protected final com.tencent.mm.plugin.scanner.util.b bxp()
+  protected final com.tencent.mm.plugin.scanner.util.b cim()
   {
+    AppMethodBeat.i(81191);
     int i;
-    if (this.nLv == null)
+    if (this.qza == null)
     {
       i = 50;
-      if (q.dyd.dwq > 0)
+      if (ac.eru.eok > 0)
       {
-        i = q.dyd.dwq;
-        y.d("MicroMsg.scanner.ScanModeOCR", "ImageQuality=[%s]", new Object[] { Integer.valueOf(q.dyd.dwq) });
+        i = ac.eru.eok;
+        ab.d("MicroMsg.scanner.ScanModeOCR", "ImageQuality=[%s]", new Object[] { Integer.valueOf(ac.eru.eok) });
       }
-      if (!aq.is2G(this.nLB.getContext())) {
-        break label96;
+      if (!at.is2G(this.qzg.getContext())) {
+        break label110;
       }
     }
-    label96:
-    for (this.nLv = new j(this, i - 10, true, this.nLB.bxE());; this.nLv = new j(this, i, true, this.nLB.bxE())) {
-      return this.nLv;
+    label110:
+    for (this.qza = new l(this, i - 10, true, this.qzg.ciF());; this.qza = new l(this, i, true, this.qzg.ciF()))
+    {
+      com.tencent.mm.plugin.scanner.util.b localb = this.qza;
+      AppMethodBeat.o(81191);
+      return localb;
     }
   }
   
-  protected final int bxq()
+  protected final int cin()
   {
-    return R.i.scan_ocr_body;
+    return 2130970608;
   }
   
-  protected final int bxr()
+  protected final int cio()
   {
     return 0;
   }
   
-  protected final void bxs()
+  protected final void cip()
   {
-    j(new Rect(0, 0, 0, 0));
-    this.nLB.b(4, null);
-    this.nLB.fD(0L);
+    AppMethodBeat.i(81188);
+    k(new Rect(0, 0, 0, 0));
+    this.qzg.b(4, null);
+    this.qzg.lg(0L);
     onResume();
+    AppMethodBeat.o(81188);
   }
   
-  protected final boolean bxt()
+  protected final boolean ciq()
   {
     return true;
   }
   
-  protected final boolean bxu()
+  protected final boolean cir()
   {
     return false;
   }
   
-  public final void fB(long paramLong)
+  protected final void k(Rect paramRect)
   {
-    y.d("MicroMsg.scanner.ScanModeOCR", "decodeFail");
-    if (this.nLB == null)
-    {
-      y.w("MicroMsg.scanner.ScanModeOCR", "scanUICallback == null");
-      return;
-    }
-    if ((System.currentTimeMillis() - this.nLS > 1840L) && (((j)this.nLv).nPt == true))
-    {
-      this.nLS = System.currentTimeMillis();
-      this.nLB.fD(0L);
-      return;
-    }
-    this.nLB.fC(40L);
-  }
-  
-  protected final void iB(boolean paramBoolean)
-  {
-    super.iB(paramBoolean);
-    if (this.nLv != null) {
-      ((j)this.nLv).miw = paramBoolean;
-    }
-  }
-  
-  protected final void j(Rect paramRect)
-  {
-    this.gSy = ((TextView)this.nLB.findViewById(R.h.scan_tip_tv));
-    this.nMf = ((TextView)this.nLB.findViewById(R.h.ocr_result_tips));
-    this.nMe = ((TextView)this.nLB.findViewById(R.h.ocr_source_tv));
-    this.gSy = ((TextView)this.nLB.findViewById(R.h.scan_tip_tv));
+    AppMethodBeat.i(81187);
+    this.ivt = ((TextView)this.qzg.findViewById(2131827431));
+    this.qzM = ((TextView)this.qzg.findViewById(2131827435));
+    this.qzL = ((TextView)this.qzg.findViewById(2131827434));
+    this.ivt = ((TextView)this.qzg.findViewById(2131827431));
     if (paramRect.bottom > 0)
     {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.gSy.getLayoutParams();
-      localLayoutParams.topMargin = (paramRect.bottom + 0 + BackwardSupportUtil.b.b(this.nLB.getContext(), 13.0F));
-      this.gSy.setLayoutParams(localLayoutParams);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.nMe.getLayoutParams();
-      localLayoutParams.topMargin = (paramRect.bottom + 0 + BackwardSupportUtil.b.b(this.nLB.getContext(), 13.0F));
-      this.nMe.setLayoutParams(localLayoutParams);
-      this.nMe.setVisibility(4);
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.ivt.getLayoutParams();
+      localLayoutParams.topMargin = (paramRect.bottom + 0 + BackwardSupportUtil.b.b(this.qzg.getContext(), 13.0F));
+      this.ivt.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.qzL.getLayoutParams();
+      localLayoutParams.topMargin = (paramRect.bottom + 0 + BackwardSupportUtil.b.b(this.qzg.getContext(), 13.0F));
+      this.qzL.setLayoutParams(localLayoutParams);
+      this.qzL.setVisibility(4);
     }
-    if (d.yN())
+    if (d.Ll())
     {
-      this.gSy.setPadding(BackwardSupportUtil.b.b(this.nLB.getContext(), 54.0F), this.gSy.getPaddingTop(), BackwardSupportUtil.b.b(this.nLB.getContext(), 54.0F), this.gSy.getPaddingBottom());
-      this.nMe.setPadding(BackwardSupportUtil.b.b(this.nLB.getContext(), 54.0F), this.nMe.getPaddingTop(), BackwardSupportUtil.b.b(this.nLB.getContext(), 54.0F), this.nMe.getPaddingBottom());
+      this.ivt.setPadding(BackwardSupportUtil.b.b(this.qzg.getContext(), 54.0F), this.ivt.getPaddingTop(), BackwardSupportUtil.b.b(this.qzg.getContext(), 54.0F), this.ivt.getPaddingBottom());
+      this.qzL.setPadding(BackwardSupportUtil.b.b(this.qzg.getContext(), 54.0F), this.qzL.getPaddingTop(), BackwardSupportUtil.b.b(this.qzg.getContext(), 54.0F), this.qzL.getPaddingBottom());
     }
-    if (this.nLv != null) {
-      ((j)this.nLv).miw = this.nLB.bxE();
+    if (this.qza != null) {
+      ((l)this.qza).oIC = this.qzg.ciF();
     }
-    bxR();
-    iz(true);
+    ciS();
+    kC(true);
+    AppMethodBeat.o(81187);
+  }
+  
+  protected final void kE(boolean paramBoolean)
+  {
+    AppMethodBeat.i(81190);
+    super.kE(paramBoolean);
+    if (this.qza != null) {
+      ((l)this.qza).oIC = paramBoolean;
+    }
+    AppMethodBeat.o(81190);
+  }
+  
+  public final void le(long paramLong)
+  {
+    AppMethodBeat.i(81195);
+    ab.d("MicroMsg.scanner.ScanModeOCR", "decodeFail");
+    if (this.qzg == null)
+    {
+      ab.w("MicroMsg.scanner.ScanModeOCR", "scanUICallback == null");
+      AppMethodBeat.o(81195);
+      return;
+    }
+    if ((System.currentTimeMillis() - this.qzz > 1840L) && (((l)this.qza).qDm == true))
+    {
+      this.qzz = System.currentTimeMillis();
+      this.qzg.lg(0L);
+      AppMethodBeat.o(81195);
+      return;
+    }
+    this.qzg.lf(40L);
+    AppMethodBeat.o(81195);
   }
   
   protected final void onDestroy() {}
   
   protected final void onPause()
   {
-    iz(false);
-    au.Dk().b(392, this);
+    AppMethodBeat.i(81199);
+    kC(false);
+    g.Rc().b(392, this);
+    AppMethodBeat.o(81199);
   }
   
   protected final void onResume()
   {
-    au.Dk().a(392, this);
-    if (this.nLB == null)
+    AppMethodBeat.i(81198);
+    g.Rc().a(392, this);
+    if (this.qzg == null)
     {
-      y.w("MicroMsg.scanner.ScanModeOCR", "scanUICallback == null");
+      ab.w("MicroMsg.scanner.ScanModeOCR", "scanUICallback == null");
+      AppMethodBeat.o(81198);
       return;
     }
-    bxR();
+    ciS();
+    AppMethodBeat.o(81198);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    this.nMi.removeMessages(0);
+    AppMethodBeat.i(81196);
+    this.qzP.removeMessages(0);
     switch (paramm.getType())
     {
     }
-    do
+    for (;;)
     {
-      do
+      AppMethodBeat.o(81196);
+      return;
+      this.qzx -= 1;
+      if ((paramInt1 != 0) || (paramInt2 != 0))
       {
+        ab.e("MicroMsg.scanner.ScanModeOCR", "onSceneEnd() errType = [%s], errCode = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        this.qzz -= 300L;
+        gc(null, null);
+        AppMethodBeat.o(81196);
         return;
-        this.nLQ -= 1;
-        if ((paramInt1 != 0) || (paramInt2 != 0))
-        {
-          y.e("MicroMsg.scanner.ScanModeOCR", "onSceneEnd() errType = [%s], errCode = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-          this.nLS -= 300L;
-          eB(null, null);
-          return;
-        }
-        y.d("MicroMsg.scanner.ScanModeOCR", "onSceneEnd() errType = [%s], errCode = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        paramString = (com.tencent.mm.plugin.scanner.a.f)paramm;
-        if ((paramString.dmK != null) && (paramString.dmK.ecF.ecN != null)) {}
-        for (paramString = (azk)paramString.dmK.ecF.ecN; paramString == null; paramString = null)
-        {
-          y.e("MicroMsg.scanner.ScanModeOCR", "onSceneEnd(), getResp() == null");
-          eB(null, null);
-          return;
-        }
-        y.d("MicroMsg.scanner.ScanModeOCR", "onSceneEnd() clientScanID = %s, imageType = %s, source = %s, translate = %s", new Object[] { Integer.valueOf(paramString.sDQ), Integer.valueOf(paramString.sDU), paramString.tvD, paramString.tvE });
-      } while (bk.bl(paramString.tvE));
-      eB(paramString.tvD, paramString.tvE);
-    } while (this.nMc == null);
-    au.Dk().c(this.nMc);
+      }
+      ab.d("MicroMsg.scanner.ScanModeOCR", "onSceneEnd() errType = [%s], errCode = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      paramString = (com.tencent.mm.plugin.scanner.model.f)paramm;
+      if ((paramString.rr != null) && (paramString.rr.fsW.fta != null)) {}
+      for (paramString = (bgn)paramString.rr.fsW.fta; paramString == null; paramString = null)
+      {
+        ab.e("MicroMsg.scanner.ScanModeOCR", "onSceneEnd(), getResp() == null");
+        gc(null, null);
+        AppMethodBeat.o(81196);
+        return;
+      }
+      ab.d("MicroMsg.scanner.ScanModeOCR", "onSceneEnd() clientScanID = %s, imageType = %s, source = %s, translate = %s", new Object[] { Integer.valueOf(paramString.wzP), Integer.valueOf(paramString.wzT), paramString.xvO, paramString.xvP });
+      if (bo.isNullOrNil(paramString.xvP))
+      {
+        AppMethodBeat.o(81196);
+        return;
+      }
+      gc(paramString.xvO, paramString.xvP);
+      if (this.qzJ != null) {
+        g.Rc().a(this.qzJ);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.o
  * JD-Core Version:    0.7.0.1
  */

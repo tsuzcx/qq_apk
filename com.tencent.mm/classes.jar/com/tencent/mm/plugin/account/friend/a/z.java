@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.m.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.m.b;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.av;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.c.bsd;
-import com.tencent.mm.protocal.c.bwb;
-import com.tencent.mm.protocal.c.us;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cco;
+import com.tencent.mm.protocal.protobuf.cij;
+import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -21,23 +22,27 @@ public final class z
   extends m
   implements k
 {
-  private f dmL;
-  public com.tencent.mm.network.q edR = new z.a();
-  private int edu = 2;
+  private f callback;
+  public com.tencent.mm.network.q ftU;
+  private int ftx;
   
   private z(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    r.a locala = (r.a)this.edR.Kv();
-    locala.ffZ.syV = paramInt;
-    locala.ffZ.sAY = paramString1;
-    locala.ffZ.jxi = x.cqJ();
-    locala.ffZ.sBC = bk.ZK(paramString2);
-    locala.ffZ.sRo = paramString3;
-    paramString1 = locala.ffZ;
-    g.DN();
-    paramString1.syH = a.Df();
-    locala.ffZ.sRp = com.tencent.mm.compatible.e.q.getSimCountryIso();
-    locala.ffZ.sRq = 1;
+    AppMethodBeat.i(108437);
+    this.ftx = 2;
+    this.ftU = new z.a();
+    r.a locala = (r.a)this.ftU.getReqObj();
+    locala.gxH.wsW = paramInt;
+    locala.gxH.wvs = paramString1;
+    locala.gxH.lGH = aa.dsG();
+    locala.gxH.wvW = bo.apO(paramString2);
+    locala.gxH.wQc = paramString3;
+    paramString1 = locala.gxH;
+    g.RJ();
+    paramString1.wsp = a.QX();
+    locala.gxH.wQd = com.tencent.mm.compatible.e.q.getSimCountryIso();
+    locala.gxH.wQe = 1;
+    AppMethodBeat.o(108437);
   }
   
   public z(String paramString1, String paramString2)
@@ -50,68 +55,82 @@ public final class z
     this(2, paramString1, paramString2, paramString3);
   }
   
-  protected final int Ka()
+  public final int ajR()
   {
-    return 5;
-  }
-  
-  public final int QJ()
-  {
-    Object localObject = ((r.b)this.edR.HF()).fga.sys;
-    if ((localObject != null) && (((bsd)localObject).tIO != null) && (((bsd)localObject).tIO.size() > 0))
+    AppMethodBeat.i(108440);
+    Object localObject = ((r.b)this.ftU.getRespObj()).gxI.wrV;
+    cij localcij;
+    if ((localObject != null) && (((cco)localObject).xNc != null) && (((cco)localObject).xNc.size() > 0))
     {
-      localObject = ((bsd)localObject).tIO.iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject = ((cco)localObject).xNc.iterator();
+      do
       {
-        bwb localbwb = (bwb)((Iterator)localObject).next();
-        if (localbwb.nFi == 1) {
-          return bk.getInt(localbwb.tMN, 0);
+        if (!((Iterator)localObject).hasNext()) {
+          break;
         }
-      }
+        localcij = (cij)((Iterator)localObject).next();
+      } while (localcij.qsk != 1);
     }
-    return 0;
-  }
-  
-  public final int a(e parame, f paramf)
-  {
-    this.dmL = paramf;
-    return a(parame, this.edR, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneEmailReg", "onGYNetEnd  errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    paramq = (r.b)paramq.HF();
-    if ((paramInt2 == 4) && (paramInt3 == -301))
+    for (int i = bo.getInt(localcij.xSX, 0);; i = 0)
     {
-      av.a(true, paramq.fga.sBE, paramq.fga.sBF, paramq.fga.sBD);
-      this.edu -= 1;
-      if (this.edu <= 0)
-      {
-        this.dmL.onSceneEnd(3, -1, "", this);
-        return;
-      }
-      a(this.edc, this.dmL);
-      return;
+      AppMethodBeat.o(108440);
+      return i;
     }
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      y.e("MicroMsg.NetSceneEmailReg", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    av.a(false, paramq.fga.sBE, paramq.fga.sBF, paramq.fga.sBD);
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
   }
   
-  protected final m.b b(com.tencent.mm.network.q paramq)
+  public final int doScene(e parame, f paramf)
   {
-    return m.b.edr;
+    AppMethodBeat.i(108438);
+    this.callback = paramf;
+    int i = dispatch(parame, this.ftU, this);
+    AppMethodBeat.o(108438);
+    return i;
   }
   
   public final int getType()
   {
     return 481;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(108439);
+    ab.i("MicroMsg.NetSceneEmailReg", "onGYNetEnd  errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    paramq = (r.b)paramq.getRespObj();
+    if ((paramInt2 == 4) && (paramInt3 == -301))
+    {
+      ax.a(true, paramq.gxI.wvY, paramq.gxI.wvZ, paramq.gxI.wvX);
+      this.ftx -= 1;
+      if (this.ftx <= 0)
+      {
+        this.callback.onSceneEnd(3, -1, "", this);
+        AppMethodBeat.o(108439);
+        return;
+      }
+      doScene(dispatcher(), this.callback);
+      AppMethodBeat.o(108439);
+      return;
+    }
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      ab.e("MicroMsg.NetSceneEmailReg", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(108439);
+      return;
+    }
+    ax.a(false, paramq.gxI.wvY, paramq.gxI.wvZ, paramq.gxI.wvX);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(108439);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 5;
+  }
+  
+  public final m.b securityVerificationChecked(com.tencent.mm.network.q paramq)
+  {
+    return m.b.ftu;
   }
 }
 

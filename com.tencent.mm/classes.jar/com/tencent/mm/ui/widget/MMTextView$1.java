@@ -2,6 +2,7 @@ package com.tencent.mm.ui.widget;
 
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMTextView$1
   extends GestureDetector.SimpleOnGestureListener
@@ -10,10 +11,15 @@ final class MMTextView$1
   
   public final boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (MMTextView.a(this.wkn) == null) {
+    AppMethodBeat.i(107921);
+    if (MMTextView.a(this.ADV) == null)
+    {
+      AppMethodBeat.o(107921);
       return false;
     }
-    return MMTextView.a(this.wkn).dI(this.wkn);
+    boolean bool = MMTextView.a(this.ADV).eR(this.ADV);
+    AppMethodBeat.o(107921);
+    return bool;
   }
 }
 

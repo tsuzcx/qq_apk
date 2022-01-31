@@ -1,54 +1,74 @@
 package com.tencent.mm.plugin.soter;
 
-import com.tencent.mm.kernel.b.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.soter.d.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class PluginSoter
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.soter.a.a
 {
-  private static com.tencent.mm.plugin.soter.d.c prE = new com.tencent.mm.plugin.soter.d.c();
-  private static com.tencent.mm.plugin.soter.d.b prF = new com.tencent.mm.plugin.soter.d.b();
-  private com.tencent.mm.plugin.soter.d.f prC = null;
-  private boolean prD = false;
+  private static com.tencent.mm.plugin.soter.d.c snD;
+  private static com.tencent.mm.plugin.soter.d.b snE;
+  private com.tencent.mm.vending.b.b gTl;
+  private com.tencent.mm.plugin.soter.d.f snB = null;
+  private boolean snC = false;
+  
+  static
+  {
+    AppMethodBeat.i(59296);
+    snD = new com.tencent.mm.plugin.soter.d.c();
+    snE = new com.tencent.mm.plugin.soter.d.b();
+    AppMethodBeat.o(59296);
+  }
   
   private void safeAddListener(com.tencent.mm.sdk.b.c paramc)
   {
+    AppMethodBeat.i(59292);
     if (paramc == null)
     {
-      y.w("MicroMsg.PluginSoter", "hy: listener is null or id is invalid");
+      ab.w("MicroMsg.PluginSoter", "hy: listener is null or id is invalid");
+      AppMethodBeat.o(59292);
       return;
     }
-    if (com.tencent.mm.sdk.b.a.udP.e(paramc))
+    if (com.tencent.mm.sdk.b.a.ymk.e(paramc))
     {
-      y.w("MicroMsg.PluginSoter", "hy: already has listener");
+      ab.w("MicroMsg.PluginSoter", "hy: already has listener");
+      AppMethodBeat.o(59292);
       return;
     }
-    com.tencent.mm.sdk.b.a.udP.c(paramc);
+    com.tencent.mm.sdk.b.a.ymk.c(paramc);
+    AppMethodBeat.o(59292);
   }
   
   private void safeRemoveListener(com.tencent.mm.sdk.b.c paramc)
   {
+    AppMethodBeat.i(59293);
     if (paramc == null)
     {
-      y.w("MicroMsg.PluginSoter", "alvinluo listener is null");
+      ab.w("MicroMsg.PluginSoter", "alvinluo listener is null");
+      AppMethodBeat.o(59293);
       return;
     }
-    com.tencent.mm.sdk.b.a.udP.d(paramc);
+    com.tencent.mm.sdk.b.a.ymk.d(paramc);
+    AppMethodBeat.o(59293);
   }
   
-  public void execute(g paramg)
+  public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    if (paramg.Ex())
+    AppMethodBeat.i(59290);
+    if (paramg.SD())
     {
-      y.i("MicroMsg.PluginSoter", "alvinluo PluginSoter in process: %s execute and run pipeline", new Object[] { paramg.dIA });
-      this.prD = true;
-      y.v("MicroMsg.PluginSoter", "alvinluo PluginSoter add SoterDynamicConfigUpdatedEventListener");
-      this.prC = new com.tencent.mm.plugin.soter.d.f();
-      safeAddListener(this.prC);
+      ab.i("MicroMsg.PluginSoter", "alvinluo PluginSoter in process: %s execute and run pipeline", new Object[] { paramg.mProcessName });
+      this.snC = true;
+      ab.v("MicroMsg.PluginSoter", "alvinluo PluginSoter add SoterDynamicConfigUpdatedEventListener");
+      this.snB = new com.tencent.mm.plugin.soter.d.f();
+      safeAddListener(this.snB);
     }
+    AppMethodBeat.o(59290);
   }
   
   public String name()
@@ -58,29 +78,39 @@ public class PluginSoter
   
   public void onAccountInitialized(e.c paramc)
   {
-    y.v("MicroMsg.PluginSoter", "alvinluo onAccountInitialized, isMainProcess: %b", new Object[] { Boolean.valueOf(this.prD) });
-    if (this.prD)
+    AppMethodBeat.i(59294);
+    ab.v("MicroMsg.PluginSoter", "alvinluo onAccountInitialized, isMainProcess: %b", new Object[] { Boolean.valueOf(this.snC) });
+    if (this.snC)
     {
-      m.bKS();
-      com.tencent.mm.plugin.soter.e.b.a(false, false, null);
+      m.cyd();
+      d.ysm.r(new PluginSoter.1(this), 1500L);
+      this.gTl = ((com.tencent.mm.plugin.auth.a.b)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(new PluginSoter.2(this));
     }
-    if (!com.tencent.mm.sdk.b.a.udP.e(prE)) {
-      com.tencent.mm.sdk.b.a.udP.c(prE);
+    if (!com.tencent.mm.sdk.b.a.ymk.e(snD)) {
+      com.tencent.mm.sdk.b.a.ymk.c(snD);
     }
-    if (!com.tencent.mm.sdk.b.a.udP.e(prF)) {
-      com.tencent.mm.sdk.b.a.udP.c(prF);
+    if (!com.tencent.mm.sdk.b.a.ymk.e(snE)) {
+      com.tencent.mm.sdk.b.a.ymk.c(snE);
     }
+    AppMethodBeat.o(59294);
   }
   
   public void onAccountRelease()
   {
-    y.v("MicroMsg.PluginSoter", "alvinluo onAccountRelease");
+    AppMethodBeat.i(59295);
+    ab.v("MicroMsg.PluginSoter", "alvinluo onAccountRelease");
+    if (this.snC) {
+      this.gTl.dead();
+    }
+    AppMethodBeat.o(59295);
   }
   
   public void uninstalled()
   {
+    AppMethodBeat.i(59291);
     super.uninstalled();
-    safeRemoveListener(this.prC);
+    safeRemoveListener(this.snB);
+    AppMethodBeat.o(59291);
   }
 }
 

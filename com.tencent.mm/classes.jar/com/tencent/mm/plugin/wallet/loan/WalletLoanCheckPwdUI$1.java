@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet.loan;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.a;
 
 final class WalletLoanCheckPwdUI$1
@@ -11,7 +12,9 @@ final class WalletLoanCheckPwdUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    a.n(this.qkK, 0);
+    AppMethodBeat.i(45836);
+    a.q(this.tTK, 0);
+    AppMethodBeat.o(45836);
     return true;
   }
 }

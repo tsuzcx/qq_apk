@@ -10,30 +10,30 @@ final class a$3
 {
   a$3(a parama, RecyclerView.v paramv1, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt3, RecyclerView.v paramv2)
   {
-    super(paramv1, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    super(paramv1, paramInt1, paramInt2, paramFloat1, paramFloat2, 0.0F, 0.0F);
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    if (this.aos) {}
+    if (this.aqH) {}
     for (;;)
     {
       return;
-      if (this.aob <= 0) {
-        this.aoa.anN.a(this.aoa.acI, this.aoc);
+      if (this.aqs <= 0) {
+        this.aqr.aqe.a(this.aqr.adt, this.aqt);
       }
-      while (this.aoa.anU == this.aoc.aie)
+      while (this.aqr.aql == this.aqt.aku)
       {
-        this.aoa.bH(this.aoc.aie);
+        this.aqr.ca(this.aqt.aku);
         return;
-        this.aoa.anC.add(this.aoc.aie);
-        this.aop = true;
-        if (this.aob > 0)
+        this.aqr.apT.add(this.aqt.aku);
+        this.aqG = true;
+        if (this.aqs > 0)
         {
-          paramAnimator = this.aoa;
-          int i = this.aob;
-          paramAnimator.acI.post(new a.4(paramAnimator, this, i));
+          paramAnimator = this.aqr;
+          int i = this.aqs;
+          paramAnimator.adt.post(new a.4(paramAnimator, this, i));
         }
       }
     }

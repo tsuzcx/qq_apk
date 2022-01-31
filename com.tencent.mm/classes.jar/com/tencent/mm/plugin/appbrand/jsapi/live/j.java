@@ -1,16 +1,25 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.rtmp.TXLiveBase;
+
 public final class j
 {
-  public int errorCode = 0;
-  public String gst = "Success";
+  private static boolean bFU;
   
-  public j() {}
-  
-  public j(int paramInt, String paramString)
+  public static void xn()
   {
-    this.errorCode = paramInt;
-    this.gst = paramString;
+    AppMethodBeat.i(96129);
+    if (bFU)
+    {
+      AppMethodBeat.o(96129);
+      return;
+    }
+    TXLiveBase.setLogLevel(1);
+    TXLiveBase.setConsoleEnabled(false);
+    TXLiveBase.setListener(new j.1());
+    bFU = true;
+    AppMethodBeat.o(96129);
   }
 }
 

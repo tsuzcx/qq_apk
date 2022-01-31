@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 final class JsApiChooseImage$a$2$1
@@ -9,9 +10,11 @@ final class JsApiChooseImage$a$2$1
   
   public final void run()
   {
-    this.gvB.gvv.gvs.aYY = -1;
-    this.gvB.gvv.gvs.gvq = this.gvA;
-    JsApiChooseImage.a.b(this.gvB.gvv, this.gvB.gvv.gvs);
+    AppMethodBeat.i(131136);
+    this.hQS.hQM.hQJ.bpE = -1;
+    this.hQS.hQM.hQJ.hQH = this.hQR;
+    JsApiChooseImage.a.b(this.hQS.hQM, this.hQS.hQM.hQJ);
+    AppMethodBeat.o(131136);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.clean.ui.fileindexui;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,15 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.clean.c.j;
 import com.tencent.mm.plugin.clean.ui.PieView;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMActivity;
@@ -26,32 +25,33 @@ import java.util.Set;
 public class CleanMsgUI
   extends MMActivity
 {
-  private ProgressDialog dnm;
-  private View iDe;
-  private PieView iDf;
-  private TextView iDg;
-  private Button iDh;
-  private Button iDi;
-  private TextView iDj;
-  private TextView iDk;
-  private TextView iDl;
-  private TextView iDm;
-  private View iDn;
-  private TextView iDo;
-  private TextView iDp;
-  private TextView iDq;
-  private TextView iDr;
-  private TextView iDs;
-  private TextView iDt;
-  private LinearLayout iDu;
+  private ProgressDialog eeN;
+  private TextView kIA;
+  private LinearLayout kIB;
+  private View kIl;
+  private PieView kIm;
+  private TextView kIn;
+  private Button kIo;
+  private Button kIp;
+  private TextView kIq;
+  private TextView kIr;
+  private TextView kIs;
+  private TextView kIt;
+  private View kIu;
+  private TextView kIv;
+  private TextView kIw;
+  private TextView kIx;
+  private TextView kIy;
+  private TextView kIz;
   
-  private void f(long paramLong1, long paramLong2, long paramLong3)
+  private void g(long paramLong1, long paramLong2, long paramLong3)
   {
+    AppMethodBeat.i(18805);
     long l = paramLong1;
     if (paramLong1 <= 0L)
     {
       l = 1L;
-      com.tencent.mm.plugin.report.service.h.nFQ.a(714L, 61L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(714L, 61L, 1L, false);
     }
     int j = (int)(360L * paramLong2 / l);
     if ((paramLong2 > 0L) && (j < 5)) {
@@ -69,107 +69,123 @@ public class CleanMsgUI
         }
       }
       paramLong1 = l - paramLong2 - paramLong3;
-      y.i("MicroMsg.CleanMsgUI", "update acc[%d %d] otherAcc[%d %d] other[%d %d] wechat[%d] stack[%s]", new Object[] { Long.valueOf(paramLong2), Integer.valueOf((int)(100L * paramLong2 / l)), Long.valueOf(paramLong3), Integer.valueOf((int)(100L * paramLong3 / l)), Long.valueOf(paramLong1), Integer.valueOf((int)(100L * paramLong1 / l)), Long.valueOf(l), bk.csb() });
-      this.iDf.setGreenTargetAngle(j);
-      this.iDf.setOtherAccTargetAngle(i);
-      this.iDf.setStage(1);
-      this.iDe.setVisibility(0);
-      this.iDj.setText(bk.cm(paramLong2));
-      this.iDk.setText(bk.cm(paramLong3));
-      this.iDl.setText(bk.cm(paramLong1));
+      ab.i("MicroMsg.CleanMsgUI", "update acc[%d %d] otherAcc[%d %d] other[%d %d] wechat[%d] stack[%s]", new Object[] { Long.valueOf(paramLong2), Integer.valueOf((int)(100L * paramLong2 / l)), Long.valueOf(paramLong3), Integer.valueOf((int)(100L * paramLong3 / l)), Long.valueOf(paramLong1), Integer.valueOf((int)(100L * paramLong1 / l)), Long.valueOf(l), bo.dtY() });
+      this.kIm.setGreenTargetAngle(j);
+      this.kIm.setOtherAccTargetAngle(i);
+      this.kIm.setStage(1);
+      this.kIl.setVisibility(0);
+      this.kIq.setText(bo.hk(paramLong2));
+      this.kIr.setText(bo.hk(paramLong3));
+      this.kIs.setText(bo.hk(paramLong1));
       if (paramLong3 > 0L)
       {
-        this.iDn.setVisibility(0);
-        this.iDi.setEnabled(true);
+        this.kIu.setVisibility(0);
+        this.kIp.setEnabled(true);
       }
-      TextView localTextView;
-      StringBuffer localStringBuffer;
       for (;;)
       {
-        this.iDq.setText(getString(R.l.clean_acc_tips));
-        this.iDr.setText(getString(R.l.clean_other_acc_size_tips));
-        this.iDs.setText(getString(R.l.clean_other_size_tips));
-        if (((Integer)g.DP().Dz().get(ac.a.uxA, Integer.valueOf(0))).intValue() <= 0) {
-          break label501;
-        }
-        this.iDu.setVisibility(0);
-        this.iDt.setVisibility(0);
-        localTextView = this.iDt;
-        HashMap localHashMap = j.aEb().iBX;
-        localStringBuffer = new StringBuffer();
-        if (localHashMap.isEmpty()) {
-          break;
-        }
-        Iterator localIterator = localHashMap.keySet().iterator();
-        while (localIterator.hasNext())
+        this.kIx.setText(getString(2131298367));
+        this.kIy.setText(getString(2131298390));
+        this.kIz.setText(getString(2131298393));
+        if (((Integer)g.RL().Ru().get(ac.a.yHJ, Integer.valueOf(0))).intValue() > 0)
         {
-          String str = (String)localIterator.next();
-          localStringBuffer.append(str).append(" : ").append(bk.cm(((Long)localHashMap.get(str)).longValue())).append("\n");
+          this.kIB.setVisibility(0);
+          this.kIA.setVisibility(0);
+          this.kIA.setText(l(j.bhb().kHe));
         }
-        this.iDi.setEnabled(false);
-        this.iDn.setVisibility(0);
+        AppMethodBeat.o(18805);
+        return;
+        this.kIp.setEnabled(false);
+        this.kIu.setVisibility(0);
       }
-      localTextView.setText(localStringBuffer.toString());
-      label501:
-      return;
     }
   }
   
-  protected final int getLayoutId()
+  private static String l(HashMap<String, Long> paramHashMap)
   {
-    return R.i.clean_msg_ui;
+    AppMethodBeat.i(18808);
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (!paramHashMap.isEmpty())
+    {
+      Iterator localIterator = paramHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localStringBuffer.append(str).append(" : ").append(bo.hk(((Long)paramHashMap.get(str)).longValue())).append("\n");
+      }
+    }
+    paramHashMap = localStringBuffer.toString();
+    AppMethodBeat.o(18808);
+    return paramHashMap;
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public int getLayoutId()
   {
+    return 2130969164;
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(18807);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    f(j.aEb().iBk, j.aEb().iBl, j.aEb().iBm);
+    g(j.bhb().kGr, j.bhb().kGs, j.bhb().kGt);
+    AppMethodBeat.o(18807);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(18804);
     super.onCreate(paramBundle);
-    com.tencent.mm.plugin.report.service.h.nFQ.a(714L, 10L, 1L, false);
-    this.iDg = ((TextView)findViewById(R.h.process_info_tv));
-    this.iDf = ((PieView)findViewById(R.h.pie_view));
-    this.iDh = ((Button)findViewById(R.h.clean_btn));
-    this.iDi = ((Button)findViewById(R.h.clean_other_btn));
-    this.iDe = findViewById(R.h.analyse_data_layout);
-    this.iDj = ((TextView)findViewById(R.h.wechat_data_tv));
-    this.iDj.setTextSize(1, 16.0F);
-    this.iDk = ((TextView)findViewById(R.h.other_acc_data_tv));
-    this.iDk.setTextSize(1, 16.0F);
-    this.iDl = ((TextView)findViewById(R.h.other_data_tv));
-    this.iDl.setTextSize(1, 16.0F);
-    this.iDm = ((TextView)findViewById(R.h.free_data_tv));
-    this.iDm.setTextSize(1, 16.0F);
-    this.iDo = ((TextView)findViewById(R.h.clean_data_tv));
-    this.iDp = ((TextView)findViewById(R.h.clean_suggest_tv));
-    this.iDt = ((TextView)findViewById(R.h.debug));
-    this.iDu = ((LinearLayout)findViewById(R.h.debug_root));
-    this.iDq = ((TextView)findViewById(R.h.wechat_tip));
-    this.iDr = ((TextView)findViewById(R.h.other_acc_tip));
-    this.iDs = ((TextView)findViewById(R.h.other_tip));
-    this.iDn = ((View)findViewById(R.h.other_acc_data_layout));
-    setMMTitle(R.l.clean_msg_ui_title);
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(714L, 10L, 1L, false);
+    this.kIn = ((TextView)findViewById(2131822844));
+    this.kIm = ((PieView)findViewById(2131822843));
+    this.kIo = ((Button)findViewById(2131822865));
+    this.kIp = ((Button)$(2131822866));
+    this.kIl = findViewById(2131822845);
+    this.kIq = ((TextView)findViewById(2131822849));
+    this.kIq.setTextSize(1, 16.0F);
+    this.kIr = ((TextView)$(2131822854));
+    this.kIr.setTextSize(1, 16.0F);
+    this.kIs = ((TextView)findViewById(2131822858));
+    this.kIs.setTextSize(1, 16.0F);
+    this.kIt = ((TextView)findViewById(2131822862));
+    this.kIt.setTextSize(1, 16.0F);
+    this.kIv = ((TextView)findViewById(2131822863));
+    this.kIw = ((TextView)findViewById(2131822864));
+    this.kIA = ((TextView)$(2131822868));
+    this.kIB = ((LinearLayout)$(2131822867));
+    this.kIx = ((TextView)$(2131822848));
+    this.kIy = ((TextView)$(2131822853));
+    this.kIz = ((TextView)$(2131822857));
+    this.kIu = ((View)$(2131822850));
+    setMMTitle(2131298387);
     setBackBtn(new CleanMsgUI.1(this));
-    this.iDi.setOnClickListener(new CleanMsgUI.2(this));
-    this.iDh.setEnabled(true);
-    this.iDh.setOnClickListener(new CleanMsgUI.3(this));
-    getString(R.l.app_tip);
-    this.dnm = com.tencent.mm.ui.base.h.b(this, getString(R.l.clean_del_data), false, new CleanMsgUI.4(this));
-    this.dnm.dismiss();
-    f(j.aEb().iBk, j.aEb().iBl, j.aEb().iBm);
+    this.kIp.setOnClickListener(new CleanMsgUI.2(this));
+    this.kIo.setEnabled(true);
+    this.kIo.setOnClickListener(new CleanMsgUI.3(this));
+    getString(2131297087);
+    this.eeN = com.tencent.mm.ui.base.h.b(this, getString(2131298374), false, new CleanMsgUI.4(this));
+    this.eeN.dismiss();
+    g(j.bhb().kGr, j.bhb().kGs, j.bhb().kGt);
+    AppMethodBeat.o(18804);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(18806);
     super.onDestroy();
+    AppMethodBeat.o(18806);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.CleanMsgUI
  * JD-Core Version:    0.7.0.1
  */

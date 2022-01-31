@@ -3,7 +3,8 @@ package com.tencent.ttpic.filter;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.h;
 import com.tencent.filter.m.i;
-import com.tencent.ttpic.util.VideoFilterUtil;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.gles.GlUtil;
 
 public class SegmentMonitorFilter
   extends BaseFilter
@@ -13,27 +14,35 @@ public class SegmentMonitorFilter
   public SegmentMonitorFilter()
   {
     super(" precision mediump float;\n varying mediump vec2 textureCoordinate;\n uniform sampler2D inputImageTexture;\n uniform int segSlow;\n \n void main(void) {\n    if(segSlow == 1){\n        gl_FragColor = vec4(1, 0, 0, 0.5); \n    } else{\n        gl_FragColor = vec4(0, 1, 0, 0.5); \n    }\n}");
+    AppMethodBeat.i(82833);
     initParams();
+    AppMethodBeat.o(82833);
   }
   
   private void initParams()
   {
+    AppMethodBeat.i(82834);
     addParam(new m.i("segSlow", 0));
+    AppMethodBeat.o(82834);
   }
   
   public void ApplyGLSLFilter()
   {
+    AppMethodBeat.i(82835);
     super.ApplyGLSLFilter();
     setPositions(new float[] { -1.0F, -1.0F, -1.0F, -0.25F, -0.25F, -0.25F, -0.25F, -1.0F });
+    AppMethodBeat.o(82835);
   }
   
   public h updateAndRender(int paramInt, h paramh)
   {
+    AppMethodBeat.i(82836);
     addParam(new m.i("segSlow", paramInt));
-    VideoFilterUtil.setBlendMode(true);
+    GlUtil.setBlendMode(true);
     OnDrawFrameGLSL();
     renderTexture(paramh.texture[0], paramh.width, paramh.height);
-    VideoFilterUtil.setBlendMode(false);
+    GlUtil.setBlendMode(false);
+    AppMethodBeat.o(82836);
     return paramh;
   }
 }

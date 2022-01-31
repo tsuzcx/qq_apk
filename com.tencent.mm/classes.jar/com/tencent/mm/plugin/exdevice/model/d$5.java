@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.exdevice.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.service.c;
 import com.tencent.mm.plugin.exdevice.service.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class d$5
   implements Runnable
@@ -12,39 +12,30 @@ final class d$5
   
   public final void run()
   {
-    if (d.a(this.jtE) == null)
+    AppMethodBeat.i(19102);
+    if (d.a(this.lDd) == null)
     {
-      d.a(this.jtE, new c());
-      d.a(this.jtE).jyW = new d.5.1(this);
-      d.a(this.jtE).da(ae.getContext());
-      synchronized (d.b(this.jtE))
-      {
-        try
-        {
-          d.b(this.jtE).wait();
-          return;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            y.e("MicroMsg.exdevice.ExdeviceConnectManager", "mSyncLock.wait failed!!!, %s", new Object[] { localInterruptedException.getMessage() });
-            y.printErrStackTrace("MicroMsg.exdevice.ExdeviceConnectManager", localInterruptedException, "", new Object[0]);
-          }
-        }
-      }
+      d.a(this.lDd, new c());
+      d.a(this.lDd).lIv = new d.5.1(this);
+      d.a(this.lDd).dM(ah.getContext());
+      AppMethodBeat.o(19102);
+      return;
     }
-    e.aMd().av(this.jtI, this.jtJ);
+    e.bqq().aG(this.lDg, this.lDh);
+    AppMethodBeat.o(19102);
   }
   
   public final String toString()
   {
-    return super.toString() + "|ranging";
+    AppMethodBeat.i(19103);
+    String str = super.toString() + "|ranging";
+    AppMethodBeat.o(19103);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.d.5
  * JD-Core Version:    0.7.0.1
  */

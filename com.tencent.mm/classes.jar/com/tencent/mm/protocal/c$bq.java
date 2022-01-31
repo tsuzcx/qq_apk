@@ -5,12 +5,12 @@ final class c$bq
 {
   c$bq()
   {
-    super("getGameData", "getGameData", 299, false);
+    super("recordHistory", "recordHistory", 219, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.bq
  * JD-Core Version:    0.7.0.1
  */

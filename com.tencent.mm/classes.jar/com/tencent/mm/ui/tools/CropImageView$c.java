@@ -1,8 +1,9 @@
 package com.tencent.mm.ui.tools;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.TimerTask;
 
 final class CropImageView$c
@@ -10,16 +11,18 @@ final class CropImageView$c
 {
   public final void run()
   {
-    y.d("MicroMsg.CropImageView", "in timer task run");
+    AppMethodBeat.i(107605);
+    ab.d("MicroMsg.CropImageView", "in timer task run");
     Message localMessage = new Message();
-    if (CropImageView.j(this.vZj)) {
+    if (CropImageView.j(this.Arw)) {
       localMessage.what = 4659;
     }
     for (;;)
     {
-      CropImageView.l(this.vZj).sendMessage(localMessage);
+      CropImageView.l(this.Arw).sendMessage(localMessage);
+      AppMethodBeat.o(107605);
       return;
-      if (CropImageView.k(this.vZj)) {
+      if (CropImageView.k(this.Arw)) {
         localMessage.what = 4658;
       } else {
         localMessage.what = 4660;
@@ -29,7 +32,7 @@ final class CropImageView$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.tools.CropImageView.c
  * JD-Core Version:    0.7.0.1
  */

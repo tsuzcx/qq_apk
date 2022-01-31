@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.soter.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.plugin.ah.a.a;
-import com.tencent.mm.plugin.ah.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.soter.core.a;
 import com.tencent.soter.core.c.f;
@@ -15,73 +15,101 @@ import com.tencent.soter.core.c.i;
 public class SoterTestUI
   extends MMActivity
 {
-  private Button psE = null;
-  private Button psF = null;
-  private Button psG = null;
-  private Button psH = null;
-  private Button psI = null;
-  private Button psJ = null;
-  private Button psK = null;
-  private Button psL = null;
-  private Button psM = null;
-  private TextView psN = null;
+  private Button soK = null;
+  private Button soL = null;
+  private Button soM = null;
+  private Button soN = null;
+  private Button soO = null;
+  private Button soP = null;
+  private Button soQ = null;
+  private Button soR = null;
+  private Button soS = null;
+  private TextView soT = null;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.b.soter_test_ui;
+    return 2130970908;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(59392);
     super.onCreate(paramBundle);
-    this.psE = ((Button)findViewById(a.a.soter_test_support_soter));
-    this.psF = ((Button)findViewById(a.a.soter_test_gen_ask));
-    this.psG = ((Button)findViewById(a.a.soter_test_remove_ask));
-    this.psH = ((Button)findViewById(a.a.soter_test_get_ask_pub));
-    this.psI = ((Button)findViewById(a.a.soter_test_gen_ak));
-    this.psJ = ((Button)findViewById(a.a.soter_test_remove_ak));
-    this.psK = ((Button)findViewById(a.a.soter_test_get_ak_pub));
-    this.psL = ((Button)findViewById(a.a.soter_test_do_sign));
-    this.psM = ((Button)findViewById(a.a.soter_test_decrypt_import));
-    this.psN = ((TextView)findViewById(a.a.result_tv));
-    this.psE.setOnClickListener(new SoterTestUI.1(this));
-    this.psF.setOnClickListener(new SoterTestUI.2(this));
-    this.psG.setOnClickListener(new SoterTestUI.3(this));
-    this.psH.setOnClickListener(new SoterTestUI.4(this));
-    this.psI.setOnClickListener(new View.OnClickListener()
+    this.soK = ((Button)findViewById(2131828215));
+    this.soL = ((Button)findViewById(2131828216));
+    this.soM = ((Button)findViewById(2131828217));
+    this.soN = ((Button)findViewById(2131828218));
+    this.soO = ((Button)findViewById(2131828219));
+    this.soP = ((Button)findViewById(2131828220));
+    this.soQ = ((Button)findViewById(2131828221));
+    this.soR = ((Button)findViewById(2131828222));
+    this.soS = ((Button)findViewById(2131828223));
+    this.soT = ((TextView)findViewById(2131828214));
+    this.soK.setOnClickListener(new SoterTestUI.1(this));
+    this.soL.setOnClickListener(new SoterTestUI.2(this));
+    this.soM.setOnClickListener(new SoterTestUI.3(this));
+    this.soN.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        paramAnonymousView = a.afO("sample_auth_key_name");
+        AppMethodBeat.i(59382);
+        paramAnonymousView = a.dVh();
+        if (paramAnonymousView == null)
+        {
+          SoterTestUI.a(SoterTestUI.this).setText("not passed: no certificate");
+          AppMethodBeat.o(59382);
+          return;
+        }
+        SoterTestUI.a(SoterTestUI.this).setText("model available: " + paramAnonymousView.toString());
+        AppMethodBeat.o(59382);
+      }
+    });
+    this.soO.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(59383);
+        paramAnonymousView = a.awJ("sample_auth_key_name");
         TextView localTextView = SoterTestUI.a(SoterTestUI.this);
         if (paramAnonymousView.isSuccess()) {}
         for (paramAnonymousView = "pass";; paramAnonymousView = "not passed")
         {
           localTextView.setText(paramAnonymousView);
+          AppMethodBeat.o(59383);
           return;
         }
       }
     });
-    this.psJ.setOnClickListener(new SoterTestUI.6(this));
-    this.psK.setOnClickListener(new View.OnClickListener()
+    this.soP.setOnClickListener(new SoterTestUI.6(this));
+    this.soQ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        paramAnonymousView = a.afR("sample_auth_key_name");
+        AppMethodBeat.i(59385);
+        paramAnonymousView = a.awM("sample_auth_key_name");
         if (paramAnonymousView == null)
         {
           SoterTestUI.a(SoterTestUI.this).setText("not passed: no certificate");
+          AppMethodBeat.o(59385);
           return;
         }
         SoterTestUI.a(SoterTestUI.this).setText("model available: " + paramAnonymousView.toString());
+        AppMethodBeat.o(59385);
       }
     });
-    this.psL.setOnClickListener(new SoterTestUI.8(this));
+    this.soR.setOnClickListener(new SoterTestUI.8(this));
+    AppMethodBeat.o(59392);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.ui.SoterTestUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,54 @@
 package com.tencent.mm.plugin.freewifi.model;
 
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.model.bx.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.model.bz.a;
 import com.tencent.mm.platformtools.aa;
 import com.tencent.mm.plugin.freewifi.c.a;
 import com.tencent.mm.plugin.freewifi.d.d;
 import com.tencent.mm.plugin.freewifi.i;
 import com.tencent.mm.plugin.freewifi.i.a;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class j$4
-  implements bx.a
+  implements bz.a
 {
   j$4(j paramj) {}
   
   public final void a(e.a parama)
   {
-    e locale = j.aUo();
-    parama = parama.dBs;
-    if (1 != i.a.aTw().getInt("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_RECV_FREEWIFI_SYSMSG", 0)) {
-      i.a.aTw().bD("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_RECV_FREEWIFI_SYSMSG", 1);
+    AppMethodBeat.i(20742);
+    e locale = j.bAQ();
+    parama = parama.eyJ;
+    if (1 != i.a.bAb().getInt("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_RECV_FREEWIFI_SYSMSG", 0)) {
+      i.a.bAb().cl("LOCAL_CONFIG_FEATURES_DEFINE_ONCE_RECV_FREEWIFI_SYSMSG", 1);
     }
-    if ((parama == null) || (parama.svH == null))
+    if ((parama == null) || (parama.woR == null))
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiMessageService", "cmdAddMsg is null");
+      ab.e("MicroMsg.FreeWifi.FreeWifiMessageService", "cmdAddMsg is null");
+      AppMethodBeat.o(20742);
       return;
     }
-    Object localObject = aa.a(parama.svH);
-    y.i("MicroMsg.FreeWifi.FreeWifiMessageService", "freewifi push message cmdAM.NewMsgId=%d, msgContent=%s", new Object[] { Long.valueOf(parama.ndp), localObject });
+    Object localObject = aa.a(parama.woR);
+    ab.i("MicroMsg.FreeWifi.FreeWifiMessageService", "freewifi push message cmdAM.NewMsgId=%d, msgContent=%s", new Object[] { Long.valueOf(parama.pIG), localObject });
     if (m.isEmpty((String)localObject))
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiMessageService", "msgContent is empty. return.");
+      ab.e("MicroMsg.FreeWifi.FreeWifiMessageService", "msgContent is empty. return.");
+      AppMethodBeat.o(20742);
       return;
     }
-    localObject = a.Ds((String)localObject);
+    localObject = a.OA((String)localObject);
     if (localObject == null)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiMessageService", "parse schemaMsg failed. return.");
+      ab.e("MicroMsg.FreeWifi.FreeWifiMessageService", "parse schemaMsg failed. return.");
+      AppMethodBeat.o(20742);
       return;
     }
-    String str = m.Dq("MicroMsg.FreeWifi.FreeWifiMessageService");
-    new d(m.Do("MicroMsg.FreeWifi.FreeWifiMessageService"), m.Dp("MicroMsg.FreeWifi.FreeWifiMessageService"), str, ((a)localObject).koj, ((a)localObject).kog, ((a)localObject).kok, ((a)localObject).ssid, ((a)localObject).bssid).b(new e.1(locale, parama));
+    String str = m.Oy("MicroMsg.FreeWifi.FreeWifiMessageService");
+    new d(m.Ow("MicroMsg.FreeWifi.FreeWifiMessageService"), m.Ox("MicroMsg.FreeWifi.FreeWifiMessageService"), str, ((a)localObject).mJW, ((a)localObject).mJT, ((a)localObject).mJX, ((a)localObject).ssid, ((a)localObject).bssid).c(new e.1(locale, parama));
+    AppMethodBeat.o(20742);
   }
 }
 

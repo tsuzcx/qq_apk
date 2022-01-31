@@ -1,6 +1,7 @@
 package com.tencent.wcdb.repair;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wcdb.AbstractCursor;
 import com.tencent.wcdb.database.SQLiteCipherSpec;
 import com.tencent.wcdb.database.SQLiteDatabase;
@@ -28,8 +29,12 @@ public class RepairKit
   
   public RepairKit(String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, MasterInfo paramMasterInfo)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException();
+    AppMethodBeat.i(12677);
+    if (paramString == null)
+    {
+      paramString = new IllegalArgumentException();
+      AppMethodBeat.o(12677);
+      throw paramString;
     }
     if (paramMasterInfo == null) {}
     for (byte[] arrayOfByte = null;; arrayOfByte = paramMasterInfo.mKDFSalt)
@@ -38,15 +43,21 @@ public class RepairKit
       if (this.mNativePtr != 0L) {
         break;
       }
-      throw new SQLiteException("Failed initialize RepairKit.");
+      paramString = new SQLiteException("Failed initialize RepairKit.");
+      AppMethodBeat.o(12677);
+      throw paramString;
     }
     this.mIntegrityFlags = nativeIntegrityFlags(this.mNativePtr);
     this.mMasterInfo = paramMasterInfo;
+    AppMethodBeat.o(12677);
   }
   
   public static String lastError()
   {
-    return nativeLastError();
+    AppMethodBeat.i(12683);
+    String str = nativeLastError();
+    AppMethodBeat.o(12683);
+    return str;
   }
   
   private static native void nativeCancel(long paramLong);
@@ -71,20 +82,27 @@ public class RepairKit
   
   private int onProgress(String paramString, int paramInt, long paramLong)
   {
-    if (this.mCallback == null) {
+    AppMethodBeat.i(12682);
+    if (this.mCallback == null)
+    {
+      AppMethodBeat.o(12682);
       return 0;
     }
     if (this.mCurrentCursor == null) {
       this.mCurrentCursor = new RepairCursor(null);
     }
     this.mCurrentCursor.mPtr = paramLong;
-    return this.mCallback.onProgress(paramString, paramInt, this.mCurrentCursor);
+    paramInt = this.mCallback.onProgress(paramString, paramInt, this.mCurrentCursor);
+    AppMethodBeat.o(12682);
+    return paramInt;
   }
   
   protected void finalize()
   {
+    AppMethodBeat.i(12684);
     release();
     super.finalize();
+    AppMethodBeat.o(12684);
   }
   
   public Callback getCallback()
@@ -109,17 +127,25 @@ public class RepairKit
   
   public void onCancel()
   {
-    if (this.mNativePtr == 0L) {
+    AppMethodBeat.i(12681);
+    if (this.mNativePtr == 0L)
+    {
+      AppMethodBeat.o(12681);
       return;
     }
     nativeCancel(this.mNativePtr);
+    AppMethodBeat.o(12681);
   }
   
   public int output(SQLiteDatabase paramSQLiteDatabase, int paramInt)
   {
     long l1 = 0L;
-    if (this.mNativePtr == 0L) {
-      throw new IllegalArgumentException();
+    AppMethodBeat.i(12679);
+    if (this.mNativePtr == 0L)
+    {
+      paramSQLiteDatabase = new IllegalArgumentException();
+      AppMethodBeat.o(12679);
+      throw paramSQLiteDatabase;
     }
     if (this.mMasterInfo == null) {}
     for (;;)
@@ -129,6 +155,7 @@ public class RepairKit
       paramSQLiteDatabase.releaseNativeConnection(l2, null);
       this.mCurrentCursor = null;
       this.mIntegrityFlags = nativeIntegrityFlags(this.mNativePtr);
+      AppMethodBeat.o(12679);
       return paramInt;
       l1 = this.mMasterInfo.mMasterPtr;
     }
@@ -136,17 +163,22 @@ public class RepairKit
   
   public int output(SQLiteDatabase paramSQLiteDatabase, int paramInt, CancellationSignal paramCancellationSignal)
   {
-    if (paramCancellationSignal.isCanceled()) {
+    AppMethodBeat.i(12680);
+    if (paramCancellationSignal.isCanceled())
+    {
+      AppMethodBeat.o(12680);
       return 1;
     }
     paramCancellationSignal.setOnCancelListener(this);
     paramInt = output(paramSQLiteDatabase, paramInt);
     paramCancellationSignal.setOnCancelListener(null);
+    AppMethodBeat.o(12680);
     return paramInt;
   }
   
   public void release()
   {
+    AppMethodBeat.i(12678);
     if (this.mMasterInfo != null)
     {
       this.mMasterInfo.release();
@@ -157,6 +189,7 @@ public class RepairKit
       nativeFini(this.mNativePtr);
       this.mNativePtr = 0L;
     }
+    AppMethodBeat.o(12678);
   }
   
   public void setCallback(Callback paramCallback)
@@ -182,51 +215,74 @@ public class RepairKit
     
     public static MasterInfo load(String paramString, byte[] paramArrayOfByte, String[] paramArrayOfString)
     {
-      if (paramString == null) {
-        return make(paramArrayOfString);
+      AppMethodBeat.i(12661);
+      if (paramString == null)
+      {
+        paramString = make(paramArrayOfString);
+        AppMethodBeat.o(12661);
+        return paramString;
       }
       byte[] arrayOfByte = new byte[16];
-      long l = RepairKit.nativeLoadMaster(paramString, paramArrayOfByte, paramArrayOfString, arrayOfByte);
-      if (l == 0L) {
-        throw new SQLiteException("Cannot create MasterInfo.");
+      long l = RepairKit.access$400(paramString, paramArrayOfByte, paramArrayOfString, arrayOfByte);
+      if (l == 0L)
+      {
+        paramString = new SQLiteException("Cannot create MasterInfo.");
+        AppMethodBeat.o(12661);
+        throw paramString;
       }
-      return new MasterInfo(l, arrayOfByte);
+      paramString = new MasterInfo(l, arrayOfByte);
+      AppMethodBeat.o(12661);
+      return paramString;
     }
     
     public static MasterInfo make(String[] paramArrayOfString)
     {
-      long l = RepairKit.nativeMakeMaster(paramArrayOfString);
-      if (l == 0L) {
-        throw new SQLiteException("Cannot create MasterInfo.");
+      AppMethodBeat.i(12660);
+      long l = RepairKit.access$300(paramArrayOfString);
+      if (l == 0L)
+      {
+        paramArrayOfString = new SQLiteException("Cannot create MasterInfo.");
+        AppMethodBeat.o(12660);
+        throw paramArrayOfString;
       }
-      return new MasterInfo(l, null);
+      paramArrayOfString = new MasterInfo(l, null);
+      AppMethodBeat.o(12660);
+      return paramArrayOfString;
     }
     
     public static boolean save(SQLiteDatabase paramSQLiteDatabase, String paramString, byte[] paramArrayOfByte)
     {
+      AppMethodBeat.i(12662);
       long l = paramSQLiteDatabase.acquireNativeConnectionHandle("backupMaster", true, false);
-      boolean bool = RepairKit.nativeSaveMaster(l, paramString, paramArrayOfByte);
+      boolean bool = RepairKit.access$500(l, paramString, paramArrayOfByte);
       paramSQLiteDatabase.releaseNativeConnection(l, null);
+      AppMethodBeat.o(12662);
       return bool;
     }
     
     protected void finalize()
     {
+      AppMethodBeat.i(12664);
       release();
       super.finalize();
+      AppMethodBeat.o(12664);
     }
     
     public void release()
     {
-      if (this.mMasterPtr == 0L) {
+      AppMethodBeat.i(12663);
+      if (this.mMasterPtr == 0L)
+      {
+        AppMethodBeat.o(12663);
         return;
       }
-      RepairKit.nativeFreeMaster(this.mMasterPtr);
+      RepairKit.access$600(this.mMasterPtr);
       this.mMasterPtr = 0L;
+      AppMethodBeat.o(12663);
     }
   }
   
-  private static class RepairCursor
+  static class RepairCursor
     extends AbstractCursor
   {
     long mPtr;
@@ -245,62 +301,102 @@ public class RepairKit
     
     public byte[] getBlob(int paramInt)
     {
-      return nativeGetBlob(this.mPtr, paramInt);
+      AppMethodBeat.i(12675);
+      byte[] arrayOfByte = nativeGetBlob(this.mPtr, paramInt);
+      AppMethodBeat.o(12675);
+      return arrayOfByte;
     }
     
     public int getColumnCount()
     {
-      return nativeGetColumnCount(this.mPtr);
+      AppMethodBeat.i(12667);
+      int i = nativeGetColumnCount(this.mPtr);
+      AppMethodBeat.o(12667);
+      return i;
     }
     
     public String[] getColumnNames()
     {
-      throw new UnsupportedOperationException();
+      AppMethodBeat.i(12666);
+      UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
+      AppMethodBeat.o(12666);
+      throw localUnsupportedOperationException;
     }
     
     public int getCount()
     {
-      throw new UnsupportedOperationException();
+      AppMethodBeat.i(12665);
+      UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
+      AppMethodBeat.o(12665);
+      throw localUnsupportedOperationException;
     }
     
     public double getDouble(int paramInt)
     {
-      return nativeGetDouble(this.mPtr, paramInt);
+      AppMethodBeat.i(12674);
+      double d = nativeGetDouble(this.mPtr, paramInt);
+      AppMethodBeat.o(12674);
+      return d;
     }
     
     public float getFloat(int paramInt)
     {
-      return (float)getDouble(paramInt);
+      AppMethodBeat.i(12673);
+      float f = (float)getDouble(paramInt);
+      AppMethodBeat.o(12673);
+      return f;
     }
     
     public int getInt(int paramInt)
     {
-      return (int)getLong(paramInt);
+      AppMethodBeat.i(12671);
+      paramInt = (int)getLong(paramInt);
+      AppMethodBeat.o(12671);
+      return paramInt;
     }
     
     public long getLong(int paramInt)
     {
-      return nativeGetLong(this.mPtr, paramInt);
+      AppMethodBeat.i(12672);
+      long l = nativeGetLong(this.mPtr, paramInt);
+      AppMethodBeat.o(12672);
+      return l;
     }
     
     public short getShort(int paramInt)
     {
-      return (short)(int)getLong(paramInt);
+      AppMethodBeat.i(12670);
+      short s = (short)(int)getLong(paramInt);
+      AppMethodBeat.o(12670);
+      return s;
     }
     
     public String getString(int paramInt)
     {
-      return nativeGetString(this.mPtr, paramInt);
+      AppMethodBeat.i(12669);
+      String str = nativeGetString(this.mPtr, paramInt);
+      AppMethodBeat.o(12669);
+      return str;
     }
     
     public int getType(int paramInt)
     {
-      return nativeGetType(this.mPtr, paramInt);
+      AppMethodBeat.i(12668);
+      paramInt = nativeGetType(this.mPtr, paramInt);
+      AppMethodBeat.o(12668);
+      return paramInt;
     }
     
     public boolean isNull(int paramInt)
     {
-      return getType(paramInt) == 0;
+      AppMethodBeat.i(12676);
+      if (getType(paramInt) == 0)
+      {
+        AppMethodBeat.o(12676);
+        return true;
+      }
+      AppMethodBeat.o(12676);
+      return false;
     }
   }
 }

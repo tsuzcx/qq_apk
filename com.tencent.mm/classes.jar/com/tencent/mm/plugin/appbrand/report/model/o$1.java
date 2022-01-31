@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.plugin.appbrand.report.i;
+import com.tencent.mm.plugin.appbrand.report.l;
 import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class o$1
   implements Runnable
@@ -13,30 +14,32 @@ final class o$1
   
   public final void run()
   {
+    AppMethodBeat.i(132664);
     for (;;)
     {
       try
       {
-        str = (String)this.gZa[18];
-        if (!bk.bl(str))
+        str = (String)this.iHq[18];
+        if (!bo.isNullOrNil(str))
         {
           i = str.indexOf('?');
           if (i >= 0) {
             continue;
           }
           str = "";
-          this.gZa[18] = str;
+          this.iHq[18] = str;
         }
       }
       catch (Exception localException)
       {
         String str;
         int i;
-        this.gZa[18] = "";
+        this.iHq[18] = "";
         continue;
       }
-      h.nFQ.f(14992, i.j(this.gZa));
-      KVCommCrossProcessReceiver.bwU();
+      h.qsU.e(14992, l.k(this.iHq));
+      KVCommCrossProcessReceiver.chN();
+      AppMethodBeat.o(132664);
       return;
       str = q.encode(str.substring(i + 1, str.length()));
     }

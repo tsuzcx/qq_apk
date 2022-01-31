@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BizTimeLineHotView$8
   implements Runnable
@@ -9,22 +10,24 @@ final class BizTimeLineHotView$8
   
   public final void run()
   {
-    Object localObject = BizTimeLineHotView.e(this.ihA);
-    b localb = this.ihF;
+    AppMethodBeat.i(14313);
+    Object localObject = BizTimeLineHotView.f(this.jZn);
+    b localb = this.jZs;
     if (localb != null)
     {
-      localObject = (BizTimeLineHotListView.b)((BizTimeLineHotListView)localObject).bK(localb.position);
+      localObject = (BizTimeLineHotListView.b)((BizTimeLineHotListView)localObject).bQ(localb.position);
       if (localObject != null)
       {
-        if (!localb.ihG) {
-          break label49;
+        if (localb.jZt)
+        {
+          ((BizTimeLineHotListView.b)localObject).jZd.setVisibility(0);
+          AppMethodBeat.o(14313);
+          return;
         }
-        ((BizTimeLineHotListView.b)localObject).ihv.setVisibility(0);
+        ((BizTimeLineHotListView.b)localObject).jZd.setVisibility(8);
       }
     }
-    return;
-    label49:
-    ((BizTimeLineHotListView.b)localObject).ihv.setVisibility(8);
+    AppMethodBeat.o(14313);
   }
 }
 

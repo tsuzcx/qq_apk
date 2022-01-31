@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 
 final class FTSBaseWebViewUI$4
@@ -9,9 +10,11 @@ final class FTSBaseWebViewUI$4
   
   public final void run()
   {
-    if (FTSBaseWebViewUI.x(this.rtV) != null) {
-      FTSBaseWebViewUI.y(this.rtV).db(this.rtE, this.eEj);
+    AppMethodBeat.i(8387);
+    if (this.vkg.uQS != null) {
+      this.vkg.uQS.ec(this.vjK, this.fUa);
     }
+    AppMethodBeat.o(8387);
   }
 }
 

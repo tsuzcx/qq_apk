@@ -9,8 +9,6 @@ import android.widget.TextView;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.plugin.fts.ui.n.d;
-import com.tencent.mm.plugin.fts.ui.n.e;
 
 public abstract class b$b
   extends com.tencent.mm.plugin.fts.a.d.a.a.b
@@ -22,13 +20,13 @@ public abstract class b$b
   
   public final View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(n.e.fts_contact_item, paramViewGroup, false);
-    paramViewGroup = (b.a)this.kCA.kCy;
-    paramViewGroup.doU = ((ImageView)paramContext.findViewById(n.d.avatar_iv));
-    paramViewGroup.eXO = ((TextView)paramContext.findViewById(n.d.title_tv));
-    paramViewGroup.eXP = ((TextView)paramContext.findViewById(n.d.desc_tv));
-    paramViewGroup.kCz = ((TextView)paramContext.findViewById(n.d.item_desc_tv));
-    paramViewGroup.contentView = paramContext.findViewById(n.d.search_item_content_layout);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969650, paramViewGroup, false);
+    paramViewGroup = (b.a)this.mYx.mYv;
+    paramViewGroup.egq = ((ImageView)paramContext.findViewById(2131821210));
+    paramViewGroup.gpL = ((TextView)paramContext.findViewById(2131821212));
+    paramViewGroup.gpM = ((TextView)paramContext.findViewById(2131821007));
+    paramViewGroup.mYw = ((TextView)paramContext.findViewById(2131824337));
+    paramViewGroup.hrR = paramContext.findViewById(2131821148);
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }
@@ -37,11 +35,11 @@ public abstract class b$b
   {
     paramContext = (b.a)parama;
     parama = (b)parama1;
-    m.k(paramContext.contentView, this.kCA.kxT);
-    com.tencent.mm.pluginsdk.ui.a.b.a(paramContext.doU, parama.username);
-    m.a(parama.ieA, paramContext.eXO);
-    m.a(parama.ieB, paramContext.eXP);
-    m.a(parama.kCx, paramContext.kCz);
+    m.p(paramContext.hrR, this.mYx.mTH);
+    com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.egq, parama.username);
+    m.a(parama.jVn, paramContext.gpL);
+    m.a(parama.jVo, paramContext.gpM);
+    m.a(parama.mYu, paramContext.mYw);
   }
 }
 

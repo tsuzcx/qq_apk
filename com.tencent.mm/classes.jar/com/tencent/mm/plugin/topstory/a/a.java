@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.topstory.a;
 
 public final class a
 {
-  public static int pDc = 0;
+  public static int teR = 0;
 }
 
 

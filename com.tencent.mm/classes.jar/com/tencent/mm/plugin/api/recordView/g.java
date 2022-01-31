@@ -4,21 +4,23 @@ import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class g
   implements View.OnTouchListener
 {
-  private long fxo = -1L;
-  private float fxp = -1.0F;
-  private int fxq = 0;
-  g.a fxr;
+  private long gOu = -1L;
+  private float gOv = -1.0F;
+  private int gOw = 0;
+  g.a gOx;
   
-  private float s(MotionEvent paramMotionEvent)
+  private float x(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(76385);
     try
     {
-      if (this.fxq >= 2)
+      if (this.gOw >= 2)
       {
         float f3 = paramMotionEvent.getX(0);
         float f1 = paramMotionEvent.getY(0);
@@ -26,18 +28,21 @@ final class g
         float f2 = paramMotionEvent.getY(1);
         f3 = Math.abs(f3 - f4);
         f1 = Math.abs(f1 - f2);
+        AppMethodBeat.o(76385);
         return f3 + f1;
       }
     }
     catch (Exception paramMotionEvent)
     {
-      y.e("MicroMsg.MMSightRecordViewTouchListener", "pointerDistance error: %s", new Object[] { paramMotionEvent.getMessage() });
+      ab.e("MicroMsg.MMSightRecordViewTouchListener", "pointerDistance error: %s", new Object[] { paramMotionEvent.getMessage() });
+      AppMethodBeat.o(76385);
     }
     return 0.0F;
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(76384);
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     }
@@ -48,57 +53,60 @@ final class g
       {
         do
         {
-          return true;
-          y.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_DOWN");
-          if ((this.fxo > 0L) && (SystemClock.elapsedRealtime() - this.fxo < 400L)) {
-            if (this.fxr == null) {}
-          }
           for (;;)
           {
-            this.fxo = SystemClock.elapsedRealtime();
-            this.fxp = -1.0F;
-            this.fxq += 1;
+            AppMethodBeat.o(76384);
             return true;
-            if (this.fxr != null)
-            {
-              paramView = this.fxr;
-              paramMotionEvent.getX();
-              paramMotionEvent.getY();
-              paramView.Zg();
+            ab.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_DOWN");
+            if ((this.gOu > 0L) && (SystemClock.elapsedRealtime() - this.gOu < 400L)) {
+              if (this.gOx == null) {}
             }
+            for (;;)
+            {
+              this.gOu = SystemClock.elapsedRealtime();
+              this.gOv = -1.0F;
+              this.gOw += 1;
+              break;
+              if (this.gOx != null)
+              {
+                paramView = this.gOx;
+                paramMotionEvent.getX();
+                paramMotionEvent.getY();
+                paramView.asP();
+              }
+            }
+            ab.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_POINTER_DOWN");
+            this.gOw += 1;
+            continue;
+            ab.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_POINTER_UP");
+            this.gOw -= 1;
+            continue;
+            ab.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_UP");
+            this.gOv = -1.0F;
+            this.gOw = 0;
           }
-          y.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_POINTER_DOWN");
-          this.fxq += 1;
-          return true;
-          y.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_POINTER_UP");
-          this.fxq -= 1;
-          return true;
-          y.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_UP");
-          this.fxp = -1.0F;
-          this.fxq = 0;
-          return true;
-        } while (this.fxq < 2);
-        f = s(paramMotionEvent);
-        y.v("MicroMsg.MMSightRecordViewTouchListener", "distance: %s", new Object[] { Float.valueOf(f) });
+        } while (this.gOw < 2);
+        f = x(paramMotionEvent);
+        ab.v("MicroMsg.MMSightRecordViewTouchListener", "distance: %s", new Object[] { Float.valueOf(f) });
       } while (f <= 0.0F);
-      if (this.fxp <= 0.0F) {
+      if (this.gOv <= 0.0F) {
         break;
       }
-    } while (Math.abs(f - this.fxp) <= 15.0F);
-    if (f > this.fxp)
+    } while (Math.abs(f - this.gOv) <= 15.0F);
+    if (f > this.gOv)
     {
-      y.d("MicroMsg.MMSightRecordViewTouchListener", "zoom out");
-      if (this.fxr != null) {
-        this.fxr.Zh();
+      ab.d("MicroMsg.MMSightRecordViewTouchListener", "zoom out");
+      if (this.gOx != null) {
+        this.gOx.asQ();
       }
     }
     for (;;)
     {
-      this.fxp = f;
-      return true;
-      y.d("MicroMsg.MMSightRecordViewTouchListener", "zoom in");
-      if (this.fxr != null) {
-        this.fxr.Zi();
+      this.gOv = f;
+      break;
+      ab.d("MicroMsg.MMSightRecordViewTouchListener", "zoom in");
+      if (this.gOx != null) {
+        this.gOx.asR();
       }
     }
   }

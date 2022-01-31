@@ -1,26 +1,43 @@
 package com.tencent.oscarcamera.particlesystem;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class Value
 {
-  private static final String TAG = Value.class.getSimpleName();
+  private static final String TAG;
   private static final int TYPE_CONST = 0;
   private static final int TYPE_EXPRESSION = 1;
-  private double mConstVal = 0.0D;
-  private long mNativeExpression = -1L;
-  private int mType = 0;
+  private double mConstVal;
+  private long mNativeExpression;
+  private int mType;
+  
+  static
+  {
+    AppMethodBeat.i(81562);
+    TAG = Value.class.getSimpleName();
+    AppMethodBeat.o(81562);
+  }
   
   public Value(Object paramObject)
   {
+    AppMethodBeat.i(81561);
+    this.mType = 0;
+    this.mConstVal = 0.0D;
+    this.mNativeExpression = -1L;
     if ((paramObject instanceof Number))
     {
       this.mType = 0;
       this.mConstVal = ((Number)paramObject).doubleValue();
       this.mNativeExpression = -1L;
-    }
-    while (!(paramObject instanceof String)) {
+      AppMethodBeat.o(81561);
       return;
     }
-    this.mType = 1;
+    if ((paramObject instanceof String))
+    {
+      this.mType = 1;
+      this.mNativeExpression = ParticleSystem.compile((String)paramObject);
+    }
+    AppMethodBeat.o(81561);
   }
   
   public long expression()
@@ -42,7 +59,7 @@ public class Value
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.oscarcamera.particlesystem.Value
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,34 @@
 package com.tencent.mm.plugin.ipcall;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.plugin.ipcall.a.i;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  b los = new b();
+  b nLO;
   
-  public n createApplication()
+  public Plugin()
   {
-    return this.los;
+    AppMethodBeat.i(21703);
+    this.nLO = new b();
+    AppMethodBeat.o(21703);
   }
   
-  public ar createSubCore()
+  public o createApplication()
   {
-    return i.bcf();
+    return this.nLO;
+  }
+  
+  public at createSubCore()
+  {
+    AppMethodBeat.i(21704);
+    i locali = i.bJm();
+    AppMethodBeat.o(21704);
+    return locali;
   }
   
   public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()

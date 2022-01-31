@@ -6,8 +6,6 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.support.v4.view.d;
-import android.support.v4.view.q;
-import android.support.v7.a.a.d;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
@@ -16,120 +14,120 @@ import android.widget.PopupWindow.OnDismissListener;
 
 public class n
 {
-  private final int UA;
-  private final boolean UB;
-  public int UJ = 8388611;
-  private boolean UQ;
-  private o.a UR;
-  PopupWindow.OnDismissListener UT;
-  private final int Uz;
-  private m Wo;
-  private final PopupWindow.OnDismissListener Wp = new PopupWindow.OnDismissListener()
+  private boolean VD;
+  private o.a VE;
+  PopupWindow.OnDismissListener VG;
+  private final int Vm;
+  private final int Vn;
+  private final boolean Vo;
+  protected int Vw = 8388611;
+  private m Xb;
+  private final PopupWindow.OnDismissListener Xc = new PopupWindow.OnDismissListener()
   {
     public final void onDismiss()
     {
       n.this.onDismiss();
     }
   };
-  private final h dm;
-  public View hX;
+  private final h eq;
+  protected View iU;
   private final Context mContext;
   
-  public n(Context paramContext, h paramh, View paramView, boolean paramBoolean, int paramInt)
+  public n(Context paramContext, h paramh, View paramView, boolean paramBoolean)
   {
-    this(paramContext, paramh, paramView, paramBoolean, paramInt, 0);
+    this(paramContext, paramh, paramView, paramBoolean, 2130772137, 0);
   }
   
   public n(Context paramContext, h paramh, View paramView, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     this.mContext = paramContext;
-    this.dm = paramh;
-    this.hX = paramView;
-    this.UB = paramBoolean;
-    this.Uz = paramInt1;
-    this.UA = paramInt2;
+    this.eq = paramh;
+    this.iU = paramView;
+    this.Vo = paramBoolean;
+    this.Vm = paramInt1;
+    this.Vn = paramInt2;
   }
   
   final void b(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    m localm = fx();
+    m localm = gq();
     localm.setShowTitle(paramBoolean2);
     if (paramBoolean1)
     {
       int i = paramInt1;
-      if ((d.getAbsoluteGravity(this.UJ, q.Q(this.hX)) & 0x7) == 5) {
-        i = paramInt1 + this.hX.getWidth();
+      if ((d.getAbsoluteGravity(this.Vw, android.support.v4.view.t.T(this.iU)) & 0x7) == 5) {
+        i = paramInt1 - this.iU.getWidth();
       }
       localm.setHorizontalOffset(i);
       localm.setVerticalOffset(paramInt2);
       paramInt1 = (int)(this.mContext.getResources().getDisplayMetrics().density * 48.0F / 2.0F);
-      localm.Wn = new Rect(i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt1 + paramInt2);
+      localm.Xa = new Rect(i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt1 + paramInt2);
     }
     localm.show();
   }
   
-  public final void b(o.a parama)
+  public final void c(o.a parama)
   {
-    this.UR = parama;
-    if (this.Wo != null) {
-      this.Wo.a(parama);
+    this.VE = parama;
+    if (this.Xb != null) {
+      this.Xb.a(parama);
     }
   }
   
   public final void dismiss()
   {
     if (isShowing()) {
-      this.Wo.dismiss();
+      this.Xb.dismiss();
     }
   }
   
-  public final m fx()
+  public final m gq()
   {
     Point localPoint;
     int i;
-    if (this.Wo == null)
+    if (this.Xb == null)
     {
       localObject = ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay();
       localPoint = new Point();
       if (Build.VERSION.SDK_INT < 17) {
-        break label165;
+        break label164;
       }
       ((Display)localObject).getRealSize(localPoint);
-      if (Math.min(localPoint.x, localPoint.y) < this.mContext.getResources().getDimensionPixelSize(a.d.abc_cascading_menus_min_smallest_width)) {
-        break label173;
+      if (Math.min(localPoint.x, localPoint.y) < this.mContext.getResources().getDimensionPixelSize(2131427934)) {
+        break label172;
       }
       i = 1;
-      label75:
+      label74:
       if (i == 0) {
-        break label178;
+        break label177;
       }
     }
-    label165:
-    label173:
-    label178:
-    for (Object localObject = new e(this.mContext, this.hX, this.Uz, this.UA, this.UB);; localObject = new t(this.mContext, this.dm, this.hX, this.Uz, this.UA, this.UB))
+    label164:
+    label172:
+    label177:
+    for (Object localObject = new e(this.mContext, this.iU, this.Vm, this.Vn, this.Vo);; localObject = new t(this.mContext, this.eq, this.iU, this.Vm, this.Vn, this.Vo))
     {
-      ((m)localObject).f(this.dm);
-      ((m)localObject).setOnDismissListener(this.Wp);
-      ((m)localObject).setAnchorView(this.hX);
-      ((m)localObject).a(this.UR);
-      ((m)localObject).setForceShowIcon(this.UQ);
-      ((m)localObject).setGravity(this.UJ);
-      this.Wo = ((m)localObject);
-      return this.Wo;
+      ((m)localObject).f(this.eq);
+      ((m)localObject).setOnDismissListener(this.Xc);
+      ((m)localObject).setAnchorView(this.iU);
+      ((m)localObject).a(this.VE);
+      ((m)localObject).setForceShowIcon(this.VD);
+      ((m)localObject).setGravity(this.Vw);
+      this.Xb = ((m)localObject);
+      return this.Xb;
       ((Display)localObject).getSize(localPoint);
       break;
       i = 0;
-      break label75;
+      break label74;
     }
   }
   
-  public final boolean fy()
+  public final boolean gr()
   {
     if (isShowing()) {
       return true;
     }
-    if (this.hX == null) {
+    if (this.iU == null) {
       return false;
     }
     b(0, 0, false, false);
@@ -138,22 +136,22 @@ public class n
   
   public final boolean isShowing()
   {
-    return (this.Wo != null) && (this.Wo.isShowing());
+    return (this.Xb != null) && (this.Xb.isShowing());
   }
   
-  public void onDismiss()
+  protected void onDismiss()
   {
-    this.Wo = null;
-    if (this.UT != null) {
-      this.UT.onDismiss();
+    this.Xb = null;
+    if (this.VG != null) {
+      this.VG.onDismiss();
     }
   }
   
   public final void setForceShowIcon(boolean paramBoolean)
   {
-    this.UQ = paramBoolean;
-    if (this.Wo != null) {
-      this.Wo.setForceShowIcon(paramBoolean);
+    this.VD = paramBoolean;
+    if (this.Xb != null) {
+      this.Xb.setForceShowIcon(paramBoolean);
     }
   }
 }

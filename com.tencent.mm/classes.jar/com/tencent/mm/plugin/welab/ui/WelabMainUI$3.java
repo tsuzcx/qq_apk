@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.welab.ui;
 
-import com.tencent.mm.plugin.welab.c.a.a;
+import com.tencent.mm.plugin.welab.d.a.a;
 import java.util.Comparator;
 
 final class WelabMainUI$3

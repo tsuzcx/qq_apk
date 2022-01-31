@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import com.tencent.mm.f.b.j.a;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.j.a;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class FavPostVoiceUI$4
   implements j.a
@@ -10,8 +11,10 @@ final class FavPostVoiceUI$4
   
   public final void onError()
   {
-    FavPostVoiceUI.e(this.kcp).stopTimer();
-    FavPostVoiceUI.f(this.kcp).stopTimer();
+    AppMethodBeat.i(74044);
+    FavPostVoiceUI.e(this.mxa).stopTimer();
+    FavPostVoiceUI.f(this.mxa).stopTimer();
+    AppMethodBeat.o(74044);
   }
 }
 

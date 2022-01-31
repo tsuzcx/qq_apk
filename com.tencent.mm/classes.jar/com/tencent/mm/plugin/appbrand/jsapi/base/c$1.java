@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.base;
 
 import android.view.View;
-import com.tencent.mm.model.u.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.page.y.b;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.af;
+import com.tencent.mm.plugin.appbrand.page.af.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,106 +17,85 @@ final class c$1
   
   public final void run()
   {
-    i = 0;
-    if (this.glb == null)
+    AppMethodBeat.i(91047);
+    if (this.hER == null)
     {
-      com.tencent.mm.sdk.platformtools.y.w("MicroMsg.BaseUpdateViewJsApi", "page view has been release.");
-      this.ggE.C(this.dIS, this.glc.h("fail:page is null", null));
+      ab.w("MicroMsg.BaseUpdateViewJsApi", "page view has been release.");
+      this.hza.h(this.bAX, this.hES.j("fail:page is null", null));
+      AppMethodBeat.o(91047);
       return;
     }
     try
     {
-      j = this.glc.p(this.gbZ);
-      View localView = this.glb.agW().mg(j);
+      j = this.hES.w(this.bBa);
+      View localView = this.hER.vC().getViewById(j);
       if (localView == null)
       {
-        com.tencent.mm.sdk.platformtools.y.w("MicroMsg.BaseUpdateViewJsApi", "get view by viewId(%s) return null.", new Object[] { Integer.valueOf(j) });
-        this.ggE.C(this.dIS, this.glc.h("fail:got 'null' when get view by the given viewId", null));
+        ab.w("MicroMsg.BaseUpdateViewJsApi", "get view by viewId(%s) return null.", new Object[] { Integer.valueOf(j) });
+        this.hza.h(this.bAX, this.hES.j("fail:got 'null' when get view by the given viewId", null));
+        AppMethodBeat.o(91047);
         return;
       }
     }
     catch (JSONException localJSONException1)
     {
-      this.ggE.C(this.dIS, this.glc.h("fail:view id do not exist", null));
+      this.hza.h(this.bAX, this.hES.j("fail:view id do not exist", null));
+      AppMethodBeat.o(91047);
       return;
     }
-    Object localObject2 = this.glc;
-    e locale = this.glb;
-    Object localObject1 = this.gbZ;
-    if (((c)localObject2).aii()) {}
+    c.a(this.hES, this.hER, j, this.bBa);
     for (;;)
     {
       try
       {
-        localObject2 = locale.agW().F(j, false);
-        if (localObject2 != null)
-        {
-          bool2 = ((JSONObject)localObject1).getBoolean("disableScroll");
-          if (!((u.b)localObject2).ik("isTouching")) {
-            continue;
-          }
-          if (bool2) {
-            continue;
-          }
-          bool1 = true;
-          if (((u.b)localObject2).getBoolean("disableScroll", bool1) != bool2) {
-            ((u.b)localObject2).w("disableScroll-nextState", bool2);
-          }
-        }
-      }
-      catch (JSONException localJSONException2)
-      {
-        int k;
-        boolean bool3;
-        continue;
-        i = localJSONException2.gVA;
-        continue;
-      }
-      try
-      {
-        localObject1 = c.q(this.gbZ);
-        k = c.r(this.gbZ);
-        localObject2 = c.s(this.gbZ);
-        bool1 = this.glb.agW().a(j, (float[])localObject1, k, (Boolean)localObject2);
-        localObject1 = this.glb.agW().me(j);
+        localObject1 = c.x(this.bBa);
+        i = c.y(this.bBa);
+        localObject2 = c.z(this.bBa);
+        Boolean localBoolean = c.A(this.bBa);
+        bool1 = this.hER.vC().a(j, (float[])localObject1, i, (Boolean)localObject2, localBoolean);
+        localObject1 = this.hER.vC().ph(j);
         if (localObject1 != null) {
           continue;
         }
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BaseUpdateViewJsApi", "update view(parentId : %s, viewId : %d), ret : %b", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localJSONException1.hashCode()), Boolean.valueOf(bool1) });
+        i = 0;
+        ab.i("MicroMsg.BaseUpdateViewJsApi", "update view(parentId : %s, viewId : %d), ret : %b", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localJSONException1.hashCode()), Boolean.valueOf(bool1) });
       }
-      catch (JSONException localJSONException3)
+      catch (JSONException localJSONException2)
       {
-        bool1 = true;
+        Object localObject1;
+        int i;
+        Object localObject2;
+        boolean bool3;
+        boolean bool1 = true;
         continue;
-        bool2 = this.glc.c(this.glb, j, str, this.gbZ);
+        boolean bool2 = this.hES.c(this.hER, j, str, this.bBa);
         continue;
-        str = "fail";
+        String str = "fail";
         continue;
       }
-      bool3 = this.glc.aik();
+      bool3 = this.hES.aCb();
       bool2 = bool1;
       if (bool1)
       {
         if (!bool3) {
-          break label493;
+          continue;
         }
-        bool2 = this.glc.a(this.glb, j, localJSONException1, this.gbZ, new g(this.ggE, this.dIS));
+        bool2 = this.hES.b(this.hER, j, localJSONException1, this.bBa, new g(this.hza, this.bAX));
       }
-      if (bool3) {
-        break;
+      if (!bool3)
+      {
+        localObject1 = this.hza;
+        i = this.bAX;
+        localObject2 = this.hES;
+        if (!bool2) {
+          continue;
+        }
+        str = "ok";
+        ((com.tencent.mm.plugin.appbrand.jsapi.c)localObject1).h(i, ((m)localObject2).j(str, null));
       }
-      localObject1 = this.ggE;
-      i = this.dIS;
-      localObject2 = this.glc;
-      if (!bool2) {
-        break label516;
-      }
-      str = "ok";
-      ((com.tencent.mm.plugin.appbrand.jsapi.c)localObject1).C(i, ((i)localObject2).h(str, null));
+      AppMethodBeat.o(91047);
       return;
-      bool1 = false;
-      continue;
-      ((u.b)localObject2).w("disableScroll", bool2);
+      i = ((af.b)localObject1).parent;
     }
   }
 }

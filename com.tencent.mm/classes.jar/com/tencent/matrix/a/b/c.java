@@ -7,128 +7,181 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.os.WorkSource;
-import com.tencent.matrix.c.c.a;
+import com.tencent.matrix.e.c.a;
 import java.util.List;
 import java.util.Map;
 
 public final class c
   implements b.c, e.b, c.a
 {
-  public final com.tencent.matrix.a.a.a bmq;
-  public final d bnf;
-  private final com.tencent.matrix.a.a bng;
-  public boolean bnh;
-  public f bni;
-  public a bnj;
+  private final com.tencent.matrix.a.a.a bLZ;
+  final d bMF;
+  private final com.tencent.matrix.a.a bMG;
+  f bMH;
+  a bMI;
   final Context mContext;
+  private boolean mIsStart;
   
   public c(com.tencent.matrix.a.a parama)
   {
-    this.bmq = parama.bmq;
-    this.bnf = new d();
-    this.bng = parama;
-    this.mContext = parama.application;
+    this.bLZ = parama.bLZ;
+    this.bMF = new d();
+    this.bMG = parama;
+    this.mContext = parama.getApplication();
+  }
+  
+  private void a(com.tencent.matrix.a.a.a parama)
+  {
+    if (parama == null) {
+      throw new RuntimeException("batteryConfig is null");
+    }
+    if (parama.yE())
+    {
+      this.bMH = new f(this, parama, new f.a()
+      {
+        public final void e(Runnable paramAnonymousRunnable, long paramAnonymousLong)
+        {
+          c.this.bMF.mDetectHandler.postDelayed(paramAnonymousRunnable, paramAnonymousLong);
+        }
+        
+        public final boolean isScreenOn()
+        {
+          return ((PowerManager)c.this.mContext.getSystemService("power")).isScreenOn();
+        }
+      });
+      e.a(this);
+    }
+    if (parama.yF())
+    {
+      this.bMI = new a(this, this.bLZ);
+      this.bMF.j(new Runnable()
+      {
+        public final void run()
+        {
+          c.this.bMI.yI();
+        }
+      });
+      b.a(this);
+    }
   }
   
   public final void a(final int paramInt1, final long paramLong1, long paramLong2, final long paramLong3, int paramInt2, final PendingIntent paramPendingIntent, AlarmManager.OnAlarmListener paramOnAlarmListener)
   {
-    com.tencent.matrix.d.b.d("Matrix.BatteryCanaryCore", "onAlarmSet: type:%d, triggerAtMillis:%d, windowMillis:%d, intervalMillis:%d, flags:%d, operationInfo:%s, onAlarmListener:%s", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Integer.valueOf(paramInt2), paramPendingIntent, paramOnAlarmListener });
-    if (this.bnj == null) {
+    if (this.bMI == null) {
       return;
     }
     paramPendingIntent = new Runnable()
     {
       public final void run()
       {
-        a locala = c.this.bnj;
+        a locala = c.this.bMI;
         int k = paramInt1;
         long l1 = paramLong1;
         long l2 = paramLong3;
         long l3 = paramPendingIntent;
-        int m = this.bnk;
-        Object localObject = this.bnw;
-        AlarmManager.OnAlarmListener localOnAlarmListener = this.bnx;
-        String str1 = this.bno;
+        int m = this.bMJ;
+        Object localObject = this.bMU;
+        AlarmManager.OnAlarmListener localOnAlarmListener = this.bMV;
+        String str1 = this.bMN;
         a.b localb;
         String str2;
         int i;
-        if (locala.bmG != null)
+        if (locala.bMg != null)
         {
-          localb = locala.bmG;
-          str2 = com.tencent.matrix.d.c.g("yyyy-MM-dd HH:mm", System.currentTimeMillis());
+          localb = locala.bMg;
+          str2 = com.tencent.matrix.g.d.formatTime("yyyy-MM-dd HH:mm", System.currentTimeMillis());
           if (localObject != null) {
-            break label242;
+            break label246;
           }
           i = -1;
           if (localOnAlarmListener != null) {
-            break label251;
+            break label255;
           }
         }
-        label242:
-        label251:
         for (int j = -1;; j = localOnAlarmListener.hashCode())
         {
-          localb.bu(String.format("%s onAlarmSet type:%d triggerAtMillis:%d windowMillis:%d intervalMillis:%d flags:%d operationInfo:%s operationHashCode:%d onAlarmListener:%s onAlarmListenerHashCode:%d\n%s\n\n", new Object[] { str2, Integer.valueOf(k), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(m), localObject, Integer.valueOf(i), localOnAlarmListener, Integer.valueOf(j), str1 }));
+          try
+          {
+            str2 = String.format("%s onAlarmSet type:%d triggerAtMillis:%d windowMillis:%d intervalMillis:%d flags:%d operationInfo:%s operationHashCode:%d onAlarmListener:%s onAlarmListenerHashCode:%d\n%s\n\n", new Object[] { str2, Integer.valueOf(k), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(m), localObject, Integer.valueOf(i), localOnAlarmListener, Integer.valueOf(j), str1 });
+            localb.cx(str2);
+          }
+          catch (ClassCastException localClassCastException)
+          {
+            for (;;)
+            {
+              label246:
+              label255:
+              com.tencent.matrix.g.c.e("MicroMsg.AlarmDetector", localClassCastException.toString(), new Object[0]);
+            }
+          }
           localObject = new a.a(k, l1, l3, (PendingIntent)localObject, localOnAlarmListener, str1);
-          locala.a(((a.a)localObject).bmM, ((a.a)localObject).bmL);
-          locala.bmH.add(localObject);
-          locala.qQ();
+          locala.a(((a.a)localObject).bMm, ((a.a)localObject).bMl);
+          locala.bMh.add(localObject);
+          locala.yI();
           return;
           i = ((PendingIntent)localObject).hashCode();
           break;
         }
       }
     };
-    this.bnf.h(paramPendingIntent);
+    this.bMF.j(paramPendingIntent);
   }
   
   public final void a(final PendingIntent paramPendingIntent, final AlarmManager.OnAlarmListener paramOnAlarmListener)
   {
-    com.tencent.matrix.d.b.d("Matrix.BatteryCanaryCore", "onAlarmRemove: operationInfo:%s, onAlarmListener:%s", new Object[] { paramPendingIntent, paramOnAlarmListener });
     paramPendingIntent = new Runnable()
     {
       public final void run()
       {
         int j = -1;
-        a locala = c.this.bnj;
+        a locala = c.this.bMI;
         PendingIntent localPendingIntent = paramPendingIntent;
         AlarmManager.OnAlarmListener localOnAlarmListener = paramOnAlarmListener;
-        String str1 = this.bno;
+        String str1 = this.bMN;
         a.b localb;
         String str2;
         int i;
-        if (locala.bmG != null)
+        if (locala.bMg != null)
         {
-          localb = locala.bmG;
-          str2 = com.tencent.matrix.d.c.g("yyyy-MM-dd HH:mm", System.currentTimeMillis());
+          localb = locala.bMg;
+          str2 = com.tencent.matrix.g.d.formatTime("yyyy-MM-dd HH:mm", System.currentTimeMillis());
           if (localPendingIntent != null) {
-            break label132;
+            break label136;
           }
           i = -1;
           if (localOnAlarmListener != null) {
-            break label141;
+            break label145;
           }
         }
         for (;;)
         {
-          localb.bu(String.format("%s onAlarmRemove operationInfo:%s operationHashCode:%d onAlarmListener:%s onAlarmListenerHashCode:%d\n%s\n\n", new Object[] { str2, localPendingIntent, Integer.valueOf(i), localOnAlarmListener, Integer.valueOf(j), str1 }));
+          try
+          {
+            str1 = String.format("%s onAlarmRemove operationInfo:%s operationHashCode:%d onAlarmListener:%s onAlarmListenerHashCode:%d\n%s\n\n", new Object[] { str2, localPendingIntent, Integer.valueOf(i), localOnAlarmListener, Integer.valueOf(j), str1 });
+            localb.cx(str1);
+          }
+          catch (ClassCastException localClassCastException)
+          {
+            label136:
+            label145:
+            com.tencent.matrix.g.c.e("MicroMsg.AlarmDetector", localClassCastException.toString(), new Object[0]);
+            continue;
+          }
           locala.a(localOnAlarmListener, new a.e(localPendingIntent));
-          locala.qQ();
+          locala.yI();
           return;
-          label132:
           i = localPendingIntent.hashCode();
           break;
-          label141:
           j = localOnAlarmListener.hashCode();
         }
       }
     };
-    this.bnf.h(paramPendingIntent);
+    this.bMF.j(paramPendingIntent);
   }
   
   public final void a(final IBinder paramIBinder, final int paramInt)
   {
-    if (this.bni == null) {
+    if (this.bMH == null) {
       return;
     }
     paramIBinder = new Runnable()
@@ -136,114 +189,140 @@ public final class c
       public final void run()
       {
         int i = 1;
-        f localf = c.this.bni;
+        f localf = c.this.bMH;
         Object localObject1 = paramIBinder;
         int j = paramInt;
-        long l = this.bnr;
-        com.tencent.matrix.d.b.i("Matrix.WakeLockDetector", "onReleaseWakeLock token:%s", new Object[] { localObject1 });
+        long l = this.bMQ;
+        com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "onReleaseWakeLock token:%s", new Object[] { localObject1 });
         Object localObject2;
-        if (localf.bnG != null)
+        if (localf.bNf != null)
         {
-          localObject2 = localf.bnG;
+          localObject2 = localf.bNf;
           String str1 = localObject1.toString();
-          String str2 = com.tencent.matrix.d.c.g("yyyy-MM-dd HH:mm", l);
-          ((f.e)localObject2).bnV.append(str2).append(" onReleaseWakeLock token:").append(str1).append(" flags:").append(j).append("\n\n");
-          ((f.e)localObject2).bnU += 1;
-          ((f.e)localObject2).qY();
+          String str2 = com.tencent.matrix.g.d.formatTime("yyyy-MM-dd HH:mm", l);
+          ((f.e)localObject2).bNu.append(str2).append(" onReleaseWakeLock token:").append(str1).append(" flags:").append(j).append("\n\n");
+          ((f.e)localObject2).bNt += 1;
+          ((f.e)localObject2).yR();
         }
         localObject1 = localObject1.toString();
-        if (localf.bnB.containsKey(localObject1))
+        if (localf.bMY.containsKey(localObject1))
         {
-          localObject2 = ((f.d)localf.bnB.get(localObject1)).tag;
-          if (localf.bnC.containsKey(localObject2))
+          localObject2 = ((f.d)localf.bMY.get(localObject1)).tag;
+          if (localf.bMZ.containsKey(localObject2))
           {
-            localObject2 = (f.c)localf.bnC.get(localObject2);
-            ((f.c)localObject2).qX();
-            ((f.c)localObject2).bnP.remove(localObject1);
-            if (((f.c)localObject2).bnP.isEmpty()) {
+            localObject2 = (f.c)localf.bMZ.get(localObject2);
+            ((f.c)localObject2).yQ();
+            ((f.c)localObject2).bNo.remove(localObject1);
+            if (((f.c)localObject2).bNo.isEmpty()) {
               break label261;
             }
             if (i == 0) {
-              ((f.c)localObject2).bnQ = -1L;
+              ((f.c)localObject2).bNp = -1L;
             }
           }
         }
         for (;;)
         {
-          localf.qV();
-          localf.bnB.remove(localObject1);
+          localf.yN();
+          localf.bMY.remove(localObject1);
           return;
           label261:
           i = 0;
           break;
-          com.tencent.matrix.d.b.i("Matrix.WakeLockDetector", "onReleaseWakeLock not in mWakeLockInfoMap: %s", new Object[] { localObject1 });
+          com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "onReleaseWakeLock not in mWakeLockInfoMap: %s", new Object[] { localObject1 });
         }
       }
     };
-    this.bnf.h(paramIBinder);
+    this.bMF.j(paramIBinder);
   }
   
   public final void a(final IBinder paramIBinder, final int paramInt, final String paramString1, final String paramString2, final WorkSource paramWorkSource, final String paramString3)
   {
-    if (this.bni == null) {
+    if (this.bMH == null) {
       return;
     }
     paramIBinder = new Runnable()
     {
       public final void run()
       {
-        f localf = c.this.bni;
+        f localf = c.this.bMH;
         Object localObject1 = paramIBinder;
         int i = paramInt;
         String str2 = paramString1;
-        String str1 = this.bno;
-        long l = this.bnp;
-        com.tencent.matrix.d.b.i("Matrix.WakeLockDetector", "onAcquireWakeLock token:%s tag:%s", new Object[] { localObject1, str2 });
-        if (localf.bnG != null)
+        String str1 = this.bMN;
+        long l = this.bMO;
+        com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "onAcquireWakeLock token:%s tag:%s", new Object[] { localObject1, str2 });
+        if (localf.bNf != null)
         {
-          localObject2 = localf.bnG;
+          localObject2 = localf.bNf;
           String str3 = localObject1.toString();
-          String str4 = com.tencent.matrix.d.c.g("yyyy-MM-dd HH:mm", l);
-          ((f.e)localObject2).bnV.append(str4).append(" onAcquireWakeLock token:").append(str3).append(" flags:").append(i).append(" tag:").append(str2).append('\n').append(str1).append('\n');
-          ((f.e)localObject2).bnU += 1;
-          ((f.e)localObject2).qY();
+          String str4 = com.tencent.matrix.g.d.formatTime("yyyy-MM-dd HH:mm", l);
+          ((f.e)localObject2).bNu.append(str4).append(" onAcquireWakeLock token:").append(str3).append(" flags:").append(i).append(" tag:").append(str2).append('\n').append(str1).append('\n');
+          ((f.e)localObject2).bNt += 1;
+          ((f.e)localObject2).yR();
         }
         Object localObject2 = localObject1.toString();
-        if (!localf.bnB.containsKey(localObject2))
+        if (!localf.bMY.containsKey(localObject2))
         {
           localObject1 = new f.d((String)localObject2, str2, i, l);
-          localf.bnB.put(localObject2, localObject1);
+          localf.bMY.put(localObject2, localObject1);
         }
         for (;;)
         {
-          ((f.d)localObject1).bnO.bv(str1);
-          if (!localf.bnC.containsKey(str2)) {
-            localf.bnC.put(str2, new f.c(str2));
+          ((f.d)localObject1).bNn.cy(str1);
+          if (!localf.bMZ.containsKey(str2)) {
+            localf.bMZ.put(str2, new f.c(str2));
           }
-          localObject1 = (f.c)localf.bnC.get(str2);
-          boolean bool = localf.bnE.isScreenOn();
-          ((f.c)localObject1).bnR = bool;
-          ((f.c)localObject1).bnM += 1;
+          localObject1 = (f.c)localf.bMZ.get(str2);
+          boolean bool = localf.bNd.isScreenOn();
+          ((f.c)localObject1).bNq = bool;
+          ((f.c)localObject1).bNl += 1;
           if (!bool) {
-            ((f.c)localObject1).bnN += 1;
+            ((f.c)localObject1).bNm += 1;
           }
-          ((f.c)localObject1).bnP.put(localObject2, Boolean.valueOf(true));
-          if (((f.c)localObject1).bnQ < 0L) {
-            ((f.c)localObject1).bnQ = System.currentTimeMillis();
+          ((f.c)localObject1).bNo.put(localObject2, Boolean.TRUE);
+          if (((f.c)localObject1).bNp < 0L) {
+            ((f.c)localObject1).bNp = System.currentTimeMillis();
           }
-          ((f.c)localObject1).bnO.bv(str1);
-          localf.bnE.d(localf.bnF, localf.bnD);
+          ((f.c)localObject1).bNn.cy(str1);
+          localf.bNd.e(localf.bNe, localf.bNa);
           return;
-          localObject1 = (f.d)localf.bnB.get(localObject2);
+          localObject1 = (f.d)localf.bMY.get(localObject2);
         }
       }
     };
-    this.bnf.h(paramIBinder);
+    this.bMF.j(paramIBinder);
   }
   
-  public final void a(com.tencent.matrix.c.b paramb)
+  public final void onDetectIssue(com.tencent.matrix.e.b paramb)
   {
-    this.bng.a(paramb);
+    this.bMG.onDetectIssue(paramb);
+  }
+  
+  public final void start()
+  {
+    this.bMF.start();
+    a(this.bLZ);
+    try
+    {
+      this.mIsStart = true;
+      return;
+    }
+    finally {}
+  }
+  
+  public final void stop()
+  {
+    try
+    {
+      this.mIsStart = false;
+      e.b(this);
+      b.b(this);
+      this.bMF.quit();
+      this.bMH = null;
+      return;
+    }
+    finally {}
   }
 }
 

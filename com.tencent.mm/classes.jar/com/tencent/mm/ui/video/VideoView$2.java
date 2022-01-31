@@ -2,6 +2,7 @@ package com.tencent.mm.ui.video;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VideoView$2
   implements MediaPlayer.OnPreparedListener
@@ -10,43 +11,49 @@ final class VideoView$2
   
   public final void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    VideoView.c(this.wiD);
-    if (VideoView.d(this.wiD) != null) {
-      VideoView.d(this.wiD).onPrepared(VideoView.e(this.wiD));
+    AppMethodBeat.i(35284);
+    VideoView.c(this.ABv);
+    if (VideoView.d(this.ABv) != null) {
+      VideoView.d(this.ABv).onPrepared(VideoView.e(this.ABv));
     }
-    VideoView.a(this.wiD, paramMediaPlayer.getVideoWidth());
-    VideoView.b(this.wiD, paramMediaPlayer.getVideoHeight());
-    this.wiD.cJL();
-    if ((VideoView.a(this.wiD) != 0) && (VideoView.b(this.wiD) != 0))
+    VideoView.a(this.ABv, paramMediaPlayer.getVideoWidth());
+    VideoView.b(this.ABv, paramMediaPlayer.getVideoHeight());
+    this.ABv.dOA();
+    if ((VideoView.a(this.ABv) != 0) && (VideoView.b(this.ABv) != 0))
     {
-      if (VideoView.f(this.wiD))
+      if (VideoView.f(this.ABv))
       {
-        VideoView.e(this.wiD).start();
-        VideoView.g(this.wiD);
+        VideoView.e(this.ABv).start();
+        VideoView.g(this.ABv);
       }
-      if ((VideoView.h(this.wiD) == VideoView.a(this.wiD)) && (VideoView.i(this.wiD) == VideoView.b(this.wiD)))
+      if ((VideoView.h(this.ABv) == VideoView.a(this.ABv)) && (VideoView.i(this.ABv) == VideoView.b(this.ABv)))
       {
-        if (VideoView.j(this.wiD) != 0)
+        if (VideoView.j(this.ABv) != 0)
         {
-          VideoView.e(this.wiD).seekTo(VideoView.j(this.wiD));
-          VideoView.k(this.wiD);
+          VideoView.e(this.ABv).seekTo(VideoView.j(this.ABv));
+          VideoView.k(this.ABv);
         }
-        if ((VideoView.f(this.wiD)) || (this.wiD.isPlaying()) || (VideoView.j(this.wiD) != 0) || (this.wiD.getCurrentPosition() <= 0)) {}
+        if ((VideoView.f(this.ABv)) || (this.ABv.isPlaying()) || (VideoView.j(this.ABv) != 0) || (this.ABv.getCurrentPosition() <= 0)) {}
       }
     }
     for (;;)
     {
-      VideoView.e(this.wiD).isPlaying();
-      return;
-      if (VideoView.j(this.wiD) != 0)
+      if ((VideoView.e(this.ABv).isPlaying()) && (VideoView.l(this.ABv) != null))
       {
-        VideoView.e(this.wiD).seekTo(VideoView.j(this.wiD));
-        VideoView.k(this.wiD);
+        VideoView.l(this.ABv);
+        VideoView.m(this.ABv);
       }
-      if (VideoView.f(this.wiD))
+      AppMethodBeat.o(35284);
+      return;
+      if (VideoView.j(this.ABv) != 0)
       {
-        VideoView.e(this.wiD).start();
-        VideoView.g(this.wiD);
+        VideoView.e(this.ABv).seekTo(VideoView.j(this.ABv));
+        VideoView.k(this.ABv);
+      }
+      if (VideoView.f(this.ABv))
+      {
+        VideoView.e(this.ABv).start();
+        VideoView.g(this.ABv);
       }
     }
   }

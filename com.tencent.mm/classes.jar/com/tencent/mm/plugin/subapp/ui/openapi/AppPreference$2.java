@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.subapp.ui.openapi;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppPreference$2
   implements AdapterView.OnItemLongClickListener
@@ -11,18 +12,20 @@ final class AppPreference$2
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = this.pxf;
-    if (paramAdapterView.pwY != null)
+    AppMethodBeat.i(25442);
+    paramAdapterView = this.sYT;
+    if (paramAdapterView.sYN != null)
     {
-      paramView = paramAdapterView.pwY;
-      if (paramAdapterView.pwY.pwV) {
-        break label38;
+      paramView = paramAdapterView.sYN;
+      if (paramAdapterView.sYN.sYK) {
+        break label50;
       }
     }
-    label38:
+    label50:
     for (boolean bool = true;; bool = false)
     {
-      paramView.jD(bool);
+      paramView.mv(bool);
+      AppMethodBeat.o(25442);
       return true;
     }
   }

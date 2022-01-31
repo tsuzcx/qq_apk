@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ea;
+import com.tencent.mm.sdk.b.c;
 
 final class g$50
-  implements Runnable
+  extends c<ea>
 {
-  g$50(g paramg) {}
-  
-  public final void run()
+  g$50(g paramg)
   {
-    Toast.makeText(g.i(this.rzi), g.i(this.rzi).getString(R.l.game_download_sdcard_unavailable), 0).show();
+    AppMethodBeat.i(9107);
+    this.__eventId = ea.class.getName().hashCode();
+    AppMethodBeat.o(9107);
   }
 }
 

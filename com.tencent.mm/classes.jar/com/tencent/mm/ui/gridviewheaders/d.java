@@ -5,21 +5,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
   extends BaseAdapter
   implements b
 {
-  private DataSetObserver JP = new d.1(this);
-  private ListAdapter vXb;
+  private ListAdapter Apj;
+  private DataSetObserver Jv;
   
   public d(ListAdapter paramListAdapter)
   {
-    this.vXb = paramListAdapter;
-    paramListAdapter.registerDataSetObserver(this.JP);
+    AppMethodBeat.i(107407);
+    this.Jv = new d.1(this);
+    this.Apj = paramListAdapter;
+    paramListAdapter.registerDataSetObserver(this.Jv);
+    AppMethodBeat.o(107407);
   }
   
-  public final int HU(int paramInt)
+  public final int QG(int paramInt)
   {
     return 0;
   }
@@ -29,29 +33,41 @@ public final class d
     return null;
   }
   
-  public final int cIA()
+  public final int dNk()
   {
     return 0;
   }
   
   public final int getCount()
   {
-    return this.vXb.getCount();
+    AppMethodBeat.i(107408);
+    int i = this.Apj.getCount();
+    AppMethodBeat.o(107408);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.vXb.getItem(paramInt);
+    AppMethodBeat.i(107409);
+    Object localObject = this.Apj.getItem(paramInt);
+    AppMethodBeat.o(107409);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
   {
-    return this.vXb.getItemId(paramInt);
+    AppMethodBeat.i(107410);
+    long l = this.Apj.getItemId(paramInt);
+    AppMethodBeat.o(107410);
+    return l;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return this.vXb.getView(paramInt, paramView, paramViewGroup);
+    AppMethodBeat.i(107411);
+    paramView = this.Apj.getView(paramInt, paramView, paramViewGroup);
+    AppMethodBeat.o(107411);
+    return paramView;
   }
 }
 

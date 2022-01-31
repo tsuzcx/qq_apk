@@ -1,34 +1,16 @@
 package com.tencent.mm.plugin.appbrand.dynamic.e;
 
-import com.tencent.mm.ui.widget.MMWebView;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.z.b.d;
 
 public final class b
 {
-  private static volatile boolean dJj;
-  private static final List<b.a> fWs = new LinkedList();
-  
-  public static boolean a(b.a parama)
+  public static d bi(Object paramObject)
   {
-    if (fWs.contains(parama)) {
-      return false;
-    }
-    if (dJj)
-    {
-      parama.aaK();
-      return true;
-    }
-    return fWs.add(parama);
-  }
-  
-  public static void initialize()
-  {
-    if (dJj) {
-      return;
-    }
-    b.1 local1 = new b.1();
-    com.tencent.mm.cl.b.a(MMWebView.wkp, local1);
+    AppMethodBeat.i(10907);
+    paramObject = new a(paramObject);
+    AppMethodBeat.o(10907);
+    return paramObject;
   }
 }
 

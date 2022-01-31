@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.emoji.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.f.h;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
@@ -12,23 +12,27 @@ final class CustomSmileyPreviewUI$3
 {
   CustomSmileyPreviewUI$3(CustomSmileyPreviewUI paramCustomSmileyPreviewUI) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    if ((CustomSmileyPreviewUI.b(this.jcf).field_catalog != EmojiInfo.uCZ) && (!CustomSmileyPreviewUI.b(this.jcf).cwC())) {
-      paraml.fq(0, f.h.add_to_custom_smiley);
+    AppMethodBeat.i(138340);
+    if ((CustomSmileyPreviewUI.b(this.lkP).field_catalog != EmojiInfo.yPm) && (!CustomSmileyPreviewUI.b(this.lkP).dzq())) {
+      paraml.hx(0, 2131296431);
     }
-    if ((CustomSmileyPreviewUI.b(this.jcf).field_catalog == EmojiInfo.uCZ) || (bk.bl(CustomSmileyPreviewUI.b(this.jcf).field_groupId)) || ((!bk.bl(CustomSmileyPreviewUI.b(this.jcf).field_groupId)) && (((com.tencent.mm.plugin.emoji.b.d)g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Ax(CustomSmileyPreviewUI.b(this.jcf).field_groupId)))) {
-      paraml.fq(1, f.h.retransmits);
+    if ((CustomSmileyPreviewUI.b(this.lkP).field_catalog == EmojiInfo.yPm) || (bo.isNullOrNil(CustomSmileyPreviewUI.b(this.lkP).field_groupId)) || ((!bo.isNullOrNil(CustomSmileyPreviewUI.b(this.lkP).field_groupId)) && (((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Ky(CustomSmileyPreviewUI.b(this.lkP).field_groupId)))) {
+      paraml.hx(1, 2131302657);
     }
-    if (((com.tencent.mm.plugin.emoji.b.d)g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().h(CustomSmileyPreviewUI.b(this.jcf))) {
-      paraml.fq(2, f.h.emoji_preview_imitate);
+    com.tencent.mm.pluginsdk.a.d locald = ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr();
+    CustomSmileyPreviewUI.b(this.lkP);
+    if (locald.bkX()) {
+      paraml.hx(2, 2131299163);
     }
-    paraml.fq(3, f.h.emoji_expose);
+    paraml.hx(3, 2131299140);
+    AppMethodBeat.o(138340);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.CustomSmileyPreviewUI.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,17 @@
 package com.tencent.mm.plugin.topstory.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a$a
 {
-  public static final Long pDd = Long.valueOf(2097152L);
+  public static final Long teS;
+  
+  static
+  {
+    AppMethodBeat.i(96350);
+    teS = Long.valueOf(2097152L);
+    AppMethodBeat.o(96350);
+  }
 }
 
 

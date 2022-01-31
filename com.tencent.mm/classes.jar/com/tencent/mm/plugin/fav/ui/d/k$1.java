@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fav.ui.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.g;
 
@@ -10,7 +11,9 @@ final class k$1
   
   public final void run()
   {
-    b.o(this.jYr);
+    AppMethodBeat.i(74644);
+    b.o(this.msL);
+    AppMethodBeat.o(74644);
   }
 }
 

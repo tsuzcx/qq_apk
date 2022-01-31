@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.product.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -7,158 +8,164 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.platformtools.x.a;
 import com.tencent.mm.plugin.product.a.a;
 import com.tencent.mm.plugin.product.b.b;
 import com.tencent.mm.plugin.product.b.e;
 import com.tencent.mm.plugin.product.b.m;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class MallProductSelectSkuUI
   extends MallBaseUI
   implements x.a
 {
-  private TextView haW;
-  private m mRP;
-  private e mSe;
-  private com.tencent.mm.plugin.product.b.c mTL;
-  private ImageView mUn;
-  private TextView mUo;
-  private TextView mUp;
-  private Button mUq;
-  private ListView mUr;
-  private MallProductSelectAmountView mUs = null;
-  private i mUt = null;
-  private f mUu;
+  private TextView iJG;
+  private m ptU;
+  private e pul;
+  private com.tencent.mm.plugin.product.b.c pvR;
+  private f pwA;
+  private ImageView pwt;
+  private TextView pwu;
+  private TextView pwv;
+  private Button pww;
+  private ListView pwx;
+  private MallProductSelectAmountView pwy = null;
+  private i pwz = null;
   
-  private void aZ()
+  private void bJ()
   {
-    if (this.mRP != null)
+    AppMethodBeat.i(44115);
+    if (this.ptU != null)
     {
-      if ((this.mSe == null) || (this.mRP.mSu == null)) {
-        break label210;
+      if ((this.pul == null) || (this.ptU.puA == null)) {
+        break label180;
       }
-      this.mUo.setText(b.p(this.mSe.mSi, this.mSe.mSj, this.mRP.mSu.mOZ));
-      if (this.mRP.mSu != null) {
-        this.haW.setText(this.mRP.mSu.name);
-      }
-    }
-    if (!bk.bl(this.mTL.brR()))
-    {
-      localObject = x.a(new c(this.mTL.brR()));
-      this.mUn.setImageBitmap((Bitmap)localObject);
-      x.a(this);
-    }
-    this.mUp.setVisibility(8);
-    Object localObject = this.mUs;
-    int i = this.mTL.brZ();
-    int j = this.mTL.mRP.mSt;
-    if (i > j) {
-      ((MallProductSelectAmountView)localObject).mUi = 3;
-    }
-    for (((MallProductSelectAmountView)localObject).mUh = j;; ((MallProductSelectAmountView)localObject).mUh = i)
-    {
-      ((MallProductSelectAmountView)localObject).bsp();
-      if (((MallProductSelectAmountView)localObject).mUl != null) {
-        ((MallProductSelectAmountView)localObject).mUl.ex(((MallProductSelectAmountView)localObject).mUk);
-      }
-      this.mUt.notifyDataSetChanged();
-      return;
-      label210:
-      this.mUo.setText(b.p(this.mRP.mSu.mSG, this.mRP.mSu.mSH, this.mRP.mSu.mOZ));
-      break;
-      ((MallProductSelectAmountView)localObject).mUi = 1;
-    }
-  }
-  
-  protected final int getLayoutId()
-  {
-    return a.g.product_select_sku_ui;
-  }
-  
-  protected final void initView()
-  {
-    setMMTitle(a.i.mall_product_select_sku_title);
-    this.mUn = ((ImageView)findViewById(a.f.mall_product_select_sku_img_iv));
-    this.haW = ((TextView)findViewById(a.f.mall_product_select_sku_title_tv));
-    this.mUo = ((TextView)findViewById(a.f.mall_product_select_sku_price_tv));
-    this.mUp = ((TextView)findViewById(a.f.mall_product_select_sku_err));
-    this.mUq = ((Button)findViewById(a.f.mall_product_select_sku_pre_submit));
-    this.mUr = ((ListView)findViewById(a.f.mall_product_sku_lv));
-    this.mUs = ((MallProductSelectAmountView)findViewById(a.f.select_amount));
-    this.mUs.setAmount(this.mTL.mCount);
-    this.mUt = new i(this);
-    if ((this.mRP != null) && (this.mRP.mSu != null) && (this.mRP.mSu.mSO != null)) {
-      this.mUt.mUw = this.mRP.mSu.mSO;
+      this.pwu.setText(b.v(this.pul.pup, this.pul.puq, this.ptU.puA.ppp));
     }
     for (;;)
     {
-      this.mUt.mUx = new MallProductSelectSkuUI.2(this);
-      this.mUr.setAdapter(this.mUt);
-      this.mUs.setOnAmountChangeListener(new MallProductSelectSkuUI.3(this));
-      this.mUq.setOnClickListener(new MallProductSelectSkuUI.4(this));
-      this.mUn.setFocusable(true);
-      this.mUn.setFocusableInTouchMode(true);
-      this.mUn.requestFocus();
+      if (this.ptU.puA != null) {
+        this.iJG.setText(this.ptU.puA.name);
+      }
+      if (!bo.isNullOrNil(this.pvR.caX()))
+      {
+        Bitmap localBitmap = x.a(new c(this.pvR.caX()));
+        this.pwt.setImageBitmap(localBitmap);
+        x.a(this);
+      }
+      this.pwv.setVisibility(8);
+      this.pwy.fh(this.pvR.cbf(), this.pvR.ptU.puz);
+      this.pwz.notifyDataSetChanged();
+      AppMethodBeat.o(44115);
       return;
-      y.e("MicroMsg.MallProductSelectSkuUI", "Illage mProductInfo.base_attr.sku_table");
+      label180:
+      this.pwu.setText(b.v(this.ptU.puA.puM, this.ptU.puA.puN, this.ptU.puA.ppp));
     }
   }
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public int getLayoutId()
   {
+    return 2130970455;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(44114);
+    setMMTitle(2131301483);
+    this.pwt = ((ImageView)findViewById(2131826804));
+    this.iJG = ((TextView)findViewById(2131826805));
+    this.pwu = ((TextView)findViewById(2131826806));
+    this.pwv = ((TextView)findViewById(2131826809));
+    this.pww = ((Button)findViewById(2131826810));
+    this.pwx = ((ListView)findViewById(2131826807));
+    this.pwy = ((MallProductSelectAmountView)findViewById(2131826808));
+    this.pwy.setAmount(this.pvR.mCount);
+    this.pwz = new i(this);
+    if ((this.ptU != null) && (this.ptU.puA != null) && (this.ptU.puA.puU != null)) {
+      this.pwz.pwC = this.ptU.puA.puU;
+    }
+    for (;;)
+    {
+      this.pwz.pwD = new MallProductSelectSkuUI.2(this);
+      this.pwx.setAdapter(this.pwz);
+      this.pwy.setOnAmountChangeListener(new MallProductSelectSkuUI.3(this));
+      this.pww.setOnClickListener(new MallProductSelectSkuUI.4(this));
+      this.pwt.setFocusable(true);
+      this.pwt.setFocusableInTouchMode(true);
+      this.pwt.requestFocus();
+      AppMethodBeat.o(44114);
+      return;
+      ab.e("MicroMsg.MallProductSelectSkuUI", "Illage mProductInfo.base_attr.sku_table");
+    }
+  }
+  
+  public final void m(String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(44117);
     paramString = new StringBuilder().append(paramString).append(", bitmap = ");
     if (paramBitmap == null) {}
     for (boolean bool = true;; bool = false)
     {
-      y.d("MicroMsg.MallProductSelectSkuUI", bool);
-      if (!bk.bl(this.mTL.brR())) {
+      ab.d("MicroMsg.MallProductSelectSkuUI", bool);
+      if (!bo.isNullOrNil(this.pvR.caX())) {
         break;
       }
+      AppMethodBeat.o(44117);
       return;
     }
-    this.mUn.post(new MallProductSelectSkuUI.5(this, paramBitmap));
+    this.pwt.post(new MallProductSelectSkuUI.5(this, paramBitmap));
+    AppMethodBeat.o(44117);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(44116);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.mUu.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.pwA.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(44116);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(44111);
     super.onCreate(paramBundle);
-    this.mUu = new f(this.mController.uMN, new MallProductSelectSkuUI.1(this));
-    a.brN();
-    this.mTL = a.brO();
-    this.mRP = this.mTL.mRP;
+    this.pwA = new f(getContext(), new MallProductSelectSkuUI.1(this));
+    a.caT();
+    this.pvR = a.caU();
+    this.ptU = this.pvR.ptU;
     initView();
-    aZ();
+    bJ();
+    AppMethodBeat.o(44111);
   }
   
   public void onStart()
   {
-    this.mUu.onStart();
+    AppMethodBeat.i(44112);
+    this.pwA.onStart();
     super.onStart();
+    AppMethodBeat.o(44112);
   }
   
-  protected void onStop()
+  public void onStop()
   {
-    this.mUu.onStop();
+    AppMethodBeat.i(44113);
+    this.pwA.onStop();
     super.onStop();
+    AppMethodBeat.o(44113);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MallProductSelectSkuUI
  * JD-Core Version:    0.7.0.1
  */

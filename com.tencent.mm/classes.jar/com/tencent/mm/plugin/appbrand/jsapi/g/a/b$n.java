@@ -1,10 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
-public final class b$n
+public abstract interface b$n
 {
-  public double latitude;
-  public double longitude;
-  public String name;
+  public abstract boolean b(b.q paramq);
 }
 
 

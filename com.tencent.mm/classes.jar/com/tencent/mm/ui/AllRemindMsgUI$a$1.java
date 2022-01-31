@@ -1,19 +1,19 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.s;
-import com.tencent.mm.modelsimple.n;
+import com.tencent.mm.model.t;
+import com.tencent.mm.modelsimple.p;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.ajw;
-import com.tencent.mm.protocal.c.ayn;
-import com.tencent.mm.protocal.c.bkj;
-import com.tencent.mm.protocal.c.yk;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.acr;
+import com.tencent.mm.protocal.protobuf.aph;
+import com.tencent.mm.protocal.protobuf.bfk;
+import com.tencent.mm.protocal.protobuf.btj;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import java.io.IOException;
@@ -28,99 +28,101 @@ final class AllRemindMsgUI$a$1
   
   public final void run()
   {
-    Object localObject1 = ((ajw)((n)this.bEe).esv.ecF.ecN).tgE;
+    AppMethodBeat.i(29115);
+    Object localObject1 = ((aph)((p)this.ckS).fBd.fsW.fta).xfm;
     LinkedList localLinkedList = new LinkedList();
     if (localObject1 != null)
     {
       Iterator localIterator = ((List)localObject1).iterator();
       if (localIterator.hasNext())
       {
-        localObject1 = (bkj)localIterator.next();
-        AllRemindMsgUI.d locald = new AllRemindMsgUI.d(this.uGC.uGB);
-        locald.uGI = ((bkj)localObject1);
-        locald.timestamp = (((bkj)localObject1).jxx * 1000L);
-        locald.brC = ((bkj)localObject1).tAu;
-        locald.uGJ = ((bkj)localObject1).tEd;
+        localObject1 = (btj)localIterator.next();
+        AllRemindMsgUI.d locald = new AllRemindMsgUI.d(this.yTE.yTD);
+        locald.yTK = ((btj)localObject1);
+        locald.timestamp = (((btj)localObject1).lGW * 1000L);
+        locald.subType = ((btj)localObject1).xCa;
+        locald.yTL = ((btj)localObject1).xGT;
         Object localObject3;
-        if (((bkj)localObject1).tAu == 1) {
-          localObject3 = new ayn();
+        if (((btj)localObject1).xCa == 1) {
+          localObject3 = new bfk();
         }
         for (;;)
         {
           try
           {
-            ((ayn)localObject3).aH(((bkj)localObject1).sQA.oY);
-            locald.title = ((ayn)localObject3).bGw;
-            locald.username = ((ayn)localObject3).hPY;
-            locald.bIt = ((ayn)localObject3).ndp;
+            ((bfk)localObject3).parseFrom(((btj)localObject1).wPb.pW);
+            locald.title = ((bfk)localObject3).Title;
+            locald.username = ((bfk)localObject3).jJA;
+            locald.cpO = ((bfk)localObject3).pIG;
             if (locald.username != null)
             {
-              if (!s.fn(locald.username)) {
+              if (!t.lA(locald.username)) {
                 continue;
               }
-              localObject1 = ((j)g.r(j.class)).Fw().abl(locald.username);
+              localObject1 = ((j)g.E(j.class)).YA().arw(locald.username);
               if (localObject1 != null)
               {
-                if (((ad)localObject1).Bq() == null)
+                if (((ad)localObject1).Of() == null)
                 {
-                  localObject1 = ((ad)localObject1).Bp();
+                  localObject1 = ((ad)localObject1).Oe();
                   locald.nickname = ((String)localObject1);
                 }
               }
               else
               {
-                if (!bk.bl(locald.nickname)) {
+                if (!bo.isNullOrNil(locald.nickname)) {
                   continue;
                 }
-                localObject1 = this.uGC.uGB.getString(R.l.chatting_roominfo_noname);
+                localObject1 = this.yTE.yTD.getString(2131298302);
                 locald.nickname = ((String)localObject1);
               }
             }
             else
             {
-              y.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] getRemind:%s", new Object[] { locald });
+              ab.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] getRemind:%s", new Object[] { locald });
               localLinkedList.add(locald);
             }
           }
           catch (IOException localIOException1)
           {
-            y.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] %s", new Object[] { localIOException1.toString() });
+            ab.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] %s", new Object[] { localIOException1.toString() });
             continue;
-            localObject2 = localIOException1.Bq();
+            localObject2 = localIOException1.Of();
             continue;
             localObject2 = locald.nickname;
             continue;
-            localObject2 = ((j)g.r(j.class)).Fw().abl(locald.username);
-            if (((ad)localObject2).Bq() != null) {}
+            localObject2 = ((j)g.E(j.class)).YA().arw(locald.username);
+            if (((ad)localObject2).Of() != null) {}
           }
-          for (Object localObject2 = ((ad)localObject2).Bp();; localObject2 = ((ad)localObject2).Bq())
+          for (Object localObject2 = ((ad)localObject2).Oe();; localObject2 = ((ad)localObject2).Of())
           {
             locald.nickname = ((String)localObject2);
             break;
           }
-          if (((bkj)localObject2).tAu == 2)
+          if (((btj)localObject2).xCa == 2)
           {
-            localObject3 = new yk();
+            localObject3 = new acr();
             try
             {
-              ((yk)localObject3).aH(((bkj)localObject2).sQA.oY);
-              locald.title = ((yk)localObject3).bGw;
-              locald.bIl = ((yk)localObject3).svA;
-              locald.sWz = ((yk)localObject3).svB;
+              ((acr)localObject3).parseFrom(((btj)localObject2).wPb.pW);
+              locald.title = ((acr)localObject3).Title;
+              locald.cpG = ((acr)localObject3).woH;
+              locald.wUy = ((acr)localObject3).woI;
             }
             catch (IOException localIOException2)
             {
               for (;;)
               {
-                y.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] %s", new Object[] { localIOException2.toString() });
+                ab.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] %s", new Object[] { localIOException2.toString() });
               }
             }
           }
         }
       }
-      AllRemindMsgUI.a(this.uGC.uGB, localLinkedList);
+      AllRemindMsgUI.a(this.yTE.yTD, localLinkedList);
     }
-    ai.d(new AllRemindMsgUI.a.1.1(this));
+    al.d(new AllRemindMsgUI.a.1.1(this));
+    AppMethodBeat.o(29115);
   }
 }
 

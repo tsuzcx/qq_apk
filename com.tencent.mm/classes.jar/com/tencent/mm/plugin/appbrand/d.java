@@ -1,50 +1,128 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.plugin.appbrand.appstorage.k;
-import com.tencent.mm.plugin.appbrand.b.b;
+import android.content.Context;
+import com.tencent.mm.plugin.appbrand.appstorage.n;
+import com.tencent.mm.plugin.appbrand.appstorage.o;
 import com.tencent.mm.plugin.appbrand.b.c;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.plugin.appbrand.widget.b.l;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public abstract class d
-  extends com.tencent.mm.plugin.appbrand.jsapi.d
-  implements f
+  extends com.tencent.mm.plugin.appbrand.jsapi.i
 {
-  public final <T extends g> T D(Class<T> paramClass)
+  public final <T extends j> T U(Class<T> paramClass)
   {
-    if (getRuntime() != null) {
-      return getRuntime().c(paramClass, true);
+    if (isRunning())
+    {
+      j localj = getRuntime().d(paramClass, false);
+      if (localj != null) {
+        return localj;
+      }
     }
-    return super.D(paramClass);
+    return super.U(paramClass);
   }
   
-  public final b Zk()
+  public final <T extends k> T V(Class<T> paramClass)
   {
-    if (getRuntime() == null) {
-      return b.fFL;
+    k localk1;
+    if (isRunning())
+    {
+      k localk2 = getRuntime().V(paramClass);
+      localk1 = localk2;
+      if (localk2 != null) {}
     }
-    return getRuntime().fyy.fFN.acz();
+    else
+    {
+      localk1 = super.V(paramClass);
+    }
+    return localk1;
   }
   
-  public final k Zl()
+  public final com.tencent.mm.plugin.appbrand.b.b asW()
+  {
+    if (!isRunning()) {
+      return com.tencent.mm.plugin.appbrand.b.b.gYh;
+    }
+    return getRuntime().gPL.gYj.awr();
+  }
+  
+  public final l asX()
+  {
+    if (!isRunning()) {
+      return super.asX();
+    }
+    return getRuntime().gPE;
+  }
+  
+  public final n asY()
+  {
+    return (n)q(n.class);
+  }
+  
+  public final String getAppId()
   {
     if (getRuntime() == null) {
       return null;
     }
-    return getRuntime().Zl();
+    return getRuntime().mAppId;
   }
   
-  public final com.tencent.mm.plugin.appbrand.widget.b.i Zm()
+  public final Context getContext()
   {
+    Object localObject1;
     if (getRuntime() == null) {
-      return null;
+      localObject1 = ah.getContext();
     }
-    return getRuntime().fys;
+    Object localObject2;
+    do
+    {
+      do
+      {
+        return localObject1;
+        localObject2 = getRuntime().getContext();
+        localObject1 = localObject2;
+      } while (localObject2 != null);
+      localObject2 = getRuntime().mContext;
+      localObject1 = localObject2;
+    } while (localObject2 != null);
+    return ah.getContext();
+  }
+  
+  public boolean isRunning()
+  {
+    i locali = getRuntime();
+    return (locali != null) && (!locali.mFinished);
+  }
+  
+  public final <T extends com.tencent.luggage.a.b> T q(Class<T> paramClass)
+  {
+    Object localObject = getRuntime();
+    if (localObject != null)
+    {
+      com.tencent.luggage.a.b localb = (com.tencent.luggage.a.b)((i)localObject).E(paramClass);
+      localObject = localb;
+      if (localb != null) {}
+    }
+    else
+    {
+      localObject = super.q(paramClass);
+    }
+    return localObject;
+  }
+  
+  public final o wX()
+  {
+    if (!isRunning()) {
+      return super.wX();
+    }
+    return getRuntime().wX();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.d
  * JD-Core Version:    0.7.0.1
  */

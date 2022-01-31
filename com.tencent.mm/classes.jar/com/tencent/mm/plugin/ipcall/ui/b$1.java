@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.a.g.d;
 import com.tencent.mm.plugin.ipcall.a.i;
 import com.tencent.mm.plugin.ipcall.b.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class b$1
   implements Runnable
@@ -12,13 +13,16 @@ final class b$1
   
   public final void run()
   {
-    if (System.currentTimeMillis() - this.ltx.ltq >= 500L)
+    AppMethodBeat.i(21969);
+    if (System.currentTimeMillis() - this.nQQ.nQJ >= 500L)
     {
-      this.ltx.lto = a.av(this.ltx.bER, this.ltx.ltm + this.ltx.ltn);
-      ai.d(new b.1.1(this, i.bcm().FA(this.ltx.lto)));
+      this.nQQ.nQH = a.aE(this.nQQ.cmc, this.nQQ.nQF + this.nQQ.nQG);
+      al.d(new b.1.1(this, i.bJt().Ra(this.nQQ.nQH)));
+      AppMethodBeat.o(21969);
       return;
     }
-    ai.d(new b.1.2(this));
+    al.d(new b.1.2(this));
+    AppMethodBeat.o(21969);
   }
 }
 

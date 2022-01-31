@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginHistoryUI$11
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class LoginHistoryUI$11
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LoginHistoryUI.g(this.fnc);
+    AppMethodBeat.i(124922);
+    LoginHistoryUI.h(this.gEw);
+    AppMethodBeat.o(124922);
   }
 }
 

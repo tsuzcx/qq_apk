@@ -3,6 +3,7 @@ package org.xwalk.core;
 import android.app.Application;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
 
 public class XWalkApplication
@@ -19,15 +20,22 @@ public class XWalkApplication
   
   void addResource(Resources paramResources)
   {
-    if (this.mRes != null) {
+    AppMethodBeat.i(85537);
+    if (this.mRes != null)
+    {
+      AppMethodBeat.o(85537);
       return;
     }
     this.mRes = new XWalkMixedResources(super.getResources(), paramResources);
+    AppMethodBeat.o(85537);
   }
   
   void addResource(String paramString)
   {
-    if (this.mRes != null) {
+    AppMethodBeat.i(85538);
+    if (this.mRes != null)
+    {
+      AppMethodBeat.o(85538);
       return;
     }
     try
@@ -37,26 +45,36 @@ public class XWalkApplication
       paramString = super.getResources();
       paramString = new Resources(localAssetManager, paramString.getDisplayMetrics(), paramString.getConfiguration());
       this.mRes = new XWalkMixedResources(super.getResources(), paramString);
+      AppMethodBeat.o(85538);
       return;
     }
     catch (Exception paramString)
     {
       Log.e("XWalkLib", paramString.getMessage());
+      AppMethodBeat.o(85538);
     }
   }
   
   public Resources getResources()
   {
-    if (this.mRes == null) {
-      return super.getResources();
+    AppMethodBeat.i(85536);
+    if (this.mRes == null)
+    {
+      localResources = super.getResources();
+      AppMethodBeat.o(85536);
+      return localResources;
     }
-    return this.mRes;
+    Resources localResources = this.mRes;
+    AppMethodBeat.o(85536);
+    return localResources;
   }
   
   public void onCreate()
   {
+    AppMethodBeat.i(85535);
     super.onCreate();
     gApp = this;
+    AppMethodBeat.o(85535);
   }
 }
 

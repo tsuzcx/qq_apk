@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="i" parent="@android:style/Widget.Material.Spinner.Underlined" />
-    <style name="b7" parent="@style/a0e" />
-    <style name="b9" parent="@style/a0f" />
-    <style name="bj" parent="@android:style/Widget.Material.Button.Borderless.Colored" />
-    <style name="cq" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Menu" />
-    <style name="cr" parent="@android:style/TextAppearance.Material.Widget.Button.Inverse" />
-    <style name="cs" parent="@android:style/Widget.Material.Button.Colored" />
-    <style name="ct" parent="@android:style/Widget.Material.RatingBar.Indicator" />
-    <style name="cu" parent="@android:style/Widget.Material.RatingBar.Small" />
-    <style name="cv" parent="@style/dp">
-        <item name="ey">?android:colorBackgroundFloating</item>
+    <style name="b_" parent="@style/a1r" />
+    <style name="bb" parent="@style/a1s" />
+    <style name="bm" parent="@android:style/Widget.Material.Button.Borderless.Colored" />
+    <style name="ct" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Menu" />
+    <style name="cu" parent="@android:style/TextAppearance.Material.Widget.Button.Inverse" />
+    <style name="cv" parent="@android:style/Widget.Material.Button.Colored" />
+    <style name="cw" parent="@android:style/Widget.Material.RatingBar.Indicator" />
+    <style name="cx" parent="@android:style/Widget.Material.RatingBar.Small" />
+    <style name="cy" parent="@style/dv">
+        <item name="h5">?android:colorBackgroundFloating</item>
     </style>
-    <style name="cw" parent="@style/nc">
-        <item name="c3">@style/a0g</item>
+    <style name="cz" parent="@style/o9">
+        <item name="e4">@style/a1t</item>
     </style>
-    <style name="cx" parent="@style/nb">
+    <style name="d0" parent="@style/o8">
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowActionBar">true</item>
-        <item name="c3">@style/a0g</item>
+        <item name="e4">@style/a1t</item>
     </style>
-    <style name="a0e" parent="@style/a0c">
-        <item name="c2">?android:actionBarItemBackground</item>
-        <item name="c3">?android:actionMenuTextAppearance</item>
-        <item name="c4">?android:actionMenuTextColor</item>
-        <item name="dw">@drawable/a3r</item>
-        <item name="ed">?android:ratingBarStyleIndicator</item>
-        <item name="ee">?android:ratingBarStyleSmall</item>
+    <style name="a1r" parent="@style/a1p">
+        <item name="e3">?android:actionBarItemBackground</item>
+        <item name="e4">?android:actionMenuTextAppearance</item>
+        <item name="e5">?android:actionMenuTextColor</item>
+        <item name="fy">@drawable/a_o</item>
+        <item name="gf">?android:ratingBarStyleIndicator</item>
+        <item name="gg">?android:ratingBarStyleSmall</item>
     </style>
-    <style name="a0f" parent="@style/a0d">
-        <item name="c2">?android:actionBarItemBackground</item>
-        <item name="c3">?android:actionMenuTextAppearance</item>
-        <item name="c4">?android:actionMenuTextColor</item>
-        <item name="dw">@drawable/a3r</item>
-        <item name="ed">?android:ratingBarStyleIndicator</item>
-        <item name="ee">?android:ratingBarStyleSmall</item>
+    <style name="a1s" parent="@style/a1q">
+        <item name="e3">?android:actionBarItemBackground</item>
+        <item name="e4">?android:actionMenuTextAppearance</item>
+        <item name="e5">?android:actionMenuTextColor</item>
+        <item name="fy">@drawable/a_o</item>
+        <item name="gf">?android:ratingBarStyleIndicator</item>
+        <item name="gg">?android:ratingBarStyleSmall</item>
     </style>
-    <style name="a0g" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Menu">
+    <style name="a1t" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Menu">
         <item name="android:textSize">12.0sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#ffffffff</item>

@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.mm.plugin.appbrand.jsapi.l;
+import android.view.View;
+import android.view.ViewGroup;
 
-final class d$a
-  extends l
+public abstract interface d$a
 {
-  private static final int CTRL_INDEX = 390;
-  private static final String NAME = "onTabItemTap";
+  public abstract ViewGroup cs(View paramView);
 }
 
 

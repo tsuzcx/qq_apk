@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/avp" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/aws" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/or" android:gravity="center" android:id="@id/avq" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-</FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/ix" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ProgressBar android:layout_gravity="center" android:layout_width="14.0dip" android:layout_height="14.0dip" style="@style/a00" />
+        <TextView android:gravity="center" android:id="@id/awt" android:text="@string/ako" style="@style/gq" />
+    </LinearLayout>
+</RelativeLayout>

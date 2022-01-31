@@ -1,24 +1,31 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.menu.MenuDelegate_EnableDebug;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.MMActivity;
 import org.json.JSONObject;
 
 public final class ax
   extends a
 {
-  public static final int CTRL_INDEX = 249;
-  public static final String NAME = "setEnableDebug";
+  public static final int CTRL_INDEX = 642;
+  public static final String NAME = "openWCCardHomePage";
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    boolean bool = paramJSONObject.optBoolean("enableDebug", false);
-    if (((com.tencent.mm.plugin.appbrand.config.i)paramc.D(com.tencent.mm.plugin.appbrand.config.i.class)).fPN == bool)
+    AppMethodBeat.i(143253);
+    paramJSONObject = paramc.getContext();
+    if (!(paramJSONObject instanceof MMActivity))
     {
-      paramc.C(paramInt, h("ok", null));
+      paramc.h(paramInt, j("fail", null));
+      ab.e("MicroMsg.JsApiOpenCardHomePage", "mmActivity is null, invoke fail!");
+      AppMethodBeat.o(143253);
       return;
     }
-    MenuDelegate_EnableDebug.e(paramc.getContext(), paramc.getAppId(), bool);
-    paramc.C(paramInt, h("ok", null));
+    d.b(paramJSONObject, "card", ".ui.v2.CardHomePageNewUI", new Intent());
+    AppMethodBeat.o(143253);
   }
 }
 

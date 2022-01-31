@@ -2,7 +2,8 @@ package com.tencent.mm.chatroom.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.storage.ad;
 
 final class DelChatroomMemberUI$a$1$1
@@ -12,12 +13,14 @@ final class DelChatroomMemberUI$a$1$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DelChatroomMemberUI.a(this.doT.doR.doM, this.doS.field_username);
+    AppMethodBeat.i(104088);
+    DelChatroomMemberUI.a(this.egp.egn.egi, this.ego.field_username);
+    AppMethodBeat.o(104088);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.DelChatroomMemberUI.a.1.1
  * JD-Core Version:    0.7.0.1
  */

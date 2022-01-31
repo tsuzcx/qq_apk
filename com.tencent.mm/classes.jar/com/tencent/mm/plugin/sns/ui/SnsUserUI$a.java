@@ -4,135 +4,160 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.v7.app.AppCompatActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.an;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.am.a;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.an.a;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sns.storage.v;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
 
 class SnsUserUI$a
-  extends as.f
+  extends at.f
 {
-  private az pfz = null;
+  private ay rYs = null;
   
   SnsUserUI$a(SnsUserUI paramSnsUserUI) {}
   
-  public void dX(int paramInt1, int paramInt2)
+  public final void EU(int paramInt)
   {
-    y.i("MicroMsg.SnsUserUI", "showImg snsinfo snslocalId:%d, pos:%d，mIsSelf:%b ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(SnsUserUI.f(this.pjB)) });
-    if ((SnsUserUI.f(this.pjB)) && (paramInt2 == -1))
+    AppMethodBeat.i(39812);
+    n localn = ag.cpf().Ez(paramInt);
+    if (localn == null)
     {
-      g.DQ();
-      Object localObject1 = (String)g.DP().Dz().get(ac.a.upU, null);
-      if (!bk.bl((String)localObject1))
+      AppMethodBeat.o(39812);
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.setClass(this.sce, SnsCommentDetailUI.class);
+    localIntent.putExtra("INTENT_TALKER", localn.field_userName);
+    localIntent.putExtra("INTENT_SNS_LOCAL_ID", v.aF("sns_table_", paramInt));
+    this.sce.startActivityForResult(localIntent, 12);
+    AppMethodBeat.o(39812);
+  }
+  
+  public void fJ(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(39810);
+    ab.i("MicroMsg.SnsUserUI", "showImg snsinfo snslocalId:%d, pos:%d，mIsSelf:%b ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(SnsUserUI.f(this.sce)) });
+    if ((SnsUserUI.f(this.sce)) && (paramInt2 == -1))
+    {
+      g.RM();
+      Object localObject = (String)g.RL().Ru().get(ac.a.yzU, null);
+      if (!bo.isNullOrNil((String)localObject))
       {
-        g.DQ();
-        String str = (String)g.DP().Dz().get(ac.a.upW, "");
-        Object localObject2 = new com.tencent.mm.h.b.a.v().uR();
-        ((com.tencent.mm.h.b.a.v)localObject2).cie = str;
-        ((com.tencent.mm.h.b.a.v)localObject2).QX();
-        localObject1 = com.tencent.d.f.e.afK((String)localObject1);
-        localObject2 = Parcel.obtain();
-        ((Parcel)localObject2).unmarshall((byte[])localObject1, 0, localObject1.length);
-        ((Parcel)localObject2).setDataPosition(0);
+        g.RM();
+        String str = (String)g.RL().Ru().get(ac.a.yzW, "");
+        new an().Fo().fS(str).ake();
+        localObject = com.tencent.e.f.e.awF((String)localObject);
+        Parcel localParcel = Parcel.obtain();
+        localParcel.unmarshall((byte[])localObject, 0, localObject.length);
+        localParcel.setDataPosition(0);
         try
         {
-          localObject1 = (Intent)Intent.CREATOR.createFromParcel((Parcel)localObject2);
-          ((Intent)localObject1).addFlags(268435456);
-          ((Intent)localObject1).setClass(this.pjB, SnsUploadUI.class);
-          ((Intent)localObject1).putExtra("KSessionID", str);
-          this.pjB.startActivity((Intent)localObject1);
+          localObject = (Intent)Intent.CREATOR.createFromParcel(localParcel);
+          ((Intent)localObject).addFlags(268435456);
+          ((Intent)localObject).setClass(this.sce, SnsUploadUI.class);
+          ((Intent)localObject).putExtra("KSessionID", str);
+          this.sce.startActivity((Intent)localObject);
+          AppMethodBeat.o(39810);
           return;
         }
         catch (Exception localException)
         {
-          g.DQ();
-          g.DP().Dz().c(ac.a.upU, "");
-          g.DQ();
-          g.DP().Dz().c(ac.a.upW, "");
+          g.RM();
+          g.RL().Ru().set(ac.a.yzU, "");
+          g.RM();
+          g.RL().Ru().set(ac.a.yzW, "");
         }
       }
-      this.pfz = new az(this.pjB);
-      this.pfz.phH = new SnsUserUI.a.1(this);
-      this.pfz.c(0, this.pjB.mController.uMN.getString(i.j.app_field_pic_video));
-      this.pfz.phI = new SnsUserUI.a.2(this);
-      this.pfz.bJQ();
+      this.rYs = new ay(this.sce);
+      this.rYs.sao = new n.c()
+      {
+        public final void onCreateMMMenu(l paramAnonymousl)
+        {
+          AppMethodBeat.i(39808);
+          paramAnonymousl.e(0, SnsUserUI.a.this.sce.getString(2131296938));
+          paramAnonymousl.e(1, SnsUserUI.a.this.sce.getString(2131296945));
+          AppMethodBeat.o(39808);
+        }
+      };
+      this.rYs.c(0, this.sce.getContext().getString(2131296943));
+      this.rYs.sap = new SnsUserUI.a.2(this);
+      this.rYs.cwt();
+      AppMethodBeat.o(39810);
       return;
     }
-    Intent localIntent = new Intent(this.pjB, SnsGalleryUI.class);
-    localIntent.putExtra("sns_gallery_userName", SnsUserUI.c(this.pjB));
-    localIntent.putExtra("sns_gallery_is_self", SnsUserUI.f(this.pjB));
+    Intent localIntent = new Intent(this.sce, SnsGalleryUI.class);
+    localIntent.putExtra("sns_gallery_userName", SnsUserUI.c(this.sce));
+    localIntent.putExtra("sns_gallery_is_self", SnsUserUI.f(this.sce));
     localIntent.putExtra("sns_gallery_localId", paramInt1);
-    localIntent.putExtra("sns_source", SnsUserUI.e(this.pjB));
-    localIntent.putExtra("sns_gallery_st_time", SnsUserUI.a(this.pjB).pbP);
-    localIntent.putExtra("sns_gallery_ed_time", SnsUserUI.a(this.pjB).pbQ);
-    if (SnsUserUI.a(this.pjB) != null)
+    localIntent.putExtra("sns_source", SnsUserUI.e(this.sce));
+    localIntent.putExtra("sns_gallery_st_time", SnsUserUI.a(this.sce).rUz);
+    localIntent.putExtra("sns_gallery_ed_time", SnsUserUI.a(this.sce).rUA);
+    if (SnsUserUI.a(this.sce) != null)
     {
-      localIntent.putExtra("sns_gallery_limit_seq", SnsUserUI.a(this.pjB).jKL);
-      SnsUserUI.b(this.pjB).h(SnsUserUI.c(this.pjB), SnsUserUI.a(this.pjB).dW(paramInt1, paramInt2));
-      localIntent.putExtra("sns_gallery_position", SnsUserUI.a(this.pjB).pbT);
+      localIntent.putExtra("sns_gallery_limit_seq", SnsUserUI.a(this.sce).meP);
+      SnsUserUI.b(this.sce).j(SnsUserUI.c(this.sce), SnsUserUI.a(this.sce).fI(paramInt1, paramInt2));
+      localIntent.putExtra("sns_gallery_position", SnsUserUI.a(this.sce).rUD);
     }
-    this.pjB.startActivityForResult(localIntent, 8);
+    this.sce.startActivityForResult(localIntent, 8);
+    AppMethodBeat.o(39810);
   }
   
-  public final void dY(int paramInt1, int paramInt2)
+  public final void fK(int paramInt1, int paramInt2)
   {
-    Object localObject = af.bDF().yt(paramInt1);
-    if (localObject == null) {
+    AppMethodBeat.i(39811);
+    Object localObject = ag.cpf().Ez(paramInt1);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(39811);
       return;
     }
     if (((n)localObject).field_type == 15)
     {
-      localObject = new Intent(this.pjB, SnsGalleryUI.class);
-      ((Intent)localObject).putExtra("sns_gallery_userName", SnsUserUI.c(this.pjB));
-      ((Intent)localObject).putExtra("sns_gallery_is_self", SnsUserUI.f(this.pjB));
+      localObject = new Intent(this.sce, SnsGalleryUI.class);
+      ((Intent)localObject).putExtra("sns_gallery_userName", SnsUserUI.c(this.sce));
+      ((Intent)localObject).putExtra("sns_gallery_is_self", SnsUserUI.f(this.sce));
       ((Intent)localObject).putExtra("sns_gallery_localId", paramInt1);
-      ((Intent)localObject).putExtra("sns_source", SnsUserUI.e(this.pjB));
-      ((Intent)localObject).putExtra("sns_gallery_st_time", SnsUserUI.a(this.pjB).pbP);
-      ((Intent)localObject).putExtra("sns_gallery_ed_time", SnsUserUI.a(this.pjB).pbQ);
-      if (SnsUserUI.a(this.pjB) != null)
+      ((Intent)localObject).putExtra("sns_source", SnsUserUI.e(this.sce));
+      ((Intent)localObject).putExtra("sns_gallery_st_time", SnsUserUI.a(this.sce).rUz);
+      ((Intent)localObject).putExtra("sns_gallery_ed_time", SnsUserUI.a(this.sce).rUA);
+      ((Intent)localObject).putExtra("sns_video_scene", 4);
+      if (SnsUserUI.a(this.sce) != null)
       {
-        ((Intent)localObject).putExtra("sns_gallery_limit_seq", SnsUserUI.a(this.pjB).jKL);
-        SnsUserUI.b(this.pjB).h(SnsUserUI.c(this.pjB), SnsUserUI.a(this.pjB).dW(paramInt1, paramInt2));
-        ((Intent)localObject).putExtra("sns_gallery_position", SnsUserUI.a(this.pjB).pbT);
+        ((Intent)localObject).putExtra("sns_gallery_limit_seq", SnsUserUI.a(this.sce).meP);
+        SnsUserUI.b(this.sce).j(SnsUserUI.c(this.sce), SnsUserUI.a(this.sce).fI(paramInt1, paramInt2));
+        ((Intent)localObject).putExtra("sns_gallery_position", SnsUserUI.a(this.sce).rUD);
       }
-      this.pjB.startActivityForResult((Intent)localObject, 8);
+      this.sce.startActivityForResult((Intent)localObject, 8);
+      AppMethodBeat.o(39811);
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.setClass(this.pjB, SnsCommentDetailUI.class);
+    localIntent.setClass(this.sce, SnsCommentDetailUI.class);
     localIntent.putExtra("INTENT_TALKER", ((n)localObject).field_userName);
-    localIntent.putExtra("INTENT_SNS_LOCAL_ID", com.tencent.mm.plugin.sns.storage.v.al("sns_table_", paramInt1));
-    this.pjB.startActivityForResult(localIntent, 12);
+    localIntent.putExtra("INTENT_SNS_LOCAL_ID", v.aF("sns_table_", paramInt1));
+    this.sce.startActivityForResult(localIntent, 12);
+    AppMethodBeat.o(39811);
   }
   
-  public final void dZ(int paramInt1, int paramInt2)
+  public final void fL(int paramInt1, int paramInt2)
   {
-    y.d("MicroMsg.SnsUserUI", "onFailLongClick localId:%s position:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    n localn = af.bDF().yt(paramInt1);
-    if ((localn != null) && (localn.bDo()) && (localn.bGG())) {
-      SnsUserUI.b(this.pjB, paramInt1);
+    AppMethodBeat.i(39813);
+    ab.d("MicroMsg.SnsUserUI", "onFailLongClick localId:%s position:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    n localn = ag.cpf().Ez(paramInt1);
+    if ((localn != null) && (localn.coN()) && (localn.csJ())) {
+      SnsUserUI.b(this.sce, paramInt1);
     }
-  }
-  
-  public final void yM(int paramInt)
-  {
-    n localn = af.bDF().yt(paramInt);
-    if (localn == null) {
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setClass(this.pjB, SnsCommentDetailUI.class);
-    localIntent.putExtra("INTENT_TALKER", localn.field_userName);
-    localIntent.putExtra("INTENT_SNS_LOCAL_ID", com.tencent.mm.plugin.sns.storage.v.al("sns_table_", paramInt));
-    this.pjB.startActivityForResult(localIntent, 12);
+    AppMethodBeat.o(39813);
   }
 }
 

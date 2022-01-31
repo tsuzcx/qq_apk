@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 final class h$5
@@ -7,20 +8,22 @@ final class h$5
 {
   h$5(String paramString, ArrayList paramArrayList) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.setHeaderTitle(this.dYK);
+    AppMethodBeat.i(106407);
+    paraml.setHeaderTitle(this.cbK);
     int i = 0;
-    while (i < this.dAu.size())
+    while (i < this.etW.size())
     {
-      paraml.e(i, (CharSequence)this.dAu.get(i));
+      paraml.e(i, (CharSequence)this.etW.get(i));
       i += 1;
     }
+    AppMethodBeat.o(106407);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.h.5
  * JD-Core Version:    0.7.0.1
  */

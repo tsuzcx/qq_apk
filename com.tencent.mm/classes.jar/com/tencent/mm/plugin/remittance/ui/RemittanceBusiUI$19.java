@@ -1,14 +1,42 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import com.tencent.mm.h.a.ft;
-import com.tencent.mm.sdk.b.c;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.remittance.model.i;
+import com.tencent.mm.pluginsdk.wallet.b;
+import com.tencent.mm.protocal.protobuf.mq;
 
 final class RemittanceBusiUI$19
-  extends c<ft>
+  implements DialogInterface.OnClickListener
 {
-  RemittanceBusiUI$19(RemittanceBusiUI paramRemittanceBusiUI)
+  RemittanceBusiUI$19(RemittanceBusiUI paramRemittanceBusiUI, i parami) {}
+  
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.udX = ft.class.getName().hashCode();
+    AppMethodBeat.i(142191);
+    RemittanceBusiUI.a(this.qoF, 3, this.qoJ.qji.wpp);
+    if (!RemittanceBusiUI.a(this.qoF, this.qoJ))
+    {
+      if ((RemittanceBusiUI.M(this.qoF)) && (((b)g.E(b.class)).kindaCacheServiceGetBool("NEW_CASHIER_QRCODE_RECEIVE_PAY_SWTICH_KEY")))
+      {
+        if (RemittanceBusiUI.N(this.qoF) == null) {
+          break label102;
+        }
+        RemittanceBusiUI.N(this.qoF).showSafeProgress();
+      }
+      for (;;)
+      {
+        RemittanceBusiUI.b(this.qoF, this.qoJ);
+        AppMethodBeat.o(142191);
+        return;
+        label102:
+        RemittanceBusiUI.O(this.qoF);
+      }
+    }
+    RemittanceBusiUI.P(this.qoF);
+    AppMethodBeat.o(142191);
   }
 }
 

@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.emojicapture.ui.capture;
 
-import com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton.d;
-import com.tencent.mm.sdk.platformtools.y;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
 final class CaptureContainer$c
-  implements MMSightRecordButton.d
+  implements Runnable
 {
   CaptureContainer$c(CaptureContainer paramCaptureContainer) {}
   
-  public final void aKS()
+  public final void run()
   {
-    y.i(CaptureContainer.a(this.jpm), "simpleTapCallback");
-    CaptureContainer.a(this.jpm, false);
+    AppMethodBeat.i(2965);
+    CaptureContainer.a(this.lyp, false, 0);
+    AppMethodBeat.o(2965);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.capture.CaptureContainer.c
  * JD-Core Version:    0.7.0.1
  */

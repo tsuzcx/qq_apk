@@ -1,129 +1,139 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
 import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.app.g;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.d;
-import com.tencent.mm.plugin.appbrand.config.q;
-import com.tencent.mm.protocal.c.cmj;
-import com.tencent.mm.protocal.c.cmk;
-import com.tencent.mm.protocal.c.cmy;
-import com.tencent.mm.protocal.c.cnd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
+import com.tencent.mm.plugin.appbrand.config.r;
+import com.tencent.mm.protocal.protobuf.daa;
+import com.tencent.mm.protocal.protobuf.dab;
+import com.tencent.mm.protocal.protobuf.dbg;
+import com.tencent.mm.protocal.protobuf.dbl;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class e
-  extends a<Boolean, cnd>
+  extends a<Boolean, dbl>
 {
-  private static Boolean a(String paramString1, String paramString2, cnd paramcnd)
+  private static Boolean a(String paramString1, String paramString2, dbl paramdbl)
   {
-    Object localObject1 = null;
-    Object localObject2 = paramcnd.tZU;
-    if (bk.bl((String)localObject2))
+    AppMethodBeat.i(129464);
+    Object localObject1 = paramdbl.yhN;
+    if (bo.isNullOrNil((String)localObject1))
     {
-      y.e("MicroMsg.AppBrand.Predownload.CmdIssueContact", "call[%s | %s], empty base64", new Object[] { paramString1, paramString2 });
-      return Boolean.FALSE;
+      ab.e("MicroMsg.AppBrand.Predownload.CmdIssueContact", "call[%s | %s], empty base64", new Object[] { paramString1, paramString2 });
+      paramString1 = Boolean.FALSE;
+      AppMethodBeat.o(129464);
+      return paramString1;
     }
-    label232:
-    boolean bool2;
-    boolean bool1;
-    try
+    for (;;)
     {
-      localObject2 = Base64.decode((String)localObject2, 0);
-      localObject3 = new cmk();
-      ((cmk)localObject3).aH((byte[])localObject2);
-      localObject2 = com.tencent.mm.plugin.appbrand.app.e.aaT().d(paramString1, new String[] { "versionInfo" });
-      if (localObject2 == null) {}
-      for (localObject2 = null;; localObject2 = ((WxaAttributes)localObject2).aep())
+      try
       {
-        localObject4 = ((cmk)localObject3).sCG.iterator();
-        if (!((Iterator)localObject4).hasNext()) {
-          break;
+        localObject1 = Base64.decode((String)localObject1, 0);
+        Object localObject2 = new dab();
+        ((dab)localObject2).parseFrom((byte[])localObject1);
+        localObject1 = g.auF().d(paramString1, new String[] { "versionInfo" });
+        WxaAttributes.WxaVersionInfo localWxaVersionInfo;
+        if (localObject1 == null)
+        {
+          localWxaVersionInfo = null;
+          localObject1 = null;
+          localObject3 = ((dab)localObject2).wxO.iterator();
+          if (((Iterator)localObject3).hasNext())
+          {
+            daa localdaa = (daa)((Iterator)localObject3).next();
+            if (!"WxaAppVersionInfo".equals(localdaa.wxP)) {
+              break label492;
+            }
+            localObject1 = WxaAttributes.WxaVersionInfo.AD(localdaa.qsu);
+            break label492;
+          }
         }
-        cmj localcmj = (cmj)((Iterator)localObject4).next();
-        if (!"WxaAppVersionInfo".equals(localcmj.sCH)) {
-          break label445;
+        else
+        {
+          localWxaVersionInfo = ((WxaAttributes)localObject1).ayE();
+          continue;
         }
-        localObject1 = WxaAttributes.d.sI(localcmj.nFs);
-        break label445;
-      }
-      if (localObject1 == null)
-      {
-        localObject1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.fFB;
-        com.tencent.mm.plugin.appbrand.appcache.b.c.a.s(paramcnd.tZH.tZF, 87L);
-        return Boolean.FALSE;
-      }
-      Object localObject4 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.fFB;
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a.s(paramcnd.tZH.tZF, 88L);
-      if ((localObject2 == null) || (localObject1 == null)) {
-        break label448;
-      }
-      if (((WxaAttributes.d)localObject2).cau >= ((WxaAttributes.d)localObject1).cau) {
-        break label454;
-      }
-    }
-    catch (Exception paramcnd)
-    {
-      Object localObject3;
-      label272:
-      long l2;
-      label311:
-      y.printErrStackTrace("MicroMsg.AppBrand.Predownload.CmdIssueContact", paramcnd, "call[%s | %s], decode base64", new Object[] { paramString1, paramString2 });
-      label410:
-      return Boolean.FALSE;
-    }
-    if (bool2)
-    {
-      com.tencent.mm.plugin.appbrand.app.e.aaT().a(paramString1, ((cmk)localObject3).sCF, ((cmk)localObject3).sCG);
-      if (com.tencent.mm.plugin.appbrand.app.e.aaT().d(paramString1, new String[0]) == null) {
-        break label460;
-      }
-      bool1 = true;
-      localObject3 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.fFB;
-      l2 = paramcnd.tZH.tZF;
-      if (!bool1) {
-        break label466;
-      }
-    }
-    label445:
-    label448:
-    label454:
-    label460:
-    label466:
-    for (long l1 = 85L;; l1 = 86L)
-    {
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a.s(l2, l1);
-      int i;
-      if (localObject2 == null)
-      {
-        i = -1;
-        if (localObject1 != null) {
-          break label410;
+        if (localObject1 == null)
+        {
+          localObject1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
+          com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(paramdbl.yhA.yhy, 87L);
+          paramdbl = Boolean.FALSE;
+          AppMethodBeat.o(129464);
+          return paramdbl;
+        }
+        Object localObject3 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
+        com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(paramdbl.yhA.yhy, 88L);
+        if ((localWxaVersionInfo != null) && (localObject1 != null))
+        {
+          if (localWxaVersionInfo.bDc < ((WxaAttributes.WxaVersionInfo)localObject1).bDc)
+          {
+            break label495;
+            if (!bool2) {
+              continue;
+            }
+            g.auF().a(paramString1, ((dab)localObject2).wxN, ((dab)localObject2).wxO);
+            if (g.auF().d(paramString1, new String[0]) != null)
+            {
+              bool1 = true;
+              localObject2 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
+              j = paramdbl.yhA.yhy;
+              if (!bool1) {
+                continue;
+              }
+              i = 85;
+              com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(j, i);
+              if (localWxaVersionInfo != null) {
+                continue;
+              }
+              i = -1;
+              if (localObject1 != null) {
+                continue;
+              }
+              j = -1;
+              ab.i("MicroMsg.AppBrand.Predownload.CmdIssueContact", "call[%s | %s], record.ver %d, issue.ver %d, doIssue %b, issueRet %b", new Object[] { paramString1, paramString2, Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+              AppMethodBeat.o(129464);
+              return Boolean.valueOf(bool1);
+            }
+          }
+          else
+          {
+            bool2 = false;
+            continue;
+          }
+          boolean bool1 = false;
+          continue;
+          int i = 86;
+          continue;
+          localObject2 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
+          com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(paramdbl.yhA.yhy, 84L);
+          bool1 = false;
+          continue;
+          i = localWxaVersionInfo.bDc;
+          continue;
+          int j = ((WxaAttributes.WxaVersionInfo)localObject1).bDc;
+          continue;
+          continue;
         }
       }
-      for (int j = -1;; j = ((WxaAttributes.d)localObject1).cau)
+      catch (Exception paramdbl)
       {
-        y.i("MicroMsg.AppBrand.Predownload.CmdIssueContact", "call[%s | %s], record.ver %d, issue.ver %d, doIssue %b, issueRet %b", new Object[] { paramString1, paramString2, Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-        return Boolean.valueOf(bool1);
-        localObject3 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.fFB;
-        com.tencent.mm.plugin.appbrand.appcache.b.c.a.s(paramcnd.tZH.tZF, 84L);
-        bool1 = false;
-        break;
-        i = ((WxaAttributes.d)localObject2).cau;
-        break label311;
+        ab.printErrStackTrace("MicroMsg.AppBrand.Predownload.CmdIssueContact", paramdbl, "call[%s | %s], decode base64", new Object[] { paramString1, paramString2 });
+        paramString1 = Boolean.FALSE;
+        AppMethodBeat.o(129464);
+        return paramString1;
       }
-      break;
-      bool2 = true;
-      break label232;
-      bool2 = false;
-      break label232;
-      bool1 = false;
-      break label272;
+      label492:
+      label495:
+      boolean bool2 = true;
     }
   }
   
-  final String act()
+  final String awm()
   {
     return "CmdIssueContact";
   }

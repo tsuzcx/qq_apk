@@ -1,8 +1,17 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class e$a
 {
-  private static final e khE = new e((byte)0);
+  private static final e mCo;
+  
+  static
+  {
+    AppMethodBeat.i(74560);
+    mCo = new e((byte)0);
+    AppMethodBeat.o(74560);
+  }
 }
 
 

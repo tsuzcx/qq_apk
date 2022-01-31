@@ -1,14 +1,19 @@
 package com.tencent.xweb;
 
-public abstract class r
+import android.net.Uri;
+import java.util.Map;
+
+public abstract interface r
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7);
+  public abstract String getMethod();
   
-  public abstract void aC(int paramInt, String paramString);
+  public abstract Map<String, String> getRequestHeaders();
   
-  public abstract void at(int paramInt1, int paramInt2, int paramInt3);
+  public abstract Uri getUrl();
   
-  public abstract void h(long paramLong1, long paramLong2, long paramLong3);
+  public abstract boolean hasGesture();
+  
+  public abstract boolean isForMainFrame();
 }
 
 

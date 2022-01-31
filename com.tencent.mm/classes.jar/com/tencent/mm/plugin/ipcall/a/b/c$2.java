@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.ipcall.a.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.a.c.b;
 import com.tencent.mm.plugin.ipcall.a.i;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$2
   implements Runnable
@@ -12,40 +13,45 @@ final class c$2
   
   public final void run()
   {
+    AppMethodBeat.i(21813);
     try
     {
-      c localc = this.lqB;
-      localc.lqv = new com.tencent.mm.f.b.c(v2protocal.VOICE_SAMPLERATE, 1, 6);
-      localc.lqv.ey(20);
-      localc.lqv.aY(true);
-      localc.lqv.up();
-      localc.lqv.bCE = -19;
-      localc.lqv.t(1, false);
-      localc.lqv.aX(true);
-      localc.lqv.bCP = localc.iED;
-      if (!localc.lqv.uq())
+      c localc = this.nNX;
+      localc.nNR = new com.tencent.mm.audio.b.c(v2protocal.VOICE_SAMPLERATE, 1, 6);
+      localc.nNR.gA(20);
+      localc.nNR.bA(true);
+      localc.nNR.EB();
+      localc.nNR.cjs = -19;
+      localc.nNR.t(1, false);
+      localc.nNR.bz(true);
+      localc.nNR.cjD = localc.kJP;
+      if (!localc.nNR.EC())
       {
-        y.e("MicroMsg.IPCallRecorder", "start record failed");
-        if (localc.lqv.bCt != 13) {
-          i.bci().bcF();
+        ab.e("MicroMsg.IPCallRecorder", "start record failed");
+        if (localc.nNR.cjh != 13)
+        {
+          i.bJp().bJM();
+          AppMethodBeat.o(21813);
         }
       }
       else
       {
-        localc.lqv.aZ(localc.dnJ);
-        return;
+        localc.nNR.bB(localc.efg);
       }
+      AppMethodBeat.o(21813);
+      return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.IPCallRecorder", "start record error: %s", new Object[] { localException.getMessage() });
-      i.bci().bcF();
+      ab.e("MicroMsg.IPCallRecorder", "start record error: %s", new Object[] { localException.getMessage() });
+      i.bJp().bJM();
+      AppMethodBeat.o(21813);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.b.c.2
  * JD-Core Version:    0.7.0.1
  */

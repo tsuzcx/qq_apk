@@ -3,7 +3,8 @@ package com.tencent.mm.wallet_core.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
 final class EditHintView$8
@@ -13,28 +14,33 @@ final class EditHintView$8
   
   public final void onClick(View paramView)
   {
-    if (EditHintView.l(this.wBY).getVisibility() == 0)
+    AppMethodBeat.i(49185);
+    if (EditHintView.l(this.AYr).getVisibility() == 0)
     {
-      if ((!this.wBY.fun) || (bk.bl(this.wBY.getText()))) {
-        break label47;
+      if ((this.AYr.gLP) && (!bo.isNullOrNil(this.AYr.getText())))
+      {
+        this.AYr.AYg.ClearInput();
+        AppMethodBeat.o(49185);
+        return;
       }
-      this.wBY.wBN.ClearInput();
+      if (EditHintView.f(this.AYr) == 1)
+      {
+        if ((EditHintView.m(this.AYr) != null) && (EditHintView.n(this.AYr)))
+        {
+          EditHintView.m(this.AYr);
+          AppMethodBeat.o(49185);
+        }
+      }
+      else {
+        EditHintView.o(this.AYr);
+      }
     }
-    label47:
-    do
-    {
-      return;
-      if (EditHintView.f(this.wBY) != 1) {
-        break;
-      }
-    } while ((EditHintView.m(this.wBY) == null) || (!EditHintView.n(this.wBY)));
-    return;
-    EditHintView.o(this.wBY);
+    AppMethodBeat.o(49185);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.EditHintView.8
  * JD-Core Version:    0.7.0.1
  */

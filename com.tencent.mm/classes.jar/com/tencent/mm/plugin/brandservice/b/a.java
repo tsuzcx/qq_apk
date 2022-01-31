@@ -7,82 +7,108 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.plugin.brandservice.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.plugin.fts.a.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.c.sh;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.wd;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import java.util.List;
 
 public final class a
 {
-  private static ah dPu = new ah(Looper.getMainLooper());
+  private static ak feT;
   
-  public static com.tencent.mm.ai.d a(com.tencent.mm.ai.d paramd, sh paramsh)
+  static
   {
-    if (paramsh != null)
+    AppMethodBeat.i(13825);
+    feT = new ak(Looper.getMainLooper());
+    AppMethodBeat.o(13825);
+  }
+  
+  public static com.tencent.mm.aj.d a(com.tencent.mm.aj.d paramd, wd paramwd)
+  {
+    if (paramwd != null)
     {
-      paramd.field_brandFlag = paramsh.ffv;
-      paramd.field_brandIconURL = paramsh.ffy;
-      paramd.field_brandInfo = paramsh.ffx;
-      paramd.field_extInfo = paramsh.ffw;
+      paramd.field_brandFlag = paramwd.gxd;
+      paramd.field_brandIconURL = paramwd.gxg;
+      paramd.field_brandInfo = paramwd.gxf;
+      paramd.field_extInfo = paramwd.gxe;
     }
     return paramd;
   }
   
-  public static void a(ImageView paramImageView, ad paramad, String paramString)
+  public static void a(ImageView paramImageView, ad paramad, String paramString, boolean paramBoolean)
   {
-    if (com.tencent.mm.n.a.gR(paramad.field_type))
+    AppMethodBeat.i(13824);
+    if ((!paramBoolean) && (com.tencent.mm.n.a.je(paramad.field_type)))
     {
-      a.b.n(paramImageView, paramad.field_username);
+      a.b.s(paramImageView, paramad.field_username);
+      AppMethodBeat.o(13824);
       return;
     }
     paramad = new c.a();
-    paramad.ery = b.c.brand_default_head;
-    paramad.ere = true;
-    paramad.erD = true;
-    o.ON().a(paramString, paramImageView, paramad.OV());
+    paramad.eOa = 2130838028;
+    paramad.eNL = true;
+    paramad.eOk = true;
+    o.ahG().a(paramString, paramImageView, paramad.ahY());
+    AppMethodBeat.o(13824);
   }
   
   public static Spanned b(Context paramContext, String paramString, List<String> paramList)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(13822);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(13822);
       return null;
     }
-    if ((paramContext == null) || (paramList == null)) {
-      return new SpannableString(paramString);
+    if ((paramContext == null) || (paramList == null))
+    {
+      paramContext = new SpannableString(paramString);
+      AppMethodBeat.o(13822);
+      return paramContext;
     }
     paramContext = f.a(com.tencent.mm.plugin.fts.a.a.d.a(paramString, paramList));
-    if ((paramContext.kwz instanceof Spannable)) {
-      return (Spannable)paramContext.kwz;
+    if ((paramContext.mSp instanceof Spannable))
+    {
+      paramContext = (Spannable)paramContext.mSp;
+      AppMethodBeat.o(13822);
+      return paramContext;
     }
-    return new SpannableString(paramContext.kwz);
+    paramContext = new SpannableString(paramContext.mSp);
+    AppMethodBeat.o(13822);
+    return paramContext;
   }
   
   public static boolean b(TextView paramTextView, CharSequence paramCharSequence)
   {
-    if (paramTextView == null) {
+    AppMethodBeat.i(13823);
+    if (paramTextView == null)
+    {
+      AppMethodBeat.o(13823);
       return false;
     }
     if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
     {
       paramTextView.setVisibility(8);
+      AppMethodBeat.o(13823);
       return false;
     }
     paramTextView.setVisibility(0);
     paramTextView.setText(paramCharSequence);
+    AppMethodBeat.o(13823);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,47 +6,56 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.c.amm;
-import com.tencent.mm.protocal.c.chn;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.asb;
+import com.tencent.mm.protocal.protobuf.cuy;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 import junit.framework.Assert;
 
 final class IPCallMyGiftCardUI$a
   extends BaseAdapter
 {
-  List<chn> kZk = null;
-  private IPCallMyGiftCardUI lwP = null;
-  amm lwQ = null;
+  private IPCallMyGiftCardUI nUc;
+  asb nUd;
+  List<cuy> nxh;
   
   public IPCallMyGiftCardUI$a(IPCallMyGiftCardUI paramIPCallMyGiftCardUI)
   {
-    if (paramIPCallMyGiftCardUI != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      this.lwP = paramIPCallMyGiftCardUI;
-      return;
-    }
+    AppMethodBeat.i(22212);
+    this.nxh = null;
+    this.nUc = null;
+    this.nUd = null;
+    Assert.assertTrue(true);
+    this.nUc = paramIPCallMyGiftCardUI;
+    AppMethodBeat.o(22212);
   }
   
   public final int getCount()
   {
-    if (this.kZk == null) {
+    AppMethodBeat.i(22213);
+    if (this.nxh == null)
+    {
+      AppMethodBeat.o(22213);
       return 0;
     }
-    return this.kZk.size();
+    int i = this.nxh.size();
+    AppMethodBeat.o(22213);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    if (this.kZk != null) {
-      return this.kZk.get(paramInt);
+    AppMethodBeat.i(22214);
+    if (this.nxh != null)
+    {
+      Object localObject = this.nxh.get(paramInt);
+      AppMethodBeat.o(22214);
+      return localObject;
     }
+    AppMethodBeat.o(22214);
     return null;
   }
   
@@ -57,53 +66,57 @@ final class IPCallMyGiftCardUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(22215);
     if (paramView == null)
     {
-      paramView = ((LayoutInflater)this.lwP.getSystemService("layout_inflater")).inflate(R.i.ipcall_my_gift_card_item, paramViewGroup, false);
+      paramView = ((LayoutInflater)this.nUc.getSystemService("layout_inflater")).inflate(2130969940, paramViewGroup, false);
       paramViewGroup = new IPCallMyGiftCardUI.a.a(this, (byte)0);
-      paramViewGroup.lwR = ((TextView)paramView.findViewById(R.h.coupon_money_tv));
-      paramViewGroup.lwS = ((TextView)paramView.findViewById(R.h.data_wording_tv));
-      paramViewGroup.lwT = ((TextView)paramView.findViewById(R.h.expired_wording_tv));
-      paramViewGroup.lwU = ((CdnImageView)paramView.findViewById(R.h.header_icon));
-      paramViewGroup.lwV = ((ImageView)paramView.findViewById(R.h.default_header_icon));
+      paramViewGroup.nUe = ((TextView)paramView.findViewById(2131825176));
+      paramViewGroup.nUf = ((TextView)paramView.findViewById(2131825177));
+      paramViewGroup.nUg = ((TextView)paramView.findViewById(2131825178));
+      paramViewGroup.nUh = ((CdnImageView)paramView.findViewById(2131821061));
+      paramViewGroup.nUi = ((ImageView)paramView.findViewById(2131825299));
       paramView.setTag(paramViewGroup);
     }
-    chn localchn;
+    cuy localcuy;
     for (;;)
     {
-      localchn = (chn)getItem(paramInt);
-      if (localchn != null) {
+      localcuy = (cuy)getItem(paramInt);
+      if (localcuy != null) {
         break;
       }
+      AppMethodBeat.o(22215);
       return paramView;
       paramViewGroup = (IPCallMyGiftCardUI.a.a)paramView.getTag();
     }
-    if (bk.bl(localchn.tWq))
+    if (bo.isNullOrNil(localcuy.ydH))
     {
-      paramViewGroup.lwR.setVisibility(0);
-      paramViewGroup.lwS.setVisibility(0);
-      paramViewGroup.lwT.setVisibility(8);
-      paramViewGroup.lwR.setText(localchn.tAh);
-      paramViewGroup.lwS.setText(localchn.tWp);
+      paramViewGroup.nUe.setVisibility(0);
+      paramViewGroup.nUf.setVisibility(0);
+      paramViewGroup.nUg.setVisibility(8);
+      paramViewGroup.nUe.setText(localcuy.xBK);
+      paramViewGroup.nUf.setText(localcuy.ydG);
+      a.b.a(paramViewGroup.nUi, "", 0.5F, false);
+      if (bo.isNullOrNil(localcuy.nqE)) {
+        break label304;
+      }
+      paramViewGroup.nUh.setVisibility(0);
+      paramViewGroup.nUh.setUrl(localcuy.nqE);
+      paramViewGroup.nUi.setVisibility(4);
     }
     for (;;)
     {
-      a.b.a(paramViewGroup.lwV, "", 0.5F, false);
-      if (bk.bl(localchn.kSF)) {
-        break;
-      }
-      paramViewGroup.lwU.setVisibility(0);
-      paramViewGroup.lwU.setUrl(localchn.kSF);
-      paramViewGroup.lwV.setVisibility(4);
+      AppMethodBeat.o(22215);
       return paramView;
-      paramViewGroup.lwR.setVisibility(8);
-      paramViewGroup.lwS.setVisibility(8);
-      paramViewGroup.lwT.setVisibility(0);
-      paramViewGroup.lwT.setText(localchn.tWq);
+      paramViewGroup.nUe.setVisibility(8);
+      paramViewGroup.nUf.setVisibility(8);
+      paramViewGroup.nUg.setVisibility(0);
+      paramViewGroup.nUg.setText(localcuy.ydH);
+      break;
+      label304:
+      paramViewGroup.nUi.setVisibility(0);
+      paramViewGroup.nUh.setVisibility(4);
     }
-    paramViewGroup.lwV.setVisibility(0);
-    paramViewGroup.lwU.setVisibility(4);
-    return paramView;
   }
   
   public final int getViewTypeCount()
@@ -113,7 +126,7 @@ final class IPCallMyGiftCardUI$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallMyGiftCardUI.a
  * JD-Core Version:    0.7.0.1
  */

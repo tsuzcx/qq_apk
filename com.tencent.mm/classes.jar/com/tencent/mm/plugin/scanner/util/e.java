@@ -1,720 +1,509 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Bundle;
-import android.os.Looper;
-import android.widget.Toast;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.ai.d.b;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.h.a.lu;
-import com.tencent.mm.h.a.ox;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelsimple.u;
-import com.tencent.mm.network.ab;
-import com.tencent.mm.openim.b.n;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.ad.a.c.a;
-import com.tencent.mm.pluginsdk.ui.j;
-import com.tencent.mm.protocal.c.ask;
-import com.tencent.mm.protocal.c.bnm;
-import com.tencent.mm.protocal.c.bob;
-import com.tencent.mm.protocal.c.sg;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.model.n;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.qbar.QbarNative;
+import com.tencent.qbar.QbarNative.QBarReportMsg;
+import com.tencent.qbar.QbarNative.QBarResult;
+import com.tencent.qbar.QbarNative.QBarZoomInfo;
+import com.tencent.qbar.a;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 public final class e
-  implements com.tencent.mm.ah.f, c.a
+  extends b
 {
-  public String aWf;
-  public String appId;
-  public int bIl;
-  public String bIn;
-  private ProgressDialog iec = null;
-  public String imagePath;
-  public int jYS;
-  private Activity mActivity;
-  private int nOC;
-  private String nOD;
-  private Bundle nOE;
-  e.a nOF = null;
-  private Map<com.tencent.mm.ah.m, Integer> nOG = new HashMap();
+  private Object ceY;
+  private QbarNative hJj;
+  private boolean hJk;
+  private byte[] hJl;
+  private byte[] hJm;
+  public volatile boolean isDecoding;
+  public boolean oIC;
+  public int qCn;
+  public boolean qyz;
+  public Set<Integer> qzV;
   
-  public e()
+  public e(b.a parama, int paramInt, boolean paramBoolean)
   {
-    onResume();
+    super(parama);
+    AppMethodBeat.i(81381);
+    this.hJk = false;
+    this.isDecoding = false;
+    this.oIC = true;
+    this.qyz = false;
+    this.ceY = new Object();
+    this.hJj = new QbarNative();
+    this.qCn = paramInt;
+    this.oIC = paramBoolean;
+    AppMethodBeat.o(81381);
   }
   
-  private void a(Activity paramActivity, int paramInt, String paramString, boolean paramBoolean)
+  private static Set<Integer> CN(int paramInt)
   {
-    int i = 2;
-    y.i("MicroMsg.QBarStringHandler", "start search contact %s", new Object[] { paramString });
-    if (paramInt == 2) {}
-    for (paramInt = i;; paramInt = 1)
+    AppMethodBeat.i(81387);
+    HashSet localHashSet = new HashSet();
+    if (paramInt == 1)
     {
-      paramString = new com.tencent.mm.plugin.messenger.a.f(paramString, paramInt, 5, paramBoolean);
-      this.nOG.put(paramString, Integer.valueOf(1));
-      au.Dk().a(paramString, 0);
-      paramActivity.getString(R.l.app_tip);
-      this.iec = com.tencent.mm.ui.base.h.b(paramActivity, paramActivity.getString(R.l.scan_loading_tip), new e.7(this, paramString));
-      return;
+      localHashSet.add(Integer.valueOf(2));
+      localHashSet.add(Integer.valueOf(4));
+      localHashSet.add(Integer.valueOf(5));
+      localHashSet.add(Integer.valueOf(3));
     }
-  }
-  
-  private int byn()
-  {
-    switch (this.nOC)
+    for (;;)
     {
-    case 0: 
-    case 2: 
-    default: 
-      return 30;
-    }
-    return 45;
-  }
-  
-  private static int wU(int paramInt)
-  {
-    if (paramInt == 1) {
-      return 34;
-    }
-    if (paramInt == 0) {
-      return 4;
-    }
-    if (paramInt == 3) {
-      return 42;
-    }
-    return 30;
-  }
-  
-  private static int wr(int paramInt)
-  {
-    if ((paramInt == 30) || (paramInt == 37) || (paramInt == 38) || (paramInt == 40)) {
-      return 13;
-    }
-    if ((paramInt == 4) || (paramInt == 47)) {
-      return 12;
-    }
-    if (paramInt == 34) {
-      return 24;
-    }
-    return 0;
-  }
-  
-  public final void a(Activity paramActivity, final String paramString, int paramInt1, int paramInt2, int paramInt3, e.a parama, Bundle paramBundle)
-  {
-    y.i("MicroMsg.QBarStringHandler", "deal QBarString %s, source:%d, codeType: %s, codeVersion: %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.mActivity = paramActivity;
-    this.nOC = paramInt1;
-    this.nOD = paramString;
-    this.nOF = parama;
-    this.nOE = paramBundle;
-    if (bk.bl(paramString)) {
-      y.e("MicroMsg.QBarStringHandler", "qbarstring is null or nil");
-    }
-    do
-    {
-      do
+      AppMethodBeat.o(81387);
+      return localHashSet;
+      if (paramInt == 2)
       {
-        do
+        localHashSet.add(Integer.valueOf(1));
+        localHashSet.add(Integer.valueOf(4));
+        localHashSet.add(Integer.valueOf(5));
+      }
+      else if (paramInt == 0)
+      {
+        localHashSet.add(Integer.valueOf(2));
+        localHashSet.add(Integer.valueOf(1));
+        localHashSet.add(Integer.valueOf(4));
+        localHashSet.add(Integer.valueOf(5));
+        localHashSet.add(Integer.valueOf(3));
+      }
+      else if (paramInt == 3)
+      {
+        localHashSet.add(Integer.valueOf(2));
+        localHashSet.add(Integer.valueOf(3));
+      }
+    }
+  }
+  
+  private byte[] a(byte[] paramArrayOfByte, Point paramPoint1, Rect paramRect, Point paramPoint2)
+  {
+    for (;;)
+    {
+      long l;
+      Object localObject;
+      try
+      {
+        AppMethodBeat.i(81382);
+        if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
         {
-          do
-          {
-            return;
-            if (au.Dk().KG() != 0) {
-              break;
-            }
-            Toast.makeText(paramActivity, paramActivity.getString(R.l.fmt_iap_err), 0).show();
-          } while (this.nOF == null);
-          this.nOF.n(0, null);
-          return;
-          parama = "";
-          if (paramString.startsWith("weixin://qr/")) {
-            parama = paramString.substring(12) + "@qr";
-          }
-          while (!bk.bl(parama))
-          {
-            a(paramActivity, paramInt1, parama, false);
-            return;
-            if (paramString.startsWith("http://weixin.qq.com/r/")) {
-              parama = paramString.substring(23) + "@qr";
-            }
-          }
-          y.d("MicroMsg.QBarStringHandler", "qbarString: %s, auth native: %s, remittance: %s", new Object[] { paramString, Boolean.valueOf(true), Boolean.valueOf(true) });
-          if (paramString.startsWith("weixin://wxpay/bizpayurl"))
-          {
-            y.i("MicroMsg.QBarStringHandler", "do native pay");
-            paramInt1 = wU(this.nOC);
-            paramInt2 = wr(paramInt1);
-            paramActivity = new lu();
-            paramActivity.bUP.url = paramString;
-            paramActivity.bUP.bUR = paramInt2;
-            paramActivity.bUP.scene = paramInt1;
-            paramActivity.bUP.context = this.mActivity;
-            if (paramInt2 == 13)
-            {
-              y.d("MicroMsg.QBarStringHandler", "add source and sourceType");
-              paramActivity.bUP.aWf = this.aWf;
-              paramActivity.bUP.bIl = this.bIl;
-            }
-            paramActivity.bFJ = new e.1(this, paramActivity);
-            com.tencent.mm.sdk.b.a.udP.a(paramActivity, Looper.myLooper());
-            new ah(Looper.getMainLooper()).postDelayed(new e.4(this), 2000L);
-            return;
-          }
-          if ((!paramString.startsWith("https://wx.tenpay.com/f2f")) && (!paramString.startsWith("wxp://f2f"))) {
-            break;
-          }
-          if (this.nOF != null) {
-            this.nOF.n(5, null);
-          }
-          paramInt1 = wr(wU(this.nOC));
-          com.tencent.mm.pluginsdk.wallet.h.a(this.mActivity, 1, paramString, paramInt1, null);
-        } while (this.nOF == null);
-        this.nOF.n(3, null);
-        return;
-        if (!paramString.startsWith("wxp://wbf2f")) {
-          break;
+          ab.w("MicroMsg.scanner.QBarDecoder", "prepareGrayData , data is null");
+          paramArrayOfByte = null;
+          AppMethodBeat.o(81382);
+          return paramArrayOfByte;
         }
-        if (this.nOF != null) {
-          this.nOF.n(5, null);
+        ab.i("MicroMsg.scanner.QBarDecoder", "resolution %s, coverage %s", new Object[] { paramPoint1, paramRect });
+        l = System.currentTimeMillis();
+        localObject = new Rect();
+        if ((com.tencent.mm.compatible.e.d.Ll()) || (!this.oIC))
+        {
+          i = paramRect.width();
+          j = paramRect.height();
+          ((Rect)localObject).left = paramRect.left;
+          ((Rect)localObject).right = (paramRect.right - i % 4);
+          ((Rect)localObject).top = paramRect.top;
+          ((Rect)localObject).bottom = (paramRect.bottom - j % 4);
+          if ((((Rect)localObject).right > ((Rect)localObject).left) && (((Rect)localObject).bottom > ((Rect)localObject).top)) {
+            break label419;
+          }
+          paramArrayOfByte = null;
+          AppMethodBeat.o(81382);
+          continue;
         }
-        paramInt1 = wr(wU(this.nOC));
-        com.tencent.mm.pluginsdk.wallet.h.a(this.mActivity, 6, paramString, paramInt1, null);
-      } while (this.nOF == null);
-      this.nOF.n(3, null);
-      return;
-      if ((paramInt2 == 22) && (paramString.startsWith("m")))
+        ((Rect)localObject).left = (paramPoint1.x / 2 - paramRect.height() / 2);
+      }
+      finally {}
+      ((Rect)localObject).right = (paramPoint1.x / 2 + paramRect.height() / 2);
+      ((Rect)localObject).top = (paramPoint1.y / 2 - paramRect.width() / 2);
+      ((Rect)localObject).bottom = (paramPoint1.y / 2 + paramRect.width() / 2);
+      if (((Rect)localObject).left < 0) {
+        ((Rect)localObject).left = 0;
+      }
+      if (((Rect)localObject).right > paramPoint1.x - 1) {
+        ((Rect)localObject).right = (paramPoint1.x - 1);
+      }
+      if (((Rect)localObject).top < 0) {
+        ((Rect)localObject).top = 0;
+      }
+      if (((Rect)localObject).bottom > paramPoint1.y - 1) {
+        ((Rect)localObject).bottom = (paramPoint1.y - 1);
+      }
+      int i = ((Rect)localObject).width() % 4;
+      int j = ((Rect)localObject).height() % 4;
+      if (i != 0) {
+        ((Rect)localObject).right -= i;
+      }
+      if (j != 0) {
+        ((Rect)localObject).bottom -= j;
+      }
+      if ((((Rect)localObject).right <= ((Rect)localObject).left) || (((Rect)localObject).bottom <= ((Rect)localObject).top))
       {
-        y.d("MicroMsg.QBarStringHandler", "go to reward");
-        if (this.nOF != null) {
-          this.nOF.n(5, null);
+        paramArrayOfByte = null;
+        AppMethodBeat.o(81382);
+      }
+      else
+      {
+        label419:
+        ab.i("MicroMsg.scanner.QBarDecoder", "targetRect %s", new Object[] { localObject });
+        paramRect = new d(paramArrayOfByte, paramPoint1.x, paramPoint1.y, (Rect)localObject);
+        paramPoint2.x = paramRect.width;
+        paramPoint2.y = paramRect.height;
+        i = 0;
+        if (!com.tencent.mm.compatible.e.d.Ll())
+        {
+          i = 90;
+          paramPoint2.x = paramRect.height;
+          paramPoint2.y = paramRect.width;
         }
-        paramInt2 = wr(wU(this.nOC));
-        paramActivity = "";
-        if (paramBundle != null) {
-          paramActivity = paramBundle.getString("stat_url", "");
-        }
-        paramInt1 = 1;
-        if (this.jYS == 37) {
-          paramInt1 = 2;
+        ab.d("MicroMsg.scanner.QBarDecoder", "rotate angle: ".concat(String.valueOf(i)));
+        if (this.hJl == null)
+        {
+          this.hJl = new byte[paramRect.width * paramRect.height * 3 / 2];
+          this.hJm = new byte[paramRect.width * paramRect.height];
+          ab.d("MicroMsg.scanner.QBarDecoder", "tempOutBytes = null, new byte[%s]", new Object[] { Integer.valueOf(paramRect.width * paramRect.height * 3 / 2) });
         }
         for (;;)
         {
-          com.tencent.mm.pluginsdk.wallet.h.a(this.mActivity, paramString, paramInt2, paramActivity, paramInt1);
-          if (this.nOF == null) {
-            break;
+          localObject = this.hJl;
+          j = paramPoint2.x;
+          int k = paramPoint2.y;
+          int m = paramPoint1.x;
+          int n = paramPoint1.y;
+          int i1 = paramRect.left;
+          int i2 = paramRect.top;
+          int i3 = paramRect.width;
+          int i4 = paramRect.height;
+          i = QbarNative.a((byte[])localObject, new int[] { j, k }, paramArrayOfByte, m, n, i1, i2, i3, i4, i);
+          if (i == 0) {
+            break label812;
           }
-          this.nOF.n(3, null);
-          return;
-          if (this.jYS == 38) {
-            paramInt1 = 3;
-          } else if (this.jYS == 40) {
-            paramInt1 = 4;
-          }
-        }
-      }
-      if (paramString.startsWith("https://payapp.weixin.qq.com/qr/"))
-      {
-        y.d("MicroMsg.QBarStringHandler", "f2f pay material");
-        if (this.nOF != null) {
-          this.nOF.n(5, null);
-        }
-        paramInt1 = wU(this.nOC);
-        paramInt2 = wr(paramInt1);
-        paramActivity = new ox();
-        paramActivity.bYx.bYz = paramString;
-        paramActivity.bYx.scene = paramInt1;
-        paramActivity.bYx.type = 0;
-        paramActivity.bYx.aoB = new WeakReference(this.mActivity);
-        paramActivity.bYx.bFJ = new e.5(this, paramActivity, paramInt2);
-        com.tencent.mm.sdk.b.a.udP.m(paramActivity);
-        return;
-      }
-      if ((paramInt2 == 22) && (paramString.startsWith("n")))
-      {
-        y.d("MicroMsg.QBarStringHandler", "qr reward pay material");
-        if (this.nOF != null) {
-          this.nOF.n(5, null);
-        }
-        paramActivity = "";
-        if (paramBundle != null) {
-          paramActivity = paramBundle.getString("stat_url", "");
-        }
-        paramInt1 = wU(this.nOC);
-        paramInt2 = wr(paramInt1);
-        parama = new ox();
-        parama.bYx.bYz = paramString;
-        parama.bYx.scene = paramInt1;
-        parama.bYx.type = 1;
-        parama.bYx.aoB = new WeakReference(this.mActivity);
-        parama.bYx.bFJ = new e.6(this, parama, paramInt2, paramActivity, paramInt1);
-        com.tencent.mm.sdk.b.a.udP.m(parama);
-        return;
-      }
-      if (!paramString.startsWith("wxhb://f2f")) {
-        break;
-      }
-      y.i("MicroMsg.QBarStringHandler", "scan f2f hb url");
-    } while (paramInt2 != 19);
-    if (this.nOF != null) {
-      this.nOF.n(5, null);
-    }
-    paramActivity = new Intent();
-    paramActivity.putExtra("key_share_url", paramString);
-    com.tencent.mm.br.d.b(this.mActivity, "luckymoney", ".f2f.ui.LuckyMoneyF2FReceiveUI", paramActivity, 1);
-    return;
-    parama = this.appId;
-    if (this.jYS > 0) {}
-    for (paramInt1 = this.jYS;; paramInt1 = wU(this.nOC))
-    {
-      y.i("MicroMsg.QBarStringHandler", "getA8Key text:%s, mQBarStringSource: %s, sceneValue: %s", new Object[] { paramString, Integer.valueOf(this.nOC), Integer.valueOf(paramInt1) });
-      paramString = new com.tencent.mm.modelsimple.h(paramString, paramInt1, paramInt2, paramInt3, parama, (int)System.currentTimeMillis(), new byte[0]);
-      this.nOG.put(paramString, Integer.valueOf(1));
-      au.Dk().a(paramString, 0);
-      if (this.iec != null) {
-        this.iec.dismiss();
-      }
-      paramActivity.getString(R.l.app_tip);
-      this.iec = com.tencent.mm.ui.base.h.b(paramActivity, paramActivity.getString(R.l.qrcode_scan_default), true, new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          au.Dk().c(paramString);
-          if (e.this.nOF != null) {
-            e.this.nOF.n(1, null);
-          }
-        }
-      });
-      if (this.nOF == null) {
-        break;
-      }
-      this.nOF.n(5, null);
-      return;
-    }
-  }
-  
-  public final void bym()
-  {
-    y.i("MicroMsg.QBarStringHandler", "cancel Deal");
-    this.nOD = null;
-    this.mActivity = null;
-    onPause();
-  }
-  
-  public final Context getContext()
-  {
-    return this.mActivity;
-  }
-  
-  public final void im(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (this.nOF != null) {
-        this.nOF.n(1, null);
-      }
-    }
-    while (this.nOF == null) {
-      return;
-    }
-    this.nOF.n(3, null);
-  }
-  
-  public final void onPause()
-  {
-    y.i("MicroMsg.QBarStringHandler", "onPause");
-    au.Dk().b(106, this);
-    au.Dk().b(233, this);
-    au.Dk().b(666, this);
-    au.Dk().b(372, this);
-  }
-  
-  public final void onResume()
-  {
-    y.i("MicroMsg.QBarStringHandler", "onResume");
-    au.Dk().a(106, this);
-    au.Dk().a(233, this);
-    au.Dk().a(666, this);
-    au.Dk().a(372, this);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
-  {
-    y.i("MicroMsg.QBarStringHandler", "onSceneEnd: errType = [%s] errCode = [%s] errMsg = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    boolean bool;
-    if (paramm == null) {
-      if (paramm == null)
-      {
-        bool = true;
-        y.e("MicroMsg.QBarStringHandler", "onSceneEnd() scene is null [%s]", new Object[] { Boolean.valueOf(bool) });
-        if (this.nOF != null) {
-          this.nOF.n(2, null);
-        }
-      }
-    }
-    label237:
-    label510:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
+          ab.e("MicroMsg.scanner.QBarDecoder", "decode pro_result %s", new Object[] { Integer.valueOf(i) });
+          paramArrayOfByte = null;
+          AppMethodBeat.o(81382);
+          break;
+          if (this.hJl.length != paramRect.width * paramRect.height * 3 / 2)
           {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                    bool = false;
-                    break;
-                    if (!this.nOG.containsKey(paramm))
-                    {
-                      if ((paramm instanceof u)) {
-                        y.e("MicroMsg.QBarStringHandler", "emotion scan scene");
-                      }
-                    }
-                    else
-                    {
-                      this.nOG.remove(paramm);
-                      if (this.iec != null)
-                      {
-                        this.iec.dismiss();
-                        this.iec = null;
-                      }
-                      if ((paramm.getType() != 372) || (paramInt1 != 4) || (paramInt2 != -2034)) {
-                        break label237;
-                      }
-                      paramString = new com.tencent.mm.modelsimple.h(((n)paramm).ePY, null, 50, 0, 0, new byte[0]);
-                      g.DQ();
-                      g.DO().dJT.a(paramString, 0);
-                      this.nOG.put(paramString, Integer.valueOf(1));
-                      return;
-                    }
-                    y.e("MicroMsg.QBarStringHandler", "not my scene, don't care it");
-                    return;
-                    if ((paramInt1 == 4) && (paramInt2 == -4))
-                    {
-                      com.tencent.mm.ui.base.h.a(this.mActivity, R.l.qrcode_no_user_tip, R.l.app_tip, new e.10(this));
-                      return;
-                    }
-                    int i;
-                    switch (paramInt1)
-                    {
-                    default: 
-                      i = 0;
-                    }
-                    for (;;)
-                    {
-                      if (i == 0) {
-                        break label465;
-                      }
-                      if (this.nOF == null) {
-                        break;
-                      }
-                      this.nOF.n(1, null);
-                      return;
-                      if (au.Dk().KH())
-                      {
-                        au.Dk().getNetworkServerIp();
-                        new StringBuilder().append(paramInt2);
-                      }
-                      for (;;)
-                      {
-                        i = 1;
-                        break;
-                        if (ab.bG(this.mActivity)) {
-                          j.eY(this.mActivity);
-                        } else {
-                          Toast.makeText(this.mActivity, this.mActivity.getString(R.l.fmt_http_err, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt2) }), 1).show();
-                        }
-                      }
-                      Toast.makeText(this.mActivity, this.mActivity.getString(R.l.fmt_iap_err, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt2) }), 1).show();
-                      i = 1;
-                    }
-                    if ((paramInt1 != 4) || (paramInt2 != -2004)) {
-                      break label510;
-                    }
-                    com.tencent.mm.ui.base.h.h(this.mActivity, R.l.qrcode_ban_by_expose, R.l.app_tip);
-                  } while (this.nOF == null);
-                  this.nOF.n(1, null);
-                  return;
-                  if ((paramInt1 == 0) && (paramInt2 == 0)) {
-                    break label576;
-                  }
-                  Toast.makeText(this.mActivity, this.mActivity.getString(R.l.fmt_search_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-                } while (this.nOF == null);
-                this.nOF.n(1, null);
-                return;
-                if (paramm.getType() != 106) {
-                  break label1390;
-                }
-                paramString = (com.tencent.mm.plugin.messenger.a.f)paramm;
-                ad localad;
-                Object localObject2;
-                if (!paramString.mcu)
-                {
-                  paramString = paramString.bhH();
-                  if ((ad.Fn(paramString.tpg)) && (paramString.tpn != null) && (!bk.bl(paramString.tpn.ffw)) && (com.tencent.mm.modelappbrand.a.jq(paramString.tpn.ffw))) {
-                    if (this.jYS > 0)
-                    {
-                      paramInt1 = this.jYS;
-                      y.i("MicroMsg.QBarStringHandler", "getA8Key text:%s, mQBarStringSource: %s, sceneValue: %s", new Object[] { this.nOD, Integer.valueOf(this.nOC), Integer.valueOf(paramInt1) });
-                      paramString = new com.tencent.mm.modelsimple.h(this.nOD, null, 43, 0, 0, new byte[0]);
-                      this.nOG.put(paramString, Integer.valueOf(1));
-                      au.Dk().a(paramString, 0);
-                      if (this.iec != null) {
-                        this.iec.dismiss();
-                      }
-                      localObject1 = this.mActivity;
-                      this.mActivity.getString(R.l.app_tip);
-                      this.iec = com.tencent.mm.ui.base.h.b((Context)localObject1, this.mActivity.getString(R.l.qrcode_scan_default), true, new e.3(this, paramString));
-                      paramInt1 = 1;
-                      if (paramInt1 != 0) {
-                        break label1135;
-                      }
-                      paramString = ((com.tencent.mm.plugin.messenger.a.f)paramm).bhH();
-                      localObject1 = aa.a(paramString.sQs);
-                      y.d("MicroMsg.QBarStringHandler", "handle search contact result, username:" + paramString.sQs);
-                      o.JQ().h((String)localObject1, aa.a(paramString.svJ));
-                      if ((this.iec != null) && (this.iec.isShowing()))
-                      {
-                        y.d("MicroMsg.QBarStringHandler", "tip dialog dismiss");
-                        this.iec.dismiss();
-                      }
-                      if (bk.pm((String)localObject1).length() <= 0) {
-                        break label1345;
-                      }
-                      au.Hx();
-                      localad = com.tencent.mm.model.c.Fw().abl((String)localObject1);
-                      if ((localad == null) || (!com.tencent.mm.n.a.gR(localad.field_type)) || (!localad.cua())) {
-                        break label1142;
-                      }
-                      localObject2 = z.My().kQ((String)localObject1);
-                      ((com.tencent.mm.ai.d)localObject2).bS(false);
-                      d.b localb = ((com.tencent.mm.ai.d)localObject2).eeW;
-                      if (localb.efa != null) {
-                        localb.efq = localb.efa.optInt("ScanQRCodeType", 0);
-                      }
-                      if (localb.efq != 1) {
-                        break label1137;
-                      }
-                      paramInt1 = 1;
-                      if ((paramInt1 == 0) || (((com.tencent.mm.ai.d)localObject2).Ly())) {
-                        break label1142;
-                      }
-                      paramString = new Intent();
-                      paramString.putExtra("Chat_User", (String)localObject1);
-                      paramString.putExtra("finish_direct", true);
-                      com.tencent.mm.plugin.scanner.b.eUR.e(paramString, this.mActivity);
-                      paramInt1 = 1;
-                    }
-                  }
-                }
-                for (;;)
-                {
-                  if (paramInt1 == 0) {
-                    break label1371;
-                  }
-                  if (this.nOF == null) {
-                    break;
-                  }
-                  paramString = new Bundle();
-                  paramString.putString("geta8key_fullurl", aa.a(((com.tencent.mm.plugin.messenger.a.f)paramm).bhH().sQs));
-                  paramString.putInt("geta8key_action_code", 4);
-                  this.nOF.n(3, paramString);
-                  return;
-                  paramInt1 = wU(this.nOC);
-                  break label659;
-                  paramInt1 = 0;
-                  break label801;
-                  break;
-                  paramInt1 = 0;
-                  break label1007;
-                  paramInt1 = byn();
-                  localObject2 = new Intent();
-                  com.tencent.mm.pluginsdk.ui.tools.c.a((Intent)localObject2, paramString, paramInt1);
-                  if ((localad != null) && (!com.tencent.mm.n.a.gR(localad.field_type))) {
-                    ((Intent)localObject2).putExtra("Contact_IsLBSFriend", true);
-                  }
-                  if ((paramString.tpg & 0x8) > 0) {
-                    com.tencent.mm.plugin.report.service.h.nFQ.aC(10298, (String)localObject1 + "," + paramInt1);
-                  }
-                  if (this.mActivity != null)
-                  {
-                    com.tencent.mm.plugin.scanner.b.eUR.d((Intent)localObject2, this.mActivity);
-                    localObject1 = com.tencent.mm.plugin.report.service.h.nFQ;
-                    if (!ad.Fn(paramString.tpg)) {
-                      break label1340;
-                    }
-                  }
-                  for (paramInt1 = 0;; paramInt1 = 1)
-                  {
-                    ((com.tencent.mm.plugin.report.service.h)localObject1).f(14268, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.bIl), Integer.valueOf(this.nOC), this.imagePath, this.nOD, bk.pm(this.bIn) });
-                    paramInt1 = 1;
-                    break;
-                  }
-                  if (this.mActivity != null) {
-                    Toast.makeText(this.mActivity, R.l.scan_search_contact_fail, 0).show();
-                  }
-                  paramInt1 = 0;
-                }
-              } while (this.nOF == null);
-              this.nOF.n(1, null);
-              return;
-              if (paramm.getType() != 372) {
-                break label1732;
-              }
-              paramString = ((n)paramm).ePX;
-              paramm = paramString.hPY;
-              y.d("MicroMsg.QBarStringHandler", "handle search openim contact result, username:" + paramm);
-              if ((this.iec != null) && (this.iec.isShowing()))
-              {
-                y.d("MicroMsg.QBarStringHandler", "tip dialog dismiss");
-                this.iec.dismiss();
-              }
-              if (bk.pm(paramm).length() > 0)
-              {
-                au.Hx();
-                paramm = com.tencent.mm.model.c.Fw().abl(paramm);
-                paramInt1 = byn();
-                localObject1 = new Intent();
-                com.tencent.mm.pluginsdk.ui.tools.c.a((Intent)localObject1, paramString, paramInt1);
-                if ((paramm != null) && (!com.tencent.mm.n.a.gR(paramm.field_type))) {
-                  ((Intent)localObject1).putExtra("Contact_IsLBSFriend", true);
-                }
-                if (this.mActivity != null)
-                {
-                  com.tencent.mm.plugin.scanner.b.eUR.d((Intent)localObject1, this.mActivity);
-                  com.tencent.mm.plugin.report.service.h.nFQ.f(14268, new Object[] { Integer.valueOf(2), Integer.valueOf(this.bIl), Integer.valueOf(this.nOC), this.imagePath, this.nOD, bk.pm(this.bIn) });
-                }
-              }
-              for (paramInt1 = 1;; paramInt1 = 0)
-              {
-                if (paramInt1 == 0) {
-                  break label1713;
-                }
-                if (this.nOF == null) {
-                  break;
-                }
-                paramm = new Bundle();
-                paramm.putString("geta8key_fullurl", paramString.hPY);
-                paramm.putInt("geta8key_action_code", 4);
-                this.nOF.n(3, paramm);
-                return;
-                if (this.mActivity != null) {
-                  Toast.makeText(this.mActivity, R.l.scan_search_contact_fail, 0).show();
-                }
-              }
-            } while (this.nOF == null);
-            this.nOF.n(1, null);
-            return;
-            if (paramm.getType() != 233) {
-              break label2072;
-            }
-            paramString = ((com.tencent.mm.modelsimple.h)paramm).Qf();
-            Object localObject1 = new Bundle();
-            ((Bundle)localObject1).putString("geta8key_fullurl", paramString);
-            ((Bundle)localObject1).putInt("geta8key_action_code", ((com.tencent.mm.modelsimple.h)paramm).Qh());
-            if (this.nOF != null) {
-              this.nOF.n(4, (Bundle)localObject1);
-            }
-            if (this.jYS > 0) {}
-            for (paramInt1 = this.jYS;; paramInt1 = wU(this.nOC))
-            {
-              y.i("MicroMsg.QBarStringHandler", "handleGetA8KeyRedirect, sceneValue: %s", new Object[] { Integer.valueOf(paramInt1) });
-              bool = com.tencent.mm.plugin.ad.a.c.a(this, (com.tencent.mm.modelsimple.h)paramm, new DialogInterface.OnClickListener()
-              {
-                public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-                {
-                  if (e.this.nOF != null) {
-                    e.this.nOF.n(1, null);
-                  }
-                }
-              }, this.nOD, paramInt1, this.nOC, new Runnable()
-              {
-                public final void run()
-                {
-                  if (e.this.nOF != null) {
-                    e.this.nOF.n(3, null);
-                  }
-                }
-              }, this.nOE);
-              if ((bool) || (((com.tencent.mm.modelsimple.h)paramm).Qh() != 4)) {
-                break;
-              }
-              a(this.mActivity, this.nOC, paramString, true);
-              return;
-            }
-            if ((!bool) && (((com.tencent.mm.modelsimple.h)paramm).Qh() == 29))
-            {
-              paramm = this.mActivity;
-              y.i("MicroMsg.QBarStringHandler", "start search contact %s", new Object[] { paramString });
-              paramString = new n(paramString, (byte)0);
-              this.nOG.put(paramString, Integer.valueOf(1));
-              au.Dk().a(paramString, 0);
-              paramm.getString(R.l.app_tip);
-              this.iec = com.tencent.mm.ui.base.h.b(paramm, paramm.getString(R.l.scan_loading_tip), new e.8(this, paramString));
-              return;
-            }
-            y.i("MicroMsg.QBarStringHandler", "scene geta8key, redirect result = [%s]", new Object[] { Boolean.valueOf(bool) });
-          } while ((bool) || (this.nOF == null));
-          this.nOF.n(1, null);
-          return;
-        } while (paramm.getType() != 666);
-        if ((paramInt1 != 0) || (paramInt2 != 0)) {
-          break label2210;
+            this.hJl = null;
+            this.hJl = new byte[paramRect.width * paramRect.height * 3 / 2];
+            this.hJm = null;
+            this.hJm = new byte[paramRect.width * paramRect.height];
+            ab.d("MicroMsg.scanner.QBarDecoder", "tempOutBytes size change, new byte[%s]", new Object[] { Integer.valueOf(paramRect.width * paramRect.height * 3 / 2) });
+          }
         }
-      } while (!(paramm instanceof u));
-      paramString = ((u)paramm).QO().syc;
-      y.d("MicroMsg.QBarStringHandler", "[oneliang]NetSceneScanEmoji productId:%s", new Object[] { paramString });
-      paramm = new Intent();
-      paramm.putExtra("extra_id", paramString);
-      paramm.putExtra("preceding_scence", 11);
-      paramm.putExtra("download_entrance_scene", 14);
-      com.tencent.mm.br.d.b(this.mActivity, "emoji", ".ui.EmojiStoreDetailUI", paramm);
-      y.i("MicroMsg.QBarStringHandler", "[oneliang]NetSceneScanEmoji onSceneEnd.");
-    } while (this.nOF == null);
-    label465:
-    label1007:
-    label1137:
-    label1142:
-    this.nOF.n(3, null);
-    label576:
-    label1135:
-    return;
-    label659:
-    label801:
-    label1340:
-    label1345:
-    label1371:
-    label1390:
-    y.i("MicroMsg.QBarStringHandler", "jump emotion detail failed.");
-    label1713:
-    label1732:
-    return;
+        label812:
+        System.arraycopy(this.hJl, 0, this.hJm, 0, this.hJm.length);
+        ab.d("MicroMsg.scanner.QBarDecoder", "decode, rotate and gray, cost:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+        paramArrayOfByte = this.hJm;
+        AppMethodBeat.o(81382);
+      }
+    }
+  }
+  
+  private boolean b(byte[] paramArrayOfByte, Point paramPoint)
+  {
+    AppMethodBeat.i(81386);
+    long l1 = System.currentTimeMillis();
+    ab.i("MicroMsg.scanner.QBarDecoder", "decode() start");
+    if (this.isDecoding)
+    {
+      ab.e("MicroMsg.scanner.QBarDecoder", "is decoding, return false");
+      AppMethodBeat.o(81386);
+      return false;
+    }
+    if (this.qyz)
+    {
+      ab.w("MicroMsg.scanner.QBarDecoder", "isReleasing, return false 1");
+      AppMethodBeat.o(81386);
+      return false;
+    }
+    if (paramArrayOfByte == null)
+    {
+      ab.e("MicroMsg.scanner.QBarDecoder", "wrong args");
+      AppMethodBeat.o(81386);
+      return false;
+    }
+    for (;;)
+    {
+      synchronized (this.ceY)
+      {
+        this.isDecoding = true;
+        this.qCa = null;
+        this.cpF = 0;
+        this.cpE = 0;
+        n.qux.cih();
+        try
+        {
+          i = this.qCn;
+          if (!this.hJk)
+          {
+            localObject2 = CN(i);
+            if ((!this.hJk) && (!((Set)localObject2).isEmpty()))
+            {
+              i = this.hJj.a(0, "ANY", "UTF-8", a.iQ(ah.getContext()));
+              a.a(this.hJj);
+              n.qux.quN = ((Set)localObject2).contains(Integer.valueOf(3));
+              int j = g((Set)localObject2);
+              ab.i("MicroMsg.scanner.QBarDecoder", "QbarNative.Init = [%s], SetReaders = [%s], version = [%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), QbarNative.getVersion() });
+              if ((i == 0) && (j == 0)) {
+                this.hJk = true;
+              }
+            }
+            else
+            {
+              bool = this.hJk;
+              if (bool) {
+                continue;
+              }
+              pJ();
+              this.isDecoding = false;
+              AppMethodBeat.o(81386);
+              return false;
+            }
+            ab.e("MicroMsg.scanner.QBarDecoder", "QbarNative failed, releaseDecoder 1");
+            bool = false;
+            continue;
+          }
+          else
+          {
+            bool = this.hJk;
+            continue;
+          }
+          long l2 = System.currentTimeMillis();
+          ab.i("MicroMsg.scanner.QBarDecoder", "data len %d, image size %s", new Object[] { Integer.valueOf(paramArrayOfByte.length), paramPoint });
+          i = this.hJj.A(paramArrayOfByte, paramPoint.x, paramPoint.y);
+          l2 = System.currentTimeMillis() - l2;
+          Object localObject2 = this.hJj;
+          paramArrayOfByte = new QbarNative.QBarZoomInfo();
+          ((QbarNative)localObject2).GetZoomInfo(paramArrayOfByte, ((QbarNative)localObject2).BhG);
+          ab.i("MicroMsg.scanner.QBarDecoder", "after scanImage, result:%d, isZoom %b, zoomFactor %f", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramArrayOfByte.isZoom), Float.valueOf(paramArrayOfByte.zoomFactor) });
+          if ((i < 0) && (paramArrayOfByte.isZoom) && (this.qBY != null))
+          {
+            localObject2 = new Bundle();
+            ((Bundle)localObject2).putInt("zoom_action", 6);
+            ((Bundle)localObject2).putInt("zoom_type", 1);
+            ((Bundle)localObject2).putInt("zoom_scale", (int)(paramArrayOfByte.zoomFactor * 100.0F));
+            this.qBY.T((Bundle)localObject2);
+          }
+          n.qux.fn(paramPoint.x, paramPoint.y);
+          n.qux.cii();
+          long l3 = System.currentTimeMillis();
+          n.qux.lc(l2);
+          ab.d("MicroMsg.scanner.QBarDecoder", "decode ScanImage %s, cost:%d", new Object[] { Integer.valueOf(i), Long.valueOf(l3 - l1) });
+          if (i != 0)
+          {
+            paramArrayOfByte = n.qux;
+            paramPoint = new ArrayList();
+            localObject2 = new ArrayList();
+            this.hJj.x(paramPoint, (List)localObject2);
+            paramArrayOfByte.quO = paramPoint;
+            this.isDecoding = false;
+            AppMethodBeat.o(81386);
+            return false;
+          }
+          n.qux.cig();
+          n.qux.ld(l2);
+          paramPoint = new LinkedList();
+          localObject2 = new LinkedList();
+          this.hJj.w(paramPoint, (List)localObject2);
+          if (paramPoint.size() != 0)
+          {
+            localQBarResult = (QbarNative.QBarResult)paramPoint.get(0);
+            ab.i("MicroMsg.scanner.QBarDecoder", "decode size %d, type:%s, sCharset: %s, data:%s", new Object[] { Integer.valueOf(paramPoint.size()), localQBarResult.typeName, localQBarResult.charset, localQBarResult.data });
+            paramArrayOfByte = null;
+            if (!bo.es((List)localObject2)) {
+              paramArrayOfByte = (QbarNative.QBarReportMsg)((List)localObject2).get(0);
+            }
+            if (localQBarResult != null)
+            {
+              if (!bo.isNullOrNil(localQBarResult.data))
+              {
+                str = localQBarResult.typeName;
+                if ((!str.equals("QR_CODE")) && (!str.equals("WX_CODE"))) {
+                  continue;
+                }
+                this.qCa = localQBarResult.data;
+                quq = 1;
+              }
+              this.cpE = t.YP(localQBarResult.typeName);
+              if (paramArrayOfByte == null) {
+                break label1010;
+              }
+              i = paramArrayOfByte.qrcodeVersion;
+              this.cpF = i;
+              this.typeName = localQBarResult.typeName;
+              this.rawData = localQBarResult.rawData;
+              n.qux.a(localQBarResult.typeName, this.qCa, localQBarResult.charset, paramArrayOfByte, paramPoint.size(), (List)localObject2);
+            }
+          }
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          QbarNative.QBarResult localQBarResult;
+          String str;
+          ab.printErrStackTrace("MicroMsg.scanner.QBarDecoder", paramArrayOfByte, "decodeInternal error", new Object[0]);
+          continue;
+        }
+        this.isDecoding = false;
+        this.qCb = (System.currentTimeMillis() - l1);
+        ab.i("MicroMsg.scanner.QBarDecoder", "decode() finish, resultText = [%s], cost:%d", new Object[] { this.qCa, Long.valueOf(this.qCb) });
+        if (bo.isNullOrNil(this.qCa)) {
+          break label1015;
+        }
+        bool = true;
+        AppMethodBeat.o(81386);
+        return bool;
+        this.qCa = (str + "," + localQBarResult.data);
+        quq = 2;
+      }
+      label1010:
+      int i = 0;
+      continue;
+      label1015:
+      boolean bool = false;
+    }
+  }
+  
+  private int g(Set<Integer> arg1)
+  {
+    AppMethodBeat.i(81389);
+    if ((??? != null) && (!???.isEmpty()))
+    {
+      int[] arrayOfInt = new int[???.size()];
+      ??? = ???.iterator();
+      int i = 0;
+      while (???.hasNext())
+      {
+        Integer localInteger = (Integer)???.next();
+        if (localInteger != null)
+        {
+          arrayOfInt[i] = localInteger.intValue();
+          i += 1;
+        }
+      }
+      ab.i("MicroMsg.scanner.QBarDecoder", "QBarNative.SetReaders, readers:%s", new Object[] { Arrays.toString(arrayOfInt) });
+      synchronized (this.ceY)
+      {
+        if (this.hJj != null)
+        {
+          i = this.hJj.i(arrayOfInt, arrayOfInt.length);
+          AppMethodBeat.o(81389);
+          return i;
+        }
+        AppMethodBeat.o(81389);
+        return 0;
+      }
+    }
+    AppMethodBeat.o(81389);
+    return 0;
+  }
+  
+  public final void a(byte[] paramArrayOfByte, Point paramPoint)
+  {
+    AppMethodBeat.i(81385);
+    com.tencent.mm.sdk.g.d.f(new e.1(this, paramArrayOfByte, paramPoint), "scan_decode");
+    AppMethodBeat.o(81385);
+  }
+  
+  public final boolean a(byte[] paramArrayOfByte, Point paramPoint, Rect paramRect)
+  {
+    AppMethodBeat.i(81383);
+    Point localPoint = new Point();
+    paramArrayOfByte = a(paramArrayOfByte, paramPoint, paramRect, localPoint);
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      boolean bool = b(paramArrayOfByte, localPoint);
+      AppMethodBeat.o(81383);
+      return bool;
+    }
+    AppMethodBeat.o(81383);
+    return false;
+  }
+  
+  public final byte[] a(byte[] paramArrayOfByte, Point paramPoint1, int paramInt, Rect paramRect, Point paramPoint2)
+  {
+    try
+    {
+      AppMethodBeat.i(81384);
+      byte[] arrayOfByte1 = paramArrayOfByte;
+      if (270 == paramInt)
+      {
+        byte[] arrayOfByte2 = new byte[paramArrayOfByte.length];
+        QbarNative.a(arrayOfByte2, paramArrayOfByte, paramPoint1.x, paramPoint1.y);
+        arrayOfByte1 = new byte[paramArrayOfByte.length];
+        QbarNative.a(arrayOfByte1, arrayOfByte2, paramPoint1.y, paramPoint1.x);
+        QbarNative.nativeRelease();
+      }
+      paramArrayOfByte = a(arrayOfByte1, paramPoint1, paramRect, paramPoint2);
+      AppMethodBeat.o(81384);
+      return paramArrayOfByte;
+    }
+    finally {}
+  }
+  
+  public final void cjs()
+  {
+    AppMethodBeat.i(81388);
+    if (this.hJk)
+    {
+      Set localSet2 = this.qzV;
+      Set localSet1;
+      if (localSet2 != null)
+      {
+        localSet1 = localSet2;
+        if (!localSet2.isEmpty()) {}
+      }
+      else
+      {
+        localSet1 = CN(this.qCn);
+      }
+      g(localSet1);
+    }
+    AppMethodBeat.o(81388);
+  }
+  
+  public final void pJ()
+  {
+    AppMethodBeat.i(81390);
+    ab.d("MicroMsg.scanner.QBarDecoder", "releaseDecoder() start, hasInitQBar = %s", new Object[] { Boolean.valueOf(this.hJk) });
+    this.qyz = true;
+    synchronized (this.ceY)
+    {
+      if (this.hJk)
+      {
+        int i = this.hJj.release();
+        this.hJj = null;
+        this.hJk = false;
+        ab.d("MicroMsg.scanner.QBarDecoder", "QbarNative.Release() = [%s]", new Object[] { Integer.valueOf(i) });
+      }
+      d.cjp();
+      AppMethodBeat.o(81390);
+      return;
+    }
+  }
+  
+  public final void restartDecoder()
+  {
+    AppMethodBeat.i(81391);
+    if (this.hJk)
+    {
+      pJ();
+      this.hJk = false;
+    }
+    this.qyz = false;
+    this.isDecoding = false;
+    this.hJj = new QbarNative();
+    AppMethodBeat.o(81391);
   }
 }
 

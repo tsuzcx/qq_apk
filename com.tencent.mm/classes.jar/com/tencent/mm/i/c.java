@@ -1,78 +1,22 @@
 package com.tencent.mm.i;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public int bGu;
-  public int bGv;
-  public String bGw;
-  public String desc;
-  public String dkM;
-  public String dkN;
-  public int dkO;
-  public int showType;
-  public String url;
+  public String cBO;
+  public int field_finishedLength;
+  public boolean field_isUploadTask = false;
+  public boolean field_mtlnotify;
+  public int field_status;
+  public int field_toltalLength;
   
-  public static c eK(String paramString)
+  public final String toString()
   {
-    if (bk.bl(paramString)) {
-      return null;
-    }
-    c localc = new c();
-    paramString = bn.s(paramString, "e");
-    if (paramString == null)
-    {
-      y.d("MicroMsg.BroadcastEntity", "this is not errmsg");
-      return null;
-    }
-    localc.desc = ((String)paramString.get(".e.Content"));
-    localc.url = ((String)paramString.get(".e.Url"));
-    localc.bGw = ((String)paramString.get(".e.Title"));
-    localc.bGv = bk.getInt((String)paramString.get(".e.Action"), 0);
-    localc.showType = bk.getInt((String)paramString.get(".e.ShowType"), 0);
-    localc.bGu = bk.getInt((String)paramString.get(".e.DispSec"), 30);
-    localc.dkM = ((String)paramString.get(".e.Ok"));
-    localc.dkN = ((String)paramString.get(".e.Cancel"));
-    localc.dkO = bk.getInt((String)paramString.get("e.Countdown"), 0);
-    if (ge(localc.showType)) {
-      return localc;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject((String)paramString.get(".e"));
-      localc.desc = localJSONObject.getString("Content");
-      localc.url = localJSONObject.getString("Url");
-      localc.bGw = localJSONObject.getString("Title");
-      localc.bGv = bk.getInt(localJSONObject.getString("Action"), 0);
-      localc.showType = bk.getInt(localJSONObject.getString("ShowType"), 0);
-      localc.bGu = bk.getInt(localJSONObject.getString("DispSec"), 30);
-      localc.dkM = ((String)paramString.get(".e.Ok"));
-      localc.dkN = ((String)paramString.get(".e.Cancel"));
-      localc.dkO = bk.getInt((String)paramString.get("e.Countdown"), 0);
-      boolean bool = ge(localc.showType);
-      if (bool) {
-        return localc;
-      }
-    }
-    catch (Exception paramString)
-    {
-      y.printErrStackTrace("MicroMsg.BroadcastEntity", paramString, "", new Object[0]);
-    }
-    return null;
-  }
-  
-  private static boolean ge(int paramInt)
-  {
-    if (paramInt == 4) {}
-    while ((paramInt == 1) || (paramInt == 5) || (paramInt == 3) || (paramInt == 8)) {
-      return true;
-    }
-    return false;
+    AppMethodBeat.i(128589);
+    String str = String.format("id:%s total:%d finLen:%d status:%d,mtl:%b, upload:%b", new Object[] { this.cBO, Integer.valueOf(this.field_toltalLength), Integer.valueOf(this.field_finishedLength), Integer.valueOf(this.field_status), Boolean.valueOf(this.field_mtlnotify), Boolean.valueOf(this.field_isUploadTask) });
+    AppMethodBeat.o(128589);
+    return str;
   }
 }
 

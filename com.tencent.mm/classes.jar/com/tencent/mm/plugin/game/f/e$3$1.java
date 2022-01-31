@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$3$1
   implements Runnable
@@ -12,13 +13,15 @@ final class e$3$1
   
   public final void run()
   {
-    this.lgv.jxK.setImageBitmap(this.ara);
-    ViewGroup.LayoutParams localLayoutParams = this.lgv.jxK.getLayoutParams();
-    float f = this.lgv.aUp / this.lgv.aUo;
-    localLayoutParams.width = this.lgv.lgu;
-    localLayoutParams.height = ((int)(f * this.lgv.lgu));
-    this.lgv.jxK.setLayoutParams(localLayoutParams);
-    this.lgv.jxK.setScaleType(ImageView.ScaleType.FIT_XY);
+    AppMethodBeat.i(112330);
+    this.nEq.lHj.setImageBitmap(this.val$bitmap);
+    ViewGroup.LayoutParams localLayoutParams = this.nEq.lHj.getLayoutParams();
+    float f = this.nEq.val$height / this.nEq.val$width;
+    localLayoutParams.width = this.nEq.nEp;
+    localLayoutParams.height = ((int)(f * this.nEq.nEp));
+    this.nEq.lHj.setLayoutParams(localLayoutParams);
+    this.nEq.lHj.setScaleType(ImageView.ScaleType.FIT_XY);
+    AppMethodBeat.o(112330);
   }
 }
 

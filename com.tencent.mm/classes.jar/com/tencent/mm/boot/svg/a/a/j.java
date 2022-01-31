@@ -17,7 +17,7 @@ public final class j
   private final int height = 96;
   private final int width = 96;
   
-  protected final int b(int paramInt, Object... paramVarArgs)
+  public final int a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
@@ -29,12 +29,12 @@ public final class j
       return 96;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject1 = c.f(paramVarArgs);
-      Object localObject2 = c.e(paramVarArgs);
-      Object localObject3 = c.i(paramVarArgs);
+      Object localObject1 = c.h(paramVarArgs);
+      Object localObject2 = c.g(paramVarArgs);
+      Object localObject3 = c.k(paramVarArgs);
       ((Paint)localObject3).setFlags(385);
       ((Paint)localObject3).setStyle(Paint.Style.FILL);
-      Object localObject4 = c.i(paramVarArgs);
+      Object localObject4 = c.k(paramVarArgs);
       ((Paint)localObject4).setFlags(385);
       ((Paint)localObject4).setStyle(Paint.Style.STROKE);
       ((Paint)localObject3).setColor(-16777216);
@@ -57,7 +57,7 @@ public final class j
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues((float[])localObject3);
       localCanvas.concat((Matrix)localObject1);
-      localObject1 = c.j(paramVarArgs);
+      localObject1 = c.l(paramVarArgs);
       ((Path)localObject1).moveTo(37.0F, 37.0F);
       ((Path)localObject1).lineTo(37.0F, 12.995752F);
       ((Path)localObject1).cubicTo(37.0F, 12.450768F, 37.443588F, 12.0F, 37.99078F, 12.0F);
@@ -85,7 +85,7 @@ public final class j
       localCanvas.drawPath((Path)localObject1, (Paint)localObject2);
       localCanvas.restore();
       localCanvas.restore();
-      c.h(paramVarArgs);
+      c.j(paramVarArgs);
     }
   }
 }

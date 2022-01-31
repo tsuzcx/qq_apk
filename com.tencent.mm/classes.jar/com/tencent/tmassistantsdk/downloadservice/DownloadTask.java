@@ -2,8 +2,9 @@ package com.tencent.tmassistantsdk.downloadservice;
 
 import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.tmassistantsdk.protocol.jce.DownloadChunkLogInfo;
 import com.tencent.tmassistantsdk.storage.TMAssistantFile;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
@@ -22,32 +23,45 @@ import org.apache.http.client.methods.HttpGet;
 public class DownloadTask
 {
   public static final String TAG = "_DownloadTask";
-  protected DownloadInfo mDownloadInfo = null;
-  HttpClient mHttpClient = null;
-  HttpGet mHttpGet = null;
-  private boolean mIsRedirect = false;
-  protected final byte[] mRecvBuf = new byte[4096];
+  protected DownloadInfo mDownloadInfo;
+  HttpClient mHttpClient;
+  HttpGet mHttpGet;
+  private boolean mIsRedirect;
+  protected final byte[] mRecvBuf;
   private String mRequestUrl;
   TMAssistantFile mSaveFile;
-  protected boolean mStopTask = false;
-  protected final int mTaskId = GlobalUtil.getMemUUID();
-  private String startDownloadNetType = "wifi";
+  protected boolean mStopTask;
+  protected final int mTaskId;
+  private String startDownloadNetType;
   
   public DownloadTask(DownloadInfo paramDownloadInfo)
   {
+    AppMethodBeat.i(75744);
+    this.mStopTask = false;
+    this.mHttpClient = null;
+    this.mHttpGet = null;
+    this.mDownloadInfo = null;
+    this.mRecvBuf = new byte[4096];
+    this.mTaskId = GlobalUtil.getMemUUID();
+    this.startDownloadNetType = "wifi";
+    this.mIsRedirect = false;
     this.mDownloadInfo = paramDownloadInfo;
+    AppMethodBeat.o(75744);
   }
   
   private void cancelInWorkThread()
   {
+    AppMethodBeat.i(75746);
     this.mStopTask = true;
     if ((this.mHttpGet != null) && (!this.mHttpGet.isAborted())) {
       this.mHttpGet.abort();
     }
+    AppMethodBeat.o(75746);
   }
   
   private void handleResponseCode(HttpResponse paramHttpResponse, DownloadChunkLogInfo paramDownloadChunkLogInfo)
   {
+    AppMethodBeat.i(75750);
     int i = paramHttpResponse.getStatusLine().getStatusCode();
     TMLog.i("_DownloadTask", "httpResponseCode = " + i + " " + Thread.currentThread().getName());
     paramDownloadChunkLogInfo.readHeaderTime = System.currentTimeMillis();
@@ -59,13 +73,15 @@ public class DownloadTask
     switch (i)
     {
     default: 
-      throw new StopRequestException(i, "HTTP response code error, code = " + i);
+      paramHttpResponse = new StopRequestException(i, "HTTP response code error, code = ".concat(String.valueOf(i)));
+      AppMethodBeat.o(75750);
+      throw paramHttpResponse;
     case 200: 
       localObject = paramHttpResponse.getHeaders("Content-Type");
       if ((localObject != null) && (localObject.length > 0))
       {
         if (!this.mDownloadInfo.mContentType.equals("resource/tm.android.unknown")) {
-          break label253;
+          break label262;
         }
         localObject = DownloadHelper.renameAPKFileName(this.mDownloadInfo.mFileName);
         this.mDownloadInfo.mFileName = ((String)localObject);
@@ -73,10 +89,14 @@ public class DownloadTask
       for (;;)
       {
         onReceivedResponseData(paramHttpResponse, paramDownloadChunkLogInfo);
+        AppMethodBeat.o(75750);
         return;
         localObject = localObject[0].getValue();
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).startsWith("text"))) {
-          throw new StopRequestException(708, "Return contenttype = text " + Thread.currentThread().getName());
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).startsWith("text")))
+        {
+          paramHttpResponse = new StopRequestException(708, "Return contenttype = text " + Thread.currentThread().getName());
+          AppMethodBeat.o(75750);
+          throw paramHttpResponse;
         }
         renameApkFileName(paramHttpResponse);
       }
@@ -89,6 +109,7 @@ public class DownloadTask
       for (;;)
       {
         onReceivedResponseData(paramHttpResponse, paramDownloadChunkLogInfo);
+        AppMethodBeat.o(75750);
         return;
         renameApkFileName(paramHttpResponse);
       }
@@ -99,678 +120,748 @@ public class DownloadTask
       if (this.mDownloadInfo.mRedirectCnt > 5)
       {
         TMLog.i("_DownloadTask", "mRedirectCnt = " + this.mDownloadInfo.mRedirectCnt + ",MAX_REDIRESTS = 5");
-        throw new StopRequestException(709, "Redirect cnt many times.");
+        paramHttpResponse = new StopRequestException(709, "Redirect cnt many times.");
+        AppMethodBeat.o(75750);
+        throw paramHttpResponse;
       }
       paramHttpResponse = paramHttpResponse.getFirstHeader("location");
       if (paramHttpResponse != null)
       {
         paramHttpResponse = paramHttpResponse.getValue();
-        TMLog.i("_DownloadTask", "jumpURL = " + paramHttpResponse);
+        TMLog.i("_DownloadTask", "jumpURL = ".concat(String.valueOf(paramHttpResponse)));
         if (DownloadHelper.isValidURL(paramHttpResponse))
         {
           this.mRequestUrl = DownloadHelper.correctURL(paramHttpResponse);
           this.mIsRedirect = true;
           paramHttpResponse = this.mDownloadInfo;
           paramHttpResponse.mRedirectCnt += 1;
+          AppMethodBeat.o(75750);
           return;
         }
-        throw new StopRequestException(700, "Jump url is not valid. httpResponseCode = " + i + " url: " + paramHttpResponse);
+        paramHttpResponse = new StopRequestException(700, "Jump url is not valid. httpResponseCode = " + i + " url: " + paramHttpResponse);
+        AppMethodBeat.o(75750);
+        throw paramHttpResponse;
       }
-      TMLog.e("_DownloadTask", "location header is null. httpResponseCode = " + i);
-      throw new StopRequestException(702, "location header is null. httpResponseCode = " + i);
+      TMLog.e("_DownloadTask", "location header is null. httpResponseCode = ".concat(String.valueOf(i)));
+      paramHttpResponse = new StopRequestException(702, "location header is null. httpResponseCode = ".concat(String.valueOf(i)));
+      AppMethodBeat.o(75750);
+      throw paramHttpResponse;
     case 416: 
-      throw new StopRequestException(i, "HTTP response code error, code = " + i);
+      paramHttpResponse = new StopRequestException(i, "HTTP response code error, code = ".concat(String.valueOf(i)));
+      AppMethodBeat.o(75750);
+      throw paramHttpResponse;
     case 503: 
-      label253:
-      throw new StopRequestException(i, "HTTP response code error, code = " + i);
+      label262:
+      paramHttpResponse = new StopRequestException(i, "HTTP response code error, code = ".concat(String.valueOf(i)));
+      AppMethodBeat.o(75750);
+      throw paramHttpResponse;
     }
-    throw new StopRequestException(i, "HTTP response code error, code = " + i);
+    paramHttpResponse = new StopRequestException(i, "HTTP response code error, code = ".concat(String.valueOf(i)));
+    AppMethodBeat.o(75750);
+    throw paramHttpResponse;
   }
   
   private void onDownloadError(Throwable paramThrowable)
   {
+    AppMethodBeat.i(75749);
     if (paramThrowable != null) {
-      y.printErrStackTrace("_DownloadTask", paramThrowable, "", new Object[0]);
+      ab.printErrStackTrace("_DownloadTask", paramThrowable, "", new Object[0]);
     }
+    AppMethodBeat.o(75749);
   }
   
   /* Error */
   private void onReceivedResponseData(HttpResponse paramHttpResponse, DownloadChunkLogInfo paramDownloadChunkLogInfo)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: invokeinterface 248 1 0
-    //   6: astore 9
-    //   8: aload_0
-    //   9: aload_1
-    //   10: aload 9
-    //   12: invokespecial 252	com/tencent/tmassistantsdk/downloadservice/DownloadTask:verifyTotalLen	(Lorg/apache/http/HttpResponse;Lorg/apache/http/HttpEntity;)Z
-    //   15: ifne +24 -> 39
-    //   18: ldc 8
-    //   20: ldc 254
-    //   22: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   25: new 139	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   28: dup
-    //   29: sipush 705
-    //   32: ldc_w 256
-    //   35: invokespecial 144	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
-    //   38: athrow
-    //   39: aload_0
-    //   40: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   43: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   46: lconst_0
-    //   47: lcmp
-    //   48: ifne +397 -> 445
-    //   51: aload_1
-    //   52: invokeinterface 77 1 0
-    //   57: invokeinterface 82 1 0
-    //   62: sipush 200
-    //   65: if_icmpne +263 -> 328
-    //   68: aload_0
-    //   69: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   72: aload 9
-    //   74: invokeinterface 264 1 0
-    //   79: invokevirtual 268	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:setTotalSize	(J)V
-    //   82: ldc 8
-    //   84: new 84	java/lang/StringBuilder
-    //   87: dup
-    //   88: ldc_w 270
-    //   91: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   94: aload_0
-    //   95: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   98: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   101: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   104: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   110: ldc 8
-    //   112: new 84	java/lang/StringBuilder
-    //   115: dup
-    //   116: ldc_w 275
-    //   119: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   122: aload_0
-    //   123: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   126: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   129: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 278	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   138: aload_1
-    //   139: ldc_w 280
-    //   142: invokeinterface 211 2 0
-    //   147: astore_1
-    //   148: aload_1
-    //   149: ifnull +36 -> 185
-    //   152: aload_1
-    //   153: invokeinterface 178 1 0
-    //   158: invokestatic 286	com/tencent/tmassistantsdk/downloadservice/ByteRange:parseContentRange	(Ljava/lang/String;)Lcom/tencent/tmassistantsdk/downloadservice/ByteRange;
-    //   161: astore_1
-    //   162: aload_2
+    //   0: ldc_w 268
+    //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_1
+    //   7: invokeinterface 272 1 0
+    //   12: astore 9
+    //   14: aload_0
+    //   15: aload_1
+    //   16: aload 9
+    //   18: invokespecial 276	com/tencent/tmassistantsdk/downloadservice/DownloadTask:verifyTotalLen	(Lorg/apache/http/HttpResponse;Lorg/apache/http/HttpEntity;)Z
+    //   21: ifne +33 -> 54
+    //   24: ldc 8
+    //   26: ldc_w 278
+    //   29: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: new 151	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   35: dup
+    //   36: sipush 705
+    //   39: ldc_w 280
+    //   42: invokespecial 166	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
+    //   45: astore_1
+    //   46: ldc_w 268
+    //   49: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   52: aload_1
+    //   53: athrow
+    //   54: aload_0
+    //   55: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   58: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   61: lconst_0
+    //   62: lcmp
+    //   63: ifne +403 -> 466
+    //   66: aload_1
+    //   67: invokeinterface 90 1 0
+    //   72: invokeinterface 95 1 0
+    //   77: sipush 200
+    //   80: if_icmpne +269 -> 349
+    //   83: aload_0
+    //   84: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   87: aload 9
+    //   89: invokeinterface 288 1 0
+    //   94: invokevirtual 292	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:setTotalSize	(J)V
+    //   97: ldc 8
+    //   99: new 97	java/lang/StringBuilder
+    //   102: dup
+    //   103: ldc_w 294
+    //   106: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   109: aload_0
+    //   110: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   113: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   116: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   119: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   122: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   125: ldc 8
+    //   127: new 97	java/lang/StringBuilder
+    //   130: dup
+    //   131: ldc_w 299
+    //   134: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   137: aload_0
+    //   138: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   141: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   144: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   147: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   150: invokestatic 302	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   153: aload_1
+    //   154: ldc_w 304
+    //   157: invokeinterface 230 2 0
+    //   162: astore_1
     //   163: aload_1
-    //   164: invokevirtual 289	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
-    //   167: putfield 292	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseRangePosition	J
-    //   170: aload_2
-    //   171: aload_1
-    //   172: invokevirtual 295	com/tencent/tmassistantsdk/downloadservice/ByteRange:getEnd	()J
-    //   175: aload_1
-    //   176: invokevirtual 289	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
-    //   179: lsub
-    //   180: lconst_1
-    //   181: ladd
-    //   182: putfield 298	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseRangeLength	J
+    //   164: ifnull +36 -> 200
+    //   167: aload_1
+    //   168: invokeinterface 197 1 0
+    //   173: invokestatic 310	com/tencent/tmassistantsdk/downloadservice/ByteRange:parseContentRange	(Ljava/lang/String;)Lcom/tencent/tmassistantsdk/downloadservice/ByteRange;
+    //   176: astore_1
+    //   177: aload_2
+    //   178: aload_1
+    //   179: invokevirtual 313	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
+    //   182: putfield 316	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseRangePosition	J
     //   185: aload_2
-    //   186: aload_0
-    //   187: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   190: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   193: putfield 301	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseContentLength	J
-    //   196: aload_0
-    //   197: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   200: ifnonnull +28 -> 228
-    //   203: aload_0
-    //   204: new 305	com/tencent/tmassistantsdk/storage/TMAssistantFile
-    //   207: dup
-    //   208: aload_0
-    //   209: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   212: getfield 308	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mTempFileName	Ljava/lang/String;
-    //   215: aload_0
-    //   216: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   219: getfield 164	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
-    //   222: invokespecial 310	com/tencent/tmassistantsdk/storage/TMAssistantFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   225: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   228: lconst_0
-    //   229: lstore 6
-    //   231: lload 6
-    //   233: lstore 4
-    //   235: aload 9
-    //   237: invokeinterface 314 1 0
-    //   242: astore_1
-    //   243: lload 6
-    //   245: lstore 4
-    //   247: ldc 8
-    //   249: new 84	java/lang/StringBuilder
-    //   252: dup
-    //   253: ldc_w 316
-    //   256: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   259: aload_0
-    //   260: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   263: getfield 164	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
-    //   266: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   269: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   272: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   275: lconst_0
-    //   276: lstore 4
-    //   278: aload_1
-    //   279: aload_0
-    //   280: getfield 40	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRecvBuf	[B
-    //   283: invokevirtual 322	java/io/InputStream:read	([B)I
-    //   286: istore_3
-    //   287: iload_3
-    //   288: ifle +14 -> 302
-    //   291: aload_0
-    //   292: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   295: ifeq +474 -> 769
-    //   298: aload_1
-    //   299: invokevirtual 325	java/io/InputStream:close	()V
-    //   302: aload_0
-    //   303: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   306: ifnull +15 -> 321
-    //   309: aload_0
-    //   310: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   313: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   316: aload_0
-    //   317: aconst_null
-    //   318: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   321: aload_2
-    //   322: lload 4
-    //   324: putfield 329	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:receiveDataSize	J
-    //   327: return
-    //   328: aload_1
-    //   329: invokeinterface 77 1 0
-    //   334: invokeinterface 82 1 0
-    //   339: sipush 206
-    //   342: if_icmpne +62 -> 404
-    //   345: aload_1
-    //   346: ldc_w 280
-    //   349: invokeinterface 211 2 0
-    //   354: astore 10
-    //   356: aload_0
-    //   357: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   360: aload 10
-    //   362: invokeinterface 178 1 0
-    //   367: invokestatic 332	com/tencent/tmassistantsdk/downloadservice/ByteRange:getTotalSize	(Ljava/lang/String;)J
-    //   370: invokevirtual 268	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:setTotalSize	(J)V
-    //   373: ldc 8
-    //   375: new 84	java/lang/StringBuilder
-    //   378: dup
-    //   379: ldc_w 334
-    //   382: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   385: aload_0
-    //   386: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   389: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   392: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   395: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   398: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   401: goto -291 -> 110
-    //   404: ldc 8
-    //   406: new 84	java/lang/StringBuilder
-    //   409: dup
-    //   410: ldc_w 336
-    //   413: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   416: aload_1
-    //   417: invokeinterface 77 1 0
-    //   422: invokeinterface 82 1 0
-    //   427: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   430: ldc_w 338
-    //   433: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   436: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   439: invokestatic 278	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   442: goto -332 -> 110
-    //   445: aload_1
-    //   446: invokeinterface 77 1 0
-    //   451: invokeinterface 82 1 0
-    //   456: sipush 206
-    //   459: if_icmpne -263 -> 196
-    //   462: aload_1
-    //   463: ldc_w 280
-    //   466: invokeinterface 211 2 0
-    //   471: astore_1
-    //   472: aload_1
-    //   473: invokeinterface 178 1 0
-    //   478: invokestatic 286	com/tencent/tmassistantsdk/downloadservice/ByteRange:parseContentRange	(Ljava/lang/String;)Lcom/tencent/tmassistantsdk/downloadservice/ByteRange;
-    //   481: astore 10
+    //   186: aload_1
+    //   187: invokevirtual 319	com/tencent/tmassistantsdk/downloadservice/ByteRange:getEnd	()J
+    //   190: aload_1
+    //   191: invokevirtual 313	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
+    //   194: lsub
+    //   195: lconst_1
+    //   196: ladd
+    //   197: putfield 322	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseRangeLength	J
+    //   200: aload_2
+    //   201: aload_0
+    //   202: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   205: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   208: putfield 325	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseContentLength	J
+    //   211: aload_0
+    //   212: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   215: ifnonnull +28 -> 243
+    //   218: aload_0
+    //   219: new 329	com/tencent/tmassistantsdk/storage/TMAssistantFile
+    //   222: dup
+    //   223: aload_0
+    //   224: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   227: getfield 332	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mTempFileName	Ljava/lang/String;
+    //   230: aload_0
+    //   231: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   234: getfield 184	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
+    //   237: invokespecial 334	com/tencent/tmassistantsdk/storage/TMAssistantFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   240: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   243: lconst_0
+    //   244: lstore 6
+    //   246: lload 6
+    //   248: lstore 4
+    //   250: aload 9
+    //   252: invokeinterface 338 1 0
+    //   257: astore_1
+    //   258: lload 6
+    //   260: lstore 4
+    //   262: ldc 8
+    //   264: new 97	java/lang/StringBuilder
+    //   267: dup
+    //   268: ldc_w 340
+    //   271: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   274: aload_0
+    //   275: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   278: getfield 184	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
+    //   281: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   287: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   290: lconst_0
+    //   291: lstore 4
+    //   293: aload_1
+    //   294: aload_0
+    //   295: getfield 47	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRecvBuf	[B
+    //   298: invokevirtual 346	java/io/InputStream:read	([B)I
+    //   301: istore_3
+    //   302: iload_3
+    //   303: ifle +14 -> 317
+    //   306: aload_0
+    //   307: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   310: ifeq +503 -> 813
+    //   313: aload_1
+    //   314: invokevirtual 349	java/io/InputStream:close	()V
+    //   317: aload_0
+    //   318: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   321: ifnull +15 -> 336
+    //   324: aload_0
+    //   325: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   328: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   331: aload_0
+    //   332: aconst_null
+    //   333: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   336: aload_2
+    //   337: lload 4
+    //   339: putfield 353	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:receiveDataSize	J
+    //   342: ldc_w 268
+    //   345: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   348: return
+    //   349: aload_1
+    //   350: invokeinterface 90 1 0
+    //   355: invokeinterface 95 1 0
+    //   360: sipush 206
+    //   363: if_icmpne +62 -> 425
+    //   366: aload_1
+    //   367: ldc_w 304
+    //   370: invokeinterface 230 2 0
+    //   375: astore 10
+    //   377: aload_0
+    //   378: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   381: aload 10
+    //   383: invokeinterface 197 1 0
+    //   388: invokestatic 356	com/tencent/tmassistantsdk/downloadservice/ByteRange:getTotalSize	(Ljava/lang/String;)J
+    //   391: invokevirtual 292	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:setTotalSize	(J)V
+    //   394: ldc 8
+    //   396: new 97	java/lang/StringBuilder
+    //   399: dup
+    //   400: ldc_w 358
+    //   403: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   406: aload_0
+    //   407: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   410: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   413: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   416: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   419: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   422: goto -297 -> 125
+    //   425: ldc 8
+    //   427: new 97	java/lang/StringBuilder
+    //   430: dup
+    //   431: ldc_w 360
+    //   434: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   437: aload_1
+    //   438: invokeinterface 90 1 0
+    //   443: invokeinterface 95 1 0
+    //   448: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   451: ldc_w 362
+    //   454: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   457: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   460: invokestatic 302	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   463: goto -338 -> 125
+    //   466: aload_1
+    //   467: invokeinterface 90 1 0
+    //   472: invokeinterface 95 1 0
+    //   477: sipush 206
+    //   480: if_icmpne -269 -> 211
     //   483: aload_1
-    //   484: invokeinterface 178 1 0
-    //   489: invokestatic 332	com/tencent/tmassistantsdk/downloadservice/ByteRange:getTotalSize	(Ljava/lang/String;)J
-    //   492: lstore 4
-    //   494: aload_2
-    //   495: aload 10
-    //   497: invokevirtual 289	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
-    //   500: putfield 292	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseRangePosition	J
-    //   503: aload_2
-    //   504: aload 10
-    //   506: invokevirtual 295	com/tencent/tmassistantsdk/downloadservice/ByteRange:getEnd	()J
-    //   509: aload 10
-    //   511: invokevirtual 289	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
-    //   514: lsub
-    //   515: lconst_1
-    //   516: ladd
-    //   517: putfield 298	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseRangeLength	J
-    //   520: aload_2
-    //   521: lload 4
-    //   523: putfield 301	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseContentLength	J
-    //   526: ldc 8
-    //   528: new 84	java/lang/StringBuilder
-    //   531: dup
-    //   532: ldc_w 340
-    //   535: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   538: lload 4
-    //   540: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   543: ldc_w 342
-    //   546: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   549: aload_0
-    //   550: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   553: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   556: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   559: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   562: invokestatic 278	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   565: ldc 8
-    //   567: new 84	java/lang/StringBuilder
-    //   570: dup
-    //   571: ldc_w 344
-    //   574: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   577: aload_0
-    //   578: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   581: getfield 347	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
-    //   584: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   587: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   590: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   593: ldc 8
-    //   595: new 84	java/lang/StringBuilder
-    //   598: dup
-    //   599: ldc_w 349
-    //   602: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   605: aload 10
-    //   607: invokevirtual 289	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
-    //   610: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   613: ldc_w 351
-    //   616: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   619: aload 10
-    //   621: invokevirtual 295	com/tencent/tmassistantsdk/downloadservice/ByteRange:getEnd	()J
-    //   624: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   627: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   630: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   633: aload 10
-    //   635: invokevirtual 289	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
-    //   638: aload_0
-    //   639: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   642: getfield 347	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
-    //   645: lcmp
-    //   646: ifeq +52 -> 698
-    //   649: new 139	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   652: dup
-    //   653: sipush 706
-    //   656: ldc_w 353
-    //   659: invokespecial 144	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
-    //   662: athrow
-    //   663: astore_1
-    //   664: new 139	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   667: dup
-    //   668: sipush 704
-    //   671: aload_1
-    //   672: invokespecial 356	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/Throwable;)V
-    //   675: athrow
-    //   676: astore_1
-    //   677: aload_0
-    //   678: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   681: ifnull +15 -> 696
-    //   684: aload_0
-    //   685: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   688: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   691: aload_0
-    //   692: aconst_null
-    //   693: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   696: aload_1
-    //   697: athrow
-    //   698: lload 4
-    //   700: aload_0
-    //   701: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   704: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   707: lcmp
-    //   708: ifeq +17 -> 725
-    //   711: new 139	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   714: dup
-    //   715: sipush 705
-    //   718: ldc_w 358
-    //   721: invokespecial 144	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
-    //   724: athrow
-    //   725: ldc 8
-    //   727: new 84	java/lang/StringBuilder
-    //   730: dup
-    //   731: ldc_w 360
-    //   734: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   737: aload_1
-    //   738: invokevirtual 363	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   741: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   744: invokestatic 366	com/tencent/tmassistantsdk/util/TMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   747: aload_0
-    //   748: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   751: ifnull -555 -> 196
-    //   754: aload_0
-    //   755: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   758: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   761: aload_0
-    //   762: aconst_null
-    //   763: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   766: goto -570 -> 196
-    //   769: aload_0
-    //   770: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   773: getfield 347	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
-    //   776: iload_3
-    //   777: i2l
-    //   778: ladd
-    //   779: lstore 6
-    //   781: lload 6
-    //   783: aload_0
-    //   784: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   787: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   790: lcmp
-    //   791: ifgt +408 -> 1199
-    //   794: lload 6
-    //   796: aload_0
-    //   797: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   800: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   803: lcmp
-    //   804: ifne +202 -> 1006
-    //   807: iconst_1
-    //   808: istore 8
-    //   810: aload_0
-    //   811: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   814: aload_0
-    //   815: getfield 40	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRecvBuf	[B
-    //   818: iconst_0
-    //   819: iload_3
-    //   820: aload_0
-    //   821: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   824: getfield 347	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
-    //   827: iload 8
-    //   829: invokevirtual 370	com/tencent/tmassistantsdk/storage/TMAssistantFile:write	([BIIJZ)Z
-    //   832: ifne +348 -> 1180
-    //   835: invokestatic 373	com/tencent/tmassistantsdk/storage/TMAssistantFile:getSavePathRootDir	()Ljava/lang/String;
-    //   838: aload_0
-    //   839: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   842: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   845: invokestatic 377	com/tencent/tmassistantsdk/downloadservice/DownloadHelper:isSpaceEnough	(Ljava/lang/String;J)Z
-    //   848: ifeq +248 -> 1096
-    //   851: invokestatic 380	com/tencent/tmassistantsdk/storage/TMAssistantFile:isSDCardExistAndCanWrite	()Z
-    //   854: ifeq +158 -> 1012
-    //   857: new 84	java/lang/StringBuilder
-    //   860: dup
-    //   861: ldc_w 382
-    //   864: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   867: aload_0
-    //   868: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   871: getfield 164	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
-    //   874: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   877: ldc_w 384
-    //   880: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   883: aload_0
-    //   884: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   887: getfield 347	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
-    //   890: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   893: ldc_w 386
-    //   896: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   899: iload_3
-    //   900: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   903: ldc_w 388
-    //   906: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   909: aload_0
-    //   910: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   913: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   916: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   919: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   922: astore_1
-    //   923: ldc 8
-    //   925: aload_1
-    //   926: invokestatic 278	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   929: new 139	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   932: dup
-    //   933: sipush 703
-    //   936: aload_1
-    //   937: invokespecial 144	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
-    //   940: athrow
-    //   941: astore_1
-    //   942: lload 4
-    //   944: lstore 6
-    //   946: lload 6
-    //   948: lstore 4
-    //   950: ldc 8
-    //   952: aload_1
-    //   953: ldc 234
-    //   955: iconst_0
-    //   956: anewarray 4	java/lang/Object
-    //   959: invokestatic 240	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   962: lload 6
-    //   964: lstore 4
-    //   966: new 139	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   969: dup
-    //   970: sipush 605
-    //   973: aload_1
-    //   974: invokespecial 356	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/Throwable;)V
-    //   977: athrow
-    //   978: astore_1
-    //   979: aload_0
-    //   980: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   983: ifnull +15 -> 998
-    //   986: aload_0
-    //   987: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   990: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   993: aload_0
-    //   994: aconst_null
-    //   995: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   998: aload_2
-    //   999: lload 4
-    //   1001: putfield 329	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:receiveDataSize	J
+    //   484: ldc_w 304
+    //   487: invokeinterface 230 2 0
+    //   492: astore_1
+    //   493: aload_1
+    //   494: invokeinterface 197 1 0
+    //   499: invokestatic 310	com/tencent/tmassistantsdk/downloadservice/ByteRange:parseContentRange	(Ljava/lang/String;)Lcom/tencent/tmassistantsdk/downloadservice/ByteRange;
+    //   502: astore 10
+    //   504: aload_1
+    //   505: invokeinterface 197 1 0
+    //   510: invokestatic 356	com/tencent/tmassistantsdk/downloadservice/ByteRange:getTotalSize	(Ljava/lang/String;)J
+    //   513: lstore 4
+    //   515: aload_2
+    //   516: aload 10
+    //   518: invokevirtual 313	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
+    //   521: putfield 316	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseRangePosition	J
+    //   524: aload_2
+    //   525: aload 10
+    //   527: invokevirtual 319	com/tencent/tmassistantsdk/downloadservice/ByteRange:getEnd	()J
+    //   530: aload 10
+    //   532: invokevirtual 313	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
+    //   535: lsub
+    //   536: lconst_1
+    //   537: ladd
+    //   538: putfield 322	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseRangeLength	J
+    //   541: aload_2
+    //   542: lload 4
+    //   544: putfield 325	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:responseContentLength	J
+    //   547: ldc 8
+    //   549: new 97	java/lang/StringBuilder
+    //   552: dup
+    //   553: ldc_w 364
+    //   556: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   559: lload 4
+    //   561: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   564: ldc_w 366
+    //   567: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   570: aload_0
+    //   571: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   574: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   577: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   580: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   583: invokestatic 302	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   586: ldc 8
+    //   588: new 97	java/lang/StringBuilder
+    //   591: dup
+    //   592: ldc_w 368
+    //   595: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   598: aload_0
+    //   599: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   602: getfield 371	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
+    //   605: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   608: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   611: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   614: ldc 8
+    //   616: new 97	java/lang/StringBuilder
+    //   619: dup
+    //   620: ldc_w 373
+    //   623: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   626: aload 10
+    //   628: invokevirtual 313	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
+    //   631: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   634: ldc_w 375
+    //   637: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   640: aload 10
+    //   642: invokevirtual 319	com/tencent/tmassistantsdk/downloadservice/ByteRange:getEnd	()J
+    //   645: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   648: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   651: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   654: aload 10
+    //   656: invokevirtual 313	com/tencent/tmassistantsdk/downloadservice/ByteRange:getStart	()J
+    //   659: aload_0
+    //   660: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   663: getfield 371	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
+    //   666: lcmp
+    //   667: ifeq +74 -> 741
+    //   670: new 151	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   673: dup
+    //   674: sipush 706
+    //   677: ldc_w 377
+    //   680: invokespecial 166	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
+    //   683: astore_1
+    //   684: ldc_w 268
+    //   687: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   690: aload_1
+    //   691: athrow
+    //   692: astore_1
+    //   693: new 151	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   696: dup
+    //   697: sipush 704
+    //   700: aload_1
+    //   701: invokespecial 380	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/Throwable;)V
+    //   704: astore_1
+    //   705: ldc_w 268
+    //   708: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   711: aload_1
+    //   712: athrow
+    //   713: astore_1
+    //   714: aload_0
+    //   715: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   718: ifnull +15 -> 733
+    //   721: aload_0
+    //   722: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   725: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   728: aload_0
+    //   729: aconst_null
+    //   730: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   733: ldc_w 268
+    //   736: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   739: aload_1
+    //   740: athrow
+    //   741: lload 4
+    //   743: aload_0
+    //   744: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   747: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   750: lcmp
+    //   751: ifeq +25 -> 776
+    //   754: new 151	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   757: dup
+    //   758: sipush 705
+    //   761: ldc_w 382
+    //   764: invokespecial 166	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
+    //   767: astore_1
+    //   768: ldc_w 268
+    //   771: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   774: aload_1
+    //   775: athrow
+    //   776: ldc 8
+    //   778: ldc_w 384
+    //   781: aload_1
+    //   782: invokestatic 235	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   785: invokevirtual 163	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   788: invokestatic 387	com/tencent/tmassistantsdk/util/TMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   791: aload_0
+    //   792: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   795: ifnull -584 -> 211
+    //   798: aload_0
+    //   799: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   802: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   805: aload_0
+    //   806: aconst_null
+    //   807: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   810: goto -599 -> 211
+    //   813: aload_0
+    //   814: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   817: getfield 371	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
+    //   820: iload_3
+    //   821: i2l
+    //   822: ladd
+    //   823: lstore 6
+    //   825: lload 6
+    //   827: aload_0
+    //   828: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   831: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   834: lcmp
+    //   835: ifgt +455 -> 1290
+    //   838: lload 6
+    //   840: aload_0
+    //   841: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   844: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   847: lcmp
+    //   848: ifne +233 -> 1081
+    //   851: iconst_1
+    //   852: istore 8
+    //   854: aload_0
+    //   855: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   858: aload_0
+    //   859: getfield 47	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRecvBuf	[B
+    //   862: iconst_0
+    //   863: iload_3
+    //   864: aload_0
+    //   865: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   868: getfield 371	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
+    //   871: iload 8
+    //   873: invokevirtual 391	com/tencent/tmassistantsdk/storage/TMAssistantFile:write	([BIIJZ)Z
+    //   876: ifne +395 -> 1271
+    //   879: invokestatic 394	com/tencent/tmassistantsdk/storage/TMAssistantFile:getSavePathRootDir	()Ljava/lang/String;
+    //   882: aload_0
+    //   883: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   886: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   889: invokestatic 398	com/tencent/tmassistantsdk/downloadservice/DownloadHelper:isSpaceEnough	(Ljava/lang/String;J)Z
+    //   892: ifeq +287 -> 1179
+    //   895: invokestatic 401	com/tencent/tmassistantsdk/storage/TMAssistantFile:isSDCardExistAndCanWrite	()Z
+    //   898: ifeq +189 -> 1087
+    //   901: new 97	java/lang/StringBuilder
+    //   904: dup
+    //   905: ldc_w 403
+    //   908: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   911: aload_0
+    //   912: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   915: getfield 184	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
+    //   918: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   921: ldc_w 405
+    //   924: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   927: aload_0
+    //   928: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   931: getfield 371	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
+    //   934: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   937: ldc_w 407
+    //   940: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   943: iload_3
+    //   944: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   947: ldc_w 409
+    //   950: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   953: aload_0
+    //   954: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   957: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   960: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   963: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   966: astore_1
+    //   967: ldc 8
+    //   969: aload_1
+    //   970: invokestatic 302	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   973: new 151	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   976: dup
+    //   977: sipush 703
+    //   980: aload_1
+    //   981: invokespecial 166	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
+    //   984: astore_1
+    //   985: ldc_w 268
+    //   988: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   991: aload_1
+    //   992: athrow
+    //   993: astore_1
+    //   994: lload 4
+    //   996: lstore 6
+    //   998: lload 6
+    //   1000: lstore 4
+    //   1002: ldc 8
     //   1004: aload_1
-    //   1005: athrow
-    //   1006: iconst_0
-    //   1007: istore 8
-    //   1009: goto -199 -> 810
-    //   1012: new 84	java/lang/StringBuilder
-    //   1015: dup
-    //   1016: ldc_w 390
-    //   1019: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1022: aload_0
-    //   1023: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1026: getfield 164	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
-    //   1029: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1032: ldc_w 384
-    //   1035: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1038: aload_0
-    //   1039: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1042: getfield 347	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
-    //   1045: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1048: ldc_w 386
-    //   1051: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1054: iload_3
-    //   1055: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1058: ldc_w 388
-    //   1061: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1064: aload_0
-    //   1065: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1068: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   1071: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1074: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1077: astore_1
-    //   1078: ldc 8
-    //   1080: aload_1
-    //   1081: invokestatic 278	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1084: new 139	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   1087: dup
-    //   1088: sipush 711
-    //   1091: aload_1
-    //   1092: invokespecial 144	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
-    //   1095: athrow
-    //   1096: new 84	java/lang/StringBuilder
-    //   1099: dup
-    //   1100: ldc_w 392
-    //   1103: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1106: aload_0
-    //   1107: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1110: getfield 164	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
-    //   1113: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1116: ldc_w 384
-    //   1119: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1122: aload_0
-    //   1123: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1126: getfield 347	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
-    //   1129: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1132: ldc_w 386
-    //   1135: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1138: iload_3
-    //   1139: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1142: ldc_w 388
-    //   1145: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1148: aload_0
-    //   1149: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1152: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   1155: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1158: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1161: astore_1
-    //   1162: ldc 8
-    //   1164: aload_1
-    //   1165: invokestatic 278	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1168: new 139	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   1171: dup
-    //   1172: sipush 710
-    //   1175: aload_1
-    //   1176: invokespecial 144	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
-    //   1179: athrow
-    //   1180: aload_0
-    //   1181: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1184: iload_3
-    //   1185: i2l
-    //   1186: invokevirtual 395	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:updateReceivedSize	(J)V
-    //   1189: lload 4
-    //   1191: iload_3
-    //   1192: i2l
-    //   1193: ladd
-    //   1194: lstore 4
-    //   1196: goto -918 -> 278
-    //   1199: ldc 8
-    //   1201: new 84	java/lang/StringBuilder
-    //   1204: dup
-    //   1205: ldc_w 397
-    //   1208: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1211: iload_3
-    //   1212: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1215: ldc_w 399
-    //   1218: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1221: aload_0
-    //   1222: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1225: getfield 347	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
-    //   1228: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1231: ldc_w 401
-    //   1234: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1237: aload_0
-    //   1238: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1241: invokevirtual 259	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
-    //   1244: invokevirtual 273	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1247: ldc_w 403
-    //   1250: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1253: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1256: invokestatic 278	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1259: new 139	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   1262: dup
-    //   1263: sipush 703
-    //   1266: ldc_w 405
-    //   1269: invokespecial 144	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
-    //   1272: athrow
-    //   1273: astore_1
-    //   1274: goto -328 -> 946
-    //   1277: astore_1
-    //   1278: goto -299 -> 979
+    //   1005: ldc_w 257
+    //   1008: iconst_0
+    //   1009: anewarray 4	java/lang/Object
+    //   1012: invokestatic 263	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1015: lload 6
+    //   1017: lstore 4
+    //   1019: new 151	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   1022: dup
+    //   1023: sipush 605
+    //   1026: aload_1
+    //   1027: invokespecial 380	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/Throwable;)V
+    //   1030: astore_1
+    //   1031: lload 6
+    //   1033: lstore 4
+    //   1035: ldc_w 268
+    //   1038: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1041: lload 6
+    //   1043: lstore 4
+    //   1045: aload_1
+    //   1046: athrow
+    //   1047: astore_1
+    //   1048: aload_0
+    //   1049: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1052: ifnull +15 -> 1067
+    //   1055: aload_0
+    //   1056: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1059: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   1062: aload_0
+    //   1063: aconst_null
+    //   1064: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1067: aload_2
+    //   1068: lload 4
+    //   1070: putfield 353	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:receiveDataSize	J
+    //   1073: ldc_w 268
+    //   1076: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1079: aload_1
+    //   1080: athrow
+    //   1081: iconst_0
+    //   1082: istore 8
+    //   1084: goto -230 -> 854
+    //   1087: new 97	java/lang/StringBuilder
+    //   1090: dup
+    //   1091: ldc_w 411
+    //   1094: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1097: aload_0
+    //   1098: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1101: getfield 184	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
+    //   1104: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1107: ldc_w 405
+    //   1110: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1113: aload_0
+    //   1114: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1117: getfield 371	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
+    //   1120: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1123: ldc_w 407
+    //   1126: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1129: iload_3
+    //   1130: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1133: ldc_w 409
+    //   1136: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1139: aload_0
+    //   1140: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1143: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   1146: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1149: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1152: astore_1
+    //   1153: ldc 8
+    //   1155: aload_1
+    //   1156: invokestatic 302	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1159: new 151	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   1162: dup
+    //   1163: sipush 711
+    //   1166: aload_1
+    //   1167: invokespecial 166	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
+    //   1170: astore_1
+    //   1171: ldc_w 268
+    //   1174: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1177: aload_1
+    //   1178: athrow
+    //   1179: new 97	java/lang/StringBuilder
+    //   1182: dup
+    //   1183: ldc_w 413
+    //   1186: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1189: aload_0
+    //   1190: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1193: getfield 184	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
+    //   1196: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1199: ldc_w 405
+    //   1202: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1205: aload_0
+    //   1206: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1209: getfield 371	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
+    //   1212: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1215: ldc_w 407
+    //   1218: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1221: iload_3
+    //   1222: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1225: ldc_w 409
+    //   1228: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1231: aload_0
+    //   1232: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1235: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   1238: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1241: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1244: astore_1
+    //   1245: ldc 8
+    //   1247: aload_1
+    //   1248: invokestatic 302	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1251: new 151	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   1254: dup
+    //   1255: sipush 710
+    //   1258: aload_1
+    //   1259: invokespecial 166	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
+    //   1262: astore_1
+    //   1263: ldc_w 268
+    //   1266: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1269: aload_1
+    //   1270: athrow
+    //   1271: aload_0
+    //   1272: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1275: iload_3
+    //   1276: i2l
+    //   1277: invokevirtual 416	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:updateReceivedSize	(J)V
+    //   1280: lload 4
+    //   1282: iload_3
+    //   1283: i2l
+    //   1284: ladd
+    //   1285: lstore 4
+    //   1287: goto -994 -> 293
+    //   1290: ldc 8
+    //   1292: new 97	java/lang/StringBuilder
+    //   1295: dup
+    //   1296: ldc_w 418
+    //   1299: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1302: iload_3
+    //   1303: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1306: ldc_w 420
+    //   1309: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1312: aload_0
+    //   1313: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1316: getfield 371	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mReceivedBytes	J
+    //   1319: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1322: ldc_w 422
+    //   1325: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1328: aload_0
+    //   1329: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1332: invokevirtual 283	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getTotalSize	()J
+    //   1335: invokevirtual 297	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1338: ldc_w 424
+    //   1341: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1344: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1347: invokestatic 302	com/tencent/tmassistantsdk/util/TMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1350: new 151	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   1353: dup
+    //   1354: sipush 703
+    //   1357: ldc_w 426
+    //   1360: invokespecial 166	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
+    //   1363: astore_1
+    //   1364: ldc_w 268
+    //   1367: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1370: aload_1
+    //   1371: athrow
+    //   1372: astore_1
+    //   1373: goto -375 -> 998
+    //   1376: astore_1
+    //   1377: goto -329 -> 1048
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1281	0	this	DownloadTask
-    //   0	1281	1	paramHttpResponse	HttpResponse
-    //   0	1281	2	paramDownloadChunkLogInfo	DownloadChunkLogInfo
-    //   286	926	3	i	int
-    //   233	962	4	l1	long
-    //   229	734	6	l2	long
-    //   808	200	8	bool	boolean
-    //   6	230	9	localHttpEntity	HttpEntity
-    //   354	280	10	localObject	Object
+    //   0	1380	0	this	DownloadTask
+    //   0	1380	1	paramHttpResponse	HttpResponse
+    //   0	1380	2	paramDownloadChunkLogInfo	DownloadChunkLogInfo
+    //   301	1002	3	i	int
+    //   248	1038	4	l1	long
+    //   244	798	6	l2	long
+    //   852	231	8	bool	boolean
+    //   12	239	9	localHttpEntity	HttpEntity
+    //   375	280	10	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   462	663	663	java/lang/Throwable
-    //   698	725	663	java/lang/Throwable
-    //   725	747	663	java/lang/Throwable
-    //   462	663	676	finally
-    //   664	676	676	finally
-    //   698	725	676	finally
-    //   725	747	676	finally
-    //   278	287	941	java/net/SocketException
-    //   291	302	941	java/net/SocketException
-    //   769	807	941	java/net/SocketException
-    //   810	941	941	java/net/SocketException
-    //   1012	1096	941	java/net/SocketException
-    //   1096	1180	941	java/net/SocketException
-    //   1180	1189	941	java/net/SocketException
-    //   1199	1273	941	java/net/SocketException
-    //   235	243	978	finally
-    //   247	275	978	finally
-    //   950	962	978	finally
-    //   966	978	978	finally
-    //   235	243	1273	java/net/SocketException
-    //   247	275	1273	java/net/SocketException
-    //   278	287	1277	finally
-    //   291	302	1277	finally
-    //   769	807	1277	finally
-    //   810	941	1277	finally
-    //   1012	1096	1277	finally
-    //   1096	1180	1277	finally
-    //   1180	1189	1277	finally
-    //   1199	1273	1277	finally
+    //   483	692	692	java/lang/Throwable
+    //   741	776	692	java/lang/Throwable
+    //   776	791	692	java/lang/Throwable
+    //   483	692	713	finally
+    //   693	713	713	finally
+    //   741	776	713	finally
+    //   776	791	713	finally
+    //   293	302	993	java/net/SocketException
+    //   306	317	993	java/net/SocketException
+    //   813	851	993	java/net/SocketException
+    //   854	993	993	java/net/SocketException
+    //   1087	1179	993	java/net/SocketException
+    //   1179	1271	993	java/net/SocketException
+    //   1271	1280	993	java/net/SocketException
+    //   1290	1372	993	java/net/SocketException
+    //   250	258	1047	finally
+    //   262	290	1047	finally
+    //   1002	1015	1047	finally
+    //   1019	1031	1047	finally
+    //   1035	1041	1047	finally
+    //   1045	1047	1047	finally
+    //   250	258	1372	java/net/SocketException
+    //   262	290	1372	java/net/SocketException
+    //   293	302	1376	finally
+    //   306	317	1376	finally
+    //   813	851	1376	finally
+    //   854	993	1376	finally
+    //   1087	1179	1376	finally
+    //   1179	1271	1376	finally
+    //   1271	1280	1376	finally
+    //   1290	1372	1376	finally
   }
   
   private void renameApkFileName(HttpResponse paramHttpResponse)
   {
-    if (paramHttpResponse == null) {}
+    AppMethodBeat.i(75754);
+    if (paramHttpResponse == null)
+    {
+      AppMethodBeat.o(75754);
+      return;
+    }
+    if (this.mDownloadInfo.mContentType.equals("application/vnd.android.package-archive"))
+    {
+      Object localObject = null;
+      paramHttpResponse = paramHttpResponse.getHeaders("Content-Disposition");
+      if ((paramHttpResponse == null) || (paramHttpResponse.length <= 0)) {
+        break label191;
+      }
+      paramHttpResponse = paramHttpResponse[0].getValue();
+      TMLog.i("_DownloadTask", "headerFileName = ".concat(String.valueOf(paramHttpResponse)));
+      if ((TextUtils.isEmpty(paramHttpResponse)) || (!paramHttpResponse.contains("filename=\""))) {
+        break label177;
+      }
+      String str = paramHttpResponse.substring(paramHttpResponse.indexOf("filename=\"") + 10);
+      paramHttpResponse = localObject;
+      if (!TextUtils.isEmpty(str))
+      {
+        paramHttpResponse = str.substring(0, str.indexOf("\""));
+        TMLog.i("_DownloadTask", "header file Name =".concat(String.valueOf(paramHttpResponse)));
+      }
+    }
     for (;;)
     {
-      return;
-      if (this.mDownloadInfo.mContentType.equals("application/vnd.android.package-archive"))
+      if (!TextUtils.isEmpty(paramHttpResponse))
       {
-        Object localObject = null;
-        paramHttpResponse = paramHttpResponse.getHeaders("Content-Disposition");
-        if ((paramHttpResponse != null) && (paramHttpResponse.length > 0))
-        {
-          paramHttpResponse = paramHttpResponse[0].getValue();
-          TMLog.i("_DownloadTask", "headerFileName = " + paramHttpResponse);
-          if ((!TextUtils.isEmpty(paramHttpResponse)) && (paramHttpResponse.contains("filename=\"")))
-          {
-            String str = paramHttpResponse.substring(paramHttpResponse.indexOf("filename=\"") + 10);
-            paramHttpResponse = localObject;
-            if (!TextUtils.isEmpty(str))
-            {
-              paramHttpResponse = str.substring(0, str.indexOf("\""));
-              TMLog.i("_DownloadTask", "header file Name =" + paramHttpResponse);
-            }
-          }
-        }
-        while (!TextUtils.isEmpty(paramHttpResponse))
-        {
-          paramHttpResponse = DownloadHelper.correctFileName(DownloadHelper.decodeFileName(paramHttpResponse));
-          this.mDownloadInfo.mFileName = paramHttpResponse;
-          return;
-          paramHttpResponse = DownloadHelper.genAPKFileName(this.mDownloadInfo.mRequestURL);
-          continue;
-          paramHttpResponse = DownloadHelper.genAPKFileName(this.mDownloadInfo.mRequestURL);
-        }
+        paramHttpResponse = DownloadHelper.correctFileName(DownloadHelper.decodeFileName(paramHttpResponse));
+        this.mDownloadInfo.mFileName = paramHttpResponse;
       }
+      AppMethodBeat.o(75754);
+      return;
+      label177:
+      paramHttpResponse = DownloadHelper.genAPKFileName(this.mDownloadInfo.mRequestURL);
+      continue;
+      label191:
+      paramHttpResponse = DownloadHelper.genAPKFileName(this.mDownloadInfo.mRequestURL);
     }
   }
   
   private void setExtraHeaderParam(HttpGet paramHttpGet, Map<String, String> paramMap)
   {
+    AppMethodBeat.i(75755);
     if ((paramHttpGet != null) && (paramMap != null) && (paramMap.size() > 0))
     {
       paramMap = paramMap.entrySet().iterator();
@@ -780,10 +871,12 @@ public class DownloadTask
         paramHttpGet.addHeader((String)localEntry.getKey(), (String)localEntry.getValue());
       }
     }
+    AppMethodBeat.o(75755);
   }
   
   private void setRangeHeader(HttpGet paramHttpGet, DownloadChunkLogInfo paramDownloadChunkLogInfo)
   {
+    AppMethodBeat.i(75753);
     String str = DownloadHelper.getNetStatus();
     this.mDownloadInfo.mNetType = str;
     if ((!TextUtils.isEmpty(str)) && ((str.contains("wap")) || ((str.contains("net")) && (this.mDownloadInfo.mRetryCnt > 0)))) {
@@ -801,39 +894,44 @@ public class DownloadTask
         {
           str = "bytes=" + l3 + "-" + l1;
           paramHttpGet.addHeader("range", str);
-          TMLog.d("_DownloadTask", "set range header: " + str);
+          TMLog.d("_DownloadTask", "set range header: ".concat(String.valueOf(str)));
           paramDownloadChunkLogInfo.responseContentLength = this.mDownloadInfo.getTotalSize();
           paramDownloadChunkLogInfo.requestRanagePosition = l3;
           paramDownloadChunkLogInfo.requestRanageSize = i;
+          AppMethodBeat.o(75753);
           return;
         }
         str = "bytes=" + this.mDownloadInfo.mReceivedBytes + "-";
       }
       catch (UnsupportedOperationException paramHttpGet)
       {
-        y.printErrStackTrace("_DownloadTask", paramHttpGet, "", new Object[0]);
+        ab.printErrStackTrace("_DownloadTask", paramHttpGet, "", new Object[0]);
+        AppMethodBeat.o(75753);
         return;
       }
     }
     paramHttpGet.addHeader("range", str);
-    TMLog.d("_DownloadTask", "set range header: " + str);
+    TMLog.d("_DownloadTask", "set range header: ".concat(String.valueOf(str)));
     paramDownloadChunkLogInfo.responseContentLength = this.mDownloadInfo.getTotalSize();
     paramDownloadChunkLogInfo.requestRanagePosition = this.mDownloadInfo.mReceivedBytes;
     paramDownloadChunkLogInfo.requestRanageSize = 0L;
+    AppMethodBeat.o(75753);
   }
   
   private boolean shouldRetryConnect()
   {
     boolean bool2 = false;
+    AppMethodBeat.i(75748);
     if (this.mStopTask)
     {
       TMLog.i("_DownloadTask", "mStopTask = " + this.mStopTask);
+      AppMethodBeat.o(75748);
       return false;
     }
     try
     {
       Thread.sleep(5000L);
-      label42:
+      label54:
       if (!DownloadHelper.isNetworkConncted())
       {
         int i = 0;
@@ -856,11 +954,13 @@ public class DownloadTask
       if (!DownloadHelper.isNetworkConncted())
       {
         TMLog.i("_DownloadTask", "network unconnected");
+        AppMethodBeat.o(75748);
         return false;
       }
       if ((!DownloadHelper.getNetStatus().equalsIgnoreCase("wifi")) && (!DownloadHelper.getNetStatus().equalsIgnoreCase(this.startDownloadNetType)))
       {
         TMLog.i("_DownloadTask", "not equal netType, current: " + DownloadHelper.getNetStatus() + ", startNetType: " + this.startDownloadNetType);
+        AppMethodBeat.o(75748);
         return false;
       }
       bool1 = bool2;
@@ -884,1161 +984,1175 @@ public class DownloadTask
         }
       }
       TMLog.i("_DownloadTask", "shouldRetryConnect(" + bool1 + "), retryCnt = " + this.mDownloadInfo.mRetryCnt);
+      AppMethodBeat.o(75748);
       return bool1;
     }
     catch (InterruptedException localInterruptedException3)
     {
       boolean bool1;
-      break label42;
+      break label54;
     }
   }
   
   private boolean verifyTotalLen(HttpResponse paramHttpResponse, HttpEntity paramHttpEntity)
   {
+    AppMethodBeat.i(75751);
     long l;
     if (paramHttpResponse.getStatusLine().getStatusCode() == 200)
     {
       l = paramHttpEntity.getContentLength();
       TMLog.i("_DownloadTask", "verifyTotalLen,totalLen = " + l + "mRequestFileSize = " + this.mDownloadInfo.mRequestFileSize);
-      if ((l != -1L) && ((this.mDownloadInfo.mRequestFileSize.longValue() <= 0L) || (l == this.mDownloadInfo.mRequestFileSize.longValue()))) {}
-    }
-    else
-    {
-      do
+      if ((l == -1L) || ((this.mDownloadInfo.mRequestFileSize.longValue() > 0L) && (l != this.mDownloadInfo.mRequestFileSize.longValue())))
       {
+        AppMethodBeat.o(75751);
         return false;
-        if (paramHttpResponse.getStatusLine().getStatusCode() != 206) {
-          break;
-        }
-        l = ByteRange.getTotalSize(paramHttpResponse.getFirstHeader("content-range").getValue());
-        TMLog.i("_DownloadTask", "verifyTotalLen,totalLen = " + l + "mRequestFileSize = " + this.mDownloadInfo.mRequestFileSize);
-      } while ((l == -1L) || ((this.mDownloadInfo.mRequestFileSize.longValue() > 0L) && (l != this.mDownloadInfo.mRequestFileSize.longValue())));
+      }
     }
+    else if (paramHttpResponse.getStatusLine().getStatusCode() == 206)
+    {
+      l = ByteRange.getTotalSize(paramHttpResponse.getFirstHeader("content-range").getValue());
+      TMLog.i("_DownloadTask", "verifyTotalLen,totalLen = " + l + "mRequestFileSize = " + this.mDownloadInfo.mRequestFileSize);
+      if ((l == -1L) || ((this.mDownloadInfo.mRequestFileSize.longValue() > 0L) && (l != this.mDownloadInfo.mRequestFileSize.longValue())))
+      {
+        AppMethodBeat.o(75751);
+        return false;
+      }
+    }
+    AppMethodBeat.o(75751);
     return true;
   }
   
   public void cancel()
   {
+    AppMethodBeat.i(75745);
     TMLog.i("_DownloadTask", "DownloadTask::cancel url: " + this.mDownloadInfo.mURL);
     if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId())
     {
       l.post(new DownloadTask.1(this));
+      AppMethodBeat.o(75745);
       return;
     }
     cancelInWorkThread();
+    AppMethodBeat.o(75745);
   }
   
   /* Error */
   public void exec(String paramString)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 488	com/tencent/tmassistantsdk/downloadservice/DownloadHelper:getNetStatus	()Ljava/lang/String;
-    //   4: putfield 52	com/tencent/tmassistantsdk/downloadservice/DownloadTask:startDownloadNetType	Ljava/lang/String;
-    //   7: aload_0
-    //   8: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   11: iconst_1
-    //   12: putfield 608	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mTaskIsRunning	Z
-    //   15: aload_0
-    //   16: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   19: iconst_2
-    //   20: iconst_0
-    //   21: invokevirtual 612	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:updateStatus	(IZ)V
-    //   24: iconst_0
-    //   25: istore_3
-    //   26: iconst_1
-    //   27: istore_2
-    //   28: iload_2
-    //   29: ifeq +1973 -> 2002
-    //   32: invokestatic 618	com/tencent/tmassistantsdk/logreport/DownloadReportManager:getInstance	()Lcom/tencent/tmassistantsdk/logreport/DownloadReportManager;
-    //   35: iconst_0
-    //   36: invokevirtual 622	com/tencent/tmassistantsdk/logreport/DownloadReportManager:createNewChunkLogInfo	(B)Lcom/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo;
-    //   39: astore 5
-    //   41: aload 5
-    //   43: aload_0
-    //   44: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   47: getfield 625	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mUUID	Ljava/lang/String;
-    //   50: putfield 628	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:UUID	Ljava/lang/String;
-    //   53: aload 5
-    //   55: aload_0
-    //   56: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   59: getfield 137	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mRetryCnt	I
-    //   62: i2b
-    //   63: putfield 632	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:currentRetryCnt	B
-    //   66: aload 5
-    //   68: aload_0
-    //   69: invokevirtual 635	com/tencent/tmassistantsdk/downloadservice/DownloadTask:getDownloadURI	()Ljava/lang/String;
-    //   72: putfield 638	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:requestUrl	Ljava/lang/String;
-    //   75: aload_0
-    //   76: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   79: ifne +1923 -> 2002
-    //   82: aload_0
-    //   83: getfield 54	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mIsRedirect	Z
-    //   86: ifeq +20 -> 106
-    //   89: aload_0
-    //   90: getfield 221	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRequestUrl	Ljava/lang/String;
-    //   93: ifnull +13 -> 106
-    //   96: aload_0
-    //   97: getfield 221	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRequestUrl	Ljava/lang/String;
-    //   100: invokevirtual 641	java/lang/String:length	()I
-    //   103: ifne +404 -> 507
-    //   106: iload_3
-    //   107: ifeq +389 -> 496
-    //   110: aload_0
-    //   111: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   114: getfield 644	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mSecondaryUrl	Ljava/lang/String;
-    //   117: astore_1
-    //   118: aload_0
-    //   119: aload_1
-    //   120: putfield 221	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRequestUrl	Ljava/lang/String;
-    //   123: ldc 8
-    //   125: new 84	java/lang/StringBuilder
-    //   128: dup
-    //   129: ldc_w 646
-    //   132: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   135: aload_0
-    //   136: getfield 54	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mIsRedirect	Z
-    //   139: invokevirtual 522	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   142: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   145: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   148: ldc 8
-    //   150: new 84	java/lang/StringBuilder
-    //   153: dup
-    //   154: ldc_w 648
-    //   157: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   160: iload_3
-    //   161: invokevirtual 522	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   164: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   167: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   170: ldc 8
-    //   172: new 84	java/lang/StringBuilder
-    //   175: dup
-    //   176: ldc_w 650
-    //   179: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   182: aload_1
-    //   183: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   186: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   189: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   0: ldc_w 635
+    //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: invokestatic 511	com/tencent/tmassistantsdk/downloadservice/DownloadHelper:getNetStatus	()Ljava/lang/String;
+    //   10: putfield 59	com/tencent/tmassistantsdk/downloadservice/DownloadTask:startDownloadNetType	Ljava/lang/String;
+    //   13: aload_0
+    //   14: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   17: iconst_1
+    //   18: putfield 638	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mTaskIsRunning	Z
+    //   21: aload_0
+    //   22: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   25: iconst_2
+    //   26: iconst_0
+    //   27: invokevirtual 642	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:updateStatus	(IZ)V
+    //   30: iconst_0
+    //   31: istore_3
+    //   32: iconst_1
+    //   33: istore_2
+    //   34: iload_2
+    //   35: ifeq +1987 -> 2022
+    //   38: invokestatic 648	com/tencent/tmassistantsdk/logreport/DownloadReportManager:getInstance	()Lcom/tencent/tmassistantsdk/logreport/DownloadReportManager;
+    //   41: iconst_0
+    //   42: invokevirtual 652	com/tencent/tmassistantsdk/logreport/DownloadReportManager:createNewChunkLogInfo	(B)Lcom/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo;
+    //   45: astore 5
+    //   47: aload 5
+    //   49: aload_0
+    //   50: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   53: getfield 655	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mUUID	Ljava/lang/String;
+    //   56: putfield 658	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:UUID	Ljava/lang/String;
+    //   59: aload 5
+    //   61: aload_0
+    //   62: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   65: getfield 149	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mRetryCnt	I
+    //   68: i2b
+    //   69: putfield 662	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:currentRetryCnt	B
+    //   72: aload 5
+    //   74: aload_0
+    //   75: invokevirtual 665	com/tencent/tmassistantsdk/downloadservice/DownloadTask:getDownloadURI	()Ljava/lang/String;
+    //   78: putfield 668	com/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo:requestUrl	Ljava/lang/String;
+    //   81: aload_0
+    //   82: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   85: ifne +1937 -> 2022
+    //   88: aload_0
+    //   89: getfield 61	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mIsRedirect	Z
+    //   92: ifeq +20 -> 112
+    //   95: aload_0
+    //   96: getfield 243	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRequestUrl	Ljava/lang/String;
+    //   99: ifnull +13 -> 112
+    //   102: aload_0
+    //   103: getfield 243	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRequestUrl	Ljava/lang/String;
+    //   106: invokevirtual 671	java/lang/String:length	()I
+    //   109: ifne +404 -> 513
+    //   112: iload_3
+    //   113: ifeq +386 -> 499
+    //   116: aload_0
+    //   117: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   120: getfield 674	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mSecondaryUrl	Ljava/lang/String;
+    //   123: invokestatic 679	com/tencent/mm/plugin/downloader/a/c:Jz	(Ljava/lang/String;)Ljava/lang/String;
+    //   126: astore_1
+    //   127: aload_0
+    //   128: aload_1
+    //   129: putfield 243	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRequestUrl	Ljava/lang/String;
+    //   132: ldc 8
+    //   134: new 97	java/lang/StringBuilder
+    //   137: dup
+    //   138: ldc_w 681
+    //   141: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   144: aload_0
+    //   145: getfield 61	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mIsRedirect	Z
+    //   148: invokevirtual 546	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   151: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   154: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   157: ldc 8
+    //   159: ldc_w 683
+    //   162: iload_3
+    //   163: invokestatic 686	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   166: invokevirtual 163	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   169: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   172: ldc 8
+    //   174: ldc_w 688
+    //   177: aload_1
+    //   178: invokestatic 235	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   181: invokevirtual 163	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   184: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   187: aload_0
+    //   188: iconst_0
+    //   189: putfield 61	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mIsRedirect	Z
     //   192: aload_0
-    //   193: iconst_0
-    //   194: putfield 54	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mIsRedirect	Z
-    //   197: aload_0
-    //   198: invokestatic 656	com/tencent/tmassistantsdk/downloadservice/HttpClientUtil:createHttpClient	()Lorg/apache/http/client/HttpClient;
-    //   201: putfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   204: aload_0
-    //   205: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   208: invokestatic 660	com/tencent/tmassistantsdk/downloadservice/HttpClientUtil:setProxy	(Lorg/apache/http/client/HttpClient;)V
-    //   211: aload_0
-    //   212: new 62	org/apache/http/client/methods/HttpGet
-    //   215: dup
-    //   216: invokespecial 661	org/apache/http/client/methods/HttpGet:<init>	()V
-    //   219: putfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   222: new 663	java/net/URI
-    //   225: dup
-    //   226: aload_1
-    //   227: invokespecial 664	java/net/URI:<init>	(Ljava/lang/String;)V
-    //   230: astore_1
-    //   231: aload_0
-    //   232: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   235: aload_1
-    //   236: invokevirtual 668	org/apache/http/client/methods/HttpGet:setURI	(Ljava/net/URI;)V
+    //   193: invokestatic 694	com/tencent/tmassistantsdk/downloadservice/HttpClientUtil:createHttpClient	()Lorg/apache/http/client/HttpClient;
+    //   196: putfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   199: aload_0
+    //   200: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   203: invokestatic 698	com/tencent/tmassistantsdk/downloadservice/HttpClientUtil:setProxy	(Lorg/apache/http/client/HttpClient;)V
+    //   206: aload_0
+    //   207: new 74	org/apache/http/client/methods/HttpGet
+    //   210: dup
+    //   211: invokespecial 699	org/apache/http/client/methods/HttpGet:<init>	()V
+    //   214: putfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   217: new 701	java/net/URI
+    //   220: dup
+    //   221: aload_1
+    //   222: invokespecial 702	java/net/URI:<init>	(Ljava/lang/String;)V
+    //   225: astore_1
+    //   226: aload_0
+    //   227: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   230: aload_1
+    //   231: invokevirtual 706	org/apache/http/client/methods/HttpGet:setURI	(Ljava/net/URI;)V
+    //   234: aload_0
+    //   235: aload_0
+    //   236: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
     //   239: aload_0
-    //   240: aload_0
-    //   241: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   244: aload_0
-    //   245: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   248: invokevirtual 672	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getHeaderParams	()Ljava/util/HashMap;
-    //   251: invokespecial 674	com/tencent/tmassistantsdk/downloadservice/DownloadTask:setExtraHeaderParam	(Lorg/apache/http/client/methods/HttpGet;Ljava/util/Map;)V
-    //   254: aload_0
-    //   255: aload_0
-    //   256: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   259: aload 5
-    //   261: invokespecial 676	com/tencent/tmassistantsdk/downloadservice/DownloadTask:setRangeHeader	(Lorg/apache/http/client/methods/HttpGet;Lcom/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo;)V
-    //   264: aload_1
-    //   265: invokevirtual 679	java/net/URI:getScheme	()Ljava/lang/String;
-    //   268: ldc_w 681
-    //   271: invokevirtual 161	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   274: ifeq +48 -> 322
-    //   277: invokestatic 687	org/apache/http/conn/ssl/SSLSocketFactory:getSocketFactory	()Lorg/apache/http/conn/ssl/SSLSocketFactory;
-    //   280: astore_1
-    //   281: aload_1
-    //   282: getstatic 691	org/apache/http/conn/ssl/SSLSocketFactory:BROWSER_COMPATIBLE_HOSTNAME_VERIFIER	Lorg/apache/http/conn/ssl/X509HostnameVerifier;
-    //   285: invokevirtual 695	org/apache/http/conn/ssl/SSLSocketFactory:setHostnameVerifier	(Lorg/apache/http/conn/ssl/X509HostnameVerifier;)V
-    //   288: new 697	org/apache/http/conn/scheme/Scheme
-    //   291: dup
-    //   292: ldc_w 681
-    //   295: aload_1
-    //   296: sipush 443
-    //   299: invokespecial 700	org/apache/http/conn/scheme/Scheme:<init>	(Ljava/lang/String;Lorg/apache/http/conn/scheme/SocketFactory;I)V
-    //   302: astore_1
-    //   303: aload_0
-    //   304: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   307: invokeinterface 706 1 0
-    //   312: invokeinterface 712 1 0
-    //   317: aload_1
-    //   318: invokevirtual 718	org/apache/http/conn/scheme/SchemeRegistry:register	(Lorg/apache/http/conn/scheme/Scheme;)Lorg/apache/http/conn/scheme/Scheme;
-    //   321: pop
-    //   322: ldc 8
-    //   324: new 84	java/lang/StringBuilder
-    //   327: dup
-    //   328: ldc_w 720
-    //   331: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   334: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   337: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   340: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   343: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   346: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   349: aload_0
-    //   350: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   353: aload_0
-    //   354: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   357: invokeinterface 724 2 0
-    //   362: astore_1
-    //   363: aload_1
-    //   364: ifnonnull +151 -> 515
-    //   367: new 139	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   370: dup
-    //   371: sipush 701
-    //   374: new 84	java/lang/StringBuilder
-    //   377: dup
-    //   378: ldc_w 726
-    //   381: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   384: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   387: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   390: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   393: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   396: invokespecial 144	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
-    //   399: athrow
-    //   400: astore_1
-    //   401: aload_0
-    //   402: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   405: istore_2
-    //   406: iload_2
-    //   407: ifeq +219 -> 626
-    //   410: iconst_0
-    //   411: istore 4
-    //   413: aload_0
-    //   414: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   417: ifnull +25 -> 442
-    //   420: aload_0
-    //   421: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   424: invokevirtual 66	org/apache/http/client/methods/HttpGet:isAborted	()Z
-    //   427: ifne +10 -> 437
-    //   430: aload_0
-    //   431: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   434: invokevirtual 69	org/apache/http/client/methods/HttpGet:abort	()V
-    //   437: aload_0
-    //   438: aconst_null
-    //   439: putfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   442: aload_0
-    //   443: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   446: ifnull +22 -> 468
-    //   449: aload_0
-    //   450: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   453: invokeinterface 706 1 0
-    //   458: invokeinterface 729 1 0
-    //   463: aload_0
-    //   464: aconst_null
-    //   465: putfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   468: iload 4
-    //   470: istore_2
-    //   471: aload_0
-    //   472: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   475: ifnull +1683 -> 2158
-    //   478: aload_0
-    //   479: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   482: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   485: aload_0
-    //   486: aconst_null
-    //   487: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   490: iload 4
-    //   492: istore_2
-    //   493: goto -465 -> 28
-    //   496: aload_0
-    //   497: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   500: getfield 440	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mRequestURL	Ljava/lang/String;
-    //   503: astore_1
-    //   504: goto -386 -> 118
-    //   507: aload_0
-    //   508: getfield 221	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRequestUrl	Ljava/lang/String;
-    //   511: astore_1
-    //   512: goto -389 -> 123
-    //   515: aload_0
-    //   516: aload_1
-    //   517: aload 5
-    //   519: invokespecial 731	com/tencent/tmassistantsdk/downloadservice/DownloadTask:handleResponseCode	(Lorg/apache/http/HttpResponse;Lcom/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo;)V
-    //   522: aload_0
-    //   523: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   526: invokevirtual 734	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:hasReceivedAllDataBytes	()Z
-    //   529: istore_2
-    //   530: iload_2
-    //   531: ifne +89 -> 620
-    //   534: iconst_1
-    //   535: istore 4
-    //   537: aload_0
-    //   538: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   541: ifnull +25 -> 566
-    //   544: aload_0
-    //   545: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   548: invokevirtual 66	org/apache/http/client/methods/HttpGet:isAborted	()Z
-    //   551: ifne +10 -> 561
-    //   554: aload_0
-    //   555: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   558: invokevirtual 69	org/apache/http/client/methods/HttpGet:abort	()V
-    //   561: aload_0
-    //   562: aconst_null
-    //   563: putfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   566: aload_0
-    //   567: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   570: ifnull +22 -> 592
-    //   573: aload_0
-    //   574: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   577: invokeinterface 706 1 0
-    //   582: invokeinterface 729 1 0
-    //   587: aload_0
-    //   588: aconst_null
-    //   589: putfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   592: iload 4
-    //   594: istore_2
-    //   595: aload_0
-    //   596: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   599: ifnull +1559 -> 2158
-    //   602: aload_0
-    //   603: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   606: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   609: aload_0
-    //   610: aconst_null
-    //   611: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   614: iload 4
-    //   616: istore_2
-    //   617: goto -589 -> 28
-    //   620: iconst_0
-    //   621: istore 4
-    //   623: goto -86 -> 537
-    //   626: ldc 8
-    //   628: new 84	java/lang/StringBuilder
-    //   631: dup
-    //   632: ldc_w 736
-    //   635: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   638: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   641: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   644: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   647: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   650: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   653: ldc 8
-    //   655: aload_1
-    //   656: ldc 234
-    //   658: iconst_0
-    //   659: anewarray 4	java/lang/Object
-    //   662: invokestatic 240	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   665: aload_0
-    //   666: invokespecial 738	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
-    //   669: istore_2
-    //   670: iload_2
-    //   671: istore 4
-    //   673: iload_2
-    //   674: ifne -261 -> 413
-    //   677: aload_0
-    //   678: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   681: sipush 601
-    //   684: putfield 535	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
-    //   687: iload_2
-    //   688: istore 4
-    //   690: goto -277 -> 413
-    //   693: astore_1
-    //   694: aload_0
-    //   695: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   698: ifnull +25 -> 723
+    //   240: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   243: invokevirtual 710	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:getHeaderParams	()Ljava/util/HashMap;
+    //   246: invokespecial 712	com/tencent/tmassistantsdk/downloadservice/DownloadTask:setExtraHeaderParam	(Lorg/apache/http/client/methods/HttpGet;Ljava/util/Map;)V
+    //   249: aload_0
+    //   250: aload_0
+    //   251: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   254: aload 5
+    //   256: invokespecial 714	com/tencent/tmassistantsdk/downloadservice/DownloadTask:setRangeHeader	(Lorg/apache/http/client/methods/HttpGet;Lcom/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo;)V
+    //   259: aload_1
+    //   260: invokevirtual 717	java/net/URI:getScheme	()Ljava/lang/String;
+    //   263: ldc_w 719
+    //   266: invokevirtual 181	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   269: ifeq +48 -> 317
+    //   272: invokestatic 725	org/apache/http/conn/ssl/SSLSocketFactory:getSocketFactory	()Lorg/apache/http/conn/ssl/SSLSocketFactory;
+    //   275: astore_1
+    //   276: aload_1
+    //   277: getstatic 729	org/apache/http/conn/ssl/SSLSocketFactory:BROWSER_COMPATIBLE_HOSTNAME_VERIFIER	Lorg/apache/http/conn/ssl/X509HostnameVerifier;
+    //   280: invokevirtual 733	org/apache/http/conn/ssl/SSLSocketFactory:setHostnameVerifier	(Lorg/apache/http/conn/ssl/X509HostnameVerifier;)V
+    //   283: new 735	org/apache/http/conn/scheme/Scheme
+    //   286: dup
+    //   287: ldc_w 719
+    //   290: aload_1
+    //   291: sipush 443
+    //   294: invokespecial 738	org/apache/http/conn/scheme/Scheme:<init>	(Ljava/lang/String;Lorg/apache/http/conn/scheme/SocketFactory;I)V
+    //   297: astore_1
+    //   298: aload_0
+    //   299: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   302: invokeinterface 744 1 0
+    //   307: invokeinterface 750 1 0
+    //   312: aload_1
+    //   313: invokevirtual 756	org/apache/http/conn/scheme/SchemeRegistry:register	(Lorg/apache/http/conn/scheme/Scheme;)Lorg/apache/http/conn/scheme/Scheme;
+    //   316: pop
+    //   317: ldc 8
+    //   319: new 97	java/lang/StringBuilder
+    //   322: dup
+    //   323: ldc_w 758
+    //   326: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   329: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   332: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   335: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   338: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   341: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   344: aload_0
+    //   345: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   348: aload_0
+    //   349: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   352: invokeinterface 762 2 0
+    //   357: astore_1
+    //   358: aload_1
+    //   359: ifnonnull +162 -> 521
+    //   362: new 151	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   365: dup
+    //   366: sipush 701
+    //   369: new 97	java/lang/StringBuilder
+    //   372: dup
+    //   373: ldc_w 764
+    //   376: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   379: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   382: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   385: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   388: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   391: invokespecial 166	com/tencent/tmassistantsdk/downloadservice/StopRequestException:<init>	(ILjava/lang/String;)V
+    //   394: astore_1
+    //   395: ldc_w 635
+    //   398: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   401: aload_1
+    //   402: athrow
+    //   403: astore_1
+    //   404: aload_0
+    //   405: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   408: istore_2
+    //   409: iload_2
+    //   410: ifeq +222 -> 632
+    //   413: iconst_0
+    //   414: istore 4
+    //   416: aload_0
+    //   417: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   420: ifnull +25 -> 445
+    //   423: aload_0
+    //   424: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   427: invokevirtual 78	org/apache/http/client/methods/HttpGet:isAborted	()Z
+    //   430: ifne +10 -> 440
+    //   433: aload_0
+    //   434: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   437: invokevirtual 81	org/apache/http/client/methods/HttpGet:abort	()V
+    //   440: aload_0
+    //   441: aconst_null
+    //   442: putfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   445: aload_0
+    //   446: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   449: ifnull +22 -> 471
+    //   452: aload_0
+    //   453: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   456: invokeinterface 744 1 0
+    //   461: invokeinterface 767 1 0
+    //   466: aload_0
+    //   467: aconst_null
+    //   468: putfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   471: iload 4
+    //   473: istore_2
+    //   474: aload_0
+    //   475: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   478: ifnull +1706 -> 2184
+    //   481: aload_0
+    //   482: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   485: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   488: aload_0
+    //   489: aconst_null
+    //   490: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   493: iload 4
+    //   495: istore_2
+    //   496: goto -462 -> 34
+    //   499: aload_0
+    //   500: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   503: getfield 461	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mRequestURL	Ljava/lang/String;
+    //   506: invokestatic 679	com/tencent/mm/plugin/downloader/a/c:Jz	(Ljava/lang/String;)Ljava/lang/String;
+    //   509: astore_1
+    //   510: goto -383 -> 127
+    //   513: aload_0
+    //   514: getfield 243	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mRequestUrl	Ljava/lang/String;
+    //   517: astore_1
+    //   518: goto -386 -> 132
+    //   521: aload_0
+    //   522: aload_1
+    //   523: aload 5
+    //   525: invokespecial 769	com/tencent/tmassistantsdk/downloadservice/DownloadTask:handleResponseCode	(Lorg/apache/http/HttpResponse;Lcom/tencent/tmassistantsdk/protocol/jce/DownloadChunkLogInfo;)V
+    //   528: aload_0
+    //   529: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   532: invokevirtual 772	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:hasReceivedAllDataBytes	()Z
+    //   535: istore_2
+    //   536: iload_2
+    //   537: ifne +89 -> 626
+    //   540: iconst_1
+    //   541: istore 4
+    //   543: aload_0
+    //   544: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   547: ifnull +25 -> 572
+    //   550: aload_0
+    //   551: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   554: invokevirtual 78	org/apache/http/client/methods/HttpGet:isAborted	()Z
+    //   557: ifne +10 -> 567
+    //   560: aload_0
+    //   561: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   564: invokevirtual 81	org/apache/http/client/methods/HttpGet:abort	()V
+    //   567: aload_0
+    //   568: aconst_null
+    //   569: putfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   572: aload_0
+    //   573: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   576: ifnull +22 -> 598
+    //   579: aload_0
+    //   580: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   583: invokeinterface 744 1 0
+    //   588: invokeinterface 767 1 0
+    //   593: aload_0
+    //   594: aconst_null
+    //   595: putfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   598: iload 4
+    //   600: istore_2
+    //   601: aload_0
+    //   602: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   605: ifnull +1579 -> 2184
+    //   608: aload_0
+    //   609: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   612: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   615: aload_0
+    //   616: aconst_null
+    //   617: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   620: iload 4
+    //   622: istore_2
+    //   623: goto -589 -> 34
+    //   626: iconst_0
+    //   627: istore 4
+    //   629: goto -86 -> 543
+    //   632: ldc 8
+    //   634: new 97	java/lang/StringBuilder
+    //   637: dup
+    //   638: ldc_w 774
+    //   641: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   644: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   647: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   650: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   653: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   656: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   659: ldc 8
+    //   661: aload_1
+    //   662: ldc_w 257
+    //   665: iconst_0
+    //   666: anewarray 4	java/lang/Object
+    //   669: invokestatic 263	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   672: aload_0
+    //   673: invokespecial 776	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
+    //   676: istore_2
+    //   677: iload_2
+    //   678: istore 4
+    //   680: iload_2
+    //   681: ifne -265 -> 416
+    //   684: aload_0
+    //   685: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   688: sipush 601
+    //   691: putfield 559	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
+    //   694: iload_2
+    //   695: istore 4
+    //   697: goto -281 -> 416
+    //   700: astore_1
     //   701: aload_0
-    //   702: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   705: invokevirtual 66	org/apache/http/client/methods/HttpGet:isAborted	()Z
-    //   708: ifne +10 -> 718
-    //   711: aload_0
-    //   712: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   715: invokevirtual 69	org/apache/http/client/methods/HttpGet:abort	()V
+    //   702: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   705: ifnull +25 -> 730
+    //   708: aload_0
+    //   709: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   712: invokevirtual 78	org/apache/http/client/methods/HttpGet:isAborted	()Z
+    //   715: ifne +10 -> 725
     //   718: aload_0
-    //   719: aconst_null
-    //   720: putfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   723: aload_0
-    //   724: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   727: ifnull +22 -> 749
+    //   719: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   722: invokevirtual 81	org/apache/http/client/methods/HttpGet:abort	()V
+    //   725: aload_0
+    //   726: aconst_null
+    //   727: putfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
     //   730: aload_0
-    //   731: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   734: invokeinterface 706 1 0
-    //   739: invokeinterface 729 1 0
-    //   744: aload_0
-    //   745: aconst_null
-    //   746: putfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   749: aload_0
-    //   750: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   753: ifnull +15 -> 768
+    //   731: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   734: ifnull +22 -> 756
+    //   737: aload_0
+    //   738: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   741: invokeinterface 744 1 0
+    //   746: invokeinterface 767 1 0
+    //   751: aload_0
+    //   752: aconst_null
+    //   753: putfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
     //   756: aload_0
-    //   757: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   760: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   757: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   760: ifnull +15 -> 775
     //   763: aload_0
-    //   764: aconst_null
-    //   765: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   768: aload_1
-    //   769: athrow
-    //   770: astore_1
-    //   771: aload_0
-    //   772: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   775: istore_2
-    //   776: iload_2
-    //   777: ifeq +89 -> 866
-    //   780: iconst_0
-    //   781: istore 4
-    //   783: aload_0
-    //   784: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   787: ifnull +25 -> 812
-    //   790: aload_0
-    //   791: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   794: invokevirtual 66	org/apache/http/client/methods/HttpGet:isAborted	()Z
-    //   797: ifne +10 -> 807
-    //   800: aload_0
-    //   801: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   804: invokevirtual 69	org/apache/http/client/methods/HttpGet:abort	()V
-    //   807: aload_0
-    //   808: aconst_null
-    //   809: putfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   812: aload_0
-    //   813: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   816: ifnull +22 -> 838
-    //   819: aload_0
-    //   820: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   823: invokeinterface 706 1 0
-    //   828: invokeinterface 729 1 0
-    //   833: aload_0
-    //   834: aconst_null
-    //   835: putfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   838: iload 4
-    //   840: istore_2
-    //   841: aload_0
-    //   842: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   845: ifnull +1313 -> 2158
-    //   848: aload_0
-    //   849: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   852: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   855: aload_0
-    //   856: aconst_null
-    //   857: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   860: iload 4
-    //   862: istore_2
-    //   863: goto -835 -> 28
-    //   866: ldc 8
-    //   868: new 84	java/lang/StringBuilder
-    //   871: dup
-    //   872: ldc_w 740
-    //   875: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   878: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   881: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   884: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   887: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   890: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   893: ldc 8
-    //   895: aload_1
-    //   896: ldc 234
-    //   898: iconst_0
-    //   899: anewarray 4	java/lang/Object
-    //   902: invokestatic 240	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   905: aload_0
-    //   906: invokespecial 738	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
-    //   909: istore_2
-    //   910: iload_2
-    //   911: istore 4
-    //   913: iload_2
-    //   914: ifne -131 -> 783
-    //   917: aload_0
-    //   918: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   921: sipush 602
-    //   924: putfield 535	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
+    //   764: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   767: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   770: aload_0
+    //   771: aconst_null
+    //   772: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   775: ldc_w 635
+    //   778: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   781: aload_1
+    //   782: athrow
+    //   783: astore_1
+    //   784: aload_0
+    //   785: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   788: istore_2
+    //   789: iload_2
+    //   790: ifeq +89 -> 879
+    //   793: iconst_0
+    //   794: istore 4
+    //   796: aload_0
+    //   797: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   800: ifnull +25 -> 825
+    //   803: aload_0
+    //   804: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   807: invokevirtual 78	org/apache/http/client/methods/HttpGet:isAborted	()Z
+    //   810: ifne +10 -> 820
+    //   813: aload_0
+    //   814: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   817: invokevirtual 81	org/apache/http/client/methods/HttpGet:abort	()V
+    //   820: aload_0
+    //   821: aconst_null
+    //   822: putfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   825: aload_0
+    //   826: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   829: ifnull +22 -> 851
+    //   832: aload_0
+    //   833: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   836: invokeinterface 744 1 0
+    //   841: invokeinterface 767 1 0
+    //   846: aload_0
+    //   847: aconst_null
+    //   848: putfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   851: iload 4
+    //   853: istore_2
+    //   854: aload_0
+    //   855: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   858: ifnull +1326 -> 2184
+    //   861: aload_0
+    //   862: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   865: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   868: aload_0
+    //   869: aconst_null
+    //   870: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   873: iload 4
+    //   875: istore_2
+    //   876: goto -842 -> 34
+    //   879: ldc 8
+    //   881: new 97	java/lang/StringBuilder
+    //   884: dup
+    //   885: ldc_w 778
+    //   888: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   891: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   894: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   897: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   900: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   903: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   906: ldc 8
+    //   908: aload_1
+    //   909: ldc_w 257
+    //   912: iconst_0
+    //   913: anewarray 4	java/lang/Object
+    //   916: invokestatic 263	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   919: aload_0
+    //   920: invokespecial 776	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
+    //   923: istore_2
+    //   924: iload_2
+    //   925: istore 4
     //   927: iload_2
-    //   928: istore 4
-    //   930: goto -147 -> 783
-    //   933: astore_1
-    //   934: aload_0
-    //   935: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   938: istore_2
-    //   939: iload_2
-    //   940: ifeq +89 -> 1029
-    //   943: iconst_0
-    //   944: istore 4
-    //   946: aload_0
-    //   947: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   950: ifnull +25 -> 975
-    //   953: aload_0
-    //   954: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   957: invokevirtual 66	org/apache/http/client/methods/HttpGet:isAborted	()Z
-    //   960: ifne +10 -> 970
-    //   963: aload_0
-    //   964: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   967: invokevirtual 69	org/apache/http/client/methods/HttpGet:abort	()V
-    //   970: aload_0
-    //   971: aconst_null
-    //   972: putfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   975: aload_0
-    //   976: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   979: ifnull +22 -> 1001
-    //   982: aload_0
-    //   983: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   986: invokeinterface 706 1 0
-    //   991: invokeinterface 729 1 0
+    //   928: ifne -132 -> 796
+    //   931: aload_0
+    //   932: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   935: sipush 602
+    //   938: putfield 559	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
+    //   941: iload_2
+    //   942: istore 4
+    //   944: goto -148 -> 796
+    //   947: astore_1
+    //   948: aload_0
+    //   949: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   952: istore_2
+    //   953: iload_2
+    //   954: ifeq +89 -> 1043
+    //   957: iconst_0
+    //   958: istore 4
+    //   960: aload_0
+    //   961: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   964: ifnull +25 -> 989
+    //   967: aload_0
+    //   968: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   971: invokevirtual 78	org/apache/http/client/methods/HttpGet:isAborted	()Z
+    //   974: ifne +10 -> 984
+    //   977: aload_0
+    //   978: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   981: invokevirtual 81	org/apache/http/client/methods/HttpGet:abort	()V
+    //   984: aload_0
+    //   985: aconst_null
+    //   986: putfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   989: aload_0
+    //   990: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   993: ifnull +22 -> 1015
     //   996: aload_0
-    //   997: aconst_null
-    //   998: putfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1001: iload 4
-    //   1003: istore_2
-    //   1004: aload_0
-    //   1005: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1008: ifnull +1150 -> 2158
-    //   1011: aload_0
-    //   1012: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1015: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   997: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1000: invokeinterface 744 1 0
+    //   1005: invokeinterface 767 1 0
+    //   1010: aload_0
+    //   1011: aconst_null
+    //   1012: putfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1015: iload 4
+    //   1017: istore_2
     //   1018: aload_0
-    //   1019: aconst_null
-    //   1020: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1023: iload 4
-    //   1025: istore_2
-    //   1026: goto -998 -> 28
-    //   1029: ldc 8
-    //   1031: new 84	java/lang/StringBuilder
-    //   1034: dup
-    //   1035: ldc_w 742
-    //   1038: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1041: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1044: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   1047: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1050: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1053: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1056: ldc 8
-    //   1058: aload_1
-    //   1059: ldc 234
-    //   1061: iconst_0
-    //   1062: anewarray 4	java/lang/Object
-    //   1065: invokestatic 240	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1068: aload_0
-    //   1069: invokespecial 738	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
-    //   1072: istore_2
-    //   1073: iload_2
-    //   1074: istore 4
-    //   1076: iload_2
-    //   1077: ifne -131 -> 946
-    //   1080: aload_0
-    //   1081: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1084: sipush 603
-    //   1087: putfield 535	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
-    //   1090: iload_2
-    //   1091: istore 4
-    //   1093: goto -147 -> 946
-    //   1096: astore_1
-    //   1097: aload_0
-    //   1098: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   1101: istore_2
-    //   1102: iload_2
-    //   1103: ifeq +82 -> 1185
-    //   1106: aload_0
-    //   1107: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1110: ifnull +25 -> 1135
-    //   1113: aload_0
-    //   1114: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1117: invokevirtual 66	org/apache/http/client/methods/HttpGet:isAborted	()Z
-    //   1120: ifne +10 -> 1130
-    //   1123: aload_0
-    //   1124: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1127: invokevirtual 69	org/apache/http/client/methods/HttpGet:abort	()V
-    //   1130: aload_0
-    //   1131: aconst_null
-    //   1132: putfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1135: aload_0
-    //   1136: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1139: ifnull +22 -> 1161
-    //   1142: aload_0
-    //   1143: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1146: invokeinterface 706 1 0
-    //   1151: invokeinterface 729 1 0
-    //   1156: aload_0
-    //   1157: aconst_null
-    //   1158: putfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1161: aload_0
-    //   1162: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1165: ifnull +1004 -> 2169
-    //   1168: aload_0
-    //   1169: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1172: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   1175: aload_0
-    //   1176: aconst_null
-    //   1177: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1180: iconst_0
-    //   1181: istore_2
-    //   1182: goto -1154 -> 28
-    //   1185: ldc 8
-    //   1187: new 84	java/lang/StringBuilder
-    //   1190: dup
-    //   1191: ldc_w 744
-    //   1194: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1197: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1200: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   1203: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1206: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1209: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1212: ldc 8
-    //   1214: aload_1
-    //   1215: ldc 234
-    //   1217: iconst_0
-    //   1218: anewarray 4	java/lang/Object
-    //   1221: invokestatic 240	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1224: aload_0
-    //   1225: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1228: sipush 600
-    //   1231: putfield 535	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
-    //   1234: goto -128 -> 1106
-    //   1237: astore_1
-    //   1238: aload_0
-    //   1239: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   1242: istore_2
-    //   1243: iload_2
-    //   1244: ifeq +82 -> 1326
-    //   1247: aload_0
-    //   1248: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1251: ifnull +25 -> 1276
+    //   1019: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1022: ifnull +1162 -> 2184
+    //   1025: aload_0
+    //   1026: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1029: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   1032: aload_0
+    //   1033: aconst_null
+    //   1034: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1037: iload 4
+    //   1039: istore_2
+    //   1040: goto -1006 -> 34
+    //   1043: ldc 8
+    //   1045: new 97	java/lang/StringBuilder
+    //   1048: dup
+    //   1049: ldc_w 780
+    //   1052: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1055: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1058: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   1061: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1064: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1067: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1070: ldc 8
+    //   1072: aload_1
+    //   1073: ldc_w 257
+    //   1076: iconst_0
+    //   1077: anewarray 4	java/lang/Object
+    //   1080: invokestatic 263	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1083: aload_0
+    //   1084: invokespecial 776	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
+    //   1087: istore_2
+    //   1088: iload_2
+    //   1089: istore 4
+    //   1091: iload_2
+    //   1092: ifne -132 -> 960
+    //   1095: aload_0
+    //   1096: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1099: sipush 603
+    //   1102: putfield 559	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
+    //   1105: iload_2
+    //   1106: istore 4
+    //   1108: goto -148 -> 960
+    //   1111: astore_1
+    //   1112: aload_0
+    //   1113: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   1116: istore_2
+    //   1117: iload_2
+    //   1118: ifeq +82 -> 1200
+    //   1121: aload_0
+    //   1122: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1125: ifnull +25 -> 1150
+    //   1128: aload_0
+    //   1129: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1132: invokevirtual 78	org/apache/http/client/methods/HttpGet:isAborted	()Z
+    //   1135: ifne +10 -> 1145
+    //   1138: aload_0
+    //   1139: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1142: invokevirtual 81	org/apache/http/client/methods/HttpGet:abort	()V
+    //   1145: aload_0
+    //   1146: aconst_null
+    //   1147: putfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1150: aload_0
+    //   1151: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1154: ifnull +22 -> 1176
+    //   1157: aload_0
+    //   1158: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1161: invokeinterface 744 1 0
+    //   1166: invokeinterface 767 1 0
+    //   1171: aload_0
+    //   1172: aconst_null
+    //   1173: putfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1176: aload_0
+    //   1177: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1180: ifnull +1015 -> 2195
+    //   1183: aload_0
+    //   1184: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1187: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   1190: aload_0
+    //   1191: aconst_null
+    //   1192: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1195: iconst_0
+    //   1196: istore_2
+    //   1197: goto -1163 -> 34
+    //   1200: ldc 8
+    //   1202: new 97	java/lang/StringBuilder
+    //   1205: dup
+    //   1206: ldc_w 782
+    //   1209: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1212: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1215: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   1218: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1221: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1224: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1227: ldc 8
+    //   1229: aload_1
+    //   1230: ldc_w 257
+    //   1233: iconst_0
+    //   1234: anewarray 4	java/lang/Object
+    //   1237: invokestatic 263	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1240: aload_0
+    //   1241: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1244: sipush 600
+    //   1247: putfield 559	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
+    //   1250: goto -129 -> 1121
+    //   1253: astore_1
     //   1254: aload_0
-    //   1255: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1258: invokevirtual 66	org/apache/http/client/methods/HttpGet:isAborted	()Z
-    //   1261: ifne +10 -> 1271
-    //   1264: aload_0
-    //   1265: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1268: invokevirtual 69	org/apache/http/client/methods/HttpGet:abort	()V
-    //   1271: aload_0
-    //   1272: aconst_null
-    //   1273: putfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1276: aload_0
-    //   1277: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1280: ifnull +22 -> 1302
-    //   1283: aload_0
-    //   1284: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1287: invokeinterface 706 1 0
-    //   1292: invokeinterface 729 1 0
-    //   1297: aload_0
-    //   1298: aconst_null
-    //   1299: putfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1302: aload_0
-    //   1303: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1306: ifnull +863 -> 2169
-    //   1309: aload_0
-    //   1310: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1313: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   1316: aload_0
-    //   1317: aconst_null
-    //   1318: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1321: iconst_0
-    //   1322: istore_2
-    //   1323: goto -1295 -> 28
-    //   1326: ldc 8
-    //   1328: new 84	java/lang/StringBuilder
-    //   1331: dup
-    //   1332: ldc_w 746
-    //   1335: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1338: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1341: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   1344: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1347: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1350: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1353: ldc 8
-    //   1355: aload_1
-    //   1356: ldc 234
-    //   1358: iconst_0
-    //   1359: anewarray 4	java/lang/Object
-    //   1362: invokestatic 240	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1365: aload_0
-    //   1366: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1369: sipush 607
-    //   1372: putfield 535	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
-    //   1375: goto -128 -> 1247
-    //   1378: astore_1
-    //   1379: aload_0
-    //   1380: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   1383: istore_2
-    //   1384: iload_2
-    //   1385: ifeq +89 -> 1474
-    //   1388: iconst_0
-    //   1389: istore 4
-    //   1391: aload_0
-    //   1392: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1395: ifnull +25 -> 1420
-    //   1398: aload_0
-    //   1399: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1402: invokevirtual 66	org/apache/http/client/methods/HttpGet:isAborted	()Z
-    //   1405: ifne +10 -> 1415
+    //   1255: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   1258: istore_2
+    //   1259: iload_2
+    //   1260: ifeq +82 -> 1342
+    //   1263: aload_0
+    //   1264: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1267: ifnull +25 -> 1292
+    //   1270: aload_0
+    //   1271: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1274: invokevirtual 78	org/apache/http/client/methods/HttpGet:isAborted	()Z
+    //   1277: ifne +10 -> 1287
+    //   1280: aload_0
+    //   1281: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1284: invokevirtual 81	org/apache/http/client/methods/HttpGet:abort	()V
+    //   1287: aload_0
+    //   1288: aconst_null
+    //   1289: putfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1292: aload_0
+    //   1293: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1296: ifnull +22 -> 1318
+    //   1299: aload_0
+    //   1300: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1303: invokeinterface 744 1 0
+    //   1308: invokeinterface 767 1 0
+    //   1313: aload_0
+    //   1314: aconst_null
+    //   1315: putfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1318: aload_0
+    //   1319: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1322: ifnull +873 -> 2195
+    //   1325: aload_0
+    //   1326: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1329: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   1332: aload_0
+    //   1333: aconst_null
+    //   1334: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1337: iconst_0
+    //   1338: istore_2
+    //   1339: goto -1305 -> 34
+    //   1342: ldc 8
+    //   1344: new 97	java/lang/StringBuilder
+    //   1347: dup
+    //   1348: ldc_w 784
+    //   1351: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1354: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1357: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   1360: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1363: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1366: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1369: ldc 8
+    //   1371: aload_1
+    //   1372: ldc_w 257
+    //   1375: iconst_0
+    //   1376: anewarray 4	java/lang/Object
+    //   1379: invokestatic 263	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1382: aload_0
+    //   1383: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1386: sipush 607
+    //   1389: putfield 559	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
+    //   1392: goto -129 -> 1263
+    //   1395: astore_1
+    //   1396: aload_0
+    //   1397: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   1400: istore_2
+    //   1401: iload_2
+    //   1402: ifeq +89 -> 1491
+    //   1405: iconst_0
+    //   1406: istore 4
     //   1408: aload_0
-    //   1409: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1412: invokevirtual 69	org/apache/http/client/methods/HttpGet:abort	()V
+    //   1409: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1412: ifnull +25 -> 1437
     //   1415: aload_0
-    //   1416: aconst_null
-    //   1417: putfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1420: aload_0
-    //   1421: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1424: ifnull +22 -> 1446
-    //   1427: aload_0
-    //   1428: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1431: invokeinterface 706 1 0
-    //   1436: invokeinterface 729 1 0
-    //   1441: aload_0
-    //   1442: aconst_null
-    //   1443: putfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1446: iload 4
-    //   1448: istore_2
-    //   1449: aload_0
-    //   1450: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1453: ifnull +705 -> 2158
-    //   1456: aload_0
-    //   1457: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1460: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   1463: aload_0
-    //   1464: aconst_null
-    //   1465: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1468: iload 4
-    //   1470: istore_2
-    //   1471: goto -1443 -> 28
-    //   1474: ldc 8
-    //   1476: new 84	java/lang/StringBuilder
-    //   1479: dup
-    //   1480: ldc_w 748
-    //   1483: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1486: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1489: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   1492: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1495: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1498: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1501: ldc 8
-    //   1503: aload_1
-    //   1504: ldc 234
-    //   1506: iconst_0
-    //   1507: anewarray 4	java/lang/Object
-    //   1510: invokestatic 240	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1513: aload_0
-    //   1514: invokespecial 738	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
-    //   1517: istore_2
-    //   1518: iload_2
-    //   1519: istore 4
-    //   1521: iload_2
-    //   1522: ifne -131 -> 1391
-    //   1525: aload_0
-    //   1526: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1529: sipush 606
-    //   1532: putfield 535	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
-    //   1535: iload_2
-    //   1536: istore 4
-    //   1538: goto -147 -> 1391
-    //   1541: astore_1
-    //   1542: aload_0
-    //   1543: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   1546: istore_2
-    //   1547: iload_2
-    //   1548: ifeq +90 -> 1638
-    //   1551: iload_3
-    //   1552: istore_2
-    //   1553: iconst_0
+    //   1416: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1419: invokevirtual 78	org/apache/http/client/methods/HttpGet:isAborted	()Z
+    //   1422: ifne +10 -> 1432
+    //   1425: aload_0
+    //   1426: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1429: invokevirtual 81	org/apache/http/client/methods/HttpGet:abort	()V
+    //   1432: aload_0
+    //   1433: aconst_null
+    //   1434: putfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1437: aload_0
+    //   1438: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1441: ifnull +22 -> 1463
+    //   1444: aload_0
+    //   1445: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1448: invokeinterface 744 1 0
+    //   1453: invokeinterface 767 1 0
+    //   1458: aload_0
+    //   1459: aconst_null
+    //   1460: putfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1463: iload 4
+    //   1465: istore_2
+    //   1466: aload_0
+    //   1467: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1470: ifnull +714 -> 2184
+    //   1473: aload_0
+    //   1474: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1477: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   1480: aload_0
+    //   1481: aconst_null
+    //   1482: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1485: iload 4
+    //   1487: istore_2
+    //   1488: goto -1454 -> 34
+    //   1491: ldc 8
+    //   1493: new 97	java/lang/StringBuilder
+    //   1496: dup
+    //   1497: ldc_w 786
+    //   1500: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1503: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1506: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   1509: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1512: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1515: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1518: ldc 8
+    //   1520: aload_1
+    //   1521: ldc_w 257
+    //   1524: iconst_0
+    //   1525: anewarray 4	java/lang/Object
+    //   1528: invokestatic 263	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1531: aload_0
+    //   1532: invokespecial 776	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
+    //   1535: istore_2
+    //   1536: iload_2
+    //   1537: istore 4
+    //   1539: iload_2
+    //   1540: ifne -132 -> 1408
+    //   1543: aload_0
+    //   1544: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1547: sipush 606
+    //   1550: putfield 559	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
+    //   1553: iload_2
     //   1554: istore 4
-    //   1556: aload_0
-    //   1557: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1560: ifnull +25 -> 1585
-    //   1563: aload_0
-    //   1564: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1567: invokevirtual 66	org/apache/http/client/methods/HttpGet:isAborted	()Z
-    //   1570: ifne +10 -> 1580
-    //   1573: aload_0
-    //   1574: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1577: invokevirtual 69	org/apache/http/client/methods/HttpGet:abort	()V
-    //   1580: aload_0
-    //   1581: aconst_null
-    //   1582: putfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1585: aload_0
-    //   1586: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1589: ifnull +22 -> 1611
-    //   1592: aload_0
-    //   1593: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1596: invokeinterface 706 1 0
-    //   1601: invokeinterface 729 1 0
-    //   1606: aload_0
-    //   1607: aconst_null
-    //   1608: putfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1611: aload_0
-    //   1612: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1615: ifnull +546 -> 2161
-    //   1618: aload_0
-    //   1619: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1622: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   1625: aload_0
-    //   1626: aconst_null
-    //   1627: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1630: iload_2
-    //   1631: istore_3
-    //   1632: iload 4
-    //   1634: istore_2
-    //   1635: goto -1607 -> 28
-    //   1638: ldc 8
-    //   1640: new 84	java/lang/StringBuilder
-    //   1643: dup
-    //   1644: ldc_w 750
-    //   1647: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1650: aload_1
-    //   1651: getfield 753	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
-    //   1654: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1657: ldc 95
-    //   1659: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1662: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1665: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   1668: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1671: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1674: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1677: ldc 8
-    //   1679: aload_1
-    //   1680: ldc 234
-    //   1682: iconst_0
-    //   1683: anewarray 4	java/lang/Object
-    //   1686: invokestatic 240	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1689: aload_0
-    //   1690: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1693: aload_1
-    //   1694: getfield 753	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
-    //   1697: putfield 535	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
-    //   1700: aload_1
-    //   1701: getfield 753	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
-    //   1704: sipush 703
-    //   1707: if_icmpeq +467 -> 2174
-    //   1710: aload_1
-    //   1711: getfield 753	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
-    //   1714: sipush 710
-    //   1717: if_icmpeq +457 -> 2174
-    //   1720: aload_1
-    //   1721: getfield 753	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
-    //   1724: sipush 711
-    //   1727: if_icmpne +6 -> 1733
-    //   1730: goto +444 -> 2174
-    //   1733: sipush 704
-    //   1736: aload_1
-    //   1737: getfield 753	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
-    //   1740: if_icmpne +43 -> 1783
-    //   1743: aload_0
-    //   1744: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1747: lconst_0
-    //   1748: invokevirtual 268	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:setTotalSize	(J)V
-    //   1751: new 305	com/tencent/tmassistantsdk/storage/TMAssistantFile
-    //   1754: dup
-    //   1755: aload_0
-    //   1756: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1759: getfield 308	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mTempFileName	Ljava/lang/String;
+    //   1556: goto -148 -> 1408
+    //   1559: astore_1
+    //   1560: aload_0
+    //   1561: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   1564: istore_2
+    //   1565: iload_2
+    //   1566: ifeq +90 -> 1656
+    //   1569: iload_3
+    //   1570: istore_2
+    //   1571: iconst_0
+    //   1572: istore 4
+    //   1574: aload_0
+    //   1575: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1578: ifnull +25 -> 1603
+    //   1581: aload_0
+    //   1582: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1585: invokevirtual 78	org/apache/http/client/methods/HttpGet:isAborted	()Z
+    //   1588: ifne +10 -> 1598
+    //   1591: aload_0
+    //   1592: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1595: invokevirtual 81	org/apache/http/client/methods/HttpGet:abort	()V
+    //   1598: aload_0
+    //   1599: aconst_null
+    //   1600: putfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1603: aload_0
+    //   1604: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1607: ifnull +22 -> 1629
+    //   1610: aload_0
+    //   1611: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1614: invokeinterface 744 1 0
+    //   1619: invokeinterface 767 1 0
+    //   1624: aload_0
+    //   1625: aconst_null
+    //   1626: putfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1629: aload_0
+    //   1630: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1633: ifnull +554 -> 2187
+    //   1636: aload_0
+    //   1637: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1640: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   1643: aload_0
+    //   1644: aconst_null
+    //   1645: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1648: iload_2
+    //   1649: istore_3
+    //   1650: iload 4
+    //   1652: istore_2
+    //   1653: goto -1619 -> 34
+    //   1656: ldc 8
+    //   1658: new 97	java/lang/StringBuilder
+    //   1661: dup
+    //   1662: ldc_w 788
+    //   1665: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1668: aload_1
+    //   1669: getfield 791	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
+    //   1672: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1675: ldc 108
+    //   1677: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1680: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1683: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   1686: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1689: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1692: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1695: ldc 8
+    //   1697: aload_1
+    //   1698: ldc_w 257
+    //   1701: iconst_0
+    //   1702: anewarray 4	java/lang/Object
+    //   1705: invokestatic 263	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1708: aload_0
+    //   1709: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1712: aload_1
+    //   1713: getfield 791	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
+    //   1716: putfield 559	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
+    //   1719: aload_1
+    //   1720: getfield 791	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
+    //   1723: sipush 703
+    //   1726: if_icmpeq +474 -> 2200
+    //   1729: aload_1
+    //   1730: getfield 791	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
+    //   1733: sipush 710
+    //   1736: if_icmpeq +464 -> 2200
+    //   1739: aload_1
+    //   1740: getfield 791	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
+    //   1743: sipush 711
+    //   1746: if_icmpne +6 -> 1752
+    //   1749: goto +451 -> 2200
+    //   1752: sipush 704
+    //   1755: aload_1
+    //   1756: getfield 791	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
+    //   1759: if_icmpne +43 -> 1802
     //   1762: aload_0
-    //   1763: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1766: getfield 164	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
-    //   1769: invokespecial 310	com/tencent/tmassistantsdk/storage/TMAssistantFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1772: invokevirtual 756	com/tencent/tmassistantsdk/storage/TMAssistantFile:deleteTempFile	()V
-    //   1775: iload_3
-    //   1776: istore_2
-    //   1777: iconst_0
-    //   1778: istore 4
-    //   1780: goto -224 -> 1556
-    //   1783: sipush 705
-    //   1786: aload_1
-    //   1787: getfield 753	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
-    //   1790: if_icmpne +38 -> 1828
-    //   1793: iload_3
-    //   1794: ifne +388 -> 2182
-    //   1797: aload_0
-    //   1798: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1801: invokevirtual 547	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:hasRetryChance	()Z
-    //   1804: ifeq +378 -> 2182
-    //   1807: aload_0
-    //   1808: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1811: getfield 644	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mSecondaryUrl	Ljava/lang/String;
-    //   1814: invokestatic 184	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1817: ifne +365 -> 2182
-    //   1820: iconst_1
-    //   1821: istore_2
-    //   1822: iconst_1
-    //   1823: istore 4
-    //   1825: goto -269 -> 1556
-    //   1828: aload_0
-    //   1829: invokespecial 738	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
-    //   1832: istore 4
-    //   1834: iload_3
-    //   1835: istore_2
-    //   1836: goto -280 -> 1556
-    //   1839: astore_1
-    //   1840: aload_0
-    //   1841: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   1844: istore_2
-    //   1845: iload_2
-    //   1846: ifeq +89 -> 1935
-    //   1849: iconst_0
-    //   1850: istore 4
-    //   1852: aload_0
-    //   1853: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1856: ifnull +25 -> 1881
+    //   1763: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1766: lconst_0
+    //   1767: invokevirtual 292	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:setTotalSize	(J)V
+    //   1770: new 329	com/tencent/tmassistantsdk/storage/TMAssistantFile
+    //   1773: dup
+    //   1774: aload_0
+    //   1775: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1778: getfield 332	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mTempFileName	Ljava/lang/String;
+    //   1781: aload_0
+    //   1782: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1785: getfield 184	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mFileName	Ljava/lang/String;
+    //   1788: invokespecial 334	com/tencent/tmassistantsdk/storage/TMAssistantFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1791: invokevirtual 794	com/tencent/tmassistantsdk/storage/TMAssistantFile:deleteTempFile	()V
+    //   1794: iload_3
+    //   1795: istore_2
+    //   1796: iconst_0
+    //   1797: istore 4
+    //   1799: goto -225 -> 1574
+    //   1802: sipush 705
+    //   1805: aload_1
+    //   1806: getfield 791	com/tencent/tmassistantsdk/downloadservice/StopRequestException:mFinalErrCode	I
+    //   1809: if_icmpne +38 -> 1847
+    //   1812: iload_3
+    //   1813: ifne +395 -> 2208
+    //   1816: aload_0
+    //   1817: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1820: invokevirtual 571	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:hasRetryChance	()Z
+    //   1823: ifeq +385 -> 2208
+    //   1826: aload_0
+    //   1827: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   1830: getfield 674	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mSecondaryUrl	Ljava/lang/String;
+    //   1833: invokestatic 203	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1836: ifne +372 -> 2208
+    //   1839: iconst_1
+    //   1840: istore_2
+    //   1841: iconst_1
+    //   1842: istore 4
+    //   1844: goto -270 -> 1574
+    //   1847: aload_0
+    //   1848: invokespecial 776	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
+    //   1851: istore 4
+    //   1853: iload_3
+    //   1854: istore_2
+    //   1855: goto -281 -> 1574
+    //   1858: astore_1
     //   1859: aload_0
-    //   1860: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1863: invokevirtual 66	org/apache/http/client/methods/HttpGet:isAborted	()Z
-    //   1866: ifne +10 -> 1876
-    //   1869: aload_0
-    //   1870: getfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1873: invokevirtual 69	org/apache/http/client/methods/HttpGet:abort	()V
-    //   1876: aload_0
-    //   1877: aconst_null
-    //   1878: putfield 36	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
-    //   1881: aload_0
-    //   1882: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1885: ifnull +22 -> 1907
+    //   1860: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   1863: istore_2
+    //   1864: iload_2
+    //   1865: ifeq +89 -> 1954
+    //   1868: iconst_0
+    //   1869: istore 4
+    //   1871: aload_0
+    //   1872: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1875: ifnull +25 -> 1900
+    //   1878: aload_0
+    //   1879: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1882: invokevirtual 78	org/apache/http/client/methods/HttpGet:isAborted	()Z
+    //   1885: ifne +10 -> 1895
     //   1888: aload_0
-    //   1889: getfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1892: invokeinterface 706 1 0
-    //   1897: invokeinterface 729 1 0
-    //   1902: aload_0
-    //   1903: aconst_null
-    //   1904: putfield 34	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
-    //   1907: iload 4
-    //   1909: istore_2
-    //   1910: aload_0
-    //   1911: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1914: ifnull +244 -> 2158
-    //   1917: aload_0
-    //   1918: getfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1921: invokevirtual 326	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
-    //   1924: aload_0
-    //   1925: aconst_null
-    //   1926: putfield 303	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
-    //   1929: iload 4
-    //   1931: istore_2
-    //   1932: goto -1904 -> 28
-    //   1935: ldc 8
-    //   1937: new 84	java/lang/StringBuilder
-    //   1940: dup
-    //   1941: ldc_w 758
-    //   1944: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1947: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1950: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   1953: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1956: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1959: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1962: ldc 8
-    //   1964: aload_1
-    //   1965: ldc 234
-    //   1967: iconst_0
-    //   1968: anewarray 4	java/lang/Object
-    //   1971: invokestatic 240	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1974: aload_0
-    //   1975: invokespecial 738	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
-    //   1978: istore_2
-    //   1979: iload_2
-    //   1980: istore 4
-    //   1982: iload_2
-    //   1983: ifne -131 -> 1852
-    //   1986: aload_0
-    //   1987: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   1990: sipush 604
-    //   1993: putfield 535	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
-    //   1996: iload_2
-    //   1997: istore 4
-    //   1999: goto -147 -> 1852
-    //   2002: ldc 8
-    //   2004: new 84	java/lang/StringBuilder
-    //   2007: dup
-    //   2008: ldc_w 519
-    //   2011: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2014: aload_0
-    //   2015: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   2018: invokevirtual 522	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2021: ldc 95
-    //   2023: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2026: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   2029: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   2032: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2035: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2038: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2041: aload_0
-    //   2042: getfield 32	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
-    //   2045: ifne +102 -> 2147
-    //   2048: ldc 8
-    //   2050: new 84	java/lang/StringBuilder
-    //   2053: dup
-    //   2054: ldc_w 760
-    //   2057: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2060: invokestatic 104	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   2063: invokevirtual 108	java/lang/Thread:getName	()Ljava/lang/String;
-    //   2066: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2069: ldc_w 762
-    //   2072: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2075: aload_0
-    //   2076: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   2079: getfield 765	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mStatus	I
-    //   2082: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2085: ldc_w 767
-    //   2088: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2091: aload_0
-    //   2092: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   2095: getfield 535	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
-    //   2098: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2101: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2104: invokestatic 117	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2107: aload_0
-    //   2108: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   2111: invokevirtual 734	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:hasReceivedAllDataBytes	()Z
-    //   2114: ifeq +21 -> 2135
-    //   2117: aload_0
-    //   2118: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   2121: iconst_4
-    //   2122: iload_3
-    //   2123: invokevirtual 612	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:updateStatus	(IZ)V
-    //   2126: aload_0
-    //   2127: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   2130: iconst_0
-    //   2131: putfield 608	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mTaskIsRunning	Z
-    //   2134: return
-    //   2135: aload_0
-    //   2136: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   2139: iconst_5
-    //   2140: iload_3
-    //   2141: invokevirtual 612	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:updateStatus	(IZ)V
-    //   2144: goto -18 -> 2126
-    //   2147: aload_0
-    //   2148: getfield 38	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   2151: iconst_0
-    //   2152: putfield 535	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
-    //   2155: goto -29 -> 2126
-    //   2158: goto -2130 -> 28
-    //   2161: iload_2
-    //   2162: istore_3
-    //   2163: iload 4
-    //   2165: istore_2
-    //   2166: goto -2138 -> 28
-    //   2169: iconst_0
-    //   2170: istore_2
-    //   2171: goto -2143 -> 28
-    //   2174: iload_3
-    //   2175: istore_2
-    //   2176: iconst_0
-    //   2177: istore 4
-    //   2179: goto -623 -> 1556
-    //   2182: iload_3
-    //   2183: istore_2
-    //   2184: iconst_0
-    //   2185: istore 4
-    //   2187: goto -631 -> 1556
+    //   1889: getfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1892: invokevirtual 81	org/apache/http/client/methods/HttpGet:abort	()V
+    //   1895: aload_0
+    //   1896: aconst_null
+    //   1897: putfield 43	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
+    //   1900: aload_0
+    //   1901: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1904: ifnull +22 -> 1926
+    //   1907: aload_0
+    //   1908: getfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1911: invokeinterface 744 1 0
+    //   1916: invokeinterface 767 1 0
+    //   1921: aload_0
+    //   1922: aconst_null
+    //   1923: putfield 41	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mHttpClient	Lorg/apache/http/client/HttpClient;
+    //   1926: iload 4
+    //   1928: istore_2
+    //   1929: aload_0
+    //   1930: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1933: ifnull +251 -> 2184
+    //   1936: aload_0
+    //   1937: getfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1940: invokevirtual 350	com/tencent/tmassistantsdk/storage/TMAssistantFile:close	()V
+    //   1943: aload_0
+    //   1944: aconst_null
+    //   1945: putfield 327	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mSaveFile	Lcom/tencent/tmassistantsdk/storage/TMAssistantFile;
+    //   1948: iload 4
+    //   1950: istore_2
+    //   1951: goto -1917 -> 34
+    //   1954: ldc 8
+    //   1956: new 97	java/lang/StringBuilder
+    //   1959: dup
+    //   1960: ldc_w 796
+    //   1963: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1966: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1969: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   1972: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1975: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1978: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1981: ldc 8
+    //   1983: aload_1
+    //   1984: ldc_w 257
+    //   1987: iconst_0
+    //   1988: anewarray 4	java/lang/Object
+    //   1991: invokestatic 263	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1994: aload_0
+    //   1995: invokespecial 776	com/tencent/tmassistantsdk/downloadservice/DownloadTask:shouldRetryConnect	()Z
+    //   1998: istore_2
+    //   1999: iload_2
+    //   2000: istore 4
+    //   2002: iload_2
+    //   2003: ifne -132 -> 1871
+    //   2006: aload_0
+    //   2007: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   2010: sipush 604
+    //   2013: putfield 559	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
+    //   2016: iload_2
+    //   2017: istore 4
+    //   2019: goto -148 -> 1871
+    //   2022: ldc 8
+    //   2024: new 97	java/lang/StringBuilder
+    //   2027: dup
+    //   2028: ldc_w 543
+    //   2031: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2034: aload_0
+    //   2035: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   2038: invokevirtual 546	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2041: ldc 108
+    //   2043: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2046: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   2049: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   2052: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2055: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2058: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2061: aload_0
+    //   2062: getfield 39	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mStopTask	Z
+    //   2065: ifne +108 -> 2173
+    //   2068: ldc 8
+    //   2070: new 97	java/lang/StringBuilder
+    //   2073: dup
+    //   2074: ldc_w 798
+    //   2077: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2080: invokestatic 117	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   2083: invokevirtual 121	java/lang/Thread:getName	()Ljava/lang/String;
+    //   2086: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2089: ldc_w 800
+    //   2092: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2095: aload_0
+    //   2096: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   2099: getfield 803	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mStatus	I
+    //   2102: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2105: ldc_w 805
+    //   2108: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2111: aload_0
+    //   2112: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   2115: getfield 559	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
+    //   2118: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2121: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2124: invokestatic 129	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2127: aload_0
+    //   2128: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   2131: invokevirtual 772	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:hasReceivedAllDataBytes	()Z
+    //   2134: ifeq +27 -> 2161
+    //   2137: aload_0
+    //   2138: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   2141: iconst_4
+    //   2142: iload_3
+    //   2143: invokevirtual 642	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:updateStatus	(IZ)V
+    //   2146: aload_0
+    //   2147: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   2150: iconst_0
+    //   2151: putfield 638	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mTaskIsRunning	Z
+    //   2154: ldc_w 635
+    //   2157: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   2160: return
+    //   2161: aload_0
+    //   2162: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   2165: iconst_5
+    //   2166: iload_3
+    //   2167: invokevirtual 642	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:updateStatus	(IZ)V
+    //   2170: goto -24 -> 2146
+    //   2173: aload_0
+    //   2174: getfield 45	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   2177: iconst_0
+    //   2178: putfield 559	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mDownloadFailedErrCode	I
+    //   2181: goto -35 -> 2146
+    //   2184: goto -2150 -> 34
+    //   2187: iload_2
+    //   2188: istore_3
+    //   2189: iload 4
+    //   2191: istore_2
+    //   2192: goto -2158 -> 34
+    //   2195: iconst_0
+    //   2196: istore_2
+    //   2197: goto -2163 -> 34
+    //   2200: iload_3
+    //   2201: istore_2
+    //   2202: iconst_0
+    //   2203: istore 4
+    //   2205: goto -631 -> 1574
+    //   2208: iload_3
+    //   2209: istore_2
+    //   2210: iconst_0
+    //   2211: istore 4
+    //   2213: goto -639 -> 1574
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2190	0	this	DownloadTask
-    //   0	2190	1	paramString	String
-    //   27	2157	2	bool1	boolean
-    //   25	2158	3	bool2	boolean
-    //   411	1775	4	bool3	boolean
-    //   39	479	5	localDownloadChunkLogInfo	DownloadChunkLogInfo
+    //   0	2216	0	this	DownloadTask
+    //   0	2216	1	paramString	String
+    //   33	2177	2	bool1	boolean
+    //   31	2178	3	bool2	boolean
+    //   414	1798	4	bool3	boolean
+    //   45	479	5	localDownloadChunkLogInfo	DownloadChunkLogInfo
     // Exception table:
     //   from	to	target	type
-    //   82	106	400	org/apache/http/conn/ConnectTimeoutException
-    //   110	118	400	org/apache/http/conn/ConnectTimeoutException
-    //   118	123	400	org/apache/http/conn/ConnectTimeoutException
-    //   123	322	400	org/apache/http/conn/ConnectTimeoutException
-    //   322	363	400	org/apache/http/conn/ConnectTimeoutException
-    //   367	400	400	org/apache/http/conn/ConnectTimeoutException
-    //   496	504	400	org/apache/http/conn/ConnectTimeoutException
-    //   507	512	400	org/apache/http/conn/ConnectTimeoutException
-    //   515	530	400	org/apache/http/conn/ConnectTimeoutException
-    //   82	106	693	finally
-    //   110	118	693	finally
-    //   118	123	693	finally
-    //   123	322	693	finally
-    //   322	363	693	finally
-    //   367	400	693	finally
-    //   401	406	693	finally
-    //   496	504	693	finally
-    //   507	512	693	finally
-    //   515	530	693	finally
-    //   626	670	693	finally
-    //   677	687	693	finally
-    //   771	776	693	finally
-    //   866	910	693	finally
-    //   917	927	693	finally
-    //   934	939	693	finally
-    //   1029	1073	693	finally
-    //   1080	1090	693	finally
-    //   1097	1102	693	finally
-    //   1185	1234	693	finally
-    //   1238	1243	693	finally
-    //   1326	1375	693	finally
-    //   1379	1384	693	finally
-    //   1474	1518	693	finally
-    //   1525	1535	693	finally
-    //   1542	1547	693	finally
-    //   1638	1730	693	finally
-    //   1733	1775	693	finally
-    //   1783	1793	693	finally
-    //   1797	1820	693	finally
-    //   1828	1834	693	finally
-    //   1840	1845	693	finally
-    //   1935	1979	693	finally
-    //   1986	1996	693	finally
-    //   82	106	770	java/net/SocketTimeoutException
-    //   110	118	770	java/net/SocketTimeoutException
-    //   118	123	770	java/net/SocketTimeoutException
-    //   123	322	770	java/net/SocketTimeoutException
-    //   322	363	770	java/net/SocketTimeoutException
-    //   367	400	770	java/net/SocketTimeoutException
-    //   496	504	770	java/net/SocketTimeoutException
-    //   507	512	770	java/net/SocketTimeoutException
-    //   515	530	770	java/net/SocketTimeoutException
-    //   82	106	933	java/net/UnknownHostException
-    //   110	118	933	java/net/UnknownHostException
-    //   118	123	933	java/net/UnknownHostException
-    //   123	322	933	java/net/UnknownHostException
-    //   322	363	933	java/net/UnknownHostException
-    //   367	400	933	java/net/UnknownHostException
-    //   496	504	933	java/net/UnknownHostException
-    //   507	512	933	java/net/UnknownHostException
-    //   515	530	933	java/net/UnknownHostException
-    //   82	106	1096	java/lang/InterruptedException
-    //   110	118	1096	java/lang/InterruptedException
-    //   118	123	1096	java/lang/InterruptedException
-    //   123	322	1096	java/lang/InterruptedException
-    //   322	363	1096	java/lang/InterruptedException
-    //   367	400	1096	java/lang/InterruptedException
-    //   496	504	1096	java/lang/InterruptedException
-    //   507	512	1096	java/lang/InterruptedException
-    //   515	530	1096	java/lang/InterruptedException
-    //   82	106	1237	javax/net/ssl/SSLHandshakeException
-    //   110	118	1237	javax/net/ssl/SSLHandshakeException
-    //   118	123	1237	javax/net/ssl/SSLHandshakeException
-    //   123	322	1237	javax/net/ssl/SSLHandshakeException
-    //   322	363	1237	javax/net/ssl/SSLHandshakeException
-    //   367	400	1237	javax/net/ssl/SSLHandshakeException
-    //   496	504	1237	javax/net/ssl/SSLHandshakeException
-    //   507	512	1237	javax/net/ssl/SSLHandshakeException
-    //   515	530	1237	javax/net/ssl/SSLHandshakeException
-    //   82	106	1378	java/io/IOException
-    //   110	118	1378	java/io/IOException
-    //   118	123	1378	java/io/IOException
-    //   123	322	1378	java/io/IOException
-    //   322	363	1378	java/io/IOException
-    //   367	400	1378	java/io/IOException
-    //   496	504	1378	java/io/IOException
-    //   507	512	1378	java/io/IOException
-    //   515	530	1378	java/io/IOException
-    //   82	106	1541	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   110	118	1541	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   118	123	1541	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   123	322	1541	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   322	363	1541	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   367	400	1541	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   496	504	1541	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   507	512	1541	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   515	530	1541	com/tencent/tmassistantsdk/downloadservice/StopRequestException
-    //   82	106	1839	java/lang/Throwable
-    //   110	118	1839	java/lang/Throwable
-    //   118	123	1839	java/lang/Throwable
-    //   123	322	1839	java/lang/Throwable
-    //   322	363	1839	java/lang/Throwable
-    //   367	400	1839	java/lang/Throwable
-    //   496	504	1839	java/lang/Throwable
-    //   507	512	1839	java/lang/Throwable
-    //   515	530	1839	java/lang/Throwable
+    //   88	112	403	org/apache/http/conn/ConnectTimeoutException
+    //   116	127	403	org/apache/http/conn/ConnectTimeoutException
+    //   127	132	403	org/apache/http/conn/ConnectTimeoutException
+    //   132	317	403	org/apache/http/conn/ConnectTimeoutException
+    //   317	358	403	org/apache/http/conn/ConnectTimeoutException
+    //   362	403	403	org/apache/http/conn/ConnectTimeoutException
+    //   499	510	403	org/apache/http/conn/ConnectTimeoutException
+    //   513	518	403	org/apache/http/conn/ConnectTimeoutException
+    //   521	536	403	org/apache/http/conn/ConnectTimeoutException
+    //   88	112	700	finally
+    //   116	127	700	finally
+    //   127	132	700	finally
+    //   132	317	700	finally
+    //   317	358	700	finally
+    //   362	403	700	finally
+    //   404	409	700	finally
+    //   499	510	700	finally
+    //   513	518	700	finally
+    //   521	536	700	finally
+    //   632	677	700	finally
+    //   684	694	700	finally
+    //   784	789	700	finally
+    //   879	924	700	finally
+    //   931	941	700	finally
+    //   948	953	700	finally
+    //   1043	1088	700	finally
+    //   1095	1105	700	finally
+    //   1112	1117	700	finally
+    //   1200	1250	700	finally
+    //   1254	1259	700	finally
+    //   1342	1392	700	finally
+    //   1396	1401	700	finally
+    //   1491	1536	700	finally
+    //   1543	1553	700	finally
+    //   1560	1565	700	finally
+    //   1656	1749	700	finally
+    //   1752	1794	700	finally
+    //   1802	1812	700	finally
+    //   1816	1839	700	finally
+    //   1847	1853	700	finally
+    //   1859	1864	700	finally
+    //   1954	1999	700	finally
+    //   2006	2016	700	finally
+    //   88	112	783	java/net/SocketTimeoutException
+    //   116	127	783	java/net/SocketTimeoutException
+    //   127	132	783	java/net/SocketTimeoutException
+    //   132	317	783	java/net/SocketTimeoutException
+    //   317	358	783	java/net/SocketTimeoutException
+    //   362	403	783	java/net/SocketTimeoutException
+    //   499	510	783	java/net/SocketTimeoutException
+    //   513	518	783	java/net/SocketTimeoutException
+    //   521	536	783	java/net/SocketTimeoutException
+    //   88	112	947	java/net/UnknownHostException
+    //   116	127	947	java/net/UnknownHostException
+    //   127	132	947	java/net/UnknownHostException
+    //   132	317	947	java/net/UnknownHostException
+    //   317	358	947	java/net/UnknownHostException
+    //   362	403	947	java/net/UnknownHostException
+    //   499	510	947	java/net/UnknownHostException
+    //   513	518	947	java/net/UnknownHostException
+    //   521	536	947	java/net/UnknownHostException
+    //   88	112	1111	java/lang/InterruptedException
+    //   116	127	1111	java/lang/InterruptedException
+    //   127	132	1111	java/lang/InterruptedException
+    //   132	317	1111	java/lang/InterruptedException
+    //   317	358	1111	java/lang/InterruptedException
+    //   362	403	1111	java/lang/InterruptedException
+    //   499	510	1111	java/lang/InterruptedException
+    //   513	518	1111	java/lang/InterruptedException
+    //   521	536	1111	java/lang/InterruptedException
+    //   88	112	1253	javax/net/ssl/SSLHandshakeException
+    //   116	127	1253	javax/net/ssl/SSLHandshakeException
+    //   127	132	1253	javax/net/ssl/SSLHandshakeException
+    //   132	317	1253	javax/net/ssl/SSLHandshakeException
+    //   317	358	1253	javax/net/ssl/SSLHandshakeException
+    //   362	403	1253	javax/net/ssl/SSLHandshakeException
+    //   499	510	1253	javax/net/ssl/SSLHandshakeException
+    //   513	518	1253	javax/net/ssl/SSLHandshakeException
+    //   521	536	1253	javax/net/ssl/SSLHandshakeException
+    //   88	112	1395	java/io/IOException
+    //   116	127	1395	java/io/IOException
+    //   127	132	1395	java/io/IOException
+    //   132	317	1395	java/io/IOException
+    //   317	358	1395	java/io/IOException
+    //   362	403	1395	java/io/IOException
+    //   499	510	1395	java/io/IOException
+    //   513	518	1395	java/io/IOException
+    //   521	536	1395	java/io/IOException
+    //   88	112	1559	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   116	127	1559	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   127	132	1559	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   132	317	1559	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   317	358	1559	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   362	403	1559	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   499	510	1559	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   513	518	1559	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   521	536	1559	com/tencent/tmassistantsdk/downloadservice/StopRequestException
+    //   88	112	1858	java/lang/Throwable
+    //   116	127	1858	java/lang/Throwable
+    //   127	132	1858	java/lang/Throwable
+    //   132	317	1858	java/lang/Throwable
+    //   317	358	1858	java/lang/Throwable
+    //   362	403	1858	java/lang/Throwable
+    //   499	510	1858	java/lang/Throwable
+    //   513	518	1858	java/lang/Throwable
+    //   521	536	1858	java/lang/Throwable
   }
   
   public String getDownloadURI()

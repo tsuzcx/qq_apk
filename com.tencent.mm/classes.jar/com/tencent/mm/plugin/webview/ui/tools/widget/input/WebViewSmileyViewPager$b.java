@@ -1,72 +1,98 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget.input;
 
-import android.support.v4.view.n;
+import android.support.v4.view.q;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.SoftReference;
 
 final class WebViewSmileyViewPager$b
-  extends n
+  extends q
 {
-  SparseArray<SoftReference<View>> hya = new SparseArray();
-  private boolean hyb = false;
-  c rDq;
+  SparseArray<SoftReference<View>> jqk;
+  private boolean jql;
+  c vtC;
   
-  public final int F(Object paramObject)
+  WebViewSmileyViewPager$b()
   {
-    if (this.hyb) {
+    AppMethodBeat.i(10120);
+    this.jqk = new SparseArray();
+    this.jql = false;
+    AppMethodBeat.o(10120);
+  }
+  
+  public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    AppMethodBeat.i(10124);
+    paramViewGroup.removeView((View)paramObject);
+    AppMethodBeat.o(10124);
+  }
+  
+  public final int getCount()
+  {
+    AppMethodBeat.i(10123);
+    int i = this.vtC.dhd().getPageCount();
+    AppMethodBeat.o(10123);
+    return i;
+  }
+  
+  public final int getItemPosition(Object paramObject)
+  {
+    AppMethodBeat.i(10121);
+    if (this.jql)
+    {
+      AppMethodBeat.o(10121);
       return -2;
     }
-    return super.F(paramObject);
+    int i = super.getItemPosition(paramObject);
+    AppMethodBeat.o(10121);
+    return i;
   }
   
-  public final void a(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup.removeView((View)paramObject);
-  }
-  
-  public final boolean a(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
-  }
-  
-  public final Object b(ViewGroup paramViewGroup, int paramInt)
-  {
+    AppMethodBeat.i(10125);
     View localView = null;
-    if (this.hya.get(paramInt) != null) {
-      localView = (View)((SoftReference)this.hya.get(paramInt)).get();
+    if (this.jqk.get(paramInt) != null) {
+      localView = (View)((SoftReference)this.jqk.get(paramInt)).get();
     }
     if (localView == null)
     {
-      localView = this.rDq.cgW().na(paramInt);
+      localView = this.vtC.dhd().qE(paramInt);
       if (localView != null)
       {
         paramViewGroup.addView(localView, 0);
-        this.hya.put(paramInt, new SoftReference(localView));
-        return localView;
+        this.jqk.put(paramInt, new SoftReference(localView));
       }
-      y.e("MicroMsg.WebViewSmileyViewPagerAdapter", "contentView == null!");
-      return localView;
+      for (;;)
+      {
+        AppMethodBeat.o(10125);
+        return localView;
+        ab.e("MicroMsg.WebViewSmileyViewPagerAdapter", "contentView == null!");
+      }
     }
     if (localView.getParent() != null) {
       ((ViewGroup)localView.getParent()).removeView(localView);
     }
     paramViewGroup.addView(localView, 0);
+    AppMethodBeat.o(10125);
     return localView;
   }
   
-  public final int getCount()
+  public final boolean isViewFromObject(View paramView, Object paramObject)
   {
-    return this.rDq.cgW().getPageCount();
+    return paramView == paramObject;
   }
   
   public final void notifyDataSetChanged()
   {
-    this.hyb = true;
+    AppMethodBeat.i(10122);
+    this.jql = true;
     super.notifyDataSetChanged();
-    this.hyb = false;
+    this.jql = false;
+    AppMethodBeat.o(10122);
   }
 }
 

@@ -1,16 +1,14 @@
 package com.google.android.gms.common.images;
 
-import android.app.ActivityManager;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.f.g;
 import android.widget.ImageView;
-import com.google.android.gms.common.internal.zzc;
-import com.google.android.gms.internal.zzacd;
+import com.google.android.gms.common.images.internal.PostProcessedResourceCache;
+import com.google.android.gms.common.internal.Asserts;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -19,139 +17,139 @@ import java.util.concurrent.Executors;
 
 public final class ImageManager
 {
-  private static final Object zzaEf = new Object();
-  private static HashSet<Uri> zzaEg = new HashSet();
-  private static ImageManager zzaEh;
-  private static ImageManager zzaEi;
+  public static final int PRIORITY_HIGH = 3;
+  public static final int PRIORITY_LOW = 1;
+  public static final int PRIORITY_MEDIUM = 2;
+  private static final Object zzov;
+  private static HashSet<Uri> zzow;
+  private static ImageManager zzox;
+  private static ImageManager zzoy;
   private final Context mContext;
   private final Handler mHandler;
-  private final ExecutorService zzaEj;
-  private final zza zzaEk;
-  private final zzacd zzaEl;
-  private final Map<zza, ImageManager.ImageReceiver> zzaEm;
-  private final Map<Uri, ImageManager.ImageReceiver> zzaEn;
-  private final Map<Uri, Long> zzaEo;
+  private final ExecutorService zzoz;
+  private final ImageManager.zza zzpa;
+  private final PostProcessedResourceCache zzpb;
+  private final Map<ImageRequest, ImageManager.ImageReceiver> zzpc;
+  private final Map<Uri, ImageManager.ImageReceiver> zzpd;
+  private final Map<Uri, Long> zzpe;
+  
+  static
+  {
+    AppMethodBeat.i(61227);
+    zzov = new Object();
+    zzow = new HashSet();
+    AppMethodBeat.o(61227);
+  }
   
   private ImageManager(Context paramContext, boolean paramBoolean)
   {
+    AppMethodBeat.i(61218);
     this.mContext = paramContext.getApplicationContext();
     this.mHandler = new Handler(Looper.getMainLooper());
-    this.zzaEj = Executors.newFixedThreadPool(4);
+    this.zzoz = Executors.newFixedThreadPool(4);
     if (paramBoolean)
     {
-      this.zzaEk = new zza(this.mContext);
-      this.mContext.registerComponentCallbacks(new ImageManager.zzd(this.zzaEk));
+      this.zzpa = new ImageManager.zza(this.mContext);
+      this.mContext.registerComponentCallbacks(new ImageManager.zzd(this.zzpa));
     }
     for (;;)
     {
-      this.zzaEl = new zzacd();
-      this.zzaEm = new HashMap();
-      this.zzaEn = new HashMap();
-      this.zzaEo = new HashMap();
+      this.zzpb = new PostProcessedResourceCache();
+      this.zzpc = new HashMap();
+      this.zzpd = new HashMap();
+      this.zzpe = new HashMap();
+      AppMethodBeat.o(61218);
       return;
-      this.zzaEk = null;
+      this.zzpa = null;
     }
   }
   
   public static ImageManager create(Context paramContext)
   {
-    return zzg(paramContext, false);
+    AppMethodBeat.i(61216);
+    paramContext = create(paramContext, false);
+    AppMethodBeat.o(61216);
+    return paramContext;
   }
   
-  private Bitmap zza(zza.zza paramzza)
+  public static ImageManager create(Context paramContext, boolean paramBoolean)
   {
-    if (this.zzaEk == null) {
-      return null;
-    }
-    return (Bitmap)this.zzaEk.get(paramzza);
-  }
-  
-  public static ImageManager zzg(Context paramContext, boolean paramBoolean)
-  {
+    AppMethodBeat.i(61217);
     if (paramBoolean)
     {
-      if (zzaEi == null) {
-        zzaEi = new ImageManager(paramContext, true);
+      if (zzoy == null) {
+        zzoy = new ImageManager(paramContext, true);
       }
-      return zzaEi;
+      paramContext = zzoy;
+      AppMethodBeat.o(61217);
+      return paramContext;
     }
-    if (zzaEh == null) {
-      zzaEh = new ImageManager(paramContext, false);
+    if (zzox == null) {
+      zzox = new ImageManager(paramContext, false);
     }
-    return zzaEh;
+    paramContext = zzox;
+    AppMethodBeat.o(61217);
+    return paramContext;
+  }
+  
+  private final Bitmap zza(ImageRequest.zza paramzza)
+  {
+    AppMethodBeat.i(61225);
+    if (this.zzpa == null)
+    {
+      AppMethodBeat.o(61225);
+      return null;
+    }
+    paramzza = (Bitmap)this.zzpa.get(paramzza);
+    AppMethodBeat.o(61225);
+    return paramzza;
   }
   
   public final void loadImage(ImageView paramImageView, int paramInt)
   {
-    zza(new zza.zzb(paramImageView, paramInt));
+    AppMethodBeat.i(61220);
+    loadImage(new ImageRequest.ImageViewImageRequest(paramImageView, paramInt));
+    AppMethodBeat.o(61220);
   }
   
   public final void loadImage(ImageView paramImageView, Uri paramUri)
   {
-    zza(new zza.zzb(paramImageView, paramUri));
+    AppMethodBeat.i(61219);
+    loadImage(new ImageRequest.ImageViewImageRequest(paramImageView, paramUri));
+    AppMethodBeat.o(61219);
   }
   
   public final void loadImage(ImageView paramImageView, Uri paramUri, int paramInt)
   {
-    paramImageView = new zza.zzb(paramImageView, paramUri);
-    paramImageView.zzcO(paramInt);
-    zza(paramImageView);
+    AppMethodBeat.i(61221);
+    paramImageView = new ImageRequest.ImageViewImageRequest(paramImageView, paramUri);
+    paramImageView.setNoDataPlaceholder(paramInt);
+    loadImage(paramImageView);
+    AppMethodBeat.o(61221);
   }
   
   public final void loadImage(ImageManager.OnImageLoadedListener paramOnImageLoadedListener, Uri paramUri)
   {
-    zza(new zza.zzc(paramOnImageLoadedListener, paramUri));
+    AppMethodBeat.i(61222);
+    loadImage(new ImageRequest.ListenerImageRequest(paramOnImageLoadedListener, paramUri));
+    AppMethodBeat.o(61222);
   }
   
   public final void loadImage(ImageManager.OnImageLoadedListener paramOnImageLoadedListener, Uri paramUri, int paramInt)
   {
-    paramOnImageLoadedListener = new zza.zzc(paramOnImageLoadedListener, paramUri);
-    paramOnImageLoadedListener.zzcO(paramInt);
-    zza(paramOnImageLoadedListener);
+    AppMethodBeat.i(61223);
+    paramOnImageLoadedListener = new ImageRequest.ListenerImageRequest(paramOnImageLoadedListener, paramUri);
+    paramOnImageLoadedListener.setNoDataPlaceholder(paramInt);
+    loadImage(paramOnImageLoadedListener);
+    AppMethodBeat.o(61223);
   }
   
-  public final void zza(zza paramzza)
+  public final void loadImage(ImageRequest paramImageRequest)
   {
-    zzc.zzdj("ImageManager.loadImage() must be called in the main thread");
-    new ImageManager.zzc(this, paramzza).run();
-  }
-  
-  private static final class zza
-    extends g<zza.zza, Bitmap>
-  {
-    public zza(Context paramContext)
-    {
-      super();
-    }
-    
-    private static int zzaR(Context paramContext)
-    {
-      ActivityManager localActivityManager = (ActivityManager)paramContext.getSystemService("activity");
-      if ((paramContext.getApplicationInfo().flags & 0x100000) != 0)
-      {
-        i = 1;
-        if (i == 0) {
-          break label49;
-        }
-      }
-      label49:
-      for (int i = localActivityManager.getLargeMemoryClass();; i = localActivityManager.getMemoryClass())
-      {
-        return (int)(i * 1048576 * 0.33F);
-        i = 0;
-        break;
-      }
-    }
-    
-    protected final int zza(zza.zza paramzza, Bitmap paramBitmap)
-    {
-      return paramBitmap.getHeight() * paramBitmap.getRowBytes();
-    }
-    
-    protected final void zza(boolean paramBoolean, zza.zza paramzza, Bitmap paramBitmap1, Bitmap paramBitmap2)
-    {
-      super.entryRemoved(paramBoolean, paramzza, paramBitmap1, paramBitmap2);
-    }
+    AppMethodBeat.i(61224);
+    Asserts.checkMainThread("ImageManager.loadImage() must be called in the main thread");
+    new ImageManager.zzc(this, paramImageRequest).run();
+    AppMethodBeat.o(61224);
   }
 }
 

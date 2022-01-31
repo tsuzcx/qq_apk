@@ -1,69 +1,77 @@
 package com.tencent.mm.plugin.account.bind.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.hy;
-import com.tencent.mm.protocal.c.hz;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.jq;
+import com.tencent.mm.protocal.protobuf.jr;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 
 public final class a
   extends m
   implements k
 {
-  private final b dmK;
-  private f dmL;
+  private f callback;
+  private final b rr;
   
   public a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
+    AppMethodBeat.i(13317);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new hy();
-    ((b.a)localObject).ecI = new hz();
+    ((b.a)localObject).fsX = new jq();
+    ((b.a)localObject).fsY = new jr();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/bindlinkedincontact";
-    ((b.a)localObject).ecG = 549;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (hy)this.dmK.ecE.ecN;
-    ((hy)localObject).syV = 1;
-    ((hy)localObject).sBe = paramInt;
-    ((hy)localObject).sBf = paramString1;
-    ((hy)localObject).sBg = paramString2;
-    ((hy)localObject).sBh = paramString3;
-    ((hy)localObject).sBi = paramString4;
-    ((hy)localObject).sBj = paramString5;
-    ((hy)localObject).sBk = paramString6;
-    ((hy)localObject).sBl = paramString7;
+    ((b.a)localObject).funcId = getType();
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (jq)this.rr.fsV.fta;
+    ((jq)localObject).wsW = 1;
+    ((jq)localObject).wvy = paramInt;
+    ((jq)localObject).wvz = paramString1;
+    ((jq)localObject).wvA = paramString2;
+    ((jq)localObject).wvB = paramString3;
+    ((jq)localObject).wvC = paramString4;
+    ((jq)localObject).wvD = paramString5;
+    ((jq)localObject).wvE = paramString6;
+    ((jq)localObject).wvF = paramString7;
+    AppMethodBeat.o(13317);
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneBindLinkedinContact", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramq = (hy)this.dmK.ecE.ecN;
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      g.DP().Dz().o(286722, paramq.sBg);
-      g.DP().Dz().o(286721, paramq.sBf);
-      g.DP().Dz().o(286723, paramq.sBh);
-    }
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(13318);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(13318);
+    return i;
   }
   
   public final int getType()
   {
     return 549;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(13319);
+    ab.d("MicroMsg.NetSceneBindLinkedinContact", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    paramq = (jq)this.rr.fsV.fta;
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      g.RL().Ru().set(286722, paramq.wvA);
+      g.RL().Ru().set(286721, paramq.wvz);
+      g.RL().Ru().set(286723, paramq.wvB);
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(13319);
   }
 }
 

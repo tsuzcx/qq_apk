@@ -1,16 +1,26 @@
 package com.tencent.mm.plugin.fav.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+
 final class FavSearchUI$a
 {
   int actionType;
-  String bVk;
-  long jYG;
-  int jYS;
-  int kcV;
-  int kcW;
-  boolean kcX = false;
+  int kbN;
+  long msZ;
+  int mxG;
+  int mxH;
+  boolean mxI = false;
   int position;
+  String query;
   int scene;
+  
+  public final void IE()
+  {
+    AppMethodBeat.i(74084);
+    h.qsU.e(15488, new Object[] { Integer.valueOf(this.actionType), Integer.valueOf(this.kbN), Integer.valueOf(this.scene), Integer.valueOf(this.position), Integer.valueOf(this.mxG), this.query, Long.valueOf(this.msZ), Integer.valueOf(this.mxH) });
+    AppMethodBeat.o(74084);
+  }
 }
 
 

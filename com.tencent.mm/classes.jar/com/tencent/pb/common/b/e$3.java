@@ -12,7 +12,7 @@ final class e$3
   
   public final void run()
   {
-    Set localSet = (Set)e.b(this.wFH).get(this.wFI.getType());
+    Set localSet = (Set)e.b(this.Bdh).get(this.Bdi.getType());
     if ((localSet != null) && (localSet.size() > 0))
     {
       Object localObject = new HashSet();
@@ -22,7 +22,7 @@ final class e$3
       {
         b localb = (b)((Iterator)localObject).next();
         if ((localb != null) && (localSet.contains(localb))) {
-          localb.a(this.bEf, this.bEg, this.edL, this.wFI);
+          localb.a(this.val$errType, this.val$errCode, this.ftO, this.Bdi);
         }
       }
     }

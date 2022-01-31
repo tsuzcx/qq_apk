@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import com.tencent.mm.plugin.luckymoney.b.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.s;
 import com.tencent.mm.ui.base.MMLoadMoreListView.a;
 
 final class LuckyMoneyMyRecordUI$5
@@ -8,14 +9,16 @@ final class LuckyMoneyMyRecordUI$5
 {
   LuckyMoneyMyRecordUI$5(LuckyMoneyMyRecordUI paramLuckyMoneyMyRecordUI) {}
   
-  public final void yb()
+  public final void Kt()
   {
-    if (!this.lVW.lUq.bfI()) {
-      LuckyMoneyMyRecordUI.g(this.lVW);
+    AppMethodBeat.i(42762);
+    if (!this.oua.orz.isProcessing()) {
+      LuckyMoneyMyRecordUI.g(this.oua);
     }
-    if ((LuckyMoneyMyRecordUI.h(this.lVW)) && (!LuckyMoneyMyRecordUI.i(this.lVW))) {
-      LuckyMoneyMyRecordUI.d(this.lVW);
+    if ((LuckyMoneyMyRecordUI.h(this.oua)) && (!LuckyMoneyMyRecordUI.i(this.oua))) {
+      LuckyMoneyMyRecordUI.d(this.oua);
     }
+    AppMethodBeat.o(42762);
   }
 }
 

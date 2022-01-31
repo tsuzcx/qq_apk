@@ -1,30 +1,33 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.model.d;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class FreeWifiActivateStateUI$1
-  implements am.a
+  implements ap.a
 {
   FreeWifiActivateStateUI$1(FreeWifiActivateStateUI paramFreeWifiActivateStateUI) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (!bk.bl(this.kqR.ssid))
+    AppMethodBeat.i(20899);
+    if (!bo.isNullOrNil(this.mMD.ssid))
     {
-      FreeWifiActivateStateUI.a(this.kqR, this.kqR.aUO());
-      y.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now auth time out, ssid is %s, the connect state is %d", new Object[] { this.kqR.ssid, Integer.valueOf(FreeWifiActivateStateUI.a(this.kqR)) });
-      FreeWifiActivateStateUI.b(this.kqR).stopTimer();
-      if (FreeWifiActivateStateUI.a(this.kqR) != 2)
+      FreeWifiActivateStateUI.a(this.mMD, this.mMD.bBm());
+      ab.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now auth time out, ssid is %s, the connect state is %d", new Object[] { this.mMD.ssid, Integer.valueOf(FreeWifiActivateStateUI.a(this.mMD)) });
+      FreeWifiActivateStateUI.b(this.mMD).stopTimer();
+      if (FreeWifiActivateStateUI.a(this.mMD) != 2)
       {
-        this.kqR.aUS();
-        this.kqR.aUQ();
-        d.a(this.kqR.ssid, 3, this.kqR.getIntent());
+        this.mMD.bBq();
+        this.mMD.bBo();
+        d.a(this.mMD.ssid, 3, this.mMD.getIntent());
       }
     }
+    AppMethodBeat.o(20899);
     return false;
   }
 }

@@ -11,62 +11,150 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.container.AppBrandNativeContainerView;
-import com.tencent.mm.plugin.appbrand.jsapi.s.e;
+import com.tencent.mm.plugin.appbrand.jsapi.s.f;
 
 public class CoverViewContainer
   extends AppBrandNativeContainerView
-  implements e
+  implements f
 {
-  private View ahD;
-  private int dIk;
-  private float fT;
-  private float gqm;
-  private int gqn;
-  private Paint gqo = new Paint();
+  private View ajT;
+  private float gN;
+  private float hLe;
+  private int hLf;
+  private Paint hLg;
+  private int mBgColor;
   
   public CoverViewContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(91049);
+    this.hLg = new Paint();
     init();
+    AppMethodBeat.o(91049);
   }
   
   public CoverViewContainer(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(91050);
+    this.hLg = new Paint();
     init();
+    AppMethodBeat.o(91050);
   }
   
   public CoverViewContainer(Context paramContext, View paramView)
   {
     super(paramContext);
+    AppMethodBeat.i(91052);
+    this.hLg = new Paint();
     setTargetView(paramView);
     init();
+    AppMethodBeat.o(91052);
+  }
+  
+  public static RectF cp(View paramView)
+  {
+    AppMethodBeat.i(141795);
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    paramView = new RectF(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
+    AppMethodBeat.o(141795);
+    return paramView;
   }
   
   private void init()
   {
-    this.gqo.setStyle(Paint.Style.STROKE);
-    this.gqo.setAntiAlias(true);
+    AppMethodBeat.i(91053);
+    this.hLg.setStyle(Paint.Style.STROKE);
+    this.hLg.setAntiAlias(true);
     setWillNotDraw(false);
+    AppMethodBeat.o(91053);
   }
   
-  public final <T> T K(Class<T> paramClass)
+  protected final boolean K(float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(141794);
+    if (this.hLe <= 0.0F)
+    {
+      AppMethodBeat.o(141794);
+      return true;
+    }
+    double d1 = Math.pow(this.hLe, 2.0D);
+    float f1 = getWidth();
+    float f2 = getHeight();
+    double d2;
+    if (paramFloat1 < this.hLe)
+    {
+      if (paramFloat2 < this.hLe)
+      {
+        if (Math.pow(this.hLe - paramFloat1, 2.0D) + Math.pow(this.hLe - paramFloat2, 2.0D) > d1)
+        {
+          AppMethodBeat.o(141794);
+          return false;
+        }
+      }
+      else if (paramFloat2 > f2 - this.hLe)
+      {
+        d2 = Math.pow(this.hLe - paramFloat1, 2.0D);
+        if (Math.pow(this.hLe + paramFloat2 - f2, 2.0D) + d2 > d1)
+        {
+          AppMethodBeat.o(141794);
+          return false;
+        }
+      }
+    }
+    else if (paramFloat1 > f1 - this.hLe) {
+      if (paramFloat2 < this.hLe)
+      {
+        if (Math.pow(this.hLe + paramFloat1 - f1, 2.0D) + Math.pow(this.hLe - paramFloat2, 2.0D) > d1)
+        {
+          AppMethodBeat.o(141794);
+          return false;
+        }
+      }
+      else if (paramFloat2 > f2 - this.hLe)
+      {
+        d2 = Math.pow(this.hLe + paramFloat1 - f1, 2.0D);
+        if (Math.pow(this.hLe + paramFloat2 - f2, 2.0D) + d2 > d1)
+        {
+          AppMethodBeat.o(141794);
+          return false;
+        }
+      }
+    }
+    AppMethodBeat.o(141794);
+    return true;
+  }
+  
+  public boolean aCT()
+  {
+    return false;
+  }
+  
+  public final <T> T aa(Class<T> paramClass)
+  {
+    AppMethodBeat.i(91055);
     try
     {
-      if (paramClass.isAssignableFrom(this.ahD.getClass()))
+      if (paramClass.isAssignableFrom(this.ajT.getClass()))
       {
-        paramClass = this.ahD;
+        paramClass = this.ajT;
+        AppMethodBeat.o(91055);
         return paramClass;
       }
     }
-    catch (Exception paramClass) {}
+    catch (Exception paramClass)
+    {
+      AppMethodBeat.o(91055);
+    }
     return null;
   }
   
   public void addView(View paramView, int paramInt)
   {
+    AppMethodBeat.i(91056);
     int i;
     if (paramInt < 0) {
       i = 0;
@@ -74,6 +162,7 @@ public class CoverViewContainer
     for (;;)
     {
       super.addView(paramView, i + 1);
+      AppMethodBeat.o(91056);
       return;
       i = paramInt;
       if (paramInt > getChildCount() - 1) {
@@ -84,6 +173,7 @@ public class CoverViewContainer
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
+    AppMethodBeat.i(91057);
     int i;
     if (paramInt < 0) {
       i = 0;
@@ -91,6 +181,7 @@ public class CoverViewContainer
     for (;;)
     {
       super.addView(paramView, i + 1, paramLayoutParams);
+      AppMethodBeat.o(91057);
       return;
       i = paramInt;
       if (paramInt > getChildCount() - 1) {
@@ -101,114 +192,68 @@ public class CoverViewContainer
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getActionMasked() == 0)
+    AppMethodBeat.i(91060);
+    float f1 = paramMotionEvent.getRawX();
+    float f2 = paramMotionEvent.getRawY();
+    boolean bool = cp(this).contains(f1, f2);
+    if ((paramMotionEvent.getActionMasked() == 0) && (!K(paramMotionEvent.getX(), paramMotionEvent.getY())) && (!bool))
     {
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      double d1;
-      float f3;
-      float f4;
-      double d2;
-      int i;
-      if (this.gqm > 0.0F)
-      {
-        d1 = Math.pow(this.gqm, 2.0D);
-        f3 = getWidth();
-        f4 = getHeight();
-        if (f1 < this.gqm) {
-          if (f2 < this.gqm)
-          {
-            d2 = Math.pow(this.gqm - f1, 2.0D);
-            if (Math.pow(this.gqm - f2, 2.0D) + d2 <= d1) {
-              break label315;
-            }
-            i = 0;
-          }
-        }
-      }
-      while (i == 0)
-      {
-        return false;
-        if (f2 > f4 - this.gqm)
-        {
-          d2 = Math.pow(this.gqm - f1, 2.0D);
-          if (Math.pow(this.gqm + f2 - f4, 2.0D) + d2 > d1)
-          {
-            i = 0;
-            continue;
-            if (f1 > f3 - this.gqm) {
-              if (f2 < this.gqm)
-              {
-                d2 = Math.pow(f1 + this.gqm - f3, 2.0D);
-                if (Math.pow(this.gqm - f2, 2.0D) + d2 > d1) {
-                  i = 0;
-                }
-              }
-              else if (f2 > f4 - this.gqm)
-              {
-                d2 = Math.pow(f1 + this.gqm - f3, 2.0D);
-                if (Math.pow(this.gqm + f2 - f4, 2.0D) + d2 > d1)
-                {
-                  i = 0;
-                  continue;
-                }
-              }
-            }
-          }
-        }
-        label315:
-        i = 1;
-      }
+      AppMethodBeat.o(91060);
+      return false;
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
+    bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(91060);
+    return bool;
   }
   
   public void draw(Canvas paramCanvas)
   {
     float f2 = 0.0F;
+    AppMethodBeat.i(91054);
     int i;
-    if (this.gqm > 0.0F)
+    if (this.hLe > 0.0F)
     {
       i = 1;
       if (i != 0)
       {
         paramCanvas.save();
         localPath = new Path();
-        localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.gqm, this.gqm, Path.Direction.CW);
+        localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.hLe, this.hLe, Path.Direction.CW);
         paramCanvas.clipPath(localPath);
       }
-      if (this.dIk != 0) {
-        paramCanvas.drawColor(this.dIk);
+      if (this.mBgColor != 0) {
+        paramCanvas.drawColor(this.mBgColor);
       }
-      if (this.fT <= 0.0F) {
-        break label281;
+      if (this.gN <= 0.0F) {
+        break label291;
       }
-      float f1 = this.fT / 2.0F;
-      paramCanvas.drawRoundRect(new RectF(f1, f1, getWidth() - f1, getHeight() - f1), this.gqm, this.gqm, this.gqo);
+      float f1 = this.gN / 2.0F;
+      paramCanvas.drawRoundRect(new RectF(f1, f1, getWidth() - f1, getHeight() - f1), this.hLe, this.hLe, this.hLg);
       if (i != 0) {
         paramCanvas.restore();
       }
       paramCanvas.save();
       Path localPath = new Path();
       f1 = f2;
-      if (this.gqm > 0.0F)
+      if (this.hLe > 0.0F)
       {
         f1 = f2;
-        if (this.gqm - this.fT > 0.0F) {
-          f1 = this.gqm - this.fT;
+        if (this.hLe - this.gN > 0.0F) {
+          f1 = this.hLe - this.gN;
         }
       }
-      localPath.addRoundRect(new RectF(this.fT, this.fT, getWidth() - this.fT, getHeight() - this.fT), f1, f1, Path.Direction.CW);
+      localPath.addRoundRect(new RectF(this.gN, this.gN, getWidth() - this.gN, getHeight() - this.gN), f1, f1, Path.Direction.CW);
       paramCanvas.clipPath(localPath);
       i = 1;
     }
-    label281:
+    label291:
     for (;;)
     {
       super.draw(paramCanvas);
       if (i != 0) {
         paramCanvas.restore();
       }
+      AppMethodBeat.o(91054);
       return;
       i = 0;
       break;
@@ -217,30 +262,36 @@ public class CoverViewContainer
   
   public void setBgColor(int paramInt)
   {
-    this.dIk = paramInt;
+    this.mBgColor = paramInt;
   }
   
   public void setBorderColor(int paramInt)
   {
-    this.gqn = paramInt;
-    this.gqo.setColor(paramInt);
+    AppMethodBeat.i(91058);
+    this.hLf = paramInt;
+    this.hLg.setColor(paramInt);
+    AppMethodBeat.o(91058);
   }
   
   public void setBorderRadius(float paramFloat)
   {
-    this.gqm = paramFloat;
+    this.hLe = paramFloat;
   }
   
   public void setBorderWidth(float paramFloat)
   {
-    this.fT = paramFloat;
-    this.gqo.setStrokeWidth(paramFloat);
+    AppMethodBeat.i(91059);
+    this.gN = paramFloat;
+    this.hLg.setStrokeWidth(paramFloat);
+    AppMethodBeat.o(91059);
   }
   
   public void setTargetView(View paramView)
   {
-    this.ahD = paramView;
+    AppMethodBeat.i(91051);
+    this.ajT = paramView;
     super.addView(paramView, 0, new ViewGroup.LayoutParams(-1, -1));
+    AppMethodBeat.o(91051);
   }
 }
 

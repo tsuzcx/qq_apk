@@ -7,7 +7,7 @@ import android.widget.ImageButton;
 class VisibilityAwareImageButton
   extends ImageButton
 {
-  private int ml = getVisibility();
+  private int ni = getVisibility();
   
   public VisibilityAwareImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -19,27 +19,27 @@ class VisibilityAwareImageButton
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  final int getUserSetVisibility()
-  {
-    return this.ml;
-  }
-  
-  final void j(int paramInt, boolean paramBoolean)
+  final void f(int paramInt, boolean paramBoolean)
   {
     super.setVisibility(paramInt);
     if (paramBoolean) {
-      this.ml = paramInt;
+      this.ni = paramInt;
     }
+  }
+  
+  final int getUserSetVisibility()
+  {
+    return this.ni;
   }
   
   public void setVisibility(int paramInt)
   {
-    j(paramInt, true);
+    f(paramInt, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.design.widget.VisibilityAwareImageButton
  * JD-Core Version:    0.7.0.1
  */

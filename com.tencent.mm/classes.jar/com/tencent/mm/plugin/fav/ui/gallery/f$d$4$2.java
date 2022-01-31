@@ -5,11 +5,11 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.ui.n.i;
-import com.tencent.mm.sdk.platformtools.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.r;
 
 final class f$d$4$2
   implements View.OnCreateContextMenuListener
@@ -18,27 +18,29 @@ final class f$d$4$2
   
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    paramView = b.b(this.kia.khL.bNH);
-    boolean bool1 = e.bK(paramView);
-    boolean bool2 = o.Za(paramView);
-    if ((!this.kia.khM) && (bool1) && (!bool2))
+    AppMethodBeat.i(74573);
+    paramView = b.b(this.mCH.mCt.cuZ);
+    boolean bool1 = e.cN(paramView);
+    boolean bool2 = r.aoY(paramView);
+    if ((!this.mCH.mCu) && (bool1) && (!bool2))
     {
-      paramContextMenu.add(0, 0, 0, this.khZ.khY.khK.mContext.getString(n.i.favorite_share_with_friend));
-      paramContextMenu.add(0, 1, 0, this.khZ.khY.khK.mContext.getString(n.i.favorite_post_to_sns));
-      paramContextMenu.add(0, 2, 0, this.khZ.khY.khK.mContext.getString(n.i.favorite_save_image));
+      paramContextMenu.add(0, 0, 0, this.mCG.mCF.mCs.mContext.getString(2131299826));
+      paramContextMenu.add(0, 1, 0, this.mCG.mCF.mCs.mContext.getString(2131299779));
+      paramContextMenu.add(0, 2, 0, this.mCG.mCF.mCs.mContext.getString(2131299819));
     }
     for (;;)
     {
-      paramContextMenu.add(0, 4, 0, this.khZ.khY.khK.mContext.getString(n.i.favorite_go_detail));
+      paramContextMenu.add(0, 4, 0, this.mCG.mCF.mCs.mContext.getString(2131299738));
+      AppMethodBeat.o(74573);
       return;
-      if ((this.kia.khM) && (bool1) && (!bool2))
+      if ((this.mCH.mCu) && (bool1) && (!bool2))
       {
-        paramContextMenu.add(0, 0, 0, this.khZ.khY.khK.mContext.getString(n.i.favorite_share_with_friend));
-        paramContextMenu.add(0, 2, 0, this.khZ.khY.khK.mContext.getString(n.i.save_video_to_local));
+        paramContextMenu.add(0, 0, 0, this.mCG.mCF.mCs.mContext.getString(2131299826));
+        paramContextMenu.add(0, 2, 0, this.mCG.mCF.mCs.mContext.getString(2131302872));
       }
       else
       {
-        y.d("MicroMsg.MediaHistoryGalleryAdapter", "openPopupMenu, isVideo:%s, exist:%s, isGif:%s", new Object[] { Boolean.valueOf(this.kia.khM), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        ab.d("MicroMsg.MediaHistoryGalleryAdapter", "openPopupMenu, isVideo:%s, exist:%s, isGif:%s", new Object[] { Boolean.valueOf(this.mCH.mCu), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       }
     }
   }

@@ -1,49 +1,50 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import android.content.Context;
-import android.widget.Toast;
-import com.tencent.mm.plugin.appbrand.debugger.r;
+import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.d;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.report.e;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bp;
 import com.tencent.mm.ui.base.l;
+import org.json.JSONObject;
 
 public final class h
   extends a
 {
-  public h()
+  h()
   {
-    super(o.gPp.ordinal());
+    super(r.iqY.ordinal());
+    AppMethodBeat.i(132211);
+    AppMethodBeat.o(132211);
   }
   
-  public final void a(Context paramContext, q paramq, l paraml, String paramString)
+  public final void a(Context paramContext, v paramv, l paraml, String paramString)
   {
-    if (((paramq.getRuntime() instanceof com.tencent.mm.plugin.appbrand.n)) && (((com.tencent.mm.plugin.appbrand.n)paramq.getRuntime()).aah()))
-    {
-      if (r.aeN()) {
-        paraml.e(this.gPE, "Disable Preload");
-      }
+    AppMethodBeat.i(132212);
+    if (bp.dud()) {
+      paraml.a(this.irp, paramContext.getResources().getColor(2131690393), paramContext.getString(2131296585));
     }
-    else {
-      return;
-    }
-    paraml.e(this.gPE, "Enable Preload");
+    AppMethodBeat.o(132212);
   }
   
-  public final void a(Context paramContext, q paramq, String paramString, n paramn)
+  public final void a(Context paramContext, v paramv, String paramString, q paramq)
   {
-    if (r.aeN())
-    {
-      r.cP(false);
-      Toast.makeText(paramContext, "Disable success, please restart WeChat to take effect.", 1).show();
-      return;
-    }
-    r.cP(true);
-    Toast.makeText(paramContext, "Enable success, please restart WeChat to take effect.", 1).show();
+    AppMethodBeat.i(132213);
+    paramContext = new d();
+    paramq = paramv.ws();
+    new JSONObject();
+    paramContext.h(paramq);
+    e.a(paramString, paramv.hzM, 10, "", bo.aox(), 1, 0);
+    AppMethodBeat.o(132213);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView android:id="@id/hc" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ls"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/c2a" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/cmu" android:background="@color/a2y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/cmv" />
+        <ListView android:id="@id/cmv" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
+        <com.tencent.mm.plugin.ipcall.ui.IPCallAddressScrollbar android:id="@id/np" android:layout_width="@dimen/bd" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/cmw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="15.0dip" android:textColor="@color/ef" android:gravity="center" android:id="@id/cmz" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/ciw" android:layout_weight="0.5" />
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.5" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

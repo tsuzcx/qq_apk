@@ -1,5 +1,6 @@
 package com.tencent.youtu.ytcommon.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.Callable;
 
 final class YTThreadOperate$2
@@ -9,12 +10,17 @@ final class YTThreadOperate$2
   
   public final T call()
   {
+    AppMethodBeat.i(118103);
     try
     {
       Object localObject = this.val$runnable.call();
+      AppMethodBeat.o(118103);
       return localObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(118103);
+    }
     return null;
   }
 }

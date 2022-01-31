@@ -1,10 +1,18 @@
 package com.tencent.ttpic.filter;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
  enum HorizontalSkewFilter$PARAM_KEY
 {
-  ADJUST("adjust");
-  
   public final String value;
+  
+  static
+  {
+    AppMethodBeat.i(82604);
+    ADJUST = new PARAM_KEY("ADJUST", 0, "adjust");
+    $VALUES = new PARAM_KEY[] { ADJUST };
+    AppMethodBeat.o(82604);
+  }
   
   private HorizontalSkewFilter$PARAM_KEY(String paramString)
   {

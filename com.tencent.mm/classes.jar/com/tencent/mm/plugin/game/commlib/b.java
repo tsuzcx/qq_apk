@@ -1,89 +1,118 @@
 package com.tencent.mm.plugin.game.commlib;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
 public class b
   implements f
 {
-  private static b kMa;
-  private boolean dZI = false;
+  private static b niU;
+  private boolean fpN = false;
   
-  public static b aYr()
+  public static b bFj()
   {
-    if (kMa == null) {}
+    AppMethodBeat.i(59399);
+    if (niU == null) {}
     try
     {
-      if (kMa == null) {
-        kMa = new b();
+      if (niU == null) {
+        niU = new b();
       }
-      return kMa;
+      b localb = niU;
+      AppMethodBeat.o(59399);
+      return localb;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(59399);
+    }
   }
   
   private void release()
   {
-    this.dZI = false;
-    g.Dk().b(1311, this);
+    AppMethodBeat.i(59401);
+    this.fpN = false;
+    g.Rc().b(1311, this);
+    AppMethodBeat.o(59401);
   }
   
-  public final void gu(boolean paramBoolean)
+  public final void hZ(boolean paramBoolean)
   {
-    int i;
-    if (paramBoolean) {
-      i = 1;
-    }
     for (;;)
     {
-      if (i != 0) {}
+      int i;
       try
       {
-        if (!this.dZI)
+        AppMethodBeat.i(59400);
+        if (paramBoolean)
         {
-          y.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
-          release();
-          this.dZI = true;
-          g.Dk().a(1311, this);
-          c localc = new c();
-          g.Dk().a(localc, 0);
+          i = 1;
+          if (i == 0)
+          {
+            if (!com.tencent.mm.vfs.e.cN(a.niS))
+            {
+              i = 1;
+              break label158;
+            }
+          }
+          else
+          {
+            if (!this.fpN)
+            {
+              ab.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
+              release();
+              this.fpN = true;
+              g.Rc().a(1311, this);
+              c localc = new c();
+              g.Rc().a(localc, 0);
+            }
+            AppMethodBeat.o(59400);
+          }
         }
-        return;
-      }
-      finally {}
-      long l = bk.cn(Long.valueOf(bk.c((Long)g.DP().Dz().get(ac.a.unT, Long.valueOf(0L)))).longValue());
-      if (l > 86400L) {
-        i = 1;
-      } else {
+        else
+        {
+          long l = bo.gz(bo.c((Long)g.RL().Ru().get(ac.a.yxK, Long.valueOf(0L))));
+          if (l > 86400L)
+          {
+            i = 1;
+            continue;
+          }
+          i = 0;
+          continue;
+        }
         i = 0;
       }
+      finally {}
+      label158:
+      if (i == 0) {}
     }
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(59402);
     if (paramm.getType() == 1311)
     {
-      y.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (g.DN().Dc()) {
-        break label57;
+      ab.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (g.RJ().QU()) {
+        break label67;
       }
-      y.w("MicroMsg.GameConfigUpdater", "account not init.");
+      ab.w("MicroMsg.GameConfigUpdater", "account not init.");
     }
     for (;;)
     {
       release();
+      AppMethodBeat.o(59402);
       return;
-      label57:
-      g.DP().Dz().c(ac.a.unT, Long.valueOf(bk.UX()));
+      label67:
+      g.RL().Ru().set(ac.a.yxK, Long.valueOf(bo.aox()));
     }
   }
 }

@@ -4,7 +4,8 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class ContactSearchUI$2
   implements TextView.OnEditorActionListener
@@ -13,9 +14,11 @@ final class ContactSearchUI$2
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66) && (!bk.bl(ContactSearchUI.a(this.pxO).getText().toString().trim()))) {
-      ContactSearchUI.b(this.pxO);
+    AppMethodBeat.i(25526);
+    if ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66) && (!bo.isNullOrNil(ContactSearchUI.a(this.sZC).getText().toString().trim()))) {
+      ContactSearchUI.b(this.sZC);
     }
+    AppMethodBeat.o(25526);
     return false;
   }
 }

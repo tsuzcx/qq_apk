@@ -1,28 +1,22 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.t.a;
-import com.tencent.mm.modelvideo.t.a.a;
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.storage.bi;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class k$5$1
-  implements t.a
+  implements Runnable
 {
   k$5$1(k.5 param5) {}
   
-  public final void a(t.a.a parama)
+  public final void run()
   {
-    parama = u.oe(parama.fileName);
-    if ((parama != null) && (parama.status == 199)) {
-      k.b(this.vjl.dUy.field_imgPath, this.vjl.dol, parama.eHL, parama.eHH, parama.SD(), this.vjl.dUy.getType());
-    }
+    AppMethodBeat.i(30578);
+    j.b(this.zys.val$context, this.zys.efI, this.zys.fkH, this.zys.zyo);
+    AppMethodBeat.o(30578);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.k.5.1
  * JD-Core Version:    0.7.0.1
  */

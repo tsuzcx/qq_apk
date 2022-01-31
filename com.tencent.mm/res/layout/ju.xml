@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout style="@style/p1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/li" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/ls" />
-    <TextView android:textColor="@color/ta" android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:id="@id/lj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/kk" />
-    <RelativeLayout android:id="@id/agx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

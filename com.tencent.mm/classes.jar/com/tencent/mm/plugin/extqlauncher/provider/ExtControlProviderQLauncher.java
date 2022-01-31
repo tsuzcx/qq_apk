@@ -7,102 +7,112 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.as;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.ext.provider.ExtContentProviderBase;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.be;
 
 public class ExtControlProviderQLauncher
   extends ExtContentProviderBase
 {
-  private static final String[] jJI = { "retCode" };
-  private static final UriMatcher jKj;
-  private static final String[] jMc = { "id", "count" };
+  private static final String[] mdM;
+  private static final UriMatcher meo;
+  private static final String[] mgg;
   private Context context;
-  private String[] jJU;
-  private int jMd = -1;
+  private String[] mdZ;
+  private int mgh = -1;
   
   static
   {
+    AppMethodBeat.i(20492);
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    jKj = localUriMatcher;
+    meo = localUriMatcher;
     localUriMatcher.addURI("com.tencent.mm.plugin.extqlauncher", "openQRCodeScan", 18);
-    jKj.addURI("com.tencent.mm.plugin.extqlauncher", "batchAddShortcut", 19);
-    jKj.addURI("com.tencent.mm.plugin.extqlauncher", "getUnreadCount", 20);
+    meo.addURI("com.tencent.mm.plugin.extqlauncher", "batchAddShortcut", 19);
+    meo.addURI("com.tencent.mm.plugin.extqlauncher", "getUnreadCount", 20);
+    mdM = new String[] { "retCode" };
+    mgg = new String[] { "id", "count" };
+    AppMethodBeat.o(20492);
   }
   
   public ExtControlProviderQLauncher() {}
   
   public ExtControlProviderQLauncher(String[] paramArrayOfString, int paramInt, Context paramContext)
   {
-    this.jJU = paramArrayOfString;
-    this.jMd = paramInt;
+    this.mdZ = paramArrayOfString;
+    this.mgh = paramInt;
     this.context = paramContext;
   }
   
-  private Cursor u(String[] paramArrayOfString)
+  private Cursor y(String[] paramArrayOfString)
   {
-    y.d("MicroMsg.ExtControlProviderQLauncher", "getUnreadCount");
+    AppMethodBeat.i(20491);
+    ab.d("MicroMsg.ExtControlProviderQLauncher", "getUnreadCount");
     if (this.context == null)
     {
-      qF(4);
+      vA(4);
+      AppMethodBeat.o(20491);
       return null;
     }
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
     {
-      y.e("MicroMsg.ExtControlProviderQLauncher", "wrong args");
-      qF(3);
+      ab.e("MicroMsg.ExtControlProviderQLauncher", "wrong args");
+      vA(3);
+      AppMethodBeat.o(20491);
       return null;
     }
-    MatrixCursor localMatrixCursor = new MatrixCursor(jMc);
+    MatrixCursor localMatrixCursor = new MatrixCursor(mgg);
     int i = 0;
     for (;;)
     {
       try
       {
         if ((i >= paramArrayOfString.length) || (i >= 10)) {
-          break label242;
+          break label266;
         }
-        if (bk.bl(paramArrayOfString[i])) {
-          break label249;
+        if (bo.isNullOrNil(paramArrayOfString[i])) {
+          break label279;
         }
         Object localObject;
         if (paramArrayOfString[i].equals("0"))
         {
           localObject = paramArrayOfString[i];
-          com.tencent.mm.plugin.extqlauncher.b.aNP();
-          localMatrixCursor.addRow(new Object[] { localObject, Integer.valueOf(com.tencent.mm.plugin.extqlauncher.b.aNQ()) });
+          com.tencent.mm.plugin.extqlauncher.b.btS();
+          localMatrixCursor.addRow(new Object[] { localObject, Integer.valueOf(com.tencent.mm.plugin.extqlauncher.b.btT()) });
         }
         else
         {
-          localObject = com.tencent.mm.plugin.base.model.b.xG(paramArrayOfString[i]);
-          if (!bk.bl((String)localObject))
+          localObject = com.tencent.mm.plugin.base.model.b.Gz(paramArrayOfString[i]);
+          if (!bo.isNullOrNil((String)localObject))
           {
-            au.Hx();
-            localObject = c.FB().abv((String)localObject);
+            aw.aaz();
+            localObject = c.YF().arH((String)localObject);
             if (localObject != null) {
-              localMatrixCursor.addRow(new Object[] { paramArrayOfString[i], Integer.valueOf(((as)localObject).field_unReadCount) });
+              localMatrixCursor.addRow(new Object[] { paramArrayOfString[i], Integer.valueOf(((au)localObject).field_unReadCount) });
             }
           }
         }
       }
       catch (Exception paramArrayOfString)
       {
-        y.e("MicroMsg.ExtControlProviderQLauncher", "exception in updateShortcut, %s", new Object[] { paramArrayOfString.getMessage() });
-        qF(4);
+        ab.e("MicroMsg.ExtControlProviderQLauncher", "exception in updateShortcut, %s", new Object[] { paramArrayOfString.getMessage() });
+        vA(4);
         localMatrixCursor.close();
+        AppMethodBeat.o(20491);
         return null;
       }
       localMatrixCursor.addRow(new Object[] { paramArrayOfString[i], Integer.valueOf(0) });
-      break label249;
-      label242:
-      qF(0);
+      break label279;
+      label266:
+      vA(0);
+      AppMethodBeat.o(20491);
       return localMatrixCursor;
-      label249:
+      label279:
       i += 1;
     }
   }
@@ -129,64 +139,77 @@ public class ExtControlProviderQLauncher
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    y.d("MicroMsg.ExtControlProviderQLauncher", "query()");
-    a(paramUri, this.context, this.jMd, this.jJU);
+    AppMethodBeat.i(20490);
+    ab.d("MicroMsg.ExtControlProviderQLauncher", "query()");
+    a(paramUri, this.context, this.mgh, this.mdZ);
     if (paramUri == null)
     {
-      qF(3);
+      vA(3);
+      AppMethodBeat.o(20490);
       return null;
     }
-    if ((bk.bl(this.jKd)) || (bk.bl(aNA())))
+    if ((bo.isNullOrNil(this.mei)) || (bo.isNullOrNil(btD())))
     {
-      qF(3);
+      vA(3);
+      AppMethodBeat.o(20490);
       return null;
     }
-    if (!awd())
+    if (!aVH())
     {
-      qF(1);
-      return this.hSn;
+      vA(1);
+      paramUri = this.jLW;
+      AppMethodBeat.o(20490);
+      return paramUri;
     }
-    if (!dc(this.context))
+    if (!dO(this.context))
     {
-      y.w("MicroMsg.ExtControlProviderQLauncher", "invalid appid ! return null");
-      qF(2);
+      ab.w("MicroMsg.ExtControlProviderQLauncher", "invalid appid ! return null");
+      vA(2);
+      AppMethodBeat.o(20490);
       return null;
     }
-    switch (this.jMd)
+    switch (this.mgh)
     {
     default: 
-      qF(3);
+      vA(3);
+      AppMethodBeat.o(20490);
       return null;
     case 18: 
-      y.d("MicroMsg.ExtControlProviderQLauncher", "toScanQRCode");
+      ab.d("MicroMsg.ExtControlProviderQLauncher", "toScanQRCode");
       if (this.context == null)
       {
-        qF(4);
+        vA(4);
+        AppMethodBeat.o(20490);
         return null;
       }
       paramUri = new Intent();
       paramUri.putExtra("BaseScanUI_select_scan_mode", 1);
       paramUri.putExtra("BaseScanUI_only_scan_qrcode_with_zbar", true);
       d.b(this.context, "scanner", ".ui.BaseScanUI", paramUri);
-      paramUri = new MatrixCursor(jJI);
+      paramUri = new MatrixCursor(mdM);
       paramUri.addRow(new Object[] { Integer.valueOf(1) });
-      qF(0);
+      vA(0);
+      AppMethodBeat.o(20490);
       return paramUri;
     case 19: 
-      y.d("MicroMsg.ExtControlProviderQLauncher", "toCreateShortcut");
+      ab.d("MicroMsg.ExtControlProviderQLauncher", "toCreateShortcut");
       if (this.context == null)
       {
-        qF(4);
+        vA(4);
+        AppMethodBeat.o(20490);
         return null;
       }
       paramUri = new Intent();
       d.b(this.context, "extqlauncher", ".ui.QLauncherCreateShortcutUI", paramUri);
-      paramUri = new MatrixCursor(jJI);
+      paramUri = new MatrixCursor(mdM);
       paramUri.addRow(new Object[] { Integer.valueOf(1) });
-      qF(0);
+      vA(0);
+      AppMethodBeat.o(20490);
       return paramUri;
     }
-    return u(paramArrayOfString2);
+    paramUri = y(paramArrayOfString2);
+    AppMethodBeat.o(20490);
+    return paramUri;
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)

@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NearLifeCreatePoiUI$7
   implements TextWatcher
@@ -16,12 +17,15 @@ final class NearLifeCreatePoiUI$7
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((NearLifeCreatePoiUI.d(this.mFF).getText().toString().trim().length() == 0) || (NearLifeCreatePoiUI.f(this.mFF).getText().toString().trim().length() == 0) || (NearLifeCreatePoiUI.e(this.mFF).getText().toString().trim().length() == 0))
+    AppMethodBeat.i(22978);
+    if ((NearLifeCreatePoiUI.d(this.pfL).getText().toString().trim().length() == 0) || (NearLifeCreatePoiUI.f(this.pfL).getText().toString().trim().length() == 0) || (NearLifeCreatePoiUI.e(this.pfL).getText().toString().trim().length() == 0))
     {
-      this.mFF.enableOptionMenu(0, false);
+      this.pfL.enableOptionMenu(0, false);
+      AppMethodBeat.o(22978);
       return;
     }
-    this.mFF.enableOptionMenu(0, true);
+    this.pfL.enableOptionMenu(0, true);
+    AppMethodBeat.o(22978);
   }
 }
 

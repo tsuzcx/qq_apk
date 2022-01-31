@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.k;
+import a.l;
+import a.v;
 import android.view.View;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.plugin.radar.b.c;
 import com.tencent.mm.plugin.radar.b.c.a;
 import com.tencent.mm.plugin.radar.b.c.d;
 import com.tencent.mm.plugin.radar.b.c.e;
 import com.tencent.mm.plugin.radar.b.c.m;
+import com.tencent.mm.plugin.radar.b.e;
 import com.tencent.mm.plugin.radar.b.e.c;
-import com.tencent.mm.protocal.c.bio;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.brg;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.bi.d;
@@ -19,108 +21,118 @@ import java.util.HashMap;
 import java.util.Map;
 import junit.framework.Assert;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/radar/ui/RadarViewController$initView$1", "Lcom/tencent/mm/plugin/radar/ui/RadarMemberView$OnConfirmBtnClickListener;", "onClick", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "onDismissed", "plugin-radar_release"})
 public final class RadarViewController$e
   implements RadarMemberView.b
 {
-  public final void a(bio parambio, c.e parame)
+  public final void a(brg parambrg, c.e parame)
   {
-    a.d.b.g.k(parambio, "member");
-    Object localObject1 = g.nnt;
-    String str = g.b(parambio);
-    if (parame == null) {
+    AppMethodBeat.i(103095);
+    a.f.b.j.q(parambrg, "member");
+    Object localObject1 = g.pSH;
+    String str = g.b(parambrg);
+    if (parame == null)
+    {
+      AppMethodBeat.o(103095);
       return;
     }
-    switch (h.fHS[parame.ordinal()])
+    switch (h.bLo[parame.ordinal()])
     {
     default: 
+      AppMethodBeat.o(103095);
       return;
     case 1: 
-      l = RadarViewController.e(this.nnP).Lw(str);
-      RadarViewController.c(this.nnP).nlh.put(Long.valueOf(l), new e.c(parambio, parame));
-      RadarViewController.a(this.nnP, str, c.e.nkF);
+      l = RadarViewController.e(this.pTd).XG(str);
+      RadarViewController.c(this.pTd).pQw.put(Long.valueOf(l), new e.c(parambrg, parame));
+      RadarViewController.a(this.pTd, str, c.e.pPV);
+      AppMethodBeat.o(103095);
       return;
     }
-    Object localObject2 = RadarViewController.e(this.nnP);
-    a.d.b.g.k(str, "username");
-    localObject1 = com.tencent.mm.kernel.g.r(j.class);
-    a.d.b.g.j(localObject1, "service(IMessengerStorage::class.java)");
-    localObject1 = ((j)localObject1).Fw().abl(str);
-    a.d.b.g.j(localObject1, "contact");
+    Object localObject2 = RadarViewController.e(this.pTd);
+    a.f.b.j.q(str, "username");
+    localObject1 = com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class);
+    a.f.b.j.p(localObject1, "service(IMessengerStorage::class.java)");
+    localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.j)localObject1).YA().arw(str);
+    a.f.b.j.p(localObject1, "contact");
     Object localObject3 = (CharSequence)((ad)localObject1).getUsername();
-    if ((localObject3 == null) || (a.h.e.X((CharSequence)localObject3)))
+    if ((localObject3 == null) || (a.l.m.ap((CharSequence)localObject3)))
     {
       i = 1;
+      label213:
       if (i == 0) {
-        break label323;
+        break label342;
       }
       localObject1 = str;
-      label199:
-      localObject3 = (String)((c)localObject2).nkv.get(localObject1);
+      label221:
+      localObject3 = (String)((c)localObject2).pPL.get(localObject1);
       localObject4 = (CharSequence)localObject3;
-      if ((localObject4 != null) && (!a.h.e.X((CharSequence)localObject4))) {
-        break label340;
+      if ((localObject4 != null) && (!a.l.m.ap((CharSequence)localObject4))) {
+        break label359;
       }
     }
-    label323:
-    label340:
+    label342:
+    label359:
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        break label345;
+        break label364;
       }
-      localObject3 = c.nkz;
-      y.e(c.access$getTAG$cp(), "Verify Contact username(%s) error, verifyTicket is null", new Object[] { localObject1 });
-      ((c)localObject2).Lw((String)localObject1);
+      ab.e(c.TAG, "Verify Contact username(%s) error, verifyTicket is null", new Object[] { localObject1 });
+      ((c)localObject2).XG((String)localObject1);
       l = -1L;
-      RadarViewController.c(this.nnP).nlh.put(Long.valueOf(l), new e.c(parambio, parame));
-      RadarViewController.a(this.nnP, str, c.e.nkF);
-      return;
-      i = 0;
+      RadarViewController.c(this.pTd).pQw.put(Long.valueOf(l), new e.c(parambrg, parame));
+      RadarViewController.a(this.pTd, str, c.e.pPV);
       break;
+      i = 0;
+      break label213;
       localObject1 = ((ad)localObject1).getUsername();
-      a.d.b.g.j(localObject1, "contact.username");
-      break label199;
+      a.f.b.j.p(localObject1, "contact.username");
+      break label221;
     }
-    label345:
-    Object localObject4 = bi.d.acc((String)localObject3);
+    label364:
+    Object localObject4 = bi.d.asm((String)localObject3);
     long l = System.currentTimeMillis();
     localObject2 = new c.a((c)localObject2, (c.d)new c.m((c)localObject2, (String)localObject3, l));
-    localObject3 = ((bi.d)localObject4).cvP();
-    a.d.b.g.j(localObject3, "verify.verifyTicket");
-    a.d.b.g.k(localObject3, "verifyTicket");
+    localObject3 = ((bi.d)localObject4).dyx();
+    a.f.b.j.p(localObject3, "verify.verifyTicket");
+    a.f.b.j.q(localObject3, "verifyTicket");
     if ((localObject1 != null) && (((String)localObject1).length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("username is null", bool);
       ((c.a)localObject2).onStart();
-      com.tencent.mm.kernel.g.Dk().d((com.tencent.mm.ah.m)new com.tencent.mm.pluginsdk.model.m((String)localObject1, (String)localObject3, 48, (byte)0));
+      com.tencent.mm.kernel.g.Rc().b((com.tencent.mm.ai.m)new com.tencent.mm.pluginsdk.model.m((String)localObject1, (String)localObject3, 48));
       break;
     }
   }
   
-  public final void b(bio parambio, c.e parame)
+  public final void b(brg parambrg, c.e parame)
   {
-    if (parambio != null) {
-      g localg = g.nnt;
+    AppMethodBeat.i(103096);
+    if (parambrg != null) {
+      g localg = g.pSH;
     }
-    for (parambio = g.b(parambio);; parambio = null)
+    for (parambrg = g.b(parambrg);; parambrg = null)
     {
-      parambio = (View)((Map)RadarViewController.d(this.nnP).nnW).get(parambio);
-      if (parambio == null) {
-        break label83;
+      parambrg = (View)((Map)RadarViewController.d(this.pTd).pTk).get(parambrg);
+      if (parambrg == null) {
+        break label96;
       }
-      parambio = parambio.getTag();
-      if (parambio != null) {
+      parambrg = parambrg.getTag();
+      if (parambrg != null) {
         break;
       }
-      throw new k("null cannot be cast to non-null type com.tencent.mm.plugin.radar.ui.RadarViewController.RadarSearchAdapter.ViewHolder");
+      parambrg = new v("null cannot be cast to non-null type com.tencent.mm.plugin.radar.ui.RadarViewController.RadarSearchAdapter.ViewHolder");
+      AppMethodBeat.o(103096);
+      throw parambrg;
     }
-    parambio = (RadarViewController.c.a)parambio;
-    if (parame != c.e.nkE) {
-      parambio.noa.buL();
+    parambrg = (RadarViewController.c.a)parambrg;
+    if (parame != c.e.pPU) {
+      parambrg.pTo.ceX();
     }
-    label83:
-    RadarViewController.f(this.nnP).buU();
+    label96:
+    RadarViewController.f(this.pTd).cfg();
+    AppMethodBeat.o(103096);
   }
 }
 

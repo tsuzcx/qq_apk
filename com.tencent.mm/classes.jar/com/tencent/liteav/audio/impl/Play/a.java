@@ -3,9 +3,9 @@ package com.tencent.liteav.audio.impl.Play;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
-import com.tencent.liteav.audio.TXEAudioDef;
-import com.tencent.liteav.audio.d;
+import com.tencent.liteav.audio.c;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -15,21 +15,357 @@ import java.util.Vector;
 public class a
   implements Runnable
 {
-  private static final String a = "AudioCenter:" + a.class.getSimpleName();
-  private WeakReference<d> b = null;
+  private static final String a;
+  private WeakReference<c> b = null;
   private MediaCodec c = null;
   private MediaCodec.BufferInfo d;
   private MediaFormat e;
   private long f = 0L;
   private volatile boolean g = false;
-  private Vector<com.tencent.liteav.basic.f.a> h;
+  private Vector<com.tencent.liteav.basic.structs.a> h;
   private List i;
   private Thread j = null;
   
-  private int a(com.tencent.liteav.basic.f.a parama, ByteBuffer[] paramArrayOfByteBuffer, int paramInt)
+  static
   {
+    AppMethodBeat.i(66592);
+    a = "AudioCenter:" + a.class.getSimpleName();
+    AppMethodBeat.o(66592);
+  }
+  
+  /* Error */
+  private int a(com.tencent.liteav.basic.structs.a parama)
+  {
+    // Byte code:
+    //   0: ldc 87
+    //   2: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_1
+    //   6: getfield 92	com/tencent/liteav/basic/structs/a:f	[B
+    //   9: arraylength
+    //   10: iconst_2
+    //   11: if_icmpeq +29 -> 40
+    //   14: getstatic 59	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
+    //   17: new 38	java/lang/StringBuilder
+    //   20: dup
+    //   21: ldc 94
+    //   23: invokespecial 44	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   26: aload_1
+    //   27: getfield 92	com/tencent/liteav/basic/structs/a:f	[B
+    //   30: arraylength
+    //   31: invokevirtual 97	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: invokestatic 103	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   40: aload_1
+    //   41: getfield 92	com/tencent/liteav/basic/structs/a:f	[B
+    //   44: ifnull +547 -> 591
+    //   47: aload_0
+    //   48: ldc 105
+    //   50: aload_1
+    //   51: getfield 92	com/tencent/liteav/basic/structs/a:f	[B
+    //   54: iconst_0
+    //   55: baload
+    //   56: bipush 7
+    //   58: iand
+    //   59: iconst_1
+    //   60: ishl
+    //   61: aload_1
+    //   62: getfield 92	com/tencent/liteav/basic/structs/a:f	[B
+    //   65: iconst_1
+    //   66: baload
+    //   67: sipush 128
+    //   70: iand
+    //   71: bipush 7
+    //   73: ishr
+    //   74: ior
+    //   75: invokestatic 110	com/tencent/liteav/audio/impl/b:a	(I)I
+    //   78: aload_1
+    //   79: getfield 92	com/tencent/liteav/basic/structs/a:f	[B
+    //   82: iconst_1
+    //   83: baload
+    //   84: bipush 120
+    //   86: iand
+    //   87: iconst_3
+    //   88: ishr
+    //   89: invokestatic 116	android/media/MediaFormat:createAudioFormat	(Ljava/lang/String;II)Landroid/media/MediaFormat;
+    //   92: putfield 118	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
+    //   95: aload_0
+    //   96: getfield 118	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
+    //   99: ldc 120
+    //   101: ldc 121
+    //   103: invokevirtual 125	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
+    //   106: aload_0
+    //   107: getfield 118	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
+    //   110: ldc 127
+    //   112: iconst_0
+    //   113: invokevirtual 125	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
+    //   116: aload_0
+    //   117: getfield 118	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
+    //   120: ldc 129
+    //   122: iconst_2
+    //   123: invokevirtual 125	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
+    //   126: getstatic 59	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
+    //   129: new 38	java/lang/StringBuilder
+    //   132: dup
+    //   133: ldc 131
+    //   135: invokespecial 44	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   138: aload_0
+    //   139: getfield 118	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
+    //   142: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   145: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   148: invokestatic 136	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   151: aload_0
+    //   152: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   155: ifnull +17 -> 172
+    //   158: aload_0
+    //   159: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   162: invokevirtual 141	android/media/MediaCodec:stop	()V
+    //   165: aload_0
+    //   166: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   169: invokevirtual 144	android/media/MediaCodec:release	()V
+    //   172: aload_0
+    //   173: ldc 105
+    //   175: invokestatic 148	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   178: putfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   181: getstatic 154	android/os/Build$VERSION:SDK_INT	I
+    //   184: bipush 21
+    //   186: if_icmplt +291 -> 477
+    //   189: iconst_0
+    //   190: istore_2
+    //   191: aload_0
+    //   192: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   195: aload_0
+    //   196: getfield 118	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
+    //   199: aconst_null
+    //   200: aconst_null
+    //   201: iconst_0
+    //   202: invokevirtual 158	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
+    //   205: aload_0
+    //   206: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   209: invokevirtual 161	android/media/MediaCodec:start	()V
+    //   212: aload_0
+    //   213: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   216: ifnull +26 -> 242
+    //   219: aload_0
+    //   220: aload_1
+    //   221: aload_0
+    //   222: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   225: invokevirtual 165	android/media/MediaCodec:getInputBuffers	()[Ljava/nio/ByteBuffer;
+    //   228: aload_0
+    //   229: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   232: ldc2_w 166
+    //   235: invokevirtual 171	android/media/MediaCodec:dequeueInputBuffer	(J)I
+    //   238: invokespecial 174	com/tencent/liteav/audio/impl/Play/a:a	(Lcom/tencent/liteav/basic/structs/a;[Ljava/nio/ByteBuffer;I)I
+    //   241: pop
+    //   242: ldc 87
+    //   244: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   247: iconst_0
+    //   248: ireturn
+    //   249: astore 4
+    //   251: iconst_0
+    //   252: istore_2
+    //   253: getstatic 59	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
+    //   256: new 38	java/lang/StringBuilder
+    //   259: dup
+    //   260: ldc 176
+    //   262: invokespecial 44	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   265: iload_2
+    //   266: invokevirtual 97	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   269: ldc 178
+    //   271: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   274: aload 4
+    //   276: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   279: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   282: invokestatic 180	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   285: goto -113 -> 172
+    //   288: astore 4
+    //   290: getstatic 59	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
+    //   293: new 38	java/lang/StringBuilder
+    //   296: dup
+    //   297: ldc 182
+    //   299: invokespecial 44	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   302: aload 4
+    //   304: invokevirtual 185	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   307: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   313: invokestatic 180	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   316: goto -135 -> 181
+    //   319: astore 4
+    //   321: iconst_0
+    //   322: istore_3
+    //   323: getstatic 59	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
+    //   326: new 38	java/lang/StringBuilder
+    //   329: dup
+    //   330: ldc 187
+    //   332: invokespecial 44	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   335: aload 4
+    //   337: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   340: ldc 189
+    //   342: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   345: iload_3
+    //   346: invokevirtual 97	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   349: ldc 191
+    //   351: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   354: aload_0
+    //   355: getfield 118	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
+    //   358: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   361: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   364: invokestatic 180	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   367: iload_2
+    //   368: iconst_1
+    //   369: iadd
+    //   370: istore_2
+    //   371: iload_2
+    //   372: iconst_1
+    //   373: if_icmple +31 -> 404
+    //   376: getstatic 59	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
+    //   379: ldc 193
+    //   381: invokestatic 180	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   384: aload_0
+    //   385: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   388: invokevirtual 144	android/media/MediaCodec:release	()V
+    //   391: aload_0
+    //   392: aconst_null
+    //   393: putfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   396: ldc 87
+    //   398: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   401: bipush 155
+    //   403: ireturn
+    //   404: aload 4
+    //   406: invokevirtual 197	android/media/MediaCodec$CodecException:isRecoverable	()Z
+    //   409: ifeq +18 -> 427
+    //   412: aload_0
+    //   413: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   416: invokevirtual 141	android/media/MediaCodec:stop	()V
+    //   419: goto -228 -> 191
+    //   422: astore 4
+    //   424: goto -233 -> 191
+    //   427: aload 4
+    //   429: invokevirtual 200	android/media/MediaCodec$CodecException:isTransient	()Z
+    //   432: ifeq +17 -> 449
+    //   435: ldc2_w 201
+    //   438: invokestatic 208	java/lang/Thread:sleep	(J)V
+    //   441: goto -250 -> 191
+    //   444: astore 4
+    //   446: goto -255 -> 191
+    //   449: getstatic 59	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
+    //   452: ldc 210
+    //   454: invokestatic 180	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   457: aload_0
+    //   458: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   461: invokevirtual 144	android/media/MediaCodec:release	()V
+    //   464: aload_0
+    //   465: aconst_null
+    //   466: putfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   469: ldc 87
+    //   471: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   474: bipush 155
+    //   476: ireturn
+    //   477: iconst_0
+    //   478: istore_2
+    //   479: aload_0
+    //   480: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   483: aload_0
+    //   484: getfield 118	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
+    //   487: aconst_null
+    //   488: aconst_null
+    //   489: iconst_0
+    //   490: invokevirtual 158	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
+    //   493: aload_0
+    //   494: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   497: invokevirtual 161	android/media/MediaCodec:start	()V
+    //   500: goto -288 -> 212
+    //   503: astore 4
+    //   505: iconst_1
+    //   506: istore_3
+    //   507: getstatic 59	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
+    //   510: new 38	java/lang/StringBuilder
+    //   513: dup
+    //   514: ldc 212
+    //   516: invokespecial 44	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   519: aload 4
+    //   521: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   524: ldc 189
+    //   526: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   529: iload_3
+    //   530: invokevirtual 97	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   533: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   536: invokestatic 180	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   539: iload_2
+    //   540: iconst_1
+    //   541: iadd
+    //   542: istore_2
+    //   543: iload_2
+    //   544: iconst_1
+    //   545: if_icmple +31 -> 576
+    //   548: getstatic 59	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
+    //   551: ldc 193
+    //   553: invokestatic 180	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   556: aload_0
+    //   557: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   560: invokevirtual 144	android/media/MediaCodec:release	()V
+    //   563: aload_0
+    //   564: aconst_null
+    //   565: putfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   568: ldc 87
+    //   570: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   573: bipush 155
+    //   575: ireturn
+    //   576: aload_0
+    //   577: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   580: invokevirtual 215	android/media/MediaCodec:reset	()V
+    //   583: goto -104 -> 479
+    //   586: astore 4
+    //   588: goto -109 -> 479
+    //   591: ldc 87
+    //   593: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   596: sipush -901
+    //   599: ireturn
+    //   600: astore 4
+    //   602: iconst_0
+    //   603: istore_3
+    //   604: goto -97 -> 507
+    //   607: astore 4
+    //   609: iconst_1
+    //   610: istore_3
+    //   611: goto -288 -> 323
+    //   614: astore 4
+    //   616: iconst_1
+    //   617: istore_2
+    //   618: goto -365 -> 253
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	621	0	this	a
+    //   0	621	1	parama	com.tencent.liteav.basic.structs.a
+    //   190	428	2	k	int
+    //   322	289	3	m	int
+    //   249	26	4	localException1	Exception
+    //   288	15	4	localIOException	java.io.IOException
+    //   319	86	4	localCodecException1	android.media.MediaCodec.CodecException
+    //   422	6	4	localException2	Exception
+    //   444	1	4	localInterruptedException	InterruptedException
+    //   503	17	4	localIllegalStateException1	java.lang.IllegalStateException
+    //   586	1	4	localException3	Exception
+    //   600	1	4	localIllegalStateException2	java.lang.IllegalStateException
+    //   607	1	4	localCodecException2	android.media.MediaCodec.CodecException
+    //   614	1	4	localException4	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   158	165	249	java/lang/Exception
+    //   172	181	288	java/io/IOException
+    //   191	205	319	android/media/MediaCodec$CodecException
+    //   412	419	422	java/lang/Exception
+    //   435	441	444	java/lang/InterruptedException
+    //   493	500	503	java/lang/IllegalStateException
+    //   576	583	586	java/lang/Exception
+    //   479	493	600	java/lang/IllegalStateException
+    //   205	212	607	android/media/MediaCodec$CodecException
+    //   165	172	614	java/lang/Exception
+  }
+  
+  private int a(com.tencent.liteav.basic.structs.a parama, ByteBuffer[] paramArrayOfByteBuffer, int paramInt)
+  {
+    AppMethodBeat.i(146225);
     if (paramInt >= 0) {}
-    label388:
     for (;;)
     {
       try
@@ -43,7 +379,7 @@ public class a
         if ((parama == null) || (parama.f.length <= 0)) {
           continue;
         }
-        this.c.queueInputBuffer(paramInt, 0, parama.f.length, c(), 0);
+        this.c.queueInputBuffer(paramInt, 0, parama.f.length, b(), 0);
         paramArrayOfByteBuffer = this.c.getOutputBuffers();
         parama = paramArrayOfByteBuffer;
         if (this.d == null)
@@ -53,7 +389,7 @@ public class a
         }
         paramInt = this.c.dequeueOutputBuffer(this.d, 10000L);
         if (paramInt != -3) {
-          continue;
+          break label169;
         }
         parama = this.c.getOutputBuffers();
         if (paramInt >= 0) {
@@ -62,449 +398,80 @@ public class a
       }
       catch (Exception parama)
       {
-        Object localObject;
-        long l;
         continue;
       }
-      return TXEAudioDef.TXE_AUDIO_PLAY_ERR_OK;
-      this.c.queueInputBuffer(paramInt, 0, 0, c(), 4);
+      AppMethodBeat.o(146225);
+      return 0;
+      this.c.queueInputBuffer(paramInt, 0, 0, b(), 4);
       continue;
-      if (paramInt == -2)
+      if (paramInt == -1)
       {
-        this.e = this.c.getOutputFormat();
-        if (this.b != null)
-        {
-          paramArrayOfByteBuffer = (d)this.b.get();
-          localObject = new com.tencent.liteav.basic.f.a();
-          ((com.tencent.liteav.basic.f.a)localObject).c = com.tencent.liteav.basic.a.a.h;
-          ((com.tencent.liteav.basic.f.a)localObject).b = this.e.getInteger("channel-count");
-          ((com.tencent.liteav.basic.f.a)localObject).a = this.e.getInteger("sample-rate");
-          if (paramArrayOfByteBuffer == null) {
-            break label388;
-          }
-          paramArrayOfByteBuffer.onPlayAudioInfoChanged((com.tencent.liteav.basic.f.a)localObject, (com.tencent.liteav.basic.f.a)localObject);
-          break label388;
-        }
-      }
-      else if (paramInt >= 0)
-      {
-        localObject = parama[paramInt];
-        ((ByteBuffer)localObject).position(this.d.offset);
-        ((ByteBuffer)localObject).limit(this.d.offset + this.d.size);
-        paramArrayOfByteBuffer = new byte[this.d.size];
-        ((ByteBuffer)localObject).get(paramArrayOfByteBuffer);
-        l = ((Long)this.i.get(0)).longValue();
-        this.i.remove(0);
-        if (this.b != null)
-        {
-          localObject = (d)this.b.get();
-          if (localObject != null) {
-            ((d)localObject).onPlayPcmData(paramArrayOfByteBuffer, l);
-          }
-        }
-        this.c.releaseOutputBuffer(paramInt, false);
-      }
-      continue;
-      if (paramInt == -1) {
+        AppMethodBeat.o(146225);
         return -1;
+        label169:
+        if (paramInt == -2)
+        {
+          this.e = this.c.getOutputFormat();
+        }
+        else if (paramInt >= 0)
+        {
+          c localc = parama[paramInt];
+          localc.position(this.d.offset);
+          localc.limit(this.d.offset + this.d.size);
+          paramArrayOfByteBuffer = new byte[this.d.size];
+          localc.get(paramArrayOfByteBuffer);
+          long l = ((Long)this.i.get(0)).longValue();
+          this.i.remove(0);
+          if (this.b != null)
+          {
+            localc = (c)this.b.get();
+            if (localc != null) {
+              localc.onPlayPcmData(paramArrayOfByteBuffer, l, 48000, 1);
+            }
+          }
+          this.c.releaseOutputBuffer(paramInt, false);
+        }
       }
     }
   }
   
-  /* Error */
-  private int b(com.tencent.liteav.basic.f.a parama)
+  private long b()
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: getfield 74	com/tencent/liteav/basic/f/a:f	[B
-    //   4: arraylength
-    //   5: iconst_2
-    //   6: if_icmpeq +29 -> 35
-    //   9: getstatic 53	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
-    //   12: new 32	java/lang/StringBuilder
-    //   15: dup
-    //   16: ldc 202
-    //   18: invokespecial 38	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   21: aload_1
-    //   22: getfield 74	com/tencent/liteav/basic/f/a:f	[B
-    //   25: arraylength
-    //   26: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 211	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   35: aload_1
-    //   36: getfield 74	com/tencent/liteav/basic/f/a:f	[B
-    //   39: ifnull +611 -> 650
-    //   42: aload_1
-    //   43: getfield 74	com/tencent/liteav/basic/f/a:f	[B
-    //   46: iconst_0
-    //   47: baload
-    //   48: bipush 7
-    //   50: iand
-    //   51: iconst_1
-    //   52: ishl
-    //   53: aload_1
-    //   54: getfield 74	com/tencent/liteav/basic/f/a:f	[B
-    //   57: iconst_1
-    //   58: baload
-    //   59: sipush 128
-    //   62: iand
-    //   63: bipush 7
-    //   65: ishr
-    //   66: ior
-    //   67: invokestatic 216	com/tencent/liteav/audio/impl/a:a	(I)I
-    //   70: istore_2
-    //   71: aload_1
-    //   72: getfield 74	com/tencent/liteav/basic/f/a:f	[B
-    //   75: iconst_1
-    //   76: baload
-    //   77: bipush 120
-    //   79: iand
-    //   80: iconst_3
-    //   81: ishr
-    //   82: istore_3
-    //   83: aload_0
-    //   84: ldc 218
-    //   86: iload_2
-    //   87: iload_3
-    //   88: invokestatic 222	android/media/MediaFormat:createAudioFormat	(Ljava/lang/String;II)Landroid/media/MediaFormat;
-    //   91: putfield 120	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
-    //   94: aload_0
-    //   95: getfield 120	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
-    //   98: ldc 224
-    //   100: ldc 225
-    //   102: invokevirtual 229	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   105: aload_0
-    //   106: getfield 120	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
-    //   109: ldc 231
-    //   111: iconst_0
-    //   112: invokevirtual 229	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   115: aload_0
-    //   116: getfield 120	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
-    //   119: ldc 233
-    //   121: iconst_2
-    //   122: invokevirtual 229	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   125: getstatic 53	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
-    //   128: new 32	java/lang/StringBuilder
-    //   131: dup
-    //   132: ldc 235
-    //   134: invokespecial 38	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   137: aload_0
-    //   138: getfield 120	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
-    //   141: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   144: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   147: invokestatic 240	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   150: aload_0
-    //   151: getfield 58	com/tencent/liteav/audio/impl/Play/a:b	Ljava/lang/ref/WeakReference;
-    //   154: ifnull +60 -> 214
-    //   157: aload_0
-    //   158: getfield 58	com/tencent/liteav/audio/impl/Play/a:b	Ljava/lang/ref/WeakReference;
-    //   161: invokevirtual 126	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   164: checkcast 128	com/tencent/liteav/audio/d
-    //   167: astore 4
-    //   169: new 71	com/tencent/liteav/basic/f/a
-    //   172: dup
-    //   173: invokespecial 129	com/tencent/liteav/basic/f/a:<init>	()V
-    //   176: astore 5
-    //   178: aload 5
-    //   180: getstatic 133	com/tencent/liteav/basic/a/a:h	I
-    //   183: putfield 135	com/tencent/liteav/basic/f/a:c	I
-    //   186: aload 5
-    //   188: iload_3
-    //   189: putfield 145	com/tencent/liteav/basic/f/a:b	I
-    //   192: aload 5
-    //   194: iload_2
-    //   195: putfield 149	com/tencent/liteav/basic/f/a:a	I
-    //   198: aload 4
-    //   200: ifnull +14 -> 214
-    //   203: aload 4
-    //   205: aload 5
-    //   207: aload 5
-    //   209: invokeinterface 153 3 0
-    //   214: aload_0
-    //   215: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   218: ifnull +17 -> 235
-    //   221: aload_0
-    //   222: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   225: invokevirtual 243	android/media/MediaCodec:stop	()V
-    //   228: aload_0
-    //   229: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   232: invokevirtual 246	android/media/MediaCodec:release	()V
-    //   235: aload_0
-    //   236: ldc 218
-    //   238: invokestatic 250	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
-    //   241: putfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   244: getstatic 255	android/os/Build$VERSION:SDK_INT	I
-    //   247: bipush 21
-    //   249: if_icmplt +288 -> 537
-    //   252: iconst_0
-    //   253: istore_2
-    //   254: aload_0
-    //   255: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   258: aload_0
-    //   259: getfield 120	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
-    //   262: aconst_null
-    //   263: aconst_null
-    //   264: iconst_0
-    //   265: invokevirtual 259	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
-    //   268: aload_0
-    //   269: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   272: invokevirtual 262	android/media/MediaCodec:start	()V
-    //   275: aload_0
-    //   276: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   279: ifnull +26 -> 305
-    //   282: aload_0
-    //   283: aload_1
-    //   284: aload_0
-    //   285: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   288: invokevirtual 265	android/media/MediaCodec:getInputBuffers	()[Ljava/nio/ByteBuffer;
-    //   291: aload_0
-    //   292: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   295: ldc2_w 103
-    //   298: invokevirtual 269	android/media/MediaCodec:dequeueInputBuffer	(J)I
-    //   301: invokespecial 271	com/tencent/liteav/audio/impl/Play/a:a	(Lcom/tencent/liteav/basic/f/a;[Ljava/nio/ByteBuffer;I)I
-    //   304: pop
-    //   305: getstatic 114	com/tencent/liteav/audio/TXEAudioDef:TXE_AUDIO_PLAY_ERR_OK	I
-    //   308: ireturn
-    //   309: astore 4
-    //   311: iconst_0
-    //   312: istore_2
-    //   313: getstatic 53	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
-    //   316: new 32	java/lang/StringBuilder
-    //   319: dup
-    //   320: ldc_w 273
-    //   323: invokespecial 38	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   326: iload_2
-    //   327: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   330: ldc_w 275
-    //   333: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   336: aload 4
-    //   338: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   341: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   344: invokestatic 277	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   347: goto -112 -> 235
-    //   350: astore 4
-    //   352: getstatic 53	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
-    //   355: new 32	java/lang/StringBuilder
-    //   358: dup
-    //   359: ldc_w 279
-    //   362: invokespecial 38	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   365: aload 4
-    //   367: invokevirtual 282	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   370: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   373: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   376: invokestatic 277	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   379: goto -135 -> 244
-    //   382: astore 4
-    //   384: iconst_0
-    //   385: istore_3
-    //   386: getstatic 53	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
-    //   389: new 32	java/lang/StringBuilder
-    //   392: dup
-    //   393: ldc_w 284
-    //   396: invokespecial 38	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   399: aload 4
-    //   401: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   404: ldc_w 286
-    //   407: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   410: iload_3
-    //   411: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   414: ldc_w 288
-    //   417: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   420: aload_0
-    //   421: getfield 120	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
-    //   424: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   427: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   430: invokestatic 277	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   433: iload_2
-    //   434: iconst_1
-    //   435: iadd
-    //   436: istore_2
-    //   437: iload_2
-    //   438: iconst_1
-    //   439: if_icmple +28 -> 467
-    //   442: getstatic 53	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
-    //   445: ldc_w 290
-    //   448: invokestatic 277	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   451: aload_0
-    //   452: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   455: invokevirtual 246	android/media/MediaCodec:release	()V
-    //   458: aload_0
-    //   459: aconst_null
-    //   460: putfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   463: getstatic 293	com/tencent/liteav/audio/TXEAudioDef:TXE_AUDIO_PLAY_ERR_INVALID_STATE	I
-    //   466: ireturn
-    //   467: aload 4
-    //   469: invokevirtual 297	android/media/MediaCodec$CodecException:isRecoverable	()Z
-    //   472: ifeq +18 -> 490
-    //   475: aload_0
-    //   476: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   479: invokevirtual 243	android/media/MediaCodec:stop	()V
-    //   482: goto -228 -> 254
-    //   485: astore 4
-    //   487: goto -233 -> 254
-    //   490: aload 4
-    //   492: invokevirtual 300	android/media/MediaCodec$CodecException:isTransient	()Z
-    //   495: ifeq +17 -> 512
-    //   498: ldc2_w 301
-    //   501: invokestatic 308	java/lang/Thread:sleep	(J)V
-    //   504: goto -250 -> 254
-    //   507: astore 4
-    //   509: goto -255 -> 254
-    //   512: getstatic 53	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
-    //   515: ldc_w 310
-    //   518: invokestatic 277	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   521: aload_0
-    //   522: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   525: invokevirtual 246	android/media/MediaCodec:release	()V
-    //   528: aload_0
-    //   529: aconst_null
-    //   530: putfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   533: getstatic 293	com/tencent/liteav/audio/TXEAudioDef:TXE_AUDIO_PLAY_ERR_INVALID_STATE	I
-    //   536: ireturn
-    //   537: iconst_0
-    //   538: istore_2
-    //   539: aload_0
-    //   540: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   543: aload_0
-    //   544: getfield 120	com/tencent/liteav/audio/impl/Play/a:e	Landroid/media/MediaFormat;
-    //   547: aconst_null
-    //   548: aconst_null
-    //   549: iconst_0
-    //   550: invokevirtual 259	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
-    //   553: aload_0
-    //   554: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   557: invokevirtual 262	android/media/MediaCodec:start	()V
-    //   560: goto -285 -> 275
-    //   563: astore 4
-    //   565: iconst_1
-    //   566: istore_3
-    //   567: getstatic 53	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
-    //   570: new 32	java/lang/StringBuilder
-    //   573: dup
-    //   574: ldc_w 312
-    //   577: invokespecial 38	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   580: aload 4
-    //   582: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   585: ldc_w 286
-    //   588: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   591: iload_3
-    //   592: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   595: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   598: invokestatic 277	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   601: iload_2
-    //   602: iconst_1
-    //   603: iadd
-    //   604: istore_2
-    //   605: iload_2
-    //   606: iconst_1
-    //   607: if_icmple +28 -> 635
-    //   610: getstatic 53	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
-    //   613: ldc_w 290
-    //   616: invokestatic 277	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   619: aload_0
-    //   620: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   623: invokevirtual 246	android/media/MediaCodec:release	()V
-    //   626: aload_0
-    //   627: aconst_null
-    //   628: putfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   631: getstatic 293	com/tencent/liteav/audio/TXEAudioDef:TXE_AUDIO_PLAY_ERR_INVALID_STATE	I
-    //   634: ireturn
-    //   635: aload_0
-    //   636: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   639: invokevirtual 315	android/media/MediaCodec:reset	()V
-    //   642: goto -103 -> 539
-    //   645: astore 4
-    //   647: goto -108 -> 539
-    //   650: getstatic 318	com/tencent/liteav/audio/TXEAudioDef:TXE_AUDIO_COMMON_ERR_INVALID_PARAMS	I
-    //   653: ireturn
-    //   654: astore 4
-    //   656: iconst_0
-    //   657: istore_3
-    //   658: goto -91 -> 567
-    //   661: astore 4
-    //   663: iconst_1
-    //   664: istore_3
-    //   665: goto -279 -> 386
-    //   668: astore 4
-    //   670: iconst_1
-    //   671: istore_2
-    //   672: goto -359 -> 313
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	675	0	this	a
-    //   0	675	1	parama	com.tencent.liteav.basic.f.a
-    //   70	602	2	k	int
-    //   82	583	3	m	int
-    //   167	37	4	locald	d
-    //   309	28	4	localException1	Exception
-    //   350	16	4	localIOException	java.io.IOException
-    //   382	86	4	localCodecException1	android.media.MediaCodec.CodecException
-    //   485	6	4	localException2	Exception
-    //   507	1	4	localInterruptedException	InterruptedException
-    //   563	18	4	localIllegalStateException1	java.lang.IllegalStateException
-    //   645	1	4	localException3	Exception
-    //   654	1	4	localIllegalStateException2	java.lang.IllegalStateException
-    //   661	1	4	localCodecException2	android.media.MediaCodec.CodecException
-    //   668	1	4	localException4	Exception
-    //   176	32	5	locala	com.tencent.liteav.basic.f.a
-    // Exception table:
-    //   from	to	target	type
-    //   221	228	309	java/lang/Exception
-    //   235	244	350	java/io/IOException
-    //   254	268	382	android/media/MediaCodec$CodecException
-    //   475	482	485	java/lang/Exception
-    //   498	504	507	java/lang/InterruptedException
-    //   553	560	563	java/lang/IllegalStateException
-    //   635	642	645	java/lang/Exception
-    //   539	553	654	java/lang/IllegalStateException
-    //   268	275	661	android/media/MediaCodec$CodecException
-    //   228	235	668	java/lang/Exception
-  }
-  
-  private long c()
-  {
+    AppMethodBeat.i(146226);
     long l2 = TXCTimeUtil.getTimeTick();
     long l1 = l2;
     if (l2 < this.f) {
       l1 = l2 + (this.f - l2);
     }
     this.f = l1;
+    AppMethodBeat.o(146226);
     return l1;
   }
   
-  public long a()
+  public void a()
   {
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.e != null)
+    AppMethodBeat.i(146223);
+    this.g = false;
+    if (this.j != null) {}
+    try
     {
-      float f1 = this.e.getInteger("sample-rate");
-      l1 = l2;
-      if (f1 != 0.0F) {
-        l1 = (this.i.size() * 1024.0F * 1000.0F / f1);
-      }
-    }
-    return l1;
-  }
-  
-  public void a(com.tencent.liteav.basic.f.a parama)
-  {
-    if (!this.g) {
+      this.j.join();
+      label25:
+      this.j = null;
+      AppMethodBeat.o(146223);
       return;
     }
-    synchronized (this.h)
+    catch (InterruptedException localInterruptedException)
     {
-      if (this.h != null) {
-        this.h.add(parama);
-      }
-      return;
+      break label25;
     }
   }
   
-  public void a(WeakReference<d> paramWeakReference)
+  public void a(WeakReference<c> paramWeakReference)
   {
+    AppMethodBeat.i(66584);
     if (this.g) {
-      b();
+      a();
     }
     this.b = paramWeakReference;
     this.f = 0L;
@@ -514,186 +481,180 @@ public class a
     this.j = new Thread(this);
     this.j.setName(a);
     this.j.start();
-  }
-  
-  public void b()
-  {
-    this.g = false;
-    if (this.j != null) {}
-    try
-    {
-      this.j.join();
-      label19:
-      this.j = null;
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label19;
-    }
+    AppMethodBeat.o(66584);
   }
   
   /* Error */
   public void run()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 64	com/tencent/liteav/audio/impl/Play/a:g	Z
-    //   4: ifeq +236 -> 240
-    //   7: aload_0
-    //   8: getfield 331	com/tencent/liteav/audio/impl/Play/a:h	Ljava/util/Vector;
-    //   11: astore 4
-    //   13: aload 4
-    //   15: monitorenter
-    //   16: aload_0
-    //   17: getfield 331	com/tencent/liteav/audio/impl/Play/a:h	Ljava/util/Vector;
-    //   20: invokevirtual 360	java/util/Vector:isEmpty	()Z
-    //   23: istore_3
-    //   24: aload 4
-    //   26: monitorexit
-    //   27: iload_3
-    //   28: ifeq +25 -> 53
-    //   31: ldc2_w 361
-    //   34: invokestatic 308	java/lang/Thread:sleep	(J)V
-    //   37: goto -37 -> 0
-    //   40: astore 4
-    //   42: goto -42 -> 0
-    //   45: astore 5
-    //   47: aload 4
-    //   49: monitorexit
-    //   50: aload 5
-    //   52: athrow
-    //   53: aload_0
-    //   54: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   57: ifnull +215 -> 272
-    //   60: aload_0
-    //   61: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   64: invokevirtual 265	android/media/MediaCodec:getInputBuffers	()[Ljava/nio/ByteBuffer;
-    //   67: astore 4
-    //   69: iconst_1
-    //   70: istore_1
-    //   71: aload_0
-    //   72: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   75: ldc2_w 103
-    //   78: invokevirtual 269	android/media/MediaCodec:dequeueInputBuffer	(J)I
-    //   81: istore_2
-    //   82: iload_2
-    //   83: istore_1
-    //   84: iload_1
-    //   85: ifge +4 -> 89
-    //   88: return
-    //   89: aload_0
-    //   90: getfield 331	com/tencent/liteav/audio/impl/Play/a:h	Ljava/util/Vector;
-    //   93: astore 5
-    //   95: aload 5
-    //   97: monitorenter
-    //   98: aload_0
-    //   99: getfield 331	com/tencent/liteav/audio/impl/Play/a:h	Ljava/util/Vector;
-    //   102: iconst_0
-    //   103: invokevirtual 363	java/util/Vector:remove	(I)Ljava/lang/Object;
-    //   106: checkcast 71	com/tencent/liteav/basic/f/a
-    //   109: astore 6
-    //   111: aload 5
-    //   113: monitorexit
-    //   114: aload 6
-    //   116: getfield 365	com/tencent/liteav/basic/f/a:d	I
-    //   119: getstatic 368	com/tencent/liteav/basic/a/a:k	I
-    //   122: if_icmpne +60 -> 182
-    //   125: aload_0
-    //   126: aload 6
-    //   128: invokespecial 370	com/tencent/liteav/audio/impl/Play/a:b	(Lcom/tencent/liteav/basic/f/a;)I
-    //   131: pop
-    //   132: goto -132 -> 0
-    //   135: astore 4
-    //   137: iconst_0
-    //   138: istore_1
-    //   139: getstatic 53	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
-    //   142: new 32	java/lang/StringBuilder
-    //   145: dup
-    //   146: ldc_w 372
-    //   149: invokespecial 38	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   152: iload_1
-    //   153: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   156: ldc_w 374
-    //   159: invokevirtual 48	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: aload 4
-    //   164: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   167: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: invokestatic 277	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   173: return
-    //   174: astore 4
-    //   176: aload 5
-    //   178: monitorexit
-    //   179: aload 4
-    //   181: athrow
-    //   182: aload 6
-    //   184: getfield 365	com/tencent/liteav/basic/f/a:d	I
-    //   187: getstatic 377	com/tencent/liteav/basic/a/a:l	I
-    //   190: if_icmpne +38 -> 228
-    //   193: aload_0
-    //   194: getfield 170	com/tencent/liteav/audio/impl/Play/a:i	Ljava/util/List;
-    //   197: new 177	java/lang/Long
-    //   200: dup
-    //   201: aload 6
-    //   203: getfield 379	com/tencent/liteav/basic/f/a:e	J
-    //   206: invokespecial 381	java/lang/Long:<init>	(J)V
-    //   209: invokeinterface 382 2 0
-    //   214: pop
-    //   215: aload_0
-    //   216: aload 6
-    //   218: aload 4
-    //   220: iload_1
-    //   221: invokespecial 271	com/tencent/liteav/audio/impl/Play/a:a	(Lcom/tencent/liteav/basic/f/a;[Ljava/nio/ByteBuffer;I)I
-    //   224: pop
-    //   225: goto -225 -> 0
-    //   228: getstatic 53	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
-    //   231: ldc_w 384
-    //   234: invokestatic 277	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   237: goto -237 -> 0
-    //   240: aload_0
-    //   241: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   244: ifnull -156 -> 88
-    //   247: aload_0
-    //   248: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   251: invokevirtual 243	android/media/MediaCodec:stop	()V
-    //   254: aload_0
-    //   255: getfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   258: invokevirtual 246	android/media/MediaCodec:release	()V
-    //   261: aload_0
-    //   262: aconst_null
-    //   263: putfield 60	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
-    //   266: return
-    //   267: astore 4
-    //   269: goto -130 -> 139
-    //   272: aconst_null
-    //   273: astore 4
-    //   275: iconst_m1
-    //   276: istore_1
-    //   277: goto -188 -> 89
+    //   0: ldc_w 329
+    //   3: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 73	com/tencent/liteav/audio/impl/Play/a:g	Z
+    //   10: ifeq +252 -> 262
+    //   13: aload_0
+    //   14: getfield 315	com/tencent/liteav/audio/impl/Play/a:h	Ljava/util/Vector;
+    //   17: astore 4
+    //   19: aload 4
+    //   21: monitorenter
+    //   22: aload_0
+    //   23: getfield 315	com/tencent/liteav/audio/impl/Play/a:h	Ljava/util/Vector;
+    //   26: invokevirtual 332	java/util/Vector:isEmpty	()Z
+    //   29: istore_3
+    //   30: aload 4
+    //   32: monitorexit
+    //   33: iload_3
+    //   34: ifeq +31 -> 65
+    //   37: ldc2_w 333
+    //   40: invokestatic 208	java/lang/Thread:sleep	(J)V
+    //   43: goto -37 -> 6
+    //   46: astore 4
+    //   48: goto -42 -> 6
+    //   51: astore 5
+    //   53: aload 4
+    //   55: monitorexit
+    //   56: ldc_w 329
+    //   59: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   62: aload 5
+    //   64: athrow
+    //   65: aload_0
+    //   66: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   69: ifnull +231 -> 300
+    //   72: aload_0
+    //   73: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   76: invokevirtual 165	android/media/MediaCodec:getInputBuffers	()[Ljava/nio/ByteBuffer;
+    //   79: astore 4
+    //   81: iconst_1
+    //   82: istore_1
+    //   83: aload_0
+    //   84: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   87: ldc2_w 166
+    //   90: invokevirtual 171	android/media/MediaCodec:dequeueInputBuffer	(J)I
+    //   93: istore_2
+    //   94: iload_2
+    //   95: ifge +10 -> 105
+    //   98: ldc_w 329
+    //   101: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   104: return
+    //   105: iload_2
+    //   106: istore_1
+    //   107: aload_0
+    //   108: getfield 315	com/tencent/liteav/audio/impl/Play/a:h	Ljava/util/Vector;
+    //   111: astore 5
+    //   113: aload 5
+    //   115: monitorenter
+    //   116: aload_0
+    //   117: getfield 315	com/tencent/liteav/audio/impl/Play/a:h	Ljava/util/Vector;
+    //   120: iconst_0
+    //   121: invokevirtual 335	java/util/Vector:remove	(I)Ljava/lang/Object;
+    //   124: checkcast 89	com/tencent/liteav/basic/structs/a
+    //   127: astore 6
+    //   129: aload 5
+    //   131: monitorexit
+    //   132: aload 6
+    //   134: getfield 337	com/tencent/liteav/basic/structs/a:d	I
+    //   137: iconst_2
+    //   138: if_icmpne +72 -> 210
+    //   141: aload_0
+    //   142: aload 6
+    //   144: invokespecial 339	com/tencent/liteav/audio/impl/Play/a:a	(Lcom/tencent/liteav/basic/structs/a;)I
+    //   147: pop
+    //   148: goto -142 -> 6
+    //   151: astore 4
+    //   153: iconst_0
+    //   154: istore_1
+    //   155: getstatic 59	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
+    //   158: new 38	java/lang/StringBuilder
+    //   161: dup
+    //   162: ldc_w 341
+    //   165: invokespecial 44	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   168: iload_1
+    //   169: invokevirtual 97	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   172: ldc_w 343
+    //   175: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: aload 4
+    //   180: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   183: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: invokestatic 180	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   189: ldc_w 329
+    //   192: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   195: return
+    //   196: astore 4
+    //   198: aload 5
+    //   200: monitorexit
+    //   201: ldc_w 329
+    //   204: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   207: aload 4
+    //   209: athrow
+    //   210: aload 6
+    //   212: getfield 337	com/tencent/liteav/basic/structs/a:d	I
+    //   215: iconst_3
+    //   216: if_icmpne +34 -> 250
+    //   219: aload_0
+    //   220: getfield 267	com/tencent/liteav/audio/impl/Play/a:i	Ljava/util/List;
+    //   223: aload 6
+    //   225: getfield 345	com/tencent/liteav/basic/structs/a:e	J
+    //   228: invokestatic 349	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   231: invokeinterface 353 2 0
+    //   236: pop
+    //   237: aload_0
+    //   238: aload 6
+    //   240: aload 4
+    //   242: iload_1
+    //   243: invokespecial 174	com/tencent/liteav/audio/impl/Play/a:a	(Lcom/tencent/liteav/basic/structs/a;[Ljava/nio/ByteBuffer;I)I
+    //   246: pop
+    //   247: goto -241 -> 6
+    //   250: getstatic 59	com/tencent/liteav/audio/impl/Play/a:a	Ljava/lang/String;
+    //   253: ldc_w 355
+    //   256: invokestatic 180	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   259: goto -253 -> 6
+    //   262: aload_0
+    //   263: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   266: ifnull +22 -> 288
+    //   269: aload_0
+    //   270: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   273: invokevirtual 141	android/media/MediaCodec:stop	()V
+    //   276: aload_0
+    //   277: getfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   280: invokevirtual 144	android/media/MediaCodec:release	()V
+    //   283: aload_0
+    //   284: aconst_null
+    //   285: putfield 69	com/tencent/liteav/audio/impl/Play/a:c	Landroid/media/MediaCodec;
+    //   288: ldc_w 329
+    //   291: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   294: return
+    //   295: astore 4
+    //   297: goto -142 -> 155
+    //   300: iconst_m1
+    //   301: istore_1
+    //   302: aconst_null
+    //   303: astore 4
+    //   305: goto -198 -> 107
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	280	0	this	a
-    //   70	207	1	k	int
-    //   81	2	2	m	int
-    //   23	5	3	bool	boolean
-    //   11	14	4	localVector1	Vector
-    //   40	8	4	localException1	Exception
-    //   67	1	4	arrayOfByteBuffer1	ByteBuffer[]
-    //   135	28	4	localException2	Exception
-    //   174	45	4	arrayOfByteBuffer2	ByteBuffer[]
-    //   267	1	4	localException3	Exception
-    //   273	1	4	localObject1	Object
-    //   45	6	5	localObject2	Object
-    //   109	108	6	locala	com.tencent.liteav.basic.f.a
+    //   0	308	0	this	a
+    //   82	220	1	k	int
+    //   93	13	2	m	int
+    //   29	5	3	bool	boolean
+    //   17	14	4	localVector1	Vector
+    //   46	8	4	localException1	Exception
+    //   79	1	4	arrayOfByteBuffer1	ByteBuffer[]
+    //   151	28	4	localException2	Exception
+    //   196	45	4	arrayOfByteBuffer2	ByteBuffer[]
+    //   295	1	4	localException3	Exception
+    //   303	1	4	localObject1	Object
+    //   51	12	5	localObject2	Object
+    //   127	112	6	locala	com.tencent.liteav.basic.structs.a
     // Exception table:
     //   from	to	target	type
-    //   31	37	40	java/lang/Exception
-    //   16	27	45	finally
-    //   47	50	45	finally
-    //   60	69	135	java/lang/Exception
-    //   98	114	174	finally
-    //   176	179	174	finally
-    //   71	82	267	java/lang/Exception
+    //   37	43	46	java/lang/Exception
+    //   22	33	51	finally
+    //   53	56	51	finally
+    //   72	81	151	java/lang/Exception
+    //   116	132	196	finally
+    //   198	201	196	finally
+    //   83	94	295	java/lang/Exception
   }
 }
 

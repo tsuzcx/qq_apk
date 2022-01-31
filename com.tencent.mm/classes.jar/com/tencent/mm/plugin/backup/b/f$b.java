@@ -1,22 +1,26 @@
 package com.tencent.mm.plugin.backup.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class f$b
   implements Cloneable, Comparable<b>
 {
-  public String hFD;
-  public long hFE = 0L;
-  public long hFF = 0L;
-  public long hFG = -1L;
-  public long hFH = -1L;
+  public String jza;
+  public long jzb = 0L;
+  public long jzc = 0L;
+  public long jzd = -1L;
+  public long jze = -1L;
   
-  public final b atx()
+  public final b aSV()
   {
+    AppMethodBeat.i(17114);
     b localb = new b();
-    localb.hFD = this.hFD;
-    localb.hFE = this.hFE;
-    localb.hFF = this.hFF;
-    localb.hFG = this.hFG;
-    localb.hFH = this.hFH;
+    localb.jza = this.jza;
+    localb.jzb = this.jzb;
+    localb.jzc = this.jzc;
+    localb.jzd = this.jzd;
+    localb.jze = this.jze;
+    AppMethodBeat.o(17114);
     return localb;
   }
 }

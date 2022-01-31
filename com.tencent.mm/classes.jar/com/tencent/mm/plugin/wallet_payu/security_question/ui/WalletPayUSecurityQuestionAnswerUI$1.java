@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.security_question.ui;
 
 import android.widget.Button;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView.a;
 
@@ -9,16 +10,19 @@ final class WalletPayUSecurityQuestionAnswerUI$1
 {
   WalletPayUSecurityQuestionAnswerUI$1(WalletPayUSecurityQuestionAnswerUI paramWalletPayUSecurityQuestionAnswerUI) {}
   
-  public final void gG(boolean paramBoolean)
+  public final void onInputValidChange(boolean paramBoolean)
   {
-    WalletPayUSecurityQuestionAnswerUI.a locala = WalletPayUSecurityQuestionAnswerUI.a(this.qOT);
-    if (WalletPayUSecurityQuestionAnswerUI.b(locala.qOT).YL()) {}
+    AppMethodBeat.i(48578);
+    WalletPayUSecurityQuestionAnswerUI.a locala = WalletPayUSecurityQuestionAnswerUI.a(this.uEa);
+    if (WalletPayUSecurityQuestionAnswerUI.b(locala.uEa).asv()) {}
     for (int i = 1; i != 0; i = 0)
     {
-      WalletPayUSecurityQuestionAnswerUI.c(locala.qOT).setEnabled(true);
+      WalletPayUSecurityQuestionAnswerUI.c(locala.uEa).setEnabled(true);
+      AppMethodBeat.o(48578);
       return;
     }
-    WalletPayUSecurityQuestionAnswerUI.c(locala.qOT).setEnabled(false);
+    WalletPayUSecurityQuestionAnswerUI.c(locala.uEa).setEnabled(false);
+    AppMethodBeat.o(48578);
   }
 }
 

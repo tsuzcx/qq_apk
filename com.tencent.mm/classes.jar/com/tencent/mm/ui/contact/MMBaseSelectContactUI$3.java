@@ -1,27 +1,32 @@
 package com.tencent.mm.ui.contact;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class MMBaseSelectContactUI$3
-  implements m.a
+  implements n.a
 {
   MMBaseSelectContactUI$3(MMBaseSelectContactUI paramMMBaseSelectContactUI) {}
   
-  public final void t(String paramString, int paramInt, boolean paramBoolean)
+  public final void w(String paramString, int paramInt, boolean paramBoolean)
   {
-    y.i("MicroMsg.MMBaseSelectContactUI", "Callback SearchEnd Count=%d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(105216);
+    ab.i("MicroMsg.MMBaseSelectContactUI", "Callback SearchEnd Count=%d", new Object[] { Integer.valueOf(paramInt) });
     if ((paramBoolean) && (paramInt == 0))
     {
-      if (!bk.bl(paramString))
+      if (!bo.isNullOrNil(paramString))
       {
-        MMBaseSelectContactUI.b(this.vLX);
+        MMBaseSelectContactUI.b(this.Adz);
+        AppMethodBeat.o(105216);
         return;
       }
-      MMBaseSelectContactUI.a(this.vLX);
+      MMBaseSelectContactUI.a(this.Adz);
+      AppMethodBeat.o(105216);
       return;
     }
-    MMBaseSelectContactUI.c(this.vLX);
+    MMBaseSelectContactUI.c(this.Adz);
+    AppMethodBeat.o(105216);
   }
 }
 

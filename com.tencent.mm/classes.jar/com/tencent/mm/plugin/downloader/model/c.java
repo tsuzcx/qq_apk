@@ -1,239 +1,167 @@
 package com.tencent.mm.plugin.downloader.model;
 
-import android.database.Cursor;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.downloader.f.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader.g.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import java.util.Vector;
 
 public final class c
 {
-  public static b FC()
+  private static Vector<m> kYk;
+  private static m kYl;
+  
+  static
   {
-    if (g.DN().Dc())
-    {
-      g.DN();
-      if (!com.tencent.mm.kernel.a.CW()) {}
-    }
-    else
-    {
-      y.e("MicroMsg.FileDownloadInfoDBHelper", "no user login");
-      return null;
-    }
-    if (g.r(com.tencent.mm.plugin.downloader.a.c.class) == null)
-    {
-      y.e("MicroMsg.FileDownloadInfoDBHelper", "service not ready");
-      return null;
-    }
-    return ((com.tencent.mm.plugin.downloader.a.c)g.r(com.tencent.mm.plugin.downloader.a.c.class)).FC();
+    AppMethodBeat.i(2395);
+    kYk = new Vector();
+    AppMethodBeat.o(2395);
   }
   
-  public static LinkedList<com.tencent.mm.plugin.downloader.f.a> M(LinkedList<String> paramLinkedList)
+  public static void a(m paramm)
   {
-    LinkedList localLinkedList = null;
-    Object localObject = FC();
-    if (localObject == null) {
-      paramLinkedList = localLinkedList;
+    AppMethodBeat.i(2384);
+    if ((paramm != null) && (!kYk.contains(paramm))) {
+      kYk.add(paramm);
     }
-    do
+    AppMethodBeat.o(2384);
+  }
+  
+  public static void b(m paramm)
+  {
+    AppMethodBeat.i(2385);
+    if (paramm != null) {
+      kYk.remove(paramm);
+    }
+    AppMethodBeat.o(2385);
+  }
+  
+  public static void bjh()
+  {
+    kYl = null;
+  }
+  
+  public static void c(m paramm)
+  {
+    kYl = paramm;
+  }
+  
+  public final void c(long paramLong, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(2389);
+    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskFinished: %d", new Object[] { Long.valueOf(paramLong) });
+    e.iM(paramLong);
+    a locala = d.iJ(paramLong);
+    if (locala != null) {
+      com.tencent.mm.plugin.downloader.a.c.m(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
+    }
+    al.d(new c.4(this, paramLong, paramString, paramBoolean));
+    AppMethodBeat.o(2389);
+  }
+  
+  public final void d(final long paramLong, int paramInt, final boolean paramBoolean)
+  {
+    AppMethodBeat.i(2390);
+    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskFailed: %d, errCode : %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    e.iM(paramLong);
+    a locala = d.iJ(paramLong);
+    if (locala != null) {
+      com.tencent.mm.plugin.downloader.a.c.m(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
+    }
+    al.d(new Runnable()
     {
-      do
+      public final void run()
       {
-        return paramLinkedList;
-        paramLinkedList = b.O(paramLinkedList);
-        localObject = ((b)localObject).rawQuery("select * from FileDownloadInfo where " + paramLinkedList, new String[0]);
-        paramLinkedList = localLinkedList;
-      } while (localObject == null);
-      localLinkedList = new LinkedList();
-      if (((Cursor)localObject).moveToFirst()) {
-        do
+        AppMethodBeat.i(2380);
+        m[] arrayOfm = c.bji();
+        int j = arrayOfm.length;
+        int i = 0;
+        while (i < j)
         {
-          paramLinkedList = new com.tencent.mm.plugin.downloader.f.a();
-          paramLinkedList.d((Cursor)localObject);
-          localLinkedList.add(paramLinkedList);
-        } while (((Cursor)localObject).moveToNext());
-      }
-      paramLinkedList = localLinkedList;
-    } while (localObject == null);
-    ((Cursor)localObject).close();
-    return localLinkedList;
-  }
-  
-  public static LinkedList<com.tencent.mm.plugin.downloader.f.a> aFN()
-  {
-    Object localObject = FC();
-    if (localObject == null) {
-      localObject = null;
-    }
-    Cursor localCursor;
-    LinkedList localLinkedList;
-    do
-    {
-      return localObject;
-      y.i("MicroMsg.FileDownloadInfoStorage", "getDownloadInWifiRunningTasks, sql = " + "select * from FileDownloadInfo where status=1 and downloadInWifi=1");
-      localCursor = ((b)localObject).rawQuery("select * from FileDownloadInfo where status=1 and downloadInWifi=1", new String[0]);
-      localLinkedList = new LinkedList();
-      localObject = localLinkedList;
-    } while (localCursor == null);
-    while (localCursor.moveToNext())
-    {
-      localObject = new com.tencent.mm.plugin.downloader.f.a();
-      ((com.tencent.mm.plugin.downloader.f.a)localObject).d(localCursor);
-      localLinkedList.add(localObject);
-    }
-    localCursor.close();
-    return localLinkedList;
-  }
-  
-  public static LinkedList<com.tencent.mm.plugin.downloader.f.a> aFO()
-  {
-    Object localObject = FC();
-    if (localObject == null) {
-      localObject = null;
-    }
-    Cursor localCursor;
-    LinkedList localLinkedList;
-    do
-    {
-      return localObject;
-      y.i("MicroMsg.FileDownloadInfoStorage", "getDownloadInWifiPauseTasks, sql = " + "select * from FileDownloadInfo where status<>1 and status<>3 and downloadInWifi=1");
-      localCursor = ((b)localObject).rawQuery("select * from FileDownloadInfo where status<>1 and status<>3 and downloadInWifi=1", new String[0]);
-      localLinkedList = new LinkedList();
-      localObject = localLinkedList;
-    } while (localCursor == null);
-    while (localCursor.moveToNext())
-    {
-      localObject = new com.tencent.mm.plugin.downloader.f.a();
-      ((com.tencent.mm.plugin.downloader.f.a)localObject).d(localCursor);
-      localLinkedList.add(localObject);
-    }
-    localCursor.close();
-    return localLinkedList;
-  }
-  
-  public static long c(com.tencent.mm.plugin.downloader.f.a parama)
-  {
-    if (parama == null) {}
-    b localb;
-    do
-    {
-      return -1L;
-      localb = FC();
-    } while (localb == null);
-    boolean bool = localb.b(parama);
-    y.i("MicroMsg.FileDownloadInfoDBHelper", "insert downloadinfo: " + parama.field_downloadId + ", ret=" + bool);
-    return parama.field_downloadId;
-  }
-  
-  public static long d(com.tencent.mm.plugin.downloader.f.a parama)
-  {
-    if (parama == null) {}
-    b localb;
-    do
-    {
-      return -1L;
-      localb = FC();
-    } while (localb == null);
-    boolean bool = localb.c(parama, new String[0]);
-    y.d("MicroMsg.FileDownloadInfoDBHelper", "Update Downloadinfo, ID: %d, ret: %b, Status: %d", new Object[] { Long.valueOf(parama.field_downloadId), Boolean.valueOf(bool), Integer.valueOf(parama.field_status) });
-    return parama.field_downloadId;
-  }
-  
-  public static com.tencent.mm.plugin.downloader.f.a dk(long paramLong)
-  {
-    b localb = FC();
-    if (localb == null) {
-      return null;
-    }
-    return localb.dr(paramLong);
-  }
-  
-  public static boolean dl(long paramLong)
-  {
-    b localb = FC();
-    if (localb == null) {
-      return false;
-    }
-    com.tencent.mm.plugin.downloader.f.a locala = new com.tencent.mm.plugin.downloader.f.a();
-    locala.field_downloadId = paramLong;
-    return localb.a(locala, new String[0]);
-  }
-  
-  public static boolean j(long paramLong, int paramInt)
-  {
-    b localb = FC();
-    if (localb == null) {
-      return false;
-    }
-    return localb.gk("FileDownloadInfo", "update FileDownloadInfo set status = " + paramInt + " where downloadId = " + paramLong);
-  }
-  
-  public static com.tencent.mm.plugin.downloader.f.a zH(String paramString)
-  {
-    b localb = FC();
-    if (localb == null) {
-      return null;
-    }
-    return localb.zH(paramString);
-  }
-  
-  public static boolean zI(String paramString)
-  {
-    b localb = FC();
-    if (localb == null) {
-      return false;
-    }
-    if (bk.bl(paramString))
-    {
-      y.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, url is null");
-      return false;
-    }
-    return localb.gk("FileDownloadInfo", "delete from FileDownloadInfo where downloadUrl=\"" + paramString + "\"");
-  }
-  
-  public static boolean zJ(String paramString)
-  {
-    b localb = FC();
-    if (localb == null) {
-      return false;
-    }
-    if (bk.bl(paramString))
-    {
-      y.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, appId is null");
-      return false;
-    }
-    return localb.gk("FileDownloadInfo", "delete from FileDownloadInfo where appId=\"" + paramString + "\"");
-  }
-  
-  public static com.tencent.mm.plugin.downloader.f.a zK(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    Object localObject3 = FC();
-    if (localObject3 == null) {}
-    do
-    {
-      do
-      {
-        return localObject1;
-        if (bk.bl(paramString))
-        {
-          y.e("MicroMsg.FileDownloadInfoStorage", "Null or nil url");
-          return null;
+          arrayOfm[i].b(paramLong, paramBoolean, this.kYn);
+          i += 1;
         }
-        localObject3 = ((b)localObject3).rawQuery("select * from FileDownloadInfo where downloadUrlHashCode=" + paramString.hashCode(), new String[0]);
-      } while (localObject3 == null);
-      paramString = localObject2;
-      if (((Cursor)localObject3).moveToFirst())
-      {
-        paramString = new com.tencent.mm.plugin.downloader.f.a();
-        paramString.d((Cursor)localObject3);
+        if (c.bjj() != null) {
+          c.bjj().b(paramLong, paramBoolean, this.kYn);
+        }
+        AppMethodBeat.o(2380);
       }
-      localObject1 = paramString;
-    } while (localObject3 == null);
-    ((Cursor)localObject3).close();
-    return paramString;
+    });
+    AppMethodBeat.o(2390);
+  }
+  
+  public final void iF(final long paramLong)
+  {
+    AppMethodBeat.i(2388);
+    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskRemoved: %d", new Object[] { Long.valueOf(paramLong) });
+    a locala = d.iJ(paramLong);
+    if (locala != null) {
+      com.tencent.mm.plugin.downloader.a.c.m(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
+    }
+    al.d(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(2378);
+        m[] arrayOfm = c.bji();
+        int j = arrayOfm.length;
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfm[i].onTaskRemoved(paramLong);
+          i += 1;
+        }
+        if (c.bjj() != null) {
+          c.bjj().onTaskRemoved(paramLong);
+        }
+        AppMethodBeat.o(2378);
+      }
+    });
+    AppMethodBeat.o(2388);
+  }
+  
+  public final void iG(long paramLong)
+  {
+    AppMethodBeat.i(2391);
+    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskPaused: %d", new Object[] { Long.valueOf(paramLong) });
+    a locala = d.iJ(paramLong);
+    if (locala != null) {
+      com.tencent.mm.plugin.downloader.a.c.m(new String[] { locala.field_downloadUrl, locala.field_secondaryUrl });
+    }
+    al.d(new c.6(this, paramLong));
+    AppMethodBeat.o(2391);
+  }
+  
+  public final void iH(long paramLong)
+  {
+    AppMethodBeat.i(2392);
+    al.d(new c.7(this, paramLong));
+    AppMethodBeat.o(2392);
+  }
+  
+  public final void iI(long paramLong)
+  {
+    AppMethodBeat.i(2393);
+    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyMd5Checking: %d", new Object[] { Long.valueOf(paramLong) });
+    e.iL(paramLong);
+    al.d(new c.8(this, paramLong));
+    AppMethodBeat.o(2393);
+  }
+  
+  public final void j(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(2386);
+    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskStarted: %d, %s", new Object[] { Long.valueOf(paramLong), paramString });
+    al.d(new c.1(this, paramLong, paramString));
+    AppMethodBeat.o(2386);
+  }
+  
+  public final void k(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(2387);
+    ab.i("MicroMsg.FileDownloaderCallbackManager", "notifyTaskResumed: %d, %s", new Object[] { Long.valueOf(paramLong), paramString });
+    al.d(new c.2(this, paramLong, paramString));
+    AppMethodBeat.o(2387);
   }
 }
 

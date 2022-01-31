@@ -6,14 +6,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mars.comm.WakerLock;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.am.a;
-import com.tencent.mm.kernel.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.an.a;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.kernel.l;
-import com.tencent.mm.network.aa;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.service.ProcessService.MMProcessService;
+import com.tencent.mm.service.c;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.locks.Lock;
@@ -22,53 +22,82 @@ import java.util.concurrent.locks.ReentrantLock;
 public class NotifyReceiver
   extends BroadcastReceiver
 {
-  private static WakerLock dhK = null;
-  private static Set<Long> dhL = new HashSet();
-  private static Lock dhM = new ReentrantLock(false);
-  private static byte[] dhN = new byte[0];
-  private static byte[] dhO = new byte[0];
-  private static NotifyReceiver.a dhP;
-  private static boolean dhQ = true;
-  private static WakerLock dhx = null;
+  private static WakerLock dYK;
+  private static WakerLock dZd;
+  private static Set<Long> dZe;
+  private static Lock dZf;
+  private static byte[] dZg;
+  private static byte[] dZh;
+  private static NotifyReceiver.a dZi;
+  private static boolean dZj;
   
-  public static void vX()
+  static
   {
-    y.i("MicroMsg.NotifyReceiver", "markUIShow");
-    dhQ = false;
-    aa.Un().edit().putBoolean("is_in_notify_mode", false).commit();
+    AppMethodBeat.i(57806);
+    dYK = null;
+    dZd = null;
+    dZe = new HashSet();
+    dZf = new ReentrantLock(false);
+    dZg = new byte[0];
+    dZh = new byte[0];
+    dZj = true;
+    AppMethodBeat.o(57806);
   }
   
-  public static void vY()
+  public static void Il()
   {
-    com.tencent.mm.kernel.g.Dk().b(138, dhP);
-    com.tencent.mm.kernel.g.Dk().b(39, dhP);
-    com.tencent.mm.kernel.g.Dk().b(268369922, dhP);
-    if (dhP == null) {
-      dhP = new NotifyReceiver.a();
+    AppMethodBeat.i(57802);
+    Im();
+    AppMethodBeat.o(57802);
+  }
+  
+  public static void Im()
+  {
+    AppMethodBeat.i(57803);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NotifyReceiver", "quitLightPushMode");
+    dZj = false;
+    com.tencent.mm.network.ab.any().edit().putBoolean("is_in_notify_mode", false).commit();
+    AppMethodBeat.o(57803);
+  }
+  
+  public static void In()
+  {
+    AppMethodBeat.i(57804);
+    g.Rc().b(138, dZi);
+    g.Rc().b(39, dZi);
+    g.Rc().b(268369922, dZi);
+    if (dZi == null) {
+      dZi = new NotifyReceiver.a();
     }
-    com.tencent.mm.kernel.g.Dk().a(138, dhP);
-    com.tencent.mm.kernel.g.Dk().a(39, dhP);
-    com.tencent.mm.kernel.g.Dk().a(268369922, dhP);
+    g.Rc().a(138, dZi);
+    g.Rc().a(39, dZi);
+    g.Rc().a(268369922, dZi);
+    AppMethodBeat.o(57804);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    y.i("MicroMsg.NotifyReceiver", "onReceive intent :%s", new Object[] { paramIntent });
-    if (paramIntent == null) {
-      return;
-    }
-    if (l.bm(paramContext))
+    AppMethodBeat.i(57805);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NotifyReceiver", "onReceive intent :%s", new Object[] { paramIntent });
+    if (paramIntent == null)
     {
-      y.i("MicroMsg.NotifyReceiver", "fully exited, no need to start service");
+      AppMethodBeat.o(57805);
       return;
     }
-    a.iv(paramIntent.getIntExtra("notify_respType", -1));
-    Intent localIntent = new Intent(paramContext, NotifyReceiver.NotifyService.class);
-    if (paramIntent.getBooleanExtra("intent_from_shoot_key", false)) {
-      localIntent.putExtra("notify_option_type", 3);
+    if (l.bQ(paramContext))
+    {
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NotifyReceiver", "fully exited, no need to start service");
+      AppMethodBeat.o(57805);
+      return;
     }
-    localIntent.putExtras(paramIntent);
-    paramContext.startService(localIntent);
+    a.lj(paramIntent.getIntExtra("notify_respType", -1));
+    paramContext = new Intent(paramContext, NotifyReceiver.NotifyService.class);
+    if (paramIntent.getBooleanExtra("intent_from_shoot_key", false)) {
+      paramContext.putExtra("notify_option_type", 3);
+    }
+    paramContext.putExtras(paramIntent);
+    c.a(paramContext, "mm", true, new Intent(ah.getContext(), ProcessService.MMProcessService.class));
+    AppMethodBeat.o(57805);
   }
 }
 

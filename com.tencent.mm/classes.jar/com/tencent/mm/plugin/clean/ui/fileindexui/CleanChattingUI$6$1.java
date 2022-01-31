@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.widget.TextView;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CleanChattingUI$6$1
   implements Runnable
@@ -10,7 +10,9 @@ final class CleanChattingUI$6$1
   
   public final void run()
   {
-    CleanChattingUI.e(this.iDd.iDb).setText(this.iDd.iDb.getString(R.l.analyse_file_profress, new Object[] { " " }));
+    AppMethodBeat.i(18783);
+    CleanChattingUI.e(this.kIk.kIi).setText(this.kIk.kIi.getString(2131296534, new Object[] { " " }));
+    AppMethodBeat.o(18783);
   }
 }
 

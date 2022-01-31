@@ -14,7 +14,7 @@ final class e$1
   
   public final void handleMessage(Message paramMessage)
   {
-    this.wFH.a((d)paramMessage.obj);
+    this.Bdh.a((d)paramMessage.obj);
   }
 }
 

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.remittance.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class RemittanceF2fDynamicCodeUI$1$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class RemittanceF2fDynamicCodeUI$1$1
   
   public final void run()
   {
-    RemittanceF2fDynamicCodeUI.b(this.nDQ.nDP);
+    AppMethodBeat.i(45050);
+    RemittanceF2fDynamicCodeUI.b(this.qqJ.qqI);
+    AppMethodBeat.o(45050);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.account.security.ui;
 
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMEditText.b;
 
 final class ModSafeDeviceNameUI$3
@@ -8,19 +9,22 @@ final class ModSafeDeviceNameUI$3
 {
   ModSafeDeviceNameUI$3(ModSafeDeviceNameUI paramModSafeDeviceNameUI) {}
   
-  public final void XC()
+  public final void are()
   {
-    if (ModSafeDeviceNameUI.a(this.fke).getText().toString().trim().length() > 0)
+    AppMethodBeat.i(69865);
+    if (ModSafeDeviceNameUI.a(this.gBv).getText().toString().trim().length() > 0)
     {
-      this.fke.enableOptionMenu(true);
+      this.gBv.enableOptionMenu(true);
+      AppMethodBeat.o(69865);
       return;
     }
-    this.fke.enableOptionMenu(false);
+    this.gBv.enableOptionMenu(false);
+    AppMethodBeat.o(69865);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.ui.ModSafeDeviceNameUI.3
  * JD-Core Version:    0.7.0.1
  */

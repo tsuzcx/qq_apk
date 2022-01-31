@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.wenote.model;
 
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.l;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class k$4
-  extends ah
+  extends ak
 {
   k$4(k paramk) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    if (k.c(this.rGm).rGC.booleanValue())
+    AppMethodBeat.i(26667);
+    if (k.c(this.vwV).vxl.booleanValue())
     {
-      k.d(this.rGm).chE();
-      k.c(this.rGm).rGC = Boolean.valueOf(false);
+      k.d(this.vwV).dhU();
+      k.c(this.vwV).vxl = Boolean.FALSE;
     }
-    k.c(this.rGm).rGW = ((int)com.tencent.mm.bj.a.ck(k.e(this.rGm)));
+    k.c(this.vwV).vxE = ((int)com.tencent.mm.bk.a.hi(k.e(this.vwV)));
     sendEmptyMessageDelayed(4096, 250L);
+    AppMethodBeat.o(26667);
   }
 }
 

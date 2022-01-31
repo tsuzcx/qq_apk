@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MailWebViewUI$1$2
   implements Runnable
@@ -9,7 +10,9 @@ final class MailWebViewUI$1$2
   
   public final void run()
   {
-    Toast.makeText(this.niU.niS, this.gBn, 0).show();
+    AppMethodBeat.i(68391);
+    Toast.makeText(this.pOh.pOf, this.hZi, 0).show();
+    AppMethodBeat.o(68391);
   }
 }
 

@@ -1,21 +1,28 @@
 package com.tencent.mm.plugin.dbbackup;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
-    return new a();
+    AppMethodBeat.i(18967);
+    a locala = new a();
+    AppMethodBeat.o(18967);
+    return locala;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new d();
+    AppMethodBeat.i(18968);
+    d locald = new d();
+    AppMethodBeat.o(18968);
+    return locald;
   }
   
   public b getContactWidgetFactory()

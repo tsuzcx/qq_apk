@@ -1,77 +1,96 @@
 package com.tencent.mm.modelmulti;
 
-import com.tencent.mm.ap.c;
-import com.tencent.mm.cf.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aq.c;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bu;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bw;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.storage.be;
 import java.util.HashMap;
 
 public class n
-  implements ar
+  implements at
 {
-  public static HashMap<Integer, h.d> dgp = new HashMap();
-  private c etG;
+  public static HashMap<Integer, h.d> baseDBFactories;
+  private c fJt;
   
-  public static m Pl()
+  static
   {
-    g.DQ();
-    g.DN().CX();
-    return ((j)g.r(j.class)).Pl();
+    AppMethodBeat.i(16510);
+    baseDBFactories = new HashMap();
+    AppMethodBeat.o(16510);
   }
   
-  public static o Pm()
+  public static com.tencent.mm.plugin.messenger.foundation.a.a.n ain()
   {
-    return ((com.tencent.mm.plugin.zero.b.b)g.r(com.tencent.mm.plugin.zero.b.b.class)).Pm();
+    AppMethodBeat.i(16506);
+    g.RM();
+    g.RJ().QQ();
+    com.tencent.mm.plugin.messenger.foundation.a.a.n localn = ((j)g.E(j.class)).ain();
+    AppMethodBeat.o(16506);
+    return localn;
   }
   
-  public static n Pn()
+  public static o aio()
   {
-    au.Hq();
-    n localn2 = (n)bu.iR(n.class.getName());
+    AppMethodBeat.i(16507);
+    o localo = ((com.tencent.mm.plugin.zero.b.b)g.E(com.tencent.mm.plugin.zero.b.b.class)).aio();
+    AppMethodBeat.o(16507);
+    return localo;
+  }
+  
+  public static n aip()
+  {
+    AppMethodBeat.i(16508);
+    aw.aat();
+    n localn2 = (n)bw.pF(n.class.getName());
     n localn1 = localn2;
     if (localn2 == null)
     {
       localn1 = new n();
-      au.Hq().a(n.class.getName(), localn1);
+      aw.aat().a(n.class.getName(), localn1);
     }
+    AppMethodBeat.o(16508);
     return localn1;
   }
   
-  public final void bh(boolean paramBoolean)
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    com.tencent.mm.sdk.b.a locala = com.tencent.mm.sdk.b.a.udP;
+    return baseDBFactories;
+  }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16505);
+    com.tencent.mm.sdk.b.a locala = com.tencent.mm.sdk.b.a.ymk;
     c localc = new c();
-    this.etG = localc;
+    this.fJt = localc;
     locala.c(localc);
+    AppMethodBeat.o(16505);
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
+  public void onAccountRelease()
   {
-    if (this.etG != null)
+    AppMethodBeat.i(16509);
+    if (this.fJt != null)
     {
-      c localc = this.etG;
-      com.tencent.mm.sdk.b.a.udP.d(localc.emh);
-      com.tencent.mm.ap.b.Oi().emb = null;
-      ((j)g.r(j.class)).FB().b(localc);
-      Pn();
-      Pl().d(localc);
-      com.tencent.mm.sdk.b.a.udP.d(this.etG);
+      c localc = this.fJt;
+      com.tencent.mm.sdk.b.a.ymk.d(localc.fCE);
+      com.tencent.mm.aq.b.agX().fCx = null;
+      ((j)g.E(j.class)).YF().b(localc);
+      aip();
+      ain().remove(localc);
+      com.tencent.mm.sdk.b.a.ymk.d(this.fJt);
     }
+    AppMethodBeat.o(16509);
   }
   
-  public final HashMap<Integer, h.d> xe()
-  {
-    return dgp;
-  }
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

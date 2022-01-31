@@ -3,33 +3,33 @@ package com.tencent.mm.plugin.appbrand.appcache;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class ModulePkgInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<ModulePkgInfo> CREATOR = new ModulePkgInfo.1();
-  public boolean bGd;
-  public String bIW;
-  public volatile String fCl;
+  public static final Parcelable.Creator<ModulePkgInfo> CREATOR;
+  public boolean cnm;
+  public String cqq;
+  public PartialFile[] gUA;
+  public volatile String gUy;
+  public String[] gUz;
   public String name;
+  
+  static
+  {
+    AppMethodBeat.i(105311);
+    CREATOR = new ModulePkgInfo.1();
+    AppMethodBeat.o(105311);
+  }
   
   public ModulePkgInfo() {}
   
   private ModulePkgInfo(Parcel paramParcel)
   {
+    AppMethodBeat.i(105309);
     readFromParcel(paramParcel);
-  }
-  
-  public final ModulePkgInfo abE()
-  {
-    ModulePkgInfo localModulePkgInfo = new ModulePkgInfo();
-    Parcel localParcel = Parcel.obtain();
-    localParcel.setDataPosition(0);
-    writeToParcel(localParcel, 0);
-    localParcel.setDataPosition(0);
-    localModulePkgInfo.readFromParcel(localParcel);
-    localParcel.recycle();
-    return localModulePkgInfo;
+    AppMethodBeat.o(105309);
   }
   
   public int describeContents()
@@ -39,26 +39,34 @@ public class ModulePkgInfo
   
   public void readFromParcel(Parcel paramParcel)
   {
-    this.fCl = paramParcel.readString();
+    AppMethodBeat.i(105308);
+    this.gUy = paramParcel.readString();
     this.name = paramParcel.readString();
-    this.bIW = paramParcel.readString();
+    this.cqq = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.bGd = bool;
+      this.cnm = bool;
+      this.gUz = paramParcel.createStringArray();
+      this.gUA = ((PartialFile[])paramParcel.createTypedArray(PartialFile.CREATOR));
+      AppMethodBeat.o(105308);
       return;
     }
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.fCl);
+    AppMethodBeat.i(105307);
+    paramParcel.writeString(this.gUy);
     paramParcel.writeString(this.name);
-    paramParcel.writeString(this.bIW);
-    if (this.bGd) {}
+    paramParcel.writeString(this.cqq);
+    if (this.cnm) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeStringArray(this.gUz);
+      paramParcel.writeTypedArray(this.gUA, 0);
+      AppMethodBeat.o(105307);
       return;
     }
   }

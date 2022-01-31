@@ -1,26 +1,25 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
-import android.net.Uri;
 import java.io.IOException;
 
 public class SourceReadException
   extends Exception
 {
-  private final Uri source;
+  private final String source;
   
-  public SourceReadException(IOException paramIOException, Uri paramUri)
+  public SourceReadException(IOException paramIOException, String paramString)
   {
     super(paramIOException);
-    this.source = paramUri;
+    this.source = paramString;
   }
   
-  public SourceReadException(String paramString, Uri paramUri)
+  public SourceReadException(String paramString1, String paramString2)
   {
-    super(paramString);
-    this.source = paramUri;
+    super(paramString1);
+    this.source = paramString2;
   }
   
-  public Uri getSource()
+  public String getSource()
   {
     return this.source;
   }

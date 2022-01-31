@@ -1,20 +1,76 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import com.tencent.mm.plugin.appbrand.a;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.luggage.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class j
+public enum j
 {
-  public static boolean sm(String paramString)
+  public static int Ac(String paramString)
   {
-    if (bk.bl(paramString)) {}
-    do
+    AppMethodBeat.i(140822);
+    localObject = null;
+    try
     {
-      return false;
-      paramString = a.qo(paramString);
-    } while ((paramString == null) || (paramString.fPx) || (paramString.fPS.fEM == 0));
-    return true;
+      t.ayI();
+      WxaAttributes localWxaAttributes = t.AF(paramString);
+      localObject = localWxaAttributes;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      for (;;)
+      {
+        d.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localSecurityException, "queryWithAppId(%s)", new Object[] { paramString });
+        continue;
+        int i = localObject.ayD().hjW.bDG;
+        continue;
+        i = 5;
+      }
+    }
+    if (localObject == null)
+    {
+      i = -1;
+      d.i("MicroMsg.AppServiceSettingsResolver", "readAppFileStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
+      if (localObject == null) {
+        break label105;
+      }
+      i = localObject.ayD().hjW.bDG;
+      AppMethodBeat.o(140822);
+      return i * 1048576;
+    }
+  }
+  
+  public static int Ad(String paramString)
+  {
+    AppMethodBeat.i(140823);
+    localObject = null;
+    try
+    {
+      t.ayI();
+      WxaAttributes localWxaAttributes = t.AF(paramString);
+      localObject = localWxaAttributes;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      for (;;)
+      {
+        d.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localSecurityException, "queryWithAppId(%s)", new Object[] { paramString });
+        continue;
+        int i = localObject.ayD().hjW.hjY;
+        continue;
+        i = 5;
+      }
+    }
+    if (localObject == null)
+    {
+      i = -1;
+      d.i("MicroMsg.AppServiceSettingsResolver", "readAppOpendataLocalStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
+      if (localObject == null) {
+        break label105;
+      }
+      i = localObject.ayD().hjW.hjY;
+      AppMethodBeat.o(140823);
+      return i * 1048576;
+    }
   }
 }
 

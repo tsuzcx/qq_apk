@@ -1,45 +1,28 @@
 package com.tencent.mm.plugin.profile.ui.b;
 
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mm.platformtools.x;
-import com.tencent.mm.platformtools.x.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.d.a;
+import java.lang.ref.WeakReference;
 
 public final class a
-  extends BitmapDrawable
-  implements x.a
+  implements d.a
 {
-  private String url;
+  private WeakReference<d.a> bJz;
   
-  public a(Resources paramResources, String paramString) {}
-  
-  public final void draw(Canvas paramCanvas)
+  public a(d.a parama)
   {
-    Object localObject2 = x.a(new a.1(this));
-    Object localObject1;
-    if (localObject2 != null)
-    {
-      localObject1 = localObject2;
-      if (!((Bitmap)localObject2).isRecycled()) {}
-    }
-    else
-    {
-      localObject1 = null;
-    }
-    localObject2 = getBounds();
-    if (localObject1 != null) {
-      paramCanvas.drawBitmap(localObject1, null, (Rect)localObject2, null);
-    }
+    AppMethodBeat.i(23960);
+    this.bJz = new WeakReference(parama);
+    AppMethodBeat.o(23960);
   }
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void re(String paramString)
   {
-    if (this.url.equals(paramString)) {
-      invalidateSelf();
+    AppMethodBeat.i(23961);
+    if (this.bJz.get() != null) {
+      ((d.a)this.bJz.get()).re(paramString);
     }
+    AppMethodBeat.o(23961);
   }
 }
 

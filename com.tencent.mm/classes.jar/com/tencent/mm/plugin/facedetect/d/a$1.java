@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.facedetect.d;
 
-import com.tencent.mm.f.b.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.c.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -9,39 +10,43 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final void aU(int paramInt1, int paramInt2)
+  public final void bS(int paramInt1, int paramInt2)
   {
-    if (a.i(this.jOW) != null)
+    AppMethodBeat.i(284);
+    if (a.i(this.mjm) != null)
     {
-      Iterator localIterator = a.i(this.jOW).iterator();
+      Iterator localIterator = a.i(this.mjm).iterator();
       while (localIterator.hasNext())
       {
         c.a locala = (c.a)localIterator.next();
         if (locala != null) {
-          locala.aU(paramInt1, paramInt2);
+          locala.bS(paramInt1, paramInt2);
         }
       }
     }
+    AppMethodBeat.o(284);
   }
   
-  public final void r(byte[] paramArrayOfByte, int paramInt)
+  public final void s(byte[] paramArrayOfByte, int paramInt)
   {
-    if (a.i(this.jOW) != null)
+    AppMethodBeat.i(283);
+    if (a.i(this.mjm) != null)
     {
-      Iterator localIterator = a.i(this.jOW).iterator();
+      Iterator localIterator = a.i(this.mjm).iterator();
       while (localIterator.hasNext())
       {
         c.a locala = (c.a)localIterator.next();
         if (locala != null) {
-          locala.r(paramArrayOfByte, paramInt);
+          locala.s(paramArrayOfByte, paramInt);
         }
       }
     }
+    AppMethodBeat.o(283);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.a.1
  * JD-Core Version:    0.7.0.1
  */

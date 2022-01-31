@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.mall.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MallIndexOSUI$2$1
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class MallIndexOSUI$2$1
   
   public final void run()
   {
-    if (!MallIndexOSUI.c(this.lZY.lZX)) {
-      this.lZY.lZX.finish();
+    AppMethodBeat.i(43179);
+    if (!MallIndexOSUI.c(this.ozW.ozV)) {
+      this.ozW.ozV.finish();
     }
+    AppMethodBeat.o(43179);
   }
 }
 

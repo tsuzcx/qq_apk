@@ -6,69 +6,72 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.downloader_app.b.b;
-import com.tencent.mm.plugin.downloader_app.b.e;
-import com.tencent.mm.plugin.downloader_app.b.h;
-import com.tencent.mm.plugin.downloader_app.b.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader_app.b.i;
 
 public class TaskHeaderView
   extends LinearLayout
 {
-  private TextView iTA;
-  private View iTB;
-  private TextView iTz;
+  private TextView lcp;
+  private TextView lcq;
+  private View lcr;
   
   public TaskHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public final void a(j paramj, boolean paramBoolean)
+  public final void a(i parami, boolean paramBoolean)
   {
-    if (paramj.type == 1)
+    AppMethodBeat.i(136256);
+    if (parami.type == 1)
     {
-      this.iTz.setText(getResources().getString(b.h.download_task_title));
-      this.iTA.setVisibility(8);
+      this.lcp.setText(getResources().getString(2131299019));
+      this.lcq.setVisibility(8);
       if (!paramBoolean) {
-        break label187;
+        break label192;
       }
-      this.iTB.setVisibility(0);
+      this.lcr.setVisibility(0);
     }
     for (;;)
     {
-      if (!paramj.ilB) {
-        break label199;
+      if (!parami.kmz) {
+        break label204;
       }
-      this.iTz.setTextColor(getContext().getResources().getColor(b.b.disable_title_color));
-      this.iTA.setVisibility(8);
+      this.lcp.setTextColor(getContext().getResources().getColor(2131689964));
+      this.lcq.setVisibility(8);
+      AppMethodBeat.o(136256);
       return;
-      if (paramj.type == 3)
+      if (parami.type == 3)
       {
-        this.iTz.setText(getResources().getString(b.h.update_task_title));
-        this.iTA.setText(getResources().getString(b.h.update_task_count, new Object[] { Integer.valueOf(paramj.iSs) }));
-        this.iTA.setVisibility(0);
+        this.lcp.setText(getResources().getString(2131304440));
+        this.lcq.setText(getResources().getString(2131304439, new Object[] { Integer.valueOf(parami.lba) }));
+        this.lcq.setVisibility(0);
         break;
       }
-      if (paramj.type != 5) {
+      if (parami.type != 5) {
         break;
       }
-      this.iTz.setText(getResources().getString(b.h.download_history_title));
-      this.iTA.setVisibility(8);
+      this.lcp.setText(getResources().getString(2131299007));
+      this.lcq.setVisibility(8);
       break;
-      label187:
-      this.iTB.setVisibility(8);
+      label192:
+      this.lcr.setVisibility(8);
     }
-    label199:
-    this.iTz.setTextColor(getContext().getResources().getColor(b.b.item_name_color));
-    this.iTA.setVisibility(0);
+    label204:
+    this.lcp.setTextColor(getContext().getResources().getColor(2131690194));
+    this.lcq.setVisibility(0);
+    AppMethodBeat.o(136256);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(136255);
     super.onFinishInflate();
-    this.iTB = findViewById(b.e.divided_view);
-    this.iTz = ((TextView)findViewById(b.e.left_title));
-    this.iTA = ((TextView)findViewById(b.e.right_title));
+    this.lcr = findViewById(2131823429);
+    this.lcp = ((TextView)findViewById(2131822330));
+    this.lcq = ((TextView)findViewById(2131822335));
+    AppMethodBeat.o(136255);
   }
 }
 

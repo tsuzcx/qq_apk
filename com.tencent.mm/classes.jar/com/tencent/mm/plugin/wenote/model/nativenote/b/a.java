@@ -5,59 +5,59 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 public abstract interface a
 {
-  public abstract void Dj(int paramInt);
+  public abstract void Lc(int paramInt);
   
-  public abstract void Dk(int paramInt);
+  public abstract void Ld(int paramInt);
   
-  public abstract void Dl(int paramInt);
+  public abstract void Le(int paramInt);
   
-  public abstract void Dm(int paramInt);
-  
-  public abstract void U(int paramInt, long paramLong);
+  public abstract void Lf(int paramInt);
   
   public abstract void a(WXRTEditText paramWXRTEditText);
   
   public abstract void a(WXRTEditText paramWXRTEditText, boolean paramBoolean, int paramInt);
   
-  public abstract void chF();
+  public abstract void aj(int paramInt, long paramLong);
   
-  public abstract void chG();
+  public abstract void c(Object paramObject, boolean paramBoolean);
   
-  public abstract void chH();
+  public abstract void dhV();
   
-  public abstract void chI();
+  public abstract void dhW();
   
-  public abstract void chJ();
+  public abstract void dhX();
   
-  public abstract void chK();
+  public abstract void dhY();
   
-  public abstract void chL();
+  public abstract void dhZ();
   
-  public abstract void chM();
+  public abstract void dia();
   
-  public abstract int chN();
+  public abstract void dib();
   
-  public abstract int chO();
+  public abstract void dic();
   
-  public abstract boolean chP();
+  public abstract int did();
   
-  public abstract RecyclerView chQ();
+  public abstract int die();
   
-  public abstract void chR();
+  public abstract boolean dif();
   
-  public abstract void chS();
+  public abstract RecyclerView dig();
   
-  public abstract void d(Object paramObject, boolean paramBoolean);
+  public abstract void dih();
   
-  public abstract void eM(int paramInt1, int paramInt2);
+  public abstract void dii();
   
-  public abstract void eN(int paramInt1, int paramInt2);
+  public abstract void gS(int paramInt1, int paramInt2);
   
-  public abstract void eO(int paramInt1, int paramInt2);
+  public abstract void gT(int paramInt1, int paramInt2);
   
-  public abstract void f(boolean paramBoolean, long paramLong);
+  public abstract void gU(int paramInt1, int paramInt2);
   
-  public abstract void lB(boolean paramBoolean);
+  public abstract void h(boolean paramBoolean, long paramLong);
+  
+  public abstract void oM(boolean paramBoolean);
 }
 
 

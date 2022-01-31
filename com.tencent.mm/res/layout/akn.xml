@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/p1"
+<RelativeLayout android:layout_gravity="center_vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a7j" android:layout_marginTop="12.0dip" android:layout_marginRight="@dimen/a7j" android:layout_marginBottom="10.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView style="@style/mn">
-        <LinearLayout style="@style/k5">
-            <TextView android:text="@string/ddv" android:layout_weight="1.0" style="@style/lr" />
-            <EditText android:id="@id/di8" android:hint="@string/ddo" style="@style/lp" />
-            <View style="@style/n3" />
-            <EditText android:id="@id/di9" android:hint="@string/ddp" style="@style/lp" />
-            <View style="@style/n3" />
-            <TextView android:text="@string/ddq" android:layout_weight="1.0" style="@style/lr" />
+    <LinearLayout android:orientation="vertical" android:id="@id/dnr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dns" android:layout_centerHorizontal="true">
+        <LinearLayout android:orientation="vertical" android:id="@id/dnt" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0sp" android:textColor="#ff888888" android:id="@id/dnu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <View android:id="@id/dnv" android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginTop="8.0dip" />
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

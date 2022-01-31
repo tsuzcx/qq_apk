@@ -1,62 +1,72 @@
 package com.tencent.soter.a.g;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b$a
 {
-  public b wPV = new b((byte)0);
+  public b Bnv;
   
-  public final a Js(int paramInt)
+  public b$a()
   {
-    this.wPV.fzn = paramInt;
+    AppMethodBeat.i(10477);
+    this.Bnv = new b((byte)0);
+    AppMethodBeat.o(10477);
+  }
+  
+  public final a So(int paramInt)
+  {
+    this.Bnv.mScene = paramInt;
     return this;
   }
   
-  public final a Jt(int paramInt)
+  public final a Sp(int paramInt)
   {
-    this.wPV.wPS = paramInt;
+    this.Bnv.Bns = paramInt;
     return this;
   }
   
   public final a a(com.tencent.soter.a.a.a parama)
   {
-    this.wPV.kly = parama;
+    this.Bnv.mGm = parama;
     return this;
   }
   
   public final a a(com.tencent.soter.a.a.b paramb)
   {
-    this.wPV.wPU = paramb;
+    this.Bnv.Bnu = paramb;
     return this;
   }
   
+  @Deprecated
   public final a a(com.tencent.soter.a.d.a parama)
   {
-    this.wPV.klx = parama;
+    this.Bnv.mGl = parama;
     return this;
   }
   
+  @Deprecated
   public final a a(com.tencent.soter.a.d.b paramb)
   {
-    this.wPV.wPT = paramb;
+    this.Bnv.Bnt = paramb;
     return this;
   }
   
-  public final a afV(String paramString)
+  public final a awQ(String paramString)
   {
-    this.wPV.qRa = paramString;
+    this.Bnv.uGi = paramString;
     return this;
   }
   
-  public final a hM(Context paramContext)
+  public final a jn(Context paramContext)
   {
-    this.wPV.mContext = paramContext;
+    this.Bnv.mContext = paramContext;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.soter.a.g.b.a
  * JD-Core Version:    0.7.0.1
  */

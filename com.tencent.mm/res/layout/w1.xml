@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bgq" android:background="@drawable/at6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0dip" android:textColor="#ffaaaaaa" android:id="@id/bgr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <Button android:textSize="@dimen/k9" android:id="@id/bgs" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:minWidth="60.0dip" android:text="@string/ni" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/mx" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/bkj" android:background="@drawable/abk" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <android.support.v4.view.ViewPager android:gravity="center" android:id="@id/bkk" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.base.MMDotView android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/bkl" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

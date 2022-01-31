@@ -4,17 +4,17 @@ import android.util.SparseArray;
 
 final class b$d
 {
-  public final int aOh;
-  public final SparseArray<b.e> aOi;
+  public final int aVB;
+  public final SparseArray<b.e> aVC;
   public final int state;
   public final int version;
   
   public b$d(int paramInt1, int paramInt2, int paramInt3, SparseArray<b.e> paramSparseArray)
   {
-    this.aOh = paramInt1;
+    this.aVB = paramInt1;
     this.version = paramInt2;
     this.state = paramInt3;
-    this.aOi = paramSparseArray;
+    this.aVC = paramSparseArray;
   }
 }
 

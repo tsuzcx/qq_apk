@@ -5,7 +5,7 @@ import java.util.zip.ZipFile;
 
 public final class a
 {
-  public static void S(Object paramObject)
+  public static void V(Object paramObject)
   {
     if (paramObject == null) {}
     for (;;)

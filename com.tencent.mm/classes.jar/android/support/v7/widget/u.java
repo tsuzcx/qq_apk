@@ -1,149 +1,88 @@
 package android.support.v7.widget;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.v4.view.x;
+import android.support.v7.view.menu.h.a;
+import android.support.v7.view.menu.o.a;
+import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.ViewGroup;
+import android.view.Window.Callback;
 
-final class u
+public abstract interface u
 {
-  final u.b abh;
-  final u.a abi;
-  final List<View> abj;
+  public abstract void a(o.a parama, h.a parama1);
   
-  u(u.b paramb)
-  {
-    this.abh = paramb;
-    this.abi = new u.a();
-    this.abj = new ArrayList();
-  }
+  public abstract void a(ar paramar);
   
-  final void a(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams, boolean paramBoolean)
-  {
-    if (paramInt < 0) {}
-    for (paramInt = this.abh.getChildCount();; paramInt = bs(paramInt))
-    {
-      this.abi.o(paramInt, paramBoolean);
-      if (paramBoolean) {
-        aQ(paramView);
-      }
-      this.abh.attachViewToParent(paramView, paramInt, paramLayoutParams);
-      return;
-    }
-  }
+  public abstract void a(Menu paramMenu, o.a parama);
   
-  final void a(View paramView, int paramInt, boolean paramBoolean)
-  {
-    if (paramInt < 0) {}
-    for (paramInt = this.abh.getChildCount();; paramInt = bs(paramInt))
-    {
-      this.abi.o(paramInt, paramBoolean);
-      if (paramBoolean) {
-        aQ(paramView);
-      }
-      this.abh.addView(paramView, paramInt);
-      return;
-    }
-  }
+  public abstract x c(int paramInt, long paramLong);
   
-  final void aQ(View paramView)
-  {
-    this.abj.add(paramView);
-    this.abh.aU(paramView);
-  }
+  public abstract void collapseActionView();
   
-  final boolean aR(View paramView)
-  {
-    if (this.abj.remove(paramView))
-    {
-      this.abh.aV(paramView);
-      return true;
-    }
-    return false;
-  }
+  public abstract void dismissPopupMenus();
   
-  final boolean aS(View paramView)
-  {
-    return this.abj.contains(paramView);
-  }
+  public abstract Context getContext();
   
-  final int bs(int paramInt)
-  {
-    if (paramInt < 0)
-    {
-      paramInt = -1;
-      return paramInt;
-    }
-    int j = this.abh.getChildCount();
-    int i = paramInt;
-    for (;;)
-    {
-      if (i >= j) {
-        break label72;
-      }
-      int k = paramInt - (i - this.abi.bv(i));
-      if (k == 0) {
-        for (;;)
-        {
-          paramInt = i;
-          if (!this.abi.get(i)) {
-            break;
-          }
-          i += 1;
-        }
-      }
-      i += k;
-    }
-    label72:
-    return -1;
-  }
+  public abstract View getCustomView();
   
-  final View bt(int paramInt)
-  {
-    return this.abh.getChildAt(paramInt);
-  }
+  public abstract int getDisplayOptions();
   
-  final void detachViewFromParent(int paramInt)
-  {
-    paramInt = bs(paramInt);
-    this.abi.bu(paramInt);
-    this.abh.detachViewFromParent(paramInt);
-  }
+  public abstract int getHeight();
   
-  final View getChildAt(int paramInt)
-  {
-    paramInt = bs(paramInt);
-    return this.abh.getChildAt(paramInt);
-  }
+  public abstract Menu getMenu();
   
-  final int getChildCount()
-  {
-    return this.abh.getChildCount() - this.abj.size();
-  }
+  public abstract int getNavigationMode();
   
-  final int gx()
-  {
-    return this.abh.getChildCount();
-  }
+  public abstract CharSequence getTitle();
   
-  final int indexOfChild(View paramView)
-  {
-    int i = this.abh.indexOfChild(paramView);
-    if (i == -1) {}
-    while (this.abi.get(i)) {
-      return -1;
-    }
-    return i - this.abi.bv(i);
-  }
+  public abstract int getVisibility();
   
-  public final String toString()
-  {
-    return this.abi.toString() + ", hidden list:" + this.abj.size();
-  }
+  public abstract boolean gx();
+  
+  public abstract boolean gy();
+  
+  public abstract void gz();
+  
+  public abstract boolean hasExpandedActionView();
+  
+  public abstract boolean hideOverflowMenu();
+  
+  public abstract ViewGroup hz();
+  
+  public abstract boolean isOverflowMenuShowing();
+  
+  public abstract void setBackgroundDrawable(Drawable paramDrawable);
+  
+  public abstract void setCollapsible(boolean paramBoolean);
+  
+  public abstract void setCustomView(View paramView);
+  
+  public abstract void setDisplayOptions(int paramInt);
+  
+  public abstract void setIcon(int paramInt);
+  
+  public abstract void setIcon(Drawable paramDrawable);
+  
+  public abstract void setLogo(int paramInt);
+  
+  public abstract void setLogo(Drawable paramDrawable);
+  
+  public abstract void setNavigationContentDescription(int paramInt);
+  
+  public abstract void setVisibility(int paramInt);
+  
+  public abstract void setWindowCallback(Window.Callback paramCallback);
+  
+  public abstract void setWindowTitle(CharSequence paramCharSequence);
+  
+  public abstract boolean showOverflowMenu();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v7.widget.u
  * JD-Core Version:    0.7.0.1
  */

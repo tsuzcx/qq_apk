@@ -2,7 +2,8 @@ package com.tencent.mm.ui.gridviewheaders;
 
 import android.view.View;
 import android.view.ViewConfiguration;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class GridHeadersGridView$b
   implements Runnable
@@ -11,40 +12,42 @@ final class GridHeadersGridView$b
   
   public final void run()
   {
-    if (this.vWW.alA == 0)
+    AppMethodBeat.i(107364);
+    if (this.Ape.anS == 0)
     {
-      this.vWW.alA = 1;
-      View localView = this.vWW.HY(this.vWW.vWU);
+      this.Ape.anS = 1;
+      View localView = this.Ape.QK(this.Ape.Apc);
       if ((localView != null) && (!localView.hasFocusable()))
       {
-        if (this.vWW.uTo) {
-          break label157;
+        if (!this.Ape.zhO)
+        {
+          localView.setPressed(true);
+          this.Ape.setPressed(true);
+          this.Ape.refreshDrawableState();
+          int i = ViewConfiguration.getLongPressTimeout();
+          if (this.Ape.isLongClickable())
+          {
+            if (this.Ape.AoL == null) {
+              this.Ape.AoL = new GridHeadersGridView.a(this.Ape, (byte)0);
+            }
+            this.Ape.AoL.dNn();
+            GridHeadersGridView.d(this.Ape).postDelayed(this.Ape.AoL, i);
+            AppMethodBeat.o(107364);
+            return;
+          }
+          this.Ape.anS = 2;
+          AppMethodBeat.o(107364);
+          return;
         }
-        localView.setPressed(true);
-        this.vWW.setPressed(true);
-        this.vWW.refreshDrawableState();
-        int i = ViewConfiguration.getLongPressTimeout();
-        if (!this.vWW.isLongClickable()) {
-          break label148;
-        }
-        if (this.vWW.vWD == null) {
-          this.vWW.vWD = new GridHeadersGridView.a(this.vWW, (byte)0);
-        }
-        this.vWW.vWD.cID();
-        GridHeadersGridView.d(this.vWW).postDelayed(this.vWW.vWD, i);
+        this.Ape.anS = 2;
       }
     }
-    return;
-    label148:
-    this.vWW.alA = 2;
-    return;
-    label157:
-    this.vWW.alA = 2;
+    AppMethodBeat.o(107364);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.GridHeadersGridView.b
  * JD-Core Version:    0.7.0.1
  */

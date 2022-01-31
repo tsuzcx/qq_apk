@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.cj;
-import com.tencent.mm.h.a.cj.a;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.cm;
+import com.tencent.mm.g.a.cm.a;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.fav.a.ac;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.al;
 import com.tencent.mm.plugin.fav.a.h;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.protocal.c.axi;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.protocal.c.yp;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.acw;
+import com.tencent.mm.protocal.protobuf.bdy;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.vfs.e;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -23,170 +26,197 @@ public final class b
 {
   public static void B(com.tencent.mm.plugin.fav.a.g paramg)
   {
+    AppMethodBeat.i(73921);
     paramg.field_updateTime = System.currentTimeMillis();
     if (!com.tencent.mm.plugin.fav.a.b.k(paramg)) {
       paramg.field_localId = System.currentTimeMillis();
     }
     C(paramg);
     com.tencent.mm.plugin.fav.a.b.j(paramg);
+    AppMethodBeat.o(73921);
   }
   
   private static void C(com.tencent.mm.plugin.fav.a.g paramg)
   {
-    h.ew(paramg.field_localId);
-    if (paramg.field_favProto.sXc.size() > 0)
+    AppMethodBeat.i(73922);
+    h.jT(paramg.field_localId);
+    if (paramg.field_favProto.wVc.size() > 0)
     {
-      com.tencent.mm.sdk.f.e.post(new b.a(paramg), "AddFavService_copy");
+      d.post(new b.a(paramg), "AddFavService_copy");
+      AppMethodBeat.o(73922);
       return;
     }
     paramg.field_itemStatus = 9;
     if (!com.tencent.mm.plugin.fav.a.b.k(paramg)) {
-      ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().y(paramg);
+      ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().y(paramg);
     }
     for (;;)
     {
-      ((ae)com.tencent.mm.kernel.g.t(ae.class)).getSendService().run();
+      ((ae)com.tencent.mm.kernel.g.G(ae.class)).getSendService().run();
+      AppMethodBeat.o(73922);
       return;
-      ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().a(paramg, new String[0]);
+      ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().a(paramg, new String[0]);
     }
   }
   
-  public static boolean a(cj paramcj)
+  private static boolean D(com.tencent.mm.plugin.fav.a.g paramg)
   {
-    if ((paramcj.bIw.bIy != null) && (paramcj.bIw.bIy.sXc != null))
+    AppMethodBeat.i(73924);
+    if ((paramg.field_sourceId == null) || (paramg.field_sourceId.equals("")))
     {
-      paramcj = paramcj.bIw.bIy.sXc.iterator();
-      while (paramcj.hasNext())
+      AppMethodBeat.o(73924);
+      return false;
+    }
+    paramg = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().NQ(paramg.field_sourceId);
+    if ((paramg != null) && (paramg.field_id > 0)) {
+      vW(paramg.field_id);
+    }
+    if (paramg != null)
+    {
+      AppMethodBeat.o(73924);
+      return true;
+    }
+    AppMethodBeat.o(73924);
+    return false;
+  }
+  
+  public static boolean a(cm paramcm)
+  {
+    AppMethodBeat.i(73919);
+    if ((paramcm.cpR.cpT != null) && (paramcm.cpR.cpT.wVc != null))
+    {
+      paramcm = paramcm.cpR.cpT.wVc.iterator();
+      while (paramcm.hasNext())
       {
-        xv localxv = (xv)paramcj.next();
-        int i = localxv.aYU;
-        if (((i == 2) || (i == 4) || (i == 15) || (i == 8)) && (bk.bl(localxv.sUG)))
+        aca localaca = (aca)paramcm.next();
+        int i = localaca.dataType;
+        if (((i == 2) || (i == 4) || (i == 15) || (i == 8)) && (bo.isNullOrNil(localaca.wSC)))
         {
-          if (bk.bl(localxv.sVe)) {
+          if (bo.isNullOrNil(localaca.wTa))
+          {
+            AppMethodBeat.o(73919);
             return false;
           }
-          if (!com.tencent.mm.vfs.e.bK(localxv.sVe)) {
+          if (!e.cN(localaca.wTa))
+          {
+            AppMethodBeat.o(73919);
             return false;
           }
         }
       }
     }
+    AppMethodBeat.o(73919);
     return true;
   }
   
-  static int b(cj paramcj)
+  static int b(cm paramcm)
   {
-    com.tencent.mm.plugin.fav.a.g localg1 = new com.tencent.mm.plugin.fav.a.g();
-    localg1.field_favProto = paramcj.bIw.bIy;
-    localg1.field_sessionId = paramcj.bIw.bIB;
-    int j = paramcj.bIw.bID;
-    yp localyp = localg1.field_favProto.sXa;
-    int i;
-    if (localyp != null)
+    AppMethodBeat.i(73920);
+    com.tencent.mm.plugin.fav.a.g localg = new com.tencent.mm.plugin.fav.a.g();
+    localg.field_favProto = paramcm.cpR.cpT;
+    localg.field_sessionId = paramcm.cpR.cpW;
+    if (!b(localg, paramcm.cpR.cpY))
     {
-      localg1.field_sourceId = localyp.sXj;
-      if ((localg1.field_sourceId == null) || (localg1.field_sourceId.equals(""))) {
-        i = 0;
+      paramcm = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().NQ(localg.field_sourceId);
+      if (paramcm != null) {
+        com.tencent.mm.plugin.fav.a.b.jQ(paramcm.field_localId);
       }
-      while (i != 0)
+      AppMethodBeat.o(73920);
+      return 0;
+    }
+    localg.field_flag = 0;
+    localg.field_updateTime = System.currentTimeMillis();
+    localg.field_localId = System.currentTimeMillis();
+    com.tencent.mm.plugin.fav.a.b.jQ(localg.field_localId);
+    localg.field_type = paramcm.cpR.type;
+    if ((paramcm.cpR.desc != null) && (paramcm.cpR.desc.length() >= 10001))
+    {
+      ab.w("MicroMsg.Fav.FavAddService", "length more than 10000, do cut desc");
+      localg.field_favProto.aom(paramcm.cpR.desc.substring(0, 10001));
+    }
+    for (;;)
+    {
+      localg.field_xml = com.tencent.mm.plugin.fav.a.g.s(localg);
+      C(localg);
+      com.tencent.mm.plugin.fav.a.b.j(localg);
+      localg.NG("MicroMsg.Fav.FavAddService");
+      AppMethodBeat.o(73920);
+      return 0;
+      localg.field_favProto.aom(paramcm.cpR.desc);
+    }
+  }
+  
+  private static boolean b(com.tencent.mm.plugin.fav.a.g paramg, int paramInt)
+  {
+    AppMethodBeat.i(73923);
+    acw localacw = paramg.field_favProto.wVa;
+    if (localacw != null)
+    {
+      paramg.field_sourceId = localacw.wVj;
+      if (D(paramg))
       {
-        y.w("MicroMsg.Fav.FavAddService", "handleEvent, msg already exist, do not insert");
-        i = 0;
-        if (i != 0) {
-          break label510;
-        }
-        paramcj = ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().CO(localg1.field_sourceId);
-        if (paramcj != null) {
-          com.tencent.mm.plugin.fav.a.b.et(paramcj.field_localId);
-        }
-        return 0;
-        com.tencent.mm.plugin.fav.a.g localg2 = ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().CO(localg1.field_sourceId);
-        if ((localg2 != null) && (localg2.field_id > 0))
-        {
-          i = localg2.field_id;
-          if (i > 0) {
-            break label210;
-          }
-          y.e("MicroMsg.Fav.FavAddService", "modUpdateTime favId illegal:%d", new Object[] { Integer.valueOf(i) });
-        }
-        for (;;)
-        {
-          if (localg2 == null) {
-            break label281;
-          }
-          i = 1;
-          break;
-          label210:
-          Object localObject = new LinkedList();
-          axi localaxi = new axi();
-          localaxi.ttL = 1;
-          localaxi.ttM = ((int)(System.currentTimeMillis() / 1000L));
-          ((LinkedList)localObject).add(localaxi);
-          localObject = new al(i, (LinkedList)localObject, null);
-          com.tencent.mm.kernel.g.Dk().a((m)localObject, 0);
-        }
-        label281:
-        i = 0;
+        ab.w("MicroMsg.Fav.FavAddService", "handleEvent, msg already exist, do not insert");
+        AppMethodBeat.o(73923);
+        return false;
       }
-      switch (localyp.bIl)
+      switch (localacw.cpG)
       {
       case 2: 
       default: 
-        localg1.field_sourceType = localyp.bIl;
+        paramg.field_sourceType = localacw.cpG;
       }
     }
     for (;;)
     {
-      localg1.field_fromUser = localyp.bRO;
-      localg1.field_toUser = localyp.toUser;
-      localg1.field_sourceId = localyp.sXj;
-      localg1.field_sourceCreateTime = localyp.createTime;
-      y.i("MicroMsg.Fav.FavAddService", "deal with source item, fromUser is %s, toUser %s, sourceId %s, sourceType %d", new Object[] { localg1.field_fromUser, localg1.field_toUser, localg1.field_sourceId, Integer.valueOf(localg1.field_sourceType) });
-      i = 1;
-      break;
-      if (s.hl(localg1.field_fromUser))
+      paramg.field_fromUser = localacw.czp;
+      paramg.field_toUser = localacw.toUser;
+      paramg.field_sourceId = localacw.wVj;
+      paramg.field_sourceCreateTime = localacw.createTime;
+      ab.i("MicroMsg.Fav.FavAddService", "deal with source item, fromUser is %s, toUser %s, sourceId %s, sourceType %d", new Object[] { paramg.field_fromUser, paramg.field_toUser, paramg.field_sourceId, Integer.valueOf(paramg.field_sourceType) });
+      AppMethodBeat.o(73923);
+      return true;
+      if (t.nU(paramg.field_fromUser))
       {
-        localg1.field_sourceType = 23;
+        paramg.field_sourceType = 23;
       }
-      else if (s.fn(localg1.field_fromUser))
+      else if (t.lA(paramg.field_fromUser))
       {
-        localg1.field_sourceType = 22;
+        paramg.field_sourceType = 22;
       }
       else
       {
-        localg1.field_sourceType = 21;
+        paramg.field_sourceType = 21;
         continue;
-        if (j == 1) {
-          localg1.field_sourceType = 24;
-        } else if (j == 2) {
-          localg1.field_sourceType = 25;
-        } else if (j == 3) {
-          localg1.field_sourceType = 26;
+        if (paramInt == 1) {
+          paramg.field_sourceType = 24;
+        } else if (paramInt == 2) {
+          paramg.field_sourceType = 25;
+        } else if (paramInt == 3) {
+          paramg.field_sourceType = 26;
         } else {
-          localg1.field_sourceType = localyp.bIl;
+          paramg.field_sourceType = localacw.cpG;
         }
       }
     }
-    label510:
-    localg1.field_flag = 0;
-    localg1.field_updateTime = System.currentTimeMillis();
-    localg1.field_localId = System.currentTimeMillis();
-    com.tencent.mm.plugin.fav.a.b.et(localg1.field_localId);
-    localg1.field_type = paramcj.bIw.type;
-    if ((paramcj.bIw.desc != null) && (paramcj.bIw.desc.length() >= 10001))
+  }
+  
+  private static void vW(int paramInt)
+  {
+    AppMethodBeat.i(73925);
+    if (paramInt <= 0)
     {
-      y.w("MicroMsg.Fav.FavAddService", "length more than 10000, do cut desc");
-      localg1.field_favProto.Yp(paramcj.bIw.desc.substring(0, 10001));
+      ab.e("MicroMsg.Fav.FavAddService", "modUpdateTime favId illegal:%d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(73925);
+      return;
     }
-    for (;;)
-    {
-      localg1.field_xml = com.tencent.mm.plugin.fav.a.g.s(localg1);
-      C(localg1);
-      com.tencent.mm.plugin.fav.a.b.j(localg1);
-      localg1.CE("MicroMsg.Fav.FavAddService");
-      return 0;
-      localg1.field_favProto.Yp(paramcj.bIw.desc);
-    }
+    Object localObject = new LinkedList();
+    bdy localbdy = new bdy();
+    localbdy.xtK = 1;
+    localbdy.xtL = ((int)(System.currentTimeMillis() / 1000L));
+    ((LinkedList)localObject).add(localbdy);
+    localObject = new al(paramInt, (LinkedList)localObject, null);
+    com.tencent.mm.kernel.g.Rc().a((m)localObject, 0);
+    AppMethodBeat.o(73925);
   }
 }
 

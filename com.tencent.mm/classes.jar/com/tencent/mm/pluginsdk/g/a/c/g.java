@@ -2,13 +2,13 @@ package com.tencent.mm.pluginsdk.g.a.c;
 
 public abstract interface g
 {
-  public abstract String acb();
+  public abstract String avS();
   
   public abstract n.a c(l paraml);
   
-  public abstract void ccB();
+  public abstract void dmd();
   
-  public abstract h ccC();
+  public abstract h dme();
   
   public abstract void onAccountRelease();
 }

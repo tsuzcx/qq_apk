@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$ks
+final class c$ks
   extends c.g
 {
-  public c$ks()
+  c$ks()
   {
-    super("shareWeibo", "share_weibo", 3, true);
+    super("updatePageAuth", "updatePageAuth", -2, false);
   }
 }
 

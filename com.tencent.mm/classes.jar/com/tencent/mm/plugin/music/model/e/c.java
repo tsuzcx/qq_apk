@@ -1,16 +1,24 @@
 package com.tencent.mm.plugin.music.model.e;
 
-import com.tencent.mm.h.c.df;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.dq;
 import com.tencent.mm.sdk.e.c.a;
 
 public final class c
-  extends df
+  extends dq
 {
-  public static c.a buS = ;
+  public static c.a info;
   
-  protected final c.a rM()
+  static
   {
-    return buS;
+    AppMethodBeat.i(105040);
+    info = dq.Hm();
+    AppMethodBeat.o(105040);
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return info;
   }
 }
 

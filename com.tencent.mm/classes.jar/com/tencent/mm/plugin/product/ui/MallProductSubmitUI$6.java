@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallProductSubmitUI$6
   implements View.OnClickListener
@@ -12,9 +13,11 @@ final class MallProductSubmitUI$6
   
   public final void onClick(View paramView)
   {
-    paramView = MallProductSubmitUI.d(this.mUW);
-    Intent localIntent = new Intent(paramView.fyk, MallProductReceiptUI.class);
-    paramView.fyk.startActivityForResult(localIntent, 4);
+    AppMethodBeat.i(44144);
+    paramView = MallProductSubmitUI.d(this.pxb);
+    Intent localIntent = new Intent(paramView.gQx, MallProductReceiptUI.class);
+    paramView.gQx.startActivityForResult(localIntent, 4);
+    AppMethodBeat.o(44144);
   }
 }
 

@@ -6,14 +6,15 @@ import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.ak;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.ui.base.o;
 
 final class i$2
-  extends ah
+  extends ak
 {
   i$2(i parami, Looper paramLooper)
   {
@@ -22,37 +23,40 @@ final class i$2
   
   public final void handleMessage(Message paramMessage)
   {
-    paramMessage = this.sgB;
-    if ((paramMessage.bQf == null) || (paramMessage.sgw == null) || (paramMessage.bitmap == null) || (paramMessage.sgx == null) || (paramMessage.khn == null) || (paramMessage.lHw == null)) {
+    AppMethodBeat.i(27956);
+    paramMessage = this.vYT;
+    if ((paramMessage.cxy == null) || (paramMessage.vYO == null) || (paramMessage.bitmap == null) || (paramMessage.vYP == null) || (paramMessage.kgr == null) || (paramMessage.oeJ == null))
+    {
+      AppMethodBeat.o(27956);
       return;
     }
-    paramMessage.bQf.setImageBitmap(paramMessage.bitmap);
+    paramMessage.cxy.setImageBitmap(paramMessage.bitmap);
     int k;
     int j;
-    label79:
+    label91:
     int i;
-    label96:
+    label108:
     int n;
     int m;
     Rect localRect;
-    if (paramMessage.sgy)
+    if (paramMessage.vYQ)
     {
       k = 83;
-      if (!paramMessage.sgy) {
-        break label219;
+      if (!paramMessage.vYQ) {
+        break label237;
       }
       j = 0;
-      if (paramMessage.sgz == null) {
-        break label225;
+      if (paramMessage.vYR == null) {
+        break label243;
       }
-      i = paramMessage.sgz.getYFromBottom();
+      i = paramMessage.vYR.getYFromBottom();
       n = j;
       m = i;
       if (Build.VERSION.SDK_INT >= 21)
       {
-        localRect = ak.cAg();
-        if (!paramMessage.sgy) {
-          break label236;
+        localRect = af.dDk();
+        if (!paramMessage.vYQ) {
+          break label254;
         }
         j = 0;
       }
@@ -60,27 +64,28 @@ final class i$2
     for (;;)
     {
       m = i + localRect.bottom;
-      y.i("MicroMsg.RecentImageBubble", "recent bubble navbar height %s %s", new Object[] { Integer.valueOf(localRect.right), Integer.valueOf(localRect.bottom) });
+      ab.i("MicroMsg.RecentImageBubble", "recent bubble navbar height %s %s", new Object[] { Integer.valueOf(localRect.right), Integer.valueOf(localRect.bottom) });
       n = j;
-      paramMessage.sgx.showAtLocation(paramMessage.khn, k, n, m);
-      new am(new i.4(paramMessage), false).S(10000L, 10000L);
+      paramMessage.vYP.showAtLocation(paramMessage.kgr, k, n, m);
+      new ap(new i.4(paramMessage), false).ag(10000L, 10000L);
+      AppMethodBeat.o(27956);
       return;
       k = 85;
       break;
-      label219:
+      label237:
       j = 10;
-      break label79;
-      label225:
-      i = paramMessage.lHw.getHeight();
-      break label96;
-      label236:
+      break label91;
+      label243:
+      i = paramMessage.oeJ.getHeight();
+      break label108;
+      label254:
       j += localRect.right;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.i.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import com.tencent.mm.plugin.gallery.model.m;
-import com.tencent.mm.plugin.gallery.model.m.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 
 final class ImagePreviewUI$17
-  implements m.a
+  implements Runnable
 {
-  ImagePreviewUI$17(ImagePreviewUI paramImagePreviewUI) {}
+  ImagePreviewUI$17(ImagePreviewUI paramImagePreviewUI, GalleryItem.MediaItem paramMediaItem) {}
   
-  public final void a(m paramm)
+  public final void run()
   {
-    if (paramm.position != ImagePreviewUI.g(this.kKb).intValue()) {
-      return;
-    }
-    ImagePreviewUI.a(this.kKb, paramm.path, paramm.kHv);
+    AppMethodBeat.i(150893);
+    ImagePreviewUI.a(this.ngC, this.neW);
+    AppMethodBeat.o(150893);
   }
 }
 

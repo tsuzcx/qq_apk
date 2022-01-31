@@ -2,44 +2,51 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 import android.os.Bundle;
 import android.os.RemoteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.plugin.webview.ui.tools.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.webview.ui.tools.g;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class p
   implements h.a
 {
-  private final d rsT;
+  private final d viZ;
   
   public p(d paramd)
   {
-    this.rsT = paramd;
+    this.viZ = paramd;
   }
   
-  public final Bundle L(Bundle paramBundle)
+  public final Bundle ac(Bundle paramBundle)
   {
-    if (this.rsT == null)
+    AppMethodBeat.i(8274);
+    if (this.viZ == null)
     {
-      y.e("MicroMsg.WebViewUIBagIPCDelegate", "doBagLogic mInvoker null");
+      ab.e("MicroMsg.WebViewUIBagIPCDelegate", "doBagLogic mInvoker null");
+      AppMethodBeat.o(8274);
       return null;
     }
     try
     {
-      paramBundle = this.rsT.f(103, paramBundle);
+      paramBundle = this.viZ.i(103, paramBundle);
+      AppMethodBeat.o(8274);
       return paramBundle;
     }
     catch (RemoteException paramBundle)
     {
-      y.e("MicroMsg.WebViewUIBagIPCDelegate", "doBagLogic exp=%s", new Object[] { paramBundle.getLocalizedMessage() });
+      ab.e("MicroMsg.WebViewUIBagIPCDelegate", "doBagLogic exp=%s", new Object[] { paramBundle.getLocalizedMessage() });
+      AppMethodBeat.o(8274);
     }
     return null;
   }
   
-  public final void u(Object[] paramArrayOfObject)
+  public final void z(Object[] paramArrayOfObject)
   {
-    if (this.rsT != null) {
-      e.a(this.rsT, 11576, paramArrayOfObject);
+    AppMethodBeat.i(8275);
+    if (this.viZ != null) {
+      g.a(this.viZ, 11576, paramArrayOfObject);
     }
+    AppMethodBeat.o(8275);
   }
 }
 

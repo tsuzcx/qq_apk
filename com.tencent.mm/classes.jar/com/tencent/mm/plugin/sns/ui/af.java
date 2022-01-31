@@ -2,81 +2,102 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.model.app.f;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.protocal.c.at;
-import com.tencent.mm.protocal.c.av;
-import com.tencent.mm.protocal.c.da;
-import com.tencent.mm.protocal.c.dl;
-import com.tencent.mm.protocal.c.dm;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.at;
+import com.tencent.mm.protocal.protobuf.av;
+import com.tencent.mm.protocal.protobuf.dj;
+import com.tencent.mm.protocal.protobuf.dv;
+import com.tencent.mm.protocal.protobuf.dw;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class af
 {
   public static int a(Context paramContext, av paramav)
   {
-    if (paramav == null) {}
-    do
+    AppMethodBeat.i(38468);
+    if (paramav == null)
     {
+      AppMethodBeat.o(38468);
       return 0;
-      if (paramav.hQR != 6) {
-        break;
-      }
-    } while (paramav.sui == null);
-    if (a.eUS.o(paramContext, paramav.sug.euK)) {
-      return paramav.sui.swp;
     }
-    return paramav.sui.swq;
-    return paramav.pyo;
+    if (paramav.jKs == 6)
+    {
+      if (paramav.wmL == null)
+      {
+        AppMethodBeat.o(38468);
+        return 0;
+      }
+      if (paramav.wmJ == null)
+      {
+        AppMethodBeat.o(38468);
+        return 0;
+      }
+      if (a.gmP.u(paramContext, paramav.wmJ.fKw))
+      {
+        i = paramav.wmL.wpB;
+        AppMethodBeat.o(38468);
+        return i;
+      }
+      i = paramav.wmL.wpC;
+      AppMethodBeat.o(38468);
+      return i;
+    }
+    int i = paramav.Scene;
+    AppMethodBeat.o(38468);
+    return i;
   }
   
-  public static void a(Context paramContext, ax paramax, av paramav)
+  public static void a(Context paramContext, aw paramaw, av paramav)
   {
-    if ((paramav != null) && (paramav.sug != null))
+    AppMethodBeat.i(38469);
+    if ((paramav != null) && (paramav.wmJ != null))
     {
-      Object localObject = paramav.sug.euK;
+      Object localObject = paramav.wmJ.fKw;
       boolean bool;
-      if (bk.bl((String)localObject))
+      if (bo.isNullOrNil((String)localObject))
       {
         bool = false;
         if (!bool) {
-          break label451;
+          break label464;
         }
-        paramax.phD = false;
-        if ((paramav.suk == null) || (paramav.sul == null)) {
-          break label277;
+        paramaw.sak = false;
+        if ((paramav.wmN == null) || (paramav.wmO == null)) {
+          break label290;
         }
-        if (!a.eUS.o(paramContext, paramav.sug.euK)) {
-          break label233;
+        if (!a.gmP.u(paramContext, paramav.wmJ.fKw)) {
+          break label246;
         }
-        paramContext = paramav.suk;
-        label79:
-        localObject = x.cqJ();
+        paramContext = paramav.wmN;
+        label84:
+        localObject = aa.dsG();
         if (!((String)localObject).equals("zh_CN")) {
-          break label241;
+          break label254;
         }
-        paramContext = paramContext.swL;
-        label99:
-        switch (paramav.hQR)
+        paramContext = paramContext.wpN;
+        label104:
+        switch (paramav.jKs)
         {
         default: 
-          paramax.phD = false;
+          paramaw.sak = false;
         }
       }
       for (;;)
       {
-        if (bk.bl(paramContext))
+        if (bo.isNullOrNil(paramContext))
         {
-          y.e("MicroMsg.OpenActionContent", "text can not load ?");
-          paramax.phD = false;
+          ab.e("MicroMsg.OpenActionContent", "text can not load ?");
+          paramaw.sak = false;
         }
+        AppMethodBeat.o(38469);
         return;
-        localObject = g.by((String)localObject, true);
-        if ((localObject == null) || (bk.bl(((f)localObject).field_appId)))
+        localObject = g.ca((String)localObject, true);
+        if ((localObject == null) || (bo.isNullOrNil(((f)localObject).field_appId)))
         {
           bool = false;
           break;
@@ -84,21 +105,21 @@ public final class af
         if ((((f)localObject).field_appInfoFlag & 0x20) > 0) {}
         for (bool = true;; bool = false)
         {
-          y.v("MicroMsg.AppInfoLogic", "canShowSNSTail, appid = %s, ret = %b", new Object[] { ((f)localObject).field_appId, Boolean.valueOf(bool) });
+          ab.v("MicroMsg.AppInfoLogic", "canShowSNSTail, appid = %s, ret = %b", new Object[] { ((f)localObject).field_appId, Boolean.valueOf(bool) });
           break;
         }
-        label233:
-        paramContext = paramav.sul;
-        break label79;
-        label241:
+        label246:
+        paramContext = paramav.wmO;
+        break label84;
+        label254:
         if ((((String)localObject).equals("zh_TW")) || (((String)localObject).equals("zh_HK")))
         {
-          paramContext = paramContext.swM;
-          break label99;
+          paramContext = paramContext.wpO;
+          break label104;
         }
-        paramContext = paramContext.swK;
-        break label99;
-        label277:
+        paramContext = paramContext.wpM;
+        break label104;
+        label290:
         if (paramav == null) {
           localObject = "";
         }
@@ -106,7 +127,7 @@ public final class af
         {
           try
           {
-            if (bk.bl((String)localObject)) {
+            if (bo.isNullOrNil((String)localObject)) {
               continue;
             }
             int i = paramContext.getResources().getIdentifier((String)localObject, "string", paramContext.getPackageName());
@@ -119,36 +140,37 @@ public final class af
           {
             paramContext = "";
           }
-          if (paramav.hQR == 6)
+          if (paramav.jKs == 6)
           {
-            if (paramav.suj == null) {
+            if (paramav.wmM == null) {
               localObject = "";
-            } else if (a.eUS.o(paramContext, paramav.sug.euK)) {
-              localObject = paramav.suj.swN;
+            } else if (a.gmP.u(paramContext, paramav.wmJ.fKw)) {
+              localObject = paramav.wmM.wpP;
             } else {
-              localObject = paramav.suj.swO;
+              localObject = paramav.wmM.wpQ;
             }
           }
           else {
-            localObject = paramav.suh;
+            localObject = paramav.wmK;
           }
         }
-        break label99;
-        paramax.phE = paramContext;
-        paramax.phD = true;
+        break label104;
+        paramaw.sal = paramContext;
+        paramaw.sak = true;
         continue;
-        if (paramav.pyo == 1)
+        if (paramav.Scene == 1)
         {
-          paramax.phE = paramContext;
-          paramax.phD = true;
+          paramaw.sal = paramContext;
+          paramaw.sak = true;
           continue;
-          paramax.phE = paramContext;
-          paramax.phD = true;
+          paramaw.sal = paramContext;
+          paramaw.sak = true;
         }
       }
     }
-    label451:
-    paramax.phD = false;
+    label464:
+    paramaw.sak = false;
+    AppMethodBeat.o(38469);
   }
 }
 

@@ -1,6 +1,7 @@
 package org.xwalk.core;
 
 import android.os.AsyncTask;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class XWalkUpdater$BackgroundListener$1
   extends AsyncTask<Void, Void, Integer>
@@ -9,17 +10,23 @@ class XWalkUpdater$BackgroundListener$1
   
   protected Integer doInBackground(Void... paramVarArgs)
   {
-    return XWalkUpdater.onHandleFile(XWalkUpdater.BackgroundListener.access$100(this.this$1));
+    AppMethodBeat.i(85896);
+    paramVarArgs = XWalkUpdater.onHandleFile(XWalkUpdater.BackgroundListener.access$100(this.this$1));
+    AppMethodBeat.o(85896);
+    return paramVarArgs;
   }
   
   protected void onPostExecute(Integer paramInteger)
   {
+    AppMethodBeat.i(85897);
     if (paramInteger.intValue() != 0)
     {
       XWalkUpdater.access$000(this.this$1.this$0).onXWalkUpdateFailed(paramInteger.intValue());
+      AppMethodBeat.o(85897);
       return;
     }
     XWalkUpdater.access$000(this.this$1.this$0).onXWalkUpdateCompleted();
+    AppMethodBeat.o(85897);
   }
 }
 

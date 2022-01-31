@@ -1,40 +1,28 @@
 package com.tencent.mm.app;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jz;
+import com.tencent.mm.sdk.b.c;
 
 public final class o
+  extends c<jz>
 {
-  private static final Set<String> bxb;
+  private static boolean bYF = false;
+  private int bYG;
+  private int bYH;
   
-  static
+  public o(int paramInt1, int paramInt2)
   {
-    HashSet localHashSet = new HashSet();
-    bxb = localHashSet;
-    localHashSet.add(":nospace");
-    bxb.add(":cuploader");
-    bxb.add(":dexopt");
-    bxb.add(":recovery");
-    bxb.add(":fallback");
-  }
-  
-  public static boolean cp(String paramString)
-  {
-    int i = paramString.indexOf(':');
-    if (i != -1) {}
-    for (paramString = paramString.substring(i);; paramString = "") {
-      return bxb.contains(paramString);
-    }
-  }
-  
-  public static boolean ta()
-  {
-    return false;
+    AppMethodBeat.i(15383);
+    this.bYG = paramInt1;
+    this.bYH = paramInt2;
+    this.__eventId = jz.class.getName().hashCode();
+    AppMethodBeat.o(15383);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,177 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Point;
+import android.graphics.Rect;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.licence.model.CardInfo;
+import com.tencent.mm.plugin.licence.model.LibCardRecog;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.Arrays;
 
 public final class m
-  implements SensorEventListener
+  extends b
 {
-  public static final m nPF = new m();
-  public SensorManager aVT = (SensorManager)ae.getContext().getSystemService("sensor");
-  public Sensor nPB = this.aVT.getDefaultSensor(1);
-  public float[] nPC = new float[3];
-  public int nPD;
-  private long nPE;
+  private final Object lock;
+  private final int nIH;
+  private boolean[] qCH;
+  private boolean qCI;
+  private boolean qCK;
+  private Bitmap qDp;
+  public Bitmap qDq;
   
-  public final long byA()
+  public m(b.a parama, int paramInt)
   {
-    if (this.nPD >= 5) {
-      return this.nPE;
-    }
-    return 0L;
+    super(parama);
+    AppMethodBeat.i(81457);
+    this.lock = new Object();
+    this.qCI = false;
+    this.qCK = false;
+    this.qCH = new boolean[4];
+    this.nIH = paramInt;
+    AppMethodBeat.o(81457);
   }
   
-  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public final void onSensorChanged(SensorEvent paramSensorEvent)
+  private static void cjI()
   {
-    if (paramSensorEvent.sensor.getType() == 1)
+    AppMethodBeat.i(81460);
+    ab.i("MicroMsg.ScanLicenceDecoder", "lib release");
+    try
     {
-      paramSensorEvent = paramSensorEvent.values;
-      y.d("MicroMsg.ScanStableDetector", "x:%f,y:%f,z:%f", new Object[] { Float.valueOf(paramSensorEvent[0]), Float.valueOf(paramSensorEvent[1]), Float.valueOf(paramSensorEvent[2]) });
-      if ((this.nPC[0] == 0.0F) && (this.nPC[1] == 0.0F) && (this.nPC[2] == 0.0F))
+      LibCardRecog.recognizeCardRelease();
+      AppMethodBeat.o(81460);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.ScanLicenceDecoder", "lib release, exp = %s", new Object[] { localException });
+      AppMethodBeat.o(81460);
+    }
+  }
+  
+  public final boolean a(byte[] paramArrayOfByte, Point paramPoint, Rect paramRect)
+  {
+    AppMethodBeat.i(81458);
+    ab.d("MicroMsg.ScanLicenceDecoder", "smoothie, decode, resolution = %s, coverage = %s, data.length = %d", new Object[] { paramPoint, paramRect, Integer.valueOf(paramArrayOfByte.length) });
+    synchronized (this.lock)
+    {
+      if ((this.qDp != null) && (!this.qDp.isRecycled()))
       {
-        this.nPC[0] = paramSensorEvent[0];
-        this.nPC[1] = paramSensorEvent[1];
-        this.nPC[2] = paramSensorEvent[2];
+        ab.i("MicroMsg.ScanLicenceDecoder", "[smoothie] recycle last bitmap %s", new Object[] { this.qDp.toString() });
+        this.qDp.recycle();
       }
-    }
-    else
-    {
-      return;
-    }
-    if ((Math.abs(paramSensorEvent[0] - this.nPC[0]) > 0.7F) || (Math.abs(paramSensorEvent[1] - this.nPC[1]) > 0.7F) || (Math.abs(paramSensorEvent[2] - this.nPC[2]) > 0.7F))
-    {
-      y.d("MicroMsg.ScanStableDetector", "scan unstable");
-      this.nPD = 0;
-    }
-    for (;;)
-    {
-      this.nPC[0] = paramSensorEvent[0];
-      this.nPC[1] = paramSensorEvent[1];
-      this.nPC[2] = paramSensorEvent[2];
-      return;
-      if (this.nPD == 0) {
-        this.nPE = System.currentTimeMillis();
+      ab.d("MicroMsg.ScanLicenceDecoder", "resolution:%s, coverage:%s", new Object[] { paramPoint, paramRect });
+      if (this.qCI)
+      {
+        ab.d("MicroMsg.ScanLicenceDecoder", "recognize id succeed, no need more handle");
+        AppMethodBeat.o(81458);
+        return false;
       }
-      this.nPD += 1;
-      if (this.nPD >= 5) {
-        y.d("MicroMsg.ScanStableDetector", "scan stable");
+      int i = 0;
+      while (i < 4)
+      {
+        this.qCH[i] = false;
+        i += 1;
       }
+      float f = Math.min(Math.min(paramPoint.x / paramRect.width(), paramPoint.y / paramRect.height()), 1.0F);
+      i = paramRect.width();
+      int j = paramRect.height();
+      ab.d("MicroMsg.ScanLicenceDecoder", "rate:%f, cropWidth:%d, cropHeight:%d", new Object[] { Float.valueOf(f), Integer.valueOf(i), Integer.valueOf(j) });
+      if (!this.qCK) {
+        ab.d("MicroMsg.ScanLicenceDecoder", "init param:%d, %d, %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramRect.width()), Integer.valueOf(paramRect.height()) });
+      }
+      CardInfo localCardInfo;
+      try
+      {
+        LibCardRecog.recognizeCardInit(i, j, this.nIH);
+        this.qCK = true;
+        long l = System.currentTimeMillis();
+        localCardInfo = new CardInfo(i, j);
+        int k = paramRect.top;
+        int m = paramRect.left;
+        if (1 == i) {
+          break label557;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        try
+        {
+          i = LibCardRecog.recognizeCardProcess(paramArrayOfByte, paramPoint.y, paramPoint.x, m, k, j, i, localCardInfo, this.qCH);
+          ab.d("MicroMsg.ScanLicenceDecoder", "[smoothie] recognizeProcess, ret = %d", new Object[] { Integer.valueOf(i) });
+          ab.d("MicroMsg.ScanLicenceDecoder", "focusedEngineProcess cost: " + (System.currentTimeMillis() - l));
+          ab.d("MicroMsg.ScanLicenceDecoder", "mRecogRectEdge: %s", new Object[] { Arrays.toString(this.qCH) });
+          if (i != 0) {
+            break label508;
+          }
+          AppMethodBeat.o(81458);
+          return false;
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          ab.e("MicroMsg.ScanLicenceDecoder", "recognizeProcess failed, exp = %s", new Object[] { paramArrayOfByte });
+          this.qCI = false;
+          AppMethodBeat.o(81458);
+          return false;
+        }
+        paramArrayOfByte = paramArrayOfByte;
+        ab.e("MicroMsg.ScanLicenceDecoder", "lib init failed, exp = %s", new Object[] { paramArrayOfByte });
+        this.qCK = false;
+        cjI();
+        AppMethodBeat.o(81458);
+        return false;
+      }
+      label508:
+      i = 0;
+      while (i < 4)
+      {
+        this.qCH[i] = false;
+        i += 1;
+      }
+      ab.d("MicroMsg.ScanLicenceDecoder", "image is not enough clear");
+      AppMethodBeat.o(81458);
+      return false;
+      label557:
+      i = 0;
+      while (i < 4)
+      {
+        this.qCH[i] = true;
+        i += 1;
+      }
+      this.qDp = BitmapFactory.decodeByteArray(localCardInfo.bitmapData, 0, localCardInfo.bitmapLen);
+      this.qDq = this.qDp.copy(Bitmap.Config.ARGB_8888, true);
+      this.qCI = true;
+      AppMethodBeat.o(81458);
+      return true;
     }
   }
   
-  public final void stop()
+  public final boolean[] cjH()
   {
-    y.i("MicroMsg.ScanStableDetector", "stop detect scan stable");
-    if (this.aVT != null)
+    synchronized (this.lock)
     {
-      y.i("MicroMsg.ScanStableDetector", "unregister accelerate listener");
-      this.aVT.unregisterListener(this);
+      boolean[] arrayOfBoolean = this.qCH;
+      return arrayOfBoolean;
     }
+  }
+  
+  public final void pJ()
+  {
+    AppMethodBeat.i(81459);
+    if ((this.qDp != null) && (!this.qDp.isRecycled()))
+    {
+      ab.i("MicroMsg.ScanLicenceDecoder", "bitmap recycle %s", new Object[] { this.qDp.toString() });
+      this.qDp.recycle();
+    }
+    cjI();
+    AppMethodBeat.o(81459);
+  }
+  
+  public final void restartDecoder()
+  {
+    this.qCI = false;
   }
 }
 

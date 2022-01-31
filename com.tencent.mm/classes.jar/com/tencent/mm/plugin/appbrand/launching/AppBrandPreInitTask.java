@@ -4,73 +4,71 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.Locale;
 
 public final class AppBrandPreInitTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<AppBrandPreInitTask> CREATOR = new AppBrandPreInitTask.3();
-  private String appId;
-  private int fJy;
-  private AppBrandStatObject fPE;
-  private transient AppBrandPreInitTask.a gJd;
-  private ActivityStarterIpcDelegate gJe;
-  private AppBrandInitConfigWC gJf;
+  public static final Parcelable.Creator<AppBrandPreInitTask> CREATOR;
+  private transient AppBrandPreInitTask.a ijH;
+  private ActivityStarterIpcDelegate ijI;
+  private LaunchParcel ijJ;
+  private AppBrandInitConfigWC ijK;
+  private String ijL;
   
-  public AppBrandPreInitTask(Context paramContext, String paramString, int paramInt, AppBrandStatObject paramAppBrandStatObject, AppBrandPreInitTask.a parama)
+  static
   {
-    this.appId = paramString;
-    this.fJy = paramInt;
-    this.fPE = paramAppBrandStatObject;
-    this.gJd = parama;
-    if ((paramContext instanceof Activity))
+    AppMethodBeat.i(131728);
+    CREATOR = new AppBrandPreInitTask.3();
+    AppMethodBeat.o(131728);
+  }
+  
+  public AppBrandPreInitTask(Context paramContext, LaunchParcel paramLaunchParcel, String paramString, AppBrandPreInitTask.a parama)
+  {
+    AppMethodBeat.i(131721);
+    this.ijJ = paramLaunchParcel;
+    this.ijL = paramString;
+    this.ijH = parama;
+    if ((paramContext instanceof Activity)) {}
+    for (this.ijI = new ActivityStarterIpcDelegate((Activity)paramContext);; this.ijI = null)
     {
-      this.gJe = new ActivityStarterIpcDelegate((Activity)paramContext);
+      this.ijJ.ijQ = this.ijI;
+      AppMethodBeat.o(131721);
       return;
     }
-    this.gJe = null;
   }
   
   private AppBrandPreInitTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(131726);
+    f(paramParcel);
+    AppMethodBeat.o(131726);
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    c localc = new c(this.appId, this.fJy, this.fPE, this.gJe, new c.a()
-    {
-      public final void c(AppBrandInitConfigWC paramAnonymousAppBrandInitConfigWC, AppBrandStatObject paramAnonymousAppBrandStatObject)
-      {
-        AppBrandPreInitTask.a(AppBrandPreInitTask.this, paramAnonymousAppBrandInitConfigWC);
-        AppBrandPreInitTask.a(AppBrandPreInitTask.this, paramAnonymousAppBrandStatObject);
-        if (paramAnonymousAppBrandInitConfigWC != null) {
-          b.b(paramAnonymousAppBrandInitConfigWC, paramAnonymousAppBrandStatObject);
-        }
-        AppBrandPreInitTask.a(AppBrandPreInitTask.this);
-      }
-    });
-    new ai(String.format(Locale.US, "AppBrandPreInitTask-%s|%d", new Object[] { this.appId, Integer.valueOf(this.fJy) })).O(new AppBrandPreInitTask.2(this, localc));
+    AppMethodBeat.i(131723);
+    e locale = new e(this.ijJ, this.ijL, new d.a() {});
+    String str = this.ijJ.appId;
+    int i = this.ijJ.hcr;
+    new al(String.format(Locale.US, "AppBrandPreInitTask-%s|%d", new Object[] { str, Integer.valueOf(i) })).ac(new AppBrandPreInitTask.2(this, locale));
+    AppMethodBeat.o(131723);
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    if (this.gJd != null) {
-      this.gJd.a(this.gJf, this.fPE);
+    AppMethodBeat.i(131722);
+    if (this.ijH != null) {
+      this.ijH.b(this.ijK);
     }
-    ahD();
-  }
-  
-  public final void alC()
-  {
-    ahC();
-    AppBrandMainProcessService.a(this);
+    aBk();
+    AppMethodBeat.o(131722);
   }
   
   public final int describeContents()
@@ -78,22 +76,24 @@ public final class AppBrandPreInitTask
     return 0;
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
-    this.appId = paramParcel.readString();
-    this.fJy = paramParcel.readInt();
-    this.gJf = ((AppBrandInitConfigWC)paramParcel.readParcelable(AppBrandInitConfig.class.getClassLoader()));
-    this.fPE = ((AppBrandStatObject)paramParcel.readParcelable(AppBrandStatObject.class.getClassLoader()));
-    this.gJe = ((ActivityStarterIpcDelegate)paramParcel.readParcelable(ActivityStarterIpcDelegate.class.getClassLoader()));
+    AppMethodBeat.i(131725);
+    this.ijJ = ((LaunchParcel)paramParcel.readParcelable(LaunchParcel.class.getClassLoader()));
+    this.ijL = paramParcel.readString();
+    this.ijK = ((AppBrandInitConfigWC)paramParcel.readParcelable(AppBrandInitConfigWC.class.getClassLoader()));
+    this.ijI = ((ActivityStarterIpcDelegate)paramParcel.readParcelable(ActivityStarterIpcDelegate.class.getClassLoader()));
+    AppMethodBeat.o(131725);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.fJy);
-    paramParcel.writeParcelable(this.gJf, paramInt);
-    paramParcel.writeParcelable(this.fPE, paramInt);
-    paramParcel.writeParcelable(this.gJe, paramInt);
+    AppMethodBeat.i(131724);
+    paramParcel.writeParcelable(this.ijJ, paramInt);
+    paramParcel.writeString(this.ijL);
+    paramParcel.writeParcelable(this.ijK, paramInt);
+    paramParcel.writeParcelable(this.ijI, paramInt);
+    AppMethodBeat.o(131724);
   }
 }
 

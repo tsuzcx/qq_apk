@@ -1,13 +1,17 @@
 package com.tencent.mm.plugin.sns.abtest;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$1
   implements NotInterestMenu.b
 {
   b$1(b paramb) {}
   
-  public final void bBY()
+  public final void cnz()
   {
-    this.ojV.bBZ();
+    AppMethodBeat.i(35670);
+    this.qYg.cnA();
+    AppMethodBeat.o(35670);
   }
 }
 

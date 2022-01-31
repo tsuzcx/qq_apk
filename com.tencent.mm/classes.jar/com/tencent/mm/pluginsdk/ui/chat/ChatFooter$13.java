@@ -1,44 +1,49 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Context;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.Button;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cb.a;
 
 final class ChatFooter$13
-  implements n.a
+  implements View.OnKeyListener
 {
   ChatFooter$13(ChatFooter paramChatFooter) {}
   
-  public final void TG(String paramString)
+  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (ChatFooter.j(this.sgd) != null) {
-      ChatFooter.j(this.sgd).GU(paramString);
+    AppMethodBeat.i(155419);
+    switch (paramKeyEvent.getAction())
+    {
     }
     for (;;)
     {
-      ChatFooter.D(this.sgd).reset();
-      return;
-      y.e("MicroMsg.ChatFooter", "onSendMsg listener is null !!!");
-    }
-  }
-  
-  public final void cfM()
-  {
-    ChatFooter.C(this.sgd);
-  }
-  
-  public final void lr(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (this.sgd.sfr != null)
+      AppMethodBeat.o(155419);
+      return false;
+      if (((paramInt == 23) || (paramInt == 66)) && (!ChatFooter.F(this.vXU)) && (!ChatFooter.E(this.vXU)))
       {
-        y.d("MicroMsg.ChatFooter", "onVoiceStart start");
-        this.sgd.sfr.h(Boolean.valueOf(true));
+        ChatFooter.d(this.vXU, true);
+        ChatFooter.u(this.vXU).setBackgroundDrawable(a.k(this.vXU.getContext(), 2130840130));
+        ChatFooter.u(this.vXU).setText(2131298128);
+        if (ChatFooter.i(this.vXU) != null) {
+          ChatFooter.i(this.vXU).bPi();
+        }
+        ChatFooter.u(this.vXU).setContentDescription(this.vXU.getContext().getString(2131298103));
+        continue;
+        if ((paramInt == 23) || (paramInt == 66))
+        {
+          ChatFooter.u(this.vXU).setBackgroundDrawable(a.k(this.vXU.getContext(), 2130840961));
+          ChatFooter.u(this.vXU).setText(2131298127);
+          if (ChatFooter.i(this.vXU) != null) {
+            ChatFooter.i(this.vXU).bPe();
+          }
+          ChatFooter.d(this.vXU, false);
+        }
       }
     }
-    while (this.sgd.sfr == null) {
-      return;
-    }
-    y.d("MicroMsg.ChatFooter", "onVoiceStart end");
-    this.sgd.sfr.h(Boolean.valueOf(false));
   }
 }
 

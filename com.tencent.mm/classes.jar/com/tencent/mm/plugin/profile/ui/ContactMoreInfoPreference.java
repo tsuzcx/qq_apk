@@ -8,118 +8,144 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ContactMoreInfoPreference
   extends Preference
 {
-  private TextView iuO;
-  private ImageView mVU;
-  private ImageView mVV;
-  private ImageView mVW;
-  private ImageView mVX;
-  private ImageView mVY;
-  private ImageView mVZ;
-  private int mWa = 8;
-  private int mWb = 8;
-  private int mWc = 8;
-  private int mWd = 8;
-  private int mWe = 8;
-  private int mWf = 8;
+  private TextView kvS;
+  private ImageView pyN;
+  private ImageView pyO;
+  private ImageView pyP;
+  private ImageView pyQ;
+  private ImageView pyR;
+  private ImageView pyS;
+  private int pyT;
+  private int pyU;
+  private int pyV;
+  private int pyW;
+  private int pyX;
+  private int pyY;
   
   public ContactMoreInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.pyT = 8;
+    this.pyU = 8;
+    this.pyV = 8;
+    this.pyW = 8;
+    this.pyX = 8;
+    this.pyY = 8;
   }
   
   public ContactMoreInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.i(23398);
+    this.pyT = 8;
+    this.pyU = 8;
+    this.pyV = 8;
+    this.pyW = 8;
+    this.pyX = 8;
+    this.pyY = 8;
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(23398);
   }
   
-  private void aZ()
+  private void bJ()
   {
-    if (this.mVU != null) {
-      this.mVU.setVisibility(this.mWa);
+    AppMethodBeat.i(23405);
+    if (this.pyN != null) {
+      this.pyN.setVisibility(this.pyT);
     }
-    if (this.mVV != null) {
-      this.mVV.setVisibility(this.mWb);
+    if (this.pyO != null) {
+      this.pyO.setVisibility(this.pyU);
     }
-    if (this.mVW != null) {
-      this.mVW.setVisibility(this.mWc);
+    if (this.pyP != null) {
+      this.pyP.setVisibility(this.pyV);
     }
-    if (this.mVX != null) {
-      this.mVX.setVisibility(this.mWd);
+    if (this.pyQ != null) {
+      this.pyQ.setVisibility(this.pyW);
     }
-    if (this.mVY != null) {
-      this.mVY.setVisibility(this.mWe);
+    if (this.pyR != null) {
+      this.pyR.setVisibility(this.pyX);
     }
-    if (this.iuO != null)
+    if (this.kvS != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.iuO.getLayoutParams();
-      localLayoutParams.width = a.aa(this.mContext, R.f.FixedTitleWidth);
-      this.iuO.setLayoutParams(localLayoutParams);
+      ViewGroup.LayoutParams localLayoutParams = this.kvS.getLayoutParams();
+      localLayoutParams.width = a.ao(this.mContext, 2131427664);
+      this.kvS.setLayoutParams(localLayoutParams);
     }
-    if (this.mVZ != null) {
-      this.mVZ.setVisibility(this.mWf);
+    if (this.pyS != null) {
+      this.pyS.setVisibility(this.pyY);
     }
+    AppMethodBeat.o(23405);
+  }
+  
+  public final void BA(int paramInt)
+  {
+    AppMethodBeat.i(23403);
+    this.pyX = paramInt;
+    bJ();
+    AppMethodBeat.o(23403);
+  }
+  
+  public final void BB(int paramInt)
+  {
+    AppMethodBeat.i(23404);
+    this.pyY = paramInt;
+    bJ();
+    AppMethodBeat.o(23404);
+  }
+  
+  public final void By(int paramInt)
+  {
+    AppMethodBeat.i(23401);
+    this.pyU = paramInt;
+    bJ();
+    AppMethodBeat.o(23401);
+  }
+  
+  public final void Bz(int paramInt)
+  {
+    AppMethodBeat.i(23402);
+    this.pyV = paramInt;
+    bJ();
+    AppMethodBeat.o(23402);
   }
   
   public final void onBindView(View paramView)
   {
-    this.mVU = ((ImageView)paramView.findViewById(R.h.image_mobile));
-    this.mVV = ((ImageView)paramView.findViewById(R.h.image_qq));
-    this.mVW = ((ImageView)paramView.findViewById(R.h.image_linkedin));
-    this.mVX = ((ImageView)paramView.findViewById(R.h.image_facebook));
-    this.mVY = ((ImageView)paramView.findViewById(R.h.image_googlecontacts));
-    this.mVZ = ((ImageView)paramView.findViewById(R.h.image_weishop));
-    this.iuO = ((TextView)paramView.findViewById(R.h.title));
-    aZ();
+    AppMethodBeat.i(23400);
+    this.pyN = ((ImageView)paramView.findViewById(2131826219));
+    this.pyO = ((ImageView)paramView.findViewById(2131826220));
+    this.pyP = ((ImageView)paramView.findViewById(2131826221));
+    this.pyQ = ((ImageView)paramView.findViewById(2131826222));
+    this.pyR = ((ImageView)paramView.findViewById(2131826223));
+    this.pyS = ((ImageView)paramView.findViewById(2131826224));
+    this.kvS = ((TextView)paramView.findViewById(2131820680));
+    bJ();
     super.onBindView(paramView);
+    AppMethodBeat.o(23400);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(23399);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.mm_preference_content_more_info, localViewGroup);
+    localLayoutInflater.inflate(2130970209, localViewGroup);
+    AppMethodBeat.o(23399);
     return paramViewGroup;
-  }
-  
-  public final void vV(int paramInt)
-  {
-    this.mWb = paramInt;
-    aZ();
-  }
-  
-  public final void vW(int paramInt)
-  {
-    this.mWc = paramInt;
-    aZ();
-  }
-  
-  public final void vX(int paramInt)
-  {
-    this.mWe = paramInt;
-    aZ();
-  }
-  
-  public final void vY(int paramInt)
-  {
-    this.mWf = paramInt;
-    aZ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ContactMoreInfoPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,26 @@
 package com.tencent.mm.network;
 
 import com.tencent.mars.BaseEvent;
-import com.tencent.mars.mm.MMLogic;
-import com.tencent.mm.sdk.platformtools.bf;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.an.a;
+import com.tencent.mm.sdk.a.b;
+import com.tencent.mm.sdk.platformtools.bj;
 
 final class t$9
-  extends bf<Object>
+  extends bj<Object>
 {
-  t$9(t paramt, Object paramObject, Map paramMap1, Map paramMap2, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  t$9(t paramt, Object paramObject, boolean paramBoolean)
   {
     super(3000L, paramObject, (byte)0);
   }
   
   public final Object run()
   {
-    Iterator localIterator = this.eOe.entrySet().iterator();
-    Map.Entry localEntry;
-    while (localIterator.hasNext())
-    {
-      localEntry = (Map.Entry)localIterator.next();
-      MMLogic.saveAuthLongIPs((String)localEntry.getKey(), (String[])((ArrayList)localEntry.getValue()).toArray(new String[0]));
-    }
-    localIterator = this.eOf.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      localEntry = (Map.Entry)localIterator.next();
-      MMLogic.saveAuthShortIPs((String)localEntry.getKey(), (String[])((ArrayList)localEntry.getValue()).toArray(new String[0]));
-    }
-    MMLogic.saveAuthPorts(this.eOg, this.eOh);
-    BaseEvent.onNetworkChange();
+    AppMethodBeat.i(58559);
+    BaseEvent.onForeground(this.gdR);
+    a.cW(this.gdR);
+    b.cP(this.gdR);
+    AppMethodBeat.o(58559);
     return null;
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.order.model;
 
 import android.content.Context;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 
@@ -13,36 +13,43 @@ public final class a
 {
   public static com.tencent.mm.plugin.order.ui.a.e a(Context paramContext, MallTransactionObject paramMallTransactionObject)
   {
+    AppMethodBeat.i(43748);
     com.tencent.mm.plugin.order.ui.a.e locale = new com.tencent.mm.plugin.order.ui.a.e(paramContext);
-    if (!bk.bl(paramMallTransactionObject.mPj)) {}
-    for (locale.mRp = paramContext.getString(a.i.wallet_order_info_support);; locale.mRp = paramContext.getString(a.i.wallet_order_info_support_customer_service))
+    if (!bo.isNullOrNil(paramMallTransactionObject.ppz)) {}
+    for (locale.prC = paramContext.getString(2131305364);; locale.prC = paramContext.getString(2131305367))
     {
       locale.mOnClickListener = new a.1(paramMallTransactionObject, paramContext);
+      AppMethodBeat.o(43748);
       return locale;
     }
   }
   
   public static void a(int paramInt, Context paramContext, MallTransactionObject paramMallTransactionObject)
   {
+    AppMethodBeat.i(43749);
     switch (paramInt)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(43749);
       return;
-    case 0: 
-      g.DQ();
-      ad localad = ((j)g.r(j.class)).Fw().abl(paramMallTransactionObject.mPa);
-      if ((localad != null) && (com.tencent.mm.n.a.gR(localad.field_type)))
+      g.RM();
+      ad localad = ((j)g.E(j.class)).YA().arw(paramMallTransactionObject.ppq);
+      if ((localad != null) && (com.tencent.mm.n.a.je(localad.field_type)))
       {
-        com.tencent.mm.wallet_core.ui.e.bF(paramContext, paramMallTransactionObject.mPa);
+        com.tencent.mm.wallet_core.ui.e.af(paramContext, paramMallTransactionObject.ppq);
+        AppMethodBeat.o(43749);
         return;
       }
-      com.tencent.mm.wallet_core.ui.e.aa(paramContext, paramMallTransactionObject.mPa);
+      com.tencent.mm.wallet_core.ui.e.ad(paramContext, paramMallTransactionObject.ppq);
+      AppMethodBeat.o(43749);
       return;
-    case 1: 
-      com.tencent.mm.wallet_core.ui.e.bG(paramContext, paramMallTransactionObject.mOD);
+      com.tencent.mm.wallet_core.ui.e.bT(paramContext, paramMallTransactionObject.poT);
+      AppMethodBeat.o(43749);
       return;
+      com.tencent.mm.wallet_core.ui.e.m(paramContext, paramMallTransactionObject.ppz, false);
     }
-    com.tencent.mm.wallet_core.ui.e.l(paramContext, paramMallTransactionObject.mPj, false);
   }
 }
 

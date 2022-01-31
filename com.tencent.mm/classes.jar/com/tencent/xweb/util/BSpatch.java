@@ -1,5 +1,6 @@
 package com.tencent.xweb.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.k;
 import org.xwalk.core.Log;
 
@@ -7,14 +8,17 @@ public class BSpatch
 {
   static
   {
-    k.b("bspatch_utils", BSpatch.class.getClassLoader());
+    AppMethodBeat.i(4000);
+    k.a("bspatch_utils", BSpatch.class.getClassLoader());
+    AppMethodBeat.o(4000);
   }
   
-  public static int at(String paramString1, String paramString2, String paramString3)
+  public static int aK(String paramString1, String paramString2, String paramString3)
   {
+    AppMethodBeat.i(3999);
     Log.i("BSpatch", "doPatch oldFile:" + paramString1 + ",patchFile:" + paramString2 + ",newFile:" + paramString3);
     long l = System.currentTimeMillis();
-    e.cTg();
+    f.dZw();
     int i = 0;
     String str = paramString3;
     if (paramString1.equals(paramString3))
@@ -26,22 +30,24 @@ public class BSpatch
     if (j < 0)
     {
       Log.i("BSpatch", "doPatch failed");
-      e.cTh();
+      f.dZx();
     }
     for (;;)
     {
+      AppMethodBeat.o(3999);
       return j;
       Log.i("BSpatch", "doPatch successful");
       if (i != 0)
       {
-        if (!a.copyFile(str, paramString1))
+        if (!b.copyFile(str, paramString1))
         {
           Log.e("BSpatch", "doPatch same path, copy failed");
+          AppMethodBeat.o(3999);
           return -1;
         }
-        a.deleteFile(str);
+        b.deleteFile(str);
       }
-      e.iA(System.currentTimeMillis() - l);
+      f.pm(System.currentTimeMillis() - l);
     }
   }
   

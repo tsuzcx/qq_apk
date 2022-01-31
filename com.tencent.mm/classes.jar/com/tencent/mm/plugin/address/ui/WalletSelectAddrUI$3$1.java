@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.address.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletSelectAddrUI$3$1
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class WalletSelectAddrUI$3$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    WalletSelectAddrUI.b(this.fvJ.fvI);
+    AppMethodBeat.i(16978);
+    WalletSelectAddrUI.b(this.gNp.gNo);
+    AppMethodBeat.o(16978);
   }
 }
 

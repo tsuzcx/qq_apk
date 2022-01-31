@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.emoji.sync;
 
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executor;
 
 public final class b$a
 {
-  int eqJ;
-  int jav;
-  ExecutorService jax;
+  int ePO;
+  int ljf;
+  Executor ljg;
 }
 
 

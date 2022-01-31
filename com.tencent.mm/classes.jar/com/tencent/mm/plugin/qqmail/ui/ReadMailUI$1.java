@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.stub.ReadMailProxy;
 
 final class ReadMailUI$1
@@ -9,16 +10,18 @@ final class ReadMailUI$1
   
   public final void run()
   {
-    ReadMailUI.q(this.njK);
-    if (ReadMailUI.r(this.njK) == 0)
+    AppMethodBeat.i(68419);
+    ReadMailUI.q(this.pOX);
+    if (ReadMailUI.r(this.pOX) == 0)
     {
-      ReadMailUI.s(this.njK);
-      if (!ReadMailUI.t(this.njK)) {
-        ReadMailUI.u(this.njK);
+      ReadMailUI.s(this.pOX);
+      if (!ReadMailUI.t(this.pOX)) {
+        ReadMailUI.u(this.pOX);
       }
-      ReadMailUI.a(this.njK, new ReadMailProxy(ReadMailUI.l(this.njK), null, new ReadMailUI.b(this.njK), new ReadMailUI.c(this.njK)));
-      ReadMailUI.v(this.njK).REMOTE_CALL("addDownloadCallback", new Object[0]);
+      ReadMailUI.a(this.pOX, new ReadMailProxy(ReadMailUI.l(this.pOX), null, new ReadMailUI.b(this.pOX), new ReadMailUI.c(this.pOX)));
+      ReadMailUI.v(this.pOX).REMOTE_CALL("addDownloadCallback", new Object[0]);
     }
+    AppMethodBeat.o(68419);
   }
 }
 

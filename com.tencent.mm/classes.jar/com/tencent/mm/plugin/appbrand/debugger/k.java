@@ -2,14 +2,8 @@ package com.tencent.mm.plugin.appbrand.debugger;
 
 public final class k
 {
-  public String dmT;
-  public boolean fPV;
-  public boolean fSg = false;
-  public String fSh;
-  public String fSi;
-  public int fSj;
-  public int fSk;
-  public int fSl;
+  public long hlb;
+  public int size;
 }
 
 

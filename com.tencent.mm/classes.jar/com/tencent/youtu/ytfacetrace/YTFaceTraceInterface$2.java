@@ -2,6 +2,7 @@ package com.tencent.youtu.ytfacetrace;
 
 import android.graphics.Rect;
 import android.hardware.Camera;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytfacetrace.jni.YTFaceTraceJNIInterface.FaceStatus;
 
 final class YTFaceTraceInterface$2
@@ -9,7 +10,9 @@ final class YTFaceTraceInterface$2
 {
   public final void onTracing(int paramInt, YTFaceTraceJNIInterface.FaceStatus paramFaceStatus, Rect paramRect, byte[] paramArrayOfByte, Camera paramCamera)
   {
+    AppMethodBeat.i(117790);
     YTFaceTraceInterface.access$300(paramInt, paramFaceStatus, paramRect, paramArrayOfByte, paramCamera);
+    AppMethodBeat.o(117790);
   }
 }
 

@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.picker.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletCardElementUI$17
   implements View.OnClickListener
@@ -13,12 +12,11 @@ final class WalletCardElementUI$17
   
   public final void onClick(View paramView)
   {
-    paramView = new a(this.qCj.mController.uMN);
-    paramView.woo = new WalletCardElementUI.17.1(this, paramView);
-    if ((WalletCardElementUI.q(this.qCj) > 0) && (WalletCardElementUI.r(this.qCj) > 0) && (WalletCardElementUI.s(this.qCj) > 0)) {
-      paramView.ao(WalletCardElementUI.q(this.qCj), WalletCardElementUI.r(this.qCj), WalletCardElementUI.s(this.qCj));
-    }
-    paramView.show();
+    AppMethodBeat.i(47234);
+    paramView = new Intent(this.uoW.getContext(), WalletSelectProfessionUI.class);
+    paramView.putExtra("key_profession_list", WalletCardElementUI.p(this.uoW));
+    this.uoW.startActivityForResult(paramView, 5);
+    AppMethodBeat.o(47234);
   }
 }
 

@@ -1,21 +1,23 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.Intent;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.g;
 
 final class FacebookAuthUI$4
-  implements MenuItem.OnMenuItemClickListener
+  implements DialogInterface.OnCancelListener
 {
   FacebookAuthUI$4(FacebookAuthUI paramFacebookAuthUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    paramMenuItem = this.flI.getIntent();
-    paramMenuItem.putExtra("bind_facebook_succ", FacebookAuthUI.b(this.flI));
-    this.flI.setResult(-1, paramMenuItem);
-    this.flI.finish();
-    return true;
+    AppMethodBeat.i(124777);
+    if (FacebookAuthUI.a(this.gDa) != null) {
+      g.Rc().a(FacebookAuthUI.a(this.gDa));
+    }
+    AppMethodBeat.o(124777);
   }
 }
 

@@ -2,10 +2,11 @@ package com.tencent.mm.modelvoiceaddr.a;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class c$1
-  extends ah
+  extends ak
 {
   c$1(c paramc, Looper paramLooper)
   {
@@ -14,11 +15,16 @@ final class c$1
   
   public final void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what != 0) {}
-    while (c.a(this.eMK) == null) {
+    AppMethodBeat.i(116757);
+    if (paramMessage.what != 0)
+    {
+      AppMethodBeat.o(116757);
       return;
     }
-    c.a(this.eMK).tW();
+    if (c.a(this.gcp) != null) {
+      c.a(this.gcp).CO();
+    }
+    AppMethodBeat.o(116757);
   }
 }
 

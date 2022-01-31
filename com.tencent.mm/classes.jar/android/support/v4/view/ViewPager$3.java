@@ -7,13 +7,13 @@ final class ViewPager$3
   
   public final void run()
   {
-    this.Hp.setScrollState(0);
-    this.Hp.dm();
+    this.Ha.setScrollState(0);
+    this.Ha.populate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.view.ViewPager.3
  * JD-Core Version:    0.7.0.1
  */

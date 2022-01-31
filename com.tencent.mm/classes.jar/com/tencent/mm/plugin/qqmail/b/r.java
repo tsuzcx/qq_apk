@@ -1,14 +1,16 @@
 package com.tencent.mm.plugin.qqmail.b;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,58 +19,72 @@ public final class r
   extends m
   implements k
 {
-  b dmK;
-  private f dmL;
-  private ArrayList<Long> neh;
+  private f callback;
+  private ArrayList<Long> pJx;
+  private b rr;
   
   public r(ArrayList<Long> paramArrayList)
   {
-    this.neh = paramArrayList;
+    AppMethodBeat.i(67978);
+    this.pJx = paramArrayList;
     paramArrayList = new b.a();
-    paramArrayList.ecH = new c();
-    paramArrayList.ecI = new d();
+    paramArrayList.fsX = new c();
+    paramArrayList.fsY = new d();
     paramArrayList.uri = "/cgi-bin/micromsg-bin/checkconversationfile";
-    paramArrayList.ecG = 483;
-    paramArrayList.ecJ = 0;
-    paramArrayList.ecK = 0;
-    this.dmK = paramArrayList.Kt();
+    paramArrayList.funcId = 483;
+    paramArrayList.reqCmdId = 0;
+    paramArrayList.respCmdId = 0;
+    this.rr = paramArrayList.ado();
+    AppMethodBeat.o(67978);
   }
   
-  public final int a(e parame, f paramf)
+  public final LinkedList<g> cdI()
   {
-    this.dmL = paramf;
-    paramf = (c)this.dmK.ecE.ecN;
-    paramf.hPS = this.neh.size();
+    return ((d)this.rr.fsW.fta).pIv;
+  }
+  
+  public final int doScene(e parame, f paramf)
+  {
+    AppMethodBeat.i(67980);
+    this.callback = paramf;
+    paramf = (c)this.rr.fsV.fta;
+    paramf.jJu = this.pJx.size();
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.neh.iterator();
+    Iterator localIterator = this.pJx.iterator();
     while (localIterator.hasNext())
     {
       long l = ((Long)localIterator.next()).longValue();
       h localh = new h();
-      localh.ndp = l;
+      localh.pIG = l;
       localLinkedList.add(localh);
-      y.i("MicroMsg.NetSceneCheckConversationFile", "MsgId: %d", new Object[] { Long.valueOf(l) });
+      ab.i("MicroMsg.NetSceneCheckConversationFile", "MsgId: %d", new Object[] { Long.valueOf(l) });
     }
-    paramf.ndc = localLinkedList;
-    y.i("MicroMsg.NetSceneCheckConversationFile", "Count = %d, MsgInfoList.size = %d", new Object[] { Integer.valueOf(paramf.hPS), Integer.valueOf(paramf.ndc.size()) });
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneCheckConversationFile", "onGYNetEnd, netId: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (((paramInt2 != 0) || (paramInt3 != 0)) && (this.dmL != null)) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    while (this.dmL == null) {
-      return;
-    }
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    paramf.pIu = localLinkedList;
+    ab.i("MicroMsg.NetSceneCheckConversationFile", "Count = %d, MsgInfoList.size = %d", new Object[] { Integer.valueOf(paramf.jJu), Integer.valueOf(paramf.pIu.size()) });
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(67980);
+    return i;
   }
   
   public final int getType()
   {
     return 483;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(67979);
+    ab.i("MicroMsg.NetSceneCheckConversationFile", "onGYNetEnd, netId: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (((paramInt2 != 0) || (paramInt3 != 0)) && (this.callback != null))
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(67979);
+      return;
+    }
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(67979);
   }
 }
 

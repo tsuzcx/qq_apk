@@ -1,78 +1,81 @@
 package com.tencent.mm.plugin.game.luggage.d;
 
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.luggage.d.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.k;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
+  extends f
 {
-  private static final Map<Integer, Map<Integer, Object>> kNC = new HashMap();
-  
-  public static void EK(String paramString)
+  public a(g paramg, Bundle paramBundle)
   {
-    if (bk.bl(paramString)) {}
-    do
-    {
-      return;
-      paramString = (Map)kNC.remove(Integer.valueOf(paramString.hashCode()));
-    } while ((paramString == null) || (paramString.isEmpty()));
-    boolean bool = ((Boolean)paramString.remove(Integer.valueOf(a.b.kNN))).booleanValue();
-    paramString = y(paramString);
-    y.i("MicroMsg.GameWebReport", "report web performance. isReportNow: %b, reportData: [%s]", new Object[] { Boolean.valueOf(bool), paramString });
-    h.nFQ.a(16142, paramString, bool, false);
+    super(paramg, null, paramBundle);
+    AppMethodBeat.i(135911);
+    uy();
+    ((e)getWebView()).setShouldCleanPkgWhenDestroy(true);
+    AppMethodBeat.o(135911);
   }
   
-  public static void l(String paramString, Map<Integer, Object> paramMap)
+  public final void PS(String paramString)
   {
-    if (bk.bl(paramString)) {
-      return;
-    }
-    kNC.put(Integer.valueOf(paramString.hashCode()), paramMap);
+    AppMethodBeat.i(135914);
+    this.uRl.setPullDownEnabled(false);
+    AppMethodBeat.o(135914);
   }
   
-  public static String y(Map<Integer, Object> paramMap)
+  public final boolean aYi()
   {
-    if ((paramMap == null) || (paramMap.isEmpty())) {
-      return "";
-    }
-    int j = ((Integer)Collections.max(paramMap.keySet())).intValue();
-    int i = ((Integer)Collections.min(paramMap.keySet())).intValue();
-    j = Math.min(j, 200);
-    StringBuffer localStringBuffer = new StringBuffer();
-    while (i <= j)
-    {
-      Object localObject = paramMap.get(Integer.valueOf(i));
-      if (localObject != null) {
-        localStringBuffer.append(localObject);
-      }
-      localStringBuffer.append(",");
-      i += 1;
-    }
-    if (localStringBuffer.length() > 0) {
-      localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
-    }
-    return localStringBuffer.toString();
+    return false;
   }
   
-  public static enum a
+  public final void bFr() {}
+  
+  public final void bFs()
   {
-    public static int kND = 21;
-    public static int kNE = 22;
-    public static int kNF = 23;
-    public static int kNG = 24;
-    public static int kNH = 25;
-    public static int kNI = 26;
-    public static int kNJ = 27;
-    public static int kNK = 28;
-    public static int kNL = 29;
+    AppMethodBeat.i(135916);
+    finish();
+    AppMethodBeat.o(135916);
+  }
+  
+  public final void cr(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(135915);
+    super.cr("微信游戏", paramInt);
+    AppMethodBeat.o(135915);
+  }
+  
+  public final void ib(boolean paramBoolean) {}
+  
+  public final void onForeground()
+  {
+    AppMethodBeat.i(135913);
+    ab.i("MicroMsg.GameFloatLayerWebPage", "onForeground");
+    super.onForeground();
+    cr("微信游戏", 0);
+    k localk = this.uRl;
+    localk.setPullDownEnabled(false);
+    localk.uSp.setVisibility(8);
+    localk.uSo.setBackgroundColor(0);
+    localk.setBackgroundColor(0);
+    AppMethodBeat.o(135913);
+  }
+  
+  public final View tZ()
+  {
+    AppMethodBeat.i(135912);
+    View localView = super.tZ();
+    this.uRm.setBackgroundColor(0);
+    AppMethodBeat.o(135912);
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.d.a
  * JD-Core Version:    0.7.0.1
  */

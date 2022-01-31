@@ -1,17 +1,28 @@
 package com.tencent.tmassistantsdk.downloadclient;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class TMAssistantDownloadSDKManager
 {
-  protected static TMAssistantDownloadSDKManager mInstance = null;
-  protected static ArrayList<TMAssistantDownloadOpenSDKClient> mOpenSDKClientList = new ArrayList();
-  protected static ArrayList<TMAssistantDownloadSDKClient> mSDKClientList = new ArrayList();
-  protected static TMAssistantDownloadSDKSettingClient mSDKSettingClient = null;
+  protected static TMAssistantDownloadSDKManager mInstance;
+  protected static ArrayList<TMAssistantDownloadOpenSDKClient> mOpenSDKClientList;
+  protected static ArrayList<TMAssistantDownloadSDKClient> mSDKClientList;
+  protected static TMAssistantDownloadSDKSettingClient mSDKSettingClient;
   protected Context mContext = null;
+  
+  static
+  {
+    AppMethodBeat.i(75656);
+    mInstance = null;
+    mSDKClientList = new ArrayList();
+    mSDKSettingClient = null;
+    mOpenSDKClientList = new ArrayList();
+    AppMethodBeat.o(75656);
+  }
   
   protected TMAssistantDownloadSDKManager(Context paramContext)
   {
@@ -29,10 +40,12 @@ public class TMAssistantDownloadSDKManager
     {
       try
       {
+        AppMethodBeat.i(75655);
         TMLog.i("TMAssistantDownloadSDKManager", "closeAllService method!");
         if (mInstance == null)
         {
           TMLog.i("TMAssistantDownloadSDKManager", "manager minstance == null");
+          AppMethodBeat.o(75655);
           return;
         }
         if ((mSDKClientList != null) && (mSDKClientList.size() > 0))
@@ -57,6 +70,7 @@ public class TMAssistantDownloadSDKManager
         mSDKSettingClient = null;
       }
       mInstance = null;
+      AppMethodBeat.o(75655);
     }
   }
   
@@ -64,10 +78,12 @@ public class TMAssistantDownloadSDKManager
   {
     try
     {
+      AppMethodBeat.i(75650);
       if (mInstance == null) {
         mInstance = new TMAssistantDownloadSDKManager(paramContext);
       }
       paramContext = mInstance;
+      AppMethodBeat.o(75650);
       return paramContext;
     }
     finally {}
@@ -79,108 +95,70 @@ public class TMAssistantDownloadSDKManager
     {
       try
       {
+        AppMethodBeat.i(75653);
         Iterator localIterator = mOpenSDKClientList.iterator();
         if (localIterator.hasNext())
         {
           TMAssistantDownloadOpenSDKClient localTMAssistantDownloadOpenSDKClient = (TMAssistantDownloadOpenSDKClient)localIterator.next();
-          boolean bool = localTMAssistantDownloadOpenSDKClient.mClientKey.equals(paramString);
-          if (bool == true)
-          {
-            paramString = localTMAssistantDownloadOpenSDKClient;
-            return paramString;
+          if (localTMAssistantDownloadOpenSDKClient.mClientKey.equals(paramString) != true) {
+            continue;
           }
+          AppMethodBeat.o(75653);
+          paramString = localTMAssistantDownloadOpenSDKClient;
+          return paramString;
         }
-        else
+        paramString = new TMAssistantDownloadOpenSDKClient(this.mContext, paramString, "com.tencent.android.qqdownloader.SDKService");
+        if (paramString.initTMAssistantDownloadSDK())
         {
-          paramString = new TMAssistantDownloadOpenSDKClient(this.mContext, paramString, "com.tencent.android.qqdownloader.SDKService");
-          if (paramString.initTMAssistantDownloadSDK()) {
-            mOpenSDKClientList.add(paramString);
-          } else {
-            paramString = null;
-          }
+          mOpenSDKClientList.add(paramString);
+          AppMethodBeat.o(75653);
+          continue;
         }
+        paramString = null;
       }
       finally {}
+      AppMethodBeat.o(75653);
     }
   }
   
-  /* Error */
   public TMAssistantDownloadSDKClient getDownloadSDKClient(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +12 -> 15
-    //   6: aload_1
-    //   7: invokevirtual 115	java/lang/String:length	()I
-    //   10: istore_2
-    //   11: iload_2
-    //   12: ifgt +9 -> 21
-    //   15: aconst_null
-    //   16: astore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: aload_1
-    //   20: areturn
-    //   21: getstatic 26	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKClientList	Ljava/util/ArrayList;
-    //   24: invokevirtual 60	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   27: astore 4
-    //   29: aload 4
-    //   31: invokeinterface 66 1 0
-    //   36: ifeq +31 -> 67
-    //   39: aload 4
-    //   41: invokeinterface 70 1 0
-    //   46: checkcast 72	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClient
-    //   49: astore_3
-    //   50: aload_3
-    //   51: getfield 116	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClient:mClientKey	Ljava/lang/String;
-    //   54: aload_1
-    //   55: invokevirtual 99	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   58: iconst_1
-    //   59: if_icmpne -30 -> 29
-    //   62: aload_3
-    //   63: astore_1
-    //   64: goto -47 -> 17
-    //   67: new 72	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClient
-    //   70: dup
-    //   71: aload_0
-    //   72: getfield 35	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mContext	Landroid/content/Context;
-    //   75: aload_1
-    //   76: invokespecial 119	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClient:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   79: astore_1
-    //   80: aload_1
-    //   81: invokevirtual 120	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClient:initTMAssistantDownloadSDK	()Z
-    //   84: pop
-    //   85: getstatic 26	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKClientList	Ljava/util/ArrayList;
-    //   88: aload_1
-    //   89: invokevirtual 110	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   92: pop
-    //   93: goto -76 -> 17
-    //   96: astore_1
-    //   97: aload_0
-    //   98: monitorexit
-    //   99: aload_1
-    //   100: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	101	0	this	TMAssistantDownloadSDKManager
-    //   0	101	1	paramString	String
-    //   10	2	2	i	int
-    //   49	14	3	localTMAssistantDownloadSDKClient	TMAssistantDownloadSDKClient
-    //   27	13	4	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   6	11	96	finally
-    //   21	29	96	finally
-    //   29	62	96	finally
-    //   67	93	96	finally
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(75651);
+        if ((paramString == null) || (paramString.length() <= 0))
+        {
+          paramString = null;
+          AppMethodBeat.o(75651);
+          return paramString;
+        }
+        Iterator localIterator = mSDKClientList.iterator();
+        if (localIterator.hasNext())
+        {
+          TMAssistantDownloadSDKClient localTMAssistantDownloadSDKClient = (TMAssistantDownloadSDKClient)localIterator.next();
+          if (localTMAssistantDownloadSDKClient.mClientKey.equals(paramString) != true) {
+            continue;
+          }
+          AppMethodBeat.o(75651);
+          paramString = localTMAssistantDownloadSDKClient;
+          continue;
+        }
+        paramString = new TMAssistantDownloadSDKClient(this.mContext, paramString);
+      }
+      finally {}
+      paramString.initTMAssistantDownloadSDK();
+      mSDKClientList.add(paramString);
+      AppMethodBeat.o(75651);
+    }
   }
   
   public TMAssistantDownloadSDKSettingClient getDownloadSDKSettingClient()
   {
     try
     {
+      AppMethodBeat.i(75652);
       if (mSDKSettingClient == null)
       {
         localTMAssistantDownloadSDKSettingClient = new TMAssistantDownloadSDKSettingClient(this.mContext, "TMAssistantDownloadSDKManager");
@@ -188,6 +166,7 @@ public class TMAssistantDownloadSDKManager
         localTMAssistantDownloadSDKSettingClient.initTMAssistantDownloadSDK();
       }
       TMAssistantDownloadSDKSettingClient localTMAssistantDownloadSDKSettingClient = mSDKSettingClient;
+      AppMethodBeat.o(75652);
       return localTMAssistantDownloadSDKSettingClient;
     }
     finally {}
@@ -199,70 +178,79 @@ public class TMAssistantDownloadSDKManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: getstatic 26	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKClientList	Ljava/util/ArrayList;
-    //   5: invokevirtual 60	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   8: astore_3
-    //   9: aload_3
-    //   10: invokeinterface 66 1 0
-    //   15: ifeq +49 -> 64
-    //   18: aload_3
-    //   19: invokeinterface 70 1 0
-    //   24: checkcast 72	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClient
-    //   27: astore 4
-    //   29: aload 4
-    //   31: ifnull -22 -> 9
+    //   2: ldc 141
+    //   4: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: getstatic 33	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKClientList	Ljava/util/ArrayList;
+    //   10: invokevirtual 70	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   13: astore_3
+    //   14: aload_3
+    //   15: invokeinterface 76 1 0
+    //   20: ifeq +54 -> 74
+    //   23: aload_3
+    //   24: invokeinterface 80 1 0
+    //   29: checkcast 82	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClient
+    //   32: astore 4
     //   34: aload 4
-    //   36: getfield 116	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClient:mClientKey	Ljava/lang/String;
-    //   39: aload_1
-    //   40: invokevirtual 99	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   43: iconst_1
-    //   44: if_icmpne -35 -> 9
-    //   47: aload 4
-    //   49: invokevirtual 75	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClient:unInitTMAssistantDownloadSDK	()V
-    //   52: aload_3
-    //   53: invokeinterface 129 1 0
-    //   58: iconst_1
-    //   59: istore_2
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: iload_2
-    //   63: ireturn
-    //   64: getstatic 28	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKSettingClient	Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient;
-    //   67: ifnull +32 -> 99
-    //   70: getstatic 28	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKSettingClient	Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient;
-    //   73: getfield 130	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient:mClientKey	Ljava/lang/String;
-    //   76: aload_1
-    //   77: invokevirtual 99	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   80: iconst_1
-    //   81: if_icmpne +18 -> 99
-    //   84: getstatic 28	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKSettingClient	Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient;
-    //   87: invokevirtual 81	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient:unInitTMAssistantDownloadSDK	()V
-    //   90: aconst_null
-    //   91: putstatic 28	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKSettingClient	Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient;
-    //   94: iconst_1
-    //   95: istore_2
-    //   96: goto -36 -> 60
-    //   99: iconst_0
-    //   100: istore_2
-    //   101: goto -41 -> 60
-    //   104: astore_1
-    //   105: aload_0
-    //   106: monitorexit
-    //   107: aload_1
-    //   108: athrow
+    //   36: ifnull -22 -> 14
+    //   39: aload 4
+    //   41: getfield 129	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClient:mClientKey	Ljava/lang/String;
+    //   44: aload_1
+    //   45: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   48: iconst_1
+    //   49: if_icmpne -35 -> 14
+    //   52: aload 4
+    //   54: invokevirtual 85	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClient:unInitTMAssistantDownloadSDK	()V
+    //   57: aload_3
+    //   58: invokeinterface 144 1 0
+    //   63: ldc 141
+    //   65: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   68: iconst_1
+    //   69: istore_2
+    //   70: aload_0
+    //   71: monitorexit
+    //   72: iload_2
+    //   73: ireturn
+    //   74: getstatic 35	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKSettingClient	Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient;
+    //   77: ifnull +37 -> 114
+    //   80: getstatic 35	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKSettingClient	Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient;
+    //   83: getfield 145	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient:mClientKey	Ljava/lang/String;
+    //   86: aload_1
+    //   87: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   90: iconst_1
+    //   91: if_icmpne +23 -> 114
+    //   94: getstatic 35	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKSettingClient	Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient;
+    //   97: invokevirtual 91	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient:unInitTMAssistantDownloadSDK	()V
+    //   100: aconst_null
+    //   101: putstatic 35	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKManager:mSDKSettingClient	Lcom/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKSettingClient;
+    //   104: ldc 141
+    //   106: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: iconst_1
+    //   110: istore_2
+    //   111: goto -41 -> 70
+    //   114: iconst_0
+    //   115: istore_2
+    //   116: ldc 141
+    //   118: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   121: goto -51 -> 70
+    //   124: astore_1
+    //   125: aload_0
+    //   126: monitorexit
+    //   127: aload_1
+    //   128: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	109	0	this	TMAssistantDownloadSDKManager
-    //   0	109	1	paramString	String
-    //   59	42	2	bool	boolean
-    //   8	45	3	localIterator	Iterator
-    //   27	21	4	localTMAssistantDownloadSDKClient	TMAssistantDownloadSDKClient
+    //   0	129	0	this	TMAssistantDownloadSDKManager
+    //   0	129	1	paramString	String
+    //   69	47	2	bool	boolean
+    //   13	45	3	localIterator	Iterator
+    //   32	21	4	localTMAssistantDownloadSDKClient	TMAssistantDownloadSDKClient
     // Exception table:
     //   from	to	target	type
-    //   2	9	104	finally
-    //   9	29	104	finally
-    //   34	58	104	finally
-    //   64	94	104	finally
+    //   2	14	124	finally
+    //   14	34	124	finally
+    //   39	68	124	finally
+    //   74	109	124	finally
+    //   116	121	124	finally
   }
 }
 

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/p1"
+<RelativeLayout android:background="@color/nf" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <ListView android:id="@id/bjt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/rn" android:scrollingCache="false" android:divider="@color/me" android:dividerHeight="@dimen/hi" />
-        <ViewStub android:id="@id/bju" android:layout="@layout/tc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ViewStub android:id="@id/bgu" android:layout="@layout/td" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <include layout="@layout/w7" />
-</LinearLayout>
+    <View android:id="@id/bmp" android:background="@color/nj" android:layout_width="fill_parent" android:layout_height="@dimen/h2" />
+    <View android:id="@id/bmq" android:background="@color/nj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/bmp" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/h2" android:layout_alignParentLeft="true" android:layout_centerInParent="true">
+        <View android:id="@id/bmr" android:layout_width="@dimen/h0" android:layout_height="fill_parent" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0dip" android:textColor="@color/nh" android:id="@id/bms" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

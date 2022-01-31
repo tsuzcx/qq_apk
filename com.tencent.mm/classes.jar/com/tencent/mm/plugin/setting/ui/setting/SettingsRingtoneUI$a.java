@@ -7,33 +7,39 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
-import com.tencent.mm.plugin.setting.a.d;
-import com.tencent.mm.plugin.setting.a.e;
-import com.tencent.mm.plugin.setting.a.g;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SettingsRingtoneUI$a
   extends BaseAdapter
 {
-  Cursor bLw;
-  int count = 0;
-  int padding = 0;
+  int count;
+  Cursor csQ;
+  int padding;
   
   public SettingsRingtoneUI$a(SettingsRingtoneUI paramSettingsRingtoneUI, Cursor paramCursor)
   {
-    this.bLw = paramCursor;
+    AppMethodBeat.i(127426);
+    this.count = 0;
+    this.padding = 0;
+    this.csQ = paramCursor;
     this.count = (paramCursor.getCount() + 1);
-    y.d("RingtonePickerActivity", "count = " + this.count);
-    this.padding = paramSettingsRingtoneUI.getResources().getDimensionPixelSize(a.d.NormalPadding);
+    ab.d("RingtonePickerActivity", "count = " + this.count);
+    this.padding = paramSettingsRingtoneUI.getResources().getDimensionPixelSize(2131427808);
+    AppMethodBeat.o(127426);
   }
   
-  private String ke(int paramInt)
+  private String getItem(int paramInt)
   {
-    if ((this.bLw.isClosed()) || (!this.bLw.moveToPosition(paramInt - 1))) {
+    AppMethodBeat.i(127428);
+    if ((this.csQ.isClosed()) || (!this.csQ.moveToPosition(paramInt - 1)))
+    {
+      AppMethodBeat.o(127428);
       return "";
     }
-    return this.bLw.getString(this.bLw.getColumnIndex("title"));
+    String str = this.csQ.getString(this.csQ.getColumnIndex("title"));
+    AppMethodBeat.o(127428);
+    return str;
   }
   
   public final int getCount()
@@ -48,25 +54,27 @@ final class SettingsRingtoneUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramView = (CheckedTextView)this.nVG.nVC.inflate(a.g.select_dialog_singlechoice, null);
+    AppMethodBeat.i(127427);
+    paramView = (CheckedTextView)this.qJP.qJL.inflate(2130970650, null);
     if (paramInt == 0)
     {
-      paramView.setBackgroundResource(a.e.comm_list_item_selector);
-      paramView.setText(a.i.settings_notification_ringtone_sys);
+      paramView.setBackgroundResource(2130838445);
+      paramView.setText(2131303352);
     }
     for (;;)
     {
       paramView.setPadding(this.padding, 0, this.padding, 0);
-      paramView.setCheckMarkDrawable(a.e.round_selector);
+      paramView.setCheckMarkDrawable(2130840179);
+      AppMethodBeat.o(127427);
       return paramView;
-      paramView.setBackgroundResource(a.e.comm_list_item_selector);
-      paramView.setText(ke(paramInt));
+      paramView.setBackgroundResource(2130838445);
+      paramView.setText(getItem(paramInt));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsRingtoneUI.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,18 +5,18 @@ import java.nio.ByteOrder;
 public final class c
   extends b
 {
+  private final ByteOrder Bwr;
   private final byte[] buffer;
+  private final int byteCount;
   private final int offset;
   private int position;
-  private final int wTv;
-  private final ByteOrder wZL;
   
   private c(byte[] paramArrayOfByte, int paramInt, ByteOrder paramByteOrder)
   {
     this.buffer = paramArrayOfByte;
     this.offset = 0;
-    this.wTv = paramInt;
-    this.wZL = paramByteOrder;
+    this.byteCount = paramInt;
+    this.Bwr = paramByteOrder;
   }
   
   public static b a(byte[] paramArrayOfByte, int paramInt, ByteOrder paramByteOrder)
@@ -24,7 +24,7 @@ public final class c
     return new c(paramArrayOfByte, paramInt, paramByteOrder);
   }
   
-  public final void cQU()
+  public final void dWJ()
   {
     this.position += 4;
   }
@@ -36,7 +36,7 @@ public final class c
     int k;
     int j;
     int m;
-    if (this.wZL == ByteOrder.BIG_ENDIAN)
+    if (this.Bwr == ByteOrder.BIG_ENDIAN)
     {
       k = i + 1;
       i = arrayOfByte[i];
@@ -61,7 +61,7 @@ public final class c
     byte[] arrayOfByte = this.buffer;
     int i = this.offset + this.position;
     int j;
-    if (this.wZL == ByteOrder.BIG_ENDIAN) {
+    if (this.Bwr == ByteOrder.BIG_ENDIAN) {
       j = arrayOfByte[i];
     }
     for (short s = (short)(arrayOfByte[(i + 1)] & 0xFF | j << 8);; s = (short)(arrayOfByte[i] & 0xFF | j << 8))

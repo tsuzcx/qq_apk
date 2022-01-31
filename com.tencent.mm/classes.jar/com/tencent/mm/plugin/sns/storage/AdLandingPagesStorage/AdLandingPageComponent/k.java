@@ -1,13 +1,25 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class k
   extends l
 {
-  public int oCA;
-  public int oCB;
-  public String oCx;
-  public String oCy;
-  public int oCz;
+  public String hKu;
+  public String loD;
+  public String rsb;
+  public int rsc;
+  public String sessionFrom;
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(145296);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("userName:").append(this.loD).append(", appId:").append(this.rsb).append(", busId:").append(this.hKu).append(", sessionFrom:").append(this.sessionFrom);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(145296);
+    return localObject;
+  }
 }
 
 

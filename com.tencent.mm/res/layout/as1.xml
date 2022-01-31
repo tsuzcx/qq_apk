@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/e48" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="@dimen/ey" android:layout_height="@dimen/ey"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/apu" />
-</LinearLayout>
+    <ImageView android:id="@id/bnf" android:layout_width="@dimen/ey" android:layout_height="@dimen/ey" />
+    <ImageView android:id="@id/ecp" android:background="@color/rx" android:visibility="gone" android:layout_width="@dimen/ey" android:layout_height="@dimen/ey" />
+</FrameLayout>

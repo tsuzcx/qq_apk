@@ -1,27 +1,35 @@
 package com.tencent.mm.plugin.wallet.balance.a.a;
 
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.protocal.c.bad;
-import com.tencent.mm.protocal.c.bae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.protocal.protobuf.bcb;
+import com.tencent.mm.protocal.protobuf.bcc;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c
-  extends a<bae>
+  extends a<bcc>
 {
-  public c(int paramInt)
+  public c(int paramInt1, int paramInt2, String paramString)
   {
+    AppMethodBeat.i(45229);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bad();
-    ((b.a)localObject).ecI = new bae();
-    ((b.a)localObject).ecG = 1830;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/onclickredeem";
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    localObject = ((b.a)localObject).Kt();
-    ((bad)((b)localObject).ecE.ecN).sOy = paramInt;
-    this.dmK = ((b)localObject);
+    ((b.a)localObject).fsX = new bcb();
+    ((b.a)localObject).fsY = new bcc();
+    ((b.a)localObject).funcId = 2507;
+    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/manageplan";
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    localObject = ((b.a)localObject).ado();
+    bcb localbcb = (bcb)((b)localObject).fsV.fta;
+    localbcb.type = paramInt1;
+    localbcb.wpg = paramInt2;
+    localbcb.wpf = paramString;
+    this.rr = ((b)localObject);
+    ab.i("MicroMsg.CgiLqtManagePlan", "type: %s, planId: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(45229);
   }
 }
 

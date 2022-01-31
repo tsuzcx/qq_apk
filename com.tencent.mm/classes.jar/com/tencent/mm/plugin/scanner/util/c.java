@@ -1,198 +1,174 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.graphics.Rect;
-import com.tencent.mm.sdk.platformtools.y;
-import e.a;
+import a.f.b.j;
+import a.l;
+import a.v;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.network.n;
+import com.tencent.mm.network.n.a;
+import com.tencent.mm.plugin.scanner.model.OfflineScanContext;
+import com.tencent.mm.plugin.scanner.model.OfflineScanContext.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.bi;
+import com.tencent.mm.storage.z;
+import com.tencent.mm.ui.base.h;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/scanner/util/OfflineScanManager;", "", "()V", "OFFLINE_SCAN_ENABLE", "", "TAG", "", "currentNetworkStatus", "", "onNetworkChange", "com/tencent/mm/plugin/scanner/util/OfflineScanManager$onNetworkChange$1", "Lcom/tencent/mm/plugin/scanner/util/OfflineScanManager$onNetworkChange$1;", "canUseOfflineScan", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "scanEntryScene", "checkNeedProcessOffline", "errType", "errCode", "clearOfflineScanMessage", "", "handleNetworkUnconnected", "context", "Lcom/tencent/mm/plugin/scanner/model/OfflineScanContext;", "showMsg", "needNotifyMessage", "init", "insertOfflineScanMessage", "content", "notifyMessage", "release", "showNetworkAlert", "Landroid/app/Activity;", "onClickListener", "Landroid/content/DialogInterface$OnClickListener;", "plugin-scan_release"})
 public final class c
-  extends a
 {
-  public final byte[] bXE;
-  public int height;
-  public int left;
-  final int nOv;
-  final int nOw;
-  public int top;
-  public int width;
+  private static int qCf;
+  private static final c qCg;
+  public static final c qCh;
   
-  public c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, Rect paramRect)
+  static
   {
-    super(paramRect.width(), paramRect.height());
-    y.v("MicroMsg.scanner.PlanarYUVLuminanceSource", "init yuvData.len: %d,  dataW: %d, dataH: %d, left: %d, top: %d, width: %d, height: %d ", new Object[] { Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramRect.left), Integer.valueOf(paramRect.top), Integer.valueOf(paramRect.width()), Integer.valueOf(paramRect.height()) });
-    this.bXE = paramArrayOfByte;
-    this.nOv = paramInt1;
-    this.nOw = paramInt2;
-    if ((paramRect.left < 0) || (paramRect.left >= paramInt1))
+    AppMethodBeat.i(151726);
+    qCh = new c();
+    qCf = -1;
+    qCg = new c();
+    AppMethodBeat.o(151726);
+  }
+  
+  public static boolean CL(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+  }
+  
+  private static void YH(String paramString)
+  {
+    AppMethodBeat.i(151725);
+    ab.i("MicroMsg.OfflineScanManager", "alvinluo insertOfflineScanMessage");
+    bi localbi = new bi();
+    localbi.kj("notifymessage");
+    localbi.hL(0);
+    localbi.setStatus(3);
+    localbi.setType(721420337);
+    localbi.fQ(bf.aaM());
+    localbi.setContent(paramString);
+    bf.l(localbi);
+    AppMethodBeat.o(151725);
+  }
+  
+  public static void a(Activity paramActivity, String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    AppMethodBeat.i(151723);
+    j.q(paramActivity, "context");
+    j.q(paramString, "showMsg");
+    h.a((Context)paramActivity, paramString, "", paramActivity.getString(2131296977), paramOnClickListener);
+    AppMethodBeat.o(151723);
+  }
+  
+  public static void a(OfflineScanContext paramOfflineScanContext, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(151722);
+    j.q(paramOfflineScanContext, "context");
+    j.q(paramString, "showMsg");
+    ab.i("MicroMsg.OfflineScanManager", "alvinluo OfflineScan handleNetworkUnconnected needNotifyMessage: %b, context: %s, time: %d", new Object[] { Boolean.valueOf(paramBoolean), paramOfflineScanContext, Long.valueOf(paramOfflineScanContext.timestamp) });
+    a(paramOfflineScanContext.getActivity(), paramString, (DialogInterface.OnClickListener)new c.a(paramOfflineScanContext));
+    paramString = OfflineScanContext.CREATOR;
+    paramOfflineScanContext = OfflineScanContext.a.a(paramOfflineScanContext);
+    if (paramBoolean)
     {
+      YH(paramOfflineScanContext);
+      AppMethodBeat.o(151722);
+      return;
+    }
+    paramString = g.RL();
+    j.p(paramString, "MMKernel.storage()");
+    paramString = paramString.Ru().get(ac.a.yLZ, "");
+    if (paramString == null)
+    {
+      paramOfflineScanContext = new v("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(151722);
+      throw paramOfflineScanContext;
+    }
+    paramString = (String)paramString;
+    int i;
+    if (((CharSequence)paramString).length() > 0)
+    {
+      i = 1;
+      if (i == 0) {
+        break label236;
+      }
+      paramOfflineScanContext = paramString + "," + paramOfflineScanContext;
+    }
+    label236:
+    for (;;)
+    {
+      ab.i("MicroMsg.OfflineScanManager", "alvinluo handleNetworkUnconnected toSave string length: %d", new Object[] { Integer.valueOf(paramOfflineScanContext.length()) });
+      paramString = g.RL();
+      j.p(paramString, "MMKernel.storage()");
+      paramString.Ru().set(ac.a.yLZ, paramOfflineScanContext);
+      AppMethodBeat.o(151722);
+      return;
       i = 0;
-      this.left = i;
-      i = j;
-      if (paramRect.top >= 0)
-      {
-        if (paramRect.top < paramInt2) {
-          break label270;
-        }
-        i = j;
-      }
-      label162:
-      this.top = i;
-      if (this.left + paramRect.width() <= paramInt1) {
-        break label280;
-      }
-      i = paramInt1 - this.left;
-      label190:
-      this.width = i;
-      if (this.top + paramRect.height() <= paramInt2) {
-        break label290;
-      }
-    }
-    label270:
-    label280:
-    label290:
-    for (int i = paramInt2 - this.top;; i = paramRect.height())
-    {
-      this.height = i;
-      if ((this.left + this.width <= paramInt1) && (this.top + this.height <= paramInt2)) {
-        return;
-      }
-      throw new IllegalArgumentException("Crop rectangle does not fit within image data.");
-      i = paramRect.left;
       break;
-      i = paramRect.top;
-      break label162;
-      i = paramRect.width();
-      break label190;
     }
   }
   
-  public static void byh()
+  public static boolean b(int paramInt, m paramm)
   {
-    l locall = l.byz();
-    if (locall.nPz != null) {
-      locall.nPz = null;
+    AppMethodBeat.i(151724);
+    j.q(paramm, "scene");
+    if (((paramm.getType() == 233) || (paramm.getType() == 106) || (paramm.getType() == 1061)) && ((paramInt == 1) || (paramInt == 2) || (paramInt == 7) || (paramInt == 8) || (paramInt == 3) || (paramInt == 9)))
+    {
+      AppMethodBeat.o(151724);
+      return true;
     }
-    if (locall.nPA != null) {
-      locall.nPA = null;
-    }
-    System.gc();
+    AppMethodBeat.o(151724);
+    return false;
   }
   
-  public final byte[] byi()
+  public static void init()
   {
-    int i = 0;
-    Object localObject1;
-    if ((this.width == this.nOv) && (this.height == this.nOw))
-    {
-      localObject1 = this.bXE;
-      return localObject1;
-    }
-    int k;
-    byte[] arrayOfByte1;
-    int j;
-    for (;;)
-    {
-      try
-      {
-        k = this.width * this.height;
-        localObject1 = l.byz();
-        if (((l)localObject1).nPz == null)
-        {
-          ((l)localObject1).nPz = new byte[k];
-          arrayOfByte1 = ((l)localObject1).nPz;
-          j = this.top * this.nOv + this.left;
-          if (this.width != this.nOv) {
-            break;
-          }
-          System.arraycopy(this.bXE, j, arrayOfByte1, 0, k);
-          return arrayOfByte1;
-        }
-      }
-      catch (Exception localException)
-      {
-        y.e("MicroMsg.scanner.PlanarYUVLuminanceSource", " yuvData.len:" + this.bXE.length + " dataWidth:" + this.nOv + " dataHeight:" + this.nOw + " left:" + this.left + " top:" + this.top + " width:" + this.width + " height:" + this.height + " tStr:" + localException.toString());
-        return null;
-      }
-      if (localException.nPz.length != k)
-      {
-        localException.nPz = null;
-        localException.nPz = new byte[k];
-      }
-    }
-    byte[] arrayOfByte2 = this.bXE;
-    for (;;)
-    {
-      Object localObject2 = arrayOfByte1;
-      if (i >= this.height) {
-        break;
-      }
-      System.arraycopy(arrayOfByte2, j, arrayOfByte1, this.width * i, this.width);
-      k = this.nOv;
-      j += k;
-      i += 1;
-    }
+    AppMethodBeat.i(151719);
+    ab.i("MicroMsg.OfflineScanManager", "alvinluo OfflineScanManager init enableOfflineScan: %b", new Object[] { Boolean.TRUE });
+    g.RK().a((n)qCg);
+    AppMethodBeat.o(151719);
   }
   
-  public final byte[] byj()
+  public static boolean n(m paramm)
   {
-    int i = 0;
-    if ((this.width == this.nOv) && (this.height == this.nOw))
+    AppMethodBeat.i(151721);
+    j.q(paramm, "scene");
+    if ((paramm.getType() == 233) || (paramm.getType() == 106) || (paramm.getType() == 1061))
     {
-      byte[] arrayOfByte1 = this.bXE;
-      return arrayOfByte1;
+      AppMethodBeat.o(151721);
+      return true;
     }
-    int k;
-    byte[] arrayOfByte2;
-    int j;
-    try
-    {
-      k = this.width * this.height;
-      arrayOfByte2 = new byte[k];
-      j = this.top * this.nOv + this.left;
-      if (this.width == this.nOv)
-      {
-        System.arraycopy(this.bXE, j, arrayOfByte2, 0, k);
-        return arrayOfByte2;
-      }
-    }
-    catch (Exception localException)
-    {
-      y.e("MicroMsg.scanner.PlanarYUVLuminanceSource", " yuvData.len:" + this.bXE.length + " dataWidth:" + this.nOv + " dataHeight:" + this.nOw + " left:" + this.left + " top:" + this.top + " width:" + this.width + " height:" + this.height + " tStr:" + localException.toString());
-      return null;
-    }
-    byte[] arrayOfByte3 = this.bXE;
-    for (;;)
-    {
-      Object localObject = arrayOfByte2;
-      if (i >= this.height) {
-        break;
-      }
-      System.arraycopy(arrayOfByte3, j, arrayOfByte2, this.width * i, this.width);
-      k = this.nOv;
-      j += k;
-      i += 1;
-    }
+    AppMethodBeat.o(151721);
+    return false;
   }
   
-  public final byte[] n(int paramInt, byte[] paramArrayOfByte)
+  public static void release()
   {
-    if ((paramInt < 0) || (paramInt >= this.height)) {
-      throw new IllegalArgumentException("Requested row is outside the image: " + paramInt);
-    }
-    byte[] arrayOfByte;
-    if (paramArrayOfByte != null)
+    AppMethodBeat.i(151720);
+    ab.i("MicroMsg.OfflineScanManager", "alvinluo OfflineScanManager release");
+    g.RK().a((n)qCg);
+    AppMethodBeat.o(151720);
+  }
+  
+  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/scanner/util/OfflineScanManager$onNetworkChange$1", "Lcom/tencent/mm/network/IOnNetworkChange_AIDL$Stub;", "onNetworkChange", "", "st", "", "plugin-scan_release"})
+  public static final class c
+    extends n.a
+  {
+    public final void onNetworkChange(int paramInt)
     {
-      arrayOfByte = paramArrayOfByte;
-      if (paramArrayOfByte.length >= this.width) {}
+      AppMethodBeat.i(151718);
+      new ak(Looper.getMainLooper()).post((Runnable)c.c.a.qCk);
+      AppMethodBeat.o(151718);
     }
-    else
-    {
-      arrayOfByte = new byte[this.width];
-    }
-    int i = this.top;
-    int j = this.nOv;
-    int k = this.left;
-    System.arraycopy(this.bXE, (i + paramInt) * j + k, arrayOfByte, 0, this.width);
-    return arrayOfByte;
   }
 }
 

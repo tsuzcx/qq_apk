@@ -1,30 +1,24 @@
 package com.tencent.mm.plugin.game.a;
 
-import android.content.Context;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
-public abstract interface a
+public final class a
+  implements o
 {
-  public abstract void S(String paramString, int paramInt1, int paramInt2);
+  public static n gmO;
+  public static m gmP;
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5);
+  public final void a(m paramm)
+  {
+    gmP = paramm;
+  }
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, long paramLong);
-  
-  public abstract boolean aXZ();
-  
-  public abstract String aYa();
-  
-  public abstract void dm(Context paramContext);
-  
-  public abstract void gt(boolean paramBoolean);
-  
-  public abstract void h(Context paramContext, String paramString1, String paramString2);
-  
-  public abstract void k(String paramString1, String paramString2, String paramString3);
+  public final void a(n paramn)
+  {
+    gmO = paramn;
+  }
 }
 
 

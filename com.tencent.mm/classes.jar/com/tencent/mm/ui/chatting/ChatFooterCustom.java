@@ -8,42 +8,44 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ai.d.b;
-import com.tencent.mm.ai.d.b.c;
-import com.tencent.mm.h.a.eb;
-import com.tencent.mm.h.a.mh;
-import com.tencent.mm.h.a.mh.a;
-import com.tencent.mm.h.a.mi;
-import com.tencent.mm.h.a.mi.a;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bx.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.aj.d.b;
+import com.tencent.mm.aj.d.b.c;
+import com.tencent.mm.aj.q;
+import com.tencent.mm.g.a.ee;
+import com.tencent.mm.g.a.nb;
+import com.tencent.mm.g.a.nb.a;
+import com.tencent.mm.g.a.nc;
+import com.tencent.mm.g.a.nc.a;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bz.a;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.aa;
 import com.tencent.mm.platformtools.ah;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.pluginsdk.p.a;
+import com.tencent.mm.pluginsdk.r.a;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.e;
-import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.pluginsdk.wallet.i;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.ui.tools.n;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.bq;
+import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.base.h.c;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.chatting.b.c.a;
-import com.tencent.mm.ui.x;
+import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.chatting.c.c.a;
 import java.io.File;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -57,27 +59,28 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 public class ChatFooterCustom
   extends LinearLayout
-  implements View.OnClickListener, bx.a
+  implements View.OnClickListener, bz.a
 {
-  private ad bSg;
-  private String hcm;
-  private Object ikx = new Object();
-  private LinearLayout jiW = null;
-  private com.tencent.mm.ai.d mVy;
-  private ChatFooter.e sfe = null;
-  private x uNW;
-  private ImageView vih = null;
-  public ImageView vii = null;
-  public h vij = null;
-  private c.a vik = null;
-  private int vil = 0;
-  private bq vim;
-  private ChatFooterCustom.a vin;
-  private ChatFooterCustom.b vio;
-  private List<String> vip = new LinkedList();
-  private final String viq = "qrcode";
-  private final String vir = "barcode";
-  private com.tencent.mm.ai.j vis;
+  private Object clk;
+  private ad czH;
+  private String ikj;
+  private LinearLayout lrN;
+  private com.tencent.mm.aj.d pyd;
+  private ChatFooter.e vWj;
+  private MMFragment zbQ;
+  private ImageView zxa;
+  public ImageView zxb;
+  public LinearLayout zxc;
+  public g zxd;
+  private c.a zxe;
+  private int zxf;
+  private bq zxg;
+  private ChatFooterCustom.a zxh;
+  private ChatFooterCustom.b zxi;
+  private List<String> zxj;
+  private final String zxk;
+  private final String zxl;
+  private com.tencent.mm.aj.j zxm;
   
   public ChatFooterCustom(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -87,236 +90,252 @@ public class ChatFooterCustom
   public ChatFooterCustom(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(30473);
+    this.lrN = null;
+    this.zxa = null;
+    this.zxb = null;
+    this.zxc = null;
+    this.zxd = null;
+    this.vWj = null;
+    this.zxe = null;
+    this.zxf = 0;
+    this.zxj = new LinkedList();
+    this.zxk = "qrcode";
+    this.zxl = "barcode";
+    this.clk = new Object();
+    AppMethodBeat.o(30473);
   }
   
-  private boolean a(com.tencent.mm.ai.j paramj)
+  private static String Pl(int paramInt)
   {
-    if (paramj == null) {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 0: 
+      return "qrcode";
+    }
+    return "barcode";
+  }
+  
+  private boolean a(com.tencent.mm.aj.j paramj)
+  {
+    AppMethodBeat.i(30481);
+    if (paramj == null)
+    {
+      AppMethodBeat.o(30481);
       return false;
     }
     String str = paramj.id + paramj.key;
-    paramj = this.ikx;
-    int i = 0;
-    for (;;)
-    {
+    paramj = this.clk;
+    for (int i = 0;; i = -1) {
       try
       {
-        if (i < this.vip.size())
+        while (i < this.zxj.size())
         {
-          if (!((String)this.vip.get(i)).equals(str)) {
-            break label166;
-          }
-          if (i >= 0)
+          if (((String)this.zxj.get(i)).equals(str))
           {
-            this.vip.remove(i);
-            y.e("ChatCustomFooter", "removeOneFromMenuClickCmdList success %s %d", new Object[] { str, Integer.valueOf(this.vip.size()) });
-            return true;
+            if (i >= 0)
+            {
+              this.zxj.remove(i);
+              ab.e("ChatCustomFooter", "removeOneFromMenuClickCmdList success %s %d", new Object[] { str, Integer.valueOf(this.zxj.size()) });
+              return true;
+            }
           }
-          y.e("ChatCustomFooter", "removeOneFromMenuClickCmdList fail %s %d", new Object[] { str, Integer.valueOf(this.vip.size()) });
+          else
+          {
+            i += 1;
+            continue;
+          }
+          ab.e("ChatCustomFooter", "removeOneFromMenuClickCmdList fail %s %d", new Object[] { str, Integer.valueOf(this.zxj.size()) });
+          AppMethodBeat.o(30481);
           return false;
         }
       }
-      finally {}
-      i = -1;
-      continue;
-      label166:
-      i += 1;
+      finally
+      {
+        AppMethodBeat.o(30481);
+      }
     }
   }
   
-  private void b(com.tencent.mm.ai.j paramj)
+  private void b(com.tencent.mm.aj.j paramj)
   {
-    com.tencent.mm.plugin.report.service.h.nFQ.f(10809, new Object[] { this.hcm, Integer.valueOf(paramj.id), paramj.key, com.tencent.mm.ai.j.egm, "" });
+    AppMethodBeat.i(30482);
+    com.tencent.mm.plugin.report.service.h.qsU.e(10809, new Object[] { this.ikj, Integer.valueOf(paramj.id), paramj.key, com.tencent.mm.aj.j.fwo, "" });
+    AppMethodBeat.o(30482);
   }
   
-  private void c(com.tencent.mm.ai.j paramj)
+  private void c(com.tencent.mm.aj.j paramj)
   {
-    com.tencent.mm.plugin.report.service.h.nFQ.f(10809, new Object[] { this.hcm, Integer.valueOf(paramj.id), paramj.key, com.tencent.mm.ai.j.ego, paramj.content });
+    AppMethodBeat.i(30483);
+    com.tencent.mm.plugin.report.service.h.qsU.e(10809, new Object[] { this.ikj, Integer.valueOf(paramj.id), paramj.key, com.tencent.mm.aj.j.fwq, paramj.content });
+    AppMethodBeat.o(30483);
   }
   
-  private void cCr()
+  private boolean cG(Object paramObject)
   {
-    if ((this.uNW != null) && (this.bSg != null) && (!ah.bl(this.hcm))) {
-      l.b(this.uNW, 9, this.hcm, this.bSg.field_username);
-    }
-  }
-  
-  private void cCs()
-  {
-    File localFile = new File(com.tencent.mm.compatible.util.e.dzD);
-    if ((!localFile.exists()) && (!localFile.mkdir())) {
-      Toast.makeText((Activity)getContext(), getContext().getString(R.l.chatting_toast_sdk_fail), 1).show();
-    }
-    while ((this.uNW == null) || (l.a(this.uNW, com.tencent.mm.compatible.util.e.dzD, "microMsg." + System.currentTimeMillis() + ".jpg"))) {
-      return;
-    }
-    Toast.makeText((Activity)getContext(), getContext().getString(R.l.selectcameraapp_none), 1).show();
-  }
-  
-  private void cCu()
-  {
-    y.i("ChatCustomFooter", "switch footer");
-    if (this.sfe != null)
+    AppMethodBeat.i(30485);
+    if (!(paramObject instanceof nb))
     {
-      this.vij.cCw();
-      this.sfe.me(true);
-    }
-  }
-  
-  private void cCv()
-  {
-    if (this.bSg == null) {}
-    while (this.bSg.cCI != 1) {
-      return;
-    }
-    au.Hx();
-    c.FB().abA(this.bSg.field_username);
-  }
-  
-  private boolean cc(Object paramObject)
-  {
-    if (!(paramObject instanceof mh)) {
-      y.e("ChatCustomFooter", "send current location data type error!");
-    }
-    for (;;)
-    {
+      ab.e("ChatCustomFooter", "send current location data type error!");
+      AppMethodBeat.o(30485);
       return true;
-      Object localObject = (mh)paramObject;
-      double d1 = ((mh)localObject).bVy.lat;
-      double d2 = ((mh)localObject).bVy.lng;
-      int i = ((mh)localObject).bVy.bRv;
-      paramObject = ((mh)localObject).bVy.label;
-      String str = ((mh)localObject).bVy.bVA;
-      y.i("ChatCustomFooter", "lat:%f , lng:%f , scale: %d , label:%s , poiname:%s", new Object[] { Double.valueOf(d1), Double.valueOf(d2), Integer.valueOf(i), paramObject, str });
-      if ((this.vis == null) || (this.vis.egq != 105))
-      {
-        y.e("ChatCustomFooter", "cache lost or location type is not correct");
-        return true;
-      }
-      this.vis.state = com.tencent.mm.ai.j.ego;
-      localObject = this.vis;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("x", String.valueOf(d1));
-        localJSONObject.put("y", String.valueOf(d2));
-        localJSONObject.put("scale", i);
-        localJSONObject.put("label", paramObject);
-        localJSONObject.put("poiname", str);
-        paramObject = new JSONObject();
-        paramObject.put("location", localJSONObject);
-        ((com.tencent.mm.ai.j)localObject).content = paramObject.toString();
-        y.v("MicroMsg.BizMenuItem", ((com.tencent.mm.ai.j)localObject).content);
-        if (!a(this.vis)) {
-          continue;
-        }
-        d(this.vis);
-        c(this.vis);
-        return true;
-      }
-      catch (JSONException paramObject)
-      {
-        for (;;)
-        {
-          y.e("MicroMsg.BizMenuItem", paramObject.toString());
-        }
-      }
     }
+    Object localObject = (nb)paramObject;
+    double d1 = ((nb)localObject).cDj.lat;
+    double d2 = ((nb)localObject).cDj.lng;
+    int i = ((nb)localObject).cDj.cyX;
+    paramObject = ((nb)localObject).cDj.label;
+    localObject = ((nb)localObject).cDj.cDl;
+    ab.i("ChatCustomFooter", "lat:%f , lng:%f , scale: %d , label:%s , poiname:%s", new Object[] { Double.valueOf(d1), Double.valueOf(d2), Integer.valueOf(i), paramObject, localObject });
+    if ((this.zxm == null) || (this.zxm.fws != 105))
+    {
+      ab.e("ChatCustomFooter", "cache lost or location type is not correct");
+      AppMethodBeat.o(30485);
+      return true;
+    }
+    this.zxm.state = com.tencent.mm.aj.j.fwq;
+    this.zxm.a(d1, d2, i, paramObject, (String)localObject);
+    if (a(this.zxm))
+    {
+      d(this.zxm);
+      c(this.zxm);
+    }
+    AppMethodBeat.o(30485);
+    return true;
   }
   
-  private boolean cd(Object paramObject)
+  private boolean cH(Object paramObject)
   {
-    if (!(paramObject instanceof mi))
+    AppMethodBeat.i(30486);
+    if (!(paramObject instanceof nc))
     {
-      y.e("ChatCustomFooter", "send current location data type error!");
+      ab.e("ChatCustomFooter", "send current location data type error!");
+      AppMethodBeat.o(30486);
       return false;
     }
-    Object localObject = (mi)paramObject;
-    if ((this.vis == null) || ((this.vis.egq != 100) && (this.vis.egq != 101)))
+    Object localObject = (nc)paramObject;
+    if ((this.zxm == null) || ((this.zxm.fws != 100) && (this.zxm.fws != 101)))
     {
-      y.e("ChatCustomFooter", "null pointer in cache or type error");
+      ab.e("ChatCustomFooter", "null pointer in cache or type error");
+      AppMethodBeat.o(30486);
       return false;
     }
-    switch (((mi)localObject).bVB.bVD)
+    paramObject = Pl(((nc)localObject).cDm.cDo);
+    localObject = ((nc)localObject).cDm.scanResult;
+    ab.i("ChatCustomFooter", "scan type: %s , scan result:%s", new Object[] { paramObject, localObject });
+    this.zxm.state = com.tencent.mm.aj.j.fwq;
+    this.zxm.aD(paramObject, (String)localObject);
+    if (a(this.zxm))
     {
-    default: 
-      paramObject = "";
+      d(this.zxm);
+      c(this.zxm);
     }
-    for (;;)
-    {
-      String str = ((mi)localObject).bVB.scanResult;
-      y.i("ChatCustomFooter", "scan type: %s , scan result:%s", new Object[] { paramObject, str });
-      this.vis.state = com.tencent.mm.ai.j.ego;
-      localObject = this.vis;
-      y.v("MicroMsg.BizMenuItem", "type is %s , result is %s", new Object[] { paramObject, str });
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("scan_type", paramObject);
-        localJSONObject.put("scan_result", str);
-        paramObject = new JSONObject();
-        paramObject.put("scan_code", localJSONObject);
-        ((com.tencent.mm.ai.j)localObject).content = paramObject.toString();
-        y.v("MicroMsg.BizMenuItem", "content: %s", new Object[] { ((com.tencent.mm.ai.j)localObject).content });
-        if (a(this.vis))
-        {
-          d(this.vis);
-          c(this.vis);
-        }
-        return true;
-        paramObject = "qrcode";
-        continue;
-        paramObject = "barcode";
-      }
-      catch (JSONException paramObject)
-      {
-        for (;;)
-        {
-          y.e("MicroMsg.BizMenuItem", paramObject.toString());
-        }
-      }
-    }
+    AppMethodBeat.o(30486);
+    return true;
   }
   
-  private void d(com.tencent.mm.ai.j paramj)
+  private void d(com.tencent.mm.aj.j paramj)
   {
-    y.i("ChatCustomFooter", paramj.getInfo());
-    paramj = new com.tencent.mm.ai.q(this.hcm, paramj.getInfo());
-    au.Dk().a(paramj, 0);
+    AppMethodBeat.i(30487);
+    ab.i("ChatCustomFooter", paramj.getInfo());
+    paramj = new q(this.ikj, paramj.getInfo());
+    aw.Rc().a(paramj, 0);
+    AppMethodBeat.o(30487);
+  }
+  
+  private void dGe()
+  {
+    AppMethodBeat.i(30476);
+    if ((this.zbQ != null) && (this.czH != null) && (!ah.isNullOrNil(this.ikj))) {
+      n.b(this.zbQ, 9, this.ikj, this.czH.field_username);
+    }
+    AppMethodBeat.o(30476);
+  }
+  
+  private void dGf()
+  {
+    AppMethodBeat.i(30477);
+    File localFile = new File(com.tencent.mm.compatible.util.e.esr);
+    if ((!localFile.exists()) && (!localFile.mkdir()))
+    {
+      Toast.makeText((Activity)getContext(), getContext().getString(2131298329), 1).show();
+      AppMethodBeat.o(30477);
+      return;
+    }
+    if ((this.zbQ != null) && (!n.a(this.zbQ, com.tencent.mm.compatible.util.e.esr, "microMsg." + System.currentTimeMillis() + ".jpg"))) {
+      Toast.makeText((Activity)getContext(), getContext().getString(2131303074), 1).show();
+    }
+    AppMethodBeat.o(30477);
+  }
+  
+  private void dGh()
+  {
+    AppMethodBeat.i(30490);
+    ab.i("ChatCustomFooter", "switch footer");
+    if (this.vWj != null)
+    {
+      this.zxd.dGj();
+      this.vWj.pu(true);
+    }
+    AppMethodBeat.o(30490);
+  }
+  
+  private void dGi()
+  {
+    AppMethodBeat.i(30491);
+    if (this.czH == null)
+    {
+      AppMethodBeat.o(30491);
+      return;
+    }
+    if (this.czH.dqS == 1)
+    {
+      aw.aaz();
+      c.YF().arM(this.czH.field_username);
+    }
+    AppMethodBeat.o(30491);
   }
   
   private String getSender()
   {
+    AppMethodBeat.i(30478);
     Object localObject = new StringBuilder("getSender ");
     boolean bool;
     StringBuilder localStringBuilder;
-    if (this.vim == null)
+    if (this.zxg == null)
     {
       bool = true;
       localStringBuilder = ((StringBuilder)localObject).append(bool).append(" ");
-      if (this.vim != null) {
-        break label72;
+      if (this.zxg != null) {
+        break label86;
       }
     }
-    label72:
-    for (localObject = com.tencent.mm.model.q.Gj();; localObject = this.vim.name)
+    label86:
+    for (localObject = com.tencent.mm.model.r.Zn();; localObject = this.zxg.name)
     {
-      y.i("ChatCustomFooter", (String)localObject);
-      if (this.vim != null) {
-        break label83;
+      ab.i("ChatCustomFooter", (String)localObject);
+      if (this.zxg != null) {
+        break label97;
       }
-      return com.tencent.mm.model.q.Gj();
+      localObject = com.tencent.mm.model.r.Zn();
+      AppMethodBeat.o(30478);
+      return localObject;
       bool = false;
       break;
     }
-    label83:
-    return this.vim.name;
+    label97:
+    localObject = this.zxg.name;
+    AppMethodBeat.o(30478);
+    return localObject;
   }
   
   public final void a(e.a parama)
   {
-    parama = aa.a(parama.dBs.svH);
-    y.i("ChatCustomFooter", "SysCmdMsgExtension:" + parama);
+    AppMethodBeat.i(30489);
+    parama = aa.a(parama.eyJ.woR);
+    ab.i("ChatCustomFooter", "SysCmdMsgExtension:".concat(String.valueOf(parama)));
     for (;;)
     {
       Object localObject;
@@ -330,11 +349,12 @@ public class ChatFooterCustom
       }
       catch (Exception parama)
       {
-        y.printErrStackTrace("ChatCustomFooter", parama, "", new Object[0]);
+        ab.printErrStackTrace("ChatCustomFooter", parama, "", new Object[0]);
+        AppMethodBeat.o(30489);
         return;
       }
       int i = ((XmlPullParser)localObject).next();
-      break label179;
+      break label191;
       parama = ((XmlPullParser)localObject).getName();
       if ("sysmsg".equals(parama))
       {
@@ -349,50 +369,59 @@ public class ChatFooterCustom
       else if ("data".equals(parama))
       {
         ((XmlPullParser)localObject).nextText();
-        continue;
-        label179:
-        if (i != 1) {
-          switch (i)
-          {
-          }
+        label191:
+        while (i == 1)
+        {
+          AppMethodBeat.o(30489);
+          return;
+        }
+        switch (i)
+        {
         }
       }
     }
   }
   
-  public final void a(x paramx, com.tencent.mm.ai.d paramd, String paramString)
+  public final void a(MMFragment paramMMFragment, com.tencent.mm.aj.d paramd, String paramString)
   {
-    d.b.c localc = paramd.bS(false).LY();
-    if ((localc == null) || (localc.efJ == null) || (paramString == null)) {
-      throw new IllegalArgumentException(" menuInfo or username is null ! ");
+    AppMethodBeat.i(30474);
+    d.b.c localc = paramd.cU(false).aeF();
+    if ((localc == null) || (localc.fvL == null) || (paramString == null))
+    {
+      paramMMFragment = new IllegalArgumentException(" menuInfo or username is null ! ");
+      AppMethodBeat.o(30474);
+      throw paramMMFragment;
     }
-    this.vil = Math.min(localc.efJ.size(), 6);
-    y.i("ChatCustomFooter", "setMenus, count:" + this.vil);
-    if (this.vil <= 0) {
-      throw new IllegalArgumentException(" mTabCount is invalid ! ");
+    this.zxf = Math.min(localc.fvL.size(), 6);
+    ab.i("ChatCustomFooter", "setMenus, count:" + this.zxf);
+    if (this.zxf <= 0)
+    {
+      paramMMFragment = new IllegalArgumentException(" mTabCount is invalid ! ");
+      AppMethodBeat.o(30474);
+      throw paramMMFragment;
     }
     int i;
-    label135:
+    label157:
     FrameLayout localFrameLayout;
     TextView localTextView;
     ImageView localImageView;
-    if (this.vil > 3)
+    if (this.zxf > 3)
     {
-      this.vih.setVisibility(0);
-      this.jiW.setWeightSum(Math.min(this.vil, 3));
+      this.zxa.setVisibility(0);
+      this.lrN.setWeightSum(Math.min(this.zxf, 3));
       i = 0;
       if (i >= 6) {
-        break label364;
+        break label378;
       }
-      localFrameLayout = (FrameLayout)this.jiW.getChildAt(i);
-      localTextView = (TextView)localFrameLayout.getChildAt(0).findViewById(R.h.chatting_footer_menu_text);
-      localFrameLayout.getChildAt(0).findViewById(R.h.chatting_footer_menu_icon).setVisibility(8);
-      localImageView = (ImageView)localFrameLayout.getChildAt(1);
+      localFrameLayout = (FrameLayout)this.lrN.getChildAt(i);
+      localTextView = (TextView)localFrameLayout.findViewById(2131822496);
+      localFrameLayout.findViewById(2131822495).setVisibility(8);
+      localImageView = (ImageView)localFrameLayout.getChildAt(2);
       localImageView.setVisibility(8);
-      if (i >= this.vil) {
-        break label305;
+      if (i >= this.zxf) {
+        break label319;
       }
-      com.tencent.mm.ai.j localj = (com.tencent.mm.ai.j)localc.efJ.get(i);
+      com.tencent.mm.aj.j localj = (com.tencent.mm.aj.j)localc.fvL.get(i);
       localFrameLayout.setTag(localj);
       localTextView.setText(com.tencent.mm.pluginsdk.ui.d.j.b(getContext(), localj.name));
       if (localj.type == 0) {
@@ -404,11 +433,11 @@ public class ChatFooterCustom
     for (;;)
     {
       i += 1;
-      break label135;
-      this.vih.setVisibility(8);
+      break label157;
+      this.zxa.setVisibility(8);
       break;
-      label305:
-      if ((i >= 3) && (this.vil > 3))
+      label319:
+      if ((i >= 3) && (this.zxf > 3))
       {
         localFrameLayout.setTag(null);
         localTextView.setText("");
@@ -421,172 +450,55 @@ public class ChatFooterCustom
         localFrameLayout.setVisibility(8);
       }
     }
-    label364:
-    this.uNW = paramx;
-    this.hcm = paramString;
-    this.mVy = paramd;
-    if (this.vin != null) {
-      com.tencent.mm.sdk.b.a.udP.d(this.vin);
+    label378:
+    this.zbQ = paramMMFragment;
+    this.ikj = paramString;
+    this.pyd = paramd;
+    if (this.zxh != null) {
+      com.tencent.mm.sdk.b.a.ymk.d(this.zxh);
     }
-    if (this.vio != null) {
-      com.tencent.mm.sdk.b.a.udP.d(this.vio);
+    if (this.zxi != null) {
+      com.tencent.mm.sdk.b.a.ymk.d(this.zxi);
     }
-    this.vin = new ChatFooterCustom.a(this, (byte)0);
-    this.vio = new ChatFooterCustom.b(this, (byte)0);
-    com.tencent.mm.sdk.b.a.udP.c(this.vin);
-    com.tencent.mm.sdk.b.a.udP.c(this.vio);
+    this.zxh = new ChatFooterCustom.a(this, (byte)0);
+    this.zxi = new ChatFooterCustom.b(this, (byte)0);
+    com.tencent.mm.sdk.b.a.ymk.c(this.zxh);
+    com.tencent.mm.sdk.b.a.ymk.c(this.zxi);
+    AppMethodBeat.o(30474);
   }
   
-  public final void bIQ()
+  public final void cvl()
   {
-    if (this.vin != null) {
-      com.tencent.mm.sdk.b.a.udP.d(this.vin);
+    AppMethodBeat.i(30475);
+    if (this.zxh != null) {
+      com.tencent.mm.sdk.b.a.ymk.d(this.zxh);
     }
-    if (this.vio != null) {
-      com.tencent.mm.sdk.b.a.udP.d(this.vio);
+    if (this.zxi != null) {
+      com.tencent.mm.sdk.b.a.ymk.d(this.zxi);
     }
+    AppMethodBeat.o(30475);
   }
   
-  public final void cCt()
+  public final void dGg()
   {
-    if (this.vij != null) {
-      this.vij.cCw();
+    AppMethodBeat.i(30479);
+    if (this.zxd != null) {
+      this.zxd.dGj();
     }
+    AppMethodBeat.o(30479);
   }
   
   public ad getTalker()
   {
-    return this.bSg;
+    return this.czH;
   }
   
   public String getTalkerUserName()
   {
-    if (this.bSg == null) {
+    if (this.czH == null) {
       return null;
     }
-    return this.bSg.field_username;
-  }
-  
-  public final boolean l(int paramInt, Object paramObject)
-  {
-    if (paramObject == null) {
-      y.e("ChatCustomFooter", "returned data is null, maybe serve for UI");
-    }
-    label129:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return true;
-            switch (paramInt)
-            {
-            }
-            for (;;)
-            {
-              switch (paramInt)
-              {
-              default: 
-                return true;
-              case 1001: 
-                y.i("ChatCustomFooter", "return from camera");
-                if ((paramObject instanceof Intent)) {
-                  break label129;
-                }
-                y.e("ChatCustomFooter", "type error");
-                return true;
-                paramInt = 1001;
-                continue;
-                paramInt = 1002;
-              }
-            }
-            paramObject = ((Intent)paramObject).getStringExtra("CropImage_OutputPath");
-            if (paramObject == null)
-            {
-              y.e("ChatCustomFooter", "return null path");
-              return true;
-            }
-            localObject = new File(paramObject);
-            if ((!((File)localObject).exists()) || (!((File)localObject).isFile())) {
-              break;
-            }
-            y.i("ChatCustomFooter", "%s retrieved!", new Object[] { paramObject });
-            paramObject = com.tencent.mm.a.g.m((File)localObject);
-            y.i("ChatCustomFooter", "MD5 is %s", new Object[] { paramObject });
-            if ((this.vis == null) || ((this.vis.egq != 102) && (this.vis.egq != 103)))
-            {
-              y.e("ChatCustomFooter", "camera photo cache lost or temp type error! cannot pass info!");
-              return true;
-            }
-            localObject = new ArrayList();
-            ((ArrayList)localObject).add(paramObject);
-            this.vis.state = com.tencent.mm.ai.j.ego;
-            this.vis.f((ArrayList)localObject);
-          } while (!a(this.vis));
-          d(this.vis);
-          c(this.vis);
-          return true;
-          y.e("ChatCustomFooter", "%s cannot be retrieved as file or is directory!!", new Object[] { paramObject });
-          return true;
-          y.i("ChatCustomFooter", "return from albumn");
-          if (!(paramObject instanceof Intent))
-          {
-            y.e("ChatCustomFooter", "type error");
-            return true;
-          }
-          localObject = ((Intent)paramObject).getStringArrayListExtra("CropImage_OutputPath_List");
-          paramObject = new ArrayList();
-        } while ((localObject == null) || (((ArrayList)localObject).size() == 0));
-        Object localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          y.i("ChatCustomFooter", "retrieving bitmap path %s", new Object[] { str });
-          if (str != null)
-          {
-            File localFile = new File(str);
-            if ((localFile.exists()) && (localFile.isFile()))
-            {
-              y.i("ChatCustomFooter", "%s retrieved!", new Object[] { str });
-              str = com.tencent.mm.a.g.m(localFile);
-              paramObject.add(str);
-              y.i("ChatCustomFooter", "MD5 is %s", new Object[] { str });
-            }
-          }
-          else
-          {
-            y.e("ChatCustomFooter", "no file contained!");
-            continue;
-          }
-          y.e("ChatCustomFooter", "%s cannot be retrieved as file or is directory!!", new Object[] { str });
-        }
-        if ((this.vis == null) || ((this.vis.egq != 104) && (this.vis.egq != 103) && (this.vis.egq != 102)))
-        {
-          y.e("ChatCustomFooter", "albumn photo cache lost or temp type error! cannot pass info!");
-          return true;
-        }
-        this.vis.state = com.tencent.mm.ai.j.ego;
-        this.vis.f(paramObject);
-      } while (!a(this.vis));
-      d(this.vis);
-      c(this.vis);
-      return true;
-      y.i("ChatCustomFooter", "send current");
-      cc(paramObject);
-      return true;
-      y.i("ChatCustomFooter", "send selected");
-      cc(paramObject);
-      return true;
-      y.i("ChatCustomFooter", "send qrcode wait msg");
-    } while (!cd(paramObject));
-    this.vik.cDV();
-    return true;
-    y.i("ChatCustomFooter", "send qrcode direct");
-    cd(paramObject);
-    return true;
+    return this.czH.field_username;
   }
   
   public void onClick(View arg1)
@@ -595,183 +507,201 @@ public class ChatFooterCustom
     for (;;)
     {
       Object localObject3;
-      boolean bool;
-      Object localObject4;
-      int i;
-      int j;
       try
       {
+        AppMethodBeat.i(30480);
         localObject3 = ???.getTag();
-        bool = localObject3 instanceof com.tencent.mm.ai.j;
-        if (!bool) {
+        if (!(localObject3 instanceof com.tencent.mm.aj.j))
+        {
+          AppMethodBeat.o(30480);
           return;
         }
-        i.Ez(8);
-        localObject3 = (com.tencent.mm.ai.j)localObject3;
-        ((com.tencent.mm.ai.j)localObject3).content = "";
-        switch (((com.tencent.mm.ai.j)localObject3).type)
+        com.tencent.mm.pluginsdk.wallet.j.Mx(8);
+        localObject3 = (com.tencent.mm.aj.j)localObject3;
+        ((com.tencent.mm.aj.j)localObject3).content = "";
+        switch (((com.tencent.mm.aj.j)localObject3).type)
         {
         case 0: 
+          AppMethodBeat.o(30480);
+          continue;
           localObject1 = new int[2];
-          ???.getLocationOnScreen((int[])localObject1);
-          y.i("ChatCustomFooter", "show/dismiss submenu, pos:(%d, %d), view width:%d", new Object[] { Integer.valueOf(localObject1[0]), Integer.valueOf(localObject1[1]), Integer.valueOf(???.getWidth()) });
-          localObject4 = this.vij;
-          i = localObject1[0] + ???.getWidth() / 2;
-          j = localObject1[1];
-          if (!((h)localObject4).isShowing())
-          {
-            ((h)localObject4).a((com.tencent.mm.ai.j)localObject3, i, j);
-            continue;
-          }
-          ((h)localObject4).cCw();
         }
       }
       finally {}
-      if ((localObject3 != null) && ((((h)localObject4).viA.id != ((com.tencent.mm.ai.j)localObject3).id) || (!((h)localObject4).viA.key.equals(((com.tencent.mm.ai.j)localObject3).key))))
+      ???.getLocationOnScreen((int[])localObject1);
+      ab.i("ChatCustomFooter", "show/dismiss submenu, pos:(%d, %d), view width:%d", new Object[] { Integer.valueOf(localObject1[0]), Integer.valueOf(localObject1[1]), Integer.valueOf(???.getWidth()) });
+      Object localObject4 = this.zxd;
+      int i = localObject1[0] + ???.getWidth() / 2;
+      int j = localObject1[1];
+      if (!((g)localObject4).isShowing())
       {
-        ((h)localObject4).a((com.tencent.mm.ai.j)localObject3, i, j);
+        ((g)localObject4).a((com.tencent.mm.aj.j)localObject3, i, j);
+        AppMethodBeat.o(30480);
+      }
+      else
+      {
+        ((g)localObject4).dGj();
+        if ((localObject3 != null) && ((((g)localObject4).zxu.id != ((com.tencent.mm.aj.j)localObject3).id) || (!((g)localObject4).zxu.key.equals(((com.tencent.mm.aj.j)localObject3).key)))) {
+          ((g)localObject4).a((com.tencent.mm.aj.j)localObject3, i, j);
+        }
+        AppMethodBeat.o(30480);
         continue;
-        y.i("ChatCustomFooter", "start webview url");
-        cCv();
-        this.vij.cCw();
-        ((com.tencent.mm.ai.j)localObject3).state = com.tencent.mm.ai.j.egm;
-        b((com.tencent.mm.ai.j)localObject3);
-        d((com.tencent.mm.ai.j)localObject3);
-        if ((!p.a.rSH.c(getContext(), ((com.tencent.mm.ai.j)localObject3).value, new Object[0])) && (!f.a(((com.tencent.mm.ai.j)localObject3).ceb, getContext(), this.uNW, this.hcm)))
+        ab.i("ChatCustomFooter", "start webview url");
+        dGi();
+        this.zxd.dGj();
+        ((com.tencent.mm.aj.j)localObject3).state = com.tencent.mm.aj.j.fwo;
+        b((com.tencent.mm.aj.j)localObject3);
+        d((com.tencent.mm.aj.j)localObject3);
+        if ((!r.a.vJD.b(getContext(), ((com.tencent.mm.aj.j)localObject3).value, new Object[0])) && (!e.a(((com.tencent.mm.aj.j)localObject3).cMO, getContext(), this.zbQ, this.ikj)))
         {
           ??? = new Intent();
           ???.putExtra("KPublisherId", "custom_menu");
-          ???.putExtra("pre_username", this.hcm);
+          ???.putExtra("pre_username", this.ikj);
           ???.putExtra("prePublishId", "custom_menu");
-          ???.putExtra("preUsername", this.hcm);
-          ???.putExtra("preChatName", this.hcm);
-          ???.putExtra("preChatTYPE", t.R(this.hcm, this.hcm));
-          ???.putExtra("rawUrl", ((com.tencent.mm.ai.j)localObject3).value);
-          ???.putExtra("geta8key_username", this.hcm);
+          ???.putExtra("preUsername", this.ikj);
+          ???.putExtra("preChatName", this.ikj);
+          ???.putExtra("preChatTYPE", u.ah(this.ikj, this.ikj));
+          ???.putExtra("rawUrl", ((com.tencent.mm.aj.j)localObject3).value);
+          ???.putExtra("geta8key_username", this.ikj);
           ???.putExtra("from_scence", 1);
-          com.tencent.mm.br.d.b(getContext(), "webview", ".ui.tools.WebViewUI", ???);
+          com.tencent.mm.bq.d.b(getContext(), "webview", ".ui.tools.WebViewUI", ???);
+          AppMethodBeat.o(30480);
           continue;
-          y.i("ChatCustomFooter", "switch to input");
-          this.vij.cCw();
-          cCu();
-          ((com.tencent.mm.ai.j)localObject3).state = com.tencent.mm.ai.j.egm;
-          b((com.tencent.mm.ai.j)localObject3);
-          d((com.tencent.mm.ai.j)localObject3);
+          ab.i("ChatCustomFooter", "switch to input");
+          this.zxd.dGj();
+          dGh();
+          ((com.tencent.mm.aj.j)localObject3).state = com.tencent.mm.aj.j.fwo;
+          b((com.tencent.mm.aj.j)localObject3);
+          d((com.tencent.mm.aj.j)localObject3);
+          AppMethodBeat.o(30480);
           continue;
-          y.i("ChatCustomFooter", "get latest message");
-          cCv();
-          this.vij.cCw();
-          ((com.tencent.mm.ai.j)localObject3).state = com.tencent.mm.ai.j.egm;
-          b((com.tencent.mm.ai.j)localObject3);
-          d((com.tencent.mm.ai.j)localObject3);
-          this.vik.cDV();
+          ab.i("ChatCustomFooter", "get latest message");
+          dGi();
+          this.zxd.dGj();
+          ((com.tencent.mm.aj.j)localObject3).state = com.tencent.mm.aj.j.fwo;
+          b((com.tencent.mm.aj.j)localObject3);
+          d((com.tencent.mm.aj.j)localObject3);
+          this.zxe.dHL();
+          AppMethodBeat.o(30480);
           continue;
-          cCv();
-          this.vij.cCw();
-          ((com.tencent.mm.ai.j)localObject3).state = com.tencent.mm.ai.j.egm;
-          b((com.tencent.mm.ai.j)localObject3);
-          d((com.tencent.mm.ai.j)localObject3);
-          bool = TextUtils.isEmpty(((com.tencent.mm.ai.j)localObject3).value);
+          dGi();
+          this.zxd.dGj();
+          ((com.tencent.mm.aj.j)localObject3).state = com.tencent.mm.aj.j.fwo;
+          b((com.tencent.mm.aj.j)localObject3);
+          d((com.tencent.mm.aj.j)localObject3);
+          boolean bool = TextUtils.isEmpty(((com.tencent.mm.aj.j)localObject3).value);
           if (!bool)
           {
             try
             {
-              ??? = new JSONObject(((com.tencent.mm.ai.j)localObject3).value);
+              ??? = new JSONObject(((com.tencent.mm.aj.j)localObject3).value);
               localObject3 = new AppBrandStatObject();
               ((AppBrandStatObject)localObject3).scene = 1035;
-              ((AppBrandStatObject)localObject3).bFv = this.hcm;
-              localObject4 = (com.tencent.mm.plugin.appbrand.r.d)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.appbrand.r.d.class);
+              ((AppBrandStatObject)localObject3).cmF = this.ikj;
+              localObject4 = (com.tencent.mm.plugin.appbrand.service.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.appbrand.service.j.class);
               Context localContext = getContext();
               String str2 = ???.optString("userName");
               String str3 = ???.optString("pagePath");
-              if (this.mVy == null) {}
-              for (??? = (View)localObject1;; ??? = this.mVy.field_appId)
+              if (this.pyd == null) {}
+              for (??? = (View)localObject1;; ??? = this.pyd.field_appId)
               {
-                ((com.tencent.mm.plugin.appbrand.r.d)localObject4).a(localContext, str2, null, 0, 0, str3, (AppBrandStatObject)localObject3, ???);
+                ((com.tencent.mm.plugin.appbrand.service.j)localObject4).a(localContext, str2, null, 0, 0, str3, (AppBrandStatObject)localObject3, ???);
+                AppMethodBeat.o(30480);
                 break;
               }
-              y.i("ChatCustomFooter", "MM_BIZ_CUSTOM_MENU_TYPE_CUSTOM_CLICK");
-              cCv();
-              this.vij.cCw();
-              ((com.tencent.mm.ai.j)localObject3).state = com.tencent.mm.ai.j.egn;
-              localObject1 = ((com.tencent.mm.ai.j)localObject3).id + ((com.tencent.mm.ai.j)localObject3).key;
-              synchronized (this.ikx)
+            }
+            catch (JSONException ???)
+            {
+              AppMethodBeat.o(30480);
+            }
+            ab.i("ChatCustomFooter", "MM_BIZ_CUSTOM_MENU_TYPE_CUSTOM_CLICK");
+            dGi();
+            this.zxd.dGj();
+            ((com.tencent.mm.aj.j)localObject3).state = com.tencent.mm.aj.j.fwp;
+            localObject1 = ((com.tencent.mm.aj.j)localObject3).id + ((com.tencent.mm.aj.j)localObject3).key;
+            synchronized (this.clk)
+            {
+              this.zxj.add(localObject1);
+              ab.i("ChatCustomFooter", "addToMenuClickCmdList %s %d", new Object[] { localObject1, Integer.valueOf(this.zxj.size()) });
+              com.tencent.mm.plugin.report.service.h.qsU.e(10809, new Object[] { this.ikj, Integer.valueOf(((com.tencent.mm.aj.j)localObject3).id), ((com.tencent.mm.aj.j)localObject3).key, com.tencent.mm.aj.j.fwp, "" });
+              this.zxm = ((com.tencent.mm.aj.j)localObject3);
+              switch (((com.tencent.mm.aj.j)localObject3).fws)
               {
-                this.vip.add(localObject1);
-                y.i("ChatCustomFooter", "addToMenuClickCmdList %s %d", new Object[] { localObject1, Integer.valueOf(this.vip.size()) });
-                com.tencent.mm.plugin.report.service.h.nFQ.f(10809, new Object[] { this.hcm, Integer.valueOf(((com.tencent.mm.ai.j)localObject3).id), ((com.tencent.mm.ai.j)localObject3).key, com.tencent.mm.ai.j.egn, "" });
-                this.vis = ((com.tencent.mm.ai.j)localObject3);
-                switch (((com.tencent.mm.ai.j)localObject3).egq)
+              case 100: 
+                ??? = new Intent();
+                ???.putExtra("BaseScanUI_only_scan_qrcode_with_zbar", true);
+                ???.putExtra("BaseScanUI_qrcode_right_btn_direct_album", true);
+                ???.putExtra("key_is_finish_on_scanned", true);
+                ???.putExtra("key_is_hide_right_btn", true);
+                if (com.tencent.mm.r.a.bN(getContext())) {
+                  continue;
+                }
+                getContext();
+                if (com.tencent.mm.bg.e.alb()) {
+                  continue;
+                }
+                com.tencent.mm.bq.d.b(getContext(), "scanner", ".ui.BaseScanUI", ???);
+                AppMethodBeat.o(30480);
+              }
+            }
+            ??? = new Intent();
+            ???.putExtra("BaseScanUI_only_scan_qrcode_with_zbar", true);
+            ???.putExtra("BaseScanUI_qrcode_right_btn_direct_album", true);
+            ???.putExtra("key_is_finish_on_scanned", false);
+            ???.putExtra("key_is_hide_right_btn", true);
+            if (!com.tencent.mm.r.a.bN(getContext()))
+            {
+              getContext();
+              if (!com.tencent.mm.bg.e.alb())
+              {
+                com.tencent.mm.bq.d.b(getContext(), "scanner", ".ui.BaseScanUI", ???);
+                AppMethodBeat.o(30480);
+                continue;
+                dGf();
+                AppMethodBeat.o(30480);
+                continue;
+                aw.aaz();
+                if (!c.isSDCardAvailable())
                 {
-                case 100: 
+                  t.ii(getContext());
+                  AppMethodBeat.o(30480);
+                }
+                else
+                {
+                  ??? = getContext().getString(2131298160);
+                  String str1 = getContext().getString(2131298159);
+                  localObject3 = getContext();
+                  localObject4 = new ChatFooterCustom.1(this);
+                  com.tencent.mm.ui.base.h.a((Context)localObject3, null, new String[] { ???, str1 }, null, (h.c)localObject4);
+                  AppMethodBeat.o(30480);
+                  continue;
+                  dGe();
+                  AppMethodBeat.o(30480);
+                  continue;
                   ??? = new Intent();
-                  ???.putExtra("BaseScanUI_only_scan_qrcode_with_zbar", true);
-                  ???.putExtra("BaseScanUI_qrcode_right_btn_direct_album", true);
-                  ???.putExtra("key_is_finish_on_scanned", true);
-                  ???.putExtra("key_is_hide_right_btn", true);
-                  if (com.tencent.mm.r.a.bj(getContext())) {
-                    continue;
-                  }
-                  getContext();
-                  if (com.tencent.mm.bf.e.RS()) {
-                    continue;
-                  }
-                  com.tencent.mm.br.d.b(getContext(), "scanner", ".ui.BaseScanUI", ???);
+                  ???.putExtra("map_view_type", 0);
+                  ???.putExtra("map_sender_name", getSender());
+                  ???.putExtra("map_talker_name", getTalkerUserName());
+                  ???.putExtra("view_type_key", 1);
+                  ???.putExtra("key_get_location_type", 1);
+                  com.tencent.mm.bq.d.b(getContext(), "location", ".ui.RedirectUI", ???);
+                  AppMethodBeat.o(30480);
+                  continue;
+                  ??? = new ee();
+                  ???.crV.op = 1;
+                  ???.crV.userName = this.czH.field_username;
+                  ???.crV.context = getContext();
+                  com.tencent.mm.sdk.b.a.ymk.l(???);
+                  AppMethodBeat.o(30480);
+                  continue;
+                  ??? = new ee();
+                  ???.crV.op = 2;
+                  ???.crV.userName = this.czH.field_username;
+                  ???.crV.context = getContext();
+                  com.tencent.mm.sdk.b.a.ymk.l(???);
+                  continue;
                 }
               }
-              ??? = new Intent();
-              ???.putExtra("BaseScanUI_only_scan_qrcode_with_zbar", true);
-              ???.putExtra("BaseScanUI_qrcode_right_btn_direct_album", true);
-              ???.putExtra("key_is_finish_on_scanned", false);
-              ???.putExtra("key_is_hide_right_btn", true);
-              if (com.tencent.mm.r.a.bj(getContext())) {
-                continue;
-              }
-              getContext();
-              if (com.tencent.mm.bf.e.RS()) {
-                continue;
-              }
-              com.tencent.mm.br.d.b(getContext(), "scanner", ".ui.BaseScanUI", ???);
-            }
-            catch (JSONException ???) {}
-            cCs();
-            continue;
-            au.Hx();
-            if (!c.isSDCardAvailable())
-            {
-              s.gM(getContext());
-            }
-            else
-            {
-              ??? = getContext().getString(R.l.chatting_context_menu_take_picture);
-              String str1 = getContext().getString(R.l.chatting_context_menu_image);
-              localObject3 = getContext();
-              localObject4 = new ChatFooterCustom.1(this);
-              com.tencent.mm.ui.base.h.a((Context)localObject3, null, new String[] { ???, str1 }, null, (h.c)localObject4);
-              continue;
-              cCr();
-              continue;
-              ??? = new Intent();
-              ???.putExtra("map_view_type", 0);
-              ???.putExtra("map_sender_name", getSender());
-              ???.putExtra("map_talker_name", getTalkerUserName());
-              ???.putExtra("view_type_key", 1);
-              ???.putExtra("key_get_location_type", 1);
-              com.tencent.mm.br.d.b(getContext(), "location", ".ui.RedirectUI", ???);
-              continue;
-              ??? = new eb();
-              ???.bKB.op = 1;
-              ???.bKB.userName = this.bSg.field_username;
-              ???.bKB.context = getContext();
-              com.tencent.mm.sdk.b.a.udP.m(???);
-              continue;
-              ??? = new eb();
-              ???.bKB.op = 2;
-              ???.bKB.userName = this.bSg.field_username;
-              ???.bKB.context = getContext();
-              com.tencent.mm.sdk.b.a.udP.m(???);
-              continue;
-              continue;
             }
           }
         }
@@ -779,37 +709,233 @@ public class ChatFooterCustom
     }
   }
   
-  public final void p(ViewGroup paramViewGroup)
+  public final boolean s(int paramInt, Object paramObject)
   {
-    this.jiW = ((LinearLayout)findViewById(R.h.chatting_footer_menu_container));
-    this.vii = ((ImageView)findViewById(R.h.chatting_footer_switch2input));
-    this.vii.setVisibility(0);
-    this.vii.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(30484);
+    if (paramObject == null)
     {
-      public final void onClick(View paramAnonymousView)
+      ab.e("ChatCustomFooter", "returned data is null, maybe serve for UI");
+      AppMethodBeat.o(30484);
+      return true;
+    }
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      switch (paramInt)
       {
-        ChatFooterCustom.c(ChatFooterCustom.this);
+      default: 
+        AppMethodBeat.o(30484);
+        return true;
+        paramInt = 1001;
+        continue;
+        paramInt = 1002;
       }
-    });
-    this.vih = ((ImageView)findViewById(R.h.chatting_footer_menu_arrow));
-    this.vih.setOnClickListener(new ChatFooterCustom.3(this));
-    this.vij = new h(getContext(), paramViewGroup);
-    this.vij.viu = new ChatFooterCustom.4(this);
+    }
+    ab.i("ChatCustomFooter", "return from camera");
+    if (!(paramObject instanceof Intent))
+    {
+      ab.e("ChatCustomFooter", "type error");
+      AppMethodBeat.o(30484);
+      return true;
+    }
+    paramObject = ((Intent)paramObject).getStringExtra("CropImage_OutputPath");
+    if (paramObject == null)
+    {
+      ab.e("ChatCustomFooter", "return null path");
+      AppMethodBeat.o(30484);
+      return true;
+    }
+    Object localObject = new File(paramObject);
+    if ((((File)localObject).exists()) && (((File)localObject).isFile()))
+    {
+      ab.i("ChatCustomFooter", "%s retrieved!", new Object[] { paramObject });
+      paramObject = com.tencent.mm.a.g.r((File)localObject);
+      ab.i("ChatCustomFooter", "MD5 is %s", new Object[] { paramObject });
+      if ((this.zxm == null) || ((this.zxm.fws != 102) && (this.zxm.fws != 103)))
+      {
+        ab.e("ChatCustomFooter", "camera photo cache lost or temp type error! cannot pass info!");
+        AppMethodBeat.o(30484);
+        return true;
+      }
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(paramObject);
+      this.zxm.state = com.tencent.mm.aj.j.fwq;
+      this.zxm.f((ArrayList)localObject);
+      if (a(this.zxm))
+      {
+        d(this.zxm);
+        c(this.zxm);
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(30484);
+      return true;
+      ab.e("ChatCustomFooter", "%s cannot be retrieved as file or is directory!!", new Object[] { paramObject });
+    }
+    ab.i("ChatCustomFooter", "return from albumn");
+    if (!(paramObject instanceof Intent))
+    {
+      ab.e("ChatCustomFooter", "type error");
+      AppMethodBeat.o(30484);
+      return true;
+    }
+    localObject = ((Intent)paramObject).getStringArrayListExtra("CropImage_OutputPath_List");
+    paramObject = new ArrayList();
+    if ((localObject != null) && (((ArrayList)localObject).size() != 0))
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        ab.i("ChatCustomFooter", "retrieving bitmap path %s", new Object[] { str });
+        if (str != null)
+        {
+          File localFile = new File(str);
+          if ((localFile.exists()) && (localFile.isFile()))
+          {
+            ab.i("ChatCustomFooter", "%s retrieved!", new Object[] { str });
+            str = com.tencent.mm.a.g.r(localFile);
+            paramObject.add(str);
+            ab.i("ChatCustomFooter", "MD5 is %s", new Object[] { str });
+          }
+        }
+        else
+        {
+          ab.e("ChatCustomFooter", "no file contained!");
+          continue;
+        }
+        ab.e("ChatCustomFooter", "%s cannot be retrieved as file or is directory!!", new Object[] { str });
+      }
+      if ((this.zxm == null) || ((this.zxm.fws != 104) && (this.zxm.fws != 103) && (this.zxm.fws != 102)))
+      {
+        ab.e("ChatCustomFooter", "albumn photo cache lost or temp type error! cannot pass info!");
+        AppMethodBeat.o(30484);
+        return true;
+      }
+      this.zxm.state = com.tencent.mm.aj.j.fwq;
+      this.zxm.f(paramObject);
+      if (a(this.zxm))
+      {
+        d(this.zxm);
+        c(this.zxm);
+      }
+    }
+    AppMethodBeat.o(30484);
+    return true;
+    ab.i("ChatCustomFooter", "send current");
+    cG(paramObject);
+    AppMethodBeat.o(30484);
+    return true;
+    ab.i("ChatCustomFooter", "send selected");
+    cG(paramObject);
+    AppMethodBeat.o(30484);
+    return true;
+    ab.i("ChatCustomFooter", "send qrcode wait msg");
+    if (!cH(paramObject))
+    {
+      AppMethodBeat.o(30484);
+      return true;
+    }
+    this.zxe.dHL();
+    AppMethodBeat.o(30484);
+    return true;
+    ab.i("ChatCustomFooter", "send qrcode direct");
+    cH(paramObject);
+    AppMethodBeat.o(30484);
+    return true;
   }
   
   public void setOnFooterSwitchListener(ChatFooter.e parame)
   {
-    this.sfe = parame;
+    this.vWj = parame;
   }
   
   public void setOnProcessClickListener(c.a parama)
   {
-    this.vik = parama;
+    this.zxe = parama;
   }
   
   public void setTalker(ad paramad)
   {
-    this.bSg = paramad;
+    this.czH = paramad;
+  }
+  
+  public final void u(ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(30488);
+    this.lrN = ((LinearLayout)findViewById(2131822500));
+    this.zxc = ((LinearLayout)findViewById(2131822498));
+    this.zxc.setVisibility(0);
+    this.zxb = ((ImageView)findViewById(2131822499));
+    this.zxb.setVisibility(0);
+    this.zxb.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(30464);
+        ChatFooterCustom.c(ChatFooterCustom.this);
+        AppMethodBeat.o(30464);
+      }
+    });
+    this.zxa = ((ImageView)findViewById(2131822501));
+    this.zxa.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(30465);
+        ChatFooterCustom.d(ChatFooterCustom.this).dGj();
+        paramAnonymousView = (ImageView)paramAnonymousView;
+        int j;
+        if (paramAnonymousView.getTag() == null)
+        {
+          paramAnonymousView.setTag(new Object());
+          paramAnonymousView.setImageResource(2130839685);
+          i = 0;
+          if (i < ChatFooterCustom.e(ChatFooterCustom.this))
+          {
+            paramAnonymousView = ChatFooterCustom.f(ChatFooterCustom.this).getChildAt(i);
+            if (i >= 3) {}
+            for (j = 0;; j = 8)
+            {
+              paramAnonymousView.setVisibility(j);
+              i += 1;
+              break;
+            }
+          }
+          AppMethodBeat.o(30465);
+          return;
+        }
+        paramAnonymousView.setTag(null);
+        paramAnonymousView.setImageResource(2130839684);
+        int i = 0;
+        if (i < ChatFooterCustom.e(ChatFooterCustom.this))
+        {
+          paramAnonymousView = ChatFooterCustom.f(ChatFooterCustom.this).getChildAt(i);
+          if (i < 3) {}
+          for (j = 0;; j = 8)
+          {
+            paramAnonymousView.setVisibility(j);
+            i += 1;
+            break;
+          }
+        }
+        AppMethodBeat.o(30465);
+      }
+    });
+    this.zxd = new g(getContext(), paramViewGroup);
+    this.zxd.zxo = new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(30466);
+        ChatFooterCustom.this.onClick(paramAnonymousView);
+        AppMethodBeat.o(30466);
+      }
+    };
+    AppMethodBeat.o(30488);
   }
 }
 

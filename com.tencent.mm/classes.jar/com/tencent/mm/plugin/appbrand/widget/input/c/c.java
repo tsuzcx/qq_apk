@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.widget.input.c;
 
 public abstract interface c
 {
-  public abstract void aQ(String paramString, int paramInt);
+  public abstract void bg(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.c.c
  * JD-Core Version:    0.7.0.1
  */

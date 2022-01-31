@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.nearby.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 
 final class NearbyFriendsUI$3
@@ -12,12 +13,14 @@ final class NearbyFriendsUI$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.Dk().c(NearbyFriendsUI.x(this.mDs));
+    AppMethodBeat.i(55444);
+    g.Rc().a(NearbyFriendsUI.z(this.pdm));
+    AppMethodBeat.o(55444);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.NearbyFriendsUI.3
  * JD-Core Version:    0.7.0.1
  */

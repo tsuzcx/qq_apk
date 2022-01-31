@@ -1,9 +1,13 @@
 package com.tencent.mm.plugin.appbrand.e;
 
-public final class b
-  implements com.tencent.luggage.m.a.b<f>
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+
+public abstract interface b
+  extends com.tencent.luggage.a.b
 {
-  public static b fYq;
+  public abstract boolean a(c paramc, String paramString);
+  
+  public abstract String b(c paramc, String paramString);
 }
 
 

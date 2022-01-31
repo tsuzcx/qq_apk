@@ -1,7 +1,10 @@
 package com.tencent.mm.plugin.radar.b;
 
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.ad;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
 final class c$j
   implements Runnable
 {
@@ -9,7 +12,9 @@ final class c$j
   
   public final void run()
   {
-    this.nkD.nky.M(this.nkQ);
+    AppMethodBeat.i(102880);
+    this.pPT.pPO.P(this.pQf);
+    AppMethodBeat.o(102880);
   }
 }
 

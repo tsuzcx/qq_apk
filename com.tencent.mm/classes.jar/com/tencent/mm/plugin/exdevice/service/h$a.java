@@ -81,7 +81,7 @@ public abstract class h$a
       return true;
     case 3: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      paramParcel1 = aMa();
+      paramParcel1 = bqn();
       paramParcel2.writeNoException();
       paramParcel2.writeLongArray(paramParcel1);
       return true;
@@ -97,7 +97,7 @@ public abstract class h$a
       return true;
     case 5: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = dZ(paramParcel1.readLong());
+      bool = jr(paramParcel1.readLong());
       paramParcel2.writeNoException();
       paramInt1 = k;
       if (bool) {
@@ -107,7 +107,7 @@ public abstract class h$a
       return true;
     case 6: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = ea(paramParcel1.readLong());
+      bool = js(paramParcel1.readLong());
       paramParcel2.writeNoException();
       paramInt1 = m;
       if (bool) {
@@ -123,7 +123,7 @@ public abstract class h$a
       return true;
     case 8: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = eb(paramParcel1.readLong());
+      bool = jt(paramParcel1.readLong());
       paramParcel2.writeNoException();
       paramInt1 = n;
       if (bool) {
@@ -237,7 +237,7 @@ public abstract class h$a
       return true;
     case 17: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTDeviceManager_AIDL");
-      bool = ec(paramParcel1.readLong());
+      bool = ju(paramParcel1.readLong());
       paramParcel2.writeNoException();
       paramInt1 = i7;
       if (bool) {
@@ -298,7 +298,7 @@ public abstract class h$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.h.a
  * JD-Core Version:    0.7.0.1
  */

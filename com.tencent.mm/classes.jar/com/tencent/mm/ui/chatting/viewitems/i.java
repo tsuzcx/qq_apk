@@ -8,13 +8,11 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.as.a.c.g;
-import com.tencent.mm.as.a.d.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.c.g;
+import com.tencent.mm.at.a.d.b;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.c;
+import com.tencent.mm.sdk.platformtools.d;
 
 public final class i {}
 

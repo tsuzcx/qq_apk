@@ -5,7 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
 import com.jg.JgClassChecked;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.RECEIVERCHECK})
 public class MMReceivers$BootReceiver
@@ -13,14 +14,19 @@ public class MMReceivers$BootReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramContext == null) {}
-    do
+    AppMethodBeat.i(57773);
+    if (paramContext == null)
     {
+      AppMethodBeat.o(57773);
       return;
-      new StringBuilder("system booted, pid=").append(Process.myPid());
-    } while (b.s(paramContext, "auto"));
-    MMReceivers.AlarmReceiver.aW(paramContext);
-    y.cqL();
+    }
+    new StringBuilder("system booted, pid=").append(Process.myPid());
+    if (!b.c(paramContext, "auto", true))
+    {
+      MMReceivers.AlarmReceiver.bx(paramContext);
+      ab.dsI();
+    }
+    AppMethodBeat.o(57773);
   }
 }
 

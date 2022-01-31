@@ -1,7 +1,7 @@
 package android.support.v7.widget.a;
 
 import android.graphics.Rect;
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.v;
@@ -25,45 +25,45 @@ final class a$1
     int m;
     label206:
     RecyclerView localRecyclerView;
-    if (this.aoa.anE != null)
+    if (this.aqr.apV != null)
     {
-      locala = this.aoa;
-      if (locala.anE == null) {
+      locala = this.aqr;
+      if (locala.apV == null) {
         break label550;
       }
       l2 = System.currentTimeMillis();
-      if (locala.anZ != -9223372036854775808L) {
+      if (locala.aqq != -9223372036854775808L) {
         break label409;
       }
       l1 = 0L;
-      localObject = locala.acI.getLayoutManager();
-      if (locala.hc == null) {
-        locala.hc = new Rect();
+      localObject = locala.adt.getLayoutManager();
+      if (locala.hV == null) {
+        locala.hV = new Rect();
       }
-      ((RecyclerView.i)localObject).g(locala.anE.aie, locala.hc);
-      if (!((RecyclerView.i)localObject).gO()) {
+      ((RecyclerView.i)localObject).g(locala.apV.aku, locala.hV);
+      if (!((RecyclerView.i)localObject).ij()) {
         break label479;
       }
-      j = (int)(locala.anL + locala.anJ);
-      i = j - locala.hc.left - locala.acI.getPaddingLeft();
-      if ((locala.anJ >= 0.0F) || (i >= 0)) {
+      j = (int)(locala.aqc + locala.aqa);
+      i = j - locala.hV.left - locala.adt.getPaddingLeft();
+      if ((locala.aqa >= 0.0F) || (i >= 0)) {
         break label422;
       }
-      if (!((RecyclerView.i)localObject).gP()) {
+      if (!((RecyclerView.i)localObject).ik()) {
         break label545;
       }
-      m = (int)(locala.anM + locala.anK);
-      j = m - locala.hc.top - locala.acI.getPaddingTop();
-      if ((locala.anK >= 0.0F) || (j >= 0)) {
+      m = (int)(locala.aqd + locala.aqb);
+      j = m - locala.hV.top - locala.adt.getPaddingTop();
+      if ((locala.aqb >= 0.0F) || (j >= 0)) {
         break label484;
       }
       if (i == 0) {
         break label566;
       }
-      localObject = locala.anN;
-      localRecyclerView = locala.acI;
-      m = locala.anE.aie.getWidth();
-      locala.acI.getWidth();
+      localObject = locala.aqe;
+      localRecyclerView = locala.adt;
+      m = locala.apV.aku.getWidth();
+      locala.adt.getWidth();
       i = ((a.a)localObject).a(localRecyclerView, m, i, l1);
     }
     label409:
@@ -74,37 +74,37 @@ final class a$1
     {
       if (j != 0)
       {
-        localObject = locala.anN;
-        localRecyclerView = locala.acI;
-        m = locala.anE.aie.getHeight();
-        locala.acI.getHeight();
+        localObject = locala.aqe;
+        localRecyclerView = locala.adt;
+        m = locala.apV.aku.getHeight();
+        locala.adt.getHeight();
         j = ((a.a)localObject).a(localRecyclerView, m, j, l1);
       }
       for (;;)
       {
         if ((i != 0) || (j != 0))
         {
-          if (locala.anZ == -9223372036854775808L) {
-            locala.anZ = l2;
+          if (locala.aqq == -9223372036854775808L) {
+            locala.aqq = l2;
           }
-          locala.acI.scrollBy(i, j);
+          locala.adt.scrollBy(i, j);
         }
         for (i = 1;; i = k)
         {
           if (i != 0)
           {
-            if (this.aoa.anE != null) {
-              this.aoa.G(this.aoa.anE);
+            if (this.aqr.apV != null) {
+              this.aqr.M(this.aqr.apV);
             }
-            this.aoa.acI.removeCallbacks(this.aoa.anR);
-            q.b(this.aoa.acI, this);
+            this.aqr.adt.removeCallbacks(this.aqr.aqi);
+            t.b(this.aqr.adt, this);
           }
           return;
-          l1 = l2 - locala.anZ;
+          l1 = l2 - locala.aqq;
           break;
-          if (locala.anJ > 0.0F)
+          if (locala.aqa > 0.0F)
           {
-            j = j + locala.anE.aie.getWidth() + locala.hc.right - (locala.acI.getWidth() - locala.acI.getPaddingRight());
+            j = j + locala.apV.aku.getWidth() + locala.hV.right - (locala.adt.getWidth() - locala.adt.getPaddingRight());
             i = j;
             if (j > 0) {
               break label149;
@@ -114,9 +114,9 @@ final class a$1
           i = 0;
           break label149;
           label484:
-          if (locala.anK > 0.0F)
+          if (locala.aqb > 0.0F)
           {
-            m = m + locala.anE.aie.getHeight() + locala.hc.bottom - (locala.acI.getHeight() - locala.acI.getPaddingBottom());
+            m = m + locala.apV.aku.getHeight() + locala.hV.bottom - (locala.adt.getHeight() - locala.adt.getPaddingBottom());
             j = m;
             if (m > 0) {
               break label206;
@@ -124,7 +124,7 @@ final class a$1
           }
           j = 0;
           break label206;
-          locala.anZ = -9223372036854775808L;
+          locala.aqq = -9223372036854775808L;
         }
       }
     }

@@ -7,11 +7,11 @@ public abstract interface h
 {
   public abstract void a(String paramString, t paramt);
   
-  public abstract void a(String paramString1, String paramString2, Bundle paramBundle);
-  
   public abstract void a(String paramString1, String paramString2, t paramt);
   
   public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, t paramt);
+  
+  public abstract void azA();
   
   public abstract void b(int paramInt, t paramt);
   
@@ -21,7 +21,9 @@ public abstract interface h
   
   public abstract void cleanup();
   
-  public abstract void kG(int paramInt);
+  public abstract void d(String paramString1, String paramString2, Bundle paramBundle);
+  
+  public abstract void nE(int paramInt);
 }
 
 

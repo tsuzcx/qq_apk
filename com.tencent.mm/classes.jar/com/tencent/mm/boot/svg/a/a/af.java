@@ -17,7 +17,7 @@ public final class af
   private final int height = 96;
   private final int width = 96;
   
-  protected final int b(int paramInt, Object... paramVarArgs)
+  public final int a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
@@ -29,12 +29,12 @@ public final class af
       return 96;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject1 = c.f(paramVarArgs);
-      Object localObject3 = c.e(paramVarArgs);
-      Object localObject2 = c.i(paramVarArgs);
+      Object localObject1 = c.h(paramVarArgs);
+      Object localObject3 = c.g(paramVarArgs);
+      Object localObject2 = c.k(paramVarArgs);
       ((Paint)localObject2).setFlags(385);
       ((Paint)localObject2).setStyle(Paint.Style.FILL);
-      Paint localPaint = c.i(paramVarArgs);
+      Paint localPaint = c.k(paramVarArgs);
       localPaint.setFlags(385);
       localPaint.setStyle(Paint.Style.STROKE);
       ((Paint)localObject2).setColor(-16777216);
@@ -53,7 +53,7 @@ public final class af
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
       localObject1 = c.a((Paint)localObject2, paramVarArgs);
-      localObject3 = c.j(paramVarArgs);
+      localObject3 = c.l(paramVarArgs);
       ((Path)localObject3).moveTo(2.11F, 1.14F);
       ((Path)localObject3).cubicTo(21.75F, 0.82F, 41.419998F, 1.08F, 61.060001F, 1.0F);
       ((Path)localObject3).cubicTo(62.34F, 0.79F, 64.150002F, 1.37F, 63.950001F, 2.98F);
@@ -95,7 +95,7 @@ public final class af
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a((Paint)localObject2, paramVarArgs);
-      localObject2 = c.j(paramVarArgs);
+      localObject2 = c.l(paramVarArgs);
       ((Path)localObject2).moveTo(42.299999F, 11.32F);
       ((Path)localObject2).cubicTo(46.009998F, 10.77F, 49.939999F, 10.79F, 53.66F, 11.31F);
       ((Path)localObject2).cubicTo(54.259998F, 15.03F, 54.200001F, 18.98F, 53.689999F, 22.719999F);
@@ -107,7 +107,7 @@ public final class af
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
       localCanvas.restore();
       localCanvas.restore();
-      c.h(paramVarArgs);
+      c.j(paramVarArgs);
     }
   }
 }

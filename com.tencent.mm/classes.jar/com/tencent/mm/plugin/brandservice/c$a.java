@@ -1,14 +1,25 @@
 package com.tencent.mm.plugin.brandservice;
 
-import com.tencent.mm.h.a.pl;
-import com.tencent.mm.sdk.b.c;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.PreloadLogic;
+import java.util.Arrays;
 
-public final class c$a
-  extends c<pl>
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
+final class c$a
+  implements Runnable
 {
-  public c$a()
+  c$a(String paramString, int paramInt1, int paramInt2, Object[] paramArrayOfObject) {}
+  
+  public final void run()
   {
-    this.udX = pl.class.getName().hashCode();
+    AppMethodBeat.i(14762);
+    String str = this.jSw;
+    int i = this.jSx;
+    int j = this.jSy;
+    Object[] arrayOfObject = this.jSz;
+    PreloadLogic.a(str, i, j, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
+    AppMethodBeat.o(14762);
   }
 }
 

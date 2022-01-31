@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.address.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.address.a.a;
 import com.tencent.mm.plugin.address.d.b;
 import com.tencent.mm.plugin.address.model.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WalletAddAddressUI$11
   implements MenuItem.OnMenuItemClickListener
@@ -15,54 +16,58 @@ final class WalletAddAddressUI$11
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (!WalletAddAddressUI.e(this.fvu)) {
+    AppMethodBeat.i(16940);
+    if (!WalletAddAddressUI.e(this.gMZ))
+    {
+      AppMethodBeat.o(16940);
       return true;
     }
     Object localObject;
     String str1;
     String str2;
     String str3;
-    if (WalletAddAddressUI.f(this.fvu) != 0)
+    if (WalletAddAddressUI.f(this.gMZ) != 0)
     {
-      WalletAddAddressUI.a(this.fvu, a.YD().kg(WalletAddAddressUI.f(this.fvu)));
-      y.d("MicroMsg.WalletAddAddressUI", "get addr " + WalletAddAddressUI.g(this.fvu).toString());
-      WalletAddAddressUI.b(WalletAddAddressUI.g(this.fvu), WalletAddAddressUI.h(this.fvu));
-      paramMenuItem = WalletAddAddressUI.i(this.fvu).getText();
-      localObject = WalletAddAddressUI.j(this.fvu).getText();
-      str1 = WalletAddAddressUI.k(this.fvu).getText();
-      str2 = WalletAddAddressUI.l(this.fvu).getText();
-      str3 = WalletAddAddressUI.m(this.fvu).getText();
+      WalletAddAddressUI.a(this.gMZ, a.asn().na(WalletAddAddressUI.f(this.gMZ)));
+      ab.d("MicroMsg.WalletAddAddressUI", "get addr " + WalletAddAddressUI.g(this.gMZ).toString());
+      WalletAddAddressUI.b(WalletAddAddressUI.g(this.gMZ), WalletAddAddressUI.h(this.gMZ));
+      paramMenuItem = WalletAddAddressUI.i(this.gMZ).getText();
+      localObject = WalletAddAddressUI.j(this.gMZ).getText();
+      str1 = WalletAddAddressUI.k(this.gMZ).getText();
+      str2 = WalletAddAddressUI.l(this.gMZ).getText();
+      str3 = WalletAddAddressUI.m(this.gMZ).getText();
       localObject = ((String)localObject).split(" ");
       if (localObject.length > 0) {
-        WalletAddAddressUI.h(this.fvu).ftC = localObject[0];
+        WalletAddAddressUI.h(this.gMZ).gLe = localObject[0];
       }
       if (localObject.length >= 2) {
-        WalletAddAddressUI.h(this.fvu).ftD = localObject[1];
+        WalletAddAddressUI.h(this.gMZ).gLf = localObject[1];
       }
       if (localObject.length < 3) {
-        break label320;
+        break label338;
       }
     }
-    label320:
-    for (WalletAddAddressUI.h(this.fvu).ftE = localObject[2];; WalletAddAddressUI.h(this.fvu).ftE = "")
+    label338:
+    for (WalletAddAddressUI.h(this.gMZ).gLg = localObject[2];; WalletAddAddressUI.h(this.gMZ).gLg = "")
     {
-      WalletAddAddressUI.h(this.fvu).ftG = str1;
-      WalletAddAddressUI.h(this.fvu).ftH = paramMenuItem;
-      WalletAddAddressUI.h(this.fvu).ftI = str3;
-      WalletAddAddressUI.h(this.fvu).ftF = str2;
-      if (!bk.bl(WalletAddAddressUI.n(this.fvu))) {
-        WalletAddAddressUI.h(this.fvu).ftJ = WalletAddAddressUI.n(this.fvu);
+      WalletAddAddressUI.h(this.gMZ).gLi = str1;
+      WalletAddAddressUI.h(this.gMZ).gLj = paramMenuItem;
+      WalletAddAddressUI.h(this.gMZ).gLk = str3;
+      WalletAddAddressUI.h(this.gMZ).gLh = str2;
+      if (!bo.isNullOrNil(WalletAddAddressUI.n(this.gMZ))) {
+        WalletAddAddressUI.h(this.gMZ).gLl = WalletAddAddressUI.n(this.gMZ);
       }
-      WalletAddAddressUI.o(this.fvu);
+      WalletAddAddressUI.o(this.gMZ);
+      AppMethodBeat.o(16940);
       return true;
-      WalletAddAddressUI.a(this.fvu, new b());
+      WalletAddAddressUI.a(this.gMZ, new b());
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.WalletAddAddressUI.11
  * JD-Core Version:    0.7.0.1
  */

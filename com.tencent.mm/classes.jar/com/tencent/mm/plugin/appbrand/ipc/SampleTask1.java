@@ -2,42 +2,60 @@ package com.tencent.mm.plugin.appbrand.ipc;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class SampleTask1
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<SampleTask1> CREATOR = new SampleTask1.1();
-  public String geE;
-  public String geF;
+  public static final Parcelable.Creator<SampleTask1> CREATOR;
+  public String hwD;
+  public String hwE;
+  
+  static
+  {
+    AppMethodBeat.i(86960);
+    CREATOR = new SampleTask1.1();
+    AppMethodBeat.o(86960);
+  }
   
   public SampleTask1(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(86955);
+    f(paramParcel);
+    AppMethodBeat.o(86955);
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    y.e("SampleTask", this.geE);
-    this.geF = "String from Main Process";
-    ahI();
+    AppMethodBeat.i(86956);
+    ab.e("SampleTask", this.hwD);
+    this.hwE = "String from Main Process";
+    aBp();
+    AppMethodBeat.o(86956);
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    y.e("SampleTask", this.geF);
+    AppMethodBeat.i(86957);
+    ab.e("SampleTask", this.hwE);
+    AppMethodBeat.o(86957);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
-    this.geE = paramParcel.readString();
-    this.geF = paramParcel.readString();
+    AppMethodBeat.i(86958);
+    this.hwD = paramParcel.readString();
+    this.hwE = paramParcel.readString();
+    AppMethodBeat.o(86958);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.geE);
-    paramParcel.writeString(this.geF);
+    AppMethodBeat.i(86959);
+    paramParcel.writeString(this.hwD);
+    paramParcel.writeString(this.hwE);
+    AppMethodBeat.o(86959);
   }
 }
 

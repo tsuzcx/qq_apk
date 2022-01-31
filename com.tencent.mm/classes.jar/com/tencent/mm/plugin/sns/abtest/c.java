@@ -3,74 +3,76 @@ package com.tencent.mm.plugin.sns.abtest;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewStub;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.a.e;
 import com.tencent.mm.model.a.f;
 import com.tencent.mm.model.a.g;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.plugin.sns.ui.c.a.c;
+import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class c
 {
-  private static String ojY = "0";
-  private static Set<Long> ojZ = new HashSet();
-  private static boolean ojn = false;
-  private static com.tencent.mm.sdk.b.c ojw = new c.1();
-  private static View.OnClickListener oka;
+  private static com.tencent.mm.sdk.b.c qXH;
+  private static boolean qXy;
+  private static String qYj;
+  private static Set<Long> qYk;
+  private static View.OnClickListener qYl;
   
-  public static void b(View paramView, a.c paramc)
+  static
   {
-    if (ojn)
-    {
-      paramc.png = false;
-      paramc.pne = ((ViewStub)paramView.findViewById(i.f.sns_post_hate_stub));
-      paramc.pne.setVisibility(8);
-    }
+    AppMethodBeat.i(35687);
+    qYj = "0";
+    qYk = new HashSet();
+    qXH = new c.1();
+    qXy = false;
+    AppMethodBeat.o(35687);
   }
   
-  public static void bCa()
+  public static void b(View paramView, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    if (g.Iy().iX("6") != null)
+    AppMethodBeat.i(35684);
+    if (qXy)
     {
-      ojY = g.Iy().iX("6").value;
-      y.d("MicroMsg.SellerABTestManager", "startABTest, value:%s", new Object[] { ojY });
-      ojn = true;
-      a.udP.c(ojw);
-      oka = new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          if ((paramAnonymousView.getTag() instanceof n))
-          {
-            n localn = (n)paramAnonymousView.getTag();
-            if ((localn != null) && (!bk.bl(localn.bGk()))) {
-              c.O(paramAnonymousView.getContext(), localn.bGk());
-            }
-          }
-        }
-      };
+      paramBaseViewHolder.shr = false;
+      paramBaseViewHolder.shp = ((ViewStub)paramView.findViewById(2131828150));
+      paramBaseViewHolder.shp.setVisibility(8);
     }
+    AppMethodBeat.o(35684);
   }
   
-  public static void bCb()
+  public static void cnB()
   {
-    oka = null;
-    a.udP.d(ojw);
-    if (ojn)
+    AppMethodBeat.i(35682);
+    if (g.abw().pL("6") != null)
     {
-      g.Iy().iX("6").dYk = 2L;
-      g.Iy().iX("6").result = ojZ.size();
-      f.a(g.Iy().iX("6"));
-      y.d("MicroMsg.SellerABTestManager", "endABTestWhenExitTimeline, scene:%d, result:%s", new Object[] { Integer.valueOf(2), ojZ.size() });
+      qYj = g.abw().pL("6").value;
+      ab.d("MicroMsg.SellerABTestManager", "startABTest, value:%s", new Object[] { qYj });
+      qXy = true;
+      a.ymk.c(qXH);
+      qYl = new c.2();
     }
-    ojY = "0";
-    ojn = false;
-    ojZ.clear();
+    AppMethodBeat.o(35682);
+  }
+  
+  public static void cnC()
+  {
+    AppMethodBeat.i(35683);
+    qYl = null;
+    a.ymk.d(qXH);
+    if (qXy)
+    {
+      g.abw().pL("6").foo = 2L;
+      g.abw().pL("6").result = qYk.size();
+      f.a(g.abw().pL("6"));
+      ab.d("MicroMsg.SellerABTestManager", "endABTestWhenExitTimeline, scene:%d, result:%s", new Object[] { Integer.valueOf(2), qYk.size() });
+    }
+    qYj = "0";
+    qXy = false;
+    qYk.clear();
+    AppMethodBeat.o(35683);
   }
 }
 

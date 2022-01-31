@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.luckymoney.f2f.ui;
 
-import com.tencent.mm.plugin.luckymoney.b.w;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.af;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.HorizontalListViewV2;
 import com.tencent.mm.ui.base.HorizontalListViewV2.d;
 import com.tencent.mm.ui.base.HorizontalListViewV2.d.a;
@@ -14,16 +15,18 @@ final class LuckyMoneyF2FQRCodeUI$14
   
   public final void a(HorizontalListViewV2.d.a parama)
   {
-    if ((parama == HorizontalListViewV2.d.a.uTN) && (LuckyMoneyF2FQRCodeUI.a(this.lOE).size() >= 5) && (LuckyMoneyF2FQRCodeUI.a(this.lOE).size() < LuckyMoneyF2FQRCodeUI.v(this.lOE)) && (LuckyMoneyF2FQRCodeUI.w(this.lOE).getLastVisiblePosition() == LuckyMoneyF2FQRCodeUI.a(this.lOE).size() - 1) && (!bk.bl(LuckyMoneyF2FQRCodeUI.u(this.lOE))))
+    AppMethodBeat.i(42188);
+    if ((parama == HorizontalListViewV2.d.a.zin) && (LuckyMoneyF2FQRCodeUI.a(this.olY).size() >= 5) && (LuckyMoneyF2FQRCodeUI.a(this.olY).size() < LuckyMoneyF2FQRCodeUI.v(this.olY)) && (LuckyMoneyF2FQRCodeUI.w(this.olY).getLastVisiblePosition() == LuckyMoneyF2FQRCodeUI.a(this.olY).size() - 1) && (!bo.isNullOrNil(LuckyMoneyF2FQRCodeUI.u(this.olY))))
     {
-      parama = new w(LuckyMoneyF2FQRCodeUI.u(this.lOE), 5, LuckyMoneyF2FQRCodeUI.a(this.lOE).size(), null, "v1.0");
-      this.lOE.l(parama);
+      parama = new af(LuckyMoneyF2FQRCodeUI.u(this.olY), 5, LuckyMoneyF2FQRCodeUI.a(this.olY).size(), null, "v1.0");
+      this.olY.doSceneProgress(parama);
     }
+    AppMethodBeat.o(42188);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.ui.LuckyMoneyF2FQRCodeUI.14
  * JD-Core Version:    0.7.0.1
  */

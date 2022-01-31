@@ -5,7 +5,8 @@ import android.graphics.RectF;
 import android.text.TextPaint;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.CharacterStyle;
-import com.tencent.neattextview.textview.layout.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.neattextview.textview.layout.d;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,16 +19,18 @@ public final class a
     super(paramInt1, paramInt2, paramCharacterStyle);
   }
   
-  public final void a(Canvas paramCanvas, TextPaint paramTextPaint, List<c> paramList)
+  public final void a(Canvas paramCanvas, TextPaint paramTextPaint, List<d> paramList)
   {
-    ev(paramList);
+    AppMethodBeat.i(3241);
+    fH(paramList);
     int i = paramTextPaint.getColor();
-    paramTextPaint.setColor(((BackgroundColorSpan)this.wDz).getBackgroundColor());
-    paramList = this.wDy.iterator();
+    paramTextPaint.setColor(((BackgroundColorSpan)this.Bbj).getBackgroundColor());
+    paramList = this.Bbi.iterator();
     while (paramList.hasNext()) {
       paramCanvas.drawRect((RectF)paramList.next(), paramTextPaint);
     }
     paramTextPaint.setColor(i);
+    AppMethodBeat.o(3241);
   }
 }
 

@@ -1,22 +1,20 @@
 package com.tencent.mm.ui.transmit;
 
-import android.content.Intent;
-import com.tencent.mm.br.d;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.c.a.b;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SelectConversationUI$25
-  implements c.a.b
+  implements DialogInterface.OnClickListener
 {
-  SelectConversationUI$25(SelectConversationUI paramSelectConversationUI, String paramString) {}
+  SelectConversationUI$25(SelectConversationUI paramSelectConversationUI) {}
   
-  public final void aSe()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", this.val$url);
-    localIntent.putExtra("showShare", false);
-    d.b(this.whw.mController.uMN, "webview", ".ui.tools.WebViewUI", localIntent);
+    AppMethodBeat.i(35147);
+    SelectConversationUI.f(this.AAp);
+    this.AAp.hideVKB();
+    AppMethodBeat.o(35147);
   }
 }
 

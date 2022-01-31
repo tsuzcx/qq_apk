@@ -1,21 +1,25 @@
 package com.tencent.mm.plugin.fingerprint;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
     return null;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new a();
+    AppMethodBeat.i(41347);
+    a locala = new a();
+    AppMethodBeat.o(41347);
+    return locala;
   }
   
   public b getContactWidgetFactory()

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/f22" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/eu3" android:layout_width="@dimen/kn" android:layout_height="@dimen/kn" android:layout_marginTop="@dimen/ke" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
-    <TextView android:ellipsize="end" android:id="@id/eu4" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ko" android:layout_marginTop="@dimen/li" android:layout_marginRight="@dimen/ko" android:layout_marginBottom="@dimen/kv" android:maxLines="1" android:layout_below="@id/eu3" android:layout_centerHorizontal="true" style="@style/n6" />
-    <TextView android:id="@id/eu5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/eu4" android:layout_centerHorizontal="true" style="@style/k6" />
-    <Button android:id="@id/eu6" android:layout_marginLeft="@dimen/ko" android:layout_marginTop="@dimen/kp" android:layout_marginRight="@dimen/ko" android:layout_marginBottom="@dimen/dp" android:minWidth="220.0dip" android:text="@string/flz" android:layout_below="@id/eu5" android:layout_centerHorizontal="true" style="@style/mu" />
-    <TextView android:id="@id/eu7" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/kp" android:text="@string/fm7" android:layout_below="@id/eu5" android:layout_centerHorizontal="true" style="@style/k6" />
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/a3c" android:id="@id/eu8" android:paddingLeft="@dimen/mv" android:paddingRight="@dimen/mv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li" android:text="@string/flx" android:layout_below="@id/eu7" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <ProgressBar android:id="@id/bct" android:padding="@dimen/n_" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f04" />
+</LinearLayout>

@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.fav.ui.d;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$2
   implements View.OnClickListener
@@ -13,10 +14,12 @@ final class a$2
   
   public final void onClick(View paramView)
   {
-    y.d("MicroMsg.FavBaseListItem", "manual restart upload");
+    AppMethodBeat.i(74613);
+    ab.d("MicroMsg.FavBaseListItem", "manual restart upload");
     if ((paramView.getTag() instanceof g)) {
       b.l((g)paramView.getTag());
     }
+    AppMethodBeat.o(74613);
   }
 }
 

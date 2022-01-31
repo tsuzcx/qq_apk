@@ -1,5 +1,6 @@
 package com.qq.taf.jce;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.PrintStream;
 import java.util.Collection;
 import java.util.Iterator;
@@ -26,13 +27,16 @@ public final class JceDisplayer
   
   public static void main(String[] paramArrayOfString)
   {
+    AppMethodBeat.i(117085);
     paramArrayOfString = new StringBuilder();
     paramArrayOfString.append(1.2D);
     System.out.println(paramArrayOfString.toString());
+    AppMethodBeat.o(117085);
   }
   
   private void ps(String paramString)
   {
+    AppMethodBeat.i(117042);
     int i = 0;
     for (;;)
     {
@@ -41,6 +45,7 @@ public final class JceDisplayer
         if (paramString != null) {
           this.sb.append(paramString).append(": ");
         }
+        AppMethodBeat.o(117042);
         return;
       }
       this.sb.append('\t');
@@ -50,48 +55,61 @@ public final class JceDisplayer
   
   public final JceDisplayer display(byte paramByte, String paramString)
   {
+    AppMethodBeat.i(117045);
     ps(paramString);
     this.sb.append(paramByte).append('\n');
+    AppMethodBeat.o(117045);
     return this;
   }
   
   public final JceDisplayer display(char paramChar, String paramString)
   {
+    AppMethodBeat.i(117047);
     ps(paramString);
     this.sb.append(paramChar).append('\n');
+    AppMethodBeat.o(117047);
     return this;
   }
   
   public final JceDisplayer display(double paramDouble, String paramString)
   {
+    AppMethodBeat.i(117057);
     ps(paramString);
     this.sb.append(paramDouble).append('\n');
+    AppMethodBeat.o(117057);
     return this;
   }
   
   public final JceDisplayer display(float paramFloat, String paramString)
   {
+    AppMethodBeat.i(117055);
     ps(paramString);
     this.sb.append(paramFloat).append('\n');
+    AppMethodBeat.o(117055);
     return this;
   }
   
   public final JceDisplayer display(int paramInt, String paramString)
   {
+    AppMethodBeat.i(117051);
     ps(paramString);
     this.sb.append(paramInt).append('\n');
+    AppMethodBeat.o(117051);
     return this;
   }
   
   public final JceDisplayer display(long paramLong, String paramString)
   {
+    AppMethodBeat.i(117053);
     ps(paramString);
     this.sb.append(paramLong).append('\n');
+    AppMethodBeat.o(117053);
     return this;
   }
   
   public final JceDisplayer display(JceStruct paramJceStruct, String paramString)
   {
+    AppMethodBeat.i(117083);
     display('{', paramString);
     if (paramJceStruct == null) {
       this.sb.append('\t').append("null");
@@ -99,6 +117,7 @@ public final class JceDisplayer
     for (;;)
     {
       display('}', null);
+      AppMethodBeat.o(117083);
       return this;
       paramJceStruct.display(this.sb, this._level + 1);
     }
@@ -106,143 +125,143 @@ public final class JceDisplayer
   
   public final <T> JceDisplayer display(T paramT, String paramString)
   {
-    if (paramT == null)
-    {
+    AppMethodBeat.i(117081);
+    if (paramT == null) {
       this.sb.append("null\n");
-      return this;
     }
-    if ((paramT instanceof Byte))
+    for (;;)
     {
-      display(((Byte)paramT).byteValue(), paramString);
+      AppMethodBeat.o(117081);
       return this;
+      if ((paramT instanceof Byte))
+      {
+        display(((Byte)paramT).byteValue(), paramString);
+      }
+      else if ((paramT instanceof Boolean))
+      {
+        display(((Boolean)paramT).booleanValue(), paramString);
+      }
+      else if ((paramT instanceof Short))
+      {
+        display(((Short)paramT).shortValue(), paramString);
+      }
+      else if ((paramT instanceof Integer))
+      {
+        display(((Integer)paramT).intValue(), paramString);
+      }
+      else if ((paramT instanceof Long))
+      {
+        display(((Long)paramT).longValue(), paramString);
+      }
+      else if ((paramT instanceof Float))
+      {
+        display(((Float)paramT).floatValue(), paramString);
+      }
+      else if ((paramT instanceof Double))
+      {
+        display(((Double)paramT).doubleValue(), paramString);
+      }
+      else if ((paramT instanceof String))
+      {
+        display((String)paramT, paramString);
+      }
+      else if ((paramT instanceof Map))
+      {
+        display((Map)paramT, paramString);
+      }
+      else if ((paramT instanceof List))
+      {
+        display((List)paramT, paramString);
+      }
+      else if ((paramT instanceof JceStruct))
+      {
+        display((JceStruct)paramT, paramString);
+      }
+      else if ((paramT instanceof byte[]))
+      {
+        display((byte[])paramT, paramString);
+      }
+      else if ((paramT instanceof boolean[]))
+      {
+        display((boolean[])paramT, paramString);
+      }
+      else if ((paramT instanceof short[]))
+      {
+        display((short[])paramT, paramString);
+      }
+      else if ((paramT instanceof int[]))
+      {
+        display((int[])paramT, paramString);
+      }
+      else if ((paramT instanceof long[]))
+      {
+        display((long[])paramT, paramString);
+      }
+      else if ((paramT instanceof float[]))
+      {
+        display((float[])paramT, paramString);
+      }
+      else if ((paramT instanceof double[]))
+      {
+        display((double[])paramT, paramString);
+      }
+      else
+      {
+        if (!paramT.getClass().isArray()) {
+          break;
+        }
+        display((Object[])paramT, paramString);
+      }
     }
-    if ((paramT instanceof Boolean))
-    {
-      display(((Boolean)paramT).booleanValue(), paramString);
-      return this;
-    }
-    if ((paramT instanceof Short))
-    {
-      display(((Short)paramT).shortValue(), paramString);
-      return this;
-    }
-    if ((paramT instanceof Integer))
-    {
-      display(((Integer)paramT).intValue(), paramString);
-      return this;
-    }
-    if ((paramT instanceof Long))
-    {
-      display(((Long)paramT).longValue(), paramString);
-      return this;
-    }
-    if ((paramT instanceof Float))
-    {
-      display(((Float)paramT).floatValue(), paramString);
-      return this;
-    }
-    if ((paramT instanceof Double))
-    {
-      display(((Double)paramT).doubleValue(), paramString);
-      return this;
-    }
-    if ((paramT instanceof String))
-    {
-      display((String)paramT, paramString);
-      return this;
-    }
-    if ((paramT instanceof Map))
-    {
-      display((Map)paramT, paramString);
-      return this;
-    }
-    if ((paramT instanceof List))
-    {
-      display((List)paramT, paramString);
-      return this;
-    }
-    if ((paramT instanceof JceStruct))
-    {
-      display((JceStruct)paramT, paramString);
-      return this;
-    }
-    if ((paramT instanceof byte[]))
-    {
-      display((byte[])paramT, paramString);
-      return this;
-    }
-    if ((paramT instanceof boolean[]))
-    {
-      display((boolean[])paramT, paramString);
-      return this;
-    }
-    if ((paramT instanceof short[]))
-    {
-      display((short[])paramT, paramString);
-      return this;
-    }
-    if ((paramT instanceof int[]))
-    {
-      display((int[])paramT, paramString);
-      return this;
-    }
-    if ((paramT instanceof long[]))
-    {
-      display((long[])paramT, paramString);
-      return this;
-    }
-    if ((paramT instanceof float[]))
-    {
-      display((float[])paramT, paramString);
-      return this;
-    }
-    if ((paramT instanceof double[]))
-    {
-      display((double[])paramT, paramString);
-      return this;
-    }
-    if (paramT.getClass().isArray())
-    {
-      display((Object[])paramT, paramString);
-      return this;
-    }
-    throw new JceEncodeException("write object error: unsupport type.");
+    paramT = new JceEncodeException("write object error: unsupport type.");
+    AppMethodBeat.o(117081);
+    throw paramT;
   }
   
   public final JceDisplayer display(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(117059);
     ps(paramString2);
-    if (paramString1 == null)
-    {
+    if (paramString1 == null) {
       this.sb.append("null\n");
-      return this;
     }
-    this.sb.append(paramString1).append('\n');
-    return this;
+    for (;;)
+    {
+      AppMethodBeat.o(117059);
+      return this;
+      this.sb.append(paramString1).append('\n');
+    }
   }
   
   public final <T> JceDisplayer display(Collection<T> paramCollection, String paramString)
   {
+    AppMethodBeat.i(117079);
     if (paramCollection == null)
     {
       ps(paramString);
       this.sb.append("null\t");
+      AppMethodBeat.o(117079);
       return this;
     }
-    return display(paramCollection.toArray(), paramString);
+    paramCollection = display(paramCollection.toArray(), paramString);
+    AppMethodBeat.o(117079);
+    return paramCollection;
   }
   
   public final <K, V> JceDisplayer display(Map<K, V> paramMap, String paramString)
   {
+    AppMethodBeat.i(117075);
     ps(paramString);
     if (paramMap == null)
     {
       this.sb.append("null\n");
+      AppMethodBeat.o(117075);
       return this;
     }
     if (paramMap.isEmpty())
     {
       this.sb.append(paramMap.size()).append(", {}\n");
+      AppMethodBeat.o(117075);
       return this;
     }
     this.sb.append(paramMap.size()).append(", {\n");
@@ -254,6 +273,7 @@ public final class JceDisplayer
       if (!paramMap.hasNext())
       {
         display('}', null);
+        AppMethodBeat.o(117075);
         return this;
       }
       Map.Entry localEntry = (Map.Entry)paramMap.next();
@@ -266,34 +286,41 @@ public final class JceDisplayer
   
   public final JceDisplayer display(short paramShort, String paramString)
   {
+    AppMethodBeat.i(117049);
     ps(paramString);
     this.sb.append(paramShort).append('\n');
+    AppMethodBeat.o(117049);
     return this;
   }
   
   public final JceDisplayer display(boolean paramBoolean, String paramString)
   {
+    AppMethodBeat.i(117043);
     ps(paramString);
     paramString = this.sb;
     if (paramBoolean) {}
     for (char c = 'T';; c = 'F')
     {
       paramString.append(c).append('\n');
+      AppMethodBeat.o(117043);
       return this;
     }
   }
   
   public final JceDisplayer display(byte[] paramArrayOfByte, String paramString)
   {
+    AppMethodBeat.i(117061);
     ps(paramString);
     if (paramArrayOfByte == null)
     {
       this.sb.append("null\n");
+      AppMethodBeat.o(117061);
       return this;
     }
     if (paramArrayOfByte.length == 0)
     {
       this.sb.append(paramArrayOfByte.length).append(", []\n");
+      AppMethodBeat.o(117061);
       return this;
     }
     this.sb.append(paramArrayOfByte.length).append(", [\n");
@@ -305,6 +332,7 @@ public final class JceDisplayer
       if (i >= j)
       {
         display(']', null);
+        AppMethodBeat.o(117061);
         return this;
       }
       paramString.display(paramArrayOfByte[i], null);
@@ -314,15 +342,18 @@ public final class JceDisplayer
   
   public final JceDisplayer display(char[] paramArrayOfChar, String paramString)
   {
+    AppMethodBeat.i(117063);
     ps(paramString);
     if (paramArrayOfChar == null)
     {
       this.sb.append("null\n");
+      AppMethodBeat.o(117063);
       return this;
     }
     if (paramArrayOfChar.length == 0)
     {
       this.sb.append(paramArrayOfChar.length).append(", []\n");
+      AppMethodBeat.o(117063);
       return this;
     }
     this.sb.append(paramArrayOfChar.length).append(", [\n");
@@ -334,6 +365,7 @@ public final class JceDisplayer
       if (i >= j)
       {
         display(']', null);
+        AppMethodBeat.o(117063);
         return this;
       }
       paramString.display(paramArrayOfChar[i], null);
@@ -343,15 +375,18 @@ public final class JceDisplayer
   
   public final JceDisplayer display(double[] paramArrayOfDouble, String paramString)
   {
+    AppMethodBeat.i(117073);
     ps(paramString);
     if (paramArrayOfDouble == null)
     {
       this.sb.append("null\n");
+      AppMethodBeat.o(117073);
       return this;
     }
     if (paramArrayOfDouble.length == 0)
     {
       this.sb.append(paramArrayOfDouble.length).append(", []\n");
+      AppMethodBeat.o(117073);
       return this;
     }
     this.sb.append(paramArrayOfDouble.length).append(", [\n");
@@ -363,6 +398,7 @@ public final class JceDisplayer
       if (i >= j)
       {
         display(']', null);
+        AppMethodBeat.o(117073);
         return this;
       }
       paramString.display(paramArrayOfDouble[i], null);
@@ -372,15 +408,18 @@ public final class JceDisplayer
   
   public final JceDisplayer display(float[] paramArrayOfFloat, String paramString)
   {
+    AppMethodBeat.i(117071);
     ps(paramString);
     if (paramArrayOfFloat == null)
     {
       this.sb.append("null\n");
+      AppMethodBeat.o(117071);
       return this;
     }
     if (paramArrayOfFloat.length == 0)
     {
       this.sb.append(paramArrayOfFloat.length).append(", []\n");
+      AppMethodBeat.o(117071);
       return this;
     }
     this.sb.append(paramArrayOfFloat.length).append(", [\n");
@@ -392,6 +431,7 @@ public final class JceDisplayer
       if (i >= j)
       {
         display(']', null);
+        AppMethodBeat.o(117071);
         return this;
       }
       paramString.display(paramArrayOfFloat[i], null);
@@ -401,15 +441,18 @@ public final class JceDisplayer
   
   public final JceDisplayer display(int[] paramArrayOfInt, String paramString)
   {
+    AppMethodBeat.i(117067);
     ps(paramString);
     if (paramArrayOfInt == null)
     {
       this.sb.append("null\n");
+      AppMethodBeat.o(117067);
       return this;
     }
     if (paramArrayOfInt.length == 0)
     {
       this.sb.append(paramArrayOfInt.length).append(", []\n");
+      AppMethodBeat.o(117067);
       return this;
     }
     this.sb.append(paramArrayOfInt.length).append(", [\n");
@@ -421,6 +464,7 @@ public final class JceDisplayer
       if (i >= j)
       {
         display(']', null);
+        AppMethodBeat.o(117067);
         return this;
       }
       paramString.display(paramArrayOfInt[i], null);
@@ -430,15 +474,18 @@ public final class JceDisplayer
   
   public final JceDisplayer display(long[] paramArrayOfLong, String paramString)
   {
+    AppMethodBeat.i(117069);
     ps(paramString);
     if (paramArrayOfLong == null)
     {
       this.sb.append("null\n");
+      AppMethodBeat.o(117069);
       return this;
     }
     if (paramArrayOfLong.length == 0)
     {
       this.sb.append(paramArrayOfLong.length).append(", []\n");
+      AppMethodBeat.o(117069);
       return this;
     }
     this.sb.append(paramArrayOfLong.length).append(", [\n");
@@ -450,6 +497,7 @@ public final class JceDisplayer
       if (i >= j)
       {
         display(']', null);
+        AppMethodBeat.o(117069);
         return this;
       }
       paramString.display(paramArrayOfLong[i], null);
@@ -459,15 +507,18 @@ public final class JceDisplayer
   
   public final <T> JceDisplayer display(T[] paramArrayOfT, String paramString)
   {
+    AppMethodBeat.i(117077);
     ps(paramString);
     if (paramArrayOfT == null)
     {
       this.sb.append("null\n");
+      AppMethodBeat.o(117077);
       return this;
     }
     if (paramArrayOfT.length == 0)
     {
       this.sb.append(paramArrayOfT.length).append(", []\n");
+      AppMethodBeat.o(117077);
       return this;
     }
     this.sb.append(paramArrayOfT.length).append(", [\n");
@@ -479,6 +530,7 @@ public final class JceDisplayer
       if (i >= j)
       {
         display(']', null);
+        AppMethodBeat.o(117077);
         return this;
       }
       paramString.display(paramArrayOfT[i], null);
@@ -488,15 +540,18 @@ public final class JceDisplayer
   
   public final JceDisplayer display(short[] paramArrayOfShort, String paramString)
   {
+    AppMethodBeat.i(117065);
     ps(paramString);
     if (paramArrayOfShort == null)
     {
       this.sb.append("null\n");
+      AppMethodBeat.o(117065);
       return this;
     }
     if (paramArrayOfShort.length == 0)
     {
       this.sb.append(paramArrayOfShort.length).append(", []\n");
+      AppMethodBeat.o(117065);
       return this;
     }
     this.sb.append(paramArrayOfShort.length).append(", [\n");
@@ -508,6 +563,7 @@ public final class JceDisplayer
       if (i >= j)
       {
         display(']', null);
+        AppMethodBeat.o(117065);
         return this;
       }
       paramString.display(paramArrayOfShort[i], null);
@@ -517,60 +573,73 @@ public final class JceDisplayer
   
   public final JceDisplayer displaySimple(byte paramByte, boolean paramBoolean)
   {
+    AppMethodBeat.i(117046);
     this.sb.append(paramByte);
     if (paramBoolean) {
       this.sb.append("|");
     }
+    AppMethodBeat.o(117046);
     return this;
   }
   
   public final JceDisplayer displaySimple(char paramChar, boolean paramBoolean)
   {
+    AppMethodBeat.i(117048);
     this.sb.append(paramChar);
     if (paramBoolean) {
       this.sb.append("|");
     }
+    AppMethodBeat.o(117048);
     return this;
   }
   
   public final JceDisplayer displaySimple(double paramDouble, boolean paramBoolean)
   {
+    AppMethodBeat.i(117058);
     this.sb.append(paramDouble);
     if (paramBoolean) {
       this.sb.append("|");
     }
+    AppMethodBeat.o(117058);
     return this;
   }
   
   public final JceDisplayer displaySimple(float paramFloat, boolean paramBoolean)
   {
+    AppMethodBeat.i(117056);
     this.sb.append(paramFloat);
     if (paramBoolean) {
       this.sb.append("|");
     }
+    AppMethodBeat.o(117056);
     return this;
   }
   
   public final JceDisplayer displaySimple(int paramInt, boolean paramBoolean)
   {
+    AppMethodBeat.i(117052);
     this.sb.append(paramInt);
     if (paramBoolean) {
       this.sb.append("|");
     }
+    AppMethodBeat.o(117052);
     return this;
   }
   
   public final JceDisplayer displaySimple(long paramLong, boolean paramBoolean)
   {
+    AppMethodBeat.i(117054);
     this.sb.append(paramLong);
     if (paramBoolean) {
       this.sb.append("|");
     }
+    AppMethodBeat.o(117054);
     return this;
   }
   
   public final JceDisplayer displaySimple(JceStruct paramJceStruct, boolean paramBoolean)
   {
+    AppMethodBeat.i(117084);
     this.sb.append("{");
     if (paramJceStruct == null) {
       this.sb.append('\t').append("null");
@@ -581,6 +650,7 @@ public final class JceDisplayer
       if (paramBoolean) {
         this.sb.append("|");
       }
+      AppMethodBeat.o(117084);
       return this;
       paramJceStruct.displaySimple(this.sb, this._level + 1);
     }
@@ -588,111 +658,102 @@ public final class JceDisplayer
   
   public final <T> JceDisplayer displaySimple(T paramT, boolean paramBoolean)
   {
-    if (paramT == null)
-    {
+    AppMethodBeat.i(117082);
+    if (paramT == null) {
       this.sb.append("null\n");
-      return this;
     }
-    if ((paramT instanceof Byte))
+    for (;;)
     {
-      displaySimple(((Byte)paramT).byteValue(), paramBoolean);
+      AppMethodBeat.o(117082);
       return this;
+      if ((paramT instanceof Byte))
+      {
+        displaySimple(((Byte)paramT).byteValue(), paramBoolean);
+      }
+      else if ((paramT instanceof Boolean))
+      {
+        displaySimple(((Boolean)paramT).booleanValue(), paramBoolean);
+      }
+      else if ((paramT instanceof Short))
+      {
+        displaySimple(((Short)paramT).shortValue(), paramBoolean);
+      }
+      else if ((paramT instanceof Integer))
+      {
+        displaySimple(((Integer)paramT).intValue(), paramBoolean);
+      }
+      else if ((paramT instanceof Long))
+      {
+        displaySimple(((Long)paramT).longValue(), paramBoolean);
+      }
+      else if ((paramT instanceof Float))
+      {
+        displaySimple(((Float)paramT).floatValue(), paramBoolean);
+      }
+      else if ((paramT instanceof Double))
+      {
+        displaySimple(((Double)paramT).doubleValue(), paramBoolean);
+      }
+      else if ((paramT instanceof String))
+      {
+        displaySimple((String)paramT, paramBoolean);
+      }
+      else if ((paramT instanceof Map))
+      {
+        displaySimple((Map)paramT, paramBoolean);
+      }
+      else if ((paramT instanceof List))
+      {
+        displaySimple((List)paramT, paramBoolean);
+      }
+      else if ((paramT instanceof JceStruct))
+      {
+        displaySimple((JceStruct)paramT, paramBoolean);
+      }
+      else if ((paramT instanceof byte[]))
+      {
+        displaySimple((byte[])paramT, paramBoolean);
+      }
+      else if ((paramT instanceof boolean[]))
+      {
+        displaySimple((boolean[])paramT, paramBoolean);
+      }
+      else if ((paramT instanceof short[]))
+      {
+        displaySimple((short[])paramT, paramBoolean);
+      }
+      else if ((paramT instanceof int[]))
+      {
+        displaySimple((int[])paramT, paramBoolean);
+      }
+      else if ((paramT instanceof long[]))
+      {
+        displaySimple((long[])paramT, paramBoolean);
+      }
+      else if ((paramT instanceof float[]))
+      {
+        displaySimple((float[])paramT, paramBoolean);
+      }
+      else if ((paramT instanceof double[]))
+      {
+        displaySimple((double[])paramT, paramBoolean);
+      }
+      else
+      {
+        if (!paramT.getClass().isArray()) {
+          break;
+        }
+        displaySimple((Object[])paramT, paramBoolean);
+      }
     }
-    if ((paramT instanceof Boolean))
-    {
-      displaySimple(((Boolean)paramT).booleanValue(), paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof Short))
-    {
-      displaySimple(((Short)paramT).shortValue(), paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof Integer))
-    {
-      displaySimple(((Integer)paramT).intValue(), paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof Long))
-    {
-      displaySimple(((Long)paramT).longValue(), paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof Float))
-    {
-      displaySimple(((Float)paramT).floatValue(), paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof Double))
-    {
-      displaySimple(((Double)paramT).doubleValue(), paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof String))
-    {
-      displaySimple((String)paramT, paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof Map))
-    {
-      displaySimple((Map)paramT, paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof List))
-    {
-      displaySimple((List)paramT, paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof JceStruct))
-    {
-      displaySimple((JceStruct)paramT, paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof byte[]))
-    {
-      displaySimple((byte[])paramT, paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof boolean[]))
-    {
-      displaySimple((boolean[])paramT, paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof short[]))
-    {
-      displaySimple((short[])paramT, paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof int[]))
-    {
-      displaySimple((int[])paramT, paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof long[]))
-    {
-      displaySimple((long[])paramT, paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof float[]))
-    {
-      displaySimple((float[])paramT, paramBoolean);
-      return this;
-    }
-    if ((paramT instanceof double[]))
-    {
-      displaySimple((double[])paramT, paramBoolean);
-      return this;
-    }
-    if (paramT.getClass().isArray())
-    {
-      displaySimple((Object[])paramT, paramBoolean);
-      return this;
-    }
-    throw new JceEncodeException("write object error: unsupport type.");
+    paramT = new JceEncodeException("write object error: unsupport type.");
+    AppMethodBeat.o(117082);
+    throw paramT;
   }
   
   public final JceDisplayer displaySimple(String paramString, boolean paramBoolean)
   {
+    AppMethodBeat.i(117060);
     if (paramString == null) {
       this.sb.append("null");
     }
@@ -701,6 +762,7 @@ public final class JceDisplayer
       if (paramBoolean) {
         this.sb.append("|");
       }
+      AppMethodBeat.o(117060);
       return this;
       this.sb.append(paramString);
     }
@@ -708,25 +770,31 @@ public final class JceDisplayer
   
   public final <T> JceDisplayer displaySimple(Collection<T> paramCollection, boolean paramBoolean)
   {
+    AppMethodBeat.i(117080);
     if (paramCollection == null)
     {
       this.sb.append("[]");
       if (paramBoolean) {
         this.sb.append("|");
       }
+      AppMethodBeat.o(117080);
       return this;
     }
-    return displaySimple(paramCollection.toArray(), paramBoolean);
+    paramCollection = displaySimple(paramCollection.toArray(), paramBoolean);
+    AppMethodBeat.o(117080);
+    return paramCollection;
   }
   
   public final <K, V> JceDisplayer displaySimple(Map<K, V> paramMap, boolean paramBoolean)
   {
+    AppMethodBeat.i(117076);
     if ((paramMap == null) || (paramMap.isEmpty()))
     {
       this.sb.append("{}");
       if (paramBoolean) {
         this.sb.append("|");
       }
+      AppMethodBeat.o(117076);
       return this;
     }
     this.sb.append("{");
@@ -737,10 +805,10 @@ public final class JceDisplayer
       if (!paramMap.hasNext())
       {
         this.sb.append("}");
-        if (!paramBoolean) {
-          break;
+        if (paramBoolean) {
+          this.sb.append("|");
         }
-        this.sb.append("|");
+        AppMethodBeat.o(117076);
         return this;
       }
       Map.Entry localEntry = (Map.Entry)paramMap.next();
@@ -754,15 +822,18 @@ public final class JceDisplayer
   
   public final JceDisplayer displaySimple(short paramShort, boolean paramBoolean)
   {
+    AppMethodBeat.i(117050);
     this.sb.append(paramShort);
     if (paramBoolean) {
       this.sb.append("|");
     }
+    AppMethodBeat.o(117050);
     return this;
   }
   
   public final JceDisplayer displaySimple(boolean paramBoolean1, boolean paramBoolean2)
   {
+    AppMethodBeat.i(117044);
     StringBuilder localStringBuilder = this.sb;
     if (paramBoolean1) {}
     for (char c = 'T';; c = 'F')
@@ -771,50 +842,59 @@ public final class JceDisplayer
       if (paramBoolean2) {
         this.sb.append("|");
       }
+      AppMethodBeat.o(117044);
       return this;
     }
   }
   
   public final JceDisplayer displaySimple(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+    AppMethodBeat.i(117062);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
       if (paramBoolean) {
         this.sb.append("|");
       }
-    }
-    do
-    {
+      AppMethodBeat.o(117062);
       return this;
-      this.sb.append(HexUtil.bytes2HexStr(paramArrayOfByte));
-    } while (!paramBoolean);
-    this.sb.append("|");
+    }
+    this.sb.append(HexUtil.bytes2HexStr(paramArrayOfByte));
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
+    AppMethodBeat.o(117062);
     return this;
   }
   
   public final JceDisplayer displaySimple(char[] paramArrayOfChar, boolean paramBoolean)
   {
-    if ((paramArrayOfChar == null) || (paramArrayOfChar.length == 0)) {
+    AppMethodBeat.i(117064);
+    if ((paramArrayOfChar == null) || (paramArrayOfChar.length == 0))
+    {
       if (paramBoolean) {
         this.sb.append("|");
       }
-    }
-    do
-    {
+      AppMethodBeat.o(117064);
       return this;
-      this.sb.append(new String(paramArrayOfChar));
-    } while (!paramBoolean);
-    this.sb.append("|");
+    }
+    this.sb.append(new String(paramArrayOfChar));
+    if (paramBoolean) {
+      this.sb.append("|");
+    }
+    AppMethodBeat.o(117064);
     return this;
   }
   
   public final JceDisplayer displaySimple(double[] paramArrayOfDouble, boolean paramBoolean)
   {
+    AppMethodBeat.i(117074);
     if ((paramArrayOfDouble == null) || (paramArrayOfDouble.length == 0))
     {
       this.sb.append("[]");
       if (paramBoolean) {
         this.sb.append("|");
       }
+      AppMethodBeat.o(117074);
       return this;
     }
     this.sb.append("[");
@@ -825,10 +905,10 @@ public final class JceDisplayer
       if (i >= paramArrayOfDouble.length)
       {
         this.sb.append("[");
-        if (!paramBoolean) {
-          break;
+        if (paramBoolean) {
+          this.sb.append("|");
         }
-        this.sb.append("|");
+        AppMethodBeat.o(117074);
         return this;
       }
       double d = paramArrayOfDouble[i];
@@ -842,12 +922,14 @@ public final class JceDisplayer
   
   public final JceDisplayer displaySimple(float[] paramArrayOfFloat, boolean paramBoolean)
   {
+    AppMethodBeat.i(117072);
     if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length == 0))
     {
       this.sb.append("[]");
       if (paramBoolean) {
         this.sb.append("|");
       }
+      AppMethodBeat.o(117072);
       return this;
     }
     this.sb.append("[");
@@ -858,10 +940,10 @@ public final class JceDisplayer
       if (i >= paramArrayOfFloat.length)
       {
         this.sb.append("]");
-        if (!paramBoolean) {
-          break;
+        if (paramBoolean) {
+          this.sb.append("|");
         }
-        this.sb.append("|");
+        AppMethodBeat.o(117072);
         return this;
       }
       float f = paramArrayOfFloat[i];
@@ -875,12 +957,14 @@ public final class JceDisplayer
   
   public final JceDisplayer displaySimple(int[] paramArrayOfInt, boolean paramBoolean)
   {
+    AppMethodBeat.i(117068);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
     {
       this.sb.append("[]");
       if (paramBoolean) {
         this.sb.append("|");
       }
+      AppMethodBeat.o(117068);
       return this;
     }
     this.sb.append("[");
@@ -891,10 +975,10 @@ public final class JceDisplayer
       if (i >= paramArrayOfInt.length)
       {
         this.sb.append("]");
-        if (!paramBoolean) {
-          break;
+        if (paramBoolean) {
+          this.sb.append("|");
         }
-        this.sb.append("|");
+        AppMethodBeat.o(117068);
         return this;
       }
       int j = paramArrayOfInt[i];
@@ -908,12 +992,14 @@ public final class JceDisplayer
   
   public final JceDisplayer displaySimple(long[] paramArrayOfLong, boolean paramBoolean)
   {
+    AppMethodBeat.i(117070);
     if ((paramArrayOfLong == null) || (paramArrayOfLong.length == 0))
     {
       this.sb.append("[]");
       if (paramBoolean) {
         this.sb.append("|");
       }
+      AppMethodBeat.o(117070);
       return this;
     }
     this.sb.append("[");
@@ -924,10 +1010,10 @@ public final class JceDisplayer
       if (i >= paramArrayOfLong.length)
       {
         this.sb.append("]");
-        if (!paramBoolean) {
-          break;
+        if (paramBoolean) {
+          this.sb.append("|");
         }
-        this.sb.append("|");
+        AppMethodBeat.o(117070);
         return this;
       }
       long l = paramArrayOfLong[i];
@@ -941,12 +1027,14 @@ public final class JceDisplayer
   
   public final <T> JceDisplayer displaySimple(T[] paramArrayOfT, boolean paramBoolean)
   {
+    AppMethodBeat.i(117078);
     if ((paramArrayOfT == null) || (paramArrayOfT.length == 0))
     {
       this.sb.append("[]");
       if (paramBoolean) {
         this.sb.append("|");
       }
+      AppMethodBeat.o(117078);
       return this;
     }
     this.sb.append("[");
@@ -957,10 +1045,10 @@ public final class JceDisplayer
       if (i >= paramArrayOfT.length)
       {
         this.sb.append("]");
-        if (!paramBoolean) {
-          break;
+        if (paramBoolean) {
+          this.sb.append("|");
         }
-        this.sb.append("|");
+        AppMethodBeat.o(117078);
         return this;
       }
       T ? = paramArrayOfT[i];
@@ -974,12 +1062,14 @@ public final class JceDisplayer
   
   public final JceDisplayer displaySimple(short[] paramArrayOfShort, boolean paramBoolean)
   {
+    AppMethodBeat.i(117066);
     if ((paramArrayOfShort == null) || (paramArrayOfShort.length == 0))
     {
       this.sb.append("[]");
       if (paramBoolean) {
         this.sb.append("|");
       }
+      AppMethodBeat.o(117066);
       return this;
     }
     this.sb.append("[");
@@ -990,10 +1080,10 @@ public final class JceDisplayer
       if (i >= paramArrayOfShort.length)
       {
         this.sb.append("]");
-        if (!paramBoolean) {
-          break;
+        if (paramBoolean) {
+          this.sb.append("|");
         }
-        this.sb.append("|");
+        AppMethodBeat.o(117066);
         return this;
       }
       short s = paramArrayOfShort[i];
@@ -1007,7 +1097,7 @@ public final class JceDisplayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.taf.jce.JceDisplayer
  * JD-Core Version:    0.7.0.1
  */

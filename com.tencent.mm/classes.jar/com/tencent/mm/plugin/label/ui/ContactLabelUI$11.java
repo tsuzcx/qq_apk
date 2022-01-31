@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.label.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.label.ui.widget.MMLabelPanel;
 
 final class ContactLabelUI$11
@@ -9,8 +10,10 @@ final class ContactLabelUI$11
   
   public final void run()
   {
-    ContactLabelUI.b(this.lCj).cBb();
-    this.lCj.XM();
+    AppMethodBeat.i(22675);
+    ContactLabelUI.b(this.nZv).dEo();
+    this.nZv.hideVKB();
+    AppMethodBeat.o(22675);
   }
 }
 

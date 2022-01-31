@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.fts;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseSOSWebViewUI$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class BaseSOSWebViewUI$1
   
   public final void onClick(View paramView)
   {
-    this.rtA.cfn();
+    AppMethodBeat.i(8331);
+    this.vjG.dfw();
+    AppMethodBeat.o(8331);
   }
 }
 

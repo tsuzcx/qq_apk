@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.codec.wav;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class WaveReader
 {
   private static final String TAG = "WaveReader";
@@ -17,240 +19,227 @@ public class WaveReader
   public static boolean isWavFormat(String paramString)
   {
     // Byte code:
-    //   0: bipush 50
-    //   2: invokestatic 34	com/tencent/qqmusic/mediaplayer/CacheBytesManager:getStatic	(I)[B
-    //   5: astore 4
-    //   7: new 36	java/io/FileInputStream
-    //   10: dup
-    //   11: aload_0
-    //   12: invokespecial 39	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   15: astore_2
-    //   16: aload_2
-    //   17: astore_0
-    //   18: aload 4
-    //   20: iconst_0
-    //   21: invokestatic 43	com/tencent/qqmusic/mediaplayer/codec/wav/WaveReader:readUnsignedInt	([BI)I
-    //   24: istore_1
-    //   25: iload_1
-    //   26: ldc 15
-    //   28: if_icmpeq +48 -> 76
-    //   31: aload_2
-    //   32: astore_0
-    //   33: ldc 8
-    //   35: new 45	java/lang/StringBuilder
-    //   38: dup
-    //   39: ldc 47
-    //   41: invokespecial 48	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   44: iload_1
-    //   45: invokevirtual 52	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 62	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   54: aload_2
-    //   55: invokevirtual 67	java/io/InputStream:close	()V
-    //   58: aload 4
-    //   60: invokestatic 71	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
-    //   63: pop
-    //   64: iconst_0
-    //   65: ireturn
-    //   66: astore_0
-    //   67: ldc 8
-    //   69: aload_0
-    //   70: invokestatic 75	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   73: goto -15 -> 58
-    //   76: aload_2
-    //   77: astore_0
-    //   78: aload 4
-    //   80: bipush 8
-    //   82: invokestatic 43	com/tencent/qqmusic/mediaplayer/codec/wav/WaveReader:readUnsignedInt	([BI)I
-    //   85: istore_1
-    //   86: iload_1
-    //   87: ldc 11
-    //   89: if_icmpeq +48 -> 137
-    //   92: aload_2
-    //   93: astore_0
-    //   94: ldc 8
-    //   96: new 45	java/lang/StringBuilder
-    //   99: dup
-    //   100: ldc 77
-    //   102: invokespecial 48	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   105: iload_1
-    //   106: invokevirtual 52	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokestatic 62	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   115: aload_2
-    //   116: invokevirtual 67	java/io/InputStream:close	()V
-    //   119: aload 4
-    //   121: invokestatic 71	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
-    //   124: pop
-    //   125: iconst_0
-    //   126: ireturn
-    //   127: astore_0
-    //   128: ldc 8
-    //   130: aload_0
-    //   131: invokestatic 75	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   134: goto -15 -> 119
-    //   137: aload_2
-    //   138: astore_0
-    //   139: aload 4
-    //   141: bipush 12
-    //   143: invokestatic 43	com/tencent/qqmusic/mediaplayer/codec/wav/WaveReader:readUnsignedInt	([BI)I
-    //   146: istore_1
-    //   147: iload_1
-    //   148: ldc 13
-    //   150: if_icmpeq +48 -> 198
-    //   153: aload_2
-    //   154: astore_0
-    //   155: ldc 8
-    //   157: new 45	java/lang/StringBuilder
-    //   160: dup
-    //   161: ldc 79
-    //   163: invokespecial 48	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   166: iload_1
-    //   167: invokevirtual 52	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   170: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   173: invokestatic 62	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   176: aload_2
-    //   177: invokevirtual 67	java/io/InputStream:close	()V
-    //   180: aload 4
-    //   182: invokestatic 71	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
-    //   185: pop
-    //   186: iconst_0
-    //   187: ireturn
-    //   188: astore_0
-    //   189: ldc 8
-    //   191: aload_0
-    //   192: invokestatic 75	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   195: goto -15 -> 180
-    //   198: aload_2
-    //   199: astore_0
-    //   200: aload 4
-    //   202: bipush 16
-    //   204: invokestatic 82	com/tencent/qqmusic/mediaplayer/codec/wav/WaveReader:readUnsignedIntLE	([BI)I
-    //   207: istore_1
-    //   208: aload_2
-    //   209: astore_0
-    //   210: ldc 8
-    //   212: new 45	java/lang/StringBuilder
-    //   215: dup
-    //   216: ldc 84
-    //   218: invokespecial 48	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   221: iload_1
-    //   222: invokevirtual 52	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   225: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   228: invokestatic 62	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   231: aload_2
-    //   232: astore_0
-    //   233: aload 4
-    //   235: bipush 20
-    //   237: invokestatic 88	com/tencent/qqmusic/mediaplayer/codec/wav/WaveReader:readUnsignedShortLE	([BI)S
-    //   240: istore_1
+    //   0: ldc 29
+    //   2: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: bipush 50
+    //   7: invokestatic 41	com/tencent/qqmusic/mediaplayer/CacheBytesManager:getStatic	(I)[B
+    //   10: astore 4
+    //   12: new 43	java/io/FileInputStream
+    //   15: dup
+    //   16: aload_0
+    //   17: invokespecial 46	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   20: astore_2
+    //   21: aload_2
+    //   22: astore_0
+    //   23: aload 4
+    //   25: iconst_0
+    //   26: invokestatic 50	com/tencent/qqmusic/mediaplayer/codec/wav/WaveReader:readUnsignedInt	([BI)I
+    //   29: istore_1
+    //   30: iload_1
+    //   31: ldc 15
+    //   33: if_icmpeq +46 -> 79
+    //   36: aload_2
+    //   37: astore_0
+    //   38: ldc 8
+    //   40: ldc 52
+    //   42: iload_1
+    //   43: invokestatic 58	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   46: invokevirtual 62	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   49: invokestatic 67	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   52: aload_2
+    //   53: invokevirtual 72	java/io/InputStream:close	()V
+    //   56: aload 4
+    //   58: invokestatic 76	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
+    //   61: pop
+    //   62: ldc 29
+    //   64: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   67: iconst_0
+    //   68: ireturn
+    //   69: astore_0
+    //   70: ldc 8
+    //   72: aload_0
+    //   73: invokestatic 83	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   76: goto -20 -> 56
+    //   79: aload_2
+    //   80: astore_0
+    //   81: aload 4
+    //   83: bipush 8
+    //   85: invokestatic 50	com/tencent/qqmusic/mediaplayer/codec/wav/WaveReader:readUnsignedInt	([BI)I
+    //   88: istore_1
+    //   89: iload_1
+    //   90: ldc 11
+    //   92: if_icmpeq +46 -> 138
+    //   95: aload_2
+    //   96: astore_0
+    //   97: ldc 8
+    //   99: ldc 85
+    //   101: iload_1
+    //   102: invokestatic 58	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   105: invokevirtual 62	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   108: invokestatic 67	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   111: aload_2
+    //   112: invokevirtual 72	java/io/InputStream:close	()V
+    //   115: aload 4
+    //   117: invokestatic 76	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
+    //   120: pop
+    //   121: ldc 29
+    //   123: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   126: iconst_0
+    //   127: ireturn
+    //   128: astore_0
+    //   129: ldc 8
+    //   131: aload_0
+    //   132: invokestatic 83	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   135: goto -20 -> 115
+    //   138: aload_2
+    //   139: astore_0
+    //   140: aload 4
+    //   142: bipush 12
+    //   144: invokestatic 50	com/tencent/qqmusic/mediaplayer/codec/wav/WaveReader:readUnsignedInt	([BI)I
+    //   147: istore_1
+    //   148: iload_1
+    //   149: ldc 13
+    //   151: if_icmpeq +46 -> 197
+    //   154: aload_2
+    //   155: astore_0
+    //   156: ldc 8
+    //   158: ldc 87
+    //   160: iload_1
+    //   161: invokestatic 58	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   164: invokevirtual 62	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   167: invokestatic 67	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   170: aload_2
+    //   171: invokevirtual 72	java/io/InputStream:close	()V
+    //   174: aload 4
+    //   176: invokestatic 76	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
+    //   179: pop
+    //   180: ldc 29
+    //   182: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   185: iconst_0
+    //   186: ireturn
+    //   187: astore_0
+    //   188: ldc 8
+    //   190: aload_0
+    //   191: invokestatic 83	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   194: goto -20 -> 174
+    //   197: aload_2
+    //   198: astore_0
+    //   199: ldc 8
+    //   201: ldc 89
+    //   203: aload 4
+    //   205: bipush 16
+    //   207: invokestatic 92	com/tencent/qqmusic/mediaplayer/codec/wav/WaveReader:readUnsignedIntLE	([BI)I
+    //   210: invokestatic 58	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   213: invokevirtual 62	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   216: invokestatic 67	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   219: aload_2
+    //   220: astore_0
+    //   221: ldc 8
+    //   223: ldc 94
+    //   225: aload 4
+    //   227: bipush 20
+    //   229: invokestatic 98	com/tencent/qqmusic/mediaplayer/codec/wav/WaveReader:readUnsignedShortLE	([BI)S
+    //   232: invokestatic 58	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   235: invokevirtual 62	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   238: invokestatic 67	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   241: aload_2
-    //   242: astore_0
-    //   243: ldc 8
-    //   245: new 45	java/lang/StringBuilder
-    //   248: dup
-    //   249: ldc 90
-    //   251: invokespecial 48	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   254: iload_1
-    //   255: invokevirtual 52	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   258: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   261: invokestatic 62	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   264: aload_2
-    //   265: invokevirtual 67	java/io/InputStream:close	()V
-    //   268: aload 4
-    //   270: invokestatic 71	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
-    //   273: pop
-    //   274: iconst_1
-    //   275: ireturn
-    //   276: astore_0
-    //   277: ldc 8
-    //   279: aload_0
-    //   280: invokestatic 75	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   283: goto -15 -> 268
-    //   286: astore_3
-    //   287: aconst_null
-    //   288: astore_2
-    //   289: aload_2
-    //   290: astore_0
-    //   291: ldc 8
-    //   293: aload_3
-    //   294: invokestatic 75	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   297: aload_2
-    //   298: ifnull +7 -> 305
-    //   301: aload_2
-    //   302: invokevirtual 67	java/io/InputStream:close	()V
-    //   305: aload 4
-    //   307: invokestatic 71	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
-    //   310: pop
-    //   311: iconst_0
-    //   312: ireturn
-    //   313: astore_0
-    //   314: ldc 8
-    //   316: aload_0
-    //   317: invokestatic 75	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   320: goto -15 -> 305
-    //   323: astore_2
-    //   324: aconst_null
-    //   325: astore_0
-    //   326: aload_0
-    //   327: ifnull +7 -> 334
-    //   330: aload_0
-    //   331: invokevirtual 67	java/io/InputStream:close	()V
-    //   334: aload 4
-    //   336: invokestatic 71	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
-    //   339: pop
-    //   340: aload_2
-    //   341: athrow
-    //   342: astore_0
-    //   343: ldc 8
-    //   345: aload_0
-    //   346: invokestatic 75	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   349: goto -15 -> 334
-    //   352: astore_2
-    //   353: goto -27 -> 326
-    //   356: astore_3
-    //   357: goto -68 -> 289
+    //   242: invokevirtual 72	java/io/InputStream:close	()V
+    //   245: aload 4
+    //   247: invokestatic 76	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
+    //   250: pop
+    //   251: ldc 29
+    //   253: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   256: iconst_1
+    //   257: ireturn
+    //   258: astore_0
+    //   259: ldc 8
+    //   261: aload_0
+    //   262: invokestatic 83	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   265: goto -20 -> 245
+    //   268: astore_3
+    //   269: aconst_null
+    //   270: astore_2
+    //   271: aload_2
+    //   272: astore_0
+    //   273: ldc 8
+    //   275: aload_3
+    //   276: invokestatic 83	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   279: aload_2
+    //   280: ifnull +7 -> 287
+    //   283: aload_2
+    //   284: invokevirtual 72	java/io/InputStream:close	()V
+    //   287: aload 4
+    //   289: invokestatic 76	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
+    //   292: pop
+    //   293: ldc 29
+    //   295: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   298: iconst_0
+    //   299: ireturn
+    //   300: astore_0
+    //   301: ldc 8
+    //   303: aload_0
+    //   304: invokestatic 83	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   307: goto -20 -> 287
+    //   310: astore_2
+    //   311: aconst_null
+    //   312: astore_0
+    //   313: aload_0
+    //   314: ifnull +7 -> 321
+    //   317: aload_0
+    //   318: invokevirtual 72	java/io/InputStream:close	()V
+    //   321: aload 4
+    //   323: invokestatic 76	com/tencent/qqmusic/mediaplayer/CacheBytesManager:recycle	([B)[B
+    //   326: pop
+    //   327: ldc 29
+    //   329: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   332: aload_2
+    //   333: athrow
+    //   334: astore_0
+    //   335: ldc 8
+    //   337: aload_0
+    //   338: invokestatic 83	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   341: goto -20 -> 321
+    //   344: astore_2
+    //   345: goto -32 -> 313
+    //   348: astore_3
+    //   349: goto -78 -> 271
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	360	0	paramString	String
-    //   24	231	1	i	int
-    //   15	287	2	localFileInputStream	java.io.FileInputStream
-    //   323	18	2	localObject1	Object
-    //   352	1	2	localObject2	Object
-    //   286	8	3	localException1	java.lang.Exception
-    //   356	1	3	localException2	java.lang.Exception
-    //   5	330	4	arrayOfByte	byte[]
+    //   0	352	0	paramString	String
+    //   29	132	1	i	int
+    //   20	264	2	localFileInputStream	java.io.FileInputStream
+    //   310	23	2	localObject1	Object
+    //   344	1	2	localObject2	Object
+    //   268	8	3	localException1	java.lang.Exception
+    //   348	1	3	localException2	java.lang.Exception
+    //   10	312	4	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   54	58	66	java/lang/Exception
-    //   115	119	127	java/lang/Exception
-    //   176	180	188	java/lang/Exception
-    //   264	268	276	java/lang/Exception
-    //   7	16	286	java/lang/Exception
-    //   301	305	313	java/lang/Exception
-    //   7	16	323	finally
-    //   330	334	342	java/lang/Exception
-    //   18	25	352	finally
-    //   33	54	352	finally
-    //   78	86	352	finally
-    //   94	115	352	finally
-    //   139	147	352	finally
-    //   155	176	352	finally
-    //   200	208	352	finally
-    //   210	231	352	finally
-    //   233	241	352	finally
-    //   243	264	352	finally
-    //   291	297	352	finally
-    //   18	25	356	java/lang/Exception
-    //   33	54	356	java/lang/Exception
-    //   78	86	356	java/lang/Exception
-    //   94	115	356	java/lang/Exception
-    //   139	147	356	java/lang/Exception
-    //   155	176	356	java/lang/Exception
-    //   200	208	356	java/lang/Exception
-    //   210	231	356	java/lang/Exception
-    //   233	241	356	java/lang/Exception
-    //   243	264	356	java/lang/Exception
+    //   52	56	69	java/lang/Exception
+    //   111	115	128	java/lang/Exception
+    //   170	174	187	java/lang/Exception
+    //   241	245	258	java/lang/Exception
+    //   12	21	268	java/lang/Exception
+    //   283	287	300	java/lang/Exception
+    //   12	21	310	finally
+    //   317	321	334	java/lang/Exception
+    //   23	30	344	finally
+    //   38	52	344	finally
+    //   81	89	344	finally
+    //   97	111	344	finally
+    //   140	148	344	finally
+    //   156	170	344	finally
+    //   199	219	344	finally
+    //   221	241	344	finally
+    //   273	279	344	finally
+    //   23	30	348	java/lang/Exception
+    //   38	52	348	java/lang/Exception
+    //   81	89	348	java/lang/Exception
+    //   97	111	348	java/lang/Exception
+    //   140	148	348	java/lang/Exception
+    //   156	170	348	java/lang/Exception
+    //   199	219	348	java/lang/Exception
+    //   221	241	348	java/lang/Exception
   }
   
   private static int readUnsignedInt(byte[] paramArrayOfByte, int paramInt)
@@ -271,10 +260,15 @@ public class WaveReader
   
   private static short readUnsignedShortLE(byte[] paramArrayOfByte, int paramInt)
   {
-    if (paramInt + 2 > paramArrayOfByte.length) {
+    AppMethodBeat.i(128532);
+    if (paramInt + 2 > paramArrayOfByte.length)
+    {
+      AppMethodBeat.o(128532);
       return -1;
     }
-    return byteToShortLE(paramArrayOfByte[paramInt], paramArrayOfByte[(paramInt + 1)]);
+    short s = byteToShortLE(paramArrayOfByte[paramInt], paramArrayOfByte[(paramInt + 1)]);
+    AppMethodBeat.o(128532);
+    return s;
   }
 }
 

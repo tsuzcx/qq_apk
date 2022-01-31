@@ -1,30 +1,20 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import com.tencent.mm.ai.f;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class SelfQRCodeUI$8
-  implements n.c
+  implements View.OnClickListener
 {
   SelfQRCodeUI$8(SelfQRCodeUI paramSelfQRCodeUI) {}
   
-  public final void a(l paraml)
+  public final void onClick(View paramView)
   {
-    boolean bool1 = s.gZ(SelfQRCodeUI.c(this.nSB));
-    boolean bool2 = f.lc(SelfQRCodeUI.c(this.nSB));
-    if ((!bool2) && (!bool1)) {
-      paraml.fq(2, a.i.self_qrcode_change);
-    }
-    paraml.fq(1, a.i.self_qrcode_save);
-    if (!bool2) {
-      paraml.fq(3, a.i.self_qrcode_to_scan);
-    }
-    if (SelfQRCodeUI.d(this.nSB)) {
-      paraml.fq(4, a.i.self_qrcode_to_revoke);
-    }
+    AppMethodBeat.i(154168);
+    d.H(this.qGz, "setting", ".ui.setting.SettingsAddMeUI");
+    AppMethodBeat.o(154168);
   }
 }
 

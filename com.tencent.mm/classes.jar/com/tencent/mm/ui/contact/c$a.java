@@ -2,18 +2,18 @@ package com.tencent.mm.ui.contact;
 
 public final class c$a
 {
-  public String vIs = "@all.contact.without.chatroom";
-  public boolean vJJ = false;
-  public boolean vJK = false;
-  public boolean vJL = false;
-  public boolean vJM = false;
-  public boolean vJN = false;
-  public boolean vJO = false;
-  public String vJP;
-  public String vJQ;
-  public boolean vJR = false;
-  public String vJS = "";
-  public String vJT = "";
+  public boolean Abf = false;
+  public boolean Abg = false;
+  public boolean Abh = false;
+  public boolean Abi = false;
+  public boolean Abj = false;
+  public boolean Abk = false;
+  public String Abl;
+  public String Abm;
+  public boolean Abn = false;
+  public String Abo = "";
+  public String Abp = "";
+  public String zZK = "@all.contact.without.chatroom";
 }
 
 

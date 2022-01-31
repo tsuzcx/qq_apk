@@ -9,7 +9,7 @@ public class RecyclerView$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new RecyclerView.SavedState.1();
-  Parcelable ahz;
+  Parcelable ajP;
   
   RecyclerView$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
   {
@@ -17,7 +17,7 @@ public class RecyclerView$SavedState
     if (paramClassLoader != null) {}
     for (;;)
     {
-      this.ahz = paramParcel.readParcelable(paramClassLoader);
+      this.ajP = paramParcel.readParcelable(paramClassLoader);
       return;
       paramClassLoader = RecyclerView.i.class.getClassLoader();
     }
@@ -31,7 +31,7 @@ public class RecyclerView$SavedState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeParcelable(this.ahz, 0);
+    paramParcel.writeParcelable(this.ajP, 0);
   }
 }
 

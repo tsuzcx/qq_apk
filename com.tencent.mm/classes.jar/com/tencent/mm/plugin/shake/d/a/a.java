@@ -1,246 +1,298 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.f.b.c;
-import com.tencent.mm.f.b.c.a;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.audio.b.c;
+import com.tencent.mm.audio.b.c.a;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.qafpapi.QAFPNative;
 
 public final class a
   implements f
 {
-  c bCc;
-  private c.a bDg = new a.1(this);
-  Object ikx = new Object();
-  int oaA;
-  private boolean oaB = false;
-  long oaC;
-  int oaD;
-  private boolean oaE = false;
-  byte[] oap = new byte[10240];
-  int oaq = 0;
-  int oar = 0;
-  long oas = 0L;
-  int oat = 0;
-  boolean oau = false;
-  e oav = null;
-  private a.a oaw = null;
-  boolean oax = false;
-  boolean oay = false;
-  int oaz = 0;
+  c ciR;
+  private c.a cjU;
+  Object clk;
+  int qOA;
+  long qOB;
+  int qOC;
+  boolean qOD;
+  e qOE;
+  private a.a qOF;
+  boolean qOG;
+  boolean qOH;
+  int qOI;
+  int qOJ;
+  private boolean qOK;
+  long qOL;
+  int qOM;
+  private boolean qON;
+  byte[] qOy;
+  int qOz;
+  
+  public a()
+  {
+    AppMethodBeat.i(24593);
+    this.qOy = new byte[10240];
+    this.qOz = 0;
+    this.qOA = 0;
+    this.qOB = 0L;
+    this.qOC = 0;
+    this.qOD = false;
+    this.qOE = null;
+    this.clk = new Object();
+    this.qOF = null;
+    this.qOG = false;
+    this.qOH = false;
+    this.qOI = 0;
+    this.qOK = false;
+    this.qON = false;
+    this.cjU = new a.1(this);
+    AppMethodBeat.o(24593);
+  }
   
   /* Error */
-  private void a(com.tencent.mm.protocal.c.bly parambly, long paramLong, boolean paramBoolean)
+  private void a(com.tencent.mm.protocal.protobuf.bvk parambvk, long paramLong, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 68	com/tencent/mm/plugin/shake/d/a/a:oaE	Z
-    //   6: ifne +24 -> 30
-    //   9: aload_0
-    //   10: getfield 58	com/tencent/mm/plugin/shake/d/a/a:oaw	Lcom/tencent/mm/plugin/shake/d/a/a$a;
-    //   13: aload_1
-    //   14: lload_2
-    //   15: iload 4
-    //   17: invokeinterface 84 5 0
-    //   22: aload_0
-    //   23: iconst_1
-    //   24: putfield 68	com/tencent/mm/plugin/shake/d/a/a:oaE	Z
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: return
-    //   30: ldc 86
-    //   32: ldc 88
-    //   34: invokestatic 94	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   37: goto -10 -> 27
-    //   40: astore_1
-    //   41: aload_0
-    //   42: monitorexit
-    //   43: aload_1
-    //   44: athrow
+    //   2: sipush 24600
+    //   5: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 74	com/tencent/mm/plugin/shake/d/a/a:qON	Z
+    //   12: ifne +30 -> 42
+    //   15: aload_0
+    //   16: getfield 64	com/tencent/mm/plugin/shake/d/a/a:qOF	Lcom/tencent/mm/plugin/shake/d/a/a$a;
+    //   19: aload_1
+    //   20: lload_2
+    //   21: iload 4
+    //   23: invokeinterface 93 5 0
+    //   28: aload_0
+    //   29: iconst_1
+    //   30: putfield 74	com/tencent/mm/plugin/shake/d/a/a:qON	Z
+    //   33: sipush 24600
+    //   36: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   39: aload_0
+    //   40: monitorexit
+    //   41: return
+    //   42: ldc 95
+    //   44: ldc 97
+    //   46: invokestatic 103	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: sipush 24600
+    //   52: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: goto -16 -> 39
+    //   58: astore_1
+    //   59: aload_0
+    //   60: monitorexit
+    //   61: aload_1
+    //   62: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	45	0	this	a
-    //   0	45	1	parambly	com.tencent.mm.protocal.c.bly
-    //   0	45	2	paramLong	long
-    //   0	45	4	paramBoolean	boolean
+    //   0	63	0	this	a
+    //   0	63	1	parambvk	com.tencent.mm.protocal.protobuf.bvk
+    //   0	63	2	paramLong	long
+    //   0	63	4	paramBoolean	boolean
     // Exception table:
     //   from	to	target	type
-    //   2	27	40	finally
-    //   30	37	40	finally
+    //   2	39	58	finally
+    //   42	55	58	finally
   }
   
-  private void iH(boolean paramBoolean)
+  private void kK(boolean paramBoolean)
   {
-    y.d("MicroMsg.MusicFingerPrintRecorder", "tryCallBack, directFail = %s", new Object[] { Boolean.valueOf(false) });
-    ai.d(new a.2(this, paramBoolean));
+    AppMethodBeat.i(24599);
+    ab.d("MicroMsg.MusicFingerPrintRecorder", "tryCallBack, directFail = %s", new Object[] { Boolean.FALSE });
+    al.d(new a.2(this, paramBoolean));
+    AppMethodBeat.o(24599);
   }
   
-  final void Om()
+  public final boolean Et()
   {
-    au.DS().O(new a.3(this));
+    AppMethodBeat.i(24596);
+    ab.d("MicroMsg.MusicFingerPrintRecorder", "stopRecord now clientid:%d", new Object[] { Integer.valueOf(this.qOI) });
+    aw.Rc().b(367, this);
+    aw.Rc().b(408, this);
+    synchronized (this.qOy)
+    {
+      this.qOz = 0;
+      if (this.ciR != null)
+      {
+        this.ciR.Et();
+        this.ciR = null;
+      }
+      AppMethodBeat.o(24596);
+      return true;
+    }
   }
   
   public final boolean a(int paramInt, a.a arg2)
   {
-    uh();
-    synchronized (this.ikx)
+    AppMethodBeat.i(24597);
+    Et();
+    synchronized (this.clk)
     {
-      this.oaA = QAFPNative.QAFPGetVersion();
-      bAu();
-      this.oat = paramInt;
-      this.oaw = ???;
-      this.oay = false;
-      this.oax = false;
-      this.oau = false;
-      this.oaE = false;
-      au.Dk().a(367, this);
-      au.Dk().a(408, this);
-      this.oaz = ((int)bk.UY());
-      y.d("MicroMsg.MusicFingerPrintRecorder", "startRecord now clientid:%d", new Object[] { Integer.valueOf(this.oaz) });
-      this.bCc = new c(8000, 1, 4);
-      this.bCc.bCE = -19;
-      this.bCc.bCP = this.bDg;
-      if (!this.bCc.uq())
+      this.qOJ = QAFPNative.QAFPGetVersion();
+      clO();
+      this.qOC = paramInt;
+      this.qOF = ???;
+      this.qOH = false;
+      this.qOG = false;
+      this.qOD = false;
+      this.qON = false;
+      aw.Rc().a(367, this);
+      aw.Rc().a(408, this);
+      this.qOI = ((int)bo.aoy());
+      ab.d("MicroMsg.MusicFingerPrintRecorder", "startRecord now clientid:%d", new Object[] { Integer.valueOf(this.qOI) });
+      this.ciR = new c(8000, 1, 4);
+      this.ciR.cjs = -19;
+      this.ciR.cjD = this.cjU;
+      if (!this.ciR.EC())
       {
-        y.e("MicroMsg.MusicFingerPrintRecorder", "start record failed");
+        ab.e("MicroMsg.MusicFingerPrintRecorder", "start record failed");
         reset();
+        AppMethodBeat.o(24597);
         return false;
       }
     }
-    synchronized (this.ikx)
+    synchronized (this.clk)
     {
       paramInt = QAFPNative.QAFPReset();
-      y.d("MicroMsg.MusicFingerPrintRecorder", "QAFPReset ret:%d", new Object[] { Integer.valueOf(paramInt) });
+      ab.d("MicroMsg.MusicFingerPrintRecorder", "QAFPReset ret:%d", new Object[] { Integer.valueOf(paramInt) });
       if (paramInt < 0)
       {
-        y.e("MicroMsg.MusicFingerPrintRecorder", "init failed QAFPReset:%d clientid:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.oaz) });
+        ab.e("MicroMsg.MusicFingerPrintRecorder", "init failed QAFPReset:%d clientid:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.qOI) });
         reset();
+        AppMethodBeat.o(24597);
         return false;
       }
+      this.qOB = bo.aoy();
+      this.qOL = bo.aoy();
+      this.qOM = 0;
+      AppMethodBeat.o(24597);
+      return true;
     }
-    this.oas = bk.UY();
-    this.oaC = bk.UY();
-    this.oaD = 0;
-    return true;
   }
   
-  public final boolean bAu()
+  final void ahb()
+  {
+    AppMethodBeat.i(24601);
+    aw.RO().ac(new a.3(this));
+    AppMethodBeat.o(24601);
+  }
+  
+  public final boolean clO()
   {
     boolean bool = false;
+    AppMethodBeat.i(24594);
     for (;;)
     {
       int i;
-      synchronized (this.ikx)
+      synchronized (this.clk)
       {
-        if (this.oaB)
+        if (this.qOK)
         {
-          y.d("MicroMsg.MusicFingerPrintRecorder", "QAFPInit already inited");
+          ab.d("MicroMsg.MusicFingerPrintRecorder", "QAFPInit already inited");
+          AppMethodBeat.o(24594);
           return false;
         }
         i = QAFPNative.QAFPInit();
-        y.d("MicroMsg.MusicFingerPrintRecorder", "QAFPInit ret:%d", new Object[] { Integer.valueOf(i) });
+        ab.d("MicroMsg.MusicFingerPrintRecorder", "QAFPInit ret:%d", new Object[] { Integer.valueOf(i) });
         if (i >= 0)
         {
-          this.oaB = true;
-          break label72;
+          this.qOK = true;
+          break label96;
+          AppMethodBeat.o(24594);
           return bool;
         }
       }
-      label72:
+      label96:
       if (i >= 0) {
         bool = true;
       }
     }
   }
   
-  public final boolean bAv()
+  public final boolean clP()
   {
     boolean bool = false;
-    synchronized (this.ikx)
+    AppMethodBeat.i(24595);
+    synchronized (this.clk)
     {
-      if (!this.oaB)
+      if (!this.qOK)
       {
-        y.d("MicroMsg.MusicFingerPrintRecorder", "QAFPRelease never inited");
+        ab.d("MicroMsg.MusicFingerPrintRecorder", "QAFPRelease never inited");
+        AppMethodBeat.o(24595);
         return false;
       }
       int i = QAFPNative.QAFPRelease();
-      y.d("MicroMsg.MusicFingerPrintRecorder", "QAFPRelease ret:%d", new Object[] { Integer.valueOf(i) });
+      ab.d("MicroMsg.MusicFingerPrintRecorder", "QAFPRelease ret:%d", new Object[] { Integer.valueOf(i) });
       if (i >= 0) {
         bool = true;
       }
+      AppMethodBeat.o(24595);
       return bool;
     }
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if ((paramm.getType() != 367) && (paramm.getType() != 408)) {
+    AppMethodBeat.i(24602);
+    if ((paramm.getType() != 367) && (paramm.getType() != 408))
+    {
+      AppMethodBeat.o(24602);
       return;
     }
-    y.d("MicroMsg.MusicFingerPrintRecorder", "onSceneEnd errType = %s, errCode = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.oax = false;
-    if (((e)paramm).bAw())
+    ab.d("MicroMsg.MusicFingerPrintRecorder", "onSceneEnd errType = %s, errCode = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.qOG = false;
+    if (((e)paramm).clQ())
     {
-      y.d("MicroMsg.MusicFingerPrintRecorder", "NetSceneShakeMedia isRecogSuccess stop now ! clientid:%d", new Object[] { Integer.valueOf(this.oaz) });
-      uh();
-      this.oav = ((e)paramm);
-      this.oau = true;
-      iH(false);
+      ab.d("MicroMsg.MusicFingerPrintRecorder", "NetSceneShakeMedia isRecogSuccess stop now ! clientid:%d", new Object[] { Integer.valueOf(this.qOI) });
+      Et();
+      this.qOE = ((e)paramm);
+      this.qOD = true;
+      kK(false);
+      AppMethodBeat.o(24602);
       return;
     }
-    if ((this.oaq == 0) && (this.oay))
+    if ((this.qOz == 0) && (this.qOH))
     {
-      y.d("MicroMsg.MusicFingerPrintRecorder", "recog failed . clientid:%d", new Object[] { Integer.valueOf(this.oaz) });
-      this.oav = null;
-      this.oau = true;
+      ab.d("MicroMsg.MusicFingerPrintRecorder", "recog failed . clientid:%d", new Object[] { Integer.valueOf(this.qOI) });
+      this.qOE = null;
+      this.qOD = true;
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        iH(false);
+        kK(false);
       }
       for (;;)
       {
-        au.Dk().b(367, this);
-        au.Dk().b(408, this);
+        aw.Rc().b(367, this);
+        aw.Rc().b(408, this);
+        AppMethodBeat.o(24602);
         return;
-        iH(true);
+        kK(true);
       }
     }
-    y.d("MicroMsg.MusicFingerPrintRecorder", "NetScene try again clientId:%d", new Object[] { Integer.valueOf(this.oaz) });
-    Om();
+    ab.d("MicroMsg.MusicFingerPrintRecorder", "NetScene try again clientId:%d", new Object[] { Integer.valueOf(this.qOI) });
+    ahb();
+    AppMethodBeat.o(24602);
   }
   
   final void reset()
   {
-    y.d("MicroMsg.MusicFingerPrintRecorder", "reset recorder clientid:%d", new Object[] { Integer.valueOf(this.oaz) });
-    if (this.bCc != null)
+    AppMethodBeat.i(24598);
+    ab.d("MicroMsg.MusicFingerPrintRecorder", "reset recorder clientid:%d", new Object[] { Integer.valueOf(this.qOI) });
+    if (this.ciR != null)
     {
-      this.bCc.uh();
-      this.bCc = null;
+      this.ciR.Et();
+      this.ciR = null;
     }
-    iH(false);
-  }
-  
-  public final boolean uh()
-  {
-    y.d("MicroMsg.MusicFingerPrintRecorder", "stopRecord now clientid:%d", new Object[] { Integer.valueOf(this.oaz) });
-    au.Dk().b(367, this);
-    au.Dk().b(408, this);
-    synchronized (this.oap)
-    {
-      this.oaq = 0;
-      if (this.bCc != null)
-      {
-        this.bCc.uh();
-        this.bCc = null;
-      }
-      return true;
-    }
+    kK(false);
+    AppMethodBeat.o(24598);
   }
 }
 

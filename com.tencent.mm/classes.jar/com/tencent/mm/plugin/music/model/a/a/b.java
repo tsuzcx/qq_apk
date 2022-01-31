@@ -1,18 +1,26 @@
 package com.tencent.mm.plugin.music.model.a.a;
 
-import com.tencent.mm.av.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.e;
 import com.tencent.mm.plugin.music.e.a;
 import com.tencent.mm.plugin.music.e.k;
+import com.tencent.mm.sdk.platformtools.ag;
 
 public final class b
 {
-  public static String JC(String paramString)
+  public static String Vz(String paramString)
   {
-    e locale = k.bnl().myY.bmW();
-    if (!paramString.equalsIgnoreCase(locale.eux)) {
+    AppMethodBeat.i(104961);
+    e locale = k.bVH().oZe.bVs();
+    if ((locale == null) || (!paramString.equalsIgnoreCase(locale.fKj)))
+    {
+      paramString = "0_" + ag.cE(paramString);
+      AppMethodBeat.o(104961);
       return paramString;
     }
-    return com.tencent.mm.plugin.music.h.b.K(locale);
+    paramString = com.tencent.mm.plugin.music.h.b.K(locale);
+    AppMethodBeat.o(104961);
+    return paramString;
   }
 }
 

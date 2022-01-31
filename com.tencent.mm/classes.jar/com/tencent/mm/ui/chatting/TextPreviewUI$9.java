@@ -2,18 +2,15 @@ package com.tencent.mm.ui.chatting;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 import android.view.MenuItem;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.widget.textview.a;
-import com.tencent.mm.ui.widget.textview.a.b;
 
 final class TextPreviewUI$9
   implements n.d
@@ -22,41 +19,39 @@ final class TextPreviewUI$9
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(31053);
     switch (paramMenuItem.getItemId())
     {
-    default: 
-      return;
-    case 0: 
-      ((ClipboardManager)this.vnn.mController.uMN.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(TextPreviewUI.b(this.vnn), TextPreviewUI.b(this.vnn)));
-      if (TextPreviewUI.c(this.vnn) != null)
-      {
-        TextPreviewUI.c(this.vnn).cKJ();
-        TextPreviewUI.c(this.vnn).cKI();
-      }
-      Toast.makeText(this.vnn.mController.uMN, this.vnn.mController.uMN.getString(R.l.app_copy_ok), 0).show();
-      return;
-    case 1: 
-      if (TextPreviewUI.c(this.vnn) != null)
-      {
-        TextPreviewUI.c(this.vnn).cKI();
-        paramMenuItem = TextPreviewUI.c(this.vnn);
-        paramMenuItem.cbz = true;
-        if (paramMenuItem.wsk != null) {
-          paramMenuItem.wsk.wsB.dismiss();
-        }
-        if (paramMenuItem.wsl != null) {
-          paramMenuItem.wsl.wsB.dismiss();
-        }
-        TextPreviewUI.c(this.vnn).fP(0, TextPreviewUI.a(this.vnn).getText().length());
-        TextPreviewUI.c(this.vnn).cbz = false;
-        paramMenuItem = TextPreviewUI.c(this.vnn);
-        paramMenuItem.a(paramMenuItem.wsk);
-        paramMenuItem.a(paramMenuItem.wsl);
-      }
-      ai.l(new TextPreviewUI.9.1(this), 100L);
-      return;
     }
-    TextPreviewUI.c(this.vnn.mController.uMN, TextPreviewUI.b(this.vnn));
+    for (;;)
+    {
+      AppMethodBeat.o(31053);
+      return;
+      ((ClipboardManager)ah.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(TextPreviewUI.c(this.zCJ), TextPreviewUI.c(this.zCJ)));
+      if (TextPreviewUI.d(this.zCJ) != null)
+      {
+        TextPreviewUI.d(this.zCJ).dPQ();
+        TextPreviewUI.d(this.zCJ).ANj = true;
+        TextPreviewUI.d(this.zCJ).ANk = true;
+        TextPreviewUI.d(this.zCJ).dPP();
+      }
+      Toast.makeText(this.zCJ.getContext(), 2131296896, 0).show();
+      AppMethodBeat.o(31053);
+      return;
+      if (TextPreviewUI.d(this.zCJ) != null)
+      {
+        TextPreviewUI.d(this.zCJ).dPP();
+        TextPreviewUI.d(this.zCJ).dPT();
+        TextPreviewUI.d(this.zCJ).hZ(0, TextPreviewUI.a(this.zCJ).getText().length());
+        TextPreviewUI.d(this.zCJ).ANj = false;
+        TextPreviewUI.d(this.zCJ).ANk = false;
+        TextPreviewUI.d(this.zCJ).dPS();
+      }
+      al.p(new TextPreviewUI.9.1(this), 100L);
+      AppMethodBeat.o(31053);
+      return;
+      TextPreviewUI.e(this.zCJ.getContext(), TextPreviewUI.c(this.zCJ));
+    }
   }
 }
 

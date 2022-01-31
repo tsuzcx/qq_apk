@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
 
 final class SettingSnsBackgroundUI$2
   implements Runnable
@@ -10,7 +11,9 @@ final class SettingSnsBackgroundUI$2
   
   public final void run()
   {
-    a.eUS.tm();
+    AppMethodBeat.i(38554);
+    a.gmP.BQ();
+    AppMethodBeat.o(38554);
   }
 }
 

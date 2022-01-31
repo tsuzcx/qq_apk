@@ -1,14 +1,17 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.mm.h.a.ee;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.eh;
 import com.tencent.mm.sdk.b.c;
 
 final class ChattingSendDataToDeviceUI$10
-  extends c<ee>
+  extends c<eh>
 {
   ChattingSendDataToDeviceUI$10(ChattingSendDataToDeviceUI paramChattingSendDataToDeviceUI)
   {
-    this.udX = ee.class.getName().hashCode();
+    AppMethodBeat.i(30772);
+    this.__eventId = eh.class.getName().hashCode();
+    AppMethodBeat.o(30772);
   }
 }
 

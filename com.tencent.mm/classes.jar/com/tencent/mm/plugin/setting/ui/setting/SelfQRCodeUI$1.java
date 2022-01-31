@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SelfQRCodeUI$1
   implements Runnable
@@ -10,11 +11,13 @@ final class SelfQRCodeUI$1
   
   public final void run()
   {
-    int i = SelfQRCodeUI.a(this.nSB).getWidth();
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)SelfQRCodeUI.a(this.nSB).getLayoutParams();
+    AppMethodBeat.i(127014);
+    int i = SelfQRCodeUI.a(this.qGz).getWidth();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)SelfQRCodeUI.a(this.qGz).getLayoutParams();
     localLayoutParams.width = i;
     localLayoutParams.height = i;
-    SelfQRCodeUI.a(this.nSB).setLayoutParams(localLayoutParams);
+    SelfQRCodeUI.a(this.qGz).setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(127014);
   }
 }
 

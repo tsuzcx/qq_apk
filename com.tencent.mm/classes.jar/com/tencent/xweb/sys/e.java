@@ -2,7 +2,11 @@ package com.tencent.xweb.sys;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
 import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,140 +17,207 @@ import android.webkit.WebView.FindListener;
 import android.webkit.WebView.HitTestResult;
 import android.webkit.WebViewClient;
 import com.jg.JgClassChecked;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.WebView.a;
 import com.tencent.xweb.WebView.b;
 import com.tencent.xweb.a;
-import com.tencent.xweb.c.h;
+import com.tencent.xweb.c.i;
+import com.tencent.xweb.c.i.a;
 import com.tencent.xweb.g;
-import com.tencent.xweb.j;
-import com.tencent.xweb.n;
-import com.tencent.xweb.o;
+import com.tencent.xweb.k;
 import com.tencent.xweb.p;
-import com.tencent.xweb.q;
+import com.tencent.xweb.t;
+import com.tencent.xweb.v;
+import com.tencent.xweb.w;
+import com.tencent.xweb.x;
 import java.util.HashMap;
 import java.util.Map;
 import org.xwalk.core.Log;
+import org.xwalk.core.XWalkEnvironment;
 
 @JgClassChecked(author=30, fComment="checked", lastDate="20171020", reviewer=30, vComment={com.jg.EType.JSEXECUTECHECK})
 public final class e
-  implements h
+  implements i
 {
-  private WebViewClient bhV = new e.1(this);
-  private WebChromeClient bhW = new SysWebView.1(this);
-  WebView xjP;
-  e.a xjQ;
-  p xjR;
-  j xjS;
-  d xjT;
-  f xjU;
-  long xjV = 0L;
-  com.tencent.xweb.extension.video.b xjW;
-  e.b xjX;
-  final String xjY = "xwalkTempCallBack";
+  com.tencent.xweb.extension.video.b BHA;
+  e.b BHB;
+  final String BHC;
+  WebView BHt;
+  e.a BHu;
+  w BHv;
+  p BHw;
+  d BHx;
+  f BHy;
+  long BHz;
+  private WebViewClient byv;
+  private WebChromeClient byw;
   
   public e(WebView paramWebView)
   {
-    this.xjP = paramWebView;
-    this.xjQ = new e.a(this, paramWebView.getContext());
-    this.xjQ.setBackgroundColor(0);
+    AppMethodBeat.i(84701);
+    this.BHz = 0L;
+    this.byw = new SysWebView.1(this);
+    this.byv = new e.1(this);
+    this.BHC = "xwalkTempCallBack";
+    this.BHt = paramWebView;
+    this.BHu = new e.a(this, paramWebView.getContext());
+    this.BHu.setBackgroundColor(0);
     getSettings();
-    this.xjT = new d(this.xjQ);
-    this.xjQ.setWebChromeClient(this.bhW);
-    this.xjQ.setWebViewClient(this.bhV);
+    this.BHx = new d(this.BHu);
+    this.BHu.setWebChromeClient(this.byw);
+    this.BHu.setWebViewClient(this.byv);
     if (Build.VERSION.SDK_INT < 19)
     {
-      this.xjX = new e.b();
-      this.xjQ.addJavascriptInterface(this.xjX, "xwalkTempCallBack");
+      this.BHB = new e.b();
+      this.BHu.addJavascriptInterface(this.BHB, "xwalkTempCallBack");
     }
     if ((paramWebView.getContext() instanceof Activity))
     {
-      al((Activity)paramWebView.getContext());
+      aP((Activity)paramWebView.getContext());
+      AppMethodBeat.o(84701);
       return;
     }
-    al(null);
+    aP(null);
+    AppMethodBeat.o(84701);
   }
   
-  private void al(Activity paramActivity)
+  private void aP(Activity paramActivity)
   {
+    AppMethodBeat.i(84702);
     Log.i("SysWebView", "initFullscreenVideo:" + getFullscreenVideoKind() + ",activity:" + paramActivity);
-    if (getFullscreenVideoKind() == WebView.a.xhj) {}
-    do
+    if (getFullscreenVideoKind() == WebView.a.BEl)
     {
+      AppMethodBeat.o(84702);
       return;
-      this.xjW = com.tencent.xweb.extension.video.e.a(paramActivity, this.xjP, this.xjQ, com.tencent.xweb.extension.video.d.cSz());
-    } while (getFullscreenVideoKind() != WebView.a.xhl);
-    this.xjW.cv(this.xjQ);
+    }
+    this.BHA = com.tencent.xweb.extension.video.e.a(paramActivity, this.BHt, this.BHu, com.tencent.xweb.extension.video.d.dYG());
+    if (getFullscreenVideoKind() == WebView.a.BEn) {
+      this.BHA.da(this.BHu);
+    }
+    AppMethodBeat.o(84702);
   }
   
   @SuppressLint({"JavascriptInterface"})
   public final void addJavascriptInterface(Object paramObject, String paramString)
   {
-    this.xjQ.addJavascriptInterface(paramObject, paramString);
+    AppMethodBeat.i(84725);
+    this.BHu.addJavascriptInterface(paramObject, paramString);
+    AppMethodBeat.o(84725);
   }
   
   public final boolean canGoBack()
   {
-    return this.xjQ.canGoBack();
+    AppMethodBeat.i(84707);
+    boolean bool = this.BHu.canGoBack();
+    AppMethodBeat.o(84707);
+    return bool;
+  }
+  
+  public final boolean canGoForward()
+  {
+    AppMethodBeat.i(84743);
+    boolean bool = this.BHu.canGoForward();
+    AppMethodBeat.o(84743);
+    return bool;
+  }
+  
+  public final void captureBitmap(final i.a parama)
+  {
+    AppMethodBeat.i(139550);
+    new Thread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139548);
+        int i = e.this.BHu.getHeight();
+        Canvas localCanvas = new Canvas(Bitmap.createBitmap(e.this.BHu.getWidth(), i, Bitmap.Config.ARGB_8888));
+        e.this.BHu.draw(localCanvas);
+        Log.d("SysWebView", "bitmapCaptureFinished");
+        AppMethodBeat.o(139548);
+      }
+    }).start();
+    AppMethodBeat.o(139550);
+  }
+  
+  public final void clearHistory()
+  {
+    AppMethodBeat.i(84742);
+    this.BHu.clearHistory();
+    AppMethodBeat.o(84742);
   }
   
   public final void clearMatches()
   {
-    this.xjQ.clearMatches();
+    AppMethodBeat.i(84731);
+    this.BHu.clearMatches();
+    AppMethodBeat.o(84731);
   }
   
   public final void clearSslPreferences()
   {
-    this.xjQ.clearSslPreferences();
+    AppMethodBeat.i(84715);
+    this.BHu.clearSslPreferences();
+    AppMethodBeat.o(84715);
   }
   
   public final void clearView()
   {
-    this.xjQ.clearView();
+    AppMethodBeat.i(84711);
+    this.BHu.clearView();
+    AppMethodBeat.o(84711);
   }
   
   public final void destroy()
   {
-    this.xjQ.destroy();
+    AppMethodBeat.i(84712);
+    this.BHu.destroy();
+    AppMethodBeat.o(84712);
   }
   
   public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
   {
-    if (paramString == null) {
+    AppMethodBeat.i(84713);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(84713);
       return;
     }
     if (Build.VERSION.SDK_INT >= 19)
     {
-      this.xjQ.evaluateJavascript(paramString, paramValueCallback);
+      this.BHu.evaluateJavascript(paramString, paramValueCallback);
+      AppMethodBeat.o(84713);
       return;
     }
     if (paramValueCallback == null)
     {
-      this.xjQ.loadUrl(paramString);
+      this.BHu.loadUrl(paramString);
+      AppMethodBeat.o(84713);
       return;
     }
     String str = paramString;
     if (paramString.trim().startsWith("javascript:")) {
       str = paramString.replaceFirst("javascript:", "");
     }
-    if (this.xjX == null)
+    if (this.BHB == null)
     {
-      this.xjX = new e.b();
-      this.xjQ.addJavascriptInterface(this.xjX, "xwalkTempCallBack");
+      this.BHB = new e.b();
+      this.BHu.addJavascriptInterface(this.BHB, "xwalkTempCallBack");
     }
-    e.b localb = this.xjX;
+    e.b localb = this.BHB;
     if (paramValueCallback != null)
     {
       paramString = new StringBuilder();
-      int i = localb.xkb;
-      localb.xkb = (i + 1);
+      int i = localb.BHG;
+      localb.BHG = (i + 1);
       paramString = i;
-      localb.xka.put(paramString, paramValueCallback);
+      localb.BHF.put(paramString, paramValueCallback);
     }
     for (;;)
     {
       paramString = "javascript:xwalkTempCallBack.notifyJava(" + paramString + ", " + str + ")";
-      this.xjQ.loadUrl(paramString);
+      this.BHu.loadUrl(paramString);
+      AppMethodBeat.o(84713);
       return;
       paramString = "";
     }
@@ -154,117 +225,168 @@ public final class e
   
   public final void findAllAsync(String paramString)
   {
-    this.xjQ.findAllAsync(paramString);
+    AppMethodBeat.i(84733);
+    this.BHu.findAllAsync(paramString);
+    AppMethodBeat.o(84733);
   }
   
   public final void findNext(boolean paramBoolean)
   {
-    this.xjQ.findNext(paramBoolean);
+    AppMethodBeat.i(84732);
+    this.BHu.findNext(paramBoolean);
+    AppMethodBeat.o(84732);
   }
   
   public final String getAbstractInfo()
   {
-    return getVersionInfo();
+    AppMethodBeat.i(84735);
+    String str = getVersionInfo();
+    AppMethodBeat.o(84735);
+    return str;
   }
   
   public final int getContentHeight()
   {
-    return this.xjQ.getContentHeight();
+    AppMethodBeat.i(84717);
+    int i = this.BHu.getContentHeight();
+    AppMethodBeat.o(84717);
+    return i;
   }
   
-  public final j getCurWebChromeClient()
+  public final p getCurWebChromeClient()
   {
-    return this.xjS;
+    return this.BHw;
   }
   
-  public final p getCurWebviewClient()
+  public final w getCurWebviewClient()
   {
-    return this.xjR;
+    return this.BHv;
   }
   
   public final com.tencent.xweb.c.f getDefalutOpProvider()
   {
-    return this.xjT;
+    return this.BHx;
   }
   
   public final WebView.a getFullscreenVideoKind()
   {
-    return a.agN(WebView.getCurStrModule());
+    AppMethodBeat.i(84741);
+    WebView.a locala = a.axJ(WebView.getCurStrModule());
+    AppMethodBeat.o(84741);
+    return locala;
   }
   
   public final WebView.b getHitTestResult()
   {
-    WebView.HitTestResult localHitTestResult = this.xjQ.getHitTestResult();
+    AppMethodBeat.i(84729);
+    WebView.HitTestResult localHitTestResult = this.BHu.getHitTestResult();
     WebView.b localb = new WebView.b();
     localb.mType = localHitTestResult.getType();
     localb.mExtra = localHitTestResult.getExtra();
+    AppMethodBeat.o(84729);
     return localb;
+  }
+  
+  public final boolean getImageBitmapToFile(String paramString1, String paramString2, String paramString3, g paramg)
+  {
+    return false;
   }
   
   public final float getScale()
   {
-    return this.xjQ.getScale();
+    AppMethodBeat.i(84718);
+    float f = this.BHu.getScale();
+    AppMethodBeat.o(84718);
+    return f;
   }
   
-  public final n getSettings()
+  public final t getSettings()
   {
-    if (this.xjU != null) {
-      return this.xjU;
+    AppMethodBeat.i(84703);
+    if (this.BHy != null)
+    {
+      localf = this.BHy;
+      AppMethodBeat.o(84703);
+      return localf;
     }
-    if (this.xjQ == null) {
+    if (this.BHu == null)
+    {
+      AppMethodBeat.o(84703);
       return null;
     }
-    this.xjU = new f(this.xjQ);
-    return this.xjU;
+    this.BHy = new f(this.BHu);
+    f localf = this.BHy;
+    AppMethodBeat.o(84703);
+    return localf;
   }
   
   public final String getTitle()
   {
-    return this.xjQ.getTitle();
+    AppMethodBeat.i(84730);
+    String str = this.BHu.getTitle();
+    AppMethodBeat.o(84730);
+    return str;
   }
   
   public final ViewGroup getTopView()
   {
-    return this.xjQ;
+    return this.BHu;
   }
   
   public final String getUrl()
   {
-    return this.xjQ.getUrl();
+    AppMethodBeat.i(84726);
+    String str = this.BHu.getUrl();
+    AppMethodBeat.o(84726);
+    return str;
   }
   
   public final String getVersionInfo()
   {
-    return "webviewtype = WV_KIND_SYS, V8 type=" + g.cSi();
+    AppMethodBeat.i(84734);
+    String str = "webviewtype = WV_KIND_SYS, version = " + XWalkEnvironment.getChromiunVersion() + ", V8 type=" + k.dYk();
+    AppMethodBeat.o(84734);
+    return str;
   }
   
   public final View getView()
   {
-    return this.xjQ;
+    return this.BHu;
   }
   
   public final int getVisibleTitleHeight()
   {
-    Object localObject = com.tencent.xweb.util.d.c(this.xjQ, "getVisibleTitleHeight", null, new Object[0]);
-    if (localObject == null) {
+    AppMethodBeat.i(84719);
+    Object localObject = com.tencent.xweb.util.e.o(this.BHu, "getVisibleTitleHeight");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(84719);
       return 0;
     }
-    return ((Integer)localObject).intValue();
+    int i = ((Integer)localObject).intValue();
+    AppMethodBeat.o(84719);
+    return i;
   }
   
   public final int getWebScrollX()
   {
-    return getWebViewUI().getScrollX();
+    AppMethodBeat.i(84737);
+    int i = getWebViewUI().getScrollX();
+    AppMethodBeat.o(84737);
+    return i;
   }
   
   public final int getWebScrollY()
   {
-    return this.xjQ.getScrollY();
+    AppMethodBeat.i(84736);
+    int i = this.BHu.getScrollY();
+    AppMethodBeat.o(84736);
+    return i;
   }
   
   public final View getWebViewUI()
   {
-    return this.xjQ;
+    return this.BHu;
   }
   
   public final Object getX5WebViewExtension()
@@ -274,20 +396,55 @@ public final class e
   
   public final void goBack()
   {
-    this.xjQ.goBack();
+    AppMethodBeat.i(84708);
+    this.BHu.goBack();
+    AppMethodBeat.o(84708);
   }
   
   public final boolean hasEnteredFullscreen()
   {
-    if (this.xjW == null) {
+    AppMethodBeat.i(84709);
+    if (this.BHA == null)
+    {
+      AppMethodBeat.o(84709);
       return false;
     }
-    return this.xjW.hasEnteredFullscreen();
+    boolean bool = this.BHA.hasEnteredFullscreen();
+    AppMethodBeat.o(84709);
+    return bool;
+  }
+  
+  public final Bundle invokeMiscMethod(String paramString, Bundle paramBundle)
+  {
+    AppMethodBeat.i(139549);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      Log.d("SysWebView", " method string is null or empty");
+      AppMethodBeat.o(139549);
+      return null;
+    }
+    if (paramString.equals("supportTranslateWebSite"))
+    {
+      paramString = new Bundle();
+      paramString.putBoolean("result", false);
+      Log.i("SysWebView", "sys web is not supportTranslateWebSite");
+      AppMethodBeat.o(139549);
+      return paramString;
+    }
+    AppMethodBeat.o(139549);
+    return null;
   }
   
   public final boolean isOverScrollStart()
   {
-    return getWebViewUI().getScrollY() == 0;
+    AppMethodBeat.i(84738);
+    if (getWebViewUI().getScrollY() == 0)
+    {
+      AppMethodBeat.o(84738);
+      return true;
+    }
+    AppMethodBeat.o(84738);
+    return false;
   }
   
   public final boolean isSupportExtendPluginForAppbrand()
@@ -297,54 +454,75 @@ public final class e
   
   public final void leaveFullscreen()
   {
-    if (this.bhW != null) {
-      this.bhW.onHideCustomView();
+    AppMethodBeat.i(84710);
+    if (this.byw != null) {
+      this.byw.onHideCustomView();
     }
+    AppMethodBeat.o(84710);
   }
   
   public final void loadData(String paramString1, String paramString2, String paramString3)
   {
-    this.xjQ.loadData(paramString1, paramString2, paramString3);
+    AppMethodBeat.i(84716);
+    this.BHu.loadData(paramString1, paramString2, paramString3);
+    AppMethodBeat.o(84716);
   }
   
   public final void loadDataWithBaseURL(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.xjQ.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
+    AppMethodBeat.i(84721);
+    this.BHu.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
+    AppMethodBeat.o(84721);
   }
   
   public final void loadUrl(String paramString)
   {
-    this.xjQ.loadUrl(paramString);
+    AppMethodBeat.i(84706);
+    this.BHu.loadUrl(paramString);
+    AppMethodBeat.o(84706);
   }
   
   public final void loadUrl(String paramString, Map<String, String> paramMap)
   {
-    this.xjQ.loadUrl(paramString, paramMap);
+    AppMethodBeat.i(84724);
+    this.BHu.loadUrl(paramString, paramMap);
+    AppMethodBeat.o(84724);
   }
   
   public final void onPause()
   {
-    this.xjQ.onPause();
+    AppMethodBeat.i(84740);
+    this.BHu.onPause();
+    AppMethodBeat.o(84740);
   }
   
   public final void onResume()
   {
-    this.xjQ.onResume();
+    AppMethodBeat.i(84739);
+    this.BHu.onResume();
+    AppMethodBeat.o(84739);
   }
   
   public final boolean overlayHorizontalScrollbar()
   {
-    return this.xjQ.overlayHorizontalScrollbar();
+    AppMethodBeat.i(84720);
+    boolean bool = this.BHu.overlayHorizontalScrollbar();
+    AppMethodBeat.o(84720);
+    return bool;
   }
   
   public final void reload()
   {
-    this.xjQ.reload();
+    AppMethodBeat.i(84714);
+    this.BHu.reload();
+    AppMethodBeat.o(84714);
   }
   
   public final void removeJavascriptInterface(String paramString)
   {
-    this.xjQ.removeJavascriptInterface(paramString);
+    AppMethodBeat.i(84727);
+    this.BHu.removeJavascriptInterface(paramString);
+    AppMethodBeat.o(84727);
   }
   
   public final boolean savePage(String paramString1, String paramString2, int paramInt)
@@ -354,38 +532,60 @@ public final class e
   
   public final void setDownloadListener(DownloadListener paramDownloadListener)
   {
-    this.xjQ.setDownloadListener(paramDownloadListener);
+    AppMethodBeat.i(84704);
+    this.BHu.setDownloadListener(paramDownloadListener);
+    AppMethodBeat.o(84704);
   }
   
   public final void setFindListener(WebView.FindListener paramFindListener)
   {
-    this.xjQ.setFindListener(paramFindListener);
+    AppMethodBeat.i(84705);
+    this.BHu.setFindListener(paramFindListener);
+    AppMethodBeat.o(84705);
   }
   
-  public final void setJSExceptionListener(q paramq) {}
-  
-  public final void setWebChromeClient(j paramj)
+  public final void setHorizontalScrollBarEnabled(boolean paramBoolean)
   {
-    this.xjS = paramj;
+    AppMethodBeat.i(84745);
+    this.BHu.setHorizontalScrollBarEnabled(paramBoolean);
+    AppMethodBeat.o(84745);
   }
   
-  public final void setWebViewCallbackClient(o paramo)
+  public final void setJSExceptionListener(x paramx) {}
+  
+  public final void setVerticalScrollBarEnabled(boolean paramBoolean)
   {
-    if (this.xjQ != null) {
-      this.xjQ.gGh = paramo;
+    AppMethodBeat.i(84744);
+    this.BHu.setVerticalScrollBarEnabled(paramBoolean);
+    AppMethodBeat.o(84744);
+  }
+  
+  public final void setWebChromeClient(p paramp)
+  {
+    this.BHw = paramp;
+  }
+  
+  public final void setWebViewCallbackClient(v paramv)
+  {
+    if (this.BHu != null) {
+      this.BHu.igO = paramv;
     }
   }
   
-  public final void setWebViewClient(p paramp)
+  public final void setWebViewClient(w paramw)
   {
-    this.xjR = paramp;
+    this.BHv = paramw;
   }
   
   public final void setWebViewClientExtension(com.tencent.xweb.x5.a.a.a.a.b paramb) {}
   
+  public final void smoothScroll(int paramInt1, int paramInt2, long paramLong) {}
+  
   public final void stopLoading()
   {
-    this.xjQ.stopLoading();
+    AppMethodBeat.i(84728);
+    this.BHu.stopLoading();
+    AppMethodBeat.o(84728);
   }
   
   public final void super_computeScroll() {}
@@ -414,19 +614,30 @@ public final class e
     return false;
   }
   
+  public final boolean supportFeature(int paramInt)
+  {
+    return false;
+  }
+  
   public final boolean zoomIn()
   {
-    return this.xjQ.zoomIn();
+    AppMethodBeat.i(84723);
+    boolean bool = this.BHu.zoomIn();
+    AppMethodBeat.o(84723);
+    return bool;
   }
   
   public final boolean zoomOut()
   {
-    return this.xjQ.zoomOut();
+    AppMethodBeat.i(84722);
+    boolean bool = this.BHu.zoomOut();
+    AppMethodBeat.o(84722);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.xweb.sys.e
  * JD-Core Version:    0.7.0.1
  */

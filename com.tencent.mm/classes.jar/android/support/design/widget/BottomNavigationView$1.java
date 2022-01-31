@@ -11,10 +11,10 @@ final class BottomNavigationView$1
   
   public final boolean a(h paramh, MenuItem paramMenuItem)
   {
-    if ((BottomNavigationView.a(this.fh) != null) && (paramMenuItem.getItemId() == this.fh.getSelectedItemId())) {
-      BottomNavigationView.a(this.fh);
+    if ((BottomNavigationView.a(this.gg) != null) && (paramMenuItem.getItemId() == this.gg.getSelectedItemId())) {
+      BottomNavigationView.a(this.gg);
     }
-    while ((BottomNavigationView.b(this.fh) != null) && (!BottomNavigationView.b(this.fh).at())) {
+    while ((BottomNavigationView.b(this.gg) != null) && (!BottomNavigationView.b(this.gg).aX())) {
       return true;
     }
     return false;

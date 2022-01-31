@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.multitalk.ui.widget;
 
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f$b
   implements Runnable
 {
-  f.a mwD;
+  f.a oWu;
   
   public f$b(f paramf, f.a parama)
   {
-    this.mwD = parama;
+    this.oWu = parama;
   }
   
   public final void run()
   {
-    this.mwD.mwB.setVisibility(8);
+    AppMethodBeat.i(54202);
+    this.oWu.oWt.setVisibility(8);
+    AppMethodBeat.o(54202);
   }
 }
 

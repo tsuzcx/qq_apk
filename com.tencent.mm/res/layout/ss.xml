@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/b74" android:background="@color/a23" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/y5"
+<FrameLayout android:id="@id/sp" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/b75" android:padding="@dimen/li" android:layout_width="@dimen/y7" android:layout_height="@dimen/y7" android:scaleType="fitXY" />
-    <ImageView android:id="@id/b95" android:background="@drawable/emoji_grid_item_fg" android:layout_width="@dimen/y7" android:layout_height="@dimen/y7" />
-    <TextView android:textSize="@dimen/mw" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/b9a" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="wrap_content" android:layout_height="@dimen/y3" android:maxWidth="@dimen/y7" android:layout_below="@id/b75" android:layout_centerHorizontal="true" style="@style/ks" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/sq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ay5" />
+</FrameLayout>

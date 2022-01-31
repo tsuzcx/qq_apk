@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 final class FavoriteSightDetailUI$6
@@ -9,7 +10,9 @@ final class FavoriteSightDetailUI$6
   
   public final void run()
   {
-    FavoriteSightDetailUI.c(this.kgg).setProgress(this.fyT);
+    AppMethodBeat.i(74421);
+    FavoriteSightDetailUI.c(this.mAS).setProgress(this.gQj);
+    AppMethodBeat.o(74421);
   }
 }
 

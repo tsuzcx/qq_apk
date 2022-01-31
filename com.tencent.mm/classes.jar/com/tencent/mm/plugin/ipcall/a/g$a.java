@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.ipcall.a;
 
 public abstract interface g$a
 {
-  public abstract void A(String paramString1, String paramString2, int paramInt);
+  public abstract void F(String paramString1, String paramString2, int paramInt);
   
-  public abstract void B(String paramString1, String paramString2, int paramInt);
+  public abstract void G(String paramString1, String paramString2, int paramInt);
   
-  public abstract void bI(String paramString, int paramInt);
+  public abstract void H(String paramString1, String paramString2, int paramInt);
   
-  public abstract void bJ(String paramString, int paramInt);
+  public abstract void I(String paramString1, String paramString2, int paramInt);
   
-  public abstract void bK(String paramString, int paramInt);
+  public abstract void bIG();
   
-  public abstract void bbA();
+  public abstract void bIH();
   
-  public abstract void bbB();
+  public abstract void bII();
   
-  public abstract void bbC();
+  public abstract void bIJ();
   
-  public abstract void bbD();
+  public abstract void bIK();
   
-  public abstract void bby();
+  public abstract void bIL();
   
-  public abstract void bbz();
+  public abstract void cv(String paramString, int paramInt);
   
-  public abstract void y(String paramString1, String paramString2, int paramInt);
+  public abstract void cw(String paramString, int paramInt);
   
-  public abstract void z(String paramString1, String paramString2, int paramInt);
+  public abstract void cx(String paramString, int paramInt);
 }
 
 

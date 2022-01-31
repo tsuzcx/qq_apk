@@ -1,5 +1,7 @@
 package com.tencent.ttpic.facedetect;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class FaceStatus
 {
   public float[] denseFaceModel;
@@ -10,8 +12,15 @@ public class FaceStatus
   public float[] transform;
   public float tx;
   public float ty;
-  public float[] xys = new float['´'];
+  public float[] xys;
   public float yaw;
+  
+  public FaceStatus()
+  {
+    AppMethodBeat.i(49936);
+    this.xys = new float['¼'];
+    AppMethodBeat.o(49936);
+  }
 }
 
 

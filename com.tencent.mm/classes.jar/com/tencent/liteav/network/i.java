@@ -5,99 +5,98 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import com.tencent.liteav.basic.e.b;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class i
 {
-  protected static i a = new i();
+  protected static i a;
   private Context b = null;
   private long c = 3L;
   
+  static
+  {
+    AppMethodBeat.i(67630);
+    a = new i();
+    AppMethodBeat.o(67630);
+  }
+  
   private i.a a(String paramString, boolean paramBoolean)
   {
-    if (b(paramString)) {
+    AppMethodBeat.i(67624);
+    if (b(paramString))
+    {
+      AppMethodBeat.o(67624);
       return null;
     }
     try
     {
-      localObject5 = this.b.getSharedPreferences("com.tencent.liteav.network", 0).getString("34238512-C08C-4931-A000-40E1D8B5BA5B", "");
-      if (b((String)localObject5)) {
+      Object localObject = this.b.getSharedPreferences("com.tencent.liteav.network", 0).getString("34238512-C08C-4931-A000-40E1D8B5BA5B", "");
+      boolean bool = b((String)localObject);
+      if (bool)
+      {
+        AppMethodBeat.o(67624);
         return null;
       }
-      localObject5 = new JSONObject((String)localObject5).optJSONObject(paramString);
-      if (localObject5 != null) {
-        break label323;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      Object localObject5;
-      long l;
-      return null;
-    }
-    localObject5 = ((JSONObject)localObject5).optJSONArray(paramString);
-    if (localObject5 == null) {
-      return null;
-    }
-    l = ((JSONArray)localObject5).length();
-    if (l == 0L) {
-      return null;
-    }
-    for (;;)
-    {
-      int i;
-      float f4;
-      float f3;
-      float f2;
-      float f1;
-      if (i < l)
+      localObject = new JSONObject((String)localObject).optJSONObject(paramString);
+      if (localObject == null)
       {
-        JSONObject localJSONObject = ((JSONArray)localObject5).getJSONObject(i);
-        Object localObject4;
-        localObject4 += (float)localJSONObject.optLong("networkRTT");
-        Object localObject3;
-        f3 = (float)(localObject3 + localJSONObject.optDouble("avgBlockCnt"));
-        Object localObject2;
-        f2 = (float)(localObject2 + localJSONObject.optDouble("avgVideoQue"));
-        Object localObject1;
-        f1 = (float)(localObject1 + localJSONObject.optDouble("avgAudioQue"));
+        AppMethodBeat.o(67624);
+        return null;
+      }
+      if (paramBoolean) {}
+      for (paramString = "DomainArrayData";; paramString = "OriginArrayData")
+      {
+        localObject = ((JSONObject)localObject).optJSONArray(paramString);
+        if (localObject != null) {
+          break;
+        }
+        AppMethodBeat.o(67624);
+        return null;
+      }
+      int i = ((JSONArray)localObject).length();
+      long l = i;
+      if (l == 0L)
+      {
+        AppMethodBeat.o(67624);
+        return null;
+      }
+      paramString = "";
+      float f4 = 0.0F;
+      float f3 = 0.0F;
+      float f2 = 0.0F;
+      float f1 = 0.0F;
+      i = 0;
+      while (i < l)
+      {
+        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
+        f4 += (float)localJSONObject.optLong("networkRTT");
+        f3 = (float)(f3 + localJSONObject.optDouble("avgBlockCnt"));
+        f2 = (float)(f2 + localJSONObject.optDouble("avgVideoQue"));
+        f1 = (float)(f1 + localJSONObject.optDouble("avgAudioQue"));
         paramString = String.format("%s \n isDomainAddressBetter：itemData domain = %b NetworkRTT = %d avgBlockCount = %f avgVideoQueue = %f avgAudioQueue = %f", new Object[] { paramString, Boolean.valueOf(paramBoolean), Long.valueOf(localJSONObject.optLong("networkRTT")), Double.valueOf(localJSONObject.optDouble("avgBlockCnt")), Double.valueOf(localJSONObject.optDouble("avgVideoQue")), Double.valueOf(localJSONObject.optDouble("avgAudioQue")) });
         i += 1;
       }
-      else
-      {
-        f4 /= (float)l;
-        f3 /= (float)l;
-        f2 /= (float)l;
-        f1 /= (float)l;
-        paramString = new i.a(this);
-        paramString.a = f4;
-        paramString.b = f3;
-        paramString.c = f2;
-        paramString.d = f1;
-        paramString.e = l;
-        return paramString;
-        label323:
-        if (paramBoolean)
-        {
-          paramString = "DomainArrayData";
-          break;
-        }
-        paramString = "OriginArrayData";
-        break;
-        paramString = "";
-        f4 = 0.0F;
-        f3 = 0.0F;
-        f2 = 0.0F;
-        f1 = 0.0F;
-        i = 0;
-      }
+      f4 /= (float)l;
+      f3 /= (float)l;
+      f2 /= (float)l;
+      f1 /= (float)l;
+      paramString = new i.a(this);
+      paramString.a = f4;
+      paramString.b = f3;
+      paramString.c = f2;
+      paramString.d = f1;
+      paramString.e = l;
+      AppMethodBeat.o(67624);
+      return paramString;
     }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(67624);
+    }
+    return null;
   }
   
   public static i a()
@@ -107,71 +106,89 @@ public class i
   
   private boolean b(String paramString)
   {
-    return (paramString == null) || (paramString.length() == 0);
+    AppMethodBeat.i(67625);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(67625);
+      return true;
+    }
+    AppMethodBeat.o(67625);
+    return false;
   }
   
   private JSONObject c(String paramString)
   {
+    AppMethodBeat.i(67626);
     if (!b(paramString)) {
       try
       {
         paramString = new JSONObject(paramString);
+        AppMethodBeat.o(67626);
         return paramString;
       }
       catch (Exception paramString) {}
     }
-    return new JSONObject();
+    paramString = new JSONObject();
+    AppMethodBeat.o(67626);
+    return paramString;
   }
   
   private void d()
   {
-    this.c = b.a().a("Network", "QualityDataCacheCount");
+    AppMethodBeat.i(67627);
+    this.c = com.tencent.liteav.basic.e.b.a().a("Network", "QualityDataCacheCount");
     if ((this.c == -1L) || (this.c < 3L)) {
       this.c = 3L;
     }
+    AppMethodBeat.o(67627);
   }
   
   public long a(String paramString)
   {
-    long l = 0L;
-    if (this.b != null) {
-      l = this.b.getSharedPreferences("com.tencent.liteav.network", 0).getLong(paramString, 0L);
+    AppMethodBeat.i(67628);
+    if (this.b != null)
+    {
+      long l = this.b.getSharedPreferences("com.tencent.liteav.network", 0).getLong(paramString, 0L);
+      AppMethodBeat.o(67628);
+      return l;
     }
-    return l;
+    AppMethodBeat.o(67628);
+    return 0L;
   }
   
   public void a(Context paramContext)
   {
+    AppMethodBeat.i(67620);
     if (this.b == null) {
       this.b = paramContext.getApplicationContext();
     }
+    AppMethodBeat.o(67620);
   }
   
   public void a(String paramString, long paramLong)
   {
+    AppMethodBeat.i(67629);
     if (this.b != null) {
       this.b.getSharedPreferences("com.tencent.liteav.network", 0).edit().putLong(paramString, paramLong).commit();
     }
+    AppMethodBeat.o(67629);
   }
   
   public void a(String paramString, long paramLong1, long paramLong2, long paramLong3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    int i;
-    if (b.a().a("Network", "QualityDataCacheCount") > 0L)
+    AppMethodBeat.i(67622);
+    if (com.tencent.liteav.basic.e.b.a().a("Network", "QualityDataCacheCount") > 0L) {}
+    for (int i = 1; i == 0; i = 0)
     {
-      i = 1;
-      if (i != 0) {
-        break label30;
-      }
-    }
-    label30:
-    do
-    {
+      AppMethodBeat.o(67622);
       return;
-      i = 0;
-      break;
-      TXCLog.e("UploadQualityData", String.format("updateQualityData: accessID = %s serverType = %d totalTime = %d networkRTT = %d avgBlockCnt = %f avgVideoQue = %f avgAudioQue = %f", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) }));
-    } while (b(paramString));
+    }
+    TXCLog.e("UploadQualityData", String.format("updateQualityData: accessID = %s serverType = %d totalTime = %d networkRTT = %d avgBlockCnt = %f avgVideoQue = %f avgAudioQue = %f", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) }));
+    if (b(paramString))
+    {
+      AppMethodBeat.o(67622);
+      return;
+    }
     String str;
     try
     {
@@ -179,7 +196,7 @@ public class i
       localJSONObject2 = c(localSharedPreferences.getString("34238512-C08C-4931-A000-40E1D8B5BA5B", ""));
       localJSONObject1 = localJSONObject2.optJSONObject(paramString);
       if (localJSONObject1 != null) {
-        break label376;
+        break label402;
       }
       localJSONObject1 = new JSONObject();
     }
@@ -190,6 +207,7 @@ public class i
       JSONObject localJSONObject1;
       int j;
       JSONArray localJSONArray;
+      AppMethodBeat.o(67622);
       return;
     }
     Object localObject2 = localJSONObject1.optJSONArray(str);
@@ -225,8 +243,9 @@ public class i
       localJSONObject2.put(paramString, localJSONObject1);
       paramString = localJSONObject2.toString();
       localSharedPreferences.edit().putString("34238512-C08C-4931-A000-40E1D8B5BA5B", paramString).commit();
+      AppMethodBeat.o(67622);
       return;
-      label376:
+      label402:
       if (paramLong1 == 3L)
       {
         str = "DomainArrayData";
@@ -240,12 +259,15 @@ public class i
   
   public String b()
   {
+    AppMethodBeat.i(67621);
     try
     {
       if (this.b != null)
       {
-        int i = a.c(this.b);
-        if (i == 255) {
+        int i = com.tencent.liteav.basic.util.b.d(this.b);
+        if (i == 0)
+        {
+          AppMethodBeat.o(67621);
           return "";
         }
         if (i == 1)
@@ -257,34 +279,48 @@ public class i
             if (localObject != null)
             {
               localObject = "wifi:" + ((WifiInfo)localObject).getSSID();
+              AppMethodBeat.o(67621);
               return localObject;
             }
           }
         }
         else
         {
-          if (i == 2) {
+          if (i == 2)
+          {
+            AppMethodBeat.o(67621);
             return "4g:";
           }
-          if (i == 3) {
+          if (i == 3)
+          {
+            AppMethodBeat.o(67621);
             return "3g:";
           }
-          if (i == 4) {
+          if (i == 4)
+          {
+            AppMethodBeat.o(67621);
             return "2g:";
           }
-          if (i == 5) {
+          if (i == 5)
+          {
+            AppMethodBeat.o(67621);
             return "ethernet:";
           }
+          AppMethodBeat.o(67621);
           return "xg:";
         }
       }
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(67621);
+    }
     return "";
   }
   
   public boolean c()
   {
+    AppMethodBeat.i(67623);
     d();
     Object localObject1 = b();
     Object localObject2 = "isDomainAddressBetter: accessID = " + (String)localObject1 + " minQualityDataCount = " + this.c;
@@ -299,15 +335,23 @@ public class i
       localObject2 = String.format("%s \n isDomainAddressBetter：originQualityData count = %d avgNetworkRTT = %f avgBlockCount = %f avgVideoQueue = %f avgAudioQueue = %f", new Object[] { localObject1, Long.valueOf(locala2.e), Float.valueOf(locala2.a), Float.valueOf(locala2.b), Float.valueOf(locala2.c), Float.valueOf(locala2.d) });
     }
     TXCLog.e("UploadQualityData", (String)localObject2);
-    if ((locala1 == null) || (locala1.e < this.c) || (locala2 == null) || (locala2.e < this.c)) {
+    if ((locala1 == null) || (locala1.e < this.c) || (locala2 == null) || (locala2.e < this.c))
+    {
+      AppMethodBeat.o(67623);
       return false;
     }
-    return (locala1.b < locala2.b) && (locala1.c < locala2.c) && (locala1.d < locala2.d);
+    if ((locala1.b < locala2.b) && (locala1.c < locala2.c) && (locala1.d < locala2.d))
+    {
+      AppMethodBeat.o(67623);
+      return true;
+    }
+    AppMethodBeat.o(67623);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.liteav.network.i
  * JD-Core Version:    0.7.0.1
  */

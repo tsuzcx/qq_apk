@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.webwx.a;
 
 import com.tencent.mm.plugin.messenger.foundation.a.s;
-import com.tencent.mm.protocal.c.cd;
+import com.tencent.mm.protocal.protobuf.cm;
 
 final class g$4
-  implements s<cd>
+  implements s<cm>
 {
   g$4(g paramg) {}
 }

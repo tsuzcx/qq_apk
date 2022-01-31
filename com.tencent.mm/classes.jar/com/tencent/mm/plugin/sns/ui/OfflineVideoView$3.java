@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.k;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.vfs.e;
 
@@ -14,18 +15,21 @@ final class OfflineVideoView$3
   
   public final void run()
   {
+    AppMethodBeat.i(38362);
     Intent localIntent = new Intent();
     localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setDataAndType(e.aeP(this.kjY), "video/*");
+    k.a(this.rJb.getContext(), localIntent, e.avH(this.mED), "video/*");
     try
     {
-      this.oRp.getContext().startActivity(localIntent);
+      this.rJb.getContext().startActivity(localIntent);
+      AppMethodBeat.o(38362);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.OfflineVideoView", "startActivity fail, activity not found");
-      h.h(this.oRp.getContext(), i.j.favorite_no_match_msg, i.j.favorite_no_match_title);
+      ab.e("MicroMsg.OfflineVideoView", "startActivity fail, activity not found");
+      h.h(this.rJb.getContext(), 2131299759, 2131299760);
+      AppMethodBeat.o(38362);
     }
   }
 }

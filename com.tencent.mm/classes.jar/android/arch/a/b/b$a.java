@@ -10,12 +10,12 @@ final class b$a<K, V>
   
   final b.c<K, V> a(b.c<K, V> paramc)
   {
-    return paramc.bN;
+    return paramc.bR;
   }
   
   final b.c<K, V> b(b.c<K, V> paramc)
   {
-    return paramc.bO;
+    return paramc.bS;
   }
 }
 

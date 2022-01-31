@@ -10,17 +10,14 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.plugin.setting.a.d;
-import com.tencent.mm.plugin.setting.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.plugin.sns.b.k;
 import com.tencent.mm.plugin.sns.b.n;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.d.j;
 import com.tencent.mm.storage.ad;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MaskLayout;
-import com.tencent.mm.ui.s;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -31,89 +28,103 @@ final class UnfamiliarContactDetailUI$a
 {
   UnfamiliarContactDetailUI$a(UnfamiliarContactDetailUI paramUnfamiliarContactDetailUI) {}
   
+  public final UnfamiliarContactDetailUI.b Dg(int paramInt)
+  {
+    AppMethodBeat.i(127657);
+    if (UnfamiliarContactDetailUI.f(this.qLi).size() > paramInt)
+    {
+      localb = (UnfamiliarContactDetailUI.b)UnfamiliarContactDetailUI.f(this.qLi).get(paramInt);
+      AppMethodBeat.o(127657);
+      return localb;
+    }
+    UnfamiliarContactDetailUI.b localb = new UnfamiliarContactDetailUI.b(this.qLi, new ad());
+    AppMethodBeat.o(127657);
+    return localb;
+  }
+  
   public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(a.g.unfamiliar_contact_item_layout, paramViewGroup, false);
-    return new UnfamiliarContactDetailUI.c(this.nWX, paramViewGroup);
+    AppMethodBeat.i(127654);
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130971049, paramViewGroup, false);
+    paramViewGroup = new UnfamiliarContactDetailUI.c(this.qLi, paramViewGroup);
+    AppMethodBeat.o(127654);
+    return paramViewGroup;
   }
   
   public final void a(RecyclerView.v paramv, int paramInt)
   {
-    int i;
+    AppMethodBeat.i(127655);
     if ((paramv instanceof UnfamiliarContactDetailUI.c))
     {
       paramv = (UnfamiliarContactDetailUI.c)paramv;
-      paramv.nXi.setTag(Integer.valueOf(paramInt));
-      paramv.aie.setTag(Integer.valueOf(paramInt));
-      Object localObject = (UnfamiliarContactDetailUI.b)UnfamiliarContactDetailUI.f(this.nWX).get(paramInt);
-      a.b.a((ImageView)paramv.dsk.getContentView(), ((UnfamiliarContactDetailUI.b)localObject).dnp.field_username);
-      paramv.nXe.setText(j.a(this.nWX.mController.uMN, ((UnfamiliarContactDetailUI.b)localObject).dtK, paramv.nXe.getTextSize()));
-      ImageView localImageView = paramv.nXh;
-      if (!((UnfamiliarContactDetailUI.b)localObject).dnp.Bk()) {
-        break label334;
-      }
-      i = 0;
-      localImageView.setVisibility(i);
-      localImageView = paramv.nXg;
-      localObject = ((UnfamiliarContactDetailUI.b)localObject).dnp.field_username;
-      if ((n.omF != null) && (UnfamiliarContactDetailUI.n(this.nWX).size() == 0))
+      paramv.qLs.setTag(Integer.valueOf(paramInt));
+      paramv.aku.setTag(Integer.valueOf(paramInt));
+      Object localObject = (UnfamiliarContactDetailUI.b)UnfamiliarContactDetailUI.f(this.qLi).get(paramInt);
+      a.b.c((ImageView)paramv.ejS.getContentView(), ((UnfamiliarContactDetailUI.b)localObject).contact.field_username);
+      paramv.kgG.setText(j.b(this.qLi.getContext(), ((UnfamiliarContactDetailUI.b)localObject).elx, paramv.kgG.getTextSize()));
+      ImageView localImageView = paramv.qLr;
+      int i;
+      if (((UnfamiliarContactDetailUI.b)localObject).contact.NZ())
       {
-        List localList = n.omF.fL(5L);
-        UnfamiliarContactDetailUI.n(this.nWX).addAll(localList);
+        i = 0;
+        localImageView.setVisibility(i);
+        localImageView = paramv.qLq;
+        localObject = ((UnfamiliarContactDetailUI.b)localObject).contact.field_username;
+        if ((n.raT != null) && (UnfamiliarContactDetailUI.n(this.qLi).size() == 0))
+        {
+          List localList = n.raT.lo(5L);
+          UnfamiliarContactDetailUI.n(this.qLi).addAll(localList);
+        }
+        if (!UnfamiliarContactDetailUI.n(this.qLi).contains(localObject)) {
+          break label347;
+        }
+        i = 0;
+        label208:
+        localImageView.setVisibility(i);
+        if (!UnfamiliarContactDetailUI.m(this.qLi).containsKey(Integer.valueOf(paramInt))) {
+          break label353;
+        }
+        paramv.qLp.setVisibility(0);
+        paramv.qLp.setText((CharSequence)UnfamiliarContactDetailUI.m(this.qLi).get(Integer.valueOf(paramInt)));
+        label263:
+        if (!UnfamiliarContactDetailUI.a(this.qLi)) {
+          break label376;
+        }
+        paramv.qLt.setPadding(paramv.qLt.getPaddingLeft(), paramv.qLt.getPaddingTop(), 0, paramv.qLt.getPaddingBottom());
+        if (!UnfamiliarContactDetailUI.b(this.qLi).contains(Integer.valueOf(paramInt))) {
+          break label365;
+        }
+        paramv.mCC.setChecked(true);
       }
-      if (!UnfamiliarContactDetailUI.n(this.nWX).contains(localObject)) {
-        break label340;
+      for (;;)
+      {
+        paramv.qLs.setVisibility(0);
+        AppMethodBeat.o(127655);
+        return;
+        i = 8;
+        break;
+        label347:
+        i = 8;
+        break label208;
+        label353:
+        paramv.qLp.setVisibility(8);
+        break label263;
+        label365:
+        paramv.mCC.setChecked(false);
       }
-      i = 0;
-      label206:
-      localImageView.setVisibility(i);
-      if (!UnfamiliarContactDetailUI.m(this.nWX).containsKey(Integer.valueOf(paramInt))) {
-        break label346;
-      }
-      paramv.nXf.setVisibility(0);
-      paramv.nXf.setText((CharSequence)UnfamiliarContactDetailUI.m(this.nWX).get(Integer.valueOf(paramInt)));
-      label261:
-      if (!UnfamiliarContactDetailUI.a(this.nWX)) {
-        break label369;
-      }
-      paramv.nXj.setPadding(paramv.nXj.getPaddingLeft(), paramv.nXj.getPaddingTop(), 0, paramv.nXj.getPaddingBottom());
-      if (!UnfamiliarContactDetailUI.b(this.nWX).contains(Integer.valueOf(paramInt))) {
-        break label358;
-      }
-      paramv.khV.setChecked(true);
+      label376:
+      paramv.qLt.setPadding(paramv.qLt.getPaddingLeft(), paramv.qLt.getPaddingTop(), (int)this.qLi.getResources().getDimension(2131427781), paramv.qLt.getPaddingBottom());
+      paramv.qLs.setVisibility(8);
     }
-    for (;;)
-    {
-      paramv.nXi.setVisibility(0);
-      return;
-      label334:
-      i = 8;
-      break;
-      label340:
-      i = 8;
-      break label206;
-      label346:
-      paramv.nXf.setVisibility(8);
-      break label261;
-      label358:
-      paramv.khV.setChecked(false);
-    }
-    label369:
-    paramv.nXj.setPadding(paramv.nXj.getPaddingLeft(), paramv.nXj.getPaddingTop(), (int)this.nWX.getResources().getDimension(a.d.ListPadding), paramv.nXj.getPaddingBottom());
-    paramv.nXi.setVisibility(8);
+    AppMethodBeat.o(127655);
   }
   
   public final int getItemCount()
   {
-    return UnfamiliarContactDetailUI.f(this.nWX).size();
-  }
-  
-  public final UnfamiliarContactDetailUI.b xi(int paramInt)
-  {
-    if (UnfamiliarContactDetailUI.f(this.nWX).size() > paramInt) {
-      return (UnfamiliarContactDetailUI.b)UnfamiliarContactDetailUI.f(this.nWX).get(paramInt);
-    }
-    return new UnfamiliarContactDetailUI.b(this.nWX, new ad());
+    AppMethodBeat.i(127656);
+    int i = UnfamiliarContactDetailUI.f(this.qLi).size();
+    AppMethodBeat.o(127656);
+    return i;
   }
 }
 

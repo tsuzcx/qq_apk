@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/a8" />
-    <item>
-        <shape android:shape="rectangle"
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <corners android:topLeftRadius="0.0dip" android:topRightRadius="0.0dip" android:bottomLeftRadius="3.0dip" android:bottomRightRadius="3.0dip" />
-            <solid android:color="@color/a23" />
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="32.0dip" />
+            <solid android:color="@color/rv" />
         </shape>
     </item>
-</layer-list>
+    <item android:drawable="@color/a3x" />
+</selector>

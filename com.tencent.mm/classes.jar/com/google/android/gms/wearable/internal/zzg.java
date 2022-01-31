@@ -1,9 +1,9 @@
 package com.google.android.gms.wearable.internal;
 
-import com.google.android.gms.wearable.zza;
+import android.os.Parcelable.Creator;
 
 public final class zzg
-  implements zza
+  implements Parcelable.Creator<zzf>
 {}
 
 

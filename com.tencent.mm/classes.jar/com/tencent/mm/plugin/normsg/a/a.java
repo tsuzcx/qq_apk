@@ -8,25 +8,29 @@ import com.tencent.mm.sdk.b.b;
 
 public abstract interface a
 {
-  public abstract void JV(String paramString);
+  public abstract byte[] AO(int paramInt);
   
-  public abstract void JW(String paramString);
+  public abstract String AP(int paramInt);
   
-  public abstract void JX(String paramString);
+  public abstract void AQ(int paramInt);
   
-  public abstract boolean JY(String paramString);
+  public abstract void VV(String paramString);
   
-  public abstract byte[] JZ(String paramString);
+  public abstract void VW(String paramString);
   
-  public abstract void Ka(String paramString);
+  public abstract void VX(String paramString);
   
-  public abstract boolean Kb(String paramString);
+  public abstract boolean VY(String paramString);
   
-  public abstract byte[] Kc(String paramString);
+  public abstract byte[] VZ(String paramString);
   
-  public abstract String Kd(String paramString);
+  public abstract void Wa(String paramString);
   
-  public abstract void S(int paramInt1, int paramInt2, int paramInt3);
+  public abstract boolean Wb(String paramString);
+  
+  public abstract byte[] Wc(String paramString);
+  
+  public abstract String Wd(String paramString);
   
   public abstract void a(View paramView, Class<? extends b> paramClass);
   
@@ -34,33 +38,29 @@ public abstract interface a
   
   public abstract boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2, PByteArray paramPByteArray);
   
-  public abstract boolean boG();
+  public abstract void ad(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract boolean boJ();
+  public abstract boolean bXh();
   
-  public abstract boolean boK();
+  public abstract boolean bXk();
   
-  public abstract boolean boL();
+  public abstract boolean bXl();
   
-  public abstract String boN();
+  public abstract boolean bXm();
   
-  public abstract boolean boO();
+  public abstract String bXo();
   
-  public abstract byte[] boP();
+  public abstract boolean bXp();
   
-  public abstract boolean bu(Object paramObject);
+  public abstract byte[] bXq();
   
-  public abstract boolean c(Object paramObject, Class paramClass);
+  public abstract boolean bY(Object paramObject);
   
-  public abstract void ei(String paramString1, String paramString2);
+  public abstract boolean d(Object paramObject, Class paramClass);
   
-  public abstract String hY(boolean paramBoolean);
+  public abstract void fD(String paramString1, String paramString2);
   
-  public abstract byte[] vq(int paramInt);
-  
-  public abstract String vr(int paramInt);
-  
-  public abstract void vs(int paramInt);
+  public abstract String jU(boolean paramBoolean);
 }
 
 

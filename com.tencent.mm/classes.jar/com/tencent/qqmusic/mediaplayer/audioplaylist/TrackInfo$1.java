@@ -2,12 +2,14 @@ package com.tencent.qqmusic.mediaplayer.audioplaylist;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class TrackInfo$1
   implements Parcelable.Creator<TrackInfo>
 {
   public final TrackInfo createFromParcel(Parcel paramParcel)
   {
+    AppMethodBeat.i(111090);
     int i = paramParcel.readInt();
     String str1 = paramParcel.readString();
     String str2 = paramParcel.readString();
@@ -22,6 +24,7 @@ final class TrackInfo$1
     localTrackInfo.setEndPostion(l2);
     localTrackInfo.setPerformer(str3);
     localTrackInfo.setAlbum(paramParcel);
+    AppMethodBeat.o(111090);
     return localTrackInfo;
   }
   

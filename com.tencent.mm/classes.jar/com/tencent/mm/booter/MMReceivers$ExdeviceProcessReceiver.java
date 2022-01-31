@@ -3,22 +3,20 @@ package com.tencent.mm.booter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MMReceivers$ExdeviceProcessReceiver
   extends BroadcastReceiver
 {
-  private static MMReceivers.a dhF = null;
-  
-  public static void a(MMReceivers.a parama)
-  {
-    dhF = parama;
-  }
+  private static MMReceivers.a dYW = null;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (dhF != null) {
-      dhF.onReceive(paramContext, paramIntent);
+    AppMethodBeat.i(57775);
+    if (dYW != null) {
+      dYW.onReceive(paramContext, paramIntent);
     }
+    AppMethodBeat.o(57775);
   }
 }
 

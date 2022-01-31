@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.recharge.ui.form;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallFormView$1
   implements TextWatcher
 {
-  private boolean nsA = false;
+  private boolean pXO = false;
   
   MallFormView$1(MallFormView paramMallFormView) {}
   
@@ -16,14 +17,16 @@ final class MallFormView$1
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.nsB.YL() != this.nsA)
+    AppMethodBeat.i(44375);
+    if (this.pXP.asv() != this.pXO)
     {
-      if (MallFormView.c(this.nsB) != null) {
-        MallFormView.c(this.nsB).gG(this.nsB.YL());
+      if (MallFormView.c(this.pXP) != null) {
+        MallFormView.c(this.pXP).onInputValidChange(this.pXP.asv());
       }
-      this.nsA = this.nsB.YL();
+      this.pXO = this.pXP.asv();
     }
-    this.nsB.bvp();
+    this.pXP.cfI();
+    AppMethodBeat.o(44375);
   }
 }
 

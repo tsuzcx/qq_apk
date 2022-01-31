@@ -7,60 +7,79 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.a.e;
 import com.tencent.mm.model.a.f;
 import com.tencent.mm.model.a.g;
 import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.ui.SnsNotInterestUI;
-import com.tencent.mm.plugin.sns.ui.c.a.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class a
 {
-  private static Context context = null;
-  private static boolean ojn = false;
-  private static String ojo = "0";
-  private static View.OnClickListener ojp = null;
-  private static int ojq = -1;
-  private static int ojr = -1;
-  private static long ojs = 0L;
-  private static View ojt = null;
-  private static b oju = null;
-  private static NotInterestMenu.c ojv = null;
-  private static com.tencent.mm.sdk.b.c ojw = new a.1();
-  private static com.tencent.mm.sdk.b.c ojx = new a.2();
+  private static Context context;
+  private static View.OnClickListener qXA;
+  private static int qXB;
+  private static int qXC;
+  private static long qXD;
+  private static View qXE;
+  private static b qXF;
+  private static NotInterestMenu.c qXG;
+  private static com.tencent.mm.sdk.b.c qXH;
+  private static com.tencent.mm.sdk.b.c qXI;
+  private static boolean qXy;
+  private static String qXz;
+  
+  static
+  {
+    AppMethodBeat.i(35662);
+    qXy = false;
+    qXz = "0";
+    qXA = null;
+    qXB = -1;
+    qXC = -1;
+    qXD = 0L;
+    qXE = null;
+    qXF = null;
+    qXG = null;
+    context = null;
+    qXH = new a.1();
+    qXI = new a.2();
+    AppMethodBeat.o(35662);
+  }
   
   public static void a(Context paramContext, n paramn)
   {
     int i = 2;
+    AppMethodBeat.i(35653);
     Intent localIntent;
-    if ((ojn) && (paramn != null) && (paramContext != null))
+    if ((qXy) && (paramn != null) && (paramContext != null))
     {
-      ojs = paramn.field_snsId;
+      qXD = paramn.field_snsId;
       a(paramn);
       localIntent = new Intent(paramContext, SnsNotInterestUI.class);
-      localIntent.putExtra("sns_info_svr_id", ojs);
-      if ((!ojn) || (bk.bl(ojo))) {
-        break label145;
+      localIntent.putExtra("sns_info_svr_id", qXD);
+      if ((!qXy) || (bo.isNullOrNil(qXz))) {
+        break label155;
       }
-      if ((!ojo.equals("1")) && (!ojo.equals("2"))) {
-        break label101;
+      if ((!qXz.equals("1")) && (!qXz.equals("2"))) {
+        break label111;
       }
       i = 1;
     }
-    label145:
+    label155:
     for (;;)
     {
       localIntent.putExtra("sns_info_not_interest_scene", i);
       paramContext.startActivity(localIntent);
+      AppMethodBeat.o(35653);
       return;
-      label101:
-      if (ojo.equals("3"))
+      label111:
+      if (qXz.equals("3"))
       {
         if (i.i(paramn)) {
           i = 4;
@@ -76,117 +95,138 @@ public final class a
   
   public static void a(ContextMenu paramContextMenu, n paramn)
   {
-    if ((ojn) && (ojo.equals("3")) && (paramn != null) && (!paramn.yr(32)) && (!paramn.field_userName.equals(af.bDl())) && (paramn.field_type != 15)) {
-      paramContextMenu.add(0, 13, 0, i.j.sns_hate_op_un_like);
+    AppMethodBeat.i(35654);
+    if ((qXy) && (qXz.equals("3")) && (paramn != null) && (!paramn.Ex(32)) && (!paramn.field_userName.equals(ag.coK())) && (paramn.field_type != 15)) {
+      paramContextMenu.add(0, 13, 0, 2131303836);
     }
+    AppMethodBeat.o(35654);
   }
   
-  public static void a(View paramView, a.c paramc)
+  public static void a(View paramView, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    if ((ojn) && (!bk.bl(ojo)) && (!ojo.equals("0")))
+    AppMethodBeat.i(35655);
+    if ((qXy) && (!bo.isNullOrNil(qXz)) && (!qXz.equals("0")))
     {
-      paramc.pnu = ((ImageView)paramView.findViewById(i.f.sns_hate_item_arrow));
-      paramc.pnu.setVisibility(8);
-      paramc.pnv = false;
-      if (!ojo.equals("3")) {
-        paramc.pnu.setOnClickListener(ojp);
+      paramBaseViewHolder.shF = ((ImageView)paramView.findViewById(2131828143));
+      paramBaseViewHolder.shF.setVisibility(8);
+      paramBaseViewHolder.shG = false;
+      if (!qXz.equals("3")) {
+        paramBaseViewHolder.shF.setOnClickListener(qXA);
       }
     }
+    AppMethodBeat.o(35655);
   }
   
   private static void a(n paramn)
   {
-    boolean bool = ojo.equals("3");
-    if (paramn.field_type == 1) {
-      if (bool) {
-        ojr = 5;
+    AppMethodBeat.i(35652);
+    boolean bool = qXz.equals("3");
+    if (paramn.field_type == 1)
+    {
+      if (bool)
+      {
+        qXC = 5;
+        AppMethodBeat.o(35652);
+        return;
+      }
+      qXC = 0;
+      AppMethodBeat.o(35652);
+      return;
+    }
+    if (paramn.field_type == 2)
+    {
+      if (bool)
+      {
+        qXC = 4;
+        AppMethodBeat.o(35652);
+        return;
+      }
+      qXC = 1;
+      AppMethodBeat.o(35652);
+      return;
+    }
+    if (paramn.field_type == 15)
+    {
+      if (!bool)
+      {
+        qXC = 2;
+        AppMethodBeat.o(35652);
       }
     }
-    do
+    else if (i.i(paramn))
     {
-      do
+      if (bool)
       {
+        qXC = 6;
+        AppMethodBeat.o(35652);
         return;
-        ojr = 0;
-        return;
-        if (paramn.field_type == 2)
-        {
-          if (bool)
-          {
-            ojr = 4;
-            return;
-          }
-          ojr = 1;
-          return;
-        }
-        if (paramn.field_type != 15) {
-          break;
-        }
-      } while (bool);
-      ojr = 2;
-      return;
-    } while (!i.i(paramn));
-    if (bool)
-    {
-      ojr = 6;
-      return;
+      }
+      qXC = 3;
     }
-    ojr = 3;
+    AppMethodBeat.o(35652);
   }
   
   public static void b(n paramn)
   {
-    if (ojn)
+    AppMethodBeat.i(35656);
+    if (qXy)
     {
-      ojs = paramn.field_snsId;
+      qXD = paramn.field_snsId;
       a(paramn);
     }
-  }
-  
-  public static void bBV()
-  {
-    if (oju != null) {
-      oju.bBZ();
-    }
+    AppMethodBeat.o(35656);
   }
   
   public static void clean()
   {
-    ojr = -1;
-    ojq = -1;
-    ojs = 0L;
-    ojp = null;
-    ojv = null;
-    ojt = null;
+    AppMethodBeat.i(35657);
+    qXC = -1;
+    qXB = -1;
+    qXD = 0L;
+    qXA = null;
+    qXG = null;
+    qXE = null;
     context = null;
-    ojn = false;
-    ojo = "0";
-    f.jc("7");
-    com.tencent.mm.sdk.b.a.udP.d(ojw);
-    com.tencent.mm.sdk.b.a.udP.d(ojx);
+    qXy = false;
+    qXz = "0";
+    f.pQ("7");
+    com.tencent.mm.sdk.b.a.ymk.d(qXH);
+    com.tencent.mm.sdk.b.a.ymk.d(qXI);
+    AppMethodBeat.o(35657);
+  }
+  
+  public static void cnw()
+  {
+    AppMethodBeat.i(35651);
+    if (qXF != null) {
+      qXF.cnA();
+    }
+    AppMethodBeat.o(35651);
   }
   
   public static void d(Context paramContext, ViewGroup paramViewGroup)
   {
-    if (g.Iy().iX("7") != null)
+    AppMethodBeat.i(35650);
+    if (g.abw().pL("7") != null)
     {
-      ojn = true;
-      ojo = g.Iy().iX("7").value;
-      y.d("MicroMsg.NotInteresetABTestManager", "start not interest abtest, testStyle:%s", new Object[] { ojo });
-      ojt = paramViewGroup;
-      oju = new b(paramViewGroup);
+      qXy = true;
+      qXz = g.abw().pL("7").value;
+      ab.d("MicroMsg.NotInteresetABTestManager", "start not interest abtest, testStyle:%s", new Object[] { qXz });
+      qXE = paramViewGroup;
+      qXF = new b(paramViewGroup);
       context = paramContext;
-      com.tencent.mm.sdk.b.a.udP.c(ojw);
-      com.tencent.mm.sdk.b.a.udP.c(ojx);
-      ojp = new a.3();
-      ojv = new a.4();
-      oju.ojA = ojv;
+      com.tencent.mm.sdk.b.a.ymk.c(qXH);
+      com.tencent.mm.sdk.b.a.ymk.c(qXI);
+      qXA = new a.3();
+      qXG = new a.4();
+      qXF.qXL = qXG;
     }
+    AppMethodBeat.o(35650);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.abtest.a
  * JD-Core Version:    0.7.0.1
  */

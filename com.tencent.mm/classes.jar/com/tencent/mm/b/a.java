@@ -1,6 +1,5 @@
 package com.tencent.mm.b;
 
-import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -8,80 +7,67 @@ import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.view.animation.LinearInterpolator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.e.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
   extends b
 {
-  private int bue = 200;
-  c bug;
-  public float buh;
-  public float bui;
-  public float buj;
-  public Rect buk;
-  public RectF bul;
-  Matrix bum;
-  public long bun = 0L;
-  private ValueAnimator jQ;
-  public Animator.AnimatorListener mA;
+  private int bVq;
+  c bVr;
+  public float bVs;
+  public float bVt;
+  public float bVu;
+  public Rect bVv;
+  public RectF bVw;
+  Matrix bVx;
+  public long bVy;
+  private ValueAnimator kO;
+  public Animator.AnimatorListener nx;
   
   public a(c paramc)
   {
-    this.bug = paramc;
-    this.bum = new Matrix();
-    this.bul = new RectF();
+    AppMethodBeat.i(116138);
+    this.bVq = 200;
+    this.bVy = 0L;
+    this.bVr = paramc;
+    this.bVx = new Matrix();
+    this.bVw = new RectF();
+    AppMethodBeat.o(116138);
   }
   
   public final void cancel()
   {
-    y.d("MicroMsg.CropActionUpAnim", "[cancel]");
-    this.bus = false;
-    this.bur = true;
-    if (this.jQ != null) {
-      this.jQ.cancel();
+    AppMethodBeat.i(116140);
+    ab.d("MicroMsg.CropActionUpAnim", "[cancel]");
+    this.bVD = false;
+    this.bVC = true;
+    if (this.kO != null) {
+      this.kO.cancel();
     }
+    AppMethodBeat.o(116140);
   }
   
   public final void play()
   {
-    y.i("MicroMsg.CropActionUpAnim", "[play]");
-    if (!this.bur) {
+    AppMethodBeat.i(116139);
+    ab.i("MicroMsg.CropActionUpAnim", "[play]");
+    if (!this.bVC)
+    {
+      AppMethodBeat.o(116139);
       return;
     }
-    this.bus = false;
-    this.bur = false;
-    this.jQ = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scale", new float[] { 1.0F, this.buh }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, this.bui }), PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, this.buj }), PropertyValuesHolder.ofFloat("background_alpha", new float[] { 0.0F, 255.0F }) });
-    this.jQ.addUpdateListener(new a.1(this));
-    this.jQ.addListener(new Animator.AnimatorListener()
-    {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        a.this.bur = true;
-        a.this.bus = false;
-        a.this.bun = 0L;
-        a.this.bug.tT();
-        a.this.bug.tR();
-        if (a.this.mA != null) {
-          a.this.mA.onAnimationEnd(paramAnonymousAnimator);
-        }
-      }
-      
-      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationStart(Animator paramAnonymousAnimator)
-      {
-        a.this.bug.bAy = true;
-        a.this.bur = false;
-        a.this.bus = true;
-      }
-    });
-    this.jQ.setInterpolator(new LinearInterpolator());
-    this.jQ.setDuration(this.bue);
-    this.jQ.setStartDelay(this.bun);
-    this.jQ.start();
+    this.bVD = false;
+    this.bVC = false;
+    this.kO = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scale", new float[] { 1.0F, this.bVs }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, this.bVt }), PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, this.bVu }), PropertyValuesHolder.ofFloat("background_alpha", new float[] { 0.0F, 255.0F }) });
+    this.kO.addUpdateListener(new a.1(this));
+    this.kO.addListener(new a.2(this));
+    this.kO.setInterpolator(new LinearInterpolator());
+    this.kO.setDuration(this.bVq);
+    this.kO.setStartDelay(this.bVy);
+    this.kO.start();
+    AppMethodBeat.o(116139);
   }
 }
 

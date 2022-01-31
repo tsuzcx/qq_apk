@@ -5,27 +5,27 @@ import android.graphics.Bitmap;
 public final class c
 {
   public int backgroundColor = 0;
-  public int oEd = 1;
-  public boolean oEe = true;
-  public boolean oEf = true;
-  private boolean oEg = true;
-  public boolean oEh = true;
-  public int oEi = -1;
-  public int oEj = -16777216;
-  public int oEk = -16777216;
-  public float oEl = 2.0F;
-  public float oEm = -1.0F;
-  public int oEn = -16777216;
-  public float oEo = 12.0F;
-  public float oEp = 16.0F;
-  public int oEq = -1;
-  public float oEr = 17.0F;
-  public float oEs = 4.0F;
-  public Bitmap oEt;
-  public float oEu;
-  public int oEv = -1;
-  public int oEw = 1;
-  public Bitmap oEx;
+  public int rtE = 1;
+  public boolean rtF = true;
+  public boolean rtG = true;
+  private boolean rtH = true;
+  public boolean rtI = true;
+  public int rtJ = -1;
+  public int rtK = -16777216;
+  public int rtL = -16777216;
+  public float rtM = 2.0F;
+  public float rtN = -1.0F;
+  public int rtO = -16777216;
+  public float rtP = 12.0F;
+  public float rtQ = 16.0F;
+  public int rtR = -1;
+  public float rtS = 17.0F;
+  public float rtT = 4.0F;
+  public Bitmap rtU;
+  public float rtV;
+  public int rtW = -1;
+  public int rtX = 1;
+  public Bitmap rtY;
 }
 
 

@@ -9,15 +9,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.plugin.game.d.ac;
-import com.tencent.mm.plugin.game.d.am;
-import com.tencent.mm.plugin.game.d.cx;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.d.ad;
+import com.tencent.mm.plugin.game.d.an;
+import com.tencent.mm.plugin.game.d.cy;
 import com.tencent.mm.plugin.game.e.a;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.game.f.e;
+import com.tencent.mm.plugin.game.model.d;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -25,11 +24,11 @@ public class GameFeedQipaiView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private TextView haW;
-  private TextView lbq;
-  private ImageView lbr;
-  private LinearLayout lbt;
-  private ac lbu;
+  private TextView iJG;
+  private TextView nzm;
+  private ImageView nzn;
+  private LinearLayout nzo;
+  private ad nzp;
   
   public GameFeedQipaiView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,95 +37,108 @@ public class GameFeedQipaiView
   
   public void onClick(View paramView)
   {
-    if (this.lbu == null) {}
-    int i;
-    do
+    AppMethodBeat.i(111947);
+    if (this.nzp == null)
     {
-      do
+      AppMethodBeat.o(111947);
+      return;
+    }
+    if (paramView.getId() == 2131824625)
+    {
+      if (!bo.isNullOrNil(this.nzp.nrr.nrQ))
       {
-        do
-        {
-          return;
-          if (paramView.getId() != g.e.more_etc_tv) {
-            break;
-          }
-        } while (bk.bl(this.lbu.kTr.kTQ));
-        i = c.an(getContext(), this.lbu.kTr.kTQ);
-        b.a(getContext(), 10, 1023, 999, i, null, GameIndexListView.getSourceScene(), a.fy(this.lbu.kSs));
-        return;
-        i = ((Integer)paramView.getTag()).intValue();
-      } while ((i < 0) || (i > this.lbu.kTr.kSr.size() - 1));
-      paramView = (am)this.lbu.kTr.kSr.get(i);
-    } while (bk.bl(paramView.kRP));
-    int j = c.an(getContext(), paramView.kRP);
-    b.a(getContext(), 10, 1023, i + 1, j, paramView.euK, GameIndexListView.getSourceScene(), a.fy(this.lbu.kSs));
+        i = com.tencent.mm.plugin.game.f.c.ax(getContext(), this.nzp.nrr.nrQ);
+        com.tencent.mm.game.report.c.a(getContext(), 10, 1023, 999, i, null, GameIndexListView.getSourceScene(), a.lR(this.nzp.nqt));
+      }
+      AppMethodBeat.o(111947);
+      return;
+    }
+    int i = ((Integer)paramView.getTag()).intValue();
+    if ((i < 0) || (i > this.nzp.nrr.nqs.size() - 1))
+    {
+      AppMethodBeat.o(111947);
+      return;
+    }
+    paramView = (an)this.nzp.nrr.nqs.get(i);
+    if (!bo.isNullOrNil(paramView.npR))
+    {
+      int j = com.tencent.mm.plugin.game.f.c.ax(getContext(), paramView.npR);
+      com.tencent.mm.game.report.c.a(getContext(), 10, 1023, i + 1, j, paramView.fKw, GameIndexListView.getSourceScene(), a.lR(this.nzp.nqt));
+    }
+    AppMethodBeat.o(111947);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111945);
     super.onFinishInflate();
-    this.haW = ((TextView)findViewById(g.e.title));
-    this.lbq = ((TextView)findViewById(g.e.more_etc_tv));
-    this.lbr = ((ImageView)findViewById(g.e.more_arrow));
-    this.lbt = ((LinearLayout)findViewById(g.e.game_item_container));
-    this.lbq.setOnClickListener(this);
+    this.iJG = ((TextView)findViewById(2131820680));
+    this.nzm = ((TextView)findViewById(2131824625));
+    this.nzn = ((ImageView)findViewById(2131824336));
+    this.nzo = ((LinearLayout)findViewById(2131824626));
+    this.nzm.setOnClickListener(this);
+    AppMethodBeat.o(111945);
   }
   
-  public void setData(com.tencent.mm.plugin.game.model.e parame)
+  public void setData(d paramd)
   {
-    if ((parame == null) || (parame.kOu == null) || (parame.kOu.kTr == null)) {
-      setVisibility(8);
-    }
-    label342:
-    label363:
-    do
+    AppMethodBeat.i(111946);
+    if ((paramd == null) || (paramd.nmr == null) || (paramd.nmr.nrr == null))
     {
+      setVisibility(8);
+      AppMethodBeat.o(111946);
       return;
-      ac localac = parame.kOu;
-      setVisibility(0);
-      this.lbu = localac;
-      if (!bk.bl(localac.kTr.bGw))
-      {
-        this.haW.setText(localac.kTr.bGw);
-        this.haW.setVisibility(0);
-        if (bk.bl(localac.kTr.kTx)) {
-          break label342;
-        }
-        this.lbr.setVisibility(0);
-        this.lbq.setVisibility(0);
-        this.lbq.setText(localac.kTr.kTx);
+    }
+    ad localad = paramd.nmr;
+    setVisibility(0);
+    this.nzp = localad;
+    if (!bo.isNullOrNil(localad.nrr.Title))
+    {
+      this.iJG.setText(localad.nrr.Title);
+      this.iJG.setVisibility(0);
+      if (bo.isNullOrNil(localad.nrr.nrx)) {
+        break label347;
       }
-      for (;;)
-      {
-        this.lbt.removeAllViews();
-        if (bk.dk(localac.kTr.kSr)) {
-          break label363;
-        }
-        Iterator localIterator = localac.kTr.kSr.iterator();
-        while (localIterator.hasNext())
-        {
-          am localam = (am)localIterator.next();
-          Object localObject = LayoutInflater.from(getContext()).inflate(g.f.game_center_4_block_recom_item, this, false);
-          ((View)localObject).setOnClickListener(this);
-          ((View)localObject).setTag(Integer.valueOf(localac.kTr.kSr.indexOf(localam)));
-          this.lbt.addView((View)localObject, new LinearLayout.LayoutParams(-1, -2, 1.0F));
-          TextView localTextView1 = (TextView)((View)localObject).findViewById(g.e.recom_item_title);
-          ImageView localImageView = (ImageView)((View)localObject).findViewById(g.e.recom_item_img);
-          TextView localTextView2 = (TextView)((View)localObject).findViewById(g.e.recom_item_name);
-          localObject = (TextView)((View)localObject).findViewById(g.e.recom_item_desc);
-          localTextView1.setVisibility(8);
-          com.tencent.mm.plugin.game.f.e.baw().g(localImageView, localam.kTM);
-          localTextView2.setText(localam.bGw);
-          ((TextView)localObject).setText(localam.kRN);
-        }
-        this.haW.setVisibility(8);
-        break;
-        this.lbq.setVisibility(8);
-        this.lbr.setVisibility(8);
+      this.nzn.setVisibility(0);
+      this.nzm.setVisibility(0);
+      this.nzm.setText(localad.nrr.nrx);
+    }
+    for (;;)
+    {
+      this.nzo.removeAllViews();
+      if (bo.es(localad.nrr.nqs)) {
+        break label368;
       }
-    } while (parame.kOw);
-    a.a(getContext(), 10, 1023, parame.position, parame.kOu.euK, GameIndexListView.getSourceScene(), a.fy(parame.kOu.kSs));
-    parame.kOw = true;
+      Iterator localIterator = localad.nrr.nqs.iterator();
+      while (localIterator.hasNext())
+      {
+        an localan = (an)localIterator.next();
+        Object localObject = LayoutInflater.from(getContext()).inflate(2130969702, this, false);
+        ((View)localObject).setOnClickListener(this);
+        ((View)localObject).setTag(Integer.valueOf(localad.nrr.nqs.indexOf(localan)));
+        this.nzo.addView((View)localObject, new LinearLayout.LayoutParams(-1, -2, 1.0F));
+        TextView localTextView1 = (TextView)((View)localObject).findViewById(2131824453);
+        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131824454);
+        TextView localTextView2 = (TextView)((View)localObject).findViewById(2131824455);
+        localObject = (TextView)((View)localObject).findViewById(2131824456);
+        localTextView1.setVisibility(8);
+        e.bHE().i(localImageView, localan.nrM);
+        localTextView2.setText(localan.Title);
+        ((TextView)localObject).setText(localan.Desc);
+      }
+      this.iJG.setVisibility(8);
+      break;
+      label347:
+      this.nzm.setVisibility(8);
+      this.nzn.setVisibility(8);
+    }
+    label368:
+    if (!paramd.nmt)
+    {
+      a.a(getContext(), 10, 1023, paramd.position, paramd.nmr.fKw, GameIndexListView.getSourceScene(), a.lR(paramd.nmr.nqt));
+      paramd.nmt = true;
+    }
+    AppMethodBeat.o(111946);
   }
 }
 

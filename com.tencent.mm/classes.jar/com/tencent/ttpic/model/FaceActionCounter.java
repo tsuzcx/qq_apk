@@ -19,7 +19,7 @@ public class FaceActionCounter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.ttpic.model.FaceActionCounter
  * JD-Core Version:    0.7.0.1
  */

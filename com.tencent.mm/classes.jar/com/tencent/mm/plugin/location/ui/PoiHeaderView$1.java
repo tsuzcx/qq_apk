@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.location.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class PoiHeaderView$1
   implements View.OnClickListener
@@ -14,14 +15,16 @@ final class PoiHeaderView$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(113468);
     Intent localIntent = new Intent();
-    if (bk.bl(PoiHeaderView.a(this.lFw))) {}
-    for (paramView = PoiHeaderView.b(this.lFw);; paramView = PoiHeaderView.a(this.lFw))
+    if (bo.isNullOrNil(PoiHeaderView.a(this.ocJ))) {}
+    for (paramView = PoiHeaderView.b(this.ocJ);; paramView = PoiHeaderView.a(this.ocJ))
     {
-      y.d("MicroMsg.PoiHeaderView", "click url %s", new Object[] { paramView });
+      ab.d("MicroMsg.PoiHeaderView", "click url %s", new Object[] { paramView });
       localIntent.putExtra("rawUrl", paramView);
       localIntent.putExtra("showShare", false);
-      d.e(this.lFw.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+      d.f(this.ocJ.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+      AppMethodBeat.o(113468);
       return;
     }
   }

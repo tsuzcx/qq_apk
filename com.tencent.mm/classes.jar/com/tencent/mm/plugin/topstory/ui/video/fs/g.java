@@ -4,76 +4,100 @@ import android.graphics.Point;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mm.plugin.topstory.ui.b.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.b;
-import com.tencent.mm.plugin.topstory.ui.video.f;
 import com.tencent.mm.plugin.topstory.ui.video.h;
 
 public class g
   extends h
   implements a
 {
-  public e pHp;
-  public FrameLayout pHq;
+  public e tkK;
+  public FrameLayout tkL;
   
   public g(View paramView, b paramb)
   {
     super(paramView, paramb);
   }
   
-  public void bNY()
+  public final void GL(int paramInt)
   {
-    if (this.pHp == null)
+    AppMethodBeat.i(1950);
+    a(this.tim, this.tim.bMN(), this.tkK, paramInt);
+    AppMethodBeat.o(1950);
+  }
+  
+  public void cJL()
+  {
+    AppMethodBeat.i(1947);
+    if (this.tkK == null)
     {
-      this.pHp = new e(this.pEP.bfn(), this.pEP, this);
-      this.pHq.removeAllViews();
-      if (!this.pEP.bNE()) {
-        break label111;
+      if (!this.tim.cJn()) {
+        break label135;
+      }
+      this.tkK = new k(this.tim.bMN(), this.tim, this);
+      this.tkL.removeAllViews();
+      if (!this.tim.cJn()) {
+        break label163;
       }
     }
-    label111:
-    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.pEP.bNz().x, this.pEP.bNz().y);; localLayoutParams = new FrameLayout.LayoutParams(this.pEP.bNz().y, this.pEP.bNz().x))
+    label135:
+    label163:
+    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.tim.cJi().x, this.tim.cJi().y);; localLayoutParams = new FrameLayout.LayoutParams(this.tim.cJi().y, this.tim.cJi().x))
     {
-      this.pHq.addView(this.pHp, localLayoutParams);
-      this.pHp.a(this.pDy, bNr());
+      this.tkL.addView(this.tkK, localLayoutParams);
+      this.tkK.a(this.tfm, cJb());
+      AppMethodBeat.o(1947);
       return;
+      this.tkK = new e(this.tim.bMN(), this.tim, this);
+      break;
     }
   }
   
-  public final f bNZ()
+  public final com.tencent.mm.plugin.topstory.ui.video.f cJM()
   {
-    return this.pHp;
+    return this.tkK;
   }
   
-  public final int bNr()
+  public final int cJb()
   {
-    return id();
+    AppMethodBeat.i(156796);
+    int i = jN();
+    AppMethodBeat.o(156796);
+    return i;
   }
   
-  public final void dm(View paramView)
+  public final void ep(View paramView)
   {
-    this.pHq = ((FrameLayout)paramView.findViewById(b.d.video_view_container));
+    AppMethodBeat.i(1945);
+    this.tkL = ((FrameLayout)paramView.findViewById(2131828187));
+    AppMethodBeat.o(1945);
   }
   
-  public final void jJ(boolean paramBoolean)
+  public final View getWowView()
   {
-    super.jJ(paramBoolean);
-    this.pEP.zx(id());
-    if (this.pHp.jI(paramBoolean))
+    AppMethodBeat.i(1949);
+    View localView = this.tkK.getControlBar().getWowView();
+    AppMethodBeat.o(1949);
+    return localView;
+  }
+  
+  public final void mA(boolean paramBoolean)
+  {
+    AppMethodBeat.i(1946);
+    super.mA(paramBoolean);
+    this.tim.GA(jN());
+    if (this.tkK.Q(paramBoolean, false))
     {
-      bNq();
-      bNp();
+      cJa();
+      cIZ();
     }
-  }
-  
-  public final void zF(int paramInt)
-  {
-    a(this.pEP, this.pEP.bfn(), this.pHp, paramInt);
+    AppMethodBeat.o(1946);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.g
  * JD-Core Version:    0.7.0.1
  */

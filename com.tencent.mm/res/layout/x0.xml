@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="120.0dip"
+<RelativeLayout android:background="@color/a6q" android:padding="@dimen/n_" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_gravity="center" android:id="@id/bjd" android:background="#20000000" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="50.0dip" />
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/bje" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
-        <TextView android:textSize="11.0dip" android:textColor="#4d000000" android:id="@id/bjf" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bi9" />
-        <ImageButton android:id="@id/bjg" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginRight="@dimen/l3" android:src="@raw/fav_capacity_foot_arrow" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/bm7" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:src="@drawable/aew" android:layout_centerVertical="true" />
+    <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="center|left" android:id="@id/bm9" android:layout_width="180.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_toRightOf="@id/bm7" android:layout_centerVertical="true" style="@style/mj" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:id="@id/bm8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/mj" />
+</RelativeLayout>

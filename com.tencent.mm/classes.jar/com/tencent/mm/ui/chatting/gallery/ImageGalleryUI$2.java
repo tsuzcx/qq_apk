@@ -1,32 +1,36 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.tools.e.b;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.v.b;
 
 final class ImageGalleryUI$2
-  implements e.b
+  implements View.OnTouchListener
 {
   ImageGalleryUI$2(ImageGalleryUI paramImageGalleryUI) {}
   
-  public final void onAnimationEnd()
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    y.i("MicroMsg.ImageGalleryUI", "runExitAnimation onAnimationEnd");
-    ImageGalleryUI.q(this.vww).post(new ImageGalleryUI.2.2(this));
-    ImageGalleryUI.a(this.vww, false);
-  }
-  
-  public final void onAnimationStart()
-  {
-    ImageGalleryUI.a(this.vww, true);
-    ImageGalleryUI.dM(ImageGalleryUI.u(this.vww));
-    ImageGalleryUI.dM(ImageGalleryUI.v(this.vww));
-    new ah().postDelayed(new ImageGalleryUI.2.1(this), 20L);
+    AppMethodBeat.i(153852);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(153852);
+      return false;
+      paramView = v.aae().z("basescanui@datacenter", true);
+      paramView.i("key_basescanui_screen_x", Integer.valueOf((int)paramMotionEvent.getRawX()));
+      paramView.i("key_basescanui_screen_y", Integer.valueOf((int)paramMotionEvent.getRawY()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.ImageGalleryUI.2
  * JD-Core Version:    0.7.0.1
  */

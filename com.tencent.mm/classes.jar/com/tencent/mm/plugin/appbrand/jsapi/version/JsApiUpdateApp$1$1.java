@@ -2,46 +2,48 @@ package com.tencent.mm.plugin.appbrand.jsapi.version;
 
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.plugin.appbrand.config.h;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.plugin.appbrand.widget.b.b;
-import com.tencent.mm.plugin.appbrand.widget.b.i;
-import com.tencent.mm.plugin.appbrand.y.j;
+import com.tencent.mm.plugin.appbrand.widget.b.l;
 
 final class JsApiUpdateApp$1$1
   implements Runnable
 {
-  JsApiUpdateApp$1$1(JsApiUpdateApp.1 param1) {}
+  JsApiUpdateApp$1$1(JsApiUpdateApp.1 param1, AppBrandInitConfigWC paramAppBrandInitConfigWC) {}
   
   public final void run()
   {
-    b localb = new b(this.gCx.gbW.getContext());
+    AppMethodBeat.i(131488);
+    b localb = new b(this.ibw.hxC.getContext());
     localb.setCanceledOnTouchOutside(false);
     localb.setCancelable(false);
-    Object localObject = this.gCx.gbW.getContext();
+    Object localObject = this.ibw.hxC.getContext();
     int i;
-    if (this.gCx.gbW.getRuntime().ZH())
+    if (this.ibw.hxC.getRuntime().vY())
     {
-      i = y.j.app_brand_jsapi_update_app_need_reboot_wording_for_game;
-      localb.setMessage(((Context)localObject).getString(i, new Object[] { this.gCx.gbW.getRuntime().aac().bJw }));
+      i = 2131296707;
+      localb.setMessage(((Context)localObject).getString(i, new Object[] { this.ibw.hxC.getRuntime().atS().cqQ }));
       localObject = new JsApiUpdateApp.1.1.1(this);
-      if (this.gCx.gbW.getRuntime().aaa().fPS.fEM == 0) {
-        break label169;
+      if (this.ibw.hxC.getRuntime().atR().hiX.gXe == 0) {
+        break label175;
       }
-      localb.a(y.j.app_brand_jsapi_update_app_dialog_confirm_for_debug, (DialogInterface.OnClickListener)localObject);
-      localb.b(y.j.app_brand_jsapi_update_app_dialog_cancel_for_debug, new JsApiUpdateApp.1.1.2(this));
+      localb.a(2131296706, (DialogInterface.OnClickListener)localObject);
+      localb.b(2131296704, new JsApiUpdateApp.1.1.2(this));
     }
     for (;;)
     {
-      this.gCx.gbW.Zm().b(localb);
+      this.ibw.hxC.asX().b(localb);
+      AppMethodBeat.o(131488);
       return;
-      i = y.j.app_brand_jsapi_update_app_need_reboot_wording_for_normal;
+      i = 2131296708;
       break;
-      label169:
-      localb.a(y.j.app_brand_jsapi_update_app_dialog_confirm, (DialogInterface.OnClickListener)localObject);
+      label175:
+      localb.a(2131296705, (DialogInterface.OnClickListener)localObject);
     }
   }
 }

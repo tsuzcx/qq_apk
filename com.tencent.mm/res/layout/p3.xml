@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/wl" android:paddingTop="@dimen/ko" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/nx" android:showDividers="middle"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:profile="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/axz" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/c5p" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/ay0" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/awu" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/ay1" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/awo" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/ay2" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/aws" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/ay3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" profile:title="@string/arw" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/ay4" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/awl" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/ay5" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/axp" />
+<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/ay4" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" style="@style/mn" />
+    <LinearLayout android:id="@id/a2n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <TextView android:textColor="#ffaaaaaa" android:gravity="center" android:id="@id/zt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:text="@string/arm" />
+    </LinearLayout>
+    <View android:background="#ffdfdfdf" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <RelativeLayout android:background="#fffcfcfc" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <TextView android:textColor="#ffaaaaaa" android:id="@id/ay3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <Button android:textSize="@dimen/ko" android:id="@id/ay2" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:minWidth="60.0dip" android:text="@string/b6u" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/nt" />
+        <CheckBox android:id="@id/a2t" android:background="@drawable/vm" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/eu" android:layout_height="@dimen/eu" android:layout_marginLeft="12.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textColor="#ffaaaaaa" android:id="@id/a2u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/fx" android:layout_toRightOf="@id/a2t" android:layout_centerVertical="true" />
+        <View android:id="@id/a2v" android:layout_width="72.0dip" android:layout_height="fill_parent" />
+    </RelativeLayout>
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsChattingBackgroundUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class SettingsChattingBackgroundUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.nUe.XM();
-    this.nUe.finish();
+    AppMethodBeat.i(127197);
+    this.qIe.hideVKB();
+    this.qIe.finish();
+    AppMethodBeat.o(127197);
     return true;
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$fw
+final class c$fw
   extends c.g
 {
-  public c$fw()
+  c$fw()
   {
-    super("openWXDeviceLib", "openWXDeviceLib", 117, false);
+    super("openOfflinePayView", "openOfflinePayView", 305, true);
   }
 }
 

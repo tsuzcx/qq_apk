@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.provider.ContactsContract.Contacts;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RechargeUI$13
   implements View.OnClickListener
@@ -12,13 +13,16 @@ final class RechargeUI$13
   
   public final void onClick(View paramView)
   {
-    if (RechargeUI.e(this.nrE).nqd)
+    AppMethodBeat.i(44319);
+    if (RechargeUI.e(this.pWS).pVr)
     {
-      RechargeUI.e(this.nrE).setInput(null);
+      RechargeUI.e(this.pWS).setInput(null);
+      AppMethodBeat.o(44319);
       return;
     }
     paramView = new Intent("android.intent.action.PICK", ContactsContract.Contacts.CONTENT_URI);
-    this.nrE.startActivityForResult(paramView, 1);
+    this.pWS.startActivityForResult(paramView, 1);
+    AppMethodBeat.o(44319);
   }
 }
 

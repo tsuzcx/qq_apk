@@ -1,18 +1,13 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.model.bx.a;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.cd;
+import com.tencent.mm.cg.h.d;
 
 final class g$18
-  implements bx.a
+  implements h.d
 {
-  g$18(g paramg) {}
-  
-  public final void a(e.a parama)
+  public final String[] getSQLs()
   {
-    new Thread(new g.18.1(this, aa.a(parama.dBs.svH), g.ccM())).start();
+    return m.SQL_CREATE;
   }
 }
 

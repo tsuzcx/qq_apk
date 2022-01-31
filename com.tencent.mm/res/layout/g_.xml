@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/sv" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:gravity="center" android:id="@id/a39" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/a3_" android:layout_width="@dimen/su" android:layout_height="@dimen/su" android:layout_marginLeft="@dimen/dl" android:layout_marginTop="@dimen/mq" android:layout_marginRight="@dimen/dl" android:layout_marginBottom="@dimen/mq" android:src="@drawable/a_2" />
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/a3a" android:background="@drawable/bu" android:layout_width="@dimen/la" android:layout_height="@dimen/la" android:layout_marginLeft="@dimen/dl" android:layout_marginTop="@dimen/mq" android:layout_marginRight="@dimen/dl" android:layout_marginBottom="@dimen/mq" />
-    </FrameLayout>
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/mq">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/a3b" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/nw" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/p7" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/a3c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="title" android:maxLines="1" />
+    <com.tencent.mm.ui.base.sortview.CatalogView android:id="@id/a53" android:background="@color/gm" android:paddingLeft="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mo" />
+    <LinearLayout android:orientation="vertical" android:id="@id/a54" android:background="@drawable/a13" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:layout_gravity="center_vertical" android:id="@id/a55" android:background="@color/a3x" android:layout_width="26.0dip" android:layout_height="26.0dip" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/a56" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:text="" android:maxLines="2" />
+        </LinearLayout>
+        <View android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0px" />
     </LinearLayout>
 </LinearLayout>

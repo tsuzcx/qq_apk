@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.music.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MusicMainUI$3$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class MusicMainUI$3$2
   
   public final void run()
   {
-    MusicMainUI.j(this.mCc.mCa).setCurrentItem(MusicMainUI.j(this.mCc.mCa).getCurrentItem() + 1);
+    AppMethodBeat.i(105092);
+    MusicMainUI.j(this.pcf.pcd).setCurrentItem(MusicMainUI.j(this.pcf.pcd).getCurrentItem() + 1);
+    AppMethodBeat.o(105092);
   }
 }
 

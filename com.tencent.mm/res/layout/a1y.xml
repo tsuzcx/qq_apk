@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/ad_" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="@dimen/n_" android:layout_marginRight="@dimen/n_"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bxj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/bxk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/yg" />
-</FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c0i" android:background="@drawable/b17" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="75.0dip">
+        <ImageView android:id="@id/c0j" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginTop="@dimen/l2" android:layout_marginRight="@dimen/n_" android:layout_marginBottom="@dimen/l2" android:src="@raw/actionbar_particular_icon" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/c0k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:ellipsize="end" android:id="@id/c0l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/acv" android:background="@drawable/m2" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ll" android:layout_marginRight="@dimen/ll" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/c0i" android:layerType="software" />
+</RelativeLayout>

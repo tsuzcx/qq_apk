@@ -3,142 +3,138 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.sdk.platformtools.MMBitmapFactory;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
 
 public final class h
 {
   public static void a(String paramString, int paramInt, f.a parama)
   {
+    AppMethodBeat.i(37725);
     c("adId", paramString, false, paramInt, parama);
+    AppMethodBeat.o(37725);
   }
   
   public static void a(String paramString, f.a parama)
   {
+    AppMethodBeat.i(37726);
     b("adId", paramString, false, 41, parama);
+    AppMethodBeat.o(37726);
   }
   
-  public static void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt, c.a parama)
+  private static void a(String paramString1, String paramString2, f.a parama)
   {
-    if ((bk.bl(paramString2)) || (bk.bl(paramString1)))
+    AppMethodBeat.i(37729);
+    if ((bo.isNullOrNil(paramString2)) || (bo.isNullOrNil(paramString1)))
     {
-      parama.uv("the res or adId is null");
+      parama.coe();
+      AppMethodBeat.o(37729);
       return;
     }
-    y.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download video for " + paramString2 + " for adid:" + paramString1);
-    String str1 = bFT();
-    String str2 = ad.bB(paramString2);
-    paramString1 = paramString1 + "_stream_" + str2;
-    str2 = str1 + paramString1;
-    if (!bk.bl(str2))
-    {
-      if (com.tencent.mm.vfs.e.bK(str2))
-      {
-        y.i("MicroMsg.AdLandingPageDownloadFileHelper", "big file %s is already exists", new Object[] { str2 });
-        ai.d(new e.4(parama, str2));
-        return;
-      }
-      new c(str1, paramString1, paramBoolean, paramInt, new e.5(parama, paramString2)).execute(new Void[0]);
-      return;
-    }
-    ai.d(new e.6(parama));
+    ab.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download new img for " + paramString2 + " for adid:" + paramString1);
+    e.a(paramString2, crV(), gA(paramString1, paramString2), parama);
+    AppMethodBeat.o(37729);
   }
   
   private static void b(String paramString1, String paramString2, boolean paramBoolean, int paramInt, f.a parama)
   {
-    y.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download img for " + paramString2 + " for adid:" + paramString1);
-    e.a(paramString2, eS(paramString1, paramString2), paramBoolean, paramInt, parama);
-  }
-  
-  private static String bFT()
-  {
-    return Environment.getExternalStorageDirectory().toString() + "/tencent/MicroMsg/sns_ad_landingpages/";
+    AppMethodBeat.i(37727);
+    ab.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download img for " + paramString2 + " for adid:" + paramString1);
+    e.a(paramString2, gy(paramString1, paramString2), paramBoolean, paramInt, parama);
+    AppMethodBeat.o(37727);
   }
   
   public static void c(String paramString1, String paramString2, boolean paramBoolean, int paramInt, f.a parama)
   {
-    if ((bk.bl(paramString2)) || (bk.bl(paramString1))) {
-      parama.bCF();
-    }
-    String str1;
-    String str2;
-    do
+    AppMethodBeat.i(37728);
+    if ((bo.isNullOrNil(paramString2)) || (bo.isNullOrNil(paramString1)))
     {
-      return;
-      if (!AdLandingPagesProxy.getInstance().isUseSnsDownloadImage()) {
-        break;
-      }
-      if ((bk.bl(paramString2)) || (bk.bl(paramString1)))
-      {
-        parama.bCF();
-        return;
-      }
-      y.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download new img for " + paramString2 + " for adid:" + paramString1);
-      str1 = bFT();
-      paramString1 = eU(paramString1, paramString2);
-      str2 = str1 + paramString1;
-    } while (bk.bl(str2));
-    if (com.tencent.mm.vfs.e.bK(str2))
-    {
-      y.i("MicroMsg.AdLandingPageDownloadFileHelper", "cdn file %s is already exists", new Object[] { str2 });
-      ai.d(new e.7(parama, str2));
+      parama.coe();
+      AppMethodBeat.o(37728);
       return;
     }
-    new d(paramString2, str1, paramString1, new e.8(parama, paramString2, str2)).execute(new Void[0]);
-    return;
+    if (AdLandingPagesProxy.getInstance().isUseSnsDownloadImage())
+    {
+      a(paramString1, paramString2, parama);
+      AppMethodBeat.o(37728);
+      return;
+    }
     b(paramString1, paramString2, paramBoolean, paramInt, parama);
+    AppMethodBeat.o(37728);
+  }
+  
+  public static String crV()
+  {
+    AppMethodBeat.i(37731);
+    String str = Environment.getExternalStorageDirectory().toString() + "/tencent/MicroMsg/sns_ad_landingpages/";
+    AppMethodBeat.o(37731);
+    return str;
   }
   
   public static void d(String paramString1, String paramString2, boolean paramBoolean, int paramInt, f.a parama)
   {
-    y.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download sight for " + paramString2 + " for adid:" + paramString1);
-    e.a(paramString2, eT(paramString1, paramString2), paramBoolean, paramInt, parama);
+    AppMethodBeat.i(37730);
+    ab.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download sight for " + paramString2 + " for adid:" + paramString1);
+    e.a(paramString2, gz(paramString1, paramString2), paramBoolean, paramInt, parama);
+    AppMethodBeat.o(37730);
   }
   
-  public static String eS(String paramString1, String paramString2)
+  private static String gA(String paramString1, String paramString2)
   {
-    return bFT() + eU(paramString1, paramString2);
+    AppMethodBeat.i(37723);
+    paramString2 = ag.cE(paramString2);
+    paramString1 = paramString1 + "_img_" + paramString2;
+    AppMethodBeat.o(37723);
+    return paramString1;
   }
   
-  public static String eT(String paramString1, String paramString2)
+  public static Bitmap gB(String paramString1, String paramString2)
   {
-    com.tencent.mm.vfs.e.nb(Environment.getExternalStorageDirectory().toString() + "/tencent/MicroMsg/sns_ad_landingpages");
-    paramString2 = ad.bB(paramString2);
-    return Environment.getExternalStorageDirectory().toString() + "/tencent/MicroMsg/sns_ad_landingpages/" + paramString1 + "_sight_" + paramString2;
-  }
-  
-  private static String eU(String paramString1, String paramString2)
-  {
-    paramString2 = ad.bB(paramString2);
-    return paramString1 + "_img_" + paramString2;
-  }
-  
-  public static Bitmap eV(String paramString1, String paramString2)
-  {
-    if ((bk.bl(paramString2)) || (bk.bl(paramString1))) {}
-    for (;;)
+    AppMethodBeat.i(37724);
+    if ((bo.isNullOrNil(paramString2)) || (bo.isNullOrNil(paramString1)))
     {
+      AppMethodBeat.o(37724);
       return null;
-      try
+    }
+    try
+    {
+      paramString1 = gy(paramString1, paramString2);
+      if ((!TextUtils.isEmpty(paramString1)) && (com.tencent.mm.vfs.e.cN(paramString1)))
       {
-        paramString1 = eS(paramString1, paramString2);
-        if ((!TextUtils.isEmpty(paramString1)) && (com.tencent.mm.vfs.e.bK(paramString1)))
-        {
-          paramString1 = MMBitmapFactory.decodeFile(paramString1);
-          return paramString1;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        y.e("MicroMsg.AdLandingPagesDownloadResourceHelper", "%s", new Object[] { bk.j(paramString1) });
+        paramString1 = MMBitmapFactory.decodeFile(paramString1);
+        AppMethodBeat.o(37724);
+        return paramString1;
       }
     }
+    catch (Exception paramString1)
+    {
+      ab.e("MicroMsg.AdLandingPagesDownloadResourceHelper", "%s", new Object[] { bo.l(paramString1) });
+      AppMethodBeat.o(37724);
+    }
     return null;
+  }
+  
+  public static String gy(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(37721);
+    paramString1 = crV() + gA(paramString1, paramString2);
+    AppMethodBeat.o(37721);
+    return paramString1;
+  }
+  
+  public static String gz(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(37722);
+    com.tencent.mm.vfs.e.um(crV());
+    paramString2 = ag.cE(paramString2);
+    paramString1 = crV() + paramString1 + "_sight_" + paramString2;
+    AppMethodBeat.o(37722);
+    return paramString1;
   }
 }
 

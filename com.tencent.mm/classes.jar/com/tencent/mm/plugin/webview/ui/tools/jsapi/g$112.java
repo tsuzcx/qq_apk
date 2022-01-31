@@ -1,26 +1,23 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.emoji.model.EmojiLogic;
-import com.tencent.mm.vfs.b;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.j;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.plugin.webview.model.n;
 
 final class g$112
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  g$112(g paramg, b paramb, String paramString1, String paramString2) {}
+  g$112(g paramg, n paramn, f paramf) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    String str1 = e.aeY(j.n(this.rAB.mUri));
-    au.Hx();
-    String str2 = EmojiLogic.J(c.FL(), "", str1);
-    if (!e.bK(str2)) {
-      e.r(j.n(this.rAB.cLr()), str2);
-    }
-    g.a(this.rzi, str1, this.eoz, this.rAA);
+    AppMethodBeat.i(155031);
+    com.tencent.mm.kernel.g.Rc().a(this.vry);
+    com.tencent.mm.kernel.g.Rc().b(1393, this.vrz);
+    AppMethodBeat.o(155031);
   }
 }
 

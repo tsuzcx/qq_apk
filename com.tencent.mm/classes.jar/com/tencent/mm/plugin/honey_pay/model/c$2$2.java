@@ -2,12 +2,13 @@ package com.tencent.mm.plugin.honey_pay.model;
 
 import android.content.Intent;
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.honey_pay.ui.HoneyPayCheckPwdUI;
-import com.tencent.mm.protocal.c.awm;
-import com.tencent.mm.protocal.c.bmi;
-import com.tencent.mm.protocal.c.bya;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bdb;
+import com.tencent.mm.protocal.protobuf.bvv;
+import com.tencent.mm.protocal.protobuf.ckm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.wallet_core.ui.e;
@@ -21,38 +22,39 @@ final class c$2$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    paramMenuItem = (awm)this.lka.ljW.tFJ.get(paramInt);
-    if (!bk.bl(paramMenuItem.url))
+    AppMethodBeat.i(41754);
+    paramMenuItem = (bdb)this.nHw.nHs.xJr.get(paramInt);
+    if (!bo.isNullOrNil(paramMenuItem.url))
     {
-      if ((paramMenuItem.url.equals("weixin://wcpay/honeypay/unbind")) && (!bk.bl(this.lka.ljX)) && (this.lka.ljY != null))
+      if ((paramMenuItem.url.equals("weixin://wcpay/honeypay/unbind")) && (!bo.isNullOrNil(this.nHw.nHt)) && (this.nHw.nHu != null))
       {
-        y.i("MicroMsg.HoneyPayUtil", "go to unbind");
-        paramMenuItem = new Intent(this.lka.gGJ, HoneyPayCheckPwdUI.class);
+        ab.i("MicroMsg.HoneyPayUtil", "go to unbind");
+        paramMenuItem = new Intent(this.nHw.val$activity, HoneyPayCheckPwdUI.class);
         paramMenuItem.putExtra("key_scene", 3);
-        paramMenuItem.putExtra("key_card_no", this.lka.ljX);
-      }
-    }
-    else {
-      try
-      {
-        paramMenuItem.putExtra("key_toke_mess", this.lka.ljY.toByteArray());
-        this.lka.gGJ.startActivityForResult(paramMenuItem, this.lka.ljZ);
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
+        paramMenuItem.putExtra("key_card_no", this.nHw.nHt);
+        try
         {
-          y.printErrStackTrace("MicroMsg.HoneyPayUtil", localIOException, "", new Object[0]);
+          paramMenuItem.putExtra("key_toke_mess", this.nHw.nHu.toByteArray());
+          this.nHw.val$activity.startActivityForResult(paramMenuItem, this.nHw.nHv);
+          AppMethodBeat.o(41754);
+          return;
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            ab.printErrStackTrace("MicroMsg.HoneyPayUtil", localIOException, "", new Object[0]);
+          }
         }
       }
+      e.m(this.nHw.val$activity, paramMenuItem.url, false);
     }
-    e.l(this.lka.gGJ, paramMenuItem.url, false);
+    AppMethodBeat.o(41754);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.model.c.2.2
  * JD-Core Version:    0.7.0.1
  */

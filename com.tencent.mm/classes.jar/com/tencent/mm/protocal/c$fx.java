@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-final class c$fx
+public final class c$fx
   extends c.g
 {
-  c$fx()
+  public c$fx()
   {
-    super("openWXSearchPage", "openWXSearchPage", 309, true);
+    super("openProductView", "open_product_view", 59, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.c.fx
  * JD-Core Version:    0.7.0.1
  */

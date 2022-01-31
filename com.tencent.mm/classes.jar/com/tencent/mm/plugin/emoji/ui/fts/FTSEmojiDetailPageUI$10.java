@@ -1,24 +1,28 @@
 package com.tencent.mm.plugin.emoji.ui.fts;
 
-import com.tencent.mm.plugin.emoji.model.d.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emoji.model.c.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 final class FTSEmojiDetailPageUI$10
-  implements d.a
+  implements c.a
 {
   FTSEmojiDetailPageUI$10(FTSEmojiDetailPageUI paramFTSEmojiDetailPageUI) {}
   
-  public final void j(EmojiInfo paramEmojiInfo)
+  public final void a(boolean paramBoolean, EmojiInfo paramEmojiInfo)
   {
-    if ((paramEmojiInfo != null) && (FTSEmojiDetailPageUI.a(this.jfO) != null) && (FTSEmojiDetailPageUI.a(this.jfO).Wv().equals(paramEmojiInfo.Wv())))
+    AppMethodBeat.i(53547);
+    if ((paramEmojiInfo != null) && (paramBoolean) && (FTSEmojiDetailPageUI.a(this.loH) != null) && (FTSEmojiDetailPageUI.a(this.loH).Al().equals(paramEmojiInfo.Al())))
     {
-      y.i("MicroMsg.FTS.FTSEmojiDetailPageUI", "emojiServiceCallback onDownload %s", new Object[] { FTSEmojiDetailPageUI.a(this.jfO).Wv() });
-      ai.d(new FTSEmojiDetailPageUI.10.1(this));
+      ab.i("MicroMsg.FTS.FTSEmojiDetailPageUI", "emojiServiceCallback onDownload %s", new Object[] { FTSEmojiDetailPageUI.a(this.loH).Al() });
+      al.d(new FTSEmojiDetailPageUI.10.1(this));
+      AppMethodBeat.o(53547);
       return;
     }
-    y.i("MicroMsg.FTS.FTSEmojiDetailPageUI", "somethings error.");
+    ab.i("MicroMsg.FTS.FTSEmojiDetailPageUI", "somethings error.");
+    AppMethodBeat.o(53547);
   }
 }
 

@@ -5,7 +5,7 @@ public final class al
 {
   public al()
   {
-    this.xqq = 361;
+    this.CMD = 361;
   }
 }
 

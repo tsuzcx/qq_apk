@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.recharge.ui;
 
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recharge.model.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class MallEditText$a$a$3
   implements Runnable
@@ -12,18 +13,20 @@ final class MallEditText$a$a$3
   
   public final void run()
   {
-    MallEditText.a(this.nqr.nqq.nqk, this.nqs);
-    if (!bk.bl(MallEditText.e(this.nqr.nqq.nqk).name))
+    AppMethodBeat.i(44216);
+    MallEditText.a(this.pVF.pVE.pVy, this.pVG);
+    if (!bo.isNullOrNil(MallEditText.e(this.pVF.pVE.pVy).name))
     {
-      MallEditText.g(this.nqr.nqq.nqk).setText(MallEditText.e(this.nqr.nqq.nqk).name);
-      MallEditText.g(this.nqr.nqq.nqk).setVisibility(0);
+      MallEditText.g(this.pVF.pVE.pVy).setText(MallEditText.e(this.pVF.pVE.pVy).name);
+      MallEditText.g(this.pVF.pVE.pVy).setVisibility(0);
     }
     for (;;)
     {
-      MallEditText.a(this.nqr.nqq.nqk).dismissDropDown();
+      MallEditText.a(this.pVF.pVE.pVy).dismissDropDown();
+      AppMethodBeat.o(44216);
       return;
-      MallEditText.g(this.nqr.nqq.nqk).setText("");
-      MallEditText.g(this.nqr.nqq.nqk).setVisibility(8);
+      MallEditText.g(this.pVF.pVE.pVy).setText("");
+      MallEditText.g(this.pVF.pVE.pVy).setVisibility(8);
     }
   }
 }

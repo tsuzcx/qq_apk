@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.music.ui;
 
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.music.a.f;
 import com.tencent.mm.plugin.music.f.c.b;
 import com.tencent.mm.plugin.music.model.d;
 import com.tencent.mm.plugin.music.model.e.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.storage.z;
 
 final class MusicMainUI$3$3
@@ -16,37 +16,39 @@ final class MusicMainUI$3$3
   
   public final void run()
   {
-    MusicMainUI localMusicMainUI = this.mCc.mCa;
-    if (((Boolean)g.DP().Dz().get(82, Boolean.valueOf(true))).booleanValue())
+    AppMethodBeat.i(105093);
+    MusicMainUI localMusicMainUI = this.pcf.pcd;
+    if (((Boolean)g.RL().Ru().get(82, Boolean.TRUE)).booleanValue())
     {
-      g.DP().Dz().o(82, Boolean.valueOf(false));
-      switch (((com.tencent.mm.plugin.music.e.e)b.Q(com.tencent.mm.plugin.music.e.e.class)).bna().field_musicType)
+      g.RL().Ru().set(82, Boolean.FALSE);
+      switch (((com.tencent.mm.plugin.music.e.e)b.am(com.tencent.mm.plugin.music.e.e.class)).bVw().field_musicType)
       {
       }
     }
     for (;;)
     {
-      MusicMainUI.k(this.mCc.mCa);
+      MusicMainUI.k(this.pcf.pcd);
+      AppMethodBeat.o(105093);
       return;
-      d.H(localMusicMainUI, a.f.shake_first_time_chatting);
+      d.T(localMusicMainUI, 2131303573);
       continue;
-      d.H(localMusicMainUI, a.f.shake_first_time_favorite);
+      d.T(localMusicMainUI, 2131303574);
       continue;
-      d.H(localMusicMainUI, a.f.shake_first_time_shake);
+      d.T(localMusicMainUI, 2131303575);
       continue;
-      d.H(localMusicMainUI, a.f.shake_first_time_timeline);
+      d.T(localMusicMainUI, 2131303576);
       continue;
-      if (((com.tencent.mm.plugin.music.e.e)b.Q(com.tencent.mm.plugin.music.e.e.class)).getMode() == 2) {
-        Toast.makeText(ae.getContext(), a.f.switch_to_multi_music, 0).show();
+      if (((com.tencent.mm.plugin.music.e.e)b.am(com.tencent.mm.plugin.music.e.e.class)).getMode() == 2) {
+        Toast.makeText(ah.getContext(), 2131304221, 0).show();
       } else {
-        Toast.makeText(ae.getContext(), a.f.switch_to_single_music, 0).show();
+        Toast.makeText(ah.getContext(), 2131304222, 0).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.MusicMainUI.3.3
  * JD-Core Version:    0.7.0.1
  */

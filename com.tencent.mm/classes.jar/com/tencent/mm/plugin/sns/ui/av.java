@@ -1,892 +1,641 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.text.StaticLayout;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.am.a;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.aq.b;
 import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.c.aui;
-import com.tencent.mm.protocal.c.awe;
-import com.tencent.mm.protocal.c.bj;
-import com.tencent.mm.protocal.c.btd;
-import com.tencent.mm.protocal.c.btk;
-import com.tencent.mm.protocal.c.bto;
-import com.tencent.mm.protocal.c.bud;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.ckw;
-import com.tencent.mm.protocal.c.dk;
-import com.tencent.mm.protocal.c.rp;
-import com.tencent.mm.protocal.c.xs;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.vending.d.b.a;
+import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem;
+import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
+import com.tencent.mm.plugin.sns.ui.item.a.a;
+import com.tencent.mm.plugin.sns.ui.item.c.a;
+import com.tencent.mm.plugin.sns.ui.item.d;
+import com.tencent.mm.plugin.sns.ui.item.e;
+import com.tencent.mm.plugin.sns.ui.item.f;
+import com.tencent.mm.plugin.sns.ui.item.g;
+import com.tencent.mm.plugin.sns.ui.item.g.a;
+import com.tencent.mm.plugin.sns.ui.item.h;
+import com.tencent.mm.plugin.sns.ui.item.h.a;
+import com.tencent.mm.plugin.sns.ui.item.i.a;
+import com.tencent.mm.plugin.sns.ui.item.j.b;
+import com.tencent.mm.plugin.sns.ui.item.k;
+import com.tencent.mm.plugin.sns.ui.widget.SnsCommentCollapseLayout;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.du;
+import com.tencent.mm.protocal.protobuf.vi;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.tools.l;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 
 public final class av
-  extends com.tencent.mm.vending.a.b<ax, n>
+  implements x
 {
-  private boolean DEBUG = false;
-  bd dXx;
-  volatile String jKL = "";
-  Context mContext;
-  volatile String oSZ = "";
-  String peN;
-  au pgm;
-  private int pgn = (int)(System.currentTimeMillis() / 1000L);
-  private com.tencent.mm.n.a pgo;
-  private boolean pgp = false;
-  volatile boolean pgq = false;
-  byte[] pgr = new byte[0];
-  protected HashMap<String, String> pgs = new HashMap();
-  public HashMap<String, Boolean> pgt = new HashMap();
-  private String pgu = "";
-  private String pgv = "";
+  public MMActivity cmc;
+  public l contextMenuHelper;
+  private ListView gMh;
+  com.tencent.mm.sdk.b.c hCe;
+  protected ak handler;
+  public com.tencent.mm.ui.widget.c.a jVd;
+  protected HashMap<String, Integer> rFT;
+  public View.OnTouchListener rGO;
+  public boolean rNW;
+  public aq rOF;
+  private int rOI;
+  public j rOK;
+  public bd rON;
+  protected ScaleAnimation rOy;
+  protected ScaleAnimation rOz;
+  com.tencent.mm.sdk.b.c rPf;
+  com.tencent.mm.sdk.b.c rPg;
+  com.tencent.mm.sdk.b.c rPh;
+  protected w rWO;
+  public i rWP;
+  protected LinkedList<SnsCommentCollapseLayout> rWQ;
+  public HashMap<Integer, WeakReference<View>> rWR;
+  View rWS;
+  public int rWT;
+  int rWU;
+  protected HashMap<Integer, View> rWV;
+  public HashMap<String, String> rWW;
+  private HashMap<Integer, Class<? extends BaseTimeLineItem.BaseViewHolder>> rWX;
+  public View.OnClickListener rWY;
+  public View.OnClickListener rWZ;
+  public View.OnClickListener rXa;
+  private HashMap<String, Boolean> rXb;
+  private av.c rXc;
+  protected int requestType;
+  public com.tencent.mm.plugin.sns.ui.d.b rks;
   
-  public av()
+  public av(MMActivity paramMMActivity, ListView paramListView, com.tencent.mm.plugin.sns.ui.d.b paramb, i parami, w paramw)
   {
-    super(new n());
-    cKN();
+    AppMethodBeat.i(39422);
+    this.rWQ = new LinkedList();
+    this.rWR = new HashMap();
+    this.rNW = false;
+    this.rOI = 0;
+    this.rWT = -1;
+    this.rWU = 0;
+    this.rFT = new HashMap();
+    this.rWV = new HashMap();
+    this.requestType = 0;
+    this.handler = new ak();
+    this.rWW = new HashMap();
+    this.rPg = new av.1(this);
+    this.rPf = new av.3(this);
+    this.rPh = new av.4(this);
+    this.rWX = new HashMap();
+    this.rWX.put(Integer.valueOf(6), i.a.class);
+    this.rWX.put(Integer.valueOf(2), g.a.class);
+    this.rWX.put(Integer.valueOf(3), g.a.class);
+    this.rWX.put(Integer.valueOf(4), g.a.class);
+    this.rWX.put(Integer.valueOf(5), g.a.class);
+    this.rWX.put(Integer.valueOf(0), g.a.class);
+    this.rWX.put(Integer.valueOf(1), g.a.class);
+    this.rWX.put(Integer.valueOf(7), g.a.class);
+    this.rWX.put(Integer.valueOf(8), g.a.class);
+    this.rWX.put(Integer.valueOf(9), g.a.class);
+    this.rWX.put(Integer.valueOf(11), j.b.class);
+    this.rWX.put(Integer.valueOf(13), a.a.class);
+    this.rWX.put(Integer.valueOf(14), c.a.class);
+    this.rWX.put(Integer.valueOf(15), h.a.class);
+    this.rWX.put(Integer.valueOf(10), g.a.class);
+    this.rWX.put(Integer.valueOf(12), g.a.class);
+    this.rWY = new av.5(this);
+    this.rWZ = new av.6(this);
+    this.rXa = new av.7(this);
+    this.rGO = bo.dtW();
+    this.rXb = new HashMap();
+    this.rXc = new av.c();
+    this.hCe = new av.2(this);
+    this.rWO = paramw;
+    this.rWP = parami;
+    ab.d("MicroMsg.SnsTimeLineBaseAdapter", "SnsTimeLineAdapter 2");
+    this.gMh = paramListView;
+    ag.cpc();
+    this.cmc = paramMMActivity;
+    this.rks = paramb;
+    this.contextMenuHelper = new l(paramMMActivity);
+    this.jVd = new com.tencent.mm.ui.widget.c.a(paramMMActivity);
+    this.rOF = new aq(paramMMActivity);
+    this.rOy = new ScaleAnimation(0.0F, 1.0F, 1.0F, 1.0F, 1, 1.0F, 1, 0.0F);
+    this.rOy.setDuration(150L);
+    this.rOz = new ScaleAnimation(1.0F, 0.0F, 1.0F, 1.0F, 1, 1.0F, 1, 0.0F);
+    this.rOz.setDuration(150L);
+    this.rOK = new j(paramMMActivity, 0, parami.rFl);
+    this.requestType = 10;
+    this.rON = new bd(paramMMActivity, new av.8(this, paramw), 0, parami.rFl);
+    com.tencent.mm.sdk.b.a.ymk.c(this.hCe);
+    AppMethodBeat.o(39422);
   }
   
-  private void a(int paramInt, ax paramax)
+  public static int D(n paramn)
   {
-    Object localObject1 = paramax.ojd.tKb;
-    com.tencent.mm.kiss.widget.textview.a.a locala = com.tencent.mm.plugin.sns.ui.widget.b.bKA().getTextViewConfig();
-    paramax.pgL = new com.tencent.mm.plugin.sns.data.d();
-    if (this.DEBUG) {
-      y.d("MicroMsg.SnsTimeLineVendingSide", "debug:renderSnsComment position " + paramInt + " commentInfoList: " + ((List)localObject1).size() + " commentData:" + paramax.pgL.omT.size());
-    }
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    AppMethodBeat.i(156760);
+    int i = b(paramn, true);
+    AppMethodBeat.o(156760);
+    return i;
+  }
+  
+  public static String a(TimeLineObject paramTimeLineObject, Context paramContext)
+  {
+    AppMethodBeat.i(39429);
+    paramTimeLineObject = com.tencent.mm.plugin.sns.c.a.gmP.f(paramContext, paramTimeLineObject.xTR.Id, "timeline");
+    AppMethodBeat.o(39429);
+    return paramTimeLineObject;
+  }
+  
+  public static String acj(String paramString)
+  {
+    AppMethodBeat.i(39428);
+    if (bo.isNullOrNil(paramString))
     {
-      Object localObject2 = (btd)((Iterator)localObject1).next();
-      CharSequence localCharSequence = com.tencent.mm.plugin.sns.ui.widget.c.a(this.mContext, (btd)localObject2, this.pgm.oWm, paramax.oje.field_type, paramax.oje.field_userName, 1);
-      Object localObject3 = com.tencent.mm.kiss.widget.textview.c.dNE;
-      if (locala != null)
+      AppMethodBeat.o(39428);
+      return paramString;
+    }
+    int i = paramString.indexOf("://");
+    String str = paramString;
+    if (i != -1) {
+      str = paramString.substring(i + 3);
+    }
+    i = str.indexOf("/");
+    paramString = str;
+    if (i != -1) {
+      paramString = str.substring(0, i);
+    }
+    AppMethodBeat.o(39428);
+    return paramString;
+  }
+  
+  public static String ack(String paramString)
+  {
+    AppMethodBeat.i(39430);
+    ab.d("MicroMsg.SnsTimeLineBaseAdapter", "url:".concat(String.valueOf(paramString)));
+    paramString = com.tencent.mm.plugin.sns.c.a.gmP.H(paramString, "timeline");
+    AppMethodBeat.o(39430);
+    return paramString;
+  }
+  
+  protected static int b(n paramn, boolean paramBoolean)
+  {
+    AppMethodBeat.i(39426);
+    TimeLineObject localTimeLineObject = paramn.csh();
+    if (localTimeLineObject.xTS.wNZ == 1)
+    {
+      if ((paramBoolean) && (localTimeLineObject.dqG == 1))
       {
-        localObject3 = (com.tencent.mm.kiss.widget.textview.b)((com.tencent.mm.kiss.widget.textview.c)localObject3).dNF.get(Integer.valueOf(com.tencent.mm.kiss.widget.textview.c.a(locala)));
-        if (localObject3 != null)
+        AppMethodBeat.o(39426);
+        return 12;
+      }
+      if ((paramn.Ex(32)) && (paramn.csb() != null))
+      {
+        if (paramn.csb().cqp())
         {
-          localObject3 = (LinkedList)((com.tencent.mm.kiss.widget.textview.b)localObject3).dND.get(localCharSequence.toString());
-          if ((localObject3 == null) || (((LinkedList)localObject3).size() == 0)) {
-            paramInt = 0;
-          }
+          AppMethodBeat.o(39426);
+          return 13;
         }
+        if (paramn.cqq())
+        {
+          AppMethodBeat.o(39426);
+          return 14;
+        }
+        if (paramn.csU())
+        {
+          AppMethodBeat.o(39426);
+          return 15;
+        }
+      }
+      int i = localTimeLineObject.xTS.wOa.size();
+      if (i <= 1)
+      {
+        AppMethodBeat.o(39426);
+        return 2;
+      }
+      if (i <= 3)
+      {
+        AppMethodBeat.o(39426);
+        return 3;
+      }
+      if (i <= 6)
+      {
+        AppMethodBeat.o(39426);
+        return 4;
+      }
+      AppMethodBeat.o(39426);
+      return 5;
+    }
+    switch (localTimeLineObject.xTS.wNZ)
+    {
+    default: 
+      AppMethodBeat.o(39426);
+      return 1;
+    case 4: 
+      AppMethodBeat.o(39426);
+      return 0;
+    case 5: 
+      if ((paramn.Ex(32)) && (paramn.csb() != null))
+      {
+        if (paramn.csb().cqp())
+        {
+          AppMethodBeat.o(39426);
+          return 13;
+        }
+        if (paramn.cqq())
+        {
+          AppMethodBeat.o(39426);
+          return 14;
+        }
+        if (paramn.csU())
+        {
+          AppMethodBeat.o(39426);
+          return 15;
+        }
+      }
+      AppMethodBeat.o(39426);
+      return 1;
+    case 2: 
+      AppMethodBeat.o(39426);
+      return 6;
+    case 8: 
+      AppMethodBeat.o(39426);
+      return 3;
+    case 7: 
+      AppMethodBeat.o(39426);
+      return 2;
+    case 14: 
+      AppMethodBeat.o(39426);
+      return 7;
+    case 15: 
+      if ((paramBoolean) && (localTimeLineObject.xTZ == 1))
+      {
+        AppMethodBeat.o(39426);
+        return 12;
+      }
+      if ((paramn.Ex(32)) && (paramn.csb() != null))
+      {
+        if (paramn.csb().cqp())
+        {
+          AppMethodBeat.o(39426);
+          return 13;
+        }
+        if (paramn.cqq())
+        {
+          AppMethodBeat.o(39426);
+          return 14;
+        }
+        if (paramn.csU())
+        {
+          AppMethodBeat.o(39426);
+          return 15;
+        }
+      }
+      AppMethodBeat.o(39426);
+      return 9;
+    case 21: 
+      AppMethodBeat.o(39426);
+      return 10;
+    }
+    AppMethodBeat.o(39426);
+    return 11;
+  }
+  
+  public final n EE(int paramInt)
+  {
+    AppMethodBeat.i(39433);
+    n localn = this.rWO.EE(paramInt);
+    AppMethodBeat.o(39433);
+    return localn;
+  }
+  
+  public final boolean EF(int paramInt)
+  {
+    AppMethodBeat.i(39435);
+    if ((paramInt < this.gMh.getFirstVisiblePosition() - 1) || (paramInt > this.gMh.getLastVisiblePosition() - 1))
+    {
+      AppMethodBeat.o(39435);
+      return false;
+    }
+    AppMethodBeat.o(39435);
+    return true;
+  }
+  
+  public final void W(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(39431);
+    this.rWO.ctD();
+    paramRunnable.run();
+    AppMethodBeat.o(39431);
+  }
+  
+  public final void a(SnsCommentCollapseLayout paramSnsCommentCollapseLayout)
+  {
+    AppMethodBeat.i(39418);
+    this.rWQ.add(paramSnsCommentCollapseLayout);
+    AppMethodBeat.o(39418);
+  }
+  
+  public final void cvS()
+  {
+    AppMethodBeat.i(39416);
+    this.rFT.clear();
+    AppMethodBeat.o(39416);
+  }
+  
+  public final t cvT()
+  {
+    if ((this.cmc instanceof t)) {
+      return (t)this.cmc;
+    }
+    return null;
+  }
+  
+  public final SnsCommentCollapseLayout cvU()
+  {
+    AppMethodBeat.i(39417);
+    if (this.rWQ.size() == 0)
+    {
+      localSnsCommentCollapseLayout = new SnsCommentCollapseLayout(this.cmc);
+      AppMethodBeat.o(39417);
+      return localSnsCommentCollapseLayout;
+    }
+    SnsCommentCollapseLayout localSnsCommentCollapseLayout = (SnsCommentCollapseLayout)this.rWQ.removeFirst();
+    AppMethodBeat.o(39417);
+    return localSnsCommentCollapseLayout;
+  }
+  
+  public final boolean cvV()
+  {
+    AppMethodBeat.i(39419);
+    if (this.rWQ != null) {
+      this.rWQ.clear();
+    }
+    if (this.rWX != null) {
+      this.rWX.clear();
+    }
+    com.tencent.mm.pluginsdk.ui.d.j.clearCache();
+    com.tencent.mm.kiss.widget.textview.c.eLm.SJ();
+    AppMethodBeat.o(39419);
+    return true;
+  }
+  
+  public final void cvW()
+  {
+    AppMethodBeat.i(39421);
+    this.rWO.ctD();
+    AppMethodBeat.o(39421);
+  }
+  
+  public final void cvX()
+  {
+    AppMethodBeat.i(39423);
+    int i = this.gMh.getFirstVisiblePosition() - this.gMh.getHeaderViewsCount();
+    int j = this.gMh.getLastVisiblePosition() - this.gMh.getHeaderViewsCount();
+    ab.i("MicroMsg.SnsTimeLineBaseAdapter", "reConverItem start ~ end" + i + " " + j);
+    int k = this.rWO.getCount();
+    if ((i <= j) && (i < k))
+    {
+      n localn = EE(i);
+      Object localObject = (View)this.rWV.get(Integer.valueOf(i));
+      if ((localObject == null) || (localn == null) || (((View)localObject).getTag() == null)) {
+        ab.e("MicroMsg.SnsTimeLineBaseAdapter", " passe ".concat(String.valueOf(i)));
       }
       for (;;)
       {
-        if (paramInt == 0) {
-          break label249;
-        }
-        paramax.pgL.a((btd)localObject2, localCharSequence);
+        i += 1;
         break;
-        paramInt = 1;
-        continue;
-        paramInt = 0;
-      }
-      label249:
-      paramax.pgL.a((btd)localObject2, localCharSequence);
-      paramInt = com.tencent.mm.plugin.sns.ui.widget.b.bKA().getViewWidth();
-      if (paramInt > 0)
-      {
-        localObject2 = com.tencent.mm.kiss.widget.textview.d.a(localCharSequence, paramInt, locala).EF();
-        com.tencent.mm.kiss.widget.textview.c.dNE.a(locala, (com.tencent.mm.kiss.widget.textview.f)localObject2);
+        localObject = (BaseTimeLineItem.BaseViewHolder)((View)localObject).getTag();
+        ab.i("MicroMsg.SnsTimeLineBaseAdapter", "reConverItem " + i + " " + ((BaseTimeLineItem.BaseViewHolder)localObject).position);
+        ((BaseTimeLineItem.BaseViewHolder)localObject).shL.a((BaseTimeLineItem.BaseViewHolder)localObject, i, localn);
       }
     }
+    AppMethodBeat.o(39423);
   }
   
-  private String d(bxk parambxk)
+  public final w cvY()
   {
-    Object localObject;
-    if (parambxk.tNr.sPI == 26) {
-      localObject = this.mContext.getString(i.j.favorite);
-    }
-    String str;
-    do
+    return this.rWO;
+  }
+  
+  public final void dR(View paramView)
+  {
+    AppMethodBeat.i(39432);
+    if (!(paramView.getTag() instanceof BaseTimeLineItem.BaseViewHolder))
     {
-      return localObject;
-      if (parambxk.tNq == null) {
-        return "";
-      }
-      if (bk.bl(parambxk.tNq.lsK)) {
-        return "";
-      }
-      if (this.pgs.containsKey(parambxk.tNq.lsK)) {
-        return (String)this.pgs.get(parambxk.tNq.lsK);
-      }
-      int i = bk.getInt(parambxk.tNq.hQE, 0);
-      str = com.tencent.mm.pluginsdk.model.app.g.b(this.mContext, com.tencent.mm.pluginsdk.model.app.g.dh(parambxk.tNq.lsK, i), null);
-      localObject = str;
-    } while (bk.bl(str));
-    this.pgs.put(parambxk.tNq.lsK, str);
-    return str;
-  }
-  
-  private static boolean e(bxk parambxk)
-  {
-    if (bk.bl(parambxk.tNs)) {}
-    while ((am.a.bEf() & 0x2) <= 0) {
-      return true;
+      AppMethodBeat.o(39432);
+      return;
     }
-    return false;
-  }
-  
-  private ax yT(int paramInt)
-  {
-    if (paramInt < 0) {
-      return null;
-    }
-    y.i("MicroMsg.SnsTimeLineVendingSide", "resolveAsynchronous %s", new Object[] { Integer.valueOf(paramInt) });
-    long l2 = System.currentTimeMillis();
-    ax localax = new ax();
-    n localn = (n)super.getItem(paramInt);
-    if (localn == null)
+    ab.d("MicroMsg.SnsTimeLineBaseAdapter", "close comment v");
+    if ((this.rWS != null) && (this.rWS.getVisibility() == 0))
     {
-      y.printErrStackTrace("MicroMsg.SnsTimeLineVendingSide", new Throwable(), "mSnsInfo is null, index %s, count %s, why?", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mCount) });
-      return localax;
+      this.rWS.startAnimation(this.rOz);
+      this.rOz.setAnimationListener(new av.10(this));
     }
-    bxk localbxk = localn.bGe();
-    bto localbto = aj.q(localn);
-    int j = au.E(localn);
-    localax.amH = j;
-    localax.pgP = localn.field_snsId;
-    localax.pgT = localn.field_likeFlag;
-    localax.pgU = localn.bGA();
-    Object localObject1;
-    Object localObject2;
+    AppMethodBeat.o(39432);
+  }
+  
+  public final int getCount()
+  {
+    AppMethodBeat.i(39434);
+    int i = this.rWO.getCount();
+    AppMethodBeat.o(39434);
+    return i;
+  }
+  
+  public final int getItemViewType(int paramInt)
+  {
+    AppMethodBeat.i(39425);
+    paramInt = b(this.rWO.EE(paramInt), true);
+    AppMethodBeat.o(39425);
+    return paramInt;
+  }
+  
+  public final View h(int paramInt, View paramView)
+  {
+    AppMethodBeat.i(39424);
+    n localn = this.rWO.EE(paramInt);
+    TimeLineObject localTimeLineObject = localn.csh();
+    int j = b(localn, true);
+    Object localObject1 = null;
+    localObject3 = null;
+    Object localObject4 = localObject1;
+    Object localObject2 = localObject3;
     int i;
-    Object localObject3;
-    if (localn.bGb() == null)
+    if (paramView != null)
     {
-      localObject1 = "";
-      localax.pgV = ((String)localObject1);
-      localax.oje = localn;
-      localax.oji = localbxk;
-      localax.ojd = localbto;
-      localObject1 = localax.oji.tNo;
-      localObject2 = this.mContext;
-      com.tencent.mm.plugin.sns.ui.widget.d.bKB();
-      localObject2 = com.tencent.mm.plugin.sns.ui.widget.e.a((Context)localObject2, (String)localObject1, com.tencent.mm.plugin.sns.ui.widget.d.getTextSize());
-      localax.pgM = ((CharSequence)localObject2);
-      i = com.tencent.mm.plugin.sns.ui.widget.d.bKB().getViewWidth();
-      if (paramInt >= this.pgm.getCount()) {
-        break label2896;
+      localObject2 = paramView.getTag(2131828140);
+      if (!(localObject2 instanceof Integer)) {
+        break label426;
       }
-      localObject3 = (n)super.getItem(paramInt);
-      if ((localObject3 == null) || (!((n)localObject3).yr(32))) {
-        break label2896;
+      i = ((Integer)localObject2).intValue();
+      localObject4 = localObject1;
+      localObject2 = localObject3;
+      if (i == j)
+      {
+        localObject2 = (BaseTimeLineItem.BaseViewHolder)paramView.getTag();
+        localObject4 = ((BaseTimeLineItem.BaseViewHolder)localObject2).shL;
       }
-      localObject3 = ((n)localObject3).bFZ();
-      if ((localObject3 == null) || (((com.tencent.mm.plugin.sns.storage.b)localObject3).oBg != 1)) {
-        break label2896;
-      }
-      i = ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay().getWidth() - com.tencent.mm.cb.a.fromDPToPix(this.mContext, 50) - com.tencent.mm.cb.a.fromDPToPix(this.mContext, 50) - com.tencent.mm.cb.a.fromDPToPix(this.mContext, 12) - com.tencent.mm.cb.a.fromDPToPix(this.mContext, 12);
     }
-    label572:
-    label581:
-    label1225:
-    label1354:
-    label1484:
-    label2381:
-    label2896:
+    localObject1 = localObject2;
+    localObject3 = paramView;
+    if (localObject2 == null) {
+      switch (j)
+      {
+      default: 
+        localObject1 = new f();
+      }
+    }
     for (;;)
     {
-      if (this.DEBUG) {
-        y.d("MicroMsg.SnsTimeLineVendingSide", "debug:renderSnsPostDesc position " + paramInt + " viewWidth: " + i + " desc:" + (String)localObject1);
-      }
-      localObject1 = com.tencent.mm.kiss.widget.textview.d.a((CharSequence)localObject2, i, com.tencent.mm.plugin.sns.ui.widget.d.bKB().getTextViewConfig()).EF();
-      com.tencent.mm.kiss.widget.textview.c.dNE.a(com.tencent.mm.plugin.sns.ui.widget.d.bKB().getTextViewConfig(), (com.tencent.mm.kiss.widget.textview.f)localObject1);
-      if (((com.tencent.mm.kiss.widget.textview.f)localObject1).dOj.getLineCount() > 7)
-      {
-        localObject1 = com.tencent.mm.kiss.widget.textview.d.a((CharSequence)localObject2, i, com.tencent.mm.plugin.sns.ui.widget.d.bKB().bKC()).EF();
-        com.tencent.mm.kiss.widget.textview.c.dNE.a(com.tencent.mm.plugin.sns.ui.widget.d.bKB().bKC(), (com.tencent.mm.kiss.widget.textview.f)localObject1);
-      }
-      a(paramInt, localax);
-      label509:
-      Object localObject4;
-      if (localax.oje.yr(32))
-      {
-        com.tencent.mm.plugin.sns.model.af.bDC().b(localn, null);
-        d(localax.oji);
-        localObject4 = localn.field_userName;
-        localObject1 = this.dXx.abk((String)localObject4);
-        if (!bk.bl((String)localObject4))
-        {
-          if (!((String)localObject4).equals(this.peN)) {
-            break label2893;
-          }
-          if (this.pgo != null) {
-            break label1277;
-          }
-          this.pgo = ((com.tencent.mm.n.a)localObject1);
-        }
-      }
       for (;;)
       {
-        Object localObject5;
-        label626:
-        boolean bool1;
-        if (localObject1 == null)
+        Iterator localIterator;
+        Object localObject6;
+        label426:
+        try
         {
-          localObject2 = localObject4;
-          localObject3 = localObject2;
-          if (localn.yr(32))
+          if (this.rWX.get(Integer.valueOf(j)) != null)
           {
-            localObject5 = localn.bFZ();
-            localObject3 = localObject2;
-            if (localObject5 != null)
-            {
-              if (!((com.tencent.mm.plugin.sns.storage.b)localObject5).oBA) {
-                break label1296;
-              }
-              localObject3 = ((com.tencent.mm.plugin.sns.storage.b)localObject5).oBB;
-            }
+            localObject3 = (BaseTimeLineItem.BaseViewHolder)((Class)this.rWX.get(Integer.valueOf(j))).newInstance();
+            localObject2 = localObject3;
+            localObject3 = paramView;
           }
-          localax.hcm = ((String)localObject4);
-          localax.phd = ((String)localObject3);
-          localax.oNn = localn.yr(32);
-          localax.oOM = localn.bGE();
-          if (localObject1 != null) {
-            break label1333;
-          }
-          bool1 = true;
-          localax.phe = bool1;
-          localax.pgN = ((com.tencent.mm.n.a)localObject1);
-          localax.pgO = localn.bGk();
-          localax.pgQ = localbxk.tNo;
-          localax.pgR = localbxk.tNt;
-          localax.pgS = localn.field_createTime;
-          localax.pgW = ay.g(this.mContext, localax.pgS * 1000L);
-          localax.phg = false;
-          if ((j == 10) && (!q.Gj().equals(localbxk.hPY)) && (localbto.tKm != null) && (localbto.tKm.tKO != 0))
-          {
-            localax.phh = localbto.tKm.tKO;
-            localax.phg = true;
-          }
-          if (!localax.oNn) {
-            break label1360;
-          }
-          localObject1 = localn.bGb();
-          if (localObject1 != null)
-          {
-            localax.phj = ((com.tencent.mm.plugin.sns.storage.a)localObject1).oAd;
-            if (bk.bl(((com.tencent.mm.plugin.sns.storage.a)localObject1).oAe)) {
-              break label1354;
-            }
-            bool1 = true;
-            label854:
-            localax.phk = bool1;
-          }
-          label861:
-          localObject1 = d(localbxk);
-          if ((!com.tencent.mm.plugin.sns.c.a.eUS.ct((String)localObject1)) || (!e(localbxk))) {
-            break label1636;
-          }
-          localax.phl = true;
-          if (localbxk.tNq != null) {
-            break label1500;
-          }
-          bool1 = false;
         }
-        for (;;)
+        catch (Exception localException1) {}
+        try
         {
-          localax.mAppName = ((String)localObject1);
-          localax.phn = bool1;
-          if ((localbxk.ouE != null) && (!bk.bl(localbxk.ouE.qTY)))
-          {
-            localax.mAppName = this.mContext.getString(i.j.top_story_share_app_brand_name);
-            localax.phl = true;
+          ((BaseTimeLineItem.BaseViewHolder)localObject2).shL = ((BaseTimeLineItem)localObject1);
+          localObject3 = paramView;
+          ((BaseTimeLineItem.BaseViewHolder)localObject2).timeLineObject = localTimeLineObject;
+          localObject3 = paramView;
+          paramView = ((BaseTimeLineItem)localObject1).a(this.cmc, (BaseTimeLineItem.BaseViewHolder)localObject2, j, this, localn);
+          localObject3 = paramView;
+          paramView.setTag(2131828140, Integer.valueOf(j));
+          localObject4 = localObject1;
+          localObject3 = paramView;
+          localObject1 = localObject2;
+          ((BaseTimeLineItem)localObject4).setIsFromMainTimeline(this.rNW);
+          paramView = localn.getSnsId();
+          localObject2 = new ArrayList();
+          if (com.tencent.mm.plugin.sns.model.aq.cpH().size() <= 0) {
+            break label669;
           }
-          label990:
-          label1277:
-          boolean bool2;
-          if ((localax.hcm != null) && (localax.hcm.equals(this.peN)))
+          localIterator = com.tencent.mm.plugin.sns.model.aq.cpH().keySet().iterator();
+          if (!localIterator.hasNext()) {
+            break label669;
+          }
+          localObject6 = (String)localIterator.next();
+          if (((String)localObject6).startsWith(paramView))
           {
-            bool1 = true;
-            localax.phf = bool1;
-            localax.phr = localn.bGG();
-            localax.phs = localn.bGw().tsu;
-            localax.pht = false;
-            if ((localbto != null) && (localax.phf))
+            localObject6 = (aq.b)com.tencent.mm.plugin.sns.model.aq.cpH().get(localObject6);
+            if (com.tencent.mm.plugin.sns.model.aq.c((aq.b)localObject6))
             {
-              i = localbto.ttI;
-              if ((i == 3) || (i == 5)) {
-                localax.pht = true;
-              }
-            }
-            if (localbto == null) {
-              break label2447;
-            }
-            if (localbto.tKe.size() > 0) {
-              break label1712;
-            }
-            localax.phu = false;
-            break label1897;
-            if ((localbto.tKm == null) || (!q.Gj().equals(localbxk.hPY)) || (localbto.tKm.tKO <= 0)) {
-              break label1972;
-            }
-            localax.phz = (com.tencent.mm.plugin.sns.lucky.a.m.b(localn, localbto) * 1.0D);
-            localax.phy = localbto.tKm.tKO;
-            localax.phx = true;
-            localObject2 = new b.a();
-            localObject3 = localbto.tKm.tKP.iterator();
-            for (;;)
-            {
-              if (((Iterator)localObject3).hasNext())
-              {
-                localObject4 = (btk)((Iterator)localObject3).next();
-                localObject1 = this.dXx.abk(((btk)localObject4).sxM);
-                if (localObject1 != null)
-                {
-                  localObject1 = bk.pm(((com.tencent.mm.n.a)localObject1).Bq());
-                  ((b.a)localObject2).w(new com.tencent.mm.vending.j.a[] { com.tencent.mm.vending.j.a.r(((btk)localObject4).sxM, localObject1) });
-                  continue;
-                  localObject1 = localn.bGb().fVM;
-                  break;
-                  com.tencent.mm.plugin.sns.model.af.bDC().a(localn, null);
-                  break label509;
-                  localObject1 = this.pgo;
-                  break label572;
-                  localObject2 = ((com.tencent.mm.n.a)localObject1).Bq();
-                  break label581;
-                  localObject3 = localObject2;
-                  if (!bk.bl((String)localObject2)) {
-                    break label626;
-                  }
-                  localObject3 = localObject2;
-                  if (bk.bl(((com.tencent.mm.plugin.sns.storage.b)localObject5).nickname)) {
-                    break label626;
-                  }
-                  localObject3 = ((com.tencent.mm.plugin.sns.storage.b)localObject5).nickname;
-                  break label626;
-                  if ((int)((com.tencent.mm.n.a)localObject1).dBe == 0)
-                  {
-                    bool1 = true;
-                    break label670;
-                  }
-                  bool1 = false;
-                  break label670;
-                  bool1 = false;
-                  break label854;
-                  label1360:
-                  if (localbxk.tNp == null)
-                  {
-                    localObject1 = null;
-                    label1371:
-                    if (localbxk.tNp != null) {
-                      break label1461;
-                    }
-                    localObject2 = null;
-                    label1382:
-                    if (bk.bl((String)localObject2)) {
-                      break label1484;
-                    }
-                    if ((localn.field_snsId != 0L) || (bk.bl((String)localObject1))) {
-                      break label1474;
-                    }
-                  }
-                  for (localax.phj = ((String)localObject1 + "·" + (String)localObject2);; localax.phj = ((String)localObject2))
-                  {
-                    localax.phk = true;
-                    break;
-                    localObject1 = localbxk.tNp.ffj;
-                    break label1371;
-                    localObject2 = localbxk.tNp.lFn;
-                    break label1382;
-                  }
-                  localax.phj = ((String)localObject1);
-                  localax.phk = false;
-                  break label861;
-                  label1500:
-                  if (this.pgt.containsKey(localbxk.tNq.lsK))
-                  {
-                    if (((Boolean)this.pgt.get(localbxk.tNq.lsK)).booleanValue()) {
-                      break label2887;
-                    }
-                    bool1 = false;
-                    break label907;
-                  }
-                  if (com.tencent.mm.pluginsdk.model.app.g.cu(localbxk.tNq.lsK)) {
-                    if (localbxk.tNq.swJ == 0)
-                    {
-                      bool2 = false;
-                      bool1 = false;
-                    }
-                  }
-                }
-              }
+              ((ArrayList)localObject2).add(localObject6);
+              continue;
+              i = -1;
             }
           }
+        }
+        catch (Exception localException2)
+        {
           for (;;)
           {
-            this.pgt.put(localbxk.tNq.lsK, Boolean.valueOf(bool2));
-            break;
-            bool2 = true;
-            bool1 = true;
-            continue;
-            bool2 = com.tencent.mm.pluginsdk.model.app.g.VR(localbxk.tNq.lsK);
-            if (!bool2)
-            {
-              bool1 = false;
-              continue;
-              label1636:
-              if ((!bk.bl(localbxk.tNs)) && (e(localbxk)))
-              {
-                localax.mAppName = ((String)localObject1);
-                localax.phm = true;
-                localax.php = localbxk.sbL;
-                localax.pho = localbxk.tNs;
-                break label921;
-              }
-              localax.phl = false;
-              localax.phm = false;
-              break label921;
-              bool1 = false;
-              break label990;
-              if (this.peN.equals(localbto.sxM))
-              {
-                localax.phu = true;
-                localObject2 = new StringBuffer();
-                localObject3 = localbto.tKe.iterator();
-                i = 0;
-                if (((Iterator)localObject3).hasNext())
-                {
-                  localObject1 = (btd)((Iterator)localObject3).next();
-                  if (i == 0)
-                  {
-                    i = 1;
-                    ((StringBuffer)localObject2).append("  ");
-                  }
-                  for (;;)
-                  {
-                    if (((btd)localObject1).tqh == null) {
-                      break label1825;
-                    }
-                    ((StringBuffer)localObject2).append(((btd)localObject1).tqh);
-                    break;
-                    ((StringBuffer)localObject2).append(",  ");
-                  }
-                  localObject4 = this.dXx.abk(((btd)localObject1).sxM);
-                  if (localObject4 == null) {}
-                  for (localObject1 = ((btd)localObject1).sxM;; localObject1 = ((com.tencent.mm.n.a)localObject4).Bq())
-                  {
-                    ((StringBuffer)localObject2).append((String)localObject1);
-                    break;
-                  }
-                }
-                localax.phv = ((StringBuffer)localObject2).toString();
-                break label1083;
-              }
-              localObject1 = localbto.tKe.iterator();
-              label1897:
-              if (!((Iterator)localObject1).hasNext()) {
-                break label1083;
-              }
-              localObject2 = (btd)((Iterator)localObject1).next();
-              if (!this.peN.equals(((btd)localObject2).sxM)) {
-                break label1082;
-              }
-              localax.phu = true;
-              localax.phw = true;
-              break label1083;
-              localObject1 = bk.pm(((btk)localObject4).sxM);
-              break label1225;
-              localax.phA = ((b.a)localObject2).cKV();
-              if (localbto.tJY.size() > 0)
-              {
-                localObject2 = new b.a();
-                localObject3 = localbto.tJY.iterator();
-                if (((Iterator)localObject3).hasNext())
-                {
-                  localObject4 = (btd)((Iterator)localObject3).next();
-                  localObject1 = this.dXx.abk(((btd)localObject4).sxM);
-                  if (localObject1 != null) {}
-                  for (localObject1 = bk.pm(((com.tencent.mm.n.a)localObject1).Bq());; localObject1 = bk.pm(((btd)localObject4).sxM))
-                  {
-                    ((b.a)localObject2).w(new com.tencent.mm.vending.j.a[] { com.tencent.mm.vending.j.a.r(((btd)localObject4).sxM, localObject1) });
-                    break;
-                  }
-                }
-                localax.phB = ((b.a)localObject2).cKV();
-              }
-              if (localbto.tKb.size() > 0)
-              {
-                localObject2 = new b.a();
-                localObject3 = localbto.tKb.iterator();
-                if (((Iterator)localObject3).hasNext())
-                {
-                  localObject5 = (btd)((Iterator)localObject3).next();
-                  long l1;
-                  if (((btd)localObject5).tJu != 0)
-                  {
-                    l1 = ((btd)localObject5).tJu;
-                    label2172:
-                    localObject4 = ((btd)localObject5).sxM;
-                    if (!((btd)localObject5).sxM.equals(this.peN)) {
-                      break label2390;
-                    }
-                    if (this.pgo != null) {
-                      break label2381;
-                    }
-                    localObject1 = this.dXx.abk(((btd)localObject5).sxM);
-                    this.pgo = ((com.tencent.mm.n.a)localObject1);
-                    if (localObject1 == null) {
-                      break label2409;
-                    }
-                    localObject1 = ((com.tencent.mm.n.a)localObject1).Bq();
-                  }
-                  for (;;)
-                  {
-                    String str = ((btd)localObject5).kVs;
-                    localObject5 = (CharSequence)localax.pgL.omT.get(((btd)localObject5).tJu + "-" + ((btd)localObject5).tJx + "-" + ((btd)localObject5).kVs);
-                    com.tencent.mm.vending.j.f localf = new com.tencent.mm.vending.j.f();
-                    localf.a = new Object[] { Long.valueOf(l1), localObject4, localObject1, str, localObject5 };
-                    ((b.a)localObject2).w(new com.tencent.mm.vending.j.a[] { (com.tencent.mm.vending.j.f)localf });
-                    break;
-                    l1 = ((btd)localObject5).tJx;
-                    break label2172;
-                    localObject1 = this.pgo;
-                    break label2223;
-                    label2390:
-                    localObject1 = this.dXx.abk(((btd)localObject5).sxM);
-                    break label2223;
-                    label2409:
-                    if (((btd)localObject5).tqh != null) {
-                      localObject1 = ((btd)localObject5).tqh;
-                    } else {
-                      localObject1 = ((btd)localObject5).sxM;
-                    }
-                  }
-                }
-                localax.phC = ((b.a)localObject2).cKV();
-              }
-              af.a(this.mContext, localax, localbxk.ouC);
-              if (localax.oNn)
-              {
-                localax.pgX = localn.bGb();
-                localax.pgY = localn.bFZ();
-                localObject1 = localn.bFZ();
-                if (localObject1 != null)
-                {
-                  localObject1 = ((com.tencent.mm.plugin.sns.storage.b)localObject1).oAF;
-                  localax.pgZ = ((String)localObject1);
-                }
-              }
-              else if (localax.oNn)
-              {
-                localObject3 = localax.pgX;
-                if (localax.pgX.oAf != com.tencent.mm.plugin.sns.storage.a.ozR) {
-                  break label2644;
-                }
-                localax.pha = ((com.tencent.mm.plugin.sns.storage.a)localObject3).oAg;
-              }
-              for (;;)
-              {
-                localObject1 = localn.bGw();
-                localax.phF = ((awe)localObject1);
-                if ((localObject1 != null) && (!q.Gj().equals(localbxk.hPY)) && (com.tencent.mm.plugin.sns.lucky.a.m.a(localn, localbto))) {
-                  localax.phi = true;
-                }
-                y.d("MicroMsg.SnsTimeLineVendingSide", "SnsTimeLineVendingStruct resolve %s %s ms", new Object[] { Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis() - l2) });
-                return localax;
-                localObject1 = "";
-                break;
-                label2644:
-                if ((((com.tencent.mm.plugin.sns.storage.a)localObject3).oAf == com.tencent.mm.plugin.sns.storage.a.ozS) && (!bk.bl(((com.tencent.mm.plugin.sns.storage.a)localObject3).oAg)))
-                {
-                  localObject2 = "";
-                  localObject4 = ((com.tencent.mm.plugin.sns.storage.a)localObject3).oAi.iterator();
-                  if (((Iterator)localObject4).hasNext())
-                  {
-                    localObject5 = (String)((Iterator)localObject4).next();
-                    localObject1 = com.tencent.mm.plugin.sns.model.af.bDt().abk((String)localObject5);
-                    if (localObject1 != null)
-                    {
-                      localObject1 = ((com.tencent.mm.n.a)localObject1).Bq();
-                      if (!bk.bl((String)localObject1)) {
-                        localObject1 = (String)localObject2 + (String)localObject1;
-                      }
-                    }
-                    for (;;)
-                    {
-                      localObject2 = localObject1;
-                      if (((com.tencent.mm.plugin.sns.storage.a)localObject3).oAi.getLast() == localObject5) {
-                        break;
-                      }
-                      localObject2 = (String)localObject1 + ",";
-                      break;
-                      localObject1 = (String)localObject2 + (String)localObject5;
-                      continue;
-                      localObject1 = (String)localObject2 + (String)localObject5;
-                    }
-                  }
-                  localax.phc = ((String)localObject2);
-                  localax.phb = String.format(((com.tencent.mm.plugin.sns.storage.a)localObject3).oAg, new Object[] { localObject2 });
-                }
-              }
-            }
-            bool1 = true;
+            Object localObject5;
+            paramView = (View)localObject3;
           }
-          bool1 = true;
         }
       }
+      localObject1 = new com.tencent.mm.plugin.sns.ui.item.i();
+      continue;
+      localObject1 = new g();
+      continue;
+      localObject1 = new g();
+      continue;
+      localObject1 = new g();
+      continue;
+      localObject1 = new g();
+      continue;
+      localObject1 = new e();
+      continue;
+      localObject1 = new f();
+      continue;
+      localObject1 = new f();
+      continue;
+      localObject1 = new f();
+      continue;
+      localObject1 = new k();
+      continue;
+      localObject1 = new d();
+      continue;
+      localObject1 = new com.tencent.mm.plugin.sns.ui.item.j();
+      continue;
+      localObject1 = new com.tencent.mm.plugin.sns.ui.item.b();
+      continue;
+      localObject1 = new com.tencent.mm.plugin.sns.ui.item.a();
+      continue;
+      localObject1 = new com.tencent.mm.plugin.sns.ui.item.c();
+      continue;
+      localObject1 = new h();
+      continue;
+      localObject3 = new g.a();
+      localObject2 = localObject3;
+      continue;
+      ab.printErrStackTrace("MicroMsg.SnsTimeLineBaseAdapter", localException1, "create holder error", new Object[0]);
+      localObject5 = localObject1;
+      localObject1 = localObject2;
+      localObject3 = paramView;
     }
-  }
-  
-  protected final Cursor bJN()
-  {
-    if (!this.pgp) {}
-    label781:
-    label786:
-    label928:
-    label1093:
-    for (;;)
+    label669:
+    localObject5.sgH = ((ArrayList)localObject2);
+    localObject5.a((BaseTimeLineItem.BaseViewHolder)localObject1, paramInt, localn, localTimeLineObject, j, this);
+    if (com.tencent.mm.plugin.sns.model.aq.dn(localn.getSnsId(), 2))
     {
-      int k;
-      Object localObject4;
-      Object localObject5;
-      Object localObject6;
-      synchronized (this.pgr)
-      {
-        this.jKL = v(0L, this.jKL);
-        this.pgp = true;
-        k = com.tencent.mm.plugin.sns.model.af.bDF().OO(this.jKL);
-        y.i("MicroMsg.SnsTimeLineVendingSide", "create time sql %s to %s getLimitSeq() %s", new Object[] { Integer.valueOf(this.pgn), Integer.valueOf(k), this.jKL });
-        if (this.pgn == k) {
-          break label928;
-        }
-        ??? = com.tencent.mm.plugin.sns.model.af.bDI().dR(this.pgn, k);
-        if ((??? == null) || (!((Cursor)???).moveToFirst())) {
-          break label888;
-        }
-        Object localObject2 = new LinkedList();
-        localObject4 = new com.tencent.mm.plugin.sns.storage.e();
-        ((com.tencent.mm.plugin.sns.storage.e)localObject4).d((Cursor)???);
-        localObject5 = ((com.tencent.mm.plugin.sns.storage.e)localObject4).bGl();
-        localObject6 = new StringBuilder("ad xml ");
-        Object localObject7 = ((n)localObject5).bGN();
-        StringBuffer localStringBuffer = new StringBuffer();
-        localStringBuffer.append(((n)localObject5).field_stringSeq);
-        localStringBuffer.append(((com.tencent.mm.plugin.sns.storage.e)localObject7).field_adxml);
-        localStringBuffer.append(" <createtime " + ((n)localObject5).field_createTime + ">");
-        localStringBuffer.append(" <exposuretime " + ((com.tencent.mm.plugin.sns.storage.e)localObject7).field_exposureTime + ">");
-        localStringBuffer.append(" <adcreatetime " + ((com.tencent.mm.plugin.sns.storage.e)localObject7).field_createAdTime + "> ");
-        localStringBuffer.append(((com.tencent.mm.plugin.sns.storage.e)localObject7).bGe().tNo);
-        y.d("MicroMsg.SnsTimeLineVendingSide", localStringBuffer.toString());
-        l1 = 21600L;
-        localObject6 = ((n)localObject5).bGb();
-        i = ((n)localObject5).field_createTime;
-        if ((((com.tencent.mm.plugin.sns.storage.e)localObject4).field_localFlag & 0x80) > 0)
-        {
-          bool = true;
-          if (localObject6 == null) {
-            break label1093;
-          }
-          if (!bool) {
-            break label761;
-          }
-          l1 = 60L * ((com.tencent.mm.plugin.sns.storage.a)localObject6).ozV;
-          i = ((com.tencent.mm.plugin.sns.storage.e)localObject4).field_exposureTime;
-          long l2 = bk.cn(i);
-          if (l2 < l1) {
-            break label786;
-          }
-          localObject6 = aj.q((n)localObject5);
-          if (((n)localObject5).field_likeFlag == 0)
-          {
-            localObject6 = ((bto)localObject6).tKb.iterator();
-            if (!((Iterator)localObject6).hasNext()) {
-              break label781;
-            }
-            localObject7 = (btd)((Iterator)localObject6).next();
-            if ((localObject7 == null) || (bk.bl(((btd)localObject7).sxM)) || (!((btd)localObject7).sxM.equals(this.peN))) {
-              continue;
-            }
-          }
-          j = 1;
-          if (j != 0) {
-            break label786;
-          }
-          com.tencent.mm.plugin.sns.model.af.bDI().delete(((n)localObject5).field_snsId);
-          y.i("MicroMsg.SnsTimeLineVendingSide", "~~addelete the item " + ((n)localObject5).field_snsId + " exposureTime: " + l1 + " field_createTime: " + ((n)localObject5).field_createTime + " checktime: " + l2 + " gettime: " + i + " isexposure " + bool + " exposureTime " + ((com.tencent.mm.plugin.sns.storage.e)localObject4).field_exposureTime + " adCreateTIme:" + ((com.tencent.mm.plugin.sns.storage.e)localObject4).field_createAdTime);
-          if (!bool) {
-            ((LinkedList)localObject2).add(localObject4);
-          }
-          if (((Cursor)???).moveToNext()) {
-            continue;
-          }
-          if (((LinkedList)localObject2).size() <= 0) {
-            break label888;
-          }
-          localObject4 = new LinkedList();
-          localObject2 = ((LinkedList)localObject2).iterator();
-          if (!((Iterator)localObject2).hasNext()) {
-            break label864;
-          }
-          localObject5 = (com.tencent.mm.plugin.sns.storage.e)((Iterator)localObject2).next();
-          localObject6 = new bj();
-          ((bj)localObject6).sva = 13298;
-          ((bj)localObject6).svb = new com.tencent.mm.bv.b(((com.tencent.mm.plugin.sns.storage.e)localObject5).bGb().ovV.getBytes());
-          ((bj)localObject6).svc = (System.currentTimeMillis() / 1000L);
-          ((LinkedList)localObject4).add(localObject6);
+      paramView = com.tencent.mm.plugin.sns.model.aq.aaD(localn.getSnsId());
+      if (localn.field_snsId == 0L) {
+        paramView = new aq.b();
+      }
+      if (paramView.fon) {
+        if (!paramView.frX) {
+          BaseTimeLineItem.a(paramView, (BaseTimeLineItem.BaseViewHolder)localObject1, paramView.result, paramView.fwM);
         }
       }
-      boolean bool = false;
-      continue;
-      label761:
-      long l1 = 60L * ((com.tencent.mm.plugin.sns.storage.a)localObject6).ozU;
-      int i = ((com.tencent.mm.plugin.sns.storage.e)localObject4).field_createAdTime;
-      continue;
-      int j = 0;
-      continue;
-      l1 = ((n)localObject5).field_snsId;
-      y.i("MicroMsg.SnsTimeLineVendingSide", "try to update snsid " + l1);
-      if (com.tencent.mm.plugin.sns.model.m.fS(l1))
-      {
-        localObject4 = new com.tencent.mm.plugin.sns.model.m(l1, 1, ((n)localObject5).bGb().oAu);
-        com.tencent.mm.kernel.g.DQ();
-        com.tencent.mm.kernel.g.DO().dJT.a((com.tencent.mm.ah.m)localObject4, 0);
-        continue;
-        label864:
-        com.tencent.mm.kernel.g.DQ();
-        com.tencent.mm.kernel.g.DO().dJT.a(new com.tencent.mm.plugin.sns.model.l((LinkedList)localObject4), 0);
-        label888:
-        if (??? != null)
-        {
-          y.d("MicroMsg.SnsTimeLineVendingSide", "test for adcount " + ((Cursor)???).getCount());
-          ((Cursor)???).close();
-        }
-        this.pgn = k;
-        ??? = com.tencent.mm.plugin.sns.model.af.bDF().cv(this.jKL, k);
-        y.d("MicroMsg.SnsTimeLineVendingSide", "onCursorResetFinish");
-        com.tencent.mm.modelsns.b localb = com.tencent.mm.modelsns.b.jd(500);
-        if (localb.QT())
-        {
-          i = this.c;
-          if (i != 0) {
-            break label1003;
-          }
-          localb.jg(0).jg(0).jg(0);
-          localb.QX();
-        }
-        label1003:
-        do
-        {
-          return ???;
-          localObject4 = i.j((n)getItem(1));
-          localObject5 = i.j((n)getItem(i - 1));
-        } while ((((String)localObject4).equals(this.pgu)) && (((String)localObject5).equals(this.pgv)));
-        this.pgu = ((String)localObject4);
-        this.pgv = ((String)localObject5);
-        localb.jg(i).ni((String)localObject4).ni((String)localObject5);
-        localb.QX();
-        return ???;
-      }
-    }
-  }
-  
-  public final void bJj()
-  {
-    looperCheckForVending();
-    long l;
-    if (this.c == 0)
-    {
-      l = 0L;
-      this.pgq = true;
     }
     for (;;)
     {
-      synchronized (this.pgr)
-      {
-        this.jKL = v(l, this.jKL);
-        return;
-        int i = this.c - 1;
-        int j = 0;
-        ??? = (n)getItem(i);
-        if ((??? != null) && (!((n)???).yr(32)) && (((n)???).field_snsId != 0L))
-        {
-          l = ((n)???).field_snsId;
-          y.i("MicroMsg.SnsTimeLineVendingSide", "get list last not ad item %s %s", new Object[] { Long.valueOf(l), ((n)???).field_stringSeq });
-          break;
-        }
-        j += 1;
-        i -= 1;
-        if ((i < 0) || (j > 500)) {
-          l = 0L;
-        }
-      }
+      this.rWV.put(Integer.valueOf(paramInt), localObject3);
+      AppMethodBeat.o(39424);
+      return localObject3;
+      BaseTimeLineItem.f((BaseTimeLineItem.BaseViewHolder)localObject1);
+      com.tencent.mm.plugin.sns.model.aq.dm(paramView.id, 2);
+      continue;
+      BaseTimeLineItem.e((BaseTimeLineItem.BaseViewHolder)localObject1);
+      continue;
+      BaseTimeLineItem.f((BaseTimeLineItem.BaseViewHolder)localObject1);
     }
   }
   
-  public final void destroyAsynchronous()
+  public final void notifyDataSetChanged()
   {
-    super.destroyAsynchronous();
-    com.tencent.mm.kiss.widget.textview.c.dNE.EE();
-    this.pgt.clear();
-    this.mContext = null;
-    this.pgm = null;
-    this.dXx = null;
-    this.wsM = null;
-  }
-  
-  final String v(long paramLong, String paramString)
-  {
-    y.d("MicroMsg.SnsTimeLineVendingSide", "updateLitmitSeq %s %s", new Object[] { Integer.valueOf(com.tencent.mm.plugin.sns.model.af.bDv().bEe()), paramString });
-    Object localObject = com.tencent.mm.plugin.sns.model.af.bDF();
-    int i;
-    String str;
-    if (paramString.equals(""))
-    {
-      i = com.tencent.mm.plugin.sns.model.af.bDv().bEe() / 2;
-      localObject = i.fO(((o)localObject).e(paramLong, i, false));
-      str = this.oSZ;
-      if (!str.equals("")) {
-        break label122;
-      }
-      paramString = (String)localObject;
-      label85:
-      localObject = com.tencent.mm.plugin.sns.model.af.bDJ().OF("@__weixintimtline").bGv();
-      if (((xs)localObject).sUt != 0L) {
-        break label141;
-      }
-    }
-    label122:
-    do
-    {
-      return paramString;
-      i = com.tencent.mm.plugin.sns.model.af.bDv().bEe();
-      break;
-      paramString = (String)localObject;
-      if (((String)localObject).compareTo(str) < 0) {
-        break label85;
-      }
-      paramString = str;
-      break label85;
-      localObject = i.fO(((xs)localObject).sUt);
-      if (paramString.equals("")) {
-        return localObject;
-      }
-    } while (((String)localObject).compareTo(paramString) <= 0);
-    label141:
-    return localObject;
+    AppMethodBeat.i(39420);
+    this.rWO.notifyDataSetChanged();
+    AppMethodBeat.o(39420);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.av
  * JD-Core Version:    0.7.0.1
  */

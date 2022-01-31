@@ -5,9 +5,11 @@ import android.os.Debug;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.view.View;
-import com.tencent.mm.sdk.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.io.Writer;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -21,212 +23,228 @@ import java.util.WeakHashMap;
 
 public final class ListenerInstanceMonitor
 {
-  private static final Map<Object, Set<a>> ueG = new WeakHashMap();
-  private static final byte[] ueH = new byte[0];
-  private static Field ueI = null;
-  private static HandlerThread ueJ = null;
-  private static ah ueK = null;
-  private static volatile boolean ueL = false;
-  private static final String ueM = Activity.class.getName();
-  private static final Runnable ueN = new Runnable()
-  {
-    public final void run()
-    {
-      synchronized ()
-      {
-        if (!ListenerInstanceMonitor.ueL) {
-          return;
-        }
-      }
-      for (;;)
-      {
-        synchronized (ListenerInstanceMonitor.cqC())
-        {
-          if (ListenerInstanceMonitor.aQV().isEmpty())
-          {
-            y.d("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: no listener or cb was added, skip rest logic.");
-            synchronized (ListenerInstanceMonitor.cqA())
-            {
-              if (ListenerInstanceMonitor.ueL) {
-                ListenerInstanceMonitor.cqB().postDelayed(this, 10000L);
-              }
-              return;
-            }
-            localObject5 = finally;
-            throw localObject5;
-          }
-          if (Debug.isDebuggerConnected()) {
-            y.w("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: found debugger connected, disable monitor works in case of misreport.");
-          }
-        }
-        y.d("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: triggering gc...");
-        try
-        {
-          Runtime.getRuntime().gc();
-          Thread.sleep(100L);
-          Runtime.getRuntime().runFinalization();
-          for (;;)
-          {
-            Iterator localIterator2;
-            ListenerInstanceMonitor.a locala;
-            Object localObject7;
-            synchronized (ListenerInstanceMonitor.cqC())
-            {
-              Iterator localIterator1 = ListenerInstanceMonitor.aQV().entrySet().iterator();
-              if (!localIterator1.hasNext()) {
-                break;
-              }
-              localIterator2 = ((Set)((Map.Entry)localIterator1.next()).getValue()).iterator();
-              if (!localIterator2.hasNext()) {
-                continue;
-              }
-              locala = (ListenerInstanceMonitor.a)localIterator2.next();
-              ??? = locala.ueO.get();
-              localObject7 = (Activity)locala.ueP.get();
-              if (localObject7 == null)
-              {
-                y.i("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: Ok, ui [%s] was recycled.", new Object[] { locala.ueQ.getName() });
-                localIterator2.remove();
-              }
-            }
-            boolean bool = ((Activity)localObject7).isDestroyed();
-            int k;
-            label309:
-            Object localObject3;
-            if (!bool)
-            {
-              k = 0;
-              if ((k == 0) || (localObject2 != null)) {
-                break label495;
-              }
-              if (locala.ueT <= 3) {
-                break label633;
-              }
-              localIterator2.remove();
-              if (bl.csf()) {
-                break label692;
-              }
-              if (!bl.cqi()) {
-                break label704;
-              }
-              break label692;
-              if (locala.ueP.get() != null) {
-                break label530;
-              }
-              if (locala.ueR == null) {
-                break label497;
-              }
-              localObject3 = "ui of class [" + locala.ueQ.getName() + "] held by\n [" + locala.cqE() + "] is recycled";
-            }
-            for (;;)
-            {
-              localObject3 = new ListenerInstanceMonitor.ListenerLeakedException((String)localObject3, locala.ueS);
-              if (i == 0) {
-                break label617;
-              }
-              throw ((Throwable)localObject3);
-              localObject7 = Looper.getMainLooper().getThread().getStackTrace();
-              int j = localObject7.length;
-              i = 0;
-              k = bool;
-              if (i >= j) {
-                break label309;
-              }
-              Object localObject8 = localObject7[i];
-              if ((!ListenerInstanceMonitor.ahk().equals(localObject8.getClassName())) || (!"performDestroy".equals(localObject8.getMethodName()))) {
-                break label697;
-              }
-              k = 0;
-              break label309;
-              label495:
-              break;
-              label497:
-              localObject3 = "ui of class [" + locala.ueQ.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is recycled";
-              continue;
-              label530:
-              if (locala.ueR != null) {
-                localObject3 = "ui of class [" + locala.ueQ.getName() + "] held by\n [" + locala.cqE() + "] is leaked.\n Perhaps you should remove the holder from any 'Manager' class when the leaked ui was destroyed.";
-              } else {
-                localObject3 = "ui of class [" + locala.ueQ.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is leaked.\n Perhaps you should remove any instance of this class from any 'Manager'";
-              }
-            }
-            label617:
-            y.printErrStackTrace("MicroMsg.ListenerInstanceMonitor", (Throwable)localObject3, "", new Object[0]);
-            continue;
-            label633:
-            locala.ueT += 1;
-            y.w("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: ui [%s] was recycled, but its instance is still exists in %s time(s) check.", new Object[] { locala.ueQ.getName(), Integer.valueOf(locala.ueT) });
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            continue;
-            label692:
-            int i = 1;
-            continue;
-            label697:
-            i += 1;
-            continue;
-            label704:
-            i = 0;
-          }
-        }
-      }
-    }
-  };
+  private static final Map<Object, Set<a>> ynh;
+  private static final byte[] yni;
+  private static Field ynj;
+  private static HandlerThread ynk;
+  private static ak ynl;
+  private static volatile boolean ynm;
+  private static final String ynn;
+  private static final Runnable yno;
   
   static
   {
-    if ((bl.csf()) || (bl.cqi()))
+    AppMethodBeat.i(115218);
+    ynh = new WeakHashMap();
+    yni = new byte[0];
+    ynj = null;
+    ynk = null;
+    ynl = null;
+    ynm = false;
+    ynn = Activity.class.getName();
+    yno = new Runnable()
     {
-      if (ae.cqV()) {
-        try
+      public final void run()
+      {
+        AppMethodBeat.i(115204);
+        synchronized (ListenerInstanceMonitor.dsy())
         {
-          ??? = View.class.getDeclaredField("mContext");
-          ueI = (Field)???;
-          ((Field)???).setAccessible(true);
-          synchronized (ueN)
+          if (!ListenerInstanceMonitor.ynm)
           {
-            if (!ueL)
-            {
-              Object localObject2 = e.aap("ListenerInstanceMonitor");
-              ueJ = (HandlerThread)localObject2;
-              ((HandlerThread)localObject2).start();
-              localObject2 = new ah(ueJ.getLooper());
-              ueK = (ah)localObject2;
-              ((ah)localObject2).postDelayed(ueN, 10000L);
-              ueL = true;
-            }
+            AppMethodBeat.o(115204);
             return;
           }
-          y.w("MicroMsg.ListenerInstanceMonitor", "Not mm process, keep disabled.");
+          synchronized (ListenerInstanceMonitor.dsz())
+          {
+            if (ListenerInstanceMonitor.ynh.isEmpty()) {
+              ab.d("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: no listener or cb was added, skip rest logic.");
+            }
+          }
+        }
+        for (;;)
+        {
+          synchronized (ListenerInstanceMonitor.dsy())
+          {
+            if (ListenerInstanceMonitor.ynm) {
+              ListenerInstanceMonitor.caJ().postDelayed(this, 10000L);
+            }
+            AppMethodBeat.o(115204);
+            return;
+            localObject4 = finally;
+            AppMethodBeat.o(115204);
+            throw localObject4;
+            if (Debug.isDebuggerConnected())
+            {
+              ab.w("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: found debugger connected, disable monitor works in case of misreport.");
+              continue;
+              localObject5 = finally;
+              AppMethodBeat.o(115204);
+              throw localObject5;
+            }
+            ab.d("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: triggering gc...");
+          }
+          try
+          {
+            Runtime.getRuntime().gc();
+            Thread.sleep(100L);
+            Runtime.getRuntime().runFinalization();
+            label331:
+            Object localObject3;
+            for (;;)
+            {
+              Iterator localIterator2;
+              ListenerInstanceMonitor.a locala;
+              Object localObject7;
+              synchronized (ListenerInstanceMonitor.dsz())
+              {
+                Iterator localIterator1 = ListenerInstanceMonitor.ynh.entrySet().iterator();
+                if (!localIterator1.hasNext()) {
+                  break;
+                }
+                localIterator2 = ((Set)((Map.Entry)localIterator1.next()).getValue()).iterator();
+                if (!localIterator2.hasNext()) {
+                  continue;
+                }
+                locala = (ListenerInstanceMonitor.a)localIterator2.next();
+                ??? = locala.ynp.get();
+                localObject7 = (Activity)locala.ynq.get();
+                if (localObject7 == null)
+                {
+                  ab.i("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: Ok, ui [%s] was recycled.", new Object[] { locala.ynr.getName() });
+                  localIterator2.remove();
+                }
+              }
+              boolean bool = ((Activity)localObject7).isDestroyed();
+              int k;
+              if (!bool)
+              {
+                k = 0;
+                if ((k == 0) || (localObject2 != null)) {
+                  break label522;
+                }
+                if (locala.ynu <= 3) {
+                  break label660;
+                }
+                localIterator2.remove();
+                if (bp.dud()) {
+                  break label732;
+                }
+                if (!bp.dsd()) {
+                  break label744;
+                }
+                break label732;
+                if (locala.ynq.get() != null) {
+                  break label557;
+                }
+                if (locala.yns == null) {
+                  break label524;
+                }
+                localObject3 = "ui of class [" + locala.ynr.getName() + "] held by\n [" + locala.dsB() + "] is recycled";
+              }
+              for (;;)
+              {
+                localObject3 = new ListenerInstanceMonitor.ListenerLeakedException((String)localObject3, locala.ynt);
+                if (i == 0) {
+                  break label644;
+                }
+                AppMethodBeat.o(115204);
+                throw ((Throwable)localObject3);
+                localObject7 = Looper.getMainLooper().getThread().getStackTrace();
+                int j = localObject7.length;
+                i = 0;
+                k = bool;
+                if (i >= j) {
+                  break label331;
+                }
+                Object localObject8 = localObject7[i];
+                if ((!ListenerInstanceMonitor.ynn.equals(localObject8.getClassName())) || (!"performDestroy".equals(localObject8.getMethodName()))) {
+                  break label737;
+                }
+                k = 0;
+                break label331;
+                label522:
+                break;
+                label524:
+                localObject3 = "ui of class [" + locala.ynr.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is recycled";
+                continue;
+                label557:
+                if (locala.yns != null) {
+                  localObject3 = "ui of class [" + locala.ynr.getName() + "] held by\n [" + locala.dsB() + "] is leaked.\n Perhaps you should remove the holder from any 'Manager' class when the leaked ui was destroyed.";
+                } else {
+                  localObject3 = "ui of class [" + locala.ynr.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is leaked.\n Perhaps you should remove any instance of this class from any 'Manager'";
+                }
+              }
+              label644:
+              ab.printErrStackTrace("MicroMsg.ListenerInstanceMonitor", (Throwable)localObject3, "", new Object[0]);
+              continue;
+              label660:
+              locala.ynu += 1;
+              ab.w("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: ui [%s] was recycled, but its instance is still exists in %s time(s) check.", new Object[] { locala.ynr.getName(), Integer.valueOf(locala.ynu) });
+            }
+            continue;
+            localObject6 = finally;
+            AppMethodBeat.o(115204);
+            throw localObject6;
+          }
+          catch (Throwable localThrowable)
+          {
+            for (;;)
+            {
+              continue;
+              label732:
+              int i = 1;
+              continue;
+              label737:
+              i += 1;
+              continue;
+              label744:
+              i = 0;
+            }
+          }
+        }
+      }
+    };
+    if ((bp.dud()) || (bp.dsd()))
+    {
+      if (ah.brt()) {
+        try
+        {
+          Field localField = View.class.getDeclaredField("mContext");
+          ynj = localField;
+          localField.setAccessible(true);
+          dsx();
+          AppMethodBeat.o(115218);
+          return;
         }
         catch (Throwable localThrowable)
         {
-          y.printErrStackTrace("MicroMsg.ListenerInstanceMonitor", localThrowable, "init failed, keep disabled.", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.ListenerInstanceMonitor", localThrowable, "init failed, keep disabled.", new Object[0]);
+          AppMethodBeat.o(115218);
           return;
         }
       }
+      ab.w("MicroMsg.ListenerInstanceMonitor", "Not mm process, keep disabled.");
+      AppMethodBeat.o(115218);
       return;
     }
-    y.w("MicroMsg.ListenerInstanceMonitor", "Not debug, assist or monkey env, keep disabled.");
+    ab.w("MicroMsg.ListenerInstanceMonitor", "Not debug, assist or monkey env, keep disabled.");
+    AppMethodBeat.o(115218);
   }
   
   private static void a(Object paramObject, Activity paramActivity, Field paramField, Throwable paramThrowable)
   {
+    AppMethodBeat.i(115216);
     Object localObject2 = null;
     Object localObject1;
     int j;
-    if (paramObject.getClass().isAnnotationPresent(f.class))
+    if (paramObject.getClass().isAnnotationPresent(h.class))
     {
-      localObject1 = (f)paramObject.getClass().getAnnotation(f.class);
+      localObject1 = (h)paramObject.getClass().getAnnotation(h.class);
       if (localObject1 == null) {
-        break label200;
+        break label210;
       }
       localObject2 = paramActivity.getClass();
-      localObject1 = ((f)localObject1).cqs();
+      localObject1 = ((h)localObject1).dsp();
       if ((localObject1 != null) && (localObject1.length > 0))
       {
         j = localObject1.length;
@@ -234,7 +252,7 @@ public final class ListenerInstanceMonitor
         while (i < j)
         {
           if (localObject2.equals(localObject1[i])) {
-            break label194;
+            break label204;
           }
           i += 1;
         }
@@ -252,37 +270,40 @@ public final class ListenerInstanceMonitor
           break;
         }
         localObject1 = ???[i];
-        if (((Method)localObject1).isAnnotationPresent(f.class))
+        if (((Method)localObject1).isAnnotationPresent(h.class))
         {
-          localObject1 = (f)((Method)localObject1).getAnnotation(f.class);
+          localObject1 = (h)((Method)localObject1).getAnnotation(h.class);
           break;
         }
         i += 1;
       }
     }
-    label194:
+    label204:
     for (int i = 0; i != 0; i = 1)
     {
-      y.w("MicroMsg.ListenerInstanceMonitor", "Activity %s held by %s is ignored !!", new Object[] { paramActivity, paramObject });
+      ab.w("MicroMsg.ListenerInstanceMonitor", "Activity %s held by %s is ignored !!", new Object[] { paramActivity, paramObject });
+      AppMethodBeat.o(115216);
       return;
     }
-    synchronized (ueH)
+    synchronized (yni)
     {
-      label200:
-      localObject2 = (Set)ueG.get(paramObject);
+      label210:
+      localObject2 = (Set)ynh.get(paramObject);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new HashSet();
-        ueG.put(paramObject, localObject1);
+        ynh.put(paramObject, localObject1);
       }
       ((Set)localObject1).add(new a(paramActivity, paramField, paramThrowable));
+      AppMethodBeat.o(115216);
       return;
     }
   }
   
   private static void a(Object paramObject, Field paramField, Throwable paramThrowable)
   {
+    AppMethodBeat.i(115214);
     Object localObject;
     if (paramField == null) {
       if ((paramObject instanceof Activity)) {
@@ -292,6 +313,9 @@ public final class ListenerInstanceMonitor
     for (;;)
     {
       a(paramObject, (Activity)localObject, paramField, paramThrowable);
+      AppMethodBeat.o(115214);
+      return;
+      AppMethodBeat.o(115214);
       return;
       if (!paramField.isAccessible()) {
         paramField.setAccessible(true);
@@ -300,146 +324,170 @@ public final class ListenerInstanceMonitor
       {
         Activity localActivity = (Activity)paramField.get(paramObject);
         localObject = localActivity;
-        if (localActivity == null) {}
+        if (localActivity == null)
+        {
+          AppMethodBeat.o(115214);
+          return;
+        }
       }
-      catch (Throwable paramObject) {}
+      catch (Throwable paramObject)
+      {
+        AppMethodBeat.o(115214);
+      }
     }
   }
   
-  /* Error */
   private static void b(Object paramObject, Field paramField, Throwable paramThrowable)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +41 -> 42
-    //   4: aload_0
-    //   5: instanceof 79
-    //   8: ifeq +33 -> 41
-    //   11: aload_0
-    //   12: checkcast 79	android/view/View
-    //   15: astore_3
-    //   16: getstatic 44	com/tencent/mm/sdk/platformtools/ListenerInstanceMonitor:ueI	Ljava/lang/reflect/Field;
-    //   19: aload_3
-    //   20: invokevirtual 202	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   23: astore_3
-    //   24: aload_3
-    //   25: instanceof 52
-    //   28: ifeq +13 -> 41
-    //   31: aload_0
-    //   32: aload_3
-    //   33: checkcast 52	android/app/Activity
-    //   36: aload_1
-    //   37: aload_2
-    //   38: invokestatic 198	com/tencent/mm/sdk/platformtools/ListenerInstanceMonitor:a	(Ljava/lang/Object;Landroid/app/Activity;Ljava/lang/reflect/Field;Ljava/lang/Throwable;)V
-    //   41: return
-    //   42: getstatic 44	com/tencent/mm/sdk/platformtools/ListenerInstanceMonitor:ueI	Ljava/lang/reflect/Field;
-    //   45: ifnull -4 -> 41
-    //   48: aload_1
-    //   49: invokevirtual 201	java/lang/reflect/Field:isAccessible	()Z
-    //   52: ifne +8 -> 60
-    //   55: aload_1
-    //   56: iconst_1
-    //   57: invokevirtual 91	java/lang/reflect/Field:setAccessible	(Z)V
-    //   60: aload_1
-    //   61: aload_0
-    //   62: invokevirtual 202	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   65: checkcast 79	android/view/View
-    //   68: astore 4
-    //   70: aload 4
-    //   72: astore_3
-    //   73: aload 4
-    //   75: ifnonnull -59 -> 16
-    //   78: return
-    //   79: astore_0
-    //   80: return
-    //   81: astore_0
-    //   82: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	83	0	paramObject	Object
-    //   0	83	1	paramField	Field
-    //   0	83	2	paramThrowable	Throwable
-    //   15	58	3	localObject	Object
-    //   68	6	4	localView	View
-    // Exception table:
-    //   from	to	target	type
-    //   16	41	79	java/lang/Throwable
-    //   60	70	81	java/lang/Throwable
+    AppMethodBeat.i(115215);
+    Object localObject;
+    if (paramField == null) {
+      if ((paramObject instanceof View)) {
+        localObject = (View)paramObject;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = ynj.get(localObject);
+        if ((localObject instanceof Activity)) {
+          a(paramObject, (Activity)localObject, paramField, paramThrowable);
+        }
+        AppMethodBeat.o(115215);
+        return;
+      }
+      catch (Throwable paramObject)
+      {
+        AppMethodBeat.o(115215);
+      }
+      AppMethodBeat.o(115215);
+      return;
+      if (ynj == null)
+      {
+        AppMethodBeat.o(115215);
+        return;
+      }
+      if (!paramField.isAccessible()) {
+        paramField.setAccessible(true);
+      }
+      try
+      {
+        View localView = (View)paramField.get(paramObject);
+        localObject = localView;
+        if (localView == null)
+        {
+          AppMethodBeat.o(115215);
+          return;
+        }
+      }
+      catch (Throwable paramObject)
+      {
+        AppMethodBeat.o(115215);
+        return;
+      }
+    }
   }
   
-  public static void bP(Object paramObject)
+  public static void ct(Object paramObject)
   {
-    if (paramObject == null) {
+    AppMethodBeat.i(115213);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(115213);
       return;
     }
     Throwable localThrowable = new Throwable();
     Class localClass1 = paramObject.getClass();
-    label19:
     if (!Object.class.equals(localClass1))
     {
-      if (!Activity.class.isAssignableFrom(localClass1)) {
-        break label52;
+      if (Activity.class.isAssignableFrom(localClass1)) {
+        a(paramObject, null, localThrowable);
       }
-      a(paramObject, null, localThrowable);
-    }
-    for (;;)
-    {
-      localClass1 = localClass1.getSuperclass();
-      break label19;
-      break;
-      label52:
-      if (!View.class.isAssignableFrom(localClass1)) {
-        break label71;
+      for (;;)
+      {
+        localClass1 = localClass1.getSuperclass();
+        break;
+        if (!View.class.isAssignableFrom(localClass1)) {
+          break label81;
+        }
+        b(paramObject, null, localThrowable);
       }
-      b(paramObject, null, localThrowable);
-    }
-    label71:
-    Field[] arrayOfField = localClass1.getDeclaredFields();
-    int j = arrayOfField.length;
-    int i = 0;
-    label83:
-    Field localField;
-    Class localClass2;
-    if (i < j)
-    {
-      localField = arrayOfField[i];
-      localClass2 = localField.getType();
-      if (!Activity.class.isAssignableFrom(localClass2)) {
-        break label126;
+      label81:
+      Field[] arrayOfField = localClass1.getDeclaredFields();
+      int j = arrayOfField.length;
+      int i = 0;
+      label93:
+      Field localField;
+      Class localClass2;
+      if (i < j)
+      {
+        localField = arrayOfField[i];
+        localClass2 = localField.getType();
+        if (!Activity.class.isAssignableFrom(localClass2)) {
+          break label136;
+        }
+        a(paramObject, localField, localThrowable);
       }
-      a(paramObject, localField, localThrowable);
-    }
-    for (;;)
-    {
-      i += 1;
-      break label83;
-      break;
-      label126:
-      if (View.class.isAssignableFrom(localClass2)) {
-        b(paramObject, localField, localThrowable);
+      for (;;)
+      {
+        i += 1;
+        break label93;
+        break;
+        label136:
+        if (View.class.isAssignableFrom(localClass2)) {
+          b(paramObject, localField, localThrowable);
+        }
       }
     }
+    AppMethodBeat.o(115213);
   }
   
-  public static void bQ(Object paramObject)
+  public static void cu(Object paramObject)
   {
-    if (paramObject == null) {
+    AppMethodBeat.i(115217);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(115217);
       return;
     }
-    synchronized (ueH)
+    synchronized (yni)
     {
-      ueG.remove(paramObject);
+      ynh.remove(paramObject);
+      AppMethodBeat.o(115217);
       return;
     }
   }
   
-  private static final class ListenerLeakedException
+  private static void dsx()
+  {
+    AppMethodBeat.i(115212);
+    synchronized (yno)
+    {
+      if (!ynm)
+      {
+        Object localObject1 = d.aqu("ListenerInstanceMonitor");
+        ynk = (HandlerThread)localObject1;
+        ((HandlerThread)localObject1).start();
+        localObject1 = new ak(ynk.getLooper());
+        ynl = (ak)localObject1;
+        ((ak)localObject1).postDelayed(yno, 10000L);
+        ynm = true;
+      }
+      AppMethodBeat.o(115212);
+      return;
+    }
+  }
+  
+  static final class ListenerLeakedException
     extends RuntimeException
   {
     ListenerLeakedException(String paramString, Throwable paramThrowable)
     {
       super();
+      AppMethodBeat.i(115211);
       setStackTrace(paramThrowable.getStackTrace());
+      AppMethodBeat.o(115211);
     }
     
     public final Throwable fillInStackTrace()
@@ -448,55 +496,68 @@ public final class ListenerInstanceMonitor
     }
   }
   
-  private static final class a
+  static final class a
   {
-    final WeakReference<Object> ueO = new WeakReference(new Object());
-    WeakReference<Activity> ueP;
-    Class<?> ueQ;
-    Field ueR;
-    Throwable ueS;
-    int ueT;
+    final WeakReference<Object> ynp;
+    WeakReference<Activity> ynq;
+    Class<?> ynr;
+    Field yns;
+    Throwable ynt;
+    int ynu;
     
     a(Activity paramActivity, Field paramField, Throwable paramThrowable)
     {
-      this.ueP = new WeakReference(paramActivity);
-      this.ueQ = paramActivity.getClass();
-      this.ueR = paramField;
-      this.ueS = paramThrowable;
-      this.ueT = 0;
+      AppMethodBeat.i(115205);
+      this.ynp = new WeakReference(new Object());
+      this.ynq = new WeakReference(paramActivity);
+      this.ynr = paramActivity.getClass();
+      this.yns = paramField;
+      this.ynt = paramThrowable;
+      this.ynu = 0;
+      AppMethodBeat.o(115205);
     }
     
-    private String cqD()
+    private String dsA()
     {
-      StringWriter localStringWriter = new StringWriter();
+      AppMethodBeat.i(115207);
+      Object localObject1 = new StringWriter();
       try
       {
-        PrintWriter localPrintWriter = new PrintWriter(localStringWriter);
-        bk.b(localPrintWriter);
+        PrintWriter localPrintWriter = new PrintWriter((Writer)localObject1);
+        bo.b(localPrintWriter);
       }
       finally
       {
         try
         {
-          this.ueS.printStackTrace(localPrintWriter);
-          bk.b(localPrintWriter);
-          return localStringWriter.toString();
+          this.ynt.printStackTrace(localPrintWriter);
+          bo.b(localPrintWriter);
+          localObject1 = ((StringWriter)localObject1).toString();
+          AppMethodBeat.o(115207);
+          return localObject1;
         }
         finally {}
-        localObject1 = finally;
+        localObject2 = finally;
         localPrintWriter = null;
       }
-      throw localObject1;
+      AppMethodBeat.o(115207);
+      throw localObject2;
     }
     
-    final String cqE()
+    final String dsB()
     {
-      if (this.ueR == null) {
+      AppMethodBeat.i(115208);
+      if (this.yns == null)
+      {
+        AppMethodBeat.o(115208);
         return "#null#";
       }
-      Object localObject = this.ueR.getDeclaringClass();
-      if (!((Class)localObject).isAnonymousClass()) {
-        return "field " + this.ueR.getName() + " defined in " + ((Class)localObject).getName();
+      Object localObject = this.yns.getDeclaringClass();
+      if (!((Class)localObject).isAnonymousClass())
+      {
+        localObject = "field " + this.yns.getName() + " defined in " + ((Class)localObject).getName();
+        AppMethodBeat.o(115208);
+        return localObject;
       }
       Type localType = ((Class)localObject).getGenericSuperclass();
       if (Object.class.equals(localType)) {
@@ -504,7 +565,9 @@ public final class ListenerInstanceMonitor
       }
       for (;;)
       {
-        return "field " + this.ueR.getName() + " define in anonymous class of " + localObject.toString().replace('<', '#').replace('>', '#');
+        localObject = "field " + this.yns.getName() + " define in anonymous class of " + localObject.toString().replace('<', '#').replace('>', '#');
+        AppMethodBeat.o(115208);
+        return localObject;
         if (localType != null) {
           localObject = localType;
         }
@@ -514,60 +577,53 @@ public final class ListenerInstanceMonitor
     public final boolean equals(Object paramObject)
     {
       boolean bool2 = true;
-      if ((paramObject == null) || (!(paramObject instanceof a))) {
+      AppMethodBeat.i(115210);
+      if ((paramObject == null) || (!(paramObject instanceof a)))
+      {
+        AppMethodBeat.o(115210);
         return false;
       }
       paramObject = (a)paramObject;
-      Object localObject1 = this.ueP.get();
-      Object localObject2 = paramObject.ueP.get();
+      Object localObject1 = this.ynq.get();
+      Object localObject2 = paramObject.ynq.get();
       boolean bool1;
-      if ((localObject1 == null) && (localObject2 == null))
+      if ((localObject1 == null) && (localObject2 == null)) {
+        bool1 = true;
+      }
+      while (!bool1)
       {
+        AppMethodBeat.o(115210);
+        return false;
+        if ((localObject1 != null) && (localObject2 != null)) {
+          bool1 = localObject1.equals(localObject2);
+        } else {
+          bool1 = false;
+        }
+      }
+      localObject1 = this.yns;
+      localObject2 = paramObject.yns;
+      if ((localObject1 == null) && (localObject2 == null)) {
         bool1 = true;
-        label50:
-        if (!bool1) {
-          break label130;
+      }
+      while (!bool1)
+      {
+        AppMethodBeat.o(115210);
+        return false;
+        if ((localObject1 != null) && (localObject2 != null)) {
+          bool1 = ((Field)localObject1).equals(localObject2);
+        } else {
+          bool1 = false;
         }
-        localObject1 = this.ueR;
-        localObject2 = paramObject.ueR;
-        if ((localObject1 != null) || (localObject2 != null)) {
-          break label132;
-        }
-        bool1 = true;
-        label78:
-        if (!bool1) {
-          break label156;
-        }
-        localObject1 = this.ueS;
-        paramObject = paramObject.ueS;
-        if ((localObject1 != null) || (paramObject != null)) {
-          break label158;
-        }
+      }
+      localObject1 = this.ynt;
+      paramObject = paramObject.ynt;
+      if ((localObject1 == null) && (paramObject == null)) {
         bool1 = bool2;
       }
       for (;;)
       {
+        AppMethodBeat.o(115210);
         return bool1;
-        if ((localObject1 != null) && (localObject2 != null))
-        {
-          bool1 = localObject1.equals(localObject2);
-          break label50;
-        }
-        bool1 = false;
-        break label50;
-        label130:
-        break;
-        label132:
-        if ((localObject1 != null) && (localObject2 != null))
-        {
-          bool1 = ((Field)localObject1).equals(localObject2);
-          break label78;
-        }
-        bool1 = false;
-        break label78;
-        label156:
-        break;
-        label158:
         if ((localObject1 != null) && (paramObject != null)) {
           bool1 = localObject1.equals(paramObject);
         } else {
@@ -579,21 +635,23 @@ public final class ListenerInstanceMonitor
     public final int hashCode()
     {
       int k = 0;
-      Object localObject = this.ueP.get();
+      AppMethodBeat.i(115209);
+      Object localObject = this.ynq.get();
       int i;
       if (localObject != null)
       {
         i = localObject.hashCode();
-        if (this.ueR == null) {
-          break label63;
+        if (this.yns == null) {
+          break label73;
         }
       }
-      label63:
-      for (int j = this.ueR.hashCode();; j = 0)
+      label73:
+      for (int j = this.yns.hashCode();; j = 0)
       {
-        if (this.ueS != null) {
-          k = this.ueS.hashCode();
+        if (this.ynt != null) {
+          k = this.ynt.hashCode();
         }
+        AppMethodBeat.o(115209);
         return i + j + k;
         i = 0;
         break;
@@ -602,7 +660,10 @@ public final class ListenerInstanceMonitor
     
     public final String toString()
     {
-      return cqE() + "@" + cqD().replace('\n', '|');
+      AppMethodBeat.i(115206);
+      String str = dsB() + "@" + dsA().replace('\n', '|');
+      AppMethodBeat.o(115206);
+      return str;
     }
   }
 }

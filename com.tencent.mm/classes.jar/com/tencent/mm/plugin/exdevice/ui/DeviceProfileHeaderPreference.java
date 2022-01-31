@@ -8,212 +8,247 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.d;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class DeviceProfileHeaderPreference
   extends Preference
 {
-  private CharSequence CQ;
-  private String gnO;
-  private String iZG;
-  protected MMActivity iwz;
-  private ImageView jAk;
-  private TextView jAl;
-  private TextView jAm;
-  private TextView jAn;
-  private View jAo;
-  TextView jAp;
-  private boolean[] jAq = new boolean[6];
-  private View.OnClickListener[] jAr = new View.OnClickListener[6];
-  String jAs;
-  private boolean jAt = false;
+  private CharSequence Dy;
+  protected MMActivity kxD;
+  private ImageView lJJ;
+  private TextView lJK;
+  private TextView lJL;
+  private TextView lJM;
+  private View lJN;
+  private TextView lJO;
+  private boolean[] lJP;
+  private View.OnClickListener[] lJQ;
+  private String lJR;
+  private boolean lJS;
+  private String lix;
+  private String mDeviceName;
   
   public DeviceProfileHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.iwz = ((MMActivity)paramContext);
-    this.jAt = false;
+    AppMethodBeat.i(19759);
+    this.lJP = new boolean[6];
+    this.lJQ = new View.OnClickListener[6];
+    this.lJS = false;
+    this.kxD = ((MMActivity)paramContext);
+    this.lJS = false;
+    AppMethodBeat.o(19759);
   }
   
   public DeviceProfileHeaderPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.iwz = ((MMActivity)paramContext);
-    this.jAt = false;
+    AppMethodBeat.i(19760);
+    this.lJP = new boolean[6];
+    this.lJQ = new View.OnClickListener[6];
+    this.lJS = false;
+    this.kxD = ((MMActivity)paramContext);
+    this.lJS = false;
+    AppMethodBeat.o(19760);
   }
   
-  private void H(View paramView, int paramInt)
+  private void X(View paramView, int paramInt)
   {
-    if (this.jAq[paramInt] != 0) {}
+    AppMethodBeat.i(19762);
+    if (this.lJP[paramInt] != 0) {}
     for (int i = 8;; i = 0)
     {
       paramView.setVisibility(i);
-      paramView.setOnClickListener(this.jAr[paramInt]);
+      paramView.setOnClickListener(this.lJQ[paramInt]);
+      AppMethodBeat.o(19762);
       return;
     }
   }
   
-  public final void BJ(String paramString)
+  public final void LL(String paramString)
   {
-    this.gnO = paramString;
-    if (this.jAn != null) {
-      this.jAn.setText(paramString);
+    AppMethodBeat.i(19766);
+    this.mDeviceName = paramString;
+    if (this.lJM != null) {
+      this.lJM.setText(paramString);
     }
+    AppMethodBeat.o(19766);
   }
   
-  public final void K(int paramInt, boolean paramBoolean)
+  public final void S(int paramInt, boolean paramBoolean)
   {
     int i = 0;
+    AppMethodBeat.i(19763);
     Object localObject;
     int j;
     switch (paramInt)
     {
     default: 
+      AppMethodBeat.o(19763);
+      return;
     case 0: 
-      label60:
-      do
+      localObject = this.lJJ;
+      boolean[] arrayOfBoolean = this.lJP;
+      if (!paramBoolean)
       {
-        return;
-        localObject = this.jAk;
-        boolean[] arrayOfBoolean = this.jAq;
-        if (paramBoolean) {
-          break;
-        }
         j = 1;
+        label74:
         arrayOfBoolean[paramInt] = j;
-      } while (localObject == null);
-      if (!paramBoolean) {
-        break;
+        if (localObject != null) {
+          if (!paramBoolean) {
+            break label155;
+          }
+        }
       }
+      break;
     }
+    label155:
     for (paramInt = i;; paramInt = 8)
     {
       ((View)localObject).setVisibility(paramInt);
+      AppMethodBeat.o(19763);
       return;
-      localObject = this.jAl;
+      localObject = this.lJK;
       break;
-      localObject = this.jAm;
+      localObject = this.lJL;
       break;
-      localObject = this.jAn;
+      localObject = this.lJM;
       break;
-      localObject = this.jAo;
+      localObject = this.lJN;
       break;
-      localObject = this.jAp;
+      localObject = this.lJO;
       break;
       j = 0;
-      break label60;
+      break label74;
     }
   }
   
   public final void a(int paramInt, View.OnClickListener paramOnClickListener)
   {
+    AppMethodBeat.i(19764);
     Object localObject;
     switch (paramInt)
     {
     default: 
+      AppMethodBeat.o(19764);
       return;
     case 0: 
-      localObject = this.jAk;
+      localObject = this.lJJ;
     }
     for (;;)
     {
-      this.jAr[paramInt] = paramOnClickListener;
-      if (localObject == null) {
-        break;
+      this.lJQ[paramInt] = paramOnClickListener;
+      if (localObject != null) {
+        ((View)localObject).setOnClickListener(paramOnClickListener);
       }
-      ((View)localObject).setOnClickListener(paramOnClickListener);
+      AppMethodBeat.o(19764);
       return;
-      localObject = this.jAl;
+      localObject = this.lJK;
       continue;
-      localObject = this.jAm;
+      localObject = this.lJL;
       continue;
-      localObject = this.jAn;
+      localObject = this.lJM;
       continue;
-      localObject = this.jAo;
+      localObject = this.lJN;
       continue;
-      localObject = this.jAp;
+      localObject = this.lJO;
     }
   }
   
-  public final void onBindView(View paramView)
+  public final void ka(String paramString)
   {
-    y.d("MicroMsg.DeviceProfileHeaderPreference", "onBindView");
-    this.jAk = ((ImageView)paramView.findViewById(R.h.avatarIV));
-    this.jAl = ((TextView)paramView.findViewById(R.h.nameTV));
-    this.jAm = ((TextView)paramView.findViewById(R.h.editRemarkTV));
-    this.jAn = ((TextView)paramView.findViewById(R.h.deviceNameTV));
-    this.jAo = paramView.findViewById(R.h.editTV);
-    this.jAp = ((TextView)paramView.findViewById(R.h.deviceDescTV));
-    H(this.jAk, 0);
-    H(this.jAl, 2);
-    H(this.jAm, 1);
-    H(this.jAn, 3);
-    H(this.jAo, 4);
-    H(this.jAp, 5);
-    this.jAt = true;
-    if (!this.jAt) {
-      y.w("MicroMsg.DeviceProfileHeaderPreference", "initView : bindView = " + this.jAt);
-    }
-    for (;;)
-    {
-      super.onBindView(paramView);
-      return;
-      this.jAl.setText(this.CQ);
-      this.jAn.setText(this.gnO);
-      this.jAp.setText(this.jAs);
-      setIconUrl(this.iZG);
-    }
-  }
-  
-  public final void setIconUrl(String paramString)
-  {
-    this.iZG = paramString;
-    if (this.jAk != null)
+    AppMethodBeat.i(19768);
+    this.lix = paramString;
+    if (this.lJJ != null)
     {
       c.a locala = new c.a();
-      Bitmap localBitmap = c.EX(R.g.exdevice_my_device_default_icon);
+      Bitmap localBitmap = d.Na(2130838667);
       paramString = localBitmap;
       if (localBitmap != null)
       {
         paramString = localBitmap;
         if (!localBitmap.isRecycled())
         {
-          localBitmap = c.a(localBitmap, true, 0.5F * localBitmap.getWidth());
+          localBitmap = d.a(localBitmap, true, 0.5F * localBitmap.getWidth());
           paramString = localBitmap;
           if (localBitmap != null)
           {
             paramString = localBitmap;
             if (!localBitmap.isRecycled())
             {
-              locala.erv = new BitmapDrawable(localBitmap);
+              locala.eNZ = new BitmapDrawable(localBitmap);
               paramString = localBitmap;
             }
           }
         }
       }
       if ((paramString == null) || (paramString.isRecycled())) {
-        locala.eru = R.g.exdevice_my_device_default_icon;
+        locala.eNY = 2130838667;
       }
-      locala.erD = true;
-      paramString = locala.OV();
-      o.ON().a(this.iZG, this.jAk, paramString);
+      locala.eOk = true;
+      paramString = locala.ahY();
+      o.ahG().a(this.lix, this.lJJ, paramString);
+    }
+    AppMethodBeat.o(19768);
+  }
+  
+  public final void kd(String paramString)
+  {
+    AppMethodBeat.i(19767);
+    this.lJR = paramString;
+    if (this.lJO != null) {
+      this.lJO.setText(paramString);
+    }
+    AppMethodBeat.o(19767);
+  }
+  
+  public final void onBindView(View paramView)
+  {
+    AppMethodBeat.i(19761);
+    ab.d("MicroMsg.DeviceProfileHeaderPreference", "onBindView");
+    this.lJJ = ((ImageView)paramView.findViewById(2131823768));
+    this.lJK = ((TextView)paramView.findViewById(2131823741));
+    this.lJL = ((TextView)paramView.findViewById(2131823770));
+    this.lJM = ((TextView)paramView.findViewById(2131823771));
+    this.lJN = paramView.findViewById(2131823769);
+    this.lJO = ((TextView)paramView.findViewById(2131823772));
+    X(this.lJJ, 0);
+    X(this.lJK, 2);
+    X(this.lJL, 1);
+    X(this.lJM, 3);
+    X(this.lJN, 4);
+    X(this.lJO, 5);
+    this.lJS = true;
+    if (!this.lJS) {
+      ab.w("MicroMsg.DeviceProfileHeaderPreference", "initView : bindView = " + this.lJS);
+    }
+    for (;;)
+    {
+      super.onBindView(paramView);
+      AppMethodBeat.o(19761);
+      return;
+      this.lJK.setText(this.Dy);
+      this.lJM.setText(this.mDeviceName);
+      this.lJO.setText(this.lJR);
+      ka(this.lix);
     }
   }
   
   public final void setName(CharSequence paramCharSequence)
   {
-    this.CQ = paramCharSequence;
-    if (this.jAl != null) {
-      this.jAl.setText(paramCharSequence);
+    AppMethodBeat.i(19765);
+    this.Dy = paramCharSequence;
+    if (this.lJK != null) {
+      this.lJK.setText(paramCharSequence);
     }
+    AppMethodBeat.o(19765);
   }
 }
 

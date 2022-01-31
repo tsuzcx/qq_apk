@@ -1,92 +1,101 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Context;
+import com.tencent.map.lib.util.StringUtil;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract class s
+public class s
+  extends q
 {
-  protected SharedPreferences a = null;
+  private static Map<String, q> b;
   
-  public String a(String paramString)
+  static
   {
-    if (this.a == null) {
-      return null;
-    }
-    return this.a.getString(paramString, null);
+    AppMethodBeat.i(147073);
+    b = new HashMap();
+    AppMethodBeat.o(147073);
   }
   
-  public boolean a()
+  private s(Context paramContext, String paramString)
   {
-    return a(new String[] { "mapConfigVersion", "poiIconVersion", "mapIconVersion", "rttConfigVersion", "mapConfigIndoorVersion", "mapPoiIconIndoorVersion", "closeRoadSytleNomalModeVersion", "closeRoadStyleTrafficModeVersion", "offlineCityListVersion", "mapConfigZipMd5", "mapPoiIconZipMd5", "mapIconZipMd5", "rttConfigMd5", "mapConfigIndoorMd5", "poiIconIndoorMd5", "closeRoadSytleNomalModeMd5", "closeRoadStyleTrafficModeMd5", "offlineCityListMd5" });
+    AppMethodBeat.i(147070);
+    this.a = paramContext.getSharedPreferences("Tencent_MapSDK_SUB_CONFIG_".concat(String.valueOf(paramString)), 0);
+    AppMethodBeat.o(147070);
   }
   
-  public boolean a(String paramString, int paramInt)
+  public static q a(Context paramContext, String paramString)
   {
-    if (this.a == null) {
-      return false;
-    }
-    return this.a.edit().putInt(paramString, paramInt).commit();
-  }
-  
-  public boolean a(String paramString, long paramLong)
-  {
-    if (this.a == null) {
-      return false;
-    }
-    return this.a.edit().putLong(paramString, paramLong).commit();
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (this.a == null) {
-      return false;
-    }
-    return this.a.edit().putString(paramString1, paramString2).commit();
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    if (this.a == null) {
-      return false;
-    }
-    return this.a.edit().putBoolean(paramString, paramBoolean).commit();
-  }
-  
-  public boolean a(String[] paramArrayOfString)
-  {
-    int i = 0;
-    if (this.a == null) {
-      return false;
-    }
-    SharedPreferences.Editor localEditor = this.a.edit();
-    int j = paramArrayOfString.length;
-    while (i < j)
+    AppMethodBeat.i(147069);
+    if (StringUtil.isEmpty(paramString))
     {
-      localEditor.remove(paramArrayOfString[i]);
-      i += 1;
+      paramContext = u.a(paramContext);
+      AppMethodBeat.o(147069);
+      return paramContext;
     }
-    return localEditor.commit();
+    if (b.get(paramString) == null) {}
+    try
+    {
+      if (b.get(paramString) == null)
+      {
+        paramContext = new s(paramContext, paramString);
+        b.put(paramString, paramContext);
+        return paramContext;
+      }
+      paramContext = (q)b.get(paramString);
+      AppMethodBeat.o(147069);
+      return paramContext;
+    }
+    finally
+    {
+      AppMethodBeat.o(147069);
+    }
   }
   
-  public int b(String paramString)
+  public static void a(Context paramContext)
   {
-    if (this.a == null) {
-      return -1;
+    AppMethodBeat.i(147071);
+    try
+    {
+      paramContext = new File(paramContext.getFilesDir().getParent() + File.separator + "shared_prefs").listFiles();
+      if (paramContext == null)
+      {
+        AppMethodBeat.o(147071);
+        return;
+      }
+      int j = paramContext.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramContext[i];
+        if (localObject.getName().startsWith("Tencent_MapSDK_SUB_CONFIG")) {
+          localObject.delete();
+        }
+        i += 1;
+      }
+      AppMethodBeat.o(147071);
+      return;
     }
-    return this.a.getInt(paramString, -1);
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(147071);
+    }
   }
   
-  public boolean c(String paramString)
+  public static void c()
   {
-    if (this.a == null) {
-      return false;
+    AppMethodBeat.i(147072);
+    if (b != null) {
+      b.clear();
     }
-    return this.a.getBoolean(paramString, false);
+    AppMethodBeat.o(147072);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.s
  * JD-Core Version:    0.7.0.1
  */

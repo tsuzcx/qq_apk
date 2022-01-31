@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fav.ui.widget.c;
 
 final class FavoriteIndexUI$18$1
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   FavoriteIndexUI$18$1(FavoriteIndexUI.18 param18) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    FavoriteIndexUI.a(this.kes.kee, 4106);
+    AppMethodBeat.i(74244);
+    this.mzb.myP.mvA.byr();
+    AppMethodBeat.o(74244);
   }
 }
 

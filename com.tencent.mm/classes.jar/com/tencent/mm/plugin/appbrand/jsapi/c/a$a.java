@@ -4,8 +4,9 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothAdapter.LeScanCallback;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,37 +14,64 @@ import org.json.JSONObject;
 
 public final class a$a
 {
-  volatile boolean bSr = false;
-  BluetoothAdapter gqX;
-  Map<String, JSONObject> gqY = new ConcurrentHashMap();
-  UUID[] gqZ = null;
-  a.a.a gra;
-  long grb = 0L;
-  Map<String, JSONObject> grc = new ConcurrentHashMap();
-  BluetoothAdapter.LeScanCallback grd = new a.a.1(this);
+  BluetoothAdapter hMm;
+  Map<String, JSONObject> hMn;
+  UUID[] hMo;
+  a.a.a hMp;
+  long hMq;
+  Map<String, JSONObject> hMr;
+  BluetoothAdapter.LeScanCallback hMs;
+  volatile boolean isStart;
   
   public a$a()
   {
-    BluetoothManager localBluetoothManager = (BluetoothManager)ae.getContext().getSystemService("bluetooth");
+    AppMethodBeat.i(94353);
+    this.hMn = new ConcurrentHashMap();
+    this.hMo = null;
+    this.isStart = false;
+    this.hMq = 0L;
+    this.hMr = new ConcurrentHashMap();
+    this.hMs = new a.a.1(this);
+    BluetoothManager localBluetoothManager = (BluetoothManager)ah.getContext().getSystemService("bluetooth");
     if (localBluetoothManager == null)
     {
-      y.e("MicroMsg.BeaconManager", "bluetoothManager is null!");
+      ab.e("MicroMsg.BeaconManager", "bluetoothManager is null!");
+      AppMethodBeat.o(94353);
       return;
     }
-    this.gqX = localBluetoothManager.getAdapter();
-    if (this.gqX == null)
+    this.hMm = localBluetoothManager.getAdapter();
+    if (this.hMm == null)
     {
-      y.e("MicroMsg.BeaconManager", "bluetoothAdapter is null!");
+      ab.e("MicroMsg.BeaconManager", "bluetoothAdapter is null!");
+      AppMethodBeat.o(94353);
       return;
     }
-    a.glv = this.gqX.isEnabled();
+    a.hFu = this.hMm.isEnabled();
+    AppMethodBeat.o(94353);
   }
   
-  final boolean aiS()
+  public final boolean Ez()
+  {
+    AppMethodBeat.i(94354);
+    ab.i("MicroMsg.BeaconManager", "BeaconWorker:%d stop", new Object[] { Integer.valueOf(hashCode()) });
+    if (!isStart())
+    {
+      ab.i("MicroMsg.BeaconManager", "BeaconWorker:%d, already stop", new Object[] { Integer.valueOf(hashCode()) });
+      AppMethodBeat.o(94354);
+      return false;
+    }
+    this.hMn.clear();
+    this.hMm.stopLeScan(this.hMs);
+    this.isStart = false;
+    AppMethodBeat.o(94354);
+    return true;
+  }
+  
+  final boolean isStart()
   {
     try
     {
-      boolean bool = this.bSr;
+      boolean bool = this.isStart;
       return bool;
     }
     finally
@@ -52,24 +80,10 @@ public final class a$a
       throw localObject;
     }
   }
-  
-  public final boolean un()
-  {
-    y.i("MicroMsg.BeaconManager", "BeaconWorker:%d stop", new Object[] { Integer.valueOf(hashCode()) });
-    if (!aiS())
-    {
-      y.i("MicroMsg.BeaconManager", "BeaconWorker:%d, already stop", new Object[] { Integer.valueOf(hashCode()) });
-      return false;
-    }
-    this.gqY.clear();
-    this.gqX.stopLeScan(this.grd);
-    this.bSr = false;
-    return true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.c.a.a
  * JD-Core Version:    0.7.0.1
  */

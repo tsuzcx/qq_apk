@@ -1,27 +1,33 @@
 package com.tencent.mm.plugin.appbrand.launching.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
  enum b
 {
-  final String eyz;
+  final String fOn;
   final int scene;
+  
+  static
+  {
+    AppMethodBeat.i(132034);
+    inr = new b("WALLET", 0, "weapp://wallet/", 1019);
+    int = new b("SEARCH_NATIVE_FEATURE", 1, "weapp://search/", 1005);
+    inu = new b[] { inr, int };
+    AppMethodBeat.o(132034);
+  }
   
   private b(String paramString, int paramInt)
   {
-    this.eyz = paramString;
+    this.fOn = paramString;
     this.scene = paramInt;
   }
   
-  static String alW()
+  static String aHq()
   {
     return "";
   }
   
-  static int alX()
-  {
-    return 0;
-  }
-  
-  static String alY()
+  static String aHr()
   {
     return "";
   }

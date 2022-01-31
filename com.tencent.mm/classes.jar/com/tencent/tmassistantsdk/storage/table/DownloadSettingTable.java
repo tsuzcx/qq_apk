@@ -3,7 +3,8 @@ package com.tencent.tmassistantsdk.storage.table;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.tmassistantsdk.storage.helper.AstSDKDBHelper_V2;
 import com.tencent.tmassistantsdk.storage.helper.SqliteHelper;
 import java.util.HashMap;
@@ -20,102 +21,111 @@ public class DownloadSettingTable
   {
     localObject3 = null;
     localObject1 = null;
-    localHashMap = new HashMap();
-    do
+    AppMethodBeat.i(76207);
+    HashMap localHashMap = new HashMap();
+    try
     {
-      try
+      Cursor localCursor = AstSDKDBHelper_V2.getInstance().getReadableDatabase().rawQuery("select * from settingInfo", null);
+      if (localCursor != null)
       {
-        localCursor = AstSDKDBHelper_V2.getInstance().getReadableDatabase().rawQuery("select * from settingInfo", null);
-        if (localCursor == null) {
-          continue;
-        }
         localObject1 = localCursor;
         localObject3 = localCursor;
-        if (!localCursor.moveToFirst()) {
-          continue;
-        }
-        boolean bool;
-        do
+        if (localCursor.moveToFirst())
         {
-          localObject1 = localCursor;
-          localObject3 = localCursor;
-          localHashMap.put(localCursor.getString(localCursor.getColumnIndex("settingField")), localCursor.getString(localCursor.getColumnIndex("value")));
-          localObject1 = localCursor;
-          localObject3 = localCursor;
-          bool = localCursor.moveToNext();
-        } while (bool);
-      }
-      catch (Exception localException)
-      {
-        Cursor localCursor;
-        localObject3 = localObject1;
-        y.printErrStackTrace("DownloadSettingTable", localException, "", new Object[0]);
-        return localHashMap;
-      }
-      finally
-      {
-        if (localObject3 == null) {
-          break;
+          boolean bool;
+          do
+          {
+            localObject1 = localCursor;
+            localObject3 = localCursor;
+            localHashMap.put(localCursor.getString(localCursor.getColumnIndex("settingField")), localCursor.getString(localCursor.getColumnIndex("value")));
+            localObject1 = localCursor;
+            localObject3 = localCursor;
+            bool = localCursor.moveToNext();
+          } while (bool);
+          return localHashMap;
         }
-        localObject3.close();
       }
-      return localHashMap;
-    } while (localCursor == null);
-    localCursor.close();
+      if (localCursor != null) {
+        localCursor.close();
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localObject3 = localObject1;
+        ab.printErrStackTrace("DownloadSettingTable", localException, "", new Object[0]);
+        if (localObject1 != null) {
+          localObject1.close();
+        }
+      }
+    }
+    finally
+    {
+      if (localObject3 == null) {
+        break label176;
+      }
+      localObject3.close();
+      AppMethodBeat.o(76207);
+    }
+    AppMethodBeat.o(76207);
     return localHashMap;
   }
   
   public static void save(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramString1 != null) && (paramString2 != null)) {}
-    try
-    {
-      SQLiteDatabase localSQLiteDatabase = AstSDKDBHelper_V2.getInstance().getWritableDatabase();
-      if (update(paramString1, paramString2, paramString3, localSQLiteDatabase) <= 0)
+    AppMethodBeat.i(76205);
+    if ((paramString1 != null) && (paramString2 != null)) {
+      try
       {
-        ContentValues localContentValues = new ContentValues();
-        localContentValues.put("settingField", paramString1);
-        localContentValues.put("value", paramString2);
-        localContentValues.put("type", paramString3);
-        localSQLiteDatabase.insert("settingInfo", null, localContentValues);
+        SQLiteDatabase localSQLiteDatabase = AstSDKDBHelper_V2.getInstance().getWritableDatabase();
+        if (update(paramString1, paramString2, paramString3, localSQLiteDatabase) <= 0)
+        {
+          ContentValues localContentValues = new ContentValues();
+          localContentValues.put("settingField", paramString1);
+          localContentValues.put("value", paramString2);
+          localContentValues.put("type", paramString3);
+          localSQLiteDatabase.insert("settingInfo", null, localContentValues);
+        }
+        AppMethodBeat.o(76205);
+        return;
       }
-      return;
+      catch (Exception paramString1)
+      {
+        ab.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
+      }
     }
-    catch (Exception paramString1)
-    {
-      y.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
-    }
+    AppMethodBeat.o(76205);
   }
   
   private static int update(String paramString1, String paramString2, String paramString3, SQLiteDatabase paramSQLiteDatabase)
   {
-    int i;
-    if ((paramString1 == null) || (paramString2 == null)) {
-      i = -1;
-    }
-    for (;;)
+    AppMethodBeat.i(76206);
+    if ((paramString1 == null) || (paramString2 == null))
     {
-      return i;
-      try
-      {
-        ContentValues localContentValues = new ContentValues();
-        localContentValues.put("settingField", paramString1);
-        localContentValues.put("value", paramString2);
-        localContentValues.put("type", paramString3);
-        int j = paramSQLiteDatabase.update("settingInfo", localContentValues, "settingField = ?", new String[] { paramString1 });
-        i = j;
-        if (j > 0) {
-          continue;
-        }
-        return 0;
+      AppMethodBeat.o(76206);
+      return -1;
+    }
+    try
+    {
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("settingField", paramString1);
+      localContentValues.put("value", paramString2);
+      localContentValues.put("type", paramString3);
+      int i = paramSQLiteDatabase.update("settingInfo", localContentValues, "settingField = ?", new String[] { paramString1 });
+      if (i > 0) {
+        return i;
       }
-      catch (Exception paramString1)
-      {
-        paramString1 = paramString1;
-        y.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
-        return -2;
-      }
-      finally {}
+      return 0;
+    }
+    catch (Exception paramString1)
+    {
+      ab.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
+      return -2;
+    }
+    finally
+    {
+      AppMethodBeat.o(76206);
     }
   }
   
@@ -133,7 +143,10 @@ public class DownloadSettingTable
   
   public SqliteHelper getHelper()
   {
-    return AstSDKDBHelper_V2.getInstance();
+    AppMethodBeat.i(76208);
+    SqliteHelper localSqliteHelper = AstSDKDBHelper_V2.getInstance();
+    AppMethodBeat.o(76208);
+    return localSqliteHelper;
   }
   
   public String tableName()

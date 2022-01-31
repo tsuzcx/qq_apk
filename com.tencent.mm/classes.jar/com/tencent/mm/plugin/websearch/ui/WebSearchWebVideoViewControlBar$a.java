@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.websearch.ui;
 
 public abstract interface WebSearchWebVideoViewControlBar$a
 {
-  public abstract int akj();
+  public abstract int aEV();
   
-  public abstract int akk();
+  public abstract int aEW();
   
-  public abstract int cad();
+  public abstract int cZZ();
 }
 
 

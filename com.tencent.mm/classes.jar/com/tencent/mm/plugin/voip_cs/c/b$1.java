@@ -1,30 +1,33 @@
 package com.tencent.mm.plugin.voip_cs.c;
 
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class b$1
-  implements am.a
+  implements ap.a
 {
   b$1(b paramb) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    int i = this.qfd.pXd[(this.qfd.pXf % this.qfd.pXd.length)];
-    if (this.qfd.lh != null)
+    AppMethodBeat.i(135437);
+    int i = this.tLQ.tCH[(this.tLQ.tCJ % this.tLQ.tCH.length)];
+    if (this.tLQ.md != null)
     {
       if (-1 != i) {
-        break label68;
+        break label78;
       }
-      this.qfd.lh.setText(null);
+      this.tLQ.md.setText(null);
     }
     for (;;)
     {
-      b localb = this.qfd;
-      localb.pXf += 1;
+      b localb = this.tLQ;
+      localb.tCJ += 1;
+      AppMethodBeat.o(135437);
       return true;
-      label68:
-      this.qfd.lh.setText(i);
+      label78:
+      this.tLQ.md.setText(i);
     }
   }
 }

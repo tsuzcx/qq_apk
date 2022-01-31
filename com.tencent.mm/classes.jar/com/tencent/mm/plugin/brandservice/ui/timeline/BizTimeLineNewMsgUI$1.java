@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BizTimeLineNewMsgUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class BizTimeLineNewMsgUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.igE.finish();
+    AppMethodBeat.i(14156);
+    this.jWx.finish();
+    AppMethodBeat.o(14156);
     return true;
   }
 }

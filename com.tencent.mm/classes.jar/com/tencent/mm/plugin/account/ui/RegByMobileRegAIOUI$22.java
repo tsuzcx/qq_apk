@@ -2,32 +2,23 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mm.plugin.normsg.a.b;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RegByMobileRegAIOUI$22
   implements TextWatcher
 {
-  private ar fqH = new ar();
-  
-  RegByMobileRegAIOUI$22(RegByMobileRegAIOUI paramRegByMobileRegAIOUI, boolean[] paramArrayOfBoolean) {}
+  RegByMobileRegAIOUI$22(RegByMobileRegAIOUI paramRegByMobileRegAIOUI) {}
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    RegByMobileRegAIOUI.b(this.fqF);
+    AppMethodBeat.i(152603);
+    RegByMobileRegAIOUI.b(this.gIh);
+    AppMethodBeat.o(152603);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.fqI[0] != 0)
-    {
-      this.fqI[0] = false;
-      b.mGK.JV("ie_reg");
-    }
-    b.mGK.JW("ie_reg");
-  }
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

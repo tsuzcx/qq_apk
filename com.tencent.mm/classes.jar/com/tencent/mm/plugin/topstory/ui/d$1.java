@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.topstory.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.topstory.ui.home.d;
-import com.tencent.mm.protocal.c.byb;
+import com.tencent.mm.protocal.protobuf.cko;
 
 final class d$1
   implements Runnable
 {
-  d$1(byb parambyb) {}
+  d$1(cko paramcko, boolean paramBoolean) {}
   
   public final void run()
   {
-    ((a)g.t(a.class)).getWebViewMgr().b(this.pDL);
+    AppMethodBeat.i(1529);
+    ((b)g.G(b.class)).getWebViewMgr().a(this.tfF, this.tfG);
+    AppMethodBeat.o(1529);
   }
 }
 

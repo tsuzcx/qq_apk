@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.voiceprint.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsVoicePrintUI$6
   implements DialogInterface.OnClickListener
@@ -11,8 +12,10 @@ final class SettingsVoicePrintUI$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(26147);
     paramDialogInterface.dismiss();
-    this.pMj.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    this.tsf.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.o(26147);
   }
 }
 

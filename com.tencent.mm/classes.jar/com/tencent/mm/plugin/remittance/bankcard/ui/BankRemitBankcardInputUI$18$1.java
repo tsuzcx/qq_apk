@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 final class BankRemitBankcardInputUI$18$1
@@ -9,7 +10,9 @@ final class BankRemitBankcardInputUI$18$1
   
   public final void run()
   {
-    BankRemitBankcardInputUI.u(this.nwk.nwd).bvq();
+    AppMethodBeat.i(44532);
+    BankRemitBankcardInputUI.n(this.qhl.qhe).cfJ();
+    AppMethodBeat.o(44532);
   }
 }
 

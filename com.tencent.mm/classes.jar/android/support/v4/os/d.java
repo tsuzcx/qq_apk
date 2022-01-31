@@ -1,19 +1,17 @@
 package android.support.v4.os;
 
-import android.os.Parcelable.Creator;
+import android.os.Parcel;
 
 @Deprecated
-public final class d
+public abstract interface d<T>
 {
-  @Deprecated
-  public static <T> Parcelable.Creator<T> a(e<T> parame)
-  {
-    return new d.a(parame);
-  }
+  public abstract T createFromParcel(Parcel paramParcel, ClassLoader paramClassLoader);
+  
+  public abstract T[] newArray(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.os.d
  * JD-Core Version:    0.7.0.1
  */

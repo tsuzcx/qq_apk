@@ -2,6 +2,7 @@ package com.tencent.mm.ui.transmit;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MsgRetransmitUI$13
   implements DialogInterface.OnCancelListener
@@ -10,12 +11,15 @@ final class MsgRetransmitUI$13
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.vmU.wgP = true;
+    AppMethodBeat.i(35076);
+    this.zCq.AzG = true;
+    this.Azx.finish();
+    AppMethodBeat.o(35076);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.MsgRetransmitUI.13
  * JD-Core Version:    0.7.0.1
  */

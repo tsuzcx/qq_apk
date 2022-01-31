@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.facedetect.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class a$1$1
   implements Runnable
@@ -10,8 +11,10 @@ final class a$1$1
   
   public final void run()
   {
-    long l = bk.UZ();
-    a.m(this.jTn.jTm).connect(new a.1.1.1(this, l));
+    AppMethodBeat.i(541);
+    long l = bo.yB();
+    a.m(this.mnJ.mnI).connect(new a.1.1.1(this, l));
+    AppMethodBeat.o(541);
   }
 }
 

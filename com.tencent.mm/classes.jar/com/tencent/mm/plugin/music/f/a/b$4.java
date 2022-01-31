@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.music.f.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$4
   implements Runnable
@@ -9,8 +10,10 @@ final class b$4
   
   public final void run()
   {
-    y.i("MicroMsg.Music.BasePlayer", "onStop, isComplete:%b", new Object[] { Boolean.valueOf(this.mAV) });
-    this.mAU.mAR.b(this.mAU.myu, this.mAV);
+    AppMethodBeat.i(137652);
+    ab.i("MicroMsg.Music.BasePlayer", "onStop, isComplete:%b", new Object[] { Boolean.valueOf(this.pba) });
+    this.paZ.paW.c(this.paZ.oYB, this.pba);
+    AppMethodBeat.o(137652);
   }
 }
 

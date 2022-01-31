@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class LoginHistoryUI$28$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class LoginHistoryUI$28$1
   
   public final void run()
   {
-    LoginHistoryUI.c(this.fnh.fnc).fullScroll(130);
+    AppMethodBeat.i(124936);
+    LoginHistoryUI.c(this.gEA.gEw).fullScroll(130);
+    AppMethodBeat.o(124936);
   }
 }
 

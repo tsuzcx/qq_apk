@@ -1,45 +1,48 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import com.tencent.mm.h.c.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.m;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends l
+  extends m
 {
-  protected static c.a buS;
+  protected static c.a info;
   
   static
   {
+    AppMethodBeat.i(101760);
     c.a locala = new c.a();
-    locala.ujL = new Field[4];
+    locala.yrK = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.ujN.put("key", "TEXT PRIMARY KEY ");
+    locala.yrM.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "key";
+    locala.yrL = "key";
     locala.columns[1] = "data";
-    locala.ujN.put("data", "TEXT");
+    locala.yrM.put("data", "TEXT");
     localStringBuilder.append(" data TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "dataType";
-    locala.ujN.put("dataType", "TEXT");
+    locala.yrM.put("dataType", "TEXT");
     localStringBuilder.append(" dataType TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "size";
-    locala.ujN.put("size", "INTEGER");
+    locala.yrM.put("size", "INTEGER");
     localStringBuilder.append(" size INTEGER");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(101760);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

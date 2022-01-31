@@ -1,28 +1,30 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import com.tencent.mm.plugin.report.service.h;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.model.ah.c;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.b;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.sdk.platformtools.bk;
 
 final class WebViewUI$s
   implements b
 {
   private WebViewUI$s(WebViewUI paramWebViewUI) {}
   
-  public final boolean Tq(String paramString)
+  public final boolean ait(String paramString)
   {
-    h.nFQ.a(405L, 26L, 1L, true);
-    WebViewUI.i(this.rpH, 3);
-    return true;
+    AppMethodBeat.i(7965);
+    String str = this.vgz.getIntent().getStringExtra("geta8key_username");
+    boolean bool = ah.c.a(paramString, str, this.vgz.aio(str), this.vgz.igU, WebViewUI.Q(this.vgz), this.vgz.vgv, this.vgz.hashCode());
+    AppMethodBeat.o(7965);
+    return bool;
   }
   
-  public final boolean Ty(String paramString)
+  public final boolean aiz(String paramString)
   {
-    if (bk.bl(paramString)) {
-      return false;
-    }
-    return s.n(paramString, "weixin://manual_update/");
+    AppMethodBeat.i(7964);
+    boolean bool = ah.c.a(paramString, this.vgz.igU, this.vgz.getIntent().getIntExtra("geta8key_scene", 0));
+    AppMethodBeat.o(7964);
+    return bool;
   }
 }
 

@@ -2,13 +2,19 @@ package com.tencent.mm.plugin.masssend.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
   implements DialogInterface.OnClickListener
 {
   a$1(a parama) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(22754);
+    a.clearData();
+    AppMethodBeat.o(22754);
+  }
 }
 
 

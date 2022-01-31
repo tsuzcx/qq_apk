@@ -2,25 +2,26 @@ package com.tencent.mm.plugin.wallet_ecard.ui;
 
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.support.v4.a.a.a;
+import android.support.v4.graphics.drawable.a;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class WalletECardBindCardListUI$a
 {
-  TextView hov;
+  TextView jaY;
   
   public WalletECardBindCardListUI$a(WalletECardBindCardListUI paramWalletECardBindCardListUI, View paramView)
   {
-    this.hov = ((TextView)paramView.findViewById(a.f.ecard_bind_card_add_main_title_tv));
-    paramWalletECardBindCardListUI = (ImageView)paramView.findViewById(a.f.ecard_bind_card_add_main_iv);
-    paramView = a.f(paramWalletECardBindCardListUI.getDrawable());
-    a.a(paramView, ColorStateList.valueOf(ae.getResources().getColor(a.c.link_color)));
+    AppMethodBeat.i(48117);
+    this.jaY = ((TextView)paramView.findViewById(2131823472));
+    paramWalletECardBindCardListUI = (ImageView)paramView.findViewById(2131823471);
+    paramView = a.e(paramWalletECardBindCardListUI.getDrawable());
+    a.a(paramView, ColorStateList.valueOf(ah.getResources().getColor(2131690214)));
     paramWalletECardBindCardListUI.setImageDrawable(paramView);
+    AppMethodBeat.o(48117);
   }
 }
 

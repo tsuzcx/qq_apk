@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.offline.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.walletlock.a.b;
 
@@ -13,8 +14,10 @@ final class c$7
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(43477);
     paramDialogInterface = new Intent();
-    ((b)g.r(b.class)).a(this.mMg.mActivity, paramDialogInterface);
+    ((b)g.E(b.class)).b(this.pmw.mActivity, paramDialogInterface);
+    AppMethodBeat.o(43477);
   }
 }
 

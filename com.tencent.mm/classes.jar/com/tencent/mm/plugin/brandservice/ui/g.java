@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.sortview.a;
 import com.tencent.mm.ui.base.sortview.a.a;
 import com.tencent.mm.ui.base.sortview.a.b;
@@ -8,27 +9,33 @@ import com.tencent.mm.ui.base.sortview.a.b;
 public final class g
   extends a
 {
-  private static a.b icr;
+  private static a.b jTh;
   
   public g(Object paramObject)
   {
     super(0, paramObject);
-    this.vdV = true;
+    this.zsv = true;
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs) {}
   
-  public final a.b axw()
+  public final a.b aWu()
   {
-    if (icr == null) {
-      icr = new g.1(this);
+    AppMethodBeat.i(14056);
+    if (jTh == null) {
+      jTh = new g.1(this);
     }
-    return icr;
+    a.b localb = jTh;
+    AppMethodBeat.o(14056);
+    return localb;
   }
   
-  public final a.a axx()
+  public final a.a aWv()
   {
-    return new g.a();
+    AppMethodBeat.i(14057);
+    g.a locala = new g.a();
+    AppMethodBeat.o(14057);
+    return locala;
   }
 }
 

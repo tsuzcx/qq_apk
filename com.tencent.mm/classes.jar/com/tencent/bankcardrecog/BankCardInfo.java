@@ -1,27 +1,40 @@
 package com.tencent.bankcardrecog;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tenpay.ndk.Encrypt;
 
 public class BankCardInfo
 {
   public byte[] bitmapData;
-  public int bitmapLen = 0;
-  private String cardNum = "";
-  private int cardNumLen = 0;
-  public int height = 0;
-  private int[] rectX = new int[20];
-  private int[] rectY = new int[20];
-  public int width = 0;
+  public int bitmapLen;
+  private String cardNum;
+  private int cardNumLen;
+  public int height;
+  private int[] rectX;
+  private int[] rectY;
+  public int width;
   
   public BankCardInfo(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(40551);
+    this.cardNumLen = 0;
+    this.cardNum = "";
+    this.rectY = new int[20];
+    this.rectX = new int[20];
+    this.width = 0;
+    this.height = 0;
+    this.bitmapLen = 0;
     this.bitmapData = new byte[(int)(0.8D * paramInt1) * (int)(0.52D * paramInt1) * 3 + 54];
+    AppMethodBeat.o(40551);
   }
   
   public String getCardNum()
   {
-    Encrypt localEncrypt = new Encrypt();
-    return localEncrypt.desedeEncode(this.cardNum, localEncrypt.getRandomKey());
+    AppMethodBeat.i(40552);
+    Object localObject = new Encrypt();
+    localObject = ((Encrypt)localObject).desedeEncode(this.cardNum, ((Encrypt)localObject).getRandomKey());
+    AppMethodBeat.o(40552);
+    return localObject;
   }
   
   public int getCardNumLen()

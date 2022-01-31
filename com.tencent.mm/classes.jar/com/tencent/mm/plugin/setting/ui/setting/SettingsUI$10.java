@@ -1,31 +1,34 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.r;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.mm.modelsimple.t;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class SettingsUI$10
-  implements am.a
+  implements ap.a
 {
-  SettingsUI$10(SettingsUI paramSettingsUI, r paramr) {}
+  SettingsUI$10(SettingsUI paramSettingsUI, t paramt) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    g.Dk().c(this.nTk);
-    g.Dk().b(255, SettingsUI.r(this.nWB));
-    SettingsUI.s(this.nWB);
-    if (SettingsUI.t(this.nWB) != null)
+    AppMethodBeat.i(127570);
+    g.Rc().a(this.qHk);
+    g.Rc().b(255, SettingsUI.q(this.qKL));
+    SettingsUI.r(this.qKL);
+    if (SettingsUI.s(this.qKL) != null)
     {
-      SettingsUI.t(this.nWB).stopTimer();
-      SettingsUI.u(this.nWB);
+      SettingsUI.s(this.qKL).stopTimer();
+      SettingsUI.t(this.qKL);
     }
-    if (SettingsUI.p(this.nWB) != null) {
-      SettingsUI.p(this.nWB).cancel();
+    if (SettingsUI.o(this.qKL) != null) {
+      SettingsUI.o(this.qKL).cancel();
     }
-    SettingsUI.v(this.nWB);
+    SettingsUI.u(this.qKL);
+    AppMethodBeat.o(127570);
     return false;
   }
 }

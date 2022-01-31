@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MobileInputUI$2
-  implements d.a
+  implements View.OnClickListener
 {
   MobileInputUI$2(MobileInputUI paramMobileInputUI) {}
   
-  public final void onDismiss()
+  public final void onClick(View paramView)
   {
-    MobileInputUI.e(this.foH).bFp();
+    AppMethodBeat.i(125161);
+    MobileInputUI.d(this.gGb);
+    AppMethodBeat.o(125161);
   }
 }
 

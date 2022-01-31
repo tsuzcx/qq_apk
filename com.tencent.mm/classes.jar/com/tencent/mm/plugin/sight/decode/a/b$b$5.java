@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sight.decode.a;
 
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 final class b$b$5
@@ -11,20 +12,22 @@ final class b$b$5
   
   public final void run()
   {
-    if (b.q(this.ofe.oeY) != null)
+    AppMethodBeat.i(70236);
+    if (b.r(this.qTt.qTn) != null)
     {
-      View localView = b.q(this.ofe.oeY).bBi();
+      View localView = b.r(this.qTt.qTn).cmI();
       if (localView != null)
       {
-        if ((b.C(this.ofe.oeY) == null) && (b.q(this.ofe.oeY).bBj() != -1) && (b.k(this.ofe.oeY).get() != null)) {
-          b.a(this.ofe.oeY, AnimationUtils.loadAnimation(((View)b.k(this.ofe.oeY).get()).getContext(), b.q(this.ofe.oeY).bBj()));
+        if ((b.D(this.qTt.qTn) == null) && (b.r(this.qTt.qTn).cmJ() != -1) && (b.l(this.qTt.qTn).get() != null)) {
+          b.a(this.qTt.qTn, AnimationUtils.loadAnimation(((View)b.l(this.qTt.qTn).get()).getContext(), b.r(this.qTt.qTn).cmJ()));
         }
-        if (b.C(this.ofe.oeY) != null) {
-          localView.startAnimation(b.C(this.ofe.oeY));
+        if (b.D(this.qTt.qTn) != null) {
+          localView.startAnimation(b.D(this.qTt.qTn));
         }
         localView.setVisibility(0);
       }
     }
+    AppMethodBeat.o(70236);
   }
 }
 

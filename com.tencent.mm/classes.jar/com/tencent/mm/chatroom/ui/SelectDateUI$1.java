@@ -1,8 +1,7 @@
 package com.tencent.mm.chatroom.ui;
 
-import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.ah;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class SelectDateUI$1
   implements Runnable
@@ -11,29 +10,10 @@ final class SelectDateUI$1
   
   public final void run()
   {
-    SelectDateUI.a(this.drM);
-    SelectDateUI.f(this.drM).post(new Runnable()
-    {
-      public final void run()
-      {
-        DayPickerView localDayPickerView = SelectDateUI.c(SelectDateUI.1.this.drM);
-        if (SelectDateUI.b(SelectDateUI.1.this.drM) == -1L) {}
-        for (long l = System.currentTimeMillis() * 1000L;; l = SelectDateUI.b(SelectDateUI.1.this.drM))
-        {
-          localDayPickerView.setBeginDate(l);
-          SelectDateUI.c(SelectDateUI.1.this.drM).a(SelectDateUI.1.this.drM, SelectDateUI.d(SelectDateUI.1.this.drM).values());
-          if (SelectDateUI.d(SelectDateUI.1.this.drM).size() != 0) {
-            break;
-          }
-          SelectDateUI.e(SelectDateUI.1.this.drM).setVisibility(0);
-          SelectDateUI.c(SelectDateUI.1.this.drM).setVisibility(8);
-          SelectDateUI.e(SelectDateUI.1.this.drM).setText(SelectDateUI.1.this.drM.getString(a.i.chatting_record_noting_hint));
-          return;
-        }
-        SelectDateUI.e(SelectDateUI.1.this.drM).setVisibility(8);
-        SelectDateUI.c(SelectDateUI.1.this.drM).setVisibility(0);
-      }
-    });
+    AppMethodBeat.i(104380);
+    SelectDateUI.a(this.eju);
+    SelectDateUI.f(this.eju).post(new SelectDateUI.1.1(this));
+    AppMethodBeat.o(104380);
   }
 }
 

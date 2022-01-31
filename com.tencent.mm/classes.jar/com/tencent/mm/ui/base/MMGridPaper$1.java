@@ -1,13 +1,17 @@
 package com.tencent.mm.ui.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MMGridPaper$1
   implements j.a
 {
   MMGridPaper$1(MMGridPaper paramMMGridPaper) {}
   
-  public final void axW()
+  public final void aWN()
   {
-    this.uVI.refresh();
+    AppMethodBeat.i(106616);
+    this.zkb.refresh();
+    AppMethodBeat.o(106616);
   }
 }
 

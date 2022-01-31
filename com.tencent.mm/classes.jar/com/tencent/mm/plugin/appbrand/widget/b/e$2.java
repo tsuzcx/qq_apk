@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.widget.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class e$2
   implements Runnable
 {
@@ -7,13 +9,15 @@ final class e$2
   
   public final void run()
   {
-    this.hsA.removeAllViews();
-    this.hsA.setVisibility(4);
+    AppMethodBeat.i(77404);
+    this.jjq.removeAllViews();
+    this.jjq.setVisibility(4);
+    AppMethodBeat.o(77404);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.b.e.2
  * JD-Core Version:    0.7.0.1
  */

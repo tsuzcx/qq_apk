@@ -1,148 +1,72 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.w;
-import com.tencent.mm.plugin.appbrand.app.e;
-import com.tencent.mm.protocal.c.abb;
-import com.tencent.mm.protocal.c.abc;
-import com.tencent.mm.protocal.c.abd;
-import com.tencent.mm.protocal.c.cdl;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
+import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.cqs;
+import com.tencent.mm.protocal.protobuf.dr;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class n
+public enum n
 {
-  public static String a(String paramString, int paramInt1, int paramInt2, c paramc, boolean paramBoolean)
+  public static void a(AppBrandSysConfigLU paramAppBrandSysConfigLU, String paramString)
   {
-    if (e.aaY() == null) {
-      return "";
-    }
-    int j = n.a.aF(paramString, paramInt1);
-    int i;
-    String str;
-    boolean bool;
-    if (e.aaY() == null)
+    AppMethodBeat.i(101821);
+    paramAppBrandSysConfigLU.hiS = true;
+    if (bo.isNullOrNil(paramString))
     {
-      i = 0;
-      str = n.a.aG(paramString, paramInt1);
-      if ((i == 0) || ((!bk.bl(str)) && (i <= j))) {
-        break label208;
-      }
-      bool = true;
-      label55:
-      y.i("MicroMsg.CommonConfigManager", "getConfig the server_version is %d ,the local_version is %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-      y.i("MicroMsg.CommonConfigManager", "the config is \n %s \n isShouldSyncFromServer:%b", new Object[] { str, Boolean.valueOf(bool) });
-      if (!bool) {
-        break label214;
-      }
-      if (paramBoolean)
-      {
-        paramc = new n.2(paramc, paramString);
-        LinkedList localLinkedList = new LinkedList();
-        abb localabb = new abb();
-        localabb.euK = paramString;
-        localabb.hQR = paramInt1;
-        localabb.swt = i;
-        localabb.taE = paramInt2;
-        localLinkedList.add(localabb);
-        a(localLinkedList, paramc);
-      }
-    }
-    for (;;)
-    {
-      return str;
-      i = bk.getInt(e.aaY().get(n.a.aD(paramString, paramInt1), "0"), 0);
-      break;
-      label208:
-      bool = false;
-      break label55;
-      label214:
-      paramc.rf(str);
-    }
-  }
-  
-  public static void a(String paramString, LinkedList<cdl> paramLinkedList, boolean paramBoolean)
-  {
-    if (bk.bl(paramString)) {
-      y.e("MicroMsg.CommonConfigManager", "setVersion, app_id is null");
-    }
-    LinkedList localLinkedList;
-    do
-    {
+      ab.w("MicroMsg.AppBrandSysConfigUtil", "operationInfo nil");
+      AppMethodBeat.o(101821);
       return;
-      if ((paramLinkedList == null) || (paramLinkedList.size() == 0))
+    }
+    try
+    {
+      if (new JSONObject(paramString).getJSONObject("bgKeepAlive").getInt("music") == 1) {}
+      for (boolean bool = true;; bool = false)
       {
-        y.e("MicroMsg.CommonConfigManager", "setVersion, versionItems is empty");
+        paramAppBrandSysConfigLU.hiS = bool;
+        AppMethodBeat.o(101821);
         return;
       }
-      localLinkedList = new LinkedList();
-      Iterator localIterator = paramLinkedList.iterator();
-      while (localIterator.hasNext())
+      return;
+    }
+    catch (JSONException paramAppBrandSysConfigLU)
+    {
+      ab.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo operationInfo:%s", new Object[] { paramString });
+      ab.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo exp:%s", new Object[] { paramAppBrandSysConfigLU });
+      AppMethodBeat.o(101821);
+    }
+  }
+  
+  static dr s(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(101819);
+    Object localObject = paramJSONObject.optJSONObject("AppConfig");
+    paramJSONObject = new dr();
+    if (localObject != null)
+    {
+      localObject = ((JSONObject)localObject).optJSONArray("VersionList");
+      paramJSONObject.wpH = new LinkedList();
+      if (localObject != null)
       {
-        cdl localcdl = (cdl)localIterator.next();
-        y.d("MicroMsg.CommonConfigManager", "versionItem.version:%d,version.type:%d", new Object[] { Integer.valueOf(localcdl.version), Integer.valueOf(localcdl.type) });
-        int i = n.a.aF(paramString, localcdl.type);
-        int j = localcdl.version;
-        n.a.B(paramString, localcdl.type, j);
-        if (j != 0) {
-          if (j > i)
-          {
-            localLinkedList.add(z(paramString, localcdl.type, localcdl.version));
-          }
-          else if (j == i)
-          {
-            if (bk.bl(n.a.aG(paramString, localcdl.type))) {
-              localLinkedList.add(z(paramString, localcdl.type, localcdl.version));
-            }
-          }
-          else
-          {
-            y.i("MicroMsg.CommonConfigManager", "local_version:%d, server_version:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-            if (bk.bl(n.a.aG(paramString, localcdl.type))) {
-              localLinkedList.add(z(paramString, localcdl.type, localcdl.version));
-            }
-          }
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
+          cqs localcqs = new cqs();
+          localcqs.type = localJSONObject.optInt("type");
+          localcqs.version = localJSONObject.optInt("version");
+          paramJSONObject.wpH.add(localcqs);
+          i += 1;
         }
       }
-      y.i("MicroMsg.CommonConfigManager", "setVersion appid:%s,versionItems.size:%d,getAppConfigItems.size:%d", new Object[] { paramString, Integer.valueOf(paramLinkedList.size()), Integer.valueOf(localLinkedList.size()) });
-    } while ((!paramBoolean) || (localLinkedList.size() == 0));
-    y.d("MicroMsg.CommonConfigManager", "setVersion appid:%s, need sync from server", new Object[] { paramString });
-    a(localLinkedList, new n.1(paramString));
-  }
-  
-  private static void a(LinkedList<abb> paramLinkedList, n.b paramb)
-  {
-    b.a locala = new b.a();
-    locala.ecG = 1138;
-    locala.uri = "/cgi-bin/mmbiz-bin/wxausrevent/getappconfig";
-    locala.ecI = new abd();
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    abc localabc = new abc();
-    localabc.taF = paramLinkedList;
-    locala.ecH = localabc;
-    w.a(locala.Kt(), new n.3(paramb), true);
-  }
-  
-  public static void b(String paramString, LinkedList<cdl> paramLinkedList)
-  {
-    a(paramString, paramLinkedList, true);
-  }
-  
-  private static abb z(String paramString, int paramInt1, int paramInt2)
-  {
-    abb localabb = new abb();
-    localabb.euK = paramString;
-    localabb.hQR = paramInt1;
-    localabb.swt = paramInt2;
-    return localabb;
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void rf(String paramString);
+    }
+    AppMethodBeat.o(101819);
+    return paramJSONObject;
   }
 }
 

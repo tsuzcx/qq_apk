@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.shake.d.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vfs.e;
 
 public final class i$1
@@ -7,12 +8,17 @@ public final class i$1
 {
   public final void run()
   {
-    e.K(i.bAy(), true);
+    AppMethodBeat.i(24634);
+    e.O(i.clS(), true);
+    AppMethodBeat.o(24634);
   }
   
   public final String toString()
   {
-    return super.toString() + "|asyncClearMusicData";
+    AppMethodBeat.i(24635);
+    String str = super.toString() + "|asyncClearMusicData";
+    AppMethodBeat.o(24635);
+    return str;
   }
 }
 

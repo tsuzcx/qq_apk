@@ -1,9 +1,12 @@
 package com.tencent.mm.plugin.profile.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.pluginsdk.ui.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.pluginsdk.ui.ProfileHdHeadImg;
+import com.tencent.mm.ui.MMActivity;
 
 final class BizInfoHeaderPreference$1
   implements View.OnClickListener
@@ -12,8 +15,13 @@ final class BizInfoHeaderPreference$1
   
   public final void onClick(View paramView)
   {
-    paramView = BizInfoHeaderPreference.a(this.mVz).field_username;
-    new f(BizInfoHeaderPreference.b(this.mVz), paramView, BizInfoHeaderPreference.c(this.mVz)).cmi();
+    AppMethodBeat.i(23306);
+    paramView = BizInfoHeaderPreference.a(this.pyg).field_username;
+    Intent localIntent = new Intent(BizInfoHeaderPreference.b(this.pyg), ProfileHdHeadImg.class);
+    localIntent.putExtra("username", paramView);
+    localIntent.putExtra("brand_icon_url", BizInfoHeaderPreference.c(this.pyg));
+    BizInfoHeaderPreference.b(this.pyg).startActivity(localIntent);
+    AppMethodBeat.o(23306);
   }
 }
 

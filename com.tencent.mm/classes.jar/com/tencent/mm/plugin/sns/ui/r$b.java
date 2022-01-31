@@ -6,24 +6,24 @@ import android.widget.TextView;
 
 final class r$b
 {
-  ImageView dpY;
-  TextView gaI;
-  LinearLayout oPg;
-  TextView oPh;
-  LinearLayout oPi;
-  LinearLayout oPj;
-  ImageView oPk;
-  LinearLayout oPl;
-  LinearLayout oPm;
-  TextView oPn;
-  TextView oPo;
-  TextView oPp;
-  LinearLayout oPq;
-  ImageView oPr;
-  ImageView oPs;
-  LinearLayout oPt;
-  LinearLayout oPu;
-  TextView oPv;
+  ImageView ehv;
+  TextView hsI;
+  LinearLayout rGS;
+  TextView rGT;
+  LinearLayout rGU;
+  LinearLayout rGV;
+  ImageView rGW;
+  LinearLayout rGX;
+  LinearLayout rGY;
+  TextView rGZ;
+  TextView rHa;
+  TextView rHb;
+  LinearLayout rHc;
+  ImageView rHd;
+  ImageView rHe;
+  LinearLayout rHf;
+  LinearLayout rHg;
+  TextView rHh;
   
   r$b(r paramr) {}
 }

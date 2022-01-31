@@ -1,51 +1,61 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import android.net.wifi.ScanResult;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.plugin.freewifi.d.h;
+import com.tencent.mm.plugin.freewifi.k;
 import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.k.b;
-import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.plugin.freewifi.model.h.a;
-import com.tencent.mm.protocal.c.bmv;
-import com.tencent.mm.protocal.c.cy;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.protocal.protobuf.aeg;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FreeWifiNetCheckUI$5
-  implements h.a
+  implements f
 {
-  FreeWifiNetCheckUI$5(FreeWifiNetCheckUI paramFreeWifiNetCheckUI, String paramString) {}
+  FreeWifiNetCheckUI$5(FreeWifiNetCheckUI paramFreeWifiNetCheckUI, String paramString1, String paramString2, String paramString3) {}
   
-  public final void bx(List<ScanResult> paramList)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    if ((paramList == null) || (paramList.size() == 0))
+    AppMethodBeat.i(21038);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.ksx.finish();
-      FreeWifiNetCheckUI.c(this.ksx);
-      return;
-    }
-    bmv localbmv = new bmv();
-    localbmv.tGb = new LinkedList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ScanResult localScanResult = (ScanResult)paramList.next();
-      if (localScanResult != null)
+      paramString = ((h)paramm).bAV();
+      if (paramString != null)
       {
-        cy localcy = new cy();
-        localcy.mac = localScanResult.BSSID;
-        localcy.swm = localScanResult.level;
-        localcy.ssid = localScanResult.SSID;
-        localbmv.tGb.add(localcy);
+        paramm = this.mOl.getIntent();
+        paramm.putExtra("free_wifi_appid", paramString.woB);
+        paramm.putExtra("free_wifi_head_img_url", paramString.nqE);
+        paramm.putExtra("free_wifi_welcome_msg", paramString.wXi);
+        paramm.putExtra("free_wifi_welcome_sub_title", paramString.wXk);
+        paramm.putExtra("free_wifi_privacy_url", paramString.wXj);
+        paramm.putExtra("free_wifi_app_nickname", paramString.jKG);
+        paramm.putExtra("ConstantsFreeWifi.FREE_WIFI_PC_ENCRYPTED_SHOPID", this.mOm);
+        paramm.putExtra("ConstantsFreeWifi.FREE_WIFI_PC_TICKET", this.mOn);
+        paramm.setClass(this.mOl, FreeWifiPcUI.class);
+        this.mOl.finish();
+        this.mOl.startActivity(paramm);
       }
     }
-    paramList = com.tencent.mm.plugin.freewifi.k.aTx();
-    paramList.iGw = m.B(FreeWifiNetCheckUI.b(this.ksx));
-    paramList.kmS = k.b.knk.knD;
-    paramList.kmT = k.b.knk.name;
-    paramList.bUR = 9;
-    paramList.aTz().aTy();
-    new com.tencent.mm.plugin.freewifi.d.k(this.kpg, localbmv, 9, m.B(this.ksx.getIntent())).b(new FreeWifiNetCheckUI.5.1(this));
+    for (;;)
+    {
+      paramString = k.bAc();
+      paramString.mIB = this.mOm;
+      paramString.mIC = this.hye;
+      paramString.kMp = this.mOn;
+      paramString.mIF = k.b.mJl.mJq;
+      paramString.mIG = k.b.mJl.name;
+      paramString.result = paramInt2;
+      paramString.bAe().bAd();
+      ab.i("MicroMsg.FreeWifi.FreeWifiNetCheckUI", "sessionKey=%s, step=%d, method=handlePcRequest, desc=NetSceneGetPcFrontPage returns.errcode=%d", new Object[] { com.tencent.mm.plugin.freewifi.m.U(this.mOl.getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(this.mOl.getIntent())), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(21038);
+      return;
+      if ((com.tencent.mm.plugin.freewifi.m.eq(paramInt1, paramInt2)) && (!com.tencent.mm.plugin.freewifi.m.isEmpty(paramString))) {
+        FreeWifiNetCheckUI.a(this.mOl, paramString + "(" + com.tencent.mm.plugin.freewifi.m.a(com.tencent.mm.plugin.freewifi.m.W(FreeWifiNetCheckUI.b(this.mOl)), k.b.mJl, paramInt2) + ")", "");
+      } else {
+        FreeWifiNetCheckUI.a(this.mOl, this.mOl.getString(2131300147), this.mOl.getString(2131300148));
+      }
+    }
   }
 }
 

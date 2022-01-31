@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$s
+final class c$s
   extends c.g
 {
-  public c$s()
+  c$s()
   {
-    super("cancelSearchActionSheet", "cancelSearchActionSheet", 10000, false);
+    super("bindEmail", "bindEmail", 306, true);
   }
 }
 

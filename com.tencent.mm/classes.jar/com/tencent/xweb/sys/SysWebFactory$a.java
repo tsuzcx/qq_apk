@@ -2,12 +2,14 @@ package com.tencent.xweb.sys;
 
 final class SysWebFactory$a
 {
-  private static boolean jEt = false;
-  private static boolean xjO = false;
+  private static boolean BHs = false;
+  private static boolean lNR = false;
+  
+  public static void dYY() {}
   
   public static boolean hasInitedCallback()
   {
-    return xjO;
+    return BHs;
   }
 }
 

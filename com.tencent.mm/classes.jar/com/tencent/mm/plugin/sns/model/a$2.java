@@ -1,23 +1,18 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedHashMap;
-import java.util.Map.Entry;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.j;
 
 final class a$2
-  extends LinkedHashMap<Long, Integer>
+  implements Runnable
 {
-  a$2(int paramInt)
-  {
-    super(paramInt, 0.75F);
-  }
+  a$2(String paramString) {}
   
-  protected final boolean removeEldestEntry(Map.Entry<Long, Integer> paramEntry)
+  public final void run()
   {
-    if ((size() > 500) && (paramEntry != null)) {
-      y.i("MicroMsg.AdSnsInfoStorageLogic", "remove eldest ad snsId " + paramEntry.getKey());
-    }
-    return size() > 500;
+    AppMethodBeat.i(36062);
+    j.crY().f("adId", this.rcS, "adxml", 0);
+    AppMethodBeat.o(36062);
   }
 }
 

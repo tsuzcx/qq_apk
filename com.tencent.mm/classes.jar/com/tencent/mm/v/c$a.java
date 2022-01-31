@@ -1,5 +1,8 @@
 package com.tencent.mm.v;
 
+import a.l;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/executor/OpDelayExecutor$Companion;", "", "()V", "TAG", "", "plugin-functionmsg_release"})
 public final class c$a {}
 
 

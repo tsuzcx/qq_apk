@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.collect.reward.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class QrRewardSetMoneyUI$5
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class QrRewardSetMoneyUI$5
   
   public final void run()
   {
-    QrRewardSetMoneyUI.a(this.iJO);
+    AppMethodBeat.i(41153);
+    QrRewardSetMoneyUI.a(this.kQu);
+    AppMethodBeat.o(41153);
   }
 }
 

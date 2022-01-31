@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletOrderInfoOldUI$4
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class WalletOrderInfoOldUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.qEN.finish();
+    AppMethodBeat.i(47476);
+    this.urV.finish();
+    AppMethodBeat.o(47476);
   }
 }
 

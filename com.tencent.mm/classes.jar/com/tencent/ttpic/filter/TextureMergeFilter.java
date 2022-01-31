@@ -2,6 +2,7 @@ package com.tencent.ttpic.filter;
 
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.m.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TextureMergeFilter
   extends BaseFilter
@@ -17,9 +18,11 @@ public class TextureMergeFilter
   
   public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(82973);
     addParam(new m.n("inputImageTexture2", this.mBgTex, 33986));
     addParam(new m.n("inputImageTexture3", this.mFgTex, 33987));
     super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.o(82973);
   }
   
   public void setTex(int paramInt1, int paramInt2)

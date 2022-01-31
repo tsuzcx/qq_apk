@@ -1,24 +1,19 @@
 package com.tencent.mm.plugin.music.e;
 
-import android.text.TextUtils;
-import com.tencent.mm.plugin.music.cache.g;
-import com.tencent.mm.plugin.music.h.c;
-import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.e;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class k
   extends h
 {
-  static k myZ;
-  public a myY = null;
-  private com.tencent.mm.plugin.music.h.a mza;
+  private static k oZf;
+  public a oZe = null;
+  private com.tencent.mm.plugin.music.h.a oZg;
   
   private k(a parama)
   {
-    this.myY = parama;
+    this.oZe = parama;
   }
   
   /* Error */
@@ -27,256 +22,177 @@ public final class k
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 21	com/tencent/mm/plugin/music/e/k:myZ	Lcom/tencent/mm/plugin/music/e/k;
-    //   6: ifnull +36 -> 42
-    //   9: ldc 23
-    //   11: ldc 25
-    //   13: invokestatic 31	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   16: getstatic 21	com/tencent/mm/plugin/music/e/k:myZ	Lcom/tencent/mm/plugin/music/e/k;
-    //   19: aload_0
-    //   20: putfield 17	com/tencent/mm/plugin/music/e/k:myY	Lcom/tencent/mm/plugin/music/e/a;
-    //   23: aload_0
-    //   24: getstatic 21	com/tencent/mm/plugin/music/e/k:myZ	Lcom/tencent/mm/plugin/music/e/k;
-    //   27: invokeinterface 36 2 0
-    //   32: aload_0
-    //   33: invokeinterface 39 1 0
-    //   38: ldc 2
-    //   40: monitorexit
-    //   41: return
-    //   42: new 2	com/tencent/mm/plugin/music/e/k
-    //   45: dup
-    //   46: aload_0
-    //   47: invokespecial 41	com/tencent/mm/plugin/music/e/k:<init>	(Lcom/tencent/mm/plugin/music/e/a;)V
-    //   50: putstatic 21	com/tencent/mm/plugin/music/e/k:myZ	Lcom/tencent/mm/plugin/music/e/k;
-    //   53: aload_0
-    //   54: getstatic 21	com/tencent/mm/plugin/music/e/k:myZ	Lcom/tencent/mm/plugin/music/e/k;
-    //   57: invokeinterface 36 2 0
-    //   62: aload_0
-    //   63: invokeinterface 39 1 0
-    //   68: goto -30 -> 38
-    //   71: astore_0
-    //   72: ldc 2
-    //   74: monitorexit
-    //   75: aload_0
-    //   76: athrow
+    //   3: ldc 20
+    //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 28	com/tencent/mm/plugin/music/e/k:oZf	Lcom/tencent/mm/plugin/music/e/k;
+    //   11: ifnull +41 -> 52
+    //   14: ldc 30
+    //   16: ldc 32
+    //   18: invokestatic 38	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: getstatic 28	com/tencent/mm/plugin/music/e/k:oZf	Lcom/tencent/mm/plugin/music/e/k;
+    //   24: aload_0
+    //   25: putfield 17	com/tencent/mm/plugin/music/e/k:oZe	Lcom/tencent/mm/plugin/music/e/a;
+    //   28: aload_0
+    //   29: getstatic 28	com/tencent/mm/plugin/music/e/k:oZf	Lcom/tencent/mm/plugin/music/e/k;
+    //   32: invokeinterface 43 2 0
+    //   37: aload_0
+    //   38: invokeinterface 46 1 0
+    //   43: ldc 20
+    //   45: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   48: ldc 2
+    //   50: monitorexit
+    //   51: return
+    //   52: new 2	com/tencent/mm/plugin/music/e/k
+    //   55: dup
+    //   56: aload_0
+    //   57: invokespecial 51	com/tencent/mm/plugin/music/e/k:<init>	(Lcom/tencent/mm/plugin/music/e/a;)V
+    //   60: putstatic 28	com/tencent/mm/plugin/music/e/k:oZf	Lcom/tencent/mm/plugin/music/e/k;
+    //   63: aload_0
+    //   64: getstatic 28	com/tencent/mm/plugin/music/e/k:oZf	Lcom/tencent/mm/plugin/music/e/k;
+    //   67: invokeinterface 43 2 0
+    //   72: aload_0
+    //   73: invokeinterface 46 1 0
+    //   78: ldc 20
+    //   80: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: goto -35 -> 48
+    //   86: astore_0
+    //   87: ldc 2
+    //   89: monitorexit
+    //   90: aload_0
+    //   91: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	77	0	parama	a
+    //   0	92	0	parama	a
     // Exception table:
     //   from	to	target	type
-    //   3	38	71	finally
-    //   42	68	71	finally
+    //   3	48	86	finally
+    //   52	83	86	finally
   }
   
-  public static k bnl()
+  public static k bVH()
   {
-    if (myZ == null) {
-      throw new NullPointerException("must init MusicPlayerManager with your impl logic first!!!");
+    AppMethodBeat.i(137535);
+    if (oZf == null)
+    {
+      localObject = new NullPointerException("must init MusicPlayerManager with your impl logic first!!!");
+      AppMethodBeat.o(137535);
+      throw ((Throwable)localObject);
     }
-    if (myZ.myY == null) {
-      myZ.myY = new i();
+    if (oZf.oZe == null) {
+      oZf.oZe = new i();
     }
-    return myZ;
+    Object localObject = oZf;
+    AppMethodBeat.o(137535);
+    return localObject;
   }
   
-  public static void bnm()
+  public static void bVI()
   {
     try
     {
-      if (myZ != null) {
-        myZ.finish();
+      AppMethodBeat.i(137536);
+      if (oZf != null) {
+        oZf.finish();
       }
+      AppMethodBeat.o(137536);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    finally {}
+  }
+  
+  public static com.tencent.mm.plugin.music.h.a bVJ()
+  {
+    AppMethodBeat.i(137546);
+    if (bVH().oZg == null) {
+      bVH().oZg = new com.tencent.mm.plugin.music.h.a();
     }
+    com.tencent.mm.plugin.music.h.a locala = bVH().oZg;
+    AppMethodBeat.o(137546);
+    return locala;
   }
   
-  public static com.tencent.mm.plugin.music.h.a bnn()
+  public static boolean isInit()
   {
-    if (bnl().mza == null) {
-      bnl().mza = new com.tencent.mm.plugin.music.h.a();
-    }
-    return bnl().mza;
+    return oZf != null;
   }
   
-  public final void Ps()
+  public final void Ai(int paramInt)
   {
-    super.Ps();
+    AppMethodBeat.i(137544);
+    super.Ai(paramInt);
+    AppMethodBeat.o(137544);
   }
   
-  public final com.tencent.mm.av.e bmW()
+  public final void aiu()
   {
-    return this.myY.bmW();
+    AppMethodBeat.i(137540);
+    super.aiu();
+    AppMethodBeat.o(137540);
   }
   
-  public final com.tencent.mm.plugin.music.f.a.d bmY()
+  public final e bVs()
   {
-    return super.bmY();
+    AppMethodBeat.i(137545);
+    e locale = this.oZe.bVs();
+    AppMethodBeat.o(137545);
+    return locale;
+  }
+  
+  public final com.tencent.mm.plugin.music.f.a.d bVu()
+  {
+    AppMethodBeat.i(137539);
+    com.tencent.mm.plugin.music.f.a.d locald = super.bVu();
+    AppMethodBeat.o(137539);
+    return locald;
   }
   
   public final void finish()
   {
+    AppMethodBeat.i(137542);
     super.finish();
-    this.myY.release();
-    this.mza = null;
+    this.oZe.release();
+    this.oZg = null;
+    AppMethodBeat.o(137542);
   }
   
-  public final void hR(boolean paramBoolean)
+  public final void jL(boolean paramBoolean)
   {
-    super.hR(paramBoolean);
+    AppMethodBeat.i(137543);
+    super.jL(paramBoolean);
+    AppMethodBeat.o(137543);
   }
   
-  public final void p(com.tencent.mm.av.e parame)
+  public final void p(e parame)
   {
+    AppMethodBeat.i(137537);
     if (parame != null) {
-      y.i("MicroMsg.Music.MusicPlayerManager", "MusicType %d", new Object[] { Integer.valueOf(parame.euv) });
+      ab.i("MicroMsg.Music.MusicPlayerManager", "MusicType %d", new Object[] { Integer.valueOf(parame.fKh) });
     }
-    y.i("MicroMsg.Music.MusicPlayerManager", "startPlayNewMusic");
-    t(this.myY.i(parame));
+    ab.i("MicroMsg.Music.MusicPlayerManager", "startPlayNewMusic");
+    t(this.oZe.i(parame));
+    AppMethodBeat.o(137537);
   }
   
   public final void release()
   {
-    y.i("MicroMsg.Music.MusicPlayerManager", "release");
+    AppMethodBeat.i(137541);
+    ab.i("MicroMsg.Music.MusicPlayerManager", "release");
     super.release();
+    AppMethodBeat.o(137541);
   }
   
-  final void t(com.tencent.mm.av.e parame)
+  final void t(e parame)
   {
-    boolean bool1;
-    Object localObject2;
-    Object localObject1;
-    label71:
-    String str2;
-    int i;
-    label131:
-    int j;
-    label141:
-    label178:
-    String str3;
-    String str1;
-    if (parame == null)
+    AppMethodBeat.i(137538);
+    com.tencent.mm.plugin.music.h.d.N(parame);
+    if (this.oZe.g(parame))
     {
-      y.e("MicroMsg.Music.MusicUrlParser", "GetShakeMusicUrl, musicWrapper is null");
-      if (this.myY.g(parame)) {
-        q(parame);
-      }
-    }
-    else
-    {
-      bool1 = aq.isWifi(ae.getContext());
-      boolean bool2 = aq.isNetworkConnected(ae.getContext());
-      localObject2 = new PBool();
-      if (bk.bl(parame.euD))
-      {
-        localObject1 = parame.euF;
-        String str4 = parame.euE;
-        str2 = com.tencent.mm.plugin.music.h.e.a((String)localObject1, str4, bool1, (PBool)localObject2);
-        y.i("MicroMsg.Music.MusicUrlParser", "parsePlayUrl mSrc:%s", new Object[] { str2 });
-        y.i("MicroMsg.Music.MusicUrlParser", "songWifiUrl:%s", new Object[] { parame.euD });
-        if (!bool1) {
-          break label332;
-        }
-        i = 1;
-        if (!((PBool)localObject2).value) {
-          break label337;
-        }
-        j = 1;
-        y.i("MicroMsg.Music.MusicUrlParser", "isWifi:%d, isQQMusic:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-        if (!bool1) {
-          break label342;
-        }
-        bool1 = ((PBool)localObject2).value;
-        if (com.tencent.mm.plugin.music.h.e.JK(str2))
-        {
-          y.i("MicroMsg.Music.MusicUrlParser", "can match shake music wifi url");
-          bool1 = true;
-        }
-        str3 = "";
-        if (bool2) {
-          break label448;
-        }
-        y.i("MicroMsg.Music.MusicUrlParser", "isNetConnected false, detect right Url to play");
-        str1 = com.tencent.mm.plugin.music.h.e.a((String)localObject1, str4, true, (PBool)localObject2);
-        localObject2 = com.tencent.mm.plugin.music.h.e.a((String)localObject1, str4, false, (PBool)localObject2);
-        if (str1 != null)
-        {
-          localObject1 = str3;
-          if (str1.equals(localObject2)) {}
-        }
-        else
-        {
-          if (!c.L(parame)) {
-            break label348;
-          }
-          y.i("MicroMsg.Music.MusicUrlParser", "use exoMusicPlayer");
-          localObject1 = str3;
-        }
-        label273:
-        if ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject1).equals(str2))) {
-          break label448;
-        }
-        y.i("MicroMsg.Music.MusicUrlParser", "reset the mSrc :%s", new Object[] { localObject1 });
-      }
-    }
-    for (;;)
-    {
-      parame.playUrl = ((String)localObject1);
-      g.aM((String)localObject1, bool1);
-      break;
-      localObject1 = parame.euD;
-      break label71;
-      label332:
-      i = 0;
-      break label131;
-      label337:
-      j = 0;
-      break label141;
-      label342:
-      bool1 = false;
-      break label178;
-      label348:
-      if (c.vb(parame.euv))
-      {
-        y.i("MicroMsg.Music.MusicUrlParser", "use qqMusicPlayer");
-        if (com.tencent.mm.plugin.music.h.d.JJ(str1))
-        {
-          localObject1 = str1;
-          break label273;
-        }
-        localObject1 = str3;
-        if (!com.tencent.mm.plugin.music.h.d.JJ((String)localObject2)) {
-          break label273;
-        }
-        localObject1 = localObject2;
-        break label273;
-      }
-      if (com.tencent.mm.plugin.music.h.d.d(parame, true)) {
-        localObject1 = str1;
-      }
-      for (;;)
-      {
-        y.i("MicroMsg.Music.MusicUrlParser", "use musicPlayer");
-        break;
-        localObject1 = localObject2;
-        if (!com.tencent.mm.plugin.music.h.d.d(parame, false)) {
-          localObject1 = "";
-        }
-      }
-      y.e("MicroMsg.Music.MusicPlayerManager", "prepare is fail, not to play or wait for callback onStart");
+      q(parame);
+      AppMethodBeat.o(137538);
       return;
-      label448:
-      localObject1 = str2;
     }
-  }
-  
-  public final void uM(int paramInt)
-  {
-    super.uM(paramInt);
+    ab.e("MicroMsg.Music.MusicPlayerManager", "prepare is fail, not to play or wait for callback onStart");
+    AppMethodBeat.o(137538);
   }
 }
 

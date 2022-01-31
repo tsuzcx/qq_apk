@@ -1,5 +1,7 @@
 package com.tencent.wcdb.database;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class SQLiteCustomFunction
 {
   public final SQLiteDatabase.CustomFunction callback;
@@ -8,17 +10,24 @@ public final class SQLiteCustomFunction
   
   public SQLiteCustomFunction(String paramString, int paramInt, SQLiteDatabase.CustomFunction paramCustomFunction)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("name must not be null.");
+    AppMethodBeat.i(12420);
+    if (paramString == null)
+    {
+      paramString = new IllegalArgumentException("name must not be null.");
+      AppMethodBeat.o(12420);
+      throw paramString;
     }
     this.name = paramString;
     this.numArgs = paramInt;
     this.callback = paramCustomFunction;
+    AppMethodBeat.o(12420);
   }
   
   private void dispatchCallback(String[] paramArrayOfString)
   {
+    AppMethodBeat.i(12421);
     this.callback.callback(paramArrayOfString);
+    AppMethodBeat.o(12421);
   }
 }
 

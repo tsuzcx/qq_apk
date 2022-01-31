@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.sysvideo.ui.video;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.ImageButton;
-import com.tencent.mm.R.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VideoRecorderUI$7$1
   implements DialogInterface.OnClickListener
@@ -12,8 +12,10 @@ final class VideoRecorderUI$7$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoRecorderUI.m(this.pzH.pzG).setImageResource(R.g.video_recorder_stop_btn);
-    VideoRecorderUI.n(this.pzH.pzG);
+    AppMethodBeat.i(25651);
+    VideoRecorderUI.m(this.tbt.tbs).setImageResource(2130840667);
+    VideoRecorderUI.n(this.tbt.tbs);
+    AppMethodBeat.o(25651);
   }
 }
 

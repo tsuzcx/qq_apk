@@ -9,36 +9,41 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.Base64;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.s;
+import com.tencent.mm.g.a.gc;
+import com.tencent.mm.g.a.gc.b;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.appbrand.s.r;
+import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.plugin.websearch.api.aa;
+import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.websearch.api.ac;
 import com.tencent.mm.plugin.websearch.api.af;
-import com.tencent.mm.plugin.websearch.api.ao;
+import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.an;
 import com.tencent.mm.plugin.websearch.api.v;
 import com.tencent.mm.plugin.websearch.api.w;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.h;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.c.avi;
-import com.tencent.mm.protocal.c.avj;
-import com.tencent.mm.protocal.c.avl;
-import com.tencent.mm.protocal.c.ayk;
-import com.tencent.mm.protocal.c.ayl;
-import com.tencent.mm.protocal.c.blf;
-import com.tencent.mm.protocal.c.bnw;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.byb;
-import com.tencent.mm.protocal.c.cik;
-import com.tencent.mm.protocal.c.rb;
-import com.tencent.mm.protocal.c.sg;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.bbt;
+import com.tencent.mm.protocal.protobuf.bbw;
+import com.tencent.mm.protocal.protobuf.bfh;
+import com.tencent.mm.protocal.protobuf.bfi;
+import com.tencent.mm.protocal.protobuf.buo;
+import com.tencent.mm.protocal.protobuf.bxr;
+import com.tencent.mm.protocal.protobuf.cct;
+import com.tencent.mm.protocal.protobuf.cko;
+import com.tencent.mm.protocal.protobuf.cvw;
+import com.tencent.mm.protocal.protobuf.up;
+import com.tencent.mm.protocal.protobuf.wc;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.RegionCodeDecoder;
 import java.io.File;
 import java.io.IOException;
@@ -57,81 +62,81 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
-  private long gMG;
-  public com.tencent.mm.sdk.b.c giK = new b.3(this);
-  public com.tencent.mm.plugin.fts.a.a.a kxg;
-  public l mVF = new b.4(this);
-  public Set<Integer> qYR;
-  public l qYS = new b.1(this);
-  private HashMap<String, b.b> qYT;
-  public e qYU;
-  public v qYV;
-  private Map<Integer, b.g> qYW = new HashMap();
-  public b.e qYX = new b.e(this);
-  public List<com.tencent.mm.av.e> qYY;
-  private com.tencent.mm.plugin.websearch.c.a.c qYZ;
-  com.tencent.mm.plugin.websearch.c.a.d qZa;
+  public com.tencent.mm.sdk.b.c hCe;
+  private long iod;
+  com.tencent.mm.plugin.fts.a.a.a mSV;
+  private l pym;
+  f uOA;
+  public v uOB;
+  private Map<Integer, b.g> uOC;
+  public b.e uOD;
+  public List<com.tencent.mm.aw.e> uOE;
+  private com.tencent.mm.plugin.websearch.c.a.c uOF;
+  com.tencent.mm.plugin.websearch.c.a.d uOG;
+  private c uOH;
+  public Set<Integer> uOx;
+  public l uOy;
+  private HashMap<String, b.b> uOz;
   
   public b()
   {
-    y.i("MicroMsg.FTS.FTSWebViewLogic", "create FTSWebViewLogic");
-    this.qYT = new HashMap();
-    this.qYR = Collections.synchronizedSet(new HashSet());
-    com.tencent.mm.sdk.b.a.udP.c(this.giK);
+    AppMethodBeat.i(5689);
+    this.uOy = new b.1(this);
+    this.uOC = new HashMap();
+    this.uOD = new b.e(this);
+    this.hCe = new b.3(this);
+    this.pym = new b.4(this);
+    ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "create FTSWebViewLogic");
+    this.uOz = new HashMap();
+    this.uOx = Collections.synchronizedSet(new HashSet());
+    com.tencent.mm.sdk.b.a.ymk.c(this.hCe);
+    AppMethodBeat.o(5689);
   }
   
   static void a(com.tencent.mm.plugin.websearch.c.a.d paramd, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramd = paramd.eC(paramInt1, paramInt2);
-    com.tencent.mm.plugin.webview.ui.tools.jsapi.g localg = h.Db(paramInt3);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("fts_key_json_data", paramd.toString());
-    try
-    {
-      if (localg.rgh != null) {
-        localg.rgh.b(137, localBundle);
-      }
-      return;
-    }
-    catch (RemoteException paramd)
-    {
-      y.w("MicroMsg.MsgHandler", "onSearchSuggestionDataReady exception" + paramd.getMessage());
-    }
+    AppMethodBeat.i(5710);
+    paramd = paramd.gG(paramInt1, paramInt2);
+    h.KW(paramInt3).aU(paramd);
+    AppMethodBeat.o(5710);
   }
   
   private static void a(b.c paramc, boolean paramBoolean)
   {
+    AppMethodBeat.i(5702);
     int i;
-    if (paramc.qZq != 0) {
-      i = paramc.qZq;
+    if (paramc.uOW != 0) {
+      i = paramc.uOW;
     }
     for (;;)
     {
-      com.tencent.mm.plugin.websearch.api.ai.Rx(paramc.username);
+      ai.agy(paramc.username);
       Intent localIntent = new Intent();
       localIntent.putExtra("Contact_User", paramc.username);
       localIntent.putExtra("Contact_Nick", paramc.nickname);
-      localIntent.putExtra("Contact_BrandIconURL", paramc.mVN);
+      localIntent.putExtra("Contact_BrandIconURL", paramc.pyu);
       localIntent.putExtra("Contact_Signature", paramc.signature);
-      localIntent.putExtra("Contact_VUser_Info_Flag", paramc.qZn);
+      localIntent.putExtra("Contact_VUser_Info_Flag", paramc.uOT);
       localIntent.putExtra("Contact_Scene", i);
-      if (paramc.mWN != null) {}
+      if (paramc.pzI != null) {}
       try
       {
-        localIntent.putExtra("Contact_customInfo", paramc.mWN.toByteArray());
-        label111:
+        localIntent.putExtra("Contact_customInfo", paramc.pzI.toByteArray());
+        label117:
         Bundle localBundle = new Bundle();
-        localBundle.putString("Contact_Ext_Args_Search_Id", paramc.fTF);
-        localBundle.putString("Contact_Ext_Args_Query_String", paramc.bVk);
+        localBundle.putString("Contact_Ext_Args_Search_Id", paramc.hng);
+        localBundle.putString("Contact_Ext_Args_Query_String", paramc.query);
         localBundle.putInt("Contact_Scene", i);
         localBundle.putInt("Contact_Ext_Args_Index", paramc.position);
-        localBundle.putString("Contact_Ext_Extra_Params", paramc.qZp);
+        localBundle.putString("Contact_Ext_Extra_Params", paramc.uOV);
+        localIntent.putExtra("preChatTYPE", 10);
         localIntent.putExtra("Contact_Ext_Args", localBundle);
-        com.tencent.mm.br.d.b(ae.getContext(), "profile", ".ui.ContactInfoUI", localIntent);
+        com.tencent.mm.bq.d.b(ah.getContext(), "profile", ".ui.ContactInfoUI", localIntent);
+        AppMethodBeat.o(5702);
         return;
-        if (paramc.bVt == 2)
+        if (paramc.cDa == 2)
         {
           i = 89;
           continue;
@@ -143,7 +148,7 @@ public final class b
         }
         if ((paramc.scene == 3) || (paramc.scene == 16))
         {
-          if (paramc.qZo)
+          if (paramc.uOU)
           {
             i = 88;
             continue;
@@ -155,35 +160,38 @@ public final class b
       }
       catch (IOException localIOException)
       {
-        break label111;
+        break label117;
       }
     }
   }
   
   private static void a(b.d paramd)
   {
+    AppMethodBeat.i(5701);
     Intent localIntent = new Intent();
     localIntent.putExtra("Contact_User", paramd.username);
     localIntent.putExtra("Contact_Nick", paramd.nickname);
-    localIntent.putExtra("Contact_Alias", paramd.cMT);
-    localIntent.putExtra("Contact_Sex", paramd.sex);
+    localIntent.putExtra("Contact_Alias", paramd.dCJ);
+    localIntent.putExtra("Contact_Sex", paramd.dqC);
     localIntent.putExtra("Contact_Scene", paramd.scene);
     localIntent.putExtra("Contact_KHideExpose", true);
-    localIntent.putExtra("Contact_RegionCode", RegionCodeDecoder.ao(paramd.country, paramd.cCA, paramd.cCB));
+    localIntent.putExtra("Contact_RegionCode", RegionCodeDecoder.aF(paramd.country, paramd.province, paramd.city));
     localIntent.putExtra("Contact_Signature", paramd.signature);
-    localIntent.putExtra("Contact_KSnsIFlag", paramd.qZr);
-    localIntent.putExtra("Contact_full_Mobile_MD5", paramd.bVk);
-    com.tencent.mm.br.d.b(ae.getContext(), "profile", ".ui.ContactInfoUI", localIntent);
+    localIntent.putExtra("Contact_KSnsIFlag", paramd.uOX);
+    localIntent.putExtra("Contact_full_Mobile_MD5", paramd.query);
+    com.tencent.mm.bq.d.b(ah.getContext(), "profile", ".ui.ContactInfoUI", localIntent);
+    AppMethodBeat.o(5701);
   }
   
   private static void a(String paramString1, Bundle paramBundle, int paramInt1, String paramString2, String paramString3, int paramInt2)
   {
+    AppMethodBeat.i(5699);
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramString1);
     localIntent.putExtra("convertActivityFromTranslucent", false);
     localIntent.putExtra("customize_status_bar_color", paramInt1);
     localIntent.putExtra("status_bar_style", paramString2);
-    if (!bk.bl(paramString3))
+    if (!bo.isNullOrNil(paramString3))
     {
       localIntent.putExtra("prePublishId", paramString3);
       localIntent.putExtra("KPublisherId", paramString3);
@@ -193,56 +201,35 @@ public final class b
       if (paramInt2 > 0) {
         localIntent.putExtra("pay_channel", paramInt2);
       }
-      com.tencent.mm.br.d.b(ae.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+      localIntent.putExtra("preChatTYPE", 10);
+      com.tencent.mm.bq.d.b(ah.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+      AppMethodBeat.o(5699);
       return;
-      if ((paramBundle != null) && (!bk.bl(paramString1)))
+      if ((paramBundle != null) && (!bo.isNullOrNil(paramString1)))
       {
-        paramString1 = paramBundle.getString("publishIdPrefix", "gs") + "_" + com.tencent.mm.a.g.o(paramString1.getBytes());
+        paramString1 = paramBundle.getString("publishIdPrefix", "gs") + "_" + com.tencent.mm.a.g.w(paramString1.getBytes());
         localIntent.putExtra("prePublishId", paramString1);
         localIntent.putExtra("KPublisherId", paramString1);
       }
     }
   }
   
-  private b.c ae(Map<String, Object> paramMap)
-  {
-    b.c localc = new b.c(this, (byte)0);
-    localc.username = aa.s(paramMap, "userName");
-    localc.nickname = aa.s(paramMap, "nickName");
-    localc.mVN = aa.s(paramMap, "headHDImgUrl");
-    localc.qZn = aa.c(paramMap, "verifyFlag", 0);
-    localc.signature = aa.s(paramMap, "signature");
-    localc.scene = aa.c(paramMap, "scene", 0);
-    localc.bVt = aa.c(paramMap, "sceneActionType", 1);
-    localc.mWN = new sg();
-    localc.mWN.ffv = aa.c(paramMap, "brandFlag", 0);
-    localc.mWN.ffy = aa.s(paramMap, "iconUrl");
-    localc.mWN.ffx = aa.s(paramMap, "brandInfo");
-    localc.mWN.ffw = aa.s(paramMap, "externalInfo");
-    localc.fTF = aa.s(paramMap, "searchId");
-    localc.bVk = aa.s(paramMap, "query");
-    localc.position = aa.c(paramMap, "position", 0);
-    localc.qZo = aa.t(paramMap, "isCurrentDetailPage");
-    localc.qZp = aa.s(paramMap, "extraParams");
-    localc.qZq = aa.c(paramMap, "friendScene", 0);
-    return localc;
-  }
-  
-  private b.d af(Map<String, Object> paramMap)
+  private b.d aA(Map<String, Object> paramMap)
   {
     int i = 3;
+    AppMethodBeat.i(5706);
     b.d locald = new b.d(this, (byte)0);
-    locald.username = aa.s(paramMap, "userName");
-    locald.nickname = aa.s(paramMap, "nickName");
-    locald.cMT = aa.s(paramMap, "alias");
-    locald.signature = aa.s(paramMap, "signature");
-    locald.sex = aa.c(paramMap, "sex", 0);
-    locald.country = aa.s(paramMap, "country");
-    locald.cCB = aa.s(paramMap, "city");
-    locald.cCA = aa.s(paramMap, "province");
-    locald.qZr = aa.c(paramMap, "snsFlag", 0);
-    String str = aa.s(paramMap, "query");
-    if (!bk.bl(str))
+    locald.username = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "userName");
+    locald.nickname = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "nickName");
+    locald.dCJ = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "alias");
+    locald.signature = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "signature");
+    locald.dqC = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "sex", 0);
+    locald.country = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "country");
+    locald.city = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "city");
+    locald.province = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "province");
+    locald.uOX = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "snsFlag", 0);
+    String str = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "query");
+    if (!bo.isNullOrNil(str))
     {
       if (Character.isDigit(str.charAt(0))) {
         i = 15;
@@ -250,28 +237,32 @@ public final class b
       locald.scene = i;
       if (locald.scene == 15)
       {
-        if ("mobile".equals(aa.s(paramMap, "matchType"))) {
-          locald.bVk = str;
+        if (!"mobile".equals(com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "matchType"))) {
+          break label195;
         }
+        locald.query = str;
       }
-      else {
-        return locald;
-      }
-      locald.scene = 1;
-      return locald;
     }
-    locald.scene = 3;
-    return locald;
+    for (;;)
+    {
+      AppMethodBeat.o(5706);
+      return locald;
+      label195:
+      locald.scene = 1;
+      continue;
+      locald.scene = 3;
+    }
   }
   
-  public static boolean ag(Map<String, Object> paramMap)
+  public static boolean aB(Map<String, Object> paramMap)
   {
-    y.i("MicroMsg.FTS.FTSWebViewLogic", "setSearchInputWord %s", new Object[] { paramMap });
-    String str1 = aa.s(paramMap, "word");
-    boolean bool = aa.t(paramMap, "isInputChange");
-    String str2 = aa.s(paramMap, "custom");
-    String str3 = aa.s(paramMap, "tagList");
-    paramMap = h.Db(bk.e(paramMap.get("webview_instance_id"), -1));
+    AppMethodBeat.i(5708);
+    ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "setSearchInputWord %s", new Object[] { paramMap });
+    String str1 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "word");
+    boolean bool = com.tencent.mm.plugin.websearch.api.aa.u(paramMap, "isInputChange");
+    String str2 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "custom");
+    String str3 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "tagList");
+    paramMap = h.KW(bo.f(paramMap.get("webview_instance_id"), -1));
     Bundle localBundle = new Bundle();
     localBundle.putString("fts_key_new_query", str1);
     localBundle.putString("fts_key_custom_query", str2);
@@ -279,183 +270,219 @@ public final class b
     localBundle.putString("fts_key_tag_list", str3);
     try
     {
-      if (paramMap.rgh != null) {
-        paramMap.rgh.b(122, localBundle);
+      if (paramMap.uWu != null) {
+        paramMap.uWu.e(122, localBundle);
       }
+      AppMethodBeat.o(5708);
       return false;
     }
     catch (RemoteException paramMap)
     {
-      y.w("MicroMsg.MsgHandler", "onFTSSearchQueryChange exception" + paramMap.getMessage());
+      for (;;)
+      {
+        ab.w("MicroMsg.MsgHandler", "onFTSSearchQueryChange exception" + paramMap.getMessage());
+      }
     }
-    return false;
+  }
+  
+  private b.c az(Map<String, Object> paramMap)
+  {
+    AppMethodBeat.i(5705);
+    b.c localc = new b.c(this, (byte)0);
+    localc.username = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "userName");
+    localc.nickname = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "nickName");
+    localc.pyu = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "headHDImgUrl");
+    localc.uOT = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "verifyFlag", 0);
+    localc.signature = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "signature");
+    localc.scene = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "scene", 0);
+    localc.cDa = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "sceneActionType", 1);
+    localc.pzI = new wc();
+    localc.pzI.gxd = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "brandFlag", 0);
+    localc.pzI.gxg = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "iconUrl");
+    localc.pzI.gxf = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "brandInfo");
+    localc.pzI.gxe = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "externalInfo");
+    localc.hng = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "searchId");
+    localc.query = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "query");
+    localc.position = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "position", 0);
+    localc.uOU = com.tencent.mm.plugin.websearch.api.aa.u(paramMap, "isCurrentDetailPage");
+    localc.uOV = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "extraParams");
+    localc.uOW = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "friendScene", 0);
+    AppMethodBeat.o(5705);
+    return localc;
   }
   
   public static int c(Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
-    paramMap1 = aa.s(paramMap1, "data");
+    AppMethodBeat.i(5703);
+    paramMap1 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap1, "data");
     for (;;)
     {
       try
       {
         JSONArray localJSONArray1 = new JSONArray(paramMap1);
-        JSONArray localJSONArray2 = new JSONArray();
-        int i = 0;
-        if (i < localJSONArray1.length())
-        {
-          localObject = localJSONArray1.getJSONObject(i);
-          if (((JSONObject)localObject).has("id"))
-          {
-            paramMap1 = ((JSONObject)localObject).getString("id");
-            if (!((JSONObject)localObject).has("userName")) {
-              break label196;
-            }
-            localObject = ((JSONObject)localObject).getString("userName");
-            String str = com.tencent.mm.model.r.gV((String)localObject);
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("id", paramMap1);
-            localJSONObject.put("userName", localObject);
-            localJSONObject.put("displayName", str);
-            localJSONArray2.put(localJSONObject);
-            i += 1;
-          }
+        localJSONArray2 = new JSONArray();
+        i = 0;
+        if (i >= localJSONArray1.length()) {
+          continue;
         }
-        else
-        {
-          paramMap2.put("ret", Integer.valueOf(0));
-          paramMap2.put("data", localJSONArray2.toString());
-          return 0;
+        localObject = localJSONArray1.getJSONObject(i);
+        if (!((JSONObject)localObject).has("id")) {
+          continue;
         }
+        paramMap1 = ((JSONObject)localObject).getString("id");
       }
       catch (JSONException paramMap1)
       {
-        y.printErrStackTrace("MicroMsg.FTS.FTSWebViewLogic", paramMap1, "", new Object[0]);
-        return 0;
+        JSONArray localJSONArray2;
+        int i;
+        String str;
+        JSONObject localJSONObject;
+        ab.printErrStackTrace("MicroMsg.WebSearch.FTSWebViewLogic", paramMap1, "", new Object[0]);
+        continue;
+        paramMap1 = "";
+        continue;
+        Object localObject = "";
+        continue;
       }
-      paramMap1 = "";
-      continue;
-      label196:
-      Object localObject = "";
+      if (!((JSONObject)localObject).has("userName")) {
+        continue;
+      }
+      localObject = ((JSONObject)localObject).getString("userName");
+      str = com.tencent.mm.model.s.nE((String)localObject);
+      localJSONObject = new JSONObject();
+      localJSONObject.put("id", paramMap1);
+      localJSONObject.put("userName", localObject);
+      localJSONObject.put("displayName", str);
+      localJSONArray2.put(localJSONObject);
+      i += 1;
     }
+    paramMap2.put("ret", Integer.valueOf(0));
+    paramMap2.put("data", localJSONArray2.toString());
+    AppMethodBeat.o(5703);
+    return 0;
   }
   
-  private static void j(String paramString, Bundle paramBundle)
+  private static void o(String paramString, Bundle paramBundle)
   {
+    AppMethodBeat.i(5698);
     a(paramString, paramBundle, 0, "", "", 0);
+    AppMethodBeat.o(5698);
   }
   
-  public static Bundle o(int paramInt, Bundle paramBundle)
+  public static Bundle s(int paramInt, Bundle paramBundle)
   {
+    AppMethodBeat.i(5690);
     Bundle localBundle = new Bundle();
     switch (paramInt)
     {
-    case 3: 
-    case 5: 
-    default: 
-    case 7: 
-    case 2: 
-      for (;;)
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(5690);
+      return localBundle;
+      localBundle.putString("data", com.tencent.mm.plugin.webview.modeltools.g.dcB().day());
+      continue;
+      try
       {
-        return localBundle;
-        localBundle.putString("data", com.tencent.mm.plugin.webview.modeltools.g.ccI().cay());
-        return localBundle;
-        try
-        {
-          paramBundle = paramBundle.getString("key");
-          localBundle.putString("result", ac.Ru(paramBundle).toString());
-          if ("educationTab".equals(paramBundle))
-          {
-            paramBundle = ac.Ru("discoverSearchGuide");
-            if (paramBundle.optJSONArray("items").length() > 0)
-            {
-              localBundle.putString("result_1", paramBundle.toString());
-              return localBundle;
-            }
-          }
+        paramBundle = paramBundle.getString("key");
+        localBundle.putString("result", ac.agv(paramBundle).toString());
+        if (!"educationTab".equals(paramBundle)) {
+          continue;
         }
-        catch (Exception paramBundle)
-        {
-          return localBundle;
+        paramBundle = ac.agv("discoverSearchGuide");
+        if (paramBundle.optJSONArray("items").length() <= 0) {
+          continue;
         }
+        localBundle.putString("result_1", paramBundle.toString());
       }
-    case 4: 
-      paramBundle = aa.b(paramBundle.getInt("scene"), paramBundle.getBoolean("isHomePage"), paramBundle.getInt("type"));
+      catch (Exception paramBundle) {}
+      continue;
+      paramBundle = com.tencent.mm.plugin.websearch.api.aa.d(paramBundle.getInt("scene"), paramBundle.getBoolean("isHomePage"), paramBundle.getInt("type"));
       localBundle.putString("type", (String)paramBundle.get("type"));
       localBundle.putString("isMostSearchBiz", (String)paramBundle.get("isMostSearchBiz"));
       localBundle.putString("isLocalSug", (String)paramBundle.get("isLocalSug"));
       localBundle.putString("isSug", (String)paramBundle.get("isSug"));
       localBundle.putString("scene", (String)paramBundle.get("scene"));
-      return localBundle;
+      continue;
+      try
+      {
+        localBundle.putString("result", ac.agw(paramBundle.getString("key")));
+      }
+      catch (Exception paramBundle) {}
     }
-    try
-    {
-      localBundle.putString("result", ac.Rv(paramBundle.getString("key")));
-      return localBundle;
-    }
-    catch (Exception paramBundle) {}
-    return localBundle;
   }
   
-  static String p(int paramInt1, int paramInt2, boolean paramBoolean)
+  static String s(int paramInt1, int paramInt2, boolean paramBoolean)
   {
+    AppMethodBeat.i(5707);
     String str1 = "FTS_BizCacheObj" + paramInt1 + "-" + paramInt2;
-    String str2 = x.fB(ae.getContext());
+    String str2 = com.tencent.mm.sdk.platformtools.aa.gP(ah.getContext());
     str2 = str1 + "-" + str2;
-    if (paramBoolean) {}
-    do
+    if (paramBoolean)
     {
+      AppMethodBeat.o(5707);
       return str2;
-      au.Hx();
-    } while (new File(com.tencent.mm.model.c.FJ(), str2).exists());
+    }
+    if (new File(com.tencent.mm.plugin.record.b.YN(), str2).exists())
+    {
+      AppMethodBeat.o(5707);
+      return str2;
+    }
+    AppMethodBeat.o(5707);
     return str1;
   }
   
-  private static void s(String paramString1, String paramString2, boolean paramBoolean)
+  private static void z(String paramString1, String paramString2, boolean paramBoolean)
   {
-    bxk localbxk = ((com.tencent.mm.plugin.sns.b.m)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.sns.b.m.class)).nn(paramString1);
+    AppMethodBeat.i(5700);
+    TimeLineObject localTimeLineObject = ((com.tencent.mm.plugin.sns.b.m)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.sns.b.m.class)).uA(paramString1);
     paramString1 = new Intent();
     paramString1.putExtra("INTENT_TALKER", paramString2);
-    paramString1.putExtra("INTENT_SNSID", new BigInteger(localbxk.lsK).longValue());
+    paramString1.putExtra("INTENT_SNSID", new BigInteger(localTimeLineObject.Id).longValue());
     paramString1.putExtra("SNS_FROM_MUSIC_ITEM", paramBoolean);
     try
     {
-      paramString1.putExtra("INTENT_SNS_TIMELINEOBJECT", localbxk.toByteArray());
-      label76:
-      com.tencent.mm.br.d.b(ae.getContext(), "sns", ".ui.SnsCommentDetailUI", paramString1);
+      paramString1.putExtra("INTENT_SNS_TIMELINEOBJECT", localTimeLineObject.toByteArray());
+      label82:
+      com.tencent.mm.bq.d.b(ah.getContext(), "sns", ".ui.SnsCommentDetailUI", paramString1);
+      AppMethodBeat.o(5700);
       return;
     }
     catch (IOException paramString2)
     {
-      break label76;
+      break label82;
     }
   }
   
   public final boolean a(Map<String, Object> paramMap, com.tencent.mm.plugin.webview.ui.tools.jsapi.g paramg)
   {
-    y.i("MicroMsg.FTS.FTSWebViewLogic", "openSearchWebView %s", new Object[] { paramMap.toString() });
-    int j = bk.ZR((String)paramMap.get("actionType"));
-    int k = aa.c(paramMap, "type", 0);
+    AppMethodBeat.i(5695);
+    ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "openSearchWebView %s", new Object[] { paramMap.toString() });
+    int k = bo.apV((String)paramMap.get("actionType"));
+    int m = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "type", 0);
     Object localObject3 = (String)paramMap.get("extParams");
     String str3 = (String)paramMap.get("jumpTo");
     String str1 = (String)paramMap.get("navBarColor");
-    String str2 = aa.s(paramMap, "publishId");
+    String str2 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "publishId");
     boolean bool = "true".equals((String)paramMap.get("hideSearchBar"));
+    int n = bo.apV((String)paramMap.get("isHomePage"));
+    Object localObject4 = String.valueOf(paramMap.get("isSug"));
     Object localObject1 = (String)paramMap.get("nativeConfig");
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
     for (;;)
     {
       int i;
-      Object localObject4;
-      String str6;
+      String str4;
+      String str7;
       try
       {
         localObject1 = new JSONObject((String)localObject1);
         if (!((JSONObject)localObject1).has("title")) {
-          break label1662;
+          break label1751;
         }
         localObject1 = ((JSONObject)localObject1).optString("title");
         i = 0;
-        if (!bk.bl(str1)) {}
+        if (!bo.isNullOrNil(str1)) {}
         localObject2 = null;
       }
       catch (JSONException localJSONException)
@@ -463,148 +490,151 @@ public final class b
         try
         {
           i = Color.parseColor(str1);
-          localObject4 = (String)paramMap.get("statusBarStyle");
-          str6 = (String)paramMap.get("tagId");
+          str4 = (String)paramMap.get("statusBarStyle");
+          str7 = (String)paramMap.get("tagId");
           str1 = (String)paramMap.get("sessionId");
-          switch (j)
+          switch (k)
           {
           case 4: 
+          case 6: 
           default: 
+            AppMethodBeat.o(5695);
             return false;
           }
         }
         catch (IllegalArgumentException paramMap)
         {
-          y.e("MicroMsg.FTS.FTSWebViewLogic", "startSearchItemDetailPage: " + paramMap.getMessage());
+          ab.e("MicroMsg.WebSearch.FTSWebViewLogic", "startSearchItemDetailPage: " + paramMap.getMessage());
+          AppMethodBeat.o(5695);
           return true;
         }
         localJSONException = localJSONException;
-        y.printErrStackTrace("MicroMsg.FTS.FTSWebViewLogic", localJSONException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.WebSearch.FTSWebViewLogic", localJSONException, "", new Object[0]);
       }
       Object localObject2;
       continue;
-      switch (k)
+      switch (m)
       {
       default: 
-        localObject2 = aa.s(paramMap, "jumpUrl");
-        y.i("MicroMsg.FTS.FTSWebViewLogic", "jump url = %s", new Object[] { localObject2 });
-        paramMap = null;
-        if (paramg != null) {
-          paramMap = paramg.cgw();
-        }
-        if (!bk.bl((String)localObject2))
+        paramMap = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "jumpUrl");
+        ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "jump url = %s", new Object[] { paramMap });
+        paramg = paramg.dgL();
+        if (!bo.isNullOrNil(paramMap))
         {
-          com.tencent.mm.plugin.webview.modeltools.g.ccI();
-          a((String)localObject2, paramMap, i, (String)localObject4, str2, 0);
+          com.tencent.mm.plugin.webview.modeltools.g.dcB();
+          a(paramMap, paramg, i, str4, str2, 0);
         }
         break;
       case 8: 
-        aa.s(paramMap, "snsid");
-        paramg = aa.s(paramMap, "objectXmlDesc");
-        localObject2 = aa.s(paramMap, "userName");
-        bool = aa.t(paramMap, "fromMusicItem");
-        com.tencent.mm.plugin.webview.modeltools.g.ccI();
-        s(paramg, (String)localObject2, bool);
+        com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "snsid");
+        paramg = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "objectXmlDesc");
+        localObject2 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "userName");
+        bool = com.tencent.mm.plugin.websearch.api.aa.u(paramMap, "fromMusicItem");
+        com.tencent.mm.plugin.webview.modeltools.g.dcB();
+        z(paramg, (String)localObject2, bool);
         break;
       case 1: 
-        a(ae(paramMap), false);
+        a(az(paramMap), false);
         break;
       case 32: 
-        a(af(paramMap));
+        a(aA(paramMap));
         continue;
-        localObject2 = aa.s(paramMap, "jumpUrl");
-        y.i("MicroMsg.FTS.FTSWebViewLogic", "jump url = %s", new Object[] { localObject2 });
-        paramMap = null;
-        if (paramg != null) {
-          paramMap = paramg.cgw();
-        }
-        if (!bk.bl((String)localObject2))
+        paramMap = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "jumpUrl");
+        ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "jump url = %s", new Object[] { paramMap });
+        paramg = paramg.dgL();
+        if (!bo.isNullOrNil(paramMap))
         {
-          com.tencent.mm.plugin.webview.modeltools.g.ccI();
-          a((String)localObject2, paramMap, i, (String)localObject4, str2, 0);
+          com.tencent.mm.plugin.webview.modeltools.g.dcB();
+          a(paramMap, paramg, i, str4, str2, 0);
           continue;
-          String str4 = aa.s(paramMap, "query");
-          int m = aa.c(paramMap, "scene", 0);
-          String str5 = aa.s(paramMap, "searchId");
+          String str5 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "query");
+          int i1 = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "scene", 0);
+          String str6 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "searchId");
           paramg = new Intent();
-          paramg.putExtra("hardcode_jspermission", JsapiPermissionWrapper.spm);
-          paramg.putExtra("hardcode_general_ctrl", GeneralControlWrapper.spj);
+          paramg.putExtra("hardcode_jspermission", JsapiPermissionWrapper.wib);
+          paramg.putExtra("hardcode_general_ctrl", GeneralControlWrapper.whX);
           paramg.putExtra("neverGetA8Key", true);
           paramg.putExtra("key_load_js_without_delay", true);
-          paramg.putExtra("ftsQuery", str4);
-          paramg.putExtra("ftsType", k);
+          paramg.putExtra("ftsQuery", str5);
+          paramg.putExtra("ftsType", m);
           paramg.putExtra("customize_status_bar_color", i);
-          paramg.putExtra("status_bar_style", (String)localObject4);
+          paramg.putExtra("status_bar_style", str4);
           paramg.putExtra("jumpto_sns_contact_page", "snsContactPage".equalsIgnoreCase(str3));
           paramg.putExtra("KPublisherId", str2);
-          paramg.putExtra("ftsbizscene", m);
+          paramg.putExtra("ftsbizscene", i1);
           if (localObject2 != null) {
             paramg.putExtra("title", (String)localObject2);
           }
-          if (!com.tencent.mm.plugin.appbrand.u.r.aqr())
+          if (!r.aNU())
           {
-            paramMap = com.tencent.mm.bc.a.bu(m, k);
-            paramMap.put("query", str4);
-            paramMap.put("searchId", str5);
-            paramg.putExtra("rawUrl", com.tencent.mm.bc.a.b(m, paramMap));
-            if ((m == 20) || (m == 22) || (m == 33)) {}
+            paramMap = com.tencent.mm.bd.a.cE(i1, m);
+            paramMap.put("query", str5);
+            paramMap.put("searchId", str6);
+            paramg.putExtra("rawUrl", com.tencent.mm.bd.a.b(i1, paramMap));
+            if ((i1 == 20) || (i1 == 22) || (i1 == 33)) {}
             for (paramMap = ".ui.tools.fts.FTSSOSMoreWebViewUI";; paramMap = ".ui.tools.fts.FTSSearchTabWebViewUI")
             {
-              com.tencent.mm.br.d.b(ae.getContext(), "webview", paramMap, paramg);
+              com.tencent.mm.bq.d.b(ah.getContext(), "webview", paramMap, paramg);
               break;
             }
           }
-          if (aa.c(paramMap, "isWeAppMore", 0) == 1) {}
-          int n;
-          for (j = 1;; j = 0)
+          if (com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "isWeAppMore", 0) == 1) {}
+          int i2;
+          for (int j = 1;; j = 0)
           {
-            n = aa.c(paramMap, "tabPageType", 0);
+            i2 = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "tabPageType", 0);
             if (j == 0) {
-              break label1050;
+              break label1090;
             }
-            localObject2 = com.tencent.mm.plugin.appbrand.u.r.a(m, false, k, (String)localObject3);
-            ((Map)localObject2).put("query", str4);
-            ((Map)localObject2).put("searchId", str5);
-            ((Map)localObject2).put("subType", String.valueOf(aa.c(paramMap, "subType", 0)));
-            ((Map)localObject2).put("isWeAppMore", String.valueOf(aa.c(paramMap, "isWeAppMore", 0)));
-            paramMap = com.tencent.mm.modelappbrand.b.Jk();
+            localObject2 = r.a(i1, false, m, (String)localObject3);
+            ((Map)localObject2).put("query", str5);
+            ((Map)localObject2).put("searchId", str6);
+            ((Map)localObject2).put("subType", String.valueOf(com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "subType", 0)));
+            ((Map)localObject2).put("isWeAppMore", String.valueOf(com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "isWeAppMore", 0)));
+            paramMap = com.tencent.mm.modelappbrand.b.ach();
             ((Map)localObject2).put("sessionId", paramMap);
             ((Map)localObject2).put("sessionId", paramMap);
             ((Map)localObject2).put("subSessionId", paramMap);
             paramg.putExtra("key_session_id", paramMap);
-            paramg.putExtra("rawUrl", com.tencent.mm.plugin.appbrand.u.r.v((Map)localObject2));
-            paramg.putExtra("ftsbizscene", m);
+            paramg.putExtra("rawUrl", r.F((Map)localObject2));
+            paramg.putExtra("ftsbizscene", i1);
             paramg.putExtra("customize_status_bar_color", i);
-            paramg.putExtra("status_bar_style", (String)localObject4);
+            paramg.putExtra("status_bar_style", str4);
             paramg.putExtra("sessionId", paramMap);
-            com.tencent.mm.br.d.b(ae.getContext(), "appbrand", ".ui.AppBrandSearchUI", paramg);
+            com.tencent.mm.bq.d.b(ah.getContext(), "appbrand", ".ui.AppBrandSearchUI", paramg);
             break;
           }
-          label1050:
-          paramMap = aa.a(m, false, k, (String)localObject3);
-          paramMap.put("query", str4);
-          paramMap.put("searchId", str5);
+          label1090:
+          paramMap = com.tencent.mm.plugin.websearch.api.aa.a(i1, false, m, (String)localObject3);
+          paramMap.put("query", str5);
+          paramMap.put("searchId", str6);
+          paramMap.put("isHomePage", String.valueOf(n));
+          paramMap.put("isSug", localObject4);
           if (!TextUtils.isEmpty(str1))
           {
             paramMap.put("sessionId", str1);
             paramg.putExtra("sessionId", str1);
           }
-          str2 = aa.Bm(m);
+          str2 = com.tencent.mm.plugin.websearch.api.aa.IZ(i1);
           paramMap.put("subSessionId", str2);
           paramg.putExtra("subSessionId", str2);
-          paramg.putExtra("rawUrl", com.tencent.mm.bc.a.b(m, paramMap));
-          paramg.putExtra("ftsQuery", str4);
+          paramg.putExtra("rawUrl", com.tencent.mm.bd.a.b(i1, paramMap));
+          paramg.putExtra("ftsQuery", str5);
           paramg.putExtra("customize_status_bar_color", i);
-          paramg.putExtra("status_bar_style", (String)localObject4);
-          paramg.putExtra("tabId", str6);
+          paramg.putExtra("status_bar_style", str4);
+          paramg.putExtra("tabId", str7);
           paramg.putExtra("key_load_js_without_delay", true);
-          if (n == 1)
+          if (k == 7) {
+            paramg.putExtra("ftsneedkeyboard", true);
+          }
+          if (i2 == 1)
           {
             paramg.putExtra("ftscaneditable", false);
-            aa.a(ae.getContext(), str4, paramg, (String)localObject2, (String)localObject3, str5, str1, str2);
+            com.tencent.mm.plugin.websearch.api.aa.a(ah.getContext(), str5, paramg, (String)localObject2, (String)localObject3, str6, str1, str2);
+            AppMethodBeat.o(5695);
             return false;
           }
-          if ((m == 20) || (m == 22) || (m == 33) || (m == 3) || (m == 36))
+          if ((i1 == 20) || (i1 == 22) || (i1 == 33) || (i1 == 3) || (i1 == 36))
           {
             paramg.putExtra("ftsInitToSearch", true);
             paramg.putExtra("hideSearchInput", bool);
@@ -612,20 +642,20 @@ public final class b
           for (paramMap = ".ui.tools.fts.FTSSOSHomeWebViewUI";; paramMap = ".ui.tools.fts.FTSSearchTabWebViewUI")
           {
             if (TextUtils.isEmpty(paramMap)) {
-              break label1325;
+              break label1414;
             }
-            com.tencent.mm.br.d.b(ae.getContext(), "webview", paramMap, paramg);
+            com.tencent.mm.bq.d.b(ah.getContext(), "webview", paramMap, paramg);
             break;
           }
-          label1325:
+          label1414:
           continue;
-          paramg = aa.s(paramMap, "query");
-          i = aa.c(paramMap, "topStoryScene", 0);
-          j = aa.c(paramMap, "tagId", 0);
-          str2 = aa.s(paramMap, "navigationId");
+          paramg = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "query");
+          i = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "topStoryScene", 0);
+          j = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "tagId", 0);
+          str2 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "navigationId");
           paramMap = str1;
-          if (bk.bl(str1)) {
-            paramMap = aa.Bm(i);
+          if (bo.isNullOrNil(str1)) {
+            paramMap = com.tencent.mm.plugin.websearch.api.aa.IZ(i);
           }
           str1 = String.valueOf(System.currentTimeMillis());
           localObject4 = new HashMap();
@@ -639,28 +669,28 @@ public final class b
           ((HashMap)localObject4).put("seq", str1);
           ((HashMap)localObject4).put("navigationId", str2);
           ((HashMap)localObject4).put("channelId", String.valueOf(j));
-          localObject3 = new byb();
-          ((byb)localObject3).tNY = com.tencent.mm.plugin.topstory.ui.d.bNj();
-          ((byb)localObject3).scene = i;
-          ((byb)localObject3).fTF = "";
-          ((byb)localObject3).bGm = paramg;
-          ((byb)localObject3).bIB = paramMap;
-          ((byb)localObject3).bVp = paramMap;
-          ((byb)localObject3).tOa = 2;
-          ((byb)localObject3).url = com.tencent.mm.plugin.topstory.a.g.m((HashMap)localObject4);
-          ((byb)localObject3).tOb = ((String)localObject2);
-          ((byb)localObject3).bvj = j;
-          ((byb)localObject3).lJQ = str1;
-          ((byb)localObject3).qTP = str2;
-          ((byb)localObject3).tOc = aa.boM();
-          paramMap = new rb();
+          localObject3 = new cko();
+          ((cko)localObject3).xUt = com.tencent.mm.plugin.topstory.ui.d.cII();
+          ((cko)localObject3).scene = i;
+          ((cko)localObject3).hng = "";
+          ((cko)localObject3).cnv = paramg;
+          ((cko)localObject3).cpW = paramMap;
+          ((cko)localObject3).cCW = paramMap;
+          ((cko)localObject3).xUv = 2;
+          ((cko)localObject3).url = com.tencent.mm.plugin.topstory.a.g.o((HashMap)localObject4);
+          ((cko)localObject3).xUw = ((String)localObject2);
+          ((cko)localObject3).bWu = j;
+          ((cko)localObject3).ohe = str1;
+          ((cko)localObject3).uIX = str2;
+          ((cko)localObject3).xUx = com.tencent.mm.plugin.websearch.api.aa.bXn();
+          paramMap = new up();
           paramMap.key = "rec_category";
-          paramMap.sOI = j;
-          paramMap.sOJ = String.valueOf(j);
-          ((byb)localObject3).qTG.add(paramMap);
-          com.tencent.mm.plugin.topstory.ui.d.a(ae.getContext(), (byb)localObject3, str1);
+          paramMap.wMM = j;
+          paramMap.wMN = String.valueOf(j);
+          ((cko)localObject3).uIO.add(paramMap);
+          com.tencent.mm.plugin.topstory.ui.d.a(ah.getContext(), (cko)localObject3, str1);
           continue;
-          label1662:
+          label1751:
           localObject2 = null;
         }
         break;
@@ -670,28 +700,29 @@ public final class b
   
   public final boolean a(Map<String, Object> paramMap, com.tencent.mm.plugin.webview.ui.tools.jsapi.g paramg, String paramString)
   {
-    this.qYX.pDz = true;
-    boolean bool1 = aa.t(paramMap, "isTeachPage");
-    boolean bool2 = aa.t(paramMap, "isMoreButton");
+    AppMethodBeat.i(5696);
+    this.uOD.tfn = true;
+    boolean bool1 = com.tencent.mm.plugin.websearch.api.aa.u(paramMap, "isTeachPage");
+    boolean bool2 = com.tencent.mm.plugin.websearch.api.aa.u(paramMap, "isMoreButton");
     int j;
     int i;
-    label56:
+    label62:
     String str1;
     String str3;
     String str2;
     int k;
-    if (aa.c(paramMap, "isFeedBack", 0) == 1)
+    if (com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "isFeedBack", 0) == 1)
     {
       j = 1;
-      if (aa.c(paramMap, "isWeAppMore", 0) != 1) {
-        break label161;
+      if (com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "isWeAppMore", 0) != 1) {
+        break label173;
       }
       i = 1;
-      str1 = aa.s(paramMap, "sessionId");
+      str1 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "sessionId");
       str3 = (String)paramMap.get("navBarColor");
-      str2 = aa.s(paramMap, "searchPlaceHolder");
+      str2 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "searchPlaceHolder");
       k = 0;
-      if (bk.bl(str3)) {}
+      if (bo.isNullOrNil(str3)) {}
     }
     for (;;)
     {
@@ -700,30 +731,32 @@ public final class b
         k = Color.parseColor(str3);
         str3 = (String)paramMap.get("statusBarStyle");
         if (j == 0) {
-          break label195;
+          break label213;
         }
-        paramString = aa.s(paramMap, "jumpUrl");
+        paramString = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "jumpUrl");
         paramMap = null;
         if (paramg != null) {
-          paramMap = paramg.cgw();
+          paramMap = paramg.dgL();
         }
-        com.tencent.mm.plugin.webview.modeltools.g.ccI();
-        j(paramString, paramMap);
+        com.tencent.mm.plugin.webview.modeltools.g.dcB();
+        o(paramString, paramMap);
+        AppMethodBeat.o(5696);
         return false;
       }
       catch (IllegalArgumentException paramMap)
       {
-        label161:
-        y.e("MicroMsg.FTS.FTSWebViewLogic", "startSearchItemDetailPage: " + paramMap.getMessage());
+        label173:
+        ab.e("MicroMsg.WebSearch.FTSWebViewLogic", "startSearchItemDetailPage: " + paramMap.getMessage());
+        AppMethodBeat.o(5696);
         return true;
       }
       j = 0;
       break;
       i = 0;
-      break label56;
-      label195:
-      j = aa.c(paramMap, "type", 0);
-      int m = aa.c(paramMap, "opType", 0);
+      break label62;
+      label213:
+      j = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "type", 0);
+      int m = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "opType", 0);
       if (m > 0)
       {
         switch (m)
@@ -731,63 +764,64 @@ public final class b
         default: 
           break;
         case 2: 
-          a(ae(paramMap), bool1);
+          a(az(paramMap), bool1);
           break;
         case 3: 
-          paramMap = ae(paramMap);
-          if (!s.hk(paramMap.username))
+          paramMap = az(paramMap);
+          if (!t.nT(paramMap.username))
           {
             a(paramMap, bool1);
             continue;
           }
-          com.tencent.mm.plugin.websearch.api.ai.Rx(paramMap.username);
+          ai.agy(paramMap.username);
           paramg = new Intent();
           paramg.putExtra("Chat_User", paramMap.username);
           paramg.putExtra("finish_direct", true);
           paramg.putExtra("key_temp_session_show_type", 0);
-          com.tencent.mm.br.d.e(ae.getContext(), ".ui.chatting.ChattingUI", paramg);
+          paramg.putExtra("preChatTYPE", 9);
+          com.tencent.mm.bq.d.f(ah.getContext(), ".ui.chatting.ChattingUI", paramg);
           break;
         case 4: 
-          paramString = aa.s(paramMap, "jumpUrl");
+          paramString = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "jumpUrl");
           paramMap = null;
           if (paramg != null) {
-            paramMap = paramg.cgw();
+            paramMap = paramg.dgL();
           }
-          com.tencent.mm.plugin.webview.modeltools.g.ccI();
-          j(paramString, paramMap);
+          com.tencent.mm.plugin.webview.modeltools.g.dcB();
+          o(paramString, paramMap);
           break;
         }
       }
       else if (bool2)
       {
-        String str4 = aa.s(paramMap, "query");
-        k = aa.c(paramMap, "scene", 0);
-        str3 = aa.s(paramMap, "searchId");
+        String str4 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "query");
+        k = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "scene", 0);
+        str3 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "searchId");
         paramg = new Intent();
-        paramg.putExtra("hardcode_jspermission", JsapiPermissionWrapper.spm);
-        paramg.putExtra("hardcode_general_ctrl", GeneralControlWrapper.spj);
+        paramg.putExtra("hardcode_jspermission", JsapiPermissionWrapper.wib);
+        paramg.putExtra("hardcode_general_ctrl", GeneralControlWrapper.whX);
         paramg.putExtra("neverGetA8Key", true);
         paramg.putExtra("key_load_js_without_delay", true);
         paramg.putExtra("ftsQuery", str4);
         paramg.putExtra("ftsType", j);
         paramg.putExtra("sessionId", str1);
-        if (!com.tencent.mm.plugin.appbrand.u.r.aqr())
+        if (!r.aNU())
         {
-          paramMap = com.tencent.mm.bc.a.bu(k, j);
+          paramMap = com.tencent.mm.bd.a.cE(k, j);
           try
           {
             paramMap.put("query", q.encode(str4, "UTF-8"));
             paramMap.put("searchId", str3);
             paramMap.put("sessionId", str1);
-            paramString = aa.Bm(bk.ZR((String)paramMap.get("scene")));
+            paramString = com.tencent.mm.plugin.websearch.api.aa.IZ(bo.apV((String)paramMap.get("scene")));
             paramMap.put("subSessionId", paramString);
             paramg.putExtra("subSessionId", paramString);
             paramg.putExtra("key_session_id", str1);
-            paramg.putExtra("rawUrl", com.tencent.mm.bc.a.b(k, paramMap));
+            paramg.putExtra("rawUrl", com.tencent.mm.bd.a.b(k, paramMap));
             if ((k == 20) || (k == 22) || (k == 24) || (k == 33))
             {
               paramMap = ".ui.tools.fts.FTSSOSMoreWebViewUI";
-              com.tencent.mm.br.d.b(ae.getContext(), "webview", paramMap, paramg);
+              com.tencent.mm.bq.d.b(ah.getContext(), "webview", paramMap, paramg);
             }
           }
           catch (Exception paramString)
@@ -802,24 +836,24 @@ public final class b
         }
         else if (i != 0)
         {
-          paramString = com.tencent.mm.plugin.appbrand.u.r.a(k, false, j, paramString);
+          paramString = r.a(k, false, j, paramString);
           try
           {
             paramString.put("query", q.encode(str4, "UTF-8"));
             paramString.put("searchId", str3);
-            paramString.put("subType", String.valueOf(aa.c(paramMap, "subType", 0)));
-            paramString.put("isWeAppMore", String.valueOf(aa.c(paramMap, "isWeAppMore", 0)));
+            paramString.put("subType", String.valueOf(com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "subType", 0)));
+            paramString.put("isWeAppMore", String.valueOf(com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "isWeAppMore", 0)));
             paramString.put("sessionId", str1);
-            paramMap = com.tencent.mm.modelappbrand.b.Jk();
+            paramMap = com.tencent.mm.modelappbrand.b.ach();
             paramString.put("sessionId", paramMap);
-            str1 = aa.Bm(bk.ZR((String)paramString.get("scene")));
+            str1 = com.tencent.mm.plugin.websearch.api.aa.IZ(bo.apV((String)paramString.get("scene")));
             paramString.put("subSessionId", str1);
             paramg.putExtra("subSessionId", str1);
             paramg.putExtra("key_session_id", paramMap);
-            paramg.putExtra("rawUrl", com.tencent.mm.plugin.appbrand.u.r.v(paramString));
+            paramg.putExtra("rawUrl", r.F(paramString));
             paramg.putExtra("ftsbizscene", k);
             paramg.putExtra("key_search_place_holder", str2);
-            com.tencent.mm.br.d.b(ae.getContext(), "appbrand", ".ui.AppBrandSearchUI", paramg);
+            com.tencent.mm.bq.d.b(ah.getContext(), "appbrand", ".ui.AppBrandSearchUI", paramg);
           }
           catch (Exception localException)
           {
@@ -831,22 +865,22 @@ public final class b
         }
         else
         {
-          paramMap = aa.a(k, false, j, paramString);
+          paramMap = com.tencent.mm.plugin.websearch.api.aa.a(k, false, j, paramString);
           try
           {
             paramMap.put("query", q.encode(str4, "UTF-8"));
             paramMap.put("searchId", str3);
             paramMap.put("sessionId", str1);
-            paramString = aa.Bm(bk.ZR((String)paramMap.get("scene")));
+            paramString = com.tencent.mm.plugin.websearch.api.aa.IZ(bo.apV((String)paramMap.get("scene")));
             paramMap.put("subSessionId", paramString);
             paramg.putExtra("subSessionId", paramString);
-            paramg.putExtra("rawUrl", com.tencent.mm.bc.a.b(k, paramMap));
+            paramg.putExtra("rawUrl", com.tencent.mm.bd.a.b(k, paramMap));
             paramg.putExtra("key_session_id", str1);
             paramg.putExtra("searchId", str3);
             if ((k == 20) || (k == 22) || (k == 24) || (k == 33))
             {
               paramMap = ".ui.tools.fts.FTSSOSMoreWebViewUI";
-              com.tencent.mm.br.d.b(ae.getContext(), "webview", paramMap, paramg);
+              com.tencent.mm.bq.d.b(ah.getContext(), "webview", paramMap, paramg);
             }
           }
           catch (Exception paramString)
@@ -862,266 +896,50 @@ public final class b
       }
       else
       {
-        y.i("MicroMsg.FTS.FTSWebViewLogic", "doStartSearchItemDetailPage: type=%d link=%s", new Object[] { Integer.valueOf(j), (String)paramMap.get("url") });
+        ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "doStartSearchItemDetailPage: type=%d link=%s", new Object[] { Integer.valueOf(j), (String)paramMap.get("url") });
         switch (j)
         {
         default: 
-          paramString = aa.s(paramMap, "jumpUrl");
-          str1 = aa.s(paramMap, "publishId");
-          i = aa.c(paramMap, "payScene", 0);
-          y.i("MicroMsg.FTS.FTSWebViewLogic", "jump url = %s, publishId = %s, payScene = %d", new Object[] { paramString, str1, Integer.valueOf(i) });
+          paramString = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "jumpUrl");
+          str1 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "publishId");
+          i = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "payScene", 0);
+          ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "jump url = %s, publishId = %s, payScene = %d", new Object[] { paramString, str1, Integer.valueOf(i) });
           paramMap = null;
           if (paramg != null) {
-            paramMap = paramg.cgw();
+            paramMap = paramg.dgL();
           }
-          if (!bk.bl(paramString))
+          if (!bo.isNullOrNil(paramString))
           {
-            com.tencent.mm.plugin.webview.modeltools.g.ccI();
+            com.tencent.mm.plugin.webview.modeltools.g.dcB();
             a(paramString, paramMap, k, str3, str1, i);
           }
           break;
         case 8: 
-          aa.s(paramMap, "snsid");
-          paramg = aa.s(paramMap, "objectXmlDesc");
-          paramString = aa.s(paramMap, "userName");
-          bool1 = aa.t(paramMap, "fromMusicItem");
-          com.tencent.mm.plugin.webview.modeltools.g.ccI();
-          s(paramg, paramString, bool1);
+          com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "snsid");
+          paramg = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "objectXmlDesc");
+          paramString = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "userName");
+          bool1 = com.tencent.mm.plugin.websearch.api.aa.u(paramMap, "fromMusicItem");
+          com.tencent.mm.plugin.webview.modeltools.g.dcB();
+          z(paramg, paramString, bool1);
           break;
         case 1: 
-          a(ae(paramMap), false);
+          a(az(paramMap), false);
           break;
         case 32: 
-          a(af(paramMap));
+          a(aA(paramMap));
         }
       }
     }
   }
   
-  public final boolean aa(Map<String, Object> paramMap)
+  public final boolean aC(Map<String, Object> paramMap)
   {
-    switch (aa.c(paramMap, "action", 0))
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (af.qUu == null) {
-        af.bZA();
-      }
-      af.qUu.hPT.clear();
-      paramMap = ae.getContext().getSharedPreferences("fts_history_search_sp", 0);
-      Object localObject1;
-      Object localObject2;
-      try
-      {
-        localObject1 = af.bZB();
-        localObject2 = Base64.encodeToString(af.qUu.toByteArray(), 0);
-        paramMap.edit().putString((String)localObject1, (String)localObject2).apply();
-        y.i("MicroMsg.WebSearch.WebSearchHistoryLogic", "addHistory pbListString %s", new Object[] { localObject2 });
-        return false;
-      }
-      catch (IOException paramMap)
-      {
-        return false;
-      }
-      int i = aa.c(paramMap, "type", 0);
-      int j = aa.c(paramMap, "scene", 0);
-      if (System.currentTimeMillis() - this.gMG > 1000L)
-      {
-        this.gMG = System.currentTimeMillis();
-        if (!aa.Br(0))
-        {
-          y.e("MicroMsg.FTS.FTSWebViewLogic", "fts h5 template not avail");
-          return false;
-        }
-        ao.u(i, j, ac.Rv("searchID"));
-        paramMap = aa.bZt();
-        paramMap.putExtra("ftsneedkeyboard", true);
-        paramMap.putExtra("ftsbizscene", j);
-        paramMap.putExtra("ftsType", i);
-        paramMap.putExtra("rawUrl", aa.v(aa.b(j, true, i)));
-        paramMap.putExtra("key_load_js_without_delay", true);
-        com.tencent.mm.br.d.b(ae.getContext(), "webview", ".ui.tools.fts.FTSSearchTabWebViewUI", paramMap);
-        return false;
-        localObject1 = h.Db(aa.c(paramMap, "webview_instance_id", -1));
-        i = aa.c(paramMap, "scene", 0);
-        paramMap = aa.s(paramMap, "query");
-        if ((i != 20) || (bk.bl(paramMap)))
-        {
-          y.w("MicroMsg.MsgHandler", "doSearchHotWordOperation warning, scene=%d, query=%s", new Object[] { Integer.valueOf(i), paramMap });
-          return false;
-        }
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("fts_key_new_query", paramMap);
-        try
-        {
-          if (((com.tencent.mm.plugin.webview.ui.tools.jsapi.g)localObject1).rgh != null)
-          {
-            ((com.tencent.mm.plugin.webview.ui.tools.jsapi.g)localObject1).rgh.b(136, (Bundle)localObject2);
-            return false;
-          }
-        }
-        catch (Exception paramMap)
-        {
-          y.w("MicroMsg.MsgHandler", "doSearchHotWordOperation exception" + paramMap.getMessage());
-        }
-      }
-    }
-    return false;
-  }
-  
-  public final boolean ab(Map<String, Object> paramMap)
-  {
-    y.i("MicroMsg.FTS.FTSWebViewLogic", "getTeachSearchData: %s", new Object[] { paramMap });
-    int i = aa.c(paramMap, "scene", 0);
-    int k = aa.c(paramMap, "type", 0);
-    int m = aa.c(paramMap, "requestType", 0);
-    int j = bk.e(paramMap.get("webview_instance_id"), -1);
-    String str = (String)paramMap.get("requestId");
-    boolean bool = aa.t(paramMap, "ignoreCache");
-    Object localObject1;
-    if (m == 0)
-    {
-      paramMap = p(i, k, true);
-      if (this.qYT.get(paramMap) == null)
-      {
-        localObject1 = new b.b(this, (byte)0);
-        ((b.b)localObject1).eD(i, k);
-        this.qYT.put(paramMap, localObject1);
-      }
-      paramMap = (b.b)this.qYT.get(paramMap);
-      if ((!bk.bl(paramMap.bOE)) && (!bool))
-      {
-        y.i("MicroMsg.FTS.FTSWebViewLogic", "getTeachSearchData, webviewID = %d, cache %s", new Object[] { Integer.valueOf(j), paramMap.bOE });
-        if ((paramMap.scene != 20) || (paramMap.type != 0) || ((!paramMap.eyC) && (paramMap.isAvailable()))) {
-          h.Db(j).c(m, paramMap.bOE, 1, str);
-        }
-      }
-      if ((paramMap.isAvailable()) && (!bool))
-      {
-        y.i("MicroMsg.FTS.FTSWebViewLogic", "hit the cache: %d %d %d %d, data %s", new Object[] { Integer.valueOf(paramMap.scene), Long.valueOf(paramMap.qZk), Long.valueOf(paramMap.qZl), Integer.valueOf(paramMap.type), paramMap.bOE });
-        if ((paramMap.scene == 20) && (paramMap.type == 0)) {
-          ao.a(paramMap.scene, 0, paramMap.jfE, paramMap.type, 2, paramMap.caz(), 1);
-        }
-        for (;;)
-        {
-          return false;
-          ao.a(paramMap.scene, 0, paramMap.jfE, paramMap.type, 1, "", 0);
-        }
-      }
-      au.Dk().a(1048, this);
-      y.i("MicroMsg.FTS.FTSWebViewLogic", "getTeachSearchData, webviewID = %d", new Object[] { Integer.valueOf(j) });
-      paramMap = x.fB(ae.getContext());
-      long l = ac.Ru("discoverSearchEntry").optLong("guideParam");
-      this.qYV = new v(i, k, aa.Bs(0), j, paramMap, l, str);
-      au.Dk().a(this.qYV, 0);
-      return false;
-    }
-    paramMap = com.tencent.mm.plugin.websearch.api.ai.bZE();
-    for (;;)
-    {
-      try
-      {
-        localObject1 = new JSONObject();
-        JSONArray localJSONArray1 = new JSONArray();
-        JSONObject localJSONObject1 = new JSONObject();
-        JSONArray localJSONArray2 = new JSONArray();
-        i = paramMap.hPT.size() - 1;
-        if (i >= 0)
-        {
-          JSONObject localJSONObject2 = new JSONObject();
-          Object localObject2 = (ayk)paramMap.hPT.get(i);
-          if (!s.hk(((ayk)localObject2).sxM)) {
-            break label722;
-          }
-          localObject2 = com.tencent.mm.ai.f.kX(((ayk)localObject2).sxM);
-          if (localObject2 == null) {
-            break label722;
-          }
-          localJSONObject2.put("avatarUrl", ((com.tencent.mm.ai.d)localObject2).field_brandIconURL);
-          localJSONObject2.put("userName", ((com.tencent.mm.ai.d)localObject2).field_username);
-          localJSONObject2.put("nickName", com.tencent.mm.model.r.gV(((com.tencent.mm.ai.d)localObject2).field_username));
-          localJSONArray2.put(localJSONObject2);
-          break label722;
-        }
-        localJSONObject1.put("items", localJSONArray2);
-        localJSONObject1.put("type", 5);
-        localJSONObject1.put("title", "");
-        localJSONArray1.put(localJSONObject1);
-        ((JSONObject)localObject1).put("data", localJSONArray1);
-        paramMap = ((JSONObject)localObject1).toString();
-        y.d("MicroMsg.FTS.FTSWebViewLogic", "getTeachSearchData returnString=%s", new Object[] { paramMap });
-        h.Db(j).c(1, paramMap, 1, str);
-      }
-      catch (Exception paramMap)
-      {
-        y.printErrStackTrace("MicroMsg.FTS.FTSWebViewLogic", paramMap, "gen mostSearchBizContactList error", new Object[0]);
-      }
-      break;
-      label722:
-      i -= 1;
-    }
-  }
-  
-  public final boolean ac(Map<String, Object> paramMap)
-  {
-    boolean bool = true;
-    int i = bk.e(paramMap.get("webview_instance_id"), -1);
-    if (this.qYW.get(Integer.valueOf(201)) == null)
-    {
-      localObject = b.g.caA();
-      if (localObject != null) {
-        this.qYW.put(Integer.valueOf(201), localObject);
-      }
-    }
-    Object localObject = (b.g)this.qYW.get(Integer.valueOf(201));
-    com.tencent.mm.plugin.webview.ui.tools.jsapi.g localg;
-    String str;
-    if (localObject != null)
-    {
-      localg = h.Db(i);
-      str = ((b.g)localObject).bOE;
-      if (!((b.g)localObject).caB()) {
-        break label177;
-      }
-    }
-    label177:
-    for (i = 1;; i = 0)
-    {
-      localg.af(str, 1, i);
-      bool = ((b.g)localObject).caB();
-      if (bool)
-      {
-        au.Dk().a(1866, this);
-        localObject = new c();
-        if (paramMap != null) {
-          ((c)localObject).bVm = aa.c(paramMap, "webview_instance_id", -1);
-        }
-        au.Dk().a((com.tencent.mm.ah.m)localObject, 0);
-      }
-      return false;
-    }
-  }
-  
-  public final boolean ad(Map<String, Object> paramMap)
-  {
-    y.i("MicroMsg.FTS.FTSWebViewLogic", "reportSearchRealTimeReport: %s", new Object[] { paramMap.toString() });
-    blf localblf = new blf();
-    localblf.tEQ = aa.s(paramMap, "logString");
-    au.Dk().a(1134, this);
-    paramMap = new w(localblf);
-    au.Dk().a(paramMap, 0);
-    return false;
-  }
-  
-  public final boolean ah(Map<String, Object> paramMap)
-  {
+    AppMethodBeat.i(5709);
     String str = (String)paramMap.get("query");
     Object localObject = (String)paramMap.get("sortedContacts");
-    int j = bk.ZR((String)paramMap.get("offset"));
-    int k = bk.ZR((String)paramMap.get("count"));
-    int m = bk.e(paramMap.get("webview_instance_id"), -1);
+    int j = bo.apV((String)paramMap.get("offset"));
+    int k = bo.apV((String)paramMap.get("count"));
+    int m = bo.f(paramMap.get("webview_instance_id"), -1);
     paramMap = (Map<String, Object>)localObject;
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       paramMap = "";
@@ -1136,157 +954,414 @@ public final class b
         ((List)localObject).add(paramMap.optString(i));
         i += 1;
       }
-      return false;
+      if (this.uOG.equals(paramMap)) {
+        break label243;
+      }
     }
     catch (JSONException paramMap)
     {
-      y.printErrStackTrace("MicroMsg.FTS.FTSWebViewLogic", paramMap, "", new Object[0]);
-      if (this.qYZ == null) {
-        this.qYZ = new com.tencent.mm.plugin.websearch.c.a.b();
+      ab.printErrStackTrace("MicroMsg.WebSearch.FTSWebViewLogic", paramMap, "", new Object[0]);
+      if (this.uOF == null) {
+        this.uOF = new com.tencent.mm.plugin.websearch.c.a.b();
       }
       paramMap = new com.tencent.mm.plugin.websearch.c.a.d(str, (List)localObject);
-      if ((this.qZa == null) || (!this.qZa.equals(paramMap)))
-      {
-        this.qZa = paramMap;
-        this.qYZ.a(paramMap, new b.5(this, j, k, m));
+      if (this.uOG == null) {}
+    }
+    this.uOG = paramMap;
+    this.uOF.a(paramMap, new b.5(this, j, k, m));
+    for (;;)
+    {
+      AppMethodBeat.o(5709);
+      return false;
+      label243:
+      if (this.uOG.cnz) {
+        a(this.uOG, j, k, m);
       }
-      while (!this.qZa.bGq) {
-        return false;
-      }
-      a(this.qZa, j, k, m);
     }
   }
   
-  public final String cay()
+  public final boolean aD(Map<String, Object> paramMap)
   {
-    Object localObject1 = p(20, 0, true);
-    Object localObject2;
-    if (this.qYT.get(localObject1) == null)
+    AppMethodBeat.i(153072);
+    String str1 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "md5");
+    int i = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "offset", 0);
+    String str2 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "searchId");
+    String str3 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "sessionId");
+    int j = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "tab", 0);
+    String str4 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "requestId");
+    int k = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "scene", 0);
+    int m = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "webview_instance_id", -1);
+    String str5 = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "emojiUrl");
+    paramMap = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "aesKey");
+    if (this.uOH != null)
     {
-      localObject2 = new b.b(this, (byte)0);
-      ((b.b)localObject2).eD(20, 0);
-      this.qYT.put(localObject1, localObject2);
+      com.tencent.mm.kernel.g.Rc().a(this.uOH);
+      com.tencent.mm.kernel.g.Rc().b(2999, this);
     }
-    localObject1 = (b.b)this.qYT.get(localObject1);
-    if (((b.b)localObject1).isAvailable()) {}
-    for (localObject1 = ((b.b)localObject1).bOE;; localObject1 = "")
-    {
-      localObject2 = localObject1;
-      if (bk.bl((String)localObject1)) {
-        localObject2 = "";
-      }
-      return localObject2;
-    }
+    com.tencent.mm.kernel.g.Rc().a(2999, this);
+    this.uOH = new c(str1, i, str2, str3, j, str4, k, str5, paramMap);
+    this.uOH.cCT = m;
+    com.tencent.mm.kernel.g.Rc().a(this.uOH, 0);
+    AppMethodBeat.o(153072);
+    return false;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public final boolean av(Map<String, Object> paramMap)
   {
-    if ((paramm instanceof v))
+    AppMethodBeat.i(5691);
+    switch (com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "action", 0))
     {
-      au.Dk().b(1048, this);
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        y.e("MicroMsg.FTS.FTSWebViewLogic", "onSceneEnd errType %d,errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      }
     }
-    label838:
-    do
+    for (;;)
     {
-      do
+      AppMethodBeat.o(5691);
+      return false;
+      if (af.uJF == null) {
+        af.cZw();
+      }
+      af.uJF.jJv.clear();
+      paramMap = ah.getContext().getSharedPreferences("fts_history_search_sp", 0);
+      Object localObject1;
+      Object localObject2;
+      try
       {
-        do
+        localObject1 = af.cZx();
+        localObject2 = Base64.encodeToString(af.uJF.toByteArray(), 0);
+        paramMap.edit().putString((String)localObject1, (String)localObject2).apply();
+        ab.i("MicroMsg.WebSearch.WebSearchHistoryLogic", "addHistory pbListString %s", new Object[] { localObject2 });
+      }
+      catch (IOException paramMap) {}
+      continue;
+      int i = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "type", 0);
+      int j = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "scene", 0);
+      if (System.currentTimeMillis() - this.iod > 1000L)
+      {
+        this.iod = System.currentTimeMillis();
+        if (!com.tencent.mm.plugin.websearch.api.aa.Je(0))
         {
-          return;
-          paramString = (v)paramm;
-          localObject = new b.b(this, (byte)0);
-          ((b.b)localObject).scene = paramString.scene;
-          ((b.b)localObject).qZk = paramString.qTT.tqW;
-          ((b.b)localObject).bOE = paramString.qTT.sEb;
-          ((b.b)localObject).qZl = (System.currentTimeMillis() / 1000L);
-          ((b.b)localObject).jfE = paramString.qTT.tqX;
-          ((b.b)localObject).type = paramString.businessType;
-          paramm = p(((b.b)localObject).scene, ((b.b)localObject).type, true);
-          y.i("MicroMsg.FTS.FTSWebViewLogic", "NetSceneWebSearchGuide cgi data %s ", new Object[] { ((b.b)localObject).bOE });
-          if (!bk.bl(((b.b)localObject).bOE))
+          ab.e("MicroMsg.WebSearch.FTSWebViewLogic", "fts h5 template not avail");
+        }
+        else
+        {
+          an.A(i, j, ac.agw("searchID"));
+          paramMap = com.tencent.mm.plugin.websearch.api.aa.cZp();
+          paramMap.putExtra("ftsneedkeyboard", true);
+          paramMap.putExtra("ftsbizscene", j);
+          paramMap.putExtra("ftsType", i);
+          paramMap.putExtra("rawUrl", com.tencent.mm.plugin.websearch.api.aa.F(com.tencent.mm.plugin.websearch.api.aa.d(j, true, i)));
+          paramMap.putExtra("key_load_js_without_delay", true);
+          com.tencent.mm.bq.d.b(ah.getContext(), "webview", ".ui.tools.fts.FTSSearchTabWebViewUI", paramMap);
+          continue;
+          localObject1 = h.KW(com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "webview_instance_id", -1));
+          i = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "scene", 0);
+          paramMap = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "query");
+          if ((i != 20) || (bo.isNullOrNil(paramMap)))
           {
-            h.Db(paramString.bVm).c(0, ((b.b)localObject).bOE, 0, paramString.lJQ);
-            y.i("MicroMsg.FTS.FTSWebViewLogic", "onTeachSearchDataReady, %s", new Object[] { ((b.b)localObject).bOE });
+            ab.w("MicroMsg.MsgHandler", "doSearchHotWordOperation warning, scene=%d, query=%s", new Object[] { Integer.valueOf(i), paramMap });
           }
-          this.qYT.put(paramm, localObject);
-          if (((b.b)localObject).qZk == 0L)
+          else
           {
-            paramInt1 = ((b.b)localObject).scene;
-            paramInt2 = ((b.b)localObject).type;
-            y.i("MicroMsg.FTS.FTSWebViewLogic", "delete biz cache %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-            au.Hx();
-            paramString = com.tencent.mm.model.c.FJ();
-            paramm = new File(paramString, p(paramInt1, paramInt2, true));
-            if (paramm.exists()) {
-              paramm.delete();
-            }
-            paramString = new File(paramString, p(paramInt1, paramInt2, false));
-            if (paramString.exists()) {
-              paramString.delete();
-            }
-          }
-          while ((((b.b)localObject).scene == 20) && (((b.b)localObject).type == 0))
-          {
-            ao.a(((b.b)localObject).scene, 1, ((b.b)localObject).jfE, ((b.b)localObject).type, 2, ((b.b)localObject).caz(), 1);
-            return;
-            paramm = new avi();
-            paramm.scene = ((b.b)localObject).scene;
-            paramm.sEb = ((b.b)localObject).bOE;
-            paramm.tqP = ((b.b)localObject).qZk;
-            paramm.tqQ = ((b.b)localObject).qZl;
-            paramm.sFF = ((b.b)localObject).jfE;
-            paramm.hQR = ((b.b)localObject).type;
-            paramString = null;
+            localObject2 = new Bundle();
+            ((Bundle)localObject2).putString("fts_key_new_query", paramMap);
             try
             {
-              paramm = paramm.toByteArray();
-              paramString = paramm;
-            }
-            catch (IOException paramm)
-            {
-              for (;;)
-              {
-                ArrayList localArrayList;
-                JSONArray localJSONArray;
-                continue;
-                paramInt1 += 1;
+              if (((com.tencent.mm.plugin.webview.ui.tools.jsapi.g)localObject1).uWu != null) {
+                ((com.tencent.mm.plugin.webview.ui.tools.jsapi.g)localObject1).uWu.e(136, (Bundle)localObject2);
               }
             }
-            if (paramString != null)
+            catch (Exception paramMap)
             {
-              au.Hx();
-              paramm = new File(com.tencent.mm.model.c.FJ(), p(((b.b)localObject).scene, ((b.b)localObject).type, true));
-              if (!paramm.getParentFile().exists()) {
-                paramm.getParentFile().mkdirs();
-              }
-              if (paramm.exists()) {
-                paramm.delete();
-              }
-              com.tencent.mm.a.e.b(paramm.getAbsolutePath(), paramString, paramString.length);
-              y.i("MicroMsg.FTS.FTSWebViewLogic", "save bizCacheFile %s %d", new Object[] { paramm.getAbsolutePath(), Integer.valueOf(paramString.length) });
-            }
-            else
-            {
-              y.i("MicroMsg.FTS.FTSWebViewLogic", "save bizCacheFile fail");
+              ab.w("MicroMsg.MsgHandler", "doSearchHotWordOperation exception" + paramMap.getMessage());
             }
           }
-          ao.a(((b.b)localObject).scene, 1, ((b.b)localObject).jfE, ((b.b)localObject).type, 1, "", 0);
-          return;
-          if ((paramm instanceof w))
+        }
+      }
+    }
+  }
+  
+  public final boolean aw(Map<String, Object> paramMap)
+  {
+    AppMethodBeat.i(5693);
+    ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "getTeachSearchData: %s", new Object[] { paramMap });
+    int i = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "scene", 0);
+    int k = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "type", 0);
+    int m = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "requestType", 0);
+    int j = bo.f(paramMap.get("webview_instance_id"), -1);
+    String str = (String)paramMap.get("requestId");
+    boolean bool = com.tencent.mm.plugin.websearch.api.aa.u(paramMap, "ignoreCache");
+    Object localObject1;
+    if (m == 0)
+    {
+      paramMap = s(i, k, true);
+      if (this.uOz.get(paramMap) == null)
+      {
+        localObject1 = new b.b(this, (byte)0);
+        ((b.b)localObject1).gH(i, k);
+        this.uOz.put(paramMap, localObject1);
+      }
+      paramMap = (b.b)this.uOz.get(paramMap);
+      if ((!bo.isNullOrNil(paramMap.cvV)) && (!bool))
+      {
+        ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "getTeachSearchData, webviewID = %d, cache %s", new Object[] { Integer.valueOf(j), paramMap.cvV });
+        if ((paramMap.scene != 20) || (paramMap.type != 0) || ((!paramMap.fOq) && (paramMap.isAvailable()))) {
+          h.KW(j).d(m, paramMap.cvV, 1, str);
+        }
+      }
+      if ((paramMap.isAvailable()) && (!bool))
+      {
+        ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "hit the cache: %d %d %d %d, data %s", new Object[] { Integer.valueOf(paramMap.scene), Long.valueOf(paramMap.uOR), Long.valueOf(paramMap.uOS), Integer.valueOf(paramMap.type), paramMap.cvV });
+        if ((paramMap.scene == 20) && (paramMap.type == 0)) {
+          an.a(paramMap.scene, 0, paramMap.low, paramMap.type, 2, paramMap.daz(), 1);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(5693);
+          return false;
+          an.a(paramMap.scene, 0, paramMap.low, paramMap.type, 1, "", 0);
+        }
+      }
+      com.tencent.mm.kernel.g.Rc().a(1048, this);
+      ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "getTeachSearchData, webviewID = %d", new Object[] { Integer.valueOf(j) });
+      paramMap = com.tencent.mm.sdk.platformtools.aa.gP(ah.getContext());
+      long l = ac.agv("discoverSearchEntry").optLong("guideParam");
+      this.uOB = new v(i, k, com.tencent.mm.plugin.websearch.api.aa.Jf(0), j, paramMap, l, str);
+      com.tencent.mm.kernel.g.Rc().a(this.uOB, 0);
+      AppMethodBeat.o(5693);
+      return false;
+    }
+    paramMap = ai.cZA();
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new JSONObject();
+        JSONArray localJSONArray1 = new JSONArray();
+        JSONObject localJSONObject1 = new JSONObject();
+        JSONArray localJSONArray2 = new JSONArray();
+        i = paramMap.jJv.size() - 1;
+        if (i >= 0)
+        {
+          JSONObject localJSONObject2 = new JSONObject();
+          Object localObject2 = (bfh)paramMap.jJv.get(i);
+          if (!t.nT(((bfh)localObject2).Username)) {
+            break label740;
+          }
+          localObject2 = com.tencent.mm.aj.f.rS(((bfh)localObject2).Username);
+          if (localObject2 == null) {
+            break label740;
+          }
+          localJSONObject2.put("avatarUrl", ((com.tencent.mm.aj.d)localObject2).field_brandIconURL);
+          localJSONObject2.put("userName", ((com.tencent.mm.aj.d)localObject2).field_username);
+          localJSONObject2.put("nickName", com.tencent.mm.model.s.nE(((com.tencent.mm.aj.d)localObject2).field_username));
+          localJSONArray2.put(localJSONObject2);
+          break label740;
+        }
+        localJSONObject1.put("items", localJSONArray2);
+        localJSONObject1.put("type", 5);
+        localJSONObject1.put("title", "");
+        localJSONArray1.put(localJSONObject1);
+        ((JSONObject)localObject1).put("data", localJSONArray1);
+        paramMap = ((JSONObject)localObject1).toString();
+        ab.d("MicroMsg.WebSearch.FTSWebViewLogic", "getTeachSearchData returnString=%s", new Object[] { paramMap });
+        h.KW(j).d(1, paramMap, 1, str);
+      }
+      catch (Exception paramMap)
+      {
+        ab.printErrStackTrace("MicroMsg.WebSearch.FTSWebViewLogic", paramMap, "gen mostSearchBizContactList error", new Object[0]);
+      }
+      break;
+      label740:
+      i -= 1;
+    }
+  }
+  
+  public final boolean ax(Map<String, Object> paramMap)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(5694);
+    int i = bo.f(paramMap.get("webview_instance_id"), -1);
+    if (this.uOC.get(Integer.valueOf(201)) == null)
+    {
+      localObject = b.g.daA();
+      if (localObject != null) {
+        this.uOC.put(Integer.valueOf(201), localObject);
+      }
+    }
+    Object localObject = (b.g)this.uOC.get(Integer.valueOf(201));
+    com.tencent.mm.plugin.webview.ui.tools.jsapi.g localg;
+    String str;
+    if (localObject != null)
+    {
+      localg = h.KW(i);
+      str = ((b.g)localObject).cvV;
+      if (!((b.g)localObject).isExpired()) {
+        break label196;
+      }
+    }
+    label196:
+    for (i = 1;; i = 0)
+    {
+      localg.n(str, 1, i, ((b.g)localObject).uOZ);
+      bool = ((b.g)localObject).isExpired();
+      if (bool)
+      {
+        com.tencent.mm.kernel.g.Rc().a(1866, this);
+        localObject = new d(paramMap, 0);
+        if (paramMap != null) {
+          ((d)localObject).cCT = com.tencent.mm.plugin.websearch.api.aa.d(paramMap, "webview_instance_id", -1);
+        }
+        com.tencent.mm.kernel.g.Rc().a((com.tencent.mm.ai.m)localObject, 0);
+      }
+      AppMethodBeat.o(5694);
+      return false;
+    }
+  }
+  
+  public final boolean ay(Map<String, Object> paramMap)
+  {
+    AppMethodBeat.i(5697);
+    ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "reportSearchRealTimeReport: %s", new Object[] { paramMap.toString() });
+    buo localbuo = new buo();
+    localbuo.xHP = com.tencent.mm.plugin.websearch.api.aa.t(paramMap, "logString");
+    com.tencent.mm.kernel.g.Rc().a(1134, this);
+    paramMap = new w(localbuo);
+    com.tencent.mm.kernel.g.Rc().a(paramMap, 0);
+    AppMethodBeat.o(5697);
+    return false;
+  }
+  
+  public final String day()
+  {
+    AppMethodBeat.i(5692);
+    Object localObject = s(20, 0, true);
+    if (this.uOz.get(localObject) == null)
+    {
+      b.b localb = new b.b(this, (byte)0);
+      localb.gH(20, 0);
+      this.uOz.put(localObject, localb);
+    }
+    localObject = (b.b)this.uOz.get(localObject);
+    if (((b.b)localObject).isAvailable()) {}
+    for (localObject = ((b.b)localObject).cvV; bo.isNullOrNil((String)localObject); localObject = "")
+    {
+      AppMethodBeat.o(5692);
+      return "";
+    }
+    AppMethodBeat.o(5692);
+    return localObject;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  {
+    int i = 0;
+    AppMethodBeat.i(5704);
+    Object localObject1;
+    if ((paramm instanceof v))
+    {
+      com.tencent.mm.kernel.g.Rc().b(1048, this);
+      if ((paramInt1 != 0) || (paramInt2 != 0))
+      {
+        ab.e("MicroMsg.WebSearch.FTSWebViewLogic", "onSceneEnd errType %d,errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        AppMethodBeat.o(5704);
+        return;
+      }
+      paramString = (v)paramm;
+      localObject1 = new b.b(this, (byte)0);
+      ((b.b)localObject1).scene = paramString.scene;
+      ((b.b)localObject1).uOR = paramString.uJb.xqW;
+      ((b.b)localObject1).cvV = paramString.uJb.wAa;
+      ((b.b)localObject1).uOS = (System.currentTimeMillis() / 1000L);
+      ((b.b)localObject1).low = paramString.uJb.xqX;
+      ((b.b)localObject1).type = paramString.businessType;
+      paramm = s(((b.b)localObject1).scene, ((b.b)localObject1).type, true);
+      ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "NetSceneWebSearchGuide cgi data %s ", new Object[] { ((b.b)localObject1).cvV });
+      if (!bo.isNullOrNil(((b.b)localObject1).cvV))
+      {
+        h.KW(paramString.cCT).d(0, ((b.b)localObject1).cvV, 0, paramString.ohe);
+        ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "onTeachSearchDataReady, %s", new Object[] { ((b.b)localObject1).cvV });
+      }
+      this.uOz.put(paramm, localObject1);
+      if (((b.b)localObject1).uOR == 0L)
+      {
+        paramInt1 = ((b.b)localObject1).scene;
+        paramInt2 = ((b.b)localObject1).type;
+        ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "delete biz cache %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        paramString = com.tencent.mm.plugin.record.b.YN();
+        paramm = new File(paramString, s(paramInt1, paramInt2, true));
+        if (paramm.exists()) {
+          paramm.delete();
+        }
+        paramString = new File(paramString, s(paramInt1, paramInt2, false));
+        if (paramString.exists()) {
+          paramString.delete();
+        }
+      }
+      while ((((b.b)localObject1).scene == 20) && (((b.b)localObject1).type == 0))
+      {
+        an.a(((b.b)localObject1).scene, 1, ((b.b)localObject1).low, ((b.b)localObject1).type, 2, ((b.b)localObject1).daz(), 1);
+        AppMethodBeat.o(5704);
+        return;
+        paramm = new bbt();
+        paramm.scene = ((b.b)localObject1).scene;
+        paramm.wAa = ((b.b)localObject1).cvV;
+        paramm.xqP = ((b.b)localObject1).uOR;
+        paramm.xqQ = ((b.b)localObject1).uOS;
+        paramm.wBZ = ((b.b)localObject1).low;
+        paramm.jKs = ((b.b)localObject1).type;
+        paramString = null;
+        try
+        {
+          paramm = paramm.toByteArray();
+          paramString = paramm;
+        }
+        catch (IOException paramm)
+        {
+          for (;;)
           {
-            au.Dk().b(1134, this);
-            return;
+            Object localObject2;
+            JSONArray localJSONArray;
+            continue;
+            paramInt1 += 1;
           }
-          if (!(paramm instanceof e)) {
-            break label838;
+        }
+        if (paramString != null)
+        {
+          paramm = new File(com.tencent.mm.plugin.record.b.YN(), s(((b.b)localObject1).scene, ((b.b)localObject1).type, true));
+          if (!paramm.getParentFile().exists()) {
+            paramm.getParentFile().mkdirs();
           }
-          au.Dk().b(1161, this);
-        } while ((paramInt1 != 0) || (paramInt2 != 0));
-        paramString = this.qYU.Jv();
-        localArrayList = new ArrayList();
+          if (paramm.exists()) {
+            paramm.delete();
+          }
+          com.tencent.mm.a.e.b(paramm.getAbsolutePath(), paramString, paramString.length);
+          ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "save bizCacheFile %s %d", new Object[] { paramm.getAbsolutePath(), Integer.valueOf(paramString.length) });
+        }
+        else
+        {
+          ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "save bizCacheFile fail");
+        }
+      }
+      an.a(((b.b)localObject1).scene, 1, ((b.b)localObject1).low, ((b.b)localObject1).type, 1, "", 0);
+      AppMethodBeat.o(5704);
+    }
+    else
+    {
+      if ((paramm instanceof w))
+      {
+        com.tencent.mm.kernel.g.Rc().b(1134, this);
+        AppMethodBeat.o(5704);
+        return;
+      }
+      if ((paramm instanceof f))
+      {
+        com.tencent.mm.kernel.g.Rc().b(1161, this);
+        if ((paramInt1 != 0) || (paramInt2 != 0))
+        {
+          AppMethodBeat.o(5704);
+          return;
+        }
+        paramString = this.uOA.act();
+        localObject2 = new ArrayList();
         try
         {
           paramString = new JSONObject(paramString);
@@ -1296,22 +1371,22 @@ public final class b
           paramInt1 = 0;
           if (paramInt1 < localJSONArray.length())
           {
-            localObject = localJSONArray.optJSONObject(paramInt1);
-            if (((JSONObject)localObject).optInt("type") != 1) {
-              break;
+            localObject1 = localJSONArray.optJSONObject(paramInt1);
+            if (((JSONObject)localObject1).optInt("type") != 1) {
+              break label1148;
             }
-            paramString = (String)localObject;
-            break;
+            paramString = (String)localObject1;
+            break label1148;
           }
           if (paramString != null)
           {
             paramString = paramString.optJSONArray("items");
-            paramInt1 = 0;
+            paramInt1 = i;
             while (paramInt1 < paramString.length())
             {
-              localObject = paramString.optJSONObject(paramInt1).optString("word");
-              if (!bk.bl((String)localObject)) {
-                localArrayList.add(localObject);
+              localObject1 = paramString.optJSONObject(paramInt1).optString("word");
+              if (!bo.isNullOrNil((String)localObject1)) {
+                ((ArrayList)localObject2).add(localObject1);
               }
               paramInt1 += 1;
             }
@@ -1325,56 +1400,201 @@ public final class b
             paramString = "";
           }
         }
-        com.tencent.mm.sdk.platformtools.ai.d(new b.2(this, paramString, localArrayList));
+        al.d(new b.2(this, paramString, (ArrayList)localObject2));
+        AppMethodBeat.o(5704);
+      }
+      else
+      {
+        if ((paramm instanceof d))
+        {
+          com.tencent.mm.kernel.g.Rc().b(1866, this);
+          if ((paramInt1 != 0) || (paramInt2 != 0))
+          {
+            AppMethodBeat.o(5704);
+            return;
+          }
+          paramString = (d)paramm;
+          if (paramString.cCT != -1) {
+            h.KW(paramString.cCT).n(((cvw)paramString.rr.fsW.fta).cvV, 0, 0, 0);
+          }
+          if (paramString.uPb != null) {
+            this.uOC.put(Integer.valueOf(paramString.uPb.scene), paramString.uPb);
+          }
+          AppMethodBeat.o(5704);
+          return;
+        }
+        if ((paramm instanceof c))
+        {
+          com.tencent.mm.kernel.g.Rc().b(2999, this);
+          localObject1 = (c)paramm;
+          localObject2 = ((c)localObject1).uPa;
+          paramm = bo.bf(((cct)localObject2).wAa, "");
+          ((cct)localObject2).getBaseResponse();
+          ((cct)localObject2).getBaseResponse();
+          if (((c)localObject1).cCT != -1)
+          {
+            localObject1 = h.KW(((c)localObject1).cCT);
+            localObject2 = new Bundle();
+            ((Bundle)localObject2).putString("fts_key_json_data", paramm);
+            ((Bundle)localObject2).putString("fts_key_err_msg", paramString);
+            ((Bundle)localObject2).putInt("fts_key_ret_code", paramInt2);
+            try
+            {
+              if (((com.tencent.mm.plugin.webview.ui.tools.jsapi.g)localObject1).uWu != null) {
+                ((com.tencent.mm.plugin.webview.ui.tools.jsapi.g)localObject1).uWu.e(152, (Bundle)localObject2);
+              }
+              AppMethodBeat.o(5704);
+              return;
+            }
+            catch (Exception paramString) {}
+          }
+        }
+        AppMethodBeat.o(5704);
         return;
-      } while (!(paramm instanceof c));
-      au.Dk().b(1866, this);
-    } while ((paramInt1 != 0) || (paramInt2 != 0));
-    paramString = (c)paramm;
-    if (paramString.bVm != -1) {
-      h.Db(paramString.bVm).af(((cik)paramString.dmK.ecF.ecN).bOE, 0, 0);
-    }
-    Object localObject = new b.g((cik)paramString.dmK.ecF.ecN);
-    paramm = new avj();
-    paramm.pyo = ((b.g)localObject).scene;
-    paramm.sEb = ((b.g)localObject).bOE;
-    paramm.tqR = ((b.g)localObject).dFf;
-    paramm.tqQ = ((b.g)localObject).qZl;
-    paramString = null;
-    try
-    {
-      paramm = paramm.toByteArray();
-      paramString = paramm;
-    }
-    catch (IOException paramm)
-    {
-      label989:
-      break label989;
-    }
-    if (paramString != null)
-    {
-      au.Hx();
-      paramm = new File(com.tencent.mm.model.c.FJ(), b.g.BO(((b.g)localObject).scene));
-      if (!paramm.getParentFile().exists()) {
-        paramm.getParentFile().mkdirs();
       }
-      if (paramm.exists()) {
-        paramm.delete();
-      }
-      com.tencent.mm.a.e.b(paramm.getAbsolutePath(), paramString, paramString.length);
-      y.i("MicroMsg.FTS.FTSWebViewLogic", "SearchGuideCacheObj saved, scene:%d", new Object[] { Integer.valueOf(((b.g)localObject).scene) });
     }
-    for (;;)
+  }
+  
+  public final Bundle r(int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(153071);
+    switch (paramInt)
     {
-      this.qYW.put(Integer.valueOf(((b.g)localObject).scene), localObject);
-      return;
-      y.w("MicroMsg.FTS.FTSWebViewLogic", "SearchGuideCacheObj toBytes fail, scene:%d!", new Object[] { Integer.valueOf(((b.g)localObject).scene) });
+    case 2: 
+    case 4: 
+    default: 
+    case 1: 
+    case 3: 
+    case 5: 
+    case 6: 
+      for (;;)
+      {
+        AppMethodBeat.o(153071);
+        return null;
+        int i = paramBundle.getInt("webview_id");
+        this.uOx.remove(Integer.valueOf(i));
+        paramBundle = this.uOD;
+        if (!paramBundle.edo)
+        {
+          paramInt = 1;
+          label92:
+          if ((paramInt == 0) || (bo.isNullOrNil(paramBundle.query))) {
+            break label220;
+          }
+          ab.v("MicroMsg.WebSearch.FTSWebViewLogic", "report isReported:%b query:%s hasResult:%b isClick:%b searchType:%d", new Object[] { Boolean.valueOf(paramBundle.edo), paramBundle.query, Boolean.valueOf(paramBundle.cnz), Boolean.valueOf(paramBundle.tfn), Integer.valueOf(paramBundle.lox) });
+          an.a(paramBundle.scene, paramBundle.query, paramBundle.tfn, paramBundle.cnz, paramBundle.lox);
+          paramBundle.edo = true;
+        }
+        for (;;)
+        {
+          ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "activity destroy %d", new Object[] { Integer.valueOf(i) });
+          break;
+          paramInt = 0;
+          break label92;
+          label220:
+          ab.v("MicroMsg.WebSearch.FTSWebViewLogic", "can not report %s", new Object[] { paramBundle.query });
+        }
+        if (this.mSV != null) {
+          ((n)com.tencent.mm.kernel.g.G(n.class)).cancelSearchTask(this.mSV);
+        }
+        localObject = new i();
+        ((i)localObject).query = paramBundle.getString("query");
+        ((i)localObject).mSR = paramBundle.getInt("count");
+        ((i)localObject).mSU = this.pym;
+        ((i)localObject).mSS.add("notifymessage");
+        this.mSV = ((n)com.tencent.mm.kernel.g.G(n.class)).search(8, (i)localObject);
+        this.mSV.mRQ = Integer.valueOf(paramBundle.getInt("webview_id"));
+        localObject = new com.tencent.mm.plugin.websearch.api.s();
+        ((com.tencent.mm.plugin.websearch.api.s)localObject).scene = paramBundle.getInt("scene");
+        ((com.tencent.mm.plugin.websearch.api.s)localObject).cnv = paramBundle.getString("query");
+        ((com.tencent.mm.plugin.websearch.api.s)localObject).uIE = 1;
+        ((com.tencent.mm.plugin.websearch.api.s)localObject).cCT = paramBundle.getInt("webview_id");
+        if (this.uOA != null) {
+          com.tencent.mm.kernel.g.Rc().a(this.uOA);
+        }
+        this.uOA = new f((com.tencent.mm.plugin.websearch.api.s)localObject);
+        com.tencent.mm.kernel.g.Rc().a(1161, this);
+        com.tencent.mm.kernel.g.Rc().a(this.uOA, 0);
+        continue;
+        paramBundle = paramBundle.getString("history");
+        ((n)com.tencent.mm.kernel.g.G(n.class)).deleteSOSHistory(paramBundle);
+        continue;
+        paramBundle = paramBundle.getString("reportString");
+        ab.i("MicroMsg.TopStory.TopStoryReportApiLogic", "reportTopStoryWebViewVisitTime %s", new Object[] { paramBundle });
+        localObject = new buo();
+        ((buo)localObject).xHP = paramBundle;
+        paramBundle = new w((buo)localObject);
+        com.tencent.mm.kernel.g.Rc().a(paramBundle, 0);
+      }
+    }
+    Object localObject = new gc();
+    ((gc)localObject).cuC.coO = 3;
+    ((gc)localObject).cuC.cqq = paramBundle.getString("md5");
+    ((gc)localObject).cuC.cuE = paramBundle.getString("designerId");
+    ((gc)localObject).cuC.aeskey = paramBundle.getString("aeskey");
+    ((gc)localObject).cuC.cuF = paramBundle.getString("encryptUrl");
+    ((gc)localObject).cuC.cqx = paramBundle.getString("productId");
+    ((gc)localObject).cuC.name = paramBundle.getString("name");
+    ((gc)localObject).cuC.thumbUrl = paramBundle.getString("thumbUrl");
+    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
+    ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "GENERATE_EMOJI_PATH %s", new Object[] { ((gc)localObject).cuD.path });
+    paramBundle = new Bundle();
+    paramBundle.putString("emojiPath", ((gc)localObject).cuD.path);
+    AppMethodBeat.o(153071);
+    return paramBundle;
+  }
+  
+  public final class a
+    implements Runnable
+  {
+    public String data;
+    public boolean uOQ;
+    
+    private a() {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(5681);
+      ArrayList localArrayList = new ArrayList();
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(this.data);
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          Object localObject = ((com.tencent.mm.plugin.sns.b.m)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.sns.b.m.class)).uA(localJSONArray.getString(i));
+          com.tencent.mm.kernel.g.RM();
+          localObject = com.tencent.mm.aw.g.a(com.tencent.mm.kernel.g.RL().eHR, (TimeLineObject)localObject, 9);
+          if (localObject != null) {
+            localArrayList.add(localObject);
+          }
+          i += 1;
+        }
+        if (!this.uOQ) {
+          break label133;
+        }
+      }
+      catch (Exception localException)
+      {
+        ab.printErrStackTrace("MicroMsg.WebSearch.FTSWebViewLogic", localException, "", new Object[0]);
+        AppMethodBeat.o(5681);
+        return;
+      }
+      if (b.this.uOE == null)
+      {
+        label133:
+        b.this.uOE = localException;
+        AppMethodBeat.o(5681);
+        return;
+      }
+      b.this.uOE.addAll(localException);
+      AppMethodBeat.o(5681);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.b
  * JD-Core Version:    0.7.0.1
  */

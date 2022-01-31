@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.subapp.ui.pluginapp;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AddMoreFriendsByOtherWayUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class AddMoreFriendsByOtherWayUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.pxD.finish();
+    AppMethodBeat.i(25498);
+    this.sZr.finish();
+    AppMethodBeat.o(25498);
     return true;
   }
 }

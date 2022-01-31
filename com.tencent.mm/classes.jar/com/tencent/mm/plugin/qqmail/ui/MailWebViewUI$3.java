@@ -1,44 +1,52 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
 import android.webkit.WebSettings.LayoutAlgorithm;
-import com.tencent.luggage.m.a;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.n;
+import com.tencent.xweb.t;
+import com.tencent.xweb.w;
 
 final class MailWebViewUI$3
-  extends a
+  extends w
 {
   MailWebViewUI$3(MailWebViewUI paramMailWebViewUI) {}
   
-  public final void a(MMWebView paramMMWebView, String paramString)
-  {
-    super.a(paramMMWebView, paramString);
-    s.c(paramMMWebView, "weixin://private/getcontentwidth/", "document.getElementsByTagName('html')[0].scrollWidth;");
-  }
-  
   public final void a(WebView paramWebView, float paramFloat1, float paramFloat2)
   {
-    MailWebViewUI.c(this.niS).getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+    AppMethodBeat.i(68395);
+    MailWebViewUI.c(this.pOf).getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+    AppMethodBeat.o(68395);
   }
   
-  public final boolean b(WebView paramWebView, String paramString)
+  public final boolean a(WebView paramWebView, String paramString)
   {
+    AppMethodBeat.i(68396);
     if (paramString.startsWith("weixin://private/getcontentwidth/"))
     {
-      y.d("MicroMsg.QQMail.WebViewUI", "shouldOverride, url is getContentWidth scheme, url = " + paramString);
-      MailWebViewUI.b(this.niS, paramString);
+      ab.d("MicroMsg.QQMail.WebViewUI", "shouldOverride, url is getContentWidth scheme, url = ".concat(String.valueOf(paramString)));
+      MailWebViewUI.b(this.pOf, paramString);
+      AppMethodBeat.o(68396);
       return true;
     }
     paramWebView.loadUrl(paramString);
+    AppMethodBeat.o(68396);
     return true;
+  }
+  
+  public final void b(WebView paramWebView, String paramString)
+  {
+    AppMethodBeat.i(68397);
+    super.b(paramWebView, paramString);
+    u.b(paramWebView, "weixin://private/getcontentwidth/", "document.getElementsByTagName('html')[0].scrollWidth;");
+    AppMethodBeat.o(68397);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailWebViewUI.3
  * JD-Core Version:    0.7.0.1
  */

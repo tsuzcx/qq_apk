@@ -7,13 +7,12 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -31,27 +30,39 @@ public class GlobalUtil
   private static final String TAG = "GlobalUtil";
   protected static GlobalUtil mInstance = null;
   protected static int mMemUUID = 0;
-  public final int JCE_CMDID_Empty = 0;
-  public final int JCE_CMDID_GetAppSimpleDetail = 5;
-  public final int JCE_CMDID_GetAppUpdate = 3;
-  public final int JCE_CMDID_GetAuthorized = 4;
-  public final int JCE_CMDID_GetSettings = 2;
-  public final int JCE_CMDID_ReportLog = 1;
+  public final int JCE_CMDID_Empty;
+  public final int JCE_CMDID_GetAppSimpleDetail;
+  public final int JCE_CMDID_GetAppUpdate;
+  public final int JCE_CMDID_GetAuthorized;
+  public final int JCE_CMDID_GetSettings;
+  public final int JCE_CMDID_ReportLog;
   protected Context mContext;
-  public HashMap<Integer, String> mJCECmdIdMap = null;
-  public String mQUA = "";
+  public HashMap<Integer, String> mJCECmdIdMap;
+  public String mQUA;
   
   protected GlobalUtil()
   {
+    AppMethodBeat.i(76235);
+    this.mQUA = "";
+    this.JCE_CMDID_Empty = 0;
+    this.JCE_CMDID_ReportLog = 1;
+    this.JCE_CMDID_GetSettings = 2;
+    this.JCE_CMDID_GetAppUpdate = 3;
+    this.JCE_CMDID_GetAuthorized = 4;
+    this.JCE_CMDID_GetAppSimpleDetail = 5;
+    this.mJCECmdIdMap = null;
+    this.mJCECmdIdMap = new HashMap();
     this.mJCECmdIdMap.put(Integer.valueOf(1), "ReportLog");
     this.mJCECmdIdMap.put(Integer.valueOf(2), "GetSettings");
     this.mJCECmdIdMap.put(Integer.valueOf(3), "GetAppUpdate");
     this.mJCECmdIdMap.put(Integer.valueOf(4), "GetAuthorized");
     this.mJCECmdIdMap.put(Integer.valueOf(5), "GetAppSimpleDetail");
+    AppMethodBeat.o(76235);
   }
   
   public static ArrayList<String> String2List(String paramString)
   {
+    AppMethodBeat.i(76250);
     ArrayList localArrayList = new ArrayList();
     if (!TextUtils.isEmpty(paramString))
     {
@@ -66,6 +77,7 @@ public class GlobalUtil
         i += 1;
       }
     }
+    AppMethodBeat.o(76250);
     return localArrayList;
   }
   
@@ -131,7 +143,9 @@ public class GlobalUtil
   
   public static String calcMD5AsString(String paramString)
   {
-    Object localObject = "";
+    AppMethodBeat.i(76249);
+    str = "";
+    localObject = str;
     if (!TextUtils.isEmpty(paramString)) {
       paramString = paramString.getBytes();
     }
@@ -149,58 +163,75 @@ public class GlobalUtil
         i += 1;
       }
       localObject = ((StringBuffer)localObject).toString();
-      return localObject;
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      y.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
+        localObject = str;
+      }
     }
-    return "";
+    AppMethodBeat.o(76249);
+    return localObject;
   }
   
   public static void deleteOldDB(String paramString)
   {
+    AppMethodBeat.i(76256);
     if (getInstance().getContext() != null)
     {
       paramString = getInstance().getContext().getDatabasePath(paramString);
-      if (paramString.exists() != true) {}
+      if (paramString.exists() == true) {
+        try
+        {
+          paramString.delete();
+          TMLog.i("GlobalUtil", "deleteDB");
+          AppMethodBeat.o(76256);
+          return;
+        }
+        catch (Exception paramString)
+        {
+          TMLog.i("GlobalUtil", "deleteDB failed");
+        }
+      }
     }
-    try
-    {
-      paramString.delete();
-      TMLog.i("GlobalUtil", "deleteDB");
-      return;
-    }
-    catch (Exception paramString)
-    {
-      TMLog.i("GlobalUtil", "deleteDB failed");
-    }
+    AppMethodBeat.o(76256);
   }
   
   public static String getAppPackageName(Context paramContext)
   {
-    if (paramContext != null) {
-      return paramContext.getPackageName();
+    AppMethodBeat.i(76241);
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getPackageName();
+      AppMethodBeat.o(76241);
+      return paramContext;
     }
+    AppMethodBeat.o(76241);
     return "";
   }
   
   public static int getAppVersionCode(Context paramContext)
   {
-    int i = 0;
-    PackageManager localPackageManager;
-    if (paramContext != null) {
-      localPackageManager = paramContext.getPackageManager();
-    }
-    try
+    AppMethodBeat.i(76242);
+    if (paramContext != null)
     {
-      i = localPackageManager.getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      return i;
+      PackageManager localPackageManager = paramContext.getPackageManager();
+      try
+      {
+        int i = localPackageManager.getPackageInfo(paramContext.getPackageName(), 0).versionCode;
+        AppMethodBeat.o(76242);
+        return i;
+      }
+      catch (PackageManager.NameNotFoundException paramContext)
+      {
+        ab.printErrStackTrace("GlobalUtil", paramContext, "", new Object[0]);
+        AppMethodBeat.o(76242);
+        return 0;
+      }
     }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      y.printErrStackTrace("GlobalUtil", paramContext, "", new Object[0]);
-    }
+    AppMethodBeat.o(76242);
     return 0;
   }
   
@@ -208,10 +239,12 @@ public class GlobalUtil
   {
     try
     {
+      AppMethodBeat.i(76236);
       if (mInstance == null) {
         mInstance = new GlobalUtil();
       }
       GlobalUtil localGlobalUtil = mInstance;
+      AppMethodBeat.o(76236);
       return localGlobalUtil;
     }
     finally {}
@@ -234,11 +267,19 @@ public class GlobalUtil
   
   public static boolean isDBExist(String paramString)
   {
-    return (getInstance().getContext() != null) && (getInstance().getContext().getDatabasePath(paramString).exists());
+    AppMethodBeat.i(76255);
+    if ((getInstance().getContext() != null) && (getInstance().getContext().getDatabasePath(paramString).exists()))
+    {
+      AppMethodBeat.o(76255);
+      return true;
+    }
+    AppMethodBeat.o(76255);
+    return false;
   }
   
   public static void updateFilePathAuthorized(String paramString)
   {
+    AppMethodBeat.i(76254);
     Object localObject = new File(paramString);
     String str2 = ((File)localObject).getParent();
     String str1 = new File(str2).getParent();
@@ -247,17 +288,19 @@ public class GlobalUtil
     {
       localObject = "chmod 777 " + ((File)localObject).getAbsolutePath();
       Runtime.getRuntime().exec((String)localObject);
-      str2 = "chmod 777 " + str2;
+      str2 = "chmod 777 ".concat(String.valueOf(str2));
       Runtime.getRuntime().exec(str2);
-      str1 = "chmod 777 " + str1;
+      str1 = "chmod 777 ".concat(String.valueOf(str1));
       Runtime.getRuntime().exec(str1);
-      paramString = "chmod 777" + paramString;
+      paramString = "chmod 777".concat(String.valueOf(paramString));
       Runtime.getRuntime().exec(paramString);
+      AppMethodBeat.o(76254);
       return;
     }
     catch (IOException paramString)
     {
-      y.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
+      ab.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
+      AppMethodBeat.o(76254);
     }
   }
   
@@ -274,10 +317,15 @@ public class GlobalUtil
   
   public String getAndroidIdInPhone()
   {
-    if (this.mContext == null) {
+    AppMethodBeat.i(76243);
+    if (this.mContext == null)
+    {
+      AppMethodBeat.o(76243);
       return null;
     }
-    return Settings.Secure.getString(getContext().getContentResolver(), "android_id");
+    String str = Settings.Secure.getString(getContext().getContentResolver(), "android_id");
+    AppMethodBeat.o(76243);
+    return str;
   }
   
   public Context getContext()
@@ -285,45 +333,12 @@ public class GlobalUtil
     return this.mContext;
   }
   
-  public String getImei()
-  {
-    if (this.mContext == null) {
-      return null;
-    }
-    Object localObject = (TelephonyManager)getContext().getSystemService("phone");
-    try
-    {
-      localObject = ((TelephonyManager)localObject).getDeviceId();
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      y.printErrStackTrace("GlobalUtil", localException, "getImei:", new Object[0]);
-    }
-    return "";
-  }
-  
-  public String getImsi()
-  {
-    if (this.mContext == null) {
-      return null;
-    }
-    Object localObject = (TelephonyManager)getContext().getSystemService("phone");
-    try
-    {
-      localObject = ((TelephonyManager)localObject).getSubscriberId();
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      y.printErrStackTrace("GlobalUtil", localException, "getImsi:", new Object[0]);
-    }
-    return "";
-  }
-  
   public int getJceCmdIdByClassName(String paramString)
   {
-    if (paramString == null) {
+    AppMethodBeat.i(76238);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(76238);
       return 0;
     }
     if (this.mJCECmdIdMap != null)
@@ -336,147 +351,169 @@ public class GlobalUtil
         {
           Integer localInteger = (Integer)((Map.Entry)localObject).getKey();
           localObject = (String)((Map.Entry)localObject).getValue();
-          if ((localObject != null) && (((String)localObject).equals(paramString))) {
-            return localInteger.intValue();
+          if ((localObject != null) && (((String)localObject).equals(paramString)))
+          {
+            int i = localInteger.intValue();
+            AppMethodBeat.o(76238);
+            return i;
           }
         }
       }
     }
+    AppMethodBeat.o(76238);
     return 0;
-  }
-  
-  public String getMacAddress()
-  {
-    if (this.mContext == null) {
-      return null;
-    }
-    try
-    {
-      Object localObject = ((WifiManager)getContext().getSystemService("wifi")).getConnectionInfo();
-      if (localObject != null)
-      {
-        localObject = ((WifiInfo)localObject).getMacAddress();
-        return localObject;
-      }
-      return "";
-    }
-    catch (Exception localException) {}
-    return "";
   }
   
   public String getNetworkOperator()
   {
-    if (this.mContext == null) {
+    AppMethodBeat.i(76239);
+    if (this.mContext == null)
+    {
+      AppMethodBeat.o(76239);
       return "";
     }
-    return ((TelephonyManager)this.mContext.getSystemService("phone")).getNetworkOperator();
+    String str = ((TelephonyManager)this.mContext.getSystemService("phone")).getNetworkOperator();
+    AppMethodBeat.o(76239);
+    return str;
   }
   
   public int getNetworkType()
   {
-    if (this.mContext == null) {
+    AppMethodBeat.i(76240);
+    if (this.mContext == null)
+    {
+      AppMethodBeat.o(76240);
       return 0;
     }
-    return ((TelephonyManager)this.mContext.getSystemService("phone")).getNetworkType();
+    int i = ((TelephonyManager)this.mContext.getSystemService("phone")).getNetworkType();
+    AppMethodBeat.o(76240);
+    return i;
   }
   
   public String getPhoneGuid()
   {
-    if (this.mContext == null) {
+    AppMethodBeat.i(76244);
+    if (this.mContext == null)
+    {
+      AppMethodBeat.o(76244);
       return "";
     }
-    SharedPreferences localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 0);
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString("TMAssistantSDKPhoneGUID", "");
+    Object localObject = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 0);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).getString("TMAssistantSDKPhoneGUID", "");
+      AppMethodBeat.o(76244);
+      return localObject;
     }
+    AppMethodBeat.o(76244);
     return "";
   }
   
   public int getQQDownloaderAPILevel()
   {
-    if (this.mContext == null) {}
-    for (;;)
+    AppMethodBeat.i(76252);
+    if (this.mContext == null)
     {
+      AppMethodBeat.o(76252);
       return 0;
-      try
+    }
+    try
+    {
+      ApplicationInfo localApplicationInfo = this.mContext.getPackageManager().getApplicationInfo("com.tencent.android.qqdownloader", 128);
+      if ((localApplicationInfo != null) && (localApplicationInfo.metaData != null))
       {
-        ApplicationInfo localApplicationInfo = this.mContext.getPackageManager().getApplicationInfo("com.tencent.android.qqdownloader", 128);
-        if ((localApplicationInfo != null) && (localApplicationInfo.metaData != null))
-        {
-          int i = localApplicationInfo.metaData.getInt("com.tencent.android.qqdownloader.sdk.apilevel");
-          return i;
-        }
+        int i = localApplicationInfo.metaData.getInt("com.tencent.android.qqdownloader.sdk.apilevel");
+        AppMethodBeat.o(76252);
+        return i;
       }
-      catch (Exception localException)
-      {
-        y.printErrStackTrace("GlobalUtil", localException, "", new Object[0]);
-      }
+      AppMethodBeat.o(76252);
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      ab.printErrStackTrace("GlobalUtil", localException, "", new Object[0]);
+      AppMethodBeat.o(76252);
     }
     return 0;
   }
   
   public int getQQDownloaderVersionCode()
   {
-    if (this.mContext == null) {}
-    for (;;)
+    AppMethodBeat.i(76253);
+    if (this.mContext == null)
     {
+      AppMethodBeat.o(76253);
       return 0;
-      Object localObject = this.mContext.getPackageManager();
-      if (localObject != null) {
-        try
+    }
+    Object localObject = this.mContext.getPackageManager();
+    if (localObject != null) {
+      try
+      {
+        localObject = ((PackageManager)localObject).getPackageInfo("com.tencent.android.qqdownloader", 0);
+        if (localObject == null)
         {
-          localObject = ((PackageManager)localObject).getPackageInfo("com.tencent.android.qqdownloader", 0);
-          if (localObject != null)
-          {
-            int i = ((PackageInfo)localObject).versionCode;
-            return i;
-          }
+          AppMethodBeat.o(76253);
+          return 0;
         }
-        catch (PackageManager.NameNotFoundException localNameNotFoundException)
-        {
-          y.printErrStackTrace("GlobalUtil", localNameNotFoundException, "", new Object[0]);
-        }
+        int i = ((PackageInfo)localObject).versionCode;
+        AppMethodBeat.o(76253);
+        return i;
+      }
+      catch (PackageManager.NameNotFoundException localNameNotFoundException)
+      {
+        ab.printErrStackTrace("GlobalUtil", localNameNotFoundException, "", new Object[0]);
+        AppMethodBeat.o(76253);
+        return 0;
       }
     }
+    AppMethodBeat.o(76253);
     return 0;
   }
   
   public void setContext(Context paramContext)
   {
+    AppMethodBeat.i(76237);
     this.mContext = paramContext;
     this.mQUA = new QUASetting(paramContext).buildQUA();
+    AppMethodBeat.o(76237);
   }
   
   public void setNetTypeValue(byte paramByte)
   {
-    if (this.mContext == null) {}
-    SharedPreferences localSharedPreferences;
-    do
+    AppMethodBeat.i(76251);
+    if (this.mContext == null)
     {
+      AppMethodBeat.o(76251);
       return;
-      localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 0);
-    } while ((localSharedPreferences == null) || (Byte.parseByte(localSharedPreferences.getString("TMAssistantSDKNetType", "0")) == paramByte));
-    localSharedPreferences.edit().putString("TMAssistantSDKNetType", String.valueOf(paramByte)).commit();
+    }
+    SharedPreferences localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 0);
+    if ((localSharedPreferences != null) && (Byte.parseByte(localSharedPreferences.getString("TMAssistantSDKNetType", "0")) != paramByte)) {
+      localSharedPreferences.edit().putString("TMAssistantSDKNetType", String.valueOf(paramByte)).commit();
+    }
+    AppMethodBeat.o(76251);
   }
   
   public void setPhoneGuid(String paramString)
   {
-    if (this.mContext == null) {}
-    SharedPreferences localSharedPreferences;
-    do
+    AppMethodBeat.i(76245);
+    if (this.mContext == null)
     {
-      do
-      {
-        return;
-      } while (paramString == null);
-      localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 0);
-    } while (localSharedPreferences == null);
-    localSharedPreferences.edit().putString("TMAssistantSDKPhoneGUID", paramString).commit();
+      AppMethodBeat.o(76245);
+      return;
+    }
+    if (paramString != null)
+    {
+      SharedPreferences localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 0);
+      if (localSharedPreferences != null) {
+        localSharedPreferences.edit().putString("TMAssistantSDKPhoneGUID", paramString).commit();
+      }
+    }
+    AppMethodBeat.o(76245);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.GlobalUtil
  * JD-Core Version:    0.7.0.1
  */

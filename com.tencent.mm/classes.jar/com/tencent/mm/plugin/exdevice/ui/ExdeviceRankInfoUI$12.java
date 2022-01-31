@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.a.b;
 import com.tencent.mm.plugin.exdevice.f.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.p;
 
 final class ExdeviceRankInfoUI$12

@@ -9,11 +9,11 @@ public class RecoveryData
   implements Parcelable
 {
   public static final Parcelable.Creator<RecoveryData> CREATOR = new Parcelable.Creator() {};
+  public String Biu;
+  public List<RecoveryStatusItem> Biv;
   public String clientVersion;
-  public String dCX;
+  public String eAx;
   public String processName;
-  public String wKU;
-  public List<RecoveryStatusItem> wKV;
   
   public int describeContents()
   {
@@ -23,10 +23,10 @@ public class RecoveryData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.processName);
-    paramParcel.writeString(this.dCX);
+    paramParcel.writeString(this.eAx);
     paramParcel.writeString(this.clientVersion);
-    paramParcel.writeString(this.wKU);
-    paramParcel.writeList(this.wKV);
+    paramParcel.writeString(this.Biu);
+    paramParcel.writeList(this.Biv);
   }
 }
 

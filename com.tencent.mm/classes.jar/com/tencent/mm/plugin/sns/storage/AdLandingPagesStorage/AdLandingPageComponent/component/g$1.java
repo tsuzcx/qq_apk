@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.h;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.h.a;
-import com.tencent.mm.sdk.platformtools.y;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.plugin.webview.ui.tools.widget.d;
 
 final class g$1
-  implements View.OnClickListener
+  implements d
 {
   g$1(g paramg) {}
   
-  public final void onClick(View paramView)
+  public final boolean e(int paramInt, Bundle paramBundle)
   {
-    paramView = this.oFC;
-    paramView.oFs += 1;
-    paramView = new Intent();
-    paramView.putExtra("map_view_type", 1);
-    paramView.putExtra("kwebmap_slat", this.oFC.oFz.oCw.lCJ);
-    paramView.putExtra("kwebmap_lng", this.oFC.oFz.oCw.lCK);
-    paramView.putExtra("kwebmap_scale", this.oFC.oFz.oCw.bRv);
-    paramView.putExtra("kPoiName", this.oFC.oFz.oCw.bVA);
-    paramView.putExtra("Kwebmap_locaion", this.oFC.oFz.oCw.lCM);
-    y.i("AdLandingBorderedComp", "locatint to slat " + this.oFC.oFz.oCw.lCJ + ", slong " + this.oFC.oFz.oCw.lCK + ", " + this.oFC.oFz.oCw.bVA);
-    d.b(this.oFC.context, "location", ".ui.RedirectUI", paramView, 2);
+    AppMethodBeat.i(37061);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(37061);
+      return false;
+      ac localac = (ac)this.rvd.crb();
+      paramInt = paramBundle.getInt("sns_landing_pages_ad_vote_index");
+      AdLandingPagesProxy.getInstance().saveAdVoteInfo(localac.url, this.rvd.crc().cFe, this.rvd.crc().uin, paramInt, 0);
+    }
   }
 }
 

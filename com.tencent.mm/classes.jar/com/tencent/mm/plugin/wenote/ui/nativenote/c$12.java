@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wenote.ui.nativenote;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wenote.model.nativenote.b.a;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.t;
@@ -16,30 +17,32 @@ final class c$12
   public final void onClick(View paramView)
   {
     boolean bool2 = true;
-    h.nFQ.f(14547, new Object[] { Integer.valueOf(8) });
-    this.rMB.rMt.setPressed(false);
-    this.rMB.rMr.setPressed(false);
-    if ((this.rMB.rMy) || (this.rMB.rMz)) {
-      this.rMB.rMx = false;
+    AppMethodBeat.i(27126);
+    h.qsU.e(14547, new Object[] { Integer.valueOf(8) });
+    this.vDf.vCX.setPressed(false);
+    this.vDf.vCV.setPressed(false);
+    if ((this.vDf.vDc) || (this.vDf.vDd)) {
+      this.vDf.vDb = false;
     }
-    Object localObject = u.rLa;
-    if (!this.rMB.rMx)
+    Object localObject = u.vBE;
+    if (!this.vDf.vDb)
     {
       bool1 = true;
       c.c((t)localObject, Boolean.valueOf(bool1));
-      localObject = this.rMB;
-      if (this.rMB.rMx) {
-        break label167;
+      localObject = this.vDf;
+      if (this.vDf.vDb) {
+        break label179;
       }
     }
-    label167:
+    label179:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ((c)localObject).rMx = bool1;
-      c.a(this.rMB, paramView, this.rMB.rMx);
-      c.b(this.rMA);
-      this.rMB.rMy = false;
-      this.rMB.rMz = false;
+      ((c)localObject).vDb = bool1;
+      c.a(this.vDf, paramView, this.vDf.vDb);
+      c.b(this.vDe);
+      this.vDf.vDc = false;
+      this.vDf.vDd = false;
+      AppMethodBeat.o(27126);
       return;
       bool1 = false;
       break;

@@ -6,8 +6,8 @@ import android.content.DialogInterface.OnShowListener;
 import android.content.res.Resources;
 import android.support.v7.app.AlertController;
 import android.widget.Button;
-import com.tencent.mm.plugin.soter.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class b$5
   implements DialogInterface.OnShowListener
@@ -16,7 +16,9 @@ final class b$5
   
   public final void onShow(DialogInterface paramDialogInterface)
   {
-    this.psa.prS.OD.Ny.setTextColor(ae.getContext().getResources().getColor(a.b.cancelbtn_color));
+    AppMethodBeat.i(73875);
+    this.soc.snU.Or.Nn.setTextColor(ah.getContext().getResources().getColor(2131689820));
+    AppMethodBeat.o(73875);
   }
 }
 

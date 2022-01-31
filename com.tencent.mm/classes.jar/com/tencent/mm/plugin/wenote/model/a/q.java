@@ -1,24 +1,28 @@
 package com.tencent.mm.plugin.wenote.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
 
 public final class q
   implements Serializable
 {
-  public boolean kay = false;
-  public boolean rGL = false;
-  public long rGM = -1L;
-  public long rGN = -1L;
-  public String rGO = "";
-  public String rGP = "";
-  public int rGQ = 0;
-  public int rGR = 0;
+  public boolean muU = false;
+  public int vxA = 0;
+  public boolean vxu = false;
+  public long vxv = -1L;
+  public long vxw = -1L;
+  public String vxx = "";
+  public String vxy = "";
+  public int vxz = 0;
   
-  public final String chC()
+  public final String dhS()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("topIsOpenFromSession=").append(this.rGL).append(" topLocalId=").append(this.rGM).append(" topMsgId=").append(this.rGN).append(" topTitle=").append(this.rGO).append(" topNoteXml=").append(this.rGP).append(" topLastPosition=").append(this.rGQ).append(" topLastOffset=").append(this.rGR);
-    return localStringBuilder.toString();
+    AppMethodBeat.i(26684);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("topIsOpenFromSession=").append(this.vxu).append(" topLocalId=").append(this.vxv).append(" topMsgId=").append(this.vxw).append(" topTitle=").append(this.vxx).append(" topNoteXml=").append(this.vxy).append(" topLastPosition=").append(this.vxz).append(" topLastOffset=").append(this.vxA);
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(26684);
+    return localObject;
   }
 }
 

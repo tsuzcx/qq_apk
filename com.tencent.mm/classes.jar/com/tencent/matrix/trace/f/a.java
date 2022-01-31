@@ -1,486 +1,210 @@
 package com.tencent.matrix.trace.f;
 
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.matrix.d.b;
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Process;
+import android.os.SystemClock;
+import com.tencent.matrix.g.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.matrix.trace.core.AppMethodBeat.a;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class a
+  extends f
 {
-  private static final FileFilter asd = new FileFilter()
-  {
-    public final boolean accept(File paramAnonymousFile)
-    {
-      return Pattern.matches("cpu[0-9]", paramAnonymousFile.getName());
-    }
-  };
-  private static a bsF = null;
+  final com.tencent.matrix.trace.a.a bQN;
+  private Handler bRP;
+  private volatile a bRQ;
+  private boolean bRR;
   
-  /* Error */
-  private static long W(Context paramContext)
+  public a(com.tencent.matrix.trace.a.a parama)
   {
-    // Byte code:
-    //   0: getstatic 33	android/os/Build$VERSION:SDK_INT	I
-    //   3: bipush 16
-    //   5: if_icmplt +34 -> 39
-    //   8: new 35	android/app/ActivityManager$MemoryInfo
-    //   11: dup
-    //   12: invokespecial 36	android/app/ActivityManager$MemoryInfo:<init>	()V
-    //   15: astore 7
-    //   17: aload_0
-    //   18: ldc 38
-    //   20: invokevirtual 44	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   23: checkcast 46	android/app/ActivityManager
-    //   26: aload 7
-    //   28: invokevirtual 50	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
-    //   31: aload 7
-    //   33: getfield 54	android/app/ActivityManager$MemoryInfo:totalMem	J
-    //   36: lstore_3
-    //   37: lload_3
-    //   38: lreturn
-    //   39: lconst_0
-    //   40: lstore_3
-    //   41: new 56	java/io/BufferedReader
-    //   44: dup
-    //   45: new 58	java/io/FileReader
-    //   48: dup
-    //   49: ldc 60
-    //   51: invokespecial 63	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   54: invokespecial 66	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   57: astore 7
-    //   59: aload 7
-    //   61: astore_0
-    //   62: aload 7
-    //   64: invokevirtual 70	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   67: astore 8
-    //   69: lload_3
-    //   70: lstore 5
-    //   72: aload 8
-    //   74: ifnull +93 -> 167
-    //   77: aload 7
-    //   79: astore_0
-    //   80: aload 8
-    //   82: ldc 72
-    //   84: invokevirtual 78	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   87: astore 9
-    //   89: aload 7
-    //   91: astore_0
-    //   92: aload 9
-    //   94: arraylength
-    //   95: istore_2
-    //   96: iconst_0
-    //   97: istore_1
-    //   98: iload_1
-    //   99: iload_2
-    //   100: if_icmpge +48 -> 148
-    //   103: aload 9
-    //   105: iload_1
-    //   106: aaload
-    //   107: astore 10
-    //   109: aload 7
-    //   111: astore_0
-    //   112: aload 8
-    //   114: new 80	java/lang/StringBuilder
-    //   117: dup
-    //   118: invokespecial 81	java/lang/StringBuilder:<init>	()V
-    //   121: aload 10
-    //   123: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: ldc 87
-    //   128: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: iconst_0
-    //   135: anewarray 4	java/lang/Object
-    //   138: invokestatic 96	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   141: iload_1
-    //   142: iconst_1
-    //   143: iadd
-    //   144: istore_1
-    //   145: goto -47 -> 98
-    //   148: aload 7
-    //   150: astore_0
-    //   151: aload 9
-    //   153: iconst_1
-    //   154: aaload
-    //   155: invokestatic 102	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   158: istore_1
-    //   159: iload_1
-    //   160: i2l
-    //   161: ldc2_w 103
-    //   164: lmul
-    //   165: lstore 5
-    //   167: aload 7
-    //   169: invokevirtual 107	java/io/BufferedReader:close	()V
-    //   172: lload 5
-    //   174: lreturn
-    //   175: astore_0
-    //   176: ldc 109
-    //   178: ldc 111
-    //   180: iconst_1
-    //   181: anewarray 4	java/lang/Object
-    //   184: dup
-    //   185: iconst_0
-    //   186: aload_0
-    //   187: invokevirtual 112	java/lang/Exception:toString	()Ljava/lang/String;
-    //   190: aastore
-    //   191: invokestatic 96	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   194: lload 5
-    //   196: lreturn
-    //   197: astore 8
-    //   199: aconst_null
-    //   200: astore 7
-    //   202: aload 7
-    //   204: astore_0
-    //   205: ldc 109
-    //   207: ldc 114
-    //   209: iconst_1
-    //   210: anewarray 4	java/lang/Object
-    //   213: dup
-    //   214: iconst_0
-    //   215: aload 8
-    //   217: invokevirtual 112	java/lang/Exception:toString	()Ljava/lang/String;
-    //   220: aastore
-    //   221: invokestatic 96	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   224: aload 7
-    //   226: ifnull -189 -> 37
-    //   229: aload 7
-    //   231: invokevirtual 107	java/io/BufferedReader:close	()V
-    //   234: lconst_0
-    //   235: lreturn
-    //   236: astore_0
-    //   237: ldc 109
-    //   239: ldc 111
-    //   241: iconst_1
-    //   242: anewarray 4	java/lang/Object
-    //   245: dup
-    //   246: iconst_0
-    //   247: aload_0
-    //   248: invokevirtual 112	java/lang/Exception:toString	()Ljava/lang/String;
-    //   251: aastore
-    //   252: invokestatic 96	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   255: lconst_0
-    //   256: lreturn
-    //   257: astore 7
-    //   259: aconst_null
-    //   260: astore_0
-    //   261: aload_0
-    //   262: ifnull +7 -> 269
-    //   265: aload_0
-    //   266: invokevirtual 107	java/io/BufferedReader:close	()V
-    //   269: aload 7
-    //   271: athrow
-    //   272: astore_0
-    //   273: ldc 109
-    //   275: ldc 111
-    //   277: iconst_1
-    //   278: anewarray 4	java/lang/Object
-    //   281: dup
-    //   282: iconst_0
-    //   283: aload_0
-    //   284: invokevirtual 112	java/lang/Exception:toString	()Ljava/lang/String;
-    //   287: aastore
-    //   288: invokestatic 96	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   291: goto -22 -> 269
-    //   294: astore 7
-    //   296: goto -35 -> 261
-    //   299: astore 8
-    //   301: goto -99 -> 202
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	304	0	paramContext	Context
-    //   97	63	1	i	int
-    //   95	6	2	j	int
-    //   36	34	3	l1	long
-    //   70	125	5	l2	long
-    //   15	215	7	localObject1	Object
-    //   257	13	7	localObject2	Object
-    //   294	1	7	localObject3	Object
-    //   67	46	8	str1	String
-    //   197	19	8	localException1	Exception
-    //   299	1	8	localException2	Exception
-    //   87	65	9	arrayOfString	String[]
-    //   107	15	10	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   167	172	175	java/lang/Exception
-    //   41	59	197	java/lang/Exception
-    //   229	234	236	java/lang/Exception
-    //   41	59	257	finally
-    //   265	269	272	java/lang/Exception
-    //   62	69	294	finally
-    //   80	89	294	finally
-    //   92	96	294	finally
-    //   112	141	294	finally
-    //   151	159	294	finally
-    //   205	224	294	finally
-    //   62	69	299	java/lang/Exception
-    //   80	89	299	java/lang/Exception
-    //   92	96	299	java/lang/Exception
-    //   112	141	299	java/lang/Exception
-    //   151	159	299	java/lang/Exception
+    this.bQN = parama;
+    this.bRR = parama.bQW;
   }
   
-  public static a aj(Context paramContext)
+  public final void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, boolean paramBoolean)
   {
-    if (bsF != null) {
-      return bsF;
+    super.a(paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramBoolean);
+    if (this.bQN.bQX) {
+      c.v("Matrix.AnrTracer", "[dispatchEnd] token:%s cost:%sms cpu:%sms usage:%s", new Object[] { Long.valueOf(paramLong5), Long.valueOf(paramLong3 - paramLong1), Long.valueOf(paramLong4 - paramLong2), com.tencent.matrix.trace.g.b.r(paramLong4 - paramLong2, paramLong3 - paramLong1) });
     }
-    long l = W(paramContext);
-    int i = rs();
-    b.i("Matrix.DeviceUtil", "[getLevel] totalMemory:%s coresNum:%s", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
-    if (l >= 4294967296L) {
-      bsF = a.bsG;
-    }
-    for (;;)
+    if (this.bRQ != null)
     {
-      return bsF;
-      if (l >= 3221225472L) {
-        bsF = a.bsH;
-      } else if (l >= 2147483648L)
-      {
-        if (i >= 4) {
-          bsF = a.bsH;
-        } else if (i >= 2) {
-          bsF = a.bsI;
-        } else if (i > 0) {
-          bsF = a.bsJ;
-        }
-      }
-      else if (l >= 1073741824L)
-      {
-        if (i >= 4) {
-          bsF = a.bsI;
-        } else if (i >= 2) {
-          bsF = a.bsJ;
-        } else if (i > 0) {
-          bsF = a.bsJ;
-        }
-      }
-      else if ((0L <= l) && (l < 1073741824L)) {
-        bsF = a.bsK;
-      } else {
-        bsF = a.bsL;
-      }
+      this.bRQ.bRS.release();
+      this.bRP.removeCallbacks(this.bRQ);
     }
   }
   
-  /* Error */
-  private static int bz(String paramString)
+  public final void a(String paramString, long paramLong1, long paramLong2, long paramLong3, long paramLong4)
   {
-    // Byte code:
-    //   0: new 164	java/io/FileInputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 165	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   8: astore_3
-    //   9: aload_3
-    //   10: astore_0
-    //   11: new 56	java/io/BufferedReader
-    //   14: dup
-    //   15: new 167	java/io/InputStreamReader
-    //   18: dup
-    //   19: aload_3
-    //   20: ldc 169
-    //   22: invokespecial 172	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   25: invokespecial 66	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   28: astore 4
-    //   30: aload_3
-    //   31: astore_0
-    //   32: aload 4
-    //   34: invokevirtual 70	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   37: astore 5
-    //   39: aload_3
-    //   40: astore_0
-    //   41: aload 4
-    //   43: invokevirtual 107	java/io/BufferedReader:close	()V
-    //   46: aload 5
-    //   48: ifnull +17 -> 65
-    //   51: aload_3
-    //   52: astore_0
-    //   53: aload 5
-    //   55: ldc 174
-    //   57: invokevirtual 178	java/lang/String:matches	(Ljava/lang/String;)Z
-    //   60: istore_2
-    //   61: iload_2
-    //   62: ifne +31 -> 93
-    //   65: aload_3
-    //   66: invokevirtual 181	java/io/InputStream:close	()V
-    //   69: iconst_0
-    //   70: ireturn
-    //   71: astore_0
-    //   72: ldc 109
-    //   74: ldc 183
-    //   76: iconst_1
-    //   77: anewarray 4	java/lang/Object
-    //   80: dup
-    //   81: iconst_0
-    //   82: aload_0
-    //   83: invokevirtual 184	java/io/IOException:toString	()Ljava/lang/String;
-    //   86: aastore
-    //   87: invokestatic 96	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   90: goto -21 -> 69
-    //   93: aload_3
-    //   94: astore_0
-    //   95: aload 5
-    //   97: iconst_2
-    //   98: invokevirtual 188	java/lang/String:substring	(I)Ljava/lang/String;
-    //   101: invokestatic 102	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   104: istore_1
-    //   105: iload_1
-    //   106: iconst_1
-    //   107: iadd
-    //   108: istore_1
-    //   109: aload_3
-    //   110: invokevirtual 181	java/io/InputStream:close	()V
-    //   113: iload_1
-    //   114: ireturn
-    //   115: astore_0
-    //   116: ldc 109
-    //   118: ldc 183
-    //   120: iconst_1
-    //   121: anewarray 4	java/lang/Object
-    //   124: dup
-    //   125: iconst_0
-    //   126: aload_0
-    //   127: invokevirtual 184	java/io/IOException:toString	()Ljava/lang/String;
-    //   130: aastore
-    //   131: invokestatic 96	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   134: iload_1
-    //   135: ireturn
-    //   136: astore 4
-    //   138: aconst_null
-    //   139: astore_3
-    //   140: aload_3
-    //   141: astore_0
-    //   142: ldc 109
-    //   144: ldc 183
-    //   146: iconst_1
-    //   147: anewarray 4	java/lang/Object
-    //   150: dup
-    //   151: iconst_0
-    //   152: aload 4
-    //   154: invokevirtual 184	java/io/IOException:toString	()Ljava/lang/String;
-    //   157: aastore
-    //   158: invokestatic 96	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   161: aload_3
-    //   162: ifnull +7 -> 169
-    //   165: aload_3
-    //   166: invokevirtual 181	java/io/InputStream:close	()V
-    //   169: iconst_0
-    //   170: ireturn
-    //   171: astore_0
-    //   172: ldc 109
-    //   174: ldc 183
-    //   176: iconst_1
-    //   177: anewarray 4	java/lang/Object
-    //   180: dup
-    //   181: iconst_0
-    //   182: aload_0
-    //   183: invokevirtual 184	java/io/IOException:toString	()Ljava/lang/String;
-    //   186: aastore
-    //   187: invokestatic 96	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   190: goto -21 -> 169
-    //   193: astore_3
-    //   194: aconst_null
-    //   195: astore_0
-    //   196: aload_0
-    //   197: ifnull +7 -> 204
-    //   200: aload_0
-    //   201: invokevirtual 181	java/io/InputStream:close	()V
-    //   204: aload_3
-    //   205: athrow
-    //   206: astore_0
-    //   207: ldc 109
-    //   209: ldc 183
-    //   211: iconst_1
-    //   212: anewarray 4	java/lang/Object
-    //   215: dup
-    //   216: iconst_0
-    //   217: aload_0
-    //   218: invokevirtual 184	java/io/IOException:toString	()Ljava/lang/String;
-    //   221: aastore
-    //   222: invokestatic 96	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   225: goto -21 -> 204
-    //   228: astore_3
-    //   229: goto -33 -> 196
-    //   232: astore 4
-    //   234: goto -94 -> 140
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	237	0	paramString	String
-    //   104	31	1	i	int
-    //   60	2	2	bool	boolean
-    //   8	158	3	localFileInputStream	java.io.FileInputStream
-    //   193	12	3	localObject1	Object
-    //   228	1	3	localObject2	Object
-    //   28	14	4	localBufferedReader	java.io.BufferedReader
-    //   136	17	4	localIOException1	java.io.IOException
-    //   232	1	4	localIOException2	java.io.IOException
-    //   37	59	5	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   65	69	71	java/io/IOException
-    //   109	113	115	java/io/IOException
-    //   0	9	136	java/io/IOException
-    //   165	169	171	java/io/IOException
-    //   0	9	193	finally
-    //   200	204	206	java/io/IOException
-    //   11	30	228	finally
-    //   32	39	228	finally
-    //   41	46	228	finally
-    //   53	61	228	finally
-    //   95	105	228	finally
-    //   142	161	228	finally
-    //   11	30	232	java/io/IOException
-    //   32	39	232	java/io/IOException
-    //   41	46	232	java/io/IOException
-    //   53	61	232	java/io/IOException
-    //   95	105	232	java/io/IOException
+    if (this.bQN.bQX) {
+      c.v("Matrix.AnrTracer", "--> [doFrame] activityName:%s frameCost:%sms [%s:%s:%s]ns", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4) });
+    }
   }
   
-  private static int rs()
+  public final void c(long paramLong1, long paramLong2, long paramLong3)
   {
-    int j = 0;
-    if (Build.VERSION.SDK_INT <= 10) {
-      return 1;
+    super.c(paramLong1, paramLong2, paramLong3);
+    this.bRQ = new a(AppMethodBeat.getInstance().maskIndex("AnrTracer#dispatchBegin"), paramLong3);
+    if (this.bQN.bQX) {
+      c.v("Matrix.AnrTracer", "* [dispatchBegin] token:%s index:%s", new Object[] { Long.valueOf(paramLong3), Integer.valueOf(this.bRQ.bRS.index) });
     }
-    int i;
-    try
-    {
-      int k = bz("/sys/devices/system/cpu/possible");
-      i = k;
-      if (k == 0) {
-        i = bz("/sys/devices/system/cpu/present");
-      }
-      if (i == 0)
-      {
-        File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(asd);
-        if (arrayOfFile == null) {
-          i = j;
-        } else {
-          i = arrayOfFile.length;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      i = j;
-    }
-    j = i;
-    if (i == 0) {
-      j = 1;
-    }
-    return j;
+    this.bRP.postDelayed(this.bRQ, 5000L - (SystemClock.uptimeMillis() - paramLong3));
   }
   
-  public static enum a
+  public final void zy()
   {
-    public int value;
+    super.zy();
+    if (this.bRR)
+    {
+      com.tencent.matrix.trace.core.b.zt().a(this);
+      this.bRP = new Handler(com.tencent.matrix.g.b.cD("Matrix#AnrTracer").getLooper());
+    }
+  }
+  
+  public final void zz()
+  {
+    super.zz();
+    if (this.bRR)
+    {
+      com.tencent.matrix.trace.core.b.zt().b(this);
+      if (this.bRQ != null) {
+        this.bRQ.bRS.release();
+      }
+      this.bRP.removeCallbacksAndMessages(null);
+      this.bRP.getLooper().quit();
+    }
+  }
+  
+  final class a
+    implements Runnable
+  {
+    AppMethodBeat.a bRS;
+    long bRq;
     
-    private a(int paramInt)
+    a(AppMethodBeat.a parama, long paramLong)
     {
-      this.value = paramInt;
+      this.bRS = parama;
+      this.bRq = paramLong;
+    }
+    
+    public final void run()
+    {
+      long l1 = SystemClock.uptimeMillis();
+      boolean bool = com.tencent.matrix.a.bLP.bLR;
+      Object localObject2 = com.tencent.matrix.trace.g.b.fS(Process.myPid());
+      Object localObject5 = AppMethodBeat.getInstance().copyData(this.bRS);
+      this.bRS.release();
+      String str = AppMethodBeat.getVisibleScene();
+      Object localObject1 = new long[3];
+      localObject1[0] = com.tencent.matrix.g.a.getDalvikHeap();
+      localObject1[1] = com.tencent.matrix.g.a.getNativeHeap();
+      localObject1[2] = com.tencent.matrix.g.a.zG();
+      Object localObject3 = Looper.getMainLooper().getThread().getState();
+      StackTraceElement[] arrayOfStackTraceElement = Looper.getMainLooper().getThread().getStackTrace();
+      Object localObject4 = com.tencent.matrix.trace.g.b.a(arrayOfStackTraceElement, "|*\t\t", 12);
+      Object localObject6 = com.tencent.matrix.trace.core.b.zt();
+      long l2 = ((com.tencent.matrix.trace.core.b)localObject6).r(0, this.bRq);
+      long l3 = ((com.tencent.matrix.trace.core.b)localObject6).r(1, this.bRq);
+      long l4 = ((com.tencent.matrix.trace.core.b)localObject6).r(2, this.bRq);
+      Object localObject7 = new LinkedList();
+      if (localObject5.length > 0)
+      {
+        com.tencent.matrix.trace.g.a.a((long[])localObject5, (LinkedList)localObject7, true, l1);
+        com.tencent.matrix.trace.g.a.a((List)localObject7, new com.tencent.matrix.trace.g.a.a()
+        {
+          public final boolean c(long paramAnonymousLong, int paramAnonymousInt)
+          {
+            return paramAnonymousLong < paramAnonymousInt * 5;
+          }
+          
+          public final void e(List<com.tencent.matrix.trace.d.a> paramAnonymousList, int paramAnonymousInt)
+          {
+            c.w("Matrix.AnrTracer", "[fallback] size:%s targetSize:%s stack:%s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(30), paramAnonymousList });
+            paramAnonymousList = paramAnonymousList.listIterator(Math.min(paramAnonymousInt, 30));
+            while (paramAnonymousList.hasNext())
+            {
+              paramAnonymousList.next();
+              paramAnonymousList.remove();
+            }
+          }
+        });
+      }
+      localObject5 = new StringBuilder();
+      StringBuilder localStringBuilder = new StringBuilder();
+      long l5 = Math.max(5000L, com.tencent.matrix.trace.g.a.a((LinkedList)localObject7, (StringBuilder)localObject5, localStringBuilder));
+      localObject6 = com.tencent.matrix.trace.g.a.a((List)localObject7, l5);
+      long l6 = ((LinkedList)localObject7).size();
+      localObject7 = new StringBuilder();
+      ((StringBuilder)localObject7).append(String.format("-\n>>>>>>>>>>>>>>>>>>>>>>> maybe happens ANR(%s ms)! <<<<<<<<<<<<<<<<<<<<<<<\n", new Object[] { Long.valueOf(l5) }));
+      ((StringBuilder)localObject7).append("|* [ProcessStat]\n");
+      ((StringBuilder)localObject7).append("|*\t\tPriority: ").append(localObject2[0]).append("\n");
+      ((StringBuilder)localObject7).append("|*\t\tNice: ").append(localObject2[1]).append("\n");
+      ((StringBuilder)localObject7).append("|*\t\tForeground: ").append(bool).append("\n");
+      ((StringBuilder)localObject7).append("|* [Memory]\n");
+      ((StringBuilder)localObject7).append("|*\t\tDalvikHeap: ").append(localObject1[0]).append("kb\n");
+      ((StringBuilder)localObject7).append("|*\t\tNativeHeap: ").append(localObject1[1]).append("kb\n");
+      ((StringBuilder)localObject7).append("|*\t\tVmSize: ").append(localObject1[2]).append("kb\n");
+      ((StringBuilder)localObject7).append("|* [doFrame]\n");
+      ((StringBuilder)localObject7).append("|*\t\tinputCost: ").append(l2).append("\n");
+      ((StringBuilder)localObject7).append("|*\t\tanimationCost: ").append(l3).append("\n");
+      ((StringBuilder)localObject7).append("|*\t\ttraversalCost: ").append(l4).append("\n");
+      ((StringBuilder)localObject7).append("|* [Thread]\n");
+      ((StringBuilder)localObject7).append("|*\t\tState: ").append(localObject3).append("\n");
+      ((StringBuilder)localObject7).append("|*\t\tStack: ").append((String)localObject4);
+      ((StringBuilder)localObject7).append("|* [Trace]\n");
+      ((StringBuilder)localObject7).append("|*\t\tStackSize: ").append(l6).append("\n");
+      ((StringBuilder)localObject7).append("|*\t\tStackKey: ").append((String)localObject6).append("\n");
+      if (a.this.bQN.isDebug) {
+        ((StringBuilder)localObject7).append(localStringBuilder.toString());
+      }
+      ((StringBuilder)localObject7).append("=========================================================================");
+      c.w("Matrix.AnrTracer", "%s \npostTime:%s curTime:%s", new Object[] { ((StringBuilder)localObject7).toString(), Long.valueOf(this.bRq), Long.valueOf(l1) });
+      if ((l5 >= 5500L) || (localObject2[0] > 10)) {
+        c.w("Matrix.AnrTracer", "The checked anr task was not executed on time. The possible reason is that the current process has a low priority. just pass this report", new Object[0]);
+      }
+      for (;;)
+      {
+        return;
+        try
+        {
+          localObject3 = (com.tencent.matrix.trace.b)com.tencent.matrix.b.yD().z(com.tencent.matrix.trace.b.class);
+          if (localObject3 != null)
+          {
+            localObject4 = com.tencent.matrix.g.a.a(new JSONObject(), com.tencent.matrix.b.yD().application);
+            ((JSONObject)localObject4).put("detail", com.tencent.matrix.trace.b.a.a.bRc);
+            ((JSONObject)localObject4).put("cost", l5);
+            ((JSONObject)localObject4).put("stackKey", localObject6);
+            ((JSONObject)localObject4).put("scene", str);
+            ((JSONObject)localObject4).put("stack", ((StringBuilder)localObject5).toString());
+            ((JSONObject)localObject4).put("threadStack", com.tencent.matrix.trace.g.b.a(arrayOfStackTraceElement));
+            ((JSONObject)localObject4).put("processPriority", localObject2[0]);
+            ((JSONObject)localObject4).put("processNice", localObject2[1]);
+            ((JSONObject)localObject4).put("isProcessForeground", bool);
+            localObject2 = new JSONObject();
+            ((JSONObject)localObject2).put("dalvik_heap", localObject1[0]);
+            ((JSONObject)localObject2).put("native_heap", localObject1[1]);
+            ((JSONObject)localObject2).put("vm_size", localObject1[2]);
+            ((JSONObject)localObject4).put("memory", localObject2);
+            localObject1 = new com.tencent.matrix.e.b();
+            ((com.tencent.matrix.e.b)localObject1).key = this.bRq;
+            ((com.tencent.matrix.e.b)localObject1).tag = "Trace_EvilMethod";
+            ((com.tencent.matrix.e.b)localObject1).bOx = ((JSONObject)localObject4);
+            ((com.tencent.matrix.trace.b)localObject3).onDetectIssue((com.tencent.matrix.e.b)localObject1);
+            return;
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          c.e("Matrix.AnrTracer", "[JSONException error: %s", new Object[] { localJSONException });
+        }
+      }
     }
   }
 }

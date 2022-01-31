@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.ab;
+import com.tencent.mm.modelsimple.ac;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.b;
 
@@ -11,11 +12,13 @@ final class f$b
 {
   f$b(f paramf) {}
   
-  public final void Ws()
+  public final void apW()
   {
-    this.feE.Fj();
-    ab localab = new ab(5, this.feE.fey, this.feE.fex.getSecImgSid(), this.feE.fex.getSecImgCode(), this.feE.fex.getSecImgEncryptKey(), true, 1);
-    g.Dk().a(localab, 0);
+    AppMethodBeat.i(13756);
+    this.gwn.Yj();
+    ac localac = new ac(5, this.gwn.gwh, this.gwn.gwg.getSecImgSid(), this.gwn.gwg.getSecImgCode(), this.gwn.gwg.getSecImgEncryptKey(), true, 1);
+    g.Rc().a(localac, 0);
+    AppMethodBeat.o(13756);
   }
 }
 

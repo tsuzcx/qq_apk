@@ -3,101 +3,117 @@ package com.tencent.mm.plugin.game.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.e;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
 import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.MMDotView;
 import java.util.LinkedList;
 
 public class GameBannerView
   extends LinearLayout
-  implements ViewPager.e, View.OnClickListener
+  implements ViewPager.OnPageChangeListener, View.OnClickListener
 {
-  private float hZz = 0.0F;
-  private MMDotView hxP;
-  private ViewPager kB;
-  private int kQh = 0;
-  private GameBannerView.b kXh;
-  LinkedList<GameBannerView.a> kXi;
-  am kXj = new am(new GameBannerView.1(this), true);
-  private float kXk = 0.0F;
+  private MMDotView jpZ;
+  private ViewPager lz;
   private Context mContext;
+  private int nok;
+  private GameBannerView.b nvi;
+  LinkedList<GameBannerView.a> nvj;
+  ap nvk;
+  private float nvl;
+  private float nvm;
   
   public GameBannerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(111722);
+    this.nok = 0;
+    this.nvk = new ap(new ap.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(111718);
+        if ((GameBannerView.a(GameBannerView.this) != null) && (GameBannerView.b(GameBannerView.this).size() > 1))
+        {
+          GameBannerView.a(GameBannerView.this).setCurrentItem(GameBannerView.a(GameBannerView.this).getCurrentItem() + 1, true);
+          AppMethodBeat.o(111718);
+          return true;
+        }
+        GameBannerView.c(GameBannerView.this).stopTimer();
+        AppMethodBeat.o(111718);
+        return false;
+      }
+    }, true);
+    this.nvl = 0.0F;
+    this.nvm = 0.0F;
     this.mContext = paramContext;
-    inflate(paramContext, g.f.game_banner_view, this);
-    this.kXi = new LinkedList();
+    inflate(paramContext, 2130969689, this);
+    this.nvj = new LinkedList();
+    AppMethodBeat.o(111722);
   }
   
-  private void gA(boolean paramBoolean)
+  private void ij(boolean paramBoolean)
   {
+    AppMethodBeat.i(111727);
     ViewParent localViewParent = getParent();
     if (localViewParent != null) {
       localViewParent.requestDisallowInterceptTouchEvent(paramBoolean);
     }
+    AppMethodBeat.o(111727);
   }
-  
-  public final void Q(int paramInt) {}
-  
-  public final void R(int paramInt)
-  {
-    int i = paramInt % this.kXi.size();
-    y.i("MicroMsg.GameBannerView", "now selected page %d, now exactly positon : %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-    if ((((GameBannerView.a)this.kXi.get(i)).kXm != null) && (g.DK())) {
-      b.a(this.mContext, 11, 1101, i + 1, 1, this.kQh, null);
-    }
-  }
-  
-  public final void a(int paramInt1, float paramFloat, int paramInt2) {}
   
   public void onClick(View paramView)
   {
-    if (!(paramView.getTag() instanceof GameBannerView.a)) {
+    AppMethodBeat.i(111728);
+    if (!(paramView.getTag() instanceof GameBannerView.a))
+    {
+      AppMethodBeat.o(111728);
       return;
     }
     Object localObject = (GameBannerView.a)paramView.getTag();
-    paramView = ((GameBannerView.a)localObject).kXm;
-    if (!bk.bl(((GameBannerView.a)localObject).kNZ))
+    paramView = ((GameBannerView.a)localObject).nvo;
+    if (!bo.isNullOrNil(((GameBannerView.a)localObject).nlW))
     {
-      paramView = ((GameBannerView.a)localObject).kNZ;
-      i = c.an(this.mContext, paramView);
-      b.a(this.mContext, 11, 1101, 1, i, this.kQh, null);
+      paramView = ((GameBannerView.a)localObject).nlW;
+      i = com.tencent.mm.plugin.game.f.c.ax(this.mContext, paramView);
+      com.tencent.mm.game.report.c.a(this.mContext, 11, 1101, 1, i, this.nok, null);
+      AppMethodBeat.o(111728);
       return;
     }
-    y.i("MicroMsg.GameBannerView", "null or nil url");
+    ab.i("MicroMsg.GameBannerView", "null or nil url");
     localObject = new Bundle();
     ((Bundle)localObject).putCharSequence("game_app_id", paramView.field_appId);
     ((Bundle)localObject).putInt("game_report_from_scene", 5);
-    int i = c.b(this.mContext, paramView.field_appId, null, (Bundle)localObject);
-    b.a(this.mContext, 11, 1101, 1, i, this.kQh, null);
+    int i = com.tencent.mm.plugin.game.f.c.b(this.mContext, paramView.field_appId, null, (Bundle)localObject);
+    com.tencent.mm.game.report.c.a(this.mContext, 11, 1101, 1, i, this.nok, null);
+    AppMethodBeat.o(111728);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111723);
     super.onFinishInflate();
-    this.hxP = ((MMDotView)findViewById(g.e.game_ad_dot));
-    this.kB = ((ViewPager)findViewById(g.e.game_ad_flipper));
-    this.kB.setOnPageChangeListener(this);
-    this.kXh = new GameBannerView.b(this, (byte)0);
+    this.jpZ = ((MMDotView)findViewById(2131824422));
+    this.lz = ((ViewPager)findViewById(2131824421));
+    this.lz.setOnPageChangeListener(this);
+    this.nvi = new GameBannerView.b(this, (byte)0);
+    AppMethodBeat.o(111723);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(111726);
     int i = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
@@ -111,51 +127,71 @@ public class GameBannerView
     }
     for (;;)
     {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      this.kXk = f1;
-      this.hZz = f2;
+      boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(111726);
+      return bool;
+      this.nvl = f1;
+      this.nvm = f2;
       break;
-      i = (int)(f1 - this.kXk);
-      int j = (int)(f2 - this.hZz);
+      i = (int)(f1 - this.nvl);
+      int j = (int)(f2 - this.nvm);
       if (Math.abs(i) <= Math.abs(j)) {
         break;
       }
-      gA(true);
+      ij(true);
       break;
-      gA(false);
-      this.kXk = 0.0F;
-      this.hZz = 0.0F;
+      ij(false);
+      this.nvl = 0.0F;
+      this.nvm = 0.0F;
       break;
-      this.kXj.stopTimer();
+      this.nvk.stopTimer();
       continue;
-      this.kXj.S(5000L, 5000L);
+      this.nvk.ag(5000L, 5000L);
     }
+  }
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    AppMethodBeat.i(111725);
+    int i = paramInt % this.nvj.size();
+    ab.i("MicroMsg.GameBannerView", "now selected page %d, now exactly positon : %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+    if ((((GameBannerView.a)this.nvj.get(i)).nvo != null) && (g.RG())) {
+      com.tencent.mm.game.report.c.a(this.mContext, 11, 1101, i + 1, 1, this.nok, null);
+    }
+    AppMethodBeat.o(111725);
   }
   
   public void setBannerList(LinkedList<GameBannerView.a> paramLinkedList)
   {
+    AppMethodBeat.i(111724);
     if ((paramLinkedList == null) || (paramLinkedList.size() == 0))
     {
-      y.e("MicroMsg.GameBannerView", "Empty banner list");
+      ab.e("MicroMsg.GameBannerView", "Empty banner list");
       setVisibility(8);
+      AppMethodBeat.o(111724);
       return;
     }
-    y.i("MicroMsg.GameBannerView", "bannerList size", new Object[] { Integer.valueOf(paramLinkedList.size()) });
-    this.kXj.stopTimer();
-    this.kXi.clear();
-    this.kXi.addAll(paramLinkedList);
-    this.kB.setAdapter(this.kXh);
-    this.kB.m(paramLinkedList.size() * 1000, false);
-    if (this.kXi.size() > 1) {
-      this.kXj.S(5000L, 5000L);
+    ab.i("MicroMsg.GameBannerView", "bannerList size", new Object[] { Integer.valueOf(paramLinkedList.size()) });
+    this.nvk.stopTimer();
+    this.nvj.clear();
+    this.nvj.addAll(paramLinkedList);
+    this.lz.setAdapter(this.nvi);
+    this.lz.setCurrentItem(paramLinkedList.size() * 1000, false);
+    if (this.nvj.size() > 1) {
+      this.nvk.ag(5000L, 5000L);
     }
-    this.hxP.setVisibility(8);
+    this.jpZ.setVisibility(8);
     setVisibility(0);
+    AppMethodBeat.o(111724);
   }
   
   public void setSourceScene(int paramInt)
   {
-    this.kQh = paramInt;
+    this.nok = paramInt;
   }
 }
 

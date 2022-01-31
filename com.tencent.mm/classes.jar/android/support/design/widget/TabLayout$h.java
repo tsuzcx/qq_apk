@@ -5,17 +5,21 @@ import android.support.v4.view.ViewPager;
 public final class TabLayout$h
   implements TabLayout.b
 {
-  private final ViewPager kB;
+  private final ViewPager lz;
   
   public TabLayout$h(ViewPager paramViewPager)
   {
-    this.kB = paramViewPager;
+    this.lz = paramViewPager;
   }
   
-  public final void b(TabLayout.e parame)
+  public final void f(TabLayout.e parame)
   {
-    this.kB.setCurrentItem(parame.mPosition);
+    this.lz.setCurrentItem(parame.mPosition);
   }
+  
+  public final void g(TabLayout.e parame) {}
+  
+  public final void h(TabLayout.e parame) {}
 }
 
 

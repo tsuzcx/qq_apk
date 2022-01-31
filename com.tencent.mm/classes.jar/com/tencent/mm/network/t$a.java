@@ -1,64 +1,67 @@
 package com.tencent.mm.network;
 
 import com.tencent.mars.comm.WakerLock;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.protocal.h;
-import com.tencent.mm.sdk.platformtools.bf;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.protocal.i;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bj;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class t$a
   extends j.a
   implements l
 {
-  private t dhp;
-  private WakerLock eOp;
-  private int eOq = 0;
+  private t dYA;
+  private WakerLock ged;
+  private int gee = 0;
   
   public t$a(t paramt, WakerLock paramWakerLock)
   {
-    this.dhp = paramt;
-    this.eOp = paramWakerLock;
+    this.dYA = paramt;
+    this.ged = paramWakerLock;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, r paramr, byte[] paramArrayOfByte)
   {
-    if (paramr.getType() == 701)
+    AppMethodBeat.i(58567);
+    if ((paramr.getType() == 252) || (paramr.getType() == 701))
     {
-      y.d("MicroMsg.AutoAuth", "summerauth IOnAutoAuth onGYNetEnd manual auth");
-      if ((paramr.Ld().Lh() != 0) || (paramInt2 != 0)) {
-        break label210;
+      ab.d("MicroMsg.MMAutoAuth", "summerauth IOnAutoAuth onGYNetEnd manual auth");
+      if ((paramr.adP().getRetCode() != 0) || (paramInt2 != 0)) {
+        break label233;
       }
-      if (paramr.Le() != 2) {
-        break label190;
+      if (paramr.adQ() != 2) {
+        break label213;
       }
-      f.nEG.a(148L, 28L, 1L, false);
-      this.eOq += 1;
-      if (this.eOq <= 1) {
-        break label177;
+      e.qrI.idkeyStat(148L, 28L, 1L, false);
+      this.gee += 1;
+      if (this.gee <= 1) {
+        break label200;
       }
-      y.w("MicroMsg.AutoAuth", "summerauth manualLoginDecodeFailedTry beyond 1 no more try!");
-      this.dhp.f(paramInt2, paramInt3, "auth_decode_failed_" + bk.aM(paramString, ""));
+      ab.w("MicroMsg.MMAutoAuth", "summerauth manualLoginDecodeFailedTry beyond 1 no more try!");
+      this.dYA.j(paramInt2, paramInt3, "auth_decode_failed_" + bo.bf(paramString, ""));
     }
-    while ((paramr.Ld().Lh() != 0) || (paramInt2 != 0)) {
+    while ((paramr.adP().getRetCode() != 0) || (paramInt2 != 0)) {
       if (-102 == paramInt3)
       {
-        this.dhp.eNP = paramInt1;
-        paramr.a(this.dhp.eNL, this.dhp.eNN, 0, 0);
+        this.dYA.gdD = paramInt1;
+        paramr.a(this.dYA.gdz, this.dYA.gdB, 0, 0);
+        AppMethodBeat.o(58567);
         return;
-        label177:
+        label200:
         paramr.a(this, 0, 0);
         continue;
-        label190:
-        this.eOq = 0;
+        label213:
+        this.gee = 0;
         paramr.a(this, paramInt2, paramInt3, paramString);
         continue;
-        label210:
-        paramArrayOfByte = f.nEG;
+        label233:
+        paramArrayOfByte = e.qrI;
         if (-102 == paramInt3) {}
         for (long l = 30L;; l = 29L)
         {
-          paramArrayOfByte.a(148L, l, 1L, false);
+          paramArrayOfByte.idkeyStat(148L, l, 1L, false);
           break;
         }
       }
@@ -69,7 +72,8 @@ final class t$a
         }
         for (;;)
         {
-          this.dhp.f(paramInt2, paramInt3, "autoauth_errmsg_" + bk.aM(paramString, ""));
+          this.dYA.j(paramInt2, paramInt3, "autoauth_errmsg_" + bo.bf(paramString, ""));
+          AppMethodBeat.o(58567);
           return;
           if (-105 == paramInt3) {
             paramr.a(this, paramInt2, paramInt3, paramString);
@@ -80,12 +84,15 @@ final class t$a
       }
     }
     paramr.a(this, paramInt2, paramInt3, paramString);
+    AppMethodBeat.o(58567);
   }
   
   public final void a(r paramr, int paramInt1, int paramInt2, String paramString)
   {
-    this.eOp.lock(1000L, "MMAutoAuth.IOnAutoAuth.onAutoAuth");
-    new t.a.1(this, paramr, paramInt1, paramInt2, paramString).b(this.dhp.handler);
+    AppMethodBeat.i(58566);
+    this.ged.lock(1000L, "MMAutoAuth.IOnAutoAuth.onAutoAuth");
+    new t.a.1(this, paramr, paramInt1, paramInt2, paramString).b(this.dYA.handler);
+    AppMethodBeat.o(58566);
   }
 }
 

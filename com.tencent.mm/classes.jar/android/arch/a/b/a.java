@@ -5,16 +5,16 @@ import java.util.HashMap;
 public final class a<K, V>
   extends b<K, V>
 {
-  public HashMap<K, b.c<K, V>> bI = new HashMap();
+  public HashMap<K, b.c<K, V>> bM = new HashMap();
   
   public final boolean contains(K paramK)
   {
-    return this.bI.containsKey(paramK);
+    return this.bM.containsKey(paramK);
   }
   
   protected final b.c<K, V> d(K paramK)
   {
-    return (b.c)this.bI.get(paramK);
+    return (b.c)this.bM.get(paramK);
   }
   
   public final V putIfAbsent(K paramK, V paramV)
@@ -23,20 +23,20 @@ public final class a<K, V>
     if (localc != null) {
       return localc.mValue;
     }
-    this.bI.put(paramK, b(paramK, paramV));
+    this.bM.put(paramK, b(paramK, paramV));
     return null;
   }
   
   public final V remove(K paramK)
   {
     Object localObject = super.remove(paramK);
-    this.bI.remove(paramK);
+    this.bM.remove(paramK);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.arch.a.b.a
  * JD-Core Version:    0.7.0.1
  */

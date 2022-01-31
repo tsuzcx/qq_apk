@@ -9,12 +9,12 @@ final class BottomSheetBehavior$1
   
   public final void run()
   {
-    this.fI.a(this.fG, this.fH);
+    this.gC.a(this.gA, this.gB);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.design.widget.BottomSheetBehavior.1
  * JD-Core Version:    0.7.0.1
  */

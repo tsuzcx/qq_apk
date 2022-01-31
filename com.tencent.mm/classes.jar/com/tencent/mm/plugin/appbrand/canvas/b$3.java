@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.canvas;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
 import com.tencent.mm.plugin.appbrand.canvas.widget.a.a;
 import org.json.JSONArray;
@@ -11,15 +12,17 @@ final class b$3
   
   public final void run()
   {
-    DrawCanvasArg localDrawCanvasArg = this.fLj.fKR;
-    this.fLj.fKR = null;
-    this.fLj.fKQ = this.fLk;
-    this.fLj.fLh = true;
-    this.fLj.fKP = true;
-    if (this.fLl != null) {
-      this.fLl.a(localDrawCanvasArg);
+    AppMethodBeat.i(103142);
+    DrawCanvasArg localDrawCanvasArg = this.hev.hef;
+    this.hev.hef = null;
+    this.hev.hee = this.hew;
+    this.hev.het = true;
+    this.hev.hed = true;
+    if (this.hex != null) {
+      this.hex.a(localDrawCanvasArg);
     }
-    b.a(this.fLj);
+    b.a(this.hev);
+    AppMethodBeat.o(103142);
   }
 }
 

@@ -3,9 +3,8 @@ package com.tencent.mm.plugin.wallet_core.id_verify;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSelectProfessionUI;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class WalletRealNameVerifyUI$1
   implements View.OnClickListener
@@ -14,9 +13,11 @@ final class WalletRealNameVerifyUI$1
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.qse.mController.uMN, WalletSelectProfessionUI.class);
-    paramView.putExtra("key_profession_list", WalletRealNameVerifyUI.a(this.qse));
-    this.qse.startActivityForResult(paramView, 1);
+    AppMethodBeat.i(46620);
+    paramView = new Intent(this.udf.getContext(), WalletSelectProfessionUI.class);
+    paramView.putExtra("key_profession_list", WalletRealNameVerifyUI.a(this.udf));
+    this.udf.startActivityForResult(paramView, 1);
+    AppMethodBeat.o(46620);
   }
 }
 

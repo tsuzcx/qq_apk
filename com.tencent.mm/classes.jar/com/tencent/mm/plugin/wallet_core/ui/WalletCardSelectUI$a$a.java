@@ -4,7 +4,7 @@ import android.widget.CheckedTextView;
 
 final class WalletCardSelectUI$a$a
 {
-  CheckedTextView qCM;
+  CheckedTextView upw;
   
   WalletCardSelectUI$a$a(WalletCardSelectUI.a parama) {}
 }

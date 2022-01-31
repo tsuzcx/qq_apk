@@ -2,7 +2,7 @@ package com.tencent.mm.wallet_core.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.o;
 
 final class c$1
@@ -12,9 +12,11 @@ final class c$1
   
   public final void onClick(View paramView)
   {
-    if (((paramView.getId() == a.f.popupwd_qrcode_iv) || (paramView.getId() == a.f.popupwd_barcode_iv)) && (this.wCf.fvf != null) && (this.wCf.fvf.isShowing())) {
-      this.wCf.fvf.dismiss();
+    AppMethodBeat.i(49227);
+    if (((paramView.getId() == 2131822318) || (paramView.getId() == 2131822324)) && (this.AYy.gMK != null) && (this.AYy.gMK.isShowing())) {
+      this.AYy.gMK.dismiss();
     }
+    AppMethodBeat.o(49227);
   }
 }
 

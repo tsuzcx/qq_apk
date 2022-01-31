@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.fav.b.e;
 
 import android.os.SystemClock;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.f;
 import com.tencent.mm.plugin.fav.a.t;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -17,40 +18,45 @@ final class c$1
   
   public final void run()
   {
-    Object localObject = ((ae)g.t(ae.class)).getFavEditInfoStorage().aQs();
-    if (localObject == null) {}
-    for (;;)
+    AppMethodBeat.i(5362);
+    Object localObject = ((ae)g.G(ae.class)).getFavEditInfoStorage().bwH();
+    if (localObject == null)
     {
+      AppMethodBeat.o(5362);
       return;
-      y.i("MicroMsg.Fav.FavEditService", "infos size %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+    }
+    ab.i("MicroMsg.Fav.FavEditService", "infos size %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      f localf = (f)((Iterator)localObject).next();
+      String str = c.z(localf.field_localId, localf.field_type);
+      c.a locala = (c.a)this.mvi.mvh.get(str);
+      if (locala == null)
       {
-        f localf = (f)((Iterator)localObject).next();
-        String str = c.u(localf.field_localId, localf.field_type);
-        c.a locala = (c.a)this.kaM.kaL.get(str);
-        if (locala == null)
-        {
-          y.i("MicroMsg.Fav.FavEditService", "not match key %s", new Object[] { str });
-          locala = new c.a((byte)0);
-          locala.jZZ = localf;
-          locala.retryCount = 3;
-          locala.time = SystemClock.elapsedRealtime();
-          this.kaM.kaL.put(str, locala);
-          c.a(locala, true);
-        }
-        else
-        {
-          y.i("MicroMsg.Fav.FavEditService", "match key %s, check start", new Object[] { str });
-          c.a(locala, false);
-        }
+        ab.i("MicroMsg.Fav.FavEditService", "not match key %s", new Object[] { str });
+        locala = new c.a((byte)0);
+        locala.muv = localf;
+        locala.retryCount = 3;
+        locala.time = SystemClock.elapsedRealtime();
+        this.mvi.mvh.put(str, locala);
+        c.a(locala, true);
+      }
+      else
+      {
+        ab.i("MicroMsg.Fav.FavEditService", "match key %s, check start", new Object[] { str });
+        c.a(locala, false);
       }
     }
+    AppMethodBeat.o(5362);
   }
   
   public final String toString()
   {
-    return super.toString() + "|run";
+    AppMethodBeat.i(5363);
+    String str = super.toString() + "|run";
+    AppMethodBeat.o(5363);
+    return str;
   }
 }
 

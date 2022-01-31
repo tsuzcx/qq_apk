@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class h$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class h$2
   
   public final void run()
   {
-    this.lxq.notifyDataSetChanged();
+    AppMethodBeat.i(22239);
+    this.nUD.notifyDataSetChanged();
+    AppMethodBeat.o(22239);
   }
 }
 

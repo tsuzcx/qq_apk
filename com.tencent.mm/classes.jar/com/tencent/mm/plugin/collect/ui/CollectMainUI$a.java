@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.collect.ui;
 
-import com.tencent.mm.plugin.collect.b.t;
+import com.tencent.mm.plugin.collect.model.t;
 
 final class CollectMainUI$a
   extends t
 {
-  public boolean itz = false;
+  public boolean isAnimated = false;
   
   public CollectMainUI$a(CollectMainUI paramCollectMainUI, t paramt)
   {
     this.username = paramt.username;
-    this.bMY = paramt.bMY;
-    this.iHP = paramt.iHP;
+    this.cnJ = paramt.cnJ;
+    this.kNS = paramt.kNS;
     this.timestamp = paramt.timestamp;
     this.scene = paramt.scene;
     this.status = paramt.status;
-    this.dtK = paramt.dtK;
+    this.elx = paramt.elx;
   }
 }
 

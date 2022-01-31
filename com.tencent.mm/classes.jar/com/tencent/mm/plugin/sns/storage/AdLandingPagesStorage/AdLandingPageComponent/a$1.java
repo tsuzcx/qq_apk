@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
   extends BroadcastReceiver
@@ -11,13 +12,15 @@ final class a$1
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (("com.tencent.mm.adlanding.close_exposure_voice".equals(paramIntent.getAction())) && (!this.oCd.bFm().oDg.equals(paramIntent.getStringExtra("para_id"))))
+    AppMethodBeat.i(36937);
+    if (("com.tencent.mm.adlanding.close_exposure_voice".equals(paramIntent.getAction())) && (!this.rrC.cqV().rsI.equals(paramIntent.getStringExtra("para_id"))))
     {
-      paramContext = this.oCd;
-      if (paramContext.oCc) {
-        paramContext.bER();
+      paramContext = this.rrC;
+      if (paramContext.rrB) {
+        paramContext.cqy();
       }
     }
+    AppMethodBeat.o(36937);
   }
 }
 

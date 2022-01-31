@@ -1,51 +1,61 @@
 package com.tencent.mm.plugin.freewifi.d;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.protocal.c.bmv;
-import com.tencent.mm.protocal.c.cz;
-import com.tencent.mm.protocal.c.jo;
-import com.tencent.mm.protocal.c.jp;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.protocal.protobuf.bwo;
+import com.tencent.mm.protocal.protobuf.di;
+import com.tencent.mm.protocal.protobuf.lz;
+import com.tencent.mm.protocal.protobuf.ma;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 public final class k
   extends c
 {
-  public k(String paramString1, bmv parambmv, int paramInt, String paramString2)
+  public k(String paramString1, bwo parambwo, int paramInt, String paramString2)
   {
-    aUp();
+    AppMethodBeat.i(20796);
+    bAR();
     if ((8 != paramInt) || (9 != paramInt)) {
-      y.e("MicroMsg.FreeWifi.NetSceneScanAndReportNearFieldFreeWifi", "invalid channel, channel is :%d", new Object[] { Integer.valueOf(paramInt) });
+      ab.e("MicroMsg.FreeWifi.NetSceneScanAndReportNearFieldFreeWifi", "invalid channel, channel is :%d", new Object[] { Integer.valueOf(paramInt) });
     }
-    jo localjo = (jo)this.dmK.ecE.ecN;
-    localjo.sCE = paramString1;
-    localjo.sEo = parambmv;
-    localjo.sss = paramInt;
-    localjo.sst = paramString2;
+    lz locallz = (lz)this.rr.fsV.fta;
+    locallz.wxM = paramString1;
+    locallz.wAu = parambwo;
+    locallz.wkX = paramInt;
+    locallz.wkY = paramString2;
+    AppMethodBeat.o(20796);
   }
   
-  public final String aUD()
+  protected final void bAR()
   {
-    LinkedList localLinkedList = ((jp)this.dmK.ecF.ecN).sEp;
-    if ((localLinkedList != null) && (localLinkedList.size() == 1)) {
-      return ((cz)localLinkedList.get(0)).swn;
-    }
-    return null;
-  }
-  
-  protected final void aUp()
-  {
+    AppMethodBeat.i(20795);
     b.a locala = new b.a();
-    locala.ecH = new jo();
-    locala.ecI = new jp();
+    locala.fsX = new lz();
+    locala.fsY = new ma();
     locala.uri = "/cgi-bin/mmo2o-bin/bizwificonnect";
-    locala.ecG = 1705;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
+    locala.funcId = 1705;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    AppMethodBeat.o(20795);
+  }
+  
+  public final String bBd()
+  {
+    AppMethodBeat.i(20797);
+    Object localObject = ((ma)this.rr.fsW.fta).wAv;
+    if ((localObject != null) && (((LinkedList)localObject).size() == 1))
+    {
+      localObject = ((di)((LinkedList)localObject).get(0)).wpz;
+      AppMethodBeat.o(20797);
+      return localObject;
+    }
+    AppMethodBeat.o(20797);
+    return null;
   }
   
   public final int getType()
@@ -55,7 +65,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.d.k
  * JD-Core Version:    0.7.0.1
  */

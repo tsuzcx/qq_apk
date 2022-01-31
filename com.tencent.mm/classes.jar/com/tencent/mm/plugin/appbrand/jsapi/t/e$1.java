@@ -1,68 +1,37 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.webview.modeltools.h;
-import com.tencent.mm.plugin.webview.ui.tools.widget.m;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.e.c;
+import com.tencent.mm.plugin.appbrand.e.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$1
-  extends m
+  extends e.c
 {
-  e$1(e parame) {}
+  e$1(e parame, c paramc, String paramString) {}
   
-  public final void e(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public final void a(e.d paramd)
   {
-    y.d("MicroMsg.AppBrand.HTMLWebViewLogicDelegate", "result: " + paramString2);
-    if ((this.gGA.gGt == null) || (paramString1 == null) || (!paramString1.equals(this.gGA.gGt.riI))) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (paramInt1 != 22);
-      if (this.gGA.gGt != null) {
-        this.gGA.gGt.ccQ();
-      }
-      this.gGA.gGr = paramInt1;
-      this.gGA.gGs = paramInt2;
-    } while ((paramString2 == null) || (e.g(this.gGA) == null));
-    e.b(this.gGA).runOnUiThread(new e.1.1(this, paramString2));
+    AppMethodBeat.i(145917);
+    ab.i("MicroMsg.JsApiStartPlayVoice", "onPause");
+    AppMethodBeat.o(145917);
   }
   
-  public final Bundle f(int paramInt, Bundle paramBundle)
+  public final void onDestroy()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key_webview_container_env", "miniProgram");
-    switch (paramInt)
-    {
-    default: 
-      return localBundle;
-    case 139: 
-      paramBundle = paramBundle.getString("info");
-      try
-      {
-        paramBundle = new JSONObject(paramBundle);
-        e.b(this.gGA).B(paramBundle);
-        return localBundle;
-      }
-      catch (Exception paramBundle)
-      {
-        return localBundle;
-      }
-    case 101: 
-      paramBundle.setClassLoader(e.class.getClassLoader());
-      d.b(e.f(this.gGA), paramBundle.getString("open_ui_with_webview_ui_plugin_name"), paramBundle.getString("open_ui_with_webview_ui_plugin_entry"), new Intent().putExtras(paramBundle.getBundle("open_ui_with_webview_ui_extras")));
-      return localBundle;
-    case 140: 
-      localBundle.putInt("key_webview_preverify_info_scene", 1);
-      localBundle.putString("key_webview_preverify_info_source_appid", e.b(this.gGA).getAppId());
-      return localBundle;
-    }
-    localBundle.putStringArray("key_webview_apbrand_jsapi_report_args", e.b(this.gGA).getJsApiReportArgs());
-    return localBundle;
+    AppMethodBeat.i(145919);
+    ab.i("MicroMsg.JsApiStartPlayVoice", "onDestroy");
+    com.tencent.mm.plugin.appbrand.e.b(this.val$appId, this.ifn.ifl);
+    this.ifn.ifl = null;
+    this.ifm.onDestroy();
+    AppMethodBeat.o(145919);
+  }
+  
+  public final void onResume()
+  {
+    AppMethodBeat.i(145918);
+    ab.i("MicroMsg.JsApiStartPlayVoice", "onResume");
+    AppMethodBeat.o(145918);
   }
 }
 

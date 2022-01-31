@@ -1,35 +1,41 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class IPCallDynamicTextView$1
-  extends ah
+  extends ak
 {
   IPCallDynamicTextView$1(IPCallDynamicTextView paramIPCallDynamicTextView) {}
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(22142);
     switch (paramMessage.what)
     {
-    default: 
-      return;
     }
-    if (((IPCallDynamicTextView.a(this.lvS) > 0.0D) && (IPCallDynamicTextView.b(this.lvS) < IPCallDynamicTextView.c(this.lvS))) || ((IPCallDynamicTextView.a(this.lvS) < 0.0D) && (IPCallDynamicTextView.b(this.lvS) > IPCallDynamicTextView.c(this.lvS))))
+    for (;;)
     {
-      IPCallDynamicTextView.a(this.lvS, true);
-      IPCallDynamicTextView.a(this.lvS, IPCallDynamicTextView.b(this.lvS));
-      IPCallDynamicTextView.b(this.lvS, IPCallDynamicTextView.b(this.lvS) + IPCallDynamicTextView.a(this.lvS));
-      IPCallDynamicTextView.e(this.lvS).sendEmptyMessageDelayed(1, IPCallDynamicTextView.d(this.lvS));
+      AppMethodBeat.o(22142);
       return;
+      if (((IPCallDynamicTextView.a(this.nTh) > 0.0D) && (IPCallDynamicTextView.b(this.nTh) < IPCallDynamicTextView.c(this.nTh))) || ((IPCallDynamicTextView.a(this.nTh) < 0.0D) && (IPCallDynamicTextView.b(this.nTh) > IPCallDynamicTextView.c(this.nTh))))
+      {
+        IPCallDynamicTextView.a(this.nTh, true);
+        IPCallDynamicTextView.a(this.nTh, IPCallDynamicTextView.b(this.nTh));
+        IPCallDynamicTextView.b(this.nTh, IPCallDynamicTextView.b(this.nTh) + IPCallDynamicTextView.a(this.nTh));
+        IPCallDynamicTextView.e(this.nTh).sendEmptyMessageDelayed(1, IPCallDynamicTextView.d(this.nTh));
+        AppMethodBeat.o(22142);
+        return;
+      }
+      IPCallDynamicTextView.a(this.nTh, false);
+      IPCallDynamicTextView.a(this.nTh, IPCallDynamicTextView.c(this.nTh));
     }
-    IPCallDynamicTextView.a(this.lvS, false);
-    IPCallDynamicTextView.a(this.lvS, IPCallDynamicTextView.c(this.lvS));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallDynamicTextView.1
  * JD-Core Version:    0.7.0.1
  */

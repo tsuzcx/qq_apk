@@ -1,63 +1,32 @@
 package com.tencent.mm.plugin.webview.model;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
 
 public final class ao
+  extends j<an>
 {
-  private static Map<String, String> rgU = new HashMap();
+  public static final String[] SQL_CREATE;
   
-  public static String RR(String paramString)
+  static
   {
-    y.i("MicroMsg.WebviewSharedUrlCache", "rawUrl:[%s]", new Object[] { paramString });
-    if (bk.bl(paramString))
-    {
-      y.e("MicroMsg.WebviewSharedUrlCache", "rawUrl is null");
-      paramString = null;
-      return paramString;
-    }
-    String str2 = (String)rgU.get(paramString);
-    String str1 = str2;
-    int i;
-    if (bk.bl(str2))
-    {
-      i = paramString.indexOf("#");
-      if (i >= 0) {
-        break label90;
-      }
-    }
-    label90:
-    for (str1 = paramString;; str1 = paramString.substring(0, i))
-    {
-      str1 = (String)rgU.get(str1);
-      if (bk.bl(str1)) {
-        break;
-      }
-      return str1;
-    }
+    AppMethodBeat.i(6738);
+    SQL_CREATE = new String[] { j.getCreateSQLs(an.info, "WebviewLocalData") };
+    AppMethodBeat.o(6738);
   }
   
-  public static void clear()
+  public ao(e parame)
   {
-    rgU.clear();
+    super(parame, an.info, "WebviewLocalData", null);
   }
   
-  public static void fv(String paramString1, String paramString2)
+  public static int aw(String paramString1, String paramString2, String paramString3)
   {
-    y.i("MicroMsg.WebviewSharedUrlCache", "rawurl:[%s], shareUrl:[%s]", new Object[] { paramString1, paramString2 });
-    if ((bk.bl(paramString1)) || (bk.bl(paramString2)))
-    {
-      y.e("MicroMsg.WebviewSharedUrlCache", "rawurl is null or share url is null");
-      return;
-    }
-    if (rgU.containsKey(paramString1))
-    {
-      y.i("MicroMsg.WebviewSharedUrlCache", "has add this rawurl");
-      return;
-    }
-    rgU.put(paramString1, paramString2);
+    AppMethodBeat.i(6737);
+    int i = (paramString1 + paramString2 + paramString3).hashCode();
+    AppMethodBeat.o(6737);
+    return i;
   }
 }
 

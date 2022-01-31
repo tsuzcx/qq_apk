@@ -1,61 +1,60 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.widget.TextView;
-import android.widget.TextView.BufferType;
-import com.tencent.mm.plugin.appbrand.jsapi.base.e;
-import com.tencent.mm.plugin.appbrand.widget.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.az;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-@SuppressLint({"AppCompatCustomView"})
-public class f
-  extends TextView
-  implements e
+public final class f
+  extends az
 {
-  private boolean hnD;
-  private a hob;
+  public static c.a fkk;
   
-  public f(Context paramContext)
+  static
   {
-    super(paramContext);
-    super.setIncludeFontPadding(false);
-    super.setLineSpacing(0.0F, 1.0F);
-    super.setSpannableFactory(new f.1(this));
+    AppMethodBeat.i(70649);
+    c.a locala = new c.a();
+    locala.yrK = new Field[6];
+    locala.columns = new String[7];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "id";
+    locala.yrM.put("id", "TEXT");
+    localStringBuilder.append(" id TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "cacheKey";
+    locala.yrM.put("cacheKey", "TEXT");
+    localStringBuilder.append(" cacheKey TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "appId";
+    locala.yrM.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "data";
+    locala.yrM.put("data", "TEXT");
+    localStringBuilder.append(" data TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "interval";
+    locala.yrM.put("interval", "INTEGER");
+    localStringBuilder.append(" interval INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "updateTime";
+    locala.yrM.put("updateTime", "LONG");
+    localStringBuilder.append(" updateTime LONG");
+    locala.columns[6] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    fkk = locala;
+    AppMethodBeat.o(70649);
   }
   
-  public final boolean ail()
+  public final c.a getDBInfo()
   {
-    return this.hnD;
-  }
-  
-  public void setInterceptEvent(boolean paramBoolean)
-  {
-    this.hnD = paramBoolean;
-  }
-  
-  public void setLineHeight(int paramInt)
-  {
-    if (this.hob == null) {
-      this.hob = new a(paramInt);
-    }
-    if (!this.hob.an(paramInt)) {
-      return;
-    }
-    invalidate();
-  }
-  
-  public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
-  {
-    TextView.BufferType localBufferType = paramBufferType;
-    if (paramBufferType == TextView.BufferType.NORMAL) {
-      localBufferType = TextView.BufferType.SPANNABLE;
-    }
-    super.setText(paramCharSequence, localBufferType);
+    return fkk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.f
  * JD-Core Version:    0.7.0.1
  */

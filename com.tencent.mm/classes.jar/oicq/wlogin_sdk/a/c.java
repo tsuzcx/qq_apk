@@ -1,32 +1,36 @@
 package oicq.wlogin_sdk.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import oicq.wlogin_sdk.tools.util;
 
 public final class c
   extends a
 {
-  int xrg = 1;
-  int xrh = util.xsl;
-  int xri = 22;
+  int CNt = 1;
+  int CNu = util.COy;
+  int CNv = 22;
   
   public c()
   {
-    this.xqq = 256;
+    this.CMD = 256;
   }
   
-  public final byte[] KQ(int paramInt)
+  public final byte[] Ws(int paramInt)
   {
-    byte[] arrayOfByte = new byte[this.xri];
-    util.D(arrayOfByte, 0, this.xrg);
-    util.E(arrayOfByte, 2, this.xrh);
-    util.E(arrayOfByte, 6, 522017402);
-    util.E(arrayOfByte, 10, 1);
-    util.E(arrayOfByte, 14, paramInt);
-    util.E(arrayOfByte, 18, 8256);
-    super.KP(this.xqq);
-    super.aa(arrayOfByte, this.xri);
-    super.cUF();
-    return super.cUB();
+    AppMethodBeat.i(96475);
+    byte[] arrayOfByte = new byte[this.CNv];
+    util.O(arrayOfByte, 0, this.CNt);
+    util.P(arrayOfByte, 2, this.CNu);
+    util.P(arrayOfByte, 6, 522017402);
+    util.P(arrayOfByte, 10, 1);
+    util.P(arrayOfByte, 14, paramInt);
+    util.P(arrayOfByte, 18, 8256);
+    super.Wr(this.CMD);
+    super.ab(arrayOfByte, this.CNv);
+    super.ere();
+    arrayOfByte = super.era();
+    AppMethodBeat.o(96475);
+    return arrayOfByte;
   }
 }
 

@@ -1,5 +1,6 @@
 package com.eclipsesource.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 
 final class b$1
@@ -9,12 +10,18 @@ final class b$1
   
   public final boolean hasNext()
   {
-    return this.ary.hasNext();
+    AppMethodBeat.i(70497);
+    boolean bool = this.atQ.hasNext();
+    AppMethodBeat.o(70497);
+    return bool;
   }
   
   public final void remove()
   {
-    throw new UnsupportedOperationException();
+    AppMethodBeat.i(70498);
+    UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
+    AppMethodBeat.o(70498);
+    throw localUnsupportedOperationException;
   }
 }
 

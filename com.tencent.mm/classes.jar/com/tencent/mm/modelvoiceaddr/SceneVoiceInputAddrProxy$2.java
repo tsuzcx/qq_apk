@@ -1,30 +1,39 @@
 package com.tencent.mm.modelvoiceaddr;
 
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.List;
 
 final class SceneVoiceInputAddrProxy$2
   implements g.b
 {
   SceneVoiceInputAddrProxy$2(SceneVoiceInputAddrProxy paramSceneVoiceInputAddrProxy) {}
   
-  public final void TC()
+  public final void amK()
   {
-    this.eMi.CLIENT_CALL("onRecognizeFinishCli", new Object[0]);
+    AppMethodBeat.i(116725);
+    this.gbO.CLIENT_CALL("onRecordFinCli", new Object[0]);
+    AppMethodBeat.o(116725);
   }
   
-  public final void Ty()
+  public final void amO()
   {
-    this.eMi.CLIENT_CALL("onRecordFinCli", new Object[0]);
+    AppMethodBeat.i(116726);
+    this.gbO.CLIENT_CALL("onRecognizeFinishCli", new Object[0]);
+    AppMethodBeat.o(116726);
   }
   
-  public final void a(String[] paramArrayOfString, Set<String> paramSet)
+  public final void b(String[] paramArrayOfString, List<String> paramList)
   {
-    this.eMi.CLIENT_CALL("onResCli", new Object[] { paramArrayOfString, paramSet });
+    AppMethodBeat.i(138329);
+    this.gbO.CLIENT_CALL("onResCli", new Object[] { paramArrayOfString, paramList });
+    AppMethodBeat.o(138329);
   }
   
   public final void c(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    this.eMi.CLIENT_CALL("onErrorCli", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong) });
+    AppMethodBeat.i(116724);
+    this.gbO.CLIENT_CALL("onErrorCli", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong) });
+    AppMethodBeat.o(116724);
   }
 }
 

@@ -1,14 +1,26 @@
 package com.tencent.qqmusic.mediaplayer.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class WaitNotify
 {
   private static final String TAG = "WaitNotify";
-  private volatile boolean isWaiting = false;
-  private MonitorObject myMonitorObject = new MonitorObject();
-  private volatile boolean wasSignalled = false;
+  private volatile boolean isWaiting;
+  private final MonitorObject myMonitorObject;
+  private volatile boolean wasSignalled;
+  
+  public WaitNotify()
+  {
+    AppMethodBeat.i(128382);
+    this.myMonitorObject = new MonitorObject();
+    this.wasSignalled = false;
+    this.isWaiting = false;
+    AppMethodBeat.o(128382);
+  }
   
   public void doNotify()
   {
+    AppMethodBeat.i(128385);
     Logger.d("WaitNotify", "doNotify " + Thread.currentThread().getName());
     synchronized (this.myMonitorObject)
     {
@@ -16,40 +28,67 @@ public class WaitNotify
       Logger.d("WaitNotify", "doNotify internal " + Thread.currentThread().getName());
       this.myMonitorObject.notifyAll();
       Logger.d("WaitNotify", "doNotify over " + Thread.currentThread().getName());
+      AppMethodBeat.o(128385);
       return;
     }
   }
   
   public void doWait()
   {
+    AppMethodBeat.i(128383);
+    doWait(9223372036854775807L, 0, new WaitNotify.1(this));
+    AppMethodBeat.o(128383);
+  }
+  
+  public void doWait(long paramLong, int paramInt, WaitListener paramWaitListener)
+  {
+    AppMethodBeat.i(128384);
     Logger.d("WaitNotify", "doWait " + Thread.currentThread().getName());
     synchronized (this.myMonitorObject)
     {
       this.wasSignalled = false;
-      for (;;)
+      int i = 0;
+      boolean bool = this.wasSignalled;
+      if (!bool) {}
+      try
       {
-        boolean bool = this.wasSignalled;
-        if (!bool) {
-          try
+        Logger.d("WaitNotify", "doWait internal " + Thread.currentThread().getName());
+        this.isWaiting = true;
+        if (i < paramInt)
+        {
+          this.myMonitorObject.wait(paramLong, 0);
+          if (!paramWaitListener.keepWaiting())
           {
-            Logger.d("WaitNotify", "doWait internal " + Thread.currentThread().getName());
-            this.isWaiting = true;
-            this.myMonitorObject.wait();
-            Logger.d("WaitNotify", "doWait wake " + Thread.currentThread().getName());
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            Logger.e("WaitNotify", localInterruptedException.toString());
+            doNotify();
+            this.isWaiting = false;
+            AppMethodBeat.o(128384);
           }
         }
+        else
+        {
+          this.myMonitorObject.wait();
+        }
+        Logger.d("WaitNotify", "doWait wake " + Thread.currentThread().getName());
       }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          Logger.e("WaitNotify", localInterruptedException.toString());
+        }
+      }
+      i += 1;
     }
-    this.isWaiting = false;
   }
   
   public boolean isWaiting()
   {
     return this.isWaiting;
+  }
+  
+  public static abstract interface WaitListener
+  {
+    public abstract boolean keepWaiting();
   }
 }
 

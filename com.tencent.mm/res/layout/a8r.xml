@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left|top" android:orientation="horizontal" android:background="@color/r6" android:paddingLeft="@dimen/a1s" android:paddingTop="@dimen/l3" android:paddingRight="@dimen/a1s" android:paddingBottom="@dimen/l3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:gravity="center" android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/mx" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:ellipsize="end" android:id="@id/cm8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <ImageView android:id="@id/cm9" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/b42" android:layout_toRightOf="@id/cm8" android:layout_alignBottom="@id/cm8" />
-        <TextView android:textSize="@dimen/k9" android:textColor="@color/ra" android:ellipsize="end" android:id="@id/cm_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/cm8" android:layout_alignParentLeft="true" />
-    </RelativeLayout>
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:gravity="right" android:id="@id/cma" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</LinearLayout>
+    <ViewStub android:id="@id/agg" android:layout="@layout/a8u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/y5" android:id="@id/cla" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/clb" android:visibility="gone" android:layout="@layout/aue" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.base.WxImageView android:gravity="center" android:id="@id/clc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.base.MultiTouchImageView android:gravity="center" android:id="@id/bl" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.base.MultiTouchImageView android:gravity="center" android:id="@id/cld" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/cle" android:layout="@layout/a8s" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/clf" android:layout="@layout/a8t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/clg" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a01" />
+</FrameLayout>

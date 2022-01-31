@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.order.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckedTextView;
-import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallOrderDetailInfoUI$7
   implements View.OnClickListener
@@ -12,26 +12,27 @@ final class MallOrderDetailInfoUI$7
   
   public final void onClick(View paramView)
   {
-    if ((MallOrderDetailInfoUI.f(this.mQG) != null) && (MallOrderDetailInfoUI.g(this.mQG) != null))
+    AppMethodBeat.i(43802);
+    if ((MallOrderDetailInfoUI.f(this.pqU) != null) && (MallOrderDetailInfoUI.g(this.pqU) != null))
     {
-      if (paramView.getId() == a.f.order_action_item_good_tv)
+      if (paramView.getId() == 2131825970)
       {
-        MallOrderDetailInfoUI.f(this.mQG).setSelected(true);
-        MallOrderDetailInfoUI.g(this.mQG).setSelected(false);
-        MallOrderDetailInfoUI.a(this.mQG, 100);
+        MallOrderDetailInfoUI.f(this.pqU).setSelected(true);
+        MallOrderDetailInfoUI.g(this.pqU).setSelected(false);
+        MallOrderDetailInfoUI.a(this.pqU, 100);
+        AppMethodBeat.o(43802);
+        return;
       }
+      MallOrderDetailInfoUI.f(this.pqU).setSelected(false);
+      MallOrderDetailInfoUI.g(this.pqU).setSelected(true);
+      MallOrderDetailInfoUI.a(this.pqU, -100);
     }
-    else {
-      return;
-    }
-    MallOrderDetailInfoUI.f(this.mQG).setSelected(false);
-    MallOrderDetailInfoUI.g(this.mQG).setSelected(true);
-    MallOrderDetailInfoUI.a(this.mQG, -100);
+    AppMethodBeat.o(43802);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.MallOrderDetailInfoUI.7
  * JD-Core Version:    0.7.0.1
  */

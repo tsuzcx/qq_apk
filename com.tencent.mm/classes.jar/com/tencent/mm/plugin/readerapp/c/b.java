@@ -1,75 +1,72 @@
 package com.tencent.mm.plugin.readerapp.c;
 
-import com.tencent.mm.h.a.cj;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.plugin.readerapp.a.g;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.protocal.c.yp;
-import com.tencent.mm.protocal.c.yy;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cm;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.r;
+import com.tencent.mm.pluginsdk.model.p;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.acw;
+import com.tencent.mm.protocal.protobuf.adf;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vfs.e;
 import java.util.LinkedList;
 
 public final class b
 {
-  public static boolean a(cj paramcj, bj parambj, int paramInt)
+  public static boolean a(cm paramcm, bl parambl)
   {
-    if ((paramcj == null) || (parambj == null))
+    AppMethodBeat.i(141043);
+    if ((paramcm == null) || (parambl == null))
     {
-      y.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or readerAppInfo is null");
-      if (paramcj != null) {
-        paramcj.bIw.bIC = a.g.favorite_fail_argument_error;
+      ab.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or readerAppInfo is null");
+      if (paramcm != null) {
+        paramcm.cpR.cpX = 2131299713;
       }
+      AppMethodBeat.o(141043);
       return false;
     }
-    yj localyj = new yj();
-    yp localyp = new yp();
-    xv localxv = new xv();
-    localyp.Yq("newsapp");
-    localyp.Yr(com.tencent.mm.model.q.Gj());
-    localyp.Yr(com.tencent.mm.model.q.Gj());
-    localyp.EQ(1);
-    localyp.hl(parambj.dXg);
-    localyp.Yu(parambj.dXl);
-    localyp.Yx(parambj.getUrl());
-    localyp.Yy("newsapp");
-    localxv.XM(String.valueOf(parambj.dXl));
-    Object localObject;
-    if (paramInt == 0)
-    {
-      localObject = com.tencent.mm.pluginsdk.model.q.y(parambj.Ia(), parambj.type, "@T");
-      if (!e.bK((String)localObject)) {
-        break label287;
-      }
-      localxv.XJ((String)localObject);
+    acq localacq = new acq();
+    acw localacw = new acw();
+    aca localaca = new aca();
+    localacw.aon("newsapp");
+    localacw.aoo(r.Zn());
+    localacw.aoo(r.Zn());
+    localacw.MR(1);
+    localacw.nI(parambl.fno);
+    localacw.aor(parambl.fnt);
+    localacw.aou(parambl.getUrl());
+    localacw.aov("newsapp");
+    localaca.anI(String.valueOf(parambl.fnt));
+    Object localObject = p.aln(parambl.aaZ());
+    if (e.cN((String)localObject)) {
+      localaca.anF((String)localObject);
     }
     for (;;)
     {
-      localxv.EH(5);
-      localxv.Xu(parambj.getTitle());
-      localxv.Xv(parambj.getDigest());
-      localxv.mj(true);
-      localyj.a(localyp);
-      localyj.sXc.add(localxv);
-      paramcj.bIw.desc = parambj.getTitle();
-      paramcj.bIw.bIy = localyj;
-      paramcj.bIw.type = 5;
+      localaca.MI(5);
+      localaca.anq(parambl.getTitle());
+      localaca.anr(parambl.getDigest());
+      localaca.py(true);
+      localacq.a(localacw);
+      localacq.wVc.add(localaca);
+      paramcm.cpR.desc = parambl.getTitle();
+      paramcm.cpR.cpT = localacq;
+      paramcm.cpR.type = 5;
+      AppMethodBeat.o(141043);
       return true;
-      localObject = com.tencent.mm.pluginsdk.model.q.y(parambj.Ia(), parambj.type, "@S");
-      break;
-      label287:
-      localxv.mk(true);
-      localxv.XD(parambj.Ia());
-      localObject = new yy();
-      ((yy)localObject).YG(parambj.Ia());
-      localyj.b((yy)localObject);
+      localaca.pz(true);
+      localaca.anz(parambl.aaZ());
+      localObject = new adf();
+      ((adf)localObject).aoD(parambl.aaZ());
+      localacq.b((adf)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.c.b
  * JD-Core Version:    0.7.0.1
  */

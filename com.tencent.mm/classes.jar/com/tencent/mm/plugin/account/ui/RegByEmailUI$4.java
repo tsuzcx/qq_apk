@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.b.a;
 
 final class RegByEmailUI$4
@@ -12,11 +13,13 @@ final class RegByEmailUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.fqk.finish();
-    a.qj("L2_signup");
-    paramDialogInterface = new Intent(this.fqk, LoginPasswordUI.class);
-    paramDialogInterface.putExtra("email_address", RegByEmailUI.g(this.fqk));
-    this.fqk.startActivity(paramDialogInterface);
+    AppMethodBeat.i(125304);
+    this.gHH.finish();
+    a.xD("L2_signup");
+    paramDialogInterface = new Intent(this.gHH, LoginPasswordUI.class);
+    paramDialogInterface.putExtra("email_address", RegByEmailUI.g(this.gHH));
+    this.gHH.startActivity(paramDialogInterface);
+    AppMethodBeat.o(125304);
   }
 }
 

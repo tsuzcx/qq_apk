@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.nearby.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class a$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a.o(a.a(this.mCU), false);
+    AppMethodBeat.i(55411);
+    a.u(a.a(this.pcO), false);
+    AppMethodBeat.o(55411);
   }
 }
 

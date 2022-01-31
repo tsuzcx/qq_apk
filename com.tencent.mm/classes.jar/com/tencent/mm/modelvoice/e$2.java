@@ -1,18 +1,21 @@
 package com.tencent.mm.modelvoice;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class e$2
-  implements am.a
+  implements ap.a
 {
   e$2(e parame) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (this.eJV.a(e.a(this.eJV), e.b(this.eJV)) == -1) {
-      e.b(this.eJV).onSceneEnd(3, -1, "doScene failed", this.eJV);
+    AppMethodBeat.i(116566);
+    if (this.fZx.doScene(e.a(this.fZx), e.b(this.fZx)) == -1) {
+      e.b(this.fZx).onSceneEnd(3, -1, "doScene failed", this.fZx);
     }
+    AppMethodBeat.o(116566);
     return false;
   }
 }

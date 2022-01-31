@@ -6,7 +6,7 @@ import android.widget.TextView;
 final class BizChatSearchUI$d
 {
   public View contentView;
-  public TextView kCv;
+  public TextView mYs;
 }
 
 

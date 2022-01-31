@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.wallet.pay.a.e;
 
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.p;
+import com.tencent.mm.plugin.wallet_core.model.u;
 
 public final class b
-  extends g
+  extends j
 {
-  public b(p paramp, Orders paramOrders)
+  public b(u paramu, Orders paramOrders)
   {
-    super(paramp, paramOrders);
+    super(paramu, paramOrders);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
-    return 1517;
+    return 2935;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/sns_ff_verifyreg";
+    return "/cgi-bin/mmpay-bin/tenpay/dc_verifyreg";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.e.b
  * JD-Core Version:    0.7.0.1
  */

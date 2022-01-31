@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 final class ExdeviceAddDataSourceUI$b
 {
-  String bJY;
+  String crs;
   public String iconUrl;
-  ExdeviceAddDataSourceUI.c jAK = ExdeviceAddDataSourceUI.c.jAL;
+  ExdeviceAddDataSourceUI.c lKj = ExdeviceAddDataSourceUI.c.lKk;
   String mac;
   String name;
 }

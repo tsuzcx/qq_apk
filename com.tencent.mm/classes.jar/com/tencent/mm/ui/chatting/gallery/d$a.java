@@ -7,20 +7,20 @@ import android.widget.TextView;
 
 public final class d$a
 {
-  public ImageView khQ;
-  public View khR;
-  public TextView khS;
-  public ImageView khT;
-  public View khU;
-  public CheckBox khV;
-  public View khW;
-  public View vuA;
-  public ImageView vuy;
-  public TextView vuz;
+  public TextView kFj;
+  public ImageView mCA;
+  public View mCB;
+  public CheckBox mCC;
+  public View mCD;
+  public ImageView mCy;
+  public View mCz;
+  public TextView zKA;
+  public View zKB;
+  public ImageView zKz;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.d.a
  * JD-Core Version:    0.7.0.1
  */

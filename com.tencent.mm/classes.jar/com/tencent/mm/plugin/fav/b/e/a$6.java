@@ -1,62 +1,67 @@
 package com.tencent.mm.plugin.fav.b.e;
 
-import com.tencent.mm.j.d;
-import com.tencent.mm.j.f.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.i.d;
+import com.tencent.mm.i.g.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.q;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.vfs.b;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
 final class a$6
-  implements f.a
+  implements g.a
 {
   a$6(a parama) {}
   
-  public final int a(String paramString, int paramInt, com.tencent.mm.j.c paramc, d paramd, boolean paramBoolean)
+  public final int a(String paramString, int paramInt, com.tencent.mm.i.c paramc, d paramd, boolean paramBoolean)
   {
+    AppMethodBeat.i(5331);
     if (paramc != null) {
-      y.i("MicroMsg.Fav.FavCdnService", "cdn transfer callback, mediaid=%s, totallen=%d, offset=%d", new Object[] { paramc.bUi, Integer.valueOf(paramc.field_toltalLength), Integer.valueOf(paramc.field_finishedLength) });
+      ab.i("MicroMsg.Fav.FavCdnService", "cdn transfer callback, mediaid=%s, totallen=%d, offset=%d", new Object[] { paramc.cBO, Integer.valueOf(paramc.field_toltalLength), Integer.valueOf(paramc.field_finishedLength) });
     }
     Object localObject1 = "";
     if (paramc != null) {
-      localObject1 = paramc.bUi;
+      localObject1 = paramc.cBO;
     }
     while ((paramInt == -21006) || (paramInt == -21005))
     {
-      this.kaG.CS((String)localObject1);
+      this.mvc.NU((String)localObject1);
+      AppMethodBeat.o(5331);
       return 0;
       if (paramd != null) {
-        localObject1 = paramd.bUi;
+        localObject1 = paramd.cBO;
       }
     }
-    if (bk.bl((String)localObject1)) {}
+    if (bo.isNullOrNil((String)localObject1)) {}
     for (;;)
     {
-      localObject1 = ((ae)g.t(ae.class)).getFavCdnStorage().CN(paramString);
+      localObject1 = ((ae)g.G(ae.class)).getFavCdnStorage().NP(paramString);
       if (localObject1 == null)
       {
-        y.e("MicroMsg.Fav.FavCdnService", "klem onCdnCallback info null");
-        this.kaG.CS(paramString);
+        ab.e("MicroMsg.Fav.FavCdnService", "klem onCdnCallback info null");
+        this.mvc.NU(paramString);
+        AppMethodBeat.o(5331);
         return 0;
       }
       if (paramInt != 0)
       {
-        y.w("MicroMsg.Fav.FavCdnService", "cdn transfer callback, startRet=%d", new Object[] { Integer.valueOf(paramInt) });
-        h.nFQ.f(10660, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(paramInt) });
+        ab.w("MicroMsg.Fav.FavCdnService", "cdn transfer callback, startRet=%d", new Object[] { Integer.valueOf(paramInt) });
+        h.qsU.e(10660, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(paramInt) });
         ((com.tencent.mm.plugin.fav.a.c)localObject1).field_status = 4;
-        ((ae)g.t(ae.class)).getFavCdnStorage().a((com.tencent.mm.plugin.fav.a.c)localObject1, new String[0]);
+        ((ae)g.G(ae.class)).getFavCdnStorage().a((com.tencent.mm.plugin.fav.a.c)localObject1, new String[0]);
         a.g((com.tencent.mm.plugin.fav.a.c)localObject1);
-        this.kaG.CS(paramString);
+        this.mvc.NU(paramString);
       }
       do
       {
         for (;;)
         {
+          AppMethodBeat.o(5331);
           return 0;
           if (paramc == null) {
             break;
@@ -64,7 +69,7 @@ final class a$6
           ((com.tencent.mm.plugin.fav.a.c)localObject1).field_offset = paramc.field_finishedLength;
           ((com.tencent.mm.plugin.fav.a.c)localObject1).field_totalLen = paramc.field_toltalLength;
           ((com.tencent.mm.plugin.fav.a.c)localObject1).field_status = 1;
-          ((ae)g.t(ae.class)).getFavCdnStorage().a((com.tencent.mm.plugin.fav.a.c)localObject1, new String[0]);
+          ((ae)g.G(ae.class)).getFavCdnStorage().a((com.tencent.mm.plugin.fav.a.c)localObject1, new String[0]);
         }
       } while (paramd == null);
       Object localObject2;
@@ -81,17 +86,17 @@ final class a$6
         }
         for (;;)
         {
-          ((ae)g.t(ae.class)).getFavCdnStorage().a((com.tencent.mm.plugin.fav.a.c)localObject1, new String[0]);
+          ((ae)g.G(ae.class)).getFavCdnStorage().a((com.tencent.mm.plugin.fav.a.c)localObject1, new String[0]);
           a.a((com.tencent.mm.plugin.fav.a.c)localObject1, paramd);
-          ((ae)g.t(ae.class)).getFavCdnStorage().b((com.tencent.mm.plugin.fav.a.c)localObject1, new String[] { "dataId" });
-          this.kaG.kaA.remove(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId);
-          y.i("MicroMsg.Fav.FavCdnService", "transfer done, mediaid=%s, md5=%s aeskey=%s completeInfo=%s", new Object[] { paramd.bUi, paramString, paramd.field_aesKey, paramd.toString() });
-          a.a(this.kaG, paramString);
-          h.nFQ.f(10625, new Object[] { Integer.valueOf(1), paramd.field_fileId, "", paramd.field_transInfo });
+          ((ae)g.G(ae.class)).getFavCdnStorage().b((com.tencent.mm.plugin.fav.a.c)localObject1, new String[] { "dataId" });
+          this.mvc.muW.remove(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId);
+          ab.i("MicroMsg.Fav.FavCdnService", "transfer done, mediaid=%s, md5=%s aeskey=%s completeInfo=%s", new Object[] { paramd.cBO, paramString, paramd.field_aesKey, paramd.toString() });
+          a.a(this.mvc, paramString);
+          h.qsU.e(10625, new Object[] { Integer.valueOf(1), paramd.field_fileId, "", paramd.field_transInfo });
           break;
-          if ((paramInt == -2) && (!a.CR(paramc)) && (a.dc(paramc, (String)localObject3)))
+          if ((paramInt == -2) && (!a.NT(paramc)) && (a.er(paramc, (String)localObject3)))
           {
-            y.i("MicroMsg.Fav.FavCdnService", "renameAndCopyFile write amr head ok!");
+            ab.i("MicroMsg.Fav.FavCdnService", "renameAndCopyFile write amr head ok!");
           }
           else
           {
@@ -99,7 +104,7 @@ final class a$6
             localObject3 = new b((String)localObject3);
             if (((b)localObject2).exists())
             {
-              y.i("MicroMsg.Fav.FavCdnService", "rename file suc:%b, old:%s, new:%s", new Object[] { Boolean.valueOf(((b)localObject2).n((b)localObject3)), paramc, localObject3 });
+              ab.i("MicroMsg.Fav.FavCdnService", "rename file suc:%b, old:%s, new:%s", new Object[] { Boolean.valueOf(((b)localObject2).p((b)localObject3)), paramc, localObject3 });
               continue;
               ((com.tencent.mm.plugin.fav.a.c)localObject1).field_cdnKey = paramd.field_aesKey;
               ((com.tencent.mm.plugin.fav.a.c)localObject1).field_cdnUrl = paramd.field_fileId;
@@ -107,57 +112,57 @@ final class a$6
           }
         }
       }
-      y.e("MicroMsg.Fav.FavCdnService", "transfer error, mediaid=%s, retCode:%d", new Object[] { paramd.bUi, Integer.valueOf(paramd.field_retCode) });
-      paramc = (a.a)this.kaG.kaA.get(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId);
+      ab.e("MicroMsg.Fav.FavCdnService", "transfer error, mediaid=%s, retCode:%d", new Object[] { paramd.cBO, Integer.valueOf(paramd.field_retCode) });
+      paramc = (a.a)this.mvc.muW.get(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataId);
       if (paramc != null) {
         paramc.errCode = paramd.field_retCode;
       }
       if (-6101 == paramd.field_retCode)
       {
         ((com.tencent.mm.plugin.fav.a.c)localObject1).field_extFlag |= 0x1;
-        h.nFQ.a(141L, 1L, 1L, true);
-        localObject2 = paramd.bUi;
+        h.qsU.idkeyStat(141L, 1L, 1L, true);
+        localObject2 = paramd.cBO;
         if (paramc != null)
         {
-          paramInt = paramc.eRR;
-          label782:
-          y.e("MicroMsg.Fav.FavCdnService", "transfer error, mediaid=%s, retCode:-6101,try time = %d,info.field_type: %d , info.field_dataType: %d", new Object[] { localObject2, Integer.valueOf(paramInt), Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataType) });
+          paramInt = paramc.gjM;
+          label806:
+          ab.e("MicroMsg.Fav.FavCdnService", "transfer error, mediaid=%s, retCode:-6101,try time = %d,info.field_type: %d , info.field_dataType: %d", new Object[] { localObject2, Integer.valueOf(paramInt), Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_dataType) });
         }
       }
       for (;;)
       {
         ((com.tencent.mm.plugin.fav.a.c)localObject1).field_status = 4;
-        h.nFQ.f(10660, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(paramd.field_retCode) });
-        ((ae)g.t(ae.class)).getFavCdnStorage().a((com.tencent.mm.plugin.fav.a.c)localObject1, new String[0]);
+        h.qsU.e(10660, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.c)localObject1).field_type), Integer.valueOf(paramd.field_retCode) });
+        ((ae)g.G(ae.class)).getFavCdnStorage().a((com.tencent.mm.plugin.fav.a.c)localObject1, new String[0]);
         a.g((com.tencent.mm.plugin.fav.a.c)localObject1);
         break;
         paramInt = 1;
-        break label782;
+        break label806;
         switch (paramd.field_retCode)
         {
         default: 
-          h.nFQ.a(141L, 0L, 1L, true);
+          h.qsU.idkeyStat(141L, 0L, 1L, true);
           break;
         case -10003: 
-          h.nFQ.a(141L, 2L, 1L, true);
+          h.qsU.idkeyStat(141L, 2L, 1L, true);
           break;
         case -10005: 
-          h.nFQ.a(141L, 3L, 1L, true);
+          h.qsU.idkeyStat(141L, 3L, 1L, true);
           break;
         case -21000: 
-          h.nFQ.a(141L, 4L, 1L, true);
+          h.qsU.idkeyStat(141L, 4L, 1L, true);
           break;
         case -21009: 
-          h.nFQ.a(141L, 5L, 1L, true);
+          h.qsU.idkeyStat(141L, 5L, 1L, true);
           break;
         case -21014: 
-          h.nFQ.a(141L, 6L, 1L, true);
+          h.qsU.idkeyStat(141L, 6L, 1L, true);
           break;
         case -21020: 
-          h.nFQ.a(141L, 7L, 1L, true);
+          h.qsU.idkeyStat(141L, 7L, 1L, true);
           break;
         case -5103015: 
-          h.nFQ.a(141L, 8L, 1L, true);
+          h.qsU.idkeyStat(141L, 8L, 1L, true);
         }
       }
       paramString = (String)localObject1;
@@ -166,7 +171,7 @@ final class a$6
   
   public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream) {}
   
-  public final byte[] f(String paramString, byte[] paramArrayOfByte)
+  public final byte[] l(String paramString, byte[] paramArrayOfByte)
   {
     return null;
   }

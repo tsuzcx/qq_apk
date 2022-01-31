@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.soter.e;
 
 import com.tencent.mm.plugin.soter.d.g;
-import com.tencent.mm.vending.g.d.a;
-import com.tencent.mm.vending.j.c;
+import com.tencent.mm.vending.g.d.b;
 
 final class b$2
-  implements d.a<c<Integer, String>>
+  implements d.b<Boolean>
 {
-  b$2(g paramg) {}
+  b$2(long paramLong, g paramg) {}
 }
 
 

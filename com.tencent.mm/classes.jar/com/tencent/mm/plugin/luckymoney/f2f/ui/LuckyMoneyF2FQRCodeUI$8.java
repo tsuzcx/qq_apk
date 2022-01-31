@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.luckymoney.f2f.ui;
 
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -9,9 +9,11 @@ final class LuckyMoneyF2FQRCodeUI$8
 {
   LuckyMoneyF2FQRCodeUI$8(LuckyMoneyF2FQRCodeUI paramLuckyMoneyF2FQRCodeUI) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.fq(1, a.i.lucky_money_f2f_clear);
+    AppMethodBeat.i(42182);
+    paraml.hx(1, 2131301217);
+    AppMethodBeat.o(42182);
   }
 }
 

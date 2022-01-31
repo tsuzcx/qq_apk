@@ -6,108 +6,118 @@ import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelstat.p.a;
 import com.tencent.mm.platformtools.ae;
 import com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView;
-import com.tencent.mm.plugin.sns.a.b.j;
+import com.tencent.mm.plugin.sns.a.b.k;
 import com.tencent.mm.plugin.sns.b.c;
 import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.h.d;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.e;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.model.f;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.plugin.sns.ui.c.a.c;
-import com.tencent.mm.protocal.c.bvo;
-import com.tencent.mm.protocal.c.bvp;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.dk;
-import com.tencent.mm.protocal.c.rp;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.cgh;
+import com.tencent.mm.protocal.protobuf.cgi;
+import com.tencent.mm.protocal.protobuf.du;
+import com.tencent.mm.protocal.protobuf.vi;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashSet;
 
 public class AdListView
   extends ListView
 {
-  com.tencent.mm.plugin.sns.a.b.b oMa;
-  f oMb;
-  private e oMc;
-  private boolean oMd = true;
-  private HashSet<String> oMe = new HashSet();
+  com.tencent.mm.plugin.sns.a.b.b rDL;
+  f rDM;
+  private com.tencent.mm.plugin.sns.model.e rDN;
+  private boolean rDO;
+  private HashSet<String> rDP;
   
   public AdListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(38054);
+    this.rDO = true;
+    this.rDP = new HashSet();
+    AppMethodBeat.o(38054);
   }
   
   public AdListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(38053);
+    this.rDO = true;
+    this.rDP = new HashSet();
+    AppMethodBeat.o(38053);
   }
   
   protected void attachViewToParent(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
+    AppMethodBeat.i(38059);
     super.attachViewToParent(paramView, paramInt, paramLayoutParams);
     String str1 = "";
     paramLayoutParams = str1;
-    a.c localc;
+    BaseTimeLineItem.BaseViewHolder localBaseViewHolder;
     boolean bool1;
-    d locald;
+    com.tencent.mm.plugin.sns.i.e locale;
     String str2;
     if (paramView.getTag() != null)
     {
       paramLayoutParams = str1;
-      if ((paramView.getTag() instanceof a.c))
+      if ((paramView.getTag() instanceof BaseTimeLineItem.BaseViewHolder))
       {
-        localc = (a.c)paramView.getTag();
-        str1 = localc.position + " " + localc.bJQ;
-        if ((localc.plP.tNy != 1) && (localc.plP.cCu != 1)) {
-          break label473;
+        localBaseViewHolder = (BaseTimeLineItem.BaseViewHolder)paramView.getTag();
+        str1 = localBaseViewHolder.position + " " + localBaseViewHolder.crk;
+        if ((localBaseViewHolder.timeLineObject.xTZ != 1) && (localBaseViewHolder.timeLineObject.dqG != 1)) {
+          break label494;
         }
         bool1 = true;
-        d.ozJ.bc(localc.plP.lsK, bool1);
-        locald = d.ozJ;
-        str2 = localc.plP.lsK;
-        if (localc.plP.tNq != null) {
-          break label479;
+        com.tencent.mm.plugin.sns.i.e.roN.br(localBaseViewHolder.timeLineObject.Id, bool1);
+        locale = com.tencent.mm.plugin.sns.i.e.roN;
+        str2 = localBaseViewHolder.timeLineObject.Id;
+        if (localBaseViewHolder.timeLineObject.xTR != null) {
+          break label500;
         }
       }
     }
-    label473:
-    label479:
-    for (paramLayoutParams = "";; paramLayoutParams = localc.plP.tNq.lsK)
+    label494:
+    label500:
+    for (paramLayoutParams = "";; paramLayoutParams = localBaseViewHolder.timeLineObject.xTR.Id)
     {
-      locald.eQ(str2, paramLayoutParams);
-      if ((this.oMa != null) && (localc.omL)) {
-        this.oMa.a(localc.position, localc.bJQ, localc.kOp, paramView, localc.pmA, localc.okd, localc.ivk, 1);
+      locale.gt(str2, paramLayoutParams);
+      com.tencent.mm.plugin.sns.i.e.roN.lN(localBaseViewHolder.sgK);
+      if ((this.rDL != null) && (localBaseViewHolder.raZ)) {
+        this.rDL.a(localBaseViewHolder.position, localBaseViewHolder.crk, localBaseViewHolder.nmm, paramView, localBaseViewHolder.sgK, localBaseViewHolder.snsobj, localBaseViewHolder.kwo, 1);
       }
-      if ((!this.oMe.contains(localc.bRV)) && (((localc.omL) && (localc.plP.tNr.sPI == 15)) || (localc.plP.tNr.sPI == 18)))
+      if ((!this.rDP.contains(localBaseViewHolder.czw)) && (((localBaseViewHolder.raZ) && (localBaseViewHolder.timeLineObject.xTS.wNZ == 15)) || (localBaseViewHolder.timeLineObject.xTS.wNZ == 18)))
       {
         boolean bool2 = false;
         bool1 = bool2;
-        if (localc.plP.tNr.sPI == 15)
+        if (localBaseViewHolder.timeLineObject.xTS.wNZ == 15)
         {
           bool1 = bool2;
-          if ((localc.plQ.ogP instanceof SightPlayImageView)) {
-            bool1 = ((SightPlayImageView)localc.plQ.ogP).ofD.bBa();
+          if ((localBaseViewHolder.sfG.qVe instanceof SightPlayImageView)) {
+            bool1 = ((SightPlayImageView)localBaseViewHolder.sfG.qVe).qTR.cmA();
           }
         }
-        j.a(af.bDF().OA(localc.bRV), false, bool1, 0);
-        this.oMe.add(localc.bRV);
+        k.a(ag.cpf().abu(localBaseViewHolder.czw), false, bool1, 0);
+        this.rDP.add(localBaseViewHolder.czw);
       }
-      if (this.oMb != null) {
-        this.oMb.a(localc.bJQ, localc.plP);
+      if (this.rDM != null) {
+        this.rDM.a(localBaseViewHolder.crk, localBaseViewHolder.timeLineObject);
       }
-      if (this.oMc != null) {
-        this.oMc.a(localc.position, localc.bJQ, localc.pmA, localc.plP, localc.omL, localc.omM);
+      if (this.rDN != null) {
+        this.rDN.a(localBaseViewHolder.position, localBaseViewHolder.crk, localBaseViewHolder.sgK, localBaseViewHolder.timeLineObject, localBaseViewHolder.raZ, localBaseViewHolder.rba);
       }
       paramLayoutParams = str1;
-      if (ae.eTp) {
-        y.d("MicroMsg.AdListView", "3childview  onAdded " + paramLayoutParams + " count:" + getChildCount());
+      if (ae.glk) {
+        ab.d("MicroMsg.AdListView", "3childview  onAdded " + paramLayoutParams + " count:" + getChildCount());
       }
+      AppMethodBeat.o(38059);
       return;
       bool1 = false;
       break;
@@ -116,33 +126,38 @@ public class AdListView
   
   protected void detachViewFromParent(int paramInt)
   {
-    if (ae.eTp) {
-      y.d("MicroMsg.AdListView", "2childview  onRemoved " + paramInt + " count:" + getChildCount());
+    AppMethodBeat.i(38058);
+    if (ae.glk) {
+      ab.d("MicroMsg.AdListView", "2childview  onRemoved " + paramInt + " count:" + getChildCount());
     }
     super.detachViewFromParent(paramInt);
+    AppMethodBeat.o(38058);
   }
   
   protected void detachViewFromParent(View paramView)
   {
+    AppMethodBeat.i(38057);
     String str = "";
     Object localObject = str;
     if (paramView.getTag() != null)
     {
       localObject = str;
-      if ((paramView.getTag() instanceof a.c))
+      if ((paramView.getTag() instanceof BaseTimeLineItem.BaseViewHolder))
       {
-        localObject = (a.c)paramView.getTag();
-        localObject = ((a.c)localObject).position + " " + ((a.c)localObject).bJQ;
+        localObject = (BaseTimeLineItem.BaseViewHolder)paramView.getTag();
+        localObject = ((BaseTimeLineItem.BaseViewHolder)localObject).position + " " + ((BaseTimeLineItem.BaseViewHolder)localObject).crk;
       }
     }
-    if (ae.eTp) {
-      y.d("MicroMsg.AdListView", "1childview  onRemoved " + (String)localObject + " count:" + getChildCount());
+    if (ae.glk) {
+      ab.d("MicroMsg.AdListView", "1childview  onRemoved " + (String)localObject + " count:" + getChildCount());
     }
     super.detachViewFromParent(paramView);
+    AppMethodBeat.o(38057);
   }
   
   protected void detachViewsFromParent(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(38064);
     int i = paramInt1;
     while (i < paramInt1 + paramInt2)
     {
@@ -152,101 +167,115 @@ public class AdListView
       if (localView.getTag() != null)
       {
         localObject = str;
-        if ((localView.getTag() instanceof a.c))
+        if ((localView.getTag() instanceof BaseTimeLineItem.BaseViewHolder))
         {
-          localObject = (a.c)localView.getTag();
-          if ((this.oMa != null) && (((a.c)localObject).omL)) {
-            this.oMa.h(((a.c)localObject).position, ((a.c)localObject).bJQ, 1);
+          localObject = (BaseTimeLineItem.BaseViewHolder)localView.getTag();
+          if ((this.rDL != null) && (((BaseTimeLineItem.BaseViewHolder)localObject).raZ)) {
+            this.rDL.k(((BaseTimeLineItem.BaseViewHolder)localObject).position, ((BaseTimeLineItem.BaseViewHolder)localObject).crk, 1);
           }
-          if (this.oMb != null) {
-            this.oMb.Nq(((a.c)localObject).bJQ);
+          if (this.rDM != null) {
+            this.rDM.aai(((BaseTimeLineItem.BaseViewHolder)localObject).crk);
           }
-          if (this.oMc != null) {
-            this.oMc.a(((a.c)localObject).position, ((a.c)localObject).bJQ, ((a.c)localObject).pmA, ((a.c)localObject).plP, ((a.c)localObject).omL);
+          if (this.rDN != null) {
+            this.rDN.a(((BaseTimeLineItem.BaseViewHolder)localObject).position, ((BaseTimeLineItem.BaseViewHolder)localObject).crk, ((BaseTimeLineItem.BaseViewHolder)localObject).sgK, ((BaseTimeLineItem.BaseViewHolder)localObject).timeLineObject, ((BaseTimeLineItem.BaseViewHolder)localObject).raZ);
           }
-          localObject = ((a.c)localObject).position + " " + ((a.c)localObject).bJQ;
+          localObject = ((BaseTimeLineItem.BaseViewHolder)localObject).position + " " + ((BaseTimeLineItem.BaseViewHolder)localObject).crk;
         }
       }
-      if (ae.eTp) {
-        y.d("MicroMsg.AdListView", "8removeView  detachViewsFromParent " + (String)localObject + " count:" + getChildCount());
+      if (ae.glk) {
+        ab.d("MicroMsg.AdListView", "8removeView  detachViewsFromParent " + (String)localObject + " count:" + getChildCount());
       }
       i += 1;
     }
     super.detachViewsFromParent(paramInt1, paramInt2);
+    AppMethodBeat.o(38064);
   }
   
   protected void layoutChildren()
   {
+    AppMethodBeat.i(38055);
     super.layoutChildren();
+    AppMethodBeat.o(38055);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(38056);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(38056);
   }
   
   public void onViewAdded(View paramView)
   {
+    AppMethodBeat.i(38060);
     String str2 = "";
     String str1 = str2;
-    a.c localc;
+    BaseTimeLineItem.BaseViewHolder localBaseViewHolder;
+    boolean bool1;
+    com.tencent.mm.plugin.sns.i.e locale;
+    String str3;
     if (paramView.getTag() != null)
     {
       str1 = str2;
-      if ((paramView.getTag() instanceof a.c))
+      if ((paramView.getTag() instanceof BaseTimeLineItem.BaseViewHolder))
       {
-        localc = (a.c)paramView.getTag();
-        str2 = localc.position + " " + localc.bJQ;
-        if ((localc.plP.tNy != 1) && (localc.plP.cCu != 1)) {
-          break label452;
+        localBaseViewHolder = (BaseTimeLineItem.BaseViewHolder)paramView.getTag();
+        str2 = localBaseViewHolder.position + " " + localBaseViewHolder.crk;
+        if ((localBaseViewHolder.timeLineObject.xTZ != 1) && (localBaseViewHolder.timeLineObject.dqG != 1)) {
+          break label487;
         }
-        bool = true;
-        d.ozJ.bc(localc.plP.lsK, bool);
-        d locald = d.ozJ;
-        String str3 = localc.plP.lsK;
-        if (localc.plP.tNq != null) {
-          break label457;
-        }
-        str1 = "";
-        label139:
-        locald.eQ(str3, str1);
-        if ((this.oMa != null) && (localc.omL)) {
-          this.oMa.a(localc.position, localc.bJQ, localc.kOp, paramView, localc.pmA, localc.okd, localc.ivk, 1);
-        }
-        if ((!this.oMe.contains(localc.bRV)) && (((localc.omL) && (localc.plP.tNr.sPI == 15)) || (localc.plP.tNr.sPI == 18))) {
-          if ((localc.plP.tNr.sPI != 15) || (!(localc.plQ.ogP instanceof SightPlayImageView))) {
-            break label472;
-          }
+        bool1 = true;
+        com.tencent.mm.plugin.sns.i.e.roN.br(localBaseViewHolder.timeLineObject.Id, bool1);
+        locale = com.tencent.mm.plugin.sns.i.e.roN;
+        str3 = localBaseViewHolder.timeLineObject.Id;
+        if (localBaseViewHolder.timeLineObject.xTR != null) {
+          break label492;
         }
       }
     }
-    label452:
-    label457:
-    label472:
-    for (boolean bool = ((SightPlayImageView)localc.plQ.ogP).ofD.bBa();; bool = false)
+    label487:
+    label492:
+    for (str1 = "";; str1 = localBaseViewHolder.timeLineObject.xTR.Id)
     {
-      j.a(af.bDF().OA(localc.bRV), false, bool, 0);
-      this.oMe.add(localc.bRV);
-      if (this.oMb != null) {
-        this.oMb.a(localc.bJQ, localc.plP);
+      locale.gt(str3, str1);
+      com.tencent.mm.plugin.sns.i.e.roN.lN(localBaseViewHolder.sgK);
+      if ((this.rDL != null) && (localBaseViewHolder.raZ)) {
+        this.rDL.a(localBaseViewHolder.position, localBaseViewHolder.crk, localBaseViewHolder.nmm, paramView, localBaseViewHolder.sgK, localBaseViewHolder.snsobj, localBaseViewHolder.kwo, 1);
       }
-      if (this.oMc != null) {
-        this.oMc.a(localc.position, localc.bJQ, localc.pmA, localc.plP, localc.omL, localc.omM);
+      if ((!this.rDP.contains(localBaseViewHolder.czw)) && (((localBaseViewHolder.raZ) && (localBaseViewHolder.timeLineObject.xTS.wNZ == 15)) || (localBaseViewHolder.timeLineObject.xTS.wNZ == 18)))
+      {
+        boolean bool2 = false;
+        bool1 = bool2;
+        if (localBaseViewHolder.timeLineObject.xTS.wNZ == 15)
+        {
+          bool1 = bool2;
+          if ((localBaseViewHolder.sfG.qVe instanceof SightPlayImageView)) {
+            bool1 = ((SightPlayImageView)localBaseViewHolder.sfG.qVe).qTR.cmA();
+          }
+        }
+        k.a(ag.cpf().abu(localBaseViewHolder.czw), false, bool1, 0);
+        this.rDP.add(localBaseViewHolder.czw);
+      }
+      if (this.rDM != null) {
+        this.rDM.a(localBaseViewHolder.crk, localBaseViewHolder.timeLineObject);
+      }
+      if (this.rDN != null) {
+        this.rDN.a(localBaseViewHolder.position, localBaseViewHolder.crk, localBaseViewHolder.sgK, localBaseViewHolder.timeLineObject, localBaseViewHolder.raZ, localBaseViewHolder.rba);
       }
       str1 = str2;
-      if (ae.eTp) {
-        y.d("MicroMsg.AdListView", "4childview  onViewAdded " + str1 + " count:" + getChildCount());
+      if (ae.glk) {
+        ab.d("MicroMsg.AdListView", "4childview  onViewAdded " + str1 + " count:" + getChildCount());
       }
+      AppMethodBeat.o(38060);
       return;
-      bool = false;
+      bool1 = false;
       break;
-      str1 = localc.plP.tNq.lsK;
-      break label139;
     }
   }
   
   public void onViewRemoved(View paramView)
   {
+    AppMethodBeat.i(38061);
     Object localObject2 = "";
     Object localObject1 = localObject2;
     int i;
@@ -256,32 +285,32 @@ public class AdListView
     if (paramView.getTag() != null)
     {
       localObject1 = localObject2;
-      if ((paramView.getTag() instanceof a.c))
+      if ((paramView.getTag() instanceof BaseTimeLineItem.BaseViewHolder))
       {
-        localObject1 = (a.c)paramView.getTag();
-        paramView = ((a.c)localObject1).position + " " + ((a.c)localObject1).bJQ;
-        if ((this.oMa != null) && (((a.c)localObject1).omL)) {
-          this.oMa.h(((a.c)localObject1).position, ((a.c)localObject1).bJQ, 1);
+        localObject1 = (BaseTimeLineItem.BaseViewHolder)paramView.getTag();
+        paramView = ((BaseTimeLineItem.BaseViewHolder)localObject1).position + " " + ((BaseTimeLineItem.BaseViewHolder)localObject1).crk;
+        if ((this.rDL != null) && (((BaseTimeLineItem.BaseViewHolder)localObject1).raZ)) {
+          this.rDL.k(((BaseTimeLineItem.BaseViewHolder)localObject1).position, ((BaseTimeLineItem.BaseViewHolder)localObject1).crk, 1);
         }
-        if (this.oMb != null) {
-          this.oMb.Nq(((a.c)localObject1).bJQ);
+        if (this.rDM != null) {
+          this.rDM.aai(((BaseTimeLineItem.BaseViewHolder)localObject1).crk);
         }
-        if (this.oMc != null) {
-          this.oMc.a(((a.c)localObject1).position, ((a.c)localObject1).bJQ, ((a.c)localObject1).pmA, ((a.c)localObject1).plP, ((a.c)localObject1).omL);
+        if (this.rDN != null) {
+          this.rDN.a(((BaseTimeLineItem.BaseViewHolder)localObject1).position, ((BaseTimeLineItem.BaseViewHolder)localObject1).crk, ((BaseTimeLineItem.BaseViewHolder)localObject1).sgK, ((BaseTimeLineItem.BaseViewHolder)localObject1).timeLineObject, ((BaseTimeLineItem.BaseViewHolder)localObject1).raZ);
         }
-        if (((a.c)localObject1).plP.tNr.sPI != 3) {
-          break label468;
+        if (((BaseTimeLineItem.BaseViewHolder)localObject1).timeLineObject.xTS.wNZ != 3) {
+          break label480;
         }
-        localObject2 = af.bDF().OA(((a.c)localObject1).bRV);
+        localObject2 = ag.cpf().abu(((BaseTimeLineItem.BaseViewHolder)localObject1).czw);
         if (localObject2 != null) {
-          break label301;
+          break label313;
         }
         i = 0;
-        locala = p.a.eEL;
-        str1 = ((a.c)localObject1).plP.oPO;
-        str2 = i.fN(((a.c)localObject1).pmA);
-        if (bk.bl(str1)) {
-          break label468;
+        locala = p.a.fUC;
+        str1 = ((BaseTimeLineItem.BaseViewHolder)localObject1).timeLineObject.rHA;
+        str2 = i.lq(((BaseTimeLineItem.BaseViewHolder)localObject1).sgK);
+        if (bo.isNullOrNil(str1)) {
+          break label480;
         }
         localObject1 = new byte[0];
       }
@@ -295,17 +324,17 @@ public class AdListView
     {
       for (;;)
       {
-        label301:
-        y.printErrStackTrace("MicroMsg.SnsStatExtUtil", localException2, null, new Object[0]);
+        label313:
+        ab.printErrStackTrace("MicroMsg.SnsStatExtUtil", localException2, null, new Object[0]);
       }
     }
-    localObject2 = new bvo();
+    localObject2 = new cgh();
     for (;;)
     {
       try
       {
-        ((bvo)localObject2).aH((byte[])localObject1);
-        localObject1 = ((bvo)localObject2).tMm;
+        ((cgh)localObject2).parseFrom((byte[])localObject1);
+        localObject1 = ((cgh)localObject2).xQY;
         if (localObject1 != null) {
           continue;
         }
@@ -313,69 +342,74 @@ public class AdListView
       }
       catch (Exception localException1)
       {
-        y.printErrStackTrace("MicroMsg.SnsStatExtUtil", localException1, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.SnsStatExtUtil", localException1, "", new Object[0]);
         localView = paramView;
         continue;
-        y.i("MicroMsg.SnsStatExtUtil", "report adPageExposure(13235): scene(%d), statExtStr:%s(id=%s, uxinfo=%s)", new Object[] { Integer.valueOf(locala.value), str1, localException2.tMm.tMp, localException2.tMm.tMq });
-        ((c)g.r(c.class)).a(13235, i, new Object[] { locala.value, localException2.tMm.tMp, localException2.tMm.tMq, str2 });
+        ab.i("MicroMsg.SnsStatExtUtil", "report adPageExposure(13235): scene(%d), statExtStr:%s(id=%s, uxinfo=%s)", new Object[] { Integer.valueOf(locala.value), str1, localException2.xQY.xRb, localException2.xQY.xRc });
+        ((c)g.E(c.class)).a(13235, i, new Object[] { locala.value, localException2.xQY.xRb, localException2.xQY.xRc, str2 });
       }
-      if (ae.eTp) {
-        y.d("MicroMsg.AdListView", "5childview  onViewRemoved " + (String)localObject1 + " count:" + getChildCount());
+      if (ae.glk) {
+        ab.d("MicroMsg.AdListView", "5childview  onViewRemoved " + (String)localObject1 + " count:" + getChildCount());
       }
+      AppMethodBeat.o(38061);
       return;
-      i = ((n)localObject2).bGO();
+      i = ((n)localObject2).csR();
       break;
-      label468:
+      label480:
       View localView = paramView;
     }
   }
   
   public void removeView(View paramView)
   {
+    AppMethodBeat.i(38063);
     super.removeView(paramView);
     String str2 = "";
     String str1 = str2;
     if (paramView.getTag() != null)
     {
       str1 = str2;
-      if ((paramView.getTag() instanceof a.c))
+      if ((paramView.getTag() instanceof BaseTimeLineItem.BaseViewHolder))
       {
-        paramView = (a.c)paramView.getTag();
-        str1 = paramView.position + " " + paramView.bJQ;
+        paramView = (BaseTimeLineItem.BaseViewHolder)paramView.getTag();
+        str1 = paramView.position + " " + paramView.crk;
       }
     }
-    if (ae.eTp) {
-      y.d("MicroMsg.AdListView", "7removeView  onViewRemoved " + str1 + " count:" + getChildCount());
+    if (ae.glk) {
+      ab.d("MicroMsg.AdListView", "7removeView  onViewRemoved " + str1 + " count:" + getChildCount());
     }
+    AppMethodBeat.o(38063);
   }
   
   public void removeViewInLayout(View paramView)
   {
+    AppMethodBeat.i(38062);
     String str = "";
     Object localObject = str;
     if (paramView.getTag() != null)
     {
       localObject = str;
-      if ((paramView.getTag() instanceof a.c))
+      if ((paramView.getTag() instanceof BaseTimeLineItem.BaseViewHolder))
       {
-        localObject = (a.c)paramView.getTag();
-        localObject = ((a.c)localObject).position + " " + ((a.c)localObject).bJQ;
+        localObject = (BaseTimeLineItem.BaseViewHolder)paramView.getTag();
+        localObject = ((BaseTimeLineItem.BaseViewHolder)localObject).position + " " + ((BaseTimeLineItem.BaseViewHolder)localObject).crk;
       }
     }
-    if (ae.eTp) {
-      y.d("MicroMsg.AdListView", "6removeViewInLayout  onViewRemoved " + (String)localObject + " count:" + getChildCount());
+    if (ae.glk) {
+      ab.d("MicroMsg.AdListView", "6removeViewInLayout  onViewRemoved " + (String)localObject + " count:" + getChildCount());
     }
     super.removeViewInLayout(paramView);
+    AppMethodBeat.o(38062);
   }
   
-  public void setTimelineEvent(e parame)
+  public void setTimelineEvent(com.tencent.mm.plugin.sns.model.e parame)
   {
-    this.oMc = parame;
+    this.rDN = parame;
   }
   
   public void setTimelineStat(f paramf)
   {
-    this.oMb = paramf;
+    this.rDM = paramf;
   }
 }
 

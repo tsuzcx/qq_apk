@@ -6,96 +6,111 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.view.menu.h;
 import android.support.v7.view.menu.h.a;
 import android.support.v7.view.menu.o.a;
-import android.support.v7.widget.w;
+import android.support.v7.widget.u;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
   extends a
   implements h.a, o.a
 {
-  public ViewGroup MY;
-  private boolean Pu;
-  private h dm;
-  a uRA;
-  boolean uRB;
-  private final Runnable uRC = new Runnable()
-  {
-    public final void run()
-    {
-      b localb = b.this;
-      Object localObject = localb.mActivity;
-      ActionBar localActionBar = localb.getSupportActionBar();
-      if (localActionBar != null) {
-        localObject = localActionBar.getThemedContext();
-      }
-      localObject = new h((Context)localObject);
-      ((h)localObject).a(localb);
-      if (b.this.uRA != null)
-      {
-        b.this.uRA.d((Menu)localObject);
-        b.this.uRA.c((Menu)localObject);
-        b.a(b.this, (h)localObject);
-      }
-      for (;;)
-      {
-        ((h)localObject).q(true);
-        b.this.uRB = false;
-        return;
-        b.a(b.this, null);
-      }
-    }
-  };
+  public ViewGroup MO;
+  private boolean OJ;
+  private h eq;
+  a zgb;
+  boolean zgc;
+  private final Runnable zgd;
   
   public b(Activity paramActivity, a parama)
   {
     super(paramActivity);
-    this.uRA = parama;
+    AppMethodBeat.i(106150);
+    this.zgd = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(106149);
+        b localb = b.this;
+        Object localObject = localb.mActivity;
+        ActionBar localActionBar = localb.getSupportActionBar();
+        if (localActionBar != null) {
+          localObject = localActionBar.getThemedContext();
+        }
+        localObject = new h((Context)localObject);
+        ((h)localObject).a(localb);
+        if (b.this.zgb != null)
+        {
+          b.this.zgb.d((Menu)localObject);
+          b.this.zgb.c((Menu)localObject);
+          b.a(b.this, (h)localObject);
+        }
+        for (;;)
+        {
+          ((h)localObject).p(true);
+          b.this.zgc = false;
+          AppMethodBeat.o(106149);
+          return;
+          b.a(b.this, null);
+        }
+      }
+    };
+    this.zgb = parama;
+    AppMethodBeat.o(106150);
+  }
+  
+  private void eG()
+  {
+    AppMethodBeat.i(106152);
+    if (!this.OJ)
+    {
+      this.OJ = true;
+      supportInvalidateOptionsMenu();
+    }
+    AppMethodBeat.o(106152);
   }
   
   public final void a(h paramh, boolean paramBoolean) {}
   
   public final boolean a(h paramh, MenuItem paramMenuItem)
   {
-    if (this.uRA != null) {
-      return this.uRA.h(paramMenuItem);
+    AppMethodBeat.i(106153);
+    if (this.zgb != null)
+    {
+      boolean bool = this.zgb.e(paramMenuItem);
+      AppMethodBeat.o(106153);
+      return bool;
     }
+    AppMethodBeat.o(106153);
     return false;
   }
   
   public final void b(h paramh)
   {
+    AppMethodBeat.i(106154);
     if (this.mActionBar != null)
     {
-      w localw = ((d)this.mActionBar).Qq;
-      if ((localw != null) && (localw.fE()))
+      u localu = ((d)this.mActionBar).PY;
+      if ((localu != null) && (localu.gx()))
       {
-        if (!localw.isOverflowMenuShowing())
+        if (!localu.isOverflowMenuShowing())
         {
-          if (localw.getVisibility() == 0) {
-            localw.showOverflowMenu();
+          if (localu.getVisibility() == 0)
+          {
+            localu.showOverflowMenu();
+            AppMethodBeat.o(106154);
           }
-          return;
         }
-        localw.hideOverflowMenu();
+        else {
+          localu.hideOverflowMenu();
+        }
+        AppMethodBeat.o(106154);
         return;
       }
     }
     paramh.close();
-  }
-  
-  public final ActionBar cAk()
-  {
-    if (!this.Pu)
-    {
-      this.Pu = true;
-      supportInvalidateOptionsMenu();
-    }
-    if (this.mActionBar == null) {
-      this.mActionBar = new d(this.mActivity, this.MY);
-    }
-    return this.mActionBar;
+    AppMethodBeat.o(106154);
   }
   
   public final boolean d(h paramh)
@@ -103,13 +118,27 @@ public final class b
     return false;
   }
   
+  public final ActionBar dDu()
+  {
+    AppMethodBeat.i(106151);
+    eG();
+    if (this.mActionBar == null) {
+      this.mActionBar = new d(this.mActivity, this.MO);
+    }
+    ActionBar localActionBar = this.mActionBar;
+    AppMethodBeat.o(106151);
+    return localActionBar;
+  }
+  
   public final void supportInvalidateOptionsMenu()
   {
-    if (!this.uRB)
+    AppMethodBeat.i(106155);
+    if (!this.zgc)
     {
-      this.uRB = true;
-      this.uRC.run();
+      this.zgc = true;
+      this.zgd.run();
     }
+    AppMethodBeat.o(106155);
   }
   
   public static abstract interface a
@@ -118,7 +147,7 @@ public final class b
     
     public abstract boolean d(Menu paramMenu);
     
-    public abstract boolean h(MenuItem paramMenuItem);
+    public abstract boolean e(MenuItem paramMenuItem);
   }
 }
 

@@ -1,25 +1,35 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.q;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vf;
+import com.tencent.mm.g.a.vf.b;
+import com.tencent.mm.plugin.wallet_core.model.a.a;
 
 final class WalletBalanceManagerUI$9
-  implements View.OnClickListener
+  implements a.a
 {
   WalletBalanceManagerUI$9(WalletBalanceManagerUI paramWalletBalanceManagerUI) {}
   
-  public final void onClick(View paramView)
+  public final void r(Object... paramVarArgs)
   {
-    paramView = new Intent();
-    paramView.putExtra("rawUrl", "https://kf.qq.com/touch/scene_product.html?scene_id=kf4");
-    paramView.putExtra("showShare", false);
-    paramView.putExtra("geta8key_username", q.Gj());
-    d.b(this.qhk, "webview", ".ui.tools.WebViewUI", paramView);
-    e.Jc(17);
+    AppMethodBeat.i(142285);
+    if ((this.tOJ.isFinishing()) || (this.tOJ.hasFinish()) || (this.tOJ.isDestroyed()))
+    {
+      AppMethodBeat.o(142285);
+      return;
+    }
+    if ((paramVarArgs[0] instanceof vf))
+    {
+      paramVarArgs = (vf)paramVarArgs[0];
+      if ((paramVarArgs.cLK.cMo) && (paramVarArgs.cLK.errCode == 0))
+      {
+        WalletBalanceManagerUI.a(this.tOJ, paramVarArgs.cLK.cMn);
+        WalletBalanceManagerUI.c(this.tOJ);
+        this.tOJ.bJ();
+        this.tOJ.cfA();
+      }
+    }
+    AppMethodBeat.o(142285);
   }
 }
 

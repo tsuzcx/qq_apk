@@ -5,7 +5,7 @@ public final class c$hz
 {
   public c$hz()
   {
-    super("setCloseWindowConfirmDialogInfo", "setCloseWindowConfirmDialogInfo", 77, false);
+    super("scanLicence", "scanLicence", 203, false);
   }
 }
 

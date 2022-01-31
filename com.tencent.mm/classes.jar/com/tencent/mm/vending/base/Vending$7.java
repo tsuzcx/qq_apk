@@ -1,5 +1,6 @@
 package com.tencent.mm.vending.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vending.f.a;
 
 final class Vending$7
@@ -7,23 +8,32 @@ final class Vending$7
 {
   Vending$7(Vending paramVending) {}
   
-  public final void cancel()
+  public final void cJ(_Index param_Index)
   {
-    this.wta.loaderClear();
-    Vending.a(this.wta);
-  }
-  
-  public final void cf(_Index param_Index)
-  {
-    Vending.i locali = this.wta.getLock(param_Index);
-    boolean bool = Vending.a(this.wta, locali, param_Index);
-    if (locali.g) {
+    AppMethodBeat.i(126168);
+    Vending.i locali = this.ANV.getLock(param_Index);
+    boolean bool = Vending.a(this.ANV, locali, param_Index);
+    if (locali.g)
+    {
       a.d("Vending", "This lock is defer to return %s %s", new Object[] { locali, param_Index });
-    }
-    while (bool) {
+      AppMethodBeat.o(126168);
       return;
     }
-    Vending.a(this.wta, locali);
+    if (bool)
+    {
+      AppMethodBeat.o(126168);
+      return;
+    }
+    Vending.a(this.ANV, locali);
+    AppMethodBeat.o(126168);
+  }
+  
+  public final void cancel()
+  {
+    AppMethodBeat.i(126169);
+    this.ANV.loaderClear();
+    Vending.a(this.ANV);
+    AppMethodBeat.o(126169);
   }
 }
 

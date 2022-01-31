@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.mmsight.segment.a;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$1
   implements MediaPlayer.OnPreparedListener
@@ -10,7 +11,9 @@ final class d$1
   
   public final void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.mnZ.bs(paramMediaPlayer);
+    AppMethodBeat.i(3745);
+    this.oNh.bW(paramMediaPlayer);
+    AppMethodBeat.o(3745);
   }
 }
 

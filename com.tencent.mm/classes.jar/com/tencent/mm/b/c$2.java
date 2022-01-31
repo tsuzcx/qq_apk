@@ -2,7 +2,8 @@ package com.tencent.mm.b;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c$2
   implements Animator.AnimatorListener
@@ -11,26 +12,28 @@ public final class c$2
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
-    this.buy.bur = true;
-    this.buy.buw = 0.0F;
-    this.buy.bux = 0.0F;
+    this.bVJ.bVC = true;
+    this.bVJ.bVH = 0.0F;
+    this.bVJ.bVI = 0.0F;
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.buy.bur = true;
-    this.buy.buw = 0.0F;
-    this.buy.bux = 0.0F;
+    this.bVJ.bVC = true;
+    this.bVJ.bVH = 0.0F;
+    this.bVJ.bVI = 0.0F;
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    this.buy.bur = false;
-    this.buy.buw = 0.0F;
-    this.buy.bux = 0.0F;
-    y.d("MicroMsg.StickBackAnim", "onAnimationStart");
+    AppMethodBeat.i(116142);
+    this.bVJ.bVC = false;
+    this.bVJ.bVH = 0.0F;
+    this.bVJ.bVI = 0.0F;
+    ab.d("MicroMsg.StickBackAnim", "onAnimationStart");
+    AppMethodBeat.o(116142);
   }
 }
 

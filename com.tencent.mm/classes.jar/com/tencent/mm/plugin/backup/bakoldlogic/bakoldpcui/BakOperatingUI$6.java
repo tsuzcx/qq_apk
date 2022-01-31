@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.c;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.d;
@@ -15,22 +16,24 @@ final class BakOperatingUI$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = a.avr().avs();
-    paramDialogInterface.hOb.cancel();
-    paramDialogInterface.hOc.cancel();
-    if ((paramDialogInterface.hOf == 1) || (paramDialogInterface.hOj == 2)) {
-      e.nO(4);
+    AppMethodBeat.i(17938);
+    paramDialogInterface = a.aUU().aUV();
+    paramDialogInterface.jHD.cancel();
+    paramDialogInterface.jHE.cancel();
+    if ((paramDialogInterface.jHH == 1) || (paramDialogInterface.jHL == 2)) {
+      e.rC(4);
     }
     for (;;)
     {
-      a.avr().avs().hOi = -1;
-      paramDialogInterface = a.avr().avt();
-      paramDialogInterface.hNN += 1;
-      BakOperatingUI.b(this.hPc);
-      BakOperatingUI.g(this.hPc);
+      a.aUU().aUV().jHK = -1;
+      paramDialogInterface = a.aUU().aUW();
+      paramDialogInterface.jHp += 1;
+      BakOperatingUI.b(this.jIE);
+      BakOperatingUI.g(this.jIE);
+      AppMethodBeat.o(17938);
       return;
-      if ((paramDialogInterface.hOf == 6) || (paramDialogInterface.hOj == 4) || (paramDialogInterface.hOj == 6)) {
-        e.nO(7);
+      if ((paramDialogInterface.jHH == 6) || (paramDialogInterface.jHL == 4) || (paramDialogInterface.jHL == 6)) {
+        e.rC(7);
       }
     }
   }

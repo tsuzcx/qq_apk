@@ -7,15 +7,15 @@ import java.io.File;
 public class TinkerUncaughtHandler
   implements Thread.UncaughtExceptionHandler
 {
+  private final File BtZ;
   private final Context context;
-  private final Thread.UncaughtExceptionHandler ufC;
-  private final File wXv;
+  private final Thread.UncaughtExceptionHandler yoc;
   
   public TinkerUncaughtHandler(Context paramContext)
   {
     this.context = paramContext;
-    this.ufC = Thread.getDefaultUncaughtExceptionHandler();
-    this.wXv = SharePatchFileUtil.hZ(paramContext);
+    this.yoc = Thread.getDefaultUncaughtExceptionHandler();
+    this.BtZ = SharePatchFileUtil.jA(paramContext);
   }
   
   /* Error */
@@ -31,18 +31,18 @@ public class TinkerUncaughtHandler
     //   13: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: pop
     //   17: aload_0
-    //   18: getfield 27	com/tencent/tinker/loader/TinkerUncaughtHandler:ufC	Ljava/lang/Thread$UncaughtExceptionHandler;
+    //   18: getfield 27	com/tencent/tinker/loader/TinkerUncaughtHandler:yoc	Ljava/lang/Thread$UncaughtExceptionHandler;
     //   21: aload_1
     //   22: aload_2
     //   23: invokeinterface 59 3 0
     //   28: aload_0
-    //   29: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:wXv	Ljava/io/File;
+    //   29: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:BtZ	Ljava/io/File;
     //   32: ifnull +34 -> 66
     //   35: invokestatic 25	java/lang/Thread:getDefaultUncaughtExceptionHandler	()Ljava/lang/Thread$UncaughtExceptionHandler;
     //   38: instanceof 2
     //   41: ifeq +25 -> 66
     //   44: aload_0
-    //   45: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:wXv	Ljava/io/File;
+    //   45: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:BtZ	Ljava/io/File;
     //   48: invokevirtual 65	java/io/File:getParentFile	()Ljava/io/File;
     //   51: astore_1
     //   52: aload_1
@@ -57,7 +57,7 @@ public class TinkerUncaughtHandler
     //   71: new 76	java/io/FileWriter
     //   74: dup
     //   75: aload_0
-    //   76: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:wXv	Ljava/io/File;
+    //   76: getfield 35	com/tencent/tinker/loader/TinkerUncaughtHandler:BtZ	Ljava/io/File;
     //   79: iconst_0
     //   80: invokespecial 79	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
     //   83: invokespecial 82	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
@@ -71,7 +71,7 @@ public class TinkerUncaughtHandler
     //   96: invokespecial 47	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   99: aload_0
     //   100: getfield 19	com/tencent/tinker/loader/TinkerUncaughtHandler:context	Landroid/content/Context;
-    //   103: invokestatic 90	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:ak	(Landroid/content/Context;)Ljava/lang/String;
+    //   103: invokestatic 90	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:aI	(Landroid/content/Context;)Ljava/lang/String;
     //   106: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   112: invokevirtual 97	java/io/PrintWriter:println	(Ljava/lang/String;)V
@@ -79,10 +79,10 @@ public class TinkerUncaughtHandler
     //   116: astore_1
     //   117: aload_3
     //   118: aload_2
-    //   119: invokestatic 100	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:k	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   119: invokestatic 100	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:m	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   122: invokevirtual 97	java/io/PrintWriter:println	(Ljava/lang/String;)V
     //   125: aload_3
-    //   126: invokestatic 104	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:S	(Ljava/lang/Object;)V
+    //   126: invokestatic 104	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:V	(Ljava/lang/Object;)V
     //   129: invokestatic 110	android/os/Process:myPid	()I
     //   132: invokestatic 114	android/os/Process:killProcess	(I)V
     //   135: return
@@ -100,13 +100,13 @@ public class TinkerUncaughtHandler
     //   156: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: pop
     //   160: aload_2
-    //   161: invokestatic 104	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:S	(Ljava/lang/Object;)V
+    //   161: invokestatic 104	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:V	(Ljava/lang/Object;)V
     //   164: goto -35 -> 129
     //   167: astore_2
     //   168: aconst_null
     //   169: astore_1
     //   170: aload_1
-    //   171: invokestatic 104	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:S	(Ljava/lang/Object;)V
+    //   171: invokestatic 104	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:V	(Ljava/lang/Object;)V
     //   174: aload_2
     //   175: athrow
     //   176: astore_2

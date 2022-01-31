@@ -6,14 +6,14 @@ import android.graphics.Color;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.game.g.d;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.model.f;
-import com.tencent.mm.plugin.game.model.l;
+import com.tencent.mm.plugin.game.model.c;
+import com.tencent.mm.plugin.game.model.e;
+import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.plugin.game.widget.TextProgressBar;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -23,66 +23,68 @@ public final class g
   public g(Context paramContext)
   {
     super(paramContext);
-    this.lcT = g.f.game_center_list_item;
+    this.nAO = 2130969721;
   }
   
-  protected final void a(com.tencent.mm.plugin.game.model.d paramd, m.b paramb) {}
+  protected final void a(c paramc, m.b paramb) {}
   
-  protected final void a(com.tencent.mm.plugin.game.model.d paramd, m.b paramb, int paramInt)
+  protected final void a(c paramc, m.b paramb, int paramInt)
   {
-    paramb.lde.setText(paramd.position);
-    Bitmap localBitmap = EX(paramd.field_appId);
+    AppMethodBeat.i(111760);
+    paramb.nAZ.setText(paramc.position);
+    Bitmap localBitmap = Qp(paramc.field_appId);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      paramb.ldf.setImageBitmap(localBitmap);
-      paramb.lcg.setText(paramd.field_appName);
-      if (!bk.bl(paramd.kNX)) {
-        break label226;
+      paramb.nBa.setImageBitmap(localBitmap);
+      paramb.nAb.setText(paramc.field_appName);
+      if (!bo.isNullOrNil(paramc.nlU)) {
+        break label235;
       }
-      paramb.ldi.setVisibility(8);
-      label86:
-      if (bk.dk(paramd.kOh)) {
-        break label248;
+      paramb.nBd.setVisibility(8);
+      label91:
+      if (bo.es(paramc.nme)) {
+        break label257;
       }
-      paramb.ldg.setVisibility(0);
-      paramb.ldg.setText((CharSequence)paramd.kOh.get(0));
+      paramb.nBb.setVisibility(0);
+      paramb.nBb.setText((CharSequence)paramc.nme.get(0));
     }
     for (;;)
     {
-      paramb.ldk.setTextSize(this.kZu);
-      paramb.ldj.setOnClickListener(this.lak);
-      paramb.ldk.setOnClickListener(this.lak);
-      paramb.ldj.setTag(paramd);
-      paramb.ldk.setTag(paramd);
-      this.kZz.a(paramb.ldk, paramb.ldj, paramd, (l)this.lcY.get(paramd.field_appId));
-      paramb.ldl.setData(paramd.kOf);
+      paramb.nBf.setTextSize(this.nxr);
+      paramb.nBe.setOnClickListener(this.nyh);
+      paramb.nBf.setOnClickListener(this.nyh);
+      paramb.nBe.setTag(paramc);
+      paramb.nBf.setTag(paramc);
+      this.nxw.a(paramb.nBf, paramb.nBe, paramc, (k)this.nAT.get(paramc.field_appId));
+      paramb.nBg.setData(paramc.nmc);
+      AppMethodBeat.o(111760);
       return;
-      paramb.ldf.setImageResource(g.d.game_default_icon);
+      paramb.nBa.setImageResource(2130838963);
       break;
-      label226:
-      paramb.ldi.setVisibility(0);
-      paramb.ldi.setText(paramd.kNX);
-      break label86;
-      label248:
-      if (!bk.bl(paramd.kOk))
+      label235:
+      paramb.nBd.setVisibility(0);
+      paramb.nBd.setText(paramc.nlU);
+      break label91;
+      label257:
+      if (!bo.isNullOrNil(paramc.nmh))
       {
-        paramb.ldg.setVisibility(0);
-        paramb.ldg.setText(paramd.kOk);
+        paramb.nBb.setVisibility(0);
+        paramb.nBb.setText(paramc.nmh);
       }
       try
       {
-        paramb.ldg.setBackgroundDrawable(f.cx(Color.parseColor(paramd.kOl), a.fromDPToPix(this.mContext, 10)));
+        paramb.nBb.setBackgroundDrawable(e.dR(Color.parseColor(paramc.nmi), a.fromDPToPix(this.mContext, 10)));
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
-        y.e("MicroMsg.GameCenterListAdapter", localIllegalArgumentException.getMessage());
-        paramb.ldg.setVisibility(8);
+        ab.e("MicroMsg.GameCenterListAdapter", localIllegalArgumentException.getMessage());
+        paramb.nBb.setVisibility(8);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          y.e("MicroMsg.GameCenterListAdapter", localException.getMessage());
+          ab.e("MicroMsg.GameCenterListAdapter", localException.getMessage());
         }
       }
     }

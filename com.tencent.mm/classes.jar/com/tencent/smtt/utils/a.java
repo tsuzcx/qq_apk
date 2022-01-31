@@ -1,85 +1,148 @@
 package com.tencent.smtt.utils;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.TbsExtensionFunctionManager;
+import com.tencent.smtt.sdk.TbsPVConfig;
+import com.tencent.smtt.sdk.TbsShareManager;
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class a
 {
   public static int a(Context paramContext, File paramFile)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      bool1 = bool2;
-      if (!TbsExtensionFunctionManager.getInstance().canUseFunction(paramContext, "disable_get_apk_version_switch.txt")) {
-        bool1 = true;
-      }
-    }
-    return a(paramContext, paramFile, bool1);
-  }
-  
-  public static int a(Context paramContext, File paramFile, boolean paramBoolean)
-  {
-    int i = 1;
-    int j = 0;
-    if (paramFile != null) {}
+    int i = 0;
+    AppMethodBeat.i(65165);
     for (;;)
     {
       try
       {
-        if (!paramFile.exists()) {
-          break label62;
+        if (Build.VERSION.SDK_INT < 23) {
+          continue;
         }
-        if ((Build.VERSION.SDK_INT != 23) && (Build.VERSION.SDK_INT != 25)) {
-          break label109;
+        if (TbsExtensionFunctionManager.getInstance().canUseFunction(paramContext, "disable_get_apk_version_switch.txt")) {
+          continue;
         }
-        if (!Build.MANUFACTURER.toLowerCase().contains("mi")) {
-          break label109;
+        bool = true;
+      }
+      catch (Exception paramContext)
+      {
+        int j;
+        TbsLog.i("ApkUtil", "getApkVersion Failed");
+        continue;
+        boolean bool = false;
+        continue;
+      }
+      j = a(paramContext, paramFile, bool);
+      i = j;
+      AppMethodBeat.o(65165);
+      return i;
+      bool = false;
+    }
+  }
+  
+  public static int a(Context paramContext, File paramFile, boolean paramBoolean)
+  {
+    int j = 0;
+    AppMethodBeat.i(65167);
+    if (!b.a(paramContext, false, paramFile).equals("3082023f308201a8a00302010202044c46914a300d06092a864886f70d01010505003064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f301e170d3130303732313036313835305a170d3430303731333036313835305a3064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f30819f300d06092a864886f70d010101050003818d0030818902818100c209077044bd0d63ea00ede5b839914cabcc912a87f0f8b390877e0f7a2583f0d5933443c40431c35a4433bc4c965800141961adc44c9625b1d321385221fd097e5bdc2f44a1840d643ab59dc070cf6c4b4b4d98bed5cbb8046e0a7078ae134da107cdf2bfc9b440fe5cb2f7549b44b73202cc6f7c2c55b8cfb0d333a021f01f0203010001300d06092a864886f70d010105050003818100b007db9922774ef4ccfee81ba514a8d57c410257e7a2eba64bfa17c9e690da08106d32f637ac41fbc9f205176c71bde238c872c3ee2f8313502bee44c80288ea4ef377a6f2cdfe4d3653c145c4acfedbfbadea23b559d41980cc3cdd35d79a68240693739aabf5c5ed26148756cf88264226de394c8a24ac35b712b120d4d23a"))
+    {
+      k.b(paramFile);
+      AppMethodBeat.o(65167);
+      return 0;
+    }
+    if (paramFile != null) {}
+    label257:
+    for (;;)
+    {
+      int i;
+      try
+      {
+        if (paramFile.exists())
+        {
+          if (paramFile.getName().contains("tbs.org"))
+          {
+            i = c(paramFile);
+            if (i > 0)
+            {
+              AppMethodBeat.o(65167);
+              return i;
+            }
+            if (!TbsShareManager.isThirdPartyApp(paramContext))
+            {
+              boolean bool = paramFile.getAbsolutePath().contains(paramContext.getApplicationInfo().packageName);
+              if (!bool)
+              {
+                AppMethodBeat.o(65167);
+                return 0;
+              }
+            }
+          }
+          if (((Build.VERSION.SDK_INT != 23) && (Build.VERSION.SDK_INT != 25)) || (!Build.MANUFACTURER.toLowerCase().contains("mi"))) {
+            break label252;
+          }
+          i = 1;
+          TbsPVConfig.releaseInstance();
+          int k = TbsPVConfig.getInstance(paramContext).getReadApk();
+          if (k == 1)
+          {
+            i = 0;
+            paramBoolean = false;
+            break label257;
+            label164:
+            i = b(paramFile);
+            if (i > 0)
+            {
+              AppMethodBeat.o(65167);
+              return i;
+            }
+          }
+          else
+          {
+            if (k != 2) {
+              break label257;
+            }
+            AppMethodBeat.o(65167);
+            return 0;
+          }
         }
       }
       catch (Throwable localThrowable) {}
-      i = b(paramFile);
-      if (i > 0) {
-        return i;
-      }
-      label62:
-      label109:
+      label252:
       do
       {
-        for (;;)
+        i = j;
+        if (paramFile != null)
         {
           i = j;
-          if (paramFile == null) {
-            break;
-          }
+          if (!paramFile.exists()) {}
+        }
+        try
+        {
+          paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramFile.getAbsolutePath(), 1);
           i = j;
-          if (!paramFile.exists()) {
-            break;
-          }
-          try
-          {
-            paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramFile.getAbsolutePath(), 1);
-            i = j;
-            if (paramContext == null) {
-              break;
-            }
+          if (paramContext != null) {
             i = paramContext.versionCode;
-            return i;
           }
-          catch (Throwable paramContext)
-          {
-            return -1;
-          }
+          AppMethodBeat.o(65167);
+          return i;
+        }
+        catch (Throwable paramContext)
+        {
+          AppMethodBeat.o(65167);
+          return -1;
         }
         i = 0;
+        break;
         if (paramBoolean) {
-          break;
+          break label164;
         }
       } while (i == 0);
     }
@@ -89,394 +152,462 @@ public class a
   public static String a(File paramFile)
   {
     // Byte code:
-    //   0: bipush 16
-    //   2: newarray char
-    //   4: astore 5
-    //   6: aload 5
-    //   8: dup
-    //   9: iconst_0
-    //   10: ldc 84
-    //   12: castore
+    //   0: ldc 159
+    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: bipush 16
+    //   7: newarray char
+    //   9: astore 5
+    //   11: aload 5
     //   13: dup
-    //   14: iconst_1
-    //   15: ldc 85
+    //   14: iconst_0
+    //   15: ldc 160
     //   17: castore
     //   18: dup
-    //   19: iconst_2
-    //   20: ldc 86
+    //   19: iconst_1
+    //   20: ldc 161
     //   22: castore
     //   23: dup
-    //   24: iconst_3
-    //   25: ldc 87
+    //   24: iconst_2
+    //   25: ldc 162
     //   27: castore
     //   28: dup
-    //   29: iconst_4
-    //   30: ldc 88
+    //   29: iconst_3
+    //   30: ldc 163
     //   32: castore
     //   33: dup
-    //   34: iconst_5
-    //   35: ldc 89
+    //   34: iconst_4
+    //   35: ldc 164
     //   37: castore
     //   38: dup
-    //   39: bipush 6
-    //   41: ldc 90
-    //   43: castore
-    //   44: dup
-    //   45: bipush 7
-    //   47: ldc 91
-    //   49: castore
-    //   50: dup
-    //   51: bipush 8
-    //   53: ldc 92
-    //   55: castore
-    //   56: dup
-    //   57: bipush 9
-    //   59: ldc 93
-    //   61: castore
-    //   62: dup
-    //   63: bipush 10
-    //   65: ldc 94
-    //   67: castore
-    //   68: dup
-    //   69: bipush 11
-    //   71: ldc 95
-    //   73: castore
-    //   74: dup
-    //   75: bipush 12
-    //   77: ldc 96
-    //   79: castore
-    //   80: dup
-    //   81: bipush 13
-    //   83: ldc 97
-    //   85: castore
-    //   86: dup
-    //   87: bipush 14
-    //   89: ldc 98
-    //   91: castore
-    //   92: dup
-    //   93: bipush 15
-    //   95: ldc 99
-    //   97: castore
-    //   98: pop
-    //   99: bipush 32
-    //   101: newarray char
-    //   103: astore 6
-    //   105: ldc 101
-    //   107: invokestatic 106	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   110: astore 7
-    //   112: new 108	java/io/FileInputStream
-    //   115: dup
-    //   116: aload_0
-    //   117: invokespecial 112	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   120: astore_0
-    //   121: sipush 8192
-    //   124: newarray byte
-    //   126: astore 8
-    //   128: aload_0
-    //   129: aload 8
-    //   131: invokevirtual 116	java/io/FileInputStream:read	([B)I
-    //   134: istore_1
-    //   135: iload_1
-    //   136: iconst_m1
-    //   137: if_icmpeq +31 -> 168
-    //   140: aload 7
-    //   142: aload 8
-    //   144: iconst_0
-    //   145: iload_1
-    //   146: invokevirtual 120	java/security/MessageDigest:update	([BII)V
-    //   149: goto -21 -> 128
-    //   152: astore 5
-    //   154: aload_0
-    //   155: ifnull +7 -> 162
-    //   158: aload_0
-    //   159: invokevirtual 124	java/io/FileInputStream:close	()V
-    //   162: aconst_null
-    //   163: astore 5
-    //   165: aload 5
-    //   167: areturn
-    //   168: aload 7
-    //   170: invokevirtual 128	java/security/MessageDigest:digest	()[B
-    //   173: astore 7
-    //   175: iconst_0
-    //   176: istore_1
-    //   177: iconst_0
-    //   178: istore_2
-    //   179: goto +67 -> 246
-    //   182: new 44	java/lang/String
-    //   185: dup
-    //   186: aload 6
-    //   188: invokespecial 131	java/lang/String:<init>	([C)V
-    //   191: astore 6
-    //   193: aload 6
-    //   195: astore 5
-    //   197: aload_0
-    //   198: ifnull -33 -> 165
-    //   201: aload_0
-    //   202: invokevirtual 124	java/io/FileInputStream:close	()V
-    //   205: aload 6
-    //   207: areturn
-    //   208: astore_0
-    //   209: aload 6
-    //   211: areturn
-    //   212: astore 5
-    //   214: aconst_null
-    //   215: astore_0
-    //   216: aload_0
-    //   217: ifnull +7 -> 224
-    //   220: aload_0
-    //   221: invokevirtual 124	java/io/FileInputStream:close	()V
-    //   224: aload 5
-    //   226: athrow
-    //   227: astore_0
-    //   228: goto -66 -> 162
+    //   39: iconst_5
+    //   40: ldc 165
+    //   42: castore
+    //   43: dup
+    //   44: bipush 6
+    //   46: ldc 166
+    //   48: castore
+    //   49: dup
+    //   50: bipush 7
+    //   52: ldc 167
+    //   54: castore
+    //   55: dup
+    //   56: bipush 8
+    //   58: ldc 168
+    //   60: castore
+    //   61: dup
+    //   62: bipush 9
+    //   64: ldc 169
+    //   66: castore
+    //   67: dup
+    //   68: bipush 10
+    //   70: ldc 170
+    //   72: castore
+    //   73: dup
+    //   74: bipush 11
+    //   76: ldc 171
+    //   78: castore
+    //   79: dup
+    //   80: bipush 12
+    //   82: ldc 172
+    //   84: castore
+    //   85: dup
+    //   86: bipush 13
+    //   88: ldc 173
+    //   90: castore
+    //   91: dup
+    //   92: bipush 14
+    //   94: ldc 174
+    //   96: castore
+    //   97: dup
+    //   98: bipush 15
+    //   100: ldc 175
+    //   102: castore
+    //   103: pop
+    //   104: bipush 32
+    //   106: newarray char
+    //   108: astore 6
+    //   110: ldc 177
+    //   112: invokestatic 182	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   115: astore 7
+    //   117: new 184	java/io/FileInputStream
+    //   120: dup
+    //   121: aload_0
+    //   122: invokespecial 186	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   125: astore_0
+    //   126: sipush 8192
+    //   129: newarray byte
+    //   131: astore 8
+    //   133: aload_0
+    //   134: aload 8
+    //   136: invokevirtual 190	java/io/FileInputStream:read	([B)I
+    //   139: istore_1
+    //   140: iload_1
+    //   141: iconst_m1
+    //   142: if_icmpeq +32 -> 174
+    //   145: aload 7
+    //   147: aload 8
+    //   149: iconst_0
+    //   150: iload_1
+    //   151: invokevirtual 194	java/security/MessageDigest:update	([BII)V
+    //   154: goto -21 -> 133
+    //   157: astore 5
+    //   159: aload_0
+    //   160: ifnull +7 -> 167
+    //   163: aload_0
+    //   164: invokevirtual 197	java/io/FileInputStream:close	()V
+    //   167: ldc 159
+    //   169: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   172: aconst_null
+    //   173: areturn
+    //   174: aload 7
+    //   176: invokevirtual 201	java/security/MessageDigest:digest	()[B
+    //   179: astore 7
+    //   181: iconst_0
+    //   182: istore_1
+    //   183: iconst_0
+    //   184: istore_2
+    //   185: goto +69 -> 254
+    //   188: new 65	java/lang/String
+    //   191: dup
+    //   192: aload 6
+    //   194: invokespecial 204	java/lang/String:<init>	([C)V
+    //   197: astore 5
+    //   199: aload_0
+    //   200: invokevirtual 197	java/io/FileInputStream:close	()V
+    //   203: ldc 159
+    //   205: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   208: aload 5
+    //   210: areturn
+    //   211: astore 5
+    //   213: aconst_null
+    //   214: astore_0
+    //   215: aload_0
+    //   216: ifnull +7 -> 223
+    //   219: aload_0
+    //   220: invokevirtual 197	java/io/FileInputStream:close	()V
+    //   223: ldc 159
+    //   225: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   228: aload 5
+    //   230: athrow
     //   231: astore_0
-    //   232: goto -8 -> 224
-    //   235: astore 5
-    //   237: goto -21 -> 216
-    //   240: astore_0
-    //   241: aconst_null
-    //   242: astore_0
-    //   243: goto -89 -> 154
-    //   246: iload_1
-    //   247: bipush 16
-    //   249: if_icmpge -67 -> 182
-    //   252: aload 7
+    //   232: goto -29 -> 203
+    //   235: astore_0
+    //   236: goto -69 -> 167
+    //   239: astore_0
+    //   240: goto -17 -> 223
+    //   243: astore 5
+    //   245: goto -30 -> 215
+    //   248: astore_0
+    //   249: aconst_null
+    //   250: astore_0
+    //   251: goto -92 -> 159
     //   254: iload_1
-    //   255: baload
-    //   256: istore 4
-    //   258: iload_2
-    //   259: iconst_1
-    //   260: iadd
-    //   261: istore_3
-    //   262: aload 6
-    //   264: iload_2
-    //   265: aload 5
-    //   267: iload 4
-    //   269: iconst_4
-    //   270: iushr
-    //   271: bipush 15
-    //   273: iand
-    //   274: caload
-    //   275: castore
-    //   276: aload 6
-    //   278: iload_3
-    //   279: aload 5
-    //   281: iload 4
-    //   283: bipush 15
-    //   285: iand
-    //   286: caload
-    //   287: castore
-    //   288: iload_1
-    //   289: iconst_1
-    //   290: iadd
-    //   291: istore_1
-    //   292: iload_3
-    //   293: iconst_1
-    //   294: iadd
-    //   295: istore_2
-    //   296: goto -50 -> 246
+    //   255: bipush 16
+    //   257: if_icmpge -69 -> 188
+    //   260: aload 7
+    //   262: iload_1
+    //   263: baload
+    //   264: istore 4
+    //   266: iload_2
+    //   267: iconst_1
+    //   268: iadd
+    //   269: istore_3
+    //   270: aload 6
+    //   272: iload_2
+    //   273: aload 5
+    //   275: iload 4
+    //   277: iconst_4
+    //   278: iushr
+    //   279: bipush 15
+    //   281: iand
+    //   282: caload
+    //   283: castore
+    //   284: aload 6
+    //   286: iload_3
+    //   287: aload 5
+    //   289: iload 4
+    //   291: bipush 15
+    //   293: iand
+    //   294: caload
+    //   295: castore
+    //   296: iload_1
+    //   297: iconst_1
+    //   298: iadd
+    //   299: istore_1
+    //   300: iload_3
+    //   301: iconst_1
+    //   302: iadd
+    //   303: istore_2
+    //   304: goto -50 -> 254
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	299	0	paramFile	File
-    //   134	158	1	i	int
-    //   178	118	2	j	int
-    //   261	34	3	k	int
-    //   256	30	4	m	int
-    //   4	3	5	arrayOfChar	char[]
-    //   152	1	5	localException	Exception
-    //   163	33	5	localObject1	Object
-    //   212	13	5	localObject2	Object
-    //   235	45	5	localObject3	Object
-    //   103	174	6	localObject4	Object
-    //   110	143	7	localObject5	Object
-    //   126	17	8	arrayOfByte	byte[]
+    //   0	307	0	paramFile	File
+    //   139	161	1	i	int
+    //   184	120	2	j	int
+    //   269	34	3	k	int
+    //   264	30	4	m	int
+    //   9	3	5	arrayOfChar1	char[]
+    //   157	1	5	localException	Exception
+    //   197	12	5	str	String
+    //   211	18	5	localObject1	Object
+    //   243	45	5	localObject2	Object
+    //   108	177	6	arrayOfChar2	char[]
+    //   115	146	7	localObject3	Object
+    //   131	17	8	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   121	128	152	java/lang/Exception
-    //   128	135	152	java/lang/Exception
-    //   140	149	152	java/lang/Exception
-    //   168	175	152	java/lang/Exception
-    //   182	193	152	java/lang/Exception
-    //   201	205	208	java/io/IOException
-    //   105	121	212	finally
-    //   158	162	227	java/io/IOException
-    //   220	224	231	java/io/IOException
-    //   121	128	235	finally
-    //   128	135	235	finally
-    //   140	149	235	finally
-    //   168	175	235	finally
-    //   182	193	235	finally
-    //   105	121	240	java/lang/Exception
+    //   126	133	157	java/lang/Exception
+    //   133	140	157	java/lang/Exception
+    //   145	154	157	java/lang/Exception
+    //   174	181	157	java/lang/Exception
+    //   188	199	157	java/lang/Exception
+    //   110	126	211	finally
+    //   199	203	231	java/io/IOException
+    //   163	167	235	java/io/IOException
+    //   219	223	239	java/io/IOException
+    //   126	133	243	finally
+    //   133	140	243	finally
+    //   145	154	243	finally
+    //   174	181	243	finally
+    //   188	199	243	finally
+    //   110	126	248	java/lang/Exception
   }
   
   public static boolean a(Context paramContext, File paramFile, long paramLong, int paramInt)
   {
-    if ((paramFile == null) || (!paramFile.exists())) {}
-    for (;;)
+    AppMethodBeat.i(65163);
+    if ((paramFile == null) || (!paramFile.exists()))
     {
+      AppMethodBeat.o(65163);
       return false;
-      if ((paramLong <= 0L) || (paramLong == paramFile.length())) {
-        try
-        {
-          if (paramInt == a(paramContext, paramFile))
-          {
-            boolean bool = "3082023f308201a8a00302010202044c46914a300d06092a864886f70d01010505003064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f301e170d3130303732313036313835305a170d3430303731333036313835305a3064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f30819f300d06092a864886f70d010101050003818d0030818902818100c209077044bd0d63ea00ede5b839914cabcc912a87f0f8b390877e0f7a2583f0d5933443c40431c35a4433bc4c965800141961adc44c9625b1d321385221fd097e5bdc2f44a1840d643ab59dc070cf6c4b4b4d98bed5cbb8046e0a7078ae134da107cdf2bfc9b440fe5cb2f7549b44b73202cc6f7c2c55b8cfb0d333a021f01f0203010001300d06092a864886f70d010105050003818100b007db9922774ef4ccfee81ba514a8d57c410257e7a2eba64bfa17c9e690da08106d32f637ac41fbc9f205176c71bde238c872c3ee2f8313502bee44c80288ea4ef377a6f2cdfe4d3653c145c4acfedbfbadea23b559d41980cc3cdd35d79a68240693739aabf5c5ed26148756cf88264226de394c8a24ac35b712b120d4d23a".equals(b.a(paramContext, true, paramFile));
-            if (bool) {
-              return true;
-            }
-          }
-        }
-        catch (Exception paramContext) {}
+    }
+    if ((paramLong > 0L) && (paramLong != paramFile.length()))
+    {
+      AppMethodBeat.o(65163);
+      return false;
+    }
+    try
+    {
+      int i = a(paramContext, paramFile);
+      if (paramInt != i)
+      {
+        AppMethodBeat.o(65163);
+        return false;
+      }
+      boolean bool = "3082023f308201a8a00302010202044c46914a300d06092a864886f70d01010505003064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f301e170d3130303732313036313835305a170d3430303731333036313835305a3064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f30819f300d06092a864886f70d010101050003818d0030818902818100c209077044bd0d63ea00ede5b839914cabcc912a87f0f8b390877e0f7a2583f0d5933443c40431c35a4433bc4c965800141961adc44c9625b1d321385221fd097e5bdc2f44a1840d643ab59dc070cf6c4b4b4d98bed5cbb8046e0a7078ae134da107cdf2bfc9b440fe5cb2f7549b44b73202cc6f7c2c55b8cfb0d333a021f01f0203010001300d06092a864886f70d010105050003818100b007db9922774ef4ccfee81ba514a8d57c410257e7a2eba64bfa17c9e690da08106d32f637ac41fbc9f205176c71bde238c872c3ee2f8313502bee44c80288ea4ef377a6f2cdfe4d3653c145c4acfedbfbadea23b559d41980cc3cdd35d79a68240693739aabf5c5ed26148756cf88264226de394c8a24ac35b712b120d4d23a".equals(b.a(paramContext, true, paramFile));
+      if (!bool)
+      {
+        AppMethodBeat.o(65163);
+        return false;
       }
     }
-    return false;
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(65163);
+      return false;
+    }
+    AppMethodBeat.o(65163);
+    return true;
   }
   
   /* Error */
   public static int b(File paramFile)
   {
     // Byte code:
-    //   0: new 151	java/util/jar/JarFile
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 152	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
-    //   8: astore_3
-    //   9: new 154	java/io/BufferedReader
-    //   12: dup
-    //   13: new 156	java/io/InputStreamReader
-    //   16: dup
-    //   17: aload_3
-    //   18: aload_3
-    //   19: ldc 158
-    //   21: invokevirtual 162	java/util/jar/JarFile:getJarEntry	(Ljava/lang/String;)Ljava/util/jar/JarEntry;
-    //   24: invokevirtual 166	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   27: invokespecial 169	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   30: invokespecial 172	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   33: astore_2
-    //   34: aload_2
-    //   35: invokevirtual 175	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   38: astore_0
-    //   39: aload_0
-    //   40: ifnull +104 -> 144
-    //   43: aload_0
-    //   44: ldc 177
-    //   46: invokevirtual 54	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   49: ifeq -15 -> 34
-    //   52: aload_0
-    //   53: ldc 179
-    //   55: invokevirtual 183	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   58: astore_0
-    //   59: aload_0
-    //   60: ifnull -26 -> 34
-    //   63: aload_0
-    //   64: arraylength
-    //   65: iconst_2
-    //   66: if_icmpne -32 -> 34
-    //   69: aload_0
-    //   70: iconst_1
-    //   71: aaload
-    //   72: invokevirtual 186	java/lang/String:trim	()Ljava/lang/String;
-    //   75: invokestatic 192	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   78: istore_1
-    //   79: aload_2
-    //   80: ifnull +7 -> 87
-    //   83: aload_2
-    //   84: invokevirtual 193	java/io/BufferedReader:close	()V
-    //   87: aload_3
-    //   88: ifnull +7 -> 95
+    //   0: ldc 213
+    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 2
+    //   7: monitorenter
+    //   8: new 215	java/util/jar/JarFile
+    //   11: dup
+    //   12: aload_0
+    //   13: invokespecial 216	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
+    //   16: astore_3
+    //   17: new 218	java/io/BufferedReader
+    //   20: dup
+    //   21: new 220	java/io/InputStreamReader
+    //   24: dup
+    //   25: aload_3
+    //   26: aload_3
+    //   27: ldc 222
+    //   29: invokevirtual 226	java/util/jar/JarFile:getJarEntry	(Ljava/lang/String;)Ljava/util/jar/JarEntry;
+    //   32: invokevirtual 230	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   35: invokespecial 233	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   38: invokespecial 236	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   41: astore_2
+    //   42: aload_2
+    //   43: invokevirtual 239	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   46: astore_0
+    //   47: aload_0
+    //   48: ifnull +57 -> 105
+    //   51: aload_0
+    //   52: ldc 241
+    //   54: invokevirtual 91	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   57: ifeq -15 -> 42
+    //   60: aload_0
+    //   61: ldc 243
+    //   63: invokevirtual 247	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   66: astore_0
+    //   67: aload_0
+    //   68: ifnull -26 -> 42
+    //   71: aload_0
+    //   72: arraylength
+    //   73: iconst_2
+    //   74: if_icmpne -32 -> 42
+    //   77: aload_0
+    //   78: iconst_1
+    //   79: aaload
+    //   80: invokevirtual 250	java/lang/String:trim	()Ljava/lang/String;
+    //   83: invokestatic 256	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   86: istore_1
+    //   87: aload_2
+    //   88: invokevirtual 257	java/io/BufferedReader:close	()V
     //   91: aload_3
-    //   92: invokevirtual 194	java/util/jar/JarFile:close	()V
-    //   95: iload_1
-    //   96: ireturn
-    //   97: astore_0
-    //   98: aconst_null
-    //   99: astore_2
-    //   100: aconst_null
-    //   101: astore_3
-    //   102: aload_2
-    //   103: ifnull +7 -> 110
-    //   106: aload_2
-    //   107: invokevirtual 193	java/io/BufferedReader:close	()V
-    //   110: aload_3
-    //   111: ifnull +7 -> 118
-    //   114: aload_3
-    //   115: invokevirtual 194	java/util/jar/JarFile:close	()V
-    //   118: aload_0
-    //   119: athrow
-    //   120: astore_0
-    //   121: aconst_null
-    //   122: astore_0
-    //   123: aconst_null
-    //   124: astore_3
-    //   125: aload_0
-    //   126: ifnull +7 -> 133
-    //   129: aload_0
-    //   130: invokevirtual 193	java/io/BufferedReader:close	()V
-    //   133: aload_3
-    //   134: ifnull +62 -> 196
-    //   137: aload_3
-    //   138: invokevirtual 194	java/util/jar/JarFile:close	()V
-    //   141: goto +55 -> 196
-    //   144: aload_2
-    //   145: ifnull +7 -> 152
-    //   148: aload_2
-    //   149: invokevirtual 193	java/io/BufferedReader:close	()V
-    //   152: aload_3
-    //   153: ifnull +43 -> 196
-    //   156: aload_3
-    //   157: invokevirtual 194	java/util/jar/JarFile:close	()V
-    //   160: goto +36 -> 196
-    //   163: astore_0
-    //   164: goto +32 -> 196
-    //   167: astore_0
-    //   168: iload_1
-    //   169: ireturn
-    //   170: astore_2
-    //   171: goto -53 -> 118
-    //   174: astore_0
-    //   175: aconst_null
-    //   176: astore_2
-    //   177: goto -75 -> 102
-    //   180: astore_0
-    //   181: goto -79 -> 102
-    //   184: astore_0
-    //   185: aconst_null
-    //   186: astore_0
-    //   187: goto -62 -> 125
-    //   190: astore_0
-    //   191: aload_2
-    //   192: astore_0
-    //   193: goto -68 -> 125
-    //   196: iconst_m1
-    //   197: ireturn
+    //   92: invokevirtual 258	java/util/jar/JarFile:close	()V
+    //   95: ldc 2
+    //   97: monitorexit
+    //   98: ldc 213
+    //   100: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   103: iload_1
+    //   104: ireturn
+    //   105: aload_2
+    //   106: invokevirtual 257	java/io/BufferedReader:close	()V
+    //   109: aload_3
+    //   110: invokevirtual 258	java/util/jar/JarFile:close	()V
+    //   113: ldc 2
+    //   115: monitorexit
+    //   116: ldc 213
+    //   118: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   121: iconst_m1
+    //   122: ireturn
+    //   123: astore_0
+    //   124: aconst_null
+    //   125: astore_0
+    //   126: aconst_null
+    //   127: astore_3
+    //   128: aload_0
+    //   129: ifnull +7 -> 136
+    //   132: aload_0
+    //   133: invokevirtual 257	java/io/BufferedReader:close	()V
+    //   136: aload_3
+    //   137: ifnull -24 -> 113
+    //   140: aload_3
+    //   141: invokevirtual 258	java/util/jar/JarFile:close	()V
+    //   144: goto -31 -> 113
+    //   147: astore_0
+    //   148: goto -35 -> 113
+    //   151: astore_0
+    //   152: aconst_null
+    //   153: astore_2
+    //   154: aconst_null
+    //   155: astore_3
+    //   156: aload_2
+    //   157: ifnull +7 -> 164
+    //   160: aload_2
+    //   161: invokevirtual 257	java/io/BufferedReader:close	()V
+    //   164: aload_3
+    //   165: ifnull +7 -> 172
+    //   168: aload_3
+    //   169: invokevirtual 258	java/util/jar/JarFile:close	()V
+    //   172: ldc 213
+    //   174: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   177: aload_0
+    //   178: athrow
+    //   179: astore_0
+    //   180: ldc 2
+    //   182: monitorexit
+    //   183: ldc 213
+    //   185: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   188: aload_0
+    //   189: athrow
+    //   190: astore_2
+    //   191: goto -19 -> 172
+    //   194: astore_0
+    //   195: aconst_null
+    //   196: astore_2
+    //   197: goto -41 -> 156
+    //   200: astore_0
+    //   201: goto -45 -> 156
+    //   204: astore_0
+    //   205: aconst_null
+    //   206: astore_0
+    //   207: goto -79 -> 128
+    //   210: astore_0
+    //   211: aload_2
+    //   212: astore_0
+    //   213: goto -85 -> 128
+    //   216: astore_0
+    //   217: goto -104 -> 113
+    //   220: astore_0
+    //   221: goto -126 -> 95
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	198	0	paramFile	File
-    //   78	91	1	i	int
-    //   33	116	2	localBufferedReader	java.io.BufferedReader
-    //   170	1	2	localException	Exception
-    //   176	16	2	localObject	Object
-    //   8	149	3	localJarFile	java.util.jar.JarFile
+    //   0	224	0	paramFile	File
+    //   86	18	1	i	int
+    //   41	120	2	localBufferedReader	java.io.BufferedReader
+    //   190	1	2	localException	Exception
+    //   196	16	2	localObject	Object
+    //   16	153	3	localJarFile	java.util.jar.JarFile
     // Exception table:
     //   from	to	target	type
-    //   0	9	97	finally
-    //   0	9	120	java/lang/Exception
-    //   129	133	163	java/lang/Exception
-    //   137	141	163	java/lang/Exception
-    //   148	152	163	java/lang/Exception
-    //   156	160	163	java/lang/Exception
-    //   83	87	167	java/lang/Exception
-    //   91	95	167	java/lang/Exception
-    //   106	110	170	java/lang/Exception
-    //   114	118	170	java/lang/Exception
-    //   9	34	174	finally
-    //   34	39	180	finally
-    //   43	59	180	finally
-    //   63	79	180	finally
-    //   9	34	184	java/lang/Exception
-    //   34	39	190	java/lang/Exception
-    //   43	59	190	java/lang/Exception
-    //   63	79	190	java/lang/Exception
+    //   8	17	123	java/lang/Exception
+    //   132	136	147	java/lang/Exception
+    //   140	144	147	java/lang/Exception
+    //   8	17	151	finally
+    //   87	95	179	finally
+    //   95	98	179	finally
+    //   105	113	179	finally
+    //   113	116	179	finally
+    //   132	136	179	finally
+    //   140	144	179	finally
+    //   160	164	179	finally
+    //   168	172	179	finally
+    //   172	179	179	finally
+    //   180	183	179	finally
+    //   160	164	190	java/lang/Exception
+    //   168	172	190	java/lang/Exception
+    //   17	42	194	finally
+    //   42	47	200	finally
+    //   51	67	200	finally
+    //   71	87	200	finally
+    //   17	42	204	java/lang/Exception
+    //   42	47	210	java/lang/Exception
+    //   51	67	210	java/lang/Exception
+    //   71	87	210	java/lang/Exception
+    //   105	113	216	java/lang/Exception
+    //   87	95	220	java/lang/Exception
+  }
+  
+  private static int c(File paramFile)
+  {
+    AppMethodBeat.i(65166);
+    try
+    {
+      paramFile = paramFile.getParentFile();
+      if (paramFile != null)
+      {
+        paramFile = paramFile.listFiles();
+        Pattern localPattern = Pattern.compile("x5.backup(.*)");
+        int j = paramFile.length;
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject = paramFile[i];
+          if ((localPattern.matcher(localObject.getName()).find()) && (localObject.isFile()) && (localObject.exists()))
+          {
+            i = Integer.parseInt(localObject.getName().substring(localObject.getName().lastIndexOf(".") + 1));
+            AppMethodBeat.o(65166);
+            return i;
+          }
+          i += 1;
+        }
+      }
+      return -1;
+    }
+    catch (Exception paramFile)
+    {
+      AppMethodBeat.o(65166);
+    }
   }
 }
 

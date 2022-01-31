@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.exdevice.service;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.a.a.a;
-import com.tencent.mm.plugin.f.a.b.e;
+import com.tencent.mm.plugin.d.a.b.e;
 
 final class y$2
   implements a.a
@@ -10,7 +11,9 @@ final class y$2
   
   public final void run()
   {
-    y.a(this.jzD, new e(y.b(this.jzD)));
+    AppMethodBeat.i(19654);
+    y.a(this.lJc, new e(y.b(this.lJc)));
+    AppMethodBeat.o(19654);
   }
 }
 

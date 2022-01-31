@@ -1,60 +1,65 @@
 package com.tencent.mm.modelrecovery;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class b$b
 {
-  public int exo;
-  public int exp;
-  public int exq;
-  public int exr;
-  public int exs;
-  public int ext;
-  public int exu;
-  public int exv;
-  public int exw;
-  public int exx;
-  public int exy;
-  public int exz;
+  public int fNe;
+  public int fNf;
+  public int fNg;
+  public int fNh;
+  public int fNi;
+  public int fNj;
+  public int fNk;
+  public int fNl;
+  public int fNm;
+  public int fNn;
+  public int fNo;
+  public int fNp;
   
   public final String toString()
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (this.exo > 0) {
-      localStringBuffer.append("appForegroundExpCount:" + this.exo + " ");
+    AppMethodBeat.i(16548);
+    Object localObject = new StringBuffer();
+    if (this.fNe > 0) {
+      ((StringBuffer)localObject).append("appForegroundExpCount:" + this.fNe + " ");
     }
-    if (this.exp > 0) {
-      localStringBuffer.append("appBackgroundExpCount:" + this.exp + " ");
+    if (this.fNf > 0) {
+      ((StringBuffer)localObject).append("appBackgroundExpCount:" + this.fNf + " ");
     }
-    if (this.exq > 0) {
-      localStringBuffer.append("componentForegroundExpCount:" + this.exq + " ");
+    if (this.fNg > 0) {
+      ((StringBuffer)localObject).append("componentForegroundExpCount:" + this.fNg + " ");
     }
-    if (this.exr > 0) {
-      localStringBuffer.append("componentBackgroundExpCount:" + this.exr + " ");
+    if (this.fNh > 0) {
+      ((StringBuffer)localObject).append("componentBackgroundExpCount:" + this.fNh + " ");
     }
-    if (this.exs > 0) {
-      localStringBuffer.append("appForegroundCrashOrAnrExpCount:" + this.exs + " ");
+    if (this.fNi > 0) {
+      ((StringBuffer)localObject).append("appForegroundCrashOrAnrExpCount:" + this.fNi + " ");
     }
-    if (this.ext > 0) {
-      localStringBuffer.append("appBackgroundCrashOrAnrExpCount:" + this.ext + " ");
+    if (this.fNj > 0) {
+      ((StringBuffer)localObject).append("appBackgroundCrashOrAnrExpCount:" + this.fNj + " ");
     }
-    if (this.exu > 0) {
-      localStringBuffer.append("componentForegroundCrashOrAnrExpCount:" + this.exu + " ");
+    if (this.fNk > 0) {
+      ((StringBuffer)localObject).append("componentForegroundCrashOrAnrExpCount:" + this.fNk + " ");
     }
-    if (this.exv > 0) {
-      localStringBuffer.append("componentBackgroundCrashOrAnrExpCount:" + this.exv + " ");
+    if (this.fNl > 0) {
+      ((StringBuffer)localObject).append("componentBackgroundCrashOrAnrExpCount:" + this.fNl + " ");
     }
-    if (this.exw > 0) {
-      localStringBuffer.append("appForegroundTimeoutExpCount:" + this.exw + " ");
+    if (this.fNm > 0) {
+      ((StringBuffer)localObject).append("appForegroundTimeoutExpCount:" + this.fNm + " ");
     }
-    if (this.exx > 0) {
-      localStringBuffer.append("appBackgroundTimeoutExpCount:" + this.exx + " ");
+    if (this.fNn > 0) {
+      ((StringBuffer)localObject).append("appBackgroundTimeoutExpCount:" + this.fNn + " ");
     }
-    if (this.exy > 0) {
-      localStringBuffer.append("componentForegroundTimeoutExpCount:" + this.exy + " ");
+    if (this.fNo > 0) {
+      ((StringBuffer)localObject).append("componentForegroundTimeoutExpCount:" + this.fNo + " ");
     }
-    if (this.exz > 0) {
-      localStringBuffer.append("componentBackgroundTimeoutExpCount:" + this.exz + " ");
+    if (this.fNp > 0) {
+      ((StringBuffer)localObject).append("componentBackgroundTimeoutExpCount:" + this.fNp + " ");
     }
-    return localStringBuffer.toString();
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(16548);
+    return localObject;
   }
 }
 

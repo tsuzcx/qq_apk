@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fav;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fav.b.a.b;
 import com.tencent.mm.plugin.fts.a.i;
@@ -13,12 +14,14 @@ final class PluginFav$1
   
   public final boolean execute()
   {
+    AppMethodBeat.i(5282);
     Object localObject = new com.tencent.mm.plugin.fav.b.a.a();
-    ((n)g.t(n.class)).registerIndexStorage((i)localObject);
+    ((n)g.G(n.class)).registerIndexStorage((i)localObject);
     ((i)localObject).create();
     localObject = new b();
-    ((n)g.t(n.class)).registerNativeLogic(6, (k)localObject);
+    ((n)g.G(n.class)).registerNativeLogic(6, (k)localObject);
     ((k)localObject).create();
+    AppMethodBeat.o(5282);
     return true;
   }
   

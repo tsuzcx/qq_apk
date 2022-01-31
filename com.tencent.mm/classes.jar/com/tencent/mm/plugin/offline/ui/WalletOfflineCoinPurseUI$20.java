@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.offline.c.a;
 import com.tencent.mm.plugin.offline.k;
 import java.util.ArrayList;
@@ -15,22 +16,24 @@ final class WalletOfflineCoinPurseUI$20
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.mNj.dismissDialog(this.mNA);
-    WalletOfflineCoinPurseUI.vD(paramInt);
-    if (this.mNA == 1)
+    AppMethodBeat.i(43526);
+    this.pny.dismissDialog(this.pnP);
+    WalletOfflineCoinPurseUI.Bb(paramInt);
+    if (this.pnP == 1)
     {
-      paramAdapterView = (String)WalletOfflineCoinPurseUI.G(this.mNj).get(paramInt);
-      if ((!TextUtils.isEmpty(paramAdapterView)) && (!paramAdapterView.equals(WalletOfflineCoinPurseUI.H(this.mNj))))
+      paramAdapterView = (String)WalletOfflineCoinPurseUI.F(this.pny).get(paramInt);
+      if ((!TextUtils.isEmpty(paramAdapterView)) && (!paramAdapterView.equals(WalletOfflineCoinPurseUI.G(this.pny))))
       {
-        WalletOfflineCoinPurseUI.a(this.mNj, paramAdapterView);
-        a.Kp(WalletOfflineCoinPurseUI.H(this.mNj));
-        k.bpX();
-        k.bpZ().mJH = WalletOfflineCoinPurseUI.H(this.mNj);
-        this.mNj.bqx();
-        WalletOfflineCoinPurseUI.D(this.mNj);
-        WalletOfflineCoinPurseUI.E(this.mNj);
+        WalletOfflineCoinPurseUI.a(this.pny, paramAdapterView);
+        a.Wr(WalletOfflineCoinPurseUI.G(this.pny));
+        k.bYF();
+        k.bYH().pjW = WalletOfflineCoinPurseUI.G(this.pny);
+        this.pny.bZg();
+        WalletOfflineCoinPurseUI.C(this.pny);
+        WalletOfflineCoinPurseUI.D(this.pny);
       }
     }
+    AppMethodBeat.o(43526);
   }
 }
 

@@ -1,19 +1,21 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager.MulticastLock;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ExdeviceConnectWifiUI$2
   implements Runnable
 {
-  ExdeviceConnectWifiUI$2(ExdeviceConnectWifiUI paramExdeviceConnectWifiUI, String paramString1, String paramString2, WifiInfo paramWifiInfo) {}
+  ExdeviceConnectWifiUI$2(ExdeviceConnectWifiUI paramExdeviceConnectWifiUI, String paramString1, String paramString2) {}
   
   public final void run()
   {
-    ExdeviceConnectWifiUI.f(this.jCy).acquire();
-    y.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "Start AirKiss result (%d). input ssid = %s, ssid by system = %s, bssid by system = %s", new Object[] { Integer.valueOf(Java2CExDevice.startAirKissWithInter(this.jCz, this.jCA, ExdeviceConnectWifiUI.l(this.jCy), 60000L, ExdeviceConnectWifiUI.m(this.jCy), ExdeviceConnectWifiUI.n(this.jCy))), this.jCA, this.jCB.getSSID(), this.jCB.getBSSID() });
+    AppMethodBeat.i(19872);
+    ExdeviceConnectWifiUI.f(this.lLW).acquire();
+    ab.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "Start AirKiss result (%d). input ssid = %s", new Object[] { Integer.valueOf(Java2CExDevice.startAirKissWithInter(this.lLX, this.lLY, ExdeviceConnectWifiUI.l(this.lLW), 60000L, ExdeviceConnectWifiUI.m(this.lLW), ExdeviceConnectWifiUI.n(this.lLW))), this.lLY });
+    AppMethodBeat.o(19872);
   }
 }
 

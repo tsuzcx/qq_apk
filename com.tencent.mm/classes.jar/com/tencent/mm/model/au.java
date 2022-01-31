@@ -1,210 +1,209 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.ah.p.a;
-import com.tencent.mm.ah.t;
-import com.tencent.mm.h.a.z;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelstat.o;
-import com.tencent.mm.network.n;
+import com.tencent.mm.m.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.bd.a;
-import com.tencent.mm.storage.be.a;
-import com.tencent.mm.storage.y;
-import junit.framework.Assert;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.z;
 
 public final class au
 {
-  private static au dVF = null;
-  private static final bu dVH = new bu();
-  private final ak dVE;
-  private com.tencent.mm.compatible.b.f dVG = null;
-  private final int dVI = 1;
-  final c.a dVJ;
-  private by dVK = new by();
-  private bq dVL = new bq();
-  private e dVM = new e();
-  private cb dVN = new cb();
-  private v dVO = new v();
-  private bd.a dVP = new au.4(this);
-  private be.a dVQ = new au.5(this);
-  private be.a dVR = new au.6(this);
-  private f dVS = new f();
-  private final c dVv;
-  
-  private au(ak paramak, p.a parama)
+  public static void k(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.dVE = paramak;
-    this.dVJ = new au.1(this);
-    g.DQ();
-    g.a(au.a.class, new au.a(this));
-    g.DQ().dKW.aj(parama);
-    this.dVv = new c();
-    h.nFQ.a(99L, 142L, 1L, false);
-    t.a(new au.2(this));
-    g.DQ();
-    paramak = g.DO();
-    parama = new au.3(this);
-    paramak.dJS.aj(parama);
-  }
-  
-  public static String CM()
-  {
-    g.DQ();
-    g.DN();
-    return com.tencent.mm.kernel.a.CM();
-  }
-  
-  public static boolean CW()
-  {
-    return com.tencent.mm.kernel.a.CW();
-  }
-  
-  public static boolean DK()
-  {
-    if (!ae.cqV()) {
-      return false;
-    }
-    return g.DK();
-  }
-  
-  public static ai DS()
-  {
-    return g.DS();
-  }
-  
-  public static String Df()
-  {
-    return com.tencent.mm.kernel.a.Df();
-  }
-  
-  public static com.tencent.mm.ah.p Dk()
-  {
-    g.DQ();
-    return g.DO().dJT;
-  }
-  
-  public static f HA()
-  {
-    return Hu().dVS;
-  }
-  
-  public static boolean Hp()
-  {
-    return dVF == null;
-  }
-  
-  public static bu Hq()
-  {
-    Hu();
-    return dVH;
-  }
-  
-  public static boolean Hr()
-  {
-    return com.tencent.mm.kernel.a.CV();
-  }
-  
-  public static void Hs()
-  {
-    com.tencent.mm.kernel.a.bF(false);
-  }
-  
-  public static void Ht() {}
-  
-  private static au Hu()
-  {
-    Assert.assertNotNull("MMCore not initialized by MMApplication", dVF);
-    return dVF;
-  }
-  
-  public static y Hv()
-  {
-    g.DQ();
-    return g.DP().dKo;
-  }
-  
-  public static void Hw()
-  {
-    z localz = new z();
-    com.tencent.mm.sdk.b.a.udP.m(localz);
-  }
-  
-  public static c Hx()
-  {
-    c localc = Hu().dVv;
-    if (localc != null) {}
-    for (boolean bool = true;; bool = false)
+    int j = 2;
+    AppMethodBeat.i(77812);
+    boolean bool2 = a.Mx();
+    boolean bool3 = a.Mz();
+    g.RM();
+    boolean bool4 = ((Boolean)g.RL().Ru().get(73217, Boolean.TRUE)).booleanValue();
+    g.RM();
+    boolean bool5 = ((Boolean)g.RL().Ru().get(73218, Boolean.TRUE)).booleanValue();
+    boolean bool1;
+    h localh;
+    int k;
+    label162:
+    int m;
+    label170:
+    int n;
+    label178:
+    int i;
+    if ((bool4) || (bool5))
     {
-      Assert.assertTrue("MMCore has not been initialize ?", bool);
-      return localc;
+      bool1 = true;
+      ab.i("MicroMsg.KvNotificationStat", "doStatSysNotificationAfterModify, switchNewMsg: %s, switchVoipInvite: %s, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool1) });
+      localh = h.qsU;
+      if (!bool2) {
+        break label284;
+      }
+      k = 1;
+      if (!bool3) {
+        break label290;
+      }
+      m = 1;
+      if (!bool1) {
+        break label296;
+      }
+      n = 1;
+      if (!paramBoolean1) {
+        break label307;
+      }
+      if (!bool2) {
+        break label302;
+      }
+      i = 2;
+      label189:
+      if (!paramBoolean2) {
+        break label317;
+      }
+      if (!bool3) {
+        break label312;
+      }
+    }
+    for (;;)
+    {
+      localh.e(14852, new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(0) });
+      AppMethodBeat.o(77812);
+      return;
+      bool1 = false;
+      break;
+      label284:
+      k = 0;
+      break label162;
+      label290:
+      m = 0;
+      break label170;
+      label296:
+      n = 0;
+      break label178;
+      label302:
+      i = 1;
+      break label189;
+      label307:
+      i = 0;
+      break label189;
+      label312:
+      j = 1;
+      continue;
+      label317:
+      j = 0;
     }
   }
   
-  public static com.tencent.mm.compatible.b.f Hy()
+  public static void kA(int paramInt)
   {
-    return com.tencent.mm.compatible.b.f.yi();
+    AppMethodBeat.i(77810);
+    boolean bool2 = a.Mx();
+    boolean bool3 = a.Mz();
+    boolean bool4 = a.MA();
+    boolean bool5 = a.MB();
+    boolean bool6 = a.MD();
+    boolean bool7 = a.MM();
+    int i2 = a.MN();
+    int i3 = a.MP();
+    int i4 = a.MO();
+    int i5 = a.MQ();
+    g.RM();
+    boolean bool8 = ((Boolean)g.RL().Ru().get(73217, Boolean.TRUE)).booleanValue();
+    g.RM();
+    boolean bool9 = ((Boolean)g.RL().Ru().get(73218, Boolean.TRUE)).booleanValue();
+    boolean bool1;
+    h localh;
+    int i;
+    label287:
+    int j;
+    label294:
+    int k;
+    label301:
+    int m;
+    label309:
+    int n;
+    label317:
+    int i1;
+    label325:
+    String str1;
+    String str2;
+    if ((bool8) || (bool9))
+    {
+      bool1 = true;
+      ab.i("MicroMsg.KvNotificationStat", "doStatNotification, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, isNotificationShowDetail: %s, isNotificationSound: %s, isNotificationShake: %s, isActiveSilentTime: %s, activeBegin: %s, activeEnd: %s, scene: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6), Boolean.valueOf(bool7), kB(i2) + kB(i3), kB(i4) + kB(i5), Integer.valueOf(paramInt), Boolean.valueOf(bool8), Boolean.valueOf(bool9), Boolean.valueOf(bool1) });
+      localh = h.qsU;
+      if (!bool2) {
+        break label488;
+      }
+      i = 1;
+      if (!bool3) {
+        break label493;
+      }
+      j = 1;
+      if (!bool4) {
+        break label498;
+      }
+      k = 1;
+      if (!bool5) {
+        break label503;
+      }
+      m = 1;
+      if (!bool6) {
+        break label509;
+      }
+      n = 1;
+      if (!bool7) {
+        break label515;
+      }
+      i1 = 2;
+      str1 = kB(i4) + kB(i5);
+      str2 = kB(i2) + kB(i3);
+      if (!bool1) {
+        break label521;
+      }
+    }
+    label515:
+    label521:
+    for (i2 = 1;; i2 = 2)
+    {
+      localh.e(15308, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), str1, str2, Integer.valueOf(paramInt), Integer.valueOf(i2) });
+      AppMethodBeat.o(77810);
+      return;
+      bool1 = false;
+      break;
+      label488:
+      i = 2;
+      break label287;
+      label493:
+      j = 2;
+      break label294;
+      label498:
+      k = 2;
+      break label301;
+      label503:
+      m = 2;
+      break label309;
+      label509:
+      n = 2;
+      break label317;
+      i1 = 1;
+      break label325;
+    }
   }
   
-  public static boolean Hz()
+  private static String kB(int paramInt)
   {
-    g.DN();
-    return com.tencent.mm.kernel.a.Db();
+    AppMethodBeat.i(77811);
+    if (paramInt > 10)
+    {
+      AppMethodBeat.o(77811);
+      return String.valueOf(paramInt);
+    }
+    String str = "0".concat(String.valueOf(paramInt));
+    AppMethodBeat.o(77811);
+    return str;
   }
-  
-  public static void a(aj paramaj)
-  {
-    b.a(paramaj);
-  }
-  
-  public static void a(ak paramak, p.a parama)
-  {
-    dVF = new au(paramak, parama);
-    o.bE(ae.getContext());
-  }
-  
-  public static void a(n paramn)
-  {
-    g.DQ();
-    g.DO().a(paramn);
-  }
-  
-  public static void b(n paramn)
-  {
-    g.DQ();
-    g.DO().b(paramn);
-  }
-  
-  public static void gc(String paramString)
-  {
-    com.tencent.mm.kernel.a.gc(paramString);
-  }
-  
-  public static al getNotification()
-  {
-    return Hu().dVE.getNotification();
-  }
-  
-  public static bx getSysCmdMsgExtension()
-  {
-    return ((com.tencent.mm.plugin.messenger.foundation.a.p)g.t(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension();
-  }
-  
-  public static void hold() {}
-  
-  public static ad tu()
-  {
-    return Hu().dVE.tu();
-  }
-  
-  public static void unhold() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.au
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,48 @@
 package com.tencent.mm.plugin.backup.j;
 
-import com.tencent.mm.h.a.jv;
-import com.tencent.mm.h.a.jv.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ke;
+import com.tencent.mm.g.a.ke.a;
+import com.tencent.mm.plugin.q.b;
+import com.tencent.mm.plugin.q.f;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.x.b;
-import com.tencent.mm.plugin.x.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$3$1
   implements Runnable
 {
-  a$3$1(a.3 param3, jv paramjv) {}
+  a$3$1(a.3 param3, ke paramke) {}
   
   public final void run()
   {
-    Object localObject = this.hRy;
-    y.i("MicroMsg.BackupCore", "receive msgSynchronizeStartEvent run userCloseMsgSync[%b]", new Object[] { Boolean.valueOf(((jv)localObject).bSl.bSo) });
-    if (((jv)localObject).bSl.bSo)
+    AppMethodBeat.i(18089);
+    Object localObject = this.jKZ;
+    ab.i("MicroMsg.BackupCore", "receive msgSynchronizeStartEvent run userCloseMsgSync[%b]", new Object[] { Boolean.valueOf(((ke)localObject).czM.czP) });
+    if (((ke)localObject).czM.czP)
     {
-      h.nFQ.a(466L, 13L, 1L, false);
+      h.qsU.idkeyStat(466L, 13L, 1L, false);
+      AppMethodBeat.o(18089);
       return;
     }
-    byte[] arrayOfByte = ((jv)localObject).bSl.bSm;
+    byte[] arrayOfByte = ((ke)localObject).czM.czN;
     if (arrayOfByte == null)
     {
-      y.e("MicroMsg.BackupCore", "msgsynchronize loginconfirmok key is null!");
-      h.nFQ.a(466L, 14L, 1L, false);
+      ab.e("MicroMsg.BackupCore", "msgsynchronize loginconfirmok key is null!");
+      h.qsU.idkeyStat(466L, 14L, 1L, false);
+      AppMethodBeat.o(18089);
       return;
     }
-    int i = ((jv)localObject).bSl.bSn;
-    localObject = f.hD(true);
-    String str = b.msB;
-    ((f)localObject).bSn = i;
+    int i = ((ke)localObject).czM.czO;
+    localObject = f.jw(true);
+    String str = b.oSm;
+    ((f)localObject).czO = i;
     ((f)localObject).e(str, "", arrayOfByte);
+    AppMethodBeat.o(18089);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.j.a.3.1
  * JD-Core Version:    0.7.0.1
  */

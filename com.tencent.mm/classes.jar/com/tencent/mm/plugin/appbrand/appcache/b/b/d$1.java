@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
-import com.tencent.mm.ah.a.a;
-import com.tencent.mm.protocal.c.cmk;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.protocal.protobuf.dab;
 import com.tencent.mm.vending.c.a;
 import com.tencent.mm.vending.g.b;
 
 final class d$1
-  implements a<Void, a.a<cmk>>
+  implements a<Void, a.a<dab>>
 {
   d$1(d paramd, String paramString, b paramb, int paramInt) {}
 }

@@ -6,41 +6,43 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.setting.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MaskLayout;
 
 final class UnfamiliarContactDetailUI$c
   extends RecyclerView.v
 {
-  View aie;
-  MaskLayout dsk;
-  CheckBox khV;
-  TextView nXe;
-  TextView nXf;
-  ImageView nXg;
-  ImageView nXh;
-  LinearLayout nXi;
-  LinearLayout nXj;
+  View aku;
+  MaskLayout ejS;
+  TextView kgG;
+  CheckBox mCC;
+  TextView qLp;
+  ImageView qLq;
+  ImageView qLr;
+  LinearLayout qLs;
+  LinearLayout qLt;
   
   public UnfamiliarContactDetailUI$c(UnfamiliarContactDetailUI paramUnfamiliarContactDetailUI, View paramView)
   {
     super(paramView);
-    this.aie = paramView;
-    this.dsk = ((MaskLayout)paramView.findViewById(a.f.contact_avatar));
-    this.nXe = ((TextView)paramView.findViewById(a.f.contact_nick));
-    this.nXf = ((TextView)paramView.findViewById(a.f.contact_alphabet));
-    this.nXg = ((ImageView)paramView.findViewById(a.f.contact_sns_notreceive_iv));
-    this.nXh = ((ImageView)paramView.findViewById(a.f.contact_sns_notvisible_iv));
-    this.nXi = ((LinearLayout)paramView.findViewById(a.f.checkbox_area));
-    this.khV = ((CheckBox)paramView.findViewById(a.f.checkbox));
-    this.nXj = ((LinearLayout)paramView.findViewById(a.f.item_content));
-    this.nXi.setOnClickListener(new UnfamiliarContactDetailUI.c.1(this, paramUnfamiliarContactDetailUI));
+    AppMethodBeat.i(127660);
+    this.aku = paramView;
+    this.ejS = ((MaskLayout)paramView.findViewById(2131828663));
+    this.kgG = ((TextView)paramView.findViewById(2131828664));
+    this.qLp = ((TextView)paramView.findViewById(2131828662));
+    this.qLq = ((ImageView)paramView.findViewById(2131828665));
+    this.qLr = ((ImageView)paramView.findViewById(2131828666));
+    this.qLs = ((LinearLayout)paramView.findViewById(2131828667));
+    this.mCC = ((CheckBox)paramView.findViewById(2131820950));
+    this.qLt = ((LinearLayout)paramView.findViewById(2131823590));
+    this.qLs.setOnClickListener(new UnfamiliarContactDetailUI.c.1(this, paramUnfamiliarContactDetailUI));
     paramView.setOnClickListener(new UnfamiliarContactDetailUI.c.2(this, paramUnfamiliarContactDetailUI));
+    AppMethodBeat.o(127660);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.UnfamiliarContactDetailUI.c
  * JD-Core Version:    0.7.0.1
  */

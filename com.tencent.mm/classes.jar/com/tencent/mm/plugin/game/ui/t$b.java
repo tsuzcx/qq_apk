@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.game.ui;
 public final class t$b
 {
   public String content;
-  public Boolean lfL;
-  public t.a lfM;
+  public Boolean nDG;
+  public t.a nDH;
   public String title;
 }
 

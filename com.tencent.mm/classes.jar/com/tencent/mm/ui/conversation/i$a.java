@@ -2,25 +2,25 @@ package com.tencent.mm.ui.conversation;
 
 final class i$a
 {
-  public int ivk;
+  public CharSequence AhU;
+  public CharSequence AhV;
+  public int AhW;
+  public int AhX;
+  public boolean Aia;
+  public boolean Aib;
+  public boolean Aid;
+  public boolean Aif;
+  public int Aig;
+  public int kwo;
   public CharSequence nickName;
-  public CharSequence vQk;
-  public CharSequence vQl;
-  public int vQm;
-  public int vQn;
-  public boolean vQq;
-  public boolean vQr;
-  public boolean vQt;
-  public boolean vQv;
-  public int vQw;
-  public boolean vSK;
-  public boolean veG;
+  public boolean szu;
+  public boolean ztf;
   
   private i$a(i parami) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.i.a
  * JD-Core Version:    0.7.0.1
  */

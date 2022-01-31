@@ -1,21 +1,16 @@
 package com.tencent.mm.plugin.emoji.e;
 
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.uo;
 
 final class c$1
-  implements Runnable
+  extends com.tencent.mm.sdk.b.c<uo>
 {
-  c$1(c paramc, String paramString) {}
-  
-  public final void run()
+  c$1(c paramc)
   {
-    this.iWD.Aq(this.val$filePath);
-    if (this.iWD.iWB) {
-      g.DP().Dz().c(ac.a.uoh, Long.valueOf(System.currentTimeMillis()));
-    }
+    AppMethodBeat.i(52826);
+    this.__eventId = uo.class.getName().hashCode();
+    AppMethodBeat.o(52826);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.emoji.sync;
 
-import com.tencent.mm.h.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.d;
 import com.tencent.mm.sdk.b.c;
 
 final class BKGLoaderManager$2
@@ -8,7 +9,9 @@ final class BKGLoaderManager$2
 {
   BKGLoaderManager$2(BKGLoaderManager paramBKGLoaderManager)
   {
-    this.udX = d.class.getName().hashCode();
+    AppMethodBeat.i(53181);
+    this.__eventId = d.class.getName().hashCode();
+    AppMethodBeat.o(53181);
   }
 }
 

@@ -5,155 +5,169 @@ import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.gridviewheaders.a;
 import java.util.Date;
 
 public final class c
   extends RecyclerView.a
 {
-  public static e voq;
-  public static c.f vor = null;
+  public static c.e zDM;
+  public static c.f zDN = null;
   private Context mContext;
-  public String vos;
+  public String zDO;
   
   public c(Context paramContext, c.f paramf)
   {
-    vor = paramf;
+    zDN = paramf;
     this.mContext = paramContext;
   }
   
-  private static long eM(long paramLong)
+  private static long io(long paramLong)
   {
+    AppMethodBeat.i(31159);
     Date localDate = new Date(paramLong);
-    return a.cIz().b(localDate);
+    paramLong = a.dNj().b(localDate);
+    AppMethodBeat.o(31159);
+    return paramLong;
   }
   
   public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramInt == 2147483647) {
-      return new c.d(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.gallery_date_item, paramViewGroup, false));
+    AppMethodBeat.i(31155);
+    if (paramInt == 2147483647)
+    {
+      paramViewGroup = new c.d(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969685, paramViewGroup, false));
+      AppMethodBeat.o(31155);
+      return paramViewGroup;
     }
-    return vor.q(paramViewGroup);
+    paramViewGroup = zDN.v(paramViewGroup);
+    AppMethodBeat.o(31155);
+    return paramViewGroup;
   }
   
   public final void a(RecyclerView.v paramv, int paramInt)
   {
+    AppMethodBeat.i(31156);
     int i = getItemViewType(paramInt);
-    c.b localb = vor.Ha(paramInt);
+    c.b localb = zDN.PD(paramInt);
     Object localObject;
     if (i == 2147483647)
     {
-      localObject = vor.Ha(paramInt + 1);
-      if ((paramInt == getItemCount() - 1) || (eM(((c.b)localObject).timestamp) != eM(localb.timestamp)))
+      localObject = zDN.PD(paramInt + 1);
+      if ((paramInt == getItemCount() - 1) || (io(((c.b)localObject).timestamp) != io(localb.timestamp)))
       {
-        ((c.d)paramv).eXs.setVisibility(8);
+        ((c.d)paramv).gpp.setVisibility(8);
+        AppMethodBeat.o(31156);
         return;
       }
-      ((c.d)paramv).eXs.setVisibility(0);
-      ((c.d)paramv).eXs.setText(eL(localb.timestamp));
+      ((c.d)paramv).gpp.setVisibility(0);
+      ((c.d)paramv).gpp.setText(in(localb.timestamp));
+      AppMethodBeat.o(31156);
       return;
     }
     c.a locala = (c.a)paramv;
-    locala.kKz.setTag(Integer.valueOf(paramInt));
-    if (i != 33) {
-      a.b.a(locala.doU, localb.username);
-    }
-    TextView localTextView = locala.fhD;
+    locala.ngZ.setTag(Integer.valueOf(paramInt));
+    a.b.c(locala.egq, localb.username);
+    TextView localTextView = locala.gzk;
     Context localContext = this.mContext;
-    if (bk.bl(this.vos)) {
-      if (bk.bl(localb.aVs)) {
-        if (bk.bl(localb.hkV)) {
+    if (bo.isNullOrNil(this.zDO)) {
+      if (bo.isNullOrNil(localb.bma)) {
+        if (bo.isNullOrNil(localb.iXn)) {
           localObject = localb.nickname;
         }
       }
     }
     for (;;)
     {
-      localTextView.setText(com.tencent.mm.pluginsdk.ui.d.j.a(localContext, (CharSequence)localObject, locala.fhD.getTextSize()));
-      locala.dsz.setText(com.tencent.mm.plugin.fav.ui.j.f(this.mContext, localb.timestamp));
-      locala.eXO.setText(localb.title);
-      vor.a((c.a)paramv, paramInt);
-      if (bk.bl(this.vos)) {
-        break;
-      }
-      c.a.e(locala.fhD, this.vos);
-      c.a.e(locala.eXO, this.vos);
-      return;
-      localObject = localb.hkV;
-      continue;
-      localObject = localb.aVs;
-      continue;
-      if (bk.bl(localb.aVs))
+      localTextView.setText(com.tencent.mm.pluginsdk.ui.d.j.b(localContext, (CharSequence)localObject, locala.gzk.getTextSize()));
+      locala.ekh.setText(com.tencent.mm.plugin.fav.ui.j.g(this.mContext, localb.timestamp));
+      locala.gpL.setText(localb.title);
+      zDN.a((c.a)paramv, paramInt);
+      if (!bo.isNullOrNil(this.zDO))
       {
-        if (!bk.bl(localb.hkV))
+        c.a.c(locala.gzk, this.zDO);
+        c.a.c(locala.gpL, this.zDO);
+      }
+      AppMethodBeat.o(31156);
+      return;
+      localObject = localb.iXn;
+      continue;
+      localObject = localb.bma;
+      continue;
+      if (bo.isNullOrNil(localb.bma))
+      {
+        if (!bo.isNullOrNil(localb.iXn))
         {
-          if ((!bk.bl(localb.nickname)) && (localb.nickname.contains(this.vos))) {
-            localObject = localb.hkV + "(" + localb.nickname + ")";
+          if ((!bo.isNullOrNil(localb.nickname)) && (localb.nickname.contains(this.zDO))) {
+            localObject = localb.iXn + "(" + localb.nickname + ")";
           } else {
-            localObject = localb.hkV;
+            localObject = localb.iXn;
           }
         }
         else {
           localObject = localb.nickname;
         }
       }
-      else if ((!bk.bl(localb.hkV)) && (localb.hkV.contains(this.vos))) {
-        localObject = localb.aVs + "(" + localb.hkV + ")";
-      } else if ((!bk.bl(localb.nickname)) && (localb.nickname.contains(this.vos))) {
-        localObject = localb.aVs + "(" + localb.nickname + ")";
+      else if ((!bo.isNullOrNil(localb.iXn)) && (localb.iXn.contains(this.zDO))) {
+        localObject = localb.bma + "(" + localb.iXn + ")";
+      } else if ((!bo.isNullOrNil(localb.nickname)) && (localb.nickname.contains(this.zDO))) {
+        localObject = localb.bma + "(" + localb.nickname + ")";
       } else {
-        localObject = localb.aVs;
+        localObject = localb.bma;
       }
     }
-  }
-  
-  public final String eL(long paramLong)
-  {
-    Date localDate = new Date(paramLong);
-    return a.cIz().a(localDate, this.mContext);
   }
   
   public final int getItemCount()
   {
+    AppMethodBeat.i(31157);
     int i;
-    if (vor == null)
+    if (zDN == null)
     {
       i = 0;
-      if (vor != null) {
-        break label55;
+      if (zDN != null) {
+        break label67;
       }
     }
-    label55:
+    label67:
     for (boolean bool = true;; bool = false)
     {
-      y.i("MicroMsg.MediaHistoryListAdapter", " null == mIDetail?%s getItemCount:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+      ab.i("MicroMsg.MediaHistoryListAdapter", " null == mIDetail?%s getItemCount:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+      AppMethodBeat.o(31157);
       return i;
-      i = vor.getCount();
+      i = zDN.getCount();
       break;
     }
   }
   
   public final int getItemViewType(int paramInt)
   {
-    return vor.Ha(paramInt).getType();
+    AppMethodBeat.i(31154);
+    paramInt = zDN.PD(paramInt).getType();
+    AppMethodBeat.o(31154);
+    return paramInt;
   }
   
-  public static abstract interface e
+  public final String in(long paramLong)
   {
-    public abstract void a(int paramInt, c.b paramb);
-    
-    public abstract void a(View paramView, int paramInt, c.b paramb);
+    AppMethodBeat.i(31158);
+    Object localObject = new Date(paramLong);
+    localObject = a.dNj().a((Date)localObject, this.mContext);
+    AppMethodBeat.o(31158);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.a.c
  * JD-Core Version:    0.7.0.1
  */

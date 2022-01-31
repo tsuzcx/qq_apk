@@ -6,9 +6,9 @@ import android.text.style.BackgroundColorSpan;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.b.a;
+import com.tencent.mm.ui.widget.c.a;
 
 final class NormalUserHeaderPreference$5
   implements View.OnLongClickListener
@@ -17,9 +17,10 @@ final class NormalUserHeaderPreference$5
   
   public final boolean onLongClick(View paramView)
   {
-    if ((NormalUserHeaderPreference.d(this.siZ).getText() != null) && (NormalUserHeaderPreference.e(this.siZ) != null))
+    AppMethodBeat.i(28078);
+    if ((NormalUserHeaderPreference.d(this.wbA).getText() != null) && (NormalUserHeaderPreference.e(this.wbA) != null))
     {
-      Object localObject = NormalUserHeaderPreference.d(this.siZ).getText().toString();
+      Object localObject = NormalUserHeaderPreference.d(this.wbA).getText().toString();
       int i = ((String)localObject).indexOf(':');
       paramView = (View)localObject;
       if (i >= 0)
@@ -29,15 +30,16 @@ final class NormalUserHeaderPreference$5
           paramView = ((String)localObject).substring(i + 1).trim();
         }
       }
-      localObject = new SpannableString(NormalUserHeaderPreference.d(this.siZ).getText());
-      ((SpannableString)localObject).setSpan(new BackgroundColorSpan(NormalUserHeaderPreference.a(this.siZ).getResources().getColor(R.e.light_blue_bg_color)), i + 1, NormalUserHeaderPreference.d(this.siZ).getText().length(), 33);
-      NormalUserHeaderPreference.d(this.siZ).setText((CharSequence)localObject);
-      localObject = new a(NormalUserHeaderPreference.a(this.siZ), NormalUserHeaderPreference.d(this.siZ));
-      ((a)localObject).wog = new NormalUserHeaderPreference.5.1(this);
-      ((a)localObject).phI = new NormalUserHeaderPreference.5.2(this, paramView);
-      ((a)localObject).wfc = new NormalUserHeaderPreference.5.3(this);
-      ((a)localObject).ch(0, 0);
+      localObject = new SpannableString(NormalUserHeaderPreference.d(this.wbA).getText());
+      ((SpannableString)localObject).setSpan(new BackgroundColorSpan(NormalUserHeaderPreference.b(this.wbA).getResources().getColor(2131690206)), i + 1, NormalUserHeaderPreference.d(this.wbA).getText().length(), 33);
+      NormalUserHeaderPreference.d(this.wbA).setText((CharSequence)localObject);
+      localObject = new a(NormalUserHeaderPreference.b(this.wbA), NormalUserHeaderPreference.d(this.wbA));
+      ((a)localObject).AIG = new NormalUserHeaderPreference.5.1(this);
+      ((a)localObject).sap = new NormalUserHeaderPreference.5.2(this, paramView);
+      ((a)localObject).AxS = new NormalUserHeaderPreference.5.3(this);
+      ((a)localObject).dq(0, 0);
     }
+    AppMethodBeat.o(28078);
     return true;
   }
 }

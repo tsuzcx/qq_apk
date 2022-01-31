@@ -1,55 +1,62 @@
 package com.tencent.mm.ah;
 
-import com.tencent.mm.model.av;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.apl;
-import com.tencent.mm.protocal.c.ays;
-import com.tencent.mm.protocal.c.jv;
-import com.tencent.mm.sdk.platformtools.y;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ap;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class n
-  extends m
-  implements k
+public final class n
 {
-  protected int edu = 3;
-  private boolean edv = false;
+  private static int fsA;
+  private static n.a fsB;
+  private static List<String> fsz;
   
-  public abstract void KD();
-  
-  public abstract f KE();
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  static
   {
-    if ((paramInt2 == 4) && (paramInt3 == -301))
-    {
-      y.i("MicroMsg.NetSceneIDCRedirectBase", "alvinluo NetScene pre process MM_ERR_IDC_REDIRECT redirectCount: %d", new Object[] { Integer.valueOf(this.edu) });
-      if (paramq != null)
-      {
-        y.i("MicroMsg.NetSceneIDCRedirectBase", "update idc info");
-        av.a(true, c(paramq), d(paramq), e(paramq));
-      }
-      this.edu -= 1;
-      if (this.edu <= 0)
-      {
-        KD();
-        this.edv = false;
-        return;
-      }
-      y.d("MicroMsg.NetSceneIDCRedirectBase", "redirect IDC");
-      a(this.edc, KE());
-      return;
-    }
-    a(paramInt2, paramInt3, paramString, paramq);
+    AppMethodBeat.i(77953);
+    fsz = null;
+    fsA = 0;
+    fsB = new n.a(new n.b());
+    AppMethodBeat.o(77953);
   }
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString, q paramq);
+  public static void adb()
+  {
+    AppMethodBeat.i(77952);
+    fsA = 0;
+    fsB.stopTimer();
+    AppMethodBeat.o(77952);
+  }
   
-  public abstract jv c(q paramq);
-  
-  public abstract ays d(q paramq);
-  
-  public abstract apl e(q paramq);
+  public static void w(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(77951);
+    if (!g.RJ().QU())
+    {
+      AppMethodBeat.o(77951);
+      return;
+    }
+    Object localObject = o.adg();
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((i)localObject).fnw.a("select username from img_flag where username not in (select username from rcontact ) and username not like \"%@qqim\" and username not like \"%@bottle\";", null, 2);
+    while (((Cursor)localObject).moveToNext()) {
+      localArrayList.add(((Cursor)localObject).getString(0));
+    }
+    ((Cursor)localObject).close();
+    fsz = localArrayList;
+    if (localArrayList.size() <= 0)
+    {
+      AppMethodBeat.o(77951);
+      return;
+    }
+    fsB.fsC.fsD = paramRunnable;
+    fsB.ag(10L, 10L);
+    AppMethodBeat.o(77951);
+  }
 }
 
 

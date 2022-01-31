@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_core.ui.view;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$a$2
   implements Runnable
@@ -10,7 +11,9 @@ final class b$a$2
   
   public final void run()
   {
-    this.qHJ.qjE.setImageBitmap(this.ara);
+    AppMethodBeat.i(47874);
+    this.uwu.tSE.setImageBitmap(this.val$bitmap);
+    AppMethodBeat.o(47874);
   }
 }
 

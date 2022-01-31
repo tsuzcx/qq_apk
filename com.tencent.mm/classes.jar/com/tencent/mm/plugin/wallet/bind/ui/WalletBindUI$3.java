@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.wallet.bind.ui;
 
-import com.tencent.mm.h.a.th;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vb;
 import com.tencent.mm.sdk.b.c;
 
 final class WalletBindUI$3
-  extends c<th>
+  extends c<vb>
 {
   WalletBindUI$3(WalletBindUI paramWalletBindUI)
   {
-    this.udX = th.class.getName().hashCode();
+    AppMethodBeat.i(45797);
+    this.__eventId = vb.class.getName().hashCode();
+    AppMethodBeat.o(45797);
   }
 }
 

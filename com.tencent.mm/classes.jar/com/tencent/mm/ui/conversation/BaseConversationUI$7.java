@@ -4,6 +4,7 @@ import android.graphics.Rect;
 import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.ui.HomeUI.FitSystemWindowLayoutView;
 
@@ -14,15 +15,19 @@ final class BaseConversationUI$7
   
   public final void run()
   {
-    this.vPi.getSupportActionBar().getCustomView().getLocationInWindow(this.uPY);
-    int i = this.uPY[1];
-    if (i > 0) {
-      BaseConversationUI.access$1300(this.vPi, this.uPZ, i, new Rect(0, i, 0, 0), this.uQa);
-    }
-    while (!d.gF(20)) {
+    AppMethodBeat.i(34056);
+    this.AgT.getSupportActionBar().getCustomView().getLocationInWindow(this.zek);
+    int i = this.zek[1];
+    if (i > 0)
+    {
+      BaseConversationUI.access$1300(this.AgT, this.zel, i, new Rect(0, i, 0, 0), this.zem);
+      AppMethodBeat.o(34056);
       return;
     }
-    this.uPZ.setOnApplyWindowInsetsListener(new BaseConversationUI.7.1(this));
+    if (d.fv(20)) {
+      this.zel.setOnApplyWindowInsetsListener(new BaseConversationUI.7.1(this));
+    }
+    AppMethodBeat.o(34056);
   }
 }
 

@@ -14,17 +14,17 @@ public final class a
     super(paramContext);
   }
   
-  protected final MenuItem a(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
+  public final MenuItem a(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
   {
     if (size() + 1 > 5) {
       throw new IllegalArgumentException("Maximum number of items supported by BottomNavigationView is 5. Limit can be checked with BottomNavigationView#getMaxItemCount()");
     }
-    fh();
+    fX();
     paramCharSequence = super.a(paramInt1, paramInt2, paramInt3, paramCharSequence);
     if ((paramCharSequence instanceof j)) {
-      ((j)paramCharSequence).U(true);
+      ((j)paramCharSequence).W(true);
     }
-    fi();
+    fY();
     return paramCharSequence;
   }
   
@@ -35,7 +35,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.design.internal.a
  * JD-Core Version:    0.7.0.1
  */

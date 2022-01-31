@@ -1,88 +1,107 @@
 package com.tencent.mm.plugin.webview.c;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.mw;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.h;
-import com.tencent.mm.protocal.c.bnq;
+import com.tencent.mm.protocal.protobuf.bxl;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Map;
 
 public final class a
   implements f
 {
-  a.a qYB = new a.a(this, (byte)0);
-  private c qYC = new a.1(this);
+  a.a uOh;
+  private c uOi;
   
   public a()
   {
-    com.tencent.mm.sdk.b.a.udP.c(this.qYC);
+    AppMethodBeat.i(5653);
+    this.uOh = new a.a(this, (byte)0);
+    this.uOi = new c() {};
+    com.tencent.mm.sdk.b.a.ymk.c(this.uOi);
+    AppMethodBeat.o(5653);
   }
   
-  public static String s(Map<String, Object> paramMap, String paramString)
+  public static String t(Map<String, Object> paramMap, String paramString)
   {
+    AppMethodBeat.i(5656);
     if (paramMap.containsKey(paramString))
     {
-      if (paramMap.get(paramString) != null) {
-        return paramMap.get(paramString).toString();
+      if (paramMap.get(paramString) != null)
+      {
+        paramMap = paramMap.get(paramString).toString();
+        AppMethodBeat.o(5656);
+        return paramMap;
       }
+      AppMethodBeat.o(5656);
       return "";
     }
+    AppMethodBeat.o(5656);
     return "";
   }
   
-  public static int u(Map<String, Object> paramMap, String paramString)
+  public static int v(Map<String, Object> paramMap, String paramString)
   {
-    paramMap = s(paramMap, paramString);
-    if (bk.bl(paramMap)) {
+    AppMethodBeat.i(5657);
+    paramMap = t(paramMap, paramString);
+    if (bo.isNullOrNil(paramMap))
+    {
+      AppMethodBeat.o(5657);
       return 0;
     }
-    return Integer.valueOf(paramMap).intValue();
+    int i = Integer.valueOf(paramMap).intValue();
+    AppMethodBeat.o(5657);
+    return i;
   }
   
-  public final boolean W(Map<String, Object> paramMap)
+  public final boolean ar(Map<String, Object> paramMap)
   {
-    y.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "getSearchEmotionData: %s", new Object[] { paramMap.toString() });
-    String str1 = s(paramMap, "keyword");
-    String str2 = s(paramMap, "nextPageBuffer");
-    int i = u(paramMap, "type");
-    int j = u(paramMap, "webview_instance_id");
-    paramMap = s(paramMap, "searchID");
-    if (bk.bl(paramMap)) {}
+    AppMethodBeat.i(5654);
+    ab.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "getSearchEmotionData: %s", new Object[] { paramMap.toString() });
+    String str1 = t(paramMap, "keyword");
+    String str2 = t(paramMap, "nextPageBuffer");
+    int i = v(paramMap, "type");
+    int j = v(paramMap, "webview_instance_id");
+    paramMap = t(paramMap, "searchID");
+    if (bo.isNullOrNil(paramMap)) {}
     for (long l = 0L;; l = Long.valueOf(paramMap).longValue())
     {
-      this.qYB.a(i, str1, str2, j, l);
+      this.uOh.a(i, str1, str2, j, l);
+      AppMethodBeat.o(5654);
       return false;
     }
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(5655);
     if ((paramm instanceof b))
     {
-      au.Dk().b(234, this);
-      this.qYB.isRunning = false;
+      com.tencent.mm.kernel.g.Rc().b(234, this);
+      this.uOh.isRunning = false;
       paramString = (b)paramm;
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        break label118;
+        break label130;
       }
-      this.qYB.bKQ = false;
-      h.Db(paramString.qYH).a("{}", paramString.qYI, "", 0L);
+      this.uOh.csk = false;
+      h.KW(paramString.uOn).a("{}", paramString.uOo, "", 0L);
     }
     for (;;)
     {
-      paramm = paramString.cax().tGA;
-      String str = aa.b(paramString.cax().tcI);
-      long l = paramString.cax().tcL;
-      h.Db(paramString.qYH).a(paramm, paramString.qYI, str, l);
+      paramm = paramString.dax().xKp;
+      String str = aa.b(paramString.dax().xaZ);
+      long l = paramString.dax().xbc;
+      h.KW(paramString.uOn).a(paramm, paramString.uOo, str, l);
+      AppMethodBeat.o(5655);
       return;
-      label118:
-      this.qYB.bKQ = true;
+      label130:
+      this.uOh.csk = true;
     }
   }
 }

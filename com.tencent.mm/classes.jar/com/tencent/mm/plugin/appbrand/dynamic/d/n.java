@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import android.os.Bundle;
-import com.tencent.mm.aa.b.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.c;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
-import com.tencent.mm.model.u.b;
+import com.tencent.mm.model.v.b;
+import com.tencent.mm.z.b.b.a;
 import org.json.JSONObject;
 
 public final class n
@@ -16,14 +18,16 @@ public final class n
     super("showPickerView", 456);
   }
   
-  protected final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.z.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
-    parama = parama.CD();
+    AppMethodBeat.i(10864);
+    parama = parama.Qx();
     String str = parama.getString("__page_view_id", "");
     Bundle localBundle = new Bundle();
     localBundle.putString("id", str);
     localBundle.putString("data", paramJSONObject.toString());
-    XIPCInvoker.a(parama.getString("__process_name", ((h)com.tencent.mm.kernel.g.DM().Dr()).dIA), localBundle, n.a.class, new n.1(this, parama1));
+    XIPCInvoker.a(parama.getString("__process_name", ((h)com.tencent.mm.kernel.g.RI().Rj()).mProcessName), localBundle, n.a.class, new c() {});
+    AppMethodBeat.o(10864);
   }
 }
 

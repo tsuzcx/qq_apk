@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class ConsolePanel$1
@@ -13,9 +14,11 @@ final class ConsolePanel$1
   
   public final void onClick(View paramView)
   {
-    this.hEq.hEd.clear();
-    this.hEq.hEn.hEd.clear();
-    this.hEq.hEn.agL.notifyChanged();
+    AppMethodBeat.i(11139);
+    this.jxD.jxq.clear();
+    this.jxD.jxA.jxq.clear();
+    this.jxD.jxA.ajb.notifyChanged();
+    AppMethodBeat.o(11139);
   }
 }
 

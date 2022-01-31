@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
-import java.io.Serializable;
-
-public final class a$b
-  implements Serializable
+public abstract interface a$b
 {
-  public String fLi;
-  public String oAl;
+  public abstract void failed(long paramLong);
   
-  public a$b(String paramString1, String paramString2)
-  {
-    this.oAl = paramString1;
-    this.fLi = paramString2;
-  }
+  public abstract void paused(long paramLong);
+  
+  public abstract void progress(long paramLong, int paramInt);
+  
+  public abstract void resumed(long paramLong);
+  
+  public abstract void stopped(long paramLong);
+  
+  public abstract void succeed(long paramLong);
 }
 
 

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/w3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/k9" android:textColor="#ff576b95" android:ellipsize="end" android:id="@id/ky" android:padding="@dimen/kv" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-    <View android:id="@id/kz" android:background="@color/fj" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/l3" android:layout_marginRight="@dimen/l3" />
-</LinearLayout>
+    <ScrollView android:id="@id/ml" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/mm" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </ScrollView>
+    <ImageView android:id="@id/mn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitStart" />
+    <LinearLayout android:orientation="vertical" android:id="@id/mo" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <android.support.v7.widget.RecyclerView android:id="@id/mp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="bottom|center" android:id="@id/mq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:src="@drawable/ax1" android:scaleType="centerInside" />
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/mr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/a6s" android:id="@id/ms" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/enn" android:shadowColor="#41000000" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
+        <ImageView android:id="@id/mt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:src="@drawable/ax8" />
+    </LinearLayout>
+</FrameLayout>

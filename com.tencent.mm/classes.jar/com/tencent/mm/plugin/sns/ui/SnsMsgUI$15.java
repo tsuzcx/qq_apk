@@ -2,34 +2,37 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.widget.ListView;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.k;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.r.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.p.a;
 
 final class SnsMsgUI$15
-  implements r.a
+  implements p.a
 {
   SnsMsgUI$15(SnsMsgUI paramSnsMsgUI) {}
   
-  public final void Wp()
+  public final void apT()
   {
-    y.v("MicroMsg.SnsMsgUI", "total count:" + SnsMsgUI.e(this.paq).dsw + " unread:" + af.bDK().aAo() + "  showcount:" + SnsMsgUI.e(this.paq).iwi);
-    if (SnsMsgUI.e(this.paq).getCount() == 0)
+    AppMethodBeat.i(39081);
+    ab.v("MicroMsg.SnsMsgUI", "total count:" + SnsMsgUI.e(this.rSU).eke + " unread:" + ag.cpk().bbZ() + "  showcount:" + SnsMsgUI.e(this.rSU).kxm);
+    if (SnsMsgUI.e(this.rSU).getCount() == 0)
     {
-      SnsMsgUI.c(this.paq).setVisibility(8);
-      SnsMsgUI.d(this.paq).setVisibility(0);
-      this.paq.enableOptionMenu(false);
+      SnsMsgUI.c(this.rSU).setVisibility(8);
+      SnsMsgUI.d(this.rSU).setVisibility(0);
+      this.rSU.enableOptionMenu(false);
     }
     for (;;)
     {
-      if (((SnsMsgUI.e(this.paq).aCc()) && (af.bDK().aAo() == 0)) || (af.bDK().aAo() == af.bDK().bGq())) {
-        SnsMsgUI.f(this.paq).setVisibility(8);
+      if (((SnsMsgUI.e(this.rSU).bem()) && (ag.cpk().bbZ() == 0)) || (ag.cpk().bbZ() == ag.cpk().cst())) {
+        SnsMsgUI.f(this.rSU).setVisibility(8);
       }
+      AppMethodBeat.o(39081);
       return;
-      SnsMsgUI.c(this.paq).setVisibility(0);
-      SnsMsgUI.d(this.paq).setVisibility(8);
-      this.paq.enableOptionMenu(true);
+      SnsMsgUI.c(this.rSU).setVisibility(0);
+      SnsMsgUI.d(this.rSU).setVisibility(8);
+      this.rSU.enableOptionMenu(true);
     }
   }
 }

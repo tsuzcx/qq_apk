@@ -1,492 +1,214 @@
 package android.support.v7.widget;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.TimeInterpolator;
-import android.animation.ValueAnimator;
-import android.support.v4.view.q;
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer;
+import android.graphics.drawable.DrawableContainer.DrawableContainerState;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.ScaleDrawable;
+import android.os.Build.VERSION;
+import android.support.v4.graphics.drawable.f;
+import android.support.v7.d.a.c;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public class x
-  extends ar
+public final class x
 {
-  private static TimeInterpolator abu;
-  ArrayList<ArrayList<x.b>> abA = new ArrayList();
-  ArrayList<ArrayList<x.a>> abB = new ArrayList();
-  ArrayList<RecyclerView.v> abC = new ArrayList();
-  ArrayList<RecyclerView.v> abD = new ArrayList();
-  ArrayList<RecyclerView.v> abE = new ArrayList();
-  ArrayList<RecyclerView.v> abF = new ArrayList();
-  private ArrayList<RecyclerView.v> abv = new ArrayList();
-  private ArrayList<RecyclerView.v> abw = new ArrayList();
-  private ArrayList<x.b> abx = new ArrayList();
-  private ArrayList<x.a> aby = new ArrayList();
-  ArrayList<ArrayList<RecyclerView.v>> abz = new ArrayList();
+  public static final Rect acL = new Rect();
+  private static Class<?> acM;
   
-  private void a(x.a parama)
+  static
   {
-    if (parama.abS != null) {
-      a(parama, parama.abS);
-    }
-    if (parama.abT != null) {
-      a(parama, parama.abT);
-    }
-  }
-  
-  private void a(List<x.a> paramList, RecyclerView.v paramv)
-  {
-    int i = paramList.size() - 1;
-    while (i >= 0)
+    if (Build.VERSION.SDK_INT >= 18) {}
+    try
     {
-      x.a locala = (x.a)paramList.get(i);
-      if ((a(locala, paramv)) && (locala.abS == null) && (locala.abT == null)) {
-        paramList.remove(locala);
-      }
-      i -= 1;
+      acM = Class.forName("android.graphics.Insets");
+      return;
     }
+    catch (ClassNotFoundException localClassNotFoundException) {}
   }
   
-  private boolean a(x.a parama, RecyclerView.v paramv)
+  public static PorterDuff.Mode c(int paramInt, PorterDuff.Mode paramMode)
   {
-    if (parama.abT == paramv) {
-      parama.abT = null;
+    switch (paramInt)
+    {
+    case 4: 
+    case 6: 
+    case 7: 
+    case 8: 
+    case 10: 
+    case 11: 
+    case 12: 
+    case 13: 
+    default: 
+      return paramMode;
+    case 3: 
+      return PorterDuff.Mode.SRC_OVER;
+    case 5: 
+      return PorterDuff.Mode.SRC_IN;
+    case 9: 
+      return PorterDuff.Mode.SRC_ATOP;
+    case 14: 
+      return PorterDuff.Mode.MULTIPLY;
+    case 15: 
+      return PorterDuff.Mode.SCREEN;
+    }
+    return PorterDuff.Mode.ADD;
+  }
+  
+  public static Rect m(Drawable paramDrawable)
+  {
+    Object localObject1;
+    if (acM != null) {
+      localObject1 = paramDrawable;
     }
     for (;;)
     {
-      paramv.aie.setAlpha(1.0F);
-      paramv.aie.setTranslationX(0.0F);
-      paramv.aie.setTranslationY(0.0F);
-      l(paramv);
-      return true;
-      if (parama.abS != paramv) {
-        break;
-      }
-      parama.abS = null;
-    }
-    return false;
-  }
-  
-  private void e(RecyclerView.v paramv)
-  {
-    if (abu == null) {
-      abu = new ValueAnimator().getInterpolator();
-    }
-    paramv.aie.animate().setInterpolator(abu);
-    d(paramv);
-  }
-  
-  private static void o(List<RecyclerView.v> paramList)
-  {
-    int i = paramList.size() - 1;
-    while (i >= 0)
-    {
-      ((RecyclerView.v)paramList.get(i)).aie.animate().cancel();
-      i -= 1;
-    }
-  }
-  
-  public boolean a(RecyclerView.v paramv, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    View localView = paramv.aie;
-    paramInt1 += (int)paramv.aie.getTranslationX();
-    paramInt2 += (int)paramv.aie.getTranslationY();
-    e(paramv);
-    int i = paramInt3 - paramInt1;
-    int j = paramInt4 - paramInt2;
-    if ((i == 0) && (j == 0))
-    {
-      x(paramv);
-      return false;
-    }
-    if (i != 0) {
-      localView.setTranslationX(-i);
-    }
-    if (j != 0) {
-      localView.setTranslationY(-j);
-    }
-    this.abx.add(new x.b(paramv, paramInt1, paramInt2, paramInt3, paramInt4));
-    return true;
-  }
-  
-  public boolean a(RecyclerView.v paramv1, RecyclerView.v paramv2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (paramv1 == paramv2) {
-      return a(paramv1, paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-    float f1 = paramv1.aie.getTranslationX();
-    float f2 = paramv1.aie.getTranslationY();
-    float f3 = paramv1.aie.getAlpha();
-    e(paramv1);
-    int i = (int)(paramInt3 - paramInt1 - f1);
-    int j = (int)(paramInt4 - paramInt2 - f2);
-    paramv1.aie.setTranslationX(f1);
-    paramv1.aie.setTranslationY(f2);
-    paramv1.aie.setAlpha(f3);
-    if (paramv2 != null)
-    {
-      e(paramv2);
-      paramv2.aie.setTranslationX(-i);
-      paramv2.aie.setTranslationY(-j);
-      paramv2.aie.setAlpha(0.0F);
-    }
-    this.aby.add(new x.a(paramv1, paramv2, paramInt1, paramInt2, paramInt3, paramInt4));
-    return true;
-  }
-  
-  public boolean a(RecyclerView.v paramv, List<Object> paramList)
-  {
-    return (!paramList.isEmpty()) || (super.a(paramv, paramList));
-  }
-  
-  public boolean b(RecyclerView.v paramv)
-  {
-    e(paramv);
-    this.abv.add(paramv);
-    return true;
-  }
-  
-  public boolean c(RecyclerView.v paramv)
-  {
-    e(paramv);
-    paramv.aie.setAlpha(0.0F);
-    this.abw.add(paramv);
-    return true;
-  }
-  
-  public void d(RecyclerView.v paramv)
-  {
-    View localView = paramv.aie;
-    localView.animate().cancel();
-    int i = this.abx.size() - 1;
-    while (i >= 0)
-    {
-      if (((x.b)this.abx.get(i)).abY == paramv)
+      Object localObject2;
+      int j;
+      String str;
+      int i;
+      try
       {
-        localView.setTranslationY(0.0F);
-        localView.setTranslationX(0.0F);
-        x(paramv);
-        this.abx.remove(i);
-      }
-      i -= 1;
-    }
-    a(this.aby, paramv);
-    if (this.abv.remove(paramv))
-    {
-      localView.setAlpha(1.0F);
-      w(paramv);
-    }
-    if (this.abw.remove(paramv))
-    {
-      localView.setAlpha(1.0F);
-      l(paramv);
-    }
-    i = this.abB.size() - 1;
-    ArrayList localArrayList;
-    while (i >= 0)
-    {
-      localArrayList = (ArrayList)this.abB.get(i);
-      a(localArrayList, paramv);
-      if (localArrayList.isEmpty()) {
-        this.abB.remove(i);
-      }
-      i -= 1;
-    }
-    i = this.abA.size() - 1;
-    if (i >= 0)
-    {
-      localArrayList = (ArrayList)this.abA.get(i);
-      int j = localArrayList.size() - 1;
-      for (;;)
-      {
-        if (j >= 0)
+        if ((paramDrawable instanceof f)) {
+          localObject1 = ((f)paramDrawable).cU();
+        }
+        localObject2 = localObject1.getClass().getMethod("getOpticalInsets", new Class[0]).invoke(localObject1, new Object[0]);
+        if (localObject2 == null) {
+          break label223;
+        }
+        localObject1 = new Rect();
+        Field[] arrayOfField = acM.getFields();
+        int k = arrayOfField.length;
+        j = 0;
+        paramDrawable = (Drawable)localObject1;
+        if (j >= k) {
+          break label227;
+        }
+        paramDrawable = arrayOfField[j];
+        str = paramDrawable.getName();
+        i = -1;
+        switch (str.hashCode())
         {
-          if (((x.b)localArrayList.get(j)).abY != paramv) {
-            break label293;
+        case 3317767: 
+          if (!str.equals("left")) {
+            break label271;
           }
-          localView.setTranslationY(0.0F);
-          localView.setTranslationX(0.0F);
-          x(paramv);
-          localArrayList.remove(j);
-          if (localArrayList.isEmpty()) {
-            this.abA.remove(i);
+          i = 0;
+        }
+      }
+      catch (Exception paramDrawable) {}
+      if (str.equals("top"))
+      {
+        i = 1;
+        break label271;
+        if (str.equals("right"))
+        {
+          i = 2;
+          break label271;
+          if (str.equals("bottom"))
+          {
+            i = 3;
+            break label271;
+            ((Rect)localObject1).left = paramDrawable.getInt(localObject2);
+            break label304;
+            label223:
+            paramDrawable = acL;
+            label227:
+            return paramDrawable;
+            ((Rect)localObject1).top = paramDrawable.getInt(localObject2);
+            break label304;
+            ((Rect)localObject1).right = paramDrawable.getInt(localObject2);
+            break label304;
+            ((Rect)localObject1).bottom = paramDrawable.getInt(localObject2);
+            break label304;
           }
         }
-        i -= 1;
-        break;
-        label293:
-        j -= 1;
       }
-    }
-    i = this.abz.size() - 1;
-    while (i >= 0)
-    {
-      localArrayList = (ArrayList)this.abz.get(i);
-      if (localArrayList.remove(paramv))
+      label271:
+      switch (i)
       {
-        localView.setAlpha(1.0F);
-        l(paramv);
-        if (localArrayList.isEmpty()) {
-          this.abz.remove(i);
-        }
       }
-      i -= 1;
+      label304:
+      j += 1;
     }
-    this.abE.remove(paramv);
-    this.abC.remove(paramv);
-    this.abF.remove(paramv);
-    this.abD.remove(paramv);
-    gB();
   }
   
-  public void gA()
+  static void n(Drawable paramDrawable)
   {
-    int i;
-    int j;
-    label24:
-    int k;
-    if (!this.abv.isEmpty())
+    int[] arrayOfInt;
+    if ((Build.VERSION.SDK_INT == 21) && ("android.graphics.drawable.VectorDrawable".equals(paramDrawable.getClass().getName())))
     {
-      i = 1;
-      if (this.abx.isEmpty()) {
-        break label72;
+      arrayOfInt = paramDrawable.getState();
+      if ((arrayOfInt != null) && (arrayOfInt.length != 0)) {
+        break label52;
       }
-      j = 1;
-      if (this.aby.isEmpty()) {
-        break label77;
-      }
-      k = 1;
-      label36:
-      if (this.abw.isEmpty()) {
-        break label82;
-      }
+      paramDrawable.setState(av.dP);
     }
-    label72:
-    label77:
-    label82:
-    for (int m = 1;; m = 0)
+    for (;;)
     {
-      if ((i != 0) || (j != 0) || (m != 0) || (k != 0)) {
-        break label88;
-      }
+      paramDrawable.setState(arrayOfInt);
       return;
-      i = 0;
-      break;
-      j = 0;
-      break label24;
-      k = 0;
-      break label36;
-    }
-    label88:
-    Object localObject1 = this.abv.iterator();
-    Object localObject2;
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (RecyclerView.v)((Iterator)localObject1).next();
-      View localView = ((RecyclerView.v)localObject2).aie;
-      ViewPropertyAnimator localViewPropertyAnimator = localView.animate();
-      this.abE.add(localObject2);
-      localViewPropertyAnimator.setDuration(this.agQ).alpha(0.0F).setListener(new x.4(this, (RecyclerView.v)localObject2, localViewPropertyAnimator, localView)).start();
-    }
-    this.abv.clear();
-    label266:
-    label346:
-    long l1;
-    label421:
-    long l2;
-    if (j != 0)
-    {
-      localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll(this.abx);
-      this.abA.add(localObject1);
-      this.abx.clear();
-      localObject2 = new x.1(this, (ArrayList)localObject1);
-      if (i != 0) {
-        q.a(((x.b)((ArrayList)localObject1).get(0)).abY.aie, (Runnable)localObject2, this.agQ);
-      }
-    }
-    else
-    {
-      if (k != 0)
-      {
-        localObject1 = new ArrayList();
-        ((ArrayList)localObject1).addAll(this.aby);
-        this.abB.add(localObject1);
-        this.aby.clear();
-        localObject2 = new x.2(this, (ArrayList)localObject1);
-        if (i == 0) {
-          break label483;
-        }
-        q.a(((x.a)((ArrayList)localObject1).get(0)).abS.aie, (Runnable)localObject2, this.agQ);
-      }
-      if (m == 0) {
-        break label491;
-      }
-      localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll(this.abw);
-      this.abz.add(localObject1);
-      this.abw.clear();
-      localObject2 = new x.3(this, (ArrayList)localObject1);
-      if ((i == 0) && (j == 0) && (k == 0)) {
-        break label511;
-      }
-      if (i == 0) {
-        break label493;
-      }
-      l1 = this.agQ;
-      if (j == 0) {
-        break label499;
-      }
-      l2 = this.agR;
-      label431:
-      if (k == 0) {
-        break label505;
-      }
-    }
-    label483:
-    label491:
-    label493:
-    label499:
-    label505:
-    for (long l3 = this.agS;; l3 = 0L)
-    {
-      l2 = Math.max(l2, l3);
-      q.a(((RecyclerView.v)((ArrayList)localObject1).get(0)).aie, (Runnable)localObject2, l1 + l2);
-      return;
-      ((Runnable)localObject2).run();
-      break label266;
-      ((Runnable)localObject2).run();
-      break label346;
-      break;
-      l1 = 0L;
-      break label421;
-      l2 = 0L;
-      break label431;
-    }
-    label511:
-    ((Runnable)localObject2).run();
-  }
-  
-  final void gB()
-  {
-    if (!isRunning()) {
-      hP();
+      label52:
+      paramDrawable.setState(av.EMPTY_STATE_SET);
     }
   }
   
-  public final void gC()
+  public static boolean o(Drawable paramDrawable)
   {
-    int i = this.abx.size() - 1;
-    Object localObject1;
-    Object localObject2;
-    while (i >= 0)
+    for (;;)
     {
-      localObject1 = (x.b)this.abx.get(i);
-      localObject2 = ((x.b)localObject1).abY.aie;
-      ((View)localObject2).setTranslationY(0.0F);
-      ((View)localObject2).setTranslationX(0.0F);
-      x(((x.b)localObject1).abY);
-      this.abx.remove(i);
-      i -= 1;
-    }
-    i = this.abv.size() - 1;
-    while (i >= 0)
-    {
-      w((RecyclerView.v)this.abv.get(i));
-      this.abv.remove(i);
-      i -= 1;
-    }
-    i = this.abw.size() - 1;
-    while (i >= 0)
-    {
-      localObject1 = (RecyclerView.v)this.abw.get(i);
-      ((RecyclerView.v)localObject1).aie.setAlpha(1.0F);
-      l((RecyclerView.v)localObject1);
-      this.abw.remove(i);
-      i -= 1;
-    }
-    i = this.aby.size() - 1;
-    while (i >= 0)
-    {
-      a((x.a)this.aby.get(i));
-      i -= 1;
-    }
-    this.aby.clear();
-    if (!isRunning()) {
-      return;
-    }
-    i = this.abA.size() - 1;
-    int j;
-    while (i >= 0)
-    {
-      localObject1 = (ArrayList)this.abA.get(i);
-      j = ((ArrayList)localObject1).size() - 1;
-      while (j >= 0)
-      {
-        localObject2 = (x.b)((ArrayList)localObject1).get(j);
-        View localView = ((x.b)localObject2).abY.aie;
-        localView.setTranslationY(0.0F);
-        localView.setTranslationX(0.0F);
-        x(((x.b)localObject2).abY);
-        ((ArrayList)localObject1).remove(j);
-        if (((ArrayList)localObject1).isEmpty()) {
-          this.abA.remove(localObject1);
-        }
-        j -= 1;
+      if ((Build.VERSION.SDK_INT < 15) && ((paramDrawable instanceof InsetDrawable))) {
+        return false;
       }
-      i -= 1;
-    }
-    i = this.abz.size() - 1;
-    while (i >= 0)
-    {
-      localObject1 = (ArrayList)this.abz.get(i);
-      j = ((ArrayList)localObject1).size() - 1;
-      while (j >= 0)
-      {
-        localObject2 = (RecyclerView.v)((ArrayList)localObject1).get(j);
-        ((RecyclerView.v)localObject2).aie.setAlpha(1.0F);
-        l((RecyclerView.v)localObject2);
-        ((ArrayList)localObject1).remove(j);
-        if (((ArrayList)localObject1).isEmpty()) {
-          this.abz.remove(localObject1);
-        }
-        j -= 1;
+      if ((Build.VERSION.SDK_INT < 15) && ((paramDrawable instanceof GradientDrawable))) {
+        return false;
       }
-      i -= 1;
-    }
-    i = this.abB.size() - 1;
-    while (i >= 0)
-    {
-      localObject1 = (ArrayList)this.abB.get(i);
-      j = ((ArrayList)localObject1).size() - 1;
-      while (j >= 0)
-      {
-        a((x.a)((ArrayList)localObject1).get(j));
-        if (((ArrayList)localObject1).isEmpty()) {
-          this.abB.remove(localObject1);
-        }
-        j -= 1;
+      if ((Build.VERSION.SDK_INT < 17) && ((paramDrawable instanceof LayerDrawable))) {
+        return false;
       }
-      i -= 1;
+      if ((paramDrawable instanceof DrawableContainer))
+      {
+        paramDrawable = paramDrawable.getConstantState();
+        if (!(paramDrawable instanceof DrawableContainer.DrawableContainerState)) {
+          break;
+        }
+        paramDrawable = ((DrawableContainer.DrawableContainerState)paramDrawable).getChildren();
+        int j = paramDrawable.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (!o(paramDrawable[i])) {
+            return false;
+          }
+          i += 1;
+        }
+      }
+      if ((paramDrawable instanceof f))
+      {
+        paramDrawable = ((f)paramDrawable).cU();
+      }
+      else if ((paramDrawable instanceof c))
+      {
+        paramDrawable = ((c)paramDrawable).mDrawable;
+      }
+      else
+      {
+        if (!(paramDrawable instanceof ScaleDrawable)) {
+          break;
+        }
+        paramDrawable = ((ScaleDrawable)paramDrawable).getDrawable();
+      }
     }
-    o(this.abE);
-    o(this.abD);
-    o(this.abC);
-    o(this.abF);
-    hP();
-  }
-  
-  public boolean isRunning()
-  {
-    return (!this.abw.isEmpty()) || (!this.aby.isEmpty()) || (!this.abx.isEmpty()) || (!this.abv.isEmpty()) || (!this.abD.isEmpty()) || (!this.abE.isEmpty()) || (!this.abC.isEmpty()) || (!this.abF.isEmpty()) || (!this.abA.isEmpty()) || (!this.abz.isEmpty()) || (!this.abB.isEmpty());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v7.widget.x
  * JD-Core Version:    0.7.0.1
  */

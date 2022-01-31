@@ -2,113 +2,90 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Context;
 import android.text.ClipboardManager;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.widget.MMEditText;
 
 public class SnsEditText
   extends MMEditText
 {
   private Context context;
-  private boolean lDh = false;
-  private ClipboardManager oYb = null;
-  private int oYc = 0;
-  private int oYd = 0;
-  private int oYe = 0;
-  private int oYf = 10;
+  private int iNn;
+  private boolean oat;
+  private ClipboardManager rQu;
+  private boolean rQv;
+  private int rQw;
+  private int rQx;
+  private int rQy;
   private float y;
   
   public SnsEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(38932);
+    this.rQu = null;
+    this.iNn = 0;
+    this.rQv = false;
+    this.rQw = 0;
+    this.rQx = 0;
+    this.oat = false;
+    this.rQy = 10;
     this.context = paramContext;
-    this.oYb = ((ClipboardManager)this.context.getSystemService("clipboard"));
-    addTextChangedListener(new TextWatcher()
-    {
-      public final void afterTextChanged(Editable paramAnonymousEditable) {}
-      
-      public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
-      {
-        if (paramAnonymousCharSequence != null) {
-          SnsEditText.c(SnsEditText.this, paramAnonymousCharSequence.length());
-        }
-      }
-      
-      public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
-      {
-        SnsEditText.a(SnsEditText.this, paramAnonymousCharSequence.length());
-        if (paramAnonymousInt2 > 0) {
-          return;
-        }
-        for (;;)
-        {
-          try
-          {
-            if ((SnsEditText.a(SnsEditText.this) <= SnsEditText.b(SnsEditText.this)) || (paramAnonymousInt3 <= 30)) {
-              break;
-            }
-            paramAnonymousCharSequence = paramAnonymousCharSequence.toString().substring(paramAnonymousInt1, paramAnonymousInt1 + paramAnonymousInt3);
-            if ((paramAnonymousCharSequence.indexOf("\n") >= 0) && (paramAnonymousInt3 > 30))
-            {
-              SnsEditText.b(SnsEditText.this, SnsEditText.c(SnsEditText.this) + paramAnonymousCharSequence.length());
-              y.d("MicroMsg.SnsEditText", "parsterLen: %d %d", new Object[] { Integer.valueOf(paramAnonymousCharSequence.length()), Integer.valueOf(SnsEditText.c(SnsEditText.this)) });
-              return;
-            }
-          }
-          catch (Exception paramAnonymousCharSequence)
-          {
-            y.printErrStackTrace("MicroMsg.SnsEditText", paramAnonymousCharSequence, "", new Object[0]);
-            return;
-          }
-          if (paramAnonymousInt3 <= 100) {
-            break;
-          }
-        }
-      }
-    });
+    this.rQu = ((ClipboardManager)ah.getContext().getSystemService("clipboard"));
+    addTextChangedListener(new SnsEditText.1(this));
+    AppMethodBeat.o(38932);
   }
   
   public int getPasterLen()
   {
-    return this.oYc;
+    return this.iNn;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
-    return super.onTextContextMenuItem(paramInt);
+    AppMethodBeat.i(38933);
+    if (paramInt == 16908322) {
+      this.rQv = true;
+    }
+    boolean bool = super.onTextContextMenuItem(paramInt);
+    AppMethodBeat.o(38933);
+    return bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(38934);
     if (paramMotionEvent.getAction() == 2) {
-      if (Math.abs(this.y - paramMotionEvent.getY()) > this.oYf) {
-        this.lDh = true;
+      if (Math.abs(this.y - paramMotionEvent.getY()) > this.rQy) {
+        this.oat = true;
       }
     }
     for (;;)
     {
       this.y = paramMotionEvent.getY();
-      return super.onTouchEvent(paramMotionEvent);
+      boolean bool = super.onTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(38934);
+      return bool;
       if (paramMotionEvent.getAction() == 1)
       {
-        if (this.lDh)
+        if (this.oat)
         {
-          this.lDh = false;
+          this.oat = false;
+          AppMethodBeat.o(38934);
           return true;
         }
       }
       else {
-        this.lDh = false;
+        this.oat = false;
       }
     }
   }
   
   public void setPasterLen(int paramInt)
   {
-    this.oYc = paramInt;
+    this.iNn = paramInt;
   }
 }
 

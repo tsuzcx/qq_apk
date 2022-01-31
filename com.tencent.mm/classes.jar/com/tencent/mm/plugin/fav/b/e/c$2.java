@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.fav.b.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class c$2
   implements Runnable
 {
@@ -7,12 +9,17 @@ final class c$2
   
   public final void run()
   {
-    c.a(this.kaN, false);
+    AppMethodBeat.i(5364);
+    c.a(this.mvj, false);
+    AppMethodBeat.o(5364);
   }
   
   public final String toString()
   {
-    return super.toString() + "|retryJob";
+    AppMethodBeat.i(5365);
+    String str = super.toString() + "|retryJob";
+    AppMethodBeat.o(5365);
+    return str;
   }
 }
 

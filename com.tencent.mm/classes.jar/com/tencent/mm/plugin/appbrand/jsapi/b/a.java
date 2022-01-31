@@ -5,11 +5,14 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.util.Log;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.u.h;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.af;
+import com.tencent.mm.plugin.appbrand.s.g;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,79 +25,96 @@ public final class a
   public static final int CTRL_INDEX = 372;
   public static final String NAME = "canvasGetImageData";
   
-  private static Map<String, Object> d(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  private static Map<String, Object> e(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    Object localObject = new byte[paramArrayOfInt.length * 4];
+    AppMethodBeat.i(103839);
+    paramArrayOfInt = q(paramArrayOfInt);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("data", paramArrayOfInt);
+    localHashMap.put("width", Integer.valueOf(paramInt1));
+    localHashMap.put("height", Integer.valueOf(paramInt2));
+    AppMethodBeat.o(103839);
+    return localHashMap;
+  }
+  
+  private static ByteBuffer q(int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(103840);
+    byte[] arrayOfByte = new byte[paramArrayOfInt.length * 4];
     int i = 0;
     int k;
     for (int j = 0; i < paramArrayOfInt.length; j = k + 1)
     {
       k = j + 1;
-      localObject[j] = ((byte)(paramArrayOfInt[i] >> 16 & 0xFF));
+      arrayOfByte[j] = ((byte)(paramArrayOfInt[i] >> 16 & 0xFF));
       j = k + 1;
-      localObject[k] = ((byte)(paramArrayOfInt[i] >> 8 & 0xFF));
+      arrayOfByte[k] = ((byte)(paramArrayOfInt[i] >> 8 & 0xFF));
       k = j + 1;
-      localObject[j] = ((byte)(paramArrayOfInt[i] & 0xFF));
-      localObject[k] = ((byte)(paramArrayOfInt[i] >> 24 & 0xFF));
+      arrayOfByte[j] = ((byte)(paramArrayOfInt[i] & 0xFF));
+      arrayOfByte[k] = ((byte)(paramArrayOfInt[i] >> 24 & 0xFF));
       i += 1;
     }
-    paramArrayOfInt = ByteBuffer.wrap((byte[])localObject);
-    localObject = new HashMap();
-    ((Map)localObject).put("data", paramArrayOfInt);
-    ((Map)localObject).put("width", Integer.valueOf(paramInt1));
-    ((Map)localObject).put("height", Integer.valueOf(paramInt2));
-    return localObject;
+    paramArrayOfInt = ByteBuffer.wrap(arrayOfByte);
+    AppMethodBeat.o(103840);
+    return paramArrayOfInt;
   }
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
+    AppMethodBeat.i(103838);
     int i7;
     try
     {
       i7 = paramJSONObject.getInt("canvasId");
-      localObject = ((com.tencent.mm.plugin.appbrand.jsapi.base.f)paramc.i(com.tencent.mm.plugin.appbrand.jsapi.base.f.class)).a(paramc);
+      localObject = ((com.tencent.mm.plugin.appbrand.jsapi.base.f)paramc.q(com.tencent.mm.plugin.appbrand.jsapi.base.f.class)).d(paramc);
       if (localObject == null)
       {
-        com.tencent.mm.sdk.platformtools.y.w("MicroMsg.JsApiCanvasGetImageData", "invoke JsApi canvasGetImageData failed, component view is null.");
-        paramc.C(paramInt, h("fail:page is null", null));
+        ab.w("MicroMsg.JsApiCanvasGetImageData", "invoke JsApi canvasGetImageData failed, component view is null.");
+        paramc.h(paramInt, j("fail:page is null", null));
+        AppMethodBeat.o(103838);
         return;
       }
     }
     catch (JSONException paramJSONObject)
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.JsApiCanvasGetImageData", "get canvas id failed, %s", new Object[] { Log.getStackTraceString(paramJSONObject) });
-      paramc.C(paramInt, h("fail:illegal canvasId", null));
+      ab.i("MicroMsg.JsApiCanvasGetImageData", "get canvas id failed, %s", new Object[] { Log.getStackTraceString(paramJSONObject) });
+      paramc.h(paramInt, j("fail:illegal canvasId", null));
+      AppMethodBeat.o(103838);
       return;
     }
-    Object localObject = ((e)localObject).agW().mg(i7);
+    Object localObject = ((e)localObject).vC().getViewById(i7);
     if (localObject == null)
     {
-      com.tencent.mm.sdk.platformtools.y.w("MicroMsg.JsApiCanvasGetImageData", "view(%s) is null.", new Object[] { Integer.valueOf(i7) });
-      paramc.C(paramInt, h("fail:view is null", null));
+      ab.w("MicroMsg.JsApiCanvasGetImageData", "view(%s) is null.", new Object[] { Integer.valueOf(i7) });
+      paramc.h(paramInt, j("fail:view is null", null));
+      AppMethodBeat.o(103838);
       return;
     }
     if (!(localObject instanceof CoverViewContainer))
     {
-      com.tencent.mm.sdk.platformtools.y.w("MicroMsg.JsApiCanvasGetImageData", "the viewId is not a canvas(%s).", new Object[] { Integer.valueOf(i7) });
-      paramc.C(paramInt, h("fail:illegal view type", null));
+      ab.w("MicroMsg.JsApiCanvasGetImageData", "the viewId is not a canvas(%s).", new Object[] { Integer.valueOf(i7) });
+      paramc.h(paramInt, j("fail:illegal view type", null));
+      AppMethodBeat.o(103838);
       return;
     }
-    localObject = (View)((CoverViewContainer)localObject).K(View.class);
+    localObject = (View)((CoverViewContainer)localObject).aa(View.class);
     if (!(localObject instanceof com.tencent.mm.plugin.appbrand.canvas.widget.a))
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.JsApiCanvasGetImageData", "the view is not a instance of CanvasView.(%s)", new Object[] { Integer.valueOf(i7) });
-      paramc.C(paramInt, h("fail:illegal view type", null));
+      ab.i("MicroMsg.JsApiCanvasGetImageData", "the view is not a instance of CanvasView.(%s)", new Object[] { Integer.valueOf(i7) });
+      paramc.h(paramInt, j("fail:illegal view type", null));
+      AppMethodBeat.o(103838);
       return;
     }
-    float f = h.aqo();
+    float f = g.aNP();
     int m = paramJSONObject.optInt("x");
     int n = paramJSONObject.optInt("y");
     int i = paramJSONObject.optInt("width");
     int i1 = paramJSONObject.optInt("height");
     if ((i == 0) || (i1 == 0))
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.JsApiCanvasGetImageData", "width(%s) or height(%s) is 0.(%s)", new Object[] { Integer.valueOf(i), Integer.valueOf(i1), Integer.valueOf(i7) });
-      paramc.C(paramInt, h("fail:width or height is 0", null));
+      ab.i("MicroMsg.JsApiCanvasGetImageData", "width(%s) or height(%s) is 0.(%s)", new Object[] { Integer.valueOf(i), Integer.valueOf(i1), Integer.valueOf(i7) });
+      paramc.h(paramInt, j("fail:width or height is 0", null));
+      AppMethodBeat.o(103838);
       return;
     }
     int k;
@@ -120,9 +140,8 @@ public final class a
         i = ((View)localObject).getMeasuredWidth();
         int i8 = ((View)localObject).getMeasuredHeight();
         if (j < 0) {}
-        label784:
-        label879:
-        label886:
+        label944:
+        label951:
         for (int i2 = 0;; i2 = j)
         {
           if (i4 < 0) {}
@@ -132,7 +151,7 @@ public final class a
             {
               i -= i2;
               if (i4 + i5 <= i8) {
-                break label784;
+                break label839;
               }
               j = i8 - i3;
             }
@@ -153,28 +172,33 @@ public final class a
                 paramJSONObject = Bitmap.createScaledBitmap(paramJSONObject, i6, i8, false);
                 localObject = new int[k * i1];
                 paramJSONObject.getPixels((int[])localObject, (i5 - n) * k + (i4 - m), k, 0, 0, i6, i8);
-                paramc.C(paramInt, a(paramc, "ok", d((int[])localObject, k, i1)));
+                paramc.h(paramInt, a(paramc, "ok", e((int[])localObject, k, i1)));
+                AppMethodBeat.o(103838);
                 return;
               }
               catch (Exception paramJSONObject)
               {
-                com.tencent.mm.sdk.platformtools.y.w("MicroMsg.JsApiCanvasGetImageData", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i7), paramJSONObject });
-                paramc.C(paramInt, h("fail:create bitmap failed", null));
+                ab.w("MicroMsg.JsApiCanvasGetImageData", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i7), paramJSONObject });
+                paramc.h(paramInt, j("fail:create bitmap failed", null));
+                AppMethodBeat.o(103838);
                 return;
               }
               if (j < i) {
-                break label886;
+                break label951;
               }
-              paramc.C(paramInt, a(paramc, "ok", d(new int[k * i1], k, i1)));
+              paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
+              AppMethodBeat.o(103838);
               return;
               if (i4 < i8) {
-                break label879;
+                break label944;
               }
-              paramc.C(paramInt, a(paramc, "ok", d(new int[k * i1], k, i1)));
+              paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
+              AppMethodBeat.o(103838);
               return;
               if (j + i6 <= 0)
               {
-                paramc.C(paramInt, a(paramc, "ok", d(new int[k * i1], k, i1)));
+                paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
+                AppMethodBeat.o(103838);
                 return;
               }
               i = i6;
@@ -183,9 +207,11 @@ public final class a
               }
               i = i6 + j;
               break;
+              label839:
               if (i4 + i5 <= 0)
               {
-                paramc.C(paramInt, a(paramc, "ok", d(new int[k * i1], k, i1)));
+                paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
+                AppMethodBeat.o(103838);
                 return;
               }
               j = i5;

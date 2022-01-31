@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.chatting.gallery;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvoiceaddr.ui.b;
 
 final class MediaHistoryListUI$1
@@ -9,12 +10,14 @@ final class MediaHistoryListUI$1
   
   public final void run()
   {
-    MediaHistoryListUI.a(this.vxO).clearFocus();
+    AppMethodBeat.i(32438);
+    MediaHistoryListUI.a(this.zOa).clearFocus();
+    AppMethodBeat.o(32438);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI.1
  * JD-Core Version:    0.7.0.1
  */

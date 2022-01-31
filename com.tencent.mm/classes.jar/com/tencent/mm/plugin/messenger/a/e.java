@@ -8,11 +8,11 @@ import java.lang.ref.WeakReference;
 public abstract interface e
   extends a
 {
-  public abstract void Hb(String paramString);
+  public abstract void SM(String paramString);
   
-  public abstract void Hc(String paramString);
+  public abstract void SN(String paramString);
   
-  public abstract CharSequence Hd(String paramString);
+  public abstract CharSequence SO(String paramString);
   
   public abstract CharSequence a(String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference);
   

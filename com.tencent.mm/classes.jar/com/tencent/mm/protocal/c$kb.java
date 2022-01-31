@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$kb
+public final class c$kb
   extends c.g
 {
-  c$kb()
+  public c$kb()
   {
-    super("uploadEncryptMediaFile", "uploadEncryptMediaFile", 253, false);
+    super("startPullDownRefresh", "startPullDownRefresh", 204, false);
   }
 }
 

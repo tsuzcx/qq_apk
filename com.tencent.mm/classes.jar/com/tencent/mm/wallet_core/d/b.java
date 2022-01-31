@@ -1,149 +1,179 @@
 package com.tencent.mm.wallet_core.d;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.o;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave.RetryPayInfo;
-import com.tencent.mm.wallet_core.tenpay.model.k;
-import java.util.HashMap;
+import com.tencent.mm.wallet_core.tenpay.model.n;
 import org.json.JSONObject;
 
 public final class b
   implements f
 {
-  static ITenpaySave.RetryPayInfo qfp;
-  private k wAY;
-  private int wBa = 0;
-  f wBb;
+  static ITenpaySave.RetryPayInfo retryPayInfo;
+  private n AXw;
+  private int AXy = 0;
+  private f AXz;
   
   public b(f paramf)
   {
-    this.wBb = paramf;
+    this.AXz = paramf;
   }
   
   private void a(int paramInt1, int paramInt2, String paramString, JSONObject paramJSONObject)
   {
-    y.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback errCode = " + paramInt2 + "errType = " + paramInt1);
-    if ((this.wAY != null) && (paramJSONObject != null) && (paramInt1 == 0) && (paramInt2 == 0))
+    AppMethodBeat.i(49122);
+    ab.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback errCode = " + paramInt2 + "errType = " + paramInt1);
+    if ((this.AXw != null) && (paramJSONObject != null) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      y.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback mScene !=null");
-      this.wAY.a(paramInt2, paramString, paramJSONObject);
-      this.wBb.onSceneEnd(paramInt1, paramInt2, paramString, this.wAY);
+      ab.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback mScene !=null");
+      this.AXw.onGYNetEnd(paramInt2, paramString, paramJSONObject);
+      this.AXz.onSceneEnd(paramInt1, paramInt2, paramString, this.AXw);
     }
     for (;;)
     {
-      y.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback reset");
-      this.wBa = 0;
+      ab.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback reset");
+      this.AXy = 0;
+      AppMethodBeat.o(49122);
       return;
-      if (this.wBb != null)
+      if (this.AXz != null)
       {
-        y.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback mRealCallback !=null");
-        this.wBb.onSceneEnd(paramInt1, paramInt2, paramString, this.wAY);
+        ab.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback mRealCallback !=null");
+        this.AXz.onSceneEnd(paramInt1, paramInt2, paramString, this.AXw);
       }
     }
   }
   
-  private void c(int paramInt1, int paramInt2, com.tencent.mm.ah.m paramm)
+  private void c(int paramInt1, int paramInt2, m paramm)
   {
-    a(paramInt1, paramInt2, qfp.wBn, ((k)paramm).wBB);
+    AppMethodBeat.i(49124);
+    a(paramInt1, paramInt2, retryPayInfo.AXK, ((n)paramm).AXW);
+    AppMethodBeat.o(49124);
   }
   
-  private boolean cMP()
+  private boolean canRetry()
   {
-    int i = cMQ();
-    return this.wBa < i;
-  }
-  
-  private static int cMQ()
-  {
-    if ((qfp != null) && (qfp.cMW())) {
-      return qfp.wBm;
+    AppMethodBeat.i(49118);
+    int i = dSE();
+    if (this.AXy >= i)
+    {
+      AppMethodBeat.o(49118);
+      return false;
     }
+    AppMethodBeat.o(49118);
+    return true;
+  }
+  
+  private static int dSE()
+  {
+    AppMethodBeat.i(49119);
+    if ((retryPayInfo != null) && (retryPayInfo.bWX()))
+    {
+      int i = retryPayInfo.xJf;
+      AppMethodBeat.o(49119);
+      return i;
+    }
+    AppMethodBeat.o(49119);
     return 0;
   }
   
-  public final boolean d(k paramk)
+  public final boolean c(n paramn)
   {
-    if ((qfp != null) && (qfp.cMW())) {}
+    AppMethodBeat.i(49120);
+    if ((retryPayInfo != null) && (retryPayInfo.bWX())) {}
     int k;
-    for (int i = qfp.wBl;; i = 0)
+    for (int i = retryPayInfo.AXJ;; i = 0)
     {
-      k = cMQ();
-      this.wBa += 1;
-      if (this.wBa <= k) {
+      k = dSE();
+      this.AXy += 1;
+      if (this.AXy <= k) {
         break;
       }
+      AppMethodBeat.o(49120);
       return false;
     }
-    this.wAY = paramk;
-    this.wAY.nyn = true;
-    g.DQ();
-    g.DO().dJT.a(385, this);
-    this.wAY.cNb();
-    int m = this.wBa;
-    if (this.wBa >= k) {}
+    this.AXw = paramn;
+    this.AXw.setHasRetried(true);
+    g.RM();
+    g.RK().eHt.a(385, this);
+    this.AXw.resetForRetry();
+    int m = this.AXy;
+    if (this.AXy >= k) {}
     for (int j = 1;; j = 0)
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("retry_count", String.valueOf(m));
-      localHashMap.put("is_last_retry", String.valueOf(j));
-      paramk.aB(localHashMap);
-      y.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doLoopDelayScene,delay = %s queryOrderCount %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
-      g.DQ();
-      g.DO().dJT.a(paramk, i * 1000);
+      paramn.updateConfig(m, j);
+      ab.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doLoopDelayScene,delay = %s queryOrderCount %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
+      g.RM();
+      g.RK().eHt.a(paramn, i * 1000);
+      AppMethodBeat.o(49120);
       return true;
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public final void destory()
   {
-    y.d("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "errType: %d, errCode: %d, errMsg: %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramm });
-    if ((paramm instanceof k))
+    AppMethodBeat.i(49121);
+    this.AXz = null;
+    g.RM();
+    g.RK().eHt.b(385, this);
+    AppMethodBeat.o(49121);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(49123);
+    ab.d("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "errType: %d, errCode: %d, errMsg: %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramm });
+    if ((paramm instanceof n))
     {
       if ((paramm instanceof ITenpaySave))
       {
-        ITenpaySave.RetryPayInfo localRetryPayInfo = ((ITenpaySave)paramm).bTh();
-        if (localRetryPayInfo.cMW()) {
-          qfp = localRetryPayInfo;
+        ITenpaySave.RetryPayInfo localRetryPayInfo = ((ITenpaySave)paramm).getRetryPayInfo();
+        if (localRetryPayInfo.bWX()) {
+          retryPayInfo = localRetryPayInfo;
         }
       }
-      g.DQ();
-      g.DO().dJT.b(385, this);
-      if (((k)paramm).wBF)
+      g.RM();
+      g.RK().eHt.b(385, this);
+      if (((n)paramm).ishasCGiRetried())
       {
-        if (!this.wAY.qno) {
-          break label136;
+        if (this.AXw.checkPaySuccess())
+        {
+          ab.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "PaySuccess ok");
+          a(paramInt1, paramInt2, paramString, ((n)paramm).AXW);
+          AppMethodBeat.o(49123);
+          return;
         }
-        y.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "PaySuccess ok");
-        a(paramInt1, paramInt2, paramString, ((k)paramm).wBB);
+        if ((this.AXw.canPayRetry()) && (canRetry()))
+        {
+          ab.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "try isServerDelayQuery true svrcanRetry %s localCanRetry %s", new Object[] { Boolean.valueOf(this.AXw.canPayRetry()), Boolean.valueOf(canRetry()) });
+          if (!c(this.AXw))
+          {
+            c(paramInt1, paramInt2, paramm);
+            AppMethodBeat.o(49123);
+          }
+        }
+        else if (((n)paramm).checkRecSrvResp())
+        {
+          ab.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "try svr no resp");
+          if (!c(this.AXw))
+          {
+            c(paramInt1, paramInt2, paramm);
+            AppMethodBeat.o(49123);
+          }
+        }
+        else
+        {
+          paramString = retryPayInfo.AXK;
+          ab.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "PaySuccess error %s", new Object[] { paramString });
+          a(paramInt1, paramInt2, paramString, ((n)paramm).AXW);
+        }
       }
     }
-    label136:
-    do
-    {
-      do
-      {
-        return;
-        if ((!this.wAY.wBG) || (!cMP())) {
-          break;
-        }
-        y.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "try isServerDelayQuery true svrcanRetry %s localCanRetry %s", new Object[] { Boolean.valueOf(this.wAY.wBG), Boolean.valueOf(cMP()) });
-      } while (d(this.wAY));
-      c(paramInt1, paramInt2, paramm);
-      return;
-      if (!((k)paramm).wAF) {
-        break;
-      }
-      y.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "try svr no resp");
-    } while (d(this.wAY));
-    c(paramInt1, paramInt2, paramm);
-    return;
-    paramString = qfp.wBn;
-    y.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "PaySuccess error %s", new Object[] { paramString });
-    a(paramInt1, paramInt2, paramString, ((k)paramm).wBB);
+    AppMethodBeat.o(49123);
   }
 }
 

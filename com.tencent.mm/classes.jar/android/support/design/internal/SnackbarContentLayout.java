@@ -3,11 +3,9 @@ package android.support.design.internal;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.support.design.a.d;
-import android.support.design.a.f;
-import android.support.design.a.k;
+import android.support.design.a.a;
 import android.support.design.widget.b.b;
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.text.Layout;
 import android.util.AttributeSet;
 import android.view.View;
@@ -21,18 +19,28 @@ public class SnackbarContentLayout
   extends LinearLayout
   implements b.b
 {
-  private TextView ee;
-  private Button ef;
-  private int eg;
-  private int eh;
+  private TextView fc;
+  private Button fe;
+  private int ff;
+  private int mMaxWidth;
   
   public SnackbarContentLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.SnackbarLayout);
-    this.eg = paramContext.getDimensionPixelSize(a.k.SnackbarLayout_android_maxWidth, -1);
-    this.eh = paramContext.getDimensionPixelSize(a.k.SnackbarLayout_maxActionInlineWidth, -1);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.SnackbarLayout);
+    this.mMaxWidth = paramContext.getDimensionPixelSize(0, -1);
+    this.ff = paramContext.getDimensionPixelSize(2, -1);
     paramContext.recycle();
+  }
+  
+  private static void a(View paramView, int paramInt1, int paramInt2)
+  {
+    if (t.an(paramView))
+    {
+      t.d(paramView, t.W(paramView), paramInt1, t.X(paramView), paramInt2);
+      return;
+    }
+    paramView.setPadding(paramView.getPaddingLeft(), paramInt1, paramView.getPaddingRight(), paramInt2);
   }
   
   private boolean e(int paramInt1, int paramInt2, int paramInt3)
@@ -43,86 +51,76 @@ public class SnackbarContentLayout
       setOrientation(paramInt1);
       bool = true;
     }
-    TextView localTextView;
-    if ((this.ee.getPaddingTop() != paramInt2) || (this.ee.getPaddingBottom() != paramInt3))
+    if ((this.fc.getPaddingTop() != paramInt2) || (this.fc.getPaddingBottom() != paramInt3))
     {
-      localTextView = this.ee;
-      if (!q.ag(localTextView)) {
-        break label78;
-      }
-      q.d(localTextView, q.T(localTextView), paramInt2, q.U(localTextView), paramInt3);
-    }
-    for (;;)
-    {
+      a(this.fc, paramInt2, paramInt3);
       bool = true;
-      return bool;
-      label78:
-      localTextView.setPadding(localTextView.getPaddingLeft(), paramInt2, localTextView.getPaddingRight(), paramInt3);
+    }
+    return bool;
+  }
+  
+  public final void aJ()
+  {
+    this.fc.setAlpha(0.0F);
+    this.fc.animate().alpha(1.0F).setDuration(180L).setStartDelay(70L).start();
+    if (this.fe.getVisibility() == 0)
+    {
+      this.fe.setAlpha(0.0F);
+      this.fe.animate().alpha(1.0F).setDuration(180L).setStartDelay(70L).start();
     }
   }
   
-  public final void Y()
+  public final void aK()
   {
-    this.ee.setAlpha(0.0F);
-    this.ee.animate().alpha(1.0F).setDuration(180L).setStartDelay(70L).start();
-    if (this.ef.getVisibility() == 0)
+    this.fc.setAlpha(1.0F);
+    this.fc.animate().alpha(0.0F).setDuration(180L).setStartDelay(0L).start();
+    if (this.fe.getVisibility() == 0)
     {
-      this.ef.setAlpha(0.0F);
-      this.ef.animate().alpha(1.0F).setDuration(180L).setStartDelay(70L).start();
-    }
-  }
-  
-  public final void Z()
-  {
-    this.ee.setAlpha(1.0F);
-    this.ee.animate().alpha(0.0F).setDuration(180L).setStartDelay(0L).start();
-    if (this.ef.getVisibility() == 0)
-    {
-      this.ef.setAlpha(1.0F);
-      this.ef.animate().alpha(0.0F).setDuration(180L).setStartDelay(0L).start();
+      this.fe.setAlpha(1.0F);
+      this.fe.animate().alpha(0.0F).setDuration(180L).setStartDelay(0L).start();
     }
   }
   
   public Button getActionView()
   {
-    return this.ef;
+    return this.fe;
   }
   
   public TextView getMessageView()
   {
-    return this.ee;
+    return this.fc;
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.ee = ((TextView)findViewById(a.f.snackbar_text));
-    this.ef = ((Button)findViewById(a.f.snackbar_action));
+    this.fc = ((TextView)findViewById(2131823376));
+    this.fe = ((Button)findViewById(2131823377));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int i = paramInt1;
-    if (this.eg > 0)
+    if (this.mMaxWidth > 0)
     {
       i = paramInt1;
-      if (getMeasuredWidth() > this.eg)
+      if (getMeasuredWidth() > this.mMaxWidth)
       {
-        i = View.MeasureSpec.makeMeasureSpec(this.eg, 1073741824);
+        i = View.MeasureSpec.makeMeasureSpec(this.mMaxWidth, 1073741824);
         super.onMeasure(i, paramInt2);
       }
     }
-    int j = getResources().getDimensionPixelSize(a.d.design_snackbar_padding_vertical_2lines);
-    int k = getResources().getDimensionPixelSize(a.d.design_snackbar_padding_vertical);
-    if (this.ee.getLayout().getLineCount() > 1)
+    int j = getResources().getDimensionPixelSize(2131427392);
+    int k = getResources().getDimensionPixelSize(2131428302);
+    if (this.fc.getLayout().getLineCount() > 1)
     {
       paramInt1 = 1;
-      if ((paramInt1 == 0) || (this.eh <= 0) || (this.ef.getMeasuredWidth() <= this.eh)) {
-        break label142;
+      if ((paramInt1 == 0) || (this.ff <= 0) || (this.fe.getMeasuredWidth() <= this.ff)) {
+        break label140;
       }
       if (!e(1, j, j - k)) {
-        break label170;
+        break label168;
       }
       paramInt1 = 1;
     }
@@ -134,17 +132,17 @@ public class SnackbarContentLayout
       return;
       paramInt1 = 0;
       break;
-      label142:
+      label140:
       if (paramInt1 != 0) {}
       for (paramInt1 = j;; paramInt1 = k)
       {
         if (!e(0, paramInt1, paramInt1)) {
-          break label170;
+          break label168;
         }
         paramInt1 = 1;
         break;
       }
-      label170:
+      label168:
       paramInt1 = 0;
     }
   }

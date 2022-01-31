@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.websearch.api.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class AppBrandLauncherUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -13,7 +14,9 @@ final class AppBrandLauncherUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    ((m)g.r(m.class)).a(ae.getContext(), new AppBrandLauncherUI.3.1(this));
+    AppMethodBeat.i(132973);
+    ((m)g.E(m.class)).a(ah.getContext(), new AppBrandLauncherUI.3.1(this));
+    AppMethodBeat.o(132973);
     return true;
   }
 }

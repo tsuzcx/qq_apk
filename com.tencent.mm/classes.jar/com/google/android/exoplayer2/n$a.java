@@ -1,31 +1,35 @@
 package com.google.android.exoplayer2;
 
-import com.google.android.exoplayer2.source.f.b;
+import com.google.android.exoplayer2.source.i.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n$a
 {
-  public final f.b auN;
-  public final long auO;
-  public final long auP;
-  public final boolean auQ;
-  public final boolean auR;
-  public final long aug;
-  public final long auh;
+  public final long awy;
+  public final long awz;
+  public final i.b axf;
+  public final long axg;
+  public final long axh;
+  public final boolean axi;
+  public final boolean axj;
   
-  n$a(f.b paramb, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean1, boolean paramBoolean2)
+  n$a(i.b paramb, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.auN = paramb;
-    this.aug = paramLong1;
-    this.auO = paramLong2;
-    this.auh = paramLong3;
-    this.auP = paramLong4;
-    this.auQ = paramBoolean1;
-    this.auR = paramBoolean2;
+    this.axf = paramb;
+    this.awy = paramLong1;
+    this.axg = paramLong2;
+    this.awz = paramLong3;
+    this.axh = paramLong4;
+    this.axi = paramBoolean1;
+    this.axj = paramBoolean2;
   }
   
-  public final a kS()
+  public final a mZ()
   {
-    return new a(this.auN.dg(-1), this.aug, this.auO, this.auh, this.auP, this.auQ, this.auR);
+    AppMethodBeat.i(95257);
+    a locala = new a(this.axf.dM(-1), this.awy, this.axg, this.awz, this.axh, this.axi, this.axj);
+    AppMethodBeat.o(95257);
+    return locala;
   }
 }
 

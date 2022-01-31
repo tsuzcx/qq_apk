@@ -1,34 +1,32 @@
 package android.support.design.widget;
 
-import android.support.v4.view.q;
-import android.support.v4.widget.r;
 import android.view.View;
 
 final class BottomSheetBehavior$b
   implements Runnable
 {
-  private final int fJ;
+  private final int gD;
   private final View mView;
   
   BottomSheetBehavior$b(BottomSheetBehavior paramBottomSheetBehavior, View paramView, int paramInt)
   {
     this.mView = paramView;
-    this.fJ = paramInt;
+    this.gD = paramInt;
   }
   
   public final void run()
   {
-    if ((this.fI.ft != null) && (this.fI.ft.dW()))
+    if ((this.gC.gq != null) && (this.gC.gq.ep()))
     {
-      q.b(this.mView, this);
+      android.support.v4.view.t.b(this.mView, this);
       return;
     }
-    this.fI.v(this.fJ);
+    this.gC.u(this.gD);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.design.widget.BottomSheetBehavior.b
  * JD-Core Version:    0.7.0.1
  */

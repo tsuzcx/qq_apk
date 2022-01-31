@@ -3,11 +3,12 @@ package com.tencent.mm.plugin.recharge.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallNews;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class RechargeUI$16
   implements View.OnClickListener
@@ -16,13 +17,15 @@ final class RechargeUI$16
   
   public final void onClick(View paramView)
   {
-    if (!bk.bl(RechargeUI.h(this.nrE).qzx.qzG))
+    AppMethodBeat.i(44322);
+    if (!bo.isNullOrNil(RechargeUI.h(this.pWS).umh.umq))
     {
       paramView = new Intent();
-      paramView.putExtra("rawUrl", RechargeUI.h(this.nrE).qzx.qzG);
-      paramView.putExtra("geta8key_username", q.Gj());
-      d.b(this.nrE, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramView);
+      paramView.putExtra("rawUrl", RechargeUI.h(this.pWS).umh.umq);
+      paramView.putExtra("geta8key_username", r.Zn());
+      d.b(this.pWS, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramView);
     }
+    AppMethodBeat.o(44322);
   }
 }
 

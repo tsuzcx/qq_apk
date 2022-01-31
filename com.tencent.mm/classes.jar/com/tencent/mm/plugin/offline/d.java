@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.offline;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.mm.h.a.kw;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.lk;
 import com.tencent.mm.plugin.offline.ui.WalletOfflineEntranceUI;
 import com.tencent.mm.plugin.wallet_core.b.b;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
@@ -17,37 +18,53 @@ public class d
 {
   public final g a(MMActivity paramMMActivity, i parami)
   {
-    if ((paramMMActivity instanceof WalletVerifyCodeUI)) {
-      return new d.1(this, paramMMActivity, parami);
+    AppMethodBeat.i(43300);
+    if ((paramMMActivity instanceof WalletVerifyCodeUI))
+    {
+      paramMMActivity = new d.1(this, paramMMActivity, parami);
+      AppMethodBeat.o(43300);
+      return paramMMActivity;
     }
-    if ((paramMMActivity instanceof WalletPwdConfirmUI)) {
-      return new d.2(this, paramMMActivity, parami);
+    if ((paramMMActivity instanceof WalletPwdConfirmUI))
+    {
+      paramMMActivity = new d.2(this, paramMMActivity, parami);
+      AppMethodBeat.o(43300);
+      return paramMMActivity;
     }
-    return super.a(paramMMActivity, parami);
-  }
-  
-  public final String aTh()
-  {
-    return "OfflineBindCardRegProcess";
-  }
-  
-  public final void b(Activity paramActivity, int paramInt)
-  {
-    super.b(paramActivity, paramInt);
+    paramMMActivity = super.a(paramMMActivity, parami);
+    AppMethodBeat.o(43300);
+    return paramMMActivity;
   }
   
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
-    a.udP.m(new kw());
+    AppMethodBeat.i(43298);
+    a.ymk.l(new lk());
     c(paramActivity, WalletOfflineEntranceUI.class);
     if (paramActivity != null) {
       paramActivity.finish();
     }
+    AppMethodBeat.o(43298);
+  }
+  
+  public final String bzC()
+  {
+    return "OfflineBindCardRegProcess";
   }
   
   public final boolean c(Activity paramActivity, Bundle paramBundle)
   {
-    return super.c(paramActivity, paramBundle);
+    AppMethodBeat.i(43301);
+    boolean bool = super.c(paramActivity, paramBundle);
+    AppMethodBeat.o(43301);
+    return bool;
+  }
+  
+  public final void e(Activity paramActivity, int paramInt)
+  {
+    AppMethodBeat.i(43299);
+    super.e(paramActivity, paramInt);
+    AppMethodBeat.o(43299);
   }
 }
 

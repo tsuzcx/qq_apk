@@ -4,14 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.ui.tools.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.tools.s;
 
 public class SwitchKeyValuePreference
   extends Preference
 {
-  public boolean bIU = true;
-  private TextView mXQ;
+  private boolean enable;
+  private TextView pAD;
   
   public SwitchKeyValuePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,32 +21,50 @@ public class SwitchKeyValuePreference
   public SwitchKeyValuePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(a.h.mm_preference);
+    AppMethodBeat.i(107292);
+    this.enable = true;
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(107292);
   }
   
-  public final void aZ()
+  private void bJ()
   {
-    if (this.mXQ == null) {
-      return;
-    }
-    if (this.bIU)
+    AppMethodBeat.i(107295);
+    if (this.pAD == null)
     {
-      this.mXQ.setTextColor(p.hf(this.mContext));
+      AppMethodBeat.o(107295);
       return;
     }
-    this.mXQ.setTextColor(p.hg(this.mContext));
+    if (this.enable)
+    {
+      this.pAD.setTextColor(s.iD(this.mContext));
+      AppMethodBeat.o(107295);
+      return;
+    }
+    this.pAD.setTextColor(s.iE(this.mContext));
+    AppMethodBeat.o(107295);
   }
   
   public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(107293);
     super.onBindView(paramView);
-    this.mXQ = ((TextView)paramView.findViewById(16908304));
-    aZ();
+    this.pAD = ((TextView)paramView.findViewById(16908304));
+    bJ();
+    AppMethodBeat.o(107293);
+  }
+  
+  public final void qL(boolean paramBoolean)
+  {
+    AppMethodBeat.i(107294);
+    this.enable = paramBoolean;
+    bJ();
+    AppMethodBeat.o(107294);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.SwitchKeyValuePreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.google.android.exoplayer2.h;
 
-import android.net.Uri;
-import java.io.InputStream;
-
-public abstract interface s$a<T>
+public abstract class s$a
+  implements s.b
 {
-  public abstract T b(Uri paramUri, InputStream paramInputStream);
+  private final s.f aZf = new s.f();
+  
+  protected abstract s a(s.f paramf);
 }
 
 

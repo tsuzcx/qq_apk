@@ -4,12 +4,11 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.bda;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.protocal.protobuf.bkt;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class HoneyPayCardManagerUI$1
@@ -19,13 +18,15 @@ final class HoneyPayCardManagerUI$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (bda)paramAdapterView.getAdapter().getItem(paramInt);
-    if ((paramAdapterView != null) && (!bk.bl(paramAdapterView.url)))
+    AppMethodBeat.i(41793);
+    paramAdapterView = (bkt)paramAdapterView.getAdapter().getItem(paramInt);
+    if ((paramAdapterView != null) && (!bo.isNullOrNil(paramAdapterView.url)))
     {
-      y.i(this.lla.TAG, "click item: %s, %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramAdapterView.tyr) });
-      e.l(this.lla.mController.uMN, paramAdapterView.url, false);
-      h.nFQ.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
+      ab.i(this.nIw.TAG, "click item: %s, %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramAdapterView.xzu) });
+      e.m(this.nIw.getContext(), paramAdapterView.url, false);
+      h.qsU.e(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
     }
+    AppMethodBeat.o(41793);
   }
 }
 

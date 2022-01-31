@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.protocal.c.awd;
-import com.tencent.mm.protocal.c.el;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.protocal.protobuf.fo;
 import java.util.List;
 import java.util.Map;
 
 public abstract interface g$a
 {
-  public abstract void a(List<awd> paramList, Map<Integer, Integer> paramMap1, Map<Integer, Integer> paramMap2, int paramInt1, int paramInt2, el paramel);
+  public abstract void a(List<bcs> paramList, Map<Integer, Integer> paramMap1, Map<Integer, Integer> paramMap2, int paramInt1, int paramInt2, fo paramfo);
   
-  public abstract void bHg();
+  public abstract void ctk();
 }
 
 

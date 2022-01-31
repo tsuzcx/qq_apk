@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.fav.b.e;
 
 final class a$a
 {
-  int eRR;
   int errCode = 0;
-  long kaJ;
+  int gjM;
+  long mvf;
   
   private a$a(a parama) {}
 }

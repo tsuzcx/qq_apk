@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginIndepPass$9
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class LoginIndepPass$9
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    LoginIndepPass.a(this.fnl);
+    AppMethodBeat.i(124975);
+    LoginIndepPass.a(this.gEE);
+    AppMethodBeat.o(124975);
     return true;
   }
 }

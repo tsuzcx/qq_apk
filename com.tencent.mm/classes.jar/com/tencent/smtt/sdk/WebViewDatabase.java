@@ -1,6 +1,7 @@
 package com.tencent.smtt.sdk;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WebViewDatabase
 {
@@ -16,10 +17,12 @@ public class WebViewDatabase
   {
     try
     {
+      AppMethodBeat.i(65034);
       if (a == null) {
         a = new WebViewDatabase(paramContext);
       }
       paramContext = a;
+      AppMethodBeat.o(65034);
       return paramContext;
     }
     finally {}
@@ -27,69 +30,99 @@ public class WebViewDatabase
   
   public static WebViewDatabase getInstance(Context paramContext)
   {
-    return a(paramContext);
+    AppMethodBeat.i(65033);
+    paramContext = a(paramContext);
+    AppMethodBeat.o(65033);
+    return paramContext;
   }
   
   public void clearFormData()
   {
-    bv localbv = bv.a();
-    if ((localbv != null) && (localbv.b()))
+    AppMethodBeat.i(65040);
+    bz localbz = bz.a();
+    if ((localbz != null) && (localbz.b()))
     {
-      localbv.c().g(this.b);
+      localbz.c().g(this.b);
+      AppMethodBeat.o(65040);
       return;
     }
     android.webkit.WebViewDatabase.getInstance(this.b).clearFormData();
+    AppMethodBeat.o(65040);
   }
   
   public void clearHttpAuthUsernamePassword()
   {
-    bv localbv = bv.a();
-    if ((localbv != null) && (localbv.b()))
+    AppMethodBeat.i(65038);
+    bz localbz = bz.a();
+    if ((localbz != null) && (localbz.b()))
     {
-      localbv.c().e(this.b);
+      localbz.c().e(this.b);
+      AppMethodBeat.o(65038);
       return;
     }
     android.webkit.WebViewDatabase.getInstance(this.b).clearHttpAuthUsernamePassword();
+    AppMethodBeat.o(65038);
   }
   
   @Deprecated
   public void clearUsernamePassword()
   {
-    bv localbv = bv.a();
-    if ((localbv != null) && (localbv.b()))
+    AppMethodBeat.i(65036);
+    bz localbz = bz.a();
+    if ((localbz != null) && (localbz.b()))
     {
-      localbv.c().c(this.b);
+      localbz.c().c(this.b);
+      AppMethodBeat.o(65036);
       return;
     }
     android.webkit.WebViewDatabase.getInstance(this.b).clearUsernamePassword();
+    AppMethodBeat.o(65036);
   }
   
   public boolean hasFormData()
   {
-    bv localbv = bv.a();
-    if ((localbv != null) && (localbv.b())) {
-      return localbv.c().f(this.b);
+    AppMethodBeat.i(65039);
+    bz localbz = bz.a();
+    if ((localbz != null) && (localbz.b()))
+    {
+      bool = localbz.c().f(this.b);
+      AppMethodBeat.o(65039);
+      return bool;
     }
-    return android.webkit.WebViewDatabase.getInstance(this.b).hasFormData();
+    boolean bool = android.webkit.WebViewDatabase.getInstance(this.b).hasFormData();
+    AppMethodBeat.o(65039);
+    return bool;
   }
   
   public boolean hasHttpAuthUsernamePassword()
   {
-    bv localbv = bv.a();
-    if ((localbv != null) && (localbv.b())) {
-      return localbv.c().d(this.b);
+    AppMethodBeat.i(65037);
+    bz localbz = bz.a();
+    if ((localbz != null) && (localbz.b()))
+    {
+      bool = localbz.c().d(this.b);
+      AppMethodBeat.o(65037);
+      return bool;
     }
-    return android.webkit.WebViewDatabase.getInstance(this.b).hasHttpAuthUsernamePassword();
+    boolean bool = android.webkit.WebViewDatabase.getInstance(this.b).hasHttpAuthUsernamePassword();
+    AppMethodBeat.o(65037);
+    return bool;
   }
   
   @Deprecated
   public boolean hasUsernamePassword()
   {
-    bv localbv = bv.a();
-    if ((localbv != null) && (localbv.b())) {
-      return localbv.c().b(this.b);
+    AppMethodBeat.i(65035);
+    bz localbz = bz.a();
+    if ((localbz != null) && (localbz.b()))
+    {
+      bool = localbz.c().b(this.b);
+      AppMethodBeat.o(65035);
+      return bool;
     }
-    return android.webkit.WebViewDatabase.getInstance(this.b).hasUsernamePassword();
+    boolean bool = android.webkit.WebViewDatabase.getInstance(this.b).hasUsernamePassword();
+    AppMethodBeat.o(65035);
+    return bool;
   }
 }
 

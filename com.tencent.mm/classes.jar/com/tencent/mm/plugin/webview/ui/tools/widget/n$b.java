@@ -5,34 +5,40 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.protocal.c.bna;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bwv;
 import java.util.LinkedList;
 
 final class n$b
   extends BaseAdapter
 {
-  private LinkedList<bna> fYa;
+  private LinkedList<bwv> jje;
   
-  public n$b(LinkedList<bna> paramLinkedList)
+  public n$b(LinkedList<bwv> paramLinkedList)
   {
     Object localObject;
-    this.fYa = localObject;
+    this.jje = localObject;
   }
   
-  private bna kN(int paramInt)
+  private bwv KY(int paramInt)
   {
-    return (bna)this.fYa.get(paramInt);
+    AppMethodBeat.i(79180);
+    bwv localbwv = (bwv)this.jje.get(paramInt);
+    AppMethodBeat.o(79180);
+    return localbwv;
   }
   
   public final int getCount()
   {
-    if (this.fYa == null) {
+    AppMethodBeat.i(79179);
+    if (this.jje == null)
+    {
+      AppMethodBeat.o(79179);
       return 0;
     }
-    return this.fYa.size();
+    int i = this.jje.size();
+    AppMethodBeat.o(79179);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -42,38 +48,42 @@ final class n$b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if ((this.fYa == null) || (this.fYa.size() <= 0)) {
+    AppMethodBeat.i(79181);
+    if ((this.jje == null) || (this.jje.size() <= 0))
+    {
+      AppMethodBeat.o(79181);
       return null;
     }
-    bna localbna = kN(paramInt);
+    bwv localbwv = KY(paramInt);
     Object localObject;
     if (paramView == null)
     {
       paramView = new n.b.a(this, (byte)0);
-      localObject = View.inflate(paramViewGroup.getContext(), R.i.authorize_scope_item, null);
-      paramView.fYe = ((ImageView)((View)localObject).findViewById(R.h.app_auth_state));
-      paramView.fYf = ((TextView)((View)localObject).findViewById(R.h.app_auth_desc));
+      localObject = View.inflate(paramViewGroup.getContext(), 2130968791, null);
+      paramView.vbF = ((ImageView)((View)localObject).findViewById(2131821584));
+      paramView.jjj = ((TextView)((View)localObject).findViewById(2131821585));
       ((View)localObject).setTag(paramView);
       paramViewGroup = paramView;
       paramView = (View)localObject;
-      if (localbna.tGf != 1) {
-        break label163;
+      if (localbwv.xJY != 1) {
+        break label174;
       }
-      paramViewGroup.fYe.setImageResource(R.k.login_auth_state_not_selected);
+      paramViewGroup.vbF.setImageResource(2131231594);
     }
     for (;;)
     {
-      paramViewGroup.fYf.setText(localbna.kRN);
-      localObject = paramViewGroup.fYe;
-      paramViewGroup.fYe.setOnClickListener(new n.b.1(this, localbna, (ImageView)localObject));
+      paramViewGroup.jjj.setText(localbwv.Desc);
+      localObject = paramViewGroup.vbF;
+      paramViewGroup.vbF.setOnClickListener(new n.b.1(this, localbwv, (ImageView)localObject));
+      AppMethodBeat.o(79181);
       return paramView;
       paramViewGroup = (n.b.a)paramView.getTag();
       break;
-      label163:
-      if (localbna.tGf == 3) {
-        paramViewGroup.fYe.setImageResource(R.k.login_auth_state_must_select);
+      label174:
+      if (localbwv.xJY == 3) {
+        paramViewGroup.vbF.setImageResource(2131231593);
       } else {
-        paramViewGroup.fYe.setImageResource(R.k.login_auth_state_default_select);
+        paramViewGroup.vbF.setImageResource(2131231592);
       }
     }
   }

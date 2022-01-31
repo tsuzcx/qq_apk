@@ -1,42 +1,60 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.u.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.s.i;
 import java.util.Collection;
 import java.util.Iterator;
 
 public final class e
 {
-  private static final j<q, z> htk = new j();
+  private static final i<v, aa> jkP;
   
-  public static z a(q paramq, e.a parama)
+  static
   {
-    if (paramq == null) {
+    AppMethodBeat.i(123598);
+    jkP = new i();
+    AppMethodBeat.o(123598);
+  }
+  
+  public static aa a(v paramv, e.a parama)
+  {
+    AppMethodBeat.i(123597);
+    if (paramv == null)
+    {
+      AppMethodBeat.o(123597);
       return null;
     }
-    paramq = htk.aV(paramq);
-    if (paramq != null)
+    paramv = jkP.br(paramv);
+    if (paramv != null)
     {
-      paramq = paramq.iterator();
-      while (paramq.hasNext())
+      paramv = paramv.iterator();
+      while (paramv.hasNext())
       {
-        z localz = (z)paramq.next();
-        if ((localz != null) && (parama.a(localz))) {
-          return localz;
+        aa localaa = (aa)paramv.next();
+        if ((localaa != null) && (parama.a(localaa)))
+        {
+          AppMethodBeat.o(123597);
+          return localaa;
         }
       }
     }
+    AppMethodBeat.o(123597);
     return null;
   }
   
-  public static void a(q paramq, z paramz)
+  public static void a(v paramv, aa paramaa)
   {
-    htk.h(paramq, paramz);
+    AppMethodBeat.i(123595);
+    jkP.s(paramv, paramaa);
+    AppMethodBeat.o(123595);
   }
   
-  public static void t(q paramq)
+  public static void o(v paramv)
   {
-    htk.aW(paramq);
+    AppMethodBeat.i(123596);
+    jkP.bs(paramv);
+    AppMethodBeat.o(123596);
   }
 }
 

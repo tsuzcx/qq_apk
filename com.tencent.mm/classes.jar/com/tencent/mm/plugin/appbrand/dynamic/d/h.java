@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
-import com.tencent.mm.aa.b.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.model.v.b;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.z.b.b.a;
 import org.json.JSONObject;
 
 public final class h
@@ -14,15 +15,17 @@ public final class h
     super("onTapCallback", 327);
   }
   
-  protected final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.z.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
-    parama = parama.CD();
+    AppMethodBeat.i(10844);
+    parama = parama.Qx();
     h.b localb = new h.b();
     localb.id = parama.getString("__page_view_id", "");
-    localb.cbd = paramJSONObject.optString("eventId", "");
-    localb.fVr = paramJSONObject.optBoolean("hasHandler");
-    localb.fVs = paramJSONObject.optBoolean("res");
-    XIPCInvoker.a(parama.getString("__process_name", ae.getProcessName()), localb, h.a.class, new h.1(this, parama1));
+    localb.cJG = paramJSONObject.optString("eventId", "");
+    localb.hoT = paramJSONObject.optBoolean("hasHandler");
+    localb.hoU = paramJSONObject.optBoolean("res");
+    XIPCInvoker.a(parama.getString("__process_name", ah.getProcessName()), localb, h.a.class, new h.1(this, parama1));
+    AppMethodBeat.o(10844);
   }
 }
 

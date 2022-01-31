@@ -1,28 +1,31 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
-import com.tencent.mm.wallet_core.tenpay.model.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class f
-  extends j
+  extends m
 {
   public f(String paramString1, String paramString2, String paramString3)
   {
+    AppMethodBeat.i(48663);
     HashMap localHashMap = new HashMap();
     localHashMap.put("bank_type", paramString1);
     localHashMap.put("bind_serial", paramString2);
     localHashMap.put("passwd", paramString3);
-    D(localHashMap);
+    setRequestData(localHashMap);
+    AppMethodBeat.o(48663);
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject) {}
-  
-  public final int aEC()
+  public final int getTenpayCgicmd()
   {
     return 62;
   }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject) {}
 }
 
 

@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.graphics.Bitmap;
-import com.tencent.mm.platformtools.x.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletLqtSaveFetchUI$15
-  implements x.a
+  implements WalletLqtArriveTimeLayout.a
 {
   WalletLqtSaveFetchUI$15(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI) {}
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void cRk()
   {
-    ai.d(new WalletLqtSaveFetchUI.15.1(this, paramBitmap));
+    AppMethodBeat.i(155088);
+    WalletLqtSaveFetchUI.a(this.tRZ, true);
+    AppMethodBeat.o(155088);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchUI.15
  * JD-Core Version:    0.7.0.1
  */

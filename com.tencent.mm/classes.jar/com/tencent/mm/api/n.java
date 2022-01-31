@@ -1,30 +1,16 @@
 package com.tencent.mm.api;
 
+import android.graphics.Bitmap;
+
 public abstract interface n
 {
-  public abstract int getTextColor();
+  public abstract void b(Bitmap paramBitmap, boolean paramBoolean);
   
-  public abstract int rY();
-  
-  public abstract int rZ();
-  
-  public abstract int sa();
-  
-  public abstract int sb();
-  
-  public abstract int sc();
-  
-  public abstract boolean sd();
-  
-  public abstract boolean se();
-  
-  public abstract int sf();
-  
-  public abstract boolean sg();
+  public abstract void onError(Exception paramException);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.api.n
  * JD-Core Version:    0.7.0.1
  */

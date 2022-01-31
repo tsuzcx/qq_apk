@@ -7,18 +7,18 @@ import android.widget.TextView;
 
 final class CardNewMsgUI$b
 {
-  ImageView iwn;
-  View iwo;
-  ImageView iwp;
-  TextView iwq;
-  TextView iwr;
-  TextView iws;
-  TextView iwt;
-  TextView iwu;
-  View iwv;
-  TextView iww;
-  LinearLayout iwx;
-  LinearLayout iwy;
+  TextView kxA;
+  LinearLayout kxB;
+  LinearLayout kxC;
+  ImageView kxr;
+  View kxs;
+  ImageView kxt;
+  TextView kxu;
+  TextView kxv;
+  TextView kxw;
+  TextView kxx;
+  TextView kxy;
+  View kxz;
   
   private CardNewMsgUI$b(CardNewMsgUI paramCardNewMsgUI) {}
 }

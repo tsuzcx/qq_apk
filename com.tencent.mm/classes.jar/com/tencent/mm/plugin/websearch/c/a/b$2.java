@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.websearch.c.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -14,36 +15,43 @@ final class b$2
   
   public final void b(j paramj)
   {
-    a locala = (a)paramj.kxg.kwb;
-    if (locala == null) {}
-    c.a locala1;
-    do
+    AppMethodBeat.i(91369);
+    a locala = (a)paramj.mSV.mRQ;
+    if (locala == null)
     {
+      AppMethodBeat.o(91369);
       return;
-      locala1 = (c.a)this.qWd.hLB.remove(locala);
-    } while (locala1 == null);
-    switch (paramj.aYY)
+    }
+    c.a locala1 = (c.a)this.uLp.jFd.remove(locala);
+    if (locala1 == null)
+    {
+      AppMethodBeat.o(91369);
+      return;
+    }
+    switch (paramj.bpE)
     {
     }
     for (;;)
     {
-      locala1.bZZ();
+      locala1.cZV();
+      AppMethodBeat.o(91369);
       return;
-      if ((paramj.kxh == null) || (paramj.kxh.size() == 0))
+      if ((paramj.mSW == null) || (paramj.mSW.size() == 0))
       {
-        y.i("FTSMatchContact", "local contact search size 0");
-        locala1.bZZ();
+        ab.i("FTSMatchContact", "local contact search size 0");
+        locala1.cZV();
+        AppMethodBeat.o(91369);
         return;
       }
-      locala.da(paramj.kxh);
+      locala.ee(paramj.mSW);
       continue;
-      locala.da(Collections.emptyList());
+      locala.ee(Collections.emptyList());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.c.a.b.2
  * JD-Core Version:    0.7.0.1
  */

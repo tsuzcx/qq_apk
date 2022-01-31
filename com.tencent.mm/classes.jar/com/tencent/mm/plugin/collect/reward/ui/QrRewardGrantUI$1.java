@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.collect.reward.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class QrRewardGrantUI$1
   implements TextWatcher
@@ -11,6 +12,7 @@ final class QrRewardGrantUI$1
   
   public final void afterTextChanged(Editable paramEditable)
   {
+    AppMethodBeat.i(41063);
     if (paramEditable.toString().startsWith(".")) {
       paramEditable.insert(0, "0");
     }
@@ -22,9 +24,10 @@ final class QrRewardGrantUI$1
     }
     for (;;)
     {
-      i = (int)Math.round(bk.getDouble(paramEditable.toString(), 0.0D) * 100.0D);
-      QrRewardGrantUI.a(this.iIJ, i);
-      QrRewardGrantUI.b(this.iIJ, i);
+      i = (int)Math.round(bo.getDouble(paramEditable.toString(), 0.0D) * 100.0D);
+      QrRewardGrantUI.a(this.kPo, i);
+      QrRewardGrantUI.b(this.kPo, i);
+      AppMethodBeat.o(41063);
       return;
       if (i > 6) {
         paramEditable.delete(6, i);

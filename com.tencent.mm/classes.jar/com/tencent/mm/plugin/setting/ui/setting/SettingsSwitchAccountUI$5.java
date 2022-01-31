@@ -1,23 +1,24 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mm.plugin.setting.ui.widget.SwitchAccountGridView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsSwitchAccountUI$5
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
   SettingsSwitchAccountUI$5(SettingsSwitchAccountUI paramSettingsSwitchAccountUI) {}
   
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public final void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    SettingsSwitchAccountUI.d(this.nWi).setTranslationY(-f * SettingsSwitchAccountUI.d(this.nWi).getHeight());
+    AppMethodBeat.i(127501);
+    SettingsSwitchAccountUI.c(this.qKt);
+    AppMethodBeat.o(127501);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsSwitchAccountUI.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minWidth="274.0dip" android:minHeight="229.0dip"
+<FrameLayout android:id="@id/bi5" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/bcw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="38.0dip" android:src="@raw/connect_mac_popup" />
-    <TextView android:textSize="@dimen/k9" android:textColor="@color/fd" android:layout_gravity="center_horizontal" android:id="@id/bcx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
-    <TextView android:textSize="@dimen/k9" android:textColor="@color/fd" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="14.0dip" android:text="@string/fnv" />
-    <TextView android:textSize="@dimen/l1" android:textColor="@color/g2" android:gravity="center" android:id="@id/bcy" android:background="@drawable/yz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip" android:text="@string/fnt" android:layout_weight="1.0" />
-</LinearLayout>
+    <com.tencent.mm.plugin.emoji.ui.EmojiDetailScrollView android:orientation="vertical" android:id="@id/b8_" android:background="@color/a6q" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/bi6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.pluginsdk.ui.emoji.BannerEmojiView android:id="@id/bi7" android:background="#ffcacaca" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/bi8" android:padding="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <com.tencent.mm.ui.base.MMAutoSizeTextView android:textSize="@dimen/di" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/bi9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/ln" />
+                    <TextView android:textSize="@dimen/nh" android:textStyle="bold" android:textColor="#77000000" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bi_" android:background="@drawable/emoji_tip_bg" android:paddingLeft="@dimen/ne" android:paddingRight="@dimen/ne" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/lb" android:layout_marginRight="@dimen/lb" android:singleLine="true" />
+                </LinearLayout>
+                <FrameLayout android:id="@id/bia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="80.0dip">
+                    <Button android:id="@id/bib" android:paddingLeft="@dimen/lb" android:paddingRight="@dimen/lb" android:layout_width="wrap_content" android:minWidth="80.0dip" style="@style/ns" />
+                    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/bic" android:layout_width="100.0dip" android:layout_height="wrap_content">
+                        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/bid" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/ld" />
+                        <ImageView android:layout_gravity="center_vertical" android:id="@id/bie" android:background="@drawable/emoji_download_cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a8f" />
+                    </LinearLayout>
+                    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/bif" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
+                </FrameLayout>
+            </LinearLayout>
+            <TextView android:textSize="@dimen/ko" android:textColor="#ff6c6c6c" android:id="@id/big" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingMultiplier="1.1" />
+            <View android:orientation="horizontal" android:id="@id/bih" android:background="@drawable/abk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a14" android:layout_marginBottom="@dimen/a11" android:layout_marginStart="@dimen/a12" android:layout_marginEnd="@dimen/a13" />
+            <com.tencent.mm.plugin.emoji.ui.EmojiDetailGridView android:layout_gravity="center_horizontal" android:id="@id/bii" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:duplicateParentState="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:cacheColorHint="@null" android:horizontalSpacing="@dimen/a0s" android:verticalSpacing="@dimen/a0s" />
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l6" layout="@layout/v9" />
+            <View android:id="@id/bij" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" />
+            <include android:id="@id/bik" layout="@layout/vl" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff8f8f8f" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/bil" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l5" android:layout_marginBottom="@dimen/lb" />
+            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip">
+                <TextView android:textSize="12.0sp" android:textColor="#ff385faf" android:layout_gravity="center" android:id="@id/bim" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bbz" android:singleLine="true" />
+                <TextView android:textSize="12.0sp" android:textColor="#ff385faf" android:layout_gravity="center_vertical" android:id="@id/bin" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bcb" android:singleLine="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.tencent.mm.plugin.emoji.ui.EmojiDetailScrollView>
+    <include android:visibility="gone" layout="@layout/v2" />
+</FrameLayout>

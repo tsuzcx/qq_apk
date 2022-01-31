@@ -1,51 +1,29 @@
 package com.tencent.mm.plugin.k;
 
-import com.tencent.mm.az.r;
-import com.tencent.mm.kernel.api.bucket.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.p;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 
-public final class a
-  extends p
-  implements b
+public abstract class a
 {
-  private static a iNZ;
+  public abstract boolean bMf();
   
-  private a()
-  {
-    super(r.class);
-  }
+  public abstract boolean dispatchKeyEvent(KeyEvent paramKeyEvent);
   
-  public static String FN()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    g.DQ();
-    return g.DP().dKt + "package/";
-  }
+  public abstract boolean dispatchTouchEvent(MotionEvent paramMotionEvent);
   
-  public static a aFH()
-  {
-    try
-    {
-      if (iNZ == null) {
-        iNZ = new a();
-      }
-      a locala = iNZ;
-      return locala;
-    }
-    finally {}
-  }
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public final List<String> collectStoragePaths()
-  {
-    LinkedList localLinkedList = new LinkedList();
-    Collections.addAll(localLinkedList, new String[] { "package/" });
-    return localLinkedList;
-  }
+  public abstract void onBackPressed();
+  
+  public abstract void onCreate(Bundle paramBundle);
+  
+  public abstract void onDestroy();
+  
+  public abstract void onPause();
+  
+  public abstract void onResume();
 }
 
 

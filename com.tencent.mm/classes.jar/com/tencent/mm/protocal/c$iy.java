@@ -5,7 +5,7 @@ public final class c$iy
 {
   public c$iy()
   {
-    super("showSearchActionSheet", "showSearchActionSheet", 10000, false);
+    super("setGameDebugConfig", "setGameDebugConfig", 1111111, false);
   }
 }
 

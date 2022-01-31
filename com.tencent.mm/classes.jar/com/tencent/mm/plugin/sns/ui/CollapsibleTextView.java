@@ -9,146 +9,191 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.d.b;
 import com.tencent.mm.plugin.sns.ui.widget.SnsPostDescPreloadTextView;
 import com.tencent.mm.pluginsdk.ui.d.m;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ui.w;
 import java.util.HashMap;
 
 public class CollapsibleTextView
   extends LinearLayout
 {
-  private String bMB;
-  private String bRV;
   private Context context;
-  private ah handler = new ah(Looper.getMainLooper());
-  private boolean hasCheck = true;
-  private int oNk = 0;
-  protected SnsPostDescPreloadTextView oOf;
-  protected SnsTextView oOg;
-  protected TextView oOh;
-  private String oOi;
-  private String oOj;
-  private HashMap<String, Integer> oOk;
-  private Runnable oOl = new CollapsibleTextView.1(this);
-  private boolean omL = false;
+  private String ctV;
+  private String czw;
+  private ak handler;
+  private boolean hasCheck;
+  private int rEV;
+  protected SnsPostDescPreloadTextView rFO;
+  protected SnsTextView rFP;
+  protected TextView rFQ;
+  private String rFR;
+  private String rFS;
+  private HashMap<String, Integer> rFT;
+  protected aw rFU;
+  private Runnable rFV;
+  private boolean raZ;
   private CharSequence text;
   
   public CollapsibleTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(38200);
+    this.raZ = false;
+    this.hasCheck = true;
+    this.handler = new ak(Looper.getMainLooper());
+    this.rEV = 0;
+    this.rFV = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(38199);
+        if ((CollapsibleTextView.this.rFO != null) && ((CollapsibleTextView.this.rFO.getTag() instanceof as)) && (((as)CollapsibleTextView.this.rFO.getTag()).czw.equals(CollapsibleTextView.a(CollapsibleTextView.this))))
+        {
+          CollapsibleTextView.this.rFO.setMaxLines(6);
+          CollapsibleTextView.this.rFQ.setVisibility(0);
+          CollapsibleTextView.this.rFQ.setText(CollapsibleTextView.b(CollapsibleTextView.this));
+        }
+        AppMethodBeat.o(38199);
+      }
+    };
     this.context = paramContext;
-    this.oOi = this.context.getString(i.j.sns_desc_spread);
-    this.oOj = this.context.getString(i.j.sns_desc_shrinkup);
-    paramContext = com.tencent.mm.ui.y.gt(this.context).inflate(i.g.collapsible_textview, this);
+    this.rFR = this.context.getString(2131303797);
+    this.rFS = this.context.getString(2131303796);
+    paramContext = w.hM(this.context).inflate(2130969167, this);
     paramContext.setPadding(0, -3, 0, 0);
-    this.oOf = ((SnsPostDescPreloadTextView)paramContext.findViewById(i.f.desc_tv));
-    this.oOh = ((TextView)paramContext.findViewById(i.f.desc_op_tv));
-    this.oOg = ((SnsTextView)paramContext.findViewById(i.f.desc_tv_single));
+    this.rFO = ((SnsPostDescPreloadTextView)paramContext.findViewById(2131821007));
+    this.rFQ = ((TextView)paramContext.findViewById(2131822881));
+    this.rFP = ((SnsTextView)paramContext.findViewById(2131822880));
+    AppMethodBeat.o(38200);
   }
   
-  public final void a(int paramInt, CharSequence paramCharSequence, TextView.BufferType paramBufferType, HashMap<String, Integer> paramHashMap, String paramString1, String paramString2, au paramau, String paramString3, boolean paramBoolean)
+  public final void a(int paramInt, CharSequence paramCharSequence, TextView.BufferType paramBufferType, HashMap<String, Integer> paramHashMap, String paramString1, String paramString2, av paramav, String paramString3, boolean paramBoolean)
   {
-    this.context = paramau.bER;
-    this.oOk = paramHashMap;
+    AppMethodBeat.i(38201);
+    this.context = paramav.cmc;
+    this.rFT = paramHashMap;
     this.text = paramCharSequence;
-    this.omL = paramBoolean;
-    this.bMB = paramString1;
-    this.bRV = paramString2;
-    this.oNk = paramInt;
-    this.oOi = this.context.getString(i.j.sns_desc_spread);
-    this.oOj = this.context.getString(i.j.sns_desc_shrinkup);
-    this.oOg.setOriginText(paramString3);
-    paramString2 = new ar(this.bRV, this.bMB, false, false, 1);
+    this.raZ = paramBoolean;
+    this.ctV = paramString1;
+    this.czw = paramString2;
+    this.rEV = paramInt;
+    this.rFR = this.context.getString(2131303797);
+    this.rFS = this.context.getString(2131303796);
+    this.rFP.setOriginText(paramString3);
+    paramString2 = new as(this.czw, this.ctV, false, false, 1);
+    paramString2.userName = this.rFU.ikj;
     if (paramInt == 0)
     {
-      this.oOf.setText(paramString3);
-      this.oOg.setVisibility(8);
-      this.oOh.setVisibility(0);
-      this.oOf.setVisibility(0);
+      this.rFO.setText(paramString3);
+      this.rFP.setVisibility(8);
+      this.rFQ.setVisibility(0);
+      this.rFO.setVisibility(0);
       paramCharSequence = new m(this.context);
-      this.oOf.setOnTouchListener(paramCharSequence);
-      this.oOf.setTag(paramString2);
+      this.rFO.setOnTouchListener(paramCharSequence);
+      this.rFO.setTag(paramString2);
       if (paramHashMap.get(paramString1) == null)
       {
         this.hasCheck = false;
-        this.oOh.setVisibility(8);
-        this.oOf.setMaxLines(8);
+        this.rFQ.setVisibility(8);
+        this.rFO.setMaxLines(8);
+        AppMethodBeat.o(38201);
         return;
       }
       this.hasCheck = true;
       switch (((Integer)paramHashMap.get(paramString1)).intValue())
       {
-      default: 
-        return;
-      case 0: 
-        this.oOh.setVisibility(8);
-        return;
-      case 1: 
-        this.oOf.setMaxLines(6);
-        this.oOh.setVisibility(0);
-        this.oOh.setText(this.oOi);
-        return;
       }
-      this.oOf.setMaxLines(2147483647);
-      this.oOh.setVisibility(0);
-      this.oOh.setText(this.oOj);
-      return;
+      for (;;)
+      {
+        AppMethodBeat.o(38201);
+        return;
+        this.rFQ.setVisibility(8);
+        AppMethodBeat.o(38201);
+        return;
+        this.rFO.setMaxLines(6);
+        this.rFQ.setVisibility(0);
+        this.rFQ.setText(this.rFR);
+        AppMethodBeat.o(38201);
+        return;
+        this.rFO.setMaxLines(2147483647);
+        this.rFQ.setVisibility(0);
+        this.rFQ.setText(this.rFS);
+      }
     }
-    this.oOg.setText(paramCharSequence, paramBufferType);
-    this.oOg.setTag(paramString2);
-    this.oOg.setVisibility(0);
-    this.oOh.setVisibility(8);
-    this.oOf.setVisibility(8);
-    this.oOg.setOnClickListener(paramau.ovx.poU);
+    this.rFP.setText(paramCharSequence, paramBufferType);
+    this.rFP.setTag(paramString2);
+    this.rFP.setVisibility(0);
+    this.rFQ.setVisibility(8);
+    this.rFO.setVisibility(8);
+    this.rFP.setOnClickListener(paramav.rks.sjM);
+    AppMethodBeat.o(38201);
   }
   
   public int getSpreadHeight()
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.CollapsibleTextView", "count:" + this.oOf.getLineCount() + "  height:" + this.oOf.getLineHeight());
-    return (this.oOf.getLineCount() - 7) * this.oOf.getLineHeight();
+    AppMethodBeat.i(38202);
+    ab.i("MicroMsg.CollapsibleTextView", "count:" + this.rFO.getLineCount() + "  height:" + this.rFO.getLineHeight());
+    int i = this.rFO.getLineCount();
+    int j = this.rFO.getLineHeight();
+    AppMethodBeat.o(38202);
+    return (i - 7) * j;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(38206);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.oNk != 0) || (this.omL) || (this.hasCheck)) {
-      return;
-    }
-    this.hasCheck = true;
-    if (this.oOf.getLineCount() <= 7)
+    if ((this.rEV == 0) && (!this.raZ))
     {
-      this.oOk.put(this.bMB, Integer.valueOf(0));
-      return;
+      if (this.hasCheck)
+      {
+        AppMethodBeat.o(38206);
+        return;
+      }
+      this.hasCheck = true;
+      if (this.rFO.getLineCount() <= 7)
+      {
+        this.rFT.put(this.ctV, Integer.valueOf(0));
+        AppMethodBeat.o(38206);
+        return;
+      }
+      this.rFT.put(this.ctV, Integer.valueOf(1));
+      this.handler.post(this.rFV);
     }
-    this.oOk.put(this.bMB, Integer.valueOf(1));
-    this.handler.post(this.oOl);
+    AppMethodBeat.o(38206);
   }
   
   public void setClickable(boolean paramBoolean)
   {
-    this.oOh.setClickable(paramBoolean);
-    this.oOg.setClickable(paramBoolean);
-    this.oOf.setClickable(paramBoolean);
+    AppMethodBeat.i(38205);
+    this.rFQ.setClickable(paramBoolean);
+    this.rFP.setClickable(paramBoolean);
+    this.rFO.setClickable(paramBoolean);
     super.setClickable(paramBoolean);
+    AppMethodBeat.o(38205);
   }
   
   public void setLongClickable(boolean paramBoolean)
   {
-    this.oOh.setLongClickable(paramBoolean);
-    this.oOg.setLongClickable(paramBoolean);
-    this.oOf.setLongClickable(paramBoolean);
+    AppMethodBeat.i(38204);
+    this.rFQ.setLongClickable(paramBoolean);
+    this.rFP.setLongClickable(paramBoolean);
+    this.rFO.setLongClickable(paramBoolean);
     super.setLongClickable(paramBoolean);
+    AppMethodBeat.o(38204);
   }
   
   public void setOpClickListener(View.OnClickListener paramOnClickListener)
   {
-    if (this.oOh != null) {
-      this.oOh.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.i(38203);
+    if (this.rFQ != null) {
+      this.rFQ.setOnClickListener(paramOnClickListener);
     }
+    AppMethodBeat.o(38203);
   }
 }
 

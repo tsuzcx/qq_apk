@@ -1,59 +1,82 @@
 package com.tencent.mm.plugin.wallet_index.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet_index.c.j;
-import com.tencent.mm.protocal.c.aqe;
-import com.tencent.mm.protocal.c.aqf;
-import com.tencent.mm.wallet_core.c.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet_index.c.k;
+import com.tencent.mm.protocal.protobuf.awd;
+import com.tencent.mm.protocal.protobuf.awe;
+import com.tencent.mm.wallet_core.c.t;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class c
 {
-  String iZD = null;
-  public int mCount = 1;
-  int mRe;
-  public String qLC = null;
-  public ArrayList<String> qLF = new ArrayList();
-  public ArrayList<String> qLG = new ArrayList();
-  public String qLH = null;
-  public int qLI = 0;
-  List<String> qLJ = new ArrayList();
-  boolean qLK = false;
-  public String qLL;
-  public String qLM;
-  public String qLe = null;
-  public String qLf = null;
-  public aqe qLk;
-  public aqf qLl;
+  String liu;
+  public int mCount;
+  int prr;
+  public ArrayList<String> uAB;
+  public ArrayList<String> uAC;
+  public String uAD;
+  public int uAE;
+  List<String> uAF;
+  boolean uAG;
+  public String uAH;
+  public String uAI;
+  public String uAa;
+  public String uAb;
+  public awd uAh;
+  public awe uAi;
+  public String uAy;
+  
+  public c()
+  {
+    AppMethodBeat.i(48227);
+    this.uAB = new ArrayList();
+    this.uAC = new ArrayList();
+    this.mCount = 1;
+    this.uAD = null;
+    this.uAE = 0;
+    this.uAb = null;
+    this.uAa = null;
+    this.uAy = null;
+    this.uAF = new ArrayList();
+    this.liu = null;
+    this.uAG = false;
+    AppMethodBeat.o(48227);
+  }
   
   public final m a(com.tencent.mm.plugin.wallet_index.b.a.c paramc, boolean paramBoolean)
   {
+    AppMethodBeat.i(48228);
     if (paramBoolean) {}
-    for (int i = 2; this.qLK; i = 1)
+    for (int i = 2; this.uAG; i = 1)
     {
-      if (!bXA())
+      if (!cXg())
       {
-        this.qLk.tmh = paramc.mSignature;
-        this.qLk.tme = paramc.qLc;
-        this.qLk.mQn = paramc.qLf;
-        this.qLk.taz = paramc.qLe;
-        this.qLk.mSq = paramc.iZD;
-        this.qLk.tmg = paramc.qLd;
+        this.uAh.xlA = paramc.mSignature;
+        this.uAh.xlx = paramc.uzY;
+        this.uAh.pqC = paramc.uAb;
+        this.uAh.wYP = paramc.uAa;
+        this.uAh.puw = paramc.liu;
+        this.uAh.xlz = paramc.uzZ;
       }
-      return new j(this.mRe, i, paramc.iZD, this.qLl, this.qLk);
+      paramc = new k(this.prr, i, paramc.liu, this.uAi, this.uAh);
+      AppMethodBeat.o(48228);
+      return paramc;
     }
-    return new r(paramc.iZD, i, this.mRe, this.mCount, paramc.qLc, paramc.qLd, paramc.mSignature, paramc.qLe, paramc.qLf);
+    paramc = new t(paramc.liu, i, this.prr, this.mCount, paramc.uzY, paramc.uzZ, paramc.mSignature, paramc.uAa, paramc.uAb);
+    AppMethodBeat.o(48228);
+    return paramc;
   }
   
-  public final boolean bXA()
+  public final boolean cXg()
   {
-    return this.mRe == 2;
+    return this.prr == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.ui.c
  * JD-Core Version:    0.7.0.1
  */

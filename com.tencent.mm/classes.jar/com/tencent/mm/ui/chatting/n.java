@@ -1,333 +1,190 @@
 package com.tencent.mm.ui.chatting;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.view.MenuItem;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.as.g;
-import com.tencent.mm.h.a.nd;
-import com.tencent.mm.h.a.nd.b;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.t;
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.res.Resources;
+import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.s;
+import com.tencent.mm.modelvideo.o;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.model.app.al;
+import com.tencent.mm.pluginsdk.model.app.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.k;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.bizchat.BizChatSelectConversationUI;
+import com.tencent.mm.storage.z;
+import com.tencent.mm.ui.MMFragment;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 public final class n
 {
-  private static com.tencent.mm.ui.base.p vja = null;
-  private static n.a vjw;
-  
-  public static void a(com.tencent.mm.ui.chatting.c.a parama, String paramString, long paramLong)
+  public static boolean a(com.tencent.mm.ui.chatting.d.a parama, List<bi> paramList, ad paramad)
   {
-    Activity localActivity = parama.vtz.getContext();
-    if ((!ah.bl(paramString)) && (paramString.length() > 0))
+    AppMethodBeat.i(30618);
+    if (parama == null)
     {
-      localActivity.getString(R.l.app_tip);
-      vja = com.tencent.mm.ui.base.h.b(localActivity, localActivity.getString(R.l.sending_message), false, null);
-      com.tencent.mm.ui.chatting.b.j.vpo.c(new n.b(parama, localActivity, paramString, paramLong, vjw));
+      ab.w("MicroMsg.ChattingEditModeSendToMail", "do send to mail fail, context is null");
+      AppMethodBeat.o(30618);
+      return false;
     }
-    ((com.tencent.mm.ui.chatting.b.b.h)parama.ac(com.tencent.mm.ui.chatting.b.b.h.class)).cEf();
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      ab.w("MicroMsg.ChattingEditModeSendToMail", "do send to mail fail, select item empty");
+      AppMethodBeat.o(30618);
+      return false;
+    }
+    if ((paramad == null) || ((int)paramad.euF <= 0))
+    {
+      ab.w("MicroMsg.ChattingEditModeSendToMail", "do send to mail fail, contact error");
+      AppMethodBeat.o(30618);
+      return false;
+    }
+    boolean bool = b(parama, paramList, paramad);
+    AppMethodBeat.o(30618);
+    return bool;
   }
   
-  public static void a(final com.tencent.mm.ui.chatting.c.a parama, List<bi> paramList, boolean paramBoolean, final com.tencent.mm.ui.chatting.b.j paramj, final ad paramad)
+  private static boolean b(com.tencent.mm.ui.chatting.d.a parama, List<bi> paramList, ad paramad)
   {
-    if (parama == null) {
-      y.w("MicroMsg.ChattingEditModeSendToBrand", "do send to brand fail, fragment is null");
-    }
-    final Activity localActivity;
-    do
+    AppMethodBeat.i(30619);
+    Object localObject3;
+    label141:
+    Object localObject4;
+    if (!com.tencent.mm.model.t.lA(paramad.field_username))
     {
-      return;
-      if ((paramList == null) || (paramList.isEmpty()))
-      {
-        y.w("MicroMsg.ChattingEditModeSendToBrand", "do send to brand fail, select item empty");
-        return;
+      localObject1 = parama.zJz.getMMResources().getString(2131303114);
+      localObject2 = paramad.Oe();
+      aw.aaz();
+      localObject1 = String.format((String)localObject1, new Object[] { localObject2, com.tencent.mm.model.c.Ru().get(4, null) });
+      h.qsU.e(10811, new Object[] { Integer.valueOf(7), Integer.valueOf(paramList.size()) });
+      if ((r.Zy() & 0x1) != 0) {
+        break label621;
       }
-      localObject = new n.a((byte)0);
-      vjw = (n.a)localObject;
-      ((n.a)localObject).vju = new LinkedList(paramList);
-      vjw.vgB = paramBoolean;
-      vjw.bWQ = paramad.field_username;
-      vjw.vjD = true;
-      localActivity = parama.vtz.getContext();
-    } while (localActivity == null);
-    com.tencent.mm.ui.tools.j localj = new com.tencent.mm.ui.tools.j(localActivity);
-    localj.wdr = new n.1();
-    localj.wds = new n.2(localActivity);
-    if (com.tencent.mm.pluginsdk.model.app.p.o(localActivity, "com.tencent.wework")) {}
-    for (Object localObject = k.cCy();; localObject = k.cCx())
-    {
-      localj.phH = new n.c()
-      {
-        public final void a(l paramAnonymousl)
-        {
-          paramAnonymousl.ak(1193046, R.l.menu_item_email, R.g.chat_more_email_btn);
-          Iterator localIterator = this.vjx.iterator();
-          while (localIterator.hasNext()) {
-            paramAnonymousl.add((String)localIterator.next());
-          }
-        }
-      };
-      localj.phI = new n.d()
-      {
-        public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-        {
-          if (paramAnonymousMenuItem.getItemId() == 1193046)
-          {
-            if (k.dR(this.vjn)) {
-              com.tencent.mm.ui.base.h.a(localActivity, localActivity.getString(R.l.contain_remuxing_msg), "", localActivity.getString(R.l.I_known), new n.4.1(this));
-            }
-            do
-            {
-              return;
-              if (k.dS(this.vjn))
-              {
-                com.tencent.mm.ui.base.h.a(localActivity, localActivity.getString(R.l.contain_shortvideo_msg), "", localActivity.getString(R.l.I_known), new n.4.2(this));
-                return;
-              }
-              if (k.dQ(this.vjn))
-              {
-                com.tencent.mm.ui.base.h.a(localActivity, localActivity.getString(R.l.contain_undownload_msg), "", new n.4.3(this), null);
-                return;
-              }
-            } while ((!o.a(parama, this.vjn, paramad)) || (paramj == null));
-            paramj.cEf();
-            return;
-          }
-          if (k.dR(this.vjn))
-          {
-            com.tencent.mm.ui.base.h.a(localActivity, localActivity.getString(R.l.contain_remuxing_msg), "", localActivity.getString(R.l.I_known), new n.4.4(this));
-            return;
-          }
-          if (k.dS(this.vjn))
-          {
-            com.tencent.mm.ui.base.h.a(localActivity, localActivity.getString(R.l.contain_shortvideo_msg), "", localActivity.getString(R.l.I_known), new n.4.5(this));
-            return;
-          }
-          Object localObject = this.vjn;
-          if (localObject == null)
-          {
-            y.w("MicroMsg.ChattingEditModeLogic", "check contain undownload image or video error, select item empty");
-            label295:
-            break label350;
-            break label350;
-          }
-          label298:
-          label350:
-          bi localbi;
-          do
-          {
-            Iterator localIterator;
-            do
-            {
-              paramAnonymousInt = 0;
-              if ((paramAnonymousInt == 0) && (!k.dQ(this.vjn))) {
-                break;
-              }
-              com.tencent.mm.ui.base.h.a(localActivity, localActivity.getString(R.l.contain_undownload_msg), "", new n.4.6(this), null);
-              return;
-              localIterator = ((List)localObject).iterator();
-            } while (!localIterator.hasNext());
-            localbi = (bi)localIterator.next();
-          } while (localbi.field_isSend == 1);
-          if (localbi.ctB()) {
-            if (localbi.field_msgId <= 0L) {
-              break label826;
-            }
-          }
-          label824:
-          label826:
-          for (localObject = com.tencent.mm.as.o.OJ().bY(localbi.field_msgId);; localObject = null)
-          {
-            if (((localObject == null) || (((com.tencent.mm.as.e)localObject).enp <= 0L)) && (localbi.field_msgSvrId > 0L)) {
-              localObject = com.tencent.mm.as.o.OJ().bX(localbi.field_msgSvrId);
-            }
-            for (;;)
-            {
-              if ((localObject == null) || ((((com.tencent.mm.as.e)localObject).offset >= ((com.tencent.mm.as.e)localObject).ebK) && (((com.tencent.mm.as.e)localObject).ebK != 0))) {
-                break label824;
-              }
-              paramAnonymousInt = 1;
-              break label298;
-              if (localbi.aRQ())
-              {
-                localObject = com.tencent.mm.modelvideo.o.Sr().nQ(localbi.field_imgPath);
-                if ((localObject == null) || (((s)localObject).status == 199) || (((s)localObject).status == 199)) {
-                  break label295;
-                }
-                paramAnonymousInt = 1;
-                break label298;
-              }
-              if (localbi.aRR())
-              {
-                localObject = u.oe(localbi.field_imgPath);
-                if ((localObject == null) || (((s)localObject).status == 199) || (((s)localObject).status == 199)) {
-                  break label295;
-                }
-                paramAnonymousInt = 1;
-                break label298;
-              }
-              if (!localbi.cvp()) {
-                break label295;
-              }
-              if (!k.ap(localbi))
-              {
-                paramAnonymousInt = 1;
-                break label298;
-              }
-              paramAnonymousInt = 0;
-              break label298;
-              localObject = (String)paramAnonymousMenuItem.getTitle();
-              if (f.la((String)localObject))
-              {
-                if (this.vjn.size() <= 1)
-                {
-                  n.cCB().vjD = true;
-                  n.a((String)localObject, parama, this.vjn);
-                  return;
-                }
-                new com.tencent.mm.ui.tools.j(localActivity).b(paramAnonymousMenuItem.getActionView(), new n.4.7(this), new n.4.8(this, (String)localObject));
-                return;
-              }
-              if (k.dO(this.vjn))
-              {
-                localObject = localActivity.getString(R.l.invalid_brand_msg_warning);
-                com.tencent.mm.ui.base.h.a(localActivity, (String)localObject, "", new n.4.9(this, paramAnonymousMenuItem), null);
-                return;
-              }
-              localObject = localActivity;
-              localActivity.getString(R.l.app_tip);
-              n.a(com.tencent.mm.ui.base.h.b((Context)localObject, localActivity.getString(R.l.sending_message), false, null));
-              com.tencent.mm.ui.chatting.b.j.vpo.c(new n.b(parama, localActivity, paramAnonymousMenuItem.getTitle(), -1L, n.cCB()));
-              if (paramj == null) {
-                break;
-              }
-              paramj.cEf();
-              return;
-            }
-            break label350;
-          }
-        }
-      };
-      localj.bJQ();
-      return;
-    }
-  }
-  
-  public static void a(String paramString, com.tencent.mm.ui.chatting.c.a parama)
-  {
-    Object localObject = f.kX(paramString);
-    if (localObject == null) {}
-    do
-    {
-      return;
-      if (((com.tencent.mm.ai.d)localObject).LA())
-      {
-        localObject = new Intent(parama.vtz.getContext(), BizChatSelectConversationUI.class);
-        ((Intent)localObject).putExtra("enterprise_biz_name", paramString);
-        ((Intent)localObject).putExtra("biz_chat_scene", 2);
-        ((Intent)localObject).putExtra("enterprise_extra_params", vjw.vjD);
-        parama.a((Intent)localObject, 225, new n.6(parama));
-        return;
+      ab.d("MicroMsg.ChattingEditModeSendToMail", "use qq mail plugin to send mail");
+      localObject2 = new ArrayList();
+      localObject3 = new ArrayList();
+      Iterator localIterator = paramList.iterator();
+      if (!localIterator.hasNext()) {
+        break label496;
       }
-    } while (!((com.tencent.mm.ai.d)localObject).Ly());
-    localObject = new Intent();
-    ((Intent)localObject).putExtra("enterprise_biz_name", paramString);
-    ((Intent)localObject).putExtra("enterprise_scene", 1);
-    com.tencent.mm.br.d.a(parama.vtz, "brandservice", ".ui.EnterpriseBizContactPlainListUI", (Intent)localObject, 225);
-  }
-  
-  public static void a(String paramString, com.tencent.mm.ui.chatting.c.a parama, List<bi> paramList)
-  {
-    Activity localActivity = parama.vtz.getContext();
-    if (localActivity == null) {}
-    Object localObject;
-    do
-    {
-      return;
-      localObject = f.kX(paramString);
-    } while (localObject == null);
-    boolean bool1 = ((com.tencent.mm.ai.d)localObject).LA();
-    boolean bool2;
-    int i;
-    if (vjw.vjD)
-    {
-      bool2 = k.dO(paramList);
-      if (bool1) {
-        if ((paramList == null) || (paramList.isEmpty()))
-        {
-          y.w("MicroMsg.ChattingEditModeLogic", "check contain invalid send to bizchat msg error, selected item empty");
-          i = 1;
-          vjw.vju = new LinkedList(paramList);
-          if ((!bool2) && (i == 0)) {
-            break label237;
-          }
-          paramList = localActivity.getString(R.l.enterprise_invalid_chat_msg_warning);
-        }
+      localObject4 = (bi)localIterator.next();
+      if (!((bi)localObject4).byj()) {
+        break label371;
       }
+      o.alE();
+      ((List)localObject2).add(com.tencent.mm.modelvideo.t.vf(((dd)localObject4).field_imgPath));
+      ((List)localObject3).add(null);
     }
     for (;;)
     {
-      if (paramList != null)
+      ab.i("MicroMsg.ChattingEditModeSendToMail", "file path = " + localObject2 + "file name = " + localObject3);
+      break label141;
+      if (bo.isNullOrNil(paramad.field_nickname))
       {
-        com.tencent.mm.ui.base.h.a(localActivity, paramList, "", new n.5(paramString, parama), null);
-        return;
-        localObject = paramList.iterator();
+        localObject2 = com.tencent.mm.model.n.nt(paramad.field_username).iterator();
+        for (localObject1 = ""; ((Iterator)localObject2).hasNext(); localObject1 = (String)localObject1 + (String)localObject3 + ", ") {
+          localObject3 = s.nE((String)((Iterator)localObject2).next());
+        }
+      }
+      for (localObject1 = ((String)localObject1).substring(0, ((String)localObject1).length() - 2);; localObject1 = paramad.Oe())
+      {
+        localObject1 = String.format(parama.zJz.getMMResources().getString(2131303115), new Object[] { localObject1 });
+        break;
+      }
+      label371:
+      if (((bi)localObject4).bCn())
+      {
+        localObject4 = j.b.mY(((dd)localObject4).field_content);
+        if (localObject4 == null) {
+          break label141;
+        }
+        switch (((j.b)localObject4).type)
+        {
+        case 5: 
+        default: 
+          break;
+        case 4: 
+        case 6: 
+          Object localObject5 = al.aUJ().alo(((j.b)localObject4).cmN);
+          if (localObject5 == null) {
+            break label141;
+          }
+          localObject5 = new File(((b)localObject5).field_fileFullPath);
+          if (((File)localObject5).exists())
+          {
+            ((List)localObject2).add(((File)localObject5).getAbsolutePath());
+            ((List)localObject3).add(((j.b)localObject4).title);
+          }
+          break;
+        }
+      }
+    }
+    label496:
+    paramList = new QQMailHistoryExporter(parama.zJz.getContext(), paramList, paramad).dGV();
+    paramad = new Intent();
+    paramad.putExtra("mail_mode", 6);
+    paramad.putExtra("mail_content", paramList);
+    paramad.putExtra("subject", (String)localObject1);
+    paramad.putExtra("show_qqmail", true);
+    paramad.putStringArrayListExtra("mail_attach", (ArrayList)localObject2);
+    paramad.putStringArrayListExtra("mail_attach_title", (ArrayList)localObject3);
+    d.a(parama.zJx, "qqmail", ".ui.ComposeUI", paramad, 220, new n.1(parama));
+    AppMethodBeat.o(30619);
+    return false;
+    label621:
+    ab.w("MicroMsg.ChattingEditModeSendToMail", "use order mail app to send mail");
+    paramList = new ai(parama.zJz.getContext(), paramList, paramad);
+    Object localObject2 = paramList.dGV();
+    paramad = new Intent("android.intent.action.SEND_MULTIPLE");
+    paramad.setType("message/rfc822");
+    paramad.putExtra("android.intent.extra.SUBJECT", (String)localObject1);
+    paramad.putExtra("android.intent.extra.TEXT", (String)localObject2);
+    Object localObject1 = parama.zJz.getContext();
+    boolean bool;
+    if (paramList.mVj == null) {
+      bool = true;
+    }
+    for (;;)
+    {
+      ab.d("MicroMsg.OtherMailHistoryExporter", "get image attach: history is null? %B, selectItems.size = %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramList.zyt.size()) });
+      if (paramList.mVj != null)
+      {
+        paramList = paramList.zCa;
+        paramad.putParcelableArrayListExtra("android.intent.extra.STREAM", k.e((Context)localObject1, paramList));
+      }
+      try
+      {
+        parama.zJz.startActivity(Intent.createChooser(paramad, parama.zJz.getContext().getString(2131303113)));
+        AppMethodBeat.o(30619);
+        return true;
+        bool = false;
+        continue;
+        ab.w("MicroMsg.OtherMailHistoryExporter", "had not exported, do export first");
+        paramList.dGV();
+        paramList = paramList.zCa;
+      }
+      catch (ActivityNotFoundException paramList)
+      {
         for (;;)
         {
-          if (((Iterator)localObject).hasNext())
-          {
-            bi localbi = (bi)((Iterator)localObject).next();
-            if ((!localbi.isText()) && (!localbi.ctA()) && (!localbi.ctB()) && (!localbi.aVM()) && (!k.aw(localbi)))
-            {
-              i = 1;
-              break;
-            }
-          }
+          Toast.makeText(parama.zJz.getContext(), 2131303116, 0).show();
         }
-        i = 0;
-        break;
-        if (!bool2) {
-          break label237;
-        }
-        paramList = localActivity.getString(R.l.enterprise_invalid_msg_warning);
-        continue;
       }
-      a(paramString, parama);
-      return;
-      label237:
-      paramList = null;
     }
-  }
-  
-  public static nd bD(Context paramContext, String paramString)
-  {
-    nd localnd = new nd();
-    localnd.bWJ.type = 6;
-    localnd.bWJ.bWP = vjw.vju;
-    localnd.bWJ.toUser = paramString;
-    localnd.bWJ.bWQ = vjw.bWQ;
-    localnd.bWJ.context = paramContext;
-    com.tencent.mm.sdk.b.a.udP.m(localnd);
-    vjw.bWm = localnd.bWK.bWm;
-    vjw.vjv = localnd.bWK.bWS;
-    return localnd;
   }
 }
 

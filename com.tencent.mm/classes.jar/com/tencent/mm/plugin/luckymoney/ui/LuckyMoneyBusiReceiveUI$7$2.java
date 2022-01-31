@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.luckymoney.ui;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyBusiReceiveUI$7$2
   implements Animation.AnimationListener
@@ -15,7 +16,9 @@ final class LuckyMoneyBusiReceiveUI$7$2
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    LuckyMoneyBusiReceiveUI.k(this.lVc.lUZ).setVisibility(0);
+    AppMethodBeat.i(42623);
+    LuckyMoneyBusiReceiveUI.k(this.osl.osi).setVisibility(0);
+    AppMethodBeat.o(42623);
   }
 }
 

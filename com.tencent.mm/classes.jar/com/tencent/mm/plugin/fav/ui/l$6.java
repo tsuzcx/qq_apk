@@ -2,28 +2,32 @@ package com.tencent.mm.plugin.fav.ui;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class l$6
   implements Runnable
 {
-  l$6(String paramString, int paramInt1, int paramInt2, com.tencent.mm.plugin.fav.a.g paramg, xv paramxv, boolean paramBoolean, ImageView paramImageView) {}
+  l$6(String paramString, int paramInt1, int paramInt2, com.tencent.mm.plugin.fav.a.g paramg, aca paramaca, boolean paramBoolean, ImageView paramImageView) {}
   
   public final void run()
   {
-    Bitmap localBitmap = l.c(this.dlh, this.kdS, this.kdT, false);
-    if (localBitmap == null) {
-      l.c(this.jYr, this.kdj, this.kdR);
-    }
-    String str;
-    do
+    AppMethodBeat.i(74198);
+    Bitmap localBitmap = l.b(this.val$path, this.myC, this.myD, false);
+    if (localBitmap == null)
     {
+      l.c(this.msL, this.mxT, this.myB);
+      AppMethodBeat.o(74198);
       return;
-      str = (String)this.jxK.getTag();
-    } while ((str == null) || (!str.equals(this.dlh)));
-    com.tencent.mm.kernel.g.DS();
-    ai.d(new l.6.1(this, localBitmap));
+    }
+    String str = (String)this.lHj.getTag();
+    if ((str != null) && (str.equals(this.val$path)))
+    {
+      com.tencent.mm.kernel.g.RO();
+      al.d(new l.6.1(this, localBitmap));
+    }
+    AppMethodBeat.o(74198);
   }
 }
 

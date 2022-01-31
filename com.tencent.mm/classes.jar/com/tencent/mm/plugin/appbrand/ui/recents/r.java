@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
-import android.support.v7.g.c.a;
+import android.support.v7.h.c.a;
 import java.util.List;
 
 public abstract class r<T>
   extends c.a
 {
-  public final List<T> hjX;
-  public final List<T> hjY;
+  protected final List<T> iVE;
+  protected final List<T> iVF;
   
   public r(List<T> paramList1, List<T> paramList2)
   {
-    this.hjX = paramList1;
-    this.hjY = paramList2;
+    this.iVE = paramList1;
+    this.iVF = paramList2;
   }
   
-  public final int eI()
+  public final int fv()
   {
-    if (this.hjX == null) {
+    if (this.iVE == null) {
       return 0;
     }
-    return this.hjX.size();
+    return this.iVE.size();
   }
   
-  public final int eJ()
+  public final int fw()
   {
-    if (this.hjY == null) {
+    if (this.iVF == null) {
       return 0;
     }
-    return this.hjY.size();
+    return this.iVF.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.r
  * JD-Core Version:    0.7.0.1
  */

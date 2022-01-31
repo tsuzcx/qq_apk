@@ -1,45 +1,36 @@
 package com.tencent.ttpic.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.config.MediaConfig;
-import com.tencent.util.g;
-import java.util.Collections;
+import com.tencent.util.i;
 import java.util.LinkedList;
 import java.util.List;
 
 public class FrameRateUtil
 {
   private static final int BASE_COUNT = 6;
-  private static int FPS_LIST_MAX_COUNT = 500;
+  private static int FPS_LIST_MAX_COUNT = 0;
   public static final int MAX_FPS = 18;
-  private static final String TAG = FrameRateUtil.class.getSimpleName();
+  private static final String TAG;
   private static final long TIME_INTERVAL = 55L;
   private static int count;
-  private static List<Long> fpsList = new LinkedList();
-  private static List<Long> fpsListForDG = new LinkedList();
+  private static List<Long> fpsList;
+  private static List<Long> fpsListForDG;
   private static FrameRateUtil.DowngradeListener listener;
-  private static FrameRateUtil.DOWNGRADE_LEVEL mDowngradeLevel = FrameRateUtil.DOWNGRADE_LEVEL.MEDIUM;
+  private static FrameRateUtil.DOWNGRADE_LEVEL mDowngradeLevel;
   public static int mFrameCount;
   public static long mRecordStartTime;
   private static long start;
   
-  private static void checkDownGrade()
+  static
   {
-    if (mDowngradeLevel.equals(FrameRateUtil.DOWNGRADE_LEVEL.LOW)) {}
-    while (fpsListForDG.size() < 12) {
-      return;
-    }
-    Collections.sort(fpsListForDG);
-    int j = 0;
-    int i = 4;
-    while (i < fpsListForDG.size() - 4)
-    {
-      j = (int)(j + ((Long)fpsListForDG.get(i)).longValue());
-      i += 1;
-    }
-    if (j / (fpsListForDG.size() - 8) < 10) {
-      downgrade();
-    }
-    fpsListForDG.clear();
+    AppMethodBeat.i(83927);
+    TAG = FrameRateUtil.class.getSimpleName();
+    fpsList = new LinkedList();
+    fpsListForDG = new LinkedList();
+    FPS_LIST_MAX_COUNT = 500;
+    mDowngradeLevel = FrameRateUtil.DOWNGRADE_LEVEL.MEDIUM;
+    AppMethodBeat.o(83927);
   }
   
   /* Error */
@@ -48,41 +39,52 @@ public class FrameRateUtil
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc2_w 20
-    //   6: lload_0
-    //   7: lsub
-    //   8: lconst_0
-    //   9: lcmp
-    //   10: ifle +9 -> 19
-    //   13: ldc2_w 102
-    //   16: invokestatic 108	java/lang/Thread:sleep	(J)V
-    //   19: ldc 2
-    //   21: monitorexit
-    //   22: return
-    //   23: astore_2
-    //   24: goto -5 -> 19
-    //   27: astore_2
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: aload_2
-    //   32: athrow
+    //   3: ldc 76
+    //   5: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: ldc2_w 20
+    //   11: lload_0
+    //   12: lsub
+    //   13: lconst_0
+    //   14: lcmp
+    //   15: ifle +19 -> 34
+    //   18: ldc2_w 77
+    //   21: invokestatic 83	java/lang/Thread:sleep	(J)V
+    //   24: ldc 76
+    //   26: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   29: ldc 2
+    //   31: monitorexit
+    //   32: return
+    //   33: astore_2
+    //   34: ldc 76
+    //   36: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   39: goto -10 -> 29
+    //   42: astore_2
+    //   43: ldc 2
+    //   45: monitorexit
+    //   46: aload_2
+    //   47: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	33	0	paramLong	long
-    //   23	1	2	localInterruptedException	java.lang.InterruptedException
-    //   27	5	2	localObject	Object
+    //   0	48	0	paramLong	long
+    //   33	1	2	localInterruptedException	java.lang.InterruptedException
+    //   42	5	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   13	19	23	java/lang/InterruptedException
-    //   13	19	27	finally
+    //   18	24	33	java/lang/InterruptedException
+    //   3	8	42	finally
+    //   18	24	42	finally
+    //   24	29	42	finally
+    //   34	39	42	finally
   }
   
   public static void clearFpsList()
   {
     try
     {
-      g.h(TAG, "clearFpsList");
+      AppMethodBeat.i(83922);
+      i.l(TAG, "clearFpsList");
       fpsList.clear();
+      AppMethodBeat.o(83922);
       return;
     }
     finally
@@ -94,7 +96,10 @@ public class FrameRateUtil
   
   private static void downgrade()
   {
-    if ((mDowngradeLevel == null) || (listener == null)) {
+    AppMethodBeat.i(83925);
+    if ((mDowngradeLevel == null) || (listener == null))
+    {
+      AppMethodBeat.o(83925);
       return;
     }
     if (mDowngradeLevel.equals(FrameRateUtil.DOWNGRADE_LEVEL.HIGH))
@@ -106,6 +111,7 @@ public class FrameRateUtil
     {
       new StringBuilder("[downgrade] ").append(mDowngradeLevel.value);
       VideoPrefsUtil.setDowngradeLevel(mDowngradeLevel.value);
+      AppMethodBeat.o(83925);
       return;
       if (mDowngradeLevel.equals(FrameRateUtil.DOWNGRADE_LEVEL.MEDIUM))
       {
@@ -117,38 +123,12 @@ public class FrameRateUtil
   
   public static List<Long> getFpsList()
   {
-    return fpsList;
+    return fpsListForDG;
   }
   
   public static FrameRateUtil.DOWNGRADE_LEVEL getRenderLevel()
   {
     return mDowngradeLevel;
-  }
-  
-  public static void record()
-  {
-    try
-    {
-      count += 1;
-      if (fpsListForDG.size() >= FPS_LIST_MAX_COUNT) {
-        fpsListForDG.clear();
-      }
-      if (count >= 6)
-      {
-        long l1 = System.currentTimeMillis();
-        long l2 = 6000L / (l1 - start);
-        if (fpsList.size() >= FPS_LIST_MAX_COUNT) {
-          fpsList.remove(0);
-        }
-        fpsList.add(Long.valueOf(l2));
-        fpsListForDG.add(Long.valueOf(l2));
-        start = l1;
-        count = 0;
-      }
-      checkDownGrade();
-      return;
-    }
-    finally {}
   }
   
   /* Error */
@@ -159,146 +139,149 @@ public class FrameRateUtil
     //   1: istore_2
     //   2: ldc 2
     //   4: monitorenter
-    //   5: getstatic 160	com/tencent/ttpic/util/FrameRateUtil:count	I
-    //   8: iconst_1
-    //   9: iadd
-    //   10: putstatic 160	com/tencent/ttpic/util/FrameRateUtil:count	I
-    //   13: getstatic 52	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
-    //   16: invokeinterface 75 1 0
-    //   21: getstatic 54	com/tencent/ttpic/util/FrameRateUtil:FPS_LIST_MAX_COUNT	I
-    //   24: if_icmplt +11 -> 35
-    //   27: getstatic 52	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
-    //   30: invokeinterface 97 1 0
-    //   35: getstatic 160	com/tencent/ttpic/util/FrameRateUtil:count	I
-    //   38: bipush 6
-    //   40: if_icmplt +78 -> 118
-    //   43: invokestatic 165	java/lang/System:currentTimeMillis	()J
-    //   46: lstore_3
-    //   47: ldc2_w 166
-    //   50: lload_3
-    //   51: getstatic 169	com/tencent/ttpic/util/FrameRateUtil:start	J
-    //   54: lsub
-    //   55: ldiv
-    //   56: lstore 5
-    //   58: getstatic 50	com/tencent/ttpic/util/FrameRateUtil:fpsList	Ljava/util/List;
-    //   61: invokeinterface 75 1 0
-    //   66: getstatic 54	com/tencent/ttpic/util/FrameRateUtil:FPS_LIST_MAX_COUNT	I
-    //   69: if_icmplt +13 -> 82
-    //   72: getstatic 50	com/tencent/ttpic/util/FrameRateUtil:fpsList	Ljava/util/List;
-    //   75: iconst_0
-    //   76: invokeinterface 172 2 0
-    //   81: pop
-    //   82: getstatic 50	com/tencent/ttpic/util/FrameRateUtil:fpsList	Ljava/util/List;
-    //   85: lload 5
-    //   87: invokestatic 176	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   90: invokeinterface 179 2 0
-    //   95: pop
-    //   96: getstatic 52	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
-    //   99: lload 5
-    //   101: invokestatic 176	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   104: invokeinterface 179 2 0
-    //   109: pop
-    //   110: lload_3
-    //   111: putstatic 169	com/tencent/ttpic/util/FrameRateUtil:start	J
-    //   114: iconst_0
-    //   115: putstatic 160	com/tencent/ttpic/util/FrameRateUtil:count	I
-    //   118: iload_0
-    //   119: ifeq +17 -> 136
-    //   122: getstatic 59	com/tencent/ttpic/util/FrameRateUtil:mDowngradeLevel	Lcom/tencent/ttpic/util/FrameRateUtil$DOWNGRADE_LEVEL;
-    //   125: getstatic 65	com/tencent/ttpic/util/FrameRateUtil$DOWNGRADE_LEVEL:LOW	Lcom/tencent/ttpic/util/FrameRateUtil$DOWNGRADE_LEVEL;
-    //   128: invokevirtual 69	com/tencent/ttpic/util/FrameRateUtil$DOWNGRADE_LEVEL:equals	(Ljava/lang/Object;)Z
-    //   131: istore_0
-    //   132: iload_0
-    //   133: ifeq +7 -> 140
-    //   136: ldc 2
-    //   138: monitorexit
-    //   139: return
-    //   140: getstatic 52	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
-    //   143: invokeinterface 75 1 0
-    //   148: bipush 12
-    //   150: if_icmplt -14 -> 136
-    //   153: getstatic 52	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
-    //   156: invokestatic 81	java/util/Collections:sort	(Ljava/util/List;)V
-    //   159: iconst_4
-    //   160: istore_1
-    //   161: iload_1
-    //   162: getstatic 52	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
-    //   165: invokeinterface 75 1 0
-    //   170: iconst_4
-    //   171: isub
-    //   172: if_icmpge +30 -> 202
-    //   175: iload_2
-    //   176: i2l
-    //   177: getstatic 52	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
-    //   180: iload_1
-    //   181: invokeinterface 85 2 0
-    //   186: checkcast 87	java/lang/Long
-    //   189: invokevirtual 91	java/lang/Long:longValue	()J
-    //   192: ladd
-    //   193: l2i
-    //   194: istore_2
-    //   195: iload_1
-    //   196: iconst_1
-    //   197: iadd
-    //   198: istore_1
-    //   199: goto -38 -> 161
-    //   202: iload_2
-    //   203: getstatic 52	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
-    //   206: invokeinterface 75 1 0
-    //   211: bipush 8
-    //   213: isub
-    //   214: idiv
-    //   215: bipush 10
-    //   217: if_icmpge +6 -> 223
-    //   220: invokestatic 94	com/tencent/ttpic/util/FrameRateUtil:downgrade	()V
-    //   223: getstatic 52	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
-    //   226: invokeinterface 97 1 0
-    //   231: goto -95 -> 136
-    //   234: astore 7
-    //   236: ldc 2
-    //   238: monitorexit
-    //   239: aload 7
-    //   241: athrow
+    //   5: ldc 149
+    //   7: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: getstatic 151	com/tencent/ttpic/util/FrameRateUtil:count	I
+    //   13: iconst_1
+    //   14: iadd
+    //   15: putstatic 151	com/tencent/ttpic/util/FrameRateUtil:count	I
+    //   18: getstatic 59	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
+    //   21: invokeinterface 155 1 0
+    //   26: getstatic 61	com/tencent/ttpic/util/FrameRateUtil:FPS_LIST_MAX_COUNT	I
+    //   29: if_icmplt +11 -> 40
+    //   32: getstatic 59	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
+    //   35: invokeinterface 97 1 0
+    //   40: getstatic 151	com/tencent/ttpic/util/FrameRateUtil:count	I
+    //   43: bipush 6
+    //   45: if_icmplt +78 -> 123
+    //   48: invokestatic 161	java/lang/System:currentTimeMillis	()J
+    //   51: lstore_3
+    //   52: ldc2_w 162
+    //   55: lload_3
+    //   56: getstatic 165	com/tencent/ttpic/util/FrameRateUtil:start	J
+    //   59: lsub
+    //   60: ldiv
+    //   61: lstore 5
+    //   63: getstatic 57	com/tencent/ttpic/util/FrameRateUtil:fpsList	Ljava/util/List;
+    //   66: invokeinterface 155 1 0
+    //   71: getstatic 61	com/tencent/ttpic/util/FrameRateUtil:FPS_LIST_MAX_COUNT	I
+    //   74: if_icmplt +13 -> 87
+    //   77: getstatic 57	com/tencent/ttpic/util/FrameRateUtil:fpsList	Ljava/util/List;
+    //   80: iconst_0
+    //   81: invokeinterface 169 2 0
+    //   86: pop
+    //   87: getstatic 57	com/tencent/ttpic/util/FrameRateUtil:fpsList	Ljava/util/List;
+    //   90: lload 5
+    //   92: invokestatic 175	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   95: invokeinterface 178 2 0
+    //   100: pop
+    //   101: getstatic 59	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
+    //   104: lload 5
+    //   106: invokestatic 175	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   109: invokeinterface 178 2 0
+    //   114: pop
+    //   115: lload_3
+    //   116: putstatic 165	com/tencent/ttpic/util/FrameRateUtil:start	J
+    //   119: iconst_0
+    //   120: putstatic 151	com/tencent/ttpic/util/FrameRateUtil:count	I
+    //   123: iload_0
+    //   124: ifeq +115 -> 239
+    //   127: getstatic 66	com/tencent/ttpic/util/FrameRateUtil:mDowngradeLevel	Lcom/tencent/ttpic/util/FrameRateUtil$DOWNGRADE_LEVEL;
+    //   130: getstatic 137	com/tencent/ttpic/util/FrameRateUtil$DOWNGRADE_LEVEL:LOW	Lcom/tencent/ttpic/util/FrameRateUtil$DOWNGRADE_LEVEL;
+    //   133: invokevirtual 108	com/tencent/ttpic/util/FrameRateUtil$DOWNGRADE_LEVEL:equals	(Ljava/lang/Object;)Z
+    //   136: ifeq +12 -> 148
+    //   139: ldc 149
+    //   141: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   144: ldc 2
+    //   146: monitorexit
+    //   147: return
+    //   148: getstatic 59	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
+    //   151: invokeinterface 155 1 0
+    //   156: bipush 12
+    //   158: if_icmplt +81 -> 239
+    //   161: getstatic 59	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
+    //   164: invokestatic 184	java/util/Collections:sort	(Ljava/util/List;)V
+    //   167: iconst_4
+    //   168: istore_1
+    //   169: iload_1
+    //   170: getstatic 59	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
+    //   173: invokeinterface 155 1 0
+    //   178: iconst_4
+    //   179: isub
+    //   180: if_icmpge +30 -> 210
+    //   183: iload_2
+    //   184: i2l
+    //   185: getstatic 59	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
+    //   188: iload_1
+    //   189: invokeinterface 187 2 0
+    //   194: checkcast 171	java/lang/Long
+    //   197: invokevirtual 190	java/lang/Long:longValue	()J
+    //   200: ladd
+    //   201: l2i
+    //   202: istore_2
+    //   203: iload_1
+    //   204: iconst_1
+    //   205: iadd
+    //   206: istore_1
+    //   207: goto -38 -> 169
+    //   210: iload_2
+    //   211: getstatic 59	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
+    //   214: invokeinterface 155 1 0
+    //   219: bipush 8
+    //   221: isub
+    //   222: idiv
+    //   223: bipush 10
+    //   225: if_icmpge +6 -> 231
+    //   228: invokestatic 192	com/tencent/ttpic/util/FrameRateUtil:downgrade	()V
+    //   231: getstatic 59	com/tencent/ttpic/util/FrameRateUtil:fpsListForDG	Ljava/util/List;
+    //   234: invokeinterface 97 1 0
+    //   239: ldc 149
+    //   241: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   244: goto -100 -> 144
+    //   247: astore 7
+    //   249: ldc 2
+    //   251: monitorexit
+    //   252: aload 7
+    //   254: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	242	0	paramBoolean	boolean
-    //   160	39	1	i	int
-    //   1	214	2	j	int
-    //   46	65	3	l1	long
-    //   56	44	5	l2	long
-    //   234	6	7	localObject	Object
+    //   0	255	0	paramBoolean	boolean
+    //   168	39	1	i	int
+    //   1	222	2	j	int
+    //   51	65	3	l1	long
+    //   61	44	5	l2	long
+    //   247	6	7	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   5	35	234	finally
-    //   35	82	234	finally
-    //   82	118	234	finally
-    //   122	132	234	finally
-    //   140	159	234	finally
-    //   161	195	234	finally
-    //   202	223	234	finally
-    //   223	231	234	finally
+    //   5	40	247	finally
+    //   40	87	247	finally
+    //   87	123	247	finally
+    //   127	144	247	finally
+    //   148	167	247	finally
+    //   169	203	247	finally
+    //   210	231	247	finally
+    //   231	239	247	finally
+    //   239	244	247	finally
   }
   
   public static void setDowngradeLevel(int paramInt)
   {
+    AppMethodBeat.i(83926);
     FrameRateUtil.DOWNGRADE_LEVEL[] arrayOfDOWNGRADE_LEVEL = FrameRateUtil.DOWNGRADE_LEVEL.values();
     int j = arrayOfDOWNGRADE_LEVEL.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      FrameRateUtil.DOWNGRADE_LEVEL localDOWNGRADE_LEVEL = arrayOfDOWNGRADE_LEVEL[i];
+      if (paramInt == localDOWNGRADE_LEVEL.value)
       {
-        FrameRateUtil.DOWNGRADE_LEVEL localDOWNGRADE_LEVEL = arrayOfDOWNGRADE_LEVEL[i];
-        if (paramInt == localDOWNGRADE_LEVEL.value) {
-          mDowngradeLevel = localDOWNGRADE_LEVEL;
-        }
-      }
-      else
-      {
+        mDowngradeLevel = localDOWNGRADE_LEVEL;
+        AppMethodBeat.o(83926);
         return;
       }
       i += 1;
     }
+    AppMethodBeat.o(83926);
   }
   
   public static void setListener(FrameRateUtil.DowngradeListener paramDowngradeListener)
@@ -308,6 +291,7 @@ public class FrameRateUtil
   
   public static void upgrade()
   {
+    AppMethodBeat.i(83924);
     if (mDowngradeLevel == null) {
       mDowngradeLevel = FrameRateUtil.DOWNGRADE_LEVEL.MEDIUM;
     }
@@ -317,6 +301,7 @@ public class FrameRateUtil
     for (;;)
     {
       VideoPrefsUtil.setDowngradeLevel(mDowngradeLevel.value);
+      AppMethodBeat.o(83924);
       return;
       if (mDowngradeLevel.equals(FrameRateUtil.DOWNGRADE_LEVEL.LOW)) {
         mDowngradeLevel = FrameRateUtil.DOWNGRADE_LEVEL.MEDIUM;
@@ -326,7 +311,7 @@ public class FrameRateUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.ttpic.util.FrameRateUtil
  * JD-Core Version:    0.7.0.1
  */

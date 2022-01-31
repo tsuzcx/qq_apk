@@ -2,21 +2,33 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 import android.os.Looper;
 import android.util.SparseArray;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.lang.ref.WeakReference;
 
 public final class s
 {
-  SparseArray<WeakReference<d.b>> mkA = new SparseArray();
-  private ah mkB = new s.1(this, Looper.getMainLooper());
-  public d.c mkz = d.c.miD;
+  public d.c oJP;
+  SparseArray<WeakReference<d.b>> oJQ;
+  private ak oJR;
+  
+  public s()
+  {
+    AppMethodBeat.i(76689);
+    this.oJP = d.c.oIJ;
+    this.oJQ = new SparseArray();
+    this.oJR = new s.1(this, Looper.getMainLooper());
+    AppMethodBeat.o(76689);
+  }
   
   public final void a(d.c paramc)
   {
-    y.i("MicroMsg.SightMediaStatusHandler", "status change to %s", new Object[] { paramc.toString() });
-    this.mkz = paramc;
-    this.mkB.sendMessage(this.mkB.obtainMessage(257, paramc));
+    AppMethodBeat.i(76690);
+    ab.i("MicroMsg.SightMediaStatusHandler", "status change to %s", new Object[] { paramc.toString() });
+    this.oJP = paramc;
+    this.oJR.sendMessage(this.oJR.obtainMessage(257, paramc));
+    AppMethodBeat.o(76690);
   }
 }
 

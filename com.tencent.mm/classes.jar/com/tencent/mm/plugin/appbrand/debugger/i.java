@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-public final class i
+public abstract interface i
 {
-  public long fRE;
-  public int size;
+  public abstract void bS(String paramString);
+  
+  public abstract String uO();
 }
 
 

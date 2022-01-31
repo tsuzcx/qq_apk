@@ -1,19 +1,22 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.h.a.le;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.lt;
 import com.tencent.mm.sdk.b.c;
 
 final class AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$a$1
-  extends c<le>
+  extends c<lt>
 {
   AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$a$1(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.a parama)
   {
-    this.udX = le.class.getName().hashCode();
+    AppMethodBeat.i(33998);
+    this.__eventId = lt.class.getName().hashCode();
+    AppMethodBeat.o(33998);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.a.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.wcdb.database;
 
 import android.os.Environment;
 import android.os.StatFs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 
 public final class SQLiteGlobal
@@ -17,6 +18,7 @@ public final class SQLiteGlobal
   
   static
   {
+    AppMethodBeat.i(12582);
     if (!WCDBInitializationProbe.libLoaded) {
       System.loadLibrary("wcdb");
     }
@@ -24,7 +26,8 @@ public final class SQLiteGlobal
     {
       i = new StatFs(Environment.getDataDirectory().getAbsolutePath()).getBlockSize();
       defaultPageSize = i;
-      nativeSetDefaultPageSize(i);
+      nativeSetDefaultCipherSettings(i);
+      AppMethodBeat.o(12582);
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -40,11 +43,14 @@ public final class SQLiteGlobal
   
   private static native int nativeReleaseMemory();
   
-  private static native void nativeSetDefaultPageSize(int paramInt);
+  private static native void nativeSetDefaultCipherSettings(int paramInt);
   
   public static int releaseMemory()
   {
-    return nativeReleaseMemory();
+    AppMethodBeat.i(12581);
+    int i = nativeReleaseMemory();
+    AppMethodBeat.o(12581);
+    return i;
   }
 }
 

@@ -9,149 +9,162 @@ final class a$1
   public final void run()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   4: getfield 25	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:workerThread	Ljava/lang/Thread;
-    //   7: invokevirtual 31	java/lang/Thread:isInterrupted	()Z
-    //   10: ifeq +4 -> 14
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   18: getfield 35	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWg	Ljava/util/concurrent/BlockingQueue;
-    //   21: invokeinterface 41 1 0
-    //   26: checkcast 43	com/tencent/mm/plugin/appbrand/dynamic/d/b/b
-    //   29: astore_1
-    //   30: aload_1
-    //   31: astore_2
-    //   32: aload_0
-    //   33: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   36: getfield 35	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWg	Ljava/util/concurrent/BlockingQueue;
-    //   39: invokeinterface 47 1 0
-    //   44: iconst_2
-    //   45: if_icmplt +82 -> 127
-    //   48: aload_1
-    //   49: astore_2
-    //   50: aload_0
-    //   51: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   54: getfield 51	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWi	J
-    //   57: lconst_0
-    //   58: lcmp
-    //   59: ifle +68 -> 127
-    //   62: aload_1
-    //   63: astore_2
-    //   64: aload_1
-    //   65: getfield 54	com/tencent/mm/plugin/appbrand/dynamic/d/b/b:fVT	J
-    //   68: aload_0
-    //   69: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   72: getfield 57	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWj	J
-    //   75: lcmp
-    //   76: ifge +51 -> 127
-    //   79: aload_0
-    //   80: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   83: astore_1
-    //   84: aload_1
-    //   85: aload_1
-    //   86: getfield 61	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWk	I
-    //   89: iconst_1
-    //   90: iadd
-    //   91: putfield 61	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWk	I
-    //   94: aload_0
-    //   95: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   98: getfield 35	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWg	Ljava/util/concurrent/BlockingQueue;
-    //   101: invokeinterface 64 1 0
-    //   106: checkcast 43	com/tencent/mm/plugin/appbrand/dynamic/d/b/b
-    //   109: astore_2
-    //   110: aload_2
-    //   111: astore_1
-    //   112: aload_0
-    //   113: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   116: getfield 35	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWg	Ljava/util/concurrent/BlockingQueue;
-    //   119: invokeinterface 47 1 0
-    //   124: ifgt -62 -> 62
-    //   127: aload_2
-    //   128: ifnull +84 -> 212
-    //   131: aload_2
-    //   132: invokevirtual 66	com/tencent/mm/plugin/appbrand/dynamic/d/b/b:run	()V
-    //   135: aload_0
-    //   136: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   0: sipush 10891
+    //   3: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   10: getfield 31	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:workerThread	Ljava/lang/Thread;
+    //   13: invokevirtual 37	java/lang/Thread:isInterrupted	()Z
+    //   16: ifeq +10 -> 26
+    //   19: sipush 10891
+    //   22: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   25: return
+    //   26: aload_0
+    //   27: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   30: getfield 44	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpJ	Ljava/util/concurrent/BlockingQueue;
+    //   33: invokeinterface 50 1 0
+    //   38: checkcast 52	com/tencent/mm/plugin/appbrand/dynamic/d/b/b
+    //   41: astore_1
+    //   42: aload_1
+    //   43: astore_2
+    //   44: aload_0
+    //   45: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   48: getfield 44	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpJ	Ljava/util/concurrent/BlockingQueue;
+    //   51: invokeinterface 56 1 0
+    //   56: iconst_2
+    //   57: if_icmplt +82 -> 139
+    //   60: aload_1
+    //   61: astore_2
+    //   62: aload_0
+    //   63: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   66: getfield 60	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpL	J
+    //   69: lconst_0
+    //   70: lcmp
+    //   71: ifle +68 -> 139
+    //   74: aload_1
+    //   75: astore_2
+    //   76: aload_1
+    //   77: getfield 63	com/tencent/mm/plugin/appbrand/dynamic/d/b/b:hpw	J
+    //   80: aload_0
+    //   81: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   84: getfield 66	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpM	J
+    //   87: lcmp
+    //   88: ifge +51 -> 139
+    //   91: aload_0
+    //   92: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   95: astore_1
+    //   96: aload_1
+    //   97: aload_1
+    //   98: getfield 70	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpN	I
+    //   101: iconst_1
+    //   102: iadd
+    //   103: putfield 70	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpN	I
+    //   106: aload_0
+    //   107: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   110: getfield 44	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpJ	Ljava/util/concurrent/BlockingQueue;
+    //   113: invokeinterface 73 1 0
+    //   118: checkcast 52	com/tencent/mm/plugin/appbrand/dynamic/d/b/b
+    //   121: astore_2
+    //   122: aload_2
+    //   123: astore_1
+    //   124: aload_0
+    //   125: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   128: getfield 44	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpJ	Ljava/util/concurrent/BlockingQueue;
+    //   131: invokeinterface 56 1 0
+    //   136: ifgt -62 -> 74
     //   139: aload_2
-    //   140: getfield 54	com/tencent/mm/plugin/appbrand/dynamic/d/b/b:fVT	J
-    //   143: putfield 51	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWi	J
-    //   146: aload_0
-    //   147: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   150: getfield 70	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWm	Z
-    //   153: ifeq +59 -> 212
-    //   156: ldc 72
-    //   158: ldc 74
-    //   160: iconst_0
-    //   161: anewarray 4	java/lang/Object
-    //   164: invokestatic 80	com/tencent/mm/modelappbrand/u:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   167: aload_0
-    //   168: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   171: getfield 83	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWh	Ljava/util/concurrent/BlockingQueue;
-    //   174: invokeinterface 41 1 0
-    //   179: checkcast 6	java/lang/Runnable
-    //   182: astore_1
-    //   183: aload_1
-    //   184: ifnull +9 -> 193
-    //   187: aload_1
-    //   188: invokeinterface 84 1 0
-    //   193: aload_0
-    //   194: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   197: iconst_0
-    //   198: putfield 70	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:fWm	Z
-    //   201: ldc 72
-    //   203: ldc 86
-    //   205: iconst_0
-    //   206: anewarray 4	java/lang/Object
-    //   209: invokestatic 80	com/tencent/mm/modelappbrand/u:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   212: aload_0
-    //   213: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:fWn	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
-    //   216: getfield 25	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:workerThread	Ljava/lang/Thread;
-    //   219: invokevirtual 31	java/lang/Thread:isInterrupted	()Z
-    //   222: ifne -209 -> 13
-    //   225: ldc2_w 87
-    //   228: invokestatic 92	java/lang/Thread:sleep	(J)V
-    //   231: goto -231 -> 0
-    //   234: astore_1
-    //   235: ldc 72
-    //   237: aload_1
-    //   238: ldc 94
-    //   240: iconst_0
-    //   241: anewarray 4	java/lang/Object
-    //   244: invokestatic 100	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   247: return
-    //   248: astore_1
-    //   249: ldc 72
-    //   251: aload_1
-    //   252: ldc 94
-    //   254: iconst_0
-    //   255: anewarray 4	java/lang/Object
-    //   258: invokestatic 100	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   261: return
-    //   262: astore_1
-    //   263: ldc 72
-    //   265: aload_1
-    //   266: ldc 94
-    //   268: iconst_0
-    //   269: anewarray 4	java/lang/Object
-    //   272: invokestatic 100	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   275: return
+    //   140: ifnull +84 -> 224
+    //   143: aload_2
+    //   144: invokevirtual 75	com/tencent/mm/plugin/appbrand/dynamic/d/b/b:run	()V
+    //   147: aload_0
+    //   148: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   151: aload_2
+    //   152: getfield 63	com/tencent/mm/plugin/appbrand/dynamic/d/b/b:hpw	J
+    //   155: putfield 60	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpL	J
+    //   158: aload_0
+    //   159: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   162: getfield 79	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpP	Z
+    //   165: ifeq +59 -> 224
+    //   168: ldc 81
+    //   170: ldc 83
+    //   172: iconst_0
+    //   173: anewarray 4	java/lang/Object
+    //   176: invokestatic 88	com/tencent/mm/modelappbrand/u:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   179: aload_0
+    //   180: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   183: getfield 91	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpK	Ljava/util/concurrent/BlockingQueue;
+    //   186: invokeinterface 50 1 0
+    //   191: checkcast 6	java/lang/Runnable
+    //   194: astore_1
+    //   195: aload_1
+    //   196: ifnull +9 -> 205
+    //   199: aload_1
+    //   200: invokeinterface 92 1 0
+    //   205: aload_0
+    //   206: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   209: iconst_0
+    //   210: putfield 79	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:hpP	Z
+    //   213: ldc 81
+    //   215: ldc 94
+    //   217: iconst_0
+    //   218: anewarray 4	java/lang/Object
+    //   221: invokestatic 88	com/tencent/mm/modelappbrand/u:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   224: aload_0
+    //   225: getfield 16	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a$1:hpQ	Lcom/tencent/mm/plugin/appbrand/dynamic/d/b/a/a;
+    //   228: getfield 31	com/tencent/mm/plugin/appbrand/dynamic/d/b/a/a:workerThread	Ljava/lang/Thread;
+    //   231: invokevirtual 37	java/lang/Thread:isInterrupted	()Z
+    //   234: ifne +72 -> 306
+    //   237: ldc2_w 95
+    //   240: invokestatic 100	java/lang/Thread:sleep	(J)V
+    //   243: goto -237 -> 6
+    //   246: astore_1
+    //   247: ldc 81
+    //   249: aload_1
+    //   250: ldc 102
+    //   252: iconst_0
+    //   253: anewarray 4	java/lang/Object
+    //   256: invokestatic 108	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   259: sipush 10891
+    //   262: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   265: return
+    //   266: astore_1
+    //   267: ldc 81
+    //   269: aload_1
+    //   270: ldc 102
+    //   272: iconst_0
+    //   273: anewarray 4	java/lang/Object
+    //   276: invokestatic 108	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   279: sipush 10891
+    //   282: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   285: return
+    //   286: astore_1
+    //   287: ldc 81
+    //   289: aload_1
+    //   290: ldc 102
+    //   292: iconst_0
+    //   293: anewarray 4	java/lang/Object
+    //   296: invokestatic 108	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   299: sipush 10891
+    //   302: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   305: return
+    //   306: sipush 10891
+    //   309: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   312: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	276	0	this	1
-    //   29	159	1	localObject1	Object
-    //   234	4	1	localInterruptedException1	java.lang.InterruptedException
-    //   248	4	1	localInterruptedException2	java.lang.InterruptedException
-    //   262	4	1	localInterruptedException3	java.lang.InterruptedException
-    //   31	109	2	localObject2	Object
+    //   0	313	0	this	1
+    //   41	159	1	localObject1	Object
+    //   246	4	1	localInterruptedException1	java.lang.InterruptedException
+    //   266	4	1	localInterruptedException2	java.lang.InterruptedException
+    //   286	4	1	localInterruptedException3	java.lang.InterruptedException
+    //   43	109	2	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   225	231	234	java/lang/InterruptedException
-    //   14	30	248	java/lang/InterruptedException
-    //   156	183	262	java/lang/InterruptedException
-    //   187	193	262	java/lang/InterruptedException
-    //   193	212	262	java/lang/InterruptedException
+    //   237	243	246	java/lang/InterruptedException
+    //   26	42	266	java/lang/InterruptedException
+    //   168	195	286	java/lang/InterruptedException
+    //   199	205	286	java/lang/InterruptedException
+    //   205	224	286	java/lang/InterruptedException
   }
 }
 

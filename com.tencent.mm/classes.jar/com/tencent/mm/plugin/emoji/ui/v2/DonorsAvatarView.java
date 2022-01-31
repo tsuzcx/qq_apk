@@ -6,98 +6,107 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.as.o;
-import com.tencent.mm.plugin.emoji.e.e;
-import com.tencent.mm.plugin.emoji.f.c;
-import com.tencent.mm.protocal.c.vk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.o;
+import com.tencent.mm.plugin.emoji.e.g;
+import com.tencent.mm.protocal.protobuf.EmotionDonor;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.IOException;
 import java.util.LinkedList;
 
 public class DonorsAvatarView
   extends LinearLayout
 {
-  private int jfU;
-  private int jfV;
-  private int jfW;
-  private int jfX;
-  private LinearLayout.LayoutParams jfY;
+  private int loN;
+  private int loO;
+  private int loP;
+  private int loQ;
+  private LinearLayout.LayoutParams loR;
   private int mMaxCount;
   
   public DonorsAvatarView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(53567);
     init();
+    AppMethodBeat.o(53567);
   }
   
   public DonorsAvatarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(53568);
     init();
+    AppMethodBeat.o(53568);
   }
   
   private void init()
   {
+    AppMethodBeat.i(53569);
     setOrientation(0);
-    this.jfU = com.tencent.mm.cb.a.fj(getContext());
-    this.jfV = com.tencent.mm.cb.a.aa(getContext(), f.c.emoji_donors_avatar_size);
-    this.jfW = com.tencent.mm.cb.a.aa(getContext(), f.c.BasicPaddingSize);
-    this.jfX = com.tencent.mm.cb.a.aa(getContext(), f.c.NormalPadding);
-    this.jfY = new LinearLayout.LayoutParams(this.jfV, this.jfV);
-    this.jfY.leftMargin = this.jfW;
-    this.jfY.rightMargin = this.jfW;
-    this.mMaxCount = ((this.jfU - this.jfX * 2) / (this.jfV + this.jfW * 2));
-    y.i("MicroMsg.emoji.DonorsAvatarView", "max count:%d", new Object[] { Integer.valueOf(this.mMaxCount) });
+    this.loN = com.tencent.mm.cb.a.gw(getContext());
+    this.loO = com.tencent.mm.cb.a.ao(getContext(), 2131428356);
+    this.loP = com.tencent.mm.cb.a.ao(getContext(), 2131427496);
+    this.loQ = com.tencent.mm.cb.a.ao(getContext(), 2131427808);
+    this.loR = new LinearLayout.LayoutParams(this.loO, this.loO);
+    this.loR.leftMargin = this.loP;
+    this.loR.rightMargin = this.loP;
+    this.mMaxCount = ((this.loN - this.loQ * 2) / (this.loO + this.loP * 2));
+    ab.i("MicroMsg.emoji.DonorsAvatarView", "max count:%d", new Object[] { Integer.valueOf(this.mMaxCount) });
+    AppMethodBeat.o(53569);
   }
   
-  public final void c(String paramString, LinkedList<vk> paramLinkedList)
+  public final void c(String paramString, LinkedList<EmotionDonor> paramLinkedList)
   {
+    AppMethodBeat.i(53570);
     removeAllViews();
     if ((paramLinkedList != null) && (paramLinkedList.size() > 0))
     {
       int i;
       int j;
-      label34:
+      label39:
       ImageView localImageView;
       if (paramLinkedList.size() > this.mMaxCount)
       {
         i = this.mMaxCount;
         j = 0;
         if (j >= i) {
-          return;
+          break label187;
         }
-        vk localvk = (vk)paramLinkedList.get(j);
-        if (localvk != null)
+        EmotionDonor localEmotionDonor = (EmotionDonor)paramLinkedList.get(j);
+        if (localEmotionDonor != null)
         {
           localImageView = new ImageView(getContext());
-          localImageView.setLayoutParams(this.jfY);
-          if (bk.bl(localvk.sSy)) {
-            break label138;
+          localImageView.setLayoutParams(this.loR);
+          if (bo.isNullOrNil(localEmotionDonor.HeadUrl)) {
+            break label143;
           }
-          o.ON().a(localvk.sSy, localImageView, e.k(paramString, localvk.sSy, new Object[0]));
+          o.ahG().a(localEmotionDonor.HeadUrl, localImageView, g.k(paramString, localEmotionDonor.HeadUrl, new Object[0]));
         }
       }
       for (;;)
       {
         addView(localImageView);
         j += 1;
-        break label34;
+        break label39;
         i = paramLinkedList.size();
         break;
         try
         {
-          label138:
-          localImageView.setImageBitmap(BackwardSupportUtil.b.a(ae.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null)));
+          label143:
+          localImageView.setImageBitmap(BackwardSupportUtil.b.b(ah.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null)));
         }
         catch (IOException localIOException)
         {
-          y.printErrStackTrace("MicroMsg.emoji.DonorsAvatarView", localIOException, "", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.emoji.DonorsAvatarView", localIOException, "", new Object[0]);
         }
       }
     }
+    label187:
+    AppMethodBeat.o(53570);
   }
 }
 

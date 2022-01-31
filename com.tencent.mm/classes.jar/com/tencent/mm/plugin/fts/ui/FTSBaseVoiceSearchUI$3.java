@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.fts.ui;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class FTSBaseVoiceSearchUI$3
-  extends ah
+  extends ak
 {
   FTSBaseVoiceSearchUI$3(FTSBaseVoiceSearchUI paramFTSBaseVoiceSearchUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.what == 1) && (!bk.bl(FTSBaseVoiceSearchUI.a(this.kBc)))) {
-      this.kBc.aVW();
+    AppMethodBeat.i(61784);
+    if ((paramMessage.what == 1) && (!bo.isNullOrNil(FTSBaseVoiceSearchUI.a(this.mWU)))) {
+      this.mWU.bCz();
     }
+    AppMethodBeat.o(61784);
   }
 }
 

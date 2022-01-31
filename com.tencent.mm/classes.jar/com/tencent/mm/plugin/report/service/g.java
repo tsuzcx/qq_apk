@@ -1,196 +1,236 @@
 package com.tencent.mm.plugin.report.service;
 
 import android.util.SparseArray;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
-import java.util.regex.Pattern;
 
 public final class g
 {
-  private static SparseArray<Long> nFF = new SparseArray();
-  private static SparseArray<HashMap<Integer, Integer>> nFG = new SparseArray();
-  private static boolean nFH = true;
-  private static long nFI = 0L;
-  private static long nFJ = 0L;
-  private static long nFK = 0L;
+  private static SparseArray<Long> qsJ;
+  private static SparseArray<HashMap<Integer, Integer>> qsK;
+  private static boolean qsL;
+  private static long qsM;
+  private static long qsN;
+  private static long qsO;
   
-  private static void J(int paramInt, long paramLong)
+  static
   {
-    if (paramLong <= 0L) {
-      return;
-    }
-    if (paramLong < 1000L)
-    {
-      h.nFQ.U(paramInt, 0, 1);
-      return;
-    }
-    if (paramLong < 2000L)
-    {
-      h.nFQ.U(paramInt, 0, 3);
-      return;
-    }
-    if (paramLong < 5000L)
-    {
-      h.nFQ.U(paramInt, 0, 5);
-      return;
-    }
-    if (paramLong < 10000L)
-    {
-      h.nFQ.U(paramInt, 0, 7);
-      return;
-    }
-    h.nFQ.U(paramInt, 0, 9);
+    AppMethodBeat.i(72750);
+    qsJ = new SparseArray();
+    qsK = new SparseArray();
+    qsL = true;
+    qsM = 0L;
+    qsN = 0L;
+    qsO = 0L;
+    AppMethodBeat.o(72750);
   }
   
-  private static void K(int paramInt, long paramLong)
+  public static void Cx(int paramInt)
   {
-    long l;
-    if (paramInt == 6)
+    AppMethodBeat.i(72744);
+    if (!qsL)
     {
-      l = System.currentTimeMillis();
-      if (l < nFI + 60000L) {
-        return;
-      }
-      nFI = l;
-    }
-    for (;;)
-    {
-      g.a locala = g.a.bwY();
-      if (!locala.hasInit) {
-        break label177;
-      }
-      h.nFQ.a(11335, true, false, new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(locala.nFM), Long.valueOf(locala.nFL[0]), Long.valueOf(locala.nFL[1]), Long.valueOf(locala.nFO) });
-      return;
-      if (paramInt == 7)
-      {
-        l = System.currentTimeMillis();
-        if (l < nFJ + 60000L) {
-          break;
-        }
-        nFJ = l;
-        continue;
-      }
-      if (paramInt == 8)
-      {
-        l = System.currentTimeMillis();
-        if (l < nFK + 60000L) {
-          break;
-        }
-        nFK = l;
-      }
-    }
-    label177:
-    h.nFQ.a(11335, true, false, new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-  }
-  
-  public static void fx(long paramLong)
-  {
-    if (!nFH) {
+      AppMethodBeat.o(72744);
       return;
     }
-    y.d("MicroMsg.ReportLogInfo", "ReportLogInfo operationBegin eventID:%d  with time:%d", new Object[] { Integer.valueOf(8), Long.valueOf(paramLong) });
-    nFF.put(8, Long.valueOf(paramLong));
+    qsJ.put(paramInt, Long.valueOf(bo.aoy()));
+    ab.d("MicroMsg.ReportLogInfo", "ReportLogInfo operationBegin eventID:%d  time:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(bo.aoy()) });
+    AppMethodBeat.o(72744);
   }
   
-  public static void wI(int paramInt)
+  public static void Cy(int paramInt)
   {
-    if (!nFH) {
+    AppMethodBeat.i(72746);
+    if (!qsL)
+    {
+      AppMethodBeat.o(72746);
       return;
     }
-    nFF.put(paramInt, Long.valueOf(bk.UY()));
-    y.d("MicroMsg.ReportLogInfo", "ReportLogInfo operationBegin eventID:%d  time:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(bk.UY()) });
-  }
-  
-  public static void wJ(int paramInt)
-  {
-    if (!nFH) {}
-    long l;
-    do
+    Long localLong = (Long)qsJ.get(paramInt);
+    if (localLong == null)
     {
-      Long localLong;
-      do
-      {
-        return;
-        localLong = (Long)nFF.get(paramInt);
-      } while ((localLong == null) || (localLong.longValue() == -1L));
-      nFF.put(paramInt, Long.valueOf(-1L));
-      l = bk.UY() - localLong.longValue();
-    } while (l <= 0L);
+      AppMethodBeat.o(72746);
+      return;
+    }
+    if (localLong.longValue() == -1L)
+    {
+      AppMethodBeat.o(72746);
+      return;
+    }
+    qsJ.put(paramInt, Long.valueOf(-1L));
+    long l = bo.aoy() - localLong.longValue();
+    if (l <= 0L)
+    {
+      AppMethodBeat.o(72746);
+      return;
+    }
     switch (paramInt)
     {
     }
     for (;;)
     {
-      y.i("MicroMsg.ReportLogInfo", "ReportLogInfo operationEnd eventID:%d  time:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(l) });
+      ab.i("MicroMsg.ReportLogInfo", "ReportLogInfo operationEnd eventID:%d  time:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(l) });
+      AppMethodBeat.o(72746);
       return;
-      if (ae.ufk)
+      if (ah.ynK)
       {
-        h.nFQ.d(23, 4, 5, (int)l, false);
+        h.qsU.d(23, 4, 5, (int)l, false);
       }
       else
       {
-        K(1, l);
-        J(227, l);
-        h.nFQ.d(23, 1, 2, (int)l, false);
+        aa(1, l);
+        Z(227, l);
+        h.qsU.d(23, 1, 2, (int)l, false);
         continue;
-        K(3, l);
-        J(229, l);
-        h.nFQ.d(27, 1, 2, (int)l, false);
+        aa(3, l);
+        Z(229, l);
+        h.qsU.d(27, 1, 2, (int)l, false);
         continue;
-        K(2, l);
-        J(228, l);
-        h.nFQ.d(28, 1, 2, (int)l, false);
+        aa(2, l);
+        Z(228, l);
+        h.qsU.d(28, 1, 2, (int)l, false);
         continue;
-        K(6, l);
+        aa(6, l);
         continue;
-        K(7, l);
+        aa(7, l);
         continue;
-        K(8, l);
+        aa(8, l);
         continue;
-        K(10, l);
+        aa(10, l);
         continue;
-        K(14, l);
+        aa(14, l);
         continue;
-        K(15, l);
+        aa(15, l);
         continue;
-        K(9, l);
+        aa(9, l);
         continue;
-        K(11, l);
+        aa(11, l);
         continue;
-        K(16, l);
+        aa(16, l);
         continue;
-        K(13, l);
+        aa(13, l);
         continue;
-        K(12, l);
+        aa(12, l);
       }
     }
   }
   
-  public static void wK(int paramInt)
+  public static void Cz(int paramInt)
   {
-    if (!nFH) {
+    AppMethodBeat.i(72749);
+    if (!qsL)
+    {
+      AppMethodBeat.o(72749);
       return;
     }
-    y.d("MicroMsg.ReportLogInfo", "ReportLogInfo stopOperation stop eventID:%d", new Object[] { Integer.valueOf(paramInt) });
-    nFF.put(paramInt, Long.valueOf(-1L));
+    ab.d("MicroMsg.ReportLogInfo", "ReportLogInfo stopOperation stop eventID:%d", new Object[] { Integer.valueOf(paramInt) });
+    qsJ.put(paramInt, Long.valueOf(-1L));
+    AppMethodBeat.o(72749);
   }
   
-  final class a$a
-    implements FileFilter
+  private static void Z(int paramInt, long paramLong)
   {
-    public final boolean accept(File paramFile)
+    AppMethodBeat.i(72747);
+    if (paramLong <= 0L)
     {
-      return Pattern.matches("cpu[0-9]", paramFile.getName());
+      AppMethodBeat.o(72747);
+      return;
     }
+    if (paramLong < 1000L)
+    {
+      h.qsU.af(paramInt, 0, 1);
+      AppMethodBeat.o(72747);
+      return;
+    }
+    if (paramLong < 2000L)
+    {
+      h.qsU.af(paramInt, 0, 3);
+      AppMethodBeat.o(72747);
+      return;
+    }
+    if (paramLong < 5000L)
+    {
+      h.qsU.af(paramInt, 0, 5);
+      AppMethodBeat.o(72747);
+      return;
+    }
+    if (paramLong < 10000L)
+    {
+      h.qsU.af(paramInt, 0, 7);
+      AppMethodBeat.o(72747);
+      return;
+    }
+    h.qsU.af(paramInt, 0, 9);
+    AppMethodBeat.o(72747);
+  }
+  
+  private static void aa(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(72748);
+    long l;
+    if (paramInt == 6)
+    {
+      l = System.currentTimeMillis();
+      if (l < qsM + 60000L)
+      {
+        AppMethodBeat.o(72748);
+        return;
+      }
+      qsM = l;
+    }
+    for (;;)
+    {
+      g.a locala = g.a.chR();
+      if (!locala.hasInit) {
+        break;
+      }
+      h.qsU.a(11335, true, false, new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(locala.qsQ), Long.valueOf(locala.qsP[0]), Long.valueOf(locala.qsP[1]), Long.valueOf(locala.qsS) });
+      AppMethodBeat.o(72748);
+      return;
+      if (paramInt == 7)
+      {
+        l = System.currentTimeMillis();
+        if (l < qsN + 60000L)
+        {
+          AppMethodBeat.o(72748);
+          return;
+        }
+        qsN = l;
+      }
+      else if (paramInt == 8)
+      {
+        l = System.currentTimeMillis();
+        if (l < qsO + 60000L)
+        {
+          AppMethodBeat.o(72748);
+          return;
+        }
+        qsO = l;
+      }
+    }
+    h.qsU.a(11335, true, false, new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    AppMethodBeat.o(72748);
+  }
+  
+  public static void lb(long paramLong)
+  {
+    AppMethodBeat.i(72745);
+    if (!qsL)
+    {
+      AppMethodBeat.o(72745);
+      return;
+    }
+    ab.d("MicroMsg.ReportLogInfo", "ReportLogInfo operationBegin eventID:%d  with time:%d", new Object[] { Integer.valueOf(8), Long.valueOf(paramLong) });
+    qsJ.put(8, Long.valueOf(paramLong));
+    AppMethodBeat.o(72745);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.g
  * JD-Core Version:    0.7.0.1
  */

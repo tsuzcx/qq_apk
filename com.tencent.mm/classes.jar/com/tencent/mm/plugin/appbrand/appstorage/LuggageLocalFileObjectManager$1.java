@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
 import java.io.FileFilter;
 
@@ -11,7 +12,14 @@ final class LuggageLocalFileObjectManager$1
   
   public final boolean accept(File paramFile)
   {
-    return (paramFile.exists()) && (!paramFile.isDirectory()) && (!bk.bl(paramFile.getName())) && (paramFile.getName().startsWith("store_"));
+    AppMethodBeat.i(105417);
+    if ((paramFile.exists()) && (!paramFile.isDirectory()) && (!bo.isNullOrNil(paramFile.getName())) && (paramFile.getName().startsWith("store_")))
+    {
+      AppMethodBeat.o(105417);
+      return true;
+    }
+    AppMethodBeat.o(105417);
+    return false;
   }
 }
 

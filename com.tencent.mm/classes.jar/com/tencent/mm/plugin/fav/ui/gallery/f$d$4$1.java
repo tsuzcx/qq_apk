@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fav.ui.gallery;
 
 import android.widget.ImageView;
 import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f$d$4$1
   implements PopupWindow.OnDismissListener
@@ -10,14 +11,16 @@ final class f$d$4$1
   
   public final void onDismiss()
   {
-    if ((this.khZ.khY.khT != null) && (!this.khZ.khY.khK.khJ)) {
-      this.khZ.khY.khT.setVisibility(8);
+    AppMethodBeat.i(74572);
+    if ((this.mCG.mCF.mCA != null) && (!this.mCG.mCF.mCs.mCr)) {
+      this.mCG.mCF.mCA.setVisibility(8);
     }
+    AppMethodBeat.o(74572);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.f.d.4.1
  * JD-Core Version:    0.7.0.1
  */

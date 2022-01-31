@@ -3,6 +3,7 @@ package com.tencent.youtu.ytagreflectlivecheck.jni;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.FullPack;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.Timeval;
 import com.tencent.youtu.ytcommon.tools.YTLogger;
@@ -15,12 +16,15 @@ public class YTAGReflectLiveCheckJNIInterface
   public static int TIME_REGULATION_STRICT = 0;
   private static YTAGReflectLiveCheckJNIInterface instance = null;
   private long FRnativePtr;
-  public Context context = null;
+  public Context context;
   private long nativePtr;
   
   private YTAGReflectLiveCheckJNIInterface()
   {
+    AppMethodBeat.i(123176);
+    this.context = null;
     FRNativeConstructor();
+    AppMethodBeat.o(123176);
   }
   
   public static native boolean FRInitFaceSDK(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
@@ -29,45 +33,59 @@ public class YTAGReflectLiveCheckJNIInterface
   
   public static void NativeLog(int paramInt, String paramString)
   {
-    if (!YTLogger.isEnableNativeLog()) {
+    AppMethodBeat.i(123180);
+    if (!YTLogger.isEnableNativeLog())
+    {
+      AppMethodBeat.o(123180);
       return;
     }
     switch (paramInt)
     {
     default: 
-      YTLogger.d("NativeLog-" + paramInt, "[YTAGReflectLiveCheckJNIInterface.NativeLog] " + paramString);
+      YTLogger.d("NativeLog-".concat(String.valueOf(paramInt)), "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(123180);
       return;
     case 2: 
-      YTLogger.v("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] " + paramString);
+      YTLogger.v("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(123180);
       return;
     case 3: 
-      YTLogger.d("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] " + paramString);
+      YTLogger.d("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(123180);
       return;
     case 4: 
-      YTLogger.i("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] " + paramString);
+      YTLogger.i("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(123180);
       return;
     case 5: 
-      YTLogger.w("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] " + paramString);
+      YTLogger.w("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(123180);
       return;
     }
-    YTLogger.e("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] " + paramString);
+    YTLogger.e("NativeLog", "[YTAGReflectLiveCheckJNIInterface.NativeLog] ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(123180);
   }
   
   public static byte[] encodeJpeg(Bitmap paramBitmap)
   {
+    AppMethodBeat.i(123179);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     paramBitmap.compress(Bitmap.CompressFormat.JPEG, 99, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
+    paramBitmap = localByteArrayOutputStream.toByteArray();
+    AppMethodBeat.o(123179);
+    return paramBitmap;
   }
   
   public static YTAGReflectLiveCheckJNIInterface getInstance()
   {
     try
     {
+      AppMethodBeat.i(123175);
       if (instance == null) {
         instance = new YTAGReflectLiveCheckJNIInterface();
       }
       YTAGReflectLiveCheckJNIInterface localYTAGReflectLiveCheckJNIInterface = instance;
+      AppMethodBeat.o(123175);
       return localYTAGReflectLiveCheckJNIInterface;
     }
     finally {}
@@ -163,12 +181,16 @@ public class YTAGReflectLiveCheckJNIInterface
   
   public void destroy()
   {
+    AppMethodBeat.i(123177);
     FRNativeDestructor();
+    AppMethodBeat.o(123177);
   }
   
   protected void finalize()
   {
+    AppMethodBeat.i(123178);
     FRNativeDestructor();
+    AppMethodBeat.o(123178);
   }
 }
 

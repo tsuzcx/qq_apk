@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
-import com.tencent.mm.plugin.appbrand.page.al;
-import com.tencent.mm.plugin.appbrand.page.s;
+import com.tencent.mm.plugin.appbrand.page.bf;
+import com.tencent.mm.plugin.appbrand.page.z;
 
-abstract interface g
+public abstract interface g
 {
-  public abstract void a(s params1, s params2, al paramal);
+  public abstract void a(z paramz1, z paramz2, bf parambf);
   
-  public abstract void c(s params);
+  public abstract void b(z paramz);
   
-  public abstract void d(s params);
+  public abstract void c(z paramz);
 }
 
 

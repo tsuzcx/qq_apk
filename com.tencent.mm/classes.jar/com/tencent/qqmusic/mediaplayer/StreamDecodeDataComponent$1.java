@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 
 class StreamDecodeDataComponent$1
@@ -9,12 +10,15 @@ class StreamDecodeDataComponent$1
   
   public void run()
   {
+    AppMethodBeat.i(104694);
     if (this.this$0.getPlayerState() == 8)
     {
       Logger.w("StreamDecodeDataComponent", "[run] state changed to END during postRunnable!");
+      AppMethodBeat.o(104694);
       return;
     }
     this.this$0.mCallback.playerPrepared(this.this$0.mCorePlayer);
+    AppMethodBeat.o(104694);
   }
 }
 

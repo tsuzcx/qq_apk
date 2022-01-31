@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import com.tencent.mm.h.a.cv;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cy;
 import com.tencent.mm.sdk.b.c;
 
 final class j$2
-  extends c<cv>
+  extends c<cy>
 {
   j$2(j paramj)
   {
-    this.udX = cv.class.getName().hashCode();
+    AppMethodBeat.i(53080);
+    this.__eventId = cy.class.getName().hashCode();
+    AppMethodBeat.o(53080);
   }
 }
 

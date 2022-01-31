@@ -1,84 +1,101 @@
 package android.support.v4.view.a;
 
-import android.view.accessibility.AccessibilityRecord;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityNodeProvider;
+import java.util.List;
 
-public final class c
+public class c
 {
-  private final AccessibilityRecord It;
+  public final Object Ib;
   
-  @Deprecated
-  private c(Object paramObject)
+  public c()
   {
-    this.It = ((AccessibilityRecord)paramObject);
-  }
-  
-  @Deprecated
-  public static c dw()
-  {
-    return new c(AccessibilityRecord.obtain());
-  }
-  
-  @Deprecated
-  public final boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      do
-      {
-        return true;
-        if (paramObject == null) {
-          return false;
-        }
-        if (getClass() != paramObject.getClass()) {
-          return false;
-        }
-        paramObject = (c)paramObject;
-        if (this.It != null) {
-          break;
-        }
-      } while (paramObject.It == null);
-      return false;
-    } while (this.It.equals(paramObject.It));
+      this.Ib = new b(this);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      this.Ib = new a(this);
+      return;
+    }
+    this.Ib = null;
+  }
+  
+  public c(Object paramObject)
+  {
+    this.Ib = paramObject;
+  }
+  
+  public b ax(int paramInt)
+  {
+    return null;
+  }
+  
+  public b ay(int paramInt)
+  {
+    return null;
+  }
+  
+  public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
+  {
     return false;
   }
   
-  @Deprecated
-  public final int hashCode()
+  static class a
+    extends AccessibilityNodeProvider
   {
-    if (this.It == null) {
-      return 0;
+    final c Ic;
+    
+    a(c paramc)
+    {
+      this.Ic = paramc;
     }
-    return this.It.hashCode();
+    
+    public AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
+    {
+      b localb = this.Ic.ax(paramInt);
+      if (localb == null) {
+        return null;
+      }
+      return localb.Hq;
+    }
+    
+    public List<AccessibilityNodeInfo> findAccessibilityNodeInfosByText(String paramString, int paramInt)
+    {
+      return null;
+    }
+    
+    public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
+    {
+      return this.Ic.performAction(paramInt1, paramInt2, paramBundle);
+    }
   }
   
-  @Deprecated
-  public final void setFromIndex(int paramInt)
+  static final class b
+    extends c.a
   {
-    this.It.setFromIndex(paramInt);
-  }
-  
-  @Deprecated
-  public final void setItemCount(int paramInt)
-  {
-    this.It.setItemCount(paramInt);
-  }
-  
-  @Deprecated
-  public final void setScrollable(boolean paramBoolean)
-  {
-    this.It.setScrollable(paramBoolean);
-  }
-  
-  @Deprecated
-  public final void setToIndex(int paramInt)
-  {
-    this.It.setToIndex(paramInt);
+    b(c paramc)
+    {
+      super();
+    }
+    
+    public final AccessibilityNodeInfo findFocus(int paramInt)
+    {
+      b localb = this.Ic.ay(paramInt);
+      if (localb == null) {
+        return null;
+      }
+      return localb.Hq;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v4.view.a.c
  * JD-Core Version:    0.7.0.1
  */

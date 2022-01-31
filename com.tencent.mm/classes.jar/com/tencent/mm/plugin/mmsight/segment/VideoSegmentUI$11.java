@@ -1,26 +1,30 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.a.a.c;
 import com.tencent.mm.plugin.mmsight.segment.a.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoSegmentUI$11
   implements a.c
 {
   VideoSegmentUI$11(VideoSegmentUI paramVideoSegmentUI) {}
   
-  public final void bt(Object paramObject)
+  public final void bX(Object paramObject)
   {
+    AppMethodBeat.i(55042);
     try
     {
-      if (VideoSegmentUI.d(this.mnw) != null) {
-        VideoSegmentUI.d(this.mnw).start();
+      if (VideoSegmentUI.d(this.oME) != null) {
+        VideoSegmentUI.d(this.oME).start();
       }
+      AppMethodBeat.o(55042);
       return;
     }
     catch (Exception paramObject)
     {
-      y.printErrStackTrace("MicroMsg.VideoSegmentUI", paramObject, "hy: exception when onSeekComplete waiting for starting", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.VideoSegmentUI", paramObject, "hy: exception when onSeekComplete waiting for starting", new Object[0]);
+      AppMethodBeat.o(55042);
     }
   }
 }

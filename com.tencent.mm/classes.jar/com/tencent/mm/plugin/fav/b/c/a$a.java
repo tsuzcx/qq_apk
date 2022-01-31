@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fav.b.c;
 
 public abstract interface a$a
 {
-  public abstract void aQU();
+  public abstract void bxj();
 }
 
 

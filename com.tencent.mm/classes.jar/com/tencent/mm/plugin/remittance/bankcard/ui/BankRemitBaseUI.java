@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -14,7 +15,7 @@ import java.lang.reflect.Method;
 public abstract class BankRemitBaseUI
   extends WalletBaseUI
 {
-  public static int J(Activity paramActivity)
+  public static int ae(Activity paramActivity)
   {
     int j = 0;
     int i = j;
@@ -30,15 +31,15 @@ public abstract class BankRemitBaseUI
     do
     {
       return i;
-      if (K(paramActivity)) {
+      if (af(paramActivity)) {
         return 1;
       }
       i = j;
-    } while (!e(paramActivity.getWindow()));
+    } while (!d(paramActivity.getWindow()));
     return 2;
   }
   
-  private static boolean K(Activity paramActivity)
+  private static boolean af(Activity paramActivity)
   {
     Window localWindow = paramActivity.getWindow();
     if (localWindow != null)
@@ -70,7 +71,7 @@ public abstract class BankRemitBaseUI
     }
   }
   
-  private static boolean e(Window paramWindow)
+  private static boolean d(Window paramWindow)
   {
     if (paramWindow != null) {
       try
@@ -89,21 +90,27 @@ public abstract class BankRemitBaseUI
     return false;
   }
   
-  protected void baU()
+  protected void bHV()
   {
-    y.i("BankRemitBase", "ret: %s", new Object[] { Integer.valueOf(J(this)) });
+    ab.i("BankRemitBase", "ret: %s", new Object[] { Integer.valueOf(ae(this)) });
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    baU();
+    bHV();
     setBackBtn(new BankRemitBaseUI.1(this));
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitBaseUI
  * JD-Core Version:    0.7.0.1
  */

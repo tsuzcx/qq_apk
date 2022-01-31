@@ -1,17 +1,8 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.mm.plugin.appbrand.o;
-
 public abstract interface ai
-{
-  public static final ai gVK = new ai.1();
-  
-  public abstract void agH();
-  
-  public abstract void agI();
-  
-  public abstract void h(o paramo);
-}
+  extends ah
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar

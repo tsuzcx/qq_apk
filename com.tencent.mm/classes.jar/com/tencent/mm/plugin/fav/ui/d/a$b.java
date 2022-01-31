@@ -9,14 +9,14 @@ import com.tencent.mm.plugin.fav.a.g;
 
 public class a$b
 {
-  public TextView dsz;
-  public CheckBox eXQ;
-  public TextView fhD;
-  public g jZN;
-  public View kir;
-  public ImageView kis;
-  public LinearLayout kit;
-  public TextView kiu;
+  public TextView ekh;
+  public CheckBox gpN;
+  public TextView gzk;
+  public View mCV;
+  public ImageView mCW;
+  public LinearLayout mCX;
+  public TextView mCY;
+  public g muk;
 }
 
 

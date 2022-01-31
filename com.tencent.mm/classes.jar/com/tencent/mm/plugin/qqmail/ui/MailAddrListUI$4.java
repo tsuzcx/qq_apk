@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MailAddrListUI$4
   implements AbsListView.OnScrollListener
@@ -12,9 +13,11 @@ final class MailAddrListUI$4
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
+    AppMethodBeat.i(68314);
     if (1 == paramInt) {
-      this.nia.XM();
+      this.pNn.hideVKB();
     }
+    AppMethodBeat.o(68314);
   }
 }
 

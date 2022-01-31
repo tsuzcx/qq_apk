@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.ui.base.m;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginHistoryUI$24
-  implements View.OnClickListener
+  implements Runnable
 {
-  LoginHistoryUI$24(LoginHistoryUI paramLoginHistoryUI, List paramList) {}
+  LoginHistoryUI$24(LoginHistoryUI paramLoginHistoryUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    LoginHistoryUI.a(this.fnc, ((m)this.fng.get(0)).getItemId());
+    AppMethodBeat.i(152550);
+    this.gEw.finish();
+    this.gEw.overridePendingTransition(-1, -1);
+    AppMethodBeat.o(152550);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginHistoryUI.24
  * JD-Core Version:    0.7.0.1
  */

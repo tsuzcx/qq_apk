@@ -1,79 +1,125 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
-import android.content.res.Configuration;
-import com.tencent.mm.bl.a.a;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.regex.Pattern;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public final class g
+public class g
+  extends com.tencent.mm.plugin.appbrand.jsapi.a
 {
-  private static String gBa = "";
-  private static String gBb = "";
-  private static f gBc = new f();
-  private static a.a gBd = a.a.eQB;
-  private static a.a gBe = a.a.eQB;
-  private static boolean mEnable = false;
+  public static final int CTRL_INDEX = 63;
+  public static final String NAME = "reportKeyValue";
   
-  public static void a(Configuration paramConfiguration, String paramString)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    if (paramConfiguration.orientation == 2) {
-      if (gBd == a.a.eQF) {
-        gBe = a.a.eQF;
-      }
+    AppMethodBeat.i(131431);
+    JSONArray localJSONArray = paramJSONObject.optJSONArray("dataArray");
+    if (localJSONArray == null)
+    {
+      paramc.h(paramInt, j("fail:invalid data", null));
+      AppMethodBeat.o(131431);
+      return;
     }
+    int m = paramJSONObject.optInt("version", -1);
+    com.tencent.mm.plugin.appbrand.config.h localh = (com.tencent.mm.plugin.appbrand.config.h)paramc.U(com.tencent.mm.plugin.appbrand.config.h.class);
+    if (localh == null)
+    {
+      ab.e("MicroMsg.JsApiReportKeyValue", "config is Null!");
+      paramc.h(paramInt, j("fail null config", null));
+      AppMethodBeat.o(131431);
+      return;
+    }
+    int i = 0;
+    if (i < localJSONArray.length()) {}
     for (;;)
     {
-      y.i("MicroMsg.OrientationConfigListenerHelper", "onConfigurationChanged mAppid:" + gBa + "; appid:" + paramString + "; mOrientation:" + gBe.name());
-      if ((gBa.equalsIgnoreCase("")) || (!gBa.equalsIgnoreCase(paramString)) || (!mEnable)) {
+      int n;
+      int j;
+      JSONObject localJSONObject;
+      try
+      {
+        paramJSONObject = localJSONArray.getJSONObject(i);
+        n = paramJSONObject.optInt("key");
+        paramJSONObject = paramJSONObject.optString("value");
+        if (n > 0)
+        {
+          boolean bool = bo.isNullOrNil(paramJSONObject);
+          if (!bool)
+          {
+            Object localObject = paramJSONObject;
+            if (n == 15496) {}
+            try
+            {
+              localObject = paramJSONObject.split(Pattern.quote(","));
+              int k = 0;
+              j = 0;
+              if (j < 4)
+              {
+                int i1 = new int[] { 17, 11, 9, 2 }[j];
+                String str = localObject[i1];
+                if (bo.nullAsNil(str).length() <= 1024) {
+                  break label631;
+                }
+                localObject[i1] = str.substring(0, 1024);
+                k = 1;
+                break label631;
+              }
+              if (k == 0) {
+                break label628;
+              }
+              localObject = org.apache.commons.b.g.b((Object[])localObject, ",");
+              paramJSONObject = (JSONObject)localObject;
+              localObject = paramJSONObject;
+            }
+            catch (Exception localException)
+            {
+              ab.e("MicroMsg.JsApiReportKeyValue", "modify 15496 too large string-fields, e=%s", new Object[] { localException });
+              localJSONObject = paramJSONObject;
+              continue;
+            }
+            if (m < 2) {
+              break label486;
+            }
+            paramJSONObject = com.tencent.mm.plugin.appbrand.report.quality.a.EM(paramc.getAppId());
+            if (paramJSONObject != null) {
+              break label358;
+            }
+            paramc.h(paramInt, j("fail NULL QualitySystem instance", null));
+            AppMethodBeat.o(131431);
+            return;
+          }
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        ab.e("MicroMsg.JsApiReportKeyValue", "AppBrandComponent parse report value failed : %s", new Object[] { paramJSONObject.getMessage() });
+      }
+      for (;;)
+      {
+        i += 1;
         break;
+        label358:
+        ab.i("MicroMsg.JsApiReportKeyValue", "report kv_%d{appId='%s',pkgVersion=%d,pkgDebugType=%d,value='%s'}", new Object[] { Integer.valueOf(n), paramc.getAppId(), Integer.valueOf(localh.hiX.gXf), Integer.valueOf(localh.hiX.gXe + 1), localJSONObject });
+        com.tencent.mm.plugin.report.service.h.qsU.e(n, new Object[] { paramJSONObject.ikX, paramJSONObject.appId, Integer.valueOf(paramJSONObject.iIG), Integer.valueOf(paramJSONObject.iIF), Integer.valueOf(paramJSONObject.apptype), localJSONObject });
+        continue;
+        label486:
+        ab.i("MicroMsg.JsApiReportKeyValue", "report kv_%d{appId='%s',pkgVersion=%d,pkgDebugType=%d,value='%s'}", new Object[] { Integer.valueOf(n), paramc.getAppId(), Integer.valueOf(localh.hiX.gXf), Integer.valueOf(localh.hiX.gXe + 1), localJSONObject });
+        com.tencent.mm.plugin.report.service.h.qsU.e(n, new Object[] { paramc.getAppId(), Integer.valueOf(localh.hiX.gXf), Integer.valueOf(localh.hiX.gXe + 1), localJSONObject });
       }
-      gBc.a(gBe);
+      paramc.h(paramInt, j("ok", null));
+      AppMethodBeat.o(131431);
       return;
-      gBe = a.a.eQD;
+      label628:
       continue;
-      if (paramConfiguration.orientation == 1) {
-        gBe = a.a.eQC;
-      } else {
-        gBe = a.a.eQB;
-      }
-    }
-    gBb = paramString;
-  }
-  
-  public static void b(a.a parama)
-  {
-    gBd = parama;
-    if ((mEnable) && (gBe == a.a.eQD) && ((parama == a.a.eQF) || (parama == a.a.eQD)))
-    {
-      gBc.a(parama);
-      y.i("MicroMsg.OrientationConfigListenerHelper", "onFourOrientationsChange mAppid:" + gBa + "; mOrientation:" + parama.name());
-    }
-  }
-  
-  public static void f(o paramo)
-  {
-    gBa = paramo.mAppId;
-    mEnable = true;
-    gBc.d(paramo);
-    if ((gBe != a.a.eQB) && (gBb.equalsIgnoreCase(gBa))) {
-      gBc.a(gBe);
-    }
-    for (;;)
-    {
-      y.i("MicroMsg.OrientationConfigListenerHelper", "init mJsAppid:" + gBa + "; mEnable:" + mEnable);
-      return;
-      gBe = a.a.eQB;
-    }
-  }
-  
-  public static void g(o paramo)
-  {
-    if (paramo.mAppId.equalsIgnoreCase(gBa))
-    {
-      y.i("MicroMsg.OrientationConfigListenerHelper", "unInit mAppid:" + gBa);
-      gBa = "";
-      mEnable = false;
-      gBe = a.a.eQB;
+      label631:
+      j += 1;
     }
   }
 }

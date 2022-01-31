@@ -2,7 +2,7 @@ package com.tencent.map.geolocation;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.map.geolocation.internal.TencentExtraKeys;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class TencentLocationRequest
 {
@@ -15,63 +15,91 @@ public final class TencentLocationRequest
   private boolean c;
   private boolean d;
   private boolean e;
-  private long f;
-  private int g;
-  private String h;
+  private boolean f;
+  private long g;
+  private int h;
   private String i;
-  private Bundle j;
+  private String j;
+  private Bundle k;
   
   private TencentLocationRequest() {}
   
   public TencentLocationRequest(TencentLocationRequest paramTencentLocationRequest)
   {
+    AppMethodBeat.i(136469);
     this.a = paramTencentLocationRequest.a;
     this.b = paramTencentLocationRequest.b;
     this.d = paramTencentLocationRequest.d;
     this.e = paramTencentLocationRequest.e;
-    this.f = paramTencentLocationRequest.f;
     this.g = paramTencentLocationRequest.g;
-    this.c = paramTencentLocationRequest.c;
-    this.i = paramTencentLocationRequest.i;
     this.h = paramTencentLocationRequest.h;
-    this.j = new Bundle();
-    this.j.putAll(paramTencentLocationRequest.j);
+    this.c = paramTencentLocationRequest.c;
+    this.f = paramTencentLocationRequest.f;
+    this.j = paramTencentLocationRequest.j;
+    this.i = paramTencentLocationRequest.i;
+    this.k = new Bundle();
+    this.k.putAll(paramTencentLocationRequest.k);
+    AppMethodBeat.o(136469);
+  }
+  
+  private boolean a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      if (paramInt != 7) {
+        break;
+      }
+    case 0: 
+    case 1: 
+    case 3: 
+    case 4: 
+      return true;
+    }
+    return false;
   }
   
   public static void copy(TencentLocationRequest paramTencentLocationRequest1, TencentLocationRequest paramTencentLocationRequest2)
   {
+    AppMethodBeat.i(136470);
     paramTencentLocationRequest1.a = paramTencentLocationRequest2.a;
     paramTencentLocationRequest1.b = paramTencentLocationRequest2.b;
     paramTencentLocationRequest1.d = paramTencentLocationRequest2.d;
     paramTencentLocationRequest1.e = paramTencentLocationRequest2.e;
-    paramTencentLocationRequest1.f = paramTencentLocationRequest2.f;
     paramTencentLocationRequest1.g = paramTencentLocationRequest2.g;
-    paramTencentLocationRequest1.c = paramTencentLocationRequest2.c;
-    paramTencentLocationRequest1.i = paramTencentLocationRequest2.i;
     paramTencentLocationRequest1.h = paramTencentLocationRequest2.h;
-    paramTencentLocationRequest1.j.clear();
-    paramTencentLocationRequest1.j.putAll(paramTencentLocationRequest2.j);
+    paramTencentLocationRequest1.f = paramTencentLocationRequest2.f;
+    paramTencentLocationRequest1.c = paramTencentLocationRequest2.c;
+    paramTencentLocationRequest1.j = paramTencentLocationRequest2.j;
+    paramTencentLocationRequest1.i = paramTencentLocationRequest2.i;
+    paramTencentLocationRequest1.k.clear();
+    paramTencentLocationRequest1.k.putAll(paramTencentLocationRequest2.k);
+    AppMethodBeat.o(136470);
   }
   
   public static TencentLocationRequest create()
   {
+    AppMethodBeat.i(136471);
     TencentLocationRequest localTencentLocationRequest = new TencentLocationRequest();
     localTencentLocationRequest.a = 10000L;
     localTencentLocationRequest.b = 1;
     localTencentLocationRequest.d = true;
     localTencentLocationRequest.e = false;
-    localTencentLocationRequest.f = 9223372036854775807L;
-    localTencentLocationRequest.g = 2147483647;
+    localTencentLocationRequest.f = false;
+    localTencentLocationRequest.g = 0L;
+    localTencentLocationRequest.h = 2147483647;
     localTencentLocationRequest.c = true;
+    localTencentLocationRequest.j = "";
     localTencentLocationRequest.i = "";
-    localTencentLocationRequest.h = "";
-    localTencentLocationRequest.j = new Bundle();
+    localTencentLocationRequest.k = new Bundle();
+    AppMethodBeat.o(136471);
     return localTencentLocationRequest;
   }
   
   public final Bundle getExtras()
   {
-    return this.j;
+    return this.k;
   }
   
   public final long getInterval()
@@ -81,17 +109,19 @@ public final class TencentLocationRequest
   
   public final String getPhoneNumber()
   {
-    String str2 = this.j.getString("phoneNumber");
+    AppMethodBeat.i(136476);
+    String str2 = this.k.getString("phoneNumber");
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
+    AppMethodBeat.o(136476);
     return str1;
   }
   
   public final String getQQ()
   {
-    return this.i;
+    return this.j;
   }
   
   public final int getRequestLevel()
@@ -101,7 +131,12 @@ public final class TencentLocationRequest
   
   public final String getSmallAppKey()
   {
-    return this.h;
+    return this.i;
+  }
+  
+  public final long getmExpirationTime()
+  {
+    return this.g;
   }
   
   public final boolean isAllowCache()
@@ -117,6 +152,11 @@ public final class TencentLocationRequest
   public final boolean isAllowGPS()
   {
     return this.c;
+  }
+  
+  public final boolean isIndoorLocationMode()
+  {
+    return this.f;
   }
   
   public final TencentLocationRequest setAllowCache(boolean paramBoolean)
@@ -137,57 +177,84 @@ public final class TencentLocationRequest
     return this;
   }
   
+  public final TencentLocationRequest setIndoorLocationMode(boolean paramBoolean)
+  {
+    this.f = paramBoolean;
+    return this;
+  }
+  
   public final TencentLocationRequest setInterval(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("interval should >= 0");
+    AppMethodBeat.i(136472);
+    if (paramLong < 0L)
+    {
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("interval should >= 0");
+      AppMethodBeat.o(136472);
+      throw localIllegalArgumentException;
     }
     this.a = paramLong;
+    AppMethodBeat.o(136472);
     return this;
   }
   
   public final TencentLocationRequest setPhoneNumber(String paramString)
   {
+    AppMethodBeat.i(136475);
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    this.j.putString("phoneNumber", str);
+    this.k.putString("phoneNumber", str);
+    AppMethodBeat.o(136475);
     return this;
   }
   
   public final TencentLocationRequest setQQ(String paramString)
   {
-    this.i = paramString;
+    this.j = paramString;
     return this;
   }
   
   public final TencentLocationRequest setRequestLevel(int paramInt)
   {
-    if (TencentExtraKeys.isAllowedLevel(paramInt))
+    AppMethodBeat.i(136473);
+    if (a(paramInt))
     {
       this.b = paramInt;
+      AppMethodBeat.o(136473);
       return this;
     }
-    throw new IllegalArgumentException("request_level: " + paramInt + " not supported!");
+    IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("request_level: " + paramInt + " not supported!");
+    AppMethodBeat.o(136473);
+    throw localIllegalArgumentException;
   }
   
   public final TencentLocationRequest setSmallAppKey(String paramString)
   {
+    AppMethodBeat.i(136474);
     if (!TextUtils.isEmpty(paramString)) {
-      this.h = paramString;
+      this.i = paramString;
     }
+    AppMethodBeat.o(136474);
     return this;
+  }
+  
+  public final void setmExpirationTime(long paramLong)
+  {
+    this.g = paramLong;
   }
   
   public final String toString()
   {
-    return "TencentLocationRequest {interval=" + this.a + "ms,level=" + this.b + ",allowCache=" + this.d + ",allowGps=" + this.c + ",allowDirection=" + this.e + ",QQ=" + this.i + "}";
+    AppMethodBeat.i(136477);
+    String str = "TencentLocationRequest {interval=" + this.a + "ms,level=" + this.b + ",allowCache=" + this.d + ",allowGps=" + this.c + ",allowDirection=" + this.e + ",QQ=" + this.j + "}";
+    AppMethodBeat.o(136477);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.map.geolocation.TencentLocationRequest
  * JD-Core Version:    0.7.0.1
  */

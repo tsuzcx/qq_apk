@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$a$1
   implements View.OnClickListener
@@ -10,9 +11,11 @@ final class i$a$1
   
   public final void onClick(View paramView)
   {
-    if (i.a.a(this.lzf) != null) {
-      i.a.a(this.lzf).onClick(paramView);
+    AppMethodBeat.i(22344);
+    if (i.a.a(this.nWr) != null) {
+      i.a.a(this.nWr).onClick(paramView);
     }
+    AppMethodBeat.o(22344);
   }
 }
 

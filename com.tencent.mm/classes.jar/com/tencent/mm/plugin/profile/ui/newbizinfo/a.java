@@ -1,10 +1,18 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
 import android.graphics.Color;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static int mZx = Color.parseColor("#FFEBEBEB");
+  public static int pDd;
+  
+  static
+  {
+    AppMethodBeat.i(23801);
+    pDd = Color.parseColor("#FFEBEBEB");
+    AppMethodBeat.o(23801);
+  }
 }
 
 

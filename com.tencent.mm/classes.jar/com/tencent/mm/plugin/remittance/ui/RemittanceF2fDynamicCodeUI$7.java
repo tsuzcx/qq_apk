@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.remittance.ui;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.n.d;
 
 final class RemittanceF2fDynamicCodeUI$7
@@ -10,9 +11,11 @@ final class RemittanceF2fDynamicCodeUI$7
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(45057);
     if (paramInt == 0) {
-      RemittanceF2fDynamicCodeUI.a(this.nDP, 1);
+      RemittanceF2fDynamicCodeUI.a(this.qqI, 1);
     }
+    AppMethodBeat.o(45057);
   }
 }
 

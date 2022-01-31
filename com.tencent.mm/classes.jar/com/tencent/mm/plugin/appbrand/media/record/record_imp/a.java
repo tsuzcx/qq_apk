@@ -1,41 +1,52 @@
 package com.tencent.mm.plugin.appbrand.media.record.record_imp;
 
-import com.tencent.mm.f.b.c;
-import com.tencent.mm.f.b.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.c;
+import com.tencent.mm.audio.b.c.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
 {
-  public int auC = 0;
-  public int bCD = -1;
-  public c bCc = null;
-  public RecordParam gOB;
-  public long gOC = 0L;
-  public a.a gOD;
-  public c.a gOE = new a.1(this);
-  public int sampleRate = 0;
+  public int awU;
+  public c ciR;
+  public int cjr;
+  public RecordParam iqn;
+  public long iqo;
+  public a.a iqp;
+  public c.a iqq;
+  public int sampleRate;
   
   public a(RecordParam paramRecordParam)
   {
+    AppMethodBeat.i(105658);
+    this.ciR = null;
+    this.sampleRate = 0;
+    this.awU = 0;
+    this.iqo = 0L;
+    this.cjr = -1;
+    this.iqq = new a.1(this);
     RecordParam localRecordParam = paramRecordParam;
     if (paramRecordParam == null) {
       localRecordParam = new RecordParam();
     }
     this.sampleRate = localRecordParam.sampleRate;
-    this.auC = localRecordParam.gOG;
-    this.bCD = localRecordParam.scene;
-    this.gOB = localRecordParam;
+    this.awU = localRecordParam.ifH;
+    this.cjr = localRecordParam.scene;
+    this.iqn = localRecordParam;
+    AppMethodBeat.o(105658);
   }
   
-  public final boolean uh()
+  public final boolean Et()
   {
-    y.i("MicroMsg.Record.AppBrandRecorder", "stopRecord");
-    if (this.bCc != null) {}
-    for (boolean bool = this.bCc.uh();; bool = false)
+    AppMethodBeat.i(105659);
+    ab.i("MicroMsg.Record.AppBrandRecorder", "stopRecord");
+    if (this.ciR != null) {}
+    for (boolean bool = this.ciR.Et();; bool = false)
     {
       long l = System.currentTimeMillis();
-      this.gOC -= l;
-      y.i("MicroMsg.Record.AppBrandRecorder", "stop time ticket:%d, costTimeInMs:%d", new Object[] { Long.valueOf(l), Long.valueOf(this.gOC) });
+      this.iqo -= l;
+      ab.i("MicroMsg.Record.AppBrandRecorder", "stop time ticket:%d, costTimeInMs:%d", new Object[] { Long.valueOf(l), Long.valueOf(this.iqo) });
+      AppMethodBeat.o(105659);
       return bool;
     }
   }

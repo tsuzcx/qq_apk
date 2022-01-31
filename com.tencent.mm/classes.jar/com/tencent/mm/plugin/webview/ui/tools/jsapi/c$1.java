@@ -2,19 +2,22 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.webview.model.p;
-import com.tencent.mm.protocal.c.aqw;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.model.s;
+import com.tencent.mm.protocal.protobuf.axb;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$1
   implements DialogInterface.OnClickListener
 {
-  c$1(c paramc, p paramp, int paramInt, aqw paramaqw) {}
+  c$1(c paramc, s params, int paramInt, axb paramaxb) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.webview.JSVerifyHelper", "showDlgForJSVerify click ok");
-    this.rxs.a(this.rxq, this.bEg, this.rxr);
+    AppMethodBeat.i(8852);
+    ab.i("MicroMsg.webview.JSVerifyHelper", "showDlgForJSVerify click ok");
+    this.vol.a(this.voj, this.val$errCode, this.vok);
+    AppMethodBeat.o(8852);
   }
 }
 

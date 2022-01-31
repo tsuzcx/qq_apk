@@ -1,88 +1,116 @@
 package com.tencent.mm.pluginsdk.model;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.z.a.a.a;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.s.a.a.a;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.d;
 import com.tencent.mm.pluginsdk.model.app.t;
 import com.tencent.mm.pluginsdk.model.app.x;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.Map;
 
 public final class i
   implements t
 {
-  public static boolean rTk = false;
-  private static i rTl;
-  public i.a rTm;
+  public static boolean vKi = false;
+  private static i vKj;
+  public i.a vKk;
   
-  public static i.b VL(String paramString)
+  public static b alj(String paramString)
   {
-    if (paramString == null) {
+    AppMethodBeat.i(27299);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(27299);
       return null;
     }
-    paramString = bn.s(paramString, "PersonalAppSetting");
-    if (paramString == null) {
+    paramString = br.F(paramString, "PersonalAppSetting");
+    if (paramString == null)
+    {
+      AppMethodBeat.o(27299);
       return null;
     }
     paramString = (String)paramString.get(".PersonalAppSetting.OpenID");
-    if (bk.bl(paramString)) {
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(27299);
       return null;
     }
-    i.b localb = new i.b();
-    localb.rTn = paramString;
+    b localb = new b();
+    localb.vKl = paramString;
+    AppMethodBeat.o(27299);
     return localb;
   }
   
-  public static i cku()
+  public static i dkZ()
   {
-    if (rTl == null) {
-      rTl = new i();
+    AppMethodBeat.i(27296);
+    if (vKj == null) {
+      vKj = new i();
     }
-    return rTl;
+    i locali = vKj;
+    AppMethodBeat.o(27296);
+    return locali;
   }
   
   public final void a(int paramInt1, int paramInt2, String paramString, x paramx)
   {
-    if (!au.DK()) {}
-    do
+    AppMethodBeat.i(27298);
+    if (!aw.RG())
     {
-      do
-      {
-        return;
-        y.d("MicroMsg.GetUserInfoInAppLogic", "onSceneEnd errType=%s errCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        if (paramx == null)
-        {
-          y.e("MicroMsg.GetUserInfoInAppLogic", "scene == null");
-          return;
-        }
-      } while ((paramInt1 != 0) || (paramInt2 != 0));
-      switch (paramx.getType())
-      {
-      default: 
-        return;
-      }
-      if ((ae.getContext() == null) || (a.a.bru() == null))
-      {
-        y.e("MicroMsg.GetUserInfoInAppLogic", "wrong environment");
-        return;
-      }
-      y.e("MicroMsg.GetUserInfoInAppLogic", "NetSceneGetUserInfoInApp come back", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      paramString = (l)paramx;
-    } while (this.rTm == null);
-    this.rTm.a(paramString);
-  }
-  
-  public final void ckv()
-  {
-    if (!au.DK()) {
+      AppMethodBeat.o(27298);
       return;
     }
-    ap.brq().a(14, this);
-    rTk = true;
+    ab.d("MicroMsg.GetUserInfoInAppLogic", "onSceneEnd errType=%s errCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (paramx == null)
+    {
+      ab.e("MicroMsg.GetUserInfoInAppLogic", "scene == null");
+      AppMethodBeat.o(27298);
+      return;
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+      switch (paramx.getType())
+      {
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(27298);
+      return;
+      if ((ah.getContext() == null) || (a.a.caj() == null))
+      {
+        ab.e("MicroMsg.GetUserInfoInAppLogic", "wrong environment");
+        AppMethodBeat.o(27298);
+        return;
+      }
+      ab.e("MicroMsg.GetUserInfoInAppLogic", "NetSceneGetUserInfoInApp come back", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      paramString = (l)paramx;
+      if (this.vKk != null) {
+        this.vKk.a(paramString);
+      }
+    }
+  }
+  
+  public final void dla()
+  {
+    AppMethodBeat.i(27297);
+    if (!aw.RG())
+    {
+      AppMethodBeat.o(27297);
+      return;
+    }
+    al.caf().a(14, this);
+    vKi = true;
+    AppMethodBeat.o(27297);
+  }
+  
+  public static final class b
+  {
+    public String vKl;
   }
 }
 

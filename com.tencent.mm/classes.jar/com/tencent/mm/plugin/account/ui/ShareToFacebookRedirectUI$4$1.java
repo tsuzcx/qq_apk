@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.p;
 
 final class ShareToFacebookRedirectUI$4$1
@@ -11,8 +12,10 @@ final class ShareToFacebookRedirectUI$4$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    ShareToFacebookRedirectUI.f(this.fsL.fsJ).dismiss();
-    this.fsL.fsJ.finish();
+    AppMethodBeat.i(125573);
+    ShareToFacebookRedirectUI.f(this.gKn.gKl).dismiss();
+    this.gKn.gKl.finish();
+    AppMethodBeat.o(125573);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class PaylistAAUI$13$2$1
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class PaylistAAUI$13$2$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PaylistAAUI.h(this.eZS.eZR.eZM);
+    AppMethodBeat.i(40879);
+    PaylistAAUI.f(this.grL.grK.grF);
+    AppMethodBeat.o(40879);
   }
 }
 

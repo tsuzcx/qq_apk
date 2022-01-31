@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 final class FilterImageView$a$a
 {
-  TextView flb;
-  ImageView vZF;
-  Bitmap vZG;
+  ImageView ArS;
+  Bitmap ArT;
+  TextView euY;
   
   FilterImageView$a$a(FilterImageView.a parama) {}
 }

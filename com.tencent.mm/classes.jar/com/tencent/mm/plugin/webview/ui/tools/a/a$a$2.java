@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.webview.ui.tools.a;
 
-import com.tencent.mm.h.a.ds;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.dv;
 import com.tencent.mm.sdk.b.c;
 
 final class a$a$2
-  extends c<ds>
+  extends c<dv>
 {
   a$a$2(a.a parama)
   {
-    this.udX = ds.class.getName().hashCode();
+    AppMethodBeat.i(8305);
+    this.__eventId = dv.class.getName().hashCode();
+    AppMethodBeat.o(8305);
   }
 }
 

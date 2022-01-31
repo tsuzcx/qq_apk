@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/ah6" />
+    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/r9" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/b36" android:key="contact_info_go_to_downloader" android:layout="@layout/ab8" />
-    <Preference android:title="@string/b34" android:key="contact_info_downloader_manager" android:layout="@layout/ab8" />
-    <Preference android:title="@string/b33" android:key="contact_info_common_problem" android:layout="@layout/ab8" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:persistent="false" android:title="@string/b3_" android:key="contact_info_top_downloader" android:layout="@layout/ab8" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/b38" android:key="contact_info_not_disturb" android:layout="@layout/ab8" />
-    <Preference android:title="@string/ars" android:key="contact_info_clear_data" android:layout="@layout/ab8" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/e2p" android:key="contact_info_downloader_install" android:layout="@layout/a5v" />
-    <Preference android:title="@string/e2v" android:key="contact_info_downloader_uninstall" android:layout="@layout/a84" />
+    <Preference android:title="@string/b3x" android:key="contact_info_view_message" android:layout="@layout/afi" />
+    <CheckBoxPreference android:title="@string/b13" android:key="contact_info_recommend_qqfriends_to_me" />
+    <CheckBoxPreference android:title="@string/b12" android:key="contact_info_recommend_mobilefriends_to_me" />
+    <CheckBoxPreference android:title="@string/b11" android:key="contact_info_recommend_fbfriends_to_me" />
+    <Preference android:title="@string/e_2" android:key="contact_info_bind_mobile_entry" android:layout="@layout/afi" />
+    <Preference android:title="@string/avq" android:key="contact_info_bind_mobile_entry_tip" android:layout="@layout/ah2" />
+    <Preference android:title="@string/a90" android:key="contact_info_bind_qq_entry" android:layout="@layout/afi" />
+    <Preference android:title="@string/avr" android:key="contact_info_bind_qq_entry_tip" android:layout="@layout/ah2" />
+    <Preference android:title="@string/cci" android:key="contact_info_bind_fb_entry" android:layout="@layout/afi" />
+    <Preference android:title="@string/avp" android:key="contact_info_bind_fb_entry_tip" android:layout="@layout/ah2" />
+    <Preference android:title="@string/awy" android:key="contact_info_fmessage_clear_data" android:layout="@layout/afi" />
     <PreferenceCategory />
 </PreferenceScreen>

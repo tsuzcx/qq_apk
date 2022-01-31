@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.webview.luggage.b;
 
-import com.tencent.luggage.e.c;
+import com.tencent.luggage.d.c;
 import org.json.JSONObject;
 
 final class d$1
@@ -13,7 +13,7 @@ final class d$1
     return "menu:share:appmessage";
   }
   
-  public final JSONObject pV()
+  public final JSONObject tY()
   {
     return null;
   }

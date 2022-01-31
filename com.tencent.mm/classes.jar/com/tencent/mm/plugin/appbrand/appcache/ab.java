@@ -1,17 +1,35 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.plugin.appbrand.t.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.j;
 
-public class ab
-  extends c<aa>
+public final class ab
+  extends j<aa>
 {
-  public static final String[] dUb = { i.a(aa.dUa, "PushWxaPkgDecryptKeyTable") };
+  public static final String[] fkl;
+  
+  static
+  {
+    AppMethodBeat.i(129408);
+    fkl = new String[] { j.getCreateSQLs(aa.gUb, "PkgUpdateStats") };
+    AppMethodBeat.o(129408);
+  }
   
   public ab(e parame)
   {
-    super(parame, aa.dUa, "PushWxaPkgDecryptKeyTable", aa.cqY);
+    super(parame, aa.gUb, "PkgUpdateStats", aa.INDEX_CREATE);
+  }
+  
+  final boolean ap(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(129407);
+    aa localaa = new aa();
+    localaa.field_key = paramString;
+    localaa.field_version = paramInt;
+    boolean bool = super.delete(localaa, aa.gUa);
+    AppMethodBeat.o(129407);
+    return bool;
   }
 }
 

@@ -1,108 +1,87 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.plugin.downloader.model.k;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.plugin.downloader.model.m;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$1
-  implements k
+  implements m
 {
   a$1(a parama) {}
   
   public final void b(long paramLong, int paramInt, boolean paramBoolean)
   {
-    Object localObject = (WeakReference)this.oBY.oBW.get(Long.valueOf(paramLong));
-    if (localObject != null)
-    {
-      localObject = (a.a)((WeakReference)localObject).get();
-      if (localObject != null)
-      {
-        ((a.a)localObject).bCD();
-        this.oBY.oBW.remove(Long.valueOf(paramLong));
-      }
-      this.oBY.N(8, paramLong);
+    AppMethodBeat.i(36922);
+    if (this.rrw.rcJ != null) {
+      this.rrw.rcJ.failed(paramLong);
     }
+    this.rrw.ad(8, paramLong);
+    AppMethodBeat.o(36922);
   }
   
   public final void b(long paramLong, String paramString, boolean paramBoolean)
   {
-    paramString = (WeakReference)this.oBY.oBW.get(Long.valueOf(paramLong));
-    if (paramString != null)
-    {
-      paramString = (a.a)paramString.get();
-      if (paramString != null)
-      {
-        paramString.bCC();
-        this.oBY.oBW.remove(Long.valueOf(paramLong));
-      }
-      this.oBY.N(3, paramLong);
+    AppMethodBeat.i(36921);
+    if (this.rrw.rcJ != null) {
+      this.rrw.rcJ.succeed(paramLong);
     }
+    this.rrw.ad(3, paramLong);
+    AppMethodBeat.o(36921);
   }
   
-  public final void cy(long paramLong)
+  public final void hx(long paramLong)
   {
-    Object localObject = (WeakReference)this.oBY.oBW.get(Long.valueOf(paramLong));
-    if (localObject != null)
+    AppMethodBeat.i(36925);
+    ab.i("MicroMsg.AdDownloadApkMgr", "%d progress changed", new Object[] { Long.valueOf(paramLong) });
+    if (this.rrw.rcJ != null)
     {
-      localObject = (a.a)((WeakReference)localObject).get();
-      if (localObject != null)
-      {
-        FileDownloadTaskInfo localFileDownloadTaskInfo = d.aFP().dd(paramLong);
-        if ((localFileDownloadTaskInfo.iPM >= 0L) && (localFileDownloadTaskInfo.hFz > 0L)) {
-          ((a.a)localObject).xE((int)(localFileDownloadTaskInfo.iPM * 100L / localFileDownloadTaskInfo.hFz));
-        }
+      FileDownloadTaskInfo localFileDownloadTaskInfo = f.bjl().iA(paramLong);
+      if ((localFileDownloadTaskInfo.kYX >= 0L) && (localFileDownloadTaskInfo.jyU > 0L)) {
+        this.rrw.rcJ.progress(paramLong, (int)(localFileDownloadTaskInfo.kYX * 100L / localFileDownloadTaskInfo.jyU));
       }
     }
+    AppMethodBeat.o(36925);
   }
   
-  public final void cz(long paramLong) {}
+  public final void hy(long paramLong) {}
   
-  public final void k(long paramLong, String paramString)
+  public final void i(long paramLong, String paramString)
   {
-    paramString = (WeakReference)this.oBY.oBW.get(Long.valueOf(paramLong));
-    if (paramString != null)
-    {
-      paramString = (a.a)paramString.get();
-      if (paramString != null) {
-        paramString.bCE();
-      }
-      this.oBY.N(7, paramLong);
+    AppMethodBeat.i(36926);
+    if (this.rrw.rcJ != null) {
+      this.rrw.rcJ.resumed(paramLong);
     }
+    this.rrw.ad(7, paramLong);
+    AppMethodBeat.o(36926);
   }
   
   public final void onTaskPaused(long paramLong)
   {
-    Object localObject = (WeakReference)this.oBY.oBW.get(Long.valueOf(paramLong));
-    if (localObject != null)
-    {
-      localObject = (a.a)((WeakReference)localObject).get();
-      if (localObject != null) {
-        ((a.a)localObject).bCA();
-      }
-      this.oBY.N(6, paramLong);
+    AppMethodBeat.i(36924);
+    if (this.rrw.rcJ != null) {
+      this.rrw.rcJ.paused(paramLong);
     }
+    this.rrw.ad(6, paramLong);
+    AppMethodBeat.o(36924);
   }
   
   public final void onTaskRemoved(long paramLong)
   {
-    Object localObject = (WeakReference)this.oBY.oBW.get(Long.valueOf(paramLong));
-    if (localObject != null)
-    {
-      localObject = (a.a)((WeakReference)localObject).get();
-      if (localObject != null)
-      {
-        ((a.a)localObject).bCB();
-        this.oBY.oBW.remove(Long.valueOf(paramLong));
-      }
-      this.oBY.N(2, paramLong);
+    AppMethodBeat.i(36923);
+    if (this.rrw.rcJ != null) {
+      this.rrw.rcJ.stopped(paramLong);
     }
+    this.rrw.ad(2, paramLong);
+    AppMethodBeat.o(36923);
   }
   
   public final void onTaskStarted(long paramLong, String paramString)
   {
-    this.oBY.N(1, paramLong);
+    AppMethodBeat.i(36920);
+    this.rrw.ad(1, paramLong);
+    AppMethodBeat.o(36920);
   }
 }
 

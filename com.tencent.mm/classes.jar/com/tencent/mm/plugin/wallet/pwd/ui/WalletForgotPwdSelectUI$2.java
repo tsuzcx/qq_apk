@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.wallet_core.c;
 
@@ -13,10 +14,12 @@ final class WalletForgotPwdSelectUI$2
   
   public final void onClick(View paramView)
   {
-    if (this.qoJ.cNj() != null) {
-      h.nFQ.f(15774, new Object[] { Integer.valueOf(this.qoJ.cNj().kke.getInt("key_forgot_scene", 1)), Integer.valueOf(3) });
+    AppMethodBeat.i(46266);
+    if (this.tYW.getProcess() != null) {
+      h.qsU.e(15774, new Object[] { Integer.valueOf(this.tYW.getProcess().mEJ.getInt("key_forgot_scene", 1)), Integer.valueOf(3) });
     }
-    WalletForgotPwdSelectUI.b(this.qoJ);
+    WalletForgotPwdSelectUI.b(this.tYW);
+    AppMethodBeat.o(46266);
   }
 }
 

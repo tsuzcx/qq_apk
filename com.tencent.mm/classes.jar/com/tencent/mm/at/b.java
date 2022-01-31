@@ -1,289 +1,149 @@
 package com.tencent.mm.at;
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.TimeZone;
+import android.net.TrafficStats;
+import android.os.Looper;
+import android.os.Process;
+import android.text.format.DateFormat;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
+import java.util.Stack;
 
 public final class b
+  implements d.a
 {
-  private static Map<String, b.a> esb = null;
-  private static Map<String, String> esc = null;
-  private static String esd = null;
+  private b.a fDh;
+  public Stack<Long> fDi;
+  long fDj;
+  public int fDk;
+  boolean fDl;
+  public long fDm;
+  int fDn;
+  boolean fDo;
+  long fDp;
+  long fDq;
+  int fDr;
+  int fDs;
+  ap fDt;
+  com.tencent.mm.sdk.b.c fDu;
+  com.tencent.mm.sdk.b.c fDv;
   
-  public static List<b.a> C(Context paramContext, String paramString)
+  public b(Looper paramLooper)
   {
-    localContext1 = null;
-    try
+    AppMethodBeat.i(78159);
+    this.fDj = 0L;
+    this.fDk = 0;
+    this.fDl = false;
+    this.fDm = 0L;
+    this.fDn = 0;
+    this.fDo = false;
+    this.fDp = 0L;
+    this.fDq = 0L;
+    this.fDt = new ap(new b.1(this), false);
+    this.fDu = new b.2(this);
+    this.fDv = new b.3(this);
+    this.fDh = new b.a(this, paramLooper);
+    this.fDi = new Stack();
+    this.fDr = Process.myUid();
+    paramLooper = (Integer)g.RL().Ru().get(327681, null);
+    if ((paramLooper == null) || (3 == paramLooper.intValue())) {}
+    for (int i = 1;; i = paramLooper.intValue())
     {
-      paramContext = paramContext.getResources().getConfiguration().locale.getLanguage();
-      if (paramContext != null)
-      {
-        localContext2 = paramContext;
-        localContext1 = paramContext;
-        if (paramContext.equals(esd)) {}
-      }
-      else
-      {
-        localContext1 = paramContext;
-        esb = null;
-        localContext2 = paramContext;
-      }
+      this.fDs = i;
+      a.ymk.c(this.fDu);
+      a.ymk.c(this.fDv);
+      AppMethodBeat.o(78159);
+      return;
     }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        Context localContext2 = localContext1;
-      }
-    }
-    if (esb == null)
-    {
-      esd = localContext2;
-      mz(paramString);
-    }
-    return new ArrayList(esb.values());
   }
   
-  public static boolean Pb()
+  public static void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    return (!x.cqF()) && (!x.cqJ().equals("en"));
-  }
-  
-  public static boolean Pc()
-  {
-    return bk.fV(ae.getContext());
-  }
-  
-  public static boolean Pd()
-  {
-    return (q.Gi() != 0) || (!bk.fV(ae.getContext()));
-  }
-  
-  public static boolean Pe()
-  {
-    if (!x.cqJ().equals("zh_CN")) {}
-    TimeZone localTimeZone1;
-    TimeZone localTimeZone2;
-    do
+    AppMethodBeat.i(78162);
+    if (paramBoolean)
     {
-      return true;
-      localTimeZone1 = TimeZone.getDefault();
-      localTimeZone2 = TimeZone.getTimeZone("GMT+08:00");
-    } while (localTimeZone1.getRawOffset() != localTimeZone2.getRawOffset());
-    return false;
-  }
-  
-  public static boolean Pf()
-  {
-    return bk.fV(ae.getContext());
-  }
-  
-  public static b.a i(Context paramContext, String paramString1, String paramString2)
-  {
-    localContext1 = null;
-    try
-    {
-      paramContext = paramContext.getResources().getConfiguration().locale.getLanguage();
-      if (paramContext != null)
+      if (at.isWifi(ah.getContext()))
       {
-        localContext2 = paramContext;
-        localContext1 = paramContext;
-        if (paramContext.equals(esd)) {}
+        ab.v("MicroMsg.AutoGetBigImgLogic", "is wifi pass count");
+        AppMethodBeat.o(78162);
+        return;
       }
-      else
-      {
-        localContext1 = paramContext;
-        esb = null;
-        localContext2 = paramContext;
-      }
+      long l1 = bo.a((Long)g.RL().Ru().get(ac.a.yyI, null), 0L);
+      long l2 = bo.apW((String)DateFormat.format("M", System.currentTimeMillis()));
+      ab.d("MicroMsg.AutoGetBigImgLogic", "img " + paramLong1 + " msgLocalId: " + paramLong2 + " has been downloaded current %d month %d", new Object[] { Long.valueOf(1L + l1), Long.valueOf(l2) });
+      g.RL().Ru().set(ac.a.yyI, Long.valueOf(l1 + 1L));
+      g.RL().Ru().set(ac.a.yyJ, Long.valueOf(l2));
+      AppMethodBeat.o(78162);
+      return;
     }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        Context localContext2 = localContext1;
-      }
-    }
-    if ((esb == null) || (esc == null))
-    {
-      esd = localContext2;
-      mz(paramString2);
-    }
-    return (b.a)esb.get(paramString1.toUpperCase() + (String)esc.get(paramString1.toUpperCase()));
+    ab.i("MicroMsg.AutoGetBigImgLogic", "imglocalId " + paramLong1 + " msglocalid " + paramLong2 + " false");
+    AppMethodBeat.o(78162);
   }
   
-  public static String j(Context paramContext, String paramString1, String paramString2)
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject)
   {
-    localContext1 = null;
-    try
-    {
-      paramContext = paramContext.getResources().getConfiguration().locale.getLanguage();
-      if (paramContext != null)
-      {
-        localContext2 = paramContext;
-        localContext1 = paramContext;
-        if (paramContext.equals(esd)) {}
-      }
-      else
-      {
-        localContext1 = paramContext;
-        esb = null;
-        localContext2 = paramContext;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        Context localContext2 = localContext1;
-      }
-    }
-    if (esb == null)
-    {
-      esd = localContext2;
-      mz(paramString2);
-    }
-    paramContext = esb.values().iterator();
-    while (paramContext.hasNext())
-    {
-      paramString2 = (b.a)paramContext.next();
-      if (paramString2.esf.equals(paramString1)) {
-        return paramString2.esg;
-      }
-    }
-    return "";
+    AppMethodBeat.i(78164);
+    ab.i("MicroMsg.AutoGetBigImgLogic", "img " + paramLong1 + " has been canceled");
+    ((com.tencent.mm.plugin.comm.a.b)g.E(com.tencent.mm.plugin.comm.a.b.class)).b(paramLong2, false, true);
+    AppMethodBeat.o(78164);
   }
   
-  public static String k(Context paramContext, String paramString1, String paramString2)
-  {
-    localContext1 = null;
-    try
-    {
-      paramContext = paramContext.getResources().getConfiguration().locale.getLanguage();
-      if (paramContext != null)
-      {
-        localContext2 = paramContext;
-        localContext1 = paramContext;
-        if (paramContext.equals(esd)) {}
-      }
-      else
-      {
-        localContext1 = paramContext;
-        esb = null;
-        localContext2 = paramContext;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        Context localContext2 = localContext1;
-      }
-    }
-    if (esb == null)
-    {
-      esd = localContext2;
-      mz(paramString2);
-    }
-    paramContext = esb.values().iterator();
-    while (paramContext.hasNext())
-    {
-      paramString2 = (b.a)paramContext.next();
-      if (paramString2.esf.equals(paramString1)) {
-        return paramString2.ese;
-      }
-    }
-    return "";
-  }
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, m paramm) {}
   
-  public static boolean mA(String paramString)
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object arg7, int paramInt3, int paramInt4, String paramString, m paramm)
   {
-    return (paramString != null) && (paramString.length() > 1) && (paramString.startsWith("+")) && (!paramString.startsWith("+86"));
-  }
-  
-  public static String mB(String paramString)
-  {
-    if ((paramString.startsWith("+886")) || (paramString.startsWith("+86"))) {
-      return "zh-TW";
-    }
-    if ((paramString.startsWith("+852")) || (paramString.startsWith("+853"))) {
-      return "zh-HK";
-    }
-    if (paramString.startsWith("+81")) {
-      return "ja";
-    }
-    if (paramString.startsWith("+82")) {
-      return "ko";
-    }
-    if (paramString.startsWith("+66")) {
-      return "th";
-    }
-    if (paramString.startsWith("+84")) {
-      return "vi";
-    }
-    if (paramString.startsWith("+62")) {
-      return "id";
-    }
-    if (paramString.startsWith("+55")) {
-      return "pt";
-    }
-    if (paramString.startsWith("+34")) {
-      return "es-419";
-    }
-    return "en";
-  }
-  
-  public static boolean mC(String paramString)
-  {
-    return (!bk.bl(paramString)) && (new HashSet(Arrays.asList("AT,BE,BG,CY,CZ,HR,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,RO,LT,LU,MT,NL,PL,PT,SK,SI,ES,SE,GB,IS,LI,NO,CH,TR".split(","))).contains(paramString));
-  }
-  
-  public static boolean mD(String paramString)
-  {
-    return (!bk.bl(paramString)) && (new HashSet(Arrays.asList("43,32,359,357,420,385,45,372,358,33,49,30,36,353,39,371,40,370,352,356,31,48,351,421,386,34,46,44,354,423,47,41,90".split(","))).contains(paramString));
-  }
-  
-  private static void mz(String paramString)
-  {
-    esb = new HashMap();
-    esc = new HashMap();
-    String[] arrayOfString = bk.pm(paramString).trim().split(",");
-    int i = 0;
-    while (i < arrayOfString.length)
+    AppMethodBeat.i(78163);
+    if ((paramInt3 != 0) || (paramInt4 != 0))
     {
-      paramString = arrayOfString[i].trim().split(":");
-      if (paramString.length < 4)
+      ab.e("MicroMsg.AutoGetBigImgLogic", "img " + paramLong1 + "msgLocalId " + paramLong2 + " download failed");
+      ((com.tencent.mm.plugin.comm.a.b)g.E(com.tencent.mm.plugin.comm.a.b.class)).b(paramLong2, false, false);
+    }
+    for (;;)
+    {
+      this.fDj = 0L;
+      com.tencent.mm.modelcontrol.c.afT();
+      if (!com.tencent.mm.modelcontrol.c.afU())
       {
-        y.e("MicroMsg.InternationaPluginlLogic", "this country item has problem %s", paramString);
-        i += 1;
-      }
-      else
-      {
-        if (!x.cqH()) {}
-        for (paramString = new b.a(paramString[0], paramString[1], paramString[2], paramString[3], paramString[3].charAt(0));; paramString = new b.a(paramString[0], paramString[1], paramString[2], paramString[3], a.my(paramString[2])))
+        ab.i("MicroMsg.AutoGetBigImgLogic", "don't allow auto download, clear task list");
+        synchronized (this.fDi)
         {
-          esb.put(paramString.ese + paramString.esf, paramString);
-          esc.put(paramString.ese, paramString.esf);
-          break;
+          this.fDi.clear();
+          AppMethodBeat.o(78163);
+          return;
+          a(paramLong1, paramLong2, true);
+          ((com.tencent.mm.plugin.comm.a.b)g.E(com.tencent.mm.plugin.comm.a.b.class)).b(paramLong2, true, false);
         }
       }
     }
+    this.fDp = TrafficStats.getUidRxBytes(this.fDr);
+    this.fDq = TrafficStats.getUidTxBytes(this.fDr);
+    this.fDt.ag(1000L, 1000L);
+    AppMethodBeat.o(78163);
+  }
+  
+  public final void cP(boolean paramBoolean)
+  {
+    AppMethodBeat.i(78161);
+    ab.d("MicroMsg.AutoGetBigImgLogic", "is foreground: ".concat(String.valueOf(paramBoolean)));
+    this.fDl = paramBoolean;
+    this.fDm = System.currentTimeMillis();
+    AppMethodBeat.o(78161);
+  }
+  
+  public final void start()
+  {
+    AppMethodBeat.i(78160);
+    this.fDh.sendEmptyMessage(1);
+    AppMethodBeat.o(78160);
   }
 }
 

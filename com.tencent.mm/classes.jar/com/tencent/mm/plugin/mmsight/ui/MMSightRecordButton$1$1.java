@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMSightRecordButton$1$1
   extends AnimatorListenerAdapter
@@ -11,10 +12,12 @@ final class MMSightRecordButton$1$1
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    y.l("MicroMsg.MMSightRecordButton", "call onProgressFinish", new Object[0]);
-    if (this.moV.moT != null) {
-      this.moV.moT.aKR();
+    AppMethodBeat.i(55090);
+    ab.b("MicroMsg.MMSightRecordButton", "call onProgressFinish", new Object[0]);
+    if (this.oOh.oOf != null) {
+      this.oOh.oOf.boZ();
     }
+    AppMethodBeat.o(55090);
   }
 }
 

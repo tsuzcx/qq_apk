@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
-import com.tencent.mm.h.c.eg;
-import com.tencent.mm.protocal.c.bml;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.es;
+import com.tencent.mm.protocal.protobuf.bwc;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Iterator;
@@ -10,62 +11,68 @@ import java.util.List;
 import java.util.Map;
 
 public final class t
-  extends eg
+  extends es
 {
-  protected static c.a buS;
-  public int oLW;
+  protected static c.a info;
+  public int rDH;
   
   static
   {
+    AppMethodBeat.i(38004);
     c.a locala = new c.a();
-    locala.ujL = new Field[4];
+    locala.yrK = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "tagId";
-    locala.ujN.put("tagId", "LONG default '0' ");
+    locala.yrM.put("tagId", "LONG default '0' ");
     localStringBuilder.append(" tagId LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[1] = "tagName";
-    locala.ujN.put("tagName", "TEXT default '' ");
+    locala.yrM.put("tagName", "TEXT default '' ");
     localStringBuilder.append(" tagName TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "count";
-    locala.ujN.put("count", "INTEGER default '0' ");
+    locala.yrM.put("count", "INTEGER default '0' ");
     localStringBuilder.append(" count INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "memberList";
-    locala.ujN.put("memberList", "TEXT default '' ");
+    locala.yrM.put("memberList", "TEXT default '' ");
     localStringBuilder.append(" memberList TEXT default '' ");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(38004);
   }
   
-  public final void cD(List<bml> paramList)
+  public final void convertFrom(Cursor paramCursor)
   {
+    AppMethodBeat.i(38003);
+    super.convertFrom(paramCursor);
+    this.rDH = ((int)this.systemRowid);
+    AppMethodBeat.o(38003);
+  }
+  
+  public final void dj(List<bwc> paramList)
+  {
+    AppMethodBeat.i(38002);
     this.field_memberList = "";
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bml localbml = (bml)paramList.next();
-      this.field_memberList = (this.field_memberList + localbml.tFO + ",");
+      bwc localbwc = (bwc)paramList.next();
+      this.field_memberList = (this.field_memberList + localbwc.xJE + ",");
     }
+    AppMethodBeat.o(38002);
   }
   
-  public final void d(Cursor paramCursor)
+  public final c.a getDBInfo()
   {
-    super.d(paramCursor);
-    this.oLW = ((int)this.ujK);
-  }
-  
-  protected final c.a rM()
-  {
-    return buS;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.t
  * JD-Core Version:    0.7.0.1
  */

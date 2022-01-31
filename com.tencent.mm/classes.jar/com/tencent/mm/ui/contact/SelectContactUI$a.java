@@ -3,63 +3,70 @@ package com.tencent.mm.ui.contact;
 import android.app.Activity;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SelectContactUI$a
 {
-  TextView gSy;
-  private AlphaAnimation vNH;
-  private AlphaAnimation vNI;
-  boolean vNJ = false;
+  private AlphaAnimation Afo;
+  private AlphaAnimation Afp;
+  boolean Afq = false;
+  TextView ivt;
   
-  final void ac(Activity paramActivity)
+  final void aE(Activity paramActivity)
   {
-    if (this.gSy == null) {
-      this.gSy = ((TextView)paramActivity.findViewById(R.h.select_contact_float_tips));
+    AppMethodBeat.i(33870);
+    if (this.ivt == null) {
+      this.ivt = ((TextView)paramActivity.findViewById(2131820919));
     }
-    if (this.gSy.getVisibility() == 8) {
+    if (this.ivt.getVisibility() == 8)
+    {
+      AppMethodBeat.o(33870);
       return;
     }
-    if (this.vNI == null)
+    if (this.Afp == null)
     {
-      this.vNI = new AlphaAnimation(1.0F, 0.0F);
-      this.vNI.setAnimationListener(new SelectContactUI.a.2(this));
+      this.Afp = new AlphaAnimation(1.0F, 0.0F);
+      this.Afp.setAnimationListener(new SelectContactUI.a.2(this));
     }
-    this.vNI.setDuration(300L);
-    if (this.vNH != null) {
-      this.vNH.cancel();
+    this.Afp.setDuration(300L);
+    if (this.Afo != null) {
+      this.Afo.cancel();
     }
-    this.gSy.startAnimation(this.vNI);
+    this.ivt.startAnimation(this.Afp);
+    AppMethodBeat.o(33870);
   }
   
-  public final void d(Activity paramActivity, int paramInt1, int paramInt2)
+  public final void e(Activity paramActivity, int paramInt1, int paramInt2)
   {
-    if ((paramInt2 > 0) && (paramInt1 == paramInt2 + 1) && (!this.vNJ))
+    AppMethodBeat.i(33869);
+    if ((paramInt2 > 0) && (paramInt1 == paramInt2 + 1) && (!this.Afq))
     {
-      if (this.gSy == null) {
-        this.gSy = ((TextView)paramActivity.findViewById(R.h.select_contact_float_tips));
+      if (this.ivt == null) {
+        this.ivt = ((TextView)paramActivity.findViewById(2131820919));
       }
-      if (this.gSy.getVisibility() != 0)
+      if (this.ivt.getVisibility() != 0)
       {
-        this.gSy.setText(R.l.room_add_member_tips);
-        this.gSy.setOnClickListener(new SelectContactUI.a.1(this, paramActivity));
-        if (this.vNH == null) {
-          this.vNH = new AlphaAnimation(0.0F, 1.0F);
+        this.ivt.setText(2131302664);
+        this.ivt.setOnClickListener(new SelectContactUI.a.1(this, paramActivity));
+        if (this.Afo == null) {
+          this.Afo = new AlphaAnimation(0.0F, 1.0F);
         }
-        this.vNH.setDuration(300L);
-        if (this.vNI != null) {
-          this.vNI.cancel();
+        this.Afo.setDuration(300L);
+        if (this.Afp != null) {
+          this.Afp.cancel();
         }
-        this.gSy.setVisibility(0);
-        this.gSy.startAnimation(this.vNH);
+        this.ivt.setVisibility(0);
+        this.ivt.startAnimation(this.Afo);
       }
-    }
-    while (paramInt1 >= paramInt2) {
+      AppMethodBeat.o(33869);
       return;
     }
-    ac(paramActivity);
-    this.vNJ = false;
+    if (paramInt1 < paramInt2)
+    {
+      aE(paramActivity);
+      this.Afq = false;
+    }
+    AppMethodBeat.o(33869);
   }
 }
 

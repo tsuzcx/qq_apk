@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|top" android:orientation="horizontal" android:id="@id/cwt" android:background="@color/a23" android:paddingTop="@dimen/l3" android:paddingBottom="@dimen/l3" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+<LinearLayout android:gravity="center|left|top" android:orientation="horizontal" android:background="@color/a6q" android:paddingLeft="@dimen/a50" android:paddingTop="@dimen/ll" android:paddingRight="@dimen/a50" android:paddingBottom="@dimen/ll" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include style="@style/gm" layout="@layout/alk" />
-    <include style="@style/gm" layout="@layout/alk" />
-    <include style="@style/gm" layout="@layout/alk" />
-    <include style="@style/gm" layout="@layout/alk" />
-    <include style="@style/gm" layout="@layout/alk" />
+    <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ng" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:ellipsize="end" android:id="@id/d1n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/d1o" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/bay" android:layout_toRightOf="@id/d1n" android:layout_alignBottom="@id/d1n" />
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/u2" android:ellipsize="end" android:id="@id/d1p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/d1n" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="right" android:id="@id/d1q" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 </LinearLayout>

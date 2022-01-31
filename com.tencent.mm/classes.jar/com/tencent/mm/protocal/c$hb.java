@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$hb
+public final class c$hb
   extends c.g
 {
-  c$hb()
+  public c$hb()
   {
-    super("requestWxVoicePrintVerifyInternal", "requestWxVoicePrintVerifyInternal", 292, true);
+    super("profile", "profile", 2, false);
   }
 }
 

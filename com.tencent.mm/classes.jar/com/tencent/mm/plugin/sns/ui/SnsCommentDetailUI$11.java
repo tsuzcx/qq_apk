@@ -1,29 +1,55 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.app.Dialog;
-import com.tencent.mm.plugin.sns.lucky.a.m;
-import com.tencent.mm.plugin.sns.lucky.ui.a;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.a.b.g;
+import com.tencent.mm.plugin.sns.ui.c.a.a;
 
 final class SnsCommentDetailUI$11
-  implements SnsCommentFooter.a
+  implements AbsListView.OnScrollListener
 {
-  SnsCommentDetailUI$11(SnsCommentDetailUI paramSnsCommentDetailUI, n paramn) {}
+  SnsCommentDetailUI$11(SnsCommentDetailUI paramSnsCommentDetailUI) {}
   
-  public final void bIG()
+  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!m.Nj(this.oNX.bGE())) {
-      if ((SnsCommentDetailUI.x(this.oWW) == null) || (!SnsCommentDetailUI.x(this.oWW).isShowing())) {}
+    AppMethodBeat.i(38788);
+    if (paramInt2 > 0) {
+      if ((paramInt1 == 0) && (!SnsCommentDetailUI.t(this.rPu)))
+      {
+        SnsCommentDetailUI.a(this.rPu, true);
+        if (SnsCommentDetailUI.u(this.rPu) != null)
+        {
+          SnsCommentDetailUI.u(this.rPu).refreshView();
+          AppMethodBeat.o(38788);
+          return;
+        }
+        if (SnsCommentDetailUI.v(this.rPu) != null)
+        {
+          this.rPu.cuW();
+          AppMethodBeat.o(38788);
+        }
+      }
+      else if (paramInt1 > 0)
+      {
+        SnsCommentDetailUI.a(this.rPu, false);
+      }
     }
-    while ((this.oWW.mController.uNh == 1) || (SnsCommentDetailUI.b(this.oWW).bIJ()))
+    AppMethodBeat.o(38788);
+  }
+  
+  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    AppMethodBeat.i(38789);
+    if (paramInt == 1)
     {
-      return;
-      SnsCommentDetailUI.a(this.oWW, a.e(this.oWW.mController.uMN, this.oWW.oWS.yD(0)));
-      return;
+      this.rPu.hideVKB();
+      SnsCommentDetailUI.w(this.rPu);
     }
-    SnsCommentDetailUI.y(this.oWW);
+    if ((paramInt == 0) && (SnsCommentDetailUI.x(this.rPu) != null)) {
+      SnsCommentDetailUI.x(this.rPu).kZ(true);
+    }
+    AppMethodBeat.o(38789);
   }
 }
 

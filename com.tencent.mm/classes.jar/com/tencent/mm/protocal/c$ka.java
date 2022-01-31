@@ -5,7 +5,7 @@ public final class c$ka
 {
   public c$ka()
   {
-    super("updateVideoPlayer", "", 10000, false);
+    super("startMonitoringBeacons", "startMonitoringBeacons", 151, false);
   }
 }
 

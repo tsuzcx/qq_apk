@@ -12,476 +12,528 @@ import android.os.Looper;
 import android.text.SpannableString;
 import android.view.MotionEvent;
 import android.view.animation.LinearInterpolator;
-import com.tencent.mm.api.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.k;
 import com.tencent.mm.b.c.1;
 import com.tencent.mm.b.c.2;
-import com.tencent.mm.bo.a.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.z.c.a;
-import java.util.List;
+import com.tencent.mm.cache.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.am;
 import java.util.ListIterator;
 import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public final class e
-  extends b<com.tencent.mm.cache.c>
+  extends b<d>
 {
-  private boolean bAX = false;
-  private TimerTask bAY;
-  private Rect bAZ = new Rect();
-  private boolean bAz = false;
-  private float bBa = 0.0F;
-  private float bBb = 0.0F;
-  private int bBc = 0;
-  private int bBd = 0;
-  private boolean bBe = false;
-  private com.tencent.mm.b.c bBf = new com.tencent.mm.b.c(this);
-  public com.tencent.mm.ad.a bBg;
-  boolean bBh = false;
-  private Timer mTimer = new Timer();
-  Matrix mW = new Matrix();
+  private boolean cdU;
+  private TimerTask cdV;
+  private Rect cdW;
+  private float cdX;
+  private float cdY;
+  private int cdZ;
+  private boolean cdw;
+  private int cea;
+  private boolean ceb;
+  private com.tencent.mm.b.c cec;
+  public com.tencent.mm.ae.a ced;
+  boolean cee;
+  private Timer mTimer;
+  Matrix nT;
   
-  private com.tencent.mm.z.c C(float paramFloat1, float paramFloat2)
+  public e()
   {
-    com.tencent.mm.z.c localc;
-    if (tI() == null)
+    AppMethodBeat.i(116186);
+    this.mTimer = new Timer();
+    this.cdW = new Rect();
+    this.cdU = false;
+    this.cdw = false;
+    this.cdX = 0.0F;
+    this.cdY = 0.0F;
+    this.cdZ = 0;
+    this.cea = 0;
+    this.ceb = false;
+    this.cec = new com.tencent.mm.b.c(this);
+    this.nT = new Matrix();
+    this.cee = false;
+    AppMethodBeat.o(116186);
+  }
+  
+  private com.tencent.mm.y.c CP()
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(116192);
+    Object localObject2 = (d)CB();
+    if (localObject2 == null)
     {
-      y.e("MicroMsg.EmojiAndTextArtist", "[isContainsItem] getCache is null!");
-      localc = null;
-      return localc;
+      AppMethodBeat.o(116192);
+      return null;
     }
-    ListIterator localListIterator = ((com.tencent.mm.cache.c)tI()).wS();
-    for (;;)
+    ListIterator localListIterator = ((d)localObject2).Jk();
+    while (localListIterator.hasPrevious())
     {
-      localc = null;
+      localObject2 = (com.tencent.mm.y.c)localListIterator.previous();
+      if (((com.tencent.mm.y.c)localObject2).egy) {
+        localObject1 = localObject2;
+      }
+      ((com.tencent.mm.y.c)localObject2).setSelected(false);
+    }
+    AppMethodBeat.o(116192);
+    return localObject1;
+  }
+  
+  private void CQ()
+  {
+    AppMethodBeat.i(116193);
+    ab.d("MicroMsg.EmojiAndTextArtist", "[registerFocusTask]");
+    if (this.cdV != null) {
+      this.cdV.cancel();
+    }
+    this.cdV = new a(this);
+    this.mTimer.schedule(this.cdV, 1500L);
+    AppMethodBeat.o(116193);
+  }
+  
+  private void CR()
+  {
+    AppMethodBeat.i(116194);
+    ab.d("MicroMsg.EmojiAndTextArtist", "[unRegisterFocusTask]");
+    if (this.cdV != null) {
+      this.cdV.cancel();
+    }
+    AppMethodBeat.o(116194);
+  }
+  
+  private com.tencent.mm.y.c D(float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(116191);
+    if (CB() == null)
+    {
+      ab.e("MicroMsg.EmojiAndTextArtist", "[isContainsItem] getCache is null!");
+      AppMethodBeat.o(116191);
+      return null;
+    }
+    ListIterator localListIterator = ((d)CB()).Jk();
+    com.tencent.mm.y.c localc;
+    float[] arrayOfFloat;
+    do
+    {
       if (!localListIterator.hasPrevious()) {
         break;
       }
-      localc = (com.tencent.mm.z.c)localListIterator.previous();
-      Object localObject = A(paramFloat1, paramFloat2);
-      float f1 = localObject[0];
-      float f2 = localObject[1];
-      localc.dHU.clear();
-      localc.dHU.add(localc.aa(localc.dHV - 180.0F));
-      localc.dHU.add(localc.aa(-localc.dHV));
-      localc.dHU.add(localc.aa(localc.dHV));
-      localc.dHU.add(localc.aa(-localc.dHV + 180.0F));
-      localObject = new c.a(localc, localc.dHU);
-      int i = 0;
-      int m = ((c.a)localObject).dHZ - 1;
-      int j = 0;
-      if (i < ((c.a)localObject).dHZ)
-      {
-        int k;
-        if ((localObject.dHY[i] >= f2) || (localObject.dHY[m] < f2))
-        {
-          k = j;
-          if (localObject.dHY[m] < f2)
-          {
-            k = j;
-            if (localObject.dHY[i] < f2) {}
-          }
-        }
-        else
-        {
-          float f3 = localObject.dHX[i];
-          float f4 = (f2 - localObject.dHY[i]) / (localObject.dHY[m] - localObject.dHY[i]);
-          k = j;
-          if ((localObject.dHX[m] - localObject.dHX[i]) * f4 + f3 < f1) {
-            if (j != 0) {
-              break label385;
-            }
-          }
-        }
-        label385:
-        for (j = 1;; j = 0)
-        {
-          k = j;
-          m = i;
-          i += 1;
-          j = k;
-          break;
-        }
-      }
-      if (j != 0) {
-        break;
-      }
-    }
-  }
-  
-  private com.tencent.mm.z.c tX()
-  {
-    Object localObject = null;
-    ListIterator localListIterator = ((com.tencent.mm.cache.c)tI()).wS();
-    while (localListIterator.hasPrevious())
+      localc = (com.tencent.mm.y.c)localListIterator.previous();
+      arrayOfFloat = B(paramFloat1, paramFloat2);
+    } while (!localc.E(arrayOfFloat[0], arrayOfFloat[1]));
+    for (;;)
     {
-      com.tencent.mm.z.c localc = (com.tencent.mm.z.c)localListIterator.previous();
-      if (localc.dpc) {
-        localObject = localc;
-      }
-      localc.setSelected(false);
+      AppMethodBeat.o(116191);
+      return localc;
+      localc = null;
     }
-    return localObject;
   }
   
-  private void tY()
-  {
-    y.d("MicroMsg.EmojiAndTextArtist", "[registerFocusTask]");
-    if (this.bAY != null) {
-      this.bAY.cancel();
-    }
-    this.bAY = new a(this);
-    this.mTimer.schedule(this.bAY, 1500L);
-  }
+  public final void CA() {}
   
-  private void tZ()
+  public final a Cz()
   {
-    y.d("MicroMsg.EmojiAndTextArtist", "[unRegisterFocusTask]");
-    if (this.bAY != null) {
-      this.bAY.cancel();
-    }
+    return a.ccO;
   }
   
   public final void a(SpannableString paramSpannableString, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.EmojiAndTextArtist", "[addItem] text:%s", new Object[] { paramSpannableString });
-    if (bk.L(paramSpannableString)) {
+    AppMethodBeat.i(116195);
+    ab.i("MicroMsg.EmojiAndTextArtist", "[addItem] text:%s", new Object[] { paramSpannableString });
+    if (bo.aa(paramSpannableString))
+    {
+      AppMethodBeat.o(116195);
       return;
     }
-    tZ();
-    tX();
-    aS(false);
+    d locald = (d)CB();
+    if (locald == null)
+    {
+      ab.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
+      AppMethodBeat.o(116195);
+      return;
+    }
+    CR();
+    CP();
+    bt(false);
     Object localObject = getBoardRect();
-    paramSpannableString = new com.tencent.mm.z.e(ae.getContext(), getMainMatrix(), ((com.tencent.mm.cache.c)tI()).bg(true), (Rect)localObject, paramSpannableString, paramInt1, paramInt2);
+    paramSpannableString = new com.tencent.mm.y.e(ah.getContext(), getMainMatrix(), locald.ad(true), (Rect)localObject, paramSpannableString, paramInt1, paramInt2);
     paramSpannableString.setSelected(true);
-    paramSpannableString.dHT = true;
-    localObject = A(((Rect)localObject).centerX(), ((Rect)localObject).centerY());
-    paramSpannableString.a(localObject[0], localObject[1], this.bzV.getInitScale() / this.bzV.getCurScale(), (int)getRotation());
-    ((com.tencent.mm.cache.c)tI()).a(paramSpannableString);
-    tQ();
-    tY();
+    paramSpannableString.eFx = true;
+    localObject = B(((Rect)localObject).centerX(), ((Rect)localObject).centerY());
+    paramSpannableString.a(localObject[0], localObject[1], this.ccS.getInitScale() / this.ccS.getCurScale(), (int)getRotation());
+    locald.a(paramSpannableString);
+    CI();
+    CQ();
+    AppMethodBeat.o(116195);
   }
   
-  public final void a(com.tencent.mm.z.e parame, SpannableString paramSpannableString, int paramInt1, int paramInt2)
+  public final void a(com.tencent.mm.y.e parame, SpannableString paramSpannableString, int paramInt1, int paramInt2)
   {
-    Object localObject = (com.tencent.mm.cache.c)tI();
-    String str = parame.dHK;
-    y.i("MicroMsg.EmojiAndTextCache", "[delete] id:%s", new Object[] { str });
-    com.tencent.mm.z.c localc;
-    if ((((com.tencent.mm.cache.c)localObject).dkW != null) && (((com.tencent.mm.cache.c)localObject).dkW.size() > 0))
+    AppMethodBeat.i(116197);
+    d locald = (d)CB();
+    if (locald == null)
     {
-      localc = (com.tencent.mm.z.c)((com.tencent.mm.cache.c)localObject).dkW.peek();
-      if (!localc.dHK.equalsIgnoreCase(str)) {
-        break label245;
+      ab.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
+      AppMethodBeat.o(116197);
+      return;
+    }
+    Object localObject = parame.eFp;
+    ab.i("MicroMsg.EmojiAndTextCache", "[delete] id:%s", new Object[] { localObject });
+    com.tencent.mm.y.c localc;
+    if ((locald.ecq != null) && (locald.ecq.size() > 0))
+    {
+      localc = (com.tencent.mm.y.c)locald.ecq.peek();
+      if (!localc.eFp.equalsIgnoreCase((String)localObject)) {
+        break label266;
       }
-      ((com.tencent.mm.cache.c)localObject).dkW.pop();
+      locald.ecq.pop();
     }
     for (;;)
     {
       parame.setSelected(true);
-      parame.dHT = true;
-      tZ();
-      tX();
-      aS(true);
-      if (!bk.L(paramSpannableString))
+      parame.eFx = true;
+      CR();
+      CP();
+      bt(true);
+      if (!bo.aa(paramSpannableString))
       {
         localObject = getBoardRect();
-        paramSpannableString = new com.tencent.mm.z.e(ae.getContext(), getMainMatrix(), ((com.tencent.mm.cache.c)tI()).bg(true), (Rect)localObject, paramSpannableString, paramInt1, paramInt2);
+        paramSpannableString = new com.tencent.mm.y.e(ah.getContext(), getMainMatrix(), locald.ad(true), (Rect)localObject, paramSpannableString, paramInt1, paramInt2);
         paramSpannableString.setSelected(true);
-        localObject = parame.dHN;
-        paramSpannableString.a(((PointF)localObject).x, ((PointF)localObject).y, this.bzV.getInitScale() / this.bzV.getCurScale(), parame.dHO);
+        localObject = parame.eFs;
+        paramSpannableString.a(((PointF)localObject).x, ((PointF)localObject).y, this.ccS.getInitScale() / this.ccS.getCurScale(), parame.mRotation);
         paramSpannableString.mScale = parame.mScale;
-        ((com.tencent.mm.cache.c)tI()).a(paramSpannableString);
+        locald.a(paramSpannableString);
       }
-      tQ();
-      tY();
+      CI();
+      CQ();
+      AppMethodBeat.o(116197);
       return;
-      label245:
-      y.e("MicroMsg.EmojiAndTextCache", "[delete] id:%s emojiItem:%s", new Object[] { str, localc });
+      label266:
+      ab.e("MicroMsg.EmojiAndTextCache", "[delete] id:%s emojiItem:%s", new Object[] { localObject, localc });
     }
   }
   
-  public final void b(j paramj)
+  public final void b(k paramk)
   {
-    y.i("MicroMsg.EmojiAndTextArtist", "[addEmojiItem] item:%s", new Object[] { paramj });
-    tZ();
-    tX();
-    aS(false);
+    AppMethodBeat.i(116196);
+    ab.i("MicroMsg.EmojiAndTextArtist", "[addEmojiItem] item:%s", new Object[] { paramk });
+    d locald = (d)CB();
+    if (locald == null)
+    {
+      ab.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
+      AppMethodBeat.o(116196);
+      return;
+    }
+    CR();
+    CP();
+    bt(false);
     Object localObject = getBoardRect();
-    paramj = new com.tencent.mm.z.c(ae.getContext(), getMainMatrix(), ((com.tencent.mm.cache.c)tI()).bg(true), paramj, (Rect)localObject);
-    paramj.setSelected(true);
-    localObject = A(((Rect)localObject).centerX(), ((Rect)localObject).centerY());
-    paramj.a(localObject[0], localObject[1], this.bzV.getInitScale() / this.bzV.getCurScale(), (int)getRotation());
-    ((com.tencent.mm.cache.c)tI()).a(paramj);
-    tQ();
-    tY();
+    paramk = new com.tencent.mm.y.c(ah.getContext(), getMainMatrix(), locald.ad(true), paramk, (Rect)localObject);
+    paramk.setSelected(true);
+    localObject = B(((Rect)localObject).centerX(), ((Rect)localObject).centerY());
+    paramk.a(localObject[0], localObject[1], this.ccS.getInitScale() / this.ccS.getCurScale(), (int)getRotation());
+    locald.a(paramk);
+    CI();
+    CQ();
+    AppMethodBeat.o(116196);
   }
   
-  public final boolean m(MotionEvent paramMotionEvent)
+  public final boolean o(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(116189);
+    boolean bool;
     Object localObject1;
     switch (paramMotionEvent.getActionMasked())
     {
     case 3: 
     case 4: 
     default: 
-      super.m(paramMotionEvent);
-      return this.bAX;
+      super.o(paramMotionEvent);
+      bool = this.cdU;
+      AppMethodBeat.o(116189);
+      return bool;
     case 0: 
-      tZ();
-      localObject1 = C(paramMotionEvent.getX(), paramMotionEvent.getY());
+      CR();
+      localObject1 = D(paramMotionEvent.getX(), paramMotionEvent.getY());
       if (localObject1 == null)
       {
-        this.bAX = false;
-        localObject1 = ((com.tencent.mm.cache.c)tI()).wR();
-        if (localObject1 == null) {
-          break label1445;
+        this.cdU = false;
+        if (CB() == null) {
+          bool = false;
         }
       }
       break;
     }
-    label775:
-    label920:
-    label1445:
-    for (boolean bool = ((com.tencent.mm.z.c)localObject1).dpc; bool; bool = false)
+    while (bool)
     {
-      tX();
-      aS(false);
-      tQ();
+      CP();
+      bt(false);
+      CI();
       break;
-      bool = ((com.tencent.mm.z.c)localObject1).dHT;
-      tX();
-      this.bAX = true;
-      ((com.tencent.mm.z.c)localObject1).setSelected(true);
-      ((com.tencent.mm.z.c)localObject1).dHT = bool;
-      ((com.tencent.mm.z.c)localObject1).dHQ.set(((com.tencent.mm.z.c)localObject1).dHN);
-      ((com.tencent.mm.cache.c)tI()).b((com.tencent.mm.z.c)localObject1);
-      aS(true);
-      tQ();
-      break;
-      if (this.bAX)
+      localObject1 = ((d)CB()).Jj();
+      if (localObject1 != null)
       {
-        this.bBa = n(paramMotionEvent);
-        this.bBc = ((int)Math.toDegrees(Math.atan2(o(paramMotionEvent)[0], o(paramMotionEvent)[1])));
-        localObject1 = ((com.tencent.mm.cache.c)tI()).wR();
-        if ((localObject1 == null) || (!((com.tencent.mm.z.c)localObject1).dpc)) {
+        bool = ((com.tencent.mm.y.c)localObject1).egy;
+        continue;
+        bool = ((com.tencent.mm.y.c)localObject1).eFx;
+        CP();
+        this.cdU = true;
+        ((com.tencent.mm.y.c)localObject1).setSelected(true);
+        ((com.tencent.mm.y.c)localObject1).eFx = bool;
+        ((com.tencent.mm.y.c)localObject1).eFu.set(((com.tencent.mm.y.c)localObject1).eFs);
+        ((d)CB()).b((com.tencent.mm.y.c)localObject1);
+        bt(true);
+        CI();
+        break;
+        if (this.cdU)
+        {
+          this.cdX = p(paramMotionEvent);
+          this.cdZ = ((int)Math.toDegrees(Math.atan2(q(paramMotionEvent)[0], q(paramMotionEvent)[1])));
+          localObject1 = ((d)CB()).Jj();
+          if ((localObject1 == null) || (!((com.tencent.mm.y.c)localObject1).egy)) {
+            break;
+          }
+          this.cea = ((com.tencent.mm.y.c)localObject1).mRotation;
+          this.cdY = ((com.tencent.mm.y.c)localObject1).mScale;
           break;
         }
-        this.bBd = ((com.tencent.mm.z.c)localObject1).dHO;
-        this.bBb = ((com.tencent.mm.z.c)localObject1).mScale;
-        break;
-      }
-      localObject1 = new int[2];
-      if (paramMotionEvent.getPointerCount() > 1)
-      {
-        localObject1[0] = ((int)(paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2);
-        localObject1[1] = ((int)(paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2);
-      }
-      localObject1 = C(localObject1[0], localObject1[1]);
-      if (localObject1 == null) {
-        break;
-      }
-      bool = ((com.tencent.mm.z.c)localObject1).dHT;
-      tX();
-      ((com.tencent.mm.z.c)localObject1).dHT = bool;
-      this.bAX = true;
-      ((com.tencent.mm.z.c)localObject1).setSelected(true);
-      ((com.tencent.mm.cache.c)tI()).b((com.tencent.mm.z.c)localObject1);
-      this.bBa = n(paramMotionEvent);
-      this.bBc = ((int)Math.toDegrees(Math.atan2(o(paramMotionEvent)[0], o(paramMotionEvent)[1])));
-      if ((localObject1 != null) && (((com.tencent.mm.z.c)localObject1).dpc))
-      {
-        this.bBd = ((com.tencent.mm.z.c)localObject1).dHO;
-        this.bBb = ((com.tencent.mm.z.c)localObject1).mScale;
-      }
-      aS(true);
-      tQ();
-      break;
-      this.bBe = true;
-      break;
-      if (this.bBe)
-      {
-        this.bBe = false;
-        return true;
-      }
-      if ((!this.bAX) || (!q(paramMotionEvent))) {
-        break;
-      }
-      if ((!this.bAz) && (this.bBg != null)) {
-        this.bBg.onShow();
-      }
-      localObject1 = new int[2];
-      localObject1[0] = ((int)(paramMotionEvent.getX(0) - this.bAd.x));
-      localObject1[1] = ((int)(paramMotionEvent.getY(0) - this.bAd.y));
-      float f1 = 1.0F;
-      int i;
-      if (paramMotionEvent.getPointerCount() > 1)
-      {
-        if (0.0F != this.bBa) {
-          f1 = n(paramMotionEvent) / this.bBa;
-        }
-        i = this.bBc - (int)Math.toDegrees(Math.atan2(o(paramMotionEvent)[0], o(paramMotionEvent)[1]));
-      }
-      for (;;)
-      {
-        float f2 = localObject1[0];
-        float f3 = localObject1[1];
-        float f4 = this.bBb;
-        int j = this.bBd;
-        int k = paramMotionEvent.getPointerCount();
-        localObject1 = ((com.tencent.mm.cache.c)tI()).wR();
-        Object localObject3;
-        Object localObject2;
-        if (localObject1 != null)
+        localObject1 = new int[2];
+        if (paramMotionEvent.getPointerCount() > 1)
         {
-          this.mW.reset();
-          this.mW.postRotate(-getRotation());
-          localObject3 = this.mW;
-          localObject2 = new Matrix();
-          ((Matrix)localObject3).invert((Matrix)localObject2);
-          localObject3 = new float[2];
-          localObject3[0] = f2;
-          localObject3[1] = f3;
-          ((Matrix)localObject2).mapPoints((float[])localObject3);
-          if (k <= 1) {
-            break label888;
-          }
-          ((com.tencent.mm.z.c)localObject1).b(0.0F, 0.0F, f1 * f4, (i + j) % 360);
-          ((com.tencent.mm.z.c)localObject1).Cm();
-          localObject2 = ((com.tencent.mm.z.c)localObject1).dHN;
-          localObject2 = B(((PointF)localObject2).x, ((PointF)localObject2).y);
-          if (this.bAZ.top > localObject2[1]) {
-            break label920;
-          }
-          if (this.bBg != null) {
-            this.bBg.ac((localObject2[1] - this.bAZ.top) / this.bAZ.height());
-          }
+          localObject1[0] = ((int)(paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2);
+          localObject1[1] = ((int)(paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2);
         }
-        for (this.bBh = true;; this.bBh = false)
-        {
-          if ((localObject1 instanceof com.tencent.mm.z.e)) {
-            ((com.tencent.mm.z.c)localObject1).dHT = false;
-          }
-          this.bAz = true;
-          tQ();
+        localObject1 = D(localObject1[0], localObject1[1]);
+        if (localObject1 == null) {
           break;
-          label888:
-          ((com.tencent.mm.z.c)localObject1).b(localObject3[0] / getScale(), localObject3[1] / getScale(), 0.0F, ((com.tencent.mm.z.c)localObject1).dHO);
-          break label775;
-          if ((this.bBg != null) && (this.bBh)) {
-            this.bBg.EN();
-          }
         }
-        if (!isAlive())
+        bool = ((com.tencent.mm.y.c)localObject1).eFx;
+        CP();
+        ((com.tencent.mm.y.c)localObject1).eFx = bool;
+        this.cdU = true;
+        ((com.tencent.mm.y.c)localObject1).setSelected(true);
+        ((d)CB()).b((com.tencent.mm.y.c)localObject1);
+        this.cdX = p(paramMotionEvent);
+        this.cdZ = ((int)Math.toDegrees(Math.atan2(q(paramMotionEvent)[0], q(paramMotionEvent)[1])));
+        if ((localObject1 != null) && (((com.tencent.mm.y.c)localObject1).egy))
         {
-          y.e("MicroMsg.EmojiAndTextArtist", "[ACTION_UP] is not alive!");
-          return false;
+          this.cea = ((com.tencent.mm.y.c)localObject1).mRotation;
+          this.cdY = ((com.tencent.mm.y.c)localObject1).mScale;
         }
-        localObject1 = ((com.tencent.mm.cache.c)tI()).wR();
-        if (localObject1 != null)
+        bt(true);
+        CI();
+        break;
+        this.ceb = true;
+        break;
+        if (this.ceb)
         {
-          if (!this.bzX.contains((int)((com.tencent.mm.z.c)localObject1).dHN.x, (int)((com.tencent.mm.z.c)localObject1).dHN.y))
-          {
-            this.bBf.bur = true;
-            localObject2 = this.bBf;
-            ((com.tencent.mm.b.c)localObject2).buu = ((com.tencent.mm.z.c)localObject1);
-            ((com.tencent.mm.b.c)localObject2).bui = (((com.tencent.mm.z.c)localObject1).dHQ.x - ((com.tencent.mm.z.c)localObject1).dHN.x);
-            ((com.tencent.mm.b.c)localObject2).buj = (((com.tencent.mm.z.c)localObject1).dHQ.y - ((com.tencent.mm.z.c)localObject1).dHN.y);
-            ((com.tencent.mm.b.c)localObject2).buv = ((com.tencent.mm.z.c)localObject1).dHK;
-            localObject2 = this.bBf;
-            if (((com.tencent.mm.b.b)localObject2).bur)
-            {
-              ((com.tencent.mm.b.c)localObject2).jQ = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, ((com.tencent.mm.b.c)localObject2).buj }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, ((com.tencent.mm.b.c)localObject2).bui }) });
-              ((com.tencent.mm.b.c)localObject2).jQ.addUpdateListener(new c.1((com.tencent.mm.b.c)localObject2));
-              ((com.tencent.mm.b.c)localObject2).jQ.addListener(new c.2((com.tencent.mm.b.c)localObject2));
-              ((com.tencent.mm.b.c)localObject2).jQ.setInterpolator(new LinearInterpolator());
-              ((com.tencent.mm.b.c)localObject2).jQ.setDuration(100L);
-              ((com.tencent.mm.b.c)localObject2).jQ.start();
-            }
+          this.ceb = false;
+          AppMethodBeat.o(116189);
+          return true;
+        }
+        if ((!this.cdU) || (!s(paramMotionEvent))) {
+          break;
+        }
+        if ((!this.cdw) && (this.ced != null)) {
+          this.ced.onShow();
+        }
+        localObject1 = new int[2];
+        localObject1[0] = ((int)(paramMotionEvent.getX(0) - this.ccZ.x));
+        localObject1[1] = ((int)(paramMotionEvent.getY(0) - this.ccZ.y));
+        float f1 = 1.0F;
+        int i = 0;
+        if (paramMotionEvent.getPointerCount() > 1)
+        {
+          if (0.0F != this.cdX) {
+            f1 = p(paramMotionEvent) / this.cdX;
           }
-          if ((localObject1 instanceof com.tencent.mm.z.e))
-          {
-            localObject2 = (com.tencent.mm.z.e)localObject1;
-            if ((!((com.tencent.mm.z.c)localObject2).dpc) || (!((com.tencent.mm.z.c)localObject2).dHT)) {
-              break label1420;
-            }
-            if (this.bBg != null) {
-              this.bBg.a((com.tencent.mm.z.e)localObject2);
-            }
-          }
+          i = this.cdZ - (int)Math.toDegrees(Math.atan2(q(paramMotionEvent)[0], q(paramMotionEvent)[1]));
         }
         for (;;)
         {
-          localObject2 = ((com.tencent.mm.z.c)localObject1).dHN;
-          localObject2 = B(((PointF)localObject2).x, ((PointF)localObject2).y);
-          y.i("MicroMsg.EmojiAndTextArtist", "mRubbishRect:%s pointF:%s", new Object[] { this.bAZ, Float.valueOf(localObject2[1]) });
-          if ((((com.tencent.mm.z.c)localObject1).dpc) && (this.bAZ.top <= localObject2[1]) && (this.bAX) && (this.bBg != null))
+          float f2 = localObject1[0];
+          float f3 = localObject1[1];
+          float f4 = this.cdY;
+          int j = this.cea;
+          int k = paramMotionEvent.getPointerCount();
+          localObject1 = ((d)CB()).Jj();
+          Object localObject3;
+          Object localObject2;
+          if (localObject1 != null)
           {
-            ((com.tencent.mm.cache.c)tI()).wQ();
-            tQ();
+            this.nT.reset();
+            this.nT.postRotate(-getRotation());
+            localObject3 = this.nT;
+            localObject2 = new Matrix();
+            ((Matrix)localObject3).invert((Matrix)localObject2);
+            localObject3 = new float[2];
+            localObject3[0] = f2;
+            localObject3[1] = f3;
+            ((Matrix)localObject2).mapPoints((float[])localObject3);
+            if (k <= 1) {
+              break label924;
+            }
+            ((com.tencent.mm.y.c)localObject1).b(0.0F, 0.0F, f1 * f4, (i + j) % 360);
+            label811:
+            ((com.tencent.mm.y.c)localObject1).Qf();
+            localObject2 = ((com.tencent.mm.y.c)localObject1).eFs;
+            localObject2 = C(((PointF)localObject2).x, ((PointF)localObject2).y);
+            if (this.cdW.top > localObject2[1]) {
+              break label956;
+            }
+            if (this.ced != null) {
+              this.ced.af((localObject2[1] - this.cdW.top) / this.cdW.height());
+            }
           }
-          tY();
-          if ((this.bAz) && (this.bBg != null)) {
-            this.bBg.onHide();
+          for (this.cee = true;; this.cee = false)
+          {
+            if ((localObject1 instanceof com.tencent.mm.y.e)) {
+              ((com.tencent.mm.y.c)localObject1).eFx = false;
+            }
+            this.cdw = true;
+            CI();
+            break;
+            label924:
+            ((com.tencent.mm.y.c)localObject1).b(localObject3[0] / getScale(), localObject3[1] / getScale(), 0.0F, ((com.tencent.mm.y.c)localObject1).mRotation);
+            break label811;
+            label956:
+            if ((this.ced != null) && (this.cee)) {
+              this.ced.SW();
+            }
           }
-          this.bAz = false;
-          break;
-          if (((com.tencent.mm.z.c)localObject2).dpc) {
-            ((com.tencent.mm.z.c)localObject2).dHT = true;
+          if (!isAlive())
+          {
+            ab.e("MicroMsg.EmojiAndTextArtist", "[ACTION_UP] is not alive!");
+            AppMethodBeat.o(116189);
+            return false;
           }
+          if (CB() == null)
+          {
+            ab.e("MicroMsg.EmojiAndTextArtist", "[getCache] is null!");
+            AppMethodBeat.o(116189);
+            return false;
+          }
+          localObject1 = ((d)CB()).Jj();
+          if (localObject1 != null)
+          {
+            if (!this.ccU.contains((int)((com.tencent.mm.y.c)localObject1).eFs.x, (int)((com.tencent.mm.y.c)localObject1).eFs.y))
+            {
+              this.cec.bVC = true;
+              localObject2 = this.cec;
+              ((com.tencent.mm.b.c)localObject2).bVF = ((com.tencent.mm.y.c)localObject1);
+              ((com.tencent.mm.b.c)localObject2).bVt = (((com.tencent.mm.y.c)localObject1).eFu.x - ((com.tencent.mm.y.c)localObject1).eFs.x);
+              ((com.tencent.mm.b.c)localObject2).bVu = (((com.tencent.mm.y.c)localObject1).eFu.y - ((com.tencent.mm.y.c)localObject1).eFs.y);
+              ((com.tencent.mm.b.c)localObject2).bVG = ((com.tencent.mm.y.c)localObject1).eFp;
+              localObject2 = this.cec;
+              if (((com.tencent.mm.b.b)localObject2).bVC)
+              {
+                ((com.tencent.mm.b.c)localObject2).kO = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, ((com.tencent.mm.b.c)localObject2).bVu }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, ((com.tencent.mm.b.c)localObject2).bVt }) });
+                ((com.tencent.mm.b.c)localObject2).kO.addUpdateListener(new c.1((com.tencent.mm.b.c)localObject2));
+                ((com.tencent.mm.b.c)localObject2).kO.addListener(new c.2((com.tencent.mm.b.c)localObject2));
+                ((com.tencent.mm.b.c)localObject2).kO.setInterpolator(new LinearInterpolator());
+                ((com.tencent.mm.b.c)localObject2).kO.setDuration(100L);
+                ((com.tencent.mm.b.c)localObject2).kO.start();
+              }
+            }
+            if ((localObject1 instanceof com.tencent.mm.y.e))
+            {
+              localObject2 = (com.tencent.mm.y.e)localObject1;
+              if ((!((com.tencent.mm.y.c)localObject2).egy) || (!((com.tencent.mm.y.c)localObject2).eFx)) {
+                break label1485;
+              }
+              if (this.ced != null) {
+                this.ced.a((com.tencent.mm.y.e)localObject2);
+              }
+            }
+          }
+          for (;;)
+          {
+            localObject2 = ((com.tencent.mm.y.c)localObject1).eFs;
+            localObject2 = C(((PointF)localObject2).x, ((PointF)localObject2).y);
+            ab.i("MicroMsg.EmojiAndTextArtist", "mRubbishRect:%s pointF:%s", new Object[] { this.cdW, Float.valueOf(localObject2[1]) });
+            if ((((com.tencent.mm.y.c)localObject1).egy) && (this.cdW.top <= localObject2[1]) && (this.cdU) && (this.ced != null))
+            {
+              ((d)CB()).Ji();
+              CI();
+            }
+            CQ();
+            if ((this.cdw) && (this.ced != null)) {
+              this.ced.onHide();
+            }
+            this.cdw = false;
+            break;
+            label1485:
+            if (((com.tencent.mm.y.c)localObject2).egy) {
+              ((com.tencent.mm.y.c)localObject2).eFx = true;
+            }
+          }
+          f1 = 1.0F;
         }
-        i = 0;
-        f1 = 1.0F;
       }
+      bool = false;
     }
   }
   
   public final void onDestroy()
   {
+    AppMethodBeat.i(116190);
     super.onDestroy();
-    tZ();
+    CR();
+    AppMethodBeat.o(116190);
   }
   
   public final void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(116188);
     b(paramCanvas);
-    com.tencent.mm.z.c localc = ((com.tencent.mm.cache.c)tI()).wR();
-    if ((localc != null) && (localc.dpc)) {
-      localc.draw(paramCanvas);
+    Object localObject = (d)CB();
+    if (localObject != null)
+    {
+      localObject = ((d)localObject).Jj();
+      if ((localObject != null) && (((com.tencent.mm.y.c)localObject).egy)) {
+        ((com.tencent.mm.y.c)localObject).draw(paramCanvas);
+      }
     }
+    AppMethodBeat.o(116188);
   }
   
-  public final a tG()
+  public final void zy()
   {
-    return a.bzR;
-  }
-  
-  public final void tH() {}
-  
-  public final void tJ()
-  {
-    super.tJ();
-    int i = (int)ae.getResources().getDimension(a.c.rubbish_layout_height);
-    this.bAZ.set(0, getBoardRect().height() - i, getBoardRect().width(), getBoardRect().height());
+    AppMethodBeat.i(116187);
+    super.zy();
+    int i = (int)ah.getResources().getDimension(2131428644);
+    int j = (int)ah.getResources().getDimension(2131428645);
+    int k = am.fx(this.ccS.dqc().getContext());
+    this.cdW.set((getBoardRect().width() - j) / 2, getBoardRect().height() - i - k, getBoardRect().width() - k, (j + getBoardRect().width()) / 2);
+    AppMethodBeat.o(116187);
   }
   
   final class a
     extends TimerTask
   {
-    private b bBi;
-    private Handler mHandler = new Handler(Looper.getMainLooper());
+    private b cef;
+    private Handler mHandler;
     
     public a(b paramb)
     {
-      this.bBi = paramb;
+      AppMethodBeat.i(116184);
+      this.mHandler = new Handler(Looper.getMainLooper());
+      this.cef = paramb;
+      AppMethodBeat.o(116184);
     }
     
     public final void run()
     {
+      AppMethodBeat.i(116185);
       this.mHandler.post(new e.a.1(this));
+      AppMethodBeat.o(116185);
     }
   }
 }

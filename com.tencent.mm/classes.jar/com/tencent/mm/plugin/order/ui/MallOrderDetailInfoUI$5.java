@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.order.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.c.c;
 import com.tencent.mm.plugin.order.model.MallOrderDetailObject;
 import com.tencent.mm.ui.base.h.c;
@@ -9,14 +10,18 @@ final class MallOrderDetailInfoUI$5
 {
   MallOrderDetailInfoUI$5(MallOrderDetailInfoUI paramMallOrderDetailInfoUI) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(43800);
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    c.aC(this.mQG, this.mQG.mPG.mOC);
+    for (;;)
+    {
+      AppMethodBeat.o(43800);
+      return;
+      c.aL(this.pqU, this.pqU.ppW.poS);
+    }
   }
 }
 

@@ -1,53 +1,58 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.protocal.c.aab;
-import com.tencent.mm.protocal.c.aac;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.aeu;
+import com.tencent.mm.protocal.protobuf.aev;
 import java.util.LinkedList;
 
 public final class r$b
 {
   public int actionType;
   public String appId;
-  public String bGm;
+  public String cnv;
   public long createTime;
-  public String dXh;
-  public String fGK;
+  public String fnp;
+  public String hKa;
   public String iconUrl;
-  public String lfa;
-  public aac lfb;
-  public String lfc;
-  public LinkedList<String> lfd;
-  public int lfe;
-  public int lff;
-  public boolean lfg = false;
-  public boolean lfh = false;
-  public r.c lfi;
+  public String nCV;
+  public aev nCW;
+  public String nCX;
+  public LinkedList<String> nCY;
+  public int nCZ;
+  public int nDa;
+  public boolean nDb = false;
+  public boolean nDc = false;
+  public r.c nDd;
   public String name;
   public int type;
   
-  public static b a(aab paramaab)
+  public static b a(aeu paramaeu)
   {
+    AppMethodBeat.i(112173);
     b localb = new b();
     localb.type = 2;
-    localb.name = paramaab.bGw;
-    localb.fGK = paramaab.kRN;
-    localb.iconUrl = paramaab.mQp;
-    localb.lfc = paramaab.sYY;
-    localb.lfe = paramaab.sZt;
-    localb.lff = paramaab.sZu;
-    localb.appId = paramaab.euK;
-    localb.dXh = paramaab.kVn;
-    localb.createTime = paramaab.create_time;
-    localb.lfi = new r.c(paramaab.sYY, (byte)0);
+    localb.name = paramaeu.Title;
+    localb.hKa = paramaeu.Desc;
+    localb.iconUrl = paramaeu.ThumbUrl;
+    localb.nCX = paramaeu.wXs;
+    localb.nCZ = paramaeu.wXM;
+    localb.nDa = paramaeu.wXN;
+    localb.appId = paramaeu.fKw;
+    localb.fnp = paramaeu.ntp;
+    localb.createTime = paramaeu.wyt;
+    localb.nDd = new r.c(paramaeu.wXs, (byte)0);
+    AppMethodBeat.o(112173);
     return localb;
   }
   
-  public static b as(int paramInt, String paramString)
+  public static b aM(int paramInt, String paramString)
   {
+    AppMethodBeat.i(112172);
     b localb = new b();
     localb.type = paramInt;
     localb.name = paramString;
-    localb.lfi = new r.c();
+    localb.nDd = new r.c();
+    AppMethodBeat.o(112172);
     return localb;
   }
 }

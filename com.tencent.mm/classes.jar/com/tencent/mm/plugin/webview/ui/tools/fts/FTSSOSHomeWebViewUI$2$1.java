@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 import com.tencent.mm.ui.fts.widget.SOSEditTextView;
 import java.util.Map;
@@ -12,14 +13,16 @@ final class FTSSOSHomeWebViewUI$2$1
   
   public final void run()
   {
-    if (FTSSOSHomeWebViewUI.r(this.ruF.ruD) != null) {}
-    for (boolean bool = FTSSOSHomeWebViewUI.s(this.ruF.ruD).a(this.rqe.getString("type", "0"), this.rqe.getString("isMostSearchBiz", "0"), this.rqe.getString("isSug", "0"), this.rqe.getString("scene", "0"), this.rqe.getString("isLocalSug", "0"), this.ruF.ruD.getTotalQuery(), this.ruF.ruD.getInEditTextQuery(), this.ruF.ruD.cfw(), this.ruF.ruD.cfp(), this.ruF.ruD.ruy, this.ruE);; bool = false)
+    AppMethodBeat.i(8424);
+    if (this.vkU.vkS.getJsapi() != null) {}
+    for (boolean bool = this.vkU.vkS.getJsapi().a(this.val$result.getString("type", "0"), this.val$result.getString("isMostSearchBiz", "0"), this.val$result.getString("isSug", "0"), this.val$result.getString("scene", "0"), this.val$result.getString("isLocalSug", "0"), this.vkU.vkS.getTotalQuery(), this.vkU.vkS.getInEditTextQuery(), this.vkU.vkS.dfD(), this.vkU.vkS.dfy(), this.vkU.vkS.vkN, this.vkT);; bool = false)
     {
       if (bool)
       {
-        this.ruF.ruD.cfr().setHint(FTSSOSHomeWebViewUI.f(this.ruF.ruD, 0));
-        FTSSOSHomeWebViewUI.a(this.ruF.ruD).Ff(7);
+        this.vkU.vkS.dfA().setHint(FTSSOSHomeWebViewUI.f(this.vkU.vkS, 0));
+        FTSSOSHomeWebViewUI.a(this.vkU.vkS).sendMessage(7);
       }
+      AppMethodBeat.o(8424);
       return;
     }
   }

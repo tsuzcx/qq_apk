@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import com.tencent.luggage.e.n;
-import com.tencent.luggage.e.n.a;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter;
 
 final class e$19
-  extends n.a
+  implements View.OnTouchListener
 {
   e$19(e parame) {}
   
-  public final void a(n paramn, String paramString)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.rca.bc(paramString);
-  }
-  
-  public final void b(n paramn, String paramString)
-  {
-    this.rca.bd(paramString);
+    AppMethodBeat.i(6042);
+    if (e.b(this.uRQ).isShown()) {
+      e.b(this.uRQ).hide();
+    }
+    AppMethodBeat.o(6042);
+    return false;
   }
 }
 

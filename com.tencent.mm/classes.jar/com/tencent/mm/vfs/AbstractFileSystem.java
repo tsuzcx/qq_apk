@@ -7,8 +7,8 @@ import java.util.Map;
 public abstract class AbstractFileSystem
   implements FileSystem
 {
-  private String wuh;
-  private a wui;
+  private String APf;
+  private a APg;
   
   public void a(CancellationSignal paramCancellationSignal) {}
   
@@ -16,14 +16,14 @@ public abstract class AbstractFileSystem
   {
     try
     {
-      this.wuh = paramString;
-      this.wui = parama;
+      this.APf = paramString;
+      this.APg = parama;
       return;
     }
     finally {}
   }
   
-  protected final void j(int paramInt, Object... paramVarArgs)
+  protected final void k(int paramInt, Object... paramVarArgs)
   {
     if (paramVarArgs.length == 0) {}
     Object localObject1;
@@ -32,8 +32,8 @@ public abstract class AbstractFileSystem
       Object localObject2;
       try
       {
-        localObject1 = this.wuh;
-        localObject2 = this.wui;
+        localObject1 = this.APf;
+        localObject2 = this.APg;
         if (localObject2 != null) {
           ((a)localObject2).b((String)localObject1, paramInt, paramVarArgs);
         }
@@ -56,7 +56,7 @@ public abstract class AbstractFileSystem
     }
   }
   
-  public void m(Map<String, String> paramMap) {}
+  public void q(Map<String, String> paramMap) {}
 }
 
 

@@ -5,7 +5,7 @@ final class c$bk
 {
   c$bk()
   {
-    super("recordHistory", "recordHistory", 219, false);
+    super("requestWxFacePictureVerify", "requestWxFacePictureVerify", 259, true);
   }
 }
 

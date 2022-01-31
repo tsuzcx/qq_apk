@@ -4,104 +4,111 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.Resources;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.n.a;
 import com.tencent.mm.platformtools.aa;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.bnm;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bxh;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.RegionCodeDecoder;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.base.h;
 
 final class b$4
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
   b$4(b paramb) {}
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (this.sbU.faz != null) {
-      this.sbU.faz.dismiss();
+    AppMethodBeat.i(27627);
+    if (this.vTc.gsr != null) {
+      this.vTc.gsr.dismiss();
     }
-    if (this.sbU.sbS != null)
+    if (this.vTc.vTa != null)
     {
-      g.DQ();
-      g.DO().dJT.b(106, this.sbU.sbS);
+      g.RM();
+      g.RK().eHt.b(106, this.vTc.vTa);
     }
-    if (this.sbU.faz == null)
+    if (this.vTc.gsr == null)
     {
-      y.e("MicroMsg.AddContactDialog", "has cancel the loading dialog");
-      this.sbU.hK(0);
+      ab.e("MicroMsg.AddContactDialog", "has cancel the loading dialog");
+      this.vTc.kw(0);
+      AppMethodBeat.o(27627);
       return;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      y.e("MicroMsg.AddContactDialog", "searchContact onSceneEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      this.sbU.hK(-1);
+      ab.e("MicroMsg.AddContactDialog", "searchContact onSceneEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      this.vTc.kw(-1);
+      AppMethodBeat.o(27627);
       return;
     }
-    if (this.sbU.mContext == null)
+    if (this.vTc.mContext == null)
     {
-      y.e("MicroMsg.AddContactDialog", "searchContact, context is null, msghandler has already been detached!");
-      this.sbU.hK(-1);
+      ab.e("MicroMsg.AddContactDialog", "searchContact, context is null, msghandler has already been detached!");
+      this.vTc.kw(-1);
+      AppMethodBeat.o(27627);
       return;
     }
-    if (((this.sbU.mContext instanceof Activity)) && (((Activity)this.sbU.mContext).isFinishing()))
+    if (((this.vTc.mContext instanceof Activity)) && (((Activity)this.vTc.mContext).isFinishing()))
     {
-      y.e("MicroMsg.AddContactDialog", "searchContact, context isFinishing");
-      this.sbU.hK(-1);
+      ab.e("MicroMsg.AddContactDialog", "searchContact, context isFinishing");
+      this.vTc.kw(-1);
+      AppMethodBeat.o(27627);
       return;
     }
-    paramString = ((com.tencent.mm.plugin.messenger.a.f)paramm).bhH();
-    paramm = aa.a(paramString.sQs);
-    if (bk.bl(paramm))
+    paramString = ((com.tencent.mm.plugin.messenger.a.f)paramm).bPI();
+    paramm = aa.a(paramString.wOT);
+    if (bo.isNullOrNil(paramm))
     {
-      y.e("MicroMsg.AddContactDialog", "searchContact, user is null");
-      h.bC(this.sbU.mContext, this.sbU.mContext.getResources().getString(R.l.wv_follow_is_not_biz));
-      this.sbU.hK(-1);
+      ab.e("MicroMsg.AddContactDialog", "searchContact, user is null");
+      h.bO(this.vTc.mContext, this.vTc.mContext.getResources().getString(2131306018));
+      this.vTc.kw(-1);
+      AppMethodBeat.o(27627);
       return;
     }
-    if ((this.sbU.hcm == null) || (!this.sbU.hcm.equals(paramm))) {
-      y.w("MicroMsg.AddContactDialog", "user not the same, %s, %s", new Object[] { this.sbU.hcm, paramm });
+    if ((this.vTc.ikj == null) || (!this.vTc.ikj.equals(paramm))) {
+      ab.w("MicroMsg.AddContactDialog", "user not the same, %s, %s", new Object[] { this.vTc.ikj, paramm });
     }
-    b localb = this.sbU;
-    g.DQ();
-    localb.jgl = ((j)g.r(j.class)).Fw().abl(paramm);
-    if ((this.sbU.jgl == null) || ((int)this.sbU.jgl.dBe == 0))
+    b localb = this.vTc;
+    g.RM();
+    localb.lpe = ((j)g.E(j.class)).YA().arw(paramm);
+    if ((this.vTc.lpe == null) || ((int)this.vTc.lpe.euF == 0))
     {
-      y.i("MicroMsg.AddContactDialog", "searchContact, no contact with username = " + paramm + ", try get by alias");
-      localb = this.sbU;
-      g.DQ();
-      localb.jgl = ((j)g.r(j.class)).Fw().abh(paramm);
-      if ((this.sbU.jgl == null) || ((int)this.sbU.jgl.dBe == 0))
+      ab.i("MicroMsg.AddContactDialog", "searchContact, no contact with username = " + paramm + ", try get by alias");
+      localb = this.vTc;
+      g.RM();
+      localb.lpe = ((j)g.E(j.class)).YA().ars(paramm);
+      if ((this.vTc.lpe == null) || ((int)this.vTc.lpe.euF == 0))
       {
-        y.i("MicroMsg.AddContactDialog", "searchContact, no contact with alias, new Contact");
-        this.sbU.jgl = new ad(paramm);
-        this.sbU.jgl.cZ(paramString.ffm);
-        this.sbU.jgl.dk(aa.a(paramString.tmw));
-        this.sbU.jgl.dl(aa.a(paramString.sQa));
-        this.sbU.jgl.dm(aa.a(paramString.sQb));
-        this.sbU.jgl.fm(paramString.ffh);
-        this.sbU.jgl.dF(RegionCodeDecoder.ao(paramString.ffq, paramString.ffi, paramString.ffj));
-        this.sbU.jgl.dz(paramString.ffk);
-        this.sbU.jgl.fi(paramString.tpg);
-        this.sbU.jgl.dE(paramString.tph);
-        this.sbU.jgl.fh(paramString.tpk);
-        this.sbU.jgl.dn(paramString.tpj);
-        this.sbU.jgl.dD(paramString.tpi);
+        ab.i("MicroMsg.AddContactDialog", "searchContact, no contact with alias, new Contact");
+        this.vTc.lpe = new ad(paramm);
+        this.vTc.lpe.jm(paramString.gwU);
+        this.vTc.lpe.jp(aa.a(paramString.xmi));
+        this.vTc.lpe.jq(aa.a(paramString.wOv));
+        this.vTc.lpe.jr(aa.a(paramString.wOw));
+        this.vTc.lpe.hy(paramString.gwP);
+        this.vTc.lpe.jL(RegionCodeDecoder.aF(paramString.gwY, paramString.gwQ, paramString.gwR));
+        this.vTc.lpe.jF(paramString.gwS);
+        this.vTc.lpe.hu(paramString.xpe);
+        this.vTc.lpe.jK(paramString.xpf);
+        this.vTc.lpe.ht(paramString.xpi);
+        this.vTc.lpe.js(paramString.xph);
+        this.vTc.lpe.jJ(paramString.xpg);
       }
     }
     for (;;)
     {
-      this.sbU.Q(this.sbU.jgl);
+      this.vTc.T(this.vTc.lpe);
+      AppMethodBeat.o(27627);
       return;
-      y.i("MicroMsg.AddContactDialog", "searchContact, contact in db, %s", new Object[] { paramm });
+      ab.i("MicroMsg.AddContactDialog", "searchContact, contact in db, %s", new Object[] { paramm });
     }
   }
 }

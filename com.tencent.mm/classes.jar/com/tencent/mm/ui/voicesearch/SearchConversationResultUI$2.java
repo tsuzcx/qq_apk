@@ -2,6 +2,7 @@ package com.tencent.mm.ui.voicesearch;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SearchConversationResultUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class SearchConversationResultUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.wiJ.finish();
+    AppMethodBeat.i(35316);
+    this.ABB.finish();
+    AppMethodBeat.o(35316);
     return true;
   }
 }

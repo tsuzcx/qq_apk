@@ -1,46 +1,31 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.ai;
-import com.tencent.mm.plugin.appbrand.appstorage.IWxaFileSystemWithModularizing;
-import com.tencent.mm.plugin.appbrand.config.i;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.File;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.s;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import org.json.JSONObject;
 
-public class l
-  extends k
+public final class l
+  extends com.tencent.mm.plugin.appbrand.jsapi.a
 {
-  public final String f(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString)
+  public static final int CTRL_INDEX = 481;
+  public static final String NAME = "setInnerAudioOption";
+  
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    try
-    {
-      if ((paramc.Zl() instanceof com.tencent.mm.plugin.appbrand.appstorage.l))
-      {
-        Object localObject = ((IWxaFileSystemWithModularizing)((com.tencent.mm.plugin.appbrand.appstorage.l)paramc.Zl()).H(IWxaFileSystemWithModularizing.class)).findAppropriateModuleInfo(paramString);
-        if (localObject != null)
-        {
-          localObject = ((ai)localObject).fDw.getAbsolutePath();
-          return localObject;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      com.tencent.luggage.j.c.e("MicroMsg.JsApiSetAudioStateWxaApp", "getPkgPath with audioSrc(%s), e=%s", new Object[] { paramString, localException });
-      paramc = (i)paramc.D(i.class);
-      if (paramc == null)
-      {
-        y.e("MicroMsg.WxaAudioUtils", "service.getRuntime().getSysConfig() is null");
-        return "";
-      }
-      if (paramc.fPS == null)
-      {
-        y.e("MicroMsg.WxaAudioUtils", "service.getRuntime().getSysConfig().appPkgInfo is null");
-        return "";
-      }
-      y.d("MicroMsg.WxaAudioUtils", "getPkgPath:%s", new Object[] { paramc.fPS.fCl });
-    }
-    return paramc.fPS.fCl;
+    AppMethodBeat.i(137794);
+    boolean bool = paramJSONObject.optBoolean("mixWithOther", true);
+    paramJSONObject = new com.tencent.mm.ag.a();
+    paramJSONObject.fqV = bool;
+    ab.i("MicroMsg.AudioPlayerHelper", "setAudioContextOption, mixWithOther:%b", new Object[] { Boolean.valueOf(paramJSONObject.fqV) });
+    s locals = new s();
+    locals.cmS.action = 19;
+    locals.cmS.cmW = paramJSONObject;
+    com.tencent.mm.plugin.music.b.a.a(locals);
+    paramc.h(paramInt, j("ok", null));
+    AppMethodBeat.o(137794);
   }
 }
 

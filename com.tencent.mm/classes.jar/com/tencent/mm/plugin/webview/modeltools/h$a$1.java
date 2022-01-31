@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FilenameFilter;
 
@@ -10,7 +11,10 @@ final class h$a$1
   
   public final boolean accept(File paramFile, String paramString)
   {
-    return paramString.matches(".+_.+.\\.jpg");
+    AppMethodBeat.i(7008);
+    boolean bool = paramString.matches(".+_.+.\\.jpg");
+    AppMethodBeat.o(7008);
+    return bool;
   }
 }
 

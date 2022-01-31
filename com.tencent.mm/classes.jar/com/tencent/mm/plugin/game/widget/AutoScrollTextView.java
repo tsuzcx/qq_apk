@@ -7,68 +7,92 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.game.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AutoScrollTextView
   extends LinearLayout
 {
-  private int jiU = 0;
-  private am kXj = new am(new AutoScrollTextView.1(this), true);
-  private ArrayList<String> kYI = new ArrayList();
-  private Animation kYP;
-  private Animation kYQ;
-  private TextView lgF;
-  private TextView lgG;
+  private int lrL;
+  private TextView nEA;
+  private TextView nEz;
+  private ap nvk;
+  private ArrayList<String> nwF;
+  private Animation nwM;
+  private Animation nwN;
   
   public AutoScrollTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.lgF = new TextView(paramContext, paramAttributeSet);
-    this.lgF.setVisibility(8);
-    this.lgG = new TextView(paramContext, paramAttributeSet);
-    this.lgG.setVisibility(8);
-    addView(this.lgF);
-    addView(this.lgG);
+    AppMethodBeat.i(112366);
+    this.nwF = new ArrayList();
+    this.lrL = 0;
+    this.nvk = new ap(new ap.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(112365);
+        AutoScrollTextView.a(AutoScrollTextView.this);
+        AppMethodBeat.o(112365);
+        return true;
+      }
+    }, true);
+    this.nEz = new TextView(paramContext, paramAttributeSet);
+    this.nEz.setVisibility(8);
+    this.nEA = new TextView(paramContext, paramAttributeSet);
+    this.nEA.setVisibility(8);
+    addView(this.nEz);
+    addView(this.nEA);
     setOrientation(1);
     setGravity(17);
     setPadding(0, 0, 0, 0);
-    this.kYP = AnimationUtils.loadAnimation(paramContext, g.a.slide_bottom_in);
-    this.kYQ = AnimationUtils.loadAnimation(paramContext, g.a.slide_top_out);
+    this.nwM = AnimationUtils.loadAnimation(paramContext, 2131034261);
+    this.nwN = AnimationUtils.loadAnimation(paramContext, 2131034269);
+    AppMethodBeat.o(112366);
   }
   
   private void b(TextView paramTextView, String paramString)
   {
-    paramTextView.setText(new SpannableString(j.a(getContext(), paramString, paramTextView.getTextSize())));
+    AppMethodBeat.i(112368);
+    paramTextView.setText(new SpannableString(j.b(getContext(), paramString, paramTextView.getTextSize())));
+    AppMethodBeat.o(112368);
   }
   
   protected void onDetachedFromWindow()
   {
+    AppMethodBeat.i(112369);
     super.onDetachedFromWindow();
-    this.kXj.stopTimer();
+    this.nvk.stopTimer();
+    AppMethodBeat.o(112369);
   }
   
   public void setText(List<String> paramList)
   {
-    this.kYI.clear();
-    this.kXj.stopTimer();
+    AppMethodBeat.i(112367);
+    this.nwF.clear();
+    this.nvk.stopTimer();
     if ((paramList == null) || (paramList.size() == 0))
     {
-      this.lgF.setVisibility(8);
-      this.lgG.setVisibility(8);
-    }
-    do
-    {
+      this.nEz.setVisibility(8);
+      this.nEA.setVisibility(8);
+      AppMethodBeat.o(112367);
       return;
-      this.kYI.addAll(paramList);
-      b(this.lgF, (String)this.kYI.get(0));
-      this.lgF.setVisibility(0);
-      this.jiU = 0;
-    } while (this.kYI.size() == 1);
-    this.kXj.S(5000L, 5000L);
+    }
+    this.nwF.addAll(paramList);
+    b(this.nEz, (String)this.nwF.get(0));
+    this.nEz.setVisibility(0);
+    this.lrL = 0;
+    if (this.nwF.size() == 1)
+    {
+      AppMethodBeat.o(112367);
+      return;
+    }
+    this.nvk.ag(5000L, 5000L);
+    AppMethodBeat.o(112367);
   }
 }
 

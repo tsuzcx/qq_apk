@@ -1,68 +1,50 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.a.o;
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ah.a.a;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ck.f;
-import com.tencent.mm.plugin.appbrand.app.e;
-import com.tencent.mm.protocal.c.alc;
-import com.tencent.mm.protocal.c.ald;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.InputStream;
 
 public final class c
-  extends a<ald>
+  extends a
 {
-  public final b dmK;
+  public static final c gTP;
+  final WxaPkgWrappingInfo gTO;
   
-  public c(String paramString1, String paramString2, String paramString3, int paramInt)
+  static
   {
-    b.a locala = new b.a();
-    locala.ecG = 1718;
-    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/gettestcodedownloadinfo";
-    alc localalc = new alc();
-    localalc.bOL = paramString1;
-    localalc.thh = paramString2;
-    localalc.thi = paramString3;
-    localalc.sHx = paramInt;
-    if (paramInt == 1) {
-      paramString1 = ((com.tencent.mm.plugin.appbrand.launching.h)e.G(com.tencent.mm.plugin.appbrand.launching.h.class)).aV(paramString1, paramInt);
-    }
-    try
-    {
-      localalc.thj = new o(com.tencent.mm.ab.h.fU(paramString1).optLong("dev_key")).intValue();
-      locala.ecH = localalc;
-      locala.ecI = new ald();
-      paramString1 = locala.Kt();
-      this.dmK = paramString1;
-      this.dmK = paramString1;
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        y.e("MicroMsg.AppBrand.CgiGetTestCodeDownloadInfo", "opt devKey %s", new Object[] { paramString1 });
-      }
-    }
+    AppMethodBeat.i(114304);
+    gTP = new c();
+    AppMethodBeat.o(114304);
   }
   
-  public final f<a.a<ald>> Km()
+  public c()
   {
-    try
-    {
-      long l = bk.UY();
-      f localf = super.Km().g(new c.1(this, l));
-      return localf;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    AppMethodBeat.i(114303);
+    this.gTO = new WxaPkgWrappingInfo();
+    this.gTO.gXh = true;
+    this.gTO.gXe = 0;
+    this.gTO.gXf = an.VERSION;
+    this.gTO.cqq = "";
+    AppMethodBeat.o(114303);
+  }
+  
+  public final WxaPkgWrappingInfo ave()
+  {
+    return this.gTO;
+  }
+  
+  public final void init() {}
+  
+  public final InputStream openRead(String paramString)
+  {
+    AppMethodBeat.i(114302);
+    paramString = an.openRead(paramString);
+    AppMethodBeat.o(114302);
+    return paramString;
+  }
+  
+  public final String toString()
+  {
+    return "AssetReader";
   }
 }
 

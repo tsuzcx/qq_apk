@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ad;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ae;
 
 final class SnsTransparentUI$2
   implements DialogInterface.OnDismissListener
@@ -11,8 +12,10 @@ final class SnsTransparentUI$2
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    ad.ee(this.pif);
-    this.pif.finish();
+    AppMethodBeat.i(39634);
+    ae.eV(this.saK);
+    this.saK.finish();
+    AppMethodBeat.o(39634);
   }
 }
 

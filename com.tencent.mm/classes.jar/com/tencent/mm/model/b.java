@@ -1,22 +1,27 @@
 package com.tencent.mm.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 
 public final class b
   extends RuntimeException
 {
-  private final int dUg;
+  private final int cfE;
   
   public b()
   {
-    super(a.CN());
-    this.dUg = 0;
+    super(a.QG());
+    AppMethodBeat.i(58087);
+    this.cfE = 0;
+    AppMethodBeat.o(58087);
   }
   
   public b(byte paramByte)
   {
-    super(a.CN());
-    this.dUg = 1;
+    super(a.QG());
+    AppMethodBeat.i(58088);
+    this.cfE = 1;
+    AppMethodBeat.o(58088);
   }
 }
 

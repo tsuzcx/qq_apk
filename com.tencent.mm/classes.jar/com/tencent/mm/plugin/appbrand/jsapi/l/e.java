@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class e
-  extends a<f>
+  extends a<r>
 {
-  public static final int CTRL_INDEX = 57;
-  public static final String NAME = "requestPayment";
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "hideTabBar";
 }
 
 

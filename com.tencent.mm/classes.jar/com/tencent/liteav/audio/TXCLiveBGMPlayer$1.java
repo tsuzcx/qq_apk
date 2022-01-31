@@ -1,15 +1,19 @@
 package com.tencent.liteav.audio;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class TXCLiveBGMPlayer$1
   implements Runnable
 {
-  TXCLiveBGMPlayer$1(TXCLiveBGMPlayer paramTXCLiveBGMPlayer, f paramf) {}
+  TXCLiveBGMPlayer$1(TXCLiveBGMPlayer paramTXCLiveBGMPlayer, e parame) {}
   
   public void run()
   {
+    AppMethodBeat.i(66517);
     if (this.a != null) {
-      this.a.a();
+      this.a.onPlayStart();
     }
+    AppMethodBeat.o(66517);
   }
 }
 

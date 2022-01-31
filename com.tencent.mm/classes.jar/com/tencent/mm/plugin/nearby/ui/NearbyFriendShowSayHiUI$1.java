@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.nearby.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NearbyFriendShowSayHiUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class NearbyFriendShowSayHiUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.mCY.XM();
-    this.mCY.finish();
+    AppMethodBeat.i(55426);
+    this.pcS.hideVKB();
+    this.pcS.finish();
+    AppMethodBeat.o(55426);
     return true;
   }
 }

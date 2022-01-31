@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.game.ui;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameSearchUI$3
   implements AbsListView.OnScrollListener
@@ -13,13 +14,15 @@ final class GameSearchUI$3
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (GameSearchUI.b(this.lfG).leM))
+    AppMethodBeat.i(112190);
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (GameSearchUI.b(this.nDB).nCH))
     {
-      if (GameSearchUI.c(this.lfG) != null) {
-        GameSearchUI.c(this.lfG).setVisibility(0);
+      if (GameSearchUI.c(this.nDB) != null) {
+        GameSearchUI.c(this.nDB).setVisibility(0);
       }
-      GameSearchUI.a(this.lfG, GameSearchUI.d(this.lfG));
+      GameSearchUI.a(this.nDB, GameSearchUI.d(this.nDB));
     }
+    AppMethodBeat.o(112190);
   }
 }
 

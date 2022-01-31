@@ -7,20 +7,20 @@ final class RecyclerView$1
   
   public final void run()
   {
-    if ((!this.agK.afO) || (this.agK.isLayoutRequested())) {
+    if ((!this.aja.aie) || (this.aja.isLayoutRequested())) {
       return;
     }
-    if (!this.agK.afL)
+    if (!this.aja.aib)
     {
-      this.agK.requestLayout();
+      this.aja.requestLayout();
       return;
     }
-    if (this.agK.afR)
+    if (this.aja.aih)
     {
-      this.agK.afQ = true;
+      this.aja.aig = true;
       return;
     }
-    this.agK.hn();
+    this.aja.iO();
   }
 }
 

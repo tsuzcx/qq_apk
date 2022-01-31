@@ -5,7 +5,7 @@ public final class c$lk
 {
   public c$lk()
   {
-    super("menu:share:timeline", "", 88, false);
+    super("videoProxySetPlayerState", "videoProxySetPlayerState", 159, false);
   }
 }
 

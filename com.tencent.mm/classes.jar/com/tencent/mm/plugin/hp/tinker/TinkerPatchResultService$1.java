@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.hp.tinker;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tinker.lib.f.a;
 import com.tencent.tinker.lib.f.b;
 
@@ -10,8 +11,10 @@ final class TinkerPatchResultService$1
   
   public final void run()
   {
+    AppMethodBeat.i(90661);
     a.w("Tinker.TinkerPatchResultService", "actually kill tinker patch service!", new Object[0]);
-    b.hO(this.lnr.getApplicationContext());
+    b.jp(this.nKK.getApplicationContext());
+    AppMethodBeat.o(90661);
   }
 }
 

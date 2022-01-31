@@ -2,8 +2,8 @@ package com.tencent.mm.modelmulti;
 
 public final class p
 {
-  public boolean euf;
-  public int eug;
+  public boolean bSe;
+  public int fJS;
 }
 
 

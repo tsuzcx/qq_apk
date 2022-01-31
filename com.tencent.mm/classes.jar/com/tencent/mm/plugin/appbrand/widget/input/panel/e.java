@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.appbrand.widget.input.panel;
 
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.widget.input.ab;
+import com.tencent.mm.plugin.appbrand.widget.input.ac;
 
 public abstract interface e
-  extends ab
+  extends ac
 {
-  public abstract void asG();
+  public abstract void aRK();
   
-  public abstract void asH();
+  public abstract void aRL();
   
-  public abstract boolean asd();
+  public abstract boolean aRh();
   
   public abstract View getPanelView();
   
-  public abstract boolean mQ(int paramInt);
-  
   public abstract void onDestroy();
+  
+  public abstract boolean qu(int paramInt);
   
   public abstract void setOnTextOperationListener(f paramf);
 }

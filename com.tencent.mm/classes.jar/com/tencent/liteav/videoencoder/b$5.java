@@ -1,5 +1,7 @@
 package com.tencent.liteav.videoencoder;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class b$5
   implements Runnable
 {
@@ -7,9 +9,11 @@ class b$5
   
   public void run()
   {
-    if (b.e(this.a) != null) {
-      b.e(this.a).setBitrate(b.g(this.a));
+    AppMethodBeat.i(67436);
+    if (b.d(this.a) != null) {
+      b.d(this.a).setBitrate(b.f(this.a));
     }
+    AppMethodBeat.o(67436);
   }
 }
 

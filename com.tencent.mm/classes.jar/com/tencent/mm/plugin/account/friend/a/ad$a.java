@@ -1,28 +1,37 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.ah.k;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.k.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.k;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
 
 public final class ad$a
   extends k
 {
-  private final t.a fgy = new t.a();
-  private final t.b fgz = new t.b();
+  private final t.a gyg;
+  private final t.b gyh;
   
-  protected final k.d HE()
+  public ad$a()
   {
-    return this.fgy;
+    AppMethodBeat.i(108456);
+    this.gyg = new t.a();
+    this.gyh = new t.b();
+    AppMethodBeat.o(108456);
   }
   
-  public final k.e HF()
-  {
-    return this.fgz;
-  }
-  
-  public final int Kq()
+  public final int getOptions()
   {
     return 1;
+  }
+  
+  public final l.d getReqObjImp()
+  {
+    return this.gyg;
+  }
+  
+  public final l.e getRespObj()
+  {
+    return this.gyh;
   }
   
   public final int getType()

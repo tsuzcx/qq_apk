@@ -1,8 +1,40 @@
 package com.tencent.mm.plugin.appbrand.o;
 
-final class c$a
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public enum c$a
 {
-  private static c gQR = new c((byte)0);
+  private String name;
+  
+  static
+  {
+    AppMethodBeat.i(91130);
+    iEP = new a("AppStart", 0, "AppStart");
+    iEQ = new a("LoadPageFrame", 1, "LoadPageFrame");
+    iER = new a("PrepareJsRuntime", 2, "PrepareJsRuntime");
+    iES = new a("GetDom", 3, "GetDom");
+    iET = new a("ParseDom", 4, "ParseDom");
+    iEU = new a("DiffDom", 5, "DiffDom");
+    iEV = new a("GetGlobalCss", 6, "GetGlobalCss");
+    iEW = new a("GetCss", 7, "GetCss");
+    iEX = new a("ParseCss", 8, "ParseCss");
+    iEY = new a("GetData", 9, "GetData");
+    iEZ = new a("Layout", 10, "Layout");
+    iFa = new a("JSEvent", 11, "JSEvent");
+    iFb = new a("StartUp", 12, "StartUp");
+    iFc = new a[] { iEP, iEQ, iER, iES, iET, iEU, iEV, iEW, iEX, iEY, iEZ, iFa, iFb };
+    AppMethodBeat.o(91130);
+  }
+  
+  private c$a(String paramString)
+  {
+    this.name = paramString;
+  }
+  
+  public final String toString()
+  {
+    return this.name;
+  }
 }
 
 

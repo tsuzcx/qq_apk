@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.plugin.webview.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.lq;
+import com.tencent.mm.sdk.b.c;
 
 final class g$15
-  implements h.d
+  extends c<lq>
 {
-  public final String[] rK()
+  g$15(g paramg)
   {
-    return c.dXp;
+    AppMethodBeat.i(153151);
+    this.__eventId = lq.class.getName().hashCode();
+    AppMethodBeat.o(153151);
   }
 }
 

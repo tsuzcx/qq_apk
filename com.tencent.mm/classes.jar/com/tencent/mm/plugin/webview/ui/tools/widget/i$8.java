@@ -2,21 +2,24 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.xweb.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.j;
 
 final class i$8
   implements DialogInterface.OnClickListener
 {
-  i$8(i parami, f paramf) {}
+  i$8(i parami, j paramj) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.rqL.confirm();
+    AppMethodBeat.i(9910);
+    this.vgP.confirm();
+    AppMethodBeat.o(9910);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.i.8
  * JD-Core Version:    0.7.0.1
  */

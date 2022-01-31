@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.facedetectaction.b;
 
 public abstract interface d$a
 {
-  public abstract void Cu(String paramString);
+  public abstract void Nv(String paramString);
   
   public abstract void a(int paramInt1, int paramInt2, String paramString, int paramInt3);
   
-  public abstract void aPx();
+  public abstract void aA(int paramInt, String paramString);
   
-  public abstract void ah(int paramInt, String paramString);
+  public abstract void bvG();
 }
 
 

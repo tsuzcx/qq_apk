@@ -2,10 +2,10 @@ package com.tencent.mm.ui.conversation;
 
 final class e$a
 {
-  public String aVr;
+  public int AhS;
+  public String AhT;
+  public String blZ;
   public String content;
-  public int vQi;
-  public String vQj;
   
   private e$a(e parame) {}
 }

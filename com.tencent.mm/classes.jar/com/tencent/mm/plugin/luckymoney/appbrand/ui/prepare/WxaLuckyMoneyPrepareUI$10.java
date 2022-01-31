@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WxaLuckyMoneyPrepareUI$10
   implements MenuItem.OnMenuItemClickListener
@@ -11,8 +12,10 @@ final class WxaLuckyMoneyPrepareUI$10
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.lMx.setResult(0, new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{user cancel}}"));
-    this.lMx.finish();
+    AppMethodBeat.i(42065);
+    this.ojQ.setResult(0, new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{user cancel}}"));
+    this.ojQ.finish();
+    AppMethodBeat.o(42065);
     return true;
   }
 }

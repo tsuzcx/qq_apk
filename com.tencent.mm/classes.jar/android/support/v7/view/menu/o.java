@@ -5,8 +5,6 @@ import android.os.Parcelable;
 
 public abstract interface o
 {
-  public abstract boolean V();
-  
   public abstract void a(Context paramContext, h paramh);
   
   public abstract void a(h paramh, boolean paramBoolean);
@@ -15,13 +13,15 @@ public abstract interface o
   
   public abstract boolean a(u paramu);
   
+  public abstract boolean aG();
+  
   public abstract boolean b(j paramj);
   
   public abstract boolean c(j paramj);
   
   public abstract int getId();
   
-  public abstract void o(boolean paramBoolean);
+  public abstract void n(boolean paramBoolean);
   
   public abstract void onRestoreInstanceState(Parcelable paramParcelable);
   

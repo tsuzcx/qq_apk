@@ -1,23 +1,27 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.v.b;
+import com.tencent.mm.ui.tools.MMGestureGallery;
+import com.tencent.mm.ui.tools.MMGestureGallery.c;
 
 final class FavImgGalleryUI$5
-  implements n.c
+  implements MMGestureGallery.c
 {
-  FavImgGalleryUI$5(FavImgGalleryUI paramFavImgGalleryUI, List paramList1, List paramList2) {}
+  FavImgGalleryUI$5(FavImgGalleryUI paramFavImgGalleryUI) {}
   
-  public final void a(l paraml)
+  public final void bxv()
   {
-    paraml.setHeaderTitle("");
-    int i = 0;
-    while (i < this.jfS.size())
+    AppMethodBeat.i(74004);
+    if ((!this.mwu.isFinishing()) && (!this.mwu.activityHasDestroyed()))
     {
-      paraml.e(((Integer)this.jfS.get(i)).intValue(), (CharSequence)this.jfT.get(i));
-      i += 1;
+      v.b localb = v.aae().z("basescanui@datacenter", true);
+      localb.i("key_basescanui_screen_x", Integer.valueOf(FavImgGalleryUI.a(this.mwu).getXDown()));
+      localb.i("key_basescanui_screen_y", Integer.valueOf(FavImgGalleryUI.a(this.mwu).getYDown()));
+      FavImgGalleryUI.b(this.mwu);
     }
+    AppMethodBeat.o(74004);
   }
 }
 

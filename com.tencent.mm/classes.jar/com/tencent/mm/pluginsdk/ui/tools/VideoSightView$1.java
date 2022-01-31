@@ -1,5 +1,6 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.a.b;
 import com.tencent.mm.plugin.sight.decode.a.b.e;
 
@@ -8,22 +9,26 @@ final class VideoSightView$1
 {
   VideoSightView$1(VideoSightView paramVideoSightView) {}
   
-  public final void d(b paramb, int paramInt)
+  public final void c(b paramb, int paramInt)
   {
-    if (-1 == paramInt) {
-      if (this.snt.joM != null) {
-        this.snt.joM.onError(0, 0);
+    AppMethodBeat.i(70415);
+    if (-1 == paramInt)
+    {
+      if (this.wfO.lxA != null)
+      {
+        this.wfO.lxA.onError(0, 0);
+        AppMethodBeat.o(70415);
       }
     }
-    while ((paramInt != 0) || (this.snt.joM == null)) {
-      return;
+    else if ((paramInt == 0) && (this.wfO.lxA != null)) {
+      this.wfO.lxA.Es();
     }
-    this.snt.joM.ug();
+    AppMethodBeat.o(70415);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.VideoSightView.1
  * JD-Core Version:    0.7.0.1
  */

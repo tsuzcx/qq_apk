@@ -21,20 +21,20 @@ import java.util.Set;
 
 class TinkerResourcePatcher
 {
-  private static Collection<WeakReference<Resources>> wXj = null;
-  private static Object wXk = null;
-  private static AssetManager wXl = null;
-  private static Method wXm = null;
-  private static Method wXn = null;
-  private static Field wXo = null;
-  private static Field wXp = null;
-  private static Field wXq = null;
-  private static Field wXr = null;
-  private static Field wXs = null;
-  private static Field wXt = null;
-  private static Field wXu = null;
+  private static Collection<WeakReference<Resources>> BtN = null;
+  private static Object BtO = null;
+  private static AssetManager BtP = null;
+  private static Method BtQ = null;
+  private static Method BtR = null;
+  private static Field BtS = null;
+  private static Field BtT = null;
+  private static Field BtU = null;
+  private static Field BtV = null;
+  private static Field BtW = null;
+  private static Field BtX = null;
+  private static Field BtY = null;
   
-  public static void bS(Context paramContext, String paramString)
+  public static void cf(Context paramContext, String paramString)
   {
     if (paramString == null) {}
     for (;;)
@@ -45,7 +45,7 @@ class TinkerResourcePatcher
       int i;
       if (Build.VERSION.SDK_INT < 27)
       {
-        localObject1 = new Field[] { wXr, wXs };
+        localObject1 = new Field[] { BtV, BtW };
         j = localObject1.length;
         i = 0;
       }
@@ -54,7 +54,7 @@ class TinkerResourcePatcher
         if (i >= j) {
           break label171;
         }
-        Iterator localIterator = ((Map)localObject1[i].get(wXk)).entrySet().iterator();
+        Iterator localIterator = ((Map)localObject1[i].get(BtO)).entrySet().iterator();
         for (;;)
         {
           if (localIterator.hasNext())
@@ -62,12 +62,12 @@ class TinkerResourcePatcher
             Object localObject4 = ((WeakReference)((Map.Entry)localIterator.next()).getValue()).get();
             if (localObject4 != null)
             {
-              String str = (String)wXq.get(localObject4);
+              String str = (String)BtU.get(localObject4);
               if (((ApplicationInfo)localObject2).sourceDir.equals(str))
               {
-                wXq.set(localObject4, paramString);
+                BtU.set(localObject4, paramString);
                 continue;
-                localObject1 = new Field[] { wXr };
+                localObject1 = new Field[] { BtV };
                 break;
               }
             }
@@ -76,15 +76,15 @@ class TinkerResourcePatcher
         i += 1;
       }
       label171:
-      if (((Integer)wXm.invoke(wXl, new Object[] { paramString })).intValue() == 0) {
+      if (((Integer)BtQ.invoke(BtP, new Object[] { paramString })).intValue() == 0) {
         throw new IllegalStateException("Could not create new AssetManager");
       }
-      if ((wXu != null) && (wXn != null))
+      if ((BtY != null) && (BtR != null))
       {
-        wXu.set(wXl, null);
-        wXn.invoke(wXl, new Object[0]);
+        BtY.set(BtP, null);
+        BtR.invoke(BtP, new Object[0]);
       }
-      Object localObject1 = wXj.iterator();
+      Object localObject1 = BtN.iterator();
       for (;;)
       {
         if (((Iterator)localObject1).hasNext())
@@ -95,16 +95,16 @@ class TinkerResourcePatcher
           }
           try
           {
-            wXo.set(localObject2, wXl);
-            f((Resources)localObject2);
+            BtS.set(localObject2, BtP);
+            j((Resources)localObject2);
             ((Resources)localObject2).updateConfiguration(((Resources)localObject2).getConfiguration(), ((Resources)localObject2).getDisplayMetrics());
           }
           catch (Throwable localThrowable)
           {
             for (;;)
             {
-              Object localObject3 = wXp.get(localObject2);
-              ShareReflectUtil.b(localObject3, "mAssets").set(localObject3, wXl);
+              Object localObject3 = BtT.get(localObject2);
+              ShareReflectUtil.b(localObject3, "mAssets").set(localObject3, BtP);
             }
           }
         }
@@ -112,11 +112,11 @@ class TinkerResourcePatcher
       if (Build.VERSION.SDK_INT >= 24) {}
       try
       {
-        if (wXt != null) {
-          wXt.set(paramContext.getApplicationInfo(), paramString);
+        if (BtX != null) {
+          BtX.set(paramContext.getApplicationInfo(), paramString);
         }
         label375:
-        if (hU(paramContext)) {
+        if (jv(paramContext)) {
           continue;
         }
         throw new TinkerRuntimeException("checkResInstall failed");
@@ -128,11 +128,11 @@ class TinkerResourcePatcher
     }
   }
   
-  private static void f(Resources paramResources)
+  private static void j(Resources paramResources)
   {
     try
     {
-      paramResources = ShareReflectUtil.d(Resources.class, "mTypedArrayPool").get(paramResources);
+      paramResources = ShareReflectUtil.g(Resources.class, "mTypedArrayPool").get(paramResources);
       Method localMethod = ShareReflectUtil.b(paramResources, "acquire", new Class[0]);
       Object localObject;
       do
@@ -147,41 +147,41 @@ class TinkerResourcePatcher
     }
   }
   
-  public static void hT(Context paramContext)
+  public static void ju(Context paramContext)
   {
     Object localObject2 = Class.forName("android.app.ActivityThread");
-    wXk = ShareReflectUtil.c(paramContext, (Class)localObject2);
+    BtO = ShareReflectUtil.d(paramContext, (Class)localObject2);
     try
     {
       localObject1 = Class.forName("android.app.LoadedApk");
-      wXq = ShareReflectUtil.d((Class)localObject1, "mResDir");
-      wXr = ShareReflectUtil.d((Class)localObject2, "mPackages");
+      BtU = ShareReflectUtil.g((Class)localObject1, "mResDir");
+      BtV = ShareReflectUtil.g((Class)localObject2, "mPackages");
       if (Build.VERSION.SDK_INT < 27) {
-        wXs = ShareReflectUtil.d((Class)localObject2, "mResourcePackages");
+        BtW = ShareReflectUtil.g((Class)localObject2, "mResourcePackages");
       }
       localObject1 = paramContext.getAssets();
-      wXm = ShareReflectUtil.b(localObject1, "addAssetPath", new Class[] { String.class });
+      BtQ = ShareReflectUtil.b(localObject1, "addAssetPath", new Class[] { String.class });
     }
     catch (ClassNotFoundException localThrowable1)
     {
       try
       {
         Object localObject1;
-        wXu = ShareReflectUtil.b(localObject1, "mStringBlocks");
-        wXn = ShareReflectUtil.b(localObject1, "ensureStringBlocks", new Class[0]);
+        BtY = ShareReflectUtil.b(localObject1, "mStringBlocks");
+        BtR = ShareReflectUtil.b(localObject1, "ensureStringBlocks", new Class[0]);
         label100:
-        wXl = (AssetManager)ShareReflectUtil.a(localObject1, new Class[0]).newInstance(new Object[0]);
+        BtP = (AssetManager)ShareReflectUtil.a(localObject1, new Class[0]).newInstance(new Object[0]);
         if (Build.VERSION.SDK_INT >= 19)
         {
           localObject1 = Class.forName("android.app.ResourcesManager");
-          localObject2 = ShareReflectUtil.c((Class)localObject1, "getInstance", new Class[0]).invoke(null, new Object[0]);
+          localObject2 = ShareReflectUtil.d((Class)localObject1, "getInstance", new Class[0]).invoke(null, new Object[0]);
         }
         for (;;)
         {
           try
           {
-            wXj = ((ArrayMap)ShareReflectUtil.d((Class)localObject1, "mActiveResources").get(localObject2)).values();
-            if (wXj != null) {
+            BtN = ((ArrayMap)ShareReflectUtil.g((Class)localObject1, "mActiveResources").get(localObject2)).values();
+            if (BtN != null) {
               break label246;
             }
             throw new IllegalStateException("resource references is null");
@@ -191,10 +191,10 @@ class TinkerResourcePatcher
           catch (NoSuchFieldException localNoSuchFieldException)
           {
             Class localClass;
-            wXj = (Collection)ShareReflectUtil.d(localClass, "mResourceReferences").get(localObject2);
+            BtN = (Collection)ShareReflectUtil.g(localClass, "mResourceReferences").get(localObject2);
             continue;
           }
-          wXj = ((HashMap)ShareReflectUtil.d((Class)localObject2, "mActiveResources").get(wXk)).values();
+          BtN = ((HashMap)ShareReflectUtil.g((Class)localObject2, "mActiveResources").get(BtO)).values();
         }
         label246:
         paramContext = paramContext.getResources();
@@ -203,13 +203,13 @@ class TinkerResourcePatcher
         {
           try
           {
-            wXp = ShareReflectUtil.b(paramContext, "mResourcesImpl");
+            BtT = ShareReflectUtil.b(paramContext, "mResourcesImpl");
           }
           catch (Throwable localThrowable1)
           {
             try
             {
-              wXt = ShareReflectUtil.d(ApplicationInfo.class, "publicSourceDir");
+              BtX = ShareReflectUtil.g(ApplicationInfo.class, "publicSourceDir");
               return;
             }
             catch (NoSuchFieldException paramContext)
@@ -217,10 +217,10 @@ class TinkerResourcePatcher
               return;
             }
             localThrowable1 = localThrowable1;
-            wXo = ShareReflectUtil.b(paramContext, "mAssets");
+            BtS = ShareReflectUtil.b(paramContext, "mAssets");
             continue;
           }
-          wXo = ShareReflectUtil.b(paramContext, "mAssets");
+          BtS = ShareReflectUtil.b(paramContext, "mAssets");
         }
       }
       catch (Throwable localThrowable2)
@@ -230,12 +230,12 @@ class TinkerResourcePatcher
     }
   }
   
-  private static boolean hU(Context paramContext)
+  private static boolean jv(Context paramContext)
   {
     try
     {
       paramContext = paramContext.getAssets().open("only_use_to_test_tinker_resource.txt");
-      SharePatchFileUtil.S(paramContext);
+      SharePatchFileUtil.V(paramContext);
       return true;
     }
     catch (Throwable paramContext)
@@ -245,7 +245,7 @@ class TinkerResourcePatcher
     }
     finally
     {
-      SharePatchFileUtil.S(null);
+      SharePatchFileUtil.V(null);
     }
   }
 }

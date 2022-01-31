@@ -6,23 +6,22 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import com.tencent.mm.plugin.game.d.ac;
-import com.tencent.mm.plugin.game.d.cj;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.d.ad;
+import com.tencent.mm.plugin.game.d.ck;
 import com.tencent.mm.plugin.game.e.a;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.c;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.game.f.e;
+import com.tencent.mm.plugin.game.model.d;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class GameFeedMatchView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private com.tencent.mm.plugin.game.model.e kXy;
-  private GameFeedTitleDescView laV;
-  private GameFeedSubscriptView lbi;
-  private GameRoundImageView lbl;
+  private d nvA;
+  private GameFeedTitleDescView nyR;
+  private GameFeedSubscriptView nze;
+  private GameRoundImageView nzh;
   
   public GameFeedMatchView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,47 +30,58 @@ public class GameFeedMatchView
   
   public void onClick(View paramView)
   {
-    if ((this.kXy == null) || (this.kXy.kOu == null)) {}
-    while (bk.bl(this.kXy.kOu.kRP)) {
+    AppMethodBeat.i(111936);
+    if ((this.nvA == null) || (this.nvA.nmr == null))
+    {
+      AppMethodBeat.o(111936);
       return;
     }
-    int i = c.an(getContext(), this.kXy.kOu.kRP);
-    b.a(getContext(), 10, 1024, this.kXy.position, i, this.kXy.kOu.euK, GameIndexListView.getSourceScene(), a.O(this.kXy.kOu.kSs, "clickType", "card"));
+    if (!bo.isNullOrNil(this.nvA.nmr.npR))
+    {
+      int i = com.tencent.mm.plugin.game.f.c.ax(getContext(), this.nvA.nmr.npR);
+      com.tencent.mm.game.report.c.a(getContext(), 10, 1024, this.nvA.position, i, this.nvA.nmr.fKw, GameIndexListView.getSourceScene(), a.V(this.nvA.nmr.nqt, "clickType", "card"));
+    }
+    AppMethodBeat.o(111936);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111934);
     super.onFinishInflate();
-    this.laV = ((GameFeedTitleDescView)findViewById(g.e.game_feed_title_desc));
-    this.lbl = ((GameRoundImageView)findViewById(g.e.big_image));
-    this.lbi = ((GameFeedSubscriptView)findViewById(g.e.subscript));
+    this.nyR = ((GameFeedTitleDescView)findViewById(2131824608));
+    this.nzh = ((GameRoundImageView)findViewById(2131824614));
+    this.nze = ((GameFeedSubscriptView)findViewById(2131824613));
     setOnClickListener(this);
+    AppMethodBeat.o(111934);
   }
   
-  public void setData(com.tencent.mm.plugin.game.model.e parame)
+  public void setData(d paramd)
   {
-    if ((parame == null) || (parame.kOu == null) || (parame.kOu.kTl == null))
+    AppMethodBeat.i(111935);
+    if ((paramd == null) || (paramd.nmr == null) || (paramd.nmr.nrl == null))
     {
       setVisibility(8);
+      AppMethodBeat.o(111935);
       return;
     }
-    this.kXy = parame;
-    parame = parame.kOu;
+    this.nvA = paramd;
+    paramd = paramd.nmr;
     setVisibility(0);
-    this.laV.a(parame.kTl.bGw, parame.kTl.kRN, null);
-    if (!bk.bl(parame.kTl.kRO))
+    this.nyR.b(paramd.nrl.Title, paramd.nrl.Desc, null);
+    if (!bo.isNullOrNil(paramd.nrl.npQ))
     {
-      this.lbl.setVisibility(0);
-      com.tencent.mm.plugin.game.f.e.baw().a(this.lbl, parame.kTl.kRO, getResources().getDimensionPixelSize(g.c.GameMatchImageWidth), getResources().getDimensionPixelSize(g.c.GameMatchImageHeight), c.getScreenWidth(getContext()) - getPaddingLeft() - getPaddingRight());
+      this.nzh.setVisibility(0);
+      e.bHE().a(this.nzh, paramd.nrl.npQ, getResources().getDimensionPixelSize(2131427728), getResources().getDimensionPixelSize(2131427727), com.tencent.mm.plugin.game.f.c.getScreenWidth(getContext()) - getPaddingLeft() - getPaddingRight());
     }
     for (;;)
     {
-      this.lbi.setData(parame);
-      if (this.kXy.kOw) {
-        break;
+      this.nze.setData(paramd);
+      if (!this.nvA.nmt)
+      {
+        a.a(getContext(), 10, 1024, this.nvA.position, this.nvA.nmr.fKw, GameIndexListView.getSourceScene(), a.lR(this.nvA.nmr.nqt));
+        this.nvA.nmt = true;
       }
-      a.a(getContext(), 10, 1024, this.kXy.position, this.kXy.kOu.euK, GameIndexListView.getSourceScene(), a.fy(this.kXy.kOu.kSs));
-      this.kXy.kOw = true;
+      AppMethodBeat.o(111935);
       return;
       setVisibility(8);
     }
@@ -79,7 +89,7 @@ public class GameFeedMatchView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameFeedMatchView
  * JD-Core Version:    0.7.0.1
  */

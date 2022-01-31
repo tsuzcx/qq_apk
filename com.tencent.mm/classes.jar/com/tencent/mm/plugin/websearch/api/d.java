@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import com.tencent.mm.protocal.c.bki;
+import com.tencent.mm.protocal.protobuf.bti;
 
 public abstract interface d
 {
-  public abstract void a(boolean paramBoolean, bki parambki, String paramString1, String paramString2);
+  public abstract void a(boolean paramBoolean, bti parambti, String paramString1, String paramString2);
 }
 
 

@@ -1,46 +1,45 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.g;
-import com.tencent.mm.plugin.setting.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
 public class SettingDeleteAccountUI
   extends MMActivity
 {
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.setting_delete_account;
+    return 2130970682;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        SettingDeleteAccountUI.this.XM();
-        SettingDeleteAccountUI.this.finish();
-        return true;
-      }
-    });
-    ((TextView)findViewById(a.f.delete_account_btn)).setOnClickListener(new SettingDeleteAccountUI.2(this));
+    AppMethodBeat.i(127072);
+    setBackBtn(new SettingDeleteAccountUI.1(this));
+    ((TextView)findViewById(2131827591)).setOnClickListener(new SettingDeleteAccountUI.2(this));
+    AppMethodBeat.o(127072);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127071);
     super.onCreate(paramBundle);
-    setMMTitle(a.i.setting_del_account_title);
+    setMMTitle(2131303144);
     initView();
+    AppMethodBeat.o(127071);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingDeleteAccountUI
  * JD-Core Version:    0.7.0.1
  */

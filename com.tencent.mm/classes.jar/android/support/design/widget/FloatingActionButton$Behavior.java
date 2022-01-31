@@ -3,9 +3,9 @@ package android.support.design.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
-import android.support.design.a.k;
-import android.support.v4.view.q;
-import android.support.v4.widget.s;
+import android.support.design.a.a;
+import android.support.v4.view.t;
+import android.support.v4.widget.u;
 import android.util.AttributeSet;
 import android.view.View;
 import java.util.List;
@@ -13,20 +13,20 @@ import java.util.List;
 public class FloatingActionButton$Behavior
   extends CoordinatorLayout.Behavior<FloatingActionButton>
 {
-  private Rect hc;
-  private FloatingActionButton.a iA;
-  private boolean iB;
+  private Rect hV;
+  private FloatingActionButton.a jt;
+  private boolean ju;
   
   public FloatingActionButton$Behavior()
   {
-    this.iB = true;
+    this.ju = true;
   }
   
   public FloatingActionButton$Behavior(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.FloatingActionButton_Behavior_Layout);
-    this.iB = paramContext.getBoolean(a.k.FloatingActionButton_Behavior_Layout_behavior_autoHide, true);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.FloatingActionButton_Behavior_Layout);
+    this.ju = paramContext.getBoolean(0, true);
     paramContext.recycle();
   }
   
@@ -35,25 +35,25 @@ public class FloatingActionButton$Behavior
     if (!a(paramAppBarLayout, paramFloatingActionButton)) {
       return false;
     }
-    if (this.hc == null) {
-      this.hc = new Rect();
+    if (this.hV == null) {
+      this.hV = new Rect();
     }
-    Rect localRect = this.hc;
-    s.a(paramCoordinatorLayout, paramAppBarLayout, localRect);
+    Rect localRect = this.hV;
+    u.a(paramCoordinatorLayout, paramAppBarLayout, localRect);
     if (localRect.bottom <= paramAppBarLayout.getMinimumHeightForVisibleOverlappingContent()) {
-      paramFloatingActionButton.b(this.iA);
+      paramFloatingActionButton.b(this.jt);
     }
     for (;;)
     {
       return true;
-      paramFloatingActionButton.a(this.iA);
+      paramFloatingActionButton.a(this.jt);
     }
   }
   
   private boolean a(CoordinatorLayout paramCoordinatorLayout, FloatingActionButton paramFloatingActionButton, int paramInt)
   {
     int j = 0;
-    Object localObject1 = paramCoordinatorLayout.n(paramFloatingActionButton);
+    Object localObject1 = paramCoordinatorLayout.o(paramFloatingActionButton);
     int k = ((List)localObject1).size();
     int i = 0;
     Object localObject2;
@@ -70,7 +70,7 @@ public class FloatingActionButton$Behavior
     {
       label65:
       paramCoordinatorLayout.e(paramFloatingActionButton, paramInt);
-      localObject1 = paramFloatingActionButton.it;
+      localObject1 = paramFloatingActionButton.jn;
       if ((localObject1 != null) && (((Rect)localObject1).centerX() > 0) && (((Rect)localObject1).centerY() > 0))
       {
         localObject2 = (CoordinatorLayout.d)paramFloatingActionButton.getLayoutParams();
@@ -89,13 +89,13 @@ public class FloatingActionButton$Behavior
       for (;;)
       {
         if (i != 0) {
-          q.p(paramFloatingActionButton, i);
+          t.q(paramFloatingActionButton, i);
         }
         if (paramInt != 0) {
-          q.q(paramFloatingActionButton, paramInt);
+          t.s(paramFloatingActionButton, paramInt);
         }
         return true;
-        if ((o((View)localObject2)) && (b((View)localObject2, paramFloatingActionButton))) {
+        if ((p((View)localObject2)) && (b((View)localObject2, paramFloatingActionButton))) {
           break label65;
         }
         label194:
@@ -120,10 +120,10 @@ public class FloatingActionButton$Behavior
   private boolean a(View paramView, FloatingActionButton paramFloatingActionButton)
   {
     CoordinatorLayout.d locald = (CoordinatorLayout.d)paramFloatingActionButton.getLayoutParams();
-    if (!this.iB) {
+    if (!this.ju) {
       return false;
     }
-    if (locald.hS != paramView.getId()) {
+    if (locald.iP != paramView.getId()) {
       return false;
     }
     return paramFloatingActionButton.getUserSetVisibility() == 0;
@@ -138,34 +138,34 @@ public class FloatingActionButton$Behavior
     int i = paramView.getTop();
     int j = paramFloatingActionButton.getHeight() / 2;
     if (i < locald.topMargin + j) {
-      paramFloatingActionButton.b(this.iA);
+      paramFloatingActionButton.b(this.jt);
     }
     for (;;)
     {
       return true;
-      paramFloatingActionButton.a(this.iA);
+      paramFloatingActionButton.a(this.jt);
     }
   }
   
-  private static boolean o(View paramView)
+  private static boolean p(View paramView)
   {
     paramView = paramView.getLayoutParams();
     if ((paramView instanceof CoordinatorLayout.d)) {
-      return ((CoordinatorLayout.d)paramView).hP instanceof BottomSheetBehavior;
+      return ((CoordinatorLayout.d)paramView).iM instanceof BottomSheetBehavior;
     }
     return false;
   }
   
   public final void a(CoordinatorLayout.d paramd)
   {
-    if (paramd.hU == 0) {
-      paramd.hU = 80;
+    if (paramd.iR == 0) {
+      paramd.iR = 80;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.widget.FloatingActionButton.Behavior
  * JD-Core Version:    0.7.0.1
  */

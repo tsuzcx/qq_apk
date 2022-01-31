@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.av.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.a;
 
 final class ab$2
   implements Runnable
@@ -9,13 +10,15 @@ final class ab$2
   
   public final void run()
   {
-    a.Ps();
-    this.oQI.isPlaying = false;
+    AppMethodBeat.i(38326);
+    a.aiu();
+    this.rIu.isPlaying = false;
+    AppMethodBeat.o(38326);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ab.2
  * JD-Core Version:    0.7.0.1
  */

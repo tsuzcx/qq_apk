@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
 import android.support.v7.widget.RecyclerView.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class RecentAppBrandView$a
@@ -10,12 +11,18 @@ final class RecentAppBrandView$a
   
   public final int getItemCount()
   {
-    return Math.min(4, RecentAppBrandView.b(this.hrd).size());
+    AppMethodBeat.i(133933);
+    int i = RecentAppBrandView.d(this.jgf).size();
+    AppMethodBeat.o(133933);
+    return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    return RecentAppBrandView.a(this.hrd, paramInt).type;
+    AppMethodBeat.i(133932);
+    paramInt = RecentAppBrandView.a(this.jgf, paramInt).type;
+    AppMethodBeat.o(133932);
+    return paramInt;
   }
 }
 

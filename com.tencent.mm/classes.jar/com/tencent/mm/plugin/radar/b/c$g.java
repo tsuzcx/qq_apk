@@ -1,65 +1,73 @@
 package com.tencent.mm.plugin.radar.b;
 
-import a.d.b.g;
-import a.h.e;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.model.bx.a;
+import a.f.b.j;
+import a.l;
+import a.l.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.model.bz.a;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.storage.ad;
 import java.util.Map;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/radar/model/RadarAddContact$msgListener$1", "Lcom/tencent/mm/model/SysCmdMsgExtension$ISysCmdMsgListener;", "NODE_ENCRYPT_USERNAME", "", "NODE_TYPE", "NODE_USERNAME", "onRecieveMsg", "", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "plugin-radar_release"})
 public final class c$g
-  implements bx.a
+  implements bz.a
 {
-  private final String nkK = ".sysmsg.addcontact.type";
-  private final String nkL = ".sysmsg.addcontact.username";
-  private final String nkM = ".sysmsg.addcontact.encryptusername";
+  private final String pQa = ".sysmsg.addcontact.type";
+  private final String pQb = ".sysmsg.addcontact.username";
+  private final String pQc = ".sysmsg.addcontact.encryptusername";
   
   public final void a(e.a parama)
   {
-    g.k(parama, "addMsgInfo");
-    parama = aa.a(parama.dBs.svH);
-    Object localObject2 = bn.s(parama, "sysmsg");
-    if (localObject2 == null) {}
-    while (!g.e((String)((Map)localObject2).get(this.nkK), "1")) {
+    AppMethodBeat.i(102877);
+    j.q(parama, "addMsgInfo");
+    Object localObject1 = aa.a(parama.eyJ.woR);
+    Object localObject2 = br.F((String)localObject1, "sysmsg");
+    if (localObject2 == null)
+    {
+      AppMethodBeat.o(102877);
       return;
     }
-    Object localObject1 = (String)((Map)localObject2).get(this.nkL);
-    localObject2 = (String)((Map)localObject2).get(this.nkM);
-    CharSequence localCharSequence = (CharSequence)localObject1;
-    if ((localCharSequence == null) || (e.X(localCharSequence)))
+    if (j.e((String)((Map)localObject2).get(this.pQa), "1"))
     {
-      i = 1;
-      if (i == 0)
+      parama = (String)((Map)localObject2).get(this.pQb);
+      localObject2 = (String)((Map)localObject2).get(this.pQc);
+      CharSequence localCharSequence = (CharSequence)parama;
+      if ((localCharSequence == null) || (m.ap(localCharSequence)))
       {
-        localCharSequence = (CharSequence)localObject2;
-        if ((localCharSequence != null) && (!e.X(localCharSequence))) {
-          break label161;
+        i = 1;
+        if (i == 0)
+        {
+          localCharSequence = (CharSequence)localObject2;
+          if ((localCharSequence != null) && (!m.ap(localCharSequence))) {
+            break label172;
+          }
         }
       }
-    }
-    label161:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label166;
+      label172:
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label177;
+        }
+        ab.e(c.access$getTAG$cp(), "error! server return incorrect content! : %s", new Object[] { localObject1 });
+        AppMethodBeat.o(102877);
+        return;
+        i = 0;
+        break;
       }
-      localObject1 = c.nkz;
-      y.e(c.access$getTAG$cp(), "error! server return incorrect content! : %s", new Object[] { parama });
-      return;
-      i = 0;
-      break;
+      label177:
+      localObject1 = new ad();
+      ((ad)localObject1).setUsername(parama);
+      ((ad)localObject1).jv((String)localObject2);
+      c.c(this.pPT, (ad)localObject1);
+      ab.d(c.access$getTAG$cp(), "receive contact added system message useranme %s, encypt %s", new Object[] { ((ad)localObject1).getUsername(), ((ad)localObject1).Hv() });
     }
-    label166:
-    parama = new ad();
-    parama.setUsername((String)localObject1);
-    parama.dq((String)localObject2);
-    c.c(this.nkD, parama);
-    localObject1 = c.nkz;
-    y.d(c.access$getTAG$cp(), "receive contact added system message useranme %s, encypt %s", new Object[] { parama.getUsername(), parama.vp() });
+    AppMethodBeat.o(102877);
   }
 }
 

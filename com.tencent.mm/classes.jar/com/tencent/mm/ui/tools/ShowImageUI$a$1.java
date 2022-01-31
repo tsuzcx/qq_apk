@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 import com.tencent.mm.plugin.gif.k;
 
@@ -10,7 +11,9 @@ final class ShowImageUI$a$1
   
   public final void invalidate()
   {
-    this.weZ.invalidate();
+    AppMethodBeat.i(34994);
+    this.AxP.invalidate();
+    AppMethodBeat.o(34994);
   }
 }
 

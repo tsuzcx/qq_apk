@@ -1,48 +1,81 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.util.Base64;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.emoji.model.EmojiLogic;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.vfs.e;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.plugin.webview.model.n;
+import com.tencent.mm.protocal.protobuf.ahl;
+import com.tencent.mm.protocal.protobuf.bqx;
+import com.tencent.mm.ui.MMActivity;
 
 final class g$111
-  implements Runnable
+  implements f
 {
-  g$111(g paramg, String paramString1, i parami, String paramString2, String paramString3) {}
+  g$111(g paramg1, i parami, g paramg2) {}
   
-  public final void run()
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.MsgHandler", "doAddToEmoticon use base64DataString");
-    int i = this.rAz.indexOf(";base64,");
-    Object localObject = "";
-    if (i != -1) {
-      localObject = this.rAz.substring(i + 8, this.rAz.length());
-    }
-    try
+    int i = -1;
+    AppMethodBeat.i(155030);
+    if ((g.E(this.vqm) != null) && (g.E(this.vqm).isShowing()))
     {
-      localObject = Base64.decode((String)localObject, 0);
-      if (bk.bE((byte[])localObject))
+      g.E(this.vqm).dismiss();
+      g.a(this.vqm, null);
+    }
+    com.tencent.mm.kernel.g.Rc().b(1393, this);
+    String str = "selectEnterpriseContact:fail";
+    if ((paramInt1 != 0) || (paramInt2 != 0))
+    {
+      paramm = null;
+      paramInt1 = i;
+      paramString = str;
+    }
+    while (paramInt1 != 0)
+    {
+      this.vqm.a(this.uZa, paramString, null);
+      AppMethodBeat.o(155030);
+      return;
+      ahl localahl = ((n)paramm).dbK();
+      paramString = str;
+      paramm = localahl;
+      paramInt1 = i;
+      if (localahl != null)
       {
-        g.a(this.rzi, this.rzk, "addToEmoticon:fail", null);
-        return;
+        paramString = str;
+        paramm = localahl;
+        paramInt1 = i;
+        if (localahl.wyn != null)
+        {
+          paramInt2 = localahl.wyn.ret;
+          paramString = str;
+          paramm = localahl;
+          paramInt1 = paramInt2;
+          if (localahl.wyn.csW != null)
+          {
+            paramString = str;
+            paramm = localahl;
+            paramInt1 = paramInt2;
+            if (localahl.wyn.csW.length() > 0)
+            {
+              paramString = localahl.wyn.csW;
+              paramm = localahl;
+              paramInt1 = paramInt2;
+            }
+          }
+        }
       }
     }
-    catch (Exception localException)
-    {
-      y.e("MicroMsg.MsgHandler", "doAddToEmoticon error:" + localException.getMessage());
-      g.a(this.rzi, this.rzk, "addToEmoticon:fail_" + localException.getMessage(), null);
-      return;
-    }
-    String str1 = com.tencent.mm.a.g.o(localException);
-    au.Hx();
-    String str2 = EmojiLogic.J(c.FL(), "", str1);
-    if ((!e.bK(str2)) || (!e.aeY(str2).equalsIgnoreCase(str1))) {
-      e.b(str2, localException, localException.length);
-    }
-    g.a(this.rzi, str1, this.eoz, this.rAA);
+    paramString = paramm.wqy;
+    paramm = new Intent();
+    paramm.putExtra("rawUrl", paramString);
+    paramm.putExtra("useJs", true);
+    ((MMActivity)g.j(this.vqm)).mmSetOnActivityResultCallback(this.vrx);
+    d.b(g.j(this.vqm), "webview", ".ui.tools.WebViewUI", paramm, 53);
+    AppMethodBeat.o(155030);
   }
 }
 

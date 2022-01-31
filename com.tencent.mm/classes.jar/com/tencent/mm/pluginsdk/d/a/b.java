@@ -1,42 +1,49 @@
 package com.tencent.mm.pluginsdk.d.a;
 
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public final class b
 {
-  private CountDownLatch rSV = null;
+  private CountDownLatch vJT = null;
   
   public final void b(long paramLong, Runnable paramRunnable)
   {
-    y.i("MicroMsg.SyncJob", "doAsSyncJob");
-    if (this.rSV == null) {
-      this.rSV = new CountDownLatch(1);
+    AppMethodBeat.i(27231);
+    ab.i("MicroMsg.SyncJob", "doAsSyncJob");
+    if (this.vJT == null) {
+      this.vJT = new CountDownLatch(1);
     }
-    ai.d(paramRunnable);
-    y.i("MicroMsg.SyncJob", "doAsSyncJob postToMainThread");
-    if (this.rSV != null) {}
-    try
-    {
-      this.rSV.await(paramLong, TimeUnit.MILLISECONDS);
-      return;
+    al.d(paramRunnable);
+    ab.i("MicroMsg.SyncJob", "doAsSyncJob postToMainThread");
+    if (this.vJT != null) {
+      try
+      {
+        this.vJT.await(paramLong, TimeUnit.MILLISECONDS);
+        AppMethodBeat.o(27231);
+        return;
+      }
+      catch (InterruptedException paramRunnable)
+      {
+        ab.w("MicroMsg.SyncJob", paramRunnable.getMessage());
+        ab.printErrStackTrace("MicroMsg.SyncJob", paramRunnable, "", new Object[0]);
+      }
     }
-    catch (InterruptedException paramRunnable)
-    {
-      y.w("MicroMsg.SyncJob", paramRunnable.getMessage());
-      y.printErrStackTrace("MicroMsg.SyncJob", paramRunnable, "", new Object[0]);
-    }
+    AppMethodBeat.o(27231);
   }
   
   public final void countDown()
   {
-    if (this.rSV != null)
+    AppMethodBeat.i(27230);
+    if (this.vJT != null)
     {
-      this.rSV.countDown();
-      this.rSV = null;
+      this.vJT.countDown();
+      this.vJT = null;
     }
+    AppMethodBeat.o(27230);
   }
 }
 

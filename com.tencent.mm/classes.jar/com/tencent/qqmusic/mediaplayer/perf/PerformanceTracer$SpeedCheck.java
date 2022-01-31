@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.perf;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Locale;
 
 class PerformanceTracer$SpeedCheck
@@ -63,7 +64,10 @@ class PerformanceTracer$SpeedCheck
   
   public long getTotalTimeMs()
   {
-    return Math.round(this.totalTimeNanoSecond / 1000000.0D);
+    AppMethodBeat.i(128402);
+    long l = Math.round(this.totalTimeNanoSecond / 1000000.0D);
+    AppMethodBeat.o(128402);
+    return l;
   }
   
   void reset()
@@ -77,8 +81,11 @@ class PerformanceTracer$SpeedCheck
   
   public String toString()
   {
+    AppMethodBeat.i(128403);
     compute();
-    return String.format(Locale.getDefault(), "%10s%15.2f%15.2f%15.2f%10d%15d", new Object[] { this.name, Double.valueOf(this.avg), Double.valueOf(this.max), Double.valueOf(this.min), Long.valueOf(this.totalTimeNanoSecond), Long.valueOf(this.totalBufferLength) });
+    String str = String.format(Locale.getDefault(), "%10s%15.2f%15.2f%15.2f%10d%15d", new Object[] { this.name, Double.valueOf(this.avg), Double.valueOf(this.max), Double.valueOf(this.min), Long.valueOf(this.totalTimeNanoSecond), Long.valueOf(this.totalBufferLength) });
+    AppMethodBeat.o(128403);
+    return str;
   }
 }
 

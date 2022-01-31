@@ -4,6 +4,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ConsolePanel$4
   implements View.OnKeyListener
@@ -12,13 +13,16 @@ final class ConsolePanel$4
   
   public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(11140);
     if (paramInt == 66)
     {
-      this.hEq.hEp = this.hEq.hEj.getText().toString();
-      ConsolePanel.a(this.hEq);
-      f.cy(paramView);
+      this.jxD.jxC = this.jxD.jxw.getText().toString();
+      ConsolePanel.a(this.jxD);
+      f.da(paramView);
+      AppMethodBeat.o(11140);
       return true;
     }
+    AppMethodBeat.o(11140);
     return false;
   }
 }

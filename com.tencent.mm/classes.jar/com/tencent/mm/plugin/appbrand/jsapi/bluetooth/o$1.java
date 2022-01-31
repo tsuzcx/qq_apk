@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,22 +14,25 @@ final class o$1
   
   public final void a(j paramj)
   {
-    y.i("MicroMsg.JsApiStartBluetoothDevicesDiscovery", "[onScanResult]result:%s", new Object[] { paramj });
+    AppMethodBeat.i(94206);
+    ab.i("MicroMsg.JsApiStartBluetoothDevicesDiscovery", "[onScanResult]result:%s", new Object[] { paramj });
     switch (paramj.errCode)
     {
     default: 
       HashMap localHashMap = new HashMap();
       localHashMap.put("errCode", Integer.valueOf(paramj.errCode));
-      localHashMap.put("isDiscovering", Boolean.valueOf(false));
-      this.ggH.C(this.dIS, this.glK.h(paramj.aox, localHashMap));
-      c.jdMethod_if(13);
+      localHashMap.put("isDiscovering", Boolean.FALSE);
+      this.hxW.h(this.bAX, this.hFJ.j(paramj.errMsg, localHashMap));
+      c.kS(13);
+      AppMethodBeat.o(94206);
       return;
     }
     paramj = new HashMap();
     paramj.put("errCode", Integer.valueOf(0));
-    paramj.put("isDiscovering", Boolean.valueOf(true));
-    this.ggH.C(this.dIS, this.glK.h("ok", paramj));
-    c.jdMethod_if(12);
+    paramj.put("isDiscovering", Boolean.TRUE);
+    this.hxW.h(this.bAX, this.hFJ.j("ok", paramj));
+    c.kS(12);
+    AppMethodBeat.o(94206);
   }
 }
 

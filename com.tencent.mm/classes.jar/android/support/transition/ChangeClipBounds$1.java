@@ -2,7 +2,7 @@ package android.support.transition;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.view.View;
 
 final class ChangeClipBounds$1
@@ -12,12 +12,12 @@ final class ChangeClipBounds$1
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    q.c(this.pX, null);
+    t.c(this.qU, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.transition.ChangeClipBounds.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,8 @@
 package com.tencent.ttpic.util;
 
 import android.graphics.PointF;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.BaseUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +11,12 @@ public class StableUtil
   public static List<Integer> getAvgAngles(List<List<Integer>> paramList)
   {
     int k = 0;
-    if (VideoUtil.isEmpty(paramList)) {
-      return VideoMaterialUtil.EMPTY_ANGLES_LIST;
+    AppMethodBeat.i(83976);
+    if (BaseUtils.isEmpty(paramList))
+    {
+      paramList = VideoMaterialUtil.EMPTY_ANGLES_LIST;
+      AppMethodBeat.o(83976);
+      return paramList;
     }
     ArrayList localArrayList = new ArrayList(((List)paramList.get(0)).size());
     int i = 0;
@@ -38,14 +44,19 @@ public class StableUtil
       localArrayList.set(j, Integer.valueOf(((Integer)localArrayList.get(j)).intValue() / paramList.size()));
       j += 1;
     }
+    AppMethodBeat.o(83976);
     return localArrayList;
   }
   
   public static List<PointF> getAvgPoints(List<List<PointF>> paramList)
   {
     int k = 0;
-    if (VideoUtil.isEmpty(paramList)) {
-      return VideoMaterialUtil.EMPTY_POINTS_LIST;
+    AppMethodBeat.i(83975);
+    if (BaseUtils.isEmpty(paramList))
+    {
+      paramList = VideoMaterialUtil.EMPTY_POINTS_LIST;
+      AppMethodBeat.o(83975);
+      return paramList;
     }
     ArrayList localArrayList = new ArrayList(((List)paramList.get(0)).size());
     int i = 0;
@@ -81,6 +92,7 @@ public class StableUtil
       localPointF.y /= paramList.size();
       j += 1;
     }
+    AppMethodBeat.o(83975);
     return localArrayList;
   }
   
@@ -96,7 +108,7 @@ public class StableUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.ttpic.util.StableUtil
  * JD-Core Version:    0.7.0.1
  */

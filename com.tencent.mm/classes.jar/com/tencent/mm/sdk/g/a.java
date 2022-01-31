@@ -1,49 +1,31 @@
 package com.tencent.mm.sdk.g;
 
-import android.content.Context;
-import com.tencent.mm.sdk.platformtools.y;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static boolean ga(Context paramContext)
+  static final ThreadLocal<String> yse;
+  
+  static
   {
-    if (paramContext == null) {
-      return false;
-    }
-    try
-    {
-      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
-      boolean bool = ((Boolean)paramContext.getMethod("hasNotchInScreen", new Class[0]).invoke(paramContext, new Object[0])).booleanValue();
-      y.d("MicroMsg.Vendor.Huawei", "huawei hasCutOut: %s", new Object[] { Boolean.valueOf(bool) });
-      return bool;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      y.printErrStackTrace("MicroMsg.Vendor.Huawei", paramContext, "hasCutOut, ClassNotFoundException!!", new Object[0]);
-      return false;
-    }
-    catch (NoSuchMethodException paramContext)
-    {
-      y.printErrStackTrace("MicroMsg.Vendor.Huawei", paramContext, "hasCutOut, NoSuchMethodException!!", new Object[0]);
-      return false;
-    }
-    catch (IllegalAccessException paramContext)
-    {
-      y.printErrStackTrace("MicroMsg.Vendor.Huawei", paramContext, "hasCutOut, IllegalAccessException!!", new Object[0]);
-      return false;
-    }
-    catch (InvocationTargetException paramContext)
-    {
-      y.printErrStackTrace("MicroMsg.Vendor.Huawei", paramContext, "hasCutOut, InvocationTargetException!!", new Object[0]);
-      return false;
-    }
-    finally
-    {
-      y.d("MicroMsg.Vendor.Huawei", "huawei hasCutOut: %s", new Object[] { Boolean.valueOf(false) });
-    }
-    return false;
+    AppMethodBeat.i(52522);
+    yse = new ThreadLocal();
+    AppMethodBeat.o(52522);
+  }
+  
+  public static String getTag()
+  {
+    AppMethodBeat.i(52521);
+    String str = (String)yse.get();
+    AppMethodBeat.o(52521);
+    return str;
+  }
+  
+  protected static void setTag(String paramString)
+  {
+    AppMethodBeat.i(52520);
+    yse.set(paramString);
+    AppMethodBeat.o(52520);
   }
 }
 

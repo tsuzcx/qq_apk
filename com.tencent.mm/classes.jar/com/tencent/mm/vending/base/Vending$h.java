@@ -1,18 +1,21 @@
 package com.tencent.mm.vending.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 
 final class Vending$h<K, V>
   extends HashMap<K, V>
 {
-  Vending.f wtk = null;
+  Vending.f AOf = null;
   
   public final void clear()
   {
+    AppMethodBeat.i(126170);
     super.clear();
-    if (this.wtk != null) {
-      this.wtk.a();
+    if (this.AOf != null) {
+      this.AOf.a();
     }
+    AppMethodBeat.o(126170);
   }
 }
 

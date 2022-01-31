@@ -1,26 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc.hce;
 
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
+import com.tencent.luggage.g.e.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$5
-  implements Runnable
+  implements e.a
 {
-  a$5(a parama, ComponentName paramComponentName) {}
+  a$5(a parama) {}
   
-  public final void run()
+  public final void b(int paramInt, Intent paramIntent)
   {
-    a.g(this.gyo);
-    Intent localIntent = new Intent("android.nfc.cardemulation.action.ACTION_CHANGE_DEFAULT");
-    localIntent.putExtra("category", "payment");
-    localIntent.putExtra("component", this.gyq);
-    a.h(this.gyo).startActivityForResult(localIntent, 2);
+    AppMethodBeat.i(141911);
+    a.hUM.oi(1);
+    AppMethodBeat.o(141911);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.luggage.bridge.a;
 
-import com.tencent.luggage.b.b;
-import com.tencent.luggage.b.d;
+import com.tencent.luggage.a.b;
+import com.tencent.luggage.a.d;
 
 public abstract interface a$c
 {

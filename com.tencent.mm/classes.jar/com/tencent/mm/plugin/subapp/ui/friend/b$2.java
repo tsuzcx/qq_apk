@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.subapp.ui.friend;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.bh.d;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bi.d;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.pluginsdk.ui.applet.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.ay;
 import java.util.LinkedList;
@@ -18,25 +19,26 @@ final class b$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(25347);
     if ((paramView.getTag() instanceof com.tencent.mm.pluginsdk.ui.preference.b))
     {
-      y.d("MicroMsg.FMessageConversationUI", "addOnClick onClick");
+      ab.d("MicroMsg.FMessageConversationUI", "addOnClick onClick");
       paramView = (com.tencent.mm.pluginsdk.ui.preference.b)paramView.getTag();
-      if ((paramView == null) || (bk.bl(paramView.username))) {
-        y.e("MicroMsg.FMessageConversationUI", "cpan add contact failed. username is null.");
+      if ((paramView == null) || (bo.isNullOrNil(paramView.username)))
+      {
+        ab.e("MicroMsg.FMessageConversationUI", "cpan add contact failed. username is null.");
+        AppMethodBeat.o(25347);
+        return;
       }
+      ad localad = com.tencent.mm.pluginsdk.ui.preference.b.a(d.alh().ase(paramView.username));
+      a locala = new a(b.a(this.sXN), new b.2.1(this, paramView, localad));
+      ab.d("MicroMsg.FMessageConversationUI", "try to addcontact, username = " + paramView.username + ", opcode = MM_VERIFYUSER_ADDCONTACT");
+      LinkedList localLinkedList = new LinkedList();
+      localLinkedList.add(Integer.valueOf(paramView.qQk));
+      locala.amg(localad.dra);
+      locala.b(paramView.username, localLinkedList, true);
     }
-    else
-    {
-      return;
-    }
-    ad localad = com.tencent.mm.pluginsdk.ui.preference.b.a(d.RX().abU(paramView.username));
-    a locala = new a(b.a(this.pwh), new b.2.1(this, paramView, localad));
-    y.d("MicroMsg.FMessageConversationUI", "try to addcontact, username = " + paramView.username + ", opcode = MM_VERIFYUSER_ADDCONTACT");
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(Integer.valueOf(paramView.ocd));
-    locala.WA(localad.cCQ);
-    locala.b(paramView.username, localLinkedList, true);
+    AppMethodBeat.o(25347);
   }
 }
 

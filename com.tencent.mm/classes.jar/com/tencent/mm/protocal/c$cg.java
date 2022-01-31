@@ -5,12 +5,12 @@ public final class c$cg
 {
   public c$cg()
   {
-    super("getLatestAddress", "get_recently_used_address", 46, true);
+    super("getLocalData", "getLocalData", 179, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.c.cg
  * JD-Core Version:    0.7.0.1
  */

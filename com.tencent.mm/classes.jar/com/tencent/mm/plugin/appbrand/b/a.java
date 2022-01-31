@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.b;
 
-import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
 
 public class a
-  implements g
+  implements j
 {
-  public boolean fFH;
+  public boolean gYd;
 }
 
 

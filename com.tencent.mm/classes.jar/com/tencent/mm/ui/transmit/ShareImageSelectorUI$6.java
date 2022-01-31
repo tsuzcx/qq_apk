@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.transmit;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.c;
 
 final class ShareImageSelectorUI$6
@@ -7,20 +8,24 @@ final class ShareImageSelectorUI$6
 {
   ShareImageSelectorUI$6(ShareImageSelectorUI paramShareImageSelectorUI) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(35252);
     switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      ShareImageSelectorUI.d(this.whT);
-      return;
-    case 1: 
-      ShareImageSelectorUI.e(this.whT);
-      return;
     }
-    ShareImageSelectorUI.f(this.whT);
+    for (;;)
+    {
+      AppMethodBeat.o(35252);
+      return;
+      ShareImageSelectorUI.d(this.AAQ);
+      AppMethodBeat.o(35252);
+      return;
+      ShareImageSelectorUI.e(this.AAQ);
+      AppMethodBeat.o(35252);
+      return;
+      ShareImageSelectorUI.f(this.AAQ);
+    }
   }
 }
 

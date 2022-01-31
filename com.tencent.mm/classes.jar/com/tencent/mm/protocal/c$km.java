@@ -5,12 +5,12 @@ public final class c$km
 {
   public c$km()
   {
-    super("videoProxySetPlayerState", "videoProxySetPlayerState", 159, false);
+    super("streamingVideoPlay", "playStreamingVideo", 209, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.km
  * JD-Core Version:    0.7.0.1
  */

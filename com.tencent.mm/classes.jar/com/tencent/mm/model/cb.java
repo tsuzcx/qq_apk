@@ -1,92 +1,98 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.ah.e;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
-import com.tencent.mm.ah.e.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.az.k;
-import com.tencent.mm.kernel.b;
+import android.os.SystemClock;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
 
 public final class cb
-  implements e
 {
-  public final void a(e.c paramc) {}
+  private static long fnZ = 0L;
   
-  public final e.b b(e.a parama)
+  public static long abp()
   {
-    parama = parama.dBs;
-    if ((parama == null) || (parama.svH == null))
+    AppMethodBeat.i(58137);
+    if (ah.brt())
     {
-      y.f("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension failed, invalid cmdAM");
-      return null;
+      g.RM();
+      if (g.RJ().QU()) {}
     }
-    y.i("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension start");
-    parama = aa.a(parama.svH);
-    Object localObject = DocumentBuilderFactory.newInstance();
-    for (;;)
+    else
     {
-      int i;
-      try
-      {
-        parama = ((DocumentBuilderFactory)localObject).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(parama.getBytes("utf-8"))));
-        parama.normalize();
-        parama = parama.getDocumentElement().getElementsByTagName("updatepackage");
-        if ((parama != null) && (parama.getLength() == 1))
-        {
-          parama = parama.item(0).getChildNodes();
-          int j = parama.getLength();
-          i = 0;
-          if (i < j)
-          {
-            localObject = parama.item(i);
-            if ((localObject == null) || (((Node)localObject).getNodeName() == null) || (!((Node)localObject).getNodeName().equals("pack"))) {
-              break label270;
-            }
-            localObject = ((Node)localObject).getAttributes();
-            if (localObject == null) {
-              break label270;
-            }
-            localObject = ((NamedNodeMap)localObject).getNamedItem("type");
-            if (localObject == null) {
-              break label270;
-            }
-            localObject = new k(bk.getInt(((Node)localObject).getNodeValue(), 0));
-            g.DO().dJT.a((m)localObject, 0);
-            break label270;
-          }
-        }
-        y.i("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension end");
-        return null;
-      }
-      catch (Exception parama)
-      {
-        y.e("MicroMsg.UpdatePackageMsgExtension", "exception:%s", new Object[] { bk.j(parama) });
-        return null;
-      }
-      label270:
-      i += 1;
+      AppMethodBeat.o(58137);
+      return 0L;
     }
+    try
+    {
+      long l = abq();
+      AppMethodBeat.o(58137);
+      return l;
+    }
+    catch (Throwable localThrowable)
+    {
+      ab.e("MicroMsg.TimeHelper", localThrowable.getMessage());
+      AppMethodBeat.o(58137);
+    }
+    return 0L;
+  }
+  
+  public static long abq()
+  {
+    AppMethodBeat.i(58139);
+    long l2 = SystemClock.elapsedRealtime();
+    g.RM();
+    long l3 = g.RL().Ru().a(ac.a.yGp, l2);
+    g.RM();
+    long l1 = g.RL().Ru().a(ac.a.yGo, 0L);
+    l2 = Math.max(0L, l2 - l3);
+    ab.d("MicroMsg.TimeHelper", "[getSyncServerTimeMs] SyncServerTime:" + fnZ + " offset:" + l2);
+    if (0L < l1)
+    {
+      AppMethodBeat.o(58139);
+      return l2 + l1;
+    }
+    l1 = System.currentTimeMillis();
+    AppMethodBeat.o(58139);
+    return l1;
+  }
+  
+  public static int abr()
+  {
+    AppMethodBeat.i(58140);
+    int i = (int)(abq() / 1000L);
+    AppMethodBeat.o(58140);
+    return i;
+  }
+  
+  public static void gy(long paramLong)
+  {
+    AppMethodBeat.i(58138);
+    long l = SystemClock.elapsedRealtime();
+    fnZ = Math.max(paramLong, fnZ);
+    g.RM();
+    g.RL().Ru().set(ac.a.yGo, Long.valueOf(fnZ));
+    g.RM();
+    g.RL().Ru().set(ac.a.yGp, Long.valueOf(l));
+    ab.d("MicroMsg.TimeHelper", "[updateSyncServerTime] elapsedTime:%s SLastSyncServerTimeMs:%s", new Object[] { Long.valueOf(l), Long.valueOf(fnZ) });
+    AppMethodBeat.o(58138);
+  }
+  
+  public static long gz(long paramLong)
+  {
+    AppMethodBeat.i(58141);
+    long l = abq() / 1000L;
+    AppMethodBeat.o(58141);
+    return l - paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.cb
  * JD-Core Version:    0.7.0.1
  */

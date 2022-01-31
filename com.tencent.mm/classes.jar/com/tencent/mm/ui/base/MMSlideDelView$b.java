@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.base;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMSlideDelView$b
   implements Runnable
@@ -9,8 +10,10 @@ final class MMSlideDelView$b
   
   public final void run()
   {
-    y.v("MicroMsg.MMSlideDelView", "checkfortap");
-    this.uXT.setPressed(true);
+    AppMethodBeat.i(106776);
+    ab.v("MicroMsg.MMSlideDelView", "checkfortap");
+    this.zmk.setPressed(true);
+    AppMethodBeat.o(106776);
   }
 }
 

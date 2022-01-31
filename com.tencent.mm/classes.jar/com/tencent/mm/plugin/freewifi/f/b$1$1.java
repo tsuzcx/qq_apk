@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.freewifi.f;
 
-import com.tencent.mm.ah.f;
+import com.tencent.mm.ai.f;
 
 final class b$1$1
   implements f
@@ -8,150 +8,152 @@ final class b$1$1
   b$1$1(b.1 param1) {}
   
   /* Error */
-  public final void onSceneEnd(int paramInt1, int paramInt2, java.lang.String paramString, com.tencent.mm.ah.m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, java.lang.String paramString, com.tencent.mm.ai.m paramm)
   {
     // Byte code:
-    //   0: ldc 26
-    //   2: ldc 28
-    //   4: iconst_3
-    //   5: anewarray 4	java/lang/Object
-    //   8: dup
-    //   9: iconst_0
-    //   10: iload_1
-    //   11: invokestatic 34	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   14: aastore
-    //   15: dup
-    //   16: iconst_1
-    //   17: iload_2
-    //   18: invokestatic 34	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   21: aastore
-    //   22: dup
-    //   23: iconst_2
-    //   24: aload_3
-    //   25: aastore
-    //   26: invokestatic 40	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   29: iload_1
-    //   30: iload_2
-    //   31: invokestatic 46	com/tencent/mm/plugin/freewifi/m:cR	(II)Z
-    //   34: ifeq +192 -> 226
-    //   37: aload 4
-    //   39: checkcast 48	com/tencent/mm/plugin/freewifi/d/e
-    //   42: invokevirtual 52	com/tencent/mm/plugin/freewifi/d/e:aUy	()Ljava/util/LinkedList;
-    //   45: astore 4
-    //   47: aload 4
-    //   49: ifnull +177 -> 226
-    //   52: aload 4
-    //   54: invokevirtual 58	java/util/LinkedList:size	()I
-    //   57: ifle +169 -> 226
-    //   60: invokestatic 64	com/tencent/mm/plugin/freewifi/model/j:aUk	()Lcom/tencent/mm/plugin/freewifi/g/f;
-    //   63: astore_3
-    //   64: aload 4
-    //   66: invokevirtual 68	java/util/LinkedList:iterator	()Ljava/util/Iterator;
-    //   69: astore 4
-    //   71: aload 4
-    //   73: invokeinterface 74 1 0
-    //   78: ifeq +148 -> 226
-    //   81: aload 4
-    //   83: invokeinterface 78 1 0
-    //   88: checkcast 80	com/tencent/mm/protocal/c/zk
-    //   91: astore 7
-    //   93: aload 7
-    //   95: getfield 84	com/tencent/mm/protocal/c/zk:id	Ljava/lang/String;
-    //   98: astore 6
-    //   100: aload 7
-    //   102: getfield 88	com/tencent/mm/protocal/c/zk:bLB	I
-    //   105: istore_1
-    //   106: ldc 26
-    //   108: ldc 90
-    //   110: iconst_2
-    //   111: anewarray 4	java/lang/Object
-    //   114: dup
-    //   115: iconst_0
-    //   116: aload 6
-    //   118: aastore
-    //   119: dup
-    //   120: iconst_1
-    //   121: iload_1
-    //   122: invokestatic 34	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   125: aastore
-    //   126: invokestatic 40	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   129: aload 6
-    //   131: invokestatic 94	com/tencent/mm/plugin/freewifi/m:isEmpty	(Ljava/lang/String;)Z
-    //   134: ifne -63 -> 71
-    //   137: iload_1
-    //   138: ifne -67 -> 71
-    //   141: ldc 96
-    //   143: ldc 98
-    //   145: iconst_1
-    //   146: anewarray 4	java/lang/Object
-    //   149: dup
-    //   150: iconst_0
-    //   151: aload 6
-    //   153: aastore
-    //   154: invokestatic 40	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   157: new 100	com/tencent/mm/plugin/freewifi/g/e
-    //   160: dup
-    //   161: invokespecial 101	com/tencent/mm/plugin/freewifi/g/e:<init>	()V
-    //   164: astore 7
-    //   166: aload 7
-    //   168: aload 6
-    //   170: putfield 104	com/tencent/mm/plugin/freewifi/g/e:field_id	Ljava/lang/String;
-    //   173: aload_3
-    //   174: aload 7
-    //   176: iconst_0
-    //   177: anewarray 106	java/lang/String
-    //   180: invokevirtual 112	com/tencent/mm/plugin/freewifi/g/f:a	(Lcom/tencent/mm/sdk/e/c;[Ljava/lang/String;)Z
-    //   183: istore 5
-    //   185: ldc 96
-    //   187: new 114	java/lang/StringBuilder
-    //   190: dup
-    //   191: ldc 116
-    //   193: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   196: iload 5
-    //   198: invokevirtual 123	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   201: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: invokestatic 130	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   207: goto -136 -> 71
-    //   210: astore_3
-    //   211: ldc 26
-    //   213: aload_3
-    //   214: invokestatic 134	com/tencent/mm/plugin/freewifi/m:g	(Ljava/lang/Exception;)Ljava/lang/String;
-    //   217: invokestatic 137	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   220: iconst_1
-    //   221: invokestatic 143	com/tencent/mm/plugin/freewifi/f/b:bo	(Z)Z
-    //   224: pop
-    //   225: return
-    //   226: iconst_1
-    //   227: invokestatic 143	com/tencent/mm/plugin/freewifi/f/b:bo	(Z)Z
-    //   230: pop
-    //   231: return
-    //   232: astore_3
-    //   233: iconst_1
-    //   234: invokestatic 143	com/tencent/mm/plugin/freewifi/f/b:bo	(Z)Z
-    //   237: pop
-    //   238: aload_3
-    //   239: athrow
+    //   0: sipush 20868
+    //   3: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 32
+    //   8: ldc 34
+    //   10: iconst_3
+    //   11: anewarray 4	java/lang/Object
+    //   14: dup
+    //   15: iconst_0
+    //   16: iload_1
+    //   17: invokestatic 40	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   20: aastore
+    //   21: dup
+    //   22: iconst_1
+    //   23: iload_2
+    //   24: invokestatic 40	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   27: aastore
+    //   28: dup
+    //   29: iconst_2
+    //   30: aload_3
+    //   31: aastore
+    //   32: invokestatic 45	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   35: iload_1
+    //   36: iload_2
+    //   37: invokestatic 51	com/tencent/mm/plugin/freewifi/m:ep	(II)Z
+    //   40: ifeq +187 -> 227
+    //   43: aload 4
+    //   45: checkcast 53	com/tencent/mm/plugin/freewifi/d/e
+    //   48: invokevirtual 57	com/tencent/mm/plugin/freewifi/d/e:bAY	()Ljava/util/LinkedList;
+    //   51: astore 4
+    //   53: aload 4
+    //   55: ifnull +172 -> 227
+    //   58: aload 4
+    //   60: invokevirtual 63	java/util/LinkedList:size	()I
+    //   63: ifle +164 -> 227
+    //   66: invokestatic 69	com/tencent/mm/plugin/freewifi/model/j:bAM	()Lcom/tencent/mm/plugin/freewifi/g/f;
+    //   69: astore_3
+    //   70: aload 4
+    //   72: invokevirtual 73	java/util/LinkedList:iterator	()Ljava/util/Iterator;
+    //   75: astore 4
+    //   77: aload 4
+    //   79: invokeinterface 79 1 0
+    //   84: ifeq +143 -> 227
+    //   87: aload 4
+    //   89: invokeinterface 83 1 0
+    //   94: checkcast 85	com/tencent/mm/protocal/protobuf/aeb
+    //   97: astore 6
+    //   99: aload 6
+    //   101: getfield 89	com/tencent/mm/protocal/protobuf/aeb:id	Ljava/lang/String;
+    //   104: astore 5
+    //   106: aload 6
+    //   108: getfield 93	com/tencent/mm/protocal/protobuf/aeb:csV	I
+    //   111: istore_1
+    //   112: ldc 32
+    //   114: ldc 95
+    //   116: iconst_2
+    //   117: anewarray 4	java/lang/Object
+    //   120: dup
+    //   121: iconst_0
+    //   122: aload 5
+    //   124: aastore
+    //   125: dup
+    //   126: iconst_1
+    //   127: iload_1
+    //   128: invokestatic 40	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   131: aastore
+    //   132: invokestatic 45	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   135: aload 5
+    //   137: invokestatic 99	com/tencent/mm/plugin/freewifi/m:isEmpty	(Ljava/lang/String;)Z
+    //   140: ifne -63 -> 77
+    //   143: iload_1
+    //   144: ifne -67 -> 77
+    //   147: ldc 101
+    //   149: ldc 103
+    //   151: iconst_1
+    //   152: anewarray 4	java/lang/Object
+    //   155: dup
+    //   156: iconst_0
+    //   157: aload 5
+    //   159: aastore
+    //   160: invokestatic 45	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   163: new 105	com/tencent/mm/plugin/freewifi/g/e
+    //   166: dup
+    //   167: invokespecial 106	com/tencent/mm/plugin/freewifi/g/e:<init>	()V
+    //   170: astore 6
+    //   172: aload 6
+    //   174: aload 5
+    //   176: putfield 109	com/tencent/mm/plugin/freewifi/g/e:field_id	Ljava/lang/String;
+    //   179: ldc 101
+    //   181: ldc 111
+    //   183: aload_3
+    //   184: aload 6
+    //   186: iconst_0
+    //   187: anewarray 113	java/lang/String
+    //   190: invokevirtual 119	com/tencent/mm/plugin/freewifi/g/f:delete	(Lcom/tencent/mm/sdk/e/c;[Ljava/lang/String;)Z
+    //   193: invokestatic 122	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   196: invokevirtual 126	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   199: invokestatic 129	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   202: goto -125 -> 77
+    //   205: astore_3
+    //   206: ldc 32
+    //   208: aload_3
+    //   209: invokestatic 133	com/tencent/mm/plugin/freewifi/m:f	(Ljava/lang/Exception;)Ljava/lang/String;
+    //   212: invokestatic 136	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   215: iconst_1
+    //   216: invokestatic 142	com/tencent/mm/plugin/freewifi/f/b:access$002	(Z)Z
+    //   219: pop
+    //   220: sipush 20868
+    //   223: invokestatic 145	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   226: return
+    //   227: iconst_1
+    //   228: invokestatic 142	com/tencent/mm/plugin/freewifi/f/b:access$002	(Z)Z
+    //   231: pop
+    //   232: sipush 20868
+    //   235: invokestatic 145	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   238: return
+    //   239: astore_3
+    //   240: iconst_1
+    //   241: invokestatic 142	com/tencent/mm/plugin/freewifi/f/b:access$002	(Z)Z
+    //   244: pop
+    //   245: sipush 20868
+    //   248: invokestatic 145	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   251: aload_3
+    //   252: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	240	0	this	1
-    //   0	240	1	paramInt1	int
-    //   0	240	2	paramInt2	int
-    //   0	240	3	paramString	java.lang.String
-    //   0	240	4	paramm	com.tencent.mm.ah.m
-    //   183	14	5	bool	boolean
-    //   98	71	6	str	java.lang.String
-    //   91	84	7	localObject	Object
+    //   0	253	0	this	1
+    //   0	253	1	paramInt1	int
+    //   0	253	2	paramInt2	int
+    //   0	253	3	paramString	java.lang.String
+    //   0	253	4	paramm	com.tencent.mm.ai.m
+    //   104	71	5	str	java.lang.String
+    //   97	88	6	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   0	47	210	java/lang/Exception
-    //   52	71	210	java/lang/Exception
-    //   71	137	210	java/lang/Exception
-    //   141	207	210	java/lang/Exception
-    //   0	47	232	finally
-    //   52	71	232	finally
-    //   71	137	232	finally
-    //   141	207	232	finally
-    //   211	220	232	finally
+    //   6	53	205	java/lang/Exception
+    //   58	77	205	java/lang/Exception
+    //   77	143	205	java/lang/Exception
+    //   147	202	205	java/lang/Exception
+    //   6	53	239	finally
+    //   58	77	239	finally
+    //   77	143	239	finally
+    //   147	202	239	finally
+    //   206	215	239	finally
   }
 }
 

@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.Addr;
-import com.tencent.mm.modelgeo.b.a;
+import com.tencent.mm.modelgeo.c.a;
 
 final class j$2$1
-  implements b.a
+  implements c.a
 {
   j$2$1(j.2 param2) {}
   
   public final void b(Addr paramAddr)
   {
-    if ((this.rBa.rAZ.rAR != null) && (this.rBa.rAZ.rAV != null))
+    AppMethodBeat.i(9822);
+    if ((this.vsd.vsc.vrU != null) && (this.vsd.vsc.vrY != null))
     {
-      this.rBa.rAZ.rAR.rBb = paramAddr.NY();
-      this.rBa.rAZ.cgC();
+      this.vsd.vsc.vrU.vse = paramAddr.agM();
+      this.vsd.vsc.dgR();
     }
+    AppMethodBeat.o(9822);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.j.2.1
  * JD-Core Version:    0.7.0.1
  */

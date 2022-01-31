@@ -2,12 +2,13 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mm.plugin.sns.a.b.g;
-import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.lucky.a.m;
+import com.tencent.mm.plugin.sns.lucky.ui.a;
 import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.cds;
+import com.tencent.mm.protocal.protobuf.vi;
 
 final class SnsCommentDetailUI$30
   implements View.OnClickListener
@@ -16,20 +17,29 @@ final class SnsCommentDetailUI$30
   
   public final void onClick(View paramView)
   {
-    if ((SnsCommentDetailUI.E(this.oWW) != null) && (this.oNX.field_likeFlag == 0)) {
-      SnsCommentDetailUI.E(this.oWW).fH(this.oNX.field_snsId);
+    AppMethodBeat.i(38813);
+    if (!m.ZV(this.rFG.csH()))
+    {
+      a.f(this.rPu.getContext(), this.rPu.rPq.EJ(0));
+      AppMethodBeat.o(38813);
+      return;
     }
-    SnsCommentDetailUI localSnsCommentDetailUI = this.oWW;
-    paramView = (LinearLayout)paramView;
-    ImageView localImageView = (ImageView)paramView.findViewById(i.f.album_like_icon);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.9F, 1.5F, 0.9F, 1.5F, 1, 0.5F, 1, 0.5F);
-    localScaleAnimation.setDuration(400L);
-    localScaleAnimation.setStartOffset(100L);
-    localScaleAnimation.setRepeatCount(0);
-    localImageView.clearAnimation();
-    localImageView.startAnimation(localScaleAnimation);
-    localScaleAnimation.setAnimationListener(new SnsCommentDetailUI.33(localSnsCommentDetailUI, paramView));
-    SnsCommentDetailUI.z(this.oWW);
+    SnsCommentDetailUI.c(this.rPu).setCommentInfo(null);
+    SnsCommentDetailUI.c(this.rPu).setCommentFlag(0);
+    SnsCommentDetailUI.c(this.rPu).setCommentHint(this.rPu.getString(2131304029));
+    SnsCommentDetailUI.c(this.rPu).setCommentInfo(new cds());
+    SnsCommentDetailUI.c(this.rPu).lC(true);
+    if ((this.rFG.Ex(32)) && ((this.rFG.csh().xTS.wOb & 0x8) != 0)) {
+      SnsCommentDetailUI.c(this.rPu).lD(true);
+    }
+    for (;;)
+    {
+      SnsCommentDetailUI.E(this.rPu).setVisibility(8);
+      SnsCommentDetailUI.z(this.rPu);
+      AppMethodBeat.o(38813);
+      return;
+      SnsCommentDetailUI.c(this.rPu).lD(false);
+    }
   }
 }
 

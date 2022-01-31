@@ -1,28 +1,35 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.map.lib.element.j;
+import java.util.List;
 
-public class ca
-  implements ThreadFactory
+abstract class ca
 {
-  private String a;
-  private AtomicInteger b;
+  abstract dh a(di paramdi, ay paramay);
   
-  public ca(String paramString)
-  {
-    this.a = paramString;
-    this.b = new AtomicInteger(1);
-  }
+  abstract void a(String paramString);
   
-  public Thread newThread(Runnable paramRunnable)
-  {
-    return new Thread(paramRunnable, this.a + "_" + this.b.getAndIncrement());
-  }
+  abstract void a(String paramString, float paramFloat);
+  
+  abstract void a(String paramString, int paramInt);
+  
+  abstract void a(String paramString, List<cz> paramList);
+  
+  abstract void a(String paramString, boolean paramBoolean);
+  
+  abstract List<j> b(String paramString);
+  
+  abstract void b();
+  
+  abstract void b(String paramString, float paramFloat);
+  
+  abstract void b(String paramString, int paramInt);
+  
+  abstract void c(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.ca
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,10 @@ package com.tencent.mm.plugin.wallet.balance.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtDetailUI;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.r;
+import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletBalanceManagerUI$12
   implements View.OnClickListener
@@ -16,16 +15,19 @@ final class WalletBalanceManagerUI$12
   
   public final void onClick(View paramView)
   {
-    g.DQ();
-    g.DP().Dz().c(ac.a.uxb, Integer.valueOf(-1));
-    paramView = new Intent(this.qhk, WalletLqtDetailUI.class);
-    paramView.putExtra("key_account_type", 1);
-    this.qhk.startActivity(paramView);
+    AppMethodBeat.i(142286);
+    paramView = new Intent();
+    paramView.putExtra("rawUrl", "https://kf.qq.com/touch/scene_product.html?scene_id=kf4");
+    paramView.putExtra("showShare", false);
+    paramView.putExtra("geta8key_username", r.Zn());
+    d.b(this.tOJ, "webview", ".ui.tools.WebViewUI", paramView);
+    e.RX(17);
+    AppMethodBeat.o(142286);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceManagerUI.12
  * JD-Core Version:    0.7.0.1
  */

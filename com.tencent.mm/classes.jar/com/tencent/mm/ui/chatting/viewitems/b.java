@@ -6,14 +6,14 @@ import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 
 final class b
 {
-  LinearLayout vAH;
-  CdnImageView vAI;
-  TextView vAJ;
-  TextView vAK;
+  LinearLayout zRg;
+  CdnImageView zRh;
+  TextView zRi;
+  TextView zRj;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.b
  * JD-Core Version:    0.7.0.1
  */

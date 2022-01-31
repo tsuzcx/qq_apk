@@ -1,7 +1,8 @@
 package com.tencent.mm.ui.voicesearch;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.messenger.a.f;
 import com.tencent.mm.storage.ad;
 
@@ -12,23 +13,28 @@ final class b$7
   
   public final void run()
   {
-    if (b.b(this.wiQ).isHidden())
+    AppMethodBeat.i(35333);
+    if (b.b(this.ABH).isHidden())
     {
-      b.b(this.wiQ).AR();
-      if (b.c(this.wiQ))
+      b.b(this.ABH).NH();
+      if (b.c(this.ABH))
       {
-        f localf = new f(this.wiR, 3);
-        au.Dk().a(localf, 0);
-        b.d(this.wiQ);
+        f localf = new f(this.ABI, 3);
+        aw.Rc().a(localf, 0);
+        b.d(this.ABH);
+        AppMethodBeat.o(35333);
       }
-      return;
     }
-    b.b(this.wiQ).AQ();
+    else
+    {
+      b.b(this.ABH).NG();
+    }
+    AppMethodBeat.o(35333);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.voicesearch.b.7
  * JD-Core Version:    0.7.0.1
  */

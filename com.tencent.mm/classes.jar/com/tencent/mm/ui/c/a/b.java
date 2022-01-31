@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.c.a;
 
 import android.view.animation.CycleInterpolator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
   extends CycleInterpolator
@@ -12,7 +13,10 @@ public final class b
   
   public final float getInterpolation(float paramFloat)
   {
-    return (float)(1.0D - Math.pow(2.0F * paramFloat - 1.0F, 2.0D));
+    AppMethodBeat.i(106219);
+    paramFloat = (float)(1.0D - Math.pow(2.0F * paramFloat - 1.0F, 2.0D));
+    AppMethodBeat.o(106219);
+    return paramFloat;
   }
 }
 

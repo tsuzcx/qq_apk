@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class ShareBsDiffPatchInfo
 {
-  public String bIW;
-  public String bvC;
+  public String BuO;
+  public String bWN;
+  public String cqq;
   public String name;
   public String path;
-  public String wYk;
   
   private ShareBsDiffPatchInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     this.name = paramString1;
-    this.bIW = paramString2;
-    this.wYk = paramString4;
-    this.bvC = paramString5;
+    this.cqq = paramString2;
+    this.BuO = paramString4;
+    this.bWN = paramString5;
     this.path = paramString3;
   }
   
@@ -27,12 +27,12 @@ public class ShareBsDiffPatchInfo
     {
       return false;
       str = paramShareBsDiffPatchInfo.name;
-      paramShareBsDiffPatchInfo = paramShareBsDiffPatchInfo.bIW;
+      paramShareBsDiffPatchInfo = paramShareBsDiffPatchInfo.cqq;
     } while ((str == null) || (str.length() <= 0) || (paramShareBsDiffPatchInfo == null) || (paramShareBsDiffPatchInfo.length() != 32));
     return true;
   }
   
-  public static void l(String paramString, ArrayList<ShareBsDiffPatchInfo> paramArrayList)
+  public static void n(String paramString, ArrayList<ShareBsDiffPatchInfo> paramArrayList)
   {
     if ((paramString == null) || (paramString.length() == 0)) {}
     for (;;)
@@ -66,11 +66,11 @@ public class ShareBsDiffPatchInfo
     localStringBuffer.append(",");
     localStringBuffer.append(this.path);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.bIW);
+    localStringBuffer.append(this.cqq);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.wYk);
+    localStringBuffer.append(this.BuO);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.bvC);
+    localStringBuffer.append(this.bWN);
     return localStringBuffer.toString();
   }
 }

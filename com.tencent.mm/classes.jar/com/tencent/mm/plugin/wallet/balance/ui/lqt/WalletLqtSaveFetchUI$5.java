@@ -1,20 +1,12 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import com.tencent.mm.ui.widget.a.d;
-import java.util.ArrayList;
+import com.tencent.mm.vending.c.a;
+import java.util.List;
 
 final class WalletLqtSaveFetchUI$5
-  implements a.a
+  implements a<Void, Void>
 {
-  WalletLqtSaveFetchUI$5(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI, ArrayList paramArrayList) {}
-  
-  public final void Vx()
-  {
-    d locald = new d(this.qiZ, 1, false);
-    locald.phH = new WalletLqtSaveFetchUI.5.1(this);
-    locald.phI = new WalletLqtSaveFetchUI.5.2(this);
-    locald.cfU();
-  }
+  WalletLqtSaveFetchUI$5(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI, List paramList) {}
 }
 
 

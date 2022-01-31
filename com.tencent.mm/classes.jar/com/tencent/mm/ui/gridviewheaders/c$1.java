@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.gridviewheaders;
 
 import android.database.DataSetObserver;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class c$1
@@ -11,19 +12,21 @@ final class c$1
   public final void onChanged()
   {
     int i = 0;
-    c localc = this.vWy;
+    AppMethodBeat.i(107329);
+    c localc = this.AoG;
     localc.mCount = 0;
-    int j = localc.vWu.cIA();
+    int j = localc.AoC.dNk();
     if (j == 0) {
-      localc.mCount = localc.vWu.getCount();
+      localc.mCount = localc.AoC.getCount();
     }
     for (;;)
     {
-      this.vWy.notifyDataSetChanged();
+      this.AoG.notifyDataSetChanged();
+      AppMethodBeat.o(107329);
       return;
       while (i < j)
       {
-        localc.mCount += localc.vWu.HU(i) + localc.mNumColumns;
+        localc.mCount += localc.AoC.QG(i) + localc.mNumColumns;
         i += 1;
       }
     }
@@ -31,13 +34,15 @@ final class c$1
   
   public final void onInvalidated()
   {
-    c.a(this.vWy).clear();
-    this.vWy.notifyDataSetInvalidated();
+    AppMethodBeat.i(107330);
+    c.a(this.AoG).clear();
+    this.AoG.notifyDataSetInvalidated();
+    AppMethodBeat.o(107330);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.c.1
  * JD-Core Version:    0.7.0.1
  */

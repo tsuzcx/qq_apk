@@ -4,47 +4,61 @@ import android.content.Context;
 import android.text.ClipboardManager;
 import android.util.AttributeSet;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PasterEditText
   extends EditText
 {
   private Context context;
-  private ClipboardManager oYb = null;
-  private int oYc = 0;
+  private int iNn;
+  private ClipboardManager rQu;
   
   public PasterEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(112701);
+    this.rQu = null;
+    this.iNn = 0;
     this.context = paramContext;
     init();
+    AppMethodBeat.o(112701);
   }
   
   public PasterEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(112702);
+    this.rQu = null;
+    this.iNn = 0;
     init();
+    AppMethodBeat.o(112702);
   }
   
   private void init()
   {
-    this.oYb = ((ClipboardManager)this.context.getSystemService("clipboard"));
+    AppMethodBeat.i(112703);
+    this.rQu = ((ClipboardManager)this.context.getApplicationContext().getSystemService("clipboard"));
+    AppMethodBeat.o(112703);
   }
   
   public int getPasterLen()
   {
-    return this.oYc;
+    return this.iNn;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
-    if (paramInt == 16908322)
-    {
-      if ((this.oYb != null) && (this.oYb.getText() != null) && ((this.oYb.getText() instanceof String)) && (this.oYb.getText() != null) && (this.oYb.getText().length() > 0)) {
-        this.oYc += this.oYb.getText().length();
+    AppMethodBeat.i(112704);
+    if (paramInt == 16908322) {
+      if ((this.rQu != null) && (this.rQu.getText() != null) && ((this.rQu.getText() instanceof String)) && (this.rQu.getText() != null) && (this.rQu.getText().length() > 0)) {
+        this.iNn += this.rQu.getText().length();
       }
-      return super.onTextContextMenuItem(paramInt);
     }
-    return super.onTextContextMenuItem(paramInt);
+    for (boolean bool = super.onTextContextMenuItem(paramInt);; bool = super.onTextContextMenuItem(paramInt))
+    {
+      AppMethodBeat.o(112704);
+      return bool;
+    }
   }
 }
 

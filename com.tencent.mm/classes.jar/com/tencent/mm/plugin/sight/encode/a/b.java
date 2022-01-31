@@ -1,21 +1,20 @@
 package com.tencent.mm.plugin.sight.encode.a;
 
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class b
 {
-  public static void a(b.a parama, final int paramInt)
+  public static void a(b.a parama, int paramInt)
   {
-    if (parama == null) {
+    AppMethodBeat.i(70362);
+    if (parama == null)
+    {
+      AppMethodBeat.o(70362);
       return;
     }
-    ai.d(new Runnable()
-    {
-      public final void run()
-      {
-        this.ohr.onError(paramInt);
-      }
-    });
+    al.d(new b.1(parama, paramInt));
+    AppMethodBeat.o(70362);
   }
 }
 

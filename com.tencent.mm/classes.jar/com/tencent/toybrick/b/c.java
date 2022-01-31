@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.s;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.toybrick.c.g;
 import com.tencent.toybrick.d.a.a;
 import java.util.LinkedList;
@@ -18,107 +19,120 @@ import java.util.LinkedList;
 public final class c
   extends RecyclerView.h
 {
-  private static final int[] FV = { 16843284 };
-  private int adN;
-  private final Rect pD = new Rect();
-  public a.a xar;
+  private static final int[] GC = { 16843284 };
+  public a.a BwX;
+  private int mOrientation;
+  private final Rect qA;
   
   public c(Context paramContext)
   {
-    paramContext.obtainStyledAttributes(FV).recycle();
-    this.adN = 1;
+    AppMethodBeat.i(113192);
+    this.qA = new Rect();
+    paramContext.obtainStyledAttributes(GC).recycle();
+    this.mOrientation = 1;
+    AppMethodBeat.o(113192);
   }
   
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView)
   {
     int k = 0;
-    if ((paramRecyclerView.getLayoutManager() == null) || (this.xar.xbq == null)) {}
+    AppMethodBeat.i(113193);
+    if ((paramRecyclerView.getLayoutManager() == null) || (this.BwX.BxW == null))
+    {
+      AppMethodBeat.o(113193);
+      return;
+    }
     int j;
     int i;
     View localView;
     int m;
     int n;
     int i1;
-    do
+    if (this.mOrientation == 1)
     {
-      do
+      if (this.BwX.BxV)
       {
-        return;
-        if (this.adN != 1) {
-          break;
-        }
-      } while (!this.xar.xbp);
-      paramCanvas.save();
-      j = paramRecyclerView.getChildCount();
-      i = 0;
-      while (i < j)
-      {
-        localView = paramRecyclerView.getChildAt(i);
-        k = paramRecyclerView.be(localView).id();
-        if (k >= 0)
+        paramCanvas.save();
+        j = paramRecyclerView.getChildCount();
+        i = 0;
+        while (i < j)
         {
-          g localg = ((b)paramRecyclerView.getAdapter()).Kq(k);
-          if (localg.xbe)
+          localView = paramRecyclerView.getChildAt(i);
+          k = paramRecyclerView.bo(localView).jN();
+          if (k >= 0)
           {
-            k = localg.es(localView)[0];
-            m = paramRecyclerView.getWidth();
-            n = localg.es(localView)[1];
-            RecyclerView.d(localView, this.pD);
-            i1 = this.pD.bottom;
-            i1 = Math.round(localView.getTranslationY()) + i1;
-            int i2 = this.xar.xbq.getIntrinsicHeight();
-            this.xar.xbq.setBounds(k, i1 - i2, m - n, i1);
-            this.xar.xbq.draw(paramCanvas);
+            g localg = ((b)paramRecyclerView.getAdapter()).Tk(k);
+            if (localg.BxK)
+            {
+              k = localg.fG(localView)[0];
+              m = paramRecyclerView.getWidth();
+              n = localg.fG(localView)[1];
+              RecyclerView.d(localView, this.qA);
+              i1 = this.qA.bottom;
+              i1 = Math.round(localView.getTranslationY()) + i1;
+              int i2 = this.BwX.BxW.getIntrinsicHeight();
+              this.BwX.BxW.setBounds(k, i1 - i2, m - n, i1);
+              this.BwX.BxW.draw(paramCanvas);
+            }
           }
+          i += 1;
         }
-        i += 1;
+        paramCanvas.restore();
+      }
+      AppMethodBeat.o(113193);
+      return;
+    }
+    if (this.BwX.BxV)
+    {
+      paramCanvas.save();
+      if (paramRecyclerView.getClipToPadding())
+      {
+        j = paramRecyclerView.getPaddingTop();
+        i = paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom();
+        paramCanvas.clipRect(paramRecyclerView.getPaddingLeft(), j, paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight(), i);
+      }
+      for (;;)
+      {
+        m = paramRecyclerView.getChildCount();
+        while (k < m)
+        {
+          localView = paramRecyclerView.getChildAt(k);
+          if (((g)this.BwX.BxU.get(paramRecyclerView.bo(localView).jN())).BxK)
+          {
+            paramRecyclerView.getLayoutManager();
+            RecyclerView.i.d(localView, this.qA);
+            n = this.qA.right + Math.round(localView.getTranslationX());
+            i1 = this.BwX.BxW.getIntrinsicWidth();
+            this.BwX.BxW.setBounds(n - i1, j, n, i);
+            this.BwX.BxW.draw(paramCanvas);
+          }
+          k += 1;
+        }
+        i = paramRecyclerView.getHeight();
+        j = 0;
       }
       paramCanvas.restore();
-      return;
-    } while (!this.xar.xbp);
-    paramCanvas.save();
-    if (paramRecyclerView.getClipToPadding())
-    {
-      j = paramRecyclerView.getPaddingTop();
-      i = paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom();
-      paramCanvas.clipRect(paramRecyclerView.getPaddingLeft(), j, paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight(), i);
     }
-    for (;;)
-    {
-      m = paramRecyclerView.getChildCount();
-      while (k < m)
-      {
-        localView = paramRecyclerView.getChildAt(k);
-        if (((g)this.xar.xbo.get(paramRecyclerView.be(localView).id())).xbe)
-        {
-          paramRecyclerView.getLayoutManager();
-          RecyclerView.i.d(localView, this.pD);
-          n = this.pD.right + Math.round(localView.getTranslationX());
-          i1 = this.xar.xbq.getIntrinsicWidth();
-          this.xar.xbq.setBounds(n - i1, j, n, i);
-          this.xar.xbq.draw(paramCanvas);
-        }
-        k += 1;
-      }
-      i = paramRecyclerView.getHeight();
-      j = 0;
-    }
-    paramCanvas.restore();
+    AppMethodBeat.o(113193);
   }
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    if (this.xar.xbq == null)
+    AppMethodBeat.i(113194);
+    if (this.BwX.BxW == null)
     {
       paramRect.set(0, 0, 0, 0);
+      AppMethodBeat.o(113194);
       return;
     }
-    if (this.adN == 1)
+    if (this.mOrientation == 1)
     {
-      paramRect.set(0, 0, 0, this.xar.xbq.getIntrinsicHeight());
+      paramRect.set(0, 0, 0, this.BwX.BxW.getIntrinsicHeight());
+      AppMethodBeat.o(113194);
       return;
     }
-    paramRect.set(0, 0, this.xar.xbq.getIntrinsicWidth(), 0);
+    paramRect.set(0, 0, this.BwX.BxW.getIntrinsicWidth(), 0);
+    AppMethodBeat.o(113194);
   }
 }
 

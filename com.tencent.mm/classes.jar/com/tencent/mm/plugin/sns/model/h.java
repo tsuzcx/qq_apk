@@ -1,30 +1,31 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.g.b.a;
+import com.tencent.mm.sdk.platformtools.ak;
 import junit.framework.Assert;
 
 public abstract class h<Params, Progress, Result>
 {
-  private boolean bSr = false;
-  ah handler = af.aXq();
+  ak handler = ag.bEf();
+  private boolean isStart = false;
   
-  public abstract ah byB();
+  public abstract Result cL();
   
-  public abstract Result cj();
+  public abstract a cjN();
   
   public void onPostExecute(Result paramResult) {}
   
-  public final boolean p(Params... paramVarArgs)
+  public final boolean v(Params... paramVarArgs)
   {
-    if (this.bSr) {
+    if (this.isStart) {
       Assert.assertTrue("MicroMsg.MMAsyncTask Should construct a new Task", false);
     }
-    this.bSr = true;
-    ah localah = byB();
-    if (localah == null) {
+    this.isStart = true;
+    a locala = cjN();
+    if (locala == null) {
       return false;
     }
-    localah.post(new h.1(this, paramVarArgs));
+    locala.execute(new h.1(this, paramVarArgs));
     return true;
   }
 }

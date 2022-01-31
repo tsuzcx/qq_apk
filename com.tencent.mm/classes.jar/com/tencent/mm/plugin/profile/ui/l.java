@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.pluginsdk.b.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.base.h;
@@ -18,50 +20,79 @@ import com.tencent.mm.ui.base.preference.f;
 import junit.framework.Assert;
 
 abstract class l
-  implements a, m.b
+  implements a, n.b
 {
+  protected ad contact;
   protected Context context;
-  protected f dnn;
-  protected ad dnp;
-  protected HelperHeaderPreference.a mXL;
+  protected HelperHeaderPreference.a pAy;
+  protected f screen;
   
   public l(Context paramContext, HelperHeaderPreference.a parama)
   {
     this.context = paramContext;
-    this.mXL = parama;
+    this.pAy = parama;
   }
   
-  private void awY()
+  private void bkc()
   {
-    this.dnn.removeAll();
-    this.dnn.addPreferencesFromResource(xj());
-    boolean bool = bsD();
-    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.dnn.add("contact_info_header_helper");
+    this.screen.removeAll();
+    this.screen.addPreferencesFromResource(2131165206);
+    boolean bool = ccj();
+    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.atx("contact_info_header_helper");
     if (localHelperHeaderPreference != null) {
-      localHelperHeaderPreference.a(this.dnp, this.mXL);
+      localHelperHeaderPreference.a(this.contact, this.pAy);
     }
     if (!bool)
     {
-      this.dnn.ade("contact_info_plugin_view");
-      this.dnn.ade("contact_info_plugin_clear_data");
-      this.dnn.ade("contact_info_plugin_uninstall");
+      this.screen.aty("contact_info_plugin_view");
+      this.screen.aty("contact_info_plugin_clear_data");
+      this.screen.aty("contact_info_plugin_uninstall");
       return;
     }
-    this.dnn.ade("contact_info_plugin_install");
+    this.screen.aty("contact_info_plugin_install");
   }
   
-  public void a(int paramInt, m paramm, Object paramObject)
+  public boolean Ke(String paramString)
   {
-    int i = bk.e(paramObject, 0);
-    y.d("MicroMsg.ContactWidgetPlugin", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramm });
-    au.Hx();
-    if ((paramm != c.Dz()) || (i <= 0)) {
-      y.e("MicroMsg.ContactWidgetPlugin", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramm });
+    if ("contact_info_plugin_clear_data".equals(paramString))
+    {
+      h.d(this.context, this.context.getString(2131298571), "", this.context.getString(2131296891), this.context.getString(2131296888), new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(23589);
+          l.this.clear();
+          AppMethodBeat.o(23589);
+        }
+      }, null);
+      return true;
+    }
+    if (paramString.equals("contact_info_plugin_install"))
+    {
+      kd(true);
+      return true;
+    }
+    if (paramString.equals("contact_info_plugin_uninstall"))
+    {
+      h.d(this.context, this.context.getString(2131303384), "", this.context.getString(2131296891), this.context.getString(2131296888), new l.2(this), null);
+      return true;
+    }
+    ab.e("MicroMsg.ContactWidgetPlugin", "handleEvent : unexpected key = ".concat(String.valueOf(paramString)));
+    return false;
+  }
+  
+  public void a(int paramInt, n paramn, Object paramObject)
+  {
+    int i = bo.f(paramObject, 0);
+    ab.d("MicroMsg.ContactWidgetPlugin", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
+    aw.aaz();
+    if ((paramn != c.Ru()) || (i <= 0)) {
+      ab.e("MicroMsg.ContactWidgetPlugin", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
     }
     while ((i != 40) && (i != 34) && (i != 7)) {
       return;
     }
-    awY();
+    bkc();
   }
   
   public boolean a(f paramf, ad paramad, boolean paramBoolean, int paramInt)
@@ -71,7 +102,7 @@ abstract class l
     {
       paramBoolean = true;
       Assert.assertTrue(paramBoolean);
-      if (bk.pm(paramad.field_username).length() <= 0) {
+      if (bo.nullAsNil(paramad.field_username).length() <= 0) {
         break label77;
       }
     }
@@ -84,55 +115,32 @@ abstract class l
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      au.Hx();
-      c.Dz().a(this);
-      this.dnp = paramad;
-      this.dnn = paramf;
-      awY();
+      aw.aaz();
+      c.Ru().a(this);
+      this.contact = paramad;
+      this.screen = paramf;
+      bkc();
       return true;
       paramBoolean = false;
       break;
     }
   }
   
-  public boolean awZ()
+  public boolean bkb()
   {
-    au.Hx();
-    c.Dz().b(this);
-    this.dnn.add("contact_info_header_helper");
+    aw.aaz();
+    c.Ru().b(this);
+    this.screen.atx("contact_info_header_helper");
     return true;
   }
   
-  protected abstract boolean bsD();
+  protected abstract boolean ccj();
   
   protected abstract void clear();
   
-  protected abstract void ie(boolean paramBoolean);
+  protected abstract void kd(boolean paramBoolean);
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public boolean xQ(String paramString)
-  {
-    if ("contact_info_plugin_clear_data".equals(paramString))
-    {
-      h.a(this.context, this.context.getString(R.l.contact_info_clear_data), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new l.1(this), null);
-      return true;
-    }
-    if (paramString.equals("contact_info_plugin_install"))
-    {
-      ie(true);
-      return true;
-    }
-    if (paramString.equals("contact_info_plugin_uninstall"))
-    {
-      h.a(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new l.2(this), null);
-      return true;
-    }
-    y.e("MicroMsg.ContactWidgetPlugin", "handleEvent : unexpected key = " + paramString);
-    return false;
-  }
-  
-  protected abstract int xj();
 }
 
 

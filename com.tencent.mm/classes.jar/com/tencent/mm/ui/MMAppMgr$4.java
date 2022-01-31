@@ -1,18 +1,27 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.view.KeyEvent;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.storage.z;
 
 final class MMAppMgr$4
-  implements DialogInterface.OnCancelListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  MMAppMgr$4(Activity paramActivity) {}
-  
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.eRW.onKeyDown(4, new KeyEvent(0, 4));
+    AppMethodBeat.i(153811);
+    aw.aaz();
+    paramCompoundButton = c.Ru();
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramCompoundButton.set(16385, Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(153811);
+      return;
+    }
   }
 }
 

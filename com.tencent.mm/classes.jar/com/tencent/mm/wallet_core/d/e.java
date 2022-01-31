@@ -1,12 +1,12 @@
 package com.tencent.mm.wallet_core.d;
 
-import com.tencent.mm.ah.m;
+import com.tencent.mm.ai.m;
 
 public abstract interface e
 {
   public abstract void a(m paramm, boolean paramBoolean);
   
-  public abstract void bfJ();
+  public abstract void bNp();
 }
 
 

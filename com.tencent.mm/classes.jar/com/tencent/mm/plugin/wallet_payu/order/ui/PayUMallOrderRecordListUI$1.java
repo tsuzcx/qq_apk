@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.wallet_payu.order.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.ui.MallOrderRecordListUI.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
 
 final class PayUMallOrderRecordListUI$1
@@ -11,28 +12,30 @@ final class PayUMallOrderRecordListUI$1
   
   public final void run()
   {
-    if (PayUMallOrderRecordListUI.a(this.qNR))
+    AppMethodBeat.i(48430);
+    if (PayUMallOrderRecordListUI.a(this.uCY))
     {
-      y.v("MicroMsg.PayUMallOrderRecordListUI", "has more");
-      if (!PayUMallOrderRecordListUI.b(this.qNR))
+      ab.v("MicroMsg.PayUMallOrderRecordListUI", "has more");
+      if (!PayUMallOrderRecordListUI.b(this.uCY))
       {
-        PayUMallOrderRecordListUI.c(this.qNR).cAO();
-        PayUMallOrderRecordListUI.e(this.qNR).setAdapter(PayUMallOrderRecordListUI.d(this.qNR));
-        PayUMallOrderRecordListUI.f(this.qNR);
+        PayUMallOrderRecordListUI.c(this.uCY).dDY();
+        PayUMallOrderRecordListUI.e(this.uCY).setAdapter(PayUMallOrderRecordListUI.d(this.uCY));
+        PayUMallOrderRecordListUI.f(this.uCY);
       }
     }
     for (;;)
     {
-      PayUMallOrderRecordListUI.h(this.qNR).notifyDataSetChanged();
+      PayUMallOrderRecordListUI.h(this.uCY).notifyDataSetChanged();
+      AppMethodBeat.o(48430);
       return;
-      y.v("MicroMsg.PayUMallOrderRecordListUI", "no more! dismiss footer view!");
-      PayUMallOrderRecordListUI.g(this.qNR).cAP();
+      ab.v("MicroMsg.PayUMallOrderRecordListUI", "no more! dismiss footer view!");
+      PayUMallOrderRecordListUI.g(this.uCY).dDZ();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.order.ui.PayUMallOrderRecordListUI.1
  * JD-Core Version:    0.7.0.1
  */

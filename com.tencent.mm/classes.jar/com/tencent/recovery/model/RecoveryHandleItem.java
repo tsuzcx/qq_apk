@@ -7,14 +7,14 @@ public class RecoveryHandleItem
   extends RecoveryPersistentItem
 {
   public static final Parcelable.Creator<RecoveryHandleItem> CREATOR = new Parcelable.Creator() {};
+  public String Biw;
   public String clientVersion;
-  public String dCX;
+  public String eAx;
   public String key;
   public String processName;
   public long timestamp;
-  public String wKW;
   
-  public final boolean afz(String paramString)
+  public final boolean awv(String paramString)
   {
     if ((paramString == null) || (paramString.length() == 0)) {
       return false;
@@ -22,11 +22,11 @@ public class RecoveryHandleItem
     try
     {
       paramString = paramString.split(",");
-      this.dCX = paramString[0];
+      this.eAx = paramString[0];
       this.clientVersion = paramString[1];
       this.key = paramString[2];
       this.processName = paramString[3];
-      this.wKW = paramString[4];
+      this.Biw = paramString[4];
       this.timestamp = Long.valueOf(paramString[5]).longValue();
       return true;
     }
@@ -34,10 +34,10 @@ public class RecoveryHandleItem
     return false;
   }
   
-  public final String cOC()
+  public final String dUr()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(this.dCX);
+    localStringBuffer.append(this.eAx);
     localStringBuffer.append(",");
     localStringBuffer.append(this.clientVersion);
     localStringBuffer.append(",");
@@ -45,7 +45,7 @@ public class RecoveryHandleItem
     localStringBuffer.append(",");
     localStringBuffer.append(this.processName);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.wKW);
+    localStringBuffer.append(this.Biw);
     localStringBuffer.append(",");
     localStringBuffer.append(this.timestamp);
     return localStringBuffer.toString();
@@ -58,11 +58,11 @@ public class RecoveryHandleItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.dCX);
+    paramParcel.writeString(this.eAx);
     paramParcel.writeString(this.clientVersion);
     paramParcel.writeString(this.key);
     paramParcel.writeString(this.processName);
-    paramParcel.writeString(this.wKW);
+    paramParcel.writeString(this.Biw);
     paramParcel.writeLong(this.timestamp);
   }
 }

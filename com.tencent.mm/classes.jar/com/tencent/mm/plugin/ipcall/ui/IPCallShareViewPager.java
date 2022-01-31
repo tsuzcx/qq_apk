@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.CustomViewPager;
 
 public class IPCallShareViewPager
@@ -14,8 +15,9 @@ public class IPCallShareViewPager
     super(paramContext, paramAttributeSet);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(22359);
     paramInt2 = 0;
     int j;
     for (int i = 0; paramInt2 < getChildCount(); i = j)
@@ -30,6 +32,7 @@ public class IPCallShareViewPager
       paramInt2 += 1;
     }
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(i, 1073741824));
+    AppMethodBeat.o(22359);
   }
 }
 

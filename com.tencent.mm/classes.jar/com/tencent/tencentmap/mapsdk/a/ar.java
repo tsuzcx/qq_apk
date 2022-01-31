@@ -1,206 +1,400 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import com.qq.sim.Millis100TimeProvider;
-import java.net.InetAddress;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.map.lib.element.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.jr;
+import com.tencent.tencentmap.mapsdk.maps.a.lh.a;
+import com.tencent.tencentmap.mapsdk.maps.a.ne;
+import com.tencent.tencentmap.mapsdk.maps.a.ne.a;
+import java.util.List;
 
 public class ar
-  implements am
+  implements lh.a, ne.a
 {
-  private static final AtomicInteger p = new AtomicInteger(0);
-  String a;
-  String b;
-  byte[] c;
-  Map<String, String> d;
-  Map<String, String> e;
-  at f;
-  boolean g;
-  boolean h;
-  it i = null;
-  int j;
-  int k;
-  av l;
-  public mm m;
-  int n = -1;
-  int o = -1;
+  private bw a = null;
+  private dc b;
+  private dc c;
+  private dc d;
   
-  public ar(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt, Map<String, String> paramMap1, Map<String, String> paramMap2, at paramat, aw paramaw, boolean paramBoolean)
+  public ar(bw parambw)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramArrayOfByte;
-    this.d = paramMap1;
-    this.e = paramMap2;
-    this.f = paramat;
-    this.g = paramat.g();
-    this.f.b(paramString1);
-    this.f.a(paramString2);
-    this.f.a(paramaw);
-    this.h = paramBoolean;
-    this.k = paramInt;
-    if (paramBoolean)
+    this.a = parambw;
+  }
+  
+  public final dc a(dd paramdd, ar paramar)
+  {
+    AppMethodBeat.i(149713);
+    if (this.a != null)
     {
-      this.i = new it((short)1, (byte)0, this.j, paramat.h(), paramString1, paramString2, paramArrayOfByte, paramInt, paramMap1, paramMap2);
+      paramdd = this.a.a(paramdd, paramar);
+      AppMethodBeat.o(149713);
+      return paramdd;
+    }
+    AppMethodBeat.o(149713);
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.a != null) {
+      this.a = null;
+    }
+  }
+  
+  public void a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(149742);
+    if (this.d == null)
+    {
+      dd localdd = new dd();
+      localdd.a(0.5F, 0.5F);
+      localdd.a("AUTH_MARKER");
+      localdd.a(cl.a(paramBitmap));
+      this.d = a(localdd, this);
+      this.d.a(paramInt1 / 2, paramInt2 / 2);
+      this.d.c(false);
+      AppMethodBeat.o(149742);
       return;
     }
-    this.i = new it((short)1, (byte)1, this.j, paramat.h(), paramString1, paramString2, paramArrayOfByte, paramInt, paramMap1, paramMap2);
+    this.d.a(cl.a(paramBitmap));
+    this.d.a(paramInt1 / 2, paramInt2 / 2);
+    AppMethodBeat.o(149742);
   }
   
-  private static String k()
+  public void a(View paramView, Rect paramRect, boolean paramBoolean)
   {
-    try
+    AppMethodBeat.i(149738);
+    if ((paramView == null) || (paramRect == null))
     {
-      byte[] arrayOfByte1 = InetAddress.getByName(nq.a).getAddress();
-      int i1 = (int)(Millis100TimeProvider.INSTANCE.currentTimeMillis() & 0xFFFFFFFF);
-      int i2 = (int)(Thread.currentThread().getId() & 0xFFFFFFFF);
-      short s = (short)(p.getAndIncrement() & 0xFFFF);
-      return String.format("%02x%02x%02x%02x%08x%08x%04x", new Object[] { Byte.valueOf(arrayOfByte1[0]), Byte.valueOf(arrayOfByte1[1]), Byte.valueOf(arrayOfByte1[2]), Byte.valueOf(arrayOfByte1[3]), Integer.valueOf(i1), Integer.valueOf(i2), Short.valueOf(s) });
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        byte[] arrayOfByte2 = new byte[4];
-        byte[] tmp120_119 = arrayOfByte2;
-        tmp120_119[0] = 127;
-        byte[] tmp125_120 = tmp120_119;
-        tmp125_120[1] = 0;
-        byte[] tmp130_125 = tmp125_120;
-        tmp130_125[2] = 0;
-        byte[] tmp135_130 = tmp130_125;
-        tmp135_130[3] = 1;
-        tmp135_130;
-      }
-    }
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (this.j & paramInt) != 0;
-  }
-  
-  public int b()
-  {
-    return this.n;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.j |= paramInt;
-    this.i.c = this.j;
-  }
-  
-  public int c()
-  {
-    return this.o;
-  }
-  
-  public it d()
-  {
-    return this.i;
-  }
-  
-  public at e()
-  {
-    return this.f;
-  }
-  
-  public boolean f()
-  {
-    return this.h;
-  }
-  
-  public void g()
-  {
-    ay.a locala = ay.a.a().e;
-    String str;
-    int i1;
-    int i2;
-    int i3;
-    if (locala.a)
-    {
-      if (locala.e == -1) {
-        locala.a = false;
-      }
-      str = k();
-      i1 = 0;
-      i2 = 0;
-      i3 = 0;
-    }
-    while (str.length() == 0)
-    {
+      AppMethodBeat.o(149738);
       return;
-      str = locala.b;
-      i3 = locala.c;
-      i2 = locala.d;
-      i1 = locala.e;
     }
-    this.m = new mm();
-    this.m.a = str;
-    this.m.g = i3;
-    this.m.h = i2;
-    this.m.i = i1;
-    this.m.b = null;
-    this.m.c = this.a;
-    this.m.d = this.b;
-    this.m.e = "";
-    this.m.f = null;
-    locala.b = str;
-    locala.c = i3;
-    locala.d = (i2 + 1);
-    locala.e = i1;
-    this.e.put("STATUS_SAMPLE_KEY", str + "|" + i3 + "|" + i2);
-    b(8);
-  }
-  
-  public void h()
-  {
-    if (this.e.containsKey("STATUS_GRID_KEY"))
+    paramView = jr.a(paramView);
+    if (paramView == null)
     {
-      String str = (String)this.e.get("STATUS_GRID_KEY");
-      if (this.l.taf_Router() != null) {
-        this.o = this.l.taf_Router().a(str);
-      }
-      if (this.o == -1)
-      {
-        ay.b localb = ay.a.a();
-        if ((str.equals(localb.c)) && (localb.b != -1)) {
-          this.o = localb.b;
-        }
-      }
-      if (this.o != -1)
-      {
-        this.e.put("STATUS_GRID_CODE", String.valueOf(this.o));
-        b(2);
-      }
+      AppMethodBeat.o(149738);
+      return;
     }
+    if (this.b == null)
+    {
+      dd localdd = new dd().a(0.0F, 0.0F).b(false);
+      localdd.a("AUTH_MARKER");
+      localdd.e(true);
+      this.b = a(localdd, this);
+      this.b.c(false);
+    }
+    this.b.a(paramRect.left, paramRect.top);
+    this.b.a(cl.a(paramView));
+    this.b.b(paramBoolean);
+    AppMethodBeat.o(149738);
   }
   
-  public void i()
+  public final void a(ah.b paramb)
   {
-    this.n = ay.a.a().a;
-    if (this.n != -1) {
-      b(1);
+    AppMethodBeat.i(149737);
+    if (this.a != null) {
+      this.a.a(paramb);
     }
+    AppMethodBeat.o(149737);
   }
   
-  public void j()
+  public final void a(ah.m paramm)
   {
-    String str = ay.a.a().d;
-    if ((str != null) && (str.trim().length() != 0)) {
-      this.e.put("STATUS_DYED_KEY", str);
+    AppMethodBeat.i(149736);
+    if (this.a != null) {
+      this.a.a(paramm);
     }
+    AppMethodBeat.o(149736);
+  }
+  
+  public void a(ne paramne)
+  {
+    AppMethodBeat.i(149740);
+    if (this.c != null) {
+      this.c.b(false);
+    }
+    if ((paramne != null) && (this.b != null) && (!paramne.j())) {
+      this.b.b(false);
+    }
+    AppMethodBeat.o(149740);
+  }
+  
+  public final void a(String paramString)
+  {
+    AppMethodBeat.i(149714);
+    if (this.a != null) {
+      this.a.a(paramString);
+    }
+    AppMethodBeat.o(149714);
+  }
+  
+  public final void a(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(149727);
+    if (this.a != null) {
+      this.a.a(paramString, paramFloat);
+    }
+    AppMethodBeat.o(149727);
+  }
+  
+  public final void a(String paramString, float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(149715);
+    if (this.a != null) {
+      this.a.a(paramString, paramFloat1, paramFloat2);
+    }
+    AppMethodBeat.o(149715);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(149722);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(149722);
+      return;
+    }
+    this.a.a(paramString, paramInt);
+    AppMethodBeat.o(149722);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(149733);
+    if (this.a != null) {
+      this.a.a(paramString, paramInt1, paramInt2);
+    }
+    AppMethodBeat.o(149733);
+  }
+  
+  public final void a(String paramString, ck paramck)
+  {
+    AppMethodBeat.i(149717);
+    if (this.a != null) {
+      this.a.a(paramString, paramck);
+    }
+    AppMethodBeat.o(149717);
+  }
+  
+  public final void a(String paramString, cz paramcz)
+  {
+    AppMethodBeat.i(149718);
+    if (this.a != null) {
+      this.a.a(paramString, paramcz);
+    }
+    AppMethodBeat.o(149718);
+  }
+  
+  public final void a(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(100657);
+    if (this.a != null) {
+      this.a.a(paramString1, paramString2);
+    }
+    AppMethodBeat.o(100657);
+  }
+  
+  public final void a(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(149716);
+    if (this.a != null) {
+      this.a.a(paramString, paramBoolean);
+    }
+    AppMethodBeat.o(149716);
+  }
+  
+  public final cz b(String paramString)
+  {
+    AppMethodBeat.i(149719);
+    if (this.a != null)
+    {
+      paramString = this.a.f(paramString);
+      AppMethodBeat.o(149719);
+      return paramString;
+    }
+    AppMethodBeat.o(149719);
+    return null;
+  }
+  
+  public final void b()
+  {
+    AppMethodBeat.i(149726);
+    if (this.a != null) {
+      this.a.b();
+    }
+    AppMethodBeat.o(149726);
+  }
+  
+  public void b(View paramView, Rect paramRect, boolean paramBoolean)
+  {
+    AppMethodBeat.i(149739);
+    if ((paramView == null) || (paramRect == null))
+    {
+      AppMethodBeat.o(149739);
+      return;
+    }
+    paramView = jr.a(paramView);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(149739);
+      return;
+    }
+    if (this.c == null)
+    {
+      dd localdd = new dd().a(0.0F, 0.0F).b(false);
+      localdd.a("AUTH_MARKER");
+      localdd.e(true);
+      this.c = a(localdd, this);
+      this.c.c(false);
+    }
+    this.c.a(paramRect.left, paramRect.top);
+    this.c.a(cl.a(paramView));
+    this.c.b(paramBoolean);
+    AppMethodBeat.o(149739);
+  }
+  
+  public void b(ne paramne)
+  {
+    AppMethodBeat.i(149741);
+    if (this.c != null) {
+      this.c.b(true);
+    }
+    if (this.b != null) {
+      this.b.b(true);
+    }
+    AppMethodBeat.o(149741);
+  }
+  
+  public void b(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(149729);
+    if (this.a != null) {
+      this.a.b(paramString, paramFloat);
+    }
+    AppMethodBeat.o(149729);
+  }
+  
+  public final void b(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(149720);
+    if (this.a != null) {
+      this.a.b(paramString1, paramString2);
+    }
+    AppMethodBeat.o(149720);
+  }
+  
+  public final void b(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(149721);
+    if (this.a != null) {
+      this.a.b(paramString, paramBoolean);
+    }
+    AppMethodBeat.o(149721);
+  }
+  
+  public final void c(String paramString)
+  {
+    AppMethodBeat.i(149723);
+    if (this.a != null) {
+      this.a.b(paramString);
+    }
+    AppMethodBeat.o(149723);
+  }
+  
+  public void c(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(149734);
+    if (this.a != null) {
+      this.a.c(paramString, paramFloat);
+    }
+    AppMethodBeat.o(149734);
+  }
+  
+  public void c(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(149730);
+    if (this.a != null) {
+      this.a.c(paramString, paramBoolean);
+    }
+    AppMethodBeat.o(149730);
+  }
+  
+  public final void d(String paramString)
+  {
+    AppMethodBeat.i(149724);
+    if (this.a != null) {
+      this.a.c(paramString);
+    }
+    AppMethodBeat.o(149724);
+  }
+  
+  public void d(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(149731);
+    if (this.a != null) {
+      this.a.d(paramString, paramBoolean);
+    }
+    AppMethodBeat.o(149731);
+  }
+  
+  public final boolean e(String paramString)
+  {
+    AppMethodBeat.i(149725);
+    if (this.a != null)
+    {
+      boolean bool = this.a.d(paramString);
+      AppMethodBeat.o(149725);
+      return bool;
+    }
+    AppMethodBeat.o(149725);
+    return false;
+  }
+  
+  public final float f(String paramString)
+  {
+    AppMethodBeat.i(149728);
+    if (this.a != null)
+    {
+      float f = this.a.e(paramString);
+      AppMethodBeat.o(149728);
+      return f;
+    }
+    AppMethodBeat.o(149728);
+    return 0.0F;
+  }
+  
+  public boolean g(String paramString)
+  {
+    AppMethodBeat.i(149732);
+    if (this.a != null)
+    {
+      boolean bool = this.a.g(paramString);
+      AppMethodBeat.o(149732);
+      return bool;
+    }
+    AppMethodBeat.o(149732);
+    return false;
+  }
+  
+  public List<j> h(String paramString)
+  {
+    AppMethodBeat.i(149735);
+    if (this.a != null)
+    {
+      paramString = this.a.h(paramString);
+      AppMethodBeat.o(149735);
+      return paramString;
+    }
+    AppMethodBeat.o(149735);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.ar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,16 @@
 package com.tencent.mm.plugin.collect.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.collect.model.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.c.ab;
+import com.tencent.mm.wallet_core.c.ae;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tencent.mm.wallet_core.ui.formview.a;
@@ -21,117 +18,121 @@ import com.tencent.mm.wallet_core.ui.formview.a;
 public class CollectCreateQRCodeUI
   extends WalletBaseUI
 {
-  private String dkv = "";
-  private WalletFormView iKG;
-  private TextView iKH;
+  private WalletFormView kRl;
+  private TextView kRm;
+  private String mDesc = "";
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public int getLayoutId()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramm instanceof com.tencent.mm.plugin.collect.b.s))
-    {
-      bool1 = bool2;
-      if (paramInt1 == 0)
-      {
-        bool1 = bool2;
-        if (paramInt2 == 0)
-        {
-          paramString = (com.tencent.mm.plugin.collect.b.s)paramm;
-          paramm = new Intent();
-          paramm.putExtra("ftf_pay_url", paramString.iHO);
-          paramm.putExtra("ftf_fixed_fee", paramString.iHP);
-          paramm.putExtra("ftf_fixed_fee_type", paramString.bHY);
-          paramm.putExtra("ftf_fixed_desc", paramString.desc);
-          setResult(-1, paramm);
-          finish();
-          bool1 = true;
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!(paramm instanceof com.tencent.mm.plugin.collect.b.m));
-      paramString = (com.tencent.mm.plugin.collect.b.m)paramm;
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break;
-      }
-      if (paramString.iHq == 0)
-      {
-        paramm = new Intent();
-        paramm.putExtra("ftf_pay_url", paramString.iHs);
-        paramm.putExtra("ftf_fixed_fee", paramString.ceq / 100.0D);
-        paramm.putExtra("ftf_fixed_desc", paramString.desc);
-        paramm.putExtra("key_currency_unit", paramString.iHB);
-        setResult(-1, paramm);
-        finish();
-        return true;
-      }
-      if (paramString.iHt == 0)
-      {
-        h.b(this.mController.uMN, paramString.iHr, paramString.iHu, false);
-        return true;
-      }
-      bool1 = bool2;
-    } while (paramString.iHt != 1);
-    if ((!bk.bl(paramString.iHv)) && (!bk.bl(paramString.iHw))) {
-      h.a(this.mController.uMN, paramString.iHr, paramString.iHu, paramString.iHw, paramString.iHv, new CollectCreateQRCodeUI.5(this, paramString), new CollectCreateQRCodeUI.6(this));
-    }
-    return true;
-    y.e("MicroMsg.CollectCreateQRCodeUI", "net error: %s", new Object[] { paramString });
-    return false;
+    return 2130969177;
   }
   
-  protected final int getLayoutId()
+  public void initView()
   {
-    return a.g.collect_create_qrcode;
-  }
-  
-  protected final void initView()
-  {
-    setMMTitle(a.i.collect_create_qrcode_title);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        CollectCreateQRCodeUI.this.setResult(0);
-        CollectCreateQRCodeUI.this.finish();
-        return true;
-      }
-    });
-    this.iKG = ((WalletFormView)findViewById(a.f.money_ev));
-    a.f(this.iKG);
+    AppMethodBeat.i(41240);
+    setMMTitle(2131298440);
+    setBackBtn(new CollectCreateQRCodeUI.1(this));
+    this.kRl = ((WalletFormView)findViewById(2131822910));
+    a.f(this.kRl);
     String str = getIntent().getStringExtra("key_currency_unit");
-    if (!bk.bl(str)) {
-      this.iKG.getTitleTv().setText(str);
+    if (!bo.isNullOrNil(str)) {
+      this.kRl.getTitleTv().setText(str);
     }
     for (;;)
     {
-      this.iKG.a(new CollectCreateQRCodeUI.2(this));
-      e(this.iKG, 2, false);
-      ((Button)findViewById(a.f.next_btn)).setOnClickListener(new CollectCreateQRCodeUI.3(this));
-      this.iKH = ((TextView)findViewById(a.f.collect_main_add_desc));
-      this.iKH.setOnClickListener(new CollectCreateQRCodeUI.4(this));
+      this.kRl.a(new CollectCreateQRCodeUI.2(this));
+      setEditFocusListener(this.kRl, 2, false);
+      ((Button)findViewById(2131822914)).setOnClickListener(new CollectCreateQRCodeUI.3(this));
+      this.kRm = ((TextView)findViewById(2131822913));
+      this.kRm.setOnClickListener(new CollectCreateQRCodeUI.4(this));
+      AppMethodBeat.o(41240);
       return;
-      this.iKG.getTitleTv().setText(ab.cML());
+      this.kRl.getTitleTv().setText(ae.dSz());
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(41238);
     super.onCreate(paramBundle);
-    kh(1335);
+    addSceneEndListener(1335);
     initView();
+    AppMethodBeat.o(41238);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(41239);
     super.onDestroy();
-    ki(1335);
+    removeSceneEndListener(1335);
+    AppMethodBeat.o(41239);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  {
+    AppMethodBeat.i(41241);
+    if ((paramm instanceof s))
+    {
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        paramString = (s)paramm;
+        paramm = new Intent();
+        paramm.putExtra("ftf_pay_url", paramString.kNR);
+        paramm.putExtra("key_error_level", paramString.kNT);
+        paramm.putExtra("ftf_fixed_fee", paramString.kNS);
+        paramm.putExtra("ftf_fixed_fee_type", paramString.cpp);
+        paramm.putExtra("ftf_fixed_desc", paramString.desc);
+        setResult(-1, paramm);
+        finish();
+        AppMethodBeat.o(41241);
+        return true;
+      }
+    }
+    else if ((paramm instanceof com.tencent.mm.plugin.collect.model.m))
+    {
+      paramString = (com.tencent.mm.plugin.collect.model.m)paramm;
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        if (paramString.cnK == 0)
+        {
+          paramm = new Intent();
+          paramm.putExtra("ftf_pay_url", paramString.kNw);
+          paramm.putExtra("ftf_fixed_fee", paramString.cNd / 100.0D);
+          paramm.putExtra("ftf_fixed_desc", paramString.desc);
+          paramm.putExtra("key_currency_unit", paramString.kNF);
+          setResult(-1, paramm);
+          finish();
+          AppMethodBeat.o(41241);
+          return true;
+        }
+        if (paramString.kNx == 0)
+        {
+          h.b(getContext(), paramString.kNv, paramString.kNy, false);
+          AppMethodBeat.o(41241);
+          return true;
+        }
+        if (paramString.kNx == 1)
+        {
+          if ((!bo.isNullOrNil(paramString.kNz)) && (!bo.isNullOrNil(paramString.kNA))) {
+            h.d(getContext(), paramString.kNv, paramString.kNy, paramString.kNA, paramString.kNz, new CollectCreateQRCodeUI.5(this, paramString), new CollectCreateQRCodeUI.6(this));
+          }
+          AppMethodBeat.o(41241);
+          return true;
+        }
+      }
+      else
+      {
+        ab.e("MicroMsg.CollectCreateQRCodeUI", "net error: %s", new Object[] { paramString });
+      }
+    }
+    AppMethodBeat.o(41241);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

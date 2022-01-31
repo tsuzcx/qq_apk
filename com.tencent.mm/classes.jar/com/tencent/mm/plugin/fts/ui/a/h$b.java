@@ -6,15 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.fts.a.a.g;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.plugin.fts.ui.n.d;
-import com.tencent.mm.plugin.fts.ui.n.e;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class h$b
   extends a.b
@@ -26,26 +25,32 @@ final class h$b
   
   public final View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(n.e.fts_create_chatroom_item, paramViewGroup, false);
-    paramViewGroup = (h.a)this.kDi.kDh;
-    paramViewGroup.eXP = ((TextView)paramContext.findViewById(n.d.desc_tv));
+    AppMethodBeat.i(61990);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969653, paramViewGroup, false);
+    paramViewGroup = (h.a)this.mZe.mZd;
+    paramViewGroup.gpM = ((TextView)paramContext.findViewById(2131821007));
     paramContext.setTag(paramViewGroup);
+    AppMethodBeat.o(61990);
     return paramContext;
   }
   
   public final void a(Context paramContext, a.a parama, a parama1, Object... paramVarArgs)
   {
+    AppMethodBeat.i(61991);
     paramContext = (h.a)parama;
-    m.a(this.kDi.kDf, paramContext.eXP);
+    m.a(this.mZe.mZb, paramContext.gpM);
+    AppMethodBeat.o(61991);
   }
   
   public final boolean a(Context paramContext, a paramVarArgs)
   {
+    AppMethodBeat.i(61992);
     paramVarArgs = new Intent();
-    paramVarArgs.putExtra("query_phrase_list", bk.G(this.kDi.kwi.kwI));
+    paramVarArgs.putExtra("query_phrase_list", bo.P(this.mZe.mRX.mSy));
     paramVarArgs.putExtra("go_to_chatroom_direct", true);
     paramVarArgs.putExtra("scene_from", 3);
-    d.e(paramContext, ".ui.transmit.MMCreateChatroomUI", paramVarArgs);
+    d.f(paramContext, ".ui.transmit.MMCreateChatroomUI", paramVarArgs);
+    AppMethodBeat.o(61992);
     return true;
   }
 }

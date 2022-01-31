@@ -1,31 +1,46 @@
 package com.tencent.mm.modelstat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.memory.a.c;
+
 public final class f
 {
-  private static f eDt = null;
-  public com.tencent.mm.a.f<String, Long> eDu = new com.tencent.mm.a.f(10);
-  public String eDv;
+  private static f fTk = null;
+  public com.tencent.mm.a.f<String, Long> fTl;
+  public String fTm;
   
-  public static f Rs()
+  private f()
   {
-    if (eDt == null) {
-      eDt = new f();
-    }
-    return eDt;
+    AppMethodBeat.i(78732);
+    this.fTl = new c(10);
+    AppMethodBeat.o(78732);
   }
   
-  public final void s(String paramString, long paramLong)
+  public static f akB()
   {
-    if (this.eDu != null)
-    {
-      this.eDv = paramString;
-      this.eDu.put(paramString, Long.valueOf(paramLong));
+    AppMethodBeat.i(78731);
+    if (fTk == null) {
+      fTk = new f();
     }
+    f localf = fTk;
+    AppMethodBeat.o(78731);
+    return localf;
+  }
+  
+  public final void B(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(78733);
+    if (this.fTl != null)
+    {
+      this.fTm = paramString;
+      this.fTl.put(paramString, Long.valueOf(paramLong));
+    }
+    AppMethodBeat.o(78733);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelstat.f
  * JD-Core Version:    0.7.0.1
  */

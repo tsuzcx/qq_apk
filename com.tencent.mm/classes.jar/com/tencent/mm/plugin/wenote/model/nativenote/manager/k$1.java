@@ -4,11 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.l;
 import com.tencent.mm.plugin.wenote.model.nativenote.b.b;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.u;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class k$1
   implements View.OnKeyListener
@@ -17,142 +18,161 @@ final class k$1
   
   public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getAction() != 0) || (paramKeyEvent.getKeyCode() != 67) || (c.chX().size() == 0)) {}
-    WXRTEditText localWXRTEditText;
-    do
+    AppMethodBeat.i(26831);
+    if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 67))
     {
-      return false;
-      localWXRTEditText = this.rJk.ciC();
-    } while (localWXRTEditText == null);
-    paramInt = localWXRTEditText.getRecyclerItemPosition();
-    y.i("MicroMsg.Note.WXRTManager", "current focus pos: %d", new Object[] { Integer.valueOf(paramInt) });
-    paramView = c.chX().Dq(paramInt);
-    if (paramView == null)
-    {
-      y.w("MicroMsg.Note.WXRTManager", "get current item is null %d", new Object[] { Integer.valueOf(paramInt) });
-      return false;
-    }
-    paramKeyEvent = c.chX().Dq(paramInt - 1);
-    if (paramKeyEvent == null)
-    {
-      y.i("MicroMsg.Note.WXRTManager", "get preItem is null %d", new Object[] { Integer.valueOf(paramInt) });
-      return false;
-    }
-    switch (localWXRTEditText.getEditTextType())
-    {
-    default: 
-    case 0: 
-      for (;;)
+      if (c.din().size() == 0)
       {
-        return true;
-        y.i("MicroMsg.Note.WXRTManager", "Handle Editor Type EDITTEXT");
-        int i = localWXRTEditText.getSelectionStart();
-        if (i != localWXRTEditText.getSelectionEnd()) {
-          break;
-        }
-        if (i == localWXRTEditText.getParagraphsInSelection().aiH)
-        {
-          localWXRTEditText.rIy = true;
-          this.rJk.b(u.rLa, Boolean.valueOf(false));
-          this.rJk.b(u.rLb, Boolean.valueOf(false));
-          this.rJk.b(u.rKZ, Boolean.valueOf(false));
-          k.a(this.rJk).lD(false);
-          k.a(this.rJk).lE(false);
-          k.a(this.rJk).lF(false);
-          localWXRTEditText.rIy = false;
-        }
-        if ((i != 0) || (paramInt == 0)) {
-          break;
-        }
-        paramView = localWXRTEditText.a(i.rIO);
-        c.chX().cia();
-        if (paramKeyEvent.getType() != 1) {
-          break label427;
-        }
-        bool = c.chX().ag(paramInt, true);
-        paramKeyEvent = (com.tencent.mm.plugin.wenote.model.a.i)paramKeyEvent;
-        i = paramKeyEvent.rGs.getText().toString().length();
-        paramKeyEvent.content += paramView;
-        paramKeyEvent.rGp = i;
-        paramKeyEvent.rGn = true;
-        paramKeyEvent.rGt = false;
-        label399:
-        if (!bool) {
-          break label465;
-        }
-        k.b(this.rJk).cjp().Dj(paramInt - 1);
+        AppMethodBeat.o(26831);
+        return false;
       }
-      label427:
-      if (!bk.bl(paramView)) {
-        break;
+      WXRTEditText localWXRTEditText = this.vzP.diT();
+      if (localWXRTEditText == null)
+      {
+        AppMethodBeat.o(26831);
+        return false;
+      }
+      paramInt = localWXRTEditText.getRecyclerItemPosition();
+      ab.i("MicroMsg.Note.WXRTManager", "current focus pos: %d", new Object[] { Integer.valueOf(paramInt) });
+      paramView = c.din().Lj(paramInt);
+      if (paramView == null)
+      {
+        ab.w("MicroMsg.Note.WXRTManager", "get current item is null %d", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(26831);
+        return false;
+      }
+      paramKeyEvent = c.din().Lj(paramInt - 1);
+      if (paramKeyEvent == null)
+      {
+        ab.i("MicroMsg.Note.WXRTManager", "get preItem is null %d", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(26831);
+        return false;
+      }
+      switch (localWXRTEditText.getEditTextType())
+      {
+      default: 
+      case 0: 
+        for (;;)
+        {
+          AppMethodBeat.o(26831);
+          return true;
+          ab.i("MicroMsg.Note.WXRTManager", "Handle Editor Type EDITTEXT");
+          int i = localWXRTEditText.getSelectionStart();
+          if (i != localWXRTEditText.getSelectionEnd())
+          {
+            AppMethodBeat.o(26831);
+            return false;
+          }
+          if (i == localWXRTEditText.getParagraphsInSelection().akX)
+          {
+            localWXRTEditText.vze = true;
+            this.vzP.b(u.vBE, Boolean.FALSE);
+            this.vzP.b(u.vBF, Boolean.FALSE);
+            this.vzP.b(u.vBD, Boolean.FALSE);
+            k.a(this.vzP).oO(false);
+            k.a(this.vzP).oP(false);
+            k.a(this.vzP).oQ(false);
+            localWXRTEditText.vze = false;
+          }
+          if ((i != 0) || (paramInt == 0))
+          {
+            AppMethodBeat.o(26831);
+            return false;
+          }
+          paramView = localWXRTEditText.a(i.vzu);
+          c.din().diq();
+          if (paramKeyEvent.getType() != 1) {
+            break;
+          }
+          bool = c.din().av(paramInt, true);
+          paramKeyEvent = (com.tencent.mm.plugin.wenote.model.a.i)paramKeyEvent;
+          i = paramKeyEvent.vxb.getText().toString().length();
+          paramKeyEvent.content += paramView;
+          paramKeyEvent.vwY = i;
+          paramKeyEvent.vwW = true;
+          paramKeyEvent.vxc = false;
+          label450:
+          if (!bool) {
+            break label516;
+          }
+          k.b(this.vzP).djQ().Lc(paramInt - 1);
+        }
+        if (!bo.isNullOrNil(paramView)) {
+          break;
+        }
       }
     }
-    for (boolean bool = c.chX().ag(paramInt, true);; bool = false)
+    for (boolean bool = c.din().av(paramInt, true);; bool = false)
     {
-      paramKeyEvent.rGr.setSelection(0);
-      paramKeyEvent.rGn = true;
-      paramKeyEvent.rGt = false;
-      break label399;
-      label465:
-      k.b(this.rJk).cjp().eN(paramInt - 1, 2);
+      paramKeyEvent.vxa.setSelection(0);
+      paramKeyEvent.vwW = true;
+      paramKeyEvent.vxc = false;
+      break label450;
+      label516:
+      k.b(this.vzP).djQ().gT(paramInt - 1, 2);
       break;
-      y.i("MicroMsg.Note.WXRTManager", "Handle Editor Type PREBUTTON");
-      c.chX().cia();
+      ab.i("MicroMsg.Note.WXRTManager", "Handle Editor Type PREBUTTON");
+      c.din().diq();
       if (paramKeyEvent.getType() == 1)
       {
         paramKeyEvent = (com.tencent.mm.plugin.wenote.model.a.i)paramKeyEvent;
-        if (bk.bl(paramKeyEvent.content))
+        if (bo.isNullOrNil(paramKeyEvent.content))
         {
-          paramView.rGq.setSelection(0);
-          paramView.rGn = true;
-          paramView.rGt = true;
-          c.chX().ag(paramInt - 1, true);
+          paramView.vwZ.setSelection(0);
+          paramView.vwW = true;
+          paramView.vxc = true;
+          c.din().av(paramInt - 1, true);
+          AppMethodBeat.o(26831);
           return true;
         }
         if (paramKeyEvent.content.endsWith("<br/>")) {
           paramKeyEvent.content = paramKeyEvent.content.substring(0, paramKeyEvent.content.length() - 5);
         }
-        paramKeyEvent.rGp = -1;
-        paramKeyEvent.rGn = true;
-        paramKeyEvent.rGt = false;
+        paramKeyEvent.vwY = -1;
+        paramKeyEvent.vwW = true;
+        paramKeyEvent.vxc = false;
       }
       for (;;)
       {
-        k.b(this.rJk).cjp().eN(paramInt - 1, 2);
+        k.b(this.vzP).djQ().gT(paramInt - 1, 2);
         break;
-        paramKeyEvent.rGr.setSelection(0);
-        paramKeyEvent.rGn = true;
-        paramKeyEvent.rGt = false;
+        paramKeyEvent.vxa.setSelection(0);
+        paramKeyEvent.vwW = true;
+        paramKeyEvent.vxc = false;
       }
-      y.i("MicroMsg.Note.WXRTManager", "Handle Editor Type NEXTBTTTON");
-      if ((paramView.getType() == 4) && (((l)paramView).rGB.booleanValue()))
+      ab.i("MicroMsg.Note.WXRTManager", "Handle Editor Type NEXTBTTTON");
+      if ((paramView.getType() == 4) && (((l)paramView).vxk.booleanValue()))
       {
-        y.i("MicroMsg.Note.WXRTManager", "Current Item is Voice and Recording");
+        ab.i("MicroMsg.Note.WXRTManager", "Current Item is Voice and Recording");
+        AppMethodBeat.o(26831);
         return false;
       }
-      if ((!paramView.rGu) && (paramView.getType() != -1))
+      if ((!paramView.vxd) && (paramView.getType() != -1))
       {
-        c.chX().ah(paramInt, true);
+        c.din().aw(paramInt, true);
+        AppMethodBeat.o(26831);
         return true;
       }
-      c.chX().cia();
-      c.chX().ag(paramInt, false);
-      k.b(this.rJk).cjp().Dl(paramInt);
+      c.din().diq();
+      c.din().av(paramInt, false);
+      k.b(this.vzP).djQ().Le(paramInt);
       paramView = new com.tencent.mm.plugin.wenote.model.a.i();
-      paramView.rGn = true;
-      paramView.rGt = false;
+      paramView.vwW = true;
+      paramView.vxc = false;
       paramView.content = "";
-      paramView.rGp = 0;
-      c.chX().a(paramInt, paramView);
-      c.chX().eQ(paramInt - 1, paramInt + 1);
-      k.b(this.rJk).cjn().bE(paramInt);
+      paramView.vwY = 0;
+      c.din().a(paramInt, paramView);
+      c.din().gW(paramInt - 1, paramInt + 1);
+      k.b(this.vzP).djO().bJ(paramInt);
       break;
+      AppMethodBeat.o(26831);
+      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.k.1
  * JD-Core Version:    0.7.0.1
  */

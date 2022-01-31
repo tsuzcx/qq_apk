@@ -1,28 +1,32 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ImageGalleryUI$3
-  implements n.c
+  extends AnimatorListenerAdapter
 {
-  ImageGalleryUI$3(ImageGalleryUI paramImageGalleryUI, List paramList1, List paramList2) {}
+  ImageGalleryUI$3(ImageGalleryUI paramImageGalleryUI) {}
   
-  public final void a(l paraml)
+  public final void onAnimationEnd(Animator paramAnimator)
   {
-    paraml.clear();
-    int i = 0;
-    while (i < this.jfS.size())
-    {
-      paraml.e(((Integer)this.jfS.get(i)).intValue(), (CharSequence)this.jfT.get(i));
-      i += 1;
-    }
+    AppMethodBeat.i(153854);
+    ImageGalleryUI.p(this.zME).setAlpha(0.0F);
+    AppMethodBeat.o(153854);
+  }
+  
+  public final void onAnimationStart(Animator paramAnimator)
+  {
+    AppMethodBeat.i(153853);
+    ImageGalleryUI.p(this.zME).setAlpha(0.0F);
+    AppMethodBeat.o(153853);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.ImageGalleryUI.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,64 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.b;
-import com.tencent.mm.modelvoice.k;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class p$b
   extends Thread
 {
-  ah handler;
+  ak handler;
   
   public p$b(p paramp)
   {
+    AppMethodBeat.i(26124);
     this.handler = new p.b.1(this, paramp);
+    AppMethodBeat.o(26124);
   }
   
   public final void run()
   {
-    if (p.d(this.pLL) == null)
+    AppMethodBeat.i(26125);
+    if (p.d(this.trH) == null)
     {
-      y.e("MicroMsg.VoicePrintRecoder", "Stop Record Failed recorder == null");
+      ab.e("MicroMsg.VoicePrintRecoder", "Stop Record Failed recorder == null");
+      AppMethodBeat.o(26125);
       return;
     }
-    synchronized (this.pLL)
+    synchronized (this.trH)
     {
-      String str = m.bh(p.e(this.pLL), true);
-      y.d("MicroMsg.VoicePrintRecoder", "fullPathName %s", new Object[] { str });
-      this.pLL.pLI = str;
-      if (p.f(this.pLL) != null) {
-        p.f(this.pLL).requestFocus();
+      String str = m.bE(p.e(this.trH), true);
+      ab.d("MicroMsg.VoicePrintRecoder", "fullPathName %s", new Object[] { str });
+      this.trH.trE = str;
+      if (p.f(this.trH) != null) {
+        p.f(this.trH).requestFocus();
       }
-      if (!p.d(this.pLL).cD(str))
+      if (!p.d(this.trH).eH(str))
       {
-        p.g(this.pLL);
-        y.d("MicroMsg.VoicePrintRecoder", "Thread Start Record  Error fileName[" + p.e(this.pLL) + "]");
-        p.d(this.pLL).uh();
-        p.h(this.pLL);
-        if (p.f(this.pLL) != null) {
-          p.f(this.pLL).zE();
+        p.g(this.trH);
+        ab.d("MicroMsg.VoicePrintRecoder", "Thread Start Record  Error fileName[" + p.e(this.trH) + "]");
+        p.d(this.trH).Et();
+        p.h(this.trH);
+        if (p.f(this.trH) != null) {
+          p.f(this.trH).Mh();
         }
-        if (p.i(this.pLL) != null) {
-          p.i(this.pLL).bPd();
+        if (p.i(this.trH) != null) {
+          p.i(this.trH).cLj();
         }
+        AppMethodBeat.o(26125);
         return;
       }
+      if (p.i(this.trH) != null) {
+        p.i(this.trH);
+      }
+      p.a(this.trH, bo.yB());
+      ab.d("MicroMsg.VoicePrintRecoder", "Thread Started Record fileName[" + p.e(this.trH) + "]");
+      this.handler.sendEmptyMessageDelayed(0, 1L);
+      AppMethodBeat.o(26125);
+      return;
     }
-    p.a(this.pLL, bk.UZ());
-    y.d("MicroMsg.VoicePrintRecoder", "Thread Started Record fileName[" + p.e(this.pLL) + "]");
-    this.handler.sendEmptyMessageDelayed(0, 1L);
   }
 }
 

@@ -3,13 +3,12 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.a.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.a.as;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.e.e;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.e.g;
 
 final class SnsSettingIntroduceUI$2
   implements View.OnClickListener
@@ -18,21 +17,23 @@ final class SnsSettingIntroduceUI$2
   
   public final void onClick(View paramView)
   {
-    paramView = new ap();
-    paramView.bGO.index = 3;
-    a.udP.m(paramView);
+    AppMethodBeat.i(39243);
+    paramView = new as();
+    paramView.cod.index = 3;
+    a.ymk.l(paramView);
     paramView = new Intent();
-    d.b(this.pdb.mController.uMN, "setting", ".ui.setting.SettingsUI", paramView);
+    d.b(this.rVL.getContext(), "setting", ".ui.setting.SettingsUI", paramView);
     paramView = new Intent();
-    paramView.putExtra("enter_scene", e.e.uHS);
-    d.b(this.pdb.mController.uMN, "setting", ".ui.setting.SettingsPrivacyUI", paramView);
-    h.nFQ.f(14090, new Object[] { Integer.valueOf(2) });
-    this.pdb.finish();
+    paramView.putExtra("enter_scene", e.g.yVf);
+    d.b(this.rVL.getContext(), "setting", ".ui.setting.SettingsPrivacyUI", paramView);
+    h.qsU.e(14090, new Object[] { Integer.valueOf(2) });
+    this.rVL.finish();
+    AppMethodBeat.o(39243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsSettingIntroduceUI.2
  * JD-Core Version:    0.7.0.1
  */

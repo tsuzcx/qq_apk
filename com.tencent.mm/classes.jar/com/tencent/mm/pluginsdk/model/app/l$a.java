@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.model.app;
 
 public abstract interface l$a
 {
-  public abstract void eT(int paramInt1, int paramInt2);
+  public abstract void ha(int paramInt1, int paramInt2);
 }
 
 

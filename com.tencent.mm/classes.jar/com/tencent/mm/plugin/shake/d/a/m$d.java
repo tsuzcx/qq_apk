@@ -1,37 +1,43 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.Map;
 
 public final class m$d
 {
-  public String obc;
+  public String qPl;
   public String thumbUrl;
   public String title;
   public String username;
   
-  public static d Mz(String paramString)
+  public static d Zh(String paramString)
   {
-    paramString = bn.s(paramString, "tempsession");
-    if (paramString != null) {
+    AppMethodBeat.i(24674);
+    Map localMap = br.F(paramString, "tempsession");
+    if (localMap != null) {}
+    for (;;)
+    {
       try
       {
-        d locald = new d();
-        locald.title = bk.pm((String)paramString.get(".tempsession.title"));
-        locald.thumbUrl = bk.pm((String)paramString.get(".tempsession.thumburl"));
-        locald.username = bk.pm((String)paramString.get(".tempsession.username"));
-        locald.obc = bk.pm((String)paramString.get(".tempsession.deeplinkjumpurl"));
-        return locald;
+        paramString = new d();
+        paramString.title = bo.nullAsNil((String)localMap.get(".tempsession.title"));
+        paramString.thumbUrl = bo.nullAsNil((String)localMap.get(".tempsession.thumburl"));
+        paramString.username = bo.nullAsNil((String)localMap.get(".tempsession.username"));
+        paramString.qPl = bo.nullAsNil((String)localMap.get(".tempsession.deeplinkjumpurl"));
+        AppMethodBeat.o(24674);
+        return paramString;
       }
       catch (Exception paramString)
       {
-        y.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
-        return null;
+        ab.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
+        paramString = null;
+        continue;
       }
+      paramString = null;
     }
-    return null;
   }
 }
 

@@ -11,90 +11,90 @@ final class aj$1
     super(parami, (byte)0);
   }
   
-  public final int aX(View paramView)
+  public final void bN(int paramInt)
   {
-    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    return RecyclerView.i.bo(paramView) - localLayoutParams.leftMargin;
+    this.ahB.bV(paramInt);
   }
   
-  public final int aY(View paramView)
+  public final int bh(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = RecyclerView.i.bq(paramView);
+    return RecyclerView.i.bz(paramView) - localLayoutParams.leftMargin;
+  }
+  
+  public final int bi(View paramView)
+  {
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+    int i = RecyclerView.i.bB(paramView);
     return localLayoutParams.rightMargin + i;
   }
   
-  public final int aZ(View paramView)
+  public final int bj(View paramView)
   {
-    this.afm.f(paramView, this.hc);
-    return this.hc.right;
+    this.ahB.f(paramView, this.hV);
+    return this.hV.right;
   }
   
-  public final void bI(int paramInt)
+  public final int bk(View paramView)
   {
-    this.afm.bP(paramInt);
+    this.ahB.f(paramView, this.hV);
+    return this.hV.left;
   }
   
-  public final int ba(View paramView)
-  {
-    this.afm.f(paramView, this.hc);
-    return this.hc.left;
-  }
-  
-  public final int bb(View paramView)
+  public final int bl(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = RecyclerView.i.bm(paramView);
+    int i = RecyclerView.i.bx(paramView);
     int j = localLayoutParams.leftMargin;
     return localLayoutParams.rightMargin + (i + j);
   }
   
-  public final int bc(View paramView)
+  public final int bm(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = RecyclerView.i.bn(paramView);
+    int i = RecyclerView.i.by(paramView);
     int j = localLayoutParams.topMargin;
     return localLayoutParams.bottomMargin + (i + j);
   }
   
   public final int getEnd()
   {
-    return this.afm.mWidth;
+    return this.ahB.mWidth;
   }
   
   public final int getEndPadding()
   {
-    return this.afm.getPaddingRight();
+    return this.ahB.getPaddingRight();
   }
   
   public final int getMode()
   {
-    return this.afm.ahf;
+    return this.ahB.ajv;
   }
   
-  public final int hh()
+  public final int iI()
   {
-    return this.afm.getPaddingLeft();
+    return this.ahB.getPaddingLeft();
   }
   
-  public final int hi()
+  public final int iJ()
   {
-    return this.afm.mWidth - this.afm.getPaddingRight();
+    return this.ahB.mWidth - this.ahB.getPaddingRight();
   }
   
-  public final int hj()
+  public final int iK()
   {
-    return this.afm.mWidth - this.afm.getPaddingLeft() - this.afm.getPaddingRight();
+    return this.ahB.mWidth - this.ahB.getPaddingLeft() - this.ahB.getPaddingRight();
   }
   
-  public final int hk()
+  public final int iL()
   {
-    return this.afm.ahg;
+    return this.ahB.ajw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v7.widget.aj.1
  * JD-Core Version:    0.7.0.1
  */

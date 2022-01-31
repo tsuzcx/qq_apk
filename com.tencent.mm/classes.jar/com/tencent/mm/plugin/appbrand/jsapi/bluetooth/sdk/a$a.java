@@ -1,20 +1,25 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a$a
 {
-  public boolean apo = a.glQ;
-  public int dDr = 0;
-  public boolean glO = false;
-  long glP = 20000L;
-  public boolean glS = a.glR;
-  public boolean glU = a.glT;
-  public String glX = "middle";
-  public int glY = 10;
-  public boolean glZ = true;
+  public boolean arI = a.hFP;
+  public int eAS = 0;
+  public boolean hFN = false;
+  long hFO = 20000L;
+  public boolean hFR = a.hFQ;
+  public boolean hFT = a.hFS;
+  public String hFW = "middle";
+  public int hFX = 10;
+  public boolean hFY = true;
   
-  public final a ais()
+  public final a aCm()
   {
-    return new a(this);
+    AppMethodBeat.i(94216);
+    a locala = new a(this);
+    AppMethodBeat.o(94216);
+    return locala;
   }
 }
 

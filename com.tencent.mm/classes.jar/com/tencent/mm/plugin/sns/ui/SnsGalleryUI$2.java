@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsGalleryUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class SnsGalleryUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.oYh.oVv.bHu();
+    AppMethodBeat.i(38936);
+    this.rQA.rNP.ctz();
+    AppMethodBeat.o(38936);
     return true;
   }
 }

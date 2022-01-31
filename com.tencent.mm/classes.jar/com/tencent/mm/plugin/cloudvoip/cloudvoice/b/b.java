@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.b;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.sdk.platformtools.y.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static int aEk()
+  public int kJx;
+  public String openId;
+  
+  public final String toString()
   {
-    if (y.cqK() != null) {
-      return y.cqK().getLogLevel();
-    }
-    return 0;
+    AppMethodBeat.i(135466);
+    String str = "OpenVoiceMember{memberId=" + this.kJx + ", openId='" + this.openId + '\'' + '}';
+    AppMethodBeat.o(135466);
+    return str;
   }
 }
 

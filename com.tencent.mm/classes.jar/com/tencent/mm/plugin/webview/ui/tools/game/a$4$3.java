@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$4$3
   implements Runnable
 {
@@ -7,10 +9,12 @@ final class a$4$3
   
   public final void run()
   {
-    if (this.dYK != null) {
-      this.rwf.rwe.rvX.setMMTitle(this.dYK);
+    AppMethodBeat.i(8652);
+    if (this.cbK != null) {
+      this.vmx.vmw.vmn.setMMTitle(this.cbK);
     }
-    this.rwf.rwe.rvX.oX(this.fyP);
+    this.vmx.vmw.vmn.setMMTitleColor(this.ixw);
+    AppMethodBeat.o(8652);
   }
 }
 

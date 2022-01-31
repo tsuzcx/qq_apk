@@ -4,21 +4,31 @@ import android.view.MotionEvent;
 
 public abstract interface b
 {
-  public abstract void D(MotionEvent paramMotionEvent);
+  public abstract long EN();
   
-  public abstract boolean GU(String paramString);
+  public abstract void M(MotionEvent paramMotionEvent);
   
-  public abstract boolean bhf();
+  public abstract boolean SE(String paramString);
   
-  public abstract boolean bhh();
+  public abstract boolean SF(String paramString);
   
-  public abstract boolean bhi();
+  public abstract boolean bPe();
   
-  public abstract void bhj();
+  public abstract boolean bPf();
   
-  public abstract void bhk();
+  public abstract boolean bPh();
   
-  public abstract void hq(boolean paramBoolean);
+  public abstract boolean bPi();
+  
+  public abstract void bPj();
+  
+  public abstract void bPk();
+  
+  public abstract boolean cA(String paramString, int paramInt);
+  
+  public abstract String getFileName();
+  
+  public abstract void jj(boolean paramBoolean);
   
   public abstract void onPause();
   
@@ -26,7 +36,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.b
  * JD-Core Version:    0.7.0.1
  */

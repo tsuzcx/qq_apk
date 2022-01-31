@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import android.content.Intent;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.u.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.v.b;
 import com.tencent.mm.plugin.exdevice.model.ac.a;
 
 final class ExdeviceRankInfoUI$11
@@ -12,19 +12,21 @@ final class ExdeviceRankInfoUI$11
 {
   ExdeviceRankInfoUI$11(ExdeviceRankInfoUI paramExdeviceRankInfoUI) {}
   
-  public final void Bu(String paramString)
+  public final void Lw(String paramString)
   {
+    AppMethodBeat.i(20145);
     Intent localIntent = new Intent();
     localIntent.putExtra("Ksnsupload_appid", "wx7fa037cc7dfabad5");
-    localIntent.putExtra("Ksnsupload_appname", this.jFV.getString(R.l.exdevice_wechat_sport));
+    localIntent.putExtra("Ksnsupload_appname", this.lPt.getString(2131299490));
     localIntent.putExtra("Ksnsupload_source", 1);
     localIntent.putExtra("need_result", true);
-    String str = u.ij("wx_sport");
-    u.Hc().v(str, true).h("prePublishId", "wx_sport");
+    String str = v.oQ("wx_sport");
+    v.aae().z(str, true).i("prePublishId", "wx_sport");
     localIntent.putExtra("reportSessionId", str);
     localIntent.putExtra("Ksnsupload_type", 0);
     localIntent.putExtra("sns_kemdia_path", paramString);
-    d.b(this.jFV, "sns", ".ui.SnsUploadUI", localIntent, 2);
+    d.b(this.lPt, "sns", ".ui.SnsUploadUI", localIntent, 2);
+    AppMethodBeat.o(20145);
   }
 }
 

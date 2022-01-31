@@ -1,14 +1,18 @@
 package com.tencent.mm.plugin.appbrand.widget.picker;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class AppBrandMultiOptionsPicker$a
 {
-  public final String[] hAa;
-  public final int hAb;
+  public final String[] jsq;
+  public final int selected;
   
   public AppBrandMultiOptionsPicker$a(String[] paramArrayOfString, int paramInt)
   {
-    this.hAa = paramArrayOfString;
-    this.hAb = Math.max(0, Math.min(paramInt, paramArrayOfString.length - 1));
+    AppMethodBeat.i(126703);
+    this.jsq = paramArrayOfString;
+    this.selected = Math.max(0, Math.min(paramInt, paramArrayOfString.length - 1));
+    AppMethodBeat.o(126703);
   }
 }
 

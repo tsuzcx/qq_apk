@@ -8,11 +8,12 @@ import android.content.pm.IPackageStatsObserver;
 import android.content.pm.PackageManager;
 import android.os.Process;
 import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.av;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
 import java.lang.reflect.Method;
 
@@ -23,40 +24,44 @@ public final class a$4
   
   public final void run()
   {
-    File localFile = new File(a.Je());
+    AppMethodBeat.i(16376);
+    File localFile = new File(a.acb());
     if (!localFile.exists())
     {
-      y.w("MicroMsg.HandlerTraceManager", "summer handler trace file is not exists");
+      ab.w("MicroMsg.HandlerTraceManager", "summer handler trace file is not exists");
+      AppMethodBeat.o(16376);
       return;
     }
-    if (!g.DN().Dc())
+    if (!g.RJ().QU())
     {
-      y.w("MicroMsg.HandlerTraceManager", "summer acc not ready ");
+      ab.w("MicroMsg.HandlerTraceManager", "summer acc not ready ");
+      AppMethodBeat.o(16376);
       return;
     }
-    long l1 = a.k(this.dZq).getLong("handler_report_lastUploadTime", 0L);
+    long l1 = a.l(this.fpv).getLong("handler_report_lastUploadTime", 0L);
     long l2 = System.currentTimeMillis();
     int i;
-    if ((l2 - l1 > a.l(this.dZq)) || (l1 > l2)) {
+    if ((l2 - l1 > a.m(this.fpv)) || (l1 > l2)) {
       i = 1;
     }
-    while ((a.i(this.dZq)) && (i != 0))
+    while ((a.j(this.fpv)) && (i != 0))
     {
-      y.i("MicroMsg.HandlerTraceManager", "summer check need upload ,file size is %d,time out %b", new Object[] { Long.valueOf(localFile.length()), Boolean.valueOf(true) });
-      Object localObject = this.dZq;
-      Context localContext = ae.getContext();
-      String str2 = ae.getContext().getPackageName();
+      ab.i("MicroMsg.HandlerTraceManager", "summer check need upload ,file size is %d,time out %b", new Object[] { Long.valueOf(localFile.length()), Boolean.TRUE });
+      Object localObject = this.fpv;
+      Context localContext = ah.getContext();
+      String str2 = ah.getContext().getPackageName();
       try
       {
         PackageManager.class.getMethod("getPackageSizeInfo", new Class[] { String.class, IPackageStatsObserver.class }).invoke(localContext.getPackageManager(), new Object[] { str2, new a.5((a)localObject) });
-        if ((a.m(this.dZq)[1] != 0L) || (a.n(this.dZq) > 1L)) {
-          if (localFile.length() > a.o(this.dZq))
+        if ((a.n(this.fpv)[1] != 0L) || (a.o(this.fpv) > 1L)) {
+          if (localFile.length() > a.p(this.fpv))
           {
-            y.e("MicroMsg.HandlerTraceManager", "summer log file invaild format");
-            a.a(this.dZq, localFile);
-            a.p(this.dZq);
-            a.q(this.dZq);
-            a.k(this.dZq).edit().putLong("handler_report_lastUploadTime", System.currentTimeMillis()).commit();
+            ab.e("MicroMsg.HandlerTraceManager", "summer log file invaild format");
+            a.a(this.fpv, localFile);
+            a.q(this.fpv);
+            a.r(this.fpv);
+            a.l(this.fpv).edit().putLong("handler_report_lastUploadTime", System.currentTimeMillis()).commit();
+            AppMethodBeat.o(16376);
             return;
             i = 0;
           }
@@ -66,39 +71,43 @@ public final class a$4
       {
         for (;;)
         {
-          ((a)localObject).bwO[0] = -1L;
-          ((a)localObject).bwO[1] = -1L;
-          ((a)localObject).bwO[2] = -1L;
+          ((a)localObject).bYy[0] = -1L;
+          ((a)localObject).bYy[1] = -1L;
+          ((a)localObject).bYy[2] = -1L;
           continue;
-          str2 = a.jn(a.Je());
-          a locala = this.dZq;
+          str2 = a.qb(a.acb());
+          a locala = this.fpv;
           Intent localIntent = new Intent();
-          localIntent.setClassName(ae.getPackageName(), "com.tencent.mm.sandbox.monitor.ExceptionMonitorService");
+          localIntent.setClassName(ah.getPackageName(), "com.tencent.mm.sandbox.monitor.ExceptionMonitorBroadcastReceiver");
           localIntent.setAction("uncatch_exception");
           localIntent.putExtra("exceptionPid", Process.myPid());
-          String str1 = at.dVC.L("login_weixin_username", "");
+          String str1 = av.flM.Y("login_weixin_username", "");
           localObject = str1;
-          if (bk.bl(str1)) {
-            localObject = at.dVC.L("login_user_name", "never_login_crash");
+          if (bo.isNullOrNil(str1)) {
+            localObject = av.flM.Y("login_user_name", "never_login_crash");
           }
           localIntent.putExtra("userName", (String)localObject);
           localIntent.putExtra("tag", "handler");
-          localIntent.putExtra("exceptionMsg", Base64.encodeToString((locala.Jb() + str2).getBytes(), 2));
-          ae.getContext().startService(localIntent);
+          localIntent.putExtra("exceptionMsg", Base64.encodeToString((locala.abY() + str2).getBytes(), 2));
+          ah.getContext().sendBroadcast(localIntent);
         }
-        a.r(this.dZq);
+        a.s(this.fpv);
       }
     }
+    AppMethodBeat.o(16376);
   }
   
   public final String toString()
   {
-    return super.toString() + "|checkAndUpload";
+    AppMethodBeat.i(16377);
+    String str = super.toString() + "|checkAndUpload";
+    AppMethodBeat.o(16377);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.d.a.4
  * JD-Core Version:    0.7.0.1
  */

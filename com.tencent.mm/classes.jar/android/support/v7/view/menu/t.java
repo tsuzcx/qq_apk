@@ -3,11 +3,10 @@ package android.support.v7.view.menu;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Parcelable;
-import android.support.v7.a.a.d;
-import android.support.v7.a.a.g;
 import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.ah;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,16 +26,21 @@ final class t
   extends m
   implements o, View.OnKeyListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener
 {
-  private boolean NS;
-  private final int UA;
-  private final boolean UB;
-  private final ViewTreeObserver.OnGlobalLayoutListener UF = new ViewTreeObserver.OnGlobalLayoutListener()
+  private static final int Vk = 2130968603;
+  private boolean NG;
+  private o.a VE;
+  ViewTreeObserver VF;
+  private PopupWindow.OnDismissListener VG;
+  private final int Vm;
+  private final int Vn;
+  private final boolean Vo;
+  final ViewTreeObserver.OnGlobalLayoutListener Vs = new ViewTreeObserver.OnGlobalLayoutListener()
   {
     public final void onGlobalLayout()
     {
-      if ((t.this.isShowing()) && (!t.this.Wt.afd))
+      if ((t.this.isShowing()) && (!t.this.Xg.ahs))
       {
-        View localView = t.this.UK;
+        View localView = t.this.Vx;
         if ((localView == null) || (!localView.isShown())) {
           t.this.dismiss();
         }
@@ -45,106 +49,100 @@ final class t
       {
         return;
       }
-      t.this.Wt.show();
+      t.this.Xg.show();
     }
   };
-  private final View.OnAttachStateChangeListener UG = new View.OnAttachStateChangeListener()
+  private final View.OnAttachStateChangeListener Vt = new View.OnAttachStateChangeListener()
   {
     public final void onViewAttachedToWindow(View paramAnonymousView) {}
     
     public final void onViewDetachedFromWindow(View paramAnonymousView)
     {
-      if (t.a(t.this) != null)
+      if (t.this.VF != null)
       {
-        if (!t.a(t.this).isAlive()) {
-          t.a(t.this, paramAnonymousView.getViewTreeObserver());
+        if (!t.this.VF.isAlive()) {
+          t.this.VF = paramAnonymousView.getViewTreeObserver();
         }
-        t.a(t.this).removeGlobalOnLayoutListener(t.b(t.this));
+        t.this.VF.removeGlobalOnLayoutListener(t.this.Vs);
       }
       paramAnonymousView.removeOnAttachStateChangeListener(this);
     }
   };
-  private int UJ = 0;
-  View UK;
-  private o.a UR;
-  private ViewTreeObserver US;
-  private PopupWindow.OnDismissListener UT;
-  private final int Uz;
-  private final g Wr;
-  private final int Ws;
-  final ah Wt;
-  private boolean Wu;
-  private boolean Wv;
-  private int Ww;
-  private final h dm;
-  private View hX;
+  private int Vw = 0;
+  View Vx;
+  private final g Xe;
+  private final int Xf;
+  final ah Xg;
+  private boolean Xh;
+  private boolean Xi;
+  private int Xj;
+  private final h eq;
+  private View iU;
   private final Context mContext;
   
   public t(Context paramContext, h paramh, View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     this.mContext = paramContext;
-    this.dm = paramh;
-    this.UB = paramBoolean;
-    this.Wr = new g(paramh, LayoutInflater.from(paramContext), this.UB);
-    this.Uz = paramInt1;
-    this.UA = paramInt2;
+    this.eq = paramh;
+    this.Vo = paramBoolean;
+    this.Xe = new g(paramh, LayoutInflater.from(paramContext), this.Vo, Vk);
+    this.Vm = paramInt1;
+    this.Vn = paramInt2;
     Resources localResources = paramContext.getResources();
-    this.Ws = Math.max(localResources.getDisplayMetrics().widthPixels / 2, localResources.getDimensionPixelSize(a.d.abc_config_prefDialogWidth));
-    this.hX = paramView;
-    this.Wt = new ah(this.mContext, this.Uz, this.UA);
+    this.Xf = Math.max(localResources.getDisplayMetrics().widthPixels / 2, localResources.getDimensionPixelSize(2131427360));
+    this.iU = paramView;
+    this.Xg = new ah(this.mContext, this.Vm, this.Vn);
     paramh.a(this, paramContext);
-  }
-  
-  public final boolean V()
-  {
-    return false;
   }
   
   public final void a(h paramh, boolean paramBoolean)
   {
-    if (paramh != this.dm) {}
+    if (paramh != this.eq) {}
     do
     {
       return;
       dismiss();
-    } while (this.UR == null);
-    this.UR.a(paramh, paramBoolean);
+    } while (this.VE == null);
+    this.VE.a(paramh, paramBoolean);
   }
   
   public final void a(o.a parama)
   {
-    this.UR = parama;
+    this.VE = parama;
   }
   
   public final boolean a(u paramu)
   {
     if (paramu.hasVisibleItems())
     {
-      n localn = new n(this.mContext, paramu, this.UK, this.UB, this.Uz, this.UA);
-      localn.b(this.UR);
+      n localn = new n(this.mContext, paramu, this.Vx, this.Vo, this.Vm, this.Vn);
+      localn.c(this.VE);
       localn.setForceShowIcon(m.h(paramu));
-      localn.UJ = this.UJ;
-      localn.UT = this.UT;
-      this.UT = null;
-      this.dm.T(false);
-      int i = this.Wt.aeJ;
-      int j = this.Wt.getVerticalOffset();
+      localn.VG = this.VG;
+      this.VG = null;
+      this.eq.V(false);
+      int j = this.Xg.agY;
+      int k = this.Xg.getVerticalOffset();
+      int i = j;
+      if ((Gravity.getAbsoluteGravity(this.Vw, android.support.v4.view.t.T(this.iU)) & 0x7) == 5) {
+        i = j + this.iU.getWidth();
+      }
       if (localn.isShowing()) {
         i = 1;
       }
       while (i != 0)
       {
-        if (this.UR != null) {
-          this.UR.d(paramu);
+        if (this.VE != null) {
+          this.VE.d(paramu);
         }
         return true;
-        if (localn.hX == null)
+        if (localn.iU == null)
         {
           i = 0;
         }
         else
         {
-          localn.b(i, j, true, true);
+          localn.b(i, k, true, true);
           i = 1;
         }
       }
@@ -152,10 +150,15 @@ final class t
     return false;
   }
   
+  public final boolean aG()
+  {
+    return false;
+  }
+  
   public final void dismiss()
   {
     if (isShowing()) {
-      this.Wt.dismiss();
+      this.Xg.dismiss();
     }
   }
   
@@ -163,37 +166,37 @@ final class t
   
   public final ListView getListView()
   {
-    return this.Wt.aeH;
+    return this.Xg.agW;
   }
   
   public final boolean isShowing()
   {
-    return (!this.Wu) && (this.Wt.afe.isShowing());
+    return (!this.Xh) && (this.Xg.aht.isShowing());
   }
   
-  public final void o(boolean paramBoolean)
+  public final void n(boolean paramBoolean)
   {
-    this.Wv = false;
-    if (this.Wr != null) {
-      this.Wr.notifyDataSetChanged();
+    this.Xi = false;
+    if (this.Xe != null) {
+      this.Xe.notifyDataSetChanged();
     }
   }
   
   public final void onDismiss()
   {
-    this.Wu = true;
-    this.dm.close();
-    if (this.US != null)
+    this.Xh = true;
+    this.eq.close();
+    if (this.VF != null)
     {
-      if (!this.US.isAlive()) {
-        this.US = this.UK.getViewTreeObserver();
+      if (!this.VF.isAlive()) {
+        this.VF = this.Vx.getViewTreeObserver();
       }
-      this.US.removeGlobalOnLayoutListener(this.UF);
-      this.US = null;
+      this.VF.removeGlobalOnLayoutListener(this.Vs);
+      this.VF = null;
     }
-    this.UK.removeOnAttachStateChangeListener(this.UG);
-    if (this.UT != null) {
-      this.UT.onDismiss();
+    this.Vx.removeOnAttachStateChangeListener(this.Vt);
+    if (this.VG != null) {
+      this.VG.onDismiss();
     }
   }
   
@@ -216,37 +219,37 @@ final class t
   
   public final void setAnchorView(View paramView)
   {
-    this.hX = paramView;
+    this.iU = paramView;
   }
   
   public final void setForceShowIcon(boolean paramBoolean)
   {
-    this.Wr.UQ = paramBoolean;
+    this.Xe.VD = paramBoolean;
   }
   
   public final void setGravity(int paramInt)
   {
-    this.UJ = paramInt;
+    this.Vw = paramInt;
   }
   
   public final void setHorizontalOffset(int paramInt)
   {
-    this.Wt.aeJ = paramInt;
+    this.Xg.agY = paramInt;
   }
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.UT = paramOnDismissListener;
+    this.VG = paramOnDismissListener;
   }
   
   public final void setShowTitle(boolean paramBoolean)
   {
-    this.NS = paramBoolean;
+    this.NG = paramBoolean;
   }
   
   public final void setVerticalOffset(int paramInt)
   {
-    this.Wt.setVerticalOffset(paramInt);
+    this.Xg.setVerticalOffset(paramInt);
   }
   
   public final void show()
@@ -259,50 +262,50 @@ final class t
     while (i == 0)
     {
       throw new IllegalStateException("StandardMenuPopup cannot be used without an anchor");
-      if ((this.Wu) || (this.hX == null))
+      if ((this.Xh) || (this.iU == null))
       {
         i = 0;
       }
       else
       {
-        this.UK = this.hX;
-        this.Wt.setOnDismissListener(this);
-        this.Wt.aeW = this;
-        this.Wt.setModal(true);
-        Object localObject = this.UK;
-        if (this.US == null) {}
+        this.Vx = this.iU;
+        this.Xg.setOnDismissListener(this);
+        this.Xg.ahl = this;
+        this.Xg.setModal(true);
+        Object localObject = this.Vx;
+        if (this.VF == null) {}
         for (i = 1;; i = 0)
         {
-          this.US = ((View)localObject).getViewTreeObserver();
+          this.VF = ((View)localObject).getViewTreeObserver();
           if (i != 0) {
-            this.US.addOnGlobalLayoutListener(this.UF);
+            this.VF.addOnGlobalLayoutListener(this.Vs);
           }
-          ((View)localObject).addOnAttachStateChangeListener(this.UG);
-          this.Wt.aeU = ((View)localObject);
-          this.Wt.UJ = this.UJ;
-          if (!this.Wv)
+          ((View)localObject).addOnAttachStateChangeListener(this.Vt);
+          this.Xg.ahj = ((View)localObject);
+          this.Xg.Vw = this.Vw;
+          if (!this.Xi)
           {
-            this.Ww = a(this.Wr, null, this.mContext, this.Ws);
-            this.Wv = true;
+            this.Xj = a(this.Xe, null, this.mContext, this.Xf);
+            this.Xi = true;
           }
-          this.Wt.setContentWidth(this.Ww);
-          this.Wt.hf();
-          this.Wt.Wn = this.Wn;
-          this.Wt.show();
-          localObject = this.Wt.aeH;
+          this.Xg.setContentWidth(this.Xj);
+          this.Xg.iD();
+          this.Xg.Xa = this.Xa;
+          this.Xg.show();
+          localObject = this.Xg.agW;
           ((ListView)localObject).setOnKeyListener(this);
-          if ((this.NS) && (this.dm.VF != null))
+          if ((this.NG) && (this.eq.Wu != null))
           {
-            FrameLayout localFrameLayout = (FrameLayout)LayoutInflater.from(this.mContext).inflate(a.g.abc_popup_menu_header_item_layout, (ViewGroup)localObject, false);
+            FrameLayout localFrameLayout = (FrameLayout)LayoutInflater.from(this.mContext).inflate(2130968602, (ViewGroup)localObject, false);
             TextView localTextView = (TextView)localFrameLayout.findViewById(16908310);
             if (localTextView != null) {
-              localTextView.setText(this.dm.VF);
+              localTextView.setText(this.eq.Wu);
             }
             localFrameLayout.setEnabled(false);
             ((ListView)localObject).addHeaderView(localFrameLayout, null, false);
           }
-          this.Wt.setAdapter(this.Wr);
-          this.Wt.show();
+          this.Xg.setAdapter(this.Xe);
+          this.Xg.show();
           i = j;
           break;
         }

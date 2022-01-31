@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.wallet.pay;
 
-import com.tencent.mm.ah.m;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -13,7 +13,7 @@ public abstract class c
     super(paramWalletBaseUI, parami);
   }
   
-  public boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     return false;
   }

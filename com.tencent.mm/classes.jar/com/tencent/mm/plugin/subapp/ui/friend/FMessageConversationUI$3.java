@@ -1,32 +1,38 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
+import android.content.Intent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.tools.j;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
+import com.tencent.mm.plugin.account.bind.ui.MobileFriendUI;
+import com.tencent.mm.plugin.account.friend.a.l;
+import com.tencent.mm.plugin.account.friend.a.l.a;
+import com.tencent.mm.ui.MMWizardActivity;
 
 final class FMessageConversationUI$3
-  implements AdapterView.OnItemLongClickListener
+  implements View.OnClickListener
 {
-  FMessageConversationUI$3(FMessageConversationUI paramFMessageConversationUI, j paramj) {}
+  FMessageConversationUI$3(FMessageConversationUI paramFMessageConversationUI) {}
   
-  public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void onClick(View paramView)
   {
-    if (paramInt < FMessageConversationUI.b(this.pwx).getHeaderViewsCount())
+    AppMethodBeat.i(25360);
+    if (l.aqq() != l.a.gxB)
     {
-      y.w("MicroMsg.FMessageConversationUI", "on header view long click, ignore");
-      return true;
+      paramView = new Intent(this.sYg.getContext(), BindMContactIntroUI.class);
+      paramView.putExtra("key_upload_scene", 5);
+      MMWizardActivity.J(this.sYg.getContext(), paramView);
+      AppMethodBeat.o(25360);
+      return;
     }
-    int i = FMessageConversationUI.b(this.pwx).getHeaderViewsCount();
-    this.hZt.a(paramView, paramInt - i, paramLong, this.pwx, FMessageConversationUI.c(this.pwx));
-    return true;
+    this.sYg.startActivity(new Intent(this.sYg.getContext(), MobileFriendUI.class));
+    AppMethodBeat.o(25360);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.friend.FMessageConversationUI.3
  * JD-Core Version:    0.7.0.1
  */

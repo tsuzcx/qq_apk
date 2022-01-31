@@ -5,10 +5,10 @@ import android.widget.TextView;
 
 final class WalletBankcardIdUI$a$a
 {
-  TextView nvx;
-  ImageView qAE;
-  TextView qAF;
-  TextView qAG;
+  TextView qgt;
+  ImageView unp;
+  TextView unq;
+  TextView unr;
   
   WalletBankcardIdUI$a$a(WalletBankcardIdUI.a parama) {}
 }

@@ -1,79 +1,83 @@
 package com.tencent.mm.plugin.ext;
 
 import android.database.Cursor;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bi;
 import com.tencent.mm.storage.bp;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 final class b$5
-  implements g.a
+  implements h.a
 {
   b$5(b paramb) {}
   
-  public final void a(g arg1, g.c paramc)
+  public final void a(h arg1, h.c paramc)
   {
-    if ((??? == null) || (paramc == null) || (paramc.mdu == null))
+    AppMethodBeat.i(20263);
+    if ((??? == null) || (paramc == null) || (paramc.oDQ == null))
     {
-      y.e("MicroMsg.SubCoreExt", "onMsgChange, wrong args");
+      ab.e("MicroMsg.SubCoreExt", "onMsgChange, wrong args");
+      AppMethodBeat.o(20263);
       return;
     }
-    Object localObject;
-    synchronized (this.jJF)
-    {
-      localObject = b.aNp().cvU();
-      if (localObject == null)
-      {
-        y.i("MicroMsg.SubCoreExt", "onMsgChange onNotifyChange getValidOpenMsgListener cu == null");
-        return;
-      }
-    }
-    y.d("MicroMsg.SubCoreExt", "onMsgChange onNotifyChange listener count = %s", new Object[] { Integer.valueOf(((Cursor)localObject).getCount()) });
-    if (((Cursor)localObject).getCount() <= 0)
-    {
-      ((Cursor)localObject).close();
-      y.i("MicroMsg.SubCoreExt", "onMsgChange onNotifyChange cu.getCount() <= 0");
-      return;
-    }
-    ((Cursor)localObject).close();
-    int i = 0;
     for (;;)
     {
-      if (i < paramc.mdu.size())
+      int i;
+      synchronized (this.mdJ)
       {
-        localObject = (bi)paramc.mdu.get(i);
-        if ((localObject != null) && (((cs)localObject).field_isSend == 0) && (((cs)localObject).field_status != 4) && (((bi)localObject).getType() != 9999) && (((bi)localObject).getType() != 10000) && (!s.hV(((cs)localObject).field_talker)) && (!s.hZ(((cs)localObject).field_talker)))
+        Object localObject = b.bts().dyD();
+        if (localObject == null)
         {
-          Integer localInteger = (Integer)b.a(this.jJF).get(((cs)localObject).field_talker);
+          ab.i("MicroMsg.SubCoreExt", "onMsgChange onNotifyChange getValidOpenMsgListener cu == null");
+          AppMethodBeat.o(20263);
+          return;
+        }
+        ab.d("MicroMsg.SubCoreExt", "onMsgChange onNotifyChange listener count = %s", new Object[] { Integer.valueOf(((Cursor)localObject).getCount()) });
+        if (((Cursor)localObject).getCount() <= 0)
+        {
+          ((Cursor)localObject).close();
+          ab.i("MicroMsg.SubCoreExt", "onMsgChange onNotifyChange cu.getCount() <= 0");
+          AppMethodBeat.o(20263);
+          return;
+        }
+        ((Cursor)localObject).close();
+        i = 0;
+        if (i < paramc.oDQ.size())
+        {
+          localObject = (bi)paramc.oDQ.get(i);
+          if ((localObject == null) || (((dd)localObject).field_isSend != 0) || (((dd)localObject).field_status == 4) || (((bi)localObject).getType() == 9999) || (((bi)localObject).getType() == 10000) || (t.oE(((dd)localObject).field_talker)) || (t.oI(((dd)localObject).field_talker))) {
+            break label412;
+          }
+          Integer localInteger = (Integer)b.a(this.mdJ).get(((dd)localObject).field_talker);
           if (localInteger == null)
           {
-            b.a(this.jJF).put(((cs)localObject).field_talker, Integer.valueOf(1));
-            y.d("MicroMsg.SubCoreExt", "onMsgChange %s, %d", new Object[] { ((cs)localObject).field_talker, Integer.valueOf(1) });
+            b.a(this.mdJ).put(((dd)localObject).field_talker, Integer.valueOf(1));
+            ab.d("MicroMsg.SubCoreExt", "onMsgChange %s, %d", new Object[] { ((dd)localObject).field_talker, Integer.valueOf(1) });
           }
           else
           {
-            b.a(this.jJF).put(((cs)localObject).field_talker, Integer.valueOf(localInteger.intValue() + 1));
-            y.d("MicroMsg.SubCoreExt", "onMsgChange %s, %d", new Object[] { ((cs)localObject).field_talker, Integer.valueOf(localInteger.intValue() + 1) });
+            b.a(this.mdJ).put(((dd)localObject).field_talker, Integer.valueOf(localInteger.intValue() + 1));
+            ab.d("MicroMsg.SubCoreExt", "onMsgChange %s, %d", new Object[] { ((dd)localObject).field_talker, Integer.valueOf(localInteger.intValue() + 1) });
           }
         }
       }
-      else
-      {
-        if (b.a(this.jJF).size() > 0) {
-          this.jJF.aNu();
-        }
-        for (;;)
-        {
-          return;
-          y.i("MicroMsg.SubCoreExt", "notifyMsgUsers.size < 1");
-        }
+      if (b.a(this.mdJ).size() > 0) {
+        this.mdJ.btx();
       }
+      for (;;)
+      {
+        AppMethodBeat.o(20263);
+        return;
+        ab.i("MicroMsg.SubCoreExt", "notifyMsgUsers.size < 1");
+      }
+      label412:
       i += 1;
     }
   }

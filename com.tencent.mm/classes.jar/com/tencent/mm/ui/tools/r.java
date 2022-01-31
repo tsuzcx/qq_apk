@@ -1,243 +1,350 @@
 package com.tencent.mm.ui.tools;
 
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.FontMetricsInt;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.res.Resources;
 import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.TextPaint;
-import android.text.style.ImageSpan;
-import android.widget.EditText;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.View.OnKeyListener;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.base.MMListPopupWindow;
+import com.tencent.mm.ui.base.o;
 
-public final class r
+public abstract class r
+  implements View.OnKeyListener, ViewTreeObserver.OnGlobalLayoutListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener
 {
-  String hnV;
-  List<b> wfr;
-  WeakReference<EditText> wfs;
-  ArrayList<String> wft;
-  boolean wfu;
+  private ViewGroup AxR;
+  private PopupWindow.OnDismissListener AxS;
+  private boolean AxT = true;
+  private View AxU;
+  private int AxV;
+  private int AxW = 0;
+  private int AxX = 0;
+  private int AxY = 0;
+  private float AxZ = 0.0F;
+  private float Aya = 0.0F;
+  private ViewTreeObserver VF;
+  private int Xf;
+  private int dividerHeight;
+  private View iU;
+  private boolean jpt = false;
+  private BaseAdapter krV;
+  protected Context mContext;
+  private boolean vnS = false;
+  private DialogInterface.OnCancelListener yTy;
+  private MMListPopupWindow zxr;
+  private int zxs = 2131493189;
   
-  public r(EditText paramEditText)
+  public r(Context paramContext)
   {
-    this.wfs = new WeakReference(paramEditText);
+    this.mContext = paramContext;
+    paramContext = paramContext.getResources();
+    this.Xf = Math.min(paramContext.getDisplayMetrics().widthPixels * 4 / 5, paramContext.getDimensionPixelSize(2131427813));
+    ViewGroup localViewGroup;
+    if ((this.mContext instanceof Activity))
+    {
+      localViewGroup = (ViewGroup)((Activity)this.mContext).getWindow().getDecorView();
+      if (localViewGroup.getChildCount() <= 0) {
+        break label183;
+      }
+    }
+    label183:
+    for (this.iU = localViewGroup.getChildAt(0);; this.iU = localViewGroup)
+    {
+      this.dividerHeight = BackwardSupportUtil.b.b(this.mContext, 1.0F);
+      this.AxW = (paramContext.getDimensionPixelSize(2131427808) * 2);
+      this.AxX = paramContext.getDimensionPixelSize(2131427562);
+      this.AxY = BackwardSupportUtil.b.b(this.mContext, 36.0F);
+      this.krV = Kp();
+      return;
+    }
   }
   
-  static boolean a(EditText paramEditText, ArrayList<String> paramArrayList)
+  private int b(ListAdapter paramListAdapter)
   {
-    String str = paramEditText.getText().toString();
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    Object localObject1 = k(str, paramArrayList);
-    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+    int n = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int i1 = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int i2 = paramListAdapter.getCount();
+    int j = 0;
+    int i = 0;
+    View localView = null;
+    int k = 0;
+    if (j < i2)
     {
-      int i = paramEditText.getSelectionStart();
-      int j = paramEditText.getSelectionEnd();
-      paramArrayList = paramEditText.getContext();
-      TextPaint localTextPaint = paramEditText.getPaint();
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      int m = paramListAdapter.getItemViewType(j);
+      if (m == i) {
+        break label127;
+      }
+      localView = null;
+      i = m;
+    }
+    label127:
+    for (;;)
+    {
+      if (this.AxR == null) {
+        this.AxR = new FrameLayout(this.mContext);
+      }
+      localView = paramListAdapter.getView(j, localView, this.AxR);
+      localView.measure(n, i1);
+      k = Math.max(k, localView.getMeasuredWidth());
+      j += 1;
+      break;
+      return k;
+    }
+  }
+  
+  private boolean isLandscape()
+  {
+    DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
+    return localDisplayMetrics.widthPixels > localDisplayMetrics.heightPixels;
+  }
+  
+  protected abstract BaseAdapter Kp();
+  
+  public final void dismiss()
+  {
+    if (isShowing()) {
+      this.zxr.dismiss();
+    }
+  }
+  
+  public boolean gr()
+  {
+    Object localObject1 = new Rect();
+    int i;
+    int k;
+    int j;
+    Object localObject2;
+    label143:
+    boolean bool;
+    if ((this.mContext instanceof AppCompatActivity))
+    {
+      i = ((AppCompatActivity)this.mContext).getSupportActionBar().getHeight();
+      k = al.ap(this.mContext, 2131427598);
+      j = i;
+      if ((this.mContext instanceof Activity))
       {
-        Object localObject2 = (b)((Iterator)localObject1).next();
-        int k = ((b)localObject2).start;
-        int m = ((b)localObject2).length;
-        if ((k < 0) || (m <= 0) || (k + m > str.length()))
-        {
-          y.i("MicroMsg.WordsChecker", "start : %d, length : %d.", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+        ((Activity)this.mContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject1);
+        j = ((Activity)this.mContext).getWindow().getDecorView().getHeight();
+        localObject2 = new int[2];
+        ((Activity)this.mContext).getWindow().getDecorView().getLocationOnScreen((int[])localObject2);
+        if ((j - ((Rect)localObject1).height() < 0) || (localObject2[1] <= 200)) {
+          break label858;
         }
-        else if (((b)localObject2).wfx)
-        {
-          localObject2 = str.substring(k, k + m);
-          SpannableString localSpannableString = new SpannableString((CharSequence)localObject2);
-          localSpannableString.setSpan(new ImageSpan(new a(paramArrayList, (String)localObject2, localTextPaint), 0), 0, ((String)localObject2).length(), 33);
-          localSpannableStringBuilder.append(localSpannableString);
+        j = i + (j - ((Rect)localObject1).height());
+      }
+      this.vnS = isLandscape();
+      if (this.zxr == null) {
+        this.zxr = new MMListPopupWindow(this.mContext, null, 0);
+      }
+      this.zxr.setOnDismissListener(this);
+      this.zxr.ahl = this;
+      this.zxr.setAdapter(this.krV);
+      this.zxr.setModal(true);
+      this.zxr.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130839858));
+      this.zxr.setAnimationStyle(this.zxs);
+      this.zxr.agY = k;
+      this.zxr.ahj = this.iU;
+      if (this.iU != null)
+      {
+        if (this.VF != null) {
+          break label869;
         }
-        else
-        {
-          localSpannableStringBuilder.append(str.substring(k, k + m));
+        bool = true;
+        label276:
+        this.VF = this.iU.getViewTreeObserver();
+        ab.v("MicroMsg.SubMenuHelperBase", "tryshow addGlobalListener:%b", new Object[] { Boolean.valueOf(bool) });
+        if (bool) {
+          this.VF.addOnGlobalLayoutListener(this);
         }
       }
-      if (localSpannableStringBuilder.length() > 0)
+      this.zxr.setVerticalOffset(j);
+      this.zxr.jpt = this.jpt;
+      this.zxr.setContentWidth(Math.min(b(this.krV), this.Xf));
+      this.zxr.iD();
+      if ((this.AxZ != 0.0F) && (this.Aya != 0.0F))
       {
-        paramEditText.setText(localSpannableStringBuilder);
-        paramEditText.setTextKeepState(localSpannableStringBuilder);
-        if ((i == j) && (i >= 0)) {
-          paramEditText.setSelection(i);
+        localObject1 = new DisplayMetrics();
+        ((Activity)this.mContext).getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
+        if (((DisplayMetrics)localObject1).widthPixels <= ((DisplayMetrics)localObject1).heightPixels) {
+          break label875;
         }
+        i = 1;
+        label431:
+        localObject1 = new Rect();
+        ((Activity)this.mContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject1);
+        j = ((Activity)this.mContext).getWindow().getDecorView().getHeight();
+        if (j <= ((Rect)localObject1).height()) {
+          break label945;
+        }
+        j = ((Rect)localObject1).height();
       }
+    }
+    label933:
+    label945:
+    for (;;)
+    {
+      if (i != 0)
+      {
+        i = (int)(this.Aya * j);
+        label503:
+        ab.d("MicroMsg.SubMenuHelperBase", "menuHeightPercentPort(%f), menuHeightPercentLand(%f), frameHeight(%d), decorViewHeight(%d), menuHeight(%d)", new Object[] { Float.valueOf(this.AxZ), Float.valueOf(this.Aya), Integer.valueOf(((Rect)localObject1).height()), Integer.valueOf(j), Integer.valueOf(i) });
+        i = Math.round(i / this.AxX);
+        if ((i <= 0) || (this.krV == null)) {
+          break label933;
+        }
+        j = this.AxX * i + this.AxW;
+        if ((j == 0) || (j >= this.krV.getCount() * this.AxX)) {
+          break label892;
+        }
+        j = this.AxX;
+        k = this.AxW;
+        int m = this.AxY;
+        this.zxr.agX = ((i - 1) * j + k + m);
+      }
+      for (;;)
+      {
+        if ((this.zxr != null) && (this.AxU != null))
+        {
+          localObject1 = this.zxr;
+          localObject2 = this.AxU;
+          bool = ((MMListPopupWindow)localObject1).gMK.isShowing();
+          if (bool) {
+            ((MMListPopupWindow)localObject1).iC();
+          }
+          ((MMListPopupWindow)localObject1).ahh = ((View)localObject2);
+          if (bool) {
+            ((MMListPopupWindow)localObject1).show();
+          }
+          this.zxr.ahi = this.AxV;
+        }
+        this.zxr.show();
+        this.zxr.zkP.setOnKeyListener(this);
+        this.zxr.zkP.setSelector(new ColorDrawable(this.mContext.getResources().getColor(2131690605)));
+        this.zxr.zkP.setDividerHeight(0);
+        this.zxr.zkP.setVerticalScrollBarEnabled(true);
+        this.zxr.zkP.setHorizontalScrollBarEnabled(false);
+        return true;
+        localObject2 = this.mContext.getResources().getDisplayMetrics();
+        if (((DisplayMetrics)localObject2).widthPixels > ((DisplayMetrics)localObject2).heightPixels)
+        {
+          i = BackwardSupportUtil.b.b(this.mContext, 40.0F);
+          break;
+        }
+        i = BackwardSupportUtil.b.b(this.mContext, 49.0F);
+        break;
+        label858:
+        j = i + ((Rect)localObject1).top;
+        break label143;
+        label869:
+        bool = false;
+        break label276;
+        label875:
+        i = 0;
+        break label431;
+        i = (int)(this.AxZ * j);
+        break label503;
+        label892:
+        ab.w("MicroMsg.SubMenuHelperBase", "[cpan] menuheight:%d,listHeight:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(this.krV.getCount() * this.AxX) });
+        continue;
+        ab.e("MicroMsg.SubMenuHelperBase", "[cpan] setpopuHeight error.");
+      }
+    }
+  }
+  
+  public final boolean isShowing()
+  {
+    return (this.zxr != null) && (this.zxr.gMK.isShowing());
+  }
+  
+  public void onDismiss()
+  {
+    if (this.VF != null)
+    {
+      if (!this.VF.isAlive()) {
+        this.VF = this.iU.getViewTreeObserver();
+      }
+      this.VF.removeGlobalOnLayoutListener(this);
+      this.VF = null;
+    }
+    if (this.yTy != null) {
+      this.yTy.onCancel(null);
+    }
+    if (this.AxS != null) {
+      this.AxS.onDismiss();
+    }
+  }
+  
+  public void onGlobalLayout()
+  {
+    ab.v("MicroMsg.SubMenuHelperBase", "onGlobalLayout showing:%b, anchorshown:%b", new Object[] { Boolean.valueOf(isShowing()), Boolean.valueOf(this.iU.isShown()) });
+    if (isShowing())
+    {
+      View localView = this.iU;
+      if ((localView != null) && (localView.isShown())) {
+        break label64;
+      }
+      dismiss();
+    }
+    label64:
+    while ((!isShowing()) || (this.vnS == isLandscape())) {
+      return;
+    }
+    this.zxr.dismiss();
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    dismiss();
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    ab.v("MicroMsg.SubMenuHelperBase", "onKey");
+    if ((paramKeyEvent.getAction() == 1) && (paramInt == 82))
+    {
+      dismiss();
       return true;
     }
     return false;
   }
   
-  static List<b> k(String paramString, ArrayList<String> paramArrayList)
+  public final void rv(boolean paramBoolean)
   {
-    if ((bk.bl(paramString)) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int m = paramString.length();
-    int j = 0;
-    int i;
-    int k;
-    if (j <= m)
+    this.jpt = paramBoolean;
+    if (paramBoolean)
     {
-      Iterator localIterator = paramArrayList.iterator();
-      i = 0;
-      k = m;
-      label55:
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (!bk.bl(str))
-        {
-          int n = paramString.indexOf(str, j);
-          if ((n < 0) || ((n >= k) && ((n != k) || (str.length() <= i)))) {
-            break label226;
-          }
-          i = str.length();
-          k = n;
-        }
-      }
+      this.zxs = 2131493136;
+      return;
     }
-    label226:
-    for (;;)
-    {
-      break label55;
-      if (k < m)
-      {
-        if (k > j) {
-          localArrayList.add(new b(j, k - j, false));
-        }
-        localArrayList.add(new b(k, i, true));
-        j = k + i;
-        break;
-      }
-      if (k > j) {
-        localArrayList.add(new b(j, k - j, false));
-      }
-      return localArrayList;
-    }
-  }
-  
-  final b Ie(int paramInt)
-  {
-    if (this.wfr != null)
-    {
-      Iterator localIterator = this.wfr.iterator();
-      while (localIterator.hasNext())
-      {
-        b localb = (b)localIterator.next();
-        if ((paramInt <= localb.start + localb.length) && (paramInt > localb.start)) {
-          return localb;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public static final class a
-    extends Drawable
-  {
-    private static int vXW;
-    private Paint dHE = new Paint(1);
-    private RectF fS;
-    private String hnV;
-    private Paint vXV;
-    private float vXX;
-    private float vXY;
-    private float wfv;
-    private float wfw;
-    
-    public a(Context paramContext, String paramString, Paint paramPaint)
-    {
-      this.dHE.setColor(-7829368);
-      this.vXV = paramPaint;
-      vXW = BackwardSupportUtil.b.b(paramContext, 2.0F);
-      this.wfv = vXW;
-      this.wfw = vXW;
-      this.hnV = paramString;
-      this.vXX = this.vXV.measureText(this.hnV);
-      paramContext = this.vXV.getFontMetrics();
-      this.vXY = ((float)Math.ceil(paramContext.bottom - paramContext.top));
-      setBounds(0, 0, (int)(this.vXX + vXW * 2 + vXW * 2), (int)this.vXY);
-      y.i("MicroMsg.TextDrawable", "setText(%s).", new Object[] { paramString });
-    }
-    
-    public final void draw(Canvas paramCanvas)
-    {
-      paramCanvas.drawRoundRect(this.fS, this.wfv, this.wfw, this.dHE);
-      Rect localRect = getBounds();
-      int i = (int)((localRect.right - localRect.left - (this.fS.right - this.fS.left) + vXW * 2) / 2.0F);
-      Paint.FontMetricsInt localFontMetricsInt = this.vXV.getFontMetricsInt();
-      int j = localRect.top;
-      int k = (localRect.bottom - localRect.top - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2;
-      int m = localFontMetricsInt.top;
-      paramCanvas.drawText(this.hnV, i, k + j - m, this.vXV);
-    }
-    
-    public final int getOpacity()
-    {
-      if (this.dHE.getAlpha() < 255) {
-        return -3;
-      }
-      return -1;
-    }
-    
-    public final void setAlpha(int paramInt)
-    {
-      if (paramInt != this.dHE.getAlpha())
-      {
-        this.dHE.setAlpha(paramInt);
-        invalidateSelf();
-      }
-    }
-    
-    public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-    {
-      super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-      Paint.FontMetrics localFontMetrics = this.vXV.getFontMetrics();
-      float f1 = vXW + paramInt1;
-      float f2 = paramInt2;
-      this.fS = new RectF(f1, localFontMetrics.ascent - localFontMetrics.top + f2, paramInt3 - vXW, paramInt4);
-      invalidateSelf();
-    }
-    
-    public final void setColorFilter(ColorFilter paramColorFilter)
-    {
-      this.dHE.setColorFilter(paramColorFilter);
-      invalidateSelf();
-    }
-  }
-  
-  private static final class b
-  {
-    int length;
-    int start;
-    boolean wfx;
-    
-    b(int paramInt1, int paramInt2, boolean paramBoolean)
-    {
-      this.start = paramInt1;
-      this.length = paramInt2;
-      this.wfx = paramBoolean;
-    }
+    this.zxs = 2131493189;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.tools.r
  * JD-Core Version:    0.7.0.1
  */

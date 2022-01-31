@@ -1,90 +1,48 @@
 package com.tencent.mm.plugin.game.model;
 
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.a.b;
-import com.tencent.mm.plugin.game.d.ag;
-import com.tencent.mm.plugin.game.d.al;
-import com.tencent.mm.plugin.game.d.bd;
-import com.tencent.mm.plugin.game.d.bx;
-import com.tencent.mm.plugin.game.d.dh;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.d.as;
+import com.tencent.mm.plugin.game.d.aw;
+import com.tencent.mm.plugin.game.d.bc;
+import com.tencent.mm.plugin.game.d.cs;
+import com.tencent.mm.plugin.game.d.y;
 import com.tencent.mm.plugin.game.f.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.io.IOException;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public final class ad
-  extends y
+  extends x
 {
-  public ad.a kQA;
-  public ag kQB;
-  public dh kQC;
-  public al kQD;
-  private bd kQy;
-  public bx kQz;
-  
-  public ad(bd parambd)
+  public static void a(bc parambc)
   {
-    if (parambd == null)
+    AppMethodBeat.i(111377);
+    if ((parambc == null) || (bo.es(parambc.nsC)))
     {
-      this.kQy = new bd();
+      AppMethodBeat.o(111377);
       return;
     }
-    this.kQy = parambd;
-    gw(true);
-  }
-  
-  public ad(byte[] paramArrayOfByte)
-  {
-    this.kQy = new bd();
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return;
-    }
-    try
+    parambc = parambc.nsC.iterator();
+    while (parambc.hasNext())
     {
-      this.kQy.aH(paramArrayOfByte);
-      gw(false);
-      return;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      for (;;)
+      Object localObject = (com.tencent.mm.plugin.game.d.ad)parambc.next();
+      if ((((com.tencent.mm.plugin.game.d.ad)localObject).nrm != null) && (((com.tencent.mm.plugin.game.d.ad)localObject).nrm.npS != null))
       {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.GamePBDataIndex4", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+        d.c(a(((com.tencent.mm.plugin.game.d.ad)localObject).nrm.npS));
       }
-    }
-  }
-  
-  private void gw(boolean paramBoolean)
-  {
-    if (this.kQy != null)
-    {
-      this.kQz = this.kQy.kUK;
-      if ((this.kQy.kUH != null) && (this.kQy.kUH.kRQ != null))
+      else if ((((com.tencent.mm.plugin.game.d.ad)localObject).nro != null) && (!bo.es(((com.tencent.mm.plugin.game.d.ad)localObject).nro.nqs)))
       {
-        this.kQA = new ad.a();
-        this.kQA.kQE = a(this.kQy.kUH.kRQ);
-        if (this.kQA.kQE != null)
-        {
-          this.kQA.kQE.kNX = this.kQy.kUH.kRN;
-          this.kQA.kQE.scene = 10;
-          this.kQA.kQE.bXn = 1002;
-          this.kQA.kQE.position = 1;
+        localObject = ((com.tencent.mm.plugin.game.d.ad)localObject).nro.nqs.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          d.c(a(((y)((Iterator)localObject).next()).npS));
         }
-        this.kQA.kQF = this.kQy.kUH.kTv;
-        this.kQA.kQG = this.kQy.kUH.kTu;
-        this.kQA.desc = this.kQy.kUH.kRN;
-        this.kQA.kQH = this.kQy.kUJ;
       }
-      this.kQB = this.kQy.kUI;
-      this.kQC = this.kQy.kUL;
-      this.kQD = this.kQy.kUM;
+      else if ((((com.tencent.mm.plugin.game.d.ad)localObject).nrn != null) && (((com.tencent.mm.plugin.game.d.ad)localObject).nrn.npS != null))
+      {
+        d.c(a(((com.tencent.mm.plugin.game.d.ad)localObject).nrn.npS));
+      }
     }
-    if ((this.kQy == null) || (!paramBoolean)) {
-      return;
-    }
-    if ((this.kQy.kUH != null) && (this.kQy.kUH.kRQ != null)) {
-      d.a(a(this.kQy.kUH.kRQ));
-    }
-    ((b)g.r(b.class)).aYc().init(ae.getContext());
+    AppMethodBeat.o(111377);
   }
 }
 

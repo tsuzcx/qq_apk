@@ -2,7 +2,7 @@ package com.tencent.mm.wallet_core.ui;
 
 public abstract interface MMScrollView$b
 {
-  public abstract void kD(boolean paramBoolean);
+  public abstract void nK(boolean paramBoolean);
 }
 
 

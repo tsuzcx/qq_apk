@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.order.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.order.c.c;
 import com.tencent.mm.plugin.order.model.ProductSectionItem;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,64 +20,102 @@ import java.util.List;
 public class MallOrderProductListUI
   extends WalletBaseUI
 {
-  private String dRQ = "";
-  private List<ProductSectionItem> heL = new ArrayList();
-  private String iGK = "";
-  private BaseAdapter iqN;
-  private ListView mQH;
+  private String fhP;
+  private List<ProductSectionItem> jfV;
+  private String kMN;
+  private BaseAdapter krV;
+  private ListView xx;
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public MallOrderProductListUI()
   {
-    return false;
+    AppMethodBeat.i(43842);
+    this.jfV = new ArrayList();
+    this.kMN = "";
+    this.fhP = "";
+    AppMethodBeat.o(43842);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.mall_order_product_list;
+    return 2130970108;
   }
   
   @Deprecated
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(a.i.mall_order_products_list_ui_title);
-    Bundle localBundle = this.BX;
+    AppMethodBeat.i(43845);
+    setMMTitle(2131301464);
+    Bundle localBundle = getInput();
     ArrayList localArrayList = localBundle.getParcelableArrayList("order_product_list");
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
-      this.heL.clear();
-      this.heL.addAll(localArrayList);
+      this.jfV.clear();
+      this.jfV.addAll(localArrayList);
     }
-    this.iGK = localBundle.getString("key_trans_id");
-    this.dRQ = localBundle.getString("appname");
-    this.mQH = ((ListView)findViewById(a.f.order_product_list));
-    this.iqN = new MallOrderProductListUI.a(this, (byte)0);
-    this.mQH.setAdapter(this.iqN);
-    this.iqN.notifyDataSetChanged();
-    this.mQH.setOnItemClickListener(new MallOrderProductListUI.1(this));
+    this.kMN = localBundle.getString("key_trans_id");
+    this.fhP = localBundle.getString("appname");
+    this.xx = ((ListView)findViewById(2131826020));
+    this.krV = new MallOrderProductListUI.a(this, (byte)0);
+    this.xx.setAdapter(this.krV);
+    this.krV.notifyDataSetChanged();
+    this.xx.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(43835);
+        paramAnonymousAdapterView = (ProductSectionItem)MallOrderProductListUI.a(MallOrderProductListUI.this).get(paramAnonymousInt);
+        if (paramAnonymousAdapterView != null)
+        {
+          MallOrderProductListUI.a(MallOrderProductListUI.this, paramAnonymousAdapterView);
+          c.a(Boolean.FALSE, MallOrderProductListUI.b(MallOrderProductListUI.this), MallOrderProductListUI.c(MallOrderProductListUI.this), paramAnonymousAdapterView.name, paramAnonymousAdapterView.pqD);
+        }
+        AppMethodBeat.o(43835);
+      }
+    });
+    AppMethodBeat.o(43845);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(43843);
     super.onCreate(paramBundle);
-    vN(0);
+    setContentViewVisibility(0);
     initView();
+    AppMethodBeat.o(43843);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(43846);
     super.onDestroy();
+    AppMethodBeat.o(43846);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(43847);
     if (paramInt == 4)
     {
-      if ((com.tencent.mm.wallet_core.a.aj(this) instanceof com.tencent.mm.plugin.order.a.a)) {
-        com.tencent.mm.wallet_core.a.ag(this);
+      if ((com.tencent.mm.wallet_core.a.aM(this) instanceof com.tencent.mm.plugin.order.a.a)) {
+        com.tencent.mm.wallet_core.a.aJ(this);
       }
+      AppMethodBeat.o(43847);
       return true;
     }
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.o(43847);
+    return bool;
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.ipcall.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$1
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class b$1
   
   public final void run()
   {
-    this.lpC.b(this.lpC.loW);
+    AppMethodBeat.i(21791);
+    this.nMY.b(this.nMY.nMs);
+    AppMethodBeat.o(21791);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.a.b.1
  * JD-Core Version:    0.7.0.1
  */

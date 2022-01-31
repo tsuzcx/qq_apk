@@ -1,18 +1,15 @@
 package com.tencent.mm.plugin.emojicapture.c;
 
-import com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureTextureView;
+import a.l;
+import com.tencent.mm.plugin.emojicapture.model.a.b;
 import com.tencent.mm.plugin.emojicapture.ui.capture.CaptureDecoration;
-import com.tencent.mm.plugin.video.ObservableTextureView;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract$IView;", "", "changeSticker", "", "stickerInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiStickerInfo;", "getDecoration", "Lcom/tencent/mm/plugin/emojicapture/ui/capture/CaptureDecoration;", "onDestroy", "onPause", "onResume", "startRecord", "stopRecord", "", "callback", "Lkotlin/Function1;", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "Lkotlin/ParameterName;", "name", "capture", "switchCamera", "toggleFlipCamera", "show", "toggleVoiceDetect", "useBackGroundCamera", "plugin-emojicapture_release"})
 public abstract interface a$b
 {
-  public abstract void fq(boolean paramBoolean);
+  public abstract void a(b paramb);
   
-  public abstract void fr(boolean paramBoolean);
-  
-  public abstract ObservableTextureView getCameraDataView();
-  
-  public abstract EmojiCaptureTextureView getCaptureView();
+  public abstract void gS(boolean paramBoolean);
   
   public abstract CaptureDecoration getDecoration();
 }

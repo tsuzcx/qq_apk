@@ -1,5 +1,7 @@
 package com.tencent.ttpic.logic.watermark;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class LogicDataManager$44
   implements LogicDataManager.LogicValueProvider
 {
@@ -7,7 +9,10 @@ class LogicDataManager$44
   
   public String getValue()
   {
-    return LogicDataManager.access$3400(this.this$0);
+    AppMethodBeat.i(83310);
+    String str = LogicDataManager.access$3300(this.this$0);
+    AppMethodBeat.o(83310);
+    return str;
   }
 }
 

@@ -5,14 +5,14 @@ import com.tencent.pb.common.b.a;
 final class f$1
   implements a
 {
-  public final void dR(String paramString, int paramInt)
+  public final void fb(String paramString, int paramInt)
   {
     if ("CsCmd.Cmd_CSClientReportReq".equals(paramString))
     {
       if (paramInt == 0) {
-        f.adg();
+        f.clearData();
       }
-      c.x("yunying", new Object[] { "reportStatisticsData isCommonData:  errCode: " + paramInt });
+      c.w("yunying", new Object[] { "reportStatisticsData isCommonData:  errCode: ".concat(String.valueOf(paramInt)) });
     }
   }
 }

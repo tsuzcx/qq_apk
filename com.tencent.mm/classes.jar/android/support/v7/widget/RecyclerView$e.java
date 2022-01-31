@@ -4,7 +4,7 @@ import android.widget.EdgeEffect;
 
 public final class RecyclerView$e
 {
-  protected static EdgeEffect c(RecyclerView paramRecyclerView)
+  protected static EdgeEffect d(RecyclerView paramRecyclerView)
   {
     return new EdgeEffect(paramRecyclerView.getContext());
   }

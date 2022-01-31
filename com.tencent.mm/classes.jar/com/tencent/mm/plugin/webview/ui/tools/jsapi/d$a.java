@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 public abstract interface d$a
 {
-  public abstract void onReady();
+  public abstract boolean b(i parami);
 }
 
 

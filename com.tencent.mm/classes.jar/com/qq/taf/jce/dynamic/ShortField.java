@@ -1,5 +1,7 @@
 package com.qq.taf.jce.dynamic;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class ShortField
   extends NumberField
 {
@@ -18,7 +20,10 @@ public final class ShortField
   
   public final Number getNumber()
   {
-    return Short.valueOf(this.data);
+    AppMethodBeat.i(117008);
+    short s = this.data;
+    AppMethodBeat.o(117008);
+    return Short.valueOf(s);
   }
   
   public final void set(short paramShort)

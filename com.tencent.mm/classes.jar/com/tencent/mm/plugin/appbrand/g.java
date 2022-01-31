@@ -1,141 +1,187 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.text.TextUtils;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
+import a.f.b.j;
+import a.v;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.kernel.b.h;
+import com.tencent.mm.kernel.d;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/AppBrandProcessSharedPersistentRuntimeStore;", "", "()V", "TAG", "", "runtimeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "contains", "", "runtime", "isAllEquals", "array", "", "objectToMatch", "([Ljava/lang/Object;Ljava/lang/Object;)Z", "isEmpty", "pollOrCreate", "activity", "Landroid/app/Activity;", "cfg", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "remotePop", "", "remove", "stash", "resetBaseContext", "base", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
 public final class g
 {
-  private static Map<String, g.a> fxP = new HashMap();
-  private static Map<String, g.c> fxQ = new HashMap();
-  private static Map<String, Set<g.b>> fxR = new ConcurrentHashMap();
+  private static final ConcurrentHashMap<String, o> gPr;
+  public static final g gPs;
   
-  public static void a(String paramString, g.a parama)
+  static
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    fxP.put(paramString, parama);
+    AppMethodBeat.i(143724);
+    gPs = new g();
+    gPr = new ConcurrentHashMap();
+    AppMethodBeat.o(143724);
   }
   
-  public static void a(String paramString, g.b paramb)
+  public static final o a(Activity paramActivity, AppBrandInitConfigWC paramAppBrandInitConfigWC, l paraml)
   {
-    if ((paramString == null) || (paramb == null)) {
-      return;
-    }
-    if (!fxR.containsKey(paramString)) {
-      fxR.put(paramString, Collections.newSetFromMap(new ConcurrentHashMap()));
-    }
-    ((Set)fxR.get(paramString)).add(paramb);
-  }
-  
-  public static void a(String paramString, g.c paramc)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    fxQ.put(paramString, paramc);
-  }
-  
-  public static void b(String paramString, g.b paramb)
-  {
-    if (paramb == null) {}
-    do
+    boolean bool2 = true;
+    AppMethodBeat.i(143719);
+    j.q(paramActivity, "activity");
+    j.q(paramAppBrandInitConfigWC, "cfg");
+    j.q(paraml, "container");
+    paramAppBrandInitConfigWC = (o)gPr.remove(paramAppBrandInitConfigWC.appId);
+    if (paramAppBrandInitConfigWC != null)
     {
-      return;
-      paramString = (Set)fxR.get(paramString);
-    } while ((paramString == null) || (paramString.isEmpty()));
-    paramString.remove(paramb);
-  }
-  
-  public static void qA(String paramString)
-  {
-    a(paramString, g.c.fyb);
-  }
-  
-  public static g.c qB(String paramString)
-  {
-    g.c localc = (g.c)fxQ.get(paramString);
-    paramString = localc;
-    if (localc == null) {
-      paramString = g.c.fyb;
+      f(paramAppBrandInitConfigWC);
+      Boolean[] arrayOfBoolean = new Boolean[3];
+      arrayOfBoolean[0] = Boolean.valueOf(paramAppBrandInitConfigWC.atp());
+      if (!paramAppBrandInitConfigWC.isFinishing())
+      {
+        bool1 = true;
+        arrayOfBoolean[1] = Boolean.valueOf(bool1);
+        if (paramAppBrandInitConfigWC.finished()) {
+          break label181;
+        }
+      }
+      label181:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        arrayOfBoolean[2] = Boolean.valueOf(bool1);
+        ab.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "pollOrCreate, existed runtime[" + paramAppBrandInitConfigWC.getAppId() + "], conditions[" + org.apache.commons.b.a.toString(arrayOfBoolean) + ']');
+        if (!b(arrayOfBoolean, Boolean.TRUE)) {
+          break label186;
+        }
+        a(paramAppBrandInitConfigWC, (Context)paramActivity);
+        paramAppBrandInitConfigWC.a((ad)paraml);
+        AppMethodBeat.o(143719);
+        return paramAppBrandInitConfigWC;
+        bool1 = false;
+        break;
+      }
     }
-    return paramString;
+    label186:
+    paramActivity = new o((Context)com.tencent.mm.plugin.appbrand.ui.g.dc((Context)paramActivity), (ad)paraml);
+    AppMethodBeat.o(143719);
+    return paramActivity;
   }
   
-  public static g.a qC(String paramString)
+  private static void a(o paramo, Context paramContext)
   {
-    g.a locala = (g.a)fxP.get(paramString);
-    paramString = locala;
-    if (locala == null) {
-      paramString = g.a.fxS;
+    AppMethodBeat.i(143722);
+    if (paramo == null)
+    {
+      paramo = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.AppBrandRuntime");
+      AppMethodBeat.o(143722);
+      throw paramo;
     }
-    return paramString;
+    Context localContext = ((i)paramo).mContext;
+    if (localContext == null)
+    {
+      paramo = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.ui.AppBrandRuntimePersistentContextWrapper");
+      AppMethodBeat.o(143722);
+      throw paramo;
+    }
+    ((com.tencent.mm.plugin.appbrand.ui.g)localContext).setBaseContext(paramContext);
+    paramo = paramo.atU();
+    if (paramo != null)
+    {
+      paramo = paramo.aLy();
+      if (paramo != null)
+      {
+        paramo.ap(paramContext);
+        AppMethodBeat.o(143722);
+        return;
+      }
+    }
+    AppMethodBeat.o(143722);
   }
   
-  private static Iterator<g.b> qt(String paramString)
+  private static boolean b(Object[] paramArrayOfObject, Object paramObject)
   {
-    Map localMap = fxR;
-    Object localObject = paramString;
-    if (paramString == null) {
-      localObject = "";
+    AppMethodBeat.i(143717);
+    int i = 0;
+    while (i < 3)
+    {
+      if ((j.e(paramArrayOfObject[i], paramObject) ^ true))
+      {
+        AppMethodBeat.o(143717);
+        return false;
+      }
+      i += 1;
     }
-    localObject = (Set)localMap.get(localObject);
-    paramString = (String)localObject;
-    if (localObject == null) {
-      paramString = new HashSet();
-    }
-    return paramString.iterator();
+    AppMethodBeat.o(143717);
+    return true;
   }
   
-  public static void qu(String paramString)
+  public static final void d(o paramo)
   {
-    paramString = qt(paramString);
-    while (paramString.hasNext()) {
-      ((g.b)paramString.next()).onCreate();
+    AppMethodBeat.i(143720);
+    j.q(paramo, "runtime");
+    Object localObject1 = ah.getContext();
+    j.p(localObject1, "MMApplicationContext.getContext()");
+    a(paramo, (Context)localObject1);
+    paramo.a(null);
+    localObject1 = (Map)gPr;
+    Object localObject2 = paramo.getAppId();
+    j.p(localObject2, "runtime.appId");
+    ((Map)localObject1).put(localObject2, paramo);
+    localObject1 = paramo.getAppId();
+    localObject2 = com.tencent.mm.kernel.g.RI().Rj();
+    j.p(localObject2, "MMKernel.process().current()");
+    XIPCInvoker.a("com.tencent.mm", new IPC_PARAM_stashPersistentApp((String)localObject1, ((h)localObject2).getProcessName(), paramo.gRl), ac.class);
+    AppMethodBeat.o(143720);
+  }
+  
+  public static final boolean e(o paramo)
+  {
+    AppMethodBeat.i(143721);
+    j.q(paramo, "runtime");
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = gPr.remove(paramo.getAppId(), paramo);
+    }
+    for (;;)
+    {
+      if (bool) {
+        f(paramo);
+      }
+      AppMethodBeat.o(143721);
+      return bool;
+      j.q(paramo, "runtime");
+      if (gPr.containsValue(paramo))
+      {
+        gPr.remove(paramo.getAppId());
+        bool = true;
+      }
+      else
+      {
+        bool = false;
+      }
     }
   }
   
-  public static void qv(String paramString)
+  private static void f(o paramo)
   {
-    paramString = qt(paramString);
-    while (paramString.hasNext()) {
-      ((g.b)paramString.next()).onDestroy();
-    }
+    AppMethodBeat.i(143723);
+    ((a.f.a.a)new g.a(paramo)).invoke();
+    AppMethodBeat.o(143723);
   }
   
-  public static void qw(String paramString)
+  public static final boolean isEmpty()
   {
-    Iterator localIterator = qt(paramString);
-    while (localIterator.hasNext()) {
-      ((g.b)localIterator.next()).a(qB(paramString));
-    }
-  }
-  
-  public static void qx(String paramString)
-  {
-    paramString = qt(paramString);
-    while (paramString.hasNext()) {
-      ((g.b)paramString.next()).onResume();
-    }
-  }
-  
-  public static void qy(String paramString)
-  {
-    paramString = qt(paramString);
-    while (paramString.hasNext()) {
-      paramString.next();
-    }
-  }
-  
-  public static void qz(String paramString)
-  {
-    fxR.remove(paramString);
+    AppMethodBeat.i(143718);
+    boolean bool = gPr.isEmpty();
+    AppMethodBeat.o(143718);
+    return bool;
   }
 }
 

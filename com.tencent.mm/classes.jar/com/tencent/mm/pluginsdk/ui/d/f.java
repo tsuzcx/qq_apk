@@ -4,77 +4,91 @@ import android.text.style.CharacterStyle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.plugin.comm.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ak;
 import com.tencent.neattextview.textview.view.NeatTextView;
 
-public final class f
+public class f
   extends com.tencent.neattextview.textview.view.b
 {
-  private m sjq;
+  private m wbW;
   
   public f(NeatTextView paramNeatTextView, m paramm)
   {
     super(paramNeatTextView.getContext(), paramNeatTextView);
-    this.sjq = paramm;
+    AppMethodBeat.i(79812);
+    this.wbW = paramm;
+    AppMethodBeat.o(79812);
   }
   
-  protected final void cancel(int paramInt)
+  public final void cancel(int paramInt)
   {
-    if (this.wEY != null)
+    AppMethodBeat.i(79815);
+    if (this.Bcz != null)
     {
-      CharacterStyle localCharacterStyle = this.wEY.wDz;
+      CharacterStyle localCharacterStyle = this.Bcz.Bbj;
       if ((localCharacterStyle instanceof n)) {
-        ((n)localCharacterStyle).mmZ = false;
+        ((n)localCharacterStyle).setIsPressed(false);
       }
     }
     super.cancel(paramInt);
+    AppMethodBeat.o(79815);
   }
   
-  public final boolean onDown(MotionEvent paramMotionEvent)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(79814);
     boolean bool = super.onDown(paramMotionEvent);
-    if (this.wEY != null)
+    if (this.Bcz != null)
     {
-      paramMotionEvent = this.wEY.wDz;
+      paramMotionEvent = this.Bcz.Bbj;
       if ((paramMotionEvent instanceof n)) {
-        ((n)paramMotionEvent).mmZ = true;
+        ((n)paramMotionEvent).setIsPressed(true);
       }
-      bool = true;
+      AppMethodBeat.o(79814);
+      return true;
     }
+    AppMethodBeat.o(79814);
     return bool;
   }
   
-  public final void onLongPress(MotionEvent paramMotionEvent)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if ((this.wEY != null) && (this.mView != null)) {
+    AppMethodBeat.i(79816);
+    if ((this.Bcz != null) && (this.mView != null)) {
       this.mView.performLongClick();
     }
     super.onLongPress(paramMotionEvent);
+    AppMethodBeat.o(79816);
   }
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = (int)paramMotionEvent.getRawX();
-    int j = (int)paramMotionEvent.getRawY();
-    paramView.setTag(a.e.touch_loc, new int[] { i, j });
+    AppMethodBeat.i(79813);
+    ak.d("MMNeatTouchListener", "onTouch", new Object[0]);
+    paramView.setTag(2131820681, new int[] { (int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY() });
     if ((paramView instanceof NeatTextView))
     {
       NeatTextView localNeatTextView = (NeatTextView)paramView;
-      if ((!localNeatTextView.cJN()) || (localNeatTextView.wEG))
+      if ((!localNeatTextView.dOE()) || (localNeatTextView.kji))
       {
         if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
           localNeatTextView.getWrappedTextView().setPressed(false);
         }
         for (;;)
         {
-          return this.sjq.onTouch(localNeatTextView.getWrappedTextView(), paramMotionEvent);
+          bool = this.wbW.onTouch(localNeatTextView.getWrappedTextView(), paramMotionEvent);
+          AppMethodBeat.o(79813);
+          return bool;
           if (paramMotionEvent.getAction() == 0) {
             localNeatTextView.getWrappedTextView().setPressed(true);
           }
         }
       }
     }
-    return super.onTouch(paramView, paramMotionEvent);
+    boolean bool = super.onTouch(paramView, paramMotionEvent);
+    AppMethodBeat.o(79813);
+    return bool;
   }
 }
 

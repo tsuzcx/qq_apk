@@ -1,50 +1,34 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class AdLandingPagesProxy$c
-  implements a.a
+  implements b.b
 {
-  public long id;
+  private String cBO;
   
-  private AdLandingPagesProxy$c(AdLandingPagesProxy paramAdLandingPagesProxy) {}
-  
-  public final void bCA()
+  public AdLandingPagesProxy$c(AdLandingPagesProxy paramAdLandingPagesProxy, String paramString)
   {
-    this.oow.CLIENT_CALL("paused", new Object[] { Long.valueOf(this.id) });
+    this.cBO = paramString;
   }
   
-  public final void bCB()
+  public final void ZU(String paramString) {}
+  
+  public final void bp(String paramString, boolean paramBoolean)
   {
-    this.oow.CLIENT_CALL("stopped", new Object[] { Long.valueOf(this.id) });
+    AppMethodBeat.i(35921);
+    if ((!bo.Q(new String[] { paramString, this.cBO })) && (paramString.equals(this.cBO)))
+    {
+      this.rcM.CLIENT_CALL("onImgDownloadCallback", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+      ag.cpa().b(this);
+    }
+    AppMethodBeat.o(35921);
   }
   
-  public final void bCC()
-  {
-    this.oow.CLIENT_CALL("succeed", new Object[] { Long.valueOf(this.id) });
-  }
+  public final void bq(String paramString, boolean paramBoolean) {}
   
-  public final void bCD()
-  {
-    this.oow.CLIENT_CALL("failed", new Object[] { Long.valueOf(this.id) });
-  }
-  
-  public final void bCE()
-  {
-    this.oow.CLIENT_CALL("resumed", new Object[] { Long.valueOf(this.id) });
-  }
-  
-  public final void start()
-  {
-    this.oow.CLIENT_CALL("start", new Object[] { Long.valueOf(this.id) });
-  }
-  
-  public final void xE(int paramInt)
-  {
-    y.v("AdLandingPagesProxy", "progress %d", new Object[] { Integer.valueOf(paramInt) });
-    this.oow.CLIENT_CALL("progress", new Object[] { Long.valueOf(this.id), Integer.valueOf(paramInt) });
-  }
+  public final void cnV() {}
 }
 
 

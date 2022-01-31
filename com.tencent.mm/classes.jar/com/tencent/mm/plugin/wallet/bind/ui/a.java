@@ -6,21 +6,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.h;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.wallet_core.c.ab;
+import com.tencent.mm.wallet_core.c.ae;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -32,46 +28,58 @@ public class a
   extends BaseAdapter
 {
   private final Context mContext;
-  private int mCount = 0;
-  private ArrayList<Bankcard> qjw;
-  private int qjx;
-  com.tencent.mm.plugin.wallet_core.e.a qjy;
-  List<String> qjz;
+  private int mCount;
+  private ArrayList<Bankcard> tSw;
+  private int tSx;
+  com.tencent.mm.plugin.wallet_core.utils.a tSy;
+  List<String> tSz;
   
   public a(Context paramContext, ArrayList<Bankcard> paramArrayList)
   {
+    AppMethodBeat.i(45732);
+    this.mCount = 0;
     this.mContext = paramContext;
-    this.qjw = paramArrayList;
-    this.qjx = 0;
-    this.qjy = new com.tencent.mm.plugin.wallet_core.e.a();
-    this.qjy.b(this.mContext, this.qjw);
-    bTA();
+    this.tSw = paramArrayList;
+    this.tSx = 0;
+    this.tSy = new com.tencent.mm.plugin.wallet_core.utils.a();
+    this.tSy.b(this.mContext, this.tSw);
+    cRw();
+    AppMethodBeat.o(45732);
   }
   
-  private Bankcard AH(int paramInt)
+  private Bankcard Il(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.mCount)) {
-      return (Bankcard)this.qjw.get(paramInt);
+    AppMethodBeat.i(45735);
+    if ((paramInt >= 0) && (paramInt < this.mCount))
+    {
+      Bankcard localBankcard = (Bankcard)this.tSw.get(paramInt);
+      AppMethodBeat.o(45735);
+      return localBankcard;
     }
+    AppMethodBeat.o(45735);
     return null;
   }
   
-  private void bTA()
+  private void cRw()
   {
-    g.DQ();
-    this.qjz = bk.G(((String)g.DP().Dz().get(ac.a.uxt, "")).split(","));
+    AppMethodBeat.i(45734);
+    g.RM();
+    this.tSz = bo.P(((String)g.RL().Ru().get(ac.a.yHC, "")).split(","));
+    AppMethodBeat.o(45734);
   }
   
-  public final void R(ArrayList<Bankcard> paramArrayList)
+  public final void W(ArrayList<Bankcard> paramArrayList)
   {
-    this.qjw = paramArrayList;
+    AppMethodBeat.i(45733);
+    this.tSw = paramArrayList;
     if (paramArrayList != null) {}
     for (this.mCount = paramArrayList.size();; this.mCount = 0)
     {
       if (this.mCount > 0) {
-        this.qjy.b(this.mContext, this.qjw);
+        this.tSy.b(this.mContext, this.tSw);
       }
-      bTA();
+      cRw();
+      AppMethodBeat.o(45733);
       return;
     }
   }
@@ -88,50 +96,65 @@ public class a
   
   public int getItemViewType(int paramInt)
   {
-    Bankcard localBankcard = AH(paramInt);
-    if (localBankcard == null) {
+    AppMethodBeat.i(45736);
+    Bankcard localBankcard = Il(paramInt);
+    if (localBankcard == null)
+    {
+      AppMethodBeat.o(45736);
       return 4;
     }
     if (localBankcard.field_bankcardState == 9)
     {
-      if (localBankcard.field_wxcreditState == 0) {
+      if (localBankcard.field_wxcreditState == 0)
+      {
+        AppMethodBeat.o(45736);
         return 2;
       }
+      AppMethodBeat.o(45736);
       return 3;
     }
-    if ((localBankcard.bUP()) && ("CITIC_CREDIT".equals(localBankcard.field_bankcardType))) {
+    if ((localBankcard.cTe()) && ("CITIC_CREDIT".equals(localBankcard.field_bankcardType)))
+    {
+      AppMethodBeat.o(45736);
       return 5;
     }
-    if (localBankcard.bUU()) {
+    if (localBankcard.cTj())
+    {
+      AppMethodBeat.o(45736);
       return 6;
     }
-    if ((localBankcard.bUT()) && (!q.Gw())) {
+    if ((localBankcard.cTi()) && (!r.ZB()))
+    {
+      AppMethodBeat.o(45736);
       return 0;
     }
+    AppMethodBeat.o(45736);
     return 1;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Bankcard localBankcard = AH(paramInt);
-    if (localBankcard == null) {
+    AppMethodBeat.i(45737);
+    Bankcard localBankcard = Il(paramInt);
+    if (localBankcard == null)
+    {
+      AppMethodBeat.o(45737);
       return paramView;
     }
     int i = getItemViewType(paramInt);
     boolean bool;
-    if ((this.qjz == null) || (this.qjz.isEmpty()) || (localBankcard == null)) {
+    if ((this.tSz == null) || (this.tSz.isEmpty()) || (localBankcard == null)) {
       bool = false;
     }
     for (;;)
     {
-      y.v("MicroMsg.BankcardListAdapter", "getView, pos: %d, bottom_wording: %s, showNew: %s", new Object[] { Integer.valueOf(paramInt), localBankcard.field_card_bottom_wording, Boolean.valueOf(bool) });
+      ab.v("MicroMsg.BankcardListAdapter", "getView, pos: %d, bottom_wording: %s, showNew: %s", new Object[] { Integer.valueOf(paramInt), localBankcard.field_card_bottom_wording, Boolean.valueOf(bool) });
       switch (i)
       {
       default: 
+        AppMethodBeat.o(45737);
         return paramView;
-      case 0: 
-        return com.tencent.mm.plugin.wallet_core.ui.view.b.a(this.mContext, paramView, localBankcard, a.g.wallet_bankcard, this.qjy, bool, i);
-        paramViewGroup = this.qjz.iterator();
+        paramViewGroup = this.tSz.iterator();
         for (;;)
         {
           if (paramViewGroup.hasNext()) {
@@ -145,111 +168,122 @@ public class a
         bool = false;
       }
     }
-    return com.tencent.mm.plugin.wallet_core.ui.view.b.a(this.mContext, paramView, localBankcard, a.g.wallet_bankcard_international, this.qjy, bool, i);
-    paramInt = a.g.wallet_bankcard_wxcredit_err;
+    paramView = com.tencent.mm.plugin.wallet_core.ui.view.b.a(this.mContext, paramView, localBankcard, 2130971137, this.tSy, bool);
+    AppMethodBeat.o(45737);
+    return paramView;
+    paramView = com.tencent.mm.plugin.wallet_core.ui.view.b.a(this.mContext, paramView, localBankcard, 2130971144, this.tSy, bool);
+    AppMethodBeat.o(45737);
+    return paramView;
     Object localObject;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      localObject = View.inflate(this.mContext, paramInt, null);
+      localObject = View.inflate(this.mContext, 2130971151, null);
       paramView = new a.a(this);
-      paramView.qjF = ((ImageView)((View)localObject).findViewById(a.f.bank_logo));
-      paramView.qjB = ((TextView)((View)localObject).findViewById(a.f.bank_name));
-      paramView.qjG = ((TextView)((View)localObject).findViewById(a.f.bankcard_expired));
-      paramView.qjJ = ((ImageView)((View)localObject).findViewById(a.f.bankcard_id_mask1));
-      paramView.qjK = ((ImageView)((View)localObject).findViewById(a.f.bankcard_id_mask2));
-      paramView.qjL = ((ImageView)((View)localObject).findViewById(a.f.bankcard_id_mask3));
+      paramView.tSF = ((ImageView)((View)localObject).findViewById(2131828979));
+      paramView.tSB = ((TextView)((View)localObject).findViewById(2131828980));
+      paramView.tSG = ((TextView)((View)localObject).findViewById(2131828987));
+      paramView.tSJ = ((ImageView)((View)localObject).findViewById(2131828982));
+      paramView.tSK = ((ImageView)((View)localObject).findViewById(2131828983));
+      paramView.tSL = ((ImageView)((View)localObject).findViewById(2131828984));
       ((View)localObject).setTag(paramView);
       paramViewGroup = paramView;
       switch (localBankcard.field_wxcreditState)
       {
       case 2: 
       default: 
-        paramViewGroup.qjG.setVisibility(8);
+        paramViewGroup.tSG.setVisibility(8);
       }
     }
     for (;;)
     {
-      paramViewGroup.qjB.setText(localBankcard.field_bankName);
-      this.qjy.a(this.mContext, localBankcard, paramViewGroup.qjF);
+      paramViewGroup.tSB.setText(localBankcard.field_bankName);
+      this.tSy.a(this.mContext, localBankcard, paramViewGroup.tSF);
+      AppMethodBeat.o(45737);
       return localObject;
       paramViewGroup = (a.a)paramView.getTag();
       localObject = paramView;
       break;
-      paramViewGroup.qjG.setBackgroundResource(a.e.wallet_bankcard_verify);
-      paramViewGroup.qjG.setVisibility(0);
+      paramViewGroup.tSG.setBackgroundResource(2130840812);
+      paramViewGroup.tSG.setVisibility(0);
       continue;
-      paramViewGroup.qjG.setBackgroundResource(a.e.wallet_bankcard_fail);
-      paramViewGroup.qjG.setVisibility(0);
+      paramViewGroup.tSG.setBackgroundResource(2130840802);
+      paramViewGroup.tSG.setVisibility(0);
     }
-    paramInt = a.g.wallet_bankcard_wait_2_open;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      localObject = View.inflate(this.mContext, paramInt, null);
+      localObject = View.inflate(this.mContext, 2130971148, null);
       paramView = new a.a(this);
-      paramView.qjF = ((ImageView)((View)localObject).findViewById(a.f.bank_logo));
-      paramView.qjB = ((TextView)((View)localObject).findViewById(a.f.bank_name));
-      paramView.qjI = ((TextView)((View)localObject).findViewById(a.f.new_msg_tip));
-      paramView.qjJ = ((ImageView)((View)localObject).findViewById(a.f.bankcard_id_mask1));
-      paramView.qjK = ((ImageView)((View)localObject).findViewById(a.f.bankcard_id_mask2));
-      paramView.qjL = ((ImageView)((View)localObject).findViewById(a.f.bankcard_id_mask3));
+      paramView.tSF = ((ImageView)((View)localObject).findViewById(2131828979));
+      paramView.tSB = ((TextView)((View)localObject).findViewById(2131828980));
+      paramView.tSI = ((TextView)((View)localObject).findViewById(2131829030));
+      paramView.tSJ = ((ImageView)((View)localObject).findViewById(2131828982));
+      paramView.tSK = ((ImageView)((View)localObject).findViewById(2131828983));
+      paramView.tSL = ((ImageView)((View)localObject).findViewById(2131828984));
       ((View)localObject).setTag(paramView);
       paramViewGroup = paramView;
+      paramViewGroup.tSB.setText(this.mContext.getString(2131305118, new Object[] { localBankcard.field_bankName }));
+      if (!b.b(localBankcard)) {
+        break label702;
+      }
+      paramViewGroup.tSI.setVisibility(0);
     }
     for (;;)
     {
-      paramViewGroup.qjB.setText(this.mContext.getString(a.i.wallet_index_ui_open_wxcredit, new Object[] { localBankcard.field_bankName }));
-      if (!b.a(localBankcard)) {
-        break;
-      }
-      paramViewGroup.qjI.setVisibility(0);
+      AppMethodBeat.o(45737);
       return localObject;
       paramViewGroup = (a.a)paramView.getTag();
       localObject = paramView;
+      break;
+      label702:
+      paramViewGroup.tSI.setVisibility(8);
     }
-    paramViewGroup.qjI.setVisibility(8);
-    return localObject;
-    return com.tencent.mm.plugin.wallet_core.ui.view.b.a(this.mContext, paramView, localBankcard, a.g.wallet_bankcard_white, this.qjy, bool, i);
-    return View.inflate(this.mContext, a.g.wallet_bankcard_add, null);
-    paramInt = a.g.wallet_bankcard_honey_pay;
+    paramView = com.tencent.mm.plugin.wallet_core.ui.view.b.a(this.mContext, paramView, localBankcard, 2130971149, this.tSy, bool);
+    AppMethodBeat.o(45737);
+    return paramView;
+    paramView = View.inflate(this.mContext, 2130971138, null);
+    AppMethodBeat.o(45737);
+    return paramView;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = View.inflate(this.mContext, paramInt, null);
+      paramView = View.inflate(this.mContext, 2130971142, null);
       paramViewGroup = new a.a(this);
-      paramViewGroup.qjF = ((ImageView)paramView.findViewById(a.f.bank_logo));
-      paramViewGroup.qjB = ((TextView)paramView.findViewById(a.f.bank_name));
-      paramViewGroup.qjC = ((TextView)paramView.findViewById(a.f.bankcard_type));
-      paramViewGroup.qjG = ((TextView)paramView.findViewById(a.f.bankcard_expired));
-      paramViewGroup.qjM = ((WalletTextView)paramView.findViewById(a.f.wallet_bankcard_honeypay_quota_tv));
-      paramViewGroup.qjE = ((ImageView)paramView.findViewById(a.f.bankcard_mask));
-      paramViewGroup.qjN = ((TextView)paramView.findViewById(a.f.wallet_bankcard_honeypay_remain_quota_desc_tv));
+      paramViewGroup.tSF = ((ImageView)paramView.findViewById(2131828979));
+      paramViewGroup.tSB = ((TextView)paramView.findViewById(2131828980));
+      paramViewGroup.tSC = ((TextView)paramView.findViewById(2131828981));
+      paramViewGroup.tSG = ((TextView)paramView.findViewById(2131828987));
+      paramViewGroup.tSM = ((WalletTextView)paramView.findViewById(2131829011));
+      paramViewGroup.tSE = ((ImageView)paramView.findViewById(2131828978));
+      paramViewGroup.tSN = ((TextView)paramView.findViewById(2131829012));
       paramView.setTag(paramViewGroup);
+      paramViewGroup.tSF.setImageDrawable(com.tencent.mm.svg.a.a.g(this.mContext.getResources(), 2131231407));
+      if (((paramViewGroup.tSF instanceof CdnImageView)) && (!bo.isNullOrNil(localBankcard.uge)))
+      {
+        ((CdnImageView)paramViewGroup.tSF).setUseSdcardCache(true);
+        ((CdnImageView)paramViewGroup.tSF).setImgSavedPath(com.tencent.mm.plugin.wallet_core.d.b.cVf());
+        ((CdnImageView)paramViewGroup.tSF).eq(localBankcard.uge, 2131231407);
+      }
+      localObject = com.tencent.mm.wallet_core.ui.e.eZ(com.tencent.mm.wallet_core.ui.e.nE(localBankcard.uga), 10);
+      paramViewGroup.tSB.setText(j.b(this.mContext, (CharSequence)localObject, paramViewGroup.tSB.getTextSize()));
+      paramViewGroup.tSC.setText(localBankcard.ugd);
+      if (localBankcard.ugb != 0) {
+        break label1119;
+      }
+      localObject = com.tencent.mm.wallet_core.ui.e.a(localBankcard.ufZ, "100", 2, RoundingMode.HALF_UP).toString();
+      paramViewGroup.tSM.setPrefix(ae.dSz());
+      paramViewGroup.tSM.setText((CharSequence)localObject);
+      paramViewGroup.tSM.setVisibility(0);
+      paramViewGroup.tSN.setVisibility(0);
     }
     for (;;)
     {
-      paramViewGroup.qjF.setImageDrawable(com.tencent.mm.svg.a.a.e(this.mContext.getResources(), a.h.honey_pay_bank_logo));
-      if (((paramViewGroup.qjF instanceof CdnImageView)) && (!bk.bl(localBankcard.qtP)))
-      {
-        ((CdnImageView)paramViewGroup.qjF).setUseSdcardCache(true);
-        ((CdnImageView)paramViewGroup.qjF).setImgSavedPath(com.tencent.mm.plugin.wallet_core.d.b.bWn());
-        ((CdnImageView)paramViewGroup.qjF).dl(localBankcard.qtP, a.h.honey_pay_bank_logo);
-      }
-      localObject = com.tencent.mm.wallet_core.ui.e.dP(com.tencent.mm.wallet_core.ui.e.gV(localBankcard.qtL), 10);
-      paramViewGroup.qjB.setText(j.a(this.mContext, (CharSequence)localObject, paramViewGroup.qjB.getTextSize()));
-      paramViewGroup.qjC.setText(localBankcard.qtO);
-      if (localBankcard.qtM != 0) {
-        break;
-      }
-      localObject = com.tencent.mm.wallet_core.ui.e.b(localBankcard.qtK, "100", RoundingMode.HALF_UP).toString();
-      paramViewGroup.qjM.setPrefix(ab.cML());
-      paramViewGroup.qjM.setText((CharSequence)localObject);
-      paramViewGroup.qjM.setVisibility(0);
-      paramViewGroup.qjN.setVisibility(0);
+      AppMethodBeat.o(45737);
       return paramView;
       paramViewGroup = (a.a)paramView.getTag();
+      break;
+      label1119:
+      paramViewGroup.tSM.setVisibility(4);
+      paramViewGroup.tSN.setVisibility(4);
     }
-    paramViewGroup.qjM.setVisibility(4);
-    paramViewGroup.qjN.setVisibility(4);
-    return paramView;
   }
   
   public int getViewTypeCount()

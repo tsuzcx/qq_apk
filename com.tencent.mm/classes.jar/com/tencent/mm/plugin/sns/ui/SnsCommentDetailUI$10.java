@@ -1,48 +1,20 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.plugin.sns.ui.b.a.a;
+import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SnsCommentDetailUI$10
-  implements AbsListView.OnScrollListener
+  implements Runnable
 {
   SnsCommentDetailUI$10(SnsCommentDetailUI paramSnsCommentDetailUI) {}
   
-  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public final void run()
   {
-    if (paramInt2 > 0)
-    {
-      if ((paramInt1 != 0) || (SnsCommentDetailUI.t(this.oWW))) {
-        break label67;
-      }
-      SnsCommentDetailUI.a(this.oWW, true);
-      if (SnsCommentDetailUI.u(this.oWW) == null) {
-        break label48;
-      }
-      SnsCommentDetailUI.u(this.oWW).aqU();
-    }
-    label48:
-    label67:
-    while (paramInt1 <= 0)
-    {
-      do
-      {
-        return;
-      } while (SnsCommentDetailUI.v(this.oWW) == null);
-      this.oWW.bIB();
-      return;
-    }
-    SnsCommentDetailUI.a(this.oWW, false);
-  }
-  
-  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      this.oWW.XM();
-      SnsCommentDetailUI.w(this.oWW);
-    }
+    AppMethodBeat.i(38787);
+    SnsCommentDetailUI.a(this.rPu, SnsCommentDetailUI.a(this.rPu).getBottom());
+    ab.d("MicroMsg.SnsCommentDetailUI", "listOriginalBottom: " + SnsCommentDetailUI.d(this.rPu));
+    AppMethodBeat.o(38787);
   }
 }
 

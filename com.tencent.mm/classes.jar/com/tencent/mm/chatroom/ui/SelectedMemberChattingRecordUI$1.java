@@ -3,7 +3,8 @@ package com.tencent.mm.chatroom.ui;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.h.c.cs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.dd;
 import com.tencent.mm.storage.bi;
 
 final class SelectedMemberChattingRecordUI$1
@@ -13,15 +14,17 @@ final class SelectedMemberChattingRecordUI$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (bi)SelectedMemberChattingRecordUI.a(this.dst).getItem(paramInt);
+    AppMethodBeat.i(104436);
+    paramAdapterView = (bi)SelectedMemberChattingRecordUI.a(this.ekb).getItem(paramInt);
     if (paramAdapterView != null) {
-      SelectedMemberChattingRecordUI.a(this.dst, paramAdapterView.field_msgId);
+      SelectedMemberChattingRecordUI.a(this.ekb, paramAdapterView.field_msgId);
     }
+    AppMethodBeat.o(104436);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SelectedMemberChattingRecordUI.1
  * JD-Core Version:    0.7.0.1
  */

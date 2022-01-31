@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.backup.g;
 
 public abstract interface j$a
 {
-  public abstract void aug();
+  public abstract void aTF();
   
-  public abstract void auh();
+  public abstract void aTG();
   
-  public abstract void ny(int paramInt);
+  public abstract void rk(int paramInt);
 }
 
 

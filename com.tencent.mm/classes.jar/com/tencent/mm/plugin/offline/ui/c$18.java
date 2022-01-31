@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.offline.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.wallet.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$18
   implements DialogInterface.OnClickListener
@@ -12,13 +13,15 @@ final class c$18
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    h.Y(this.mMg.mActivity, 0);
-    y.i("MicroMsg.OfflineLogicMgr", "do startBindBankcard");
+    AppMethodBeat.i(43487);
+    h.am(this.pmw.mActivity, 0);
+    ab.i("MicroMsg.OfflineLogicMgr", "do startBindBankcard");
+    AppMethodBeat.o(43487);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.c.18
  * JD-Core Version:    0.7.0.1
  */

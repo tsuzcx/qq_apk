@@ -4,7 +4,7 @@ public abstract class BottomSheetBehavior$a
 {
   public abstract void g(float paramFloat);
   
-  public abstract void y(int paramInt);
+  public abstract void x(int paramInt);
 }
 
 

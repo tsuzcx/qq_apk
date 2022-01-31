@@ -2,16 +2,29 @@ package com.microrapid.opencv;
 
 import android.graphics.Bitmap;
 import com.tencent.filter.QImage;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class CosmeticsHandle
 {
-  private final long aVf = nativeCosmeticsProcess();
-  private boolean aVg = false;
-  private QImage aVj = null;
+  private final long blO;
+  private boolean blP;
+  private QImage blS;
+  
+  public CosmeticsHandle()
+  {
+    AppMethodBeat.i(86257);
+    this.blP = false;
+    this.blS = null;
+    this.blO = nativeCosmeticsProcess();
+    this.blP = true;
+    AppMethodBeat.o(86257);
+  }
   
   public static void a(byte[] paramArrayOfByte, int[][] paramArrayOfInt, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(86258);
     nativeSegmentLipsFast(paramArrayOfByte, paramArrayOfInt, paramInt1, paramInt2);
+    AppMethodBeat.o(86258);
   }
   
   private static native boolean nativeCanManualRedo(long paramLong, int paramInt);
@@ -102,7 +115,7 @@ public class CosmeticsHandle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.microrapid.opencv.CosmeticsHandle
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.chatroom.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
 
 final class RoomAnnouncementUI$1$1
@@ -11,7 +12,9 @@ final class RoomAnnouncementUI$1$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RoomAnnouncementUI.a(this.dpw.dpv).requestFocus();
+    AppMethodBeat.i(104136);
+    RoomAnnouncementUI.a(this.egS.egR).requestFocus();
+    AppMethodBeat.o(104136);
   }
 }
 

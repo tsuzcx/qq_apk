@@ -1,6 +1,7 @@
 package com.tencent.tmassistantsdk.downloadservice;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.apache.http.HttpHost;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.params.HttpClientParams;
@@ -13,31 +14,37 @@ public class HttpClientUtil
 {
   public static HttpClient createHttpClient()
   {
-    BasicHttpParams localBasicHttpParams = new BasicHttpParams();
-    HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, 30000);
-    HttpConnectionParams.setSoTimeout(localBasicHttpParams, 30000);
-    HttpConnectionParams.setSocketBufferSize(localBasicHttpParams, 4096);
-    HttpClientParams.setRedirecting(localBasicHttpParams, false);
-    return new DefaultHttpClient(localBasicHttpParams);
+    AppMethodBeat.i(75769);
+    Object localObject = new BasicHttpParams();
+    HttpConnectionParams.setConnectionTimeout((HttpParams)localObject, 30000);
+    HttpConnectionParams.setSoTimeout((HttpParams)localObject, 30000);
+    HttpConnectionParams.setSocketBufferSize((HttpParams)localObject, 4096);
+    HttpClientParams.setRedirecting((HttpParams)localObject, false);
+    localObject = new DefaultHttpClient((HttpParams)localObject);
+    AppMethodBeat.o(75769);
+    return localObject;
   }
   
   public static void setProxy(HttpClient paramHttpClient)
   {
+    AppMethodBeat.i(75768);
     Object localObject = DownloadHelper.getNetStatus();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      if ((!((String)localObject).equalsIgnoreCase("cmwap")) && (!((String)localObject).equalsIgnoreCase("3gwap")) && (!((String)localObject).equalsIgnoreCase("uniwap"))) {
-        break label66;
+      if ((((String)localObject).equalsIgnoreCase("cmwap")) || (((String)localObject).equalsIgnoreCase("3gwap")) || (((String)localObject).equalsIgnoreCase("uniwap")))
+      {
+        localObject = new HttpHost("10.0.0.172", 80);
+        paramHttpClient.getParams().setParameter("http.route.default-proxy", localObject);
+        AppMethodBeat.o(75768);
+        return;
       }
-      localObject = new HttpHost("10.0.0.172", 80);
-      paramHttpClient.getParams().setParameter("http.route.default-proxy", localObject);
+      if (((String)localObject).equalsIgnoreCase("ctwap"))
+      {
+        localObject = new HttpHost("10.0.0.200", 80);
+        paramHttpClient.getParams().setParameter("http.route.default-proxy", localObject);
+      }
     }
-    label66:
-    while (!((String)localObject).equalsIgnoreCase("ctwap")) {
-      return;
-    }
-    localObject = new HttpHost("10.0.0.200", 80);
-    paramHttpClient.getParams().setParameter("http.route.default-proxy", localObject);
+    AppMethodBeat.o(75768);
   }
 }
 

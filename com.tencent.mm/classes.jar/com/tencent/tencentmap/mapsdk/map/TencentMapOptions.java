@@ -1,28 +1,46 @@
 package com.tencent.tencentmap.mapsdk.map;
 
+import android.graphics.SurfaceTexture;
 import android.view.Surface;
+import android.view.SurfaceHolder;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TencentMapOptions
 {
-  public static final int MAPTYPE_RASTER = 0;
-  public static final int MAPTYPE_VECTOR = 1;
+  public static final int GL_MAP_VIEW = 0;
+  public static final int MAP_RENDER_LAYER = 2;
+  public static final int TEXTURE_MAP_VIEW = 1;
   private boolean enableHandDrawMap = false;
   private boolean isMutipleInfowindowEnabled = false;
-  private Surface mExtSurface;
-  private int mMapType = 1;
+  private Object mExtSurface;
+  private int mExtSurfaceHeight;
+  private int mExtSurfaceWidth;
+  private int mMapType = 0;
   private String mSubId;
   private String mSubKey;
   
   @Deprecated
   public TencentMapOptions enableHandDrawMap(boolean paramBoolean)
   {
+    AppMethodBeat.i(101328);
     setHandDrawMapEnable(paramBoolean);
+    AppMethodBeat.o(101328);
     return this;
   }
   
-  public Surface getExtSurface()
+  public Object getExtSurface()
   {
     return this.mExtSurface;
+  }
+  
+  public final int getExtSurfaceHeight()
+  {
+    return this.mExtSurfaceHeight;
+  }
+  
+  public final int getExtSurfaceWidth()
+  {
+    return this.mExtSurfaceWidth;
   }
   
   public int getMapType()
@@ -50,9 +68,23 @@ public class TencentMapOptions
     return this.isMutipleInfowindowEnabled;
   }
   
-  public void setExtSurface(Surface paramSurface)
+  public void setExtSurface(Object paramObject)
   {
-    this.mExtSurface = paramSurface;
+    AppMethodBeat.i(150425);
+    if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture)) && (!(paramObject instanceof SurfaceHolder)))
+    {
+      paramObject = new IllegalArgumentException("Parameter Surface should be Surface,SurfaceTexture or SurfaceHolder");
+      AppMethodBeat.o(150425);
+      throw paramObject;
+    }
+    this.mExtSurface = paramObject;
+    AppMethodBeat.o(150425);
+  }
+  
+  public final void setExtSurfaceDimension(int paramInt1, int paramInt2)
+  {
+    this.mExtSurfaceWidth = paramInt1;
+    this.mExtSurfaceHeight = paramInt2;
   }
   
   public void setHandDrawMapEnable(boolean paramBoolean)
@@ -62,17 +94,10 @@ public class TencentMapOptions
   
   public void setMapType(int paramInt)
   {
-    int i;
-    if (paramInt >= 0)
-    {
-      i = paramInt;
-      if (paramInt <= 1) {}
+    if ((paramInt < 0) || (paramInt > 2)) {
+      return;
     }
-    else
-    {
-      i = 1;
-    }
-    this.mMapType = i;
+    this.mMapType = paramInt;
   }
   
   public void setMutipleInfowindowEnabled(boolean paramBoolean)
@@ -88,7 +113,7 @@ public class TencentMapOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.TencentMapOptions
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,11 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
+import a.l;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class EditorChangeTextView$3
   implements View.OnClickListener
 {
@@ -10,7 +13,9 @@ final class EditorChangeTextView$3
   
   public final void onClick(View paramView)
   {
-    this.jpR.cancel();
+    AppMethodBeat.i(3057);
+    this.lzA.cancel();
+    AppMethodBeat.o(3057);
   }
 }
 

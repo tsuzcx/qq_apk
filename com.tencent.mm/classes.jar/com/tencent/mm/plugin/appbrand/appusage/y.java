@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.protocal.c.anl;
-import com.tencent.mm.protocal.c.anm;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.protocal.protobuf.ata;
+import com.tencent.mm.protocal.protobuf.atb;
 
 class y
-  extends a<anm>
+  extends a<atb>
 {
   y(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -15,23 +16,25 @@ class y
   
   y(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
+    AppMethodBeat.i(129706);
     b.a locala = new b.a();
-    anl localanl = new anl();
-    localanl.aQw = paramInt1;
-    localanl.tjD = paramInt2;
-    localanl.condition = paramInt3;
-    localanl.tjB = paramInt4;
-    localanl.tjC = paramInt5;
-    locala.ecH = localanl;
-    locala.ecI = new anm();
+    ata localata = new ata();
+    localata.aXG = paramInt1;
+    localata.xiq = paramInt2;
+    localata.condition = paramInt3;
+    localata.xio = paramInt4;
+    localata.xip = paramInt5;
+    locala.fsX = localata;
+    locala.fsY = new atb();
     locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/getwxausagerecord";
-    locala.ecG = 1148;
-    this.dmK = locala.Kt();
+    locala.funcId = 1148;
+    this.rr = locala.ado();
+    AppMethodBeat.o(129706);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.y
  * JD-Core Version:    0.7.0.1
  */

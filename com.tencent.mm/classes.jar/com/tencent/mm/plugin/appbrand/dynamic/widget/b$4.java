@@ -1,18 +1,54 @@
 package com.tencent.mm.plugin.appbrand.dynamic.widget;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelappbrand.u;
+import com.tencent.mm.plugin.appbrand.canvas.widget.MCanvasView;
 
 final class b$4
-  implements DialogInterface.OnCancelListener
+  implements com.tencent.mm.plugin.appbrand.canvas.c.a
 {
-  b$4(b paramb, b.a parama) {}
+  b$4(MCanvasView paramMCanvasView) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void ap(float paramFloat)
   {
-    y.d("MicroMsg.AppBrandAuthorizeDialog", "stev dialog onCancel");
-    this.fXX.e(3, null);
+    AppMethodBeat.i(11104);
+    b.b(paramFloat, 2, this.hrv.getTraceId());
+    AppMethodBeat.o(11104);
+  }
+  
+  public final void aq(float paramFloat)
+  {
+    AppMethodBeat.i(11105);
+    b.b(paramFloat, 3, this.hrv.getTraceId());
+    AppMethodBeat.o(11105);
+  }
+  
+  public final void ayj()
+  {
+    AppMethodBeat.i(11106);
+    u.ql(this.hrv.getTraceId());
+    AppMethodBeat.o(11106);
+  }
+  
+  public final void b(long paramLong1, long paramLong2, int paramInt)
+  {
+    AppMethodBeat.i(11103);
+    com.tencent.mm.plugin.appbrand.widget.g.a.d(3, paramLong1, paramLong2, paramInt);
+    AppMethodBeat.o(11103);
+  }
+  
+  public final void hu(long paramLong)
+  {
+    AppMethodBeat.i(11101);
+    com.tencent.mm.plugin.appbrand.widget.g.a.D(685, paramLong);
+    AppMethodBeat.o(11101);
+  }
+  
+  public final void hv(long paramLong)
+  {
+    AppMethodBeat.i(11102);
+    com.tencent.mm.plugin.appbrand.widget.g.a.E(684, paramLong);
+    AppMethodBeat.o(11102);
   }
 }
 

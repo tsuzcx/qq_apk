@@ -5,8 +5,8 @@ import com.tencent.mm.wallet_core.ui.WalletTextView;
 
 final class HoneyPayCardManagerUI$b
 {
-  TextView iJR;
-  WalletTextView llg;
+  TextView kGe;
+  WalletTextView nIC;
   
   private HoneyPayCardManagerUI$b(HoneyPayCardManagerUI paramHoneyPayCardManagerUI) {}
 }

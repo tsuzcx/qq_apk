@@ -1,5 +1,6 @@
 package com.tencent.ttpic.cache;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Comparator;
 
 final class LoadStickerItemManager3D$2
@@ -7,27 +8,42 @@ final class LoadStickerItemManager3D$2
 {
   private int getFrameIndex(String paramString)
   {
-    return Integer.parseInt(paramString.substring(paramString.lastIndexOf('_') + 1, paramString.lastIndexOf('.')));
+    AppMethodBeat.i(81822);
+    int i = Integer.parseInt(paramString.substring(paramString.lastIndexOf('_') + 1, paramString.lastIndexOf('.')));
+    AppMethodBeat.o(81822);
+    return i;
   }
   
   private String getImageName(String paramString)
   {
-    return paramString.substring(0, paramString.lastIndexOf('_'));
+    AppMethodBeat.i(81821);
+    paramString = paramString.substring(0, paramString.lastIndexOf('_'));
+    AppMethodBeat.o(81821);
+    return paramString;
   }
   
   public final int compare(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(81820);
     try
     {
       String str1 = getImageName(paramString1);
       String str2 = getImageName(paramString2);
-      if (str1.equals(str2)) {
-        return getFrameIndex(paramString1) - getFrameIndex(paramString2);
+      if (str1.equals(str2))
+      {
+        i = getFrameIndex(paramString1);
+        int j = getFrameIndex(paramString2);
+        AppMethodBeat.o(81820);
+        return i - j;
       }
       int i = str1.compareTo(str2);
+      AppMethodBeat.o(81820);
       return i;
     }
-    catch (Exception paramString1) {}
+    catch (Exception paramString1)
+    {
+      AppMethodBeat.o(81820);
+    }
     return 0;
   }
 }

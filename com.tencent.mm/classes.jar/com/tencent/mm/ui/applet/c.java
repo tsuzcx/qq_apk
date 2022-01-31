@@ -8,15 +8,16 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
-import com.tencent.mm.R.i;
-import com.tencent.mm.ch.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ci.b;
 
 public final class c
 {
-  public static void gF(Context paramContext)
+  public static void ib(Context paramContext)
   {
-    paramContext = new c.a(paramContext, LayoutInflater.from(paramContext).inflate(R.i.trace_view, null));
-    paramContext.uSe.addView(paramContext.uSd, paramContext.uSf);
+    AppMethodBeat.i(29978);
+    new c.a(paramContext, LayoutInflater.from(paramContext).inflate(2130971035, null)).show();
+    AppMethodBeat.o(29978);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.address.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AddInvoiceUI$5
   implements DialogInterface.OnClickListener
@@ -10,8 +11,10 @@ final class AddInvoiceUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.fuc.setResult(0);
-    this.fuc.finish();
+    AppMethodBeat.i(16791);
+    this.gLE.setResult(0);
+    this.gLE.finish();
+    AppMethodBeat.o(16791);
   }
 }
 

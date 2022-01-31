@@ -1,6 +1,7 @@
 package com.tencent.qqvideo.proxy.httpproxy;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
@@ -11,246 +12,272 @@ import java.util.List;
 public final class TVHttpProxyLoadLibrary
 {
   public static final String ASSETS_LIBRARY_SRC_DIR = "libs/";
-  private static Context mContext = null;
-  private static final HashMap<String, WeakReference<ClassLoader>> mLoadedLibs = new HashMap();
+  private static Context mContext;
+  private static final HashMap<String, WeakReference<ClassLoader>> mLoadedLibs;
+  
+  static
+  {
+    AppMethodBeat.i(124392);
+    mLoadedLibs = new HashMap();
+    mContext = null;
+    AppMethodBeat.o(124392);
+  }
   
   /* Error */
   private static void extractAllLibraries(Context paramContext)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: ifnonnull +4 -> 5
-    //   4: return
-    //   5: invokestatic 39	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:generateAbiList	()Ljava/util/List;
-    //   8: astore_2
-    //   9: aload_0
-    //   10: ldc 41
-    //   12: iconst_0
-    //   13: invokevirtual 47	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   16: astore_3
-    //   17: new 49	java/util/zip/ZipFile
-    //   20: dup
-    //   21: aload_0
-    //   22: invokevirtual 53	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   25: getfield 58	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   28: invokespecial 61	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
-    //   31: astore_0
-    //   32: new 63	java/util/HashSet
-    //   35: dup
-    //   36: invokespecial 64	java/util/HashSet:<init>	()V
-    //   39: astore 4
-    //   41: ldc 66
-    //   43: invokestatic 72	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
-    //   46: astore 5
-    //   48: aload_0
-    //   49: invokevirtual 76	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
-    //   52: astore 6
-    //   54: aload 6
-    //   56: invokeinterface 82 1 0
-    //   61: istore_1
-    //   62: iload_1
-    //   63: ifne +8 -> 71
-    //   66: aload_0
-    //   67: invokevirtual 85	java/util/zip/ZipFile:close	()V
-    //   70: return
-    //   71: aload 5
-    //   73: aload 6
-    //   75: invokeinterface 89 1 0
-    //   80: checkcast 91	java/util/zip/ZipEntry
-    //   83: invokevirtual 95	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   86: invokevirtual 99	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   89: astore 7
-    //   91: aload 7
-    //   93: invokevirtual 104	java/util/regex/Matcher:matches	()Z
-    //   96: ifeq -42 -> 54
-    //   99: aload 7
-    //   101: iconst_1
-    //   102: invokevirtual 108	java/util/regex/Matcher:group	(I)Ljava/lang/String;
-    //   105: astore 7
-    //   107: aload 4
-    //   109: aload 7
-    //   111: invokevirtual 112	java/util/HashSet:contains	(Ljava/lang/Object;)Z
-    //   114: ifne -60 -> 54
-    //   117: aload_0
-    //   118: aload 7
-    //   120: aload_2
-    //   121: new 114	java/io/File
-    //   124: dup
-    //   125: aload_3
-    //   126: new 116	java/lang/StringBuilder
-    //   129: dup
-    //   130: ldc 118
-    //   132: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   135: aload 7
-    //   137: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: ldc 125
-    //   142: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: invokespecial 131	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   151: invokestatic 135	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:extractLibrary	(Ljava/util/zip/ZipFile;Ljava/lang/String;Ljava/util/List;Ljava/io/File;)Z
-    //   154: pop
-    //   155: aload 4
-    //   157: aload 7
-    //   159: invokevirtual 138	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   162: pop
-    //   163: goto -109 -> 54
-    //   166: astore_2
-    //   167: aload_0
-    //   168: invokevirtual 85	java/util/zip/ZipFile:close	()V
-    //   171: aload_2
-    //   172: athrow
+    //   0: ldc 47
+    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: ifnonnull +9 -> 15
+    //   9: ldc 47
+    //   11: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   14: return
+    //   15: invokestatic 51	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:generateAbiList	()Ljava/util/List;
+    //   18: astore_2
+    //   19: aload_0
+    //   20: ldc 53
+    //   22: iconst_0
+    //   23: invokevirtual 59	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
+    //   26: astore_3
+    //   27: new 61	java/util/zip/ZipFile
+    //   30: dup
+    //   31: aload_0
+    //   32: invokevirtual 65	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   35: getfield 70	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
+    //   38: invokespecial 73	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   41: astore_0
+    //   42: new 75	java/util/HashSet
+    //   45: dup
+    //   46: invokespecial 76	java/util/HashSet:<init>	()V
+    //   49: astore 4
+    //   51: ldc 78
+    //   53: invokestatic 84	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   56: astore 5
+    //   58: aload_0
+    //   59: invokevirtual 88	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   62: astore 6
+    //   64: aload 6
+    //   66: invokeinterface 94 1 0
+    //   71: istore_1
+    //   72: iload_1
+    //   73: ifne +13 -> 86
+    //   76: aload_0
+    //   77: invokevirtual 97	java/util/zip/ZipFile:close	()V
+    //   80: ldc 47
+    //   82: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: return
+    //   86: aload 5
+    //   88: aload 6
+    //   90: invokeinterface 101 1 0
+    //   95: checkcast 103	java/util/zip/ZipEntry
+    //   98: invokevirtual 107	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   101: invokevirtual 111	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   104: astore 7
+    //   106: aload 7
+    //   108: invokevirtual 116	java/util/regex/Matcher:matches	()Z
+    //   111: ifeq -47 -> 64
+    //   114: aload 7
+    //   116: iconst_1
+    //   117: invokevirtual 120	java/util/regex/Matcher:group	(I)Ljava/lang/String;
+    //   120: astore 7
+    //   122: aload 4
+    //   124: aload 7
+    //   126: invokevirtual 124	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   129: ifne -65 -> 64
+    //   132: aload_0
+    //   133: aload 7
+    //   135: aload_2
+    //   136: new 126	java/io/File
+    //   139: dup
+    //   140: aload_3
+    //   141: new 128	java/lang/StringBuilder
+    //   144: dup
+    //   145: ldc 130
+    //   147: invokespecial 131	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   150: aload 7
+    //   152: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: ldc 137
+    //   157: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokespecial 143	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   166: invokestatic 147	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:extractLibrary	(Ljava/util/zip/ZipFile;Ljava/lang/String;Ljava/util/List;Ljava/io/File;)Z
+    //   169: pop
+    //   170: aload 4
+    //   172: aload 7
+    //   174: invokevirtual 150	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   177: pop
+    //   178: goto -114 -> 64
+    //   181: astore_2
+    //   182: aload_0
+    //   183: invokevirtual 97	java/util/zip/ZipFile:close	()V
+    //   186: ldc 47
+    //   188: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   191: aload_2
+    //   192: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	173	0	paramContext	Context
-    //   61	2	1	bool	boolean
-    //   8	113	2	localList	List
-    //   166	6	2	localObject1	Object
-    //   16	110	3	localFile	File
-    //   39	117	4	localHashSet	java.util.HashSet
-    //   46	26	5	localPattern	java.util.regex.Pattern
-    //   52	22	6	localEnumeration	java.util.Enumeration
-    //   89	69	7	localObject2	Object
+    //   0	193	0	paramContext	Context
+    //   71	2	1	bool	boolean
+    //   18	118	2	localList	List
+    //   181	11	2	localObject1	Object
+    //   26	115	3	localFile	File
+    //   49	122	4	localHashSet	java.util.HashSet
+    //   56	31	5	localPattern	java.util.regex.Pattern
+    //   62	27	6	localEnumeration	java.util.Enumeration
+    //   104	69	7	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   32	54	166	finally
-    //   54	62	166	finally
-    //   71	163	166	finally
+    //   42	64	181	finally
+    //   64	72	181	finally
+    //   86	178	181	finally
   }
   
   /* Error */
   private static boolean extractLibrary(java.util.zip.ZipFile paramZipFile, String paramString, List<String> paramList, File paramFile)
   {
     // Byte code:
-    //   0: aload_3
-    //   1: invokevirtual 141	java/io/File:isFile	()Z
-    //   4: ifeq +5 -> 9
-    //   7: iconst_1
-    //   8: ireturn
-    //   9: aload_2
-    //   10: invokeinterface 147 1 0
-    //   15: astore_2
-    //   16: aload_2
-    //   17: invokeinterface 152 1 0
-    //   22: ifne +5 -> 27
-    //   25: iconst_0
-    //   26: ireturn
-    //   27: aload_2
-    //   28: invokeinterface 155 1 0
-    //   33: checkcast 157	java/lang/String
-    //   36: astore 5
-    //   38: aload_0
-    //   39: new 116	java/lang/StringBuilder
-    //   42: dup
-    //   43: ldc 159
-    //   45: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   48: aload 5
-    //   50: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: ldc 161
-    //   55: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: aload_1
-    //   59: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: ldc 125
-    //   64: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   70: invokevirtual 165	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   73: astore 5
-    //   75: aload 5
-    //   77: ifnull -61 -> 16
-    //   80: aload_0
-    //   81: aload 5
-    //   83: invokevirtual 169	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   86: astore_0
-    //   87: new 171	java/io/FileOutputStream
-    //   90: dup
-    //   91: aload_3
-    //   92: invokespecial 174	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   95: astore_1
-    //   96: sipush 2048
-    //   99: newarray byte
-    //   101: astore_2
-    //   102: aload_0
-    //   103: aload_2
-    //   104: iconst_0
-    //   105: sipush 2048
-    //   108: invokevirtual 180	java/io/InputStream:read	([BII)I
-    //   111: istore 4
-    //   113: iload 4
-    //   115: iconst_m1
-    //   116: if_icmpne +18 -> 134
-    //   119: aload_0
-    //   120: invokevirtual 181	java/io/InputStream:close	()V
-    //   123: aload_1
-    //   124: invokevirtual 182	java/io/FileOutputStream:close	()V
-    //   127: aload_3
-    //   128: invokevirtual 185	java/io/File:setReadOnly	()Z
-    //   131: pop
-    //   132: iconst_1
-    //   133: ireturn
-    //   134: aload_1
-    //   135: aload_2
-    //   136: iconst_0
-    //   137: iload 4
-    //   139: invokevirtual 189	java/io/FileOutputStream:write	([BII)V
-    //   142: goto -40 -> 102
-    //   145: astore_2
-    //   146: aload_0
-    //   147: invokevirtual 181	java/io/InputStream:close	()V
-    //   150: aload_1
-    //   151: invokevirtual 182	java/io/FileOutputStream:close	()V
-    //   154: aload_2
-    //   155: athrow
+    //   0: ldc 151
+    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_3
+    //   6: invokevirtual 154	java/io/File:isFile	()Z
+    //   9: ifeq +10 -> 19
+    //   12: ldc 151
+    //   14: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: iconst_1
+    //   18: ireturn
+    //   19: aload_2
+    //   20: invokeinterface 160 1 0
+    //   25: astore_2
+    //   26: aload_2
+    //   27: invokeinterface 165 1 0
+    //   32: ifne +10 -> 42
+    //   35: ldc 151
+    //   37: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   40: iconst_0
+    //   41: ireturn
+    //   42: aload_2
+    //   43: invokeinterface 168 1 0
+    //   48: checkcast 170	java/lang/String
+    //   51: astore 5
+    //   53: aload_0
+    //   54: new 128	java/lang/StringBuilder
+    //   57: dup
+    //   58: ldc 172
+    //   60: invokespecial 131	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   63: aload 5
+    //   65: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: ldc 174
+    //   70: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: aload_1
+    //   74: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: ldc 137
+    //   79: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokevirtual 178	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   88: astore 5
+    //   90: aload 5
+    //   92: ifnull -66 -> 26
+    //   95: aload_0
+    //   96: aload 5
+    //   98: invokevirtual 182	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   101: astore_0
+    //   102: new 184	java/io/FileOutputStream
+    //   105: dup
+    //   106: aload_3
+    //   107: invokespecial 187	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   110: astore_1
+    //   111: sipush 2048
+    //   114: newarray byte
+    //   116: astore_2
+    //   117: aload_0
+    //   118: aload_2
+    //   119: iconst_0
+    //   120: sipush 2048
+    //   123: invokevirtual 193	java/io/InputStream:read	([BII)I
+    //   126: istore 4
+    //   128: iload 4
+    //   130: iconst_m1
+    //   131: if_icmpne +23 -> 154
+    //   134: aload_0
+    //   135: invokevirtual 194	java/io/InputStream:close	()V
+    //   138: aload_1
+    //   139: invokevirtual 195	java/io/FileOutputStream:close	()V
+    //   142: aload_3
+    //   143: invokevirtual 198	java/io/File:setReadOnly	()Z
+    //   146: pop
+    //   147: ldc 151
+    //   149: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   152: iconst_1
+    //   153: ireturn
+    //   154: aload_1
+    //   155: aload_2
+    //   156: iconst_0
+    //   157: iload 4
+    //   159: invokevirtual 202	java/io/FileOutputStream:write	([BII)V
+    //   162: goto -45 -> 117
+    //   165: astore_2
+    //   166: aload_0
+    //   167: invokevirtual 194	java/io/InputStream:close	()V
+    //   170: aload_1
+    //   171: invokevirtual 195	java/io/FileOutputStream:close	()V
+    //   174: ldc 151
+    //   176: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   179: aload_2
+    //   180: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	156	0	paramZipFile	java.util.zip.ZipFile
-    //   0	156	1	paramString	String
-    //   0	156	2	paramList	List<String>
-    //   0	156	3	paramFile	File
-    //   111	27	4	i	int
-    //   36	46	5	localObject	Object
+    //   0	181	0	paramZipFile	java.util.zip.ZipFile
+    //   0	181	1	paramString	String
+    //   0	181	2	paramList	List<String>
+    //   0	181	3	paramFile	File
+    //   126	32	4	i	int
+    //   51	46	5	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   102	113	145	finally
-    //   134	142	145	finally
+    //   117	128	165	finally
+    //   154	162	165	finally
   }
   
   public static String find(String paramString, Context paramContext)
   {
-    Object localObject3;
-    if (paramContext == null) {
-      localObject3 = null;
-    }
-    for (;;)
+    AppMethodBeat.i(124393);
+    if (paramContext == null)
     {
-      return localObject3;
-      try
+      AppMethodBeat.o(124393);
+      return null;
+    }
+    try
+    {
+      Object localObject1 = TVHttpProxyLoadLibrary.class.getClassLoader();
+      Object localObject3 = ClassLoader.class.getDeclaredMethod("findLibrary", new Class[] { String.class });
+      ((Method)localObject3).setAccessible(true);
+      localObject1 = (String)((Method)localObject3).invoke(localObject1, new Object[] { paramString });
+      localObject3 = localObject1;
+      if (localObject1 == null)
       {
-        Object localObject1 = TVHttpProxyLoadLibrary.class.getClassLoader();
-        localObject3 = ClassLoader.class.getDeclaredMethod("findLibrary", new Class[] { String.class });
-        ((Method)localObject3).setAccessible(true);
-        localObject1 = (String)((Method)localObject3).invoke(localObject1, new Object[] { paramString });
-        localObject3 = localObject1;
-        if (localObject1 != null) {
-          continue;
-        }
         paramString = new File(paramContext.getDir("recover_lib", 0), "lib" + paramString + ".so");
         localObject3 = localObject1;
-        if (!paramString.canRead()) {
-          continue;
+        if (paramString.canRead()) {
+          localObject3 = paramString.getAbsolutePath();
         }
-        return paramString.getAbsolutePath();
       }
-      catch (Exception localException)
+      AppMethodBeat.o(124393);
+      return localObject3;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        for (;;)
-        {
-          Object localObject2 = null;
-        }
+        Object localObject2 = null;
       }
     }
   }
   
   private static List<String> generateAbiList()
   {
+    AppMethodBeat.i(124397);
     ArrayList localArrayList = new ArrayList(3);
     Object localObject = Class.forName("android.os.SystemProperties").getMethod("get", new Class[] { String.class });
     String str = (String)((Method)localObject).invoke(null, new Object[] { "ro.product.cpu.abi" });
@@ -262,6 +289,7 @@ public final class TVHttpProxyLoadLibrary
       localArrayList.add(localObject);
     }
     localArrayList.add("armeabi");
+    AppMethodBeat.o(124397);
     return localArrayList;
   }
   
@@ -269,480 +297,561 @@ public final class TVHttpProxyLoadLibrary
   public static void load(String paramString, ClassLoader paramClassLoader, Context arg2)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: ifnull +14 -> 15
-    //   4: aload_0
-    //   5: invokevirtual 247	java/lang/String:length	()I
-    //   8: ifeq +7 -> 15
-    //   11: aload_1
-    //   12: ifnonnull +4 -> 16
-    //   15: return
-    //   16: aload_2
-    //   17: putstatic 26	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mContext	Landroid/content/Context;
-    //   20: getstatic 24	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
-    //   23: astore 4
-    //   25: aload 4
-    //   27: monitorenter
-    //   28: getstatic 24	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
-    //   31: aload_0
-    //   32: invokevirtual 266	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   35: checkcast 268	java/lang/ref/WeakReference
-    //   38: astore_3
-    //   39: aload_3
-    //   40: ifnull +736 -> 776
-    //   43: aload_3
-    //   44: invokevirtual 270	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   47: checkcast 203	java/lang/ClassLoader
+    //   0: ldc_w 278
+    //   3: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: ifnull +14 -> 21
+    //   10: aload_0
+    //   11: invokevirtual 261	java/lang/String:length	()I
+    //   14: ifeq +7 -> 21
+    //   17: aload_1
+    //   18: ifnonnull +10 -> 28
+    //   21: ldc_w 278
+    //   24: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   27: return
+    //   28: aload_2
+    //   29: putstatic 33	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mContext	Landroid/content/Context;
+    //   32: getstatic 31	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
+    //   35: astore 4
+    //   37: aload 4
+    //   39: monitorenter
+    //   40: getstatic 31	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
+    //   43: aload_0
+    //   44: invokevirtual 281	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   47: checkcast 283	java/lang/ref/WeakReference
     //   50: astore_3
     //   51: aload_3
-    //   52: ifnull +49 -> 101
+    //   52: ifnull +858 -> 910
     //   55: aload_3
-    //   56: aload_1
-    //   57: if_acmpne +13 -> 70
-    //   60: aload 4
-    //   62: monitorexit
-    //   63: return
-    //   64: astore_0
-    //   65: aload 4
-    //   67: monitorexit
-    //   68: aload_0
-    //   69: athrow
-    //   70: new 259	java/lang/UnsatisfiedLinkError
-    //   73: dup
-    //   74: new 116	java/lang/StringBuilder
-    //   77: dup
-    //   78: ldc_w 272
-    //   81: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   84: aload_0
-    //   85: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: ldc_w 274
-    //   91: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   97: invokespecial 275	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
-    //   100: athrow
-    //   101: aload 4
-    //   103: monitorexit
-    //   104: aload_2
-    //   105: ifnonnull +107 -> 212
-    //   108: aload_0
-    //   109: aload_1
-    //   110: invokestatic 279	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:reflectSystemLoadlibrary	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   113: getstatic 24	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
-    //   116: astore_2
-    //   117: aload_2
-    //   118: monitorenter
-    //   119: getstatic 24	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
-    //   122: aload_0
-    //   123: new 268	java/lang/ref/WeakReference
-    //   126: dup
-    //   127: aload_1
-    //   128: invokespecial 282	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   131: invokevirtual 286	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   134: pop
-    //   135: aload_2
-    //   136: monitorexit
-    //   137: return
-    //   138: astore_1
-    //   139: aload_2
-    //   140: monitorexit
+    //   56: invokevirtual 285	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   59: checkcast 217	java/lang/ClassLoader
+    //   62: astore_3
+    //   63: aload_3
+    //   64: ifnull +69 -> 133
+    //   67: aload_3
+    //   68: aload_1
+    //   69: if_acmpne +13 -> 82
+    //   72: aload 4
+    //   74: monitorexit
+    //   75: ldc_w 278
+    //   78: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: return
+    //   82: new 273	java/lang/UnsatisfiedLinkError
+    //   85: dup
+    //   86: new 128	java/lang/StringBuilder
+    //   89: dup
+    //   90: ldc_w 287
+    //   93: invokespecial 131	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   96: aload_0
+    //   97: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: ldc_w 289
+    //   103: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   109: invokespecial 290	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   112: astore_0
+    //   113: ldc_w 278
+    //   116: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   119: aload_0
+    //   120: athrow
+    //   121: astore_0
+    //   122: aload 4
+    //   124: monitorexit
+    //   125: ldc_w 278
+    //   128: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   131: aload_0
+    //   132: athrow
+    //   133: aload 4
+    //   135: monitorexit
+    //   136: aload_2
+    //   137: ifnonnull +121 -> 258
+    //   140: aload_0
     //   141: aload_1
-    //   142: athrow
-    //   143: astore_1
-    //   144: new 259	java/lang/UnsatisfiedLinkError
-    //   147: dup
-    //   148: new 116	java/lang/StringBuilder
-    //   151: dup
-    //   152: ldc_w 288
-    //   155: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   158: aload_0
-    //   159: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   165: invokespecial 275	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
-    //   168: aload_1
-    //   169: invokevirtual 292	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   172: invokevirtual 296	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   175: checkcast 259	java/lang/UnsatisfiedLinkError
-    //   178: athrow
-    //   179: astore_1
-    //   180: new 259	java/lang/UnsatisfiedLinkError
-    //   183: dup
-    //   184: new 116	java/lang/StringBuilder
-    //   187: dup
-    //   188: ldc_w 288
-    //   191: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   194: aload_0
-    //   195: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: invokespecial 275	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
-    //   204: aload_1
-    //   205: invokevirtual 296	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   208: checkcast 259	java/lang/UnsatisfiedLinkError
-    //   211: athrow
-    //   212: new 114	java/io/File
-    //   215: dup
-    //   216: aload_2
-    //   217: ldc 41
-    //   219: iconst_0
-    //   220: invokevirtual 47	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   223: new 116	java/lang/StringBuilder
-    //   226: dup
-    //   227: ldc 118
-    //   229: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   142: invokestatic 294	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:reflectSystemLoadlibrary	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   145: getstatic 31	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
+    //   148: astore_2
+    //   149: aload_2
+    //   150: monitorenter
+    //   151: getstatic 31	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
+    //   154: aload_0
+    //   155: new 283	java/lang/ref/WeakReference
+    //   158: dup
+    //   159: aload_1
+    //   160: invokespecial 297	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   163: invokevirtual 301	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   166: pop
+    //   167: aload_2
+    //   168: monitorexit
+    //   169: ldc_w 278
+    //   172: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   175: return
+    //   176: astore_1
+    //   177: new 273	java/lang/UnsatisfiedLinkError
+    //   180: dup
+    //   181: ldc_w 303
+    //   184: aload_0
+    //   185: invokestatic 307	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   188: invokevirtual 311	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   191: invokespecial 290	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   194: aload_1
+    //   195: invokevirtual 315	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   198: invokevirtual 319	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   201: checkcast 273	java/lang/UnsatisfiedLinkError
+    //   204: astore_0
+    //   205: ldc_w 278
+    //   208: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   211: aload_0
+    //   212: athrow
+    //   213: astore_1
+    //   214: aload_2
+    //   215: monitorexit
+    //   216: ldc_w 278
+    //   219: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   222: aload_1
+    //   223: athrow
+    //   224: astore_1
+    //   225: new 273	java/lang/UnsatisfiedLinkError
+    //   228: dup
+    //   229: ldc_w 303
     //   232: aload_0
-    //   233: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: ldc 125
-    //   238: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   241: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   244: invokespecial 131	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   247: astore 5
-    //   249: aload 5
-    //   251: invokevirtual 141	java/io/File:isFile	()Z
-    //   254: ifeq +517 -> 771
-    //   257: aload 5
-    //   259: invokevirtual 225	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   262: aload_1
-    //   263: invokestatic 299	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:reflectSystemLoad	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   266: getstatic 24	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
-    //   269: astore_3
-    //   270: aload_3
-    //   271: monitorenter
-    //   272: getstatic 24	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
-    //   275: aload_0
-    //   276: new 268	java/lang/ref/WeakReference
-    //   279: dup
-    //   280: aload_1
-    //   281: invokespecial 282	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   284: invokevirtual 286	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   287: pop
-    //   288: aload_3
-    //   289: monitorexit
-    //   290: return
-    //   291: astore 4
-    //   293: aload_3
-    //   294: monitorexit
-    //   295: aload 4
-    //   297: athrow
-    //   298: astore_3
-    //   299: aload 5
-    //   301: invokevirtual 302	java/io/File:delete	()Z
-    //   304: pop
-    //   305: aload_0
-    //   306: aload_1
-    //   307: invokestatic 279	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:reflectSystemLoadlibrary	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   310: getstatic 24	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
-    //   313: astore 4
-    //   315: aload 4
+    //   233: invokestatic 307	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   236: invokevirtual 311	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   239: invokespecial 290	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   242: aload_1
+    //   243: invokevirtual 319	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   246: checkcast 273	java/lang/UnsatisfiedLinkError
+    //   249: astore_0
+    //   250: ldc_w 278
+    //   253: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   256: aload_0
+    //   257: athrow
+    //   258: new 126	java/io/File
+    //   261: dup
+    //   262: aload_2
+    //   263: ldc 53
+    //   265: iconst_0
+    //   266: invokevirtual 59	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
+    //   269: new 128	java/lang/StringBuilder
+    //   272: dup
+    //   273: ldc 130
+    //   275: invokespecial 131	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   278: aload_0
+    //   279: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   282: ldc 137
+    //   284: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   287: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   290: invokespecial 143	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   293: astore 5
+    //   295: aload 5
+    //   297: invokevirtual 154	java/io/File:isFile	()Z
+    //   300: ifeq +605 -> 905
+    //   303: aload 5
+    //   305: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   308: aload_1
+    //   309: invokestatic 322	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:reflectSystemLoad	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   312: getstatic 31	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
+    //   315: astore_3
+    //   316: aload_3
     //   317: monitorenter
-    //   318: getstatic 24	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
+    //   318: getstatic 31	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
     //   321: aload_0
-    //   322: new 268	java/lang/ref/WeakReference
+    //   322: new 283	java/lang/ref/WeakReference
     //   325: dup
     //   326: aload_1
-    //   327: invokespecial 282	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   330: invokevirtual 286	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   327: invokespecial 297	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   330: invokevirtual 301	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   333: pop
-    //   334: aload 4
-    //   336: monitorexit
-    //   337: return
-    //   338: astore 6
-    //   340: aload 4
-    //   342: monitorexit
-    //   343: aload 6
-    //   345: athrow
-    //   346: astore 4
-    //   348: aload_3
-    //   349: ifnonnull +419 -> 768
-    //   352: aload 4
-    //   354: astore_3
-    //   355: new 49	java/util/zip/ZipFile
-    //   358: dup
-    //   359: aload_2
-    //   360: invokevirtual 53	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   363: getfield 58	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   366: invokespecial 61	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
-    //   369: astore 4
-    //   371: aload 4
-    //   373: astore_2
-    //   374: aload 4
-    //   376: aload_0
-    //   377: invokestatic 39	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:generateAbiList	()Ljava/util/List;
-    //   380: aload 5
-    //   382: invokestatic 135	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:extractLibrary	(Ljava/util/zip/ZipFile;Ljava/lang/String;Ljava/util/List;Ljava/io/File;)Z
-    //   385: ifne +252 -> 637
-    //   388: aload 4
-    //   390: astore_2
-    //   391: new 304	java/lang/RuntimeException
-    //   394: dup
-    //   395: new 116	java/lang/StringBuilder
-    //   398: dup
-    //   399: ldc_w 306
-    //   402: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   405: aload_0
-    //   406: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   409: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   412: invokespecial 307	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   415: athrow
-    //   416: astore_0
+    //   334: aload_3
+    //   335: monitorexit
+    //   336: ldc_w 278
+    //   339: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   342: return
+    //   343: astore_3
+    //   344: aload 5
+    //   346: invokevirtual 325	java/io/File:delete	()Z
+    //   349: pop
+    //   350: aload_0
+    //   351: aload_1
+    //   352: invokestatic 294	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:reflectSystemLoadlibrary	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   355: getstatic 31	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
+    //   358: astore 4
+    //   360: aload 4
+    //   362: monitorenter
+    //   363: getstatic 31	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
+    //   366: aload_0
+    //   367: new 283	java/lang/ref/WeakReference
+    //   370: dup
+    //   371: aload_1
+    //   372: invokespecial 297	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   375: invokevirtual 301	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   378: pop
+    //   379: aload 4
+    //   381: monitorexit
+    //   382: ldc_w 278
+    //   385: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   388: return
+    //   389: astore 4
+    //   391: aload_3
+    //   392: ifnonnull +510 -> 902
+    //   395: aload 4
+    //   397: astore_3
+    //   398: new 61	java/util/zip/ZipFile
+    //   401: dup
+    //   402: aload_2
+    //   403: invokevirtual 65	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   406: getfield 70	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
+    //   409: invokespecial 73	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   412: astore 4
+    //   414: aload 4
+    //   416: astore_2
     //   417: aload 4
-    //   419: astore_2
-    //   420: new 259	java/lang/UnsatisfiedLinkError
-    //   423: dup
-    //   424: ldc_w 309
-    //   427: invokespecial 275	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
-    //   430: aload_0
-    //   431: invokevirtual 296	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   434: checkcast 259	java/lang/UnsatisfiedLinkError
-    //   437: athrow
-    //   438: astore_0
-    //   439: aload_2
-    //   440: ifnull +7 -> 447
-    //   443: aload_2
-    //   444: invokevirtual 85	java/util/zip/ZipFile:close	()V
-    //   447: aload_0
-    //   448: athrow
-    //   449: astore_3
-    //   450: aload_3
-    //   451: invokevirtual 292	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   454: instanceof 259
-    //   457: ifeq +14 -> 471
-    //   460: aload_3
-    //   461: invokevirtual 292	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   464: checkcast 259	java/lang/UnsatisfiedLinkError
-    //   467: astore_3
-    //   468: goto -169 -> 299
-    //   471: new 259	java/lang/UnsatisfiedLinkError
-    //   474: dup
-    //   475: new 116	java/lang/StringBuilder
-    //   478: dup
-    //   479: ldc_w 311
-    //   482: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   485: aload_0
-    //   486: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   489: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   492: invokespecial 275	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
-    //   495: aload_3
-    //   496: invokevirtual 292	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   499: invokevirtual 296	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   502: checkcast 259	java/lang/UnsatisfiedLinkError
-    //   505: athrow
-    //   506: astore_1
-    //   507: new 259	java/lang/UnsatisfiedLinkError
-    //   510: dup
-    //   511: new 116	java/lang/StringBuilder
-    //   514: dup
-    //   515: ldc_w 311
-    //   518: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   521: aload_0
-    //   522: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   525: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   528: invokespecial 275	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
-    //   531: aload_1
-    //   532: invokevirtual 296	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   535: checkcast 259	java/lang/UnsatisfiedLinkError
-    //   538: athrow
-    //   539: astore 4
-    //   541: aload 4
-    //   543: invokevirtual 292	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   546: instanceof 259
-    //   549: ifeq +19 -> 568
-    //   552: aload_3
-    //   553: ifnonnull +215 -> 768
-    //   556: aload 4
-    //   558: invokevirtual 292	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   561: checkcast 259	java/lang/UnsatisfiedLinkError
-    //   564: astore_3
-    //   565: goto -210 -> 355
-    //   568: new 259	java/lang/UnsatisfiedLinkError
-    //   571: dup
-    //   572: new 116	java/lang/StringBuilder
-    //   575: dup
-    //   576: ldc_w 311
-    //   579: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   582: aload_0
-    //   583: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   586: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   589: invokespecial 275	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
-    //   592: aload 4
-    //   594: invokevirtual 292	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   597: invokevirtual 296	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   600: checkcast 259	java/lang/UnsatisfiedLinkError
-    //   603: athrow
-    //   604: astore_1
-    //   605: new 259	java/lang/UnsatisfiedLinkError
-    //   608: dup
-    //   609: new 116	java/lang/StringBuilder
-    //   612: dup
-    //   613: ldc_w 311
-    //   616: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   619: aload_0
-    //   620: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   623: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   626: invokespecial 275	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
-    //   629: aload_1
-    //   630: invokevirtual 296	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   633: checkcast 259	java/lang/UnsatisfiedLinkError
-    //   636: athrow
-    //   637: aload 4
-    //   639: invokevirtual 85	java/util/zip/ZipFile:close	()V
-    //   642: aload 5
-    //   644: invokevirtual 225	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   647: aload_1
-    //   648: invokestatic 299	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:reflectSystemLoad	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   651: getstatic 24	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
-    //   654: astore_2
-    //   655: aload_2
-    //   656: monitorenter
-    //   657: getstatic 24	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
-    //   660: aload_0
-    //   661: new 268	java/lang/ref/WeakReference
-    //   664: dup
-    //   665: aload_1
-    //   666: invokespecial 282	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   669: invokevirtual 286	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   672: pop
-    //   673: aload_2
-    //   674: monitorexit
-    //   675: return
-    //   676: astore_1
-    //   677: aload_2
-    //   678: monitorexit
-    //   679: aload_1
-    //   680: athrow
-    //   681: astore_1
-    //   682: aload_3
-    //   683: ifnonnull +38 -> 721
-    //   686: new 259	java/lang/UnsatisfiedLinkError
-    //   689: dup
-    //   690: new 116	java/lang/StringBuilder
-    //   693: dup
-    //   694: ldc_w 311
-    //   697: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   700: aload_0
-    //   701: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   704: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   707: invokespecial 275	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
-    //   710: aload_1
-    //   711: invokevirtual 292	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-    //   714: invokevirtual 296	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   717: checkcast 259	java/lang/UnsatisfiedLinkError
-    //   720: athrow
-    //   721: aload_3
-    //   722: athrow
-    //   723: astore_0
-    //   724: aload_3
-    //   725: ifnonnull +21 -> 746
-    //   728: new 259	java/lang/UnsatisfiedLinkError
-    //   731: dup
-    //   732: ldc_w 309
-    //   735: invokespecial 275	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
-    //   738: aload_0
-    //   739: invokevirtual 296	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   742: checkcast 259	java/lang/UnsatisfiedLinkError
-    //   745: athrow
-    //   746: aload_3
-    //   747: athrow
-    //   748: astore_1
-    //   749: goto -302 -> 447
-    //   752: astore_2
-    //   753: goto -111 -> 642
-    //   756: astore_0
-    //   757: aconst_null
-    //   758: astore_2
-    //   759: goto -320 -> 439
-    //   762: astore_0
-    //   763: aconst_null
-    //   764: astore_2
-    //   765: goto -345 -> 420
-    //   768: goto -413 -> 355
-    //   771: aconst_null
-    //   772: astore_3
-    //   773: goto -468 -> 305
-    //   776: aconst_null
-    //   777: astore_3
-    //   778: goto -727 -> 51
+    //   419: aload_0
+    //   420: invokestatic 51	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:generateAbiList	()Ljava/util/List;
+    //   423: aload 5
+    //   425: invokestatic 147	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:extractLibrary	(Ljava/util/zip/ZipFile;Ljava/lang/String;Ljava/util/List;Ljava/io/File;)Z
+    //   428: ifne +310 -> 738
+    //   431: aload 4
+    //   433: astore_2
+    //   434: new 327	java/lang/RuntimeException
+    //   437: dup
+    //   438: ldc_w 329
+    //   441: aload_0
+    //   442: invokestatic 307	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   445: invokevirtual 311	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   448: invokespecial 330	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   451: astore_0
+    //   452: aload 4
+    //   454: astore_2
+    //   455: ldc_w 278
+    //   458: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   461: aload 4
+    //   463: astore_2
+    //   464: aload_0
+    //   465: athrow
+    //   466: astore_1
+    //   467: aload 4
+    //   469: astore_0
+    //   470: aload_0
+    //   471: astore_2
+    //   472: new 273	java/lang/UnsatisfiedLinkError
+    //   475: dup
+    //   476: ldc_w 332
+    //   479: invokespecial 290	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   482: aload_1
+    //   483: invokevirtual 319	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   486: checkcast 273	java/lang/UnsatisfiedLinkError
+    //   489: astore_1
+    //   490: aload_0
+    //   491: astore_2
+    //   492: ldc_w 278
+    //   495: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   498: aload_0
+    //   499: astore_2
+    //   500: aload_1
+    //   501: athrow
+    //   502: astore_0
+    //   503: aload_2
+    //   504: ifnull +7 -> 511
+    //   507: aload_2
+    //   508: invokevirtual 97	java/util/zip/ZipFile:close	()V
+    //   511: ldc_w 278
+    //   514: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   517: aload_0
+    //   518: athrow
+    //   519: astore 4
+    //   521: aload_3
+    //   522: monitorexit
+    //   523: ldc_w 278
+    //   526: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   529: aload 4
+    //   531: athrow
+    //   532: astore_3
+    //   533: aload_3
+    //   534: invokevirtual 315	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   537: instanceof 273
+    //   540: ifeq +14 -> 554
+    //   543: aload_3
+    //   544: invokevirtual 315	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   547: checkcast 273	java/lang/UnsatisfiedLinkError
+    //   550: astore_3
+    //   551: goto -207 -> 344
+    //   554: new 273	java/lang/UnsatisfiedLinkError
+    //   557: dup
+    //   558: ldc_w 334
+    //   561: aload_0
+    //   562: invokestatic 307	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   565: invokevirtual 311	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   568: invokespecial 290	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   571: aload_3
+    //   572: invokevirtual 315	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   575: invokevirtual 319	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   578: checkcast 273	java/lang/UnsatisfiedLinkError
+    //   581: astore_0
+    //   582: ldc_w 278
+    //   585: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   588: aload_0
+    //   589: athrow
+    //   590: astore_1
+    //   591: new 273	java/lang/UnsatisfiedLinkError
+    //   594: dup
+    //   595: ldc_w 334
+    //   598: aload_0
+    //   599: invokestatic 307	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   602: invokevirtual 311	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   605: invokespecial 290	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   608: aload_1
+    //   609: invokevirtual 319	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   612: checkcast 273	java/lang/UnsatisfiedLinkError
+    //   615: astore_0
+    //   616: ldc_w 278
+    //   619: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   622: aload_0
+    //   623: athrow
+    //   624: astore 6
+    //   626: aload 4
+    //   628: monitorexit
+    //   629: ldc_w 278
+    //   632: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   635: aload 6
+    //   637: athrow
+    //   638: astore 4
+    //   640: aload 4
+    //   642: invokevirtual 315	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   645: instanceof 273
+    //   648: ifeq +19 -> 667
+    //   651: aload_3
+    //   652: ifnonnull +250 -> 902
+    //   655: aload 4
+    //   657: invokevirtual 315	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   660: checkcast 273	java/lang/UnsatisfiedLinkError
+    //   663: astore_3
+    //   664: goto -266 -> 398
+    //   667: new 273	java/lang/UnsatisfiedLinkError
+    //   670: dup
+    //   671: ldc_w 334
+    //   674: aload_0
+    //   675: invokestatic 307	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   678: invokevirtual 311	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   681: invokespecial 290	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   684: aload 4
+    //   686: invokevirtual 315	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   689: invokevirtual 319	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   692: checkcast 273	java/lang/UnsatisfiedLinkError
+    //   695: astore_0
+    //   696: ldc_w 278
+    //   699: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   702: aload_0
+    //   703: athrow
+    //   704: astore_1
+    //   705: new 273	java/lang/UnsatisfiedLinkError
+    //   708: dup
+    //   709: ldc_w 334
+    //   712: aload_0
+    //   713: invokestatic 307	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   716: invokevirtual 311	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   719: invokespecial 290	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   722: aload_1
+    //   723: invokevirtual 319	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   726: checkcast 273	java/lang/UnsatisfiedLinkError
+    //   729: astore_0
+    //   730: ldc_w 278
+    //   733: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   736: aload_0
+    //   737: athrow
+    //   738: aload 4
+    //   740: invokevirtual 97	java/util/zip/ZipFile:close	()V
+    //   743: aload 5
+    //   745: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   748: aload_1
+    //   749: invokestatic 322	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:reflectSystemLoad	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   752: getstatic 31	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
+    //   755: astore_2
+    //   756: aload_2
+    //   757: monitorenter
+    //   758: getstatic 31	com/tencent/qqvideo/proxy/httpproxy/TVHttpProxyLoadLibrary:mLoadedLibs	Ljava/util/HashMap;
+    //   761: aload_0
+    //   762: new 283	java/lang/ref/WeakReference
+    //   765: dup
+    //   766: aload_1
+    //   767: invokespecial 297	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   770: invokevirtual 301	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   773: pop
+    //   774: aload_2
+    //   775: monitorexit
+    //   776: ldc_w 278
+    //   779: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   782: return
+    //   783: astore_1
+    //   784: aload_3
+    //   785: ifnonnull +81 -> 866
+    //   788: new 273	java/lang/UnsatisfiedLinkError
+    //   791: dup
+    //   792: ldc_w 334
+    //   795: aload_0
+    //   796: invokestatic 307	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   799: invokevirtual 311	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   802: invokespecial 290	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   805: aload_1
+    //   806: invokevirtual 315	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
+    //   809: invokevirtual 319	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   812: checkcast 273	java/lang/UnsatisfiedLinkError
+    //   815: astore_0
+    //   816: ldc_w 278
+    //   819: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   822: aload_0
+    //   823: athrow
+    //   824: astore_1
+    //   825: aload_2
+    //   826: monitorexit
+    //   827: ldc_w 278
+    //   830: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   833: aload_1
+    //   834: athrow
+    //   835: astore_0
+    //   836: aload_3
+    //   837: ifnonnull +37 -> 874
+    //   840: new 273	java/lang/UnsatisfiedLinkError
+    //   843: dup
+    //   844: ldc_w 332
+    //   847: invokespecial 290	java/lang/UnsatisfiedLinkError:<init>	(Ljava/lang/String;)V
+    //   850: aload_0
+    //   851: invokevirtual 319	java/lang/UnsatisfiedLinkError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   854: checkcast 273	java/lang/UnsatisfiedLinkError
+    //   857: astore_0
+    //   858: ldc_w 278
+    //   861: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   864: aload_0
+    //   865: athrow
+    //   866: ldc_w 278
+    //   869: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   872: aload_3
+    //   873: athrow
+    //   874: ldc_w 278
+    //   877: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   880: aload_3
+    //   881: athrow
+    //   882: astore_1
+    //   883: goto -372 -> 511
+    //   886: astore_2
+    //   887: goto -144 -> 743
+    //   890: astore_0
+    //   891: aconst_null
+    //   892: astore_2
+    //   893: goto -390 -> 503
+    //   896: astore_1
+    //   897: aconst_null
+    //   898: astore_0
+    //   899: goto -429 -> 470
+    //   902: goto -504 -> 398
+    //   905: aconst_null
+    //   906: astore_3
+    //   907: goto -557 -> 350
+    //   910: aconst_null
+    //   911: astore_3
+    //   912: goto -849 -> 63
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	781	0	paramString	String
-    //   0	781	1	paramClassLoader	ClassLoader
-    //   38	256	3	localObject1	Object
-    //   298	51	3	localUnsatisfiedLinkError1	java.lang.UnsatisfiedLinkError
-    //   354	1	3	localUnsatisfiedLinkError2	java.lang.UnsatisfiedLinkError
-    //   449	12	3	localInvocationTargetException1	java.lang.reflect.InvocationTargetException
-    //   467	311	3	localUnsatisfiedLinkError3	java.lang.UnsatisfiedLinkError
-    //   23	79	4	localHashMap1	HashMap
-    //   291	5	4	localObject2	Object
-    //   313	28	4	localHashMap2	HashMap
-    //   346	7	4	localUnsatisfiedLinkError4	java.lang.UnsatisfiedLinkError
-    //   369	49	4	localZipFile	java.util.zip.ZipFile
-    //   539	99	4	localInvocationTargetException2	java.lang.reflect.InvocationTargetException
-    //   247	396	5	localFile	File
-    //   338	6	6	localObject3	Object
+    //   0	915	0	paramString	String
+    //   0	915	1	paramClassLoader	ClassLoader
+    //   50	285	3	localObject1	Object
+    //   343	49	3	localUnsatisfiedLinkError1	java.lang.UnsatisfiedLinkError
+    //   397	125	3	localUnsatisfiedLinkError2	java.lang.UnsatisfiedLinkError
+    //   532	12	3	localInvocationTargetException1	java.lang.reflect.InvocationTargetException
+    //   550	362	3	localUnsatisfiedLinkError3	java.lang.UnsatisfiedLinkError
+    //   35	345	4	localHashMap	HashMap
+    //   389	7	4	localUnsatisfiedLinkError4	java.lang.UnsatisfiedLinkError
+    //   412	56	4	localZipFile	java.util.zip.ZipFile
+    //   519	108	4	localObject2	Object
+    //   638	101	4	localInvocationTargetException2	java.lang.reflect.InvocationTargetException
+    //   293	451	5	localFile	File
+    //   624	12	6	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   28	39	64	finally
-    //   43	51	64	finally
-    //   60	63	64	finally
-    //   65	68	64	finally
-    //   70	101	64	finally
-    //   101	104	64	finally
-    //   119	137	138	finally
-    //   139	141	138	finally
-    //   108	119	143	java/lang/reflect/InvocationTargetException
-    //   141	143	143	java/lang/reflect/InvocationTargetException
-    //   108	119	179	java/lang/Exception
-    //   141	143	179	java/lang/Exception
-    //   272	290	291	finally
-    //   293	295	291	finally
-    //   257	272	298	java/lang/UnsatisfiedLinkError
-    //   295	298	298	java/lang/UnsatisfiedLinkError
-    //   318	337	338	finally
-    //   340	343	338	finally
-    //   305	318	346	java/lang/UnsatisfiedLinkError
-    //   343	346	346	java/lang/UnsatisfiedLinkError
-    //   374	388	416	java/lang/Exception
-    //   391	416	416	java/lang/Exception
-    //   374	388	438	finally
-    //   391	416	438	finally
-    //   420	438	438	finally
-    //   257	272	449	java/lang/reflect/InvocationTargetException
-    //   295	298	449	java/lang/reflect/InvocationTargetException
-    //   257	272	506	java/lang/Throwable
-    //   295	298	506	java/lang/Throwable
-    //   305	318	539	java/lang/reflect/InvocationTargetException
-    //   343	346	539	java/lang/reflect/InvocationTargetException
-    //   305	318	604	java/lang/Throwable
-    //   343	346	604	java/lang/Throwable
-    //   657	675	676	finally
-    //   677	679	676	finally
-    //   642	657	681	java/lang/reflect/InvocationTargetException
-    //   679	681	681	java/lang/reflect/InvocationTargetException
-    //   642	657	723	java/lang/Exception
-    //   679	681	723	java/lang/Exception
-    //   443	447	748	java/io/IOException
-    //   637	642	752	java/io/IOException
-    //   355	371	756	finally
-    //   355	371	762	java/lang/Exception
+    //   40	51	121	finally
+    //   55	63	121	finally
+    //   72	75	121	finally
+    //   82	121	121	finally
+    //   122	125	121	finally
+    //   133	136	121	finally
+    //   140	151	176	java/lang/reflect/InvocationTargetException
+    //   169	175	176	java/lang/reflect/InvocationTargetException
+    //   216	224	176	java/lang/reflect/InvocationTargetException
+    //   151	169	213	finally
+    //   214	216	213	finally
+    //   140	151	224	java/lang/Exception
+    //   169	175	224	java/lang/Exception
+    //   216	224	224	java/lang/Exception
+    //   303	318	343	java/lang/UnsatisfiedLinkError
+    //   336	342	343	java/lang/UnsatisfiedLinkError
+    //   523	532	343	java/lang/UnsatisfiedLinkError
+    //   350	363	389	java/lang/UnsatisfiedLinkError
+    //   382	388	389	java/lang/UnsatisfiedLinkError
+    //   629	638	389	java/lang/UnsatisfiedLinkError
+    //   417	431	466	java/lang/Exception
+    //   434	452	466	java/lang/Exception
+    //   455	461	466	java/lang/Exception
+    //   464	466	466	java/lang/Exception
+    //   417	431	502	finally
+    //   434	452	502	finally
+    //   455	461	502	finally
+    //   464	466	502	finally
+    //   472	490	502	finally
+    //   492	498	502	finally
+    //   500	502	502	finally
+    //   318	336	519	finally
+    //   521	523	519	finally
+    //   303	318	532	java/lang/reflect/InvocationTargetException
+    //   336	342	532	java/lang/reflect/InvocationTargetException
+    //   523	532	532	java/lang/reflect/InvocationTargetException
+    //   303	318	590	java/lang/Throwable
+    //   336	342	590	java/lang/Throwable
+    //   523	532	590	java/lang/Throwable
+    //   363	382	624	finally
+    //   626	629	624	finally
+    //   350	363	638	java/lang/reflect/InvocationTargetException
+    //   382	388	638	java/lang/reflect/InvocationTargetException
+    //   629	638	638	java/lang/reflect/InvocationTargetException
+    //   350	363	704	java/lang/Throwable
+    //   382	388	704	java/lang/Throwable
+    //   629	638	704	java/lang/Throwable
+    //   743	758	783	java/lang/reflect/InvocationTargetException
+    //   776	782	783	java/lang/reflect/InvocationTargetException
+    //   827	835	783	java/lang/reflect/InvocationTargetException
+    //   758	776	824	finally
+    //   825	827	824	finally
+    //   743	758	835	java/lang/Exception
+    //   776	782	835	java/lang/Exception
+    //   827	835	835	java/lang/Exception
+    //   507	511	882	java/io/IOException
+    //   738	743	886	java/io/IOException
+    //   398	414	890	finally
+    //   398	414	896	java/lang/Exception
   }
   
   private static void reflectSystemLoad(String paramString, ClassLoader paramClassLoader)
   {
+    AppMethodBeat.i(124395);
     Runtime localRuntime = Runtime.getRuntime();
     Method localMethod = localRuntime.getClass().getDeclaredMethod("load", new Class[] { String.class, ClassLoader.class });
     localMethod.setAccessible(true);
     localMethod.invoke(localRuntime, new Object[] { paramString, paramClassLoader });
+    AppMethodBeat.o(124395);
   }
   
   private static void reflectSystemLoadlibrary(String paramString, ClassLoader paramClassLoader)
   {
+    AppMethodBeat.i(124396);
     Runtime localRuntime = Runtime.getRuntime();
     Method localMethod = localRuntime.getClass().getDeclaredMethod("loadLibrary", new Class[] { String.class, ClassLoader.class });
     localMethod.setAccessible(true);
     localMethod.invoke(localRuntime, new Object[] { paramString, paramClassLoader });
+    AppMethodBeat.o(124396);
   }
   
   public static void setupBrokenLibraryHandler()
   {
+    AppMethodBeat.i(124400);
     Thread.setDefaultUncaughtExceptionHandler(new TVHttpProxyLoadLibrary.LibraryBrokenHandler(Thread.getDefaultUncaughtExceptionHandler()));
+    AppMethodBeat.o(124400);
   }
 }
 

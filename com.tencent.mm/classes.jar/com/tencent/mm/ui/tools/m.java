@@ -1,117 +1,89 @@
 package com.tencent.mm.ui.tools;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewConfiguration;
-import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.y;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.a;
+import com.tencent.mm.ui.base.n.b;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.w;
 
 public final class m
-  implements Runnable
+  extends r
 {
-  public int mMode;
-  public ListView mQH;
-  public long wee = System.currentTimeMillis();
-  public int wef;
-  public int weg;
-  public int weh;
-  private final int wei;
-  public int wej;
+  private n.a AvY;
+  private n.b AvZ;
+  private m.a Awd;
+  private LayoutInflater mInflater;
+  private boolean rNQ;
+  public n.c sao;
+  public n.d sap;
+  private l saq;
   
-  public m(ListView paramListView)
+  public m(Context paramContext)
   {
-    this.mQH = paramListView;
-    this.wei = ViewConfiguration.get(this.mQH.getContext()).getScaledFadingEdgeLength();
-    y.d("ScrollerRunnable", "mExtraScroll: %d", new Object[] { Integer.valueOf(this.wei) });
+    super(paramContext);
+    AppMethodBeat.i(107719);
+    this.rNQ = true;
+    this.mInflater = w.hM(paramContext);
+    this.saq = new l(paramContext);
+    AppMethodBeat.o(107719);
   }
   
-  public final void run()
+  protected final BaseAdapter Kp()
   {
-    if (System.currentTimeMillis() - this.wee > 10000L) {}
-    int k;
-    View localView;
-    label242:
-    do
+    AppMethodBeat.i(107722);
+    if (this.Awd == null) {
+      this.Awd = new m.a(this, (byte)0);
+    }
+    m.a locala = this.Awd;
+    AppMethodBeat.o(107722);
+    return locala;
+  }
+  
+  public final boolean gr()
+  {
+    AppMethodBeat.i(107720);
+    if (this.sao != null) {
+      this.sao.onCreateMMMenu(this.saq);
+    }
+    if ((this.saq.Wu != null) && (this.saq.Wu.length() > 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      do
-      {
-        return;
-        j = this.mQH.getHeight();
-        k = this.mQH.getFirstVisiblePosition();
-        switch (this.mMode)
-        {
-        default: 
-          return;
-        case 1: 
-          i = this.mQH.getChildCount() - 1;
-          k += i;
-        }
-      } while (i < 0);
-      int m;
-      int n;
-      if (k == this.weg)
-      {
-        if (this.wej > 20)
-        {
-          this.mQH.setSelection(this.wef);
-          y.d("ScrollerRunnable", "dz:try scroll at same item more than 10, direct seletion");
-        }
-      }
-      else
-      {
-        this.wej = 0;
-        localView = this.mQH.getChildAt(i);
-        m = localView.getHeight();
-        n = localView.getTop();
-        if (k >= this.mQH.getCount() - 1) {
-          break label242;
-        }
-      }
-      for (i = this.wei;; i = this.mQH.getPaddingBottom())
-      {
-        this.mQH.smoothScrollBy(i + (m - (j - n)), this.weh);
-        this.weg = k;
-        if (k >= this.wef) {
-          break;
-        }
-        this.mQH.post(this);
-        return;
-        this.mQH.post(this);
-        this.wej += 1;
-        y.d("ScrollerRunnable", "dz:try scroll lastpos = %d", new Object[] { Integer.valueOf(k) });
-        return;
-      }
-      if (k == this.weg)
-      {
-        if (this.wej <= 20) {
-          break;
-        }
-        this.mQH.setSelection(this.wef);
-        y.d("ScrollerRunnable", "dz:try scroll at same item more than 10, direct seletion");
-      }
-      this.wej = 0;
-      localView = this.mQH.getChildAt(0);
-    } while (localView == null);
-    int j = localView.getTop();
-    if (k > 0) {}
-    for (int i = this.wei;; i = this.mQH.getPaddingTop())
+      this.rNQ = bool;
+      bool = super.gr();
+      AppMethodBeat.o(107720);
+      return bool;
+    }
+  }
+  
+  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(107721);
+    if ((this.rNQ) && (paramInt == 0))
     {
-      this.mQH.smoothScrollBy(j - i, this.weh);
-      this.weg = k;
-      if (k <= this.wef) {
-        break;
-      }
-      this.mQH.post(this);
-      return;
-      this.mQH.post(this);
-      this.wej += 1;
-      y.d("ScrollerRunnable", "dz:try scroll firstPos = %d", new Object[] { Integer.valueOf(k) });
+      AppMethodBeat.o(107721);
       return;
     }
+    int i = paramInt;
+    if (this.rNQ) {
+      i = paramInt - 1;
+    }
+    if (this.sap != null) {
+      this.sap.onMMMenuItemSelected(this.saq.getItem(i), i);
+    }
+    dismiss();
+    AppMethodBeat.o(107721);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.tools.m
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.openSDK.param.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class QueryDownloadTaskRequest
   extends JceStruct
@@ -19,15 +20,19 @@ public final class QueryDownloadTaskRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(76005);
     if (cache_baseParam == null) {
       cache_baseParam = new IPCBaseParam();
     }
     this.baseParam = ((IPCBaseParam)paramJceInputStream.read(cache_baseParam, 0, true));
+    AppMethodBeat.o(76005);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(76004);
     paramJceOutputStream.write(this.baseParam, 0);
+    AppMethodBeat.o(76004);
   }
 }
 

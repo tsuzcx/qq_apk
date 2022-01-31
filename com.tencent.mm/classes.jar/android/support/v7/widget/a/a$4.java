@@ -12,36 +12,33 @@ final class a$4
   
   public final void run()
   {
-    if ((this.aoa.acI != null) && (this.aoa.acI.isAttachedToWindow()) && (!this.aod.aos) && (this.aod.ahi.id() != -1))
+    if ((this.aqr.adt != null) && (this.aqr.adt.isAttachedToWindow()) && (!this.aqu.aqH) && (this.aqu.ajy.jN() != -1))
     {
-      Object localObject = this.aoa.acI.getItemAnimator();
-      if ((localObject != null) && (((RecyclerView.f)localObject).a(null))) {
-        break label140;
-      }
-      localObject = this.aoa;
-      int j = ((a)localObject).anQ.size();
-      i = 0;
-      if (i >= j) {
-        break label135;
-      }
-      if (((a.c)((a)localObject).anQ.get(i)).so) {
-        break label128;
+      Object localObject = this.aqr.adt.getItemAnimator();
+      if ((localObject == null) || (!((RecyclerView.f)localObject).a(null)))
+      {
+        localObject = this.aqr;
+        int j = ((a)localObject).aqh.size();
+        i = 0;
+        if (i >= j) {
+          break label137;
+        }
+        if (((a.c)((a)localObject).aqh.get(i)).tn) {
+          break label130;
+        }
       }
     }
-    label128:
-    label135:
+    label130:
+    label137:
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        break label140;
+        this.aqr.adt.post(this);
       }
-      this.aoa.anN.jq();
       return;
       i += 1;
       break;
     }
-    label140:
-    this.aoa.acI.post(this);
   }
 }
 

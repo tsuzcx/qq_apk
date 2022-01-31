@@ -1,94 +1,121 @@
 package com.tencent.mm.plugin.location.a;
 
-import d.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
 import java.util.LinkedList;
 
 public final class a
   extends com.tencent.mm.bv.a
 {
-  public LinkedList<String> bSX = new LinkedList();
-  public String lCF;
+  public LinkedList<String> cAC;
   public double latitude;
   public double longitude;
+  public String nZR;
   public long timestamp;
   public String username;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public a()
   {
+    AppMethodBeat.i(113289);
+    this.cAC = new LinkedList();
+    AppMethodBeat.o(113289);
+  }
+  
+  public final int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(113290);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.username == null) {
-        throw new b("Not all required fields were included: username");
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.username == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: username");
+        AppMethodBeat.o(113290);
+        throw paramVarArgs;
       }
       if (this.username != null) {
-        paramVarArgs.d(1, this.username);
+        paramVarArgs.e(1, this.username);
       }
-      paramVarArgs.d(2, 1, this.bSX);
-      paramVarArgs.b(3, this.longitude);
-      paramVarArgs.b(4, this.latitude);
-      if (this.lCF != null) {
-        paramVarArgs.d(5, this.lCF);
+      paramVarArgs.e(2, 1, this.cAC);
+      paramVarArgs.f(3, this.longitude);
+      paramVarArgs.f(4, this.latitude);
+      if (this.nZR != null) {
+        paramVarArgs.e(5, this.nZR);
       }
-      paramVarArgs.Y(6, this.timestamp);
+      paramVarArgs.am(6, this.timestamp);
+      AppMethodBeat.o(113290);
       return 0;
     }
     if (paramInt == 1) {
       if (this.username == null) {
-        break label430;
+        break label516;
       }
     }
-    label430:
-    for (paramInt = d.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
+    label516:
+    for (paramInt = e.a.a.b.b.a.f(1, this.username) + 0;; paramInt = 0)
     {
-      int i = paramInt + d.a.a.a.c(2, 1, this.bSX) + (d.a.a.b.b.a.dQ(3) + 8) + (d.a.a.b.b.a.dQ(4) + 8);
+      int i = paramInt + e.a.a.a.c(2, 1, this.cAC) + (e.a.a.b.b.a.eW(3) + 8) + (e.a.a.b.b.a.eW(4) + 8);
       paramInt = i;
-      if (this.lCF != null) {
-        paramInt = i + d.a.a.b.b.a.e(5, this.lCF);
+      if (this.nZR != null) {
+        paramInt = i + e.a.a.b.b.a.f(5, this.nZR);
       }
-      return paramInt + d.a.a.a.X(6, this.timestamp);
+      i = e.a.a.b.b.a.p(6, this.timestamp);
+      AppMethodBeat.o(113290);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.bSX.clear();
-        paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        this.cAC.clear();
+        paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        if (this.username != null) {
-          break;
+        if (this.username == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: username");
+          AppMethodBeat.o(113290);
+          throw paramVarArgs;
         }
-        throw new b("Not all required fields were included: username");
+        AppMethodBeat.o(113290);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         a locala1 = (a)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(113290);
           return -1;
         case 1: 
-          locala1.username = locala.xpH.readString();
+          locala1.username = locala.CLY.readString();
+          AppMethodBeat.o(113290);
           return 0;
         case 2: 
-          locala1.bSX.add(locala.xpH.readString());
+          locala1.cAC.add(locala.CLY.readString());
+          AppMethodBeat.o(113290);
           return 0;
         case 3: 
-          locala1.longitude = locala.xpH.readDouble();
+          locala1.longitude = Double.longBitsToDouble(locala.CLY.emy());
+          AppMethodBeat.o(113290);
           return 0;
         case 4: 
-          locala1.latitude = locala.xpH.readDouble();
+          locala1.latitude = Double.longBitsToDouble(locala.CLY.emy());
+          AppMethodBeat.o(113290);
           return 0;
         case 5: 
-          locala1.lCF = locala.xpH.readString();
+          locala1.nZR = locala.CLY.readString();
+          AppMethodBeat.o(113290);
           return 0;
         }
-        locala1.timestamp = locala.xpH.oE();
+        locala1.timestamp = locala.CLY.sm();
+        AppMethodBeat.o(113290);
         return 0;
       }
+      AppMethodBeat.o(113290);
       return -1;
     }
   }

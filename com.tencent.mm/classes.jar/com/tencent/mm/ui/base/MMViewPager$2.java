@@ -4,7 +4,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMViewPager$2
   implements View.OnTouchListener
@@ -13,44 +14,39 @@ final class MMViewPager$2
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    y.d("MicroMsg.MMViewPager", "alvinluo onTouch getCurrentItem: %d", new Object[] { Integer.valueOf(this.uZn.getCurrentItem()) });
-    if (MMViewPager.k(this.uZn) != null) {}
-    for (boolean bool1 = MMViewPager.k(this.uZn).onTouch(paramView, paramMotionEvent);; bool1 = false)
+    AppMethodBeat.i(106898);
+    ab.d("MicroMsg.MMViewPager", "alvinluo onTouch getCurrentItem: %d", new Object[] { Integer.valueOf(this.znE.getCurrentItem()) });
+    if (MMViewPager.k(this.znE) != null) {}
+    for (boolean bool1 = MMViewPager.k(this.znE).onTouch(paramView, paramMotionEvent);; bool1 = false)
     {
-      MMViewPager.a(this.uZn, false);
-      paramView = MMViewPager.g(this.uZn);
+      paramView = this.znE.getSelectedImageView();
       if (paramView == null)
       {
-        MMViewPager.a(this.uZn, false);
-        MMViewPager.a(this.uZn, paramMotionEvent);
-        MMViewPager.b(this.uZn, null);
-        MMViewPager.l(this.uZn).onTouchEvent(paramMotionEvent);
-        if ((MMViewPager.m(this.uZn)) || (MMViewPager.n(this.uZn))) {
-          bool1 = true;
+        MMViewPager.a(this.znE, paramMotionEvent);
+        MMViewPager.b(this.znE, null);
+        MMViewPager.l(this.znE).onTouchEvent(paramMotionEvent);
+        if ((MMViewPager.m(this.znE)) || (MMViewPager.n(this.znE)))
+        {
+          AppMethodBeat.o(106898);
+          return true;
         }
+        AppMethodBeat.o(106898);
         return bool1;
       }
-      MMViewPager.a(this.uZn, paramView);
-      if ((MMViewPager.a(this.uZn) != null) && ((MMViewPager.a(this.uZn) instanceof MultiTouchImageView))) {
-        MMViewPager.a(this.uZn, false);
+      MMViewPager.a(this.znE, paramView);
+      boolean bool2 = MMViewPager.c(this.znE, paramMotionEvent);
+      if (MMViewPager.o(this.znE) != null) {
+        MMViewPager.o(this.znE).recycle();
       }
-      for (;;)
+      MMViewPager.b(this.znE, MotionEvent.obtainNoHistory(paramMotionEvent));
+      MMViewPager.l(this.znE).onTouchEvent(paramMotionEvent);
+      this.znE.computeScroll();
+      if ((bool2) || (bool1))
       {
-        boolean bool2 = MMViewPager.a(this.uZn, MMViewPager.a(this.uZn), paramMotionEvent);
-        if (MMViewPager.o(this.uZn) != null) {
-          MMViewPager.o(this.uZn).recycle();
-        }
-        MMViewPager.b(this.uZn, MotionEvent.obtainNoHistory(paramMotionEvent));
-        MMViewPager.l(this.uZn).onTouchEvent(paramMotionEvent);
-        this.uZn.computeScroll();
-        if ((!bool2) && (!bool1)) {
-          break;
-        }
+        AppMethodBeat.o(106898);
         return true;
-        if ((MMViewPager.a(this.uZn) != null) && ((MMViewPager.a(this.uZn) instanceof WxImageView))) {
-          MMViewPager.a(this.uZn, true);
-        }
       }
+      AppMethodBeat.o(106898);
       return false;
     }
   }

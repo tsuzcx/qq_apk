@@ -12,16 +12,16 @@ public class SelectMemberScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  protected final void xZ()
+  public final void Kr()
   {
-    this.lvg = new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-    this.lve = 1.45F;
-    this.lvf = 79;
+    this.nSx = new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
+    this.nSv = 1.45F;
+    this.nSw = 79;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SelectMemberScrollBar
  * JD-Core Version:    0.7.0.1
  */

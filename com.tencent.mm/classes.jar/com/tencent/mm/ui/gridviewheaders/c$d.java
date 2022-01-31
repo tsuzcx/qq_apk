@@ -6,14 +6,15 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c$d
   extends FrameLayout
 {
+  private View[] AoF;
+  private boolean AoK;
   private int mNumColumns;
   private int mPosition;
-  private boolean vWC;
-  private View[] vWx;
   
   public c$d(c paramc, Context paramContext)
   {
@@ -22,64 +23,81 @@ public final class c$d
   
   protected final FrameLayout.LayoutParams generateDefaultLayoutParams()
   {
-    return new FrameLayout.LayoutParams(-1, -1);
+    AppMethodBeat.i(107339);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+    AppMethodBeat.o(107339);
+    return localLayoutParams;
   }
   
   public final Object getTag()
   {
-    return getChildAt(0).getTag();
+    AppMethodBeat.i(107334);
+    Object localObject = getChildAt(0).getTag();
+    AppMethodBeat.o(107334);
+    return localObject;
   }
   
   public final Object getTag(int paramInt)
   {
-    return getChildAt(0).getTag(paramInt);
+    AppMethodBeat.i(107335);
+    Object localObject = getChildAt(0).getTag(paramInt);
+    AppMethodBeat.o(107335);
+    return localObject;
   }
   
   public final View getView()
   {
-    return getChildAt(0);
+    AppMethodBeat.i(107336);
+    View localView = getChildAt(0);
+    AppMethodBeat.o(107336);
+    return localView;
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     int j = 0;
+    AppMethodBeat.i(107340);
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.mNumColumns == 1) || (c.b(this.vWy) == null)) {}
-    int k;
-    int i;
-    do
+    if ((this.mNumColumns == 1) || (c.b(this.AoG) == null))
     {
+      AppMethodBeat.o(107340);
       return;
-      if ((this.mPosition % this.mNumColumns == 0) && (!this.vWC))
+    }
+    if ((this.mPosition % this.mNumColumns == 0) && (!this.AoK))
+    {
+      this.AoK = true;
+      arrayOfView = this.AoF;
+      k = arrayOfView.length;
+      i = 0;
+      while (i < k)
       {
-        this.vWC = true;
-        arrayOfView = this.vWx;
-        k = arrayOfView.length;
-        i = 0;
-        while (i < k)
-        {
-          arrayOfView[i].measure(paramInt1, paramInt2);
-          i += 1;
-        }
-        this.vWC = false;
+        arrayOfView[i].measure(paramInt1, paramInt2);
+        i += 1;
       }
-      k = getMeasuredHeight();
-      View[] arrayOfView = this.vWx;
-      int m = arrayOfView.length;
-      i = k;
-      paramInt2 = j;
-      while (paramInt2 < m)
-      {
-        View localView = arrayOfView[paramInt2];
-        j = i;
-        if (localView != null) {
-          j = Math.max(i, localView.getMeasuredHeight());
-        }
-        paramInt2 += 1;
-        i = j;
+      this.AoK = false;
+    }
+    int k = getMeasuredHeight();
+    View[] arrayOfView = this.AoF;
+    int m = arrayOfView.length;
+    int i = k;
+    paramInt2 = j;
+    while (paramInt2 < m)
+    {
+      View localView = arrayOfView[paramInt2];
+      j = i;
+      if (localView != null) {
+        j = Math.max(i, localView.getMeasuredHeight());
       }
-    } while (i == k);
+      paramInt2 += 1;
+      i = j;
+    }
+    if (i == k)
+    {
+      AppMethodBeat.o(107340);
+      return;
+    }
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(i, 1073741824));
+    AppMethodBeat.o(107340);
   }
   
   public final void setNumColumns(int paramInt)
@@ -95,17 +113,21 @@ public final class c$d
   @SuppressLint({"NewApi"})
   public final void setRowSiblings(View[] paramArrayOfView)
   {
-    this.vWx = paramArrayOfView;
+    this.AoF = paramArrayOfView;
   }
   
   public final void setTag(int paramInt, Object paramObject)
   {
+    AppMethodBeat.i(107337);
     getChildAt(0).setTag(paramInt, paramObject);
+    AppMethodBeat.o(107337);
   }
   
   public final void setTag(Object paramObject)
   {
+    AppMethodBeat.i(107338);
     getChildAt(0).setTag(paramObject);
+    AppMethodBeat.o(107338);
   }
 }
 

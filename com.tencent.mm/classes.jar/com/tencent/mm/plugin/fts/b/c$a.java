@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.fts.b;
 
 import android.database.Cursor;
 import android.util.Pair;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.h;
 import com.tencent.mm.plugin.fts.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,189 +15,214 @@ import java.util.ListIterator;
 final class c$a
   extends com.tencent.mm.plugin.fts.a.a.a
 {
-  private long fRR = 9223372036854775807L;
-  private int kas = 0;
-  private int kat = 0;
-  private HashSet<Pair<Long, Long>> kzg = null;
-  private ArrayList<Long> kzh = null;
-  private int kzi = 0;
+  private long hls = 9223372036854775807L;
   private int mFailedCount = 0;
+  private HashSet<Pair<Long, Long>> mUW = null;
+  private ArrayList<Long> mUX = null;
+  private int mUY = 0;
+  private int muO = 0;
+  private int muP = 0;
   
   private c$a(c paramc) {}
   
-  public final String afJ()
+  public final String aAn()
   {
-    return String.format("{new: %d removed: %d failed: %d}", new Object[] { Integer.valueOf(this.kas), Integer.valueOf(this.kat), Integer.valueOf(this.mFailedCount) });
+    AppMethodBeat.i(136747);
+    String str = String.format("{new: %d removed: %d failed: %d}", new Object[] { Integer.valueOf(this.muO), Integer.valueOf(this.muP), Integer.valueOf(this.mFailedCount) });
+    AppMethodBeat.o(136747);
+    return str;
   }
   
   public final boolean execute()
   {
-    this.fRR = this.kze.kyW.kuE.z(-200L, 9223372036854775807L);
-    y.i("MicroMsg.FTS.FTS5SearchMessageLogic", "Start building message index, last createTime: " + this.fRR);
+    AppMethodBeat.i(136746);
+    this.hls = this.mUU.mUM.mQr.L(-200L, 9223372036854775807L);
+    ab.i("MicroMsg.FTS.FTS5SearchMessageLogic", "Start building message index, last createTime: " + this.hls);
     long l1;
     long l2;
-    if (this.kzg == null)
+    if (this.mUW == null)
     {
-      this.kzg = new HashSet();
-      this.kzh = new ArrayList();
-      localObject1 = this.kze.kyW.a(com.tencent.mm.plugin.fts.a.c.kuN, true, true, false, true, true);
+      this.mUW = new HashSet();
+      this.mUX = new ArrayList();
+      localObject1 = this.mUU.mUM.a(com.tencent.mm.plugin.fts.a.c.mQA, true, true, false, true, true);
       while (((Cursor)localObject1).moveToNext())
       {
         l1 = ((Cursor)localObject1).getLong(0);
         l2 = ((Cursor)localObject1).getLong(1);
         long l3 = ((Cursor)localObject1).getLong(2);
         if (((Cursor)localObject1).getInt(3) == -1) {
-          this.kzh.add(Long.valueOf(l1));
-        } else if (l3 <= this.fRR) {
-          this.kzg.add(new Pair(Long.valueOf(l2), Long.valueOf(l3)));
+          this.mUX.add(Long.valueOf(l1));
+        } else if (l3 <= this.hls) {
+          this.mUW.add(new Pair(Long.valueOf(l2), Long.valueOf(l3)));
         }
       }
       ((Cursor)localObject1).close();
     }
-    if (Thread.interrupted()) {
-      throw new InterruptedException();
+    if (Thread.interrupted())
+    {
+      localObject1 = new InterruptedException();
+      AppMethodBeat.o(136746);
+      throw ((Throwable)localObject1);
     }
     int i = 2147483647;
     Object localObject1 = new String[2];
     Object localObject2 = new ArrayList();
-    while (i >= 50)
+    if (i >= 50)
     {
-      localObject1[0] = Long.toString(this.fRR);
-      localObject1[1] = Integer.toString(this.kzi);
-      Object localObject3 = this.kze.kal.rawQuery("SELECT msgId, talker, createTime, content, type, isSend FROM message WHERE createTime<=? AND createTime!=0 AND type in (1, 49) ORDER BY createTime DESC, msgId DESC LIMIT 50 OFFSET ?;", (String[])localObject1);
+      localObject1[0] = Long.toString(this.hls);
+      localObject1[1] = Integer.toString(this.mUY);
+      Object localObject3 = this.mUU.muH.rawQuery("SELECT msgId, talker, createTime, content, type, isSend FROM message WHERE createTime<=? AND createTime!=0 AND type in (1, 49) ORDER BY createTime DESC, msgId DESC LIMIT 50 OFFSET ?;", (String[])localObject1);
+      l1 = 0L;
       i = 0;
-      c.f localf;
+      c.d locald;
       while (((Cursor)localObject3).moveToNext())
       {
-        localf = new c.f(this.kze, (byte)0);
-        localf.bIt = ((Cursor)localObject3).getLong(0);
-        localf.talker = ((Cursor)localObject3).getString(1);
-        localf.createTime = ((Cursor)localObject3).getLong(2);
-        localf.content = ((Cursor)localObject3).getString(3);
-        localf.msgType = ((Cursor)localObject3).getInt(4);
-        localf.kzm = ((Cursor)localObject3).getInt(5);
-        localf.kzl = 41;
-        if (c.a(localf))
+        locald = new c.d(this.mUU, (byte)0);
+        locald.cpO = ((Cursor)localObject3).getLong(0);
+        locald.talker = ((Cursor)localObject3).getString(1);
+        locald.createTime = ((Cursor)localObject3).getLong(2);
+        locald.content = ((Cursor)localObject3).getString(3);
+        locald.msgType = ((Cursor)localObject3).getInt(4);
+        locald.mVc = ((Cursor)localObject3).getInt(5);
+        locald.mVb = 41;
+        if (c.a(locald))
         {
-          localf.aVN();
-          if (localf.isAvailable()) {
-            ((List)localObject2).add(localf);
+          locald.bCq();
+          if (locald.isAvailable()) {
+            ((List)localObject2).add(locald);
           }
         }
+        l1 = locald.createTime;
         i += 1;
       }
       ((Cursor)localObject3).close();
-      if (Thread.interrupted()) {
-        throw new InterruptedException();
+      if (Thread.interrupted())
+      {
+        localObject1 = new InterruptedException();
+        AppMethodBeat.o(136746);
+        throw ((Throwable)localObject1);
       }
       int j = ((List)localObject2).size();
       if (j == 0)
       {
-        y.i("MicroMsg.FTS.FTS5SearchMessageLogic", "build msgRecList size %d", new Object[] { Integer.valueOf(j) });
+        ab.i("MicroMsg.FTS.FTS5SearchMessageLogic", "build msgRecList size %d", new Object[] { Integer.valueOf(j) });
         if (j <= 0) {
-          break label783;
+          break label844;
         }
-        this.kze.kyW.beginTransaction();
+        this.mUU.mUM.beginTransaction();
         localObject3 = ((List)localObject2).iterator();
-        label510:
+        label541:
         if (!((Iterator)localObject3).hasNext()) {
-          break label756;
+          break label787;
         }
-        localf = (c.f)((Iterator)localObject3).next();
-        l1 = localf.bIt;
-        l2 = localf.createTime;
-        if (l2 != this.fRR) {
-          break label742;
+        locald = (c.d)((Iterator)localObject3).next();
+        l1 = locald.cpO;
+        l2 = locald.createTime;
+        if (l2 != this.hls) {
+          break label773;
         }
       }
-      for (this.kzi += 1;; this.kzi = 0)
+      for (this.mUY += 1;; this.mUY = 0)
       {
         for (;;)
         {
           Pair localPair = new Pair(Long.valueOf(l1), Long.valueOf(l2));
-          if (this.kzg.remove(localPair)) {
+          if (this.mUW.remove(localPair)) {
             break;
           }
           try
           {
-            this.kze.kyW.a(localf.kzl, l1, localf.talker, l2, localf.kzn, localf.kzo);
-            this.kas += 1;
+            this.mUU.mUM.a(locald.mVb, l1, locald.talker, l2, locald.mVd, locald.mVe);
+            this.muO += 1;
           }
           catch (Exception localException)
           {
-            y.printErrStackTrace("MicroMsg.FTS.FTS5SearchMessageLogic", localException, "Build message index failed with exception. \n%s", new Object[] { localf.kzn });
+            ab.printErrStackTrace("MicroMsg.FTS.FTS5SearchMessageLogic", localException, "Build message index failed with exception. \n%s", new Object[] { locald.mVd });
             this.mFailedCount += 1;
           }
         }
-        break label510;
-        y.i("MicroMsg.FTS.FTS5SearchMessageLogic", "build msgRecList size %d FROM %d to %d", new Object[] { Integer.valueOf(j), Long.valueOf(((c.f)((List)localObject2).get(0)).bIt), Long.valueOf(((c.f)((List)localObject2).get(j - 1)).bIt) });
+        break label541;
+        ab.i("MicroMsg.FTS.FTS5SearchMessageLogic", "build msgRecList size %d FROM %d to %d", new Object[] { Integer.valueOf(j), Long.valueOf(((c.d)((List)localObject2).get(0)).cpO), Long.valueOf(((c.d)((List)localObject2).get(j - 1)).cpO) });
         break;
-        label742:
-        this.fRR = l2;
+        label773:
+        this.hls = l2;
       }
-      label756:
-      this.kze.kyW.commit();
-      this.kze.kyW.A(-200L, this.fRR);
-      label783:
-      ((List)localObject2).clear();
-      if (Thread.interrupted()) {
-        throw new InterruptedException();
+      label787:
+      this.mUU.mUM.commit();
+      this.mUU.mUM.M(-200L, this.hls);
+      for (;;)
+      {
+        ((List)localObject2).clear();
+        if (!Thread.interrupted()) {
+          break;
+        }
+        localObject1 = new InterruptedException();
+        AppMethodBeat.o(136746);
+        throw ((Throwable)localObject1);
+        label844:
+        this.hls = l1;
+        this.mUY = 0;
       }
     }
     i = 50;
-    localObject1 = this.kzg.iterator();
+    localObject1 = this.mUW.iterator();
     if (((Iterator)localObject1).hasNext())
     {
       if (Thread.interrupted())
       {
-        this.kze.kyW.commit();
-        throw new InterruptedException();
+        this.mUU.mUM.commit();
+        localObject1 = new InterruptedException();
+        AppMethodBeat.o(136746);
+        throw ((Throwable)localObject1);
       }
       if (i < 50) {
-        break label1134;
+        break label1210;
       }
-      this.kze.kyW.commit();
-      this.kze.kyW.beginTransaction();
+      this.mUU.mUM.commit();
+      this.mUU.mUM.beginTransaction();
       i = 0;
     }
-    label1131:
-    label1134:
+    label1207:
+    label1210:
     for (;;)
     {
       localObject2 = (Pair)((Iterator)localObject1).next();
-      this.kze.kyW.a(com.tencent.mm.plugin.fts.a.c.kuN, ((Long)((Pair)localObject2).first).longValue(), ((Long)((Pair)localObject2).second).longValue());
+      this.mUU.mUM.a(com.tencent.mm.plugin.fts.a.c.mQA, ((Long)((Pair)localObject2).first).longValue(), ((Long)((Pair)localObject2).second).longValue());
       i += 1;
-      this.kat += 1;
+      this.muP += 1;
       ((Iterator)localObject1).remove();
       break;
-      this.kze.kyW.commit();
+      this.mUU.mUM.commit();
       i = 50;
-      localObject1 = this.kzh.listIterator(this.kzh.size());
+      localObject1 = this.mUX.listIterator(this.mUX.size());
       if (((ListIterator)localObject1).hasPrevious())
       {
         if (Thread.interrupted())
         {
-          this.kze.kyW.commit();
-          throw new InterruptedException();
+          this.mUU.mUM.commit();
+          localObject1 = new InterruptedException();
+          AppMethodBeat.o(136746);
+          throw ((Throwable)localObject1);
         }
         if (i < 50) {
-          break label1131;
+          break label1207;
         }
-        this.kze.kyW.commit();
-        this.kze.kyW.beginTransaction();
+        this.mUU.mUM.commit();
+        this.mUU.mUM.beginTransaction();
         i = 0;
       }
       for (;;)
       {
         l1 = ((Long)((ListIterator)localObject1).previous()).longValue();
-        this.kze.kyW.h(Long.valueOf(l1));
+        this.mUU.mUM.g(Long.valueOf(l1));
         i += 1;
-        this.kat += 1;
+        this.muP += 1;
         ((ListIterator)localObject1).remove();
         break;
-        this.kze.kyW.A(-200L, this.fRR - 1L);
-        this.kze.kyW.commit();
-        this.kze.kyX = false;
+        this.mUU.mUM.M(-200L, this.hls - 1L);
+        this.mUU.mUM.commit();
+        this.mUU.mUN = false;
+        AppMethodBeat.o(136746);
         return true;
       }
     }
@@ -214,7 +240,7 @@ final class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.c.a
  * JD-Core Version:    0.7.0.1
  */

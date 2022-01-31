@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.game.ui;
 
 public final class GameRegionPreference$a
 {
-  public String cCG;
-  public boolean fmm;
+  public String dqQ;
+  public boolean gDG;
   public boolean isDefault;
-  public String leA;
-  public String leB;
-  public String leC;
+  public String nCv;
+  public String nCw;
+  public String nCx;
 }
 
 

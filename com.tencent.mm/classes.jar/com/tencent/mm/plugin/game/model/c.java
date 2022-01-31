@@ -1,116 +1,98 @@
 package com.tencent.mm.plugin.game.model;
 
-import android.content.Context;
-import android.database.Cursor;
-import com.tencent.mm.plugin.downloader.f.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.d.bx;
 import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.vfs.e;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class c
+  extends f
 {
-  LinkedList<String> kNU = new LinkedList();
-  LinkedList<f> kNV = new LinkedList();
+  public int cFj;
+  public String cnG;
+  public int cvQ;
+  public int edl;
+  public String hcN;
+  public String name;
+  public String nlT;
+  public String nlU;
+  public String nlV;
+  public String nlW;
+  public String nlX;
+  public boolean nlY;
+  public String nlZ;
+  public String nma;
+  public String nmb;
+  public LinkedList<String> nmc;
+  public String nmd;
+  public LinkedList<String> nme;
+  public boolean nmf;
+  public boolean nmg;
+  public String nmh;
+  public String nmi;
+  public String nmj;
+  public String nmk;
+  public String nml;
+  public boolean nmm;
+  public String nmn;
+  public long nmo;
+  public bx nmp;
+  public int position;
+  public int scene;
+  public int status;
+  public int type;
+  public int versionCode;
   
-  private void aYQ()
+  public c()
   {
-    Object localObject1 = new ArrayList();
-    Object localObject2 = ((com.tencent.mm.plugin.downloader.a.c)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.downloader.a.c.class)).FC().rawQuery("select * from FileDownloadInfo where status=3", new String[0]);
-    if (localObject2 == null) {}
-    while (!((List)localObject1).isEmpty())
-    {
-      localObject1 = ((List)localObject1).iterator();
-      Object localObject3;
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        if ((!bk.bl((String)localObject2)) && (!this.kNU.contains(localObject2)))
-        {
-          localObject3 = com.tencent.mm.pluginsdk.model.app.g.by((String)localObject2, false);
-          if ((localObject3 != null) && (!this.kNV.contains(localObject3)))
-          {
-            this.kNV.add(localObject3);
-            this.kNU.add(localObject2);
-          }
-        }
-      }
-      while (((Cursor)localObject2).moveToNext())
-      {
-        localObject3 = new com.tencent.mm.plugin.downloader.f.a();
-        ((com.tencent.mm.plugin.downloader.f.a)localObject3).d((Cursor)localObject2);
-        if ((!bk.bl(((com.tencent.mm.plugin.downloader.f.a)localObject3).field_appId)) && (((com.tencent.mm.plugin.downloader.f.a)localObject3).field_appId.startsWith("wx")) && (((com.tencent.mm.plugin.downloader.f.a)localObject3).field_status == 3) && (e.bK(((com.tencent.mm.plugin.downloader.f.a)localObject3).field_filePath)) && (!((List)localObject1).contains(((com.tencent.mm.plugin.downloader.f.a)localObject3).field_appId))) {
-          ((List)localObject1).add(((com.tencent.mm.plugin.downloader.f.a)localObject3).field_appId);
-        }
-      }
-      ((Cursor)localObject2).close();
-    }
+    AppMethodBeat.i(111194);
+    this.status = 0;
+    this.type = 0;
+    this.nlT = "";
+    this.nlU = "";
+    this.nlV = "#929292";
+    this.nlW = "";
+    this.nlX = "";
+    this.cnG = "";
+    this.nlY = false;
+    this.scene = 0;
+    this.cFj = 0;
+    this.position = 1;
+    this.versionCode = 0;
+    this.nlZ = "";
+    this.nma = "";
+    this.nmb = "";
+    this.nmc = new LinkedList();
+    this.nmd = "";
+    this.nme = new LinkedList();
+    this.nmf = false;
+    this.nmg = false;
+    this.nmh = "";
+    this.nmi = "#fca28a";
+    this.nmj = "";
+    this.hcN = "";
+    this.name = "";
+    this.nmk = "#222222";
+    this.nml = "";
+    this.nmm = false;
+    this.nmn = "";
+    this.nmo = 0L;
+    this.cvQ = 0;
+    this.edl = 0;
+    AppMethodBeat.o(111194);
   }
   
-  private void dn(Context paramContext)
+  public final boolean bFQ()
   {
-    Cursor localCursor = com.tencent.mm.plugin.z.a.brn().ckT();
-    if (localCursor == null)
+    AppMethodBeat.i(111195);
+    if (((this.edl == 1) || (this.edl == 2)) && (this.nmp != null) && (!bo.isNullOrNil(this.nmp.nto)))
     {
-      y.e("MicroMsg.GameAppCacheService", "getInstalledGame faild: curosr is null");
-      return;
+      AppMethodBeat.o(111195);
+      return true;
     }
-    if (localCursor.moveToFirst()) {
-      do
-      {
-        f localf = new f();
-        localf.d(localCursor);
-        if ((com.tencent.mm.pluginsdk.model.app.g.a(paramContext, localf)) && (!this.kNU.contains(localf.field_appId)))
-        {
-          y.i("MicroMsg.GameAppCacheService", "installed game:[%s][%s]", new Object[] { localf.field_appName, localf.field_appId });
-          this.kNV.add(localf);
-          this.kNU.add(localf.field_appId);
-        }
-      } while (localCursor.moveToNext());
-    }
-    localCursor.close();
-  }
-  
-  public final void clearCache()
-  {
-    y.i("MicroMsg.GameAppCacheService", "clear cached apppinfos");
-    if (this.kNV != null) {
-      this.kNV.clear();
-    }
-    if (this.kNU != null) {
-      this.kNU.clear();
-    }
-  }
-  
-  public final void init(Context paramContext)
-  {
-    if (this.kNV == null)
-    {
-      this.kNV = new LinkedList();
-      if (this.kNU != null) {
-        break label112;
-      }
-      this.kNU = new LinkedList();
-    }
-    for (;;)
-    {
-      long l1 = System.currentTimeMillis();
-      dn(paramContext);
-      long l2 = System.currentTimeMillis();
-      aYQ();
-      long l3 = System.currentTimeMillis();
-      y.i("MicroMsg.GameAppCacheService", "Init time: %d, %d, %d", new Object[] { Long.valueOf(l2 - l1), Long.valueOf(l3 - l2), Long.valueOf(l3 - l1) });
-      return;
-      this.kNV.clear();
-      break;
-      label112:
-      this.kNU.clear();
-    }
+    AppMethodBeat.o(111195);
+    return false;
   }
 }
 

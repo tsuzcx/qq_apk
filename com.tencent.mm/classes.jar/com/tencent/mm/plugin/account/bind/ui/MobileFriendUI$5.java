@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.kernel.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.a.a.a;
+import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MobileFriendUI$5
   implements DialogInterface.OnClickListener
@@ -16,11 +16,13 @@ final class MobileFriendUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    h.nFQ.f(11438, new Object[] { Integer.valueOf(6) });
-    y.i("MicroMsg.MobileFriendUI", "[cpan] kv report logid:%d scene:%d", new Object[] { Integer.valueOf(11438), Integer.valueOf(6) });
-    g.DP().Dz().o(12322, Boolean.valueOf(true));
-    ((a)g.t(a.class)).syncUploadMContactStatus(true, true);
-    MobileFriendUI.h(this.fes);
+    AppMethodBeat.i(13723);
+    h.qsU.e(11438, new Object[] { Integer.valueOf(6) });
+    ab.i("MicroMsg.MobileFriendUI", "[cpan] kv report logid:%d scene:%d", new Object[] { Integer.valueOf(11438), Integer.valueOf(6) });
+    l.dx(true);
+    ((a)g.G(a.class)).syncUploadMContactStatus(true, true);
+    MobileFriendUI.h(this.gwb);
+    AppMethodBeat.o(13723);
   }
 }
 

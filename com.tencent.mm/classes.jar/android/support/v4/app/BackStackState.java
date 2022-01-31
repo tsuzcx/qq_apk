@@ -13,142 +13,142 @@ final class BackStackState
   public static final Parcelable.Creator<BackStackState> CREATOR = new Parcelable.Creator() {};
   final int mIndex;
   final String mName;
-  final boolean uA;
-  final int[] uI;
-  final int un;
-  final int uo;
-  final int uu;
-  final CharSequence uv;
-  final int uw;
-  final CharSequence ux;
-  final ArrayList<String> uy;
-  final ArrayList<String> uz;
+  final int[] vF;
+  final int vn;
+  final int vo;
+  final int vs;
+  final CharSequence vt;
+  final int vu;
+  final CharSequence vv;
+  final ArrayList<String> vw;
+  final ArrayList<String> vx;
+  final boolean vy;
   
   public BackStackState(Parcel paramParcel)
   {
-    this.uI = paramParcel.createIntArray();
-    this.un = paramParcel.readInt();
-    this.uo = paramParcel.readInt();
+    this.vF = paramParcel.createIntArray();
+    this.vn = paramParcel.readInt();
+    this.vo = paramParcel.readInt();
     this.mName = paramParcel.readString();
     this.mIndex = paramParcel.readInt();
-    this.uu = paramParcel.readInt();
-    this.uv = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-    this.uw = paramParcel.readInt();
-    this.ux = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-    this.uy = paramParcel.createStringArrayList();
-    this.uz = paramParcel.createStringArrayList();
+    this.vs = paramParcel.readInt();
+    this.vt = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.vu = paramParcel.readInt();
+    this.vv = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.vw = paramParcel.createStringArrayList();
+    this.vx = paramParcel.createStringArrayList();
     if (paramParcel.readInt() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.uA = bool;
+      this.vy = bool;
       return;
     }
   }
   
   public BackStackState(b paramb)
   {
-    int k = paramb.uh.size();
-    this.uI = new int[k * 6];
-    if (!paramb.uq) {
+    int k = paramb.vi.size();
+    this.vF = new int[k * 6];
+    if (!paramb.vp) {
       throw new IllegalStateException("Not on back stack");
     }
     int i = 0;
     int j = 0;
     if (i < k)
     {
-      b.a locala = (b.a)paramb.uh.get(i);
-      int[] arrayOfInt = this.uI;
+      b.a locala = (b.a)paramb.vi.get(i);
+      int[] arrayOfInt = this.vF;
       int m = j + 1;
-      arrayOfInt[j] = locala.uC;
-      arrayOfInt = this.uI;
+      arrayOfInt[j] = locala.vA;
+      arrayOfInt = this.vF;
       int n = m + 1;
-      if (locala.uD != null) {}
-      for (j = locala.uD.mIndex;; j = -1)
+      if (locala.fragment != null) {}
+      for (j = locala.fragment.mIndex;; j = -1)
       {
         arrayOfInt[m] = j;
-        arrayOfInt = this.uI;
+        arrayOfInt = this.vF;
         j = n + 1;
-        arrayOfInt[n] = locala.uE;
-        arrayOfInt = this.uI;
+        arrayOfInt[n] = locala.vB;
+        arrayOfInt = this.vF;
         m = j + 1;
-        arrayOfInt[j] = locala.uF;
-        arrayOfInt = this.uI;
+        arrayOfInt[j] = locala.vC;
+        arrayOfInt = this.vF;
         n = m + 1;
-        arrayOfInt[m] = locala.uG;
-        arrayOfInt = this.uI;
+        arrayOfInt[m] = locala.vD;
+        arrayOfInt = this.vF;
         j = n + 1;
-        arrayOfInt[n] = locala.uH;
+        arrayOfInt[n] = locala.vE;
         i += 1;
         break;
       }
     }
-    this.un = paramb.un;
-    this.uo = paramb.uo;
+    this.vn = paramb.vn;
+    this.vo = paramb.vo;
     this.mName = paramb.mName;
     this.mIndex = paramb.mIndex;
-    this.uu = paramb.uu;
-    this.uv = paramb.uv;
-    this.uw = paramb.uw;
-    this.ux = paramb.ux;
-    this.uy = paramb.uy;
-    this.uz = paramb.uz;
-    this.uA = paramb.uA;
+    this.vs = paramb.vs;
+    this.vt = paramb.vt;
+    this.vu = paramb.vu;
+    this.vv = paramb.vv;
+    this.vw = paramb.vw;
+    this.vx = paramb.vx;
+    this.vy = paramb.vy;
   }
   
-  public final b a(k paramk)
+  public final b a(FragmentManagerImpl paramFragmentManagerImpl)
   {
-    b localb = new b(paramk);
+    b localb = new b(paramFragmentManagerImpl);
     int i = 0;
     int j = 0;
-    if (j < this.uI.length)
+    if (j < this.vF.length)
     {
       b.a locala = new b.a();
-      int[] arrayOfInt = this.uI;
+      int[] arrayOfInt = this.vF;
       int k = j + 1;
-      locala.uC = arrayOfInt[j];
-      if (k.DEBUG) {
-        new StringBuilder("Instantiate ").append(localb).append(" op #").append(i).append(" base fragment #").append(this.uI[k]);
+      locala.vA = arrayOfInt[j];
+      if (FragmentManagerImpl.DEBUG) {
+        new StringBuilder("Instantiate ").append(localb).append(" op #").append(i).append(" base fragment #").append(this.vF[k]);
       }
-      arrayOfInt = this.uI;
+      arrayOfInt = this.vF;
       j = k + 1;
       k = arrayOfInt[k];
       if (k >= 0) {}
-      for (locala.uD = ((Fragment)paramk.vr.get(k));; locala.uD = null)
+      for (locala.fragment = ((Fragment)paramFragmentManagerImpl.mActive.get(k));; locala.fragment = null)
       {
-        arrayOfInt = this.uI;
+        arrayOfInt = this.vF;
         k = j + 1;
-        locala.uE = arrayOfInt[j];
-        arrayOfInt = this.uI;
+        locala.vB = arrayOfInt[j];
+        arrayOfInt = this.vF;
         j = k + 1;
-        locala.uF = arrayOfInt[k];
-        arrayOfInt = this.uI;
+        locala.vC = arrayOfInt[k];
+        arrayOfInt = this.vF;
         k = j + 1;
-        locala.uG = arrayOfInt[j];
-        arrayOfInt = this.uI;
+        locala.vD = arrayOfInt[j];
+        arrayOfInt = this.vF;
         j = k + 1;
-        locala.uH = arrayOfInt[k];
-        localb.uj = locala.uE;
-        localb.uk = locala.uF;
-        localb.ul = locala.uG;
-        localb.um = locala.uH;
+        locala.vE = arrayOfInt[k];
+        localb.vj = locala.vB;
+        localb.vk = locala.vC;
+        localb.vl = locala.vD;
+        localb.vm = locala.vE;
         localb.a(locala);
         i += 1;
         break;
       }
     }
-    localb.un = this.un;
-    localb.uo = this.uo;
+    localb.vn = this.vn;
+    localb.vo = this.vo;
     localb.mName = this.mName;
     localb.mIndex = this.mIndex;
-    localb.uq = true;
-    localb.uu = this.uu;
-    localb.uv = this.uv;
-    localb.uw = this.uw;
-    localb.ux = this.ux;
-    localb.uy = this.uy;
-    localb.uz = this.uz;
-    localb.uA = this.uA;
-    localb.X(1);
+    localb.vp = true;
+    localb.vs = this.vs;
+    localb.vt = this.vt;
+    localb.vu = this.vu;
+    localb.vv = this.vv;
+    localb.vw = this.vw;
+    localb.vx = this.vx;
+    localb.vy = this.vy;
+    localb.W(1);
     return localb;
   }
   
@@ -160,18 +160,18 @@ final class BackStackState
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramInt = 0;
-    paramParcel.writeIntArray(this.uI);
-    paramParcel.writeInt(this.un);
-    paramParcel.writeInt(this.uo);
+    paramParcel.writeIntArray(this.vF);
+    paramParcel.writeInt(this.vn);
+    paramParcel.writeInt(this.vo);
     paramParcel.writeString(this.mName);
     paramParcel.writeInt(this.mIndex);
-    paramParcel.writeInt(this.uu);
-    TextUtils.writeToParcel(this.uv, paramParcel, 0);
-    paramParcel.writeInt(this.uw);
-    TextUtils.writeToParcel(this.ux, paramParcel, 0);
-    paramParcel.writeStringList(this.uy);
-    paramParcel.writeStringList(this.uz);
-    if (this.uA) {
+    paramParcel.writeInt(this.vs);
+    TextUtils.writeToParcel(this.vt, paramParcel, 0);
+    paramParcel.writeInt(this.vu);
+    TextUtils.writeToParcel(this.vv, paramParcel, 0);
+    paramParcel.writeStringList(this.vw);
+    paramParcel.writeStringList(this.vx);
+    if (this.vy) {
       paramInt = 1;
     }
     paramParcel.writeInt(paramInt);

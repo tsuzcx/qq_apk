@@ -2,7 +2,7 @@ package com.tencent.mm.ui.base;
 
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import com.tencent.mm.ac.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMFormVerifyCodeInputView$1
   implements View.OnFocusChangeListener
@@ -11,29 +11,31 @@ final class MMFormVerifyCodeInputView$1
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramView == MMFormVerifyCodeInputView.a(this.uVg))
+    AppMethodBeat.i(106592);
+    if (paramView == MMFormVerifyCodeInputView.a(this.zjB))
     {
-      MMFormVerifyCodeInputView.b(this.uVg);
+      MMFormVerifyCodeInputView.b(this.zjB);
       if (!paramBoolean) {
-        break label64;
+        break label73;
       }
-      this.uVg.setBackgroundResource(a.f.input_bar_bg_active);
+      this.zjB.setBackgroundResource(2130839162);
     }
     for (;;)
     {
-      MMFormVerifyCodeInputView.c(this.uVg);
-      if (MMFormVerifyCodeInputView.d(this.uVg) != null) {
-        MMFormVerifyCodeInputView.d(this.uVg).onFocusChange(paramView, paramBoolean);
+      MMFormVerifyCodeInputView.c(this.zjB);
+      if (MMFormVerifyCodeInputView.d(this.zjB) != null) {
+        MMFormVerifyCodeInputView.d(this.zjB).onFocusChange(paramView, paramBoolean);
       }
+      AppMethodBeat.o(106592);
       return;
-      label64:
-      this.uVg.setBackgroundResource(a.f.input_bar_bg_normal);
+      label73:
+      this.zjB.setBackgroundResource(2130839163);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFormVerifyCodeInputView.1
  * JD-Core Version:    0.7.0.1
  */

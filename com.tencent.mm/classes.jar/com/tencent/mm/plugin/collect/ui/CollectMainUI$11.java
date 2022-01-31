@@ -1,79 +1,109 @@
 package com.tencent.mm.plugin.collect.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mm.h.a.rc;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.awl;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.wallet_core.ui.e;
+import android.os.Bundle;
+import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.collect.model.f.a;
+import com.tencent.mm.plugin.wallet_core.id_verify.util.a;
+import com.tencent.mm.plugin.wallet_core.utils.c;
+import com.tencent.mm.protocal.protobuf.pw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
 
 final class CollectMainUI$11
-  implements View.OnClickListener
+  implements f.a
 {
-  CollectMainUI$11(CollectMainUI paramCollectMainUI, awl paramawl) {}
+  CollectMainUI$11(CollectMainUI paramCollectMainUI) {}
   
-  public final void onClick(View paramView)
+  public final void a(boolean paramBoolean, pw parampw)
   {
-    if (this.iLT.type == 1) {
-      if (this.iLT.url.equals("wxpay://f2f/f2fdetail"))
-      {
-        paramView = new Intent(this.iLP.mController.uMN, CollectBillUI.class);
-        paramView.putExtra("key_from_scene", 0);
-        this.iLP.startActivityForResult(paramView, 4097);
-        h.nFQ.f(13944, new Object[] { Integer.valueOf(1) });
-        h.nFQ.f(14526, new Object[] { Integer.valueOf(1), Integer.valueOf(1), this.iLT.bQZ, "", "", "", Integer.valueOf(2) });
-        if (this.iLT.tte == 1) {
-          h.nFQ.f(14526, new Object[] { Integer.valueOf(3), Integer.valueOf(1), this.iLT.bQZ, "", "", "", Integer.valueOf(2) });
-        }
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(142003);
+    Object localObject;
+    if (parampw == null)
     {
-      this.iLP.iLE.setVisibility(4);
-      this.iLP.iLF.setVisibility(8);
-      return;
-      if (this.iLT.type == 2)
-      {
-        if (bk.bl(this.iLT.url))
-        {
-          y.w("MicroMsg.CollectMainUI", "empty bottom h5 url");
-          return;
-        }
-        e.l(this.iLP.mController.uMN, this.iLT.url, false);
-        h.nFQ.f(14526, new Object[] { Integer.valueOf(1), Integer.valueOf(2), this.iLT.bQZ, "", "", this.iLT.url, Integer.valueOf(2) });
-        if (this.iLT.tte == 1) {
-          h.nFQ.f(14526, new Object[] { Integer.valueOf(3), Integer.valueOf(2), this.iLT.bQZ, "", "", this.iLT.url, Integer.valueOf(2) });
-        }
+      localObject = "null";
+      ab.i("MicroMsg.CollectMainUI", "get from cgi: %s resp.retcode: %s", new Object[] { Boolean.valueOf(paramBoolean), localObject });
+      if (!paramBoolean) {
+        break label451;
       }
-      else if (this.iLT.type == 3)
-      {
-        paramView = new rc();
-        paramView.caq.userName = this.iLT.ttb;
-        paramView.caq.cas = bk.aM(this.iLT.ttc, "");
-        paramView.caq.scene = 1072;
-        paramView.caq.cat = 0;
-        a.udP.m(paramView);
-        h.nFQ.f(14526, new Object[] { Integer.valueOf(1), Integer.valueOf(3), this.iLT.bQZ, this.iLT.ttb, this.iLT.ttc, "", Integer.valueOf(2) });
-        if (this.iLT.tte == 1) {
-          h.nFQ.f(14526, new Object[] { Integer.valueOf(3), Integer.valueOf(3), this.iLT.bQZ, this.iLT.ttb, this.iLT.ttc, "", Integer.valueOf(2) });
-        }
+      if ((parampw == null) || (parampw.cnK != 416)) {
+        break label189;
       }
-      else
-      {
-        paramView = new Intent(this.iLP.mController.uMN, CollectBillUI.class);
-        paramView.putExtra("key_from_scene", 0);
-        this.iLP.startActivityForResult(paramView, 4097);
-        h.nFQ.f(13944, new Object[] { Integer.valueOf(1) });
+      if (parampw.wIk != null) {
+        break label184;
       }
     }
+    label184:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ab.d("MicroMsg.CollectMainUI", "realNameInfo:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+      CollectMainUI.u(this.kSz).setVisibility(4);
+      CollectMainUI.a(this.kSz, true);
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("realname_verify_process_jump_activity", ".ui.CollectMainUI");
+      ((Bundle)localObject).putString("realname_verify_process_jump_plugin", "collect");
+      CollectMainUI localCollectMainUI = this.kSz;
+      int i = parampw.cnK;
+      parampw = parampw.wIk;
+      new CollectMainUI.11.1(this);
+      a.a(localCollectMainUI, i, parampw, (Bundle)localObject, 1010);
+      AppMethodBeat.o(142003);
+      return;
+      localObject = Integer.valueOf(parampw.cnK);
+      break;
+    }
+    label189:
+    CollectMainUI.w(this.kSz);
+    CollectMainUI.u(this.kSz).setVisibility(0);
+    CollectMainUI.a(this.kSz, false);
+    this.kSz.kRP = parampw.url;
+    CollectMainUI.a(this.kSz, c.IK(parampw.wIa));
+    this.kSz.mTrueName = parampw.ueu;
+    CollectMainUI.b(this.kSz, parampw.qkj);
+    CollectMainUI.b(this.kSz, parampw.qkk);
+    CollectMainUI.a(this.kSz, parampw.qkl);
+    CollectMainUI.c(this.kSz, parampw.wIh);
+    CollectMainUI.d(this.kSz, parampw.kNG);
+    CollectMainUI.e(this.kSz, parampw.kNH);
+    CollectMainUI.a(this.kSz, parampw.wIe);
+    this.kSz.bn(parampw.wId);
+    CollectMainUI.c(this.kSz, parampw.wIi);
+    CollectMainUI.a(this.kSz, parampw.wIj);
+    ab.d("MicroMsg.CollectMainUI", "flag: %s", new Object[] { Integer.valueOf(CollectMainUI.b(this.kSz)) });
+    g.RM();
+    g.RL().Ru().set(ac.a.yIw, Integer.valueOf(CollectMainUI.x(this.kSz)));
+    g.RM();
+    g.RL().Ru().set(ac.a.yIx, CollectMainUI.a(this.kSz));
+    this.kSz.refreshView();
+    label451:
+    AppMethodBeat.o(142003);
+  }
+  
+  public final void y(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(142002);
+    ab.i("MicroMsg.CollectMainUI", "get cache: %s, %s, %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    CollectMainUI.u(this.kSz).setVisibility(0);
+    this.kSz.kRP = paramString1;
+    CollectMainUI.a(this.kSz, paramInt);
+    this.kSz.mTrueName = paramString2;
+    paramString1 = CollectMainUI.biB();
+    paramString2 = CollectMainUI.biC();
+    CollectMainUI.a(this.kSz, paramString1);
+    this.kSz.bn(paramString2);
+    if (CollectMainUI.v(this.kSz) == 1)
+    {
+      paramString1 = this.kSz;
+      g.RM();
+      CollectMainUI.b(paramString1, ((Integer)g.RL().Ru().get(ac.a.yIw, Integer.valueOf(-1))).intValue());
+      paramString1 = this.kSz;
+      g.RM();
+      CollectMainUI.a(paramString1, (String)g.RL().Ru().get(ac.a.yIx, ""));
+    }
+    AppMethodBeat.o(142002);
   }
 }
 

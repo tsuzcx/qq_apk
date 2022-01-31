@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.appbrand.dynamic.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import com.tencent.mm.cg.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.e;
 import com.tencent.mm.modelappbrand.l;
 import com.tencent.mm.modelappbrand.l.a;
-import com.tencent.mm.plugin.appbrand.wxawidget.b.b;
-import com.tencent.mm.plugin.appbrand.wxawidget.b.c;
-import com.tencent.mm.plugin.appbrand.wxawidget.b.e;
 import com.tencent.mm.plugin.appbrand.wxawidget.console.ConsolePanel;
 import com.tencent.mm.plugin.appbrand.wxawidget.console.d;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 
 public class WidgetConsoleUI
@@ -22,35 +21,44 @@ public class WidgetConsoleUI
   implements l.a
 {
   String appId;
-  int bOa;
-  int fEN;
-  ConsolePanel fXr;
+  int cvs;
+  int gXf;
+  ConsolePanel hqR;
   String id;
   
-  private boolean afF()
+  private boolean aAj()
   {
+    AppMethodBeat.i(11006);
     Intent localIntent = getIntent();
     String str = localIntent.getStringExtra("id");
     this.appId = localIntent.getStringExtra("app_id");
-    this.bOa = localIntent.getIntExtra("pkg_type", 0);
-    this.fEN = localIntent.getIntExtra("pkg_version", 0);
+    this.cvs = localIntent.getIntExtra("pkg_type", 0);
+    this.gXf = localIntent.getIntExtra("pkg_version", 0);
     setMMSubTitle(String.format("(%s)", new Object[] { str }));
-    if (bk.bl(str)) {
+    if (bo.isNullOrNil(str))
+    {
+      AppMethodBeat.o(11006);
       return false;
     }
-    if (str.equals(this.id)) {
+    if (str.equals(this.id))
+    {
+      AppMethodBeat.o(11006);
       return true;
     }
-    ((e)g.r(e.class)).Jn().b(this.id, this);
-    ((e)g.r(e.class)).Jn().a(str, this);
+    ((e)g.E(e.class)).acl().b(this.id, this);
+    ((e)g.E(e.class)).acl().a(str, this);
     this.id = str;
-    d.a(this.fXr);
+    d.a(this.hqR);
+    AppMethodBeat.o(11006);
     return true;
   }
   
   public void finish()
   {
-    if ((isFinishing()) || (this.uMr)) {
+    AppMethodBeat.i(11009);
+    if ((isFinishing()) || (activityHasDestroyed()))
+    {
+      AppMethodBeat.o(11009);
       return;
     }
     if (Build.VERSION.SDK_INT >= 21) {
@@ -63,18 +71,20 @@ public class WidgetConsoleUI
       int j = localTypedArray.getResourceId(1, 0);
       localTypedArray.recycle();
       overridePendingTransition(i, j);
+      AppMethodBeat.o(11009);
       return;
       super.finish();
     }
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return b.c.widget_console_ui;
+    return 2130971324;
   }
   
-  public final void ie(int paramInt)
+  public final void kR(int paramInt)
   {
+    AppMethodBeat.i(11007);
     String str;
     switch (paramInt)
     {
@@ -83,7 +93,8 @@ public class WidgetConsoleUI
     }
     for (;;)
     {
-      a.m(new WidgetConsoleUI.2(this, str));
+      al.d(new WidgetConsoleUI.2(this, str));
+      AppMethodBeat.o(11007);
       return;
       str = "(PAUSE)";
       continue;
@@ -97,33 +108,51 @@ public class WidgetConsoleUI
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(11004);
     super.onCreate(paramBundle);
     setBackBtn(new WidgetConsoleUI.1(this));
-    setMMTitle(b.e.wxa_widget_console);
-    this.fXr = ((ConsolePanel)findViewById(b.b.console_widget));
-    if (!afF()) {
+    setMMTitle(2131306259);
+    this.hqR = ((ConsolePanel)findViewById(2131829591));
+    if (!aAj())
+    {
       finish();
+      AppMethodBeat.o(11004);
+      return;
     }
+    AppMethodBeat.o(11004);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(11008);
     super.onDestroy();
-    ((e)g.r(e.class)).Jn().b(this.id, this);
-    d.b(this.fXr);
+    ((e)g.E(e.class)).acl().b(this.id, this);
+    d.b(this.hqR);
+    AppMethodBeat.o(11008);
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
+    AppMethodBeat.i(11005);
     super.onNewIntent(paramIntent);
-    if (!afF()) {
+    if (!aAj())
+    {
       finish();
+      AppMethodBeat.o(11005);
+      return;
     }
+    AppMethodBeat.o(11005);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.ui.WidgetConsoleUI
  * JD-Core Version:    0.7.0.1
  */

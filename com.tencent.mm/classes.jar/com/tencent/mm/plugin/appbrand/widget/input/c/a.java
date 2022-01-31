@@ -2,25 +2,37 @@ package com.tencent.mm.plugin.appbrand.widget.input.c;
 
 import android.os.Looper;
 import android.text.Selection;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class a
 {
-  private final ah H = new a.1(this, Looper.getMainLooper());
-  public volatile c hxw;
+  private final ak jls;
+  public volatile c jpG;
+  
+  public a()
+  {
+    AppMethodBeat.i(77443);
+    this.jls = new a.1(this, Looper.getMainLooper());
+    AppMethodBeat.o(77443);
+  }
   
   public final void a(CharSequence paramCharSequence, boolean paramBoolean)
   {
-    if (paramCharSequence == null) {
+    AppMethodBeat.i(77444);
+    if (paramCharSequence == null)
+    {
+      AppMethodBeat.o(77444);
       return;
     }
-    paramCharSequence = this.H.obtainMessage(1000, Selection.getSelectionEnd(paramCharSequence), 0, paramCharSequence.toString());
-    this.H.removeMessages(1000);
-    ah localah = this.H;
+    paramCharSequence = this.jls.obtainMessage(1000, Selection.getSelectionEnd(paramCharSequence), 0, paramCharSequence.toString());
+    this.jls.removeMessages(1000);
+    ak localak = this.jls;
     if (paramBoolean) {}
     for (long l = 150L;; l = 0L)
     {
-      localah.sendMessageDelayed(paramCharSequence, l);
+      localak.sendMessageDelayed(paramCharSequence, l);
+      AppMethodBeat.o(77444);
       return;
     }
   }

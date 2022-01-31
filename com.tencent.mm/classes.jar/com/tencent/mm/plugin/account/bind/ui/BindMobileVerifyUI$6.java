@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.res.Resources;
 import android.widget.TextView;
-import com.tencent.mm.plugin.account.bind.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BindMobileVerifyUI$6
   implements Runnable
@@ -11,15 +11,18 @@ final class BindMobileVerifyUI$6
   
   public final void run()
   {
-    BindMobileVerifyUI.e(this.fcM);
-    BindMobileVerifyUI.a(this.fcM, Integer.valueOf(BindMobileVerifyUI.e(this.fcM).intValue() - 1));
-    if (BindMobileVerifyUI.e(this.fcM).intValue() > 0)
+    AppMethodBeat.i(13534);
+    BindMobileVerifyUI.e(this.guw);
+    BindMobileVerifyUI.a(this.guw, Integer.valueOf(BindMobileVerifyUI.e(this.guw).intValue() - 1));
+    if (BindMobileVerifyUI.e(this.guw).intValue() > 0)
     {
-      BindMobileVerifyUI.c(this.fcM).setText(this.fcM.getResources().getQuantityString(a.g.mobileverify_send_code_tip, BindMobileVerifyUI.e(this.fcM).intValue(), new Object[] { BindMobileVerifyUI.e(this.fcM) }));
+      BindMobileVerifyUI.c(this.guw).setText(this.guw.getResources().getQuantityString(2131361811, BindMobileVerifyUI.e(this.guw).intValue(), new Object[] { BindMobileVerifyUI.e(this.guw) }));
+      AppMethodBeat.o(13534);
       return;
     }
-    BindMobileVerifyUI.c(this.fcM).setText(this.fcM.getResources().getQuantityString(a.g.mobileverify_send_code_tip, 0, new Object[] { Integer.valueOf(0) }));
-    BindMobileVerifyUI.f(this.fcM);
+    BindMobileVerifyUI.c(this.guw).setText(this.guw.getResources().getQuantityString(2131361811, 0, new Object[] { Integer.valueOf(0) }));
+    BindMobileVerifyUI.f(this.guw);
+    AppMethodBeat.o(13534);
   }
 }
 

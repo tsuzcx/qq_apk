@@ -5,7 +5,7 @@ public final class c$jm
 {
   public c$jm()
   {
-    super("stopRecord", "stopRecord", 98, false);
+    super("shareWeiboApp", "shareWeiboApp", 107, false);
   }
 }
 

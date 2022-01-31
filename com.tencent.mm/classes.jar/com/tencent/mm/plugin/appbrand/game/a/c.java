@@ -1,79 +1,142 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
+import a.aa;
+import a.f;
+import a.f.a.a;
+import a.f.b.j;
+import a.f.b.t;
+import a.j.k;
+import a.l;
+import a.l.m;
+import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
 import android.content.Context;
-import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
-import com.tencent.mm.plugin.appbrand.game.a.a.b;
-import com.tencent.mm.plugin.fts.a.a.d;
-import com.tencent.mm.plugin.fts.a.a.e;
-import com.tencent.mm.plugin.fts.a.a.l;
-import com.tencent.mm.plugin.fts.a.d.a.a;
-import com.tencent.mm.plugin.fts.a.d.a.a.a;
-import com.tencent.mm.plugin.fts.a.d.a.a.b;
-import com.tencent.mm.plugin.fts.a.f;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.luggage.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.expt.a.a.a;
+import com.tencent.mm.sdk.platformtools.ah;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigGCFactor;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "TAG", "", "clicfg_magicbrush_autogcfactor_max_canvas", "getClicfg_magicbrush_autogcfactor_max_canvas", "()F", "clicfg_magicbrush_autogcfactor_max_canvas$delegate", "Lkotlin/Lazy;", "clicfg_magicbrush_autogcfactor_min_canvas", "getClicfg_magicbrush_autogcfactor_min_canvas", "clicfg_magicbrush_autogcfactor_min_canvas$delegate", "clicfg_magicbrush_autogcfactor_total_memory_ratio", "getClicfg_magicbrush_autogcfactor_total_memory_ratio", "clicfg_magicbrush_autogcfactor_total_memory_ratio$delegate", "configMemory", "Ljava/lang/Float;", "memoryInfo", "Landroid/app/ActivityManager$MemoryInfo;", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableKv", "getActuallyGcFactor", "context", "Landroid/content/Context;", "getAvailableMemory", "", "getConfig", "()Ljava/lang/Float;", "getConfigDefaultValue", "getGcFactorAutomatic", "getMemoryUnit", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Float;", "plugin-appbrand-integration_release"})
 public final class c
-  extends a
+  extends g<Float>
 {
-  public CharSequence dtD;
-  public l fYx;
-  public AppBrandRecentTaskInfo gaE;
-  public b gaF;
-  private c.b gaG = new c.b(this);
-  c.a gaH = new c.a(this);
+  private static final String TAG;
+  private static Float hse;
+  private static final f hsf;
+  private static final f hsg;
+  private static final f hsh;
+  private static ActivityManager.MemoryInfo hsi;
+  public static final c hsj;
   
-  public c(int paramInt)
+  static
   {
-    super(20, paramInt);
+    AppMethodBeat.i(134612);
+    eOJ = new k[] { (k)a.f.b.v.a(new t(a.f.b.v.aG(c.class), "clicfg_magicbrush_autogcfactor_min_canvas", "getClicfg_magicbrush_autogcfactor_min_canvas()F")), (k)a.f.b.v.a(new t(a.f.b.v.aG(c.class), "clicfg_magicbrush_autogcfactor_max_canvas", "getClicfg_magicbrush_autogcfactor_max_canvas()F")), (k)a.f.b.v.a(new t(a.f.b.v.aG(c.class), "clicfg_magicbrush_autogcfactor_total_memory_ratio", "getClicfg_magicbrush_autogcfactor_total_memory_ratio()F")) };
+    hsj = new c();
+    StringBuilder localStringBuilder = new StringBuilder("MicroMsg.WAGameGcFactor");
+    String str = ah.getProcessName();
+    j.p(str, "MMApplicationContext.getProcessName()");
+    TAG = m.h(str, "com.tencent.mm", "", false);
+    hsf = a.g.j((a)c.b.hsl);
+    hsg = a.g.j((a)c.a.hsk);
+    hsh = a.g.j((a)c.c.hsm);
+    AppMethodBeat.o(134612);
   }
   
-  public final a.b BD()
+  protected final String aAs()
   {
-    return this.gaG;
+    return "gcfactor";
   }
   
-  public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
+  protected final a.a aAt()
   {
-    boolean bool3 = true;
-    boolean bool1 = false;
-    this.gaE = i.ts(this.fYx.kwg);
-    this.gaF = i.tr(this.fYx.kwg);
-    if (this.gaF == null) {
-      return;
-    }
-    boolean bool2;
-    switch (this.fYx.kwf)
+    return a.a.lUW;
+  }
+  
+  public final float cI(Context paramContext)
+  {
+    AppMethodBeat.i(134616);
+    j.q(paramContext, "context");
+    if (hse != null)
     {
-    default: 
-      bool1 = false;
-      bool2 = false;
+      paramContext = hse;
+      if (paramContext == null) {
+        j.ebi();
+      }
+      f1 = paramContext.floatValue();
+      AppMethodBeat.o(134616);
+      return f1;
     }
-    for (;;)
+    float f1 = ((Number)super.Uw()).floatValue();
+    if (f1 != -1.0F)
     {
-      this.dtD = f.a(d.a(this.gaF.field_AppName, this.kwi, bool1, bool2)).kwz;
-      this.info = this.gaF.field_AppId;
-      return;
-      bool1 = true;
-      bool2 = bool1;
-      bool1 = bool3;
+      d.i(TAG, "rawConfig == [" + f1 + "] != -1, just return");
+      hse = Float.valueOf(f1);
+      AppMethodBeat.o(134616);
+      return f1;
     }
-  }
-  
-  protected final a.a afK()
-  {
-    return this.gaH;
-  }
-  
-  public final String afL()
-  {
-    if (this.gaF != null) {
-      return String.format("%s:%s", new Object[] { this.gaF.field_AppId, this.gaF.field_AppName });
+    Object localObject = paramContext.getResources();
+    j.p(localObject, "context.resources");
+    f1 = ((Resources)localObject).getDisplayMetrics().density;
+    localObject = paramContext.getResources();
+    j.p(localObject, "context.resources");
+    float f2 = ((Resources)localObject).getDisplayMetrics().widthPixels / f1;
+    localObject = paramContext.getResources();
+    j.p(localObject, "context.resources");
+    f1 = 2.0F * (((Resources)localObject).getDisplayMetrics().heightPixels / f1 * f2 * 4.0F);
+    if (f1 > 0.0F) {}
+    for (int i = 1; (aa.BMh) && (i == 0); i = 0)
+    {
+      paramContext = (Throwable)new AssertionError("Assertion failed");
+      AppMethodBeat.o(134616);
+      throw paramContext;
     }
-    return ":";
-  }
-  
-  public final int afM()
-  {
-    return this.fYx.kxt;
+    if (hsi == null)
+    {
+      paramContext = paramContext.getSystemService("activity");
+      if (paramContext == null)
+      {
+        paramContext = new a.v("null cannot be cast to non-null type android.app.ActivityManager");
+        AppMethodBeat.o(134616);
+        throw paramContext;
+      }
+      paramContext = (ActivityManager)paramContext;
+      hsi = new ActivityManager.MemoryInfo();
+      paramContext.getMemoryInfo(hsi);
+      paramContext = TAG;
+      localObject = new StringBuilder("getAvailableMemory avail = [");
+      ActivityManager.MemoryInfo localMemoryInfo = hsi;
+      if (localMemoryInfo == null) {
+        j.ebi();
+      }
+      localObject = ((StringBuilder)localObject).append(localMemoryInfo.availMem).append("] total = [");
+      localMemoryInfo = hsi;
+      if (localMemoryInfo == null) {
+        j.ebi();
+      }
+      d.i(paramContext, localMemoryInfo.totalMem + ']');
+    }
+    paramContext = hsi;
+    if (paramContext == null) {
+      j.ebi();
+    }
+    f2 = (float)paramContext.totalMem;
+    long l = (((Number)hsh.getValue()).floatValue() * f2);
+    f2 = (float)l / f1;
+    f2 = Math.max(((Number)hsf.getValue()).floatValue(), f2);
+    f2 = Math.min(((Number)hsg.getValue()).floatValue(), f2);
+    float f3 = 67108864.0F / (f2 * f1);
+    d.i(TAG, "calculate gc_factor automatically unit = [" + f1 / 1024.0F + "]kb limit = [65536]kb system = [" + l / 1024L + "]kb raw = [" + f2 + ':' + (float)l / f1 + "] actually = [" + f3 + ']');
+    paramContext = Float.valueOf(f3);
+    hse = paramContext;
+    if (paramContext == null) {
+      j.ebi();
+    }
+    f1 = paramContext.floatValue();
+    AppMethodBeat.o(134616);
+    return f1;
   }
 }
 

@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ks" android:background="@drawable/ar7" android:layout_width="150.0dip" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:id="@id/kt" android:paddingBottom="@dimen/kv" android:layout_width="150.0dip" android:layout_height="wrap_content">
-        <TextView android:textSize="12.0dip" android:textColor="@color/xl" android:id="@id/ku" android:paddingLeft="@dimen/l3" android:paddingRight="@dimen/l3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp" android:layout_marginBottom="6.0dip" android:text="@string/ebe" android:layout_centerHorizontal="true" />
-        <View android:id="@id/kv" android:background="@color/fj" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/l3" android:layout_marginRight="@dimen/l3" android:layout_below="@id/ku" />
-        <TextView android:textSize="@dimen/k9" android:textColor="#ff576b95" android:id="@id/kw" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/kv" android:paddingRight="@dimen/li" android:paddingBottom="@dimen/kv" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ebd" android:layout_below="@id/kv" android:layout_centerHorizontal="true" />
-        <ListView android:id="@id/kx" android:background="@color/a23" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/kv" style="@style/ls" />
-    </RelativeLayout>
-</LinearLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/k6" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.e;
+import com.tencent.mm.plugin.appbrand.e.d;
 import com.tencent.mm.plugin.appbrand.i;
 
 final class f$1
@@ -13,8 +14,10 @@ final class f$1
   
   public final void onClick(View paramView)
   {
-    g.a(f.a(this.hdm).mAppId, g.c.fxZ);
-    f.a(this.hdm).finish();
+    AppMethodBeat.i(102311);
+    e.a(f.a(this.iNc).mAppId, e.d.gPe);
+    f.a(this.iNc).finish();
+    AppMethodBeat.o(102311);
   }
 }
 

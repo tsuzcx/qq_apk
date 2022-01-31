@@ -1,37 +1,22 @@
 package com.tencent.liteav;
 
-import com.tencent.liteav.audio.f;
-import com.tencent.rtmp.TXLivePusher.OnBGMNotify;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class c$6
-  implements f
+  implements Runnable
 {
   c$6(c paramc) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.c != null) {
-      this.a.c.onBGMStart();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.a.c != null) {
-      this.a.c.onBGMComplete(paramInt);
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (this.a.c != null) {
-      this.a.c.onBGMProgress(paramLong1, paramLong2);
-    }
+    AppMethodBeat.i(67446);
+    c.d(this.a);
+    AppMethodBeat.o(67446);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.c.6
  * JD-Core Version:    0.7.0.1
  */

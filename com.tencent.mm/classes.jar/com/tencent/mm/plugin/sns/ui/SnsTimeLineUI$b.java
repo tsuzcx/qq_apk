@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 final class SnsTimeLineUI$b
 {
-  public int tips;
+  public int rZh;
   public int type = 0;
   
   private SnsTimeLineUI$b(SnsTimeLineUI paramSnsTimeLineUI) {}

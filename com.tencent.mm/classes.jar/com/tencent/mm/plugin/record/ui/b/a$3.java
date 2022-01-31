@@ -1,108 +1,40 @@
 package com.tencent.mm.plugin.record.ui.b;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mm.R.k;
-import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.plugin.record.b.h;
-import com.tencent.mm.plugin.record.ui.a.b;
-import com.tencent.mm.plugin.record.ui.h.a;
-import com.tencent.mm.plugin.record.ui.h.a.b;
-import com.tencent.mm.plugin.record.ui.h.a.c;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cg;
+import com.tencent.mm.g.a.ny;
+import com.tencent.mm.g.a.ny.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.b.d;
 
 final class a$3
-  implements Runnable
+  implements View.OnClickListener
 {
-  a$3(a parama, b paramb, ImageView paramImageView) {}
+  a$3(a parama, ny paramny, Context paramContext) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    Object localObject = (com.tencent.mm.plugin.record.ui.a.a)this.nuw;
-    final int i;
-    if (((com.tencent.mm.plugin.record.ui.a.a)localObject).aYU == 0)
-    {
-      if (!h.g(((com.tencent.mm.plugin.record.ui.a.a)localObject).bNt, ((com.tencent.mm.plugin.record.ui.a.a)localObject).bIt)) {
-        break label227;
-      }
-      i = R.k.record_errpicture_icon;
-      if (i != -1) {
-        break label310;
-      }
-      i = R.k.fav_list_img_default;
+    AppMethodBeat.i(153628);
+    ab.i("MicroMsg.ImageViewWrapper", "request deal QBAR string");
+    if (this.qag.mAF.isShowing()) {
+      this.qag.mAF.cre();
     }
-    label302:
-    label305:
-    label310:
-    for (;;)
+    if (this.mww == null)
     {
-      com.tencent.mm.plugin.record.ui.a.a locala = (com.tencent.mm.plugin.record.ui.a.a)this.nuw;
-      h.a locala1 = this.nus.ntP;
-      int j = this.nus.nur;
-      localObject = new h.a.b();
-      ((h.a.b)localObject).bNt = locala.bNt;
-      ((h.a.b)localObject).bNw = false;
-      ((h.a.b)localObject).maxWidth = j;
-      h.a.c localc = new h.a.c();
-      localc.bNt = locala.bNt;
-      Bitmap localBitmap;
-      if (locala.aYU == 0)
-      {
-        if (h.g(locala.bNt, locala.bIt)) {
-          break label305;
-        }
-        ((h.a.b)localObject).ntR = locala.bIt;
-        localBitmap = locala1.a((h.a.b)localObject);
-        localObject = localBitmap;
-        if (localBitmap != null) {
-          break label302;
-        }
-        localc.ntR = locala.bIt;
-        localObject = locala1.a(localc);
-      }
-      for (;;)
-      {
-        ai.d(new Runnable()
-        {
-          public final void run()
-          {
-            a.3.this.nus.a(a.3.this.nux, this.kfS, i, a.3.this.nuw.bNt.kgC);
-          }
-        });
-        return;
-        if ((((com.tencent.mm.plugin.record.ui.a.a)localObject).aYU == 1) && (bk.bl(((com.tencent.mm.plugin.record.ui.a.a)localObject).bNt.sUG)))
-        {
-          i = R.k.record_errpicture_icon;
-          break;
-        }
-        label227:
-        i = -1;
-        break;
-        if (locala.aYU == 1)
-        {
-          ((h.a.b)localObject).ntR = locala.khA.field_localId;
-          ((h.a.b)localObject).bNx = false;
-          localBitmap = locala1.a((h.a.b)localObject);
-          localObject = localBitmap;
-          if (localBitmap == null)
-          {
-            localc.ntR = locala.khA.field_localId;
-            localObject = locala1.a(localc);
-          }
-        }
-        else
-        {
-          localObject = null;
-        }
-      }
+      AppMethodBeat.o(153628);
+      return;
     }
-  }
-  
-  public final String toString()
-  {
-    return super.toString() + "|fillView";
+    paramView = new cg();
+    paramView.cpD.activity = ((Activity)this.val$context);
+    paramView.cpD.cnR = this.mww.cEy.result;
+    paramView.cpD.cpE = this.mww.cEy.cpE;
+    paramView.cpD.cpF = this.mww.cEy.cpF;
+    com.tencent.mm.sdk.b.a.ymk.l(paramView);
+    AppMethodBeat.o(153628);
   }
 }
 

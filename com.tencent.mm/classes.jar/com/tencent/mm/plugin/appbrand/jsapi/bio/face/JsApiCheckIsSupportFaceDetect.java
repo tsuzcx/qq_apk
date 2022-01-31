@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bio.face;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.u.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.s.h;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONObject;
 
 public final class JsApiCheckIsSupportFaceDetect
@@ -12,14 +13,16 @@ public final class JsApiCheckIsSupportFaceDetect
 {
   public static final int CTRL_INDEX = 214;
   public static final String NAME = "checkIsSupportFacialRecognition";
-  private JsApiCheckIsSupportFaceDetect.GetIsSupportFaceTask glh = null;
+  private JsApiCheckIsSupportFaceDetect.GetIsSupportFaceTask hEX = null;
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    y.i("MicroMsg.JsApiCheckIsSupportFaceDetect", "hy: subapp start do check is support face detect");
-    this.glh = new JsApiCheckIsSupportFaceDetect.GetIsSupportFaceTask(paramc, paramInt, this);
-    i.aU(this.glh);
-    AppBrandMainProcessService.a(this.glh);
+    AppMethodBeat.i(3200);
+    ab.i("MicroMsg.JsApiCheckIsSupportFaceDetect", "hy: subapp start do check is support face detect");
+    this.hEX = new JsApiCheckIsSupportFaceDetect.GetIsSupportFaceTask(paramc, paramInt, this);
+    h.bq(this.hEX);
+    AppBrandMainProcessService.a(this.hEX);
+    AppMethodBeat.o(3200);
   }
 }
 

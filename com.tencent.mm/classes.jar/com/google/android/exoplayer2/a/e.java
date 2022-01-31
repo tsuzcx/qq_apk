@@ -5,13 +5,13 @@ import com.google.android.exoplayer2.b.d;
 
 public abstract interface e
 {
-  public abstract void b(String paramString, long paramLong1, long paramLong2);
-  
   public abstract void c(int paramInt, long paramLong1, long paramLong2);
   
   public abstract void c(d paramd);
   
-  public abstract void cC(int paramInt);
+  public abstract void c(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract void cX(int paramInt);
   
   public abstract void d(Format paramFormat);
   

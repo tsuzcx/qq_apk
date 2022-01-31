@@ -4,8 +4,9 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.widget.ListView;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.k;
 
 final class SnsMsgUI$11$1
@@ -15,10 +16,12 @@ final class SnsMsgUI$11$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SnsMsgUI.c(this.pat.paq).setVisibility(8);
-    SnsMsgUI.d(this.pat.paq).setVisibility(0);
-    af.bDK().dXo.gk("SnsComment", "delete from SnsComment");
-    this.pat.paq.enableOptionMenu(false);
+    AppMethodBeat.i(39076);
+    SnsMsgUI.c(this.rSX.rSU).setVisibility(8);
+    SnsMsgUI.d(this.rSX.rSU).setVisibility(0);
+    ag.cpk().fnw.execSQL("SnsComment", "delete from SnsComment");
+    this.rSX.rSU.enableOptionMenu(false);
+    AppMethodBeat.o(39076);
   }
 }
 

@@ -1,33 +1,42 @@
 package com.tencent.mm.plugin.monitor;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public final class a$a
 {
-  int aOn;
-  boolean esC = false;
+  int aVH;
+  long cew;
+  boolean fIp;
   long fileLenInvalidCount;
-  long hFz;
-  final String mrK;
-  long mrL;
-  long mrM;
-  long mrN;
-  ArrayList<a.b> mrO = new ArrayList(20);
-  ArrayList<a.c> mrP = new ArrayList(20);
+  long jyU;
+  long oRA;
+  ArrayList<a.b> oRB;
+  ArrayList<a.c> oRC;
+  final String oRy;
+  long oRz;
   
   a$a(String paramString)
   {
-    this.mrK = paramString;
+    AppMethodBeat.i(84511);
+    this.oRB = new ArrayList(20);
+    this.oRC = new ArrayList(20);
+    this.fIp = false;
+    this.oRy = paramString;
+    AppMethodBeat.o(84511);
   }
   
   public final String toString()
   {
-    return String.format("FileResult hash(%d) root[%s], canceled[%b], dirCount[%d], fileCount[%d], totalSize[%d], fileLenInvalidCount[%d], subDirResult[%d], tempAccDirResult[%d], totalTime[%d], depth[%d]", new Object[] { Integer.valueOf(hashCode()), this.mrK, Boolean.valueOf(this.esC), Long.valueOf(this.mrL), Long.valueOf(this.mrM), Long.valueOf(this.hFz), Long.valueOf(this.fileLenInvalidCount), Integer.valueOf(this.mrO.size()), Integer.valueOf(this.mrP.size()), Long.valueOf(this.mrN), Integer.valueOf(this.aOn) });
+    AppMethodBeat.i(84512);
+    String str = String.format("FileResult hash(%d) root[%s], canceled[%b], dirCount[%d], fileCount[%d], totalSize[%d], fileLenInvalidCount[%d], subDirResult[%d], tempAccDirResult[%d], totalTime[%d], depth[%d]", new Object[] { Integer.valueOf(hashCode()), this.oRy, Boolean.valueOf(this.fIp), Long.valueOf(this.oRz), Long.valueOf(this.oRA), Long.valueOf(this.jyU), Long.valueOf(this.fileLenInvalidCount), Integer.valueOf(this.oRB.size()), Integer.valueOf(this.oRC.size()), Long.valueOf(this.cew), Integer.valueOf(this.aVH) });
+    AppMethodBeat.o(84512);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.monitor.a.a
  * JD-Core Version:    0.7.0.1
  */

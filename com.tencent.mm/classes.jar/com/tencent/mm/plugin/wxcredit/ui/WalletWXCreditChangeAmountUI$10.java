@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wxcredit.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletWXCreditChangeAmountUI$10
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class WalletWXCreditChangeAmountUI$10
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.rRF.showVKB();
+    AppMethodBeat.i(48698);
+    this.vIv.showVKB();
+    AppMethodBeat.o(48698);
   }
 }
 

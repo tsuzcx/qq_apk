@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
 
 public class WXTextObject
@@ -22,17 +23,22 @@ public class WXTextObject
   
   public boolean checkArgs()
   {
+    AppMethodBeat.i(128282);
     if ((this.text == null) || (this.text.length() == 0) || (this.text.length() > 10240))
     {
       Log.e("MicroMsg.SDK.WXTextObject", "checkArgs fail, text is invalid");
+      AppMethodBeat.o(128282);
       return false;
     }
+    AppMethodBeat.o(128282);
     return true;
   }
   
   public void serialize(Bundle paramBundle)
   {
+    AppMethodBeat.i(128280);
     paramBundle.putString("_wxtextobject_text", this.text);
+    AppMethodBeat.o(128280);
   }
   
   public int type()
@@ -42,7 +48,9 @@ public class WXTextObject
   
   public void unserialize(Bundle paramBundle)
   {
+    AppMethodBeat.i(128281);
     this.text = paramBundle.getString("_wxtextobject_text");
+    AppMethodBeat.o(128281);
   }
 }
 

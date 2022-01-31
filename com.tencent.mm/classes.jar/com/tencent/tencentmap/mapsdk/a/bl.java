@@ -1,48 +1,32 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import com.qq.sim.Millis100TimeProvider;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.kx;
 
 public class bl
+  implements br
 {
-  private static Map<bg, bi> a = new ConcurrentHashMap();
+  private bm a;
+  private kx b;
   
-  public static bi a(bg parambg)
+  public void a()
   {
-    bi localbi2 = (bi)a.get(parambg);
-    bi localbi1 = localbi2;
-    if (localbi2 == null)
-    {
-      localbi1 = new bi();
-      a.put(parambg, localbi1);
-    }
-    return localbi1;
+    this.b = null;
   }
   
-  public static void a(bj parambj, bg parambg, int paramInt)
+  public void b()
   {
-    a(parambg).a(parambj, parambg, paramInt);
-  }
-  
-  public static boolean a(bg parambg, bj parambj)
-  {
-    boolean bool1 = true;
-    boolean bool2 = true;
-    parambg = a(parambg);
-    if (!parambg.a())
+    AppMethodBeat.i(149876);
+    if (this.a == null)
     {
-      if (parambg.b() + parambj.c().taf_try_time_interval() * 1000 >= Millis100TimeProvider.INSTANCE.currentTimeMillis()) {
-        break label62;
-      }
-      parambg.a(Millis100TimeProvider.INSTANCE.currentTimeMillis());
+      AppMethodBeat.o(149876);
+      return;
     }
-    label62:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      parambj.c();
-      return bool1;
-    }
+    this.a.e();
+    this.b.v();
+    this.b.h();
+    this.a = null;
+    AppMethodBeat.o(149876);
   }
 }
 

@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.game.f;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class e$3
   extends e.b
@@ -12,9 +13,11 @@ final class e$3
   
   public final void a(View paramView, Bitmap paramBitmap)
   {
+    AppMethodBeat.i(112331);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      ai.d(new e.3.1(this, paramBitmap));
+      al.d(new e.3.1(this, paramBitmap));
     }
+    AppMethodBeat.o(112331);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.ui;
 
 abstract interface LauncherUI$a
 {
-  public abstract boolean czd();
+  public abstract boolean dCm();
 }
 
 

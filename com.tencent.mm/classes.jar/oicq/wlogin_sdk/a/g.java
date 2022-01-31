@@ -1,36 +1,49 @@
 package oicq.wlogin_sdk.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import oicq.wlogin_sdk.tools.util;
 
 public final class g
   extends a
 {
-  public int xrk = 0;
-  public int xrl = 0;
-  public int xrm = 0;
-  public int xrn = 0;
+  public int CNA = 0;
+  public int CNx = 0;
+  public int CNy = 0;
+  public int CNz = 0;
   
   public g()
   {
-    this.xqq = 261;
+    this.CMD = 261;
   }
   
-  public final Boolean cUG()
+  public final Boolean erf()
   {
-    if (this.xra < 2) {
-      return Boolean.valueOf(false);
+    AppMethodBeat.i(96469);
+    if (this.CNn < 2)
+    {
+      localBoolean = Boolean.FALSE;
+      AppMethodBeat.o(96469);
+      return localBoolean;
     }
-    this.xrl = util.ad(this.xqk, this.xqZ);
-    if (this.xra < this.xrl + 2 + 2) {
-      return Boolean.valueOf(false);
+    this.CNy = util.ae(this.CMx, this.CNm);
+    if (this.CNn < this.CNy + 2 + 2)
+    {
+      localBoolean = Boolean.FALSE;
+      AppMethodBeat.o(96469);
+      return localBoolean;
     }
-    this.xrk = util.ad(this.xqk, this.xqZ + 2 + this.xrl);
-    if (this.xra < this.xrl + 2 + 2 + this.xrk) {
-      return Boolean.valueOf(false);
+    this.CNx = util.ae(this.CMx, this.CNm + 2 + this.CNy);
+    if (this.CNn < this.CNy + 2 + 2 + this.CNx)
+    {
+      localBoolean = Boolean.FALSE;
+      AppMethodBeat.o(96469);
+      return localBoolean;
     }
-    this.xrn = (this.xqZ + 2);
-    this.xrm = (this.xrl + 2 + 2 + this.xqZ);
-    return Boolean.valueOf(true);
+    this.CNA = (this.CNm + 2);
+    this.CNz = (this.CNy + 2 + 2 + this.CNm);
+    Boolean localBoolean = Boolean.TRUE;
+    AppMethodBeat.o(96469);
+    return localBoolean;
   }
 }
 

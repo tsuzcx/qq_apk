@@ -3,10 +3,9 @@ package com.tencent.mm.pluginsdk.ui;
 import android.content.Context;
 import android.content.res.Resources;
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.platformtools.q;
-import com.tencent.mm.plugin.comm.a.a;
-import com.tencent.mm.plugin.comm.a.h;
+import com.tencent.mm.sdk.f.b;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.h.c;
 import com.tencent.mm.ui.tools.MMGestureGallery.c;
@@ -16,28 +15,34 @@ final class GetHdHeadImageGalleryView$b
 {
   private GetHdHeadImageGalleryView$b(GetHdHeadImageGalleryView paramGetHdHeadImageGalleryView) {}
   
-  public final void aRg()
+  public final void bxv()
   {
-    if ((GetHdHeadImageGalleryView.b(this.rZC) != null) && (GetHdHeadImageGalleryView.c(this.rZC) != null))
+    AppMethodBeat.i(79684);
+    if ((GetHdHeadImageGalleryView.b(this.vQD) != null) && (GetHdHeadImageGalleryView.c(this.vQD) != null))
     {
-      String[] arrayOfString = this.rZC.getContext().getResources().getStringArray(a.a.get_hd_head_img_alert);
-      h.a(this.rZC.getContext(), null, arrayOfString, "", new h.c()
+      String[] arrayOfString = this.vQD.getContext().getResources().getStringArray(2131755020);
+      h.a(this.vQD.getContext(), null, arrayOfString, "", new h.c()
       {
-        public final void gl(int paramAnonymousInt)
+        public final void iA(int paramAnonymousInt)
         {
+          AppMethodBeat.i(79683);
           switch (paramAnonymousInt)
           {
-          default: 
-            return;
           }
-          String str = com.tencent.mm.compatible.util.e.dzD + "hdImg_" + g.o(GetHdHeadImageGalleryView.c(GetHdHeadImageGalleryView.b.this.rZC).getBytes()) + System.currentTimeMillis() + ".jpg";
-          com.tencent.mm.vfs.e.deleteFile(str);
-          com.tencent.mm.vfs.e.r(GetHdHeadImageGalleryView.b(GetHdHeadImageGalleryView.b.this.rZC), str);
-          q.a(str, GetHdHeadImageGalleryView.b.this.rZC.getContext());
-          Toast.makeText(GetHdHeadImageGalleryView.b.this.rZC.getContext(), GetHdHeadImageGalleryView.b.this.rZC.getContext().getString(a.h.get_hd_head_img_save_tips, new Object[] { com.tencent.mm.compatible.util.e.dzD }), 1).show();
+          for (;;)
+          {
+            AppMethodBeat.o(79683);
+            return;
+            String str = com.tencent.mm.compatible.util.e.esr + "hdImg_" + g.w(GetHdHeadImageGalleryView.c(GetHdHeadImageGalleryView.b.this.vQD).getBytes()) + System.currentTimeMillis() + ".jpg";
+            com.tencent.mm.vfs.e.deleteFile(str);
+            com.tencent.mm.vfs.e.C(GetHdHeadImageGalleryView.b(GetHdHeadImageGalleryView.b.this.vQD), str);
+            b.a(str, GetHdHeadImageGalleryView.b.this.vQD.getContext());
+            Toast.makeText(GetHdHeadImageGalleryView.b.this.vQD.getContext(), GetHdHeadImageGalleryView.b.this.vQD.getContext().getString(2131300527, new Object[] { com.tencent.mm.compatible.util.e.esr }), 1).show();
+          }
         }
       });
     }
+    AppMethodBeat.o(79684);
   }
 }
 

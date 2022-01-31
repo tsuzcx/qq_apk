@@ -1,39 +1,39 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.h.a.jj;
+import com.tencent.mm.g.a.js;
 import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.b.c;
 import java.util.ArrayList;
 
 public abstract class a
-  extends c<jj>
+  extends c<js>
 {
-  protected ArrayList<String> rSR = new ArrayList(3);
+  protected ArrayList<String> vJP = new ArrayList(3);
   
   public a()
   {
-    this.udX = jj.class.getName().hashCode();
+    this.__eventId = js.class.getName().hashCode();
   }
   
   public static void a(String paramString, a parama)
   {
-    if (!parama.rSR.contains(paramString)) {
-      parama.rSR.add(paramString);
+    if (!parama.vJP.contains(paramString)) {
+      parama.vJP.add(paramString);
     }
-    com.tencent.mm.sdk.b.a.udP.c(parama);
-    e.VF(paramString);
+    com.tencent.mm.sdk.b.a.ymk.c(parama);
+    e.alc(paramString);
   }
   
   public static void b(String paramString, a parama)
   {
-    e.VG(paramString);
-    com.tencent.mm.sdk.b.a.udP.d(parama);
-    if (parama.rSR.contains(paramString)) {
-      parama.rSR.remove(paramString);
+    e.ald(paramString);
+    com.tencent.mm.sdk.b.a.ymk.d(parama);
+    if (parama.vJP.contains(paramString)) {
+      parama.vJP.remove(paramString);
     }
   }
   
-  public abstract void j(b paramb);
+  public abstract void i(b paramb);
 }
 
 

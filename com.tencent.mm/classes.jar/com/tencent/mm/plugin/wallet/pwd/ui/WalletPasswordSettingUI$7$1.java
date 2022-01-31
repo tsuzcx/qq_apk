@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class WalletPasswordSettingUI$7$1
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class WalletPasswordSettingUI$7$1
   
   public final void run()
   {
-    this.qpE.qpD.bUD();
+    AppMethodBeat.i(46355);
+    this.uaa.tZZ.cSM();
+    AppMethodBeat.o(46355);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletPasswordSettingUI.7.1
  * JD-Core Version:    0.7.0.1
  */

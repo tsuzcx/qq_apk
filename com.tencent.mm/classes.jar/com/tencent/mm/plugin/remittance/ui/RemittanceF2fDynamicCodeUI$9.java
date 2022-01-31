@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class RemittanceF2fDynamicCodeUI$9
-  implements n.a
+  implements p.a
 {
   RemittanceF2fDynamicCodeUI$9(RemittanceF2fDynamicCodeUI paramRemittanceF2fDynamicCodeUI) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm) {}
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm) {}
 }
 
 

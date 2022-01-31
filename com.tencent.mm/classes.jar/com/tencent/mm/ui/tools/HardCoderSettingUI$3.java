@@ -2,6 +2,7 @@ package com.tencent.mm.ui.tools;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class HardCoderSettingUI$3
   implements View.OnClickListener
@@ -10,8 +11,10 @@ final class HardCoderSettingUI$3
   
   public final void onClick(View paramView)
   {
-    HardCoderSettingUI.a(this.wcp, false);
-    this.wcp.showDialog(1);
+    AppMethodBeat.i(34872);
+    HardCoderSettingUI.a(this.AuJ, false);
+    this.AuJ.showDialog(1);
+    AppMethodBeat.o(34872);
   }
 }
 

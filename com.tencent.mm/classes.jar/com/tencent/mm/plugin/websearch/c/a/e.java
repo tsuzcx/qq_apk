@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.websearch.c.a;
 
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
@@ -14,30 +15,35 @@ import java.util.List;
 public final class e
   extends a<e.a>
 {
-  public List<e.a> kxO = Collections.emptyList();
+  public List<e.a> mTC;
   
   public e(String paramString)
   {
     super(paramString);
+    AppMethodBeat.i(91376);
+    this.mTC = Collections.emptyList();
+    AppMethodBeat.o(91376);
   }
   
-  public final void da(List<l> paramList)
+  public final void ee(List<l> paramList)
   {
-    this.kxO = new ArrayList(paramList.size());
+    AppMethodBeat.i(91377);
+    this.mTC = new ArrayList(paramList.size());
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       l locall = (l)paramList.next();
-      ad localad = ((j)g.r(j.class)).Fw().abl(locall.kwg);
+      ad localad = ((j)g.E(j.class)).YA().arw(locall.mRV);
       e.a locala = new e.a();
       locala.userName = localad.field_username;
-      locala.qWf = locall.content;
-      locala.aVr = localad.field_nickname;
-      locala.fGK = localad.field_conRemark;
-      locala.cMT = localad.vk();
-      locala.desc = localad.cCJ;
-      this.kxO.add(locala);
+      locala.uLr = locall.content;
+      locala.blZ = localad.field_nickname;
+      locala.hKa = localad.field_conRemark;
+      locala.dCJ = localad.Hq();
+      locala.desc = localad.dqT;
+      this.mTC.add(locala);
     }
+    AppMethodBeat.o(91377);
   }
 }
 

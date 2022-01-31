@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wxcredit.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletWXCreditChangeAmountUI$5
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class WalletWXCreditChangeAmountUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.rRF.XM();
-    this.rRF.showDialog(3);
+    AppMethodBeat.i(48693);
+    this.vIv.hideVKB();
+    this.vIv.showDialog(3);
+    AppMethodBeat.o(48693);
     return true;
   }
 }

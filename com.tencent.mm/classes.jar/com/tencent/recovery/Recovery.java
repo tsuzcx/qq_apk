@@ -15,30 +15,29 @@ import com.tencent.recovery.util.Util;
 
 public class Recovery
 {
-  private static Application application;
-  private static Context context;
-  private static long wKA;
-  private static String wKB;
-  private static boolean wKC = false;
-  private static boolean wKD = false;
-  private static int wKE = 0;
-  private static Application.ActivityLifecycleCallbacks wKF = new Application.ActivityLifecycleCallbacks()
+  private static RecoveryMessageHandler Bia;
+  private static long Bib;
+  private static String Bic;
+  private static boolean Bid = false;
+  private static boolean Bie = false;
+  private static int Bif = 0;
+  private static Application.ActivityLifecycleCallbacks Big = new Application.ActivityLifecycleCallbacks()
   {
     public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
     {
-      if (Recovery.wKD) {}
-      while (Recovery.cOw().hasMessages(3)) {
+      if (Recovery.Bie) {}
+      while (Recovery.dUl().hasMessages(3)) {
         return;
       }
-      Recovery.cOw().removeCallbacksAndMessages(null);
-      paramAnonymousActivity = Util.ht(Recovery.cOx());
-      paramAnonymousBundle = Recovery.cOx().getSharedPreferences(Recovery.wKB, 0).edit();
+      Recovery.dUl().removeCallbacksAndMessages(null);
+      paramAnonymousActivity = Util.iU(Recovery.dUm());
+      paramAnonymousBundle = Recovery.dUm().getSharedPreferences(Recovery.Bic, 0).edit();
       paramAnonymousBundle.putInt("KeyComponentOnCreateForeground", 1);
       paramAnonymousBundle.putInt("KeyComponentOnCreateExceptionType", 4096);
       paramAnonymousBundle.apply();
-      paramAnonymousBundle = OptionFactory.dS(paramAnonymousActivity, 1);
-      Recovery.cOw().sendEmptyMessageDelayed(3, paramAnonymousBundle.dEk);
-      RecoveryLog.i("Recovery", "%s markActivityOnCreated %s", new Object[] { paramAnonymousActivity, Long.valueOf(System.currentTimeMillis() - Recovery.auo()) });
+      paramAnonymousBundle = OptionFactory.fc(paramAnonymousActivity, 1);
+      Recovery.dUl().sendEmptyMessageDelayed(3, paramAnonymousBundle.eBM);
+      RecoveryLog.i("Recovery", "%s markActivityOnCreated %s", new Object[] { paramAnonymousActivity, Long.valueOf(System.currentTimeMillis() - Recovery.aTO()) });
     }
     
     public final void onActivityDestroyed(Activity paramAnonymousActivity) {}
@@ -51,32 +50,33 @@ public class Recovery
     
     public final void onActivityStarted(Activity paramAnonymousActivity)
     {
-      Recovery.cOy();
+      Recovery.dUn();
     }
     
     public final void onActivityStopped(Activity paramAnonymousActivity)
     {
-      Recovery.cOz();
-      if (Recovery.su() == 0)
+      Recovery.dUo();
+      if (Recovery.AL() == 0)
       {
-        RecoveryLog.i("Recovery", "%s onActivityStopped: activityForegroundCount is 0", new Object[] { Util.ht(Recovery.cOx()) });
-        Recovery.Jh(16);
+        RecoveryLog.i("Recovery", "%s onActivityStopped: activityForegroundCount is 0", new Object[] { Util.iU(Recovery.dUm()) });
+        Recovery.Sd(16);
       }
     }
   };
-  private static RecoveryMessageHandler wKz;
+  private static Application application;
+  private static Context context;
   
-  public static void Jh(int paramInt)
+  public static void Sd(int paramInt)
   {
     if (context == null) {}
-    while (wKD) {
+    while (Bie) {
       return;
     }
-    cOv();
-    Object localObject = Util.ht(context);
-    SharedPreferences localSharedPreferences = context.getSharedPreferences(wKB, 0);
-    RecoveryLog.i("Recovery", "%s Recovery.normal %s %d", new Object[] { localObject, Integer.toHexString(paramInt), Long.valueOf(System.currentTimeMillis() - wKA) });
-    wKz.removeCallbacksAndMessages(null);
+    dUk();
+    Object localObject = Util.iU(context);
+    SharedPreferences localSharedPreferences = context.getSharedPreferences(Bic, 0);
+    RecoveryLog.i("Recovery", "%s Recovery.normal %s %d", new Object[] { localObject, Integer.toHexString(paramInt), Long.valueOf(System.currentTimeMillis() - Bib) });
+    Bia.removeCallbacksAndMessages(null);
     localObject = localSharedPreferences.edit();
     ((SharedPreferences.Editor)localObject).remove("KeyComponentOnCreateExceptionType");
     ((SharedPreferences.Editor)localObject).putInt("KeyComponentOnCreateNormalType", paramInt);
@@ -84,39 +84,39 @@ public class Recovery
     destroy();
   }
   
-  public static void cOs()
+  public static void dUh()
   {
-    if (wKD) {}
-    while (wKC) {
+    if (Bie) {}
+    while (Bid) {
       return;
     }
-    wKC = true;
-    Object localObject = Util.ht(context);
-    int i = RecoveryLogic.bI(context, (String)localObject);
-    RecoveryLog.i("Recovery", "%s markApplicationOnCreateNormal %d", new Object[] { localObject, Long.valueOf(System.currentTimeMillis() - wKA) });
-    SharedPreferences.Editor localEditor = context.getSharedPreferences(wKB, 0).edit();
+    Bid = true;
+    Object localObject = Util.iU(context);
+    int i = RecoveryLogic.bV(context, (String)localObject);
+    RecoveryLog.i("Recovery", "%s markApplicationOnCreateNormal %d", new Object[] { localObject, Long.valueOf(System.currentTimeMillis() - Bib) });
+    SharedPreferences.Editor localEditor = context.getSharedPreferences(Bic, 0).edit();
     localEditor.remove("KeyAppOnCreateExceptionType");
     localEditor.putInt("KeyAppOnCreateNormalType", 256);
-    if (RecoveryLogic.bI(context, (String)localObject) == 16)
+    if (RecoveryLogic.bV(context, (String)localObject) == 16)
     {
       localEditor.putInt("KeyComponentOnCreateForeground", i);
       localEditor.putInt("KeyComponentOnCreateExceptionType", 4096);
-      localObject = OptionFactory.dS((String)localObject, i);
-      wKz.sendEmptyMessageDelayed(2, ((ProcessOptions)localObject).dEk);
+      localObject = OptionFactory.fc((String)localObject, i);
+      Bia.sendEmptyMessageDelayed(2, ((ProcessOptions)localObject).eBM);
     }
     localEditor.apply();
   }
   
-  public static void cOt()
+  public static void dUi()
   {
     if (context == null) {}
-    while (wKD) {
+    while (Bie) {
       return;
     }
-    cOv();
-    RecoveryLog.i("Recovery", "%s Recovery.crash %d", new Object[] { Util.ht(context), Long.valueOf(System.currentTimeMillis() - wKA) });
-    SharedPreferences.Editor localEditor = context.getSharedPreferences(wKB, 0).edit();
-    if (wKC) {
+    dUk();
+    RecoveryLog.i("Recovery", "%s Recovery.crash %d", new Object[] { Util.iU(context), Long.valueOf(System.currentTimeMillis() - Bib) });
+    SharedPreferences.Editor localEditor = context.getSharedPreferences(Bic, 0).edit();
+    if (Bid) {
       localEditor.putInt("KeyComponentOnCreateExceptionType", 65536);
     }
     for (;;)
@@ -128,16 +128,16 @@ public class Recovery
     }
   }
   
-  public static void cOu()
+  public static void dUj()
   {
     if (context == null) {}
-    while (wKD) {
+    while (Bie) {
       return;
     }
-    cOv();
-    RecoveryLog.i("Recovery", "%s Recovery.anr %d", new Object[] { Util.ht(context), Long.valueOf(System.currentTimeMillis() - wKA) });
-    SharedPreferences.Editor localEditor = context.getSharedPreferences(wKB, 0).edit();
-    if (wKC) {
+    dUk();
+    RecoveryLog.i("Recovery", "%s Recovery.anr %d", new Object[] { Util.iU(context), Long.valueOf(System.currentTimeMillis() - Bib) });
+    SharedPreferences.Editor localEditor = context.getSharedPreferences(Bic, 0).edit();
+    if (Bid) {
       localEditor.putInt("KeyComponentOnCreateExceptionType", 1048576);
     }
     for (;;)
@@ -149,20 +149,20 @@ public class Recovery
     }
   }
   
-  private static void cOv()
+  private static void dUk()
   {
     if (context == null) {}
-    while (wKD) {
+    while (Bie) {
       return;
     }
-    RecoveryLog.i("Recovery", "%s markFinalStatus", new Object[] { Util.ht(context) });
-    wKD = true;
+    RecoveryLog.i("Recovery", "%s markFinalStatus", new Object[] { Util.iU(context) });
+    Bie = true;
   }
   
   private static void destroy()
   {
     if (application != null) {
-      application.unregisterActivityLifecycleCallbacks(wKF);
+      application.unregisterActivityLifecycleCallbacks(Big);
     }
   }
   

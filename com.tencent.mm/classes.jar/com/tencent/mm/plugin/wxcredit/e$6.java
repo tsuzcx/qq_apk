@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.wxcredit;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet_core.c.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet_core.c.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.c;
 import com.tencent.mm.wallet_core.d.g;
@@ -16,33 +17,32 @@ final class e$6
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt1 == 0)
+    AppMethodBeat.i(48637);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      bool1 = bool2;
-      if (paramInt2 == 0)
-      {
-        this.rQD.a(this.gfb, 0, e.al(this.rQD));
-        bool1 = true;
-      }
+      this.vHu.a(this.hwZ, 0, e.al(this.vHu));
+      AppMethodBeat.o(48637);
+      return true;
     }
-    return bool1;
+    AppMethodBeat.o(48637);
+    return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
-    e.am(this.rQD).putBoolean("key_is_follow_bank_username", ((Boolean)paramVarArgs[0]).booleanValue());
-    e.an(this.rQD);
-    this.wBd.a(new y(), true, 1);
+    AppMethodBeat.i(48638);
+    e.am(this.vHu).putBoolean("key_is_follow_bank_username", ((Boolean)paramVarArgs[0]).booleanValue());
+    e.an(this.vHu);
+    this.AXB.a(new ab(), true, 1);
+    AppMethodBeat.o(48638);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.e.6
  * JD-Core Version:    0.7.0.1
  */

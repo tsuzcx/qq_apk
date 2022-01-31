@@ -2,43 +2,57 @@ package android.support.v7.widget;
 
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
+import android.graphics.Outline;
 import android.graphics.drawable.Drawable;
 
-class b
+final class b
   extends Drawable
 {
-  final ActionBarContainer WJ;
+  final ActionBarContainer Xw;
   
   public b(ActionBarContainer paramActionBarContainer)
   {
-    this.WJ = paramActionBarContainer;
+    this.Xw = paramActionBarContainer;
   }
   
-  public void draw(Canvas paramCanvas)
+  public final void draw(Canvas paramCanvas)
   {
-    if (this.WJ.WQ) {
-      if (this.WJ.WP != null) {
-        this.WJ.WP.draw(paramCanvas);
+    if (this.Xw.XD) {
+      if (this.Xw.XC != null) {
+        this.Xw.XC.draw(paramCanvas);
       }
     }
     do
     {
       return;
-      if (this.WJ.Vh != null) {
-        this.WJ.Vh.draw(paramCanvas);
+      if (this.Xw.VW != null) {
+        this.Xw.VW.draw(paramCanvas);
       }
-    } while ((this.WJ.WO == null) || (!this.WJ.WR));
-    this.WJ.WO.draw(paramCanvas);
+    } while ((this.Xw.XB == null) || (!this.Xw.XE));
+    this.Xw.XB.draw(paramCanvas);
   }
   
-  public int getOpacity()
+  public final int getOpacity()
   {
     return 0;
   }
   
-  public void setAlpha(int paramInt) {}
+  public final void getOutline(Outline paramOutline)
+  {
+    if (this.Xw.XD) {
+      if (this.Xw.XC != null) {
+        this.Xw.XC.getOutline(paramOutline);
+      }
+    }
+    while (this.Xw.VW == null) {
+      return;
+    }
+    this.Xw.VW.getOutline(paramOutline);
+  }
   
-  public void setColorFilter(ColorFilter paramColorFilter) {}
+  public final void setAlpha(int paramInt) {}
+  
+  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

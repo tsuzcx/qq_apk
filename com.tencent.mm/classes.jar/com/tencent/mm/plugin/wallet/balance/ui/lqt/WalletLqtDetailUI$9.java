@@ -1,20 +1,37 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.protocal.c.bhm;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletLqtDetailUI$9
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
-  WalletLqtDetailUI$9(WalletLqtDetailUI paramWalletLqtDetailUI) {}
+  WalletLqtDetailUI$9(WalletLqtDetailUI paramWalletLqtDetailUI, bfx parambfx) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (!bk.bl(WalletLqtDetailUI.c(this.qil).tCl)) {
-      e.l(this.qil, WalletLqtDetailUI.c(this.qil).tCl, false);
+    AppMethodBeat.i(45533);
+    if (this.tPS.xuO != 1)
+    {
+      if (this.tPS.xuO != 2) {
+        break label62;
+      }
+      if (!bo.isNullOrNil(this.tPS.wPJ)) {
+        e.m(this.tPQ, this.tPS.wPJ, false);
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(45533);
+      return false;
+      label62:
+      if ((this.tPS.xuO == 3) && (!bo.isNullOrNil(this.tPS.wFW)) && (!bo.isNullOrNil(this.tPS.wPJ))) {
+        e.q(this.tPS.wFW, this.tPS.wPJ, 0, 1061);
+      }
     }
   }
 }

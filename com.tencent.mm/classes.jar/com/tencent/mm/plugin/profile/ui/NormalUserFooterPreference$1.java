@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.e.l;
 
 final class NormalUserFooterPreference$1
-  extends k<NormalUserFooterPreference.e, String>
+  extends l<NormalUserFooterPreference.e, String>
 {
   NormalUserFooterPreference$1(NormalUserFooterPreference paramNormalUserFooterPreference) {}
 }

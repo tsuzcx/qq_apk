@@ -6,12 +6,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.f;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,85 +19,94 @@ import java.util.List;
 final class FileExplorerUI$a
   extends BaseAdapter
 {
-  String eFm;
-  private File slN;
-  private File slO;
-  private File[] slP;
+  String fVd;
+  private File wep;
+  private File weq;
+  private File[] wer;
   
   private FileExplorerUI$a(FileExplorerUI paramFileExplorerUI) {}
   
-  public final void g(File paramFile1, File paramFile2)
+  private void a(File[] paramArrayOfFile)
   {
-    this.slN = paramFile1;
-    if (paramFile2.getAbsolutePath().equalsIgnoreCase(this.eFm)) {
-      this.slN = null;
-    }
-    this.slO = paramFile2;
-    if ((this.slO.canRead()) && (this.slO.isDirectory()))
+    AppMethodBeat.i(105850);
+    if ((paramArrayOfFile == null) || (paramArrayOfFile.length == 0))
     {
-      this.slP = this.slO.listFiles(new FileExplorerUI.a.1(this));
-      if (this.slP == null) {
-        this.slP = new File[0];
-      }
-      if (this.slP.length > 0)
-      {
-        paramFile1 = this.slP;
-        if ((paramFile1 != null) && (paramFile1.length != 0)) {
-          break label106;
-        }
+      AppMethodBeat.o(105850);
+      return;
+    }
+    Object localObject2 = new ArrayList();
+    Object localObject1 = new ArrayList();
+    int j = paramArrayOfFile.length;
+    int i = 0;
+    if (i < j)
+    {
+      File localFile = paramArrayOfFile[i];
+      FileExplorerUI.b localb = new FileExplorerUI.b(this.wem, (byte)0);
+      localb.file = localFile;
+      localb.wet = g.wq(localFile.getName()).toUpperCase();
+      if (localFile.isDirectory()) {
+        ((List)localObject2).add(localb);
       }
       for (;;)
       {
-        return;
-        label106:
-        Object localObject1 = new ArrayList();
-        paramFile2 = new ArrayList();
-        int j = paramFile1.length;
-        int i = 0;
-        if (i < j)
-        {
-          Object localObject2 = paramFile1[i];
-          FileExplorerUI.b localb = new FileExplorerUI.b(this.slK, (byte)0);
-          localb.file = localObject2;
-          localb.slR = g.oY(localObject2.getName()).toUpperCase();
-          if (localObject2.isDirectory()) {
-            ((List)localObject1).add(localb);
-          }
-          for (;;)
-          {
-            i += 1;
-            break;
-            paramFile2.add(localb);
-          }
-        }
-        Collections.sort((List)localObject1, new FileExplorerUI.a.2(this));
-        Collections.sort(paramFile2, new FileExplorerUI.a.3(this));
-        localObject1 = ((List)localObject1).iterator();
-        i = 0;
-        while (((Iterator)localObject1).hasNext())
-        {
-          paramFile1[i] = ((FileExplorerUI.b)((Iterator)localObject1).next()).file;
-          i += 1;
-        }
-        paramFile2 = paramFile2.iterator();
-        while (paramFile2.hasNext())
-        {
-          paramFile1[i] = ((FileExplorerUI.b)paramFile2.next()).file;
-          i += 1;
-        }
+        i += 1;
+        break;
+        ((List)localObject1).add(localb);
       }
     }
-    this.slP = new File[0];
+    Collections.sort((List)localObject2, new FileExplorerUI.a.2(this));
+    Collections.sort((List)localObject1, new FileExplorerUI.a.3(this));
+    localObject2 = ((List)localObject2).iterator();
+    i = 0;
+    while (((Iterator)localObject2).hasNext())
+    {
+      paramArrayOfFile[i] = ((FileExplorerUI.b)((Iterator)localObject2).next()).file;
+      i += 1;
+    }
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      paramArrayOfFile[i] = ((FileExplorerUI.b)((Iterator)localObject1).next()).file;
+      i += 1;
+    }
+    AppMethodBeat.o(105850);
+  }
+  
+  public final void g(File paramFile1, File paramFile2)
+  {
+    AppMethodBeat.i(105847);
+    this.wep = paramFile1;
+    if (paramFile2.getAbsolutePath().equalsIgnoreCase(this.fVd)) {
+      this.wep = null;
+    }
+    this.weq = paramFile2;
+    if ((this.weq.canRead()) && (this.weq.isDirectory()))
+    {
+      this.wer = this.weq.listFiles(new FileExplorerUI.a.1(this));
+      if (this.wer == null) {
+        this.wer = new File[0];
+      }
+      if (this.wer.length > 0)
+      {
+        a(this.wer);
+        AppMethodBeat.o(105847);
+      }
+    }
+    else
+    {
+      this.wer = new File[0];
+    }
+    AppMethodBeat.o(105847);
   }
   
   public final int getCount()
   {
     int i = 0;
-    if (this.slP == null) {
+    if (this.wer == null) {
       return 0;
     }
-    int j = this.slP.length;
-    if (this.slN != null) {
+    int j = this.wer.length;
+    if (this.wep != null) {
       i = 1;
     }
     return i + j;
@@ -107,15 +114,21 @@ final class FileExplorerUI$a
   
   public final Object getItem(int paramInt)
   {
-    if ((this.slN != null) && (paramInt == 0)) {
-      return this.slN;
+    AppMethodBeat.i(105848);
+    if ((this.wep != null) && (paramInt == 0))
+    {
+      localObject = this.wep;
+      AppMethodBeat.o(105848);
+      return localObject;
     }
-    y.d("FileExplorer", "pos:" + paramInt + ", subFile length:" + this.slP.length);
-    File[] arrayOfFile = this.slP;
-    if (this.slN == null) {}
+    ab.d("FileExplorer", "pos:" + paramInt + ", subFile length:" + this.wer.length);
+    Object localObject = this.wer;
+    if (this.wep == null) {}
     for (;;)
     {
-      return arrayOfFile[paramInt];
+      localObject = localObject[paramInt];
+      AppMethodBeat.o(105848);
+      return localObject;
       paramInt -= 1;
     }
   }
@@ -127,34 +140,36 @@ final class FileExplorerUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(105849);
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramViewGroup = View.inflate(this.slK, a.h.mail_file_explorer_item, null);
-      paramView = new FileExplorerUI.c(this.slK, (byte)0);
-      paramView.gSx = ((ImageView)paramViewGroup.findViewById(a.g.file_icon_iv));
-      paramView.fhD = ((TextView)paramViewGroup.findViewById(a.g.file_name_tv));
-      paramView.slS = ((TextView)paramViewGroup.findViewById(a.g.file_summary_tv));
+      paramViewGroup = View.inflate(this.wem, 2130970064, null);
+      paramView = new FileExplorerUI.c(this.wem, (byte)0);
+      paramView.ivs = ((ImageView)paramViewGroup.findViewById(2131825863));
+      paramView.gzk = ((TextView)paramViewGroup.findViewById(2131824017));
+      paramView.weu = ((TextView)paramViewGroup.findViewById(2131825875));
       paramViewGroup.setTag(paramView);
     }
     Object localObject = (FileExplorerUI.c)paramViewGroup.getTag();
     paramView = (File)getItem(paramInt);
-    if (paramView == this.slN)
+    if (paramView == this.wep)
     {
-      ((FileExplorerUI.c)localObject).fhD.setText(paramView.getName());
-      ((FileExplorerUI.c)localObject).gSx.setImageResource(a.f.qqmail_attach_back);
-      ((FileExplorerUI.c)localObject).slS.setVisibility(0);
+      ((FileExplorerUI.c)localObject).gzk.setText(paramView.getName());
+      ((FileExplorerUI.c)localObject).ivs.setImageResource(2130840018);
+      ((FileExplorerUI.c)localObject).weu.setVisibility(0);
+      AppMethodBeat.o(105849);
       return paramViewGroup;
     }
-    ((FileExplorerUI.c)localObject).gSx.setImageResource(FileExplorerUI.M(paramView));
-    ((FileExplorerUI.c)localObject).fhD.setText(paramView.getName());
-    localObject = ((FileExplorerUI.c)localObject).slS;
+    ((FileExplorerUI.c)localObject).ivs.setImageResource(FileExplorerUI.V(paramView));
+    ((FileExplorerUI.c)localObject).gzk.setText(paramView.getName());
+    localObject = ((FileExplorerUI.c)localObject).weu;
     StringBuilder localStringBuilder = new StringBuilder().append(DateFormat.format("yyyy-MM-dd hh:mm:ss", paramView.lastModified()).toString());
     if (paramView.isDirectory()) {}
-    for (paramView = "";; paramView = "  " + bk.cm(paramView.length()))
+    for (paramView = "";; paramView = "  " + bo.hk(paramView.length()))
     {
       ((TextView)localObject).setText(paramView);
-      return paramViewGroup;
+      break;
     }
   }
 }

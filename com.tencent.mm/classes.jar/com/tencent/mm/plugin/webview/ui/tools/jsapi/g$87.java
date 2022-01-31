@@ -1,39 +1,38 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.plugin.webview.model.ag;
-import com.tencent.mm.plugin.webview.model.d.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.h;
 
 final class g$87
-  implements d.b
+  implements DialogInterface.OnKeyListener
 {
-  g$87(g paramg, String paramString, i parami) {}
+  g$87(g paramg) {}
   
-  public final void b(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    y.i("MicroMsg.MsgHandler", "doDownloadVoice, on cdn finish, is success : %b, local id : %s, media id is : %s", new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2 });
-    if ((!bk.bl(paramString2)) && (paramString2.equals(this.rAb)))
+    AppMethodBeat.i(155007);
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
     {
-      com.tencent.mm.plugin.webview.modeltools.g.ccK().a(this);
-      if (g.k(this.rzi) != null)
+      h.a(g.j(this.vqm), true, g.j(this.vqm).getString(2131305881), "", g.j(this.vqm).getString(2131305877), g.j(this.vqm).getString(2131305878), new DialogInterface.OnClickListener()new g.87.2
       {
-        g.k(this.rzi).dismiss();
-        g.a(this.rzi, null);
-      }
-      if (!paramBoolean) {
-        g.a(this.rzi, this.rzk, "downloadVoice:fail", null);
-      }
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(155006);
+          g.E(g.87.this.vqm).cancel();
+          AppMethodBeat.o(155006);
+        }
+      }, new g.87.2(this));
+      AppMethodBeat.o(155007);
+      return true;
     }
-    else
-    {
-      return;
-    }
-    paramString2 = new HashMap();
-    paramString2.put("localId", paramString1);
-    g.a(this.rzi, this.rzk, "downloadVoice:ok", paramString2);
+    AppMethodBeat.o(155007);
+    return false;
   }
 }
 

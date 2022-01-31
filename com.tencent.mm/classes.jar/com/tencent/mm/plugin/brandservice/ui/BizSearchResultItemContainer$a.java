@@ -1,52 +1,60 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BizSearchResultItemContainer$a
 {
-  View ida;
-  View idb;
-  View idc;
+  View jTP;
+  View jTQ;
+  View jTR;
   
-  private void v(boolean paramBoolean1, boolean paramBoolean2)
+  private void w(boolean paramBoolean1, boolean paramBoolean2)
   {
     int j = 0;
-    View localView = this.ida;
+    AppMethodBeat.i(13901);
+    View localView = this.jTP;
     if (paramBoolean1)
     {
       i = 0;
       localView.setVisibility(i);
-      this.idb.setVisibility(8);
-      localView = this.idc;
+      this.jTQ.setVisibility(8);
+      localView = this.jTR;
       if (!paramBoolean2) {
-        break label56;
+        break label68;
       }
     }
-    label56:
+    label68:
     for (int i = j;; i = 8)
     {
       localView.setVisibility(i);
+      AppMethodBeat.o(13901);
       return;
       i = 8;
       break;
     }
   }
   
-  public final void ov(int paramInt)
+  public final void sb(int paramInt)
   {
+    AppMethodBeat.i(13900);
     switch (paramInt)
     {
     default: 
-      v(false, false);
+      w(false, false);
+      AppMethodBeat.o(13900);
       return;
     case 1: 
-      v(true, false);
+      w(true, false);
+      AppMethodBeat.o(13900);
       return;
     case 2: 
-      v(false, true);
+      w(false, true);
+      AppMethodBeat.o(13900);
       return;
     }
-    v(false, false);
+    w(false, false);
+    AppMethodBeat.o(13900);
   }
 }
 

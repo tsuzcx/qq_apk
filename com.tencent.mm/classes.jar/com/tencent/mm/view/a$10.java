@@ -1,6 +1,7 @@
 package com.tencent.mm.view;
 
-import com.tencent.mm.bt.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bs.b;
 
 final class a$10
   implements Runnable
@@ -9,7 +10,9 @@ final class a$10
   
   public final void run()
   {
-    this.wvE.getPresenter().onAttachedToWindow();
+    AppMethodBeat.i(116382);
+    this.AQD.getPresenter().onAttachedToWindow();
+    AppMethodBeat.o(116382);
   }
 }
 

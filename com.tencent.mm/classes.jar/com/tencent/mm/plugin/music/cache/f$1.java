@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.music.cache;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.f.c.b;
 
 final class f$1
@@ -9,11 +10,13 @@ final class f$1
   
   public final void run()
   {
-    long l = this.myd;
-    if (e.bmM()) {
-      ((c)b.Q(c.class)).fk(l);
+    AppMethodBeat.i(137421);
+    long l = this.val$currentTime;
+    if (e.bVi()) {
+      ((c)b.am(c.class)).kI(l);
     }
-    f.a(this.mye);
+    f.a(this.oYl);
+    AppMethodBeat.o(137421);
   }
 }
 

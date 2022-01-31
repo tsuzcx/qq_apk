@@ -1,21 +1,27 @@
 package com.tencent.mm.plugin.wear.model;
 
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
 
 final class e$2
-  implements g.a
+  implements h.a
 {
   e$2(e parame) {}
   
-  public final void a(g paramg, g.c paramc)
+  public final void a(h paramh, h.c paramc)
   {
-    if (paramc == null) {}
-    while ((paramc.mdw <= 0) || (!a.bYL().qRu.qRM.qSB.equals(paramc.talker))) {
+    AppMethodBeat.i(26298);
+    if (paramc == null)
+    {
+      AppMethodBeat.o(26298);
       return;
     }
-    a.bYL().qRA.a(new e.2.1(this));
+    if ((paramc.oDS > 0) && (a.cYy().uGC.uGU.uHI.equals(paramc.talker))) {
+      a.cYy().uGI.a(new e.2.1(this));
+    }
+    AppMethodBeat.o(26298);
   }
 }
 

@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/g6" android:layout_width="120.0dip" android:layout_height="120.0dip">
-        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/b3t" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="31.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/g7" style="@android:style/Widget.ProgressBar" />
-        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/a23" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/afm" />
-    </LinearLayout>
-</FrameLayout>
+<Space android:layout_width="fill_parent" android:layout_height="@dimen/g9"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

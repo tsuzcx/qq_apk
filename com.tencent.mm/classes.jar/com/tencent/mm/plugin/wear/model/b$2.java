@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wear.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.f.d;
 
@@ -10,8 +11,10 @@ final class b$2
   
   public final void execute()
   {
-    a.bYL();
-    r.b(20008, null, false);
+    AppMethodBeat.i(26275);
+    a.cYy();
+    r.a(20008, null, false);
+    AppMethodBeat.o(26275);
   }
   
   public final String getName()

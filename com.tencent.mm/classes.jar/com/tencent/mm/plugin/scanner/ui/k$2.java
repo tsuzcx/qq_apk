@@ -5,9 +5,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
-import com.tencent.mm.R.l;
-import com.tencent.mm.plugin.scanner.util.r;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.util.t;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class k$2
   implements Runnable
@@ -16,34 +16,38 @@ final class k$2
   
   public final void run()
   {
-    if (System.currentTimeMillis() - k.a(this.nMa) > 30000L)
+    AppMethodBeat.i(81168);
+    if (System.currentTimeMillis() - k.a(this.qzH) > 30000L)
     {
-      y.d("MicroMsg.scanner.ScanModeImage", "show scan img nothing recognize");
-      this.nMa.nLB.ix(true);
-      this.nMa.gSy.setVisibility(8);
-      k.b(this.nMa).setText(R.l.scan_img_nothing_recognize);
-      k.b(this.nMa).setVisibility(0);
-      if (k.c(this.nMa) == null) {
-        k.a(this.nMa, new View.OnTouchListener()
+      ab.d("MicroMsg.scanner.ScanModeImage", "show scan img nothing recognize");
+      this.qzH.qzg.kA(true);
+      this.qzH.ivt.setVisibility(8);
+      k.b(this.qzH).setText(2131302903);
+      k.b(this.qzH).setVisibility(0);
+      if (k.c(this.qzH) == null) {
+        k.a(this.qzH, new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
-            k.2.this.nMa.nLB.ix(false);
-            k.2.this.nMa.gSy.setVisibility(0);
-            k.2.this.nMa.gSy.setText(r.eD(r.nPX, k.2.this.nMa.nLB.getContext().getString(R.l.scan_img_tips_focus)));
-            k.b(k.2.this.nMa).setVisibility(8);
-            k.a(k.2.this.nMa, System.currentTimeMillis());
+            AppMethodBeat.i(81167);
+            k.2.this.qzH.qzg.kA(false);
+            k.2.this.qzH.ivt.setVisibility(0);
+            k.2.this.qzH.ivt.setText(t.ge(t.qDQ, k.2.this.qzH.qzg.getContext().getString(2131302905)));
+            k.b(k.2.this.qzH).setVisibility(8);
+            k.a(k.2.this.qzH, System.currentTimeMillis());
+            AppMethodBeat.o(81167);
             return false;
           }
         });
       }
-      k.d(this.nMa).setOnTouchListener(k.c(this.nMa));
+      k.d(this.qzH).setOnTouchListener(k.c(this.qzH));
     }
+    AppMethodBeat.o(81168);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.k.2
  * JD-Core Version:    0.7.0.1
  */

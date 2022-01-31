@@ -1,121 +1,131 @@
 package com.google.android.gms.auth.api.signin.internal;
 
-import android.accounts.Account;
-import android.content.Context;
-import android.content.Intent;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.PendingResults;
+import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.common.internal.zzac;
-import com.google.android.gms.internal.zzaax;
-import com.google.android.gms.internal.zzabk;
-import com.google.android.gms.internal.zzacm;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.google.android.gms.common.api.internal.StatusPendingResult;
+import com.google.android.gms.common.internal.Preconditions;
+import com.google.android.gms.common.logging.Logger;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public final class zze
+  implements Runnable
 {
-  private static zzacm zzakx = new zzacm("GoogleSignInCommon", new String[0]);
+  private static final Logger zzer;
+  private final StatusPendingResult zzes;
+  private final String zzz;
   
-  public static GoogleSignInResult getSignInResultFromIntent(Intent paramIntent)
+  static
   {
-    if ((paramIntent == null) || ((!paramIntent.hasExtra("googleSignInStatus")) && (!paramIntent.hasExtra("googleSignInAccount")))) {
-      return null;
-    }
-    GoogleSignInAccount localGoogleSignInAccount = (GoogleSignInAccount)paramIntent.getParcelableExtra("googleSignInAccount");
-    paramIntent = (Status)paramIntent.getParcelableExtra("googleSignInStatus");
-    if (localGoogleSignInAccount != null) {
-      paramIntent = Status.zzazx;
-    }
-    return new GoogleSignInResult(localGoogleSignInAccount, paramIntent);
+    AppMethodBeat.i(50420);
+    zzer = new Logger("RevokeAccessOperation", new String[0]);
+    AppMethodBeat.o(50420);
   }
   
-  public static Intent zza(Context paramContext, GoogleSignInOptions paramGoogleSignInOptions)
+  private zze(String paramString)
   {
-    zzakx.zzb("GoogleSignInCommon", new Object[] { "getSignInIntent()" });
-    paramGoogleSignInOptions = new SignInConfiguration(paramContext.getPackageName(), paramGoogleSignInOptions);
-    Intent localIntent = new Intent("com.google.android.gms.auth.GOOGLE_SIGN_IN");
-    localIntent.setClass(paramContext, SignInHubActivity.class);
-    localIntent.putExtra("config", paramGoogleSignInOptions);
-    return localIntent;
+    AppMethodBeat.i(50417);
+    Preconditions.checkNotEmpty(paramString);
+    this.zzz = paramString;
+    this.zzes = new StatusPendingResult(null);
+    AppMethodBeat.o(50417);
   }
   
-  static GoogleSignInResult zza(zzn paramzzn, GoogleSignInOptions paramGoogleSignInOptions)
+  public static PendingResult<Status> zzg(String paramString)
   {
-    zzakx.zzb("GoogleSignInCommon", new Object[] { "getEligibleSavedSignInResult()" });
-    zzac.zzw(paramGoogleSignInOptions);
-    GoogleSignInOptions localGoogleSignInOptions = paramzzn.zzrC();
-    if (localGoogleSignInOptions == null) {}
-    do
+    AppMethodBeat.i(50419);
+    if (paramString == null)
     {
-      do
+      paramString = PendingResults.immediateFailedResult(new Status(4), null);
+      AppMethodBeat.o(50419);
+      return paramString;
+    }
+    paramString = new zze(paramString);
+    new Thread(paramString).start();
+    paramString = paramString.zzes;
+    AppMethodBeat.o(50419);
+    return paramString;
+  }
+  
+  public final void run()
+  {
+    AppMethodBeat.i(50418);
+    Object localObject1 = Status.RESULT_INTERNAL_ERROR;
+    for (;;)
+    {
+      try
       {
-        return null;
-      } while ((!zza(localGoogleSignInOptions.getAccount(), paramGoogleSignInOptions.getAccount())) || (paramGoogleSignInOptions.zzrk()) || ((paramGoogleSignInOptions.isIdTokenRequested()) && ((!localGoogleSignInOptions.isIdTokenRequested()) || (!paramGoogleSignInOptions.getServerClientId().equals(localGoogleSignInOptions.getServerClientId())))) || (!new HashSet(localGoogleSignInOptions.zzrj()).containsAll(new HashSet(paramGoogleSignInOptions.zzrj()))));
-      paramzzn = paramzzn.zzrB();
-    } while ((paramzzn == null) || (paramzzn.zza()));
-    return new GoogleSignInResult(paramzzn, Status.zzazx);
-  }
-  
-  public static OptionalPendingResult<GoogleSignInResult> zza(GoogleApiClient paramGoogleApiClient, Context paramContext, GoogleSignInOptions paramGoogleSignInOptions)
-  {
-    paramContext = zzn.zzas(paramContext);
-    GoogleSignInResult localGoogleSignInResult = zza(paramContext, paramGoogleSignInOptions);
-    if (localGoogleSignInResult != null)
-    {
-      zzakx.zzb("GoogleSignInCommon", new Object[] { "Eligible saved sign in result found" });
-      return PendingResults.zzb(localGoogleSignInResult, paramGoogleApiClient);
+        localObject2 = String.valueOf("https://accounts.google.com/o/oauth2/revoke?token=");
+        localObject3 = String.valueOf(this.zzz);
+        if (((String)localObject3).length() != 0)
+        {
+          localObject2 = ((String)localObject2).concat((String)localObject3);
+          localObject2 = (HttpURLConnection)new URL((String)localObject2).openConnection();
+          ((HttpURLConnection)localObject2).setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+          i = ((HttpURLConnection)localObject2).getResponseCode();
+          if (i != 200) {
+            continue;
+          }
+          localObject2 = Status.RESULT_SUCCESS;
+          localObject1 = localObject2;
+        }
+      }
+      catch (IOException localIOException1)
+      {
+        Object localObject2;
+        int i;
+        localObject3 = zzer;
+        String str1 = String.valueOf(localIOException1.toString());
+        if (str1.length() != 0)
+        {
+          str1 = "IOException when revoking access: ".concat(str1);
+          ((Logger)localObject3).e(str1, new Object[0]);
+          continue;
+          zzer.e("Unable to revoke access!", new Object[0]);
+          continue;
+        }
+        str1 = new String("IOException when revoking access: ");
+        continue;
+      }
+      catch (Exception localException1)
+      {
+        Object localObject3 = zzer;
+        String str2 = String.valueOf(localException1.toString());
+        if (str2.length() != 0)
+        {
+          str2 = "Exception when revoking access: ".concat(str2);
+          ((Logger)localObject3).e(str2, new Object[0]);
+          continue;
+        }
+        str2 = new String("Exception when revoking access: ");
+        continue;
+      }
+      try
+      {
+        zzer.d(26 + "Response Code: " + i, new Object[0]);
+        this.zzes.setResult((Result)localObject1);
+        AppMethodBeat.o(50418);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        continue;
+      }
+      catch (IOException localIOException2)
+      {
+        continue;
+      }
+      localObject2 = new String((String)localObject2);
     }
-    return zza(paramGoogleApiClient, paramContext, paramGoogleSignInOptions);
-  }
-  
-  private static OptionalPendingResult<GoogleSignInResult> zza(GoogleApiClient paramGoogleApiClient, zzn paramzzn, GoogleSignInOptions paramGoogleSignInOptions)
-  {
-    zzakx.zzb("GoogleSignInCommon", new Object[] { "trySilentSignIn()" });
-    return new zzabk(paramGoogleApiClient.zza(new zze.1(paramGoogleApiClient, paramzzn, paramGoogleSignInOptions)));
-  }
-  
-  public static PendingResult<Status> zza(GoogleApiClient paramGoogleApiClient, Context paramContext)
-  {
-    zzakx.zzb("GoogleSignInCommon", new Object[] { "Signing out" });
-    zzar(paramContext);
-    return paramGoogleApiClient.zzb(new zze.2(paramGoogleApiClient));
-  }
-  
-  private static boolean zza(Account paramAccount1, Account paramAccount2)
-  {
-    if (paramAccount1 == null) {
-      return paramAccount2 == null;
-    }
-    return paramAccount1.equals(paramAccount2);
-  }
-  
-  private static void zzar(Context paramContext)
-  {
-    zzn.zzas(paramContext).zzrD();
-    paramContext = GoogleApiClient.zzvm().iterator();
-    while (paramContext.hasNext()) {
-      ((GoogleApiClient)paramContext.next()).zzvn();
-    }
-    zzaax.zzwx();
-  }
-  
-  public static PendingResult<Status> zzb(GoogleApiClient paramGoogleApiClient, Context paramContext)
-  {
-    zzakx.zzb("GoogleSignInCommon", new Object[] { "Revoking access" });
-    zzar(paramContext);
-    return paramGoogleApiClient.zzb(new zze.3(paramGoogleApiClient));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.zze
  * JD-Core Version:    0.7.0.1
  */

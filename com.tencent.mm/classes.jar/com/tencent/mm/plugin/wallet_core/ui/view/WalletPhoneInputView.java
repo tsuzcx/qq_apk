@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import com.tencent.mm.at.b;
-import com.tencent.mm.at.b.a;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.plugin.wxpay.a.k;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.au.b;
+import com.tencent.mm.au.b.a;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tenpay.android.wechat.TenpaySecureEditText;
@@ -24,150 +22,180 @@ import java.util.Map;
 public class WalletPhoneInputView
   extends LinearLayout
 {
-  private int mMode = 0;
-  private WalletFormView qIi;
-  private WalletFormView qIj;
-  private TenpaySecureEditText qIk;
-  private Map<String, b.a> qIl;
-  private String qIm = "";
-  private String qIn = "";
-  private boolean qIo = true;
+  private int mMode;
+  private WalletFormView uwQ;
+  private WalletFormView uwR;
+  private TenpaySecureEditText uwS;
+  private Map<String, b.a> uwT;
+  private String uwU;
+  private String uwV;
+  private boolean uwW;
   
   public WalletPhoneInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(47913);
+    this.mMode = 0;
+    this.uwU = "";
+    this.uwV = "";
+    this.uwW = true;
     init(paramContext);
-    a(paramContext, paramAttributeSet, -1);
+    b(paramContext, paramAttributeSet, -1);
+    AppMethodBeat.o(47913);
   }
   
   public WalletPhoneInputView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(47914);
+    this.mMode = 0;
+    this.uwU = "";
+    this.uwV = "";
+    this.uwW = true;
     init(paramContext);
-    a(paramContext, paramAttributeSet, paramInt);
+    b(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.o(47914);
   }
   
-  private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  private void b(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.WalletPhoneInputViewAttrs, paramInt, 0);
-    paramInt = paramAttributeSet.getResourceId(a.k.WalletPhoneInputViewAttrs_phoneHint, 0);
+    AppMethodBeat.i(47916);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WalletPhoneInputViewAttrs, paramInt, 0);
+    paramInt = paramAttributeSet.getResourceId(0, 0);
     if (paramInt != 0)
     {
       String str = paramContext.getString(paramInt);
-      this.qIj.setHint(str);
+      this.uwR.setHint(str);
     }
-    paramInt = paramAttributeSet.getResourceId(a.k.WalletPhoneInputViewAttrs_phoneTitle, 0);
+    paramInt = paramAttributeSet.getResourceId(1, 0);
     if (paramInt != 0)
     {
       paramContext = paramContext.getString(paramInt);
-      this.qIj.setTitleText(paramContext);
+      this.uwR.setTitleText(paramContext);
     }
+    AppMethodBeat.o(47916);
   }
   
-  private void bXg()
+  private void cWH()
   {
-    this.qIi.setText(this.qIm);
-    this.qIk.setText(this.qIn);
+    AppMethodBeat.i(47919);
+    this.uwQ.setText(this.uwU);
+    this.uwS.setText(this.uwV);
+    AppMethodBeat.o(47919);
   }
   
-  private void bXh()
+  private void cWI()
   {
-    b.a locala = (b.a)this.qIl.get("86");
-    this.qIn = locala.esf;
-    this.qIm = locala.esg;
-    bXg();
+    AppMethodBeat.i(47920);
+    b.a locala = (b.a)this.uwT.get("86");
+    this.uwV = locala.fHS;
+    this.uwU = locala.fHT;
+    cWH();
+    AppMethodBeat.o(47920);
   }
   
   private void init(Context paramContext)
   {
-    inflate(paramContext, a.g.wallet_phone_input_view_layout, this);
-    this.qIi = ((WalletFormView)findViewById(a.f.phone_area_code_et));
-    this.qIj = ((WalletFormView)findViewById(a.f.phone_number_et));
-    this.qIi.setOnClickListener(new WalletPhoneInputView.1(this));
-    this.qIk = ((TenpaySecureEditText)this.qIj.findViewById(a.f.prefix_input_et));
-    this.qIk.setFixedHeaderText("+");
+    AppMethodBeat.i(47915);
+    inflate(paramContext, 2130971235, this);
+    this.uwQ = ((WalletFormView)findViewById(2131829353));
+    this.uwR = ((WalletFormView)findViewById(2131829354));
+    this.uwQ.setOnClickListener(new WalletPhoneInputView.1(this));
+    this.uwS = ((TenpaySecureEditText)this.uwR.findViewById(2131829352));
+    this.uwS.setFixedHeaderText("+");
     if ((getContext() instanceof MMActivity))
     {
-      this.qIj.setOnInfoIvClickListener(new WalletPhoneInputView.2(this));
-      this.qIj.setLogicDelegate(new WalletPhoneInputView.3(this));
+      this.uwR.setOnInfoIvClickListener(new WalletPhoneInputView.2(this));
+      this.uwR.setLogicDelegate(new WalletPhoneInputView.3(this));
     }
-    paramContext = b.C(getContext(), getContext().getString(a.i.country_code));
-    this.qIl = new HashMap();
+    paramContext = b.G(getContext(), getContext().getString(2131298871));
+    this.uwT = new HashMap();
     paramContext = paramContext.iterator();
     while (paramContext.hasNext())
     {
       b.a locala = (b.a)paramContext.next();
-      this.qIl.put(locala.esf, locala);
+      this.uwT.put(locala.fHS, locala);
     }
+    AppMethodBeat.o(47915);
   }
   
-  public final boolean bXi()
+  public final boolean cWJ()
   {
     return this.mMode == 0;
   }
   
-  public final void bXj()
+  public final void cWK()
   {
+    AppMethodBeat.i(47921);
     this.mMode = 0;
-    bXh();
-    this.qIi.setVisibility(8);
-    this.qIk.setVisibility(8);
+    cWI();
+    this.uwQ.setVisibility(8);
+    this.uwS.setVisibility(8);
+    AppMethodBeat.o(47921);
   }
   
-  public final void bXk()
+  public final void cWL()
   {
+    AppMethodBeat.i(47922);
     this.mMode = 1;
-    bXh();
-    this.qIi.setVisibility(0);
-    this.qIk.setVisibility(0);
-    this.qIk.addTextChangedListener(new WalletPhoneInputView.4(this));
-    this.qIk.setOnFocusChangeListener(new WalletPhoneInputView.5(this));
+    cWI();
+    this.uwQ.setVisibility(0);
+    this.uwS.setVisibility(0);
+    this.uwS.addTextChangedListener(new WalletPhoneInputView.4(this));
+    this.uwS.setOnFocusChangeListener(new WalletPhoneInputView.5(this));
+    AppMethodBeat.o(47922);
   }
   
   public final boolean e(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(47918);
     if (paramInt1 == 65521)
     {
-      String str;
       if (paramInt2 == 100)
       {
-        str = paramIntent.getStringExtra("country_name");
+        String str = paramIntent.getStringExtra("country_name");
         paramIntent = paramIntent.getStringExtra("couttry_code");
-        y.i("MicroMsg.WalletPhoneInputView", "countryName: %s, countryCode: %s", new Object[] { this.qIm, this.qIn });
-        if ((bk.bl(str)) || (bk.bl(paramIntent))) {
-          y.i("MicroMsg.WalletPhoneInputView", "cancel pick");
+        ab.i("MicroMsg.WalletPhoneInputView", "countryName: %s, countryCode: %s", new Object[] { this.uwU, this.uwV });
+        if ((bo.isNullOrNil(str)) || (bo.isNullOrNil(paramIntent)))
+        {
+          ab.i("MicroMsg.WalletPhoneInputView", "cancel pick");
+          AppMethodBeat.o(47918);
+          return true;
         }
+        this.uwU = str;
+        this.uwV = paramIntent;
+        this.uwW = false;
+        cWH();
+        this.uwS.clearFocus();
       }
-      else
-      {
-        return true;
-      }
-      this.qIm = str;
-      this.qIn = paramIntent;
-      this.qIo = false;
-      bXg();
-      this.qIk.clearFocus();
+      AppMethodBeat.o(47918);
       return true;
     }
+    AppMethodBeat.o(47918);
     return false;
   }
   
   public String getCountryCode()
   {
-    if (bXi()) {
+    AppMethodBeat.i(47917);
+    if (cWJ())
+    {
+      AppMethodBeat.o(47917);
       return "86";
     }
-    return this.qIk.getText().toString();
+    String str = this.uwS.getText().toString();
+    AppMethodBeat.o(47917);
+    return str;
   }
   
   public WalletFormView getPhoneNumberEt()
   {
-    return this.qIj;
+    return this.uwR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.WalletPhoneInputView
  * JD-Core Version:    0.7.0.1
  */

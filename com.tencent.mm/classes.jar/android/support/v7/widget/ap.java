@@ -1,76 +1,58 @@
 package android.support.v7.widget;
 
-import android.view.View;
-
-final class ap
+public final class ap
 {
-  static int a(RecyclerView.s params, aj paramaj, View paramView1, View paramView2, RecyclerView.i parami, boolean paramBoolean)
-  {
-    if ((parami.getChildCount() == 0) || (params.getItemCount() == 0) || (paramView1 == null) || (paramView2 == null)) {
-      return 0;
-    }
-    if (!paramBoolean) {
-      return Math.abs(RecyclerView.i.bl(paramView1) - RecyclerView.i.bl(paramView2)) + 1;
-    }
-    int i = paramaj.aY(paramView2);
-    int j = paramaj.aX(paramView1);
-    return Math.min(paramaj.hj(), i - j);
-  }
+  int Fe = -2147483648;
+  int akX = -2147483648;
+  int akY = 0;
+  int akZ = 0;
+  boolean ala = false;
+  boolean mIsRtl = false;
+  int qO = 0;
+  int qQ = 0;
   
-  static int a(RecyclerView.s params, aj paramaj, View paramView1, View paramView2, RecyclerView.i parami, boolean paramBoolean1, boolean paramBoolean2)
+  public final void aE(int paramInt1, int paramInt2)
   {
-    int i = 0;
-    int j = i;
-    if (parami.getChildCount() != 0)
+    this.akX = paramInt1;
+    this.Fe = paramInt2;
+    this.ala = true;
+    if (this.mIsRtl)
     {
-      j = i;
-      if (params.getItemCount() != 0)
-      {
-        j = i;
-        if (paramView1 != null)
-        {
-          if (paramView2 != null) {
-            break label45;
-          }
-          j = i;
-        }
+      if (paramInt2 != -2147483648) {
+        this.qO = paramInt2;
+      }
+      if (paramInt1 != -2147483648) {
+        this.qQ = paramInt1;
       }
     }
-    return j;
-    label45:
-    i = Math.min(RecyclerView.i.bl(paramView1), RecyclerView.i.bl(paramView2));
-    j = Math.max(RecyclerView.i.bl(paramView1), RecyclerView.i.bl(paramView2));
-    if (paramBoolean2) {}
-    for (i = Math.max(0, params.getItemCount() - j - 1);; i = Math.max(0, i))
+    do
     {
-      j = i;
-      if (!paramBoolean1) {
-        break;
+      return;
+      if (paramInt1 != -2147483648) {
+        this.qO = paramInt1;
       }
-      j = Math.abs(paramaj.aY(paramView2) - paramaj.aX(paramView1));
-      int k = Math.abs(RecyclerView.i.bl(paramView1) - RecyclerView.i.bl(paramView2));
-      float f = j / (k + 1);
-      return Math.round(i * f + (paramaj.hh() - paramaj.aX(paramView1)));
-    }
+    } while (paramInt2 == -2147483648);
+    this.qQ = paramInt2;
   }
   
-  static int b(RecyclerView.s params, aj paramaj, View paramView1, View paramView2, RecyclerView.i parami, boolean paramBoolean)
+  public final void aF(int paramInt1, int paramInt2)
   {
-    if ((parami.getChildCount() == 0) || (params.getItemCount() == 0) || (paramView1 == null) || (paramView2 == null)) {
-      return 0;
+    this.ala = false;
+    if (paramInt1 != -2147483648)
+    {
+      this.akY = paramInt1;
+      this.qO = paramInt1;
     }
-    if (!paramBoolean) {
-      return params.getItemCount();
+    if (paramInt2 != -2147483648)
+    {
+      this.akZ = paramInt2;
+      this.qQ = paramInt2;
     }
-    int i = paramaj.aY(paramView2);
-    int j = paramaj.aX(paramView1);
-    int k = Math.abs(RecyclerView.i.bl(paramView1) - RecyclerView.i.bl(paramView2));
-    return (int)((i - j) / (k + 1) * params.getItemCount());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v7.widget.ap
  * JD-Core Version:    0.7.0.1
  */

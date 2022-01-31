@@ -1,4284 +1,1118 @@
 package com.tencent.mm.sdk.platformtools;
 
-import java.util.LinkedList;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Build;
+import android.util.ArrayMap;
+import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mmkv.MMKV;
+import com.tencent.mmkv.a;
+import com.tencent.mmkv.c;
+import com.tencent.mmkv.d;
+import java.util.Map;
+import java.util.Set;
 
-final class as
+public class as
+  implements SharedPreferences, SharedPreferences.Editor
 {
-  public List<a> uhf = new LinkedList();
+  private static ArrayMap<String, as> yoU;
+  private MMKV hjd;
+  private String name;
   
-  public as()
+  static
   {
-    a locala = new a();
-    locala.uhg = "MX";
-    locala.uhh = "52";
-    locala.uhi = 10;
-    locala.uhj = 11;
-    b localb = new b();
-    localb.uhl = "33|55|81";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([358]\\d)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2467";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:33|55|81)";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(1)([358]\\d)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:[2467]|3[12457-9]|5[89]|8[2-9]|9[1-35-9])";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(1)(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PS";
-    locala.uhh = "970";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2489";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2489])(2\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(5[69]\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[78]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1[78]00)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SN";
-    locala.uhh = "221";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MY";
-    locala.uhh = "60";
-    locala.uhi = 9;
-    locala.uhj = 10;
-    localb = new b();
-    localb.uhl = "4-79";
-    localb.uhm = "$1-$2 $3";
-    localb.uhn = "([4-79])(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3";
-    localb.uhm = "$1-$2 $3";
-    localb.uhn = "(3)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[02-46-9][1-9]|8";
-    localb.uhm = "$1-$2 $3";
-    localb.uhn = "([18]\\d)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[36-8]0";
-    localb.uhm = "$1-$2-$3-$4";
-    localb.uhn = "(1)([36-8]00)(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "11";
-    localb.uhm = "$1-$2 $3";
-    localb.uhn = "(11)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "15";
-    localb.uhm = "$1-$2 $3";
-    localb.uhn = "(154)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "YE";
-    locala.uhh = "967";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1-6";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([1-7])(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7[0137]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(7\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PT";
-    locala.uhh = "351";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2-46-9]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SO";
-    locala.uhh = "252";
-    locala.uhi = 8;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "2[0-79]|[13-5]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d)(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "24|[67]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d)(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "15|28|6[178]|9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{5,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "69";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(69\\d)(\\d{6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BR";
-    locala.uhh = "55";
-    locala.uhi = 10;
-    locala.uhj = 11;
-    localb = new b();
-    localb.uhl = "119";
-    localb.uhm = "$1 $2-$3";
-    localb.uhn = "(\\d{2})(\\d{5})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1-9";
-    localb.uhm = "$1 $2-$3";
-    localb.uhn = "(\\d{2})(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[34]00";
-    localb.uhm = "$1-$2";
-    localb.uhn = "([34]00\\d)(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[3589]00";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([3589]00)(\\d{2,3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MZ";
-    locala.uhh = "258";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2|8[246]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([28]\\d)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "80";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(80\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "KE";
-    locala.uhh = "254";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "24-6";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{4,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{6,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "89";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BT";
-    locala.uhh = "975";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1|77";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([17]7)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2-68";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2-8])(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PW";
-    locala.uhh = "680";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "NA";
-    locala.uhh = "264";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "8[1235]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(8\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(6\\d)(\\d{2,3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "88";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(88)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "870";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(870)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "HK";
-    locala.uhh = "852";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[235-7]|[89](?:0[1-9]|[1-9])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "800";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(800)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "900";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(900)(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "900";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(900)(\\d{2,5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SR";
-    locala.uhh = "597";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2-4";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "56";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6-8";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SS";
-    locala.uhh = "211";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "VN";
-    locala.uhh = "84";
-    locala.uhi = 9;
-    locala.uhj = 10;
-    localb = new b();
-    localb.uhl = "[17]99";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([17]99)(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "48";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([48])(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[025-79]|3[0136-9]|5[2-9]|6[0-46-8]|7[02-79]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([235-7]\\d)(\\d{4})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "80";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(80)(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "69";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(69\\d)(\\d{4,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[1348]|3[25]|5[01]|65|7[18]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([235-7]\\d{2})(\\d{4})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(9\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:[26]|8[68]|99)";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1[2689]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[89]0";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(1[89]00)(\\d{4,6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "KG";
-    locala.uhh = "996";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "31[25]|[5-7]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3(?:1[36]|[2-9])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d)(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "ST";
-    locala.uhh = "239";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BW";
-    locala.uhh = "267";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2-6";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(7\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(90)(\\d{5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "NC";
-    locala.uhh = "687";
-    locala.uhi = 6;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1.$2.$3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "ER";
-    locala.uhh = "291";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PY";
-    locala.uhh = "595";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "(?:[26]1|3[289]|4[124678]|7[123]|8[1236])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{5,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[2-9]0";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{3,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9[1-9]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8700";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2-8";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4,6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "KH";
-    locala.uhh = "855";
-    locala.uhi = 8;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "1\\d[1-9]|[2-9]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[89]0";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1[89]00)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "ES";
-    locala.uhh = "34";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([5-9]\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "HN";
-    locala.uhh = "504";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SV";
-    locala.uhh = "503";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "267";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "89";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "89";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BY";
-    locala.uhh = "375";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1-4";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([1-4]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8[01]|9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([89]\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "82";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(8\\d{2})(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "NE";
-    locala.uhh = "227";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[29]|09";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([029]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "08";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(08)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "ET";
-    locala.uhh = "251";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([1-59]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BZ";
-    locala.uhh = "501";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2-8";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0";
-    localb.uhm = "$1-$2-$3-$4";
-    localb.uhn = "(0)(800)(\\d{4})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "NF";
-    locala.uhh = "672";
-    locala.uhi = 5;
-    locala.uhj = 6;
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d)(\\d{5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "QA";
-    locala.uhh = "974";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "28";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([28]\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3-7";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([3-7]\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "NG";
-    locala.uhh = "234";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "129";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([129])(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3-6";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([3-8]\\d)(\\d{3})(\\d{2,3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "70|8[01]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([78]\\d{2})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[78]00";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([78]00)(\\d{4})(\\d{4,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[78]00";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([78]00)(\\d{5})(\\d{5,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "78";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(78)(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SY";
-    locala.uhh = "963";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1-5";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(9\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "HR";
-    locala.uhh = "385";
-    locala.uhi = 8;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1)(\\d{4})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6[09]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(6[09])(\\d{4})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "62";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(62)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2-5";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2-5]\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(9\\d)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(9\\d)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(9\\d)(\\d{3,4})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6[145]|7";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2,3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6[145]|7";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3,4})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(80[01])(\\d{2})(\\d{2,3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(80[01])(\\d{3,4})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "KM";
-    locala.uhh = "269";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SZ";
-    locala.uhh = "268";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "23";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "NI";
-    locala.uhh = "505";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "VU";
-    locala.uhh = "678";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "579";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "HT";
-    locala.uhh = "509";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "KP";
-    locala.uhh = "850";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "HU";
-    locala.uhh = "36";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2-9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CD";
-    locala.uhh = "243";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "8[0-259]|9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([89]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8[48]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1-6";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "NL";
-    locala.uhh = "31";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1[035]|2[0346]|3[03568]|4[0356]|5[0358]|7|8[458]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([1-578]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[16-8]|2[259]|3[124]|4[17-9]|5[124679]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([1-5]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6[0-57-9]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(6)(\\d{8})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "66";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(66)(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "14";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(14)(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "80|9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([89]0\\d)(\\d{4,7})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "KR";
-    locala.uhh = "82";
-    locala.uhi = 9;
-    locala.uhj = 10;
-    localb = new b();
-    localb.uhl = "1(?:0|1[19]|[69]9|5[458])|[57]0#1(?:0|1[19]|[69]9|5(?:44|59|8))|[57]0";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{2})(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:[169][2-8]|[78]|5[1-4])|[68]0|[3-6][1-9][2-9]#1(?:[169][2-8]|[78]|5(?:[1-3]|4[56]))|[68]0|[3-6][1-9][2-9]";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{2})(\\d{3,4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "131#1312";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d)(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "131#131[13-9]";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "13[2-9]";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "30";
-    localb.uhm = "$1-$2-$3-$4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[2-9]";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d)(\\d{3,4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "21[0-46-9]";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d)(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[3-6][1-9]1#[3-6][1-9]1(?:[0-46-9])";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{2})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:5[46-9]|6[04678])#1(?:5(?:44|66|77|88|99)|6(?:00|44|6[16]|70|88))";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CF";
-    locala.uhh = "236";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "TD";
-    locala.uhh = "235";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CG";
-    locala.uhh = "242";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "NO";
-    locala.uhh = "47";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "489";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([489]\\d{2})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "235-7";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([235-7]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CH";
-    locala.uhh = "41";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[2-7]|[89]1";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([2-9]\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8[047]|90";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([89]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "860";
-    localb.uhm = "$1 $2 $3 $4 $5";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "NP";
-    locala.uhh = "977";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1[2-6]";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(1)(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[01]|[2-8]|9(?:[1-69]|7[15-9])";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{2})(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9(?:7[45]|8)";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(9\\d{2})(\\d{7})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CI";
-    locala.uhh = "225";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "TG";
-    locala.uhh = "228";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "KW";
-    locala.uhh = "965";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1269";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(5[015]\\d)(\\d{5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "NR";
-    locala.uhh = "674";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "TH";
-    locala.uhh = "66";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(2)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3-9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([3-9]\\d)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1[89]00)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CK";
-    locala.uhh = "682";
-    locala.uhi = 5;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CL";
-    locala.uhh = "56";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(2)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "357";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{2,3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(9)([5-9]\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "44";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(44)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "60|8";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([68]00)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "60";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(600)(\\d{3})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1230)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "TJ";
-    locala.uhh = "992";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "34";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([349]\\d{2})(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "4[48]|5|9(?:1[59]|[0235-9])";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([459]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "331#3317#33170#331700";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(331700)(\\d)(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3[1-5]#3(?:[1245]|3(?:[02-9]|1[0-589]))";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{4})(\\d)(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CM";
-    locala.uhh = "237";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[2379]|88";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([237-9]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "80";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(800)(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "WF";
-    locala.uhh = "681";
-    locala.uhi = 6;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CN";
-    locala.uhh = "86";
-    locala.uhi = 11;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "80[2678]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(80\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[48]00";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([48]00)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2-9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3,4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "21";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(21)(\\d{4})(\\d{4,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "10[1-9]|2[02-9]#10[1-9]|2[02-9]#10(?:[1-79]|8(?:[1-9]|0[1-9]))|2[02-9]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([12]\\d)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3(?:11|7[179])|4(?:[15]1|3[12])|5(?:1|2[37]|3[12]|7[13-79]|9[15])|7(?:31|5[457]|6[09]|91)|898";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3(?:1[02-9]|35|49|5|7[02-68]|9[1-68])|4(?:1[02-9]|2[179]|[35][2-9]|6[4789]|7\\d|8[23])|5(?:3[03-9]|4[36]|5|6[1-6]|7[028]|80|9[2-46-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]|2[248]|3[04-9]|4[3-6]|6[2368])|8(?:1[236-8]|2[5-7]|[37]|5[1-9]|8[3678]|9[1-7])|9(?:0[1-3689]|1[1-79]|[379]|4[13]|5[1-5])";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[3-58]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1[3-58]\\d)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "108#1080#10800";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(10800)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "FI";
-    locala.uhh = "358";
-    locala.uhi = 6;
-    locala.uhj = 11;
-    localb = new b();
-    localb.uhl = "(?:[1-3]00|[6-8]0)";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{3,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[09]|[14]|50|7[135]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{4,10})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[25689][1-8]|3";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d)(\\d{4,11})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "ZA";
-    locala.uhh = "27";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "860";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(860)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[1-57]|8(?:[0-57-9]|6[1-9])";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([1-578]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7|8[1-5789]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7|8[1-5789]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{2,3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "ID";
-    locala.uhh = "62";
-    locala.uhi = 9;
-    locala.uhj = 11;
-    localb = new b();
-    localb.uhl = "2[124]|[36]1";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{7,8})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "4579";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{5,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8[1-35-9]";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(8\\d{2})(\\d{3,4})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(177)(\\d{6,8})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "800";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(800)(\\d{5,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "809";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(809)(\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "TL";
-    locala.uhh = "670";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2-489";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CO";
-    locala.uhh = "57";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1(?:8[2-9]|9[0-3]|[2-7])|[24-8]#1(?:8[2-9]|9(?:09|[1-3])|[2-7])|[24-8]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d)(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:80|9[04])#1(?:800|9(?:0[01]|4[78]))";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1)(\\d{3})(\\d{7})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "FJ";
-    locala.uhh = "679";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "36-9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{4})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "IE";
-    locala.uhh = "353";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1)(\\d{3,4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[2-9]|4[347]|5[2-58]|6[2-47-9]|9[3-9]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "40[24]|50[45]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "48";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(48)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "81";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(818)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "24-69";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "76|8[35-9]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([78]\\d)(\\d{3,4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "70";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(700)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:8[059]|5)#1(?:8[059]0|5)";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{4})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "TM";
-    locala.uhh = "993";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "12";
-    localb.uhm = "$1 $2-$3-$4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "13|[2-5]";
-    localb.uhm = "$1 $2-$3-$4";
-    localb.uhn = "(\\d{3})(\\d)(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "LA";
-    locala.uhh = "856";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "20";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(20)(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[13]|[3-8]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2-8]\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "TN";
-    locala.uhh = "216";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "LB";
-    locala.uhh = "961";
-    locala.uhi = 7;
-    locala.uhj = 8;
-    localb = new b();
-    localb.uhl = "13-6";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[89][01]|7(?:[01]|6[013-9]|8[89]|91)";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([7-9]\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "TO";
-    locala.uhh = "676";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1-6";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7[5-9]|8[7-9]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CR";
-    locala.uhh = "506";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "24-7";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[89]0";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "FM";
-    locala.uhh = "691";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "NZ";
-    locala.uhh = "64";
-    locala.uhi = 8;
-    locala.uhj = 10;
-    localb = new b();
-    localb.uhl = "3467";
-    localb.uhm = "$1-$2 $3";
-    localb.uhn = "([34679])(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "240#2409#24099";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(24099)(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "21";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2(?:1[1-9]|[69]|7[0-35-9])|86";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[028]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(2\\d)(\\d{3,4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2(?:10|74)|5|[89]0";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "FO";
-    locala.uhh = "298";
-    locala.uhi = 6;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1";
-    localb.uhn = "(\\d{6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "TR";
-    locala.uhh = "90";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[23]|4(?:[0-35-9]|4[0-35-9])";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "589";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "444";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(444)(\\d{1})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CU";
-    locala.uhh = "53";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "7";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d)(\\d{6,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2-4";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{4,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d)(\\d{7})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CV";
-    locala.uhh = "238";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "IL";
-    locala.uhh = "972";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2-489";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "([2-489])(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "57";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "([57]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[7-9]";
-    localb.uhm = "$1-$2-$3-$4";
-    localb.uhn = "(1)([7-9]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "125";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(1255)(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "120";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(1200)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "121";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(1212)(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "15";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(1599)(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2-689";
-    localb.uhm = "*$1";
-    localb.uhn = "(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CW";
-    locala.uhh = "599";
-    locala.uhi = 7;
-    locala.uhj = 8;
-    localb = new b();
-    localb.uhl = "13-7";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(9)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "FR";
-    locala.uhh = "33";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1-79";
-    localb.uhm = "$1 $2 $3 $4 $5";
-    localb.uhn = "([1-79])(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(8\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "IN";
-    locala.uhh = "91";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "7(?:2[0579]|3[057-9]|4[0-389]|5[024-9]|6[0-35-9]|7[03469]|8[0-4679])|8(?:0[01589]|1[0-479]|2[236-9]|3[0-57-9]|[45]|6[0245789]|7[1-69]|8[0124-9]|9[02-9])|9#7(?:2(?:0[04-9]|5[09]|7[5-8]|9[389])|3(?:0[1-9]|[58]|7[3679]|9[689])|4(?:0[1-9]|1[15-9]|[29][89]|39|8[389])|5(?:0|[47]9|[25]0|6[6-9]|[89][7-9])|6(?:0[027]|12|20|3[19]|5[45]|6[5-9]|7[679]|9[6-9])|7(?:0[27-9]|3[5-9]|42|60|9[5-9])|8(?:[03][07-9]|14|2[7-9]|4[25]|6[09]|7|9[013-9]))|8(?:0[01589]|1(?:[024]|1[56]|30|7[19]|97)|2[236-9]|3(?:[037-9]|4[1-9]|5[0-37-9])|[45]|6[02457-9]|7[1-69]|8(?:[0-26-9]|44|5[2-9])|9(?:[035-9]|2[2-9]|4[0-8]))|9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "11|2[02]|33|4[04]|79|80[2-46]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:2[0-249]|3[0-25]|4[145]|[569][14]|7[1257]|8[1346]|[68][1-9])|2(?:1[257]|3[013]|4[01]|5[0137]|6[0158]|78|8[1568]|9[14])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|3[15]|5[12]|6[126-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:[136][25]|22|4[28]|5[12]|[78]1|9[15])|6(?:12|[2345]1|57|6[13]|7[14]|80)";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7(?:12|2[14]|3[134]|4[47]|5[15]|[67]1|88)#7(?:12|2[14]|3[134]|4[47]|5(?:1|5[2-6])|[67]1|88)";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8(?:16|2[014]|3[126]|6[136]|7[078]|8[34]|91)";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:[2-579]|[68][1-9])|[2-8]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{4})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "160#1600";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1600)(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "180#1800";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(1800)(\\d{4,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "18[06]#18[06]0";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(18[06]0)(\\d{2,4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "18[06]#18(?:03|6[12])";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{4})(\\d{3})(\\d{4})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "LI";
-    locala.uhh = "423";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[23]|7[3-57-9]|87";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(6\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6[567]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(6[567]\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "697";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(69)(7\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[7-9]0";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([7-9]0\\d)(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[89]0";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([89]0\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CY";
-    locala.uhh = "357";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "IO";
-    locala.uhh = "246";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "TW";
-    locala.uhh = "886";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2-7";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2-8])(\\d{3,4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "80|9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([89]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "LK";
-    locala.uhh = "94";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1-689";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{1})(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "CZ";
-    locala.uhh = "420";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2-8";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2-9]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "96";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(96\\d)(\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9[36]";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(9\\d)(\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "AD";
-    locala.uhh = "376";
-    locala.uhi = 6;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "346-9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(180[02])(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "001";
-    locala.uhh = "(null)";
-    locala.uhi = 0;
-    locala.uhj = 0;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "WS";
-    locala.uhh = "685";
-    locala.uhi = 6;
-    locala.uhj = 7;
-    localb = new b();
-    localb.uhl = "8";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(8\\d{2})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(7\\d)(\\d{5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "ZM";
-    locala.uhh = "260";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "29";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([29]\\d)(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(800)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "AE";
-    locala.uhh = "971";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2-4679";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2-4679])(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(5[0256])(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[479]0";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([479]00)(\\d)(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "60|8";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([68]00)(\\d{2,9})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "IQ";
-    locala.uhh = "964";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2-6";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2-6]\\d)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(7\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "IR";
-    locala.uhh = "98";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "21";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(21)(\\d{3,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "21";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(21)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "21";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(21)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "13-9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "AF";
-    locala.uhh = "93";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2-7]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "TZ";
-    locala.uhh = "255";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "24";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([24]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "67";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([67]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "89";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([89]\\d{2})(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "IS";
-    locala.uhh = "354";
-    locala.uhi = 7;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "4-9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(3\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "RE";
-    locala.uhh = "262";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([268]\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "IT";
-    locala.uhh = "39";
-    locala.uhi = 9;
-    locala.uhj = 10;
-    localb = new b();
-    localb.uhl = "0[26]|55";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3,4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0[26]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(0[26])(\\d{4})(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0[26]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(0[26])(\\d{4,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0[13-57-9][0159]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(0\\d{2})(\\d{3,4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0[13-57-9][0159]|8(?:03|4[17]|9[245])#0[13-57-9][0159]|8(?:03|4[17]|9(?:2|[45][0-4]))";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{3,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0[13-57-9][2-46-8]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(0\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0[13-57-9][2-46-8]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(0\\d{3})(\\d{2,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[13]|8(?:00|4[08]|9[59])#[13]|8(?:00|4[08]|9(?:5[5-9]|9))";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "894#894[5-9]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "UA";
-    locala.uhh = "380";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "39|4(?:[45][0-5]|87)|5(?:0|6[37]|7[37])|6[36-8]|9[1-9]#39|4(?:[45][0-5]|87)|5(?:0|6(?:3[14-7]|7)|7[37])|6[36-8]|9[1-9]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([3-69]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3[1-8]2|4[1378]2|5(?:[12457]2|6[24])|6(?:[49]2|[12][29]|5[24])|8|90#3(?:[1-46-8]2[013-9]|52)|4[1378]2|5(?:[12457]2|6[24])|6(?:[49]2|[12][29]|5[24])|8|90";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([3-689]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3(?:5[013-9]|[1-46-8])|4(?:[137][013-9]|6|[45][6-9]|8[4-6])|5(?:[1245][013-9]|6[0135-9]|3|7[4-6])|6(?:[49][013-9]|5[0135-9]|[12][13-8])#3(?:5[013-9]|[1-46-8](?:22|[013-9]))|4(?:[137][013-9]|6|[45][6-9]|8[4-6])|5(?:[1245][013-9]|6(?:3[02389]|[015689])|3|7[4-6])|6(?:[49][013-9]|5[0135-9]|[12][13-8])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([3-6]\\d{3})(\\d{5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "DE";
-    locala.uhh = "49";
-    locala.uhi = 10;
-    locala.uhj = 11;
-    localb = new b();
-    localb.uhl = "3[02]|40|[68]9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{4,11})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2(?:\\d1|0[2389]|1[24]|28|34)|3(?:[3-9][15]|40)|[4-8][1-9]1|9(?:06|[1-9]1)";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{3,11})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[24-6]|[7-9](?:\\d[1-9]|[1-9]\\d)|3(?:[3569][02-46-9]|4[2-4679]|7[2-467]|8[2-46-8])#[24-6]|[7-9](?:\\d[1-9]|[1-9]\\d)|3(?:3(?:0[1-467]|2[127-9]|3[124578]|[46][1246]|7[1257-9]|8[1256]|9[145])|4(?:2[135]|3[1357]|4[13578]|6[1246]|7[1356]|9[1346])|5(?:0[14]|2[1-3589]|3[1357]|4[1246]|6[1-4]|7[1346]|8[13568]|9[1246])|6(?:0[356]|2[1-489]|3[124-6]|4[1347]|6[13]|7[12579]|8[1-356]|9[135])|7(?:2[1-7]|3[1357]|4[145]|6[1-5]|7[1-4])|8(?:21|3[1468]|4[1347]|6[0135-9]|7[1467]|8[136])|9(?:0[12479]|2[1358]|3[1357]|4[134679]|6[1-9]|7[136]|8[147]|9[1468]))";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{2,11})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{5})(\\d{1,10})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[5-7]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(1\\d{2})(\\d{7,8})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "177#1779#17799";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(177)(99)(\\d{7,8})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "800";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(8\\d{2})(\\d{7,10})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "(?:18|90)0#180|900[1359]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d)(\\d{4,10})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "181";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(1\\d{2})(\\d{5,11})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "185#1850#18500";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(18\\d{3})(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "18[68]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(18\\d{2})(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "18[2-579]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(18\\d)(\\d{8})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "700";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(700)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "LR";
-    locala.uhh = "231";
-    locala.uhi = 7;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "279";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([279]\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(7\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "4-6";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([4-6])(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "38";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GA";
-    locala.uhh = "241";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(1)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(0\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "OM";
-    locala.uhh = "968";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(2\\d)(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(9\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "58";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([58]00)(\\d{4,6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "LS";
-    locala.uhh = "266";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GB";
-    locala.uhh = "44";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2|5[56]|7(?:0|6[013-9])#2|5[56]|7(?:0|6(?:[013-9]|2[0-35-9]))";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:1|\\d1)|3|9[018]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:38|5[23]|69|76|94)#1(?:387|5(?:24|39)|697|768|946)#1(?:3873|5(?:242|39[456])|697[347]|768[347]|9467)";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{5})(\\d{4,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(1\\d{3})(\\d{5,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7(?:[1-5789]|62)#7(?:[1-5789]|624)";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(7\\d{3})(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "800#8001#80011#800111#8001111";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(800)(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "845#8454#84546#845464";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(845)(46)(4\\d)";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8(?:4[2-5]|7[0-3])";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(8\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "80";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(80\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[58]00";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([58]00)(\\d{6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "AL";
-    locala.uhh = "355";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "4[0-6]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(4)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(6[6-9])(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2358";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "235";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{3,5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "LT";
-    locala.uhh = "370";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "37|4(?:1|5[45]|6[2-4])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([34]\\d)(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3[148]|4(?:[24]|6[09])|528|6";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([3-6]\\d{2})(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7-9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([7-9]\\d{2})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "52[0-79]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(5)(2\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "AM";
-    locala.uhh = "374";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1|47";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5-7";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "23";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8|90";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "ZW";
-    locala.uhh = "263";
-    locala.uhi = 9;
-    locala.uhj = 10;
-    localb = new b();
-    localb.uhl = "4|9[2-9]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([49])(\\d{3})(\\d{2,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[19]1|7";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([179]\\d)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "86[24]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(86\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[3-9]|2(?:[1-469]|0[0-35-9]|[45][0-79])|3(?:0[0-79]|1[0-689]|[24-69]|3[0-69])|5(?:[02-46-9]|[15][0-69])|6(?:[0145]|[29][0-79]|3[0-689]|[68][0-69])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([1-356]\\d)(\\d{3,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[3-9]|2(?:[1-469]|0[0-35-9]|[45][0-79])|3(?:0[0-79]|1[0-689]|[24-69]|3[0-69])|5(?:[02-46-9]|[15][0-69])|6(?:[0145]|[29][0-79]|3[0-689]|[68][0-69])";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([1-356]\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2(?:[278]|0[45]|48)|3(?:08|17|3[78]|[78])|5[15][78]|6(?:[29]8|37|[68][78])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([2356]\\d{2})(\\d{3,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2(?:[278]|0[45]|48)|3(?:08|17|3[78]|[78])|5[15][78]|6(?:[29]8|37|[68][78])";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2356]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "(?:25|54)8#258[23]|5483";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([25]\\d{3})(\\d{3,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "(?:25|54)8#258[23]|5483";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([25]\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "86[1389]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(8\\d{3})(\\d{6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "LU";
-    locala.uhh = "352";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[2-5]|7[1-9]|[89](?:[1-9]|0[2-9])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[2-5]|7[1-9]|[89](?:[1-9]|0[2-9])";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "20";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2(?:[0367]|4[3-8])";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "20";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2(?:[0367]|4[3-8])";
-    localb.uhm = "$1 $2 $3 $4 $5";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2(?:[12589]|4[12])|[3-5]|7[1-9]|[89](?:[1-9]|0[2-9])";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{1,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[89]0[01]|70";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "UG";
-    locala.uhh = "256";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[7-9]|20(?:[013-5]|2[5-9])|4(?:6[45]|[7-9])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3|4(?:[1-5]|6[0-36-9])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2024";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(2024)(\\d{5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "DJ";
-    locala.uhh = "253";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "LV";
-    locala.uhh = "371";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2689]\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GE";
-    locala.uhh = "995";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "348";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "AO";
-    locala.uhh = "244";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "DK";
-    locala.uhh = "45";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GF";
-    locala.uhh = "594";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "LY";
-    locala.uhh = "218";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1-$2";
-    localb.uhn = "([25679]\\d)(\\d{7})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GH";
-    locala.uhh = "233";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "235";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "RO";
-    locala.uhh = "40";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[23]1|7";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([237]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "21";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(21)(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "23";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[3-6]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(2\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "AR";
-    locala.uhh = "54";
-    locala.uhi = 10;
-    locala.uhj = 11;
-    localb = new b();
-    localb.uhl = "68";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "([68]\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "911";
-    localb.uhm = "$1 $2 $3-$4";
-    localb.uhn = "(9)(11)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9(?:2[234689]|3[3-8])#9(?:2(?:2[013]|3[067]|49|6[01346]|80|9[147-9])|3(?:36|4[12358]|5[138]|6[24]|7[069]|8[013578]))#9(?:2(?:2[013]|3[067]|49|6[01346]|80|9(?:[17-9]|4[13479]))|3(?:36|4[12358]|5(?:[18]|3[014-689])|6[24]|7[069]|8(?:[01]|3[013469]|5[0-39]|7[0-2459]|8[0-49])))";
-    localb.uhm = "$1 $2 $3-$4";
-    localb.uhn = "(9)(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "93[58]#9(?:3(?:53|8[78]))#9(?:3(?:537|8(?:73|88)))";
-    localb.uhm = "$2 15-$3-$4";
-    localb.uhn = "(9)(\\d{4})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9[23]";
-    localb.uhm = "$1 $2 $3-$4";
-    localb.uhn = "(9)(\\d{4})(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2-$3";
-    localb.uhn = "(11)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2(?:2[013]|3[067]|49|6[01346]|80|9[147-9])|3(?:36|4[12358]|5[138]|6[24]|7[069]|8[013578])#2(?:2[013]|3[067]|49|6[01346]|80|9(?:[17-9]|4[13479]))|3(?:36|4[12358]|5(?:[18]|3[0-689])|6[24]|7[069]|8(?:[01]|3[013469]|5[0-39]|7[0-2459]|8[0-49]))";
-    localb.uhm = "$1 $2-$3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3(?:53|8[78])#3(?:537|8(?:73|88))";
-    localb.uhm = "$1 $2-$3";
-    localb.uhn = "(\\d{4})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "23";
-    localb.uhm = "$1 $2-$3";
-    localb.uhn = "(\\d{4})(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "AT";
-    locala.uhh = "43";
-    locala.uhi = 10;
-    locala.uhj = 13;
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(1)(\\d{3,12})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5[079]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(5\\d)(\\d{3,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5[079]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(5\\d)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5[079]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(5\\d)(\\d{4})(\\d{4,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "316|46|51|732|6(?:44|5[0-3579]|[6-9])|7(?:1|[28]0)|[89]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{3,10})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2|3(?:1[1-578]|[3-8])|4[2378]|5[2-6]|6(?:[12]|4[1-35-9]|5[468])|7(?:2[1-8]|35|4[1-8]|[57-9])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{3,9})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "AU";
-    locala.uhh = "61";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2378";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([2378])(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[45]|14";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "16";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(16)(\\d{3})(\\d{2,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:[38]0|90)#1(?:[38]00|90)";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1[389]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "180#1802";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(180)(2\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "19[13]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(19\\d)(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "19[67]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(19\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "13[1-9]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(13)(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MA";
-    locala.uhh = "212";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "5(?:2[015-7]|3[0-4])|6";
-    localb.uhm = "$1-$2";
-    localb.uhn = "([56]\\d{2})(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5(?:2[2-489]|3[5-9])|892#5(?:2(?:[2-48]|90)|3(?:[5-79]|80))|892";
-    localb.uhm = "$1-$2";
-    localb.uhn = "([58]\\d{3})(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5(?:29|38)#5(?:29|38)[89]";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(5\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "8(?:0|9[013-9])";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(8[09])(\\d{7})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "RS";
-    locala.uhh = "381";
-    locala.uhi = 8;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "(?:2[389]|39)0";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([23]\\d{2})(\\d{4,9})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1|2(?:[0-24-7]|[389][1-9])|3(?:[0-8]|9[1-9])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([1-3]\\d)(\\d{5,10})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(6\\d)(\\d{6,8})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "89";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([89]\\d{2})(\\d{3,9})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7[26]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(7[26])(\\d{4,9})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7[08]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(7[08]\\d)(\\d{4,9})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GL";
-    locala.uhh = "299";
-    locala.uhi = 6;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GM";
-    locala.uhh = "220";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "AW";
-    locala.uhh = "297";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MC";
-    locala.uhh = "377";
-    locala.uhi = 8;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "89";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "4";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6";
-    localb.uhm = "$1 $2 $3 $4 $5";
-    localb.uhn = "(6)(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "RU";
-    locala.uhh = "7";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1-79";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "34689";
-    localb.uhm = "$1 $2-$3-$4";
-    localb.uhn = "([3489]\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(7\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MD";
-    locala.uhh = "373";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "22|3";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[13-79]|[5-7]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([25-7]\\d{2})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "89";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([89]\\d{2})(\\d{5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GN";
-    locala.uhh = "224";
-    locala.uhi = 8;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "23567";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "62";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "ME";
-    locala.uhh = "382";
-    locala.uhi = 8;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "[2-57-9]|6[3789]#[2-57-9]|6(?:[389]|7(?:[0-8]|9[3-9]))";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "679#679[0-2]";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(67)(9)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "RW";
-    locala.uhh = "250";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(2\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7-9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([7-9]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(0\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "AZ";
-    locala.uhh = "994";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "(?:1[28]|2(?:[45]2|[0-36])|365)";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "4-8";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PA";
-    locala.uhh = "507";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1-57-9";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GP";
-    locala.uhh = "590";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2-$3";
-    localb.uhn = "([56]90)(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "US";
-    locala.uhh = "1";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MG";
-    locala.uhh = "261";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([23]\\d)(\\d{2})(\\d{3})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GQ";
-    locala.uhh = "240";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "235";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "89";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MH";
-    locala.uhh = "692";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GR";
-    locala.uhh = "30";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "21|7";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([27]\\d)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[2-9]1|[689]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[2-9][02-9]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(2\\d{3})(\\d{6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BA";
-    locala.uhh = "387";
-    locala.uhi = 8;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "3-5";
-    localb.uhm = "$1 $2-$3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6[1-356]|[7-9]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "6[047]";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PE";
-    locala.uhh = "51";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(1)(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "4-7";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([4-8]\\d)(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "80";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(9\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GT";
-    locala.uhh = "502";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2-7";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{4})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "JO";
-    locala.uhh = "962";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[2356]|87";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7[457-9]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(7)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "70|8[0158]|9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{5,6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MK";
-    locala.uhh = "389";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(2)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "347";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([347]\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "58";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([58]\\d{2})(\\d)(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "DZ";
-    locala.uhh = "213";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1-4";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([1-4]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5-8";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([5-8]\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(9\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PF";
-    locala.uhh = "689";
-    locala.uhi = 6;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SA";
-    locala.uhh = "966";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1-467";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([1-467])(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "5";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(5\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(9200)(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "80";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(800)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "81";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(8111)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BD";
-    locala.uhh = "880";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(2)(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[3-79]1";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{4,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[3-79][2-9]|8";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{3,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "ML";
-    locala.uhh = "223";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([246-8]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PG";
-    locala.uhh = "675";
-    locala.uhi = 7;
-    locala.uhj = 8;
-    localb = new b();
-    localb.uhl = "1-689";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7[1-36]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(7[1-36]\\d)(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SB";
-    locala.uhh = "677";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "7-9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BE";
-    locala.uhh = "32";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "4[6-9]";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(4[6-9]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "23";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([2-49])(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[156]|7[0178]|8(?:0[1-9]|[1-79])";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([15-8]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "(?:80|9)0";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([89]\\d{2})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "JP";
-    locala.uhh = "81";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "(?:12|57|99)0";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "800";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "077";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "077";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "088";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0(?:37|66)";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0(?:37|66)";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{4})(\\d{4,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0(?:37|66)";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{5})(\\d{5,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0(?:37|66)";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{6})(\\d{6,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2579";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{2})(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:26|3[79]|4[56]|5[4-68]|6[3-5])|5(?:76|97)|499|746|8(?:3[89]|63|47|51)|9(?:49|80|9[16])#1(?:267|3(?:7[247]|9[278])|4(?:5[67]|66)|5(?:47|58|64|8[67])|6(?:3[245]|48|5[4-68]))|5(?:76|97)9|499[2468]|7468|8(?:3(?:8[78]|96)|636|477|51[24])|9(?:496|802|9(?:1[23]|69))#1(?:267|3(?:7[247]|9[278])|4(?:5[67]|66)|5(?:47|58|64|8[67])|6(?:3[245]|48|5[4-68]))|5(?:769|979[2-69])|499[2468]|7468|8(?:3(?:8[78]|96[2457-9])|636[2-57-9]|477|51[24])|9(?:496|802|9(?:1[23]|69))";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{4})(\\d)(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:2[3-6]|3[3-9]|4[2-6]|5[2-8]|[68][2-7]|7[2-689]|9[1-578])|2(?:2[03-689]|3[3-58]|4[0-468]|5[04-8]|6[013-8]|7[06-9]|8[02-57-9]|9[13])|4(?:2[28]|3[689]|6[035-7]|7[05689]|80|9[3-5])|5(?:3[1-36-9]|4[4578]|5[013-8]|6[1-9]|7[2-8]|8[14-7]|9[4-9])|7(?:2[15]|3[5-9]|4[02-9]|6[135-8]|7[0-4689]|9[014-9])|8(?:2[49]|3[3-8]|4[5-8]|5[2-9]|6[35-9]|7[579]|8[03-579]|9[2-8])|9(?:[23]0|4[02-46-9]|5[024-79]|6[4-9]|7[2-47-9]|8[02-7]|9[3-7])#1(?:2[3-6]|3[3-9]|4[2-6]|5(?:[236-8]|[45][2-69])|[68][2-7]|7[2-689]|9[1-578])|2(?:2(?:[04-689]|3[23])|3[3-58]|4[0-468]|5(?:5[78]|7[2-4]|[0468][2-9])|6(?:[0135-8]|4[2-5])|7(?:[0679]|8[2-7])|8(?:[024578]|3[25-9]|9[6-9])|9(?:11|3[2-4]))|4(?:2(?:2[2-9]|8[237-9])|3[689]|6[035-7]|7(?:[059][2-8]|[68])|80|9[3-5])|5(?:3[1-36-9]|4[4578]|5[013-8]|6[1-9]|7[2-8]|8[14-7]|9(?:[89][2-8]|[4-7]))|7(?:2[15]|3[5-9]|4[02-9]|6[135-8]|7[0-4689]|9(?:[017-9]|4[6-8]|5[2-478]|6[2-589]))|8(?:2(?:4[4-8]|9[2-8])|3(?:7[2-6]|[3-6][2-9]|8[2-5])|4[5-8]|5[2-9]|6(?:[37]|5[4-7]|6[2-9]|8[2-8]|9[236-9])|7[579]|8[03-579]|9[2-8])|9(?:[23]0|4[02-46-9]|5[024-79]|6[4-9]|7[2-47-9]|8[02-7]|9(?:3[34]|[4-7]))#1(?:2[3-6]|3[3-9]|4[2-6]|5(?:[236-8]|[45][2-69])|[68][2-7]|7[2-689]|9[1-578])|2(?:2(?:[04-689]|3[23])|3[3-58]|4[0-468]|5(?:5[78]|7[2-4]|[0468][2-9])|6(?:[0135-8]|4[2-5])|7(?:[0679]|8[2-7])|8(?:[024578]|3[25-9]|9[6-9])|9(?:11|3[2-4]))|4(?:2(?:2[2-9]|8[237-9])|3[689]|6[035-7]|7(?:[059][2-8]|[68])|80|9[3-5])|5(?:3[1-36-9]|4[4578]|5[013-8]|6[1-9]|7[2-8]|8[14-7]|9(?:[89][2-8]|[4-7]))|7(?:2[15]|3[5-9]|4[02-9]|6[135-8]|7[0-4689]|9(?:[017-9]|4[6-8]|5[2-478]|6[2-589]))|8(?:2(?:4[4-8]|9(?:[3578]|20|4[04-9]|6[56]))|3(?:7(?:[2-5]|6[0-59])|[3-6][2-9]|8[2-5])|4[5-8]|5[2-9]|6(?:[37]|5(?:[467]|5[014-9])|6(?:[2-8]|9[02-69])|8[2-8]|9(?:[236-8]|9[23]))|7[579]|8[03-579]|9[2-8])|9(?:[23]0|4[02-46-9]|5[024-79]|6[4-9]|7[2-47-9]|8[02-7]|9(?:3(?:3[02-9]|4[0-24689])|4[2-69]|[5-7]))#1(?:2[3-6]|3[3-9]|4[2-6]|5(?:[236-8]|[45][2-69])|[68][2-7]|7[2-689]|9[1-578])|2(?:2(?:[04-689]|3[23])|3[3-58]|4[0-468]|5(?:5[78]|7[2-4]|[0468][2-9])|6(?:[0135-8]|4[2-5])|7(?:[0679]|8[2-7])|8(?:[024578]|3[25-9]|9[6-9])|9(?:11|3[2-4]))|4(?:2(?:2[2-9]|8[237-9])|3[689]|6[035-7]|7(?:[059][2-8]|[68])|80|9[3-5])|5(?:3[1-36-9]|4[4578]|5[013-8]|6[1-9]|7[2-8]|8[14-7]|9(?:[89][2-8]|[4-7]))|7(?:2[15]|3[5-9]|4[02-9]|6[135-8]|7[0-4689]|9(?:[017-9]|4[6-8]|5[2-478]|6[2-589]))|8(?:2(?:4[4-8]|9(?:[3578]|20|4[04-9]|6(?:5[25]|60)))|3(?:7(?:[2-5]|6[0-59])|[3-6][2-9]|8[2-5])|4[5-8]|5[2-9]|6(?:[37]|5(?:[467]|5[014-9])|6(?:[2-8]|9[02-69])|8[2-8]|9(?:[236-8]|9[23]))|7[579]|8[03-579]|9[2-8])|9(?:[23]0|4[02-46-9]|5[024-79]|6[4-9]|7[2-47-9]|8[02-7]|9(?:3(?:3[02-9]|4[0-24689])|4[2-69]|[5-7]))";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1|2(?:2[37]|5[5-9]|64|78|8[39]|91)|4(?:2[2689]|64|7[347])|5(?:[2-589]|39)|60|8(?:[46-9]|3[279]|2[124589])|9(?:[235-8]|93)#1|2(?:2[37]|5(?:[57]|[68]0|9[19])|64|78|8[39]|917)|4(?:2(?:[68]|20|9[178])|64|7[347])|5(?:[2-589]|39[67])|60|8(?:[46-9]|3[279]|2[124589])|9(?:[235-8]|93[34])#1|2(?:2[37]|5(?:[57]|[68]0|9(?:17|99))|64|78|8[39]|917)|4(?:2(?:[68]|20|9[178])|64|7[347])|5(?:[2-589]|39[67])|60|8(?:[46-9]|3[279]|2[124589])|9(?:[235-8]|93(?:31|4))";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2(?:9[14-79]|74|[34]7|[56]9)|82|993";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3|4(?:2[09]|7[01])|6[1-9]";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2479";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MM";
-    locala.uhh = "95";
-    locala.uhi = 8;
-    locala.uhj = 10;
-    localb = new b();
-    localb.uhl = "1|2[45]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "251";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(2)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "16|2";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d)(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "67|81";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "4-8";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9(?:[25-9]|4[13789])";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(9)(\\d{3})(\\d{4,5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "94[0245]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(9)(4\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PH";
-    locala.uhh = "63";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(2)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3(?:23|39|46)|4(?:2[3-6]|[35]9|4[26]|76)|5(?:22|44)|642|8(?:62|8[245])#3(?:230|397|461)|4(?:2(?:35|[46]4|51)|396|4(?:22|63)|59[347]|76[15])|5(?:221|446)|642[23]|8(?:622|8(?:[24]2|5[13]))";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "346|4(?:27|9[35])|883#3469|4(?:279|9(?:30|56))|8834";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{5})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3-8";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([3-8]\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(9\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1800)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(1800)(\\d{1,2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GW";
-    locala.uhh = "245";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BF";
-    locala.uhh = "226";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SC";
-    locala.uhh = "248";
-    locala.uhi = 6;
-    locala.uhj = 7;
-    localb = new b();
-    localb.uhl = "89";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "246";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MN";
-    locala.uhh = "976";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[12]1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([12]\\d)(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "12";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([12]2\\d)(\\d{5,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[12](?:27|[3-5])#[12](?:27|[3-5]\\d)2";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([12]\\d{3})(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "57-9";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "12";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([12]\\d{4})(\\d{4,5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BG";
-    locala.uhh = "359";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "29";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(2)(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(2)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "43[124-7]|70[1-9]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "43[124-7]|70[1-9]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[78]00";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "356";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{2,3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "48|8[7-9]|9[08]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SD";
-    locala.uhh = "249";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "UY";
-    locala.uhh = "598";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "24";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9[1-9]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[89]0";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "UZ";
-    locala.uhh = "998";
-    locala.uhi = 7;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([679]\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MO";
-    locala.uhh = "853";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([268]\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "EC";
-    locala.uhh = "593";
-    locala.uhi = 8;
-    locala.uhj = 9;
-    localb = new b();
-    localb.uhl = "247";
-    localb.uhm = "$1-$2-$3";
-    localb.uhn = "(\\d)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1800)(\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "GY";
-    locala.uhh = "592";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BH";
-    locala.uhh = "973";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SE";
-    locala.uhh = "46";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "8";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(8)(\\d{2,3})(\\d{2,3})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[013689]|2[0136]|3[1356]|4[0246]|54|6[03]|90";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([1-69]\\d)(\\d{2,3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[13689]|2[136]|3[1356]|4[0246]|54|6[03]|90";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([1-69]\\d)(\\d{3})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[2457]|2[2457-9]|3[0247-9]|4[1357-9]|5[0-35-9]|6[124-9]|9(?:[125-8]|3[0-5]|4[0-3])";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[2457]|2[2457-9]|3[0247-9]|4[1357-9]|5[0-35-9]|6[124-9]|9(?:[125-8]|3[0-5]|4[0-3])";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{2,3})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "7";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(7\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "20";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(20)(\\d{2,3})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "9[034]";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(9[034]\\d)(\\d{2})(\\d{2})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PK";
-    locala.uhh = "92";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)1#(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)11#(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)111";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(111)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[349]|45|54|60|72|8[2-5]|9[2-9]#(?:2[349]|45|54|60|72|8[2-5]|9[2-9])\\d1#(?:2[349]|45|54|60|72|8[2-5]|9[2-9])\\d11#(?:2[349]|45|54|60|72|8[2-5]|9[2-9])\\d111";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{3})(111)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)[2-9]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{7,8})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2[349]|45|54|60|72|8[2-5]|9[2-9]#(?:2[349]|45|54|60|72|8[2-5]|9[2-9])\\d[2-9]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{6,7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(3\\d{2})(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "58[12]|1";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([15]\\d{3})(\\d{5,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "586";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(586\\d{2})(\\d{5})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[89]00";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([89]00)(\\d{3})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BI";
-    locala.uhh = "257";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([27]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "VA";
-    locala.uhh = "379";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(06)(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MQ";
-    locala.uhh = "596";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "EE";
-    locala.uhh = "372";
-    locala.uhi = 7;
-    locala.uhj = 8;
-    localb = new b();
-    localb.uhl = "369";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([3-79]\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "70";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(70)(\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "800#8000";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(8000)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "40|5|8(?:00|[1-5])#40|5|8(?:00[1-9]|[1-5])";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([458]\\d{3})(\\d{3,4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PL";
-    locala.uhh = "48";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "124";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "124";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{4,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "39|5[013]|6[0469]|7[0289]|8[08]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "64";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2,3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "64";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BJ";
-    locala.uhh = "229";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SG";
-    locala.uhh = "65";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "369";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([3689]\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[89]";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(1[89]00)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "70";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(7000)(\\d{4})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "80";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(800)(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MR";
-    locala.uhh = "222";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "([2-48]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "PM";
-    locala.uhh = "508";
-    locala.uhi = 6;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([45]\\d)(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SI";
-    locala.uhh = "386";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "12";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "[37][01]|4[019]|51|6";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([3-7]\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "89";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([89][09])(\\d{3,6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "59|8[1-3]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([58]\\d{2})(\\d{5})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "EG";
-    locala.uhh = "20";
-    locala.uhi = 9;
-    locala.uhj = 10;
-    localb = new b();
-    localb.uhl = "23";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d)(\\d{7,8})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1[012]|[89]00";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1(?:3|5[23])|[4-6]|[89][2-9]";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{6,7})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MT";
-    locala.uhh = "356";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{4})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "VE";
-    locala.uhh = "58";
-    locala.uhi = 10;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{3})(\\d{7})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MU";
-    locala.uhh = "230";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([2-9]\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BN";
-    locala.uhh = "673";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([2-578]\\d{2})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SK";
-    locala.uhh = "421";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1/$2 $3 $4";
-    localb.uhn = "(2)(\\d{3})(\\d{3})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "3-5";
-    localb.uhm = "$1/$2 $3 $4";
-    localb.uhn = "([3-5]\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "689";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "([689]\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MV";
-    locala.uhh = "960";
-    locala.uhi = 7;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "[3467]|9(?:[1-9]|0[1-9])";
-    localb.uhm = "$1-$2";
-    localb.uhn = "(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "900";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "BO";
-    locala.uhh = "591";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "234";
-    localb.uhm = "$1 $2";
-    localb.uhn = "([234])(\\d{7})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "67";
-    localb.uhm = "$1";
-    localb.uhn = "([67]\\d{7})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SL";
-    locala.uhh = "232";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "";
-    localb.uhm = "$1 $2";
-    localb.uhn = "(\\d{2})(\\d{6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "MW";
-    locala.uhh = "265";
-    locala.uhi = 9;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "1";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(\\d)(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "2";
-    localb.uhm = "$1 $2 $3";
-    localb.uhn = "(2\\d{2})(\\d{3})(\\d{3})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "1789";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
-    locala = new a();
-    locala.uhg = "SM";
-    locala.uhh = "378";
-    locala.uhi = 8;
-    locala.uhj = 20;
-    localb = new b();
-    localb.uhl = "5-7";
-    localb.uhm = "$1 $2 $3 $4";
-    localb.uhn = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "0";
-    localb.uhm = "($1) $2";
-    localb.uhn = "(0549)(\\d{6})";
-    locala.uhk.add(localb);
-    localb = new b();
-    localb.uhl = "89";
-    localb.uhm = "(0549) $1";
-    localb.uhn = "(\\d{6})";
-    locala.uhk.add(localb);
-    this.uhf.add(locala);
+    AppMethodBeat.i(93541);
+    k.a("mmkv", MMKV.class.getClassLoader());
+    MMKV.initialize(ah.getContext());
+    yoU = new ArrayMap();
+    MMKV.registerHandler(new a()
+    {
+      public final c apt(String paramAnonymousString)
+      {
+        AppMethodBeat.i(93460);
+        ab.i("MicroMsg.MultiProcessMMKV", "onMMKVCRCCheckFail:%s", new Object[] { paramAnonymousString });
+        e.qrI.idkeyStat(941L, 3L, 1L, true);
+        paramAnonymousString = c.AZV;
+        AppMethodBeat.o(93460);
+        return paramAnonymousString;
+      }
+      
+      public final c apu(String paramAnonymousString)
+      {
+        AppMethodBeat.i(93461);
+        ab.i("MicroMsg.MultiProcessMMKV", "onMMKVFileLengthError:%s", new Object[] { paramAnonymousString });
+        e.qrI.idkeyStat(941L, 4L, 1L, true);
+        paramAnonymousString = c.AZV;
+        AppMethodBeat.o(93461);
+        return paramAnonymousString;
+      }
+      
+      public final void h(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, String paramAnonymousString3)
+      {
+        AppMethodBeat.i(93462);
+        ab.i("MMKV", "[%s][%d][%s] %s", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, paramAnonymousString3 });
+        AppMethodBeat.o(93462);
+      }
+    });
+    AppMethodBeat.o(93541);
   }
   
-  public static final class a
+  private as(String paramString)
   {
-    String uhg;
-    String uhh;
-    int uhi = 10;
-    int uhj = 20;
-    List<as.b> uhk = new LinkedList();
+    this.name = paramString;
   }
   
-  public static final class b
+  private as(String paramString, MMKV paramMMKV)
   {
-    String uhl;
-    String uhm;
-    String uhn;
+    this.hjd = paramMMKV;
+    this.name = paramString;
+  }
+  
+  public static int a(SharedPreferences paramSharedPreferences, as paramas)
+  {
+    AppMethodBeat.i(93496);
+    if ((paramSharedPreferences == null) || (paramas == null))
+    {
+      AppMethodBeat.o(93496);
+      return 0;
+    }
+    String str = paramas.name;
+    if (bo.isNullOrNil(str))
+    {
+      AppMethodBeat.o(93496);
+      return 0;
+    }
+    as localas = ev("MULTIPROCESSMMKV_PERSERVED_NAME", 2);
+    ab.i("MicroMsg.MultiProcessMMKV", "transport2MMKV, name : %s", new Object[] { str });
+    try
+    {
+      bool = localas.decodeBool(str, false);
+      if (bool)
+      {
+        ab.i("MicroMsg.MultiProcessMMKV", "transport2MMKV has Done");
+        AppMethodBeat.o(93496);
+        return 0;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        boolean bool = localas.decodeBool(str, false);
+      }
+      localas.encode(str, true);
+      e.qrI.idkeyStat(941L, 2L, 1L, true);
+      int i = paramas.importFromSharedPreferences(paramSharedPreferences);
+      AppMethodBeat.o(93496);
+      return i;
+    }
+  }
+  
+  public static as apq(String paramString)
+  {
+    AppMethodBeat.i(93497);
+    paramString = eu(paramString, 2);
+    AppMethodBeat.o(93497);
+    return paramString;
+  }
+  
+  public static as apr(String paramString)
+  {
+    AppMethodBeat.i(93500);
+    as localas = eu(paramString, 2);
+    a(ah.getContext().getSharedPreferences(paramString, 4), localas);
+    AppMethodBeat.o(93500);
+    return localas;
+  }
+  
+  public static d createNativeBuffer(int paramInt)
+  {
+    AppMethodBeat.i(93508);
+    d locald = MMKV.createNativeBuffer(paramInt);
+    AppMethodBeat.o(93508);
+    return locald;
+  }
+  
+  public static void destroyNativeBuffer(d paramd)
+  {
+    AppMethodBeat.i(93509);
+    MMKV.destroyNativeBuffer(paramd);
+    AppMethodBeat.o(93509);
+  }
+  
+  static void dtp()
+  {
+    AppMethodBeat.i(93538);
+    k.a("mmkv", MMKV.class.getClassLoader());
+    AppMethodBeat.o(93538);
+  }
+  
+  private static boolean dtq()
+  {
+    AppMethodBeat.i(93539);
+    String str = Build.MODEL;
+    if (str == null)
+    {
+      AppMethodBeat.o(93539);
+      return false;
+    }
+    if ((bo.isEqual(str, "vivo Y66i")) || (bo.isEqual(str, "vivo Y66i A")))
+    {
+      AppMethodBeat.o(93539);
+      return true;
+    }
+    AppMethodBeat.o(93539);
+    return false;
+  }
+  
+  public static as eu(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(93498);
+    if (!isSupported())
+    {
+      if ((bo.isNullOrNil(paramString)) || (bo.isEqual(paramString, "MULTIPROCESSMMKV_PERSERVED_NAME")))
+      {
+        ab.i("MicroMsg.MultiProcessMMKV", "getMMKV name is illegal");
+        AppMethodBeat.o(93498);
+        return null;
+      }
+      a locala = new a(paramString, (byte)0);
+      paramString = ev(paramString, paramInt);
+      a(locala, paramString);
+      AppMethodBeat.o(93498);
+      return paramString;
+    }
+    if ((bo.isNullOrNil(paramString)) || (bo.isEqual(paramString, "MULTIPROCESSMMKV_PERSERVED_NAME")))
+    {
+      ab.i("MicroMsg.MultiProcessMMKV", "getMMKV name is illegal");
+      AppMethodBeat.o(93498);
+      return null;
+    }
+    paramString = ev(paramString, paramInt);
+    AppMethodBeat.o(93498);
+    return paramString;
+  }
+  
+  private static as ev(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(93499);
+    try
+    {
+      as localas = (as)yoU.get(paramString);
+      if (localas == null)
+      {
+        localas = new as(paramString, MMKV.mmkvWithID(paramString, paramInt));
+        yoU.put(paramString, localas);
+        return localas;
+      }
+      return localas;
+    }
+    finally
+    {
+      AppMethodBeat.o(93499);
+    }
+  }
+  
+  private static boolean isSupported()
+  {
+    AppMethodBeat.i(93540);
+    if (dtq())
+    {
+      AppMethodBeat.o(93540);
+      return false;
+    }
+    AppMethodBeat.o(93540);
+    return true;
+  }
+  
+  private boolean t(String paramString, Object paramObject)
+  {
+    AppMethodBeat.i(93537);
+    if ((bo.isNullOrNil(paramString)) || (paramObject == null) || (bo.isNullOrNil(this.name)))
+    {
+      AppMethodBeat.o(93537);
+      return false;
+    }
+    AppMethodBeat.o(93537);
+    return true;
+  }
+  
+  public String[] allKeys()
+  {
+    AppMethodBeat.i(93519);
+    try
+    {
+      String[] arrayOfString1 = this.hjd.allKeys();
+      AppMethodBeat.o(93519);
+      return arrayOfString1;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        String[] arrayOfString2 = this.hjd.allKeys();
+      }
+    }
+  }
+  
+  public void apply()
+  {
+    AppMethodBeat.i(93536);
+    this.hjd.apply();
+    AppMethodBeat.o(93536);
+  }
+  
+  public long aps(String paramString)
+  {
+    AppMethodBeat.i(93513);
+    long l = this.hjd.decodeLong(paramString, 0L);
+    AppMethodBeat.o(93513);
+    return l;
+  }
+  
+  public SharedPreferences.Editor clear()
+  {
+    AppMethodBeat.i(93534);
+    try
+    {
+      SharedPreferences.Editor localEditor1 = this.hjd.clear();
+      AppMethodBeat.o(93534);
+      return localEditor1;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        SharedPreferences.Editor localEditor2 = this.hjd.clear();
+      }
+    }
+  }
+  
+  public boolean commit()
+  {
+    AppMethodBeat.i(93535);
+    try
+    {
+      bool = this.hjd.commit();
+      AppMethodBeat.o(93535);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        boolean bool = this.hjd.commit();
+      }
+    }
+  }
+  
+  public boolean contains(String paramString)
+  {
+    AppMethodBeat.i(93526);
+    try
+    {
+      bool = this.hjd.contains(paramString);
+      AppMethodBeat.o(93526);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        boolean bool = this.hjd.contains(paramString);
+      }
+    }
+  }
+  
+  public boolean containsKey(String paramString)
+  {
+    AppMethodBeat.i(93516);
+    boolean bool = this.hjd.containsKey(paramString);
+    AppMethodBeat.o(93516);
+    return bool;
+  }
+  
+  public boolean decodeBool(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(93514);
+    paramBoolean = this.hjd.decodeBool(paramString, paramBoolean);
+    AppMethodBeat.o(93514);
+    return paramBoolean;
+  }
+  
+  public byte[] decodeBytes(String paramString)
+  {
+    AppMethodBeat.i(93515);
+    paramString = this.hjd.decodeBytes(paramString);
+    AppMethodBeat.o(93515);
+    return paramString;
+  }
+  
+  public int decodeInt(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(93512);
+    paramInt = this.hjd.decodeInt(paramString, paramInt);
+    AppMethodBeat.o(93512);
+    return paramInt;
+  }
+  
+  public String decodeString(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(139731);
+    paramString1 = this.hjd.decodeString(paramString1, paramString2);
+    AppMethodBeat.o(139731);
+    return paramString1;
+  }
+  
+  public SharedPreferences.Editor edit()
+  {
+    return this;
+  }
+  
+  public boolean encode(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(93503);
+    if (!t(paramString, Integer.valueOf(paramInt)))
+    {
+      AppMethodBeat.o(93503);
+      return false;
+    }
+    boolean bool = this.hjd.encode(paramString, paramInt);
+    AppMethodBeat.o(93503);
+    return bool;
+  }
+  
+  public boolean encode(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(93504);
+    if (!t(paramString, Long.valueOf(paramLong)))
+    {
+      AppMethodBeat.o(93504);
+      return false;
+    }
+    boolean bool = this.hjd.encode(paramString, paramLong);
+    AppMethodBeat.o(93504);
+    return bool;
+  }
+  
+  public boolean encode(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(93502);
+    if (!t(paramString1, paramString2))
+    {
+      AppMethodBeat.o(93502);
+      return false;
+    }
+    boolean bool = this.hjd.encode(paramString1, paramString2);
+    AppMethodBeat.o(93502);
+    return bool;
+  }
+  
+  public boolean encode(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(93505);
+    if (!t(paramString, Boolean.valueOf(paramBoolean)))
+    {
+      AppMethodBeat.o(93505);
+      return false;
+    }
+    try
+    {
+      boolean bool = this.hjd.encode(paramString, paramBoolean);
+      paramBoolean = bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramBoolean = this.hjd.encode(paramString, paramBoolean);
+      }
+    }
+    AppMethodBeat.o(93505);
+    return paramBoolean;
+  }
+  
+  public boolean encode(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(93506);
+    if (!t(paramString, paramArrayOfByte))
+    {
+      AppMethodBeat.o(93506);
+      return false;
+    }
+    boolean bool = this.hjd.encode(paramString, paramArrayOfByte);
+    AppMethodBeat.o(93506);
+    return bool;
+  }
+  
+  public Map<String, ?> getAll()
+  {
+    AppMethodBeat.i(93518);
+    Map localMap = this.hjd.getAll();
+    AppMethodBeat.o(93518);
+    return localMap;
+  }
+  
+  public boolean getBoolean(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(93525);
+    try
+    {
+      boolean bool = this.hjd.getBoolean(paramString, paramBoolean);
+      paramBoolean = bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramBoolean = this.hjd.getBoolean(paramString, paramBoolean);
+      }
+    }
+    AppMethodBeat.o(93525);
+    return paramBoolean;
+  }
+  
+  public float getFloat(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(93524);
+    try
+    {
+      float f = this.hjd.getFloat(paramString, paramFloat);
+      paramFloat = f;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramFloat = this.hjd.getFloat(paramString, paramFloat);
+      }
+    }
+    AppMethodBeat.o(93524);
+    return paramFloat;
+  }
+  
+  public int getInt(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(93522);
+    try
+    {
+      int i = this.hjd.getInt(paramString, paramInt);
+      paramInt = i;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramInt = this.hjd.getInt(paramString, paramInt);
+      }
+    }
+    AppMethodBeat.o(93522);
+    return paramInt;
+  }
+  
+  public long getLong(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(93523);
+    try
+    {
+      long l = this.hjd.getLong(paramString, paramLong);
+      paramLong = l;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramLong = this.hjd.getLong(paramString, paramLong);
+      }
+    }
+    AppMethodBeat.o(93523);
+    return paramLong;
+  }
+  
+  public String getString(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(93520);
+    try
+    {
+      String str = this.hjd.getString(paramString1, paramString2);
+      paramString1 = str;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramString1 = this.hjd.getString(paramString1, paramString2);
+      }
+    }
+    AppMethodBeat.o(93520);
+    return paramString1;
+  }
+  
+  public Set<String> getStringSet(String paramString, Set<String> paramSet)
+  {
+    AppMethodBeat.i(93521);
+    try
+    {
+      Set localSet = this.hjd.getStringSet(paramString, paramSet);
+      paramString = localSet;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramString = this.hjd.getStringSet(paramString, paramSet);
+      }
+    }
+    AppMethodBeat.o(93521);
+    return paramString;
+  }
+  
+  public final int getValueActualSize(String paramString)
+  {
+    AppMethodBeat.i(93501);
+    int i = this.hjd.getValueActualSize(paramString);
+    AppMethodBeat.o(93501);
+    return i;
+  }
+  
+  public int importFromSharedPreferences(SharedPreferences paramSharedPreferences)
+  {
+    AppMethodBeat.i(93507);
+    try
+    {
+      i = this.hjd.importFromSharedPreferences(paramSharedPreferences);
+      AppMethodBeat.o(93507);
+      return i;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        int i = this.hjd.importFromSharedPreferences(paramSharedPreferences);
+      }
+    }
+  }
+  
+  public SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(93532);
+    if (!t(paramString, Boolean.valueOf(paramBoolean)))
+    {
+      paramString = edit();
+      AppMethodBeat.o(93532);
+      return paramString;
+    }
+    try
+    {
+      SharedPreferences.Editor localEditor = this.hjd.putBoolean(paramString, paramBoolean);
+      paramString = localEditor;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramString = this.hjd.putBoolean(paramString, paramBoolean);
+      }
+    }
+    AppMethodBeat.o(93532);
+    return paramString;
+  }
+  
+  public SharedPreferences.Editor putFloat(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(93531);
+    if (!t(paramString, Float.valueOf(paramFloat)))
+    {
+      paramString = edit();
+      AppMethodBeat.o(93531);
+      return paramString;
+    }
+    try
+    {
+      SharedPreferences.Editor localEditor = this.hjd.putFloat(paramString, paramFloat);
+      paramString = localEditor;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramString = this.hjd.putFloat(paramString, paramFloat);
+      }
+    }
+    AppMethodBeat.o(93531);
+    return paramString;
+  }
+  
+  public SharedPreferences.Editor putInt(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(93529);
+    if (!t(paramString, Integer.valueOf(paramInt)))
+    {
+      paramString = edit();
+      AppMethodBeat.o(93529);
+      return paramString;
+    }
+    try
+    {
+      SharedPreferences.Editor localEditor = this.hjd.putInt(paramString, paramInt);
+      paramString = localEditor;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramString = this.hjd.putInt(paramString, paramInt);
+      }
+    }
+    AppMethodBeat.o(93529);
+    return paramString;
+  }
+  
+  public SharedPreferences.Editor putLong(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(93530);
+    if (!t(paramString, Long.valueOf(paramLong)))
+    {
+      paramString = edit();
+      AppMethodBeat.o(93530);
+      return paramString;
+    }
+    try
+    {
+      SharedPreferences.Editor localEditor = this.hjd.putLong(paramString, paramLong);
+      paramString = localEditor;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramString = this.hjd.putLong(paramString, paramLong);
+      }
+    }
+    AppMethodBeat.o(93530);
+    return paramString;
+  }
+  
+  public SharedPreferences.Editor putString(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(93527);
+    if (!t(paramString1, paramString2))
+    {
+      paramString1 = edit();
+      AppMethodBeat.o(93527);
+      return paramString1;
+    }
+    try
+    {
+      SharedPreferences.Editor localEditor = this.hjd.putString(paramString1, paramString2);
+      paramString1 = localEditor;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramString1 = this.hjd.putString(paramString1, paramString2);
+      }
+    }
+    AppMethodBeat.o(93527);
+    return paramString1;
+  }
+  
+  public SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
+  {
+    AppMethodBeat.i(93528);
+    if (!t(paramString, paramSet))
+    {
+      paramString = edit();
+      AppMethodBeat.o(93528);
+      return paramString;
+    }
+    try
+    {
+      SharedPreferences.Editor localEditor = this.hjd.putStringSet(paramString, paramSet);
+      paramString = localEditor;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        paramString = this.hjd.putStringSet(paramString, paramSet);
+      }
+    }
+    AppMethodBeat.o(93528);
+    return paramString;
+  }
+  
+  public void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener) {}
+  
+  public SharedPreferences.Editor remove(String paramString)
+  {
+    AppMethodBeat.i(93533);
+    try
+    {
+      SharedPreferences.Editor localEditor1 = this.hjd.remove(paramString);
+      paramString = localEditor1.remove(paramString);
+      AppMethodBeat.o(93533);
+      return paramString;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        dtp();
+        SharedPreferences.Editor localEditor2 = this.hjd.remove(paramString);
+      }
+    }
+  }
+  
+  public void removeValueForKey(String paramString)
+  {
+    AppMethodBeat.i(93517);
+    this.hjd.removeValueForKey(paramString);
+    AppMethodBeat.o(93517);
+  }
+  
+  public void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener) {}
+  
+  public final int writeValueToNativeBuffer(String paramString, d paramd)
+  {
+    AppMethodBeat.i(93510);
+    int i = this.hjd.writeValueToNativeBuffer(paramString, paramd);
+    AppMethodBeat.o(93510);
+    return i;
+  }
+  
+  static final class a
+    extends as
+    implements SharedPreferences, SharedPreferences.Editor
+  {
+    private SharedPreferences sp;
+    
+    private a(String paramString)
+    {
+      super((byte)0);
+      AppMethodBeat.i(93463);
+      this.sp = ah.getContext().getSharedPreferences(paramString, 4);
+      AppMethodBeat.o(93463);
+    }
+    
+    public final String[] allKeys()
+    {
+      AppMethodBeat.i(93465);
+      String[] arrayOfString = (String[])this.sp.getAll().keySet().toArray(new String[0]);
+      AppMethodBeat.o(93465);
+      return arrayOfString;
+    }
+    
+    public final void apply()
+    {
+      AppMethodBeat.i(93482);
+      this.sp.edit().apply();
+      AppMethodBeat.o(93482);
+    }
+    
+    public final long aps(String paramString)
+    {
+      AppMethodBeat.i(93491);
+      long l = this.sp.getLong(paramString, 0L);
+      AppMethodBeat.o(93491);
+      return l;
+    }
+    
+    public final SharedPreferences.Editor clear()
+    {
+      AppMethodBeat.i(93480);
+      SharedPreferences.Editor localEditor = this.sp.edit().clear();
+      localEditor.apply();
+      AppMethodBeat.o(93480);
+      return localEditor;
+    }
+    
+    public final boolean commit()
+    {
+      AppMethodBeat.i(93481);
+      boolean bool = this.sp.edit().commit();
+      AppMethodBeat.o(93481);
+      return bool;
+    }
+    
+    public final boolean contains(String paramString)
+    {
+      AppMethodBeat.i(93472);
+      boolean bool = this.sp.contains(paramString);
+      AppMethodBeat.o(93472);
+      return bool;
+    }
+    
+    public final boolean containsKey(String paramString)
+    {
+      AppMethodBeat.i(93494);
+      boolean bool = this.sp.contains(paramString);
+      AppMethodBeat.o(93494);
+      return bool;
+    }
+    
+    public final boolean decodeBool(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(93492);
+      paramBoolean = this.sp.getBoolean(paramString, paramBoolean);
+      AppMethodBeat.o(93492);
+      return paramBoolean;
+    }
+    
+    public final byte[] decodeBytes(String paramString)
+    {
+      AppMethodBeat.i(93493);
+      paramString = this.sp.getString(paramString, "");
+      try
+      {
+        paramString = Base64.decode(paramString, 0);
+        AppMethodBeat.o(93493);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        AppMethodBeat.o(93493);
+      }
+      return null;
+    }
+    
+    public final int decodeInt(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(93490);
+      paramInt = this.sp.getInt(paramString, paramInt);
+      AppMethodBeat.o(93490);
+      return paramInt;
+    }
+    
+    public final String decodeString(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(139730);
+      paramString1 = this.sp.getString(paramString1, paramString2);
+      AppMethodBeat.o(139730);
+      return paramString1;
+    }
+    
+    public final SharedPreferences.Editor edit()
+    {
+      return this;
+    }
+    
+    public final boolean encode(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(93484);
+      this.sp.edit().putInt(paramString, paramInt).apply();
+      AppMethodBeat.o(93484);
+      return true;
+    }
+    
+    public final boolean encode(String paramString, long paramLong)
+    {
+      AppMethodBeat.i(93485);
+      this.sp.edit().putLong(paramString, paramLong).apply();
+      AppMethodBeat.o(93485);
+      return true;
+    }
+    
+    public final boolean encode(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(93483);
+      this.sp.edit().putString(paramString1, paramString2).apply();
+      AppMethodBeat.o(93483);
+      return true;
+    }
+    
+    public final boolean encode(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(93486);
+      this.sp.edit().putBoolean(paramString, paramBoolean).apply();
+      AppMethodBeat.o(93486);
+      return true;
+    }
+    
+    public final boolean encode(String paramString, byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(93487);
+      paramArrayOfByte = Base64.encodeToString(paramArrayOfByte, 0);
+      this.sp.edit().putString(paramString, paramArrayOfByte).apply();
+      AppMethodBeat.o(93487);
+      return true;
+    }
+    
+    public final Map<String, ?> getAll()
+    {
+      AppMethodBeat.i(93464);
+      Map localMap = this.sp.getAll();
+      AppMethodBeat.o(93464);
+      return localMap;
+    }
+    
+    public final boolean getBoolean(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(93471);
+      paramBoolean = this.sp.getBoolean(paramString, paramBoolean);
+      AppMethodBeat.o(93471);
+      return paramBoolean;
+    }
+    
+    public final float getFloat(String paramString, float paramFloat)
+    {
+      AppMethodBeat.i(93470);
+      paramFloat = this.sp.getFloat(paramString, paramFloat);
+      AppMethodBeat.o(93470);
+      return paramFloat;
+    }
+    
+    public final int getInt(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(93468);
+      try
+      {
+        int i = this.sp.getInt(paramString, paramInt);
+        paramInt = i;
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          as.dtp();
+          paramInt = this.sp.getInt(paramString, paramInt);
+        }
+      }
+      AppMethodBeat.o(93468);
+      return paramInt;
+    }
+    
+    public final long getLong(String paramString, long paramLong)
+    {
+      AppMethodBeat.i(93469);
+      paramLong = this.sp.getLong(paramString, paramLong);
+      AppMethodBeat.o(93469);
+      return paramLong;
+    }
+    
+    public final String getString(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(93466);
+      paramString1 = this.sp.getString(paramString1, paramString2);
+      AppMethodBeat.o(93466);
+      return paramString1;
+    }
+    
+    public final Set<String> getStringSet(String paramString, Set<String> paramSet)
+    {
+      AppMethodBeat.i(93467);
+      paramString = this.sp.getStringSet(paramString, paramSet);
+      AppMethodBeat.o(93467);
+      return paramString;
+    }
+    
+    public final int importFromSharedPreferences(SharedPreferences paramSharedPreferences)
+    {
+      AppMethodBeat.i(93488);
+      int i = paramSharedPreferences.getAll().size();
+      AppMethodBeat.o(93488);
+      return i;
+    }
+    
+    public final SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(93478);
+      paramString = this.sp.edit().putBoolean(paramString, paramBoolean);
+      paramString.apply();
+      AppMethodBeat.o(93478);
+      return paramString;
+    }
+    
+    public final SharedPreferences.Editor putFloat(String paramString, float paramFloat)
+    {
+      AppMethodBeat.i(93477);
+      paramString = this.sp.edit().putFloat(paramString, paramFloat);
+      paramString.apply();
+      AppMethodBeat.o(93477);
+      return paramString;
+    }
+    
+    public final SharedPreferences.Editor putInt(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(93475);
+      paramString = this.sp.edit().putInt(paramString, paramInt);
+      paramString.apply();
+      AppMethodBeat.o(93475);
+      return paramString;
+    }
+    
+    public final SharedPreferences.Editor putLong(String paramString, long paramLong)
+    {
+      AppMethodBeat.i(93476);
+      paramString = this.sp.edit().putLong(paramString, paramLong);
+      paramString.apply();
+      AppMethodBeat.o(93476);
+      return paramString;
+    }
+    
+    public final SharedPreferences.Editor putString(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(93473);
+      paramString1 = this.sp.edit().putString(paramString1, paramString2);
+      paramString1.apply();
+      AppMethodBeat.o(93473);
+      return paramString1;
+    }
+    
+    public final SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
+    {
+      AppMethodBeat.i(93474);
+      paramString = this.sp.edit().putStringSet(paramString, paramSet);
+      paramString.apply();
+      AppMethodBeat.o(93474);
+      return paramString;
+    }
+    
+    public final void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener) {}
+    
+    public final SharedPreferences.Editor remove(String paramString)
+    {
+      AppMethodBeat.i(93479);
+      SharedPreferences.Editor localEditor = this.sp.edit().remove(paramString);
+      localEditor.apply();
+      paramString = localEditor.remove(paramString);
+      AppMethodBeat.o(93479);
+      return paramString;
+    }
+    
+    public final void removeValueForKey(String paramString)
+    {
+      AppMethodBeat.i(93495);
+      this.sp.edit().remove(paramString).apply();
+      AppMethodBeat.o(93495);
+    }
+    
+    public final void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener) {}
   }
 }
 

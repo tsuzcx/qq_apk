@@ -7,41 +7,54 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PieView
   extends View
 {
-  private int bTs = 0;
-  private int ghE = 6;
-  private Paint iCj;
-  private Paint iCk;
-  private Paint iCl;
-  private Paint iCm;
-  private Paint iCn;
-  private Paint iCo;
-  private Paint iCp;
-  private int iCq;
-  private int iCr;
-  private int iCs;
-  private int iCt;
-  private int iCu;
-  private int iCv;
-  private int iCw = 0;
-  private int iCx = -90;
+  private int cAX;
+  private int hAu;
+  private int kHA;
+  private int kHB;
+  private int kHC;
+  private int kHD;
+  private int kHE;
+  private Paint kHq;
+  private Paint kHr;
+  private Paint kHs;
+  private Paint kHt;
+  private Paint kHu;
+  private Paint kHv;
+  private Paint kHw;
+  private int kHx;
+  private int kHy;
+  private int kHz;
   
   public PieView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(18735);
+    this.hAu = 6;
+    this.kHD = 0;
+    this.cAX = 0;
+    this.kHE = -90;
     initView();
+    AppMethodBeat.o(18735);
   }
   
   public PieView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(18734);
+    this.hAu = 6;
+    this.kHD = 0;
+    this.cAX = 0;
+    this.kHE = -90;
     initView();
+    AppMethodBeat.o(18734);
   }
   
-  private static int D(int paramInt1, int paramInt2, int paramInt3)
+  private static int P(int paramInt1, int paramInt2, int paramInt3)
   {
     int i;
     if (paramInt2 - paramInt1 >= paramInt3) {
@@ -57,112 +70,118 @@ public class PieView
   
   private void initView()
   {
-    this.iCj = pj(-1);
-    this.iCk = pj(-657931);
-    this.iCl = pj(-2565928);
-    this.iCm = pj(-15223279);
-    this.iCn = pj(-7876878);
-    this.iCo = pj(-7876878);
-    this.iCp = pj(-1644567);
+    AppMethodBeat.i(18736);
+    this.kHq = tz(-1);
+    this.kHr = tz(-657931);
+    this.kHs = tz(-2565928);
+    this.kHt = tz(-15223279);
+    this.kHu = tz(-7876878);
+    this.kHv = tz(-7876878);
+    this.kHw = tz(-1644567);
+    AppMethodBeat.o(18736);
   }
   
-  private static Paint pj(int paramInt)
+  private static Paint tz(int paramInt)
   {
+    AppMethodBeat.i(18737);
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
     localPaint.setStyle(Paint.Style.FILL);
     localPaint.setColor(paramInt);
+    AppMethodBeat.o(18737);
     return localPaint;
   }
   
   public void draw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(18738);
     float f1 = getMeasuredWidth() / 2;
     float f2 = getMeasuredHeight() / 2 + getTop();
     float f3 = getMeasuredHeight() / 3 + 15;
     RectF localRectF1 = new RectF(f1 - f3, f2 - f3, f1 + f3, f2 + f3);
-    if (this.bTs == 0)
+    if (this.cAX == 0)
     {
-      paramCanvas.drawCircle(f1, f2, f3, this.iCk);
-      paramCanvas.drawArc(localRectF1, this.iCx, 45.0F, true, this.iCl);
-      paramCanvas.drawCircle(f1, f2, f3 - 15.0F, this.iCj);
-      this.iCx += 4;
-      this.iCx %= 360;
+      paramCanvas.drawCircle(f1, f2, f3, this.kHr);
+      paramCanvas.drawArc(localRectF1, this.kHE, 45.0F, true, this.kHs);
+      paramCanvas.drawCircle(f1, f2, f3 - 15.0F, this.kHq);
+      this.kHE += 4;
+      this.kHE %= 360;
     }
     RectF localRectF2;
     int i;
     int j;
-    if (this.bTs == 1)
+    if (this.cAX == 1)
     {
       f3 = 10.0F + f3;
       localRectF2 = new RectF(f1 - f3, f2 - f3, f1 + f3, f3 + f2);
-      this.iCq = D(this.iCq, this.iCu, this.ghE);
-      paramCanvas.drawArc(localRectF2, -90.0F, this.iCq, true, this.iCm);
-      if (this.iCw > 0) {
-        break label351;
+      this.kHx = P(this.kHx, this.kHB, this.hAu);
+      paramCanvas.drawArc(localRectF2, -90.0F, this.kHx, true, this.kHt);
+      if (this.kHD > 0) {
+        break label363;
       }
-      if (this.iCq == this.iCu)
+      if (this.kHx == this.kHB)
       {
-        this.iCs = D(this.iCs, this.iCv, this.ghE);
-        paramCanvas.drawArc(localRectF1, this.iCu - 90, this.iCs, true, this.iCn);
+        this.kHz = P(this.kHz, this.kHC, this.hAu);
+        paramCanvas.drawArc(localRectF1, this.kHB - 90, this.kHz, true, this.kHu);
       }
-      if (this.iCs == this.iCv)
+      if (this.kHz == this.kHC)
       {
-        i = this.iCu;
-        j = this.iCv;
-        this.iCr = D(this.iCr, 360 - i - j, this.ghE);
-        paramCanvas.drawArc(localRectF1, this.iCu - 90 + this.iCv, this.iCr, true, this.iCo);
+        i = this.kHB;
+        j = this.kHC;
+        this.kHy = P(this.kHy, 360 - i - j, this.hAu);
+        paramCanvas.drawArc(localRectF1, this.kHB - 90 + this.kHC, this.kHy, true, this.kHv);
       }
     }
     for (;;)
     {
       invalidate();
+      AppMethodBeat.o(18738);
       return;
-      label351:
-      if (this.iCq == this.iCu)
+      label363:
+      if (this.kHx == this.kHB)
       {
-        this.iCt = D(this.iCt, this.iCw, this.ghE);
-        paramCanvas.drawArc(localRectF2, this.iCu - 90, this.iCt, true, this.iCp);
+        this.kHA = P(this.kHA, this.kHD, this.hAu);
+        paramCanvas.drawArc(localRectF2, this.kHB - 90, this.kHA, true, this.kHw);
       }
-      if (this.iCt == this.iCw)
+      if (this.kHA == this.kHD)
       {
-        this.iCs = D(this.iCs, this.iCv, this.ghE);
-        paramCanvas.drawArc(localRectF1, this.iCw - 90 + this.iCu, this.iCs, true, this.iCn);
+        this.kHz = P(this.kHz, this.kHC, this.hAu);
+        paramCanvas.drawArc(localRectF1, this.kHD - 90 + this.kHB, this.kHz, true, this.kHu);
       }
-      if (this.iCs == this.iCv)
+      if (this.kHz == this.kHC)
       {
-        i = this.iCu;
-        j = this.iCv;
-        int k = this.iCw;
-        this.iCr = D(this.iCr, 360 - i - j - k, this.ghE);
-        paramCanvas.drawArc(localRectF1, this.iCu - 90 + this.iCv + this.iCw, this.iCr, true, this.iCo);
+        i = this.kHB;
+        j = this.kHC;
+        int k = this.kHD;
+        this.kHy = P(this.kHy, 360 - i - j - k, this.hAu);
+        paramCanvas.drawArc(localRectF1, this.kHB - 90 + this.kHC + this.kHD, this.kHy, true, this.kHv);
       }
     }
   }
   
   public void setDeepGrayTargetAngle(int paramInt)
   {
-    this.iCv = paramInt;
+    this.kHC = paramInt;
   }
   
   public void setGreenTargetAngle(int paramInt)
   {
-    this.iCu = paramInt;
+    this.kHB = paramInt;
   }
   
   public void setOtherAccTargetAngle(int paramInt)
   {
-    this.iCw = paramInt;
+    this.kHD = paramInt;
   }
   
   public void setStage(int paramInt)
   {
-    this.bTs = paramInt;
+    this.cAX = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.PieView
  * JD-Core Version:    0.7.0.1
  */

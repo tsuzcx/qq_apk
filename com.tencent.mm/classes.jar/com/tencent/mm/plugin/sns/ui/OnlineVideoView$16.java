@@ -1,57 +1,58 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class OnlineVideoView$16
-  implements am.a
+  implements ap.a
 {
   OnlineVideoView$16(OnlineVideoView paramOnlineVideoView) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if ((OnlineVideoView.k(this.oRM) == null) || (OnlineVideoView.d(this.oRM) == null)) {
+    AppMethodBeat.i(38405);
+    if ((this.rJD.rJi == null) || (this.rJD.kvG == null))
+    {
+      AppMethodBeat.o(38405);
       return false;
     }
-    if (((View)OnlineVideoView.d(this.oRM)).getAlpha() < 1.0F) {
-      OnlineVideoView.m(this.oRM);
-    }
-    if (OnlineVideoView.d(this.oRM).isPlaying()) {
-      OnlineVideoView.n(this.oRM);
-    }
-    for (;;)
+    if (((View)this.rJD.kvG).getAlpha() < 1.0F)
     {
-      try
-      {
-        if (bk.bl(OnlineVideoView.k(this.oRM).eFo)) {
-          break label154;
-        }
-        i = 1;
-      }
-      catch (Exception localException)
-      {
-        boolean bool;
-        y.e("MicroMsg.OnlineVideoView", "online video timer check error : " + localException.toString());
-        return false;
-      }
-      int i = OnlineVideoView.d(this.oRM).getCurrentPosition() / 1000;
-      bool = OnlineVideoView.k(this.oRM).jr(i);
-      return bool;
-      while (i == 0)
-      {
-        return false;
-        label154:
-        i = 0;
-      }
+      ab.i("MicroMsg.OnlineVideoView", "onlineVideoTimer switchVideoModel");
+      OnlineVideoView.k(this.rJD);
     }
+    if (this.rJD.kvG.isPlaying()) {
+      OnlineVideoView.l(this.rJD);
+    }
+    try
+    {
+      boolean bool = bo.isNullOrNil(this.rJD.rJi.fVf);
+      if (!bool) {}
+      for (int i = 1; i == 0; i = 0)
+      {
+        AppMethodBeat.o(38405);
+        return false;
+      }
+      i = this.rJD.kvG.getCurrentPosition() / 1000;
+      bool = this.rJD.rJi.mj(i);
+      AppMethodBeat.o(38405);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.OnlineVideoView", "online video timer check error : " + localException.toString());
+      AppMethodBeat.o(38405);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.OnlineVideoView.16
  * JD-Core Version:    0.7.0.1
  */

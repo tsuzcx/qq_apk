@@ -1,5 +1,6 @@
 package org.xwalk.core.extension;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Iterator;
@@ -22,6 +23,7 @@ public class JsStubGenerator
   
   String[] classGenerator(ReflectionHelper paramReflectionHelper)
   {
+    AppMethodBeat.i(86115);
     String str1 = "";
     String str2 = "";
     if (paramReflectionHelper.getEventList() != null)
@@ -38,7 +40,7 @@ public class JsStubGenerator
       if (localMemberInfo.isStatic)
       {
         paramReflectionHelper = "postMessageToClass";
-        label122:
+        label127:
         switch (JsStubGenerator.1.$SwitchMap$org$xwalk$core$extension$ReflectionHelper$MemberType[localMemberInfo.type.ordinal()])
         {
         default: 
@@ -48,24 +50,26 @@ public class JsStubGenerator
       for (;;)
       {
         if (!localMemberInfo.isStatic) {
-          break label218;
+          break label222;
         }
         str2 = str2 + paramReflectionHelper;
         break;
         paramReflectionHelper = "postMessageToObject";
-        break label122;
+        break label127;
         paramReflectionHelper = generateProperty(paramReflectionHelper, localMemberInfo);
         continue;
         paramReflectionHelper = generateMethod(paramReflectionHelper, localMemberInfo, true);
       }
-      label218:
+      label222:
       str1 = str1 + paramReflectionHelper;
     }
+    AppMethodBeat.o(86115);
     return new String[] { str1, str2 };
   }
   
   String destroyBindingObject(ReflectionHelper paramReflectionHelper)
   {
+    AppMethodBeat.i(86116);
     Iterator localIterator = paramReflectionHelper.getMembers().keySet().iterator();
     String str;
     for (paramReflectionHelper = "exports.destroy = function() {\n"; localIterator.hasNext(); paramReflectionHelper = paramReflectionHelper + "delete exports[\"" + str + "\"];\n") {
@@ -74,17 +78,20 @@ public class JsStubGenerator
     paramReflectionHelper = paramReflectionHelper + "helper.destroy();\n";
     paramReflectionHelper = paramReflectionHelper + "delete exports[\"__stubHelper\"];\n";
     paramReflectionHelper = paramReflectionHelper + "delete exports[\"destroy\"];\n";
-    return paramReflectionHelper + "};";
+    paramReflectionHelper = paramReflectionHelper + "};";
+    AppMethodBeat.o(86116);
+    return paramReflectionHelper;
   }
   
   String generate()
   {
+    AppMethodBeat.i(86113);
     Object localObject1 = "";
     Object localObject2 = this.reflection.getEntryPoint();
     if (localObject2 != null) {
       localObject1 = generateEntryPoint((ReflectionHelper.MemberInfo)localObject2);
     }
-    label88:
+    label93:
     ReflectionHelper.MemberInfo localMemberInfo;
     if (((String)localObject1).length() > 0)
     {
@@ -108,20 +115,23 @@ public class JsStubGenerator
     }
     for (;;)
     {
-      break label88;
+      break label93;
       localObject2 = this.jsHeader;
       break;
       localObject1 = (String)localObject1 + generateProperty("postMessageToExtension", localMemberInfo);
-      break label88;
+      break label93;
       localObject1 = (String)localObject1 + generateMethod("postMessageToExtension", localMemberInfo, true);
-      break label88;
+      break label93;
       localObject1 = (String)localObject1 + generateConstructor(localMemberInfo, true);
     }
-    return (String)localObject1 + "\n";
+    localObject1 = (String)localObject1 + "\n";
+    AppMethodBeat.o(86113);
+    return localObject1;
   }
   
   String generateConstructor(ReflectionHelper.MemberInfo paramMemberInfo, boolean paramBoolean)
   {
+    AppMethodBeat.i(86124);
     String str1 = paramMemberInfo.jsName;
     String str2 = getPrototypeName(str1);
     String str3 = getArgString((Method)paramMemberInfo.accesser, false);
@@ -131,55 +141,70 @@ public class JsStubGenerator
     str2 = String.format("function %s(%s) {\nvar newObject = this;\nvar objectId =\nNumber(helper.invokeNative(\"%s\", \"+%s\", [%s], true));\nif (!objectId) throw \"Error to create instance for constructor:%s.\";\nvar objectHelper = jsStub.getHelper(newObject, helper);\nobjectHelper.objectId = objectId;\nobjectHelper.constructorJsName = \"%s\";\nobjectHelper.registerLifecycleTracker();%s(newObject, objectHelper);\nhelper.addBindingObject(objectId, newObject);}\nhelper.constructors[\"%s\"] = %s;\n", new Object[] { str1, str3, "postMessageToExtension", str1, str3, str1, str1, str2, str1, str1 });
     str3 = String.format("(function(exports, helper){\n  helper.constructorJsName = \"%s\";\n%s\n})(%s, jsStub.getHelper(%s, helper));\n", new Object[] { str1, paramMemberInfo[1], str1, str1 });
     if (paramBoolean) {}
-    for (paramMemberInfo = String.format("exports[\"%s\"] = %s;\n", new Object[] { str1, str1 });; paramMemberInfo = "") {
-      return (String)localObject + str2 + str3 + paramMemberInfo;
+    for (paramMemberInfo = String.format("exports[\"%s\"] = %s;\n", new Object[] { str1, str1 });; paramMemberInfo = "")
+    {
+      paramMemberInfo = (String)localObject + str2 + str3 + paramMemberInfo;
+      AppMethodBeat.o(86124);
+      return paramMemberInfo;
     }
   }
   
   String generateEntryPoint(ReflectionHelper.MemberInfo paramMemberInfo)
   {
+    AppMethodBeat.i(86114);
     if (paramMemberInfo.type == ReflectionHelper.MemberType.JS_PROPERTY)
     {
       paramMemberInfo = ((Field)paramMemberInfo.accesser).getType().getSimpleName();
-      return this.jsHeader + String.format("%s(exports, helper);\n", new Object[] { getPrototypeName(paramMemberInfo) });
+      paramMemberInfo = this.jsHeader + String.format("%s(exports, helper);\n", new Object[] { getPrototypeName(paramMemberInfo) });
+      AppMethodBeat.o(86114);
+      return paramMemberInfo;
     }
-    if (paramMemberInfo.type == ReflectionHelper.MemberType.JS_METHOD) {
-      return String.format("exports = %s;\n %s\n %s", new Object[] { getInternalName(paramMemberInfo.jsName), this.jsHeader, generateMethod("postMessageToExtension", paramMemberInfo, false) });
+    if (paramMemberInfo.type == ReflectionHelper.MemberType.JS_METHOD)
+    {
+      paramMemberInfo = String.format("exports = %s;\n %s\n %s", new Object[] { getInternalName(paramMemberInfo.jsName), this.jsHeader, generateMethod("postMessageToExtension", paramMemberInfo, false) });
+      AppMethodBeat.o(86114);
+      return paramMemberInfo;
     }
-    if (paramMemberInfo.type == ReflectionHelper.MemberType.JS_CONSTRUCTOR) {
-      return String.format("exports = %s;\n %s\n %s", new Object[] { paramMemberInfo.jsName, this.jsHeader, generateConstructor(paramMemberInfo, false) });
+    if (paramMemberInfo.type == ReflectionHelper.MemberType.JS_CONSTRUCTOR)
+    {
+      paramMemberInfo = String.format("exports = %s;\n %s\n %s", new Object[] { paramMemberInfo.jsName, this.jsHeader, generateConstructor(paramMemberInfo, false) });
+      AppMethodBeat.o(86114);
+      return paramMemberInfo;
     }
+    AppMethodBeat.o(86114);
     return "";
   }
   
   String generateEventTarget(ReflectionHelper paramReflectionHelper)
   {
+    AppMethodBeat.i(86117);
     String[] arrayOfString = paramReflectionHelper.getEventList();
-    Object localObject;
     if ((arrayOfString == null) || (arrayOfString.length == 0))
     {
-      localObject = "";
-      return localObject;
+      AppMethodBeat.o(86117);
+      return "";
     }
     paramReflectionHelper = "jsStub.makeEventTarget(exports);\n";
     int j = arrayOfString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      localObject = paramReflectionHelper;
-      if (i >= j) {
-        break;
-      }
-      localObject = arrayOfString[i];
-      paramReflectionHelper = paramReflectionHelper + "helper.addEvent(\"" + (String)localObject + "\");\n";
+      String str = arrayOfString[i];
+      paramReflectionHelper = paramReflectionHelper + "helper.addEvent(\"" + str + "\");\n";
       i += 1;
     }
+    AppMethodBeat.o(86117);
+    return paramReflectionHelper;
   }
   
   String generateMethod(String paramString, ReflectionHelper.MemberInfo paramMemberInfo, boolean paramBoolean)
   {
-    if (paramMemberInfo.withPromise) {
-      return generatePromiseMethod(paramString, paramMemberInfo);
+    AppMethodBeat.i(86121);
+    if (paramMemberInfo.withPromise)
+    {
+      paramString = generatePromiseMethod(paramString, paramMemberInfo);
+      AppMethodBeat.o(86121);
+      return paramString;
     }
     String str1 = paramMemberInfo.jsName;
     Object localObject = (Method)paramMemberInfo.accesser;
@@ -192,42 +217,47 @@ public class JsStubGenerator
       bool = true;
       localObject = new StringBuilder("function %s(%s) {\n");
       if (!bool) {
-        break label197;
+        break label217;
       }
       paramMemberInfo = "  return ";
-      label92:
+      label105:
       paramMemberInfo = String.format(paramMemberInfo + "helper.invokeNative(\"%s\", \"%s\", [%s], %b);\n};\n", new Object[] { str2, str3, paramString, str1, str3, Boolean.valueOf(bool) });
       if (!paramBoolean) {
-        break label204;
+        break label224;
       }
     }
-    label197:
-    label204:
+    label217:
+    label224:
     for (paramString = String.format("exports[\"%s\"] = %s;\n", new Object[] { str1, str2 });; paramString = "")
     {
-      return paramMemberInfo + paramString;
+      paramString = paramMemberInfo + paramString;
+      AppMethodBeat.o(86121);
+      return paramString;
       bool = false;
       break;
       paramMemberInfo = "  ";
-      break label92;
+      break label105;
     }
   }
   
   String generatePromiseMethod(String paramString, ReflectionHelper.MemberInfo paramMemberInfo)
   {
+    AppMethodBeat.i(86119);
     String str2 = paramMemberInfo.jsName;
     String str1;
     if (paramMemberInfo.wrapArgs.length() > 0)
     {
       str1 = paramMemberInfo.wrapArgs;
       if (paramMemberInfo.wrapReturns.length() <= 0) {
-        break label71;
+        break label85;
       }
     }
-    label71:
+    label85:
     for (paramMemberInfo = paramMemberInfo.wrapReturns;; paramMemberInfo = "null")
     {
-      return String.format("jsStub.addMethodWithPromise(\"%s\", exports, \"%s\", %s, %s);\n", new Object[] { paramString, str2, str1, paramMemberInfo });
+      paramString = String.format("jsStub.addMethodWithPromise(\"%s\", exports, \"%s\", %s, %s);\n", new Object[] { paramString, str2, str1, paramMemberInfo });
+      AppMethodBeat.o(86119);
+      return paramString;
       str1 = "null";
       break;
     }
@@ -235,16 +265,19 @@ public class JsStubGenerator
   
   String generateProperty(String paramString, ReflectionHelper.MemberInfo paramMemberInfo)
   {
-    return String.format("jsStub.defineProperty(\"%s\", exports, \"%s\", %b);\n", new Object[] { paramString, paramMemberInfo.jsName, Boolean.valueOf(paramMemberInfo.isWritable) });
+    AppMethodBeat.i(86118);
+    paramString = String.format("jsStub.defineProperty(\"%s\", exports, \"%s\", %b);\n", new Object[] { paramString, paramMemberInfo.jsName, Boolean.valueOf(paramMemberInfo.isWritable) });
+    AppMethodBeat.o(86118);
+    return paramString;
   }
   
   String getArgString(Method paramMethod, boolean paramBoolean)
   {
-    Object localObject;
+    AppMethodBeat.i(86120);
     if (paramMethod == null)
     {
-      localObject = "";
-      return localObject;
+      AppMethodBeat.o(86120);
+      return "";
     }
     Class[] arrayOfClass = paramMethod.getParameterTypes();
     paramMethod.getParameterAnnotations();
@@ -253,13 +286,9 @@ public class JsStubGenerator
     for (int i = arrayOfClass.length - 1;; i = arrayOfClass.length)
     {
       int j = 0;
-      for (;;)
+      while (j < i)
       {
-        localObject = paramMethod;
-        if (j >= i) {
-          break;
-        }
-        localObject = arrayOfClass[j];
+        Object localObject = arrayOfClass[j];
         String str = "arg" + j + "_" + ((Class)localObject).getSimpleName();
         localObject = paramMethod;
         if (paramMethod.length() > 0) {
@@ -269,16 +298,24 @@ public class JsStubGenerator
         j += 1;
       }
     }
+    AppMethodBeat.o(86120);
+    return paramMethod;
   }
   
   String getInternalName(String paramString)
   {
-    return "__" + paramString;
+    AppMethodBeat.i(86122);
+    paramString = "__".concat(String.valueOf(paramString));
+    AppMethodBeat.o(86122);
+    return paramString;
   }
   
   String getPrototypeName(String paramString)
   {
-    return "__" + paramString + "_prototype";
+    AppMethodBeat.i(86123);
+    paramString = "__" + paramString + "_prototype";
+    AppMethodBeat.o(86123);
+    return paramString;
   }
 }
 

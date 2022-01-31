@@ -1,246 +1,157 @@
 package com.tencent.mm.app.plugin;
 
 import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.q;
 import com.tencent.mm.pluginsdk.ui.applet.m;
-import com.tencent.mm.pluginsdk.ui.d.b;
-import com.tencent.mm.pluginsdk.ui.d.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.lang.reflect.Constructor;
+import com.tencent.mm.pluginsdk.ui.d.a;
+import com.tencent.mm.pluginsdk.ui.d.l;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public final class d
-  implements b
+  implements q
 {
-  private static d byf = null;
-  URISpanHandlerSet byg;
-  ArrayList<URISpanHandlerSet.BaseUriSpanHandler> byh = new ArrayList();
-  ArrayList<URISpanHandlerSet.BaseUriSpanHandler> byi = new ArrayList();
-  ArrayList<URISpanHandlerSet.BaseUriSpanHandler> byj = new ArrayList();
-  Context mContext = null;
-  
-  private d()
+  private static String a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    long l = bk.UY();
-    y.d("MicroMsg.URISpanHandler", "init URISpanHandler");
-    this.mContext = ae.getContext();
-    this.byg = new URISpanHandlerSet(this.mContext);
-    Class[] arrayOfClass = URISpanHandlerSet.class.getDeclaredClasses();
-    int j = arrayOfClass.length;
-    int i = 0;
-    for (;;)
+    AppMethodBeat.i(15620);
+    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)) || (paramInt1 >= paramInt2))
     {
-      if (i < j)
-      {
-        Class localClass = arrayOfClass[i];
-        if ((localClass != null) && (localClass.getSuperclass() != null) && (localClass.isAnnotationPresent(URISpanHandlerSet.a.class)) && (localClass.getSuperclass().getName().equals(URISpanHandlerSet.BaseUriSpanHandler.class.getName())))
-        {
-          for (;;)
-          {
-            Object localObject2;
-            try
-            {
-              Object localObject1 = (URISpanHandlerSet.a)localClass.getAnnotation(URISpanHandlerSet.a.class);
-              localObject2 = localClass.getDeclaredConstructor(new Class[] { URISpanHandlerSet.class });
-              if (localObject2 == null) {
-                break;
-              }
-              localObject2 = (URISpanHandlerSet.BaseUriSpanHandler)URISpanHandlerSet.BaseUriSpanHandler.class.cast(((Constructor)localObject2).newInstance(new Object[] { this.byg }));
-              localObject1 = ((URISpanHandlerSet.a)localObject1).tB();
-              if (localObject1 == URISpanHandlerSet.PRIORITY.LOW)
-              {
-                this.byj.add(localObject2);
-                y.d("MicroMsg.URISpanHandler", "successfully add: %s", new Object[] { localClass.getName() });
-                break label392;
-              }
-              if (localObject1 == URISpanHandlerSet.PRIORITY.NORMAL)
-              {
-                this.byi.add(localObject2);
-                continue;
-              }
-              if (localException != URISpanHandlerSet.PRIORITY.HIGH) {
-                continue;
-              }
-            }
-            catch (Exception localException)
-            {
-              y.printErrStackTrace("MicroMsg.URISpanHandler", localException, "", new Object[0]);
-              y.d("MicroMsg.URISpanHandler", "add %s error: %s, errorType:%s", new Object[] { localClass.getName(), localException.getMessage(), localException.getClass().getName() });
-            }
-            this.byh.add(localObject2);
-          }
-          y.d("MicroMsg.URISpanHandler", "failed to add %s, constructor is null!!", new Object[] { localClass.getName() });
-        }
-      }
-      else
-      {
-        y.d("MicroMsg.URISpanHandler", "init URISpanHandler used :%d ms", new Object[] { Long.valueOf(bk.UY() - l) });
-        return;
-      }
-      label392:
-      i += 1;
+      AppMethodBeat.o(15620);
+      return paramString1;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    try
+    {
+      localStringBuilder.append(paramString1.subSequence(0, paramInt1 + 0));
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(paramString1.subSequence(paramInt2 + 0, paramString1.length()));
+      paramString2.length();
+      paramString1 = localStringBuilder.toString();
+      AppMethodBeat.o(15620);
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      ab.e("MicroMsg.QrCodeURLHelper", paramString1.getMessage());
+      AppMethodBeat.o(15620);
+    }
+    return "";
   }
   
-  private static boolean d(int[] paramArrayOfInt, int paramInt)
+  public final boolean a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    boolean bool2 = false;
-    int j = paramArrayOfInt.length;
-    int i = 0;
-    for (;;)
+    AppMethodBeat.i(15621);
+    ab.d("MicroMsg.QrCodeURLHelper", "tryHandleEvents, url:%s", new Object[] { paramString });
+    if (bo.isNullOrNil(paramString))
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramArrayOfInt[i] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public static d tz()
-  {
-    if (byf == null) {
-      byf = new d();
-    }
-    return byf;
-  }
-  
-  public final boolean a(Context paramContext, m paramm, g paramg)
-  {
-    if (paramm == null)
-    {
-      y.d("MicroMsg.URISpanHandler", "handleSpanClick, hrefInfo is null");
+      AppMethodBeat.o(15621);
       return false;
     }
-    int i = paramm.type;
-    if (paramg == null) {}
-    for (boolean bool = true;; bool = false)
+    if (paramString.endsWith("@mailto@")) {
+      l.b(paramContext, paramString.substring(0, paramString.length() - 8), paramOnDismissListener);
+    }
+    for (;;)
     {
-      y.d("MicroMsg.URISpanHandler", "handleSpanClick, hrefInfo.getType:%d, callback==null:%b, mHighPriorityHandlerList.size:%d, mNormalPriorityHandlerList.size:%d, mLowPriorityHandlerList.size:%d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(this.byh.size()), Integer.valueOf(this.byi.size()), Integer.valueOf(this.byj.size()) });
-      if (paramContext != null) {
+      AppMethodBeat.o(15621);
+      return true;
+      if (!paramString.endsWith("@tel@")) {
         break;
       }
-      y.e("MicroMsg.URISpanHandler", "handleSpanClick, context is null!");
-      this.byg.mContext = null;
-      return false;
+      paramString = paramString.substring(0, paramString.length() - 5);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("fromScene", 3);
+      l.a(paramContext, paramString, paramOnDismissListener, localBundle);
     }
-    this.mContext = paramContext;
-    this.byg.mContext = this.mContext;
-    paramContext = this.byh.iterator();
-    URISpanHandlerSet.BaseUriSpanHandler localBaseUriSpanHandler;
-    while (paramContext.hasNext())
-    {
-      localBaseUriSpanHandler = (URISpanHandlerSet.BaseUriSpanHandler)paramContext.next();
-      if ((d(localBaseUriSpanHandler.tA(), paramm.type)) && (localBaseUriSpanHandler.a(paramm, paramg)))
-      {
-        y.d("MicroMsg.URISpanHandler", "handleSpanClick, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
-        this.mContext = null;
-        this.byg.mContext = null;
-        return true;
-      }
-    }
-    paramContext = this.byi.iterator();
-    while (paramContext.hasNext())
-    {
-      localBaseUriSpanHandler = (URISpanHandlerSet.BaseUriSpanHandler)paramContext.next();
-      if ((d(localBaseUriSpanHandler.tA(), paramm.type)) && (localBaseUriSpanHandler.a(paramm, paramg)))
-      {
-        y.d("MicroMsg.URISpanHandler", "handleSpanClick, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
-        this.mContext = null;
-        this.byg.mContext = null;
-        return true;
-      }
-    }
-    paramContext = this.byj.iterator();
-    while (paramContext.hasNext())
-    {
-      localBaseUriSpanHandler = (URISpanHandlerSet.BaseUriSpanHandler)paramContext.next();
-      if ((d(localBaseUriSpanHandler.tA(), paramm.type)) && (localBaseUriSpanHandler.a(paramm, paramg)))
-      {
-        y.d("MicroMsg.URISpanHandler", "handleSpanClick, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
-        this.mContext = null;
-        this.byg.mContext = null;
-        return true;
-      }
-    }
-    this.mContext = null;
-    this.byg.mContext = null;
-    y.d("MicroMsg.URISpanHandler", "handleSpanClick, nothing handle");
+    AppMethodBeat.o(15621);
     return false;
   }
   
-  public final m r(Context paramContext, String paramString)
+  public final boolean dM(String paramString)
   {
-    y.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, url:%s, mHighPriorityHandlerList.size:%d, mNormalPriorityHandlerList.size:%d, mLowPriorityHandlerList.size：%d", new Object[] { paramString, Integer.valueOf(this.byh.size()), Integer.valueOf(this.byi.size()), Integer.valueOf(this.byj.size()) });
-    if (paramContext == null)
+    AppMethodBeat.i(15622);
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      y.e("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl error, context is null!");
-      this.byg.mContext = null;
-      return null;
+      AppMethodBeat.o(15622);
+      return false;
     }
-    this.mContext = paramContext;
-    this.byg.mContext = this.mContext;
-    if (bk.bl(paramString))
+    if ((paramString.endsWith("@mailto@")) || (paramString.endsWith("@tel@")))
     {
-      y.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, url is null");
-      this.mContext = null;
-      this.byg.mContext = null;
-      return null;
+      AppMethodBeat.o(15622);
+      return true;
     }
-    paramContext = this.byh.iterator();
-    m localm;
-    while (paramContext.hasNext())
+    AppMethodBeat.o(15622);
+    return false;
+  }
+  
+  public final String x(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(15619);
+    paramContext = a.bz(paramContext, paramString);
+    if (paramContext.size() == 0)
     {
-      localm = ((URISpanHandlerSet.BaseUriSpanHandler)paramContext.next()).cA(paramString);
-      if (localm != null)
+      AppMethodBeat.o(15619);
+      return paramString;
+    }
+    Collections.sort(paramContext, new d.1(this));
+    Iterator localIterator = paramContext.iterator();
+    paramContext = paramString;
+    String str1;
+    label124:
+    String str2;
+    if (localIterator.hasNext())
+    {
+      m localm = (m)localIterator.next();
+      str1 = null;
+      int i = localm.start;
+      int j = localm.end;
+      switch (localm.type)
       {
-        y.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, result.type:%d", new Object[] { Integer.valueOf(localm.type) });
-        this.mContext = null;
-        this.byg.mContext = null;
-        return localm;
+      default: 
+        if (str1 != null)
+        {
+          str2 = localm.url;
+          if ((localm.type == 1) && (!str2.startsWith("http://")))
+          {
+            str1 = String.format(str1, new Object[] { "http://" + str2.trim(), str2.trim() });
+            label197:
+            str1 = a(paramContext, i, j, str1);
+            paramContext = str1;
+            if (str1.length() != 0) {
+              break label293;
+            }
+          }
+        }
+        break;
       }
     }
-    paramContext = this.byi.iterator();
-    while (paramContext.hasNext())
+    for (;;)
     {
-      localm = ((URISpanHandlerSet.BaseUriSpanHandler)paramContext.next()).cA(paramString);
-      if (localm != null)
-      {
-        y.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, result.type:%d", new Object[] { Integer.valueOf(localm.type) });
-        this.mContext = null;
-        this.byg.mContext = null;
-        return localm;
-      }
+      ab.d("MicroMsg.QrCodeURLHelper", "formatQRString, result:%s", new Object[] { paramString });
+      AppMethodBeat.o(15619);
+      return paramString;
+      str1 = "<a href=\"%s@tel@\">%s</a>";
+      break label124;
+      str1 = "<a href=\"%s@mailto@\">%s</a>";
+      break label124;
+      str1 = "<a href=\"%s\">%s</a>";
+      break label124;
+      str1 = String.format(str1, new Object[] { str2.trim(), str2.trim() });
+      break label197;
+      label293:
+      break;
+      paramString = paramContext;
     }
-    paramContext = this.byj.iterator();
-    while (paramContext.hasNext())
-    {
-      localm = ((URISpanHandlerSet.BaseUriSpanHandler)paramContext.next()).cA(paramString);
-      if (localm != null)
-      {
-        y.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, result.type:%d", new Object[] { Integer.valueOf(localm.type) });
-        this.mContext = null;
-        this.byg.mContext = null;
-        return localm;
-      }
-    }
-    this.mContext = null;
-    this.byg.mContext = null;
-    y.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, nothing match");
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.plugin.d
  * JD-Core Version:    0.7.0.1
  */

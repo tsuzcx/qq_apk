@@ -4,26 +4,26 @@ import android.support.annotation.Keep;
 
 class CircleProgressDrawable$RingPathTransform
 {
-  public float nf = 0.0F;
-  public float ng = 0.0F;
-  public float nh = 0.0F;
+  public float oc = 0.0F;
+  public float od = 0.0F;
+  public float oe = 0.0F;
   
   @Keep
   public void setTrimPathEnd(float paramFloat)
   {
-    this.ng = paramFloat;
+    this.od = paramFloat;
   }
   
   @Keep
   public void setTrimPathOffset(float paramFloat)
   {
-    this.nh = paramFloat;
+    this.oe = paramFloat;
   }
   
   @Keep
   public void setTrimPathStart(float paramFloat)
   {
-    this.nf = paramFloat;
+    this.oc = paramFloat;
   }
 }
 

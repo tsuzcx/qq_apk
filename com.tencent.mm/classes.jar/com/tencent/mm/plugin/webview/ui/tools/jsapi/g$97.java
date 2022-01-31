@@ -1,65 +1,41 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.Intent;
-import com.tencent.mm.ai.a.c;
-import com.tencent.mm.ai.n;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.protocal.c.bih;
-import com.tencent.mm.protocal.c.rr;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.app.ProgressDialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.model.al;
+import com.tencent.mm.plugin.webview.model.d.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.HashMap;
 
 final class g$97
-  implements n
+  implements d.b
 {
-  g$97(g paramg, i parami) {}
+  g$97(g paramg, String paramString, i parami) {}
   
-  public final void a(int paramInt, com.tencent.mm.ah.m paramm)
+  public final void b(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (paramInt != 0)
+    AppMethodBeat.i(155014);
+    ab.i("MicroMsg.MsgHandler", "doDownloadVoice, on cdn finish, is success : %b, local id : %s, media id is : %s", new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2 });
+    if ((!bo.isNullOrNil(paramString2)) && (paramString2.equals(this.uTw)))
     {
-      g.a(this.rzi, this.rzk, "enterEnterpriseChat:fail", null);
-      return;
-    }
-    Object localObject = ((com.tencent.mm.ai.a.m)paramm).MS();
-    String str = "enterEnterpriseChat:fail";
-    if (paramInt < 0)
-    {
-      paramm = str;
-      if (localObject != null)
+      com.tencent.mm.plugin.webview.modeltools.g.dcD().a(this);
+      if (g.E(this.vqm) != null)
       {
-        paramm = str;
-        if (((rr)localObject).sCU != null)
-        {
-          paramm = str;
-          if (bk.bl(((rr)localObject).sCU.bLC)) {
-            paramm = "enterEnterpriseChat:fail_" + ((rr)localObject).sCU.bLC;
-          }
-        }
+        g.E(this.vqm).dismiss();
+        g.a(this.vqm, null);
       }
-      g.a(this.rzi, this.rzk, paramm, null);
-      return;
+      if (!paramBoolean)
+      {
+        this.vqm.a(this.uZa, "downloadVoice:fail", null);
+        AppMethodBeat.o(155014);
+        return;
+      }
+      paramString2 = new HashMap();
+      paramString2.put("localId", paramString1);
+      this.vqm.a(this.uZa, "downloadVoice:ok", paramString2);
     }
-    str = ((rr)localObject).sCO;
-    paramm = ((com.tencent.mm.ai.a.m)paramm).eia;
-    if (paramm == null)
-    {
-      g.a(this.rzi, this.rzk, "enterEnterpriseChat:fail", null);
-      return;
-    }
-    paramm = z.MA().lp(paramm);
-    if ((paramm != null) && (!bk.bl(str)))
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("Chat_User", str);
-      ((Intent)localObject).putExtra("key_biz_chat_id", paramm.field_bizChatLocalId);
-      ((Intent)localObject).putExtra("finish_direct", true);
-      ((Intent)localObject).putExtra("key_need_send_video", false);
-      ((Intent)localObject).putExtra("key_is_biz_chat", true);
-      com.tencent.mm.br.d.e(g.i(this.rzi), ".ui.chatting.ChattingUI", (Intent)localObject);
-      g.a(this.rzi, this.rzk, "enterEnterpriseChat:ok", null);
-      return;
-    }
-    g.a(this.rzi, this.rzk, "enterEnterpriseChat:fail", null);
+    AppMethodBeat.o(155014);
   }
 }
 

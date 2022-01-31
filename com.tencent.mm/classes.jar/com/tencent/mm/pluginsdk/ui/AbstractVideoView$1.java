@@ -1,26 +1,31 @@
 package com.tencent.mm.pluginsdk.ui;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class AbstractVideoView$1
-  implements am.a
+  implements ap.a
 {
   AbstractVideoView$1(AbstractVideoView paramAbstractVideoView) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (!this.rYV.isPlaying()) {
+    AppMethodBeat.i(117934);
+    if (!this.vPL.isPlaying())
+    {
+      AppMethodBeat.o(117934);
       return false;
     }
-    if (this.rYV.rYH)
+    if (this.vPL.vPw)
     {
-      if (this.rYV.oIn != null) {
-        this.rYV.oIn.bK(this.rYV.getSessionId(), this.rYV.getMediaId());
+      if (this.vPL.ryi != null) {
+        this.vPL.ryi.ct(this.vPL.getSessionId(), this.vPL.getMediaId());
       }
-      this.rYV.rYH = false;
+      this.vPL.vPw = false;
     }
-    this.rYV.nD(this.rYV.getCurrPosSec());
-    AbstractVideoView.a(this.rYV, this.rYV.isPlaying());
+    this.vPL.rl(this.vPL.getCurrPosSec());
+    AbstractVideoView.a(this.vPL, this.vPL.isPlaying());
+    AppMethodBeat.o(117934);
     return true;
   }
 }

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginIndepPass$5
   implements DialogInterface.OnDismissListener
@@ -10,7 +11,9 @@ final class LoginIndepPass$5
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    LoginIndepPass.g(this.fnl);
+    AppMethodBeat.i(124973);
+    LoginIndepPass.g(this.gEE);
+    AppMethodBeat.o(124973);
   }
 }
 

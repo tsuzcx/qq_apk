@@ -1,217 +1,167 @@
 package com.tencent.mm.plugin.voip.ui;
 
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.View.MeasureSpec;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Point;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mm.plugin.voip.a.e;
-import com.tencent.mm.plugin.voip.a.b;
-import com.tencent.mm.plugin.voip.video.CaptureView;
-import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.sdk.f.e;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.f.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.storage.z;
 
-public abstract class d
-  extends Fragment
+public final class d
 {
-  protected static int mScreenHeight;
-  protected static int mScreenWidth;
-  protected static final int[] pWP = { -1, a.e.voip_one_dot, a.e.voip_two_dot, a.e.voip_three_dot };
-  static int pWU = -1;
-  protected String djD;
-  protected ah hcZ;
-  protected int mStatus = -1;
-  protected boolean pSc;
-  protected long pWA = -1L;
-  protected RelativeLayout pWQ;
-  protected ImageView pWR;
-  protected ImageView pWS;
-  protected int pWT = 4096;
-  protected d.d pWV;
-  protected d.c pWW = new d.c();
-  private d.a pWX;
-  private d.b pWY;
-  protected WeakReference<c> pWz;
+  public static final int oVo;
+  public static final int oVu;
+  public static final int oVv;
+  public Intent intent;
+  public e tEY;
+  private Point tEZ;
+  private a tFa;
+  private ap tFb;
   
-  protected static void Q(View paramView, int paramInt)
+  static
   {
-    if (paramView == null) {
-      return;
+    AppMethodBeat.i(4979);
+    oVo = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 8);
+    oVu = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 96);
+    oVv = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 76);
+    AppMethodBeat.o(4979);
+  }
+  
+  private void ar(Intent paramIntent)
+  {
+    AppMethodBeat.i(4974);
+    ab.i("MicroMsg.VoipVoiceMiniManager", "mini now..");
+    if (this.tEY != null) {
+      dismiss();
     }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-    localLayoutParams.topMargin += paramInt;
-    paramView.setLayoutParams(localLayoutParams);
-  }
-  
-  protected static String ce(long paramLong)
-  {
-    return String.format("%02d:%02d", new Object[] { Long.valueOf(paramLong / 60L), Long.valueOf(paramLong % 60L) });
-  }
-  
-  public abstract void Ap(int paramInt);
-  
-  protected abstract void Qa(String paramString);
-  
-  public final void a(d.d paramd)
-  {
-    this.pWV = paramd;
-  }
-  
-  public abstract void a(CaptureView paramCaptureView);
-  
-  public abstract void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
-  
-  public abstract void bQK();
-  
-  protected abstract void bRY();
-  
-  protected abstract void bRZ();
-  
-  protected final void bSa()
-  {
-    if ((this.djD == null) || (this.pWR.getVisibility() == 0)) {
-      return;
+    if (this.tEY == null) {
+      this.tEY = new e(ah.getContext());
     }
-    this.pWR.setVisibility(0);
-    this.pWX = new d.a(this);
-    e.post(this.pWX, "VoipBaseFragment_blurbitmap");
-  }
-  
-  protected final void bSb()
-  {
-    this.pWS.setVisibility(0);
-    this.pWY = new d.b(this);
-    e.post(this.pWY, "VoipBaseFragment_blurtransparentbitmap");
-  }
-  
-  public abstract void c(int paramInt1, int paramInt2, int[] paramArrayOfInt);
-  
-  protected final void c(TextView paramTextView, String paramString)
-  {
-    if ((paramTextView == null) || (bk.bl(paramString)))
+    if (this.tFb != null) {
+      this.tFb.stopTimer();
+    }
+    this.tEY.setOnClickListener(new d.2(this, paramIntent));
+    WindowManager localWindowManager = (WindowManager)ah.getContext().getSystemService("window");
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+    if (com.tencent.mm.compatible.util.d.fv(26)) {
+      localLayoutParams.type = 2038;
+    }
+    for (;;)
     {
-      y.e("MicroMsg.VoipBaseFragment", "TextView is null or text is null");
-      return;
-    }
-    paramTextView.setText(paramString);
-    int i = getResources().getDisplayMetrics().widthPixels;
-    int j = getResources().getDisplayMetrics().heightPixels;
-    paramTextView.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), View.MeasureSpec.makeMeasureSpec(j, -2147483648));
-    paramTextView.setWidth(paramTextView.getMeasuredWidth());
-  }
-  
-  protected abstract void cD(String paramString, int paramInt);
-  
-  public void en(int paramInt1, int paramInt2)
-  {
-    y.l("MicroMsg.VoipBaseFragment", "newState: " + b.At(paramInt2) + ", action: " + b.At(paramInt1) + ", lastStatus: " + b.At(pWU), new Object[0]);
-    if ((pWU != this.mStatus) && (paramInt2 != this.mStatus)) {
-      pWU = this.mStatus;
-    }
-    this.pWT = paramInt1;
-    this.mStatus = paramInt2;
-  }
-  
-  public final void gK(long paramLong)
-  {
-    this.pWA = paramLong;
-  }
-  
-  public abstract OpenGlRender getFilterData();
-  
-  public void onAttach(Activity paramActivity)
-  {
-    super.onAttach(paramActivity);
-    if (Build.VERSION.SDK_INT < 23)
-    {
-      if (mScreenWidth == 0)
+      localLayoutParams.format = 1;
+      localLayoutParams.flags = 40;
+      localLayoutParams.gravity = 51;
+      localLayoutParams.width = oVv;
+      localLayoutParams.height = oVu;
+      if (this.tEZ == null)
       {
-        paramActivity = paramActivity.getWindowManager().getDefaultDisplay();
-        mScreenWidth = paramActivity.getWidth();
-        mScreenHeight = paramActivity.getHeight();
+        int i = g.RL().Ru().getInt(327947, 0);
+        int j = oVo;
+        localLayoutParams.x = (com.tencent.mm.cb.a.gw(ah.getContext()) - localLayoutParams.width - j);
+        localLayoutParams.y = (i + j);
       }
+      try
+      {
+        for (;;)
+        {
+          localWindowManager.addView(this.tEY, localLayoutParams);
+          this.tFa.a(paramIntent, this.tEY);
+          AppMethodBeat.o(4974);
+          return;
+          localLayoutParams.type = 2002;
+          break;
+          localLayoutParams.x = this.tEZ.x;
+          localLayoutParams.y = this.tEZ.y;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ab.e("MicroMsg.VoipVoiceMiniManager", "add failed", new Object[] { localException });
+        }
+      }
+    }
+  }
+  
+  public final void Ef(int paramInt)
+  {
+    AppMethodBeat.i(4975);
+    if (this.tEY != null)
+    {
+      String str = String.format("%02d:%02d", new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
+      this.tEY.aeJ(str);
+    }
+    AppMethodBeat.o(4975);
+  }
+  
+  public final void a(Intent paramIntent, a parama)
+  {
+    AppMethodBeat.i(4973);
+    if (parama == null)
+    {
+      ab.e("MicroMsg.VoipVoiceMiniManager", "showMini, VoipMiniCallBack cannot be null!");
+      AppMethodBeat.o(4973);
       return;
     }
-    paramActivity = paramActivity.getWindowManager().getDefaultDisplay();
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    paramActivity.getRealMetrics(localDisplayMetrics);
-    mScreenWidth = localDisplayMetrics.widthPixels;
-    mScreenHeight = localDisplayMetrics.heightPixels;
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = getArguments();
-    this.djD = paramBundle.getString("key_username");
-    this.pSc = paramBundle.getBoolean("key_isoutcall");
-    if (-1 == this.mStatus) {
-      this.mStatus = paramBundle.getInt("key_status");
-    }
-    this.hcZ = new ah();
-  }
-  
-  public void onDetach()
-  {
-    if (this.hcZ != null) {
-      this.hcZ.removeCallbacksAndMessages(null);
-    }
-    this.pWV = null;
-    super.onDetach();
-  }
-  
-  public void onStop()
-  {
-    super.onStop();
-  }
-  
-  public abstract void setHWDecMode(int paramInt);
-  
-  public abstract void setMute(boolean paramBoolean);
-  
-  public abstract void setVoipBeauty(int paramInt);
-  
-  public final void setVoipUIListener(c paramc)
-  {
-    this.pWz = new WeakReference(paramc);
-  }
-  
-  public void uninit()
-  {
-    y.d("MicroMsg.VoipBaseFragment", "uninit");
-    this.pWW.bSc();
-    d.c localc = this.pWW;
-    y.d("MicroMsg.DynamicTextWrap", "uninit");
-    localc.bSc();
-    localc.fjC = null;
-    if (this.pWX != null)
+    this.intent = paramIntent;
+    this.tFa = parama;
+    if (!b.bK(ah.getContext()))
     {
-      e.remove(this.pWX);
-      this.pWX = null;
+      ab.e("MicroMsg.VoipVoiceMiniManager", "mini, permission denied");
+      Context localContext = ah.getContext();
+      RequestFloatWindowPermissionDialog.a(localContext, localContext.getString(2131304682), new d.1(this, parama, paramIntent));
+      AppMethodBeat.o(4973);
+      return;
     }
-    if (this.pWY != null)
+    ar(paramIntent);
+    AppMethodBeat.o(4973);
+  }
+  
+  public final void aeI(String paramString)
+  {
+    AppMethodBeat.i(4976);
+    if (this.tEY != null) {
+      this.tEY.aeI(paramString);
+    }
+    AppMethodBeat.o(4976);
+  }
+  
+  public final void dismiss()
+  {
+    AppMethodBeat.i(4977);
+    ab.i("MicroMsg.VoipVoiceMiniManager", "dismiss now..");
+    WindowManager localWindowManager = (WindowManager)ah.getContext().getSystemService("window");
+    try
     {
-      e.remove(this.pWY);
-      this.pWY = null;
+      if (this.tEY != null)
+      {
+        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.tEY.getLayoutParams();
+        this.tEZ = new Point(localLayoutParams.x, localLayoutParams.y);
+        localWindowManager.removeView(this.tEY);
+        this.tEY.setOnClickListener(null);
+        this.tEY = null;
+      }
+      AppMethodBeat.o(4977);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.VoipVoiceMiniManager", "remove failed", new Object[] { localException });
+      AppMethodBeat.o(4977);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.d
  * JD-Core Version:    0.7.0.1
  */

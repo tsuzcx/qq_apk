@@ -1,91 +1,49 @@
 package com.tencent.mm.bo;
 
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.m.e;
+import com.tencent.mm.plugin.messenger.foundation.a.a.f;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.sdk.platformtools.bo;
+
 public final class a
 {
-  public static final class a
+  public static boolean dkM()
   {
-    public static final int abc_fade_in = 2131034112;
-    public static final int abc_fade_out = 2131034113;
-    public static final int abc_grow_fade_in_from_bottom = 2131034114;
-    public static final int abc_popup_enter = 2131034115;
-    public static final int abc_popup_exit = 2131034116;
-    public static final int abc_shrink_fade_out_from_bottom = 2131034117;
-    public static final int abc_slide_in_bottom = 2131034118;
-    public static final int abc_slide_in_top = 2131034119;
-    public static final int abc_slide_out_bottom = 2131034120;
-    public static final int abc_slide_out_top = 2131034121;
-    public static final int abc_tooltip_enter = 2131034122;
-    public static final int abc_tooltip_exit = 2131034123;
-    public static final int alpha_in = 2131034125;
-    public static final int alpha_out = 2131034126;
-    public static final int anim_flash = 2131034129;
-    public static final int anim_not_change = 2131034130;
-    public static final int anim_not_change_for_slide = 2131034131;
-    public static final int anim_shake = 2131034132;
-    public static final int anim_shake_interpolator = 2131034133;
-    public static final int appbrand_autofill_dropdown = 2131034135;
-    public static final int appbrand_dialog_enter = 2131034136;
-    public static final int appbrand_dialog_exit = 2131034137;
-    public static final int decelerate_cubic_interpolator = 2131034153;
-    public static final int decelerate_quint_interpolator = 2131034154;
-    public static final int design_bottom_sheet_slide_in = 2131034155;
-    public static final int design_bottom_sheet_slide_out = 2131034156;
-    public static final int design_snackbar_in = 2131034157;
-    public static final int design_snackbar_out = 2131034158;
-    public static final int dropdown_down = 2131034161;
-    public static final int dropdown_up = 2131034162;
-    public static final int dropup_down = 2131034163;
-    public static final int dropup_up = 2131034164;
-    public static final int faded_out = 2131034172;
-    public static final int fast_alot_faded_in = 2131034177;
-    public static final int fast_alot_faded_out = 2131034178;
-    public static final int fast_faded_in = 2131034179;
-    public static final int fast_faded_out = 2131034180;
-    public static final int in_from_bottom = 2131034188;
-    public static final int in_from_down = 2131034189;
-    public static final int in_from_right = 2131034190;
-    public static final int in_from_up = 2131034191;
-    public static final int mmaccelerate_interpolator = 2131034196;
-    public static final int mmdecelerate_interpolator = 2131034197;
-    public static final int out_to_bottom = 2131034205;
-    public static final int out_to_down = 2131034206;
-    public static final int out_to_right = 2131034207;
-    public static final int out_to_up = 2131034208;
-    public static final int pop_in = 2131034211;
-    public static final int pop_left_bottom_in = 2131034212;
-    public static final int pop_left_bottom_out = 2131034213;
-    public static final int pop_left_top_in = 2131034214;
-    public static final int pop_left_top_out = 2131034215;
-    public static final int pop_out = 2131034216;
-    public static final int pop_right_bottom_in = 2131034217;
-    public static final int pop_right_bottom_out = 2131034218;
-    public static final int pop_right_top_in = 2131034219;
-    public static final int pop_right_top_out = 2131034220;
-    public static final int push_down_in = 2131034221;
-    public static final int push_down_out = 2131034222;
-    public static final int push_empty_out = 2131034223;
-    public static final int push_up_in = 2131034224;
-    public static final int push_up_out = 2131034225;
-    public static final int recording_anim = 2131034235;
-    public static final int shake_y = 2131034247;
-    public static final int sight_slide_bottom_in = 2131034252;
-    public static final int sight_slide_bottom_out = 2131034253;
-    public static final int slide_bottom_in = 2131034254;
-    public static final int slide_left_in = 2131034255;
-    public static final int slide_left_out = 2131034256;
-    public static final int slide_pop_in = 2131034257;
-    public static final int slide_pop_out = 2131034258;
-    public static final int slide_right_in = 2131034259;
-    public static final int slide_right_out = 2131034260;
-    public static final int slide_top_out = 2131034262;
-    public static final int toast_fade_in = 2131034271;
-    public static final int toast_fade_out = 2131034272;
-    public static final int wallet_progress_anim = 2131034280;
+    AppMethodBeat.i(55524);
+    String str2 = ((com.tencent.mm.plugin.zero.b.a)g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("EnableStrangerChat");
+    String str1 = str2;
+    if (bo.isNullOrNil(str2)) {
+      str1 = "0";
+    }
+    boolean bool = "1".equals(str1);
+    AppMethodBeat.o(55524);
+    return bool;
+  }
+  
+  public static void fF(Context paramContext)
+  {
+    AppMethodBeat.i(55525);
+    if (!dkM())
+    {
+      g.RJ().QQ();
+      if (((j)g.E(j.class)).bPN().bbZ() > 0)
+      {
+        d.H(paramContext, "nearby", ".ui.NearbyFriendShowSayHiUI");
+        AppMethodBeat.o(55525);
+        return;
+      }
+    }
+    d.H(paramContext, "nearby", ".ui.NearbyFriendsUI");
+    AppMethodBeat.o(55525);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.bo.a
  * JD-Core Version:    0.7.0.1
  */

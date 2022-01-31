@@ -2,10 +2,11 @@ package com.tencent.mm.ui.chatting.viewitems;
 
 public final class d$f
 {
-  public long bIt;
-  public String bUr;
+  public String cBW;
+  public long cpO;
   public String imgPath;
-  public int vCm = -1;
+  public d.g zTe;
+  public int zTf = -1;
 }
 
 

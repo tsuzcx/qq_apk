@@ -1,208 +1,166 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.protocal.GeneralControlWrapper;
-import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.c.aak;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.wx_extension.a.a;
+import com.tencent.mm.ipcinvoker.wx_extension.a.a.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.c;
 import java.util.Map;
 
 public final class f
 {
-  Map<String, a> reE;
-  private JsapiPermissionWrapper reF;
-  private GeneralControlWrapper reG;
-  private final JsapiPermissionWrapper reH = new JsapiPermissionWrapper(2);
-  private final GeneralControlWrapper reI = GeneralControlWrapper.spk;
-  private f.b rmU;
-  
-  public f(JsapiPermissionWrapper paramJsapiPermissionWrapper, GeneralControlWrapper paramGeneralControlWrapper, f.b paramb)
+  public static String ddC()
   {
-    this.reF = paramJsapiPermissionWrapper;
-    if ((ae.eSK == null) || (ae.eSK.length() == 0))
-    {
-      y.i("MicroMsg.WebViewPermission", "setHardcodeJsPermission, Test.jsapiPermission is null");
-      this.reG = paramGeneralControlWrapper;
-      if ((ae.eSL != null) && (ae.eSL.length() != 0)) {
-        break label223;
-      }
-      y.i("MicroMsg.WebViewPermission", "setHardcodeGeneralCtrl, Test.generalCtrl is null");
-    }
+    AppMethodBeat.i(7477);
+    Object localObject1 = new StringBuilder(8);
+    int i = 0;
     for (;;)
     {
-      int i;
-      for (;;)
-      {
-        this.rmU = paramb;
-        y.i("MicroMsg.WebViewPermission", "edw <init> hardcodeJsPerm = " + paramJsapiPermissionWrapper + ", hardcodeGenCtrl = " + paramGeneralControlWrapper);
-        this.reE = new HashMap();
-        return;
-        try
-        {
-          i = bk.getInt(ae.eSK, 0);
-          if (i < 0) {
-            y.w("MicroMsg.WebViewPermission", "setHardcodeJsPermission, Test.jsapiPermission wrong");
-          }
-        }
-        catch (Exception localException1)
-        {
-          y.e("MicroMsg.WebViewPermission", "setHardcodeJsPermission, parse jsapi fail, ex = " + localException1.getMessage());
-          this.reF = null;
-        }
-      }
-      for (;;)
-      {
-        y.i("MicroMsg.WebViewPermission", "setHardcodeJsPermission, hardcodeJsPerm = " + this.reF);
-        break;
-        this.reF = new JsapiPermissionWrapper(i);
+      char c;
+      if (i < 3) {
+        c = (char)(int)(1045787241L >> (2 - i) * 8 & 0xFF);
       }
       try
       {
-        label223:
-        i = bk.getInt(ae.eSL, 0);
-        y.i("MicroMsg.WebViewPermission", "setHardcodeGeneralCtrl, permission = %d", new Object[] { Integer.valueOf(i) });
-        aak localaak = new aak();
-        localaak.sZE = i;
-        this.reG = new GeneralControlWrapper(localaak);
-        y.i("MicroMsg.WebViewPermission", "setHardcodeGeneralCtrl, hardcodeGenCtrl = " + this.reG);
+        ((StringBuilder)localObject1).append(c);
+        i += 1;
       }
-      catch (Exception localException2)
+      finally
       {
-        for (;;)
-        {
-          y.e("MicroMsg.WebViewPermission", "setHardcodeGeneralCtrl fail, ex = %s", new Object[] { localException2.getMessage() });
-          this.reG = null;
+        localObject1 = fE(((StringBuilder)localObject1).toString(), "");
+        AppMethodBeat.o(7477);
+      }
+    }
+    localObject1 = fE(((StringBuilder)localObject1).toString(), "");
+    AppMethodBeat.o(7477);
+    return localObject1;
+    return localObject1;
+  }
+  
+  private static String fE(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(7479);
+    try
+    {
+      localObject = a.b.eEW;
+      localObject = a.me("100460");
+      if ((localObject == null) || (!((c)localObject).isValid()))
+      {
+        ab.w("MicroMsg.WebViewHelper", "check point 1, explained by src code.");
+        AppMethodBeat.o(7479);
+        return paramString2;
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      ab.printErrStackTrace("MicroMsg.WebViewHelper", paramString1, "check point 1-1, explained by src code.", new Object[0]);
+      AppMethodBeat.o(7479);
+      return paramString2;
+    }
+    Object localObject = ((c)localObject).dvN();
+    if (localObject == null)
+    {
+      ab.w("MicroMsg.WebViewHelper", "check point 2, explained by src code.");
+      AppMethodBeat.o(7479);
+      return paramString2;
+    }
+    localObject = (String)((Map)localObject).get(paramString1);
+    if (localObject != null)
+    {
+      ab.i("MicroMsg.WebViewHelper", "st, sk: %s, val:%s", new Object[] { paramString1, localObject });
+      AppMethodBeat.o(7479);
+      return localObject;
+    }
+    AppMethodBeat.o(7479);
+    return paramString2;
+  }
+  
+  public static boolean isBlock()
+  {
+    AppMethodBeat.i(7478);
+    StringBuilder localStringBuilder = new StringBuilder(8);
+    int i = 0;
+    for (;;)
+    {
+      char c;
+      if (i < 5) {
+        c = (char)(int)(222416815156331L >> (4 - i) * 8 & 0xFF);
+      }
+      try
+      {
+        localStringBuilder.append(c);
+        i += 1;
+      }
+      finally
+      {
+        String str1;
+        String str2 = localStringBuilder.toString();
+        localStringBuilder.delete(0, localStringBuilder.length());
+        localStringBuilder.append((f.class.hashCode() >>> 31 | 0x1) ^ 0x1);
+        if (localStringBuilder.toString().equals(fE(str2, localStringBuilder.toString()))) {
+          break label178;
         }
+        AppMethodBeat.o(7478);
+        return true;
+        AppMethodBeat.o(7478);
       }
     }
+    str1 = localStringBuilder.toString();
+    localStringBuilder.delete(0, localStringBuilder.length());
+    localStringBuilder.append((f.class.hashCode() >>> 31 | 0x1) ^ 0x1);
+    if (!localStringBuilder.toString().equals(fE(str1, localStringBuilder.toString())))
+    {
+      AppMethodBeat.o(7478);
+      return true;
+    }
+    AppMethodBeat.o(7478);
+    return false;
+    label178:
+    return false;
   }
   
-  private static String RL(String paramString)
+  public static boolean isEnabled()
   {
-    int i = paramString.indexOf("#");
-    if (i < 0) {
-      return paramString;
-    }
-    return paramString.substring(0, i);
-  }
-  
-  public final JsapiPermissionWrapper RP(String paramString)
-  {
-    if (this.reF != null)
+    AppMethodBeat.i(7476);
+    StringBuilder localStringBuilder = new StringBuilder(8);
+    int i = 0;
+    for (;;)
     {
-      y.i("MicroMsg.WebViewPermission", "getJsPerm, return hardcodeJsPerm = " + this.reF);
-      return this.reF;
-    }
-    if (bk.bl(paramString))
-    {
-      y.e("MicroMsg.WebViewPermission", "getJsPerm fail, url = " + paramString);
-      return this.reH;
-    }
-    paramString = RL(paramString);
-    if (this.reE == null)
-    {
-      y.e("MicroMsg.WebViewPermission", "getJsPerm fail, permMap is null");
-      return this.reH;
-    }
-    paramString = (a)this.reE.get(paramString);
-    if (paramString == null) {
-      return this.reH;
-    }
-    return paramString.reJ;
-  }
-  
-  public final void a(String paramString, JsapiPermissionWrapper paramJsapiPermissionWrapper, GeneralControlWrapper paramGeneralControlWrapper)
-  {
-    if (bk.bl(paramString))
-    {
-      y.e("MicroMsg.WebViewPermission", "update fail, url is null");
-      return;
-    }
-    String str = RL(paramString);
-    paramString = paramJsapiPermissionWrapper;
-    if (paramJsapiPermissionWrapper == null) {
-      paramString = this.reH;
-    }
-    paramJsapiPermissionWrapper = paramGeneralControlWrapper;
-    if (paramGeneralControlWrapper == null) {
-      paramJsapiPermissionWrapper = this.reI;
-    }
-    y.i("MicroMsg.WebViewPermission", "edw update, jsPerm = " + paramString + ", genCtrl = " + paramJsapiPermissionWrapper + ", url = " + str);
-    this.reE.put(str, new a(paramString, paramJsapiPermissionWrapper));
-  }
-  
-  public final JsapiPermissionWrapper cdI()
-  {
-    if (this.reF != null)
-    {
-      y.i("MicroMsg.WebViewPermission", "getJsPerm, return hardcodeJsPerm = " + this.reF);
-      return this.reF;
-    }
-    return RP(this.rmU.cdK());
-  }
-  
-  public final GeneralControlWrapper cdJ()
-  {
-    Object localObject = this.rmU.cdK();
-    if (this.reG != null)
-    {
-      y.i("MicroMsg.WebViewPermission", "getGenCtrl, return hardcodeGenCtrl = " + this.reG);
-      return this.reG;
-    }
-    if (bk.bl((String)localObject))
-    {
-      y.e("MicroMsg.WebViewPermission", "getGenCtrl fail, url = " + (String)localObject);
-      return this.reI;
-    }
-    String str = RL((String)localObject);
-    a locala = (a)this.reE.get(str);
-    StringBuilder localStringBuilder = new StringBuilder("edw getGenCtrl, genCtrl = ");
-    if (locala == null) {}
-    for (localObject = null;; localObject = locala.reK)
-    {
-      y.i("MicroMsg.WebViewPermission", localObject + ", url = " + str);
-      if (locala != null) {
-        break;
+      char c;
+      if (i < 4) {
+        c = (char)(int)(1074974115182L >> (3 - i) * 8 & 0xFF);
       }
-      return this.reI;
+      try
+      {
+        localStringBuilder.append(c);
+        i += 1;
+      }
+      finally
+      {
+        String str1;
+        String str2 = localStringBuilder.toString();
+        localStringBuilder.delete(0, localStringBuilder.length());
+        localStringBuilder.append((f.class.hashCode() >>> 31 | 0x1) ^ 0x1);
+        if (localStringBuilder.toString().equals(fE(str2, localStringBuilder.toString()))) {
+          break label178;
+        }
+        AppMethodBeat.o(7476);
+        return true;
+        AppMethodBeat.o(7476);
+      }
     }
-    return locala.reK;
-  }
-  
-  public final boolean has(String paramString)
-  {
-    if (bk.bl(paramString))
+    str1 = localStringBuilder.toString();
+    localStringBuilder.delete(0, localStringBuilder.length());
+    localStringBuilder.append((f.class.hashCode() >>> 31 | 0x1) ^ 0x1);
+    if (!localStringBuilder.toString().equals(fE(str1, localStringBuilder.toString())))
     {
-      y.e("MicroMsg.WebViewPermission", "has fail, url is null");
-      return false;
+      AppMethodBeat.o(7476);
+      return true;
     }
-    paramString = RL(paramString);
-    paramString = (a)this.reE.get(paramString);
-    return (paramString != null) && (paramString.reJ != this.reH) && (paramString.reK != this.reI);
-  }
-  
-  private static final class a
-  {
-    public JsapiPermissionWrapper reJ;
-    public GeneralControlWrapper reK;
-    
-    public a(JsapiPermissionWrapper paramJsapiPermissionWrapper, GeneralControlWrapper paramGeneralControlWrapper)
-    {
-      this.reJ = paramJsapiPermissionWrapper;
-      this.reK = paramGeneralControlWrapper;
-    }
-    
-    public final String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Permission: jsPerm = ");
-      localStringBuilder.append(this.reJ);
-      localStringBuilder.append(", genCtrl = ");
-      localStringBuilder.append(this.reK);
-      return localStringBuilder.toString();
-    }
+    AppMethodBeat.o(7476);
+    return false;
+    label178:
+    return false;
   }
 }
 

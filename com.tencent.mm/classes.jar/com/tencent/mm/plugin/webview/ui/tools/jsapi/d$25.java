@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class d$25
@@ -10,20 +11,23 @@ final class d$25
   
   public final void run()
   {
+    AppMethodBeat.i(8888);
     try
     {
-      d.d(this.rxV).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.fZS + ")", null);
+      d.d(this.voP).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.uUq + ")", null);
+      AppMethodBeat.o(8888);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.JsApiHandler", "onBeaconMonitoring fail, ex = %s", new Object[] { localException.getMessage() });
+      ab.e("MicroMsg.JsApiHandler", "onGetSmiley fail, ex = %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(8888);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.d.25
  * JD-Core Version:    0.7.0.1
  */

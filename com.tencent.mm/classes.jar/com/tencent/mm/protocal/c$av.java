@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$av
+final class c$av
   extends c.g
 {
   public c$av()
   {
-    super("disconnectWXDevice", "disconnectWXDevice", 124, true);
+    super("currentMpInfo", "currentMpInfo", 324, false);
   }
 }
 

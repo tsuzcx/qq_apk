@@ -5,8 +5,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.soter.a.b;
-import com.tencent.mm.plugin.soter.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$8
   implements Animation.AnimationListener
@@ -15,17 +14,21 @@ final class b$8
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    this.psa.gSp.post(this.psa.prZ);
+    AppMethodBeat.i(73879);
+    this.soc.iuP.post(this.soc.sob);
+    AppMethodBeat.o(73879);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    this.psa.prT.setImageResource(a.c.fingerprint_luggage_icon_error);
-    this.psa.gSp.setText(this.lZ);
-    this.psa.gSp.setTextColor(this.psa.gSp.getResources().getColor(a.b.warning_color));
-    this.psa.gSp.removeCallbacks(this.psa.prZ);
+    AppMethodBeat.i(73878);
+    this.soc.snV.setImageResource(2130838875);
+    this.soc.iuP.setText(this.mU);
+    this.soc.iuP.setTextColor(this.soc.iuP.getResources().getColor(2131690669));
+    this.soc.iuP.removeCallbacks(this.soc.sob);
+    AppMethodBeat.o(73878);
   }
 }
 

@@ -1,26 +1,23 @@
 package com.tencent.mm.ui.transmit;
 
 import android.content.Intent;
-import com.tencent.mm.br.d;
-import com.tencent.mm.storage.bi.b;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.c.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.b;
+import com.tencent.mm.ui.widget.b.c.a.b;
 
 final class SelectConversationUI$7
   implements c.a.b
 {
-  SelectConversationUI$7(SelectConversationUI paramSelectConversationUI, bi.b paramb, String paramString) {}
+  SelectConversationUI$7(SelectConversationUI paramSelectConversationUI) {}
   
-  public final void aSe()
+  public final void byw()
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("map_view_type", 1);
-    localIntent.putExtra("kwebmap_slat", this.why.lCJ);
-    localIntent.putExtra("kwebmap_lng", this.why.lCK);
-    localIntent.putExtra("Kwebmap_locaion", this.whz);
-    localIntent.putExtra("kShowshare", false);
-    d.b(this.whw.mController.uMN, "location", ".ui.RedirectUI", localIntent);
+    AppMethodBeat.i(35131);
+    Intent localIntent = new Intent(this.AAp.getContext(), RetransmitPreviewUI.class);
+    localIntent.putExtra("Retr_Msg_content", SelectConversationUI.h(this.AAp));
+    this.AAp.startActivity(localIntent);
+    b.jdMethod_if(this.AAp.getContext());
+    AppMethodBeat.o(35131);
   }
 }
 

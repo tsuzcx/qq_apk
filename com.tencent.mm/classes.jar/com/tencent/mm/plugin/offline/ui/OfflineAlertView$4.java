@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.offline.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.offline.c.a;
 
 final class OfflineAlertView$4
@@ -11,7 +12,9 @@ final class OfflineAlertView$4
   
   public final void onClick(View paramView)
   {
-    a.dW(this.mLZ.getContext());
+    AppMethodBeat.i(43446);
+    a.eK(this.pmp.getContext());
+    AppMethodBeat.o(43446);
   }
 }
 

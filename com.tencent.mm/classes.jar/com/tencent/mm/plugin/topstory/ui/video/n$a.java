@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.topstory.ui.video;
 final class n$a
   implements Runnable
 {
-  private String gyF;
-  private boolean oKz;
+  private String mkE;
+  private boolean njm;
   
   private n$a(n paramn) {}
   
@@ -12,46 +12,54 @@ final class n$a
   public final void run()
   {
     // Byte code:
-    //   0: new 37	org/json/JSONObject
-    //   3: dup
-    //   4: aload_0
-    //   5: getfield 29	com/tencent/mm/plugin/topstory/ui/video/n$a:gyF	Ljava/lang/String;
-    //   8: invokespecial 40	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   11: astore_1
-    //   12: aload_0
-    //   13: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:pGd	Lcom/tencent/mm/plugin/topstory/ui/video/n;
-    //   16: aload_1
-    //   17: aload_0
-    //   18: getfield 32	com/tencent/mm/plugin/topstory/ui/video/n$a:oKz	Z
-    //   21: invokestatic 43	com/tencent/mm/plugin/topstory/ui/video/n:a	(Lcom/tencent/mm/plugin/topstory/ui/video/n;Lorg/json/JSONObject;Z)V
-    //   24: aload_0
-    //   25: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:pGd	Lcom/tencent/mm/plugin/topstory/ui/video/n;
-    //   28: iconst_0
-    //   29: putfield 46	com/tencent/mm/plugin/topstory/ui/video/n:pFX	Z
-    //   32: return
-    //   33: astore_1
-    //   34: aload_0
-    //   35: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:pGd	Lcom/tencent/mm/plugin/topstory/ui/video/n;
-    //   38: iconst_0
-    //   39: putfield 46	com/tencent/mm/plugin/topstory/ui/video/n:pFX	Z
-    //   42: return
-    //   43: astore_1
-    //   44: aload_0
-    //   45: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:pGd	Lcom/tencent/mm/plugin/topstory/ui/video/n;
-    //   48: iconst_0
-    //   49: putfield 46	com/tencent/mm/plugin/topstory/ui/video/n:pFX	Z
-    //   52: aload_1
-    //   53: athrow
+    //   0: sipush 1761
+    //   3: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 43	org/json/JSONObject
+    //   9: dup
+    //   10: aload_0
+    //   11: getfield 29	com/tencent/mm/plugin/topstory/ui/video/n$a:mkE	Ljava/lang/String;
+    //   14: invokespecial 46	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   17: astore_1
+    //   18: aload_0
+    //   19: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:tjA	Lcom/tencent/mm/plugin/topstory/ui/video/n;
+    //   22: aload_1
+    //   23: aload_0
+    //   24: getfield 32	com/tencent/mm/plugin/topstory/ui/video/n$a:njm	Z
+    //   27: invokestatic 49	com/tencent/mm/plugin/topstory/ui/video/n:a	(Lcom/tencent/mm/plugin/topstory/ui/video/n;Lorg/json/JSONObject;Z)V
+    //   30: aload_0
+    //   31: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:tjA	Lcom/tencent/mm/plugin/topstory/ui/video/n;
+    //   34: iconst_0
+    //   35: putfield 52	com/tencent/mm/plugin/topstory/ui/video/n:tju	Z
+    //   38: sipush 1761
+    //   41: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   44: return
+    //   45: astore_1
+    //   46: aload_0
+    //   47: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:tjA	Lcom/tencent/mm/plugin/topstory/ui/video/n;
+    //   50: iconst_0
+    //   51: putfield 52	com/tencent/mm/plugin/topstory/ui/video/n:tju	Z
+    //   54: sipush 1761
+    //   57: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   60: return
+    //   61: astore_1
+    //   62: aload_0
+    //   63: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:tjA	Lcom/tencent/mm/plugin/topstory/ui/video/n;
+    //   66: iconst_0
+    //   67: putfield 52	com/tencent/mm/plugin/topstory/ui/video/n:tju	Z
+    //   70: sipush 1761
+    //   73: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: aload_1
+    //   77: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	54	0	this	a
-    //   11	6	1	localJSONObject	org.json.JSONObject
-    //   33	1	1	localException	java.lang.Exception
-    //   43	10	1	localObject	Object
+    //   0	78	0	this	a
+    //   17	6	1	localJSONObject	org.json.JSONObject
+    //   45	1	1	localException	java.lang.Exception
+    //   61	16	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   0	24	33	java/lang/Exception
-    //   0	24	43	finally
+    //   6	30	45	java/lang/Exception
+    //   6	30	61	finally
   }
 }
 

@@ -1,31 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.graphics.Bitmap;
-import android.os.Looper;
-import com.tencent.magicbrush.handler.image.MBCanvasContentHolder;
-import com.tencent.mm.plugin.appbrand.game.f.a;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.s;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bf;
-
-public final class z
-  extends y
+abstract class z
+  implements c.a
 {
-  public final Bitmap a(o paramo)
-  {
-    if (paramo.getRuntime().ZH())
-    {
-      paramo = a.gdf.ahl();
-      if (paramo != null) {
-        return paramo.content;
-      }
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.JsApiCaptureScreenWC", "mbCanvasContentHolder is null");
-      return null;
-    }
-    return (Bitmap)new z.1(this, (s)paramo.E(s.class)).b(new ah(Looper.getMainLooper()));
-  }
+  String mResult;
+  
+  public void BI(String paramString) {}
+  
+  public void proceed() {}
 }
 
 

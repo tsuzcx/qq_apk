@@ -1,14 +1,18 @@
 package com.tencent.mm.modelappbrand;
 
-public final class w
+public abstract class w
+  implements m
 {
-  public String bIW;
-  public String bOL;
-  public int version;
+  public abstract void acy();
+  
+  public final String getName()
+  {
+    return "WidgetPreDrawCallback";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.w
  * JD-Core Version:    0.7.0.1
  */

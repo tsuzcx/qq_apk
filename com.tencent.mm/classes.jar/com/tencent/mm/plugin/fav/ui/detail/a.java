@@ -1,53 +1,55 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
 import android.text.format.DateFormat;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.plugin.fav.ui.n.i;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.protocal.c.yp;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.acw;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 
 public final class a
 {
   public static void a(MMActivity paramMMActivity, g paramg)
   {
+    AppMethodBeat.i(74456);
     Object localObject;
-    if ((14 == paramg.field_type) && (!bk.bl(paramg.field_favProto.title))) {
+    if ((14 == paramg.field_type) && (!bo.isNullOrNil(paramg.field_favProto.title))) {
       localObject = paramg.field_favProto.title;
     }
     for (;;)
     {
       paramg = DateFormat.format("yyyy/M/d", paramg.field_updateTime);
-      paramMMActivity.setMMSubTitle(String.format(paramMMActivity.getString(n.i.favorite_detail_header_desc), new Object[] { localObject, paramg }));
+      paramMMActivity.setMMSubTitle(String.format(paramMMActivity.getString(2131299688), new Object[] { localObject, paramg }));
+      AppMethodBeat.o(74456);
       return;
-      yp localyp = paramg.field_favProto.sXa;
-      if ((localyp != null) && (!bk.bl(localyp.sWB)))
+      acw localacw = paramg.field_favProto.wVa;
+      if ((localacw != null) && (!bo.isNullOrNil(localacw.wUA)))
       {
-        String str1 = b.Cy(localyp.sWB);
+        String str1 = b.NA(localacw.wUA);
         String str2;
-        if (q.Gj().equals(localyp.bRO))
+        if (r.Zn().equals(localacw.czp))
         {
-          str2 = b.gW(localyp.toUser);
+          str2 = b.nF(localacw.toUser);
           localObject = str1;
-          if (!bk.aM(str2, "").equals(localyp.toUser)) {
+          if (!bo.bf(str2, "").equals(localacw.toUser)) {
             localObject = str1 + " - " + str2;
           }
         }
         else
         {
-          str2 = b.gW(localyp.bRO);
+          str2 = b.nF(localacw.czp);
           localObject = str1;
-          if (!bk.aM(str2, "").equals(localyp.bRO)) {
+          if (!bo.bf(str2, "").equals(localacw.czp)) {
             localObject = str1 + " - " + str2;
           }
         }
       }
       else
       {
-        localObject = b.gW(paramg.field_fromUser);
+        localObject = b.nF(paramg.field_fromUser);
       }
     }
   }

@@ -1,17 +1,24 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.pluginsdk.ui.tools.l;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CreateAvatarUI$7
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   CreateAvatarUI$7(CreateAvatarUI paramCreateAvatarUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    l.k(this.rkL, 4);
+    AppMethodBeat.i(7359);
+    if (paramMotionEvent.getAction() == 0) {
+      CreateAvatarUI.b(this.vam).setCursorVisible(true);
+    }
+    AppMethodBeat.o(7359);
+    return false;
   }
 }
 

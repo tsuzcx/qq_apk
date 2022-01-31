@@ -1,9 +1,12 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.d.b.g;
+import a.f.b.j;
+import a.l;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class a$b
   implements View.OnClickListener
 {
@@ -11,13 +14,17 @@ final class a$b
   
   public final void onClick(View paramView)
   {
-    RadarSpecialGridView.a locala = this.nlK.nlI.getOnItemClickListener();
+    AppMethodBeat.i(102940);
+    RadarSpecialGridView.a locala = this.pQZ.pQX.getOnItemClickListener();
     if (locala != null)
     {
-      int i = this.hgx;
-      g.j(paramView, "v");
-      locala.e(i, paramView);
+      int i = this.euX;
+      j.p(paramView, "v");
+      locala.f(i, paramView);
+      AppMethodBeat.o(102940);
+      return;
     }
+    AppMethodBeat.o(102940);
   }
 }
 

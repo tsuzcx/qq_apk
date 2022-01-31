@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.canvas.b;
 
 import android.graphics.Path;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.BasePathActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathLineToActionArg;
-import com.tencent.mm.plugin.appbrand.u.h;
 import org.json.JSONArray;
 
 public final class g
@@ -11,26 +11,37 @@ public final class g
 {
   public final boolean a(Path paramPath, BasePathActionArg paramBasePathActionArg)
   {
+    AppMethodBeat.i(103687);
     paramBasePathActionArg = (PathLineToActionArg)paramBasePathActionArg;
-    if (paramBasePathActionArg == null) {
+    if (paramBasePathActionArg == null)
+    {
+      AppMethodBeat.o(103687);
       return false;
     }
     paramPath.lineTo(paramBasePathActionArg.x, paramBasePathActionArg.y);
+    AppMethodBeat.o(103687);
     return true;
   }
   
   public final boolean a(Path paramPath, JSONArray paramJSONArray)
   {
-    if (paramJSONArray.length() < 2) {
+    AppMethodBeat.i(103686);
+    if (paramJSONArray.length() < 2)
+    {
+      AppMethodBeat.o(103686);
       return false;
     }
-    paramPath.lineTo(h.d(paramJSONArray, 0), h.d(paramJSONArray, 1));
+    paramPath.lineTo(com.tencent.mm.plugin.appbrand.s.g.d(paramJSONArray, 0), com.tencent.mm.plugin.appbrand.s.g.d(paramJSONArray, 1));
+    AppMethodBeat.o(103686);
     return true;
   }
   
-  public final BasePathActionArg adQ()
+  public final BasePathActionArg ayi()
   {
-    return new PathLineToActionArg();
+    AppMethodBeat.i(103688);
+    PathLineToActionArg localPathLineToActionArg = new PathLineToActionArg();
+    AppMethodBeat.o(103688);
+    return localPathLineToActionArg;
   }
   
   public final String getMethod()
@@ -40,7 +51,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.g
  * JD-Core Version:    0.7.0.1
  */

@@ -3,27 +3,29 @@ package com.tencent.toybrick.c;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ci.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c$a
   extends d.a
 {
-  ImageView oFp;
-  ImageView xaO;
-  ImageView xaP;
-  ImageView xaQ;
-  TextView xaR;
-  View xaS;
+  ImageView Bxu;
+  ImageView Bxv;
+  ImageView Bxw;
+  TextView Bxx;
+  View Bxy;
+  ImageView ruQ;
   
   public c$a(c paramc, View paramView)
   {
     super(paramView);
-    this.xaO = ((ImageView)paramView.findViewById(a.f.image_right_iv));
-    this.xaR = ((TextView)paramView.findViewById(a.f.right_desc));
-    this.xaP = ((ImageView)paramView.findViewById(a.f.right_prospect));
-    this.xaS = paramView.findViewById(a.f.right_rl);
-    this.oFp = ((ImageView)paramView.findViewById(a.f.right_arrow));
-    this.xaQ = ((ImageView)paramView.findViewById(a.f.right_center_prospect));
+    AppMethodBeat.i(113205);
+    this.Bxu = ((ImageView)paramView.findViewById(2131822413));
+    this.Bxx = ((TextView)paramView.findViewById(2131826086));
+    this.Bxv = ((ImageView)paramView.findViewById(2131822414));
+    this.Bxy = paramView.findViewById(2131822412);
+    this.ruQ = ((ImageView)paramView.findViewById(2131821555));
+    this.Bxw = ((ImageView)paramView.findViewById(2131822415));
+    AppMethodBeat.o(113205);
   }
 }
 

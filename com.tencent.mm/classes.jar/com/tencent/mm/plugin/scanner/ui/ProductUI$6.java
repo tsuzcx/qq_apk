@@ -2,126 +2,134 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.a.ce;
-import com.tencent.mm.h.a.ce.a;
-import com.tencent.mm.h.a.ce.b;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.plugin.scanner.a.j;
-import com.tencent.mm.plugin.scanner.util.o;
-import com.tencent.mm.plugin.scanner.util.o.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.a.ch;
+import com.tencent.mm.g.a.ch.a;
+import com.tencent.mm.g.a.ch.b;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.v.b;
+import com.tencent.mm.plugin.fav.a.b;
+import com.tencent.mm.plugin.scanner.c;
+import com.tencent.mm.plugin.scanner.model.k;
+import com.tencent.mm.plugin.scanner.util.q;
+import com.tencent.mm.plugin.scanner.util.q.a;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h.d;
-import com.tencent.mm.ui.s;
 
 final class ProductUI$6
   implements h.d
 {
   ProductUI$6(ProductUI paramProductUI) {}
   
-  public final void bF(int paramInt1, int paramInt2)
+  public final void ca(int paramInt1, int paramInt2)
   {
-    if (ProductUI.a(this.nKF) == null) {
+    AppMethodBeat.i(81086);
+    if (ProductUI.a(this.qyh) == null)
+    {
+      AppMethodBeat.o(81086);
       return;
     }
-    Object localObject2;
     switch (paramInt2)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(81086);
       return;
-    case -1: 
-      com.tencent.mm.ui.base.h.a(this.nKF.mController.uMN, this.nKF.mController.uMN.getString(R.l.app_delete_tips), null, null, this.nKF.mController.uMN.getString(R.l.app_delete), new h.d()
+      com.tencent.mm.ui.base.h.a(this.qyh.getContext(), this.qyh.getContext().getString(2131296902), null, null, this.qyh.getContext().getString(2131296901), new h.d()
       {
-        public final void bF(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void ca(int paramAnonymousInt1, int paramAnonymousInt2)
         {
+          AppMethodBeat.i(81085);
           switch (paramAnonymousInt2)
           {
           default: 
-            y.d("MicroMsg.scanner.ProductUI", "do del cancel");
+            ab.d("MicroMsg.scanner.ProductUI", "do del cancel");
           }
-          ce localce;
+          ch localch;
           do
           {
+            AppMethodBeat.o(81085);
             return;
-            localce = new ce();
-            localce.bIp.bIr = ProductUI.6.this.nKF.getIntent().getLongExtra("key_favorite_local_id", -1L);
-            a.udP.m(localce);
-            y.d("MicroMsg.scanner.ProductUI", "do del fav product, local id %d, result %B", new Object[] { Long.valueOf(localce.bIp.bIr), Boolean.valueOf(localce.bIq.bIe) });
-          } while (!localce.bIq.bIe);
-          ProductUI.6.this.nKF.finish();
+            localch = new ch();
+            localch.cpK.cpM = ProductUI.6.this.qyh.getIntent().getLongExtra("key_favorite_local_id", -1L);
+            a.ymk.l(localch);
+            ab.d("MicroMsg.scanner.ProductUI", "do del fav product, local id %d, result %B", new Object[] { Long.valueOf(localch.cpK.cpM), Boolean.valueOf(localch.cpL.cpz) });
+          } while (!localch.cpL.cpz);
+          ProductUI.6.this.qyh.finish();
+          AppMethodBeat.o(81085);
         }
       });
+      AppMethodBeat.o(81086);
       return;
-    case 0: 
-      com.tencent.mm.plugin.report.service.h.nFQ.f(11446, new Object[] { ProductUI.a(this.nKF).field_productid, Integer.valueOf(2) });
-      if (ProductUI.c(this.nKF) == 3)
+      com.tencent.mm.plugin.report.service.h.qsU.e(11446, new Object[] { ProductUI.a(this.qyh).field_productid, Integer.valueOf(2) });
+      if (ProductUI.c(this.qyh) == 3)
       {
-        com.tencent.mm.plugin.fav.a.h.f(this.nKF.getIntent().getLongExtra("key_favorite_local_id", -1L), 1, 0);
-        com.tencent.mm.plugin.report.service.h.nFQ.f(10651, new Object[] { Integer.valueOf(10), Integer.valueOf(0), Integer.valueOf(0) });
+        com.tencent.mm.plugin.fav.a.h.i(this.qyh.getIntent().getLongExtra("key_favorite_local_id", -1L), 1, 0);
+        com.tencent.mm.plugin.report.service.h.qsU.e(10651, new Object[] { Integer.valueOf(10), Integer.valueOf(0), Integer.valueOf(0) });
       }
-      localObject1 = new Intent();
-      ((Intent)localObject1).putExtra("KContentObjDesc", ProductUI.a(this.nKF).field_subtitle);
-      ((Intent)localObject1).putExtra("Ksnsupload_title", ProductUI.a(this.nKF).field_title);
-      ((Intent)localObject1).putExtra("Ksnsupload_link", ProductUI.a(this.nKF).field_shareurl);
-      ((Intent)localObject1).putExtra("Ksnsupload_appname", o.I(this.nKF, ProductUI.a(this.nKF).field_type));
-      ((Intent)localObject1).putExtra("Ksnsupload_appid", j.wN(ProductUI.a(this.nKF).field_functionType));
-      ((Intent)localObject1).putExtra("Ksnsupload_imgurl", ProductUI.a(this.nKF).field_thumburl);
-      y.i("MicroMsg.scanner.ProductUI", "product.field_thumburl : " + ProductUI.a(this.nKF).field_thumburl);
-      if (ProductUI.m(this.nKF) != null) {
-        ((Intent)localObject1).putExtra("KsnsUpload_imgPath", ProductUI.m(this.nKF).UO());
+      Object localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("KContentObjDesc", ProductUI.a(this.qyh).field_subtitle);
+      ((Intent)localObject1).putExtra("Ksnsupload_title", ProductUI.a(this.qyh).field_title);
+      ((Intent)localObject1).putExtra("Ksnsupload_link", ProductUI.a(this.qyh).field_shareurl);
+      ((Intent)localObject1).putExtra("Ksnsupload_appname", q.V(this.qyh, ProductUI.a(this.qyh).field_type));
+      ((Intent)localObject1).putExtra("Ksnsupload_appid", k.CD(ProductUI.a(this.qyh).field_functionType));
+      ((Intent)localObject1).putExtra("Ksnsupload_imgurl", ProductUI.a(this.qyh).field_thumburl);
+      ab.i("MicroMsg.scanner.ProductUI", "product.field_thumburl : " + ProductUI.a(this.qyh).field_thumburl);
+      if (ProductUI.o(this.qyh) != null) {
+        ((Intent)localObject1).putExtra("KsnsUpload_imgPath", ProductUI.o(this.qyh).aon());
       }
       for (;;)
       {
         ((Intent)localObject1).putExtra("Ksnsupload_type", 3);
-        ((Intent)localObject1).putExtra("KUploadProduct_UserData", o.c(ProductUI.a(this.nKF)));
-        ((Intent)localObject1).putExtra("KUploadProduct_subType", ProductUI.a(this.nKF).field_type);
-        localObject2 = u.ij("scan_product");
-        u.Hc().v((String)localObject2, true).h("prePublishId", "scan_product");
+        ((Intent)localObject1).putExtra("KUploadProduct_UserData", q.c(ProductUI.a(this.qyh)));
+        ((Intent)localObject1).putExtra("KUploadProduct_subType", ProductUI.a(this.qyh).field_type);
+        localObject2 = v.oQ("scan_product");
+        v.aae().z((String)localObject2, true).i("prePublishId", "scan_product");
         ((Intent)localObject1).putExtra("reportSessionId", (String)localObject2);
-        d.b(this.nKF, "sns", ".ui.SnsUploadUI", (Intent)localObject1);
+        d.b(this.qyh, "sns", ".ui.SnsUploadUI", (Intent)localObject1);
+        AppMethodBeat.o(81086);
         return;
-        y.e("MicroMsg.scanner.ProductUI", "imgGetStrategy is null");
+        ab.e("MicroMsg.scanner.ProductUI", "imgGetStrategy is null");
       }
-    case 1: 
-      com.tencent.mm.plugin.report.service.h.nFQ.f(11446, new Object[] { ProductUI.a(this.nKF).field_productid, Integer.valueOf(1) });
-      localObject1 = j.a(this.nKF.mController.uMN, ProductUI.a(this.nKF));
-      localObject2 = new Intent();
+      com.tencent.mm.plugin.report.service.h.qsU.e(11446, new Object[] { ProductUI.a(this.qyh).field_productid, Integer.valueOf(1) });
+      localObject1 = k.a(this.qyh.getContext(), ProductUI.a(this.qyh));
+      Object localObject2 = new Intent();
       ((Intent)localObject2).putExtra("Retr_Msg_content", (String)localObject1);
       ((Intent)localObject2).putExtra("Retr_Msg_Type", 2);
-      if (ProductUI.m(this.nKF) != null) {
-        ((Intent)localObject2).putExtra("Retr_Msg_thumb_path", ProductUI.m(this.nKF).UO());
+      if (ProductUI.o(this.qyh) != null) {
+        ((Intent)localObject2).putExtra("Retr_Msg_thumb_path", ProductUI.o(this.qyh).aon());
       }
       for (;;)
       {
         ((Intent)localObject2).putExtra("Retr_go_to_chattingUI", false);
         ((Intent)localObject2).putExtra("Retr_show_success_tips", true);
-        com.tencent.mm.plugin.scanner.b.eUR.l((Intent)localObject2, this.nKF);
-        if (ProductUI.c(this.nKF) != 3) {
+        c.gmO.k((Intent)localObject2, this.qyh);
+        if (ProductUI.c(this.qyh) != 3) {
           break;
         }
-        com.tencent.mm.plugin.report.service.h.nFQ.f(10651, new Object[] { Integer.valueOf(10), Integer.valueOf(1), Integer.valueOf(0) });
+        com.tencent.mm.plugin.report.service.h.qsU.e(10651, new Object[] { Integer.valueOf(10), Integer.valueOf(1), Integer.valueOf(0) });
+        AppMethodBeat.o(81086);
         return;
-        y.e("MicroMsg.scanner.ProductUI", "imgGetStrategy is null");
+        ab.e("MicroMsg.scanner.ProductUI", "imgGetStrategy is null");
       }
-    case 2: 
-      com.tencent.mm.plugin.report.service.h.nFQ.f(11446, new Object[] { ProductUI.a(this.nKF).field_productid, Integer.valueOf(3) });
-      ProductUI.p(this.nKF);
+      com.tencent.mm.plugin.report.service.h.qsU.e(11446, new Object[] { ProductUI.a(this.qyh).field_productid, Integer.valueOf(3) });
+      ProductUI.r(this.qyh);
+      AppMethodBeat.o(81086);
       return;
-    case 3: 
       localObject1 = new Intent();
       ((Intent)localObject1).putExtra("key_fav_scene", 2);
-      ((Intent)localObject1).putExtra("key_fav_item_id", this.nKF.getIntent().getLongExtra("key_favorite_local_id", -1L));
-      com.tencent.mm.plugin.fav.a.b.a(this.nKF.mController.uMN, ".ui.FavTagEditUI", (Intent)localObject1);
+      ((Intent)localObject1).putExtra("key_fav_item_id", this.qyh.getIntent().getLongExtra("key_favorite_local_id", -1L));
+      b.b(this.qyh.getContext(), ".ui.FavTagEditUI", (Intent)localObject1);
+      AppMethodBeat.o(81086);
       return;
+      localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("rawUrl", ProductUI.a(this.qyh).field_exposeurl);
+      d.b(this.qyh.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
     }
-    Object localObject1 = new Intent();
-    ((Intent)localObject1).putExtra("rawUrl", ProductUI.a(this.nKF).field_exposeurl);
-    d.b(this.nKF.mController.uMN, "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
   }
 }
 

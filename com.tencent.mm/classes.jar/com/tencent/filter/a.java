@@ -1,5 +1,7 @@
 package com.tencent.filter;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a
   extends BaseFilter
 {
@@ -10,7 +12,9 @@ public final class a
   
   public final void setAdjustParam(float paramFloat)
   {
+    AppMethodBeat.i(86280);
     addParam(new m.f("filterAdjustParam", paramFloat));
+    AppMethodBeat.o(86280);
   }
 }
 

@@ -5,40 +5,38 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
-import com.tencent.mm.R.l;
-import com.tencent.mm.at.b;
-import com.tencent.mm.at.b.a;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.au.b;
+import com.tencent.mm.au.b.a;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactUI;
 import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.plugin.freewifi.model.j;
+import com.tencent.mm.plugin.freewifi.d.a;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI;
-import com.tencent.mm.protocal.c.ty;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.a;
+import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.b;
+import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.d;
+import com.tencent.mm.protocal.protobuf.gm;
+import com.tencent.mm.protocal.protobuf.yi;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMWizardActivity;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.net.ConnectException;
-import java.net.NetworkInterface;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -46,51 +44,36 @@ import java.util.UUID;
 
 public final class m
 {
-  private static SimpleDateFormat hJl = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+  private static SimpleDateFormat jCL;
   
-  public static void A(Intent paramIntent)
+  static
   {
-    if (isEmpty(paramIntent.getStringExtra("free_wifi_sessionkey"))) {
-      d(paramIntent, aTB());
-    }
+    AppMethodBeat.i(20655);
+    jCL = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+    AppMethodBeat.o(20655);
   }
   
-  public static String B(Intent paramIntent)
+  public static String Ou(String paramString)
   {
-    return Dn(paramIntent.getStringExtra("free_wifi_sessionkey"));
-  }
-  
-  public static int C(Intent paramIntent)
-  {
-    int i = paramIntent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_LOG_STEP_ID", 0) + 1;
-    paramIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_LOG_STEP_ID", i);
-    return i;
-  }
-  
-  public static int D(Intent paramIntent)
-  {
-    return paramIntent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 0);
-  }
-  
-  public static String Dm(String paramString)
-  {
-    String str;
-    if (isEmpty(paramString)) {
-      str = "";
-    }
-    do
+    AppMethodBeat.i(20628);
+    if (isEmpty(paramString))
     {
-      do
-      {
-        return str;
-        str = paramString;
-      } while (!paramString.startsWith("\""));
+      AppMethodBeat.o(20628);
+      return "";
+    }
+    String str = paramString;
+    if (paramString.startsWith("\""))
+    {
       str = paramString;
-    } while (!paramString.endsWith("\""));
-    return paramString.substring(1, paramString.length() - 1);
+      if (paramString.endsWith("\"")) {
+        str = paramString.substring(1, paramString.length() - 1);
+      }
+    }
+    AppMethodBeat.o(20628);
+    return str;
   }
   
-  public static String Dn(String paramString)
+  public static String Ov(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -99,112 +82,111 @@ public final class m
     return str;
   }
   
-  public static String Do(String paramString)
+  public static String Ow(String paramString)
   {
-    if (!aTE())
-    {
-      y.i(paramString, "wifi not connected. getConnectedWifiSsid() is empty");
-      return "";
-    }
-    Object localObject = (WifiManager)ae.getContext().getSystemService("wifi");
-    if (localObject == null) {
-      return "";
-    }
-    localObject = ((WifiManager)localObject).getConnectionInfo();
-    if (localObject == null) {
-      return "";
-    }
-    localObject = ((WifiInfo)localObject).getSSID();
-    if (isEmpty((String)localObject))
-    {
-      y.i(paramString, "getConnectedWifiSsid() is empty");
-      return "";
-    }
-    y.i(paramString, "getConnectedWifiSsid()=" + Dm((String)localObject));
-    return Dm((String)localObject);
+    AppMethodBeat.i(20638);
+    String str = at.gX(ah.getContext());
+    ab.i(paramString, "getConnectedWifiSsid()=".concat(String.valueOf(str)));
+    AppMethodBeat.o(20638);
+    return str;
   }
   
-  public static String Dp(String paramString)
+  public static String Ox(String paramString)
   {
-    if (!aTE())
-    {
-      y.i(paramString, "wifi not connected. getConnectedWifiBssid() is empty");
-      return "";
-    }
-    Object localObject = (WifiManager)ae.getContext().getSystemService("wifi");
-    if (localObject == null) {
-      return "";
-    }
-    localObject = ((WifiManager)localObject).getConnectionInfo();
-    if (localObject == null) {
-      return "";
-    }
-    localObject = Dn(((WifiInfo)localObject).getBSSID()).toLowerCase();
-    y.i(paramString, "getConnectedWifiBssid()=" + (String)localObject);
-    return localObject;
+    AppMethodBeat.i(20639);
+    String str = at.gY(ah.getContext());
+    ab.i(paramString, "getConnectedWifiBssid()=".concat(String.valueOf(str)));
+    AppMethodBeat.o(20639);
+    return str;
   }
   
-  public static String Dq(String paramString)
+  public static String Oy(String paramString)
   {
-    Object localObject = (WifiManager)ae.getContext().getSystemService("wifi");
-    if (localObject == null)
-    {
-      y.e(paramString, "error wifiManager is null!!");
-      return "";
-    }
-    localObject = ((WifiManager)localObject).getConnectionInfo();
-    if (localObject == null)
-    {
-      y.e(paramString, "error wifiInfo is null!!");
-      return "";
-    }
-    String str = ((WifiInfo)localObject).getMacAddress();
-    localObject = str;
-    if (Build.VERSION.SDK_INT > 22) {
-      if (str != null)
-      {
-        localObject = str;
-        if (!str.equals("02:00:00:00:00:00")) {}
-      }
-      else
-      {
-        localObject = aTC();
-      }
-    }
-    localObject = Dn((String)localObject).toLowerCase();
-    y.i(paramString, "getConnectedWifiClientMac()=" + (String)localObject);
-    return localObject;
+    AppMethodBeat.i(20640);
+    String str = at.gZ(ah.getContext());
+    ab.i(paramString, "getConnectedWifiClientMac()=".concat(String.valueOf(str)));
+    AppMethodBeat.o(20640);
+    return str;
   }
   
-  public static void Dr(String paramString)
+  public static void Oz(String paramString)
   {
-    y.i("FreeWifi", paramString);
+    AppMethodBeat.i(20654);
+    ab.i("FreeWifi", paramString);
+    AppMethodBeat.o(20654);
   }
   
-  public static int E(Intent paramIntent)
+  public static void T(Intent paramIntent)
   {
-    return paramIntent.getIntExtra("free_wifi_channel_id", 0);
+    AppMethodBeat.i(20630);
+    if (isEmpty(paramIntent.getStringExtra("free_wifi_sessionkey"))) {
+      d(paramIntent, bAg());
+    }
+    AppMethodBeat.o(20630);
   }
   
-  public static String F(Intent paramIntent)
+  public static String U(Intent paramIntent)
   {
-    return paramIntent.getStringExtra("free_wifi_ap_key");
+    AppMethodBeat.i(20633);
+    paramIntent = Ov(paramIntent.getStringExtra("free_wifi_sessionkey"));
+    AppMethodBeat.o(20633);
+    return paramIntent;
+  }
+  
+  public static int V(Intent paramIntent)
+  {
+    AppMethodBeat.i(20634);
+    int i = paramIntent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_LOG_STEP_ID", 0) + 1;
+    paramIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_LOG_STEP_ID", i);
+    AppMethodBeat.o(20634);
+    return i;
+  }
+  
+  public static int W(Intent paramIntent)
+  {
+    AppMethodBeat.i(20635);
+    int i = paramIntent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 0);
+    AppMethodBeat.o(20635);
+    return i;
+  }
+  
+  public static int X(Intent paramIntent)
+  {
+    AppMethodBeat.i(20636);
+    int i = paramIntent.getIntExtra("free_wifi_channel_id", 0);
+    AppMethodBeat.o(20636);
+    return i;
+  }
+  
+  public static String Y(Intent paramIntent)
+  {
+    AppMethodBeat.i(20637);
+    paramIntent = paramIntent.getStringExtra("free_wifi_ap_key");
+    AppMethodBeat.o(20637);
+    return paramIntent;
   }
   
   public static String a(int paramInt1, k.b paramb, int paramInt2)
   {
-    y.i("MicroMsg.FreeWifi.Utils", "getUiErrorCode, protocol=%d, stageName=%s, stageCode=%d, errocode=%d", new Object[] { Integer.valueOf(paramInt1), paramb.name, Long.valueOf(paramb.knD), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(20643);
+    ab.i("MicroMsg.FreeWifi.Utils", "getUiErrorCode, protocol=%d, stageName=%s, stageCode=%d, errocode=%d", new Object[] { Integer.valueOf(paramInt1), paramb.name, Long.valueOf(paramb.mJq), Integer.valueOf(paramInt2) });
     paramInt2 = Math.abs(paramInt2);
-    StringBuilder localStringBuilder = new StringBuilder().append(String.format("%02d", new Object[] { Integer.valueOf(paramInt1) })).append(String.format("%03d", new Object[] { Long.valueOf(paramb.knD) }));
+    StringBuilder localStringBuilder = new StringBuilder().append(String.format("%02d", new Object[] { Integer.valueOf(paramInt1) })).append(String.format("%03d", new Object[] { Long.valueOf(paramb.mJq) }));
     if (paramInt2 <= 999) {}
-    for (paramb = String.format("%03d", new Object[] { Integer.valueOf(paramInt2) });; paramb = Integer.valueOf(paramInt2)) {
+    for (paramb = String.format("%03d", new Object[] { Integer.valueOf(paramInt2) });; paramb = Integer.valueOf(paramInt2))
+    {
+      paramb = paramb;
+      AppMethodBeat.o(20643);
       return paramb;
     }
   }
   
-  public static String a(String paramString1, LinkedHashMap<String, Class> paramLinkedHashMap, i parami, String paramString2)
+  public static String a(String paramString1, LinkedHashMap<String, Class> paramLinkedHashMap, com.tencent.mm.sdk.e.j paramj, String paramString2)
   {
-    if (paramLinkedHashMap.size() == 0) {
+    AppMethodBeat.i(20653);
+    if (paramLinkedHashMap.size() == 0)
+    {
+      AppMethodBeat.o(20653);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -223,311 +205,385 @@ public final class m
       localStringBuilder.append((String)((Map.Entry)((Iterator)localObject2).next()).getKey()).append("\t");
     }
     localStringBuilder.append("\r\n");
-    parami = parami.rawQuery((String)localObject1, new String[0]);
+    paramj = paramj.rawQuery((String)localObject1, new String[0]);
     for (;;)
     {
       int i;
       try
       {
-        if (!parami.moveToNext()) {
+        if (!paramj.moveToNext()) {
           break;
         }
         localObject1 = paramLinkedHashMap.entrySet().iterator();
         i = 0;
         if (!((Iterator)localObject1).hasNext()) {
-          break label513;
+          break label532;
         }
         localObject2 = (Class)((Map.Entry)((Iterator)localObject1).next()).getValue();
         if (localObject2 != String.class) {
           continue;
         }
-        localStringBuilder.append(parami.getString(i));
+        localStringBuilder.append(paramj.getString(i));
       }
       catch (Exception paramLinkedHashMap)
       {
-        y.i(paramString2, "print " + paramString1 + "error." + paramLinkedHashMap.getMessage());
+        ab.i(paramString2, "print " + paramString1 + "error." + paramLinkedHashMap.getMessage());
         return "";
         if (localObject2 != Long.TYPE) {
-          break label421;
+          break label440;
         }
-        localStringBuilder.append(parami.getLong(i));
+        localStringBuilder.append(paramj.getLong(i));
         continue;
       }
       finally
       {
-        parami.close();
+        paramj.close();
+        AppMethodBeat.o(20653);
       }
       localStringBuilder.append("\t");
       i += 1;
       continue;
-      label513:
+      label532:
       if (localObject2 == Integer.TYPE) {
-        localStringBuilder.append(parami.getInt(i));
+        localStringBuilder.append(paramj.getInt(i));
       } else {
-        label421:
+        label440:
         if (localObject2 == Float.TYPE)
         {
-          localStringBuilder.append(parami.getFloat(i));
+          localStringBuilder.append(paramj.getFloat(i));
         }
         else if (localObject2 == Double.TYPE)
         {
-          localStringBuilder.append(parami.getDouble(i));
+          localStringBuilder.append(paramj.getDouble(i));
         }
         else
         {
-          y.e(paramString2, "unkonwn type " + ((Class)localObject2).toString());
-          localStringBuilder.append(parami.getString(i));
+          ab.e(paramString2, "unkonwn type " + ((Class)localObject2).toString());
+          localStringBuilder.append(paramj.getString(i));
           continue;
           localStringBuilder.append("\r\n");
         }
       }
     }
-    y.i(paramString2, localStringBuilder.toString());
+    ab.i(paramString2, localStringBuilder.toString());
     paramLinkedHashMap = localStringBuilder.toString();
-    parami.close();
+    paramj.close();
+    AppMethodBeat.o(20653);
     return paramLinkedHashMap;
   }
   
   public static void a(Intent paramIntent, String paramString1, int paramInt1, int paramInt2, m.a parama, String paramString2)
   {
-    j.aUl().aTT().post(new m.2(paramString2, paramString1, paramIntent, paramInt1, paramInt2, parama));
+    AppMethodBeat.i(20645);
+    com.tencent.mm.plugin.freewifi.model.j.bAN().bAw().post(new m.2(paramString2, paramString1, paramIntent, paramInt1, paramInt2, parama));
+    AppMethodBeat.o(20645);
   }
   
-  public static void a(Intent paramIntent, String paramString1, int paramInt1, int paramInt2, FreeWifiFrontPageUI paramFreeWifiFrontPageUI, String paramString2)
+  public static void a(Intent paramIntent, String paramString1, final int paramInt1, int paramInt2, final FreeWifiFrontPageUI paramFreeWifiFrontPageUI, String paramString2)
   {
-    a(paramIntent, paramString1, paramInt1, paramInt2, new m.1(paramString2, paramFreeWifiFrontPageUI, paramInt1), paramString2);
-  }
-  
-  public static boolean aTA()
-  {
-    String str = bk.bC(ae.getContext());
-    return (str != null) && (str.toLowerCase().startsWith(ae.getPackageName()));
-  }
-  
-  public static String aTB()
-  {
-    return UUID.randomUUID().toString().replace("-", "");
-  }
-  
-  public static String aTC()
-  {
-    long l = System.currentTimeMillis();
-    try
+    AppMethodBeat.i(20644);
+    a(paramIntent, paramString1, paramInt1, paramInt2, new m.a()
     {
-      if (NetworkInterface.getNetworkInterfaces() != null)
+      public final void g(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ai.m paramAnonymousm)
       {
-        Object localObject1 = Collections.list(NetworkInterface.getNetworkInterfaces()).iterator();
-        while (((Iterator)localObject1).hasNext())
+        AppMethodBeat.i(20624);
+        Object localObject2;
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          Object localObject2 = (NetworkInterface)((Iterator)localObject1).next();
-          if (((NetworkInterface)localObject2).getName().equalsIgnoreCase("wlan0"))
+          if (!(paramAnonymousm instanceof a))
           {
-            localObject1 = ((NetworkInterface)localObject2).getHardwareAddress();
-            if (localObject1 == null)
-            {
-              y.d("MicroMsg.FreeWifi.Utils", "et mobile mac from net time cost :" + (System.currentTimeMillis() - l));
-              return "02:00:00:00:00:00";
-            }
-            localObject2 = new StringBuilder();
-            int j = localObject1.length;
-            int i = 0;
-            while (i < j)
-            {
-              ((StringBuilder)localObject2).append(String.format("%02X:", new Object[] { Byte.valueOf(localObject1[i]) }));
-              i += 1;
-            }
-            if (((StringBuilder)localObject2).length() > 0) {
-              ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
-            }
-            y.d("MicroMsg.FreeWifi.Utils", "et mobile mac from net time cost :" + (System.currentTimeMillis() - l));
-            localObject1 = ((StringBuilder)localObject2).toString();
-            return localObject1;
+            AppMethodBeat.o(20624);
+            return;
           }
+          paramAnonymousString = ((a)paramAnonymousm).bAW();
+          if (paramAnonymousString != null)
+          {
+            ab.i(this.mJt, "backPageInfo appid: %s, nickName: %s, userName: %s, finishActionCode: %d, finishUrl: %s, signature: %s, qingHuaiPageUrl: %s", new Object[] { paramAnonymousString.woB, paramAnonymousString.jKG, paramAnonymousString.jJA, Integer.valueOf(paramAnonymousString.wsQ), paramAnonymousString.wsR, paramAnonymousString.gwS, paramAnonymousString.wsS });
+            paramAnonymousm = paramFreeWifiFrontPageUI;
+            localObject1 = FreeWifiFrontPageUI.d.mNK;
+            localObject2 = new FreeWifiFrontPageUI.b();
+            ((FreeWifiFrontPageUI.b)localObject2).mNG = paramAnonymousString;
+            paramAnonymousm.a((FreeWifiFrontPageUI.d)localObject1, localObject2);
+            AppMethodBeat.o(20624);
+            return;
+          }
+          ab.i(this.mJt, "backPageInfo is null");
+          paramAnonymousString = paramFreeWifiFrontPageUI;
+          paramAnonymousm = FreeWifiFrontPageUI.d.mNJ;
+          localObject1 = new FreeWifiFrontPageUI.a();
+          ((FreeWifiFrontPageUI.a)localObject1).mNi = m.a(paramInt1, k.b.mIS, 21);
+          paramAnonymousString.a(paramAnonymousm, localObject1);
+          AppMethodBeat.o(20624);
+          return;
         }
+        if ((m.eq(paramAnonymousInt1, paramAnonymousInt2)) && (!m.isEmpty(paramAnonymousString)))
+        {
+          paramAnonymousm = paramFreeWifiFrontPageUI;
+          localObject1 = FreeWifiFrontPageUI.d.mNJ;
+          localObject2 = new FreeWifiFrontPageUI.a();
+          ((FreeWifiFrontPageUI.a)localObject2).text = paramAnonymousString;
+          ((FreeWifiFrontPageUI.a)localObject2).mNi = m.a(paramInt1, k.b.mIS, paramAnonymousInt2);
+          paramAnonymousm.a((FreeWifiFrontPageUI.d)localObject1, localObject2);
+          AppMethodBeat.o(20624);
+          return;
+        }
+        paramAnonymousString = paramFreeWifiFrontPageUI;
+        paramAnonymousm = FreeWifiFrontPageUI.d.mNJ;
+        Object localObject1 = new FreeWifiFrontPageUI.a();
+        ((FreeWifiFrontPageUI.a)localObject1).mNi = m.a(paramInt1, k.b.mIS, paramAnonymousInt2);
+        paramAnonymousString.a(paramAnonymousm, localObject1);
+        AppMethodBeat.o(20624);
       }
-    }
-    catch (Exception localException)
-    {
-      y.e("MicroMsg.FreeWifi.Utils", "get mobile mac from net fail!" + localException);
-      y.d("MicroMsg.FreeWifi.Utils", "et mobile mac from net time cost :" + (System.currentTimeMillis() - l));
-    }
-    return "02:00:00:00:00:00";
+    }, paramString2);
+    AppMethodBeat.o(20644);
   }
   
-  public static int aTD()
+  public static boolean bAf()
   {
-    Object localObject = l.WP();
-    if ((localObject == l.a.ffR) || (localObject == l.a.ffS)) {
-      return 1;
-    }
-    au.Hx();
-    localObject = (String)com.tencent.mm.model.c.Dz().get(6, null);
-    if (isEmpty((String)localObject)) {
-      return 1;
-    }
-    if (((String)localObject).startsWith("+")) {}
-    for (localObject = ar.Ga((String)localObject); "86".equals(localObject); localObject = "86") {
-      return 2;
-    }
-    return 3;
-  }
-  
-  public static boolean aTE()
-  {
-    if (((ConnectivityManager)ae.getContext().getSystemService("connectivity")).getNetworkInfo(1).isConnected())
+    AppMethodBeat.i(20629);
+    String str = bo.ch(ah.getContext());
+    if ((str != null) && (str.toLowerCase().startsWith(ah.getPackageName())))
     {
-      y.i("TAG", "isWifiConnected()=true");
+      AppMethodBeat.o(20629);
       return true;
     }
-    y.i("TAG", "isWifiConnected()=false");
+    AppMethodBeat.o(20629);
     return false;
   }
   
-  public static ty aTF()
+  public static String bAg()
   {
-    ty localty = new ty();
-    localty.deviceBrand = com.tencent.mm.protocal.d.soU;
-    if ((d.kmy != null) && (!d.kmy.equals(""))) {}
-    for (localty.sQM = d.kmy;; localty.sQM = Dq("MicroMsg.FreeWifi.Utils"))
+    AppMethodBeat.i(20631);
+    String str = UUID.randomUUID().toString().replace("-", "");
+    AppMethodBeat.o(20631);
+    return str;
+  }
+  
+  public static int bAh()
+  {
+    AppMethodBeat.i(20646);
+    Object localObject = l.aqq();
+    if ((localObject == l.a.gxz) || (localObject == l.a.gxA))
     {
-      localty.deviceModel = com.tencent.mm.protocal.d.soV;
-      localty.osName = com.tencent.mm.protocal.d.soX;
-      localty.osVersion = com.tencent.mm.protocal.d.soY;
-      return localty;
+      AppMethodBeat.o(20646);
+      return 1;
     }
+    aw.aaz();
+    localObject = (String)com.tencent.mm.model.c.Ru().get(6, null);
+    if (isEmpty((String)localObject))
+    {
+      AppMethodBeat.o(20646);
+      return 1;
+    }
+    if (((String)localObject).startsWith("+")) {}
+    for (localObject = av.RC((String)localObject); "86".equals(localObject); localObject = "86")
+    {
+      AppMethodBeat.o(20646);
+      return 2;
+    }
+    AppMethodBeat.o(20646);
+    return 3;
   }
   
-  public static boolean cR(int paramInt1, int paramInt2)
+  public static boolean bAi()
   {
-    return (paramInt1 == 0) && (paramInt2 == 0);
+    AppMethodBeat.i(20651);
+    if (((ConnectivityManager)ah.getContext().getSystemService("connectivity")).getNetworkInfo(1).isConnected())
+    {
+      ab.i("TAG", "isWifiConnected()=true");
+      AppMethodBeat.o(20651);
+      return true;
+    }
+    ab.i("TAG", "isWifiConnected()=false");
+    AppMethodBeat.o(20651);
+    return false;
   }
   
-  public static boolean cS(int paramInt1, int paramInt2)
+  public static yi bAj()
   {
-    return (paramInt1 == 4) && (paramInt2 <= -30000) && (paramInt2 > -31000);
+    AppMethodBeat.i(20652);
+    yi localyi = new yi();
+    localyi.deviceBrand = com.tencent.mm.protocal.d.whB;
+    if ((d.mIk != null) && (!d.mIk.equals(""))) {}
+    for (localyi.wPv = d.mIk;; localyi.wPv = Oy("MicroMsg.FreeWifi.Utils"))
+    {
+      localyi.deviceModel = com.tencent.mm.protocal.d.whC;
+      localyi.osName = com.tencent.mm.protocal.d.whE;
+      localyi.osVersion = com.tencent.mm.protocal.d.whF;
+      AppMethodBeat.o(20652);
+      return localyi;
+    }
   }
   
   public static void d(Intent paramIntent, String paramString)
   {
+    AppMethodBeat.i(20632);
     paramIntent.putExtra("free_wifi_sessionkey", paramString);
     paramIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_LOG_STEP_ID", 0);
+    AppMethodBeat.o(20632);
   }
   
-  private static boolean dd(String paramString1, String paramString2)
+  public static void dY(Context paramContext)
   {
-    int i = bk.getInt(paramString1, 0);
-    int j = bk.getInt(paramString2, 0);
-    if ((i == 0) && (j != 0) && (com.tencent.mm.protocal.d.spa <= j)) {}
-    while (((i != 0) && (j == 0) && (com.tencent.mm.protocal.d.spa >= i)) || ((i != 0) && (j != 0) && (com.tencent.mm.protocal.d.spa >= i) && (com.tencent.mm.protocal.d.spa <= j))) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static void dl(Context paramContext)
-  {
+    AppMethodBeat.i(20647);
     Intent localIntent = new Intent(paramContext, BindMContactUI.class);
-    localIntent.putExtra("is_bind_for_safe_device", false);
-    localIntent.putExtra("is_bind_for_change_mobile", false);
     Object localObject = ((TelephonyManager)paramContext.getSystemService("phone")).getSimCountryIso();
-    if (!bk.bl((String)localObject))
+    if (!bo.isNullOrNil((String)localObject))
     {
-      localObject = b.i(paramContext, (String)localObject, paramContext.getString(R.l.country_code));
+      localObject = b.k(paramContext, (String)localObject, paramContext.getString(2131298871));
       if (localObject != null)
       {
-        localIntent.putExtra("country_name", ((b.a)localObject).esg);
-        localIntent.putExtra("couttry_code", ((b.a)localObject).esf);
+        localIntent.putExtra("country_name", ((b.a)localObject).fHT);
+        localIntent.putExtra("couttry_code", ((b.a)localObject).fHS);
       }
     }
-    MMWizardActivity.C(paramContext, localIntent);
+    MMWizardActivity.J(paramContext, localIntent);
+    AppMethodBeat.o(20647);
   }
   
-  public static String f(Exception paramException)
+  public static String e(Exception paramException)
   {
+    AppMethodBeat.i(20641);
     Object localObject = new StringWriter();
     paramException.printStackTrace(new PrintWriter((Writer)localObject));
-    localObject = Dn(((StringWriter)localObject).toString());
+    localObject = Ov(((StringWriter)localObject).toString());
     paramException = (Exception)localObject;
     if (((String)localObject).length() > 1024) {
       paramException = ((String)localObject).substring(0, 1024);
     }
+    AppMethodBeat.o(20641);
     return paramException;
   }
   
-  public static String g(Exception paramException)
+  public static boolean ep(int paramInt1, int paramInt2)
   {
-    StringWriter localStringWriter = new StringWriter();
-    paramException.printStackTrace(new PrintWriter(localStringWriter));
-    return Dn(localStringWriter.toString());
+    return (paramInt1 == 0) && (paramInt2 == 0);
   }
   
-  public static int h(Exception paramException)
+  public static boolean eq(int paramInt1, int paramInt2)
   {
-    int i = 101;
+    return (paramInt1 == 4) && (paramInt2 <= -30000) && (paramInt2 > -31000);
+  }
+  
+  private static boolean es(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(20650);
+    int i = bo.getInt(paramString1, 0);
+    int j = bo.getInt(paramString2, 0);
+    if ((i == 0) && (j != 0) && (com.tencent.mm.protocal.d.whH <= j))
+    {
+      AppMethodBeat.o(20650);
+      return true;
+    }
+    if ((i != 0) && (j == 0) && (com.tencent.mm.protocal.d.whH >= i))
+    {
+      AppMethodBeat.o(20650);
+      return true;
+    }
+    if ((i != 0) && (j != 0) && (com.tencent.mm.protocal.d.whH >= i) && (com.tencent.mm.protocal.d.whH <= j))
+    {
+      AppMethodBeat.o(20650);
+      return true;
+    }
+    AppMethodBeat.o(20650);
+    return false;
+  }
+  
+  public static String f(Exception paramException)
+  {
+    AppMethodBeat.i(20642);
+    StringWriter localStringWriter = new StringWriter();
+    paramException.printStackTrace(new PrintWriter(localStringWriter));
+    paramException = Ov(localStringWriter.toString());
+    AppMethodBeat.o(20642);
+    return paramException;
+  }
+  
+  public static int g(Exception paramException)
+  {
+    AppMethodBeat.i(20648);
     if ((paramException instanceof SocketTimeoutException))
     {
-      paramException = g(paramException);
-      if (paramException.indexOf(".read") != -1) {
-        i = 105;
-      }
-    }
-    do
-    {
-      do
+      paramException = f(paramException);
+      if (paramException.indexOf(".read") != -1)
       {
-        return i;
-      } while (paramException.indexOf(".connect") == -1);
-      return 104;
-      if ((paramException instanceof ConnectException)) {
-        return 106;
+        AppMethodBeat.o(20648);
+        return 105;
       }
-    } while (!(paramException instanceof UnknownHostException));
-    return 102;
+      if (paramException.indexOf(".connect") != -1)
+      {
+        AppMethodBeat.o(20648);
+        return 104;
+      }
+      AppMethodBeat.o(20648);
+      return 101;
+    }
+    if ((paramException instanceof ConnectException))
+    {
+      AppMethodBeat.o(20648);
+      return 106;
+    }
+    if ((paramException instanceof UnknownHostException))
+    {
+      AppMethodBeat.o(20648);
+      return 102;
+    }
+    AppMethodBeat.o(20648);
+    return 101;
   }
   
   public static boolean isEmpty(String paramString)
   {
-    return (paramString == null) || (paramString.length() == 0);
+    AppMethodBeat.i(20627);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(20627);
+      return true;
+    }
+    AppMethodBeat.o(20627);
+    return false;
   }
   
   public static boolean k(Map<String, String> paramMap, String paramString)
   {
-    boolean bool2 = true;
-    y.i(paramString, "CLIENT_VERSION=" + com.tencent.mm.protocal.d.spa);
+    AppMethodBeat.i(20649);
+    ab.i(paramString, "CLIENT_VERSION=" + com.tencent.mm.protocal.d.whH);
     String str1 = (String)paramMap.get(".sysmsg.apply_versions.version_desc.$minInclude");
     String str2 = (String)paramMap.get(".sysmsg.apply_versions.version_desc.$maxInclude");
-    y.i(paramString, "checkMsgPushedVersion. min0=%s,max0=%s", new Object[] { str1, str2 });
-    boolean bool1;
-    if ((isEmpty(str1)) && (isEmpty(str2))) {
-      bool1 = false;
-    }
-    do
+    ab.i(paramString, "checkMsgPushedVersion. min0=%s,max0=%s", new Object[] { str1, str2 });
+    if ((isEmpty(str1)) && (isEmpty(str2)))
     {
-      return bool1;
-      bool1 = bool2;
-    } while (dd(str1, str2));
+      AppMethodBeat.o(20649);
+      return false;
+    }
+    if (es(str1, str2))
+    {
+      AppMethodBeat.o(20649);
+      return true;
+    }
     int i = 1;
     for (;;)
     {
       str1 = (String)paramMap.get(".sysmsg.apply_versions.version_desc#" + i + ".$minInclude");
       str2 = (String)paramMap.get(".sysmsg.apply_versions.version_desc#" + i + ".$maxInclude");
-      y.i(paramString, "checkMsgPushedVersion. min" + i + "=%s,max" + i + "=%s", new Object[] { str1, str2 });
+      ab.i(paramString, "checkMsgPushedVersion. min" + i + "=%s,max" + i + "=%s", new Object[] { str1, str2 });
       if ((isEmpty(str1)) && (isEmpty(str2))) {
-        break label265;
-      }
-      bool1 = bool2;
-      if (dd(str1, str2)) {
         break;
+      }
+      if (es(str1, str2))
+      {
+        AppMethodBeat.o(20649);
+        return true;
       }
       i += 1;
     }
-    label265:
+    AppMethodBeat.o(20649);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.m
  * JD-Core Version:    0.7.0.1
  */

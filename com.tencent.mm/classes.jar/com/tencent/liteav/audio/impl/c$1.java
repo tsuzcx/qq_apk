@@ -2,6 +2,7 @@ package com.tencent.liteav.audio.impl;
 
 import android.content.Context;
 import android.telephony.TelephonyManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class c$1
   implements Runnable
@@ -10,11 +11,15 @@ class c$1
   
   public void run()
   {
-    if (c.a(this.a) != null) {
+    AppMethodBeat.i(66636);
+    if (c.a(this.a) != null)
+    {
+      AppMethodBeat.o(66636);
       return;
     }
     c.a(this.a, new c.1.1(this));
     ((TelephonyManager)c.b(this.a).getSystemService("phone")).listen(c.a(this.a), 32);
+    AppMethodBeat.o(66636);
   }
 }
 

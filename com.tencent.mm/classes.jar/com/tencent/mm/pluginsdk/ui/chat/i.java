@@ -8,140 +8,164 @@ import android.graphics.drawable.ColorDrawable;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.o;
 import java.util.ArrayList;
 
 public final class i
 {
-  ImageView bQf = null;
-  Bitmap bitmap = null;
-  private View contentView = null;
-  Context context;
-  SharedPreferences dnD;
-  View khn;
-  View lHw;
-  i.a sgA;
-  private h sgv;
-  g sgw;
-  o sgx;
-  boolean sgy = true;
-  h.a sgz;
+  Bitmap bitmap;
+  private View contentView;
+  private Context context;
+  ImageView cxy;
+  View kgr;
+  View oeJ;
+  SharedPreferences sp;
+  private h vYN;
+  g vYO;
+  o vYP;
+  boolean vYQ;
+  h.a vYR;
+  a vYS;
   
-  public i(Context paramContext, View paramView1, View paramView2, i.a parama)
+  public i(Context paramContext, View paramView1, View paramView2, a parama)
   {
+    AppMethodBeat.i(27960);
+    this.contentView = null;
+    this.cxy = null;
+    this.bitmap = null;
+    this.vYQ = true;
     this.context = paramContext;
-    this.khn = paramView1;
-    this.lHw = paramView2;
-    this.sgv = new h(this.context);
-    this.dnD = paramContext.getSharedPreferences(ae.cqR(), 0);
-    this.sgA = parama;
-    this.contentView = View.inflate(this.context, R.i.chatting_footer_recent_image_bubble, null);
-    this.bQf = ((ImageView)this.contentView.findViewById(R.h.recent_image_iv));
-    this.sgx = new o(this.contentView, -2, -2, true);
-    this.sgx.setBackgroundDrawable(new ColorDrawable(0));
-    this.sgx.setOutsideTouchable(true);
+    this.kgr = paramView1;
+    this.oeJ = paramView2;
+    this.vYN = new h(this.context);
+    this.sp = paramContext.getSharedPreferences(ah.dsP(), 0);
+    this.vYS = parama;
+    this.contentView = View.inflate(this.context, 2130969040, null);
+    this.cxy = ((ImageView)this.contentView.findViewById(2131822502));
+    this.vYP = new o(this.contentView, -2, -2, true);
+    this.vYP.setBackgroundDrawable(new ColorDrawable(0));
+    this.vYP.setOutsideTouchable(true);
     this.contentView.setOnClickListener(new i.1(this));
+    AppMethodBeat.o(27960);
   }
   
-  final float Eo(int paramInt)
+  final float Mm(int paramInt)
   {
-    return TypedValue.applyDimension(1, paramInt, this.context.getResources().getDisplayMetrics());
+    AppMethodBeat.i(27963);
+    float f = TypedValue.applyDimension(1, paramInt, this.context.getResources().getDisplayMetrics());
+    AppMethodBeat.o(27963);
+    return f;
   }
   
-  public final String cnN()
+  public final void doU()
+  {
+    AppMethodBeat.i(27961);
+    i.2 local2 = new i.2(this, this.context.getMainLooper());
+    aw.RO().ac(new i.3(this, local2));
+    AppMethodBeat.o(27961);
+  }
+  
+  public final String doV()
   {
     for (;;)
     {
       try
       {
-        if (this.sgv == null)
+        AppMethodBeat.i(27962);
+        if (this.vYN == null)
         {
-          y.d("MicroMsg.RecentImageBubble", "because of imageQuery == null");
+          ab.d("MicroMsg.RecentImageBubble", "because of imageQuery == null");
           localObject1 = null;
-          this.sgw = ((g)localObject1);
-          localObject1 = this.sgw;
-          if (localObject1 == null)
+          this.vYO = ((g)localObject1);
+          if (this.vYO == null)
           {
+            AppMethodBeat.o(27962);
             localObject1 = null;
             return localObject1;
           }
         }
         else
         {
-          localObject1 = this.sgv.cnM();
+          localObject1 = this.vYN.doT();
           if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
           {
-            y.d("MicroMsg.RecentImageBubble", "because of items == null || items.size() == 0");
+            ab.d("MicroMsg.RecentImageBubble", "because of items == null || items.size() == 0");
             localObject1 = null;
             continue;
           }
           g localg = (g)((ArrayList)localObject1).get(0);
           if (localg != null)
           {
-            if (bk.cn(localg.kGY) >= 0L) {
-              break label288;
+            if (bo.gz(localg.vYM) >= 0L) {
+              break label304;
             }
             i = 1;
             if (i != 0)
             {
-              y.e("MicroMsg.RecentImageBubble", "we found u have a future pic that lead to forbid this featur. file : %s", new Object[] { localg.sgu });
+              ab.e("MicroMsg.RecentImageBubble", "we found u have a future pic that lead to forbid this featur. file : %s", new Object[] { localg.vYL });
               localObject1 = null;
               continue;
             }
           }
-          if ((localg != null) && (localg.sgu != null) && (localg.sgu.contains(e.bkG)))
+          if ((localg != null) && (localg.vYL != null) && (localg.vYL.contains(e.eQy)))
           {
             localObject1 = null;
             continue;
           }
           if (localg != null)
           {
-            if (bk.cn(localg.kGY) > 30L) {
-              break label293;
+            if (bo.gz(localg.vYM) > 30L) {
+              break label309;
             }
             i = 1;
             if (i != 0)
             {
               localObject1 = localg;
-              if (!this.dnD.getString("chattingui_recent_shown_image_path", "").equals(localg.sgu)) {
+              if (!this.sp.getString("chattingui_recent_shown_image_path", "").equals(localg.vYL)) {
                 continue;
               }
-              y.d("MicroMsg.RecentImageBubble", "because of recentImage.equals(imageItem.orginalPath)");
+              ab.d("MicroMsg.RecentImageBubble", "because of recentImage.equals(imageItem.orginalPath)");
               localObject1 = null;
               continue;
             }
           }
           if (localg != null) {
-            break label298;
+            break label314;
           }
           bool = true;
-          y.d("MicroMsg.RecentImageBubble", "because of checkAddDate(addDate) == false, or imageItem == null : %s", new Object[] { Boolean.valueOf(bool) });
+          ab.d("MicroMsg.RecentImageBubble", "because of checkAddDate(generateDate) == false, or imageItem == null : %s", new Object[] { Boolean.valueOf(bool) });
           localObject1 = null;
           continue;
         }
-        Object localObject1 = this.sgw.thumbPath;
-        if (this.sgw.thumbPath != null) {
-          continue;
+        Object localObject1 = this.vYO.thumbPath;
+        if (this.vYO.thumbPath == null) {
+          localObject1 = this.vYO.vYL;
         }
-        localObject1 = this.sgw.sgu;
+        AppMethodBeat.o(27962);
         continue;
         i = 0;
       }
       finally {}
-      label288:
+      label304:
       continue;
-      label293:
+      label309:
       int i = 0;
       continue;
-      label298:
+      label314:
       boolean bool = false;
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void ams(String paramString);
   }
 }
 

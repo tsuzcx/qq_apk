@@ -2,9 +2,10 @@ package com.tencent.mm.app.plugin;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ai.d;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.d;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class URISpanHandlerSet$DeeplinkUriSpanHandler$1
   implements DialogInterface.OnClickListener
@@ -13,10 +14,12 @@ final class URISpanHandlerSet$DeeplinkUriSpanHandler$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt = this.byp.field_brandFlag;
-    this.byp.field_brandFlag |= 0x1;
-    y.i("MicroMsg.URISpanHandlerSet", "shield biz msg %s, %s, old = %d, new = %d", new Object[] { this.byq, this.byr, Integer.valueOf(paramInt), Integer.valueOf(this.byp.field_brandFlag) });
-    f.f(this.byp);
+    AppMethodBeat.i(15645);
+    paramInt = this.car.field_brandFlag;
+    this.car.field_brandFlag |= 0x1;
+    ab.i("MicroMsg.URISpanHandlerSet", "shield biz msg %s, %s, old = %d, new = %d", new Object[] { this.cas, this.cat, Integer.valueOf(paramInt), Integer.valueOf(this.car.field_brandFlag) });
+    f.f(this.car);
+    AppMethodBeat.o(15645);
   }
 }
 

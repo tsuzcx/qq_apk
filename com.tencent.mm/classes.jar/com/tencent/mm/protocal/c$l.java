@@ -5,7 +5,7 @@ final class c$l
 {
   c$l()
   {
-    super("addToEmoticon", "addToEmoticon", 274, true);
+    super("addGameDownloadTask", "addGameDownloadTask", -1, true);
   }
 }
 

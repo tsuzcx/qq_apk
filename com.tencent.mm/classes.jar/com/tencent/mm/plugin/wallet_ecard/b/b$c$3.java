@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_ecard.b;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$c$3
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class b$c$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.qKB.qKz.b(this.qKB.gfb, null);
+    AppMethodBeat.i(48082);
+    this.uzu.uzs.b(this.uzu.hwZ, null);
+    AppMethodBeat.o(48082);
   }
 }
 

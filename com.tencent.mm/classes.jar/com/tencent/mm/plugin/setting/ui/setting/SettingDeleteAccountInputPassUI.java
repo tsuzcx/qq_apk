@@ -1,29 +1,39 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.mm.plugin.setting.a.g;
-import com.tencent.mm.plugin.setting.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
 public class SettingDeleteAccountInputPassUI
   extends MMActivity
 {
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.setting_delete_account_input_pass;
+    return 2130970684;
   }
   
-  protected final void initView()
+  public void initView()
   {
+    AppMethodBeat.i(127069);
     setBackBtn(new SettingDeleteAccountInputPassUI.1(this));
-    addTextOptionMenu(0, getString(a.i.app_finish), new SettingDeleteAccountInputPassUI.2(this));
+    addTextOptionMenu(0, getString(2131296964), new SettingDeleteAccountInputPassUI.2(this));
+    AppMethodBeat.o(127069);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127068);
     super.onCreate(paramBundle);
-    setMMTitle(a.i.setting_del_account_title);
+    setMMTitle(2131303144);
     initView();
+    AppMethodBeat.o(127068);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

@@ -1,35 +1,25 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.pluginsdk.ui.applet.n;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Map;
 
 final class g$36
-  implements n
+  implements DialogInterface.OnCancelListener
 {
-  g$36(g paramg, i parami) {}
+  g$36(g paramg, i parami, Map paramMap) {}
   
-  public final void lg(int paramInt)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      g.a(this.rzi, this.rzk, "add_contact:fail", null);
-      return;
-    case -2: 
-      g.a(this.rzi, this.rzk, "add_contact:added", null);
-      return;
-    case 0: 
-      g.a(this.rzi, this.rzk, "add_contact:cancel", null);
-      return;
-    case -1: 
-      g.a(this.rzi, this.rzk, "add_contact:fail", null);
-      return;
-    }
-    g.a(this.rzi, this.rzk, "add_contact:ok", null);
+    AppMethodBeat.i(154959);
+    this.vqm.a(this.uZa, this.uZa.vrQ + ":cancelled", this.vqI);
+    AppMethodBeat.o(154959);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.36
  * JD-Core Version:    0.7.0.1
  */

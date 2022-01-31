@@ -1,49 +1,21 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsUploadUI$12
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   SnsUploadUI$12(SnsUploadUI paramSnsUploadUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    if (SnsUploadUI.g(this.pjp) == 9)
-    {
-      g.DQ();
-      g.DP().Dz().c(ac.a.upV, "");
-      SnsUploadUI.h(this.pjp);
-      if ((SnsUploadUI.d(this.pjp) instanceof ad)) {
-        SnsUploadUI.f(this.pjp).setText("");
-      }
-      switch (SnsUploadUI.g(this.pjp))
-      {
-      default: 
-        paramInt = 0;
-      }
+    AppMethodBeat.i(39749);
+    SnsUploadUI.12.1 local1 = new SnsUploadUI.12.1(this);
+    if (SnsUploadUI.e(this.sbR) != null) {
+      SnsUploadUI.e(this.sbR).setOnDragListener(local1);
     }
-    for (;;)
-    {
-      h.nFQ.f(14247, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt), SnsUploadUI.i(this.pjp), Long.valueOf(bk.UX()) });
-      SnsUploadUI.k(this.pjp);
-      return;
-      g.DQ();
-      g.DP().Dz().c(ac.a.upU, "");
-      break;
-      paramInt = 2;
-      continue;
-      paramInt = 4;
-      continue;
-      paramInt = 6;
-    }
+    AppMethodBeat.o(39749);
   }
 }
 

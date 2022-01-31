@@ -1,31 +1,25 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.support.v4.view.q;
-import com.tencent.mm.plugin.appbrand.widget.input.panel.e;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class v$1
-  implements Runnable
+  implements View.OnClickListener
 {
   v$1(v paramv) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    if ((v.a(this.hvf) == null) || (!q.ao(v.a(this.hvf)))) {
-      return;
-    }
-    if (v.b(this.hvf).asd())
-    {
-      y.d("MicroMsg.AppBrandSoftKeyboardPanel", "postMeasure inLayout, skip");
-      this.hvf.post(this);
-      return;
-    }
-    v.c(this.hvf);
+    AppMethodBeat.i(123741);
+    v.a(this.jmS);
+    this.jmS.setVisibility(8);
+    AppMethodBeat.o(123741);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.v.1
  * JD-Core Version:    0.7.0.1
  */

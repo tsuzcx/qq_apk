@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.fav.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavSearchUI$2
   implements View.OnTouchListener
@@ -11,13 +12,15 @@ final class FavSearchUI$2
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(74066);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(74066);
       return false;
-      this.kcM.XM();
+      this.mxx.hideVKB();
     }
   }
 }

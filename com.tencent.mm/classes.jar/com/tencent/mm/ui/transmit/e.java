@@ -1,35 +1,41 @@
 package com.tencent.mm.ui.transmit;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.p;
 
 public final class e
 {
+  e.a AAY;
   Context context;
-  Runnable gmy = new e.1(this);
-  int oYc;
+  Runnable hGy;
+  boolean iNk;
+  boolean iNl;
+  boolean iNm;
+  int iNn;
   String text;
   p tipDialog;
-  boolean wib;
-  boolean wic;
-  boolean wid;
-  e.a wie;
   
   public e(Context paramContext)
   {
+    AppMethodBeat.i(35281);
+    this.hGy = new e.1(this);
     this.context = paramContext;
+    AppMethodBeat.o(35281);
   }
   
-  public final void cJI()
+  public final void aMj()
   {
-    if (this.wie != null) {
-      this.wie.t(this.wid, this.text);
+    AppMethodBeat.i(35282);
+    if (this.AAY != null) {
+      this.AAY.B(this.iNm, this.text);
     }
+    AppMethodBeat.o(35282);
   }
   
-  public final boolean jC()
+  public final boolean lw()
   {
-    return this.wib & this.wic;
+    return this.iNk & this.iNl;
   }
 }
 

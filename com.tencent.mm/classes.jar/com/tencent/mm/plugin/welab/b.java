@@ -1,104 +1,49 @@
 package com.tencent.mm.plugin.welab;
 
-import android.text.TextUtils;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.model.bz.a;
+import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public final class b
+  implements bz.a
 {
-  private static final b rEq = new b();
-  public c qXu;
-  public com.tencent.mm.plugin.welab.c.a rEr;
-  public Map<String, com.tencent.mm.plugin.welab.a.a.b> rEs = new HashMap();
-  public com.tencent.mm.plugin.welab.a.a.b rEt;
-  
-  public b()
+  public final void a(e.a parama)
   {
-    c.a locala = new c.a();
-    locala.erf = true;
-    locala.ere = true;
-    this.qXu = locala.OV();
-  }
-  
-  public static void Q(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    f.R(paramBoolean1, paramBoolean2);
-  }
-  
-  private com.tencent.mm.plugin.welab.a.a.b Ue(String paramString)
-  {
-    return (com.tencent.mm.plugin.welab.a.a.b)this.rEs.get(paramString);
-  }
-  
-  public static String a(com.tencent.mm.plugin.welab.c.a.a parama)
-  {
-    String str = "";
-    Object localObject = rEq.Ue(parama.field_LabsAppId);
-    if (localObject != null)
+    AppMethodBeat.i(80536);
+    if ((parama == null) || (parama.eyJ == null) || (parama.eyJ.woR == null))
     {
-      str = parama.field_LabsAppId;
-      str = ((com.tencent.mm.plugin.welab.a.a.b)localObject).chk();
-      y.i("WelabMgr", "get appName from opener , appid %s, appName %s", new Object[] { parama.field_LabsAppId, str });
+      ab.i("MicroMsg.WelabNewMsgLsn", "recv null msg");
+      AppMethodBeat.o(80536);
+      return;
     }
-    localObject = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject = parama.Um("field_Title");
-    }
-    return localObject;
-  }
-  
-  public static String b(com.tencent.mm.plugin.welab.c.a.a parama)
-  {
-    String str = "";
-    Object localObject = rEq.Ue(parama.field_LabsAppId);
-    if (localObject != null)
+    parama = aa.a(parama.eyJ.woR);
+    ab.i("MicroMsg.WelabNewMsgLsn", "recv addMsg ".concat(String.valueOf(parama)));
+    parama = f.aju(parama);
+    if ((parama != null) && (parama.isValid()))
     {
-      str = parama.field_LabsAppId;
-      str = ((com.tencent.mm.plugin.welab.a.a.b)localObject).chj();
-      y.i("WelabMgr", "get icon url from opener , appid %s, url %s", new Object[] { parama.field_LabsAppId, str });
-    }
-    localObject = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject = parama.field_Icon;
-    }
-    return localObject;
-  }
-  
-  public static b chc()
-  {
-    return rEq;
-  }
-  
-  public final com.tencent.mm.plugin.welab.c.a.a Uf(String paramString)
-  {
-    com.tencent.mm.plugin.welab.c.a locala = this.rEr;
-    com.tencent.mm.plugin.welab.c.a.a locala1 = new com.tencent.mm.plugin.welab.c.a.a();
-    locala1.field_LabsAppId = paramString;
-    locala.b(locala1, new String[0]);
-    return locala1;
-  }
-  
-  public final List<com.tencent.mm.plugin.welab.c.a.a> chd()
-  {
-    List localList = this.rEr.chl();
-    Object localObject = localList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      com.tencent.mm.plugin.welab.c.a.a locala = (com.tencent.mm.plugin.welab.c.a.a)((Iterator)localObject).next();
-      if ((!locala.isRunning()) || ((locala.field_Switch != 2) && (locala.field_Switch != 1)) || ("labs1de6f3".equals(locala.field_LabsAppId))) {
-        ((Iterator)localObject).remove();
+      if (parama.field_status != 1) {
+        break label124;
       }
+      a.dhl().vuT.delete(parama, new String[] { "expId" });
     }
-    if ("online lab " + localList != null) {}
-    for (localObject = localList.toString();; localObject = "")
+    for (;;)
     {
-      y.i("WelabMgr", (String)localObject);
-      return localList;
+      d.t(parama.field_LabsAppId, 6, false);
+      AppMethodBeat.o(80536);
+      return;
+      label124:
+      a.dhl().vuT.c(parama);
+      com.tencent.mm.plugin.welab.e.b.dhC().f(parama);
+      parama.dhw();
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(parama);
+      a.dhl();
+      a.ej(localArrayList);
     }
   }
 }

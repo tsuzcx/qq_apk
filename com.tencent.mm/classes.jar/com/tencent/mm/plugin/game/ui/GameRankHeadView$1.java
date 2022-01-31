@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.plugin.game.model.k.a;
-import com.tencent.mm.plugin.game.model.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.j.a;
+import com.tencent.mm.plugin.game.model.k;
 
 final class GameRankHeadView$1
-  implements k.a
+  implements j.a
 {
   GameRankHeadView$1(GameRankHeadView paramGameRankHeadView) {}
   
   public final void f(int paramInt, String paramString, boolean paramBoolean)
   {
-    if (GameRankHeadView.a(this.ley) != null)
+    AppMethodBeat.i(112144);
+    if (GameRankHeadView.a(this.nCt) != null)
     {
-      GameRankHeadView.b(this.ley).dz(this.ley.getContext());
-      GameRankHeadView.b(this.ley).aGu();
+      GameRankHeadView.b(this.nCt).em(this.nCt.getContext());
+      GameRankHeadView.b(this.nCt).bjZ();
       if (paramBoolean) {
-        GameRankHeadView.c(this.ley);
+        GameRankHeadView.c(this.nCt);
       }
     }
+    AppMethodBeat.o(112144);
   }
 }
 

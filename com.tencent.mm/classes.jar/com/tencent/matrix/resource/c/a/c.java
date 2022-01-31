@@ -5,30 +5,30 @@ import java.util.Map;
 
 public enum c
 {
-  private static Map<Integer, c> bpM;
+  private static Map<Integer, c> bPN;
   private int mId;
   private int mSize;
   
   static
   {
     int i = 0;
-    bpD = new c("OBJECT", 0, 2, 0);
-    bpE = new c("BOOLEAN", 1, 4, 1);
-    bpF = new c("CHAR", 2, 5, 2);
-    bpG = new c("FLOAT", 3, 6, 4);
-    bpH = new c("DOUBLE", 4, 7, 8);
-    bpI = new c("BYTE", 5, 8, 1);
-    bpJ = new c("SHORT", 6, 9, 2);
-    bpK = new c("INT", 7, 10, 4);
-    bpL = new c("LONG", 8, 11, 8);
-    bpN = new c[] { bpD, bpE, bpF, bpG, bpH, bpI, bpJ, bpK, bpL };
-    bpM = new HashMap();
+    bPE = new c("OBJECT", 0, 2, 0);
+    bPF = new c("BOOLEAN", 1, 4, 1);
+    bPG = new c("CHAR", 2, 5, 2);
+    bPH = new c("FLOAT", 3, 6, 4);
+    bPI = new c("DOUBLE", 4, 7, 8);
+    bPJ = new c("BYTE", 5, 8, 1);
+    bPK = new c("SHORT", 6, 9, 2);
+    bPL = new c("INT", 7, 10, 4);
+    bPM = new c("LONG", 8, 11, 8);
+    bPO = new c[] { bPE, bPF, bPG, bPH, bPI, bPJ, bPK, bPL, bPM };
+    bPN = new HashMap();
     c[] arrayOfc = values();
     int j = arrayOfc.length;
     while (i < j)
     {
       c localc = arrayOfc[i];
-      bpM.put(Integer.valueOf(localc.mId), localc);
+      bPN.put(Integer.valueOf(localc.mId), localc);
       i += 1;
     }
   }
@@ -39,9 +39,9 @@ public enum c
     this.mSize = paramInt2;
   }
   
-  public static c ef(int paramInt)
+  public static c fP(int paramInt)
   {
-    return (c)bpM.get(Integer.valueOf(paramInt));
+    return (c)bPN.get(Integer.valueOf(paramInt));
   }
   
   public final int getSize(int paramInt)

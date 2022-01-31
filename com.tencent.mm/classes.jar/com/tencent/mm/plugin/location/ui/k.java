@@ -5,270 +5,331 @@ import android.content.Intent;
 import android.os.Looper;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import com.tencent.mm.bf.c;
-import com.tencent.mm.bf.d;
-import com.tencent.mm.bf.g;
-import com.tencent.mm.h.a.ru;
-import com.tencent.mm.model.am.a;
-import com.tencent.mm.model.am.b;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.bg.c;
+import com.tencent.mm.g.a.tl;
+import com.tencent.mm.model.ao.a;
+import com.tencent.mm.model.ao.b;
+import com.tencent.mm.model.n;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.location.model.l;
 import com.tencent.mm.plugin.location.model.o;
-import com.tencent.mm.plugin.map.a.e;
-import com.tencent.mm.plugin.map.a.h;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ay.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class k
-  implements com.tencent.mm.ah.f, d
+  implements f, com.tencent.mm.bg.d
 {
   private Activity activity;
-  private List<String> bSN = new LinkedList();
-  Button lGB;
-  public VolumeMeter lGC;
-  RelativeLayout lGD;
-  private boolean lGE = true;
-  private String lGF;
-  String lGG;
-  private String lGH;
-  boolean lGI = false;
-  int lGJ = 0;
-  private long lGK = 500L;
-  long lGL = 0L;
-  am lGM = new am(new k.1(this), false);
-  am lGN = new am(new k.2(this), false);
-  private am lGO = new am(new k.3(this), false);
-  public c lGP;
-  public k.a lGQ;
-  final am lGR = new am(new k.5(this), true);
-  private boolean lGS = true;
+  private List<String> cAs;
+  Button odO;
+  public VolumeMeter odP;
+  RelativeLayout odQ;
+  private boolean odR;
+  private String odS;
+  String odT;
+  private String odU;
+  boolean odV;
+  int odW;
+  private long odX;
+  long odY;
+  ap odZ;
+  ap oea;
+  private ap oeb;
+  public c oec;
+  public k.a oed;
+  final ap oee;
+  private boolean oef;
   
   public k(Activity paramActivity, Button paramButton)
   {
+    AppMethodBeat.i(113538);
+    this.odR = true;
+    this.cAs = new LinkedList();
+    this.odV = false;
+    this.odW = 0;
+    this.odX = 500L;
+    this.odY = 0L;
+    this.odZ = new ap(new k.1(this), false);
+    this.oea = new ap(new k.2(this), false);
+    this.oeb = new ap(new k.3(this), false);
+    this.oee = new ap(new k.5(this), true);
+    this.oef = true;
     this.activity = paramActivity;
-    this.lGB = paramButton;
-    this.lGD = ((RelativeLayout)this.activity.findViewById(a.e.volume_layout));
-    this.lGD.setVisibility(8);
-    this.lGC = ((VolumeMeter)this.lGD.findViewById(a.e.volume_meter));
-    this.lGC.setArchView(this.lGB);
-    paramActivity = this.lGC;
-    if (paramActivity.lHz == null) {
-      e.c(new VolumeMeter.1(paramActivity), "VolumeMeter_handler", 1).start();
+    this.odO = paramButton;
+    this.odQ = ((RelativeLayout)this.activity.findViewById(2131824810));
+    this.odQ.setVisibility(8);
+    this.odP = ((VolumeMeter)this.odQ.findViewById(2131824811));
+    this.odP.setArchView(this.odO);
+    paramActivity = this.odP;
+    if (paramActivity.oeM == null) {
+      com.tencent.mm.sdk.g.d.a(new VolumeMeter.1(paramActivity), "VolumeMeter_handler", 1).start();
     }
-    this.lGP = g.eEW;
-    if (this.lGP == null) {
-      y.e("MicroMsg.TalkMgr", "cannot get talkroom server");
+    this.oec = com.tencent.mm.bg.g.fUN;
+    if (this.oec == null) {
+      ab.e("MicroMsg.TalkMgr", "cannot get talkroom server");
     }
+    AppMethodBeat.o(113538);
   }
   
-  public static void beA()
+  public static void bLT()
   {
-    ru localru = new ru();
-    localru.cbq.cbt = true;
-    a.udP.m(localru);
-    com.tencent.mm.compatible.b.f.yi().setMode(0);
+    AppMethodBeat.i(113542);
+    tl localtl = new tl();
+    localtl.cJT.cJW = true;
+    a.ymk.l(localtl);
+    com.tencent.mm.compatible.b.g.KC().setMode(0);
+    AppMethodBeat.o(113542);
   }
   
-  public final void RM()
+  public final void aX(String paramString1, String paramString2)
   {
-    this.lGE = false;
-    this.lGB.setEnabled(true);
-    bez();
-  }
-  
-  public final void RN()
-  {
-    if (this.lGJ != 1) {
-      return;
-    }
-    this.lGJ = 5;
-    if (bk.cp(this.lGL) < this.lGK)
+    AppMethodBeat.i(113548);
+    ab.i("MicroMsg.TalkMgr", "add %s,  del %s", new Object[] { paramString1, paramString2 });
+    if (this.odR)
     {
-      y.i("MicroMsg.TalkMgr", "onSeizeMicSuccess waiting to execute");
-      am localam = this.lGM;
-      long l = this.lGK - bk.cp(this.lGL);
-      localam.S(l, l);
+      AppMethodBeat.o(113548);
       return;
     }
-    bey();
+    AppMethodBeat.o(113548);
   }
   
-  public final void RO() {}
-  
-  public final void RP()
+  public final void akV()
   {
-    bez();
+    AppMethodBeat.i(113543);
+    this.odR = false;
+    this.odO.setEnabled(true);
+    display();
+    AppMethodBeat.o(113543);
   }
   
-  public final void RQ()
+  public final void akW()
   {
-    bez();
+    AppMethodBeat.i(113545);
+    if (this.odW != 1)
+    {
+      AppMethodBeat.o(113545);
+      return;
+    }
+    this.odW = 5;
+    if (bo.av(this.odY) < this.odX)
+    {
+      ab.i("MicroMsg.TalkMgr", "onSeizeMicSuccess waiting to execute");
+      ap localap = this.odZ;
+      long l = this.odX - bo.av(this.odY);
+      localap.ag(l, l);
+      AppMethodBeat.o(113545);
+      return;
+    }
+    bLS();
+    AppMethodBeat.o(113545);
   }
   
-  public final void RR() {}
+  public final void akX() {}
   
-  public final void aE(String paramString1, String paramString2)
+  public final void akY()
   {
-    y.i("MicroMsg.TalkMgr", "add %s,  del %s", new Object[] { paramString1, paramString2 });
-    if (this.lGE) {}
+    AppMethodBeat.i(113549);
+    display();
+    AppMethodBeat.o(113549);
   }
   
-  public final void bex()
+  public final void akZ()
   {
-    this.lGH = this.activity.getIntent().getStringExtra("map_talker_name");
-    this.lGP.a(this);
-    y.d("MicroMsg.TalkMgr", "talkRoomName %s ", new Object[] { this.lGH });
-    String str = this.lGH;
-    this.lGF = str;
+    AppMethodBeat.i(113550);
+    display();
+    AppMethodBeat.o(113550);
+  }
+  
+  public final void ala() {}
+  
+  public final void bLR()
+  {
+    AppMethodBeat.i(113539);
+    this.odU = this.activity.getIntent().getStringExtra("map_talker_name");
+    this.oec.a(this);
+    ab.d("MicroMsg.TalkMgr", "talkRoomName %s ", new Object[] { this.odU });
+    String str = this.odU;
+    this.odS = str;
     List localList;
-    if (!bk.bl(this.lGF))
+    if (!bo.isNullOrNil(this.odS))
     {
-      if (!s.fn(str)) {
-        break label141;
+      if (!t.lA(str)) {
+        break label153;
       }
-      localList = com.tencent.mm.model.m.gK(str);
+      localList = n.nt(str);
       if (localList != null) {
-        break label133;
+        break label145;
       }
-      am.a.dVy.V(str, "");
+      ao.a.flI.am(str, "");
     }
     for (;;)
     {
-      new ah(Looper.getMainLooper()).post(new k.6(this, str));
-      this.lGB.setOnTouchListener(new k.7(this));
+      new ak(Looper.getMainLooper()).post(new k.6(this, str));
+      this.odO.setOnTouchListener(new k.7(this));
+      AppMethodBeat.o(113539);
       return;
-      label133:
-      this.bSN = localList;
+      label145:
+      this.cAs = localList;
       continue;
-      label141:
-      this.bSN.clear();
-      this.bSN.add(str);
-      this.bSN.add(q.Gj());
+      label153:
+      this.cAs.clear();
+      this.cAs.add(str);
+      this.cAs.add(r.Zn());
     }
   }
   
-  final void bey()
+  final void bLS()
   {
-    if (this.lGJ != 5) {
+    AppMethodBeat.i(113540);
+    if (this.odW != 5)
+    {
+      AppMethodBeat.o(113540);
       return;
     }
-    this.lGM.stopTimer();
-    bez();
-    au.b(ae.getContext(), a.h.talkroom_begin, new au.a()
+    this.odZ.stopTimer();
+    display();
+    ay.a(ah.getContext(), 2131304253, new ay.a()
     {
-      public final void ug()
+      public final void Es()
       {
-        k.this.lGN.stopTimer();
+        AppMethodBeat.i(113533);
+        k.this.oea.stopTimer();
         k.a(k.this);
+        AppMethodBeat.o(113533);
       }
     });
-    this.lGN.S(1000L, 1000L);
+    this.oea.ag(1000L, 1000L);
+    AppMethodBeat.o(113540);
   }
   
-  final void bez()
+  final void display()
   {
-    if (this.lGE) {}
-    do
+    AppMethodBeat.i(113541);
+    if (this.odR)
     {
-      do
+      AppMethodBeat.o(113541);
+      return;
+    }
+    if (com.tencent.mm.bg.g.fUN.akU())
+    {
+      ab.d("MicroMsg.TalkMgr", "talkRoomServer pausing");
+      if (this.oed != null)
       {
-        do
+        this.oed.Si(null);
+        this.oed.bLP();
+      }
+    }
+    switch (this.odW)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(113541);
+      return;
+      ab.d("MicroMsg.TalkMgr", "seize, state_idle, curUsername = %s", new Object[] { this.odT });
+      if (this.oed != null)
+      {
+        if (!bo.isNullOrNil(this.odT))
         {
-          do
-          {
-            return;
-            if (g.eEW.RL())
-            {
-              y.d("MicroMsg.TalkMgr", "talkRoomServer pausing");
-              if (this.lGQ != null)
-              {
-                this.lGQ.GF(null);
-                this.lGQ.bev();
-              }
-            }
-            switch (this.lGJ)
-            {
-            default: 
-              return;
-            case 0: 
-              y.d("MicroMsg.TalkMgr", "seize, state_idle, curUsername = %s", new Object[] { this.lGG });
-            }
-          } while (this.lGQ == null);
-          if (!bk.bl(this.lGG))
-          {
-            this.lGQ.GF(this.lGG);
-            return;
-          }
-          this.lGQ.GF(null);
+          this.oed.Si(this.odT);
+          AppMethodBeat.o(113541);
           return;
-          y.d("MicroMsg.TalkMgr", "seize, state seizing");
-        } while (this.lGQ == null);
-        this.lGQ.bew();
+        }
+        this.oed.Si(null);
+        AppMethodBeat.o(113541);
         return;
-        y.d("MicroMsg.TalkMgr", "seize, state success or prepare");
-      } while (this.lGQ == null);
-      this.lGQ.beu();
-      return;
-      y.d("MicroMsg.TalkMgr", "seize error, curUsername = %s", new Object[] { this.lGG });
-    } while ((this.lGQ == null) || (bk.bl(this.lGG)));
-    this.lGQ.GG(this.lGG);
-    return;
-    y.d("MicroMsg.TalkMgr", "seize time out");
+        ab.d("MicroMsg.TalkMgr", "seize, state seizing");
+        if (this.oed != null)
+        {
+          this.oed.bLQ();
+          AppMethodBeat.o(113541);
+          return;
+          ab.d("MicroMsg.TalkMgr", "seize, state success or prepare");
+          if (this.oed != null)
+          {
+            this.oed.bLO();
+            AppMethodBeat.o(113541);
+            return;
+            ab.d("MicroMsg.TalkMgr", "seize error, curUsername = %s", new Object[] { this.odT });
+            if ((this.oed != null) && (!bo.isNullOrNil(this.odT)))
+            {
+              this.oed.Sj(this.odT);
+              AppMethodBeat.o(113541);
+              return;
+              ab.d("MicroMsg.TalkMgr", "seize time out");
+            }
+          }
+        }
+      }
+    }
   }
   
-  public final void e(int paramInt1, int paramInt2, String paramString) {}
+  public final void i(int paramInt1, int paramInt2, String paramString) {}
   
-  public final void i(String paramString, int paramInt1, int paramInt2)
+  public final void mh(int paramInt)
   {
-    y.f("MicroMsg.TalkMgr", "onInitFailed %s", new Object[] { paramString });
-    l.bdX().sY(3);
-    this.activity.finish();
-  }
-  
-  public final void jp(int paramInt)
-  {
-    y.i("MicroMsg.TalkMgr", "onSeizeMicFailed");
+    AppMethodBeat.i(113546);
+    ab.i("MicroMsg.TalkMgr", "onSeizeMicFailed");
     if (paramInt == 340) {
-      if (this.lGJ != 3) {
+      if (this.odW != 3)
+      {
+        AppMethodBeat.o(113546);
         return;
       }
     }
-    for (this.lGJ = 4;; this.lGJ = 2)
+    for (this.odW = 4;; this.odW = 2)
     {
-      bez();
-      au.a(ae.getContext(), a.h.talkroom_sasasa, null);
+      display();
+      ay.a(ah.getContext(), null);
+      AppMethodBeat.o(113546);
       return;
-      if (this.lGJ != 1) {
-        break;
+      if (this.odW != 1)
+      {
+        AppMethodBeat.o(113546);
+        return;
       }
     }
   }
   
-  public final void ny(String paramString)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm) {}
+  
+  public final void t(String paramString, int paramInt1, int paramInt2)
   {
-    y.d("MicroMsg.TalkMgr", "onCurMember change %s", new Object[] { paramString });
-    this.lGG = paramString;
-    bez();
-    if (!bk.bl(paramString))
-    {
-      au.G(ae.getContext(), a.h.talkroom_othersbegin);
-      this.lGR.S(100L, 100L);
-      return;
-    }
-    this.lGR.stopTimer();
+    AppMethodBeat.i(113544);
+    ab.f("MicroMsg.TalkMgr", "onInitFailed %s", new Object[] { paramString });
+    l.bLr().yb(3);
+    this.activity.finish();
+    AppMethodBeat.o(113544);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm) {}
+  public final void uM(String paramString)
+  {
+    AppMethodBeat.i(113547);
+    ab.d("MicroMsg.TalkMgr", "onCurMember change %s", new Object[] { paramString });
+    this.odT = paramString;
+    display();
+    if (!bo.isNullOrNil(paramString))
+    {
+      ay.ax(ah.getContext(), 2131304256);
+      this.oee.ag(100L, 100L);
+      AppMethodBeat.o(113547);
+      return;
+    }
+    this.oee.stopTimer();
+    AppMethodBeat.o(113547);
+  }
 }
 
 

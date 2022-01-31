@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.facedetect.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.d.b;
 import com.tencent.mm.plugin.mmsight.model.a.j;
 
@@ -8,14 +9,16 @@ final class a$9
 {
   a$9(a parama) {}
   
-  public final com.tencent.mm.memory.a<byte[]> aOg()
+  public final void aU(byte[] paramArrayOfByte)
   {
-    return j.mji;
+    AppMethodBeat.i(554);
+    this.mnI.aV(paramArrayOfByte);
+    AppMethodBeat.o(554);
   }
   
-  public final void aw(byte[] paramArrayOfByte)
+  public final com.tencent.mm.memory.a<byte[]> buj()
   {
-    this.jTm.ax(paramArrayOfByte);
+    return j.oJp;
   }
 }
 

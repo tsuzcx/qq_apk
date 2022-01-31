@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.readerapp.ui;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMPullDownView.c;
 
 final class ReaderAppUI$4
@@ -10,14 +11,22 @@ final class ReaderAppUI$4
 {
   ReaderAppUI$4(ReaderAppUI paramReaderAppUI) {}
   
-  public final boolean aEW()
+  public final boolean bim()
   {
-    View localView = ReaderAppUI.e(this.noS).getChildAt(ReaderAppUI.e(this.noS).getChildCount() - 1);
-    if (localView == null) {}
-    while ((localView.getBottom() > ReaderAppUI.e(this.noS).getHeight()) || (ReaderAppUI.e(this.noS).getLastVisiblePosition() != ReaderAppUI.e(this.noS).getAdapter().getCount() - 1)) {
+    AppMethodBeat.i(76816);
+    View localView = ReaderAppUI.e(this.pUg).getChildAt(ReaderAppUI.e(this.pUg).getChildCount() - 1);
+    if (localView == null)
+    {
+      AppMethodBeat.o(76816);
       return false;
     }
-    return true;
+    if ((localView.getBottom() <= ReaderAppUI.e(this.pUg).getHeight()) && (ReaderAppUI.e(this.pUg).getLastVisiblePosition() == ReaderAppUI.e(this.pUg).getAdapter().getCount() - 1))
+    {
+      AppMethodBeat.o(76816);
+      return true;
+    }
+    AppMethodBeat.o(76816);
+    return false;
   }
 }
 

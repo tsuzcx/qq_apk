@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.fav.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.ac;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.r;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$a$1
   implements Runnable
@@ -14,32 +15,35 @@ final class b$a$1
   
   public final void run()
   {
-    if (this.kaU)
+    AppMethodBeat.i(73917);
+    if (this.mvq)
     {
-      y.i("MicroMsg.Fav.FavAddService", "has data, check cdn now, type %d", new Object[] { Integer.valueOf(this.kaV.jZN.field_type) });
-      this.kaV.jZN.field_itemStatus = 1;
-      this.kaV.jZN.field_xml = com.tencent.mm.plugin.fav.a.g.s(this.kaV.jZN);
-      if (!b.k(this.kaV.jZN)) {
-        ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().y(this.kaV.jZN);
+      ab.i("MicroMsg.Fav.FavAddService", "has data, check cdn now, type %d", new Object[] { Integer.valueOf(this.mvr.muk.field_type) });
+      this.mvr.muk.field_itemStatus = 1;
+      this.mvr.muk.field_xml = com.tencent.mm.plugin.fav.a.g.s(this.mvr.muk);
+      if (!b.k(this.mvr.muk)) {
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().y(this.mvr.muk);
       }
       for (;;)
       {
-        ((ae)com.tencent.mm.kernel.g.t(ae.class)).getCheckCdnService().run();
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getCheckCdnService().run();
+        AppMethodBeat.o(73917);
         return;
-        ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().a(this.kaV.jZN, new String[0]);
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().a(this.mvr.muk, new String[0]);
       }
     }
-    y.i("MicroMsg.Fav.FavAddService", "no data, send item now, type %d", new Object[] { Integer.valueOf(this.kaV.jZN.field_type) });
-    this.kaV.jZN.field_itemStatus = 9;
-    this.kaV.jZN.field_xml = com.tencent.mm.plugin.fav.a.g.s(this.kaV.jZN);
-    if (!b.k(this.kaV.jZN)) {
-      ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().y(this.kaV.jZN);
+    ab.i("MicroMsg.Fav.FavAddService", "no data, send item now, type %d", new Object[] { Integer.valueOf(this.mvr.muk.field_type) });
+    this.mvr.muk.field_itemStatus = 9;
+    this.mvr.muk.field_xml = com.tencent.mm.plugin.fav.a.g.s(this.mvr.muk);
+    if (!b.k(this.mvr.muk)) {
+      ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().y(this.mvr.muk);
     }
     for (;;)
     {
-      ((ae)com.tencent.mm.kernel.g.t(ae.class)).getSendService().run();
+      ((ae)com.tencent.mm.kernel.g.G(ae.class)).getSendService().run();
+      AppMethodBeat.o(73917);
       return;
-      ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().a(this.kaV.jZN, new String[0]);
+      ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().a(this.mvr.muk, new String[0]);
     }
   }
 }

@@ -1,25 +1,22 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.h.a.ml;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.modelsimple.t;
 
 final class h$10
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  h$10(h paramh) {}
+  h$10(h paramh, t paramt) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    final ml localml = new ml();
-    a.udP.m(localml);
-    ai.d(new Runnable()
-    {
-      public final void run()
-      {
-        h.a(h.10.this.uJi, localml);
-      }
-    });
+    AppMethodBeat.i(29321);
+    aw.Rc().a(this.yXw);
+    AppMethodBeat.o(29321);
   }
 }
 

@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.ext;
 
-import com.tencent.mm.h.a.fn;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fq;
 import com.tencent.mm.sdk.b.c;
 
 public final class b$b
-  extends c<fn>
+  extends c<fq>
 {
   public b$b()
   {
     super(0);
-    this.udX = fn.class.getName().hashCode();
+    AppMethodBeat.i(20272);
+    this.__eventId = fq.class.getName().hashCode();
+    AppMethodBeat.o(20272);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.b.b
  * JD-Core Version:    0.7.0.1
  */

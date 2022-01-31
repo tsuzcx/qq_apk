@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.exdevice.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.j.b;
 import com.tencent.mm.plugin.exdevice.service.t.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,13 +17,14 @@ final class e$41
   
   public final void b(long paramLong, int paramInt1, int paramInt2, String paramString)
   {
+    AppMethodBeat.i(19200);
     Object localObject1 = paramString;
     if (paramString == null) {
       localObject1 = "null";
     }
-    y.d("MicroMsg.exdevice.ExdeviceEventManager", "onSendEnd. mac=%d, errType=%d, errCode=%d, errMsg=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), localObject1 });
-    localObject1 = this.juI;
-    paramString = b.ee(paramLong);
+    ab.d("MicroMsg.exdevice.ExdeviceEventManager", "onSendEnd. mac=%d, errType=%d, errCode=%d, errMsg=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), localObject1 });
+    localObject1 = this.lEh;
+    paramString = b.jw(paramLong);
     boolean bool;
     if (paramInt2 == 0) {
       bool = true;
@@ -30,13 +32,13 @@ final class e$41
     LinkedList localLinkedList;
     for (;;)
     {
-      y.d("MicroMsg.exdevice.ExdeviceEventManager", "notifySimpleBTOnSend, mac : %s, isSucc : %s", new Object[] { paramString, Boolean.valueOf(bool) });
+      ab.d("MicroMsg.exdevice.ExdeviceEventManager", "notifySimpleBTOnSend, mac : %s, isSucc : %s", new Object[] { paramString, Boolean.valueOf(bool) });
       if (bool) {
-        return;
+        break label250;
       }
-      synchronized (((e)localObject1).jtP)
+      synchronized (((e)localObject1).lDo)
       {
-        localLinkedList = new LinkedList(((e)localObject1).jtP);
+        localLinkedList = new LinkedList(((e)localObject1).lDo);
         ??? = localLinkedList.iterator();
         while (((Iterator)???).hasNext())
         {
@@ -47,10 +49,12 @@ final class e$41
       }
     }
     localLinkedList.clear();
-    localObject1 = ((e)localObject1).jtQ.values().iterator();
+    localObject1 = ((e)localObject1).lDp.values().iterator();
     while (((Iterator)localObject1).hasNext()) {
       ((e.b)((Iterator)localObject1).next()).b(paramString, null, false);
     }
+    label250:
+    AppMethodBeat.o(19200);
   }
 }
 

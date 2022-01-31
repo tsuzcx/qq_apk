@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.base;
 
 import android.database.DataSetObserver;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class HorizontalListView$1
   extends DataSetObserver
@@ -9,20 +10,24 @@ final class HorizontalListView$1
   
   public final void onChanged()
   {
-    synchronized (this.uTr)
+    AppMethodBeat.i(106309);
+    synchronized (this.zhR)
     {
-      HorizontalListView.a(this.uTr);
-      this.uTr.invalidate();
-      this.uTr.requestLayout();
+      HorizontalListView.a(this.zhR);
+      this.zhR.invalidate();
+      this.zhR.requestLayout();
+      AppMethodBeat.o(106309);
       return;
     }
   }
   
   public final void onInvalidated()
   {
-    HorizontalListView.b(this.uTr);
-    this.uTr.invalidate();
-    this.uTr.requestLayout();
+    AppMethodBeat.i(106310);
+    HorizontalListView.b(this.zhR);
+    this.zhR.invalidate();
+    this.zhR.requestLayout();
+    AppMethodBeat.o(106310);
   }
 }
 

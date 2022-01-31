@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.wallet_core.c.n.a;
 
 final class WalletVerifyCodeUI$11
-  implements MenuItem.OnMenuItemClickListener
+  implements n.a
 {
-  WalletVerifyCodeUI$11(WalletVerifyCodeUI paramWalletVerifyCodeUI, String paramString) {}
+  WalletVerifyCodeUI$11(WalletVerifyCodeUI paramWalletVerifyCodeUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void cWd()
   {
-    e.l(this.qHg.mController.uMN, this.qHk, false);
-    return true;
+    AppMethodBeat.i(47700);
+    this.uul.cWc();
+    AppMethodBeat.o(47700);
   }
 }
 

@@ -1,61 +1,135 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.h.c.dg;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.k;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.io.Closeable;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 
 public final class u
-  extends dg
+  implements Closeable
 {
-  static final String[] fCT;
-  static final c.a fCU;
+  private final WxaPkgWrappingInfo gVa;
+  private final Map<String, ao> gVb;
   
-  static
+  u(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
   {
-    int i = 0;
-    fCT = new String[] { "key", "version" };
-    Object localObject1 = new c.a();
-    ((c.a)localObject1).ujL = new Field[4];
-    ((c.a)localObject1).columns = new String[5];
-    Object localObject2 = new StringBuilder();
-    ((c.a)localObject1).columns[0] = "key";
-    ((c.a)localObject1).ujN.put("key", "TEXT");
-    ((StringBuilder)localObject2).append(" key TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[1] = "version";
-    ((c.a)localObject1).ujN.put("version", "INTEGER");
-    ((StringBuilder)localObject2).append(" version INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[2] = "scene";
-    ((c.a)localObject1).ujN.put("scene", "INTEGER");
-    ((StringBuilder)localObject2).append(" scene INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[3] = "updateTime";
-    ((c.a)localObject1).ujN.put("updateTime", "LONG");
-    ((StringBuilder)localObject2).append(" updateTime LONG");
-    ((c.a)localObject1).columns[4] = "rowid";
-    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    fCU = (c.a)localObject1;
-    localObject1 = " PRIMARY KEY (";
-    localObject2 = fCT;
-    int j = localObject2.length;
-    while (i < j)
-    {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
-      i += 1;
-    }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = fCU;
-    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    AppMethodBeat.i(86796);
+    this.gVb = new HashMap();
+    this.gVa = paramWxaPkgWrappingInfo;
+    this.gVa.awj();
+    AppMethodBeat.o(86796);
   }
   
-  protected final c.a rM()
+  private ao yr(String paramString)
   {
-    return fCU;
+    AppMethodBeat.i(86799);
+    for (;;)
+    {
+      synchronized (this.gVb)
+      {
+        ao localao = (ao)this.gVb.get(paramString);
+        if (localao != null)
+        {
+          paramString = localao;
+          if (paramString != null) {
+            paramString.avO();
+          }
+          AppMethodBeat.o(86799);
+          return paramString;
+        }
+        if ("__APP__".equals(paramString))
+        {
+          localObject = this.gVa.gUy;
+          label70:
+          if (!bo.isNullOrNil((String)localObject)) {
+            break label148;
+          }
+          paramString = localao;
+        }
+      }
+      Object localObject = this.gVa.gXi.iterator();
+      for (;;)
+      {
+        if (((Iterator)localObject).hasNext())
+        {
+          ModulePkgInfo localModulePkgInfo = (ModulePkgInfo)((Iterator)localObject).next();
+          if (paramString.equals(localModulePkgInfo.name))
+          {
+            localObject = localModulePkgInfo.gUy;
+            break label70;
+            label148:
+            localObject = new ao((String)localObject);
+            this.gVb.put(paramString, localObject);
+            paramString = (String)localObject;
+            break;
+          }
+        }
+      }
+      localObject = null;
+    }
+  }
+  
+  final void avC()
+  {
+    AppMethodBeat.i(86798);
+    synchronized (this.gVb)
+    {
+      yr("__APP__");
+      Iterator localIterator = this.gVa.gXi.iterator();
+      if (localIterator.hasNext()) {
+        yr(((ModulePkgInfo)localIterator.next()).name);
+      }
+    }
+    AppMethodBeat.o(86798);
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(86800);
+    synchronized (this.gVb)
+    {
+      Collection localCollection = this.gVb.values();
+      ??? = localCollection.iterator();
+      if (((Iterator)???).hasNext()) {
+        ((ao)((Iterator)???).next()).close();
+      }
+    }
+    AppMethodBeat.o(86800);
+  }
+  
+  final ao findAppropriateModuleInfo(String paramString)
+  {
+    AppMethodBeat.i(86797);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(86797);
+      return null;
+    }
+    paramString = k.zl(paramString);
+    Object localObject = this.gVa.gXi.iterator();
+    ModulePkgInfo localModulePkgInfo;
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break;
+      }
+      localModulePkgInfo = (ModulePkgInfo)((Iterator)localObject).next();
+    } while (!paramString.startsWith(localModulePkgInfo.name));
+    for (paramString = localModulePkgInfo.name;; paramString = null)
+    {
+      localObject = paramString;
+      if (bo.isNullOrNil(paramString)) {
+        localObject = "__APP__";
+      }
+      paramString = yr((String)localObject);
+      AppMethodBeat.o(86797);
+      return paramString;
+    }
   }
 }
 

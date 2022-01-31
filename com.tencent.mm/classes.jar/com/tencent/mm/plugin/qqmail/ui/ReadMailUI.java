@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Looper;
@@ -22,34 +24,29 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.qqmail.b.f;
-import com.tencent.mm.plugin.qqmail.b.g;
-import com.tencent.mm.plugin.qqmail.b.j;
-import com.tencent.mm.plugin.qqmail.b.v;
 import com.tencent.mm.plugin.qqmail.b.v.a;
 import com.tencent.mm.plugin.qqmail.b.v.c;
 import com.tencent.mm.plugin.qqmail.stub.ReadMailProxy;
 import com.tencent.mm.plugin.webview.ui.tools.widget.c;
 import com.tencent.mm.plugin.webview.ui.tools.widget.c.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.g.a;
-import com.tencent.mm.plugin.webview.ui.tools.widget.h;
 import com.tencent.mm.pluginsdk.model.app.p;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.mm.ui.tools.l;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.vfs.e;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.WebView.b;
-import com.tencent.xweb.n;
+import com.tencent.xweb.t;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,95 +55,125 @@ public class ReadMailUI
   extends MMActivity
   implements View.OnCreateContextMenuListener
 {
-  private static String njC = "var mail_css = document.createElement(\"style\");";
-  private static String njD = "";
-  private static String njE = "";
-  private static float njF;
-  private static int njG;
-  private long bIt = -1L;
-  private SharedPreferences dnD;
-  private d eMh = new d(this);
-  private ProgressBar fej;
-  private long ghp = -1L;
-  private ah handler;
-  private TextView igx;
-  private String nds;
-  private String ndx;
-  private String niZ;
-  private int njA = 0;
-  private int njB = 0;
-  private ReadMailProxy njH;
-  private String njI;
-  private int njJ;
-  private MMWebView nja;
-  private ImageView njb;
-  private TextView njc;
-  private MailAddrsViewControl njd;
-  private MailAddrsViewControl nje;
-  private MailAddrsViewControl njf;
-  private TextView njg;
-  private View njh;
-  private LinearLayout nji;
-  private TextView njj;
-  private TextView njk;
-  private LinearLayout njl;
-  private MailAttachListLinearLayout njm;
-  private View njn;
-  private TextView njo;
-  private TextView njp;
-  private View njq;
-  private long njr = -1L;
-  private int njs;
-  private int njt;
-  private String nju;
-  private String njv;
-  private String njw;
-  private int njx = 0;
-  private String njy;
-  private am njz;
+  private static String pOP = "var mail_css = document.createElement(\"style\");";
+  private static String pOQ = "";
+  private static String pOR = "";
+  private static float pOS;
+  private static int pOT;
+  private long cpO;
+  private d evl;
+  private ProgressBar gvS;
+  private ak handler;
+  private long hyK;
+  private String pIJ;
+  private String pIO;
+  private View pOA;
+  private TextView pOB;
+  private TextView pOC;
+  private View pOD;
+  private long pOE;
+  private int pOF;
+  private int pOG;
+  private String pOH;
+  private String pOI;
+  private String pOJ;
+  private int pOK;
+  private String pOL;
+  private ap pOM;
+  private int pON;
+  private int pOO;
+  private ReadMailProxy pOU;
+  private String pOV;
+  private int pOW;
+  private String pOm;
+  private MMWebView pOn;
+  private ImageView pOo;
+  private TextView pOp;
+  private MailAddrsViewControl pOq;
+  private MailAddrsViewControl pOr;
+  private MailAddrsViewControl pOs;
+  private TextView pOt;
+  private View pOu;
+  private LinearLayout pOv;
+  private TextView pOw;
+  private TextView pOx;
+  private LinearLayout pOy;
+  private MailAttachListLinearLayout pOz;
+  private SharedPreferences sp;
+  private TextView timeTv;
+  
+  public ReadMailUI()
+  {
+    AppMethodBeat.i(68448);
+    this.cpO = -1L;
+    this.pOE = -1L;
+    this.hyK = -1L;
+    this.pOK = 0;
+    this.pON = 0;
+    this.pOO = 0;
+    this.evl = new d(this);
+    AppMethodBeat.o(68448);
+  }
+  
+  private void Cc(int paramInt)
+  {
+    AppMethodBeat.i(68463);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.pOB.getLayoutParams();
+    localLayoutParams.width = paramInt;
+    this.pOB.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(68463);
+  }
   
   private void a(v.c paramc)
   {
-    if ((this.nds == null) || (this.nds.length() == 0))
+    AppMethodBeat.i(68459);
+    if ((this.pIJ == null) || (this.pIJ.length() == 0))
     {
-      y.e("MicroMsg.ReadMailUI", "doReadMail invalid argument");
+      ab.e("MicroMsg.ReadMailUI", "doReadMail invalid argument");
+      AppMethodBeat.o(68459);
       return;
     }
-    this.njb.setVisibility(8);
-    this.fej.setVisibility(0);
+    this.pOo.setVisibility(8);
+    this.gvS.setVisibility(0);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("mailid", this.nds);
+    localHashMap.put("mailid", this.pIJ);
     localHashMap.put("texttype", "html");
-    if ((this.njr != -1L) && (this.njr != -2L)) {}
+    if ((this.pOE != -1L) && (this.pOE != -2L)) {}
     try
     {
-      new ReadMailProxy(this.eMh, new a(0)).REMOTE_CALL("cancel", new Object[] { Long.valueOf(this.njr) });
-      this.niZ = this.nds;
-      Bundle localBundle = new Bundle();
+      new ReadMailProxy(this.evl, new a(0)).REMOTE_CALL("cancel", new Object[] { Long.valueOf(this.pOE) });
+      this.pOm = this.pIJ;
+      localBundle = new Bundle();
       paramc.toBundle(localBundle);
-      try
-      {
-        this.njr = ((Long)new ReadMailProxy(this.eMh, new a(1)).REMOTE_CALL("get", new Object[] { "/cgi-bin/readmail", localHashMap, localBundle })).longValue();
-        return;
-      }
-      catch (Exception paramc)
-      {
-        y.w("MicroMsg.ReadMailUI", "doReadMail get fail, ex = %s", new Object[] { paramc.getMessage() });
-        return;
-      }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.w("MicroMsg.ReadMailUI", "cancel, ex = %s", new Object[] { localException.getMessage() });
+        try
+        {
+          Bundle localBundle;
+          this.pOE = ((Long)new ReadMailProxy(this.evl, new a(1)).REMOTE_CALL("get", new Object[] { "/cgi-bin/readmail", localHashMap, localBundle })).longValue();
+          AppMethodBeat.o(68459);
+          return;
+        }
+        catch (Exception paramc)
+        {
+          ab.w("MicroMsg.ReadMailUI", "doReadMail get fail, ex = %s", new Object[] { paramc.getMessage() });
+          AppMethodBeat.o(68459);
+        }
+        localException = localException;
+        ab.w("MicroMsg.ReadMailUI", "cancel, ex = %s", new Object[] { localException.getMessage() });
       }
     }
   }
   
-  private static String[] a(Map<String, String> paramMap, String paramString, int paramInt)
+  private static String[] b(Map<String, String> paramMap, String paramString, int paramInt)
   {
-    if (paramMap.get(paramString) == null) {
+    AppMethodBeat.i(68458);
+    if (paramMap.get(paramString) == null)
+    {
+      AppMethodBeat.o(68458);
       return null;
     }
     String[] arrayOfString = new String[paramInt];
@@ -163,76 +190,24 @@ public class ReadMailUI
         break;
       }
     }
+    AppMethodBeat.o(68458);
     return arrayOfString;
   }
   
-  private void bum()
+  private boolean ceA()
   {
-    switch (this.njB)
-    {
-    default: 
-      return;
-    case 0: 
-      this.njp.setText(b.j.readmail_promo_btn_nor);
-      return;
-    case 1: 
-      this.njp.setText(b.j.readmail_promo_btn_downloading);
-      return;
-    case 2: 
-      this.njp.setText(b.j.readmail_promo_btn_install);
-      return;
-    }
-    String str = "";
-    if (this.njJ > 99) {
-      str = "99+";
-    }
-    while (bk.bl(str))
-    {
-      this.njp.setText(b.j.readmail_promo_btn_open);
-      return;
-      if (this.njJ > 0) {
-        str = Integer.toString(this.njJ);
-      }
-    }
-    this.njp.setText(String.format(a.ac(this, b.j.readmail_promo_btn_open_with_unread), new Object[] { str }));
-  }
-  
-  private void bun()
-  {
-    if ((this.nds == null) || (this.nds.length() == 0))
-    {
-      y.e("MicroMsg.ReadMailUI", "doSetUnread invalid argument");
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("mailid", this.nds);
-    v.c localc = new v.c();
-    localc.nez = false;
-    Bundle localBundle = new Bundle();
-    localc.toBundle(localBundle);
+    AppMethodBeat.i(68461);
+    this.pOH = ((String)new ReadMailProxy(this.evl, null).REMOTE_CALL("getMailAppRedirectUrlAndroid", new Object[0]));
+    this.pOV = ((String)new ReadMailProxy(this.evl, null).REMOTE_CALL("getMailAppEnterUlAndroid", new Object[0]));
     try
     {
-      new ReadMailProxy(this.eMh, new a(2)).REMOTE_CALL("get", new Object[] { "/cgi-bin/setmailunread", localHashMap, localBundle });
-      return;
-    }
-    catch (Exception localException)
-    {
-      y.w("MicroMsg.ReadMailUI", "doSetUnread, ex = %s", new Object[] { localException.getMessage() });
-    }
-  }
-  
-  private boolean buo()
-  {
-    this.nju = ((String)new ReadMailProxy(this.eMh, null).REMOTE_CALL("getMailAppRedirectUrlAndroid", new Object[0]));
-    this.njI = ((String)new ReadMailProxy(this.eMh, null).REMOTE_CALL("getMailAppEnterUlAndroid", new Object[0]));
-    try
-    {
-      this.njJ = ((Integer)new ReadMailProxy(this.eMh, null).REMOTE_CALL("getUneradMailCountFromConfig", new Object[0])).intValue();
-      new ReadMailProxy(this.eMh, null).REMOTE_CALL("getUnreadMailCount", new Object[0]);
-      Integer localInteger = (Integer)new ReadMailProxy(this.eMh, null).REMOTE_CALL("showMailAppRecommend", new Object[0]);
+      this.pOW = ((Integer)new ReadMailProxy(this.evl, null).REMOTE_CALL("getUneradMailCountFromConfig", new Object[0])).intValue();
+      new ReadMailProxy(this.evl, null).REMOTE_CALL("getUnreadMailCount", new Object[0]);
+      Integer localInteger = (Integer)new ReadMailProxy(this.evl, null).REMOTE_CALL("showMailAppRecommend", new Object[0]);
       if (localInteger == null)
       {
-        y.e("MicroMsg.ReadMailUI", "Remote server Proxy not ready");
+        ab.e("MicroMsg.ReadMailUI", "Remote server Proxy not ready");
+        AppMethodBeat.o(68461);
         return true;
       }
     }
@@ -240,153 +215,230 @@ public class ReadMailUI
     {
       for (;;)
       {
-        this.njJ = -1;
-        y.printErrStackTrace("MicroMsg.ReadMailUI", localNullPointerException, "getUneradMailCountFromConfig got an NullPointerException", new Object[0]);
+        this.pOW = -1;
+        ab.printErrStackTrace("MicroMsg.ReadMailUI", localNullPointerException, "getUneradMailCountFromConfig got an NullPointerException", new Object[0]);
       }
-      this.njt = 1;
-      this.njs = localNullPointerException.intValue();
-      if (bk.bl(this.njI)) {
-        return true;
-      }
-      if (p.o(this, "com.tencent.androidqqmail"))
+      this.pOG = 1;
+      this.pOF = localNullPointerException.intValue();
+      if (bo.isNullOrNil(this.pOV))
       {
-        this.njB = 3;
-        bum();
+        AppMethodBeat.o(68461);
         return true;
       }
-      this.dnD = ae.getContext().getSharedPreferences("QQMAIL", 4);
-      if (this.dnD == null) {
-        return true;
-      }
-      this.ghp = this.dnD.getLong("qqmail_downloadid", -1L);
-      this.njx = ((Integer)new ReadMailProxy(this.eMh, null).REMOTE_CALL("getMailAppDownloadStatus", new Object[] { Long.valueOf(this.ghp) })).intValue();
-      this.njy = this.dnD.getString("qqmail_downloadpath", "");
-      if ((this.njx == 3) && (e.bK(this.njy)))
+      if (p.u(this, "com.tencent.androidqqmail"))
       {
-        this.njB = 2;
-        bum();
-        if (this.njz != null) {
-          this.njz.stopTimer();
+        this.pOO = 3;
+        cey();
+        AppMethodBeat.o(68461);
+        return true;
+      }
+      this.sp = ah.getContext().getSharedPreferences("QQMAIL", com.tencent.mm.compatible.util.h.Mp());
+      if (this.sp == null)
+      {
+        AppMethodBeat.o(68461);
+        return true;
+      }
+      this.hyK = this.sp.getLong("qqmail_downloadid", -1L);
+      this.pOK = ((Integer)new ReadMailProxy(this.evl, null).REMOTE_CALL("getMailAppDownloadStatus", new Object[] { Long.valueOf(this.hyK) })).intValue();
+      this.pOL = this.sp.getString("qqmail_downloadpath", "");
+      if ((this.pOK == 3) && (e.cN(this.pOL)))
+      {
+        this.pOO = 2;
+        cey();
+        if (this.pOM != null) {
+          this.pOM.stopTimer();
         }
+        AppMethodBeat.o(68461);
         return true;
       }
-      if (this.njs != 1)
+      if (this.pOF != 1)
       {
-        this.njn.setVisibility(8);
-        y.e("MicroMsg.ReadMailUI", "promote qq mail error:MailAppRecomend = %d", new Object[] { Integer.valueOf(this.njs) });
+        this.pOA.setVisibility(8);
+        ab.e("MicroMsg.ReadMailUI", "promote qq mail error:MailAppRecomend = %d", new Object[] { Integer.valueOf(this.pOF) });
+        AppMethodBeat.o(68461);
         return true;
       }
+      AppMethodBeat.o(68461);
     }
     return false;
   }
   
-  private void bup()
+  private void ceB()
   {
-    if (bk.bl(this.nju))
+    AppMethodBeat.i(68462);
+    if (bo.isNullOrNil(this.pOH))
     {
-      y.e("MicroMsg.ReadMailUI", "mQQMailRedirectUrl = null");
+      ab.e("MicroMsg.ReadMailUI", "mQQMailRedirectUrl = null");
+      AppMethodBeat.o(68462);
       return;
     }
-    wq(0);
-    y.i("MicroMsg.ReadMailUI", "status:%d", new Object[] { Integer.valueOf(this.njx) });
-    switch (this.njx)
+    Cc(0);
+    ab.i("MicroMsg.ReadMailUI", "status:%d", new Object[] { Integer.valueOf(this.pOK) });
+    switch (this.pOK)
     {
     default: 
     case 3: 
       for (;;)
       {
-        this.njB = 0;
-        wq(0);
-        bum();
-        return;
-        if (e.bK(this.njy)) {
-          break;
-        }
+        this.pOO = 0;
+        Cc(0);
+        cey();
+        do
+        {
+          AppMethodBeat.o(68462);
+          return;
+        } while (e.cN(this.pOL));
       }
     }
-    this.njB = 1;
-    buq();
-    bum();
+    this.pOO = 1;
+    ceC();
+    cey();
+    AppMethodBeat.o(68462);
   }
   
-  private void buq()
+  private void ceC()
   {
-    this.njz = new am(Looper.getMainLooper(), new ReadMailUI.4(this), true);
-    this.njz.S(500L, 500L);
+    AppMethodBeat.i(68464);
+    this.pOM = new ap(Looper.getMainLooper(), new ReadMailUI.4(this), true);
+    this.pOM.ag(500L, 500L);
+    AppMethodBeat.o(68464);
   }
   
-  private void dE(int paramInt1, int paramInt2)
+  private void cey()
   {
-    new ReadMailProxy(this.eMh, null).REMOTE_CALL("reportKvState", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(68449);
+    switch (this.pOO)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(68449);
+      return;
+      this.pOC.setText(2131302314);
+      AppMethodBeat.o(68449);
+      return;
+      this.pOC.setText(2131302312);
+      AppMethodBeat.o(68449);
+      return;
+      this.pOC.setText(2131302313);
+      AppMethodBeat.o(68449);
+      return;
+      String str = "";
+      if (this.pOW > 99) {
+        str = "99+";
+      }
+      while (bo.isNullOrNil(str))
+      {
+        this.pOC.setText(2131302315);
+        AppMethodBeat.o(68449);
+        return;
+        if (this.pOW > 0) {
+          str = Integer.toString(this.pOW);
+        }
+      }
+      this.pOC.setText(String.format(a.aq(this, 2131302316), new Object[] { str }));
+    }
   }
   
-  private void wq(int paramInt)
+  private void cez()
   {
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.njo.getLayoutParams();
-    localLayoutParams.width = paramInt;
-    this.njo.setLayoutParams(localLayoutParams);
+    AppMethodBeat.i(68460);
+    if ((this.pIJ == null) || (this.pIJ.length() == 0))
+    {
+      ab.e("MicroMsg.ReadMailUI", "doSetUnread invalid argument");
+      AppMethodBeat.o(68460);
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("mailid", this.pIJ);
+    v.c localc = new v.c();
+    localc.pJO = false;
+    Bundle localBundle = new Bundle();
+    localc.toBundle(localBundle);
+    try
+    {
+      new ReadMailProxy(this.evl, new a(2)).REMOTE_CALL("get", new Object[] { "/cgi-bin/setmailunread", localHashMap, localBundle });
+      AppMethodBeat.o(68460);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ab.w("MicroMsg.ReadMailUI", "doSetUnread, ex = %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(68460);
+    }
   }
   
-  protected final int getLayoutId()
+  private void fk(int paramInt1, int paramInt2)
   {
-    return b.g.readmail;
+    AppMethodBeat.i(68465);
+    new ReadMailProxy(this.evl, null).REMOTE_CALL("reportKvState", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(68465);
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
-    this.njd = ((MailAddrsViewControl)findViewById(b.f.qqmail_readmail_addr_sender_control));
-    this.njf = ((MailAddrsViewControl)findViewById(b.f.qqmail_readmail_addr_tolist_control));
-    this.nje = ((MailAddrsViewControl)findViewById(b.f.qqmail_readmail_addr_cclist_control));
-    this.njg = ((TextView)findViewById(b.f.readmail_detail_tv));
-    this.njh = findViewById(b.f.readmail_receiver_ll);
-    this.nji = ((LinearLayout)findViewById(b.f.readmail_cclist_ll));
-    this.njj = ((TextView)findViewById(b.f.readmail_subject_tv));
-    this.igx = ((TextView)findViewById(b.f.readmail_time_tv));
-    this.njk = ((TextView)findViewById(b.f.readmail_setunread_tv));
-    this.njl = ((LinearLayout)findViewById(b.f.readmail_attach_viewport_ll));
-    this.njm = ((MailAttachListLinearLayout)findViewById(b.f.readmail_attach_list_ll));
-    this.fej = ((ProgressBar)findViewById(b.f.readmail_loading_pb));
-    this.njb = ((ImageView)findViewById(b.f.readmail_refresh_iv));
-    this.njc = ((TextView)findViewById(b.f.readmail_tips));
-    this.nja = g.a.rCa.cO(this);
-    ((FrameLayout)findViewById(b.f.readmail_area)).addView(this.nja);
-    this.njq = findViewById(b.f.mail_title_bar);
-    this.njn = findViewById(b.f.mail_download_bar);
-    this.njp = ((TextView)findViewById(b.f.mail_download_title));
-    this.njo = ((TextView)findViewById(b.f.mail_download_progress));
-    this.njn.setOnClickListener(new ReadMailUI.7(this));
-    this.njg.setOnClickListener(new View.OnClickListener()
+    return 2130970521;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(68456);
+    this.pOq = ((MailAddrsViewControl)findViewById(2131827048));
+    this.pOs = ((MailAddrsViewControl)findViewById(2131827051));
+    this.pOr = ((MailAddrsViewControl)findViewById(2131827053));
+    this.pOt = ((TextView)findViewById(2131827049));
+    this.pOu = findViewById(2131827050);
+    this.pOv = ((LinearLayout)findViewById(2131827052));
+    this.pOw = ((TextView)findViewById(2131827054));
+    this.timeTv = ((TextView)findViewById(2131827055));
+    this.pOx = ((TextView)findViewById(2131827056));
+    this.pOy = ((LinearLayout)findViewById(2131827057));
+    this.pOz = ((MailAttachListLinearLayout)findViewById(2131827059));
+    this.gvS = ((ProgressBar)findViewById(2131827066));
+    this.pOo = ((ImageView)findViewById(2131827067));
+    this.pOp = ((TextView)findViewById(2131827060));
+    this.pOn = g.a.vsm.dz(this);
+    ((FrameLayout)findViewById(2131827061)).addView(this.pOn);
+    this.pOD = findViewById(2131827047);
+    this.pOA = findViewById(2131827062);
+    this.pOC = ((TextView)findViewById(2131827065));
+    this.pOB = ((TextView)findViewById(2131827063));
+    this.pOA.setOnClickListener(new ReadMailUI.7(this));
+    this.pOt.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
+        AppMethodBeat.i(68428);
         if (ReadMailUI.G(ReadMailUI.this).getVisibility() == 8)
         {
-          ReadMailUI.H(ReadMailUI.this).setText(b.j.readmail_addr_hide);
+          ReadMailUI.H(ReadMailUI.this).setText(2131302305);
           ReadMailUI.G(ReadMailUI.this).setVisibility(0);
           ReadMailUI.G(ReadMailUI.this).post(new ReadMailUI.8.1(this));
           ReadMailUI.h(ReadMailUI.this).setVisibility(0);
+          AppMethodBeat.o(68428);
           return;
         }
-        ReadMailUI.H(ReadMailUI.this).setText(b.j.readmail_addr_show);
+        ReadMailUI.H(ReadMailUI.this).setText(2131302306);
         ReadMailUI.G(ReadMailUI.this).setVisibility(8);
         ReadMailUI.h(ReadMailUI.this).setVisibility(8);
+        AppMethodBeat.o(68428);
       }
     });
     setBackBtn(new ReadMailUI.9(this));
     Object localObject = new DisplayMetrics();
     getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-    njF = ((DisplayMetrics)localObject).widthPixels / ((DisplayMetrics)localObject).scaledDensity;
-    njG = ((DisplayMetrics)localObject).heightPixels;
-    this.nja.getSettings().setDefaultTextEncodingName("utf-8");
-    this.nja.getSettings().setSupportZoom(false);
-    this.nja.getSettings().setBuiltInZoomControls(false);
-    this.nja.getSettings().cSl();
-    this.nja.getSettings().setLoadsImagesAutomatically(false);
-    this.nja.getSettings().setUseWideViewPort(true);
-    this.nja.cJS();
-    ((h)this.nja).setEmbeddedTitleBarCompat(this.njq);
-    ((h)this.nja).setEmbeddedBottomBar(this.njn);
-    localObject = this.mController.uMN.getIntent();
+    pOS = ((DisplayMetrics)localObject).widthPixels / ((DisplayMetrics)localObject).scaledDensity;
+    pOT = ((DisplayMetrics)localObject).heightPixels;
+    this.pOn.getSettings().setDefaultTextEncodingName("utf-8");
+    this.pOn.getSettings().setSupportZoom(false);
+    this.pOn.getSettings().setBuiltInZoomControls(false);
+    this.pOn.getSettings().dYq();
+    this.pOn.getSettings().setLoadsImagesAutomatically(false);
+    this.pOn.getSettings().setUseWideViewPort(true);
+    this.pOn.dOL();
+    ((com.tencent.mm.plugin.webview.ui.tools.widget.h)this.pOn).setEmbeddedTitleBarCompat(this.pOD);
+    ((com.tencent.mm.plugin.webview.ui.tools.widget.h)this.pOn).setEmbeddedBottomBar(this.pOA);
+    localObject = getContext().getIntent();
     byte[] arrayOfByte = new byte[112];
     arrayOfByte[25] = 1;
     arrayOfByte[16] = 1;
@@ -398,66 +450,78 @@ public class ReadMailUI
     arrayOfByte[82] = 1;
     arrayOfByte[111] = 1;
     ((Intent)localObject).putExtra("hardcode_jspermission", new JsapiPermissionWrapper(arrayOfByte));
-    this.mController.uMN.setIntent((Intent)localObject);
-    this.nja.setWebViewClient(c.a.rBY.a(this.nja, true, new ReadMailUI.10(this)));
-    if (njD.equals("")) {}
+    getContext().setIntent((Intent)localObject);
+    this.pOn.setWebViewClient(c.a.vsk.a(this.pOn, true, new ReadMailUI.10(this)));
+    if (pOQ.equals("")) {}
     try
     {
-      njD += bk.convertStreamToString(getAssets().open("mail/lib.js"));
-      njE += bk.convertStreamToString(getAssets().open("mail/readmail.js"));
-      njC = njC + "mail_css.innerHTML='" + bk.convertStreamToString(getAssets().open("mail/qmail_webview.css")) + "'; document.head.appendChild(mail_css);";
-      registerForContextMenu(this.nja);
-      new j(this).a(this.nja, this, null);
+      pOQ += bo.convertStreamToString(getAssets().open("mail/lib.js"));
+      pOR += bo.convertStreamToString(getAssets().open("mail/readmail.js"));
+      pOP = pOP + "mail_css.innerHTML='" + bo.convertStreamToString(getAssets().open("mail/qmail_webview.css")) + "'; document.head.appendChild(mail_css);";
+      registerForContextMenu(this.pOn);
+      new l(this).a(this.pOn, this, null);
+      AppMethodBeat.o(68456);
       return;
     }
     catch (IOException localIOException)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.ReadMailUI", localIOException, "", new Object[0]);
-        y.e("MicroMsg.ReadMailUI", "evaluateJavascript error " + localIOException.getMessage());
+        ab.printErrStackTrace("MicroMsg.ReadMailUI", localIOException, "", new Object[0]);
+        ab.e("MicroMsg.ReadMailUI", "evaluateJavascript error " + localIOException.getMessage());
       }
     }
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt2 != -1) {}
-    do
+    AppMethodBeat.i(68454);
+    if (paramInt2 != -1)
     {
+      AppMethodBeat.o(68454);
       return;
-      if (paramInt1 == 1)
-      {
-        y.d("MicroMsg.ReadMailUI", "USER_DATA_READMAIL onAfterVerify");
-        a(new v.c());
-        return;
-      }
-    } while (paramInt1 != 2);
-    y.d("MicroMsg.ReadMailUI", "USER_DATA_SETUNREAD onAfterVerify");
-    bun();
+    }
+    if (paramInt1 == 1)
+    {
+      ab.d("MicroMsg.ReadMailUI", "USER_DATA_READMAIL onAfterVerify");
+      a(new v.c());
+      AppMethodBeat.o(68454);
+      return;
+    }
+    if (paramInt1 == 2)
+    {
+      ab.d("MicroMsg.ReadMailUI", "USER_DATA_SETUNREAD onAfterVerify");
+      cez();
+    }
+    AppMethodBeat.o(68454);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(68450);
     super.onCreate(paramBundle);
-    this.handler = new ah();
-    this.bIt = getIntent().getLongExtra("msgid", -1L);
-    this.njs = 0;
-    this.njt = 0;
+    this.handler = new ak();
+    this.cpO = getIntent().getLongExtra("msgid", -1L);
+    this.pOF = 0;
+    this.pOG = 0;
     initView();
-    this.eMh.connect(new ReadMailUI.1(this));
+    this.evl.connect(new ReadMailUI.1(this));
+    AppMethodBeat.o(68450);
   }
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
+    AppMethodBeat.i(68457);
     if ((paramView instanceof WebView))
     {
       WebView.b localb = ((WebView)paramView).getHitTestResult();
       if ((localb.mType == 5) || (localb.mType == 8)) {
         try
         {
-          bool = ((Boolean)new ReadMailProxy(this.eMh, null).REMOTE_CALL("isSDCardAvailable", new Object[0])).booleanValue();
-          if (!bool) {
+          bool = ((Boolean)new ReadMailProxy(this.evl, null).REMOTE_CALL("isSDCardAvailable", new Object[0])).booleanValue();
+          if (!bool)
+          {
+            AppMethodBeat.o(68457);
             return;
           }
         }
@@ -465,156 +529,130 @@ public class ReadMailUI
         {
           for (;;)
           {
-            y.w("MicroMsg.ReadMailUI", "createContextMenu, isSDCardAvailable, ex = %s", new Object[] { localException.getMessage() });
+            ab.w("MicroMsg.ReadMailUI", "createContextMenu, isSDCardAvailable, ex = %s", new Object[] { localException.getMessage() });
             boolean bool = false;
           }
-          paramContextMenu.setHeaderTitle(b.j.wv_image);
-          paramContextMenu.add(0, 0, 0, getString(b.j.save_to_local)).setOnMenuItemClickListener(new ReadMailUI.14(this, localb));
+          paramContextMenu.setHeaderTitle(2131306023);
+          paramContextMenu.add(0, 0, 0, getString(2131302871)).setOnMenuItemClickListener(new ReadMailUI.14(this, localb));
         }
       }
     }
     super.onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
+    AppMethodBeat.o(68457);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(68453);
     super.onDestroy();
-    if (this.njH != null) {
-      this.njH.REMOTE_CALL("removeDownloadCallback", new Object[0]);
+    if (this.pOU != null) {
+      this.pOU.REMOTE_CALL("removeDownloadCallback", new Object[0]);
     }
-    this.eMh.release();
-    this.nja.setVisibility(8);
-    this.nja.destroy();
+    this.evl.release();
+    this.pOn.setVisibility(8);
+    this.pOn.destroy();
+    AppMethodBeat.o(68453);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(68451);
     super.onPause();
-    if ((this.njr != -1L) && (this.njr != -2L)) {}
-    try
-    {
-      new ReadMailProxy(this.eMh, new a(0)).REMOTE_CALL("cancel", new Object[] { Long.valueOf(this.njr) });
-      return;
+    if ((this.pOE != -1L) && (this.pOE != -2L)) {
+      try
+      {
+        new ReadMailProxy(this.evl, new a(0)).REMOTE_CALL("cancel", new Object[] { Long.valueOf(this.pOE) });
+        AppMethodBeat.o(68451);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ab.w("MicroMsg.ReadMailUI", "cancel, ex = %s", new Object[] { localException.getMessage() });
+      }
     }
-    catch (Exception localException)
-    {
-      y.w("MicroMsg.ReadMailUI", "cancel, ex = %s", new Object[] { localException.getMessage() });
-    }
+    AppMethodBeat.o(68451);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    if ((this.njs == 1) && (!buo())) {
-      bup();
+    AppMethodBeat.i(68466);
+    if ((this.pOF == 1) && (!ceA())) {
+      ceB();
     }
     super.onResume();
+    AppMethodBeat.o(68466);
   }
   
-  protected void onStop()
+  public void onStop()
   {
+    AppMethodBeat.i(68452);
     super.onStop();
-    this.nja.stopLoading();
+    this.pOn.stopLoading();
+    AppMethodBeat.o(68452);
   }
   
-  private final class a
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  final class a
     extends v.a
   {
-    int njS;
+    int pPf;
     
     public a(int paramInt)
     {
-      this.njS = paramInt;
+      this.pPf = paramInt;
     }
     
     public final void onComplete()
     {
+      AppMethodBeat.i(68447);
       ReadMailUI.i(ReadMailUI.this).post(new ReadMailUI.a.5(this));
+      AppMethodBeat.o(68447);
     }
     
     public final void onError(int paramInt, String paramString)
     {
-      y.d("MicroMsg.ReadMailUI", "onError errCode = %d, userData = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.njS) });
+      AppMethodBeat.i(68445);
+      ab.d("MicroMsg.ReadMailUI", "onError errCode = %d, userData = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.pPf) });
       ReadMailUI.i(ReadMailUI.this).post(new ReadMailUI.a.3(this, paramInt, paramString));
+      AppMethodBeat.o(68445);
     }
     
     public final boolean onReady()
     {
+      AppMethodBeat.i(68446);
       ReadMailUI.i(ReadMailUI.this).post(new ReadMailUI.a.4(this));
+      AppMethodBeat.o(68446);
       return true;
     }
     
-    public final void onSuccess(String paramString, final Map<String, String> paramMap)
+    public final void onSuccess(String paramString, Map<String, String> paramMap)
     {
-      y.d("MicroMsg.ReadMailUI", "onSuccess userData = %d", new Object[] { Integer.valueOf(this.njS) });
-      switch (this.njS)
+      AppMethodBeat.i(68444);
+      ab.d("MicroMsg.ReadMailUI", "onSuccess userData = %d", new Object[] { Integer.valueOf(this.pPf) });
+      switch (this.pPf)
       {
       }
       for (;;)
       {
-        y.e("MicroMsg.ReadMailUI", "onSuccess, invalid userData = %d", new Object[] { Integer.valueOf(this.njS) });
+        ab.e("MicroMsg.ReadMailUI", "onSuccess, invalid userData = %d", new Object[] { Integer.valueOf(this.pPf) });
+        AppMethodBeat.o(68444);
         return;
-        ReadMailUI.a(ReadMailUI.this, new Runnable()
-        {
-          public final void run()
-          {
-            Object localObject1;
-            Object localObject2;
-            if (ReadMailUI.b(ReadMailUI.this).equals(ReadMailUI.a(ReadMailUI.this)))
-            {
-              if (ReadMailUI.c(ReadMailUI.this).getSize() == 0)
-              {
-                i = bk.getInt((String)paramMap.get(".Response.result.tolistlen"), 0);
-                localObject1 = ReadMailUI.b(paramMap, ".Response.result.tolist", i);
-                ReadMailUI.c(ReadMailUI.this).a((String[])localObject1, true);
-              }
-              if (ReadMailUI.d(ReadMailUI.this).getSize() == 0)
-              {
-                i = bk.getInt((String)paramMap.get(".Response.result.cclistlen"), 0);
-                localObject1 = ReadMailUI.b(paramMap, ".Response.result.cclist", i);
-                localObject2 = ReadMailUI.e(ReadMailUI.this);
-                if ((localObject1 != null) && (localObject1.length != 0)) {
-                  break label394;
-                }
-              }
-            }
-            label394:
-            for (int i = 8;; i = 0)
-            {
-              ((LinearLayout)localObject2).setVisibility(i);
-              ReadMailUI.d(ReadMailUI.this).a((String[])localObject1, true);
-              localObject1 = (String)paramMap.get(".Response.result.content");
-              ReadMailUI.a(ReadMailUI.this, paramMap);
-              localObject2 = (String)paramMap.get(".Response.result.tips.wording");
-              if (!bk.bl((String)localObject2))
-              {
-                if ("1".equals((String)paramMap.get(".Response.result.tips.color")))
-                {
-                  ReadMailUI.f(ReadMailUI.this).setBackgroundColor(-13627);
-                  ReadMailUI.f(ReadMailUI.this).setTextColor(-7515315);
-                }
-                ReadMailUI.f(ReadMailUI.this).setText((CharSequence)localObject2);
-                ((View)ReadMailUI.f(ReadMailUI.this).getParent()).setVisibility(0);
-              }
-              localObject1 = "<html style=\"margin-top:" + ReadMailUI.ave() + "px\">" + (String)localObject1 + "</html>";
-              ReadMailUI.g(ReadMailUI.this).loadDataWithBaseURL(v.btz() + "?pageWidth=" + ReadMailUI.bur(), (String)localObject1, "text/html", "utf-8", null);
-              return;
-            }
-          }
-        });
+        ReadMailUI.a(ReadMailUI.this, new ReadMailUI.a.1(this, paramMap));
+        AppMethodBeat.o(68444);
         return;
         ReadMailUI.i(ReadMailUI.this).post(new ReadMailUI.a.2(this));
       }
     }
   }
-  
-  public final class c
-  {
-    public c() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ReadMailUI
  * JD-Core Version:    0.7.0.1
  */

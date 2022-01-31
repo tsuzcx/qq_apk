@@ -5,13 +5,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.db;
-import com.tencent.mm.h.a.eh;
-import com.tencent.mm.h.a.eh.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.de;
+import com.tencent.mm.g.a.ek;
+import com.tencent.mm.g.a.ek.b;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,61 +21,65 @@ final class ChattingSendDataToDeviceUI$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.vlx.vlm = true;
-    ChattingSendDataToDeviceUI.c localc = ChattingSendDataToDeviceUI.a(this.vlx).GS(paramInt);
-    String str1 = localc.bJp;
+    AppMethodBeat.i(30760);
+    this.zAW.zAM = true;
+    ChattingSendDataToDeviceUI.c localc = ChattingSendDataToDeviceUI.a(this.zAW).Pt(paramInt);
+    String str1 = localc.cqJ;
     paramAdapterView = localc.deviceID;
-    String str2 = localc.bKO;
-    for (;;)
+    String str2 = localc.csi;
+    try
     {
-      try
+      if (ChattingSendDataToDeviceUI.b(this.zAW).get(paramAdapterView) != null)
       {
-        if (ChattingSendDataToDeviceUI.b(this.vlx).get(paramAdapterView) != null)
-        {
-          y.e("MicroMsg.ChattingSendDataToDeviceUI", "ap: some file is sending");
-          paramView = new db();
-          paramView.bJl.bwK = paramAdapterView;
-          a.udP.m(paramView);
-          ChattingSendDataToDeviceUI.a(this.vlx, "send_data_cancel", paramAdapterView, 0);
-          localc.bKT = "send_data_cancel";
-          ChattingSendDataToDeviceUI.b(this.vlx).remove(paramAdapterView);
-          paramAdapterView = (as)((View)ChattingSendDataToDeviceUI.c(this.vlx).get(Integer.valueOf(paramInt))).getTag();
-          paramAdapterView.vlE.setText(this.vlx.getText(R.l.chatting_send_cancel));
-          paramAdapterView.vlE.setTextColor(this.vlx.getResources().getColor(R.e.send_data_cancel));
-          paramAdapterView.vnu.setVisibility(8);
-          paramAdapterView.vnu.setProgress(0);
-          return;
-        }
-        localc.bKT = "send_data_sending";
-        ChattingSendDataToDeviceUI.d(this.vlx).put(localc.deviceID, localc);
-        ChattingSendDataToDeviceUI.b(this.vlx).put(paramAdapterView, paramView);
-        ChattingSendDataToDeviceUI.a(this.vlx, "send_data_sending", paramAdapterView, 1);
-        ChattingSendDataToDeviceUI.a(this.vlx, 3);
-        paramView = new eh();
-        paramView.bKM.bwK = paramAdapterView;
-        paramView.bKM.bJp = str1;
-        paramView.bKM.data = ChattingSendDataToDeviceUI.e(this.vlx);
-        paramView.bKM.bKO = str2;
-        if (this.vlx.bKP)
-        {
-          paramView.bKM.bJQ = ChattingSendDataToDeviceUI.f(this.vlx);
-          paramView.bKM.bKP = this.vlx.bKP;
-          a.udP.m(paramView);
-          if (paramView.bKN.bKQ) {
-            break;
-          }
-          ChattingSendDataToDeviceUI.adn("send_data_failed");
-          y.e("MicroMsg.ChattingSendDataToDeviceUI", " e.result.isSuccess is false, send fail!");
-          return;
-        }
-      }
-      catch (Exception paramAdapterView)
-      {
-        ChattingSendDataToDeviceUI.adn("send_data_failed");
-        y.e("MicroMsg.ChattingSendDataToDeviceUI", "send to device item click exception %s", new Object[] { paramAdapterView });
+        ab.e("MicroMsg.ChattingSendDataToDeviceUI", "ap: some file is sending");
+        paramView = new de();
+        paramView.cqF.bYu = paramAdapterView;
+        a.ymk.l(paramView);
+        ChattingSendDataToDeviceUI.a(this.zAW, "send_data_cancel", paramAdapterView, 0);
+        localc.csn = "send_data_cancel";
+        ChattingSendDataToDeviceUI.b(this.zAW).remove(paramAdapterView);
+        paramAdapterView = (ap)((View)ChattingSendDataToDeviceUI.c(this.zAW).get(Integer.valueOf(paramInt))).getTag();
+        paramAdapterView.zBd.setText(this.zAW.getText(2131298314));
+        paramAdapterView.zBd.setTextColor(this.zAW.getResources().getColor(2131690438));
+        paramAdapterView.zCQ.setVisibility(8);
+        paramAdapterView.zCQ.Px(0);
+        AppMethodBeat.o(30760);
         return;
       }
-      paramView.bKM.bIt = ChattingSendDataToDeviceUI.g(this.vlx);
+      localc.csn = "send_data_sending";
+      ChattingSendDataToDeviceUI.d(this.zAW).put(localc.deviceID, localc);
+      ChattingSendDataToDeviceUI.b(this.zAW).put(paramAdapterView, paramView);
+      ChattingSendDataToDeviceUI.a(this.zAW, "send_data_sending", paramAdapterView, 1);
+      ChattingSendDataToDeviceUI.a(this.zAW, 3);
+      paramView = new ek();
+      paramView.csg.bYu = paramAdapterView;
+      paramView.csg.cqJ = str1;
+      paramView.csg.data = ChattingSendDataToDeviceUI.e(this.zAW);
+      paramView.csg.csi = str2;
+      if (this.zAW.csj)
+      {
+        paramView.csg.crk = ChattingSendDataToDeviceUI.f(this.zAW);
+        paramView.csg.csj = this.zAW.csj;
+      }
+      for (;;)
+      {
+        a.ymk.l(paramView);
+        if (!paramView.csh.csk)
+        {
+          ChattingSendDataToDeviceUI.atL("send_data_failed");
+          ab.e("MicroMsg.ChattingSendDataToDeviceUI", " e.result.isSuccess is false, send fail!");
+        }
+        AppMethodBeat.o(30760);
+        return;
+        paramView.csg.cpO = ChattingSendDataToDeviceUI.g(this.zAW);
+      }
+      return;
+    }
+    catch (Exception paramAdapterView)
+    {
+      ChattingSendDataToDeviceUI.atL("send_data_failed");
+      ab.e("MicroMsg.ChattingSendDataToDeviceUI", "send to device item click exception %s", new Object[] { paramAdapterView });
+      AppMethodBeat.o(30760);
     }
   }
 }

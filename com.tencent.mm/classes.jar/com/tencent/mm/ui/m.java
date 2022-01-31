@@ -2,23 +2,25 @@ package com.tencent.mm.ui;
 
 public abstract interface m
 {
-  public abstract void cyM();
+  public abstract void dAF();
   
-  public abstract void cyN();
+  public abstract void dAG();
   
-  public abstract void cyO();
+  public abstract void dAH();
   
-  public abstract void cyP();
+  public abstract void dAI();
   
-  public abstract void cyQ();
+  public abstract void dAJ();
   
-  public abstract void cyR();
+  public abstract void dAL();
   
-  public abstract void cyS();
+  public abstract void dBC();
+  
+  public abstract void dBD();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.m
  * JD-Core Version:    0.7.0.1
  */

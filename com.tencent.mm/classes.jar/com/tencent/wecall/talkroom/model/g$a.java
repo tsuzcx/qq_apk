@@ -6,37 +6,39 @@ import java.util.List;
 
 public abstract interface g$a
 {
-  public abstract void Kw(int paramInt);
+  public abstract void H(String paramString, byte[] paramArrayOfByte);
   
-  public abstract void Kx(int paramInt);
+  public abstract void Tp(int paramInt);
   
-  public abstract void RM();
+  public abstract void Tq(int paramInt);
   
   public abstract void a(int paramInt, MultiTalkGroup paramMultiTalkGroup);
   
+  public abstract void akV();
+  
   public abstract void b(MultiTalkGroup paramMultiTalkGroup);
   
-  public abstract void bR(List<a.am> paramList);
+  public abstract void bTn();
   
-  public abstract void bT(String paramString, boolean paramBoolean);
+  public abstract void cp(List<a.am> paramList);
   
-  public abstract void blo();
+  public abstract void cx(String paramString, boolean paramBoolean);
   
-  public abstract void cRI();
+  public abstract void dXA();
   
-  public abstract void cRJ();
+  public abstract void dXB();
   
-  public abstract void cRK();
+  public abstract void dXC();
   
-  public abstract void dY(String paramString, int paramInt);
+  public abstract void fM(List<MultiTalkGroup> paramList);
   
-  public abstract void eD(List<MultiTalkGroup> paramList);
+  public abstract void fh(String paramString, int paramInt);
   
   public abstract void g(MultiTalkGroup paramMultiTalkGroup);
   
-  public abstract void hE(boolean paramBoolean);
+  public abstract void jx(boolean paramBoolean);
   
-  public abstract void i(int paramInt, Object paramObject);
+  public abstract void l(int paramInt, Object paramObject);
   
   public abstract void onStateChanged(int paramInt);
   
@@ -44,13 +46,11 @@ public abstract interface g$a
   
   public abstract void q(MultiTalkGroup paramMultiTalkGroup);
   
-  public abstract void uo(int paramInt);
-  
-  public abstract void z(String paramString, byte[] paramArrayOfByte);
+  public abstract void zE(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.g.a
  * JD-Core Version:    0.7.0.1
  */

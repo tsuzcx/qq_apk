@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.sns.ui.previewimageview;
 
 public abstract interface d
 {
-  public abstract void eb(int paramInt1, int paramInt2);
+  public abstract boolean Fk(int paramInt);
+  
+  public abstract boolean Fl(int paramInt);
+  
+  public abstract void fO(int paramInt1, int paramInt2);
   
   public abstract int getColumnCount();
-  
-  public abstract boolean yZ(int paramInt);
-  
-  public abstract boolean za(int paramInt);
 }
 
 

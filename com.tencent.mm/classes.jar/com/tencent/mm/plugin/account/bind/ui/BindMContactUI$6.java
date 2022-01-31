@@ -1,21 +1,27 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.a.b.a;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.ui.base.b;
 
 final class BindMContactUI$6
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   BindMContactUI$6(BindMContactUI paramBindMContactUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    BindMContactUI.b(this.fcb, BindMContactUI.e(this.fcb));
+    AppMethodBeat.i(13466);
+    String str = this.gtN.getString(2131306170, new Object[] { aa.dsG() });
+    a.b(this.gtN, str, 30765, true);
+    b.ih(this.gtN);
+    AppMethodBeat.o(13466);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactUI.6
  * JD-Core Version:    0.7.0.1
  */

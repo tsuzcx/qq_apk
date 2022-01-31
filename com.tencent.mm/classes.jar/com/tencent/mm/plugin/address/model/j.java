@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.address.model;
 
-import com.tencent.mm.h.a.mo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.nj;
 import com.tencent.mm.sdk.b.c;
 
 public final class j
-  extends c<mo>
+  extends c<nj>
 {
   public j()
   {
-    this.udX = mo.class.getName().hashCode();
+    AppMethodBeat.i(16749);
+    this.__eventId = nj.class.getName().hashCode();
+    AppMethodBeat.o(16749);
   }
 }
 

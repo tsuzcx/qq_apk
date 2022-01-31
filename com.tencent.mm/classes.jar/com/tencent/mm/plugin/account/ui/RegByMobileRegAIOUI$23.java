@@ -1,22 +1,32 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.normsg.a.b;
 
 final class RegByMobileRegAIOUI$23
-  implements View.OnFocusChangeListener
+  implements View.OnTouchListener
 {
   RegByMobileRegAIOUI$23(RegByMobileRegAIOUI paramRegByMobileRegAIOUI, boolean[] paramArrayOfBoolean) {}
   
-  public final void onFocusChange(View paramView, boolean paramBoolean)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean)
+    AppMethodBeat.i(152604);
+    switch (paramMotionEvent.getAction())
     {
-      this.fqI[0] = true;
-      return;
     }
-    b.mGK.JX("ie_reg");
+    for (;;)
+    {
+      AppMethodBeat.o(152604);
+      return false;
+      this.gFg[0] = true;
+      b.pgQ.fD("ce_reg", "<Reg>");
+      continue;
+      b.pgQ.a("ce_reg", paramMotionEvent);
+      b.pgQ.Wa("ce_reg");
+    }
   }
 }
 

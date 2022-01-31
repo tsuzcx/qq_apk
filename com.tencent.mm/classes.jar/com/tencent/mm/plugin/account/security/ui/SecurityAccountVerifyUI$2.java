@@ -2,29 +2,32 @@ package com.tencent.mm.plugin.account.security.ui;
 
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.plugin.account.security.a.d;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class SecurityAccountVerifyUI$2
-  implements am.a
+  implements ap.a
 {
   SecurityAccountVerifyUI$2(SecurityAccountVerifyUI paramSecurityAccountVerifyUI) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    int i = ((Integer)SecurityAccountVerifyUI.a(this.fkK).getTag()).intValue();
+    AppMethodBeat.i(69916);
+    int i = ((Integer)SecurityAccountVerifyUI.a(this.gCb).getTag()).intValue();
     if (i <= 1)
     {
-      SecurityAccountVerifyUI.b(this.fkK).setVisibility(0);
-      SecurityAccountVerifyUI.a(this.fkK).setVisibility(8);
+      SecurityAccountVerifyUI.b(this.gCb).setVisibility(0);
+      SecurityAccountVerifyUI.a(this.gCb).setVisibility(8);
+      AppMethodBeat.o(69916);
       return false;
     }
     i -= 1;
-    SecurityAccountVerifyUI.a(this.fkK).setTag(Integer.valueOf(i));
-    SecurityAccountVerifyUI.a(this.fkK).setText(this.fkK.getString(a.d.safe_device_resend_verify_code_tips, new Object[] { Integer.valueOf(i) }));
-    if (SecurityAccountVerifyUI.a(this.fkK).getVisibility() != 0) {
-      SecurityAccountVerifyUI.a(this.fkK).setVisibility(0);
+    SecurityAccountVerifyUI.a(this.gCb).setTag(Integer.valueOf(i));
+    SecurityAccountVerifyUI.a(this.gCb).setText(this.gCb.getString(2131302857, new Object[] { Integer.valueOf(i) }));
+    if (SecurityAccountVerifyUI.a(this.gCb).getVisibility() != 0) {
+      SecurityAccountVerifyUI.a(this.gCb).setVisibility(0);
     }
+    AppMethodBeat.o(69916);
     return true;
   }
 }

@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.chatting;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.model.app.f;
 import com.tencent.mm.pluginsdk.model.app.g;
 
@@ -10,7 +11,9 @@ final class ChattingSendDataToDeviceUI$3$1
   
   public final void run()
   {
-    g.a(this.vly.vlx.getBaseContext(), this.iRp.field_packageName, this.vly.vlx.vlu, this.iRp.field_appId, this.iRp.field_openId, 0, null, null);
+    AppMethodBeat.i(30763);
+    g.a(this.zAX.zAW.getBaseContext(), this.kZO.field_packageName, this.zAX.zAW.jMk, this.kZO.field_appId, this.kZO.field_openId, 0, null, null);
+    AppMethodBeat.o(30763);
   }
 }
 

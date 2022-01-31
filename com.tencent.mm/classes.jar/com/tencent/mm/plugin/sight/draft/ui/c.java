@@ -1,60 +1,60 @@
 package com.tencent.mm.plugin.sight.draft.ui;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.R.k;
 import com.tencent.mm.a.f;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.d;
 import java.lang.ref.WeakReference;
 
 public abstract class c
 {
-  f<String, Bitmap> ogX = new f(24);
-  private Bitmap ogY;
+  f<String, Bitmap> qVm = new com.tencent.mm.memory.a.c(24);
+  private Bitmap qVn;
   
-  private Bitmap bBy()
+  private Bitmap cmY()
   {
-    if (this.ogY == null) {
-      this.ogY = com.tencent.mm.sdk.platformtools.c.EX(R.k.panel_icon_pic);
+    if (this.qVn == null) {
+      this.qVn = d.Na(2131231843);
     }
-    return this.ogY;
+    return this.qVn;
   }
   
-  public abstract void p(String paramString, Bitmap paramBitmap);
+  public abstract void r(String paramString, Bitmap paramBitmap);
   
-  public final Bitmap r(String paramString1, String paramString2, boolean paramBoolean)
+  public final Bitmap x(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (bk.bl(paramString1)) {
-      localObject = bBy();
+    if (bo.isNullOrNil(paramString1)) {
+      localObject = cmY();
     }
     Bitmap localBitmap;
     do
     {
       return localObject;
-      localBitmap = (Bitmap)this.ogX.get(paramString1);
+      localBitmap = (Bitmap)this.qVm.get(paramString1);
       localObject = localBitmap;
     } while (localBitmap != null);
     Object localObject = new c.a((byte)0);
     ((c.a)localObject).key = paramString1;
     ((c.a)localObject).path = paramString2;
-    ((c.a)localObject).ogZ = paramBoolean;
-    ((c.a)localObject).oha = new WeakReference(this);
+    ((c.a)localObject).qVo = paramBoolean;
+    ((c.a)localObject).qVp = new WeakReference(this);
     if (paramBoolean) {
-      au.DS().O((Runnable)localObject);
+      aw.RO().ac((Runnable)localObject);
     }
     do
     {
-      return bBy();
+      return cmY();
       ((c.a)localObject).run();
-      paramString1 = (Bitmap)this.ogX.get(paramString1);
+      paramString1 = (Bitmap)this.qVm.get(paramString1);
     } while (paramString1 == null);
     return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 
 final class JsApiChooseMedia$a$6$1
@@ -10,16 +11,18 @@ final class JsApiChooseMedia$a$6$1
   
   public final void run()
   {
-    y.i("MicroMsg.JsApiChooseMedia", "handle image from album is ok");
-    JsApiChooseMedia.a.e(this.gvS.gvN).aYY = -1;
-    JsApiChooseMedia.a.e(this.gvS.gvN).type = "image";
-    JsApiChooseMedia.a.e(this.gvS.gvN).gvI = JsApiChooseMedia.a.h(this.gvO, this.gvR);
-    JsApiChooseMedia.a.g(this.gvS.gvN, JsApiChooseMedia.a.e(this.gvS.gvN));
+    AppMethodBeat.i(131174);
+    ab.i("MicroMsg.JsApiChooseMedia", "handle image from album is ok");
+    JsApiChooseMedia.a.e(this.hRj.hRe).bpE = -1;
+    JsApiChooseMedia.a.e(this.hRj.hRe).type = "image";
+    JsApiChooseMedia.a.e(this.hRj.hRe).hQZ = JsApiChooseMedia.a.c(this.hRf, this.hRi);
+    JsApiChooseMedia.a.g(this.hRj.hRe, JsApiChooseMedia.a.e(this.hRj.hRe));
+    AppMethodBeat.o(131174);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.JsApiChooseMedia.a.6.1
  * JD-Core Version:    0.7.0.1
  */

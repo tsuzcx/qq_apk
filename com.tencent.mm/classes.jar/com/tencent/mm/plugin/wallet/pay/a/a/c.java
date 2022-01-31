@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet.pay.a.a;
 
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
@@ -10,32 +11,30 @@ import org.json.JSONObject;
 public class c
   extends b
 {
-  private boolean qmk;
+  private boolean tVA;
   
   public c(Authen paramAuthen, Orders paramOrders, boolean paramBoolean)
   {
     super(paramAuthen, paramOrders);
-    this.qmk = paramBoolean;
+    this.tVA = paramBoolean;
   }
   
-  public int HH()
+  protected void aj(Map<String, String> paramMap) {}
+  
+  public int doScene(e parame, f paramf)
+  {
+    AppMethodBeat.i(45925);
+    int i = super.doScene(parame, paramf);
+    AppMethodBeat.o(45925);
+    return i;
+  }
+  
+  public int getFuncId()
   {
     return 1600;
   }
   
-  protected void P(Map<String, String> paramMap) {}
-  
-  public int a(e parame, f paramf)
-  {
-    return super.a(parame, paramf);
-  }
-  
-  public void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    super.a(paramInt, paramString, paramJSONObject);
-  }
-  
-  public final int aEC()
+  public int getTenpayCgicmd()
   {
     return 120;
   }
@@ -43,6 +42,13 @@ public class c
   public String getUri()
   {
     return "/cgi-bin/mmpay-bin/tenpay/banpaybindauthen";
+  }
+  
+  public void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(45926);
+    super.onGYNetEnd(paramInt, paramString, paramJSONObject);
+    AppMethodBeat.o(45926);
   }
 }
 

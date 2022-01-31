@@ -1,83 +1,147 @@
 package com.tencent.mm.plugin.sns.a.b;
 
 import android.os.SystemClock;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.a.b.a.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class h
 {
-  public String TAG = "MicroMsg.SnsAdVideoStatistic";
-  public long eAF = 0L;
-  public long eAG = 0L;
-  public int olp = 0;
-  public int olq = 0;
-  public long olr = 0L;
-  public int ols = 0;
-  public int olt = 0;
-  public int olu = 0;
-  public int olv = 0;
-  public boolean olw = false;
-  public a olx = new a();
-  public LinkedList<a> oly = new LinkedList();
-  public long olz = 0L;
+  public String TAG;
+  public long fQx;
+  public long fQy;
+  public int qZB;
+  public int qZC;
+  public long qZD;
+  public int qZE;
+  public int qZF;
+  public int qZG;
+  public int qZH;
+  public boolean qZI;
+  public a qZJ;
+  public LinkedList<a> qZK;
+  public long qZL;
   
-  public h() {}
+  public h()
+  {
+    AppMethodBeat.i(35744);
+    this.TAG = "MicroMsg.SnsAdVideoStatistic";
+    this.qZB = 0;
+    this.qZC = 0;
+    this.qZD = 0L;
+    this.qZE = 0;
+    this.fQy = 0L;
+    this.qZF = 0;
+    this.qZG = 0;
+    this.qZH = 0;
+    this.qZI = false;
+    this.qZJ = new a();
+    this.qZK = new LinkedList();
+    this.qZL = 0L;
+    this.fQx = 0L;
+    AppMethodBeat.o(35744);
+  }
   
   public h(String paramString)
   {
-    this.TAG = ("MicroMsg.SnsAdVideoStatistic:" + paramString);
+    AppMethodBeat.i(35745);
+    this.TAG = "MicroMsg.SnsAdVideoStatistic";
+    this.qZB = 0;
+    this.qZC = 0;
+    this.qZD = 0L;
+    this.qZE = 0;
+    this.fQy = 0L;
+    this.qZF = 0;
+    this.qZG = 0;
+    this.qZH = 0;
+    this.qZI = false;
+    this.qZJ = new a();
+    this.qZK = new LinkedList();
+    this.qZL = 0L;
+    this.fQx = 0L;
+    this.TAG = "MicroMsg.SnsAdVideoStatistic:".concat(String.valueOf(paramString));
+    AppMethodBeat.o(35745);
   }
   
-  public final String bCf()
+  public final void Dx(int paramInt)
   {
-    if (this.olr == 0L) {}
+    AppMethodBeat.i(35746);
+    a locala;
+    if (this.qZJ.raJ <= 0)
+    {
+      locala = this.qZJ;
+      if (this.qZJ.raN != 0L) {
+        break label130;
+      }
+    }
+    label130:
+    for (int i = 0;; i = (int)bo.av(this.qZJ.raN))
+    {
+      locala.raJ = i;
+      if (paramInt != 0)
+      {
+        this.qZJ.raK = paramInt;
+        this.qZL = paramInt;
+      }
+      ab.i(this.TAG, "pushplayitem duration " + this.qZJ.raJ + " " + this.qZJ.raM);
+      this.qZK.add(this.qZJ);
+      this.qZJ = new a();
+      AppMethodBeat.o(35746);
+      return;
+    }
+  }
+  
+  public final String cnF()
+  {
+    AppMethodBeat.i(35747);
+    if (this.qZD == 0L) {}
     StringBuffer localStringBuffer;
     a locala;
-    for (int i = 0;; i = (int)bk.cp(this.olr))
+    for (int i = 0;; i = (int)bo.av(this.qZD))
     {
-      this.olq = i;
-      y.d(this.TAG, "__staytotaltime " + this.olr + " " + this.olq + " clock: " + SystemClock.elapsedRealtime());
+      this.qZC = i;
+      ab.d(this.TAG, "__staytotaltime " + this.qZD + " " + this.qZC + " clock: " + SystemClock.elapsedRealtime());
       localStringBuffer = new StringBuffer();
       localStringBuffer.append("<viewinfo>");
       localStringBuffer.append("<downloadstatus>");
-      localStringBuffer.append(this.olp);
+      localStringBuffer.append(this.qZB);
       localStringBuffer.append("</downloadstatus>");
       localStringBuffer.append("<staytotaltime>");
-      localStringBuffer.append(this.olq);
+      localStringBuffer.append(this.qZC);
       localStringBuffer.append("</staytotaltime>");
-      if (this.ols > 0)
+      if (this.qZE > 0)
       {
         localStringBuffer.append("<masktotaltime>");
-        localStringBuffer.append(this.ols);
+        localStringBuffer.append(this.qZE);
         localStringBuffer.append("</masktotaltime>");
       }
-      localObject = this.oly;
-      if ((!this.olw) || (this.oly.size() <= 1)) {
-        break label570;
+      localObject = this.qZK;
+      if ((!this.qZI) || (this.qZK.size() <= 1)) {
+        break label573;
       }
       locala = new a();
       i = 0;
-      while (i < this.oly.size())
+      while (i < this.qZK.size())
       {
-        localObject = (a)this.oly.get(i);
+        localObject = (a)this.qZK.get(i);
         if (i == 0)
         {
-          locala.omw = ((a)localObject).omw;
-          locala.omx = ((a)localObject).omx;
-          locala.omy = ((a)localObject).omy;
+          locala.raK = ((a)localObject).raK;
+          locala.raL = ((a)localObject).raL;
+          locala.raM = ((a)localObject).raM;
         }
-        locala.omu += ((a)localObject).omu;
-        int j = locala.omv;
-        locala.omv = (((a)localObject).omv + j);
+        locala.raI += ((a)localObject).raI;
+        int j = locala.raJ;
+        locala.raJ = (((a)localObject).raJ + j);
         i += 1;
       }
     }
     Object localObject = new LinkedList();
     ((LinkedList)localObject).add(locala);
-    label570:
+    label573:
     for (;;)
     {
       localStringBuffer.append(String.format("<playitemlist count=\"%d\">", new Object[] { Integer.valueOf(((LinkedList)localObject).size()) }));
@@ -86,83 +150,70 @@ public final class h
       {
         locala = (a)((LinkedList)localObject).get(i);
         localStringBuffer.append("<playitem>");
-        localStringBuffer.append(String.format("<playcount>%d</playcount>", new Object[] { Integer.valueOf(locala.omu) }));
-        localStringBuffer.append(String.format("<playtotaltime>%d</playtotaltime>", new Object[] { Integer.valueOf(locala.omv) }));
-        localStringBuffer.append(String.format("<videototaltime>%d</videototaltime>", new Object[] { Integer.valueOf(locala.omw * 1000) }));
-        localStringBuffer.append(String.format("<playmode>%d</playmode>", new Object[] { Integer.valueOf(locala.omx) }));
-        localStringBuffer.append(String.format("<playorientation>%d</playorientation>", new Object[] { Integer.valueOf(locala.omy) }));
+        localStringBuffer.append(String.format("<playcount>%d</playcount>", new Object[] { Integer.valueOf(locala.raI) }));
+        localStringBuffer.append(String.format("<playtotaltime>%d</playtotaltime>", new Object[] { Integer.valueOf(locala.raJ) }));
+        localStringBuffer.append(String.format("<videototaltime>%d</videototaltime>", new Object[] { Integer.valueOf(locala.raK * 1000) }));
+        localStringBuffer.append(String.format("<playmode>%d</playmode>", new Object[] { Integer.valueOf(locala.raL) }));
+        localStringBuffer.append(String.format("<playorientation>%d</playorientation>", new Object[] { Integer.valueOf(locala.raM) }));
         localStringBuffer.append("</playitem>");
         i += 1;
       }
       localStringBuffer.append("</playitemlist>");
       localStringBuffer.append("</viewinfo>");
       localObject = localStringBuffer.toString();
-      y.i(this.TAG, "xml " + (String)localObject);
+      ab.i(this.TAG, "xml ".concat(String.valueOf(localObject)));
+      AppMethodBeat.o(35747);
       return localObject;
     }
   }
   
-  public final void bCg()
+  public final void cnG()
   {
-    this.olt = 0;
-    this.olu = 0;
-    this.olv = 0;
-    Iterator localIterator = this.oly.iterator();
+    AppMethodBeat.i(35748);
+    this.qZF = 0;
+    this.qZG = 0;
+    this.qZH = 0;
+    Iterator localIterator = this.qZK.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      this.olt += locala.omt;
-      this.olu += locala.omu;
-      int i = this.olv;
-      this.olv = (locala.omv + i);
+      this.qZF += locala.raH;
+      this.qZG += locala.raI;
+      int i = this.qZH;
+      this.qZH = (locala.raJ + i);
     }
-    if ((this.olx != null) && (!this.oly.contains(this.olx)))
+    if ((this.qZJ != null) && (!this.qZK.contains(this.qZJ)))
     {
-      this.olt += this.olx.omt;
-      this.olu += this.olx.omu;
-      this.olv += this.olx.omv;
+      this.qZF += this.qZJ.raH;
+      this.qZG += this.qZJ.raI;
+      this.qZH += this.qZJ.raJ;
     }
+    AppMethodBeat.o(35748);
   }
   
   public final void onResume()
   {
-    if (this.eAF == 0L) {}
-    long l;
-    do
+    AppMethodBeat.i(35749);
+    if (this.fQx == 0L)
     {
+      AppMethodBeat.o(35749);
       return;
-      l = bk.cp(this.eAF);
-      this.eAG += l;
-      this.eAF = 0L;
-    } while (this.olx == null);
-    a locala = this.olx;
-    locala.omA = (l + locala.omA);
+    }
+    long l = bo.av(this.fQx);
+    this.fQy += l;
+    this.fQx = 0L;
+    if (this.qZJ != null)
+    {
+      a locala = this.qZJ;
+      locala.raO = (l + locala.raO);
+    }
+    AppMethodBeat.o(35749);
   }
   
-  public final void xx(int paramInt)
+  public final void setDuration(int paramInt)
   {
-    a locala;
-    if (this.olx.omv <= 0)
-    {
-      locala = this.olx;
-      if (this.olx.omz != 0L) {
-        break label120;
-      }
-    }
-    label120:
-    for (int i = 0;; i = (int)bk.cp(this.olx.omz))
-    {
-      locala.omv = i;
-      if (paramInt != 0)
-      {
-        this.olx.omw = paramInt;
-        this.olz = paramInt;
-      }
-      y.i(this.TAG, "pushplayitem duration " + this.olx.omv + " " + this.olx.omy);
-      this.oly.add(this.olx);
-      this.olx = new a();
-      return;
-    }
+    this.qZL = paramInt;
+    this.qZJ.raK = paramInt;
   }
 }
 

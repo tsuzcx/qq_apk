@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.backup.c;
 
-import com.tencent.mm.sdk.platformtools.af;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
@@ -14,108 +15,93 @@ final class c$c$1
   
   public final void run()
   {
-    Object localObject1;
-    while (!this.hGN.hGk.hGc)
+    AppMethodBeat.i(17191);
+    while (!this.jAj.jzG.jzy)
     {
-      localObject1 = null;
+      Object localObject1 = null;
+      label273:
       try
       {
-        localObject2 = this.hGN.hGJ.poll(500L, TimeUnit.MILLISECONDS);
+        localObject2 = this.jAj.jAf.poll(500L, TimeUnit.MILLISECONDS);
         localObject1 = localObject2;
       }
       catch (Exception localException2)
       {
         Object localObject2;
-        label38:
-        c.b localb1;
-        break label38;
+        label44:
+        c.b localb;
+        label146:
+        label182:
+        label221:
+        break label44;
       }
-      y.d("MicroMsg.BackupPackAndSend.TagQueueSucker", "TagQueue(%d)startNext obj:%s", new Object[] { Integer.valueOf(this.hGN.hGJ.size()), localObject1 });
+      ab.d("MicroMsg.BackupPackAndSend.TagQueueSucker", "TagQueue(%d)startNext obj:%s", new Object[] { Integer.valueOf(this.jAj.jAf.size()), localObject1 });
       if (localObject1 != null)
       {
-        if (localObject1 != this.hGN.hGK) {
-          break label98;
-        }
-        this.hGN.hGK.open();
-      }
-    }
-    return;
-    label98:
-    localb1 = (c.b)localObject1;
-    localb1.fSF = true;
-    localObject2 = new StringBuilder("MicroMsg.BackupPackAndSend.tag");
-    if (localb1.fSF)
-    {
-      localObject1 = "S.";
-      label134:
-      localb1.TAG = ((String)localObject1 + localb1.hFC + "." + localb1.aVr);
-      label170:
-      while (!this.hGN.hGk.hGc)
-      {
-        localObject1 = null;
-        try
+        if (localObject1 == this.jAj.jAg)
         {
-          localObject2 = (Runnable)localb1.hGo.poll(500L, TimeUnit.MILLISECONDS);
-          localObject1 = localObject2;
+          this.jAj.jAg.open();
+          AppMethodBeat.o(17191);
+          return;
         }
-        catch (Exception localException1)
+        localb = (c.b)localObject1;
+        localb.hmf = true;
+        localObject2 = new StringBuilder("MicroMsg.BackupPackAndSend.tag");
+        if (localb.hmf)
         {
-          label209:
-          long l1;
-          int k;
-          long l2;
-          int i;
-          int j;
-          String str;
-          c.b localb2;
-          break label209;
-        }
-        if (localObject1 != null)
-        {
-          l1 = bk.UY();
-          ((Runnable)localObject1).run();
-          k = localb1.hGo.size();
-          l2 = this.hGN.hGp.hGl.get();
-          if (l2 < 8388608L) {
-            break label423;
-          }
-          i = 1;
-          if (l2 < 16777216L) {
-            break label428;
-          }
-          j = 1;
-          str = String.format("[%s,%s,%s]", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j) });
-          l1 = bk.co(l1);
-          localb2 = this.hGN.hGL;
-          if (this.hGN.hGL == null) {
-            break label433;
+          localObject1 = "S.";
+          localb.TAG = ((String)localObject1 + localb.jyZ + "." + localb.blZ);
+          while (!this.jAj.jzG.jzy)
+          {
+            localObject1 = null;
+            try
+            {
+              localObject2 = (Runnable)localb.jzK.poll(500L, TimeUnit.MILLISECONDS);
+              localObject1 = localObject2;
+            }
+            catch (Exception localException1)
+            {
+              long l1;
+              int k;
+              long l2;
+              int i;
+              int j;
+              break label221;
+            }
+            if (localObject1 != null)
+            {
+              l1 = bo.aoy();
+              ((Runnable)localObject1).run();
+              k = localb.jzK.size();
+              l2 = this.jAj.jzL.jzH.get();
+              if (l2 < 8388608L) {
+                break label389;
+              }
+              i = 1;
+              if (l2 < 16777216L) {
+                break label394;
+              }
+            }
           }
         }
-      }
-    }
-    else
-    {
-      label261:
-      label272:
-      label423:
-      label428:
-      label433:
-      for (localObject2 = Integer.valueOf(this.hGN.hGL.hGo.size());; localObject2 = "null")
-      {
-        y.d("MicroMsg.BackupPackAndSend.TagQueueSucker", "workerQueue poll q:%d mem:%s rt:%d [%s,%s,%s,%s]", new Object[] { Integer.valueOf(k), str, Long.valueOf(l1), localObject1, localb1, localb2, localObject2 });
-        if (localb1.fSF) {
-          break label170;
+        label389:
+        label394:
+        for (j = 1;; j = 0)
+        {
+          ab.d("MicroMsg.BackupPackAndSend.TagQueueSucker", "workerQueue poll q:%d mem:%s rt:%d [%s,%s,%s]", new Object[] { Integer.valueOf(k), String.format("[%s,%s,%s]", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j) }), Long.valueOf(bo.hl(l1)), localObject1, localb, this.jAj.jAh });
+          if (localb.hmf) {
+            break label182;
+          }
+          System.gc();
+          break;
+          localObject1 = "W.";
+          break label146;
+          i = 0;
+          break label273;
         }
-        System.gc();
-        break;
-        localObject1 = "W.";
-        break label134;
-        i = 0;
-        break label261;
-        j = 0;
-        break label272;
       }
     }
+    AppMethodBeat.o(17191);
   }
 }
 

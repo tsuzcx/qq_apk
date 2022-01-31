@@ -1,152 +1,202 @@
 package com.tencent.mm.plugin.music.f;
 
 import android.media.MediaPlayer;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class b
   extends com.tencent.mm.plugin.music.f.a.b
 {
-  MediaPlayer eLh;
-  b.a mAx;
-  boolean stop = true;
+  MediaPlayer gaO;
+  boolean oIr;
+  b.a paD;
   
   public b()
   {
-    com.tencent.mm.plugin.music.e.b localb = (com.tencent.mm.plugin.music.e.b)com.tencent.mm.plugin.music.f.c.b.Q(com.tencent.mm.plugin.music.e.b.class);
+    AppMethodBeat.i(137553);
+    this.oIr = true;
+    com.tencent.mm.plugin.music.e.b localb = (com.tencent.mm.plugin.music.e.b)com.tencent.mm.plugin.music.f.c.b.am(com.tencent.mm.plugin.music.e.b.class);
     if (localb != null) {
-      this.eLh = localb.bmX();
+      this.gaO = localb.bVt();
     }
     for (;;)
     {
-      if (this.eLh == null) {
-        this.eLh = new MediaPlayer();
+      if (this.gaO == null) {
+        this.gaO = new MediaPlayer();
       }
-      this.eLh.setAudioStreamType(3);
-      this.eLh.setOnCompletionListener(new b.1(this));
-      this.eLh.setOnSeekCompleteListener(new b.2(this));
-      this.eLh.setOnPreparedListener(new b.3(this));
-      this.eLh.setOnErrorListener(new b.4(this));
+      this.gaO.setAudioStreamType(3);
+      this.gaO.setOnCompletionListener(new b.1(this));
+      this.gaO.setOnSeekCompleteListener(new b.2(this));
+      this.gaO.setOnPreparedListener(new b.3(this));
+      this.gaO.setOnErrorListener(new b.4(this));
+      AppMethodBeat.o(137553);
       return;
-      y.e("MicroMsg.Music.MMMediaPlayer", "mediaResService is null");
+      ab.e("MicroMsg.Music.MMMediaPlayer", "mediaResService is null");
     }
   }
   
-  public final void JG(String paramString)
+  public final void VE(String paramString)
   {
-    y.i("MicroMsg.Music.MMMediaPlayer", "setSourcePath, sourcePath:%s", new Object[] { paramString });
+    AppMethodBeat.i(137555);
+    ab.i("MicroMsg.Music.MMMediaPlayer", "setSourcePath, sourcePath:%s", new Object[] { paramString });
     try
     {
-      this.eLh.setDataSource(paramString);
+      this.gaO.setDataSource(paramString);
+      AppMethodBeat.o(137555);
       return;
     }
     catch (Exception paramString)
     {
-      y.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", paramString, "setSourcePath", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", paramString, "setSourcePath", new Object[0]);
+      AppMethodBeat.o(137555);
     }
   }
   
-  public final boolean bnE()
+  public final boolean bWb()
   {
-    return !this.stop;
+    return !this.oIr;
   }
   
-  public final int bnF()
+  public final int bWc()
   {
-    return this.eLh.getCurrentPosition();
+    AppMethodBeat.i(137556);
+    try
+    {
+      int i = this.gaO.getCurrentPosition();
+      AppMethodBeat.o(137556);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      ab.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException, "getCurrentPos", new Object[0]);
+      AppMethodBeat.o(137556);
+    }
+    return 0;
   }
   
-  public final String bnG()
+  public final String bWd()
   {
     return null;
   }
   
   public final int getDuration()
   {
-    return this.eLh.getDuration();
+    AppMethodBeat.i(137557);
+    try
+    {
+      int i = this.gaO.getDuration();
+      AppMethodBeat.o(137557);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      ab.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException, "getDuration", new Object[0]);
+      AppMethodBeat.o(137557);
+    }
+    return 0;
   }
   
   public final boolean isPlaying()
   {
+    AppMethodBeat.i(137554);
     try
     {
-      boolean bool = this.eLh.isPlaying();
+      boolean bool = this.gaO.isPlaying();
+      AppMethodBeat.o(137554);
       return bool;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException, "setSourcePath", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException, "setSourcePath", new Object[0]);
+      AppMethodBeat.o(137554);
     }
     return false;
   }
   
   public final void pause()
   {
-    y.i("MicroMsg.Music.MMMediaPlayer", "pause");
-    if (!bnE()) {
+    AppMethodBeat.i(137560);
+    ab.i("MicroMsg.Music.MMMediaPlayer", "pause");
+    if (!bWb())
+    {
+      AppMethodBeat.o(137560);
       return;
     }
-    this.eLh.pause();
+    this.gaO.pause();
+    AppMethodBeat.o(137560);
   }
   
   public final void play()
   {
-    y.i("MicroMsg.Music.MMMediaPlayer", "play");
-    if (bnE()) {
+    AppMethodBeat.i(137558);
+    ab.i("MicroMsg.Music.MMMediaPlayer", "play");
+    if (bWb()) {
       try
       {
-        if (!this.eLh.isPlaying()) {
-          this.eLh.start();
+        if (!this.gaO.isPlaying())
+        {
+          this.gaO.start();
+          AppMethodBeat.o(137558);
+          return;
         }
+        AppMethodBeat.o(137558);
         return;
       }
       catch (Exception localException1)
       {
-        y.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException1, "start", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException1, "start", new Object[0]);
+        AppMethodBeat.o(137558);
         return;
       }
     }
     try
     {
-      this.eLh.prepareAsync();
+      this.gaO.prepareAsync();
+      AppMethodBeat.o(137558);
       return;
     }
     catch (Exception localException2)
     {
-      y.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException2, "prepareAsync", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException2, "prepareAsync", new Object[0]);
+      AppMethodBeat.o(137558);
     }
   }
   
   public final void seek(long paramLong)
   {
-    y.i("MicroMsg.Music.MMMediaPlayer", "seek %d", new Object[] { Long.valueOf(paramLong) });
-    this.eLh.seekTo((int)paramLong);
+    AppMethodBeat.i(137561);
+    ab.i("MicroMsg.Music.MMMediaPlayer", "seek %d", new Object[] { Long.valueOf(paramLong) });
+    this.gaO.seekTo((int)paramLong);
+    AppMethodBeat.o(137561);
   }
   
   public final void stop()
   {
-    y.i("MicroMsg.Music.MMMediaPlayer", "stop");
-    this.stop = true;
+    AppMethodBeat.i(137559);
+    ab.i("MicroMsg.Music.MMMediaPlayer", "stop");
+    this.oIr = true;
     try
     {
-      if (this.eLh != null)
+      if (this.gaO != null)
       {
-        this.eLh.stop();
-        this.eLh.release();
+        this.gaO.stop();
+        this.gaO.release();
       }
-      if (this.mAx != null)
+      if (this.paD != null)
       {
-        this.mAx.isStop = true;
-        this.mAx = null;
+        this.paD.isStop = true;
+        this.paD = null;
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException, "stop", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException, "stop", new Object[0]);
       }
     }
-    hT(false);
+    jQ(false);
+    AppMethodBeat.o(137559);
   }
 }
 

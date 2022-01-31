@@ -1,49 +1,71 @@
 package com.tencent.mm.plugin.emoji.h;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.protocal.c.vn;
+import com.tencent.mm.protocal.protobuf.EmotionSummary;
 import com.tencent.mm.storage.at;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 
 public final class a
 {
-  public static boolean Bh(String paramString)
+  public static boolean Lj(String paramString)
   {
-    if (paramString == null) {
+    AppMethodBeat.i(53866);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(53866);
       return false;
     }
-    return paramString.equals(aJK());
-  }
-  
-  public static final String aJK()
-  {
-    return EmojiGroupInfo.uCQ;
-  }
-  
-  public static boolean aJh()
-  {
-    return i.getEmojiStorageMgr().uBc.cwh();
+    boolean bool = paramString.equals(bnx());
+    AppMethodBeat.o(53866);
+    return bool;
   }
   
   public static boolean b(EmojiGroupInfo paramEmojiGroupInfo)
   {
-    if (paramEmojiGroupInfo == null) {
+    AppMethodBeat.i(53865);
+    if (paramEmojiGroupInfo == null)
+    {
+      AppMethodBeat.o(53865);
       return false;
     }
-    return Bh(paramEmojiGroupInfo.field_productID);
+    boolean bool = Lj(paramEmojiGroupInfo.field_productID);
+    AppMethodBeat.o(53865);
+    return bool;
   }
   
-  public static boolean d(vn paramvn)
+  public static boolean bmI()
   {
-    if (paramvn == null) {
+    AppMethodBeat.i(53863);
+    boolean bool = i.getEmojiStorageMgr().yNo.dyT();
+    AppMethodBeat.o(53863);
+    return bool;
+  }
+  
+  public static final String bnx()
+  {
+    AppMethodBeat.i(53867);
+    String str = EmojiGroupInfo.yPd;
+    AppMethodBeat.o(53867);
+    return str;
+  }
+  
+  public static boolean g(EmotionSummary paramEmotionSummary)
+  {
+    AppMethodBeat.i(53864);
+    if (paramEmotionSummary == null)
+    {
+      AppMethodBeat.o(53864);
       return false;
     }
-    return Bh(paramvn.syc);
+    boolean bool = Lj(paramEmotionSummary.ProductID);
+    AppMethodBeat.o(53864);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.h.a
  * JD-Core Version:    0.7.0.1
  */

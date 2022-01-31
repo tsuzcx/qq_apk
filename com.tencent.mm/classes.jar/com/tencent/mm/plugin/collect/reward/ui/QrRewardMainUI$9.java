@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.collect.reward.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class QrRewardMainUI$9
   implements View.OnClickListener
@@ -12,9 +13,11 @@ final class QrRewardMainUI$9
   
   public final void onClick(View paramView)
   {
-    y.d("MicroMsg.QrRewardMainUI", "open click");
-    QrRewardMainUI.a(this.iJi, true);
-    h.nFQ.f(14721, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
+    AppMethodBeat.i(41092);
+    ab.d("MicroMsg.QrRewardMainUI", "open click");
+    QrRewardMainUI.b(this.kPN, true);
+    h.qsU.e(14721, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
+    AppMethodBeat.o(41092);
   }
 }
 

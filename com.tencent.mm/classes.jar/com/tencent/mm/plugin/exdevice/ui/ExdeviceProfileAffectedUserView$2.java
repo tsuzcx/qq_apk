@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
 import com.tencent.mm.ui.base.MMHorList;
 
 final class ExdeviceProfileAffectedUserView$2
@@ -12,18 +13,20 @@ final class ExdeviceProfileAffectedUserView$2
   
   public final void onClick(View paramView)
   {
-    paramView = q.Gj();
-    if ((paramView != null) && (paramView.equals(ExdeviceProfileAffectedUserView.a(this.jEe))))
+    AppMethodBeat.i(20010);
+    paramView = r.Zn();
+    if ((paramView != null) && (paramView.equals(ExdeviceProfileAffectedUserView.a(this.lNC))))
     {
-      paramView = ExdeviceProfileAffectedUserView.b(this.jEe);
-      if (ExdeviceProfileAffectedUserView.b(this.jEe).getVisibility() != 0) {
-        break label52;
+      paramView = ExdeviceProfileAffectedUserView.b(this.lNC);
+      if (ExdeviceProfileAffectedUserView.b(this.lNC).getVisibility() != 0) {
+        break label64;
       }
     }
-    label52:
+    label64:
     for (int i = 8;; i = 0)
     {
       paramView.setVisibility(i);
+      AppMethodBeat.o(20010);
       return;
     }
   }

@@ -1,40 +1,22 @@
 package com.tencent.mm.ipcinvoker;
 
-import com.tencent.mm.ipcinvoker.d.e;
-import junit.framework.Assert;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public String dGD;
+  public String eEf;
   
   public d(String paramString)
   {
-    this.dGD = paramString;
+    this.eEf = paramString;
   }
   
-  public static String V(Object paramObject)
+  public static String ae(Object paramObject)
   {
-    return "Token#IPCObserver#" + paramObject.hashCode();
-  }
-  
-  private static abstract class c
-    implements e
-  {
-    String token;
-    
-    c(String paramString)
-    {
-      this.token = paramString;
-      Assert.assertNotNull(paramString);
-    }
-    
-    public boolean equals(Object paramObject)
-    {
-      if ((paramObject == null) || (!(paramObject instanceof c))) {
-        return false;
-      }
-      return this.token.equals(((c)paramObject).token);
-    }
+    AppMethodBeat.i(114020);
+    paramObject = "Token#IPCObserver#" + paramObject.hashCode();
+    AppMethodBeat.o(114020);
+    return paramObject;
   }
 }
 

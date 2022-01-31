@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.h.a.fi;
-import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.sdk.b.a;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$83
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  g$83(g paramg, WebViewJSSDKFileItem paramWebViewJSSDKFileItem) {}
+  g$83(g paramg, i parami, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, boolean paramBoolean) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    fi localfi = new fi();
-    localfi.bMc.op = 2;
-    localfi.bMc.fileName = this.rAi.fileName;
-    a.udP.m(localfi);
+    AppMethodBeat.i(155003);
+    g.a(this.vqm, this.uZa, this.val$appId, this.uUf, this.vrg, this.vrh, this.vri, this.isO, this.vrj);
+    AppMethodBeat.o(155003);
   }
 }
 

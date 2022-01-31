@@ -1,36 +1,39 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.cf.h.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelstat.m;
 import com.tencent.mm.modelstat.q;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bb;
 
 final class c$1
   implements h.a
 {
   c$1(c paramc) {}
   
-  public final void DG()
+  public final void RB()
   {
-    g.DQ();
-    if (g.DK())
+    AppMethodBeat.i(16199);
+    g.RM();
+    if (g.RG())
     {
-      m localm = q.RC();
+      m localm = q.akL();
       if (localm != null)
       {
-        y.i("MicroMsg.AccountStorage", "summer preCloseCallback netStatStg: " + localm);
+        ab.i("MicroMsg.AccountStorage", "summer preCloseCallback netStatStg: ".concat(String.valueOf(localm)));
         long l = System.currentTimeMillis();
-        localm.eEp.mx(true);
-        y.i("MicroMsg.NetStat", "summer net appendAllToDisk end takes: " + (System.currentTimeMillis() - l) + " ms");
+        localm.fUg.pM(true);
+        ab.i("MicroMsg.NetStat", "summer net appendAllToDisk end takes: " + (System.currentTimeMillis() - l) + " ms");
       }
     }
+    AppMethodBeat.o(16199);
   }
   
-  public final void DH() {}
+  public final void RC() {}
   
-  public final void DI() {}
+  public final void RD() {}
 }
 
 

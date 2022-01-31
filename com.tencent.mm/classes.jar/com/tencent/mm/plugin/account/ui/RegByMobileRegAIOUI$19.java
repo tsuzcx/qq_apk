@@ -1,28 +1,42 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.normsg.a.b;
+import com.tencent.mm.sdk.platformtools.av;
 
 final class RegByMobileRegAIOUI$19
-  extends ClickableSpan
+  implements TextWatcher
 {
-  RegByMobileRegAIOUI$19(RegByMobileRegAIOUI paramRegByMobileRegAIOUI) {}
+  private av gIk;
   
-  public final void onClick(View paramView)
+  RegByMobileRegAIOUI$19(RegByMobileRegAIOUI paramRegByMobileRegAIOUI, boolean[] paramArrayOfBoolean)
   {
-    bk.I(this.fqF.mController.uMN, this.fqF.getString(q.j.license_read_url, new Object[] { x.cqJ(), x.cqI(), "setting", Integer.valueOf(0), Integer.valueOf(0) }));
+    AppMethodBeat.i(152599);
+    this.gIk = new av();
+    AppMethodBeat.o(152599);
   }
   
-  public final void updateDrawState(TextPaint paramTextPaint)
+  public final void afterTextChanged(Editable paramEditable)
   {
-    paramTextPaint.setColor(this.fqF.getResources().getColor(q.c.link_color));
-    paramTextPaint.setUnderlineText(true);
+    AppMethodBeat.i(152600);
+    RegByMobileRegAIOUI.b(this.gIh);
+    AppMethodBeat.o(152600);
+  }
+  
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(152601);
+    if (this.gIl[0] != 0)
+    {
+      this.gIl[0] = false;
+      b.pgQ.VV("ie_reg");
+    }
+    b.pgQ.VW("ie_reg");
+    AppMethodBeat.o(152601);
   }
 }
 

@@ -1,21 +1,12 @@
 package a.a;
 
-import a.d.b.g;
-import java.util.Collections;
-import java.util.List;
+import a.l;
 
-public class f
-{
-  public static final <T> List<T> cw(T paramT)
-  {
-    paramT = Collections.singletonList(paramT);
-    g.j(paramT, "java.util.Collections.singletonList(element)");
-    return paramT;
-  }
-}
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"arrayOfNulls", "", "T", "reference", "size", "", "([Ljava/lang/Object;I)[Ljava/lang/Object;", "copyOfRangeToIndexCheck", "", "toIndex", "contentDeepHashCodeImpl", "contentDeepHashCode", "([Ljava/lang/Object;)I", "orEmpty", "([Ljava/lang/Object;)[Ljava/lang/Object;", "toString", "", "", "charset", "Ljava/nio/charset/Charset;", "toTypedArray", "", "(Ljava/util/Collection;)[Ljava/lang/Object;", "kotlin-stdlib"}, eaR=1)
+class f {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     a.a.f
  * JD-Core Version:    0.7.0.1
  */

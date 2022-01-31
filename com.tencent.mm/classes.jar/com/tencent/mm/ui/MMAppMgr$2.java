@@ -3,29 +3,19 @@ package com.tencent.mm.ui;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMAppMgr$2
   implements DialogInterface.OnClickListener
 {
-  MMAppMgr$2(CheckBox paramCheckBox, SharedPreferences paramSharedPreferences, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  MMAppMgr$2(Activity paramActivity) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.uNS.isChecked())
-    {
-      SharedPreferences.Editor localEditor = this.qPi.edit();
-      localEditor.putBoolean("gprs_alert", false);
-      localEditor.commit();
-    }
-    com.tencent.mm.sdk.platformtools.e.uel = false;
+    AppMethodBeat.i(153809);
     paramDialogInterface.dismiss();
-    MMAppMgr.gr(this.eRW);
-    if (this.uNT != null) {
-      this.uNT.onClick(paramDialogInterface, paramInt);
-    }
+    MMAppMgr.l(this.gjR, true);
+    AppMethodBeat.o(153809);
   }
 }
 

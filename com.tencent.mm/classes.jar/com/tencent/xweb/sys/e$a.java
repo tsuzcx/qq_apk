@@ -2,12 +2,13 @@ package com.tencent.xweb.sys;
 
 import android.content.Context;
 import android.view.KeyEvent;
-import com.tencent.xweb.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.v;
 
 final class e$a
   extends android.webkit.WebView
 {
-  public o gGh;
+  public v igO;
   
   public e$a(e parame, Context paramContext)
   {
@@ -16,23 +17,28 @@ final class e$a
   
   public final boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 4) && (this.xjZ.hasEnteredFullscreen()))
+    AppMethodBeat.i(84698);
+    if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 4) && (this.BHD.hasEnteredFullscreen()))
     {
-      this.xjZ.leaveFullscreen();
+      this.BHD.leaveFullscreen();
+      AppMethodBeat.o(84698);
       return true;
     }
+    AppMethodBeat.o(84698);
     return false;
   }
   
   protected final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(84697);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.xjZ.xjP != null) {
-      this.xjZ.xjP.onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.BHD.BHt != null) {
+      this.BHD.BHt.onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    if (this.gGh != null) {
-      this.gGh.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, this);
+    if (this.igO != null) {
+      this.igO.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, this);
     }
+    AppMethodBeat.o(84697);
   }
 }
 

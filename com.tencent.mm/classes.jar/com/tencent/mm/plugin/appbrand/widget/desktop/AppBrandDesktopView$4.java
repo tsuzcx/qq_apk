@@ -1,20 +1,34 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
-import android.support.v7.widget.GridLayoutManager.b;
-import android.support.v7.widget.RecyclerView.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.service.j;
+import com.tencent.mm.plugin.appbrand.widget.recentview.b;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class AppBrandDesktopView$4
-  extends GridLayoutManager.b
+  implements Runnable
 {
-  AppBrandDesktopView$4(AppBrandDesktopView paramAppBrandDesktopView) {}
+  AppBrandDesktopView$4(AppBrandDesktopView paramAppBrandDesktopView, LocalUsageInfo paramLocalUsageInfo, AppBrandStatObject paramAppBrandStatObject, int paramInt1, int paramInt2) {}
   
-  public final int bA(int paramInt)
+  public final void run()
   {
-    paramInt = this.hqv.getAdapter().getItemViewType(paramInt);
-    if ((paramInt == 3) || (paramInt == 11) || (paramInt == 10) || (paramInt == 2) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9)) {
-      return 4;
+    AppMethodBeat.i(143653);
+    AppBrandDesktopView.c(this.jfg, 13);
+    ((j)g.E(j.class)).a(this.jfg.getContext(), this.jfi.username, null, this.jfi.hcr, -1, null, this.jfj);
+    if ((AppBrandDesktopView.c(this.jfg) != null) && (!bo.isNullOrNil(this.jfi.appId)))
+    {
+      if (this.bHS == 1)
+      {
+        AppBrandDesktopView.c(this.jfg).bD(this.jfi.appId, this.lU - AppBrandDesktopView.g(this.jfg) + 1);
+        AppMethodBeat.o(143653);
+        return;
+      }
+      AppBrandDesktopView.c(this.jfg).bC(this.jfi.appId, this.lU + 1);
     }
-    return 1;
+    AppMethodBeat.o(143653);
   }
 }
 

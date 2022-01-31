@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.downloader_app.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class b$2
   
   public final void run()
   {
-    this.iTV.bN(this.val$index);
+    AppMethodBeat.i(136282);
+    this.lcW.bT(this.val$index);
+    AppMethodBeat.o(136282);
   }
 }
 

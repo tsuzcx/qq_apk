@@ -1,17 +1,14 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 final class LuckyMoneyPrepareUI$26
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   LuckyMoneyPrepareUI$26(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final void onClick(View paramView)
-  {
-    this.lXg.VH();
-  }
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

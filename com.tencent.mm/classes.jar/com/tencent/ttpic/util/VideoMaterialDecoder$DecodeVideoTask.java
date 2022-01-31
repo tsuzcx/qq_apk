@@ -1,7 +1,8 @@
 package com.tencent.ttpic.util;
 
 import android.os.AsyncTask;
-import com.tencent.common.VideoPngDecoder;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.FileUtils;
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
@@ -23,89 +24,81 @@ class VideoMaterialDecoder$DecodeVideoTask
   
   protected Boolean doInBackground(Void... paramVarArgs)
   {
-    for (;;)
+    AppMethodBeat.i(84045);
+    try
     {
-      int i;
-      int k;
-      try
+      paramVarArgs = this.files;
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
       {
-        paramVarArgs = this.files;
-        int m = paramVarArgs.length;
-        i = 0;
-        if (i < m)
+        Object localObject = paramVarArgs[i];
+        FileUtils.deleteFiles(this.dir.getAbsolutePath(), ".png");
+        localObject = new RandomAccessFile(((File)localObject).getAbsoluteFile(), "r");
+        long l = ((RandomAccessFile)localObject).length();
+        ((RandomAccessFile)localObject).seek(l - 4L);
+        byte[] arrayOfByte = new byte[4];
+        ((RandomAccessFile)localObject).read(arrayOfByte);
+        int k = ByteUtil.readInt(arrayOfByte);
+        if ((k <= 12) || (k >= 400))
         {
-          Object localObject1 = paramVarArgs[i];
-          VideoFileUtil.deleteFiles(this.dir.getAbsolutePath(), ".png");
-          RandomAccessFile localRandomAccessFile = new RandomAccessFile(((File)localObject1).getAbsoluteFile(), "r");
-          long l = localRandomAccessFile.length();
-          localRandomAccessFile.seek(l - 4L);
-          Object localObject2 = new byte[4];
-          localRandomAccessFile.read((byte[])localObject2);
-          int j = ByteUtil.readInt((byte[])localObject2);
-          if ((j <= 12) || (j >= 400))
+          ((RandomAccessFile)localObject).close();
+          i += 1;
+        }
+        else
+        {
+          ((RandomAccessFile)localObject).seek(l - k + 8L);
+          k = (k - 12) / 4;
+          paramVarArgs = new int[k];
+          i = 0;
+          while (i < k)
           {
-            localRandomAccessFile.close();
+            ((RandomAccessFile)localObject).read(arrayOfByte);
+            paramVarArgs[i] = ByteUtil.readInt(arrayOfByte);
+            i += 1;
           }
-          else
+          localObject = new ArrayList();
+          i = 0;
+          for (;;)
           {
-            localRandomAccessFile.seek(l - j + 8L);
-            int n = (j - 12) / 4;
-            int[] arrayOfInt = new int[n];
+            ((List)localObject).clear();
             j = 0;
-            if (j < n)
+            while (j < k)
             {
-              localRandomAccessFile.read((byte[])localObject2);
-              arrayOfInt[j] = ByteUtil.readInt((byte[])localObject2);
-              j += 1;
-              continue;
-            }
-            localObject1 = new VideoPngDecoder(((File)localObject1).getAbsolutePath());
-            localObject2 = new ArrayList();
-            k = 0;
-            j = 0;
-            if (k == 0)
-            {
-              ((List)localObject2).clear();
-              k = 0;
-              if (k < n)
-              {
-                if (arrayOfInt[k] != j) {
-                  break label391;
-                }
-                ((List)localObject2).add(this.dir.getAbsolutePath() + File.separator + VideoMaterialUtil.getMaterialId(this.dir.getAbsolutePath()) + "_" + k + ".png");
-                break label391;
+              if (paramVarArgs[j] == i) {
+                ((List)localObject).add(this.dir.getAbsolutePath() + File.separator + VideoMaterialUtil.getMaterialId(this.dir.getAbsolutePath()) + "_" + j + ".png");
               }
-              k = ((VideoPngDecoder)localObject1).w((List)localObject2);
               j += 1;
-              continue;
             }
-            ((VideoPngDecoder)localObject1).release();
-            localRandomAccessFile.close();
+            i += 1;
           }
         }
       }
-      catch (Exception paramVarArgs)
+      if (this.countDownLatch != null) {
+        this.countDownLatch.countDown();
+      }
+    }
+    catch (Exception paramVarArgs)
+    {
+      for (;;)
       {
         VideoMaterialDecoder.access$000();
-        paramVarArgs.toString();
-        return Boolean.valueOf(true);
-        if (this.countDownLatch == null) {
-          continue;
-        }
-        this.countDownLatch.countDown();
-        continue;
-      }
-      finally
-      {
         if (this.countDownLatch != null) {
           this.countDownLatch.countDown();
         }
       }
-      i += 1;
-      continue;
-      label391:
-      k += 1;
     }
+    finally
+    {
+      if (this.countDownLatch == null) {
+        break label348;
+      }
+      this.countDownLatch.countDown();
+      AppMethodBeat.o(84045);
+    }
+    paramVarArgs = Boolean.TRUE;
+    AppMethodBeat.o(84045);
+    return paramVarArgs;
   }
   
   public void setCountDownLatch(CountDownLatch paramCountDownLatch)

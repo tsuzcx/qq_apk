@@ -1,17 +1,21 @@
 package com.tencent.mm.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SingleChatInfoUI$4
-  implements MenuItem.OnMenuItemClickListener
+  implements Runnable
 {
-  SingleChatInfoUI$4(SingleChatInfoUI paramSingleChatInfoUI) {}
+  SingleChatInfoUI$4(SingleChatInfoUI paramSingleChatInfoUI, int paramInt) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void run()
   {
-    this.uQS.finish();
-    return true;
+    AppMethodBeat.i(29869);
+    View localView = ((com.tencent.mm.ui.base.preference.a)SingleChatInfoUI.b(this.zfe)).a(this.efX, this.zfe.getListView());
+    if (localView != null) {
+      com.tencent.mm.ui.h.a.b(this.zfe.getContext(), localView);
+    }
+    AppMethodBeat.o(29869);
   }
 }
 

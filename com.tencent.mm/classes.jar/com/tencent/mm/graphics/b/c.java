@@ -2,40 +2,74 @@ package com.tencent.mm.graphics.b;
 
 import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.concurrent.TimeUnit;
 
 public enum c
   implements Choreographer.FrameCallback
 {
-  public Choreographer aUi = Choreographer.getInstance();
-  public int dDp = 0;
-  double dDq = 0.0D;
-  private int dDr = 500;
-  public boolean dDs = false;
-  public long frameStartTime = 0L;
+  public Choreographer choreographer;
+  private int eAQ;
+  double eAR;
+  private int eAS;
+  public boolean eAT;
+  private long frameStartTime;
   
-  private c() {}
+  static
+  {
+    AppMethodBeat.i(57085);
+    eAP = new c("INSTANCE");
+    eAU = new c[] { eAP };
+    AppMethodBeat.o(57085);
+  }
+  
+  private c()
+  {
+    AppMethodBeat.i(57082);
+    this.frameStartTime = 0L;
+    this.eAQ = 0;
+    this.eAR = 0.0D;
+    this.eAS = 500;
+    this.eAT = false;
+    this.choreographer = Choreographer.getInstance();
+    AppMethodBeat.o(57082);
+  }
   
   public final void doFrame(long paramLong)
   {
+    AppMethodBeat.i(57084);
     paramLong = TimeUnit.NANOSECONDS.toMillis(paramLong);
     if (this.frameStartTime > 0L)
     {
       long l = paramLong - this.frameStartTime;
-      this.dDp += 1;
-      if (l > this.dDr)
+      this.eAQ += 1;
+      if (l > this.eAS)
       {
-        this.dDq = (this.dDp * 1000 / l);
+        this.eAR = (this.eAQ * 1000 / l);
         this.frameStartTime = paramLong;
-        this.dDp = 0;
+        this.eAQ = 0;
       }
     }
     for (;;)
     {
-      this.aUi.postFrameCallback(this);
+      this.choreographer.postFrameCallback(this);
+      AppMethodBeat.o(57084);
       return;
       this.frameStartTime = paramLong;
     }
+  }
+  
+  public final void stop()
+  {
+    AppMethodBeat.i(57083);
+    this.frameStartTime = 0L;
+    this.eAQ = 0;
+    this.eAT = false;
+    ab.i("MicroMsg.Metronome", "[stop] stack:%s", new Object[] { bo.dtY() });
+    this.choreographer.removeFrameCallback(this);
+    AppMethodBeat.o(57083);
   }
 }
 

@@ -1,73 +1,70 @@
 package com.tencent.mm.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import com.tencent.mm.ci.a.e;
-import com.tencent.mm.ci.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public abstract class SearchBarUI
   extends BaseActivity
-  implements ah.a
+  implements ac.a
 {
-  ah uQz;
+  ac zeL;
   
   public void onClickBackBtn(View paramView)
   {
     finish();
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = BaseActivity.c.uHo;
+    paramBundle = BaseActivity.c.yUz;
     SearchBarUI.1 local1 = new SearchBarUI.1(this);
     BaseActivity.b localb = new BaseActivity.b();
-    localb.uHd = 0;
-    localb.uHe = 0;
+    localb.yUo = 0;
+    localb.yUp = 0;
     localb.text = "";
-    localb.fkl = local1;
-    localb.kfL = null;
-    localb.uHi = paramBundle;
-    if ((localb.uHe == a.e.actionbar_icon_dark_more) && ("".length() <= 0)) {
-      localb.text = getString(a.i.actionbar_more);
+    localb.gBC = local1;
+    localb.mAd = null;
+    localb.yUt = paramBundle;
+    if ((localb.yUp == 2130837620) && ("".length() <= 0)) {
+      localb.text = getString(2131296400);
     }
-    int j = localb.uHd;
+    int j = localb.yUo;
     int i = 0;
     for (;;)
     {
-      if (i < this.uGV.size())
+      if (i < this.yUg.size())
       {
-        if (((BaseActivity.b)this.uGV.get(i)).uHd == j)
+        if (((BaseActivity.b)this.yUg.get(i)).yUo == j)
         {
-          ao.s("match menu, id ：" + j + ", remove it", new Object[0]);
-          this.uGV.remove(i);
+          ak.d("BaseActivity", "match menu, id ：" + j + ", remove it", new Object[0]);
+          this.yUg.remove(i);
         }
       }
       else
       {
-        this.uGV.add(localb);
+        this.yUg.add(localb);
         new Handler().postDelayed(new BaseActivity.6(this), 200L);
-        setBackBtn(new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            SearchBarUI.this.finish();
-            return true;
-          }
-        });
+        setBackBtn(new SearchBarUI.2(this));
         return;
       }
       i += 1;
     }
   }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.SearchBarUI
  * JD-Core Version:    0.7.0.1
  */

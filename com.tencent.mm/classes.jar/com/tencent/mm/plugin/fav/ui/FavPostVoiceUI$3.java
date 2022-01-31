@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.fav.ui;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.TranslateAnimation;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavPostVoiceUI$3
   implements Runnable
@@ -11,16 +12,18 @@ final class FavPostVoiceUI$3
   
   public final void run()
   {
-    this.kcp.findViewById(n.e.voice_rcd_hint).setVisibility(0);
-    FavPostVoiceUI.d(this.kcp).setVisibility(0);
-    this.kcp.findViewById(n.e.fav_post_voice_footer).setVisibility(0);
+    AppMethodBeat.i(74043);
+    this.mxa.findViewById(2131824070).setVisibility(0);
+    FavPostVoiceUI.d(this.mxa).setVisibility(0);
+    this.mxa.findViewById(2131824080).setVisibility(0);
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     localAlphaAnimation.setDuration(300L);
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
     localTranslateAnimation.setDuration(300L);
-    FavPostVoiceUI.d(this.kcp).startAnimation(localAlphaAnimation);
-    this.kcp.findViewById(n.e.voice_rcd_hint).startAnimation(localAlphaAnimation);
-    this.kcp.findViewById(n.e.fav_post_voice_footer).startAnimation(localTranslateAnimation);
+    FavPostVoiceUI.d(this.mxa).startAnimation(localAlphaAnimation);
+    this.mxa.findViewById(2131824070).startAnimation(localAlphaAnimation);
+    this.mxa.findViewById(2131824080).startAnimation(localTranslateAnimation);
+    AppMethodBeat.o(74043);
   }
 }
 

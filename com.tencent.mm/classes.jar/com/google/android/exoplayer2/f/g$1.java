@@ -3,19 +3,28 @@ package com.google.android.exoplayer2.f;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.f.a.c;
 import com.google.android.exoplayer2.f.g.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$1
   implements g
 {
   public final boolean g(Format paramFormat)
   {
-    paramFormat = paramFormat.aus;
-    return ("text/vtt".equals(paramFormat)) || ("text/x-ssa".equals(paramFormat)) || ("application/ttml+xml".equals(paramFormat)) || ("application/x-mp4-vtt".equals(paramFormat)) || ("application/x-subrip".equals(paramFormat)) || ("application/x-quicktime-tx3g".equals(paramFormat)) || ("application/cea-608".equals(paramFormat)) || ("application/x-mp4-cea-608".equals(paramFormat)) || ("application/cea-708".equals(paramFormat)) || ("application/dvbsubs".equals(paramFormat));
+    AppMethodBeat.i(95654);
+    paramFormat = paramFormat.awK;
+    if (("text/vtt".equals(paramFormat)) || ("text/x-ssa".equals(paramFormat)) || ("application/ttml+xml".equals(paramFormat)) || ("application/x-mp4-vtt".equals(paramFormat)) || ("application/x-subrip".equals(paramFormat)) || ("application/x-quicktime-tx3g".equals(paramFormat)) || ("application/cea-608".equals(paramFormat)) || ("application/x-mp4-cea-608".equals(paramFormat)) || ("application/cea-708".equals(paramFormat)) || ("application/dvbsubs".equals(paramFormat)))
+    {
+      AppMethodBeat.o(95654);
+      return true;
+    }
+    AppMethodBeat.o(95654);
+    return false;
   }
   
   public final e k(Format paramFormat)
   {
-    String str = paramFormat.aus;
+    AppMethodBeat.i(95655);
+    String str = paramFormat.awK;
     int i = -1;
     switch (str.hashCode())
     {
@@ -25,7 +34,9 @@ final class g$1
       switch (i)
       {
       default: 
-        throw new IllegalArgumentException("Attempted to create decoder for unsupported format");
+        paramFormat = new IllegalArgumentException("Attempted to create decoder for unsupported format");
+        AppMethodBeat.o(95655);
+        throw paramFormat;
         if (str.equals("text/vtt"))
         {
           i = 0;
@@ -77,15 +88,33 @@ final class g$1
         break;
       }
     }
-    return new com.google.android.exoplayer2.f.g.g();
-    return new com.google.android.exoplayer2.f.c.a(paramFormat.auu);
-    return new b();
-    return new com.google.android.exoplayer2.f.e.a();
-    return new com.google.android.exoplayer2.f.d.a();
-    return new com.google.android.exoplayer2.f.f.a(paramFormat.auu);
-    return new com.google.android.exoplayer2.f.a.a(paramFormat.aus, paramFormat.auJ);
-    return new c(paramFormat.auJ);
-    return new com.google.android.exoplayer2.f.b.a(paramFormat.auu);
+    paramFormat = new com.google.android.exoplayer2.f.g.g();
+    AppMethodBeat.o(95655);
+    return paramFormat;
+    paramFormat = new com.google.android.exoplayer2.f.c.a(paramFormat.awM);
+    AppMethodBeat.o(95655);
+    return paramFormat;
+    paramFormat = new b();
+    AppMethodBeat.o(95655);
+    return paramFormat;
+    paramFormat = new com.google.android.exoplayer2.f.e.a();
+    AppMethodBeat.o(95655);
+    return paramFormat;
+    paramFormat = new com.google.android.exoplayer2.f.d.a();
+    AppMethodBeat.o(95655);
+    return paramFormat;
+    paramFormat = new com.google.android.exoplayer2.f.f.a(paramFormat.awM);
+    AppMethodBeat.o(95655);
+    return paramFormat;
+    paramFormat = new com.google.android.exoplayer2.f.a.a(paramFormat.awK, paramFormat.axb);
+    AppMethodBeat.o(95655);
+    return paramFormat;
+    paramFormat = new c(paramFormat.axb);
+    AppMethodBeat.o(95655);
+    return paramFormat;
+    paramFormat = new com.google.android.exoplayer2.f.b.a(paramFormat.awM);
+    AppMethodBeat.o(95655);
+    return paramFormat;
   }
 }
 

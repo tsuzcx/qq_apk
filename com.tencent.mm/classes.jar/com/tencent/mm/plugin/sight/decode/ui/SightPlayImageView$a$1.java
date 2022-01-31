@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sight.decode.ui;
 
 import android.view.ViewGroup.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SightPlayImageView$a$1
   implements Runnable
@@ -9,7 +10,9 @@ final class SightPlayImageView$a$1
   
   public final void run()
   {
-    this.ofM.setLayoutParams(this.ofN);
+    AppMethodBeat.i(70252);
+    this.qUb.setLayoutParams(this.qUc);
+    AppMethodBeat.o(70252);
   }
 }
 

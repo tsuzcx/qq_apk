@@ -5,7 +5,7 @@ import android.webkit.WebChromeClient;
 class DefaultWebViewImpl$4
   extends WebChromeClient
 {
-  DefaultWebViewImpl$4(ac paramac) {}
+  DefaultWebViewImpl$4(al paramal) {}
 }
 
 

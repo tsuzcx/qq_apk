@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.topstory.ui.video.list;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class f$1
   
   public final void onClick(View paramView)
   {
-    this.pHJ.getListVideoUIComponent().akJ();
+    AppMethodBeat.i(2035);
+    this.tlr.getListVideoUIComponent().aFp();
+    AppMethodBeat.o(2035);
   }
 }
 

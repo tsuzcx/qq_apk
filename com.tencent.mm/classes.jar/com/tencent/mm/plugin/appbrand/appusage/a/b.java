@@ -1,65 +1,78 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
-import com.tencent.mm.h.c.o;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bsi;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public final class b
-  extends o
+public class b
+  extends j<a>
 {
-  public static c.a buS;
+  public static final String[] fkl;
+  private e db;
   
   static
   {
-    c.a locala = new c.a();
-    locala.ujL = new Field[9];
-    locala.columns = new String[10];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appId";
-    locala.ujN.put("appId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" appId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.ujM = "appId";
-    locala.columns[1] = "userName";
-    locala.ujN.put("userName", "TEXT");
-    localStringBuilder.append(" userName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "nickName";
-    locala.ujN.put("nickName", "TEXT");
-    localStringBuilder.append(" nickName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "logo";
-    locala.ujN.put("logo", "TEXT");
-    localStringBuilder.append(" logo TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "sessionId";
-    locala.ujN.put("sessionId", "LONG");
-    localStringBuilder.append(" sessionId LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "descInfo";
-    locala.ujN.put("descInfo", "TEXT");
-    localStringBuilder.append(" descInfo TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "evaluateScore";
-    locala.ujN.put("evaluateScore", "DOUBLE");
-    localStringBuilder.append(" evaluateScore DOUBLE");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "words";
-    locala.ujN.put("words", "TEXT");
-    localStringBuilder.append(" words TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "recommendWxa";
-    locala.ujN.put("recommendWxa", "BLOB");
-    localStringBuilder.append(" recommendWxa BLOB");
-    locala.columns[9] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    buS = locala;
+    AppMethodBeat.i(129737);
+    fkl = new String[] { j.getCreateSQLs(a.info, "AppBrandRecommendCard") };
+    AppMethodBeat.o(129737);
   }
   
-  protected final c.a rM()
+  public b(e parame)
   {
-    return buS;
+    super(parame, a.info, "AppBrandRecommendCard", null);
+    this.db = parame;
+  }
+  
+  public final void axH()
+  {
+    AppMethodBeat.i(129734);
+    this.db.execSQL("AppBrandRecommendCard", "delete from AppBrandRecommendCard");
+    AppMethodBeat.o(129734);
+  }
+  
+  public final LinkedList<bsi> axI()
+  {
+    AppMethodBeat.i(129736);
+    Cursor localCursor = this.db.rawQuery("select * from AppBrandRecommendCard LIMIT 100", null);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(129736);
+      return null;
+    }
+    ab.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "getRecommendWxaList()");
+    LinkedList localLinkedList = new LinkedList();
+    while (localCursor.moveToNext())
+    {
+      a locala = new a();
+      locala.convertFrom(localCursor);
+      localLinkedList.add(locala.field_recommendCard);
+    }
+    localCursor.close();
+    AppMethodBeat.o(129736);
+    return localLinkedList;
+  }
+  
+  public final void t(LinkedList<bsi> paramLinkedList)
+  {
+    AppMethodBeat.i(129735);
+    ab.i("MicroMsg.Recommend.AppBrandRecommendCardStorage", "addRecommendWxaList()");
+    Object localObject = new LinkedList();
+    ((LinkedList)localObject).addAll(paramLinkedList);
+    paramLinkedList = ((LinkedList)localObject).iterator();
+    while (paramLinkedList.hasNext())
+    {
+      localObject = (bsi)paramLinkedList.next();
+      a locala = new a();
+      locala.field_appId = ((bsi)localObject).xFL;
+      locala.field_recommendCard = ((bsi)localObject);
+      insert(locala);
+    }
+    AppMethodBeat.o(129735);
   }
 }
 

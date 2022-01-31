@@ -9,72 +9,52 @@ import java.util.Iterator;
 public abstract class e<V, C extends g<V>>
   extends t<V, C>
 {
+  private static boolean a(Spannable paramSpannable, com.tencent.mm.plugin.wenote.model.nativenote.manager.e parame, Object paramObject, s params)
+  {
+    int k = paramSpannable.getSpanStart(paramObject);
+    int i = paramSpannable.getSpanEnd(paramObject);
+    int j = parame.akX;
+    int m = parame.Fe;
+    int n = Math.max(k, j);
+    int i1 = Math.min(i, m);
+    if (n > i1) {}
+    do
+    {
+      return false;
+      if (n < i1) {
+        return true;
+      }
+      if (((k > j) && (i < m)) || ((j > k) && (m < i))) {
+        return true;
+      }
+    } while (params == s.vBz);
+    k = paramSpannable.getSpanFlags(paramObject) & 0x33;
+    if (i == j) {
+      return f(k, new int[] { 34, 18 });
+    }
+    return f(k, new int[] { 17, 18 });
+  }
+  
   protected final ArrayList<Object> a(Spannable paramSpannable, com.tencent.mm.plugin.wenote.model.nativenote.manager.e parame, s params)
   {
-    ArrayList localArrayList = new ArrayList();
-    Object[] arrayOfObject = paramSpannable.getSpans(Math.max(0, parame.aiH - 1), Math.min(paramSpannable.length(), parame.Eo + 1), CharacterStyle.class);
-    int j = arrayOfObject.length;
     int i = 0;
-    if (i < j)
+    ArrayList localArrayList = new ArrayList();
+    Object[] arrayOfObject = paramSpannable.getSpans(Math.max(0, parame.akX - 1), Math.min(paramSpannable.length(), parame.Fe + 1), CharacterStyle.class);
+    int j = arrayOfObject.length;
+    while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      int n;
-      int k;
-      int m;
-      int i1;
-      int i2;
-      int i3;
-      boolean bool;
-      if (bH(localObject))
-      {
-        n = paramSpannable.getSpanStart(localObject);
-        k = paramSpannable.getSpanEnd(localObject);
-        m = parame.aiH;
-        i1 = parame.Eo;
-        i2 = Math.max(n, m);
-        i3 = Math.min(k, i1);
-        if (i2 <= i3) {
-          break label157;
-        }
-        bool = false;
+      if ((cl(localObject)) && (a(paramSpannable, parame, localObject, params))) {
+        localArrayList.add(localObject);
       }
-      for (;;)
-      {
-        if (bool) {
-          localArrayList.add(localObject);
-        }
-        i += 1;
-        break;
-        label157:
-        if (i2 < i3)
-        {
-          bool = true;
-        }
-        else if (((n > m) && (k < i1)) || ((m > n) && (i1 < k)))
-        {
-          bool = true;
-        }
-        else if (params == s.rKV)
-        {
-          bool = false;
-        }
-        else
-        {
-          n = paramSpannable.getSpanFlags(localObject) & 0x33;
-          if (k == m) {
-            bool = d(n, new int[] { 34, 18 });
-          } else {
-            bool = d(n, new int[] { 17, 18 });
-          }
-        }
-      }
+      i += 1;
     }
     return localArrayList;
   }
   
   public void a(WXRTEditText paramWXRTEditText, V paramV)
   {
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.e locale = p(paramWXRTEditText);
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.e locale = r(paramWXRTEditText);
     int i;
     int j;
     label41:
@@ -84,31 +64,31 @@ public abstract class e<V, C extends g<V>>
     {
       i = 18;
       paramWXRTEditText = paramWXRTEditText.getText();
-      Iterator localIterator = a(paramWXRTEditText, locale, s.rKW).iterator();
+      Iterator localIterator = a(paramWXRTEditText, locale, s.vBA).iterator();
       j = i;
       if (!localIterator.hasNext()) {
         break label233;
       }
       localObject = localIterator.next();
-      boolean bool = cja().equals(paramV);
+      boolean bool = djB().equals(paramV);
       k = paramWXRTEditText.getSpanStart(localObject);
       i = j;
-      if (k < locale.aiH)
+      if (k < locale.akX)
       {
         if (!bool) {
           break label176;
         }
-        locale.eR(locale.aiH - k, 0);
+        locale.gX(locale.akX - k, 0);
         i = 34;
       }
       label116:
       j = paramWXRTEditText.getSpanEnd(localObject);
-      if (j > locale.Eo)
+      if (j > locale.Fe)
       {
         if (!bool) {
           break label206;
         }
-        locale.eR(0, j - locale.Eo);
+        locale.gX(0, j - locale.Fe);
       }
     }
     for (;;)
@@ -119,27 +99,27 @@ public abstract class e<V, C extends g<V>>
       i = 34;
       break;
       label176:
-      cja();
-      paramWXRTEditText.setSpan(ciZ(), k, locale.aiH, 33);
+      djB();
+      paramWXRTEditText.setSpan(djA(), k, locale.akX, 33);
       i = j;
       break label116;
       label206:
-      cja();
-      paramWXRTEditText.setSpan(ciZ(), locale.Eo, j, 34);
+      djB();
+      paramWXRTEditText.setSpan(djA(), locale.Fe, j, 34);
     }
     label233:
     if (paramV != null) {
-      paramWXRTEditText.setSpan(ciZ(), locale.aiH, locale.Eo, j);
+      paramWXRTEditText.setSpan(djA(), locale.akX, locale.Fe, j);
     }
   }
   
-  public abstract boolean bH(Object paramObject);
+  public abstract boolean cl(Object paramObject);
   
-  protected abstract g<V> ciZ();
+  protected abstract g<V> djA();
   
-  protected abstract V cja();
+  protected abstract V djB();
   
-  protected final com.tencent.mm.plugin.wenote.model.nativenote.manager.e p(WXRTEditText paramWXRTEditText)
+  protected final com.tencent.mm.plugin.wenote.model.nativenote.manager.e r(WXRTEditText paramWXRTEditText)
   {
     return new com.tencent.mm.plugin.wenote.model.nativenote.manager.e(paramWXRTEditText);
   }

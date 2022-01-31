@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.jsapi.g.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.h;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -13,49 +13,36 @@ import org.json.JSONObject;
 public final class h
   extends a
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "getMapScale";
-  
-  private static int p(JSONObject paramJSONObject)
-  {
-    try
-    {
-      int i = paramJSONObject.optInt("mapId");
-      return i;
-    }
-    catch (Exception paramJSONObject)
-    {
-      y.e("MicroMsg.JsApiGetMapScale", "get mapId error, exception : %s", new Object[] { paramJSONObject });
-    }
-    return -1;
-  }
+  public static final int CTRL_INDEX = 144;
+  public static final String NAME = "getMapCenterLocation";
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
+    AppMethodBeat.i(93845);
+    super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      y.e("MicroMsg.JsApiGetMapScale", "JsApiGetMapScale data is null");
-      paramc.C(paramInt, h("fail:data is null", null));
+      ab.e("MicroMsg.JsApiGetMapCenterLocation", "data is null");
+      paramc.h(paramInt, j("fail:invalid data", null));
+      AppMethodBeat.o(93845);
       return;
     }
-    Object localObject = ((com.tencent.mm.plugin.appbrand.jsapi.base.f)paramc.i(com.tencent.mm.plugin.appbrand.jsapi.base.f.class)).a(paramc);
-    if (localObject == null)
-    {
-      y.e("MicroMsg.JsApiGetMapScale", "pageView is null");
-      paramc.C(paramInt, h("fail", null));
-      return;
-    }
-    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.g.a.f.o(paramc.getAppId(), ((e)localObject).ahJ(), p(paramJSONObject));
+    ab.i("MicroMsg.JsApiGetMapCenterLocation", "data:%s", new Object[] { paramJSONObject });
+    paramJSONObject = f(paramc, paramJSONObject);
     if (paramJSONObject == null)
     {
-      y.e("MicroMsg.JsApiGetMapScale", "mapView is null, return");
-      paramc.C(paramInt, h("fail", null));
+      ab.e("MicroMsg.JsApiGetMapCenterLocation", "mapView is null, return");
+      paramc.h(paramInt, j("fail:mapview is null", null));
+      AppMethodBeat.o(93845);
       return;
     }
-    localObject = new HashMap();
-    ((Map)localObject).put("scale", Integer.valueOf(paramJSONObject.getZoomLevel()));
-    y.i("MicroMsg.JsApiGetMapScale", "getMapScale ok, values:%s", new Object[] { localObject.toString() });
-    paramc.C(paramInt, h("ok", (Map)localObject));
+    HashMap localHashMap = new HashMap();
+    b.h localh = paramJSONObject.aDy();
+    localHashMap.put("latitude", Double.valueOf(localh.latitude));
+    localHashMap.put("longitude", Double.valueOf(localh.longitude));
+    ab.i("MicroMsg.JsApiGetMapCenterLocation", "ok, values:%s", new Object[] { localHashMap.toString() });
+    a(paramc, paramInt, j("ok", localHashMap), true, paramJSONObject.aDx());
+    AppMethodBeat.o(93845);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.tools;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class AddFavoriteUI$9
   implements Runnable
@@ -9,12 +10,14 @@ final class AddFavoriteUI$9
   
   public final void run()
   {
-    AddFavoriteUI.c(this.vYd).sendEmptyMessage(0);
+    AppMethodBeat.i(34751);
+    AddFavoriteUI.c(this.Aqp).sendEmptyMessage(0);
+    AppMethodBeat.o(34751);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.tools.AddFavoriteUI.9
  * JD-Core Version:    0.7.0.1
  */

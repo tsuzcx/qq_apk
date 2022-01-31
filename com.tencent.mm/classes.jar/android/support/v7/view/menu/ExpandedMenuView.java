@@ -2,7 +2,7 @@ package android.support.v7.view.menu;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.widget.ax;
+import android.support.v7.widget.az;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,9 +14,9 @@ public final class ExpandedMenuView
   extends ListView
   implements h.b, p, AdapterView.OnItemClickListener
 {
-  private static final int[] Vb = { 16842964, 16843049 };
-  private int Vc;
-  private h dm;
+  private static final int[] VO = { 16842964, 16843049 };
+  private int VP;
+  private h eq;
   
   public ExpandedMenuView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,29 +27,29 @@ public final class ExpandedMenuView
   {
     super(paramContext, paramAttributeSet);
     setOnItemClickListener(this);
-    paramContext = ax.a(paramContext, paramAttributeSet, Vb, paramInt, 0);
+    paramContext = az.a(paramContext, paramAttributeSet, VO, paramInt, 0);
     if (paramContext.hasValue(0)) {
       setBackgroundDrawable(paramContext.getDrawable(0));
     }
     if (paramContext.hasValue(1)) {
       setDivider(paramContext.getDrawable(1));
     }
-    paramContext.alZ.recycle();
+    paramContext.aoo.recycle();
   }
   
   public final void a(h paramh)
   {
-    this.dm = paramh;
+    this.eq = paramh;
   }
   
   public final boolean f(j paramj)
   {
-    return this.dm.a(paramj, null, 0);
+    return this.eq.a(paramj, null, 0);
   }
   
   public final int getWindowAnimations()
   {
-    return this.Vc;
+    return this.VP;
   }
   
   protected final void onDetachedFromWindow()

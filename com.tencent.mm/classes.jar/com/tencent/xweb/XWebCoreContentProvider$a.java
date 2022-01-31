@@ -1,6 +1,7 @@
 package com.tencent.xweb;
 
-import com.tencent.xweb.util.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.util.f;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -8,34 +9,43 @@ import org.xwalk.core.Log;
 
 public final class XWebCoreContentProvider$a
 {
-  private static List<XWebCoreContentProvider.b> xhs = new ArrayList();
-  private static final Object xht = new Object();
+  private static List<XWebCoreContentProvider.b> BEv;
+  private static final Object BEw;
+  
+  static
+  {
+    AppMethodBeat.i(3946);
+    BEv = new ArrayList();
+    BEw = new Object();
+    AppMethodBeat.o(3946);
+  }
   
   public static void a(XWebCoreContentProvider.b paramb)
   {
-    synchronized (xht)
+    AppMethodBeat.i(3944);
+    synchronized (BEw)
     {
-      xhs.add(paramb);
+      BEv.add(paramb);
+      AppMethodBeat.o(3944);
       return;
     }
   }
   
-  public static void cSx()
+  public static void dYD()
   {
-    if (xhs.size() == 0) {
-      return;
-    }
+    AppMethodBeat.i(3945);
     Log.i("XWebCoreContentProvider", "CachedInfoMgr process cached info");
-    synchronized (xht)
+    synchronized (BEw)
     {
-      Iterator localIterator = xhs.iterator();
+      Iterator localIterator = BEv.iterator();
       if (localIterator.hasNext())
       {
         XWebCoreContentProvider.b localb = (XWebCoreContentProvider.b)localIterator.next();
-        e.bp(localb.key, localb.value);
+        f.bW(localb.key, localb.value);
       }
     }
-    xhs.clear();
+    BEv.clear();
+    AppMethodBeat.o(3945);
   }
 }
 

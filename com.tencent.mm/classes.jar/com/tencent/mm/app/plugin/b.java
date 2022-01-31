@@ -1,45 +1,26 @@
 package com.tencent.mm.app.plugin;
 
-import com.tencent.mm.br.d;
-import com.tencent.mm.m.e;
-import com.tencent.mm.m.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jj;
+import com.tencent.mm.g.a.jj.b;
+import com.tencent.mm.sdk.b.a;
 
 public final class b
 {
-  public static boolean tx()
+  public static boolean Cb()
   {
-    if (!d.SP("translate")) {}
-    String str;
-    do
-    {
-      return false;
-      str = g.AA().getValue("TranslateMsgOff");
-      if (bk.bl(str)) {
-        return true;
-      }
-    } while (bk.ZR(str) != 0);
-    return true;
-  }
-  
-  public static boolean ty()
-  {
-    if (!d.SP("translate")) {}
-    String str;
-    do
-    {
-      return false;
-      str = g.AA().getValue("ReTranslateSwitch");
-      if (bk.bl(str)) {
-        return true;
-      }
-    } while (bk.ZR(str) != 0);
-    return true;
+    AppMethodBeat.i(15616);
+    jj localjj = new jj();
+    localjj.cyO.ctW = 7;
+    a.ymk.l(localjj);
+    boolean bool = localjj.cyP.cpz;
+    AppMethodBeat.o(15616);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.plugin.b
  * JD-Core Version:    0.7.0.1
  */

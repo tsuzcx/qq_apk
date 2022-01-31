@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.label.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactLabelEditUI$6
   implements DialogInterface.OnClickListener
@@ -10,8 +11,10 @@ final class ContactLabelEditUI$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.lBl.setResult(0);
-    this.lBl.finish();
+    AppMethodBeat.i(22543);
+    this.nYx.setResult(0);
+    this.nYx.finish();
+    AppMethodBeat.o(22543);
   }
 }
 

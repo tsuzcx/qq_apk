@@ -3,6 +3,7 @@ package com.tencent.mm.pluginsdk.ui.chat;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class n$4
   implements View.OnTouchListener
@@ -11,7 +12,10 @@ final class n$4
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return n.a(this.shE, paramView, paramMotionEvent);
+    AppMethodBeat.i(27975);
+    boolean bool = n.a(this.vZW, paramView, paramMotionEvent);
+    AppMethodBeat.o(27975);
+    return bool;
   }
 }
 

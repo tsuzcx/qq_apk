@@ -1,50 +1,52 @@
 package com.tencent.mm.plugin.appbrand.dynamic.h;
 
-import com.tencent.mm.aa.a.a;
-import com.tencent.mm.h.b.a.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.af;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.modelappbrand.v;
 import com.tencent.mm.plugin.appbrand.dynamic.WxaWidgetContext;
 import com.tencent.mm.plugin.appbrand.dynamic.j;
+import com.tencent.mm.plugin.appbrand.t.n.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
 
 final class e$3
-  implements a.a
+  implements n.a
 {
   e$3(WxaWidgetContext paramWxaWidgetContext) {}
   
-  public final void Cu()
+  public final void bU(String paramString)
   {
-    v.jdMethod_if(14);
-    r localr = new r();
-    localr.cjv = u.jy(this.fXc.getId());
-    localr.cjw = u.jx(this.fXc.getId());
-    localr.cjs = 7L;
-    localr.cju = 1L;
-    localr.cjr = this.fXc.getId();
-    localr.cjt = System.currentTimeMillis();
-    localr.cjy = aq.fH(ae.getContext());
-    localr.QX();
-    h.nFQ.a(636L, 4L, 1L, false);
-    j.aeZ().ta(this.fXc.getId());
+    AppMethodBeat.i(10963);
+    v.kS(12);
+    af localaf = new af().fB(u.qn(this.hqD.getId()));
+    localaf.cUl = u.qm(this.hqD.getId());
+    localaf.cUh = 6L;
+    localaf.cUj = 2L;
+    localaf = localaf.fA(this.hqD.getId());
+    localaf.cUi = System.currentTimeMillis();
+    localaf.fC(at.gU(ah.getContext())).ake();
+    j.azD().Bc(this.hqD.getId());
+    h.qsU.idkeyStat(636L, 2L, 1L, false);
+    ab.e("MicroMsg.PreloadOptimizer", "Inject SDK widget Script Failed: %s", new Object[] { paramString });
+    AppMethodBeat.o(10963);
   }
   
-  public final void fM(String paramString)
+  public final void onSuccess(String paramString)
   {
-    v.jdMethod_if(15);
-    r localr = new r();
-    localr.cjv = u.jy(this.fXc.getId());
-    localr.cjw = u.jx(this.fXc.getId());
-    localr.cjs = 7L;
-    localr.cju = 2L;
-    localr.cjr = this.fXc.getId();
-    localr.cjt = System.currentTimeMillis();
-    localr.QX();
-    h.nFQ.a(636L, 5L, 1L, false);
-    y.e("MicroMsg.PreloadOptimizer", "Inject External widget Script Failed: %s", new Object[] { paramString });
+    AppMethodBeat.i(141926);
+    v.kS(11);
+    paramString = new af().fB(u.qn(this.hqD.getId()));
+    paramString.cUl = u.qm(this.hqD.getId());
+    paramString.cUh = 6L;
+    paramString.cUj = 1L;
+    paramString = paramString.fA(this.hqD.getId());
+    paramString.cUi = System.currentTimeMillis();
+    paramString.fC(at.gU(ah.getContext())).ake();
+    h.qsU.idkeyStat(636L, 1L, 1L, false);
+    AppMethodBeat.o(141926);
   }
 }
 

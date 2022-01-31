@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/aa" style="@style/g4" />
-    <LinearLayout style="@style/fx">
-        <include layout="@layout/ki" />
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:id="@id/mp" android:visibility="gone" style="@style/g1" />
-            <com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewFrom android:id="@id/am5" android:layout_marginLeft="@dimen/xw" android:layout_marginRight="@dimen/xw" style="@style/gu" />
-        </LinearLayout>
-    </LinearLayout>
+    <ImageView android:gravity="center" android:id="@id/amr" android:layout_width="@dimen/a7h" android:layout_height="@dimen/a7h" android:layout_marginTop="@dimen/fg" />
+    <TextView android:textSize="@dimen/fp" android:textColor="@color/ln" android:ellipsize="end" android:gravity="center" android:id="@id/ams" android:layout_width="@dimen/a7h" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dl" android:maxLines="1" />
 </LinearLayout>

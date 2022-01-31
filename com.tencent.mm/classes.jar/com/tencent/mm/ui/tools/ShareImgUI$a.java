@@ -2,36 +2,39 @@ package com.tencent.mm.ui.tools;
 
 import android.content.ContentResolver;
 import android.net.Uri;
-import com.tencent.mm.pluginsdk.i.d;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.i.e;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.vfs.b;
 
 final class ShareImgUI$a
   implements Runnable
 {
+  private ShareImgUI.c AxG;
   private Uri mUri;
-  private ShareImgUI.c weQ;
   
   public ShareImgUI$a(ShareImgUI paramShareImgUI, Uri paramUri, ShareImgUI.c paramc)
   {
     this.mUri = paramUri;
-    this.weQ = paramc;
+    this.AxG = paramc;
   }
   
   public final void run()
   {
-    this.weH.filePath = ShareImgUI.a(this.weH, this.mUri);
-    if ((bk.bl(this.weH.filePath)) || (!new b(this.weH.filePath).exists())) {
-      if (ShareImgUI.aem(this.weH.getContentResolver().getType(this.mUri)) != 3) {
-        break label110;
+    AppMethodBeat.i(34943);
+    this.Axx.filePath = ShareImgUI.a(this.Axx, this.mUri);
+    if ((bo.isNullOrNil(this.Axx.filePath)) || (!new b(this.Axx.filePath).exists())) {
+      if (ShareImgUI.auU(this.Axx.getContentResolver().getType(this.mUri)) != 3) {
+        break label120;
       }
     }
-    label110:
-    for (this.weH.filePath = d.a(this.weH.getContentResolver(), this.mUri);; this.weH.filePath = d.a(this.weH.getContentResolver(), this.mUri, 1))
+    label120:
+    for (this.Axx.filePath = e.a(this.Axx.getContentResolver(), this.mUri);; this.Axx.filePath = e.a(this.Axx.getContentResolver(), this.mUri, 1))
     {
-      if (this.weQ != null) {
-        this.weQ.cIP();
+      if (this.AxG != null) {
+        this.AxG.dND();
       }
+      AppMethodBeat.o(34943);
       return;
     }
   }

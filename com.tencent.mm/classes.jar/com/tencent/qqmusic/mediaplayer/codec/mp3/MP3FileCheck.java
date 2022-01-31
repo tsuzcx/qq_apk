@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.codec.mp3;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -8,25 +9,35 @@ import java.io.RandomAccessFile;
 public class MP3FileCheck
 {
   private static final String TAG = "MP3FileCheck";
-  private byte[] buf = new byte[8192];
+  private byte[] buf;
   private int endPos;
   private boolean eof;
   private int frameCount;
-  private boolean hasCheck = false;
-  private boolean hasID3V2 = false;
-  private MP3Header header = new MP3Header();
+  private boolean hasCheck;
+  private boolean hasID3V2;
+  private MP3Header header;
   private int headerMask;
-  private boolean isMP3 = false;
-  private String mFilePath = null;
-  private int mID3V2Size = -1;
-  private RandomAccessFile mRandomAccessFile = null;
+  private boolean isMP3;
+  private String mFilePath;
+  private int mID3V2Size;
+  private RandomAccessFile mRandomAccessFile;
   private int pos;
   private int skipped;
   private boolean sync;
   
   public MP3FileCheck(String paramString)
   {
+    AppMethodBeat.i(128565);
+    this.hasCheck = false;
+    this.mFilePath = null;
+    this.mRandomAccessFile = null;
+    this.mID3V2Size = -1;
+    this.hasID3V2 = false;
+    this.header = new MP3Header();
+    this.buf = new byte[8192];
+    this.isMP3 = false;
     this.mFilePath = paramString;
+    AppMethodBeat.o(128565);
   }
   
   private boolean available(int paramInt1, int paramInt2)
@@ -41,9 +52,12 @@ public class MP3FileCheck
   
   private boolean checkAndSeekID3V2Tag()
   {
+    AppMethodBeat.i(128568);
     byte[] arrayOfByte = new byte[10];
     int i = fillBuffer(arrayOfByte, 0, 10);
-    if (i <= 0) {
+    if (i <= 0)
+    {
+      AppMethodBeat.o(128568);
       return false;
     }
     if ((arrayOfByte[0] == 73) && (arrayOfByte[1] == 68) && (arrayOfByte[2] == 51))
@@ -55,7 +69,9 @@ public class MP3FileCheck
     }
     for (;;)
     {
-      return this.hasID3V2;
+      boolean bool = this.hasID3V2;
+      AppMethodBeat.o(128568);
+      return bool;
       closeFileStream();
       Logger.d("MP3FileCheck", "没有有ID3V2");
     }
@@ -63,11 +79,13 @@ public class MP3FileCheck
   
   private void closeFileStream()
   {
+    AppMethodBeat.i(128569);
     if (this.mRandomAccessFile != null) {}
     try
     {
       this.mRandomAccessFile.close();
       this.mRandomAccessFile = null;
+      AppMethodBeat.o(128569);
       return;
     }
     catch (IOException localIOException)
@@ -81,33 +99,45 @@ public class MP3FileCheck
   
   private int fillBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(128575);
     try
     {
       if (this.mRandomAccessFile == null) {
         this.mRandomAccessFile = new RandomAccessFile(this.mFilePath, "r");
       }
       paramInt1 = this.mRandomAccessFile.read(paramArrayOfByte, paramInt1, paramInt2);
+      AppMethodBeat.o(128575);
       return paramInt1;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      AppMethodBeat.o(128575);
+    }
     return -1;
   }
   
   private boolean isMp3File()
   {
+    AppMethodBeat.i(128567);
     if (!this.hasCheck) {
       fileCheck();
     }
-    return this.isMP3;
+    boolean bool = this.isMP3;
+    AppMethodBeat.o(128567);
+    return bool;
   }
   
   public static boolean isMp3File(String paramString)
   {
-    return new MP3FileCheck(paramString).isMp3File();
+    AppMethodBeat.i(128566);
+    boolean bool = new MP3FileCheck(paramString).isMp3File();
+    AppMethodBeat.o(128566);
+    return bool;
   }
   
   private void nextFrameHeader()
   {
+    AppMethodBeat.i(128573);
     int i = 0;
     while ((!this.eof) && (!syncFrame()))
     {
@@ -130,25 +160,32 @@ public class MP3FileCheck
       }
       this.pos = 0;
     }
+    AppMethodBeat.o(128573);
   }
   
   private void seekTo(int paramInt)
   {
+    AppMethodBeat.i(128570);
     try
     {
       this.mRandomAccessFile.seek(paramInt);
+      AppMethodBeat.o(128570);
       return;
     }
     catch (Exception localException)
     {
       Logger.e("MP3FileCheck", localException);
+      AppMethodBeat.o(128570);
     }
   }
   
   private boolean syncFrame()
   {
+    AppMethodBeat.i(128574);
     int j = this.pos;
-    if (this.endPos - this.pos <= 4) {
+    if (this.endPos - this.pos <= 4)
+    {
+      AppMethodBeat.o(128574);
       return false;
     }
     int i = byte2int(this.buf, this.pos);
@@ -170,6 +207,7 @@ public class MP3FileCheck
             k = this.pos - 4;
             this.pos = k;
             this.skipped = (i + (k - j));
+            AppMethodBeat.o(128574);
             return false;
           }
         }
@@ -186,6 +224,7 @@ public class MP3FileCheck
           k = this.pos - 4;
           this.pos = k;
           this.skipped = (i + (k - j));
+          AppMethodBeat.o(128574);
           return false;
         }
         if (!this.sync)
@@ -196,11 +235,12 @@ public class MP3FileCheck
             k = this.pos - 4;
             this.pos = k;
             this.skipped = (i + (k - j));
+            AppMethodBeat.o(128574);
             return false;
           }
           int m = 0x180000 & i | 0xFFE00000 | 0x60000 & i | i & 0xC00;
           if (!available(byte2int(this.buf, k + (this.pos - 4)), m)) {
-            break label410;
+            break label440;
           }
           if (this.headerMask == -2097152) {
             this.headerMask = m;
@@ -217,8 +257,9 @@ public class MP3FileCheck
         this.isMP3 = true;
         this.skipped = 0;
       }
+      AppMethodBeat.o(128574);
       return true;
-      label410:
+      label440:
       byte[] arrayOfByte = this.buf;
       int k = this.pos;
       this.pos = (k + 1);
@@ -228,76 +269,84 @@ public class MP3FileCheck
   
   public void fileCheck()
   {
-    for (;;)
+    AppMethodBeat.i(128571);
+    try
     {
-      try
-      {
-        this.hasCheck = true;
-        checkAndSeekID3V2Tag();
-        this.headerMask = -2097152;
-        this.sync = false;
-        this.eof = false;
-        this.frameCount = 0;
-        int i = this.buf.length;
-        this.pos = i;
-        this.endPos = i;
-        this.header.initialize();
-        nextFrameHeader();
-      }
-      catch (Exception localException2)
-      {
-        Logger.e("MP3FileCheck", localException2);
-        if (this.mRandomAccessFile == null) {
-          continue;
-        }
+      this.hasCheck = true;
+      checkAndSeekID3V2Tag();
+      this.headerMask = -2097152;
+      this.sync = false;
+      this.eof = false;
+      this.frameCount = 0;
+      int i = this.buf.length;
+      this.pos = i;
+      this.endPos = i;
+      this.header.initialize();
+      nextFrameHeader();
+      if (this.mRandomAccessFile != null) {
         try
         {
           this.mRandomAccessFile.close();
+          AppMethodBeat.o(128571);
+          return;
+        }
+        catch (Exception localException1)
+        {
+          Logger.e("MP3FileCheck", localException1);
+          AppMethodBeat.o(128571);
+          return;
+        }
+      }
+      return;
+    }
+    catch (Exception localException2)
+    {
+      Logger.e("MP3FileCheck", localException2);
+      if (this.mRandomAccessFile != null) {
+        try
+        {
+          this.mRandomAccessFile.close();
+          AppMethodBeat.o(128571);
           return;
         }
         catch (Exception localException3)
         {
           Logger.e("MP3FileCheck", localException3);
+          AppMethodBeat.o(128571);
           return;
         }
       }
-      finally
-      {
-        if (this.mRandomAccessFile == null) {
-          break label126;
-        }
-      }
+    }
+    finally
+    {
+      if (this.mRandomAccessFile != null) {}
       try
       {
         this.mRandomAccessFile.close();
-        return;
+        AppMethodBeat.o(128571);
+        throw localObject;
       }
-      catch (Exception localException1)
+      catch (Exception localException4)
       {
-        Logger.e("MP3FileCheck", localException1);
-        return;
+        for (;;)
+        {
+          Logger.e("MP3FileCheck", localException4);
+        }
       }
-    }
-    try
-    {
-      this.mRandomAccessFile.close();
-      label126:
-      throw localObject;
-    }
-    catch (Exception localException4)
-    {
-      for (;;)
-      {
-        Logger.e("MP3FileCheck", localException4);
-      }
+      AppMethodBeat.o(128571);
     }
   }
   
   public int getFrameSize()
   {
-    if (this.header != null) {
-      return this.header.getFrameSize();
+    AppMethodBeat.i(128572);
+    if (this.header != null)
+    {
+      int i = this.header.getFrameSize();
+      AppMethodBeat.o(128572);
+      return i;
     }
+    AppMethodBeat.o(128572);
     return -1;
   }
 }

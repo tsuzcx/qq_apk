@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.diffdev.a;
 
 import android.os.AsyncTask;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.diffdev.OAuthListener;
 
 final class f
@@ -13,9 +14,11 @@ final class f
   
   public f(String paramString, OAuthListener paramOAuthListener)
   {
+    AppMethodBeat.i(128054);
     this.o = paramString;
     this.l = paramOAuthListener;
     this.url = String.format("https://long.open.weixin.qq.com/connect/l/qrconnect?f=json&uuid=%s", new Object[] { paramString });
+    AppMethodBeat.o(128054);
   }
 }
 

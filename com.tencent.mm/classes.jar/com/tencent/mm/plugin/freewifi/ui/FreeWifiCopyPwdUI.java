@@ -1,119 +1,157 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.g;
 import com.tencent.mm.plugin.freewifi.k;
 import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.k.b;
 import com.tencent.mm.plugin.freewifi.l;
+import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.d;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.f.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 public class FreeWifiCopyPwdUI
   extends MMActivity
 {
-  public static int krl = 111;
+  public static int mMY = 111;
   private String appId;
-  private String bHI;
-  private int bvj;
-  private ah dPi = new FreeWifiCopyPwdUI.4(this);
+  private int bWu;
+  private String coX;
+  private ak faV;
   private Intent intent;
-  private int kpu;
-  private int krm = 1;
-  private int krn = 2;
-  protected TextView kro;
-  protected TextView krp;
-  protected TextView krq;
+  private int mLg;
+  private int mMZ;
+  private int mNa;
+  protected TextView mNb;
+  protected TextView mNc;
+  protected TextView mNd;
   private String ssid;
+  
+  public FreeWifiCopyPwdUI()
+  {
+    AppMethodBeat.i(20942);
+    this.mMZ = 1;
+    this.mNa = 2;
+    this.faV = new FreeWifiCopyPwdUI.4(this);
+    AppMethodBeat.o(20942);
+  }
   
   private void goBack()
   {
-    l.v(d.aTZ(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
-    Object localObject = k.aTx();
-    ((k.a)localObject).bHI = this.bHI;
-    ((k.a)localObject).iGw = com.tencent.mm.plugin.freewifi.m.B(this.intent);
-    ((k.a)localObject).kmS = k.b.knC.knD;
-    ((k.a)localObject).kmT = k.b.knC.name;
-    ((k.a)localObject).bUR = com.tencent.mm.plugin.freewifi.m.E(this.intent);
-    ((k.a)localObject).kmR = com.tencent.mm.plugin.freewifi.m.D(this.intent);
+    AppMethodBeat.i(20946);
+    l.C(d.bAB(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
+    Object localObject = k.bAc();
+    ((k.a)localObject).coX = this.coX;
+    ((k.a)localObject).kMp = m.U(this.intent);
+    ((k.a)localObject).mIF = k.b.mJp.mJq;
+    ((k.a)localObject).mIG = k.b.mJp.name;
+    ((k.a)localObject).cCy = m.X(this.intent);
+    ((k.a)localObject).mIE = m.W(this.intent);
     ((k.a)localObject).result = 0;
-    ((k.a)localObject).dmU = "";
-    ((k.a)localObject).aTz().b(this.intent, true).aTy();
+    ((k.a)localObject).eev = "";
+    ((k.a)localObject).bAe().c(this.intent, true).bAd();
     localObject = new Intent();
-    g.eUR.i((Intent)localObject, this);
+    g.gmO.h((Intent)localObject, this);
     finish();
+    AppMethodBeat.o(20946);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.free_wifi_copy_pwd;
+    return 2130969626;
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramInt1 == krl) && (com.tencent.mm.plugin.freewifi.m.aTE()) && (!bk.bl(this.ssid)) && (this.ssid.equals(d.aUa())))
+    AppMethodBeat.i(20944);
+    if ((paramInt1 == mMY) && (m.bAi()) && (!bo.isNullOrNil(this.ssid)) && (this.ssid.equals(d.bAC())))
     {
-      y.i("MicroMsg.FreeWifi.FreeWifiCopyPwdUI", "sessionKey=%s, step=%d, desc=connect ssid succeeded. ", new Object[] { com.tencent.mm.plugin.freewifi.m.B(this.intent), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(this.intent)) });
-      paramIntent = k.aTx();
+      ab.i("MicroMsg.FreeWifi.FreeWifiCopyPwdUI", "sessionKey=%s, step=%d, desc=connect ssid succeeded. ", new Object[] { m.U(this.intent), Integer.valueOf(m.V(this.intent)) });
+      paramIntent = k.bAc();
       paramIntent.ssid = this.ssid;
-      paramIntent.bssid = com.tencent.mm.plugin.freewifi.m.Dp("MicroMsg.FreeWifi.FreeWifiCopyPwdUI");
-      paramIntent.bHJ = com.tencent.mm.plugin.freewifi.m.Dq("MicroMsg.FreeWifi.FreeWifiCopyPwdUI");
-      paramIntent.bHI = this.bHI;
-      paramIntent.kmQ = this.appId;
-      paramIntent.iGw = com.tencent.mm.plugin.freewifi.m.B(this.intent);
-      paramIntent.kmR = com.tencent.mm.plugin.freewifi.m.D(this.intent);
-      paramIntent.kmS = k.b.knd.knD;
-      paramIntent.kmT = k.b.knd.name;
+      paramIntent.bssid = m.Ox("MicroMsg.FreeWifi.FreeWifiCopyPwdUI");
+      paramIntent.coY = m.Oy("MicroMsg.FreeWifi.FreeWifiCopyPwdUI");
+      paramIntent.coX = this.coX;
+      paramIntent.mIC = this.appId;
+      paramIntent.kMp = m.U(this.intent);
+      paramIntent.mIE = m.W(this.intent);
+      paramIntent.mIF = k.b.mIQ.mJq;
+      paramIntent.mIG = k.b.mIQ.name;
       paramIntent.result = 0;
-      paramIntent.bUR = com.tencent.mm.plugin.freewifi.m.E(this.intent);
-      paramIntent.aTz().aTy();
-      com.tencent.mm.plugin.freewifi.m.a(this.intent, this.bHI, this.kpu, this.bvj, new FreeWifiCopyPwdUI.3(this), "MicroMsg.FreeWifi.FreeWifiCopyPwdUI");
+      paramIntent.cCy = m.X(this.intent);
+      paramIntent.bAe().bAd();
+      m.a(this.intent, this.coX, this.mLg, this.bWu, new FreeWifiCopyPwdUI.3(this), "MicroMsg.FreeWifi.FreeWifiCopyPwdUI");
     }
+    AppMethodBeat.o(20944);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(20943);
     super.onCreate(paramBundle);
-    setBackBtn(new FreeWifiCopyPwdUI.1(this));
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(20936);
+        FreeWifiCopyPwdUI.a(FreeWifiCopyPwdUI.this);
+        AppMethodBeat.o(20936);
+        return true;
+      }
+    });
     this.intent = getIntent();
     this.ssid = getIntent().getStringExtra("free_wifi_ssid");
-    this.bHI = this.intent.getStringExtra("free_wifi_ap_key");
+    this.coX = this.intent.getStringExtra("free_wifi_ap_key");
     this.appId = this.intent.getStringExtra("free_wifi_appid");
-    this.bvj = this.intent.getIntExtra("free_wifi_channel_id", 0);
-    this.kpu = this.intent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 0);
-    ((TextView)findViewById(R.h.free_wifi_ssidname)).setText(this.ssid);
+    this.bWu = this.intent.getIntExtra("free_wifi_channel_id", 0);
+    this.mLg = this.intent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 0);
+    ((TextView)findViewById(2131824245)).setText(this.ssid);
     paramBundle = getIntent().getStringExtra("free_wifi_passowrd");
-    a.a(this.mController.uMN, "wifi password", paramBundle);
-    ((Button)findViewById(R.h.free_wifi_copy_btn)).setOnClickListener(new FreeWifiCopyPwdUI.2(this));
-    this.kro = ((TextView)findViewById(R.h.free_wifi_copypwd_connectfail_tv));
-    this.krp = ((TextView)findViewById(R.h.free_wifi_copypwd_connectfail_mark_tv));
-    this.krq = ((TextView)findViewById(R.h.free_wifi_copypwd_open_detail_tv));
-    paramBundle = d.aTZ();
+    getContext();
+    a.b("wifi password", paramBundle);
+    ((Button)findViewById(2131824249)).setOnClickListener(new FreeWifiCopyPwdUI.2(this));
+    this.mNb = ((TextView)findViewById(2131824246));
+    this.mNc = ((TextView)findViewById(2131824247));
+    this.mNd = ((TextView)findViewById(2131824248));
+    paramBundle = d.bAB();
     String str = getIntent().getStringExtra("free_wifi_ap_key");
     int i = getIntent().getIntExtra("free_wifi_protocol_type", 0);
-    h.nFQ.f(12651, new Object[] { Integer.valueOf(6), paramBundle, Integer.valueOf(0), str, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i) });
+    h.qsU.e(12651, new Object[] { Integer.valueOf(6), paramBundle, Integer.valueOf(0), str, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i) });
+    AppMethodBeat.o(20943);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(20945);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       goBack();
+      AppMethodBeat.o(20945);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(20945);
+    return bool;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

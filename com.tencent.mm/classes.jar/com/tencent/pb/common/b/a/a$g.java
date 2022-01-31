@@ -6,59 +6,59 @@ import com.google.a.a.e;
 public final class a$g
   extends e
 {
-  public int aQw = 0;
+  public String BdG = "";
+  public int aXG = 0;
   public String groupId = "";
-  public int pRI = 0;
-  public long pRJ = 0L;
-  public String wGf = "";
+  public int twP = 0;
+  public long twQ = 0L;
   
   public a$g()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
     if (!this.groupId.equals("")) {
-      paramb.d(1, this.groupId);
+      paramb.e(1, this.groupId);
     }
-    if (this.pRI != 0) {
-      paramb.aL(2, this.pRI);
+    if (this.twP != 0) {
+      paramb.bj(2, this.twP);
     }
-    if (this.pRJ != 0L) {
-      paramb.i(3, this.pRJ);
+    if (this.twQ != 0L) {
+      paramb.n(3, this.twQ);
     }
-    if (this.aQw != 0) {
-      paramb.aL(4, this.aQw);
+    if (this.aXG != 0) {
+      paramb.bj(4, this.aXG);
     }
-    if (!this.wGf.equals("")) {
-      paramb.d(5, this.wGf);
+    if (!this.BdG.equals("")) {
+      paramb.e(5, this.BdG);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.e(1, this.groupId);
+      i = j + b.f(1, this.groupId);
     }
     j = i;
-    if (this.pRI != 0) {
-      j = i + b.aN(2, this.pRI);
+    if (this.twP != 0) {
+      j = i + b.bl(2, this.twP);
     }
     i = j;
-    if (this.pRJ != 0L) {
-      i = j + b.k(3, this.pRJ);
+    if (this.twQ != 0L) {
+      i = j + b.p(3, this.twQ);
     }
     j = i;
-    if (this.aQw != 0) {
-      j = i + b.aN(4, this.aQw);
+    if (this.aXG != 0) {
+      j = i + b.bl(4, this.aXG);
     }
     i = j;
-    if (!this.wGf.equals("")) {
-      i = j + b.e(5, this.wGf);
+    if (!this.BdG.equals("")) {
+      i = j + b.f(5, this.BdG);
     }
     return i;
   }

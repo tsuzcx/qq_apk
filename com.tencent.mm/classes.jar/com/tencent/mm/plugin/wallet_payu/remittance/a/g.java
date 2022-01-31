@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.wallet_payu.remittance.a;
 
 import android.app.Activity;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.a.a;
 import com.tencent.mm.plugin.wallet_payu.remittance.ui.PayURemittanceAdapterUI;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.c;
 
 public class g
@@ -12,8 +13,10 @@ public class g
 {
   public final c a(Activity paramActivity, Bundle paramBundle)
   {
-    y.d("MicroMsg.PayURemittanceProcess", "start Process : PayURemittanceProcess");
+    AppMethodBeat.i(48537);
+    ab.d("MicroMsg.PayURemittanceProcess", "start Process : PayURemittanceProcess");
     b(paramActivity, PayURemittanceAdapterUI.class, paramBundle);
+    AppMethodBeat.o(48537);
     return this;
   }
 }

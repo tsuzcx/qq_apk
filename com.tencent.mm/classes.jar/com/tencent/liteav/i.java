@@ -1,196 +1,144 @@
 package com.tencent.liteav;
 
 import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
 import com.tencent.liteav.basic.log.TXCLog;
-import java.util.LinkedList;
-import java.util.Queue;
-import javax.microedition.khronos.egl.EGLContext;
+import com.tencent.liteav.basic.util.TXCCommonUtil;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class i
-  implements k, com.tencent.liteav.screencapture.c
 {
-  private static final String a = i.class.getSimpleName();
-  private l b;
-  private com.tencent.liteav.screencapture.a c = null;
-  private EGLContext d = null;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
-  private final Queue<Runnable> j = new LinkedList();
+  private String a = "";
+  private String b = "";
+  private String c = "";
+  private String d = "";
+  private long e = 0L;
+  private long f = 0L;
+  private long g = 0L;
   
-  public i(Context paramContext, f paramf)
+  public i(Context paramContext) {}
+  
+  private String a(String paramString)
   {
-    this.c = new com.tencent.liteav.screencapture.a(paramContext);
-    this.c.a(this);
-    boolean bool = paramf.a();
-    this.e = paramf.h;
-    if (bool)
+    AppMethodBeat.i(146405);
+    if (paramString.contains("#EXT-TX-TS-START-TIME"))
     {
-      k = 1280;
-      this.f = k;
-      if (!bool) {
-        break label115;
-      }
-    }
-    label115:
-    for (int k = m;; k = 1280)
-    {
-      this.g = k;
-      this.h = paramf.a;
-      this.i = paramf.b;
-      return;
-      k = 720;
-      break;
-    }
-  }
-  
-  private boolean a(Queue<Runnable> paramQueue)
-  {
-    try
-    {
-      if (paramQueue.isEmpty()) {
-        return false;
-      }
-      Runnable localRunnable = (Runnable)paramQueue.poll();
-      if (localRunnable == null) {
-        return false;
-      }
-    }
-    finally {}
-    localObject.run();
-    return true;
-  }
-  
-  public void a()
-  {
-    this.c.a(this.f, this.g, this.e);
-    this.c.a(true);
-  }
-  
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.h = paramInt1;
-    this.i = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong)
-  {
-    while (a(this.j)) {}
-    if (paramInt1 == 0)
-    {
-      if (this.b != null)
+      int i = paramString.indexOf("#EXT-TX-TS-START-TIME:") + 22;
+      if (i > 0)
       {
-        com.tencent.liteav.basic.f.c localc = new com.tencent.liteav.basic.f.c();
-        localc.d = paramInt3;
-        localc.e = paramInt4;
-        localc.f = this.h;
-        localc.g = this.i;
-        localc.a = paramInt2;
-        localc.b = 0;
-        localc.i = 0;
-        localc.j = com.tencent.liteav.basic.util.a.a(localc.d, localc.e, this.h, this.i);
-        this.b.b(localc);
+        paramString = paramString.substring(i);
+        i = paramString.indexOf("#");
+        if (i > 0)
+        {
+          paramString = paramString.substring(0, i).replaceAll("\r\n", "");
+          AppMethodBeat.o(146405);
+          return paramString;
+        }
       }
-      return;
     }
-    TXCLog.e(a, "onScreenCaptureFrame failed");
+    AppMethodBeat.o(146405);
+    return null;
   }
   
-  public void a(int paramInt, EGLContext paramEGLContext)
+  public int a(final String paramString1, final String paramString2, final int paramInt, final i.a parama)
   {
-    if (paramInt == 0)
+    AppMethodBeat.i(146404);
+    if ((paramString1 == null) || (paramString1.isEmpty()))
     {
-      this.d = paramEGLContext;
-      return;
+      AppMethodBeat.o(146404);
+      return -1;
     }
-    this.d = null;
-    TXCLog.e(a, "Start screen capture failed");
-  }
-  
-  public void a(com.tencent.liteav.basic.c.a parama)
-  {
-    if (this.c != null) {
-      this.c.a(parama);
+    this.d = TXCCommonUtil.getAppID();
+    if (TextUtils.isEmpty(this.d))
+    {
+      AppMethodBeat.o(146404);
+      return -2;
     }
-  }
-  
-  public void a(com.tencent.liteav.basic.f.c paramc) {}
-  
-  public void a(l paraml)
-  {
-    this.b = paraml;
-  }
-  
-  public void a(Object paramObject)
-  {
-    while (a(this.j)) {}
-    if (this.b != null) {
-      this.b.q();
-    }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (this.c != null) {
-      this.c.a(paramRunnable);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.c.a(null);
-    this.c.a(false);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    this.c.a(true);
-  }
-  
-  public void b(int paramInt) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c()
-  {
-    this.c.a(false);
-  }
-  
-  public void c(int paramInt) {}
-  
-  public void c(boolean paramBoolean) {}
-  
-  public void d(int paramInt) {}
-  
-  public boolean d()
-  {
-    return true;
-  }
-  
-  public boolean d(boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public int e()
-  {
+    AsyncTask.execute(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(146407);
+        i.a(i.this, 0L);
+        i.b(i.this, 0L);
+        i.c(i.this, 0L);
+        i.a(i.this, "");
+        i.b(i.this, "");
+        if (paramInt > 0) {
+          i.b(i.this, String.valueOf(paramInt));
+        }
+        i.c(i.this, paramString2);
+        i.a(i.this, TXCCommonUtil.getStreamIDByStreamUrl(paramString1));
+        Object localObject = String.format("http://%s/%s/%s/timeshift.m3u8?delay=0&appid=%s&txKbps=0", new Object[] { i.a(i.this), i.b(i.this), i.c(i.this), i.d(i.this) });
+        try
+        {
+          localObject = (HttpURLConnection)new URL((String)localObject).openConnection();
+          ((HttpURLConnection)localObject).setDoOutput(true);
+          ((HttpURLConnection)localObject).setDoInput(true);
+          ((HttpURLConnection)localObject).setUseCaches(false);
+          ((HttpURLConnection)localObject).setConnectTimeout(5000);
+          ((HttpURLConnection)localObject).setReadTimeout(5000);
+          ((HttpURLConnection)localObject).setRequestMethod("GET");
+          ((HttpURLConnection)localObject).setRequestProperty("Charsert", "UTF-8");
+          ((HttpURLConnection)localObject).setRequestProperty("Content-Type", "text/plain;");
+          BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(((HttpURLConnection)localObject).getInputStream()));
+          String str;
+          for (localObject = "";; localObject = (String)localObject + str)
+          {
+            str = localBufferedReader.readLine();
+            if (str == null) {
+              break;
+            }
+          }
+          TXCLog.e("TXCTimeShiftUtil", "prepareSeekTime: receive response, strResponse = ".concat(String.valueOf(localObject)));
+          localObject = i.d(i.this, (String)localObject);
+          long l1 = Long.parseLong((String)localObject);
+          long l2 = System.currentTimeMillis();
+          TXCLog.i("TXCTimeShiftUtil", "time:" + (String)localObject + ",currentTime:" + l2 + ",diff:" + (l2 - l1));
+          i.b(i.this, l1 * 1000L);
+          i.c(i.this, l2 - i.e(i.this));
+          if (parama != null) {
+            new Handler(Looper.getMainLooper()).post(new i.1.1(this));
+          }
+          AppMethodBeat.o(146407);
+          return;
+        }
+        catch (Exception localException)
+        {
+          i.b(i.this, 0L);
+          AppMethodBeat.o(146407);
+        }
+      }
+    });
+    AppMethodBeat.o(146404);
     return 0;
   }
   
-  public void e(boolean paramBoolean) {}
-  
-  public EGLContext f()
+  public long a()
   {
-    return this.d;
+    AppMethodBeat.i(146402);
+    this.g = (System.currentTimeMillis() - this.e);
+    long l = this.g;
+    AppMethodBeat.o(146402);
+    return l;
+  }
+  
+  public String a(long paramLong)
+  {
+    AppMethodBeat.i(146403);
+    String str = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(this.e + 1000L * paramLong));
+    str = String.format("http://%s/%s/%s/timeshift.m3u8?starttime=%s&appid=%s&txKbps=0", new Object[] { this.a, this.c, this.b, str, this.d });
+    AppMethodBeat.o(146403);
+    return str;
   }
 }
 

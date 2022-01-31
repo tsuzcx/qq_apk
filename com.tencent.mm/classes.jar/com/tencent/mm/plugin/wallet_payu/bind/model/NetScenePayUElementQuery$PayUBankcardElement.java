@@ -2,15 +2,16 @@ package com.tencent.mm.plugin.wallet_payu.bind.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class NetScenePayUElementQuery$PayUBankcardElement
   implements Parcelable
 {
-  public String bRP = "";
   public String cardType = "";
-  public String mOX = "";
-  public String qMI = "";
-  public String qMJ = "";
+  public String czq = "";
+  public String ppn = "";
+  public String uBP = "";
+  public String uBQ = "";
   
   public int describeContents()
   {
@@ -19,11 +20,13 @@ public class NetScenePayUElementQuery$PayUBankcardElement
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.qMI);
-    paramParcel.writeString(this.mOX);
-    paramParcel.writeString(this.qMJ);
+    AppMethodBeat.i(48334);
+    paramParcel.writeString(this.uBP);
+    paramParcel.writeString(this.ppn);
+    paramParcel.writeString(this.uBQ);
     paramParcel.writeString(this.cardType);
-    paramParcel.writeString(this.bRP);
+    paramParcel.writeString(this.czq);
+    AppMethodBeat.o(48334);
   }
 }
 

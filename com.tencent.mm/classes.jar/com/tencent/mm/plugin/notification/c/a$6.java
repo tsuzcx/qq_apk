@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.notification.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$6
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class a$6
   
   public final void run()
   {
-    a.e(this.mIE);
+    AppMethodBeat.i(23108);
+    a.f(this.piT);
+    AppMethodBeat.o(23108);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.c.a.6
  * JD-Core Version:    0.7.0.1
  */

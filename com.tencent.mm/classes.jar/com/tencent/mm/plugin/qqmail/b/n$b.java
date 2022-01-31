@@ -1,36 +1,40 @@
 package com.tencent.mm.plugin.qqmail.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 public final class n$b
 {
-  int ndK;
-  Map<String, String> ndL;
-  Map<String, String> ndM;
-  n.d ndN;
+  int pJa;
+  Map<String, String> pJb;
+  Map<String, String> pJc;
+  n.d pJd;
   
   public n$b(int paramInt, Map<String, String> paramMap1, Map<String, String> paramMap2, n.d paramd)
   {
-    this.ndK = paramInt;
-    this.ndL = paramMap1;
-    this.ndM = paramMap2;
-    this.ndN = paramd;
+    this.pJa = paramInt;
+    this.pJb = paramMap1;
+    this.pJc = paramMap2;
+    this.pJd = paramd;
   }
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("Request method:").append(this.ndK).append(", params:");
-    if (this.ndL != null)
+    AppMethodBeat.i(67958);
+    StringBuilder localStringBuilder = new StringBuilder("Request method:").append(this.pJa).append(", params:");
+    if (this.pJb != null)
     {
-      localObject = this.ndL;
+      localObject = this.pJb;
       localStringBuilder = localStringBuilder.append(localObject).append(", cookie:");
-      if (this.ndM == null) {
-        break label72;
+      if (this.pJc == null) {
+        break label84;
       }
     }
-    label72:
-    for (Object localObject = this.ndM;; localObject = "")
+    label84:
+    for (Object localObject = this.pJc;; localObject = "")
     {
+      localObject = localObject;
+      AppMethodBeat.o(67958);
       return localObject;
       localObject = "";
       break;
@@ -39,7 +43,7 @@ public final class n$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.n.b
  * JD-Core Version:    0.7.0.1
  */

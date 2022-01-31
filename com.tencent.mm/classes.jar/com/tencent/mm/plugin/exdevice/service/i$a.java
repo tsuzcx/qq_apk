@@ -4,6 +4,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class i$a
   extends Binder
@@ -47,7 +48,7 @@ public abstract class i$a
     return true;
   }
   
-  private static final class a
+  static final class a
     implements i
   {
     private IBinder mRemote;
@@ -59,6 +60,7 @@ public abstract class i$a
     
     public final void a(int paramInt1, long paramLong, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
     {
+      AppMethodBeat.i(19611);
       Parcel localParcel1 = Parcel.obtain();
       Parcel localParcel2 = Parcel.obtain();
       try
@@ -77,6 +79,7 @@ public abstract class i$a
       {
         localParcel2.recycle();
         localParcel1.recycle();
+        AppMethodBeat.o(19611);
       }
     }
     
@@ -88,7 +91,7 @@ public abstract class i$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.i.a
  * JD-Core Version:    0.7.0.1
  */

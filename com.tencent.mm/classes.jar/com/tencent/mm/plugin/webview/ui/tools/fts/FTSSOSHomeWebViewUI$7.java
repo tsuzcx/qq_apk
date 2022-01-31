@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools.fts;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.fts.widget.SOSEditTextView;
 
 final class FTSSOSHomeWebViewUI$7
@@ -12,14 +13,16 @@ final class FTSSOSHomeWebViewUI$7
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = FTSSOSHomeWebViewUI.z(this.ruD).CR(paramInt);
-    this.ruD.cfr().n(paramAdapterView.content, null);
+    AppMethodBeat.i(153290);
+    paramAdapterView = FTSSOSHomeWebViewUI.v(this.vkS).KM(paramInt);
+    this.vkS.dfA().o(paramAdapterView.content, null);
     if (paramAdapterView.type == 2)
     {
-      FTSSOSHomeWebViewUI.a(this.ruD, paramAdapterView, 1);
-      FTSSOSHomeWebViewUI.e(this.ruD, 1);
+      FTSSOSHomeWebViewUI.a(this.vkS, paramAdapterView, 1);
+      FTSSOSHomeWebViewUI.e(this.vkS, 1);
     }
-    this.ruD.apb();
+    this.vkS.aMm();
+    AppMethodBeat.o(153290);
   }
 }
 

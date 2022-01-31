@@ -4,89 +4,109 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class n
   implements h
 {
-  private int fzn = 0;
-  private final g rrt;
-  private final f rru;
-  private h.a rsF;
-  private d rsG;
-  private c rsH;
-  private String rsI;
-  private String rsJ;
-  private final e rsK;
-  private boolean rsL;
-  private boolean rsM;
-  private String rsN;
+  private int mScene;
+  private final g vhy;
+  private final f vhz;
+  private h.a viL;
+  private d viM;
+  private c viN;
+  private String viO;
+  private String viP;
+  private final e viQ;
+  private boolean viR;
+  private boolean viS;
+  private String viT;
   
   public n(g paramg)
   {
-    this.rrt = paramg;
-    if (this.rrt.getIntent().getExtras() != null) {
-      this.fzn = this.rrt.getIntent().getIntExtra("minimize_secene", this.fzn);
+    AppMethodBeat.i(8255);
+    this.mScene = 0;
+    this.vhy = paramg;
+    if (this.vhy.getIntent().getExtras() != null) {
+      this.mScene = this.vhy.getIntent().getIntExtra("minimize_secene", this.mScene);
     }
-    this.rru = new n.1(this);
-    this.rsK = new n.2(this);
-    this.rsL = this.rrt.getIntent().getBooleanExtra("from_bag", false);
-    this.rsN = this.rrt.getIntent().getStringExtra("from_bag_id");
-    this.rsJ = this.rrt.getIntent().getStringExtra("from_bag_icon");
-    if (cbo())
+    this.vhz = new n.1(this);
+    this.viQ = new n.2(this);
+    this.viR = this.vhy.getIntent().getBooleanExtra("from_bag", false);
+    this.viT = this.vhy.getIntent().getStringExtra("from_bag_id");
+    this.viP = this.vhy.getIntent().getStringExtra("from_bag_icon");
+    if (dbs())
     {
-      if (!this.rsL)
+      if (!this.viR)
       {
-        y.i("MicroMsg.WebViewUIBagHelper", "not from bag, can swipe to bag");
-        this.rsG = new d(this.rrt, this.rru);
+        ab.i("MicroMsg.WebViewUIBagHelper", "not from bag, can swipe to bag");
+        this.viM = new d(this.vhy, this.vhz);
+        AppMethodBeat.o(8255);
         return;
       }
-      this.rsH = new c(this.rrt, this.rru);
+      this.viN = new c(this.vhy, this.vhz);
+      AppMethodBeat.o(8255);
       return;
     }
-    y.i("MicroMsg.WebViewUIBagHelper", "not support swipeback");
+    ab.i("MicroMsg.WebViewUIBagHelper", "not support swipeback");
+    AppMethodBeat.o(8255);
   }
   
-  private void CM(int paramInt)
+  private void KF(int paramInt)
   {
-    y.v("MicroMsg.WebViewUIBagHelper", "kvReport op:%d", new Object[] { Integer.valueOf(paramInt) });
-    if (this.rsF == null)
+    AppMethodBeat.i(8265);
+    ab.v("MicroMsg.WebViewUIBagHelper", "kvReport op:%d", new Object[] { Integer.valueOf(paramInt) });
+    if (this.viL == null)
     {
-      y.w("MicroMsg.WebViewUIBagHelper", "kvReport mIPCDelegate null");
+      ab.w("MicroMsg.WebViewUIBagHelper", "kvReport mIPCDelegate null");
+      AppMethodBeat.o(8265);
       return;
     }
-    cfg();
-    String str1 = this.rsI;
-    String str2 = this.rsN;
-    this.rsF.u(new Object[] { str1, Integer.valueOf(paramInt), Integer.valueOf(0), str2 });
+    dfp();
+    String str1 = this.viO;
+    String str2 = this.viT;
+    this.viL.z(new Object[] { str1, Integer.valueOf(paramInt), Integer.valueOf(0), str2 });
+    AppMethodBeat.o(8265);
   }
   
-  private Bundle CN(int paramInt)
+  private Bundle KG(int paramInt)
   {
-    return t(paramInt, new Bundle());
+    AppMethodBeat.i(8262);
+    Bundle localBundle = x(paramInt, new Bundle());
+    AppMethodBeat.o(8262);
+    return localBundle;
   }
   
-  private boolean cbo()
+  private boolean dbs()
   {
-    return this.rrt.cbo();
+    AppMethodBeat.i(8266);
+    boolean bool = this.vhy.dbs();
+    AppMethodBeat.o(8266);
+    return bool;
   }
   
-  private void cfg()
+  private void dfp()
   {
-    if (bk.bl(this.rsI)) {
-      this.rsI = this.rrt.getUrl();
+    AppMethodBeat.i(8264);
+    if (bo.isNullOrNil(this.viO)) {
+      this.viO = this.vhy.getUrl();
     }
+    AppMethodBeat.o(8264);
   }
   
-  private Bundle t(int paramInt, Bundle paramBundle)
+  private Bundle x(int paramInt, Bundle paramBundle)
   {
-    y.i("MicroMsg.WebViewUIBagHelper", "Tools doBagLogic : %d, hashcode:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()) });
-    if (this.rsF == null)
+    AppMethodBeat.i(8263);
+    if (9 != paramInt) {
+      ab.i("MicroMsg.WebViewUIBagHelper", "Tools doBagLogic : %d, hashcode:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()) });
+    }
+    if (this.viL == null)
     {
-      y.w("MicroMsg.WebViewUIBagHelper", "doBagLogic mIPCDelegate null");
+      ab.w("MicroMsg.WebViewUIBagHelper", "doBagLogic mIPCDelegate null");
+      AppMethodBeat.o(8263);
       return null;
     }
     paramBundle.putInt("key_action", paramInt);
@@ -95,130 +115,161 @@ public final class n
     }
     for (;;)
     {
-      return this.rsF.L(paramBundle);
-      this.rsM = true;
-      cfg();
-      paramBundle.putString("key_url", this.rsI);
-      paramBundle.putString("key_bag_icon", this.rsJ);
-      paramBundle.putInt("key_scene", this.fzn);
-      paramBundle.putBundle("key_extras", k.af(this.rrt.getIntent()));
-      paramBundle.putBoolean("key_from_bag", this.rsL);
+      paramBundle = this.viL.ac(paramBundle);
+      AppMethodBeat.o(8263);
+      return paramBundle;
+      this.viS = true;
+      dfp();
+      paramBundle.putString("key_url", this.viO);
+      paramBundle.putString("key_bag_icon", this.viP);
+      paramBundle.putInt("key_scene", this.mScene);
+      paramBundle.putBundle("key_extras", k.aB(this.vhy.getIntent()));
+      paramBundle.putBoolean("key_from_bag", this.viR);
       continue;
       paramBundle.putBoolean("key_in_webviewui_from_bag", true);
       continue;
       paramBundle.putBoolean("key_in_webviewui_from_bag", false);
       continue;
-      paramBundle.putString("key_bag_id", this.rsN);
+      paramBundle.putString("key_bag_id", this.viT);
       continue;
-      this.rsM = false;
+      this.viS = false;
     }
   }
   
-  public final boolean CL(int paramInt)
+  public final boolean KE(int paramInt)
   {
-    boolean bool1 = false;
-    boolean bool2 = ceZ();
-    y.i("MicroMsg.WebViewUIBagHelper", "onWebViewClose hasBag:%b", new Object[] { Boolean.valueOf(bool2) });
-    if (bool2)
+    AppMethodBeat.i(8258);
+    boolean bool = dfg();
+    ab.i("MicroMsg.WebViewUIBagHelper", "onWebViewClose hasBag:%b", new Object[] { Boolean.valueOf(bool) });
+    if (bool)
     {
-      CM(paramInt);
-      Point localPoint = (Point)CN(8).getParcelable("key_current_bag_pos");
-      i.a(this.rrt, localPoint, this.rsK);
-      bool1 = true;
+      KF(paramInt);
+      Point localPoint = (Point)KG(8).getParcelable("key_current_bag_pos");
+      i.a(this.vhy, localPoint, this.viQ);
+      AppMethodBeat.o(8258);
+      return true;
     }
-    return bool1;
-  }
-  
-  public final void TC(String paramString)
-  {
-    this.rsJ = paramString;
-  }
-  
-  public final void TD(String paramString)
-  {
-    y.i("MicroMsg.WebViewUIBagHelper", "updateUrl url:%s", new Object[] { paramString });
-    this.rsI = paramString;
+    AppMethodBeat.o(8258);
+    return false;
   }
   
   public final void a(h.a parama)
   {
-    y.i("MicroMsg.WebViewUIBagHelper", "onIPCReady");
-    this.rsF = parama;
-    if (!this.rsL) {
-      if ((cbo()) && (this.rsG != null)) {
-        this.rsG.start();
+    AppMethodBeat.i(8256);
+    ab.i("MicroMsg.WebViewUIBagHelper", "onIPCReady");
+    this.viL = parama;
+    if (!this.viR)
+    {
+      if ((dbs()) && (this.viM != null))
+      {
+        this.viM.start();
+        AppMethodBeat.o(8256);
       }
     }
-    do
+    else
     {
-      return;
-      CN(5);
-    } while ((!cbo()) || (this.rsH == null));
-    parama = this.rsH;
-    parama.rrt.a(new c.1(parama));
+      KG(5);
+      if ((dbs()) && (this.viN != null))
+      {
+        parama = this.viN;
+        parama.vhy.a(new c.1(parama));
+      }
+    }
+    AppMethodBeat.o(8256);
   }
   
-  public final void ceY()
+  public final void aiE(String paramString)
   {
-    y.i("MicroMsg.WebViewUIBagHelper", "onWebViewUIDestroy");
-    CN(6);
-    if (this.rsG != null)
-    {
-      d locald = this.rsG;
-      ai.d(new d.2(locald));
-      locald.rrt.a(null);
-      locald.rrt = null;
-    }
-    if (this.rsL) {
-      CN(3);
-    }
+    this.viP = paramString;
   }
   
-  public final boolean ceZ()
+  public final void aiF(String paramString)
   {
-    y.i("MicroMsg.WebViewUIBagHelper", "hasBagOfCurrentPage fromBag:%b，isTransformBag:%b, hashcode:%d", new Object[] { Boolean.valueOf(this.rsL), Boolean.valueOf(this.rsM), Integer.valueOf(hashCode()) });
-    if (this.rsM) {}
-    boolean bool;
-    do
+    AppMethodBeat.i(8260);
+    ab.i("MicroMsg.WebViewUIBagHelper", "updateUrl url:%s", new Object[] { paramString });
+    this.viO = paramString;
+    AppMethodBeat.o(8260);
+  }
+  
+  public final void dff()
+  {
+    AppMethodBeat.i(8257);
+    ab.i("MicroMsg.WebViewUIBagHelper", "onWebViewUIDestroy %b", new Object[] { Boolean.valueOf(this.viR) });
+    KG(6);
+    if (this.viM != null)
     {
+      d locald = this.viM;
+      al.d(new d.2(locald));
+      locald.vhy.a(null);
+      locald.vhy = null;
+    }
+    if (this.viR) {
+      KG(3);
+    }
+    AppMethodBeat.o(8257);
+  }
+  
+  public final boolean dfg()
+  {
+    AppMethodBeat.i(8261);
+    ab.i("MicroMsg.WebViewUIBagHelper", "hasBagOfCurrentPage fromBag:%b，isTransformBag:%b, hashcode:%d", new Object[] { Boolean.valueOf(this.viR), Boolean.valueOf(this.viS), Integer.valueOf(hashCode()) });
+    if (this.viS)
+    {
+      AppMethodBeat.o(8261);
       return true;
-      if (!this.rsL) {
-        return false;
-      }
-      Bundle localBundle = CN(7);
-      if (localBundle == null) {
-        return false;
-      }
-      bool = localBundle.getBoolean("key_has_bag");
-      y.i("MicroMsg.WebViewUIBagHelper", "hasBagOfCurrentPage  hasBag:%b", new Object[] { Boolean.valueOf(bool) });
-    } while ((bool) && (this.rsL));
+    }
+    if (!this.viR)
+    {
+      AppMethodBeat.o(8261);
+      return false;
+    }
+    Bundle localBundle = KG(7);
+    if (localBundle == null)
+    {
+      AppMethodBeat.o(8261);
+      return false;
+    }
+    boolean bool = localBundle.getBoolean("key_has_bag");
+    ab.i("MicroMsg.WebViewUIBagHelper", "hasBagOfCurrentPage  hasBag:%b", new Object[] { Boolean.valueOf(bool) });
+    if ((bool) && (this.viR))
+    {
+      AppMethodBeat.o(8261);
+      return true;
+    }
+    AppMethodBeat.o(8261);
     return false;
   }
   
-  public final void lo(boolean paramBoolean)
+  public final void ow(boolean paramBoolean)
   {
-    y.i("MicroMsg.WebViewUIBagHelper", "onMenuMinimizeSelected cancelCurrentBag:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.i(8259);
+    ab.i("MicroMsg.WebViewUIBagHelper", "onMenuMinimizeSelected cancelCurrentBag:%b", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      CN(4);
-      if (this.rsH != null) {
-        this.rsH.rrt.a(null);
+      KG(4);
+      if (this.viN != null) {
+        this.viN.vhy.a(null);
       }
-      CM(18);
-      com.tencent.mm.ui.widget.snackbar.b.h(this.rrt.getActivity(), this.rrt.getActivity().getString(R.l.readerapp_cancel_minimize_done));
-      if (cbo())
+      KF(18);
+      com.tencent.mm.ui.widget.snackbar.b.l(this.vhy.getActivity(), this.vhy.getActivity().getString(2131302288));
+      if (dbs())
       {
-        this.rsG = new d(this.rrt, this.rru);
-        this.rsG.start();
+        this.viM = new d(this.vhy, this.vhz);
+        this.viM.start();
       }
+      AppMethodBeat.o(8259);
       return;
     }
-    CM(16);
-    Object localObject = CN(8);
-    if (localObject == null) {}
-    for (localObject = new Point(b.rrm, b.rrm);; localObject = (Point)((Bundle)localObject).getParcelable("key_current_bag_pos"))
+    KF(16);
+    Object localObject = KG(8);
+    int i;
+    if (localObject == null) {
+      i = b.vhr;
+    }
+    for (localObject = new Point(i, i);; localObject = (Point)((Bundle)localObject).getParcelable("key_current_bag_pos"))
     {
-      i.a(this.rrt, (Point)localObject, this.rsK);
+      i.a(this.vhy, (Point)localObject, this.viQ);
+      AppMethodBeat.o(8259);
       return;
     }
   }

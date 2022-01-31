@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 final class GameDetailRankLikedUI$a$a
 {
-  public ImageView ffK;
-  public TextView kYV;
-  public TextView kZl;
+  public ImageView gxs;
+  public TextView nwS;
+  public TextView nxi;
 }
 
 

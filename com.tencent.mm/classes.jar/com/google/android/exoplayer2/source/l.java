@@ -1,61 +1,17 @@
 package com.google.android.exoplayer2.source;
 
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.i.a;
-import java.util.Arrays;
+import com.google.android.exoplayer2.b.e;
+import com.google.android.exoplayer2.k;
 
-public final class l
+public abstract interface l
 {
-  public final Format[] aIs;
-  private int auK;
-  public final int length;
+  public abstract void R(long paramLong);
   
-  public l(Format... paramVarArgs)
-  {
-    if (paramVarArgs.length > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a.aC(bool);
-      this.aIs = paramVarArgs;
-      this.length = paramVarArgs.length;
-      return;
-    }
-  }
+  public abstract int b(k paramk, e parame, boolean paramBoolean);
   
-  public final boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (l)paramObject;
-    } while ((this.length == paramObject.length) && (Arrays.equals(this.aIs, paramObject.aIs)));
-    return false;
-  }
+  public abstract boolean isReady();
   
-  public final int hashCode()
-  {
-    if (this.auK == 0) {
-      this.auK = (Arrays.hashCode(this.aIs) + 527);
-    }
-    return this.auK;
-  }
-  
-  public final int j(Format paramFormat)
-  {
-    int i = 0;
-    while (i < this.aIs.length)
-    {
-      if (paramFormat == this.aIs[i]) {
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
-  }
+  public abstract void oX();
 }
 
 

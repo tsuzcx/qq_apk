@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.sns.b;
 
 import android.widget.ImageView;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.c.bxk;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
 
 public abstract interface m
   extends a
 {
   public abstract void a(long paramLong, ImageView paramImageView, int paramInt);
   
-  public abstract boolean fE(long paramLong);
+  public abstract boolean lh(long paramLong);
   
-  public abstract bxk nn(String paramString);
+  public abstract TimeLineObject uA(String paramString);
 }
 
 

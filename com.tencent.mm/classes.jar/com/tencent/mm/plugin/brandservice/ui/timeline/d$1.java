@@ -1,27 +1,17 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ki;
+import com.tencent.mm.sdk.b.c;
 
 final class d$1
-  implements Runnable
+  extends c<ki>
 {
-  d$1(d paramd, Runnable paramRunnable) {}
-  
-  public final void run()
+  d$1(d paramd)
   {
-    Runnable localRunnable = this.dGX;
-    if (d.axV()) {
-      if (localRunnable != null) {
-        ai.d(localRunnable);
-      }
-    }
-    do
-    {
-      return;
-      s.mA(false);
-    } while (localRunnable == null);
-    ai.d(localRunnable);
+    AppMethodBeat.i(14144);
+    this.__eventId = ki.class.getName().hashCode();
+    AppMethodBeat.o(14144);
   }
 }
 

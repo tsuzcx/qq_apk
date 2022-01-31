@@ -16,7 +16,7 @@ public final class c
   private final int height = 480;
   private final int width = 480;
   
-  protected final int b(int paramInt, Object... paramVarArgs)
+  public final int a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
@@ -28,12 +28,12 @@ public final class c
       return 480;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject1 = com.tencent.mm.svg.c.f(paramVarArgs);
-      float[] arrayOfFloat = com.tencent.mm.svg.c.e(paramVarArgs);
-      Object localObject2 = com.tencent.mm.svg.c.i(paramVarArgs);
+      Object localObject1 = com.tencent.mm.svg.c.h(paramVarArgs);
+      float[] arrayOfFloat = com.tencent.mm.svg.c.g(paramVarArgs);
+      Object localObject2 = com.tencent.mm.svg.c.k(paramVarArgs);
       ((Paint)localObject2).setFlags(385);
       ((Paint)localObject2).setStyle(Paint.Style.FILL);
-      Paint localPaint = com.tencent.mm.svg.c.i(paramVarArgs);
+      Paint localPaint = com.tencent.mm.svg.c.k(paramVarArgs);
       localPaint.setFlags(385);
       localPaint.setStyle(Paint.Style.STROKE);
       ((Paint)localObject2).setColor(-16777216);
@@ -52,7 +52,7 @@ public final class c
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
       localPaint = com.tencent.mm.svg.c.a(localPaint, paramVarArgs);
-      Object localObject3 = com.tencent.mm.svg.c.j(paramVarArgs);
+      Object localObject3 = com.tencent.mm.svg.c.l(paramVarArgs);
       ((Path)localObject3).moveTo(52.880001F, 2.34F);
       ((Path)localObject3).cubicTo(83.169998F, -0.27F, 113.62F, -0.47F, 143.98F, 0.65F);
       ((Path)localObject3).cubicTo(164.16F, 1.66F, 184.48F, 2.9F, 204.2F, 7.55F);
@@ -93,7 +93,7 @@ public final class c
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
       localObject3 = com.tencent.mm.svg.c.a(localPaint, paramVarArgs);
-      Path localPath = com.tencent.mm.svg.c.j(paramVarArgs);
+      Path localPath = com.tencent.mm.svg.c.l(paramVarArgs);
       localPath.moveTo(40.380001F, 17.290001F);
       localPath.cubicTo(57.580002F, 5.08F, 78.949997F, -1.01F, 100.0F, 0.15F);
       localPath.cubicTo(104.71F, 0.37F, 109.39F, 0.99F, 114.01F, 1.93F);
@@ -128,7 +128,7 @@ public final class c
       localCanvas.restore();
       localCanvas.save();
       localPaint = com.tencent.mm.svg.c.a(localPaint, paramVarArgs);
-      localObject3 = com.tencent.mm.svg.c.j(paramVarArgs);
+      localObject3 = com.tencent.mm.svg.c.l(paramVarArgs);
       ((Path)localObject3).moveTo(78.300003F, 64.93F);
       ((Path)localObject3).cubicTo(79.699997F, 55.970001F, 89.18F, 49.400002F, 98.07F, 51.290001F);
       ((Path)localObject3).cubicTo(105.53F, 52.529999F, 111.64F, 59.330002F, 111.92F, 66.919998F);
@@ -150,7 +150,7 @@ public final class c
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
       localObject1 = com.tencent.mm.svg.c.a((Paint)localObject2, paramVarArgs);
-      localObject2 = com.tencent.mm.svg.c.j(paramVarArgs);
+      localObject2 = com.tencent.mm.svg.c.l(paramVarArgs);
       ((Path)localObject2).moveTo(19.42F, 16.370001F);
       ((Path)localObject2).cubicTo(25.49F, 4.52F, 40.290001F, -1.81F, 53.040001F, 2.15F);
       ((Path)localObject2).cubicTo(64.440002F, 5.28F, 73.25F, 16.07F, 73.879997F, 27.9F);
@@ -179,13 +179,13 @@ public final class c
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
       localCanvas.restore();
       localCanvas.restore();
-      com.tencent.mm.svg.c.h(paramVarArgs);
+      com.tencent.mm.svg.c.j(paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.c
  * JD-Core Version:    0.7.0.1
  */

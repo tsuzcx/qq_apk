@@ -8,9 +8,8 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.tools.l;
 
 final class SnsSightPlayerUI$13
   implements View.OnTouchListener
@@ -20,11 +19,12 @@ final class SnsSightPlayerUI$13
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     float f1 = 1.0F;
-    SnsSightPlayerUI.n(this.pdk).onTouchEvent(paramMotionEvent);
-    if (SnsSightPlayerUI.o(this.pdk) == null) {
-      SnsSightPlayerUI.a(this.pdk, VelocityTracker.obtain());
+    AppMethodBeat.i(39267);
+    SnsSightPlayerUI.n(this.rVT).onTouchEvent(paramMotionEvent);
+    if (SnsSightPlayerUI.o(this.rVT) == null) {
+      SnsSightPlayerUI.a(this.rVT, VelocityTracker.obtain());
     }
-    SnsSightPlayerUI.o(this.pdk).addMovement(paramMotionEvent);
+    SnsSightPlayerUI.o(this.rVT).addMovement(paramMotionEvent);
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     default: 
@@ -32,104 +32,107 @@ final class SnsSightPlayerUI$13
     case 1: 
       for (;;)
       {
+        AppMethodBeat.o(39267);
         return false;
-        SnsSightPlayerUI.a(this.pdk, paramMotionEvent.getX());
-        SnsSightPlayerUI.b(this.pdk, paramMotionEvent.getY());
+        SnsSightPlayerUI.a(this.rVT, paramMotionEvent.getX());
+        SnsSightPlayerUI.b(this.rVT, paramMotionEvent.getY());
         continue;
-        if (SnsSightPlayerUI.p(this.pdk))
+        if (SnsSightPlayerUI.p(this.rVT))
         {
-          ((View)SnsSightPlayerUI.g(this.pdk)).setPivotX(this.pdk.oge.getWidth() / 2);
-          ((View)SnsSightPlayerUI.g(this.pdk)).setPivotY(this.pdk.oge.getHeight() / 2);
-          ((View)SnsSightPlayerUI.g(this.pdk)).setScaleX(1.0F);
-          ((View)SnsSightPlayerUI.g(this.pdk)).setScaleY(1.0F);
-          ((View)SnsSightPlayerUI.g(this.pdk)).setTranslationX(0.0F);
-          ((View)SnsSightPlayerUI.g(this.pdk)).setTranslationY(0.0F);
-          paramView = this.pdk;
+          ((View)SnsSightPlayerUI.g(this.rVT)).setPivotX(this.rVT.qUt.getWidth() / 2);
+          ((View)SnsSightPlayerUI.g(this.rVT)).setPivotY(this.rVT.qUt.getHeight() / 2);
+          ((View)SnsSightPlayerUI.g(this.rVT)).setScaleX(1.0F);
+          ((View)SnsSightPlayerUI.g(this.rVT)).setScaleY(1.0F);
+          ((View)SnsSightPlayerUI.g(this.rVT)).setTranslationX(0.0F);
+          ((View)SnsSightPlayerUI.g(this.rVT)).setTranslationY(0.0F);
+          paramView = this.rVT;
           if (paramView.contextMenuHelper == null) {
-            paramView.contextMenuHelper = new j(paramView.mController.uMN);
+            paramView.contextMenuHelper = new l(paramView.getContext());
           }
-          paramView.contextMenuHelper.a((View)paramView.iuC, paramView.pdj, paramView.ifj);
-          if (SnsSightPlayerUI.q(this.pdk) != null) {
-            SnsSightPlayerUI.q(this.pdk).setVisibility(0);
+          paramView.contextMenuHelper.a((View)paramView.kvG, paramView.rVS, paramView.jWw);
+          if (SnsSightPlayerUI.q(this.rVT) != null) {
+            SnsSightPlayerUI.q(this.rVT).setVisibility(0);
           }
-          SnsSightPlayerUI.c(this.pdk, false);
-          SnsSightPlayerUI.b(this.pdk, false);
+          SnsSightPlayerUI.c(this.rVT, false);
+          SnsSightPlayerUI.b(this.rVT, false);
         }
         else
         {
-          if ((SnsSightPlayerUI.m(this.pdk)) && (!SnsSightPlayerUI.r(this.pdk)))
+          if ((SnsSightPlayerUI.m(this.rVT)) && (!SnsSightPlayerUI.r(this.rVT)))
           {
-            this.pdk.aBR();
-            SnsSightPlayerUI.b(this.pdk, false);
+            this.rVT.bdV();
+            SnsSightPlayerUI.b(this.rVT, false);
+            AppMethodBeat.o(39267);
             return true;
           }
-          SnsSightPlayerUI.b(this.pdk, false);
+          SnsSightPlayerUI.b(this.rVT, false);
         }
       }
     }
-    float f3 = ((View)SnsSightPlayerUI.g(this.pdk)).getTranslationX();
-    float f4 = ((View)SnsSightPlayerUI.g(this.pdk)).getTranslationY();
-    paramView = SnsSightPlayerUI.o(this.pdk);
+    float f3 = ((View)SnsSightPlayerUI.g(this.rVT)).getTranslationX();
+    float f4 = ((View)SnsSightPlayerUI.g(this.rVT)).getTranslationY();
+    paramView = SnsSightPlayerUI.o(this.rVT);
     paramView.computeCurrentVelocity(1000);
     int i = (int)paramView.getXVelocity();
     int j = (int)paramView.getYVelocity();
     float f2;
-    if (((Math.abs(f3) <= 250.0F) && (Math.abs(j) > Math.abs(i)) && (j > 0) && (!SnsSightPlayerUI.r(this.pdk))) || (SnsSightPlayerUI.m(this.pdk)))
+    if (((Math.abs(f3) <= 250.0F) && (Math.abs(j) > Math.abs(i)) && (j > 0) && (!SnsSightPlayerUI.r(this.rVT))) || (SnsSightPlayerUI.m(this.rVT)))
     {
-      f2 = 1.0F - f4 / this.pdk.oge.getHeight();
+      f2 = 1.0F - f4 / this.rVT.qUt.getHeight();
       if (f2 > 1.0F)
       {
-        label504:
-        if (((j > 0) && (f1 < SnsSightPlayerUI.s(this.pdk))) || ((j < 0) && (f1 >= 0.5D)))
+        label515:
+        if (((j > 0) && (f1 < SnsSightPlayerUI.s(this.rVT))) || ((j < 0) && (f1 >= 0.5D)))
         {
-          SnsSightPlayerUI.a(this.pdk, (int)f3);
-          SnsSightPlayerUI.b(this.pdk, (int)f4);
-          SnsSightPlayerUI.c(this.pdk, f1);
-          if (SnsSightPlayerUI.q(this.pdk) != null) {
-            SnsSightPlayerUI.q(this.pdk).setVisibility(8);
+          SnsSightPlayerUI.a(this.rVT, (int)f3);
+          SnsSightPlayerUI.b(this.rVT, (int)f4);
+          SnsSightPlayerUI.c(this.rVT, f1);
+          if (SnsSightPlayerUI.q(this.rVT) != null) {
+            SnsSightPlayerUI.q(this.rVT).setVisibility(8);
           }
-          ((View)SnsSightPlayerUI.g(this.pdk)).setPivotX(this.pdk.oge.getWidth() / 2);
-          ((View)SnsSightPlayerUI.g(this.pdk)).setPivotY(this.pdk.oge.getHeight() / 2);
-          ((View)SnsSightPlayerUI.g(this.pdk)).setScaleX(f1);
-          ((View)SnsSightPlayerUI.g(this.pdk)).setScaleY(f1);
-          SnsSightPlayerUI.t(this.pdk).setAlpha(f1);
+          ((View)SnsSightPlayerUI.g(this.rVT)).setPivotX(this.rVT.qUt.getWidth() / 2);
+          ((View)SnsSightPlayerUI.g(this.rVT)).setPivotY(this.rVT.qUt.getHeight() / 2);
+          ((View)SnsSightPlayerUI.g(this.rVT)).setScaleX(f1);
+          ((View)SnsSightPlayerUI.g(this.rVT)).setScaleY(f1);
+          SnsSightPlayerUI.t(this.rVT).setAlpha(f1);
         }
-        SnsSightPlayerUI.c(this.pdk, true);
-        label688:
+        SnsSightPlayerUI.c(this.rVT, true);
+        label699:
         if (f4 <= 200.0F) {
-          break label786;
+          break label802;
         }
-        SnsSightPlayerUI.d(this.pdk, false);
+        SnsSightPlayerUI.d(this.rVT, false);
       }
     }
     for (;;)
     {
       if (f4 > 50.0F) {
-        ((View)SnsSightPlayerUI.g(this.pdk)).setOnLongClickListener(null);
+        ((View)SnsSightPlayerUI.g(this.rVT)).setOnLongClickListener(null);
       }
-      if (SnsSightPlayerUI.o(this.pdk) != null)
+      if (SnsSightPlayerUI.o(this.rVT) != null)
       {
-        SnsSightPlayerUI.o(this.pdk).recycle();
-        SnsSightPlayerUI.a(this.pdk, null);
+        SnsSightPlayerUI.o(this.rVT).recycle();
+        SnsSightPlayerUI.a(this.rVT, null);
       }
-      if (!SnsSightPlayerUI.m(this.pdk)) {
+      if (!SnsSightPlayerUI.m(this.rVT)) {
         break;
       }
+      AppMethodBeat.o(39267);
       return true;
       f1 = f2;
-      break label504;
-      SnsSightPlayerUI.c(this.pdk, false);
-      break label688;
-      label786:
+      break label515;
+      SnsSightPlayerUI.c(this.rVT, false);
+      break label699;
+      label802:
       if (f4 > 10.0F) {
-        SnsSightPlayerUI.d(this.pdk, true);
+        SnsSightPlayerUI.d(this.rVT, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsSightPlayerUI.13
  * JD-Core Version:    0.7.0.1
  */

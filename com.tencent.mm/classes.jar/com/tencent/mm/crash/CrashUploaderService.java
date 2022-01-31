@@ -1,16 +1,17 @@
 package com.tencent.mm.crash;
 
-import android.app.IntentService;
 import android.content.Intent;
 import android.os.Build;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.c;
 import com.tencent.mm.a.e;
 import com.tencent.mm.a.g;
-import com.tencent.mm.a.q;
+import com.tencent.mm.a.r;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.service.MMIntentService;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,37 +26,44 @@ import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 public class CrashUploaderService
-  extends IntentService
+  extends MMIntentService
 {
-  static final HashMap<String, Integer> dBh;
+  static final HashMap<String, Integer> euI;
   
   static
   {
+    AppMethodBeat.i(126234);
     HashMap localHashMap = new HashMap(16);
-    dBh = localHashMap;
+    euI = localHashMap;
     localHashMap.put("exception", Integer.valueOf(10001));
-    dBh.put("anr", Integer.valueOf(10002));
-    dBh.put("handler", Integer.valueOf(10003));
-    dBh.put("sql", Integer.valueOf(10004));
-    dBh.put("permission", Integer.valueOf(10005));
+    euI.put("anr", Integer.valueOf(10002));
+    euI.put("handler", Integer.valueOf(10003));
+    euI.put("sql", Integer.valueOf(10004));
+    euI.put("permission", Integer.valueOf(10005));
+    AppMethodBeat.o(126234);
   }
   
   public CrashUploaderService()
   {
     super("CrashUploaderService");
-    if (d.DEBUG) {
+    AppMethodBeat.i(126230);
+    if (f.DEBUG)
+    {
+      ab.e("MicroMsg.CrashUploaderService", "CrashUploaderService Name : %s", new Object[] { CrashUploaderService.class.getName() });
       Assert.assertTrue("CrashUploaderService name mismatch!!!", ".crash.CrashUploaderService".equals(CrashUploaderService.class.getName()));
     }
+    AppMethodBeat.o(126230);
   }
   
   private static boolean a(String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, String paramString3, String paramString4)
   {
+    AppMethodBeat.i(126233);
     int i = paramArrayOfByte.length;
-    String str = g.o(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) }).getBytes()).toLowerCase();
-    byte[] arrayOfByte = q.l(paramArrayOfByte);
+    String str = g.w(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) }).getBytes()).toLowerCase();
+    byte[] arrayOfByte = r.compress(paramArrayOfByte);
     paramArrayOfByte = new PByteArray();
     c.a(paramArrayOfByte, arrayOfByte, str.getBytes());
-    paramString2 = new StringBuilder().append(paramString3).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(paramInt)).append("&devicetype=").append(paramString2).append("&filelength=").append(i).append("&sum=").append(str).append("&reporttype=1&NewReportType=").append(bk.g((Integer)dBh.get(paramString4)));
+    paramString2 = new StringBuilder().append(paramString3).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(paramInt)).append("&devicetype=").append(paramString2).append("&filelength=").append(i).append("&sum=").append(str).append("&reporttype=1&NewReportType=").append(bo.g((Integer)euI.get(paramString4)));
     if ((paramString1 != null) && (!paramString1.equals(""))) {
       paramString2.append("&username=").append(paramString1);
     }
@@ -66,44 +74,56 @@ public class CrashUploaderService
       paramArrayOfByte = new ByteArrayEntity(paramArrayOfByte.value);
       paramArrayOfByte.setContentType("binary/octet-stream");
       paramString2.setEntity(paramArrayOfByte);
-      y.i("MicroMsg.CrashUploaderService", bk.convertStreamToString(paramString1.execute(paramString2).getEntity().getContent()));
+      ab.i("MicroMsg.CrashUploaderService", bo.convertStreamToString(paramString1.execute(paramString2).getEntity().getContent()));
+      AppMethodBeat.o(126233);
       return true;
     }
     catch (Exception paramString1)
     {
-      y.printErrStackTrace("MicroMsg.CrashUploaderService", paramString1, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.CrashUploaderService", paramString1, "", new Object[0]);
+      AppMethodBeat.o(126233);
     }
     return false;
   }
   
-  private static void j(String paramString1, String paramString2, String paramString3)
+  private static void l(String paramString1, String paramString2, String paramString3)
   {
+    AppMethodBeat.i(126232);
     StringBuilder localStringBuilder;
     if (!new File(paramString1).exists())
     {
       localStringBuilder = new StringBuilder();
-      if ((!bk.bl(paramString3)) && (!paramString3.equals("0"))) {
-        break label191;
+      if ((!bo.isNullOrNil(paramString3)) && (!paramString3.equals("0"))) {
+        break label204;
       }
       paramString3 = Build.DEVICE + Build.FINGERPRINT + Build.MANUFACTURER + Build.MODEL;
       localStringBuilder.append("uin[" + Integer.toString(paramString3.hashCode()) + "] ");
     }
     for (;;)
     {
-      localStringBuilder.append(y.getSysInfo());
+      localStringBuilder.append(ab.getSysInfo());
       localStringBuilder.append(" BRAND:[" + Build.BRAND + "] ");
       localStringBuilder.append("\n");
       e.e(paramString1, localStringBuilder.toString().getBytes());
       e.e(paramString1, (paramString2 + "\n").getBytes());
+      AppMethodBeat.o(126232);
       return;
-      label191:
+      label204:
       localStringBuilder.append("uin[" + paramString3 + "] ");
     }
   }
   
-  protected void onHandleIntent(Intent paramIntent)
+  public final String getTag()
   {
-    if (paramIntent == null) {
+    return "MicroMsg.CrashUploaderService";
+  }
+  
+  public final void onHandleIntent(Intent paramIntent)
+  {
+    AppMethodBeat.i(126231);
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(126231);
       return;
     }
     Object localObject4 = paramIntent.getStringExtra("INTENT_EXTRA_EXCEPTION_MSG");
@@ -120,11 +140,11 @@ public class CrashUploaderService
     catch (Error localError)
     {
       int j;
-      label68:
+      label80:
       String str3;
       String str4;
       Object localObject1;
-      break label68;
+      break label80;
     }
     str3 = paramIntent.getStringExtra("INTENT_EXTRA_DEVICE_TYPE");
     str4 = paramIntent.getStringExtra("INTENT_EXTRA_HOST");
@@ -139,7 +159,7 @@ public class CrashUploaderService
       paramIntent = "exception";
     }
     localObject1 = str1 + "," + str3 + "_" + i + "_" + Build.CPU_ABI + ",";
-    localObject1 = (String)localObject1 + "exception,time_" + bk.UX() + ",error_" + (String)localObject4;
+    localObject1 = (String)localObject1 + "exception,time_" + bo.aox() + ",error_" + (String)localObject4;
     for (;;)
     {
       try
@@ -151,7 +171,7 @@ public class CrashUploaderService
         ((File)localObject4).mkdirs();
         localObject4 = new Date();
         localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
-        j((String)localObject3 + "crash_" + localSimpleDateFormat.format((Date)localObject4) + ".txt", (String)localObject1, str2);
+        l((String)localObject3 + "crash_" + localSimpleDateFormat.format((Date)localObject4) + ".txt", (String)localObject1, str2);
       }
       catch (Exception localException)
       {
@@ -168,12 +188,12 @@ public class CrashUploaderService
       if (((File)localObject2).length() > 262144L) {
         ((File)localObject2).delete();
       }
-      j((String)localObject3, (String)localObject1, str2);
-      localObject1 = e.d((String)localObject3, 0, -1);
-      if ((bk.bE((byte[])localObject1)) || (!a(str1, (byte[])localObject1, i, str3, str4, paramIntent))) {
-        break;
+      l((String)localObject3, (String)localObject1, str2);
+      localObject1 = e.j((String)localObject3, 0, -1);
+      if (!bo.ce((byte[])localObject1)) {
+        continue;
       }
-      ((File)localObject2).delete();
+      AppMethodBeat.o(126231);
       return;
       localObject4 = ((File)localObject4).listFiles();
       if (localObject4 != null)
@@ -183,13 +203,17 @@ public class CrashUploaderService
         if (j < k)
         {
           localSimpleDateFormat = localObject4[j];
-          if (bk.co(localSimpleDateFormat.lastModified()) > 2592000000L) {
+          if (bo.hl(localSimpleDateFormat.lastModified()) > 2592000000L) {
             localSimpleDateFormat.delete();
           }
           j += 1;
         }
       }
     }
+    if (a(str1, (byte[])localObject1, i, str3, str4, paramIntent)) {
+      ((File)localObject2).delete();
+    }
+    AppMethodBeat.o(126231);
   }
 }
 

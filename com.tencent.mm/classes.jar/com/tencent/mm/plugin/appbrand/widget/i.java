@@ -1,133 +1,34 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import com.tencent.mm.plugin.appbrand.u.l;
-import com.tencent.mm.protocal.c.atk;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.bk;
+import a.l;
+import android.graphics.drawable.Drawable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelappbrand.a.a;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/widget/IconProviderWC;", "Lcom/tencent/mm/plugin/appbrand/widget/IconProvider;", "()V", "getDefaultAppIcon", "Landroid/graphics/drawable/Drawable;", "plugin-appbrand-integration_release"})
 public final class i
-  extends com.tencent.mm.sdk.e.i<j>
+  implements h
 {
-  public static final String fQV = com.tencent.mm.sdk.e.i.a(j.fCU, "LaunchWxaWidgetRespData");
+  public static final i jaC;
   
-  public i(e parame)
+  static
   {
-    super(parame, j.fCU, "LaunchWxaWidgetRespData", j.cqY);
+    AppMethodBeat.i(135220);
+    jaC = new i();
+    AppMethodBeat.o(135220);
   }
   
-  private boolean a(j paramj, boolean paramBoolean)
+  public final Drawable aOD()
   {
-    paramj.field_appIdHash = paramj.field_appId.hashCode();
-    super.a(paramj, paramBoolean);
-    return a(paramj, new String[] { "appId" });
-  }
-  
-  private boolean a(j paramj, boolean paramBoolean, String... paramVarArgs)
-  {
-    int i;
-    if (!bk.H(paramVarArgs)) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < paramVarArgs.length)
-      {
-        if (paramVarArgs[i].equals("appId"))
-        {
-          paramVarArgs[i] = "appIdHash";
-          paramj.field_appIdHash = paramj.field_appId.hashCode();
-        }
-      }
-      else {
-        return super.b(paramj, paramBoolean, paramVarArgs);
-      }
-      i += 1;
-    }
-  }
-  
-  public final j a(String paramString, int paramInt1, int paramInt2, atk paramatk)
-  {
-    if ((bk.bl(paramString)) || (paramatk == null)) {
-      return null;
-    }
-    j localj = new j();
-    localj.field_appIdHash = paramString.hashCode();
-    localj.field_appId = paramString;
-    localj.field_pkgType = paramInt1;
-    localj.field_widgetType = paramInt2;
-    if (!a(localj, new String[] { "appId", "pkgType", "widgetType" }))
-    {
-      paramInt2 = 1;
-      if (l.a(localj.field_launchAction, paramatk.tpc)) {
-        break label276;
-      }
-      localj.field_launchAction = paramatk.tpc;
-    }
-    label276:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (!l.a(localj.field_jsApiInfo, paramatk.toW))
-      {
-        localj.field_jsApiInfo = paramatk.toW;
-        paramInt1 = 1;
-      }
-      if (!l.a(localj.field_versionInfo, paramatk.tpd))
-      {
-        localj.field_versionInfo = paramatk.tpd;
-        paramInt1 = 1;
-      }
-      if (!l.a(localj.field_widgetSetting, paramatk.tpe))
-      {
-        localj.field_widgetSetting = paramatk.tpe;
-        paramInt1 = 1;
-      }
-      if (paramInt1 != 0)
-      {
-        if (paramInt2 == 0) {
-          break label246;
-        }
-        a(localj, false);
-      }
-      for (;;)
-      {
-        if (paramInt1 != 0) {
-          a(localj, new String[] { "appId", "pkgType", "widgetType" });
-        }
-        return localj;
-        paramInt2 = 0;
-        break;
-        label246:
-        a(localj, false, new String[] { "appId", "pkgType", "widgetType" });
-      }
-    }
-  }
-  
-  public final boolean a(j paramj, String... paramVarArgs)
-  {
-    int i;
-    if (!bk.H(paramVarArgs)) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < paramVarArgs.length)
-      {
-        if (paramVarArgs[i].equals("appId"))
-        {
-          paramVarArgs[i] = "appIdHash";
-          paramj.field_appIdHash = paramj.field_appId.hashCode();
-        }
-      }
-      else {
-        return super.b(paramj, paramVarArgs);
-      }
-      i += 1;
-    }
+    AppMethodBeat.i(135219);
+    Drawable localDrawable = a.acC();
+    AppMethodBeat.o(135219);
+    return localDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.i
  * JD-Core Version:    0.7.0.1
  */

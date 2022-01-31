@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.collect.reward.ui;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.n.d;
 
 final class QrRewardMainUI$5
@@ -12,22 +13,26 @@ final class QrRewardMainUI$5
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(41087);
     switch (paramMenuItem.getItemId())
     {
     default: 
-      y.i("MicroMsg.QrRewardMainUI", "unknown menu: %s", new Object[] { Integer.valueOf(paramMenuItem.getItemId()) });
-      QrRewardMainUI.c(this.iJi, true);
+      ab.i("MicroMsg.QrRewardMainUI", "unknown menu: %s", new Object[] { Integer.valueOf(paramMenuItem.getItemId()) });
+      QrRewardMainUI.a(this.kPN, true);
+      AppMethodBeat.o(41087);
       return;
     case 1: 
-      QrRewardMainUI.a(this.iJi, "");
-      QrRewardMainUI.n(this.iJi);
-      QrRewardMainUI.c(this.iJi, true);
-      h.nFQ.f(14721, new Object[] { Integer.valueOf(1), Integer.valueOf(3) });
+      QrRewardMainUI.a(this.kPN, "");
+      QrRewardMainUI.b(this.kPN);
+      QrRewardMainUI.a(this.kPN, true);
+      h.qsU.e(14721, new Object[] { Integer.valueOf(1), Integer.valueOf(3) });
+      AppMethodBeat.o(41087);
       return;
     }
-    QrRewardMainUI.c(this.iJi, false);
-    QrRewardMainUI.o(this.iJi);
-    h.nFQ.f(14721, new Object[] { Integer.valueOf(1), Integer.valueOf(4) });
+    QrRewardMainUI.a(this.kPN, false);
+    QrRewardMainUI.p(this.kPN);
+    h.qsU.e(14721, new Object[] { Integer.valueOf(1), Integer.valueOf(4) });
+    AppMethodBeat.o(41087);
   }
 }
 

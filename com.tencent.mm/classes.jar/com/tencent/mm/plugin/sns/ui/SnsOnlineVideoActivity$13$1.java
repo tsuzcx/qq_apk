@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d.a;
 
 final class SnsOnlineVideoActivity$13$1
   implements d.a
@@ -9,7 +10,9 @@ final class SnsOnlineVideoActivity$13$1
   
   public final void onDismiss()
   {
-    SnsOnlineVideoActivity.a(this.pbv.pbr, null);
+    AppMethodBeat.i(39159);
+    SnsOnlineVideoActivity.a(this.rUj.rUf, null);
+    AppMethodBeat.o(39159);
   }
 }
 

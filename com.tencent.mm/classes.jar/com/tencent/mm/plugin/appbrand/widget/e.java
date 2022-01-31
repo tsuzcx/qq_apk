@@ -1,24 +1,64 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.widget.FrameLayout;
+import android.widget.TextView;
+import android.widget.TextView.BufferType;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.h.a;
 
-public final class e
-  extends FrameLayout
+@SuppressLint({"AppCompatCustomView"})
+public class e
+  extends TextView
+  implements com.tencent.mm.plugin.appbrand.jsapi.base.e
 {
+  private boolean ios;
+  private a jan;
+  
   public e(Context paramContext)
   {
     super(paramContext);
-    setWillNotDraw(false);
+    AppMethodBeat.i(126658);
+    super.setIncludeFontPadding(false);
+    super.setLineSpacing(0.0F, 1.0F);
+    super.setSpannableFactory(new e.1(this));
+    AppMethodBeat.o(126658);
   }
   
-  protected final void dispatchDraw(Canvas paramCanvas)
+  public final boolean aCe()
   {
-    if (willNotDraw()) {
+    return this.ios;
+  }
+  
+  public void setInterceptEvent(boolean paramBoolean)
+  {
+    this.ios = paramBoolean;
+  }
+  
+  public void setLineHeight(int paramInt)
+  {
+    AppMethodBeat.i(126659);
+    if (this.jan == null) {
+      this.jan = new a(paramInt);
+    }
+    if (!this.jan.aF(paramInt))
+    {
+      AppMethodBeat.o(126659);
       return;
     }
-    super.dispatchDraw(paramCanvas);
+    invalidate();
+    AppMethodBeat.o(126659);
+  }
+  
+  public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
+  {
+    AppMethodBeat.i(126660);
+    TextView.BufferType localBufferType = paramBufferType;
+    if (paramBufferType == TextView.BufferType.NORMAL) {
+      localBufferType = TextView.BufferType.SPANNABLE;
+    }
+    super.setText(paramCharSequence, localBufferType);
+    AppMethodBeat.o(126660);
   }
 }
 

@@ -6,9 +6,8 @@ import android.os.Build.VERSION;
 import android.util.Pair;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class FMessageConversationUI$2
   implements View.OnClickListener
@@ -17,12 +16,14 @@ final class FMessageConversationUI$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(25359);
     Intent localIntent = new Intent().putExtra("Search_Scene", 2).putExtra("MMActivity.OverrideEnterAnimation", 0).putExtra("MMActivity.OverrideExitAnimation", 0);
     paramView = null;
     if (Build.VERSION.SDK_INT >= 21) {
-      paramView = ActivityOptions.makeSceneTransitionAnimation(this.pwx, new Pair[0]).toBundle();
+      paramView = ActivityOptions.makeSceneTransitionAnimation(this.sYg, new Pair[0]).toBundle();
     }
-    d.b(this.pwx.mController.uMN, ".ui.FTSAddFriendUI", localIntent, paramView);
+    d.b(this.sYg.getContext(), ".ui.FTSAddFriendUI", localIntent, paramView);
+    AppMethodBeat.o(25359);
   }
 }
 

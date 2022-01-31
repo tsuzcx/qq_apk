@@ -4,9 +4,9 @@ public class b$a
   implements Runnable
 {
   public long dbSize = 0L;
-  public boolean hPx = true;
-  public long hPy = 0L;
-  public long hPz = 0L;
+  public boolean jIZ = true;
+  public long jJa = 0L;
+  public long jJb = 0L;
   
   public void run() {}
 }

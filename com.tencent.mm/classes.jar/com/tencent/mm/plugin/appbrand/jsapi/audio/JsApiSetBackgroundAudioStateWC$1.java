@@ -1,41 +1,44 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v.b;
+import com.tencent.mm.plugin.appbrand.e;
+import com.tencent.mm.plugin.appbrand.e.b;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ui.banner.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class JsApiSetBackgroundAudioStateWC$1
   implements f
 {
-  JsApiSetBackgroundAudioStateWC$1(JsApiSetBackgroundAudioStateWC paramJsApiSetBackgroundAudioStateWC, u.b paramb) {}
+  JsApiSetBackgroundAudioStateWC$1(JsApiSetBackgroundAudioStateWC paramJsApiSetBackgroundAudioStateWC, v.b paramb) {}
   
-  public final void aP(String paramString, int paramInt)
+  public final void bf(String paramString, int paramInt)
   {
-    String str = this.giE.getString("appId", "");
-    int i = this.giE.getInt("pkgType", 0);
-    if (((!str.equals(paramString)) || (i != paramInt)) && (this.giE.ik("setBackgroundAudioState#isPlaying")) && (g.qC(str) != g.a.fxU))
+    AppMethodBeat.i(130761);
+    String str = this.hBX.getString("appId", "");
+    int i = this.hBX.getInt("pkgType", 0);
+    if (((!str.equals(paramString)) || (i != paramInt)) && (this.hBX.oR("setBackgroundAudioState#isPlaying")) && (e.xY(str) != e.b.gOZ))
     {
-      y.i("MicroMsg.Music.JsApiSetBackgroundAudioState", "onStickyBannerChanged, pause the music");
+      ab.i("MicroMsg.Music.JsApiSetBackgroundAudioState", "onStickyBannerChanged, pause the music");
       paramString = new JSONObject();
     }
     try
     {
       paramString.put("operationType", "pause");
-      label85:
-      JsApiSetBackgroundAudioState.SetBackgroundAudioStateTask localSetBackgroundAudioStateTask = this.gjm.b(this.gjm, this.gjm.giA.ggu, this.gjm.giA.gfg);
-      localSetBackgroundAudioStateTask.giD = paramString.toString();
+      label90:
+      JsApiSetBackgroundAudioState.SetBackgroundAudioStateTask localSetBackgroundAudioStateTask = this.hCG.b(this.hCG, this.hCG.hBT.hyO, this.hCG.hBT.hry);
+      localSetBackgroundAudioStateTask.hBW = paramString.toString();
       localSetBackgroundAudioStateTask.appId = str;
       AppBrandMainProcessService.a(localSetBackgroundAudioStateTask);
+      AppMethodBeat.o(130761);
       return;
     }
     catch (JSONException localJSONException)
     {
-      break label85;
+      break label90;
     }
   }
 }

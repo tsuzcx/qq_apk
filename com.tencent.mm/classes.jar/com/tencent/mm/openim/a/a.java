@@ -1,17 +1,17 @@
 package com.tencent.mm.openim.a;
 
-import com.tencent.mm.model.ag;
+import com.tencent.mm.model.ah;
 
 public abstract interface a
-  extends com.tencent.mm.kernel.c.a, ag
+  extends com.tencent.mm.kernel.c.a, ah
 {
-  public abstract void U(String paramString1, String paramString2);
+  public abstract void al(String paramString1, String paramString2);
   
-  public abstract void oO(String paramString);
+  public abstract void wg(String paramString);
   
-  public abstract void oP(String paramString);
+  public abstract void wh(String paramString);
   
-  public abstract void oQ(String paramString);
+  public abstract void wi(String paramString);
 }
 
 

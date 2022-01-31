@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/a58" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a23" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="@dimen/dp">
-        <TextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:id="@id/byf" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bz7" android:layout_weight="1.0" />
-        <com.tencent.mm.plugin.game.ui.GameDropdownView android:textSize="@dimen/k9" android:textColor="@color/pf" android:gravity="center_vertical" android:id="@id/byg" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    <LinearLayout android:id="@id/r_" style="@style/nk">
+        <ImageView android:layout_gravity="center_vertical" android:background="@raw/mm_select_create_chatroom" android:layout_width="@dimen/hk" android:layout_height="@dimen/hk" android:layout_marginRight="@dimen/g2" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:background="@drawable/abk" android:paddingLeft="@dimen/ne" android:paddingRight="@dimen/g2" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e5c" style="@style/ln" />
+            <TextView android:textColor="#ff555555" android:id="@id/lt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="{desc}" android:singleLine="true" style="@style/lm" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

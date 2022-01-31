@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/v_" android:background="@color/i9" style="@style/p1"
+<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:ellipsize="none" android:id="@id/a2w" android:padding="10.0dip" android:visibility="gone" android:singleLine="false" style="@style/kk" />
-    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/dfb" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/dfc" android:background="@null" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/r2" android:transcriptMode="alwaysScroll" android:cacheColorHint="#00000000" android:divider="@null" />
-    </com.tencent.mm.ui.base.MMPullDownView>
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="@dimen/m2" android:textColor="@color/io" android:id="@id/azb" android:background="@drawable/b_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ex" android:minHeight="48.0dip" android:text="@string/acy" android:layout_alignParentLeft="true" />
+        <Button android:textSize="@dimen/m2" android:textColor="@color/hk" android:id="@id/b_e" android:background="@drawable/b_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ex" android:minHeight="48.0dip" android:text="@string/acz" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <ImageView android:layout_gravity="bottom" style="@style/he" />
+    <LinearLayout android:orientation="vertical" android:id="@id/dja" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/w_" android:gravity="center_vertical" android:id="@id/bu5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/uy" android:minHeight="@dimen/ux" />
+        <ImageView android:layout_gravity="bottom" android:id="@id/pm" style="@style/he" />
+    </LinearLayout>
+    <ListView android:id="@id/djb" android:background="@color/a3x" android:layout_height="wrap_content" style="@style/mn" />
 </LinearLayout>

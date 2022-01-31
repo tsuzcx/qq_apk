@@ -1,8 +1,16 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-public abstract interface j
+public final class j
 {
-  public abstract void tz(int paramInt);
+  public String color;
+  public String cyA;
+  public String id;
+  public String kXd;
+  public int type;
+  public String ugX;
+  public String ugY;
+  public String ugZ;
+  public int uha;
 }
 
 

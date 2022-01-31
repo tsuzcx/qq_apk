@@ -2,9 +2,9 @@ package com.tencent.mm.pluginsdk.ui.preference;
 
 public final class HelperHeaderPreference$a
 {
-  public String bVI;
-  public String dtK;
-  public String frh;
+  public String cDt;
+  public String elx;
+  public String hint;
   public int status;
 }
 

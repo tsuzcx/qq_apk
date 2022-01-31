@@ -4,9 +4,9 @@ import android.view.View.OnClickListener;
 
 public abstract class v$a
 {
-  public View.OnClickListener oPK = new v.a.1(this);
+  public View.OnClickListener rHw = new v.a.1(this);
   
-  public abstract void yx(int paramInt);
+  public abstract void ED(int paramInt);
 }
 
 

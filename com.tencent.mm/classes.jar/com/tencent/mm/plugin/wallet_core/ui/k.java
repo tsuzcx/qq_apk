@@ -1,86 +1,74 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.app.Dialog;
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.view.LayoutInflater;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.h.a.tk.b;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.j;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.model.c.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.widget.b.c.a;
+import java.util.LinkedList;
 
 public final class k
 {
-  public static Dialog a(Context paramContext, tk.b paramb)
+  public static com.tencent.mm.ui.widget.b.c a(Context paramContext, com.tencent.mm.plugin.wallet_core.model.c paramc, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    Object localObject3 = paramb.title;
-    String str3 = paramb.cdw;
-    Object localObject4 = paramb.cdx;
-    Object localObject2 = paramb.cdq;
-    int i = paramb.cdr;
-    String str1 = paramb.cds;
-    String str2 = paramb.cdv;
-    Object localObject1 = paramb.cdu;
-    paramb = paramb.cdt;
-    View localView = LayoutInflater.from(paramContext).inflate(a.g.wallet_id_card_tip, null);
-    ImageView localImageView = (ImageView)localView.findViewById(a.f.close_icon);
-    int j = BackwardSupportUtil.b.b(paramContext, 15.0F);
-    bk.j(localImageView, j, j, j, j);
-    TextView localTextView2 = (TextView)localView.findViewById(a.f.main_title);
-    TextView localTextView3 = (TextView)localView.findViewById(a.f.main_tip);
-    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(a.f.main_tip_wording);
-    Button localButton = (Button)localView.findViewById(a.f.upload_btn);
-    TextView localTextView1 = (TextView)localView.findViewById(a.f.main_protocol_wording);
-    localTextView2.setText((CharSequence)localObject3);
-    localTextView3.setText(str3);
-    localLinearLayout.removeAllViews();
-    localObject3 = ((List)localObject4).iterator();
-    while (((Iterator)localObject3).hasNext())
+    AppMethodBeat.i(142507);
+    if (((Activity)paramContext).isFinishing())
     {
-      str3 = (String)((Iterator)localObject3).next();
-      localObject4 = LayoutInflater.from(paramContext).inflate(a.g.wallet_id_card_wordingtip, null);
-      ((TextView)((View)localObject4).findViewById(a.f.wording_tip)).setText(str3);
-      localLinearLayout.addView((View)localObject4);
+      AppMethodBeat.o(142507);
+      return null;
     }
-    localButton.setText((CharSequence)localObject2);
-    if (i > 0)
+    if ((paramc == null) || ((TextUtils.isEmpty(paramc.ufo)) && ((paramc.ufp == null) || (paramc.ufp.isEmpty()))))
     {
-      i = str1.length();
-      j = (str1 + str2).length();
-      localObject2 = new SpannableString(str1 + str2);
-      ((SpannableString)localObject2).setSpan(new ForegroundColorSpan(paramContext.getResources().getColor(a.c.wallet_offline_link_color)), i, j, 33);
-      localTextView1.setText((CharSequence)localObject2);
+      ab.w("MicroMsg.WalletDialogHelper", "show showBalanceFetchAlert alert fail");
+      AppMethodBeat.o(142507);
+      return null;
     }
-    for (;;)
+    c.a locala = new c.a(paramContext);
+    locala.rG(false);
+    locala.Rj(2131296888).b(paramOnClickListener2);
+    locala.Ri(2131304793).a(paramOnClickListener1);
+    paramOnClickListener1 = View.inflate(paramContext, 2130971175, null);
+    int i;
+    if ((paramc.ufp != null) && (!paramc.ufp.isEmpty()))
     {
-      localTextView1.setOnClickListener(new k.1((String)localObject1, paramContext));
-      localObject1 = new Dialog(paramContext, a.j.mmalertdialog);
-      ((Dialog)localObject1).setContentView(localView);
-      ((Dialog)localObject1).setTitle(null);
-      ((Dialog)localObject1).setOnCancelListener(new k.3((Dialog)localObject1));
-      localImageView.setOnClickListener(new k.4((Dialog)localObject1));
-      localButton.setOnClickListener(new k.5(paramb, paramContext, (Dialog)localObject1));
-      ((Dialog)localObject1).show();
-      return localObject1;
-      localTextView1.setText("");
+      paramOnClickListener2 = (LinearLayout)paramOnClickListener1.findViewById(2131821084);
+      paramOnClickListener2.removeAllViews();
+      i = 0;
     }
+    while ((i < paramc.ufp.size()) && (i < paramc.ufp.size()))
+    {
+      View localView = View.inflate(paramContext, 2130971174, null);
+      TextView localTextView1 = (TextView)localView.findViewById(2131820680);
+      TextView localTextView2 = (TextView)localView.findViewById(2131821949);
+      localTextView1.setText(((c.b)paramc.ufp.get(i)).key);
+      localTextView2.setText(((c.b)paramc.ufp.get(i)).value);
+      paramOnClickListener2.addView(localView, i);
+      i += 1;
+      continue;
+      ab.e("MicroMsg.WalletDialogHelper", "fetch itemsList is empty");
+    }
+    ((TextView)paramOnClickListener1.findViewById(2131820680)).setText(paramc.ufo);
+    paramc = (TextView)paramOnClickListener1.findViewById(2131821001);
+    paramc.setVisibility(0);
+    paramc.setText(paramContext.getString(2131304794));
+    locala.fu(paramOnClickListener1);
+    paramc = locala.aLZ();
+    paramc.show();
+    h.a(paramContext, paramc);
+    AppMethodBeat.o(142507);
+    return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.k
  * JD-Core Version:    0.7.0.1
  */

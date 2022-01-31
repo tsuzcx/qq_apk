@@ -3,46 +3,60 @@ package com.tencent.mm.plugin.appbrand.ui.banner;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 
 final class BannerModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<BannerModel> CREATOR = new BannerModel.1();
-  private static volatile BannerModel hfY;
+  public static final Parcelable.Creator<BannerModel> CREATOR;
+  private static volatile BannerModel iRm;
   String appId;
   String appName;
-  String fJY;
-  int fJy;
-  String hfX;
+  String hcN;
+  int hcr;
+  String iRl;
+  
+  static
+  {
+    AppMethodBeat.i(133320);
+    CREATOR = new BannerModel.1();
+    AppMethodBeat.o(133320);
+  }
   
   BannerModel() {}
   
   private BannerModel(Parcel paramParcel)
   {
+    AppMethodBeat.i(133318);
     this.appId = paramParcel.readString();
-    this.fJy = paramParcel.readInt();
+    this.hcr = paramParcel.readInt();
     this.appName = paramParcel.readString();
-    this.fJY = paramParcel.readString();
-    this.hfX = paramParcel.readString();
+    this.hcN = paramParcel.readString();
+    this.iRl = paramParcel.readString();
+    AppMethodBeat.o(133318);
   }
   
-  static BannerModel apA()
+  static BannerModel aMP()
   {
+    AppMethodBeat.i(133319);
     try
     {
-      BannerModel localBannerModel = hfY;
+      BannerModel localBannerModel = ((e)g.E(e.class)).aMG();
+      iRm = localBannerModel;
       return localBannerModel;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(133319);
+    }
   }
   
-  static BannerModel apz()
+  static BannerModel aMQ()
   {
     try
     {
-      BannerModel localBannerModel = ((e)g.r(e.class)).apq();
-      hfY = localBannerModel;
+      BannerModel localBannerModel = iRm;
       return localBannerModel;
     }
     finally {}
@@ -55,11 +69,13 @@ final class BannerModel
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(133317);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.fJy);
+    paramParcel.writeInt(this.hcr);
     paramParcel.writeString(this.appName);
-    paramParcel.writeString(this.fJY);
-    paramParcel.writeString(this.hfX);
+    paramParcel.writeString(this.hcN);
+    paramParcel.writeString(this.iRl);
+    AppMethodBeat.o(133317);
   }
 }
 

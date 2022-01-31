@@ -1,6 +1,7 @@
 package com.tencent.ttpic.model;
 
 import android.graphics.PointF;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,84 +21,81 @@ public class CameraFilterParamSDK
   
   private Map<String, Object> getSmoothMapCommon()
   {
+    AppMethodBeat.i(83469);
     HashMap localHashMap = new HashMap();
     switch (this.smoothLevel)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(83469);
       return localHashMap;
-    case 0: 
       localHashMap.put("opttype", Float.valueOf(0.0F));
       localHashMap.put("radius", Float.valueOf(0.0F));
       localHashMap.put("whitenmag", Float.valueOf(0.0F));
-      return localHashMap;
-    case 1: 
+      continue;
       localHashMap.put("opttype", Float.valueOf(1.0F));
       localHashMap.put("radius", Float.valueOf(0.2F));
       localHashMap.put("whitenmag", Float.valueOf(0.2F));
-      return localHashMap;
-    case 2: 
+      continue;
       localHashMap.put("opttype", Float.valueOf(1.0F));
       localHashMap.put("radius", Float.valueOf(0.35F));
       localHashMap.put("whitenmag", Float.valueOf(0.2F));
-      return localHashMap;
-    case 3: 
+      continue;
       localHashMap.put("opttype", Float.valueOf(1.0F));
       localHashMap.put("radius", Float.valueOf(0.5F));
       localHashMap.put("whitenmag", Float.valueOf(0.25F));
-      return localHashMap;
-    case 4: 
+      continue;
       localHashMap.put("opttype", Float.valueOf(1.0F));
       localHashMap.put("radius", Float.valueOf(0.625F));
       localHashMap.put("whitenmag", Float.valueOf(0.25F));
-      return localHashMap;
+      continue;
+      localHashMap.put("opttype", Float.valueOf(1.0F));
+      localHashMap.put("radius", Float.valueOf(0.75F));
+      localHashMap.put("whitenmag", Float.valueOf(0.25F));
     }
-    localHashMap.put("opttype", Float.valueOf(1.0F));
-    localHashMap.put("radius", Float.valueOf(0.75F));
-    localHashMap.put("whitenmag", Float.valueOf(0.25F));
-    return localHashMap;
   }
   
   private Map<String, Object> getSmoothMapLowEnergy()
   {
+    AppMethodBeat.i(83470);
     HashMap localHashMap = new HashMap();
     switch (this.smoothLevel)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(83470);
       return localHashMap;
-    case 0: 
       localHashMap.put("opttype", Float.valueOf(0.0F));
       localHashMap.put("radius", Float.valueOf(0.0F));
       localHashMap.put("whitenmag", Float.valueOf(0.0F));
-      return localHashMap;
-    case 1: 
+      continue;
       localHashMap.put("opttype", Float.valueOf(1.0F));
       localHashMap.put("radius", Float.valueOf(0.1F));
       localHashMap.put("whitenmag", Float.valueOf(0.2F));
-      return localHashMap;
-    case 2: 
+      continue;
       localHashMap.put("opttype", Float.valueOf(1.0F));
       localHashMap.put("radius", Float.valueOf(0.1725F));
       localHashMap.put("whitenmag", Float.valueOf(0.2F));
-      return localHashMap;
-    case 3: 
+      continue;
       localHashMap.put("opttype", Float.valueOf(1.0F));
       localHashMap.put("radius", Float.valueOf(0.25F));
       localHashMap.put("whitenmag", Float.valueOf(0.25F));
-      return localHashMap;
-    case 4: 
+      continue;
       localHashMap.put("opttype", Float.valueOf(1.0F));
       localHashMap.put("radius", Float.valueOf(0.3125F));
       localHashMap.put("whitenmag", Float.valueOf(0.25F));
-      return localHashMap;
+      continue;
+      localHashMap.put("opttype", Float.valueOf(1.0F));
+      localHashMap.put("radius", Float.valueOf(0.375F));
+      localHashMap.put("whitenmag", Float.valueOf(0.25F));
     }
-    localHashMap.put("opttype", Float.valueOf(1.0F));
-    localHashMap.put("radius", Float.valueOf(0.375F));
-    localHashMap.put("whitenmag", Float.valueOf(0.25F));
-    return localHashMap;
   }
   
   public CameraFilterParamSDK copyParam()
   {
+    AppMethodBeat.i(83471);
     CameraFilterParamSDK localCameraFilterParamSDK = new CameraFilterParamSDK();
     localCameraFilterParamSDK.smoothLevel = this.smoothLevel;
     localCameraFilterParamSDK.effectIndex = this.effectIndex;
@@ -109,6 +107,7 @@ public class CameraFilterParamSDK
     localCameraFilterParamSDK.faceWidth = this.faceWidth;
     localCameraFilterParamSDK.faceRotation = this.faceRotation;
     localCameraFilterParamSDK.isBlackOpen = this.isBlackOpen;
+    AppMethodBeat.o(83471);
     return localCameraFilterParamSDK;
   }
   
@@ -119,58 +118,71 @@ public class CameraFilterParamSDK
   
   public Map<String, Object> getBlurMap(boolean paramBoolean)
   {
+    AppMethodBeat.i(83467);
     HashMap localHashMap = new HashMap();
+    float f;
     if (this.faceWidth > 0.0D)
     {
-      localHashMap.put("circle", Boolean.valueOf(false));
+      localHashMap.put("circle", Boolean.FALSE);
       localHashMap.put("tx", Float.valueOf(this.faceCenterX));
-      if (paramBoolean) {}
-      for (float f = 1.0F - this.faceCenterY;; f = this.faceCenterY)
+      if (paramBoolean)
       {
+        f = 1.0F - this.faceCenterY;
         localHashMap.put("ty", Float.valueOf(f));
         localHashMap.put("radius", Float.valueOf(this.faceWidth / 2.0F));
         localHashMap.put("angle", Float.valueOf(this.faceRotation + 180.0F));
         if ((!paramBoolean) && (this.faceRotation % 180 == 0)) {
           localHashMap.put("angle", Float.valueOf(this.faceRotation));
         }
-        return localHashMap;
       }
     }
-    localHashMap.put("tx", Float.valueOf(0.5F));
-    localHashMap.put("ty", Float.valueOf(0.5F));
-    localHashMap.put("radius", Float.valueOf(0.35F));
-    localHashMap.put("circle", Boolean.valueOf(true));
-    return localHashMap;
+    for (;;)
+    {
+      AppMethodBeat.o(83467);
+      return localHashMap;
+      f = this.faceCenterY;
+      break;
+      localHashMap.put("tx", Float.valueOf(0.5F));
+      localHashMap.put("ty", Float.valueOf(0.5F));
+      localHashMap.put("radius", Float.valueOf(0.35F));
+      localHashMap.put("circle", Boolean.TRUE);
+    }
   }
   
   public PointF getRealFaceCenter()
   {
+    AppMethodBeat.i(83472);
     PointF localPointF = new PointF(this.faceCenterX, this.faceCenterY);
     switch (this.faceRotation)
     {
-    case 0: 
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(83472);
       return localPointF;
-    case 90: 
       localPointF.y = (1.0F - this.faceCenterX);
       localPointF.x = this.faceCenterY;
-      return localPointF;
-    case 270: 
+      continue;
       localPointF.y = this.faceCenterX;
       localPointF.x = (1.0F - this.faceCenterY);
-      return localPointF;
+      continue;
+      localPointF.y = (1.0F - this.faceCenterY);
+      localPointF.x = (1.0F - this.faceCenterX);
     }
-    localPointF.y = (1.0F - this.faceCenterY);
-    localPointF.x = (1.0F - this.faceCenterX);
-    return localPointF;
   }
   
   public Map<String, Object> getSmoothMap()
   {
-    if (this.lowEnergy) {
-      return getSmoothMapLowEnergy();
+    AppMethodBeat.i(83468);
+    if (this.lowEnergy)
+    {
+      localMap = getSmoothMapLowEnergy();
+      AppMethodBeat.o(83468);
+      return localMap;
     }
-    return getSmoothMapCommon();
+    Map localMap = getSmoothMapCommon();
+    AppMethodBeat.o(83468);
+    return localMap;
   }
 }
 

@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.aa.ui;
 
 import android.content.Intent;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class AAQueryListUI$7
   implements a.a
 {
   AAQueryListUI$7(AAQueryListUI paramAAQueryListUI) {}
   
-  public final void Vx()
+  public final void aoW()
   {
+    AppMethodBeat.i(40736);
     Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", AAQueryListUI.m(this.eXG));
-    d.b(this.eXG, "webview", ".ui.tools.WebViewUI", localIntent);
+    localIntent.putExtra("rawUrl", AAQueryListUI.m(this.gpD));
+    d.b(this.gpD, "webview", ".ui.tools.WebViewUI", localIntent);
+    AppMethodBeat.o(40736);
   }
 }
 

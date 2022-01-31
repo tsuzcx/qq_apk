@@ -10,21 +10,21 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.Drawable;
-import android.support.v4.a.b;
+import android.support.v4.graphics.b;
 
 class d
   extends Drawable
 {
-  final RectF fS = new RectF();
-  float fT;
-  int fU;
-  int fV;
-  int fW;
-  int fX;
-  private ColorStateList fY;
-  private int fZ;
-  boolean ga = true;
-  float gb;
+  final RectF gM = new RectF();
+  float gN;
+  private int gO;
+  private int gP;
+  private int gQ;
+  private int gR;
+  private ColorStateList gS;
+  private int gT;
+  private boolean gU = true;
+  float gV;
   final Paint mPaint = new Paint(1);
   final Rect mRect = new Rect();
   
@@ -36,35 +36,43 @@ class d
   final void a(ColorStateList paramColorStateList)
   {
     if (paramColorStateList != null) {
-      this.fZ = paramColorStateList.getColorForState(getState(), this.fZ);
+      this.gT = paramColorStateList.getColorForState(getState(), this.gT);
     }
-    this.fY = paramColorStateList;
-    this.ga = true;
+    this.gS = paramColorStateList;
+    this.gU = true;
     invalidateSelf();
+  }
+  
+  final void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.gO = paramInt1;
+    this.gP = paramInt2;
+    this.gQ = paramInt3;
+    this.gR = paramInt4;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.ga)
+    if (this.gU)
     {
       localObject1 = this.mPaint;
       Object localObject2 = this.mRect;
       copyBounds((Rect)localObject2);
-      f1 = this.fT / ((Rect)localObject2).height();
-      int i = b.n(this.fU, this.fZ);
-      int j = b.n(this.fV, this.fZ);
-      int k = b.n(b.p(this.fV, 0), this.fZ);
-      int m = b.n(b.p(this.fX, 0), this.fZ);
-      int n = b.n(this.fX, this.fZ);
-      int i1 = b.n(this.fW, this.fZ);
+      f1 = this.gN / ((Rect)localObject2).height();
+      int i = b.n(this.gO, this.gT);
+      int j = b.n(this.gP, this.gT);
+      int k = b.n(b.p(this.gP, 0), this.gT);
+      int m = b.n(b.p(this.gR, 0), this.gT);
+      int n = b.n(this.gR, this.gT);
+      int i1 = b.n(this.gQ, this.gT);
       float f2 = ((Rect)localObject2).top;
       float f3 = ((Rect)localObject2).bottom;
       localObject2 = Shader.TileMode.CLAMP;
       ((Paint)localObject1).setShader(new LinearGradient(0.0F, f2, 0.0F, f3, new int[] { i, j, k, m, n, i1 }, new float[] { 0.0F, f1, 0.5F, 0.5F, 1.0F - f1, 1.0F }, (Shader.TileMode)localObject2));
-      this.ga = false;
+      this.gU = false;
     }
     float f1 = this.mPaint.getStrokeWidth() / 2.0F;
-    Object localObject1 = this.fS;
+    Object localObject1 = this.gM;
     copyBounds(this.mRect);
     ((RectF)localObject1).set(this.mRect);
     ((RectF)localObject1).left += f1;
@@ -72,14 +80,14 @@ class d
     ((RectF)localObject1).right -= f1;
     ((RectF)localObject1).bottom -= f1;
     paramCanvas.save();
-    paramCanvas.rotate(this.gb, ((RectF)localObject1).centerX(), ((RectF)localObject1).centerY());
+    paramCanvas.rotate(this.gV, ((RectF)localObject1).centerX(), ((RectF)localObject1).centerY());
     paramCanvas.drawOval((RectF)localObject1, this.mPaint);
     paramCanvas.restore();
   }
   
   public int getOpacity()
   {
-    if (this.fT > 0.0F) {
+    if (this.gN > 0.0F) {
       return -3;
     }
     return -2;
@@ -87,42 +95,53 @@ class d
   
   public boolean getPadding(Rect paramRect)
   {
-    int i = Math.round(this.fT);
+    int i = Math.round(this.gN);
     paramRect.set(i, i, i, i);
     return true;
   }
   
   public boolean isStateful()
   {
-    return ((this.fY != null) && (this.fY.isStateful())) || (super.isStateful());
+    return ((this.gS != null) && (this.gS.isStateful())) || (super.isStateful());
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    this.ga = true;
+    this.gU = true;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    if (this.fY != null)
+    if (this.gS != null)
     {
-      int i = this.fY.getColorForState(paramArrayOfInt, this.fZ);
-      if (i != this.fZ)
+      int i = this.gS.getColorForState(paramArrayOfInt, this.gT);
+      if (i != this.gT)
       {
-        this.ga = true;
-        this.fZ = i;
+        this.gU = true;
+        this.gT = i;
       }
     }
-    if (this.ga) {
+    if (this.gU) {
       invalidateSelf();
     }
-    return this.ga;
+    return this.gU;
   }
   
   public void setAlpha(int paramInt)
   {
     this.mPaint.setAlpha(paramInt);
     invalidateSelf();
+  }
+  
+  final void setBorderWidth(float paramFloat)
+  {
+    if (this.gN != paramFloat)
+    {
+      this.gN = paramFloat;
+      this.mPaint.setStrokeWidth(1.3333F * paramFloat);
+      this.gU = true;
+      invalidateSelf();
+    }
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)

@@ -1,42 +1,27 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.view.MenuItem;
-import com.tencent.mm.bf.e;
-import com.tencent.mm.br.d;
-import com.tencent.mm.r.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.s;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.t;
 
 final class SelfQRCodeUI$9
-  implements n.d
+  implements DialogInterface.OnCancelListener
 {
-  SelfQRCodeUI$9(SelfQRCodeUI paramSelfQRCodeUI) {}
+  SelfQRCodeUI$9(SelfQRCodeUI paramSelfQRCodeUI, m paramm) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramMenuItem.getItemId())
-    {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-      do
-      {
-        do
-        {
-          return;
-          SelfQRCodeUI.e(this.nSB);
-          return;
-          SelfQRCodeUI.a(this.nSB, 0);
-          return;
-        } while (a.bj(this.nSB.mController.uMN));
-        paramMenuItem = this.nSB.mController.uMN;
-      } while (e.RS());
-      d.x(this.nSB.mController.uMN, "scanner", ".ui.BaseScanUI");
-      return;
+    AppMethodBeat.i(154169);
+    g.Rc().a(this.ckS);
+    if ((t.nI(SelfQRCodeUI.d(this.qGz))) || (f.rX(SelfQRCodeUI.d(this.qGz)))) {
+      this.qGz.finish();
     }
-    SelfQRCodeUI.f(this.nSB);
+    AppMethodBeat.o(154169);
   }
 }
 

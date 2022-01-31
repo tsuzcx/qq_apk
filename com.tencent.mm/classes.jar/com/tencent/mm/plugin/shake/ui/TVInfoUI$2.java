@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.shake.e.c.a;
 
@@ -12,8 +13,10 @@ final class TVInfoUI$2
   
   public final void onClick(View paramView)
   {
-    h.nFQ.f(10987, new Object[] { Integer.valueOf(2), this.odH.field_playstatid, "", "" });
-    TVInfoUI.a(this.odI, this.odH.field_playurl);
+    AppMethodBeat.i(24911);
+    h.qsU.e(10987, new Object[] { Integer.valueOf(2), this.qRO.field_playstatid, "", "" });
+    TVInfoUI.a(this.qRP, this.qRO.field_playurl);
+    AppMethodBeat.o(24911);
   }
 }
 

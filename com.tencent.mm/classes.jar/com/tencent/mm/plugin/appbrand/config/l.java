@@ -1,47 +1,52 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.protocal.c.cml;
-import com.tencent.mm.protocal.c.hl;
-import com.tencent.mm.protocal.c.hm;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.plugin.appbrand.app.g;
+import com.tencent.mm.protocal.protobuf.czz;
+import com.tencent.mm.protocal.protobuf.dab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class l
-  extends a<hm>
+  extends a<dab>
 {
-  l(List<String> paramList, l.a parama)
+  final com.tencent.mm.ai.b rr;
+  
+  public l(String paramString1, String paramString2)
   {
-    y.i("MicroMsg.AppBrand.CgiBatchWxaAttrSync", "create sync request, list_size %d, scene %s(%d)", new Object[] { Integer.valueOf(paramList.size()), parama.name(), Integer.valueOf(parama.fJL) });
-    hl localhl = new hl();
-    localhl.pyo = parama.fJL;
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    AppMethodBeat.i(129851);
+    b.a locala = new b.a();
+    czz localczz = new czz();
+    localczz.xTl = paramString1;
+    if (bo.isNullOrNil(paramString1))
     {
-      parama = (String)paramList.next();
-      if (!bk.bl(parama))
-      {
-        cml localcml = new cml();
-        localcml.tMY = parama;
-        localcml.sCF = s.sC(parama);
-        localhl.sAw.add(localcml);
+      paramString1 = g.auF().e(paramString2, new String[] { "syncVersion" });
+      if (paramString1 == null) {
+        paramString1 = "";
       }
     }
-    paramList = new b.a();
-    paramList.ecH = localhl;
-    paramList.ecI = new hm();
-    paramList.ecG = 1192;
-    paramList.uri = "/cgi-bin/mmbiz-bin/wxaattr/batchwxaattrsync";
-    this.dmK = paramList.Kt();
+    for (paramString1 = new com.tencent.mm.bv.b(paramString1.getBytes());; paramString1 = g.auF().Ai(paramString1))
+    {
+      localczz.wxN = paramString1;
+      localczz.ygK = paramString2;
+      locala.fsX = localczz;
+      locala.fsY = new dab();
+      locala.funcId = 1151;
+      locala.uri = "/cgi-bin/mmbiz-bin/wxaattr/wxaattrsync";
+      paramString1 = locala.ado();
+      this.rr = paramString1;
+      this.rr = paramString1;
+      AppMethodBeat.o(129851);
+      return;
+      paramString1 = bo.nullAsNil(paramString1.field_syncVersion);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi.b;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
 import com.tencent.mm.plugin.appbrand.canvas.widget.a;
 import com.tencent.mm.plugin.appbrand.canvas.widget.a.a;
 import com.tencent.mm.plugin.appbrand.jsapi.base.c;
 import com.tencent.mm.plugin.appbrand.jsapi.base.g;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -18,18 +19,26 @@ public class e
   public static final int CTRL_INDEX = 69;
   public static final String NAME = "drawCanvas";
   
-  protected final boolean a(com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject, final g paramg)
+  public final boolean aCb()
   {
+    return true;
+  }
+  
+  public final boolean b(com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject, final g paramg)
+  {
+    AppMethodBeat.i(103852);
     if (!(paramView instanceof CoverViewContainer))
     {
-      y.i("MicroMsg.JsApiDrawCanvas", "drawCanvas failed, view is not a instance of CoverViewContainer.(%s)", new Object[] { Integer.valueOf(paramInt) });
+      ab.i("MicroMsg.JsApiDrawCanvas", "drawCanvas failed, view is not a instance of CoverViewContainer.(%s)", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(103852);
       return false;
     }
-    Object localObject = (View)((CoverViewContainer)paramView).K(View.class);
-    y.d("MicroMsg.JsApiDrawCanvas", "drawCanvas(id : %s)", new Object[] { Integer.valueOf(paramInt) });
+    Object localObject = (View)((CoverViewContainer)paramView).aa(View.class);
+    ab.d("MicroMsg.JsApiDrawCanvas", "drawCanvas(id : %s)", new Object[] { Integer.valueOf(paramInt) });
     if (!(localObject instanceof a))
     {
-      y.i("MicroMsg.JsApiDrawCanvas", "drawCanvas failed, view is not a instance of AppBrandDrawableView.(%s)", new Object[] { Integer.valueOf(paramInt) });
+      ab.i("MicroMsg.JsApiDrawCanvas", "drawCanvas failed, view is not a instance of AppBrandDrawableView.(%s)", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(103852);
       return false;
     }
     long l = System.currentTimeMillis();
@@ -41,27 +50,29 @@ public class e
       {
         public final void a(DrawCanvasArg paramAnonymousDrawCanvasArg)
         {
-          paramg.tT(e.this.h("ok", null));
+          AppMethodBeat.i(103849);
+          paramg.BS(e.this.j("ok", null));
+          AppMethodBeat.o(103849);
         }
       });
     }
     for (;;)
     {
-      ((a)localObject).adB();
-      y.v("MicroMsg.JsApiDrawCanvas", "post drawCanvas cost : %sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      return super.a(parame, paramInt, paramView, paramJSONObject, paramg);
+      ((a)localObject).axT();
+      ab.v("MicroMsg.JsApiDrawCanvas", "post drawCanvas cost : %sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      bool = super.b(parame, paramInt, paramView, paramJSONObject, paramg);
+      AppMethodBeat.o(103852);
+      return bool;
       ((a)localObject).a(localJSONArray, new e.2(this, paramg));
     }
   }
   
-  protected final boolean aik()
+  public final int w(JSONObject paramJSONObject)
   {
-    return true;
-  }
-  
-  protected final int p(JSONObject paramJSONObject)
-  {
-    return paramJSONObject.getInt("canvasId");
+    AppMethodBeat.i(103851);
+    int i = paramJSONObject.getInt("canvasId");
+    AppMethodBeat.o(103851);
+    return i;
   }
 }
 

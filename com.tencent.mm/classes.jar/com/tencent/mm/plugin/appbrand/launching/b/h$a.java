@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.launching.b;
 
 public abstract interface h$a
 {
-  public abstract void alU();
+  public abstract void aHo();
   
-  public abstract void alV();
+  public abstract void aHp();
 }
 
 

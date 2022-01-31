@@ -1,19 +1,19 @@
 package com.tencent.mm.pluginsdk.ui.preference;
 
 import android.content.Context;
-import com.tencent.mm.R.l;
-import com.tencent.mm.bh.d;
-import com.tencent.mm.h.a.fy;
-import com.tencent.mm.h.a.fy.b;
-import com.tencent.mm.h.c.cn;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bi.d;
+import com.tencent.mm.g.a.gb;
+import com.tencent.mm.g.a.gb.b;
+import com.tencent.mm.g.c.cu;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.ax;
 import com.tencent.mm.storage.ay;
@@ -28,31 +28,94 @@ import junit.framework.Assert;
 
 public final class b
 {
-  public boolean ceg;
-  public String dTF;
-  public String fds;
+  public boolean cMU;
+  public String fjL;
+  public String gvd;
   public long id;
   public String nickname;
-  public int ocd;
-  public String sis;
+  public int qQk;
   public String username;
+  public String waR;
+  
+  private static b a(Context paramContext, long paramLong, boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(28054);
+    Object localObject1 = null;
+    Object localObject2 = null;
+    Object localObject8 = null;
+    Object localObject9 = null;
+    Object localObject5 = null;
+    Object localObject7 = null;
+    int j = 0;
+    Object localObject3;
+    Object localObject6;
+    Object localObject4;
+    int i;
+    if (paramInt == 0)
+    {
+      localObject3 = bi.a.asj(paramString2);
+      localObject1 = ((bi.a)localObject3).tac;
+      localObject2 = ((bi.a)localObject3).nickname;
+      localObject6 = ((bi.a)localObject3).yOi;
+      localObject4 = ((bi.a)localObject3).yOj;
+      i = ((bi.a)localObject3).scene;
+      localObject3 = localObject7;
+    }
+    for (;;)
+    {
+      paramContext = a(paramContext, paramLong, paramBoolean, paramString1, paramString2, paramInt, (String)localObject1, (String)localObject2, (String)localObject6, (String)localObject4, (String)localObject5, i);
+      paramContext.waR = ((String)localObject3);
+      AppMethodBeat.o(28054);
+      return paramContext;
+      localObject3 = localObject7;
+      localObject6 = localObject8;
+      localObject4 = localObject9;
+      i = j;
+      if (paramBoolean)
+      {
+        bi.d locald = bi.d.asm(paramString2);
+        String str1 = locald.tac;
+        String str2 = locald.nickname;
+        String str3 = locald.content;
+        localObject3 = localObject7;
+        localObject1 = str1;
+        localObject2 = str2;
+        localObject6 = localObject8;
+        localObject4 = localObject9;
+        localObject5 = str3;
+        i = j;
+        if (locald.yOy == 1)
+        {
+          localObject3 = locald.yOA;
+          localObject1 = str1;
+          localObject2 = str2;
+          localObject6 = localObject8;
+          localObject4 = localObject9;
+          localObject5 = str3;
+          i = j;
+        }
+      }
+    }
+  }
   
   public static b a(Context paramContext, long paramLong, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt2)
   {
+    AppMethodBeat.i(28055);
     b localb = new b();
     localb.id = paramLong;
     if (!paramBoolean) {}
     for (boolean bool = true;; bool = false)
     {
-      localb.ceg = bool;
-      y.d("MicroMsg.FMessageProvider", "build, fmsgInfo.type:%d, fmsgInfo.talker:%s, scene:%d  ", new Object[] { Integer.valueOf(paramInt1), paramString1, Integer.valueOf(paramInt2) });
+      localb.cMU = bool;
+      ab.d("MicroMsg.FMessageProvider", "build, fmsgInfo.type:%d, fmsgInfo.talker:%s, scene:%d  ", new Object[] { Integer.valueOf(paramInt1), paramString1, Integer.valueOf(paramInt2) });
       if (paramInt1 != 0) {
-        break label353;
+        break label357;
       }
       if (paramString2 != null) {
         break;
       }
-      y.e("MicroMsg.FMessageProvider", "build fail, fmsgInfo msgContent is null, fmsgInfo.talker = " + paramString1);
+      ab.e("MicroMsg.FMessageProvider", "build fail, fmsgInfo msgContent is null, fmsgInfo.talker = ".concat(String.valueOf(paramString1)));
+      AppMethodBeat.o(28055);
       return null;
     }
     localb.username = paramString3;
@@ -60,295 +123,321 @@ public final class b
     switch (paramInt2)
     {
     default: 
-      localb.dTF = paramContext.getString(R.l.chatting_from_possible_friends_content);
+      localb.fjL = paramContext.getString(2131298179);
     }
     for (;;)
     {
+      AppMethodBeat.o(28055);
       return localb;
-      localb.dTF = paramContext.getString(R.l.chatting_from_QQ_friends_content);
+      localb.fjL = paramContext.getString(2131298170);
       continue;
-      paramString1 = new fy();
-      paramString1.bNh.bNe = paramString5;
-      paramString1.bNh.bNf = paramString6;
-      a.udP.m(paramString1);
-      localb.dTF = paramContext.getString(R.l.chatting_from_mobile_friends_content, new Object[] { bk.aM(paramString1.bNi.bNj, "") });
+      paramString1 = new gb();
+      paramString1.cuz.cuw = paramString5;
+      paramString1.cuz.cux = paramString6;
+      a.ymk.l(paramString1);
+      localb.fjL = paramContext.getString(2131298175, new Object[] { bo.bf(paramString1.cuA.cuB, "") });
       continue;
-      localb.dTF = paramContext.getString(R.l.chatting_from_verify_facebook_content);
+      localb.fjL = paramContext.getString(2131298186);
       continue;
-      localb.dTF = paramContext.getString(R.l.chatting_from_sns_add_now);
+      localb.fjL = paramContext.getString(2131298180);
       continue;
-      localb.fds = bi.a.abZ(paramString2).fds;
-      localb.dTF = paramContext.getString(R.l.chatting_from_google_contact);
+      localb.gvd = bi.a.asj(paramString2).gvd;
+      localb.fjL = paramContext.getString(2131298173);
       continue;
-      label353:
+      label357:
       if (!paramBoolean)
       {
         localb.username = paramString1;
-        localb.dTF = paramString2;
+        localb.fjL = paramString2;
       }
       else
       {
         localb.username = paramString3;
         localb.nickname = paramString4;
         if ((paramString7 != null) && (!paramString7.trim().equals(""))) {
-          localb.dTF = paramString7;
+          localb.fjL = paramString7;
         } else {
-          localb.dTF = paramContext.getString(R.l.fmessage_from_verify_digest_tip);
+          localb.fjL = paramContext.getString(2131301945);
         }
       }
     }
   }
   
-  public static b a(Context paramContext, cn paramcn)
+  public static b a(Context paramContext, cu paramcu)
   {
-    y.d("MicroMsg.FMessageProvider", "build lbs, talker = " + paramcn.field_sayhiuser + ", scene = " + paramcn.field_scene);
+    AppMethodBeat.i(28056);
+    ab.d("MicroMsg.FMessageProvider", "build lbs, talker = " + paramcu.field_sayhiuser + ", scene = " + paramcu.field_scene);
     b localb = new b();
-    localb.id = paramcn.ujK;
-    if (paramcn.field_isSend == 1) {}
+    localb.id = paramcu.systemRowid;
+    if (paramcu.field_isSend == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      localb.ceg = bool;
-      localb.username = paramcn.field_sayhiuser;
-      localb.ocd = paramcn.field_scene;
-      if (paramcn.field_isSend != 1) {
+      localb.cMU = bool;
+      localb.username = paramcu.field_sayhiuser;
+      localb.qQk = paramcu.field_scene;
+      if (paramcu.field_isSend != 1) {
         break;
       }
-      localb.dTF = paramcn.field_content;
+      localb.fjL = paramcu.field_content;
+      AppMethodBeat.o(28056);
       return localb;
     }
-    paramcn = bi.d.acc(paramcn.field_content);
-    if ((paramcn.content != null) && (!paramcn.content.trim().equals(""))) {}
-    for (localb.dTF = paramcn.content;; localb.dTF = paramContext.getString(R.l.chatting_from_verify_lbs_tip))
+    paramcu = bi.d.asm(paramcu.field_content);
+    if ((paramcu.content != null) && (!paramcu.content.trim().equals(""))) {}
+    for (localb.fjL = paramcu.content;; localb.fjL = paramContext.getString(2131298188))
     {
-      localb.nickname = paramcn.nickname;
-      return localb;
-    }
-  }
-  
-  public static b a(Context paramContext, ax paramax)
-  {
-    long l = paramax.ujK;
-    boolean bool = paramax.cuX();
-    String str6 = paramax.field_talker;
-    String str7 = paramax.field_msgContent;
-    int j = paramax.field_type;
-    int i = 0;
-    String str3;
-    String str4;
-    String str1;
-    String str2;
-    String str5;
-    if (j == 0)
-    {
-      paramax = bi.a.abZ(str7);
-      str3 = paramax.pyp;
-      str4 = paramax.nickname;
-      str1 = paramax.uBW;
-      str2 = paramax.uBX;
-      i = paramax.scene;
-      paramax = null;
-      str5 = null;
-    }
-    for (;;)
-    {
-      paramContext = a(paramContext, l, bool, str6, str7, j, str3, str4, str1, str2, str5, i);
-      paramContext.sis = paramax;
-      return paramContext;
-      if (bool)
-      {
-        paramax = bi.d.acc(str7);
-        str3 = paramax.pyp;
-        str4 = paramax.nickname;
-        str5 = paramax.content;
-        if (paramax.uCm == 1)
-        {
-          paramax = paramax.uCo;
-          str2 = null;
-          str1 = null;
-        }
-        else
-        {
-          paramax = null;
-          str2 = null;
-          str1 = null;
-        }
-      }
-      else
-      {
-        paramax = null;
-        str5 = null;
-        str2 = null;
-        str1 = null;
-        str4 = null;
-        str3 = null;
-      }
+      localb.nickname = paramcu.nickname;
+      break;
     }
   }
   
   public static b a(Context paramContext, bt parambt)
   {
-    y.d("MicroMsg.FMessageProvider", "build shake, talker = " + parambt.field_talker + ", scene = " + parambt.field_scene);
+    AppMethodBeat.i(28057);
+    ab.d("MicroMsg.FMessageProvider", "build shake, talker = " + parambt.field_talker + ", scene = " + parambt.field_scene);
     b localb = new b();
-    localb.id = parambt.ujK;
+    localb.id = parambt.systemRowid;
     if (parambt.field_isSend == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      localb.ceg = bool;
+      localb.cMU = bool;
       localb.username = parambt.field_sayhiuser;
-      localb.ocd = parambt.field_scene;
+      localb.qQk = parambt.field_scene;
       if (parambt.field_isSend != 1) {
         break;
       }
-      localb.dTF = parambt.field_content;
+      localb.fjL = parambt.field_content;
+      AppMethodBeat.o(28057);
       return localb;
     }
-    parambt = bi.d.acc(parambt.field_content);
+    parambt = bi.d.asm(parambt.field_content);
     if ((parambt.content != null) && (!parambt.content.trim().equals(""))) {}
-    for (localb.dTF = parambt.content;; localb.dTF = paramContext.getString(R.l.chatting_from_verify_lbs_tip))
+    for (localb.fjL = parambt.content;; localb.fjL = paramContext.getString(2131298188))
     {
       localb.nickname = parambt.nickname;
-      return localb;
+      break;
     }
   }
   
   public static ad a(ax paramax)
   {
+    AppMethodBeat.i(28063);
     ad localad = new ad();
-    if (paramax == null) {
+    if (paramax == null)
+    {
+      AppMethodBeat.o(28063);
       return localad;
     }
     if (paramax.field_type == 0)
     {
-      paramax = bi.a.abZ(paramax.field_msgContent);
-      localad = new ad();
-      localad.setUsername(paramax.pyp);
-      localad.cZ(paramax.cMT);
-      localad.dk(paramax.getDisplayName());
-      localad.dl(paramax.fgZ);
-      localad.dm(paramax.fha);
-      localad.fm(paramax.sex);
-      localad.dA(paramax.getProvince());
-      localad.dB(paramax.getCity());
-      localad.dz(paramax.signature);
-      localad.fi(paramax.qZn);
-      localad.dE(paramax.cCF);
-      localad.dN(paramax.sii);
-      return localad;
+      paramax = amv(paramax.field_msgContent);
+      AppMethodBeat.o(28063);
+      return paramax;
     }
-    paramax = bi.d.acc(paramax.field_msgContent);
-    localad = new ad();
-    localad.setUsername(paramax.pyp);
-    localad.cZ(paramax.cMT);
-    localad.dk(paramax.nickname);
-    localad.dl(paramax.fgZ);
-    localad.dm(paramax.fha);
-    localad.fm(paramax.sex);
-    localad.dz(paramax.signature);
-    localad.dA(paramax.getProvince());
-    localad.dB(paramax.getCity());
-    return localad;
+    paramax = amw(paramax.field_msgContent);
+    AppMethodBeat.o(28063);
+    return paramax;
   }
   
-  public static b[] a(Context paramContext, cn[] paramArrayOfcn)
+  public static String a(Context paramContext, int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder("convert lbsList, talker = ");
-    if ((paramArrayOfcn == null) || (paramArrayOfcn.length == 0) || (paramArrayOfcn[0] == null)) {}
-    for (Object localObject = "null";; localObject = paramArrayOfcn[0].field_sayhiuser)
+    AppMethodBeat.i(28061);
+    ab.d("MicroMsg.FMessageProvider", "setDigest, fmsgType = %d, fmsgScene = %d, fmsgContent = %s, isSend = %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean) });
+    Object localObject;
+    if (paramInt1 == 0)
     {
-      y.d("MicroMsg.FMessageProvider", (String)localObject);
-      if ((paramArrayOfcn != null) && (paramArrayOfcn.length != 0)) {
+      if (paramString == null)
+      {
+        ab.e("MicroMsg.FMessageProvider", "setDigest fail, fmsgContent is null");
+        AppMethodBeat.o(28061);
+        return null;
+      }
+      paramString = bi.a.asj(paramString);
+      switch (paramString.scene)
+      {
+      default: 
+        localObject = paramContext.getString(2131298179);
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(28061);
+      return localObject;
+      localObject = paramContext.getString(2131298170);
+      continue;
+      localObject = new gb();
+      ((gb)localObject).cuz.cuw = paramString.yOi;
+      ((gb)localObject).cuz.cux = paramString.yOj;
+      a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
+      localObject = paramContext.getString(2131298175, new Object[] { bo.bf(((gb)localObject).cuA.cuB, "") });
+      continue;
+      localObject = paramContext.getString(2131298186);
+      continue;
+      localObject = paramContext.getString(2131298180);
+      continue;
+      localObject = paramContext.getString(2131298173);
+      continue;
+      localObject = paramString;
+      if (!paramBoolean)
+      {
+        paramString = bi.d.asm(paramString);
+        if ((paramString.content != null) && (!paramString.content.trim().equals(""))) {
+          localObject = paramString.content;
+        } else {
+          localObject = paramContext.getString(2131300005);
+        }
+      }
+    }
+  }
+  
+  public static b[] a(Context paramContext, cu[] paramArrayOfcu)
+  {
+    AppMethodBeat.i(28059);
+    StringBuilder localStringBuilder = new StringBuilder("convert lbsList, talker = ");
+    if ((paramArrayOfcu == null) || (paramArrayOfcu.length == 0) || (paramArrayOfcu[0] == null)) {}
+    for (Object localObject = "null";; localObject = paramArrayOfcu[0].field_sayhiuser)
+    {
+      ab.d("MicroMsg.FMessageProvider", (String)localObject);
+      if ((paramArrayOfcu != null) && (paramArrayOfcu.length != 0)) {
         break;
       }
-      y.e("MicroMsg.FMessageProvider", "convert lbs fail, lbsList is null");
+      ab.e("MicroMsg.FMessageProvider", "convert lbs fail, lbsList is null");
+      AppMethodBeat.o(28059);
       return null;
     }
-    localObject = new b[paramArrayOfcn.length];
+    localObject = new b[paramArrayOfcu.length];
     int i = 0;
     while (i < localObject.length)
     {
-      localObject[i] = a(paramContext, paramArrayOfcn[i]);
+      localObject[(localObject.length - i - 1)] = a(paramContext, paramArrayOfcu[i]);
       i += 1;
     }
+    AppMethodBeat.o(28059);
     return localObject;
   }
   
   public static b[] a(Context paramContext, ax[] paramArrayOfax)
   {
+    AppMethodBeat.i(28058);
     StringBuilder localStringBuilder = new StringBuilder("convert fmsgList, talker = ");
     if ((paramArrayOfax == null) || (paramArrayOfax.length == 0) || (paramArrayOfax[0] == null)) {}
     for (Object localObject = "null";; localObject = paramArrayOfax[0].field_talker)
     {
-      y.d("MicroMsg.FMessageProvider", (String)localObject);
+      ab.d("MicroMsg.FMessageProvider", (String)localObject);
       if ((paramArrayOfax != null) && (paramArrayOfax.length != 0)) {
         break;
       }
-      y.e("MicroMsg.FMessageProvider", "convert fmsg fail, fmsgList is null");
+      ab.e("MicroMsg.FMessageProvider", "convert fmsg fail, fmsgList is null");
+      AppMethodBeat.o(28058);
       return null;
     }
     localObject = new b[paramArrayOfax.length];
     int i = 0;
     while (i < localObject.length)
     {
-      localObject[i] = a(paramContext, paramArrayOfax[i]);
+      localObject[(localObject.length - i - 1)] = c(paramContext, paramArrayOfax[i]);
       i += 1;
     }
+    AppMethodBeat.o(28058);
     return localObject;
   }
   
   public static b[] a(Context paramContext, bt[] paramArrayOfbt)
   {
+    AppMethodBeat.i(28060);
     StringBuilder localStringBuilder = new StringBuilder("convert shakeList, talker = ");
     if ((paramArrayOfbt == null) || (paramArrayOfbt.length == 0) || (paramArrayOfbt[0] == null)) {}
     for (Object localObject = "null";; localObject = paramArrayOfbt[0].field_sayhiuser)
     {
-      y.d("MicroMsg.FMessageProvider", (String)localObject);
+      ab.d("MicroMsg.FMessageProvider", (String)localObject);
       if ((paramArrayOfbt != null) && (paramArrayOfbt.length != 0)) {
         break;
       }
-      y.e("MicroMsg.FMessageProvider", "convert shake fail, shakeList is null");
+      ab.e("MicroMsg.FMessageProvider", "convert shake fail, shakeList is null");
+      AppMethodBeat.o(28060);
       return null;
     }
     localObject = new b[paramArrayOfbt.length];
     int i = 0;
     while (i < localObject.length)
     {
-      localObject[i] = a(paramContext, paramArrayOfbt[i]);
+      localObject[(localObject.length - i - 1)] = a(paramContext, paramArrayOfbt[i]);
       i += 1;
     }
+    AppMethodBeat.o(28060);
     return localObject;
   }
   
-  public static void bh(String paramString, int paramInt)
+  private static ad amv(String paramString)
   {
+    AppMethodBeat.i(28064);
+    paramString = bi.a.asj(paramString);
+    ad localad = new ad();
+    localad.setUsername(paramString.tac);
+    localad.jm(paramString.dCJ);
+    localad.jp(paramString.getDisplayName());
+    localad.jq(paramString.gyH);
+    localad.jr(paramString.gyI);
+    localad.hy(paramString.dqC);
+    localad.jG(paramString.getProvince());
+    localad.jH(paramString.getCity());
+    localad.jF(paramString.signature);
+    localad.hu(paramString.uOT);
+    localad.jK(paramString.dqP);
+    localad.jT(paramString.waH);
+    AppMethodBeat.o(28064);
+    return localad;
+  }
+  
+  private static ad amw(String paramString)
+  {
+    AppMethodBeat.i(28065);
+    paramString = bi.d.asm(paramString);
+    ad localad = new ad();
+    localad.setUsername(paramString.tac);
+    localad.jm(paramString.dCJ);
+    localad.jp(paramString.nickname);
+    localad.jq(paramString.gyH);
+    localad.jr(paramString.gyI);
+    localad.hy(paramString.dqC);
+    localad.jF(paramString.signature);
+    localad.jG(paramString.getProvince());
+    localad.jH(paramString.getCity());
+    AppMethodBeat.o(28065);
+    return localad;
+  }
+  
+  public static void bI(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(28062);
+    bf[] arrayOfbf = null;
     bt[] arrayOfbt;
     Object localObject1;
     ax[] arrayOfax;
-    bf[] arrayOfbf;
     if ((paramInt == 26) || (paramInt == 27) || (paramInt == 28) || (paramInt == 29))
     {
-      y.d("MicroMsg.FMessageProvider", "initAddContent, scene is shake");
-      arrayOfbt = d.Sa().act(paramString);
-      localObject1 = a(ae.getContext(), arrayOfbt);
+      ab.d("MicroMsg.FMessageProvider", "initAddContent, scene is shake");
+      arrayOfbt = d.alk().asF(paramString);
+      localObject1 = a(ah.getContext(), arrayOfbt);
       arrayOfax = null;
-      arrayOfbf = null;
     }
     while (localObject1 == null)
     {
+      AppMethodBeat.o(28062);
       return;
       if (paramInt == 18)
       {
-        y.d("MicroMsg.FMessageProvider", "initAddContent, scene is lbs");
-        arrayOfbf = d.RZ().abW(paramString);
-        localObject1 = a(ae.getContext(), arrayOfbf);
+        ab.d("MicroMsg.FMessageProvider", "initAddContent, scene is lbs");
+        arrayOfbf = d.alj().asg(paramString);
+        localObject1 = a(ah.getContext(), arrayOfbf);
         arrayOfbt = null;
         arrayOfax = null;
       }
       else
       {
-        arrayOfax = d.RX().abS(paramString);
-        localObject1 = a(ae.getContext(), arrayOfax);
+        arrayOfax = d.alh().asc(paramString);
+        localObject1 = a(ah.getContext(), arrayOfax);
         arrayOfbt = null;
-        arrayOfbf = null;
       }
     }
     paramInt = 0;
@@ -362,80 +451,88 @@ public final class b
     {
       localObject2 = localObject1[i];
       localbi = new bi();
-      localbi.setContent(localObject2.dTF);
-      m = s.hW(localObject2.username);
+      localbi.setContent(localObject2.fjL);
+      m = t.oF(localObject2.username);
       if (arrayOfax != null)
       {
         j = paramInt + 1;
-        localbi.bg(arrayOfax[paramInt].field_createTime);
+        localbi.fQ(arrayOfax[paramInt].field_createTime);
         paramInt = j;
       }
     }
-    label549:
+    label384:
+    label546:
     for (;;)
     {
-      label206:
-      localbi.ec(localObject2.username);
+      label215:
+      localbi.kj(localObject2.username);
       localbi.setType(m);
-      label243:
+      label252:
       long l;
-      if (localObject2.ceg)
+      if (localObject2.cMU)
       {
         localbi.setStatus(2);
-        localbi.fA(1);
-        au.Hx();
-        l = c.Fy().T(localbi);
+        localbi.hL(1);
+        aw.aaz();
+        l = c.YC().Z(localbi);
         if (l == -1L) {
-          break label382;
+          break label384;
         }
       }
-      label382:
       for (boolean bool = true;; bool = false)
       {
         Assert.assertTrue(bool);
-        y.i("MicroMsg.FMessageProvider", "new msg inserted to db , local id = " + l);
+        ab.i("MicroMsg.FMessageProvider", "new msg inserted to db , local id = ".concat(String.valueOf(l)));
         i += 1;
         break;
         if (arrayOfbf != null)
         {
           j = paramInt + 1;
-          localbi.bg(arrayOfbf[paramInt].field_createtime * 1000L);
+          localbi.fQ(arrayOfbf[paramInt].field_createtime * 1000L);
           paramInt = j;
-          break label206;
+          break label215;
         }
         if (arrayOfbt == null) {
-          break label549;
+          break label546;
         }
         j = paramInt + 1;
-        localbi.bg(arrayOfbt[paramInt].field_createtime * 1000L);
+        localbi.fQ(arrayOfbt[paramInt].field_createtime * 1000L);
         paramInt = j;
-        break label206;
+        break label215;
         localbi.setStatus(6);
-        localbi.fA(0);
-        break label243;
+        localbi.hL(0);
+        break label252;
       }
       localObject1 = new bi();
       if (arrayOfax != null) {
-        ((bi)localObject1).bg(arrayOfax[0].field_createTime + 1L);
+        ((bi)localObject1).fQ(arrayOfax[0].field_createTime + 1L);
       }
       for (;;)
       {
-        ((bi)localObject1).ec(paramString);
-        ((bi)localObject1).setContent(ae.getContext().getString(R.l.transfer_greet_msg_tip));
+        ((bi)localObject1).kj(paramString);
+        ((bi)localObject1).setContent(ah.getContext().getString(2131304395));
         ((bi)localObject1).setType(10000);
         ((bi)localObject1).setStatus(6);
-        ((bi)localObject1).fA(0);
-        au.Hx();
-        l = c.Fy().T((bi)localObject1);
-        y.i("MicroMsg.FMessageProvider", "new msg inserted to db , local id = " + l);
+        ((bi)localObject1).hL(0);
+        aw.aaz();
+        ab.i("MicroMsg.FMessageProvider", "new msg inserted to db , local id = ".concat(String.valueOf(c.YC().Z((bi)localObject1))));
+        AppMethodBeat.o(28062);
         return;
         if (arrayOfbf != null) {
-          ((bi)localObject1).bg(arrayOfbf[0].field_createtime * 1000L + 1L);
+          ((bi)localObject1).fQ(arrayOfbf[0].field_createtime * 1000L + 1L);
         } else if (arrayOfbt != null) {
-          ((bi)localObject1).bg(arrayOfbt[0].field_createtime * 1000L + 1L);
+          ((bi)localObject1).fQ(arrayOfbt[0].field_createtime * 1000L + 1L);
         }
       }
     }
+  }
+  
+  public static b c(Context paramContext, ax paramax)
+  {
+    AppMethodBeat.i(28053);
+    paramContext = a(paramContext, paramax.systemRowid, paramax.dxA(), paramax.field_talker, paramax.field_msgContent, paramax.field_type);
+    AppMethodBeat.o(28053);
+    return paramContext;
   }
 }
 

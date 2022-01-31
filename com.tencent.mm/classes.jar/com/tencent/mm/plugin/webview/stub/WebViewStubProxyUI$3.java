@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.webview.stub;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WebViewStubProxyUI$3
   implements DialogInterface.OnCancelListener
@@ -11,8 +12,10 @@ final class WebViewStubProxyUI$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    y.i("MicroMsg.WebViewStubProxyUI", "addshortcut, user cancel");
-    this.rjS.finish();
+    AppMethodBeat.i(7070);
+    ab.i("MicroMsg.WebViewStubProxyUI", "addshortcut, user cancel");
+    this.uZk.finish();
+    AppMethodBeat.o(7070);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -7,133 +8,156 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageButton;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.h.b;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.fts.widget.SOSEditTextView;
-import com.tencent.mm.ui.s;
 
 public class FTSSOSMoreWebViewUI
   extends BaseSOSWebViewUI
 {
-  private View ruT;
-  private int ruk;
+  private int vkx;
+  private View vli;
   
-  protected final void aoX()
+  public final void aMf()
   {
-    super.aoX();
-    this.ruT = findViewById(R.h.webview_keyboard_ll);
-    cfr().cIy();
-    cfr().aWC();
-    this.mBP.setVisibility(0);
-    cfr().aWA();
-    this.ruk = com.tencent.mm.cb.a.fromDPToPix(this, 48);
-    cfr().setIconRes(com.tencent.mm.bc.a.b(getType(), this));
-    if (aZY() == 24) {
-      this.ruT.setVisibility(4);
+    AppMethodBeat.i(8525);
+    super.aMf();
+    this.vli = findViewById(2131823716);
+    dfA().dNi();
+    dfA().bDj();
+    this.pbT.setVisibility(0);
+    dfA().bDh();
+    this.vkx = com.tencent.mm.cb.a.fromDPToPix(this, 48);
+    dfA().setIconRes(com.tencent.mm.bd.a.b(getType(), this));
+    if (getScene() == 24) {
+      this.vli.setVisibility(4);
     }
-    findViewById(R.h.root).setOnTouchListener(new FTSSOSMoreWebViewUI.1(this));
+    findViewById(2131821003).setOnTouchListener(new FTSSOSMoreWebViewUI.1(this));
     if ((getIntent() != null) && (getIntent().getBooleanExtra("ftsneedkeyboard", false))) {
-      this.mController.contentView.postDelayed(new FTSSOSMoreWebViewUI.2(this), 128L);
+      getContentView().postDelayed(new FTSSOSMoreWebViewUI.2(this), 128L);
     }
-    af(getResources().getColor(R.e.white), true);
-    ImageButton localImageButton = cfr().getClearBtn();
+    au(getResources().getColor(2131690709), true);
+    ImageButton localImageButton = dfA().getClearBtn();
     if (localImageButton != null) {
       localImageButton.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
     }
+    AppMethodBeat.o(8525);
   }
   
-  protected final int aoY()
+  public final int aMg()
   {
-    if ((d.gF(23)) && (!b.zL())) {
-      return getResources().getColor(R.e.white);
+    AppMethodBeat.i(8526);
+    if ((d.fv(23)) && (!b.Mo()))
+    {
+      i = getResources().getColor(2131690709);
+      AppMethodBeat.o(8526);
+      return i;
     }
-    return super.aoY();
+    int i = super.aMg();
+    AppMethodBeat.o(8526);
+    return i;
   }
   
-  public boolean apb()
+  public boolean aMm()
   {
-    cfr().aWC();
-    this.ruT.setVisibility(0);
-    return super.apb();
+    AppMethodBeat.i(8528);
+    dfA().bDj();
+    this.vli.setVisibility(0);
+    boolean bool = super.aMm();
+    AppMethodBeat.o(8528);
+    return bool;
   }
   
-  protected final void cfn()
+  protected final void dfw()
   {
+    AppMethodBeat.i(8529);
     finish();
+    AppMethodBeat.o(8529);
   }
   
-  protected final void cfo()
+  protected final void dfx()
   {
-    super.cfo();
-    this.ruT.setVisibility(0);
+    AppMethodBeat.i(8531);
+    super.dfx();
+    this.vli.setVisibility(0);
+    AppMethodBeat.o(8531);
   }
   
-  public String getHint()
+  protected String getHint()
   {
+    AppMethodBeat.i(8530);
     int i = -1;
-    if ((getType() == 8) && (this.rtM)) {
-      i = R.l.fts_header_timeline_publisher;
+    if ((getType() == 8) && (this.vjR)) {
+      i = 2131300224;
     }
     while (i < 0)
     {
-      return ae.getContext().getResources().getString(R.l.app_search) + CO(getType());
+      str = ah.getContext().getResources().getString(2131297065) + KH(getType());
+      AppMethodBeat.o(8530);
+      return str;
       switch (getType())
       {
       default: 
         break;
       case 1: 
-        i = R.l.search_education_biz_contact;
+        i = 2131303000;
         break;
       case 8: 
-        i = R.l.fts_header_timeline;
+        i = 2131300223;
         break;
       case 2: 
-        i = R.l.search_education_article;
+        i = 2131302999;
         break;
       case 16: 
-        i = R.l.fts_header_poi;
+        i = 2131300221;
         break;
       case 64: 
-        i = R.l.app_brand_entrance;
+        i = 2131296630;
         break;
       case 256: 
       case 384: 
-        i = R.l.fts_header_emoji;
+        i = 2131300210;
         break;
       case 128: 
-        i = R.l.fts_header_emoji_product;
+        i = 2131300211;
         break;
       case 512: 
-        i = R.l.fts_header_music;
+        i = 2131300219;
         break;
       case 1024: 
-        i = R.l.fts_header_novel;
+        i = 2131300220;
       }
     }
-    return ae.getContext().getResources().getString(R.l.search_detail_page_hint, new Object[] { ae.getContext().getResources().getString(i) });
+    String str = ah.getContext().getResources().getString(2131302998, new Object[] { ah.getContext().getResources().getString(i) });
+    AppMethodBeat.o(8530);
+    return str;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.sos_more_webview_ui;
+    return 2130970904;
   }
   
-  public final void gn(boolean paramBoolean)
+  public final void hQ(boolean paramBoolean)
   {
-    super.gn(paramBoolean);
+    AppMethodBeat.i(8527);
+    super.hQ(paramBoolean);
     if (!paramBoolean)
     {
-      this.rts.setPadding(this.ruk, 0, this.rts.getPaddingRight(), 0);
-      this.mBP.setVisibility(0);
-      cfr().aWA();
+      this.vjy.setPadding(this.vkx, 0, this.vjy.getPaddingRight(), 0);
+      this.pbT.setVisibility(0);
+      dfA().bDh();
     }
-    cfr().aWC();
+    dfA().bDj();
+    AppMethodBeat.o(8527);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.mmsight.segment.a;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnVideoSizeChangedListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$3
   implements MediaPlayer.OnVideoSizeChangedListener
@@ -10,7 +11,9 @@ final class d$3
   
   public final void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.moc.O(paramInt1, paramInt2, 0);
+    AppMethodBeat.i(3747);
+    this.oNk.Z(paramInt1, paramInt2, 0);
+    AppMethodBeat.o(3747);
   }
 }
 

@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class SnsMsgUI$8
-  implements j.a
+  implements k.a
 {
   SnsMsgUI$8(SnsMsgUI paramSnsMsgUI) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
-    af.aXq().post(new SnsMsgUI.8.1(this));
+    AppMethodBeat.i(39073);
+    ag.bEf().post(new SnsMsgUI.8.1(this));
+    AppMethodBeat.o(39073);
   }
 }
 

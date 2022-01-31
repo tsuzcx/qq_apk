@@ -1,25 +1,30 @@
 package com.tencent.mm.plugin.cdndownloader.d;
 
 import android.os.RemoteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.n.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$5
   extends n.a
 {
   a$5(a parama) {}
   
-  public final void et(int paramInt)
+  public final void onNetworkChange(int paramInt)
   {
-    a locala = this.iAG;
-    y.i("MicroMsg.CDNDownloadClient", "notifyNetworkChange: " + paramInt);
-    if (locala.iAz != null) {}
-    try
-    {
-      locala.iAz.pi(paramInt);
-      return;
+    AppMethodBeat.i(897);
+    a locala = this.kDM;
+    ab.i("MicroMsg.CDNDownloadClient", "notifyNetworkChange: ".concat(String.valueOf(paramInt)));
+    if (locala.kDF != null) {
+      try
+      {
+        locala.kDF.tx(paramInt);
+        AppMethodBeat.o(897);
+        return;
+      }
+      catch (RemoteException localRemoteException) {}
     }
-    catch (RemoteException localRemoteException) {}
+    AppMethodBeat.o(897);
   }
 }
 

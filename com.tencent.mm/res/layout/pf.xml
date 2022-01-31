@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ayp" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/a6q" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="48.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/aaa" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
+    <ProgressBar android:layout_width="16.0dip" android:layout_height="16.0dip" style="@style/a00" />
+    <TextView android:textSize="@dimen/o3" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/cpw" />
 </LinearLayout>

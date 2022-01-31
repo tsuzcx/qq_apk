@@ -11,13 +11,13 @@ public class ResultReceiver
   implements Parcelable
 {
   public static final Parcelable.Creator<ResultReceiver> CREATOR = new ResultReceiver.1();
-  final boolean CU = false;
-  b CV;
+  final boolean DD = false;
+  a DE;
   final Handler mHandler = null;
   
   ResultReceiver(Parcel paramParcel)
   {
-    this.CV = b.a.d(paramParcel.readStrongBinder());
+    this.DE = a.a.e(paramParcel.readStrongBinder());
   }
   
   public int describeContents()
@@ -25,16 +25,16 @@ public class ResultReceiver
     return 0;
   }
   
-  public void onReceiveResult(int paramInt, Bundle paramBundle) {}
+  protected void onReceiveResult(int paramInt, Bundle paramBundle) {}
   
   public final void send(int paramInt, Bundle paramBundle)
   {
-    if (this.CU) {
+    if (this.DD) {
       if (this.mHandler != null) {
         this.mHandler.post(new ResultReceiver.b(this, paramInt, paramBundle));
       }
     }
-    while (this.CV == null)
+    while (this.DE == null)
     {
       return;
       onReceiveResult(paramInt, paramBundle);
@@ -42,7 +42,7 @@ public class ResultReceiver
     }
     try
     {
-      this.CV.send(paramInt, paramBundle);
+      this.DE.send(paramInt, paramBundle);
       return;
     }
     catch (RemoteException paramBundle) {}
@@ -52,17 +52,17 @@ public class ResultReceiver
   {
     try
     {
-      if (this.CV == null) {
-        this.CV = new a();
+      if (this.DE == null) {
+        this.DE = new a();
       }
-      paramParcel.writeStrongBinder(this.CV.asBinder());
+      paramParcel.writeStrongBinder(this.DE.asBinder());
       return;
     }
     finally {}
   }
   
   final class a
-    extends b.a
+    extends a.a
   {
     a() {}
     

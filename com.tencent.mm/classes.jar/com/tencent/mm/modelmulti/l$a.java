@@ -2,7 +2,7 @@ package com.tencent.mm.modelmulti;
 
 public abstract interface l$a
 {
-  public abstract void bX(boolean paramBoolean);
+  public abstract void da(boolean paramBoolean);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$fp
+final class c$fp
   extends c.g
 {
-  public c$fp()
+  c$fp()
   {
-    super("openSpecificView", "specific_view", 48, true);
+    super("openGameUrlWithExtraWebView", "openGameUrlWithExtraWebView", 297, false);
   }
 }
 

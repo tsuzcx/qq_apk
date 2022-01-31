@@ -2,15 +2,12 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import com.tencent.mm.plugin.emoji.e.j;
-import com.tencent.mm.plugin.emoji.f.a;
-import com.tencent.mm.plugin.emoji.f.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emoji.e.l;
 import com.tencent.mm.plugin.emoji.model.EmojiLogic;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.vj;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.protocal.protobuf.EmotionDetail;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.s;
 
 final class EmojiStoreDetailUI$14
   implements n.d
@@ -19,19 +16,23 @@ final class EmojiStoreDetailUI$14
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(53431);
     switch (paramMenuItem.getItemId())
     {
-    default: 
-      return;
-    case 1001: 
-      j.cW(this.jeK.mController.uMN);
-      this.jeK.mController.uMN.overridePendingTransition(f.a.push_up_in, f.a.fast_faded_out);
-      h.nFQ.f(13224, new Object[] { Integer.valueOf(0), Integer.valueOf(2), EmojiStoreDetailUI.a(this.jeK), "" });
-      return;
     }
-    paramMenuItem = EmojiStoreDetailUI.b(this.jeK).sSc + this.jeK.getString(f.h.emoji_store_source);
-    j.a(this.jeK.mController.uMN, paramMenuItem, EmojiStoreDetailUI.b(this.jeK).sSd, EmojiStoreDetailUI.b(this.jeK).kSy, EmojiStoreDetailUI.b(this.jeK).sSv, EmojiLogic.AH(EmojiStoreDetailUI.a(this.jeK)), 4);
-    h.nFQ.f(13224, new Object[] { Integer.valueOf(0), Integer.valueOf(1), EmojiStoreDetailUI.a(this.jeK), "" });
+    for (;;)
+    {
+      AppMethodBeat.o(53431);
+      return;
+      l.dJ(this.lnA.getContext());
+      this.lnA.getContext().overridePendingTransition(2131034230, 2131034182);
+      h.qsU.e(13224, new Object[] { Integer.valueOf(0), Integer.valueOf(2), EmojiStoreDetailUI.a(this.lnA), "" });
+      AppMethodBeat.o(53431);
+      return;
+      paramMenuItem = EmojiStoreDetailUI.b(this.lnA).PackName + this.lnA.getString(2131299249);
+      l.a(this.lnA.getContext(), paramMenuItem, EmojiStoreDetailUI.b(this.lnA).PackDesc, EmojiStoreDetailUI.b(this.lnA).IconUrl, EmojiStoreDetailUI.b(this.lnA).OldRedirectUrl, EmojiLogic.KJ(EmojiStoreDetailUI.a(this.lnA)), 4);
+      h.qsU.e(13224, new Object[] { Integer.valueOf(0), Integer.valueOf(1), EmojiStoreDetailUI.a(this.lnA), "" });
+    }
   }
 }
 

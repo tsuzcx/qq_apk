@@ -1,25 +1,21 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
-import android.widget.TextView;
-import com.tencent.mm.h.a.ti;
-import com.tencent.mm.h.a.ti.b;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.hj;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class HoneyPayMainUI$4
-  implements Runnable
+  implements View.OnClickListener
 {
-  HoneyPayMainUI$4(HoneyPayMainUI paramHoneyPayMainUI, ti paramti) {}
+  HoneyPayMainUI$4(HoneyPayMainUI paramHoneyPayMainUI, hj paramhj) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    if (!bk.bl(this.iLQ.ccV.ccW))
-    {
-      y.i(this.llJ.TAG, "show notice banner");
-      e.a((TextView)this.llJ.findViewById(a.f.banner_tips), this.iLQ.ccV.ccW, this.iLQ.ccV.content, this.iLQ.ccV.url);
-    }
+    AppMethodBeat.i(41884);
+    e.m(this.nJe.getContext(), this.nJg.url, true);
+    AppMethodBeat.o(41884);
   }
 }
 

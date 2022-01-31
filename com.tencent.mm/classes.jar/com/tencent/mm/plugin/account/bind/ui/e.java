@@ -1,50 +1,61 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import com.tencent.mm.h.a.jz;
-import com.tencent.mm.h.a.jz.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.km;
+import com.tencent.mm.g.a.km.a;
 import com.tencent.mm.sdk.b.c;
 
 public final class e
-  extends c<jz>
+  extends c<km>
   implements f.a
 {
-  private jz fet;
+  private km gwc;
   
   public e()
   {
-    this.udX = jz.class.getName().hashCode();
+    AppMethodBeat.i(13746);
+    this.__eventId = km.class.getName().hashCode();
+    AppMethodBeat.o(13746);
   }
   
-  public final void Wq()
+  public final void apU()
   {
-    if ((this.fet != null) && (this.fet.bSE.bSG != null))
+    AppMethodBeat.i(13748);
+    if ((this.gwc != null) && (this.gwc.cAj.cAl != null))
     {
-      this.fet.bSF.bIe = false;
-      this.fet.bSE.bSG.run();
-      this.fet = null;
+      this.gwc.cAk.cpz = false;
+      this.gwc.cAj.cAl.run();
+      this.gwc = null;
     }
+    AppMethodBeat.o(13748);
   }
   
-  public final boolean bG(int paramInt1, int paramInt2)
+  public final boolean cQ(int paramInt1, int paramInt2)
   {
-    if (this.fet == null) {
+    AppMethodBeat.i(13747);
+    if (this.gwc == null)
+    {
+      AppMethodBeat.o(13747);
       return false;
     }
-    if (this.fet.bSE.bSG == null)
+    if (this.gwc.cAj.cAl == null)
     {
-      this.fet = null;
+      this.gwc = null;
+      AppMethodBeat.o(13747);
       return false;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.fet.bSF.bIe = true;
-      this.fet.bSE.bSG.run();
-      this.fet = null;
+      this.gwc.cAk.cpz = true;
+      this.gwc.cAj.cAl.run();
+      this.gwc = null;
+      AppMethodBeat.o(13747);
       return true;
     }
-    this.fet.bSF.bIe = false;
-    this.fet.bSE.bSG.run();
-    this.fet = null;
+    this.gwc.cAk.cpz = false;
+    this.gwc.cAj.cAl.run();
+    this.gwc = null;
+    AppMethodBeat.o(13747);
     return false;
   }
 }

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/pj"
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView style="@style/pk" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include layout="@layout/ak9" /> //暂时注掉
-<include layout="@layout/ake" />
-        <TextView android:textColor="@color/pf" android:gravity="center|left" android:id="@id/dhz" android:text="@string/bm4" android:drawableLeft="@raw/chatfrom_voice_playing_new" android:drawablePadding="20.0dip" style="@style/pr" />
-        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/pn" />
+    <ImageButton android:id="@id/dn6" android:background="@drawable/xc" android:visibility="visible" android:layout_width="49.0dip" android:layout_height="49.0dip" android:contentDescription="@string/cpx" />
+    <LinearLayout android:gravity="center" android:id="@id/dn7" android:background="@drawable/y_" android:visibility="gone" android:layout_width="49.0dip" android:layout_height="49.0dip">
+        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

@@ -11,9 +11,9 @@ final class MediaBrowserServiceCompat$4
     super(paramObject);
   }
   
-  final void cB()
+  final void de()
   {
-    this.Bn.send(-1, null);
+    this.BZ.send(-1, null);
   }
 }
 

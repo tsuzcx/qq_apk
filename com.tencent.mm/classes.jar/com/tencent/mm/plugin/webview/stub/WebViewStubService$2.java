@@ -1,49 +1,28 @@
 package com.tencent.mm.plugin.webview.stub;
 
-import android.os.RemoteException;
-import com.tencent.mm.h.a.nb;
-import com.tencent.mm.h.a.nb.a;
-import com.tencent.mm.plugin.webview.ui.tools.WebViewStubCallbackWrapper;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WebViewStubService$2
-  extends c<nb>
+  implements w.a
 {
-  WebViewStubService$2(WebViewStubService paramWebViewStubService)
-  {
-    this.udX = nb.class.getName().hashCode();
-  }
+  WebViewStubService$2(WebViewStubService paramWebViewStubService) {}
   
-  private boolean a(nb paramnb)
+  public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
-    if (!(paramnb instanceof nb)) {}
-    for (;;)
+    AppMethodBeat.i(155682);
+    ab.i("MicroMsg.WebViewStubService", "ServiceClick CGI return, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      return false;
-      if ((WebViewStubService.i(this.rkg) != null) && (!WebViewStubService.i(this.rkg).containsKey(paramnb.bWI.filePath))) {
-        continue;
-      }
-      if (WebViewStubService.i(this.rkg) != null) {
-        WebViewStubService.i(this.rkg).remove(paramnb.bWI.filePath);
-      }
-      y.d("MicroMsg.WebViewStubService", "result: " + paramnb.bWI.result);
-      try
-      {
-        Iterator localIterator = WebViewStubService.h(this.rkg).iterator();
-        while (localIterator.hasNext()) {
-          ((WebViewStubCallbackWrapper)localIterator.next()).rno.e(paramnb.bWI.filePath, paramnb.bWI.result, paramnb.bWI.bIj, paramnb.bWI.bIk);
-        }
-        return false;
-      }
-      catch (RemoteException paramnb)
-      {
-        y.printErrStackTrace("MicroMsg.WebViewStubService", paramnb, "", new Object[0]);
-      }
+      ab.e("MicroMsg.WebViewStubService", "ServiceClick CGI fail, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(155682);
+      return 0;
     }
+    AppMethodBeat.o(155682);
+    return 0;
   }
 }
 

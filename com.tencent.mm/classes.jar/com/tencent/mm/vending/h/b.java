@@ -2,6 +2,7 @@ package com.tencent.mm.vending.h;
 
 import android.os.Handler;
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
   implements a
@@ -13,24 +14,33 @@ public final class b
     this.a = paramHandler;
   }
   
-  public final void c(Runnable paramRunnable, long paramLong)
+  public final void d(Runnable paramRunnable, long paramLong)
   {
+    AppMethodBeat.i(126115);
     this.a.postDelayed(paramRunnable, paramLong);
+    AppMethodBeat.o(126115);
   }
   
-  public final void dD()
+  public final void dU()
   {
+    AppMethodBeat.i(126117);
     this.a.removeCallbacksAndMessages(null);
-  }
-  
-  public final void f(Runnable paramRunnable)
-  {
-    this.a.post(paramRunnable);
+    AppMethodBeat.o(126117);
   }
   
   public final Looper getLooper()
   {
-    return this.a.getLooper();
+    AppMethodBeat.i(126116);
+    Looper localLooper = this.a.getLooper();
+    AppMethodBeat.o(126116);
+    return localLooper;
+  }
+  
+  public final void post(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(126114);
+    this.a.post(paramRunnable);
+    AppMethodBeat.o(126114);
   }
 }
 

@@ -1,59 +1,65 @@
 package com.tencent.mm.plugin.exdevice.model;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.ub;
-import com.tencent.mm.h.a.ub.a;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.vx;
+import com.tencent.mm.g.a.vx.a;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.exdevice.b.k.f;
 import com.tencent.mm.plugin.exdevice.h.b;
 import com.tencent.mm.plugin.exdevice.service.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class af$1
-  extends com.tencent.mm.sdk.b.c<ub>
+  extends com.tencent.mm.sdk.b.c<vx>
 {
   af$1(af paramaf)
   {
-    this.udX = ub.class.getName().hashCode();
+    AppMethodBeat.i(19407);
+    this.__eventId = vx.class.getName().hashCode();
+    AppMethodBeat.o(19407);
   }
   
-  private boolean a(ub paramub)
+  private boolean a(vx paramvx)
   {
     boolean bool = true;
-    if ((paramub instanceof ub)) {
-      switch (paramub.cez.bHz)
+    AppMethodBeat.i(19408);
+    if ((paramvx instanceof vx)) {
+      switch (paramvx.cNm.coO)
       {
       }
     }
-    do
+    for (;;)
     {
+      AppMethodBeat.o(19408);
       return false;
-      y.i("MicroMsg.WearHardDeviceLogic", "receive register deviceId=%s", new Object[] { paramub.cez.bwK });
-      i.jvG.a(ae.getContext(), new af.1.1(this, paramub));
-      return false;
-      b localb = ad.aLL().BG(paramub.cez.bwK);
-      paramub = paramub.cez;
+      ab.i("MicroMsg.WearHardDeviceLogic", "receive register deviceId=%s", new Object[] { paramvx.cNm.bYu });
+      i.lFf.a(ah.getContext(), new af.1.1(this, paramvx));
+      continue;
+      b localb = ad.bpY().LI(paramvx.cNm.bYu);
+      paramvx = paramvx.cNm;
       if (localb != null) {}
       for (;;)
       {
-        paramub.bKQ = bool;
-        return false;
+        paramvx.csk = bool;
+        break;
         bool = false;
       }
-      y.i("MicroMsg.WearHardDeviceLogic", "receive send deviceId=%s", new Object[] { paramub.cez.bwK });
-      au.Dk().a(538, this.jwU);
-      paramub = new w(0L, paramub.cez.bJp, paramub.cez.bwK, k.f.aLp(), bk.UY(), paramub.cez.data, 1);
-      au.Dk().a(paramub, 0);
-      return false;
-      au.Dk().a(541, this.jwU);
-      paramub = new r("AndroidWear", paramub.cez.bJp, paramub.cez.bwK, 1, new byte[0]);
-      au.Dk().a(paramub, 0);
-      return false;
-    } while (bk.bu(ae.getContext(), ae.getPackageName() + ":exdevice"));
-    d.db(ae.getContext());
-    return false;
+      ab.i("MicroMsg.WearHardDeviceLogic", "receive send deviceId=%s", new Object[] { paramvx.cNm.bYu });
+      aw.Rc().a(538, this.lGt);
+      paramvx = new w(0L, paramvx.cNm.cqJ, paramvx.cNm.bYu, k.f.bpC(), bo.aoy(), paramvx.cNm.data, 1);
+      aw.Rc().a(paramvx, 0);
+      continue;
+      aw.Rc().a(541, this.lGt);
+      paramvx = new r("AndroidWear", paramvx.cNm.cqJ, paramvx.cNm.bYu, 1, new byte[0]);
+      aw.Rc().a(paramvx, 0);
+      continue;
+      if (!bo.bH(ah.getContext(), ah.getPackageName() + ":exdevice")) {
+        d.dN(ah.getContext());
+      }
+    }
   }
 }
 

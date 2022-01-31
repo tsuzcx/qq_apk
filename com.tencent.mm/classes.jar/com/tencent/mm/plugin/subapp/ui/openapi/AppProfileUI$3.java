@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.subapp.ui.openapi;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class AppProfileUI$3
-  extends ah
+  extends ak
 {
   AppProfileUI$3(AppProfileUI paramAppProfileUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    this.pxh.finish();
+    AppMethodBeat.i(25453);
+    this.sYV.finish();
+    AppMethodBeat.o(25453);
   }
 }
 

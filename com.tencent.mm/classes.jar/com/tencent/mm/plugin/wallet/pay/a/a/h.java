@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet.pay.a.a;
 
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
+import com.tencent.mm.pluginsdk.wallet.PayInfo;
 
 public final class h
   extends b
@@ -11,14 +12,23 @@ public final class h
     super(paramAuthen, paramOrders, paramBoolean);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
-    return 1664;
+    return 1972;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/sns_authen";
+    return "/cgi-bin/mmpay-bin/tenpay/offlinepayauthen";
+  }
+  
+  public final boolean isBlock()
+  {
+    if (this.tVs == null) {}
+    while (this.tVs.pVo.wgB == 1) {
+      return true;
+    }
+    return false;
   }
 }
 

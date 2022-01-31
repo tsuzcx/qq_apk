@@ -1,6 +1,7 @@
 package com.tencent.qqvideo.proxy.common;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class ConfigStorage$1
   implements Runnable
@@ -9,7 +10,9 @@ class ConfigStorage$1
   
   public void run()
   {
+    AppMethodBeat.i(124456);
     ConfigStorage.access$0(this.this$0, this.val$context);
+    AppMethodBeat.o(124456);
   }
 }
 

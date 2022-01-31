@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class c
-  extends com.tencent.mm.aa.b.c
+  extends com.tencent.mm.z.b.c
 {
   public String data;
   
@@ -19,16 +20,21 @@ public final class c
     super("onDataPush", paramInt);
   }
   
-  public final JSONObject rB()
+  public final JSONObject toJSONObject()
   {
+    AppMethodBeat.i(10912);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("data", bk.pm(this.data));
+      localJSONObject.put("data", bo.nullAsNil(this.data));
+      label28:
+      AppMethodBeat.o(10912);
       return localJSONObject;
     }
-    catch (JSONException localJSONException) {}
-    return localJSONObject;
+    catch (JSONException localJSONException)
+    {
+      break label28;
+    }
   }
 }
 

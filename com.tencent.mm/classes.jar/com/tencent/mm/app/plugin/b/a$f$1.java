@@ -1,18 +1,21 @@
 package com.tencent.mm.app.plugin.b;
 
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class a$f$1
-  implements am.a
+  implements ap.a
 {
   a$f$1(a.f paramf) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    y.i("MicroMsg.SubCoreExtAgent", "Voice record timeout.");
-    this.byW.byT = true;
-    this.byW.stopRecord();
+    AppMethodBeat.i(15741);
+    ab.i("MicroMsg.SubCoreExtAgent", "Voice record timeout.");
+    this.caY.caV = true;
+    this.caY.stopRecord();
+    AppMethodBeat.o(15741);
     return false;
   }
 }

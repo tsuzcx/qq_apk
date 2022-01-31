@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class PressImageView$1
   implements Runnable
 {
@@ -7,13 +9,15 @@ final class PressImageView$1
   
   public final void run()
   {
-    this.wed.setPressed(false);
-    this.wed.invalidate();
+    AppMethodBeat.i(107746);
+    this.AwN.setPressed(false);
+    this.AwN.invalidate();
+    AppMethodBeat.o(107746);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.tools.PressImageView.1
  * JD-Core Version:    0.7.0.1
  */

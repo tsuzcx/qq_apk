@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import android.view.View;
-import com.tencent.mm.plugin.fts.ui.widget.FTSSayFooter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.ui.widget.c;
 
 final class FTSMainUI$12$2
   implements Runnable
@@ -10,17 +10,17 @@ final class FTSMainUI$12$2
   
   public final void run()
   {
-    FTSSayFooter localFTSSayFooter = FTSMainUI.c(this.kCn.kCm);
-    if (!localFTSSayFooter.aWH()) {
-      localFTSSayFooter.setVisibility(8);
+    AppMethodBeat.i(61880);
+    FTSMainUI.a(this.mYk.mYi, false);
+    if (FTSMainUI.c(this.mYk.mYi) != null) {
+      FTSMainUI.c(this.mYk.mYi).bDp();
     }
-    FTSMainUI.c(this.kCn.kCm).postInvalidate();
-    FTSMainUI.e(this.kCn.kCm).postInvalidate();
+    AppMethodBeat.o(61880);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSMainUI.12.2
  * JD-Core Version:    0.7.0.1
  */

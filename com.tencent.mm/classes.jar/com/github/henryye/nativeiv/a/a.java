@@ -1,14 +1,11 @@
 package com.github.henryye.nativeiv.a;
 
-public abstract interface a
-{
-  public abstract void d(long paramLong1, long paramLong2);
-  
-  public abstract void i(String paramString, int paramInt);
-}
+public final class a
+  implements com.github.henryye.nativeiv.a.a.a
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.github.henryye.nativeiv.a.a
  * JD-Core Version:    0.7.0.1
  */

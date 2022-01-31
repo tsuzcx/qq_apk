@@ -1,206 +1,89 @@
 package com.tencent.mm.plugin.record.b;
 
-import com.tencent.mm.ah.h;
-import com.tencent.mm.ah.h.a;
-import com.tencent.mm.ah.h.b;
-import com.tencent.mm.ah.i;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.SensorController;
-import com.tencent.mm.sdk.platformtools.SensorController.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.bb;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.z;
-import java.util.Iterator;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.record.a.g;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class m
-  implements h.a, h.b, SensorController.a
+  extends com.tencent.mm.sdk.e.j<com.tencent.mm.plugin.record.a.j>
+  implements g
 {
-  public static SensorController iah;
-  private int bNM;
-  public List<m.a> dhm = new LinkedList();
-  private boolean iak = true;
-  private bb ial;
-  long iam = -1L;
-  private boolean ian;
-  private boolean iar = false;
-  public h jZC = ((i)g.r(i.class)).tl();
-  public String path;
+  private e db;
   
-  public m()
+  public m(e parame)
   {
-    au.Hx();
-    Boolean localBoolean = (Boolean)c.Dz().get(26, Boolean.valueOf(false));
-    this.ian = localBoolean.booleanValue();
-    boolean bool;
-    if (!localBoolean.booleanValue())
-    {
-      bool = true;
-      this.iak = bool;
-      if (this.jZC == null) {
-        break label177;
-      }
-      this.jZC.a(this);
-      this.jZC.a(this);
-      this.jZC.aV(this.iak);
-    }
-    for (;;)
-    {
-      if (iah == null) {
-        iah = new SensorController(ae.getContext());
-      }
-      if (this.ial == null) {
-        this.ial = new bb(ae.getContext());
-      }
-      return;
-      bool = false;
-      break;
-      label177:
-      y.w("MicroMsg.RecordVoiceHelper", "get voice player fail, it is null");
-    }
+    super(parame, com.tencent.mm.plugin.record.a.j.info, "RecordMessageInfo", null);
+    this.db = parame;
   }
   
-  public final boolean aQk()
+  public final void Cl(int paramInt)
   {
-    if (this.jZC == null)
-    {
-      y.w("MicroMsg.RecordVoiceHelper", "check is play, but player is null");
-      return false;
-    }
-    return this.jZC.isPlaying();
+    AppMethodBeat.i(135695);
+    ab.d("MicroMsg.RecordMsgStorage", "delete record msg item, local id %d, result %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.db.delete("RecordMessageInfo", "localId=?", new String[] { String.valueOf(paramInt) })) });
+    AppMethodBeat.o(135695);
   }
   
-  public final void axa()
+  public final com.tencent.mm.plugin.record.a.j Cm(int paramInt)
   {
-    if (iah != null) {
-      iah.crJ();
-    }
-    if (this.ial != null) {
-      this.ial.crK();
-    }
-  }
-  
-  public final void eq(boolean paramBoolean)
-  {
-    boolean bool = true;
-    if (bk.bl(this.path)) {}
-    do
+    Object localObject2 = null;
+    AppMethodBeat.i(135696);
+    Object localObject1 = "SELECT * FROM RecordMessageInfo WHERE localId=".concat(String.valueOf(paramInt));
+    ab.d("MicroMsg.RecordMsgStorage", "get by local id, sql[%s], local[%d]", new Object[] { localObject1, Integer.valueOf(paramInt) });
+    Cursor localCursor = this.db.a((String)localObject1, null, 2);
+    localObject1 = localObject2;
+    if (localCursor != null)
     {
-      do
+      localObject1 = localObject2;
+      if (localCursor.moveToFirst())
       {
-        return;
-        if (this.iar)
+        localObject1 = new com.tencent.mm.plugin.record.a.j();
+        ((com.tencent.mm.plugin.record.a.j)localObject1).convertFrom(localCursor);
+      }
+    }
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    AppMethodBeat.o(135696);
+    return localObject1;
+  }
+  
+  public final List<com.tencent.mm.plugin.record.a.j> cfN()
+  {
+    AppMethodBeat.i(135694);
+    LinkedList localLinkedList = new LinkedList();
+    Cursor localCursor = getAll();
+    if (localCursor != null)
+    {
+      localCursor.moveToFirst();
+      for (;;)
+      {
+        if (!localCursor.isAfterLast())
         {
-          if (!paramBoolean) {}
-          for (paramBoolean = bool;; paramBoolean = false)
+          com.tencent.mm.plugin.record.a.j localj = new com.tencent.mm.plugin.record.a.j();
+          try
           {
-            this.iar = paramBoolean;
-            return;
+            localj.convertFrom(localCursor);
+            localLinkedList.add(localj);
+            localCursor.moveToNext();
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              ab.e("MicroMsg.RecordMsgStorage", "convert recordInfo Exception: " + localException.getMessage());
+            }
           }
         }
-        if ((!paramBoolean) && (this.iam != -1L) && (bk.cp(this.iam) > 400L))
-        {
-          this.iar = true;
-          return;
-        }
-        this.iar = false;
-      } while ((this.jZC != null) && (this.jZC.uc()));
-      if (this.ian)
-      {
-        if (this.jZC != null) {
-          this.jZC.aV(false);
-        }
-        this.iak = false;
-        return;
       }
-      if ((this.jZC != null) && (!this.jZC.isPlaying()))
-      {
-        this.jZC.aV(true);
-        this.iak = true;
-        return;
-      }
-      if (this.jZC != null) {
-        this.jZC.aV(paramBoolean);
-      }
-      this.iak = paramBoolean;
-    } while (paramBoolean);
-    startPlay(this.path, this.bNM);
-  }
-  
-  public final void onError()
-  {
-    y.d("MicroMsg.RecordVoiceHelper", "on error, do stop play");
-    stopPlay();
-    Iterator localIterator = this.dhm.iterator();
-    while (localIterator.hasNext()) {
-      ((m.a)localIterator.next()).onFinish();
+      localCursor.close();
     }
-  }
-  
-  public final boolean startPlay(String paramString, int paramInt)
-  {
-    if (this.jZC == null)
-    {
-      y.w("MicroMsg.RecordVoiceHelper", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
-      return false;
-    }
-    this.jZC.stop();
-    Object localObject = this.dhm.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((m.a)((Iterator)localObject).next()).LI(paramString);
-    }
-    if ((iah != null) && (!iah.uil))
-    {
-      iah.a(this);
-      localObject = new Runnable()
-      {
-        public final void run()
-        {
-          m.this.iam = bk.UZ();
-        }
-      };
-      if (!this.ial.W((Runnable)localObject)) {
-        break label168;
-      }
-    }
-    label168:
-    for (this.iam = 0L;; this.iam = -1L)
-    {
-      this.path = paramString;
-      this.bNM = paramInt;
-      if ((bk.bl(paramString)) || (!this.jZC.a(paramString, this.iak, true, paramInt))) {
-        break;
-      }
-      ag.Zm("keep_app_silent");
-      return true;
-    }
-    return false;
-  }
-  
-  public final void stopPlay()
-  {
-    y.d("MicroMsg.RecordVoiceHelper", "stop play");
-    ag.Zn("keep_app_silent");
-    if (this.jZC != null) {
-      this.jZC.stop();
-    }
-    axa();
-  }
-  
-  public final void ug()
-  {
-    y.d("MicroMsg.RecordVoiceHelper", "on completion, do stop play");
-    stopPlay();
-    Iterator localIterator = this.dhm.iterator();
-    while (localIterator.hasNext()) {
-      ((m.a)localIterator.next()).onFinish();
-    }
+    ab.d("MicroMsg.RecordMsgStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    AppMethodBeat.o(135694);
+    return localLinkedList;
   }
 }
 

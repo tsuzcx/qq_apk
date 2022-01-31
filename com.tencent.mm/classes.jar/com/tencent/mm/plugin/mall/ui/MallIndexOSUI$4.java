@@ -1,43 +1,30 @@
 package com.tencent.mm.plugin.mall.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.r;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.wallet_core.model.ac;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.c.cic;
-import com.tencent.mm.protocal.c.cid;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.cvk;
 
 final class MallIndexOSUI$4
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnClickListener
 {
-  MallIndexOSUI$4(MallIndexOSUI paramMallIndexOSUI) {}
+  MallIndexOSUI$4(MallIndexOSUI paramMallIndexOSUI, cvk paramcvk) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(View paramView)
   {
-    cic localcic = MallIndexOSUI.e(this.lZX).qyS;
-    boolean bool = MallIndexOSUI.e(this.lZX).qyT;
-    if (bool)
-    {
-      paramMenuItem = new String[localcic.taW.size() + 1];
-      paramMenuItem[localcic.taW.size()] = this.lZX.getString(a.i.wallet_index_ui_opt_wallet_switch);
-    }
-    for (;;)
-    {
-      int i = 0;
-      while (i < localcic.taW.size())
-      {
-        paramMenuItem[i] = aa.a(((cid)localcic.taW.get(i)).tWw);
-        i += 1;
-      }
-      paramMenuItem = new String[localcic.taW.size()];
-    }
-    h.a(this.lZX.mController.uMN, null, paramMenuItem, null, false, new MallIndexOSUI.4.1(this, localcic, bool));
-    return true;
+    AppMethodBeat.i(43184);
+    h.qsU.e(13867, new Object[] { aa.a(this.ozY.ydQ), Integer.valueOf(this.ozV.oxO) });
+    paramView = new Intent();
+    paramView.putExtra("rawUrl", aa.a(this.ozY.ydQ));
+    paramView.putExtra("geta8key_username", r.Zn());
+    paramView.putExtra("pay_channel", 1);
+    d.b(this.ozV, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramView);
+    AppMethodBeat.o(43184);
   }
 }
 

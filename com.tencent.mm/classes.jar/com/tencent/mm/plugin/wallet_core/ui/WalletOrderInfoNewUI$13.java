@@ -1,17 +1,13 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.protocal.protobuf.adx;
+import com.tencent.mm.vending.c.a;
 
 final class WalletOrderInfoNewUI$13
-  implements View.OnClickListener
+  implements a<Object, a.a<adx>>
 {
   WalletOrderInfoNewUI$13(WalletOrderInfoNewUI paramWalletOrderInfoNewUI) {}
-  
-  public final void onClick(View paramView)
-  {
-    this.qEr.done();
-  }
 }
 
 

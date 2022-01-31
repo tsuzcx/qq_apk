@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.backup.g;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.backup.i.x;
 
 final class c$1
@@ -11,8 +12,10 @@ final class c$1
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(17641);
     paramString = (c)paramm;
-    this.hLR.e(c.a.a(c.b(paramString), paramString), paramString.hLN.hQV, paramString.ava());
+    this.jFt.g(c.a.a(c.b(paramString), paramString), paramString.jFp.jKw, paramString.aUC());
+    AppMethodBeat.o(17641);
   }
 }
 

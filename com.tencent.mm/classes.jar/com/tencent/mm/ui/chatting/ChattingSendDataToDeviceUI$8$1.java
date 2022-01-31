@@ -2,8 +2,7 @@ package com.tencent.mm.ui.chatting;
 
 import android.content.res.Resources;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 
 final class ChattingSendDataToDeviceUI$8$1
@@ -13,19 +12,21 @@ final class ChattingSendDataToDeviceUI$8$1
   
   public final void run()
   {
-    this.vlD.vlz.vnu.setProgress(0);
-    ChattingSendDataToDeviceUI.b(this.vlD.vlx).remove(this.vlD.rpN);
-    this.vlD.vlz.vnu.setVisibility(4);
-    this.vlD.vlz.vlE.setText(this.vlD.vlx.getText(R.l.chatting_send_success));
-    this.vlD.vlz.vlE.setTextColor(this.vlD.vlx.getResources().getColor(R.e.send_data_sending));
-    this.vlD.vlA.bKT = "send_data_sucess";
-    this.vlD.vlA.progress = 0;
-    ChattingSendDataToDeviceUI.a(this.vlD.vlx, 4);
+    AppMethodBeat.i(30769);
+    this.zBc.zAY.zCQ.Px(0);
+    ChattingSendDataToDeviceUI.b(this.zBc.zAW).remove(this.zBc.vdy);
+    this.zBc.zAY.zCQ.setVisibility(4);
+    this.zBc.zAY.zBd.setText(this.zBc.zAW.getText(2131298321));
+    this.zBc.zAY.zBd.setTextColor(this.zBc.zAW.getResources().getColor(2131690440));
+    this.zBc.zAZ.csn = "send_data_sucess";
+    this.zBc.zAZ.progress = 0;
+    ChattingSendDataToDeviceUI.a(this.zBc.zAW, 4);
+    AppMethodBeat.o(30769);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingSendDataToDeviceUI.8.1
  * JD-Core Version:    0.7.0.1
  */

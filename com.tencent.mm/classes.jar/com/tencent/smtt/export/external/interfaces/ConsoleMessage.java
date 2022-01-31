@@ -1,14 +1,33 @@
 package com.tencent.smtt.export.external.interfaces;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public abstract interface ConsoleMessage
 {
   public abstract int lineNumber();
   
   public abstract String message();
   
-  public abstract ConsoleMessage.MessageLevel messageLevel();
+  public abstract MessageLevel messageLevel();
   
   public abstract String sourceId();
+  
+  public static enum MessageLevel
+  {
+    static
+    {
+      AppMethodBeat.i(63800);
+      TIP = new MessageLevel("TIP", 0);
+      LOG = new MessageLevel("LOG", 1);
+      WARNING = new MessageLevel("WARNING", 2);
+      ERROR = new MessageLevel("ERROR", 3);
+      DEBUG = new MessageLevel("DEBUG", 4);
+      $VALUES = new MessageLevel[] { TIP, LOG, WARNING, ERROR, DEBUG };
+      AppMethodBeat.o(63800);
+    }
+    
+    private MessageLevel() {}
+  }
 }
 
 

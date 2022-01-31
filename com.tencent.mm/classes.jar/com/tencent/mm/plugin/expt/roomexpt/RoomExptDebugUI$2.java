@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.expt.roomexpt;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class RoomExptDebugUI$2
   implements View.OnClickListener
@@ -12,7 +13,17 @@ final class RoomExptDebugUI$2
   
   public final void onClick(View paramView)
   {
-    g.DS().O(new RoomExptDebugUI.2.1(this));
+    AppMethodBeat.i(73592);
+    g.RO().ac(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(73591);
+        RoomExptDebugUI.b(RoomExptDebugUI.2.this.mcY);
+        AppMethodBeat.o(73591);
+      }
+    });
+    AppMethodBeat.o(73592);
   }
 }
 

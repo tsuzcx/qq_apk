@@ -1,43 +1,49 @@
 package com.tencent.mm.plugin.appbrand.jsapi.e;
 
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.r;
 
 final class f$2
   implements l.a
 {
-  f$2(f paramf, o paramo) {}
+  f$2(f paramf, r paramr) {}
   
-  public final void uc(String paramString)
+  public final void Cc(String paramString)
   {
+    AppMethodBeat.i(74741);
     int i = -1;
     switch (paramString.hashCode())
     {
+    default: 
+      switch (i)
+      {
+      }
+      break;
     }
     for (;;)
     {
-      switch (i)
-      {
-      default: 
-        return;
-        if (paramString.equals("StateListening"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("StateNotListening"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("StateSuspend")) {
-              i = 2;
-            }
-          }
-        }
+      AppMethodBeat.o(74741);
+      return;
+      if (!paramString.equals("StateListening")) {
         break;
       }
+      i = 0;
+      break;
+      if (!paramString.equals("StateNotListening")) {
+        break;
+      }
+      i = 1;
+      break;
+      if (!paramString.equals("StateSuspend")) {
+        break;
+      }
+      i = 2;
+      break;
+      this.hNc.hNb.A(this.bAW.getRuntime());
+      AppMethodBeat.o(74741);
+      return;
+      this.hNc.hNb.aDg();
     }
-    this.grF.grE.q(this.gcp.getRuntime());
-    return;
-    this.grF.grE.r(this.gcp.getRuntime());
   }
 }
 

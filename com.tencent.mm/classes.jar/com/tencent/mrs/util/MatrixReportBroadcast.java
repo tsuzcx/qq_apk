@@ -3,44 +3,41 @@ package com.tencent.mrs.util;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.matrix.d.b;
+import com.tencent.matrix.g.c;
 import com.tencent.matrix.mrs.core.MatrixReport;
-import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.w;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MatrixReportBroadcast
   extends BroadcastReceiver
 {
-  private static final HashMap<String, ArrayList<a>> wDu = new HashMap();
+  private static final ConcurrentHashMap<String, ArrayList<a>> Bbe = new ConcurrentHashMap();
   
-  public static void cNF()
+  public static void dTn()
   {
-    Looper.getMainLooper();
-    Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
+    d.ysm.execute(new Runnable()
     {
-      public final boolean queueIdle()
+      public final void run()
       {
-        Iterator localIterator = MatrixReportBroadcast.aYI().keySet().iterator();
+        Iterator localIterator = MatrixReportBroadcast.aol().keySet().iterator();
         while (localIterator.hasNext())
         {
           Object localObject1 = (String)localIterator.next();
-          Object localObject2 = (ArrayList)MatrixReportBroadcast.aYI().get(localObject1);
-          b.i("Matrix.ReportBroadcast", "MatrixReportBroadcast, matrix report pending issues tag:%s, size:%d", new Object[] { localObject1, Integer.valueOf(((ArrayList)localObject2).size()) });
+          Object localObject2 = (ArrayList)MatrixReportBroadcast.aol().get(localObject1);
+          c.i("Matrix.ReportBroadcast", "MatrixReportBroadcast, matrix report pending issues tag:%s, size:%d", new Object[] { localObject1, Integer.valueOf(((ArrayList)localObject2).size()) });
           localObject1 = ((ArrayList)localObject2).iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (MatrixReportBroadcast.a)((Iterator)localObject1).next();
-            MatrixReport.with().reportLocal(((MatrixReportBroadcast.a)localObject2).tag, ((MatrixReportBroadcast.a)localObject2).value);
+            MatrixReport.with().reportLocal(((MatrixReportBroadcast.a)localObject2).tag, ((MatrixReportBroadcast.a)localObject2).key, ((MatrixReportBroadcast.a)localObject2).value);
           }
         }
-        MatrixReportBroadcast.aYI().clear();
-        return false;
+        MatrixReportBroadcast.aol().clear();
       }
     });
   }
@@ -49,36 +46,39 @@ public class MatrixReportBroadcast
   {
     if (paramIntent == null)
     {
-      b.e("Matrix.ReportBroadcast", "MatrixReportBroadcast intent == null", new Object[0]);
+      c.e("Matrix.ReportBroadcast", "MatrixReportBroadcast intent == null", new Object[0]);
       return;
     }
-    paramContext = t.j(paramIntent, "tag");
-    paramIntent = t.j(paramIntent, "value");
+    paramContext = w.n(paramIntent, "tag");
+    Object localObject = w.n(paramIntent, "key");
+    paramIntent = w.n(paramIntent, "value");
     if (!MatrixReport.isInstalled())
     {
-      b.e("Matrix.ReportBroadcast", "MatrixReportBroadcast, matrix report is not init, wait to report plugin:%s, content:%s", new Object[] { paramContext, paramIntent });
-      a locala = new a(paramContext, paramIntent);
-      paramIntent = (ArrayList)wDu.get(paramContext);
+      c.e("Matrix.ReportBroadcast", "MatrixReportBroadcast, matrix report is not init, wait to report plugin:%s, content:%s", new Object[] { paramContext, paramIntent });
+      localObject = new a(paramContext, (String)localObject, paramIntent);
+      paramIntent = (ArrayList)Bbe.get(paramContext);
       paramContext = paramIntent;
       if (paramIntent == null) {
         paramContext = new ArrayList();
       }
-      paramContext.add(locala);
+      paramContext.add(localObject);
       return;
     }
-    b.i("Matrix.ReportBroadcast", "MatrixReportBroadcast, receive broadcast with tag %s, value:%s", new Object[] { paramContext, paramIntent });
-    MatrixReport.with().reportLocal(paramContext, paramIntent);
+    c.i("Matrix.ReportBroadcast", "MatrixReportBroadcast, receive broadcast with tag %s, value:%s", new Object[] { paramContext, paramIntent });
+    MatrixReport.with().reportLocal(paramContext, (String)localObject, paramIntent);
   }
   
-  private static final class a
+  static final class a
   {
+    String key;
     String tag;
     String value;
     
-    a(String paramString1, String paramString2)
+    a(String paramString1, String paramString2, String paramString3)
     {
       this.tag = paramString1;
-      this.value = paramString2;
+      this.key = paramString2;
+      this.value = paramString3;
     }
   }
 }

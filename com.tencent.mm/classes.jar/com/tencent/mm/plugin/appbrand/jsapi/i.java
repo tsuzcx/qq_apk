@@ -1,43 +1,68 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.luggage.j.h;
-import com.tencent.mm.plugin.appbrand.v.n;
-import com.tencent.mm.plugin.appbrand.v.n.a;
-import com.tencent.mm.plugin.appbrand.v.n.b;
-import java.util.HashMap;
-import java.util.Map;
-import junit.framework.Assert;
+import a.f.b.j;
+import a.l;
+import android.os.Build.VERSION;
 import org.json.JSONObject;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxaSharedKT;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentImpl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWxConfigPart;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "()V", "TAG", "", "attachCommonConfig", "", "config", "Lorg/json/JSONObject;", "generatePreloadConfig", "generateWxConfig", "injectWxConfig", "__wxConfig", "callback", "Landroid/webkit/ValueCallback;", "put", "obj", "key", "val", "", "scheduleToUiThread", "runnable", "Ljava/lang/Runnable;", "scheduleToUiThreadDelayed", "delayMs", "", "luggage-wxa-app_release"})
 public abstract class i
-  extends b
+  extends d
+  implements h
 {
-  public final String a(c paramc, String paramString, Map<String, ? extends Object> paramMap)
+  private final String TAG = "AppBrandComponentWxaSharedKT";
+  
+  public final void A(Runnable paramRunnable)
   {
-    if (n.a(paramc.ahK(), paramMap, (n.a)paramc.D(n.a.class)) == n.b.hlG) {
-      return h("fail:convert native buffer parameter fail. native buffer exceed size limit.", null);
+    com.tencent.mm.plugin.appbrand.i locali = getRuntime();
+    if (locali != null) {
+      locali.A(paramRunnable);
     }
-    return h(paramString, paramMap);
   }
   
-  public final String h(String paramString, Map<String, ? extends Object> paramMap)
+  public JSONObject auh()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errMsg", getName() + ":" + paramString);
-    if (paramMap != null)
+    JSONObject localJSONObject = new JSONObject();
+    e(localJSONObject);
+    b(localJSONObject, "preload", Boolean.TRUE);
+    return localJSONObject;
+  }
+  
+  public final void b(JSONObject paramJSONObject, String paramString, Object paramObject)
+  {
+    j.q(paramJSONObject, "obj");
+    j.q(paramString, "key");
+    try
     {
-      if ((com.tencent.mm.sdk.a.b.cqk()) && (paramMap.containsKey("errMsg"))) {
-        Assert.assertTrue("api " + getName() + ": Cant put errMsg in res!!!", false);
-      }
-      localHashMap.putAll(paramMap);
+      paramJSONObject.put(paramString, paramObject);
+      return;
     }
-    h.c(localHashMap);
-    return new JSONObject(localHashMap).toString();
+    catch (Exception paramJSONObject)
+    {
+      com.tencent.luggage.g.d.printErrStackTrace(this.TAG, (Throwable)paramJSONObject, "put with key(" + paramString + ')', new Object[0]);
+    }
   }
   
-  public final String tK(String paramString)
+  public void e(JSONObject paramJSONObject)
   {
-    return h(paramString, null);
+    j.q(paramJSONObject, "config");
+    b(paramJSONObject, "platform", "android");
+    b(paramJSONObject, "system", "Android " + Build.VERSION.RELEASE);
+  }
+  
+  public final void k(Runnable paramRunnable, long paramLong)
+  {
+    com.tencent.mm.plugin.appbrand.i locali = getRuntime();
+    if (locali != null) {
+      locali.k(paramRunnable, paramLong);
+    }
+  }
+  
+  public JSONObject wE()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    e(localJSONObject);
+    return localJSONObject;
   }
 }
 

@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.welab.ui.widget;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.support.v4.a.a.b;
-import android.support.v4.a.a.d;
+import android.support.v4.graphics.drawable.b;
+import android.support.v4.graphics.drawable.d;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WelabRoundCornerImageView
   extends ImageView
 {
-  private float rEX;
+  private float vvG;
   
   public WelabRoundCornerImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,47 +26,56 @@ public class WelabRoundCornerImageView
   
   public Bitmap getDisplayingBitmap()
   {
-    Drawable localDrawable = getDrawable();
-    if ((localDrawable == null) || (!(localDrawable instanceof b))) {
+    AppMethodBeat.i(80627);
+    Object localObject = getDrawable();
+    if ((localObject == null) || (!(localObject instanceof b)))
+    {
+      AppMethodBeat.o(80627);
       return null;
     }
-    return ((b)localDrawable).mBitmap;
+    localObject = ((b)localObject).mBitmap;
+    AppMethodBeat.o(80627);
+    return localObject;
   }
   
   public void setCornerRadiusPercent(float paramFloat)
   {
-    this.rEX = paramFloat;
+    this.vvG = paramFloat;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
+    AppMethodBeat.i(80626);
     if ((paramBitmap == null) || (paramBitmap.isRecycled()) || (paramBitmap.getWidth() < 0) || (paramBitmap.getHeight() < 0))
     {
       super.setImageBitmap(paramBitmap);
+      AppMethodBeat.o(80626);
       return;
     }
-    if (this.rEX <= 0.0F)
+    if (this.vvG <= 0.0F)
     {
       super.setImageBitmap(paramBitmap);
+      AppMethodBeat.o(80626);
       return;
     }
     b localb = d.a(getResources(), paramBitmap);
-    float f = Math.min(paramBitmap.getWidth() * this.rEX, paramBitmap.getHeight() * this.rEX);
-    if (localb.js != f)
+    float f = Math.min(paramBitmap.getWidth() * this.vvG, paramBitmap.getHeight() * this.vvG);
+    if (localb.kq != f)
     {
-      localb.At = false;
-      if (!b.q(f)) {
-        break label127;
+      localb.Bf = false;
+      if (!b.r(f)) {
+        break label147;
       }
-      localb.mPaint.setShader(localb.Ao);
+      localb.mPaint.setShader(localb.Ba);
     }
     for (;;)
     {
-      localb.js = f;
+      localb.kq = f;
       localb.invalidateSelf();
       super.setImageDrawable(localb);
+      AppMethodBeat.o(80626);
       return;
-      label127:
+      label147:
       localb.mPaint.setShader(null);
     }
   }

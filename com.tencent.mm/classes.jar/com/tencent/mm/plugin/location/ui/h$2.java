@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.location.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMHorList;
 
 final class h$2
@@ -10,8 +11,10 @@ final class h$2
   
   public final void run()
   {
-    y.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker pos=%d", new Object[] { Integer.valueOf(this.lFR) });
-    this.lFQ.lFM.Gq(this.lFR);
+    AppMethodBeat.i(113493);
+    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker pos=%d", new Object[] { Integer.valueOf(this.ode) });
+    this.odd.ocZ.OI(this.ode);
+    AppMethodBeat.o(113493);
   }
 }
 

@@ -1,15 +1,17 @@
 package com.tencent.mm.plugin.backup.backuppcmodel;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.backup.b.b.a;
 import com.tencent.mm.plugin.backup.b.b.c;
-import com.tencent.mm.plugin.backup.b.e;
 import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.plugin.backup.i.o;
+import com.tencent.mm.plugin.backup.i.y;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.l;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -18,190 +20,231 @@ import java.util.Set;
 public final class d
   implements com.tencent.mm.plugin.backup.b.b.d
 {
-  private static boolean hHQ = false;
-  private static boolean hKI = false;
-  private boolean edT = false;
-  private long hFz = 0L;
-  private boolean hGZ = false;
-  private com.tencent.mm.plugin.backup.c.d hHH;
-  LinkedList<String> hHI;
-  LinkedList<Long> hHJ;
-  private HashSet<String> hHN = new HashSet();
-  private long hHO = 0L;
-  private long hHP = 0L;
-  public Set<b.c> hKJ = new HashSet();
-  public b.a hKK;
-  private long hKL = 0L;
-  private boolean hKM = false;
-  private final com.tencent.mm.plugin.backup.g.b.d hKN = new d.1(this);
-  private Object lock = new Object();
-  private long recvSize = 0L;
+  private static boolean jBo = false;
+  private static boolean jEl = false;
+  private boolean eUJ;
+  private boolean jAv;
+  private com.tencent.mm.plugin.backup.c.d jBd;
+  LinkedList<String> jBg;
+  LinkedList<Long> jBh;
+  private HashSet<String> jBl;
+  private long jBm;
+  private long jBn;
+  public Set<b.c> jEm;
+  public b.a jEn;
+  private long jEo;
+  private boolean jEp;
+  private final com.tencent.mm.plugin.backup.g.b.d jEq;
+  private long jyU;
+  private Object lock;
+  private long recvSize;
   
-  public static boolean atX()
+  public d()
   {
-    return au.Hx().Ge().ctw();
+    AppMethodBeat.i(17525);
+    this.jyU = 0L;
+    this.recvSize = 0L;
+    this.lock = new Object();
+    this.eUJ = false;
+    this.jEm = new HashSet();
+    this.jBl = new HashSet();
+    this.jBm = 0L;
+    this.jBn = 0L;
+    this.jEo = 0L;
+    this.jAv = false;
+    this.jEp = false;
+    this.jEq = new d.1(this);
+    AppMethodBeat.o(17525);
   }
   
-  public static void auF()
+  private static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    hKI = true;
-  }
-  
-  private static void b(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    com.tencent.mm.plugin.backup.i.y localy = new com.tencent.mm.plugin.backup.i.y();
-    localy.hQV = paramString;
-    localy.hQW = paramInt1;
-    localy.hQY = paramInt2;
-    localy.hQZ = paramInt3;
-    localy.hQq = paramInt4;
+    AppMethodBeat.i(17531);
+    y localy = new y();
+    localy.jKw = paramString;
+    localy.jKx = paramInt1;
+    localy.jKz = paramInt2;
+    localy.jKA = paramInt3;
+    localy.jJS = paramInt4;
     try
     {
-      com.tencent.mm.plugin.backup.g.b.o(localy.toByteArray(), 7, paramInt5);
+      com.tencent.mm.plugin.backup.g.b.r(localy.toByteArray(), 7, paramInt5);
+      AppMethodBeat.o(17531);
       return;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.BackupPcRecoverServer", paramString, "sendResp", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.BackupPcRecoverServer", paramString, "sendResp", new Object[0]);
+      AppMethodBeat.o(17531);
     }
   }
   
-  private static void d(int paramInt1, int paramInt2, long paramLong)
+  public static boolean aTw()
   {
+    AppMethodBeat.i(17527);
+    boolean bool = aw.aaz().Zf().dvS();
+    AppMethodBeat.o(17527);
+    return bool;
+  }
+  
+  public static void aUg()
+  {
+    jEl = true;
+  }
+  
+  private static void e(int paramInt1, int paramInt2, long paramLong)
+  {
+    AppMethodBeat.i(17532);
     o localo = new o();
-    localo.ID = b.auw().hFm;
-    localo.hQq = paramInt1;
-    localo.hQl = g.cG(paramLong);
+    localo.ID = b.aTX().jyF;
+    localo.jJS = paramInt1;
+    localo.jJN = g.hI(paramLong);
     try
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BackupPcRecoverServer", "send start resp, status[%d]", new Object[] { Integer.valueOf(paramInt1) });
-      com.tencent.mm.plugin.backup.g.b.o(localo.toByteArray(), 4, paramInt2);
+      ab.i("MicroMsg.BackupPcRecoverServer", "send start resp, status[%d]", new Object[] { Integer.valueOf(paramInt1) });
+      com.tencent.mm.plugin.backup.g.b.r(localo.toByteArray(), 4, paramInt2);
+      AppMethodBeat.o(17532);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.BackupPcRecoverServer", localException, "buf to BackupStartRequest err.", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.BackupPcRecoverServer", localException, "buf to BackupStartRequest err.", new Object[0]);
+      AppMethodBeat.o(17532);
     }
   }
   
-  public final void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public final void aSK()
+  {
+    AppMethodBeat.i(17535);
+    aTx();
+    h.qsU.idkeyStat(400L, 27L, 1L, false);
+    h.qsU.idkeyStat(400L, 28L, bo.hl(this.jBn) / 1000L, false);
+    com.tencent.mm.plugin.backup.g.b.ru(12);
+    com.tencent.mm.plugin.backup.g.b.aUo();
+    com.tencent.mm.plugin.backup.g.b.aUq();
+    AppMethodBeat.o(17535);
+  }
+  
+  public final void aTd()
+  {
+    AppMethodBeat.i(17533);
+    synchronized (this.lock)
+    {
+      if ((this.jBd != null) && (this.jBd.jAk))
+      {
+        ab.e("MicroMsg.BackupPcRecoverServer", "startMerge hasStartMerge, return.");
+        AppMethodBeat.o(17533);
+        return;
+      }
+      if (this.jBd != null) {
+        this.jBd.n(false, 0);
+      }
+      if ((this.jBl == null) || (this.jBl.size() <= 0))
+      {
+        i = aw.aaz().Zf().dvT();
+        b.aTX().aSL().N(26, 1, i);
+        rf(26);
+        if (this.jBg == null) {
+          this.jBg = new LinkedList();
+        }
+        if (this.jBh == null) {
+          this.jBh = new LinkedList();
+        }
+        this.jBn = bo.aoy();
+        this.jBd = new com.tencent.mm.plugin.backup.c.d(b.aTX(), 1, this, i, this.jAv, this.jBg, this.jBh);
+        this.jBd.aTd();
+        h.qsU.idkeyStat(400L, 24L, 1L, false);
+        AppMethodBeat.o(17533);
+        return;
+      }
+      int i = this.jBl.size();
+    }
+  }
+  
+  public final void aTx()
+  {
+    AppMethodBeat.i(17528);
+    ab.i("MicroMsg.BackupPcRecoverServer", "clearContinueRecoverData");
+    this.jBl.clear();
+    com.tencent.mm.vfs.e.O(g.aSW(), true);
+    AppMethodBeat.o(17528);
+  }
+  
+  public final void c(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     int i = 0;
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BackupPcRecoverServer", "cancel isSelf[%b], needClearContinueRecoverData[%b], caller:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), ak.cri() });
-    hKI = true;
+    AppMethodBeat.i(17529);
+    ab.i("MicroMsg.BackupPcRecoverServer", "cancel isSelf[%b], needClearContinueRecoverData[%b], caller:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), an.dtg() });
+    jEl = true;
     if (!paramBoolean1)
     {
-      b.auw().aux();
-      c.auc();
+      b.aTX().aTY();
+      c.aTB();
     }
     synchronized (this.lock)
     {
-      this.edT = true;
-      if ((this.hHH != null) && (this.hHH.hGO))
+      this.eUJ = true;
+      if ((this.jBd != null) && (this.jBd.jAk))
       {
-        this.hHH.h(paramBoolean2, paramInt);
-        this.hHH = null;
+        this.jBd.n(paramBoolean2, paramInt);
+        this.jBd = null;
         if ((i != 0) && (paramInt != 0))
         {
-          b.auw().atn().hFu = paramInt;
-          nt(paramInt);
+          b.aTX().aSL().jyN = paramInt;
+          rf(paramInt);
         }
         if (paramBoolean2) {
-          atY();
+          aTx();
         }
-        com.tencent.mm.plugin.backup.g.b.auM();
-        com.tencent.mm.plugin.backup.g.b.auO();
-        com.tencent.mm.plugin.backup.g.b.auR();
+        com.tencent.mm.plugin.backup.g.b.aUo();
+        com.tencent.mm.plugin.backup.g.b.aUq();
+        com.tencent.mm.plugin.backup.g.b.aUt();
+        b.aTX().aSN();
+        AppMethodBeat.o(17529);
         return;
       }
       i = 1;
     }
   }
   
-  public final void atF()
-  {
-    for (;;)
-    {
-      synchronized (this.lock)
-      {
-        if ((this.hHH != null) && (this.hHH.hGO))
-        {
-          com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BackupPcRecoverServer", "startMerge hasStartMerge, return.");
-          return;
-        }
-        if (this.hHH != null) {
-          this.hHH.h(false, 0);
-        }
-        if ((this.hHN == null) || (this.hHN.size() <= 0))
-        {
-          i = au.Hx().Ge().ctx();
-          b.auw().atn().B(26, 1, i);
-          nt(26);
-          if (this.hHI == null) {
-            this.hHI = new LinkedList();
-          }
-          if (this.hHJ == null) {
-            this.hHJ = new LinkedList();
-          }
-          this.hHP = bk.UY();
-          this.hHH = new com.tencent.mm.plugin.backup.c.d(b.auw(), 1, this, i, this.hGZ, this.hHI, this.hHJ);
-          this.hHH.atF();
-          h.nFQ.a(400L, 24L, 1L, false);
-          return;
-        }
-      }
-      int i = this.hHN.size();
-    }
-  }
-  
-  public final void atY()
-  {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BackupPcRecoverServer", "clearContinueRecoverData");
-    this.hHN.clear();
-  }
-  
-  public final void atm()
-  {
-    atY();
-    h.nFQ.a(400L, 27L, 1L, false);
-    h.nFQ.a(400L, 28L, bk.co(this.hHP) / 1000L, false);
-    com.tencent.mm.plugin.backup.g.b.nG(12);
-    com.tencent.mm.plugin.backup.g.b.auM();
-    com.tencent.mm.plugin.backup.g.b.auO();
-  }
-  
   public final void init()
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BackupPcRecoverServer", "init");
-    this.hKM = false;
-    hKI = false;
-    hHQ = false;
-    com.tencent.mm.plugin.backup.g.b.a(this.hKN);
-    this.hFz = 0L;
+    AppMethodBeat.i(17526);
+    ab.i("MicroMsg.BackupPcRecoverServer", "init");
+    this.jEp = false;
+    jEl = false;
+    jBo = false;
+    com.tencent.mm.plugin.backup.g.b.a(this.jEq);
+    this.jyU = 0L;
     this.recvSize = 0L;
-    this.edT = false;
-    this.hGZ = false;
-    this.hHN.clear();
+    this.eUJ = false;
+    this.jAv = false;
+    this.jBl.clear();
+    AppMethodBeat.o(17526);
   }
   
-  public final void nC(int paramInt)
+  public final void rf(int paramInt)
   {
-    long l = 0L;
-    if (this.hHO != 0L) {
-      l = bk.co(this.hHO);
-    }
-    h.nFQ.f(13737, new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.hFz / 1024L), Long.valueOf(l / 1000L), Integer.valueOf(2), Integer.valueOf(b.auw().aux().hKD) });
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BackupPcRecoverServer", "backupPcServerKvStat kvNum[%d], errcode[%d], backupDataSize[%d kb], recoverCostTime[%d s]", new Object[] { Integer.valueOf(13737), Integer.valueOf(paramInt), Long.valueOf(this.hFz / 1024L), Long.valueOf(l / 1000L) });
-  }
-  
-  public final void nt(int paramInt)
-  {
+    AppMethodBeat.i(17534);
     HashSet localHashSet = new HashSet();
-    localHashSet.addAll(this.hKJ);
-    ai.d(new d.3(this, localHashSet, paramInt));
-    if (this.hKK != null) {
-      ai.d(new d.4(this, paramInt));
+    localHashSet.addAll(this.jEm);
+    al.d(new d.3(this, localHashSet, paramInt));
+    if (this.jEn != null) {
+      al.d(new d.4(this, paramInt));
     }
+    AppMethodBeat.o(17534);
+  }
+  
+  public final void rr(int paramInt)
+  {
+    AppMethodBeat.i(17530);
+    long l = 0L;
+    if (this.jBm != 0L) {
+      l = bo.hl(this.jBm);
+    }
+    h.qsU.e(13737, new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.jyU / 1024L), Long.valueOf(l / 1000L), Integer.valueOf(2), Integer.valueOf(b.aTX().aTY().jEg) });
+    ab.i("MicroMsg.BackupPcRecoverServer", "backupPcServerKvStat kvNum[%d], errcode[%d], backupDataSize[%d kb], recoverCostTime[%d s]", new Object[] { Integer.valueOf(13737), Integer.valueOf(paramInt), Long.valueOf(this.jyU / 1024L), Long.valueOf(l / 1000L) });
+    AppMethodBeat.o(17530);
   }
 }
 

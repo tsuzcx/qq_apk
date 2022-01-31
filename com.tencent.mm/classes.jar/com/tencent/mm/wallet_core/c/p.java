@@ -1,70 +1,123 @@
 package com.tencent.mm.wallet_core.c;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
+import android.content.res.Resources;
+import android.widget.Toast;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.wallet_core.model.i;
-import com.tencent.mm.protocal.c.bdw;
-import com.tencent.mm.protocal.c.bdx;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
+import java.lang.ref.WeakReference;
+import junit.framework.Assert;
 
-public final class p
-  extends s
+public abstract class p
+  extends m
+  implements k
 {
-  private com.tencent.mm.ah.b dmK;
-  private f dmL;
+  private static final String AXa = ah.getResources().getString(2131305682);
+  protected int AXb = 0;
+  protected String AXc;
+  private WeakReference<MMActivity> aqU;
+  protected f callback;
+  protected int errCode = 0;
+  protected String errMsg;
+  protected int errType = 0;
+  protected boolean kOC = true;
+  protected boolean kOD = false;
+  protected b rr;
   
-  public p(String paramString)
+  public final p a(p.a parama)
   {
-    this(paramString, null, null, -1, -1, -1);
+    if ((!this.kOC) && (!this.kOD)) {
+      parama.d(this.errCode, this.errType, this.errMsg, this);
+    }
+    return this;
   }
   
-  public p(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
+  public final p b(p.a parama)
   {
-    Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bdw();
-    ((b.a)localObject).ecI = new bdx();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/paysubscribe";
-    ((b.a)localObject).ecG = 421;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    ((b.a)localObject).ecM = com.tencent.mm.wallet_core.ui.e.afr(paramString2);
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (bdw)this.dmK.ecE.ecN;
-    ((bdw)localObject).tzf = paramString1;
-    ((bdw)localObject).sHl = i.bVj();
-    ((bdw)localObject).tzg = paramString3;
-    if (!bk.bl(paramString2)) {
-      ((bdw)localObject).tzh = new com.tencent.mm.bv.b(paramString2.getBytes());
+    if (this.kOD) {
+      parama.d(this.errCode, this.errType, this.errMsg, this);
     }
-    if (paramInt1 >= 0) {
-      ((bdw)localObject).sHe = paramInt1;
-    }
-    if (paramInt2 >= 0) {
-      ((bdw)localObject).sss = paramInt2;
-    }
-    if (paramInt3 >= 0) {
-      ((bdw)localObject).tzi = paramInt3;
-    }
+    return this;
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  protected abstract void b(int paramInt1, int paramInt2, String paramString, q paramq);
+  
+  public boolean bhS()
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    return false;
   }
   
-  public final void e(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final p c(p.a parama)
   {
-    y.d("MicroMsg.NetScenePaySubscribe", "errType:" + paramInt1 + ",errCode:" + paramInt2 + ",errMsg" + paramString);
-    this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    if (this.kOC) {
+      parama.d(this.errCode, this.errType, this.errMsg, this);
+    }
+    return this;
   }
   
-  public final int getType()
+  public int doScene(e parame, f paramf)
   {
-    return 421;
+    this.callback = paramf;
+    Assert.assertNotNull("rr can't be null!", this.rr);
+    return dispatch(parame, this.rr, this);
+  }
+  
+  protected abstract void e(q paramq);
+  
+  public final void o(MMActivity paramMMActivity)
+  {
+    this.aqU = new WeakReference(paramMMActivity);
+  }
+  
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.kOC = false;
+    }
+    if (!this.kOC)
+    {
+      e(paramq);
+      if (this.AXb != 0) {
+        this.kOD = true;
+      }
+    }
+    this.errCode = paramInt3;
+    this.errType = paramInt2;
+    this.errMsg = paramString;
+    ab.i("MicroMsg.NetSceneNewPayBase", "errType: %s, errCode: %s, errMsg: %s, retCode: %s, retMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.AXb), this.AXc });
+    b(paramInt2, paramInt3, paramString, paramq);
+    if (this.aqU != null)
+    {
+      paramString = (MMActivity)this.aqU.get();
+      if (paramString != null)
+      {
+        if (!this.kOC) {
+          break label171;
+        }
+        ab.w("MicroMsg.NetSceneNewPayBase", "show net error alert");
+        h.a(paramString, AXa, null, false, new p.1(this, paramString));
+      }
+    }
+    label171:
+    while ((!this.kOD) || (bo.isNullOrNil(this.AXc))) {
+      return;
+    }
+    if (bhS())
+    {
+      ab.w("MicroMsg.NetSceneNewPayBase", "show resp error toast");
+      Toast.makeText(paramString, this.AXc, 1).show();
+      return;
+    }
+    ab.w("MicroMsg.NetSceneNewPayBase", "show resp error alert");
+    h.a(paramString, this.AXc, null, false, new p.2(this, paramString));
   }
 }
 

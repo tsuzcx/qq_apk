@@ -1,13 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class d$2
-  implements c.a
+  extends y
 {
-  d$2(d paramd, ac paramac) {}
+  d$2(d paramd, ai paramai) {}
   
   public final void proceed()
   {
-    this.geQ.i(this.geR.getName(), this.geR.getData(), this.geR.gfT);
+    AppMethodBeat.i(91011);
+    this.hwL.c(this.hwM.getName(), this.hwM.getData(), this.hwM.hxG);
+    AppMethodBeat.o(91011);
   }
 }
 

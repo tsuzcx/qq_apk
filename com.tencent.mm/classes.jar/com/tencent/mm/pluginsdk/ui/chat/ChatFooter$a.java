@@ -1,14 +1,22 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public final class ChatFooter$a
 {
-  public String sgi;
-  String sgj;
-  int sgk;
-  public HashMap<String, LinkedList<HashMap<String, String>>> sgl = new HashMap();
+  public String vYd;
+  String vYe;
+  int vYf;
+  public HashMap<String, LinkedList<HashMap<String, String>>> vYg;
+  
+  private ChatFooter$a()
+  {
+    AppMethodBeat.i(27824);
+    this.vYg = new HashMap();
+    AppMethodBeat.o(27824);
+  }
 }
 
 

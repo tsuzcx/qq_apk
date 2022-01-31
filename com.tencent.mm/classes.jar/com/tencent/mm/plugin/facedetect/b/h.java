@@ -1,28 +1,37 @@
 package com.tencent.mm.plugin.facedetect.b;
 
-import com.tencent.mm.ah.k;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.k.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.k;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
 
 final class h
   extends k
 {
-  i.a jME = new i.a();
-  i.b jMF = new i.b();
+  i.a mgK;
+  i.b mgL;
   
-  protected final k.d HE()
+  h()
   {
-    return this.jME;
+    AppMethodBeat.i(65);
+    this.mgK = new i.a();
+    this.mgL = new i.b();
+    AppMethodBeat.o(65);
   }
   
-  public final k.e HF()
-  {
-    return this.jMF;
-  }
-  
-  public final int Kq()
+  public final int getOptions()
   {
     return 1;
+  }
+  
+  public final l.d getReqObjImp()
+  {
+    return this.mgK;
+  }
+  
+  public final l.e getRespObj()
+  {
+    return this.mgL;
   }
   
   public final int getType()

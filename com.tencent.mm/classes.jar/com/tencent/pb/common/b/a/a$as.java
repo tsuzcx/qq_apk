@@ -6,122 +6,122 @@ import com.google.a.a.e;
 public final class a$as
   extends e
 {
-  public int ejU = 0;
-  public int ejV = 0;
-  public int wIj = 0;
-  public int wIk = 0;
-  public int wIl = 0;
-  public int wIm = 0;
-  public int wIn = 0;
-  public int wIo = 0;
-  public int wIp = 0;
-  public int wIq = 0;
-  public int wIr = 0;
-  public int wIs = 0;
+  public int BfJ = 0;
+  public int BfK = 0;
+  public int BfL = 0;
+  public int BfM = 0;
+  public int BfN = 0;
+  public int BfO = 0;
+  public int BfP = 0;
+  public int BfQ = 0;
+  public int BfR = 0;
+  public int BfS = 0;
+  public int fAb = 0;
+  public int fAc = 0;
   
   public a$as()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.wIj != 0) {
-      paramb.aL(1, this.wIj);
+    if (this.BfJ != 0) {
+      paramb.bj(1, this.BfJ);
     }
-    if (this.ejU != 0) {
-      paramb.aL(2, this.ejU);
+    if (this.fAb != 0) {
+      paramb.bj(2, this.fAb);
     }
-    if (this.ejV != 0) {
-      paramb.aL(3, this.ejV);
+    if (this.fAc != 0) {
+      paramb.bj(3, this.fAc);
     }
-    if (this.wIk != 0) {
-      paramb.aL(4, this.wIk);
+    if (this.BfK != 0) {
+      paramb.bj(4, this.BfK);
     }
-    if (this.wIl != 0) {
-      paramb.aL(5, this.wIl);
+    if (this.BfL != 0) {
+      paramb.bj(5, this.BfL);
     }
-    if (this.wIm != 0) {
-      paramb.aL(6, this.wIm);
+    if (this.BfM != 0) {
+      paramb.bj(6, this.BfM);
     }
-    if (this.wIn != 0) {
-      paramb.aL(7, this.wIn);
+    if (this.BfN != 0) {
+      paramb.bj(7, this.BfN);
     }
-    if (this.wIo != 0) {
-      paramb.aL(8, this.wIo);
+    if (this.BfO != 0) {
+      paramb.bj(8, this.BfO);
     }
-    if (this.wIp != 0) {
-      paramb.aL(9, this.wIp);
+    if (this.BfP != 0) {
+      paramb.bj(9, this.BfP);
     }
-    if (this.wIq != 0) {
-      paramb.aL(10, this.wIq);
+    if (this.BfQ != 0) {
+      paramb.bj(10, this.BfQ);
     }
-    if (this.wIr != 0) {
-      paramb.aL(11, this.wIr);
+    if (this.BfR != 0) {
+      paramb.bj(11, this.BfR);
     }
-    if (this.wIs != 0) {
-      paramb.aL(12, this.wIs);
+    if (this.BfS != 0) {
+      paramb.bj(12, this.BfS);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
-    if (this.wIj != 0) {
-      i = j + b.aN(1, this.wIj);
+    if (this.BfJ != 0) {
+      i = j + b.bl(1, this.BfJ);
     }
     j = i;
-    if (this.ejU != 0) {
-      j = i + b.aN(2, this.ejU);
+    if (this.fAb != 0) {
+      j = i + b.bl(2, this.fAb);
     }
     i = j;
-    if (this.ejV != 0) {
-      i = j + b.aN(3, this.ejV);
+    if (this.fAc != 0) {
+      i = j + b.bl(3, this.fAc);
     }
     j = i;
-    if (this.wIk != 0) {
-      j = i + b.aN(4, this.wIk);
+    if (this.BfK != 0) {
+      j = i + b.bl(4, this.BfK);
     }
     i = j;
-    if (this.wIl != 0) {
-      i = j + b.aN(5, this.wIl);
+    if (this.BfL != 0) {
+      i = j + b.bl(5, this.BfL);
     }
     j = i;
-    if (this.wIm != 0) {
-      j = i + b.aN(6, this.wIm);
+    if (this.BfM != 0) {
+      j = i + b.bl(6, this.BfM);
     }
     i = j;
-    if (this.wIn != 0) {
-      i = j + b.aN(7, this.wIn);
+    if (this.BfN != 0) {
+      i = j + b.bl(7, this.BfN);
     }
     j = i;
-    if (this.wIo != 0) {
-      j = i + b.aN(8, this.wIo);
+    if (this.BfO != 0) {
+      j = i + b.bl(8, this.BfO);
     }
     i = j;
-    if (this.wIp != 0) {
-      i = j + b.aN(9, this.wIp);
+    if (this.BfP != 0) {
+      i = j + b.bl(9, this.BfP);
     }
     j = i;
-    if (this.wIq != 0) {
-      j = i + b.aN(10, this.wIq);
+    if (this.BfQ != 0) {
+      j = i + b.bl(10, this.BfQ);
     }
     i = j;
-    if (this.wIr != 0) {
-      i = j + b.aN(11, this.wIr);
+    if (this.BfR != 0) {
+      i = j + b.bl(11, this.BfR);
     }
     j = i;
-    if (this.wIs != 0) {
-      j = i + b.aN(12, this.wIs);
+    if (this.BfS != 0) {
+      j = i + b.bl(12, this.BfS);
     }
     return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.as
  * JD-Core Version:    0.7.0.1
  */

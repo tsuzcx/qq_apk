@@ -4,9 +4,9 @@ import android.app.Activity;
 
 public abstract interface d
 {
-  public abstract boolean cn(String paramString);
+  public abstract boolean dz(String paramString);
   
-  public abstract Activity k(Activity paramActivity);
+  public abstract Activity l(Activity paramActivity);
 }
 
 

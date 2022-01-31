@@ -1,29 +1,54 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.protocal.c.ccd;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.protocal.protobuf.cpj;
 import java.util.LinkedList;
 
 public abstract class a
   extends m
 {
-  public int El;
-  public String bVq;
-  public int fzn;
-  public int qTt;
-  public String qTu;
-  public Bundle qTv;
+  protected int Fb;
+  protected String cCX;
+  protected int mScene;
+  protected int uIB;
+  protected String uIC;
+  protected Bundle uID;
   
-  public abstract String Jv();
-  
-  public abstract int Jw();
-  
-  public void ar(LinkedList<ccd> paramLinkedList) {}
-  
-  public final boolean bZj()
+  public final void IX(int paramInt)
   {
-    return this.El == 0;
+    this.uIB = paramInt;
+  }
+  
+  public void aB(LinkedList<cpj> paramLinkedList) {}
+  
+  public abstract String act();
+  
+  public abstract int acu();
+  
+  public final String bBW()
+  {
+    return this.uIC;
+  }
+  
+  public final int cZa()
+  {
+    return this.uIB;
+  }
+  
+  public final boolean cZb()
+  {
+    return this.Fb == 0;
+  }
+  
+  public final Bundle cZc()
+  {
+    return this.uID;
+  }
+  
+  public final String cZd()
+  {
+    return this.cCX;
   }
 }
 

@@ -1,30 +1,32 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import com.tencent.mm.protocal.c.yz;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.picker.d.b;
+import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.remittance.model.d;
+import com.tencent.mm.plugin.remittance.model.g;
+import com.tencent.mm.protocal.protobuf.mm;
+import com.tencent.mm.ui.base.t;
 
 final class RemittanceBusiUI$8
-  implements d.b
+  implements d
 {
   RemittanceBusiUI$8(RemittanceBusiUI paramRemittanceBusiUI) {}
   
-  public final void it(boolean paramBoolean)
+  public final void a(int paramInt1, int paramInt2, g paramg)
   {
-    if (paramBoolean)
+    AppMethodBeat.i(142181);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      localObject = RemittanceBusiUI.A(this.nCA).nzH;
-      if (localObject != null) {
-        break label46;
+      if (paramg.qja.koj != 0)
+      {
+        t.makeText(this.qoF.getContext(), paramg.qja.kok, 0).show();
+        AppMethodBeat.o(142181);
       }
     }
-    label46:
-    for (Object localObject = "";; localObject = com.tencent.mm.plugin.remittance.model.a.a((yz)localObject))
-    {
-      y.i("MicroMsg.RemittanceBusiUI", "onFavorSelected %s ", new Object[] { localObject });
-      RemittanceBusiUI.B(this.nCA);
-      return;
+    else {
+      t.makeText(this.qoF.getContext(), this.qoF.getString(2131305032), 0).show();
     }
+    AppMethodBeat.o(142181);
   }
 }
 

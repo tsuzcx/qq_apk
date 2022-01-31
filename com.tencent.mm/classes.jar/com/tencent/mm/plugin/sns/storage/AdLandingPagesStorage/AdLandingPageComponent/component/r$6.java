@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.mf;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingVideoWrapper.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
+import com.tencent.mm.sdk.b.a;
 
 final class r$6
-  implements View.OnClickListener
+  implements AdLandingVideoWrapper.a
 {
   r$6(r paramr) {}
   
-  public final void onClick(View paramView)
+  public final void Ef(int paramInt)
   {
-    paramView = this.oHr;
-    paramView.oHl += 1;
-    if (this.oHr.oGZ)
+    AppMethodBeat.i(37209);
+    if ((r.a(this.rxh).rsG != null) && (paramInt * 1000 >= r.a(this.rxh).rsG.rtj) && (!this.rxh.rwI))
     {
-      this.oHr.bEW();
-      this.oHr.bEV();
+      this.rxh.rwI = true;
+      mf localmf = new mf();
+      localmf.cCn.cCo = r.a(this.rxh).rsG.cCo;
+      a.ymk.l(localmf);
     }
-    for (;;)
-    {
-      this.oHr.oGW = true;
-      return;
-      this.oHr.bER();
-    }
+    AppMethodBeat.o(37209);
   }
 }
 

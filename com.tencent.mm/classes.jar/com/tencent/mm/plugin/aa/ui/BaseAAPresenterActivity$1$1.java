@@ -6,10 +6,9 @@ import android.view.View;
 import android.view.View.AccessibilityDelegate;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.mm.model.q;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
 import com.tencent.mm.ui.a.c;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tenpay.android.wechat.MyKeyboardWindow;
@@ -21,46 +20,48 @@ final class BaseAAPresenterActivity$1$1
   
   public final void run()
   {
+    AppMethodBeat.i(40775);
     Object localObject;
-    if ((!BaseAAPresenterActivity.a(this.eYm.eYl).isShown()) && (this.val$view.isShown()))
+    if ((!BaseAAPresenterActivity.a(this.gqd.gqc).isShown()) && (this.val$view.isShown()))
     {
-      if (this.eYm.eYh)
+      if (this.gqd.val$isShowFirstTime)
       {
-        this.eYm.eYl.cNi();
-        BaseAAPresenterActivity.c(this.eYm.eYl);
-        BaseAAPresenterActivity.a(this.eYm.eYl, this.eYm.eYi);
+        this.gqd.gqc.showTenpayKB();
+        BaseAAPresenterActivity.c(this.gqd.gqc);
+        BaseAAPresenterActivity.a(this.gqd.gqc, this.gqd.val$hintTv);
       }
     }
-    else if (((this.eYm.eYj instanceof WalletFormView)) && (Build.VERSION.SDK_INT >= 14))
+    else if (((this.gqd.val$parent instanceof WalletFormView)) && (Build.VERSION.SDK_INT >= 14))
     {
-      localObject = (WalletFormView)this.eYm.eYj;
-      if (((q.Gw()) || (((WalletFormView)localObject).getEncrptType() == 100)) && ((!q.Gw()) || (((WalletFormView)localObject).getEncrptType() == 0))) {
-        break label318;
+      localObject = (WalletFormView)this.gqd.val$parent;
+      if (((r.ZB()) || (((WalletFormView)localObject).getEncrptType() == 100)) && ((!r.ZB()) || (((WalletFormView)localObject).getEncrptType() == 0))) {
+        break label325;
       }
       localObject = new c();
-      BaseAAPresenterActivity.d(this.eYm.eYl).setSecureAccessibility((View.AccessibilityDelegate)localObject);
-      this.eYm.eYi.setAccessibilityDelegate((View.AccessibilityDelegate)localObject);
+      BaseAAPresenterActivity.d(this.gqd.gqc).setSecureAccessibility((View.AccessibilityDelegate)localObject);
+      this.gqd.val$hintTv.setAccessibilityDelegate((View.AccessibilityDelegate)localObject);
     }
     for (;;)
     {
-      if (((this.eYm.eYj instanceof EditHintPasswdView)) && (Build.VERSION.SDK_INT >= 14))
+      if (((this.gqd.val$parent instanceof EditHintPasswdView)) && (Build.VERSION.SDK_INT >= 14))
       {
         localObject = new c();
-        BaseAAPresenterActivity.f(this.eYm.eYl).setSecureAccessibility((View.AccessibilityDelegate)localObject);
-        this.eYm.eYi.setAccessibilityDelegate((View.AccessibilityDelegate)localObject);
+        BaseAAPresenterActivity.f(this.gqd.gqc).setSecureAccessibility((View.AccessibilityDelegate)localObject);
+        this.gqd.val$hintTv.setAccessibilityDelegate((View.AccessibilityDelegate)localObject);
       }
-      BaseAAPresenterActivity.a(this.eYm.eYl, this.eYm.eYk);
-      BaseAAPresenterActivity.g(this.eYm.eYl).setInputEditText((EditText)this.val$view);
-      ((InputMethodManager)this.eYm.eYl.mController.uMN.getSystemService("input_method")).hideSoftInputFromWindow(this.val$view.getWindowToken(), 0);
+      BaseAAPresenterActivity.a(this.gqd.gqc, this.gqd.val$editMode);
+      BaseAAPresenterActivity.g(this.gqd.gqc).setInputEditText((EditText)this.val$view);
+      ((InputMethodManager)this.gqd.gqc.getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.val$view.getWindowToken(), 0);
+      AppMethodBeat.o(40775);
       return;
-      if (BaseAAPresenterActivity.b(this.eYm.eYl)) {
+      if (BaseAAPresenterActivity.b(this.gqd.gqc)) {
         break;
       }
-      this.eYm.eYl.cNi();
+      this.gqd.gqc.showTenpayKB();
       break;
-      label318:
-      BaseAAPresenterActivity.e(this.eYm.eYl).resetSecureAccessibility();
-      this.eYm.eYi.setAccessibilityDelegate(null);
+      label325:
+      BaseAAPresenterActivity.e(this.gqd.gqc).resetSecureAccessibility();
+      this.gqd.val$hintTv.setAccessibilityDelegate(null);
     }
   }
 }

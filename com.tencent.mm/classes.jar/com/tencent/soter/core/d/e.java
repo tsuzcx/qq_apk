@@ -1,30 +1,16 @@
 package com.tencent.soter.core.d;
 
-import android.os.Handler;
-import android.os.Looper;
-import java.util.concurrent.CountDownLatch;
-
-public final class e
+public abstract interface e
 {
-  private static Handler wPp = null;
-  CountDownLatch rSV = null;
+  public abstract void cym();
   
-  static void d(Runnable paramRunnable)
-  {
-    if (wPp == null) {
-      wPp = new Handler(Looper.getMainLooper());
-    }
-    wPp.post(paramRunnable);
-  }
+  public abstract void cyn();
   
-  public final void countDown()
-  {
-    if (this.rSV != null)
-    {
-      this.rSV.countDown();
-      this.rSV = null;
-    }
-  }
+  public abstract void cyo();
+  
+  public abstract void cyp();
+  
+  public abstract void onServiceConnected();
 }
 
 

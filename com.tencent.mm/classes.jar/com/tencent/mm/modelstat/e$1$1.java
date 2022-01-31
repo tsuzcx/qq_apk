@@ -1,86 +1,83 @@
 package com.tencent.mm.modelstat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.o;
 
 final class e$1$1
-  implements am.a
+  implements ap.a
 {
-  boolean eCW = false;
+  boolean fSN = false;
   
   e$1$1(e.1 param1, e.b paramb, e.c paramc, String paramString1, String paramString2) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    boolean bool = l.dR(ae.getContext());
-    long l1 = bk.UY();
-    long l2 = l1 - e.a(this.eDb.eCV);
-    if (l2 <= e.g(this.eDb.eCV))
+    AppMethodBeat.i(78715);
+    boolean bool = o.eD(ah.getContext());
+    long l1 = bo.aoy();
+    long l2 = l1 - e.a(this.fSS.fSM);
+    if (l2 <= e.g(this.fSS.fSM))
     {
       if (bool)
       {
-        this.eCW = false;
+        this.fSN = false;
+        AppMethodBeat.o(78715);
         return true;
       }
-      if (!this.eCW)
+      if (!this.fSN)
       {
-        this.eCW = true;
+        this.fSN = true;
+        AppMethodBeat.o(78715);
         return true;
       }
     }
-    y.i("MicroMsg.IndoorReporter", "Stop Now goingbg:%b fg:%b runtime:%d", new Object[] { Boolean.valueOf(this.eCW), Boolean.valueOf(bool), Long.valueOf(l2) });
-    e.a(this.eDb.eCV, 0L);
-    String str1 = this.eCX.Rr();
-    Object localObject = this.eCY.Rr();
-    for (;;)
+    ab.i("MicroMsg.IndoorReporter", "Stop Now goingbg:%b fg:%b runtime:%d", new Object[] { Boolean.valueOf(this.fSN), Boolean.valueOf(bool), Long.valueOf(l2) });
+    e.a(this.fSS.fSM, 0L);
+    String str = this.fSO.akA();
+    Object localObject = this.fSP.akA();
+    try
     {
-      try
+      StringBuilder localStringBuilder;
+      if ((bo.isNullOrNil(str)) || (bo.isNullOrNil((String)localObject)))
       {
-        StringBuilder localStringBuilder;
-        if ((bk.bl(str1)) || (bk.bl((String)localObject)))
+        ab.e("MicroMsg.IndoorReporter", "get Res Failed [%s][%s]", new Object[] { str, localObject });
+        localObject = h.qsU;
+        localStringBuilder = new StringBuilder().append(this.fSQ).append(this.fSR);
+        if (!bo.isNullOrNil(str)) {}
+        for (str = ",-10011,ERROR:StopFailed.";; str = ",-10012,ERROR:StopFailed.")
         {
-          y.e("MicroMsg.IndoorReporter", "get Res Failed [%s][%s]", new Object[] { str1, localObject });
-          localObject = h.nFQ;
-          localStringBuilder = new StringBuilder().append(this.eCZ).append(this.eDa);
-          if (!bk.bl(str1))
-          {
-            str1 = ",-10011,ERROR:StopFailed.";
-            ((h)localObject).aC(13381, str1);
-            return false;
-          }
-        }
-        else
-        {
-          localObject = str1 + (String)localObject;
-          int j = (int)Math.ceil(((String)localObject).length() / 5400.0D);
-          int i = 0;
-          if (i < j)
-          {
-            localStringBuilder = new StringBuilder().append(this.eCZ).append(this.eDa).append("_").append(l1).append("_").append(j).append("_");
-            if (l2 > e.g(this.eDb.eCV))
-            {
-              str1 = "1";
-              str1 = str1 + "," + (i + 1) + "," + ((String)localObject).substring(i * 5400, Math.min((i + 1) * 5400, ((String)localObject).length()));
-              y.i("MicroMsg.IndoorReporter", "reportKV [%d/%d] res:%d kv:%d [%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(((String)localObject).length()), Integer.valueOf(str1.length()), str1 });
-              h.nFQ.aC(13381, str1);
-              i += 1;
-              continue;
-            }
-            str1 = "2";
-            continue;
-          }
+          ((h)localObject).kvStat(13381, str);
+          AppMethodBeat.o(78715);
           return false;
         }
       }
-      catch (Exception localException)
+      localObject = str + (String)localObject;
+      int j = (int)Math.ceil(((String)localObject).length() / 5400.0D);
+      int i = 0;
+      if (i < j)
       {
-        y.e("MicroMsg.IndoorReporter", "reprot Stop exception:%s", new Object[] { localException.getMessage() });
+        localStringBuilder = new StringBuilder().append(this.fSQ).append(this.fSR).append("_").append(l1).append("_").append(j).append("_");
+        if (l2 > e.g(this.fSS.fSM)) {}
+        for (str = "1";; str = "2")
+        {
+          str = str + "," + (i + 1) + "," + ((String)localObject).substring(i * 5400, Math.min((i + 1) * 5400, ((String)localObject).length()));
+          ab.i("MicroMsg.IndoorReporter", "reportKV [%d/%d] res:%d kv:%d [%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(((String)localObject).length()), Integer.valueOf(str.length()), str });
+          h.qsU.kvStat(13381, str);
+          i += 1;
+          break;
+        }
       }
-      String str2 = ",-10012,ERROR:StopFailed.";
+      return false;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.IndoorReporter", "reprot Stop exception:%s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(78715);
     }
   }
 }

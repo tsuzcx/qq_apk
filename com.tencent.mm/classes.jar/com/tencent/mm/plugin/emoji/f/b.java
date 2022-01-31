@@ -1,72 +1,85 @@
 package com.tencent.mm.plugin.emoji.f;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.h.a;
-import com.tencent.mm.plugin.emoji.model.e;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.EmotionPrice;
+import com.tencent.mm.protocal.protobuf.fq;
+import com.tencent.mm.protocal.protobuf.fr;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.text.DecimalFormat;
 
-public class b
-  extends am
+public final class b
+  extends m
+  implements k
 {
-  private static int iZl = 0;
-  private static b iZm;
-  private static r iZn;
-  private static f iZo = new b.1();
+  public static int lid = 6;
+  public static int lie = 7;
+  public static int lif = 10;
+  private f eGj;
+  private String lig;
+  private EmotionPrice lih;
+  private final com.tencent.mm.ai.b rr;
   
-  private b()
+  public b(String paramString, EmotionPrice paramEmotionPrice)
   {
-    super(new b.a(), true);
+    AppMethodBeat.i(53093);
+    b.a locala = new b.a();
+    locala.fsX = new fq();
+    locala.fsY = new fr();
+    locala.uri = "/cgi-bin/micromsg-bin/mmaskforreward";
+    locala.funcId = 830;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    this.lig = paramString;
+    this.lih = paramEmotionPrice;
+    AppMethodBeat.o(53093);
   }
   
-  public static final b aHY()
+  public final fr blz()
   {
-    if (iZm == null) {}
-    for (;;)
-    {
-      try
-      {
-        if (iZm == null) {
-          iZm = new b();
-        }
-        return iZm;
-      }
-      finally {}
-      iZm.stopTimer();
-    }
+    return (fr)this.rr.fsW.fta;
   }
   
-  public static void aHZ()
+  public final int doScene(e parame, f paramf)
   {
-    iZl = 0;
-    iZn = new r("com.tencent.xin.emoticon.tusiji", 1);
-    g.DO().dJT.a(iZn, 0);
-    g.DO().dJT.a(413, iZo);
-    y.d("MicroMsg.emoji.MockTuziDownloading", "add listener");
+    AppMethodBeat.i(53095);
+    this.eGj = paramf;
+    paramf = (fq)this.rr.fsV.fta;
+    paramf.ProductID = this.lig;
+    EmotionPrice localEmotionPrice = new EmotionPrice();
+    localEmotionPrice.Label = this.lih.Label;
+    localEmotionPrice.Type = this.lih.Type;
+    localEmotionPrice.Number = new DecimalFormat("0.00").format(Float.valueOf(this.lih.Number));
+    paramf.wrG = localEmotionPrice;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(53095);
+    return i;
   }
   
-  public static void ch()
+  public final int getType()
   {
-    if (iZn != null) {
-      g.DO().dJT.c(iZn);
-    }
-    g.DO().dJT.b(413, iZo);
-    y.d("MicroMsg.emoji.MockTuziDownloading", "remove listener");
+    return 830;
   }
   
-  public final void aIa()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    stopTimer();
-    i.aHU().g(a.aJK(), 3, iZl, "");
-    ch();
+    AppMethodBeat.i(53094);
+    ab.d("MicroMsg.emoji.NetSceneAskForReward", "onGYNetEnd ErrType:%d, errCode:%d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(53094);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.b
  * JD-Core Version:    0.7.0.1
  */

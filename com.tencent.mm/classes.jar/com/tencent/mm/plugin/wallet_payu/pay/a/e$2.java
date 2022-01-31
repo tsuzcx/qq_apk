@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.wallet_payu.pay.a;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet.a.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
@@ -18,30 +18,39 @@ final class e$2
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final CharSequence getTips(int paramInt)
   {
-    return false;
-  }
-  
-  public final boolean m(Object... paramVarArgs)
-  {
-    paramVarArgs = (Orders)paramVarArgs[0];
-    p.bTK();
-    Bankcard localBankcard = p.bTL().qhj;
-    localBankcard.qty += paramVarArgs.nCq;
-    return false;
-  }
-  
-  public final CharSequence vy(int paramInt)
-  {
+    AppMethodBeat.i(48448);
     switch (paramInt)
     {
     default: 
-      return super.vy(paramInt);
+      localObject = super.getTips(paramInt);
+      AppMethodBeat.o(48448);
+      return localObject;
     case 0: 
-      return this.gfb.getString(a.i.wallet_balance_result_save_title);
+      localObject = this.hwZ.getString(2131304836);
+      AppMethodBeat.o(48448);
+      return localObject;
     }
-    return this.gfb.getString(a.i.wallet_balance_result_save_success);
+    Object localObject = this.hwZ.getString(2131304835);
+    AppMethodBeat.o(48448);
+    return localObject;
+  }
+  
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    return false;
+  }
+  
+  public final boolean p(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(48447);
+    paramVarArgs = (Orders)paramVarArgs[0];
+    s.cRG();
+    Bankcard localBankcard = s.cRH().tOD;
+    localBankcard.ufM += paramVarArgs.cnL;
+    AppMethodBeat.o(48447);
+    return false;
   }
 }
 

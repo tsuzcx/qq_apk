@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$3
   implements DialogInterface.OnClickListener
@@ -12,9 +13,11 @@ final class c$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(111700);
     Intent localIntent = new Intent("android.settings.SECURITY_SETTINGS");
-    this.kWS.mContext.startActivity(localIntent);
+    this.nuU.mContext.startActivity(localIntent);
     paramDialogInterface.cancel();
+    AppMethodBeat.o(111700);
   }
 }
 

@@ -1,14 +1,33 @@
 package com.tencent.mm.view.e;
 
-import com.tencent.mm.h.a.cx;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.view.SmileyPanelViewPager;
+import com.tencent.mm.view.a.i;
 
 final class a$10
-  extends c<cx>
+  implements k.a
 {
-  a$10(a parama)
+  a$10(a parama) {}
+  
+  public final void a(String paramString, m paramm)
   {
-    this.udX = cx.class.getName().hashCode();
+    AppMethodBeat.i(63034);
+    paramString = paramm.obj;
+    if ((paramString instanceof Integer)) {}
+    for (int i = ((Integer)paramString).intValue(); (!a.d(this.AUz).dRF()) && (i >= 3); i = 0)
+    {
+      a.d(this.AUz).dRG();
+      a.h(this.AUz);
+      this.AUz.dRo();
+      AppMethodBeat.o(63034);
+      return;
+    }
+    if ((a.i(this.AUz) != null) && (a.c(this.AUz) != null)) {
+      a.i(this.AUz).aM(a.c(this.AUz).getCurrentItem(), false);
+    }
+    AppMethodBeat.o(63034);
   }
 }
 

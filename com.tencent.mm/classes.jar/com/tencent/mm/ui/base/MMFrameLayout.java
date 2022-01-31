@@ -5,22 +5,24 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MMFrameLayout
   extends FrameLayout
 {
-  private boolean uVh = false;
+  private boolean zjC = false;
   
   public MMFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(106612);
     int j = getChildCount();
     int i = 0;
-    while ((!this.uVh) && (i < j))
+    while ((!this.zjC) && (i < j))
     {
       View localView = getChildAt(i);
       if (localView != null)
@@ -34,8 +36,9 @@ public class MMFrameLayout
       }
       i += 1;
     }
-    this.uVh = true;
+    this.zjC = true;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(106612);
   }
 }
 

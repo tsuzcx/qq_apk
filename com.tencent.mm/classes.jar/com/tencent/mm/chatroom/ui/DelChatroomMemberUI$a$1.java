@@ -2,6 +2,7 @@ package com.tencent.mm.chatroom.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.base.h;
 
@@ -12,10 +13,12 @@ final class DelChatroomMemberUI$a$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(104089);
     int i = ((Integer)paramView.getTag()).intValue();
-    paramView = (ad)this.doR.getItem(i);
-    String str = this.doR.doM.getString(a.i.room_delete_member_alert, new Object[] { this.doR.c(paramView) });
-    h.a(this.doR.doM, str, null, this.doR.doM.getString(a.i.room_delete_member_remove_it), this.doR.doM.getString(a.i.app_cancel), true, new DelChatroomMemberUI.a.1.1(this, paramView), new DelChatroomMemberUI.a.1.2(this));
+    paramView = (ad)this.egn.getItem(i);
+    String str = this.egn.egi.getString(2131302688, new Object[] { this.egn.c(paramView) });
+    h.a(this.egn.egi, str, null, this.egn.egi.getString(2131302696), this.egn.egi.getString(2131296888), true, new DelChatroomMemberUI.a.1.1(this, paramView), new DelChatroomMemberUI.a.1.2(this));
+    AppMethodBeat.o(104089);
   }
 }
 

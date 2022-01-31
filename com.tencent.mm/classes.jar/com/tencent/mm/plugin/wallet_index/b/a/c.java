@@ -1,60 +1,64 @@
 package com.tencent.mm.plugin.wallet_index.b.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import org.json.JSONObject;
 
 public final class c
 {
-  public String fdD;
-  public String iZD;
+  public String liu;
   String mPackageName;
   public String mSignature;
-  String qKY;
-  public String qKZ;
-  long qLa;
-  int qLb;
-  public String qLc;
-  public String qLd;
-  public String qLe;
-  public String qLf;
+  public String mToken;
+  public String uAa;
+  public String uAb;
+  String uzU;
+  public String uzV;
+  long uzW;
+  int uzX;
+  public String uzY;
+  public String uzZ;
   
   public c(String paramString1, String paramString2, String paramString3)
   {
-    this.qKY = paramString1;
-    this.qLd = paramString2;
-    paramString1 = new JSONObject(this.qLd);
-    this.qKZ = paramString1.optString("orderId");
+    AppMethodBeat.i(48171);
+    this.uzU = paramString1;
+    this.uzZ = paramString2;
+    paramString1 = new JSONObject(this.uzZ);
+    this.uzV = paramString1.optString("orderId");
     this.mPackageName = paramString1.optString("packageName");
-    this.iZD = paramString1.optString("productId");
-    this.qLa = paramString1.optLong("purchaseTime");
-    this.qLb = paramString1.optInt("purchaseState");
+    this.liu = paramString1.optString("productId");
+    this.uzW = paramString1.optLong("purchaseTime");
+    this.uzX = paramString1.optInt("purchaseState");
     paramString2 = paramString1.optString("developerPayload");
-    ArrayList localArrayList = QT(paramString2);
+    ArrayList localArrayList = afR(paramString2);
     if (localArrayList.size() == 3)
     {
-      this.qLc = ((String)localArrayList.get(0));
-      this.qLf = ((String)localArrayList.get(1));
-      this.qLe = ((String)localArrayList.get(2));
+      this.uzY = ((String)localArrayList.get(0));
+      this.uAb = ((String)localArrayList.get(1));
+      this.uAa = ((String)localArrayList.get(2));
     }
     for (;;)
     {
-      this.fdD = paramString1.optString("token", paramString1.optString("purchaseToken"));
+      this.mToken = paramString1.optString("token", paramString1.optString("purchaseToken"));
       this.mSignature = paramString3;
+      AppMethodBeat.o(48171);
       return;
-      this.qLc = paramString2;
+      this.uzY = paramString2;
     }
   }
   
   public c(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.iZD = paramString1;
-    this.qLc = paramString2;
-    this.qLe = paramString3;
-    this.qLf = paramString4;
+    this.liu = paramString1;
+    this.uzY = paramString2;
+    this.uAa = paramString3;
+    this.uAb = paramString4;
   }
   
-  private static ArrayList<String> QT(String paramString)
+  private static ArrayList<String> afR(String paramString)
   {
+    AppMethodBeat.i(48172);
     ArrayList localArrayList = new ArrayList();
     while (paramString.indexOf("[#]") >= 0)
     {
@@ -63,12 +67,16 @@ public final class c
       localArrayList.add(str);
     }
     localArrayList.add(paramString);
+    AppMethodBeat.o(48172);
     return localArrayList;
   }
   
   public final String toString()
   {
-    return "PurchaseInfo(type:" + this.qKY + "):" + this.qLd;
+    AppMethodBeat.i(48173);
+    String str = "PurchaseInfo(type:" + this.uzU + "):" + this.uzZ;
+    AppMethodBeat.o(48173);
+    return str;
   }
 }
 

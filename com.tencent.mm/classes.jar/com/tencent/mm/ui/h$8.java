@@ -1,20 +1,26 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.cl.b;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.b.a.a;
 
 final class h$8
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  h$8(h paramh) {}
+  h$8(h paramh, int paramInt, a parama) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    b.afs("com.tencent.mm.intent.ACTION_START_TOOLS_PROCESS");
+    AppMethodBeat.i(29319);
+    h.a(this.yXo, this.val$id, this.yXu.actionType, this.yXu.id, this.yXu.wjS);
+    paramDialogInterface.dismiss();
+    AppMethodBeat.o(29319);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.h.8
  * JD-Core Version:    0.7.0.1
  */

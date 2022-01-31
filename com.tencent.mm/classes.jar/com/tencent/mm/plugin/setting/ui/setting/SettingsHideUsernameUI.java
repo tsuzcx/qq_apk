@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.plugin.setting.a.k;
-import com.tencent.mm.protocal.c.zr;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aek;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -21,69 +21,65 @@ import com.tencent.mm.ui.base.preference.f;
 public class SettingsHideUsernameUI
   extends MMPreference
 {
-  private f dnn;
-  private boolean gPg;
-  private long iKA;
-  private int nTP;
-  private CheckBoxPreference nUq;
+  private boolean iqO;
+  private long kRf;
+  private int qHP;
+  private CheckBoxPreference qIw;
+  private f screen;
   private String username;
   
-  private void bza()
+  private void ckk()
   {
-    if (this.gPg)
+    AppMethodBeat.i(127234);
+    if (this.iqO)
     {
-      this.nUq.setSummary(getString(a.i.settings_show_username_open_hint));
+      this.qIw.setSummary(getString(2131303423));
+      AppMethodBeat.o(127234);
       return;
     }
-    if (this.nUq.isEnabled())
+    if (this.qIw.isEnabled())
     {
-      this.nUq.setSummary(getString(a.i.settings_show_username_close_hint));
+      this.qIw.setSummary(getString(2131303421));
+      AppMethodBeat.o(127234);
       return;
     }
-    this.nUq.setSummary(getString(a.i.settings_show_username_disable_hint));
+    this.qIw.setSummary(getString(2131303422));
+    AppMethodBeat.o(127234);
   }
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
   {
-    boolean bool = false;
-    if (paramPreference.mKey.equals("settings_show_username"))
-    {
-      if (!((CheckBoxPreference)paramPreference).isChecked()) {
-        bool = true;
-      }
-      this.gPg = bool;
-      bza();
-      return true;
-    }
-    return false;
+    return 2131165276;
   }
   
-  protected final void initView()
+  public void initView()
   {
     boolean bool2 = true;
-    setMMTitle(a.i.settings_username);
-    this.dnn.add("settings_my_username").setSummary(this.username);
+    AppMethodBeat.i(127232);
+    setMMTitle(2131303508);
+    this.screen.atx("settings_my_username").setSummary(this.username);
     CheckBoxPreference localCheckBoxPreference;
-    if ((this.iKA & 0x4000) != 0L)
+    if ((this.kRf & 0x4000) != 0L)
     {
       bool1 = true;
-      this.gPg = bool1;
-      y.d("MicroMsg.SettingsHideUsernameUI", "is hide: %s", new Object[] { Boolean.valueOf(bool1) });
-      this.nUq = ((CheckBoxPreference)this.dnn.add("settings_show_username"));
-      this.nUq.vdK = false;
-      localCheckBoxPreference = this.nUq;
+      this.iqO = bool1;
+      ab.d("MicroMsg.SettingsHideUsernameUI", "is hide: %s", new Object[] { Boolean.valueOf(bool1) });
+      this.qIw = ((CheckBoxPreference)this.screen.atx("settings_show_username"));
+      this.qIw.zsk = false;
+      localCheckBoxPreference = this.qIw;
       if (bool1) {
-        break label139;
+        break label148;
       }
     }
-    label139:
+    label148:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localCheckBoxPreference.rHo = bool1;
-      if (bk.bl(q.Gl())) {
-        this.nUq.setEnabled(false);
+      localCheckBoxPreference.vxW = bool1;
+      if (bo.isNullOrNil(r.Zp())) {
+        this.qIw.setEnabled(false);
       }
-      this.dnn.notifyDataSetChanged();
+      this.screen.notifyDataSetChanged();
+      AppMethodBeat.o(127232);
       return;
       bool1 = false;
       break;
@@ -92,62 +88,87 @@ public class SettingsHideUsernameUI
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127231);
     super.onCreate(paramBundle);
-    this.username = q.Gk();
-    if (bk.bl(this.username)) {
-      this.username = q.Gj();
+    this.username = r.Zo();
+    if (bo.isNullOrNil(this.username)) {
+      this.username = r.Zn();
     }
-    this.dnn = this.vdd;
-    this.iKA = q.Go();
-    this.nTP = q.Gp();
+    this.screen = getPreferenceScreen();
+    this.kRf = r.Zs();
+    this.qHP = r.Zt();
     initView();
     setBackBtn(new SettingsHideUsernameUI.1(this));
+    AppMethodBeat.o(127231);
   }
   
-  protected void onPause()
+  public void onPause()
   {
     int j = 0;
     int i = 1;
+    AppMethodBeat.i(127236);
     super.onPause();
-    y.d("MicroMsg.SettingsHideUsernameUI", "hide: %s", new Object[] { Boolean.valueOf(this.gPg) });
-    if ((this.iKA & 0x4000) != 0L) {
+    ab.d("MicroMsg.SettingsHideUsernameUI", "hide: %s", new Object[] { Boolean.valueOf(this.iqO) });
+    if ((this.kRf & 0x4000) != 0L) {
       j = 1;
     }
-    if (j != this.gPg)
+    if (j != this.iqO)
     {
-      if (!this.gPg) {
-        break label184;
+      if (!this.iqO) {
+        break label194;
       }
-      this.iKA |= 0x4000;
+      this.kRf |= 0x4000;
     }
-    for (this.nTP |= 0x200;; this.nTP &= 0xFFFFFDFF)
+    for (this.qHP |= 0x200;; this.qHP &= 0xFFFFFDFF)
     {
-      g.DQ();
-      g.DP().Dz().o(147457, Long.valueOf(this.iKA));
-      g.DQ();
-      g.DP().Dz().o(40, Integer.valueOf(this.nTP));
-      zr localzr = new zr();
-      localzr.sYS = 46;
-      if (this.gPg) {
+      g.RM();
+      g.RL().Ru().set(147457, Long.valueOf(this.kRf));
+      g.RM();
+      g.RL().Ru().set(40, Integer.valueOf(this.qHP));
+      aek localaek = new aek();
+      localaek.wXn = 46;
+      if (this.iqO) {
         i = 2;
       }
-      localzr.nfn = i;
-      ((j)g.r(j.class)).Fv().b(new i.a(23, localzr));
+      localaek.pKC = i;
+      ((j)g.E(j.class)).Yz().c(new j.a(23, localaek));
+      AppMethodBeat.o(127236);
       return;
-      label184:
-      this.iKA &= 0xFFFFBFFF;
+      label194:
+      this.kRf &= 0xFFFFBFFF;
     }
   }
   
-  protected void onResume()
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    super.onResume();
-    bza();
+    boolean bool = false;
+    AppMethodBeat.i(127233);
+    if (paramPreference.mKey.equals("settings_show_username"))
+    {
+      if (!((CheckBoxPreference)paramPreference).isChecked()) {
+        bool = true;
+      }
+      this.iqO = bool;
+      ckk();
+      AppMethodBeat.o(127233);
+      return true;
+    }
+    AppMethodBeat.o(127233);
+    return false;
   }
   
-  public final int xj()
+  public void onResume()
   {
-    return a.k.settings_hide_username;
+    AppMethodBeat.i(127235);
+    super.onResume();
+    ckk();
+    AppMethodBeat.o(127235);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

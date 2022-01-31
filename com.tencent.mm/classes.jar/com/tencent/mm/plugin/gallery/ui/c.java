@@ -7,42 +7,56 @@ import android.os.Build.VERSION;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.R.h;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
-import com.tencent.mm.sdk.platformtools.k;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.n;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.WxImageView;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.base.u;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
 public final class c
-  extends t
+  extends u
 {
-  private Bitmap bwa = null;
-  ArrayList<GalleryItem.MediaItem> kHC = new ArrayList();
-  ArrayList<String> kIV = new ArrayList();
-  boolean kIW;
-  HashSet<String> kIX = new HashSet();
-  int kIY = -1;
-  View kIZ = null;
-  boolean kJa = false;
-  private HashMap<String, WeakReference<c.b>> kJb = new HashMap();
-  public e kJc = new e(this);
-  public d kJd = new d(this);
+  private Bitmap bXF;
   Context mContext;
+  ArrayList<GalleryItem.MediaItem> ndM;
+  public d nfA;
+  ArrayList<String> nfs;
+  boolean nft;
+  private HashSet<String> nfu;
+  int nfv;
+  View nfw;
+  boolean nfx;
+  private HashMap<String, WeakReference<c.b>> nfy;
+  public e nfz;
   
   public c(Context paramContext)
   {
+    AppMethodBeat.i(21459);
+    this.nfs = new ArrayList();
+    this.ndM = new ArrayList();
+    this.nfu = new HashSet();
+    this.nfv = -1;
+    this.nfw = null;
+    this.nfx = false;
+    this.bXF = null;
+    this.nfy = new HashMap();
+    this.nfz = new e(this);
+    this.nfA = new d(this);
     this.mContext = paramContext;
+    AppMethodBeat.o(21459);
   }
   
   @TargetApi(11)
-  static void a(MultiTouchImageView paramMultiTouchImageView, Bitmap paramBitmap)
+  private static void a(MultiTouchImageView paramMultiTouchImageView, Bitmap paramBitmap)
   {
+    AppMethodBeat.i(21468);
     paramMultiTouchImageView.setMaxZoomLimit(4.5F);
     paramMultiTouchImageView.setEnableHorLongBmpMode(false);
     if (Build.VERSION.SDK_INT == 20) {
@@ -50,164 +64,234 @@ public final class c
     }
     for (;;)
     {
-      paramMultiTouchImageView.fs(paramBitmap.getWidth(), paramBitmap.getHeight());
+      paramMultiTouchImageView.cb(paramBitmap.getWidth(), paramBitmap.getHeight());
       paramMultiTouchImageView.setImageBitmap(paramBitmap);
       paramMultiTouchImageView.requestLayout();
+      AppMethodBeat.o(21468);
       return;
-      k.o(paramMultiTouchImageView, paramBitmap.getWidth(), paramBitmap.getHeight());
+      n.x(paramMultiTouchImageView, paramBitmap.getWidth(), paramBitmap.getHeight());
     }
   }
   
-  public final void D(ArrayList<String> paramArrayList)
+  public final void E(ArrayList<String> paramArrayList)
   {
-    this.kIV.clear();
-    this.kIV = new ArrayList();
-    this.kIV.addAll(paramArrayList);
+    AppMethodBeat.i(21460);
+    this.nfs.clear();
+    this.nfs = new ArrayList();
+    this.nfs.addAll(paramArrayList);
     reset();
     notifyDataSetChanged();
+    AppMethodBeat.o(21460);
   }
   
-  public final void a(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public final void a(MultiTouchImageView paramMultiTouchImageView, String paramString, Bitmap paramBitmap)
   {
-    if (!this.kIW)
+    AppMethodBeat.i(21467);
+    this.nfu.remove(paramString);
+    if (paramMultiTouchImageView != null)
+    {
+      c.b localb = (c.b)paramMultiTouchImageView.getTag();
+      if (paramBitmap != null)
+      {
+        a(paramMultiTouchImageView, paramBitmap);
+        if ((localb != null) && (localb.nfC) && (localb.nfF != null))
+        {
+          localb.nfF.setVisibility(8);
+          AppMethodBeat.o(21467);
+        }
+      }
+      else if ((localb != null) && (localb.nfC) && (localb.nfF != null))
+      {
+        localb.nfF.setText(paramString);
+        localb.nfF.setVisibility(0);
+      }
+    }
+    AppMethodBeat.o(21467);
+  }
+  
+  public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    AppMethodBeat.i(21462);
+    if (!this.nft)
     {
       if (paramObject == null)
       {
-        y.e("MicroMsg.ImageAdapter", "[destroyItem] position:%s", new Object[] { Integer.valueOf(paramInt) });
+        ab.e("MicroMsg.ImageAdapter", "[destroyItem] position:%s", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(21462);
         return;
       }
-      if (this.kIZ != null) {
-        y.i("MicroMsg.ImageAdapter", "[destroyItem] position:%s object:%s lastVisableView:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramObject.hashCode()), Integer.valueOf(this.kIZ.hashCode()) });
+      if (this.nfw != null) {
+        ab.i("MicroMsg.ImageAdapter", "[destroyItem] position:%s object:%s lastVisableView:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramObject.hashCode()), Integer.valueOf(this.nfw.hashCode()) });
       }
-      if ((paramObject != this.kIZ) || (!this.kJa))
+      if ((paramObject != this.nfw) || (!this.nfx))
       {
-        super.a(paramViewGroup, paramInt, paramObject);
+        super.destroyItem(paramViewGroup, paramInt, paramObject);
         paramViewGroup.removeView((View)paramObject);
+        AppMethodBeat.o(21462);
         return;
       }
-      y.d("MicroMsg.ImageAdapter", "[isSwap-destroyItem]");
+      ab.d("MicroMsg.ImageAdapter", "[isSwap-destroyItem]");
+      AppMethodBeat.o(21462);
       return;
     }
-    super.a(paramViewGroup, paramInt, paramObject);
-  }
-  
-  public final Object b(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (!this.kIW)
-    {
-      y.i("MicroMsg.ImageAdapter", "[instantiateItem] position:%s %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.kIY) });
-      if ((paramInt == this.kIY) && (this.kJa))
-      {
-        y.d("MicroMsg.ImageAdapter", "[isSwap-instantiateItem]");
-        this.uZv.put(this.kIZ, Integer.valueOf(this.kIY));
-        this.uZw.put(this.kIY, this.kIZ);
-        this.kIY = -1;
-        this.kJa = false;
-        return this.kIZ;
-      }
-      return super.b(paramViewGroup, paramInt);
-    }
-    return super.b(paramViewGroup, paramInt);
+    super.destroyItem(paramViewGroup, paramInt, paramObject);
+    AppMethodBeat.o(21462);
   }
   
   public final void detach()
   {
+    AppMethodBeat.i(21470);
     super.detach();
-    d locald = this.kJd;
-    locald.kJw = null;
-    locald.kJp.clear();
-    locald.kJs.clear();
-    locald.kJr.clear();
-    locald.kJq.clear();
-    locald.aXQ();
+    this.nfA.detach();
+    AppMethodBeat.o(21470);
   }
   
   public final int getCount()
   {
-    if (this.kIW) {
-      return this.kHC.size();
+    AppMethodBeat.i(21463);
+    if (this.nft)
+    {
+      i = this.ndM.size();
+      AppMethodBeat.o(21463);
+      return i;
     }
-    return this.kIV.size();
+    int i = this.nfs.size();
+    AppMethodBeat.o(21463);
+    return i;
   }
   
-  public final String ke(int paramInt)
+  public final String getItem(int paramInt)
   {
-    if (this.kIW)
+    AppMethodBeat.i(21465);
+    if (this.nft)
     {
-      if ((paramInt < 0) || (paramInt >= this.kHC.size()))
+      if ((paramInt < 0) || (paramInt >= this.ndM.size()))
       {
-        y.w("MicroMsg.ImageAdapter", "error position %d, mediaitems size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.kHC.size()) });
+        ab.w("MicroMsg.ImageAdapter", "error position %d, mediaitems size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.ndM.size()) });
+        AppMethodBeat.o(21465);
         return "";
       }
-      return ((GalleryItem.MediaItem)this.kHC.get(paramInt)).eAu;
+      str = ((GalleryItem.MediaItem)this.ndM.get(paramInt)).fQn;
+      AppMethodBeat.o(21465);
+      return str;
     }
-    if ((paramInt < 0) || (paramInt >= this.kIV.size()))
+    if ((paramInt < 0) || (paramInt >= this.nfs.size()))
     {
-      y.w("MicroMsg.ImageAdapter", "error position %d, imagePaths size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.kIV.size()) });
+      ab.w("MicroMsg.ImageAdapter", "error position %d, imagePaths size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.nfs.size()) });
+      AppMethodBeat.o(21465);
       return "";
     }
-    return (String)this.kIV.get(paramInt);
+    String str = (String)this.nfs.get(paramInt);
+    AppMethodBeat.o(21465);
+    return str;
   }
   
-  public final MultiTouchImageView rX(int paramInt)
+  public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = super.Gs(paramInt);
-    if (localView == null)
+    AppMethodBeat.i(21461);
+    if (!this.nft)
     {
-      y.e("MicroMsg.ImageAdapter", "position : %s getMultiTouchImageViewByPosition is null", new Object[] { Integer.valueOf(paramInt) });
-      return null;
-    }
-    if ((localView == null) || (localView.getVisibility() == 8)) {
-      return null;
-    }
-    localView = localView.findViewById(R.h.image);
-    if (localView == null) {
-      return null;
-    }
-    return (MultiTouchImageView)localView;
-  }
-  
-  public final WxImageView rY(int paramInt)
-  {
-    return null;
-  }
-  
-  public final GalleryItem.MediaItem rZ(int paramInt)
-  {
-    if (this.kIW) {
-      if ((paramInt < 0) || (paramInt >= this.kHC.size())) {
-        y.w("MicroMsg.ImageAdapter", "error position %d mediaitems size", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.kHC.size()) });
-      }
-    }
-    do
-    {
-      do
+      ab.i("MicroMsg.ImageAdapter", "[instantiateItem] position:%s %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.nfv) });
+      if ((paramInt == this.nfv) && (this.nfx))
       {
-        return null;
-        return (GalleryItem.MediaItem)this.kHC.get(paramInt);
-        if ((paramInt < 0) || (paramInt >= this.kIV.size()))
-        {
-          y.w("MicroMsg.ImageAdapter", "error position %d, imagePaths size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.kIV.size()) });
-          return null;
-        }
-        localObject = (String)this.kIV.get(paramInt);
-      } while (com.tencent.mm.plugin.gallery.model.c.aXd() == null);
-      Object localObject = GalleryItem.MediaItem.a(0, 0L, (String)localObject, (String)localObject, "");
-      paramInt = com.tencent.mm.plugin.gallery.model.c.aXd().indexOf(localObject);
-    } while (paramInt < 0);
-    return (GalleryItem.MediaItem)com.tencent.mm.plugin.gallery.model.c.aXd().get(paramInt);
+        ab.d("MicroMsg.ImageAdapter", "[isSwap-instantiateItem]");
+        this.znM.put(this.nfw, Integer.valueOf(this.nfv));
+        this.znN.put(this.nfv, this.nfw);
+        this.nfv = -1;
+        this.nfx = false;
+        paramViewGroup = this.nfw;
+        AppMethodBeat.o(21461);
+        return paramViewGroup;
+      }
+      paramViewGroup = super.instantiateItem(paramViewGroup, paramInt);
+      AppMethodBeat.o(21461);
+      return paramViewGroup;
+    }
+    paramViewGroup = super.instantiateItem(paramViewGroup, paramInt);
+    AppMethodBeat.o(21461);
+    return paramViewGroup;
   }
   
   public final void release()
   {
+    AppMethodBeat.i(21469);
     detach();
-    this.kJb.clear();
-    this.kIX.clear();
+    this.nfy.clear();
+    this.nfu.clear();
+    AppMethodBeat.o(21469);
+  }
+  
+  public final MultiTouchImageView wT(int paramInt)
+  {
+    AppMethodBeat.i(21464);
+    Object localObject = super.Gm(paramInt);
+    if (localObject == null)
+    {
+      ab.e("MicroMsg.ImageAdapter", "position : %s getMultiTouchImageViewByPosition is null", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(21464);
+      return null;
+    }
+    if ((localObject == null) || (((View)localObject).getVisibility() == 8))
+    {
+      AppMethodBeat.o(21464);
+      return null;
+    }
+    localObject = ((View)localObject).findViewById(2131820629);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(21464);
+      return null;
+    }
+    localObject = (MultiTouchImageView)localObject;
+    AppMethodBeat.o(21464);
+    return localObject;
+  }
+  
+  public final WxImageView wU(int paramInt)
+  {
+    return null;
+  }
+  
+  public final GalleryItem.MediaItem wV(int paramInt)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(21466);
+    if (this.nft)
+    {
+      if ((paramInt < 0) || (paramInt >= this.ndM.size()))
+      {
+        ab.w("MicroMsg.ImageAdapter", "error position %d mediaitems size", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.ndM.size()) });
+        AppMethodBeat.o(21466);
+        return null;
+      }
+      localObject1 = (GalleryItem.MediaItem)this.ndM.get(paramInt);
+      AppMethodBeat.o(21466);
+      return localObject1;
+    }
+    if ((paramInt < 0) || (paramInt >= this.nfs.size()))
+    {
+      ab.w("MicroMsg.ImageAdapter", "error position %d, imagePaths size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.nfs.size()) });
+      AppMethodBeat.o(21466);
+      return null;
+    }
+    String str = (String)this.nfs.get(paramInt);
+    Object localObject1 = localObject2;
+    if (com.tencent.mm.plugin.gallery.model.e.bDS() != null)
+    {
+      localObject1 = GalleryItem.MediaItem.a(0, 0L, str, str, "");
+      paramInt = com.tencent.mm.plugin.gallery.model.e.bDS().indexOf(localObject1);
+      localObject1 = localObject2;
+      if (paramInt >= 0) {
+        localObject1 = (GalleryItem.MediaItem)com.tencent.mm.plugin.gallery.model.e.bDS().get(paramInt);
+      }
+    }
+    AppMethodBeat.o(21466);
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.c
  * JD-Core Version:    0.7.0.1
  */

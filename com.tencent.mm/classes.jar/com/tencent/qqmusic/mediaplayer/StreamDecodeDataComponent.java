@@ -2,6 +2,7 @@ package com.tencent.qqmusic.mediaplayer;
 
 import android.media.AudioTrack;
 import android.os.Handler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.audiofx.IAudioListener;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 import com.tencent.qqmusic.mediaplayer.util.ReferenceTimer;
@@ -18,39 +19,49 @@ public class StreamDecodeDataComponent
   private static final int MIN_AUDIO_TRACK_BUFFER_TIMES = 1;
   private static final String TAG = "StreamDecodeDataComponent";
   private static final int USE_AUDIO_TRACK_TIME_THRESHOLD = 1000;
-  private long mCurrentFrameCount = 0L;
-  private boolean mNeedFlush = false;
-  private final Stack<Integer> mSeekRecord = new Stack();
+  private long mCurrentFrameCount;
+  private boolean mNeedFlush;
+  private final Stack<Integer> mSeekRecord;
   private int mTrackBufferSizeInByte;
   
-  StreamDecodeDataComponent(CorePlayer paramCorePlayer, StateRunner<Integer> paramStateRunner, AudioInformation paramAudioInformation, PlayerCallback paramPlayerCallback, BaseDecodeDataComponent.HandleDecodeDataCallback paramHandleDecodeDataCallback, Handler paramHandler, int paramInt)
+  StreamDecodeDataComponent(CorePlayer paramCorePlayer, PlayerStateRunner paramPlayerStateRunner, AudioInformation paramAudioInformation, PlayerCallback paramPlayerCallback, BaseDecodeDataComponent.HandleDecodeDataCallback paramHandleDecodeDataCallback, Handler paramHandler, int paramInt)
   {
-    super(paramCorePlayer, paramStateRunner, paramAudioInformation, paramPlayerCallback, paramHandleDecodeDataCallback, paramHandler, paramInt);
+    super(paramCorePlayer, paramPlayerStateRunner, paramAudioInformation, paramPlayerCallback, paramHandleDecodeDataCallback, paramHandler, paramInt);
+    AppMethodBeat.i(104488);
+    this.mSeekRecord = new Stack();
+    this.mCurrentFrameCount = 0L;
+    this.mNeedFlush = false;
+    AppMethodBeat.o(104488);
   }
   
   private void addSeekRecord(int paramInt)
   {
+    AppMethodBeat.i(104494);
     synchronized (this.mSeekRecord)
     {
-      Logger.i("StreamDecodeDataComponent", "add seek: " + paramInt);
+      Logger.i("StreamDecodeDataComponent", "add seek: ".concat(String.valueOf(paramInt)));
       this.mSeekRecord.push(Integer.valueOf(paramInt));
+      AppMethodBeat.o(104494);
       return;
     }
   }
   
   private boolean createAudioTrack()
   {
+    AppMethodBeat.i(104492);
     Logger.d("StreamDecodeDataComponent", axiliary("createAudioTrack"));
     if (!this.mStateRunner.isEqual(new Integer[] { Integer.valueOf(3) }))
     {
       Logger.e("StreamDecodeDataComponent", "mState is not preparing");
       callExceptionCallback(91, 54);
+      AppMethodBeat.o(104492);
       return false;
     }
     if (this.mInformation.getSampleRate() <= 0L)
     {
       Logger.e("StreamDecodeDataComponent", "mInformation.getSampleRate() failed");
       callExceptionCallback(91, 64);
+      AppMethodBeat.o(104492);
       return false;
     }
     int i = 12;
@@ -58,10 +69,10 @@ public class StreamDecodeDataComponent
     if (i2 == 1) {
       i = 4;
     }
-    int n;
+    int i1;
     for (;;)
     {
-      n = (int)this.mHandleDecodeDataCallback.getMinPcmBufferSize();
+      i1 = (int)this.mHandleDecodeDataCallback.getMinPcmBufferSize();
       Logger.d("StreamDecodeDataComponent", axiliary(this.mInformation.toString()));
       for (this.mPlaySample = this.mInformation.getSampleRate(); this.mPlaySample > MAX_PLAY_SAMPLE_RATE; this.mPlaySample /= 2L) {}
       if (i2 == 2) {
@@ -73,126 +84,144 @@ public class StreamDecodeDataComponent
       }
     }
     this.mInformation.setPlaySample(this.mPlaySample);
-    int m = getBytesPerSampleInPlay(this.mInformation.getBitDept());
-    if (m == 0) {
+    int j = getBytesPerSampleInPlay(this.mInformation.getBitDept());
+    int m = j;
+    if (j == 0) {
       m = 2;
     }
-    label722:
-    label745:
-    label1141:
-    for (;;)
+    label376:
+    int n;
+    int k;
+    if ((CAN_USE_FLOAT_IN_HI_RES) && (this.mInformation.getBitDept() >= 3) && (this.mInformation.getSampleRate() > 48000L))
     {
-      int j;
-      if ((CAN_USE_FLOAT_IN_HI_RES) && (this.mInformation.getBitDept() >= 3) && (this.mInformation.getSampleRate() > 48000L))
+      this.mPlayBitDepth = m;
+      this.isUseFloatInHiRes = true;
+      if (this.mPlaySample != this.mInformation.getSampleRate())
       {
-        this.mPlayBitDepth = m;
-        this.isUseFloatInHiRes = true;
-        if (this.mPlaySample != this.mInformation.getSampleRate())
-        {
-          Logger.i("StreamDecodeDataComponent", axiliary("will use float resampled pcm for Hi-Res, bitDept: " + this.mInformation.getBitDept() + ", origin sample rate: " + this.mInformation.getSampleRate() + ", target sample rate: " + this.mPlaySample));
-          j = 2;
-          if (m != 1) {
-            break label722;
-          }
-          j = 3;
+        Logger.i("StreamDecodeDataComponent", axiliary("will use float resampled pcm for Hi-Res, bitDept: " + this.mInformation.getBitDept() + ", origin sample rate: " + this.mInformation.getSampleRate() + ", target sample rate: " + this.mPlaySample));
+        j = 2;
+        if (m != 1) {
+          break label1118;
         }
-      }
-      int i1;
-      for (;;)
-      {
-        i1 = AudioTrack.getMinBufferSize((int)this.mPlaySample, i, j);
-        if (i1 >= 0) {
-          break label745;
+        j = 3;
+        n = getMinBufferSize(this.mPlaySample, i, j, i2, m);
+        Logger.i("StreamDecodeDataComponent", axiliary("[createAudioTrack] playback_bufsize:" + n + " decoderBufsizeInByte:" + i1));
+        k = n;
+        if (n % 2048 != 0) {
+          k = (n / 2048 + 1) * 2048;
         }
-        callExceptionCallback(92, 66);
-        return false;
-        Logger.i("StreamDecodeDataComponent", axiliary("will use float pcm for Hi-Res, bitDept: " + this.mInformation.getBitDept() + ", sample rate: " + this.mPlaySample));
-        break;
-        if ((!CAN_USE_FLOAT_IN_HI_RES) && (this.mInformation.getBitDept() >= 3))
-        {
-          this.mPlayBitDepth = 2;
-          if (this.mPlaySample != this.mInformation.getSampleRate())
-          {
-            Logger.i("StreamDecodeDataComponent", axiliary("will use byte pcm resampled and bitDept converted, origin bitDept: " + this.mInformation.getBitDept() + ", target bitDept: " + this.mPlayBitDepth + ", origin sample rate: " + this.mInformation.getSampleRate() + ", target sample rate: " + this.mPlaySample));
-            break;
-          }
-          Logger.i("StreamDecodeDataComponent", axiliary("will use byte pcm with bitDept converted, origin bitDept: " + this.mInformation.getBitDept() + ", target bitDept: " + this.mPlayBitDepth));
-          break;
+        n = i1;
+        if (k > i1) {
+          n = k;
         }
-        if (this.mPlaySample != this.mInformation.getSampleRate())
-        {
-          this.mPlayBitDepth = m;
-          Logger.i("StreamDecodeDataComponent", axiliary("will use byte pcm resampled, bitDept: " + this.mInformation.getBitDept() + ", origin sample rate: " + this.mInformation.getSampleRate() + ", target sample rate: " + this.mPlaySample));
-          break;
-        }
-        this.mPlayBitDepth = 2;
-        Logger.i("StreamDecodeDataComponent", axiliary("will use normal byte pcm, bitDept: " + this.mInformation.getBitDept() + ", sample rate: " + this.mPlaySample));
-        break;
-        if (m == 2) {
-          j = 2;
-        } else if (this.isUseFloatInHiRes) {
-          j = 4;
-        }
-      }
-      Logger.i("StreamDecodeDataComponent", axiliary("[createAudioTrack] playback_bufsize:" + i1 + " decoderBufsizeInByte:" + n));
-      int k = i1;
-      if (i1 % 2048 != 0) {
-        k = (i1 / 2048 + 1) * 2048;
-      }
-      if (k > n)
-      {
-        n = k;
         this.mBuffSize = n;
         Logger.i("StreamDecodeDataComponent", axiliary(String.format("playback_bufsize: %d, mBuffSize: %d, mPlaySample: %d, playChannel: %d, pcmEncoding: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(this.mBuffSize), Long.valueOf(this.mPlaySample), Integer.valueOf(i2), Integer.valueOf(j) })));
         n = Math.max((int)(Math.floor(1L * this.mPlaySample * i2 * 2L / k) + 1.0D), 1);
         Logger.d("StreamDecodeDataComponent", axiliary("times: " + n + ", MIN_AUDIO_TRACK_BUFFER_TIMES: 1"));
       }
+    }
+    for (;;)
+    {
       for (;;)
       {
-        for (;;)
+        if (n > 0) {}
+        try
         {
-          if (n > 0) {}
-          try
+          this.mTrackBufferSizeInByte = (k * n);
+          this.mAudioTrack = new AudioTrack(this.mAudioStreamType, (int)this.mPlaySample, i, j, this.mTrackBufferSizeInByte, 1);
+          Logger.i("StreamDecodeDataComponent", axiliary("[createAudioTrack] new AudioTrack, sampleRate: " + this.mPlaySample + ", channels: " + i + ", bitDepth: " + m + ", buffer: " + this.mTrackBufferSizeInByte));
+          i1 = this.mAudioTrack.getState();
+          if (i1 == 1)
           {
-            this.mTrackBufferSizeInByte = (k * n);
-            this.mAudioTrack = new AudioTrack(this.mAudioStreamType, (int)this.mPlaySample, i, j, this.mTrackBufferSizeInByte, 1);
-            Logger.i("StreamDecodeDataComponent", axiliary("[createAudioTrack] new AudioTrack, sampleRate: " + this.mPlaySample + ", channels: " + i + ", bitDepth: " + m + ", buffer: " + this.mTrackBufferSizeInByte));
-            if (this.mAudioTrack.getState() == 1)
+            Logger.i("StreamDecodeDataComponent", axiliary("new AudioTrack succeed"));
+            if ((this.mAudioTrack == null) || (this.mAudioTrack.getState() != 1)) {
+              break label1189;
+            }
+            Logger.d("StreamDecodeDataComponent", axiliary("create audioTrack success times = ".concat(String.valueOf(n))));
+            this.mStateRunner.setAudioTrack(this.mAudioTrack);
+            AppMethodBeat.o(104492);
+            return true;
+            Logger.i("StreamDecodeDataComponent", axiliary("will use float pcm for Hi-Res, bitDept: " + this.mInformation.getBitDept() + ", sample rate: " + this.mPlaySample));
+            break;
+            if ((!CAN_USE_FLOAT_IN_HI_RES) && (this.mInformation.getBitDept() >= 3))
             {
-              Logger.i("StreamDecodeDataComponent", axiliary("new AudioTrack succeed"));
-              if ((this.mAudioTrack == null) || (this.mAudioTrack.getState() != 1)) {
-                break label1141;
+              this.mPlayBitDepth = 2;
+              if (this.mPlaySample != this.mInformation.getSampleRate())
+              {
+                Logger.i("StreamDecodeDataComponent", axiliary("will use byte pcm resampled and bitDept converted, origin bitDept: " + this.mInformation.getBitDept() + ", target bitDept: " + this.mPlayBitDepth + ", origin sample rate: " + this.mInformation.getSampleRate() + ", target sample rate: " + this.mPlaySample));
+                break;
               }
-              Logger.d("StreamDecodeDataComponent", axiliary("create audioTrack success times = " + n));
-              return true;
+              Logger.i("StreamDecodeDataComponent", axiliary("will use byte pcm with bitDept converted, origin bitDept: " + this.mInformation.getBitDept() + ", target bitDept: " + this.mPlayBitDepth));
               break;
             }
-            this.mAudioTrack.release();
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
+            if (this.mPlaySample != this.mInformation.getSampleRate())
             {
-              Logger.e("StreamDecodeDataComponent", localThrowable);
+              this.mPlayBitDepth = m;
+              Logger.i("StreamDecodeDataComponent", axiliary("will use byte pcm resampled, bitDept: " + this.mInformation.getBitDept() + ", origin sample rate: " + this.mInformation.getSampleRate() + ", target sample rate: " + this.mPlaySample));
+              break;
             }
-            this.mCreateAudioTrackFail = true;
-            Logger.e("StreamDecodeDataComponent", axiliary("create audioTrack fail mCreateAudioTrackFail = true"));
-            this.mAudioTrack = null;
-            callExceptionCallback(92, 66);
-            return false;
+            this.mPlayBitDepth = 2;
+            Logger.i("StreamDecodeDataComponent", axiliary("will use normal byte pcm, bitDept: " + this.mInformation.getBitDept() + ", sample rate: " + this.mPlaySample));
+            break;
+            label1118:
+            if (m == 2)
+            {
+              j = 2;
+              break label376;
+            }
+            if (!this.isUseFloatInHiRes) {
+              break label376;
+            }
+            j = 4;
+            break label376;
           }
+          Logger.e("StreamDecodeDataComponent", axiliary("audioTrack create fail!!! state = ".concat(String.valueOf(i1))));
+          this.mAudioTrack.release();
         }
-        n -= 2;
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            Logger.e("StreamDecodeDataComponent", localThrowable);
+          }
+          this.mCreateAudioTrackFail = true;
+          Logger.e("StreamDecodeDataComponent", axiliary("create audioTrack fail mCreateAudioTrackFail = true"));
+          this.mAudioTrack = null;
+          callExceptionCallback(92, 66);
+          AppMethodBeat.o(104492);
+        }
       }
+      n -= 2;
     }
+    label1189:
+    return false;
   }
   
   private long getCalcBitMinSize(AudioInformation paramAudioInformation)
   {
-    if (paramAudioInformation != null) {
-      return ((float)(paramAudioInformation.getSampleRate() * paramAudioInformation.getChannels() * paramAudioInformation.getBitDept()) * 5.0F / 1000.0F);
+    AppMethodBeat.i(104495);
+    if (paramAudioInformation != null)
+    {
+      long l = ((float)(paramAudioInformation.getSampleRate() * paramAudioInformation.getChannels() * paramAudioInformation.getBitDept()) * 5.0F / 1000.0F);
+      AppMethodBeat.o(104495);
+      return l;
     }
+    AppMethodBeat.o(104495);
     return 0L;
+  }
+  
+  private int getMinBufferSize(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(104493);
+    int j = AudioTrack.getMinBufferSize((int)paramLong, paramInt1, paramInt2);
+    int i = j;
+    if (j < 0)
+    {
+      Logger.i("StreamDecodeDataComponent", axiliary("minBufferSize = " + j + " mPlaySample = " + paramLong + "  channelConfiguration = " + paramInt1 + "   pcmEncoding = " + paramInt2));
+      i = paramInt3 * 3536 * paramInt4;
+    }
+    AppMethodBeat.o(104493);
+    return i;
   }
   
   void flush()
@@ -207,40 +236,41 @@ public class StreamDecodeDataComponent
   
   long getCurPosition()
   {
-    if ((this.mAudioTrack == null) || (this.mAudioTrack.getState() == 0)) {
-      return this.mCurPosition;
+    AppMethodBeat.i(104497);
+    AudioTrack localAudioTrack = this.mAudioTrack;
+    if ((localAudioTrack == null) || (localAudioTrack.getState() == 0))
+    {
+      l = this.mCurPosition;
+      AppMethodBeat.o(104497);
+      return l;
     }
     AudioInformation localAudioInformation = this.mInformation;
-    if (localAudioInformation == null) {
-      return this.mCurPosition;
-    }
-    AudioTrack localAudioTrack = this.mAudioTrack;
-    int i;
-    long l;
-    if (localAudioTrack == null)
+    if (localAudioInformation == null)
     {
-      i = 0;
-      l = localAudioInformation.getChannels() * getBytesPerSampleInPlay(localAudioInformation.getBitDept()) * localAudioInformation.getPlaySample();
-      if (l <= 0L) {
-        break label138;
-      }
+      l = this.mCurPosition;
+      AppMethodBeat.o(104497);
+      return l;
+    }
+    int i = getAudioTrackPosition(this.mCurrentFrameCount, localAudioTrack);
+    long l = localAudioInformation.getChannels() * getBytesPerSampleInPlay(localAudioInformation.getBitDept());
+    l = localAudioInformation.getPlaySample() * l;
+    if (l > 0L)
+    {
       l = this.mTrackBufferSizeInByte / l * 1000L;
-      label92:
       l = this.mHandleDecodeDataCallback.getCurPositionByDecoder() - Math.max(0L, l);
       if (l >= 0L) {
-        break label143;
+        break label161;
       }
       this.mCurPosition = i;
     }
     for (;;)
     {
-      return this.mCurPosition;
-      i = getAudioTrackPosition(this.mCurrentFrameCount, localAudioTrack);
-      break;
-      label138:
+      l = this.mCurPosition;
+      AppMethodBeat.o(104497);
+      return l;
       l = 0L;
-      break label92;
-      label143:
+      break;
+      label161:
       if ((i > 0) && (Math.abs(i - l) < 1000L)) {
         this.mCurPosition = i;
       } else {
@@ -251,14 +281,18 @@ public class StreamDecodeDataComponent
   
   void handleDecodeData()
   {
+    AppMethodBeat.i(104491);
     int m;
-    long l1;
-    long l3;
-    int i;
-    int k;
     long l2;
+    long l5;
+    long l1;
+    int i;
+    int i2;
+    int k;
     int j;
+    int i1;
     int n;
+    label952:
     if ((this.mInformation != null) && (!this.mCorePlayer.mIsExit))
     {
       try
@@ -268,6 +302,7 @@ public class StreamDecodeDataComponent
           Logger.e("StreamDecodeDataComponent", "failed to getSampleRate");
           this.mStateRunner.transfer(Integer.valueOf(9));
           callExceptionCallback(91, 63);
+          AppMethodBeat.o(104491);
           return;
         }
         this.mHasInit = true;
@@ -275,6 +310,7 @@ public class StreamDecodeDataComponent
         {
           Logger.e("StreamDecodeDataComponent", "failed to createAudioTrack");
           this.mStateRunner.transfer(Integer.valueOf(9));
+          AppMethodBeat.o(104491);
           return;
         }
       }
@@ -293,14 +329,16 @@ public class StreamDecodeDataComponent
         PlayerConfigManager.getInstance().setCommonPlayerRef(this.mCorePlayer);
         this.mDecodeBufferInfo.setByteBufferCapacity(this.mBuffSize);
         m = 0;
-        l1 = System.currentTimeMillis();
-        l3 = 0L;
-        i = 0;
-        k = 0;
         l2 = 0L;
+        l5 = System.currentTimeMillis();
+        l1 = 0L;
+        i = 0;
+        i2 = 0;
+        k = 1;
+        j = 0;
       }
       if (!this.mCorePlayer.mIsExit) {
-        j = -1;
+        i1 = -1;
       }
     }
     else
@@ -309,46 +347,56 @@ public class StreamDecodeDataComponent
       {
         if (!this.mSeekRecord.empty())
         {
-          j = ((Integer)this.mSeekRecord.pop()).intValue();
+          i1 = ((Integer)this.mSeekRecord.pop()).intValue();
           this.mSeekRecord.clear();
-          Logger.i("StreamDecodeDataComponent", "execute seek: " + j + ", abandon the others");
+          Logger.i("StreamDecodeDataComponent", "execute seek: " + i1 + ", abandon the others");
         }
-        n = j;
-        if (j < 0)
+        n = i1;
+        if (i1 < 0)
         {
-          n = j;
+          n = i1;
           if (this.mNeedFlush)
           {
             n = getAudioTrackPosition(this.mCurrentFrameCount, this.mAudioTrack);
-            Logger.i("StreamDecodeDataComponent", axiliary("[run] flashback to " + n));
+            Logger.i("StreamDecodeDataComponent", axiliary("[run] flashback to ".concat(String.valueOf(n))));
             this.mNeedFlush = false;
           }
         }
-        j = i;
+        i1 = i;
         if (n < 0) {
-          break label610;
+          break label702;
         }
-        j = this.mHandleDecodeDataCallback.seekTo(n);
-        if (j < 0)
+        i1 = n;
+        if (n > this.mInformation.getDuration() - 1000L)
         {
-          Logger.e("StreamDecodeDataComponent", axiliary("seekTo failed: " + j));
+          i1 = n;
+          if (this.mInformation.getDuration() > 1000L) {
+            i1 = (int)(this.mInformation.getDuration() - 1000L);
+          }
+        }
+        n = this.mHandleDecodeDataCallback.seekTo(i1);
+        if (n < 0)
+        {
+          Logger.e("StreamDecodeDataComponent", axiliary("seekTo failed: ".concat(String.valueOf(n))));
           this.mStateRunner.transfer(Integer.valueOf(9));
           callExceptionCallback(95, 74);
+          AppMethodBeat.o(104491);
           return;
-          if (this.mCorePlayer.mIsExit) {
-            break label2094;
+          if (!this.mCorePlayer.mIsExit)
+          {
+            Logger.e("StreamDecodeDataComponent", axiliary("不留痕迹的退出 时机：获取Information时 step = 3"));
+            this.mStateRunner.transfer(Integer.valueOf(9));
+            callExceptionCallback(91, 63);
           }
-          Logger.e("StreamDecodeDataComponent", axiliary("不留痕迹的退出 时机：获取Information时 step = 3"));
-          this.mStateRunner.transfer(Integer.valueOf(9));
-          callExceptionCallback(91, 63);
+          AppMethodBeat.o(104491);
           return;
         }
       }
       if (this.mAudioTrack != null)
       {
-        this.mCurrentFrameCount = Math.round(n / 1000.0D * this.mAudioTrack.getSampleRate());
+        this.mCurrentFrameCount = Math.round(i1 / 1000.0D * this.mAudioTrack.getSampleRate());
         if (this.mAudioTrack.getPlayState() != 3) {
-          break label685;
+          break label757;
         }
         this.mAudioTrack.pause();
         this.mAudioTrack.flush();
@@ -357,62 +405,61 @@ public class StreamDecodeDataComponent
       for (;;)
       {
         i = 0;
-        this.mCurPosition = n;
-        this.mTimer.refreshTimeInMs(n);
-        notifySeekCompleteForAudioListeners(n);
-        this.mCallback.playerSeekCompletion(this.mCorePlayer, n);
-        j = i;
-        label610:
+        this.mCurPosition = i1;
+        this.mTimer.refreshTimeInMs(i1);
+        notifySeekCompleteForAudioListeners(i1);
+        this.mCallback.playerSeekCompletion(this.mCorePlayer, i1);
+        i1 = i;
+        label702:
+        i = i1;
         if (!isPaused()) {
-          break label695;
-        }
-        if (this.mAudioTrack.getPlayState() != 2) {
-          this.mAudioTrack.pause();
+          break label767;
         }
         postRunnable(new StreamDecodeDataComponent.2(this), 20);
         Logger.i("StreamDecodeDataComponent", axiliary("paused. waiting..."));
-        this.mSignalControl.doWait();
+        doWaitForPaused();
         Logger.i("StreamDecodeDataComponent", axiliary("woke after pausing"));
-        i = j;
         break;
-        label685:
+        label757:
         this.mAudioTrack.flush();
       }
-      label695:
+      label767:
       if ((!isIdle()) && (!isError()) && (!isStopped()))
       {
         if (isCompleted())
         {
-          i = j / this.mInformation.getChannels() - k;
-          if (i > 0)
+          k = i / this.mInformation.getChannels() - j;
+          if (k > 0)
           {
             m = this.mTrackBufferSizeInByte / getBytesPerSampleInPlay(this.mInformation.getBitDept()) / this.mInformation.getChannels();
-            if (i >= m) {
-              break label881;
+            if (k >= m) {
+              break label952;
             }
           }
           for (;;)
           {
-            i = (int)(i * 1000 / this.mInformation.getSampleRate());
+            k = (int)(k * 1000 / this.mInformation.getSampleRate());
             m = AudioPlayerConfigure.minAudioTrackWaitTimeMs;
-            Logger.i("StreamDecodeDataComponent", axiliary("writeShortCount: " + j + ", playFramePosition: " + k + ", leftTimeInMs: " + i + ", minAudioTrackWaitTimeMs: " + m));
-            if (i <= 0) {
-              break label2094;
+            Logger.i("StreamDecodeDataComponent", axiliary("writeShortCount: " + i + ", playFramePosition: " + j + ", leftTimeInMs: " + k + ", minAudioTrackWaitTimeMs: " + m));
+            if (k <= 0) {
+              break label2230;
             }
             try
             {
-              wait(Math.max(m, i));
+              wait(Math.max(m, k));
               return;
             }
-            finally {}
-            i = 0;
+            finally
+            {
+              AppMethodBeat.o(104491);
+            }
+            k = 0;
             break;
-            label881:
-            i = m;
+            k = m;
           }
         }
-        if ((isPlaying()) && (this.mAudioTrack.getPlayState() != 3)) {
-          this.mAudioTrack.play();
+        if (k == 0) {
+          break label2260;
         }
       }
     }
@@ -420,81 +467,80 @@ public class StreamDecodeDataComponent
     {
       try
       {
-        i = this.mHandleDecodeDataCallback.pullDecodeData(this.mBuffSize, this.mDecodeBufferInfo.byteBuffer);
-        this.mDecodeBufferInfo.bufferSize = i;
-        l2 += this.mDecodeBufferInfo.bufferSize;
-        l3 += this.mDecodeBufferInfo.bufferSize;
+        n = this.mHandleDecodeDataCallback.pullDecodeData(this.mBuffSize, this.mDecodeBufferInfo.byteBuffer);
+        this.mDecodeBufferInfo.bufferSize = n;
+        l2 = this.mDecodeBufferInfo.bufferSize + l2;
+        l1 = this.mDecodeBufferInfo.bufferSize + l1;
         this.mHasDecode = true;
         if (m != 0) {
-          break label2091;
+          break label2257;
         }
-        n = 10;
+        i1 = 10;
         long l6 = getCalcBitMinSize(this.mInformation);
         Logger.i("StreamDecodeDataComponent", axiliary("minSize: " + l6 + ", mDecodeBufferInfo.bufferSize: " + this.mDecodeBufferInfo.bufferSize));
         if (l6 <= 0L) {
-          break label2095;
+          break label2267;
         }
-        l4 = l2;
-        l2 = l3;
-        m = i;
-        l3 = l4;
-        l4 = l3;
-        i = m;
-        l5 = l2;
+        l3 = l2;
+        m = n;
+        l4 = l1;
         Object localObject2;
         if (this.mDecodeBufferInfo.bufferSize < l6)
         {
-          l4 = l3;
-          i = m;
-          l5 = l2;
-          if (n >= 0)
+          l3 = l2;
+          m = n;
+          l4 = l1;
+          if (i1 >= 0)
           {
             this.mDecodeBufferInfo.setTempByteBufferCapacity(this.mBuffSize);
-            m = this.mHandleDecodeDataCallback.pullDecodeData(this.mBuffSize, this.mDecodeBufferInfo.tempByteBuffer);
-            l5 = l3;
+            n = this.mHandleDecodeDataCallback.pullDecodeData(this.mBuffSize, this.mDecodeBufferInfo.tempByteBuffer);
             l4 = l2;
-            if (m > 0)
+            l3 = l1;
+            if (n > 0)
             {
-              this.mDecodeBufferInfo.appendByte(this.mDecodeBufferInfo.tempByteBuffer, 0, m);
+              this.mDecodeBufferInfo.appendByte(this.mDecodeBufferInfo.tempByteBuffer, 0, n);
               localObject2 = this.mDecodeBufferInfo;
-              ((BufferInfo)localObject2).bufferSize += m;
-              l5 = l3 + m;
-              l4 = l2 + m;
+              ((BufferInfo)localObject2).bufferSize += n;
+              l4 = l2 + n;
+              l3 = l1 + n;
             }
-            Logger.d("StreamDecodeDataComponent", axiliary("decode tmpSize: " + m + ", mDecodeBufferInfo.bufferSize: " + this.mDecodeBufferInfo.bufferSize));
-            n -= 1;
-            l3 = l5;
+            Logger.d("StreamDecodeDataComponent", axiliary("decode tmpSize: " + n + ", mDecodeBufferInfo.bufferSize: " + this.mDecodeBufferInfo.bufferSize));
+            i1 -= 1;
             l2 = l4;
+            l1 = l3;
             continue;
           }
         }
         if (this.mInformation.getBitDept() == 0) {
-          this.mInformation.setBitDept(AudioRecognition.calcBitDept(l4, this.mHandleDecodeDataCallback.getCurPositionByDecoder(), this.mInformation.getChannels(), this.mInformation.getSampleRate()));
+          this.mInformation.setBitDept(AudioRecognition.calcBitDept(l3, this.mHandleDecodeDataCallback.getCurPositionByDecoder(), this.mInformation.getChannels(), this.mInformation.getSampleRate()));
         }
-        n = this.mInformation.getBitDept();
-        if ((this.isUseFloatInHiRes) || (n < 3)) {
-          break label2106;
+        i1 = this.mInformation.getBitDept();
+        if ((this.isUseFloatInHiRes) || (i1 < 3)) {
+          break label2282;
         }
-        Logger.w("StreamDecodeDataComponent", "mPlayBitDept is set with 2, old value: " + n);
-        m = 2;
-        Logger.d("StreamDecodeDataComponent", axiliary("mPlayBitDept: " + m));
-        l3 = l5;
-        l2 = l4;
+        Logger.w("StreamDecodeDataComponent", "mPlayBitDept is set with 2, old value: ".concat(String.valueOf(i1)));
+        n = 2;
+        Logger.d("StreamDecodeDataComponent", axiliary("mPlayBitDept: ".concat(String.valueOf(n))));
+        i1 = m;
+        l1 = l4;
+        l2 = l3;
+        m = n;
+        n = i1;
         if (this.mNeedChangePlayThreadPriority)
         {
           this.mNeedChangePlayThreadPriority = false;
           PlayerConfigManager.getInstance().changeDecodeThreadPriorityIfNeed();
         }
-        l4 = System.currentTimeMillis();
-        l5 = l4 - l1;
-        if (l5 <= 1000L) {
-          break label2088;
+        l3 = System.currentTimeMillis();
+        l4 = l3 - l5;
+        if (l4 <= 1000L) {
+          break label2254;
         }
-        PlayerConfigManager.getInstance().updateDecodeSpeed(((float)l3 * 1.0F / (float)l5));
-        l3 = 0L;
-        l1 = l4;
+        PlayerConfigManager.getInstance().updateDecodeSpeed((1.0F * (float)l1 / (float)l4));
+        l1 = 0L;
+        l5 = l3;
         if (this.mDecodeBufferInfo.bufferSize <= 0) {
-          break label2059;
+          break label2210;
         }
         if (!this.mHasDecodeSuccess)
         {
@@ -508,34 +554,38 @@ public class StreamDecodeDataComponent
           convertBytePcmToFloatPcm(this.mReSampleBufferInfo, this.mFloatBufferInfo);
           processAudioListeners(this.mFloatBufferInfo, this.mFloatBufferInfo);
           if ((this.mAudioTrack == null) || (!isPlaying())) {
-            break label2071;
+            break label2223;
           }
-          i = this.mTerminalAudioEffectList.size() - 1;
-          if (i < 0) {
-            break label2083;
+          i1 = this.mTerminalAudioEffectList.size() - 1;
+          if (i1 < 0) {
+            break label2248;
           }
-          localObject2 = (IAudioListener)this.mTerminalAudioEffectList.get(i);
+          localObject2 = (IAudioListener)this.mTerminalAudioEffectList.get(i1);
           if (!((IAudioListener)localObject2).isEnabled()) {
-            break label1817;
+            break label1901;
           }
           if (!this.isUseFloatInHiRes) {
-            break label1798;
+            break label1882;
           }
           ((IAudioListener)localObject2).onPcm(this.mFloatBufferInfo, this.mFloatBufferInfo);
-          i = 1;
-          if (i != 0) {
-            break label2076;
+          i1 = 1;
+          if (i1 != 0) {
+            break label2237;
           }
           if (!this.isUseFloatInHiRes) {
-            break label1902;
+            break label2017;
           }
-          i = this.mAudioTrack.write(this.mFloatBufferInfo.floatBuffer, 0, this.mFloatBufferInfo.bufferSize, 0);
-          if (i >= 0) {
-            break label1824;
+          k = this.mAudioTrack.write(this.mFloatBufferInfo.floatBuffer, 0, this.mFloatBufferInfo.bufferSize, 0);
+          if (k >= 0) {
+            break label1947;
           }
-          Logger.e("StreamDecodeDataComponent", axiliary("mAudioTrack write float failed: " + i + ", expect: " + this.mFloatBufferInfo.bufferSize));
+          if (this.mAudioTrack.getPlayState() != 3) {
+            break label1910;
+          }
+          Logger.e("StreamDecodeDataComponent", axiliary("mAudioTrack write float failed: " + k + ", expect: " + this.mFloatBufferInfo.bufferSize));
           this.mStateRunner.transfer(Integer.valueOf(9));
           callExceptionCallback(92, 102);
+          AppMethodBeat.o(104491);
           return;
         }
       }
@@ -544,6 +594,7 @@ public class StreamDecodeDataComponent
         Logger.e("StreamDecodeDataComponent", localSoNotFindException2);
         this.mStateRunner.transfer(Integer.valueOf(9));
         callExceptionCallback(92, 62);
+        AppMethodBeat.o(104491);
         return;
       }
       catch (Throwable localThrowable)
@@ -551,91 +602,151 @@ public class StreamDecodeDataComponent
         Logger.e("StreamDecodeDataComponent", localThrowable);
         this.mStateRunner.transfer(Integer.valueOf(9));
         callExceptionCallback(92, 67);
+        AppMethodBeat.o(104491);
         return;
       }
       processAudioListeners(this.mReSampleBufferInfo, this.mDTSBufferInfo);
       continue;
-      label1798:
+      label1882:
       localThrowable.onPcm(this.mDTSBufferInfo, this.mDTSBufferInfo);
       continue;
-      label1817:
-      i -= 1;
+      label1901:
+      i1 -= 1;
       continue;
-      label1824:
-      if (i != this.mFloatBufferInfo.bufferSize) {
-        Logger.w("StreamDecodeDataComponent", axiliary("mAudioTrack write float not equal: " + i + ", expect: " + this.mFloatBufferInfo.bufferSize));
-      }
-      i = this.mFloatBufferInfo.bufferSize * 2 + j;
-      label1889:
-      for (j = AudioUtil.getPlaybackHeadPositionSafely(this.mAudioTrack);; j = k)
+      label1910:
+      j = 0;
+      Logger.i("StreamDecodeDataComponent", axiliary("write data to audiotrack failed, but it's OK"));
+      label1924:
+      for (k = AudioUtil.getPlaybackHeadPositionSafely(this.mAudioTrack);; k = i1)
       {
+        i1 = k;
+        i2 = n;
         k = j;
+        j = i1;
         break;
-        label1902:
-        i = this.mAudioTrack.write(this.mDTSBufferInfo.byteBuffer, 0, this.mDTSBufferInfo.bufferSize);
-        if (i < 0)
+        label1947:
+        j = 1;
+        if (k != this.mFloatBufferInfo.bufferSize) {
+          Logger.w("StreamDecodeDataComponent", axiliary("mAudioTrack write float not equal: " + k + ", expect: " + this.mFloatBufferInfo.bufferSize));
+        }
+        i += this.mFloatBufferInfo.bufferSize * 2;
+        break label1924;
+        label2017:
+        k = this.mAudioTrack.write(this.mDTSBufferInfo.byteBuffer, 0, this.mDTSBufferInfo.bufferSize);
+        if (k < 0)
         {
-          Logger.e("StreamDecodeDataComponent", axiliary("mAudioTrack write bytes failed: " + i + ", expect: " + this.mDTSBufferInfo.bufferSize));
-          this.mStateRunner.transfer(Integer.valueOf(9));
-          callExceptionCallback(92, 102);
-          return;
+          if (this.mAudioTrack.getPlayState() == 3)
+          {
+            Logger.e("StreamDecodeDataComponent", axiliary("mAudioTrack write bytes failed: " + k + ", expect: " + this.mDTSBufferInfo.bufferSize));
+            this.mStateRunner.transfer(Integer.valueOf(9));
+            callExceptionCallback(92, 102);
+            AppMethodBeat.o(104491);
+            return;
+          }
+          j = 0;
+          Logger.i("StreamDecodeDataComponent", axiliary("write data to audiotrack failed, but it's OK"));
+          break label1924;
         }
-        if (i != this.mDTSBufferInfo.bufferSize) {
-          Logger.w("StreamDecodeDataComponent", axiliary("mAudioTrack write bytes not equal: " + i + ", expect: " + this.mDTSBufferInfo.bufferSize));
+        j = 1;
+        if (k != this.mDTSBufferInfo.bufferSize) {
+          Logger.w("StreamDecodeDataComponent", axiliary("mAudioTrack write bytes not equal: " + k + ", expect: " + this.mDTSBufferInfo.bufferSize));
         }
-        i = this.mDTSBufferInfo.bufferSize + j;
-        break label1889;
-        this.mHandleDecodeDataCallback.onPullDecodeDataEndOrFailed(i, 92);
-        i = j;
+        i += this.mDTSBufferInfo.bufferSize;
+        break label1924;
+        label2210:
+        this.mHandleDecodeDataCallback.onPullDecodeDataEndOrFailed(n, 92);
+        label2223:
+        i2 = n;
         break;
-        i = j;
+        label2230:
+        AppMethodBeat.o(104491);
+        return;
+        label2237:
+        i1 = j;
+        j = k;
       }
-      label2059:
-      label2071:
-      label2076:
-      label2083:
-      i = 0;
+      label2248:
+      i1 = 0;
       continue;
-      label2088:
+      label2254:
       continue;
-      label2091:
+      label2257:
       continue;
-      label2094:
-      return;
-      label2095:
-      long l4 = l2;
-      long l5 = l3;
+      label2260:
+      n = i2;
       continue;
-      label2106:
+      label2267:
       m = n;
-      if (n > 0) {}
+      long l3 = l2;
+      long l4 = l1;
+      continue;
+      label2282:
+      n = i1;
+      if (i1 > 0) {}
     }
+  }
+  
+  void pause()
+  {
+    AppMethodBeat.i(104490);
+    super.pause();
+    if ((this.mAudioTrack != null) && (this.mAudioTrack.getState() == 1) && (this.mAudioTrack.getPlayState() != 2)) {
+      try
+      {
+        this.mAudioTrack.pause();
+        AppMethodBeat.o(104490);
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException) {}
+    }
+    AppMethodBeat.o(104490);
+  }
+  
+  void play()
+  {
+    AppMethodBeat.i(104489);
+    super.play();
+    if ((this.mAudioTrack != null) && (this.mAudioTrack.getState() == 1) && (this.mAudioTrack.getPlayState() != 3)) {
+      try
+      {
+        this.mAudioTrack.play();
+        AppMethodBeat.o(104489);
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException) {}
+    }
+    AppMethodBeat.o(104489);
   }
   
   void release()
   {
+    AppMethodBeat.i(104499);
     super.release();
     this.mCurrentFrameCount = 0L;
+    AppMethodBeat.o(104499);
   }
   
   void seek(int paramInt)
   {
+    AppMethodBeat.i(104498);
     addSeekRecord(paramInt);
     refreshTimeAndNotify(paramInt);
+    AppMethodBeat.o(104498);
   }
   
   void setAudioStreamType(int paramInt)
   {
-    if (paramInt == this.mAudioStreamType) {}
-    for (;;)
+    AppMethodBeat.i(104496);
+    if (paramInt == this.mAudioStreamType)
     {
+      AppMethodBeat.o(104496);
       return;
-      try
+    }
+    try
+    {
+      this.mAudioStreamType = paramInt;
+      if (this.mAudioTrack != null)
       {
-        this.mAudioStreamType = paramInt;
-        if (this.mAudioTrack == null) {
-          continue;
-        }
         AudioTrack localAudioTrack = new AudioTrack(paramInt, this.mAudioTrack.getSampleRate(), this.mAudioTrack.getChannelConfiguration(), this.mAudioTrack.getAudioFormat(), this.mTrackBufferSizeInByte, 1);
         Logger.i("StreamDecodeDataComponent", axiliary("[setAudioStreamType] new AudioTrack, sampleRate: " + this.mAudioTrack.getSampleRate() + ", channels: " + this.mAudioTrack.getChannelConfiguration() + ", bitDepth: " + this.mAudioTrack.getAudioFormat() + ", buffer: " + this.mTrackBufferSizeInByte));
         int i = this.mAudioTrack.getPlayState();
@@ -644,22 +755,24 @@ public class StreamDecodeDataComponent
         }
         this.mAudioTrack.release();
         this.mAudioTrack = localAudioTrack;
-        if (i != 3) {
-          continue;
+        this.mStateRunner.setAudioTrack(this.mAudioTrack);
+        if (i == 3) {
+          play();
         }
-        play();
-        return;
       }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        Logger.e("StreamDecodeDataComponent", "failed in setting audio stream type to :" + paramInt, localIllegalArgumentException);
-        return;
-      }
-      catch (IllegalStateException localIllegalStateException)
-      {
-        label170:
-        break label170;
-      }
+      AppMethodBeat.o(104496);
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      Logger.e("StreamDecodeDataComponent", "failed in setting audio stream type to :".concat(String.valueOf(paramInt)), localIllegalStateException);
+      AppMethodBeat.o(104496);
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      label199:
+      break label199;
     }
   }
 }

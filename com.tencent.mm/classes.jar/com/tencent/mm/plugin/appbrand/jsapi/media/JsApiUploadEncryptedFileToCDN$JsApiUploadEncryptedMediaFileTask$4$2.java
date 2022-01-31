@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class JsApiUploadEncryptedFileToCDN$JsApiUploadEncryptedMediaFileTask$4$2
   implements DialogInterface.OnClickListener
@@ -11,7 +12,9 @@ final class JsApiUploadEncryptedFileToCDN$JsApiUploadEncryptedMediaFileTask$4$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "user continue upload media file");
+    AppMethodBeat.i(131308);
+    ab.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "user continue upload media file");
+    AppMethodBeat.o(131308);
   }
 }
 

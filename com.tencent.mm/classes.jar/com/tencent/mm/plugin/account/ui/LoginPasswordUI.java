@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -7,12 +8,13 @@ import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.q;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.modelsimple.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.MMFormInputView;
 import com.tencent.mm.ui.base.h;
 
@@ -21,63 +23,78 @@ public class LoginPasswordUI
 {
   private static String TAG = "LoginPasswordUI";
   
-  protected final void XJ()
+  protected final void arq()
   {
-    super.XJ();
+    AppMethodBeat.i(125005);
+    super.arq();
     if ((isFinishing()) || (getWindow() == null))
     {
-      y.e(TAG, "LoginHistoryUI is finishing");
+      ab.e(TAG, "LoginHistoryUI is finishing");
+      AppMethodBeat.o(125005);
       return;
     }
-    this.fmA.fey = this.fmq.getText().toString();
-    if (this.fmA.account.equals(""))
+    this.gDU.gwh = this.gDK.getText().toString();
+    if (this.gDU.account.equals(""))
     {
-      h.h(this, q.j.verify_username_null_tip, q.j.login_err_title);
+      h.h(this, 2131304504, 2131301135);
+      AppMethodBeat.o(125005);
       return;
     }
-    if (this.fmA.fey.equals(""))
+    if (this.gDU.gwh.equals(""))
     {
-      h.h(this, q.j.verify_password_null_tip, q.j.login_err_title);
+      h.h(this, 2131304500, 2131301135);
+      AppMethodBeat.o(125005);
       return;
     }
-    XM();
-    XK();
-    q localq = new q(this.fmA.account, this.fmA.fey, this.fky, 0);
-    g.Dk().a(localq, 0);
-    getString(q.j.app_tip);
-    this.dnm = h.b(this, getString(q.j.login_logining), true, new LoginPasswordUI.6(this, localq));
+    hideVKB();
+    arr();
+    s locals = new s(this.gDU.account, this.gDU.gwh, this.gBP, 0);
+    g.Rc().a(locals, 0);
+    getString(2131297087);
+    this.eeN = h.b(this, getString(2131301149), true, new LoginPasswordUI.6(this, locals));
+    AppMethodBeat.o(125005);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(125004);
     super.onCreate(paramBundle);
-    if (this.fmS) {
+    if (this.gEm)
+    {
+      AppMethodBeat.o(125004);
       return;
     }
-    this.fhr = 2;
-    this.fmO.setVisibility(0);
-    this.fmr.setVisibility(0);
-    this.fmq.setTypeface(Typeface.DEFAULT);
-    this.fmq.setTransformationMethod(new PasswordTransformationMethod());
-    this.fmq.setOnEditorActionListener(new LoginPasswordUI.1(this));
-    this.fmq.setOnKeyListener(new LoginPasswordUI.2(this));
-    this.fmq.addTextChangedListener(new LoginPasswordUI.3(this));
-    if (this.fmq.getText().toString().length() > 0) {
-      this.fmr.setEnabled(true);
+    this.gyZ = 2;
+    this.gEi.setVisibility(0);
+    this.gDL.setVisibility(0);
+    this.gDK.setTypeface(Typeface.DEFAULT);
+    this.gDK.setTransformationMethod(new PasswordTransformationMethod());
+    this.gDK.setOnEditorActionListener(new LoginPasswordUI.1(this));
+    this.gDK.setOnKeyListener(new LoginPasswordUI.2(this));
+    this.gDK.addTextChangedListener(new LoginPasswordUI.3(this));
+    if (this.gDK.getText().toString().length() > 0) {
+      this.gDL.setEnabled(true);
     }
     for (;;)
     {
-      this.fmr.setOnClickListener(new LoginPasswordUI.4(this));
-      this.fky = getIntent().getStringExtra("auth_ticket");
-      if (bk.bl(this.fky)) {
-        break;
+      this.gDL.setOnClickListener(new LoginPasswordUI.4(this));
+      this.gBP = getIntent().getStringExtra("auth_ticket");
+      if (!bo.isNullOrNil(this.gBP))
+      {
+        this.gDJ.setText(bo.nullAsNil(f.arv()));
+        this.gDK.setText(bo.nullAsNil(f.arw()));
+        new ak().postDelayed(new LoginPasswordUI.5(this), 500L);
       }
-      this.fmp.setText(bk.pm(f.XP()));
-      this.fmq.setText(bk.pm(f.XQ()));
-      new ah().postDelayed(new LoginPasswordUI.5(this), 500L);
+      AppMethodBeat.o(125004);
       return;
-      this.fmr.setEnabled(false);
+      this.gDL.setEnabled(false);
     }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

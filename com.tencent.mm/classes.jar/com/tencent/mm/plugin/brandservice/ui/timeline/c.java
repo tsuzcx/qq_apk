@@ -1,17 +1,23 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mm.ui.widget.MMNeatTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
 
 public final class c
 {
-  static final class f
-    extends c.a
+  public static boolean aWM()
   {
-    MMNeatTextView ifS;
-    TextView igf;
-    View igg;
+    AppMethodBeat.i(14143);
+    if ((((Integer)g.RL().Ru().get(ac.a.yKe, Integer.valueOf(0))).intValue() & 0x2) > 0)
+    {
+      AppMethodBeat.o(14143);
+      return true;
+    }
+    AppMethodBeat.o(14143);
+    return false;
   }
 }
 

@@ -1,8 +1,9 @@
 package com.tencent.ttpic.cache;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.device.DeviceInstance;
+import com.tencent.ttpic.device.DeviceUtils;
 import com.tencent.ttpic.model.VideoMaterial;
-import com.tencent.ttpic.util.VideoDeviceUtil;
 import com.tencent.ttpic.util.VideoMaterialUtil;
 import java.util.Collection;
 import java.util.Iterator;
@@ -15,7 +16,8 @@ class VideoMemoryManager$1
   
   public void run()
   {
-    long l1 = VideoDeviceUtil.getRuntimeRemainSize(1);
+    AppMethodBeat.i(81832);
+    long l1 = DeviceUtils.getRuntimeRemainSize(1);
     long l2 = Math.min(Math.max(Math.min(l1 * 0.75D, l1 - 51200L), 0.0D), DeviceInstance.getInstance().getMaxMemorySizeInKB());
     l1 = l2;
     if (VideoMemoryManager.access$000(this.this$0) > 0) {
@@ -23,15 +25,16 @@ class VideoMemoryManager$1
     }
     l2 = VideoMemoryManager.access$100(this.this$0, this.val$material);
     VideoMemoryManager.access$202(this.this$0, l2 / 1024L);
-    VideoMemoryManager.access$302(this.this$0, VideoMaterialUtil.calSampleSize(l1, l2));
-    VideoMemoryManager.access$400();
+    VideoMemoryManager.access$302(this.this$0, VideoMaterialUtil.calSampleSize(l1, l2, VideoMemoryManager.access$400(this.this$0)));
+    VideoMemoryManager.access$500();
     new StringBuilder("[heap size] = ").append(l1 / 1024L).append(" MB, [material size] = ").append(VideoMemoryManager.access$200(this.this$0)).append(" MB, [sampleSize] = ").append(VideoMemoryManager.access$300(this.this$0));
-    VideoMemoryManager.access$500(this.this$0, this.val$material, VideoMemoryManager.access$300(this.this$0));
     VideoMemoryManager.access$600(this.this$0, this.val$material, VideoMemoryManager.access$300(this.this$0));
-    Iterator localIterator = VideoMemoryManager.access$700(this.this$0).values().iterator();
+    VideoMemoryManager.access$700(this.this$0, this.val$material, VideoMemoryManager.access$300(this.this$0));
+    Iterator localIterator = VideoMemoryManager.access$800(this.this$0).values().iterator();
     while (localIterator.hasNext()) {
       ((LoadItemManager)localIterator.next()).prepareImages();
     }
+    AppMethodBeat.o(81832);
   }
 }
 

@@ -10,12 +10,12 @@ final class b$8
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.eX.an();
+    this.fW.aR();
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    b.a(this.eX).Y();
+    b.a(this.fW).aJ();
   }
 }
 

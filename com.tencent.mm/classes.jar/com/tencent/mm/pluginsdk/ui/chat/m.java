@@ -4,16 +4,14 @@ import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
-import com.tencent.mm.plugin.l.a.c;
-import com.tencent.mm.plugin.l.a.e;
-import com.tencent.mm.plugin.l.a.f;
 import com.tencent.mm.pluginsdk.a.d;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.ui.base.HorizontalListView;
 import com.tencent.mm.ui.base.HorizontalListView.a;
@@ -25,94 +23,110 @@ import java.util.Iterator;
 
 public final class m
 {
-  private View QR;
-  private AdapterView.OnItemClickListener ajR = new m.3(this);
-  private int hAH = 3;
-  ArrayList<EmojiInfo> jeL = new ArrayList();
+  private View Qz;
+  private AdapterView.OnItemClickListener amh;
+  private int jsW;
+  ArrayList<EmojiInfo> lnB;
   Context mContext;
-  ah mHandler = new m.1(this);
-  m.a sfs;
-  int sgF;
-  int sgG;
-  o sgH;
-  View sgI;
-  j sgJ;
-  String sgK;
-  public String sgL = "";
-  public boolean sgM = true;
-  private HorizontalListView sgN;
-  m.b sgO;
-  private boolean sgP = true;
-  private Comparator sgQ = new m.2(this);
-  private HorizontalListView.a sgR = new m.4(this);
+  ak mHandler;
+  m.a vWL;
+  int vYY;
+  int vYZ;
+  o vZa;
+  View vZb;
+  j vZc;
+  String vZd;
+  public String vZe;
+  public boolean vZf;
+  private HorizontalListView vZg;
+  m.b vZh;
+  private boolean vZi;
+  private Comparator vZj;
+  private HorizontalListView.a vZk;
   
   public m(Context paramContext)
   {
+    AppMethodBeat.i(62465);
+    this.vZe = "";
+    this.vZf = true;
+    this.lnB = new ArrayList();
+    this.jsW = 3;
+    this.vZi = true;
+    this.mHandler = new m.1(this);
+    this.vZj = new Comparator() {};
+    this.amh = new m.3(this);
+    this.vZk = new m.4(this);
     this.mContext = paramContext;
-    this.QR = View.inflate(this.mContext, a.f.chatting_footer_suggest_emoticon_bubble, null);
-    this.sgN = ((HorizontalListView)this.QR.findViewById(a.e.suggest_list_view));
-    this.sgO = new m.b(this);
-    this.sgN.setAdapter(this.sgO);
-    this.sgN.setOnItemClickListener(this.ajR);
-    this.sgN.setOnItemSelectedListener(new m.5(this));
-    this.sgN.setDispatchTouchListener(this.sgR);
-    this.sgF = a.aa(this.mContext, a.c.emoji_suggest_image_size);
-    this.sgG = a.aa(this.mContext, a.c.MiddlePadding);
-    this.sgH = new o(this.QR, this.sgF + this.sgG * 2, this.sgF + this.sgG * 2, true);
-    this.sgH.setBackgroundDrawable(new ColorDrawable(0));
-    this.sgH.setOutsideTouchable(true);
-    this.sgH.setFocusable(false);
+    this.Qz = View.inflate(this.mContext, 2130969041, null);
+    this.vZg = ((HorizontalListView)this.Qz.findViewById(2131822504));
+    this.vZh = new m.b(this);
+    this.vZg.setAdapter(this.vZh);
+    this.vZg.setOnItemClickListener(this.amh);
+    this.vZg.setOnItemSelectedListener(new m.5(this));
+    this.vZg.setDispatchTouchListener(this.vZk);
+    this.vYY = a.ao(this.mContext, 2131428394);
+    this.vYZ = a.ao(this.mContext, 2131427792);
+    this.vZa = new o(this.Qz, this.vYY + this.vYZ * 2, this.vYY + this.vYZ * 2, true);
+    this.vZa.setBackgroundDrawable(new ColorDrawable(0));
+    this.vZa.setOutsideTouchable(true);
+    this.vZa.setFocusable(false);
+    this.vZa.setAnimationStyle(2131493513);
+    AppMethodBeat.o(62465);
   }
   
-  public final boolean cd(String paramString)
+  public final boolean jdMethod_do(String paramString)
   {
+    AppMethodBeat.i(62468);
     for (;;)
     {
       Object localObject;
       int i;
       try
       {
-        if (!bk.bl(paramString))
+        if (!bo.isNullOrNil(paramString))
         {
-          localObject = ((PluginEmoji)g.t(PluginEmoji.class)).getEmojiMgr().Ay(paramString);
+          localObject = ((PluginEmoji)g.G(PluginEmoji.class)).getEmojiMgr().Kz(paramString);
           if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
           {
-            this.sgK = paramString.replaceAll(",", "");
-            if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
-              break label342;
+            this.vZd = paramString.replaceAll(",", "");
+            if ((localObject == null) || (((ArrayList)localObject).isEmpty()))
+            {
+              AppMethodBeat.o(62468);
+              return false;
             }
             paramString = new ArrayList();
-            this.jeL.clear();
+            this.lnB.clear();
             int j = ((ArrayList)localObject).size();
             i = 0;
             if ((i < j) && (i < 100))
             {
-              localEmojiInfo = ((PluginEmoji)g.t(PluginEmoji.class)).getEmojiMgr().As((String)((ArrayList)localObject).get(i));
+              localEmojiInfo = ((PluginEmoji)g.G(PluginEmoji.class)).getEmojiMgr().Kt((String)((ArrayList)localObject).get(i));
               if (localEmojiInfo == null) {
-                break label344;
+                break label367;
               }
               paramString.add(localEmojiInfo);
-              break label344;
+              break label367;
             }
             if (paramString.isEmpty())
             {
-              y.i("MicroMsg.emoji.SuggestEmoticonBubble", "sorEmojiList return. empty list.");
+              ab.i("MicroMsg.emoji.SuggestEmoticonBubble", "sorEmojiList return. empty list.");
+              AppMethodBeat.o(62468);
               return false;
             }
-            if (!this.sgP) {
-              break label267;
+            if (!this.vZi) {
+              break label286;
             }
-            localObject = (EmojiInfo)Collections.max(paramString, this.sgQ);
-            this.jeL.add(localObject);
+            localObject = (EmojiInfo)Collections.max(paramString, this.vZj);
+            this.lnB.add(localObject);
             paramString = paramString.iterator();
             if (!paramString.hasNext()) {
-              break label317;
+              break label336;
             }
             EmojiInfo localEmojiInfo = (EmojiInfo)paramString.next();
-            if ((localEmojiInfo.bX(localObject)) || (this.jeL.contains(localEmojiInfo))) {
+            if ((localEmojiInfo.cC(localObject)) || (this.lnB.contains(localEmojiInfo))) {
               continue;
             }
-            this.jeL.add(localEmojiInfo);
+            this.lnB.add(localEmojiInfo);
             continue;
           }
         }
@@ -120,52 +134,45 @@ public final class m
       }
       catch (Exception paramString)
       {
-        y.e("MicroMsg.emoji.SuggestEmoticonBubble", bk.j(paramString));
-        this.sgK = "";
+        ab.e("MicroMsg.emoji.SuggestEmoticonBubble", bo.l(paramString));
+        this.vZd = "";
+        AppMethodBeat.o(62468);
         return false;
       }
-      label267:
+      label286:
       while (paramString.hasNext())
       {
         localObject = (EmojiInfo)paramString.next();
-        if (!this.jeL.contains(localObject)) {
-          this.jeL.add(localObject);
+        if (!this.lnB.contains(localObject)) {
+          this.lnB.add(localObject);
         }
       }
-      label317:
-      boolean bool;
-      if (this.jeL != null) {
-        bool = this.jeL.isEmpty();
+      label336:
+      if ((this.lnB == null) || (this.lnB.isEmpty()))
+      {
+        AppMethodBeat.o(62468);
+        return false;
       }
-      return !bool;
-      label342:
-      return false;
-      label344:
+      AppMethodBeat.o(62468);
+      return true;
+      label367:
       i += 1;
-    }
-  }
-  
-  public final void cnO()
-  {
-    if (this.sgI != null)
-    {
-      int[] arrayOfInt = new int[2];
-      this.sgI.getLocationInWindow(arrayOfInt);
-      int i = arrayOfInt[0];
-      int j = (this.sgH.getWidth() - this.sgI.getWidth()) / 2;
-      int k = arrayOfInt[1];
-      int m = this.sgH.getHeight();
-      this.sgH.showAtLocation(this.sgI, 0, i - j, k - m);
     }
   }
   
   public final void hide()
   {
-    if (this.sgH == null) {}
-    while (!this.sgH.isShowing()) {
+    AppMethodBeat.i(62467);
+    if (this.vZa == null)
+    {
+      AppMethodBeat.o(62467);
       return;
     }
-    this.sgH.dismiss();
+    if (this.vZa.isShowing()) {
+      this.vZa.dismiss();
+    }
+    this.mHandler.removeCallbacksAndMessages(null);
+    AppMethodBeat.o(62467);
   }
 }
 

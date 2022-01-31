@@ -3,33 +3,33 @@ package com.tencent.mm.protocal;
 public abstract class c$g
 {
   protected String NAME = "noName";
-  protected String soQ = "";
-  protected int soR = -1;
-  protected boolean soS = false;
+  protected String whx = "";
+  protected int why = -1;
+  protected boolean whz = false;
   
   public c$g() {}
   
   public c$g(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
     this.NAME = paramString1;
-    this.soQ = paramString2;
-    this.soR = paramInt;
-    this.soS = paramBoolean;
+    this.whx = paramString2;
+    this.why = paramInt;
+    this.whz = paramBoolean;
   }
   
-  public final String coO()
+  public final String dql()
   {
-    return this.soQ;
+    return this.whx;
   }
   
-  public final int coP()
+  public final int dqm()
   {
-    return this.soR;
+    return this.why;
   }
   
-  public final boolean coQ()
+  public final boolean dqn()
   {
-    return this.soS;
+    return this.whz;
   }
   
   public final String getName()
@@ -39,7 +39,7 @@ public abstract class c$g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.c.g
  * JD-Core Version:    0.7.0.1
  */

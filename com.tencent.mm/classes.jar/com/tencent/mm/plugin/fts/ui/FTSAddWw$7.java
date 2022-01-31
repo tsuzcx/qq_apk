@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.ui;
 
 import android.app.Dialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSAddWw$7
   implements Runnable
@@ -9,11 +10,13 @@ final class FTSAddWw$7
   
   public final void run()
   {
-    if (FTSAddWw.i(this.kAM) != null)
+    AppMethodBeat.i(61759);
+    if (FTSAddWw.j(this.mWE) != null)
     {
-      FTSAddWw.i(this.kAM).dismiss();
-      FTSAddWw.h(this.kAM);
+      FTSAddWw.j(this.mWE).dismiss();
+      FTSAddWw.i(this.mWE);
     }
+    AppMethodBeat.o(61759);
   }
 }
 

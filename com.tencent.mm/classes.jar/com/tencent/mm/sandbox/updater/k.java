@@ -1,43 +1,41 @@
 package com.tencent.mm.sandbox.updater;
 
 import android.content.Intent;
-import com.tencent.mm.cl.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.e;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.b.d;
-import com.tencent.xweb.i;
-import com.tencent.xweb.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.xweb.o;
 import java.util.HashMap;
-import org.xwalk.core.XWalkEnvironment;
 
 public final class k
   implements a
 {
   private k()
   {
-    XWalkEnvironment.setTempUpdateConfigUrl(MMWebView.wkq);
-    t.a(ae.getContext(), com.tencent.mm.cl.a.wDk, com.tencent.mm.cl.a.wDl, null);
-    b.cND();
-    d.a(com.tencent.mm.plugin.cdndownloader.i.a.aDE());
-    XWalkEnvironment.setIsForbidDownloadCode(e.cqq());
+    AppMethodBeat.i(28999);
+    com.tencent.mm.cn.d.iO(ah.getContext());
+    com.tencent.xweb.b.d.a(com.tencent.mm.plugin.cdndownloader.i.a.bgb());
+    AppMethodBeat.o(28999);
   }
   
-  public final boolean aj(Intent paramIntent)
+  public final boolean aI(Intent paramIntent)
   {
-    if (paramIntent == null) {
+    AppMethodBeat.i(28997);
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(28997);
       return false;
     }
     int i = paramIntent.getIntExtra("intent_extra_download_type", 4);
-    y.i("MicroMsg.WCWebDownloadMgr", "WCWebDownloadMgr  downloadType = %d", new Object[] { Integer.valueOf(i) });
+    ab.i("MicroMsg.WCWebDownloadMgr", "WCWebDownloadMgr  downloadType = %d", new Object[] { Integer.valueOf(i) });
     paramIntent = new HashMap();
     if (i == 5) {
       paramIntent.put("UpdaterCheckType", "1");
     }
     for (;;)
     {
-      i.a(ae.getContext(), paramIntent);
+      o.a(ah.getContext(), paramIntent);
+      AppMethodBeat.o(28997);
       return true;
       paramIntent.put("UpdaterCheckType", "0");
     }
@@ -45,14 +43,16 @@ public final class k
   
   public final boolean isBusy()
   {
-    boolean bool = i.isBusy();
-    y.i("MicroMsg.WCWebDownloadMgr", "bIsBusy = " + bool);
+    AppMethodBeat.i(28998);
+    boolean bool = o.isBusy();
+    ab.i("MicroMsg.WCWebDownloadMgr", "bIsBusy = ".concat(String.valueOf(bool)));
+    AppMethodBeat.o(28998);
     return bool;
   }
   
-  public final void mo(boolean paramBoolean) {}
-  
   public final void onDestroy() {}
+  
+  public final void pD(boolean paramBoolean) {}
 }
 
 

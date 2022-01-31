@@ -1,29 +1,38 @@
 package com.tencent.mm.plugin.downloader_app.a;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mm.plugin.downloader_app.b.i;
-import com.tencent.mm.plugin.downloader_app.c.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface a
-  extends com.tencent.mm.kernel.c.a
 {
-  public abstract void a(Context paramContext, Intent paramIntent, i parami);
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(35545);
+      kZY = new a("OK", 0);
+      kZZ = new a("FAIL", 1);
+      laa = new a("WAIT_FOR_WIFI", 2);
+      lab = new a("CANCEL", 3);
+      lac = new a[] { kZY, kZZ, laa, lab };
+      AppMethodBeat.o(35545);
+    }
+    
+    private a() {}
+  }
   
-  public abstract boolean aGb();
+  public static abstract interface b
+  {
+    public abstract void a(a.a parama, long paramLong);
+  }
   
-  public abstract void aGc();
-  
-  public abstract void aGd();
-  
-  public abstract c aGe();
-  
-  public abstract void e(Context paramContext, Bundle paramBundle);
+  public static abstract interface c
+  {
+    public abstract void aBK();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.a.a
  * JD-Core Version:    0.7.0.1
  */

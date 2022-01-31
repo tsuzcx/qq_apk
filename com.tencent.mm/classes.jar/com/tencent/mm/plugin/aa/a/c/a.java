@@ -1,19 +1,23 @@
 package com.tencent.mm.plugin.aa.a.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a
   extends com.tencent.mm.vending.app.a
 {
-  int eWG = 0;
-  String eWH;
-  int eWI;
-  int eWJ;
-  String eWK;
-  boolean eWL = false;
-  int eWM;
+  int goE = 0;
+  String goF;
+  int goG;
+  int goH;
+  String goI;
+  boolean goJ = false;
+  int goK;
   
-  protected final void onCreate()
+  public final void onCreate()
   {
+    AppMethodBeat.i(40676);
     super.onCreate();
+    AppMethodBeat.o(40676);
   }
 }
 

@@ -1,16 +1,15 @@
 package com.tencent.mm.app;
 
-import com.tencent.mm.network.g.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.network.s.a;
 
 final class e$3
-  extends g.a
+  extends s.a
 {
   e$3(e parame) {}
   
-  public final void eq(int paramInt)
+  public final boolean check()
   {
-    ai.d(new e.3.1(this, paramInt));
+    return true;
   }
 }
 

@@ -1,16 +1,29 @@
 package com.tencent.mm.plugin.emojicapture.ui.a;
 
-import a.d.b.h;
-import a.n;
+import a.l;
+import android.support.v7.widget.RecyclerView.v;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mm.plugin.emojicapture.model.a.b;
 
-public final class a$a
-  extends h
-  implements a.d.a.a<n>
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/ui/adapter/StickerAdapter$BaseViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/emojicapture/ui/adapter/StickerAdapter;Landroid/view/View;)V", "icon", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getIcon", "()Landroid/widget/ImageView;", "text", "Landroid/widget/TextView;", "getText", "()Landroid/widget/TextView;", "update", "", "position", "", "info", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiStickerInfo;", "plugin-emojicapture_release"})
+public abstract class a$a
+  extends RecyclerView.v
 {
-  public a$a(a parama)
+  final TextView gJk;
+  final ImageView iTH;
+  
+  public a$a(View paramView)
   {
-    super(0);
+    super(localObject);
+    this.iTH = ((ImageView)localObject.findViewById(2131823556));
+    this.gJk = ((TextView)localObject.findViewById(2131823557));
+    localObject.setOnClickListener((View.OnClickListener)new a.a.1(this, localObject));
   }
+  
+  public abstract void b(b paramb);
 }
 
 

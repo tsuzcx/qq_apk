@@ -1,32 +1,43 @@
 package com.tencent.mm.plugin.setting;
 
-import com.tencent.mm.model.ar;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
+import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class Plugin
   implements com.tencent.mm.pluginsdk.b.c
 {
   public Plugin()
   {
-    y.i("MicroMsg.Plugin.setting", "setting constructor " + System.currentTimeMillis());
+    AppMethodBeat.i(126820);
+    ab.i("MicroMsg.Plugin.setting", "setting constructor " + System.currentTimeMillis());
+    AppMethodBeat.o(126820);
   }
   
-  public final n createApplication()
+  public final o createApplication()
   {
-    y.i("MicroMsg.Plugin.setting", "setting createApplication " + System.currentTimeMillis());
-    return new b();
+    AppMethodBeat.i(126821);
+    ab.i("MicroMsg.Plugin.setting", "setting createApplication " + System.currentTimeMillis());
+    b localb = new b();
+    AppMethodBeat.o(126821);
+    return localb;
   }
   
-  public final ar createSubCore()
+  public final at createSubCore()
   {
-    y.i("MicroMsg.Plugin.setting", "setting createSubCore " + System.currentTimeMillis());
-    return new c();
+    AppMethodBeat.i(126823);
+    ab.i("MicroMsg.Plugin.setting", "setting createSubCore " + System.currentTimeMillis());
+    c localc = new c();
+    AppMethodBeat.o(126823);
+    return localc;
   }
   
   public final com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
   {
-    y.i("MicroMsg.Plugin.setting", "setting getContactWidgetFactory " + System.currentTimeMillis());
+    AppMethodBeat.i(126822);
+    ab.i("MicroMsg.Plugin.setting", "setting getContactWidgetFactory " + System.currentTimeMillis());
+    AppMethodBeat.o(126822);
     return null;
   }
 }

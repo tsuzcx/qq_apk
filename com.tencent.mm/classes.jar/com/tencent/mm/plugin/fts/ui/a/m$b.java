@@ -6,14 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.plugin.fts.ui.n.d;
-import com.tencent.mm.plugin.fts.ui.n.e;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
@@ -28,48 +27,57 @@ public class m$b
   
   public View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(n.e.fts_message_item, paramViewGroup, false);
-    paramViewGroup = (m.a)this.kDG.kDF;
-    paramViewGroup.doU = ((ImageView)paramContext.findViewById(n.d.avatar_iv));
-    paramViewGroup.doV = ((TextView)paramContext.findViewById(n.d.nickname_tv));
-    paramViewGroup.dsy = ((TextView)paramContext.findViewById(n.d.msg_tv));
-    paramViewGroup.dsz = ((TextView)paramContext.findViewById(n.d.time_tv));
-    paramViewGroup.contentView = paramContext.findViewById(n.d.search_item_content_layout);
+    AppMethodBeat.i(62013);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969672, paramViewGroup, false);
+    paramViewGroup = (m.a)this.mZC.mZB;
+    paramViewGroup.egq = ((ImageView)paramContext.findViewById(2131821210));
+    paramViewGroup.egr = ((TextView)paramContext.findViewById(2131823254));
+    paramViewGroup.ekg = ((TextView)paramContext.findViewById(2131822982));
+    paramViewGroup.ekh = ((TextView)paramContext.findViewById(2131821004));
+    paramViewGroup.hrR = paramContext.findViewById(2131821148);
     paramContext.setTag(paramViewGroup);
+    AppMethodBeat.o(62013);
     return paramContext;
   }
   
   public void a(Context paramContext, a.a parama, a parama1, Object... paramVarArgs)
   {
+    AppMethodBeat.i(62014);
     parama1 = (m)parama1;
     parama = (m.a)parama;
-    com.tencent.mm.plugin.fts.ui.m.k(parama.contentView, this.kDG.kxT);
-    com.tencent.mm.pluginsdk.ui.a.b.a(parama.doU, parama1.username);
-    com.tencent.mm.plugin.fts.ui.m.a(parama1.eXL, parama.dsy);
-    com.tencent.mm.plugin.fts.ui.m.a(parama1.kDD, parama.dsz);
-    if (s.hb(parama1.username))
+    com.tencent.mm.plugin.fts.ui.m.p(parama.hrR, this.mZC.mTH);
+    com.tencent.mm.pluginsdk.ui.a.b.c(parama.egq, parama1.username);
+    com.tencent.mm.plugin.fts.ui.m.a(parama1.gpI, parama.ekg);
+    com.tencent.mm.plugin.fts.ui.m.a(parama1.mZz, parama.ekh);
+    if (t.nK(parama1.username))
     {
-      com.tencent.mm.plugin.fts.ui.m.a(((com.tencent.mm.openim.a.b)g.r(com.tencent.mm.openim.a.b.class)).a(paramContext, parama1.eXK), parama.doV);
+      com.tencent.mm.plugin.fts.ui.m.a(((com.tencent.mm.openim.a.b)g.E(com.tencent.mm.openim.a.b.class)).a(paramContext, parama1.gpH), parama.egr);
+      AppMethodBeat.o(62014);
       return;
     }
-    if (ad.aaU(parama1.username))
+    if (ad.arf(parama1.username))
     {
-      g.DQ();
-      paramContext = ((j)g.r(j.class)).Fw().abl(parama1.username);
-      ((com.tencent.mm.openim.a.b)g.r(com.tencent.mm.openim.a.b.class)).a(parama.doV.getContext(), parama.doV, parama1.eXK, paramContext.field_openImAppid, paramContext.field_descWordingId, (int)parama.doV.getTextSize());
+      g.RM();
+      paramContext = ((j)g.E(j.class)).YA().arw(parama1.username);
+      ((com.tencent.mm.openim.a.b)g.E(com.tencent.mm.openim.a.b.class)).a(parama.egr.getContext(), parama.egr, parama1.gpH, paramContext.field_openImAppid, paramContext.field_descWordingId, (int)parama.egr.getTextSize());
+      AppMethodBeat.o(62014);
       return;
     }
-    com.tencent.mm.plugin.fts.ui.m.a(parama1.eXK, parama.doV);
+    com.tencent.mm.plugin.fts.ui.m.a(parama1.gpH, parama.egr);
+    AppMethodBeat.o(62014);
   }
   
   public boolean a(Context paramContext, a paramVarArgs)
   {
-    return ((n)g.t(n.class)).getItemClickHandler(this.kDG.ivk).a(paramContext, paramVarArgs);
+    AppMethodBeat.i(62015);
+    boolean bool = ((n)g.G(n.class)).getItemClickHandler(this.mZC.kwo).a(paramContext, paramVarArgs);
+    AppMethodBeat.o(62015);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.m.b
  * JD-Core Version:    0.7.0.1
  */

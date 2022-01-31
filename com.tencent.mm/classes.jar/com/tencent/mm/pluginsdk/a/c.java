@@ -1,34 +1,34 @@
 package com.tencent.mm.pluginsdk.a;
 
-import com.tencent.mm.pluginsdk.o.c;
+import com.tencent.mm.pluginsdk.p.b;
 
 public final class c
-  implements o.c
+  implements p.b
 {
-  public final int bzN()
+  public final int clg()
   {
     return 0;
   }
   
-  public final void bzO() {}
+  public final void clh() {}
   
-  public final boolean bzP()
+  public final boolean cli()
   {
     return false;
   }
   
-  public final void bzQ() {}
+  public final void clj() {}
   
-  public final void bzR() {}
+  public final void clk() {}
   
-  public final boolean bzS()
+  public final boolean cll()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.a.c
  * JD-Core Version:    0.7.0.1
  */

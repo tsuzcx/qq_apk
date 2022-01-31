@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/bw" android:layout_width="fill_parent" android:layout_height="70.0dip"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/fc" android:id="@id/cj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="20.0dip">
-        <RelativeLayout android:gravity="center|right" android:id="@id/r4" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView android:id="@id/r5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.6999817dip" android:layout_marginRight="5.6999817dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            <TextView android:textSize="@dimen/mr" android:textColor="#ffff8a00" android:ellipsize="end" android:id="@id/r6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_toLeftOf="@id/r5" android:layout_centerVertical="true" />
-        </RelativeLayout>
-    </FrameLayout>
+    <TextView android:textSize="17.0dip" android:textColor="#ff353535" android:id="@id/sr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="160.0dip" android:layout_marginRight="@dimen/l2" android:text="@string/li" />
+    <TextView android:textColor="#ff888888" android:gravity="center" android:id="@id/ss" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="15.0dip" android:layout_marginRight="@dimen/l2" android:text="@string/lh" />
 </LinearLayout>

@@ -1,28 +1,34 @@
 package com.tencent.mm.chatroom.ui;
 
-import com.tencent.mm.model.am.a;
-import com.tencent.mm.model.am.b;
-import com.tencent.mm.model.am.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ao.a;
+import com.tencent.mm.model.ao.b;
+import com.tencent.mm.model.ao.b.a;
 import com.tencent.mm.storage.u;
 
 final class ChatroomInfoUI$32
   implements Runnable
 {
-  ChatroomInfoUI$32(ChatroomInfoUI paramChatroomInfoUI, am.b.a parama) {}
+  ChatroomInfoUI$32(ChatroomInfoUI paramChatroomInfoUI, ao.b.a parama) {}
   
   public final void run()
   {
-    am.a.dVy.a(ChatroomInfoUI.c(this.dod).field_chatroomname, "", this.dot);
+    AppMethodBeat.i(103997);
+    ao.a.flI.a(ChatroomInfoUI.c(this.efA).field_chatroomname, "", this.efQ);
+    AppMethodBeat.o(103997);
   }
   
   public final String toString()
   {
-    return super.toString() + "|getContactCallBack2";
+    AppMethodBeat.i(103998);
+    String str = super.toString() + "|getContactCallBack2";
+    AppMethodBeat.o(103998);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ChatroomInfoUI.32
  * JD-Core Version:    0.7.0.1
  */

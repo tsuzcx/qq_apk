@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/abo" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/aa9" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.mm.plugin.sns.ui.OnlineVideoView android:id="@id/sf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <Button android:id="@id/e1g" android:visibility="gone" style="@style/yf" />
+    <ListView android:id="@id/ef4" android:divider="@drawable/r4" style="@style/mn" />
+    <TextView android:gravity="center_horizontal" android:id="@id/ef5" android:visibility="gone" android:layout_marginTop="@dimen/m7" android:text="@string/e9s" style="@style/l1" />
 </FrameLayout>

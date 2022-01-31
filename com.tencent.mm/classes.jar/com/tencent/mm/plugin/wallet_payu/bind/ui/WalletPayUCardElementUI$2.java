@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.bind.ui;
 
 import android.text.Editable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletPayUCardElementUI$2
   extends WalletPayUCardElementUI.a
@@ -12,7 +13,9 @@ final class WalletPayUCardElementUI$2
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    WalletPayUCardElementUI.a(this.qMZ, WalletPayUCardElementUI.b(this.qMZ), paramEditable);
+    AppMethodBeat.i(48361);
+    WalletPayUCardElementUI.a(this.uCg, WalletPayUCardElementUI.b(this.uCg), paramEditable);
+    AppMethodBeat.o(48361);
   }
 }
 

@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Express
 {
-  public List<List<ExpressItem>> wKJ = new ArrayList();
+  public List<List<ExpressItem>> Bik = new ArrayList();
   
-  public final void ew(List<ExpressItem> paramList)
+  public final void fI(List<ExpressItem> paramList)
   {
-    this.wKJ.add(paramList);
+    this.Bik.add(paramList);
   }
   
   public String toString()
   {
-    return this.wKJ.toString();
+    return this.Bik.toString();
   }
 }
 

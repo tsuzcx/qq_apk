@@ -10,12 +10,12 @@ final class ak$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.oTO.oRa = null;
+    this.rLM.rIM = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ak.3
  * JD-Core Version:    0.7.0.1
  */

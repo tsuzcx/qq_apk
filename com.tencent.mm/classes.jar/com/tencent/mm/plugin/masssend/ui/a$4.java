@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.masssend.ui;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.p;
 import java.util.TimerTask;
 
 final class a$4
   extends TimerTask
 {
-  a$4(p paramp, ah paramah) {}
+  a$4(p paramp, ak paramak) {}
   
   public final void run()
   {
-    if (this.hZQ != null)
+    AppMethodBeat.i(22757);
+    if (this.oBu != null)
     {
-      this.hZQ.dismiss();
-      this.hZR.sendEmptyMessage(0);
+      this.oBu.dismiss();
+      this.mFP.sendEmptyMessage(0);
     }
+    AppMethodBeat.o(22757);
   }
 }
 

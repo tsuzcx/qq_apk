@@ -1,53 +1,37 @@
 package com.tencent.mm.plugin.emojicapture.model.b;
 
-import android.os.HandlerThread;
-import com.tencent.mm.plugin.gif.a;
-import com.tencent.mm.plugin.gif.j;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.storage.emotion.EmojiInfo;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixInfo;", "", "scene", "", "timeEnter", "", "videoPath", "", "outputPath", "retriever", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "videoPlayRate", "isRemoveBg", "", "hasSticker", "outputGif", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(IJLjava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;IZZZLcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getHasSticker", "()Z", "getOutputGif", "getOutputPath", "()Ljava/lang/String;", "getRetriever", "()Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "getScene", "()I", "getTimeEnter", "()J", "getVideoPath", "getVideoPlayRate", "plugin-emojicapture_release"})
 public final class d
 {
-  public static final d.a jkP = new d.a((byte)0);
-  private final String TAG;
-  private final int height;
-  private HandlerThread jkJ;
-  ah jkK;
-  private a jkL;
-  private long jkM;
-  private int jkN;
-  private final String jkO;
-  private final int width;
+  final EmojiInfo evH;
+  final long eyh;
+  final String lup;
+  final a luv;
+  final int luw;
+  final boolean lux;
+  final boolean luy;
+  final boolean luz;
+  final int scene;
+  final String videoPath;
   
-  public d(String paramString, int paramInt1, int paramInt2, long paramLong, final boolean paramBoolean)
+  public d(int paramInt1, long paramLong, String paramString1, String paramString2, a parama, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, EmojiInfo paramEmojiInfo)
   {
-    this.jkO = paramString;
-    this.width = paramInt1;
-    this.height = paramInt2;
-    this.TAG = "MicroMsg.EmojiMixGifEncoder";
-    paramString = e.aap("EmojiMixer_gifEncode");
-    a.d.b.g.j(paramString, "ThreadPool.newFreeHandle…d(\"EmojiMixer_gifEncode\")");
-    this.jkJ = paramString;
-    this.jkN = 30;
-    this.jkJ.start();
-    this.jkK = new ah(this.jkJ.getLooper());
-    if (paramBoolean) {}
-    for (paramString = (a)new com.tencent.mm.plugin.gif.g(this.jkO, this.width, this.height, paramLong);; paramString = (a)new j(this.jkO, this.width, this.height, paramLong))
-    {
-      this.jkL = paramString;
-      this.jkK.post((Runnable)new Runnable()
-      {
-        public final void run()
-        {
-          boolean bool = d.a(this.jkQ).init();
-          y.i(d.b(this.jkQ), "init encoder, outputGif: " + paramBoolean + " ret: " + bool);
-          d.a(this.jkQ, bk.UZ());
-        }
-      });
-      return;
-    }
+    AppMethodBeat.i(2670);
+    this.scene = paramInt1;
+    this.eyh = paramLong;
+    this.videoPath = paramString1;
+    this.lup = paramString2;
+    this.luv = parama;
+    this.luw = paramInt2;
+    this.lux = paramBoolean1;
+    this.luy = paramBoolean2;
+    this.luz = paramBoolean3;
+    this.evH = paramEmojiInfo;
+    AppMethodBeat.o(2670);
   }
 }
 

@@ -10,33 +10,54 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.MMTextView;
 import java.util.ArrayList;
 
 public final class b
   extends BaseAdapter
 {
-  String fdC;
-  ArrayList<String> lBP = new ArrayList();
-  SparseArray<SpannableString> lBQ = new SparseArray();
+  String gvn;
   private Context mContext;
+  ArrayList<String> nZb;
+  SparseArray<SpannableString> nZc;
   
   public b(Context paramContext)
   {
+    AppMethodBeat.i(22653);
+    this.nZb = new ArrayList();
+    this.nZc = new SparseArray();
     this.mContext = paramContext;
+    AppMethodBeat.o(22653);
   }
   
   public final int getCount()
   {
-    if (this.lBP == null) {
+    AppMethodBeat.i(22654);
+    if (this.nZb == null)
+    {
+      AppMethodBeat.o(22654);
       return 0;
     }
-    return this.lBP.size();
+    int i = this.nZb.size();
+    AppMethodBeat.o(22654);
+    return i;
+  }
+  
+  public final String getItem(int paramInt)
+  {
+    AppMethodBeat.i(22655);
+    if ((this.nZb == null) || (paramInt >= getCount()))
+    {
+      AppMethodBeat.o(22655);
+      return null;
+    }
+    String str = (String)this.nZb.get(paramInt);
+    AppMethodBeat.o(22655);
+    return str;
   }
   
   public final long getItemId(int paramInt)
@@ -46,52 +67,46 @@ public final class b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(22656);
     MMTextView localMMTextView;
     String str;
     int i;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(R.i.contact_label_list_item, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.mContext).inflate(2130969258, paramViewGroup, false);
       paramViewGroup = new c(paramView);
       paramView.setTag(paramViewGroup);
-      localMMTextView = paramViewGroup.lCq;
-      str = bk.aM(ke(paramInt), "");
-      i = (int)paramViewGroup.lCq.getTextSize();
+      localMMTextView = paramViewGroup.nZC;
+      str = bo.bf(getItem(paramInt), "");
+      i = (int)paramViewGroup.nZC.getTextSize();
       paramInt = str.hashCode();
-      paramViewGroup = (SpannableString)this.lBQ.get(paramInt);
+      paramViewGroup = (SpannableString)this.nZc.get(paramInt);
       if (paramViewGroup == null) {
-        break label110;
+        break label121;
       }
     }
     for (;;)
     {
       localMMTextView.setText(paramViewGroup);
+      AppMethodBeat.o(22656);
       return paramView;
       paramViewGroup = (c)paramView.getTag();
       break;
-      label110:
+      label121:
       paramViewGroup = new SpannableString(j.b(this.mContext, str, i));
-      i = str.indexOf(this.fdC);
+      i = str.indexOf(this.gvn);
       if (i == -1)
       {
-        y.w("MicroMsg.Label.ContactLabelSearchAdapter", "hight light %s error.", new Object[] { str });
+        ab.w("MicroMsg.Label.ContactLabelSearchAdapter", "hight light %s error.", new Object[] { str });
       }
       else
       {
-        int j = this.fdC.length() + i;
-        paramViewGroup.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(R.e.wechat_green)), i, j, 33);
+        int j = this.gvn.length() + i;
+        paramViewGroup.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(2131690701)), i, j, 33);
         paramViewGroup.setSpan(new StyleSpan(1), i, j, 33);
-        this.lBQ.put(paramInt, paramViewGroup);
+        this.nZc.put(paramInt, paramViewGroup);
       }
     }
-  }
-  
-  public final String ke(int paramInt)
-  {
-    if ((this.lBP == null) || (paramInt >= getCount())) {
-      return null;
-    }
-    return (String)this.lBP.get(paramInt);
   }
 }
 

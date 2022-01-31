@@ -1,22 +1,25 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.manager;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.h;
 import com.tencent.mm.plugin.wenote.model.nativenote.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 
-public final class c$2
+final class c$2
   implements Runnable
 {
-  public c$2(c paramc, ArrayList paramArrayList) {}
+  c$2(c paramc, ArrayList paramArrayList) {}
   
   public final void run()
   {
-    ArrayList localArrayList = h.a(c.d(this.rHC), this.rHD, false);
-    y.i("MicroMsg.Note.NoteDataManager", "updateDataByHtml, start mNotifyListener.setUpNoteData(dataItems, true)");
-    if (c.e(this.rHC) != null) {
-      c.e(this.rHC).d(localArrayList, true);
+    AppMethodBeat.i(26715);
+    ArrayList localArrayList = h.a(c.d(this.vyj), this.vyk, false);
+    ab.i("MicroMsg.Note.NoteDataManager", "updateDataByHtml, start mNotifyListener.setUpNoteData(dataItems, true)");
+    if (c.e(this.vyj) != null) {
+      c.e(this.vyj).c(localArrayList, true);
     }
+    AppMethodBeat.o(26715);
   }
 }
 

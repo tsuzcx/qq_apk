@@ -1,21 +1,26 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.spans;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a
 {
-  public final q rKo;
-  public int rKp;
-  public int rKq;
+  public final q vAS;
+  public int vAT;
+  public int vAU;
   
   public a(q paramq, int paramInt1, int paramInt2)
   {
-    this.rKo = paramq;
-    this.rKp = paramInt1;
-    this.rKq = paramInt2;
+    this.vAS = paramq;
+    this.vAT = paramInt1;
+    this.vAU = paramInt2;
   }
   
   public final String toString()
   {
-    return this.rKo.name() + " - " + this.rKp + "/" + this.rKq;
+    AppMethodBeat.i(26930);
+    String str = this.vAS.name() + " - " + this.vAT + "/" + this.vAU;
+    AppMethodBeat.o(26930);
+    return str;
   }
 }
 

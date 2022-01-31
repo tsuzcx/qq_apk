@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$kw
+final class c$kw
   extends c.g
 {
-  public c$kw()
+  c$kw()
   {
-    super("WNNativeCallbackOnCaretChange", "WNNativeCallbackOnCaretChange", 10006, false);
+    super("updateTimelineShareData", "updateTimelineShareData", 327, false);
   }
 }
 

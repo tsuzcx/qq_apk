@@ -1,26 +1,23 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.mm.R.f;
-import com.tencent.mm.compatible.util.j;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ImagePreviewUI$21
   implements Runnable
 {
-  ImagePreviewUI$21(ImagePreviewUI paramImagePreviewUI) {}
+  ImagePreviewUI$21(ImagePreviewUI paramImagePreviewUI, int paramInt) {}
   
   public final void run()
   {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)ImagePreviewUI.a(this.kKb).getLayoutParams();
-    localMarginLayoutParams.topMargin = ((int)(j.V(this.kKb) + this.kKb.getResources().getDimension(R.f.DefaultActionbarHeightPort)));
-    ImagePreviewUI.a(this.kKb).setLayoutParams(localMarginLayoutParams);
+    AppMethodBeat.i(150895);
+    ImagePreviewUI.p(this.ngC).smoothScrollToPosition(this.ngJ);
+    AppMethodBeat.o(150895);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.ImagePreviewUI.21
  * JD-Core Version:    0.7.0.1
  */

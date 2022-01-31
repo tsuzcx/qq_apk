@@ -1,69 +1,81 @@
 package com.tencent.mm.wallet_core.c;
 
-import android.os.Bundle;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.protocal.protobuf.bno;
+import com.tencent.mm.protocal.protobuf.bnp;
+import com.tencent.mm.sdk.platformtools.ab;
 
-public abstract class s
-  extends m
-  implements k
+public final class s
+  extends u
 {
-  public Bundle BX;
-  public String dIA = "";
-  public long fKz = 0L;
-  public int fzn = 0;
-  private int jsS = 0;
-  private long qLq;
+  private f callback;
+  public String liu;
+  public final b rr;
+  public String uAa;
+  public String uAb;
   
-  public final int a(e parame, q paramq, k paramk)
+  public s(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4)
   {
-    this.qLq = System.currentTimeMillis();
-    return super.a(parame, paramq, paramk);
+    AppMethodBeat.i(49077);
+    Object localObject = new b.a();
+    ((b.a)localObject).fsX = new bno();
+    ((b.a)localObject).fsY = new bnp();
+    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/preparepurchase";
+    ((b.a)localObject).funcId = 422;
+    ((b.a)localObject).reqCmdId = 214;
+    ((b.a)localObject).respCmdId = 1000000214;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (bno)this.rr.fsV.fta;
+    this.liu = paramString1;
+    ((bno)localObject).ProductID = paramString1;
+    this.uAb = paramString2;
+    ((bno)localObject).xBK = paramString2;
+    this.uAa = paramString3;
+    ((bno)localObject).xBL = paramString3;
+    ((bno)localObject).pqf = paramInt2;
+    ((bno)localObject).xBM = paramInt1;
+    ((bno)localObject).nuz = paramString4;
+    ab.d("MicroMsg.NetScenePreparePurchase", "productId:" + paramString1 + ",price:" + paramString2 + ",currencyType:" + paramString3 + ",payType:" + paramInt2);
+    AppMethodBeat.o(49077);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final int doScene(e parame, f paramf)
   {
-    long l1 = System.currentTimeMillis() - this.qLq;
-    Object localObject = "";
-    paramArrayOfByte = "";
-    this.jsS = bfM();
-    long l2 = System.currentTimeMillis();
-    if (this.BX != null)
+    AppMethodBeat.i(49079);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(49079);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 422;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  {
+    AppMethodBeat.i(142657);
+    ab.e("MicroMsg.NetScenePreparePurchase", "ErrType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg:" + paramString);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      String str1 = this.BX.getString("key_TransId");
-      String str2 = this.BX.getString("key_reqKey");
-      if (this.fKz == 0L) {
-        this.fKz = this.BX.getLong("key_SessionId", 0L);
-      }
-      paramArrayOfByte = str2;
-      localObject = str1;
-      if (this.fzn == 0)
-      {
-        this.fzn = this.BX.getInt("key_scene");
-        localObject = str1;
-        paramArrayOfByte = str2;
-      }
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(142657);
+      return;
     }
-    h.nFQ.f(11170, new Object[] { Integer.valueOf(getType()), Integer.valueOf(this.jsS), Long.valueOf(l1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(aq.getNetType(ae.getContext())), this.dIA, localObject, paramArrayOfByte, Long.valueOf(this.fKz), Long.valueOf(l2) });
-    w.a(getType(), bfM(), paramInt2, paramInt3, l1, this.fzn, this.dIA);
-    e(paramInt2, paramInt3, paramString, paramq);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(142657);
   }
-  
-  public int bfM()
-  {
-    return -1;
-  }
-  
-  public abstract void e(int paramInt1, int paramInt2, String paramString, q paramq);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.s
  * JD-Core Version:    0.7.0.1
  */

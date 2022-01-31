@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
 import android.support.v7.widget.RecyclerView.m;
 import android.util.AttributeSet;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.chatroom.a.b;
 import com.tencent.mm.chatroom.a.b.a;
 import java.util.Collection;
@@ -16,16 +17,16 @@ import java.util.Collection;
 public class DayPickerView
   extends RecyclerView
 {
-  private TypedArray dmw;
-  private com.tencent.mm.chatroom.a.a dmx;
-  protected b doD;
-  protected int doE = 0;
-  protected long doF;
-  private RecyclerView.m doG;
-  private Collection<com.tencent.mm.chatroom.c.a> doH;
-  private long doI = -1L;
-  protected int le = 0;
+  private TypedArray edZ;
+  private com.tencent.mm.chatroom.a.a eea;
+  protected b efZ;
+  protected int ega;
+  protected long egb;
+  private RecyclerView.m egc;
+  private Collection<com.tencent.mm.chatroom.c.a> egd;
+  private long ege;
   protected Context mContext;
+  protected int mb;
   
   public DayPickerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,65 +36,63 @@ public class DayPickerView
   public DayPickerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(104080);
+    this.ega = 0;
+    this.mb = 0;
+    this.ege = -1L;
     if (!isInEditMode())
     {
-      this.dmw = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.DayPickerView);
+      this.edZ = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.DayPickerView);
       setLayoutParams(new RecyclerView.LayoutParams(-1, -1));
       setLayoutManager(new LinearLayoutManager());
       this.mContext = paramContext;
       setVerticalScrollBarEnabled(false);
-      setOnScrollListener(this.doG);
+      setOnScrollListener(this.egc);
       setFadingEdgeLength(0);
-      this.doG = new RecyclerView.m()
-      {
-        public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
-        {
-          super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-          if ((c)paramAnonymousRecyclerView.getChildAt(0) == null) {
-            return;
-          }
-          DayPickerView.this.doF = paramAnonymousInt2;
-          DayPickerView.this.le = DayPickerView.this.doE;
-        }
-      };
+      this.egc = new DayPickerView.1(this);
     }
+    AppMethodBeat.o(104080);
   }
   
   public final void a(com.tencent.mm.chatroom.a.a parama, Collection<com.tencent.mm.chatroom.c.a> paramCollection)
   {
-    this.doH = paramCollection;
-    this.dmx = parama;
+    AppMethodBeat.i(104081);
+    this.egd = paramCollection;
+    this.eea = parama;
     setUpAdapter(paramCollection);
-    setAdapter(this.doD);
-    bE(this.doD.getItemCount() - 1);
-    this.doD.agL.notifyChanged();
+    setAdapter(this.efZ);
+    bJ(this.efZ.getItemCount() - 1);
+    this.efZ.ajb.notifyChanged();
+    AppMethodBeat.o(104081);
   }
   
   protected com.tencent.mm.chatroom.a.a getController()
   {
-    return this.dmx;
+    return this.eea;
   }
   
   public b.a<com.tencent.mm.chatroom.c.a> getSelectedDays()
   {
-    return this.doD.dmy;
+    return this.efZ.eeb;
   }
   
   protected TypedArray getTypedArray()
   {
-    return this.dmw;
+    return this.edZ;
   }
   
   public void setBeginDate(long paramLong)
   {
-    this.doI = paramLong;
+    this.ege = paramLong;
   }
   
   protected void setUpAdapter(Collection<com.tencent.mm.chatroom.c.a> paramCollection)
   {
-    if (this.doD == null) {
-      this.doD = new b(getContext(), this.dmx, this.dmw, this.doI, paramCollection);
+    AppMethodBeat.i(104082);
+    if (this.efZ == null) {
+      this.efZ = new b(getContext(), this.eea, this.edZ, this.ege, paramCollection);
     }
+    AppMethodBeat.o(104082);
   }
 }
 

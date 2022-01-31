@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.c;
 import com.tencent.mm.modelappbrand.t;
 
@@ -11,10 +12,12 @@ final class l$a$1
   
   public final void b(boolean paramBoolean, String paramString, Bundle paramBundle)
   {
-    this.fVn.putBoolean("ret", paramBoolean);
-    this.fVn.putString("reason", paramString);
-    this.fVn.putBundle("data", paramBundle);
-    this.dGE.U(this.fVn);
+    AppMethodBeat.i(10854);
+    this.hoP.putBoolean("ret", paramBoolean);
+    this.hoP.putString("reason", paramString);
+    this.hoP.putBundle("data", paramBundle);
+    this.eEg.ad(this.hoP);
+    AppMethodBeat.o(10854);
   }
 }
 

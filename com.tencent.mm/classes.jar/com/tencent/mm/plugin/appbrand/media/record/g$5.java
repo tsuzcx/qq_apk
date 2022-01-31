@@ -1,32 +1,50 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
 import android.os.Looper;
-import com.tencent.mm.h.a.lq;
-import com.tencent.mm.plugin.appbrand.media.record.a.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.mg;
 import com.tencent.mm.plugin.appbrand.media.record.record_imp.RecordParam;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class g$5
-  implements c.a
+  implements e
 {
   g$5(g paramg) {}
   
-  public final void c(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
+  public final void aHO()
   {
-    Object localObject = this.gNX;
-    y.i("MicroMsg.Record.AudioRecordMgr", "onFrameRecorded  buffSize:%d, isLastFrameL:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    lq locallq = new lq();
-    locallq.bUI.state = "frameRecorded";
-    if (((g)localObject).gNJ != null) {
-      locallq.bUI.appId = ((g)localObject).gNJ.appId;
+    AppMethodBeat.i(141592);
+    if (!g.l(this.ipI))
+    {
+      this.ipI.aHY();
+      AppMethodBeat.o(141592);
+      return;
     }
-    locallq.bUI.action = 5;
-    localObject = new byte[paramInt];
-    System.arraycopy(paramArrayOfByte, 0, localObject, 0, paramInt);
-    locallq.bUI.frameBuffer = ((byte[])localObject);
-    locallq.bUI.bUJ = paramBoolean;
-    a.udP.a(locallq, Looper.getMainLooper());
+    ab.i("MicroMsg.Record.AudioRecordMgr", "is interrupting");
+    AppMethodBeat.o(141592);
+  }
+  
+  public final void aHP()
+  {
+    AppMethodBeat.i(141593);
+    if (g.l(this.ipI))
+    {
+      g localg = this.ipI;
+      localg.ipE = false;
+      ab.i("MicroMsg.Record.AudioRecordMgr", "onInterruptionEnd");
+      mg localmg = new mg();
+      localmg.cCp.action = 7;
+      localmg.cCp.state = "interruptionEnd";
+      if (localg.ipw != null) {
+        localmg.cCp.appId = localg.ipw.appId;
+      }
+      a.ymk.a(localmg, Looper.getMainLooper());
+      AppMethodBeat.o(141593);
+      return;
+    }
+    ab.i("MicroMsg.Record.AudioRecordMgr", "not call onInterruptionEnd");
+    AppMethodBeat.o(141593);
   }
 }
 

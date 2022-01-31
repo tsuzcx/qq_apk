@@ -1,29 +1,12 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.h.a.am;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.ui.widget.a.d.a;
+import android.util.Pair;
+import com.tencent.mm.vending.g.d.b;
 
 final class s$4
-  implements d.a
+  implements d.b<Pair<String, String>>
 {
   s$4(s params) {}
-  
-  public final void onDismiss()
-  {
-    Object localObject = new am();
-    ((am)localObject).bGF.filePath = this.oPE.oOL;
-    a.udP.m((b)localObject);
-    this.oPE.oPy = null;
-    this.oPE.oOL = null;
-    this.oPE.oje = null;
-    this.oPE.BL = null;
-    this.oPE.oOO = null;
-    localObject = this.oPE;
-    this.oPE.bIk = 0;
-    ((s)localObject).bIj = 0;
-  }
 }
 
 

@@ -1,11 +1,16 @@
 package com.tencent.mm.plugin.api;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class b$a
   implements com.tencent.mm.plugin.mmsight.api.b.a
 {
-  public final com.tencent.mm.plugin.mmsight.api.b YV()
+  public final com.tencent.mm.plugin.mmsight.api.b asF()
   {
-    return new b();
+    AppMethodBeat.i(76304);
+    b localb = new b();
+    AppMethodBeat.o(76304);
+    return localb;
   }
 }
 

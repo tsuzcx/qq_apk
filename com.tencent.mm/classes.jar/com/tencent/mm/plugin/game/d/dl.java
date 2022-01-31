@@ -1,84 +1,97 @@
 package com.tencent.mm.plugin.game.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
+
 public final class dl
   extends com.tencent.mm.bv.a
 {
-  public String bGw;
-  public String kRN;
-  public String kRO;
-  public String kWo;
+  public String num;
+  public String nun;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(111679);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.bGw != null) {
-        paramVarArgs.d(1, this.bGw);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.num == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: FromUserName");
+        AppMethodBeat.o(111679);
+        throw paramVarArgs;
       }
-      if (this.kRN != null) {
-        paramVarArgs.d(2, this.kRN);
+      if (this.nun == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: TimeDesc");
+        AppMethodBeat.o(111679);
+        throw paramVarArgs;
       }
-      if (this.kWo != null) {
-        paramVarArgs.d(3, this.kWo);
+      if (this.num != null) {
+        paramVarArgs.e(1, this.num);
       }
-      if (this.kRO != null) {
-        paramVarArgs.d(4, this.kRO);
+      if (this.nun != null) {
+        paramVarArgs.e(2, this.nun);
       }
+      AppMethodBeat.o(111679);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.bGw == null) {
-        break label344;
+      if (this.num == null) {
+        break label370;
       }
     }
-    label344:
-    for (int i = d.a.a.b.b.a.e(1, this.bGw) + 0;; i = 0)
+    label370:
+    for (paramInt = e.a.a.b.b.a.f(1, this.num) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.kRN != null) {
-        paramInt = i + d.a.a.b.b.a.e(2, this.kRN);
+      int i = paramInt;
+      if (this.nun != null) {
+        i = paramInt + e.a.a.b.b.a.f(2, this.nun);
       }
-      i = paramInt;
-      if (this.kWo != null) {
-        i = paramInt + d.a.a.b.b.a.e(3, this.kWo);
-      }
-      paramInt = i;
-      if (this.kRO != null) {
-        paramInt = i + d.a.a.b.b.a.e(4, this.kRO);
-      }
-      return paramInt;
+      AppMethodBeat.o(111679);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        if (this.num == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: FromUserName");
+          AppMethodBeat.o(111679);
+          throw paramVarArgs;
+        }
+        if (this.nun == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: TimeDesc");
+          AppMethodBeat.o(111679);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(111679);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         dl localdl = (dl)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(111679);
           return -1;
         case 1: 
-          localdl.bGw = locala.xpH.readString();
-          return 0;
-        case 2: 
-          localdl.kRN = locala.xpH.readString();
-          return 0;
-        case 3: 
-          localdl.kWo = locala.xpH.readString();
+          localdl.num = locala.CLY.readString();
+          AppMethodBeat.o(111679);
           return 0;
         }
-        localdl.kRO = locala.xpH.readString();
+        localdl.nun = locala.CLY.readString();
+        AppMethodBeat.o(111679);
         return 0;
       }
+      AppMethodBeat.o(111679);
       return -1;
     }
   }

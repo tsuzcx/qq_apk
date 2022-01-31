@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.exdevice.model;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 
 final class i$1
   implements DialogInterface.OnCancelListener
@@ -13,12 +14,17 @@ final class i$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    au.Dk().c(this.jvK);
-    i.a(this.jvM).dismiss();
-    i.b(this.jvM);
-    if (this.jvL != null) {
-      this.jvL.fB(false);
+    AppMethodBeat.i(19295);
+    aw.Rc().a(this.lFj);
+    if (i.a(this.lFl) != null) {
+      i.a(this.lFl).dismiss();
     }
+    i.b(this.lFl);
+    if (this.lFk != null) {
+      this.lFk.hd(false);
+    }
+    i.c(this.lFl);
+    AppMethodBeat.o(19295);
   }
 }
 

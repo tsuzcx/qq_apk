@@ -1,30 +1,39 @@
 package com.tencent.mm.plugin.backup.e;
 
-import com.tencent.mm.ah.k;
-import com.tencent.mm.protocal.j.a;
-import com.tencent.mm.protocal.j.b;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.k.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.k;
+import com.tencent.mm.protocal.k.a;
+import com.tencent.mm.protocal.k.b;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
 
 public final class a$a
   extends k
 {
-  private final j.a hIO = new j.a();
-  private final j.b hIP = new j.b();
+  private final k.a jCo;
+  private final k.b jCp;
   
-  protected final k.d HE()
+  public a$a()
   {
-    return this.hIO;
+    AppMethodBeat.i(17311);
+    this.jCo = new k.a();
+    this.jCp = new k.b();
+    AppMethodBeat.o(17311);
   }
   
-  public final k.e HF()
-  {
-    return this.hIP;
-  }
-  
-  public final int Kq()
+  public final int getOptions()
   {
     return 1;
+  }
+  
+  public final l.d getReqObjImp()
+  {
+    return this.jCo;
+  }
+  
+  public final l.e getRespObj()
+  {
+    return this.jCp;
   }
   
   public final int getType()

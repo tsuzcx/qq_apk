@@ -10,12 +10,12 @@ class a$b
     return true;
   }
   
-  public boolean bvo()
+  public boolean c(WalletFormView paramWalletFormView, String paramString)
   {
     return false;
   }
   
-  public boolean c(WalletFormView paramWalletFormView, String paramString)
+  public boolean cfH()
   {
     return false;
   }
@@ -32,7 +32,7 @@ class a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.formview.a.b
  * JD-Core Version:    0.7.0.1
  */

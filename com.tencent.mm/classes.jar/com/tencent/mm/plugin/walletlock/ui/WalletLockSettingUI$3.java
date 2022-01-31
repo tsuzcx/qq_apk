@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.walletlock.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.soter.a.a;
 
 final class WalletLockSettingUI$3
@@ -10,14 +11,17 @@ final class WalletLockSettingUI$3
   
   public final void run()
   {
+    AppMethodBeat.i(51746);
     try
     {
-      a.Jr(3);
+      a.Sn(3);
+      AppMethodBeat.o(51746);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.WalletLockSettingUI", "Remove AK after open gesture lock failed! " + localException.getMessage());
+      ab.e("MicroMsg.WalletLockSettingUI", "Remove AK after open gesture lock failed! " + localException.getMessage());
+      AppMethodBeat.o(51746);
     }
   }
 }

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
 import android.widget.Button;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FreeWifiManufacturerLoadingUI$2$1
   implements Runnable
@@ -9,7 +10,9 @@ final class FreeWifiManufacturerLoadingUI$2$1
   
   public final void run()
   {
-    FreeWifiManufacturerLoadingUI.d(this.kss.ksr).setVisibility(4);
+    AppMethodBeat.i(21009);
+    FreeWifiManufacturerLoadingUI.d(this.mOg.mOf).setVisibility(4);
+    AppMethodBeat.o(21009);
   }
 }
 

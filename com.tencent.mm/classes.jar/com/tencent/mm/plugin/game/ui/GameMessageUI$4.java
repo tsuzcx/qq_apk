@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.ui.r.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameMessageUI$4
   implements AbsListView.OnScrollListener
@@ -13,26 +13,13 @@ final class GameMessageUI$4
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (!GameMessageUI.b(this.lee).aCc()))
+    AppMethodBeat.i(112103);
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (!GameMessageUI.b(this.nBZ).bem()))
     {
-      paramAbsListView = GameMessageUI.b(this.lee);
-      if (!paramAbsListView.aCc()) {
-        break label74;
-      }
-      if (paramAbsListView.uMi != null) {
-        paramAbsListView.uMi.Wp();
-      }
+      GameMessageUI.b(this.nBZ).bHr();
+      GameMessageUI.b(this.nBZ).a(null, null);
     }
-    for (;;)
-    {
-      GameMessageUI.b(this.lee).a(null, null);
-      return;
-      label74:
-      paramAbsListView.iwi += 15;
-      if (paramAbsListView.iwi > paramAbsListView.dsw) {
-        paramAbsListView.iwi = paramAbsListView.dsw;
-      }
-    }
+    AppMethodBeat.o(112103);
   }
 }
 

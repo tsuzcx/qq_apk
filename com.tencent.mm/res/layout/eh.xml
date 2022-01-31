@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:orientation="vertical" android:background="@color/j" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:id="@id/zi" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/p1">
-        <ImageView android:id="@id/ww" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_marginTop="40.0dip" android:src="@drawable/apf" android:scaleType="centerInside" />
-        <TextView android:textSize="18.0dip" android:textColor="@color/fc" android:gravity="center" android:id="@id/wx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="25.0dip" />
-        <TextView android:textSize="18.0dip" android:textColor="@color/fc" android:gravity="center" android:id="@id/wy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="25.0dip" />
-    </LinearLayout>
-</ScrollView>
+    <TextView android:textSize="15.0dip" android:textColor="@color/ef" android:gravity="center" android:id="@id/zj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/lw" />
+    <android.support.v7.widget.RecyclerView android:id="@id/zk" android:background="@color/ei" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

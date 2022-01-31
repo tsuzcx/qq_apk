@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.websearch.widget.view.footer;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DownArrowSwitchFooter$1
   implements View.OnClickListener
@@ -10,9 +11,11 @@ final class DownArrowSwitchFooter$1
   
   public final void onClick(View paramView)
   {
-    if (DownArrowSwitchFooter.a(this.qYn) != null) {
-      DownArrowSwitchFooter.a(this.qYn).cas();
+    AppMethodBeat.i(91577);
+    if (DownArrowSwitchFooter.a(this.uNA) != null) {
+      DownArrowSwitchFooter.a(this.uNA).dar();
     }
+    AppMethodBeat.o(91577);
   }
 }
 

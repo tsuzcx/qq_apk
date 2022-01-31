@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,76 +17,85 @@ import org.json.JSONObject;
 
 public final class ac
 {
-  private static f eeo = new ac.1();
-  private static HashMap<String, com.tencent.mm.storage.ac.a> qUl = new HashMap();
-  private static Map<String, JSONObject> qUm = new HashMap();
-  private static u qUn;
-  private static HashMap<String, Long> qUo;
-  private static String qUp;
+  private static f fur;
+  private static String uJA;
+  private static HashMap<String, com.tencent.mm.storage.ac.a> uJw;
+  private static Map<String, JSONObject> uJx;
+  private static u uJy;
+  private static HashMap<String, Long> uJz;
   
   static
   {
-    qUl.put("zh_CN", com.tencent.mm.storage.ac.a.uvF);
-    qUl.put("zh_HK", com.tencent.mm.storage.ac.a.uvH);
-    qUl.put("zh_TW", com.tencent.mm.storage.ac.a.uvG);
-    qUl.put("en", com.tencent.mm.storage.ac.a.uvI);
-    qUl.put("ar", com.tencent.mm.storage.ac.a.uvJ);
-    qUl.put("de", com.tencent.mm.storage.ac.a.uvK);
-    qUl.put("de_DE", com.tencent.mm.storage.ac.a.uvL);
-    qUl.put("es", com.tencent.mm.storage.ac.a.uvM);
-    qUl.put("fr", com.tencent.mm.storage.ac.a.uvN);
-    qUl.put("he", com.tencent.mm.storage.ac.a.uvO);
-    qUl.put("hi", com.tencent.mm.storage.ac.a.uvP);
-    qUl.put("id", com.tencent.mm.storage.ac.a.uvQ);
-    qUl.put("in", com.tencent.mm.storage.ac.a.uvR);
-    qUl.put("it", com.tencent.mm.storage.ac.a.uvS);
-    qUl.put("iw", com.tencent.mm.storage.ac.a.uvT);
-    qUl.put("ja", com.tencent.mm.storage.ac.a.uvU);
-    qUl.put("ko", com.tencent.mm.storage.ac.a.uvV);
-    qUl.put("lo", com.tencent.mm.storage.ac.a.uvW);
-    qUl.put("ms", com.tencent.mm.storage.ac.a.uvX);
-    qUl.put("my", com.tencent.mm.storage.ac.a.uvY);
-    qUl.put("pl", com.tencent.mm.storage.ac.a.uvZ);
-    qUl.put("pt", com.tencent.mm.storage.ac.a.uwa);
-    qUl.put("ru", com.tencent.mm.storage.ac.a.uwb);
-    qUl.put("th", com.tencent.mm.storage.ac.a.uwc);
-    qUl.put("tr", com.tencent.mm.storage.ac.a.uwd);
-    qUl.put("vi", com.tencent.mm.storage.ac.a.uwe);
-    qUp = "";
+    AppMethodBeat.i(124165);
+    uJw = new HashMap();
+    uJx = new HashMap();
+    uJw.put("zh_CN", com.tencent.mm.storage.ac.a.yFN);
+    uJw.put("zh_HK", com.tencent.mm.storage.ac.a.yFP);
+    uJw.put("zh_TW", com.tencent.mm.storage.ac.a.yFO);
+    uJw.put("en", com.tencent.mm.storage.ac.a.yFQ);
+    uJw.put("ar", com.tencent.mm.storage.ac.a.yFR);
+    uJw.put("de", com.tencent.mm.storage.ac.a.yFS);
+    uJw.put("de_DE", com.tencent.mm.storage.ac.a.yFT);
+    uJw.put("es", com.tencent.mm.storage.ac.a.yFU);
+    uJw.put("fr", com.tencent.mm.storage.ac.a.yFV);
+    uJw.put("he", com.tencent.mm.storage.ac.a.yFW);
+    uJw.put("hi", com.tencent.mm.storage.ac.a.yFX);
+    uJw.put("id", com.tencent.mm.storage.ac.a.yFY);
+    uJw.put("in", com.tencent.mm.storage.ac.a.yFZ);
+    uJw.put("it", com.tencent.mm.storage.ac.a.yGa);
+    uJw.put("iw", com.tencent.mm.storage.ac.a.yGb);
+    uJw.put("ja", com.tencent.mm.storage.ac.a.yGc);
+    uJw.put("ko", com.tencent.mm.storage.ac.a.yGd);
+    uJw.put("lo", com.tencent.mm.storage.ac.a.yGe);
+    uJw.put("ms", com.tencent.mm.storage.ac.a.yGf);
+    uJw.put("my", com.tencent.mm.storage.ac.a.yGg);
+    uJw.put("pl", com.tencent.mm.storage.ac.a.yGh);
+    uJw.put("pt", com.tencent.mm.storage.ac.a.yGi);
+    uJw.put("ru", com.tencent.mm.storage.ac.a.yGj);
+    uJw.put("th", com.tencent.mm.storage.ac.a.yGk);
+    uJw.put("tr", com.tencent.mm.storage.ac.a.yGl);
+    uJw.put("vi", com.tencent.mm.storage.ac.a.yGm);
+    uJA = "";
+    fur = new ac.1();
+    AppMethodBeat.o(124165);
   }
   
-  public static boolean BC(int paramInt)
+  public static boolean Jq(int paramInt)
   {
-    if (qUo == null) {
-      qUo = new HashMap();
+    AppMethodBeat.i(124156);
+    if (uJz == null) {
+      uJz = new HashMap();
     }
-    String str = x.fB(ae.getContext());
-    if ((qUp == null) || (qUp.equalsIgnoreCase(str)))
+    String str = aa.gP(ah.getContext());
+    if ((uJA == null) || (uJA.equalsIgnoreCase(str)))
     {
-      Long localLong = (Long)qUo.get(str);
+      Long localLong = (Long)uJz.get(str);
       Object localObject = localLong;
       if (localLong == null) {
         localObject = Long.valueOf(0L);
       }
-      if (System.currentTimeMillis() - ((Long)localObject).longValue() < 600000L) {
+      if (System.currentTimeMillis() - ((Long)localObject).longValue() < 600000L)
+      {
+        AppMethodBeat.o(124156);
         return false;
       }
       long l = System.currentTimeMillis();
-      qUo.put(str, Long.valueOf(l));
-      y.i("MicroMsg.WebSearch.WebSearchConfigLogic", "startToRequestConfig %s %d %d", new Object[] { str, Integer.valueOf(paramInt), Long.valueOf(0L) });
-      localObject = (String)g.DP().Dz().get(Rt(str), null);
+      uJz.put(str, Long.valueOf(l));
+      ab.i("MicroMsg.WebSearch.WebSearchConfigLogic", "startToRequestConfig %s %d %d", new Object[] { str, Integer.valueOf(paramInt), Long.valueOf(0L) });
+      localObject = (String)g.RL().Ru().get(agu(str), null);
       try
       {
-        if (!bk.bl((String)localObject))
+        if (!bo.isNullOrNil((String)localObject))
         {
-          localObject = Rs((String)localObject);
+          localObject = agt((String)localObject);
           if (localObject != null) {
-            break label185;
+            break label200;
           }
-          localObject = ac.a.qUs;
-          if (localObject != ac.a.qUq) {
-            break label225;
+          localObject = a.uJD;
+          if (localObject != a.uJB) {
+            break label240;
           }
+          AppMethodBeat.o(124156);
           return false;
         }
       }
@@ -93,69 +103,79 @@ public final class ac
       {
         for (;;)
         {
-          ac.a locala = null;
+          a locala = null;
           continue;
-          label185:
+          label200:
           if (locala.optLong("updateTime") + locala.optLong("timevalSec") * 1000L < System.currentTimeMillis()) {
-            locala = ac.a.qUr;
+            locala = a.uJC;
           } else {
-            locala = ac.a.qUq;
+            locala = a.uJB;
           }
         }
       }
     }
-    label225:
-    qUp = str;
-    if (qUn != null)
+    label240:
+    uJA = str;
+    if (uJy != null)
     {
-      g.Dk().c(qUn);
-      qUn = null;
+      g.Rc().a(uJy);
+      uJy = null;
     }
-    qUn = new u(paramInt);
-    g.Dk().a(1948, eeo);
-    g.Dk().a(qUn, 0);
+    uJy = new u(paramInt);
+    g.Rc().a(1948, fur);
+    g.Rc().a(uJy, 0);
+    AppMethodBeat.o(124156);
     return true;
   }
   
-  private static JSONObject Rs(String paramString)
+  private static JSONObject agt(String paramString)
   {
-    if ((qUm.containsKey(paramString)) && (qUm.get(paramString) != null)) {
-      return (JSONObject)qUm.get(paramString);
+    AppMethodBeat.i(124157);
+    if ((uJx.containsKey(paramString)) && (uJx.get(paramString) != null))
+    {
+      paramString = (JSONObject)uJx.get(paramString);
+      AppMethodBeat.o(124157);
+      return paramString;
     }
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
-      qUm.put(paramString, localJSONObject);
+      uJx.put(paramString, localJSONObject);
+      AppMethodBeat.o(124157);
       return localJSONObject;
     }
     catch (JSONException paramString)
     {
-      y.printErrStackTrace("MicroMsg.WebSearch.WebSearchConfigLogic", paramString, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.WebSearch.WebSearchConfigLogic", paramString, "", new Object[0]);
+      AppMethodBeat.o(124157);
     }
     return null;
   }
   
-  private static com.tencent.mm.storage.ac.a Rt(String paramString)
+  private static com.tencent.mm.storage.ac.a agu(String paramString)
   {
-    com.tencent.mm.storage.ac.a locala = (com.tencent.mm.storage.ac.a)qUl.get(paramString);
+    AppMethodBeat.i(124158);
+    com.tencent.mm.storage.ac.a locala = (com.tencent.mm.storage.ac.a)uJw.get(paramString);
     paramString = locala;
     if (locala == null) {
-      paramString = com.tencent.mm.storage.ac.a.uvI;
+      paramString = com.tencent.mm.storage.ac.a.yFQ;
     }
+    AppMethodBeat.o(124158);
     return paramString;
   }
   
-  public static JSONObject Ru(String paramString)
+  public static JSONObject agv(String paramString)
   {
     localObject3 = null;
-    String str = x.fB(ae.getContext());
+    AppMethodBeat.i(124160);
+    String str = aa.gP(ah.getContext());
     try
     {
-      localObject1 = (String)g.DP().Dz().get(Rt(str), null);
-      if (bk.bl((String)localObject1)) {
-        break label136;
+      localObject1 = (String)g.RL().Ru().get(agu(str), null);
+      if (bo.isNullOrNil((String)localObject1)) {
+        break label148;
       }
-      localObject1 = Rs((String)localObject1).optJSONObject("data").optJSONObject(paramString);
+      localObject1 = agt((String)localObject1).optJSONObject("data").optJSONObject(paramString);
       localObject4 = "Config Storage";
       localObject3 = localObject1;
       localObject1 = localObject4;
@@ -177,9 +197,9 @@ public final class ac
     {
       try
       {
-        localObject4 = bZz();
+        localObject4 = cZv();
         if (localObject4 == null) {
-          break label155;
+          break label167;
         }
         localObject4 = new JSONObject((String)localObject4).optJSONObject("data").optJSONObject(paramString);
         localObject1 = localObject4;
@@ -197,23 +217,25 @@ public final class ac
       if (localObject1 == null)
       {
         localObject1 = new JSONObject();
-        y.i("MicroMsg.WebSearch.WebSearchConfigLogic", "getWebSearchConfigKeyObj %s %s %s", new Object[] { str, paramString, localObject3 });
+        ab.i("MicroMsg.WebSearch.WebSearchConfigLogic", "getWebSearchConfigKeyObj %s %s %s", new Object[] { str, paramString, localObject3 });
+        AppMethodBeat.o(124160);
         return localObject1;
       }
     }
   }
   
-  public static String Rv(String paramString)
+  public static String agw(String paramString)
   {
     Object localObject3 = null;
-    String str = x.fB(ae.getContext());
+    AppMethodBeat.i(124161);
+    String str = aa.gP(ah.getContext());
     try
     {
-      localObject1 = (String)g.DP().Dz().get(Rt(str), null);
-      if (bk.bl((String)localObject1)) {
-        break label127;
+      localObject1 = (String)g.RL().Ru().get(agu(str), null);
+      if (bo.isNullOrNil((String)localObject1)) {
+        break label139;
       }
-      localObject1 = Rs((String)localObject1);
+      localObject1 = agt((String)localObject1);
       localObject4 = "Config Storage";
       localObject3 = localObject1;
       localObject1 = localObject4;
@@ -224,7 +246,6 @@ public final class ac
       {
         Object localObject1;
         Object localObject4;
-        label127:
         localObject2 = "";
       }
     }
@@ -233,9 +254,9 @@ public final class ac
     {
       try
       {
-        localObject4 = bZz();
+        localObject4 = cZv();
         if (localObject4 == null) {
-          break label151;
+          break label171;
         }
         localObject4 = new JSONObject((String)localObject4);
         localObject3 = "Asset";
@@ -243,136 +264,175 @@ public final class ac
       }
       catch (Exception localException2)
       {
+        label139:
         localObject5 = localObject2;
         localObject2 = localObject3;
         localObject3 = localObject5;
         continue;
+        paramString = paramString.toString();
+        AppMethodBeat.o(124161);
+        return paramString;
       }
       if (localObject1 == null)
       {
         localObject1 = new JSONObject();
-        y.i("MicroMsg.WebSearch.WebSearchConfigLogic", "getWebSearchConfigMetaKeyObj %s %s %s", new Object[] { str, paramString, localObject3 });
+        ab.i("MicroMsg.WebSearch.WebSearchConfigLogic", "getWebSearchConfigMetaKeyObj %s %s %s", new Object[] { str, paramString, localObject3 });
         paramString = ((JSONObject)localObject1).opt(paramString);
-        if (paramString == null) {
+        if (paramString == null)
+        {
+          AppMethodBeat.o(124161);
           return "";
         }
-        return paramString.toString();
       }
       continue;
-      label151:
+      label171:
       Object localObject5 = localObject3;
       localObject3 = localObject2;
       Object localObject2 = localObject5;
     }
   }
   
-  public static String Rw(String paramString)
+  public static String agx(String paramString)
   {
-    JSONObject localJSONObject = Ru("entranceWording");
-    if (localJSONObject != null) {
-      return localJSONObject.optString(paramString);
+    AppMethodBeat.i(124163);
+    JSONObject localJSONObject = agv("entranceWording");
+    if (localJSONObject != null)
+    {
+      paramString = localJSONObject.optString(paramString);
+      AppMethodBeat.o(124163);
+      return paramString;
     }
+    AppMethodBeat.o(124163);
     return null;
   }
   
   /* Error */
-  private static String bZz()
+  private static String cZv()
   {
     // Byte code:
-    //   0: invokestatic 190	com/tencent/mm/sdk/platformtools/ae:getContext	()Landroid/content/Context;
-    //   3: invokevirtual 376	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   6: astore_0
-    //   7: invokestatic 190	com/tencent/mm/sdk/platformtools/ae:getContext	()Landroid/content/Context;
-    //   10: invokestatic 196	com/tencent/mm/sdk/platformtools/x:fB	(Landroid/content/Context;)Ljava/lang/String;
-    //   13: astore_1
-    //   14: aload_0
-    //   15: new 378	java/lang/StringBuilder
-    //   18: dup
-    //   19: ldc_w 380
-    //   22: invokespecial 381	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   25: aload_1
-    //   26: invokevirtual 385	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 386	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokevirtual 392	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   35: astore_1
-    //   36: aload_1
-    //   37: astore_0
-    //   38: aload_1
-    //   39: invokestatic 396	com/tencent/mm/sdk/platformtools/bk:E	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   42: astore_2
-    //   43: aload_1
-    //   44: invokestatic 400	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   47: aload_2
-    //   48: areturn
-    //   49: astore_2
-    //   50: aconst_null
-    //   51: astore_1
-    //   52: aload_1
-    //   53: astore_0
-    //   54: ldc 225
-    //   56: aload_2
-    //   57: aload_2
-    //   58: invokevirtual 403	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   61: iconst_0
-    //   62: anewarray 4	java/lang/Object
-    //   65: invokestatic 332	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   68: aload_1
-    //   69: invokestatic 400	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   72: aconst_null
-    //   73: areturn
-    //   74: astore_1
-    //   75: aconst_null
-    //   76: astore_0
-    //   77: aload_0
-    //   78: invokestatic 400	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   81: aload_1
-    //   82: athrow
-    //   83: astore_1
-    //   84: goto -7 -> 77
-    //   87: astore_2
-    //   88: goto -36 -> 52
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: ldc_w 382
+    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: invokestatic 202	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
+    //   11: invokevirtual 388	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   14: astore_0
+    //   15: aload_0
+    //   16: ldc_w 390
+    //   19: invokestatic 202	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
+    //   22: invokestatic 208	com/tencent/mm/sdk/platformtools/aa:gP	(Landroid/content/Context;)Ljava/lang/String;
+    //   25: invokestatic 393	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   28: invokevirtual 396	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   31: invokevirtual 402	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   34: astore_1
+    //   35: aload_1
+    //   36: astore_0
+    //   37: aload_1
+    //   38: invokestatic 406	com/tencent/mm/sdk/platformtools/bo:F	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   41: astore_2
+    //   42: aload_2
+    //   43: astore_0
+    //   44: aload_1
+    //   45: invokestatic 410	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
+    //   48: ldc_w 382
+    //   51: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   54: aload_0
+    //   55: areturn
+    //   56: astore_2
+    //   57: aconst_null
+    //   58: astore_1
+    //   59: aload_1
+    //   60: astore_0
+    //   61: ldc 237
+    //   63: aload_2
+    //   64: aload_2
+    //   65: invokevirtual 413	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   68: iconst_0
+    //   69: anewarray 4	java/lang/Object
+    //   72: invokestatic 341	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   75: aload_1
+    //   76: invokestatic 410	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
+    //   79: aload_3
+    //   80: astore_0
+    //   81: goto -33 -> 48
+    //   84: astore_1
+    //   85: aconst_null
+    //   86: astore_0
+    //   87: aload_0
+    //   88: invokestatic 410	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
+    //   91: ldc_w 382
+    //   94: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: aload_1
+    //   98: athrow
+    //   99: astore_1
+    //   100: goto -13 -> 87
+    //   103: astore_2
+    //   104: goto -45 -> 59
     // Local variable table:
     //   start	length	slot	name	signature
-    //   6	72	0	localObject1	Object
-    //   13	56	1	localObject2	Object
-    //   74	8	1	localObject3	Object
-    //   83	1	1	localObject4	Object
-    //   42	6	2	str	String
-    //   49	9	2	localException1	Exception
-    //   87	1	2	localException2	Exception
+    //   14	74	0	localObject1	Object
+    //   34	42	1	localInputStream	java.io.InputStream
+    //   84	14	1	localObject2	Object
+    //   99	1	1	localObject3	Object
+    //   41	2	2	str	String
+    //   56	9	2	localException1	Exception
+    //   103	1	2	localException2	Exception
+    //   1	79	3	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   7	36	49	java/lang/Exception
-    //   7	36	74	finally
-    //   38	43	83	finally
-    //   54	68	83	finally
-    //   38	43	87	java/lang/Exception
+    //   15	35	56	java/lang/Exception
+    //   15	35	84	finally
+    //   37	42	99	finally
+    //   61	75	99	finally
+    //   37	42	103	java/lang/Exception
   }
   
-  private static ac.a fp(String paramString1, String paramString2)
+  private static a hi(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(124159);
     try
     {
       paramString2 = new JSONObject(paramString2);
       paramString2.put("updateTime", System.currentTimeMillis());
       paramString2 = paramString2.toString();
-      g.DP().Dz().c(Rt(paramString1), paramString2);
+      g.RL().Ru().set(agu(paramString1), paramString2);
       try
       {
         paramString1 = new JSONObject(paramString2);
-        qUm.put(paramString2, paramString1);
-        return ac.a.qUq;
+        uJx.put(paramString2, paramString1);
+        paramString1 = a.uJB;
+        AppMethodBeat.o(124159);
+        return paramString1;
       }
       catch (JSONException paramString1)
       {
         for (;;)
         {
-          y.printErrStackTrace("MicroMsg.WebSearch.WebSearchConfigLogic", paramString1, "", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.WebSearch.WebSearchConfigLogic", paramString1, "", new Object[0]);
         }
       }
-      return ac.a.qUs;
+      return paramString1;
     }
-    catch (JSONException paramString1) {}
+    catch (JSONException paramString1)
+    {
+      paramString1 = a.uJD;
+      AppMethodBeat.o(124159);
+    }
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(124155);
+      uJB = new a("Valid", 0);
+      uJC = new a("Expired", 1);
+      uJD = new a("Invalid", 2);
+      uJE = new a[] { uJB, uJC, uJD };
+      AppMethodBeat.o(124155);
+    }
+    
+    private a() {}
   }
 }
 

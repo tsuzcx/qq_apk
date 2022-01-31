@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class PluginFTS$1
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class PluginFTS$1
   
   public final void run()
   {
-    if (PluginFTS.access$200(this.kuy) != null) {
-      PluginFTS.access$200(this.kuy).rollback();
+    AppMethodBeat.i(136579);
+    if (PluginFTS.access$100(this.mQm) != null) {
+      PluginFTS.access$100(this.mQm).rollback();
     }
+    AppMethodBeat.o(136579);
   }
 }
 

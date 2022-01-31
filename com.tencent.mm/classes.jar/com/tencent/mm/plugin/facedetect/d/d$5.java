@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.facedetect.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class d$5
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class d$5
   
   public final void run()
   {
-    d.a(this.jPM);
+    AppMethodBeat.i(315);
+    d.a(this.mkc);
+    AppMethodBeat.o(315);
   }
 }
 

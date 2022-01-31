@@ -1,20 +1,21 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.a;
 
 import android.os.StatFs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
 import com.tencent.mm.bv.b;
 import com.tencent.mm.compatible.util.h;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.pointers.PLong;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.bmm;
-import com.tencent.mm.protocal.c.fo;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.bwd;
+import com.tencent.mm.protocal.protobuf.gx;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.vfs.e;
 import java.io.File;
 import java.util.Iterator;
@@ -23,247 +24,17 @@ import java.util.List;
 
 public final class a
 {
-  private static List<String> dru = null;
+  private static List<String> ejc = null;
   
-  public static String a(fo paramfo, int paramInt)
+  public static String Gi(String paramString)
   {
-    return a(paramfo, paramInt, null);
-  }
-  
-  public static String a(fo paramfo, int paramInt, String paramString)
-  {
-    if ((paramfo.szr == paramInt) && (paramfo.szp != null))
+    AppMethodBeat.i(17739);
+    if (paramString == null)
     {
-      paramfo = g.o(paramfo.szp.tFM.oY);
-      return paramfo;
-    }
-    if ((paramfo.szo != null) && (paramfo.szn != null))
-    {
-      Iterator localIterator = paramfo.szo.iterator();
-      int i = 0;
-      for (;;)
-      {
-        if (!localIterator.hasNext()) {
-          break label147;
-        }
-        if (((bmm)localIterator.next()).tFQ == paramInt)
-        {
-          String str = ((bml)paramfo.szn.get(i)).tFO;
-          if ((!bk.bl(paramString)) && (!str.endsWith(paramString)))
-          {
-            i = i + 1 + 1;
-            continue;
-          }
-          paramfo = str;
-          if (e.bK(xD(str))) {
-            break;
-          }
-          return null;
-        }
-        i += 1;
-      }
-    }
-    label147:
-    return null;
-  }
-  
-  public static boolean a(long paramLong, PLong paramPLong1, PLong paramPLong2, String paramString)
-  {
-    Object localObject = new StatFs(h.getExternalStorageDirectory().getPath());
-    long l1 = ((StatFs)localObject).getBlockSize();
-    paramPLong1.value = (((StatFs)localObject).getAvailableBlocks() * l1);
-    localObject = h.getDataDirectory();
-    StatFs localStatFs = new StatFs(((File)localObject).getPath());
-    l1 = localStatFs.getBlockCount();
-    long l2 = localStatFs.getAvailableBlocks();
-    paramPLong2.value = (localStatFs.getBlockSize() * localStatFs.getAvailableBlocks());
-    y.i("MicroMsg.BakUtil", "checkDataFull, SDAvailSize:%d, DataAvailSize%d, dbSize:%d", new Object[] { Long.valueOf(paramPLong1.value), Long.valueOf(paramPLong2.value), Long.valueOf(paramLong) });
-    if (l1 <= 0L) {
-      return false;
-    }
-    if (l1 - l2 < 0L) {
-      return false;
-    }
-    if ((paramPLong1.value == paramPLong2.value) || (paramString.startsWith(((File)localObject).getPath()))) {
-      paramPLong1.value = 0L;
-    }
-    return paramLong <= paramPLong2.value;
-  }
-  
-  public static List<String> atA()
-  {
-    if (dru != null) {
-      return dru;
-    }
-    dru = new LinkedList();
-    String[] arrayOfString = s.dVc;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = arrayOfString[i];
-      dru.add(str);
-      i += 1;
-    }
-    dru.add("weixin");
-    dru.add("weibo");
-    dru.add("qqmail");
-    dru.add("fmessage");
-    dru.add("tmessage");
-    dru.add("qmessage");
-    dru.add("qqsync");
-    dru.add("floatbottle");
-    dru.add("lbsapp");
-    dru.add("shakeapp");
-    dru.add("medianote");
-    dru.add("qqfriend");
-    dru.add("readerapp");
-    dru.add("newsapp");
-    dru.add("blogapp");
-    dru.add("facebookapp");
-    dru.add("masssendapp");
-    dru.add("meishiapp");
-    dru.add("feedsapp");
-    dru.add("voipapp");
-    dru.add("officialaccounts");
-    dru.add("helper_entry");
-    dru.add("pc_share");
-    dru.add("cardpackage");
-    dru.add("voicevoipapp");
-    dru.add("voiceinputapp");
-    dru.add("linkedinplugin");
-    dru.add("appbrandcustomerservicemsg");
-    return dru;
-  }
-  
-  public static String avo()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    au.Hx();
-    return c.FU() + "backup/";
-  }
-  
-  public static boolean b(fo paramfo, int paramInt, String paramString)
-  {
-    if ((paramfo.szr == paramInt) && (paramfo.szp != null))
-    {
-      paramfo = paramfo.szp.tFM.oY;
-      if (paramfo.length > 0) {}
-    }
-    do
-    {
-      return false;
-      e.b(paramString, paramfo, paramfo.length);
-      return true;
-      paramfo = a(paramfo, paramInt, null);
-    } while (bk.bl(paramfo));
-    e.r(xD(paramfo), paramString);
-    return true;
-  }
-  
-  public static byte[] b(fo paramfo, int paramInt)
-  {
-    if ((paramfo.szr == paramInt) && (paramfo.szp != null)) {
-      return paramfo.szp.tFM.oY;
-    }
-    if ((paramfo.szo != null) && (paramfo.szn != null))
-    {
-      Iterator localIterator = paramfo.szo.iterator();
-      int i = 0;
-      while (localIterator.hasNext())
-      {
-        if (((bmm)localIterator.next()).tFQ == paramInt)
-        {
-          paramfo = xD(((bml)paramfo.szn.get(i)).tFO);
-          paramInt = (int)e.aeQ(paramfo);
-          if ((paramInt == 0) || (paramInt > 1048576))
-          {
-            y.e("MicroMsg.BakUtil", "thumb not exist or  too big!");
-            return null;
-          }
-          return e.c(paramfo, 0, -1);
-        }
-        i += 1;
-      }
-    }
-    return null;
-  }
-  
-  public static int be(String paramString, int paramInt)
-  {
-    int i = paramInt;
-    if (!bk.bl(paramString)) {}
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      y.printErrStackTrace("MicroMsg.BakUtil", paramString, "", new Object[0]);
-    }
-    return paramInt;
-  }
-  
-  public static int c(fo paramfo, int paramInt)
-  {
-    if (paramfo.szr == paramInt) {
-      if (paramfo.szp != null) {}
-    }
-    for (;;)
-    {
-      return 0;
-      return paramfo.szp.tFM.oY.length;
-      if ((paramfo.szo != null) && (paramfo.szn != null))
-      {
-        Iterator localIterator = paramfo.szo.iterator();
-        int i = 0;
-        while (localIterator.hasNext())
-        {
-          if (((bmm)localIterator.next()).tFQ == paramInt) {
-            return (int)e.aeQ(xD(((bml)paramfo.szn.get(i)).tFO));
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public static boolean d(fo paramfo, int paramInt)
-  {
-    if ((paramfo.szr == paramInt) && (paramfo.szp != null)) {
-      return true;
-    }
-    paramfo = paramfo.szo.iterator();
-    while (paramfo.hasNext()) {
-      if (((bmm)paramfo.next()).tFQ == paramInt) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static void xC(String paramString)
-  {
-    e.nb(paramString);
-    e.nb(paramString + "backupItem/");
-    e.nb(paramString + "backupMeida/");
-  }
-  
-  public static String xD(String paramString)
-  {
-    if ((paramString == null) || (paramString.equals(""))) {
+      AppMethodBeat.o(17739);
       return "";
     }
-    return avo() + "backupMeida/" + xq(paramString) + paramString;
-  }
-  
-  public static String xq(String paramString)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    String str2 = g.o(paramString.getBytes());
+    String str2 = g.w(paramString.getBytes());
     paramString = "";
     String str1 = "";
     if (str2.length() > 0) {
@@ -272,23 +43,335 @@ public final class a
     if (str2.length() >= 2) {
       str1 = str2.charAt(1) + "/";
     }
-    return paramString + str1;
+    paramString = paramString + str1;
+    AppMethodBeat.o(17739);
+    return paramString;
   }
   
-  public static boolean xr(String paramString)
+  public static boolean Gk(String paramString)
   {
-    if (paramString == null) {}
-    String str;
-    do
+    AppMethodBeat.i(17743);
+    if (paramString == null)
     {
+      AppMethodBeat.o(17743);
       return false;
-      int i = paramString.indexOf('<');
-      str = paramString;
-      if (i > 0) {
-        str = paramString.substring(i);
+    }
+    int i = paramString.indexOf('<');
+    String str = paramString;
+    if (i > 0) {
+      str = paramString.substring(i);
+    }
+    if (br.F(str, "msg") != null)
+    {
+      AppMethodBeat.o(17743);
+      return true;
+    }
+    AppMethodBeat.o(17743);
+    return false;
+  }
+  
+  public static void Gv(String paramString)
+  {
+    AppMethodBeat.i(17741);
+    e.um(paramString);
+    e.um(paramString + "backupItem/");
+    e.um(paramString + "backupMeida/");
+    AppMethodBeat.o(17741);
+  }
+  
+  public static String Gw(String paramString)
+  {
+    AppMethodBeat.i(17744);
+    if ((paramString == null) || (paramString.equals("")))
+    {
+      AppMethodBeat.o(17744);
+      return "";
+    }
+    paramString = aUR() + "backupMeida/" + Gi(paramString) + paramString;
+    AppMethodBeat.o(17744);
+    return paramString;
+  }
+  
+  public static String a(gx paramgx, int paramInt)
+  {
+    AppMethodBeat.i(17747);
+    paramgx = a(paramgx, paramInt, null);
+    AppMethodBeat.o(17747);
+    return paramgx;
+  }
+  
+  public static String a(gx paramgx, int paramInt, String paramString)
+  {
+    AppMethodBeat.i(17746);
+    if ((paramgx.wts == paramInt) && (paramgx.wtq != null))
+    {
+      paramgx = g.w(paramgx.wtq.getBuffer().pW);
+      AppMethodBeat.o(17746);
+      return paramgx;
+    }
+    if ((paramgx.wtp != null) && (paramgx.wto != null))
+    {
+      Iterator localIterator = paramgx.wtp.iterator();
+      int i = 0;
+      while (localIterator.hasNext()) {
+        if (((bwd)localIterator.next()).xJG == paramInt)
+        {
+          String str = ((bwc)paramgx.wto.get(i)).xJE;
+          if ((!bo.isNullOrNil(paramString)) && (!str.endsWith(paramString)))
+          {
+            i = i + 1 + 1;
+          }
+          else
+          {
+            if (e.cN(Gw(str)))
+            {
+              AppMethodBeat.o(17746);
+              return str;
+            }
+            AppMethodBeat.o(17746);
+            return null;
+          }
+        }
+        else
+        {
+          i += 1;
+        }
       }
-    } while (bn.s(str, "msg") == null);
+    }
+    AppMethodBeat.o(17746);
+    return null;
+  }
+  
+  public static boolean a(long paramLong, PLong paramPLong1, PLong paramPLong2, String paramString)
+  {
+    AppMethodBeat.i(17742);
+    Object localObject = new StatFs(h.getExternalStorageDirectory().getPath());
+    long l1 = ((StatFs)localObject).getBlockSize();
+    paramPLong1.value = (((StatFs)localObject).getAvailableBlocks() * l1);
+    localObject = h.getDataDirectory();
+    StatFs localStatFs = new StatFs(((File)localObject).getPath());
+    l1 = localStatFs.getBlockCount();
+    long l2 = localStatFs.getAvailableBlocks();
+    paramPLong2.value = (localStatFs.getBlockSize() * localStatFs.getAvailableBlocks());
+    ab.i("MicroMsg.BakUtil", "checkDataFull, SDAvailSize:%d, DataAvailSize%d, dbSize:%d", new Object[] { Long.valueOf(paramPLong1.value), Long.valueOf(paramPLong2.value), Long.valueOf(paramLong) });
+    if (l1 <= 0L)
+    {
+      AppMethodBeat.o(17742);
+      return false;
+    }
+    if (l1 - l2 < 0L)
+    {
+      AppMethodBeat.o(17742);
+      return false;
+    }
+    if ((paramPLong1.value == paramPLong2.value) || (paramString.startsWith(((File)localObject).getPath()))) {
+      paramPLong1.value = 0L;
+    }
+    if (paramLong > paramPLong2.value)
+    {
+      AppMethodBeat.o(17742);
+      return false;
+    }
+    AppMethodBeat.o(17742);
     return true;
+  }
+  
+  public static List<String> aSY()
+  {
+    AppMethodBeat.i(17738);
+    if (ejc != null)
+    {
+      localObject1 = ejc;
+      AppMethodBeat.o(17738);
+      return localObject1;
+    }
+    ejc = new LinkedList();
+    Object localObject1 = t.fll;
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject2 = localObject1[i];
+      ejc.add(localObject2);
+      i += 1;
+    }
+    ejc.add("weixin");
+    ejc.add("weibo");
+    ejc.add("qqmail");
+    ejc.add("fmessage");
+    ejc.add("tmessage");
+    ejc.add("qmessage");
+    ejc.add("qqsync");
+    ejc.add("floatbottle");
+    ejc.add("lbsapp");
+    ejc.add("shakeapp");
+    ejc.add("medianote");
+    ejc.add("qqfriend");
+    ejc.add("readerapp");
+    ejc.add("newsapp");
+    ejc.add("blogapp");
+    ejc.add("facebookapp");
+    ejc.add("masssendapp");
+    ejc.add("meishiapp");
+    ejc.add("feedsapp");
+    ejc.add("voipapp");
+    ejc.add("officialaccounts");
+    ejc.add("helper_entry");
+    ejc.add("pc_share");
+    ejc.add("cardpackage");
+    ejc.add("voicevoipapp");
+    ejc.add("voiceinputapp");
+    ejc.add("linkedinplugin");
+    ejc.add("appbrandcustomerservicemsg");
+    localObject1 = ejc;
+    AppMethodBeat.o(17738);
+    return localObject1;
+  }
+  
+  public static String aUR()
+  {
+    AppMethodBeat.i(17740);
+    Object localObject = new StringBuilder();
+    aw.aaz();
+    localObject = c.getAccPath() + "backup/";
+    AppMethodBeat.o(17740);
+    return localObject;
+  }
+  
+  public static boolean b(gx paramgx, int paramInt, String paramString)
+  {
+    AppMethodBeat.i(17749);
+    if ((paramgx.wts == paramInt) && (paramgx.wtq != null))
+    {
+      paramgx = paramgx.wtq.getBuffer().pW;
+      if (paramgx.length <= 0)
+      {
+        AppMethodBeat.o(17749);
+        return false;
+      }
+      e.b(paramString, paramgx, paramgx.length);
+      AppMethodBeat.o(17749);
+      return true;
+    }
+    paramgx = a(paramgx, paramInt, null);
+    if (!bo.isNullOrNil(paramgx))
+    {
+      e.C(Gw(paramgx), paramString);
+      AppMethodBeat.o(17749);
+      return true;
+    }
+    AppMethodBeat.o(17749);
+    return false;
+  }
+  
+  public static byte[] b(gx paramgx, int paramInt)
+  {
+    AppMethodBeat.i(17748);
+    if ((paramgx.wts == paramInt) && (paramgx.wtq != null))
+    {
+      paramgx = paramgx.wtq.getBuffer().pW;
+      AppMethodBeat.o(17748);
+      return paramgx;
+    }
+    if ((paramgx.wtp != null) && (paramgx.wto != null))
+    {
+      Iterator localIterator = paramgx.wtp.iterator();
+      int i = 0;
+      while (localIterator.hasNext())
+      {
+        if (((bwd)localIterator.next()).xJG == paramInt)
+        {
+          paramgx = Gw(((bwc)paramgx.wto.get(i)).xJE);
+          paramInt = (int)e.avI(paramgx);
+          if ((paramInt == 0) || (paramInt > 1048576))
+          {
+            ab.e("MicroMsg.BakUtil", "thumb not exist or  too big!");
+            AppMethodBeat.o(17748);
+            return null;
+          }
+          paramgx = e.i(paramgx, 0, -1);
+          AppMethodBeat.o(17748);
+          return paramgx;
+        }
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(17748);
+    return null;
+  }
+  
+  public static int bE(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(17750);
+    int i = paramInt;
+    if (!bo.isNullOrNil(paramString)) {}
+    try
+    {
+      i = Integer.valueOf(paramString).intValue();
+      AppMethodBeat.o(17750);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.BakUtil", paramString, "", new Object[0]);
+        i = paramInt;
+      }
+    }
+  }
+  
+  public static int c(gx paramgx, int paramInt)
+  {
+    AppMethodBeat.i(17745);
+    if (paramgx.wts == paramInt)
+    {
+      if (paramgx.wtq == null)
+      {
+        AppMethodBeat.o(17745);
+        return 0;
+      }
+      paramInt = paramgx.wtq.getBuffer().pW.length;
+      AppMethodBeat.o(17745);
+      return paramInt;
+    }
+    if ((paramgx.wtp != null) && (paramgx.wto != null))
+    {
+      Iterator localIterator = paramgx.wtp.iterator();
+      int i = 0;
+      while (localIterator.hasNext())
+      {
+        if (((bwd)localIterator.next()).xJG == paramInt)
+        {
+          paramInt = (int)e.avI(Gw(((bwc)paramgx.wto.get(i)).xJE));
+          AppMethodBeat.o(17745);
+          return paramInt;
+        }
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(17745);
+    return 0;
+  }
+  
+  public static boolean d(gx paramgx, int paramInt)
+  {
+    AppMethodBeat.i(17751);
+    if ((paramgx.wts == paramInt) && (paramgx.wtq != null))
+    {
+      AppMethodBeat.o(17751);
+      return true;
+    }
+    paramgx = paramgx.wtp.iterator();
+    while (paramgx.hasNext()) {
+      if (((bwd)paramgx.next()).xJG == paramInt)
+      {
+        AppMethodBeat.o(17751);
+        return true;
+      }
+    }
+    AppMethodBeat.o(17751);
+    return false;
   }
 }
 

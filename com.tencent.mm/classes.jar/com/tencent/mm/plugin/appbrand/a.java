@@ -1,107 +1,161 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.support.v4.app.a.a;
+import android.content.Context;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.luggage.sdk.d.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.d;
-import com.tencent.mm.plugin.appbrand.ui.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.report.f;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public final class a
 {
-  private static final Map<String, n> fxs = new HashMap();
-  private static Map<String, a.a> fxt = new HashMap();
-  private static Map<String, j> fxu = new HashMap();
+  private static final LinkedHashMap<String, o> gOG;
+  public static int gOH;
+  private static final Map<String, o> gOI;
   
-  public static void a(n paramn)
+  static
   {
-    if (bk.bl(paramn.mAppId))
+    AppMethodBeat.i(128924);
+    ah.getContext().registerComponentCallbacks(new a.1());
+    gOG = new a.2();
+    gOH = 4;
+    gOI = new HashMap();
+    AppMethodBeat.o(128924);
+  }
+  
+  public static boolean a(o paramo)
+  {
+    AppMethodBeat.i(154311);
+    synchronized (gOI)
     {
-      y.e("MicroMsg.AppBrandBridge", "clearRuntime with nil appId");
-      return;
-    }
-    for (;;)
-    {
-      synchronized (fxs)
-      {
-        n localn = (n)fxs.get(paramn.mAppId);
-        if ((localn == null) || (localn == paramn))
-        {
-          fxs.put(paramn.mAppId, null);
-          return;
-        }
-      }
-      y.e("MicroMsg.AppBrandBridge", "clearRuntime with mismatch instance, stack %s", new Object[] { bk.j(new Throwable()) });
+      boolean bool = gOG.containsValue(paramo);
+      AppMethodBeat.o(154311);
+      return bool;
     }
   }
   
-  public static void a(String paramString, j paramj)
+  static void b(o paramo)
   {
-    fxu.put(paramString, paramj);
-  }
-  
-  public static void b(n paramn)
-  {
-    if (bk.bl(paramn.mAppId)) {
-      y.e("MicroMsg.AppBrandBridge", "setRuntime with nil appId");
-    }
-    for (;;)
+    AppMethodBeat.i(128919);
+    if (bo.isNullOrNil(paramo.mAppId))
     {
+      ab.e("MicroMsg.AppBrandBridge", "clearRuntime with nil appId");
+      AppMethodBeat.o(128919);
       return;
-      synchronized (fxs)
+    }
+    synchronized (gOI)
+    {
+      o localo = (o)gOI.get(paramo.mAppId);
+      if ((localo == null) || (localo == paramo))
       {
-        fxs.put(paramn.mAppId, paramn);
-        if (paramn.aac() == null) {
-          continue;
-        }
-        d.aY(paramn.mAppId, paramn.aac().bFB);
+        gOI.remove(paramo.mAppId);
+        gOG.remove(paramo.mAppId);
+        AppMethodBeat.o(128919);
         return;
       }
+      ab.e("MicroMsg.AppBrandBridge", "clearRuntime with mismatch instance, stack %s", new Object[] { bo.l(new Throwable()) });
     }
   }
   
-  public static n qn(String paramString)
+  public static void c(i parami)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(143029);
+    LinkedList localLinkedList = new LinkedList();
+    synchronized (gOI)
+    {
+      Iterator localIterator = gOI.values().iterator();
+      while (localIterator.hasNext())
+      {
+        o localo = (o)localIterator.next();
+        if ((localo != null) && (localo.vY()) && (localo != parami)) {
+          localLinkedList.add(localo);
+        }
+      }
+    }
+    parami = localLinkedList.iterator();
+    while (parami.hasNext()) {
+      ((o)parami.next()).atX();
+    }
+    AppMethodBeat.o(143029);
+  }
+  
+  static void c(o paramo)
+  {
+    AppMethodBeat.i(128920);
+    if (bo.isNullOrNil(paramo.mAppId))
+    {
+      ab.e("MicroMsg.AppBrandBridge", "setRuntime with nil appId");
+      AppMethodBeat.o(128920);
+      return;
+    }
+    synchronized (gOI)
+    {
+      gOI.put(paramo.mAppId, paramo);
+      gOG.put(paramo.mAppId, paramo);
+      if (paramo.atS() != null) {
+        f.br(paramo.mAppId, paramo.atS().bCV);
+      }
+      AppMethodBeat.o(128920);
+      return;
+    }
+  }
+  
+  public static o xL(String paramString)
+  {
+    AppMethodBeat.i(128921);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(128921);
       return null;
     }
-    synchronized (fxs)
+    synchronized (gOI)
     {
-      paramString = (n)fxs.get(paramString);
+      paramString = (o)gOI.get(paramString);
+      AppMethodBeat.o(128921);
       return paramString;
     }
   }
   
-  public static AppBrandSysConfigWC qo(String paramString)
+  @Deprecated
+  public static AppBrandSysConfigWC xM(String paramString)
   {
-    paramString = qn(paramString);
-    if (paramString == null) {
+    AppMethodBeat.i(128922);
+    paramString = xL(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(128922);
       return null;
     }
-    return paramString.aaa();
+    paramString = paramString.atR();
+    AppMethodBeat.o(128922);
+    return paramString;
   }
   
-  public static AppBrandStatObject qp(String paramString)
+  @Deprecated
+  public static AppBrandStatObject xN(String paramString)
   {
-    paramString = qn(paramString);
-    if (paramString == null) {
+    AppMethodBeat.i(128923);
+    paramString = xL(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(128923);
       return null;
     }
-    return paramString.aab();
-  }
-  
-  public static j qq(String paramString)
-  {
-    return (j)fxu.get(paramString);
-  }
-  
-  public static void qr(String paramString)
-  {
-    fxu.remove(paramString);
+    paramString = paramString.wS().bDh;
+    AppMethodBeat.o(128923);
+    return paramString;
   }
 }
 

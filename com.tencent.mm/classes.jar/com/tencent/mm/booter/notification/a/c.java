@@ -1,31 +1,34 @@
 package com.tencent.mm.booter.notification.a;
 
-import com.tencent.mm.R.g;
-import com.tencent.mm.bq.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bp.a;
 import com.tencent.mm.m.f;
 
 public final class c
 {
-  public int djU = -1;
+  public int ebo = -1;
   
-  public final int w(String paramString, int paramInt)
+  public final int B(String paramString, int paramInt)
   {
-    this.djU = a.bSL();
-    if ((!f.gK(paramInt)) || (f.fj(paramString))) {}
+    AppMethodBeat.i(16010);
+    this.ebo = a.bYt();
+    if ((!f.iX(paramInt)) || (f.lw(paramString))) {}
     try
     {
-      this.djU = R.g.voip_newmessagetips1;
+      this.ebo = 2130840765;
       for (;;)
       {
-        label28:
-        if (this.djU < 0) {
-          this.djU = a.bSL();
+        label33:
+        if (this.ebo < 0) {
+          this.ebo = a.bYt();
         }
-        return this.djU;
-        if (f.fk(paramString)) {
+        paramInt = this.ebo;
+        AppMethodBeat.o(16010);
+        return paramInt;
+        if (f.lx(paramString)) {
           try
           {
-            this.djU = R.g.voip_newmessagetips1;
+            this.ebo = 2130840765;
           }
           catch (Exception paramString) {}
         }
@@ -33,7 +36,7 @@ public final class c
     }
     catch (Exception paramString)
     {
-      break label28;
+      break label33;
     }
   }
 }

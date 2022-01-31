@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.recharge.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.ListViewInScrollView;
 
 final class RechargeUI$8
@@ -12,23 +13,26 @@ final class RechargeUI$8
   
   public final void onClick(View paramView)
   {
-    this.nrJ.setVisibility(0);
-    this.nrK.setTextColor(this.nrH);
-    this.nrM.setVisibility(0);
-    this.nrF.setVisibility(8);
-    this.nrG.setTextColor(this.nrL);
-    this.nrI.setVisibility(8);
-    if (RechargeUI.g(this.nrE).getCount() == 0)
+    AppMethodBeat.i(44313);
+    this.pWX.setVisibility(0);
+    this.pWY.setTextColor(this.pWV);
+    this.pXa.setVisibility(0);
+    this.pWT.setVisibility(8);
+    this.pWU.setTextColor(this.pWZ);
+    this.pWW.setVisibility(8);
+    if (RechargeUI.g(this.pWS).getCount() == 0)
     {
-      this.nrN.setVisibility(0);
+      this.pXb.setVisibility(0);
+      AppMethodBeat.o(44313);
       return;
     }
-    this.nrN.setVisibility(8);
+    this.pXb.setVisibility(8);
+    AppMethodBeat.o(44313);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.RechargeUI.8
  * JD-Core Version:    0.7.0.1
  */

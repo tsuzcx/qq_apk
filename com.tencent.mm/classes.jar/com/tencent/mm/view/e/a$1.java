@@ -1,58 +1,55 @@
 package com.tencent.mm.view.e;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.view.SmileyPanelViewPager;
 
 final class a$1
-  extends ah
+  extends ak
 {
   a$1(a parama) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    boolean bool = true;
+    AppMethodBeat.i(63023);
     switch (paramMessage.what)
     {
-    default: 
-    case 1102: 
-      do
-      {
-        return;
-        this.wzg.cLK();
-        a.a(this.wzg);
-      } while ((a.b(this.wzg) == null) || (a.c(this.wzg) == null));
-      int j = a.d(this.wzg).wzE;
-      if (j >= 0)
-      {
-        i = j;
-        if (j <= a.d(this.wzg).afc(a.b(this.wzg)).cLI()) {}
-      }
-      else
-      {
-        i = a.d(this.wzg).afc(a.b(this.wzg)).cLI() - 1;
-      }
-      a.a(this.wzg, i + a.d(this.wzg).afc(a.b(this.wzg)).hxB);
-      a.c(this.wzg).setCurrentItem(a.e(this.wzg));
-      a.f(this.wzg);
-      return;
     }
-    y.d("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "update selection");
-    a locala = this.wzg;
-    int i = paramMessage.arg1;
-    if (paramMessage.arg2 == 1) {}
     for (;;)
     {
-      a.a(locala, i, bool, false);
+      AppMethodBeat.o(63023);
       return;
-      bool = false;
+      this.AUz.dRg();
+      a.a(this.AUz);
+      if ((a.b(this.AUz) != null) && (a.c(this.AUz) != null))
+      {
+        int j = a.d(this.AUz).AVa;
+        int i;
+        if (j >= 0)
+        {
+          i = j;
+          if (j <= a.d(this.AUz).avU(a.b(this.AUz)).dRf()) {}
+        }
+        else
+        {
+          i = a.d(this.AUz).avU(a.b(this.AUz)).dRf() - 1;
+        }
+        a.a(this.AUz, i + a.d(this.AUz).avU(a.b(this.AUz)).jpL);
+        a.c(this.AUz).setCurrentItem(a.e(this.AUz));
+        a.f(this.AUz);
+        AppMethodBeat.o(63023);
+        return;
+        ab.d("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "update selection");
+        a.b(this.AUz, paramMessage.arg1);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.view.e.a.1
  * JD-Core Version:    0.7.0.1
  */

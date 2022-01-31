@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.traceroute.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.traceroute.b.a.d;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class NetworkDiagnoseUI$6$1
   implements a.d
 {
   NetworkDiagnoseUI$6$1(NetworkDiagnoseUI.6 param6) {}
   
-  public final void Yw()
+  public final void asg()
   {
-    NetworkDiagnoseUI.i(this.pJz.pJy).sendEmptyMessageDelayed(2, 500L);
+    AppMethodBeat.i(26028);
+    NetworkDiagnoseUI.i(this.tnN.tnM).sendEmptyMessageDelayed(2, 500L);
+    AppMethodBeat.o(26028);
   }
 }
 

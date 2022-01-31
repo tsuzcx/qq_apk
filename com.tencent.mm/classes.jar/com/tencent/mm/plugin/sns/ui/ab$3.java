@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.av.a;
-import com.tencent.mm.av.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.a;
+import com.tencent.mm.aw.e;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMusicObject;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class ab$3
   implements Runnable
@@ -14,47 +15,49 @@ final class ab$3
   
   public final void run()
   {
+    AppMethodBeat.i(38327);
     Object localObject;
     String str2;
-    if (3 == this.oQI.oPT.getType())
+    if (3 == this.rIu.rHF.getType())
     {
-      this.oQI.isPlaying = true;
-      localObject = (WXMusicObject)this.oQI.oPT.mediaObject;
-      if (bk.bl(((WXMusicObject)localObject).musicUrl)) {
-        break label238;
+      this.rIu.isPlaying = true;
+      localObject = (WXMusicObject)this.rIu.rHF.mediaObject;
+      if (bo.isNullOrNil(((WXMusicObject)localObject).musicUrl)) {
+        break label248;
       }
       str1 = ((WXMusicObject)localObject).musicUrl;
-      str2 = bk.aM(str1, "");
-      if (bk.bl(((WXMusicObject)localObject).musicDataUrl)) {
-        break label246;
+      str2 = bo.bf(str1, "");
+      if (bo.isNullOrNil(((WXMusicObject)localObject).musicDataUrl)) {
+        break label256;
       }
     }
-    label238:
-    label246:
+    label256:
     for (String str1 = ((WXMusicObject)localObject).musicDataUrl;; str1 = ((WXMusicObject)localObject).musicUrl)
     {
-      str1 = bk.aM(str1, "");
-      if (bk.bl(this.oQI.bUi)) {
-        this.oQI.bUi = System.currentTimeMillis();
+      str1 = bo.bf(str1, "");
+      if (bo.isNullOrNil(this.rIu.cBO)) {
+        this.rIu.cBO = System.currentTimeMillis();
       }
       localObject = new e();
-      ((e)localObject).euv = 1;
-      ((e)localObject).eux = this.oQI.bUi;
-      ((e)localObject).euy = 0.0F;
-      ((e)localObject).euB = "";
-      ((e)localObject).euH = null;
-      ((e)localObject).euw = 1;
-      ((e)localObject).euG = null;
-      ((e)localObject).euz = this.oQI.oPT.title;
-      ((e)localObject).euA = this.oQI.oPT.description;
-      ((e)localObject).euF = str2;
-      ((e)localObject).euE = str1;
-      ((e)localObject).euD = str1;
-      ((e)localObject).euN = "";
-      ((e)localObject).euI = af.FU();
-      ((e)localObject).euK = this.oQI.bOL;
+      ((e)localObject).fKh = 1;
+      ((e)localObject).fKj = this.rIu.cBO;
+      ((e)localObject).fKk = 0.0F;
+      ((e)localObject).fKn = "";
+      ((e)localObject).fKt = null;
+      ((e)localObject).fKi = 1;
+      ((e)localObject).fKs = null;
+      ((e)localObject).fKl = this.rIu.rHF.title;
+      ((e)localObject).fKm = this.rIu.rHF.description;
+      ((e)localObject).fKr = str2;
+      ((e)localObject).fKq = str1;
+      ((e)localObject).fKp = str1;
+      ((e)localObject).fKz = "";
+      ((e)localObject).fKu = ag.getAccPath();
+      ((e)localObject).fKw = this.rIu.cwc;
       a.b((e)localObject);
+      AppMethodBeat.o(38327);
       return;
+      label248:
       str1 = ((WXMusicObject)localObject).musicLowBandUrl;
       break;
     }
@@ -62,7 +65,7 @@ final class ab$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ab.3
  * JD-Core Version:    0.7.0.1
  */

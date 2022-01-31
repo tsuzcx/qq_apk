@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice.model;
 
 public abstract interface i$a
 {
-  public abstract void fB(boolean paramBoolean);
+  public abstract void hd(boolean paramBoolean);
 }
 
 

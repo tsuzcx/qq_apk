@@ -1,5 +1,6 @@
 package com.tencent.wecall.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,18 +11,20 @@ final class g$11
   
   public final void run()
   {
-    synchronized (this.xfh.dhm)
+    AppMethodBeat.i(127958);
+    synchronized (this.BBO.callbacks)
     {
-      Iterator localIterator = this.xfh.dhm.iterator();
+      Iterator localIterator = this.BBO.callbacks.iterator();
       if (localIterator.hasNext()) {
-        ((g.a)localIterator.next()).bR(this.xfj);
+        ((g.a)localIterator.next()).cp(this.BBQ);
       }
     }
+    AppMethodBeat.o(127958);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.g.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,34 @@
 package com.google.android.exoplayer2;
 
-import com.google.android.exoplayer2.source.f.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i$b
 {
-  public final f.b auf;
-  public final long aug;
-  public final long auh;
-  public volatile long aui;
-  public volatile long auj;
+  public volatile long awA;
+  public volatile long awB;
+  public final com.google.android.exoplayer2.source.i.b awx;
+  public final long awy;
+  public final long awz;
   
   public i$b(long paramLong)
   {
-    this(new f.b(0), paramLong);
+    this(new com.google.android.exoplayer2.source.i.b(0), paramLong);
+    AppMethodBeat.i(94803);
+    AppMethodBeat.o(94803);
   }
   
-  public i$b(f.b paramb, long paramLong)
+  public i$b(com.google.android.exoplayer2.source.i.b paramb, long paramLong)
   {
     this(paramb, paramLong, -9223372036854775807L);
   }
   
-  public i$b(f.b paramb, long paramLong1, long paramLong2)
+  public i$b(com.google.android.exoplayer2.source.i.b paramb, long paramLong1, long paramLong2)
   {
-    this.auf = paramb;
-    this.aug = paramLong1;
-    this.auh = paramLong2;
-    this.aui = paramLong1;
-    this.auj = paramLong1;
+    this.awx = paramb;
+    this.awy = paramLong1;
+    this.awz = paramLong2;
+    this.awA = paramLong1;
+    this.awB = paramLong1;
   }
 }
 

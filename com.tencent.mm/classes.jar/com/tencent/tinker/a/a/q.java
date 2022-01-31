@@ -2,7 +2,7 @@ package com.tencent.tinker.a.a;
 
 public final class q
 {
-  public static void c(byte[] paramArrayOfByte, int paramInt, String paramString)
+  public static void b(byte[] paramArrayOfByte, int paramInt, String paramString)
   {
     int k = paramString.length();
     int i = 0;
@@ -42,7 +42,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tinker.a.a.q
  * JD-Core Version:    0.7.0.1
  */

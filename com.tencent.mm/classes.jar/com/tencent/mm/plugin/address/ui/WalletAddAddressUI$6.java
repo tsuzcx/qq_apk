@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.address.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletAddAddressUI$6
   implements DialogInterface.OnClickListener
@@ -11,8 +12,10 @@ final class WalletAddAddressUI$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(16935);
     paramDialogInterface.dismiss();
-    this.fvu.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    this.gMZ.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.o(16935);
   }
 }
 

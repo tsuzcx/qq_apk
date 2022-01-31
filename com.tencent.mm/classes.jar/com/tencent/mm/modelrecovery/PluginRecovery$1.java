@@ -1,10 +1,11 @@
 package com.tencent.mm.modelrecovery;
 
-import com.tencent.mm.h.a.nf;
-import com.tencent.mm.h.a.nf.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.oc;
+import com.tencent.mm.g.a.oc.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.recovery.RecoveryContext;
 import com.tencent.recovery.RecoveryLogic;
 import com.tencent.recovery.option.CommonOptions.Builder;
@@ -13,42 +14,45 @@ import com.tencent.recovery.wx.service.WXRecoveryUploadService;
 import com.tencent.recovery.wx.util.WXUtil;
 
 final class PluginRecovery$1
-  extends c<nf>
+  extends c<oc>
 {
   PluginRecovery$1(PluginRecovery paramPluginRecovery)
   {
-    this.udX = nf.class.getName().hashCode();
+    AppMethodBeat.i(16523);
+    this.__eventId = oc.class.getName().hashCode();
+    AppMethodBeat.o(16523);
   }
   
-  private static boolean a(nf paramnf)
+  private static boolean a(oc paramoc)
   {
-    switch (paramnf.bWX.action)
+    AppMethodBeat.i(16524);
+    switch (paramoc.cEO.action)
     {
-    default: 
-      return false;
-    case 2: 
-      a.PM();
-      return false;
-    case 1: 
-      paramnf = ae.getContext();
-      localBuilder = new CommonOptions.Builder();
-      localBuilder.wKY = WXRecoveryHandleService.class.getName();
-      localBuilder.wKZ = WXRecoveryUploadService.class.getName();
-      localBuilder.clientVersion = d.CLIENT_VERSION;
-      localBuilder.wKU = String.format("file:///sdcard/test-recovery.conf", new Object[0]);
-      localBuilder.dCX = WXUtil.hw(paramnf);
-      RecoveryLogic.a(paramnf, localBuilder.cOD(), new RecoveryContext());
-      return false;
     }
-    paramnf = ae.getContext();
-    CommonOptions.Builder localBuilder = new CommonOptions.Builder();
-    localBuilder.wKY = WXRecoveryHandleService.class.getName();
-    localBuilder.wKZ = WXRecoveryUploadService.class.getName();
-    localBuilder.clientVersion = d.CLIENT_VERSION;
-    localBuilder.wKU = "http://dldir1.qq.com/weixin/android/recovery-0x26032011.conf";
-    localBuilder.dCX = WXUtil.hw(paramnf);
-    RecoveryLogic.a(paramnf, localBuilder.cOD(), new RecoveryContext());
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(16524);
+      return false;
+      a.aiR();
+      continue;
+      paramoc = ah.getContext();
+      CommonOptions.Builder localBuilder = new CommonOptions.Builder();
+      localBuilder.Bix = WXRecoveryHandleService.class.getName();
+      localBuilder.Biy = WXRecoveryUploadService.class.getName();
+      localBuilder.clientVersion = f.CLIENT_VERSION;
+      localBuilder.Biu = String.format("file:///sdcard/test-recovery.conf", new Object[0]);
+      localBuilder.eAx = WXUtil.iY(paramoc);
+      RecoveryLogic.a(paramoc, localBuilder.dUs(), new RecoveryContext());
+      continue;
+      paramoc = ah.getContext();
+      localBuilder = new CommonOptions.Builder();
+      localBuilder.Bix = WXRecoveryHandleService.class.getName();
+      localBuilder.Biy = WXRecoveryUploadService.class.getName();
+      localBuilder.clientVersion = f.CLIENT_VERSION;
+      localBuilder.Biu = "http://dldir1.qq.com/weixin/android/recovery-0x26032011.conf";
+      localBuilder.eAx = WXUtil.iY(paramoc);
+      RecoveryLogic.a(paramoc, localBuilder.dUs(), new RecoveryContext());
+    }
   }
 }
 

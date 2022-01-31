@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.webview.ui.tools.game.menu;
 
-import com.tencent.mm.protocal.c.awk;
+import com.tencent.mm.protocal.protobuf.bcz;
 import java.util.Comparator;
 
 final class c$1
-  implements Comparator<awk>
+  implements Comparator<bcz>
 {}
 
 

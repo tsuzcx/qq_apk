@@ -6,141 +6,179 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class VolumeMeter
   extends ImageView
   implements Runnable
 {
-  private boolean eku = false;
-  private Paint gaZ;
-  private float lHA;
-  private float lHB;
-  private float lHC;
-  private float lHD;
-  private int lHE = -6751336;
-  private int lHF = 70;
-  private float lHG = 0.5F;
-  private float lHH = 0.001F;
-  private int lHI = 20;
-  private float lHJ;
-  private float lHK;
-  private float lHL = 40.0F;
-  private float lHM = 30.0F;
-  private boolean lHv = false;
-  private View lHw;
-  private int lHx = -1;
-  private int lHy = -1;
-  private ah lHz = null;
+  private boolean fAK;
   private Context mContext;
-  private float radius = 0.0F;
+  private float maxRadius;
+  private boolean oeI;
+  private View oeJ;
+  private int oeK;
+  private int oeL;
+  private ak oeM;
+  private float oeN;
+  private float oeO;
+  private float oeP;
+  private float oeQ;
+  private int oeR;
+  private int oeS;
+  private float oeT;
+  private float oeU;
+  private int oeV;
+  private float oeW;
+  private float oeX;
+  private float oeY;
+  private Paint paint;
+  private float radius;
   
   public VolumeMeter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(108004);
+    this.fAK = false;
+    this.oeI = false;
+    this.oeK = -1;
+    this.oeL = -1;
+    this.oeM = null;
+    this.oeR = -6751336;
+    this.oeS = 70;
+    this.oeT = 0.5F;
+    this.oeU = 0.001F;
+    this.oeV = 20;
+    this.radius = 0.0F;
+    this.oeX = 40.0F;
+    this.oeY = 30.0F;
     this.mContext = paramContext;
     init();
+    AppMethodBeat.o(108004);
   }
   
   public VolumeMeter(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(108003);
+    this.fAK = false;
+    this.oeI = false;
+    this.oeK = -1;
+    this.oeL = -1;
+    this.oeM = null;
+    this.oeR = -6751336;
+    this.oeS = 70;
+    this.oeT = 0.5F;
+    this.oeU = 0.001F;
+    this.oeV = 20;
+    this.radius = 0.0F;
+    this.oeX = 40.0F;
+    this.oeY = 30.0F;
     this.mContext = paramContext;
     init();
+    AppMethodBeat.o(108003);
   }
   
   private void init()
   {
-    this.gaZ = new Paint();
+    AppMethodBeat.i(108005);
+    this.paint = new Paint();
+    AppMethodBeat.o(108005);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(108006);
     super.onDraw(paramCanvas);
     getWidth();
     getHeight();
-    if ((this.lHw == null) || (this.lHw.getVisibility() == 4)) {}
-    while ((this.lHx < 0) || (this.lHy < 0))
+    if ((this.oeJ == null) || (this.oeJ.getVisibility() == 4)) {}
+    while ((this.oeK < 0) || (this.oeL < 0))
     {
+      AppMethodBeat.o(108006);
       return;
       int[] arrayOfInt = new int[2];
-      this.lHw.getLocationInWindow(arrayOfInt);
+      this.oeJ.getLocationInWindow(arrayOfInt);
       if ((arrayOfInt[0] != 0) && (arrayOfInt[1] != 0))
       {
-        int i = this.lHw.getWidth();
-        int j = this.lHw.getHeight();
+        int i = this.oeJ.getWidth();
+        int j = this.oeJ.getHeight();
         if ((i != 0) && (j != 0))
         {
           int k = BackwardSupportUtil.b.b(this.mContext, 50.0F);
-          this.lHx = (arrayOfInt[0] + i / 2);
-          this.lHy = (arrayOfInt[1] + j / 2 - k / 2);
-          this.lHK = (i / 2);
-          this.lHJ = (i / 2 * 2.0F);
+          this.oeK = (arrayOfInt[0] + i / 2);
+          this.oeL = (arrayOfInt[1] + j / 2 - k / 2);
+          this.oeW = (i / 2);
+          this.maxRadius = (i / 2 * 2.0F);
         }
       }
     }
-    this.gaZ.setColor(this.lHE);
-    this.gaZ.setAlpha(this.lHF);
+    this.paint.setColor(this.oeR);
+    this.paint.setAlpha(this.oeS);
     float f2 = BackwardSupportUtil.b.b(this.mContext, this.radius);
     float f1 = f2;
-    if (f2 > this.lHJ) {
-      f1 = this.lHJ;
+    if (f2 > this.maxRadius) {
+      f1 = this.maxRadius;
     }
     f2 = f1;
-    if (f1 < this.lHK) {
-      f2 = this.lHK;
+    if (f1 < this.oeW) {
+      f2 = this.oeW;
     }
-    paramCanvas.drawCircle(this.lHx, this.lHy, f2, this.gaZ);
+    paramCanvas.drawCircle(this.oeK, this.oeL, f2, this.paint);
+    AppMethodBeat.o(108006);
   }
   
   public void run()
   {
+    AppMethodBeat.i(108002);
     float f2;
     float f3;
     float f1;
-    if (this.eku)
+    if (this.fAK)
     {
-      f2 = this.lHC;
-      if (this.lHB <= this.lHA) {
-        break label137;
+      f2 = this.oeP;
+      if (this.oeO <= this.oeN) {
+        break label147;
       }
-      f3 = (this.lHB - this.lHA) / this.lHM;
-      if (f3 <= this.lHG) {
-        break label118;
+      f3 = (this.oeO - this.oeN) / this.oeY;
+      if (f3 <= this.oeT) {
+        break label128;
       }
-      f1 = this.lHG;
+      f1 = this.oeT;
       f1 += f2;
     }
     for (;;)
     {
-      this.lHC = f1;
-      this.lHD = this.lHC;
-      this.radius = ((float)(260.0D * Math.sqrt(this.lHC) - 130.0F * this.lHC) / 1.5F);
+      this.oeP = f1;
+      this.oeQ = this.oeP;
+      this.radius = ((float)(260.0D * Math.sqrt(this.oeP) - 130.0F * this.oeP) / 1.5F);
       postInvalidate();
-      this.lHz.postDelayed(this, this.lHI);
+      this.oeM.postDelayed(this, this.oeV);
+      AppMethodBeat.o(108002);
       return;
-      label118:
+      label128:
       f1 = f3;
-      if (f3 >= this.lHH) {
+      if (f3 >= this.oeU) {
         break;
       }
-      f1 = this.lHH;
+      f1 = this.oeU;
       break;
-      label137:
-      if (this.lHB <= this.lHA)
+      label147:
+      if (this.oeO <= this.oeN)
       {
-        f3 = (this.lHA - this.lHB) / this.lHL;
-        if (f3 > this.lHG) {
-          f1 = this.lHG;
+        f3 = (this.oeN - this.oeO) / this.oeX;
+        if (f3 > this.oeT) {
+          f1 = this.oeT;
         }
         for (;;)
         {
           f1 = f2 - f1;
           break;
           f1 = f3;
-          if (f3 < this.lHH) {
-            f1 = this.lHH;
+          if (f3 < this.oeU) {
+            f1 = this.oeU;
           }
         }
       }
@@ -150,13 +188,13 @@ public class VolumeMeter
   
   public void setArchView(View paramView)
   {
-    this.lHw = paramView;
+    this.oeJ = paramView;
   }
   
   public void setVolume(float paramFloat)
   {
-    this.lHA = this.lHB;
-    this.lHB = paramFloat;
+    this.oeN = this.oeO;
+    this.oeO = paramFloat;
   }
 }
 

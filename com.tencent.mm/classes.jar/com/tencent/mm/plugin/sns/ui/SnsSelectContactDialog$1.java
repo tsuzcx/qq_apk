@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class SnsSelectContactDialog$1
@@ -12,14 +13,16 @@ final class SnsSelectContactDialog$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt == SnsSelectContactDialog.a(this.pbH).getCount() - 1) {
-      SnsSelectContactDialog.b(this.pbH);
+    AppMethodBeat.i(39187);
+    if (paramInt == SnsSelectContactDialog.a(this.rUr).getCount() - 1) {
+      SnsSelectContactDialog.b(this.rUr);
     }
     for (;;)
     {
-      SnsSelectContactDialog.a(this.pbH).refresh();
+      SnsSelectContactDialog.a(this.rUr).refresh();
+      AppMethodBeat.o(39187);
       return;
-      SnsSelectContactDialog.c(this.pbH).remove(paramInt);
+      SnsSelectContactDialog.c(this.rUr).remove(paramInt);
     }
   }
 }

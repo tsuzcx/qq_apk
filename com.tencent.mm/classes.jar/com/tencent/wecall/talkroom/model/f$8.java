@@ -1,5 +1,6 @@
 package com.tencent.wecall.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.c.c;
 
 final class f$8
@@ -9,18 +10,20 @@ final class f$8
   
   public final void run()
   {
-    if ((this.xeA.bPW()) && (f.s(this.xeA)))
+    AppMethodBeat.i(127877);
+    if ((this.BBh.cMa()) && (f.s(this.BBh)))
     {
       c.d("TalkRoomService", new Object[] { "syscall", "finishtalk becos holdtimeout" });
-      h.KB(-2003);
-      this.xeA.xdZ.KE(401);
-      this.xeA.at(f.b(this.xeA), 3, 108);
+      h.Tu(-2003);
+      this.BBh.BAG.Tx(401);
+      this.BBh.aK(f.b(this.BBh), 3, 108);
     }
+    AppMethodBeat.o(127877);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.f.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.subapp.ui.gallery;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.bv;
+import com.tencent.mm.sdk.b.c;
 
 final class GestureGalleryUI$1
-  implements MenuItem.OnMenuItemClickListener
+  extends c<bv>
 {
-  GestureGalleryUI$1(GestureGalleryUI paramGestureGalleryUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  GestureGalleryUI$1(GestureGalleryUI paramGestureGalleryUI)
   {
-    this.pwN.finish();
-    return true;
+    AppMethodBeat.i(25375);
+    this.__eventId = bv.class.getName().hashCode();
+    AppMethodBeat.o(25375);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.gallery.GestureGalleryUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,28 @@
 package com.tencent.mm.az;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.xb;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.LinkedList;
+
+@Deprecated
 public final class e
-  extends com.tencent.mm.bv.a
+  extends j.b
 {
-  public String ewH;
-  public String lang;
+  private xb fLO;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public e(String paramString, long paramLong)
   {
-    if (paramInt == 0)
-    {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.ewH != null) {
-        paramVarArgs.d(1, this.ewH);
-      }
-      if (this.lang != null) {
-        paramVarArgs.d(2, this.lang);
-      }
-      return 0;
-    }
-    if (paramInt == 1) {
-      if (this.ewH == null) {
-        break label234;
-      }
-    }
-    label234:
-    for (paramInt = d.a.a.b.b.a.e(1, this.ewH) + 0;; paramInt = 0)
-    {
-      int i = paramInt;
-      if (this.lang != null) {
-        i = paramInt + d.a.a.b.b.a.e(2, this.lang);
-      }
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
-          }
-        }
-        break;
-      }
-      if (paramInt == 3)
-      {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
-        e locale = (e)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          return -1;
-        case 1: 
-          locale.ewH = locala.xpH.readString();
-          return 0;
-        }
-        locale.lang = locala.xpH.readString();
-        return 0;
-      }
-      return -1;
-    }
+    super(9);
+    AppMethodBeat.i(16519);
+    this.fLO = new xb();
+    this.fLO.wOT = new bwc().aoF(bo.nullAsNil(paramString));
+    this.fLO.wOZ.add(Integer.valueOf((int)paramLong));
+    this.fLO.jJu = 1;
+    this.oDZ = this.fLO;
+    AppMethodBeat.o(16519);
   }
 }
 

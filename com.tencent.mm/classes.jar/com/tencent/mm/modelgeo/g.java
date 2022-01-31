@@ -1,51 +1,43 @@
 package com.tencent.mm.modelgeo;
 
-import android.content.Context;
-import android.os.Looper;
+import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
-import com.tencent.map.geolocation.TencentLocationManager;
-import com.tencent.map.geolocation.TencentLocationManagerOptions;
-import com.tencent.map.geolocation.TencentLocationRequest;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class g
+public abstract class g
+  implements TencentLocationListener
 {
-  private static g elY = null;
-  private static Context mContext;
+  private final Map<String, Integer> fCp = new HashMap();
   
-  public static void Og()
+  public g()
   {
-    y.d("MicroMsg.SLocationManager", "removeUpdate");
-    TencentLocationManager.getInstance(mContext).removeUpdates(null);
+    this.fCp.put("gps", Integer.valueOf(0));
+    this.fCp.put("network", Integer.valueOf(1));
   }
   
-  public static void a(TencentLocationListener paramTencentLocationListener, int paramInt, Looper paramLooper)
-  {
-    y.d("MicroMsg.SLocationManager", "requestLocationUpdate %s, isLoaded %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(TencentLocationManagerOptions.isLoadLibraryEnabled()) });
-    h.nFQ.a(584L, 0L, 1L, true);
-    TencentLocationManager.getInstance(mContext).setCoordinateType(paramInt);
-    TencentLocationRequest localTencentLocationRequest = TencentLocationRequest.create();
-    localTencentLocationRequest.setInterval(2000L);
-    y.i("MicroMsg.SLocationManager", "requestCode %d", new Object[] { Integer.valueOf(TencentLocationManager.getInstance(mContext).requestLocationUpdates(localTencentLocationRequest, paramTencentLocationListener, paramLooper)) });
-  }
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2, int paramInt1, double paramDouble3, double paramDouble4, double paramDouble5, String paramString1, String paramString2, int paramInt2) {}
   
-  public static g by(Context paramContext)
+  public void onLocationChanged(TencentLocation paramTencentLocation, int paramInt, String paramString)
   {
-    if (elY == null) {
-      elY = new g();
+    ab.i("MicroMsg.SLocationListenerWgs84", "lat=%f, lng=%f, accuracy=%f errcode=%d, areastat=%d, speed=%f, bearing=%f, reason=%s, provider=%s", new Object[] { Double.valueOf(paramTencentLocation.getLatitude()), Double.valueOf(paramTencentLocation.getLongitude()), Float.valueOf(paramTencentLocation.getAccuracy()), Integer.valueOf(paramInt), paramTencentLocation.getAreaStat(), Float.valueOf(paramTencentLocation.getSpeed()), Float.valueOf(paramTencentLocation.getBearing()), paramString, paramTencentLocation.getProvider() });
+    if (paramInt == 0)
+    {
+      a(true, paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude(), ((Integer)this.fCp.get(paramTencentLocation.getProvider())).intValue(), paramTencentLocation.getSpeed(), paramTencentLocation.getAccuracy(), paramTencentLocation.getAltitude(), paramTencentLocation.getIndoorBuildingId(), paramTencentLocation.getIndoorBuildingFloor(), paramTencentLocation.getIndoorLocationType());
+      return;
     }
-    mContext = paramContext;
-    return elY;
+    a(false, paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude(), ((Integer)this.fCp.get(paramTencentLocation.getProvider())).intValue(), paramTencentLocation.getSpeed(), paramTencentLocation.getAccuracy(), paramTencentLocation.getAltitude(), paramTencentLocation.getIndoorBuildingId(), paramTencentLocation.getIndoorBuildingFloor(), paramTencentLocation.getIndoorLocationType());
   }
   
-  public static final class a
-    extends Exception
-  {}
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2)
+  {
+    ab.d("MicroMsg.SLocationListenerWgs84", "onStatusUpdate, name=%s, status=%d, desc=%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelgeo.g
  * JD-Core Version:    0.7.0.1
  */

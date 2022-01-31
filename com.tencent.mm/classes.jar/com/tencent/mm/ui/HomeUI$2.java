@@ -1,5 +1,7 @@
 package com.tencent.mm.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class HomeUI$2
   implements Runnable
 {
@@ -7,12 +9,9 @@ final class HomeUI$2
   
   public final void run()
   {
-    HomeUI.d(this.uKu).supportInvalidateOptionsMenu();
-  }
-  
-  public final String toString()
-  {
-    return super.toString() + "|supportInvalidateOptionsMenu";
+    AppMethodBeat.i(153760);
+    HomeUI.dBW();
+    AppMethodBeat.o(153760);
   }
 }
 

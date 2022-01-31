@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WeUIPreference$2
   implements AdapterView.OnItemClickListener
@@ -13,12 +14,25 @@ final class WeUIPreference$2
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(113261);
     paramAdapterView = (Preference)paramAdapterView.getAdapter().getItem(paramInt);
-    if (paramAdapterView == null) {}
-    while ((!paramAdapterView.isEnabled()) || (!paramAdapterView.isSelectable()) || ((paramAdapterView instanceof CheckBoxPreference))) {
+    if (paramAdapterView == null)
+    {
+      AppMethodBeat.o(113261);
       return;
     }
-    paramAdapterView.getKey();
+    if ((paramAdapterView.isEnabled()) && (paramAdapterView.isSelectable()))
+    {
+      if ((paramAdapterView instanceof CheckBoxPreference))
+      {
+        AppMethodBeat.o(113261);
+        return;
+      }
+      if (paramAdapterView.getKey() != null) {
+        WeUIPreference.d(this.BCz);
+      }
+    }
+    AppMethodBeat.o(113261);
   }
 }
 

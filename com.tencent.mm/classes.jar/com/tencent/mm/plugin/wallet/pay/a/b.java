@@ -1,123 +1,200 @@
 package com.tencent.mm.plugin.wallet.pay.a;
 
-import android.content.Context;
-import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.ad;
-import com.tencent.mm.plugin.wallet_core.model.d;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.tenpay.model.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
-  extends j
 {
-  public String desc;
-  public String mOZ;
-  public double nyN;
+  private static Map<String, List<Integer>> tVj;
+  private static Map<String, Boolean> tVk;
+  private static Map<String, Integer> tVl;
   
-  public b(String paramString)
+  static
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("token", paramString);
-    D(localHashMap);
+    AppMethodBeat.i(45918);
+    tVj = new ConcurrentHashMap();
+    tVk = new ConcurrentHashMap();
+    tVl = new ConcurrentHashMap();
+    AppMethodBeat.o(45918);
   }
   
-  public final int HH()
+  public static void aeW(String paramString)
   {
-    return 1603;
-  }
-  
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    ad localad;
-    if (paramInt == 0)
+    AppMethodBeat.i(45910);
+    if (bo.isNullOrNil(paramString))
     {
-      this.mOZ = paramJSONObject.optString("fee_type");
-      this.nyN = (paramJSONObject.optDouble("total_fee") / 100.0D);
-      paramString = paramJSONObject.optJSONArray("Array");
-      if ((paramString != null) && (paramString.length() > 0)) {
-        this.desc = ((JSONObject)paramString.opt(0)).optString("desc");
-      }
-      localad = o.bVt();
-      paramJSONObject = paramJSONObject.optJSONObject("bindqueryresp");
-      localad.qyY.clear();
-      if (paramJSONObject == null) {
-        y.e("MicroMsg.WalletRepaymentBankcardMgr", "parse from json error,json is null");
-      }
-    }
-    else
-    {
+      AppMethodBeat.o(45910);
       return;
     }
-    JSONArray localJSONArray = paramJSONObject.optJSONArray("Array");
-    if ((localJSONArray == null) || (localJSONArray.length() <= 0))
+    if (tVl.containsKey(paramString))
     {
-      y.e("MicroMsg.WalletRepaymentBankcardMgr", "repayment bankcard list is null");
-      paramString = paramJSONObject.optJSONObject("user_info");
-      if (paramString != null) {
-        localad.qyZ = paramString.optString("last_card_bind_serialno");
-      }
+      localInteger = (Integer)tVl.get(paramString);
+      if (localInteger == null) {}
     }
-    else
+    for (Integer localInteger = Integer.valueOf(localInteger.intValue() + 1);; localInteger = Integer.valueOf(1))
     {
-      paramInt = 0;
-      while (paramInt < localJSONArray.length())
+      tVl.put(paramString, localInteger);
+      AppMethodBeat.o(45910);
+      return;
+    }
+  }
+  
+  public static void aeX(String paramString)
+  {
+    AppMethodBeat.i(45911);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(45911);
+      return;
+    }
+    tVl.remove(paramString);
+    AppMethodBeat.o(45911);
+  }
+  
+  private static boolean aeY(String paramString)
+  {
+    AppMethodBeat.i(45913);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(45913);
+      return false;
+    }
+    if (tVl.containsKey(paramString))
+    {
+      paramString = (Integer)tVl.get(paramString);
+      if (paramString == null)
       {
-        d locald = d.bUV();
-        try
+        AppMethodBeat.o(45913);
+        return false;
+      }
+      if (paramString.intValue() > 1)
+      {
+        AppMethodBeat.o(45913);
+        return true;
+      }
+    }
+    AppMethodBeat.o(45913);
+    return false;
+  }
+  
+  public static void aeZ(String paramString)
+  {
+    AppMethodBeat.i(45916);
+    if ((!bo.isNullOrNil(paramString)) && (!tVj.containsKey(paramString))) {
+      tVj.put(paramString, new ArrayList());
+    }
+    AppMethodBeat.o(45916);
+  }
+  
+  public static void afa(String paramString)
+  {
+    AppMethodBeat.i(45917);
+    if (!bo.isNullOrNil(paramString))
+    {
+      tVj.remove(paramString);
+      tVk.remove(paramString);
+    }
+    AppMethodBeat.o(45917);
+  }
+  
+  public static void bG(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(45915);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(45915);
+      return;
+    }
+    tVk.put(paramString, Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(45915);
+  }
+  
+  public static void dD(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(45912);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(45912);
+      return;
+    }
+    if (!tVj.containsKey(paramString))
+    {
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(Integer.valueOf(paramInt));
+      tVj.put(paramString, localObject);
+      AppMethodBeat.o(45912);
+      return;
+    }
+    Object localObject = (List)tVj.get(paramString);
+    ((List)localObject).add(Integer.valueOf(paramInt));
+    tVj.put(paramString, localObject);
+    AppMethodBeat.o(45912);
+  }
+  
+  public static void r(String paramString, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(45914);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(45914);
+      return;
+    }
+    if ((tVj.containsKey(paramString)) && (((List)tVj.get(paramString)).size() > 0))
+    {
+      if (paramInt != 1) {
+        break label206;
+      }
+      h.qsU.j(965L, 10L, 1L);
+      h.qsU.j(965L, 30L, 1L);
+      if (aeY(paramString)) {
+        h.qsU.j(965L, 25L, 1L);
+      }
+      if (aeY(paramString)) {
+        h.qsU.j(965L, 24L, 1L);
+      }
+      h.qsU.j(965L, 29L, 1L);
+      if (!paramBoolean) {
+        break label260;
+      }
+      h.qsU.j(965L, 20L, 1L);
+    }
+    for (;;)
+    {
+      if (tVk.containsKey(paramString))
+      {
+        paramString = (Boolean)tVk.get(paramString);
+        if (paramString != null)
         {
-          paramString = (JSONObject)localJSONArray.get(paramInt);
-          if (paramString != null)
+          if (paramString.booleanValue())
           {
-            paramString = locald.am(paramString);
-            if (paramString.bUQ())
-            {
-              paramString.field_desc = paramString.field_bankName;
-              localad.qyY.add(paramString);
+            h.qsU.j(965L, 18L, 1L);
+            AppMethodBeat.o(45914);
+            return;
+            label206:
+            if (paramInt != 2) {
+              break;
             }
-          }
-          else
-          {
-            paramInt += 1;
-          }
-        }
-        catch (JSONException paramString)
-        {
-          for (;;)
-          {
-            y.printErrStackTrace("MicroMsg.WalletRepaymentBankcardMgr", paramString, "", new Object[0]);
-            paramString = null;
+            h.qsU.j(965L, 11L, 1L);
+            h.qsU.j(965L, 31L, 1L);
+            if (!aeY(paramString)) {
+              break;
+            }
+            h.qsU.j(965L, 26L, 1L);
+            break;
+            label260:
+            h.qsU.j(965L, 21L, 1L);
             continue;
-            if (paramString.bUS()) {
-              paramString.field_desc = ae.getContext().getString(a.i.wallet_credit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
-            } else if (paramString.bUP()) {
-              paramString.field_desc = ae.getContext().getString(a.i.wallet_wxcredit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
-            } else {
-              paramString.field_desc = ae.getContext().getString(a.i.wallet_deposit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
-            }
           }
+          h.qsU.j(965L, 19L, 1L);
         }
       }
     }
-    y.e("MicroMsg.WalletRepaymentBankcardMgr", "user_info is null");
-  }
-  
-  public final int aEC()
-  {
-    return 123;
-  }
-  
-  public final String getUri()
-  {
-    return "/cgi-bin/mmpay-bin/tenpay/webankloanordershow";
+    AppMethodBeat.o(45914);
   }
 }
 

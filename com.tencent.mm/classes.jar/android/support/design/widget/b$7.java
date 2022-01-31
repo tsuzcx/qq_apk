@@ -5,20 +5,20 @@ final class b$7
 {
   b$7(b paramb) {}
   
-  public final void ar()
+  public final void aV()
   {
-    this.eX.eS.setOnLayoutChangeListener(null);
-    if (this.eX.ap())
+    this.fW.fR.setOnLayoutChangeListener(null);
+    if (this.fW.aT())
     {
-      this.eX.am();
+      this.fW.aQ();
       return;
     }
-    this.eX.an();
+    this.fW.aR();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.design.widget.b.7
  * JD-Core Version:    0.7.0.1
  */

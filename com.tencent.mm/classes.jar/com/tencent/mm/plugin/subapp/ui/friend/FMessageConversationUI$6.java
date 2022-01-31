@@ -1,37 +1,20 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
-import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
-import com.tencent.mm.plugin.account.bind.ui.MobileFriendUI;
-import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.s;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FMessageConversationUI$6
-  implements AdapterView.OnItemClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   FMessageConversationUI$6(FMessageConversationUI paramFMessageConversationUI) {}
   
-  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (paramInt == 0)
-    {
-      if (l.WP() != l.a.ffT)
-      {
-        paramAdapterView = new Intent(this.pwx.mController.uMN, BindMContactIntroUI.class);
-        paramAdapterView.putExtra("key_upload_scene", 5);
-        MMWizardActivity.C(this.pwx.mController.uMN, paramAdapterView);
-      }
-    }
-    else {
-      return;
-    }
-    this.pwx.startActivity(new Intent(this.pwx.mController.uMN, MobileFriendUI.class));
+    AppMethodBeat.i(25363);
+    this.sYg.finish();
+    AppMethodBeat.o(25363);
+    return true;
   }
 }
 

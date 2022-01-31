@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.monitor;
 
-import com.tencent.mm.h.a.md;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.mv;
 import com.tencent.mm.sdk.b.c;
 
 final class b$11
-  extends c<md>
+  extends c<mv>
 {
   b$11(b paramb)
   {
-    this.udX = md.class.getName().hashCode();
+    AppMethodBeat.i(84528);
+    this.__eventId = mv.class.getName().hashCode();
+    AppMethodBeat.o(84528);
   }
 }
 

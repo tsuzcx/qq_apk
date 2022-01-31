@@ -1,9 +1,8 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.model.aq;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.vfs.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ar;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class OnlineVideoView$9
   implements Runnable
@@ -12,24 +11,26 @@ final class OnlineVideoView$9
   
   public final void run()
   {
-    y.w("MicroMsg.OnlineVideoView", "%d deal sns video change isOnlinePlay[%b]", new Object[] { Integer.valueOf(this.oRM.hashCode()), Boolean.valueOf(OnlineVideoView.x(this.oRM)) });
-    if (OnlineVideoView.x(this.oRM))
+    AppMethodBeat.i(38398);
+    ab.w("MicroMsg.OnlineVideoView", "%d deal sns video change isOnlinePlay[%b]", new Object[] { Integer.valueOf(this.rJD.hashCode()), Boolean.valueOf(OnlineVideoView.w(this.rJD)) });
+    if (OnlineVideoView.w(this.rJD))
     {
-      OnlineVideoView.y(this.oRM);
-      OnlineVideoView.d(this.oRM).stop();
-      this.oRM.bHO();
-      String str = aq.D(OnlineVideoView.e(this.oRM));
-      boolean bool = e.deleteFile(str);
-      if (OnlineVideoView.k(this.oRM) != null)
+      OnlineVideoView.x(this.rJD);
+      this.rJD.kvG.stop();
+      this.rJD.ctW();
+      String str = ar.D(OnlineVideoView.c(this.rJD));
+      boolean bool = com.tencent.mm.vfs.e.deleteFile(str);
+      if (this.rJD.rJi != null)
       {
-        OnlineVideoView.k(this.oRM).bHU();
-        OnlineVideoView.k(this.oRM).clear();
-        OnlineVideoView.a(this.oRM, new ae(this.oRM));
+        this.rJD.rJi.cuf();
+        this.rJD.rJi.clear();
+        this.rJD.rJi = new ae(this.rJD);
       }
-      y.i("MicroMsg.OnlineVideoView", "%d delete video file[%b] [%s]", new Object[] { Integer.valueOf(this.oRM.hashCode()), Boolean.valueOf(bool), str });
-      OnlineVideoView.z(this.oRM);
-      OnlineVideoView.A(this.oRM);
+      ab.i("MicroMsg.OnlineVideoView", "%d delete video file[%b] [%s]", new Object[] { Integer.valueOf(this.rJD.hashCode()), Boolean.valueOf(bool), str });
+      OnlineVideoView.y(this.rJD);
+      OnlineVideoView.z(this.rJD);
     }
+    AppMethodBeat.o(38398);
   }
 }
 

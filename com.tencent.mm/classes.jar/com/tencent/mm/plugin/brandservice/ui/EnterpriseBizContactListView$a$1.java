@@ -4,7 +4,7 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mm.plugin.brandservice.b.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EnterpriseBizContactListView$a$1
   implements View.OnCreateContextMenuListener
@@ -13,7 +13,9 @@ final class EnterpriseBizContactListView$a$1
   
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    paramContextMenu.add(this.kX, 1, 0, b.h.enterprise_longclick_disable_sub);
+    AppMethodBeat.i(13958);
+    paramContextMenu.add(this.lU, 1, 0, 2131299316);
+    AppMethodBeat.o(13958);
   }
 }
 

@@ -1,10 +1,9 @@
 package com.tencent.mm.pluginsdk.f;
 
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.SpannedString;
 import android.text.format.DateUtils;
 import android.text.format.Time;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -13,48 +12,47 @@ public final class g
 {
   private static int a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(79454);
     if ((paramInt1 + 1 < paramInt2) && (paramSpannableStringBuilder.charAt(paramInt1 + 1) == '\''))
     {
       paramSpannableStringBuilder.delete(paramInt1, paramInt1 + 1);
-      j = 1;
-      return j;
+      AppMethodBeat.o(79454);
+      return 1;
     }
     int j = 0;
     paramSpannableStringBuilder.delete(paramInt1, paramInt1 + 1);
     int i = paramInt2 - 1;
-    paramInt2 = paramInt1;
-    paramInt1 = j;
+    paramInt2 = j;
     for (;;)
     {
-      j = paramInt1;
-      if (paramInt2 >= i) {
-        break;
-      }
-      if (paramSpannableStringBuilder.charAt(paramInt2) == '\'')
+      if (paramInt1 < i)
       {
-        if ((paramInt2 + 1 < i) && (paramSpannableStringBuilder.charAt(paramInt2 + 1) == '\''))
+        if (paramSpannableStringBuilder.charAt(paramInt1) == '\'')
         {
-          paramSpannableStringBuilder.delete(paramInt2, paramInt2 + 1);
-          i -= 1;
-          paramInt1 += 1;
-          paramInt2 += 1;
-        }
-        else
-        {
-          paramSpannableStringBuilder.delete(paramInt2, paramInt2 + 1);
-          return paramInt1;
+          if ((paramInt1 + 1 < i) && (paramSpannableStringBuilder.charAt(paramInt1 + 1) == '\''))
+          {
+            paramSpannableStringBuilder.delete(paramInt1, paramInt1 + 1);
+            i -= 1;
+            paramInt2 += 1;
+            paramInt1 += 1;
+            continue;
+          }
+          paramSpannableStringBuilder.delete(paramInt1, paramInt1 + 1);
         }
       }
       else
       {
-        paramInt2 += 1;
-        paramInt1 += 1;
+        AppMethodBeat.o(79454);
+        return paramInt2;
       }
+      paramInt1 += 1;
+      paramInt2 += 1;
     }
   }
   
   public static CharSequence a(CharSequence paramCharSequence, Time paramTime)
   {
+    AppMethodBeat.i(79453);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramCharSequence);
     int i = paramCharSequence.length();
     int m = 0;
@@ -77,39 +75,38 @@ public final class g
       while ((m + j < i) && (localSpannableStringBuilder.charAt(m + j) == k)) {
         j += 1;
       }
-      Object localObject;
       switch (k)
       {
       default: 
-        localObject = null;
+        paramCharSequence = null;
       }
       for (;;)
       {
-        if (localObject != null)
+        if (paramCharSequence != null)
         {
-          localSpannableStringBuilder.replace(m, m + j, (CharSequence)localObject);
-          j = ((String)localObject).length();
+          localSpannableStringBuilder.replace(m, m + j, paramCharSequence);
+          j = paramCharSequence.length();
           i = localSpannableStringBuilder.length();
           break;
           if (paramTime.hour < 12) {}
           for (k = 0;; k = 1)
           {
-            localObject = DateUtils.getAMPMString(k);
+            paramCharSequence = DateUtils.getAMPMString(k);
             break;
           }
           if (paramTime.hour < 12) {}
           for (k = 0;; k = 1)
           {
-            localObject = DateUtils.getAMPMString(k);
+            paramCharSequence = DateUtils.getAMPMString(k);
             break;
           }
-          localObject = eU(paramTime.monthDay, j);
+          paramCharSequence = hb(paramTime.monthDay, j);
           continue;
           int n = paramTime.weekDay;
           if (j < 4) {}
           for (k = 20;; k = 10)
           {
-            localObject = DateUtils.getDayOfWeekString(n + 1, k);
+            paramCharSequence = DateUtils.getDayOfWeekString(n + 1, k);
             break;
           }
           n = paramTime.hour;
@@ -121,68 +118,67 @@ public final class g
           if (k > 12) {
             n = k - 12;
           }
-          localObject = String.valueOf(n);
+          paramCharSequence = String.valueOf(n);
           continue;
-          localObject = eU(paramTime.hour, j);
+          paramCharSequence = hb(paramTime.hour, j);
           continue;
-          localObject = eU(paramTime.minute, j);
+          paramCharSequence = hb(paramTime.minute, j);
           continue;
           k = paramTime.month;
           if (j >= 4)
           {
-            localObject = DateUtils.getMonthString(k, 10);
+            paramCharSequence = DateUtils.getMonthString(k, 10);
           }
           else if (j == 3)
           {
-            localObject = DateUtils.getMonthString(k, 20);
+            paramCharSequence = DateUtils.getMonthString(k, 20);
           }
           else
           {
-            localObject = eU(k + 1, j);
+            paramCharSequence = hb(k + 1, j);
             continue;
-            localObject = eU(paramTime.second, j);
+            paramCharSequence = hb(paramTime.second, j);
             continue;
-            localObject = TimeZone.getDefault();
-            ((TimeZone)localObject).inDaylightTime(new Date(paramTime.toMillis(false)));
+            paramCharSequence = TimeZone.getDefault();
+            paramCharSequence.inDaylightTime(new Date(paramTime.toMillis(false)));
             if (j < 2)
             {
-              long l = (((TimeZone)localObject).getRawOffset() + paramTime.gmtoff) / 1000L;
-              localObject = new StringBuilder();
+              long l = (paramCharSequence.getRawOffset() + paramTime.gmtoff) / 1000L;
+              paramCharSequence = new StringBuilder();
               if (l < 0L)
               {
-                ((StringBuilder)localObject).insert(0, "-");
+                paramCharSequence.insert(0, "-");
                 l = -l;
               }
               for (;;)
               {
                 k = (int)(l / 3600L);
                 n = (int)(l % 3600L / 60L);
-                ((StringBuilder)localObject).append(eU(k, 2));
-                ((StringBuilder)localObject).append(eU(n, 2));
-                localObject = ((StringBuilder)localObject).toString();
+                paramCharSequence.append(hb(k, 2));
+                paramCharSequence.append(hb(n, 2));
+                paramCharSequence = paramCharSequence.toString();
                 break;
-                ((StringBuilder)localObject).insert(0, "+");
+                paramCharSequence.insert(0, "+");
               }
             }
             if (paramTime.isDst != 0) {}
             for (boolean bool = true;; bool = false)
             {
-              localObject = ((TimeZone)localObject).getDisplayName(bool, 0);
+              paramCharSequence = paramCharSequence.getDisplayName(bool, 0);
               break;
             }
             k = paramTime.year;
             if (j <= 2)
             {
-              localObject = eU(k % 100, 2);
+              paramCharSequence = hb(k % 100, 2);
             }
             else
             {
-              localObject = String.format(Locale.getDefault(), "%d", new Object[] { Integer.valueOf(k) });
+              paramCharSequence = String.format(Locale.getDefault(), "%d", new Object[] { Integer.valueOf(k) });
               continue;
-              if ((paramCharSequence instanceof Spanned)) {
-                return new SpannedString(localSpannableStringBuilder);
-              }
-              return localSpannableStringBuilder.toString();
+              paramCharSequence = localSpannableStringBuilder.toString();
+              AppMethodBeat.o(79453);
+              return paramCharSequence;
             }
           }
         }
@@ -190,14 +186,17 @@ public final class g
     }
   }
   
-  private static String eU(int paramInt1, int paramInt2)
+  private static String hb(int paramInt1, int paramInt2)
   {
-    return String.format(Locale.getDefault(), "%0" + paramInt2 + "d", new Object[] { Integer.valueOf(paramInt1) });
+    AppMethodBeat.i(79455);
+    String str = String.format(Locale.getDefault(), "%0" + paramInt2 + "d", new Object[] { Integer.valueOf(paramInt1) });
+    AppMethodBeat.o(79455);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.f.g
  * JD-Core Version:    0.7.0.1
  */

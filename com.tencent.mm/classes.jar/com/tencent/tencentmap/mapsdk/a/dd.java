@@ -1,124 +1,285 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.nio.ByteBuffer;
-import java.util.HashMap;
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class dd
+public class dd
 {
-  private static HashMap<String, byte[]> e = null;
-  private HashMap<String, byte[]> a = new HashMap();
-  private da b = new da();
-  private String c = "GBK";
-  private de d = new de();
+  private cz a;
+  private String b = "";
+  private String c;
+  private ck d;
+  private float e = 0.5F;
+  private float f = 0.5F;
+  private boolean g;
+  private boolean h = true;
+  private float i = 0.0F;
+  private float j = 1.0F;
+  private float k = 0.0F;
+  private Object l;
+  private String m;
+  private cv n;
+  private boolean o = true;
+  private boolean p = false;
+  private int q = 0;
+  private boolean r = false;
+  private boolean s = false;
+  private boolean t = true;
+  private float u = 0.5F;
+  private float v = 0.5F;
+  private int w = 0;
+  private int x = 0;
+  private boolean y = false;
+  private int z = dg.c;
   
-  public final void a()
+  @Deprecated
+  public dd() {}
+  
+  public dd(cz paramcz)
   {
-    this.d.b = 1;
+    this.a = paramcz;
   }
   
-  public final void a(String paramString)
+  public dd a(float paramFloat)
   {
-    this.d.d = paramString;
+    this.i = paramFloat;
+    return this;
   }
   
-  public final <T> void a(String paramString, T paramT)
+  public dd a(float paramFloat1, float paramFloat2)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("put key can not is null");
-    }
-    if (paramT == null) {
-      throw new IllegalArgumentException("put value can not is null");
-    }
-    if ((paramT instanceof Set)) {
-      throw new IllegalArgumentException("can not support Set");
-    }
-    Object localObject = new db();
-    ((db)localObject).a(this.c);
-    ((db)localObject).a(paramT, 0);
-    paramT = ((db)localObject).a();
-    localObject = new byte[paramT.position()];
-    System.arraycopy(paramT.array(), 0, localObject, 0, localObject.length);
-    this.a.put(paramString, localObject);
+    this.e = paramFloat1;
+    this.f = paramFloat2;
+    return this;
   }
   
-  public final void a(byte[] paramArrayOfByte)
+  public dd a(int paramInt)
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
+    if ((paramInt < dg.a) || (paramInt > dg.c)) {
+      return this;
     }
-    try
-    {
-      paramArrayOfByte = new da(paramArrayOfByte, (byte)0);
-      paramArrayOfByte.a(this.c);
-      this.d.a(paramArrayOfByte);
-      paramArrayOfByte = new da(this.d.e);
-      paramArrayOfByte.a(this.c);
-      if (e == null)
-      {
-        HashMap localHashMap = new HashMap();
-        e = localHashMap;
-        localHashMap.put("", new byte[0]);
-      }
-      this.a = paramArrayOfByte.a(e);
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    this.z = paramInt;
+    return this;
   }
   
-  public final <T> T b(String paramString, T paramT)
+  public dd a(int paramInt1, int paramInt2)
   {
-    if (!this.a.containsKey(paramString)) {
-      return null;
-    }
-    paramString = (byte[])this.a.get(paramString);
-    try
-    {
-      this.b.a(paramString);
-      this.b.a(this.c);
-      paramString = this.b.a(paramT, 0, true);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      throw new Exception(paramString);
-    }
+    this.w = paramInt1;
+    this.x = paramInt2;
+    return this;
   }
   
-  public final void b(String paramString)
+  public dd a(ck paramck)
   {
-    this.d.c = paramString;
+    this.d = paramck;
+    return this;
   }
   
-  public final byte[] b()
+  public dd a(cv paramcv)
   {
-    Object localObject2 = new db(0);
-    ((db)localObject2).a(this.c);
-    ((db)localObject2).a(this.a, 0);
-    this.d.a = 3;
-    Object localObject1 = this.d;
-    localObject2 = ((db)localObject2).a();
-    byte[] arrayOfByte = new byte[((ByteBuffer)localObject2).position()];
-    System.arraycopy(((ByteBuffer)localObject2).array(), 0, arrayOfByte, 0, arrayOfByte.length);
-    ((de)localObject1).e = arrayOfByte;
-    localObject1 = new db(0);
-    ((db)localObject1).a(this.c);
-    this.d.a((db)localObject1);
-    localObject2 = ((db)localObject1).a();
-    localObject1 = new byte[((ByteBuffer)localObject2).position()];
-    System.arraycopy(((ByteBuffer)localObject2).array(), 0, localObject1, 0, localObject1.length);
-    int i = localObject1.length;
-    localObject2 = ByteBuffer.allocate(i + 4);
-    ((ByteBuffer)localObject2).putInt(i + 4).put((byte[])localObject1).flip();
-    return ((ByteBuffer)localObject2).array();
+    this.n = paramcv;
+    return this;
+  }
+  
+  public dd a(cz paramcz)
+  {
+    this.a = paramcz;
+    return this;
+  }
+  
+  public dd a(Object paramObject)
+  {
+    this.l = paramObject;
+    return this;
+  }
+  
+  public dd a(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public dd a(boolean paramBoolean)
+  {
+    this.g = paramBoolean;
+    return this;
+  }
+  
+  public boolean a()
+  {
+    return this.s;
+  }
+  
+  public cz b()
+  {
+    return this.a;
+  }
+  
+  public dd b(float paramFloat)
+  {
+    this.j = paramFloat;
+    return this;
+  }
+  
+  public dd b(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public dd b(boolean paramBoolean)
+  {
+    this.h = paramBoolean;
+    return this;
+  }
+  
+  public dd c(float paramFloat)
+  {
+    this.k = paramFloat;
+    return this;
+  }
+  
+  public dd c(String paramString)
+  {
+    this.m = paramString;
+    return this;
+  }
+  
+  public dd c(boolean paramBoolean)
+  {
+    this.p = paramBoolean;
+    return this;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public dd d(boolean paramBoolean)
+  {
+    this.t = paramBoolean;
+    return this;
+  }
+  
+  public String d()
+  {
+    return this.c;
+  }
+  
+  public ck e()
+  {
+    AppMethodBeat.i(150080);
+    if (this.d == null) {
+      this.d = new ck(new bj(5));
+    }
+    ck localck = this.d;
+    AppMethodBeat.o(150080);
+    return localck;
+  }
+  
+  public void e(boolean paramBoolean)
+  {
+    this.y = paramBoolean;
+  }
+  
+  public float f()
+  {
+    return this.e;
+  }
+  
+  public float g()
+  {
+    return this.f;
+  }
+  
+  public boolean h()
+  {
+    return this.g;
+  }
+  
+  public boolean i()
+  {
+    return this.h;
+  }
+  
+  public boolean j()
+  {
+    return this.o;
+  }
+  
+  public float k()
+  {
+    return this.j;
+  }
+  
+  public float l()
+  {
+    return this.k;
+  }
+  
+  public cv m()
+  {
+    return this.n;
+  }
+  
+  public boolean n()
+  {
+    return this.p;
+  }
+  
+  public float o()
+  {
+    return this.i;
+  }
+  
+  int p()
+  {
+    return this.q;
+  }
+  
+  boolean q()
+  {
+    return this.r;
+  }
+  
+  public boolean r()
+  {
+    return this.t;
+  }
+  
+  public int s()
+  {
+    return this.w;
+  }
+  
+  public int t()
+  {
+    return this.x;
+  }
+  
+  public Object u()
+  {
+    return this.l;
+  }
+  
+  public boolean v()
+  {
+    return this.y;
+  }
+  
+  public String w()
+  {
+    return this.m;
+  }
+  
+  public int x()
+  {
+    return this.z;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.dd
  * JD-Core Version:    0.7.0.1
  */

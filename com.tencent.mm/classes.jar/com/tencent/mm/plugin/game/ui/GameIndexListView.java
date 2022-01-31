@@ -8,37 +8,35 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.ImageView;
 import android.widget.Scroller;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.w;
-import com.tencent.mm.ah.w.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.w;
+import com.tencent.mm.ai.w.a;
 import com.tencent.mm.bv.a;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView;
-import com.tencent.mm.plugin.game.d.ba;
 import com.tencent.mm.plugin.game.d.bb;
-import com.tencent.mm.plugin.game.g.b;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.game.d.bc;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class GameIndexListView
   extends LoadMoreRecyclerView
 {
-  private static boolean kYj = true;
-  private static boolean kYn;
-  private static int kYp = 0;
-  private static int lbK = 0;
-  private static int lbT = 0;
-  private Scroller GB;
-  private View VH;
-  private float kYk;
-  private int kYl;
-  private boolean kYo;
-  private ImageView kYq;
-  private ImageView kYr;
-  GameIndexListView.b lbQ;
-  private bb lbR;
-  private boolean lbS = true;
+  private static boolean nwh = true;
+  private static boolean nwl;
+  private static int nwn = 0;
+  private static int nzF = 0;
+  private static int nzO = 0;
+  private View Ww;
   private Context mContext;
+  private Scroller mScroller;
+  private float nwi;
+  private int nwj;
+  private boolean nwm;
+  private ImageView nwo;
+  private ImageView nwp;
+  GameIndexListView.b nzL;
+  private bc nzM;
+  private boolean nzN = true;
   
   public GameIndexListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,30 +44,32 @@ public class GameIndexListView
     this.mContext = paramContext;
   }
   
-  private void bai()
+  private void bHn()
   {
+    AppMethodBeat.i(111981);
     Object localObject2 = new b.a();
-    Object localObject3 = new ba();
-    if (this.lbR != null)
+    Object localObject3 = new bb();
+    if (this.nzM != null)
     {
-      localObject1 = this.lbR.kUB;
-      ((ba)localObject3).kUz = ((com.tencent.mm.bv.b)localObject1);
-      ((b.a)localObject2).ecH = ((a)localObject3);
-      ((b.a)localObject2).ecI = new bb();
+      localObject1 = this.nzM.nsD;
+      ((bb)localObject3).nsB = ((com.tencent.mm.bv.b)localObject1);
+      ((b.a)localObject2).fsX = ((a)localObject3);
+      ((b.a)localObject2).fsY = new bc();
       ((b.a)localObject2).uri = "/cgi-bin/mmgame-bin/getgameindex4feedslist";
-      ((b.a)localObject2).ecG = 2943;
-      ((b.a)localObject2).ecJ = 0;
-      ((b.a)localObject2).ecK = 0;
-      localObject2 = ((b.a)localObject2).Kt();
+      ((b.a)localObject2).funcId = 2943;
+      ((b.a)localObject2).reqCmdId = 0;
+      ((b.a)localObject2).respCmdId = 0;
+      localObject2 = ((b.a)localObject2).ado();
       localObject3 = new GameIndexListView.2(this);
       if (!(this.mContext instanceof com.tencent.mm.vending.e.b)) {
-        break label121;
+        break label131;
       }
     }
-    label121:
+    label131:
     for (Object localObject1 = (com.tencent.mm.vending.e.b)this.mContext;; localObject1 = null)
     {
-      w.a((com.tencent.mm.ah.b)localObject2, (w.a)localObject3, false, (com.tencent.mm.vending.e.b)localObject1);
+      w.a((com.tencent.mm.ai.b)localObject2, (w.a)localObject3, false, (com.tencent.mm.vending.e.b)localObject1);
+      AppMethodBeat.o(111981);
       return;
       localObject1 = null;
       break;
@@ -78,129 +78,149 @@ public class GameIndexListView
   
   public static int getSourceScene()
   {
-    return lbK;
+    return nzF;
   }
   
   public static void setCanPulldown(boolean paramBoolean)
   {
-    kYn = paramBoolean;
+    nwl = paramBoolean;
   }
   
   public static void setDefaultPadding(int paramInt)
   {
-    kYp = paramInt;
+    nwn = paramInt;
   }
   
   public static void setInitPadding(int paramInt)
   {
-    lbT = paramInt;
-    kYj = true;
+    nzO = paramInt;
+    nwh = true;
   }
   
   public static void setSourceScene(int paramInt)
   {
-    lbK = paramInt;
+    nzF = paramInt;
   }
   
   public void computeScroll()
   {
-    if (this.VH == null) {}
-    while (!this.GB.computeScrollOffset()) {
+    AppMethodBeat.i(111984);
+    if (this.Ww == null)
+    {
+      AppMethodBeat.o(111984);
       return;
     }
-    int i = this.GB.getCurrY();
-    y.d("MicroMsg.GameIndexListView", "computeScroll, currY = " + i);
-    this.VH.setPadding(0, i, 0, 0);
-    float f = (kYp - i) / kYp * 255.0F;
-    i = (int)f;
-    int j = (int)f;
-    this.kYr.setAlpha(255 - i);
-    this.kYq.setAlpha(j);
-    invalidate();
+    if (this.mScroller.computeScrollOffset())
+    {
+      int i = this.mScroller.getCurrY();
+      ab.d("MicroMsg.GameIndexListView", "computeScroll, currY = ".concat(String.valueOf(i)));
+      this.Ww.setPadding(0, i, 0, 0);
+      float f = (nwn - i) / nwn * 255.0F;
+      i = (int)f;
+      int j = (int)f;
+      this.nwp.setAlpha(255 - i);
+      this.nwo.setAlpha(j);
+      invalidate();
+    }
+    AppMethodBeat.o(111984);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!kYn) || (this.VH == null)) {
-      return super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.i(111983);
+    boolean bool;
+    if ((!nwl) || (this.Ww == null))
+    {
+      bool = super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(111983);
+      return bool;
     }
     switch (paramMotionEvent.getAction())
     {
     }
     int i;
-    label120:
+    label144:
     do
     {
       do
       {
         for (;;)
         {
-          return super.dispatchTouchEvent(paramMotionEvent);
-          this.kYo = false;
-          this.kYk = paramMotionEvent.getRawY();
+          bool = super.dispatchTouchEvent(paramMotionEvent);
+          AppMethodBeat.o(111983);
+          return bool;
+          this.nwm = false;
+          this.nwi = paramMotionEvent.getRawY();
           continue;
-          if ((((LinearLayoutManager)getLayoutManager()).gY() == 0) && (this.VH != null) && (this.VH.getTop() == 0)) {}
+          if ((((LinearLayoutManager)getLayoutManager()).it() == 0) && (this.Ww != null) && (this.Ww.getTop() == 0)) {}
           for (i = 1; i != 0; i = 0)
           {
-            if (!this.kYo) {
-              break label120;
+            if (!this.nwm) {
+              break label144;
             }
+            AppMethodBeat.o(111983);
             return true;
           }
         }
-        i = (int)(paramMotionEvent.getRawY() - this.kYk);
-        if (this.VH.getPaddingTop() > kYp + this.kYl) {
+        i = (int)(paramMotionEvent.getRawY() - this.nwi);
+        if (this.Ww.getPaddingTop() > nwn + this.nwj) {
           break;
         }
-      } while ((i <= 0) || (Math.abs(i) < this.kYl));
-      this.kYo = true;
-      this.GB.startScroll(0, this.VH.getPaddingTop(), 0, -this.VH.getPaddingTop(), 500);
-      this.kYq.setClickable(true);
+      } while ((i <= 0) || (Math.abs(i) < this.nwj));
+      this.nwm = true;
+      this.mScroller.startScroll(0, this.Ww.getPaddingTop(), 0, -this.Ww.getPaddingTop(), 500);
+      this.nwo.setClickable(true);
       invalidate();
       paramMotionEvent.setAction(3);
       super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(111983);
       return true;
-    } while ((this.VH.getPaddingTop() < -this.kYl) || (i >= 0) || (Math.abs(i) < this.kYl));
-    this.kYo = true;
-    this.GB.startScroll(0, 0, 0, kYp, 500);
+    } while ((this.Ww.getPaddingTop() < -this.nwj) || (i >= 0) || (Math.abs(i) < this.nwj));
+    this.nwm = true;
+    this.mScroller.startScroll(0, 0, 0, nwn, 500);
     invalidate();
     paramMotionEvent.setAction(3);
     super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(111983);
     return true;
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111980);
     super.onFinishInflate();
-    y.d("MicroMsg.GameIndexListView", "onFinishInflate");
-    this.kYl = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
-    this.GB = new Scroller(this.mContext);
+    ab.d("MicroMsg.GameIndexListView", "onFinishInflate");
+    this.nwj = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
+    this.mScroller = new Scroller(this.mContext);
     getContext();
     setLayoutManager(new LinearLayoutManager());
-    this.lbQ = new GameIndexListView.b(this);
-    setAdapter(this.lbQ);
-    a(new GameIndexListView.a(this, getResources(), g.b.game_divided_line_color));
-    setLoadingView(g.f.game_feed_loading_view);
+    this.nzL = new GameIndexListView.b(this);
+    setAdapter(this.nzL);
+    b(new GameIndexListView.a(this, getResources()));
+    setLoadingView(2130969746);
     setOnLoadingStateChangedListener(new GameIndexListView.1(this));
-    dZ(true);
-    bai();
+    fv(true);
+    bHn();
+    AppMethodBeat.o(111980);
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    y.d("MicroMsg.GameIndexListView", "onLayout, changed = " + paramBoolean);
+    AppMethodBeat.i(111982);
+    ab.d("MicroMsg.GameIndexListView", "onLayout, changed = ".concat(String.valueOf(paramBoolean)));
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((kYj) || (this.VH == null) || (this.kYr == null) || (this.kYq == null))
+    if ((nwh) || (this.Ww == null) || (this.nwp == null) || (this.nwo == null))
     {
-      this.VH = getChildAt(0);
-      if (this.VH != null)
+      this.Ww = getChildAt(0);
+      if (this.Ww != null)
       {
-        this.VH.setPadding(0, lbT, 0, 0);
-        this.kYr = ((ImageView)this.VH.findViewById(g.e.small_image));
-        this.kYq = ((ImageView)this.VH.findViewById(g.e.big_image));
+        this.Ww.setPadding(0, nzO, 0, 0);
+        this.nwp = ((ImageView)this.Ww.findViewById(2131824663));
+        this.nwo = ((ImageView)this.Ww.findViewById(2131824614));
       }
-      kYj = false;
+      nwh = false;
     }
+    AppMethodBeat.o(111982);
   }
 }
 

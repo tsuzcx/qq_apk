@@ -1,9 +1,17 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-public class an<K, V>
+public final class an
 {
-  K a;
-  V b;
+  private boolean a = false;
+  private bp b = null;
+  private ap c = null;
+  private bi d;
+  
+  public an(ap paramap, bi parambi)
+  {
+    this.c = paramap;
+    this.d = parambi;
+  }
 }
 
 

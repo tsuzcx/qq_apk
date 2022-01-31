@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.t;
 import com.tencent.mm.pluginsdk.ui.applet.t.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 
@@ -17,19 +17,20 @@ final class SnsAdNativeLandingTestUI$1$1
   
   public final void c(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt2 == -1) {
-      if (paramIntent != null) {
-        break label30;
-      }
-    }
-    label30:
-    for (paramIntent = null; (paramIntent == null) || (paramIntent.length() == 0); paramIntent = paramIntent.getStringExtra("Select_Conv_User"))
+    AppMethodBeat.i(38701);
+    if (paramInt2 == -1)
     {
-      y.e("MicroMsg.Sns.SnsAdNativieLandingTestUI", "mmOnActivityResult fail, toUser is null");
-      return;
+      if (paramIntent == null) {}
+      for (paramIntent = null; (paramIntent == null) || (paramIntent.length() == 0); paramIntent = paramIntent.getStringExtra("Select_Conv_User"))
+      {
+        ab.e("MicroMsg.Sns.SnsAdNativieLandingTestUI", "mmOnActivityResult fail, toUser is null");
+        AppMethodBeat.o(38701);
+        return;
+      }
+      SnsAdNativeLandingTestUI localSnsAdNativeLandingTestUI = this.rNj.rNi;
+      t.a.vUz.a(((MMActivity)localSnsAdNativeLandingTestUI).getController(), "test title", "http://mmsns.qpic.cn/mmsns/pUBe8EmICSCsszwvTNz7XO46mx3SDurmV95hHIeQvib0AEVBGYU02Mg/150", "test desc", true, localSnsAdNativeLandingTestUI.getResources().getString(2131297067), new SnsAdNativeLandingTestUI.1.1.1(this, paramIntent, localSnsAdNativeLandingTestUI));
     }
-    SnsAdNativeLandingTestUI localSnsAdNativeLandingTestUI = this.oVh.oVg;
-    t.a.sdu.a(((MMActivity)localSnsAdNativeLandingTestUI).mController, "test title", "http://mmsns.qpic.cn/mmsns/pUBe8EmICSCsszwvTNz7XO46mx3SDurmV95hHIeQvib0AEVBGYU02Mg/150", "test desc", true, localSnsAdNativeLandingTestUI.getResources().getString(i.j.app_send), new SnsAdNativeLandingTestUI.1.1.1(this, paramIntent, localSnsAdNativeLandingTestUI));
+    AppMethodBeat.o(38701);
   }
 }
 

@@ -8,14 +8,14 @@ abstract class t<_Data, _ViewHolder extends RecyclerView.v>
 {
   public abstract _ViewHolder a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup);
   
-  public abstract void a(_ViewHolder param_ViewHolder, _Data param_Data);
-  
-  public boolean a(_ViewHolder param_ViewHolder, Object paramObject1, Object paramObject2)
+  public boolean b(_ViewHolder param_ViewHolder, Object paramObject)
   {
     return false;
   }
   
-  public abstract long aT(_Data param_Data);
+  public abstract long bp(_Data param_Data);
+  
+  public abstract void c(_ViewHolder param_ViewHolder, _Data param_Data);
 }
 
 

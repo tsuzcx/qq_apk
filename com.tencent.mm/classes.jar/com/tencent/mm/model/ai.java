@@ -1,10 +1,14 @@
 package com.tencent.mm.model;
 
-import java.util.List;
-
-public abstract interface ai
+public abstract class ai
 {
-  public abstract List<ah> getDataTransferList();
+  public long flH = 0L;
+  
+  public abstract String getTag();
+  
+  public abstract boolean kv(int paramInt);
+  
+  public abstract void transfer(int paramInt);
 }
 
 

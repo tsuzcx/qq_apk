@@ -8,17 +8,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class SwitchPhoneItemView
   extends RelativeLayout
 {
-  private TextView qHR;
-  private TextView qHS;
-  ImageView qHT;
-  private int qHU = 0;
+  private TextView uwC;
+  private TextView uwD;
+  ImageView uwE;
+  private int uwF;
   
   public SwitchPhoneItemView(Context paramContext)
   {
@@ -28,55 +27,69 @@ public class SwitchPhoneItemView
   public SwitchPhoneItemView(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.qHU = paramInt;
-    ca(paramContext);
+    AppMethodBeat.i(47884);
+    this.uwF = 0;
+    this.uwF = paramInt;
+    aA(paramContext);
+    AppMethodBeat.o(47884);
   }
   
   public SwitchPhoneItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ca(paramContext);
+    AppMethodBeat.i(47885);
+    this.uwF = 0;
+    aA(paramContext);
+    AppMethodBeat.o(47885);
   }
   
   public SwitchPhoneItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    ca(paramContext);
+    AppMethodBeat.i(47886);
+    this.uwF = 0;
+    aA(paramContext);
+    AppMethodBeat.o(47886);
   }
   
-  private void ca(Context paramContext)
+  private void aA(Context paramContext)
   {
-    if (this.qHU > 0) {}
-    for (paramContext = inflate(paramContext, this.qHU, this);; paramContext = inflate(paramContext, a.g.wallet_switch_verify_phone_item, this))
+    AppMethodBeat.i(47887);
+    if (this.uwF > 0) {}
+    for (paramContext = inflate(paramContext, this.uwF, this);; paramContext = inflate(paramContext, 2130971256, this))
     {
-      this.qHR = ((TextView)paramContext.findViewById(a.f.phone_number_tv));
-      this.qHS = ((TextView)paramContext.findViewById(a.f.phone_desc_tv));
-      this.qHT = ((ImageView)paramContext.findViewById(a.f.phone_check_iv));
+      this.uwC = ((TextView)paramContext.findViewById(2131829405));
+      this.uwD = ((TextView)paramContext.findViewById(2131829406));
+      this.uwE = ((ImageView)paramContext.findViewById(2131829407));
+      AppMethodBeat.o(47887);
       return;
     }
   }
   
   public final void a(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
-    if (!bk.L(paramCharSequence1)) {
-      this.qHR.setText(paramCharSequence1);
+    AppMethodBeat.i(47888);
+    if (!bo.aa(paramCharSequence1)) {
+      this.uwC.setText(paramCharSequence1);
     }
-    while (!bk.L(paramCharSequence2))
+    while (!bo.aa(paramCharSequence2))
     {
-      this.qHS.setMaxLines(2);
-      this.qHS.setSelected(true);
-      this.qHS.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-      this.qHS.setText(paramCharSequence2);
-      this.qHS.setMovementMethod(LinkMovementMethod.getInstance());
+      this.uwD.setMaxLines(2);
+      this.uwD.setSelected(true);
+      this.uwD.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+      this.uwD.setText(paramCharSequence2);
+      this.uwD.setMovementMethod(LinkMovementMethod.getInstance());
+      AppMethodBeat.o(47888);
       return;
-      this.qHR.setVisibility(8);
+      this.uwC.setVisibility(8);
     }
-    this.qHS.setVisibility(8);
+    this.uwD.setVisibility(8);
+    AppMethodBeat.o(47888);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingVideoWrapper;
+
 final class r$2
   implements Runnable
 {
@@ -7,10 +10,9 @@ final class r$2
   
   public final void run()
   {
-    if (this.oHr.oGY) {
-      return;
-    }
-    this.oHr.jo(false);
+    AppMethodBeat.i(37205);
+    this.rxh.rwF.pause();
+    AppMethodBeat.o(37205);
   }
 }
 

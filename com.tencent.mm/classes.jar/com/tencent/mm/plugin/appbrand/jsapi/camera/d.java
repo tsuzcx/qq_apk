@@ -1,54 +1,57 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.e.b;
-import com.tencent.mm.plugin.appbrand.jsapi.e.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.i.i;
+import com.tencent.mm.plugin.appbrand.i.p;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.f;
+import com.tencent.mm.sdk.platformtools.ab;
 
-public abstract interface d
-  extends e.b, e.c, e.d
+final class d
+  implements MMSightRecordView.f
 {
-  public static final d goY = new d.1();
+  private final c hAC;
+  final p hIY;
+  boolean hIZ;
+  int hJa;
   
-  public abstract void ae(String paramString, boolean paramBoolean);
+  public d(c paramc)
+  {
+    AppMethodBeat.i(130968);
+    this.hAC = paramc;
+    this.hIY = ((p)this.hAC.aAO().v(p.class));
+    this.hJa = -2147483648;
+    AppMethodBeat.o(130968);
+  }
   
-  public abstract void aiF();
+  public final void a(MMSightRecordView paramMMSightRecordView)
+  {
+    AppMethodBeat.i(130969);
+    this.hIZ = false;
+    if (paramMMSightRecordView != null) {
+      paramMMSightRecordView.a(null, null);
+    }
+    if (this.hJa != -2147483648)
+    {
+      this.hIY.oy(this.hJa);
+      this.hJa = -2147483648;
+    }
+    AppMethodBeat.o(130969);
+  }
   
-  public abstract void aiH();
-  
-  public abstract void aiN();
-  
-  public abstract boolean bV(int paramInt1, int paramInt2);
-  
-  public abstract int getCameraId();
-  
-  public abstract void initView();
-  
-  public abstract void o(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void release();
-  
-  public abstract void setAppId(String paramString);
-  
-  public abstract void setCameraId(int paramInt);
-  
-  public abstract void setFlash(String paramString);
-  
-  public abstract void setMode(String paramString);
-  
-  public abstract void setNeedOutput(boolean paramBoolean);
-  
-  public abstract void setOperateCallBack(c paramc);
-  
-  public abstract void setOutPutCallBack(b paramb);
-  
-  public abstract void setPage(e parame);
-  
-  public abstract void setQuality(String paramString);
-  
-  public abstract void setScanFreq(int paramInt);
-  
-  public abstract void startRecord();
+  public final void aCP()
+  {
+    AppMethodBeat.i(130970);
+    if (!this.hIZ)
+    {
+      ab.i("MicroMsg.FrameDataCallbackHelper", "onDateUpdate not need callback");
+      AppMethodBeat.o(130970);
+      return;
+    }
+    this.hAC.a(new d.a(this));
+    AppMethodBeat.o(130970);
+  }
 }
 
 

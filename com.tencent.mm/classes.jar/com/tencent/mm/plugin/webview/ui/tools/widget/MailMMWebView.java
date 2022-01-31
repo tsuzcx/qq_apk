@@ -7,18 +7,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MailMMWebView
   extends MMWebViewWithJsApi
   implements h
 {
-  private float fSy;
-  private float fSz;
-  private View nWI;
-  private boolean rCD;
-  private View rCE;
-  private boolean rCF;
-  private boolean rCG;
+  private float bTE;
+  private float bTF;
+  private View qKT;
+  private boolean vsP;
+  private View vsQ;
+  private boolean vsR;
+  private boolean vsS;
   
   public MailMMWebView(Context paramContext)
   {
@@ -37,6 +38,7 @@ public class MailMMWebView
   
   private int getViewHeightWithTitleBar()
   {
+    AppMethodBeat.i(10051);
     int j = getHeight();
     int i = j;
     if (isHorizontalScrollBarEnabled())
@@ -46,160 +48,205 @@ public class MailMMWebView
         i = j - getHorizontalScrollbarHeight();
       }
     }
+    AppMethodBeat.o(10051);
     return i;
   }
   
   private void setEmbeddedTitleBarSinceJellyBean(View paramView)
   {
+    AppMethodBeat.i(10052);
     if (paramView != null)
     {
-      if (this.rCE != null) {
-        removeView(this.rCE);
+      if (this.vsQ != null) {
+        removeView(this.vsQ);
       }
       if (paramView.getParent() != null) {
         ((ViewGroup)paramView.getParent()).removeView(paramView);
       }
       FrameLayout.LayoutParams localLayoutParams1 = new FrameLayout.LayoutParams(-1, -2);
-      this.rCE = new MailMMWebView.a(this, getContext());
+      this.vsQ = new MailMMWebView.a(this, getContext());
       FrameLayout.LayoutParams localLayoutParams2 = new FrameLayout.LayoutParams(-1, -2);
-      ((MailMMWebView.a)this.rCE).addView(paramView, localLayoutParams2);
-      this.rCE.setBackgroundColor(-1);
-      addView(this.rCE, localLayoutParams1);
+      ((MailMMWebView.a)this.vsQ).addView(paramView, localLayoutParams2);
+      this.vsQ.setBackgroundColor(-1);
+      addView(this.vsQ, localLayoutParams1);
     }
-  }
-  
-  public final boolean cgL()
-  {
-    return this.rCD;
-  }
-  
-  public final void cgM()
-  {
-    this.rCD = false;
-  }
-  
-  public final void cgN()
-  {
-    int i = (int)(getTitleHeight() / getScale());
-    evaluateJavascript("javascript:_updateTitleBarHeight(" + i + ");", null);
-  }
-  
-  public final void cgO()
-  {
-    int i = (int)(getBottomHeight() / getScale());
-    evaluateJavascript("javascript:_updateBottomBarHeight(" + i + ");", null);
+    AppMethodBeat.o(10052);
   }
   
   public int computeVerticalScrollExtent()
   {
-    return getViewHeightWithTitleBar() - getVisibleTitleBarHeight();
+    AppMethodBeat.i(10043);
+    int i = getViewHeightWithTitleBar();
+    int j = getVisibleTitleBarHeight();
+    AppMethodBeat.o(10043);
+    return i - j;
   }
   
   public int computeVerticalScrollOffset()
   {
-    return Math.max(getWebScrollY() - getTitleHeight(), 0);
+    AppMethodBeat.i(10044);
+    int i = Math.max(getWebScrollY() - getTitleHeight(), 0);
+    AppMethodBeat.o(10044);
+    return i;
+  }
+  
+  public final boolean dgS()
+  {
+    return this.vsP;
+  }
+  
+  public final void dgT()
+  {
+    this.vsP = false;
+  }
+  
+  public final void dgU()
+  {
+    AppMethodBeat.i(10049);
+    int i = (int)(getTitleHeight() / getScale());
+    evaluateJavascript("javascript:_updateTitleBarHeight(" + i + ");", null);
+    AppMethodBeat.o(10049);
+  }
+  
+  public final void dgV()
+  {
+    AppMethodBeat.i(10050);
+    int i = (int)(getBottomHeight() / getScale());
+    evaluateJavascript("javascript:_updateBottomBarHeight(" + i + ");", null);
+    AppMethodBeat.o(10050);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(10040);
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
     int i = getWebScrollY();
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     }
-    while ((this.rCF) && (this.rCE != null))
+    while ((this.vsR) && (this.vsQ != null))
     {
       paramMotionEvent.setLocation(f1, f2 + i);
-      return this.rCE.dispatchTouchEvent(paramMotionEvent);
-      this.fSy = f1;
-      this.fSz = f2;
-      if ((this.rCE != null) && ((int)this.fSz < getVisibleTitleBarHeight()))
+      bool = this.vsQ.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(10040);
+      return bool;
+      this.bTE = f1;
+      this.bTF = f2;
+      if ((this.vsQ != null) && ((int)this.bTF < getVisibleTitleBarHeight()))
       {
-        this.rCF = true;
+        this.vsR = true;
       }
-      else if ((this.nWI != null) && (this.nWI.getVisibility() == 0) && (this.fSz + getBottomHeight() > getHeight()))
+      else if ((this.qKT != null) && (this.qKT.getVisibility() == 0) && (this.bTF + getBottomHeight() > getHeight()))
       {
-        this.rCG = true;
+        this.vsS = true;
         continue;
-        if ((Math.abs(f2 - this.fSz) > 50.0F) && (this.rCF))
+        if ((Math.abs(f2 - this.bTF) > 50.0F) && (this.vsR))
         {
           paramMotionEvent.setAction(3);
-          paramMotionEvent.setLocation(this.fSy, this.fSz + i);
-          this.rCE.dispatchTouchEvent(paramMotionEvent);
+          paramMotionEvent.setLocation(this.bTE, this.bTF + i);
+          this.vsQ.dispatchTouchEvent(paramMotionEvent);
           paramMotionEvent.setAction(0);
-          paramMotionEvent.setLocation(this.fSy, this.fSz);
+          paramMotionEvent.setLocation(this.bTE, this.bTF);
           super.dispatchTouchEvent(paramMotionEvent);
           paramMotionEvent.setAction(2);
           paramMotionEvent.setLocation(f1, f2);
         }
       }
     }
-    if ((this.rCG) && (this.nWI != null))
+    if ((this.vsS) && (this.qKT != null))
     {
       paramMotionEvent.setLocation(f1, f2 + getBottomHeight() - getHeight());
-      return this.nWI.dispatchTouchEvent(paramMotionEvent);
+      bool = this.qKT.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(10040);
+      return bool;
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(10040);
+    return bool;
   }
   
-  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    if (paramView == this.rCE)
+    AppMethodBeat.i(10046);
+    boolean bool;
+    if (paramView == this.vsQ)
     {
       int i = getWebScrollY();
       paramCanvas.save();
       paramCanvas.translate(0.0F, -i);
-      boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
+      bool = super.drawChild(paramCanvas, paramView, paramLong);
       paramCanvas.restore();
-      return bool;
     }
-    return super.drawChild(paramCanvas, paramView, paramLong);
+    for (;;)
+    {
+      AppMethodBeat.o(10046);
+      return bool;
+      bool = super.drawChild(paramCanvas, paramView, paramLong);
+    }
   }
   
   public int getBottomHeight()
   {
-    if (this.nWI != null) {
-      return this.nWI.getHeight();
+    AppMethodBeat.i(10048);
+    if (this.qKT != null)
+    {
+      int i = this.qKT.getHeight();
+      AppMethodBeat.o(10048);
+      return i;
     }
+    AppMethodBeat.o(10048);
     return 0;
   }
   
   public int getTitleHeight()
   {
-    if (this.rCE != null) {
-      return this.rCE.getHeight();
+    AppMethodBeat.i(10047);
+    if (this.vsQ != null)
+    {
+      int i = this.vsQ.getHeight();
+      AppMethodBeat.o(10047);
+      return i;
     }
+    AppMethodBeat.o(10047);
     return 0;
   }
   
   public int getVisibleTitleBarHeight()
   {
-    return Math.max(getTitleHeight() - getWebScrollY(), 0);
+    AppMethodBeat.i(10045);
+    int i = Math.max(getTitleHeight() - getWebScrollY(), 0);
+    AppMethodBeat.o(10045);
+    return i;
   }
   
   public void loadDataWithBaseURL(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.rCD = true;
+    AppMethodBeat.i(10039);
+    this.vsP = true;
     super.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
+    AppMethodBeat.o(10039);
   }
   
-  public final void lx(boolean paramBoolean)
+  public final void oH(boolean paramBoolean)
   {
-    if (this.nWI != null)
+    AppMethodBeat.i(10053);
+    if (this.qKT != null)
     {
-      if (paramBoolean) {
-        this.nWI.setVisibility(0);
+      if (paramBoolean)
+      {
+        this.qKT.setVisibility(0);
+        AppMethodBeat.o(10053);
+        return;
       }
+      this.qKT.setVisibility(4);
     }
-    else {
-      return;
-    }
-    this.nWI.setVisibility(4);
+    AppMethodBeat.o(10053);
   }
   
   public void onWebViewScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(10041);
     int i = (int)(getContentHeight() * getScale());
     int j = getHeight() + paramInt2;
     super.onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -207,51 +254,56 @@ public class MailMMWebView
     if (i - j < getBottomHeight())
     {
       if (Math.abs(i - j) <= 20) {
-        break label80;
+        break label92;
       }
-      cgO();
-      lx(false);
+      dgV();
+      oH(false);
     }
     for (;;)
     {
       if (getVisibleTitleHeight() == 0) {
-        cgN();
+        dgU();
       }
+      AppMethodBeat.o(10041);
       return;
-      label80:
-      lx(true);
+      label92:
+      oH(true);
     }
   }
   
   public void setEmbeddedBottomBar(View paramView)
   {
+    AppMethodBeat.i(10054);
     if (paramView != null)
     {
-      if (this.nWI != null) {
-        removeView(this.nWI);
+      if (this.qKT != null) {
+        removeView(this.qKT);
       }
       if (paramView.getParent() != null) {
         ((ViewGroup)paramView.getParent()).removeView(paramView);
       }
       FrameLayout.LayoutParams localLayoutParams1 = new FrameLayout.LayoutParams(-1, -2, 80);
-      this.nWI = new MailMMWebView.a(this, getContext());
+      this.qKT = new MailMMWebView.a(this, getContext());
       FrameLayout.LayoutParams localLayoutParams2 = (FrameLayout.LayoutParams)paramView.getLayoutParams();
       FrameLayout.LayoutParams localLayoutParams3 = new FrameLayout.LayoutParams(-1, -2);
       localLayoutParams3.setMargins(localLayoutParams2.leftMargin, localLayoutParams2.topMargin, localLayoutParams2.rightMargin, localLayoutParams2.bottomMargin);
-      ((MailMMWebView.a)this.nWI).addView(paramView, localLayoutParams3);
-      addView(this.nWI, localLayoutParams1);
-      this.nWI.setVisibility(4);
+      ((MailMMWebView.a)this.qKT).addView(paramView, localLayoutParams3);
+      addView(this.qKT, localLayoutParams1);
+      this.qKT.setVisibility(4);
     }
+    AppMethodBeat.o(10054);
   }
   
   public void setEmbeddedTitleBarCompat(View paramView)
   {
+    AppMethodBeat.i(10042);
     setEmbeddedTitleBarSinceJellyBean(paramView);
+    AppMethodBeat.o(10042);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.MailMMWebView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,25 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import android.content.Context;
-import com.tencent.mm.ui.chatting.d.a.a;
-import com.tencent.mm.ui.chatting.d.a.c;
-import com.tencent.mm.ui.chatting.h.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.chatting.e.a.a;
+import com.tencent.mm.ui.chatting.e.a.c;
+import com.tencent.mm.ui.chatting.i.e;
 
 final class MediaHistoryGalleryUI$a
 {
   public static a.a a(Context paramContext, a.c paramc)
   {
-    switch (MediaHistoryGalleryUI.7.vxM[paramc.ordinal()])
+    AppMethodBeat.i(32416);
+    Object localObject = null;
+    switch (MediaHistoryGalleryUI.7.zNY[paramc.ordinal()])
     {
-    default: 
-      return null;
     }
-    return new e(paramContext);
+    for (paramContext = localObject;; paramContext = new e(paramContext))
+    {
+      AppMethodBeat.o(32416);
+      return paramContext;
+    }
   }
 }
 

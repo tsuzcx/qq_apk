@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShakeItemListUI$2
   implements View.OnClickListener
@@ -10,8 +11,10 @@ final class ShakeItemListUI$2
   
   public final void onClick(View paramView)
   {
-    ShakeItemListUI.a(this.obE, ShakeItemListUI.a(this.obE) ^ 0xFFFFFFFF);
-    this.obE.xq(ShakeItemListUI.a(this.obE));
+    AppMethodBeat.i(24721);
+    ShakeItemListUI.a(this.qPL, ShakeItemListUI.a(this.qPL) ^ 0xFFFFFFFF);
+    this.qPL.Dq(ShakeItemListUI.a(this.qPL));
+    AppMethodBeat.o(24721);
   }
 }
 

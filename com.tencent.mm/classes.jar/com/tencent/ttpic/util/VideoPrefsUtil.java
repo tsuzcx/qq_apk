@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class VideoPrefsUtil
 {
@@ -25,47 +26,69 @@ public class VideoPrefsUtil
   
   public static int getDowngradeLevel()
   {
-    return getDefaultPrefs().getInt("prefs_key_downgrade_level", -1);
+    AppMethodBeat.i(84215);
+    int i = getDefaultPrefs().getInt("prefs_key_downgrade_level", -1);
+    AppMethodBeat.o(84215);
+    return i;
   }
   
   public static boolean getMaterialMute()
   {
-    return getDefaultPrefs().getBoolean("prefs_key_is_material_mute", false);
+    AppMethodBeat.i(84213);
+    boolean bool = getDefaultPrefs().getBoolean("prefs_key_is_material_mute", false);
+    AppMethodBeat.o(84213);
+    return bool;
   }
   
   public static int getNormalEncodeWidth()
   {
-    return getDefaultPrefs().getInt("prefs_key_encode_width", 720);
+    AppMethodBeat.i(84219);
+    int i = getDefaultPrefs().getInt("prefs_key_encode_width", 720);
+    AppMethodBeat.o(84219);
+    return i;
   }
   
   public static boolean getUseHardwareDecoder()
   {
-    return getDefaultPrefs().getBoolean("prefs_key_use_hardware_decoder", true);
+    AppMethodBeat.i(84218);
+    boolean bool = getDefaultPrefs().getBoolean("prefs_key_use_hardware_decoder", true);
+    AppMethodBeat.o(84218);
+    return bool;
   }
   
   public static void init(Context paramContext)
   {
+    AppMethodBeat.i(84212);
     mPrefs = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    AppMethodBeat.o(84212);
   }
   
   public static void setDowngradeLevel(int paramInt)
   {
+    AppMethodBeat.i(84216);
     getDefaultPrefs().edit().putInt("prefs_key_downgrade_level", paramInt).apply();
+    AppMethodBeat.o(84216);
   }
   
   public static void setMaterialMute(boolean paramBoolean)
   {
+    AppMethodBeat.i(84214);
     getDefaultPrefs().edit().putBoolean("prefs_key_is_material_mute", paramBoolean).apply();
+    AppMethodBeat.o(84214);
   }
   
   public static void setNormalEncodeWidth(int paramInt)
   {
+    AppMethodBeat.i(84220);
     getDefaultPrefs().edit().putInt("prefs_key_encode_width", paramInt).apply();
+    AppMethodBeat.o(84220);
   }
   
   public static void setUseHardWareDecoder(boolean paramBoolean)
   {
+    AppMethodBeat.i(84217);
     getDefaultPrefs().edit().putBoolean("prefs_key_use_hardware_decoder", paramBoolean).apply();
+    AppMethodBeat.o(84217);
   }
 }
 

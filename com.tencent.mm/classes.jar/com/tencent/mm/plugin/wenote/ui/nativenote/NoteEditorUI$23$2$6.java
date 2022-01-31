@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.a;
 import com.tencent.mm.plugin.wenote.model.h;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.c;
@@ -12,14 +13,16 @@ final class NoteEditorUI$23$2$6
   
   public final void run()
   {
-    NoteEditorUI.j(this.rMb.rMa.rLT).ciF();
+    AppMethodBeat.i(27027);
+    NoteEditorUI.j(this.vCF.vCE.vCx).diW();
     a locala = new a();
-    locala.rGn = false;
-    locala.rGt = false;
-    c.chX().a(locala);
-    int i = NoteEditorUI.j(this.rMb.rMa.rLT).rJg;
-    NoteEditorUI.j(this.rMb.rMa.rLT).rJg = 3;
-    h.Di(i);
+    locala.vwW = false;
+    locala.vxc = false;
+    c.din().a(locala);
+    int i = NoteEditorUI.j(this.vCF.vCE.vCx).vzL;
+    NoteEditorUI.j(this.vCF.vCE.vCx).vzL = 3;
+    h.Lb(i);
+    AppMethodBeat.o(27027);
   }
 }
 

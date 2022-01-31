@@ -1,5 +1,7 @@
 package com.tencent.liteav.beauty.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class a
 {
   private boolean a = false;
@@ -8,8 +10,10 @@ public class a
   {
     try
     {
+      AppMethodBeat.i(66976);
       this.a = true;
       notify();
+      AppMethodBeat.o(66976);
       return;
     }
     finally
@@ -23,12 +27,14 @@ public class a
   {
     try
     {
+      AppMethodBeat.i(66977);
       while (!this.a) {
         wait();
       }
       this.a = false;
     }
     finally {}
+    AppMethodBeat.o(66977);
   }
 }
 

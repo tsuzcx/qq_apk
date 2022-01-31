@@ -3,42 +3,41 @@ package com.tencent.mm.plugin.location.ui.impl;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.Addr;
-import com.tencent.mm.modelgeo.b.a;
+import com.tencent.mm.modelgeo.c.a;
 import com.tencent.mm.plugin.location.model.LocationInfo;
 import com.tencent.mm.plugin.location.ui.c;
-import com.tencent.mm.plugin.map.a.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 
 final class a$3
-  implements b.a
+  implements c.a
 {
   a$3(a parama) {}
   
   public final void b(Addr paramAddr)
   {
-    y.d("MicroMsg.BaseMapUI", "onGetAddrss  %s", new Object[] { paramAddr.toString() });
-    this.lIm.lHX = paramAddr;
-    String str = paramAddr.elb;
-    str = paramAddr.NY();
-    this.lIm.lIa.bVA = this.lIm.activity.getResources().getString(a.h.location_conversation);
-    if ((paramAddr.tag != null) && (paramAddr.tag.equals(this.lIm.lIa.lCI))) {
-      this.lIm.lIa.lCM = str;
+    AppMethodBeat.i(113591);
+    ab.d("MicroMsg.BaseMapUI", "onGetAddrss  %s", new Object[] { paramAddr.toString() });
+    this.ofz.ofk = paramAddr;
+    String str = paramAddr.agM();
+    this.ofz.ofn.cDl = this.ofz.activity.getResources().getString(2131301088);
+    if ((paramAddr.tag != null) && (paramAddr.tag.equals(this.ofz.ofn.nZU))) {
+      this.ofz.ofn.nZY = str;
     }
     for (;;)
     {
-      if ((paramAddr.tag != null) && (this.lIm.lId.containsKey(paramAddr.tag)))
+      if ((paramAddr.tag != null) && (this.ofz.ofq.containsKey(paramAddr.tag)))
       {
-        c localc = (c)this.lIm.lId.get(paramAddr.tag);
-        localc.setText(localc.getPreText() + str);
+        paramAddr = (c)this.ofz.ofq.get(paramAddr.tag);
+        paramAddr.setText(paramAddr.getPreText() + str);
       }
-      float f = paramAddr.ell;
-      f = paramAddr.elk;
+      AppMethodBeat.o(113591);
       return;
-      if (!bk.bl(paramAddr.ekZ)) {
-        this.lIm.lIb.lIo.setVisibility(0);
+      if (!bo.isNullOrNil(paramAddr.fBq)) {
+        this.ofz.ofo.ofB.setVisibility(0);
       }
     }
   }

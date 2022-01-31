@@ -6,6 +6,7 @@ import android.net.wifi.WifiManager;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,7 +15,10 @@ public class StatisticsUtils
 {
   private static String encryptUid(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    AppMethodBeat.i(25);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(25);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -27,17 +31,25 @@ public class StatisticsUtils
       i += 1;
     }
     localStringBuilder.reverse();
-    return localStringBuilder.toString();
+    paramString = localStringBuilder.toString();
+    AppMethodBeat.o(25);
+    return paramString;
   }
   
   private static char getChar(byte paramByte, int paramInt)
   {
-    return (char)(paramByte - getOffset(paramInt & 0x1));
+    AppMethodBeat.i(24);
+    char c = (char)(paramByte - getOffset(paramInt & 0x1));
+    AppMethodBeat.o(24);
+    return c;
   }
   
   public static String getDeviceUid(Context paramContext)
   {
-    if (paramContext.getPackageName().startsWith("com.tencent")) {
+    AppMethodBeat.i(20);
+    if (paramContext.getPackageName().startsWith("com.tencent"))
+    {
+      AppMethodBeat.o(20);
       return "com.tencent";
     }
     String str = getIMEI(paramContext.getApplicationContext());
@@ -52,35 +64,43 @@ public class StatisticsUtils
       }
       localObject = new StringBuilder().append(str);
       if (i == 0) {
-        break label91;
+        break label108;
       }
     }
     for (;;)
     {
-      return toMD5(encryptUid(paramContext));
+      paramContext = toMD5(encryptUid(paramContext));
+      AppMethodBeat.o(20);
+      return paramContext;
       i = 0;
       break;
-      label91:
+      label108:
       paramContext = "";
     }
   }
   
   public static String getIMEI(Context paramContext)
   {
+    AppMethodBeat.i(22);
     String str = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
     if (TextUtils.isEmpty(str))
     {
       paramContext = (TelephonyManager)paramContext.getApplicationContext().getSystemService("phone");
-      if (paramContext != null) {
-        return paramContext.getDeviceId();
-      }
+      if (paramContext == null) {}
     }
-    return str;
+    for (paramContext = paramContext.getDeviceId();; paramContext = str)
+    {
+      AppMethodBeat.o(22);
+      return paramContext;
+    }
   }
   
   public static String getMacAddr(Context paramContext)
   {
-    if (paramContext == null) {
+    AppMethodBeat.i(21);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(21);
       return null;
     }
     paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
@@ -89,7 +109,9 @@ public class StatisticsUtils
       paramContext = paramContext.getConnectionInfo();
       if (paramContext == null) {}
     }
-    for (paramContext = paramContext.getMacAddress();; paramContext = null) {
+    for (paramContext = paramContext.getMacAddress();; paramContext = null)
+    {
+      AppMethodBeat.o(21);
       return paramContext;
     }
   }
@@ -104,28 +126,30 @@ public class StatisticsUtils
   
   public static String toMD5(String paramString)
   {
-    Object localObject;
-    if (TextUtils.isEmpty(paramString)) {
-      localObject = "";
-    }
-    for (;;)
+    AppMethodBeat.i(23);
+    if (TextUtils.isEmpty(paramString))
     {
-      return localObject;
-      try
+      AppMethodBeat.o(23);
+      return "";
+    }
+    try
+    {
+      Object localObject = MessageDigest.getInstance("MD5");
+      ((MessageDigest)localObject).reset();
+      ((MessageDigest)localObject).update(paramString.getBytes());
+      for (paramString = new BigInteger(1, ((MessageDigest)localObject).digest()).toString(16);; paramString = "0".concat(String.valueOf(paramString)))
       {
-        localObject = MessageDigest.getInstance("MD5");
-        ((MessageDigest)localObject).reset();
-        ((MessageDigest)localObject).update(paramString.getBytes());
-        for (paramString = new BigInteger(1, ((MessageDigest)localObject).digest()).toString(16);; paramString = "0" + paramString)
-        {
-          localObject = paramString;
-          if (paramString.length() >= 32) {
-            break;
-          }
+        localObject = paramString;
+        if (paramString.length() >= 32) {
+          break;
         }
-        return "";
       }
-      catch (NoSuchAlgorithmException paramString) {}
+      return localObject;
+    }
+    catch (NoSuchAlgorithmException paramString)
+    {
+      localObject = "";
+      AppMethodBeat.o(23);
     }
   }
 }

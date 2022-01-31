@@ -1,8 +1,31 @@
 package com.google.android.gms.dynamic;
 
-public abstract interface zze<T extends LifecycleDelegate>
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class zze
+  implements View.OnClickListener
 {
-  public abstract void zza(T paramT);
+  zze(Context paramContext, Intent paramIntent) {}
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(61639);
+    try
+    {
+      this.val$context.startActivity(this.zzabl);
+      AppMethodBeat.o(61639);
+      return;
+    }
+    catch (ActivityNotFoundException paramView)
+    {
+      AppMethodBeat.o(61639);
+    }
+  }
 }
 
 

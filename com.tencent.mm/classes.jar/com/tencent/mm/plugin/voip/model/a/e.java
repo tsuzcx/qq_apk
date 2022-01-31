@@ -1,60 +1,69 @@
 package com.tencent.mm.plugin.voip.model.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.protocal.c.cfd;
-import com.tencent.mm.protocal.c.cfe;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.protocal.protobuf.cso;
+import com.tencent.mm.protocal.protobuf.csp;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class e
-  extends n<cfd, cfe>
+  extends n<cso, csp>
 {
   public e(int paramInt, long paramLong, String paramString)
   {
+    AppMethodBeat.i(4710);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new cfd();
-    ((b.a)localObject).ecI = new cfe();
+    ((b.a)localObject).fsX = new cso();
+    ((b.a)localObject).fsY = new csp();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipgetroominfo";
-    ((b.a)localObject).ecG = 303;
-    ((b.a)localObject).ecJ = 119;
-    ((b.a)localObject).ecK = 1000000119;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (cfd)this.dmK.ecE.ecN;
-    ((cfd)localObject).sST = paramInt;
-    ((cfd)localObject).sSU = paramLong;
-    ((cfd)localObject).tTO = paramString;
-    ((cfd)localObject).hQR = 1;
-    ((cfd)localObject).tSJ = System.currentTimeMillis();
+    ((b.a)localObject).funcId = 303;
+    ((b.a)localObject).reqCmdId = 119;
+    ((b.a)localObject).respCmdId = 1000000119;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (cso)this.rr.fsV.fta;
+    ((cso)localObject).wQP = paramInt;
+    ((cso)localObject).wQQ = paramLong;
+    ((cso)localObject).ybf = paramString;
+    ((cso)localObject).jKs = 1;
+    ((cso)localObject).yab = System.currentTimeMillis();
+    AppMethodBeat.o(4710);
   }
   
-  public final f bRy()
+  public final f cOp()
   {
-    return new e.1(this);
-  }
-  
-  public final void em(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      cfe localcfe = (cfe)bRC();
-      if (localcfe != null) {
-        y.i("MicroMsg.Voip.GetRoomInfo", "roomId:%d, roomKey:%s, memberCount:%d, inviteType:%d", new Object[] { Integer.valueOf(localcfe.sST), Long.valueOf(localcfe.sSU), Integer.valueOf(localcfe.dne), Integer.valueOf(localcfe.tTG) });
-      }
-      return;
-    }
-    y.i("MicroMsg.Voip.GetRoomInfo", "Get RoomInfo error");
+    AppMethodBeat.i(4712);
+    e.1 local1 = new e.1(this);
+    AppMethodBeat.o(4712);
+    return local1;
   }
   
   public final int getType()
   {
     return 303;
   }
+  
+  public final void gk(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(4711);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      csp localcsp = (csp)cOt();
+      if (localcsp != null) {
+        ab.i("MicroMsg.Voip.GetRoomInfo", "roomId:%d, roomKey:%s, memberCount:%d, inviteType:%d", new Object[] { Integer.valueOf(localcsp.wQP), Long.valueOf(localcsp.wQQ), Integer.valueOf(localcsp.eeF), Integer.valueOf(localcsp.yaX) });
+      }
+      AppMethodBeat.o(4711);
+      return;
+    }
+    ab.i("MicroMsg.Voip.GetRoomInfo", "Get RoomInfo error");
+    AppMethodBeat.o(4711);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.e
  * JD-Core Version:    0.7.0.1
  */

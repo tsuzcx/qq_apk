@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.facedetect.d;
 
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.TimerTask;
 
 final class c$2
@@ -11,21 +12,23 @@ final class c$2
   
   public final void run()
   {
-    synchronized (c.b(this.jPn))
+    AppMethodBeat.i(299);
+    synchronized (c.b(this.mjD))
     {
-      if (!c.c(this.jPn))
+      if (!c.c(this.mjD))
       {
-        y.w(c.access$300(), "hy: already stopped");
+        ab.w(c.access$300(), "hy: already stopped");
         cancel();
       }
-      ai.d(new c.2.1(this));
+      al.d(new c.2.1(this));
+      AppMethodBeat.o(299);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.c.2
  * JD-Core Version:    0.7.0.1
  */

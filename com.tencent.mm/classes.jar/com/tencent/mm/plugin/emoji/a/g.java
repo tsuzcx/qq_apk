@@ -5,138 +5,150 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.a.a.a;
-import com.tencent.mm.plugin.emoji.f.h;
 import com.tencent.mm.plugin.emoji.model.i;
 import com.tencent.mm.storage.at;
 
 public final class g
   extends f
 {
-  private int iVj = 0;
-  private int iVk = 0;
-  private int iVl = 0;
+  private int leo = 0;
+  private int lep = 0;
+  private int leq = 0;
   
   public g(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final int aGQ()
-  {
-    return this.iVj;
-  }
-  
-  public final int aGR()
-  {
-    return this.iVk;
-  }
-  
-  public final int aGS()
-  {
-    return this.iVl;
-  }
-  
-  protected final boolean aGU()
-  {
-    return i.getEmojiStorageMgr().cuS();
-  }
-  
   public final View b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(52752);
     f.a locala = (f.a)paramView.getTag();
-    if (this.iVj > 0) {
+    if (this.leo > 0) {
       if (paramInt == 0)
       {
-        locala.iUI.setVisibility(0);
-        locala.iUI.setText(this.mContext.getString(f.h.emoji_store_hot));
+        locala.ldM.setVisibility(0);
+        locala.ldM.setText(this.mContext.getString(2131299203));
       }
     }
     for (;;)
     {
-      if (locala.iUK != null) {
-        locala.iUK.postDelayed(new g.1(this, locala), 100L);
+      if (locala.ldO != null) {
+        locala.ldO.postDelayed(new g.1(this, locala), 100L);
       }
-      return super.b(paramInt, paramView, paramViewGroup);
-      if ((this.iVk > 0) && (paramInt == this.iVj))
+      paramView = super.b(paramInt, paramView, paramViewGroup);
+      AppMethodBeat.o(52752);
+      return paramView;
+      if ((this.lep > 0) && (paramInt == this.leo))
       {
-        locala.iUI.setVisibility(0);
-        locala.iUI.setText(this.mContext.getString(f.h.emoji_store_recent));
+        locala.ldM.setVisibility(0);
+        locala.ldM.setText(this.mContext.getString(2131299224));
       }
-      else if (paramInt == this.iVj + this.iVk)
+      else if (paramInt == this.leo + this.lep)
       {
-        locala.iUI.setVisibility(0);
-        if (i.getEmojiStorageMgr().cuS()) {
-          locala.iUI.setText(f.h.emoji_store_recenedownload);
+        locala.ldM.setVisibility(0);
+        if (i.getEmojiStorageMgr().dxv()) {
+          locala.ldM.setText(2131299223);
         } else {
-          locala.iUI.setText(this.mContext.getString(f.h.emoji_store_all));
+          locala.ldM.setText(this.mContext.getString(2131299183));
         }
       }
       else
       {
-        locala.iUI.setVisibility(8);
+        locala.ldM.setVisibility(8);
         continue;
-        if (this.iVk > 0)
+        if (this.lep > 0)
         {
           if (paramInt == 0)
           {
-            locala.iUI.setVisibility(0);
-            locala.iUI.setText(this.mContext.getString(f.h.emoji_store_recent));
+            locala.ldM.setVisibility(0);
+            locala.ldM.setText(this.mContext.getString(2131299224));
           }
-          else if (paramInt == this.iVj + this.iVk)
+          else if (paramInt == this.leo + this.lep)
           {
-            locala.iUI.setVisibility(0);
-            if (i.getEmojiStorageMgr().cuS()) {
-              locala.iUI.setText(f.h.emoji_store_recenedownload);
+            locala.ldM.setVisibility(0);
+            if (i.getEmojiStorageMgr().dxv()) {
+              locala.ldM.setText(2131299223);
             } else {
-              locala.iUI.setText(this.mContext.getString(f.h.emoji_store_all));
+              locala.ldM.setText(this.mContext.getString(2131299183));
             }
           }
           else
           {
-            locala.iUI.setVisibility(8);
+            locala.ldM.setVisibility(8);
           }
         }
         else if (paramInt == 0)
         {
-          locala.iUI.setVisibility(0);
-          if (i.getEmojiStorageMgr().cuS()) {
-            locala.iUI.setText(f.h.emoji_store_recenedownload);
+          locala.ldM.setVisibility(0);
+          if (i.getEmojiStorageMgr().dxv()) {
+            locala.ldM.setText(2131299223);
           } else {
-            locala.iUI.setText(this.mContext.getString(f.h.emoji_store_all));
+            locala.ldM.setText(this.mContext.getString(2131299183));
           }
         }
         else
         {
-          locala.iUI.setVisibility(8);
+          locala.ldM.setVisibility(8);
         }
       }
     }
   }
   
+  public final int bkC()
+  {
+    return this.leo;
+  }
+  
+  public final int bkD()
+  {
+    return this.lep;
+  }
+  
+  public final int bkE()
+  {
+    return this.leq;
+  }
+  
+  protected final boolean bkG()
+  {
+    AppMethodBeat.i(52754);
+    boolean bool = i.getEmojiStorageMgr().dxv();
+    AppMethodBeat.o(52754);
+    return bool;
+  }
+  
   public final int getCount()
   {
-    return super.getCount();
+    AppMethodBeat.i(52751);
+    int i = super.getCount();
+    AppMethodBeat.o(52751);
+    return i;
   }
   
-  public final void pM(int paramInt)
+  public final void ug(int paramInt)
   {
-    this.iVj = paramInt;
+    this.leo = paramInt;
   }
   
-  public final void pN(int paramInt)
+  public final void uh(int paramInt)
   {
-    this.iVk = paramInt;
+    this.lep = paramInt;
   }
   
-  public final void pO(int paramInt)
+  public final void ui(int paramInt)
   {
-    this.iVl = paramInt;
+    this.leq = paramInt;
   }
   
-  public final com.tencent.mm.plugin.emoji.a.a.f pP(int paramInt)
+  public final com.tencent.mm.plugin.emoji.a.a.f uj(int paramInt)
   {
-    return super.pP(paramInt);
+    AppMethodBeat.i(52753);
+    com.tencent.mm.plugin.emoji.a.a.f localf = super.uj(paramInt);
+    AppMethodBeat.o(52753);
+    return localf;
   }
 }
 

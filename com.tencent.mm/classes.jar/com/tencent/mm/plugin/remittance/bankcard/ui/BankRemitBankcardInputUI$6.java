@@ -1,31 +1,35 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.remittance.bankcard.a.g;
 import com.tencent.mm.plugin.remittance.bankcard.model.BankcardElemParcel;
-import com.tencent.mm.protocal.c.abx;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.protocal.protobuf.agp;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class BankRemitBankcardInputUI$6
-  implements n.a
+  implements p.a
 {
   BankRemitBankcardInputUI$6(BankRemitBankcardInputUI paramBankRemitBankcardInputUI, g paramg) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (this.nwf.nuW.sxU == null)
+    AppMethodBeat.i(44518);
+    if (this.qhg.qfP.wrx == null)
     {
-      y.w("MicroMsg.BankRemitBankcardInputUI", "bank_elem is null");
-      BankRemitBankcardInputUI.q(this.nwd);
+      ab.w("MicroMsg.BankRemitBankcardInputUI", "bank_elem is null");
+      BankRemitBankcardInputUI.t(this.qhe);
+      AppMethodBeat.o(44518);
       return;
     }
-    BankRemitBankcardInputUI.a(this.nwd, new BankcardElemParcel(this.nwf.nuW.sxU));
-    BankRemitBankcardInputUI.w(this.nwd);
-    BankRemitBankcardInputUI.x(this.nwd);
-    BankRemitBankcardInputUI.y(this.nwd);
-    BankRemitBankcardInputUI.z(this.nwd);
-    BankRemitBankcardInputUI.k(this.nwd);
+    BankRemitBankcardInputUI.a(this.qhe, new BankcardElemParcel(this.qhg.qfP.wrx));
+    BankRemitBankcardInputUI.H(this.qhe);
+    BankRemitBankcardInputUI.I(this.qhe);
+    BankRemitBankcardInputUI.J(this.qhe);
+    BankRemitBankcardInputUI.K(this.qhe);
+    BankRemitBankcardInputUI.k(this.qhe);
+    AppMethodBeat.o(44518);
   }
 }
 

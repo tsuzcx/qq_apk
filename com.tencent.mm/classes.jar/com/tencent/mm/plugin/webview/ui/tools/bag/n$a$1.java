@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.f.b;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class n$a$1
   implements Runnable
@@ -15,43 +15,44 @@ final class n$a$1
   
   public final void run()
   {
-    switch (this.byD)
+    AppMethodBeat.i(8252);
+    switch (this.caF)
     {
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(8252);
       return;
-    case 1: 
-      String str1 = this.byv.getString("key_url");
-      String str2 = this.byv.getString("key_bag_icon");
-      int i = this.byv.getInt("key_scene", 0);
-      boolean bool = this.byv.getBoolean("key_from_bag", false);
-      Bundle localBundle = this.byv.getBundle("key_extras");
-      l locall = l.rss;
-      if (!b.bg(ae.getContext()))
+      String str1 = this.cax.getString("key_url");
+      String str2 = this.cax.getString("key_bag_icon");
+      int i = this.cax.getInt("key_scene", 0);
+      boolean bool = this.cax.getBoolean("key_from_bag", false);
+      Bundle localBundle = this.cax.getBundle("key_extras");
+      l locall = l.vix;
+      if (!b.bK(ah.getContext()))
       {
-        y.w("MicroMsg.WebViewBagMgr", "showBag: no float window permission");
-        Context localContext = ae.getContext();
-        RequestFloatWindowPermissionDialog.a(localContext, localContext.getString(R.l.webview_bag_no_float_window_permission_alert), new l.1(locall, str1, i, str2, localBundle, bool));
+        ab.w("MicroMsg.WebViewBagMgr", "showBag: no float window permission");
+        Context localContext = ah.getContext();
+        RequestFloatWindowPermissionDialog.a(localContext, localContext.getString(2131305842), new l.1(locall, str1, i, str2, localBundle, bool));
+        AppMethodBeat.o(8252);
         return;
       }
       locall.a(str1, i, str2, localBundle, bool);
-      locall.lq(false);
+      locall.oz(false);
+      AppMethodBeat.o(8252);
       return;
-    case 2: 
-      l.rss.ccW();
+      l.vix.dcS();
+      AppMethodBeat.o(8252);
       return;
-    case 3: 
-      l.rss.lp(false);
+      l.vix.ox(false);
+      AppMethodBeat.o(8252);
       return;
-    case 4: 
-      l.rss.cfb();
+      l.vix.dfj();
+      AppMethodBeat.o(8252);
       return;
+      float f = this.cax.getFloat("key_alpha", 1.0F);
+      l.vix.bn(f);
     }
-    float f = this.byv.getFloat("key_alpha", 1.0F);
-    l.rss.aK(f);
   }
 }
 

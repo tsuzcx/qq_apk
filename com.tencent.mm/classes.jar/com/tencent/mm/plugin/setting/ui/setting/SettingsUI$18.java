@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class SettingsUI$18
   implements DialogInterface.OnCancelListener
@@ -14,18 +15,20 @@ final class SettingsUI$18
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.Dk().b(281, SettingsUI.w(this.nWB));
-    g.Dk().b(282, SettingsUI.y(this.nWB));
-    SettingsUI.x(this.nWB);
-    SettingsUI.z(this.nWB);
-    if (SettingsUI.t(this.nWB) != null)
+    AppMethodBeat.i(127579);
+    g.Rc().b(281, SettingsUI.v(this.qKL));
+    g.Rc().b(282, SettingsUI.x(this.qKL));
+    SettingsUI.w(this.qKL);
+    SettingsUI.y(this.qKL);
+    if (SettingsUI.s(this.qKL) != null)
     {
-      SettingsUI.t(this.nWB).stopTimer();
-      SettingsUI.u(this.nWB);
+      SettingsUI.s(this.qKL).stopTimer();
+      SettingsUI.t(this.qKL);
     }
-    if (SettingsUI.p(this.nWB) != null) {
-      SettingsUI.p(this.nWB).dismiss();
+    if (SettingsUI.o(this.qKL) != null) {
+      SettingsUI.o(this.qKL).dismiss();
     }
+    AppMethodBeat.o(127579);
   }
 }
 

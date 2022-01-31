@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.gallery.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.VideoMediaItem;
 
 final class a$c$1
@@ -9,9 +10,11 @@ final class a$c$1
   
   public final void run()
   {
-    if (a.c.a(this.kHO) != null) {
-      a.c.a(this.kHO).a(this.kHO, a.c.b(this.kHO).eAx);
+    AppMethodBeat.i(21361);
+    if (a.c.a(this.nea) != null) {
+      a.c.a(this.nea).a(this.nea, a.c.b(this.nea).fQq);
     }
+    AppMethodBeat.o(21361);
   }
 }
 

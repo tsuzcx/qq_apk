@@ -5,8 +5,8 @@ import android.widget.TextView;
 
 final class c$b$a
 {
-  ImageView fYe;
-  TextView fYf;
+  ImageView jji;
+  TextView jjj;
 }
 
 

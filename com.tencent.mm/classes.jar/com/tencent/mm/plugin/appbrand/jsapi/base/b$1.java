@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import org.json.JSONObject;
 
@@ -10,7 +11,9 @@ final class b$1
   
   public final void run()
   {
-    this.gla.b(this.ggE, this.gbZ, this.dIS);
+    AppMethodBeat.i(91046);
+    b.a(this.hEQ, this.hza, this.bBa, this.bAX);
+    AppMethodBeat.o(91046);
   }
 }
 

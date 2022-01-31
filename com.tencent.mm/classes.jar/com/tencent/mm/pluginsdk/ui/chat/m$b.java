@@ -6,14 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView.ScaleType;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
-import com.tencent.mm.plugin.l.a.f;
-import com.tencent.mm.plugin.l.a.h;
 import com.tencent.mm.pluginsdk.a.d;
 import com.tencent.mm.pluginsdk.ui.emoji.PreViewEmojiView;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.util.ArrayList;
 
@@ -26,10 +25,15 @@ final class m$b
   
   public final int getCount()
   {
-    if (this.mData == null) {
+    AppMethodBeat.i(62460);
+    if (this.mData == null)
+    {
+      AppMethodBeat.o(62460);
       return 0;
     }
-    return this.mData.size();
+    int i = this.mData.size();
+    AppMethodBeat.o(62460);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -39,58 +43,67 @@ final class m$b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(62462);
     EmojiInfo localEmojiInfo;
     String str;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.sgS.mContext).inflate(a.f.chatting_footer_suggest_emoticon_bubble_item, null);
-      paramViewGroup = new m.c(this.sgS, paramView);
+      paramView = LayoutInflater.from(this.vZl.mContext).inflate(2130969042, null);
+      paramViewGroup = new m.c(this.vZl, paramView);
       paramView.setTag(paramViewGroup);
-      localEmojiInfo = pW(paramInt);
-      paramViewGroup.sgT.setSize(this.sgS.sgF);
-      paramViewGroup.sgT.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      localEmojiInfo = ur(paramInt);
+      paramViewGroup.vZm.setSize(this.vZl.vYY);
+      paramViewGroup.vZm.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
       str = "";
       if (localEmojiInfo != null) {
-        str = ((PluginEmoji)g.t(PluginEmoji.class)).getEmojiMgr().Aw(localEmojiInfo.Wv());
+        str = ((PluginEmoji)g.G(PluginEmoji.class)).getEmojiMgr().Kx(localEmojiInfo.Al());
       }
-      if (!bk.bl(str)) {
-        break label191;
+      if (!bo.isNullOrNil(str)) {
+        break label199;
       }
-      paramViewGroup.sgT.setContentDescription(this.sgS.mContext.getString(a.h.emoji_store_title));
+      paramViewGroup.vZm.setContentDescription(this.vZl.mContext.getString(2131299253));
+      label141:
+      if (localEmojiInfo == null) {
+        break label225;
+      }
+      if (!localEmojiInfo.dzq()) {
+        break label211;
+      }
+      paramViewGroup.vZm.b(EmojiInfo.bI(this.vZl.mContext, localEmojiInfo.getName()), localEmojiInfo.getName());
     }
     for (;;)
     {
-      if (localEmojiInfo != null)
-      {
-        if (localEmojiInfo.cwC())
-        {
-          paramViewGroup.sgT.b(EmojiInfo.bv(this.sgS.mContext, localEmojiInfo.getName()), localEmojiInfo.getName());
-          return paramView;
-          paramViewGroup = (m.c)paramView.getTag();
-          break;
-          label191:
-          paramViewGroup.sgT.setContentDescription(str);
-          continue;
-        }
-        paramViewGroup.sgT.a(localEmojiInfo, "");
-        return paramView;
-      }
+      AppMethodBeat.o(62462);
+      return paramView;
+      paramViewGroup = (m.c)paramView.getTag();
+      break;
+      label199:
+      paramViewGroup.vZm.setContentDescription(str);
+      break label141;
+      label211:
+      paramViewGroup.vZm.a(localEmojiInfo, "");
+      continue;
+      label225:
+      ab.w("MicroMsg.emoji.SuggestEmoticonBubble", "emoji info is null.");
     }
-    y.w("MicroMsg.emoji.SuggestEmoticonBubble", "emoji info is null.");
-    return paramView;
   }
   
-  public final EmojiInfo pW(int paramInt)
+  public final EmojiInfo ur(int paramInt)
   {
-    if ((this.mData != null) && (this.mData.size() > paramInt)) {
-      return (EmojiInfo)this.mData.get(paramInt);
+    AppMethodBeat.i(62461);
+    if ((this.mData != null) && (this.mData.size() > paramInt))
+    {
+      EmojiInfo localEmojiInfo = (EmojiInfo)this.mData.get(paramInt);
+      AppMethodBeat.o(62461);
+      return localEmojiInfo;
     }
+    AppMethodBeat.o(62461);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.m.b
  * JD-Core Version:    0.7.0.1
  */

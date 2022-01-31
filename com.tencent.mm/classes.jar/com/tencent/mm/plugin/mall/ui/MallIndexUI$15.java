@@ -1,27 +1,24 @@
 package com.tencent.mm.plugin.mall.ui;
 
-import com.tencent.mm.h.a.ti;
-import com.tencent.mm.h.a.ti.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.wallet_core.ui.e;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallIndexUI$15
-  implements Runnable
+  implements View.OnClickListener
 {
-  MallIndexUI$15(MallIndexUI paramMallIndexUI, ti paramti) {}
+  MallIndexUI$15(MallIndexUI paramMallIndexUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    if (!bk.bl(this.iLQ.ccV.ccW))
-    {
-      e.a(this.mau.lZy, this.iLQ.ccV.ccW, this.iLQ.ccV.content, this.iLQ.ccV.url);
-      this.mau.bgH();
-    }
+    AppMethodBeat.i(43220);
+    MallIndexUI.c(this.oAt);
+    AppMethodBeat.o(43220);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.MallIndexUI.15
  * JD-Core Version:    0.7.0.1
  */

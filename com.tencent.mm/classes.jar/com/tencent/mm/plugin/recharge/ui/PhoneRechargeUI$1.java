@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.recharge.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class PhoneRechargeUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class PhoneRechargeUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.nrb.XM();
-    this.nrb.finish();
+    AppMethodBeat.i(44252);
+    this.pWp.hideVKB();
+    this.pWp.finish();
+    AppMethodBeat.o(44252);
     return true;
   }
 }

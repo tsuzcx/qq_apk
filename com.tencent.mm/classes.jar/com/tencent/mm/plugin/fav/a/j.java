@@ -1,21 +1,29 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.h.c.bo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.bq;
 import com.tencent.mm.sdk.e.c.a;
 
 public final class j
-  extends bo
+  extends bq
 {
-  public static c.a buS = ;
+  public static c.a info;
   
-  public static int qX(int paramInt)
+  static
+  {
+    AppMethodBeat.i(102665);
+    info = bq.Hm();
+    AppMethodBeat.o(102665);
+  }
+  
+  public static int vS(int paramInt)
   {
     return 1 << paramInt;
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

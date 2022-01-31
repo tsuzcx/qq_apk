@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.remittance.bankcard.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.protocal.c.byw;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.clp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,49 +12,62 @@ import java.util.List;
 public class TransferRecordParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator<TransferRecordParcel> CREATOR = new TransferRecordParcel.1();
-  public String lnT;
-  public String mOb;
-  public String nvA;
-  public String nvB;
-  public String nve;
-  public String nvy;
-  public String nvz;
+  public static final Parcelable.Creator<TransferRecordParcel> CREATOR;
+  public String nLq;
+  public String poq;
+  public String qfY;
+  public String qgu;
+  public String qgv;
+  public String qgw;
+  public String qgx;
+  
+  static
+  {
+    AppMethodBeat.i(44512);
+    CREATOR = new TransferRecordParcel.1();
+    AppMethodBeat.o(44512);
+  }
   
   public TransferRecordParcel() {}
   
   protected TransferRecordParcel(Parcel paramParcel)
   {
-    this.nvy = paramParcel.readString();
-    this.nvz = paramParcel.readString();
-    this.nve = paramParcel.readString();
-    this.lnT = paramParcel.readString();
-    this.mOb = paramParcel.readString();
-    this.nvA = paramParcel.readString();
-    this.nvB = paramParcel.readString();
+    AppMethodBeat.i(44509);
+    this.qgu = paramParcel.readString();
+    this.qgv = paramParcel.readString();
+    this.qfY = paramParcel.readString();
+    this.nLq = paramParcel.readString();
+    this.poq = paramParcel.readString();
+    this.qgw = paramParcel.readString();
+    this.qgx = paramParcel.readString();
+    AppMethodBeat.o(44509);
   }
   
-  private TransferRecordParcel(byw parambyw)
+  private TransferRecordParcel(clp paramclp)
   {
-    this.nvy = parambyw.nvy;
-    this.nvz = parambyw.nvz;
-    this.nve = parambyw.nve;
-    this.lnT = parambyw.lnT;
-    this.mOb = parambyw.mOb;
-    this.nvA = parambyw.nvA;
-    this.nvB = parambyw.nvB;
+    this.qgu = paramclp.qgu;
+    this.qgv = paramclp.qgv;
+    this.qfY = paramclp.qfY;
+    this.nLq = paramclp.nLq;
+    this.poq = paramclp.poq;
+    this.qgw = paramclp.qgw;
+    this.qgx = paramclp.qgx;
   }
   
-  public static ArrayList<TransferRecordParcel> ci(List<byw> paramList)
+  public static ArrayList<TransferRecordParcel> cL(List<clp> paramList)
   {
-    if (paramList == null) {
+    AppMethodBeat.i(44511);
+    if (paramList == null)
+    {
+      AppMethodBeat.o(44511);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      localArrayList.add(new TransferRecordParcel((byw)paramList.next()));
+      localArrayList.add(new TransferRecordParcel((clp)paramList.next()));
     }
+    AppMethodBeat.o(44511);
     return localArrayList;
   }
   
@@ -64,18 +78,20 @@ public class TransferRecordParcel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.nvy);
-    paramParcel.writeString(this.nvz);
-    paramParcel.writeString(this.nve);
-    paramParcel.writeString(this.lnT);
-    paramParcel.writeString(this.mOb);
-    paramParcel.writeString(this.nvA);
-    paramParcel.writeString(this.nvB);
+    AppMethodBeat.i(44510);
+    paramParcel.writeString(this.qgu);
+    paramParcel.writeString(this.qgv);
+    paramParcel.writeString(this.qfY);
+    paramParcel.writeString(this.nLq);
+    paramParcel.writeString(this.poq);
+    paramParcel.writeString(this.qgw);
+    paramParcel.writeString(this.qgx);
+    AppMethodBeat.o(44510);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.model.TransferRecordParcel
  * JD-Core Version:    0.7.0.1
  */

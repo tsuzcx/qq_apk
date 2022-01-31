@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.dbbackup;
 
 import android.app.ProgressDialog;
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$2$1
   implements Runnable
@@ -10,24 +11,26 @@ final class c$2$1
   
   public final void run()
   {
-    if (this.iMu.iMq != null) {
-      this.iMu.iMq.dismiss();
+    AppMethodBeat.i(18929);
+    if (this.kTs.kTo != null) {
+      this.kTs.kTo.dismiss();
     }
     String str;
-    if (this.ewr == 0) {
-      if (this.iMu.iMt)
+    if (this.fMh == 0) {
+      if (this.kTs.kTr)
       {
         str = "incremental";
-        str = String.format("Database (%s) backup succeeded, elapsed %.2f seconds.", new Object[] { str, Float.valueOf((float)(System.nanoTime() - this.iMu.eow) / 1.0E+009F) });
+        str = String.format("Database (%s) backup succeeded, elapsed %.2f seconds.", new Object[] { str, Float.valueOf((float)(System.nanoTime() - this.kTs.fET) / 1.0E+009F) });
       }
     }
     for (;;)
     {
-      Toast.makeText(this.iMu.val$context, str, 0).show();
+      Toast.makeText(this.kTs.val$context, str, 0).show();
+      AppMethodBeat.o(18929);
       return;
       str = "new";
       break;
-      if (this.ewr == 1) {
+      if (this.fMh == 1) {
         str = "Database backup canceled.";
       } else {
         str = "Database backup failed.";

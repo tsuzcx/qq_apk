@@ -2,9 +2,9 @@ package com.tencent.mm.ui;
 
 public abstract interface f$a
 {
-  public abstract void Wp();
+  public abstract void apT();
   
-  public abstract void cyh();
+  public abstract void dBh();
 }
 
 

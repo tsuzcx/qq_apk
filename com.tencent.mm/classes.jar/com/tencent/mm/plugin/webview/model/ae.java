@@ -1,84 +1,68 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.net.Uri;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.File;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.cli;
+import com.tencent.mm.protocal.protobuf.clj;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class ae
+  extends m
+  implements k
 {
-  private static final Set<String> rfP;
+  private f eGj;
+  public final b rr;
   
-  static
+  public ae(String paramString1, String paramString2)
   {
-    Object localObject1 = new HashSet();
-    rfP = (Set)localObject1;
-    ((Set)localObject1).add("file:///android_asset/");
-    Object localObject2 = e.dOQ;
-    localObject1 = localObject2;
-    if (!bk.bl((String)localObject2)) {
-      localObject1 = e.dOQ.replace("/data/user/0", "/data/data");
-    }
-    localObject2 = new File(aa.Bw(0));
-    rfP.add("file://" + ((File)localObject2).getAbsolutePath());
-    File localFile1 = new File(e.bkH, aa.Bu(0));
-    rfP.add("file://" + localFile1.getAbsolutePath());
-    File localFile2 = new File((String)localObject1, "wenote/res");
-    rfP.add("file://" + localFile2.getAbsolutePath());
-    localFile2 = new File(e.bkH, "wenote/res");
-    rfP.add("file://" + localFile2.getAbsolutePath());
-    y.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { ((File)localObject2).getAbsolutePath(), localFile1.getAbsolutePath() });
-    localObject1 = new File((String)localObject1, "emoji/res");
-    rfP.add("file://" + ((File)localObject1).getAbsolutePath());
-    localObject2 = new File(e.bkH, "emoji/res");
-    rfP.add("file://" + ((File)localObject2).getAbsolutePath());
-    y.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { ((File)localObject1).getAbsolutePath(), ((File)localObject2).getAbsolutePath() });
-    localObject1 = rfP.iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      y.i("MicroMsg.URLFilter", "WebViewUI white list path : %s", new Object[] { (String)((Iterator)localObject1).next() });
-    }
+    AppMethodBeat.i(6650);
+    Object localObject = new b.a();
+    ((b.a)localObject).fsX = new cli();
+    ((b.a)localObject).fsY = new clj();
+    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/transid";
+    ((b.a)localObject).funcId = 1142;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (cli)this.rr.fsV.fta;
+    ((cli)localObject).cwc = paramString1;
+    ((cli)localObject).wys = paramString2;
+    AppMethodBeat.o(6650);
   }
   
-  public static boolean Sg(String paramString)
+  public final int doScene(e parame, f paramf)
   {
-    if (com.tencent.mm.platformtools.ae.eSM)
-    {
-      y.w("MicroMsg.URLFilter", "skipLoadUrlCheck");
-      return true;
-    }
-    if (bk.bl(paramString)) {
-      return true;
-    }
-    paramString = paramString.toLowerCase();
-    if (paramString.startsWith("about:blank")) {
-      return false;
-    }
-    if (!paramString.startsWith("file://"))
-    {
-      paramString = Uri.parse(paramString);
-      if (bk.bl(paramString.getHost())) {
-        return true;
-      }
-      return !paramString.getHost().contains(s.bil());
-    }
-    Iterator localIterator = rfP.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.startsWith((String)localIterator.next())) {
-        return true;
-      }
-    }
-    return false;
+    AppMethodBeat.i(6652);
+    ab.i("MicroMsg.NetSceneSendAppMsgToSpecifiedContact", "doScene");
+    this.eGj = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(6652);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 1142;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(6651);
+    ab.i("MicroMsg.NetSceneSendAppMsgToSpecifiedContact", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(6651);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.ae
  * JD-Core Version:    0.7.0.1
  */

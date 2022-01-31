@@ -1,41 +1,45 @@
 package com.tencent.mm.plugin.wallet_core.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.d;
+import com.tencent.mm.plugin.wallet_core.model.f;
 import org.json.JSONObject;
 
 public final class a
-  extends d
+  extends f
 {
-  private static a qzQ = null;
+  private static a umA = null;
   
-  public static a bWl()
+  public static a cVc()
   {
-    if (qzQ == null) {
-      qzQ = new a();
+    AppMethodBeat.i(47043);
+    if (umA == null) {
+      umA = new a();
     }
-    return qzQ;
+    a locala = umA;
+    AppMethodBeat.o(47043);
+    return locala;
   }
   
-  public final Bankcard am(JSONObject paramJSONObject)
+  public final Bankcard aw(JSONObject paramJSONObject)
   {
-    Bankcard localBankcard = super.am(paramJSONObject);
-    localBankcard.field_ext_msg = b.av(paramJSONObject);
+    AppMethodBeat.i(47044);
+    Bankcard localBankcard = super.aw(paramJSONObject);
+    localBankcard.field_ext_msg = b.aO(paramJSONObject);
     localBankcard.field_bankcardClientType = 1;
     localBankcard.field_desc = paramJSONObject.optString("description");
     localBankcard.field_trueName = paramJSONObject.optString("name_on_card");
-    if ("CREDITCARD_PAYU".equals(paramJSONObject.optString("bank_type")))
+    if ("CREDITCARD_PAYU".equals(paramJSONObject.optString("bank_type"))) {}
+    for (localBankcard.field_cardType |= Bankcard.ufz;; localBankcard.field_cardType |= Bankcard.ufB)
     {
-      localBankcard.field_cardType |= Bankcard.qtm;
+      AppMethodBeat.o(47044);
       return localBankcard;
     }
-    localBankcard.field_cardType |= Bankcard.qto;
-    return localBankcard;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.a.a
  * JD-Core Version:    0.7.0.1
  */

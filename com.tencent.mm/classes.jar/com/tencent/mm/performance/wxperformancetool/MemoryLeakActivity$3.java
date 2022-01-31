@@ -3,6 +3,7 @@ package com.tencent.mm.performance.wxperformancetool;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MemoryLeakActivity$3
   implements DialogInterface.OnClickListener
@@ -11,10 +12,12 @@ final class MemoryLeakActivity$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((MemoryLeakActivity.b(this.eQI) != null) && (MemoryLeakActivity.b(this.eQI).isShowing())) {
-      MemoryLeakActivity.b(this.eQI).dismiss();
+    AppMethodBeat.i(76884);
+    if ((MemoryLeakActivity.b(this.giD) != null) && (MemoryLeakActivity.b(this.giD).isShowing())) {
+      MemoryLeakActivity.b(this.giD).dismiss();
     }
-    this.eQI.finish();
+    this.giD.finish();
+    AppMethodBeat.o(76884);
   }
 }
 

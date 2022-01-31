@@ -1,21 +1,23 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.plugin.webview.ui.tools.preload.d.a;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader_app.a.a.c;
 
 final class g$30
-  implements d.a
+  implements a.c
 {
-  g$30(g paramg) {}
+  g$30(g paramg, i parami) {}
   
-  public final void a(i parami, String paramString, Map<String, Object> paramMap)
+  public final void aBK()
   {
-    g.a(this.rzi, parami, paramString, paramMap);
+    AppMethodBeat.i(154952);
+    this.vqm.a(this.uZa, this.uZa.vrQ + ":ok", null);
+    AppMethodBeat.o(154952);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.30
  * JD-Core Version:    0.7.0.1
  */

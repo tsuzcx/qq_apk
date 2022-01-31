@@ -2,59 +2,66 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.util.Base64;
 import android.widget.TextView;
-import com.tencent.mm.as.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.o;
 import com.tencent.mm.plugin.sight.base.d;
 import com.tencent.mm.plugin.sns.a.b.h;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.pluginsdk.ui.tools.f.a;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.pluginsdk.ui.tools.e.a;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SnsSightPlayerUI$9
-  implements f.a
+  implements e.a
 {
   SnsSightPlayerUI$9(SnsSightPlayerUI paramSnsSightPlayerUI) {}
   
-  public final int cv(int paramInt1, int paramInt2)
+  public final void Es()
+  {
+    AppMethodBeat.i(39262);
+    ab.d("MicroMsg.SnsSightPlayerUI", "on completion");
+    if (!SnsSightPlayerUI.j(this.rVT)) {
+      SnsSightPlayerUI.k(this.rVT).post(new SnsSightPlayerUI.9.2(this));
+    }
+    SnsSightPlayerUI.g(this.rVT).setLoop(true);
+    com.tencent.mm.plugin.sns.a.b.a.a locala = SnsSightPlayerUI.l(this.rVT).qZJ;
+    locala.raI += 1;
+    SnsSightPlayerUI.a(this.rVT, false);
+    AppMethodBeat.o(39262);
+  }
+  
+  public final int dP(int paramInt1, int paramInt2)
   {
     return 0;
   }
   
-  public final void cw(int paramInt1, int paramInt2) {}
+  public final void dQ(int paramInt1, int paramInt2) {}
   
-  public final void kA()
+  public final void mG()
   {
-    y.d("MicroMsg.SnsSightPlayerUI", com.tencent.mm.compatible.util.g.zH() + " onPrepared");
-    SnsSightPlayerUI.a(this.pdk, true);
+    AppMethodBeat.i(39260);
+    ab.d("MicroMsg.SnsSightPlayerUI", com.tencent.mm.compatible.util.g.Mk() + " onPrepared");
+    SnsSightPlayerUI.a(this.rVT, true);
+    AppMethodBeat.o(39260);
   }
   
   public final void onError(int paramInt1, int paramInt2)
   {
-    y.e("MicroMsg.SnsSightPlayerUI", "on play video error, what %d extra %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    SnsSightPlayerUI.g(this.pdk).stop();
-    if (SnsSightPlayerUI.h(this.pdk)) {
+    AppMethodBeat.i(39261);
+    ab.e("MicroMsg.SnsSightPlayerUI", "on play video error, what %d extra %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    SnsSightPlayerUI.g(this.rVT).stop();
+    if (SnsSightPlayerUI.h(this.rVT))
+    {
+      AppMethodBeat.o(39261);
       return;
     }
-    SnsSightPlayerUI.i(this.pdk);
-    b.t(Base64.encodeToString((d.bAW() + "[SnsSightPlayerUI] on play video error, what " + paramInt1 + " extra " + paramInt2 + ", path=" + bk.aM(SnsSightPlayerUI.e(this.pdk), "")).getBytes(), 2), "FullScreenPlaySight");
-    String str = SnsSightPlayerUI.e(this.pdk);
-    ai.d(new SnsSightPlayerUI.9.1(this, o.OJ().a(str, com.tencent.mm.cb.a.getDensity(this.pdk.mController.uMN), this.pdk.mController.uMN, -1), str));
-  }
-  
-  public final void ug()
-  {
-    y.d("MicroMsg.SnsSightPlayerUI", "on completion");
-    if (!SnsSightPlayerUI.j(this.pdk)) {
-      SnsSightPlayerUI.k(this.pdk).post(new SnsSightPlayerUI.9.2(this));
-    }
-    SnsSightPlayerUI.g(this.pdk).setLoop(true);
-    com.tencent.mm.plugin.sns.a.b.a.a locala = SnsSightPlayerUI.l(this.pdk).olx;
-    locala.omu += 1;
-    SnsSightPlayerUI.a(this.pdk, false);
+    SnsSightPlayerUI.i(this.rVT);
+    b.G(Base64.encodeToString((d.cmw() + "[SnsSightPlayerUI] on play video error, what " + paramInt1 + " extra " + paramInt2 + ", path=" + bo.bf(SnsSightPlayerUI.e(this.rVT), "")).getBytes(), 2), "FullScreenPlaySight");
+    String str = SnsSightPlayerUI.e(this.rVT);
+    al.d(new SnsSightPlayerUI.9.1(this, o.ahC().a(str, com.tencent.mm.cb.a.getDensity(this.rVT.getContext()), this.rVT.getContext(), -1), str));
+    AppMethodBeat.o(39261);
   }
 }
 

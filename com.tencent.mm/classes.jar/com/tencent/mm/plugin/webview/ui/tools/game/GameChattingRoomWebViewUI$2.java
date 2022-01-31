@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.q.a;
 
 final class GameChattingRoomWebViewUI$2
@@ -10,10 +11,12 @@ final class GameChattingRoomWebViewUI$2
   
   public final void a(boolean paramBoolean, String paramString, int paramInt)
   {
+    AppMethodBeat.i(8644);
     paramString = new Intent();
-    paramString.putExtra("rawUrl", GameChattingRoomWebViewUI.b(this.rvW));
-    this.rvW.setResult(GameChattingRoomWebViewUI.c(this.rvW), paramString);
-    this.rvW.finish();
+    paramString.putExtra("rawUrl", GameChattingRoomWebViewUI.b(this.vmm));
+    this.vmm.setResult(GameChattingRoomWebViewUI.c(this.vmm), paramString);
+    this.vmm.finish();
+    AppMethodBeat.o(8644);
   }
 }
 

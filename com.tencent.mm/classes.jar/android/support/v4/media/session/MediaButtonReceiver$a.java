@@ -12,8 +12,8 @@ import android.view.KeyEvent;
 final class MediaButtonReceiver$a
   extends MediaBrowserCompat.b
 {
-  private final BroadcastReceiver.PendingResult Cb;
-  MediaBrowserCompat Cc;
+  private final BroadcastReceiver.PendingResult CJ;
+  MediaBrowserCompat CK;
   private final Context mContext;
   private final Intent mIntent;
   
@@ -21,13 +21,13 @@ final class MediaButtonReceiver$a
   {
     this.mContext = paramContext;
     this.mIntent = paramIntent;
-    this.Cb = paramPendingResult;
+    this.CJ = paramPendingResult;
   }
   
   private void finish()
   {
-    this.Cc.AC.disconnect();
-    this.Cb.finish();
+    this.CK.disconnect();
+    this.CJ.finish();
   }
   
   public final void onConnected()
@@ -35,7 +35,7 @@ final class MediaButtonReceiver$a
     KeyEvent localKeyEvent;
     try
     {
-      MediaControllerCompat localMediaControllerCompat = new MediaControllerCompat(this.mContext, this.Cc.AC.cw());
+      MediaControllerCompat localMediaControllerCompat = new MediaControllerCompat(this.mContext, this.CK.Bo.cZ());
       localKeyEvent = (KeyEvent)this.mIntent.getParcelableExtra("android.intent.extra.KEY_EVENT");
       if (localKeyEvent == null) {
         throw new IllegalArgumentException("KeyEvent may not be null");
@@ -46,7 +46,7 @@ final class MediaButtonReceiver$a
     {
       finish();
       return;
-      localRemoteException.Cd.dispatchMediaButtonEvent(localKeyEvent);
+      localRemoteException.CL.dispatchMediaButtonEvent(localKeyEvent);
     }
   }
   
@@ -62,7 +62,7 @@ final class MediaButtonReceiver$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.media.session.MediaButtonReceiver.a
  * JD-Core Version:    0.7.0.1
  */

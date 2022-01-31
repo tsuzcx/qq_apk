@@ -1,70 +1,81 @@
 package com.tencent.mm.model.a;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.p;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.q;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 import java.util.HashMap;
 
 public class g
-  implements ar
+  implements at
 {
-  private c dYl = null;
+  private c fop = null;
   
-  private static g Ix()
+  private static g abv()
   {
-    return (g)p.B(g.class);
+    AppMethodBeat.i(118151);
+    g localg = (g)q.S(g.class);
+    AppMethodBeat.o(118151);
+    return localg;
   }
   
-  public static c Iy()
+  public static c abw()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (Ix().dYl == null) {
-      Ix().dYl = new c();
+    AppMethodBeat.i(118154);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    if (abv().fop == null) {
+      abv().fop = new c();
     }
-    return Ix().dYl;
+    c localc = abv().fop;
+    AppMethodBeat.o(118154);
+    return localc;
   }
   
-  public final void bh(boolean paramBoolean)
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    c localc = Iy();
+    return null;
+  }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(118152);
+    c localc = abw();
     long l = System.currentTimeMillis();
     try
     {
-      localc.iY((String)com.tencent.mm.kernel.g.DP().Dz().get(328193, null));
-      if (localc.Iw()) {
-        f.ja(localc.dYf.dYb);
+      localc.pM((String)com.tencent.mm.kernel.g.RL().Ru().get(328193, null));
+      if (localc.abu()) {
+        f.pO(localc.foj.fof);
       }
-      y.i("MicroMsg.abtest.AbTestManager", "[Abtest] init use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      ab.i("MicroMsg.abtest.AbTestManager", "[Abtest] init use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      AppMethodBeat.o(118152);
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.e("MicroMsg.abtest.AbTestManager", "[Abtest] updateAbTestCase exception:%s", new Object[] { localException.toString() });
+        ab.e("MicroMsg.abtest.AbTestManager", "[Abtest] updateAbTestCase exception:%s", new Object[] { localException.toString() });
       }
     }
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
+  public void onAccountRelease()
   {
-    c localc = Iy();
-    localc.dYg = null;
-    localc.dYf = null;
+    AppMethodBeat.i(118153);
+    c localc = abw();
+    localc.fok = null;
+    localc.foj = null;
+    AppMethodBeat.o(118153);
   }
   
-  public final HashMap<Integer, h.d> xe()
-  {
-    return null;
-  }
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

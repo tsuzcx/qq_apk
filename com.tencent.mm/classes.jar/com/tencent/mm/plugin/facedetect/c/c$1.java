@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.facedetect.c;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$1
   implements Runnable
@@ -9,7 +10,9 @@ final class c$1
   
   public final void run()
   {
-    this.jNs.a(this.bEf, this.bEg, this.edL, this.BH);
+    AppMethodBeat.i(121);
+    this.mhB.a(this.val$errType, this.val$errCode, this.ftO, this.val$extras);
+    AppMethodBeat.o(121);
   }
 }
 

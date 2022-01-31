@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsModifyNameUI$2
   implements TextWatcher
@@ -14,7 +15,9 @@ final class SettingsModifyNameUI$2
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.nVa.enableOptionMenu(true);
+    AppMethodBeat.i(127307);
+    this.qJf.enableOptionMenu(true);
+    AppMethodBeat.o(127307);
   }
 }
 

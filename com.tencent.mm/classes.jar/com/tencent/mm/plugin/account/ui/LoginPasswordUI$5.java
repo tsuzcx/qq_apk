@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class LoginPasswordUI$5
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class LoginPasswordUI$5
   
   public final void run()
   {
-    this.fnq.XJ();
+    AppMethodBeat.i(125002);
+    this.gEJ.arq();
+    AppMethodBeat.o(125002);
   }
 }
 

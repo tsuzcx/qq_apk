@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set
+<set android:shareInterpolator="false" android:startOffset="233" android:zAdjustment="top"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <translate android:interpolator="@android:anim/accelerate_interpolator" android:duration="600" android:fillAfter="true" android:fromYDelta="150.0%" android:toYDelta="0.0%" />
-    <alpha android:interpolator="@android:anim/accelerate_interpolator" android:duration="600" android:fillAfter="true" android:fromAlpha="0.0" android:toAlpha="1.0" />
+    <translate android:interpolator="@anim/ae" android:duration="250" android:fromYDelta="100.0%p" android:toYDelta="0.0" />
 </set>

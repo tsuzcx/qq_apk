@@ -1,16 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.page.q;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.atomic.AtomicReference;
 
 public final class c
-  extends a<q>
+  extends a<com.tencent.mm.plugin.appbrand.service.c>
 {
-  private static final int CTRL_INDEX = 280;
-  private static final String NAME = "getRegionData";
-  private static final AtomicReference<String> gzH = new AtomicReference();
+  public static final int CTRL_INDEX = 86;
+  public static final String NAME = "bindPaymentCard";
 }
 
 

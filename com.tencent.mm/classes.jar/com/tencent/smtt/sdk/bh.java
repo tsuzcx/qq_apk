@@ -3,178 +3,101 @@ package com.tencent.smtt.sdk;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.net.Uri;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.view.Window;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.MediaController;
-import android.widget.Toast;
-import android.widget.VideoView;
-import com.tencent.smtt.export.external.DexLoader;
+import android.text.TextUtils;
+import com.tencent.g.a.a.a;
+import com.tencent.g.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class bh
-  extends FrameLayout
-  implements MediaPlayer.OnErrorListener
 {
-  private Object a;
-  private bj b;
-  private VideoView c;
-  private Context d = null;
-  private String e;
+  private static bh e = null;
+  bk a;
+  Context b;
+  b c;
+  a d;
   
-  public bh(Context paramContext)
+  private bh(Context paramContext)
   {
-    super(paramContext.getApplicationContext());
-    this.d = paramContext;
+    AppMethodBeat.i(64633);
+    this.a = null;
+    this.b = paramContext.getApplicationContext();
+    this.a = new bk(this.b);
+    AppMethodBeat.o(64633);
   }
   
-  private void b(Bundle paramBundle, Object paramObject)
-  {
-    a();
-    boolean bool = false;
-    if (b())
-    {
-      paramBundle.putInt("callMode", paramBundle.getInt("callMode"));
-      bool = this.b.a(this.a, paramBundle, this, paramObject);
-    }
-    if (!bool)
-    {
-      if (this.c != null) {
-        this.c.stopPlayback();
-      }
-      if (this.c == null) {
-        this.c = new VideoView(getContext());
-      }
-      this.e = paramBundle.getString("videoUrl");
-      this.c.setVideoURI(Uri.parse(this.e));
-      this.c.setOnErrorListener(this);
-      paramBundle = new Intent("com.tencent.smtt.tbs.video.PLAY");
-      paramBundle.addFlags(268435456);
-      paramObject = getContext().getApplicationContext();
-      paramBundle.setPackage(paramObject.getPackageName());
-      paramObject.startActivity(paramBundle);
-    }
-  }
-  
-  void a()
-  {
-    DexLoader localDexLoader = null;
-    setBackgroundColor(-16777216);
-    if (this.b == null)
-    {
-      o.a(true).a(getContext().getApplicationContext(), false, false, null);
-      bi localbi = o.a(true).a();
-      if (localbi != null) {
-        localDexLoader = localbi.b();
-      }
-      if ((localDexLoader != null) && (QbSdk.canLoadVideo(getContext()))) {
-        this.b = new bj(localDexLoader);
-      }
-    }
-    if ((this.b != null) && (this.a == null)) {
-      this.a = this.b.a(getContext().getApplicationContext());
-    }
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if ((!b()) && (this.c != null))
-    {
-      if (this.c.getParent() == null)
-      {
-        Window localWindow = paramActivity.getWindow();
-        FrameLayout localFrameLayout = (FrameLayout)localWindow.getDecorView();
-        localWindow.addFlags(1024);
-        localWindow.addFlags(128);
-        localFrameLayout.setBackgroundColor(-16777216);
-        paramActivity = new MediaController(paramActivity);
-        paramActivity.setMediaPlayer(this.c);
-        this.c.setMediaController(paramActivity);
-        paramActivity = new FrameLayout.LayoutParams(-1, -1);
-        paramActivity.gravity = 17;
-        localFrameLayout.addView(this.c, paramActivity);
-      }
-      if (Build.VERSION.SDK_INT >= 8) {
-        this.c.start();
-      }
-    }
-  }
-  
-  void a(Activity paramActivity, int paramInt)
-  {
-    if ((paramInt == 3) && (!b()) && (this.c != null)) {
-      this.c.pause();
-    }
-    if (paramInt == 4)
-    {
-      this.d = null;
-      if ((!b()) && (this.c != null))
-      {
-        this.c.stopPlayback();
-        this.c = null;
-      }
-    }
-    if ((paramInt == 2) && (!b()))
-    {
-      this.d = paramActivity;
-      a(paramActivity);
-    }
-    if (b()) {
-      this.b.a(this.a, paramActivity, paramInt);
-    }
-  }
-  
-  void a(Bundle paramBundle, Object paramObject)
-  {
-    b(paramBundle, paramObject);
-  }
-  
-  public boolean b()
-  {
-    return (this.b != null) && (this.a != null);
-  }
-  
-  public void c()
-  {
-    if (b()) {
-      this.b.a(this.a);
-    }
-  }
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public static bh a(Context paramContext)
   {
     try
     {
-      if ((this.d instanceof Activity))
-      {
-        paramMediaPlayer = (Activity)this.d;
-        if (!paramMediaPlayer.isFinishing()) {
-          paramMediaPlayer.finish();
-        }
+      AppMethodBeat.i(139391);
+      if (e == null) {
+        e = new bh(paramContext);
       }
-      paramMediaPlayer = getContext();
-      if (paramMediaPlayer != null)
-      {
-        Toast.makeText(paramMediaPlayer, "播放失败，请选择其它播放器播放", 1).show();
-        paramMediaPlayer = paramMediaPlayer.getApplicationContext();
-        Intent localIntent = new Intent("android.intent.action.VIEW");
-        localIntent.addFlags(268435456);
-        localIntent.setDataAndType(Uri.parse(this.e), "video/*");
-        paramMediaPlayer.startActivity(localIntent);
-      }
-      return true;
+      paramContext = e;
+      AppMethodBeat.o(139391);
+      return paramContext;
     }
-    catch (Throwable paramMediaPlayer) {}
-    return false;
+    finally {}
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  void a(Activity paramActivity, int paramInt)
+  {
+    AppMethodBeat.i(64638);
+    this.a.a(paramActivity, paramInt);
+    AppMethodBeat.o(64638);
+  }
+  
+  public boolean a()
+  {
+    AppMethodBeat.i(139393);
+    this.a.a();
+    boolean bool = this.a.b();
+    AppMethodBeat.o(139393);
+    return bool;
+  }
+  
+  public boolean a(String paramString, Bundle paramBundle, b paramb)
+  {
+    AppMethodBeat.i(139392);
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      localBundle.putString("videoUrl", paramString);
+    }
+    if (paramb != null)
+    {
+      this.a.a();
+      if (!this.a.b())
+      {
+        AppMethodBeat.o(139392);
+        return false;
+      }
+      this.c = paramb;
+      this.d = new bi(this);
+      localBundle.putInt("callMode", 3);
+    }
+    for (;;)
+    {
+      paramBundle = this.a;
+      paramString = this;
+      if (paramb == null) {
+        paramString = null;
+      }
+      paramBundle.a(localBundle, paramString);
+      AppMethodBeat.o(139392);
+      return true;
+      localBundle.putInt("callMode", 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.smtt.sdk.bh
  * JD-Core Version:    0.7.0.1
  */

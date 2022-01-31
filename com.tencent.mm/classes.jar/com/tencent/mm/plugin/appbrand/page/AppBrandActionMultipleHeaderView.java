@@ -8,15 +8,14 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.luggage.l.a.d;
-import com.tencent.luggage.l.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppBrandActionMultipleHeaderView
   extends LinearLayout
 {
-  private ImageView bNu;
-  private TextView flb;
-  private String gSs;
+  private ImageView cuM;
+  private TextView euY;
+  private String iuQ;
   private String path;
   private int type;
   private String username;
@@ -24,31 +23,37 @@ public class AppBrandActionMultipleHeaderView
   public AppBrandActionMultipleHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(87008);
     init(paramContext);
+    AppMethodBeat.o(87008);
   }
   
   @TargetApi(11)
   public AppBrandActionMultipleHeaderView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(87009);
     init(paramContext);
+    AppMethodBeat.o(87009);
   }
   
   private void init(Context paramContext)
   {
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(a.e.appbrand_action_multiple_header, this);
-    this.bNu = ((ImageView)findViewById(a.d.appbrand_action_multiple_header_image));
-    this.flb = ((TextView)findViewById(a.d.appbrand_action_multiple_header_text));
+    AppMethodBeat.i(87010);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130968765, this);
+    this.cuM = ((ImageView)findViewById(2131821509));
+    this.euY = ((TextView)findViewById(2131821510));
+    AppMethodBeat.o(87010);
   }
   
   public String getH5Url()
   {
-    return this.gSs;
+    return this.iuQ;
   }
   
   public ImageView getImageView()
   {
-    return this.bNu;
+    return this.cuM;
   }
   
   public String getPath()
@@ -68,27 +73,35 @@ public class AppBrandActionMultipleHeaderView
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    this.bNu.setImageDrawable(paramDrawable);
+    AppMethodBeat.i(87012);
+    this.cuM.setImageDrawable(paramDrawable);
+    AppMethodBeat.o(87012);
   }
   
   public void setImageResource(int paramInt)
   {
-    this.bNu.setImageResource(paramInt);
+    AppMethodBeat.i(87011);
+    this.cuM.setImageResource(paramInt);
+    AppMethodBeat.o(87011);
   }
   
   public void setTextViewText(String paramString)
   {
-    this.flb.setText(paramString);
+    AppMethodBeat.i(87013);
+    this.euY.setText(paramString);
+    AppMethodBeat.o(87013);
   }
   
   public void setTextViewTextColor(int paramInt)
   {
-    this.flb.setTextColor(paramInt);
+    AppMethodBeat.i(87014);
+    this.euY.setTextColor(paramInt);
+    AppMethodBeat.o(87014);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.AppBrandActionMultipleHeaderView
  * JD-Core Version:    0.7.0.1
  */

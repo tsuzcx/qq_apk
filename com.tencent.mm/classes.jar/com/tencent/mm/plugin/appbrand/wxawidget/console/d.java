@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.wxawidget.console;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d.a;
 import com.tencent.mm.ipcinvoker.d.b;
 import com.tencent.mm.ipcinvoker.d.e;
@@ -13,61 +14,79 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  private static final Map<String, List<a>> dGN = new ConcurrentHashMap();
-  private static List<a> hEh = new LinkedList();
-  private static final e hEi = new d.1();
+  private static final Map<String, List<a>> eEq;
+  private static List<a> jxu;
+  private static final e jxv;
+  
+  static
+  {
+    AppMethodBeat.i(11138);
+    eEq = new ConcurrentHashMap();
+    jxu = new LinkedList();
+    jxv = new d.1();
+    AppMethodBeat.o(11138);
+  }
   
   public static boolean a(a parama)
   {
-    if (hEh.contains(parama)) {
+    AppMethodBeat.i(11135);
+    if (jxu.contains(parama))
+    {
+      AppMethodBeat.o(11135);
       return false;
     }
     Object localObject;
     e locale;
     com.tencent.mm.ipcinvoker.d locald;
-    if ((dGN.isEmpty()) && (hEh.isEmpty()))
+    if ((eEq.isEmpty()) && (jxu.isEmpty()))
     {
-      localObject = c.hEg;
-      locale = hEi;
-      locald = ((com.tencent.mm.ipcinvoker.d.d)localObject).dHc;
-      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).bGt;
+      localObject = c.jxt;
+      locale = jxv;
+      locald = ((com.tencent.mm.ipcinvoker.d.d)localObject).eEF;
+      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).cnC;
       if ((localObject != null) && (((String)localObject).length() != 0) && (locale != null)) {
-        break label79;
+        break label105;
       }
     }
     for (;;)
     {
-      return hEh.add(parama);
-      label79:
+      boolean bool = jxu.add(parama);
+      AppMethodBeat.o(11135);
+      return bool;
+      label105:
       Bundle localBundle = new Bundle();
-      localBundle.putString("Token", com.tencent.mm.ipcinvoker.d.V(locale));
+      localBundle.putString("Token", com.tencent.mm.ipcinvoker.d.ae(locale));
       localBundle.putString("Event", (String)localObject);
-      f.a(locald.dGD, localBundle, d.a.class, locale);
+      f.a(locald.eEf, localBundle, d.a.class, locale);
     }
   }
   
   public static boolean b(a parama)
   {
-    boolean bool = hEh.remove(parama);
+    AppMethodBeat.i(11136);
+    boolean bool = jxu.remove(parama);
     Object localObject;
     com.tencent.mm.ipcinvoker.d locald;
-    if ((dGN.isEmpty()) && (hEh.isEmpty()))
+    if ((eEq.isEmpty()) && (jxu.isEmpty()))
     {
-      localObject = c.hEg;
-      parama = hEi;
-      locald = ((com.tencent.mm.ipcinvoker.d.d)localObject).dHc;
-      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).bGt;
-      if ((localObject != null) && (((String)localObject).length() != 0) && (parama != null)) {}
+      localObject = c.jxt;
+      parama = jxv;
+      locald = ((com.tencent.mm.ipcinvoker.d.d)localObject).eEF;
+      localObject = ((com.tencent.mm.ipcinvoker.d.d)localObject).cnC;
+      if ((localObject != null) && (((String)localObject).length() != 0) && (parama != null)) {
+        break label79;
+      }
     }
-    else
+    for (;;)
     {
+      AppMethodBeat.o(11136);
       return bool;
+      label79:
+      Bundle localBundle = new Bundle();
+      localBundle.putString("Token", com.tencent.mm.ipcinvoker.d.ae(parama));
+      localBundle.putString("Event", (String)localObject);
+      f.a(locald.eEf, localBundle, d.b.class, null);
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("Token", com.tencent.mm.ipcinvoker.d.V(parama));
-    localBundle.putString("Event", (String)localObject);
-    f.a(locald.dGD, localBundle, d.b.class, null);
-    return bool;
   }
 }
 

@@ -1,9 +1,6 @@
 package com.tencent.mm.plugin.profile.ui;
 
-public abstract interface NormalUserFooterPreference$e
-{
-  public abstract void aQ(String paramString, boolean paramBoolean);
-}
+public abstract interface NormalUserFooterPreference$e {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar

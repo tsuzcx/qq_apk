@@ -2,16 +2,16 @@ package com.tencent.mm.l;
 
 public final class a$a
 {
-  private static a dtS = null;
+  private static a elG = null;
+  
+  public static a Ky()
+  {
+    return elG;
+  }
   
   public static void a(a parama)
   {
-    dtS = parama;
-  }
-  
-  public static a yf()
-  {
-    return dtS;
+    elG = parama;
   }
 }
 

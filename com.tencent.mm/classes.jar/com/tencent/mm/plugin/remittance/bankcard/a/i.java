@@ -1,61 +1,69 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bhu;
-import com.tencent.mm.protocal.c.bhv;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bqe;
+import com.tencent.mm.protocal.protobuf.bqf;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class i
   extends b
 {
-  private com.tencent.mm.ah.b dmK;
-  private f dmL;
+  private f callback;
   public int limit;
-  public bhv nuY;
+  public bqf qfR;
+  private com.tencent.mm.ai.b rr;
   
   public i(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(44464);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bhu();
-    ((b.a)localObject).ecI = new bhv();
-    ((b.a)localObject).ecG = 1511;
+    ((b.a)localObject).fsX = new bqe();
+    ((b.a)localObject).fsY = new bqf();
+    ((b.a)localObject).funcId = 1511;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/historylist_tsbc";
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (bhu)this.dmK.ecE.ecN;
-    ((bhu)localObject).limit = paramInt1;
-    ((bhu)localObject).offset = paramInt2;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (bqe)this.rr.fsV.fta;
+    ((bqe)localObject).limit = paramInt1;
+    ((bqe)localObject).offset = paramInt2;
     this.limit = paramInt1;
-    y.i("MicroMsg.NetSceneBankRemitHistoryList", "limit: %s, offset: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-  }
-  
-  public final int a(e parame, f paramf)
-  {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    ab.i("MicroMsg.NetSceneBankRemitHistoryList", "limit: %s, offset: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(44464);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    y.i("MicroMsg.NetSceneBankRemitHistoryList", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.nuY = ((bhv)((com.tencent.mm.ah.b)paramq).ecF.ecN);
-    y.i("MicroMsg.NetSceneBankRemitHistoryList", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.nuY.iHq), this.nuY.iHr });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    AppMethodBeat.i(44466);
+    ab.i("MicroMsg.NetSceneBankRemitHistoryList", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.qfR = ((bqf)((com.tencent.mm.ai.b)paramq).fsW.fta);
+    ab.i("MicroMsg.NetSceneBankRemitHistoryList", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.qfR.cnK), this.qfR.kNv });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
+    AppMethodBeat.o(44466);
   }
   
-  protected final void f(q paramq)
+  public final int doScene(e parame, f paramf)
   {
-    paramq = (bhv)((com.tencent.mm.ah.b)paramq).ecF.ecN;
-    this.wAx = paramq.iHq;
-    this.wAy = paramq.iHr;
+    AppMethodBeat.i(44465);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(44465);
+    return i;
+  }
+  
+  public final void e(q paramq)
+  {
+    paramq = (bqf)((com.tencent.mm.ai.b)paramq).fsW.fta;
+    this.AXb = paramq.cnK;
+    this.AXc = paramq.kNv;
   }
   
   public final int getType()
@@ -65,7 +73,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.a.i
  * JD-Core Version:    0.7.0.1
  */

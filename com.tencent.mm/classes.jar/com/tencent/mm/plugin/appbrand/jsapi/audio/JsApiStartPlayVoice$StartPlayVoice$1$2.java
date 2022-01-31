@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.ah.h.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.h.b;
 
 final class JsApiStartPlayVoice$StartPlayVoice$1$2
   implements h.b
@@ -9,8 +10,10 @@ final class JsApiStartPlayVoice$StartPlayVoice$1$2
   
   public final void onError()
   {
-    this.gjs.gjr.error = true;
-    JsApiStartPlayVoice.StartPlayVoice.c(this.gjs.gjr);
+    AppMethodBeat.i(130772);
+    this.hCL.hCK.error = true;
+    JsApiStartPlayVoice.StartPlayVoice.c(this.hCL.hCK);
+    AppMethodBeat.o(130772);
   }
 }
 

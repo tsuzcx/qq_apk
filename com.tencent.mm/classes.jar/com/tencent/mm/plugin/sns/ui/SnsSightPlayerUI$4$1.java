@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SnsSightPlayerUI$4$1
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class SnsSightPlayerUI$4$1
   
   public final void run()
   {
-    this.pdl.pdk.finish();
-    this.pdl.pdk.overridePendingTransition(0, 0);
+    AppMethodBeat.i(39250);
+    this.rVU.rVT.finish();
+    this.rVU.rVT.overridePendingTransition(0, 0);
+    AppMethodBeat.o(39250);
   }
 }
 

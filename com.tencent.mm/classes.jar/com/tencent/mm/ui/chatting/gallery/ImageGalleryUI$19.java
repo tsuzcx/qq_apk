@@ -1,64 +1,33 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.base.MMViewPager;
-import com.tencent.mm.ui.base.MultiTouchImageView;
-import com.tencent.mm.ui.base.WxImageView;
-import com.tencent.mm.ui.tools.e;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ImageGalleryUI$19
-  implements ViewTreeObserver.OnPreDrawListener
+  implements Animation.AnimationListener
 {
   ImageGalleryUI$19(ImageGalleryUI paramImageGalleryUI) {}
   
-  public final boolean onPreDraw()
+  public final void onAnimationEnd(Animation paramAnimation)
   {
-    this.vww.kJC.getViewTreeObserver().removeOnPreDrawListener(this);
-    this.vww.oVF = this.vww.kJC.getWidth();
-    this.vww.oVG = this.vww.kJC.getHeight();
-    if (ImageGalleryUI.f(this.vww).cFU().aRR()) {
-      this.vww.oVG = ((int)(this.vww.oVF / this.vww.itD * this.vww.itE));
-    }
-    if (ImageGalleryUI.f(this.vww).cFU().ctB())
+    AppMethodBeat.i(153878);
+    if (ImageGalleryUI.Q(ImageGalleryUI.P(this.zME)).getVisibility() != 0)
     {
-      ImageGalleryUI.a(this.vww, ImageGalleryUI.f(this.vww).rX(this.vww.kJC.getCurrentItem()));
-      if (ImageGalleryUI.l(this.vww) == null)
-      {
-        WxImageView localWxImageView = ImageGalleryUI.f(this.vww).rY(this.vww.kJC.getCurrentItem());
-        if (localWxImageView != null) {
-          ImageGalleryUI.a(this.vww, (WxImageView)localWxImageView);
-        }
-      }
+      AppMethodBeat.o(153878);
+      return;
     }
-    if (ImageGalleryUI.l(this.vww) != null)
-    {
-      this.vww.oVG = ((int)(this.vww.oVF / ImageGalleryUI.l(this.vww).getImageWidth() * ImageGalleryUI.l(this.vww).getImageHeight()));
-      if (this.vww.oVG > this.vww.kJC.getHeight()) {
-        this.vww.oVG = this.vww.kJC.getHeight();
-      }
-    }
-    for (;;)
-    {
-      this.vww.itA.fH(this.vww.oVF, this.vww.oVG);
-      if (!this.vww.vwe)
-      {
-        ImageGalleryUI.n(this.vww);
-        ImageGalleryUI.o(this.vww);
-        this.vww.itA.a(this.vww.kJC, ImageGalleryUI.p(this.vww), new ImageGalleryUI.19.1(this));
-      }
-      ImageGalleryUI.r(this.vww);
-      return true;
-      if (ImageGalleryUI.m(this.vww) != null)
-      {
-        this.vww.oVG = ((int)(this.vww.oVF / ImageGalleryUI.m(this.vww).getWidth() * ImageGalleryUI.m(this.vww).getHeight()));
-        if (this.vww.oVG > this.vww.kJC.getHeight()) {
-          this.vww.oVG = this.vww.kJC.getHeight();
-        }
-      }
-    }
+    this.zME.dKu();
+    ImageGalleryUI.R(ImageGalleryUI.P(this.zME)).setVisibility(8);
+    ImageGalleryUI.K(this.zME);
+    ImageGalleryUI.L(this.zME);
+    AppMethodBeat.o(153878);
   }
+  
+  public final void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 

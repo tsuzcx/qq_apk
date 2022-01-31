@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/lr" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/eu2" android:background="@drawable/bey" android:layout_width="@dimen/a7w" android:layout_height="@dimen/a7w" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/kl" android:paddingLeft="@dimen/a7u" android:paddingTop="@dimen/a7u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
-        <ImageView android:id="@id/hu" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@raw/webview_bag_canceller_icon" />
-        <TextView android:textSize="12.0dip" android:textColor="#7fffffff" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/fls" />
-    </LinearLayout>
-</RelativeLayout>
+<com.tencent.mm.ui.widget.SwipeBackLayout android:id="@id/f20" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

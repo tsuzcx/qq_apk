@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class IPCallShareSquareLayout
   extends RelativeLayout
@@ -20,8 +21,10 @@ public class IPCallShareSquareLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(22358);
     setMeasuredDimension(getDefaultSize(0, paramInt1), getDefaultSize(0, paramInt2));
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 1073741824));
+    AppMethodBeat.o(22358);
   }
 }
 

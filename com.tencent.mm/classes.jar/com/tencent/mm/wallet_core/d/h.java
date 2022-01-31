@@ -1,15 +1,13 @@
 package com.tencent.mm.wallet_core.d;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.model.r;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.c;
-import com.tencent.mm.wallet_core.c.o;
-import com.tencent.mm.wallet_core.tenpay.model.k;
 import com.tencent.mm.wallet_core.tenpay.model.n;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
@@ -18,114 +16,137 @@ public final class h
   public static boolean a(WalletBaseUI paramWalletBaseUI, m paramm, int paramInt1, int paramInt2, String paramString)
   {
     int i = 0;
-    boolean bool2 = false;
-    boolean bool1 = bool2;
+    boolean bool = false;
+    AppMethodBeat.i(49136);
     if (paramInt1 == 1000)
     {
-      if (!bk.bl(paramString)) {
-        break label551;
+      if (!bo.isNullOrNil(paramString)) {
+        break label580;
       }
-      paramString = paramWalletBaseUI.getString(a.i.wallet_unknown_err);
+      paramString = paramWalletBaseUI.getString(2131305682);
     }
-    label551:
+    label145:
+    label154:
+    label580:
     for (;;)
     {
-      c localc = a.aj(paramWalletBaseUI);
+      c localc = a.aM(paramWalletBaseUI);
       switch (paramInt2)
       {
       default: 
-        bool1 = bool2;
-        if ((paramm instanceof o)) {
-          ((o)paramm).wAH = bool1;
+        bool = false;
+        paramInt1 = 0;
+        if (paramInt1 != 0)
+        {
+          paramWalletBaseUI.setmPayResultType(2);
+          if ((paramm instanceof com.tencent.mm.wallet_core.c.q)) {
+            ((com.tencent.mm.wallet_core.c.q)paramm).setHasProcessWalletError(bool);
+          }
+          AppMethodBeat.o(49136);
+          return bool;
         }
-        return bool1;
+        break;
       case 401: 
-        if (!(paramm instanceof k)) {
-          break;
-        }
+        if (!(paramm instanceof n)) {}
+        break;
       }
-      for (paramInt1 = ((k)paramm).qwW;; paramInt1 = 0)
+      for (paramInt1 = ((n)paramm).uju;; paramInt1 = 0)
       {
         if (paramInt1 == 1) {
-          com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(a.i.wallet_forget_notretry_password), new h.1(paramWalletBaseUI));
+          com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(2131305081), new h.1(paramWalletBaseUI));
         }
         for (;;)
         {
-          bool1 = true;
+          bool = true;
+          paramInt1 = 1;
           break;
-          com.tencent.mm.ui.base.h.a(paramWalletBaseUI, false, paramString, "", paramWalletBaseUI.getString(a.i.wallet_forget_password), paramWalletBaseUI.getString(a.i.app_retry), new h.4(paramm, paramWalletBaseUI), new h.5(paramWalletBaseUI));
+          com.tencent.mm.ui.base.h.a(paramWalletBaseUI, false, paramString, "", paramWalletBaseUI.getString(2131305082), paramWalletBaseUI.getString(2131297061), new h.4(paramm, paramWalletBaseUI), new h.5(paramWalletBaseUI));
         }
-        bool1 = bool2;
-        if (localc == null) {
-          break;
-        }
-        bool1 = localc.a(paramWalletBaseUI, paramInt2, paramString);
-        break;
-        cMR();
-        if (q.Gw()) {
-          b(paramWalletBaseUI, paramInt2, paramString);
-        }
-        for (;;)
+        if (localc != null)
         {
-          bool1 = true;
-          break;
-          com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, null, false, new h.6(paramWalletBaseUI, paramInt2));
+          bool = localc.a(paramWalletBaseUI, paramInt2, paramString);
+          paramInt1 = 1;
+          break label145;
+          dSF();
+          if (r.ZB()) {
+            b(paramWalletBaseUI, paramInt2, paramString);
+          }
+          for (;;)
+          {
+            bool = true;
+            paramInt1 = 1;
+            break;
+            com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, null, false, new h.6(paramWalletBaseUI, paramInt2));
+          }
+          if (localc != null)
+          {
+            bool = localc.a(paramWalletBaseUI, paramInt2, paramString);
+            paramInt1 = 1;
+            break label145;
+            paramInt1 = i;
+            if ((paramm instanceof n)) {
+              paramInt1 = ((n)paramm).uju;
+            }
+            if (paramInt1 == 1) {
+              com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(2131305081), new h.7(paramWalletBaseUI));
+            }
+            for (;;)
+            {
+              bool = true;
+              paramInt1 = 1;
+              break;
+              com.tencent.mm.ui.base.h.d(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(2131305596), paramWalletBaseUI.getString(2131296888), new h.8(paramWalletBaseUI), null);
+            }
+            com.tencent.mm.ui.base.h.d(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(2131305710), paramWalletBaseUI.getString(2131296888), new h.9(paramWalletBaseUI), null);
+            bool = true;
+            paramInt1 = 1;
+            break label145;
+            dSF();
+            b(paramWalletBaseUI, paramInt2, paramString);
+            bool = true;
+            paramInt1 = 1;
+            break label145;
+            com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramWalletBaseUI.getString(2131305063), null, false, new h.10(paramWalletBaseUI, paramInt2));
+            bool = true;
+            paramInt1 = 1;
+            break label145;
+            com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramWalletBaseUI.getString(2131305062), null, false, new h.11(paramWalletBaseUI, paramInt2));
+            bool = true;
+            break;
+            paramWalletBaseUI.setmPayResultType(3);
+            break label154;
+          }
         }
-        bool1 = bool2;
-        if (localc == null) {
-          break;
-        }
-        bool1 = localc.a(paramWalletBaseUI, paramInt2, paramString);
-        break;
-        paramInt1 = i;
-        if ((paramm instanceof k)) {
-          paramInt1 = ((k)paramm).qwW;
-        }
-        if (paramInt1 == 1) {
-          com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(a.i.wallet_forget_notretry_password), new h.7(paramWalletBaseUI));
-        }
-        for (;;)
-        {
-          bool1 = true;
-          break;
-          com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(a.i.wallet_retry), paramWalletBaseUI.getString(a.i.app_cancel), new h.8(paramWalletBaseUI), null);
-        }
-        com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramString, "", paramWalletBaseUI.getString(a.i.wallet_verify_user_info_tips), paramWalletBaseUI.getString(a.i.app_cancel), new h.9(paramWalletBaseUI), null);
-        bool1 = true;
-        break;
-        cMR();
-        b(paramWalletBaseUI, paramInt2, paramString);
-        bool1 = true;
-        break;
-        com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramWalletBaseUI.getString(a.i.wallet_err_wording_payment_not_match), null, false, new h.10(paramWalletBaseUI, paramInt2));
-        bool1 = true;
-        break;
-        com.tencent.mm.ui.base.h.a(paramWalletBaseUI, paramWalletBaseUI.getString(a.i.wallet_err_wording_not_open_wallet), null, false, new h.11(paramWalletBaseUI, paramInt2));
-        bool1 = true;
-        break;
+        bool = false;
+        paramInt1 = 1;
+        break label145;
       }
     }
   }
   
   private static void b(WalletBaseUI paramWalletBaseUI, int paramInt, String paramString)
   {
-    com.tencent.mm.ui.base.h.a(paramWalletBaseUI, false, paramString, "", paramWalletBaseUI.getString(a.i.wallet_err_wording_contact_me_payu), paramWalletBaseUI.getString(a.i.app_cancel), new h.2(paramWalletBaseUI), new h.3(paramWalletBaseUI, paramInt));
+    AppMethodBeat.i(49138);
+    com.tencent.mm.ui.base.h.a(paramWalletBaseUI, false, paramString, "", paramWalletBaseUI.getString(2131305061), paramWalletBaseUI.getString(2131296888), new h.2(paramWalletBaseUI), new h.3(paramWalletBaseUI, paramInt));
+    AppMethodBeat.o(49138);
   }
   
-  private static void cMR()
+  private static void dSF()
   {
-    if (!q.Gw()) {}
-    for (Object localObject = new n();; localObject = new com.tencent.mm.wallet_core.e.a.b())
+    AppMethodBeat.i(49137);
+    if (!r.ZB()) {}
+    for (Object localObject = new com.tencent.mm.wallet_core.tenpay.model.q();; localObject = new com.tencent.mm.wallet_core.e.a.b())
     {
-      g.DQ();
-      g.DO().dJT.a((m)localObject, 0);
+      g.RM();
+      g.RK().eHt.a((m)localObject, 0);
+      AppMethodBeat.o(49137);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.d.h
  * JD-Core Version:    0.7.0.1
  */

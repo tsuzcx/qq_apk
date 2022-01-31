@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.game.widget;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$a
   implements TextWatcher
@@ -14,7 +15,9 @@ final class a$a
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.lgO.bay();
+    AppMethodBeat.i(112371);
+    this.nEH.bHG();
+    AppMethodBeat.o(112371);
   }
 }
 

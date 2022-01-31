@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vfs.e;
 
 final class l$a$3
@@ -10,14 +11,17 @@ final class l$a$3
   
   public final void run()
   {
+    AppMethodBeat.i(76603);
     try
     {
-      e.deleteFile(this.mjX);
+      e.deleteFile(this.fcV);
+      AppMethodBeat.o(76603);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.MMSightFFMpegRecorder", "stop, delete old file error: %s", new Object[] { localException.getMessage() });
+      ab.e("MicroMsg.MMSightFFMpegRecorder", "stop, delete old file error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(76603);
     }
   }
 }

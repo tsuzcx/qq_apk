@@ -1,23 +1,29 @@
 package com.tencent.mm.lan_cs;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class Client
 {
-  public static a dOH;
+  public static a eMu;
   
   public static class C2Java
   {
     public static void onDisconnect(String paramString, int paramInt)
     {
-      if (Client.dOH != null) {
-        Client.dOH.EL();
+      AppMethodBeat.i(114645);
+      if (Client.eMu != null) {
+        Client.eMu.ST();
       }
+      AppMethodBeat.o(114645);
     }
     
     public static void onRecv(String paramString, int paramInt, byte[] paramArrayOfByte)
     {
-      if (Client.dOH != null) {
-        Client.dOH.onRecv(paramString, paramInt, paramArrayOfByte);
+      AppMethodBeat.i(114644);
+      if (Client.eMu != null) {
+        Client.eMu.onRecv(paramString, paramInt, paramArrayOfByte);
       }
+      AppMethodBeat.o(114644);
     }
   }
   
@@ -30,7 +36,7 @@ public final class Client
   
   public static abstract interface a
   {
-    public abstract void EL();
+    public abstract void ST();
     
     public abstract void onRecv(String paramString, int paramInt, byte[] paramArrayOfByte);
   }

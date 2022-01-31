@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.readerapp.c;
 
-import com.tencent.mm.plugin.n.c;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.i.c;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class g$4
   implements Runnable
@@ -10,15 +11,22 @@ final class g$4
   
   public final void run()
   {
-    if (!com.tencent.mm.kernel.g.DK()) {
+    AppMethodBeat.i(76767);
+    if (!com.tencent.mm.kernel.g.RG())
+    {
+      AppMethodBeat.o(76767);
       return;
     }
-    bk.h(c.FG(), "ReaderApp_", 604800000L);
+    bo.q(c.YK(), "ReaderApp_", 604800000L);
+    AppMethodBeat.o(76767);
   }
   
   public final String toString()
   {
-    return super.toString() + "|onAccountPostReset";
+    AppMethodBeat.i(76768);
+    String str = super.toString() + "|onAccountPostReset";
+    AppMethodBeat.o(76768);
+    return str;
   }
 }
 

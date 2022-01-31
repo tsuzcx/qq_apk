@@ -6,139 +6,175 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import android.graphics.Rect;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.view.View;
-import android.view.ViewStub;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.as.d.a;
-import com.tencent.mm.graphics.c.a.a;
-import com.tencent.mm.graphics.ui.WxBaseImageView;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelsimple.z;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.p;
+import com.tencent.mm.at.d.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.compatible.e.ad;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.modelsimple.aa;
+import com.tencent.mm.plugin.expt.a.a.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
 import com.tencent.mm.sdk.platformtools.MMJpegOptim;
 import com.tencent.mm.sdk.platformtools.MMNativeJpeg;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.n;
 import com.tencent.mm.storage.bi;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.WxImageView;
-import com.tencent.mm.ui.base.t;
-import com.tencent.mm.ui.chatting.an;
-import com.tencent.mm.ui.chatting.an.a;
+import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.chatting.ak;
+import com.tencent.mm.ui.chatting.ak.a;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Set;
 
 public final class e
   extends a
   implements d.a, f.a
 {
-  private static boolean vvd = true;
-  private static long vvf = (Runtime.getRuntime().maxMemory() * 0.05D);
-  public HashMap<Long, Integer> ifu = new HashMap();
-  int lf = 0;
-  private HashMap<String, WeakReference<Bitmap>> rlK = new HashMap();
-  private com.tencent.mm.sdk.b.c vuZ;
-  public final f vva = new f(this);
-  private HashMap<bi, String> vvb = new HashMap();
-  private HashMap<bi, String> vvc = new HashMap();
-  private b vve = new b();
-  private long vvg = 0L;
+  private static boolean zLe;
+  private static long zLg;
+  public HashMap<Long, Integer> jWf;
+  int mScrollState;
+  private HashMap<String, WeakReference<Bitmap>> vbm;
+  private com.tencent.mm.sdk.b.c zLa;
+  public final f zLb;
+  private HashMap<bi, String> zLc;
+  private HashMap<bi, String> zLd;
+  private b zLf;
+  private long zLh;
+  
+  static
+  {
+    AppMethodBeat.i(32135);
+    zLe = true;
+    zLg = (Runtime.getRuntime().maxMemory() * 0.05D);
+    AppMethodBeat.o(32135);
+  }
   
   public e(c paramc)
   {
     super(paramc);
-    com.tencent.mm.sdk.b.a locala = com.tencent.mm.sdk.b.a.udP;
-    paramc = new an(an.a.vmM, paramc.vtJ);
-    this.vuZ = paramc;
+    AppMethodBeat.i(32092);
+    this.jWf = new HashMap();
+    this.zLb = new f(this);
+    this.vbm = new HashMap();
+    this.zLc = new HashMap();
+    this.zLd = new HashMap();
+    this.zLf = new b();
+    this.zLh = 0L;
+    this.mScrollState = 0;
+    com.tencent.mm.sdk.b.a locala = com.tencent.mm.sdk.b.a.ymk;
+    paramc = new ak(ak.a.zCi, paramc.zJK);
+    this.zLa = paramc;
     locala.c(paramc);
-    paramc = g.a.vvC.kJt.snapshot();
-    this.vva.ay(paramc);
-    l.cGI().vxF = this;
+    paramc = g.a.zLE.nfR.snapshot();
+    this.zLb.aX(paramc);
+    l.dKQ().zNR = this;
+    AppMethodBeat.o(32092);
   }
   
-  private static boolean Hw(int paramInt)
+  private static boolean Qd(int paramInt)
   {
     return paramInt == 1;
   }
   
   private int a(long paramLong, Object paramObject)
   {
+    AppMethodBeat.i(32125);
     int i;
     if ((paramObject instanceof Integer))
     {
       i = ((Integer)paramObject).intValue();
-      paramObject = this.vtH.GW(i);
-      if ((paramObject != null) && (paramObject.field_msgId == paramLong)) {
+      paramObject = this.zJI.Pz(i);
+      if ((paramObject != null) && (paramObject.field_msgId == paramLong))
+      {
+        AppMethodBeat.o(32125);
         return i;
       }
     }
-    paramObject = this.vtH.uZv.values().iterator();
+    paramObject = this.zJI.znM.values().iterator();
     while (paramObject.hasNext())
     {
       i = ((Integer)paramObject.next()).intValue();
-      bi localbi = this.vtH.GW(i);
-      if ((localbi != null) && (localbi.field_msgId == paramLong)) {
+      bi localbi = this.zJI.Pz(i);
+      if ((localbi != null) && (localbi.field_msgId == paramLong))
+      {
+        AppMethodBeat.o(32125);
         return i;
       }
     }
+    AppMethodBeat.o(32125);
     return -1;
   }
   
-  private static String a(bi parambi, com.tencent.mm.as.e parame, boolean paramBoolean)
+  public static String a(bi parambi, com.tencent.mm.at.e parame)
   {
+    AppMethodBeat.i(32120);
+    parambi = a(parambi, parame, false);
+    AppMethodBeat.o(32120);
+    return parambi;
+  }
+  
+  private static String a(bi parambi, com.tencent.mm.at.e parame, boolean paramBoolean)
+  {
+    AppMethodBeat.i(32121);
     if (parambi.field_isSend == 1)
     {
-      parambi = com.tencent.mm.as.o.OJ().d(parame);
-      parambi = com.tencent.mm.as.o.OJ().o(parambi, "", "");
-      if (com.tencent.mm.vfs.e.bK(parambi)) {}
-      do
+      parambi = o.ahC().d(parame);
+      str = o.ahC().q(parambi, "", "");
+      ab.d("MicroMsg.ImageGalleryHolderImage", "getImgPath() pre fileName:%s bigImgPath:%s", new Object[] { parambi, str });
+      if (com.tencent.mm.vfs.e.cN(str))
       {
-        return parambi;
-        parambi = parame.enq;
-        parame = com.tencent.mm.as.o.OJ().o(parambi, "", "");
-        parambi = parame;
-      } while (com.tencent.mm.vfs.e.bK(parame));
+        AppMethodBeat.o(32121);
+        return str;
+      }
+      parambi = parame.fDM;
+      parame = o.ahC().q(parambi, "", "");
+      ab.d("MicroMsg.ImageGalleryHolderImage", "getImgPath() after fileName:%s bigImgPath:%s", new Object[] { parambi, parame });
+      if (com.tencent.mm.vfs.e.cN(parame))
+      {
+        AppMethodBeat.o(32121);
+        return parame;
+      }
+      AppMethodBeat.o(32121);
       return null;
     }
-    if ((!paramBoolean) && (!parame.Oq()))
+    if ((!paramBoolean) && (!parame.ahg()))
     {
-      y.w("MicroMsg.ImageGalleryHolderImage", "getImagePath is null because of isTryToGetProgress %s img.isGetCompleted() %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(parame.Oq()) });
+      ab.w("MicroMsg.ImageGalleryHolderImage", "getImagePath is null because of isTryToGetProgress %s img.isGetCompleted() %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(parame.ahg()) });
+      AppMethodBeat.o(32121);
       return null;
     }
-    String str = parame.enq;
-    if (parame.Or())
+    String str = parame.fDM;
+    if (parame.ahh())
     {
-      parambi = com.tencent.mm.as.o.OJ().d(parame);
+      parambi = o.ahC().d(parame);
       if (parambi != null)
       {
-        parambi = com.tencent.mm.as.o.OJ().o(parambi, "", "");
-        if (com.tencent.mm.vfs.e.bK(parambi)) {
-          y.i("MicroMsg.ImageGalleryHolderImage", "hasHdImg");
+        parambi = o.ahC().q(parambi, "", "");
+        if (com.tencent.mm.vfs.e.cN(parambi)) {
+          ab.i("MicroMsg.ImageGalleryHolderImage", "hasHdImg");
         }
       }
     }
@@ -146,9 +182,10 @@ public final class e
     {
       parame = parambi;
       if (parambi == null) {
-        parame = com.tencent.mm.as.o.OJ().o(str, "", "");
+        parame = o.ahC().q(str, "", "");
       }
-      y.i("MicroMsg.ImageGalleryHolderImage", "the path : %s", new Object[] { parame });
+      ab.i("MicroMsg.ImageGalleryHolderImage", "the path : %s", new Object[] { parame });
+      AppMethodBeat.o(32121);
       return parame;
       parambi = null;
     }
@@ -156,173 +193,195 @@ public final class e
   
   private static void a(bi parambi, k paramk, int paramInt)
   {
-    y.i("MicroMsg.ImageGalleryHolderImage", "edw dealFail", new Object[0]);
-    String str = com.tencent.mm.as.o.OJ().F(parambi.field_imgPath, true);
-    k.X(paramk.vxr, 8);
-    k.X(paramk.vxm, 8);
-    k.X(paramk.vxv, 8);
-    k.X(paramk.vxw, 8);
-    paramk.cGF().vxs.setVisibility(0);
-    paramk.cGF().vxu.setImageResource(R.k.image_download_fail_icon);
-    if ((str == null) || (!com.tencent.mm.vfs.e.bK(str)))
+    AppMethodBeat.i(32104);
+    ab.i("MicroMsg.ImageGalleryHolderImage", "edw dealFail", new Object[0]);
+    String str = o.ahC().J(parambi.field_imgPath, true);
+    k.aq(paramk.zNB, 8);
+    k.aq(paramk.zNw, 8);
+    k.aq(paramk.zNF, 8);
+    k.aq(paramk.zNG, 8);
+    k.aq(paramk.zNH, 8);
+    paramk.dKN().zNC.setVisibility(0);
+    paramk.dKN().zNE.setImageResource(2131231546);
+    if ((str == null) || (!com.tencent.mm.vfs.e.cN(str)))
     {
-      paramk.cGF().vxt.setText(R.l.imgdownload_fail_tips);
+      paramk.dKN().zND.setText(2131300728);
+      AppMethodBeat.o(32104);
       return;
     }
     if (paramInt == 6)
     {
-      paramk.cGF().vxt.setText(R.l.imgdownload_fail);
+      paramk.dKN().zND.setText(2131300726);
+      AppMethodBeat.o(32104);
       return;
     }
-    if (parambi.cvx())
+    if (parambi.dyc())
     {
-      paramk.cGF().vxt.setText(R.l.imgdownload_cleaned);
+      paramk.dKN().zND.setText(2131300724);
+      AppMethodBeat.o(32104);
       return;
     }
-    paramk.cGF().vxt.setText(R.l.imgdownload_expired);
+    paramk.dKN().zND.setText(2131300725);
+    AppMethodBeat.o(32104);
   }
   
   private static void a(bi parambi, String paramString, boolean paramBoolean)
   {
-    y.i("MicroMsg.ImageGalleryHolderImage", "[oreh download_and_save] hdImg end, msgLocalId:%d, %s", new Object[] { Long.valueOf(parambi.field_msgId), paramString });
-    c.b(ae.getContext(), parambi, paramBoolean);
+    AppMethodBeat.i(32126);
+    ab.i("MicroMsg.ImageGalleryHolderImage", "[oreh download_and_save] hdImg end, msgLocalId:%d, %s", new Object[] { Long.valueOf(parambi.field_msgId), paramString });
+    c.b(ah.getContext(), parambi, paramBoolean);
+    AppMethodBeat.o(32126);
   }
   
-  private void a(k paramk, bi parambi, com.tencent.mm.as.e parame, boolean paramBoolean, int paramInt)
+  private void a(k paramk, bi parambi, com.tencent.mm.at.e parame, boolean paramBoolean, int paramInt)
   {
+    AppMethodBeat.i(32102);
     a(paramk, parambi, parame, paramBoolean, true, paramInt);
+    AppMethodBeat.o(32102);
   }
   
-  private void a(k paramk, bi parambi, com.tencent.mm.as.e parame, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  private void a(k paramk, bi parambi, com.tencent.mm.at.e parame, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    y.i("MicroMsg.ImageGalleryHolderImage", "edw dealDownloading, isHd = " + paramBoolean1);
-    k.X(paramk.vxs, 8);
-    String str = null;
+    AppMethodBeat.i(32103);
+    ab.i("MicroMsg.ImageGalleryHolderImage", "edw dealDownloading, isHd = ".concat(String.valueOf(paramBoolean1)));
+    k.aq(paramk.zNC, 8);
+    String str1 = null;
     if (!paramBoolean1) {
-      paramk.vxv.setVisibility(0);
+      paramk.zNF.setVisibility(0);
     }
-    com.tencent.mm.as.e locale = com.tencent.mm.as.f.a(parame);
-    if ((paramBoolean1) && (paramInt == this.vtH.vtJ.getCurrentItem()))
-    {
-      localObject = this.vtH.vtJ;
-      ((ImageGalleryUI)localObject).gs(true);
-      ((ImageGalleryUI)localObject).cGp();
-      ((ImageGalleryUI)localObject).cGe().vvQ.setVisibility(0);
-      ((ImageGalleryUI)localObject).cGe().vvR.setVisibility(8);
-      ((ImageGalleryUI)localObject).cGe().vvS.setVisibility(0);
-      ((ImageGalleryUI)localObject).cGe().vvT.setVisibility(8);
-      ((ImageGalleryUI)localObject).cGr();
-      ((ImageGalleryUI)localObject).cGs();
-      ((ImageGalleryUI)localObject).cGe().vvS.setText("0%");
+    com.tencent.mm.at.e locale = com.tencent.mm.at.f.a(parame);
+    if ((paramBoolean1) && (paramInt == this.zJI.zJK.getCurrentItem())) {
+      this.zJI.zJK.dKD();
     }
     if (paramBoolean1) {
-      str = a(parambi, parame, true);
+      str1 = a(parambi, parame, true);
     }
-    Object localObject = str;
-    if (bk.bl(str)) {
-      localObject = com.tencent.mm.as.o.OJ().o(locale.ens, "", "");
+    String str2 = str1;
+    if (bo.isNullOrNil(str1)) {
+      str2 = o.ahC().q(locale.fDO, "", "");
     }
-    str = com.tencent.mm.as.o.OJ().F(parambi.field_imgPath, true);
+    str1 = o.ahC().J(parambi.field_imgPath, true);
     if (paramBoolean2) {
-      a(paramk, str, (String)localObject, parambi);
+      a(paramk, str1, str2, parambi);
     }
     long l;
     if (!paramBoolean1)
     {
-      paramInt = parame.ebK;
+      paramInt = parame.fsd;
       int i = parame.offset;
       if (paramInt == 0) {
-        break label337;
+        break label258;
       }
       l = i * 100L / paramInt - 1L;
       if (Math.max(1, (int)l) <= 50) {
-        break label343;
+        break label264;
       }
-      paramk.cGE().vxr.setVisibility(8);
+      paramk.dKM().zNB.setVisibility(8);
     }
     for (;;)
     {
-      paramk.cGE().vxp.setVisibility(8);
-      paramk.cGE().vxo.setVisibility(8);
-      paramk.cGE().vxn.setVisibility(8);
+      paramk.dKM().zNz.setVisibility(8);
+      paramk.dKM().zNy.setVisibility(8);
+      paramk.dKM().zNx.setVisibility(8);
+      AppMethodBeat.o(32103);
       return;
-      label337:
+      label258:
       l = 0L;
       break;
-      label343:
-      paramk.cGE().vxr.setVisibility(0);
+      label264:
+      paramk.dKM().zNB.setVisibility(0);
     }
   }
   
   private static void a(k paramk, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int j = 0;
-    if (paramk != null)
-    {
-      if (paramk.vxw != null)
+    int j = 8;
+    AppMethodBeat.i(32111);
+    Object localObject;
+    int i;
+    if (paramk != null) {
+      if (paramk.zNG != null)
       {
-        WxImageView localWxImageView = paramk.vxw;
+        localObject = paramk.zNG;
         if (!paramBoolean1) {
-          break label57;
+          break label92;
         }
         i = 0;
-        localWxImageView.setVisibility(i);
-      }
-      if (paramk.vxv != null)
-      {
-        paramk = paramk.vxv;
-        if (!paramBoolean2) {
-          break label63;
+        ((WxImageView)localObject).setVisibility(i);
+        if (!paramBoolean1) {
+          break label98;
         }
       }
     }
-    label57:
-    label63:
-    for (int i = j;; i = 8)
+    label92:
+    label98:
+    for (paramk.zNI = true;; paramk.zNI = false)
     {
-      paramk.setVisibility(i);
+      if (paramk.zNF != null)
+      {
+        localObject = paramk.zNF;
+        i = j;
+        if (paramBoolean2) {
+          i = 0;
+        }
+        ((MultiTouchImageView)localObject).setVisibility(i);
+        if (paramBoolean2) {
+          paramk.zNI = false;
+        }
+      }
+      AppMethodBeat.o(32111);
       return;
       i = 8;
       break;
     }
   }
   
-  private boolean a(k paramk, bi parambi, com.tencent.mm.as.e parame, int paramInt)
+  private boolean a(MultiTouchImageView paramMultiTouchImageView, String paramString1, String paramString2, int paramInt, bi parambi, k paramk)
   {
-    y.i("MicroMsg.ImageGalleryHolderImage", "edw dealSucc");
-    String str2 = c(parambi, parame);
-    k.X(paramk.vxr, 8);
-    String str1 = (String)this.vvc.get(parambi);
+    AppMethodBeat.i(32109);
+    boolean bool = a(true, paramMultiTouchImageView, paramString1, paramString2, false, paramInt, parambi, paramk, null, false);
+    AppMethodBeat.o(32109);
+    return bool;
+  }
+  
+  private boolean a(k paramk, bi parambi, com.tencent.mm.at.e parame, int paramInt)
+  {
+    AppMethodBeat.i(32101);
+    ab.i("MicroMsg.ImageGalleryHolderImage", "edw dealSucc");
+    String str2 = d(parambi, parame);
+    k.aq(paramk.zNB, 8);
+    String str1 = (String)this.zLd.get(parambi);
     parame = str1;
     if (str1 == null)
     {
-      parame = com.tencent.mm.as.o.OJ().F(parambi.field_imgPath, true);
-      this.vvc.put(parambi, parame);
+      parame = o.ahC().J(parambi.field_imgPath, true);
+      this.zLd.put(parambi, parame);
     }
     boolean bool = a(paramk, parame, str2, parambi);
-    if ((paramInt == this.vtH.vtJ.getCurrentItem()) && (this.vtH.vtN))
+    if ((paramInt == this.zJI.zJK.getCurrentItem()) && (this.zJI.zJO))
     {
-      this.vtH.bn(parambi);
-      this.vtH.vtN = false;
+      this.zJI.bx(parambi);
+      this.zJI.zJO = false;
     }
+    AppMethodBeat.o(32101);
     return bool;
   }
   
   private boolean a(k paramk, String paramString1, String paramString2, bi parambi)
   {
-    k.X(paramk.vxv, 0);
-    k.X(paramk.vxm, 8);
-    k.X(paramk.vxr, 8);
-    k.X(paramk.vxs, 8);
-    return a(true, paramk.vxv, paramString1, paramString2, false, paramk.mPosition, parambi, paramk, null, -1, false);
+    AppMethodBeat.i(32105);
+    boolean bool = b(paramk, paramString1, paramString2, parambi);
+    AppMethodBeat.o(32105);
+    return bool;
   }
   
-  private boolean a(boolean paramBoolean1, MultiTouchImageView paramMultiTouchImageView, String paramString1, String paramString2, boolean paramBoolean2, int paramInt1, bi parambi, k paramk, com.tencent.mm.as.e parame, int paramInt2, boolean paramBoolean3)
+  private boolean a(boolean paramBoolean1, MultiTouchImageView paramMultiTouchImageView, String paramString1, String paramString2, boolean paramBoolean2, int paramInt, bi parambi, k paramk, com.tencent.mm.at.e parame, boolean paramBoolean3)
   {
-    y.i("MicroMsg.ImageGalleryHolderImage", "initImageView image : %s bigImgPath %s position : %s", new Object[] { Integer.valueOf(paramMultiTouchImageView.hashCode()), paramString2, Integer.valueOf(paramInt1) });
+    AppMethodBeat.i(32110);
+    ab.i("MicroMsg.ImageGalleryHolderImage", "initImageView image : %s bigImgPath %s position : %s", new Object[] { Integer.valueOf(paramMultiTouchImageView.hashCode()), paramString2, Integer.valueOf(paramInt) });
     Object localObject2 = null;
     boolean bool1 = true;
-    if ((paramString2 != null) && (com.tencent.mm.vfs.e.bK(paramString2)))
+    if ((paramString2 != null) && (com.tencent.mm.vfs.e.cN(paramString2)))
     {
       localObject2 = paramString2;
       localObject1 = localObject2;
@@ -332,131 +391,124 @@ public final class e
         if (paramString1 != null)
         {
           localObject1 = localObject2;
-          if (com.tencent.mm.vfs.e.bK(paramString1)) {
-            if (!com.tencent.mm.vfs.e.bK(paramString1 + "hd")) {
-              break label794;
+          if (com.tencent.mm.vfs.e.cN(paramString1)) {
+            if (!com.tencent.mm.vfs.e.cN(paramString1 + "hd")) {
+              break label765;
             }
           }
         }
       }
     }
-    label794:
+    label270:
+    label375:
+    label765:
     for (Object localObject1 = paramString1 + "hd";; localObject1 = paramString1)
     {
       if (localObject1 == null)
       {
-        y.e("MicroMsg.ImageGalleryHolderImage", "getSuitableBmp fail, file does not exist, filePath %s", new Object[] { paramString2 });
+        ab.e("MicroMsg.ImageGalleryHolderImage", "getSuitableBmp fail, file does not exist, filePath %s", new Object[] { paramString2 });
+        AppMethodBeat.o(32110);
         return false;
         bool1 = false;
         break;
       }
       if (paramk == null)
       {
-        y.e("MicroMsg.ImageGalleryHolderImage", "alvinluo initImageView holder is null");
+        ab.e("MicroMsg.ImageGalleryHolderImage", "alvinluo initImageView holder is null");
+        AppMethodBeat.o(32110);
         return false;
       }
       int i;
-      if ((!((String)localObject1).equals(paramString1)) && (!paramBoolean3) && (adC((String)localObject1)))
+      if ((!((String)localObject1).equals(paramString1)) && (!paramBoolean3) && (aue((String)localObject1)))
       {
         paramBoolean3 = true;
-        y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt result: %b, path: %s", new Object[] { Boolean.valueOf(paramBoolean3), localObject1 });
-        if ((paramk.vxw == null) || (paramk.vxw.getVisibility() != 0)) {
-          break label350;
+        ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt result: %b, path: %s", new Object[] { Boolean.valueOf(paramBoolean3), localObject1 });
+        if ((paramk.zNG == null) || (paramk.zNG.getVisibility() != 0)) {
+          break label375;
         }
         i = 1;
-        label252:
-        if ((!Hw(paramInt2)) || (i != 0)) {
-          break label356;
+        if ((!paramBoolean3) || (i != 0)) {
+          break label381;
         }
       }
-      label350:
-      label356:
+      label381:
       for (boolean bool2 = true;; bool2 = false)
       {
-        if ((paramBoolean3) || (paramBoolean2) || (!this.vva.kJt.aC(localObject1))) {
-          break label362;
+        if ((paramBoolean3) || (paramBoolean2) || (!this.zLb.nfR.Z(localObject1))) {
+          break label387;
         }
-        localObject2 = (Bitmap)this.vva.kJt.get(localObject1);
+        localObject2 = (Bitmap)this.zLb.nfR.Y(localObject1);
         if (((Bitmap)localObject2).isRecycled()) {
-          break label362;
+          break label387;
         }
-        y.i("MicroMsg.ImageGalleryHolderImage", "use cache, fillBitmap path : %s", new Object[] { localObject1 });
+        ab.i("MicroMsg.ImageGalleryHolderImage", "use cache, fillBitmap path : %s", new Object[] { localObject1 });
         b(paramMultiTouchImageView, (Bitmap)localObject2);
+        AppMethodBeat.o(32110);
         return true;
         paramBoolean3 = false;
         break;
         i = 0;
-        break label252;
+        break label270;
       }
-      label362:
       if (paramBoolean1) {
         paramMultiTouchImageView.setImageBitmap(null);
       }
       localObject2 = parame;
       if (paramBoolean3)
       {
-        if (paramk.vxw == null) {
+        if (paramk.zNG == null)
+        {
+          AppMethodBeat.o(32110);
           return false;
         }
         localObject2 = parame;
         if (parame == null) {
-          localObject2 = h(parambi, true);
+          localObject2 = f(parambi, true);
         }
-        paramk.vxw.setOnImageLoadEventListener(new e.1(this, (String)localObject1, paramInt1, paramk, parambi));
+        paramk.zNG.setOnImageLoadEventListener(new e.1(this, (String)localObject1, paramInt, paramk, parambi));
       }
-      if (!this.vtH.vtT)
+      if (!this.zJI.zJU)
       {
-        if (paramInt1 >= 0)
+        if (paramInt >= 0)
         {
-          y.d("MicroMsg.ImageGalleryHolderImage", "alvinluo loadThumb postion: %d", new Object[] { Integer.valueOf(paramInt1) });
+          ab.d("MicroMsg.ImageGalleryHolderImage", "alvinluo loadThumb postion: %d", new Object[] { Integer.valueOf(paramInt) });
           a(paramk, false, true);
-          this.vva.b(paramMultiTouchImageView, paramInt1);
+          this.zLb.c(paramMultiTouchImageView, paramInt);
         }
         if (!paramBoolean3) {
-          break label754;
+          break label725;
         }
         a(paramk, true, bool2);
-        paramMultiTouchImageView = e(parambi, (com.tencent.mm.as.e)localObject2);
-        paramString1 = this.vva;
-        paramString2 = paramk.vxw;
-        paramInt2 = paramInt1;
-        if (paramInt1 < 0) {
-          paramInt2 = paramk.mPosition;
+        paramMultiTouchImageView = e(parambi, (com.tencent.mm.at.e)localObject2);
+        paramString1 = this.zLb;
+        paramString2 = paramk.zNG;
+        i = paramInt;
+        if (paramInt < 0) {
+          i = paramk.mPosition;
         }
-        if (!paramString1.kJv.contains(localObject1))
-        {
-          paramInt1 = paramString2.hashCode();
-          paramString1.sa(paramInt1);
-          paramString1.a(paramInt1, paramString2, (String)localObject1);
-          if ((paramString2 instanceof WxImageView))
-          {
-            paramString1.vvn.remove(paramInt1);
-            paramString1.vvn.put(paramInt1, paramMultiTouchImageView);
-          }
-          paramString1.kJv.add(localObject1);
-          paramString1.vvs.add(Integer.valueOf(paramInt2));
-          paramString1.ahX();
-        }
+        paramString1.b(paramString2, (String)localObject1, paramMultiTouchImageView, i);
       }
       for (;;)
       {
+        AppMethodBeat.o(32110);
         return bool1;
         if (paramBoolean3)
         {
-          paramMultiTouchImageView = e(parambi, (com.tencent.mm.as.e)localObject2);
+          paramMultiTouchImageView = e(parambi, (com.tencent.mm.at.e)localObject2);
           a(paramk, true, bool2);
-          paramString1 = paramk.vxw;
+          paramString1 = paramk.zNG;
           if (paramMultiTouchImageView != null) {}
-          for (paramMultiTouchImageView = com.davemorrissey.labs.subscaleview.view.a.U(paramMultiTouchImageView);; paramMultiTouchImageView = null)
+          for (paramMultiTouchImageView = com.davemorrissey.labs.subscaleview.view.a.Y(paramMultiTouchImageView);; paramMultiTouchImageView = null)
           {
             a(paramString1, (String)localObject1, paramMultiTouchImageView);
+            AppMethodBeat.o(32110);
             return bool1;
           }
         }
-        Bitmap localBitmap = adD((String)localObject1);
+        Bitmap localBitmap = auf((String)localObject1);
         parame = localBitmap;
         if (localBitmap == null) {
-          parame = adD(paramString1);
+          parame = auf(paramString1);
         }
         if (parame == null) {
           break;
@@ -465,279 +517,65 @@ public final class e
         b(paramMultiTouchImageView, parame);
         if (((String)localObject1).equals(paramString2))
         {
-          this.vva.s((String)localObject1, parame);
-          this.vva.b(paramInt1, parame);
+          this.zLb.u((String)localObject1, parame);
+          this.zLb.c(paramInt, parame);
         }
+        AppMethodBeat.o(32110);
         return bool1;
-        label754:
         a(paramk, false, true);
-        paramString1 = this.vva;
-        paramInt2 = paramInt1;
-        if (paramInt1 < 0) {
-          paramInt2 = paramk.mPosition;
+        paramString1 = this.zLb;
+        i = paramInt;
+        if (paramInt < 0) {
+          i = paramk.mPosition;
         }
-        paramString1.h(paramMultiTouchImageView, (String)localObject1, paramInt2);
+        paramString1.g(paramMultiTouchImageView, (String)localObject1, i);
       }
     }
   }
   
-  protected static BitmapFactory.Options adB(String paramString)
+  private static Bitmap aH(String paramString, int paramInt1, int paramInt2)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inJustDecodeBounds = true;
-    paramString = BitmapFactory.decodeFile(paramString, localOptions);
-    if (paramString != null) {
-      paramString.recycle();
-    }
-    return localOptions;
-  }
-  
-  private boolean adC(String paramString)
-  {
-    if (!vvd) {
-      y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt not enable BigImageOpt");
-    }
-    label115:
-    label117:
-    int k;
-    label216:
-    int m;
-    label245:
-    do
-    {
-      return false;
-      int j;
-      if (com.tencent.mm.compatible.util.m.zN())
-      {
-        y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt is MTK platform");
-        if ((Build.VERSION.SDK_INT == 24) || (Build.VERSION.SDK_INT == 25) || (Build.VERSION.SDK_INT == 27))
-        {
-          y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImgOpt is MTK platform, android api: %d, cannot use BigImgOpt", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
-          i = Build.VERSION.SDK_INT;
-          y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo reportMTKPlatform apiLevel: %d", new Object[] { Integer.valueOf(i) });
-          if (i == 24)
-          {
-            h.nFQ.h(896L, 0L, 1L);
-            i = 1;
-            if (i != 0) {
-              break label333;
-            }
-            paramString = adB(paramString);
-            j = paramString.outWidth;
-            k = paramString.outHeight;
-            y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImgOpt ignore abTestFlag, widthFactor: %f, heightFactor: %f, width: %d, height: %d", new Object[] { Float.valueOf(1.0F), Float.valueOf(1.0F), Integer.valueOf(j), Integer.valueOf(k) });
-            Object localObject = this.vve;
-            if (((j < 5700) || (k < 8000)) && ((j < 8000) || (k < 5700))) {
-              break label335;
-            }
-            i = 1;
-            if (i == 0) {
-              break label347;
-            }
-            paramString = Build.MODEL;
-            if (bk.bl(paramString)) {
-              break label347;
-            }
-            localObject = ((b)localObject).vtI;
-            m = localObject.length;
-            i = 0;
-            if (i >= m) {
-              break label347;
-            }
-            if (!paramString.equalsIgnoreCase(localObject[i])) {
-              break label340;
-            }
-            com.tencent.luggage.j.c.i("MicroMsg.BigImageFilter", "alvinluo BigImageFilter filter model: %s, width: %d, height: %d", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(k) });
-          }
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label352;
-        }
-        y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt filter image");
-        return false;
-        if (i != 25) {
-          break label115;
-        }
-        h.nFQ.h(896L, 1L, 1L);
-        break label115;
-        i = 0;
-        break label117;
-        break;
-        i = 0;
-        break label216;
-        i += 1;
-        break label245;
-      }
-      y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt not filter");
-      i = getScreenWidth(ae.getContext());
-      m = getScreenHeight(ae.getContext());
-      y.d("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt width: %d, height: %d, screenWidth: %d, screenHeight: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m) });
-      if (j >= i * 1.0F) {
-        return true;
-      }
-    } while (k < m * 1.0F);
-    label333:
-    label335:
-    label340:
-    label347:
-    label352:
-    return true;
-  }
-  
-  private static Bitmap adD(String paramString)
-  {
-    if (paramString == null) {
-      paramString = null;
-    }
-    int i2;
-    do
-    {
-      Object localObject2;
-      int n;
-      int i1;
-      Bitmap localBitmap;
-      do
-      {
-        return paramString;
-        Object localObject1 = new BitmapFactory.Options();
-        ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
-        localObject2 = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject1);
-        if (localObject2 != null)
-        {
-          y.i("MicroMsg.ImageGalleryHolderImage", "recycle bitmap:%s", new Object[] { localObject2.toString() });
-          ((Bitmap)localObject2).recycle();
-        }
-        i2 = BackwardSupportUtil.ExifHelper.YS(paramString);
-        int m = ((BitmapFactory.Options)localObject1).outWidth;
-        int k = ((BitmapFactory.Options)localObject1).outHeight;
-        n = m;
-        i1 = k;
-        for (;;)
-        {
-          try
-          {
-            long l1 = Math.max(Runtime.getRuntime().maxMemory() - Runtime.getRuntime().totalMemory() - vvf, 0L);
-            n = m;
-            i1 = k;
-            int i = ((BitmapFactory.Options)localObject1).outHeight;
-            n = m;
-            i1 = k;
-            long l2 = ((BitmapFactory.Options)localObject1).outWidth * i * 4;
-            n = m;
-            i1 = k;
-            y.i("MicroMsg.ImageGalleryHolderImage", "hy: current free memory: %d, previewDecodedBmLength: %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
-            int j = m;
-            i = k;
-            if (l1 < l2)
-            {
-              n = m;
-              i1 = k;
-              double d = Math.sqrt(l1 / l2);
-              n = m;
-              i1 = k;
-              y.v("MicroMsg.ImageGalleryHolderImage", "hy: sample is %f", new Object[] { Double.valueOf(d) });
-              j = (int)(m * d);
-              i = (int)(k * d);
-            }
-            n = j;
-            i1 = i;
-            localObject2 = aq(paramString, i, j);
-            localObject1 = localObject2;
-            if (localObject2 == null)
-            {
-              n = j;
-              i1 = i;
-              localObject1 = com.tencent.mm.sdk.platformtools.c.a(paramString, j, i, 0.0F, null, 0, new int[0]);
-            }
-            localObject2 = localObject1;
-            if (localObject1 == null)
-            {
-              localObject2 = localObject1;
-              n = j;
-              i1 = i;
-              if (MMNativeJpeg.IsJpegFile(paramString))
-              {
-                localObject2 = localObject1;
-                n = j;
-                i1 = i;
-                if (MMNativeJpeg.isProgressive(paramString))
-                {
-                  n = j;
-                  i1 = i;
-                  localObject2 = MMNativeJpeg.decodeAsBitmap(paramString);
-                  if (localObject2 != null) {
-                    continue;
-                  }
-                  bool = true;
-                  n = j;
-                  i1 = i;
-                  y.i("MicroMsg.ImageGalleryHolderImage", "Progressive jpeg, result isNull:%b", new Object[] { Boolean.valueOf(bool) });
-                }
-              }
-            }
-            localObject1 = localObject2;
-          }
-          catch (OutOfMemoryError localOutOfMemoryError)
-          {
-            boolean bool;
-            y.printErrStackTrace("MicroMsg.ImageGalleryHolderImage", localOutOfMemoryError, "hy: out of memory! try use fallback bitmap", new Object[0]);
-            localBitmap = c(paramString, n, i1, getScreenWidth(ae.getContext()), getScreenHeight(ae.getContext()));
-            continue;
-            localObject2 = com.tencent.mm.sdk.platformtools.c.b(localBitmap, i2);
-            paramString = (String)localObject2;
-          }
-          if (localObject1 != null) {
-            continue;
-          }
-          y.e("MicroMsg.ImageGalleryHolderImage", "getSuitableBmp fail, temBmp is null, filePath = " + paramString);
-          return null;
-          bool = false;
-        }
-      } while (localObject2 != localBitmap);
-      paramString = (String)localObject2;
-    } while (i2 % 360 == 0);
-    y.e("MicroMsg.ImageGalleryHolderImage", "rotate failed degree:%d", new Object[] { Integer.valueOf(i2) });
-    return null;
-  }
-  
-  private static Bitmap aq(String paramString, int paramInt1, int paramInt2)
-  {
+    AppMethodBeat.i(32115);
     String str = paramString + "_tmp.jpg";
     try
     {
-      if (com.tencent.mm.compatible.util.d.gG(16)) {
+      bool1 = com.tencent.mm.compatible.util.d.fw(16);
+      if (bool1)
+      {
+        AppMethodBeat.o(32115);
         return null;
       }
-      bool1 = com.tencent.mm.sdk.a.b.cqk();
+      bool1 = com.tencent.mm.sdk.a.b.dsf();
       if (!bool1) {
         try
         {
-          i = bk.getInt(com.tencent.mm.m.g.AA().getValue("UseOptImageRecv"), 0);
-          au.Hx();
-          com.tencent.mm.a.o localo = new com.tencent.mm.a.o(com.tencent.mm.model.c.CK());
-          y.i("MicroMsg.ImageGalleryHolderImage", "fromPathToImgInfo opt:%d uin:(%d,%d) debug:%b sdk:%d", new Object[] { Integer.valueOf(i), Long.valueOf(localo.longValue()), Long.valueOf(localo.longValue() / 100L), Boolean.valueOf(com.tencent.mm.sdk.a.b.cqk()), Integer.valueOf(Build.VERSION.SDK_INT) });
-          j = (int)(localo.longValue() / 100L);
-          if (j % 100 + 1 > i) {
+          i = bo.getInt(com.tencent.mm.m.g.Nq().getValue("UseOptImageRecv"), 0);
+          aw.aaz();
+          p localp = new p(com.tencent.mm.model.c.getUin());
+          ab.i("MicroMsg.ImageGalleryHolderImage", "fromPathToImgInfo opt:%d uin:(%d,%d) debug:%b sdk:%d", new Object[] { Integer.valueOf(i), Long.valueOf(localp.longValue()), Long.valueOf(localp.longValue() / 100L), Boolean.valueOf(com.tencent.mm.sdk.a.b.dsf()), Integer.valueOf(Build.VERSION.SDK_INT) });
+          j = (int)(localp.longValue() / 100L);
+          if (j % 100 + 1 > i)
+          {
+            AppMethodBeat.o(32115);
             return null;
           }
         }
         catch (Exception localException)
         {
-          y.e("MicroMsg.ImageGalleryHolderImage", "get useopt :%s", new Object[] { bk.j(localException) });
+          ab.e("MicroMsg.ImageGalleryHolderImage", "get useopt :%s", new Object[] { bo.l(localException) });
+          AppMethodBeat.o(32115);
           return null;
         }
       }
-      com.tencent.mm.vfs.e.r(paramString, str);
+      com.tencent.mm.vfs.e.um(com.tencent.mm.vfs.e.avK(str));
+      com.tencent.mm.vfs.e.C(paramString, str);
       bool2 = MMNativeJpeg.IsJpegFile(str);
       bool3 = MMNativeJpeg.isProgressive(str);
-      if (bk.bl(str)) {
-        break label434;
+      if (bo.isNullOrNil(str)) {
+        break label477;
       }
       if (new File(str).exists()) {
-        break label363;
+        break label406;
       }
     }
     catch (Throwable localThrowable1)
@@ -749,9 +587,9 @@ public final class e
         boolean bool2;
         boolean bool3;
         Bitmap localBitmap1;
-        label363:
+        label406:
         Bitmap localBitmap2 = null;
-        y.e("MicroMsg.ImageGalleryHolderImage", "dkprog tryUseImageOpt failed. file:%s e:%s", new Object[] { paramString, bk.j(localThrowable1) });
+        ab.e("MicroMsg.ImageGalleryHolderImage", "dkprog tryUseImageOpt failed. file:%s e:%s", new Object[] { paramString, bo.l(localThrowable1) });
         localObject1 = localBitmap2;
         continue;
         Object localObject2 = null;
@@ -761,7 +599,7 @@ public final class e
         boolean bool1 = false;
       }
     }
-    j = (int)com.tencent.mm.vfs.e.aeQ(str);
+    j = (int)com.tencent.mm.vfs.e.avI(str);
     if ((bool2) && (bool3)) {
       if (bool1)
       {
@@ -772,16 +610,17 @@ public final class e
           localBitmap2 = localBitmap1;
           try
           {
-            e.a.n(paramString, paramInt2, paramInt1, i);
+            e.a.q(paramString, paramInt2, paramInt1, i);
             localBitmap2 = localBitmap1;
-            y.i("MicroMsg.ImageGalleryHolderImage", "dkprog tryUseImageOpt jpeg:%b isprog:%b inte:%b len:%d [%d,%d] bm:%s path:%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1), Integer.valueOf(j), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), localBitmap1, paramString });
+            ab.i("MicroMsg.ImageGalleryHolderImage", "dkprog tryUseImageOpt jpeg:%b isprog:%b inte:%b len:%d [%d,%d] bm:%s path:%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1), Integer.valueOf(j), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), localBitmap1, paramString });
             com.tencent.mm.vfs.e.deleteFile(str);
+            AppMethodBeat.o(32115);
             return localBitmap1;
           }
           catch (Throwable localThrowable2)
           {
             Object localObject1;
-            break label386;
+            break label429;
           }
           bool1 = MMJpegOptim.checkIntegrity(str);
           break;
@@ -790,645 +629,966 @@ public final class e
     }
   }
   
+  protected static BitmapFactory.Options aud(String paramString)
+  {
+    AppMethodBeat.i(32107);
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    paramString = BitmapFactory.decodeFile(paramString, localOptions);
+    if (paramString != null) {
+      paramString.recycle();
+    }
+    AppMethodBeat.o(32107);
+    return localOptions;
+  }
+  
+  private boolean aue(String paramString)
+  {
+    AppMethodBeat.i(32108);
+    if (!zLe)
+    {
+      ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt not enable BigImageOpt");
+      AppMethodBeat.o(32108);
+      return false;
+    }
+    if (Build.VERSION.SDK_INT == 27)
+    {
+      localObject = ad.get("ro.mediatek.platform");
+      if ((localObject != null) && ((((String)localObject).startsWith("mt6765")) || (((String)localObject).startsWith("MT6765")))) {
+        i = 0;
+      }
+    }
+    while (i != 0)
+    {
+      AppMethodBeat.o(32108);
+      return false;
+      if (com.tencent.mm.compatible.util.m.Ms())
+      {
+        ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt is MTK platform");
+        if ((Build.VERSION.SDK_INT == 24) || (Build.VERSION.SDK_INT == 25) || (Build.VERSION.SDK_INT == 27))
+        {
+          ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImgOpt is MTK platform, android api: %d, cannot use BigImgOpt", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+          i = Build.VERSION.SDK_INT;
+          ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo reportMTKPlatform apiLevel: %d", new Object[] { Integer.valueOf(i) });
+          if (i == 24) {
+            com.tencent.mm.plugin.report.service.h.qsU.j(896L, 0L, 1L);
+          }
+          for (;;)
+          {
+            i = 1;
+            break;
+            if (i == 25) {
+              com.tencent.mm.plugin.report.service.h.qsU.j(896L, 1L, 1L);
+            }
+          }
+        }
+      }
+      i = 0;
+    }
+    paramString = aud(paramString);
+    int j = paramString.outWidth;
+    int k = paramString.outHeight;
+    ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImgOpt ignore abTestFlag, widthFactor: %f, heightFactor: %f, width: %d, height: %d", new Object[] { Float.valueOf(1.0F), Float.valueOf(1.0F), Integer.valueOf(j), Integer.valueOf(k) });
+    Object localObject = this.zLf;
+    int i = ((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lRX, 0);
+    if (i == 1) {
+      com.tencent.luggage.g.d.i("MicroMsg.BigImageFilter", "alvinluo BigImageFilter clicfg notFilter: %d", new Object[] { Integer.valueOf(i) });
+    }
+    label323:
+    label461:
+    label468:
+    for (;;)
+    {
+      i = 0;
+      if (i == 0) {
+        break;
+      }
+      ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt filter image");
+      AppMethodBeat.o(32108);
+      return false;
+      if (((j >= 5700) && (k >= 8000)) || ((j >= 8000) && (k >= 5700)))
+      {
+        i = 1;
+        label375:
+        if (i == 0) {
+          break label461;
+        }
+        paramString = Build.MODEL;
+        if (bo.isNullOrNil(paramString)) {
+          continue;
+        }
+        localObject = ((b)localObject).zJJ;
+        m = localObject.length;
+        i = 0;
+      }
+      for (;;)
+      {
+        if (i >= m) {
+          break label468;
+        }
+        if (paramString.equalsIgnoreCase(localObject[i]))
+        {
+          com.tencent.luggage.g.d.i("MicroMsg.BigImageFilter", "alvinluo BigImageFilter filter model: %s, width: %d, height: %d", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(k) });
+          i = 1;
+          break label323;
+          i = 0;
+          break label375;
+          break;
+        }
+        i += 1;
+      }
+    }
+    ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt not filter");
+    i = getScreenWidth(ah.getContext());
+    int m = getScreenHeight(ah.getContext());
+    ab.d("MicroMsg.ImageGalleryHolderImage", "alvinluo checkUseBigImageOpt width: %d, height: %d, screenWidth: %d, screenHeight: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m) });
+    if (j >= i * 1.0F)
+    {
+      AppMethodBeat.o(32108);
+      return true;
+    }
+    if (k >= m * 1.0F)
+    {
+      AppMethodBeat.o(32108);
+      return true;
+    }
+    AppMethodBeat.o(32108);
+    return false;
+  }
+  
+  private static Bitmap auf(String paramString)
+  {
+    AppMethodBeat.i(32116);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(32116);
+      return null;
+    }
+    Object localObject1 = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
+    Object localObject2 = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject1);
+    if (localObject2 != null)
+    {
+      ab.i("MicroMsg.ImageGalleryHolderImage", "recycle bitmap:%s", new Object[] { localObject2.toString() });
+      ((Bitmap)localObject2).recycle();
+    }
+    int i2 = BackwardSupportUtil.ExifHelper.bY(paramString);
+    int m = ((BitmapFactory.Options)localObject1).outWidth;
+    int k = ((BitmapFactory.Options)localObject1).outHeight;
+    int n = k;
+    int i1 = m;
+    for (;;)
+    {
+      try
+      {
+        long l1 = Math.max(Runtime.getRuntime().maxMemory() - Runtime.getRuntime().totalMemory() - zLg, 0L);
+        n = k;
+        i1 = m;
+        int i = ((BitmapFactory.Options)localObject1).outHeight;
+        n = k;
+        i1 = m;
+        long l2 = ((BitmapFactory.Options)localObject1).outWidth * i * 4;
+        n = k;
+        i1 = m;
+        ab.i("MicroMsg.ImageGalleryHolderImage", "hy: current free memory: %d, previewDecodedBmLength: %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
+        int j = k;
+        i = m;
+        if (l1 < l2)
+        {
+          n = k;
+          i1 = m;
+          double d = Math.sqrt(l1 / l2);
+          n = k;
+          i1 = m;
+          ab.v("MicroMsg.ImageGalleryHolderImage", "hy: sample is %f", new Object[] { Double.valueOf(d) });
+          i = (int)(m * d);
+          j = (int)(k * d);
+        }
+        n = j;
+        i1 = i;
+        localObject2 = aH(paramString, j, i);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          n = j;
+          i1 = i;
+          localObject1 = com.tencent.mm.sdk.platformtools.d.a(paramString, i, j, 0.0F);
+        }
+        localObject2 = localObject1;
+        if (localObject1 == null)
+        {
+          localObject2 = localObject1;
+          n = j;
+          i1 = i;
+          if (MMNativeJpeg.IsJpegFile(paramString))
+          {
+            localObject2 = localObject1;
+            n = j;
+            i1 = i;
+            if (MMNativeJpeg.isProgressive(paramString))
+            {
+              n = j;
+              i1 = i;
+              localObject2 = MMNativeJpeg.decodeAsBitmap(paramString);
+              if (localObject2 != null) {
+                continue;
+              }
+              bool = true;
+              n = j;
+              i1 = i;
+              ab.i("MicroMsg.ImageGalleryHolderImage", "Progressive jpeg, result isNull:%b", new Object[] { Boolean.valueOf(bool) });
+            }
+          }
+        }
+        localObject1 = localObject2;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        boolean bool;
+        ab.printErrStackTrace("MicroMsg.ImageGalleryHolderImage", localOutOfMemoryError, "hy: out of memory! try use fallback bitmap", new Object[0]);
+        Bitmap localBitmap = e(paramString, i1, n, getScreenWidth(ah.getContext()), getScreenHeight(ah.getContext()));
+        continue;
+        paramString = com.tencent.mm.sdk.platformtools.d.b(localBitmap, i2);
+        if ((paramString != localBitmap) || (i2 % 360 == 0)) {
+          continue;
+        }
+        ab.e("MicroMsg.ImageGalleryHolderImage", "rotate failed degree:%d", new Object[] { Integer.valueOf(i2) });
+        AppMethodBeat.o(32116);
+        return null;
+        AppMethodBeat.o(32116);
+      }
+      if (localObject1 != null) {
+        continue;
+      }
+      ab.e("MicroMsg.ImageGalleryHolderImage", "getSuitableBmp fail, temBmp is null, filePath = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(32116);
+      return null;
+      bool = false;
+    }
+    return paramString;
+  }
+  
   @TargetApi(11)
   private void b(MultiTouchImageView paramMultiTouchImageView, Bitmap paramBitmap)
   {
-    if ((this.vtH == null) || (this.vtH.vtJ == null)) {
+    AppMethodBeat.i(32130);
+    if ((this.zJI == null) || (this.zJI.zJK == null))
+    {
+      AppMethodBeat.o(32130);
       return;
     }
-    y.i("MicroMsg.ImageGalleryHolderImage", "fillBitmap image : %s bmp %s", new Object[] { Integer.valueOf(paramMultiTouchImageView.hashCode()), Integer.valueOf(paramBitmap.hashCode()) });
+    ab.i("MicroMsg.ImageGalleryHolderImage", "fillBitmap image : %s bmp %s", new Object[] { Integer.valueOf(paramMultiTouchImageView.hashCode()), Integer.valueOf(paramBitmap.hashCode()) });
     if (Build.VERSION.SDK_INT == 20) {
       paramMultiTouchImageView.setLayerType(1, null);
     }
     for (;;)
     {
       paramMultiTouchImageView.setEnableHorLongBmpMode(false);
-      paramMultiTouchImageView.fs(paramBitmap.getWidth(), paramBitmap.getHeight());
+      paramMultiTouchImageView.cb(paramBitmap.getWidth(), paramBitmap.getHeight());
       paramMultiTouchImageView.setImageBitmap(null);
       paramMultiTouchImageView.setImageBitmap(paramBitmap);
       paramMultiTouchImageView.invalidate();
+      AppMethodBeat.o(32130);
       return;
-      com.tencent.mm.sdk.platformtools.k.o((View)paramMultiTouchImageView.getParent(), paramBitmap.getWidth(), paramBitmap.getHeight());
+      n.x((View)paramMultiTouchImageView.getParent(), paramBitmap.getWidth(), paramBitmap.getHeight());
     }
   }
   
-  public static com.tencent.mm.as.e bt(bi parambi)
+  private boolean b(k paramk, String paramString1, String paramString2, bi parambi)
   {
-    Object localObject;
-    if (!c.be(parambi)) {
-      localObject = null;
-    }
-    com.tencent.mm.as.e locale;
-    do
+    AppMethodBeat.i(32106);
+    k.aq(paramk.zNF, 0);
+    k.aq(paramk.zNw, 8);
+    k.aq(paramk.zNB, 8);
+    k.aq(paramk.zNC, 8);
+    boolean bool = a(paramk.zNF, paramString1, paramString2, paramk.mPosition, parambi, paramk);
+    AppMethodBeat.o(32106);
+    return bool;
+  }
+  
+  public static com.tencent.mm.at.e d(bi parambi)
+  {
+    AppMethodBeat.i(32098);
+    if (!c.c(parambi))
     {
-      return localObject;
-      if (parambi.field_isSend != 1) {
-        break;
-      }
+      AppMethodBeat.o(32098);
+      return null;
+    }
+    long l;
+    com.tencent.mm.at.e locale1;
+    if (parambi.field_isSend == 1)
+    {
       l = parambi.field_msgId;
-      locale = com.tencent.mm.as.o.OJ().bY(l);
-      localObject = locale;
-    } while (locale.enp != 0L);
-    long l = parambi.field_msgSvrId;
-    return com.tencent.mm.as.o.OJ().bX(l);
-  }
-  
-  private static Bitmap c(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    y.e("MicroMsg.ImageGalleryHolderImage", "hy: enter fallback bitmap logic");
-    paramInt1 *= paramInt2;
-    paramInt2 = paramInt3 * paramInt4;
-    y.i("MicroMsg.ImageGalleryHolderImage", "hy: oriImgPixelRate %d, displayPixelRate %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (paramInt1 > paramInt2) {}
-    try
-    {
-      return com.tencent.mm.sdk.platformtools.c.a(paramString, paramInt3, paramInt4, 0.0F, null, 0, new int[0]);
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      y.printErrStackTrace("MicroMsg.ImageGalleryHolderImage", paramString, "hy: oom in fallback bitmap!", new Object[0]);
-    }
-    y.e("MicroMsg.ImageGalleryHolderImage", "hy: the picture is even smaller the screen! display nothing");
-    return null;
-    return null;
-  }
-  
-  private String c(bi parambi, com.tencent.mm.as.e parame)
-  {
-    String str2 = (String)this.vvb.get(parambi);
-    String str1 = str2;
-    if (str2 == null)
-    {
-      parame = a(parambi, parame, false);
-      if ((parame == null) || (parame.length() == 0)) {
-        str1 = null;
-      }
+      com.tencent.mm.at.e locale2 = o.ahC().gT(l);
+      locale1 = locale2;
+      if (locale2.fDL != 0L) {}
     }
     else
     {
-      return str1;
+      l = parambi.field_msgSvrId;
+      locale1 = o.ahC().gS(l);
     }
-    this.vvb.put(parambi, parame);
-    return parame;
+    AppMethodBeat.o(32098);
+    return locale1;
   }
   
-  public static void cGa()
+  private String d(bi parambi, com.tencent.mm.at.e parame)
   {
-    vvd = false;
+    AppMethodBeat.i(32100);
+    String str2 = (String)this.zLc.get(parambi);
+    String str1 = str2;
+    if (str2 == null)
+    {
+      str1 = a(parambi, parame, false);
+      if ((str1 == null) || (str1.length() == 0))
+      {
+        AppMethodBeat.o(32100);
+        return null;
+      }
+      this.zLc.put(parambi, str1);
+    }
+    AppMethodBeat.o(32100);
+    return str1;
   }
   
-  public static String d(bi parambi, com.tencent.mm.as.e parame)
+  public static void dKe()
   {
-    return a(parambi, parame, false);
+    zLe = false;
   }
   
-  private static String e(bi parambi, com.tencent.mm.as.e parame)
+  private static Bitmap e(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((parambi == null) || (parame == null)) {
+    AppMethodBeat.i(32117);
+    ab.e("MicroMsg.ImageGalleryHolderImage", "hy: enter fallback bitmap logic");
+    paramInt1 *= paramInt2;
+    paramInt2 = paramInt3 * paramInt4;
+    ab.i("MicroMsg.ImageGalleryHolderImage", "hy: oriImgPixelRate %d, displayPixelRate %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (paramInt1 > paramInt2) {}
+    try
+    {
+      paramString = com.tencent.mm.sdk.platformtools.d.a(paramString, paramInt3, paramInt4, 0.0F);
+      AppMethodBeat.o(32117);
+      return paramString;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      ab.printErrStackTrace("MicroMsg.ImageGalleryHolderImage", paramString, "hy: oom in fallback bitmap!", new Object[0]);
+      AppMethodBeat.o(32117);
+    }
+    ab.e("MicroMsg.ImageGalleryHolderImage", "hy: the picture is even smaller the screen! display nothing");
+    AppMethodBeat.o(32117);
+    return null;
+    return null;
+  }
+  
+  private static String e(bi parambi, com.tencent.mm.at.e parame)
+  {
+    AppMethodBeat.i(32122);
+    if ((parambi == null) || (parame == null))
+    {
+      AppMethodBeat.o(32122);
       return null;
     }
     if (parambi.field_isSend == 1)
     {
-      parambi = parame.ens;
-      parame = com.tencent.mm.as.o.OJ().o(parambi, "", "") + "hd";
-      y.d("MicroMsg.ImageGalleryHolderImage", "alvinluo preview fileName: %s, fullPath: %s", new Object[] { parambi, parame });
-      if ((!bk.bl(parame)) && (com.tencent.mm.vfs.e.bK(parame)))
+      parambi = parame.fDO;
+      parame = o.ahC().q(parambi, "", "") + "hd";
+      ab.d("MicroMsg.ImageGalleryHolderImage", "alvinluo preview fileName: %s, fullPath: %s", new Object[] { parambi, parame });
+      if ((!bo.isNullOrNil(parame)) && (com.tencent.mm.vfs.e.cN(parame)))
       {
-        y.d("MicroMsg.ImageGalleryHolderImage", "alvinluo preview image exist");
+        ab.d("MicroMsg.ImageGalleryHolderImage", "alvinluo preview image exist");
+        AppMethodBeat.o(32122);
         return parame;
       }
+      parame = o.ahC().q(parambi, "", "");
+      ab.d("MicroMsg.ImageGalleryHolderImage", "preview fileName: %s, fullPath:%s", new Object[] { parambi, parame });
+      if ((!bo.isNullOrNil(parame)) && (com.tencent.mm.vfs.e.cN(parame)))
+      {
+        ab.d("MicroMsg.ImageGalleryHolderImage", "preview image exist");
+        AppMethodBeat.o(32122);
+        return parame;
+      }
+      AppMethodBeat.o(32122);
       return null;
     }
-    if (!parame.Oq())
+    if (!parame.ahg())
     {
-      y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo get previewPath img not completed");
+      ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo get previewPath img not completed");
+      AppMethodBeat.o(32122);
       return null;
     }
-    parambi = parame.ens;
-    parame = com.tencent.mm.as.o.OJ().o(parambi, "", "") + "hd";
-    y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo preview fileName: %s, fullPath: %s", new Object[] { parambi, parame });
-    if ((!bk.bl(parame)) && (com.tencent.mm.vfs.e.bK(parame)))
+    parambi = parame.fDO;
+    parame = o.ahC().q(parambi, "", "") + "hd";
+    ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo preview fileName: %s, fullPath: %s", new Object[] { parambi, parame });
+    if ((!bo.isNullOrNil(parame)) && (com.tencent.mm.vfs.e.cN(parame)))
     {
-      y.d("MicroMsg.ImageGalleryHolderImage", "alvinluo preview image exist");
+      ab.d("MicroMsg.ImageGalleryHolderImage", "alvinluo preview image exist");
+      AppMethodBeat.o(32122);
       return parame;
     }
+    AppMethodBeat.o(32122);
     return null;
-  }
-  
-  private void f(bi parambi, int paramInt)
-  {
-    this.ifu.put(Long.valueOf(parambi.field_msgId), Integer.valueOf(paramInt));
   }
   
   private static int getScreenHeight(Context paramContext)
   {
-    if (paramContext == null) {
+    AppMethodBeat.i(32119);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(32119);
       return 0;
     }
-    return paramContext.getResources().getDisplayMetrics().heightPixels;
+    int i = paramContext.getResources().getDisplayMetrics().heightPixels;
+    AppMethodBeat.o(32119);
+    return i;
   }
   
   private static int getScreenWidth(Context paramContext)
   {
-    if (paramContext == null) {
+    AppMethodBeat.i(32118);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(32118);
       return 0;
     }
-    return paramContext.getResources().getDisplayMetrics().widthPixels;
+    int i = paramContext.getResources().getDisplayMetrics().widthPixels;
+    AppMethodBeat.o(32118);
+    return i;
   }
   
-  private void i(long paramLong, int paramInt)
+  private void h(bi parambi, int paramInt)
   {
-    this.ifu.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
+    AppMethodBeat.i(32095);
+    this.jWf.put(Long.valueOf(parambi.field_msgId), Integer.valueOf(paramInt));
+    AppMethodBeat.o(32095);
   }
   
-  public final Bitmap Hx(int paramInt)
+  private void l(long paramLong, int paramInt)
   {
-    if (this.vtH == null) {}
-    bi localbi;
-    do
+    AppMethodBeat.i(32096);
+    this.jWf.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
+    AppMethodBeat.o(32096);
+  }
+  
+  public final Bitmap Qe(int paramInt)
+  {
+    AppMethodBeat.i(32131);
+    if (this.zJI == null)
     {
+      AppMethodBeat.o(32131);
       return null;
-      localbi = this.vtH.vtK.Hu(paramInt);
-    } while (localbi == null);
-    String str2 = (String)this.vvc.get(localbi);
-    String str1 = str2;
-    if (str2 == null)
+    }
+    bi localbi = this.zJI.zJL.Qb(paramInt);
+    if (localbi != null)
     {
-      str1 = com.tencent.mm.as.o.OJ().F(localbi.field_imgPath, true);
-      this.vvc.put(localbi, str1);
+      String str = (String)this.zLd.get(localbi);
+      Object localObject = str;
+      if (str == null)
+      {
+        localObject = o.ahC().J(localbi.field_imgPath, true);
+        this.zLd.put(localbi, localObject);
+      }
+      str = (String)localObject + "hd";
+      if (com.tencent.mm.vfs.e.cN(str))
+      {
+        localObject = auf(str);
+        AppMethodBeat.o(32131);
+        return localObject;
+      }
+      localObject = auf((String)localObject);
+      AppMethodBeat.o(32131);
+      return localObject;
     }
-    str2 = str1 + "hd";
-    if (com.tencent.mm.vfs.e.bK(str2)) {
-      return adD(str2);
-    }
-    return adD(str1);
+    AppMethodBeat.o(32131);
+    return null;
   }
   
   public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject)
   {
+    AppMethodBeat.i(32127);
     if (!(paramObject instanceof Integer))
     {
-      y.e("MicroMsg.ImageGalleryHolderImage", "param data not integer instance");
+      ab.e("MicroMsg.ImageGalleryHolderImage", "param data not integer instance");
+      AppMethodBeat.o(32127);
       return;
     }
-    paramInt1 = ((Integer)paramObject).intValue();
-    y.i("MicroMsg.ImageGalleryHolderImage", "image task canceled at pos " + paramInt1, new Object[0]);
+    ab.i("MicroMsg.ImageGalleryHolderImage", "image task canceled at pos ".concat(String.valueOf(((Integer)paramObject).intValue())), new Object[0]);
+    AppMethodBeat.o(32127);
   }
   
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, com.tencent.mm.ah.m paramm)
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, com.tencent.mm.ai.m paramm)
   {
-    if ((this.vtH == null) || (this.vtH.vtJ == null)) {}
-    label17:
-    int i;
-    do
+    AppMethodBeat.i(32123);
+    if ((this.zJI == null) || (this.zJI.zJK == null))
     {
-      break label17;
-      break label17;
-      break label17;
-      break label17;
-      break label17;
-      do
-      {
-        return;
-      } while (this.lf != 0);
-      if (!l.cGI().ic(paramLong2)) {
-        break;
-      }
+      AppMethodBeat.o(32123);
+      return;
+    }
+    if (this.mScrollState != 0)
+    {
+      AppMethodBeat.o(32123);
+      return;
+    }
+    int i;
+    if (l.dKQ().oO(paramLong2))
+    {
       i = a(paramLong2, paramObject);
-    } while (i == -1);
-    paramObject = new Integer(i);
+      if (i == -1)
+      {
+        AppMethodBeat.o(32123);
+        return;
+      }
+      paramObject = Integer.valueOf(i);
+    }
     for (;;)
     {
       if (!(paramObject instanceof Integer))
       {
-        y.e("MicroMsg.ImageGalleryHolderImage", "param data not integer instance");
+        ab.e("MicroMsg.ImageGalleryHolderImage", "param data not integer instance");
+        AppMethodBeat.o(32123);
         return;
       }
       i = ((Integer)paramObject).intValue();
-      y.i("MicroMsg.ImageGalleryHolderImage", "onImgTaskProgress, pos[%d], offset[%d], totalLen[%d], resId[%d], compressType[%d], imgLocalId[%d],", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong1) });
+      ab.i("MicroMsg.ImageGalleryHolderImage", "onImgTaskProgress, pos[%d], offset[%d], totalLen[%d], resId[%d], compressType[%d], imgLocalId[%d],", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong1) });
       if (i == -1)
       {
-        y.e("MicroMsg.ImageGalleryHolderImage", "onImgTaskProgress, pos is -1");
+        ab.e("MicroMsg.ImageGalleryHolderImage", "onImgTaskProgress, pos is -1");
+        AppMethodBeat.o(32123);
         return;
       }
-      if (this.vtH.Gs(i) == null) {
-        break;
+      if (this.zJI.Gm(i) == null)
+      {
+        AppMethodBeat.o(32123);
+        return;
       }
-      paramObject = (k)this.vtH.Gs(i).getTag();
-      if (paramObject == null) {
-        break;
+      paramObject = (k)this.zJI.Gm(i).getTag();
+      if (paramObject == null)
+      {
+        AppMethodBeat.o(32123);
+        return;
       }
-      if ((i == this.vtH.vtJ.getCurrentItem()) && (!Hw(paramInt1))) {
-        this.vtH.vtJ.gs(false);
+      if ((i == this.zJI.zJK.getCurrentItem()) && (!Qd(paramInt1))) {
+        this.zJI.zJK.hX(false);
       }
       if (paramInt3 == 0)
       {
         paramInt2 = 0;
         paramInt2 = Math.max(1, paramInt2);
-        if ((i == this.vtH.vtJ.getCurrentItem()) && (Hw(paramInt1)))
+        if ((i == this.zJI.zJK.getCurrentItem()) && (Qd(paramInt1)))
         {
-          y.i("MicroMsg.ImageGalleryHolderImage", "jacks loading hd from progress : %d, time: %d", new Object[] { Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis()) });
-          this.vtH.vtJ.HD(paramInt2);
+          ab.i("MicroMsg.ImageGalleryHolderImage", "jacks loading hd from progress : %d, time: %d", new Object[] { Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis()) });
+          this.zJI.zJK.Qk(paramInt2);
         }
-        paramm = (com.tencent.mm.as.k)paramm;
-        boolean bool1 = MMNativeJpeg.isProgressive(paramm.eoT);
-        boolean bool2 = paramm.eoV;
-        paramLong1 = bk.cp(this.vvg);
-        e.a.dI(paramm.eoT, paramInt4);
-        y.i("MicroMsg.ImageGalleryHolderImage", "dkprog onImgTaskProgress getCanShow:%b isProg:%b timeDiff:%d  [%d/%d] %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Long.valueOf(paramLong1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramm.eoT });
+        paramm = (com.tencent.mm.at.k)paramm;
+        boolean bool1 = MMNativeJpeg.isProgressive(paramm.fFr);
+        boolean bool2 = paramm.fFt;
+        paramLong1 = bo.av(this.zLh);
+        e.a.eS(paramm.fFr, paramInt4);
+        ab.i("MicroMsg.ImageGalleryHolderImage", "dkprog onImgTaskProgress getCanShow:%b isProg:%b timeDiff:%d  [%d/%d] %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Long.valueOf(paramLong1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramm.fFr });
         if ((!bool2) || (!bool1) || (paramLong1 <= 1000L)) {
-          break;
+          break label713;
         }
-        this.vvg = bk.UZ();
-        paramm = this.vtH.GW(i);
-        com.tencent.mm.as.e locale = h(paramm, true);
-        if (!a(false, paramObject.vxv, com.tencent.mm.as.o.OJ().F(paramm.field_imgPath, true), a(paramm, locale, true), true, -1, paramm, paramObject, locale, paramInt1, true)) {
-          break;
+        this.zLh = bo.yB();
+        paramm = this.zJI.Pz(i);
+        if (paramm == null)
+        {
+          ab.e("MicroMsg.ImageGalleryHolderImage", "msg is null! pos:%s", new Object[] { Integer.valueOf(i) });
+          AppMethodBeat.o(32123);
         }
-        k.X(paramObject.vxp, 8);
-        k.X(paramObject.vxs, 8);
-        if ((i != this.vtH.vtJ.getCurrentItem()) || (Hw(paramInt1))) {
-          break;
-        }
-        if (paramInt2 <= 50) {
-          break label620;
-        }
-        k.X(paramObject.vxr, 8);
-        if (this.vtH == null) {
-          break;
-        }
-        this.vtH.a(paramm, locale, paramInt1, com.tencent.mm.h.b.a.e.a.chi);
-        return;
       }
-      if (paramInt4 != 0) {}
-      for (float f = paramInt3 / paramInt4 * 100.0F - 1.0F;; f = 0.0F)
+      else
       {
-        paramInt2 = (int)f;
-        break;
+        if (paramInt4 != 0) {}
+        for (float f = paramInt3 / paramInt4 * 100.0F - 1.0F;; f = 0.0F)
+        {
+          paramInt2 = (int)f;
+          break;
+        }
       }
-      label620:
-      k.X(paramObject.vxr, 0);
+      com.tencent.mm.at.e locale = f(paramm, true);
+      if (a(false, paramObject.zNF, o.ahC().J(paramm.field_imgPath, true), a(paramm, locale, true), true, -1, paramm, paramObject, locale, true))
+      {
+        k.aq(paramObject.zNz, 8);
+        k.aq(paramObject.zNC, 8);
+        if ((i == this.zJI.zJK.getCurrentItem()) && (!Qd(paramInt1))) {
+          if (paramInt2 > 50)
+          {
+            k.aq(paramObject.zNB, 8);
+            if (this.zJI != null)
+            {
+              this.zJI.a(paramm, locale, paramInt1, com.tencent.mm.g.b.a.e.a.cPO);
+              AppMethodBeat.o(32123);
+            }
+          }
+          else
+          {
+            k.aq(paramObject.zNB, 0);
+          }
+        }
+      }
+      label713:
+      AppMethodBeat.o(32123);
       return;
     }
   }
   
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, com.tencent.mm.ah.m paramm)
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, com.tencent.mm.ai.m paramm)
   {
-    if ((this.vtH == null) || (this.vtH.vtJ == null)) {
+    AppMethodBeat.i(32124);
+    if ((this.zJI == null) || (this.zJI.zJK == null))
+    {
+      AppMethodBeat.o(32124);
       return;
     }
-    if (l.cGI().ic(paramLong2))
+    if (l.dKQ().oO(paramLong2))
     {
       paramInt2 = a(paramLong2, paramObject);
       if (paramInt2 == -1)
       {
-        au.Hx();
-        a(com.tencent.mm.model.c.Fy().fd(paramLong2), "background", false);
+        aw.aaz();
+        a(com.tencent.mm.model.c.YC().kB(paramLong2), "background", false);
+        AppMethodBeat.o(32124);
         return;
       }
-      paramObject = new Integer(paramInt2);
+      paramObject = Integer.valueOf(paramInt2);
     }
     for (;;)
     {
       if (!(paramObject instanceof Integer))
       {
-        y.e("MicroMsg.ImageGalleryHolderImage", "param data not integer instance");
+        ab.e("MicroMsg.ImageGalleryHolderImage", "param data not integer instance");
+        AppMethodBeat.o(32124);
         return;
       }
       paramInt2 = ((Integer)paramObject).intValue();
-      y.i("MicroMsg.ImageGalleryHolderImage", "onSceneEnd, pos = " + paramInt2);
+      ab.i("MicroMsg.ImageGalleryHolderImage", "onSceneEnd, pos = ".concat(String.valueOf(paramInt2)));
       if (paramInt2 == -1)
       {
-        y.e("MicroMsg.ImageGalleryHolderImage", "onSceneEnd, pos is -1");
-        h.nFQ.a(111L, 3L, 1L, true);
+        ab.e("MicroMsg.ImageGalleryHolderImage", "onSceneEnd, pos is -1");
+        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(111L, 3L, 1L, true);
+        AppMethodBeat.o(32124);
         return;
       }
       paramObject = null;
-      if (this.vtH.Gs(paramInt2) != null) {
-        paramObject = (k)this.vtH.Gs(paramInt2).getTag();
+      if (this.zJI.Gm(paramInt2) != null) {
+        paramObject = (k)this.zJI.Gm(paramInt2).getTag();
       }
-      boolean bool = l.cGI().ic(paramLong2);
+      boolean bool = l.dKQ().oO(paramLong2);
       if ((paramInt3 != 0) || (paramInt4 != 0))
       {
         if (bool)
         {
-          paramObject = this.vtH.GW(paramInt2);
-          paramString = "hd_failed:" + paramInt2;
-          if (paramInt2 == this.vtH.vtJ.getCurrentItem())
+          paramObject = this.zJI.Pz(paramInt2);
+          paramString = "hd_failed:".concat(String.valueOf(paramInt2));
+          if (paramInt2 == this.zJI.zJK.getCurrentItem())
           {
             bool = true;
-            label259:
             a(paramObject, paramString, bool);
           }
         }
         else
         {
-          if (paramInt2 == this.vtH.vtJ.getCurrentItem()) {
-            this.vtH.vtJ.gs(true);
+          if (paramInt2 == this.zJI.zJK.getCurrentItem()) {
+            this.zJI.zJK.hX(true);
           }
           if (paramInt4 != -5103059) {
-            break label402;
+            break label420;
           }
-          i(paramLong2, 5);
-          h.nFQ.a(111L, 0L, 1L, true);
+          l(paramLong2, 5);
+          com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(111L, 0L, 1L, true);
         }
         for (;;)
         {
-          y.e("MicroMsg.ImageGalleryHolderImage", "onSceneEnd, errType = " + paramInt3 + ", errCode = " + paramInt4);
-          this.vtH.vtO.Hj(paramInt2);
-          if (this.vtH == null) {
-            break;
+          ab.e("MicroMsg.ImageGalleryHolderImage", "onSceneEnd, errType = " + paramInt3 + ", errCode = " + paramInt4);
+          this.zJI.zJP.PQ(paramInt2);
+          if (this.zJI != null) {
+            this.zJI.a(this.zJI.Pz(paramInt2), null, paramInt1, com.tencent.mm.g.b.a.e.a.cPQ);
           }
-          this.vtH.a(this.vtH.GW(paramInt2), null, paramInt1, com.tencent.mm.h.b.a.e.a.chk);
+          AppMethodBeat.o(32124);
           return;
           bool = false;
-          break label259;
-          label402:
-          i(paramLong2, 6);
-          h.nFQ.a(111L, 1L, 1L, true);
+          break;
+          label420:
+          l(paramLong2, 6);
+          com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(111L, 1L, 1L, true);
         }
       }
       if (bool)
       {
-        paramString = this.vtH.GW(paramInt2);
-        paramm = "hd_suc:" + paramInt2;
-        if (paramInt2 == this.vtH.vtJ.getCurrentItem())
-        {
-          bool = true;
-          label478:
-          a(paramString, paramm, bool);
+        paramString = this.zJI.Pz(paramInt2);
+        paramm = "hd_suc:".concat(String.valueOf(paramInt2));
+        if (paramInt2 != this.zJI.zJK.getCurrentItem()) {
+          break label587;
         }
       }
-      else
+      label587:
+      for (bool = true;; bool = false)
       {
-        y.i("MicroMsg.ImageGalleryHolderImage", "pos = " + paramInt2 + ", selectedPos = " + this.vtH.vtJ.getCurrentItem(), new Object[0]);
-        i(paramLong2, 4);
-        paramString = this.vtH.GW(paramInt2);
-        paramm = h(paramString, true);
-        if ((paramString == null) || (paramm == null) || (paramObject == null)) {
+        a(paramString, paramm, bool);
+        ab.i("MicroMsg.ImageGalleryHolderImage", "pos = " + paramInt2 + ", selectedPos = " + this.zJI.zJK.getCurrentItem(), new Object[0]);
+        l(paramLong2, 4);
+        paramString = this.zJI.Pz(paramInt2);
+        paramm = f(paramString, true);
+        if ((paramString != null) && (paramm != null)) {
           break;
         }
-        this.vtH.vtJ.gs(true);
-        if (paramInt2 == this.vtH.vtJ.getCurrentItem())
-        {
-          if (!Hw(paramInt1)) {
-            break label860;
-          }
-          ImageGalleryUI localImageGalleryUI = this.vtH.vtJ;
-          localImageGalleryUI.gs(true);
-          localImageGalleryUI.gs(true);
-          Animation localAnimation = ImageGalleryUI.HC(1000);
-          localAnimation.setAnimationListener(new ImageGalleryUI.11(localImageGalleryUI));
-          localImageGalleryUI.cGp();
-          localImageGalleryUI.cGe().vvQ.setVisibility(0);
-          localImageGalleryUI.cGe().vvR.setVisibility(8);
-          localImageGalleryUI.cGe().vvS.setVisibility(8);
-          localImageGalleryUI.cGe().vvT.setVisibility(0);
-          localImageGalleryUI.cGe().vvT.startAnimation(localAnimation);
-        }
-      }
-      for (;;)
-      {
-        if (!a(false, paramObject.vxv, com.tencent.mm.as.o.OJ().F(paramString.field_imgPath, true), a(paramString, paramm, true), true, -1, paramString, paramObject, paramm, paramInt1, false)) {
-          break label882;
-        }
-        k.X(paramObject.vxm, 8);
-        k.X(paramObject.vxr, 8);
-        k.X(paramObject.vxs, 8);
-        if ((bs(paramString) == 4) && (this.vtH.vtN))
-        {
-          this.vtH.bn(paramString);
-          this.vtH.vtN = false;
-        }
-        if (this.vtH == null) {
-          break;
-        }
-        this.vtH.a(paramString, paramm, paramInt1, com.tencent.mm.h.b.a.e.a.chi);
+        AppMethodBeat.o(32124);
         return;
-        bool = false;
-        break label478;
-        label860:
-        paramObject.vxv.post(new e.2(this, paramInt2));
       }
-      label882:
-      y.e("MicroMsg.ImageGalleryHolderImage", "failed to show downloaded image!");
-      h.nFQ.a(111L, 2L, 1L, true);
+      if (paramObject != null)
+      {
+        this.zJI.zJK.hX(true);
+        if (paramInt2 == this.zJI.zJK.getCurrentItem())
+        {
+          if (!Qd(paramInt1)) {
+            break label882;
+          }
+          ImageGalleryUI localImageGalleryUI = this.zJI.zJK;
+          localImageGalleryUI.hX(true);
+          localImageGalleryUI.hX(true);
+          Animation localAnimation = ImageGalleryUI.Qj(1000);
+          localAnimation.setAnimationListener(new ImageGalleryUI.19(localImageGalleryUI));
+          localImageGalleryUI.dKu();
+          localImageGalleryUI.dKh().zLR.setVisibility(0);
+          localImageGalleryUI.dKh().zLS.setVisibility(8);
+          localImageGalleryUI.dKh().zLT.setVisibility(8);
+          localImageGalleryUI.dKh().zLU.setVisibility(0);
+          localImageGalleryUI.dKh().zLU.startAnimation(localAnimation);
+        }
+        while (a(false, paramObject.zNF, o.ahC().J(paramString.field_imgPath, true), a(paramString, paramm, true), true, -1, paramString, paramObject, paramm, false))
+        {
+          k.aq(paramObject.zNw, 8);
+          k.aq(paramObject.zNB, 8);
+          k.aq(paramObject.zNC, 8);
+          if ((bB(paramString) == 4) && (this.zJI.zJO))
+          {
+            this.zJI.bx(paramString);
+            this.zJI.zJO = false;
+          }
+          if (this.zJI == null) {
+            break label926;
+          }
+          this.zJI.a(paramString, paramm, paramInt1, com.tencent.mm.g.b.a.e.a.cPO);
+          AppMethodBeat.o(32124);
+          return;
+          label882:
+          paramObject.zNF.post(new e.2(this, paramInt2));
+        }
+        ab.e("MicroMsg.ImageGalleryHolderImage", "failed to show downloaded image!");
+        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(111L, 2L, 1L, true);
+      }
+      label926:
+      AppMethodBeat.o(32124);
       return;
     }
   }
   
   public final void a(WxImageView paramWxImageView, String paramString, com.davemorrissey.labs.subscaleview.view.a parama)
   {
-    Object localObject = adB(paramString);
-    paramWxImageView.setOrientation(BackwardSupportUtil.ExifHelper.YS(paramString));
-    int i = ((BitmapFactory.Options)localObject).outWidth;
-    int j = ((BitmapFactory.Options)localObject).outHeight;
-    paramWxImageView.imageWidth = i;
-    paramWxImageView.imageHeight = j;
-    paramWxImageView.cAy();
-    y.d("MicroMsg.WxBaseImageView", "alvinluo: loading from local file: %s, width: %d, height: %d", new Object[] { paramString, Integer.valueOf(paramWxImageView.imageWidth), Integer.valueOf(paramWxImageView.imageHeight) });
-    if (paramWxImageView.dDP == com.tencent.mm.graphics.a.c.dDd)
-    {
-      if (paramWxImageView.dDM == null) {
-        y.e("MicroMsg.WxBaseImageView", "alvinluo WxBaseImageView laodFile mTileIv is null");
-      }
-    }
-    else {
-      return;
-    }
-    if (paramString == null)
-    {
-      y.i("MicroMsg.WxBaseImageView", "alvinluo WxBaseImageView loadFile path is null");
-      return;
-    }
-    paramWxImageView.dDJ.setVisibility(0);
-    localObject = com.davemorrissey.labs.subscaleview.view.a.U(paramString);
-    i = paramWxImageView.imageWidth;
-    j = paramWxImageView.imageHeight;
-    if (((com.davemorrissey.labs.subscaleview.view.a)localObject).bitmap == null)
-    {
-      ((com.davemorrissey.labs.subscaleview.view.a)localObject).aoT = i;
-      ((com.davemorrissey.labs.subscaleview.view.a)localObject).aoU = j;
-    }
-    if (((com.davemorrissey.labs.subscaleview.view.a)localObject).aoV != null)
-    {
-      ((com.davemorrissey.labs.subscaleview.view.a)localObject).aoS = true;
-      ((com.davemorrissey.labs.subscaleview.view.a)localObject).aoT = ((com.davemorrissey.labs.subscaleview.view.a)localObject).aoV.width();
-      ((com.davemorrissey.labs.subscaleview.view.a)localObject).aoU = ((com.davemorrissey.labs.subscaleview.view.a)localObject).aoV.height();
-    }
-    paramWxImageView.aoF = System.currentTimeMillis();
-    y.i("MicroMsg.WxBaseImageView", "alvinluo onStartLoad imagePath: %s, mStartLoadTime: %d", new Object[] { paramString, Long.valueOf(paramWxImageView.aoF) });
-    paramWxImageView.dDS = new a.a();
-    paramWxImageView.dDS.dDC = 22;
-    paramWxImageView.dDS.imagePath = paramString;
-    paramWxImageView.dDS.bWQ = paramWxImageView.getActivityName();
-    paramWxImageView.dDU = true;
-    if (parama != null)
-    {
-      paramWxImageView.dDR = new a.a();
-      if (parama.uri != null)
-      {
-        paramWxImageView.dDR.imagePath = parama.uri.toString();
-        paramWxImageView.dDR.dDC = 21;
-        paramWxImageView.dDR.bWQ = paramWxImageView.getActivityName();
-      }
-    }
-    for (paramWxImageView.dDT = true;; paramWxImageView.dDT = false)
-    {
-      if (parama == null) {
-        break label384;
-      }
-      paramWxImageView.dDM.a((com.davemorrissey.labs.subscaleview.view.a)localObject, parama);
-      return;
-      paramWxImageView.dDR.imagePath = "";
-      break;
-    }
-    label384:
-    paramWxImageView.dDM.setImage((com.davemorrissey.labs.subscaleview.view.a)localObject);
+    AppMethodBeat.i(32114);
+    BitmapFactory.Options localOptions = aud(paramString);
+    paramWxImageView.setOrientation(BackwardSupportUtil.ExifHelper.bY(paramString));
+    paramWxImageView.cb(localOptions.outWidth, localOptions.outHeight);
+    paramWxImageView.dDJ();
+    paramWxImageView.a(paramString, parama);
+    AppMethodBeat.o(32114);
   }
   
   public final boolean a(k paramk, bi parambi, int paramInt)
   {
+    AppMethodBeat.i(32097);
     super.a(paramk, parambi, paramInt);
-    if ((paramk == null) || (parambi == null) || (paramInt < 0)) {
+    if ((paramk == null) || (parambi == null) || (paramInt < 0))
+    {
+      AppMethodBeat.o(32097);
       return false;
     }
-    int i = bs(parambi);
-    y.i("MicroMsg.ImageGalleryHolderImage", "filling image : %s position : %s", new Object[] { Integer.valueOf(paramk.vxv.hashCode()), Integer.valueOf(paramInt) });
-    k.X(paramk.vxm, 8);
-    com.tencent.mm.as.e locale = h(parambi, false);
-    if (locale == null) {
-      return false;
-    }
-    switch (i)
+    i = bB(parambi);
+    ab.i("MicroMsg.ImageGalleryHolderImage", "filling image : %s position : %s currentState : %s", new Object[] { Integer.valueOf(paramk.zNF.hashCode()), Integer.valueOf(paramInt), Integer.valueOf(i) });
+    k.aq(paramk.zNw, 8);
+    try
     {
-    }
-    label535:
-    for (;;)
-    {
-      return true;
-      y.i("MicroMsg.ImageGalleryHolderImage", "edw dealDownloadOrSucc");
-      y.i("MicroMsg.ImageGalleryHolderImage", "deal LoadFail");
-      boolean bool;
-      if (parambi.field_isSend == 1) {
-        bool = parambi.cvx();
+      locale = f(parambi, false);
+      if (locale != null) {
+        break label115;
       }
+      bool1 = false;
+    }
+    catch (NullPointerException paramk)
+    {
       for (;;)
       {
-        if (!bool) {
-          break label286;
-        }
-        f(parambi, 5);
-        a(parambi, paramk, 5);
-        break;
-        if (parambi.cvx())
+        com.tencent.mm.at.e locale;
+        ab.printErrStackTrace("MicroMsg.ImageGalleryHolderImage", paramk, "", new Object[0]);
+        boolean bool1 = false;
+        continue;
+        if (parambi.dyc())
         {
-          bool = true;
+          bool1 = true;
         }
         else
         {
-          String str = c(parambi, locale);
-          if ((locale.Oq()) && ((str == null) || (!com.tencent.mm.vfs.e.bK(str))))
+          Object localObject = d(parambi, locale);
+          if ((!locale.ahg()) || ((localObject != null) && (com.tencent.mm.vfs.e.cN((String)localObject))))
           {
-            bool = true;
+            if (System.currentTimeMillis() - parambi.field_createTime <= 259200000L) {
+              break label960;
+            }
+            if (!bo.isNullOrNil((String)localObject))
+            {
+              if (com.tencent.mm.vfs.e.cN((String)localObject)) {
+                break label960;
+              }
+              break label946;
+              if (a(paramk, parambi, locale, paramInt))
+              {
+                bool1 = false;
+                boolean bool2 = false;
+                localObject = o.ahC().w(parambi);
+                ab.d("MicroMsg.ImageGalleryHolderImage", "dealDownloadOrSucc temp, localId:%d, msgLocalId:%d, msgSvrId:%d, hdID:%d, totalLen:%s", new Object[] { Long.valueOf(((com.tencent.mm.at.e)localObject).fDL), Long.valueOf(((com.tencent.mm.at.e)localObject).fDU), Long.valueOf(((com.tencent.mm.at.e)localObject).cFn), Integer.valueOf(((com.tencent.mm.at.e)localObject).fDW), Integer.valueOf(((com.tencent.mm.at.e)localObject).fsd) });
+                if (localObject != null) {
+                  if (!bo.hl(((com.tencent.mm.at.e)localObject).fDW, 0))
+                  {
+                    localObject = o.ahC().lv(((com.tencent.mm.at.e)localObject).fDW);
+                    ab.d("MicroMsg.ImageGalleryHolderImage", "dealDownloadOrSucc hdTemp, localId:%d, msgLocalId:%d, msgSvrId:%d, hdID:%d, totalLen:%s", new Object[] { Long.valueOf(((com.tencent.mm.at.e)localObject).fDL), Long.valueOf(((com.tencent.mm.at.e)localObject).fDU), Long.valueOf(((com.tencent.mm.at.e)localObject).cFn), Integer.valueOf(((com.tencent.mm.at.e)localObject).fDW), Integer.valueOf(((com.tencent.mm.at.e)localObject).fsd) });
+                    i = ((com.tencent.mm.at.e)localObject).fsd;
+                    int j = (int)com.tencent.mm.vfs.e.avI(o.ahC().q(locale.fDM, "", ""));
+                    bool1 = bool2;
+                    if (parambi.field_isSend == 1)
+                    {
+                      bool1 = bool2;
+                      if (bo.hl(i, j)) {
+                        bool1 = true;
+                      }
+                    }
+                    ab.i("MicroMsg.ImageGalleryHolderImage", "dealDownloadOrSucc() sizeInDb:%s oriSize:%s noNeedDownLoad:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool1) });
+                  }
+                }
+                for (;;)
+                {
+                  if ((!bool1) && (!locale.ahg())) {
+                    break label642;
+                  }
+                  h(parambi, 4);
+                  break;
+                  i = ((com.tencent.mm.at.e)localObject).fsd;
+                  break label513;
+                  ab.i("MicroMsg.ImageGalleryHolderImage", "dealDownloadOrSucc() temp == null");
+                }
+                h(parambi, 1);
+              }
+              for (;;)
+              {
+                aa.C(parambi);
+                i = o.ahD().a(locale.fDL, parambi.field_msgId, 0, Integer.valueOf(paramInt), 2130838228, this, 0, true);
+                if (this.zJI != null) {
+                  this.zJI.g(parambi, false);
+                }
+                ab.i("MicroMsg.ImageGalleryHolderImage", "put image download task downloadCode [%d].", new Object[] { Integer.valueOf(i) });
+                if (i != -2) {
+                  break label871;
+                }
+                ab.w("MicroMsg.ImageGalleryHolderImage", "it is already download image finish, but imgInfo is old, search db and repair.");
+                locale = f(parambi, true);
+                if (locale != null) {
+                  break label772;
+                }
+                ab.w("MicroMsg.ImageGalleryHolderImage", "get imgInfo by db but it is null.");
+                break;
+                ab.i("MicroMsg.ImageGalleryHolderImage", "dealDownloadOrSucc dealSucc() == false");
+                h(parambi, 2);
+              }
+              if (a(paramk, parambi, locale, paramInt))
+              {
+                if ((parambi.field_isSend == 1) || (locale.ahg()))
+                {
+                  h(parambi, 4);
+                  continue;
+                }
+                h(parambi, 1);
+              }
+              for (;;)
+              {
+                ab.w("MicroMsg.ImageGalleryHolderImage", "it repair fail show thumb image.ImgInfo[%d, %b]", new Object[] { Long.valueOf(locale.fDL), Boolean.valueOf(locale.ahg()) });
+                a(paramk, parambi, locale, false, paramInt);
+                break;
+                h(parambi, 2);
+              }
+              a(paramk, parambi, locale, false, paramInt);
+              continue;
+              a(paramk, parambi, locale, paramInt);
+              continue;
+              a(paramk, parambi, locale, false, paramInt);
+              continue;
+              a(paramk, parambi, locale, true, paramInt);
+              continue;
+              a(parambi, paramk, i);
+              paramk.ngZ.invalidate();
+            }
           }
           else
           {
-            if ((System.currentTimeMillis() - parambi.field_createTime > 259200000L) && ((bk.bl(str)) || (!com.tencent.mm.vfs.e.bK(str)))) {}
-            for (i = 1;; i = 0)
-            {
-              if (i == 0) {
-                break label280;
-              }
-              bool = true;
-              break;
-            }
-            label280:
-            bool = false;
+            bool1 = true;
+            continue;
           }
-        }
-      }
-      label286:
-      if (a(paramk, parambi, locale, paramInt))
-      {
-        if (locale.Oq()) {
-          f(parambi, 4);
-        } else {
-          f(parambi, 1);
-        }
-      }
-      else
-      {
-        for (;;)
-        {
-          z.w(parambi);
-          i = com.tencent.mm.as.o.OK().a(locale.enp, parambi.field_msgId, 0, Integer.valueOf(paramInt), R.g.chat_img_template, this, 0);
-          if (this.vtH != null) {
-            this.vtH.i(parambi, false);
-          }
-          y.i("MicroMsg.ImageGalleryHolderImage", "put image download task downloadCode [%d].", new Object[] { Integer.valueOf(i) });
-          if (i != -2) {
-            break label535;
-          }
-          y.w("MicroMsg.ImageGalleryHolderImage", "it is already download image finish, but imgInfo is old, search db and repair.");
-          locale = h(parambi, true);
-          if (locale != null) {
-            break label436;
-          }
-          y.w("MicroMsg.ImageGalleryHolderImage", "get imgInfo by db but it is null.");
-          break;
-          f(parambi, 2);
-        }
-        label436:
-        if (a(paramk, parambi, locale, paramInt))
-        {
-          if ((parambi.field_isSend == 1) || (locale.Oq())) {
-            f(parambi, 4);
-          } else {
-            f(parambi, 1);
-          }
-        }
-        else
-        {
-          for (;;)
+          for (i = 1;; i = 0)
           {
-            y.w("MicroMsg.ImageGalleryHolderImage", "it repair fail show thumb image.ImgInfo[%d, %b]", new Object[] { Long.valueOf(locale.enp), Boolean.valueOf(locale.Oq()) });
-            a(paramk, parambi, locale, false, paramInt);
+            if (i == 0) {
+              break label966;
+            }
+            bool1 = true;
             break;
-            f(parambi, 2);
           }
-          a(paramk, parambi, locale, false, paramInt);
-          continue;
-          a(paramk, parambi, locale, paramInt);
-          continue;
-          a(paramk, parambi, locale, false, paramInt);
-          continue;
-          a(paramk, parambi, locale, true, paramInt);
-          continue;
-          a(parambi, paramk, i);
-          paramk.kKz.invalidate();
+          bool1 = false;
         }
+      }
+    }
+    AppMethodBeat.o(32097);
+    return bool1;
+    switch (i)
+    {
+    default: 
+    case 0: 
+      for (;;)
+      {
+        label115:
+        bool1 = true;
+        break;
+        ab.i("MicroMsg.ImageGalleryHolderImage", "edw dealDownloadOrSucc");
+        ab.i("MicroMsg.ImageGalleryHolderImage", "deal LoadFail");
+        if (parambi.field_isSend != 1) {
+          break label235;
+        }
+        bool1 = parambi.dyc();
+        if (!bool1) {
+          break label315;
+        }
+        h(parambi, 5);
+        a(parambi, paramk, 5);
       }
     }
   }
   
-  public final void as(int paramInt, boolean paramBoolean)
+  public final void aI(int paramInt, boolean paramBoolean)
   {
-    y.i("MicroMsg.ImageGalleryHolderImage", "viewHdImg, pos = " + paramInt);
-    Object localObject1 = this.vtH.GW(paramInt);
-    if ((localObject1 == null) || (((cs)localObject1).field_msgId == 0L))
+    AppMethodBeat.i(32128);
+    ab.i("MicroMsg.ImageGalleryHolderImage", "viewHdImg, pos = ".concat(String.valueOf(paramInt)));
+    Object localObject1 = this.zJI.Pz(paramInt);
+    if ((localObject1 == null) || (((dd)localObject1).field_msgId == 0L))
     {
-      y.e("MicroMsg.ImageGalleryHolderImage", "msg is null");
+      ab.e("MicroMsg.ImageGalleryHolderImage", "msg is null");
+      AppMethodBeat.o(32128);
       return;
     }
-    if (!c.be((bi)localObject1))
+    if (!c.c((bi)localObject1))
     {
-      y.e("MicroMsg.ImageGalleryHolderImage", "not img can't download hd");
+      ab.e("MicroMsg.ImageGalleryHolderImage", "not img can't download hd");
+      AppMethodBeat.o(32128);
       return;
     }
-    com.tencent.mm.as.e locale = h((bi)localObject1, true);
+    com.tencent.mm.at.e locale = f((bi)localObject1, true);
     Object localObject2;
-    if ((locale == null) || (locale.enp == 0L))
+    if ((locale == null) || (locale.fDL == 0L))
     {
       localObject2 = new StringBuilder("viewHdImg fail, msgLocalId = ");
       if (localObject1 == null)
@@ -1436,193 +1596,214 @@ public final class e
         localObject1 = "null";
         localObject2 = ((StringBuilder)localObject2).append(localObject1).append(", imgLocalId = ");
         if (locale != null) {
-          break label161;
+          break label178;
         }
       }
-      label161:
-      for (localObject1 = "null";; localObject1 = Long.valueOf(locale.enp))
+      label178:
+      for (localObject1 = "null";; localObject1 = Long.valueOf(locale.fDL))
       {
-        y.e("MicroMsg.ImageGalleryHolderImage", localObject1);
+        ab.e("MicroMsg.ImageGalleryHolderImage", localObject1);
+        AppMethodBeat.o(32128);
         return;
-        localObject1 = Long.valueOf(((cs)localObject1).field_msgId);
+        localObject1 = Long.valueOf(((dd)localObject1).field_msgId);
         break;
       }
     }
-    f((bi)localObject1, 3);
-    if (Hi(paramInt) != null) {
-      a(Hi(paramInt), (bi)localObject1, locale, true, false, paramInt);
+    h((bi)localObject1, 3);
+    if (PP(paramInt) != null) {
+      a(PP(paramInt), (bi)localObject1, locale, true, false, paramInt);
     }
-    if (this.vtH != null) {
-      this.vtH.i((bi)localObject1, true);
+    if (this.zJI != null) {
+      this.zJI.g((bi)localObject1, true);
     }
     if (paramBoolean)
     {
-      localObject2 = l.cGI();
-      y.i("MicroMsg.ImageHDDownloadAndSaveMgr", "[oreh download_and_save] startScene, msgLoacalID:%d", new Object[] { Long.valueOf(((cs)localObject1).field_msgId) });
-      ((l)localObject2).vxE.add(Long.valueOf(((cs)localObject1).field_msgId));
-      com.tencent.mm.as.o.OK().a(locale.enp, ((cs)localObject1).field_msgId, 1, Integer.valueOf(paramInt), R.g.chat_img_template, (d.a)localObject2, 0);
+      localObject2 = l.dKQ();
+      ab.i("MicroMsg.ImageHDDownloadAndSaveMgr", "[oreh download_and_save] startScene, msgLoacalID:%d", new Object[] { Long.valueOf(((dd)localObject1).field_msgId) });
+      ((l)localObject2).zNQ.add(Long.valueOf(((dd)localObject1).field_msgId));
+      o.ahD().a(locale.fDL, ((dd)localObject1).field_msgId, Integer.valueOf(paramInt), (d.a)localObject2);
+      AppMethodBeat.o(32128);
       return;
     }
-    com.tencent.mm.as.o.OK().a(locale.enp, ((cs)localObject1).field_msgId, 1, Integer.valueOf(paramInt), R.g.chat_img_template, this, 0);
+    o.ahD().a(locale.fDL, ((dd)localObject1).field_msgId, Integer.valueOf(paramInt), this);
+    AppMethodBeat.o(32128);
   }
   
   public final void b(View paramView, Bitmap paramBitmap)
   {
-    if (paramBitmap == null) {}
-    do
+    AppMethodBeat.i(32112);
+    if (paramBitmap == null)
     {
-      do
-      {
-        return;
-      } while (paramView == null);
+      AppMethodBeat.o(32112);
+      return;
+    }
+    if (paramView != null)
+    {
       int i = paramView.hashCode();
       int j = paramBitmap.hashCode();
-      int k = this.vva.kJu.indexOfValue(i);
+      int k = this.zLb.nfS.indexOfValue(i);
       if (k >= 0) {
-        this.vva.kJu.removeAt(k);
+        this.zLb.nfS.removeAt(k);
       }
-      this.vva.kJu.put(j, i);
+      this.zLb.nfS.put(j, i);
       if ((paramView instanceof MultiTouchImageView))
       {
         b((MultiTouchImageView)paramView, paramBitmap);
+        AppMethodBeat.o(32112);
         return;
       }
-    } while (!(paramView instanceof ImageView));
-    ((ImageView)paramView).setImageBitmap(paramBitmap);
+      if ((paramView instanceof ImageView)) {
+        ((ImageView)paramView).setImageBitmap(paramBitmap);
+      }
+    }
+    AppMethodBeat.o(32112);
   }
   
-  public final int bs(bi parambi)
+  public final int bB(bi parambi)
   {
-    if ((parambi != null) && (this.ifu.containsKey(Long.valueOf(parambi.field_msgId)))) {
-      return ((Integer)this.ifu.get(Long.valueOf(parambi.field_msgId))).intValue();
+    AppMethodBeat.i(32094);
+    if ((parambi != null) && (this.jWf.containsKey(Long.valueOf(parambi.field_msgId))))
+    {
+      int i = ((Integer)this.jWf.get(Long.valueOf(parambi.field_msgId))).intValue();
+      AppMethodBeat.o(32094);
+      return i;
     }
+    AppMethodBeat.o(32094);
     return 0;
   }
   
-  public final void bu(bi parambi)
+  public final void bC(bi parambi)
   {
-    com.tencent.mm.as.e locale = bt(parambi);
-    if ((locale == null) || (parambi == null)) {
-      return;
-    }
-    if (this.vtH != null) {
-      this.vtH.a(parambi, null, 1, com.tencent.mm.h.b.a.e.a.chj);
-    }
-    if (l.cGI().ic(parambi.field_msgId))
+    AppMethodBeat.i(32129);
+    com.tencent.mm.at.e locale = d(parambi);
+    if ((locale == null) || (parambi == null))
     {
-      l locall = l.cGI();
-      locall.vxE.remove(Long.valueOf(parambi.field_msgId));
-      com.tencent.mm.as.o.OK().a(locale.enp, parambi.field_msgId, locall);
-      com.tencent.mm.as.o.OK().q(locale.enp, parambi.field_msgId);
+      AppMethodBeat.o(32129);
       return;
     }
-    com.tencent.mm.as.o.OK().a(locale.enp, parambi.field_msgId, this);
-    com.tencent.mm.as.o.OK().q(locale.enp, parambi.field_msgId);
+    if (this.zJI != null) {
+      this.zJI.a(parambi, null, 1, com.tencent.mm.g.b.a.e.a.cPP);
+    }
+    if (l.dKQ().oO(parambi.field_msgId))
+    {
+      l locall = l.dKQ();
+      locall.zNQ.remove(Long.valueOf(parambi.field_msgId));
+      o.ahD().a(locale.fDL, parambi.field_msgId, locall);
+      o.ahD().z(locale.fDL, parambi.field_msgId);
+      AppMethodBeat.o(32129);
+      return;
+    }
+    o.ahD().a(locale.fDL, parambi.field_msgId, this);
+    o.ahD().z(locale.fDL, parambi.field_msgId);
+    AppMethodBeat.o(32129);
   }
   
   public final void detach()
   {
+    AppMethodBeat.i(32093);
     super.detach();
-    com.tencent.mm.sdk.b.a.udP.d(this.vuZ);
-    if (this.rlK != null)
+    com.tencent.mm.sdk.b.a.ymk.d(this.zLa);
+    if (this.vbm != null)
     {
-      localObject = this.rlK.keySet().iterator();
+      localObject = this.vbm.keySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
-        Bitmap localBitmap = (Bitmap)((WeakReference)this.rlK.get(((Iterator)localObject).next())).get();
+        Bitmap localBitmap = (Bitmap)((WeakReference)this.vbm.get(((Iterator)localObject).next())).get();
         if ((localBitmap != null) && (!localBitmap.isRecycled()))
         {
-          y.i("MicroMsg.ImageGalleryHolderImage", "recycle bitmap:%s", new Object[] { localBitmap.toString() });
+          ab.i("MicroMsg.ImageGalleryHolderImage", "recycle bitmap:%s", new Object[] { localBitmap.toString() });
           localBitmap.recycle();
         }
       }
     }
-    Object localObject = this.vva;
-    ((f)localObject).vvo = null;
-    ((f)localObject).kJp.clear();
-    ((f)localObject).kJs.clear();
-    ((f)localObject).kJr.clear();
-    ((f)localObject).kJq.clear();
-    ((f)localObject).vvn.clear();
-    ((f)localObject).aXQ();
-    if ((((f)localObject).vvt != null) && (!((f)localObject).vvt.isRecycled()))
+    Object localObject = this.zLb;
+    ((f)localObject).zLp = null;
+    ((f)localObject).nfN.clear();
+    ((f)localObject).nfQ.clear();
+    ((f)localObject).nfP.clear();
+    ((f)localObject).nfO.clear();
+    ((f)localObject).zLo.clear();
+    ((f)localObject).bEy();
+    if ((((f)localObject).zLu != null) && (!((f)localObject).zLu.isRecycled()))
     {
-      ((f)localObject).vvt.recycle();
-      ((f)localObject).vvt = null;
+      ab.i("MicroMsg.ImageGalleryLazyLoader", "bitmap recycle %s", new Object[] { ((f)localObject).zLu.toString() });
+      ((f)localObject).zLu.recycle();
+      ((f)localObject).zLu = null;
     }
-    com.tencent.mm.as.o.OK().a(this);
-    localObject = l.cGI();
-    if (equals(((l)localObject).vxF)) {
-      ((l)localObject).vxF = null;
+    o.ahD().a(this);
+    localObject = l.dKQ();
+    if (equals(((l)localObject).zNR)) {
+      ((l)localObject).zNR = null;
     }
+    AppMethodBeat.o(32093);
   }
   
-  public final com.tencent.mm.as.e h(bi parambi, boolean paramBoolean)
+  public final com.tencent.mm.at.e f(bi parambi, boolean paramBoolean)
   {
-    Object localObject2 = null;
-    Object localObject3 = null;
     Object localObject1 = null;
-    if (!c.be(parambi)) {
-      localObject2 = localObject1;
+    Object localObject2 = null;
+    AppMethodBeat.i(32099);
+    if (!c.c(parambi))
+    {
+      AppMethodBeat.o(32099);
+      return null;
     }
-    do
+    if ((this.zJI == null) || (this.zJI.zJL == null))
     {
-      return localObject2;
-      if ((this.vtH == null) || (this.vtH.vtK == null))
-      {
-        y.e("MicroMsg.ImageGalleryHolderImage", "adapter is null!!");
-        return null;
-      }
-      localObject1 = localObject3;
-      if (!paramBoolean)
-      {
-        if (parambi.field_isSend == 1) {
-          localObject2 = (com.tencent.mm.as.e)this.vtH.vtK.vuh.get(Long.valueOf(parambi.field_msgId));
-        }
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          localObject1 = localObject2;
-          if (parambi.field_msgSvrId > 0L) {
-            localObject1 = (com.tencent.mm.as.e)this.vtH.vtK.vug.get(Long.valueOf(parambi.field_msgSvrId));
-          }
-        }
-      }
-      localObject2 = localObject1;
-    } while (localObject1 != null);
-    int i = 0;
-    long l;
-    if (parambi.field_isSend == 1)
+      ab.e("MicroMsg.ImageGalleryHolderImage", "adapter is null!!");
+      AppMethodBeat.o(32099);
+      return null;
+    }
+    if (!paramBoolean)
     {
-      l = parambi.field_msgId;
-      localObject2 = com.tencent.mm.as.o.OJ().bY(l);
+      if (parambi.field_isSend == 1) {
+        localObject2 = (com.tencent.mm.at.e)this.zJI.zJL.zKi.get(Long.valueOf(parambi.field_msgId));
+      }
       localObject1 = localObject2;
-      if (((com.tencent.mm.as.e)localObject2).enp != 0L) {}
+      if (localObject2 == null)
+      {
+        localObject1 = localObject2;
+        if (parambi.field_msgSvrId > 0L) {
+          localObject1 = (com.tencent.mm.at.e)this.zJI.zJL.zKh.get(Long.valueOf(parambi.field_msgSvrId));
+        }
+      }
     }
-    else
+    localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      l = parambi.field_msgSvrId;
-      localObject1 = com.tencent.mm.as.o.OJ().bX(l);
-      i = 1;
+      paramBoolean = false;
+      long l;
+      if (parambi.field_isSend == 1)
+      {
+        l = parambi.field_msgId;
+        localObject2 = o.ahC().gT(l);
+        localObject1 = localObject2;
+        if (((com.tencent.mm.at.e)localObject2).fDL != 0L) {}
+      }
+      else
+      {
+        l = parambi.field_msgSvrId;
+        localObject1 = o.ahC().gS(l);
+        paramBoolean = true;
+      }
+      this.zJI.zJL.a(l, (com.tencent.mm.at.e)localObject1, paramBoolean);
+      localObject2 = localObject1;
     }
-    parambi = this.vtH.vtK;
-    if (i != 0)
-    {
-      parambi.vug.put(Long.valueOf(l), localObject1);
-      return localObject1;
-    }
-    parambi.vuh.put(Long.valueOf(l), localObject1);
-    return localObject1;
+    AppMethodBeat.o(32099);
+    return localObject2;
   }
   
   public final Bitmap loadImage(String paramString)
   {
-    return adD(paramString);
+    AppMethodBeat.i(156908);
+    paramString = auf(paramString);
+    AppMethodBeat.o(156908);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.e
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.q;
-import android.support.v4.widget.n;
+import android.support.v4.view.t;
+import android.support.v4.widget.p;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -15,42 +15,45 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.OverScroller;
-import com.tencent.mm.ac.a.d;
-import com.tencent.mm.ac.a.f;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.ui.base.b;
 import com.tencent.mm.ui.base.b.a;
 import com.tencent.mm.ui.mogic.a;
 import com.tencent.mm.ui.mogic.a.a;
-import com.tencent.mm.ui.tools.h;
-import com.tencent.mm.ui.tools.h.a;
+import com.tencent.mm.ui.tools.j;
+import com.tencent.mm.ui.tools.j.a;
 
 public class SwipeBackLayout
   extends FrameLayout
 {
-  private float Kf;
-  public View QR;
-  private Rect hc = new Rect();
-  private boolean mEnable = true;
+  private float AEP;
+  private int AEQ;
+  private int AER;
+  public a AES;
+  private float AET;
+  public Drawable AEU;
+  private boolean AEV;
+  private boolean AEW;
+  public boolean AEX;
+  public boolean AEY;
+  public boolean AEZ;
+  private boolean AFa;
+  private b AFb;
+  private Drawable AFc;
+  private boolean AFd;
+  private boolean AFe;
+  public a AFf;
+  private float JL;
+  public View Qz;
+  private Rect hV;
+  private boolean mEnable;
   private boolean mInLayout;
-  private float wkX = 0.3F;
-  private int wkY;
-  private int wkZ;
-  public a wla;
-  private float wlb;
-  public Drawable wlc = getResources().getDrawable(a.f.shadow_left);
-  private boolean wld = true;
-  private boolean wle = false;
-  public boolean wlf = false;
-  public boolean wlg = false;
-  public boolean wlh = false;
-  private boolean wli = false;
-  private b wlj;
-  private boolean wlk;
-  public a wll = null;
   
   public SwipeBackLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -60,280 +63,310 @@ public class SwipeBackLayout
   public SwipeBackLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(107991);
+    this.AEP = 0.3F;
+    this.mEnable = true;
+    this.hV = new Rect();
+    this.AEV = true;
+    this.AEW = false;
+    this.AEX = false;
+    this.AEY = false;
+    this.AEZ = false;
+    this.AFa = false;
+    this.AFe = true;
+    this.AFf = null;
+    this.AEU = getResources().getDrawable(2130840252);
     setFocusable(true);
     setDescendantFocusability(262144);
     init();
-  }
-  
-  public final boolean cKa()
-  {
-    if (!this.wlh) {
-      return false;
-    }
-    if (Float.compare(this.QR.getLeft(), 0.01F) <= 0)
-    {
-      this.wlh = false;
-      return false;
-    }
-    return true;
-  }
-  
-  public final boolean cnC()
-  {
-    cKa();
-    return this.wlh;
+    AppMethodBeat.o(107991);
   }
   
   public void computeScroll()
   {
-    this.Kf = Math.max(0.0F, 1.0F - this.wlb);
-    a locala = this.wla;
-    if (locala.MI == 2)
+    AppMethodBeat.i(108001);
+    this.JL = Math.max(0.0F, 1.0F - this.AET);
+    a locala = this.AES;
+    if (locala.Mw == 2)
     {
-      boolean bool2 = locala.hBk.iY.computeScrollOffset();
-      i = locala.hBk.iY.getCurrX();
-      int j = locala.hBk.iY.getCurrY();
-      int k = i - locala.MW.getLeft();
-      int m = j - locala.MW.getTop();
+      boolean bool2 = locala.jtz.jR.computeScrollOffset();
+      i = locala.jtz.jR.getCurrX();
+      int j = locala.jtz.jR.getCurrY();
+      int k = i - locala.MM.getLeft();
+      int m = j - locala.MM.getTop();
       if (k != 0) {
-        locala.MW.offsetLeftAndRight(k);
+        locala.MM.offsetLeftAndRight(k);
       }
       if (m != 0) {
-        locala.MW.offsetTopAndBottom(m);
+        locala.MM.offsetTopAndBottom(m);
       }
       if ((k != 0) || (m != 0)) {
-        locala.vXk.fC(i, j);
+        locala.Apv.hL(i, j);
       }
       boolean bool1 = bool2;
       if (bool2)
       {
         bool1 = bool2;
-        if (i == locala.hBk.iY.getFinalX())
+        if (i == locala.jtz.jR.getFinalX())
         {
           bool1 = bool2;
-          if (j == locala.hBk.iY.getFinalY())
+          if (j == locala.jtz.jR.getFinalY())
           {
-            locala.hBk.iY.abortAnimation();
-            bool1 = locala.hBk.iY.isFinished();
+            locala.jtz.jR.abortAnimation();
+            bool1 = locala.jtz.jR.isFinished();
           }
         }
       }
       if (!bool1) {
-        locala.MY.post(locala.MZ);
+        locala.MO.post(locala.MP);
       }
     }
-    if (locala.MI == 2) {}
+    if (locala.Mw == 2) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        q.O(this);
+        t.R(this);
       }
+      AppMethodBeat.o(108001);
       return;
     }
   }
   
+  public final boolean dOU()
+  {
+    AppMethodBeat.i(107996);
+    if (!this.AEZ)
+    {
+      AppMethodBeat.o(107996);
+      return false;
+    }
+    if (Float.compare(this.Qz.getLeft(), 0.01F) <= 0)
+    {
+      this.AEZ = false;
+      AppMethodBeat.o(107996);
+      return false;
+    }
+    AppMethodBeat.o(107996);
+    return true;
+  }
+  
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    if (!this.mEnable) {
+    AppMethodBeat.i(107997);
+    boolean bool;
+    if (!this.mEnable)
+    {
       bool = super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(107997);
+      return bool;
+    }
+    if (this.AFb != null) {
+      this.AFb.l(paramMotionEvent);
+    }
+    if (paramMotionEvent.getAction() == 0) {
+      this.AFd = false;
+    }
+    if (this.AFd)
+    {
+      bool = super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(107997);
+      return bool;
+    }
+    if (dOU())
+    {
+      bool = super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(107997);
+      return bool;
     }
     float f1;
     float f2;
     int k;
     int m;
     int n;
+    label664:
+    label705:
+    float f3;
+    View localView;
     for (;;)
     {
-      return bool;
-      if (this.wlj != null) {
-        this.wlj.l(paramMotionEvent);
-      }
-      if (paramMotionEvent.getAction() == 0) {
-        this.wlk = false;
-      }
-      if (this.wlk) {
-        return super.dispatchTouchEvent(paramMotionEvent);
-      }
-      if (cKa()) {
-        return super.dispatchTouchEvent(paramMotionEvent);
-      }
       try
       {
-        if (this.wla.MI != 1) {
-          break label940;
+        if (this.AES.Mw != 1) {
+          break;
         }
-        locala = this.wla;
+        locala = this.AES;
         j = paramMotionEvent.getActionMasked();
         i = paramMotionEvent.getActionIndex();
         if (j == 0) {
           locala.cancel();
         }
-        if (locala.fB == null) {
-          locala.fB = VelocityTracker.obtain();
+        if (locala.mVelocityTracker == null) {
+          locala.mVelocityTracker = VelocityTracker.obtain();
         }
-        locala.fB.addMovement(paramMotionEvent);
+        locala.mVelocityTracker.addMovement(paramMotionEvent);
         switch (j)
         {
-        case 0: 
-          f1 = paramMotionEvent.getX();
-          f2 = paramMotionEvent.getY();
-          i = paramMotionEvent.getPointerId(0);
-          paramMotionEvent = locala.y((int)f1, (int)f2);
-          locala.a(f1, f2, i);
-          locala.u(paramMotionEvent, i);
-          i = locala.MN[i];
-          if ((locala.MU & i) != 0) {
-            return true;
-          }
-          break;
-        case 5: 
-          j = paramMotionEvent.getPointerId(i);
-          f1 = paramMotionEvent.getX(i);
-          f2 = paramMotionEvent.getY(i);
-          locala.a(f1, f2, j);
-          if (locala.MI == 0)
-          {
-            locala.u(locala.y((int)f1, (int)f2), j);
-            return true;
-          }
-          break;
         }
       }
       catch (NullPointerException paramMotionEvent)
       {
-        y.printErrStackTrace("MicroMsg.SwipeBackLayout", paramMotionEvent, "got an NullPointerException", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.SwipeBackLayout", paramMotionEvent, "got an NullPointerException", new Object[0]);
+        AppMethodBeat.o(107997);
         return false;
         i = (int)f1;
         k = (int)f2;
-        paramMotionEvent = locala.MW;
-        if ((paramMotionEvent != null) && (i >= paramMotionEvent.getLeft()) && (i < paramMotionEvent.getRight()) && (k >= paramMotionEvent.getTop()) && (k < paramMotionEvent.getBottom()))
-        {
-          i = 1;
-          if (i == 0) {
-            continue;
-          }
-          locala.u(locala.MW, j);
-          return true;
+        paramMotionEvent = locala.MM;
+        if ((paramMotionEvent == null) || (i < paramMotionEvent.getLeft()) || (i >= paramMotionEvent.getRight()) || (k < paramMotionEvent.getTop()) || (k >= paramMotionEvent.getBottom())) {
+          continue;
         }
+        i = 1;
+        if (i == 0) {
+          continue;
+        }
+        locala.x(locala.MM, j);
+        continue;
       }
       catch (IllegalArgumentException paramMotionEvent)
       {
-        for (;;)
-        {
-          y.printErrStackTrace("MicroMsg.SwipeBackLayout", paramMotionEvent, "got an IllegalArgumentException", new Object[0]);
-          return false;
-          i = 0;
+        ab.printErrStackTrace("MicroMsg.SwipeBackLayout", paramMotionEvent, "got an IllegalArgumentException", new Object[0]);
+        AppMethodBeat.o(107997);
+        return false;
+        i = 0;
+        continue;
+        if (locala.Mw != 1) {
+          continue;
         }
-        if (locala.MI == 1)
-        {
-          i = paramMotionEvent.findPointerIndex(locala.fC);
-          f1 = paramMotionEvent.getX(i);
-          f2 = paramMotionEvent.getY(i);
-          m = (int)(f1 - locala.ML[locala.fC]);
-          n = (int)(f2 - locala.MM[locala.fC]);
-          k = locala.MW.getLeft() + m;
-          j = locala.MW.getTop() + n;
-          int i2 = locala.MW.getLeft();
-          int i1 = locala.MW.getTop();
-          i = k;
-          if (m != 0)
-          {
-            i = locala.vXk.d(locala.MW, k);
-            locala.MW.offsetLeftAndRight(i - i2);
-          }
-          if (n == 0) {
-            break label1419;
-          }
-          locala.MW.offsetTopAndBottom(0 - i1);
-          j = 0;
-          break label1419;
-          locala.vXk.fC(i, j);
-          locala.e(paramMotionEvent);
-          return true;
+        i = paramMotionEvent.findPointerIndex(locala.mActivePointerId);
+        f1 = paramMotionEvent.getX(i);
+        f2 = paramMotionEvent.getY(i);
+        m = (int)(f1 - locala.Mz[locala.mActivePointerId]);
+        n = (int)(f2 - locala.MA[locala.mActivePointerId]);
+        k = locala.MM.getLeft() + m;
+        j = locala.MM.getTop() + n;
+        int i2 = locala.MM.getLeft();
+        int i1 = locala.MM.getTop();
+        i = k;
+        if (m == 0) {
+          continue;
         }
+        i = locala.Apv.d(locala.MM, k);
+        locala.MM.offsetLeftAndRight(i - i2);
+        if (n == 0) {
+          break label1517;
+        }
+        locala.MM.offsetTopAndBottom(0 - i1);
+        j = 0;
+        break label1517;
+        locala.Apv.hL(i, j);
+        locala.e(paramMotionEvent);
+        continue;
       }
       catch (ArrayIndexOutOfBoundsException paramMotionEvent)
       {
-        label613:
-        y.printErrStackTrace("MicroMsg.SwipeBackLayout", paramMotionEvent, "got an ArrayIndexOutOfBoundsException", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.SwipeBackLayout", paramMotionEvent, "got an ArrayIndexOutOfBoundsException", new Object[0]);
+        AppMethodBeat.o(107997);
+        return false;
+        j = paramMotionEvent.getPointerCount();
+        i = 0;
+        if (i >= j) {
+          continue;
+        }
+        k = paramMotionEvent.getPointerId(i);
+        f1 = paramMotionEvent.getX(i);
+        f2 = paramMotionEvent.getY(i);
+        f3 = f1 - locala.Mx[k];
+        locala.b(f3, f2 - locala.My[k], k);
+        if (locala.Mw == 1) {
+          continue;
+        }
+        localView = locala.A((int)f1, (int)f2);
+        if ((!locala.r(localView, f3)) || (!locala.x(localView, k))) {
+          break label1530;
+        }
+        locala.e(paramMotionEvent);
+        continue;
+      }
+      catch (IllegalStateException paramMotionEvent)
+      {
+        ab.printErrStackTrace("MicroMsg.SwipeBackLayout", paramMotionEvent, "got an IllegalStateException", new Object[0]);
+        AppMethodBeat.o(107997);
         return false;
       }
-    }
-    int j = paramMotionEvent.getPointerCount();
-    int i = 0;
-    label647:
-    float f3;
-    View localView;
-    if (i < j)
-    {
-      k = paramMotionEvent.getPointerId(i);
-      f1 = paramMotionEvent.getX(i);
-      f2 = paramMotionEvent.getY(i);
-      f3 = f1 - locala.MJ[k];
-      locala.b(f3, f2 - locala.MK[k], k);
-      if (locala.MI != 1)
+      AppMethodBeat.o(107997);
+      return true;
+      f1 = paramMotionEvent.getX();
+      f2 = paramMotionEvent.getY();
+      i = paramMotionEvent.getPointerId(0);
+      paramMotionEvent = locala.A((int)f1, (int)f2);
+      locala.a(f1, f2, i);
+      locala.x(paramMotionEvent, i);
+      i = locala.MC[i];
+      if ((locala.MK & i) != 0)
       {
-        localView = locala.y((int)f1, (int)f2);
-        if ((!locala.o(localView, f3)) || (!locala.u(localView, k))) {
-          break label1432;
+        continue;
+        j = paramMotionEvent.getPointerId(i);
+        f1 = paramMotionEvent.getX(i);
+        f2 = paramMotionEvent.getY(i);
+        locala.a(f1, f2, j);
+        if (locala.Mw == 0)
+        {
+          locala.x(locala.A((int)f1, (int)f2), j);
+        }
+        else
+        {
+          j = paramMotionEvent.getPointerId(i);
+          if ((locala.Mw == 1) && (j == locala.mActivePointerId))
+          {
+            k = paramMotionEvent.getPointerCount();
+            i = 0;
+            label880:
+            if (i >= k) {
+              break label1511;
+            }
+            m = paramMotionEvent.getPointerId(i);
+            if (m == locala.mActivePointerId) {
+              break label1539;
+            }
+            f1 = paramMotionEvent.getX(i);
+            f2 = paramMotionEvent.getY(i);
+            if ((locala.A((int)f1, (int)f2) != locala.MM) || (!locala.x(locala.MM, m))) {
+              break label1539;
+            }
+            i = locala.mActivePointerId;
+            label958:
+            if (i == -1) {
+              locala.er();
+            }
+          }
+          locala.aJ(j);
+          continue;
+          if (locala.Mw == 1) {
+            locala.er();
+          }
+          locala.cancel();
+          continue;
+          if (locala.Mw == 1) {
+            locala.u(0.0F, 0.0F);
+          }
+          locala.cancel();
         }
       }
     }
-    locala.e(paramMotionEvent);
-    return true;
-    j = paramMotionEvent.getPointerId(i);
-    if ((locala.MI == 1) && (j == locala.fC))
-    {
-      k = paramMotionEvent.getPointerCount();
-      i = 0;
-      label798:
-      if (i >= k) {
-        break label1411;
-      }
-      m = paramMotionEvent.getPointerId(i);
-      if (m == locala.fC) {
-        break label1441;
-      }
-      f1 = paramMotionEvent.getX(i);
-      f2 = paramMotionEvent.getY(i);
-      if ((locala.y((int)f1, (int)f2) != locala.MW) || (!locala.u(locala.MW, m))) {
-        break label1441;
-      }
-      i = locala.fC;
-      label876:
-      if (i == -1) {
-        locala.dX();
-      }
-    }
-    locala.aN(j);
-    return true;
-    if (locala.MI == 1) {
-      locala.dX();
-    }
-    locala.cancel();
-    return true;
-    if (locala.MI == 1) {
-      locala.v(0.0F, 0.0F);
-    }
-    locala.cancel();
-    return true;
-    label940:
-    a locala = this.wla;
-    j = paramMotionEvent.getActionMasked();
-    i = paramMotionEvent.getActionIndex();
+    a locala = this.AES;
+    int j = paramMotionEvent.getActionMasked();
+    int i = paramMotionEvent.getActionIndex();
     if (j == 0) {
       locala.cancel();
     }
-    if (locala.fB == null) {
-      locala.fB = VelocityTracker.obtain();
+    if (locala.mVelocityTracker == null) {
+      locala.mVelocityTracker = VelocityTracker.obtain();
     }
-    locala.fB.addMovement(paramMotionEvent);
+    locala.mVelocityTracker.addMovement(paramMotionEvent);
     switch (j)
     {
     case 4: 
-      label1036:
-      if (locala.MI != 1) {
+      label1124:
+      if (locala.Mw != 1) {
         break;
       }
     }
@@ -341,35 +374,36 @@ public class SwipeBackLayout
     {
       if (i != 0)
       {
-        y.i("changelcai", "shouldInterceptTouchEvent %s", new Object[] { paramMotionEvent });
+        ab.i("changelcai", "shouldInterceptTouchEvent %s", new Object[] { paramMotionEvent });
         paramMotionEvent.setAction(3);
         super.dispatchTouchEvent(paramMotionEvent);
+        AppMethodBeat.o(107997);
         return true;
         f1 = paramMotionEvent.getX();
         f2 = paramMotionEvent.getY();
         i = paramMotionEvent.getPointerId(0);
         locala.a(f1, f2, i);
-        localView = locala.y((int)f1, (int)f2);
-        if ((localView == locala.MW) && (locala.MI == 2)) {
-          locala.u(localView, i);
+        localView = locala.A((int)f1, (int)f2);
+        if ((localView == locala.MM) && (locala.Mw == 2)) {
+          locala.x(localView, i);
         }
-        if ((locala.MN[i] & locala.MU) == 0) {
-          break label1036;
+        if ((locala.MC[i] & locala.MK) == 0) {
+          break label1124;
         }
-        break label1036;
+        break label1124;
         j = paramMotionEvent.getPointerId(i);
         f1 = paramMotionEvent.getX(i);
         f2 = paramMotionEvent.getY(i);
         locala.a(f1, f2, j);
-        if ((locala.MI == 0) || (locala.MI != 2)) {
-          break label1036;
+        if ((locala.Mw == 0) || (locala.Mw != 2)) {
+          break label1124;
         }
-        localView = locala.y((int)f1, (int)f2);
-        if (localView != locala.MW) {
-          break label1036;
+        localView = locala.A((int)f1, (int)f2);
+        if (localView != locala.MM) {
+          break label1124;
         }
-        locala.u(localView, j);
-        break label1036;
+        locala.x(localView, j);
+        break label1124;
         j = paramMotionEvent.getPointerCount();
         i = 0;
       }
@@ -380,113 +414,133 @@ public class SwipeBackLayout
           k = paramMotionEvent.getPointerId(i);
           f1 = paramMotionEvent.getX(i);
           f2 = paramMotionEvent.getY(i);
-          f3 = f1 - locala.MJ[k];
-          locala.b(f3, f2 - locala.MK[k], k);
-          if (locala.MI != 1)
+          f3 = f1 - locala.Mx[k];
+          locala.b(f3, f2 - locala.My[k], k);
+          if (locala.Mw != 1)
           {
-            localView = locala.y((int)f1, (int)f2);
-            if ((localView == null) || (!locala.o(localView, f3)) || (!locala.u(localView, k))) {
-              break label1453;
+            localView = locala.A((int)f1, (int)f2);
+            if ((localView == null) || (!locala.r(localView, f3)) || (!locala.x(localView, k))) {
+              break label1551;
             }
           }
         }
         locala.e(paramMotionEvent);
-        break label1036;
-        locala.aN(paramMotionEvent.getPointerId(i));
-        break label1036;
+        break label1124;
+        locala.aJ(paramMotionEvent.getPointerId(i));
+        break label1124;
         locala.cancel();
-        break label1036;
+        break label1124;
         super.dispatchTouchEvent(paramMotionEvent);
+        AppMethodBeat.o(107997);
         return true;
-        label1411:
+        label1511:
         i = -1;
-        break label876;
-        return true;
-        label1419:
+        break label958;
+        label1517:
         if (m != 0) {
           break;
         }
         if (n == 0) {
-          break label613;
+          break label664;
         }
         break;
-        label1432:
+        label1530:
         i += 1;
-        break label647;
-        label1441:
+        break label705;
+        label1539:
         i += 1;
-        break label798;
-        break label1036;
-        label1453:
+        break label880;
+        break label1124;
+        label1551:
         i += 1;
       }
     }
   }
   
+  public final boolean doA()
+  {
+    AppMethodBeat.i(107994);
+    dOU();
+    boolean bool = this.AEZ;
+    AppMethodBeat.o(107994);
+    return bool;
+  }
+  
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    if (paramView == this.QR) {}
+    AppMethodBeat.i(108000);
+    if (paramView == this.Qz) {}
     for (int i = 1;; i = 0)
     {
       boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
-      if ((Float.compare(this.Kf, 0.0F) > 0) && (i != 0) && (this.wla.MI != 0))
+      if ((Float.compare(this.JL, 0.0F) > 0) && (i != 0) && (this.AES.Mw != 0))
       {
-        Rect localRect = this.hc;
+        Rect localRect = this.hV;
         paramView.getHitRect(localRect);
-        this.wlc.setBounds(localRect.left - this.wlc.getIntrinsicWidth(), localRect.top, localRect.left, localRect.bottom);
-        this.wlc.setAlpha((int)(this.Kf * 255.0F));
-        this.wlc.draw(paramCanvas);
+        this.AEU.setBounds(localRect.left - this.AEU.getIntrinsicWidth(), localRect.top, localRect.left, localRect.bottom);
+        this.AEU.setAlpha((int)(this.JL * 255.0F));
+        this.AEU.draw(paramCanvas);
       }
+      AppMethodBeat.o(108000);
       return bool;
     }
   }
   
   public View getTargetContentView()
   {
-    return this.QR;
+    return this.Qz;
   }
   
   public final void init()
   {
-    this.wla = a.a(this, new c((byte)0));
-    this.wla.MU = 1;
+    AppMethodBeat.i(107992);
+    Interpolator localInterpolator = AnimationUtils.loadInterpolator(getContext(), 2131034200);
+    this.AES = a.a(this, new c((byte)0), localInterpolator);
+    this.AES.MK = 1;
     float f = getResources().getDisplayMetrics().density;
-    this.wla.MS = (100.0F * f);
-    this.wla.MR = (f * 300.0F);
-    this.wkY = 0;
-    this.wkZ = 0;
-  }
-  
-  public final void nR(boolean paramBoolean)
-  {
-    y.i("MicroMsg.SwipeBackLayout", "ashutest::markTranslucent %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.wlf = paramBoolean;
+    this.AES.MI = (100.0F * f);
+    this.AES.MH = (f * 300.0F);
+    this.AEQ = 0;
+    this.AER = 0;
+    AppMethodBeat.o(107992);
   }
   
   public void onFinishInflate()
   {
-    this.QR = this;
+    this.Qz = this;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(107998);
     this.mInLayout = true;
-    if (this.QR != null) {
-      this.QR.layout(this.wkY, this.wkZ, this.wkY + this.QR.getMeasuredWidth(), this.wkZ + this.QR.getMeasuredHeight());
+    if (this.Qz != null) {
+      this.Qz.layout(this.AEQ, this.AER, this.AEQ + this.Qz.getMeasuredWidth(), this.AER + this.Qz.getMeasuredHeight());
     }
     this.mInLayout = false;
+    AppMethodBeat.o(107998);
+  }
+  
+  public final void rB(boolean paramBoolean)
+  {
+    AppMethodBeat.i(107993);
+    ab.i("MicroMsg.SwipeBackLayout", "ashutest::markTranslucent %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.AEX = paramBoolean;
+    AppMethodBeat.o(107993);
   }
   
   public void requestLayout()
   {
+    AppMethodBeat.i(107999);
     if (!this.mInLayout) {
       super.requestLayout();
     }
+    AppMethodBeat.o(107999);
   }
   
   public void setContentView(View paramView)
   {
-    this.QR = paramView;
+    this.Qz = paramView;
   }
   
   public void setEnableGesture(boolean paramBoolean)
@@ -494,28 +548,35 @@ public class SwipeBackLayout
     this.mEnable = paramBoolean;
   }
   
+  public void setNeedChangeWindowBackground(boolean paramBoolean)
+  {
+    this.AFe = paramBoolean;
+  }
+  
   public void setNeedRequestActivityTranslucent(boolean paramBoolean)
   {
-    this.wld = paramBoolean;
-    if (this.wld) {
-      this.wle = false;
+    this.AEV = paramBoolean;
+    if (this.AEV) {
+      this.AEW = false;
     }
   }
   
   public void setOnceDisEnableGesture(boolean paramBoolean)
   {
-    y.i("MicroMsg.SwipeBackLayout", "[setOnceDisEnableGesture] enable:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.wlk = paramBoolean;
+    AppMethodBeat.i(107995);
+    ab.i("MicroMsg.SwipeBackLayout", "[setOnceDisEnableGesture] enable:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.AFd = paramBoolean;
+    AppMethodBeat.o(107995);
   }
   
   public void setSwipeBackListener(b paramb)
   {
-    this.wlj = paramb;
+    this.AFb = paramb;
   }
   
   public void setSwipeGestureDelegate(a parama)
   {
-    this.wll = parama;
+    this.AFf = parama;
   }
   
   public static abstract interface a
@@ -529,162 +590,195 @@ public class SwipeBackLayout
   
   public static abstract interface b
   {
-    public abstract void aH(float paramFloat);
+    public abstract boolean aZ(boolean paramBoolean);
     
-    public abstract boolean aK(boolean paramBoolean);
+    public abstract void bk(float paramFloat);
     
     public abstract void l(MotionEvent paramMotionEvent);
   }
   
-  private final class c
+  final class c
     extends a.a
     implements b.a
   {
-    int wlm = 0;
-    int wln = 0;
-    int wlo = 0;
+    int AFg = 0;
+    int AFh = 0;
+    int AFi = 0;
     
     private c() {}
     
-    public final boolean Ia(int paramInt)
+    public final boolean QM(int paramInt)
     {
+      AppMethodBeat.i(107985);
       a locala = SwipeBackLayout.a(SwipeBackLayout.this);
-      if ((locala.MQ & 1 << paramInt) != 0) {}
-      for (int i = 1; (i != 0) && ((locala.MN[paramInt] & 0x1) != 0); i = 0) {
+      if ((locala.MG & 1 << paramInt) != 0) {}
+      for (int i = 1; (i != 0) && ((locala.MC[paramInt] & 0x1) != 0); i = 0)
+      {
+        AppMethodBeat.o(107985);
         return true;
       }
+      AppMethodBeat.o(107985);
       return false;
     }
     
     public final void a(View paramView, float paramFloat1, float paramFloat2)
     {
       boolean bool = false;
+      AppMethodBeat.i(107987);
       int i = paramView.getWidth();
-      this.wln = 0;
-      this.wlo = 0;
-      if ((paramFloat1 > 0.0F) || ((paramFloat1 == 0.0F) && (SwipeBackLayout.f(SwipeBackLayout.this) > SwipeBackLayout.i(SwipeBackLayout.this)))) {}
+      this.AFh = 0;
+      this.AFi = 0;
+      if ((paramFloat1 > 0.0F) || ((paramFloat1 == 0.0F) && (SwipeBackLayout.f(SwipeBackLayout.this) > SwipeBackLayout.k(SwipeBackLayout.this)))) {}
       for (i = i + SwipeBackLayout.d(SwipeBackLayout.this).getIntrinsicWidth() + 10;; i = 0)
       {
-        this.wln = i;
-        y.i("MicroMsg.SwipeBackLayout", "ashutest::onViewReleased, xvel:%f yvel:%f, releaseLeft:%d, releaseTop:%d, translucent %B", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(this.wln), Integer.valueOf(this.wlo), Boolean.valueOf(SwipeBackLayout.b(SwipeBackLayout.this)) });
+        this.AFh = i;
+        ab.i("MicroMsg.SwipeBackLayout", "ashutest::onViewReleased, xvel:%f yvel:%f, releaseLeft:%d, releaseTop:%d, translucent %B", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(this.AFh), Integer.valueOf(this.AFi), Boolean.valueOf(SwipeBackLayout.b(SwipeBackLayout.this)) });
         SwipeBackLayout.b(SwipeBackLayout.this, true);
         if (SwipeBackLayout.e(SwipeBackLayout.this) == null) {
           break;
         }
         paramView = SwipeBackLayout.e(SwipeBackLayout.this);
-        if (this.wln != 0) {
+        if (this.AFh != 0) {
           bool = true;
         }
-        if (!paramView.aK(bool)) {
+        if (!paramView.aZ(bool)) {
           break;
         }
-        y.i("MicroMsg.SwipeBackLayout", "intercepted by mSwipeBackListener.onViewReleased");
+        ab.i("MicroMsg.SwipeBackLayout", "intercepted by mSwipeBackListener.onViewReleased");
+        AppMethodBeat.o(107987);
         return;
       }
       if (SwipeBackLayout.b(SwipeBackLayout.this))
       {
         paramView = SwipeBackLayout.a(SwipeBackLayout.this);
-        i = this.wln;
-        int j = this.wlo;
-        if (!paramView.MX) {
-          throw new IllegalStateException("Cannot settleCapturedViewAt outside of a call to Callback#onViewReleased");
+        i = this.AFh;
+        int j = this.AFi;
+        if (!paramView.MN)
+        {
+          paramView = new IllegalStateException("Cannot settleCapturedViewAt outside of a call to Callback#onViewReleased");
+          AppMethodBeat.o(107987);
+          throw paramView;
         }
-        paramView.h(i, j, (int)paramView.fB.getXVelocity(paramView.fC), (int)paramView.fB.getYVelocity(paramView.fC));
+        paramView.b(i, j, (int)paramView.mVelocityTracker.getXVelocity(paramView.mActivePointerId), (int)paramView.mVelocityTracker.getYVelocity(paramView.mActivePointerId), 0L);
         SwipeBackLayout.this.invalidate();
+        AppMethodBeat.o(107987);
         return;
       }
       SwipeBackLayout.c(SwipeBackLayout.this, true);
-    }
-    
-    public final int cIF()
-    {
-      return 1;
+      AppMethodBeat.o(107987);
     }
     
     public final int d(View paramView, int paramInt)
     {
+      AppMethodBeat.i(107988);
       if (SwipeBackLayout.b(SwipeBackLayout.this))
       {
-        paramInt = Math.max(this.wlm, paramInt);
-        this.wlm = 0;
-        return Math.min(paramView.getWidth(), Math.max(paramInt, 0));
+        paramInt = Math.max(this.AFg, paramInt);
+        this.AFg = 0;
+        paramInt = Math.min(paramView.getWidth(), Math.max(paramInt, 0));
+        AppMethodBeat.o(107988);
+        return paramInt;
       }
-      this.wlm = Math.max(this.wlm, paramInt);
+      this.AFg = Math.max(this.AFg, paramInt);
+      AppMethodBeat.o(107988);
       return 0;
     }
     
-    public final void fC(int paramInt1, int paramInt2)
+    public final int dNq()
     {
-      if (!SwipeBackLayout.b(SwipeBackLayout.this)) {
-        y.w("MicroMsg.SwipeBackLayout", "[onViewPositionChanged] mHasTranslucent is false");
+      return 1;
+    }
+    
+    public final void hL(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(107986);
+      if (!SwipeBackLayout.b(SwipeBackLayout.this))
+      {
+        ab.w("MicroMsg.SwipeBackLayout", "[onViewPositionChanged] mHasTranslucent is false");
+        AppMethodBeat.o(107986);
+        return;
+      }
+      SwipeBackLayout.a(SwipeBackLayout.this, Math.abs(paramInt1 / (SwipeBackLayout.c(SwipeBackLayout.this).getWidth() + SwipeBackLayout.d(SwipeBackLayout.this).getIntrinsicWidth())));
+      SwipeBackLayout.a(SwipeBackLayout.this, paramInt1);
+      SwipeBackLayout.b(SwipeBackLayout.this, paramInt2);
+      SwipeBackLayout.this.invalidate();
+      if (SwipeBackLayout.e(SwipeBackLayout.this) != null) {
+        SwipeBackLayout.e(SwipeBackLayout.this).bk(SwipeBackLayout.f(SwipeBackLayout.this));
+      }
+      if ((Float.compare(SwipeBackLayout.f(SwipeBackLayout.this), 1.0F) >= 0) && (!SwipeBackLayout.g(SwipeBackLayout.this)))
+      {
+        SwipeBackLayout.a(SwipeBackLayout.this, true);
+        al.d(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(107978);
+            if (SwipeBackLayout.h(SwipeBackLayout.this) != null)
+            {
+              ab.i("MicroMsg.SwipeBackLayout", "ashutest:: on popOut");
+              if (((SwipeBackLayout.this.getContext() instanceof Activity)) && (SwipeBackLayout.i(SwipeBackLayout.this) != null))
+              {
+                if (SwipeBackLayout.j(SwipeBackLayout.this)) {
+                  ((Activity)SwipeBackLayout.this.getContext()).getWindow().getDecorView().setBackground(SwipeBackLayout.i(SwipeBackLayout.this));
+                }
+                SwipeBackLayout.a(SwipeBackLayout.this, null);
+              }
+              SwipeBackLayout.h(SwipeBackLayout.this).onSwipeBack();
+            }
+            SwipeBackLayout.b(SwipeBackLayout.this, false);
+            AppMethodBeat.o(107978);
+          }
+        });
       }
       for (;;)
       {
+        if (SwipeBackLayout.a(SwipeBackLayout.this).Mw == 1) {
+          h.by(SwipeBackLayout.f(SwipeBackLayout.this));
+        }
+        AppMethodBeat.o(107986);
         return;
-        SwipeBackLayout.a(SwipeBackLayout.this, Math.abs(paramInt1 / (SwipeBackLayout.c(SwipeBackLayout.this).getWidth() + SwipeBackLayout.d(SwipeBackLayout.this).getIntrinsicWidth())));
-        SwipeBackLayout.a(SwipeBackLayout.this, paramInt1);
-        SwipeBackLayout.b(SwipeBackLayout.this, paramInt2);
-        SwipeBackLayout.this.invalidate();
-        if (SwipeBackLayout.e(SwipeBackLayout.this) != null) {
-          SwipeBackLayout.e(SwipeBackLayout.this).aH(SwipeBackLayout.f(SwipeBackLayout.this));
-        }
-        if ((Float.compare(SwipeBackLayout.f(SwipeBackLayout.this), 1.0F) >= 0) && (!SwipeBackLayout.g(SwipeBackLayout.this)))
+        if (Float.compare(SwipeBackLayout.f(SwipeBackLayout.this), 0.01F) <= 0)
         {
-          SwipeBackLayout.a(SwipeBackLayout.this, true);
-          ai.d(new Runnable()
-          {
-            public final void run()
-            {
-              if (SwipeBackLayout.h(SwipeBackLayout.this) != null)
-              {
-                y.i("MicroMsg.SwipeBackLayout", "ashutest:: on popOut");
-                SwipeBackLayout.h(SwipeBackLayout.this).onSwipeBack();
-              }
-              SwipeBackLayout.b(SwipeBackLayout.this, false);
-            }
-          });
-        }
-        while (SwipeBackLayout.a(SwipeBackLayout.this).MI == 1)
-        {
-          g.aN(SwipeBackLayout.f(SwipeBackLayout.this));
-          return;
-          if (Float.compare(SwipeBackLayout.f(SwipeBackLayout.this), 0.01F) <= 0)
-          {
-            SwipeBackLayout.b(SwipeBackLayout.this, false);
-            y.w("MicroMsg.SwipeBackLayout", "[onViewPositionChanged] mScrollPercent:%s mHasCallPopOut:%s", new Object[] { Float.valueOf(SwipeBackLayout.f(SwipeBackLayout.this)), Boolean.valueOf(SwipeBackLayout.g(SwipeBackLayout.this)) });
-          }
+          SwipeBackLayout.b(SwipeBackLayout.this, false);
+          ab.w("MicroMsg.SwipeBackLayout", "[onViewPositionChanged] mScrollPercent:%s mHasCallPopOut:%s", new Object[] { Float.valueOf(SwipeBackLayout.f(SwipeBackLayout.this)), Boolean.valueOf(SwipeBackLayout.g(SwipeBackLayout.this)) });
         }
       }
     }
     
-    public final void ld(final boolean paramBoolean)
+    public final void iX(final boolean paramBoolean)
     {
-      ai.d(new Runnable()
+      AppMethodBeat.i(107990);
+      al.d(new Runnable()
       {
         public final void run()
         {
-          y.i("MicroMsg.SwipeBackLayout", "on Complete, result %B, releaseLeft %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(SwipeBackLayout.c.this.wln) });
+          AppMethodBeat.i(107984);
+          ab.i("MicroMsg.SwipeBackLayout", "on Complete, result %B, releaseLeft %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(SwipeBackLayout.c.this.AFh) });
           SwipeBackLayout.d(SwipeBackLayout.this, paramBoolean);
           if (paramBoolean) {
-            if (SwipeBackLayout.c.this.wln > 0)
+            if (SwipeBackLayout.c.this.AFh > 0)
             {
-              g.aN(0.0F);
-              SwipeBackLayout.this.nR(paramBoolean);
-              if ((paramBoolean) && (SwipeBackLayout.k(SwipeBackLayout.this)))
+              h.by(0.0F);
+              SwipeBackLayout.this.rB(paramBoolean);
+              if ((paramBoolean) && (SwipeBackLayout.m(SwipeBackLayout.this)))
               {
-                if (SwipeBackLayout.c.this.wln != 0) {
-                  break label174;
+                if (SwipeBackLayout.c.this.AFh != 0) {
+                  break label184;
                 }
-                h.a(SwipeBackLayout.c(SwipeBackLayout.this), 200L, 0.0F, new h.a()
+                j.a(SwipeBackLayout.c(SwipeBackLayout.this), 200L, 0.0F, new j.a()
                 {
-                  public final void ceX()
+                  public final void dfe()
                   {
+                    AppMethodBeat.i(107980);
                     onAnimationEnd();
+                    AppMethodBeat.o(107980);
                   }
                   
                   public final void onAnimationEnd()
                   {
+                    AppMethodBeat.i(107979);
                     SwipeBackLayout.b(SwipeBackLayout.this, false);
+                    AppMethodBeat.o(107979);
                   }
                 });
               }
@@ -693,85 +787,114 @@ public class SwipeBackLayout
           for (;;)
           {
             SwipeBackLayout.c(SwipeBackLayout.this, false);
+            AppMethodBeat.o(107984);
             return;
-            g.aN(1.0F);
+            h.by(1.0F);
             break;
             SwipeBackLayout.b(SwipeBackLayout.this, false);
             break;
-            label174:
-            h.a(SwipeBackLayout.c(SwipeBackLayout.this), 200L, SwipeBackLayout.c.this.wln, new h.a()
+            label184:
+            j.a(SwipeBackLayout.c(SwipeBackLayout.this), 200L, SwipeBackLayout.c.this.AFh, new j.a()
             {
-              public final void ceX()
+              public final void dfe()
               {
+                AppMethodBeat.i(107983);
                 onAnimationEnd();
+                AppMethodBeat.o(107983);
               }
               
               public final void onAnimationEnd()
               {
+                AppMethodBeat.i(107982);
                 SwipeBackLayout.a(SwipeBackLayout.this, true);
-                ai.d(new Runnable()
+                al.d(new Runnable()
                 {
                   public final void run()
                   {
+                    AppMethodBeat.i(107981);
                     if (SwipeBackLayout.h(SwipeBackLayout.this) != null)
                     {
+                      if (((SwipeBackLayout.this.getContext() instanceof Activity)) && (SwipeBackLayout.i(SwipeBackLayout.this) != null))
+                      {
+                        if (SwipeBackLayout.j(SwipeBackLayout.this)) {
+                          ((Activity)SwipeBackLayout.this.getContext()).getWindow().getDecorView().setBackground(SwipeBackLayout.i(SwipeBackLayout.this));
+                        }
+                        SwipeBackLayout.a(SwipeBackLayout.this, null);
+                      }
                       SwipeBackLayout.h(SwipeBackLayout.this).onSwipeBack();
-                      y.d("MicroMsg.SwipeBackLayout", "ashutest:: on onSwipeBack");
+                      ab.d("MicroMsg.SwipeBackLayout", "ashutest:: on onSwipeBack");
                     }
-                    g.aN(1.0F);
+                    h.by(1.0F);
                     SwipeBackLayout.b(SwipeBackLayout.this, false);
+                    AppMethodBeat.o(107981);
                   }
                 });
+                AppMethodBeat.o(107982);
               }
             });
-            g.C(true, SwipeBackLayout.c.this.wln);
+            h.K(true, SwipeBackLayout.c.this.AFh);
           }
         }
       });
+      AppMethodBeat.o(107990);
     }
     
-    public final void x(int paramInt)
+    public final void w(int paramInt)
     {
-      y.i("MicroMsg.SwipeBackLayout", "ashutest::onViewDragStateChanged state %d, requestedTranslucent %B fastRelease %B", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(SwipeBackLayout.j(SwipeBackLayout.this)), Boolean.valueOf(SwipeBackLayout.k(SwipeBackLayout.this)) });
+      AppMethodBeat.i(107989);
+      ab.i("MicroMsg.SwipeBackLayout", "ashutest::onViewDragStateChanged state %d, requestedTranslucent %B fastRelease %B", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(SwipeBackLayout.l(SwipeBackLayout.this)), Boolean.valueOf(SwipeBackLayout.m(SwipeBackLayout.this)) });
       if (1 == paramInt)
       {
-        y.i("MicroMsg.SwipeBackLayout", "ashutest:: on drag");
-        if ((SwipeBackLayout.this.getContext() instanceof Activity)) {
-          ((Activity)SwipeBackLayout.this.getContext()).getWindow().getDecorView().setBackgroundResource(a.d.transparent);
+        ab.i("MicroMsg.SwipeBackLayout", "ashutest:: on drag");
+        if (((SwipeBackLayout.this.getContext() instanceof Activity)) && (SwipeBackLayout.i(SwipeBackLayout.this) == null))
+        {
+          SwipeBackLayout.a(SwipeBackLayout.this, ((Activity)SwipeBackLayout.this.getContext()).getWindow().getDecorView().getBackground());
+          if (SwipeBackLayout.j(SwipeBackLayout.this)) {
+            ((Activity)SwipeBackLayout.this.getContext()).getWindow().getDecorView().setBackgroundResource(2131690605);
+          }
         }
         if (SwipeBackLayout.h(SwipeBackLayout.this) != null) {
           SwipeBackLayout.h(SwipeBackLayout.this).onDrag();
         }
         SwipeBackLayout.a(SwipeBackLayout.this, false);
         if (SwipeBackLayout.b(SwipeBackLayout.this)) {
-          g.aN(0.0F);
+          h.by(0.0F);
         }
       }
-      if ((paramInt == 0) && (!SwipeBackLayout.k(SwipeBackLayout.this)))
+      if ((paramInt == 0) && (!SwipeBackLayout.m(SwipeBackLayout.this)))
       {
-        y.i("MicroMsg.SwipeBackLayout", "ashutest:: on cancel");
-        if (SwipeBackLayout.h(SwipeBackLayout.this) != null) {
+        ab.i("MicroMsg.SwipeBackLayout", "ashutest:: on cancel");
+        if (SwipeBackLayout.h(SwipeBackLayout.this) != null)
+        {
+          if (((SwipeBackLayout.this.getContext() instanceof Activity)) && (SwipeBackLayout.i(SwipeBackLayout.this) != null))
+          {
+            if (SwipeBackLayout.j(SwipeBackLayout.this)) {
+              ((Activity)SwipeBackLayout.this.getContext()).getWindow().getDecorView().setBackground(SwipeBackLayout.i(SwipeBackLayout.this));
+            }
+            SwipeBackLayout.a(SwipeBackLayout.this, null);
+          }
           SwipeBackLayout.h(SwipeBackLayout.this).onCancel();
         }
-        g.aN(1.0F);
+        h.by(1.0F);
       }
-      if ((1 == paramInt) && (SwipeBackLayout.l(SwipeBackLayout.this)) && ((SwipeBackLayout.this.getContext() instanceof Activity)) && (!SwipeBackLayout.b(SwipeBackLayout.this)) && (!SwipeBackLayout.j(SwipeBackLayout.this)))
+      if ((1 == paramInt) && (SwipeBackLayout.n(SwipeBackLayout.this)) && ((SwipeBackLayout.this.getContext() instanceof Activity)) && (!SwipeBackLayout.b(SwipeBackLayout.this)) && (!SwipeBackLayout.l(SwipeBackLayout.this)))
       {
-        y.i("MicroMsg.SwipeBackLayout", "ashutest:: match dragging");
+        ab.i("MicroMsg.SwipeBackLayout", "ashutest:: match dragging");
         SwipeBackLayout.d(SwipeBackLayout.this, true);
         b.a((Activity)SwipeBackLayout.this.getContext(), this);
       }
       if (2 == paramInt)
       {
-        y.i("MicroMsg.SwipeBackLayout", "ashutest:: notify settle, mReleasedLeft %d", new Object[] { Integer.valueOf(this.wln) });
-        if (this.wln <= 0) {
-          break label308;
+        ab.i("MicroMsg.SwipeBackLayout", "ashutest:: notify settle, mReleasedLeft %d", new Object[] { Integer.valueOf(this.AFh) });
+        if (this.AFh <= 0) {
+          break label434;
         }
       }
-      label308:
+      label434:
       for (boolean bool = true;; bool = false)
       {
-        g.C(bool, this.wln);
+        h.K(bool, this.AFh);
+        AppMethodBeat.o(107989);
         return;
       }
     }

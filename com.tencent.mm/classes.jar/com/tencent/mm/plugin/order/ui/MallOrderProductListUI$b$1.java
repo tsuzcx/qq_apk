@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.order.ui;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallOrderProductListUI$b$1
   implements Runnable
@@ -10,7 +11,9 @@ final class MallOrderProductListUI$b$1
   
   public final void run()
   {
-    this.mQO.iwn.setImageBitmap(this.val$bmp);
+    AppMethodBeat.i(43840);
+    this.prb.kxr.setImageBitmap(this.val$bmp);
+    AppMethodBeat.o(43840);
   }
 }
 

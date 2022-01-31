@@ -1,53 +1,61 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
 import android.support.v7.widget.RecyclerView.v;
-import com.tencent.mm.plugin.appbrand.widget.desktop.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.desktop.a.c;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class DragFeatureView$a
   implements Runnable
 {
-  final RecyclerView.v abY;
+  final RecyclerView.v acJ;
   
   DragFeatureView$a(DragFeatureView paramDragFeatureView, RecyclerView.v paramv)
   {
-    this.abY = paramv;
+    this.acJ = paramv;
   }
   
   public final void run()
   {
-    if (this.abY == null) {}
-    int i;
-    int j;
-    do
+    AppMethodBeat.i(133901);
+    if (this.acJ == null)
     {
+      AppMethodBeat.o(133901);
       return;
-      i = DragFeatureView.a(this.hqW);
-      j = this.abY.id();
-    } while (j < 0);
-    if (DragFeatureView.b(this.hqW) != this.abY) {}
+    }
+    int i = DragFeatureView.a(this.jfO);
+    int j = this.acJ.jN();
+    if (j < 0)
+    {
+      AppMethodBeat.o(133901);
+      return;
+    }
+    if (DragFeatureView.b(this.jfO) != this.acJ) {}
     for (boolean bool = true;; bool = false)
     {
-      b localb = DragFeatureView.c(this.hqW);
-      this.hqW.getRecyclerView();
-      y.i("MicroMsg.DragFeatureView", "alvinluo move run %b, onMove: %b, from: %d, to: %d", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(localb.M(this.abY)), Integer.valueOf(i), Integer.valueOf(j) });
-      if (DragFeatureView.b(this.hqW) == this.abY) {
-        break;
+      c localc = DragFeatureView.c(this.jfO);
+      this.jfO.getRecyclerView();
+      DragFeatureView.b(this.jfO);
+      ab.i("MicroMsg.DragFeatureView", "alvinluo move run %b, onMove: %b, from: %d, to: %d", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(localc.R(this.acJ)), Integer.valueOf(i), Integer.valueOf(j) });
+      if (DragFeatureView.b(this.jfO) != this.acJ)
+      {
+        localc = DragFeatureView.c(this.jfO);
+        this.jfO.getRecyclerView();
+        DragFeatureView.b(this.jfO);
+        if (localc.R(this.acJ))
+        {
+          DragFeatureView.c(this.jfO).a(this.jfO.getRecyclerView(), DragFeatureView.b(this.jfO), this.acJ, i, j);
+          DragFeatureView.a(this.jfO, j);
+        }
       }
-      localb = DragFeatureView.c(this.hqW);
-      this.hqW.getRecyclerView();
-      if (!localb.M(this.abY)) {
-        break;
-      }
-      DragFeatureView.c(this.hqW).a(this.hqW.getRecyclerView(), DragFeatureView.b(this.hqW), this.abY, i, j);
-      DragFeatureView.a(this.hqW, j);
+      AppMethodBeat.o(133901);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.DragFeatureView.a
  * JD-Core Version:    0.7.0.1
  */

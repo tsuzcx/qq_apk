@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 public abstract interface JsApiAppBrandNFCBase$a
 {
-  public abstract void J(int paramInt, String paramString);
+  public abstract void U(int paramInt, String paramString);
 }
 
 

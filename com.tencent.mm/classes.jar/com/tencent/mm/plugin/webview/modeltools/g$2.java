@@ -1,14 +1,16 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import com.tencent.mm.h.a.uj;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.f;
+import com.tencent.mm.cm.c;
 
 final class g$2
-  extends c<uj>
+  implements c<f>
 {
   g$2(g paramg)
   {
-    this.udX = uj.class.getName().hashCode();
+    AppMethodBeat.i(6961);
+    AppMethodBeat.o(6961);
   }
 }
 

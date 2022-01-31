@@ -1,141 +1,157 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.ui;
 
-import com.tencent.mm.h.b.a.aa;
-import com.tencent.mm.plugin.walletlock.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.bt;
 import com.tencent.mm.plugin.walletlock.c.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 
 public final class FingerprintWalletLockUI$a
   implements b
 {
-  private WeakReference<FingerprintWalletLockUI> kmj = null;
+  private WeakReference<FingerprintWalletLockUI> mGZ;
   
   public FingerprintWalletLockUI$a(FingerprintWalletLockUI paramFingerprintWalletLockUI1, FingerprintWalletLockUI paramFingerprintWalletLockUI2)
   {
-    this.kmj = new WeakReference(paramFingerprintWalletLockUI2);
+    AppMethodBeat.i(51513);
+    this.mGZ = null;
+    this.mGZ = new WeakReference(paramFingerprintWalletLockUI2);
+    AppMethodBeat.o(51513);
   }
   
-  private FingerprintWalletLockUI bYa()
+  private FingerprintWalletLockUI cXI()
   {
-    if (this.kmj != null) {
-      return (FingerprintWalletLockUI)this.kmj.get();
+    AppMethodBeat.i(51514);
+    if (this.mGZ != null)
+    {
+      FingerprintWalletLockUI localFingerprintWalletLockUI = (FingerprintWalletLockUI)this.mGZ.get();
+      AppMethodBeat.o(51514);
+      return localFingerprintWalletLockUI;
     }
+    AppMethodBeat.o(51514);
     return null;
   }
   
-  public final void J(int paramInt, String paramString)
+  public final void U(int paramInt, String paramString)
   {
-    y.i("MicroMsg.FingerprintWalletLockUI", "alvinluo onResult result: %d, errMsg: %s, isCancelled: %b", new Object[] { Integer.valueOf(paramInt), paramString, Boolean.valueOf(FingerprintWalletLockUI.c(this.qPy)) });
-    if ((FingerprintWalletLockUI.d(this.qPy) != null) && (FingerprintWalletLockUI.d(this.qPy).equals("action.switch_on_pattern")))
+    AppMethodBeat.i(51516);
+    ab.i("MicroMsg.FingerprintWalletLockUI", "alvinluo onResult result: %d, errMsg: %s, isCancelled: %b", new Object[] { Integer.valueOf(paramInt), paramString, Boolean.valueOf(FingerprintWalletLockUI.c(this.uEG)) });
+    if ((FingerprintWalletLockUI.d(this.uEG) != null) && (FingerprintWalletLockUI.d(this.uEG).equals("action.switch_on_pattern")))
     {
-      paramString = new aa();
-      paramString.ckr = 3L;
-      paramString.cks = 1L;
-      paramString.QX();
+      paramString = new bt();
+      paramString.cRI = 3L;
+      paramString.cYT = 1L;
+      paramString.ake();
     }
-    if ((FingerprintWalletLockUI.d(this.qPy) != null) && (FingerprintWalletLockUI.d(this.qPy).equals("action.verify_pattern")))
+    if ((FingerprintWalletLockUI.d(this.uEG) != null) && (FingerprintWalletLockUI.d(this.uEG).equals("action.verify_pattern")))
     {
-      if (FingerprintWalletLockUI.e(this.qPy) != 1) {
-        break label157;
+      if (FingerprintWalletLockUI.e(this.uEG) != 1) {
+        break label167;
       }
-      paramString = new aa();
-      paramString.ckr = 7L;
-      paramString.cks = 1L;
+      paramString = new bt();
+      paramString.cRI = 7L;
+      paramString.cYT = 1L;
+      paramString.ake();
     }
-    label156:
-    label157:
-    do
+    while (FingerprintWalletLockUI.c(this.uEG))
     {
-      paramString.QX();
-      break label156;
-      if (FingerprintWalletLockUI.c(this.qPy)) {}
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if (FingerprintWalletLockUI.e(this.qPy) != 2) {
-                    break;
-                  }
-                  paramString = new aa();
-                  paramString.ckr = 9L;
-                  paramString.cks = 1L;
-                  paramString.QX();
-                  break;
-                  switch (paramInt)
-                  {
-                  case 6: 
-                  case 7: 
-                  default: 
-                    return;
-                  case 0: 
-                    y.i("MicroMsg.FingerprintWalletLockUI", "identify success");
-                    if (bYa() != null) {
-                      FingerprintWalletLockUI.f(bYa());
-                    }
-                    if ((FingerprintWalletLockUI.d(this.qPy) != null) && (FingerprintWalletLockUI.d(this.qPy).equals("action.switch_on_pattern")))
-                    {
-                      paramString = new aa();
-                      paramString.ckr = 3L;
-                      paramString.cks = 2L;
-                      paramString.QX();
-                    }
-                    break;
-                  }
-                } while ((FingerprintWalletLockUI.d(this.qPy) == null) || (!FingerprintWalletLockUI.d(this.qPy).equals("action.verify_pattern")));
-                if (FingerprintWalletLockUI.e(this.qPy) == 1)
-                {
-                  paramString = new aa();
-                  paramString.ckr = 7L;
-                  paramString.cks = 2L;
-                  paramString.QX();
-                  return;
-                }
-              } while (FingerprintWalletLockUI.e(this.qPy) != 2);
-              paramString = new aa();
-              paramString.ckr = 9L;
-              paramString.cks = 2L;
-              paramString.QX();
-              return;
-              y.i("MicroMsg.FingerprintWalletLockUI", "alvinluo user cancel");
-              return;
-              y.i("MicroMsg.FingerprintWalletLockUI", "alvinluo identify ERR_NO_MATCH");
-            } while (bYa() == null);
-            FingerprintWalletLockUI.a(bYa(), paramInt, this.qPy.getString(a.g.wallet_lock_fingerprint_verify_not_match_error));
-            return;
-            y.i("MicroMsg.FingerprintWalletLockUI", "alvinluo identify TIMEOUT");
-          } while (bYa() == null);
-          FingerprintWalletLockUI.a(bYa(), paramInt, this.qPy.getString(a.g.wallet_lock_fingerprint_verify_not_match_error));
-          return;
-        } while (bYa() == null);
-        FingerprintWalletLockUI.b(bYa(), paramInt, this.qPy.getString(a.g.wallet_lock_fingerprint_system_error));
-        return;
-      } while (bYa() == null);
-      FingerprintWalletLockUI.b(bYa(), paramInt, this.qPy.getString(a.g.wallet_lock_no_fingerprint_when_offline_verify));
+      AppMethodBeat.o(51516);
       return;
-      y.i("MicroMsg.FingerprintWalletLockUI", "alvinluo on error: %d", new Object[] { Integer.valueOf(paramInt) });
-    } while (bYa() == null);
-    FingerprintWalletLockUI.b(bYa(), paramInt, this.qPy.getString(a.g.wallet_lock_fingerprint_too_many_trial_error));
+      label167:
+      if (FingerprintWalletLockUI.e(this.uEG) == 2)
+      {
+        paramString = new bt();
+        paramString.cRI = 9L;
+        paramString.cYT = 1L;
+        paramString.ake();
+      }
+    }
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(51516);
+      return;
+      ab.i("MicroMsg.FingerprintWalletLockUI", "identify success");
+      if (cXI() != null) {
+        FingerprintWalletLockUI.f(cXI());
+      }
+      if ((FingerprintWalletLockUI.d(this.uEG) != null) && (FingerprintWalletLockUI.d(this.uEG).equals("action.switch_on_pattern")))
+      {
+        paramString = new bt();
+        paramString.cRI = 3L;
+        paramString.cYT = 2L;
+        paramString.ake();
+      }
+      if ((FingerprintWalletLockUI.d(this.uEG) != null) && (FingerprintWalletLockUI.d(this.uEG).equals("action.verify_pattern")))
+      {
+        if (FingerprintWalletLockUI.e(this.uEG) == 1)
+        {
+          paramString = new bt();
+          paramString.cRI = 7L;
+          paramString.cYT = 2L;
+          paramString.ake();
+          AppMethodBeat.o(51516);
+          return;
+        }
+        if (FingerprintWalletLockUI.e(this.uEG) == 2)
+        {
+          paramString = new bt();
+          paramString.cRI = 9L;
+          paramString.cYT = 2L;
+          paramString.ake();
+          AppMethodBeat.o(51516);
+          return;
+          ab.i("MicroMsg.FingerprintWalletLockUI", "alvinluo user cancel");
+          AppMethodBeat.o(51516);
+          return;
+          ab.i("MicroMsg.FingerprintWalletLockUI", "alvinluo identify ERR_NO_MATCH");
+          if (cXI() != null)
+          {
+            FingerprintWalletLockUI.a(cXI(), paramInt, this.uEG.getString(2131305162));
+            AppMethodBeat.o(51516);
+            return;
+            ab.i("MicroMsg.FingerprintWalletLockUI", "alvinluo identify TIMEOUT");
+            if (cXI() != null)
+            {
+              FingerprintWalletLockUI.a(cXI(), paramInt, this.uEG.getString(2131305162));
+              AppMethodBeat.o(51516);
+              return;
+              if (cXI() != null)
+              {
+                FingerprintWalletLockUI.b(cXI(), paramInt, this.uEG.getString(2131305154));
+                AppMethodBeat.o(51516);
+                return;
+                if (cXI() != null)
+                {
+                  FingerprintWalletLockUI.b(cXI(), paramInt, this.uEG.getString(2131305171));
+                  AppMethodBeat.o(51516);
+                  return;
+                  ab.i("MicroMsg.FingerprintWalletLockUI", "alvinluo on error: %d", new Object[] { Integer.valueOf(paramInt) });
+                  if (cXI() != null) {
+                    FingerprintWalletLockUI.b(cXI(), paramInt, this.uEG.getString(2131305161));
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
   
-  public final void bYb()
+  public final void cXJ()
   {
-    FingerprintWalletLockUI.a(this.qPy);
-    FingerprintWalletLockUI.b(this.qPy);
+    AppMethodBeat.i(51515);
+    FingerprintWalletLockUI.a(this.uEG);
+    FingerprintWalletLockUI.b(this.uEG);
+    AppMethodBeat.o(51515);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.fingerprint.ui.FingerprintWalletLockUI.a
  * JD-Core Version:    0.7.0.1
  */

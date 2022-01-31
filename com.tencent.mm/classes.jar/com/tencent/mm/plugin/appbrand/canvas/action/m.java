@@ -1,13 +1,10 @@
 package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
-import com.tencent.mm.plugin.appbrand.canvas.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DefaultDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
-import com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e;
-import com.tencent.mm.plugin.appbrand.canvas.action.arg.a.i;
-import java.util.Stack;
 import org.json.JSONArray;
 
 public final class m
@@ -15,39 +12,35 @@ public final class m
 {
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas)
   {
+    AppMethodBeat.i(103218);
     paramCanvas.restore();
-    if (!paramd.fLr.isEmpty())
-    {
-      paramCanvas = paramd.fLp;
-      a locala = paramd.fLq;
-      paramd.fLp = ((a)paramd.fLr.pop());
-      paramd.fLq = ((a)paramd.fLs.pop());
-      if (paramd.fLy)
-      {
-        if (paramd.fLp != paramCanvas) {
-          i.adO().a(paramCanvas);
-        }
-        if (paramd.fLq != locala) {
-          e.adK().a(locala);
-        }
-      }
-    }
+    paramd.restore();
+    AppMethodBeat.o(103218);
     return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    return a(paramd, paramCanvas);
+    AppMethodBeat.i(103219);
+    boolean bool = a(paramd, paramCanvas);
+    AppMethodBeat.o(103219);
+    return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    return a(paramd, paramCanvas);
+    AppMethodBeat.i(103217);
+    boolean bool = a(paramd, paramCanvas);
+    AppMethodBeat.o(103217);
+    return bool;
   }
   
-  public final BaseDrawActionArg adE()
+  public final BaseDrawActionArg axW()
   {
-    return new DefaultDrawActionArg();
+    AppMethodBeat.i(103216);
+    DefaultDrawActionArg localDefaultDrawActionArg = new DefaultDrawActionArg();
+    AppMethodBeat.o(103216);
+    return localDefaultDrawActionArg;
   }
   
   public final String getMethod()

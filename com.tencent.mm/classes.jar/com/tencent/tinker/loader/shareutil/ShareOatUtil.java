@@ -7,7 +7,7 @@ public final class ShareOatUtil
     throw new UnsupportedOperationException();
   }
   
-  private static enum InstructionSet
+  static enum InstructionSet
   {
     private InstructionSet() {}
   }

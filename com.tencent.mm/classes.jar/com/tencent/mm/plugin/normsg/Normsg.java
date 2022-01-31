@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.normsg;
 
-import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Keep;
+import com.tencent.mm.sdk.g.d;
 
 @Keep
 public abstract class Normsg
@@ -19,7 +19,7 @@ public abstract class Normsg
       local1.run();
       return;
     }
-    new Handler(Looper.getMainLooper()).postAtFrontOfQueue(local1);
+    d.h(local1, "NormsgInit").start();
     for (;;)
     {
       if (arrayOfBoolean[0] == 0) {}
@@ -38,7 +38,7 @@ public abstract class Normsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.Normsg
  * JD-Core Version:    0.7.0.1
  */

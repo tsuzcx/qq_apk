@@ -1,5 +1,7 @@
 package com.qq.taf.jce.dynamic;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class LongField
   extends NumberField
 {
@@ -18,7 +20,10 @@ public class LongField
   
   public Number getNumber()
   {
-    return Long.valueOf(this.data);
+    AppMethodBeat.i(117014);
+    long l = this.data;
+    AppMethodBeat.o(117014);
+    return Long.valueOf(l);
   }
   
   public void set(long paramLong)

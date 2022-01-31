@@ -4,14 +4,14 @@ public abstract class e<T>
 {
   private T mInstance;
   
-  public abstract T cOj();
+  protected abstract T dTV();
   
   public final T get()
   {
     try
     {
       if (this.mInstance == null) {
-        this.mInstance = cOj();
+        this.mInstance = dTV();
       }
       Object localObject1 = this.mInstance;
       return localObject1;
@@ -21,7 +21,7 @@ public abstract class e<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.pb.common.c.e
  * JD-Core Version:    0.7.0.1
  */

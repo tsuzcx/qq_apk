@@ -5,7 +5,7 @@ public final class c$jg
 {
   public c$jg()
   {
-    super("startScanWXDevice", "startScanWXDevice", 121, true);
+    super("setSendDataDirection", "setSendDataDirection", 127, false);
   }
 }
 

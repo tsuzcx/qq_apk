@@ -4,6 +4,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
 import com.tencent.mm.ui.MMActivity;
 
@@ -14,21 +15,23 @@ final class VideoPlayView$3
   
   public final void run()
   {
+    AppMethodBeat.i(70317);
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    if ((this.ogv.getContext() instanceof MMActivity))
+    if ((this.qUK.getContext() instanceof MMActivity))
     {
-      ((MMActivity)this.ogv.getContext()).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-      if ((VideoPlayView.a(this.ogv) instanceof VideoSightView)) {
-        ((VideoSightView)VideoPlayView.a(this.ogv)).setDrawableWidth(localDisplayMetrics.widthPixels);
+      ((MMActivity)this.qUK.getContext()).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+      if ((VideoPlayView.a(this.qUK) instanceof VideoSightView)) {
+        ((VideoSightView)VideoPlayView.a(this.qUK)).setDrawableWidth(localDisplayMetrics.widthPixels);
       }
     }
-    ((View)VideoPlayView.a(this.ogv)).requestLayout();
-    ((View)VideoPlayView.a(this.ogv)).postInvalidate();
+    ((View)VideoPlayView.a(this.qUK)).requestLayout();
+    ((View)VideoPlayView.a(this.qUK)).postInvalidate();
+    AppMethodBeat.o(70317);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.VideoPlayView.3
  * JD-Core Version:    0.7.0.1
  */

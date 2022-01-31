@@ -1,8 +1,26 @@
 package com.tencent.mm.ui.widget.textview;
 
-public abstract interface a$c
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class a$c
 {
-  public abstract void P(CharSequence paramCharSequence);
+  int end;
+  int start;
+  
+  a$c(a parama) {}
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(113142);
+    String str = "start: " + this.start + " end: " + this.end;
+    AppMethodBeat.o(113142);
+    return str;
+  }
+  
+  final boolean ws(int paramInt)
+  {
+    return (paramInt >= this.start) && (paramInt < this.end);
+  }
 }
 
 

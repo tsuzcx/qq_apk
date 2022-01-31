@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.base;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMGridPaper$2
   implements Runnable
@@ -9,13 +10,15 @@ final class MMGridPaper$2
   
   public final void run()
   {
-    y.w("MicroMsg.MMGridPaper", "post do setDotView");
-    MMGridPaper.a(this.uVI);
+    AppMethodBeat.i(106617);
+    ab.w("MicroMsg.MMGridPaper", "post do setDotView");
+    MMGridPaper.a(this.zkb);
+    AppMethodBeat.o(106617);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMGridPaper.2
  * JD-Core Version:    0.7.0.1
  */

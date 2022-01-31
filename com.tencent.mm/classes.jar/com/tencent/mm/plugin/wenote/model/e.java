@@ -15,10 +15,15 @@ public final class e
   public int field_status;
   public int field_totalLen;
   public int field_type;
+  
+  public final boolean isFinished()
+  {
+    return (this.field_status == 3) || (this.field_status == 2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.e
  * JD-Core Version:    0.7.0.1
  */

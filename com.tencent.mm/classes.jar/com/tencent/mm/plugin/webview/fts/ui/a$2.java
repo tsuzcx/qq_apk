@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$2
   extends GestureDetector.SimpleOnGestureListener
@@ -16,8 +17,10 @@ final class a$2
   
   public final boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.rau.gES.removeCallbacks(this.rau.gEZ);
-    this.rau.rat.akm();
+    AppMethodBeat.i(5817);
+    this.uQb.idW.removeCallbacks(this.uQb.ied);
+    this.uQb.uQa.aEY();
+    AppMethodBeat.o(5817);
     return true;
   }
   
@@ -25,15 +28,18 @@ final class a$2
   {
     float f1 = 1.0F;
     float f2 = 0.0F;
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+    AppMethodBeat.i(5818);
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null))
+    {
+      AppMethodBeat.o(5818);
       return true;
     }
-    if (this.rau.ras == a.a.rav)
+    if (this.uQb.uPZ == a.a.uQc)
     {
       if (Math.abs(paramFloat1) <= Math.abs(paramFloat2)) {
-        break label142;
+        break label160;
       }
-      this.rau.ras = a.a.ray;
+      this.uQb.uPZ = a.a.uQf;
     }
     float f3;
     for (;;)
@@ -41,41 +47,42 @@ final class a$2
       paramFloat1 = paramMotionEvent2.getX();
       paramFloat2 = paramMotionEvent1.getX();
       f3 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
-      paramMotionEvent1 = this.rau;
-      if (paramMotionEvent1.ras != a.a.ray) {
+      paramMotionEvent1 = this.uQb;
+      if (paramMotionEvent1.uPZ != a.a.uQf) {
         break;
       }
-      if (paramMotionEvent1.gEX == -1)
+      if (paramMotionEvent1.ieb == -1)
       {
-        paramMotionEvent1.rat.akn();
-        paramMotionEvent1.gEX = paramMotionEvent1.rat.getCurrentPosition();
+        paramMotionEvent1.uQa.aEZ();
+        paramMotionEvent1.ieb = paramMotionEvent1.uQa.getCurrentPosition();
       }
-      paramMotionEvent1.gEY = paramMotionEvent1.rat.f(paramMotionEvent1.gEX, paramFloat1 - paramFloat2);
+      paramMotionEvent1.iec = paramMotionEvent1.uQa.h(paramMotionEvent1.ieb, paramFloat1 - paramFloat2);
+      AppMethodBeat.o(5818);
       return true;
-      label142:
-      if (paramMotionEvent1.getX() < this.rau.gES.getMeasuredWidth() / 2) {
-        this.rau.ras = a.a.rax;
+      label160:
+      if (paramMotionEvent1.getX() < this.uQb.idW.getMeasuredWidth() / 2) {
+        this.uQb.uPZ = a.a.uQe;
       } else {
-        this.rau.ras = a.a.raw;
+        this.uQb.uPZ = a.a.uQd;
       }
     }
-    if (paramMotionEvent1.ras == a.a.rax)
+    if (paramMotionEvent1.uPZ == a.a.uQe)
     {
-      paramFloat1 = f3 * -1.0F / paramMotionEvent1.gES.getMeasuredHeight() * 1.2F + paramMotionEvent1.gCn;
+      paramFloat1 = f3 * -1.0F / paramMotionEvent1.idW.getMeasuredHeight() * 1.2F + paramMotionEvent1.iaW;
       if (paramFloat1 < 0.0F) {
         paramFloat1 = f2;
       }
     }
-    label307:
-    label487:
-    label490:
+    label249:
+    label506:
+    label509:
     for (;;)
     {
       paramMotionEvent2 = paramMotionEvent1.mContext;
       if ((paramMotionEvent2 instanceof Activity))
       {
         if (paramFloat1 >= 0.01F) {
-          break label307;
+          break label326;
         }
         paramFloat2 = 0.01F;
       }
@@ -85,23 +92,23 @@ final class a$2
         WindowManager.LayoutParams localLayoutParams = paramMotionEvent2.getWindow().getAttributes();
         localLayoutParams.screenBrightness = paramFloat2;
         paramMotionEvent2.getWindow().setAttributes(localLayoutParams);
-        paramMotionEvent1.rat.ai(paramFloat1);
-        return true;
+        paramMotionEvent1.uQa.ax(paramFloat1);
+        break;
         if (paramFloat1 <= 1.0F) {
-          break label490;
+          break label509;
         }
         paramFloat1 = 1.0F;
-        break;
+        break label249;
         paramFloat2 = f1;
         if (paramFloat1 <= 1.0F) {
           paramFloat2 = paramFloat1;
         }
       }
-      if (paramMotionEvent1.ras != a.a.raw) {
+      if (paramMotionEvent1.uPZ != a.a.uQd) {
         break;
       }
       paramFloat1 = f3 * -1.0F;
-      paramFloat2 = paramFloat1 / paramMotionEvent1.gES.getMeasuredHeight();
+      paramFloat2 = paramFloat1 / paramMotionEvent1.idW.getMeasuredHeight();
       paramMotionEvent2 = (AudioManager)paramMotionEvent1.mContext.getSystemService("audio");
       int j = paramMotionEvent2.getStreamMaxVolume(3);
       paramFloat2 = 1.2F * (paramFloat2 * j);
@@ -113,21 +120,21 @@ final class a$2
       }
       for (;;)
       {
-        int k = i + paramMotionEvent1.Cv;
+        int k = i + paramMotionEvent1.De;
         if (k < 0) {
           i = 0;
         }
         for (;;)
         {
-          paramMotionEvent2.setStreamVolume(3, i, 0);
+          com.tencent.mm.compatible.b.a.b(paramMotionEvent2, 3, i);
           paramFloat1 = i / j;
-          paramMotionEvent1.rat.ah(paramFloat1);
-          return true;
+          paramMotionEvent1.uQa.aw(paramFloat1);
+          break;
           if (paramFloat1 >= 0.0F) {
-            break label487;
+            break label506;
           }
           i = -1;
-          break;
+          break label431;
           i = k;
           if (k >= j) {
             i = j;
@@ -139,13 +146,15 @@ final class a$2
   
   public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    this.rau.gES.postDelayed(this.rau.gEZ, 200L);
+    AppMethodBeat.i(5816);
+    this.uQb.idW.postDelayed(this.uQb.ied, 200L);
+    AppMethodBeat.o(5816);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.ui.a.2
  * JD-Core Version:    0.7.0.1
  */

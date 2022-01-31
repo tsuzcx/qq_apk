@@ -1,18 +1,17 @@
 package com.tencent.mm.plugin.voip.ui;
 
-import com.tencent.mm.plugin.voip.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VideoActivity$13
   implements Runnable
 {
-  VideoActivity$13(VideoActivity paramVideoActivity) {}
+  VideoActivity$13(VideoActivity paramVideoActivity, int paramInt) {}
   
   public final void run()
   {
-    if (VideoActivity.d(this.pWM) != null) {
-      VideoActivity.d(this.pWM).cD(this.pWM.getString(a.e.voip_shutdown_tip), -1);
-    }
-    VideoActivity.e(this.pWM);
+    AppMethodBeat.i(4800);
+    VideoActivity.a(this.tCq, this.jMc);
+    AppMethodBeat.o(4800);
   }
 }
 

@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.sight.draft.ui;
 
 import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 final class c$b
   implements Runnable
 {
-  Bitmap kJz;
   String key;
-  WeakReference<c> oha;
+  Bitmap nfX;
+  WeakReference<c> qVp;
   
   public final void run()
   {
-    c localc = (c)this.oha.get();
+    AppMethodBeat.i(25023);
+    c localc = (c)this.qVp.get();
     if (localc != null) {
-      localc.p(this.key, this.kJz);
+      localc.r(this.key, this.nfX);
     }
+    AppMethodBeat.o(25023);
   }
 }
 

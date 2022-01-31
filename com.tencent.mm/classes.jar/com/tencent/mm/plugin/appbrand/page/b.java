@@ -2,101 +2,160 @@ package com.tencent.mm.plugin.appbrand.page;
 
 import android.app.Activity;
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.webkit.WebChromeClient.CustomViewCallback;
-import com.tencent.mm.compatible.util.d;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.drawable.Drawable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.e;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.page.a.c.a;
+import com.tencent.mm.plugin.appbrand.page.a.f;
+import com.tencent.mm.sdk.platformtools.ah;
+import java.util.HashMap;
 
-public final class b
+public class b
+  extends f
 {
-  private int adN;
-  private View gSt;
-  WebChromeClient.CustomViewCallback gSu;
-  private int gSv = 0;
-  final Set<ae> gSw = Collections.newSetFromMap(new ConcurrentHashMap());
-  private Context mContext;
+  private static final b iuR;
+  private static final HashMap<i, b> iuS;
+  private final i bAb;
+  private Drawable iuT;
+  private CharSequence iuU;
   
-  b(Context paramContext)
+  static
   {
-    this.mContext = paramContext;
-  }
-  
-  private void amR()
-  {
-    Iterator localIterator = this.gSw.iterator();
-    while (localIterator.hasNext()) {
-      ((ae)localIterator.next()).anw();
-    }
-  }
-  
-  final void a(ae paramae)
-  {
-    this.gSw.add(paramae);
-  }
-  
-  final boolean amQ()
-  {
-    if (this.gSt == null) {
-      return false;
-    }
-    if (this.gSu != null) {
-      this.gSu.onCustomViewHidden();
-    }
-    Object localObject = (Activity)this.mContext;
-    ViewGroup localViewGroup = (ViewGroup)((Activity)localObject).getWindow().getDecorView();
-    localViewGroup.setSystemUiVisibility(this.gSv);
-    localViewGroup.removeView(this.gSt);
-    ((Activity)localObject).getWindow().clearFlags(1024);
-    ((Activity)localObject).setRequestedOrientation(this.adN);
-    this.gSt = null;
-    this.gSu = null;
-    localObject = this.gSw.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((ae)((Iterator)localObject).next()).ajc();
-    }
-    return true;
-  }
-  
-  final void z(View paramView, int paramInt)
-  {
-    amQ();
-    this.gSt = paramView;
-    Activity localActivity = (Activity)this.mContext;
-    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-    ViewGroup localViewGroup = (ViewGroup)localActivity.getWindow().getDecorView();
-    this.gSv = localViewGroup.getSystemUiVisibility();
-    localViewGroup.addView(paramView, localLayoutParams);
-    paramView.setX(0.0F);
-    paramView.setY(0.0F);
-    if (d.gG(19))
+    AppMethodBeat.i(87036);
+    iuR = new b()
     {
-      localViewGroup.setSystemUiVisibility(2);
-      localActivity.getWindow().addFlags(1024);
-      this.adN = localActivity.getRequestedOrientation();
-      switch (paramInt)
+      public final c.a a(b.a paramAnonymousa)
       {
-      default: 
-        localActivity.setRequestedOrientation(9);
+        return iAl;
       }
-    }
-    for (;;)
+      
+      public final Context getContext()
+      {
+        AppMethodBeat.i(87022);
+        Context localContext = ah.getContext();
+        AppMethodBeat.o(87022);
+        return localContext;
+      }
+    };
+    iuS = new HashMap();
+    AppMethodBeat.o(87036);
+  }
+  
+  private b(i parami)
+  {
+    AppMethodBeat.i(87029);
+    this.bAb = parami;
+    if (parami == null)
     {
-      amR();
+      AppMethodBeat.o(87029);
       return;
-      localViewGroup.setSystemUiVisibility(4102);
-      break;
-      localActivity.setRequestedOrientation(0);
-      continue;
-      localActivity.setRequestedOrientation(8);
-      continue;
-      localActivity.setRequestedOrientation(1);
     }
+    e.a(parami.mAppId, new b.2(this, parami));
+    AppMethodBeat.o(87029);
+  }
+  
+  public static b E(i parami)
+  {
+    AppMethodBeat.i(87028);
+    if ((parami == null) || (parami.mFinished))
+    {
+      parami = iuR;
+      AppMethodBeat.o(87028);
+      return parami;
+    }
+    b localb2 = (b)iuS.get(parami);
+    b localb1 = localb2;
+    if (localb2 == null)
+    {
+      localb1 = new b(parami);
+      iuS.put(parami, localb1);
+    }
+    AppMethodBeat.o(87028);
+    return localb1;
+  }
+  
+  private static void a(Drawable paramDrawable, v paramv)
+  {
+    AppMethodBeat.i(87032);
+    if (paramv == null)
+    {
+      AppMethodBeat.o(87032);
+      return;
+    }
+    paramv.getActionBar().getCapsuleBar().aKe().setLogo(paramDrawable);
+    AppMethodBeat.o(87032);
+  }
+  
+  private static void a(CharSequence paramCharSequence, v paramv)
+  {
+    AppMethodBeat.i(87034);
+    if (paramv == null)
+    {
+      AppMethodBeat.o(87034);
+      return;
+    }
+    paramv.x(paramCharSequence);
+    AppMethodBeat.o(87034);
+  }
+  
+  static void c(v paramv)
+  {
+    AppMethodBeat.i(87027);
+    if (paramv == null)
+    {
+      AppMethodBeat.o(87027);
+      return;
+    }
+    b localb = E(paramv.getRuntime());
+    a(localb.iuT, paramv);
+    a(localb.iuU, paramv);
+    AppMethodBeat.o(87027);
+  }
+  
+  public c.a a(b.a parama)
+  {
+    AppMethodBeat.i(87035);
+    int i = parama.ivb;
+    int j = parama.ivc;
+    parama = super.aKe();
+    parama.setLogo(j);
+    parama.pp(i);
+    AppMethodBeat.o(87035);
+    return parama;
+  }
+  
+  public Context getContext()
+  {
+    AppMethodBeat.i(87030);
+    try
+    {
+      Context localContext = this.bAb.atj().getCurrentPage().getCurrentPageView().getActionBar().getContext();
+      AppMethodBeat.o(87030);
+      return localContext;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      Activity localActivity = this.bAb.getContext();
+      AppMethodBeat.o(87030);
+      return localActivity;
+    }
+  }
+  
+  public final void p(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(87031);
+    this.iuT = paramDrawable;
+    a(this.iuT, this.bAb.ws().getCurrentPageView());
+    AppMethodBeat.o(87031);
+  }
+  
+  public final void w(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(87033);
+    this.iuU = paramCharSequence;
+    a(this.iuU, this.bAb.ws().getCurrentPageView());
+    AppMethodBeat.o(87033);
   }
 }
 

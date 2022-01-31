@@ -8,8 +8,7 @@ import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import com.tencent.mm.plugin.qqmail.b.f;
-import com.tencent.mm.plugin.qqmail.b.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.o;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,30 +17,48 @@ public final class MailAddrsViewControl$b
   extends BaseAdapter
   implements Filterable
 {
-  private List<o> fkW;
-  private ArrayList<o> fkX;
+  private List<o> gCn;
+  private ArrayList<o> gCo;
   private Context mContext;
-  private final Object mLock = new Object();
-  private boolean niu = true;
-  private MailAddrsViewControl.b.a niv;
+  private final Object mLock;
+  private boolean pNH;
+  private MailAddrsViewControl.b.a pNI;
   
   public MailAddrsViewControl$b(Context paramContext, List<o> paramList)
   {
+    AppMethodBeat.i(68351);
+    this.mLock = new Object();
+    this.pNH = true;
     this.mContext = paramContext;
-    this.fkW = paramList;
+    this.gCn = paramList;
+    AppMethodBeat.o(68351);
+  }
+  
+  public final o Ca(int paramInt)
+  {
+    AppMethodBeat.i(68354);
+    o localo = (o)this.gCn.get(paramInt);
+    AppMethodBeat.o(68354);
+    return localo;
   }
   
   public final int getCount()
   {
-    return this.fkW.size();
+    AppMethodBeat.i(68353);
+    int i = this.gCn.size();
+    AppMethodBeat.o(68353);
+    return i;
   }
   
   public final Filter getFilter()
   {
-    if (this.niv == null) {
-      this.niv = new MailAddrsViewControl.b.a(this, (byte)0);
+    AppMethodBeat.i(68356);
+    if (this.pNI == null) {
+      this.pNI = new MailAddrsViewControl.b.a(this, (byte)0);
     }
-    return this.niv;
+    MailAddrsViewControl.b.a locala = this.pNI;
+    AppMethodBeat.o(68356);
+    return locala;
   }
   
   public final long getItemId(int paramInt)
@@ -51,23 +68,25 @@ public final class MailAddrsViewControl$b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(68355);
     if (paramView == null)
     {
-      paramView = View.inflate(this.mContext, b.g.qqmail_dropdown_addrlist_item, null);
+      paramView = View.inflate(this.mContext, 2130970485, null);
       paramViewGroup = new MailAddrsViewControl.b.b(this, (byte)0);
-      paramViewGroup.fhD = ((TextView)paramView.findViewById(b.f.qqmail_addrlist_item_name_tv));
-      paramViewGroup.nif = ((TextView)paramView.findViewById(b.f.qqmail_addrlist_item_addr_iv));
-      paramViewGroup.nix = ((CheckBox)paramView.findViewById(b.f.qqmail_addrlist_item_select_cb));
+      paramViewGroup.gzk = ((TextView)paramView.findViewById(2131826885));
+      paramViewGroup.pNs = ((TextView)paramView.findViewById(2131826886));
+      paramViewGroup.pNK = ((CheckBox)paramView.findViewById(2131826887));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramViewGroup = wo(paramInt);
+      paramViewGroup = Ca(paramInt);
       MailAddrsViewControl.b.b localb = (MailAddrsViewControl.b.b)paramView.getTag();
-      localb.fhD.setText(paramViewGroup.name);
-      localb.nif.setText(paramViewGroup.lCF);
-      localb.nix.setVisibility(8);
+      localb.gzk.setText(paramViewGroup.name);
+      localb.pNs.setText(paramViewGroup.nZR);
+      localb.pNK.setVisibility(8);
       paramView.setBackgroundColor(-789517);
+      AppMethodBeat.o(68355);
       return paramView;
       paramView = (ViewGroup)paramView;
     }
@@ -75,18 +94,15 @@ public final class MailAddrsViewControl$b
   
   public final void notifyDataSetChanged()
   {
+    AppMethodBeat.i(68352);
     super.notifyDataSetChanged();
-    this.niu = true;
-  }
-  
-  public final o wo(int paramInt)
-  {
-    return (o)this.fkW.get(paramInt);
+    this.pNH = true;
+    AppMethodBeat.o(68352);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl.b
  * JD-Core Version:    0.7.0.1
  */

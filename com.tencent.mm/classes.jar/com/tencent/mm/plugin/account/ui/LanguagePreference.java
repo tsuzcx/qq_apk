@@ -7,14 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class LanguagePreference
   extends Preference
 {
-  public LanguagePreference.a fmi;
+  public LanguagePreference.a gDC;
   
   public LanguagePreference(Context paramContext)
   {
@@ -29,56 +30,66 @@ public class LanguagePreference
   public LanguagePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(q.g.mm_preference);
+    AppMethodBeat.i(124905);
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(124905);
   }
   
   public final void a(LanguagePreference.a parama)
   {
-    if ((parama == null) || (bk.bl(parama.fml)))
+    AppMethodBeat.i(124906);
+    if ((parama == null) || (bo.isNullOrNil(parama.gDF)))
     {
-      y.e("MicroMsg.LanguagePreference", "setInfo info error");
+      ab.e("MicroMsg.LanguagePreference", "setInfo info error");
+      AppMethodBeat.o(124906);
       return;
     }
-    this.fmi = parama;
-    setKey(parama.fml);
+    this.gDC = parama;
+    setKey(parama.gDF);
+    AppMethodBeat.o(124906);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
     int j = 1;
+    AppMethodBeat.i(124908);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(q.f.languagename);
-    paramView = (CheckBox)paramView.findViewById(q.f.state_icon);
+    TextView localTextView = (TextView)paramView.findViewById(2131821815);
+    paramView = (CheckBox)paramView.findViewById(2131824746);
     int i;
     if (localTextView != null)
     {
       i = 1;
       if (paramView == null) {
-        break label76;
+        break label90;
       }
     }
     for (;;)
     {
       if ((j & i) != 0)
       {
-        localTextView.setText(this.fmi.fmj);
-        paramView.setChecked(this.fmi.fmm);
+        localTextView.setText(this.gDC.gDD);
+        paramView.setChecked(this.gDC.gDG);
       }
+      OW(8);
+      AppMethodBeat.o(124908);
       return;
       i = 0;
       break;
-      label76:
+      label90:
       j = 0;
     }
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(124907);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(q.f.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(q.g.mm_preference_content_language, localViewGroup);
+    localLayoutInflater.inflate(2130970207, localViewGroup);
+    AppMethodBeat.o(124907);
     return paramViewGroup;
   }
 }

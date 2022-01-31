@@ -10,74 +10,74 @@ final class Visibility$a
   implements Transition.c, b.a
 {
   private final View mView;
-  boolean pP = false;
-  private final int tP;
-  private final ViewGroup tQ;
-  private final boolean tR;
-  private boolean tS;
+  boolean qM = false;
+  private final int uQ;
+  private final ViewGroup uR;
+  private final boolean uS;
+  private boolean uT;
   
   Visibility$a(View paramView, int paramInt)
   {
     this.mView = paramView;
-    this.tP = paramInt;
-    this.tQ = ((ViewGroup)paramView.getParent());
-    this.tR = true;
-    v(true);
+    this.uQ = paramInt;
+    this.uR = ((ViewGroup)paramView.getParent());
+    this.uS = true;
+    w(true);
   }
   
-  private void bE()
+  private void cs()
   {
-    if (!this.pP)
+    if (!this.qM)
     {
-      av.k(this.mView, this.tP);
-      if (this.tQ != null) {
-        this.tQ.invalidate();
+      au.l(this.mView, this.uQ);
+      if (this.uR != null) {
+        this.uR.invalidate();
       }
     }
-    v(false);
+    w(false);
   }
   
-  private void v(boolean paramBoolean)
+  private void w(boolean paramBoolean)
   {
-    if ((this.tR) && (this.tS != paramBoolean) && (this.tQ != null))
+    if ((this.uS) && (this.uT != paramBoolean) && (this.uR != null))
     {
-      this.tS = paramBoolean;
-      ao.c(this.tQ, paramBoolean);
+      this.uT = paramBoolean;
+      an.c(this.uR, paramBoolean);
     }
   }
   
   public final void a(Transition paramTransition)
   {
-    bE();
+    cs();
     paramTransition.b(this);
   }
   
-  public final void bq()
+  public final void ce()
   {
-    v(false);
+    w(false);
   }
   
-  public final void br()
+  public final void cf()
   {
-    v(true);
+    w(true);
   }
   
-  public final void bv() {}
+  public final void cj() {}
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
-    this.pP = true;
+    this.qM = true;
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    bE();
+    cs();
   }
   
   public final void onAnimationPause(Animator paramAnimator)
   {
-    if (!this.pP) {
-      av.k(this.mView, this.tP);
+    if (!this.qM) {
+      au.l(this.mView, this.uQ);
     }
   }
   
@@ -85,8 +85,8 @@ final class Visibility$a
   
   public final void onAnimationResume(Animator paramAnimator)
   {
-    if (!this.pP) {
-      av.k(this.mView, 0);
+    if (!this.qM) {
+      au.l(this.mView, 0);
     }
   }
   

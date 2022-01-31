@@ -7,23 +7,23 @@ final class MediaBrowserCompat$b$b
   
   public final void onConnected()
   {
-    if (this.AH.AG != null) {
-      this.AH.AG.onConnected();
+    if (this.Bt.Bs != null) {
+      this.Bt.Bs.onConnected();
     }
-    this.AH.onConnected();
+    this.Bt.onConnected();
   }
   
   public final void onConnectionFailed()
   {
-    this.AH.onConnectionFailed();
+    this.Bt.onConnectionFailed();
   }
   
   public final void onConnectionSuspended()
   {
-    if (this.AH.AG != null) {
-      this.AH.AG.onConnectionSuspended();
+    if (this.Bt.Bs != null) {
+      this.Bt.Bs.onConnectionSuspended();
     }
-    this.AH.onConnectionSuspended();
+    this.Bt.onConnectionSuspended();
   }
 }
 

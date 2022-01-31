@@ -3,9 +3,9 @@ package com.tencent.mm.protocal;
 final class c$ho
   extends c.g
 {
-  public c$ho()
+  c$ho()
   {
-    super("sendDataToMiniProgram", "sendDataToMiniProgram", 321, false);
+    super("reportGameWeb", "reportGameWeb", 332, false);
   }
 }
 

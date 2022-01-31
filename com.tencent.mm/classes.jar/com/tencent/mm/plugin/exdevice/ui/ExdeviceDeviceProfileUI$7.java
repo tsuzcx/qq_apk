@@ -1,10 +1,13 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.exdevice.h.b;
 import com.tencent.mm.plugin.exdevice.h.c;
 import com.tencent.mm.plugin.exdevice.model.ad;
+import com.tencent.mm.plugin.exdevice.model.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h.b;
 
 final class ExdeviceDeviceProfileUI$7
@@ -12,39 +15,42 @@ final class ExdeviceDeviceProfileUI$7
 {
   ExdeviceDeviceProfileUI$7(ExdeviceDeviceProfileUI paramExdeviceDeviceProfileUI) {}
   
-  public final boolean m(CharSequence paramCharSequence)
+  public final boolean onFinish(CharSequence paramCharSequence)
   {
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.ExdeviceDeviceProfileUI", "result : %s.", new Object[] { paramCharSequence });
+    AppMethodBeat.i(19944);
+    ab.d("MicroMsg.ExdeviceDeviceProfileUI", "result : %s.", new Object[] { paramCharSequence });
     String str = "";
     if (paramCharSequence != null) {
       str = paramCharSequence.toString();
     }
-    if (ExdeviceDeviceProfileUI.a(this.jDf))
+    if (ExdeviceDeviceProfileUI.a(this.lMD))
     {
-      ExdeviceDeviceProfileUI.a(this.jDf, str);
-      this.jDf.runOnUiThread(new ExdeviceDeviceProfileUI.7.1(this));
-      paramCharSequence = ad.aLL().cQ(ExdeviceDeviceProfileUI.b(this.jDf), ExdeviceDeviceProfileUI.c(this.jDf));
+      ExdeviceDeviceProfileUI.a(this.lMD, str);
+      this.lMD.runOnUiThread(new ExdeviceDeviceProfileUI.7.1(this));
+      paramCharSequence = ad.bpY().dU(ExdeviceDeviceProfileUI.b(this.lMD), ExdeviceDeviceProfileUI.c(this.lMD));
       if (paramCharSequence == null)
       {
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.ExdeviceDeviceProfileUI", "hard device info is null.(deviceId:%s, deviceType:%s)", new Object[] { ExdeviceDeviceProfileUI.b(this.jDf), ExdeviceDeviceProfileUI.c(this.jDf) });
+        ab.i("MicroMsg.ExdeviceDeviceProfileUI", "hard device info is null.(deviceId:%s, deviceType:%s)", new Object[] { ExdeviceDeviceProfileUI.b(this.lMD), ExdeviceDeviceProfileUI.c(this.lMD) });
+        AppMethodBeat.o(19944);
         return false;
       }
-      paramCharSequence.cZ(ExdeviceDeviceProfileUI.d(this.jDf));
-      ad.aLL().c(paramCharSequence, new String[0]);
+      paramCharSequence.jm(ExdeviceDeviceProfileUI.d(this.lMD));
+      ad.bpY().update(paramCharSequence, new String[0]);
     }
     for (;;)
     {
+      AppMethodBeat.o(19944);
       return true;
-      paramCharSequence = new com.tencent.mm.plugin.exdevice.model.y(ExdeviceDeviceProfileUI.b(this.jDf), ExdeviceDeviceProfileUI.c(this.jDf), str);
-      ExdeviceDeviceProfileUI.a(this.jDf, paramCharSequence);
-      au.Dk().a(1263, this.jDf);
-      au.Dk().a(paramCharSequence, 0);
+      paramCharSequence = new y(ExdeviceDeviceProfileUI.b(this.lMD), ExdeviceDeviceProfileUI.c(this.lMD), str);
+      ExdeviceDeviceProfileUI.a(this.lMD, paramCharSequence);
+      aw.Rc().a(1263, this.lMD);
+      aw.Rc().a(paramCharSequence, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceDeviceProfileUI.7
  * JD-Core Version:    0.7.0.1
  */

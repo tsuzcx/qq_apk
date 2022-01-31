@@ -1,58 +1,36 @@
 package com.tencent.mm.sdk.e;
 
-import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract class m
-  implements g
+public final class m
 {
-  private final k<b, a> ujP = new k() {};
+  public String cnC;
+  public int htj;
+  public Object obj;
+  public k yrX;
   
-  public abstract boolean WH();
-  
-  public final void a(b paramb)
+  public m()
   {
-    if (paramb != null) {
-      this.ujP.a(paramb, Looper.getMainLooper());
-    }
+    this.cnC = null;
+    this.yrX = null;
+    this.htj = -1;
+    this.obj = null;
   }
   
-  public final void a(b paramb, Looper paramLooper)
+  public m(String paramString)
   {
-    if (paramb != null) {
-      this.ujP.a(paramb, paramLooper);
-    }
+    this.cnC = paramString;
+    this.yrX = null;
+    this.htj = -1;
+    this.obj = null;
   }
   
-  public final void b(int paramInt, m paramm, Object paramObject)
+  public final String toString()
   {
-    this.ujP.bV(new a(paramInt, paramm, paramObject));
-    this.ujP.doNotify();
-  }
-  
-  public final void b(b paramb)
-  {
-    if (paramb != null) {
-      this.ujP.remove(paramb);
-    }
-  }
-  
-  private final class a
-  {
-    Object obj;
-    int uka;
-    m ukb;
-    
-    a(int paramInt, m paramm, Object paramObject)
-    {
-      this.uka = paramInt;
-      this.obj = paramObject;
-      this.ukb = paramm;
-    }
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void a(int paramInt, m paramm, Object paramObject);
+    AppMethodBeat.i(52518);
+    String str = "MStorageEventData [event=" + this.cnC + ", eventId=" + this.htj + ", stg=" + this.yrX + ", obj=" + this.obj + "]";
+    AppMethodBeat.o(52518);
+    return str;
   }
 }
 

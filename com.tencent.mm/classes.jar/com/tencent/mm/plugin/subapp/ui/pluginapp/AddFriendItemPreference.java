@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.ui.base.preference.Preference;
 
@@ -18,10 +17,10 @@ public class AddFriendItemPreference
 {
   private Context context;
   private Drawable drawable;
-  private int height = -1;
-  private String nSg = "";
-  private int nSh = -1;
-  int nSi = 8;
+  private int height;
+  private String pAS;
+  private int qGe;
+  int qGf;
   
   public AddFriendItemPreference(Context paramContext)
   {
@@ -36,60 +35,70 @@ public class AddFriendItemPreference
   public AddFriendItemPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(25490);
+    this.pAS = "";
+    this.qGe = -1;
+    this.qGf = 8;
+    this.height = -1;
     this.context = paramContext;
-    setLayoutResource(R.i.mm_preference);
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(25490);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(25492);
     super.onBindView(paramView);
-    Object localObject = (ImageView)paramView.findViewById(R.h.image_iv);
+    Object localObject = (ImageView)paramView.findViewById(2131822243);
     if (localObject != null)
     {
       ((ImageView)localObject).setVisibility(8);
       if (this.drawable == null) {
-        break label128;
+        break label137;
       }
       ((ImageView)localObject).setImageDrawable(this.drawable);
       ((ImageView)localObject).setVisibility(0);
     }
     for (;;)
     {
-      localObject = (LinearLayout)paramView.findViewById(R.h.mm_preference_ll_id);
+      localObject = (LinearLayout)paramView.findViewById(2131822408);
       if (this.height != -1) {
         ((LinearLayout)localObject).setMinimumHeight(this.height);
       }
-      paramView = (TextView)paramView.findViewById(R.h.text_tv_one);
+      paramView = (TextView)paramView.findViewById(2131822409);
       if (paramView != null)
       {
-        paramView.setVisibility(this.nSi);
-        paramView.setText(this.nSg);
-        if (this.nSh != -1) {
-          paramView.setBackgroundDrawable(a.g(this.context, this.nSh));
+        paramView.setVisibility(this.qGf);
+        paramView.setText(this.pAS);
+        if (this.qGe != -1) {
+          paramView.setBackgroundDrawable(a.k(this.context, this.qGe));
         }
       }
+      AppMethodBeat.o(25492);
       return;
-      label128:
-      if (this.kc != null)
+      label137:
+      if (this.la != null)
       {
-        ((ImageView)localObject).setImageDrawable(this.kc);
+        ((ImageView)localObject).setImageDrawable(this.la);
         ((ImageView)localObject).setVisibility(0);
       }
-      else if (this.Ub != 0)
+      else if (this.UM != 0)
       {
-        ((ImageView)localObject).setImageResource(this.Ub);
+        ((ImageView)localObject).setImageResource(this.UM);
         ((ImageView)localObject).setVisibility(0);
       }
     }
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(25491);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, R.i.mm_preference_content_add_friend_item, localViewGroup);
+    View.inflate(this.mContext, 2130970194, localViewGroup);
     localViewGroup.setPadding(0, localViewGroup.getPaddingTop(), localViewGroup.getPaddingRight(), localViewGroup.getPaddingBottom());
+    AppMethodBeat.o(25491);
     return paramViewGroup;
   }
 }

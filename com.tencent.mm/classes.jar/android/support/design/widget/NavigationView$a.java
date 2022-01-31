@@ -2,7 +2,7 @@ package android.support.design.widget;
 
 public abstract interface NavigationView$a
 {
-  public abstract boolean at();
+  public abstract boolean aX();
 }
 
 

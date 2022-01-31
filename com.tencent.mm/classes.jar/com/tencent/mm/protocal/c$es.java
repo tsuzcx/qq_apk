@@ -5,7 +5,7 @@ public final class c$es
 {
   public c$es()
   {
-    super("openDesignerProfile", "openDesignerProfile", 193, true);
+    super("nfcBatchTransceive", "nfcBatchTransceive", 142, false);
   }
 }
 

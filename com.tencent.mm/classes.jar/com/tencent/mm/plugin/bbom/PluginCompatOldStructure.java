@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.br.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.c;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
 
@@ -10,13 +11,13 @@ public class PluginCompatOldStructure
 {
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
-    if (((h)com.tencent.mm.kernel.g.DM().Dr()).Ex())
+    AppMethodBeat.i(18321);
+    if (((h)com.tencent.mm.kernel.g.RI().Rj()).SD())
     {
       new k.1().alone();
       new k.2().alone();
       new k.3().alone();
       new k.4().alone();
-      c.b("hp", null);
       c.b("profile", null);
       c.b("setting", null);
       c.b("subapp", null);
@@ -35,7 +36,6 @@ public class PluginCompatOldStructure
       c.b("qqmail", null);
       c.b("readerapp", null);
       c.b("talkroom", null);
-      c.b("game", new com.tencent.mm.plugin.game.model.a());
       c.b("bottle", null);
       c.b("masssend", null);
       c.b("chatroom", null);
@@ -78,11 +78,14 @@ public class PluginCompatOldStructure
       c.b("mmsight", null);
       c.b("login_exdevice", null);
     }
+    AppMethodBeat.o(18321);
   }
   
   public void dependency()
   {
+    AppMethodBeat.i(18320);
     super.dependency();
+    AppMethodBeat.o(18320);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg) {}

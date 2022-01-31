@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.game.ui;
 
 public abstract interface m$a
 {
-  public abstract void sf(int paramInt);
+  public abstract void xe(int paramInt);
 }
 
 

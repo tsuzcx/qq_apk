@@ -1,169 +1,212 @@
 package com.tencent.smtt.sdk;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Message;
-import android.view.View;
-import android.webkit.ValueCallback;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.FileChooserParams;
-import com.tencent.smtt.export.external.interfaces.IX5WebViewBase;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.export.external.interfaces.QuotaUpdater;
-import com.tencent.smtt.export.external.proxy.X5ProxyWebChromeClient;
+import android.content.Context;
+import android.os.ParcelFileDescriptor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.export.external.libwebp;
+import com.tencent.smtt.library_loader.Linker;
+import com.tencent.smtt.sandbox.ChildProcessService;
+import com.tencent.smtt.sandbox.SandboxListener;
+import java.io.File;
+import java.io.FileDescriptor;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class q
-  extends X5ProxyWebChromeClient
+public class q
 {
-  private WebView a;
-  private WebChromeClient b;
+  private static Linker a;
+  private static ChildProcessService b;
+  private static String c;
+  private static String d;
+  private static SandboxListener e;
+  private static Map<String, String> f;
+  private static String g;
+  private static String h;
   
-  public q(IX5WebChromeClient paramIX5WebChromeClient, WebView paramWebView, WebChromeClient paramWebChromeClient)
+  static
   {
-    super(paramIX5WebChromeClient);
-    this.a = paramWebView;
-    this.b = paramWebChromeClient;
+    AppMethodBeat.i(139057);
+    a = null;
+    b = null;
+    c = "sandbox_crash_record0";
+    d = "sandbox_crash_record1";
+    e = null;
+    f = new HashMap();
+    g = "/data/data/com.tencent.mm/app_tbs/core_share/";
+    h = "/data/data/com.tbs.default/app_tbs/core_share/";
+    AppMethodBeat.o(139057);
   }
   
-  public Bitmap getDefaultVideoPoster()
+  public static ParcelFileDescriptor a()
   {
-    return this.b.getDefaultVideoPoster();
+    AppMethodBeat.i(139047);
+    if (b != null)
+    {
+      ParcelFileDescriptor localParcelFileDescriptor = b.getFdByFileName(c);
+      AppMethodBeat.o(139047);
+      return localParcelFileDescriptor;
+    }
+    AppMethodBeat.o(139047);
+    return null;
   }
   
-  public void getVisitedHistory(ValueCallback<String[]> paramValueCallback) {}
-  
-  public void onCloseWindow(IX5WebViewBase paramIX5WebViewBase)
+  public static String a(String paramString)
   {
-    this.a.a(paramIX5WebViewBase);
-    this.b.onCloseWindow(this.a);
+    AppMethodBeat.i(139053);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(139053);
+      return paramString;
+    }
+    Iterator localIterator = f.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      paramString = paramString.replace(String.format("[anon:libc_malloc:%s]", new Object[] { f.get(str) }), g + str);
+    }
+    paramString = paramString.replace("[anon:libc_malloc]", h + "libmttwebview.so");
+    AppMethodBeat.o(139053);
+    return paramString;
   }
   
-  public void onConsoleMessage(String paramString1, int paramInt, String paramString2) {}
-  
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public static String a(String paramString, ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    return this.b.onConsoleMessage(paramConsoleMessage);
+    AppMethodBeat.i(139051);
+    int i = paramParcelFileDescriptor.getFd();
+    Object localObject;
+    if (i == -1) {
+      localObject = paramParcelFileDescriptor.getFileDescriptor();
+    }
+    label107:
+    for (;;)
+    {
+      try
+      {
+        localObject = FileDescriptor.class.getDeclaredMethod("getInt$", new Class[0]).invoke(localObject, new Object[0]);
+        if (!(localObject instanceof Integer)) {
+          break label107;
+        }
+        int j = ((Integer)localObject).intValue();
+        i = j;
+        long l = paramParcelFileDescriptor.getStatSize();
+        paramParcelFileDescriptor = a.loadLibraryByFd(paramParcelFileDescriptor, l, paramString, i);
+        f.put(paramString, paramParcelFileDescriptor.substring(2));
+        AppMethodBeat.o(139051);
+        return paramParcelFileDescriptor;
+      }
+      catch (Throwable localThrowable) {}
+    }
   }
   
-  public boolean onCreateWindow(IX5WebViewBase paramIX5WebViewBase, boolean paramBoolean1, boolean paramBoolean2, Message paramMessage)
+  public static void a(ChildProcessService paramChildProcessService)
   {
-    paramIX5WebViewBase = this.a;
-    paramIX5WebViewBase.getClass();
-    paramIX5WebViewBase = new WebView.WebViewTransport(paramIX5WebViewBase);
-    paramMessage = Message.obtain(paramMessage.getTarget(), new r(this, paramIX5WebViewBase, paramMessage));
-    paramMessage.obj = paramIX5WebViewBase;
-    return this.b.onCreateWindow(this.a, paramBoolean1, paramBoolean2, paramMessage);
+    b = paramChildProcessService;
   }
   
-  public void onExceededDatabaseQuota(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, QuotaUpdater paramQuotaUpdater)
+  public static void a(SandboxListener paramSandboxListener)
   {
-    this.b.onExceededDatabaseQuota(paramString1, paramString2, paramLong1, paramLong2, paramLong3, new q.a(this, paramQuotaUpdater));
+    e = paramSandboxListener;
   }
   
-  public void onGeolocationPermissionsHidePrompt()
+  public static boolean a(Context paramContext)
   {
-    this.b.onGeolocationPermissionsHidePrompt();
+    AppMethodBeat.i(139056);
+    String str = b(paramContext);
+    try
+    {
+      libwebp.loadWepLibraryIfNeed(paramContext, str);
+      System.load(str + File.separator + "libmttwebview.so");
+      AppMethodBeat.o(139056);
+      return true;
+    }
+    catch (Throwable paramContext)
+    {
+      AppMethodBeat.o(139056);
+    }
+    return false;
   }
   
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  public static boolean a(Context paramContext, ParcelFileDescriptor[] paramArrayOfParcelFileDescriptor)
   {
-    this.b.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    AppMethodBeat.i(139054);
+    try
+    {
+      a("libwebp_base.so", paramArrayOfParcelFileDescriptor[0]);
+      a("libmttwebview.so", paramArrayOfParcelFileDescriptor[1]);
+      AppMethodBeat.o(139054);
+      return true;
+    }
+    catch (Throwable paramContext)
+    {
+      AppMethodBeat.o(139054);
+    }
+    return false;
   }
   
-  public void onHideCustomView()
+  public static ParcelFileDescriptor b()
   {
-    this.b.onHideCustomView();
+    AppMethodBeat.i(139048);
+    if (b != null)
+    {
+      ParcelFileDescriptor localParcelFileDescriptor = b.getFdByFileName(d);
+      AppMethodBeat.o(139048);
+      return localParcelFileDescriptor;
+    }
+    AppMethodBeat.o(139048);
+    return null;
   }
   
-  public boolean onJsAlert(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, JsResult paramJsResult)
+  private static String b(Context paramContext)
   {
-    this.a.a(paramIX5WebViewBase);
-    return this.b.onJsAlert(this.a, paramString1, paramString2, paramJsResult);
+    AppMethodBeat.i(139055);
+    paramContext = ao.a().q(paramContext).getAbsolutePath();
+    AppMethodBeat.o(139055);
+    return paramContext;
   }
   
-  public boolean onJsBeforeUnload(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, JsResult paramJsResult)
+  public static void c()
   {
-    this.a.a(paramIX5WebViewBase);
-    return this.b.onJsBeforeUnload(this.a, paramString1, paramString2, paramJsResult);
+    AppMethodBeat.i(139049);
+    ParcelFileDescriptor localParcelFileDescriptor1 = a();
+    ParcelFileDescriptor localParcelFileDescriptor2 = b();
+    if (e != null) {
+      e.setCrashRecordFileDescriptor(localParcelFileDescriptor1, localParcelFileDescriptor2);
+    }
+    AppMethodBeat.o(139049);
   }
   
-  public boolean onJsConfirm(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, JsResult paramJsResult)
+  public static void d()
   {
-    this.a.a(paramIX5WebViewBase);
-    return this.b.onJsConfirm(this.a, paramString1, paramString2, paramJsResult);
+    try
+    {
+      AppMethodBeat.i(139050);
+      Linker localLinker = Linker.getInstance();
+      localLinker.disableSharedRelros();
+      localLinker.prepareLibraryLoad();
+      a = localLinker;
+      AppMethodBeat.o(139050);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public boolean onJsPrompt(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  public static void e()
   {
-    this.a.a(paramIX5WebViewBase);
-    return this.b.onJsPrompt(this.a, paramString1, paramString2, paramString3, paramJsPromptResult);
-  }
-  
-  public boolean onJsTimeout()
-  {
-    return this.b.onJsTimeout();
-  }
-  
-  public void onProgressChanged(IX5WebViewBase paramIX5WebViewBase, int paramInt)
-  {
-    this.a.a(paramIX5WebViewBase);
-    this.b.onProgressChanged(this.a, paramInt);
-  }
-  
-  public void onReachedMaxAppCacheSize(long paramLong1, long paramLong2, QuotaUpdater paramQuotaUpdater)
-  {
-    this.b.onReachedMaxAppCacheSize(paramLong1, paramLong2, new q.a(this, paramQuotaUpdater));
-  }
-  
-  public void onReceivedIcon(IX5WebViewBase paramIX5WebViewBase, Bitmap paramBitmap)
-  {
-    this.a.a(paramIX5WebViewBase);
-    this.b.onReceivedIcon(this.a, paramBitmap);
-  }
-  
-  public void onReceivedTitle(IX5WebViewBase paramIX5WebViewBase, String paramString)
-  {
-    this.a.a(paramIX5WebViewBase);
-    this.b.onReceivedTitle(this.a, paramString);
-  }
-  
-  public void onReceivedTouchIconUrl(IX5WebViewBase paramIX5WebViewBase, String paramString, boolean paramBoolean)
-  {
-    this.a.a(paramIX5WebViewBase);
-    this.b.onReceivedTouchIconUrl(this.a, paramString, paramBoolean);
-  }
-  
-  public void onRequestFocus(IX5WebViewBase paramIX5WebViewBase)
-  {
-    this.a.a(paramIX5WebViewBase);
-    this.b.onRequestFocus(this.a);
-  }
-  
-  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    this.b.onShowCustomView(paramView, paramInt, paramCustomViewCallback);
-  }
-  
-  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    this.b.onShowCustomView(paramView, paramCustomViewCallback);
-  }
-  
-  public boolean onShowFileChooser(IX5WebViewBase paramIX5WebViewBase, ValueCallback<Uri[]> paramValueCallback, IX5WebChromeClient.FileChooserParams paramFileChooserParams)
-  {
-    paramValueCallback = new t(this, paramValueCallback);
-    paramFileChooserParams = new u(this, paramFileChooserParams);
-    this.a.a(paramIX5WebViewBase);
-    return this.b.onShowFileChooser(this.a, paramValueCallback, paramFileChooserParams);
-  }
-  
-  public void openFileChooser(ValueCallback<Uri[]> paramValueCallback, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    this.b.openFileChooser(new s(this, paramValueCallback), paramString1, paramString2);
+    AppMethodBeat.i(139052);
+    Iterator localIterator = f.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      new StringBuilder("@TbsLinker -- loaded library : ").append(str).append(", start_address: ").append((String)f.get(str));
+    }
+    AppMethodBeat.o(139052);
   }
 }
 

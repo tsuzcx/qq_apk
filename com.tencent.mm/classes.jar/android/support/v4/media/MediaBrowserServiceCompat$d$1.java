@@ -3,7 +3,7 @@ package android.support.v4.media;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.support.v4.f.a;
+import android.support.v4.e.a;
 
 final class MediaBrowserServiceCompat$d$1
   implements Runnable
@@ -12,42 +12,42 @@ final class MediaBrowserServiceCompat$d$1
   
   public final void run()
   {
-    IBinder localIBinder = this.By.asBinder();
-    this.BC.Bm.Bg.remove(localIBinder);
-    MediaBrowserServiceCompat.b localb = new MediaBrowserServiceCompat.b(this.BC.Bm);
-    localb.Bo = this.Bz;
-    localb.Bp = this.BA;
-    localb.Bq = this.By;
-    localb.Br = this.BC.Bm.cy();
-    if (localb.Br == null) {
-      new StringBuilder("No root for client ").append(this.Bz).append(" from service ").append(getClass().getName());
+    IBinder localIBinder = this.Ck.asBinder();
+    this.Co.BY.BS.remove(localIBinder);
+    MediaBrowserServiceCompat.b localb = new MediaBrowserServiceCompat.b(this.Co.BY);
+    localb.Ca = this.Cl;
+    localb.Cb = this.Cm;
+    localb.Cc = this.Ck;
+    localb.Cd = this.Co.BY.db();
+    if (localb.Cd == null) {
+      new StringBuilder("No root for client ").append(this.Cl).append(" from service ").append(getClass().getName());
     }
     for (;;)
     {
       try
       {
-        this.By.cD();
+        this.Ck.dg();
         return;
       }
       catch (RemoteException localRemoteException1)
       {
-        new StringBuilder("Calling onConnectFailed() failed. Ignoring. pkg=").append(this.Bz);
+        new StringBuilder("Calling onConnectFailed() failed. Ignoring. pkg=").append(this.Cl);
         return;
       }
       try
       {
-        this.BC.Bm.Bg.put(localRemoteException1, localb);
+        this.Co.BY.BS.put(localRemoteException1, localb);
         localRemoteException1.linkToDeath(localb, 0);
-        if (this.BC.Bm.Bj != null)
+        if (this.Co.BY.BV != null)
         {
-          this.By.a(localb.Br.AU, this.BC.Bm.Bj, localb.Br.mExtras);
+          this.Ck.a(localb.Cd.BG, this.Co.BY.BV, localb.Cd.mExtras);
           return;
         }
       }
       catch (RemoteException localRemoteException2)
       {
-        new StringBuilder("Calling onConnect() failed. Dropping client. pkg=").append(this.Bz);
-        this.BC.Bm.Bg.remove(localRemoteException1);
+        new StringBuilder("Calling onConnect() failed. Dropping client. pkg=").append(this.Cl);
+        this.Co.BY.BS.remove(localRemoteException1);
       }
     }
   }

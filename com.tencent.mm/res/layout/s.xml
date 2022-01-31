@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/i6" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/k1" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/i7" android:paddingLeft="?cl" android:paddingTop="@dimen/p3" android:paddingRight="?cl" android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/k2" android:paddingLeft="?em" android:paddingTop="@dimen/pn" android:paddingRight="?em" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <ImageView android:id="@android:id/icon" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="8.0dip" android:src="@null" android:scaleType="fitCenter" android:layout_marginEnd="8.0dip" />
-        <android.support.v7.widget.DialogTitle android:ellipsize="end" android:id="@id/i8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" style="?android:attr/windowTitleStyle" />
+        <android.support.v7.widget.DialogTitle android:ellipsize="end" android:id="@id/k3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" style="?android:attr/windowTitleStyle" />
     </LinearLayout>
-    <android.widget.Space android:id="@id/i9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/p4" />
+    <android.widget.Space android:id="@id/k4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/po" />
 </LinearLayout>

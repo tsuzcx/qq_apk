@@ -1,204 +1,184 @@
 package com.tencent.mm.plugin.multitalk.a;
 
-import android.os.SystemClock;
-import com.tencent.mm.compatible.b.f.a;
-import com.tencent.mm.compatible.util.g.a;
-import com.tencent.mm.plugin.voip.HeadsetPlugReceiver;
-import com.tencent.mm.plugin.voip.HeadsetPlugReceiver.a;
-import com.tencent.mm.plugin.voip.model.a;
-import com.tencent.mm.plugin.voip.video.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.LinkedList;
 
 public final class c
-  implements f.a, HeadsetPlugReceiver.a
+  extends j<b>
 {
-  boolean bSr = false;
-  com.tencent.mm.compatible.util.b eLi = new com.tencent.mm.compatible.util.b(ae.getContext());
-  com.tencent.mm.plugin.voip.model.b iEF = null;
-  final Object iEG = new Object();
-  HeadsetPlugReceiver iEH = new HeadsetPlugReceiver();
-  private boolean iEI = false;
-  private boolean iEJ = false;
-  private int iEK;
-  g.a iEL = new g.a();
-  private final Object lqj = new Object();
+  public static final String[] SQL_CREATE;
   
-  private boolean bkI()
+  static
   {
-    boolean bool1;
-    if ((p.blF().lpn.amn()) && (!this.iEI))
-    {
-      bool1 = true;
-      bool2 = bool1;
-      if (p.blF().lpn.amn())
-      {
-        bool2 = bool1;
-        if (!this.iEI) {
-          if (!p.blF().mtC) {
-            break label147;
-          }
-        }
-      }
-    }
-    label147:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      p.blE().hH(false);
-      y.i("MicroMsg.MT.MultiTalkAudioPlayer", "isSpeakerAfterBluetoothDisconnected: isHeadsetPlugged: %s, isHandsFree: %s, isHandsFreeUIStatus: %s, isRingStop: %s, isBluetoothConnected: %s, isSpeaker: %s", new Object[] { Boolean.valueOf(this.iEI), Boolean.valueOf(p.blF().mtB), Boolean.valueOf(p.blF().mtC), Boolean.valueOf(p.blF().lpn.amn()), Boolean.valueOf(this.iEJ), Boolean.valueOf(bool2) });
-      return bool2;
-      bool1 = false;
-      break;
-    }
+    AppMethodBeat.i(54116);
+    SQL_CREATE = new String[] { j.getCreateSQLs(b.info, "MultiTalkMember"), "CREATE INDEX IF NOT EXISTS idx_MultiTalkMember  on MultiTalkMember  (  wxGroupId )" };
+    AppMethodBeat.o(54116);
   }
   
-  public final int a(a parama, int paramInt1, int paramInt2)
+  public c(e parame)
   {
-    synchronized (this.iEG)
-    {
-      if (this.bSr)
-      {
-        y.d("MicroMsg.MT.MultiTalkAudioPlayer", "startPlay, already start");
-        return -1;
-      }
-      y.i("MicroMsg.MT.MultiTalkAudioPlayer", "startPlay %s", new Object[] { Integer.valueOf(hashCode()) });
-      if (this.iEF == null)
-      {
-        this.iEF = new com.tencent.mm.plugin.voip.model.b();
-        this.iEF.z(paramInt1, 1, paramInt2, 0);
-      }
-      this.iEF.t(ae.getContext(), false);
-      this.iEF.pNy = parama;
-      com.tencent.mm.compatible.b.f.yi().a(this);
-      this.iEI = com.tencent.mm.compatible.b.f.yi().yt();
-      this.iEJ = com.tencent.mm.compatible.b.f.yi().yn();
-      y.i("MicroMsg.MT.MultiTalkAudioPlayer", "startPlay, isHeadsetPlugged: %b, isBluetoothConnected: %b %s", new Object[] { Boolean.valueOf(this.iEI), Boolean.valueOf(this.iEJ), Integer.valueOf(hashCode()) });
-      y.i("MicroMsg.MT.MultiTalkAudioPlayer", "set start play");
-      this.bSr = true;
-      this.iEL.dzS = SystemClock.elapsedRealtime();
-      paramInt1 = this.iEF.bPD();
-      y.i("MicroMsg.MT.MultiTalkAudioPlayer", "startPlaying cost: " + this.iEL.zJ());
-      this.eLi.requestFocus();
-      this.iEH.a(ae.getContext(), this);
-      if ((this.iEI) || (this.iEJ))
-      {
-        p.blF().hG(false);
-        if (this.iEJ) {
-          com.tencent.mm.compatible.b.f.yi().yk();
-        }
-      }
-      y.i("MicroMsg.MT.MultiTalkAudioPlayer", "finish start play: %s", new Object[] { Integer.valueOf(paramInt1) });
-      return paramInt1;
-    }
+    super(parame, b.info, "MultiTalkMember", null);
   }
   
-  public final void eH(boolean paramBoolean)
+  public final LinkedList<b> UB(String paramString)
   {
-    boolean bool3 = true;
-    boolean bool2;
-    boolean bool1;
-    label152:
-    d locald;
-    if (this.iEI != paramBoolean)
-    {
-      this.iEI = paramBoolean;
-      y.i("MicroMsg.MT.MultiTalkAudioPlayer", "onHeadsetState: isHeadsetPlugged: %s, isHandsFree: %s, isHandsFreeUIStatus: %s, isRingStop: %s, isBluetoothConnected: %s", new Object[] { Boolean.valueOf(this.iEI), Boolean.valueOf(p.blF().mtB), Boolean.valueOf(p.blF().mtC), Boolean.valueOf(p.blF().lpn.amn()), Boolean.valueOf(this.iEJ) });
-      if ((!p.blF().lpn.amn()) || (this.iEI)) {
-        break label210;
-      }
-      bool2 = true;
-      if (paramBoolean) {
-        p.blF().hG(false);
-      }
-      bool1 = bool2;
-      if (p.blF().lpn.amn())
-      {
-        bool1 = bool2;
-        if (!this.iEI)
-        {
-          if (!p.blF().mtC) {
-            break label215;
-          }
-          bool1 = true;
-        }
-      }
-      if (this.iEJ) {
-        bool1 = false;
-      }
-      gV(bool1);
-      p.blF().hM(bool1);
-      if (!paramBoolean) {
-        p.blF().hG(true);
-      }
-      locald = p.blE();
-      if ((this.iEJ) || (!paramBoolean)) {
-        break label220;
-      }
-    }
-    label210:
-    label215:
-    label220:
-    for (paramBoolean = bool3;; paramBoolean = false)
-    {
-      locald.hH(paramBoolean);
-      return;
-      bool2 = false;
-      break;
-      bool1 = false;
-      break label152;
-    }
-  }
-  
-  public final void ew(int paramInt)
-  {
-    y.i("MicroMsg.MT.MultiTalkAudioPlayer", "onBluetoothHeadsetStateChange, status: %d, isStart: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.bSr) });
-    switch (paramInt)
-    {
-    }
+    AppMethodBeat.i(54112);
+    paramString = rawQuery("select memberUuid, wxGroupId, userName, inviteUserName, memberId, status,createTime  from MultiTalkMember  where wxGroupId = '" + paramString + "'", new String[0]);
+    LinkedList localLinkedList = new LinkedList();
     for (;;)
     {
-      this.iEK = paramInt;
-      return;
-      this.iEJ = true;
-      com.tencent.mm.compatible.b.f.yi().yk();
-      continue;
-      if (paramInt != this.iEK)
+      if (paramString != null) {}
+      try
       {
-        this.iEJ = true;
-        p.blF().hG(false);
-        gV(false);
-        p.blF().hM(false);
-        p.blE().hH(true);
-        continue;
-        if (paramInt != this.iEK)
+        if (paramString.moveToNext())
         {
-          this.iEJ = false;
-          boolean bool = bkI();
-          gV(bool);
-          p.blF().hM(bool);
-          p.blF().hG(true);
+          b localb = new b();
+          localb.field_memberUuid = paramString.getInt(0);
+          localb.field_wxGroupId = paramString.getString(1);
+          localb.field_userName = paramString.getString(2);
+          localb.field_inviteUserName = paramString.getString(3);
+          localb.field_memberId = paramString.getLong(4);
+          localb.field_status = paramString.getInt(5);
+          localb.field_createTime = paramString.getLong(6);
+          ab.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "getMultiTalkMemberList get value for memberUuid = %s, wxGroupId = %s, userName = %s, inviteUserName = %s, memberId = %d, status = %d,createTime = %d", new Object[] { Long.valueOf(localb.field_memberUuid), localb.field_wxGroupId, localb.field_userName, localb.field_inviteUserName, Long.valueOf(localb.field_memberId), Integer.valueOf(localb.field_status), Long.valueOf(localb.field_createTime) });
+          localLinkedList.add(localb);
           continue;
-          if (paramInt != this.iEK)
-          {
-            this.iEJ = false;
-            com.tencent.mm.compatible.b.f.yi().yl();
-            bool = bkI();
-            gV(bool);
-            p.blF().hM(bool);
-            p.blF().hG(true);
+        }
+      }
+      catch (Exception localException)
+      {
+        ab.e("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", localException.toString());
+        for (;;)
+        {
+          return localLinkedList;
+          if (paramString != null) {
+            paramString.close();
           }
         }
+      }
+      finally
+      {
+        if (paramString != null) {
+          paramString.close();
+        }
+        AppMethodBeat.o(54112);
       }
     }
   }
   
-  public final void gV(boolean paramBoolean)
+  public final boolean a(b paramb)
   {
-    y.i("MicroMsg.MT.MultiTalkAudioPlayer", "setSpeakerPhoneOn, isSpeakerPhoneOn: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.compatible.b.f.yi().bn(paramBoolean);
-    if ((this.iEF != null) && (this.iEF.pNn)) {
-      this.iEF.jQ(paramBoolean);
+    AppMethodBeat.i(54113);
+    long l = paramb.field_memberUuid;
+    Cursor localCursor = rawQuery("select * from MultiTalkMember where memberUuid = '" + l + "' and wxGroupId = '" + paramb.field_wxGroupId + "'", new String[0]);
+    try
+    {
+      if (localCursor.getCount() == 0)
+      {
+        bool = insert(paramb);
+        ab.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "insert ret " + bool + " for memberUuid = " + l);
+        return bool;
+      }
+      boolean bool = update(paramb, new String[0]);
+      ab.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "update ret " + bool + " for memberUuid = " + l);
+      return bool;
     }
+    catch (Exception paramb)
+    {
+      ab.e("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", paramb.toString());
+      return false;
+    }
+    finally
+    {
+      localCursor.close();
+      AppMethodBeat.o(54113);
+    }
+  }
+  
+  public final boolean dp(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(54114);
+    ab.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "delete where wxGroupId = " + paramString1 + ",member = " + paramString2);
+    try
+    {
+      super.execSQL("MultiTalkMember", "delete from MultiTalkMember where wxGroupId = \"" + paramString1 + "\" and userName = \"" + paramString2 + "\"");
+      AppMethodBeat.o(54114);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "delete fail for wxGroupId = " + paramString1 + ",member = " + paramString2);
+      AppMethodBeat.o(54114);
+    }
+    return false;
+  }
+  
+  public final b fr(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(54111);
+    paramString1 = rawQuery("select memberUuid, wxGroupId, userName, inviteUserName, memberId, status,createTime  from MultiTalkMember  where wxGroupId = '" + paramString1 + "' and userName ='" + paramString2 + "'", new String[0]);
+    if (paramString1 != null) {}
+    try
+    {
+      if (paramString1.moveToNext())
+      {
+        paramString2 = new b();
+        paramString2.field_memberUuid = paramString1.getInt(0);
+        paramString2.field_wxGroupId = paramString1.getString(1);
+        paramString2.field_userName = paramString1.getString(2);
+        paramString2.field_inviteUserName = paramString1.getString(3);
+        paramString2.field_memberId = paramString1.getLong(4);
+        paramString2.field_status = paramString1.getInt(5);
+        paramString2.field_createTime = paramString1.getLong(6);
+        ab.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "getMultiTalkMember get value for memberUuid = %s, wxGroupId = %s, userName = %s, inviteUserName = %s, memberId = %d, status = %d,createTime = %d", new Object[] { Long.valueOf(paramString2.field_memberUuid), paramString2.field_wxGroupId, paramString2.field_userName, paramString2.field_inviteUserName, Long.valueOf(paramString2.field_memberId), Integer.valueOf(paramString2.field_status), Long.valueOf(paramString2.field_createTime) });
+        return paramString2;
+      }
+      if (paramString1 != null) {
+        paramString1.close();
+      }
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
+      {
+        ab.e("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", paramString2.toString());
+        if (paramString1 != null) {
+          paramString1.close();
+        }
+      }
+    }
+    finally
+    {
+      if (paramString1 == null) {
+        break label286;
+      }
+      paramString1.close();
+      AppMethodBeat.o(54111);
+    }
+    AppMethodBeat.o(54111);
+    return null;
+  }
+  
+  public final boolean qD(String paramString)
+  {
+    AppMethodBeat.i(54115);
+    ab.i("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "delete where wxGroupId = ".concat(String.valueOf(paramString)));
+    try
+    {
+      super.execSQL("MultiTalkMember", "delete from MultiTalkMember where wxGroupId = \"" + paramString + "\"");
+      AppMethodBeat.o(54115);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.MultiTalk.storage.MultiTalkMemberStorage", "delete fail for wxGroupId = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(54115);
+    }
+    return false;
   }
 }
 

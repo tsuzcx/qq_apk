@@ -1,63 +1,44 @@
 package com.tencent.mm.plugin.appbrand.game.c;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.RectF;
-import android.support.v7.widget.AppCompatButton;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
+import com.tencent.magicbrush.MBRuntime;
+import com.tencent.magicbrush.a.d.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ab;
 
-final class a
-  extends AppCompatButton
+public final class a
+  extends com.tencent.luggage.game.c.a
 {
-  private RectF gaV;
-  private boolean gaW;
-  private float gaX;
-  private float gaY;
+  public static final a hsP;
   
-  public a(Context paramContext)
+  static
   {
-    super(paramContext);
-    setGravity(17);
-    setText("vConsole");
-    setTextColor(-1);
-    float f = getContext().getResources().getDisplayMetrics().density;
-    setPadding((int)(13.0F * f), (int)(4.0F * f), (int)(13.0F * f), (int)(f * 6.0F));
-    setBackgroundDrawable(new a.a(this, (byte)0));
+    AppMethodBeat.i(143123);
+    hsP = new a();
+    AppMethodBeat.o(143123);
   }
   
-  private boolean E(float paramFloat1, float paramFloat2)
+  public final void a(MBRuntime paramMBRuntime, i parami)
   {
-    if (this.gaV == null) {
-      return false;
-    }
-    return this.gaV.contains(paramFloat1, paramFloat2);
+    AppMethodBeat.i(143122);
+    super.a(paramMBRuntime, parami);
+    com.tencent.magicbrush.a.a.a(new a.a((byte)0));
+    com.tencent.magicbrush.handler.glfont.a.a(new b());
+    AppMethodBeat.o(143122);
   }
   
-  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
+  static final class b
+    implements d.a
   {
-    switch (paramMotionEvent.getAction())
+    private int bAc = -1;
+    
+    public final void fI(int paramInt)
     {
-    }
-    for (;;)
-    {
-      this.gaX = paramMotionEvent.getRawX();
-      this.gaY = paramMotionEvent.getRawY();
-      return true;
-      this.gaV = new RectF(getX(), getY(), getX() + getWidth(), getY() + getHeight());
-      this.gaW = false;
-      continue;
-      if ((this.gaW) || (!E(paramMotionEvent.getRawX(), paramMotionEvent.getRawY())))
-      {
-        setX(getX() + (paramMotionEvent.getRawX() - this.gaX));
-        setY(getY() + (paramMotionEvent.getRawY() - this.gaY));
-        requestLayout();
-        this.gaW = true;
-        continue;
-        if ((!this.gaW) && (E(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))) {
-          performClick();
-        }
-      }
+      AppMethodBeat.i(143121);
+      ab.i("MicroMsg.MBFontManagerRegistryWC", "mbfont idkey logid:" + this.bAc + ",key:" + paramInt);
+      h.qsU.cT(this.bAc, paramInt);
+      AppMethodBeat.o(143121);
     }
   }
 }

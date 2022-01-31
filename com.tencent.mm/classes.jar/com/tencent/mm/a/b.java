@@ -1,8 +1,8 @@
 package com.tencent.mm.a;
 
 import android.os.HandlerThread;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.locks.Condition;
@@ -10,31 +10,31 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class b
 {
-  static ah btW;
-  File btT;
-  private ReentrantLock btU = new ReentrantLock();
-  private Condition btV = this.btU.newCondition();
+  static ak bVh;
+  File bVe;
+  private ReentrantLock bVf = new ReentrantLock();
+  private Condition bVg = this.bVf.newCondition();
   
   public b(final String paramString)
   {
     try
     {
-      if (btW == null)
+      if (bVh == null)
       {
         localObject = new HandlerThread("I/O Worker");
         ((HandlerThread)localObject).start();
-        btW = new ah(((HandlerThread)localObject).getLooper());
+        bVh = new ak(((HandlerThread)localObject).getLooper());
       }
       Object localObject = new File(paramString);
       if (((File)localObject).exists())
       {
-        this.btT = ((File)localObject);
+        this.bVe = ((File)localObject);
         return;
       }
     }
     finally {}
-    y.i("MicroMsg.ConcurrentFileBuilder", "create new file %s", new Object[] { paramString });
-    btW.post(new Runnable()
+    ab.i("MicroMsg.ConcurrentFileBuilder", "create new file %s", new Object[] { paramString });
+    bVh.post(new Runnable()
     {
       public final void run()
       {
@@ -43,14 +43,14 @@ public class b
         if (!localFile.exists())
         {
           l = System.currentTimeMillis();
-          e.bO(paramString);
-          y.i("MicroMsg.ConcurrentFileBuilder", "make dir last %d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+          e.cR(paramString);
+          ab.i("MicroMsg.ConcurrentFileBuilder", "make dir last %d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
           l = System.currentTimeMillis();
         }
         try
         {
           localFile.createNewFile();
-          y.i("MicroMsg.ConcurrentFileBuilder", "make file last %d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+          ab.i("MicroMsg.ConcurrentFileBuilder", "make file last %d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
           b.a(b.this).lock();
         }
         catch (IOException localIOException)
@@ -59,9 +59,9 @@ public class b
           {
             try
             {
-              b.this.btT = localFile;
+              b.this.bVe = localFile;
               b.b(b.this).signal();
-              y.i("MicroMsg.ConcurrentFileBuilder", "notify file prepared %s", new Object[] { localFile.getAbsoluteFile() });
+              ab.i("MicroMsg.ConcurrentFileBuilder", "notify file prepared %s", new Object[] { localFile.getAbsoluteFile() });
               return;
             }
             finally
@@ -69,8 +69,8 @@ public class b
               b.a(b.this).unlock();
             }
             localIOException = localIOException;
-            y.printErrStackTrace("MicroMsg.ConcurrentFileBuilder", localIOException, "", new Object[0]);
-            y.printErrStackTrace("MicroMsg.ConcurrentFileBuilder", localIOException, "createNewFile", new Object[0]);
+            ab.printErrStackTrace("MicroMsg.ConcurrentFileBuilder", localIOException, "", new Object[0]);
+            ab.printErrStackTrace("MicroMsg.ConcurrentFileBuilder", localIOException, "createNewFile", new Object[0]);
           }
         }
       }
@@ -78,36 +78,36 @@ public class b
   }
   
   /* Error */
-  public final File rL()
+  public final File getFile()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 24	com/tencent/mm/a/b:btU	Ljava/util/concurrent/locks/ReentrantLock;
+    //   1: getfield 24	com/tencent/mm/a/b:bVf	Ljava/util/concurrent/locks/ReentrantLock;
     //   4: invokevirtual 88	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   7: aload_0
-    //   8: getfield 59	com/tencent/mm/a/b:btT	Ljava/io/File;
+    //   8: getfield 59	com/tencent/mm/a/b:bVe	Ljava/io/File;
     //   11: ifnonnull +35 -> 46
     //   14: ldc 61
     //   16: ldc 90
-    //   18: invokestatic 93	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: invokestatic 93	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: aload_0
-    //   22: getfield 30	com/tencent/mm/a/b:btV	Ljava/util/concurrent/locks/Condition;
+    //   22: getfield 30	com/tencent/mm/a/b:bVg	Ljava/util/concurrent/locks/Condition;
     //   25: invokeinterface 98 1 0
     //   30: goto -23 -> 7
     //   33: astore_1
     //   34: aload_0
-    //   35: getfield 24	com/tencent/mm/a/b:btU	Ljava/util/concurrent/locks/ReentrantLock;
+    //   35: getfield 24	com/tencent/mm/a/b:bVf	Ljava/util/concurrent/locks/ReentrantLock;
     //   38: invokevirtual 101	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   41: aload_0
-    //   42: getfield 59	com/tencent/mm/a/b:btT	Ljava/io/File;
+    //   42: getfield 59	com/tencent/mm/a/b:bVe	Ljava/io/File;
     //   45: areturn
     //   46: aload_0
-    //   47: getfield 24	com/tencent/mm/a/b:btU	Ljava/util/concurrent/locks/ReentrantLock;
+    //   47: getfield 24	com/tencent/mm/a/b:bVf	Ljava/util/concurrent/locks/ReentrantLock;
     //   50: invokevirtual 101	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   53: goto -12 -> 41
     //   56: astore_1
     //   57: aload_0
-    //   58: getfield 24	com/tencent/mm/a/b:btU	Ljava/util/concurrent/locks/ReentrantLock;
+    //   58: getfield 24	com/tencent/mm/a/b:bVf	Ljava/util/concurrent/locks/ReentrantLock;
     //   61: invokevirtual 101	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   64: aload_1
     //   65: athrow

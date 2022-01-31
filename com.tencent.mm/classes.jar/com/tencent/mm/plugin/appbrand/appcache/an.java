@@ -1,90 +1,151 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.h.c.q;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import android.content.Context;
+import android.content.SharedPreferences.Editor;
+import android.content.res.AssetManager;
+import com.tencent.luggage.h.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.k;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.vfs.b;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.j;
+import java.io.File;
+import java.io.InputStream;
+import org.json.JSONObject;
 
 public final class an
-  extends q
 {
-  static final c.a dUa;
-  public static final String[] fEl;
+  public static final int VERSION;
+  public static final String[] gVC;
+  static final an.a gVD;
+  private static Boolean gVE;
   
   static
   {
-    int i = 0;
-    fEl = new String[] { "appId", "version", "debugType" };
-    Object localObject1 = new c.a();
-    ((c.a)localObject1).ujL = new Field[10];
-    ((c.a)localObject1).columns = new String[11];
-    Object localObject2 = new StringBuilder();
-    ((c.a)localObject1).columns[0] = "appId";
-    ((c.a)localObject1).ujN.put("appId", "TEXT");
-    ((StringBuilder)localObject2).append(" appId TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[1] = "version";
-    ((c.a)localObject1).ujN.put("version", "INTEGER");
-    ((StringBuilder)localObject2).append(" version INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[2] = "versionMd5";
-    ((c.a)localObject1).ujN.put("versionMd5", "TEXT");
-    ((StringBuilder)localObject2).append(" versionMd5 TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[3] = "versionState";
-    ((c.a)localObject1).ujN.put("versionState", "INTEGER");
-    ((StringBuilder)localObject2).append(" versionState INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[4] = "pkgPath";
-    ((c.a)localObject1).ujN.put("pkgPath", "TEXT");
-    ((StringBuilder)localObject2).append(" pkgPath TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[5] = "createTime";
-    ((c.a)localObject1).ujN.put("createTime", "LONG");
-    ((StringBuilder)localObject2).append(" createTime LONG");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[6] = "debugType";
-    ((c.a)localObject1).ujN.put("debugType", "INTEGER default '0' ");
-    ((StringBuilder)localObject2).append(" debugType INTEGER default '0' ");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[7] = "downloadURL";
-    ((c.a)localObject1).ujN.put("downloadURL", "TEXT");
-    ((StringBuilder)localObject2).append(" downloadURL TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[8] = "startTime";
-    ((c.a)localObject1).ujN.put("startTime", "LONG");
-    ((StringBuilder)localObject2).append(" startTime LONG");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[9] = "endTime";
-    ((c.a)localObject1).ujN.put("endTime", "LONG");
-    ((StringBuilder)localObject2).append(" endTime LONG");
-    ((c.a)localObject1).columns[10] = "rowid";
-    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    dUa = (c.a)localObject1;
-    localObject1 = " PRIMARY KEY (";
-    localObject2 = fEl;
-    int j = localObject2.length;
-    while (i < j)
+    j = -1;
+    AppMethodBeat.i(114316);
+    try
     {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
-      i += 1;
+      String str = avL();
+      i = j;
+      if (!bo.isNullOrNil(str))
+      {
+        i = j;
+        if (e.cN(str)) {
+          i = new JSONObject(e.cS(str)).optInt("version");
+        }
+      }
     }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = dUa;
-    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = j;
+      }
+    }
+    if (i > 0)
+    {
+      VERSION = i;
+      gVC = a.bFN;
+    }
+    for (gVD = an.a.gVI;; gVD = an.a.gVI)
+    {
+      gVE = null;
+      AppMethodBeat.o(114316);
+      return;
+      VERSION = 254;
+      gVC = a.bFN;
+    }
   }
   
-  protected final c.a rM()
+  public static void avK()
   {
-    return dUa;
+    AppMethodBeat.i(114309);
+    e.deleteFile(avL());
+    AppMethodBeat.o(114309);
+  }
+  
+  static String avL()
+  {
+    AppMethodBeat.i(114310);
+    String str = j.p(new b(ah.getContext().getCacheDir().getAbsolutePath() + "/MockLibInfo.json").dQJ());
+    AppMethodBeat.o(114310);
+    return str;
+  }
+  
+  public static boolean avM()
+  {
+    AppMethodBeat.i(114311);
+    if (gVE == null) {
+      gVE = Boolean.FALSE;
+    }
+    boolean bool = gVE.booleanValue();
+    AppMethodBeat.o(114311);
+    return bool;
+  }
+  
+  public static WxaPkgWrappingInfo avN()
+  {
+    AppMethodBeat.i(114315);
+    WxaPkgWrappingInfo localWxaPkgWrappingInfo = new WxaPkgWrappingInfo();
+    localWxaPkgWrappingInfo.gXf = VERSION;
+    localWxaPkgWrappingInfo.gXh = true;
+    AppMethodBeat.o(114315);
+    return localWxaPkgWrappingInfo;
+  }
+  
+  public static void dK(boolean paramBoolean)
+  {
+    AppMethodBeat.i(114312);
+    as.apq("__appbrand_comm_lib__prefs").putBoolean("disable_develop_lib", paramBoolean).commit();
+    AppMethodBeat.o(114312);
+  }
+  
+  public static InputStream openRead(String paramString)
+  {
+    AppMethodBeat.i(114313);
+    paramString = k.zl(paramString);
+    switch (an.1.gVF[gVD.ordinal()])
+    {
+    default: 
+      paramString = yu("wxa_library".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(114313);
+      return paramString;
+    case 1: 
+      paramString = yu("wxa_library/local".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(114313);
+      return paramString;
+    }
+    paramString = yu("wxa_library/develop".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(114313);
+    return paramString;
+  }
+  
+  private static InputStream yu(String paramString)
+  {
+    AppMethodBeat.i(114314);
+    Object localObject = ah.getContext().getAssets();
+    try
+    {
+      localObject = ((AssetManager)localObject).open(paramString, 3);
+      AppMethodBeat.o(114314);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      ab.v("MicroMsg.AppBrand.WxaLocalLibPkg", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, localException });
+      AppMethodBeat.o(114314);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.an
  * JD-Core Version:    0.7.0.1
  */

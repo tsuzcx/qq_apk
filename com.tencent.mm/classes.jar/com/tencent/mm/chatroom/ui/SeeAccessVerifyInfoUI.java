@@ -1,200 +1,309 @@
 package com.tencent.mm.chatroom.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.MotionEvent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.af;
-import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ag;
+import com.tencent.mm.model.t;
+import com.tencent.mm.openim.PluginOpenIM;
+import com.tencent.mm.openim.b.i;
+import com.tencent.mm.openim.e.e;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.bi;
 import com.tencent.mm.storage.u;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.p;
+import java.util.LinkedList;
 import java.util.List;
 
 public class SeeAccessVerifyInfoUI
   extends MMActivity
+  implements com.tencent.mm.ai.f
 {
-  private u dnL;
-  private SeeAccessVerifyInfoUI.b dqI;
-  private String dqJ;
-  private String dqK;
-  private String dqL;
-  private String dqM;
-  private String dqN;
-  private long dqO;
-  private long dqP;
-  private String dqQ;
-  private String dqR;
-  private String dqS;
-  private TextView dqT;
-  private TextView dqU;
-  private ImageView dqV;
-  private TextView dqW;
-  private TextView dqX;
-  private GridView dqY;
-  private p tipDialog;
+  private u efi;
+  private TextView eiA;
+  private GridView eiB;
+  private boolean eiC = false;
+  private boolean eiD = false;
+  private boolean eiE = false;
+  private SeeAccessVerifyInfoUI.b eig;
+  private String eih;
+  private String eii;
+  private String eij;
+  private String eik;
+  private String eil;
+  private String eim;
+  private String ein;
+  private String eio;
+  private String eip;
+  private long eiq;
+  private long eir;
+  private String eis;
+  private String eit;
+  private String eiu;
+  private TextView eiv;
+  private TextView eiw;
+  private ImageView eix;
+  private TextView eiy;
+  private TextView eiz;
+  private com.tencent.mm.ui.base.p tipDialog;
   
-  protected final SeeAccessVerifyInfoUI.c bK(View paramView)
+  protected final SeeAccessVerifyInfoUI.c ci(View paramView)
   {
+    AppMethodBeat.i(104279);
     SeeAccessVerifyInfoUI.c localc = new SeeAccessVerifyInfoUI.c(this);
-    localc.doU = ((ImageView)paramView.findViewById(a.e.roominfo_img));
-    localc.drf = ((TextView)paramView.findViewById(a.e.roominfo_contact_name_for_span));
+    localc.egq = ((ImageView)paramView.findViewById(2131827385));
+    localc.eiM = ((TextView)paramView.findViewById(2131827390));
+    localc.eiN = ((TextView)paramView.findViewById(2131827391));
+    AppMethodBeat.o(104279);
     return localc;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.f.see_accessverify_info_ui;
+    return 2130970639;
   }
   
-  protected final void initView()
+  public void initView()
   {
     Object localObject1 = null;
-    this.dqT = ((TextView)findViewById(a.e.invite_title));
-    this.dqU = ((TextView)findViewById(a.e.invite_reason));
-    this.dqW = ((TextView)findViewById(a.e.roominfo_contact_name_for_span));
-    this.dqV = ((ImageView)findViewById(a.e.roominfo_img));
-    this.dqX = ((TextView)findViewById(a.e.access_btn));
-    this.dqY = ((GridView)findViewById(a.e.be_invitor_gridview));
-    this.dqY.setAdapter(this.dqI);
-    if (this.dqV != null) {
-      this.dqV.setOnClickListener(new SeeAccessVerifyInfoUI.2(this));
+    AppMethodBeat.i(104276);
+    this.eiv = ((TextView)findViewById(2131827521));
+    this.eiw = ((TextView)findViewById(2131827522));
+    this.eiy = ((TextView)findViewById(2131827390));
+    this.eiz = ((TextView)findViewById(2131827391));
+    this.eix = ((ImageView)findViewById(2131827385));
+    this.eiA = ((TextView)findViewById(2131827524));
+    this.eiB = ((GridView)findViewById(2131827523));
+    this.eiB.setAdapter(this.eig);
+    if (this.eix != null) {
+      this.eix.setOnClickListener(new SeeAccessVerifyInfoUI.2(this));
     }
-    this.dqY.setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        return true;
-      }
-    });
-    this.dqY.postDelayed(new SeeAccessVerifyInfoUI.4(this), 100L);
-    if (this.dqV != null) {
-      com.tencent.mm.pluginsdk.ui.a.b.a(this.dqV, bk.pm(this.dqN));
+    this.eiB.setOnTouchListener(new SeeAccessVerifyInfoUI.3(this));
+    this.eiB.postDelayed(new SeeAccessVerifyInfoUI.4(this), 100L);
+    if (this.eix != null) {
+      a.b.c(this.eix, bo.nullAsNil(this.ein));
     }
     TextView localTextView1;
     Object localObject2;
     TextView localTextView2;
-    if (this.dqW != null)
+    if (this.eiy != null)
     {
-      localTextView1 = this.dqW;
-      localObject2 = bk.pm(this.dqN);
-      localTextView2 = this.dqW;
+      localTextView1 = this.eiy;
+      localObject2 = bo.nullAsNil(this.ein);
+      localTextView2 = this.eiy;
       if (localTextView2 != null) {
-        break label399;
+        break label574;
       }
     }
-    label399:
+    label379:
     ad localad;
     for (;;)
     {
       localTextView1.setText((CharSequence)localObject1);
-      if (this.dqT != null) {
-        this.dqT.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this, bk.pm(this.dqM)));
-      }
-      if ((this.dqU != null) && (!bk.bl(this.dqR))) {
-        this.dqU.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this, "\"" + bk.pm(this.dqR) + "\""));
-      }
-      if (this.dqX != null) {
-        this.dqX.setOnClickListener(new SeeAccessVerifyInfoUI.5(this));
-      }
-      if ((this.dqX != null) && (((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().fd(this.dqO).cvF()))
+      if (this.eiz != null)
       {
-        this.dqX.setBackgroundResource(a.d.btn_solid_grey);
-        this.dqX.setTextColor(getResources().getColor(a.b.grey_btn_stroke_color_normal));
-        this.dqX.setText(getString(a.i.has_approve_info));
-        this.dqX.setEnabled(false);
+        if ((!t.nK(this.eis)) || (!ad.arf(this.ein))) {
+          break label777;
+        }
+        localObject1 = new e();
+        ((e)localObject1).field_appid = this.eio;
+        ((e)localObject1).field_wordingId = this.eip;
+        ((e)localObject1).field_language = aa.gP(ah.getContext());
+        g.RM();
+        ((PluginOpenIM)g.G(PluginOpenIM.class)).getWordingInfoStg().get((com.tencent.mm.sdk.e.c)localObject1, new String[] { "appid", "wordingId", "language" });
+        if (TextUtils.isEmpty(((e)localObject1).field_wording)) {
+          break label697;
+        }
+        this.eiz.setVisibility(0);
+        this.eiz.setText("＠" + ((e)localObject1).field_wording);
       }
+      if (this.eiv != null) {
+        this.eiv.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this, bo.nullAsNil(this.eim)));
+      }
+      if ((this.eiw != null) && (!bo.isNullOrNil(this.eit))) {
+        this.eiw.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this, "\"" + bo.nullAsNil(this.eit) + "\""));
+      }
+      if (this.eiA != null) {
+        this.eiA.setOnClickListener(new SeeAccessVerifyInfoUI.5(this));
+      }
+      if ((this.eiA != null) && (((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().kB(this.eiq).dyn()))
+      {
+        this.eiA.setBackgroundResource(2130838047);
+        this.eiA.setTextColor(getResources().getColor(2131690153));
+        this.eiA.setText(getString(2131300634));
+        this.eiA.setEnabled(false);
+      }
+      AppMethodBeat.o(104276);
       return;
-      localad = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abl(bk.pm((String)localObject2));
+      label574:
+      localad = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(bo.nullAsNil((String)localObject2));
       if (localad != null) {
         break;
       }
-      y.w("MicroMsg.SeeAccessVerifyInfoUI", "ct == null");
+      ab.w("MicroMsg.SeeAccessVerifyInfoUI", "ct == null");
     }
-    if (!bk.bl(localad.field_conRemark)) {
+    if (!bo.isNullOrNil(localad.field_conRemark)) {
       localObject1 = localad.field_conRemark;
     }
     for (;;)
     {
       localObject2 = localObject1;
-      if (bk.bl((String)localObject1)) {
+      if (bo.isNullOrNil((String)localObject1)) {
         localObject2 = localad.field_conRemark;
       }
       localObject1 = localObject2;
-      if (bk.bl((String)localObject2)) {
-        localObject1 = localad.Bp();
+      if (bo.isNullOrNil((String)localObject2)) {
+        localObject1 = localad.Oe();
       }
-      localObject1 = com.tencent.mm.pluginsdk.ui.d.j.a(this, bk.pm((String)localObject1), localTextView2.getTextSize());
+      localObject1 = com.tencent.mm.pluginsdk.ui.d.j.b(this, bo.nullAsNil((String)localObject1), localTextView2.getTextSize());
       break;
-      if (this.dnL != null) {
-        localObject1 = this.dnL.gV((String)localObject2);
-      } else {
-        localObject1 = null;
+      if (this.efi != null)
+      {
+        localObject1 = this.efi.nE((String)localObject2);
+        continue;
+        label697:
+        if ((!bo.isNullOrNil(this.eip)) && (!bo.isNullOrNil(this.eio)))
+        {
+          this.eiE = true;
+          localObject2 = new LinkedList();
+          ((LinkedList)localObject2).add(this.eip);
+          g.RK().eHt.a(new i(this.eio, ((e)localObject1).field_language, (LinkedList)localObject2), 0);
+        }
+        this.eiz.setVisibility(4);
+        break label379;
+        label777:
+        this.eiz.setVisibility(8);
+        break label379;
       }
+      localObject1 = null;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(104273);
     super.onCreate(paramBundle);
-    y.i("MicroMsg.SeeAccessVerifyInfoUI", "[onCreate]");
-    setMMTitle(getString(a.i.access_invite_ui_title));
-    this.dqO = getIntent().getLongExtra("msgLocalId", 0L);
-    this.dqP = getIntent().getLongExtra("msgSvrId", 0L);
-    this.dqM = getIntent().getStringExtra("invitertitle");
-    this.dqN = getIntent().getStringExtra("inviterusername");
-    this.dqQ = getIntent().getStringExtra("chatroom");
-    this.dqR = getIntent().getStringExtra("invitationreason");
-    this.dqS = getIntent().getStringExtra("ticket");
-    this.dqK = getIntent().getStringExtra("username");
-    this.dqJ = getIntent().getStringExtra("nickname");
-    this.dqL = getIntent().getStringExtra("headimgurl");
-    this.dnL = ((c)com.tencent.mm.kernel.g.r(c.class)).FF().in(bk.pm(this.dqQ));
-    this.dqI = new SeeAccessVerifyInfoUI.b(this, this);
-    paramBundle = this.dqK.split(",");
+    ab.i("MicroMsg.SeeAccessVerifyInfoUI", "[onCreate]");
+    setMMTitle(getString(2131296395));
+    this.eiq = getIntent().getLongExtra("msgLocalId", 0L);
+    this.eir = getIntent().getLongExtra("msgSvrId", 0L);
+    this.eim = getIntent().getStringExtra("invitertitle");
+    this.ein = getIntent().getStringExtra("inviterusername");
+    this.eio = getIntent().getStringExtra("inviterappid");
+    this.eip = getIntent().getStringExtra("inviterdescid");
+    this.eis = getIntent().getStringExtra("chatroom");
+    this.eit = getIntent().getStringExtra("invitationreason");
+    this.eiu = getIntent().getStringExtra("ticket");
+    this.eii = getIntent().getStringExtra("username");
+    this.eih = getIntent().getStringExtra("nickname");
+    this.eij = getIntent().getStringExtra("descid");
+    this.eik = getIntent().getStringExtra("appid");
+    this.eil = getIntent().getStringExtra("headimgurl");
+    this.efi = ((com.tencent.mm.plugin.chatroom.a.c)g.E(com.tencent.mm.plugin.chatroom.a.c.class)).YJ().oV(bo.nullAsNil(this.eis));
+    this.eig = new SeeAccessVerifyInfoUI.b(this, this);
+    paramBundle = this.eii.split(",");
     if ((paramBundle != null) && (paramBundle.length > 0))
     {
       paramBundle = paramBundle[0];
-      y.i("MicroMsg.SeeAccessVerifyInfoUI", "[%s] has been in chatroom![%s]", new Object[] { paramBundle, this.dqQ });
-      if ((this.dnL.MN() != null) && (this.dnL.MN().contains(paramBundle)))
+      ab.i("MicroMsg.SeeAccessVerifyInfoUI", "[%s] has been in chatroom![%s]", new Object[] { paramBundle, this.eis });
+      if ((this.efi.afx() != null) && (this.efi.afx().contains(paramBundle)))
       {
-        paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().fd(this.dqO);
-        if (!paramBundle.cvF())
+        paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().kB(this.eiq);
+        if (!paramBundle.dyn())
         {
-          paramBundle.cvE();
-          ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().a(this.dqO, paramBundle);
+          paramBundle.dyl();
+          ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().a(this.eiq, paramBundle);
         }
       }
     }
     initView();
     setBackBtn(new SeeAccessVerifyInfoUI.1(this));
+    AppMethodBeat.o(104273);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(104275);
     super.onDestroy();
+    g.RK().eHt.b(453, this);
+    AppMethodBeat.o(104275);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    y.i("MicroMsg.SeeAccessVerifyInfoUI", "[onResume]");
+    AppMethodBeat.i(104274);
+    ab.i("MicroMsg.SeeAccessVerifyInfoUI", "[onResume]");
+    g.RK().eHt.a(453, this);
     super.onResume();
+    AppMethodBeat.o(104274);
+  }
+  
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(104277);
+    if (((paramm instanceof i)) && (paramInt1 == 0) && (paramInt2 == 0)) {
+      if ((this.eiE) && (bo.aa(this.eiz.getText())))
+      {
+        this.eiE = false;
+        paramString = new e();
+        paramString.field_appid = this.eio;
+        paramString.field_wordingId = this.eip;
+        paramString.field_language = aa.gP(ah.getContext());
+        g.RM();
+        ((PluginOpenIM)g.G(PluginOpenIM.class)).getWordingInfoStg().get(paramString, new String[] { "appid", "wordingId", "language" });
+        if (TextUtils.isEmpty(paramString.field_wording)) {
+          break label190;
+        }
+        this.eiz.setVisibility(0);
+        this.eiz.setText("＠" + paramString.field_wording);
+      }
+    }
+    for (;;)
+    {
+      if (this.eiD) {
+        this.eig.notifyDataSetChanged();
+      }
+      AppMethodBeat.o(104277);
+      return;
+      label190:
+      if ((!bo.isNullOrNil(this.eip)) && (!bo.isNullOrNil(this.eio)))
+      {
+        paramm = new LinkedList();
+        paramm.add(this.eip);
+        g.RK().eHt.a(new i(this.eio, paramString.field_language, paramm), 0);
+      }
+      this.eiz.setVisibility(4);
+    }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SeeAccessVerifyInfoUI
  * JD-Core Version:    0.7.0.1
  */

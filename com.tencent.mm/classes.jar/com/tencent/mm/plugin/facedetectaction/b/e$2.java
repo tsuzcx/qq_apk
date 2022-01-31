@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.facedetectaction.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.e.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$2
   implements Runnable
@@ -10,28 +11,30 @@ final class e$2
   
   public final void run()
   {
+    AppMethodBeat.i(703);
     try
     {
-      a.aPj().uq();
-      byte[][] arrayOfByte = this.jWw;
+      a.bvo().EC();
+      byte[][] arrayOfByte = this.mqN;
       int j = arrayOfByte.length;
       int i = 0;
       while (i < j)
       {
         byte[] arrayOfByte1 = arrayOfByte[i];
-        a.aPj().ax(arrayOfByte1);
+        a.bvo().aV(arrayOfByte1);
         i += 1;
       }
-      a.aPj().a(new e.2.1(this));
+      a.bvo().a(new e.2.1(this));
+      AppMethodBeat.o(703);
       return;
     }
     catch (Exception localException)
     {
-      do
-      {
-        y.printErrStackTrace("MicroMsg.FaceCheckVideoRecordMgr", localException, "recordFrameImpl error", new Object[0]);
-      } while (this.jWx.jWu == null);
-      this.jWx.jWu.onError();
+      ab.printErrStackTrace("MicroMsg.FaceCheckVideoRecordMgr", localException, "recordFrameImpl error", new Object[0]);
+      if (this.mqO.mqL != null) {
+        this.mqO.mqL.onError();
+      }
+      AppMethodBeat.o(703);
     }
   }
 }

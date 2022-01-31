@@ -1,16 +1,21 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class LoginHistoryUI$21
-  implements d.a
+  implements View.OnClickListener
 {
   LoginHistoryUI$21(LoginHistoryUI paramLoginHistoryUI, d paramd) {}
   
-  public final void onDismiss()
+  public final void onClick(View paramView)
   {
-    this.fnd.bFp();
+    AppMethodBeat.i(152549);
+    this.gEw.hideVKB();
+    this.gEx.crd();
+    AppMethodBeat.o(152549);
   }
 }
 

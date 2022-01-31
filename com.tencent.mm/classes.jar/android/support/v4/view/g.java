@@ -1,10 +1,25 @@
 package android.support.v4.view;
 
-public abstract interface g
+import android.os.Build.VERSION;
+import android.view.ViewGroup.MarginLayoutParams;
+
+public final class g
 {
-  public abstract boolean isNestedScrollingEnabled();
+  public static int a(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
+  {
+    if (Build.VERSION.SDK_INT >= 17) {
+      return paramMarginLayoutParams.getMarginStart();
+    }
+    return paramMarginLayoutParams.leftMargin;
+  }
   
-  public abstract void stopNestedScroll();
+  public static int b(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
+  {
+    if (Build.VERSION.SDK_INT >= 17) {
+      return paramMarginLayoutParams.getMarginEnd();
+    }
+    return paramMarginLayoutParams.rightMargin;
+  }
 }
 
 

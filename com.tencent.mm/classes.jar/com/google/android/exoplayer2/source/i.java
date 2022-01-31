@@ -1,17 +1,19 @@
 package com.google.android.exoplayer2.source;
 
-import com.google.android.exoplayer2.b.e;
-import com.google.android.exoplayer2.k;
+import com.google.android.exoplayer2.f;
+import com.google.android.exoplayer2.h.b;
 
 public abstract interface i
 {
-  public abstract void K(long paramLong);
+  public abstract h a(i.b paramb, b paramb1);
   
-  public abstract int b(k paramk, e parame, boolean paramBoolean);
+  public abstract void a(f paramf, i.a parama);
   
-  public abstract boolean isReady();
+  public abstract void b(h paramh);
   
-  public abstract void mD();
+  public abstract void oY();
+  
+  public abstract void oZ();
 }
 
 

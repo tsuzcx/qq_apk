@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.qqmail.stub;
 
 import android.app.Activity;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.ui.c;
 import com.tencent.mm.plugin.qqmail.ui.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.a;
 
 @a(7)
@@ -13,27 +14,39 @@ public class QQMailStubProxyUI
 {
   protected void onCreate(final Bundle paramBundle)
   {
+    AppMethodBeat.i(68078);
     super.onCreate(paramBundle);
-    y.d("MicroMsg.QQMail.QQMailStubProxyUI", "onCreate");
+    ab.d("MicroMsg.QQMail.QQMailStubProxyUI", "onCreate");
     paramBundle = new c(this);
     paramBundle.a(new c.a()
     {
-      public final void btI()
+      public final void cdT()
       {
-        y.d("MicroMsg.QQMail.QQMailStubProxyUI", "onAfterVerify");
+        AppMethodBeat.i(68076);
+        ab.d("MicroMsg.QQMail.QQMailStubProxyUI", "onAfterVerify");
         paramBundle.release();
         QQMailStubProxyUI.this.setResult(-1);
         QQMailStubProxyUI.this.finish();
+        AppMethodBeat.o(68076);
       }
       
-      public final void btJ()
+      public final void cdU()
       {
-        y.e("MicroMsg.QQMail.QQMailStubProxyUI", "onVerifyFail, finish self");
+        AppMethodBeat.i(68077);
+        ab.e("MicroMsg.QQMail.QQMailStubProxyUI", "onVerifyFail, finish self");
         paramBundle.release();
         QQMailStubProxyUI.this.setResult(0);
         QQMailStubProxyUI.this.finish();
+        AppMethodBeat.o(68077);
       }
     });
+    AppMethodBeat.o(68078);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

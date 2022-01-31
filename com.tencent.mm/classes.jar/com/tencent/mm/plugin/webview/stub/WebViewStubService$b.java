@@ -5,30 +5,30 @@ import android.os.Bundle;
 public final class WebViewStubService$b
   extends c.a
 {
-  public String aox;
   public int errCode;
+  public String errMsg;
   public int errType;
-  public Bundle kke;
+  public Bundle mEJ;
   public int type;
   
-  public final String Lg()
-  {
-    return this.aox;
-  }
-  
-  public final int ccZ()
+  public final int dcV()
   {
     return this.errType;
   }
   
-  public final int cda()
+  public final Bundle getData()
+  {
+    return this.mEJ;
+  }
+  
+  public final int getErrCode()
   {
     return this.errCode;
   }
   
-  public final Bundle getData()
+  public final String getErrMsg()
   {
-    return this.kke;
+    return this.errMsg;
   }
   
   public final int getType()

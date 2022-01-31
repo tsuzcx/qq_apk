@@ -1,15 +1,276 @@
 package com.tencent.mm.plugin.backup.f;
 
-import com.tencent.mm.a.n;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.o;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.zip.CRC32;
 
 public final class j
 {
-  public static String U(byte[] paramArrayOfByte)
+  public static int a(byte[] paramArrayOfByte1, int paramInt1, short paramShort1, short paramShort2, int paramInt2, byte[] paramArrayOfByte2)
   {
+    AppMethodBeat.i(17470);
+    try
+    {
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      localByteArrayOutputStream.write(paramArrayOfByte1);
+      localByteArrayOutputStream.write(o.fT(paramInt1));
+      localByteArrayOutputStream.write(new byte[] { (byte)(paramShort1 >> 8 & 0xFF), (byte)(paramShort1 & 0xFF) });
+      localByteArrayOutputStream.write(new byte[] { (byte)(paramShort2 >> 8 & 0xFF), (byte)(paramShort2 & 0xFF) });
+      localByteArrayOutputStream.write(o.fT(paramInt2));
+      localByteArrayOutputStream.write(o.fT(0));
+      localByteArrayOutputStream.write(paramArrayOfByte2);
+      paramArrayOfByte1 = new CRC32();
+      paramArrayOfByte1.update(localByteArrayOutputStream.toByteArray());
+      long l = paramArrayOfByte1.getValue();
+      paramInt1 = (int)l;
+      AppMethodBeat.o(17470);
+      return paramInt1;
+    }
+    catch (IOException paramArrayOfByte1)
+    {
+      ab.printErrStackTrace("MicroMsg.BackupPacker", paramArrayOfByte1, "BackupPacker getCheckSum error.", new Object[0]);
+      AppMethodBeat.o(17470);
+    }
+    return 0;
+  }
+  
+  /* Error */
+  public static void a(byte[] paramArrayOfByte, int paramInt1, short paramShort, com.tencent.mm.pointers.PByteArray paramPByteArray, int paramInt2)
+  {
+    // Byte code:
+    //   0: sipush 17469
+    //   3: invokestatic 14	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 16	java/io/ByteArrayOutputStream
+    //   9: dup
+    //   10: invokespecial 20	java/io/ByteArrayOutputStream:<init>	()V
+    //   13: astore 6
+    //   15: aload 6
+    //   17: astore 5
+    //   19: aload 6
+    //   21: ldc 61
+    //   23: invokevirtual 66	java/lang/String:getBytes	()[B
+    //   26: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
+    //   29: aload 6
+    //   31: astore 5
+    //   33: aload 6
+    //   35: iload_1
+    //   36: invokestatic 30	com/tencent/mm/a/o:fT	(I)[B
+    //   39: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
+    //   42: aload 6
+    //   44: astore 5
+    //   46: aload 6
+    //   48: iconst_2
+    //   49: newarray byte
+    //   51: dup
+    //   52: iconst_0
+    //   53: iconst_0
+    //   54: bastore
+    //   55: dup
+    //   56: iconst_1
+    //   57: iconst_1
+    //   58: bastore
+    //   59: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
+    //   62: aload 6
+    //   64: astore 5
+    //   66: aload 6
+    //   68: iconst_2
+    //   69: newarray byte
+    //   71: dup
+    //   72: iconst_0
+    //   73: iload_2
+    //   74: bipush 8
+    //   76: ishr
+    //   77: sipush 255
+    //   80: iand
+    //   81: i2b
+    //   82: bastore
+    //   83: dup
+    //   84: iconst_1
+    //   85: iload_2
+    //   86: sipush 255
+    //   89: iand
+    //   90: i2b
+    //   91: bastore
+    //   92: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
+    //   95: aload_0
+    //   96: astore 7
+    //   98: iload_2
+    //   99: iconst_1
+    //   100: if_icmpeq +11 -> 111
+    //   103: iload_2
+    //   104: iconst_2
+    //   105: if_icmpne +131 -> 236
+    //   108: aload_0
+    //   109: astore 7
+    //   111: aload 6
+    //   113: astore 5
+    //   115: aload 6
+    //   117: aload 7
+    //   119: arraylength
+    //   120: bipush 20
+    //   122: iadd
+    //   123: invokestatic 30	com/tencent/mm/a/o:fT	(I)[B
+    //   126: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
+    //   129: aload 6
+    //   131: astore 5
+    //   133: aload 6
+    //   135: iconst_0
+    //   136: invokestatic 30	com/tencent/mm/a/o:fT	(I)[B
+    //   139: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
+    //   142: aload 6
+    //   144: astore 5
+    //   146: aload 6
+    //   148: aload 7
+    //   150: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
+    //   153: aload 6
+    //   155: astore 5
+    //   157: aload_3
+    //   158: aload 6
+    //   160: invokevirtual 37	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   163: putfield 72	com/tencent/mm/pointers/PByteArray:value	[B
+    //   166: iload 4
+    //   168: iconst_1
+    //   169: if_icmpne +50 -> 219
+    //   172: aload 6
+    //   174: astore 5
+    //   176: new 32	java/util/zip/CRC32
+    //   179: dup
+    //   180: invokespecial 33	java/util/zip/CRC32:<init>	()V
+    //   183: astore_0
+    //   184: aload 6
+    //   186: astore 5
+    //   188: aload_0
+    //   189: aload_3
+    //   190: getfield 72	com/tencent/mm/pointers/PByteArray:value	[B
+    //   193: invokevirtual 40	java/util/zip/CRC32:update	([B)V
+    //   196: aload 6
+    //   198: astore 5
+    //   200: aload_0
+    //   201: invokevirtual 44	java/util/zip/CRC32:getValue	()J
+    //   204: l2i
+    //   205: invokestatic 30	com/tencent/mm/a/o:fT	(I)[B
+    //   208: iconst_0
+    //   209: aload_3
+    //   210: getfield 72	com/tencent/mm/pointers/PByteArray:value	[B
+    //   213: bipush 16
+    //   215: iconst_4
+    //   216: invokestatic 78	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   219: aload 6
+    //   221: invokevirtual 81	java/io/ByteArrayOutputStream:reset	()V
+    //   224: aload 6
+    //   226: invokevirtual 84	java/io/ByteArrayOutputStream:close	()V
+    //   229: sipush 17469
+    //   232: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   235: return
+    //   236: aload 6
+    //   238: astore 5
+    //   240: aload_0
+    //   241: invokestatic 89	com/tencent/mm/plugin/backup/b/d:aSP	()[B
+    //   244: invokestatic 95	com/tencent/mm/a/l:d	([B[B)[B
+    //   247: astore 7
+    //   249: goto -138 -> 111
+    //   252: astore_0
+    //   253: sipush 17469
+    //   256: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   259: return
+    //   260: astore_3
+    //   261: aconst_null
+    //   262: astore_0
+    //   263: aload_0
+    //   264: astore 5
+    //   266: ldc 49
+    //   268: aload_3
+    //   269: ldc 97
+    //   271: iconst_0
+    //   272: anewarray 4	java/lang/Object
+    //   275: invokestatic 57	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   278: aload_0
+    //   279: ifnull +53 -> 332
+    //   282: aload_0
+    //   283: invokevirtual 81	java/io/ByteArrayOutputStream:reset	()V
+    //   286: aload_0
+    //   287: invokevirtual 84	java/io/ByteArrayOutputStream:close	()V
+    //   290: sipush 17469
+    //   293: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   296: return
+    //   297: astore_0
+    //   298: sipush 17469
+    //   301: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   304: return
+    //   305: astore_0
+    //   306: aconst_null
+    //   307: astore 5
+    //   309: aload 5
+    //   311: ifnull +13 -> 324
+    //   314: aload 5
+    //   316: invokevirtual 81	java/io/ByteArrayOutputStream:reset	()V
+    //   319: aload 5
+    //   321: invokevirtual 84	java/io/ByteArrayOutputStream:close	()V
+    //   324: sipush 17469
+    //   327: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   330: aload_0
+    //   331: athrow
+    //   332: sipush 17469
+    //   335: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   338: return
+    //   339: astore_3
+    //   340: goto -16 -> 324
+    //   343: astore_0
+    //   344: goto -35 -> 309
+    //   347: astore_3
+    //   348: aload 6
+    //   350: astore_0
+    //   351: goto -88 -> 263
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	354	0	paramArrayOfByte	byte[]
+    //   0	354	1	paramInt1	int
+    //   0	354	2	paramShort	short
+    //   0	354	3	paramPByteArray	com.tencent.mm.pointers.PByteArray
+    //   0	354	4	paramInt2	int
+    //   17	303	5	localObject	Object
+    //   13	336	6	localByteArrayOutputStream	ByteArrayOutputStream
+    //   96	152	7	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   219	229	252	java/io/IOException
+    //   6	15	260	java/io/IOException
+    //   282	290	297	java/io/IOException
+    //   6	15	305	finally
+    //   314	324	339	java/io/IOException
+    //   19	29	343	finally
+    //   33	42	343	finally
+    //   46	62	343	finally
+    //   66	95	343	finally
+    //   115	129	343	finally
+    //   133	142	343	finally
+    //   146	153	343	finally
+    //   157	166	343	finally
+    //   176	184	343	finally
+    //   188	196	343	finally
+    //   200	219	343	finally
+    //   240	249	343	finally
+    //   266	278	343	finally
+    //   19	29	347	java/io/IOException
+    //   33	42	347	java/io/IOException
+    //   46	62	347	java/io/IOException
+    //   66	95	347	java/io/IOException
+    //   115	129	347	java/io/IOException
+    //   133	142	347	java/io/IOException
+    //   146	153	347	java/io/IOException
+    //   157	166	347	java/io/IOException
+    //   176	184	347	java/io/IOException
+    //   188	196	347	java/io/IOException
+    //   200	219	347	java/io/IOException
+    //   240	249	347	java/io/IOException
+  }
+  
+  public static String ao(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(17471);
     String str = "";
     int i;
     if (paramArrayOfByte.length > 100) {
@@ -22,248 +283,9 @@ public final class j
       continue;
       i = 0;
     }
-    y.e("MicroMsg.BackupPacker", "dumpErr errBuf:%s", new Object[] { str });
+    ab.e("MicroMsg.BackupPacker", "dumpErr errBuf:%s", new Object[] { str });
+    AppMethodBeat.o(17471);
     return str;
-  }
-  
-  public static int a(byte[] paramArrayOfByte1, int paramInt1, short paramShort1, short paramShort2, int paramInt2, byte[] paramArrayOfByte2)
-  {
-    try
-    {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      localByteArrayOutputStream.write(paramArrayOfByte1);
-      localByteArrayOutputStream.write(n.eg(paramInt1));
-      localByteArrayOutputStream.write(new byte[] { (byte)(paramShort1 >> 8 & 0xFF), (byte)(paramShort1 & 0xFF) });
-      localByteArrayOutputStream.write(new byte[] { (byte)(paramShort2 >> 8 & 0xFF), (byte)(paramShort2 & 0xFF) });
-      localByteArrayOutputStream.write(n.eg(paramInt2));
-      localByteArrayOutputStream.write(n.eg(0));
-      localByteArrayOutputStream.write(paramArrayOfByte2);
-      paramArrayOfByte1 = new CRC32();
-      paramArrayOfByte1.update(localByteArrayOutputStream.toByteArray());
-      long l = paramArrayOfByte1.getValue();
-      return (int)l;
-    }
-    catch (IOException paramArrayOfByte1)
-    {
-      y.printErrStackTrace("MicroMsg.BackupPacker", paramArrayOfByte1, "BackupPacker getCheckSum error.", new Object[0]);
-    }
-    return 0;
-  }
-  
-  /* Error */
-  public static void a(byte[] paramArrayOfByte, int paramInt1, short paramShort, com.tencent.mm.pointers.PByteArray paramPByteArray, int paramInt2)
-  {
-    // Byte code:
-    //   0: new 47	java/io/ByteArrayOutputStream
-    //   3: dup
-    //   4: invokespecial 48	java/io/ByteArrayOutputStream:<init>	()V
-    //   7: astore 6
-    //   9: aload 6
-    //   11: astore 5
-    //   13: aload 6
-    //   15: ldc 81
-    //   17: invokevirtual 86	java/lang/String:getBytes	()[B
-    //   20: invokevirtual 52	java/io/ByteArrayOutputStream:write	([B)V
-    //   23: aload 6
-    //   25: astore 5
-    //   27: aload 6
-    //   29: iload_1
-    //   30: invokestatic 58	com/tencent/mm/a/n:eg	(I)[B
-    //   33: invokevirtual 52	java/io/ByteArrayOutputStream:write	([B)V
-    //   36: aload 6
-    //   38: astore 5
-    //   40: aload 6
-    //   42: iconst_2
-    //   43: newarray byte
-    //   45: dup
-    //   46: iconst_0
-    //   47: iconst_0
-    //   48: bastore
-    //   49: dup
-    //   50: iconst_1
-    //   51: iconst_1
-    //   52: bastore
-    //   53: invokevirtual 52	java/io/ByteArrayOutputStream:write	([B)V
-    //   56: aload 6
-    //   58: astore 5
-    //   60: aload 6
-    //   62: iconst_2
-    //   63: newarray byte
-    //   65: dup
-    //   66: iconst_0
-    //   67: iload_2
-    //   68: bipush 8
-    //   70: ishr
-    //   71: sipush 255
-    //   74: iand
-    //   75: i2b
-    //   76: bastore
-    //   77: dup
-    //   78: iconst_1
-    //   79: iload_2
-    //   80: sipush 255
-    //   83: iand
-    //   84: i2b
-    //   85: bastore
-    //   86: invokevirtual 52	java/io/ByteArrayOutputStream:write	([B)V
-    //   89: aload_0
-    //   90: astore 7
-    //   92: iload_2
-    //   93: iconst_1
-    //   94: if_icmpeq +11 -> 105
-    //   97: iload_2
-    //   98: iconst_2
-    //   99: if_icmpne +125 -> 224
-    //   102: aload_0
-    //   103: astore 7
-    //   105: aload 6
-    //   107: astore 5
-    //   109: aload 6
-    //   111: aload 7
-    //   113: arraylength
-    //   114: bipush 20
-    //   116: iadd
-    //   117: invokestatic 58	com/tencent/mm/a/n:eg	(I)[B
-    //   120: invokevirtual 52	java/io/ByteArrayOutputStream:write	([B)V
-    //   123: aload 6
-    //   125: astore 5
-    //   127: aload 6
-    //   129: iconst_0
-    //   130: invokestatic 58	com/tencent/mm/a/n:eg	(I)[B
-    //   133: invokevirtual 52	java/io/ByteArrayOutputStream:write	([B)V
-    //   136: aload 6
-    //   138: astore 5
-    //   140: aload 6
-    //   142: aload 7
-    //   144: invokevirtual 52	java/io/ByteArrayOutputStream:write	([B)V
-    //   147: aload 6
-    //   149: astore 5
-    //   151: aload_3
-    //   152: aload 6
-    //   154: invokevirtual 65	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   157: putfield 92	com/tencent/mm/pointers/PByteArray:value	[B
-    //   160: iload 4
-    //   162: iconst_1
-    //   163: if_icmpne +50 -> 213
-    //   166: aload 6
-    //   168: astore 5
-    //   170: new 60	java/util/zip/CRC32
-    //   173: dup
-    //   174: invokespecial 61	java/util/zip/CRC32:<init>	()V
-    //   177: astore_0
-    //   178: aload 6
-    //   180: astore 5
-    //   182: aload_0
-    //   183: aload_3
-    //   184: getfield 92	com/tencent/mm/pointers/PByteArray:value	[B
-    //   187: invokevirtual 68	java/util/zip/CRC32:update	([B)V
-    //   190: aload 6
-    //   192: astore 5
-    //   194: aload_0
-    //   195: invokevirtual 72	java/util/zip/CRC32:getValue	()J
-    //   198: l2i
-    //   199: invokestatic 58	com/tencent/mm/a/n:eg	(I)[B
-    //   202: iconst_0
-    //   203: aload_3
-    //   204: getfield 92	com/tencent/mm/pointers/PByteArray:value	[B
-    //   207: bipush 16
-    //   209: iconst_4
-    //   210: invokestatic 98	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   213: aload 6
-    //   215: invokevirtual 101	java/io/ByteArrayOutputStream:reset	()V
-    //   218: aload 6
-    //   220: invokevirtual 104	java/io/ByteArrayOutputStream:close	()V
-    //   223: return
-    //   224: aload 6
-    //   226: astore 5
-    //   228: aload_0
-    //   229: invokestatic 109	com/tencent/mm/plugin/backup/b/d:atr	()[B
-    //   232: invokestatic 115	com/tencent/mm/a/k:b	([B[B)[B
-    //   235: astore 7
-    //   237: goto -132 -> 105
-    //   240: astore_3
-    //   241: aconst_null
-    //   242: astore_0
-    //   243: aload_0
-    //   244: astore 5
-    //   246: ldc 32
-    //   248: aload_3
-    //   249: ldc 117
-    //   251: iconst_0
-    //   252: anewarray 4	java/lang/Object
-    //   255: invokestatic 78	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   258: aload_0
-    //   259: ifnull -36 -> 223
-    //   262: aload_0
-    //   263: invokevirtual 101	java/io/ByteArrayOutputStream:reset	()V
-    //   266: aload_0
-    //   267: invokevirtual 104	java/io/ByteArrayOutputStream:close	()V
-    //   270: return
-    //   271: astore_0
-    //   272: return
-    //   273: astore_0
-    //   274: aconst_null
-    //   275: astore 5
-    //   277: aload 5
-    //   279: ifnull +13 -> 292
-    //   282: aload 5
-    //   284: invokevirtual 101	java/io/ByteArrayOutputStream:reset	()V
-    //   287: aload 5
-    //   289: invokevirtual 104	java/io/ByteArrayOutputStream:close	()V
-    //   292: aload_0
-    //   293: athrow
-    //   294: astore_3
-    //   295: goto -3 -> 292
-    //   298: astore_0
-    //   299: goto -22 -> 277
-    //   302: astore_3
-    //   303: aload 6
-    //   305: astore_0
-    //   306: goto -63 -> 243
-    //   309: astore_0
-    //   310: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	311	0	paramArrayOfByte	byte[]
-    //   0	311	1	paramInt1	int
-    //   0	311	2	paramShort	short
-    //   0	311	3	paramPByteArray	com.tencent.mm.pointers.PByteArray
-    //   0	311	4	paramInt2	int
-    //   11	277	5	localObject	Object
-    //   7	297	6	localByteArrayOutputStream	ByteArrayOutputStream
-    //   90	146	7	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   0	9	240	java/io/IOException
-    //   262	270	271	java/io/IOException
-    //   0	9	273	finally
-    //   282	292	294	java/io/IOException
-    //   13	23	298	finally
-    //   27	36	298	finally
-    //   40	56	298	finally
-    //   60	89	298	finally
-    //   109	123	298	finally
-    //   127	136	298	finally
-    //   140	147	298	finally
-    //   151	160	298	finally
-    //   170	178	298	finally
-    //   182	190	298	finally
-    //   194	213	298	finally
-    //   228	237	298	finally
-    //   246	258	298	finally
-    //   13	23	302	java/io/IOException
-    //   27	36	302	java/io/IOException
-    //   40	56	302	java/io/IOException
-    //   60	89	302	java/io/IOException
-    //   109	123	302	java/io/IOException
-    //   127	136	302	java/io/IOException
-    //   140	147	302	java/io/IOException
-    //   151	160	302	java/io/IOException
-    //   170	178	302	java/io/IOException
-    //   182	190	302	java/io/IOException
-    //   194	213	302	java/io/IOException
-    //   228	237	302	java/io/IOException
-    //   213	223	309	java/io/IOException
   }
 }
 

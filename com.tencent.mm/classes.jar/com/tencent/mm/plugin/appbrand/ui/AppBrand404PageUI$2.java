@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrand404PageUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class AppBrand404PageUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.hck.finish();
+    AppMethodBeat.i(132883);
+    this.iLw.finish();
+    AppMethodBeat.o(132883);
     return true;
   }
 }

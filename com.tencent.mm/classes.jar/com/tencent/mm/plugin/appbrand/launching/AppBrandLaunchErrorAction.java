@@ -9,21 +9,21 @@ public abstract class AppBrandLaunchErrorAction
 {
   public static final AppBrandLaunchErrorAction.a CREATOR = new AppBrandLaunchErrorAction.a();
   final String appId;
-  final int fJy;
+  final int hcr;
   
   AppBrandLaunchErrorAction(Parcel paramParcel)
   {
     this.appId = paramParcel.readString();
-    this.fJy = paramParcel.readInt();
+    this.hcr = paramParcel.readInt();
   }
   
   AppBrandLaunchErrorAction(String paramString, int paramInt)
   {
     this.appId = paramString;
-    this.fJy = paramInt;
+    this.hcr = paramInt;
   }
   
-  public abstract void cr(Context paramContext);
+  public abstract void cS(Context paramContext);
   
   public final int describeContents()
   {
@@ -34,12 +34,12 @@ public abstract class AppBrandLaunchErrorAction
   {
     paramParcel.writeString(getClass().getName());
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.fJy);
+    paramParcel.writeInt(this.hcr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchErrorAction
  * JD-Core Version:    0.7.0.1
  */

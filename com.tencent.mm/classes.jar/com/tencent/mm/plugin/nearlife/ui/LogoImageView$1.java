@@ -1,35 +1,39 @@
 package com.tencent.mm.plugin.nearlife.ui;
 
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
 import com.tencent.mm.a.g;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.d;
 
 final class LogoImageView$1
-  extends ah
+  extends ak
 {
   LogoImageView$1(LogoImageView paramLogoImageView) {}
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(22968);
     byte[] arrayOfByte = (byte[])paramMessage.obj;
     if ((arrayOfByte == null) || (arrayOfByte.length == 0))
     {
-      y.e("MicroMsg.LogoImageView", "handleMsg fail, data is null");
+      ab.e("MicroMsg.LogoImageView", "handleMsg fail, data is null");
+      AppMethodBeat.o(22968);
       return;
     }
-    paramMessage = c.bu(arrayOfByte);
-    String str = LogoImageView.a(this.mFn) + g.o(LogoImageView.b(this.mFn).getBytes());
-    y.d("MicroMsg.LogoImageView", "filePath  %s", new Object[] { str });
+    paramMessage = d.bT(arrayOfByte);
+    String str = LogoImageView.a(this.pft) + g.w(LogoImageView.b(this.pft).getBytes());
+    ab.d("MicroMsg.LogoImageView", "filePath  %s", new Object[] { str });
     e.b(str, arrayOfByte, arrayOfByte.length);
-    if ((paramMessage != null) && (LogoImageView.c(this.mFn) > 0) && (LogoImageView.d(this.mFn) > 0)) {
-      paramMessage = c.a(paramMessage, LogoImageView.d(this.mFn), LogoImageView.c(this.mFn), true, false);
+    if ((paramMessage != null) && (LogoImageView.c(this.pft) > 0) && (LogoImageView.d(this.pft) > 0)) {
+      paramMessage = d.a(paramMessage, LogoImageView.d(this.pft), LogoImageView.c(this.pft), true, false);
     }
     for (;;)
     {
-      this.mFn.setImageBitmap(paramMessage);
+      this.pft.setImageBitmap(paramMessage);
+      AppMethodBeat.o(22968);
       return;
     }
   }

@@ -1,11 +1,13 @@
 package com.tencent.mm.ui.contact.a;
 
+import android.view.View;
 import android.widget.TextView;
 
 public final class g$a
   extends a.a
 {
-  public TextView iCG;
+  public TextView gpM;
+  public View hrR;
   
   public g$a(g paramg)
   {

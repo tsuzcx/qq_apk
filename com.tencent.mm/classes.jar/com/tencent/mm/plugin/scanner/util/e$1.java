@@ -1,26 +1,25 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import com.tencent.mm.h.a.lu;
-import com.tencent.mm.h.a.lu.b;
+import android.graphics.Point;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class e$1
   implements Runnable
 {
-  e$1(e parame, lu paramlu) {}
+  e$1(e parame, byte[] paramArrayOfByte, Point paramPoint) {}
   
   public final void run()
   {
-    if ((this.nOI.getContext() == null) || (this.nOH.bUQ == null)) {}
-    do
+    AppMethodBeat.i(81380);
+    if (e.a(this.qCp, this.val$data, this.qCo))
     {
+      al.d(new e.1.1(this));
+      AppMethodBeat.o(81380);
       return;
-      if (this.nOH.bUQ.ret == 1)
-      {
-        this.nOI.im(true);
-        return;
-      }
-    } while (this.nOH.bUQ.ret != 2);
-    this.nOI.im(false);
+    }
+    al.d(new e.1.2(this));
+    AppMethodBeat.o(81380);
   }
 }
 

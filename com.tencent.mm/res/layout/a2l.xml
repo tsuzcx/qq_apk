@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="#ffefeff4" android:layout_width="2.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/l3" />
-    <TextView android:textSize="@dimen/my" android:textStyle="bold" android:textColor="@color/or" android:ellipsize="end" android:id="@id/byr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/my" android:textColor="@color/or" android:ellipsize="end" android:id="@id/bys" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="0.0" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/r_" style="@style/ia">
+        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hm" style="@style/a0t" />
+        <TextView android:textColor="#ff7a93af" android:layout_gravity="center_vertical" android:id="@id/nj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hh" android:text="{tip}" style="@style/ln" />
+    </LinearLayout>
+</RelativeLayout>

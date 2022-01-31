@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$2
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class a$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a.a(this.sbP, false, this.sbP.sbJ, this.sbP.fiE);
+    AppMethodBeat.i(79701);
+    a.a(this.vSX, false, this.vSX.vSQ, this.vSX.gAl);
+    AppMethodBeat.o(79701);
   }
 }
 

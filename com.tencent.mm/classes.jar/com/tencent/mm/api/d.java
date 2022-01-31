@@ -1,9 +1,6 @@
 package com.tencent.mm.api;
 
-public enum d
-{
-  private d() {}
-}
+public class d {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar

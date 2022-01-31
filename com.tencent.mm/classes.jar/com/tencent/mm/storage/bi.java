@@ -3,530 +3,797 @@ package com.tencent.mm.storage;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
-import com.tencent.mm.ae.o;
-import com.tencent.mm.ax.a.a;
-import com.tencent.mm.h.a.mv;
-import com.tencent.mm.h.a.pf;
-import com.tencent.mm.h.a.ph;
-import com.tencent.mm.h.c.cs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.u;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.g.a.nr;
+import com.tencent.mm.g.a.qk;
+import com.tencent.mm.g.a.qm;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.m.e;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.Map;
 import junit.framework.Assert;
 
 public final class bi
-  extends o
+  extends u
 {
-  public static String uBP = "voip_content_voice";
-  public static String uBQ = "voip_content_video";
-  public boolean uBR = false;
-  private String uBS;
+  public static String yOb = "voip_content_voice";
+  public static String yOc = "voip_content_video";
+  public boolean yOd;
+  private String yOe;
   
-  public bi() {}
+  public bi()
+  {
+    this.yOd = false;
+  }
   
   public bi(String paramString)
   {
-    super.ec(paramString);
+    AppMethodBeat.i(60155);
+    this.yOd = false;
+    super.kj(paramString);
+    AppMethodBeat.o(60155);
   }
   
-  public static bi ak(bi parambi)
+  private static boolean Cc()
   {
+    AppMethodBeat.i(60195);
+    String str = ((com.tencent.mm.plugin.zero.b.a)g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("TranslateMsgOff");
+    if (bo.isNullOrNil(str))
+    {
+      AppMethodBeat.o(60195);
+      return true;
+    }
+    if (bo.apV(str) != 0)
+    {
+      ab.d("MicroMsg.MsgInfo", "isTranslateFeatureOn false");
+      AppMethodBeat.o(60195);
+      return false;
+    }
+    AppMethodBeat.o(60195);
+    return true;
+  }
+  
+  public static boolean aU(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(60200);
+    if ((paramMap != null) && (paramMap.containsKey(".sysmsg.$type")) && (((String)paramMap.get(".sysmsg.$type")).equalsIgnoreCase("NewXmlChatRoomAccessVerifyApplication"))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ab.d("MicroMsg.MsgInfo", "isAddChatroomInviteMsg:%s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(60200);
+      return bool;
+    }
+  }
+  
+  public static boolean aV(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(60201);
+    if ((paramMap != null) && (paramMap.containsKey(".sysmsg.$type")) && (((String)paramMap.get(".sysmsg.$type")).equalsIgnoreCase("NewXmlChatRoomAccessVerifyApproval"))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ab.d("MicroMsg.MsgInfo", "isAddChatroomInviteAcceptMsg:%s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(60201);
+      return bool;
+    }
+  }
+  
+  public static bi as(bi parambi)
+  {
+    AppMethodBeat.i(60182);
     if (parambi == null)
     {
-      y.d("MicroMsg.MsgInfo", "convertFrom msg is null ");
+      ab.d("MicroMsg.MsgInfo", "convertFrom msg is null ");
+      AppMethodBeat.o(60182);
       return null;
     }
     bi localbi = new bi();
     localbi.setMsgId(parambi.field_msgId);
-    localbi.bf(parambi.field_msgSvrId);
+    localbi.fP(parambi.field_msgSvrId);
     localbi.setType(parambi.getType());
     localbi.setStatus(parambi.field_status);
-    localbi.fA(parambi.field_isSend);
+    localbi.hL(parambi.field_isSend);
     localbi.field_isShowTimer = parambi.field_isShowTimer;
-    localbi.cQt = true;
-    localbi.bg(parambi.field_createTime);
-    localbi.ec(parambi.field_talker);
+    localbi.dGF = true;
+    localbi.fQ(parambi.field_createTime);
+    localbi.kj(parambi.field_talker);
     localbi.setContent(parambi.field_content);
-    localbi.ed(parambi.field_imgPath);
-    localbi.ee(parambi.field_reserved);
-    localbi.w(parambi.field_lvbuffer);
-    localbi.ef(parambi.field_transContent);
-    localbi.eh(parambi.cQF);
-    localbi.ff(parambi.czq);
-    localbi.cY(parambi.czr);
+    localbi.kk(parambi.field_imgPath);
+    localbi.kl(parambi.field_reserved);
+    localbi.H(parambi.field_lvbuffer);
+    localbi.km(parambi.field_transContent);
+    localbi.ko(parambi.dGR);
+    localbi.hr(parambi.dnr);
+    localbi.jl(parambi.dns);
+    AppMethodBeat.o(60182);
     return localbi;
   }
   
-  public static boolean av(Map<String, String> paramMap)
+  private boolean dyb()
   {
-    if ((paramMap != null) && (paramMap.containsKey(".sysmsg.$type")) && (((String)paramMap.get(".sysmsg.$type")).equalsIgnoreCase("NewXmlChatRoomAccessVerifyApplication"))) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(60184);
+    if ((!isText()) && (!bCp()) && (!dxR()))
     {
-      y.d("MicroMsg.MsgInfo", "isAddChatroomInviteMsg:%s", new Object[] { Boolean.valueOf(bool) });
-      return bool;
+      AppMethodBeat.o(60184);
+      return true;
     }
+    AppMethodBeat.o(60184);
+    return false;
   }
   
-  public static boolean aw(Map<String, String> paramMap)
+  public static void op(long paramLong)
   {
-    if ((paramMap != null) && (paramMap.containsKey(".sysmsg.$type")) && (((String)paramMap.get(".sysmsg.$type")).equalsIgnoreCase("NewXmlChatRoomAccessVerifyApproval"))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      y.d("MicroMsg.MsgInfo", "isAddChatroomInviteAcceptMsg:%s", new Object[] { Boolean.valueOf(bool) });
-      return bool;
-    }
-  }
-  
-  public static void hG(long paramLong)
-  {
+    AppMethodBeat.i(60203);
     if ((100000000L > paramLong) && (-10L < paramLong)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("msgId not in the reasonable scope", bool);
+      AppMethodBeat.o(60203);
       return;
     }
   }
   
-  public final void Fq(int paramInt)
+  public final void Nx(int paramInt)
   {
+    AppMethodBeat.i(60194);
     switch (paramInt)
     {
     default: 
-      y.w("MicroMsg.MsgInfo", "Illgeal forwardflag !!!");
+      ab.w("MicroMsg.MsgInfo", "Illgeal forwardflag !!!");
+      AppMethodBeat.o(60194);
       return;
     }
-    ff(this.czq | paramInt);
+    hr(this.dnr | paramInt);
+    AppMethodBeat.o(60194);
   }
   
-  public final boolean aRQ()
+  public final boolean asi(String paramString)
   {
-    return getType() == 43;
-  }
-  
-  public final boolean aRR()
-  {
-    return getType() == 62;
-  }
-  
-  public final boolean aVK()
-  {
-    return (getType() & 0xFFFF) == 49;
-  }
-  
-  public final boolean aVM()
-  {
-    return getType() == 48;
-  }
-  
-  public final boolean abY(String paramString)
-  {
-    if ((!bk.bl(this.czr)) && (!bk.bl(paramString)))
+    AppMethodBeat.i(60198);
+    if ((!bo.isNullOrNil(this.dns)) && (!bo.isNullOrNil(paramString)))
     {
-      Object localObject = bn.s(this.czr, "msgsource");
-      if (localObject == null) {
+      Object localObject = br.F(this.dns, "msgsource");
+      if (localObject == null)
+      {
+        AppMethodBeat.o(60198);
         return false;
       }
       localObject = (String)((Map)localObject).get(".msgsource.atuserlist");
-      if (!bk.bl((String)localObject))
+      if (!bo.isNullOrNil((String)localObject))
       {
         localObject = ((String)localObject).split(",");
         int j = localObject.length;
         int i = 0;
         while (i < j)
         {
-          if (localObject[i].trim().equals(paramString)) {
+          if (localObject[i].trim().equals(paramString))
+          {
+            AppMethodBeat.o(60198);
             return true;
           }
           i += 1;
         }
       }
     }
+    AppMethodBeat.o(60198);
     return false;
   }
   
-  public final boolean ctA()
+  public final boolean bCn()
   {
-    return getType() == 34;
-  }
-  
-  public final boolean ctB()
-  {
-    switch (getType())
+    AppMethodBeat.i(60156);
+    if ((getType() & 0xFFFF) == 49)
     {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public final boolean ctz()
-  {
-    return getType() == 285212721;
-  }
-  
-  public final boolean cvA()
-  {
-    return (this.czq & 0x20) > 0;
-  }
-  
-  public final boolean cvB()
-  {
-    return (cvw()) && ((this.czq & 0x10) > 0);
-  }
-  
-  public final void cvC()
-  {
-    if (!cvw()) {
-      return;
-    }
-    ff(this.czq | 0x10);
-  }
-  
-  public final boolean cvD()
-  {
-    return (cvw()) && ((this.czq & 0x400) > 0);
-  }
-  
-  public final void cvE()
-  {
-    ff(this.czq | 0x80);
-  }
-  
-  public final boolean cvF()
-  {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if ((this.czq & 0x80) == 0)
-    {
-      bool1 = bool2;
-      if ((this.czq & 0x300) == 0) {
-        bool1 = false;
-      }
-    }
-    return bool1;
-  }
-  
-  public final void cvG()
-  {
-    ff(this.czq & 0xFFFFFFBF);
-  }
-  
-  public final void cvH()
-  {
-    ff(this.czq | 0x40);
-  }
-  
-  public final boolean cvI()
-  {
-    return (this.czq & 0x40) != 0;
-  }
-  
-  public final boolean cvJ()
-  {
-    if ((!bk.bl(this.czr)) && ((this.czr.contains("announcement@all")) || (this.czr.contains("notify@all")))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      y.d("MicroMsg.MsgInfo", "isAtAll isAtAll:%s", new Object[] { Boolean.valueOf(bool) });
-      return bool;
-    }
-  }
-  
-  public final String cvK()
-  {
-    if (!cvm()) {
-      return "";
-    }
-    if (this.uBS == null) {
-      cvL();
-    }
-    return this.uBS;
-  }
-  
-  public final com.tencent.mm.ax.a cvL()
-  {
-    y.i("MicroMsg.MsgInfo", "[parseNewXmlSysMsg]");
-    com.tencent.mm.ax.a locala = a.a.b(bn.s(this.field_content, "sysmsg"), this);
-    if (locala != null)
-    {
-      y.i("MicroMsg.MsgInfo", "BaseNewXmlMsg:%s", new Object[] { locala });
-      if ((locala.values != null) && (locala.values.size() > 0))
-      {
-        if (locala.values.containsKey(".sysmsg.$type")) {
-          locala.TYPE = ((String)locala.values.get(".sysmsg.$type"));
-        }
-        com.tencent.mm.ax.a.evw = ".sysmsg." + locala.TYPE + ".text";
-        if (locala.values.containsKey(com.tencent.mm.ax.a.evw)) {
-          locala.TEXT = ((String)locala.values.get(com.tencent.mm.ax.a.evw));
-        }
-        com.tencent.mm.ax.a.evx = ".sysmsg." + locala.TYPE + ".link.scene";
-        if (locala.values.containsKey(com.tencent.mm.ax.a.evx)) {
-          locala.evz = ((String)locala.values.get(com.tencent.mm.ax.a.evx));
-        }
-        locala.Ib();
-      }
-      for (;;)
-      {
-        this.uBS = locala.TEXT;
-        return locala;
-        y.e("MicroMsg.BaseNewXmlMsg", "values == null || values.size() == 0 ");
-      }
-    }
-    y.e("MicroMsg.MsgInfo", "[parseNewXmlSysMsg] null == pBaseNewXmlMsg");
-    return locala;
-  }
-  
-  public final boolean cvg()
-  {
-    return getType() == 436207665;
-  }
-  
-  public final boolean cvh()
-  {
-    return getType() == 469762097;
-  }
-  
-  public final boolean cvi()
-  {
-    return getType() == 301989937;
-  }
-  
-  public final boolean cvj()
-  {
-    return (getType() == 50) || (getType() == 53);
-  }
-  
-  public final boolean cvk()
-  {
-    return getType() == 52;
-  }
-  
-  public final boolean cvl()
-  {
-    return getType() == 318767153;
-  }
-  
-  public final boolean cvm()
-  {
-    return getType() == 10002;
-  }
-  
-  public final boolean cvn()
-  {
-    return (getType() == 42) || (getType() == 66);
-  }
-  
-  public final boolean cvo()
-  {
-    return getType() == 47;
-  }
-  
-  public final boolean cvp()
-  {
-    return getType() == 1048625;
-  }
-  
-  public final boolean cvq()
-  {
-    return getType() == 16777265;
-  }
-  
-  public final boolean cvr()
-  {
-    return getType() == 268435505;
-  }
-  
-  public final boolean cvs()
-  {
-    return getType() == -1879048191;
-  }
-  
-  public final boolean cvt()
-  {
-    return getType() == -1879048190;
-  }
-  
-  public final boolean cvu()
-  {
-    return getType() == -1879048189;
-  }
-  
-  public final boolean cvv()
-  {
-    switch (getType())
-    {
-    case 56: 
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public final boolean cvw()
-  {
-    String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.zero.b.a.class)).AA().getValue("TranslateMsgOff");
-    if ((!bk.bl(str)) && (bk.ZR(str) != 0)) {
-      y.d("MicroMsg.MsgInfo", "isTranslateFeatureOn false");
-    }
-    for (int i = 0; (i != 0) && (!bk.bl(this.field_transContent)); i = 1) {
+      AppMethodBeat.o(60156);
       return true;
     }
+    AppMethodBeat.o(60156);
     return false;
   }
   
-  public final boolean cvx()
+  public final boolean bCp()
   {
-    return (this.cQI & 0x1) > 0;
-  }
-  
-  public final void cvy()
-  {
-    this.cQI |= 0x1;
-    this.cyX = true;
-  }
-  
-  public final void cvz()
-  {
-    if (cvA()) {
-      ff(this.czq & 0xFFFFFFDF);
+    AppMethodBeat.i(60168);
+    if (getType() == 48)
+    {
+      AppMethodBeat.o(60168);
+      return true;
     }
+    AppMethodBeat.o(60168);
+    return false;
   }
   
-  public final void d(Cursor paramCursor)
+  public final boolean byj()
   {
-    super.d(paramCursor);
+    AppMethodBeat.i(60171);
+    if (getType() == 43)
+    {
+      AppMethodBeat.o(60171);
+      return true;
+    }
+    AppMethodBeat.o(60171);
+    return false;
+  }
+  
+  public final boolean byk()
+  {
+    AppMethodBeat.i(60172);
+    if (getType() == 62)
+    {
+      AppMethodBeat.o(60172);
+      return true;
+    }
+    AppMethodBeat.o(60172);
+    return false;
+  }
+  
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(60202);
+    super.convertFrom(paramCursor);
     paramCursor = this.field_content;
     if ((paramCursor != null) && (paramCursor.length() > 2097152))
     {
       final long l = this.field_msgId;
       StringBuilder localStringBuilder = new StringBuilder(1024);
       localStringBuilder.append("Very big message: \nmsgId = ").append(l).append('\n').append("msgSvrId = ").append(this.field_msgSvrId).append('\n').append("type = ").append(getType()).append('\n').append("createTime = ").append(this.field_createTime).append('\n').append("talker = ").append(this.field_talker).append('\n').append("flag = ").append(this.field_flag).append('\n').append("content.length() = ").append(paramCursor.length()).append('\n').append("content = ").append(paramCursor.substring(0, 256));
-      y.e("MicroMsg.MsgInfo", localStringBuilder.toString());
+      ab.e("MicroMsg.MsgInfo", localStringBuilder.toString());
       setType(1);
       setContent("");
-      paramCursor = ak(this);
-      com.tencent.mm.kernel.g.DS().O(new Runnable()
+      paramCursor = as(this);
+      g.RO().ac(new Runnable()
       {
         public final void run()
         {
-          ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().a(l, this.uBT);
+          AppMethodBeat.i(60140);
+          ((j)g.E(j.class)).bPQ().a(l, this.yOf);
+          AppMethodBeat.o(60140);
         }
       });
     }
-    hG(this.field_msgId);
+    op(this.field_msgId);
+    AppMethodBeat.o(60202);
+  }
+  
+  public final ContentValues convertTo()
+  {
+    AppMethodBeat.i(60204);
+    op(this.field_msgId);
+    ContentValues localContentValues = super.convertTo();
+    AppMethodBeat.o(60204);
+    return localContentValues;
+  }
+  
+  public final boolean dvV()
+  {
+    AppMethodBeat.i(60157);
+    if (getType() == 285212721)
+    {
+      AppMethodBeat.o(60157);
+      return true;
+    }
+    AppMethodBeat.o(60157);
+    return false;
+  }
+  
+  public final boolean dvW()
+  {
+    AppMethodBeat.i(60158);
+    if (getType() == 34)
+    {
+      AppMethodBeat.o(60158);
+      return true;
+    }
+    AppMethodBeat.o(60158);
+    return false;
+  }
+  
+  public final boolean dvX()
+  {
+    AppMethodBeat.i(60166);
+    switch (getType())
+    {
+    default: 
+      AppMethodBeat.o(60166);
+      return false;
+    }
+    AppMethodBeat.o(60166);
+    return true;
+  }
+  
+  public final boolean dxK()
+  {
+    AppMethodBeat.i(60159);
+    if (getType() == 436207665)
+    {
+      AppMethodBeat.o(60159);
+      return true;
+    }
+    AppMethodBeat.o(60159);
+    return false;
+  }
+  
+  public final boolean dxL()
+  {
+    AppMethodBeat.i(60160);
+    if (getType() == 469762097)
+    {
+      AppMethodBeat.o(60160);
+      return true;
+    }
+    AppMethodBeat.o(60160);
+    return false;
+  }
+  
+  public final boolean dxM()
+  {
+    AppMethodBeat.i(60161);
+    if (getType() == 301989937)
+    {
+      AppMethodBeat.o(60161);
+      return true;
+    }
+    AppMethodBeat.o(60161);
+    return false;
+  }
+  
+  public final boolean dxN()
+  {
+    AppMethodBeat.i(60162);
+    if ((getType() == 50) || (getType() == 53))
+    {
+      AppMethodBeat.o(60162);
+      return true;
+    }
+    AppMethodBeat.o(60162);
+    return false;
+  }
+  
+  public final boolean dxO()
+  {
+    AppMethodBeat.i(60163);
+    if (getType() == 52)
+    {
+      AppMethodBeat.o(60163);
+      return true;
+    }
+    AppMethodBeat.o(60163);
+    return false;
+  }
+  
+  public final boolean dxP()
+  {
+    AppMethodBeat.i(60164);
+    if (getType() == 318767153)
+    {
+      AppMethodBeat.o(60164);
+      return true;
+    }
+    AppMethodBeat.o(60164);
+    return false;
+  }
+  
+  public final boolean dxQ()
+  {
+    AppMethodBeat.i(60165);
+    if (getType() == 10002)
+    {
+      AppMethodBeat.o(60165);
+      return true;
+    }
+    AppMethodBeat.o(60165);
+    return false;
+  }
+  
+  public final boolean dxR()
+  {
+    AppMethodBeat.i(60167);
+    if ((getType() == 42) || (getType() == 66))
+    {
+      AppMethodBeat.o(60167);
+      return true;
+    }
+    AppMethodBeat.o(60167);
+    return false;
+  }
+  
+  public final boolean dxS()
+  {
+    AppMethodBeat.i(60173);
+    if (getType() == 47)
+    {
+      AppMethodBeat.o(60173);
+      return true;
+    }
+    AppMethodBeat.o(60173);
+    return false;
+  }
+  
+  public final boolean dxT()
+  {
+    AppMethodBeat.i(60174);
+    if (getType() == 1048625)
+    {
+      AppMethodBeat.o(60174);
+      return true;
+    }
+    AppMethodBeat.o(60174);
+    return false;
+  }
+  
+  public final boolean dxU()
+  {
+    AppMethodBeat.i(60175);
+    if (getType() == 16777265)
+    {
+      AppMethodBeat.o(60175);
+      return true;
+    }
+    AppMethodBeat.o(60175);
+    return false;
+  }
+  
+  public final boolean dxV()
+  {
+    AppMethodBeat.i(60176);
+    if (getType() == 268435505)
+    {
+      AppMethodBeat.o(60176);
+      return true;
+    }
+    AppMethodBeat.o(60176);
+    return false;
+  }
+  
+  public final boolean dxW()
+  {
+    AppMethodBeat.i(60177);
+    if (getType() == -1879048191)
+    {
+      AppMethodBeat.o(60177);
+      return true;
+    }
+    AppMethodBeat.o(60177);
+    return false;
+  }
+  
+  public final boolean dxX()
+  {
+    AppMethodBeat.i(60178);
+    if (getType() == -1879048190)
+    {
+      AppMethodBeat.o(60178);
+      return true;
+    }
+    AppMethodBeat.o(60178);
+    return false;
+  }
+  
+  public final boolean dxY()
+  {
+    AppMethodBeat.i(60179);
+    if (getType() == -1879048189)
+    {
+      AppMethodBeat.o(60179);
+      return true;
+    }
+    AppMethodBeat.o(60179);
+    return false;
+  }
+  
+  public final boolean dxZ()
+  {
+    AppMethodBeat.i(60180);
+    switch (getType())
+    {
+    case 56: 
+    default: 
+      AppMethodBeat.o(60180);
+      return false;
+    }
+    AppMethodBeat.o(60180);
+    return true;
+  }
+  
+  public final boolean dya()
+  {
+    AppMethodBeat.i(60181);
+    if ((Cc()) && (!bo.isNullOrNil(this.field_transContent)))
+    {
+      AppMethodBeat.o(60181);
+      return true;
+    }
+    AppMethodBeat.o(60181);
+    return false;
+  }
+  
+  public final boolean dyc()
+  {
+    return (this.dGU & 0x1) > 0;
+  }
+  
+  public final void dyd()
+  {
+    AppMethodBeat.i(60185);
+    hY(this.dGU | 0x1);
+    AppMethodBeat.o(60185);
+  }
+  
+  public final void dye()
+  {
+    AppMethodBeat.i(60186);
+    if (dyf()) {
+      hr(this.dnr & 0xFFFFFFDF);
+    }
+    AppMethodBeat.o(60186);
+  }
+  
+  public final boolean dyf()
+  {
+    return (this.dnr & 0x20) > 0;
+  }
+  
+  public final void dyg()
+  {
+    AppMethodBeat.i(60187);
+    hr(this.dnr | 0x8);
+    AppMethodBeat.o(60187);
+  }
+  
+  public final boolean dyh()
+  {
+    AppMethodBeat.i(60188);
+    if ((dya()) && ((this.dnr & 0x10) > 0))
+    {
+      AppMethodBeat.o(60188);
+      return true;
+    }
+    AppMethodBeat.o(60188);
+    return false;
+  }
+  
+  public final void dyi()
+  {
+    AppMethodBeat.i(60189);
+    if (!dya())
+    {
+      AppMethodBeat.o(60189);
+      return;
+    }
+    hr(this.dnr | 0x10);
+    AppMethodBeat.o(60189);
+  }
+  
+  public final void dyj()
+  {
+    AppMethodBeat.i(60190);
+    if (!dya())
+    {
+      AppMethodBeat.o(60190);
+      return;
+    }
+    hr(this.dnr & 0xFFFFFFEF);
+    AppMethodBeat.o(60190);
+  }
+  
+  public final boolean dyk()
+  {
+    AppMethodBeat.i(60191);
+    if ((dya()) && ((this.dnr & 0x400) > 0))
+    {
+      AppMethodBeat.o(60191);
+      return true;
+    }
+    AppMethodBeat.o(60191);
+    return false;
+  }
+  
+  public final void dyl()
+  {
+    AppMethodBeat.i(60192);
+    hr(this.dnr | 0x80);
+    AppMethodBeat.o(60192);
+  }
+  
+  public final void dym()
+  {
+    AppMethodBeat.i(60193);
+    hr(this.dnr & 0xFFFFFF7F);
+    AppMethodBeat.o(60193);
+  }
+  
+  public final boolean dyn()
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if ((this.dnr & 0x80) == 0)
+    {
+      bool1 = bool2;
+      if ((this.dnr & 0x300) == 0) {
+        bool1 = false;
+      }
+    }
+    return bool1;
+  }
+  
+  public final void dyo()
+  {
+    AppMethodBeat.i(60196);
+    hr(this.dnr & 0xFFFFFFBF);
+    AppMethodBeat.o(60196);
+  }
+  
+  public final void dyp()
+  {
+    AppMethodBeat.i(60197);
+    hr(this.dnr | 0x40);
+    AppMethodBeat.o(60197);
+  }
+  
+  public final boolean dyq()
+  {
+    AppMethodBeat.i(60199);
+    if ((!bo.isNullOrNil(this.dns)) && ((this.dns.contains("announcement@all")) || (this.dns.contains("notify@all")))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ab.d("MicroMsg.MsgInfo", "isAtAll isAtAll:%s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(60199);
+      return bool;
+    }
+  }
+  
+  public final String dyr()
+  {
+    AppMethodBeat.i(60205);
+    if (!dxQ())
+    {
+      AppMethodBeat.o(60205);
+      return "";
+    }
+    if (this.yOe == null) {
+      dys();
+    }
+    String str = this.yOe;
+    AppMethodBeat.o(60205);
+    return str;
+  }
+  
+  public final com.tencent.mm.ay.a dys()
+  {
+    AppMethodBeat.i(60206);
+    ab.i("MicroMsg.MsgInfo", "[parseNewXmlSysMsg]");
+    com.tencent.mm.ay.a locala = a.a.b(br.F(this.field_content, "sysmsg"), this);
+    if (locala != null)
+    {
+      ab.i("MicroMsg.MsgInfo", "BaseNewXmlMsg:%s", new Object[] { locala });
+      locala.aiH();
+      this.yOe = locala.TEXT;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(60206);
+      return locala;
+      ab.e("MicroMsg.MsgInfo", "[parseNewXmlSysMsg] null == pBaseNewXmlMsg");
+    }
   }
   
   public final int getType()
   {
-    int j = super.getType();
-    int i = j;
-    if (j == 486539313) {
-      i = 285212721;
+    AppMethodBeat.i(60207);
+    int i = super.getType();
+    if (i == 486539313)
+    {
+      AppMethodBeat.o(60207);
+      return 285212721;
     }
+    AppMethodBeat.o(60207);
     return i;
   }
   
   public final boolean isSystem()
   {
-    return getType() == 10000;
+    AppMethodBeat.i(60170);
+    if (getType() == 10000)
+    {
+      AppMethodBeat.o(60170);
+      return true;
+    }
+    AppMethodBeat.o(60170);
+    return false;
   }
   
   public final boolean isText()
   {
+    AppMethodBeat.i(60169);
     switch (getType())
     {
     default: 
+      AppMethodBeat.o(60169);
       return false;
     }
+    AppMethodBeat.o(60169);
     return true;
   }
   
   public final void setStatus(int paramInt)
   {
+    AppMethodBeat.i(60183);
     super.setStatus(paramInt);
-    if (this.field_isSend == 1) {
-      if ((!isText()) && (!aVM()) && (!cvn()))
+    Object localObject;
+    if ((this.field_isSend == 1) && (dyb()))
+    {
+      if (this.field_status == 5)
       {
-        paramInt = 1;
-        if (paramInt == 0) {
-          break label188;
-        }
-        if (this.field_status != 5) {
-          break label123;
-        }
-        y.e("MicroMsg.MsgInfo", "set msg status fail, msgId:%d, type:%d, userName:%s %s", new Object[] { Long.valueOf(this.field_msgId), Integer.valueOf(getType()), this.field_talker, bk.csb() });
-        localObject = new pf();
-        ((pf)localObject).bYS.bFH = this;
-        com.tencent.mm.sdk.b.a.udP.m((b)localObject);
+        ab.e("MicroMsg.MsgInfo", "set msg status fail, msgId:%d, type:%d, userName:%s %s", new Object[] { Long.valueOf(this.field_msgId), Integer.valueOf(getType()), this.field_talker, bo.dtY() });
+        localObject = new qk();
+        ((qk)localObject).cGZ.cmQ = this;
+        com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+        AppMethodBeat.o(60183);
+        return;
+      }
+      if (this.field_status == 2)
+      {
+        ab.d("MicroMsg.MsgInfo", "successfully send msgId:%d, type:%d", new Object[] { Long.valueOf(this.field_msgId), Integer.valueOf(getType()) });
+        localObject = new qm();
+        ((qm)localObject).cHb.cmQ = this;
+        com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+        AppMethodBeat.o(60183);
       }
     }
-    label123:
-    while (this.field_isSend != 0)
+    else if (this.field_isSend == 0)
     {
-      do
-      {
-        return;
-        paramInt = 0;
-        break;
-      } while (this.field_status != 2);
-      y.d("MicroMsg.MsgInfo", "successfully send msgId:%d, type:%d", new Object[] { Long.valueOf(this.field_msgId), Integer.valueOf(getType()) });
-      localObject = new ph();
-      ((ph)localObject).bYU.bFH = this;
-      com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-      return;
+      localObject = new nr();
+      ((nr)localObject).cEj.cmQ = this;
+      com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
     }
-    label188:
-    Object localObject = new mv();
-    ((mv)localObject).bWw.bFH = this;
-    com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-  }
-  
-  public final ContentValues vf()
-  {
-    hG(this.field_msgId);
-    return super.vf();
+    AppMethodBeat.o(60183);
   }
   
   public static final class a
   {
-    private String aWf = "";
-    private String cCA;
-    private String cCB;
-    public String cCF = "";
-    private String cCG = "";
-    public String cMT = "";
-    public String fds = "";
-    public String fgZ = "";
-    public String fha = "";
-    public String fhb = "";
-    public String fhe = "";
-    public String mVN = "";
-    public long mXV = 0L;
+    private String city;
+    public String dCJ = "";
+    public int dqC;
+    public String dqP = "";
+    private String dqQ = "";
+    public String gvd = "";
+    public String gyH = "";
+    public String gyI = "";
+    public String gyJ = "";
+    public String gyM = "";
     public String nickname = "";
-    public String pyp = "";
-    public int qZn = 0;
+    public long pAI = 0L;
+    private String province;
+    public String pyu = "";
     public int scene = 0;
-    public int sex;
     public String signature;
-    public String sii = "";
-    public int uBV = 0;
-    public String uBW = "";
-    public String uBX = "";
-    public String uBY = "";
-    public String uBZ = "";
-    public String uCa = "";
-    public String uCb = "";
-    public String uCc = "";
-    public String uCd = "";
+    private String source = "";
+    public String tac = "";
+    public int uOT = 0;
+    public String waH = "";
+    public int yOh = 0;
+    public String yOi = "";
+    public String yOj = "";
+    public String yOk = "";
+    public String yOl = "";
+    public String yOm = "";
+    public String yOn = "";
+    public String yOo = "";
+    public String yOp = "";
     
-    public static a abZ(String paramString)
+    public static a asj(String paramString)
     {
-      a locala = new a();
-      Object localObject = bk.aM(paramString, "").trim();
+      AppMethodBeat.i(60141);
+      locala = new a();
+      localObject = bo.bf(paramString, "").trim();
       paramString = (String)localObject;
       if (!((String)localObject).startsWith("<"))
       {
@@ -536,419 +803,505 @@ public final class bi
           paramString = ((String)localObject).substring(i + 1);
         }
       }
-      localObject = bn.s(paramString, "msg");
-      if (localObject != null) {
-        for (;;)
+      localObject = br.F(paramString, "msg");
+      if (localObject != null) {}
+      for (;;)
+      {
+        try
         {
-          try
-          {
-            if (((Map)localObject).get(".msg.$fromusername") == null)
-            {
-              locala.pyp = ((String)((Map)localObject).get(".msg.$username"));
-              if (((Map)localObject).get(".msg.$fromnickname") == null)
-              {
-                locala.nickname = ((String)((Map)localObject).get(".msg.$nickname"));
-                locala.cMT = ((String)((Map)localObject).get(".msg.$alias"));
-                locala.fha = ((String)((Map)localObject).get(".msg.$fullpy"));
-                locala.fgZ = ((String)((Map)localObject).get(".msg.$shortpy"));
-                locala.aWf = ((String)((Map)localObject).get(".msg.$source"));
-                locala.uBV = bk.getInt((String)((Map)localObject).get(".msg.$imagestatus"), 0);
-                locala.scene = bk.getInt((String)((Map)localObject).get(".msg.$scene"), 0);
-                locala.uBW = ((String)((Map)localObject).get(".msg.$mobileidentify"));
-                locala.uBX = ((String)((Map)localObject).get(".msg.$mobilelongidentify"));
-                if ((((Map)localObject).get(".msg.$qqnum") != null) && (((String)((Map)localObject).get(".msg.$qqnum")).length() > 0)) {
-                  locala.mXV = bk.getLong((String)((Map)localObject).get(".msg.$qqnum"), 0L);
-                }
-                locala.signature = ((String)((Map)localObject).get(".msg.$sign"));
-                if ((((Map)localObject).get(".msg.$sex") != null) && (((String)((Map)localObject).get(".msg.$sex")).length() > 0)) {
-                  locala.sex = bk.getInt((String)((Map)localObject).get(".msg.$sex"), 0);
-                }
-                locala.cCB = ((String)((Map)localObject).get(".msg.$city"));
-                locala.cCA = ((String)((Map)localObject).get(".msg.$province"));
-                locala.fhb = ((String)((Map)localObject).get(".msg.$qqnickname"));
-                locala.fhe = ((String)((Map)localObject).get(".msg.$qqremark"));
-                if (!TextUtils.isEmpty((CharSequence)((Map)localObject).get(".msg.$certflag"))) {
-                  break label765;
-                }
-                paramString = "0";
-                locala.qZn = bk.getInt(paramString, 0);
-                locala.cCF = bk.pm((String)((Map)localObject).get(".msg.$certinfo"));
-                locala.mVN = bk.pm((String)((Map)localObject).get(".msg.$brandIconUrl"));
-                locala.cCG = bk.pm((String)((Map)localObject).get(".msg.$regionCode"));
-                locala.uBY = bk.pm((String)((Map)localObject).get(".msg.$bigheadimgurl"));
-                locala.uBZ = bk.pm((String)((Map)localObject).get(".msg.$smallheadimgurl"));
-                locala.fds = bk.pm((String)((Map)localObject).get(".msg.$googlecontact"));
-                locala.sii = bk.pm((String)((Map)localObject).get(".msg.$antispamticket"));
-                locala.uCa = bk.pm((String)((Map)localObject).get(".msg.$openimappid"));
-                locala.uCb = bk.pm((String)((Map)localObject).get(".msg.$openimdesc"));
-                locala.uCc = bk.pm((String)((Map)localObject).get(".msg.$openimdescicon"));
-                locala.uCd = bk.pm((String)((Map)localObject).get(".msg.$openimcustominfo"));
-                if (ad.aaU(locala.pyp)) {
-                  locala.sii = bk.pm((String)((Map)localObject).get(".msg.$ticket"));
-                }
-                y.i("MicroMsg.MsgInfo", "dkverify FriendContent user:[%s] ticket:[%s] big:[%s] sm:[%s]", new Object[] { locala.pyp, locala.sii, locala.uBY, locala.uBZ });
-                return locala;
-              }
-            }
-            else
-            {
-              locala.pyp = ((String)((Map)localObject).get(".msg.$fromusername"));
-              continue;
-            }
-            locala.nickname = ((String)((Map)localObject).get(".msg.$fromnickname"));
+          if (((Map)localObject).get(".msg.$fromusername") != null) {
+            continue;
           }
-          catch (Exception paramString)
-          {
-            y.e("MicroMsg.MsgInfo", "exception:%s", new Object[] { bk.j(paramString) });
-            return locala;
+          locala.tac = ((String)((Map)localObject).get(".msg.$username"));
+          if (((Map)localObject).get(".msg.$fromnickname") != null) {
+            continue;
           }
-          continue;
-          label765:
-          paramString = (String)((Map)localObject).get(".msg.$certflag");
+          locala.nickname = ((String)((Map)localObject).get(".msg.$nickname"));
         }
+        catch (Exception paramString)
+        {
+          ab.e("MicroMsg.MsgInfo", "exception:%s", new Object[] { bo.l(paramString) });
+          continue;
+          locala.nickname = ((String)((Map)localObject).get(".msg.$fromnickname"));
+          continue;
+          paramString = (String)((Map)localObject).get(".msg.$certflag");
+          continue;
+        }
+        locala.dCJ = ((String)((Map)localObject).get(".msg.$alias"));
+        locala.gyI = ((String)((Map)localObject).get(".msg.$fullpy"));
+        locala.gyH = ((String)((Map)localObject).get(".msg.$shortpy"));
+        locala.source = ((String)((Map)localObject).get(".msg.$source"));
+        locala.yOh = bo.getInt((String)((Map)localObject).get(".msg.$imagestatus"), 0);
+        locala.scene = bo.getInt((String)((Map)localObject).get(".msg.$scene"), 0);
+        locala.yOi = ((String)((Map)localObject).get(".msg.$mobileidentify"));
+        locala.yOj = ((String)((Map)localObject).get(".msg.$mobilelongidentify"));
+        if ((((Map)localObject).get(".msg.$qqnum") != null) && (((String)((Map)localObject).get(".msg.$qqnum")).length() > 0)) {
+          locala.pAI = bo.getLong((String)((Map)localObject).get(".msg.$qqnum"), 0L);
+        }
+        locala.signature = ((String)((Map)localObject).get(".msg.$sign"));
+        if ((((Map)localObject).get(".msg.$sex") != null) && (((String)((Map)localObject).get(".msg.$sex")).length() > 0)) {
+          locala.dqC = bo.getInt((String)((Map)localObject).get(".msg.$sex"), 0);
+        }
+        locala.city = ((String)((Map)localObject).get(".msg.$city"));
+        locala.province = ((String)((Map)localObject).get(".msg.$province"));
+        locala.gyJ = ((String)((Map)localObject).get(".msg.$qqnickname"));
+        locala.gyM = ((String)((Map)localObject).get(".msg.$qqremark"));
+        if (!TextUtils.isEmpty((CharSequence)((Map)localObject).get(".msg.$certflag"))) {
+          continue;
+        }
+        paramString = "0";
+        locala.uOT = bo.getInt(paramString, 0);
+        locala.dqP = bo.nullAsNil((String)((Map)localObject).get(".msg.$certinfo"));
+        locala.pyu = bo.nullAsNil((String)((Map)localObject).get(".msg.$brandIconUrl"));
+        locala.dqQ = bo.nullAsNil((String)((Map)localObject).get(".msg.$regionCode"));
+        locala.yOk = bo.nullAsNil((String)((Map)localObject).get(".msg.$bigheadimgurl"));
+        locala.yOl = bo.nullAsNil((String)((Map)localObject).get(".msg.$smallheadimgurl"));
+        locala.gvd = bo.nullAsNil((String)((Map)localObject).get(".msg.$googlecontact"));
+        locala.waH = bo.nullAsNil((String)((Map)localObject).get(".msg.$antispamticket"));
+        locala.yOm = bo.nullAsNil((String)((Map)localObject).get(".msg.$openimappid"));
+        locala.yOn = bo.nullAsNil((String)((Map)localObject).get(".msg.$openimdesc"));
+        locala.yOo = bo.nullAsNil((String)((Map)localObject).get(".msg.$openimdescicon"));
+        locala.yOp = bo.nullAsNil((String)((Map)localObject).get(".msg.$openimcustominfo"));
+        if (ad.arf(locala.tac)) {
+          locala.waH = bo.nullAsNil((String)((Map)localObject).get(".msg.$ticket"));
+        }
+        ab.i("MicroMsg.MsgInfo", "dkverify FriendContent user:[%s] ticket:[%s] big:[%s] sm:[%s]", new Object[] { locala.tac, locala.waH, locala.yOk, locala.yOl });
+        AppMethodBeat.o(60141);
+        return locala;
+        locala.tac = ((String)((Map)localObject).get(".msg.$fromusername"));
       }
-      return locala;
     }
     
-    public final String cvM()
+    public final String dyt()
     {
-      if ((this.fhe != null) && (this.fhe.length() > 0)) {
-        return this.fhe;
+      return this.tac;
+    }
+    
+    public final String dyu()
+    {
+      AppMethodBeat.i(60143);
+      if ((this.gyM != null) && (this.gyM.length() > 0))
+      {
+        str = this.gyM;
+        AppMethodBeat.o(60143);
+        return str;
       }
-      if ((this.fhb != null) && (this.fhb.length() > 0)) {
-        return this.fhb;
+      if ((this.gyJ != null) && (this.gyJ.length() > 0))
+      {
+        str = this.gyJ;
+        AppMethodBeat.o(60143);
+        return str;
       }
-      return Long.toString(this.mXV);
+      String str = Long.toString(this.pAI);
+      AppMethodBeat.o(60143);
+      return str;
     }
     
     public final String getCity()
     {
-      String[] arrayOfString;
-      if (!bk.bl(this.cCG))
+      AppMethodBeat.i(60144);
+      Object localObject;
+      if (!bo.isNullOrNil(this.dqQ))
       {
-        arrayOfString = this.cCG.split("_");
-        if (arrayOfString.length > 0)
+        localObject = this.dqQ.split("_");
+        if (localObject.length > 0)
         {
-          if (arrayOfString.length <= 2) {
-            break label57;
+          if (localObject.length <= 2) {
+            break label71;
           }
-          RegionCodeDecoder.cvV();
-          this.cCB = RegionCodeDecoder.ap(arrayOfString[0], arrayOfString[1], arrayOfString[2]);
+          RegionCodeDecoder.dyE();
+          this.city = RegionCodeDecoder.aG(localObject[0], localObject[1], localObject[2]);
         }
       }
       for (;;)
       {
-        return this.cCB;
-        label57:
-        if (arrayOfString.length == 2)
+        localObject = this.city;
+        AppMethodBeat.o(60144);
+        return localObject;
+        label71:
+        if (localObject.length == 2)
         {
-          RegionCodeDecoder.cvV();
-          this.cCB = RegionCodeDecoder.gp(arrayOfString[0], arrayOfString[1]);
+          RegionCodeDecoder.dyE();
+          this.city = RegionCodeDecoder.iq(localObject[0], localObject[1]);
         }
         else
         {
-          this.cCB = "";
+          this.city = "";
         }
       }
     }
     
     public final String getDisplayName()
     {
-      if (!TextUtils.isEmpty(this.nickname)) {
-        return this.nickname;
+      AppMethodBeat.i(60142);
+      if (!TextUtils.isEmpty(this.nickname))
+      {
+        str = this.nickname;
+        AppMethodBeat.o(60142);
+        return str;
       }
-      if (!TextUtils.isEmpty(this.cMT)) {
-        return this.cMT;
+      if (!TextUtils.isEmpty(this.dCJ))
+      {
+        str = this.dCJ;
+        AppMethodBeat.o(60142);
+        return str;
       }
-      y.f("MicroMsg.MsgInfo", "username is nullOrNil");
-      return bk.pm(this.pyp);
+      ab.f("MicroMsg.MsgInfo", "username is nullOrNil");
+      String str = bo.nullAsNil(this.tac);
+      AppMethodBeat.o(60142);
+      return str;
     }
     
     public final String getProvince()
     {
-      String[] arrayOfString;
-      if (!bk.bl(this.cCG))
+      AppMethodBeat.i(60145);
+      Object localObject;
+      if (!bo.isNullOrNil(this.dqQ))
       {
-        arrayOfString = this.cCG.split("_");
-        if (arrayOfString.length > 0)
+        localObject = this.dqQ.split("_");
+        if (localObject.length > 0)
         {
-          if ((arrayOfString.length <= 2) || (!RegionCodeDecoder.acl(arrayOfString[0]))) {
-            break label63;
+          if ((localObject.length <= 2) || (!RegionCodeDecoder.asx(localObject[0]))) {
+            break label77;
           }
-          RegionCodeDecoder.cvV();
+          RegionCodeDecoder.dyE();
         }
       }
-      for (this.cCA = RegionCodeDecoder.gp(arrayOfString[0], arrayOfString[1]);; this.cCA = RegionCodeDecoder.acm(arrayOfString[0]))
+      for (this.province = RegionCodeDecoder.iq(localObject[0], localObject[1]);; this.province = RegionCodeDecoder.asy(localObject[0]))
       {
-        return this.cCA;
-        label63:
-        RegionCodeDecoder.cvV();
+        localObject = this.province;
+        AppMethodBeat.o(60145);
+        return localObject;
+        label77:
+        RegionCodeDecoder.dyE();
       }
     }
   }
   
   public static final class b
   {
-    public int bRv = 0;
-    public double lCJ = 0.0D;
-    public double lCK = 0.0D;
-    public String lCQ = "";
-    public String lFn = "";
+    public int cyX = 0;
+    public String eSM = "";
     public String label = "";
-    public String pyp = "";
-    public String rSW = "";
-    public String uCe = "";
-    public String uCf = null;
-    public String uCg = null;
-    public String uCh = null;
+    public double nZV = 0.0D;
+    public double nZW = 0.0D;
+    public String oac = "";
+    public String tac = "";
+    public String vJU = "";
+    public String yOq = "";
+    public String yOr = null;
+    public String yOs = null;
+    public String yOt = null;
     
-    public static b aca(String paramString)
+    public static b ask(String paramString)
     {
+      AppMethodBeat.i(60147);
       b localb = new b();
-      paramString = bn.s(paramString, "msg");
+      paramString = br.F(paramString, "msg");
       if (paramString != null)
       {
-        localb.pyp = bk.aM((String)paramString.get(".msg.location.$fromusername"), "");
-        localb.lCJ = bk.ZT((String)paramString.get(".msg.location.$x"));
-        localb.lCK = bk.ZT((String)paramString.get(".msg.location.$y"));
-        localb.label = bk.aM((String)paramString.get(".msg.location.$label"), "");
-        localb.uCe = bk.aM((String)paramString.get(".msg.location.$maptype"), "");
-        localb.bRv = bk.ZR((String)paramString.get(".msg.location.$scale"));
-        localb.uCh = bk.aM((String)paramString.get(".msg.location.$localLocationen"), "");
-        localb.uCf = bk.aM((String)paramString.get(".msg.location.$localLocationcn"), "");
-        localb.uCg = bk.aM((String)paramString.get(".msg.location.$localLocationtw"), "");
-        localb.lFn = bk.aM((String)paramString.get(".msg.location.$poiname"), "");
-        localb.rSW = bk.aM((String)paramString.get(".msg.location.$infourl"), "");
-        localb.lCQ = bk.aM((String)paramString.get(".msg.location.$poiid"), "");
+        localb.tac = bo.bf((String)paramString.get(".msg.location.$fromusername"), "");
+        localb.nZV = bo.apX((String)paramString.get(".msg.location.$x"));
+        localb.nZW = bo.apX((String)paramString.get(".msg.location.$y"));
+        localb.label = bo.bf((String)paramString.get(".msg.location.$label"), "");
+        localb.yOq = bo.bf((String)paramString.get(".msg.location.$maptype"), "");
+        localb.cyX = bo.apV((String)paramString.get(".msg.location.$scale"));
+        localb.yOt = bo.bf((String)paramString.get(".msg.location.$localLocationen"), "");
+        localb.yOr = bo.bf((String)paramString.get(".msg.location.$localLocationcn"), "");
+        localb.yOs = bo.bf((String)paramString.get(".msg.location.$localLocationtw"), "");
+        localb.eSM = bo.bf((String)paramString.get(".msg.location.$poiname"), "");
+        localb.vJU = bo.bf((String)paramString.get(".msg.location.$infourl"), "");
+        localb.oac = bo.bf((String)paramString.get(".msg.location.$poiid"), "");
       }
+      AppMethodBeat.o(60147);
       return localb;
     }
     
-    public final boolean cvN()
+    public final boolean dyv()
     {
-      return (this.lFn != null) && (!this.lFn.equals("")) && (!this.lFn.equals("[位置]"));
+      AppMethodBeat.i(60148);
+      if ((this.eSM != null) && (!this.eSM.equals("")) && (!this.eSM.equals("[位置]")))
+      {
+        AppMethodBeat.o(60148);
+        return true;
+      }
+      AppMethodBeat.o(60148);
+      return false;
     }
     
-    public final boolean cvO()
+    public final boolean dyw()
     {
-      return (Math.abs(this.lCK) <= 180.0D) && (Math.abs(this.lCJ) <= 90.0D);
+      AppMethodBeat.i(60149);
+      if ((Math.abs(this.nZW) > 180.0D) || (Math.abs(this.nZV) > 90.0D))
+      {
+        AppMethodBeat.o(60149);
+        return false;
+      }
+      AppMethodBeat.o(60149);
+      return true;
     }
     
     public final String toString()
     {
-      return String.format("%d-%d-%d", new Object[] { Integer.valueOf((int)(this.lCJ * 1000000.0D)), Integer.valueOf((int)(this.lCK * 1000000.0D)), Integer.valueOf(this.bRv) });
+      AppMethodBeat.i(60146);
+      String str = String.format("%d-%d-%d", new Object[] { Integer.valueOf((int)(this.nZV * 1000000.0D)), Integer.valueOf((int)(this.nZW * 1000000.0D)), Integer.valueOf(this.cyX) });
+      AppMethodBeat.o(60146);
+      return str;
     }
   }
   
   public static final class c
   {
     public String content = "";
-    public String eyU = "";
-    public boolean kjj = false;
-    public String nds;
+    public String fOJ = "";
+    public boolean mDP = false;
+    public String pIJ;
     public String title = "";
-    public String uCi = "";
+    public String yOu = "";
     
-    public static c acb(String paramString)
+    public static c asl(String paramString)
     {
+      AppMethodBeat.i(60150);
       c localc = new c();
-      paramString = bn.s(paramString, "msg");
+      paramString = br.F(paramString, "msg");
       if (paramString != null) {}
       try
       {
         localc.title = ((String)paramString.get(".msg.pushmail.content.subject"));
         localc.content = ((String)paramString.get(".msg.pushmail.content.digest"));
-        localc.eyU = ((String)paramString.get(".msg.pushmail.content.sender"));
-        localc.uCi = ((String)paramString.get(".msg.pushmail.waplink"));
-        localc.kjj = bk.pm((String)paramString.get(".msg.pushmail.content.attach")).equalsIgnoreCase("true");
-        localc.nds = ((String)paramString.get(".msg.pushmail.mailid"));
+        localc.fOJ = ((String)paramString.get(".msg.pushmail.content.sender"));
+        localc.yOu = ((String)paramString.get(".msg.pushmail.waplink"));
+        localc.mDP = bo.nullAsNil((String)paramString.get(".msg.pushmail.content.attach")).equalsIgnoreCase("true");
+        localc.pIJ = ((String)paramString.get(".msg.pushmail.mailid"));
+        AppMethodBeat.o(60150);
         return localc;
       }
       catch (Exception paramString)
       {
-        y.e("MicroMsg.MsgInfo", "exception:%s", new Object[] { bk.j(paramString) });
+        for (;;)
+        {
+          ab.e("MicroMsg.MsgInfo", "exception:%s", new Object[] { bo.l(paramString) });
+        }
       }
-      return localc;
+    }
+    
+    public final String getSender()
+    {
+      return this.fOJ;
+    }
+    
+    public final String getTitle()
+    {
+      return this.title;
     }
   }
   
   public static final class d
   {
-    public int bNb;
-    public String cMT = "";
     public String chatroomName = "";
     public String content = "";
     private String countryCode;
-    private String dXu;
-    private String dXv;
-    public String fds;
-    public String fgZ = "";
-    public String fha = "";
-    public String fhb = "";
-    private String fhe = "";
-    public String kzG;
-    public long mXV = 0L;
+    public int cut;
+    public String dCJ = "";
+    public int dqC;
+    private String fnB;
+    private String fnC;
+    public String gvd;
+    public String gyH = "";
+    public String gyI = "";
+    public String gyJ = "";
+    private String gyM = "";
+    public String inF;
+    public String mVw;
     public String nickname = "";
-    public String pyp = "";
-    public String sbK;
-    public String sbL;
+    public long pAI = 0L;
     public int scene = 0;
-    public int sex;
     public String signature;
-    public int uBV = 0;
-    public String uBW = "";
-    public String uBX = "";
-    public String uBY = "";
-    public String uBZ = "";
-    public int uCj = 0;
-    public String uCk;
-    public String uCl;
-    public int uCm;
-    public String uCn;
-    public String uCo;
+    public String tac = "";
+    public String vSR;
+    public String yOA;
+    public int yOh = 0;
+    public String yOi = "";
+    public String yOj = "";
+    public String yOk = "";
+    public String yOl = "";
+    public int yOv = 0;
+    public String yOw;
+    public String yOx;
+    public int yOy;
+    public String yOz;
     
-    public static d acc(String paramString)
+    public static d asm(String paramString)
     {
+      AppMethodBeat.i(60151);
       d locald = new d();
-      paramString = bn.s(paramString, "msg");
+      paramString = br.F(paramString, "msg");
       if (paramString != null) {}
       try
       {
-        locald.pyp = ((String)paramString.get(".msg.$fromusername"));
-        locald.cMT = ((String)paramString.get(".msg.$alias"));
+        locald.tac = ((String)paramString.get(".msg.$fromusername"));
+        locald.dCJ = ((String)paramString.get(".msg.$alias"));
         locald.nickname = ((String)paramString.get(".msg.$fromnickname"));
-        locald.fha = ((String)paramString.get(".msg.$fullpy"));
-        locald.fgZ = ((String)paramString.get(".msg.$shortpy"));
+        locald.gyI = ((String)paramString.get(".msg.$fullpy"));
+        locald.gyH = ((String)paramString.get(".msg.$shortpy"));
         locald.content = ((String)paramString.get(".msg.$content"));
-        locald.uBV = bk.getInt((String)paramString.get(".msg.$imagestatus"), 0);
-        locald.scene = bk.getInt((String)paramString.get(".msg.$scene"), 0);
-        locald.uBW = ((String)paramString.get(".msg.$mhash"));
-        locald.uBX = ((String)paramString.get(".msg.$mfullhash"));
+        locald.yOh = bo.getInt((String)paramString.get(".msg.$imagestatus"), 0);
+        locald.scene = bo.getInt((String)paramString.get(".msg.$scene"), 0);
+        locald.yOi = ((String)paramString.get(".msg.$mhash"));
+        locald.yOj = ((String)paramString.get(".msg.$mfullhash"));
         if ((paramString.get(paramString.get(".msg.$qqnum")) != null) && (((String)paramString.get(paramString.get(".msg.$qqnum"))).length() > 0)) {
-          locald.mXV = bk.getLong((String)paramString.get(".msg.$qqnum"), 0L);
+          locald.pAI = bo.getLong((String)paramString.get(".msg.$qqnum"), 0L);
         }
-        locald.fhb = ((String)paramString.get(".msg.$qqnickname"));
-        locald.fhe = ((String)paramString.get(".msg.$qqremark"));
+        locald.gyJ = ((String)paramString.get(".msg.$qqnickname"));
+        locald.gyM = ((String)paramString.get(".msg.$qqremark"));
         locald.signature = ((String)paramString.get(".msg.$sign"));
         if ((paramString.get(".msg.$sex") != null) && (((String)paramString.get(".msg.$sex")).length() > 0)) {
-          locald.sex = bk.getInt((String)paramString.get(".msg.$sex"), 0);
+          locald.dqC = bo.getInt((String)paramString.get(".msg.$sex"), 0);
         }
-        locald.dXu = ((String)paramString.get(".msg.$city"));
-        locald.dXv = ((String)paramString.get(".msg.$province"));
+        locald.fnB = ((String)paramString.get(".msg.$city"));
+        locald.fnC = ((String)paramString.get(".msg.$province"));
         locald.countryCode = ((String)paramString.get(".msg.$country"));
         if (paramString.get(".msg.$snsflag") != null)
         {
-          locald.uCj = bk.getInt((String)paramString.get(".msg.$snsflag"), 0);
-          locald.uCk = ((String)paramString.get(".msg.$snsbgimgid"));
+          locald.yOv = bo.getInt((String)paramString.get(".msg.$snsflag"), 0);
+          locald.yOw = ((String)paramString.get(".msg.$snsbgimgid"));
         }
-        locald.kzG = ((String)paramString.get(".msg.$ticket"));
-        y.d("MicroMsg.MsgInfo", "dkverify ticket:%s", new Object[] { locald.kzG });
-        locald.uBY = bk.pm((String)paramString.get(".msg.$bigheadimgurl"));
-        locald.uBZ = bk.pm((String)paramString.get(".msg.$smallheadimgurl"));
-        locald.bNb = bk.getInt((String)paramString.get(".msg.$opcode"), 0);
-        locald.uCl = bk.pm((String)paramString.get(".msg.$encryptusername"));
-        locald.fds = bk.pm((String)paramString.get(".msg.$googlecontact"));
-        y.d("MicroMsg.MsgInfo", "dkavatar VerifyContent user:[%s] big:[%s] sm:[%s]", new Object[] { locald.pyp, locald.uBY, locald.uBZ });
-        locald.chatroomName = bk.pm((String)paramString.get(".msg.$chatroomusername"));
-        locald.sbK = ((String)paramString.get(".msg.$sourceusername"));
-        locald.sbL = ((String)paramString.get(".msg.$sourcenickname"));
-        locald.uCm = bk.getInt((String)paramString.get(".msg.Antispam.$isSuspiciousUser"), 0);
-        if (locald.uCm == 1)
+        locald.mVw = ((String)paramString.get(".msg.$ticket"));
+        ab.d("MicroMsg.MsgInfo", "dkverify ticket:%s", new Object[] { locald.mVw });
+        locald.yOk = bo.nullAsNil((String)paramString.get(".msg.$bigheadimgurl"));
+        locald.yOl = bo.nullAsNil((String)paramString.get(".msg.$smallheadimgurl"));
+        locald.cut = bo.getInt((String)paramString.get(".msg.$opcode"), 0);
+        locald.yOx = bo.nullAsNil((String)paramString.get(".msg.$encryptusername"));
+        locald.gvd = bo.nullAsNil((String)paramString.get(".msg.$googlecontact"));
+        ab.d("MicroMsg.MsgInfo", "dkavatar VerifyContent user:[%s] big:[%s] sm:[%s]", new Object[] { locald.tac, locald.yOk, locald.yOl });
+        locald.chatroomName = bo.nullAsNil((String)paramString.get(".msg.$chatroomusername"));
+        locald.inF = ((String)paramString.get(".msg.$sourceusername"));
+        locald.vSR = ((String)paramString.get(".msg.$sourcenickname"));
+        locald.yOy = bo.getInt((String)paramString.get(".msg.Antispam.$isSuspiciousUser"), 0);
+        if (locald.yOy == 1)
         {
-          locald.uCn = ((String)paramString.get(".msg.Antispam.safetyWarning"));
-          locald.uCo = ((String)paramString.get(".msg.Antispam.safetyWarningDetail"));
+          locald.yOz = ((String)paramString.get(".msg.Antispam.safetyWarning"));
+          locald.yOA = ((String)paramString.get(".msg.Antispam.safetyWarningDetail"));
         }
-        return locald;
       }
       catch (Exception paramString)
       {
-        y.printErrStackTrace("MicroMsg.MsgInfo", paramString, "", new Object[0]);
+        for (;;)
+        {
+          ab.printErrStackTrace("MicroMsg.MsgInfo", paramString, "", new Object[0]);
+        }
       }
+      AppMethodBeat.o(60151);
       return locald;
     }
     
-    public final String cvP()
+    public final String Hq()
     {
-      return this.kzG;
+      return this.dCJ;
     }
     
-    public final String cvQ()
-    {
-      return this.pyp;
-    }
-    
-    public final int cvR()
-    {
-      return this.sex;
-    }
-    
-    public final String cvS()
-    {
-      return this.uCl;
-    }
-    
-    public final String getCity()
-    {
-      if ((!bk.bl(this.countryCode)) && (!bk.bl(this.dXv)))
-      {
-        if (bk.bl(this.dXu))
-        {
-          RegionCodeDecoder.cvV();
-          return RegionCodeDecoder.gp(this.countryCode, this.dXv);
-        }
-        RegionCodeDecoder.cvV();
-        return RegionCodeDecoder.ap(this.countryCode, this.dXv, this.dXu);
-      }
-      return this.dXu;
-    }
-    
-    public final String getDisplayName()
-    {
-      if ((this.nickname != null) && (this.nickname.length() > 0)) {
-        return this.nickname;
-      }
-      y.f("MicroMsg.MsgInfo", "username is nullOrNil");
-      return this.pyp;
-    }
-    
-    public final String getProvince()
-    {
-      if (!bk.bl(this.countryCode))
-      {
-        if ((!bk.bl(this.dXv)) && (!bk.bl(this.dXu)) && (RegionCodeDecoder.acl(this.countryCode)))
-        {
-          RegionCodeDecoder.cvV();
-          return RegionCodeDecoder.gp(this.countryCode, this.dXv);
-        }
-        RegionCodeDecoder.cvV();
-        return RegionCodeDecoder.acm(this.countryCode);
-      }
-      return this.dXv;
-    }
-    
-    public final String getSignature()
-    {
-      return this.signature;
-    }
-    
-    public final String vk()
-    {
-      return this.cMT;
-    }
-    
-    public final String vm()
+    public final String Hs()
     {
       return this.nickname;
     }
     
-    public final String vn()
+    public final String Ht()
     {
-      return this.fgZ;
+      return this.gyH;
     }
     
-    public final String vo()
+    public final String Hu()
     {
-      return this.fha;
+      return this.gyI;
+    }
+    
+    public final String dyA()
+    {
+      return this.yOx;
+    }
+    
+    public final String dyt()
+    {
+      return this.tac;
+    }
+    
+    public final String dyx()
+    {
+      return this.mVw;
+    }
+    
+    public final int dyy()
+    {
+      return this.dqC;
+    }
+    
+    public final String dyz()
+    {
+      return this.signature;
+    }
+    
+    public final String getCity()
+    {
+      AppMethodBeat.i(60153);
+      if ((!bo.isNullOrNil(this.countryCode)) && (!bo.isNullOrNil(this.fnC)))
+      {
+        if (bo.isNullOrNil(this.fnB))
+        {
+          RegionCodeDecoder.dyE();
+          str = RegionCodeDecoder.iq(this.countryCode, this.fnC);
+          AppMethodBeat.o(60153);
+          return str;
+        }
+        RegionCodeDecoder.dyE();
+        str = RegionCodeDecoder.aG(this.countryCode, this.fnC, this.fnB);
+        AppMethodBeat.o(60153);
+        return str;
+      }
+      String str = this.fnB;
+      AppMethodBeat.o(60153);
+      return str;
+    }
+    
+    public final String getDisplayName()
+    {
+      AppMethodBeat.i(60152);
+      if ((this.nickname != null) && (this.nickname.length() > 0))
+      {
+        str = this.nickname;
+        AppMethodBeat.o(60152);
+        return str;
+      }
+      ab.f("MicroMsg.MsgInfo", "username is nullOrNil");
+      String str = this.tac;
+      AppMethodBeat.o(60152);
+      return str;
+    }
+    
+    public final String getProvince()
+    {
+      AppMethodBeat.i(60154);
+      if (!bo.isNullOrNil(this.countryCode))
+      {
+        if ((!bo.isNullOrNil(this.fnC)) && (!bo.isNullOrNil(this.fnB)) && (RegionCodeDecoder.asx(this.countryCode)))
+        {
+          RegionCodeDecoder.dyE();
+          str = RegionCodeDecoder.iq(this.countryCode, this.fnC);
+          AppMethodBeat.o(60154);
+          return str;
+        }
+        RegionCodeDecoder.dyE();
+        str = RegionCodeDecoder.asy(this.countryCode);
+        AppMethodBeat.o(60154);
+        return str;
+      }
+      String str = this.fnC;
+      AppMethodBeat.o(60154);
+      return str;
+    }
+    
+    public final int getScene()
+    {
+      return this.scene;
     }
   }
 }

@@ -6,53 +6,56 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.a.a;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.a.x;
+import com.tencent.filter.a.ab;
 import com.tencent.filter.m.k;
 import com.tencent.filter.m.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.BitmapUtils;
 import com.tencent.ttpic.baseutils.FileUtils;
 import com.tencent.ttpic.filter.ChannelSplitFilter;
-import com.tencent.ttpic.util.VideoBitmapUtil;
-import com.tencent.ttpic.util.VideoDeviceUtil;
-import com.tencent.ttpic.util.VideoFileUtil;
 import com.tencent.ttpic.util.VideoGlobalContext;
 import com.tencent.util.e;
+import com.tencent.util.g;
+import com.tencent.view.c;
 import java.io.File;
 import java.io.FileInputStream;
 import java.nio.ByteBuffer;
 
 public class TTPicFilterFactoryLocal
 {
-  public static String LUT_DIR = "lut";
-  private static String LUT_DIR_ROOT = null;
+  public static String LUT_DIR_ROOT;
+  private static final String TAG;
+  
+  static
+  {
+    AppMethodBeat.i(81933);
+    TAG = TTPicFilterFactoryLocal.class.getSimpleName();
+    LUT_DIR_ROOT = null;
+    AppMethodBeat.o(81933);
+  }
   
   public static void clearLutFiles()
   {
+    AppMethodBeat.i(81931);
     if (LUT_DIR_ROOT == null)
     {
-      File localFile = VideoDeviceUtil.getExternalFilesDir(VideoGlobalContext.getContext(), LUT_DIR);
-      if ((localFile != null) && (localFile.exists()) && (localFile.canWrite())) {
-        LUT_DIR_ROOT = localFile.getPath();
-      }
-    }
-    if (LUT_DIR_ROOT == null) {
+      AppMethodBeat.o(81931);
       return;
     }
-    VideoFileUtil.delete(new File(LUT_DIR_ROOT));
+    FileUtils.delete(new File(LUT_DIR_ROOT));
+    AppMethodBeat.o(81931);
   }
   
   public static BaseFilter creatFilterById(int paramInt)
   {
-    Object localObject;
+    AppMethodBeat.i(81930);
     if (LUT_DIR_ROOT == null)
     {
-      localObject = VideoDeviceUtil.getExternalFilesDir(VideoGlobalContext.getContext(), LUT_DIR);
-      if ((localObject != null) && (((File)localObject).exists()) && (((File)localObject).canWrite())) {
-        LUT_DIR_ROOT = ((File)localObject).getPath();
-      }
+      AppMethodBeat.o(81930);
+      return null;
     }
     String str;
     switch (paramInt)
@@ -60,271 +63,309 @@ public class TTPicFilterFactoryLocal
     default: 
       str = null;
       localObject = null;
-      if (localObject == null) {
-        break;
-      }
     }
-    BaseFilter localBaseFilter;
-    do
+    while (localObject != null)
     {
+      AppMethodBeat.o(81930);
       return localObject;
-      localObject = new x();
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/wuxia_lf.png", 33986));
       str = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/ziran_lf.png", 33986));
       str = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/qiangwei_lf.png", 33986));
       str = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/xinye_lf.png", 33986));
       str = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/tangguomeigui_lf.png", 33986));
       str = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/shuilian_lf.png", 33986));
       str = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/youjiali_lf.png", 33986));
       str = null;
-      break;
+      continue;
       localObject = new ChannelSplitFilter();
       str = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_LIGHTWHITE";
       localObject = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_LIGHTRED";
       localObject = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_LIGHT";
       localObject = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_TEAMILK";
       localObject = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/fenbi_lf.png", 33986));
       str = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/fennen_lf.png", 33986));
       str = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/tianbohe_lf.png", 33986));
       str = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_GRADIENT_LIPNEW";
       localObject = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_FAIRYTALE";
       localObject = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_RICHRED";
       localObject = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_YOUNG";
       localObject = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/zhahuang_lf.png", 33986));
       str = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/dongjing_lf.png", 33986));
       str = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/chongsheng_lf.png", 33986));
       str = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_MAPLERED";
       localObject = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_RICHBLUE";
       localObject = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_RICHYELLOW";
       localObject = null;
-      break;
+      continue;
       str = "MIC_PTU_ZIPAI_BLACKWHITEZIPAI";
       localObject = null;
-      break;
-      localObject = new x();
+      continue;
+      localObject = new ab();
       ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/nuanyang_lf.png", 33986));
       str = null;
-      break;
+      continue;
       str = "MIC_PTU_FBBS_LANGMAN";
       localObject = null;
-      break;
-      if (str == null) {
-        return a.dY(paramInt);
-      }
-      localBaseFilter = lutFilterWithID(str);
-      localObject = localBaseFilter;
-    } while (localBaseFilter != null);
-    filter2Image(paramInt, str);
-    return a.dY(paramInt);
+    }
+    if (str == null)
+    {
+      localObject = a.createFilter(paramInt);
+      AppMethodBeat.o(81930);
+      return localObject;
+    }
+    Object localObject = lutFilterWithID(str);
+    if (localObject == null)
+    {
+      filter2Image(paramInt, str);
+      localObject = a.createFilter(paramInt);
+      AppMethodBeat.o(81930);
+      return localObject;
+    }
+    AppMethodBeat.o(81930);
+    return localObject;
   }
   
   public static void filter2Image(int paramInt, String paramString)
   {
-    if (LUT_DIR_ROOT == null) {
+    AppMethodBeat.i(81929);
+    if (LUT_DIR_ROOT == null)
+    {
+      AppMethodBeat.o(81929);
       return;
     }
-    com.tencent.view.c localc = com.tencent.view.c.cRn();
-    paramString = new TTPicFilterFactoryLocal.1(paramInt, paramString);
-    localc.handler.post(paramString);
+    c.dXd().queue(new TTPicFilterFactoryLocal.1(paramInt, paramString));
+    AppMethodBeat.o(81929);
   }
   
   public static Bitmap getBitmapFromEncryptedFile(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    Object localObject = null;
+    AppMethodBeat.i(81932);
+    if (TextUtils.isEmpty(paramString))
     {
+      AppMethodBeat.o(81932);
       return null;
+    }
+    try
+    {
+      if (paramString.startsWith("assets://"))
+      {
+        paramString = VideoGlobalContext.getContext().getAssets().open(FileUtils.getRealPath(paramString));
+        arrayOfByte = e.L(paramString);
+      }
+    }
+    catch (Exception paramString)
+    {
       try
       {
-        if (paramString.startsWith("assets://"))
+        byte[] arrayOfByte;
+        g.closeQuietly(paramString);
+        for (;;)
         {
-          paramString = VideoGlobalContext.getContext().getAssets().open(FileUtils.getRealPath(paramString));
-          label32:
-          arrayOfByte = com.tencent.util.c.decryptFile(paramString);
+          label53:
+          if (arrayOfByte == null)
+          {
+            AppMethodBeat.o(81932);
+            return null;
+            paramString = new FileInputStream(paramString);
+            break;
+          }
+          paramString = new BitmapFactory.Options();
+          paramString.inPreferredConfig = Bitmap.Config.ARGB_8888;
+          try
+          {
+            paramString = BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, paramString);
+            AppMethodBeat.o(81932);
+            return paramString;
+          }
+          catch (OutOfMemoryError paramString)
+          {
+            for (;;)
+            {
+              paramString = localObject;
+            }
+          }
+          paramString = paramString;
+          arrayOfByte = null;
         }
       }
       catch (Exception paramString)
       {
-        try
-        {
-          byte[] arrayOfByte;
-          e.closeQuietly(paramString);
-          label41:
-          while (arrayOfByte != null)
-          {
-            paramString = new BitmapFactory.Options();
-            paramString.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            try
-            {
-              paramString = BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, paramString);
-              return paramString;
-            }
-            catch (OutOfMemoryError paramString)
-            {
-              return null;
-            }
-            paramString = new FileInputStream(paramString);
-            break label32;
-            paramString = paramString;
-            arrayOfByte = null;
-          }
-        }
-        catch (Exception paramString)
-        {
-          break label41;
-        }
+        break label53;
       }
     }
   }
   
   public static BaseFilter lutFilterWithBitmap(Bitmap paramBitmap)
   {
-    if (paramBitmap == null) {
+    AppMethodBeat.i(81927);
+    if (paramBitmap == null)
+    {
+      AppMethodBeat.o(81927);
       return null;
     }
-    x localx = new x();
-    localx.addParam(new m.k("inputImageTexture2", paramBitmap, 33986, true));
-    return localx;
+    ab localab = new ab();
+    localab.addParam(new m.k("inputImageTexture2", paramBitmap, 33986, true));
+    AppMethodBeat.o(81927);
+    return localab;
   }
   
   public static BaseFilter lutFilterWithID(String paramString)
   {
-    if (LUT_DIR_ROOT == null) {}
-    do
+    AppMethodBeat.i(81928);
+    if (LUT_DIR_ROOT == null)
     {
+      AppMethodBeat.o(81928);
       return null;
-      paramString = VideoBitmapUtil.getBitmapFromEncryptedFile(LUT_DIR_ROOT + File.separator + paramString + ".png2");
-    } while (paramString == null);
-    x localx = new x();
-    localx.addParam(new m.k("inputImageTexture2", paramString, 33986, true));
-    return localx;
+    }
+    paramString = getBitmapFromEncryptedFile(LUT_DIR_ROOT + File.separator + paramString + ".png2");
+    if (paramString == null)
+    {
+      AppMethodBeat.o(81928);
+      return null;
+    }
+    ab localab = new ab();
+    localab.addParam(new m.k("inputImageTexture2", paramString, 33986, true));
+    AppMethodBeat.o(81928);
+    return localab;
   }
   
   public static Bitmap preloadBaseLUTImage()
   {
-    for (;;)
+    AppMethodBeat.i(81926);
+    try
     {
-      Object localObject;
-      int n;
-      int j;
-      try
+      arrayOfByte = new byte[1048576];
+      localObject1 = new byte[64];
+      i = 0;
+      while (i < 64)
       {
-        byte[] arrayOfByte = new byte[1048576];
-        localObject = new byte[64];
-        i = 0;
-        if (i < 64)
+        localObject1[i] = ((byte)Math.round(i * 4.047619F));
+        i += 1;
+      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        byte[] arrayOfByte;
+        Object localObject1;
+        int n;
+        int j;
+        Object localObject2 = null;
+        continue;
+        int i = 0;
+        continue;
+        while (j < 64)
         {
-          localObject[i] = ((byte)Math.round(i * 4.047619F));
-          i += 1;
-          continue;
-          if (i < 64)
+          int m = i % 8 * 64 * 4 + (n * 64 + j) * 512 * 4;
+          int k = 0;
+          while (k < 64)
           {
-            n = i / 8;
-            j = 0;
-            break label95;
+            int i1 = m + 1;
+            arrayOfByte[m] = localObject2[k];
+            m = i1 + 1;
+            arrayOfByte[i1] = localObject2[j];
+            i1 = m + 1;
+            arrayOfByte[m] = localObject2[i];
+            m = i1 + 1;
+            arrayOfByte[i1] = -1;
+            k += 1;
           }
-          localObject = Bitmap.createBitmap(512, 512, Bitmap.Config.ARGB_8888);
-          ((Bitmap)localObject).copyPixelsFromBuffer(ByteBuffer.wrap(arrayOfByte));
-          return localObject;
+          j += 1;
         }
+        i += 1;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        return null;
-      }
-      int i = 0;
-      continue;
-      label95:
-      while (j < 64)
-      {
-        int m = i % 8 * 64 * 4 + (n * 64 + j) * 512 * 4;
-        int k = 0;
-        while (k < 64)
-        {
-          int i1 = m + 1;
-          localOutOfMemoryError[m] = localObject[k];
-          m = i1 + 1;
-          localOutOfMemoryError[i1] = localObject[j];
-          i1 = m + 1;
-          localOutOfMemoryError[m] = localObject[i];
-          m = i1 + 1;
-          localOutOfMemoryError[i1] = -1;
-          k += 1;
-        }
-        j += 1;
-      }
-      i += 1;
+    }
+    if (i < 64)
+    {
+      n = i / 8;
+      j = 0;
+    }
+    else
+    {
+      localObject1 = Bitmap.createBitmap(512, 512, Bitmap.Config.ARGB_8888);
+      ((Bitmap)localObject1).copyPixelsFromBuffer(ByteBuffer.wrap(arrayOfByte));
+      AppMethodBeat.o(81926);
+      return localObject1;
     }
   }
   
   public static void saveLutOrg()
   {
-    if (LUT_DIR_ROOT == null) {}
-    Bitmap localBitmap;
-    do
+    AppMethodBeat.i(81925);
+    if (LUT_DIR_ROOT == null)
     {
+      AppMethodBeat.o(81925);
       return;
-      localBitmap = preloadBaseLUTImage();
-    } while (localBitmap == null);
-    VideoBitmapUtil.saveBitmap2PNG(localBitmap, LUT_DIR_ROOT + File.separator + "LUT_ORG.png");
+    }
+    Bitmap localBitmap = preloadBaseLUTImage();
+    if (localBitmap == null)
+    {
+      AppMethodBeat.o(81925);
+      return;
+    }
+    BitmapUtils.saveBitmap2PNG(localBitmap, LUT_DIR_ROOT + File.separator + "LUT_ORG.png");
+    AppMethodBeat.o(81925);
   }
 }
 

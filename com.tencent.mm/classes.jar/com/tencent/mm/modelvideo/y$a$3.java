@@ -1,8 +1,9 @@
 package com.tencent.mm.modelvideo;
 
 import android.os.SystemClock;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class y$a$3
   implements Runnable
@@ -11,33 +12,40 @@ final class y$a$3
   
   public final void run()
   {
-    long l = System.currentTimeMillis() - y.a.l(this.eIu);
-    y.d("MicroMsg.VideoService", "Try Run service runningFlag:" + y.a.h(this.eIu) + " timeWait:" + l + " sending:" + y.a.j(this.eIu) + " recving:" + y.a.i(this.eIu));
-    if (y.a.h(this.eIu))
+    AppMethodBeat.i(50870);
+    long l = System.currentTimeMillis() - y.a.l(this.fYk);
+    ab.d("MicroMsg.VideoService", "Try Run service runningFlag:" + y.a.h(this.fYk) + " timeWait:" + l + " sending:" + y.a.j(this.fYk) + " recving:" + y.a.i(this.fYk));
+    if (y.a.h(this.fYk))
     {
-      if (l < 60000L) {
+      if (l < 60000L)
+      {
+        AppMethodBeat.o(50870);
         return;
       }
-      y.e("MicroMsg.VideoService", "ERR: Try Run service runningFlag:" + y.a.h(this.eIu) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + y.a.j(this.eIu) + " recving:" + y.a.i(this.eIu));
+      ab.e("MicroMsg.VideoService", "ERR: Try Run service runningFlag:" + y.a.h(this.fYk) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + y.a.j(this.fYk) + " recving:" + y.a.i(this.fYk));
     }
-    y.a.a(this.eIu, 3);
-    y.a.m(this.eIu);
-    y.a.d(this.eIu);
-    y.a.b(this.eIu);
-    y.a.e(this.eIu);
-    y.a.c(this.eIu);
-    this.eIu.bEc.dzS = SystemClock.elapsedRealtime();
-    y.a.n(this.eIu).S(10L, 10L);
+    y.a.a(this.fYk, 3);
+    y.a.m(this.fYk);
+    y.a.d(this.fYk);
+    y.a.b(this.fYk);
+    y.a.e(this.fYk);
+    y.a.c(this.fYk);
+    this.fYk.ckQ.etf = SystemClock.elapsedRealtime();
+    y.a.n(this.fYk).ag(10L, 10L);
+    AppMethodBeat.o(50870);
   }
   
   public final String toString()
   {
-    return super.toString() + "|run";
+    AppMethodBeat.i(50871);
+    String str = super.toString() + "|run";
+    AppMethodBeat.o(50871);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelvideo.y.a.3
  * JD-Core Version:    0.7.0.1
  */

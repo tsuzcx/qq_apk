@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.downloader.a;
 
 public final class b
 {
-  public static int iOv = 0;
-  public static int iOw = 1;
-  public static int iOx = 2;
+  public static int kVB = 0;
+  public static int kVC = 1;
+  public static int kVD = 2;
 }
 
 

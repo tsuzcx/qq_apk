@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui.autofill;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandIDCardUI$3
   implements DialogInterface.OnCancelListener
@@ -10,8 +11,10 @@ final class AppBrandIDCardUI$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.hfk.setResult(0);
-    this.hfk.finish();
+    AppMethodBeat.i(133237);
+    this.iQz.setResult(0);
+    this.iQz.finish();
+    AppMethodBeat.o(133237);
   }
 }
 

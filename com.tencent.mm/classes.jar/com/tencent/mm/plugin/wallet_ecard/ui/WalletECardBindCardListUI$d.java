@@ -3,49 +3,54 @@ package com.tencent.mm.plugin.wallet_ecard.ui;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.c.fv;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.hg;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WalletECardBindCardListUI$d
   implements WalletECardBindCardListUI.b
 {
-  TextView haW;
-  TextView irN;
-  CdnImageView qKK;
+  TextView iJG;
+  TextView ksU;
+  CdnImageView uzH;
   
   public WalletECardBindCardListUI$d(WalletECardBindCardListUI paramWalletECardBindCardListUI, View paramView)
   {
-    this.qKK = ((CdnImageView)paramView.findViewById(a.f.bcard_bind_card_iv));
-    this.haW = ((TextView)paramView.findViewById(a.f.bcard_bind_card_title_tv));
-    this.irN = ((TextView)paramView.findViewById(a.f.bcard_bind_card_subtitle_tv));
+    AppMethodBeat.i(48123);
+    this.uzH = ((CdnImageView)paramView.findViewById(2131823468));
+    this.iJG = ((TextView)paramView.findViewById(2131823469));
+    this.ksU = ((TextView)paramView.findViewById(2131823470));
+    AppMethodBeat.o(48123);
   }
   
-  public final void a(View paramView, fv paramfv)
+  public final void a(View paramView, hg paramhg)
   {
-    if (paramfv != null)
+    AppMethodBeat.i(48124);
+    if (paramhg != null)
     {
-      this.qKK.setRoundCorner(true);
-      this.qKK.setUrl(paramfv.szU);
-      this.haW.setText(String.format("%s %s(%s)", new Object[] { paramfv.lnT, paramfv.ivG, paramfv.szS }));
-      this.irN.setText(String.format("%s", new Object[] { paramfv.qqU }));
-      if (paramfv.szV)
-      {
-        y.i("MicroMsg.WalletECardBindCardListUI", "disable card: %s", new Object[] { paramfv.lnT });
-        paramView.setEnabled(false);
-        this.haW.setTextColor(this.qKH.getResources().getColor(a.c.big_line_color));
-        this.irN.setTextColor(this.qKH.getResources().getColor(a.c.big_line_color));
+      this.uzH.setRoundCorner(true);
+      this.uzH.setUrl(paramhg.wtW);
+      this.iJG.setText(String.format("%s %s(%s)", new Object[] { paramhg.nLq, paramhg.kwK, paramhg.wtU }));
+      if (!bo.isNullOrNil(paramhg.wtY)) {
+        this.ksU.setText(String.format("%s，%s", new Object[] { paramhg.ubQ, paramhg.wtY }));
       }
+      while (paramhg.wtX)
+      {
+        ab.i("MicroMsg.WalletECardBindCardListUI", "disable card: %s", new Object[] { paramhg.nLq });
+        paramView.setEnabled(false);
+        this.iJG.setTextColor(this.uzF.getResources().getColor(2131689747));
+        this.ksU.setTextColor(this.uzF.getResources().getColor(2131689747));
+        AppMethodBeat.o(48124);
+        return;
+        this.ksU.setText(String.format("%s", new Object[] { paramhg.ubQ }));
+      }
+      paramView.setEnabled(true);
+      this.iJG.setTextColor(this.uzF.getResources().getColor(2131689763));
+      this.ksU.setTextColor(this.uzF.getResources().getColor(2131690318));
     }
-    else
-    {
-      return;
-    }
-    paramView.setEnabled(true);
-    this.haW.setTextColor(this.qKH.getResources().getColor(a.c.black));
-    this.irN.setTextColor(this.qKH.getResources().getColor(a.c.normal_color));
+    AppMethodBeat.o(48124);
   }
 }
 

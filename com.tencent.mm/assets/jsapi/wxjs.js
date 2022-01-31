@@ -2,15 +2,33 @@
 //     (c) 2010-2012 Thomas Fuchs
 //     _WXJS.js may be freely distributed under the MIT license.
 (function () {
+  var __initLogArr = ["start"];
+  try {
+  var __DL = 0, __IL = 1, __EL = 2, __initLogLvl = __IL;
+  function __initLog(lvl) {
+    __initLogArr.push(arguments);
+    if (lvl >= __initLogLvl) {
+        console && console.log.apply(console, Array.prototype.slice.call(arguments, 1));
+    }
+  }
+
   if (window.WeixinJSBridge) {
     // Android加上了这个if判断，如果当前window已经定义了WeixinJSBridge对象，不再重新加载
     // 避免重新初始化_callback_map等变量，导致之前的消息回调失败，返回cb404
-    //alert('window already has a WeixinJSBridge object!!!');
-    console.log("window.WeixinJSBridge already exists");
+    __initLog(__IL, "window.WeixinJSBridge already exists");
     return;
   };
 
   var execStartTime = Date.now();
+
+  function _isTmpl(t) { return t.indexOf('${') == 0 && t.indexOf('}') == t.length - 1 }
+  //用于客户端替换
+  var __dgtRdm = '${dgtVerifyRandomStr}',
+      __dgtOn = '${dgtVerifyEnabled}';
+  //否则使用注入
+  if (_isTmpl(__dgtRdm)) __dgtRdm = null;
+  if (_isTmpl(__dgtOn)) { __dgtOn = null; } else { __dgtOn = __dgtOn === 'true'; }
+  __initLog(__DL, "replace dgt");
 
   (function (undefined) {
     if (String.prototype.trim === undefined) // fix for iOS 3.2
@@ -49,6 +67,8 @@
       }
 
   })()
+
+  __initLog(__DL, "prototype compat");
 
   var _WXJS = (function () {
     var undefined, key, $, classList, emptyArray = [],
@@ -93,6 +113,7 @@
       camelize, uniq,
       tempParent = document.createElement('div')
 
+    __initLog(__DL, "_WXJS define");
     _WXJS.matches = function (element, selector) {
       if (!element || element.nodeType !== 1) return false
       var matchesSelector = element.webkitMatchesSelector || element.mozMatchesSelector ||
@@ -336,6 +357,7 @@
 
       return elements
     }
+    __initLog(__DL, "_WXJS define functions");
 
     // Define methods that will be available on all
     // _WXJS collections
@@ -648,6 +670,7 @@
         })
       }
     }
+    __initLog(__DL, "_WXJS define $.fn");
 
     // Generate the `width` and `height` functions
     ;
@@ -718,7 +741,7 @@
     _WXJS.camelize = camelize
     _WXJS.uniq = uniq
     $._WXJS = _WXJS
-
+    __initLog(__DL, "_WXJS init finished");
     return $
   })()
 
@@ -987,6 +1010,7 @@
     }
 
   })(_WXJS);
+  __initLog(__DL, "$ init 1");
 
   (function ($) {
     function detect(ua) {
@@ -1025,6 +1049,7 @@
     $.__detect = detect
 
   })(_WXJS);
+  __initLog(__DL, "$ init 2");
 
   (function ($, undefined) {
     var prefix = '',
@@ -1129,6 +1154,7 @@
 
     testEl = null
   })(_WXJS);
+  __initLog(__DL, "$ init 3");
 
   (function ($) {
     var jsonpID = 0,
@@ -1435,6 +1461,7 @@
       return params.join('&').replace('%20', '+')
     }
   })(_WXJS);
+  __initLog(__DL, "$ init 4");
 
   (function ($) {
     $.fn.serializeArray = function () {
@@ -1473,6 +1500,7 @@
     }
 
   })(_WXJS);
+  __initLog(__DL, "$ init 5");
 
   (function ($) {
     var touch = {},
@@ -1570,6 +1598,7 @@
       }
     })
   })(_WXJS)
+  __initLog(__DL, "$ init 6");
 
   // sprintf
   var sprintf = (function () {
@@ -1715,6 +1744,7 @@
     argv.unshift(fmt);
     return sprintf.apply(null, argv);
   };
+  __initLog(__DL, "sprintf vsprintf init");
 
   // UTF8
   var UTF8 = {
@@ -2071,11 +2101,12 @@
     e.SHA1 = j._createHelper(m);
     e.HmacSHA1 = j._createHmacHelper(m)
   })();
-
+  __initLog(__DL, "UTF8 HEX base64 CryptoJS init");
 
   /* ========== REAL WXJS START ========== */
 
   var __wx = window.__wx;
+  if (!__wx) return "WeixinJSBridge init err: __wx not found"
   delete window.__wx;
 
   var _readyMessageIframe, _sendMessageQueue = [],
@@ -2097,25 +2128,26 @@
     _event_hook_map_for3rd = {}, //第三方网页hook的事件表 'event' => callback
     _RUN_ON_3RD_APIS = '__runOn3rd_apis';
 
-  var _xxyy = '__wx._getDgtVerifyRandomStr()',
-    _JSON_MESSAGE = '__json_message',
+  var _JSON_MESSAGE = '__json_message',
     _MSG_QUEUE = '__msg_queue',
     _CONTEXT_KEY = '__context_key',
     _context_val = '',
-    isDgtVerifyEnabled = '__wx._isDgtVerifyEnabled()',
-    _SHA_KEY = '__sha_key';
+    _SHA_KEY = '__sha_key',
+    _xxyy = __dgtRdm || __wx._getDgtVerifyRandomStr && __wx._getDgtVerifyRandomStr(),
+    isDgtVerifyEnabled = __dgtOn || __wx._isDgtVerifyEnabled && __wx._isDgtVerifyEnabled();
 
   var _handleMessageIdentifier = _handleMessageFromWeixin;
   var _logIdentifier = _log;
   var _envIdentifier = _env;
   var _onfor3rdIdentifier = _onfor3rd;
   var _callIdentifier = _call;
+  __initLog(__DL, "__wx define:" + _xxyy + "," + isDgtVerifyEnabled);
 
   function _sendMessage(msg) {
     var msgArray = []; msgArray.push(msg);
     var msgArrayString = JSON.stringify(msgArray);
 
-    if (isDgtVerifyEnabled === 'true') {
+    if (isDgtVerifyEnabled) {
       var arr = new Array;
       arr[0] = msgArrayString;
       arr[1] = _xxyy;
@@ -2141,7 +2173,7 @@
 
     var ret;
     var msgWrap
-    if (isDgtVerifyEnabled === 'true') {
+    if (isDgtVerifyEnabled) {
       var realMessage = message[_JSON_MESSAGE];
       var shaStr = message[_SHA_KEY];
       var arr = new Array;
@@ -2268,7 +2300,7 @@
     try {
       _sendMessage(JSON.stringify(msgObj));
     } catch (e) {
-      console.log("_call error", e);
+      __initLog(__EL, "_call error", e);
     }
   }
 
@@ -2863,7 +2895,7 @@
     });
 
     _on('sys:record', function (ses) {
-      console.log('wx sys:record');
+      __initLog(__IL, 'wx sys:record');
       _log('sys:record');
       data = {
         'title': document.title,
@@ -2939,6 +2971,7 @@
     _emit('sys:init', {});
     _emit('sys:bridged', {});
   }
+  __initLog(__DL, "__wx define functions");
 
   var __WeixinJSBridge = {
     // public
@@ -2959,7 +2992,8 @@
       configurable: false
     });
   } catch (e) {
-    return
+    __initLog(__EL, "define _handleMessageFromWeixin", e)
+    return "WeixinJSBridge init err:" + e.message
   }
 
 
@@ -2972,11 +3006,22 @@
       configurable: false
     });
   } catch (e) {
-    return; // 如果页面已经存在 WeixinJSBridge，是恶意页面，就直接 return
+    __initLog(__EL, "define WeixinJSBridge", e)
+    return "WeixinJSBridge init err:" + e.message; // 如果页面已经存在 WeixinJSBridge，是恶意页面，就直接 return
   }
+  __initLog(__DL, "__wx bind");
 
   _setDefaultEventHandlers();
 
-  console.log('WeixinJSBridge exec time', (Date.now()-execStartTime));
+  __wx._ready(true);
 
+  __initLog(__IL, 'WeixinJSBridge exec time', (Date.now()-execStartTime));
+  return "WeixinJSBridge init succ"
+  } catch (e) {
+    var logs = ""
+    __initLogArr.forEach(function(args) {
+        logs += Array.prototype.join.call(args, ",") + ","
+    })
+    return "WeixinJSBridge init err:" + e.message + "\n" + e.stack + logs
+  }
 })();

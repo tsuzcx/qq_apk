@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.game.ui.tab;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class GameTabBridgeUI$1$1
   implements Runnable
@@ -9,13 +10,16 @@ final class GameTabBridgeUI$1$1
   
   public final void run()
   {
-    y.i("MicroMsg.GameTabBridgeUI", "load tools process, web page load time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - this.lfV.eow) });
-    if (GameTabWidget.lfZ == this.lfV.lfU.hashCode())
+    AppMethodBeat.i(112237);
+    ab.i("MicroMsg.GameTabBridgeUI", "load tools process, web page load time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - this.nDQ.fET) });
+    if (GameTabWidget.nDU == this.nDQ.nDP.hashCode())
     {
-      GameTabWidget.a(this.lfV.lfU, this.lfV.val$intent, false, true, true, false);
+      GameTabWidget.a(this.nDQ.nDP, this.nDQ.val$intent, false, true, true, false);
+      AppMethodBeat.o(112237);
       return;
     }
-    y.i("MicroMsg.GameTabBridgeUI", "GameTabWidget.mHashCode(%d) != hashCode(%d), dont need turn page!", new Object[] { Integer.valueOf(GameTabWidget.lfZ), Integer.valueOf(this.lfV.lfU.hashCode()) });
+    ab.i("MicroMsg.GameTabBridgeUI", "GameTabWidget.mHashCode(%d) != hashCode(%d), dont need turn page!", new Object[] { Integer.valueOf(GameTabWidget.nDU), Integer.valueOf(this.nDQ.nDP.hashCode()) });
+    AppMethodBeat.o(112237);
   }
 }
 

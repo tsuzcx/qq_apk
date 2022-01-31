@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.nearlife.ui;
 
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mm.plugin.nearlife.b.a;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 final class b$a
 {
-  TextView eXr;
-  TextView gaI;
-  TextView lxl;
-  String mDU;
-  a mFb;
-  LinearLayout mFc;
-  ImageView mFd;
+  TextView hsI;
+  TextView nUy;
+  String pdW;
+  a pfh;
+  LinearLayout pfi;
+  WeImageView pfj;
   int position;
+  TextView titleTv;
   int type;
   
   b$a(b paramb) {}

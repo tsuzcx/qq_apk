@@ -3,6 +3,7 @@ package com.google.android.search.verification.client;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class SearchActionVerificationClientActivity
   extends Activity
@@ -10,13 +11,19 @@ public abstract class SearchActionVerificationClientActivity
   protected final void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = new Intent(this, oz());
+    paramBundle = new Intent(this, rx());
     paramBundle.putExtra("SearchActionVerificationClientExtraIntent", getIntent());
     startService(paramBundle);
     finish();
   }
   
-  public abstract Class<? extends SearchActionVerificationClientService> oz();
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public abstract Class<? extends SearchActionVerificationClientService> rx();
 }
 
 

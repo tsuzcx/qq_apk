@@ -5,7 +5,7 @@ public final class c$kr
 {
   public c$kr()
   {
-    super("videoProxyPreload", "videoProxyPreload", 172, false);
+    super("unbindBankCard", "unbindBankCard", 216, true);
   }
 }
 

@@ -2,8 +2,9 @@ package com.tencent.mm.platformtools;
 
 import android.app.Activity;
 import android.widget.Toast;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class p
   extends d
@@ -15,35 +16,45 @@ public final class p
   
   public final boolean b(ag paramag)
   {
-    y.d("MicroMsg.ErrorYesNoProcessor", "handleOpenUrl");
+    AppMethodBeat.i(124561);
+    ab.d("MicroMsg.ErrorYesNoProcessor", "handleOpenUrl");
     Toast.makeText(this.activity, paramag.content, 0).show();
+    AppMethodBeat.o(124561);
     return true;
   }
   
   public final boolean c(ag paramag)
   {
-    y.d("MicroMsg.ErrorYesNoProcessor", "handleIgnore");
+    AppMethodBeat.i(124562);
+    ab.d("MicroMsg.ErrorYesNoProcessor", "handleIgnore");
     Toast.makeText(this.activity, paramag.content, 0).show();
+    AppMethodBeat.o(124562);
     return true;
   }
   
   public final boolean d(ag paramag)
   {
-    y.d("MicroMsg.ErrorYesNoProcessor", "handleFalseLast");
+    AppMethodBeat.i(124563);
+    ab.d("MicroMsg.ErrorYesNoProcessor", "handleFalseLast");
     Toast.makeText(this.activity, paramag.content, 0).show();
+    AppMethodBeat.o(124563);
     return true;
   }
   
   public final boolean e(ag paramag)
   {
-    y.d("MicroMsg.ErrorYesNoProcessor", "handleFalseCancel");
+    AppMethodBeat.i(124564);
+    ab.d("MicroMsg.ErrorYesNoProcessor", "handleFalseCancel");
     Toast.makeText(this.activity, paramag.content, 0).show();
+    AppMethodBeat.o(124564);
     return true;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.ErrorYesNoProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.i(124560);
+    ab.i("MicroMsg.ErrorYesNoProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.o(124560);
   }
 }
 

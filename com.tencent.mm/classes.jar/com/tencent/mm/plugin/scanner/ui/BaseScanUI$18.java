@@ -1,20 +1,17 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.support.v7.app.ActionBar;
-import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.py;
+import com.tencent.mm.sdk.b.c;
 
 final class BaseScanUI$18
-  implements ValueAnimator.AnimatorUpdateListener
+  extends c<py>
 {
-  BaseScanUI$18(BaseScanUI paramBaseScanUI) {}
-  
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  BaseScanUI$18(BaseScanUI paramBaseScanUI)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    BaseScanUI.m(this.nJg).setTranslationY(BaseScanUI.m(this.nJg).getHeight() * f);
-    this.nJg.getSupportActionBar().getCustomView().setTranslationY(-f * this.nJg.getSupportActionBar().getHeight());
+    AppMethodBeat.i(138473);
+    this.__eventId = py.class.getName().hashCode();
+    AppMethodBeat.o(138473);
   }
 }
 

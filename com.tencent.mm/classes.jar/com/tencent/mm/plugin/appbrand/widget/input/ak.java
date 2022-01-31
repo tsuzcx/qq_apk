@@ -1,56 +1,34 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.page.af;
-import com.tencent.mm.plugin.appbrand.page.ah;
-import com.tencent.mm.plugin.appbrand.page.q;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.e;
+import com.tencent.mm.plugin.appbrand.widget.input.panel.c;
+import com.tencent.mm.sdk.platformtools.ah;
 
-public final class ak
-  implements ah
+final class ak
+  extends c
 {
-  private final q gSP;
-  private final g hwo;
+  private static final int jox;
+  private e jow = null;
   
-  ak(q paramq)
+  static
   {
-    this.gSP = paramq;
-    this.hwo = new g(paramq);
+    AppMethodBeat.i(134298);
+    jox = ah.getContext().getResources().getDimensionPixelSize(2131427809);
+    AppMethodBeat.o(134298);
   }
   
-  public final void a(ad paramad)
+  public final e aRy()
   {
-    if ((paramad == ad.gVG) || (paramad == ad.gVH)) {
-      n.w(this.gSP);
+    AppMethodBeat.i(134297);
+    if (this.jow == null) {
+      this.jow = new ak.a();
     }
-  }
-  
-  public final void b(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.hwo.b(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public final ViewGroup getContainer()
-  {
-    return this.hwo;
-  }
-  
-  public final void kU(int paramInt)
-  {
-    this.hwo.setTranslationY(paramInt);
-  }
-  
-  public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    this.hwo.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
-  }
-  
-  public final void setupWebViewTouchInterceptor(af paramaf)
-  {
-    paramaf = (ViewGroup)paramaf.getContentView();
-    g localg = this.hwo;
-    paramaf.setOnTouchListener(new ak.1(this, localg, new ag(localg)));
+    e locale = this.jow;
+    AppMethodBeat.o(134297);
+    return locale;
   }
 }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <CheckBoxPreference android:title="@string/e65" android:key="settings_voice_play_mode" android:defaultValue="false" />
-    <CheckBoxPreference android:title="@string/dzc" android:key="settings_enter_button_send" android:defaultValue="false" />
-    <Preference android:title="@string/dyu" android:key="settings_chatting_bg" android:layout="@layout/ab8" />
-    <Preference android:title="@string/dz9" android:key="settings_emoji_manager" android:layout="@layout/ab8" />
-    <PreferenceTitleCategory android:title="@string/dyq" />
-    <Preference android:title="@string/zf" android:key="settings_bak_chat" android:layout="@layout/ab8" />
-    <Preference android:title="@string/e3d" android:key="settings_reset" android:layout="@layout/ab8" />
-    <Preference android:title="@string/b06" android:key="settings_recovery" android:layout="@layout/ab8" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceTitleCategory android:title="@string/e9x" />
+    <CheckBoxPreference android:title="@string/e9w" android:key="settings_auto_mul_terminal_sync" android:defaultValue="false" />
+    <PreferenceTitleCategory android:title="@string/eft" />
+    <CheckBoxPreference android:title="@string/efs" android:key="settings_take_photo_auto_save_photo" android:defaultValue="false" />
+    <CheckBoxPreference android:title="@string/efu" android:key="settings_take_photo_auto_save_video" android:defaultValue="false" />
+    <PreferenceTitleCategory android:title="@string/ees" android:key="settings_sns_auto_play_tip" />
+    <CheckBoxPreference android:title="@string/eer" android:key="settings_sns_auto_play_switch" android:defaultValue="true" />
 </PreferenceScreen>

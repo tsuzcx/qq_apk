@@ -3,18 +3,18 @@ package com.tencent.mm.modelappbrand.a;
 import android.graphics.Bitmap;
 
 public class b$b
-  implements b.h
+  implements b.i
 {
-  public final void JG() {}
+  public final void acG() {}
   
-  public final void JH() {}
+  public final void acH() {}
   
-  public void p(Bitmap paramBitmap) {}
-  
-  public final String pU()
+  public final String tX()
   {
     return "DefaultLoadTarget";
   }
+  
+  public void w(Bitmap paramBitmap) {}
 }
 
 

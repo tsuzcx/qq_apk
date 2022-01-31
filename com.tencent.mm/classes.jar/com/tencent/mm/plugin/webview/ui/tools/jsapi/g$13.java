@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mm.plugin.webview.a.a;
-import com.tencent.mm.pluginsdk.m;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$13
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  g$13(g paramg) {}
+  g$13(g paramg, i parami) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    a.eUR.h(new Intent(), g.i(this.rzi));
+    AppMethodBeat.i(154931);
+    this.vqm.a(this.uZa, "share_weibo:no_weibo", null);
+    AppMethodBeat.o(154931);
   }
 }
 

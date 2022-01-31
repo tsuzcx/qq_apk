@@ -1,92 +1,47 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.luggage.g.d;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.g.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.b;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.f;
-import com.tencent.mm.plugin.appbrand.u.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.g;
 import org.json.JSONObject;
 
-public final class a
-  extends c
+public abstract class a
+  extends com.tencent.mm.plugin.appbrand.jsapi.a
 {
-  public static final int CTRL_INDEX = 135;
-  public static final String NAME = "addMapCircles";
-  
-  protected final boolean c(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  protected final void a(c paramc, int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramJSONObject == null)
-    {
-      y.e("MicroMsg.JsApiAddMapCircles", "data is null");
-      return false;
-    }
-    parame = f.o(parame.getAppId(), parame.ahJ(), p(paramJSONObject));
-    if (parame == null)
-    {
-      y.e("MicroMsg.JsApiAddMapCircles", "mapView is null, return");
-      return false;
-    }
-    try
-    {
-      if (paramJSONObject.has("circles"))
-      {
-        parame.ajl();
-        paramView = new JSONArray(paramJSONObject.optString("circles"));
-        paramInt = 0;
-        while (paramInt < paramView.length())
-        {
-          paramJSONObject = (JSONObject)paramView.get(paramInt);
-          float f1 = bk.getFloat(paramJSONObject.optString("latitude"), 0.0F);
-          float f2 = bk.getFloat(paramJSONObject.optString("longitude"), 0.0F);
-          int i = h.bd(paramJSONObject.optString("color", ""), Color.parseColor("#000000"));
-          int j = h.bd(paramJSONObject.optString("fillColor", ""), Color.parseColor("#000000"));
-          int k = paramJSONObject.optInt("radius");
-          float f3 = h.a(paramJSONObject, "strokeWidth", 0.0F);
-          paramJSONObject = new b.b();
-          double d1 = f1;
-          double d2 = f2;
-          paramJSONObject.latitude = d1;
-          paramJSONObject.longitude = d2;
-          paramJSONObject.radius = k;
-          paramJSONObject.strokeColor = i;
-          paramJSONObject.strokeWidth = ((int)f3);
-          paramJSONObject.fillColor = j;
-          parame.a(paramJSONObject);
-          paramInt += 1;
-        }
-      }
-      return true;
-    }
-    catch (Exception parame)
-    {
-      y.e("MicroMsg.JsApiAddMapCircles", "parse circles error, exception : %s", new Object[] { parame });
-      return false;
-    }
+    paramc.h(paramInt, paramString);
+    com.tencent.mm.plugin.appbrand.jsapi.g.a.e.d(getName(), paramBoolean1, paramBoolean2);
   }
   
-  protected final int p(JSONObject paramJSONObject)
+  public void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    try
-    {
-      int i = paramJSONObject.optInt("mapId");
-      return i;
+    com.tencent.mm.plugin.appbrand.jsapi.g.a.e.Cj(getName());
+  }
+  
+  protected final b f(c paramc, JSONObject paramJSONObject)
+  {
+    if ((paramc instanceof com.tencent.mm.plugin.appbrand.jsapi.e)) {
+      return g.cl(paramc.getAppId(), com.tencent.mm.plugin.appbrand.jsapi.g.a.f.g(paramc, paramJSONObject));
     }
-    catch (Exception paramJSONObject)
+    if (paramc.q(com.tencent.mm.plugin.appbrand.jsapi.base.f.class) == null)
     {
-      y.e("MicroMsg.JsApiAddMapCircles", "get mapId error, exception : %s", new Object[] { paramJSONObject });
+      d.e("MicroMsg.BaseMapJsApi", "name:%s IComponentConverter is null, return", new Object[] { getName() });
+      return null;
     }
-    return -1;
+    paramc = ((com.tencent.mm.plugin.appbrand.jsapi.base.f)paramc.q(com.tencent.mm.plugin.appbrand.jsapi.base.f.class)).d(paramc);
+    if (paramc == null)
+    {
+      d.e("MicroMsg.BaseMapJsApi", "name:%s is not componentView", new Object[] { getName() });
+      return null;
+    }
+    return g.cl(paramc.getAppId(), com.tencent.mm.plugin.appbrand.jsapi.g.a.f.g(paramc, paramJSONObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/bm3" android:paddingLeft="@dimen/du" android:paddingRight="@dimen/dk" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/l2"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bm4" android:background="@drawable/a58" android:layout_width="fill_parent" android:layout_height="@dimen/ey">
-        <com.tencent.mm.ui.base.MaskLayout android:id="@id/bm5" android:layout_width="@dimen/ew" android:layout_height="@dimen/ew" android:layout_marginRight="@dimen/dl">
-            <ImageView android:id="@id/kl" android:layout_width="@dimen/ev" android:layout_height="@dimen/ev" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-        </com.tencent.mm.ui.base.MaskLayout>
-        <TextView android:gravity="center_vertical" android:paddingRight="@dimen/kl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dd" android:singleLine="true" style="@style/ks" />
-        <TextView android:textSize="@dimen/my" android:textColor="@color/a23" android:gravity="center" android:id="@id/bm6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-</LinearLayout>
+<merge>
+    <RelativeLayout android:background="@color/nz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="@dimen/a2_" android:textColor="@color/a6q" android:id="@id/bpc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
+        <com.tencent.mm.plugin.facedetect.views.FaceNumberView android:id="@id/bpe" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_below="@id/bpc" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</merge>

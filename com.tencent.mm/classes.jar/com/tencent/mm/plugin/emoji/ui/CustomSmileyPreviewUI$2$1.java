@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.protocal.c.afa;
-import com.tencent.mm.protocal.c.vb;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.zp;
 
 final class CustomSmileyPreviewUI$2$1
   implements View.OnClickListener
@@ -12,7 +13,9 @@ final class CustomSmileyPreviewUI$2$1
   
   public final void onClick(View paramView)
   {
-    CustomSmileyPreviewUI.a(this.jcg.jcf, CustomSmileyPreviewUI.k(this.jcg.jcf).tcR.sRO);
+    AppMethodBeat.i(138338);
+    CustomSmileyPreviewUI.a(this.lkQ.lkP, CustomSmileyPreviewUI.i(this.lkQ.lkP).xbj.wQB);
+    AppMethodBeat.o(138338);
   }
 }
 

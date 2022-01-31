@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.View;
-import com.tencent.mm.plugin.fts.ui.widget.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.ui.widget.a.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SettingsSearchAuthUI$1
-  implements a.a
+  implements a.b
 {
   SettingsSearchAuthUI$1(SettingsSearchAuthUI paramSettingsSearchAuthUI) {}
   
   public final void onClickBackBtn(View paramView)
   {
-    y.i("MicroMsg.SettingsSearchAuthUI", "click search back");
-    this.nVN.finish();
+    AppMethodBeat.i(127438);
+    ab.i("MicroMsg.SettingsSearchAuthUI", "click search back");
+    this.qJW.finish();
+    AppMethodBeat.o(127438);
   }
 }
 

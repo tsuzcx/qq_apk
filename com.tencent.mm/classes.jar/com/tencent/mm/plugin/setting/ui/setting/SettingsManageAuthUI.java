@@ -1,218 +1,211 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable.Creator;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.bv.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.g;
-import com.tencent.mm.plugin.setting.a.h;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.plugin.setting.model.UserAuthItemParcelable;
 import com.tencent.mm.plugin.setting.model.c;
-import com.tencent.mm.protocal.c.alp;
-import com.tencent.mm.protocal.c.cby;
-import com.tencent.mm.protocal.c.cbz;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.arc;
+import com.tencent.mm.protocal.protobuf.cpe;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 public class SettingsManageAuthUI
   extends MMActivity
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
-  private ListView Nn;
-  private ProgressDialog lxZ;
-  private byte[] nQH;
-  private View nUw;
-  private SettingsManageAuthUI.a nUx;
-  private List<cby> nUy = new ArrayList();
-  private boolean nUz;
+  private View mHF;
+  private ListView mListView;
+  private ProgressDialog nVm;
+  private byte[] qEE;
+  private SettingsManageAuthUI.a qIC;
+  private List<cpe> qID;
+  private boolean qIE;
   
-  private static void aJ(byte[] paramArrayOfByte)
+  public SettingsManageAuthUI()
   {
+    AppMethodBeat.i(127258);
+    this.qID = new ArrayList();
+    AppMethodBeat.o(127258);
+  }
+  
+  private static void bh(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(127264);
     paramArrayOfByte = new com.tencent.mm.plugin.setting.model.f(paramArrayOfByte);
-    g.Dk().a(paramArrayOfByte, 0);
+    g.Rc().a(paramArrayOfByte, 0);
+    AppMethodBeat.o(127264);
   }
   
-  private void bzb()
+  private void ckl()
   {
-    this.mController.removeAllOptionMenu();
-    addIconOptionMenu(800, a.h.actionbar_search_icon, new SettingsManageAuthUI.4(this));
-    if (this.nUy.isEmpty())
+    AppMethodBeat.i(127261);
+    removeAllOptionMenu();
+    addIconOptionMenu(800, 2131230757, new SettingsManageAuthUI.4(this));
+    if (this.qID.isEmpty())
     {
-      this.nUw.setVisibility(0);
+      this.mHF.setVisibility(0);
+      AppMethodBeat.o(127261);
       return;
     }
-    this.nUw.setVisibility(8);
-    if (this.nUz)
+    this.mHF.setVisibility(8);
+    if (this.qIE)
     {
-      addTextOptionMenu(700, getString(a.i.app_finish), new SettingsManageAuthUI.5(this));
+      addTextOptionMenu(700, getString(2131296964), new SettingsManageAuthUI.5(this));
+      AppMethodBeat.o(127261);
       return;
     }
-    addTextOptionMenu(700, getString(a.i.app_manage), new SettingsManageAuthUI.6(this));
+    addTextOptionMenu(700, getString(2131296991), new SettingsManageAuthUI.6(this));
+    AppMethodBeat.o(127261);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.settings_manage_auth;
+    return 2130970694;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.Nn = ((ListView)findViewById(a.f.auth_list_view));
-    this.nUw = findViewById(a.f.auth_list_empty_tip);
-    this.nUx = new SettingsManageAuthUI.a(this, (byte)0);
-    this.Nn.setAdapter(this.nUx);
-    this.Nn.setOnScrollListener(new SettingsManageAuthUI.1(this));
-    this.Nn.setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        if (!SettingsManageAuthUI.c(SettingsManageAuthUI.this))
-        {
-          paramAnonymousAdapterView = SettingsManageAuthUI.d(SettingsManageAuthUI.this).xd(paramAnonymousInt);
-          if (paramAnonymousAdapterView != null)
-          {
-            paramAnonymousView = new Intent(SettingsManageAuthUI.this, SettingsModifyUserAuthUI.class);
-            UserAuthItemParcelable[] arrayOfUserAuthItemParcelable = (UserAuthItemParcelable[])UserAuthItemParcelable.CREATOR.newArray(paramAnonymousAdapterView.tRc.size());
-            paramAnonymousInt = 0;
-            while (paramAnonymousInt < paramAnonymousAdapterView.tRc.size())
-            {
-              cbz localcbz = (cbz)paramAnonymousAdapterView.tRc.get(paramAnonymousInt);
-              UserAuthItemParcelable localUserAuthItemParcelable = new UserAuthItemParcelable();
-              localUserAuthItemParcelable.scope = localcbz.scope;
-              localUserAuthItemParcelable.nRj = localcbz.nRj;
-              localUserAuthItemParcelable.state = localcbz.state;
-              localUserAuthItemParcelable.nRk = localcbz.nRk;
-              arrayOfUserAuthItemParcelable[paramAnonymousInt] = localUserAuthItemParcelable;
-              paramAnonymousInt += 1;
-            }
-            paramAnonymousView.putExtra("app_id", paramAnonymousAdapterView.bOL);
-            paramAnonymousView.putExtra("app_name", paramAnonymousAdapterView.dRQ);
-            paramAnonymousView.putExtra("modify_scene", 1);
-            paramAnonymousView.putParcelableArrayListExtra("app_auth_items", new ArrayList(Arrays.asList(arrayOfUserAuthItemParcelable)));
-            SettingsManageAuthUI.this.startActivity(paramAnonymousView);
-          }
-        }
-      }
-    });
-    bzb();
-    setMMTitle(a.i.settings_auth_manage);
+    AppMethodBeat.i(127260);
+    this.mListView = ((ListView)findViewById(2131827618));
+    this.mHF = findViewById(2131827619);
+    this.qIC = new SettingsManageAuthUI.a(this, (byte)0);
+    this.mListView.setAdapter(this.qIC);
+    this.mListView.setOnScrollListener(new SettingsManageAuthUI.1(this));
+    this.mListView.setOnItemClickListener(new SettingsManageAuthUI.2(this));
+    ckl();
+    setMMTitle(2131303207);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
+        AppMethodBeat.i(127248);
         SettingsManageAuthUI.this.finish();
+        AppMethodBeat.o(127248);
         return true;
       }
     });
+    AppMethodBeat.o(127260);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127259);
     super.onCreate(paramBundle);
     initView();
+    AppMethodBeat.o(127259);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(127263);
     super.onPause();
-    g.Dk().b(1146, this);
-    g.Dk().b(1127, this);
+    g.Rc().b(1146, this);
+    g.Rc().b(1127, this);
+    AppMethodBeat.o(127263);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(127262);
     super.onResume();
-    g.Dk().a(1146, this);
-    g.Dk().a(1127, this);
-    aJ(null);
+    g.Rc().a(1146, this);
+    g.Rc().a(1127, this);
+    bh(null);
+    AppMethodBeat.o(127262);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.SettingsManageAuthUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.lxZ != null) {
-      this.lxZ.dismiss();
+    AppMethodBeat.i(127265);
+    ab.i("MicroMsg.SettingsManageAuthUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.nVm != null) {
+      this.nVm.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if (paramm.getType() == 1146)
       {
         paramString = (com.tencent.mm.plugin.setting.model.f)paramm;
-        if ((paramString.nQG != null) && (paramString.nQG.thD == 1))
+        label120:
+        List localList;
+        if ((paramString.qED != null) && (paramString.qED.xgr == 1))
         {
-          paramString = paramString.nQG.thB.toByteArray();
-          this.nQH = paramString;
-          if (((com.tencent.mm.plugin.setting.model.f)paramm).nQH == null) {
-            break label194;
+          paramString = paramString.qED.xgp.toByteArray();
+          this.qEE = paramString;
+          if (((com.tencent.mm.plugin.setting.model.f)paramm).qEE == null) {
+            break label202;
           }
           paramInt1 = 1;
-          label117:
           if (paramInt1 == 0) {
-            this.nUy.clear();
+            this.qID.clear();
           }
-          List localList = this.nUy;
+          localList = this.qID;
           paramString = (com.tencent.mm.plugin.setting.model.f)paramm;
-          if (paramString.nQG == null) {
-            break label199;
+          if (paramString.qED == null) {
+            break label207;
           }
-          paramString = paramString.nQG.thC;
-          label157:
-          localList.addAll(paramString);
-          this.nUx.nUB = this.nUy;
-          this.nUx.notifyDataSetChanged();
-          bzb();
         }
-      }
-      label194:
-      label199:
-      do
-      {
-        do
+        label202:
+        label207:
+        for (paramString = paramString.qED.xgq;; paramString = Collections.emptyList())
         {
+          localList.addAll(paramString);
+          this.qIC.qIG = this.qID;
+          this.qIC.notifyDataSetChanged();
+          ckl();
+          AppMethodBeat.o(127265);
           return;
           paramString = null;
           break;
           paramInt1 = 0;
-          break label117;
-          paramString = Collections.emptyList();
-          break label157;
-        } while (paramm.getType() != 1127);
-        paramString = ((c)paramm).appId;
-      } while (bk.bl(paramString));
-      if (!this.nUy.isEmpty())
-      {
-        paramm = this.nUy.iterator();
-        while (paramm.hasNext()) {
-          if (((cby)paramm.next()).bOL.equals(paramString)) {
-            paramm.remove();
-          }
+          break label120;
         }
       }
-      this.nUx.notifyDataSetChanged();
-      return;
+      if (paramm.getType() == 1127)
+      {
+        paramString = ((c)paramm).appId;
+        if (!bo.isNullOrNil(paramString))
+        {
+          if (!this.qID.isEmpty())
+          {
+            paramm = this.qID.iterator();
+            while (paramm.hasNext()) {
+              if (((cpe)paramm.next()).cwc.equals(paramString)) {
+                paramm.remove();
+              }
+            }
+          }
+          this.qIC.notifyDataSetChanged();
+        }
+        AppMethodBeat.o(127265);
+      }
     }
-    h.bC(this, paramString);
+    else
+    {
+      h.bO(this, paramString);
+    }
+    AppMethodBeat.o(127265);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

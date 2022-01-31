@@ -1,54 +1,61 @@
 package com.tencent.mm.plugin.cdndownloader.d;
 
 import android.os.RemoteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.cdndownloader.ipc.CDNTaskInfo;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import java.util.Iterator;
 import java.util.Set;
 
 final class a$3
-  implements am.a
+  implements ap.a
 {
   a$3(a parama) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    y.d("MicroMsg.CDNDownloadClient", "checkProcessTimer");
-    if (a.c(this.iAG).size() == 0) {
+    AppMethodBeat.i(894);
+    ab.d("MicroMsg.CDNDownloadClient", "checkProcessTimer");
+    if (a.c(this.kDM).size() == 0)
+    {
+      AppMethodBeat.o(894);
       return false;
     }
-    if (a.h(this.iAG) != null) {}
+    if (a.h(this.kDM) != null) {}
     try
     {
-      y.d("MicroMsg.CDNDownloadClient", "checkActive");
-      a.h(this.iAG).aDu();
+      ab.d("MicroMsg.CDNDownloadClient", "checkActive");
+      a.h(this.kDM).bfR();
+      AppMethodBeat.o(894);
       return true;
     }
     catch (RemoteException localRemoteException)
     {
-      y.e("MicroMsg.CDNDownloadClient", "check process active false");
-      h.nFQ.a(710L, 3L, 1L, false);
-      if (a.i(this.iAG))
+      ab.e("MicroMsg.CDNDownloadClient", "check process active false");
+      h.qsU.idkeyStat(710L, 3L, 1L, false);
+      if (a.i(this.kDM))
       {
-        a.a(this.iAG, System.currentTimeMillis());
-        localIterator = a.c(this.iAG).iterator();
+        a.a(this.kDM, System.currentTimeMillis());
+        localIterator = a.c(this.kDM).iterator();
         while (localIterator.hasNext()) {
-          ((CDNTaskInfo)localIterator.next()).iAN = true;
+          ((CDNTaskInfo)localIterator.next()).kDT = true;
         }
-        a.j(this.iAG);
+        a.j(this.kDM);
+        AppMethodBeat.o(894);
         return true;
       }
-      y.i("MicroMsg.CDNDownloadClient", "dead twice in 1 min, something wrong must be happened");
-      h.nFQ.a(710L, 4L, 1L, false);
-      Iterator localIterator = a.c(this.iAG).iterator();
+      ab.i("MicroMsg.CDNDownloadClient", "dead twice in 1 min, something wrong must be happened");
+      h.qsU.idkeyStat(710L, 4L, 1L, false);
+      Iterator localIterator = a.c(this.kDM).iterator();
       while (localIterator.hasNext())
       {
         CDNTaskInfo localCDNTaskInfo = (CDNTaskInfo)localIterator.next();
-        a.k(this.iAG).f(localCDNTaskInfo.downloadUrl, 4, com.tencent.mm.plugin.downloader.a.a.iOl, null);
+        a.k(this.kDM).f(localCDNTaskInfo.downloadUrl, 4, com.tencent.mm.plugin.downloader.a.a.kVr, null);
       }
-      a.l(this.iAG);
+      a.l(this.kDM);
+      AppMethodBeat.o(894);
     }
     return false;
   }

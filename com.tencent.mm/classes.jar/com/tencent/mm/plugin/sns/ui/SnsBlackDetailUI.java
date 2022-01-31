@@ -1,22 +1,21 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.u;
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.base.h;
 import java.util.Iterator;
@@ -25,52 +24,33 @@ import java.util.List;
 
 public class SnsBlackDetailUI
   extends SnsTagDetailUI
-  implements f, m.b
+  implements f, n.b
 {
-  public final void bIt()
+  private static List<String> cuQ()
   {
-    y.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onCreate");
-    g.DQ();
-    ((j)g.r(j.class)).Fw().a(this);
+    AppMethodBeat.i(38744);
+    new LinkedList();
+    List localList = t.aac();
+    AppMethodBeat.o(38744);
+    return localList;
   }
   
-  protected final void bIu()
+  protected final void bMd()
   {
-    y.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onDestroy");
-    g.DQ();
-    if (g.DN().Dc())
-    {
-      g.DQ();
-      ((j)g.r(j.class)).Fw().b(this);
-    }
-  }
-  
-  protected final void bIv() {}
-  
-  protected final List<String> bIw()
-  {
-    Object localObject = new LinkedList();
-    if (this.oqH == 4L)
-    {
-      new LinkedList();
-      localObject = s.Ha();
-    }
-    return localObject;
-  }
-  
-  protected final void beJ()
-  {
-    if (((this.pdN + " " + bk.c(this.iSZ, ",")).equals(this.bIW)) && (this.oqH != 0L))
+    AppMethodBeat.i(38743);
+    if (((this.rWA + " " + bo.d(this.lbK, ",")).equals(this.cqq)) && (this.rfr != 0L))
     {
       finish();
+      AppMethodBeat.o(38743);
       return;
     }
-    if (af.bDL().u(this.oqH, this.pdN))
+    if (ag.cpl().v(this.rfr, this.rWA))
     {
-      h.b(this, getString(i.j.sns_tag_exist, new Object[] { this.pdN }), getString(i.j.app_tip), true);
+      h.b(this, getString(2131303977, new Object[] { this.rWA }), getString(2131297087), true);
+      AppMethodBeat.o(38743);
       return;
     }
-    Object localObject2 = bIw();
+    Object localObject2 = cuR();
     LinkedList localLinkedList = new LinkedList();
     Object localObject1 = new LinkedList();
     Iterator localIterator = ((List)localObject2).iterator();
@@ -78,11 +58,11 @@ public class SnsBlackDetailUI
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      if (!this.iSZ.contains(str)) {
+      if (!this.lbK.contains(str)) {
         localLinkedList.add(str);
       }
     }
-    localIterator = this.iSZ.iterator();
+    localIterator = this.lbK.iterator();
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
@@ -92,78 +72,133 @@ public class SnsBlackDetailUI
     }
     localObject2 = localLinkedList.iterator();
     while (((Iterator)localObject2).hasNext()) {
-      s.s((String)((Iterator)localObject2).next(), false);
+      t.w((String)((Iterator)localObject2).next(), false);
     }
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      s.s((String)((Iterator)localObject1).next(), true);
+      t.w((String)((Iterator)localObject1).next(), true);
     }
-    com.tencent.mm.plugin.sns.c.a.eUS.tk();
+    com.tencent.mm.plugin.sns.c.a.gmP.BO();
     finish();
+    AppMethodBeat.o(38743);
   }
   
-  protected final void cG(List<String> paramList)
+  public final void cuN()
   {
-    bd localbd = af.bDt();
-    String str1 = q.Gj();
+    AppMethodBeat.i(38739);
+    ab.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onCreate");
+    g.RM();
+    ((j)g.E(j.class)).YA().a(this);
+    AppMethodBeat.o(38739);
+  }
+  
+  protected final void cuO()
+  {
+    AppMethodBeat.i(38740);
+    ab.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onDestroy");
+    g.RM();
+    if (g.RJ().QU())
+    {
+      g.RM();
+      ((j)g.E(j.class)).YA().b(this);
+    }
+    AppMethodBeat.o(38740);
+  }
+  
+  protected final void cuP() {}
+  
+  protected final List<String> cuR()
+  {
+    AppMethodBeat.i(38745);
+    Object localObject = new LinkedList();
+    if (this.rfr == 4L)
+    {
+      localObject = cuQ();
+      AppMethodBeat.o(38745);
+      return localObject;
+    }
+    AppMethodBeat.o(38745);
+    return localObject;
+  }
+  
+  protected final void dm(List<String> paramList)
+  {
+    AppMethodBeat.i(38747);
+    bd localbd = ag.coT();
+    String str1 = r.Zn();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str2 = (String)paramList.next();
-      if ((!this.iSZ.contains(str2)) && (com.tencent.mm.n.a.gR(localbd.abl(str2).field_type)) && (!str1.equals(str2))) {
-        this.iSZ.add(str2);
+      if ((!this.lbK.contains(str2)) && (com.tencent.mm.n.a.je(localbd.arw(str2).field_type)) && (!str1.equals(str2))) {
+        this.lbK.add(str2);
       }
     }
-    if (this.dnv != null) {
-      this.dnv.bJ(this.iSZ);
+    if (this.eeU != null) {
+      this.eeU.cg(this.lbK);
     }
     updateTitle();
+    AppMethodBeat.o(38747);
   }
   
-  protected final void eR(String paramString)
+  protected final void lc(String paramString)
   {
-    super.eR(paramString);
+    AppMethodBeat.i(38746);
+    super.lc(paramString);
+    AppMethodBeat.o(38746);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(38741);
     super.onCreate(paramBundle);
-    y.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI onCreate");
+    ab.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI onCreate");
+    AppMethodBeat.o(38741);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(38742);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
-    g.DQ();
-    g.DO().dJT.b(290, this);
-    g.DQ();
-    g.DO().dJT.b(291, this);
-    g.DQ();
-    g.DO().dJT.b(292, this);
-    g.DQ();
-    g.DO().dJT.b(293, this);
-    g.DQ();
-    if (g.DN().Dc())
+    g.RM();
+    g.RK().eHt.b(290, this);
+    g.RM();
+    g.RK().eHt.b(291, this);
+    g.RM();
+    g.RK().eHt.b(292, this);
+    g.RM();
+    g.RK().eHt.b(293, this);
+    g.RM();
+    if (g.RJ().QU())
     {
-      g.DQ();
-      ((j)g.r(j.class)).Fw().b(this);
+      g.RM();
+      ((j)g.E(j.class)).YA().b(this);
     }
     super.onDestroy();
+    AppMethodBeat.o(38742);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    y.i("MicroMsg.SnsBlackDetailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.i(38748);
+    ab.i("MicroMsg.SnsBlackDetailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
+    AppMethodBeat.o(38748);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsBlackDetailUI
  * JD-Core Version:    0.7.0.1
  */

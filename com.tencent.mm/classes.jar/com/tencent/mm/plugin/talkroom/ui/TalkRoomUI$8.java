@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.talkroom.ui;
 
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ay.a;
 
 final class TalkRoomUI$8
-  implements au.a
+  implements ay.a
 {
   TalkRoomUI$8(TalkRoomUI paramTalkRoomUI) {}
   
-  public final void ug() {}
+  public final void Es() {}
 }
 
 

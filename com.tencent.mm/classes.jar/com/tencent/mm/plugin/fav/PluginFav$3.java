@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fav;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fav.b.d.a;
 
@@ -11,7 +12,9 @@ final class PluginFav$3
   
   public final void run()
   {
-    g.Dk().a(this.jYm, 0);
+    AppMethodBeat.i(5284);
+    g.Rc().a(this.msG, 0);
+    AppMethodBeat.o(5284);
   }
 }
 

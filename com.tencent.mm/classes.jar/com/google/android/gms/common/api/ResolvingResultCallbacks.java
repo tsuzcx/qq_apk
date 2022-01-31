@@ -2,26 +2,28 @@ package com.google.android.gms.common.api;
 
 import android.app.Activity;
 import android.content.IntentSender.SendIntentException;
-import com.google.android.gms.common.internal.zzac;
+import com.google.android.gms.common.annotation.KeepForSdk;
+import com.google.android.gms.common.internal.Preconditions;
 
 public abstract class ResolvingResultCallbacks<R extends Result>
   extends ResultCallbacks<R>
 {
   private final Activity mActivity;
-  private final int zzazu;
+  private final int zzdn;
   
   protected ResolvingResultCallbacks(Activity paramActivity, int paramInt)
   {
-    this.mActivity = ((Activity)zzac.zzb(paramActivity, "Activity must not be null"));
-    this.zzazu = paramInt;
+    this.mActivity = ((Activity)Preconditions.checkNotNull(paramActivity, "Activity must not be null"));
+    this.zzdn = paramInt;
   }
   
+  @KeepForSdk
   public final void onFailure(Status paramStatus)
   {
     if (paramStatus.hasResolution()) {
       try
       {
-        paramStatus.startResolutionForResult(this.mActivity, this.zzazu);
+        paramStatus.startResolutionForResult(this.mActivity, this.zzdn);
         return;
       }
       catch (IntentSender.SendIntentException paramStatus)

@@ -1,43 +1,25 @@
 package android.support.design.widget;
 
-import android.support.v4.view.q;
-import android.view.View;
+import android.graphics.PorterDuff.Mode;
 
 final class p
 {
-  private final View mView;
-  int mg;
-  private int mh;
-  int mi;
-  int mj;
-  
-  public p(View paramView)
+  static PorterDuff.Mode R(int paramInt)
   {
-    this.mView = paramView;
-  }
-  
-  public final void bh()
-  {
-    this.mg = this.mView.getTop();
-    this.mh = this.mView.getLeft();
-    bi();
-  }
-  
-  final void bi()
-  {
-    q.p(this.mView, this.mi - (this.mView.getTop() - this.mg));
-    q.q(this.mView, this.mj - (this.mView.getLeft() - this.mh));
-  }
-  
-  public final boolean q(int paramInt)
-  {
-    if (this.mi != paramInt)
+    switch (paramInt)
     {
-      this.mi = paramInt;
-      bi();
-      return true;
+    default: 
+      return null;
+    case 3: 
+      return PorterDuff.Mode.SRC_OVER;
+    case 5: 
+      return PorterDuff.Mode.SRC_IN;
+    case 9: 
+      return PorterDuff.Mode.SRC_ATOP;
+    case 14: 
+      return PorterDuff.Mode.MULTIPLY;
     }
-    return false;
+    return PorterDuff.Mode.SCREEN;
   }
 }
 

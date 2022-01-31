@@ -3,6 +3,7 @@ package com.tencent.ttpic.ar.sensor.orientationProvider;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,27 +12,38 @@ import java.util.Queue;
 public class SimpleOrientationSensorProvider
   extends OrientationProvider
 {
-  private int ANGLE_QUEUE_MAX_SIZE = 5;
-  private Queue<Float> azimuthQueue = new LinkedList();
-  private float[] geomagnetic = new float[3];
-  private float[] gravity = new float[3];
+  private int ANGLE_QUEUE_MAX_SIZE;
+  private Queue<Float> azimuthQueue;
+  private float[] geomagnetic;
+  private float[] gravity;
   private float lastAzimuth;
   private float lastPitch;
   private float lastRoll;
-  private Queue<Float> pitchQueue = new LinkedList();
-  private Queue<Float> rollQueue = new LinkedList();
-  private float[] rotationMat = new float[9];
-  private float[] values = new float[3];
+  private Queue<Float> pitchQueue;
+  private Queue<Float> rollQueue;
+  private float[] rotationMat;
+  private float[] values;
   
   public SimpleOrientationSensorProvider(SensorManager paramSensorManager)
   {
     super(paramSensorManager);
+    AppMethodBeat.i(81680);
+    this.ANGLE_QUEUE_MAX_SIZE = 5;
+    this.azimuthQueue = new LinkedList();
+    this.pitchQueue = new LinkedList();
+    this.rollQueue = new LinkedList();
+    this.values = new float[3];
+    this.gravity = new float[3];
+    this.rotationMat = new float[9];
+    this.geomagnetic = new float[3];
     this.sensorList.add(paramSensorManager.getDefaultSensor(2));
     this.sensorList.add(paramSensorManager.getDefaultSensor(1));
+    AppMethodBeat.o(81680);
   }
   
   public void getEulerAngles(float[] paramArrayOfFloat)
   {
+    AppMethodBeat.i(81682);
     for (;;)
     {
       float f1;
@@ -42,10 +54,10 @@ public class SimpleOrientationSensorProvider
         f2 = (float)Math.toDegrees(this.values[0]);
         f1 = f2;
         if (f2 >= 0.0F) {
-          break label534;
+          break label549;
         }
         f1 = f2 + 360.0F;
-        break label534;
+        break label549;
         f1 = (float)Math.toDegrees(this.values[1]);
         float f3 = -(float)Math.toDegrees(this.values[2]);
         if (Math.abs(f2 - this.lastAzimuth) > 20.0F) {
@@ -101,8 +113,9 @@ public class SimpleOrientationSensorProvider
       paramArrayOfFloat[0] /= this.azimuthQueue.size();
       paramArrayOfFloat[1] /= this.pitchQueue.size();
       paramArrayOfFloat[2] /= this.rollQueue.size();
+      AppMethodBeat.o(81682);
       return;
-      label534:
+      label549:
       float f2 = f1;
       if (180.0F <= f1)
       {
@@ -116,12 +129,14 @@ public class SimpleOrientationSensorProvider
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
+    AppMethodBeat.i(81681);
     if (paramSensorEvent.sensor.getType() == 2) {
       this.geomagnetic = paramSensorEvent.values;
     }
     if (paramSensorEvent.sensor.getType() == 1) {
       this.gravity = paramSensorEvent.values;
     }
+    AppMethodBeat.o(81681);
   }
 }
 

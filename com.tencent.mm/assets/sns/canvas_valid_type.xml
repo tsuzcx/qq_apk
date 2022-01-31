@@ -29,6 +29,7 @@
 		<subtype val="9" ios="1" android="1" desc="跳地理位置" />
 		<subtype val="10" ios="1" android="1" desc="打电话" />
 		<subtype val="11" ios="1" android="1" desc="品牌心愿单" />
+		<subtype val="12" ios="1" android="1" desc="客服会话" />
 	</componenttype>
 	<componenttype val="41" ios="1" android="1" desc="纯图类型">
 		<subtype val="0" ios="1" android="1" desc="纯图default类型" />
@@ -65,6 +66,9 @@
 	<componenttype val="104" android="1"  ios="1" desc="FrameLayout" >
         <subtype val="0" ios="1" android="1" desc="" />
 	</componenttype>
+	<componenttype val="105" android="1" ios="1" desc="float layout">
+		<subtype val="0" ios="1" android="1" desc=""/>
+	</componenttype>
 	<componenttype val="121" ios="1" android="1" desc="LBS组件类型">
 		<subtype val="0" ios="1" android="1" desc="LBS组件default类型" />
 	</componenttype>
@@ -80,5 +84,8 @@
 	<componenttype android="1" desc="new h5" ios="1" val="82">
 		<subtype val="0" ios="1" android="1" desc="default类型"/>
 		<subtype val="1" ios="1" android="1" desc="投票类型"/>
+	</componenttype>
+	<componenttype val="133" ios="1" android="1" desc="新的全景图组件">
+		<subtype val="0" ios="1" android="1" desc="新的全景图组件" />
 	</componenttype>
 </canvasvalidtype>

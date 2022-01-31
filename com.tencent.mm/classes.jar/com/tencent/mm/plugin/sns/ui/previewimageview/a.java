@@ -9,32 +9,32 @@ public abstract class a
   extends BaseAdapter
   implements d
 {
-  private int ppA = 0;
-  HashMap<Object, Integer> ppB = new HashMap();
+  private int sks = 0;
+  HashMap<Object, Integer> skt = new HashMap();
   
-  protected final void bF(Object paramObject)
+  protected final void cj(Object paramObject)
   {
-    HashMap localHashMap = this.ppB;
-    int i = this.ppA;
-    this.ppA = (i + 1);
+    HashMap localHashMap = this.skt;
+    int i = this.sks;
+    this.sks = (i + 1);
     localHashMap.put(paramObject, Integer.valueOf(i));
   }
   
-  protected final void cI(List<?> paramList)
+  protected final void dt(List<?> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      bF(paramList.next());
+      cj(paramList.next());
     }
   }
   
   public final long getItemId(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.ppB.size())) {
+    if ((paramInt < 0) || (paramInt >= this.skt.size())) {
       return -1L;
     }
     Object localObject = getItem(paramInt);
-    return ((Integer)this.ppB.get(localObject)).intValue();
+    return ((Integer)this.skt.get(localObject)).intValue();
   }
   
   public final boolean hasStableIds()

@@ -1,83 +1,99 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.widget.TextView;
-import com.tencent.mm.plugin.appbrand.launching.ActivityStarterIpcDelegate;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.statusbar.DrawStatusBarActivity;
+import com.tencent.mm.ui.base.a;
 
-@com.tencent.mm.ui.base.a(19)
+@a(19)
 public final class AppBrand404PageUI
-  extends DrawStatusBarActivity
+  extends MMActivity
 {
-  public static void a(int paramInt, ActivityStarterIpcDelegate paramActivityStarterIpcDelegate)
+  public static void a(ActivityStarterIpcDelegate paramActivityStarterIpcDelegate)
   {
-    a(ae.getContext().getString(paramInt), paramActivityStarterIpcDelegate);
+    AppMethodBeat.i(132886);
+    a(ah.getContext().getString(2131296728), paramActivityStarterIpcDelegate);
+    AppMethodBeat.o(132886);
   }
   
   private static void a(String paramString, ActivityStarterIpcDelegate paramActivityStarterIpcDelegate)
   {
-    paramString = new Intent(ae.getContext(), AppBrand404PageUI.class).putExtra("key_wording", paramString).putExtra("key_icon_url", null);
+    AppMethodBeat.i(132884);
+    paramString = new Intent(ah.getContext(), AppBrand404PageUI.class).putExtra("key_wording", paramString).putExtra("key_icon_url", null);
     if (paramActivityStarterIpcDelegate != null)
     {
       if (paramString != null)
       {
         Bundle localBundle = new Bundle(1);
         localBundle.putParcelable("intent", paramString);
-        paramActivityStarterIpcDelegate.gIT.send(4660, localBundle);
+        paramActivityStarterIpcDelegate.bES.send(4660, localBundle);
       }
+      AppMethodBeat.o(132884);
       return;
     }
-    ai.d(new AppBrand404PageUI.1(paramString));
+    al.d(new AppBrand404PageUI.1(paramString));
+    AppMethodBeat.o(132884);
   }
   
   public static void show(int paramInt)
   {
-    a(ae.getContext().getString(paramInt), null);
+    AppMethodBeat.i(132885);
+    a(ah.getContext().getString(paramInt), null);
+    AppMethodBeat.o(132885);
   }
   
   public final void finish()
   {
+    AppMethodBeat.i(132888);
     super.finish();
+    AppMethodBeat.o(132888);
   }
   
-  protected final int getLayoutId()
+  public final int getLayoutId()
   {
-    return y.h.app_brand_404_page_ui;
+    return 2130968654;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(132887);
     super.onCreate(paramBundle);
-    com.tencent.mm.ui.statusbar.a.d(this.mController.contentView, getStatusBarColor(), false);
-    setMMTitle(y.j.app_brand_error);
+    setMMTitle(2131296631);
     setBackBtn(new AppBrand404PageUI.2(this));
-    paramBundle = (TextView)findViewById(y.g.app_brand_error_page_reason);
+    paramBundle = (TextView)findViewById(2131821130);
     String str = getIntent().getStringExtra("key_wording");
-    bk.bl(str);
+    bo.isNullOrNil(str);
     if (paramBundle != null) {
       paramBundle.setText(str);
     }
+    AppMethodBeat.o(132887);
   }
   
-  protected final void onDestroy()
+  public final void onDestroy()
   {
+    AppMethodBeat.i(132889);
     super.onDestroy();
+    AppMethodBeat.o(132889);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrand404PageUI
  * JD-Core Version:    0.7.0.1
  */

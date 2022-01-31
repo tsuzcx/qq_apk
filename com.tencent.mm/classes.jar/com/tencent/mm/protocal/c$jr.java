@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-final class c$jr
+public final class c$jr
   extends c.g
 {
-  c$jr()
+  public c$jr()
   {
-    super("tapSearchWAWidgetView", "tapSearchWAWidgetView", 10000, true);
+    super("showNavigationBarLoading", "showNavigationBarLoading", 197, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.c.jr
  * JD-Core Version:    0.7.0.1
  */

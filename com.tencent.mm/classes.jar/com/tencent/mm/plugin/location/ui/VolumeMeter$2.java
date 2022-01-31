@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.location.ui;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class VolumeMeter$2
   implements Runnable
@@ -9,8 +10,10 @@ final class VolumeMeter$2
   
   public final void run()
   {
-    VolumeMeter.a(this.lHN, new ah());
-    this.lHN.beF();
+    AppMethodBeat.i(113578);
+    VolumeMeter.a(this.oeZ, new ak());
+    this.oeZ.bLZ();
+    AppMethodBeat.o(113578);
   }
 }
 

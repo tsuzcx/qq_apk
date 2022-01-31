@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LocationWidget$1
   implements View.OnClickListener
@@ -10,14 +11,16 @@ final class LocationWidget$1
   
   public final void onClick(View paramView)
   {
-    if (LocationWidget.a(this.oQA) == this.val$index + 1) {
-      LocationWidget.b(this.oQA);
+    AppMethodBeat.i(38285);
+    if (LocationWidget.a(this.rIm) == this.val$index + 1) {
+      LocationWidget.b(this.rIm);
     }
     for (;;)
     {
-      LocationWidget.c(this.oQA);
+      LocationWidget.c(this.rIm);
+      AppMethodBeat.o(38285);
       return;
-      LocationWidget.a(this.oQA, this.val$index + 1);
+      LocationWidget.a(this.rIm, this.val$index + 1);
     }
   }
 }

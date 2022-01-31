@@ -1,20 +1,21 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import com.tencent.mm.ui.base.MMViewPager.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class ImageGalleryUI$15
-  implements MMViewPager.e
+  implements ap.a
 {
   ImageGalleryUI$15(ImageGalleryUI paramImageGalleryUI) {}
   
-  public final void aBS()
+  public final boolean onTimerExpired()
   {
-    ImageGalleryUI.h(this.vww);
-  }
-  
-  public final void aXV()
-  {
-    ImageGalleryUI.i(this.vww);
+    AppMethodBeat.i(153874);
+    if (ImageGalleryUI.M(this.zME)) {
+      this.zME.dKu();
+    }
+    AppMethodBeat.o(153874);
+    return false;
   }
 }
 

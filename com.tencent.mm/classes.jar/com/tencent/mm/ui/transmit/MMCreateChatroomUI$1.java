@@ -2,8 +2,9 @@ package com.tencent.mm.ui.transmit;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.ui.k;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMCreateChatroomUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -12,17 +13,19 @@ final class MMCreateChatroomUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (!MMCreateChatroomUI.a(this.wgf))
+    AppMethodBeat.i(35040);
+    if (!MMCreateChatroomUI.a(this.AyW))
     {
-      MMCreateChatroomUI.a(this.wgf, true);
-      MMCreateChatroomUI.b(this.wgf);
-      if (MMCreateChatroomUI.c(this.wgf) == 3)
+      MMCreateChatroomUI.a(this.AyW, true);
+      MMCreateChatroomUI.b(this.AyW);
+      if (MMCreateChatroomUI.c(this.AyW) == 3)
       {
-        MMCreateChatroomUI.d(this.wgf);
-        k.go(true);
+        MMCreateChatroomUI.d(this.AyW);
+        k.hR(true);
       }
     }
-    y.i("MicroMsg.MMCreateChatroomUI", "Create the chatroom");
+    ab.i("MicroMsg.MMCreateChatroomUI", "Create the chatroom");
+    AppMethodBeat.o(35040);
     return true;
   }
 }

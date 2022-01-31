@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<FrameLayout android:id="@id/b3_" android:background="@color/a6q" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/hu" android:duplicateParentState="true" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="@dimen/wc" android:layout_marginBottom="@dimen/wc" />
-    <android.support.design.internal.BaselineLayout android:layout_gravity="bottom|center" android:paddingBottom="10.0dip" android:duplicateParentState="true" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/we" android:id="@id/b2c" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        <TextView android:textSize="@dimen/w8" android:id="@id/b2d" android:visibility="invisible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-    </android.support.design.internal.BaselineLayout>
-</merge>
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/rf" android:gravity="center" android:id="@id/b3a" android:layout_width="fill_parent" android:layout_height="56.0dip" />
+</FrameLayout>

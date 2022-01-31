@@ -2,7 +2,8 @@ package com.tencent.mm.ui.conversation;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class BaseConversationUI$6$1
   implements Animation.AnimationListener
@@ -11,19 +12,23 @@ final class BaseConversationUI$6$1
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    BaseConversationUI.access$802(this.vPj.vPi, false);
-    y.i("MicroMsg.BaseConversationUI", "klem animationEnd");
-    BaseConversationUI.access$1000(this.vPj.vPi);
+    AppMethodBeat.i(34052);
+    BaseConversationUI.access$802(this.AgU.AgT, false);
+    ab.i("MicroMsg.BaseConversationUI", "klem animationEnd");
+    BaseConversationUI.access$1000(this.AgU.AgT);
+    AppMethodBeat.o(34052);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    y.i("MicroMsg.BaseConversationUI", "klem onAnimationStart onDrawed->onAnimationStart:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.vPj.start) });
-    BaseConversationUI.access$802(this.vPj.vPi, true);
-    BaseConversationUI.access$900(this.vPj.vPi);
-    this.vPj.vPi.onSettle(false, 0);
+    AppMethodBeat.i(34051);
+    ab.i("MicroMsg.BaseConversationUI", "klem onAnimationStart onDrawed->onAnimationStart:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.AgU.start) });
+    BaseConversationUI.access$802(this.AgU.AgT, true);
+    BaseConversationUI.access$900(this.AgU.AgT);
+    this.AgU.AgT.onSettle(false, 0);
+    AppMethodBeat.o(34051);
   }
 }
 

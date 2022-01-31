@@ -2,92 +2,119 @@ package com.tencent.mm.plugin.music.model;
 
 import android.content.ClipboardManager;
 import android.content.Context;
-import com.tencent.mm.cf.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.p;
-import com.tencent.mm.plugin.music.e.f;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.q;
 import com.tencent.mm.plugin.music.e.k;
 import com.tencent.mm.plugin.music.e.m;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.HashMap;
 
 public class e
-  implements ar
+  implements at
 {
-  private c fAU = new e.3(this);
-  private c<com.tencent.mm.h.a.d> kzB = new e.4(this);
-  private com.tencent.mm.plugin.music.model.e.d mzA;
-  private c mzB = new f();
-  private com.tencent.mm.plugin.music.model.e.b mzy;
-  private ClipboardManager mzz;
+  private c gSJ;
+  private c<com.tencent.mm.g.a.d> mVr;
+  private com.tencent.mm.plugin.music.model.e.b oZE;
+  private ClipboardManager oZF;
+  private com.tencent.mm.plugin.music.model.e.d oZG;
+  private c oZH;
   
-  private static e bnp()
+  public e()
   {
-    return (e)p.B(e.class);
+    AppMethodBeat.i(104898);
+    this.oZH = new com.tencent.mm.plugin.music.e.f();
+    this.gSJ = new e.3(this);
+    this.mVr = new e.4(this);
+    AppMethodBeat.o(104898);
   }
   
-  public static com.tencent.mm.plugin.music.model.e.b bnq()
+  private static e bVL()
   {
-    if (bnp().mzy == null) {
-      bnp().mzy = new com.tencent.mm.plugin.music.model.e.b(g.DP().dKu);
+    AppMethodBeat.i(104899);
+    e locale = (e)q.S(e.class);
+    AppMethodBeat.o(104899);
+    return locale;
+  }
+  
+  public static com.tencent.mm.plugin.music.model.e.b bVM()
+  {
+    AppMethodBeat.i(104901);
+    if (bVL().oZE == null) {
+      bVL().oZE = new com.tencent.mm.plugin.music.model.e.b(g.RL().eHS);
     }
-    return bnp().mzy;
+    com.tencent.mm.plugin.music.model.e.b localb = bVL().oZE;
+    AppMethodBeat.o(104901);
+    return localb;
   }
   
-  public static ClipboardManager bnr()
+  public static ClipboardManager bVN()
   {
-    if (bnp().mzz == null) {
-      bnp().mzz = ((ClipboardManager)ae.getContext().getSystemService("clipboard"));
+    AppMethodBeat.i(104902);
+    if (bVL().oZF == null) {
+      bVL().oZF = ((ClipboardManager)ah.getContext().getSystemService("clipboard"));
     }
-    return bnp().mzz;
+    ClipboardManager localClipboardManager = bVL().oZF;
+    AppMethodBeat.o(104902);
+    return localClipboardManager;
   }
   
-  public static com.tencent.mm.plugin.music.model.e.d bns()
+  public static com.tencent.mm.plugin.music.model.e.d bVO()
   {
-    if (bnp().mzA == null) {
-      bnp().mzA = new com.tencent.mm.plugin.music.model.e.d(g.DP().dKu);
+    AppMethodBeat.i(104903);
+    if (bVL().oZG == null) {
+      bVL().oZG = new com.tencent.mm.plugin.music.model.e.d(g.RL().eHS);
     }
-    return bnp().mzA;
+    com.tencent.mm.plugin.music.model.e.d locald = bVL().oZG;
+    AppMethodBeat.o(104903);
+    return locald;
   }
   
-  public final void bh(boolean paramBoolean)
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    this.kzB.cqo();
-    this.mzB.cqo();
-    this.fAU.cqo();
-    m localm = new m();
-    k.a(localm);
-    com.tencent.mm.plugin.music.f.c.b.a(com.tencent.mm.plugin.music.e.e.class, localm);
-    com.tencent.mm.plugin.music.f.c.b.a(com.tencent.mm.plugin.music.e.d.class, new com.tencent.mm.plugin.music.model.d.e());
-  }
-  
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
-  {
-    k.bnm();
-    com.tencent.mm.plugin.music.f.c.b.s(com.tencent.mm.plugin.music.e.e.class);
-    this.mzy = null;
-    this.mzz = null;
-    this.mzA = null;
-    a.udP.d(this.mzB);
-    this.mzB.dead();
-    this.fAU.dead();
-    this.kzB.dead();
-  }
-  
-  public final HashMap<Integer, h.d> xe()
-  {
+    AppMethodBeat.i(104900);
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf("Music".hashCode()), new e.1(this));
     localHashMap.put(Integer.valueOf("PieceMusicInfo".hashCode()), new e.2(this));
+    AppMethodBeat.o(104900);
     return localHashMap;
   }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(104904);
+    this.mVr.alive();
+    this.oZH.alive();
+    this.gSJ.alive();
+    m localm = new m();
+    k.a(localm);
+    com.tencent.mm.plugin.music.f.c.b.a(com.tencent.mm.plugin.music.e.e.class, localm);
+    com.tencent.mm.plugin.music.f.c.b.a(com.tencent.mm.plugin.music.e.d.class, new com.tencent.mm.plugin.music.model.d.f());
+    AppMethodBeat.o(104904);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(104905);
+    k.bVI();
+    com.tencent.mm.plugin.music.f.c.b.F(com.tencent.mm.plugin.music.e.e.class);
+    this.oZE = null;
+    this.oZF = null;
+    this.oZG = null;
+    a.ymk.d(this.oZH);
+    this.oZH.dead();
+    this.gSJ.dead();
+    this.mVr.dead();
+    AppMethodBeat.o(104905);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

@@ -1,22 +1,23 @@
 package com.tencent.mm.ui.transmit;
 
 import android.content.Intent;
-import com.tencent.mm.pluginsdk.ui.applet.q.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.c.a.b;
 
 final class SelectConversationUI$18
-  implements q.a
+  implements c.a.b
 {
-  SelectConversationUI$18(SelectConversationUI paramSelectConversationUI, Intent paramIntent) {}
+  SelectConversationUI$18(SelectConversationUI paramSelectConversationUI) {}
   
-  public final void a(boolean paramBoolean, String paramString, int paramInt)
+  public final void byw()
   {
-    this.whw.XM();
-    if (paramBoolean)
-    {
-      this.val$intent.putExtra("custom_send_text", paramString);
-      SelectConversationUI.a(this.whw, this.val$intent);
-      this.whw.finish();
-    }
+    AppMethodBeat.i(35141);
+    Intent localIntent = new Intent();
+    localIntent.setClassName(this.AAp.getContext(), "com.tencent.mm.ui.chatting.AppAttachDownloadUI");
+    localIntent.putExtra("app_msg_id", SelectConversationUI.i(this.AAp));
+    localIntent.putExtra("app_show_share", false);
+    this.AAp.startActivity(localIntent);
+    AppMethodBeat.o(35141);
   }
 }
 

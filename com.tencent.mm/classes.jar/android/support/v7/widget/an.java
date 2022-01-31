@@ -1,202 +1,73 @@
 package android.support.v7.widget;
 
 import android.content.res.ColorStateList;
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
-import android.graphics.LinearGradient;
+import android.graphics.Outline;
 import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.Path.FillType;
-import android.graphics.RadialGradient;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
 import android.graphics.drawable.Drawable;
-import android.support.v7.b.a.b;
-import android.support.v7.b.a.c;
 
 final class an
   extends Drawable
 {
-  static an.a aiF;
-  private static final double jo = Math.cos(Math.toRadians(45.0D));
-  ColorStateList aiD;
-  final int aiE;
-  private final RectF aiG;
-  private final int jB;
-  private boolean jC = true;
-  private boolean jD = false;
-  private Paint jp;
-  private Paint jq;
-  float js;
-  private Path jt;
-  float jv;
-  private float jw;
-  float jx;
-  boolean jy = true;
-  private final int jz;
-  private Paint mPaint;
+  float akN;
+  private final RectF akO;
+  private final Rect akP;
+  float akQ;
+  private boolean akR = false;
+  private boolean akS = true;
+  ColorStateList akT;
+  private final Paint mPaint;
+  private PorterDuffColorFilter nN;
+  private ColorStateList oL;
+  private PorterDuff.Mode oM = PorterDuff.Mode.SRC_IN;
   
-  an(Resources paramResources, ColorStateList paramColorStateList, float paramFloat1, float paramFloat2, float paramFloat3)
+  an(ColorStateList paramColorStateList, float paramFloat)
   {
-    this.jz = paramResources.getColor(a.b.cardview_shadow_start_color);
-    this.jB = paramResources.getColor(a.b.cardview_shadow_end_color);
-    this.aiE = paramResources.getDimensionPixelSize(a.c.cardview_compat_inset_shadow);
+    this.akN = paramFloat;
     this.mPaint = new Paint(5);
     e(paramColorStateList);
-    this.jp = new Paint(5);
-    this.jp.setStyle(Paint.Style.FILL);
-    this.js = ((int)(0.5F + paramFloat1));
-    this.aiG = new RectF();
-    this.jq = new Paint(this.jp);
-    this.jq.setAntiAlias(false);
-    p(paramFloat2, paramFloat3);
+    this.akO = new RectF();
+    this.akP = new Rect();
   }
   
-  static float c(float paramFloat1, float paramFloat2, boolean paramBoolean)
+  private PorterDuffColorFilter b(ColorStateList paramColorStateList, PorterDuff.Mode paramMode)
   {
-    if (paramBoolean) {
-      return (float)(1.5F * paramFloat1 + (1.0D - jo) * paramFloat2);
+    if ((paramColorStateList == null) || (paramMode == null)) {
+      return null;
     }
-    return 1.5F * paramFloat1;
+    return new PorterDuffColorFilter(paramColorStateList.getColorForState(getState(), 0), paramMode);
   }
   
-  static float d(float paramFloat1, float paramFloat2, boolean paramBoolean)
+  final void a(float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
-    float f = paramFloat1;
-    if (paramBoolean) {
-      f = (float)(paramFloat1 + (1.0D - jo) * paramFloat2);
+    if ((paramFloat == this.akQ) && (this.akR == paramBoolean1) && (this.akS == paramBoolean2)) {
+      return;
     }
-    return f;
-  }
-  
-  private static int l(float paramFloat)
-  {
-    int j = (int)(0.5F + paramFloat);
-    int i = j;
-    if (j % 2 == 1) {
-      i = j - 1;
-    }
-    return i;
-  }
-  
-  final void ah(boolean paramBoolean)
-  {
-    this.jC = paramBoolean;
+    this.akQ = paramFloat;
+    this.akR = paramBoolean1;
+    this.akS = paramBoolean2;
+    h(null);
     invalidateSelf();
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    int j = 1;
-    float f1;
-    float f2;
-    float f3;
-    int i;
-    int k;
-    float f4;
-    if (this.jy)
-    {
-      Object localObject1 = getBounds();
-      f1 = this.jv * 1.5F;
-      this.aiG.set(((Rect)localObject1).left + this.jv, ((Rect)localObject1).top + f1, ((Rect)localObject1).right - this.jv, ((Rect)localObject1).bottom - f1);
-      localObject1 = new RectF(-this.js, -this.js, this.js, this.js);
-      Object localObject2 = new RectF((RectF)localObject1);
-      ((RectF)localObject2).inset(-this.jw, -this.jw);
-      if (this.jt == null)
-      {
-        this.jt = new Path();
-        this.jt.setFillType(Path.FillType.EVEN_ODD);
-        this.jt.moveTo(-this.js, 0.0F);
-        this.jt.rLineTo(-this.jw, 0.0F);
-        this.jt.arcTo((RectF)localObject2, 180.0F, 90.0F, false);
-        this.jt.arcTo((RectF)localObject1, 270.0F, -90.0F, false);
-        this.jt.close();
-        f1 = this.js / (this.js + this.jw);
-        localObject1 = this.jp;
-        f2 = this.js;
-        f3 = this.jw;
-        i = this.jz;
-        k = this.jz;
-        int m = this.jB;
-        localObject2 = Shader.TileMode.CLAMP;
-        ((Paint)localObject1).setShader(new RadialGradient(0.0F, 0.0F, f2 + f3, new int[] { i, k, m }, new float[] { 0.0F, f1, 1.0F }, (Shader.TileMode)localObject2));
-        localObject1 = this.jq;
-        f1 = -this.js;
-        f2 = this.jw;
-        f3 = -this.js;
-        f4 = this.jw;
-        i = this.jz;
-        k = this.jz;
-        m = this.jB;
-        localObject2 = Shader.TileMode.CLAMP;
-        ((Paint)localObject1).setShader(new LinearGradient(0.0F, f1 + f2, 0.0F, f3 - f4, new int[] { i, k, m }, new float[] { 0.0F, 0.5F, 1.0F }, (Shader.TileMode)localObject2));
-        this.jq.setAntiAlias(false);
-        this.jy = false;
-      }
+    Paint localPaint = this.mPaint;
+    if ((this.nN != null) && (localPaint.getColorFilter() == null)) {
+      localPaint.setColorFilter(this.nN);
     }
-    else
+    for (int i = 1;; i = 0)
     {
-      paramCanvas.translate(0.0F, this.jx / 2.0F);
-      f1 = -this.js - this.jw;
-      f2 = this.js + this.aiE + this.jx / 2.0F;
-      if (this.aiG.width() - 2.0F * f2 <= 0.0F) {
-        break label903;
-      }
-      i = 1;
-      label504:
-      if (this.aiG.height() - 2.0F * f2 <= 0.0F) {
-        break label909;
-      }
-    }
-    for (;;)
-    {
-      k = paramCanvas.save();
-      paramCanvas.translate(this.aiG.left + f2, this.aiG.top + f2);
-      paramCanvas.drawPath(this.jt, this.jp);
+      paramCanvas.drawRoundRect(this.akO, this.akN, this.akN, localPaint);
       if (i != 0) {
-        paramCanvas.drawRect(0.0F, f1, this.aiG.width() - 2.0F * f2, -this.js, this.jq);
+        localPaint.setColorFilter(null);
       }
-      paramCanvas.restoreToCount(k);
-      k = paramCanvas.save();
-      paramCanvas.translate(this.aiG.right - f2, this.aiG.bottom - f2);
-      paramCanvas.rotate(180.0F);
-      paramCanvas.drawPath(this.jt, this.jp);
-      if (i != 0)
-      {
-        f3 = this.aiG.width();
-        f4 = -this.js;
-        paramCanvas.drawRect(0.0F, f1, f3 - 2.0F * f2, this.jw + f4, this.jq);
-      }
-      paramCanvas.restoreToCount(k);
-      i = paramCanvas.save();
-      paramCanvas.translate(this.aiG.left + f2, this.aiG.bottom - f2);
-      paramCanvas.rotate(270.0F);
-      paramCanvas.drawPath(this.jt, this.jp);
-      if (j != 0) {
-        paramCanvas.drawRect(0.0F, f1, this.aiG.height() - 2.0F * f2, -this.js, this.jq);
-      }
-      paramCanvas.restoreToCount(i);
-      i = paramCanvas.save();
-      paramCanvas.translate(this.aiG.right - f2, this.aiG.top + f2);
-      paramCanvas.rotate(90.0F);
-      paramCanvas.drawPath(this.jt, this.jp);
-      if (j != 0) {
-        paramCanvas.drawRect(0.0F, f1, this.aiG.height() - 2.0F * f2, -this.js, this.jq);
-      }
-      paramCanvas.restoreToCount(i);
-      paramCanvas.translate(0.0F, -this.jx / 2.0F);
-      aiF.a(paramCanvas, this.aiG, this.js, this.mPaint);
       return;
-      this.jt.reset();
-      break;
-      label903:
-      i = 0;
-      break label504;
-      label909:
-      j = 0;
     }
   }
   
@@ -206,8 +77,8 @@ final class an
     if (paramColorStateList == null) {
       localColorStateList = ColorStateList.valueOf(0);
     }
-    this.aiD = localColorStateList;
-    this.mPaint.setColor(this.aiD.getColorForState(getState(), this.aiD.getDefaultColor()));
+    this.akT = localColorStateList;
+    this.mPaint.setColor(this.akT.getColorForState(getState(), this.akT.getDefaultColor()));
   }
   
   public final int getOpacity()
@@ -215,80 +86,84 @@ final class an
     return -3;
   }
   
-  public final boolean getPadding(Rect paramRect)
+  public final void getOutline(Outline paramOutline)
   {
-    int i = (int)Math.ceil(c(this.jv, this.js, this.jC));
-    int j = (int)Math.ceil(d(this.jv, this.js, this.jC));
-    paramRect.set(j, i, j, i);
-    return true;
+    paramOutline.setRoundRect(this.akP, this.akN);
+  }
+  
+  final void h(Rect paramRect)
+  {
+    Rect localRect = paramRect;
+    if (paramRect == null) {
+      localRect = getBounds();
+    }
+    this.akO.set(localRect.left, localRect.top, localRect.right, localRect.bottom);
+    this.akP.set(localRect);
+    if (this.akR)
+    {
+      float f1 = ao.c(this.akQ, this.akN, this.akS);
+      float f2 = ao.d(this.akQ, this.akN, this.akS);
+      this.akP.inset((int)Math.ceil(f2), (int)Math.ceil(f1));
+      this.akO.set(this.akP);
+    }
   }
   
   public final boolean isStateful()
   {
-    return ((this.aiD != null) && (this.aiD.isStateful())) || (super.isStateful());
+    return ((this.oL != null) && (this.oL.isStateful())) || ((this.akT != null) && (this.akT.isStateful())) || (super.isStateful());
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    this.jy = true;
+    h(paramRect);
   }
   
   protected final boolean onStateChange(int[] paramArrayOfInt)
   {
-    int i = this.aiD.getColorForState(paramArrayOfInt, this.aiD.getDefaultColor());
-    if (this.mPaint.getColor() == i) {
-      return false;
-    }
-    this.mPaint.setColor(i);
-    this.jy = true;
-    invalidateSelf();
-    return true;
-  }
-  
-  final void p(float paramFloat1, float paramFloat2)
-  {
-    if (paramFloat1 < 0.0F) {
-      throw new IllegalArgumentException("Invalid shadow size " + paramFloat1 + ". Must be >= 0");
-    }
-    if (paramFloat2 < 0.0F) {
-      throw new IllegalArgumentException("Invalid max shadow size " + paramFloat2 + ". Must be >= 0");
-    }
-    float f = l(paramFloat1);
-    paramFloat2 = l(paramFloat2);
-    paramFloat1 = f;
-    if (f > paramFloat2)
+    int i = this.akT.getColorForState(paramArrayOfInt, this.akT.getDefaultColor());
+    if (i != this.mPaint.getColor()) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (!this.jD) {
-        this.jD = true;
+      if (bool) {
+        this.mPaint.setColor(i);
       }
-      paramFloat1 = paramFloat2;
+      if ((this.oL == null) || (this.oM == null)) {
+        break;
+      }
+      this.nN = b(this.oL, this.oM);
+      return true;
     }
-    if ((this.jx == paramFloat1) && (this.jv == paramFloat2)) {
-      return;
-    }
-    this.jx = paramFloat1;
-    this.jv = paramFloat2;
-    this.jw = ((int)(paramFloat1 * 1.5F + this.aiE + 0.5F));
-    this.jy = true;
-    invalidateSelf();
+    return bool;
   }
   
   public final void setAlpha(int paramInt)
   {
     this.mPaint.setAlpha(paramInt);
-    this.jp.setAlpha(paramInt);
-    this.jq.setAlpha(paramInt);
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)
   {
     this.mPaint.setColorFilter(paramColorFilter);
   }
+  
+  public final void setTintList(ColorStateList paramColorStateList)
+  {
+    this.oL = paramColorStateList;
+    this.nN = b(this.oL, this.oM);
+    invalidateSelf();
+  }
+  
+  public final void setTintMode(PorterDuff.Mode paramMode)
+  {
+    this.oM = paramMode;
+    this.nN = b(this.oL, this.oM);
+    invalidateSelf();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v7.widget.an
  * JD-Core Version:    0.7.0.1
  */

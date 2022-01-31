@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class r$a$3
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class r$a$3
   
   public final void run()
   {
-    if (this.pGG.pGD.pGu != null) {
-      this.pGG.pGD.pGu.e(this.BF, this.ejr, this.epd);
+    AppMethodBeat.i(1825);
+    if (this.tkb.tjY.tjP != null) {
+      this.tkb.tjY.tjP.n(this.Cq, this.fzv, this.fFB);
     }
-    if (r.O(this.ejr * 100 / this.epd, this.ejr)) {
-      this.pGG.bOv();
+    if (r.ad(this.fzv * 100 / this.fFB, this.fzv)) {
+      this.tkb.cKk();
     }
+    AppMethodBeat.o(1825);
   }
 }
 

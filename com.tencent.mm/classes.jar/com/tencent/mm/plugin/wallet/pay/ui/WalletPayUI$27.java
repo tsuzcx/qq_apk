@@ -1,26 +1,18 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.t;
 
 final class WalletPayUI$27
-  implements View.OnClickListener
+  extends t
 {
   WalletPayUI$27(WalletPayUI paramWalletPayUI) {}
   
-  public final void onClick(View paramView)
+  public final void bhX()
   {
-    if (this.qnV.qns) {
-      this.qnV.qnB.setImageResource(a.e.pay_dital_bill_guid_down);
-    }
-    for (this.qnV.qns = false;; this.qnV.qns = true)
-    {
-      this.qnV.qnF.notifyDataSetChanged();
-      return;
-      this.qnV.qnB.setImageResource(a.e.pay_dital_bill_guid_up);
-    }
+    AppMethodBeat.i(46065);
+    this.tXq.b(false, 0, "");
+    AppMethodBeat.o(46065);
   }
 }
 

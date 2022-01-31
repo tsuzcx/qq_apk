@@ -10,12 +10,12 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.a;
-import android.support.v4.app.af;
-import android.support.v4.app.af.a;
-import android.support.v4.app.v;
+import android.support.v4.app.ab;
+import android.support.v4.app.ab.a;
+import android.support.v4.app.q;
 import android.support.v7.view.b.a;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.bc;
+import android.support.v7.widget.be;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class AppCompatActivity
   extends FragmentActivity
-  implements af.a, c
+  implements ab.a, c
 {
   private d mDelegate;
   private Resources mResources;
@@ -54,7 +54,7 @@ public class AppCompatActivity
   public void closeOptionsMenu()
   {
     ActionBar localActionBar = getSupportActionBar();
-    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.ec()))) {
+    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.ey()))) {
       super.closeOptionsMenu();
     }
   }
@@ -94,8 +94,8 @@ public class AppCompatActivity
   
   public Resources getResources()
   {
-    if ((this.mResources == null) && (bc.je())) {
-      this.mResources = new bc(this, super.getResources());
+    if ((this.mResources == null) && (be.kZ())) {
+      this.mResources = new be(this, super.getResources());
     }
     if (this.mResources == null) {
       return super.getResources();
@@ -110,7 +110,7 @@ public class AppCompatActivity
   
   public Intent getSupportParentActivityIntent()
   {
-    return v.f(this);
+    return q.h(this);
   }
   
   public void invalidateOptionsMenu()
@@ -137,9 +137,9 @@ public class AppCompatActivity
   public void onCreate(Bundle paramBundle)
   {
     d locald = getDelegate();
-    locald.eg();
+    locald.eC();
     locald.onCreate(paramBundle);
-    if ((locald.eh()) && (this.mThemeId != 0))
+    if ((locald.eD()) && (this.mThemeId != 0))
     {
       if (Build.VERSION.SDK_INT < 23) {
         break label55;
@@ -155,14 +155,11 @@ public class AppCompatActivity
     }
   }
   
-  public void onCreateSupportNavigateUpTaskStack(af paramaf)
+  public void onCreateSupportNavigateUpTaskStack(ab paramab)
   {
-    Intent localIntent = null;
-    if ((this instanceof af.a)) {
-      localIntent = ((af.a)this).getSupportParentActivityIntent();
-    }
+    Intent localIntent = ((ab.a)this).getSupportParentActivityIntent();
     if (localIntent == null) {
-      localIntent = v.f(this);
+      localIntent = q.h(this);
     }
     for (;;)
     {
@@ -171,10 +168,10 @@ public class AppCompatActivity
         ComponentName localComponentName2 = localIntent.getComponent();
         ComponentName localComponentName1 = localComponentName2;
         if (localComponentName2 == null) {
-          localComponentName1 = localIntent.resolveActivity(paramaf.yT.getPackageManager());
+          localComponentName1 = localIntent.resolveActivity(paramab.zy.getPackageManager());
         }
-        paramaf.a(localComponentName1);
-        paramaf.yS.add(localIntent);
+        paramab.a(localComponentName1);
+        paramab.zx.add(localIntent);
       }
       return;
     }
@@ -216,19 +213,19 @@ public class AppCompatActivity
     super.onPanelClosed(paramInt, paramMenu);
   }
   
-  public void onPostCreate(Bundle paramBundle)
+  protected void onPostCreate(Bundle paramBundle)
   {
     super.onPostCreate(paramBundle);
-    getDelegate().ef();
+    getDelegate().eB();
   }
   
-  protected void onPostResume()
+  public void onPostResume()
   {
     super.onPostResume();
     getDelegate().onPostResume();
   }
   
-  public void onPrepareSupportNavigateUpTaskStack(af paramaf) {}
+  public void onPrepareSupportNavigateUpTaskStack(ab paramab) {}
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
@@ -262,21 +259,21 @@ public class AppCompatActivity
     {
       if (supportShouldUpRecreateTask((Intent)localObject))
       {
-        localObject = af.N(this);
-        onCreateSupportNavigateUpTaskStack((af)localObject);
-        onPrepareSupportNavigateUpTaskStack((af)localObject);
-        if (((af)localObject).yS.isEmpty()) {
+        localObject = ab.M(this);
+        onCreateSupportNavigateUpTaskStack((ab)localObject);
+        onPrepareSupportNavigateUpTaskStack((ab)localObject);
+        if (((ab)localObject).zx.isEmpty()) {
           throw new IllegalStateException("No intents added to TaskStackBuilder; cannot startActivities");
         }
-        Intent[] arrayOfIntent = (Intent[])((af)localObject).yS.toArray(new Intent[((af)localObject).yS.size()]);
+        Intent[] arrayOfIntent = (Intent[])((ab)localObject).zx.toArray(new Intent[((ab)localObject).zx.size()]);
         arrayOfIntent[0] = new Intent(arrayOfIntent[0]).addFlags(268484608);
-        android.support.v4.content.b.a(((af)localObject).yT, arrayOfIntent);
+        android.support.v4.content.b.a(((ab)localObject).zy, arrayOfIntent);
       }
       for (;;)
       {
         try
         {
-          a.b(this);
+          a.d(this);
           return true;
         }
         catch (IllegalStateException localIllegalStateException)
@@ -304,7 +301,7 @@ public class AppCompatActivity
   public void openOptionsMenu()
   {
     ActionBar localActionBar = getSupportActionBar();
-    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.eb()))) {
+    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.ex()))) {
       super.openOptionsMenu();
     }
   }

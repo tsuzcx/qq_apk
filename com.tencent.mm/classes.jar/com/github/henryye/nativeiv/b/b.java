@@ -1,6 +1,7 @@
 package com.github.henryye.nativeiv.b;
 
-import com.tencent.magicbrush.a.d.f;
+import com.tencent.magicbrush.a.c.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileInputStream;
 import java.io.FilterInputStream;
 import java.nio.channels.FileChannel;
@@ -8,7 +9,7 @@ import java.nio.channels.FileChannel;
 public final class b
   extends FilterInputStream
 {
-  private long asE = 0L;
+  private long auV = 0L;
   
   public b(FileInputStream paramFileInputStream)
   {
@@ -17,14 +18,17 @@ public final class b
   
   public final void mark(int paramInt)
   {
+    AppMethodBeat.i(115773);
     try
     {
-      this.asE = ((FileInputStream)this.in).getChannel().position();
+      this.auV = ((FileInputStream)this.in).getChannel().position();
+      AppMethodBeat.o(115773);
       return;
     }
     catch (Exception localException)
     {
-      d.f.a("MicroMsg.FileSeekingInputStream", localException, "Failed seeking FileChannel.", new Object[0]);
+      c.c.printStackTrace("MicroMsg.FileSeekingInputStream", localException, "Failed seeking FileChannel.", new Object[0]);
+      AppMethodBeat.o(115773);
     }
   }
   
@@ -35,7 +39,9 @@ public final class b
   
   public final void reset()
   {
-    ((FileInputStream)this.in).getChannel().position(this.asE);
+    AppMethodBeat.i(115774);
+    ((FileInputStream)this.in).getChannel().position(this.auV);
+    AppMethodBeat.o(115774);
   }
 }
 

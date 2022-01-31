@@ -4,11 +4,11 @@ public final class a
 {
   public int endFlag;
   public String mimeType;
-  public long myo;
-  public long myp;
-  public long myq;
-  public int myr;
-  public long mys;
+  public long oYv;
+  public long oYw;
+  public long oYx;
+  public int oYy;
+  public long oYz;
 }
 
 

@@ -5,18 +5,18 @@ import android.widget.TextView;
 
 final class i$a
 {
-  public ImageView ffK;
-  public TextView kYU;
-  public TextView kYV;
-  public TextView kYW;
-  public TextView kYX;
-  GameDetailRankLikeView kYY;
+  public ImageView gxs;
+  public TextView nwR;
+  public TextView nwS;
+  public TextView nwT;
+  public TextView nwU;
+  GameDetailRankLikeView nwV;
   
   private i$a(i parami) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.i.a
  * JD-Core Version:    0.7.0.1
  */

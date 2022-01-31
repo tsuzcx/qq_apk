@@ -1,34 +1,36 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bpa;
-import com.tencent.mm.protocal.c.bpb;
+import com.tencent.mm.protocal.protobuf.byx;
+import com.tencent.mm.protocal.protobuf.byy;
 import java.util.LinkedList;
 
 public final class ah
   extends m
   implements k
 {
-  private final b dmK;
-  private f dmL;
+  private f callback;
+  private final b rr;
   
   public ah(int[] paramArrayOfInt)
   {
+    AppMethodBeat.i(108475);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bpa();
-    ((b.a)localObject).ecI = new bpb();
+    ((b.a)localObject).fsX = new byx();
+    ((b.a)localObject).fsY = new byy();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/sendinviteemail";
-    ((b.a)localObject).ecG = 116;
-    ((b.a)localObject).ecJ = 41;
-    ((b.a)localObject).ecK = 1000000041;
-    this.dmK = ((b.a)localObject).Kt();
+    ((b.a)localObject).funcId = 116;
+    ((b.a)localObject).reqCmdId = 41;
+    ((b.a)localObject).respCmdId = 1000000041;
+    this.rr = ((b.a)localObject).ado();
     localObject = new LinkedList();
     int i = 0;
     while (i < paramArrayOfInt.length)
@@ -36,29 +38,36 @@ public final class ah
       ((LinkedList)localObject).add(Integer.valueOf(paramArrayOfInt[i]));
       i += 1;
     }
-    ((bpa)this.dmK.ecE.ecN).tHh = ((LinkedList)localObject);
-    ((bpa)this.dmK.ecE.ecN).tHg = ((LinkedList)localObject).size();
+    ((byx)this.rr.fsV.fta).xLe = ((LinkedList)localObject);
+    ((byx)this.rr.fsV.fta).xLd = ((LinkedList)localObject).size();
+    AppMethodBeat.o(108475);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(108476);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(108476);
+    return i;
   }
   
   public final int getType()
   {
     return 116;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(108477);
+    updateDispatchId(paramInt1);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(108477);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.ah
  * JD-Core Version:    0.7.0.1
  */

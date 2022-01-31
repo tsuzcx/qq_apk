@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$1$1
   implements Runnable
 {
@@ -7,14 +9,16 @@ final class b$1$1
   
   public final void run()
   {
-    if (this.pAr.pAq.pAl != null) {
-      this.pAr.pAq.pAl.jH(false);
+    AppMethodBeat.i(25755);
+    if (this.tcd.tcc.tbX != null) {
+      this.tcd.tcc.tbX.mz(false);
     }
+    AppMethodBeat.o(25755);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.b.1.1
  * JD-Core Version:    0.7.0.1
  */

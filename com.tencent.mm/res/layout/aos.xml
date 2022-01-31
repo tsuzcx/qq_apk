@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/p1"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/d2i" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/a3q" android:ellipsize="none" android:gravity="center" android:id="@id/d2j" android:padding="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cy1" android:singleLine="false" android:layout_weight="1.0" style="@style/kl" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="17.0dip" android:textColor="#77000000" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/k6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dud" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip">
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="28.0dip" android:textColor="@color/h6" android:gravity="center" android:id="@id/e1c" android:background="@drawable/zq" android:padding="0.0dip" android:layout_width="33.0dip" android:layout_height="33.0dip" android:text="" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip">
+            <TextView android:textSize="28.0dip" android:typeface="monospace" android:textColor="@color/h6" android:gravity="center" android:id="@id/e1d" android:layout_width="wrap_content" android:layout_height="33.0dip" android:text="" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

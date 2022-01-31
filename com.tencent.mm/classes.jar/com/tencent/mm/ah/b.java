@@ -1,248 +1,351 @@
 package com.tencent.mm.ah;
 
-import com.tencent.mm.bv.a;
-import com.tencent.mm.protocal.c.blm;
-import com.tencent.mm.protocal.c.bly;
-import com.tencent.mm.protocal.c.bsi;
-import com.tencent.mm.protocal.c.gd;
-import com.tencent.mm.protocal.k.b;
-import com.tencent.mm.protocal.k.c;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.k.e;
-import com.tencent.mm.protocal.y;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.p;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.r;
+import com.tencent.mm.protocal.protobuf.bdt;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.ad;
 
 public final class b
-  extends k
 {
-  public int ccs = 0;
-  public int dEk;
-  public b ecE = null;
-  public c ecF = null;
-  public int ecG;
-  public String uri;
-  
-  private b(a parama1, a parama2, String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5)
+  public static boolean U(String paramString, int paramInt)
   {
-    boolean bool1 = bool2;
-    if (paramBoolean)
+    AppMethodBeat.i(77843);
+    if (bo.isNullOrNil(paramString))
     {
-      bool1 = bool2;
-      if ((parama1 instanceof blm)) {
-        bool1 = true;
+      AppMethodBeat.o(77843);
+      return false;
+    }
+    h localh2 = o.adg().rj(paramString);
+    if ((localh2 != null) && (paramString.equals(localh2.getUsername())) && (paramInt == localh2.dqB))
+    {
+      AppMethodBeat.o(77843);
+      return true;
+    }
+    h localh1 = localh2;
+    if (localh2 == null) {
+      localh1 = new h();
+    }
+    localh1.username = paramString;
+    localh1.dqB = paramInt;
+    localh1.bsY = 3;
+    boolean bool = o.adg().b(localh1);
+    AppMethodBeat.o(77843);
+    return bool;
+  }
+  
+  public static h a(String paramString, bdt parambdt)
+  {
+    AppMethodBeat.i(77849);
+    h localh = new h();
+    localh.bsY = -1;
+    localh.username = paramString;
+    localh.fsk = parambdt.wJr;
+    localh.fsl = parambdt.wJq;
+    ab.i("MicroMsg.AvatarLogic", "dkhurl contact %s b[%s] s[%s]", new Object[] { localh.getUsername(), localh.acX(), localh.acY() });
+    boolean bool;
+    if (parambdt.xtp != 0)
+    {
+      bool = true;
+      localh.cM(bool);
+      if ((parambdt.xtk != 3) && (parambdt.xtk != 4)) {
+        break label121;
       }
+      localh.dqB = parambdt.xtk;
     }
-    this.ecE = new b(parama1, paramInt1, paramInt2, bool1, paramInt5);
-    this.ecF = new c(parama2, paramInt3, paramBoolean);
-    this.uri = paramString;
-    this.ecG = paramInt1;
-    this.dEk = paramInt4;
-  }
-  
-  public final a Kn()
-  {
-    return this.ecE.ecN;
-  }
-  
-  public final a Ko()
-  {
-    return this.ecF.ecN;
-  }
-  
-  public final int Kp()
-  {
-    return this.dEk;
-  }
-  
-  public final int Kq()
-  {
-    return this.ccs;
-  }
-  
-  public final void a(y paramy)
-  {
-    this.ecE.spM = paramy;
-  }
-  
-  public final int getType()
-  {
-    return this.ecG;
-  }
-  
-  public final String getUri()
-  {
-    return this.uri;
-  }
-  
-  public static final class a
-  {
-    public int dEk = 0;
-    public int ecG;
-    public a ecH;
-    public a ecI;
-    public int ecJ = 0;
-    public int ecK = 0;
-    public boolean ecL = true;
-    public int ecM = 0;
-    public String uri;
-    
-    public final void Kr()
+    for (;;)
     {
-      this.ecJ = 209;
-    }
-    
-    public final void Ks()
-    {
-      this.ecK = 1000000209;
-    }
-    
-    public final b Kt()
-    {
-      boolean bool5 = true;
-      if ((this.ecH == null) || (this.ecI == null) || (bk.bl(this.uri)) || (this.ecG <= 0) || (this.ecJ == -2147483648) || (this.ecK == -2147483648))
+      AppMethodBeat.o(77849);
+      return localh;
+      bool = false;
+      break;
+      label121:
+      if (parambdt.xtk == 2)
       {
-        boolean bool1;
-        boolean bool2;
-        label70:
-        boolean bool6;
-        boolean bool3;
-        label88:
-        boolean bool4;
-        if (this.ecH == null)
+        localh.dqB = 3;
+        if (!r.Zn().equals(paramString))
         {
-          bool1 = true;
-          if (this.ecI != null) {
-            break label177;
-          }
-          bool2 = true;
-          bool6 = bk.bl(this.uri);
-          if (this.ecG > 0) {
-            break label182;
-          }
-          bool3 = true;
-          if (this.ecJ != -2147483648) {
-            break label187;
-          }
-          bool4 = true;
-          label100:
-          if (this.ecK != -2147483648) {
-            break label193;
-          }
-        }
-        for (;;)
-        {
-          throw new IllegalArgumentException(String.format("%s %s %s %s %s %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool6), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5) }));
-          bool1 = false;
-          break;
-          label177:
-          bool2 = false;
-          break label70;
-          label182:
-          bool3 = false;
-          break label88;
-          label187:
-          bool4 = false;
-          break label100;
-          label193:
-          bool5 = false;
+          o.acQ();
+          d.F(paramString, false);
+          o.acQ();
+          d.F(paramString, true);
+          o.adg().b(localh);
+          o.adi().qU(paramString);
         }
       }
-      return new b(this.ecH, this.ecI, this.uri, this.ecG, this.ecJ, this.ecK, this.ecL, this.dEk, this.ecM, (byte)0);
-    }
-    
-    public final void a(a parama)
-    {
-      this.ecH = parama;
-    }
-    
-    public final void b(a parama)
-    {
-      this.ecI = parama;
-    }
-    
-    public final void ig(int paramInt)
-    {
-      this.ecG = paramInt;
-    }
-    
-    public final void kr(String paramString)
-    {
-      this.uri = paramString;
     }
   }
   
-  public static final class b
-    extends k.d
-    implements k.b
+  public static String ax(String paramString1, String paramString2)
   {
-    public int cmdId;
-    private int ecG;
-    public a ecN;
-    private boolean ecO;
-    
-    public b(a parama, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
-    {
-      this.ecN = parama;
-      this.ecG = paramInt1;
-      this.cmdId = paramInt2;
-      this.ecO = paramBoolean;
-      this.ecM = paramInt3;
-    }
-    
-    public final byte[] HG()
-    {
-      if ((this.ecN instanceof blm)) {
-        ((blm)this.ecN).tEX = com.tencent.mm.protocal.k.a(this);
-      }
-      return this.ecN.toByteArray();
-    }
-    
-    public final int HH()
-    {
-      return this.ecG;
-    }
-    
-    public final int getCmdId()
-    {
-      return this.cmdId;
-    }
+    AppMethodBeat.i(77832);
+    paramString1 = paramString1 + "?access_token=" + paramString2;
+    AppMethodBeat.o(77832);
+    return paramString1;
   }
   
-  public static final class c
-    extends k.e
-    implements k.c
+  public static Bitmap b(String paramString, boolean paramBoolean, int paramInt)
   {
-    public int cmdId;
-    public a ecN = null;
-    private boolean ecO;
-    
-    public c(a parama, int paramInt, boolean paramBoolean)
+    AppMethodBeat.i(77846);
+    if ((bo.isNullOrNil(paramString)) || (!g.RJ().QU()))
     {
-      this.ecN = parama;
-      this.cmdId = paramInt;
-      this.ecO = paramBoolean;
+      AppMethodBeat.o(77846);
+      return null;
     }
-    
-    public final int A(byte[] paramArrayOfByte)
+    if (!g.RL().Rx())
     {
-      this.ecN = this.ecN.aH(paramArrayOfByte);
-      if (!(this.ecN instanceof bsi))
-      {
-        com.tencent.mm.protocal.k.a(this, ((bly)this.ecN).tFx);
-        return ((bly)this.ecN).tFx.sze;
-      }
-      return ((bsi)this.ecN).getRet();
+      paramString = o.acQ().bZ(ah.getContext());
+      AppMethodBeat.o(77846);
+      return paramString;
     }
-    
-    public final int getCmdId()
+    String str = paramString;
+    if (ad.nM(paramString)) {
+      str = ad.ark(paramString);
+    }
+    paramString = o.adi().c(str, paramBoolean, paramInt);
+    AppMethodBeat.o(77846);
+    return paramString;
+  }
+  
+  public static Bitmap d(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(77845);
+    if ((bo.isNullOrNil(paramString)) || (!g.RJ().QU()))
     {
-      return this.cmdId;
+      AppMethodBeat.o(77845);
+      return null;
     }
+    o.acQ();
+    Object localObject = d.q(paramString, paramInt1, paramInt2);
+    if (localObject == null)
+    {
+      localObject = new e();
+      ((e)localObject).a(paramString, new b.1((e)localObject));
+      paramString = b(paramString, false, paramInt3);
+      AppMethodBeat.o(77845);
+      return paramString;
+    }
+    paramString = (String)localObject;
+    if (paramInt3 > 5) {
+      paramString = com.tencent.mm.sdk.platformtools.d.a((Bitmap)localObject, false, paramInt3);
+    }
+    AppMethodBeat.o(77845);
+    return paramString;
+  }
+  
+  public static boolean d(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(77840);
+    if (paramInt != 3)
+    {
+      AppMethodBeat.o(77840);
+      return false;
+    }
+    boolean bool = qQ(gA(paramLong));
+    AppMethodBeat.o(77840);
+    return bool;
+  }
+  
+  private static String gA(long paramLong)
+  {
+    AppMethodBeat.i(77838);
+    String str = new p(paramLong) + "@qqim";
+    AppMethodBeat.o(77838);
+    return str;
+  }
+  
+  public static Bitmap gB(long paramLong)
+  {
+    AppMethodBeat.i(77842);
+    Bitmap localBitmap = b(gA(paramLong), false, -1);
+    AppMethodBeat.o(77842);
+    return localBitmap;
+  }
+  
+  public static Bitmap qK(String paramString)
+  {
+    AppMethodBeat.i(77833);
+    paramString = b(paramString + "@google", false, -1);
+    AppMethodBeat.o(77833);
+    return paramString;
+  }
+  
+  private static String qL(String paramString)
+  {
+    AppMethodBeat.i(77834);
+    paramString = "http://graph.facebook.com/" + paramString + "/picture";
+    AppMethodBeat.o(77834);
+    return paramString;
+  }
+  
+  public static void qM(String paramString)
+  {
+    AppMethodBeat.i(77835);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(77835);
+      return;
+    }
+    String str = paramString + "@fb";
+    h localh2 = o.adg().rj(str);
+    if ((localh2 != null) && (str.equals(localh2.getUsername())) && (3 == localh2.dqB))
+    {
+      AppMethodBeat.o(77835);
+      return;
+    }
+    h localh1 = localh2;
+    if (localh2 == null) {
+      localh1 = new h();
+    }
+    localh1.username = str;
+    localh1.dqB = 3;
+    localh1.fsl = qL(paramString);
+    localh1.fsk = qL(paramString);
+    localh1.cM(true);
+    localh1.bsY = 31;
+    o.adg().b(localh1);
+    AppMethodBeat.o(77835);
+  }
+  
+  public static Bitmap qN(String paramString)
+  {
+    AppMethodBeat.i(77836);
+    paramString = b(paramString + "@fb", false, -1);
+    AppMethodBeat.o(77836);
+    return paramString;
+  }
+  
+  public static long qO(String paramString)
+  {
+    AppMethodBeat.i(77837);
+    if (!ad.arh(paramString))
+    {
+      AppMethodBeat.o(77837);
+      return -1L;
+    }
+    paramString = paramString.split("@");
+    try
+    {
+      long l = bo.getLong(paramString[0], -1L);
+      AppMethodBeat.o(77837);
+      return l;
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(77837);
+    }
+    return -1L;
+  }
+  
+  public static long qP(String paramString)
+  {
+    AppMethodBeat.i(77839);
+    if (!ad.are(paramString))
+    {
+      AppMethodBeat.o(77839);
+      return -1L;
+    }
+    paramString = paramString.split("@");
+    try
+    {
+      long l = bo.getLong(paramString[0], -1L);
+      AppMethodBeat.o(77839);
+      return l;
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(77839);
+    }
+    return -1L;
+  }
+  
+  public static boolean qQ(String paramString)
+  {
+    AppMethodBeat.i(77841);
+    if (paramString == null)
+    {
+      ab.w("MicroMsg.AvatarLogic", "setQQAvatarImgFlag failed : invalid username");
+      AppMethodBeat.o(77841);
+      return false;
+    }
+    if (!paramString.endsWith("@qqim"))
+    {
+      ab.w("MicroMsg.AvatarLogic", "setQQAvatarImgFlag failed : invalid username");
+      AppMethodBeat.o(77841);
+      return false;
+    }
+    h localh = new h();
+    localh.username = paramString;
+    localh.dqB = 3;
+    localh.bsY = 3;
+    boolean bool = o.adg().b(localh);
+    AppMethodBeat.o(77841);
+    return bool;
+  }
+  
+  public static Bitmap qR(String paramString)
+  {
+    AppMethodBeat.i(156855);
+    paramString = b(paramString, false, -1);
+    AppMethodBeat.o(156855);
+    return paramString;
+  }
+  
+  public static String qS(String paramString)
+  {
+    AppMethodBeat.i(77847);
+    if ((bo.isNullOrNil(paramString)) || (!g.RJ().QU()))
+    {
+      AppMethodBeat.o(77847);
+      return null;
+    }
+    if (!g.RL().Rx())
+    {
+      AppMethodBeat.o(77847);
+      return null;
+    }
+    if (ad.nM(paramString))
+    {
+      o.acQ();
+      paramString = d.D(ad.ark(paramString), false);
+      AppMethodBeat.o(77847);
+      return paramString;
+    }
+    o.acQ();
+    paramString = d.D(paramString, false);
+    AppMethodBeat.o(77847);
+    return paramString;
+  }
+  
+  public static void qT(String paramString)
+  {
+    AppMethodBeat.i(77848);
+    h localh = o.adg().rj(paramString);
+    if (localh == null)
+    {
+      AppMethodBeat.o(77848);
+      return;
+    }
+    if (!paramString.equals(localh.getUsername()))
+    {
+      AppMethodBeat.o(77848);
+      return;
+    }
+    localh.fsn = 0;
+    localh.bsY = 64;
+    o.adg().b(localh);
+    AppMethodBeat.o(77848);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ah.b
  * JD-Core Version:    0.7.0.1
  */

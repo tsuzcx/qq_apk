@@ -1,80 +1,96 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SnsTimeLineUI$c
 {
-  public boolean axD = true;
-  public String pgc = "";
-  public long pgd;
-  public int pge;
-  public int pgf;
-  public long pgg;
-  public long pgh;
-  public int pgi;
-  public long pgj;
-  public int pgk;
-  public long pgl;
+  public boolean active = true;
+  public String rZi = "";
+  public long rZj;
+  public int rZk;
+  public int rZl;
+  public long rZm;
+  public long rZn;
+  public int rZo;
+  public long rZp;
+  public int rZq;
+  public long rZr;
   public int scene;
   
   private SnsTimeLineUI$c(SnsTimeLineUI paramSnsTimeLineUI) {}
   
-  final void reset()
+  public final void EZ(int paramInt)
   {
-    this.scene = 0;
-    this.pgd = 0L;
-    this.pge = -1;
-    this.pgf = 0;
-    this.pgg = 0L;
-    this.pgh = 0L;
-    this.pgi = 0;
-    this.pgj = 0L;
-    this.pgk = 0;
-    this.pgl = 0L;
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.pgc).append(",").append(this.scene).append(",").append(this.pgd).append(",").append(this.pge).append(",").append(this.pgf).append(",").append(this.pgg).append(",").append(this.pgh).append(",").append(this.pgi).append(",").append(this.pgj).append(",").append(this.pgk).append(",").append(this.pgl);
-    return localStringBuilder.toString();
-  }
-  
-  public final void yQ(int paramInt)
-  {
-    if (!this.axD) {
+    AppMethodBeat.i(39550);
+    if (!this.active)
+    {
+      AppMethodBeat.o(39550);
       return;
     }
-    this.pgf = paramInt;
-    this.pgg = bk.UY();
+    this.rZl = paramInt;
+    this.rZm = bo.aoy();
+    AppMethodBeat.o(39550);
   }
   
-  public final void yR(int paramInt)
+  public final void Fa(int paramInt)
   {
-    if (!this.axD) {
+    AppMethodBeat.i(39551);
+    if (!this.active)
+    {
+      AppMethodBeat.o(39551);
       return;
     }
     reset();
     this.scene = 2;
-    this.pgh = bk.UY();
-    this.pgi = paramInt;
+    this.rZn = bo.aoy();
+    this.rZo = paramInt;
+    AppMethodBeat.o(39551);
   }
   
-  public final void yS(int paramInt)
+  public final void Fb(int paramInt)
   {
-    if (!this.axD) {
+    AppMethodBeat.i(39552);
+    if (!this.active)
+    {
+      AppMethodBeat.o(39552);
       return;
     }
     reset();
     this.scene = 3;
-    this.pgj = bk.UY();
-    this.pgl = 0L;
-    this.pgk = paramInt;
+    this.rZp = bo.aoy();
+    this.rZr = 0L;
+    this.rZq = paramInt;
+    AppMethodBeat.o(39552);
+  }
+  
+  final void reset()
+  {
+    this.scene = 0;
+    this.rZj = 0L;
+    this.rZk = -1;
+    this.rZl = 0;
+    this.rZm = 0L;
+    this.rZn = 0L;
+    this.rZo = 0;
+    this.rZp = 0L;
+    this.rZq = 0;
+    this.rZr = 0L;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(39553);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.rZi).append(",").append(this.scene).append(",").append(this.rZj).append(",").append(this.rZk).append(",").append(this.rZl).append(",").append(this.rZm).append(",").append(this.rZn).append(",").append(this.rZo).append(",").append(this.rZp).append(",").append(this.rZq).append(",").append(this.rZr);
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(39553);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTimeLineUI.c
  * JD-Core Version:    0.7.0.1
  */

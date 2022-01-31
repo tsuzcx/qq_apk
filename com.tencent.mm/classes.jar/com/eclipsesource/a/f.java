@@ -1,322 +1,520 @@
 package com.eclipsesource.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Reader;
 import java.io.StringReader;
 
 final class f
 {
-  private final Reader arK;
-  private final char[] arL;
-  private int arM;
-  private int arN;
-  private int arO;
-  private StringBuilder arP;
-  private int arQ;
-  private int fill;
+  private final char[] auc;
+  private int aud;
+  private int aue;
+  private int auf;
+  private int aug;
+  private StringBuilder auh;
+  private int aui;
   private int index;
   private int line;
+  private final Reader reader;
   
   private f(Reader paramReader, int paramInt)
   {
-    this.arK = paramReader;
-    this.arL = new char[paramInt];
+    AppMethodBeat.i(70556);
+    this.reader = paramReader;
+    this.auc = new char[paramInt];
     this.line = 1;
-    this.arQ = -1;
+    this.aui = -1;
+    AppMethodBeat.o(70556);
   }
   
   f(String paramString)
   {
     this(new StringReader(paramString), Math.max(10, Math.min(1024, paramString.length())));
+    AppMethodBeat.i(70555);
+    AppMethodBeat.o(70555);
   }
   
-  private j Z(String paramString)
+  private j ae(String paramString)
   {
-    if (ka()) {
-      return aa("Unexpected end of input");
+    AppMethodBeat.i(70578);
+    if (mj())
+    {
+      paramString = af("Unexpected end of input");
+      AppMethodBeat.o(70578);
+      return paramString;
     }
-    return aa("Expected " + paramString);
+    paramString = af("Expected ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(70578);
+    return paramString;
   }
   
-  private void b(char paramChar)
+  private void d(char paramChar)
   {
-    if (!c(paramChar)) {
-      throw Z("'" + paramChar + "'");
+    AppMethodBeat.i(70564);
+    if (!e(paramChar))
+    {
+      j localj = ae("'" + paramChar + "'");
+      AppMethodBeat.o(70564);
+      throw localj;
     }
+    AppMethodBeat.o(70564);
   }
   
-  private boolean c(char paramChar)
+  private boolean e(char paramChar)
   {
-    if (this.arO != paramChar) {
+    AppMethodBeat.i(70571);
+    if (this.aug != paramChar)
+    {
+      AppMethodBeat.o(70571);
       return false;
     }
-    jX();
+    mc();
+    AppMethodBeat.o(70571);
     return true;
   }
   
-  private String jU()
+  private b lO()
   {
-    jX();
-    jY();
-    while (this.arO != 34)
+    AppMethodBeat.i(70558);
+    mc();
+    Object localObject = new b();
+    mb();
+    if (e(']'))
     {
-      if (this.arO == 92)
-      {
-        if (this.arO == -1) {}
-        for (int i = this.index;; i = this.index - 1)
-        {
-          this.arP.append(this.arL, this.arQ, i - this.arQ);
-          this.arQ = -1;
-          jX();
-          switch (this.arO)
-          {
-          default: 
-            throw Z("valid escape sequence");
-          }
-        }
-        this.arP.append((char)this.arO);
-        for (;;)
-        {
-          jX();
-          jY();
-          break;
-          this.arP.append('\b');
-          continue;
-          this.arP.append('\f');
-          continue;
-          this.arP.append('\n');
-          continue;
-          this.arP.append('\r');
-          continue;
-          this.arP.append('\t');
-          continue;
-          localObject = new char[4];
-          i = 0;
-          while (i < 4)
-          {
-            jX();
-            if (((this.arO >= 48) && (this.arO <= 57)) || ((this.arO >= 97) && (this.arO <= 102)) || ((this.arO >= 65) && (this.arO <= 70))) {}
-            for (int j = 1; j == 0; j = 0) {
-              throw Z("hexadecimal digit");
-            }
-            localObject[i] = ((char)this.arO);
-            i += 1;
-          }
-          this.arP.append((char)Integer.parseInt(new String((char[])localObject), 16));
-        }
-      }
-      if (this.arO < 32) {
-        throw Z("valid string character");
-      }
-      jX();
+      AppMethodBeat.o(70558);
+      return localObject;
     }
-    Object localObject = jZ();
-    jX();
+    do
+    {
+      mb();
+      ((b)localObject).a(lN());
+      mb();
+    } while (e(','));
+    if (!e(']'))
+    {
+      localObject = ae("',' or ']'");
+      AppMethodBeat.o(70558);
+      throw ((Throwable)localObject);
+    }
+    AppMethodBeat.o(70558);
     return localObject;
   }
   
-  private boolean jV()
+  private e lP()
   {
-    if ((this.arO >= 48) && (this.arO <= 57)) {}
-    for (int i = 1; i == 0; i = 0) {
-      return false;
-    }
-    jX();
-    return true;
-  }
-  
-  private void jY()
-  {
-    if (this.arP == null) {
-      this.arP = new StringBuilder();
-    }
-    this.arQ = (this.index - 1);
-  }
-  
-  private String jZ()
-  {
-    int i;
-    String str;
-    if (this.arO == -1)
+    AppMethodBeat.i(70559);
+    mc();
+    Object localObject = new e();
+    mb();
+    if (e('}'))
     {
-      i = this.index;
-      if (this.arP.length() <= 0) {
-        break label78;
+      AppMethodBeat.o(70559);
+      return localObject;
+    }
+    do
+    {
+      mb();
+      String str = lQ();
+      mb();
+      if (!e(':'))
+      {
+        localObject = ae("':'");
+        AppMethodBeat.o(70559);
+        throw ((Throwable)localObject);
       }
-      this.arP.append(this.arL, this.arQ, i - this.arQ);
-      str = this.arP.toString();
-      this.arP.setLength(0);
+      mb();
+      ((e)localObject).a(str, lN());
+      mb();
+    } while (e(','));
+    if (!e('}'))
+    {
+      localObject = ae("',' or '}'");
+      AppMethodBeat.o(70559);
+      throw ((Throwable)localObject);
+    }
+    AppMethodBeat.o(70559);
+    return localObject;
+  }
+  
+  private String lQ()
+  {
+    AppMethodBeat.i(70560);
+    if (this.aug != 34)
+    {
+      localObject = ae("name");
+      AppMethodBeat.o(70560);
+      throw ((Throwable)localObject);
+    }
+    Object localObject = lV();
+    AppMethodBeat.o(70560);
+    return localObject;
+  }
+  
+  private h lR()
+  {
+    AppMethodBeat.i(70561);
+    mc();
+    d('u');
+    d('l');
+    d('l');
+    h localh = a.atM;
+    AppMethodBeat.o(70561);
+    return localh;
+  }
+  
+  private h lS()
+  {
+    AppMethodBeat.i(70562);
+    mc();
+    d('r');
+    d('u');
+    d('e');
+    h localh = a.atN;
+    AppMethodBeat.o(70562);
+    return localh;
+  }
+  
+  private h lT()
+  {
+    AppMethodBeat.i(70563);
+    mc();
+    d('a');
+    d('l');
+    d('s');
+    d('e');
+    h localh = a.atO;
+    AppMethodBeat.o(70563);
+    return localh;
+  }
+  
+  private h lU()
+  {
+    AppMethodBeat.i(70565);
+    g localg = new g(lV());
+    AppMethodBeat.o(70565);
+    return localg;
+  }
+  
+  private String lV()
+  {
+    AppMethodBeat.i(70566);
+    mc();
+    md();
+    while (this.aug != 34) {
+      if (this.aug == 92)
+      {
+        me();
+        lW();
+        md();
+      }
+      else
+      {
+        if (this.aug < 32)
+        {
+          localObject = ae("valid string character");
+          AppMethodBeat.o(70566);
+          throw ((Throwable)localObject);
+        }
+        mc();
+      }
+    }
+    Object localObject = mf();
+    mc();
+    AppMethodBeat.o(70566);
+    return localObject;
+  }
+  
+  private void lW()
+  {
+    AppMethodBeat.i(70567);
+    mc();
+    Object localObject;
+    switch (this.aug)
+    {
+    default: 
+      localObject = ae("valid escape sequence");
+      AppMethodBeat.o(70567);
+      throw ((Throwable)localObject);
+    case 34: 
+    case 47: 
+    case 92: 
+      this.auh.append((char)this.aug);
     }
     for (;;)
     {
-      this.arQ = -1;
-      return str;
+      mc();
+      AppMethodBeat.o(70567);
+      return;
+      this.auh.append('\b');
+      continue;
+      this.auh.append('\f');
+      continue;
+      this.auh.append('\n');
+      continue;
+      this.auh.append('\r');
+      continue;
+      this.auh.append('\t');
+      continue;
+      localObject = new char[4];
+      int i = 0;
+      while (i < 4)
+      {
+        mc();
+        if (!mi())
+        {
+          localObject = ae("hexadecimal digit");
+          AppMethodBeat.o(70567);
+          throw ((Throwable)localObject);
+        }
+        localObject[i] = ((char)this.aug);
+        i += 1;
+      }
+      this.auh.append((char)Integer.parseInt(new String((char[])localObject), 16));
+    }
+  }
+  
+  private h lX()
+  {
+    AppMethodBeat.i(70568);
+    md();
+    e('-');
+    int i = this.aug;
+    if (!ma())
+    {
+      localObject = ae("digit");
+      AppMethodBeat.o(70568);
+      throw ((Throwable)localObject);
+    }
+    while ((i != 48) && (ma())) {}
+    lY();
+    lZ();
+    Object localObject = new d(mf());
+    AppMethodBeat.o(70568);
+    return localObject;
+  }
+  
+  private boolean lY()
+  {
+    AppMethodBeat.i(70569);
+    if (!e('.'))
+    {
+      AppMethodBeat.o(70569);
+      return false;
+    }
+    if (!ma())
+    {
+      j localj = ae("digit");
+      AppMethodBeat.o(70569);
+      throw localj;
+    }
+    while (ma()) {}
+    AppMethodBeat.o(70569);
+    return true;
+  }
+  
+  private boolean lZ()
+  {
+    AppMethodBeat.i(70570);
+    if ((!e('e')) && (!e('E')))
+    {
+      AppMethodBeat.o(70570);
+      return false;
+    }
+    if (!e('+')) {
+      e('-');
+    }
+    if (!ma())
+    {
+      j localj = ae("digit");
+      AppMethodBeat.o(70570);
+      throw localj;
+    }
+    while (ma()) {}
+    AppMethodBeat.o(70570);
+    return true;
+  }
+  
+  private boolean ma()
+  {
+    AppMethodBeat.i(70572);
+    if (!mh())
+    {
+      AppMethodBeat.o(70572);
+      return false;
+    }
+    mc();
+    AppMethodBeat.o(70572);
+    return true;
+  }
+  
+  private void md()
+  {
+    AppMethodBeat.i(70575);
+    if (this.auh == null) {
+      this.auh = new StringBuilder();
+    }
+    this.aui = (this.index - 1);
+    AppMethodBeat.o(70575);
+  }
+  
+  private void me()
+  {
+    AppMethodBeat.i(70576);
+    if (this.aug == -1) {}
+    for (int i = this.index;; i = this.index - 1)
+    {
+      StringBuilder localStringBuilder = this.auh;
+      char[] arrayOfChar = this.auc;
+      int j = this.aui;
+      localStringBuilder.append(arrayOfChar, j, i - j);
+      this.aui = -1;
+      AppMethodBeat.o(70576);
+      return;
+    }
+  }
+  
+  private String mf()
+  {
+    AppMethodBeat.i(70577);
+    int i;
+    Object localObject;
+    if (this.aug == -1)
+    {
+      i = this.index;
+      if (this.auh.length() <= 0) {
+        break label93;
+      }
+      localObject = this.auh;
+      char[] arrayOfChar = this.auc;
+      int j = this.aui;
+      ((StringBuilder)localObject).append(arrayOfChar, j, i - j);
+      localObject = this.auh.toString();
+      this.auh.setLength(0);
+    }
+    for (;;)
+    {
+      this.aui = -1;
+      AppMethodBeat.o(70577);
+      return localObject;
       i = this.index - 1;
       break;
-      label78:
-      str = new String(this.arL, this.arQ, i - this.arQ);
+      label93:
+      localObject = new String(this.auc, this.aui, i - this.aui);
     }
   }
   
-  final j aa(String paramString)
+  private boolean mg()
   {
-    int j = this.arM + this.index;
-    int k = this.arN;
-    if (ka()) {}
-    for (int i = j;; i = j - 1) {
-      return new j(paramString, i, this.line, j - k - 1);
+    return (this.aug == 32) || (this.aug == 9) || (this.aug == 10) || (this.aug == 13);
+  }
+  
+  private boolean mh()
+  {
+    return (this.aug >= 48) && (this.aug <= 57);
+  }
+  
+  private boolean mi()
+  {
+    return ((this.aug >= 48) && (this.aug <= 57)) || ((this.aug >= 97) && (this.aug <= 102)) || ((this.aug >= 65) && (this.aug <= 70));
+  }
+  
+  final j af(String paramString)
+  {
+    AppMethodBeat.i(70579);
+    int j = this.aud + this.index;
+    int k = this.auf;
+    if (mj()) {}
+    for (int i = j;; i = j - 1)
+    {
+      paramString = new j(paramString, i, this.line, j - k - 1);
+      AppMethodBeat.o(70579);
+      return paramString;
     }
   }
   
-  final h jT()
+  final h lN()
   {
-    Object localObject1;
-    switch (this.arO)
+    AppMethodBeat.i(70557);
+    switch (this.aug)
     {
     default: 
-      throw Z("value");
+      localObject = ae("value");
+      AppMethodBeat.o(70557);
+      throw ((Throwable)localObject);
     case 110: 
-      jX();
-      b('u');
-      b('l');
-      b('l');
-      localObject1 = a.aru;
+      localObject = lR();
+      AppMethodBeat.o(70557);
+      return localObject;
     case 116: 
+      localObject = lS();
+      AppMethodBeat.o(70557);
+      return localObject;
     case 102: 
+      localObject = lT();
+      AppMethodBeat.o(70557);
+      return localObject;
     case 34: 
+      localObject = lU();
+      AppMethodBeat.o(70557);
+      return localObject;
     case 91: 
+      localObject = lO();
+      AppMethodBeat.o(70557);
+      return localObject;
     case 123: 
-      do
-      {
-        Object localObject2;
-        do
-        {
-          do
-          {
-            do
-            {
-              return localObject1;
-              jX();
-              b('r');
-              b('u');
-              b('e');
-              return a.arv;
-              jX();
-              b('a');
-              b('l');
-              b('s');
-              b('e');
-              return a.arw;
-              return new g(jU());
-              jX();
-              localObject2 = new b();
-              jW();
-              localObject1 = localObject2;
-            } while (c(']'));
-            do
-            {
-              jW();
-              ((b)localObject2).a(jT());
-              jW();
-            } while (c(','));
-            localObject1 = localObject2;
-          } while (c(']'));
-          throw Z("',' or ']'");
-          jX();
-          localObject2 = new e();
-          jW();
-          localObject1 = localObject2;
-        } while (c('}'));
-        do
-        {
-          jW();
-          if (this.arO != 34) {
-            throw Z("name");
-          }
-          localObject1 = jU();
-          jW();
-          if (!c(':')) {
-            throw Z("':'");
-          }
-          jW();
-          ((e)localObject2).a((String)localObject1, jT());
-          jW();
-        } while (c(','));
-        localObject1 = localObject2;
-      } while (c('}'));
-      throw Z("',' or '}'");
+      localObject = lP();
+      AppMethodBeat.o(70557);
+      return localObject;
     }
-    jY();
-    c('-');
-    int i = this.arO;
-    if (!jV()) {
-      throw Z("digit");
-    }
-    while ((i != 48) && (jV())) {}
-    if (c('.'))
-    {
-      if (!jV()) {
-        throw Z("digit");
-      }
-      while (jV()) {}
-    }
-    if ((c('e')) || (c('E')))
-    {
-      if (!c('+')) {
-        c('-');
-      }
-      if (!jV()) {
-        throw Z("digit");
-      }
-      while (jV()) {}
-    }
-    return new d(jZ());
+    Object localObject = lX();
+    AppMethodBeat.o(70557);
+    return localObject;
   }
   
-  final void jW()
+  final void mb()
   {
-    if ((this.arO == 32) || (this.arO == 9) || (this.arO == 10) || (this.arO == 13)) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        return;
-      }
-      jX();
-      break;
+    AppMethodBeat.i(70573);
+    while (mg()) {
+      mc();
     }
+    AppMethodBeat.o(70573);
   }
   
-  final void jX()
+  final void mc()
   {
-    if (this.index == this.fill)
+    AppMethodBeat.i(70574);
+    if (this.index == this.aue)
     {
-      if (this.arQ != -1)
+      if (this.aui != -1)
       {
-        this.arP.append(this.arL, this.arQ, this.fill - this.arQ);
-        this.arQ = 0;
+        this.auh.append(this.auc, this.aui, this.aue - this.aui);
+        this.aui = 0;
       }
-      this.arM += this.fill;
-      this.fill = this.arK.read(this.arL, 0, this.arL.length);
+      this.aud += this.aue;
+      this.aue = this.reader.read(this.auc, 0, this.auc.length);
       this.index = 0;
-      if (this.fill == -1)
+      if (this.aue == -1)
       {
-        this.arO = -1;
+        this.aug = -1;
+        AppMethodBeat.o(70574);
         return;
       }
     }
-    if (this.arO == 10)
+    if (this.aug == 10)
     {
       this.line += 1;
-      this.arN = (this.arM + this.index);
+      this.auf = (this.aud + this.index);
     }
-    char[] arrayOfChar = this.arL;
+    char[] arrayOfChar = this.auc;
     int i = this.index;
     this.index = (i + 1);
-    this.arO = arrayOfChar[i];
+    this.aug = arrayOfChar[i];
+    AppMethodBeat.o(70574);
   }
   
-  final boolean ka()
+  final boolean mj()
   {
-    return this.arO == -1;
+    return this.aug == -1;
   }
 }
 

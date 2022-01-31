@@ -2,87 +2,108 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.j.a;
-import com.tencent.mm.plugin.webview.luggage.ipc.MainProcessTask;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.i.a;
+import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.plugin.webview.model.ah;
+import com.tencent.mm.plugin.webview.model.am;
 import com.tencent.mm.plugin.webview.modeltools.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public class LuggageUploadMediaFileManager$UploadMediaFileTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<UploadMediaFileTask> CREATOR = new LuggageUploadMediaFileManager.UploadMediaFileTask.2();
+  public static final Parcelable.Creator<UploadMediaFileTask> CREATOR;
   public String appId;
-  public String bUi;
-  public Runnable gfD;
-  private LuggageUploadMediaFileManager.a reh;
-  public String rek;
-  public String rel;
+  public String cBO;
+  public Runnable hxp;
   public boolean success;
+  private LuggageUploadMediaFileManager.a uUj;
+  public String uUm;
+  public String uUn;
+  
+  static
+  {
+    AppMethodBeat.i(6413);
+    CREATOR = new LuggageUploadMediaFileManager.UploadMediaFileTask.2();
+    AppMethodBeat.o(6413);
+  }
   
   public LuggageUploadMediaFileManager$UploadMediaFileTask() {}
   
   private LuggageUploadMediaFileManager$UploadMediaFileTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(6411);
+    f(paramParcel);
+    AppMethodBeat.o(6411);
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    y.i("MicroMsg.UploadMediaTask", "runInMainProcess");
-    if (this.reh == null) {
-      this.reh = new LuggageUploadMediaFileManager.a()
+    AppMethodBeat.i(6407);
+    ab.i("MicroMsg.UploadMediaTask", "runInMainProcess");
+    if (this.uUj == null) {
+      this.uUj = new LuggageUploadMediaFileManager.a()
       {
-        public final void c(boolean paramAnonymousBoolean, String paramAnonymousString1, String paramAnonymousString2)
+        public final void d(boolean paramAnonymousBoolean, String paramAnonymousString1, String paramAnonymousString2)
         {
-          y.i("MicroMsg.UploadMediaTask", "success = %b, mediaId = %s, mediaUrl = %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString1, paramAnonymousString2 });
+          AppMethodBeat.i(6405);
+          ab.i("MicroMsg.UploadMediaTask", "success = %b, mediaId = %s, mediaUrl = %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString1, paramAnonymousString2 });
           LuggageUploadMediaFileManager.UploadMediaFileTask.this.success = paramAnonymousBoolean;
-          LuggageUploadMediaFileManager.UploadMediaFileTask.this.bUi = paramAnonymousString1;
-          LuggageUploadMediaFileManager.UploadMediaFileTask.this.rel = paramAnonymousString2;
+          LuggageUploadMediaFileManager.UploadMediaFileTask.this.cBO = paramAnonymousString1;
+          LuggageUploadMediaFileManager.UploadMediaFileTask.this.uUn = paramAnonymousString2;
           LuggageUploadMediaFileManager.UploadMediaFileTask.a(LuggageUploadMediaFileManager.UploadMediaFileTask.this);
+          AppMethodBeat.o(6405);
         }
       };
     }
-    WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.ccL().Sl(this.rek);
+    WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.dcE().ahh(this.uUm);
     if (localWebViewJSSDKFileItem == null)
     {
-      ahI();
+      aBp();
+      AppMethodBeat.o(6407);
       return;
     }
-    switch (localWebViewJSSDKFileItem.bLN)
+    switch (localWebViewJSSDKFileItem.cth)
     {
     case 2: 
     case 3: 
     default: 
-      LuggageUploadMediaFileManager.a(ae.getContext(), this.appId, this.rek, a.dls, false, this.reh);
+      LuggageUploadMediaFileManager.a(ah.getContext(), this.appId, this.uUm, a.ecN, false, this.uUj);
+      AppMethodBeat.o(6407);
       return;
     case 1: 
-      LuggageUploadMediaFileManager.a(ae.getContext(), localWebViewJSSDKFileItem, this.appId, this.rek, a.dlr, false, this.reh);
+      LuggageUploadMediaFileManager.a(ah.getContext(), localWebViewJSSDKFileItem, this.appId, this.uUm, a.ecM, false, this.uUj);
+      AppMethodBeat.o(6407);
       return;
     }
-    LuggageUploadMediaFileManager.a(ae.getContext(), this.appId, this.rek, a.dls, false, this.reh);
+    LuggageUploadMediaFileManager.a(ah.getContext(), this.appId, this.uUm, a.ecN, false, this.uUj);
+    AppMethodBeat.o(6407);
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    if (this.gfD != null) {
-      this.gfD.run();
+    AppMethodBeat.i(6408);
+    if (this.hxp != null) {
+      this.hxp.run();
     }
+    AppMethodBeat.o(6408);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     boolean bool = true;
-    this.rek = paramParcel.readString();
+    AppMethodBeat.i(6409);
+    this.uUm = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.bUi = paramParcel.readString();
-    this.rel = paramParcel.readString();
+    this.cBO = paramParcel.readString();
+    this.uUn = paramParcel.readString();
     if (paramParcel.readByte() == 1) {}
     for (;;)
     {
       this.success = bool;
+      AppMethodBeat.o(6409);
       return;
       bool = false;
     }
@@ -90,14 +111,16 @@ public class LuggageUploadMediaFileManager$UploadMediaFileTask
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.rek);
+    AppMethodBeat.i(6410);
+    paramParcel.writeString(this.uUm);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.bUi);
-    paramParcel.writeString(this.rel);
+    paramParcel.writeString(this.cBO);
+    paramParcel.writeString(this.uUn);
     if (this.success) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
+      AppMethodBeat.o(6410);
       return;
     }
   }

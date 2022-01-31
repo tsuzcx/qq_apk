@@ -2,21 +2,19 @@ package com.tencent.mm.plugin.wallet.balance.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.wallet.balance.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletBalanceFetchUI$5
   implements DialogInterface.OnClickListener
 {
-  WalletBalanceFetchUI$5(WalletBalanceFetchUI paramWalletBalanceFetchUI, b paramb) {}
+  WalletBalanceFetchUI$5(WalletBalanceFetchUI paramWalletBalanceFetchUI) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(45359);
     paramDialogInterface.dismiss();
-    if (!WalletBalanceFetchUI.a(this.qgO, this.qgT))
-    {
-      WalletBalanceFetchUI.a(this.qgO, this.qgT.bOT);
-      WalletBalanceFetchUI.b(this.qgO, this.qgT);
-    }
+    WalletBalanceFetchUI.o(this.tOj);
+    AppMethodBeat.o(45359);
   }
 }
 

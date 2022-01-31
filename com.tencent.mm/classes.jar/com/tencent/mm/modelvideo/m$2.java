@@ -1,8 +1,9 @@
 package com.tencent.mm.modelvideo;
 
-import com.tencent.mm.cf.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
 import com.tencent.mm.compatible.util.g.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.List;
 import java.util.Map;
 
@@ -13,38 +14,40 @@ final class m$2
   
   public final void run()
   {
-    m.Sn();
-    m.c(this.eGO);
-    m.a(this.eGO, "");
+    AppMethodBeat.i(50735);
+    m.alA();
+    m.c(this.fWE);
+    m.a(this.fWE, "");
     long l2 = 0L;
     long l1 = l2;
-    if (this.eGN > 0L)
+    if (this.fWD > 0L)
     {
       l1 = l2;
-      if (m.d(this.eGO).get(Long.valueOf(this.eGN)) != null) {
-        l1 = ((g.a)m.d(this.eGO).get(Long.valueOf(this.eGN))).zJ();
+      if (m.d(this.fWE).get(Long.valueOf(this.fWD)) != null) {
+        l1 = ((g.a)m.d(this.fWE).get(Long.valueOf(this.fWD))).Mm();
       }
     }
-    y.i("MicroMsg.SightMassSendService", "on ERROR massSendId: %d time: %d errType %d errCode %d", new Object[] { Long.valueOf(this.eGN), Long.valueOf(l1), Integer.valueOf(this.bEf), Integer.valueOf(this.bEg) });
-    if ((this.bEf != 0) || (this.bEg != 0)) {
-      m.j(this.eGO);
+    ab.i("MicroMsg.SightMassSendService", "on ERROR massSendId: %d time: %d errType %d errCode %d", new Object[] { Long.valueOf(this.fWD), Long.valueOf(l1), Integer.valueOf(this.val$errType), Integer.valueOf(this.val$errCode) });
+    if ((this.val$errType != 0) || (this.val$errCode != 0)) {
+      m.j(this.fWE);
     }
-    y.i("MicroMsg.SightMassSendService", "onSceneEnd  inCnt: %d stop: %d running: %B sending: %B", new Object[] { Integer.valueOf(m.access$300()), Integer.valueOf(m.e(this.eGO)), Boolean.valueOf(m.f(this.eGO)), Boolean.valueOf(m.g(this.eGO)) });
-    if (m.e(this.eGO) > 0) {
-      m.h(this.eGO);
+    ab.i("MicroMsg.SightMassSendService", "onSceneEnd  inCnt: %d stop: %d running: %B sending: %B", new Object[] { Integer.valueOf(m.access$300()), Integer.valueOf(m.e(this.fWE)), Boolean.valueOf(m.f(this.fWE)), Boolean.valueOf(m.g(this.fWE)) });
+    if (m.e(this.fWE) > 0) {
+      m.h(this.fWE);
     }
-    while (m.g(this.eGO))
+    while (m.g(this.fWE))
     {
-      m.So();
+      m.alB();
+      AppMethodBeat.o(50735);
       return;
     }
-    y.w("MicroMsg.SightMassSendService", "StopFlag ERROR force do stop, fail all job");
-    t localt = o.Sr();
-    Object localObject2 = m.k(this.eGO);
+    ab.w("MicroMsg.SightMassSendService", "StopFlag ERROR force do stop, fail all job");
+    t localt = o.alE();
+    Object localObject2 = m.k(this.fWE);
     if ((localObject2 == null) || (((List)localObject2).isEmpty())) {}
     for (;;)
     {
-      m.i(this.eGO);
+      m.i(this.fWE);
       break;
       l1 = System.currentTimeMillis() / 1000L;
       Object localObject1 = new StringBuilder();
@@ -63,14 +66,17 @@ final class m$2
       ((StringBuilder)localObject1).append(')');
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject1 = "UPDATE videoinfo2 SET status=198, lastmodifytime=" + l1 + " WHERE masssendid IN " + (String)localObject1;
-      y.i("MicroMsg.VideoInfoStorage", "fail all massSendInfos, sql %s", new Object[] { localObject1 });
-      localt.dXo.gk("videoinfo2", (String)localObject1);
+      ab.i("MicroMsg.VideoInfoStorage", "fail all massSendInfos, sql %s", new Object[] { localObject1 });
+      localt.fnw.execSQL("videoinfo2", (String)localObject1);
     }
   }
   
   public final String toString()
   {
-    return super.toString() + "|onSceneEnd";
+    AppMethodBeat.i(50736);
+    String str = super.toString() + "|onSceneEnd";
+    AppMethodBeat.o(50736);
+    return str;
   }
 }
 

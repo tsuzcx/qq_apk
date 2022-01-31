@@ -1,42 +1,18 @@
 package com.google.android.gms.wearable.internal;
 
-public final class zzac
-  extends zzbt.zza
+import com.google.android.gms.common.api.Result;
+import com.google.android.gms.common.internal.PendingResultUtil.ResultConverter;
+
+final class zzac
+  implements PendingResultUtil.ResultConverter
 {
-  private zzr zzbUi;
-  private zzad zzbUm;
-  private final Object zzrJ = new Object();
+  static final PendingResultUtil.ResultConverter zzbx;
   
-  public final void zzE(int paramInt1, int paramInt2)
-  {
-    synchronized (this.zzrJ)
-    {
-      zzad localzzad = this.zzbUm;
-      zzr localzzr = new zzr(paramInt1, paramInt2);
-      this.zzbUi = localzzr;
-      if (localzzad != null) {
-        localzzad.zzb(localzzr);
-      }
-      return;
-    }
-  }
-  
-  public final void zza(zzad paramzzad)
-  {
-    synchronized (this.zzrJ)
-    {
-      this.zzbUm = ((zzad)com.google.android.gms.common.internal.zzac.zzw(paramzzad));
-      zzr localzzr = this.zzbUi;
-      if (localzzr != null) {
-        paramzzad.zzb(localzzr);
-      }
-      return;
-    }
-  }
+  public final Object convert(Result arg1) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzac
  * JD-Core Version:    0.7.0.1
  */

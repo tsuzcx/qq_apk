@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/kl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/os" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center" android:id="@id/bh9" android:paddingTop="15.0dip" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/zh" />
-    <TextView android:textSize="@dimen/k9" android:textColor="@color/a2r" android:gravity="center|left" android:id="@id/bh_" android:background="@color/zm" android:paddingLeft="@dimen/mq" android:paddingTop="@dimen/kv" android:paddingRight="@dimen/mq" android:paddingBottom="@dimen/mx" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/age" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/aez" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.fav.ui.widget.FavVideoView android:id="@id/xe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <include layout="@layout/yy" />
+    </RelativeLayout>
 </LinearLayout>

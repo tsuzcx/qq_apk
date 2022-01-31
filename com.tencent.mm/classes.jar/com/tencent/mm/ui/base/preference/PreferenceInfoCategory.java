@@ -6,15 +6,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PreferenceInfoCategory
   extends Preference
 {
-  public int uHe = 0;
-  public View.OnClickListener vdT = null;
-  public View.OnClickListener vdU = null;
+  public int yUp;
+  public View.OnClickListener zst;
+  public View.OnClickListener zsu;
   
   public PreferenceInfoCategory(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,14 +23,22 @@ public class PreferenceInfoCategory
   public PreferenceInfoCategory(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(a.h.mm_preference_info_center);
+    AppMethodBeat.i(107281);
+    this.zst = null;
+    this.zsu = null;
+    this.yUp = 0;
+    setLayoutResource(2130970240);
+    AppMethodBeat.o(107281);
   }
   
   protected final void onBindView(View paramView)
   {
+    AppMethodBeat.i(107282);
     super.onBindView(paramView);
     TextView localTextView = (TextView)paramView.findViewById(16908310);
-    if (localTextView == null) {
+    if (localTextView == null)
+    {
+      AppMethodBeat.o(107282);
       return;
     }
     if ((getTitle() == null) || (getTitle().length() <= 0)) {
@@ -39,24 +46,22 @@ public class PreferenceInfoCategory
     }
     for (;;)
     {
-      paramView = (ImageView)paramView.findViewById(a.g.add_my_qrcode);
-      paramView.setOnClickListener(this.vdT);
-      if (this.uHe <= 0) {
-        break;
+      paramView = (ImageView)paramView.findViewById(2131826242);
+      paramView.setOnClickListener(this.zst);
+      if (this.yUp > 0) {
+        paramView.setImageResource(this.yUp);
       }
-      paramView.setImageResource(this.uHe);
-      paramView.setVisibility(0);
+      AppMethodBeat.o(107282);
       return;
       localTextView.setVisibility(0);
       localTextView.setText(getTitle());
-      localTextView.setOnClickListener(this.vdU);
+      localTextView.setOnClickListener(this.zsu);
     }
-    paramView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.PreferenceInfoCategory
  * JD-Core Version:    0.7.0.1
  */

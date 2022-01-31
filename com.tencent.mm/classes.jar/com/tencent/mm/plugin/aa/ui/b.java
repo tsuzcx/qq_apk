@@ -8,17 +8,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.h;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.protocal.c.k;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.protocal.protobuf.k;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.w;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,28 +22,39 @@ public final class b
   extends BaseAdapter
 {
   private Context context;
-  List<k> dataList = new ArrayList();
+  List<k> dataList;
   int mode;
   
   public b(Context paramContext, int paramInt)
   {
+    AppMethodBeat.i(40715);
+    this.dataList = new ArrayList();
     this.context = paramContext;
     this.mode = paramInt;
+    AppMethodBeat.o(40715);
   }
   
-  public final void Vy()
+  public final void aoX()
   {
+    AppMethodBeat.i(40719);
     this.dataList.clear();
+    AppMethodBeat.o(40719);
   }
   
   public final int getCount()
   {
-    return this.dataList.size();
+    AppMethodBeat.i(40716);
+    int i = this.dataList.size();
+    AppMethodBeat.o(40716);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.dataList.get(paramInt);
+    AppMethodBeat.i(40717);
+    Object localObject = this.dataList.get(paramInt);
+    AppMethodBeat.o(40717);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -57,98 +64,105 @@ public final class b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(40718);
     View localView = paramView;
     if (paramView == null)
     {
-      localView = y.gt(this.context).inflate(a.g.aa_query_list_item, paramViewGroup, false);
+      localView = w.hM(this.context).inflate(2130968578, paramViewGroup, false);
       localView.setTag(new a(localView));
     }
     a locala = (a)localView.getTag();
     k localk = (k)getItem(paramInt);
-    locala.dpY.setImageResource(a.h.aa_record_default_icon);
-    a.b.g(locala.dpY, localk.srr, a.h.aa_record_default_icon);
-    locala.eXr.setText(j.a(this.context, localk.title, locala.eXr.getTextSize()));
-    paramViewGroup = ((com.tencent.mm.plugin.messenger.a.b)g.r(com.tencent.mm.plugin.messenger.a.b.class)).gV(localk.srr);
-    if (!bk.bl(paramViewGroup))
+    locala.ehv.setImageResource(2131230720);
+    a.b.f(locala.ehv, localk.wjX, 2131230720);
+    locala.titleTv.setText(j.b(this.context, localk.title, locala.titleTv.getTextSize()));
+    paramViewGroup = ((com.tencent.mm.plugin.messenger.a.b)g.E(com.tencent.mm.plugin.messenger.a.b.class)).nE(localk.wjX);
+    if (!bo.isNullOrNil(paramViewGroup))
     {
       paramView = paramViewGroup;
       if (!paramViewGroup.endsWith("@chatroom")) {}
     }
     else
     {
-      paramView = this.context.getString(a.i.aa_chatting_roominfo_noname);
+      paramView = this.context.getString(2131296344);
     }
-    locala.eXq.setText(j.a(this.context, paramView, locala.eXq.getTextSize()));
-    if (this.mode == 2) {
-      locala.eXs.setText(localk.srD);
-    }
-    for (;;)
+    locala.gpo.setText(j.b(this.context, paramView, locala.gpo.getTextSize()));
+    if (this.mode == 2)
     {
-      locala.eXt.setText(String.format("%s%s", new Object[] { Float.valueOf((float)localk.ceq / 100.0F), this.context.getString(a.i.aa_yuan) }));
-      locala.eXu.setVisibility(0);
+      locala.gpp.setText(localk.wkj);
+      locala.gpq.setText(String.format("%s%s", new Object[] { Float.valueOf((float)localk.cNd / 100.0F), this.context.getString(2131296390) }));
+      locala.gpr.setVisibility(0);
       if (this.mode != 2) {
-        break;
+        break label395;
       }
       switch (localk.state)
       {
       default: 
-        locala.eXu.setVisibility(4);
-        return localView;
-        locala.eXs.setText(localk.srA);
+        locala.gpr.setVisibility(4);
       }
     }
-    locala.eXu.setText(a.i.aa_list_record_status_unpaied);
-    locala.eXu.setTextColor(this.context.getResources().getColor(a.c.aa_query_list_hint_color));
-    return localView;
-    locala.eXu.setText(a.i.aa_list_record_status_paied);
-    locala.eXu.setTextColor(this.context.getResources().getColor(a.c.aa_query_list_hint_color));
-    return localView;
-    switch (localk.state)
+    for (;;)
     {
-    default: 
-      locala.eXu.setVisibility(4);
+      AppMethodBeat.o(40718);
       return localView;
-    case 1: 
-      locala.eXu.setText(a.i.aa_list_record_status_part);
-      locala.eXu.setTextColor(this.context.getResources().getColor(a.c.aa_query_list_hint_color));
-      return localView;
-    case 2: 
-      locala.eXu.setText(a.i.aa_list_record_status_finish);
-      locala.eXu.setTextColor(this.context.getResources().getColor(a.c.aa_query_list_hint_color));
-      return localView;
-    case 3: 
-      locala.eXu.setText(a.i.aa_list_record_status_close);
-      locala.eXu.setTextColor(this.context.getResources().getColor(a.c.red));
-      return localView;
+      locala.gpp.setText(localk.wkg);
+      break;
+      locala.gpr.setText(2131296364);
+      locala.gpr.setTextColor(this.context.getResources().getColor(2131689632));
+      continue;
+      locala.gpr.setText(2131296362);
+      locala.gpr.setTextColor(this.context.getResources().getColor(2131689632));
+      continue;
+      label395:
+      switch (localk.state)
+      {
+      default: 
+        locala.gpr.setVisibility(4);
+        break;
+      case 1: 
+        locala.gpr.setText(2131296363);
+        locala.gpr.setTextColor(this.context.getResources().getColor(2131689632));
+        break;
+      case 2: 
+        locala.gpr.setText(2131296361);
+        locala.gpr.setTextColor(this.context.getResources().getColor(2131689632));
+        break;
+      case 3: 
+        locala.gpr.setText(2131296359);
+        locala.gpr.setTextColor(this.context.getResources().getColor(2131690391));
+        break;
+      case 4: 
+        locala.gpr.setText(2131296360);
+        locala.gpr.setTextColor(this.context.getResources().getColor(2131690391));
+      }
     }
-    locala.eXu.setText(a.i.aa_list_record_status_expire);
-    locala.eXu.setTextColor(this.context.getResources().getColor(a.c.red));
-    return localView;
   }
   
-  private final class a
+  final class a
   {
-    public ImageView dpY;
-    public TextView eXq;
-    public TextView eXr;
-    public TextView eXs;
-    public TextView eXt;
-    public TextView eXu;
+    public ImageView ehv;
+    public TextView gpo;
+    public TextView gpp;
+    public TextView gpq;
+    public TextView gpr;
+    public TextView titleTv;
     
     public a(View paramView)
     {
-      this.dpY = ((ImageView)paramView.findViewById(a.f.aa_query_list_item_avatar));
-      this.eXq = ((TextView)paramView.findViewById(a.f.aa_query_list_item_chatroom));
-      this.eXr = ((TextView)paramView.findViewById(a.f.aa_query_list_item_title));
-      this.eXs = ((TextView)paramView.findViewById(a.f.aa_query_list_item_date));
-      this.eXt = ((TextView)paramView.findViewById(a.f.aa_query_list_item_amount));
-      this.eXu = ((TextView)paramView.findViewById(a.f.aa_query_list_item_status));
+      AppMethodBeat.i(40714);
+      this.ehv = ((ImageView)paramView.findViewById(2131820901));
+      this.gpo = ((TextView)paramView.findViewById(2131820903));
+      this.titleTv = ((TextView)paramView.findViewById(2131820904));
+      this.gpp = ((TextView)paramView.findViewById(2131820905));
+      this.gpq = ((TextView)paramView.findViewById(2131820906));
+      this.gpr = ((TextView)paramView.findViewById(2131820907));
+      AppMethodBeat.o(40714);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.b
  * JD-Core Version:    0.7.0.1
  */

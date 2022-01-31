@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.exdevice.service;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+
 final class y$3
   implements Runnable
 {
@@ -7,14 +10,16 @@ final class y$3
   
   public final void run()
   {
-    if (!y.a(this.jzD, this.jtO, this.jzE)) {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "scanImp failed!!!");
+    AppMethodBeat.i(19655);
+    if (!y.a(this.lJc, this.lDn, this.lJd)) {
+      ab.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "scanImp failed!!!");
     }
+    AppMethodBeat.o(19655);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.y.3
  * JD-Core Version:    0.7.0.1
  */

@@ -6,59 +6,72 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MusicItemLayout
   extends LinearLayout
 {
-  private GestureDetector jEK;
+  private GestureDetector lOj;
   
   public MusicItemLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(105067);
     initView();
+    AppMethodBeat.o(105067);
   }
   
   public MusicItemLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(105068);
     initView();
+    AppMethodBeat.o(105068);
   }
   
   private void initView()
   {
-    this.jEK = new GestureDetector(getContext(), new MusicItemLayout.a(this, (byte)0));
+    AppMethodBeat.i(105069);
+    this.lOj = new GestureDetector(getContext(), new MusicItemLayout.a(this, (byte)0));
+    AppMethodBeat.o(105069);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(105070);
     b.a locala = (b.a)getTag();
-    if (!locala.bnR())
+    if (!locala.bWo())
     {
-      if ((locala.mBF.getX() > paramMotionEvent.getX()) || (paramMotionEvent.getX() > locala.mBF.getX() + locala.mBF.getMeasuredWidth()) || (locala.mBF.getY() > paramMotionEvent.getY())) {
-        break label115;
+      if ((locala.pbK.getX() > paramMotionEvent.getX()) || (paramMotionEvent.getX() > locala.pbK.getX() + locala.pbK.getMeasuredWidth()) || (locala.pbK.getY() > paramMotionEvent.getY())) {
+        break label125;
       }
       float f1 = paramMotionEvent.getY();
-      float f2 = locala.mBF.getY();
-      if (f1 > locala.mBF.getMeasuredHeight() + f2) {
-        break label115;
+      float f2 = locala.pbK.getY();
+      if (f1 > locala.pbK.getMeasuredHeight() + f2) {
+        break label125;
       }
     }
-    label115:
-    for (int i = 1; i != 0; i = 0) {
+    label125:
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(105070);
       return false;
     }
+    AppMethodBeat.o(105070);
     return true;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.jEK.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.i(105071);
+    this.lOj.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(105071);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.MusicItemLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mm.ui.voicesearch;
 
-import com.tencent.mm.ui.r.a;
+import com.tencent.mm.ui.p.a;
 
 final class SearchConversationResultUI$1
-  implements r.a
+  implements p.a
 {
   SearchConversationResultUI$1(SearchConversationResultUI paramSearchConversationResultUI) {}
   
-  public final void Wp() {}
+  public final void apT() {}
 }
 
 

@@ -12,15 +12,15 @@ import java.util.regex.Pattern;
 
 public class ShareResPatchInfo
 {
-  public ArrayList<String> wZA = new ArrayList();
-  public HashMap<String, LargeModeInfo> wZB = new HashMap();
-  public HashSet<Pattern> wZC = new HashSet();
-  public String wZu = null;
-  public String wZv = null;
-  public ArrayList<String> wZw = new ArrayList();
-  public ArrayList<String> wZx = new ArrayList();
-  public ArrayList<String> wZy = new ArrayList();
-  public HashMap<String, File> wZz = new HashMap();
+  public String BvZ = null;
+  public String Bwa = null;
+  public ArrayList<String> Bwb = new ArrayList();
+  public ArrayList<String> Bwc = new ArrayList();
+  public ArrayList<String> Bwd = new ArrayList();
+  public HashMap<String, File> Bwe = new HashMap();
+  public ArrayList<String> Bwf = new ArrayList();
+  public HashMap<String, LargeModeInfo> Bwg = new HashMap();
+  public HashSet<Pattern> Bwh = new HashSet();
   
   public static void a(String paramString, ShareResPatchInfo paramShareResPatchInfo)
   {
@@ -44,8 +44,8 @@ public class ShareResPatchInfo
             break label89;
           }
           paramString = paramString.split(",", 3);
-          paramShareResPatchInfo.wZu = paramString[1];
-          paramShareResPatchInfo.wZv = paramString[2];
+          paramShareResPatchInfo.BvZ = paramString[1];
+          paramShareResPatchInfo.Bwa = paramString[2];
           j = i;
         }
       }
@@ -67,7 +67,7 @@ public class ShareResPatchInfo
         j = Integer.parseInt(paramString.split(":", 2)[1]);
         while (j > 0)
         {
-          localObject = paramShareResPatchInfo.wZC;
+          localObject = paramShareResPatchInfo.Bwh;
           str = arrayOfString[(i + 1)];
           paramString = str;
           if (str.contains(".")) {
@@ -96,7 +96,7 @@ public class ShareResPatchInfo
           if (k <= 0) {
             break;
           }
-          paramShareResPatchInfo.wZw.add(arrayOfString[(i + 1)]);
+          paramShareResPatchInfo.Bwb.add(arrayOfString[(i + 1)]);
           i += 1;
           k -= 1;
         }
@@ -110,7 +110,7 @@ public class ShareResPatchInfo
           if (k <= 0) {
             break;
           }
-          paramShareResPatchInfo.wZy.add(arrayOfString[(i + 1)]);
+          paramShareResPatchInfo.Bwd.add(arrayOfString[(i + 1)]);
           i += 1;
           k -= 1;
         }
@@ -127,10 +127,10 @@ public class ShareResPatchInfo
           paramString = arrayOfString[(i + 1)].split(",", 3);
           str = paramString[0];
           localObject = new LargeModeInfo();
-          ((LargeModeInfo)localObject).bIW = paramString[1];
-          ((LargeModeInfo)localObject).wZD = Long.parseLong(paramString[2]);
-          paramShareResPatchInfo.wZA.add(str);
-          paramShareResPatchInfo.wZB.put(str, localObject);
+          ((LargeModeInfo)localObject).cqq = paramString[1];
+          ((LargeModeInfo)localObject).Bwi = Long.parseLong(paramString[2]);
+          paramShareResPatchInfo.Bwf.add(str);
+          paramShareResPatchInfo.Bwg.put(str, localObject);
           i += 1;
           k -= 1;
         }
@@ -144,7 +144,7 @@ public class ShareResPatchInfo
           if (k <= 0) {
             break;
           }
-          paramShareResPatchInfo.wZx.add(arrayOfString[(i + 1)]);
+          paramShareResPatchInfo.Bwc.add(arrayOfString[(i + 1)]);
           i += 1;
           k -= 1;
         }
@@ -158,7 +158,7 @@ public class ShareResPatchInfo
       if (k <= 0) {
         break;
       }
-      paramShareResPatchInfo.wZz.put(arrayOfString[(i + 1)], null);
+      paramShareResPatchInfo.Bwe.put(arrayOfString[(i + 1)], null);
       i += 1;
       k -= 1;
     }
@@ -170,7 +170,7 @@ public class ShareResPatchInfo
     do
     {
       return false;
-      paramShareResPatchInfo = paramShareResPatchInfo.wZv;
+      paramShareResPatchInfo = paramShareResPatchInfo.Bwa;
     } while ((paramShareResPatchInfo == null) || (paramShareResPatchInfo.length() != 32));
     return true;
   }
@@ -196,50 +196,50 @@ public class ShareResPatchInfo
     }
     String str = paramString.split("\n")[0];
     if ((str == null) || (str.length() <= 0)) {
-      throw new TinkerRuntimeException("res meta Corrupted:" + paramString);
+      throw new TinkerRuntimeException("res meta Corrupted:".concat(String.valueOf(paramString)));
     }
     paramString = str.split(",", 3);
-    paramShareResPatchInfo.wZu = paramString[1];
-    paramShareResPatchInfo.wZv = paramString[2];
+    paramShareResPatchInfo.BvZ = paramString[1];
+    paramShareResPatchInfo.Bwa = paramString[2];
   }
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("resArscMd5:" + this.wZv + "\n");
-    localStringBuffer.append("arscBaseCrc:" + this.wZu + "\n");
-    Iterator localIterator = this.wZC.iterator();
+    localStringBuffer.append("resArscMd5:" + this.Bwa + "\n");
+    localStringBuffer.append("arscBaseCrc:" + this.BvZ + "\n");
+    Iterator localIterator = this.Bwh.iterator();
     Object localObject;
     while (localIterator.hasNext())
     {
       localObject = (Pattern)localIterator.next();
       localStringBuffer.append("pattern:" + localObject + "\n");
     }
-    localIterator = this.wZw.iterator();
+    localIterator = this.Bwb.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("addedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.wZy.iterator();
+    localIterator = this.Bwd.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("modifiedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.wZA.iterator();
+    localIterator = this.Bwf.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("largeModifiedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.wZx.iterator();
+    localIterator = this.Bwc.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("deletedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.wZz.keySet().iterator();
+    localIterator = this.Bwe.keySet().iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
@@ -250,9 +250,9 @@ public class ShareResPatchInfo
   
   public static class LargeModeInfo
   {
-    public String bIW = null;
+    public long Bwi;
+    public String cqq = null;
     public File file = null;
-    public long wZD;
   }
 }
 

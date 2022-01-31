@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.exdevice.service;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class a$1
   
   public final void run()
   {
-    a.a(this.jyC).a(0, -1, "", "", "", 0, null);
+    AppMethodBeat.i(19520);
+    a.a(this.lIb).a(0, -1, "", "", "", 0, null);
+    AppMethodBeat.o(19520);
   }
 }
 

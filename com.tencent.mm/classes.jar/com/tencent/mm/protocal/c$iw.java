@@ -5,7 +5,7 @@ public final class c$iw
 {
   public c$iw()
   {
-    super("showNavigationBarLoading", "showNavigationBarLoading", 197, false);
+    super("setFontSizeCallback", "", -2, false);
   }
 }
 

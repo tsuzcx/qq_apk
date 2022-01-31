@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import com.tencent.mm.ui.widget.a.e.d;
+import com.tencent.mm.ui.widget.b.e.c;
 
 final class PaylistAAUI$8$1
-  implements e.d
+  implements e.c
 {
   PaylistAAUI$8$1(PaylistAAUI.8 param8) {}
   
-  public final void b(boolean paramBoolean, String paramString) {}
+  public final void d(boolean paramBoolean, String paramString) {}
 }
 
 

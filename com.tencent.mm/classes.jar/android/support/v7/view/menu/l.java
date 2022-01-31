@@ -1,7 +1,7 @@
 package android.support.v7.view.menu;
 
 import android.content.Context;
-import android.support.v4.b.a.b;
+import android.support.v4.a.a.b;
 import android.support.v4.view.b.b;
 import android.view.ActionProvider;
 import android.view.ActionProvider.VisibilityListener;
@@ -25,7 +25,7 @@ final class l
     extends k.a
     implements ActionProvider.VisibilityListener
   {
-    b.b Wl;
+    b.b WY;
     
     public a(Context paramContext, ActionProvider paramActionProvider)
     {
@@ -34,30 +34,30 @@ final class l
     
     public final void a(b.b paramb)
     {
-      this.Wl = paramb;
-      this.Wi.setVisibilityListener(this);
+      this.WY = paramb;
+      this.WV.setVisibilityListener(this);
     }
     
     public final boolean isVisible()
     {
-      return this.Wi.isVisible();
+      return this.WV.isVisible();
     }
     
     public final void onActionProviderVisibilityChanged(boolean paramBoolean)
     {
-      if (this.Wl != null) {
-        this.Wl.dg();
+      if (this.WY != null) {
+        this.WY.dC();
       }
     }
     
     public final View onCreateActionView(MenuItem paramMenuItem)
     {
-      return this.Wi.onCreateActionView(paramMenuItem);
+      return this.WV.onCreateActionView(paramMenuItem);
     }
     
     public final boolean overridesItemVisibility()
     {
-      return this.Wi.overridesItemVisibility();
+      return this.WV.overridesItemVisibility();
     }
   }
 }

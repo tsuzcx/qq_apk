@@ -1,35 +1,29 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
 import android.app.Activity;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.List;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.ref.WeakReference;
 
 final class BizTimeLineHotView$7
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
   BizTimeLineHotView$7(BizTimeLineHotView paramBizTimeLineHotView) {}
   
-  public final void run()
+  public final boolean queueIdle()
   {
-    if (((BizTimeLineHotView.d(this.ihA) instanceof Activity)) && (((Activity)BizTimeLineHotView.d(this.ihA)).isFinishing())) {
-      return;
-    }
-    if (bk.dk(BizTimeLineHotView.a(this.ihA)))
+    AppMethodBeat.i(14312);
+    Looper.myQueue().removeIdleHandler(BizTimeLineHotView.g(this.jZn));
+    if ((this.jZn.jZe.get() == null) || (((Activity)this.jZn.jZe.get()).isFinishing()))
     {
-      this.ihA.setVisibility(8);
-      return;
+      AppMethodBeat.o(14312);
+      return false;
     }
-    if (this.ihA.getVisibility() != 0) {
-      this.ihA.setVisibility(0);
-    }
-    BizTimeLineHotListView localBizTimeLineHotListView = BizTimeLineHotView.e(this.ihA);
-    List localList = BizTimeLineHotView.a(this.ihA);
-    localBizTimeLineHotListView.hfb.clear();
-    localBizTimeLineHotListView.hfb.addAll(localList);
-    localBizTimeLineHotListView.aE(localBizTimeLineHotListView.hfb);
-    localBizTimeLineHotListView.ihr.agL.notifyChanged();
+    BizTimeLineHotView.f(this.jZn).aW(BizTimeLineHotView.a(this.jZn));
+    AppMethodBeat.o(14312);
+    return false;
   }
 }
 

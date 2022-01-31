@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class PreviewHdHeadImg$1
   implements MenuItem.OnMenuItemClickListener
@@ -11,10 +12,12 @@ final class PreviewHdHeadImg$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = new d(this.nSq, 1, false);
-    paramMenuItem.phH = new PreviewHdHeadImg.1.1(this);
-    paramMenuItem.phI = new PreviewHdHeadImg.1.2(this);
-    paramMenuItem.cfU();
+    AppMethodBeat.i(126989);
+    paramMenuItem = new d(this.qGo, 1, false);
+    paramMenuItem.sao = new PreviewHdHeadImg.1.1(this);
+    paramMenuItem.sap = new PreviewHdHeadImg.1.2(this);
+    paramMenuItem.crd();
+    AppMethodBeat.o(126989);
     return true;
   }
 }

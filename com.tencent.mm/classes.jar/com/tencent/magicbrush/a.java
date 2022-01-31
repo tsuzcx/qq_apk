@@ -1,50 +1,133 @@
 package com.tencent.magicbrush;
 
-import com.tencent.magicbrush.a.d.f;
-import java.io.File;
-import java.lang.reflect.Method;
+import android.util.SparseLongArray;
+import com.tencent.magicbrush.d.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class a
+public final class a
 {
-  private static String bkg = "";
-  private static String bkh = null;
+  public final MBRuntime bJe;
+  public SparseLongArray bJf;
   
-  public static boolean bl(String paramString)
+  a(MBRuntime paramMBRuntime)
   {
-    return (paramString == null) || ("".equals(paramString));
+    AppMethodBeat.i(115779);
+    this.bJf = new SparseLongArray();
+    this.bJe = paramMBRuntime;
+    AppMethodBeat.o(115779);
   }
   
-  public static void loadLibrary(String paramString)
+  public final float fH(int paramInt)
   {
-    String str = null;
-    if (bkh != null) {
-      str = bkh + "/lib" + paramString + ".so";
-    }
-    if ((str != null) && (new File(str).exists()))
+    AppMethodBeat.i(115780);
+    float f = (yl() - paramInt) * 1000.0F / (float)e.av(this.bJf.get(paramInt));
+    AppMethodBeat.o(115780);
+    return f;
+  }
+  
+  public final a.a getCurrentFps()
+  {
+    AppMethodBeat.i(115781);
+    synchronized (this.bJe)
     {
-      d.f.d("MagicBrush.Utils", "System.load(%s)", new Object[] { str });
-      try
+      if (this.bJe.mNativeInst == 0L)
       {
-        paramString = a.class.getClassLoader();
-        Runtime localRuntime = Runtime.getRuntime();
-        Method localMethod = localRuntime.getClass().getDeclaredMethod("load", new Class[] { String.class, ClassLoader.class });
-        localMethod.setAccessible(true);
-        localMethod.invoke(localRuntime, new Object[] { str, paramString });
-        return;
+        locala = new a.a(this);
+        AppMethodBeat.o(115781);
+        return locala;
       }
-      catch (Exception paramString)
-      {
-        d.f.e("MagicBrush.Utils", "loadLibrary Exception", new Object[] { paramString });
-        return;
-      }
+      a.a locala = new a.a(this);
+      float[] arrayOfFloat = this.bJe.nativeGetCurrentFps(this.bJe.mNativeInst);
+      locala.bJg = arrayOfFloat[0];
+      locala.bJh = arrayOfFloat[1];
+      AppMethodBeat.o(115781);
+      return locala;
     }
-    d.f.d("MagicBrush.Utils", "System.loadLibrary(%s)", new Object[] { paramString });
-    System.loadLibrary(paramString);
+  }
+  
+  public final float yk()
+  {
+    AppMethodBeat.i(115782);
+    synchronized (this.bJe)
+    {
+      if (this.bJe.mNativeInst == 0L)
+      {
+        AppMethodBeat.o(115782);
+        return -1.0F;
+      }
+      float f = this.bJe.nativeGetCurrentFpsVariance(this.bJe.mNativeInst);
+      AppMethodBeat.o(115782);
+      return f;
+    }
+  }
+  
+  public final int yl()
+  {
+    AppMethodBeat.i(115783);
+    synchronized (this.bJe)
+    {
+      if (this.bJe.mNativeInst == 0L)
+      {
+        AppMethodBeat.o(115783);
+        return -1;
+      }
+      int i = this.bJe.nativeGetFrameCounter(this.bJe.mNativeInst);
+      AppMethodBeat.o(115783);
+      return i;
+    }
+  }
+  
+  public final int ym()
+  {
+    AppMethodBeat.i(115784);
+    synchronized (this.bJe)
+    {
+      if (this.bJe.mNativeInst == 0L)
+      {
+        AppMethodBeat.o(115784);
+        return 0;
+      }
+      int i = this.bJe.nativeGetDrawCalls(this.bJe.mNativeInst);
+      AppMethodBeat.o(115784);
+      return i;
+    }
+  }
+  
+  public final int yn()
+  {
+    AppMethodBeat.i(115785);
+    synchronized (this.bJe)
+    {
+      if (this.bJe.mNativeInst == 0L)
+      {
+        AppMethodBeat.o(115785);
+        return 0;
+      }
+      int i = this.bJe.nativeGetVertexes(this.bJe.mNativeInst);
+      AppMethodBeat.o(115785);
+      return i;
+    }
+  }
+  
+  public final int yo()
+  {
+    AppMethodBeat.i(115786);
+    synchronized (this.bJe)
+    {
+      if (this.bJe.mNativeInst == 0L)
+      {
+        AppMethodBeat.o(115786);
+        return 0;
+      }
+      int i = this.bJe.nativeGetTriangles(this.bJe.mNativeInst);
+      AppMethodBeat.o(115786);
+      return i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.magicbrush.a
  * JD-Core Version:    0.7.0.1
  */

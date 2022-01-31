@@ -1,29 +1,17 @@
 package com.tencent.mm.bi;
 
-import android.media.MediaCodec;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fz;
+import com.tencent.mm.sdk.b.c;
 
 final class d$1
-  implements Runnable
+  extends c<fz>
 {
-  d$1(d paramd) {}
-  
-  public final void run()
+  d$1(d paramd)
   {
-    if (this.eIX.eIT != null) {
-      y.i("MicroMsg.MediaCodecTranscodeDecoder", "delay to stop decoder");
-    }
-    try
-    {
-      this.eIX.eIT.stop();
-      this.eIX.eIT.release();
-      this.eIX.eIT = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      y.printErrStackTrace("MicroMsg.MediaCodecTranscodeDecoder", localException, "delay to stop decoder error: %s", new Object[] { localException.getMessage() });
-    }
+    AppMethodBeat.i(16620);
+    this.__eventId = fz.class.getName().hashCode();
+    AppMethodBeat.o(16620);
   }
 }
 

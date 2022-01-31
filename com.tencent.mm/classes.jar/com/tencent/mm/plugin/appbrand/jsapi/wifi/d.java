@@ -7,13 +7,13 @@ import android.content.IntentFilter;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.text.TextUtils;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.e;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -24,86 +24,93 @@ public final class d
 {
   public static final int CTRL_INDEX = 314;
   public static final String NAME = "startWifi";
-  public static boolean gGR = false;
-  public static BroadcastReceiver gGS = null;
+  public static BroadcastReceiver ihA = null;
+  public static boolean ihz = false;
   
-  public final void a(final c paramc, final JSONObject paramJSONObject, int paramInt)
+  public final void a(final c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    y.i("MicroMsg.JsApiStartWifi", "invoke startWifi");
+    AppMethodBeat.i(94376);
+    ab.i("MicroMsg.JsApiStartWifi", "invoke startWifi");
     paramJSONObject = paramc.getContext();
     if (paramJSONObject == null)
     {
-      y.e("MicroMsg.JsApiStartWifi", "mContext is null, invoke fail!");
+      ab.e("MicroMsg.JsApiStartWifi", "mContext is null, invoke fail!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(12010));
-      paramc.C(paramInt, h("fail:context is null", paramJSONObject));
+      paramc.h(paramInt, j("fail:context is null", paramJSONObject));
+      AppMethodBeat.o(94376);
       return;
     }
-    com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.d.cp(paramJSONObject);
-    if (!gGR)
+    com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.d.cR(paramJSONObject);
+    if (!ihz)
     {
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
       localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
       localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
       localIntentFilter.setPriority(2147483647);
-      gGS = new BroadcastReceiver()
+      ihA = new BroadcastReceiver()
       {
         public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
         {
-          if (paramAnonymousIntent == null) {}
+          AppMethodBeat.i(94374);
+          if (paramAnonymousIntent == null)
+          {
+            AppMethodBeat.o(94374);
+            return;
+          }
+          paramAnonymousContext = paramAnonymousIntent.getAction();
+          if (TextUtils.isEmpty(paramAnonymousContext))
+          {
+            AppMethodBeat.o(94374);
+            return;
+          }
+          ab.i("MicroMsg.JsApiStartWifi", "actiong:%s", new Object[] { paramAnonymousContext });
           int i;
-          label88:
-          do
+          if ("android.net.wifi.WIFI_STATE_CHANGED".equals(paramAnonymousContext))
           {
-            do
-            {
-              return;
-              paramAnonymousContext = paramAnonymousIntent.getAction();
-            } while (TextUtils.isEmpty(paramAnonymousContext));
-            y.i("MicroMsg.JsApiStartWifi", "actiong:%s", new Object[] { paramAnonymousContext });
-            if ("android.net.wifi.WIFI_STATE_CHANGED".equals(paramAnonymousContext))
-            {
-              i = paramAnonymousIntent.getIntExtra("wifi_state", 0);
-              y.i("MicroMsg.JsApiStartWifi", "wifiState" + i);
-            }
-            switch (i)
-            {
-            default: 
-              if (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramAnonymousContext)) {
-                break label184;
-              }
-              paramAnonymousContext = paramAnonymousIntent.getParcelableExtra("networkInfo");
-            }
-          } while (paramAnonymousContext == null);
-          paramAnonymousContext = (NetworkInfo)paramAnonymousContext;
-          label125:
+            i = paramAnonymousIntent.getIntExtra("wifi_state", 0);
+            ab.i("MicroMsg.JsApiStartWifi", "wifiState".concat(String.valueOf(i)));
+          }
+          label137:
           int j;
-          if (paramAnonymousContext.getState() == NetworkInfo.State.CONNECTED)
+          switch (i)
           {
-            i = 1;
-            if (paramAnonymousContext.getType() != 1) {
-              break label191;
+          default: 
+            if (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramAnonymousContext)) {
+              break label299;
             }
-            j = 1;
+            paramAnonymousContext = paramAnonymousIntent.getParcelableExtra("networkInfo");
+            if (paramAnonymousContext == null) {
+              break label299;
+            }
+            paramAnonymousContext = (NetworkInfo)paramAnonymousContext;
+            if (paramAnonymousContext.getState() == NetworkInfo.State.CONNECTED)
+            {
+              i = 1;
+              if (paramAnonymousContext.getType() != 1) {
+                break label208;
+              }
+              j = 1;
+            }
+            break;
           }
           for (;;)
           {
             if ((i != 0) && (j != 0))
             {
-              paramAnonymousContext = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.d.alo();
-              y.i("MicroMsg.JsApiStartWifi", "[mWiFiEventReceiver]currentWifi:%s", new Object[] { paramAnonymousContext });
+              paramAnonymousContext = com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.d.aGr();
+              ab.i("MicroMsg.JsApiStartWifi", "[mWiFiEventReceiver]currentWifi:%s", new Object[] { paramAnonymousContext });
               if (paramAnonymousContext == null)
               {
-                y.e("MicroMsg.JsApiStartWifi", "[CONNECTIVITY_ACTION]currentWIfi is null");
+                ab.e("MicroMsg.JsApiStartWifi", "[CONNECTIVITY_ACTION]currentWIfi is null");
+                AppMethodBeat.o(94374);
                 return;
-                d.p(paramc);
-                break label88;
-                label184:
+                d.z(paramc);
                 break;
                 i = 0;
-                break label125;
-                label191:
+                break label137;
+                label208:
                 j = 0;
                 continue;
               }
@@ -111,42 +118,34 @@ public final class d
               {
                 paramAnonymousIntent = new a.a();
                 HashMap localHashMap = new HashMap();
-                localHashMap.put("wifi", paramAnonymousContext.rB());
-                paramAnonymousIntent.b(paramc, 0).p(localHashMap).dispatch();
+                localHashMap.put("wifi", paramAnonymousContext.toJSONObject());
+                paramAnonymousIntent.b(paramc, 0).x(localHashMap).aBz();
+                AppMethodBeat.o(94374);
                 return;
               }
               catch (JSONException paramAnonymousContext)
               {
-                y.e("MicroMsg.JsApiStartWifi", "IConnectWiFiCallback is error");
-                y.printErrStackTrace("MicroMsg.JsApiStartWifi", paramAnonymousContext, "", new Object[0]);
+                ab.e("MicroMsg.JsApiStartWifi", "IConnectWiFiCallback is error");
+                ab.printErrStackTrace("MicroMsg.JsApiStartWifi", paramAnonymousContext, "", new Object[0]);
+                AppMethodBeat.o(94374);
                 return;
               }
             }
           }
-          d.p(paramc);
+          d.z(paramc);
+          label299:
+          AppMethodBeat.o(94374);
         }
       };
-      paramJSONObject.registerReceiver(gGS, localIntentFilter);
-      gGR = true;
+      paramJSONObject.registerReceiver(ihA, localIntentFilter);
+      ihz = true;
     }
-    paramJSONObject = new g.b()
-    {
-      public final void onDestroy()
-      {
-        if (d.gGS != null)
-        {
-          y.i("MicroMsg.JsApiStartWifi", "unregisterReceiver");
-          paramJSONObject.unregisterReceiver(d.gGS);
-          d.gGR = false;
-          d.gGS = null;
-        }
-        g.b(paramc.getAppId(), this);
-      }
-    };
-    g.a(paramc.getAppId(), paramJSONObject);
+    paramJSONObject = new d.2(this, paramJSONObject, paramc);
+    e.a(paramc.getAppId(), paramJSONObject);
     paramJSONObject = new HashMap();
     paramJSONObject.put("errCode", Integer.valueOf(0));
-    paramc.C(paramInt, h("ok", paramJSONObject));
+    paramc.h(paramInt, j("ok", paramJSONObject));
+    AppMethodBeat.o(94376);
   }
 }
 

@@ -1,15 +1,17 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ChattingSendDataToDeviceUI$8
   implements Runnable
 {
-  ChattingSendDataToDeviceUI$8(ChattingSendDataToDeviceUI paramChattingSendDataToDeviceUI, int paramInt1, as paramas, String paramString, ChattingSendDataToDeviceUI.c paramc, int paramInt2) {}
+  ChattingSendDataToDeviceUI$8(ChattingSendDataToDeviceUI paramChattingSendDataToDeviceUI, int paramInt1, ap paramap, String paramString, ChattingSendDataToDeviceUI.c paramc, int paramInt2) {}
   
   public final void run()
   {
-    int i = this.vlB + 1;
+    AppMethodBeat.i(30770);
+    int i = this.zBa + 1;
     int j;
     for (;;)
     {
@@ -18,19 +20,20 @@ final class ChattingSendDataToDeviceUI$8
       }
       try
       {
-        this.vlx.runOnUiThread(new ChattingSendDataToDeviceUI.8.1(this));
+        this.zAW.runOnUiThread(new ChattingSendDataToDeviceUI.8.1(this));
+        AppMethodBeat.o(30770);
         return;
       }
       catch (Exception localException)
       {
-        y.d("MicroMsg.ChattingSendDataToDeviceUI", "setProgress on progress view exception %s", new Object[] { localException });
+        ab.d("MicroMsg.ChattingSendDataToDeviceUI", "setProgress on progress view exception %s", new Object[] { localException });
         i = j;
       }
       j = i;
-      this.vlz.vnu.setProgress(i);
+      this.zAY.zCQ.Px(i);
       i += 1;
       j = i;
-      Thread.sleep(this.vlC);
+      Thread.sleep(this.zBb);
     }
   }
 }

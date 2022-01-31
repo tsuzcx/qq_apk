@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.Map;
 
 public final class m$a
@@ -13,27 +14,32 @@ public final class m$a
   public String username;
   public int version;
   
-  public static a Mw(String paramString)
+  public static a Ze(String paramString)
   {
-    paramString = bn.s(paramString, "program");
-    if (paramString != null) {
+    AppMethodBeat.i(24671);
+    Map localMap = br.F(paramString, "program");
+    if (localMap != null) {}
+    for (;;)
+    {
       try
       {
-        a locala = new a();
-        locala.title = bk.pm((String)paramString.get(".program.title"));
-        locala.thumbUrl = bk.pm((String)paramString.get(".program.thumburl"));
-        locala.username = bk.pm((String)paramString.get(".program.username"));
-        locala.path = bk.pm((String)paramString.get(".program.path"));
-        locala.version = bk.getInt((String)paramString.get(".program.version"), 0);
-        return locala;
+        paramString = new a();
+        paramString.title = bo.nullAsNil((String)localMap.get(".program.title"));
+        paramString.thumbUrl = bo.nullAsNil((String)localMap.get(".program.thumburl"));
+        paramString.username = bo.nullAsNil((String)localMap.get(".program.username"));
+        paramString.path = bo.nullAsNil((String)localMap.get(".program.path"));
+        paramString.version = bo.getInt((String)localMap.get(".program.version"), 0);
+        AppMethodBeat.o(24671);
+        return paramString;
       }
       catch (Exception paramString)
       {
-        y.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
-        return null;
+        ab.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
+        paramString = null;
+        continue;
       }
+      paramString = null;
     }
-    return null;
   }
 }
 

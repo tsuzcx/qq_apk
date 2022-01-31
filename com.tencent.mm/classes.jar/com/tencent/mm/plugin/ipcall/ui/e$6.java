@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
@@ -16,38 +17,42 @@ final class e$6
   
   public final void run()
   {
-    au.Hx();
-    if (((Boolean)c.Dz().get(ac.a.uqf, Boolean.valueOf(false))).booleanValue()) {
-      this.lup.luo.setVisibility(0);
+    AppMethodBeat.i(22038);
+    aw.aaz();
+    if (((Boolean)c.Ru().get(ac.a.yAf, Boolean.FALSE)).booleanValue()) {
+      this.nRH.nRG.setVisibility(0);
     }
     String str2;
     for (;;)
     {
-      au.Hx();
-      String str1 = (String)c.Dz().get(ac.a.uqh, "");
-      au.Hx();
-      str2 = (String)c.Dz().get(ac.a.uqi, "");
-      if (bk.bl(str1)) {
+      aw.aaz();
+      String str1 = (String)c.Ru().get(ac.a.yAh, "");
+      aw.aaz();
+      str2 = (String)c.Ru().get(ac.a.yAi, "");
+      if (bo.isNullOrNil(str1)) {
         break;
       }
-      this.lup.lun.setText(str1);
-      this.lup.lum.setVisibility(0);
+      this.nRH.nRF.setText(str1);
+      this.nRH.nRE.setVisibility(0);
+      AppMethodBeat.o(22038);
       return;
-      this.lup.luo.setVisibility(8);
+      this.nRH.nRG.setVisibility(8);
     }
-    if (!bk.bl(str2))
+    if (!bo.isNullOrNil(str2))
     {
-      this.lup.lun.setText(str2);
-      this.lup.lum.setVisibility(0);
+      this.nRH.nRF.setText(str2);
+      this.nRH.nRE.setVisibility(0);
+      AppMethodBeat.o(22038);
       return;
     }
-    this.lup.lun.setText("");
-    this.lup.lum.setVisibility(8);
+    this.nRH.nRF.setText("");
+    this.nRH.nRE.setVisibility(8);
+    AppMethodBeat.o(22038);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.e.6
  * JD-Core Version:    0.7.0.1
  */

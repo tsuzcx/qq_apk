@@ -1,151 +1,181 @@
 package com.tencent.mm.storage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 import java.util.List;
 
 final class an
 {
-  private am uAA = new am();
-  protected final long uAz = 86400L;
+  protected final long yMI;
+  private am yMJ;
   
   public an()
   {
+    AppMethodBeat.i(1266);
+    this.yMI = 86400L;
+    this.yMJ = new am();
     Object localObject = new StringBuilder();
-    g.DQ();
-    localObject = com.tencent.mm.vfs.e.c(g.DP().cachePath + "checkmsgid.ini", 0, -1);
-    if (!bk.bE((byte[])localObject)) {}
-    try
-    {
-      this.uAA.aH((byte[])localObject);
-      if (cuP()) {
-        cuO();
+    g.RM();
+    localObject = com.tencent.mm.vfs.e.i(g.RL().cachePath + "checkmsgid.ini", 0, -1);
+    if (!bo.ce((byte[])localObject)) {
+      try
+      {
+        this.yMJ.parseFrom((byte[])localObject);
+        if (dxq()) {
+          dxp();
+        }
+        AppMethodBeat.o(1266);
+        return;
       }
-      return;
+      catch (Exception localException)
+      {
+        ab.w("MicroMsg.DelSvrIdMgr", "DelSvrIDs parse Error");
+        ab.e("MicroMsg.DelSvrIdMgr", "exception:%s", new Object[] { bo.l(localException) });
+      }
     }
-    catch (Exception localException)
-    {
-      y.w("MicroMsg.DelSvrIdMgr", "DelSvrIDs parse Error");
-      y.e("MicroMsg.DelSvrIdMgr", "exception:%s", new Object[] { bk.j(localException) });
-    }
+    AppMethodBeat.o(1266);
   }
   
-  private void cuO()
+  private void dxp()
   {
-    y.i("MicroMsg.DelSvrIdMgr", "summerdel toFile tid[%d] [%d, %d ,%d] stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(this.uAA.uAw.size()), Integer.valueOf(this.uAA.uAx.size()), Integer.valueOf(this.uAA.uAy.size()), bk.csb() });
+    AppMethodBeat.i(1267);
+    ab.i("MicroMsg.DelSvrIdMgr", "summerdel toFile tid[%d] [%d, %d ,%d] stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(this.yMJ.yMF.size()), Integer.valueOf(this.yMJ.yMG.size()), Integer.valueOf(this.yMJ.yMH.size()), bo.dtY() });
     try
     {
-      this.uAA.uAv.clear();
-      this.uAA.uAu.clear();
-      this.uAA.uAt.clear();
+      this.yMJ.yME.clear();
+      this.yMJ.yMD.clear();
+      this.yMJ.yMC.clear();
       am localam = new am();
-      localam.uAw.addAll(this.uAA.uAw);
-      localam.uAx.addAll(this.uAA.uAx);
-      localam.uAy.addAll(this.uAA.uAy);
+      localam.yMF.addAll(this.yMJ.yMF);
+      localam.yMG.addAll(this.yMJ.yMG);
+      localam.yMH.addAll(this.yMJ.yMH);
       byte[] arrayOfByte = localam.toByteArray();
       StringBuilder localStringBuilder = new StringBuilder();
-      g.DQ();
-      com.tencent.mm.vfs.e.b(g.DP().cachePath + "checkmsgid.ini", arrayOfByte, arrayOfByte.length);
-      int j = localam.uAw.size();
-      int k = localam.uAx.size();
-      int m = localam.uAy.size();
+      g.RM();
+      com.tencent.mm.vfs.e.b(g.RL().cachePath + "checkmsgid.ini", arrayOfByte, arrayOfByte.length);
+      int j = localam.yMF.size();
+      int k = localam.yMG.size();
+      int m = localam.yMH.size();
       if (arrayOfByte == null) {}
       for (int i = -1;; i = arrayOfByte.length)
       {
-        y.i("MicroMsg.DelSvrIdMgr", "summerdel toFile done [%d, %d, %d] data len[%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i) });
+        ab.i("MicroMsg.DelSvrIdMgr", "summerdel toFile done [%d, %d, %d] data len[%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i) });
+        AppMethodBeat.o(1267);
         return;
       }
       return;
     }
     catch (Exception localException)
     {
-      f.nEG.a(111L, 168L, 1L, false);
-      y.printErrStackTrace("MicroMsg.DelSvrIdMgr", localException, "summerdel ", new Object[0]);
+      com.tencent.mm.plugin.report.e.qrI.idkeyStat(111L, 168L, 1L, false);
+      ab.printErrStackTrace("MicroMsg.DelSvrIdMgr", localException, "summerdel ", new Object[0]);
+      AppMethodBeat.o(1267);
     }
   }
   
-  private boolean cuP()
+  private boolean dxq()
   {
-    boolean bool = false;
-    y.v("MicroMsg.DelSvrIdMgr", "checkOldData todayIndex:%d, t0Size:%d, t1Size:%d, t2Size:%d", new Object[] { Integer.valueOf(this.uAA.uAs), Integer.valueOf(this.uAA.uAw.size()), Integer.valueOf(this.uAA.uAx.size()), Integer.valueOf(this.uAA.uAy.size()) });
-    int i = (int)(bk.UX() / 86400L);
-    int j = this.uAA.uAs;
-    this.uAA.uAs = i;
+    AppMethodBeat.i(1272);
+    ab.v("MicroMsg.DelSvrIdMgr", "checkOldData todayIndex:%d, t0Size:%d, t1Size:%d, t2Size:%d", new Object[] { Integer.valueOf(this.yMJ.yMB), Integer.valueOf(this.yMJ.yMF.size()), Integer.valueOf(this.yMJ.yMG.size()), Integer.valueOf(this.yMJ.yMH.size()) });
+    int i = (int)(bo.aox() / 86400L);
+    int j = this.yMJ.yMB;
+    this.yMJ.yMB = i;
     switch (i - j)
     {
     default: 
-      this.uAA.uAy.clear();
-      this.uAA.uAx.clear();
-      this.uAA.uAw.clear();
-      bool = true;
+      this.yMJ.yMH.clear();
+      this.yMJ.yMG.clear();
+      this.yMJ.yMF.clear();
+      AppMethodBeat.o(1272);
+      return true;
     case 0: 
-      return bool;
+      AppMethodBeat.o(1272);
+      return false;
     case 1: 
-      this.uAA.uAy = this.uAA.uAx;
-      this.uAA.uAx = this.uAA.uAw;
-      this.uAA.uAw.clear();
+      this.yMJ.yMH = this.yMJ.yMG;
+      this.yMJ.yMG = this.yMJ.yMF;
+      this.yMJ.yMF.clear();
+      AppMethodBeat.o(1272);
       return true;
     }
-    this.uAA.uAy = this.uAA.uAw;
-    this.uAA.uAx.clear();
-    this.uAA.uAw.clear();
+    this.yMJ.yMH = this.yMJ.yMF;
+    this.yMJ.yMG.clear();
+    this.yMJ.yMF.clear();
+    AppMethodBeat.o(1272);
     return true;
   }
   
   protected final void b(int paramInt, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (paramLong1 == 0L) {
+    AppMethodBeat.i(1270);
+    if (paramLong1 == 0L)
+    {
+      AppMethodBeat.o(1270);
       return;
     }
     if (paramBoolean) {
-      cuP();
+      dxq();
     }
     paramInt -= (int)(paramLong2 / 86400L);
     switch (paramInt)
     {
     default: 
-      y.e("MicroMsg.DelSvrIdMgr", "should not add to thease lists, dayIndex:%d", new Object[] { Integer.valueOf(paramInt) });
+      ab.e("MicroMsg.DelSvrIdMgr", "should not add to thease lists, dayIndex:%d", new Object[] { Integer.valueOf(paramInt) });
     }
-    while (paramBoolean)
+    for (;;)
     {
-      cuO();
+      if (paramBoolean) {
+        dxp();
+      }
+      AppMethodBeat.o(1270);
       return;
-      this.uAA.uAw.add(Long.valueOf(paramLong1));
+      this.yMJ.yMF.add(Long.valueOf(paramLong1));
       continue;
-      this.uAA.uAx.add(Long.valueOf(paramLong1));
+      this.yMJ.yMG.add(Long.valueOf(paramLong1));
       continue;
-      this.uAA.uAy.add(Long.valueOf(paramLong1));
+      this.yMJ.yMH.add(Long.valueOf(paramLong1));
     }
   }
   
-  protected final boolean hF(long paramLong)
+  protected final void m(int paramInt, long paramLong1, long paramLong2)
   {
-    if (cuP()) {
-      cuO();
-    }
-    return (this.uAA.uAw.contains(Long.valueOf(paramLong))) || (this.uAA.uAx.contains(Long.valueOf(paramLong))) || (this.uAA.uAy.contains(Long.valueOf(paramLong)));
-  }
-  
-  protected final void k(int paramInt, long paramLong1, long paramLong2)
-  {
+    AppMethodBeat.i(1269);
     b(paramInt, paramLong1, paramLong2, true);
+    AppMethodBeat.o(1269);
   }
   
-  protected final void k(List<Integer> paramList, List<Long> paramList1)
+  protected final boolean oo(long paramLong)
   {
-    y.i("MicroMsg.DelSvrIdMgr", "add size:%d", new Object[] { Integer.valueOf(paramList.size()) });
-    cuP();
-    int j = (int)(bk.UX() / 86400L);
+    AppMethodBeat.i(1268);
+    if (dxq()) {
+      dxp();
+    }
+    if ((this.yMJ.yMF.contains(Long.valueOf(paramLong))) || (this.yMJ.yMG.contains(Long.valueOf(paramLong))) || (this.yMJ.yMH.contains(Long.valueOf(paramLong))))
+    {
+      AppMethodBeat.o(1268);
+      return true;
+    }
+    AppMethodBeat.o(1268);
+    return false;
+  }
+  
+  protected final void t(List<Integer> paramList, List<Long> paramList1)
+  {
+    AppMethodBeat.i(1271);
+    ab.i("MicroMsg.DelSvrIdMgr", "add size:%d", new Object[] { Integer.valueOf(paramList.size()) });
+    dxq();
+    int j = (int)(bo.aox() / 86400L);
     int i = 0;
     while (i < paramList.size())
     {
       b(j, ((Integer)paramList.get(i)).intValue(), ((Long)paramList1.get(i)).longValue(), false);
       i += 1;
     }
-    cuO();
+    dxp();
+    AppMethodBeat.o(1271);
   }
 }
 

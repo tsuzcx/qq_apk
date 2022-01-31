@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.fav.b.e;
 
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class b$3
   implements Runnable
@@ -10,22 +11,29 @@ final class b$3
   
   public final void run()
   {
-    long l = System.currentTimeMillis() - b.d(this.kaK);
-    if (b.e(this.kaK))
+    AppMethodBeat.i(5352);
+    long l = System.currentTimeMillis() - b.d(this.mvg);
+    if (b.e(this.mvg))
     {
-      if (l < 60000L) {
+      if (l < 60000L)
+      {
+        AppMethodBeat.o(5352);
         return;
       }
-      y.e("MicroMsg.Fav.FavCheckCdnService", "klem ERR: Try Run service runningFlag:" + b.e(this.kaK) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + b.e(this.kaK));
+      ab.e("MicroMsg.Fav.FavCheckCdnService", "klem ERR: Try Run service runningFlag:" + b.e(this.mvg) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + b.e(this.mvg));
     }
-    b.a(this.kaK);
-    b.f(this.kaK);
-    b.g(this.kaK).S(10L, 10L);
+    b.a(this.mvg);
+    b.f(this.mvg);
+    b.g(this.mvg).ag(10L, 10L);
+    AppMethodBeat.o(5352);
   }
   
   public final String toString()
   {
-    return super.toString() + "|run";
+    AppMethodBeat.i(5353);
+    String str = super.toString() + "|run";
+    AppMethodBeat.o(5353);
+    return str;
   }
 }
 

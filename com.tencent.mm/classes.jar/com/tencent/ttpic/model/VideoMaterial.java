@@ -1,10 +1,13 @@
 package com.tencent.ttpic.model;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.filter.FabbyParts;
 import com.tencent.ttpic.gameplaysdk.model.GameParams;
 import com.tencent.ttpic.gameplaysdk.model.StickerItem3D;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class VideoMaterial
@@ -14,18 +17,22 @@ public class VideoMaterial
   private String adLink;
   private List<String> arParticleList;
   private int arParticleType;
+  private Audio2Text audio2Text;
+  private GameParams audio3DParams;
   private double blendAlpha;
   private int blendMode;
   private int categoryFlag;
   private String dataPath;
   private int detectorFlag;
   private List<DistortionItem> distortionItemList;
+  private int environment;
   private FabbyParts fabbyParts;
   private FaceCropItem faceCropItem;
   private int faceDetectType;
   private String faceExchangeImage;
   private FaceExpression faceExpression;
-  private VideoMaterial.FaceImageLayer faceImageLayer;
+  private List<FaceFeatureItem> faceFeatureItemList;
+  private FaceImageLayer faceImageLayer;
   private List<FaceMeshItem> faceMeshItemList;
   private List<FaceMoveItem> faceMoveItemList;
   private int[] faceMoveTriangles;
@@ -35,12 +42,14 @@ public class VideoMaterial
   private int faceValueDetectType;
   private int faceoffType;
   private int featureType;
+  private double filterBlurStrength;
   private String filterId;
   private boolean flattenEar;
   private boolean flattenNose;
   private float fov;
   private GameParams gameParams;
   private int grayScale;
+  private int handBoostEnable;
   private boolean hasAudio;
   private List<StickerItem> headCropItemList;
   private String id;
@@ -51,23 +60,45 @@ public class VideoMaterial
   private int maxFaceCount;
   private int minAppVersion;
   private List<MultiViewerItem> multiViewerItemList;
-  private boolean needFaceInfo = true;
+  private boolean needBodyInfo;
+  private boolean needFaceInfo;
   private int orderMode;
+  private List<PhantomItem> phantomItemList;
   private int randomGroupCount;
+  private boolean resetWhenStartRecord;
   private List<String> resourceList;
   private int segmentFeather;
-  private boolean segmentRequired = false;
+  private boolean segmentRequired;
   private float[] segmentStrokeColor;
   private double segmentStrokeGap;
   private double segmentStrokeWidth;
   private int shaderType;
+  private float splitScreen;
   private boolean supportLandscape;
+  private boolean supportPause;
   private String tipsIcon;
   private String tipsText;
   private int triggerType;
-  private boolean useMesh = false;
+  private boolean useMesh;
   private VideoFilterEffect videoFilterEffect;
+  private int voicekind;
   private String weiboTag;
+  
+  public VideoMaterial()
+  {
+    AppMethodBeat.i(83580);
+    this.useMesh = false;
+    this.segmentRequired = false;
+    this.needFaceInfo = true;
+    this.needBodyInfo = false;
+    this.multiViewerItemList = new ArrayList();
+    AppMethodBeat.o(83580);
+  }
+  
+  private boolean hasCustomVideoFilter()
+  {
+    return (this.shaderType == 1) || (this.shaderType == 2);
+  }
   
   public String getAdAppLink()
   {
@@ -92,6 +123,16 @@ public class VideoMaterial
   public int getArParticleType()
   {
     return this.arParticleType;
+  }
+  
+  public Audio2Text getAudio2Text()
+  {
+    return this.audio2Text;
+  }
+  
+  public GameParams getAudio3DParams()
+  {
+    return this.audio3DParams;
   }
   
   public double getBlendAlpha()
@@ -124,6 +165,11 @@ public class VideoMaterial
     return this.distortionItemList;
   }
   
+  public int getEnvironment()
+  {
+    return this.environment;
+  }
+  
   public FabbyParts getFabbyParts()
   {
     return this.fabbyParts;
@@ -149,7 +195,12 @@ public class VideoMaterial
     return this.faceExpression;
   }
   
-  public VideoMaterial.FaceImageLayer getFaceImageLayer()
+  public List<FaceFeatureItem> getFaceFeatureItemList()
+  {
+    return this.faceFeatureItemList;
+  }
+  
+  public FaceImageLayer getFaceImageLayer()
   {
     return this.faceImageLayer;
   }
@@ -199,6 +250,11 @@ public class VideoMaterial
     return this.featureType;
   }
   
+  public double getFilterBlurStrength()
+  {
+    return this.filterBlurStrength;
+  }
+  
   public String getFilterId()
   {
     return this.filterId;
@@ -217,6 +273,11 @@ public class VideoMaterial
   public int getGrayScale()
   {
     return this.grayScale;
+  }
+  
+  public int getHandBoostEnable()
+  {
+    return this.handBoostEnable;
   }
   
   public List<StickerItem> getHeadCropItemList()
@@ -269,6 +330,11 @@ public class VideoMaterial
     return this.orderMode;
   }
   
+  public List<PhantomItem> getPhantomItemList()
+  {
+    return this.phantomItemList;
+  }
+  
   public int getRandomGroupCount()
   {
     return this.randomGroupCount;
@@ -304,6 +370,11 @@ public class VideoMaterial
     return this.shaderType;
   }
   
+  public float getSplitScreen()
+  {
+    return this.splitScreen;
+  }
+  
   public String getTipsIcon()
   {
     return this.tipsIcon;
@@ -324,6 +395,11 @@ public class VideoMaterial
     return this.videoFilterEffect;
   }
   
+  public int getVoicekind()
+  {
+    return this.voicekind;
+  }
+  
   public String getWeiboTag()
   {
     return this.weiboTag;
@@ -331,7 +407,39 @@ public class VideoMaterial
   
   public boolean hasAd()
   {
-    return (!TextUtils.isEmpty(this.adIcon)) || (!TextUtils.isEmpty(this.adLink)) || (!TextUtils.isEmpty(this.adAppLink));
+    AppMethodBeat.i(83583);
+    if ((!TextUtils.isEmpty(this.adIcon)) || (!TextUtils.isEmpty(this.adLink)) || (!TextUtils.isEmpty(this.adAppLink)))
+    {
+      AppMethodBeat.o(83583);
+      return true;
+    }
+    AppMethodBeat.o(83583);
+    return false;
+  }
+  
+  public boolean isDBTriggered()
+  {
+    AppMethodBeat.i(83585);
+    if (this.itemList == null)
+    {
+      AppMethodBeat.o(83585);
+      return false;
+    }
+    if (hasCustomVideoFilter())
+    {
+      AppMethodBeat.o(83585);
+      return true;
+    }
+    Iterator localIterator = this.itemList.iterator();
+    while (localIterator.hasNext()) {
+      if (((StickerItem)localIterator.next()).isDBTriggered())
+      {
+        AppMethodBeat.o(83585);
+        return true;
+      }
+    }
+    AppMethodBeat.o(83585);
+    return false;
   }
   
   public boolean isFlattenEar()
@@ -346,7 +454,26 @@ public class VideoMaterial
   
   public boolean isHasAudio()
   {
-    return this.hasAudio;
+    AppMethodBeat.i(83581);
+    Iterator localIterator = this.multiViewerItemList.iterator();
+    if (localIterator.hasNext())
+    {
+      MultiViewerItem localMultiViewerItem = (MultiViewerItem)localIterator.next();
+      if ((this.hasAudio) || (localMultiViewerItem.videoMaterial.hasAudio)) {}
+      for (bool = true;; bool = false)
+      {
+        this.hasAudio = bool;
+        break;
+      }
+    }
+    boolean bool = this.hasAudio;
+    AppMethodBeat.o(83581);
+    return bool;
+  }
+  
+  public boolean isResetWhenStartRecord()
+  {
+    return this.resetWhenStartRecord;
   }
   
   public boolean isSegmentRequired()
@@ -359,9 +486,19 @@ public class VideoMaterial
     return this.supportLandscape;
   }
   
+  public boolean isSupportPause()
+  {
+    return this.supportPause;
+  }
+  
   public boolean isUseMesh()
   {
     return this.useMesh;
+  }
+  
+  public boolean needBodyInfo()
+  {
+    return this.needBodyInfo;
   }
   
   public boolean needFaceInfo()
@@ -394,6 +531,16 @@ public class VideoMaterial
     this.arParticleType = paramInt;
   }
   
+  public void setAudio2Text(Audio2Text paramAudio2Text)
+  {
+    this.audio2Text = paramAudio2Text;
+  }
+  
+  public void setAudio3DParams(GameParams paramGameParams)
+  {
+    this.audio3DParams = paramGameParams;
+  }
+  
   public void setBlendAlpha(double paramDouble)
   {
     this.blendAlpha = paramDouble;
@@ -424,6 +571,11 @@ public class VideoMaterial
     this.distortionItemList = paramList;
   }
   
+  public void setEnvironment(int paramInt)
+  {
+    this.environment = paramInt;
+  }
+  
   public void setFabbyParts(FabbyParts paramFabbyParts)
   {
     this.fabbyParts = paramFabbyParts;
@@ -449,7 +601,12 @@ public class VideoMaterial
     this.faceExpression = paramFaceExpression;
   }
   
-  public void setFaceImageLayer(VideoMaterial.FaceImageLayer paramFaceImageLayer)
+  public void setFaceFeatureItemList(List<FaceFeatureItem> paramList)
+  {
+    this.faceFeatureItemList = paramList;
+  }
+  
+  public void setFaceImageLayer(FaceImageLayer paramFaceImageLayer)
   {
     this.faceImageLayer = paramFaceImageLayer;
   }
@@ -499,6 +656,11 @@ public class VideoMaterial
     this.featureType = paramInt;
   }
   
+  public void setFilterBlurStrength(double paramDouble)
+  {
+    this.filterBlurStrength = paramDouble;
+  }
+  
   public void setFilterId(String paramString)
   {
     this.filterId = paramString;
@@ -527,6 +689,11 @@ public class VideoMaterial
   public void setGrayScale(int paramInt)
   {
     this.grayScale = paramInt;
+  }
+  
+  public void setHandBoostEnable(int paramInt)
+  {
+    this.handBoostEnable = paramInt;
   }
   
   public void setHasAudio(boolean paramBoolean)
@@ -566,7 +733,9 @@ public class VideoMaterial
   
   public void setMaxFaceCount(int paramInt)
   {
+    AppMethodBeat.i(83582);
     this.maxFaceCount = Math.max(1, paramInt);
+    AppMethodBeat.o(83582);
   }
   
   public void setMinAppVersion(int paramInt)
@@ -579,6 +748,11 @@ public class VideoMaterial
     this.multiViewerItemList = paramList;
   }
   
+  public void setNeedBodyInfo(boolean paramBoolean)
+  {
+    this.needBodyInfo = paramBoolean;
+  }
+  
   public void setNeedFaceInfo(boolean paramBoolean)
   {
     this.needFaceInfo = paramBoolean;
@@ -589,9 +763,19 @@ public class VideoMaterial
     this.orderMode = paramInt;
   }
   
+  public void setPhantomItemList(List<PhantomItem> paramList)
+  {
+    this.phantomItemList = paramList;
+  }
+  
   public void setRandomGroupCount(int paramInt)
   {
     this.randomGroupCount = paramInt;
+  }
+  
+  public void setResetWhenStartRecord(boolean paramBoolean)
+  {
+    this.resetWhenStartRecord = paramBoolean;
   }
   
   public void setResourceList(List<String> paramList)
@@ -629,9 +813,19 @@ public class VideoMaterial
     this.shaderType = paramInt;
   }
   
+  public void setSplitScreen(float paramFloat)
+  {
+    this.splitScreen = paramFloat;
+  }
+  
   public void setSupportLandscape(boolean paramBoolean)
   {
     this.supportLandscape = paramBoolean;
+  }
+  
+  public void setSupportPause(boolean paramBoolean)
+  {
+    this.supportPause = paramBoolean;
   }
   
   public void setTipsIcon(String paramString)
@@ -661,6 +855,11 @@ public class VideoMaterial
     this.videoFilterEffect = paramVideoFilterEffect;
   }
   
+  public void setVoicekind(int paramInt)
+  {
+    this.voicekind = paramInt;
+  }
+  
   public void setWeiboTag(String paramString)
   {
     this.weiboTag = paramString;
@@ -668,7 +867,10 @@ public class VideoMaterial
   
   public String toString()
   {
-    return "VideoMaterial{dataPath='" + this.dataPath + '\'' + ", hasAudio=" + this.hasAudio + ", minAppVersion=" + this.minAppVersion + ", shaderType=" + this.shaderType + ", faceoffType=" + this.faceoffType + ", maxFaceCount=" + this.maxFaceCount + ", resourceList=" + this.resourceList + ", itemList=" + this.itemList + ", itemList3D=" + this.itemList3D + ", faceOffItemList=" + this.faceOffItemList + ", headCropItemList=" + this.headCropItemList + ", distortionItemList=" + this.distortionItemList + ", faceMeshItemList=" + this.faceMeshItemList + ", faceMoveItemList=" + this.faceMoveItemList + ", multiViewerItemList=" + this.multiViewerItemList + ", facePoints=" + this.facePoints + ", triggerType=" + this.triggerType + ", faceExchangeImage='" + this.faceExchangeImage + '\'' + ", imageFacePointsFileName='" + this.imageFacePointsFileName + '\'' + ", blendAlpha=" + this.blendAlpha + ", grayScale=" + this.grayScale + ", orderMode=" + this.orderMode + ", blendMode=" + this.blendMode + ", featureType=" + this.featureType + ", id='" + this.id + '\'' + ", supportLandscape=" + this.supportLandscape + ", randomGroupCount=" + this.randomGroupCount + ", faceMoveTriangles=" + Arrays.toString(this.faceMoveTriangles) + ", filterId='" + this.filterId + '\'' + ", videoFilterEffect=" + this.videoFilterEffect + ", faceSwapType=" + this.faceSwapType + ", arParticleType=" + this.arParticleType + ", arParticleList=" + this.arParticleList + ", faceDetectType=" + this.faceDetectType + ", faceExpression=" + this.faceExpression + ", faceImageLayer=" + this.faceImageLayer + ", tipsText='" + this.tipsText + '\'' + ", tipsIcon='" + this.tipsIcon + '\'' + ", faceCropItem=" + this.faceCropItem + ", faceValueDetectType=" + this.faceValueDetectType + ", adIcon='" + this.adIcon + '\'' + ", adLink='" + this.adLink + '\'' + ", adAppLink='" + this.adAppLink + '\'' + ", weiboTag='" + this.weiboTag + '\'' + ", lipsLutPath='" + this.lipsLutPath + '\'' + ", useMesh=" + this.useMesh + ", detectorFlag=" + this.detectorFlag + ", segmentRequired=" + this.segmentRequired + ", segmentStrokeWidth=" + this.segmentStrokeWidth + ", segmentStrokeGap=" + this.segmentStrokeGap + ", segmentStrokeColor=" + Arrays.toString(this.segmentStrokeColor) + ", segmentFeather=" + this.segmentFeather + ", fabbyParts=" + this.fabbyParts + ", categoryFlag=" + this.categoryFlag + ", needFaceInfo=" + this.needFaceInfo + ", fov=" + this.fov + ", gameParams=" + this.gameParams + '}';
+    AppMethodBeat.i(83584);
+    String str = "VideoMaterial{dataPath='" + this.dataPath + '\'' + ", hasAudio=" + this.hasAudio + ", minAppVersion=" + this.minAppVersion + ", shaderType=" + this.shaderType + ", faceoffType=" + this.faceoffType + ", maxFaceCount=" + this.maxFaceCount + ", voicekind=" + this.voicekind + ", environment=" + this.environment + ", resourceList=" + this.resourceList + ", itemList=" + this.itemList + ", itemList3D=" + this.itemList3D + ", faceOffItemList=" + this.faceOffItemList + ", headCropItemList=" + this.headCropItemList + ", distortionItemList=" + this.distortionItemList + ", faceMeshItemList=" + this.faceMeshItemList + ", faceMoveItemList=" + this.faceMoveItemList + ", multiViewerItemList=" + this.multiViewerItemList + ", facePoints=" + this.facePoints + ", triggerType=" + this.triggerType + ", faceExchangeImage='" + this.faceExchangeImage + '\'' + ", imageFacePointsFileName='" + this.imageFacePointsFileName + '\'' + ", blendAlpha=" + this.blendAlpha + ", grayScale=" + this.grayScale + ", orderMode=" + this.orderMode + ", blendMode=" + this.blendMode + ", featureType=" + this.featureType + ", id='" + this.id + '\'' + ", supportLandscape=" + this.supportLandscape + ", randomGroupCount=" + this.randomGroupCount + ", faceMoveTriangles=" + Arrays.toString(this.faceMoveTriangles) + ", filterId='" + this.filterId + '\'' + ", filterBlurStrength='" + this.filterBlurStrength + '\'' + ", videoFilterEffect=" + this.videoFilterEffect + ", faceSwapType=" + this.faceSwapType + ", arParticleType=" + this.arParticleType + ", arParticleList=" + this.arParticleList + ", faceDetectType=" + this.faceDetectType + ", faceExpression=" + this.faceExpression + ", faceImageLayer=" + this.faceImageLayer + ", tipsText='" + this.tipsText + '\'' + ", tipsIcon='" + this.tipsIcon + '\'' + ", faceCropItem=" + this.faceCropItem + ", faceValueDetectType=" + this.faceValueDetectType + ", adIcon='" + this.adIcon + '\'' + ", adLink='" + this.adLink + '\'' + ", adAppLink='" + this.adAppLink + '\'' + ", weiboTag='" + this.weiboTag + '\'' + ", lipsLutPath='" + this.lipsLutPath + '\'' + ", useMesh=" + this.useMesh + ", detectorFlag=" + this.detectorFlag + ", segmentRequired=" + this.segmentRequired + ", segmentStrokeWidth=" + this.segmentStrokeWidth + ", segmentStrokeGap=" + this.segmentStrokeGap + ", segmentStrokeColor=" + Arrays.toString(this.segmentStrokeColor) + ", segmentFeather=" + this.segmentFeather + ", fabbyParts=" + this.fabbyParts + ", categoryFlag=" + this.categoryFlag + ", needFaceInfo=" + this.needFaceInfo + ", fov=" + this.fov + ", gameParams=" + this.gameParams + ", auido2Text=" + this.audio2Text + ", audio3DParams=" + this.audio3DParams + '}';
+    AppMethodBeat.o(83584);
+    return str;
   }
 }
 

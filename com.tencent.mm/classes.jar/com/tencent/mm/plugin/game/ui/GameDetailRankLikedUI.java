@@ -1,65 +1,81 @@
 package com.tencent.mm.plugin.game.ui;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.w;
-import com.tencent.mm.plugin.game.d.bo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.w;
 import com.tencent.mm.plugin.game.d.bp;
+import com.tencent.mm.plugin.game.d.bq;
 import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 public class GameDetailRankLikedUI
   extends MMActivity
 {
-  private static final String TAG = "MicroMsg" + GameDetailRankLikedUI.class.getSimpleName();
-  private Dialog hhG;
-  private ListView kZh;
-  private GameDetailRankLikedUI.a kZi;
+  private static final String TAG;
+  private Dialog iTk;
+  private ListView nxe;
+  private GameDetailRankLikedUI.a nxf;
   
-  protected final int getLayoutId()
+  static
   {
-    return g.f.game_detail2_rank_liked;
+    AppMethodBeat.i(111832);
+    TAG = "MicroMsg" + GameDetailRankLikedUI.class.getSimpleName();
+    AppMethodBeat.o(111832);
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
-    setMMTitle(g.i.game_detail_rank_liked);
+    return 2130969735;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(111831);
+    setMMTitle(2131300350);
     setBackBtn(new GameDetailRankLikedUI.1(this));
-    this.kZh = ((ListView)findViewById(g.e.game_detail_rank_liked_list));
-    this.kZi = new GameDetailRankLikedUI.a(this);
-    this.kZh.setAdapter(this.kZi);
-    this.hhG = c.dA(this.mController.uMN);
-    this.hhG.show();
+    this.nxe = ((ListView)findViewById(2131824589));
+    this.nxf = new GameDetailRankLikedUI.a(this);
+    this.nxe.setAdapter(this.nxf);
+    this.iTk = c.en(getContext());
+    this.iTk.show();
+    AppMethodBeat.o(111831);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(111830);
     super.onCreate(paramBundle);
     initView();
     paramBundle = getIntent().getStringExtra("extra_appdi");
-    if (bk.bl(paramBundle))
+    if (bo.isNullOrNil(paramBundle))
     {
       finish();
+      AppMethodBeat.o(111830);
       return;
     }
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bo();
-    ((b.a)localObject).ecI = new bp();
+    ((b.a)localObject).fsX = new bp();
+    ((b.a)localObject).fsY = new bq();
     ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/getuplist";
-    ((b.a)localObject).ecG = 1331;
-    localObject = ((b.a)localObject).Kt();
-    ((bo)((b)localObject).ecE.ecN).kRX = paramBundle;
+    ((b.a)localObject).funcId = 1331;
+    localObject = ((b.a)localObject).ado();
+    ((bp)((b)localObject).fsV.fta).npZ = paramBundle;
     w.a((b)localObject, new GameDetailRankLikedUI.2(this));
+    AppMethodBeat.o(111830);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

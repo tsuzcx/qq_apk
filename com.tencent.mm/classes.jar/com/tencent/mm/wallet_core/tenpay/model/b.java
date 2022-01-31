@@ -3,14 +3,14 @@ package com.tencent.mm.wallet_core.tenpay.model;
 import java.util.Map;
 
 public final class b
-  extends f
+  extends g
 {
   public b(Map<String, String> paramMap)
   {
     super(paramMap);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
     return 1652;
   }

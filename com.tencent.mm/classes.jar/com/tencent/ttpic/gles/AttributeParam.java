@@ -1,6 +1,7 @@
 package com.tencent.ttpic.gles;
 
 import android.opengl.GLES20;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -43,21 +44,28 @@ public class AttributeParam
   
   public void clear()
   {
+    AppMethodBeat.i(49947);
     this.vertices = null;
     this.buffer = null;
     if (this.glBuffer != null) {
       GLES20.glDeleteBuffers(this.glBuffer.length, this.glBuffer, 0);
     }
+    AppMethodBeat.o(49947);
   }
   
   public void initialParams(int paramInt)
   {
+    AppMethodBeat.i(49945);
     this.handle = GLES20.glGetAttribLocation(paramInt, this.name);
+    AppMethodBeat.o(49945);
   }
   
   public void setParams(int paramInt)
   {
-    if (this.vertices == null) {
+    AppMethodBeat.i(49946);
+    if (this.vertices == null)
+    {
+      AppMethodBeat.o(49946);
       return;
     }
     if ((this.buffer == null) || (this.buffer.capacity() < this.vertices.length)) {
@@ -84,10 +92,12 @@ public class AttributeParam
       GLES20.glEnableVertexAttribArray(this.handle);
       GLES20.glVertexAttribPointer(this.handle, this.perVertexFloat, 5126, false, 0, 0);
       GLES20.glBindBuffer(34962, 0);
+      AppMethodBeat.o(49946);
       return;
     }
     GLES20.glEnableVertexAttribArray(this.handle);
     GLES20.glVertexAttribPointer(this.handle, this.perVertexFloat, 5126, false, this.perVertexFloat * 4, this.buffer);
+    AppMethodBeat.o(49946);
   }
   
   public void setUseVBO(boolean paramBoolean)
@@ -103,7 +113,7 @@ public class AttributeParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.ttpic.gles.AttributeParam
  * JD-Core Version:    0.7.0.1
  */

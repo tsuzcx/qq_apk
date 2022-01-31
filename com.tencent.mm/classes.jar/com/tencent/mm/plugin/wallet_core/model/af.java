@@ -1,152 +1,73 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import com.tencent.mm.h.c.ex;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.fl;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class af
-  extends ex
+  extends fl
 {
-  public static c.a buS;
+  public static c.a info;
   
   static
   {
+    AppMethodBeat.i(46916);
     c.a locala = new c.a();
-    locala.ujL = new Field[27];
-    locala.columns = new String[28];
+    locala.yrK = new Field[9];
+    locala.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "uin";
-    locala.ujN.put("uin", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" uin TEXT PRIMARY KEY ");
+    locala.columns[0] = "pref_key";
+    locala.yrM.put("pref_key", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" pref_key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "uin";
-    locala.columns[1] = "is_reg";
-    locala.ujN.put("is_reg", "INTEGER");
-    localStringBuilder.append(" is_reg INTEGER");
+    locala.yrL = "pref_key";
+    locala.columns[1] = "pref_title";
+    locala.yrM.put("pref_title", "TEXT");
+    localStringBuilder.append(" pref_title TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "true_name";
-    locala.ujN.put("true_name", "TEXT");
-    localStringBuilder.append(" true_name TEXT");
+    locala.columns[2] = "pref_url";
+    locala.yrM.put("pref_url", "TEXT");
+    localStringBuilder.append(" pref_url TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "card_num";
-    locala.ujN.put("card_num", "INTEGER");
-    localStringBuilder.append(" card_num INTEGER");
+    locala.columns[3] = "is_show";
+    locala.yrM.put("is_show", "INTEGER default '1' ");
+    localStringBuilder.append(" is_show INTEGER default '1' ");
     localStringBuilder.append(", ");
-    locala.columns[4] = "isDomesticUser";
-    locala.ujN.put("isDomesticUser", "INTEGER");
-    localStringBuilder.append(" isDomesticUser INTEGER");
+    locala.columns[4] = "pref_desc";
+    locala.yrM.put("pref_desc", "TEXT");
+    localStringBuilder.append(" pref_desc TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "cre_type";
-    locala.ujN.put("cre_type", "INTEGER");
-    localStringBuilder.append(" cre_type INTEGER");
+    locala.columns[5] = "logo_url";
+    locala.yrM.put("logo_url", "TEXT");
+    localStringBuilder.append(" logo_url TEXT");
     localStringBuilder.append(", ");
-    locala.columns[6] = "main_card_bind_serialno";
-    locala.ujN.put("main_card_bind_serialno", "TEXT");
-    localStringBuilder.append(" main_card_bind_serialno TEXT");
+    locala.columns[6] = "jump_type";
+    locala.yrM.put("jump_type", "INTEGER");
+    localStringBuilder.append(" jump_type INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[7] = "ftf_pay_url";
-    locala.ujN.put("ftf_pay_url", "TEXT");
-    localStringBuilder.append(" ftf_pay_url TEXT");
+    locala.columns[7] = "tinyapp_username";
+    locala.yrM.put("tinyapp_username", "TEXT");
+    localStringBuilder.append(" tinyapp_username TEXT");
     localStringBuilder.append(", ");
-    locala.columns[8] = "switchConfig";
-    locala.ujN.put("switchConfig", "INTEGER");
-    localStringBuilder.append(" switchConfig INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "reset_passwd_flag";
-    locala.ujN.put("reset_passwd_flag", "TEXT");
-    localStringBuilder.append(" reset_passwd_flag TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "find_passwd_url";
-    locala.ujN.put("find_passwd_url", "TEXT");
-    localStringBuilder.append(" find_passwd_url TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[11] = "is_open_touch";
-    locala.ujN.put("is_open_touch", "INTEGER");
-    localStringBuilder.append(" is_open_touch INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[12] = "lct_wording";
-    locala.ujN.put("lct_wording", "TEXT");
-    localStringBuilder.append(" lct_wording TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[13] = "lct_url";
-    locala.ujN.put("lct_url", "TEXT");
-    localStringBuilder.append(" lct_url TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[14] = "cre_name";
-    locala.ujN.put("cre_name", "TEXT");
-    localStringBuilder.append(" cre_name TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[15] = "lqt_state";
-    locala.ujN.put("lqt_state", "INTEGER");
-    localStringBuilder.append(" lqt_state INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[16] = "paymenu_use_new";
-    locala.ujN.put("paymenu_use_new", "INTEGER");
-    localStringBuilder.append(" paymenu_use_new INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[17] = "is_show_lqb";
-    locala.ujN.put("is_show_lqb", "INTEGER");
-    localStringBuilder.append(" is_show_lqb INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[18] = "is_open_lqb";
-    locala.ujN.put("is_open_lqb", "INTEGER");
-    localStringBuilder.append(" is_open_lqb INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[19] = "lqb_open_url";
-    locala.ujN.put("lqb_open_url", "TEXT");
-    localStringBuilder.append(" lqb_open_url TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[20] = "lqt_cell_is_show";
-    locala.ujN.put("lqt_cell_is_show", "INTEGER");
-    localStringBuilder.append(" lqt_cell_is_show INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[21] = "lqt_cell_icon";
-    locala.ujN.put("lqt_cell_icon", "TEXT");
-    localStringBuilder.append(" lqt_cell_icon TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[22] = "lqt_cell_is_open_lqt";
-    locala.ujN.put("lqt_cell_is_open_lqt", "INTEGER");
-    localStringBuilder.append(" lqt_cell_is_open_lqt INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[23] = "lqt_cell_lqt_open_url";
-    locala.ujN.put("lqt_cell_lqt_open_url", "TEXT");
-    localStringBuilder.append(" lqt_cell_lqt_open_url TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[24] = "lqt_cell_lqt_title";
-    locala.ujN.put("lqt_cell_lqt_title", "TEXT");
-    localStringBuilder.append(" lqt_cell_lqt_title TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[25] = "lqt_cell_lqt_wording";
-    locala.ujN.put("lqt_cell_lqt_wording", "TEXT");
-    localStringBuilder.append(" lqt_cell_lqt_wording TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[26] = "forget_passwd_url";
-    locala.ujN.put("forget_passwd_url", "TEXT");
-    localStringBuilder.append(" forget_passwd_url TEXT");
-    locala.columns[27] = "rowid";
+    locala.columns[8] = "tinyapp_path";
+    locala.yrM.put("tinyapp_path", "TEXT");
+    localStringBuilder.append(" tinyapp_path TEXT");
+    locala.columns[9] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(46916);
   }
   
-  public final boolean bVK()
+  public final c.a getDBInfo()
   {
-    return this.field_is_reg == 0;
-  }
-  
-  public final boolean bVL()
-  {
-    return this.field_is_reg == -1;
-  }
-  
-  protected final c.a rM()
-  {
-    return buS;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.af
  * JD-Core Version:    0.7.0.1
  */

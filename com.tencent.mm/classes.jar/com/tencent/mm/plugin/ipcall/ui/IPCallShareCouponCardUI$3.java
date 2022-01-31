@@ -3,9 +3,8 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mm.br.d;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class IPCallShareCouponCardUI$3
   implements DialogInterface.OnClickListener
@@ -14,7 +13,9 @@ final class IPCallShareCouponCardUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    d.b(this.lyq.mController.uMN, "account", ".ui.FacebookAuthUI", new Intent());
+    AppMethodBeat.i(22284);
+    d.b(this.nVC.getContext(), "account", ".ui.FacebookAuthUI", new Intent());
+    AppMethodBeat.o(22284);
   }
 }
 

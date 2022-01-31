@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.exdevice.b;
 
-import com.tencent.mm.ah.m;
+import com.tencent.mm.ai.m;
 
 final class k$b
 {
-  public String ghs = null;
-  public int jsT = 0;
-  public int jtf = 0;
-  public m jtg = null;
+  public String hyJ = null;
+  public int lCE = 0;
+  public m lCF = null;
+  public int lCs = 0;
 }
 
 

@@ -4,7 +4,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMPreference$3
   implements AdapterView.OnItemLongClickListener
@@ -13,19 +14,23 @@ final class MMPreference$3
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt < MMPreference.e(this.vdh).getHeaderViewsCount()) {
-      return false;
-    }
-    paramInt -= MMPreference.e(this.vdh).getHeaderViewsCount();
-    if (paramInt >= MMPreference.d(this.vdh).getCount())
+    AppMethodBeat.i(107212);
+    if (paramInt < MMPreference.access$400(this.zrE).getHeaderViewsCount())
     {
-      y.e("MicroMsg.mmui.MMPreference", "itemlongclick, outofindex, %d, %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(MMPreference.d(this.vdh).getCount()) });
+      AppMethodBeat.o(107212);
       return false;
     }
-    MMPreference.d(this.vdh).getItem(paramInt);
-    MMPreference.d(this.vdh);
-    MMPreference.e(this.vdh);
-    return MMPreference.cBx();
+    paramInt -= MMPreference.access$400(this.zrE).getHeaderViewsCount();
+    if (paramInt >= MMPreference.access$300(this.zrE).getCount())
+    {
+      ab.e("MicroMsg.mmui.MMPreference", "itemlongclick, outofindex, %d, %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(MMPreference.access$300(this.zrE).getCount()) });
+      AppMethodBeat.o(107212);
+      return false;
+    }
+    paramAdapterView = (Preference)MMPreference.access$300(this.zrE).getItem(paramInt);
+    boolean bool = this.zrE.onPreferenceTreeLongClick(MMPreference.access$300(this.zrE), paramAdapterView, MMPreference.access$400(this.zrE));
+    AppMethodBeat.o(107212);
+    return bool;
   }
 }
 

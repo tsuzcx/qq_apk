@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/fx"
+<LinearLayout android:background="@drawable/emoji_bubble" android:padding="@dimen/ll" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/ki" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:id="@id/mp" android:visibility="gone" style="@style/g1" />
-        <TextView android:id="@id/mq" android:background="@drawable/go" android:paddingLeft="20.0dip" android:paddingRight="15.0dip" android:minHeight="@dimen/ed" style="@style/g7" />
-        <TextView android:layout_gravity="right" android:id="@id/aoa" android:background="@drawable/cb" android:layout_marginRight="10.0dip" android:text="@string/a9g" style="@style/fs" />
-    </LinearLayout>
+    <com.tencent.mm.ui.base.HorizontalListView android:layout_gravity="center|right" android:id="@id/aoy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@drawable/l_" android:cacheColorHint="@color/a3x" />
 </LinearLayout>

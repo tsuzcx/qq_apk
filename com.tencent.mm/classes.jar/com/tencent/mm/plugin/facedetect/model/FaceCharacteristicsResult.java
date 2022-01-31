@@ -3,43 +3,53 @@ package com.tencent.mm.plugin.facedetect.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.FaceProNative.FaceStatus;
 
 public class FaceCharacteristicsResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<FaceCharacteristicsResult> CREATOR = new FaceCharacteristicsResult.1();
-  public String aox;
+  public static final Parcelable.Creator<FaceCharacteristicsResult> CREATOR;
   public int errCode;
-  public FaceProNative.FaceStatus jNG;
+  public String errMsg;
+  public FaceProNative.FaceStatus mhS;
+  
+  static
+  {
+    AppMethodBeat.i(181);
+    CREATOR = new FaceCharacteristicsResult.1();
+    AppMethodBeat.o(181);
+  }
   
   public FaceCharacteristicsResult() {}
   
   protected FaceCharacteristicsResult(Parcel paramParcel)
   {
+    AppMethodBeat.i(178);
     this.errCode = paramParcel.readInt();
-    this.aox = paramParcel.readString();
+    this.errMsg = paramParcel.readString();
+    AppMethodBeat.o(178);
   }
   
-  public static boolean qH(int paramInt)
+  public static boolean vC(int paramInt)
   {
     return (paramInt >= 10) && (paramInt < 100);
   }
   
-  public static boolean qI(int paramInt)
+  public static boolean vD(int paramInt)
   {
     return (paramInt > 0) && (paramInt < 10);
   }
   
-  public static boolean qJ(int paramInt)
+  public static boolean vE(int paramInt)
   {
     return paramInt <= 0;
   }
   
-  public final void af(int paramInt, String paramString)
+  public final void ay(int paramInt, String paramString)
   {
     this.errCode = paramInt;
-    this.aox = paramString;
+    this.errMsg = paramString;
   }
   
   public int describeContents()
@@ -49,14 +59,19 @@ public class FaceCharacteristicsResult
   
   public String toString()
   {
-    return "FaceCharacteristicsResult{mStatus=" + this.jNG + ", errCode=" + this.errCode + ", errMsg='" + this.aox + '\'' + '}';
+    AppMethodBeat.i(180);
+    String str = "FaceCharacteristicsResult{mStatus=" + this.mhS + ", errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + '}';
+    AppMethodBeat.o(180);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeParcelable(this.jNG, paramInt);
+    AppMethodBeat.i(179);
+    paramParcel.writeParcelable(this.mhS, paramInt);
     paramParcel.writeInt(this.errCode);
-    paramParcel.writeString(this.aox);
+    paramParcel.writeString(this.errMsg);
+    AppMethodBeat.o(179);
   }
 }
 

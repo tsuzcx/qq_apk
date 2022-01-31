@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.appbrand.widget.desktop.half;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.r.f;
+import com.tencent.mm.plugin.appbrand.service.l;
 import com.tencent.mm.plugin.appbrand.widget.header.a.a.b;
 import com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView.f;
 
@@ -14,27 +15,29 @@ final class AppBrandDesktopHalfItemView$5
   
   public final void onClick(View paramView)
   {
-    if (AppBrandDesktopHalfItemView.a(this.hry) == AppBrandRecentView.f.hBY)
+    AppMethodBeat.i(134129);
+    if (AppBrandDesktopHalfItemView.a(this.jhV) == AppBrandRecentView.f.jur)
     {
-      ((f)g.r(f.class)).cc(this.hry.getContext());
-      if (AppBrandDesktopHalfItemView.b(this.hry) != null) {
-        AppBrandDesktopHalfItemView.b(this.hry).arD();
+      ((l)g.E(l.class)).cG(this.jhV.getContext());
+      if (AppBrandDesktopHalfItemView.b(this.jhV) != null)
+      {
+        AppBrandDesktopHalfItemView.b(this.jhV).aQn();
+        AppMethodBeat.o(134129);
       }
     }
-    do
+    else if (AppBrandDesktopHalfItemView.a(this.jhV) == AppBrandRecentView.f.juq)
     {
-      do
-      {
-        return;
-      } while (AppBrandDesktopHalfItemView.a(this.hry) != AppBrandRecentView.f.hBX);
-      ((f)g.r(f.class)).cb(this.hry.getContext());
-    } while (AppBrandDesktopHalfItemView.b(this.hry) == null);
-    AppBrandDesktopHalfItemView.b(this.hry).arE();
+      ((l)g.E(l.class)).D(this.jhV.getContext(), 3);
+      if (AppBrandDesktopHalfItemView.b(this.jhV) != null) {
+        AppBrandDesktopHalfItemView.b(this.jhV).aQo();
+      }
+    }
+    AppMethodBeat.o(134129);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfItemView.5
  * JD-Core Version:    0.7.0.1
  */

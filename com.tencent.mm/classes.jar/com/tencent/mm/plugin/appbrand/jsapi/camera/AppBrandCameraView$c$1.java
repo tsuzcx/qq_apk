@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 final class AppBrandCameraView$c$1
@@ -9,7 +10,9 @@ final class AppBrandCameraView$c$1
   
   public final void run()
   {
-    this.goX.goV.set(false);
+    AppMethodBeat.i(130927);
+    this.hIX.hIV.set(false);
+    AppMethodBeat.o(130927);
   }
 }
 

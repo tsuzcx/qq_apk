@@ -1,24 +1,28 @@
 package com.tencent.liteav;
 
 import android.graphics.Bitmap;
-import com.tencent.liteav.audio.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class f
   implements Cloneable
 {
-  public float A = 0.0F;
+  public int A = 0;
   public float B = 0.0F;
-  public float C = -1.0F;
-  public boolean D = true;
-  public boolean E = false;
+  public float C = 0.0F;
+  public float D = -1.0F;
+  public boolean E = true;
   public boolean F = false;
-  public boolean G = true;
-  public int H = 1;
-  public boolean I = false;
+  public boolean G = false;
+  public boolean H = true;
+  public int I = 1;
   public boolean J = false;
-  public int K = 0;
-  public boolean L = false;
-  public boolean M = true;
+  public boolean K = false;
+  public int L = 0;
+  public boolean M = false;
+  public boolean N = true;
+  public boolean O = false;
+  public boolean P = false;
+  public int Q = 0;
   public int a = 0;
   public int b = 0;
   public int c = 400;
@@ -35,110 +39,117 @@ public class f
   public boolean n = true;
   public int o = 3;
   public int p = 3;
-  public int q = c.a;
-  public int r = c.b;
+  public int q = 48000;
+  public int r = 1;
   public boolean s = true;
-  public Bitmap t = null;
-  public int u = 300;
-  public int v = 10;
-  public int w = 1;
-  public Bitmap x = null;
-  public int y = 0;
+  public int t = 10;
+  public Bitmap u = null;
+  public int v = 300;
+  public int w = 10;
+  public int x = 1;
+  public Bitmap y = null;
   public int z = 0;
+  
+  public static f.a a(int paramInt)
+  {
+    AppMethodBeat.i(146766);
+    f.a locala = new f.a();
+    switch (paramInt)
+    {
+    default: 
+      locala.a = 368;
+      locala.b = 640;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(146766);
+      return locala;
+      locala.a = 368;
+      locala.b = 640;
+      continue;
+      locala.a = 544;
+      locala.b = 960;
+      continue;
+      locala.a = 720;
+      locala.b = 1280;
+      continue;
+      locala.a = 320;
+      locala.b = 480;
+      continue;
+      locala.a = 192;
+      locala.b = 320;
+      continue;
+      locala.a = 272;
+      locala.b = 480;
+      continue;
+      locala.a = 240;
+      locala.b = 320;
+      continue;
+      locala.a = 368;
+      locala.b = 480;
+      continue;
+      locala.a = 480;
+      locala.b = 640;
+      continue;
+      locala.a = 480;
+      locala.b = 480;
+      continue;
+      locala.a = 272;
+      locala.b = 272;
+      continue;
+      locala.a = 160;
+      locala.b = 160;
+      continue;
+      locala.a = 640;
+      locala.b = 368;
+      continue;
+      locala.a = 960;
+      locala.b = 544;
+      continue;
+      locala.a = 1280;
+      locala.b = 720;
+      continue;
+      locala.a = 640;
+      locala.b = 480;
+      continue;
+      locala.a = 480;
+      locala.b = 368;
+      continue;
+      locala.a = 320;
+      locala.b = 240;
+      continue;
+      locala.a = 480;
+      locala.b = 272;
+      continue;
+      locala.a = 320;
+      locala.b = 192;
+      continue;
+      locala.a = 128;
+      locala.b = 128;
+    }
+  }
   
   public boolean a()
   {
-    switch (this.k)
+    AppMethodBeat.i(146767);
+    f.a locala = a(this.k);
+    this.a = locala.a;
+    this.b = locala.b;
+    if (this.a > this.b)
     {
-    default: 
-      this.a = 368;
-      this.b = 640;
-      return false;
-    case 0: 
-      this.a = 368;
-      this.b = 640;
-      return false;
-    case 1: 
-      this.a = 544;
-      this.b = 960;
-      return false;
-    case 2: 
-      this.a = 720;
-      this.b = 1280;
-      return false;
-    case 6: 
-      this.a = 320;
-      this.b = 480;
-      return false;
-    case 7: 
-      this.a = 192;
-      this.b = 320;
-      return false;
-    case 8: 
-      this.a = 272;
-      this.b = 480;
-      return false;
-    case 11: 
-      this.a = 240;
-      this.b = 320;
-      return false;
-    case 12: 
-      this.a = 368;
-      this.b = 480;
-      return false;
-    case 13: 
-      this.a = 480;
-      this.b = 640;
-      return false;
-    case 17: 
-      this.a = 480;
-      this.b = 480;
-      return false;
-    case 18: 
-      this.a = 272;
-      this.b = 272;
-      return false;
-    case 19: 
-      this.a = 160;
-      this.b = 160;
-      return false;
-    case 3: 
-      this.a = 640;
-      this.b = 368;
-      return true;
-    case 4: 
-      this.a = 960;
-      this.b = 544;
-      return true;
-    case 5: 
-      this.a = 1280;
-      this.b = 720;
-      return true;
-    case 16: 
-      this.a = 640;
-      this.b = 480;
-      return true;
-    case 15: 
-      this.a = 480;
-      this.b = 368;
-      return true;
-    case 14: 
-      this.a = 320;
-      this.b = 240;
-      return true;
-    case 10: 
-      this.a = 480;
-      this.b = 272;
+      AppMethodBeat.o(146767);
       return true;
     }
-    this.a = 320;
-    this.b = 192;
-    return true;
+    AppMethodBeat.o(146767);
+    return false;
   }
   
   protected Object clone()
   {
-    return (f)super.clone();
+    AppMethodBeat.i(66378);
+    f localf = (f)super.clone();
+    AppMethodBeat.o(66378);
+    return localf;
   }
 }
 

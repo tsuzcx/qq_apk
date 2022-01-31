@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.f;
 
 public final class f
 {
-  public static f.b rVL;
+  public static f.a vMG;
 }
 
 

@@ -1,28 +1,17 @@
 package com.tencent.mm.plugin.wallet_core.ui.view;
 
-import android.graphics.Bitmap;
-import android.graphics.NinePatch;
-import android.graphics.drawable.NinePatchDrawable;
-import android.view.View;
-import b.a.a.g;
-import com.tencent.mm.as.a.c.i;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletSuccPageAwardWidget$6
-  implements i
+  implements Runnable
 {
   WalletSuccPageAwardWidget$6(WalletSuccPageAwardWidget paramWalletSuccPageAwardWidget) {}
   
-  public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
+  public final void run()
   {
-    y.i("MicroMsg.WalletSuccPageAwardWidget", "load background_img finish, url: %s, bitmap: %s", new Object[] { paramString, paramBitmap });
-    if ((paramBitmap != null) && (WalletSuccPageAwardWidget.h(this.qJe) != null) && (!bk.bl(WalletSuccPageAwardWidget.h(this.qJe).xpE)) && (WalletSuccPageAwardWidget.h(this.qJe).xpE.equals(paramString)))
-    {
-      paramString = new NinePatch(paramBitmap, WalletSuccPageAwardWidget.O(paramBitmap), "widget_bg");
-      ai.d(new WalletSuccPageAwardWidget.6.1(this, new NinePatchDrawable(this.qJe.getResources(), paramString)));
-    }
+    AppMethodBeat.i(47946);
+    WalletSuccPageAwardWidget.g(this.uxM);
+    AppMethodBeat.o(47946);
   }
 }
 

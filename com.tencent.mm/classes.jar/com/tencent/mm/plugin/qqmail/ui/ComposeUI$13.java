@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.qqmail.b.j;
-import com.tencent.mm.pluginsdk.ui.tools.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.u;
 import com.tencent.mm.ui.base.h;
 
 final class ComposeUI$13
@@ -13,14 +13,17 @@ final class ComposeUI$13
   
   public final void onClick(View paramView)
   {
-    if (!ComposeUI.E(this.ngJ).bud())
+    AppMethodBeat.i(68187);
+    if (!ComposeUI.E(this.pLX).cep())
     {
-      ComposeUI.a(this.ngJ, h.b(this.ngJ, this.ngJ.getString(b.j.plugin_qqmail_attach_uploading), true, new ComposeUI.13.1(this)));
-      ComposeUI.E(this.ngJ).nhG = new ComposeUI.13.2(this);
+      ComposeUI.a(this.pLX, h.b(this.pLX, this.pLX.getString(2131302111), true, new ComposeUI.13.1(this)));
+      ComposeUI.E(this.pLX).pMT = new ComposeUI.13.2(this);
+      AppMethodBeat.o(68187);
       return;
     }
-    s.c(ComposeUI.s(this.ngJ), ComposeUI.n(this.ngJ), ComposeUI.x(this.ngJ));
-    ComposeUI.I(this.ngJ);
+    u.b(ComposeUI.s(this.pLX), ComposeUI.n(this.pLX), ComposeUI.x(this.pLX));
+    ComposeUI.I(this.pLX);
+    AppMethodBeat.o(68187);
   }
 }
 

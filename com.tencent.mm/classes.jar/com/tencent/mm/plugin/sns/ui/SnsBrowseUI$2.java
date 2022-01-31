@@ -3,90 +3,99 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.a.gq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gu;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.protocal.c.at;
-import com.tencent.mm.protocal.c.av;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.rp;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.at;
+import com.tencent.mm.protocal.protobuf.av;
+import com.tencent.mm.protocal.protobuf.vi;
 import com.tencent.mm.sdk.b.b;
 
 final class SnsBrowseUI$2
   implements View.OnClickListener
 {
-  SnsBrowseUI$2(SnsBrowseUI paramSnsBrowseUI, av paramav, bxk parambxk) {}
+  SnsBrowseUI$2(SnsBrowseUI paramSnsBrowseUI, av paramav, TimeLineObject paramTimeLineObject) {}
   
   public final void onClick(View paramView)
   {
-    if (this.oVM.sug == null) {}
-    int i;
-    int j;
-    do
+    AppMethodBeat.i(38750);
+    if (this.rOh.wmJ == null)
     {
-      do
-      {
-        return;
-        paramView = com.tencent.mm.plugin.sns.c.a.eUS.cs(this.oVM.sug.euK);
-        i = 0;
-        if (this.oVN.tNr.sPI == 1) {
-          i = 2;
-        }
-        while (i.a(this.oVN, this.oVL))
-        {
-          com.tencent.mm.plugin.sns.c.a.eUS.a(this.oVL, this.oVM.sug.euK, paramView, this.oVN.hPY, i, 18, 9, this.oVM.sug.sua, this.oVN.lsK);
-          return;
-          if (this.oVN.tNr.sPI == 3) {
-            i = 5;
-          } else if (this.oVN.tNr.sPI == 15) {
-            i = 4;
-          }
-        }
-        switch (this.oVM.hQR)
-        {
-        default: 
-          return;
-        case 4: 
-          localObject = new Intent();
-          ((Intent)localObject).putExtra("rawUrl", this.oVM.kSC);
-          com.tencent.mm.plugin.sns.c.a.eUR.j((Intent)localObject, this.oVL);
-          com.tencent.mm.plugin.sns.c.a.eUS.a(this.oVL, this.oVM.sug.euK, paramView, this.oVN.hPY, i, 18, 1, this.oVM.sug.sua, this.oVN.lsK);
-          return;
-        }
-      } while (this.oVM.pyo != 1);
-      localObject = new gq();
-      ((gq)localObject).bOu.actionCode = 2;
-      ((gq)localObject).bOu.scene = 3;
-      ((gq)localObject).bOu.appId = this.oVM.sug.euK;
-      ((gq)localObject).bOu.context = this.oVL;
-      com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-      com.tencent.mm.plugin.sns.c.a.eUS.a(this.oVL, this.oVM.sug.euK, paramView, this.oVN.hPY, i, 18, 6, this.oVM.sug.sua, this.oVN.lsK);
+      AppMethodBeat.o(38750);
       return;
-      j = af.a(this.oVL, this.oVM);
-      if (j == 1)
-      {
-        localObject = new gq();
-        ((gq)localObject).bOu.context = this.oVL;
-        ((gq)localObject).bOu.actionCode = 2;
-        ((gq)localObject).bOu.appId = this.oVM.sug.euK;
-        ((gq)localObject).bOu.messageAction = this.oVM.sug.suc;
-        ((gq)localObject).bOu.messageExt = this.oVM.sug.sub;
-        ((gq)localObject).bOu.scene = 3;
-        com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-        com.tencent.mm.plugin.sns.c.a.eUS.a(this.oVL, this.oVM.sug.euK, paramView, this.oVN.hPY, i, 18, 6, this.oVM.sug.sua, this.oVN.lsK);
-        return;
+    }
+    paramView = com.tencent.mm.plugin.sns.c.a.gmP.dE(this.rOh.wmJ.fKw);
+    int i = 0;
+    if (this.rOi.xTS.wNZ == 1) {
+      i = 2;
+    }
+    while (i.a(this.rOi, this.rOg))
+    {
+      com.tencent.mm.plugin.sns.c.a.gmP.a(this.rOg, this.rOh.wmJ.fKw, paramView, this.rOi.jJA, i, 18, 9, this.rOh.wmJ.wmD, this.rOi.Id);
+      AppMethodBeat.o(38750);
+      return;
+      if (this.rOi.xTS.wNZ == 3) {
+        i = 5;
+      } else if (this.rOi.xTS.wNZ == 15) {
+        i = 4;
       }
-    } while (j != 2);
-    Object localObject = new gq();
-    ((gq)localObject).bOu.context = this.oVL;
-    ((gq)localObject).bOu.actionCode = 1;
-    ((gq)localObject).bOu.appId = this.oVM.sug.euK;
-    ((gq)localObject).bOu.messageAction = this.oVM.sug.suc;
-    ((gq)localObject).bOu.messageExt = this.oVM.sug.sub;
-    ((gq)localObject).bOu.scene = 3;
-    com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-    com.tencent.mm.plugin.sns.c.a.eUS.a(this.oVL, this.oVM.sug.euK, paramView, this.oVN.hPY, i, 18, 3, this.oVM.sug.sua, this.oVN.lsK);
+    }
+    switch (this.rOh.jKs)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(38750);
+      return;
+      Object localObject = new Intent();
+      ((Intent)localObject).putExtra("rawUrl", this.rOh.Url);
+      com.tencent.mm.plugin.sns.c.a.gmO.i((Intent)localObject, this.rOg);
+      com.tencent.mm.plugin.sns.c.a.gmP.a(this.rOg, this.rOh.wmJ.fKw, paramView, this.rOi.jJA, i, 18, 1, this.rOh.wmJ.wmD, this.rOi.Id);
+      AppMethodBeat.o(38750);
+      return;
+      if (this.rOh.Scene == 1)
+      {
+        localObject = new gu();
+        ((gu)localObject).cvL.actionCode = 2;
+        ((gu)localObject).cvL.scene = 3;
+        ((gu)localObject).cvL.appId = this.rOh.wmJ.fKw;
+        ((gu)localObject).cvL.context = this.rOg;
+        com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+        com.tencent.mm.plugin.sns.c.a.gmP.a(this.rOg, this.rOh.wmJ.fKw, paramView, this.rOi.jJA, i, 18, 6, this.rOh.wmJ.wmD, this.rOi.Id);
+        AppMethodBeat.o(38750);
+        return;
+        int j = af.a(this.rOg, this.rOh);
+        if (j == 1)
+        {
+          localObject = new gu();
+          ((gu)localObject).cvL.context = this.rOg;
+          ((gu)localObject).cvL.actionCode = 2;
+          ((gu)localObject).cvL.appId = this.rOh.wmJ.fKw;
+          ((gu)localObject).cvL.messageAction = this.rOh.wmJ.wmF;
+          ((gu)localObject).cvL.messageExt = this.rOh.wmJ.wmE;
+          ((gu)localObject).cvL.scene = 3;
+          com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+          com.tencent.mm.plugin.sns.c.a.gmP.a(this.rOg, this.rOh.wmJ.fKw, paramView, this.rOi.jJA, i, 18, 6, this.rOh.wmJ.wmD, this.rOi.Id);
+          AppMethodBeat.o(38750);
+          return;
+        }
+        if (j == 2)
+        {
+          localObject = new gu();
+          ((gu)localObject).cvL.context = this.rOg;
+          ((gu)localObject).cvL.actionCode = 1;
+          ((gu)localObject).cvL.appId = this.rOh.wmJ.fKw;
+          ((gu)localObject).cvL.messageAction = this.rOh.wmJ.wmF;
+          ((gu)localObject).cvL.messageExt = this.rOh.wmJ.wmE;
+          ((gu)localObject).cvL.scene = 3;
+          com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+          com.tencent.mm.plugin.sns.c.a.gmP.a(this.rOg, this.rOh.wmJ.fKw, paramView, this.rOi.jJA, i, 18, 3, this.rOh.wmJ.wmD, this.rOi.Id);
+        }
+      }
+    }
   }
 }
 

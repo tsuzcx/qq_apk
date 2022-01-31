@@ -1,15 +1,19 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.a.b;
+import com.tencent.mm.plugin.game.api.d;
 import com.tencent.mm.plugin.game.f.a;
 import com.tencent.mm.plugin.game.f.a.a;
-import com.tencent.mm.plugin.game.model.ag;
-import com.tencent.mm.plugin.game.model.aq;
-import com.tencent.mm.plugin.game.model.f;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.plugin.game.f.c;
+import com.tencent.mm.plugin.game.model.af;
+import com.tencent.mm.plugin.game.model.ap;
+import com.tencent.mm.plugin.game.model.b;
+import com.tencent.mm.plugin.game.model.w;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class GameOverSeaCenterUI$2
   implements Runnable
@@ -18,27 +22,23 @@ final class GameOverSeaCenterUI$2
   
   public final void run()
   {
-    Object localObject = ((com.tencent.mm.plugin.game.a.c)g.r(com.tencent.mm.plugin.game.a.c.class)).aYg().Ey("pb_over_sea");
+    AppMethodBeat.i(112129);
+    Object localObject = ((com.tencent.mm.plugin.game.api.e)g.E(com.tencent.mm.plugin.game.api.e.class)).bET().PN("pb_over_sea");
     if (localObject == null) {
-      ai.d(new GameOverSeaCenterUI.2.1(this));
+      al.d(new GameOverSeaCenterUI.2.1(this));
     }
     for (;;)
     {
-      ((b)g.r(b.class)).aYc().init(this.ler);
-      com.tencent.mm.plugin.game.f.c.X(f.aYT());
-      ai.d(new Runnable()
-      {
-        public final void run()
-        {
-          GameOverSeaCenterUI.b(GameOverSeaCenterUI.2.this.ler).fD(true);
-        }
-      });
-      localObject = new aq(com.tencent.mm.sdk.platformtools.x.cqJ(), f.aYT(), this.ler.kYd, this.ler.kYe, this.ler.kYf, this.ler.kYc);
-      g.Dk().a((m)localObject, 0);
-      f.aYY();
-      a.a.bau().bas();
+      ((d)g.E(d.class)).bEP().init(this.nCm);
+      c.ae(com.tencent.mm.plugin.game.model.e.bFS());
+      al.d(new GameOverSeaCenterUI.2.3(this));
+      localObject = new ap(aa.dsG(), com.tencent.mm.plugin.game.model.e.bFS(), this.nCm.nwb, this.nCm.nwc, this.nCm.nwd, this.nCm.nwa);
+      g.Rc().a((m)localObject, 0);
+      com.tencent.mm.plugin.game.model.e.bFX();
+      a.a.bHB().bHz();
+      AppMethodBeat.o(112129);
       return;
-      ai.d(new GameOverSeaCenterUI.2.2(this, new ag((byte[])localObject)));
+      al.d(new GameOverSeaCenterUI.2.2(this, new af((byte[])localObject)));
     }
   }
 }

@@ -1,24 +1,22 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.content.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class r$3
-  implements ac
+  implements Runnable
 {
-  r$3(r paramr, Context paramContext) {}
+  r$3(r paramr) {}
   
-  public final void jp(boolean paramBoolean)
+  public final void run()
   {
-    Intent localIntent = new Intent("com.tencent.mm.adlanding.video_progressbar_change");
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(37206);
+    if (this.rxh.rwO)
     {
-      localIntent.putExtra("show", i);
-      d.Q(this.val$context).a(localIntent);
+      AppMethodBeat.o(37206);
       return;
     }
+    this.rxh.setFocus(false);
+    AppMethodBeat.o(37206);
   }
 }
 

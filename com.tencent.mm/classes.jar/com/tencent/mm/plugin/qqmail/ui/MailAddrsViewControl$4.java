@@ -4,6 +4,7 @@ import android.view.KeyEvent;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MailAddrsViewControl$4
   implements TextView.OnEditorActionListener
@@ -12,15 +13,17 @@ final class MailAddrsViewControl$4
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(68341);
     if (paramInt == 5)
     {
-      paramTextView = this.nir.nik.getEditableText().toString();
+      paramTextView = this.pNE.pNx.getEditableText().toString();
       if ((paramTextView != null) && (paramTextView.length() > 0))
       {
-        MailAddrsViewControl.a(this.nir, paramTextView, false);
-        this.nir.buk();
+        MailAddrsViewControl.a(this.pNE, paramTextView, false);
+        this.pNE.cew();
       }
     }
+    AppMethodBeat.o(68341);
     return true;
   }
 }

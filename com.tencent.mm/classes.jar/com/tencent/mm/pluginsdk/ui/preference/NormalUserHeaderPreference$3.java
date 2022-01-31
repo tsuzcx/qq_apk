@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.n.a;
 import com.tencent.mm.storage.ad;
@@ -20,32 +21,35 @@ final class NormalUserHeaderPreference$3
   
   public final void onClick(View paramView)
   {
-    NormalUserHeaderPreference.c(this.siZ);
-    paramView = this.siZ;
-    au.Hx();
-    Object localObject = c.Fw().abl(paramView.dnp.field_username);
-    if ((localObject != null) && ((int)((a)localObject).dBe != 0) && (((ao)localObject).field_username.equals(paramView.dnp.field_username))) {
-      paramView.dnp = ((ad)localObject);
+    AppMethodBeat.i(28073);
+    NormalUserHeaderPreference.c(this.wbA);
+    paramView = this.wbA;
+    aw.aaz();
+    Object localObject = c.YA().arw(paramView.contact.field_username);
+    if ((localObject != null) && ((int)((a)localObject).euF != 0) && (((aq)localObject).field_username.equals(paramView.contact.field_username))) {
+      paramView.contact = ((ad)localObject);
     }
-    if (!a.gR(paramView.dnp.field_type))
+    if (!a.je(paramView.contact.field_type))
     {
       localObject = new Intent();
       ((Intent)localObject).setClassName(paramView.mContext, "com.tencent.mm.ui.contact.ModRemarkNameUI");
-      ((Intent)localObject).putExtra("Contact_Scene", paramView.ocd);
+      ((Intent)localObject).putExtra("Contact_Scene", paramView.qQk);
       ((Intent)localObject).putExtra("Contact_mode_name_type", 0);
       ((Intent)localObject).putExtra("Contact_ModStrangerRemark", true);
-      ((Intent)localObject).putExtra("Contact_User", paramView.dnp.field_username);
-      ((Intent)localObject).putExtra("Contact_Nick", paramView.dnp.field_nickname);
-      ((Intent)localObject).putExtra("Contact_RemarkName", paramView.dnp.field_conRemark);
+      ((Intent)localObject).putExtra("Contact_User", paramView.contact.field_username);
+      ((Intent)localObject).putExtra("Contact_Nick", paramView.contact.field_nickname);
+      ((Intent)localObject).putExtra("Contact_RemarkName", paramView.contact.field_conRemark);
       ((Activity)paramView.mContext).startActivity((Intent)localObject);
+      AppMethodBeat.o(28073);
       return;
     }
     localObject = new Intent();
     ((Intent)localObject).setClassName(paramView.mContext, "com.tencent.mm.ui.contact.ContactRemarkInfoModUI");
-    ((Intent)localObject).putExtra("Contact_Scene", paramView.ocd);
-    ((Intent)localObject).putExtra("Contact_User", paramView.dnp.field_username);
-    ((Intent)localObject).putExtra("Contact_RoomNickname", paramView.bER.getIntent().getStringExtra("Contact_RoomNickname"));
+    ((Intent)localObject).putExtra("Contact_Scene", paramView.qQk);
+    ((Intent)localObject).putExtra("Contact_User", paramView.contact.field_username);
+    ((Intent)localObject).putExtra("Contact_RoomNickname", paramView.cmc.getIntent().getStringExtra("Contact_RoomNickname"));
     ((Activity)paramView.mContext).startActivity((Intent)localObject);
+    AppMethodBeat.o(28073);
   }
 }
 

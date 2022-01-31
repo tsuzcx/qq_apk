@@ -1,18 +1,14 @@
 package com.tencent.mm.plugin.masssend.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.modelvideo.c;
+import android.content.DialogInterface.OnClickListener;
 
 final class MassSendMsgUI$4
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  MassSendMsgUI$4(MassSendMsgUI paramMassSendMsgUI, c paramc) {}
+  MassSendMsgUI$4(MassSendMsgUI paramMassSendMsgUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.mbJ.eFi = null;
-  }
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

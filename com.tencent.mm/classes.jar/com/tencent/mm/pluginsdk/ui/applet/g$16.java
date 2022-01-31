@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.o;
 
 final class g$16
@@ -11,12 +12,14 @@ final class g$16
   
   public final void onClick(View paramView)
   {
-    if (this.sch != null) {
-      this.sch.a(true, g.du(this.val$view), g.dv(this.val$view));
+    AppMethodBeat.i(27654);
+    if (this.vTq != null) {
+      this.vTq.a(true, g.eA(this.val$view), g.eB(this.val$view));
     }
-    this.scj.dismiss();
-    this.scj.setFocusable(false);
-    this.scj.setTouchable(false);
+    this.vTs.dismiss();
+    this.vTs.setFocusable(false);
+    this.vTs.setTouchable(false);
+    AppMethodBeat.o(27654);
   }
 }
 

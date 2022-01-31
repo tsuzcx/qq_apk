@@ -1,26 +1,32 @@
 package com.tencent.weui.base.preference;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.ci.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.BaseActivity;
 
 public abstract class WeUIPreference
   extends BaseActivity
 {
+  private b BCy;
+  protected ImageView bannerCloseBtn;
+  protected TextView bannerTv;
+  protected RelativeLayout bannerView;
   private boolean dirty = false;
-  private SharedPreferences dnD;
-  private ListView lwE;
-  private boolean pCE = false;
-  protected RelativeLayout vde;
-  protected TextView vdf;
-  protected ImageView vdg;
-  private b xfS;
+  private boolean isRefreshing = false;
+  private ListView list;
+  private SharedPreferences sp;
+  
+  public abstract int getResourceId();
   
   public boolean onContextItemSelected(MenuItem paramMenuItem)
   {
@@ -30,37 +36,55 @@ public abstract class WeUIPreference
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.dnD = getSharedPreferences(getPackageName() + "_preferences", 0);
-    this.xfS = new b(this, this.dnD);
-    this.lwE = ((ListView)findViewById(16908298));
-    this.vde = ((RelativeLayout)findViewById(a.f.preference_tips_banner_view));
-    this.vdf = ((TextView)findViewById(a.f.preference_tips_banner_tv));
-    this.vdg = ((ImageView)findViewById(a.f.preference_tips_banner_close));
-    paramBundle = this.xfS;
-    paramBundle.xfV = new WeUIPreference.1(this);
+    this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
+    this.BCy = new b(this, this.sp);
+    this.list = ((ListView)findViewById(16908298));
+    this.bannerView = ((RelativeLayout)findViewById(2131826248));
+    this.bannerTv = ((TextView)findViewById(2131826250));
+    this.bannerCloseBtn = ((ImageView)findViewById(2131826249));
+    paramBundle = this.BCy;
+    paramBundle.BCC = new WeUIPreference.1(this);
     paramBundle.notifyDataSetChanged();
-    int i = xj();
+    int i = getResourceId();
+    b localb;
+    c localc;
     if (i != -1)
     {
-      paramBundle = this.xfS;
-      paramBundle.vdt = true;
-      paramBundle.xfU.a(i, paramBundle);
-      paramBundle.vdt = false;
-      paramBundle.notifyDataSetChanged();
+      localb = this.BCy;
+      localb.BCB = true;
+      localc = localb.BCA;
+      paramBundle = localc.mContext.getResources().getXml(i);
+      if (paramBundle == null) {}
     }
-    this.lwE.setAdapter(this.xfS);
-    this.lwE.setOnItemClickListener(new WeUIPreference.2(this));
-    this.lwE.setOnItemLongClickListener(new WeUIPreference.3(this));
-    this.lwE.setOnScrollListener(new WeUIPreference.4(this));
+    try
+    {
+      localc.a(paramBundle, localb);
+      paramBundle.close();
+      localb.BCB = false;
+      localb.notifyDataSetChanged();
+      this.list.setAdapter(this.BCy);
+      this.list.setOnItemClickListener(new WeUIPreference.2(this));
+      this.list.setOnItemLongClickListener(new WeUIPreference.3(this));
+      this.list.setOnScrollListener(new WeUIPreference.4(this));
+      return;
+    }
+    finally
+    {
+      paramBundle.close();
+    }
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    this.xfS.notifyDataSetChanged();
+    this.BCy.notifyDataSetChanged();
     super.onResume();
   }
   
-  public abstract int xj();
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
 }
 
 

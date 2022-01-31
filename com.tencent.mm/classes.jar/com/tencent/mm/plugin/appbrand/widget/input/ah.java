@@ -1,35 +1,28 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.text.Spannable;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.ab;
 
-final class ah
+public final class ah
 {
-  static ah.a[] e(TextView paramTextView)
+  final g joh;
+  boolean joi;
+  boolean joj;
+  boolean jok;
+  private final ah.a<ViewGroup, g> jol;
+  final ah.a<ViewGroup, ab> jom;
+  
+  public ah(g paramg)
   {
-    int i = 0;
-    Spannable localSpannable = null;
-    Object localObject = localSpannable;
-    if (paramTextView != null)
-    {
-      localObject = localSpannable;
-      if ((paramTextView.getText() instanceof Spannable))
-      {
-        localSpannable = (Spannable)paramTextView.getText();
-        paramTextView = (ah.a[])localSpannable.getSpans(0, localSpannable.length(), ah.a.class);
-        int j = paramTextView.length;
-        for (;;)
-        {
-          localObject = paramTextView;
-          if (i >= j) {
-            break;
-          }
-          localSpannable.removeSpan(paramTextView[i]);
-          i += 1;
-        }
-      }
-    }
-    return localObject;
+    AppMethodBeat.i(123842);
+    this.joi = false;
+    this.joj = false;
+    this.jok = false;
+    this.jol = new ah.1(this);
+    this.jom = new ah.2(this);
+    this.joh = paramg;
+    AppMethodBeat.o(123842);
   }
 }
 

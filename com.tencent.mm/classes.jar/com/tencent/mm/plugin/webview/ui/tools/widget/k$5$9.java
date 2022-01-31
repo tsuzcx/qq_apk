@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.i;
 
@@ -11,7 +12,9 @@ final class k$5$9
   
   public final void run()
   {
-    this.rCx.rCv.rvZ.a(this.rjU, this.rjV, i.af(this.rjW), this.rjX);
+    AppMethodBeat.i(9933);
+    this.vsJ.vsH.vmp.a(this.uZm, this.uZn, i.az(this.uZo), this.uZp);
+    AppMethodBeat.o(9933);
   }
 }
 

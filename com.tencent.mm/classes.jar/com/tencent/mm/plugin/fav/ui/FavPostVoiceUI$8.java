@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.fav.ui;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavPostVoiceUI$8
   implements Animation.AnimationListener
@@ -11,7 +12,9 @@ final class FavPostVoiceUI$8
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    FavPostVoiceUI.l(this.kcp).post(new FavPostVoiceUI.8.1(this));
+    AppMethodBeat.i(74049);
+    FavPostVoiceUI.l(this.mxa).post(new FavPostVoiceUI.8.1(this));
+    AppMethodBeat.o(74049);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +23,7 @@ final class FavPostVoiceUI$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavPostVoiceUI.8
  * JD-Core Version:    0.7.0.1
  */

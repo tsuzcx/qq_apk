@@ -1,7 +1,8 @@
 package com.tencent.filter;
 
 import android.opengl.GLES20;
-import com.tencent.view.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.view.g;
 
 public final class m$d
   extends m
@@ -20,16 +21,23 @@ public final class m$d
   
   public final void setParams(int paramInt)
   {
-    if (this.handle < 0) {
+    AppMethodBeat.i(86395);
+    if (this.handle < 0)
+    {
+      AppMethodBeat.o(86395);
       return;
     }
     GLES20.glUniform3f(this.handle, this.x, this.y, this.z);
-    f.checkGlError("Float3fParam setParams");
+    g.checkGlError("Float3fParam setParams");
+    AppMethodBeat.o(86395);
   }
   
   public final String toString()
   {
-    return this.name + "=" + this.x + ", " + this.y + ", " + this.z;
+    AppMethodBeat.i(86396);
+    String str = this.name + "=" + this.x + ", " + this.y + ", " + this.z;
+    AppMethodBeat.o(86396);
+    return str;
   }
 }
 

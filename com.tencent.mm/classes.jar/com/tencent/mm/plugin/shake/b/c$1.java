@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.shake.b;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class c$1
   implements Runnable
@@ -11,18 +12,20 @@ final class c$1
   
   public final void run()
   {
-    if ((this.nYM.nYK != null) && (this.nYM.nYL != null)) {
-      this.nYM.nYK.removeCallbacks(this.nYM.nYL);
+    AppMethodBeat.i(24417);
+    if ((this.qMW.qMU != null) && (this.qMW.qMV != null)) {
+      this.qMW.qMU.removeCallbacks(this.qMW.qMV);
     }
-    if (this.nYM.nYI != null) {
-      au.Dk().c(this.nYM.nYI);
+    if (this.qMW.qMS != null) {
+      aw.Rc().a(this.qMW.qMS);
     }
-    if ((this.nYM.nYH != null) && (this.nYM.nYH.ccD != null)) {
-      this.nYM.nYI = new a(this.nYM.nYH.ccD);
+    if ((this.qMW.qMR != null) && (this.qMW.qMR.cLl != null)) {
+      this.qMW.qMS = new a(this.qMW.qMR.cLl);
     }
-    if (this.nYM.nYI != null) {
-      au.Dk().a(this.nYM.nYI, 0);
+    if (this.qMW.qMS != null) {
+      aw.Rc().a(this.qMW.qMS, 0);
     }
+    AppMethodBeat.o(24417);
   }
 }
 

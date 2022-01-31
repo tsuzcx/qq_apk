@@ -1,88 +1,102 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ai.d;
-import com.tencent.mm.ai.o;
-import com.tencent.mm.ai.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.o;
+import com.tencent.mm.aj.z;
 import com.tencent.mm.bv.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.profile.a.c;
-import com.tencent.mm.protocal.c.aww;
-import com.tencent.mm.protocal.c.bih;
-import com.tencent.mm.protocal.c.bwk;
-import com.tencent.mm.protocal.c.bwl;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bdm;
+import com.tencent.mm.protocal.protobuf.bqx;
+import com.tencent.mm.protocal.protobuf.cis;
+import com.tencent.mm.protocal.protobuf.cit;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.be;
 import java.lang.ref.WeakReference;
 
 final class EnterpriseBizContactListView$a
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
-  public String idB;
-  com.tencent.mm.ui.widget.e idC;
-  WeakReference<EnterpriseBizContactListView> idD;
+  public String jUp;
+  com.tencent.mm.ui.widget.f jUq;
+  WeakReference<EnterpriseBizContactListView> jUr;
   com.tencent.mm.ui.base.p tipDialog;
   
   public EnterpriseBizContactListView$a(EnterpriseBizContactListView paramEnterpriseBizContactListView)
   {
-    this.idD = new WeakReference(paramEnterpriseBizContactListView);
+    AppMethodBeat.i(13962);
+    this.jUr = new WeakReference(paramEnterpriseBizContactListView);
+    AppMethodBeat.o(13962);
   }
   
   protected final void finalize()
   {
-    g.Dk().b(1394, this);
+    AppMethodBeat.i(13963);
+    g.Rc().b(1394, this);
     super.finalize();
+    AppMethodBeat.o(13963);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(13964);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
-    if ((paramInt1 != 0) || (paramInt2 != 0)) {}
-    do
+    if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      do
+      AppMethodBeat.o(13964);
+      return;
+    }
+    if (paramm.getType() == 1394)
+    {
+      paramString = ((com.tencent.mm.plugin.profile.b.d)paramm).cbP();
+      Object localObject = ((com.tencent.mm.plugin.profile.b.d)paramm).cbO();
+      if ((localObject == null) || (((cit)localObject).wyn == null) || (((cit)localObject).wyn.ret != 0))
       {
-        return;
-      } while (paramm.getType() != 1394);
-      paramString = ((c)paramm).bst();
-      localObject = ((c)paramm).bss();
-      if ((localObject == null) || (((bwl)localObject).sCU == null) || (((bwl)localObject).sCU.ret != 0))
-      {
-        if ((localObject != null) && (((bwl)localObject).sCU != null))
+        if ((localObject != null) && (((cit)localObject).wyn != null))
         {
-          y.w("MicroMsg.BrandService.EnterpriseBizContactListView", "chuangchen onSceneEnd type:%s, err:code:%s", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(((bwl)localObject).sCU.ret) });
+          ab.w("MicroMsg.BrandService.EnterpriseBizContactListView", "chuangchen onSceneEnd type:%s, err:code:%s", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(((cit)localObject).wyn.ret) });
+          AppMethodBeat.o(13964);
           return;
         }
-        y.w("MicroMsg.BrandService.EnterpriseBizContactListView", "chuangchen onSceneEnd type:%s, err:resp == null", new Object[] { Integer.valueOf(paramm.getType()) });
+        ab.w("MicroMsg.BrandService.EnterpriseBizContactListView", "chuangchen onSceneEnd type:%s, err:resp == null", new Object[] { Integer.valueOf(paramm.getType()) });
+        AppMethodBeat.o(13964);
         return;
       }
-    } while (!paramString.tMS);
-    paramm = com.tencent.mm.ai.f.kX(paramString.sCO);
-    paramm.field_brandFlag |= 0x1;
-    Object localObject = new aww();
-    ((aww)localObject).ffv = paramm.field_brandFlag;
-    ((aww)localObject).hPY = paramString.sCO;
-    ((j)g.r(j.class)).Fv().b(new i.a(47, (a)localObject));
-    z.My().c(paramm, new String[0]);
-    ((j)g.r(j.class)).FB().abu(paramm.field_username);
-    if (((j)g.r(j.class)).FB().abI(paramm.field_enterpriseFather) <= 0) {
-      ((j)g.r(j.class)).FB().abu(paramm.field_enterpriseFather);
-    }
-    for (;;)
-    {
-      paramString = (EnterpriseBizContactListView)this.idD.get();
-      if (paramString == null) {
-        break;
+      if (!paramString.xTc)
+      {
+        AppMethodBeat.o(13964);
+        return;
+      }
+      paramm = com.tencent.mm.aj.f.rS(paramString.wyh);
+      paramm.field_brandFlag |= 0x1;
+      localObject = new bdm();
+      ((bdm)localObject).gxd = paramm.field_brandFlag;
+      ((bdm)localObject).jJA = paramString.wyh;
+      ((j)g.E(j.class)).Yz().c(new j.a(47, (a)localObject));
+      z.afi().update(paramm, new String[0]);
+      ((j)g.E(j.class)).YF().arF(paramm.field_username);
+      if (((j)g.E(j.class)).YF().arS(paramm.field_enterpriseFather) <= 0) {
+        ((j)g.E(j.class)).YF().arF(paramm.field_enterpriseFather);
+      }
+      for (;;)
+      {
+        paramString = (EnterpriseBizContactListView)this.jUr.get();
+        if (paramString != null) {
+          break;
+        }
+        AppMethodBeat.o(13964);
+        return;
+        ((o)g.E(o.class)).YE().aqR(paramm.field_enterpriseFather);
       }
       paramString.refresh();
-      return;
-      ((o)g.r(o.class)).FA().aaG(paramm.field_enterpriseFather);
     }
+    AppMethodBeat.o(13964);
   }
 }
 

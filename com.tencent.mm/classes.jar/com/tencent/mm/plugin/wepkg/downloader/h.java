@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wepkg.downloader;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.RunnableFuture;
@@ -18,40 +19,52 @@ public final class h
   
   protected final void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
+    AppMethodBeat.i(63452);
     if ((paramRunnable instanceof e))
     {
       e locale = (e)paramRunnable;
-      if ((locale.rOC != null) && (locale.rOC.rOg != null))
+      if ((locale.vFq != null) && (locale.vFq.vER != null))
       {
-        d.cjS().Vc(locale.rOC.rOg.rOD);
-        y.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "remove download task");
+        d.dkx().akx(locale.vFq.vER.vFr);
+        ab.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "remove download task");
       }
     }
-    y.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "afterExecute");
+    ab.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "afterExecute");
     super.afterExecute(paramRunnable, paramThrowable);
+    AppMethodBeat.o(63452);
   }
   
   protected final void beforeExecute(Thread paramThread, Runnable paramRunnable)
   {
+    AppMethodBeat.i(63451);
     super.beforeExecute(paramThread, paramRunnable);
-    y.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "beforeExecute");
+    ab.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "beforeExecute");
+    AppMethodBeat.o(63451);
   }
   
   protected final <V> RunnableFuture<V> newTaskFor(Runnable paramRunnable, V paramV)
   {
-    if ((paramRunnable instanceof c)) {
-      return new e(paramRunnable, paramV, (c)paramRunnable);
+    AppMethodBeat.i(63449);
+    if ((paramRunnable instanceof c))
+    {
+      paramRunnable = new e(paramRunnable, paramV, (c)paramRunnable);
+      AppMethodBeat.o(63449);
+      return paramRunnable;
     }
-    return super.newTaskFor(paramRunnable, paramV);
+    paramRunnable = super.newTaskFor(paramRunnable, paramV);
+    AppMethodBeat.o(63449);
+    return paramRunnable;
   }
   
   protected final void terminated()
   {
-    d locald = d.cjS();
-    if (locald.rOq != null) {
-      locald.rOq.clear();
+    AppMethodBeat.i(63450);
+    d locald = d.dkx();
+    if (locald.vFb != null) {
+      locald.vFb.clear();
     }
     super.terminated();
+    AppMethodBeat.o(63450);
   }
 }
 

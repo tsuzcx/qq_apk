@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class OAuthUI$6
@@ -11,12 +12,14 @@ final class OAuthUI$6
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (OAuthUI.b(this.rlw) != null) {
-      OAuthUI.b(this.rlw);
+    AppMethodBeat.i(7422);
+    if (OAuthUI.b(this.vaY) != null) {
+      OAuthUI.b(this.vaY);
     }
-    this.rlw.niQ.stopLoading();
-    this.rlw.O(false, false);
-    OAuthUI.c(this.rlw);
+    this.vaY.pOd.stopLoading();
+    this.vaY.Y(false, false);
+    OAuthUI.c(this.vaY);
+    AppMethodBeat.o(7422);
     return false;
   }
 }

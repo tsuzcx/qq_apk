@@ -1,20 +1,35 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.JsapiPermissionWrapper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.uz;
+import com.tencent.mm.g.a.uz.b;
+import java.util.HashMap;
+import java.util.Map;
 
 final class g$46
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  g$46(g paramg, String paramString1, String paramString2, String paramString3, i parami, JsapiPermissionWrapper paramJsapiPermissionWrapper) {}
+  g$46(g paramg, uz paramuz, i parami) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    h.nFQ.f(14217, new Object[] { this.val$appId, Integer.valueOf(5), this.rmF, this.val$url, Integer.valueOf(3) });
-    g.eb(this.rzi, this.rzk);
-    paramDialogInterface.dismiss();
+    AppMethodBeat.i(154970);
+    if (this.tUy.cLy.retCode == 0)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("buffer", this.tUy.cLy.buffer);
+      this.vqm.a(this.uZa, "handleWCPayWalletBuffer:ok", localHashMap);
+      AppMethodBeat.o(154970);
+      return;
+    }
+    if (this.tUy.cLy.retCode == -2)
+    {
+      this.vqm.a(this.uZa, "handleWCPayWalletBuffer:null", null);
+      AppMethodBeat.o(154970);
+      return;
+    }
+    this.vqm.a(this.uZa, "handleWCPayWalletBuffer:fail", null);
+    AppMethodBeat.o(154970);
   }
 }
 

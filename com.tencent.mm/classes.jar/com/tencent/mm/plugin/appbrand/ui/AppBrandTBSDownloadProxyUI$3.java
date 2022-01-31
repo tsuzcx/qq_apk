@@ -1,32 +1,26 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.xweb.x5.sdk.f.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandTBSDownloadProxyUI$3
-  implements f.a
+  implements Runnable
 {
   AppBrandTBSDownloadProxyUI$3(AppBrandTBSDownloadProxyUI paramAppBrandTBSDownloadProxyUI) {}
   
-  public final void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
+  public final void run()
   {
-    if ((paramBoolean) && (paramInt >= 36824))
-    {
-      y.i("MicroMsg.AppBrandTBSDownloadProxyUI", "try to get need download success result %s version %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-      ai.d(new AppBrandTBSDownloadProxyUI.3.1(this));
-      return;
-    }
-    y.i("MicroMsg.AppBrandTBSDownloadProxyUI", "try to get need download fail result %s version %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    AppMethodBeat.i(133101);
+    AppBrandTBSDownloadProxyUI.aMp();
     Intent localIntent = new Intent();
-    this.hed.setResult(0, localIntent);
-    this.hed.finish();
+    this.iOQ.setResult(0, localIntent);
+    this.iOQ.finish();
+    AppMethodBeat.o(133101);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandTBSDownloadProxyUI.3
  * JD-Core Version:    0.7.0.1
  */

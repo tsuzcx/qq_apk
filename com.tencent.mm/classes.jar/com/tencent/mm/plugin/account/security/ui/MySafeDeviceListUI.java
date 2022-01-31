@@ -1,29 +1,27 @@
 package com.tencent.mm.plugin.account.security.ui;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.plugin.account.security.a.d;
-import com.tencent.mm.plugin.account.security.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.plugin.account.security.a.b;
 import com.tencent.mm.plugin.account.security.a.c;
 import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.plugin.account.security.a.e;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.protocal.c.akc;
-import com.tencent.mm.protocal.c.auo;
-import com.tencent.mm.protocal.c.bmp;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.protocal.protobuf.apn;
+import com.tencent.mm.protocal.protobuf.baw;
+import com.tencent.mm.protocal.protobuf.bwg;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.s;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -32,36 +30,48 @@ import java.util.List;
 
 public class MySafeDeviceListUI
   extends MMPreference
-  implements com.tencent.mm.ah.f, j.a
+  implements com.tencent.mm.ai.f, k.a
 {
-  private ProgressDialog dnm = null;
-  private com.tencent.mm.ui.base.preference.f dnn;
-  private int fkh = -2;
-  private List<SafeDeviceListPreference> fki;
-  private a fkj;
-  private List<d> fkk;
-  private MenuItem.OnMenuItemClickListener fkl = new MySafeDeviceListUI.1(this);
-  private ah handler = new MySafeDeviceListUI.3(this);
+  private ProgressDialog eeN;
+  private a gBA;
+  private List<d> gBB;
+  private MenuItem.OnMenuItemClickListener gBC;
+  private int gBy;
+  private List<SafeDeviceListPreference> gBz;
+  private ak handler;
+  private com.tencent.mm.ui.base.preference.f screen;
   
-  private void XD()
+  public MySafeDeviceListUI()
   {
-    this.fki.clear();
-    this.fkk = com.tencent.mm.plugin.account.security.a.g.XB().Xy();
-    this.dnn.removeAll();
-    this.dnn.addPreferencesFromResource(a.e.safe_device_list_pref);
-    if (this.fkk.size() == 0)
+    AppMethodBeat.i(69881);
+    this.gBy = -2;
+    this.eeN = null;
+    this.gBC = new MySafeDeviceListUI.1(this);
+    this.handler = new MySafeDeviceListUI.3(this);
+    AppMethodBeat.o(69881);
+  }
+  
+  private void arf()
+  {
+    AppMethodBeat.i(69887);
+    this.gBz.clear();
+    this.gBB = com.tencent.mm.plugin.account.security.a.g.ard().ara();
+    this.screen.removeAll();
+    this.screen.addPreferencesFromResource(2131165267);
+    if (this.gBB.size() == 0)
     {
-      this.dnn.ade("my_safe_device_list_tip");
+      this.screen.aty("my_safe_device_list_tip");
       showOptionMenu(false);
+      AppMethodBeat.o(69887);
       return;
     }
-    if (this.fkh == 1)
+    if (this.gBy == 1)
     {
-      addTextOptionMenu(0, getString(a.d.safe_device_edit), this.fkl);
-      this.fkh ^= 0xFFFFFFFF;
+      addTextOptionMenu(0, getString(2131302845), this.gBC);
+      this.gBy ^= 0xFFFFFFFF;
     }
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
-    Iterator localIterator = this.fkk.iterator();
+    Iterator localIterator = this.gBB.iterator();
     while (localIterator.hasNext())
     {
       d locald = (d)localIterator.next();
@@ -69,27 +79,91 @@ public class MySafeDeviceListUI
       localSafeDeviceListPreference.setKey("mysafedevice_" + locald.field_uid);
       localSafeDeviceListPreference.setTitle(j.b(this, locald.field_name));
       localSafeDeviceListPreference.setSummary(localSimpleDateFormat.format(new Date(locald.field_createtime * 1000L)));
-      localSafeDeviceListPreference.fkt = this.fkj;
-      localSafeDeviceListPreference.fku = this.fkj;
-      localSafeDeviceListPreference.fkq = locald;
-      this.dnn.a(localSafeDeviceListPreference, -1);
-      this.fki.add(localSafeDeviceListPreference);
+      localSafeDeviceListPreference.gBK = this.gBA;
+      localSafeDeviceListPreference.gBL = this.gBA;
+      localSafeDeviceListPreference.gBH = locald;
+      this.screen.a(localSafeDeviceListPreference, -1);
+      this.gBz.add(localSafeDeviceListPreference);
     }
     showOptionMenu(true);
+    AppMethodBeat.o(69887);
   }
   
-  public final void a(String paramString, com.tencent.mm.sdk.e.l paraml)
+  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
   {
-    y.i("MicroMsg.MySafeDeviceListUI", "notify " + paramString);
-    this.handler.post(new MySafeDeviceListUI.6(this));
-  }
-  
-  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
-  {
-    paramf = paramPreference.mKey;
-    if (bk.bl(paramf))
+    AppMethodBeat.i(69888);
+    ab.i("MicroMsg.MySafeDeviceListUI", "notify ".concat(String.valueOf(paramString)));
+    this.handler.post(new Runnable()
     {
-      y.e("MicroMsg.MySafeDeviceListUI", "null key");
+      public final void run()
+      {
+        AppMethodBeat.i(69878);
+        MySafeDeviceListUI.g(MySafeDeviceListUI.this);
+        AppMethodBeat.o(69878);
+      }
+    });
+    AppMethodBeat.o(69888);
+  }
+  
+  public int getResourceId()
+  {
+    return -1;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(69886);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(69877);
+        MySafeDeviceListUI.this.finish();
+        AppMethodBeat.o(69877);
+        return true;
+      }
+    });
+    this.screen = getPreferenceScreen();
+    this.gBz = new LinkedList();
+    this.gBA = new a((byte)0);
+    addTextOptionMenu(0, getString(2131302845), this.gBC);
+    setMMTitle(2131303300);
+    AppMethodBeat.o(69886);
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(69882);
+    super.onCreate(paramBundle);
+    com.tencent.mm.kernel.g.Rc().a(850, this);
+    com.tencent.mm.kernel.g.Rc().a(361, this);
+    com.tencent.mm.plugin.account.security.a.g.ard().add(this);
+    initView();
+    paramBundle = new b();
+    com.tencent.mm.kernel.g.Rc().a(paramBundle, 0);
+    getString(2131297087);
+    this.eeN = h.b(this, getString(2131297112), true, new MySafeDeviceListUI.2(this, paramBundle));
+    AppMethodBeat.o(69882);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(69883);
+    super.onDestroy();
+    com.tencent.mm.kernel.g.Rc().b(850, this);
+    com.tencent.mm.kernel.g.Rc().b(361, this);
+    com.tencent.mm.plugin.account.security.a.g.ard().remove(this);
+    AppMethodBeat.o(69883);
+  }
+  
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  {
+    AppMethodBeat.i(69885);
+    paramf = paramPreference.mKey;
+    if (bo.isNullOrNil(paramf))
+    {
+      ab.e("MicroMsg.MySafeDeviceListUI", "null key");
+      AppMethodBeat.o(69885);
       return false;
     }
     if (paramf.startsWith("mysafedevice_"))
@@ -97,58 +171,31 @@ public class MySafeDeviceListUI
       paramf = (SafeDeviceListPreference)paramPreference;
       if (paramf != null)
       {
-        paramf = paramf.fkq;
-        h.a(this.mController.uMN, getString(a.d.safe_device_edit_title), paramf.field_name, getString(a.d.safe_device_mod_name_hint), -1, new MySafeDeviceListUI.4(this, paramf));
+        paramf = paramf.gBH;
+        h.a(getContext(), getString(2131302847), paramf.field_name, getString(2131302850), -1, new MySafeDeviceListUI.4(this, paramf));
       }
     }
+    AppMethodBeat.o(69885);
     return true;
   }
   
-  protected final void initView()
+  public void onResume()
   {
-    setBackBtn(new MySafeDeviceListUI.5(this));
-    this.dnn = this.vdd;
-    this.fki = new LinkedList();
-    this.fkj = new a((byte)0);
-    addTextOptionMenu(0, getString(a.d.safe_device_edit), this.fkl);
-    setMMTitle(a.d.settings_manage_login_device);
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.Dk().a(850, this);
-    com.tencent.mm.kernel.g.Dk().a(361, this);
-    com.tencent.mm.plugin.account.security.a.g.XB().c(this);
-    initView();
-    paramBundle = new b();
-    com.tencent.mm.kernel.g.Dk().a(paramBundle, 0);
-    getString(a.d.app_tip);
-    this.dnm = h.b(this, getString(a.d.app_waiting), true, new MySafeDeviceListUI.2(this, paramBundle));
-  }
-  
-  protected void onDestroy()
-  {
-    super.onDestroy();
-    com.tencent.mm.kernel.g.Dk().b(850, this);
-    com.tencent.mm.kernel.g.Dk().b(361, this);
-    com.tencent.mm.plugin.account.security.a.g.XB().d(this);
-  }
-  
-  protected void onResume()
-  {
+    AppMethodBeat.i(69884);
     super.onResume();
-    XD();
+    arf();
+    AppMethodBeat.o(69884);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
     Object localObject = null;
-    y.i("MicroMsg.MySafeDeviceListUI", "errorCode %d, errorMsg %s, scene %s", new Object[] { Integer.valueOf(paramInt2), paramString, paramm });
-    if ((this.dnm != null) && (this.dnm.isShowing()))
+    AppMethodBeat.i(69889);
+    ab.i("MicroMsg.MySafeDeviceListUI", "errorCode %d, errorMsg %s, scene %s", new Object[] { Integer.valueOf(paramInt2), paramString, paramm });
+    if ((this.eeN != null) && (this.eeN.isShowing()))
     {
-      this.dnm.dismiss();
-      this.dnm = null;
+      this.eeN.dismiss();
+      this.eeN = null;
     }
     if (paramm.getType() == 850)
     {
@@ -156,71 +203,81 @@ public class MySafeDeviceListUI
       {
         paramm = (b)paramm;
         paramString = localObject;
-        if (paramm.fjR != null)
+        if (paramm.gBi != null)
         {
           paramString = localObject;
-          if (paramm.fjR.tgG != null)
+          if (paramm.gBi.xfo != null)
           {
             paramString = localObject;
-            if (paramm.fjR.tgG.tFS != null) {
-              paramString = paramm.fjR.tgG.tFS;
+            if (paramm.gBi.xfo.xJI != null) {
+              paramString = paramm.gBi.xfo.xJI;
             }
           }
         }
         if ((paramString != null) && (paramString != null))
         {
-          com.tencent.mm.plugin.account.security.a.g.XB().gk("SafeDeviceInfo", "delete from SafeDeviceInfo");
+          com.tencent.mm.plugin.account.security.a.g.ard().execSQL("SafeDeviceInfo", "delete from SafeDeviceInfo");
           paramString = paramString.iterator();
           while (paramString.hasNext())
           {
-            paramm = (auo)paramString.next();
-            com.tencent.mm.plugin.account.security.a.g.XB().a(new d(paramm));
+            paramm = (baw)paramString.next();
+            com.tencent.mm.plugin.account.security.a.g.ard().a(new d(paramm));
           }
         }
+        AppMethodBeat.o(69889);
       }
     }
     else if (paramm.getType() == 361)
     {
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label300;
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        paramString = (c)paramm;
+        paramm = new d();
+        paramm.field_devicetype = paramString.cqJ;
+        paramm.field_name = paramString.deviceName;
+        paramm.field_uid = paramString.bYu;
+        paramm.field_createtime = 0L;
+        com.tencent.mm.plugin.account.security.a.g.ard().update(paramm, new String[0]);
+        h.bO(this, com.tencent.mm.cb.a.aq(this, 2131302851));
+        AppMethodBeat.o(69889);
+        return;
       }
-      paramString = (c)paramm;
-      paramm = new d();
-      paramm.field_devicetype = paramString.bJp;
-      paramm.field_name = paramString.deviceName;
-      paramm.field_uid = paramString.bwK;
-      paramm.field_createtime = 0L;
-      com.tencent.mm.plugin.account.security.a.g.XB().c(paramm, new String[0]);
-      h.bC(this, com.tencent.mm.cb.a.ac(this, a.d.safe_device_mod_name_ok));
+      if (com.tencent.mm.plugin.account.a.a.gmP.a(this, paramInt1, paramInt2, paramString))
+      {
+        AppMethodBeat.o(69889);
+        return;
+      }
     }
-    label300:
-    while (!com.tencent.mm.plugin.account.a.a.eUS.a(this, paramInt1, paramInt2, paramString)) {
-      return;
-    }
+    AppMethodBeat.o(69889);
   }
   
-  public final int xj()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return -1;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
   
-  private final class a
+  final class a
     implements SafeDeviceListPreference.a, SafeDeviceListPreference.b
   {
     private a() {}
     
     public final void onFailed(String paramString)
     {
-      y.e("MicroMsg.MySafeDeviceListUI", "delete safedevice failed" + paramString);
+      AppMethodBeat.i(69880);
+      ab.e("MicroMsg.MySafeDeviceListUI", "delete safedevice failed".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(69880);
     }
     
-    public final void pY(String paramString)
+    public final void xu(String paramString)
     {
-      MySafeDeviceListUI.b(MySafeDeviceListUI.this).ade(paramString);
+      AppMethodBeat.i(69879);
+      MySafeDeviceListUI.b(MySafeDeviceListUI.this).aty(paramString);
       MySafeDeviceListUI.d(MySafeDeviceListUI.this).sendEmptyMessage(0);
-      MySafeDeviceListUI.this.addTextOptionMenu(0, MySafeDeviceListUI.this.getString(a.d.safe_device_edit), MySafeDeviceListUI.e(MySafeDeviceListUI.this));
+      MySafeDeviceListUI.this.addTextOptionMenu(0, MySafeDeviceListUI.this.getString(2131302845), MySafeDeviceListUI.e(MySafeDeviceListUI.this));
       MySafeDeviceListUI.a(MySafeDeviceListUI.this, MySafeDeviceListUI.f(MySafeDeviceListUI.this) ^ 0xFFFFFFFF);
       MySafeDeviceListUI.g(MySafeDeviceListUI.this);
+      AppMethodBeat.o(69879);
     }
   }
 }

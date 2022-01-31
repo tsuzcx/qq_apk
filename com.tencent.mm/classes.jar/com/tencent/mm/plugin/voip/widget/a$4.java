@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.voip.widget;
 
-import com.tencent.mm.plugin.voip.video.OpenGlView;
-import com.tencent.mm.ui.base.MMTextureView;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$4
   implements Runnable
@@ -10,9 +10,9 @@ final class a$4
   
   public final void run()
   {
-    this.qcB.pYr.setVisibility(4);
-    a.a(this.qcB).setVisibility(0);
-    a.c(this.qcB).setVisibility(0);
+    AppMethodBeat.i(5142);
+    this.tJq.findViewById(2131828906).setVisibility(8);
+    AppMethodBeat.o(5142);
   }
 }
 

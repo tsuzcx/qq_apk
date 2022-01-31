@@ -1,21 +1,26 @@
 package com.tencent.mm.plugin.radar.b;
 
+import a.f.b.j;
+import a.l;
 import android.os.Message;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ak;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/radar/model/RadarManager$delayRadarRemove$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"})
 public final class e$g
-  extends ah
+  extends ak
 {
   public final void handleMessage(Message paramMessage)
   {
-    a.d.b.g.k(paramMessage, "msg");
-    int i = paramMessage.what;
-    paramMessage = e.nlp;
-    if (i == e.buC()) {
-      com.tencent.mm.kernel.g.Dk().d((m)new b());
+    AppMethodBeat.i(102918);
+    j.q(paramMessage, "msg");
+    if (paramMessage.what == e.ceP()) {
+      g.Rc().b((m)new b());
     }
+    AppMethodBeat.o(102918);
   }
 }
 

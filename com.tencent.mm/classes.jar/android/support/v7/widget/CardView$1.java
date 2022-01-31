@@ -5,52 +5,53 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 
 final class CardView$1
-  implements s
+  implements q
 {
-  private Drawable abc;
+  private Drawable abN;
   
   CardView$1(CardView paramCardView) {}
   
-  public final void L(int paramInt1, int paramInt2)
+  public final void O(int paramInt1, int paramInt2)
   {
-    if (paramInt1 > this.abd.aaX) {
-      CardView.a(this.abd, paramInt1);
+    if (paramInt1 > this.abO.abI) {
+      CardView.a(this.abO, paramInt1);
     }
-    if (paramInt2 > this.abd.aaY) {
-      CardView.b(this.abd, paramInt2);
+    if (paramInt2 > this.abO.abJ) {
+      CardView.b(this.abO, paramInt2);
     }
   }
   
-  public final void d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void e(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.abd.aba.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    CardView.a(this.abd, this.abd.aaZ.left + paramInt1, this.abd.aaZ.top + paramInt2, this.abd.aaZ.right + paramInt3, this.abd.aaZ.bottom + paramInt4);
+    this.abO.abL.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    CardView localCardView = this.abO;
+    CardView.a(localCardView, localCardView.abK.left + paramInt1, this.abO.abK.top + paramInt2, this.abO.abK.right + paramInt3, this.abO.abK.bottom + paramInt4);
   }
   
   public final boolean getPreventCornerOverlap()
   {
-    return this.abd.getPreventCornerOverlap();
+    return this.abO.getPreventCornerOverlap();
   }
   
   public final boolean getUseCompatPadding()
   {
-    return this.abd.getUseCompatPadding();
+    return this.abO.getUseCompatPadding();
   }
   
-  public final Drawable gu()
+  public final Drawable hu()
   {
-    return this.abc;
+    return this.abN;
   }
   
-  public final View gv()
+  public final View hv()
   {
-    return this.abd;
+    return this.abO;
   }
   
-  public final void j(Drawable paramDrawable)
+  public final void l(Drawable paramDrawable)
   {
-    this.abc = paramDrawable;
-    this.abd.setBackgroundDrawable(paramDrawable);
+    this.abN = paramDrawable;
+    this.abO.setBackgroundDrawable(paramDrawable);
   }
 }
 

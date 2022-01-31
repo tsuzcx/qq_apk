@@ -10,12 +10,12 @@ final class SwipeRefreshLayout$4
   
   public final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.MA.Mn.setAlpha((int)(this.MB + (this.MC - this.MB) * paramFloat));
+    this.Mk.LX.setAlpha((int)(this.Ml + (this.Mm - this.Ml) * paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v4.widget.SwipeRefreshLayout.4
  * JD-Core Version:    0.7.0.1
  */

@@ -5,41 +5,48 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Images.Thumbnails;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 
-final class h
+public final class h
 {
-  private ContentResolver eRr;
+  private ContentResolver gjm;
   protected Context mContext;
   
   protected h(Context paramContext)
   {
+    AppMethodBeat.i(27948);
     this.mContext = paramContext;
-    this.eRr = this.mContext.getContentResolver();
+    this.gjm = this.mContext.getContentResolver();
+    AppMethodBeat.o(27948);
   }
   
-  private String WM(String paramString)
+  private String amt(String paramString)
   {
-    if (bk.bl(paramString))
+    AppMethodBeat.i(27949);
+    if (bo.isNullOrNil(paramString))
     {
-      y.e("MicroMsg.RecentPhotoTips.ImageQuery", "null or nill imageId");
+      ab.e("MicroMsg.RecentPhotoTips.ImageQuery", "null or nill imageId");
+      AppMethodBeat.o(27949);
       return null;
     }
     Object localObject = "image_id=\"" + paramString + "\"";
     try
     {
-      localObject = this.eRr.query(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, null, (String)localObject, null, null);
+      localObject = this.gjm.query(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, null, (String)localObject, null, null);
       if (localObject == null)
       {
-        y.e("MicroMsg.RecentPhotoTips.ImageQuery", "get cursor null:" + paramString);
+        ab.e("MicroMsg.RecentPhotoTips.ImageQuery", "get cursor null:".concat(String.valueOf(paramString)));
+        AppMethodBeat.o(27949);
         return null;
       }
     }
     catch (Exception paramString)
     {
-      y.e("MicroMsg.RecentPhotoTips.ImageQuery", "query thumb exception e : %s", new Object[] { paramString.toString() });
+      ab.e("MicroMsg.RecentPhotoTips.ImageQuery", "query thumb exception e : %s", new Object[] { paramString.toString() });
+      AppMethodBeat.o(27949);
       return null;
     }
     if (((Cursor)localObject).moveToFirst()) {
@@ -51,26 +58,31 @@ final class h
     for (;;)
     {
       ((Cursor)localObject).close();
+      AppMethodBeat.o(27949);
       return paramString;
       paramString = null;
     }
   }
   
-  public final ArrayList<g> cnM()
+  public final ArrayList<g> doT()
   {
+    AppMethodBeat.i(27950);
     ArrayList localArrayList = new ArrayList();
-    bk.UY();
+    bo.aoy();
     Cursor localCursor;
     try
     {
-      localCursor = this.eRr.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "_data", "date_added" }, null, null, "date_added desc limit 1");
-      if (localCursor == null) {
+      localCursor = this.gjm.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "_data", "date_added" }, null, null, "date_added desc limit 1");
+      if (localCursor == null)
+      {
+        AppMethodBeat.o(27950);
         return localArrayList;
       }
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.RecentPhotoTips.ImageQuery", "query photo exception e : %s", new Object[] { localException.toString() });
+      ab.e("MicroMsg.RecentPhotoTips.ImageQuery", "query photo exception e : %s", new Object[] { localException.toString() });
+      AppMethodBeat.o(27950);
       return null;
     }
     if (localCursor.moveToFirst()) {}
@@ -79,31 +91,32 @@ final class h
       String str1 = localCursor.getString(localCursor.getColumnIndexOrThrow("_id"));
       String str2 = localCursor.getString(localCursor.getColumnIndexOrThrow("_data"));
       String str3 = localCursor.getString(localCursor.getColumnIndexOrThrow("date_added"));
-      String str4 = WM(str1);
-      if ((bk.bl(str2)) || (!com.tencent.mm.a.e.bK(str2))) {
-        y.e("MicroMsg.RecentPhotoTips.ImageQuery", "file not exist");
+      String str4 = amt(str1);
+      if ((bo.isNullOrNil(str2)) || (!com.tencent.mm.a.e.cN(str2))) {
+        ab.e("MicroMsg.RecentPhotoTips.ImageQuery", "file not exist");
       }
       while (!localCursor.moveToNext())
       {
         localCursor.close();
+        AppMethodBeat.o(27950);
         return localException;
-        if (str2.startsWith(com.tencent.mm.compatible.util.e.dzD))
+        if (str2.startsWith(com.tencent.mm.compatible.util.e.esr))
         {
-          y.i("MicroMsg.RecentPhotoTips.ImageQuery", "exclude weixin path image");
+          ab.i("MicroMsg.RecentPhotoTips.ImageQuery", "exclude weixin path image");
         }
         else
         {
           g localg = new g();
-          localg.sgt = bk.getLong(str1, 0L);
-          localg.kGY = bk.getLong(str3, 0L);
-          if ((!bk.bl(str4)) && (com.tencent.mm.a.e.bK(str4))) {
+          localg.vYK = bo.getLong(str1, 0L);
+          localg.vYM = bo.getLong(str3, 0L);
+          if ((!bo.isNullOrNil(str4)) && (com.tencent.mm.a.e.cN(str4))) {
             localg.thumbPath = str4;
           }
-          if ((!bk.bl(str2)) && (com.tencent.mm.a.e.bK(str2))) {
-            localg.sgu = str2;
+          if ((!bo.isNullOrNil(str2)) && (com.tencent.mm.a.e.cN(str2))) {
+            localg.vYL = str2;
           }
-          if ((bk.bl(localg.sgu)) && (bk.bl(localg.sgu))) {
-            y.e("MicroMsg.RecentPhotoTips.ImageQuery", "thumb file and orignal file both not exist");
+          if ((bo.isNullOrNil(localg.vYL)) && (bo.isNullOrNil(localg.vYL))) {
+            ab.e("MicroMsg.RecentPhotoTips.ImageQuery", "thumb file and orignal file both not exist");
           } else {
             localException.add(localg);
           }

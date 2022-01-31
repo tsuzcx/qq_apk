@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameInfoViewForeign android:id="@id/bua" android:background="@drawable/mz" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <RelativeLayout android:id="@id/bub" android:layout_width="34.0dip" android:layout_height="36.0dip" android:layout_marginRight="@dimen/dl">
-            <ImageView android:id="@id/buc" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/ab1" android:layout_alignParentBottom="true" />
-            <TextView android:textSize="11.0dip" android:textStyle="bold" android:textColor="@color/a23" android:gravity="center" android:id="@id/bu5" android:background="@drawable/zn" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:gravity="center" android:id="@id/bud" android:layout_width="wrap_content" android:layout_height="28.0dip" android:text="@string/c1w" android:layout_toRightOf="@id/bub" android:layout_alignBottom="@id/bub" android:layout_toEndOf="@id/bub" />
-    </com.tencent.mm.plugin.game.ui.GameInfoViewForeign>
+    <Button android:id="@id/bx6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ft" android:layout_marginTop="40.0dip" android:layout_marginRight="@dimen/ft" android:text="@string/bxs" style="@style/nq" />
+    <Button android:id="@id/bx7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ft" android:layout_marginTop="40.0dip" android:layout_marginRight="@dimen/ft" android:text="@string/bxu" style="@style/nq" />
 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.danmu;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class DanmuView$2
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class DanmuView$2
   
   public final void run()
   {
-    DanmuView.a(this.gFJ, false);
-    this.gFJ.invalidate();
+    AppMethodBeat.i(126600);
+    DanmuView.a(this.ieM, false);
+    this.ieM.invalidate();
+    AppMethodBeat.o(126600);
   }
 }
 

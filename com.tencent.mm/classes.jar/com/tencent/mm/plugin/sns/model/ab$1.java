@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.sns.model;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class ab$1
-  extends ah
+  extends ak
 {
   ab$1(ab paramab, Looper paramLooper)
   {
@@ -15,16 +15,24 @@ final class ab$1
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(36363);
     super.handleMessage(paramMessage);
-    if ((ab.a(this.ord) >= 5) || (System.currentTimeMillis() - ab.b(this.ord) > 300000L))
+    if ((ab.a(this.rfP) >= 5) || (System.currentTimeMillis() - ab.b(this.rfP) > 300000L))
     {
-      y.d("MicroMsg.RemoveSnsTask", "cleanCount: " + ab.a(this.ord));
-      ab.lER = false;
-    }
-    while ((ab.c(this.ord)) || (!ab.lER)) {
+      com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.RemoveSnsTask", "cleanCount: " + ab.a(this.rfP));
+      ab.ocf = false;
+      AppMethodBeat.o(36363);
       return;
     }
-    new ab.a(this.ord).p(new String[] { "" });
+    if (ab.c(this.rfP))
+    {
+      AppMethodBeat.o(36363);
+      return;
+    }
+    if (ab.ocf) {
+      new ab.a(this.rfP).v(new String[] { "" });
+    }
+    AppMethodBeat.o(36363);
   }
 }
 

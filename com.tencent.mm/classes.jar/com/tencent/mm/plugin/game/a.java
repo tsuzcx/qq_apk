@@ -1,10 +1,18 @@
 package com.tencent.mm.plugin.game;
 
-import com.tencent.mm.loader.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.loader.j.b;
 
 public final class a
 {
-  public static final String kLu = b.bkH + "Game/Message/";
+  public static final String nhX;
+  
+  static
+  {
+    AppMethodBeat.i(111123);
+    nhX = b.eQz + "Game/Message/";
+    AppMethodBeat.o(111123);
+  }
 }
 
 

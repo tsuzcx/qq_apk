@@ -1,97 +1,73 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import com.tencent.mm.h.a.od;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.rp;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.security.MessageDigest;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public final class am
+public final class am<K, O>
 {
-  private static final int otj = com.tencent.mm.m.g.AA().getInt("SnsUseWeiShiShootingEntranceDisplayTimes", 0);
+  private int maxSize;
+  Map<K, am<K, O>.b<O>> rhX;
+  private am.a rhY;
   
-  public static boolean bEd()
+  public am(int paramInt, am.a parama)
   {
-    com.tencent.mm.kernel.g.DQ();
-    int i = ((Integer)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uzI, Integer.valueOf(0))).intValue();
-    y.d("MicroMsg.SnsLogic", "checkWeishiExposeCount now=%d limit=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(otj) });
-    if (i < otj)
-    {
-      com.tencent.mm.kernel.g.DQ();
-      com.tencent.mm.kernel.g.DP().Dz().c(ac.a.uzI, Integer.valueOf(i + 1));
-      return true;
-    }
-    return false;
+    AppMethodBeat.i(36569);
+    this.rhX = null;
+    this.rhY = null;
+    this.maxSize = paramInt;
+    this.rhX = new HashMap();
+    this.rhY = parama;
+    AppMethodBeat.o(36569);
   }
   
-  public static void e(ArrayList<String> paramArrayList, String paramString)
+  public final void cpA()
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
+    AppMethodBeat.i(36570);
+    int i;
+    if (this.rhX.size() > this.maxSize)
+    {
+      Object localObject1 = new ArrayList(this.rhX.entrySet());
+      Collections.sort((List)localObject1, new am.1(this));
+      i = this.rhX.size() - this.maxSize;
+      if (i <= 0)
+      {
+        AppMethodBeat.o(36570);
+        return;
+      }
+      localObject1 = ((ArrayList)localObject1).iterator();
+      if (((Iterator)localObject1).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject1).next();
+        Object localObject2 = localEntry.getKey();
+        if (!this.rhY.cg(localObject2)) {
+          break label164;
+        }
+        ab.d("MicroMsg.SnsLRUMap", " remove targetKey: " + localEntry.getKey());
+        i -= 1;
+      }
+    }
+    label164:
     for (;;)
     {
-      return;
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      if (i <= 0)
       {
-        int i = bk.getInt((String)paramArrayList.next(), 0);
-        if (i != 0)
-        {
-          Object localObject = af.bDF().yt(i);
-          if (localObject != null)
-          {
-            bxk localbxk = ((n)localObject).bGe();
-            if ((localbxk != null) && (localbxk.tNr != null) && (localbxk.tNr.sPI == 26))
-            {
-              localbxk.tNr.sPL = paramString;
-              af.bDF().b(i, (n)localObject);
-              localObject = new od();
-              ((od)localObject).bXQ.bXR = i;
-              a.udP.m((b)localObject);
-            }
-          }
-        }
+        AppMethodBeat.o(36570);
+        return;
       }
+      break;
     }
-  }
-  
-  public static boolean ec(Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.weishi", 64);
-      if (paramContext != null)
-      {
-        paramContext = paramContext.signatures[0].toByteArray();
-        MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-        localMessageDigest.update(paramContext);
-        boolean bool = bk.isEqual(com.tencent.d.f.e.bytesToHexString(localMessageDigest.digest()), "2A281593D71DF33374E6124E9106DF08");
-        if (bool) {
-          return true;
-        }
-      }
-    }
-    catch (Exception paramContext)
-    {
-      y.w("MicroMsg.SnsLogic", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.am
  * JD-Core Version:    0.7.0.1
  */

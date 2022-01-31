@@ -4,16 +4,16 @@ import android.widget.ImageView;
 
 public final class a$b
 {
-  ImageView gui;
+  ImageView hPa;
   
   public a$b(a parama, ImageView paramImageView)
   {
-    this.gui = paramImageView;
+    this.hPa = paramImageView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.a.a.b
  * JD-Core Version:    0.7.0.1
  */

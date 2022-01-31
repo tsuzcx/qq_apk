@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckedTextView android:textAppearance="@style/mc" android:textColor="@android:color/black" android:ellipsize="marquee" android:gravity="center_vertical" android:background="@drawable/ih" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checkMark="@drawable/ve" android:minHeight="@dimen/mp" android:text="@string/e25"
+<com.tencent.mm.pluginsdk.ui.MMPhoneNumberEditText android:textColor="@color/w_" android:textColorHint="@color/pj" android:layout_gravity="bottom" android:id="@id/dva" android:background="@drawable/a9h" android:paddingRight="@dimen/g2" android:layout_marginLeft="@dimen/g2" android:minHeight="@dimen/g9" android:hint="@string/d3" android:maxLength="40" android:inputType="phone" style="@style/ml"
   xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui.previewimageview;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$8
   implements Animator.AnimatorListener
@@ -11,21 +12,27 @@ final class e$8
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
-    this.ppV.ppO.setVisibility(4);
-    this.ppV.ppO.setTranslationY(0.0F);
+    AppMethodBeat.i(40330);
+    this.skN.skG.setVisibility(4);
+    this.skN.skG.setTranslationY(0.0F);
+    AppMethodBeat.o(40330);
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.ppV.ppO.setVisibility(4);
-    this.ppV.ppO.setTranslationY(0.0F);
+    AppMethodBeat.i(40329);
+    this.skN.skG.setVisibility(4);
+    this.skN.skG.setTranslationY(0.0F);
+    AppMethodBeat.o(40329);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    e.b(this.ppV);
+    AppMethodBeat.i(40328);
+    e.b(this.skN);
+    AppMethodBeat.o(40328);
   }
 }
 

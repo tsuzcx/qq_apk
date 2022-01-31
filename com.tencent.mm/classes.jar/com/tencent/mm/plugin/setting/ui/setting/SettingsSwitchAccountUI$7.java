@@ -1,34 +1,21 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.model.bv;
-import com.tencent.mm.plugin.report.service.h;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.setting.ui.widget.SwitchAccountGridView;
-import java.util.Set;
 
 final class SettingsSwitchAccountUI$7
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
   SettingsSwitchAccountUI$7(SettingsSwitchAccountUI paramSettingsSwitchAccountUI) {}
   
-  public final void onClick(View paramView)
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!SettingsSwitchAccountUI.f(this.nWi))
-    {
-      SettingsSwitchAccountUI.b(this.nWi, true);
-      SettingsSwitchAccountUI.d(this.nWi).setDeleteState(SettingsSwitchAccountUI.f(this.nWi));
-      SettingsSwitchAccountUI.d(this.nWi).bzE();
-      SettingsSwitchAccountUI.e(this.nWi);
-      if (bv.dXJ.Ii().size() > 1) {
-        h.nFQ.f(14978, new Object[] { Integer.valueOf(1), Integer.valueOf(3), bv.dXJ.Ij() });
-      }
-    }
-    else
-    {
-      return;
-    }
-    h.nFQ.f(14978, new Object[] { Integer.valueOf(0), Integer.valueOf(3), bv.dXJ.Ij() });
+    AppMethodBeat.i(127504);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    SettingsSwitchAccountUI.e(this.qKt).setTranslationY(-f * SettingsSwitchAccountUI.e(this.qKt).getHeight());
+    AppMethodBeat.o(127504);
   }
 }
 

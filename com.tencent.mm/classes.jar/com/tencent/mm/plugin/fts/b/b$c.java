@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.b;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.g;
 import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.a.a.i;
@@ -22,38 +23,43 @@ final class b$c
     super(parami);
   }
   
-  protected final void a(j paramj)
+  public final void a(j paramj)
   {
-    paramj.kwi = g.aF(this.kwT.bVk, true);
-    paramj.kxh = new ArrayList();
+    AppMethodBeat.i(136722);
+    paramj.mRX = g.aU(this.mSJ.query, true);
+    paramj.mSW = new ArrayList();
     Object localObject = new HashSet();
-    Cursor localCursor = this.kyU.kyT.a(paramj.kwi, c.kuP, this.kwT.kxb, true, true);
+    Cursor localCursor = this.mUJ.mUI.a(paramj.mRX, c.mQC, this.mSJ.mSQ, true, true);
     while (localCursor.moveToNext())
     {
       m localm = new m();
-      localm.j(localCursor);
-      if ((!((HashSet)localObject).contains(Long.valueOf(localm.kxk))) && (!this.kwT.kxd.contains(localm.kwg)))
+      localm.i(localCursor);
+      if ((!((HashSet)localObject).contains(Long.valueOf(localm.mSZ))) && (!this.mSJ.mSS.contains(localm.mRV)))
       {
-        localm.aVA();
-        paramj.kxh.add(localm);
-        ((HashSet)localObject).add(Long.valueOf(localm.kxk));
+        localm.bCa();
+        paramj.mSW.add(localm);
+        ((HashSet)localObject).add(Long.valueOf(localm.mSZ));
       }
     }
     if (localCursor != null) {
       localCursor.close();
     }
-    if (Thread.interrupted()) {
-      throw new InterruptedException();
+    if (Thread.interrupted())
+    {
+      paramj = new InterruptedException();
+      AppMethodBeat.o(136722);
+      throw paramj;
     }
-    if (this.kwT.kxe != null) {
-      Collections.sort(paramj.kxh, this.kwT.kxe);
+    if (this.mSJ.mST != null) {
+      Collections.sort(paramj.mSW, this.mSJ.mST);
     }
-    paramj = paramj.kxh.iterator();
+    paramj = paramj.mSW.iterator();
     while (paramj.hasNext())
     {
       localObject = (l)paramj.next();
-      ((l)localObject).userData = this.kyU.kyT.rz((int)((l)localObject).kxk);
+      ((l)localObject).userData = this.mUJ.mUI.wv((int)((l)localObject).mSZ);
     }
+    AppMethodBeat.o(136722);
   }
   
   public final int getId()

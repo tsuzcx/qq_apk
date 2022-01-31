@@ -1,30 +1,39 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
-import com.tencent.mm.ah.k;
-import com.tencent.mm.model.ba.a;
-import com.tencent.mm.model.ba.b;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.k.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.k;
+import com.tencent.mm.model.bc.a;
+import com.tencent.mm.model.bc.b;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
 
 final class c
   extends k
 {
-  ba.a pLb = new ba.a();
-  ba.b pLc = new ba.b();
+  bc.a tqX;
+  bc.b tqY;
   
-  protected final k.d HE()
+  c()
   {
-    return this.pLb;
+    AppMethodBeat.i(26077);
+    this.tqX = new bc.a();
+    this.tqY = new bc.b();
+    AppMethodBeat.o(26077);
   }
   
-  public final k.e HF()
-  {
-    return this.pLc;
-  }
-  
-  public final int Kq()
+  public final int getOptions()
   {
     return 1;
+  }
+  
+  public final l.d getReqObjImp()
+  {
+    return this.tqX;
+  }
+  
+  public final l.e getRespObj()
+  {
+    return this.tqY;
   }
   
   public final int getType()

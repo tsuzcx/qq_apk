@@ -1,17 +1,18 @@
 package com.google.android.exoplayer2.f.b;
 
 import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$f
 {
-  public final boolean aOl;
-  public final int aOm;
-  public final int aOn;
-  public final int aOo;
-  public final int aOp;
-  public final int aOq;
-  public final int aOr;
-  public final SparseArray<b.g> aOs;
+  public final boolean aVF;
+  public final int aVG;
+  public final int aVH;
+  public final int aVI;
+  public final int aVJ;
+  public final int aVK;
+  public final int aVL;
+  public final SparseArray<b.g> aVM;
   public final int height;
   public final int id;
   public final int width;
@@ -19,37 +20,39 @@ final class b$f
   public b$f(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, SparseArray<b.g> paramSparseArray)
   {
     this.id = paramInt1;
-    this.aOl = paramBoolean;
+    this.aVF = paramBoolean;
     this.width = paramInt2;
     this.height = paramInt3;
-    this.aOm = paramInt4;
-    this.aOn = paramInt5;
-    this.aOo = paramInt6;
-    this.aOp = paramInt7;
-    this.aOq = paramInt8;
-    this.aOr = paramInt9;
-    this.aOs = paramSparseArray;
+    this.aVG = paramInt4;
+    this.aVH = paramInt5;
+    this.aVI = paramInt6;
+    this.aVJ = paramInt7;
+    this.aVK = paramInt8;
+    this.aVL = paramInt9;
+    this.aVM = paramSparseArray;
   }
   
   public final void a(f paramf)
   {
-    if (paramf == null) {}
-    for (;;)
+    AppMethodBeat.i(95624);
+    if (paramf == null)
     {
+      AppMethodBeat.o(95624);
       return;
-      paramf = paramf.aOs;
-      int i = 0;
-      while (i < paramf.size())
-      {
-        this.aOs.put(paramf.keyAt(i), paramf.valueAt(i));
-        i += 1;
-      }
     }
+    paramf = paramf.aVM;
+    int i = 0;
+    while (i < paramf.size())
+    {
+      this.aVM.put(paramf.keyAt(i), paramf.valueAt(i));
+      i += 1;
+    }
+    AppMethodBeat.o(95624);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.f.b.b.f
  * JD-Core Version:    0.7.0.1
  */

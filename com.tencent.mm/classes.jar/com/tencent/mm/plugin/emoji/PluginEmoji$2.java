@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.emoji;
 
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cd.f;
 import com.tencent.mm.cd.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.emotion.q;
-import com.tencent.mm.ui.e.c.a;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.emotion.SmileyInfo;
+import com.tencent.mm.ui.f.c.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.regex.Matcher;
@@ -15,121 +17,121 @@ final class PluginEmoji$2
 {
   PluginEmoji$2(PluginEmoji paramPluginEmoji) {}
   
-  public final CharSequence b(CharSequence paramCharSequence, float paramFloat)
+  public final int bW(String paramString, int paramInt)
   {
-    return g.csM().a(paramCharSequence, paramFloat);
-  }
-  
-  public final int bs(String paramString, int paramInt)
-  {
-    g.csM();
-    Object localObject = f.csI();
-    if (bk.bl(paramString)) {}
-    int j;
-    do
+    AppMethodBeat.i(62321);
+    g.dvk();
+    Object localObject = f.dvf();
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(62321);
       return paramInt;
-      j = paramString.length();
-    } while ((paramInt == 0) || (paramInt == j));
-    if (f.ulq == null)
+    }
+    int j = paramString.length();
+    if ((paramInt == 0) || (paramInt == j))
+    {
+      AppMethodBeat.o(62321);
+      return paramInt;
+    }
+    if (f.yuU == null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      int k = ((f)localObject).ulg.length;
+      int k = ((f)localObject).yuK.length;
       i = 0;
       while (i < k)
       {
-        localStringBuilder.append(Pattern.quote(localObject.ulg[i]));
+        localStringBuilder.append(Pattern.quote(localObject.yuK[i]));
         if (i != k - 1) {
           localStringBuilder.append('|');
         }
         i += 1;
       }
-      k = ((f)localObject).ulh.length;
+      k = ((f)localObject).yuL.length;
       i = 0;
       while (i < k)
       {
-        localStringBuilder.append(Pattern.quote(localObject.ulh[i]));
+        localStringBuilder.append(Pattern.quote(localObject.yuL[i]));
         if (i != k - 1) {
           localStringBuilder.append('|');
         }
         i += 1;
       }
-      k = ((f)localObject).uli.length;
+      k = ((f)localObject).yuM.length;
       i = 0;
       while (i < k)
       {
-        localStringBuilder.append(Pattern.quote(localObject.uli[i]));
+        localStringBuilder.append(Pattern.quote(localObject.yuM[i]));
         if (i != k - 1) {
           localStringBuilder.append('|');
         }
         i += 1;
       }
-      k = ((f)localObject).ulj.length;
+      k = ((f)localObject).yuN.length;
       i = 0;
       while (i < k)
       {
-        localStringBuilder.append(Pattern.quote(localObject.ulj[i]));
+        localStringBuilder.append(Pattern.quote(localObject.yuN[i]));
         if (i != k - 1) {
           localStringBuilder.append('|');
         }
         i += 1;
       }
-      k = ((f)localObject).ulk.length;
+      k = ((f)localObject).yuO.length;
       i = 0;
       while (i < k)
       {
-        localStringBuilder.append(Pattern.quote(localObject.ulk[i]));
+        localStringBuilder.append(Pattern.quote(localObject.yuO[i]));
         if (i != k - 1) {
           localStringBuilder.append('|');
         }
         i += 1;
       }
-      k = ((f)localObject).ull.length;
+      k = ((f)localObject).yuP.length;
       i = 0;
       while (i < k)
       {
-        localStringBuilder.append(Pattern.quote(localObject.ull[i]));
+        localStringBuilder.append(Pattern.quote(localObject.yuP[i]));
         if (i != k - 1) {
           localStringBuilder.append('|');
         }
         i += 1;
       }
-      if ((((f)localObject).ulm != null) && (!((f)localObject).ulm.isEmpty()))
+      if ((((f)localObject).yuQ != null) && (!((f)localObject).yuQ.isEmpty()))
       {
-        localObject = ((f)localObject).ulm.iterator();
+        localObject = ((f)localObject).yuQ.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          q localq = (q)((Iterator)localObject).next();
-          localStringBuilder.append(Pattern.quote(localq.field_key)).append("|");
-          if (!bk.bl(localq.field_cnValue)) {
-            localStringBuilder.append(Pattern.quote(localq.field_cnValue)).append("|");
+          SmileyInfo localSmileyInfo = (SmileyInfo)((Iterator)localObject).next();
+          localStringBuilder.append(Pattern.quote(localSmileyInfo.field_key)).append("|");
+          if (!bo.isNullOrNil(localSmileyInfo.field_cnValue)) {
+            localStringBuilder.append(Pattern.quote(localSmileyInfo.field_cnValue)).append("|");
           }
-          if (!bk.bl(localq.field_enValue)) {
-            localStringBuilder.append(Pattern.quote(localq.field_enValue)).append("|");
+          if (!bo.isNullOrNil(localSmileyInfo.field_enValue)) {
+            localStringBuilder.append(Pattern.quote(localSmileyInfo.field_enValue)).append("|");
           }
-          if (!bk.bl(localq.field_qqValue)) {
-            localStringBuilder.append(Pattern.quote(localq.field_qqValue)).append("|");
+          if (!bo.isNullOrNil(localSmileyInfo.field_qqValue)) {
+            localStringBuilder.append(Pattern.quote(localSmileyInfo.field_qqValue)).append("|");
           }
-          if (!bk.bl(localq.field_twValue)) {
-            localStringBuilder.append(Pattern.quote(localq.field_twValue)).append("|");
+          if (!bo.isNullOrNil(localSmileyInfo.field_twValue)) {
+            localStringBuilder.append(Pattern.quote(localSmileyInfo.field_twValue)).append("|");
           }
-          if (!bk.bl(localq.field_thValue)) {
-            localStringBuilder.append(Pattern.quote(localq.field_thValue)).append("|");
+          if (!bo.isNullOrNil(localSmileyInfo.field_thValue)) {
+            localStringBuilder.append(Pattern.quote(localSmileyInfo.field_thValue)).append("|");
           }
         }
       }
-      f.ulq = Pattern.compile(localStringBuilder.toString());
+      f.yuU = Pattern.compile(localStringBuilder.toString());
     }
     if (paramInt < 6)
     {
       i = 0;
       if (paramInt + 6 < j) {
-        break label706;
+        break label728;
       }
       j -= 1;
-      label636:
+      label653:
       paramString = paramString.substring(i, j);
-      paramString = f.ulq.matcher(paramString);
+      paramString = f.yuU.matcher(paramString);
       do
       {
         if (!paramString.find()) {
@@ -144,20 +146,32 @@ final class PluginEmoji$2
       }
       for (;;)
       {
+        AppMethodBeat.o(62321);
         return paramInt + i;
         i = paramInt - 6;
         break;
-        label706:
+        label728:
         j = paramInt + 6;
-        break label636;
+        break label653;
         i = 0;
       }
     }
   }
   
-  public final CharSequence c(CharSequence paramCharSequence, int paramInt)
+  public final CharSequence c(Context paramContext, CharSequence paramCharSequence, float paramFloat)
   {
-    return g.csM().g(paramCharSequence, paramInt);
+    AppMethodBeat.i(62320);
+    paramContext = g.dvk().b(paramCharSequence, paramFloat);
+    AppMethodBeat.o(62320);
+    return paramContext;
+  }
+  
+  public final CharSequence h(CharSequence paramCharSequence, int paramInt)
+  {
+    AppMethodBeat.i(62319);
+    paramCharSequence = g.dvk().p(paramCharSequence, paramInt);
+    AppMethodBeat.o(62319);
+    return paramCharSequence;
   }
 }
 

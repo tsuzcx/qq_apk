@@ -4,28 +4,33 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class BluetoothStateReceiver
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
+    AppMethodBeat.i(15837);
+    ab.d("MicroMsg.BluetoothStateReceiver", "BluetoothStateReceiver.onReceive()");
     paramContext = BluetoothAdapter.getDefaultAdapter();
     if (paramContext != null)
     {
       if (paramContext.getState() != 12) {
-        break label55;
+        break label81;
       }
-      h.nFQ.f(11921, new Object[] { Integer.valueOf(1) });
+      h.qsU.e(11921, new Object[] { Integer.valueOf(1) });
     }
     for (;;)
     {
-      new StringBuilder("[oneliang]bluetoothAdapter state:").append(paramContext.getState());
+      ab.e("MicroMsg.BluetoothStateReceiver", "[oneliang]bluetoothAdapter state:" + paramContext.getState());
+      AppMethodBeat.o(15837);
       return;
-      label55:
+      label81:
       if (paramContext.getState() == 10) {
-        h.nFQ.f(11921, new Object[] { Integer.valueOf(0) });
+        h.qsU.e(11921, new Object[] { Integer.valueOf(0) });
       }
     }
   }

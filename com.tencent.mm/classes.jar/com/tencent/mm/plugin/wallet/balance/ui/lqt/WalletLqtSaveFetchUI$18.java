@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
 import com.tencent.mm.vending.c.a;
-import java.util.List;
 
 final class WalletLqtSaveFetchUI$18
-  implements a<Void, Void>
+  implements a<Object, Void>
 {
-  WalletLqtSaveFetchUI$18(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI, List paramList) {}
+  WalletLqtSaveFetchUI$18(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI) {}
 }
 
 

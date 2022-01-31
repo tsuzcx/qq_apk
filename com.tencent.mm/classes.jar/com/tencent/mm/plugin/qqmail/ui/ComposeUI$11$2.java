@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
-import com.tencent.mm.plugin.qqmail.b.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.p;
 
 final class ComposeUI$11$2
@@ -8,14 +8,18 @@ final class ComposeUI$11$2
 {
   ComposeUI$11$2(ComposeUI.11 param11) {}
   
-  public final void btV()
+  public final void ceh()
   {
-    ComposeUI.G(this.ngO.ngJ).setMessage(this.ngO.ngJ.getString(b.j.plugin_qqmail_attach_uploading));
+    AppMethodBeat.i(68181);
+    ComposeUI.G(this.pMc.pLX).setMessage(this.pMc.pLX.getString(2131302111));
+    AppMethodBeat.o(68181);
   }
   
   public final void onComplete()
   {
-    ComposeUI.a(this.ngO.ngJ, ComposeUI.H(this.ngO.ngJ));
+    AppMethodBeat.i(68182);
+    ComposeUI.a(this.pMc.pLX, ComposeUI.H(this.pMc.pLX));
+    AppMethodBeat.o(68182);
   }
 }
 

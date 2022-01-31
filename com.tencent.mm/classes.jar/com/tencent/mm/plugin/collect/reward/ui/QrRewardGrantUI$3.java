@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.collect.reward.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RadioButton;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class QrRewardGrantUI$3
   implements View.OnClickListener
@@ -11,12 +12,14 @@ final class QrRewardGrantUI$3
   
   public final void onClick(View paramView)
   {
-    boolean bool = QrRewardGrantUI.c(this.iIJ).isChecked();
-    paramView = QrRewardGrantUI.c(this.iIJ);
+    AppMethodBeat.i(41065);
+    boolean bool = QrRewardGrantUI.c(this.kPo).isChecked();
+    paramView = QrRewardGrantUI.c(this.kPo);
     if (!bool) {}
     for (bool = true;; bool = false)
     {
       paramView.setChecked(bool);
+      AppMethodBeat.o(41065);
       return;
     }
   }

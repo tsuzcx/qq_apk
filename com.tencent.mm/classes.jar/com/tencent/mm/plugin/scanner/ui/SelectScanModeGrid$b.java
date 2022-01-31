@@ -4,20 +4,20 @@ import android.widget.TextView;
 
 public final class SelectScanModeGrid$b
 {
-  public TextView nNA;
-  public boolean nNB;
-  public int nNx;
-  public int nNy;
-  public int nNz;
+  public int qBi;
+  public int qBj;
+  public int qBk;
+  public TextView qBl;
+  public boolean qBm;
   public String title;
   
   public SelectScanModeGrid$b(String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     this.title = paramString;
-    this.nNx = paramInt1;
-    this.nNy = paramInt2;
-    this.nNz = paramInt3;
-    this.nNB = paramBoolean;
+    this.qBi = paramInt1;
+    this.qBj = paramInt2;
+    this.qBk = paramInt3;
+    this.qBm = paramBoolean;
   }
 }
 

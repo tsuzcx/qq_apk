@@ -4,15 +4,13 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.plugin.brandservice.b.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.q;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class BizTimeLineNewMsgUI$3
   implements AdapterView.OnItemClickListener
@@ -21,15 +19,18 @@ final class BizTimeLineNewMsgUI$3
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = BizTimeLineNewMsgUI.a(this.igE).oy(paramInt);
+    AppMethodBeat.i(14158);
+    paramAdapterView = BizTimeLineNewMsgUI.a(this.jWx).se(paramInt);
     if (paramAdapterView == null)
     {
-      y.e("MicroMsg.BizTimeLineNewMsgUI", "onItemClick info is null");
+      ab.e("MicroMsg.BizTimeLineNewMsgUI", "onItemClick info is null");
+      AppMethodBeat.o(14158);
       return;
     }
-    if (((j)com.tencent.mm.kernel.g.r(j.class)).bhO().fd(paramAdapterView.field_msgId).field_msgId == 0L)
+    if (((j)g.E(j.class)).bPQ().kB(paramAdapterView.field_msgId).field_msgId == 0L)
     {
-      h.bC(this.igE, this.igE.getString(b.h.biz_time_line_new_msg_delete_tips));
+      com.tencent.mm.ui.base.h.bO(this.jWx, this.jWx.getString(2131297714));
+      AppMethodBeat.o(14158);
       return;
     }
     paramView = new Intent();
@@ -37,7 +38,10 @@ final class BizTimeLineNewMsgUI$3
     paramView.putExtra("finish_direct", true);
     paramView.putExtra("from_global_search", true);
     paramView.putExtra("msg_local_id", paramAdapterView.field_msgId);
-    d.e(this.igE.mController.uMN, ".ui.chatting.ChattingUI", paramView);
+    paramView.putExtra("specific_chat_from_scene", 9);
+    paramView.putExtra("preChatTYPE", 13);
+    d.f(this.jWx.getContext(), ".ui.chatting.ChattingUI", paramView);
+    AppMethodBeat.o(14158);
   }
 }
 

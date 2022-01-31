@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.shake.b;
 
-import com.tencent.mm.h.a.jx;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.kh;
 import com.tencent.mm.sdk.b.c;
 
 final class m$6
-  extends c<jx>
+  extends c<kh>
 {
   m$6(m paramm)
   {
-    this.udX = jx.class.getName().hashCode();
+    AppMethodBeat.i(24483);
+    this.__eventId = kh.class.getName().hashCode();
+    AppMethodBeat.o(24483);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.m.6
  * JD-Core Version:    0.7.0.1
  */

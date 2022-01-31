@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.tools;
 
 import android.os.Parcelable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
@@ -11,10 +12,12 @@ final class ShareImgUI$4$1
   
   public final void run()
   {
-    if (!ShareImgUI.a(this.weO.weH, this.weK, this.weL)) {
-      this.weM[0] = true;
+    AppMethodBeat.i(34938);
+    if (!ShareImgUI.a(this.AxE.Axx, this.AxA, this.AxB)) {
+      this.AxC[0] = true;
     }
-    this.weN.countDown();
+    this.AxD.countDown();
+    AppMethodBeat.o(34938);
   }
 }
 

@@ -1,434 +1,481 @@
 package android.support.v7.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
+import android.graphics.RectF;
 import android.os.Build.VERSION;
-import android.support.v4.content.a.b.a;
-import android.support.v7.a.a.j;
-import android.text.method.PasswordTransformationMethod;
+import android.support.v7.a.a.a;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.StaticLayout.Builder;
+import android.text.TextDirectionHeuristic;
+import android.text.TextDirectionHeuristics;
+import android.text.TextPaint;
+import android.text.method.TransformationMethod;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.widget.TextView;
-import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-class m
+final class m
 {
-  final o aaA;
-  Typeface aaB;
-  boolean aaC;
-  final TextView aav;
-  private av aaw;
-  private av aax;
-  private av aay;
-  private av aaz;
-  int mStyle = 0;
+  private static final RectF abs = new RectF();
+  private static ConcurrentHashMap<String, Method> abt = new ConcurrentHashMap();
+  private boolean abA = false;
+  private TextPaint abB;
+  int abu = 0;
+  private boolean abv = false;
+  float abw = -1.0F;
+  float abx = -1.0F;
+  float aby = -1.0F;
+  int[] abz = new int[0];
+  private final Context mContext;
+  private final TextView md;
   
   m(TextView paramTextView)
   {
-    this.aav = paramTextView;
-    this.aaA = new o(this.aav);
+    this.md = paramTextView;
+    this.mContext = this.md.getContext();
   }
   
-  protected static av a(Context paramContext, h paramh, int paramInt)
+  private static Method Q(String paramString)
   {
-    paramContext = paramh.n(paramContext, paramInt);
-    if (paramContext != null)
+    try
     {
-      paramh = new av();
-      paramh.alX = true;
-      paramh.alV = paramContext;
-      return paramh;
+      Method localMethod2 = (Method)abt.get(paramString);
+      Method localMethod1 = localMethod2;
+      if (localMethod2 == null)
+      {
+        localMethod2 = TextView.class.getDeclaredMethod(paramString, new Class[0]);
+        localMethod1 = localMethod2;
+        if (localMethod2 != null)
+        {
+          localMethod2.setAccessible(true);
+          abt.put(paramString, localMethod2);
+          localMethod1 = localMethod2;
+        }
+      }
+      return localMethod1;
+    }
+    catch (Exception localException)
+    {
+      new StringBuilder("Failed to retrieve TextView#").append(paramString).append("() method");
     }
     return null;
   }
   
-  private void a(Context paramContext, ax paramax)
+  private int a(RectF paramRectF)
   {
-    this.mStyle = paramax.getInt(a.j.TextAppearance_android_textStyle, this.mStyle);
-    if ((paramax.hasValue(a.j.TextAppearance_android_fontFamily)) || (paramax.hasValue(a.j.TextAppearance_fontFamily)))
+    int j = this.abz.length;
+    if (j == 0) {
+      throw new IllegalStateException("No available text sizes to choose from.");
+    }
+    int i = 1;
+    int k = j - 1;
+    j = 0;
+    while (i <= k)
     {
-      this.aaB = null;
-      if (paramax.hasValue(a.j.TextAppearance_fontFamily))
+      int m = (i + k) / 2;
+      if (a(this.abz[m], paramRectF))
       {
-        i = a.j.TextAppearance_fontFamily;
-        if (!paramContext.isRestricted()) {
-          paramContext = new b.a()
-          {
-            public final void b(Typeface paramAnonymousTypeface)
-            {
-              m localm = m.this;
-              Object localObject = this.aaD;
-              if (localm.aaC)
-              {
-                localm.aaB = paramAnonymousTypeface;
-                localObject = (TextView)((WeakReference)localObject).get();
-                if (localObject != null) {
-                  ((TextView)localObject).setTypeface(paramAnonymousTypeface, localm.mStyle);
-                }
-              }
-            }
-          };
-        }
+        j = i;
+        i = m + 1;
+      }
+      else
+      {
+        k = m - 1;
+        j = k;
       }
     }
+    return this.abz[j];
+  }
+  
+  private StaticLayout a(CharSequence paramCharSequence, Layout.Alignment paramAlignment, int paramInt)
+  {
+    float f1;
+    float f2;
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      f1 = this.md.getLineSpacingMultiplier();
+      f2 = this.md.getLineSpacingExtra();
+    }
+    for (boolean bool = this.md.getIncludeFontPadding();; bool = ((Boolean)a(this.md, "getIncludeFontPadding", Boolean.TRUE)).booleanValue())
+    {
+      return new StaticLayout(paramCharSequence, this.abB, paramInt, paramAlignment, f1, f2, bool);
+      f1 = ((Float)a(this.md, "getLineSpacingMultiplier", Float.valueOf(1.0F))).floatValue();
+      f2 = ((Float)a(this.md, "getLineSpacingExtra", Float.valueOf(0.0F))).floatValue();
+    }
+  }
+  
+  private StaticLayout a(CharSequence paramCharSequence, Layout.Alignment paramAlignment, int paramInt1, int paramInt2)
+  {
+    TextDirectionHeuristic localTextDirectionHeuristic = (TextDirectionHeuristic)a(this.md, "getTextDirectionHeuristic", TextDirectionHeuristics.FIRSTSTRONG_LTR);
+    paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, 0, paramCharSequence.length(), this.abB, paramInt1).setAlignment(paramAlignment).setLineSpacing(this.md.getLineSpacingExtra(), this.md.getLineSpacingMultiplier()).setIncludePad(this.md.getIncludeFontPadding()).setBreakStrategy(this.md.getBreakStrategy()).setHyphenationFrequency(this.md.getHyphenationFrequency());
+    paramInt1 = paramInt2;
+    if (paramInt2 == -1) {
+      paramInt1 = 2147483647;
+    }
+    return paramCharSequence.setMaxLines(paramInt1).setTextDirection(localTextDirectionHeuristic).build();
+  }
+  
+  private static <T> T a(Object paramObject, String paramString, T paramT)
+  {
     try
     {
-      j = this.mStyle;
-      k = paramax.alZ.getResourceId(i, 0);
-      if (k != 0) {
-        break label163;
-      }
-      paramContext = null;
-      this.aaB = paramContext;
-      if (this.aaB != null) {
-        break label241;
-      }
-      bool = true;
-      this.aaC = bool;
+      paramObject = Q(paramString).invoke(paramObject, new Object[0]);
+      if (paramObject == null) {}
+      return paramObject;
     }
-    catch (UnsupportedOperationException paramContext)
+    catch (Exception paramObject)
     {
-      break label126;
+      paramObject = paramObject;
+      new StringBuilder("Failed to invoke TextView#").append(paramString).append("() method");
+      return paramT;
     }
-    catch (Resources.NotFoundException paramContext)
+    finally {}
+  }
+  
+  private boolean a(int paramInt, RectF paramRectF)
+  {
+    Object localObject2 = this.md.getText();
+    Object localObject3 = this.md.getTransformationMethod();
+    Object localObject1 = localObject2;
+    if (localObject3 != null)
     {
-      label126:
-      break label126;
-    }
-    if (this.aaB == null)
-    {
-      paramContext = paramax.getString(i);
-      if (paramContext != null) {
-        this.aaB = Typeface.create(paramContext, this.mStyle);
+      localObject3 = ((TransformationMethod)localObject3).getTransformation((CharSequence)localObject2, this.md);
+      localObject1 = localObject2;
+      if (localObject3 != null) {
+        localObject1 = localObject3;
       }
     }
-    label163:
-    label241:
-    while (!paramax.hasValue(a.j.TextAppearance_android_typeface)) {
+    int i;
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      i = this.md.getMaxLines();
+      if (this.abB != null) {
+        break label199;
+      }
+      this.abB = new TextPaint();
+      label89:
+      this.abB.set(this.md.getPaint());
+      this.abB.setTextSize(paramInt);
+      localObject2 = (Layout.Alignment)a(this.md, "getLayoutAlignment", Layout.Alignment.ALIGN_NORMAL);
+      if (Build.VERSION.SDK_INT < 23) {
+        break label209;
+      }
+    }
+    label199:
+    label209:
+    for (localObject2 = a(localObject1, (Layout.Alignment)localObject2, Math.round(paramRectF.right), i);; localObject2 = a(localObject1, (Layout.Alignment)localObject2, Math.round(paramRectF.right)))
+    {
+      if ((i == -1) || ((((StaticLayout)localObject2).getLineCount() <= i) && (((StaticLayout)localObject2).getLineEnd(((StaticLayout)localObject2).getLineCount() - 1) == localObject1.length()))) {
+        break label229;
+      }
+      return false;
+      i = -1;
+      break;
+      this.abB.reset();
+      break label89;
+    }
+    label229:
+    return ((StaticLayout)localObject2).getHeight() <= paramRectF.bottom;
+  }
+  
+  private void b(TypedArray paramTypedArray)
+  {
+    int j = paramTypedArray.length();
+    int[] arrayOfInt = new int[j];
+    if (j > 0)
+    {
+      int i = 0;
+      while (i < j)
+      {
+        arrayOfInt[i] = paramTypedArray.getDimensionPixelSize(i, -1);
+        i += 1;
+      }
+      this.abz = i(arrayOfInt);
+      hn();
+    }
+  }
+  
+  private void f(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (paramFloat1 <= 0.0F) {
+      throw new IllegalArgumentException("Minimum auto-size text size (" + paramFloat1 + "px) is less or equal to (0px)");
+    }
+    if (paramFloat2 <= paramFloat1) {
+      throw new IllegalArgumentException("Maximum auto-size text size (" + paramFloat2 + "px) is less or equal to minimum auto-size text size (" + paramFloat1 + "px)");
+    }
+    if (paramFloat3 <= 0.0F) {
+      throw new IllegalArgumentException("The auto-size step granularity (" + paramFloat3 + "px) is less or equal to (0px)");
+    }
+    this.abu = 1;
+    this.abx = paramFloat1;
+    this.aby = paramFloat2;
+    this.abw = paramFloat3;
+    this.abA = false;
+  }
+  
+  private boolean hn()
+  {
+    int i = this.abz.length;
+    if (i > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.abA = bool;
+      if (this.abA)
+      {
+        this.abu = 1;
+        this.abx = this.abz[0];
+        this.aby = this.abz[(i - 1)];
+        this.abw = -1.0F;
+      }
+      return this.abA;
+    }
+  }
+  
+  private boolean ho()
+  {
+    if ((hs()) && (this.abu == 1)) {
+      if ((!this.abA) || (this.abz.length == 0))
+      {
+        float f1 = Math.round(this.abx);
+        int i = 1;
+        while (Math.round(this.abw + f1) <= Math.round(this.aby))
+        {
+          i += 1;
+          f1 += this.abw;
+        }
+        int[] arrayOfInt = new int[i];
+        f1 = this.abx;
+        int j = 0;
+        while (j < i)
+        {
+          arrayOfInt[j] = Math.round(f1);
+          float f2 = this.abw;
+          j += 1;
+          f1 = f2 + f1;
+        }
+        this.abz = i(arrayOfInt);
+      }
+    }
+    for (this.abv = true;; this.abv = false) {
+      return this.abv;
+    }
+  }
+  
+  private void hq()
+  {
+    this.abu = 0;
+    this.abx = -1.0F;
+    this.aby = -1.0F;
+    this.abw = -1.0F;
+    this.abz = new int[0];
+    this.abv = false;
+  }
+  
+  private boolean hs()
+  {
+    return !(this.md instanceof AppCompatEditText);
+  }
+  
+  private static int[] i(int[] paramArrayOfInt)
+  {
+    int j = paramArrayOfInt.length;
+    if (j == 0) {}
+    ArrayList localArrayList;
+    do
+    {
+      return paramArrayOfInt;
+      Arrays.sort(paramArrayOfInt);
+      localArrayList = new ArrayList();
+      i = 0;
+      while (i < j)
+      {
+        int k = paramArrayOfInt[i];
+        if ((k > 0) && (Collections.binarySearch(localArrayList, Integer.valueOf(k)) < 0)) {
+          localArrayList.add(Integer.valueOf(k));
+        }
+        i += 1;
+      }
+    } while (j == localArrayList.size());
+    j = localArrayList.size();
+    int[] arrayOfInt = new int[j];
+    int i = 0;
+    for (;;)
+    {
+      paramArrayOfInt = arrayOfInt;
+      if (i >= j) {
+        break;
+      }
+      arrayOfInt[i] = ((Integer)localArrayList.get(i)).intValue();
+      i += 1;
+    }
+  }
+  
+  private void setRawTextSize(float paramFloat)
+  {
+    if (paramFloat != this.md.getPaint().getTextSize())
+    {
+      this.md.getPaint().setTextSize(paramFloat);
+      if (Build.VERSION.SDK_INT < 18) {
+        break label114;
+      }
+    }
+    label81:
+    label114:
+    for (boolean bool = this.md.isInLayout();; bool = false)
+    {
+      if (this.md.getLayout() != null) {
+        this.abv = false;
+      }
+      try
+      {
+        Method localMethod = Q("nullLayouts");
+        if (localMethod != null) {
+          localMethod.invoke(this.md, new Object[0]);
+        }
+      }
+      catch (Exception localException)
+      {
+        break label81;
+      }
+      if (!bool) {
+        this.md.requestLayout();
+      }
       for (;;)
       {
-        int j;
-        int k;
-        boolean bool;
+        this.md.invalidate();
         return;
-        int i = a.j.TextAppearance_android_fontFamily;
-        continue;
-        if (paramax.ZQ == null) {
-          paramax.ZQ = new TypedValue();
-        }
-        Context localContext = paramax.mContext;
-        TypedValue localTypedValue = paramax.ZQ;
-        if (localContext.isRestricted())
-        {
-          paramContext = null;
-        }
-        else
-        {
-          Resources localResources = localContext.getResources();
-          localResources.getValue(k, localTypedValue, true);
-          paramContext = android.support.v4.content.a.b.a(localContext, localResources, localTypedValue, k, j, paramContext);
-          continue;
-          bool = false;
-        }
+        this.md.forceLayout();
       }
-    }
-    this.aaC = false;
-    switch (paramax.getInt(a.j.TextAppearance_android_typeface, 1))
-    {
-    default: 
-      return;
-    case 1: 
-      this.aaB = Typeface.SANS_SERIF;
-      return;
-    case 2: 
-      this.aaB = Typeface.SERIF;
-      return;
-    }
-    this.aaB = Typeface.MONOSPACE;
-  }
-  
-  static m d(TextView paramTextView)
-  {
-    if (Build.VERSION.SDK_INT >= 17) {
-      return new n(paramTextView);
-    }
-    return new m(paramTextView);
-  }
-  
-  final void a(Drawable paramDrawable, av paramav)
-  {
-    if ((paramDrawable != null) && (paramav != null)) {
-      h.a(paramDrawable, paramav, this.aav.getDrawableState());
     }
   }
   
-  @SuppressLint({"NewApi"})
-  void b(AttributeSet paramAttributeSet, int paramInt)
+  final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    Context localContext = this.aav.getContext();
-    Object localObject1 = h.gi();
-    Object localObject2 = ax.a(localContext, paramAttributeSet, a.j.AppCompatTextHelper, paramInt, 0);
-    int k = ((ax)localObject2).getResourceId(a.j.AppCompatTextHelper_android_textAppearance, -1);
-    if (((ax)localObject2).hasValue(a.j.AppCompatTextHelper_android_drawableLeft)) {
-      this.aaw = a(localContext, (h)localObject1, ((ax)localObject2).getResourceId(a.j.AppCompatTextHelper_android_drawableLeft, 0));
+    paramAttributeSet = this.mContext.obtainStyledAttributes(paramAttributeSet, a.a.AppCompatTextView, paramInt, 0);
+    if (paramAttributeSet.hasValue(2)) {
+      this.abu = paramAttributeSet.getInt(2, 0);
     }
-    if (((ax)localObject2).hasValue(a.j.AppCompatTextHelper_android_drawableTop)) {
-      this.aax = a(localContext, (h)localObject1, ((ax)localObject2).getResourceId(a.j.AppCompatTextHelper_android_drawableTop, 0));
-    }
-    if (((ax)localObject2).hasValue(a.j.AppCompatTextHelper_android_drawableRight)) {
-      this.aay = a(localContext, (h)localObject1, ((ax)localObject2).getResourceId(a.j.AppCompatTextHelper_android_drawableRight, 0));
-    }
-    if (((ax)localObject2).hasValue(a.j.AppCompatTextHelper_android_drawableBottom)) {
-      this.aaz = a(localContext, (h)localObject1, ((ax)localObject2).getResourceId(a.j.AppCompatTextHelper_android_drawableBottom, 0));
-    }
-    ((ax)localObject2).alZ.recycle();
-    boolean bool3 = this.aav.getTransformationMethod() instanceof PasswordTransformationMethod;
-    boolean bool1 = false;
-    boolean bool2 = false;
-    int i = 0;
-    int j = 0;
-    Object localObject7 = null;
-    localObject2 = null;
-    ax localax1 = null;
-    Object localObject4 = null;
-    localObject1 = null;
-    Object localObject5 = null;
-    Object localObject3 = null;
-    Object localObject6 = null;
-    if (k != -1)
+    if (paramAttributeSet.hasValue(3)) {}
+    for (float f1 = paramAttributeSet.getDimension(3, -1.0F);; f1 = -1.0F)
     {
-      ax localax2 = ax.a(localContext, k, a.j.TextAppearance);
-      i = j;
-      bool1 = bool2;
-      if (!bool3)
+      if (paramAttributeSet.hasValue(5)) {}
+      for (float f2 = paramAttributeSet.getDimension(5, -1.0F);; f2 = -1.0F)
       {
-        i = j;
-        bool1 = bool2;
-        if (localax2.hasValue(a.j.TextAppearance_textAllCaps))
+        if (paramAttributeSet.hasValue(6)) {}
+        for (float f3 = paramAttributeSet.getDimension(6, -1.0F);; f3 = -1.0F)
         {
-          i = 1;
-          bool1 = localax2.getBoolean(a.j.TextAppearance_textAllCaps, false);
-        }
-      }
-      a(localContext, localax2);
-      localObject2 = localObject7;
-      localObject3 = localObject6;
-      if (Build.VERSION.SDK_INT < 23)
-      {
-        localObject1 = localax1;
-        if (localax2.hasValue(a.j.TextAppearance_android_textColor)) {
-          localObject1 = localax2.getColorStateList(a.j.TextAppearance_android_textColor);
-        }
-        if (localax2.hasValue(a.j.TextAppearance_android_textColorHint)) {
-          localObject5 = localax2.getColorStateList(a.j.TextAppearance_android_textColorHint);
-        }
-        localObject2 = localObject1;
-        localObject4 = localObject5;
-        localObject3 = localObject6;
-        if (localax2.hasValue(a.j.TextAppearance_android_textColorLink))
-        {
-          localObject3 = localax2.getColorStateList(a.j.TextAppearance_android_textColorLink);
-          localObject4 = localObject5;
-          localObject2 = localObject1;
-        }
-      }
-      localax2.alZ.recycle();
-      localObject1 = localObject4;
-    }
-    localax1 = ax.a(localContext, paramAttributeSet, a.j.TextAppearance, paramInt, 0);
-    j = i;
-    bool2 = bool1;
-    if (!bool3)
-    {
-      j = i;
-      bool2 = bool1;
-      if (localax1.hasValue(a.j.TextAppearance_textAllCaps))
-      {
-        j = 1;
-        bool2 = localax1.getBoolean(a.j.TextAppearance_textAllCaps, false);
-      }
-    }
-    localObject4 = localObject2;
-    localObject5 = localObject1;
-    localObject6 = localObject3;
-    if (Build.VERSION.SDK_INT < 23)
-    {
-      if (localax1.hasValue(a.j.TextAppearance_android_textColor)) {
-        localObject2 = localax1.getColorStateList(a.j.TextAppearance_android_textColor);
-      }
-      if (localax1.hasValue(a.j.TextAppearance_android_textColorHint)) {
-        localObject1 = localax1.getColorStateList(a.j.TextAppearance_android_textColorHint);
-      }
-      localObject4 = localObject2;
-      localObject5 = localObject1;
-      localObject6 = localObject3;
-      if (localax1.hasValue(a.j.TextAppearance_android_textColorLink))
-      {
-        localObject6 = localax1.getColorStateList(a.j.TextAppearance_android_textColorLink);
-        localObject5 = localObject1;
-        localObject4 = localObject2;
-      }
-    }
-    a(localContext, localax1);
-    localax1.alZ.recycle();
-    if (localObject4 != null) {
-      this.aav.setTextColor(localObject4);
-    }
-    if (localObject5 != null) {
-      this.aav.setHintTextColor((ColorStateList)localObject5);
-    }
-    if (localObject6 != null) {
-      this.aav.setLinkTextColor((ColorStateList)localObject6);
-    }
-    if ((!bool3) && (j != 0)) {
-      setAllCaps(bool2);
-    }
-    if (this.aaB != null) {
-      this.aav.setTypeface(this.aaB, this.mStyle);
-    }
-    localObject1 = this.aaA;
-    float f2 = -1.0F;
-    float f3 = -1.0F;
-    float f1 = -1.0F;
-    paramAttributeSet = ((o)localObject1).mContext.obtainStyledAttributes(paramAttributeSet, a.j.AppCompatTextView, paramInt, 0);
-    if (paramAttributeSet.hasValue(a.j.AppCompatTextView_autoSizeTextType)) {
-      ((o)localObject1).aaJ = paramAttributeSet.getInt(a.j.AppCompatTextView_autoSizeTextType, 0);
-    }
-    if (paramAttributeSet.hasValue(a.j.AppCompatTextView_autoSizeStepGranularity)) {
-      f1 = paramAttributeSet.getDimension(a.j.AppCompatTextView_autoSizeStepGranularity, -1.0F);
-    }
-    if (paramAttributeSet.hasValue(a.j.AppCompatTextView_autoSizeMinTextSize)) {
-      f2 = paramAttributeSet.getDimension(a.j.AppCompatTextView_autoSizeMinTextSize, -1.0F);
-    }
-    if (paramAttributeSet.hasValue(a.j.AppCompatTextView_autoSizeMaxTextSize)) {
-      f3 = paramAttributeSet.getDimension(a.j.AppCompatTextView_autoSizeMaxTextSize, -1.0F);
-    }
-    if (paramAttributeSet.hasValue(a.j.AppCompatTextView_autoSizePresetSizes))
-    {
-      paramInt = paramAttributeSet.getResourceId(a.j.AppCompatTextView_autoSizePresetSizes, 0);
-      if (paramInt > 0)
-      {
-        localObject2 = paramAttributeSet.getResources().obtainTypedArray(paramInt);
-        i = ((TypedArray)localObject2).length();
-        localObject3 = new int[i];
-        if (i > 0)
-        {
-          paramInt = 0;
-          while (paramInt < i)
+          if (paramAttributeSet.hasValue(4))
           {
-            localObject3[paramInt] = ((TypedArray)localObject2).getDimensionPixelSize(paramInt, -1);
-            paramInt += 1;
+            paramInt = paramAttributeSet.getResourceId(4, 0);
+            if (paramInt > 0)
+            {
+              TypedArray localTypedArray = paramAttributeSet.getResources().obtainTypedArray(paramInt);
+              b(localTypedArray);
+              localTypedArray.recycle();
+            }
           }
-          ((o)localObject1).aaO = o.e((int[])localObject3);
-          ((o)localObject1).go();
+          paramAttributeSet.recycle();
+          if (hs())
+          {
+            if (this.abu == 1)
+            {
+              if (!this.abA)
+              {
+                paramAttributeSet = this.mContext.getResources().getDisplayMetrics();
+                float f4 = f2;
+                if (f2 == -1.0F) {
+                  f4 = TypedValue.applyDimension(2, 12.0F, paramAttributeSet);
+                }
+                f2 = f3;
+                if (f3 == -1.0F) {
+                  f2 = TypedValue.applyDimension(2, 112.0F, paramAttributeSet);
+                }
+                f3 = f1;
+                if (f1 == -1.0F) {
+                  f3 = 1.0F;
+                }
+                f(f4, f2, f3);
+              }
+              ho();
+            }
+            return;
+          }
+          this.abu = 0;
+          return;
         }
-        ((TypedArray)localObject2).recycle();
       }
     }
-    paramAttributeSet.recycle();
-    if (((o)localObject1).gs()) {
-      if (((o)localObject1).aaJ == 1)
-      {
-        if (!((o)localObject1).aaP)
-        {
-          paramAttributeSet = ((o)localObject1).mContext.getResources().getDisplayMetrics();
-          float f4 = f2;
-          if (f2 == -1.0F) {
-            f4 = TypedValue.applyDimension(2, 12.0F, paramAttributeSet);
-          }
-          f2 = f3;
-          if (f3 == -1.0F) {
-            f2 = TypedValue.applyDimension(2, 112.0F, paramAttributeSet);
-          }
-          f3 = f1;
-          if (f1 == -1.0F) {
-            f3 = 1.0F;
-          }
-          ((o)localObject1).f(f4, f2, f3);
-        }
-        ((o)localObject1).gp();
+  }
+  
+  final void e(int paramInt, float paramFloat)
+  {
+    if (this.mContext == null) {}
+    for (Resources localResources = Resources.getSystem();; localResources = this.mContext.getResources())
+    {
+      setRawTextSize(TypedValue.applyDimension(paramInt, paramFloat, localResources.getDisplayMetrics()));
+      return;
+    }
+  }
+  
+  final void hp()
+  {
+    if (!hr()) {}
+    do
+    {
+      return;
+      if (!this.abv) {
+        break;
       }
+    } while ((this.md.getMeasuredHeight() <= 0) || (this.md.getMeasuredWidth() <= 0));
+    int i;
+    if (((Boolean)a(this.md, "getHorizontallyScrolling", Boolean.FALSE)).booleanValue()) {
+      i = 1048576;
     }
     for (;;)
     {
-      if ((android.support.v4.widget.b.IY) && (this.aaA.aaJ != 0))
+      int j = this.md.getHeight() - this.md.getCompoundPaddingBottom() - this.md.getCompoundPaddingTop();
+      if ((i <= 0) || (j <= 0)) {
+        break;
+      }
+      synchronized (abs)
       {
-        paramAttributeSet = this.aaA.aaO;
-        if (paramAttributeSet.length > 0)
-        {
-          if (this.aav.getAutoSizeStepGranularity() == -1.0F) {
-            break;
-          }
-          this.aav.setAutoSizeTextTypeUniformWithConfiguration(Math.round(this.aaA.aaM), Math.round(this.aaA.aaN), Math.round(this.aaA.aaL), 0);
+        abs.setEmpty();
+        abs.right = i;
+        abs.bottom = j;
+        float f = a(abs);
+        if (f != this.md.getTextSize()) {
+          e(0, f);
         }
-      }
-      return;
-      ((o)localObject1).aaJ = 0;
-    }
-    this.aav.setAutoSizeTextTypeUniformWithPresetSizes(paramAttributeSet, 0);
-  }
-  
-  void gm()
-  {
-    if ((this.aaw != null) || (this.aax != null) || (this.aay != null) || (this.aaz != null))
-    {
-      Drawable[] arrayOfDrawable = this.aav.getCompoundDrawables();
-      a(arrayOfDrawable[0], this.aaw);
-      a(arrayOfDrawable[1], this.aax);
-      a(arrayOfDrawable[2], this.aay);
-      a(arrayOfDrawable[3], this.aaz);
-    }
-  }
-  
-  final void gn()
-  {
-    if (!android.support.v4.widget.b.IY) {
-      this.aaA.gq();
-    }
-  }
-  
-  final void p(Context paramContext, int paramInt)
-  {
-    ax localax = ax.a(paramContext, paramInt, a.j.TextAppearance);
-    if (localax.hasValue(a.j.TextAppearance_textAllCaps)) {
-      setAllCaps(localax.getBoolean(a.j.TextAppearance_textAllCaps, false));
-    }
-    if ((Build.VERSION.SDK_INT < 23) && (localax.hasValue(a.j.TextAppearance_android_textColor)))
-    {
-      ColorStateList localColorStateList = localax.getColorStateList(a.j.TextAppearance_android_textColor);
-      if (localColorStateList != null) {
-        this.aav.setTextColor(localColorStateList);
+        this.abv = true;
+        return;
+        i = this.md.getMeasuredWidth() - this.md.getTotalPaddingLeft() - this.md.getTotalPaddingRight();
       }
     }
-    a(paramContext, localax);
-    localax.alZ.recycle();
-    if (this.aaB != null) {
-      this.aav.setTypeface(this.aaB, this.mStyle);
-    }
   }
   
-  final void setAllCaps(boolean paramBoolean)
+  final boolean hr()
   {
-    this.aav.setAllCaps(paramBoolean);
+    return (hs()) && (this.abu != 0);
   }
   
   final void setAutoSizeTextTypeUniformWithConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    o localo = this.aaA;
-    if (localo.gs())
+    if (hs())
     {
-      DisplayMetrics localDisplayMetrics = localo.mContext.getResources().getDisplayMetrics();
-      localo.f(TypedValue.applyDimension(paramInt4, paramInt1, localDisplayMetrics), TypedValue.applyDimension(paramInt4, paramInt2, localDisplayMetrics), TypedValue.applyDimension(paramInt4, paramInt3, localDisplayMetrics));
-      if (localo.gp()) {
-        localo.gq();
+      DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
+      f(TypedValue.applyDimension(paramInt4, paramInt1, localDisplayMetrics), TypedValue.applyDimension(paramInt4, paramInt2, localDisplayMetrics), TypedValue.applyDimension(paramInt4, paramInt3, localDisplayMetrics));
+      if (ho()) {
+        hp();
       }
     }
   }
@@ -436,8 +483,7 @@ class m
   final void setAutoSizeTextTypeUniformWithPresetSizes(int[] paramArrayOfInt, int paramInt)
   {
     int i = 0;
-    o localo = this.aaA;
-    if (localo.gs())
+    if (hs())
     {
       int j = paramArrayOfInt.length;
       if (j > 0)
@@ -447,14 +493,14 @@ class m
         if (paramInt == 0)
         {
           arrayOfInt1 = Arrays.copyOf(paramArrayOfInt, j);
-          localo.aaO = o.e(arrayOfInt1);
-          if (!localo.go()) {
+          this.abz = i(arrayOfInt1);
+          if (!hn()) {
             throw new IllegalArgumentException("None of the preset sizes is valid: " + Arrays.toString(paramArrayOfInt));
           }
         }
         else
         {
-          DisplayMetrics localDisplayMetrics = localo.mContext.getResources().getDisplayMetrics();
+          DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
           for (;;)
           {
             arrayOfInt1 = arrayOfInt2;
@@ -468,45 +514,32 @@ class m
       }
       else
       {
-        localo.aaP = false;
+        this.abA = false;
       }
-      if (localo.gp()) {
-        localo.gq();
+      if (ho()) {
+        hp();
       }
     }
   }
   
   final void setAutoSizeTextTypeWithDefaults(int paramInt)
   {
-    o localo = this.aaA;
-    if (localo.gs()) {
+    if (hs()) {
       switch (paramInt)
       {
       default: 
-        throw new IllegalArgumentException("Unknown auto-size text type: " + paramInt);
+        throw new IllegalArgumentException("Unknown auto-size text type: ".concat(String.valueOf(paramInt)));
       case 0: 
-        localo.aaJ = 0;
-        localo.aaM = -1.0F;
-        localo.aaN = -1.0F;
-        localo.aaL = -1.0F;
-        localo.aaO = new int[0];
-        localo.aaK = false;
+        hq();
       }
     }
     do
     {
       return;
-      DisplayMetrics localDisplayMetrics = localo.mContext.getResources().getDisplayMetrics();
-      localo.f(TypedValue.applyDimension(2, 12.0F, localDisplayMetrics), TypedValue.applyDimension(2, 112.0F, localDisplayMetrics), 1.0F);
-    } while (!localo.gp());
-    localo.gq();
-  }
-  
-  final void setTextSize(int paramInt, float paramFloat)
-  {
-    if ((!android.support.v4.widget.b.IY) && (!this.aaA.gr())) {
-      this.aaA.d(paramInt, paramFloat);
-    }
+      DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
+      f(TypedValue.applyDimension(2, 12.0F, localDisplayMetrics), TypedValue.applyDimension(2, 112.0F, localDisplayMetrics), 1.0F);
+    } while (!ho());
+    hp();
   }
 }
 

@@ -1,34 +1,39 @@
 package com.tencent.mm.ui.base;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMGridPaper$4
   implements MMFlipper.a
 {
   MMGridPaper$4(MMGridPaper paramMMGridPaper) {}
   
-  public final void dH(int paramInt1, int paramInt2)
+  public final void fp(int paramInt1, int paramInt2)
   {
-    y.v("MicroMsg.MMGridPaper", "onMeasure width:[new %d, old %d] height:[new %d, old %d], dialogMode[%B], orientationChange[%B]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.uVI.uVk), Integer.valueOf(paramInt2), Integer.valueOf(this.uVI.uVl), Boolean.valueOf(this.uVI.uVz), Boolean.valueOf(this.uVI.uVy) });
-    if (((Math.abs(this.uVI.uVl - paramInt2) < 50) && (Math.abs(this.uVI.uVk - paramInt1) < 50)) || (paramInt2 == 0) || (paramInt1 == 0))
+    AppMethodBeat.i(106619);
+    ab.v("MicroMsg.MMGridPaper", "onMeasure width:[new %d, old %d] height:[new %d, old %d], dialogMode[%B], orientationChange[%B]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.zkb.zjF), Integer.valueOf(paramInt2), Integer.valueOf(this.zkb.zjG), Boolean.valueOf(this.zkb.zjU), Boolean.valueOf(this.zkb.zjT) });
+    if (((Math.abs(this.zkb.zjG - paramInt2) < 50) && (Math.abs(this.zkb.zjF - paramInt1) < 50)) || (paramInt2 == 0) || (paramInt1 == 0))
     {
-      y.d("MicroMsg.MMGridPaper", "match width height limit, return");
+      ab.d("MicroMsg.MMGridPaper", "match width height limit, return");
+      AppMethodBeat.o(106619);
       return;
     }
-    if ((this.uVI.uVz) && (this.uVI.uVk > paramInt1) && (!this.uVI.uVy))
+    if ((this.zkb.zjU) && (this.zkb.zjF > paramInt1) && (!this.zkb.zjT))
     {
-      y.d("MicroMsg.MMGridPaper", "match ori limit, return");
+      ab.d("MicroMsg.MMGridPaper", "match ori limit, return");
+      AppMethodBeat.o(106619);
       return;
     }
-    y.v("MicroMsg.MMGridPaper", "onMeasure: match");
-    y.v("MicroMsg.MMGridPaper", "onMeasure: mIsManualMeasureMode[%b]", new Object[] { Boolean.valueOf(this.uVI.uVE) });
-    this.uVI.uVy = false;
-    if (!this.uVI.uVE)
+    ab.v("MicroMsg.MMGridPaper", "onMeasure: match");
+    ab.v("MicroMsg.MMGridPaper", "onMeasure: mIsManualMeasureMode[%b]", new Object[] { Boolean.valueOf(this.zkb.zjX) });
+    this.zkb.zjT = false;
+    if (!this.zkb.zjX)
     {
-      this.uVI.uVl = paramInt2;
-      this.uVI.uVk = paramInt1;
+      this.zkb.zjG = paramInt2;
+      this.zkb.zjF = paramInt1;
     }
-    this.uVI.refresh();
+    this.zkb.refresh();
+    AppMethodBeat.o(106619);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.backup.backuppcmodel;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.c.a;
 
 final class c$5
@@ -9,10 +10,12 @@ final class c$5
   
   public final void run()
   {
-    b.auw().atT().stop();
-    b.auw().atp();
-    com.tencent.mm.plugin.backup.g.b.auM();
-    com.tencent.mm.plugin.backup.g.b.auO();
+    AppMethodBeat.i(17503);
+    b.aTX().aTs().stop();
+    b.aTX().aSN();
+    com.tencent.mm.plugin.backup.g.b.aUo();
+    com.tencent.mm.plugin.backup.g.b.aUq();
+    AppMethodBeat.o(17503);
   }
 }
 

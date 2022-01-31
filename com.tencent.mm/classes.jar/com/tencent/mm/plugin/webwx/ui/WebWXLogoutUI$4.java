@@ -1,25 +1,31 @@
 package com.tencent.mm.plugin.webwx.ui;
 
-import android.content.Intent;
+import android.animation.Animator;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.webwx.a;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.y;
+import android.widget.ImageButton;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebWXLogoutUI$4
   implements View.OnClickListener
 {
-  WebWXLogoutUI$4(WebWXLogoutUI paramWebWXLogoutUI) {}
+  WebWXLogoutUI$4(WebWXLogoutUI paramWebWXLogoutUI, Animator paramAnimator) {}
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent();
-    paramView.putExtra("Chat_User", "filehelper");
-    paramView.putExtra("key_show_bottom_app_panel", true);
-    a.eUR.e(paramView, this.rEh);
-    y.d("MicroMsg.WebWXLogoutUI", "clicked file transfer bt, start filehelper");
-    this.rEh.finish();
+    AppMethodBeat.i(26541);
+    if (WebWXLogoutUI.c(this.vuJ)) {
+      WebWXLogoutUI.d(this.vuJ).setImageResource(2131231170);
+    }
+    for (;;)
+    {
+      WebWXLogoutUI.e(this.vuJ);
+      this.vuJ.findViewById(2131829563).setVisibility(0);
+      this.vuK.start();
+      AppMethodBeat.o(26541);
+      return;
+      WebWXLogoutUI.d(this.vuJ).setImageResource(2131231168);
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.i;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
@@ -12,12 +13,16 @@ final class o$2
   
   public final void a(d paramd)
   {
-    o.a.a(this.ggH, paramd);
+    AppMethodBeat.i(94207);
+    o.a.a(this.hxW, paramd);
+    AppMethodBeat.o(94207);
   }
   
-  public final void ay(List<d> paramList)
+  public final void aI(List<d> paramList)
   {
-    o.a.a(this.ggH, paramList);
+    AppMethodBeat.i(94208);
+    o.a.a(this.hxW, paramList);
+    AppMethodBeat.o(94208);
   }
 }
 

@@ -1,20 +1,24 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.b.c;
 
 public final class d
 {
-  public static boolean axV()
+  c hCe;
+  h jWg;
+  
+  public d(h paramh)
   {
-    return (((Integer)g.DP().Dz().get(ac.a.uzq, Integer.valueOf(0))).intValue() & 0x2) > 0;
+    AppMethodBeat.i(14146);
+    this.hCe = new d.1(this);
+    this.jWg = paramh;
+    AppMethodBeat.o(14146);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.d
  * JD-Core Version:    0.7.0.1
  */

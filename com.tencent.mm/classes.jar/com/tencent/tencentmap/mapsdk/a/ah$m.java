@@ -2,11 +2,11 @@ package com.tencent.tencentmap.mapsdk.a;
 
 public abstract interface ah$m
 {
-  public abstract void a(qf paramqf);
+  public abstract void a(dc paramdc);
   
-  public abstract void b(qf paramqf);
+  public abstract void b(dc paramdc);
   
-  public abstract void c(qf paramqf);
+  public abstract void c(dc paramdc);
 }
 
 

@@ -1,11 +1,18 @@
 package com.tencent.mm.plugin.music.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$1
   implements Runnable
 {
   a$1(a parama) {}
   
-  public final void run() {}
+  public final void run()
+  {
+    AppMethodBeat.i(104906);
+    a.bVQ();
+    AppMethodBeat.o(104906);
+  }
 }
 
 

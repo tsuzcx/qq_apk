@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
-import com.tencent.mm.aa.b.c;
-import com.tencent.mm.plugin.appbrand.u.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s.g;
+import com.tencent.mm.z.b.c;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -10,10 +11,10 @@ import org.json.JSONObject;
 public final class b
   extends c
 {
-  public Map<String, String> fWv;
-  public String fWw;
-  public int fWx;
-  public int fWy;
+  public String cacheKey;
+  public Map<String, String> hpW;
+  public int hpX;
+  public int hpY;
   public String path;
   public String title;
   
@@ -27,30 +28,39 @@ public final class b
     super("onCanvasInsert", paramInt);
   }
   
-  public final JSONObject rB()
+  public final JSONObject toJSONObject()
   {
-    localJSONObject = new JSONObject();
-    try
+    AppMethodBeat.i(10911);
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
     {
-      localJSONObject.put("title", this.title);
-      localJSONObject.put("path", this.path);
-      if (this.fWv == null) {}
-      for (Object localObject = new HashMap();; localObject = this.fWv)
+      try
       {
+        localJSONObject.put("title", this.title);
+        localJSONObject.put("path", this.path);
+        if (this.hpW != null) {
+          continue;
+        }
+        localObject = new HashMap();
         localJSONObject.put("query", new JSONObject((Map)localObject));
-        localJSONObject.put("cacheKey", this.fWw);
-        localJSONObject.put("width", h.mx(this.fWx));
-        localJSONObject.put("height", h.mx(this.fWy));
-        return localJSONObject;
+        localJSONObject.put("cacheKey", this.cacheKey);
+        localJSONObject.put("width", g.pN(this.hpX));
+        localJSONObject.put("height", g.pN(this.hpY));
       }
+      catch (JSONException localJSONException)
+      {
+        Object localObject;
+        continue;
+      }
+      AppMethodBeat.o(10911);
       return localJSONObject;
+      localObject = this.hpW;
     }
-    catch (JSONException localJSONException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.b
  * JD-Core Version:    0.7.0.1
  */

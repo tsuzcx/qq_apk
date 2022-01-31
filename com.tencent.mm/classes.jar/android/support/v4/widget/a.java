@@ -2,7 +2,7 @@ package android.support.v4.widget;
 
 import android.content.res.Resources;
 import android.os.SystemClock;
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,78 +15,81 @@ import android.view.animation.Interpolator;
 public abstract class a
   implements View.OnTouchListener
 {
-  private static final int IN = ;
-  private float[] IA = { 3.4028235E+38F, 3.4028235E+38F };
-  private int IB;
-  private int IC;
-  private float[] IE = { 0.0F, 0.0F };
-  private float[] IF = { 0.0F, 0.0F };
-  private float[] IG = { 3.4028235E+38F, 3.4028235E+38F };
-  private boolean IH;
-  boolean II;
-  boolean IJ;
-  boolean IK;
-  private boolean IL;
-  private boolean IM;
-  final a Iw = new a();
-  private final Interpolator Ix = new AccelerateInterpolator();
-  final View Iy;
-  private float[] Iz = { 0.0F, 0.0F };
+  private static final int Iv = ;
+  final a Ih = new a();
+  private final Interpolator Ii = new AccelerateInterpolator();
+  final View Ij;
+  private float[] Ik = { 0.0F, 0.0F };
+  private float[] Il = { 3.4028235E+38F, 3.4028235E+38F };
+  private int Im;
+  private int In;
+  private float[] Io = { 0.0F, 0.0F };
+  private float[] Ip = { 0.0F, 0.0F };
+  private float[] Iq = { 3.4028235E+38F, 3.4028235E+38F };
+  private boolean Ir;
+  boolean Is;
+  boolean It;
+  private boolean Iu;
+  private boolean mEnabled;
   private Runnable mRunnable;
+  boolean wu;
   
   public a(View paramView)
   {
-    this.Iy = paramView;
+    this.Ij = paramView;
     paramView = Resources.getSystem().getDisplayMetrics();
     int i = (int)(1575.0F * paramView.density + 0.5F);
     int j = (int)(paramView.density * 315.0F + 0.5F);
     float f = i;
-    this.IG[0] = (f / 1000.0F);
-    this.IG[1] = (f / 1000.0F);
+    this.Iq[0] = (f / 1000.0F);
+    this.Iq[1] = (f / 1000.0F);
     f = j;
-    this.IF[0] = (f / 1000.0F);
-    this.IF[1] = (f / 1000.0F);
-    this.IB = 1;
-    this.IA[0] = 3.4028235E+38F;
-    this.IA[1] = 3.4028235E+38F;
-    this.Iz[0] = 0.2F;
-    this.Iz[1] = 0.2F;
-    this.IE[0] = 0.001F;
-    this.IE[1] = 0.001F;
-    this.IC = IN;
-    this.Iw.IP = 500;
-    this.Iw.IQ = 500;
+    this.Ip[0] = (f / 1000.0F);
+    this.Ip[1] = (f / 1000.0F);
+    this.Im = 1;
+    this.Il[0] = 3.4028235E+38F;
+    this.Il[1] = 3.4028235E+38F;
+    this.Ik[0] = 0.2F;
+    this.Ik[1] = 0.2F;
+    this.Io[0] = 0.001F;
+    this.Io[1] = 0.001F;
+    this.In = Iv;
+    this.Ih.Iw = 500;
+    this.Ih.Ix = 500;
   }
   
   private float a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    float f1 = d(this.Iz[paramInt] * paramFloat2, 0.0F, this.IA[paramInt]);
-    float f2 = u(paramFloat1, f1);
-    paramFloat1 = u(paramFloat2 - paramFloat1, f1) - f2;
-    if (paramFloat1 < 0.0F) {
-      paramFloat1 = -this.Ix.getInterpolation(-paramFloat1);
-    }
-    for (paramFloat1 = d(paramFloat1, -1.0F, 1.0F);; paramFloat1 = 0.0F)
-    {
-      if (paramFloat1 != 0.0F) {
-        break label102;
-      }
+    paramFloat1 = c(this.Ik[paramInt], paramFloat2, this.Il[paramInt], paramFloat1);
+    if (paramFloat1 == 0.0F) {
       return 0.0F;
-      if (paramFloat1 > 0.0F)
-      {
-        paramFloat1 = this.Ix.getInterpolation(paramFloat1);
-        break;
-      }
     }
-    label102:
-    f2 = this.IE[paramInt];
-    paramFloat2 = this.IF[paramInt];
-    f1 = this.IG[paramInt];
+    float f2 = this.Io[paramInt];
+    paramFloat2 = this.Ip[paramInt];
+    float f1 = this.Iq[paramInt];
     paramFloat3 = f2 * paramFloat3;
     if (paramFloat1 > 0.0F) {
       return d(paramFloat1 * paramFloat3, paramFloat2, f1);
     }
     return -d(-paramFloat1 * paramFloat3, paramFloat2, f1);
+  }
+  
+  private float c(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    float f = 0.0F;
+    paramFloat1 = d(paramFloat1 * paramFloat2, 0.0F, paramFloat3);
+    paramFloat3 = t(paramFloat4, paramFloat1);
+    paramFloat2 = t(paramFloat2 - paramFloat4, paramFloat1) - paramFloat3;
+    if (paramFloat2 < 0.0F) {}
+    for (paramFloat1 = -this.Ii.getInterpolation(-paramFloat2);; paramFloat1 = this.Ii.getInterpolation(paramFloat2))
+    {
+      paramFloat1 = d(paramFloat1, -1.0F, 1.0F);
+      do
+      {
+        return paramFloat1;
+        paramFloat1 = f;
+      } while (paramFloat2 <= 0.0F);
+    }
   }
   
   static float d(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -100,33 +103,28 @@ public abstract class a
     return paramFloat1;
   }
   
-  private void dx()
+  private void dM()
   {
-    if (this.II)
+    if (this.Is)
     {
-      this.IK = false;
+      this.wu = false;
       return;
     }
-    a locala = this.Iw;
-    long l = AnimationUtils.currentAnimationTimeMillis();
-    int i = (int)(l - locala.mStartTime);
-    int j = locala.IQ;
-    if (i > j) {
-      i = j;
-    }
-    for (;;)
-    {
-      locala.IW = i;
-      locala.IV = locala.l(l);
-      locala.IU = l;
-      return;
-      if (i < 0) {
-        i = 0;
-      }
-    }
+    this.Ih.dM();
   }
   
-  private float u(float paramFloat1, float paramFloat2)
+  static int s(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 > paramInt2) {
+      return paramInt2;
+    }
+    if (paramInt1 < 0) {
+      return 0;
+    }
+    return paramInt1;
+  }
+  
+  private float t(float paramFloat1, float paramFloat2)
   {
     if (paramFloat2 == 0.0F) {}
     do
@@ -136,7 +134,7 @@ public abstract class a
         do
         {
           return 0.0F;
-          switch (this.IB)
+          switch (this.Im)
           {
           default: 
             return 0.0F;
@@ -145,31 +143,29 @@ public abstract class a
         if (paramFloat1 >= 0.0F) {
           return 1.0F - paramFloat1 / paramFloat2;
         }
-      } while ((!this.IK) || (this.IB != 1));
+      } while ((!this.wu) || (this.Im != 1));
       return 1.0F;
     } while (paramFloat1 >= 0.0F);
     return paramFloat1 / -paramFloat2;
   }
   
-  public final a H(boolean paramBoolean)
+  public final a G(boolean paramBoolean)
   {
-    if ((this.IL) && (!paramBoolean)) {
-      dx();
+    if ((this.mEnabled) && (!paramBoolean)) {
+      dM();
     }
-    this.IL = paramBoolean;
+    this.mEnabled = paramBoolean;
     return this;
   }
   
-  public abstract void aC(int paramInt);
+  public abstract boolean aA(int paramInt);
   
-  public abstract boolean aD(int paramInt);
-  
-  final boolean ap()
+  final boolean aT()
   {
-    a locala = this.Iw;
-    int i = (int)(locala.IS / Math.abs(locala.IS));
-    int j = (int)(locala.IR / Math.abs(locala.IR));
-    if ((i == 0) || (!aD(i)))
+    a locala = this.Ih;
+    int i = locala.dO();
+    int j = locala.dN();
+    if ((i == 0) || (!aA(i)))
     {
       if (j != 0) {}
       return false;
@@ -177,126 +173,146 @@ public abstract class a
     return true;
   }
   
+  public abstract void az(int paramInt);
+  
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!this.IL) {}
+    if (!this.mEnabled) {}
     for (;;)
     {
       return false;
       switch (paramMotionEvent.getActionMasked())
       {
       }
-      while ((this.IM) && (this.IK))
+      while ((this.Iu) && (this.wu))
       {
         return true;
-        this.IJ = true;
-        this.IH = false;
-        float f1 = a(0, paramMotionEvent.getX(), paramView.getWidth(), this.Iy.getWidth());
-        float f2 = a(1, paramMotionEvent.getY(), paramView.getHeight(), this.Iy.getHeight());
-        paramView = this.Iw;
-        paramView.IR = f1;
-        paramView.IS = f2;
-        if ((!this.IK) && (ap()))
+        this.It = true;
+        this.Ir = false;
+        float f1 = a(0, paramMotionEvent.getX(), paramView.getWidth(), this.Ij.getWidth());
+        float f2 = a(1, paramMotionEvent.getY(), paramView.getHeight(), this.Ij.getHeight());
+        paramView = this.Ih;
+        paramView.Iy = f1;
+        paramView.Iz = f2;
+        if ((!this.wu) && (aT()))
         {
           if (this.mRunnable == null) {
             this.mRunnable = new b();
           }
-          this.IK = true;
-          this.II = true;
-          if ((!this.IH) && (this.IC > 0)) {
-            q.a(this.Iy, this.mRunnable, this.IC);
+          this.wu = true;
+          this.Is = true;
+          if ((!this.Ir) && (this.In > 0)) {
+            t.a(this.Ij, this.mRunnable, this.In);
           }
           for (;;)
           {
-            this.IH = true;
+            this.Ir = true;
             break;
             this.mRunnable.run();
           }
-          dx();
+          dM();
         }
       }
     }
   }
   
-  private static final class a
+  static final class a
   {
-    int IP;
-    int IQ;
-    float IR;
-    float IS;
-    long IT = 0L;
-    long IU = -1L;
-    float IV;
-    int IW;
+    long IA = 0L;
+    long IB = -1L;
+    float IC;
+    int IE;
+    int Iw;
+    int Ix;
+    float Iy;
+    float Iz;
     long mStartTime = -9223372036854775808L;
-    int qP = 0;
-    int qQ = 0;
+    int rM = 0;
+    int rN = 0;
     
-    final float l(long paramLong)
+    public final void dM()
+    {
+      long l = AnimationUtils.currentAnimationTimeMillis();
+      this.IE = a.s((int)(l - this.mStartTime), this.Ix);
+      this.IC = j(l);
+      this.IB = l;
+    }
+    
+    public final int dN()
+    {
+      return (int)(this.Iy / Math.abs(this.Iy));
+    }
+    
+    public final int dO()
+    {
+      return (int)(this.Iz / Math.abs(this.Iz));
+    }
+    
+    final float j(long paramLong)
     {
       if (paramLong < this.mStartTime) {
         return 0.0F;
       }
-      if ((this.IU < 0L) || (paramLong < this.IU)) {
-        return a.d((float)(paramLong - this.mStartTime) / this.IP, 0.0F, 1.0F) * 0.5F;
+      if ((this.IB < 0L) || (paramLong < this.IB)) {
+        return a.d((float)(paramLong - this.mStartTime) / this.Iw, 0.0F, 1.0F) * 0.5F;
       }
-      long l = this.IU;
-      float f1 = this.IV;
-      float f2 = this.IV;
-      return a.d((float)(paramLong - l) / this.IW, 0.0F, 1.0F) * f2 + (1.0F - f1);
+      long l = this.IB;
+      float f1 = this.IC;
+      float f2 = this.IC;
+      return a.d((float)(paramLong - l) / this.IE, 0.0F, 1.0F) * f2 + (1.0F - f1);
     }
   }
   
-  private final class b
+  final class b
     implements Runnable
   {
     b() {}
     
     public final void run()
     {
-      if (!a.this.IK) {
+      if (!a.this.wu) {
         return;
       }
-      if (a.this.II)
+      if (a.this.Is)
       {
-        a.this.II = false;
-        locala = a.this.Iw;
+        a.this.Is = false;
+        locala = a.this.Ih;
         locala.mStartTime = AnimationUtils.currentAnimationTimeMillis();
-        locala.IU = -1L;
-        locala.IT = locala.mStartTime;
-        locala.IV = 0.5F;
-        locala.qP = 0;
-        locala.qQ = 0;
+        locala.IB = -1L;
+        locala.IA = locala.mStartTime;
+        locala.IC = 0.5F;
+        locala.rM = 0;
+        locala.rN = 0;
       }
-      a.a locala = a.this.Iw;
-      if ((locala.IU > 0L) && (AnimationUtils.currentAnimationTimeMillis() > locala.IU + locala.IW)) {}
-      for (int i = 1; (i != 0) || (!a.this.ap()); i = 0)
+      a.a locala = a.this.Ih;
+      if ((locala.IB > 0L) && (AnimationUtils.currentAnimationTimeMillis() > locala.IB + locala.IE)) {}
+      for (int i = 1; (i != 0) || (!a.this.aT()); i = 0)
       {
-        a.this.IK = false;
+        a.this.wu = false;
         return;
       }
-      if (a.this.IJ)
+      if (a.this.It)
       {
-        a.this.IJ = false;
+        a.this.It = false;
         a locala1 = a.this;
         l1 = SystemClock.uptimeMillis();
         MotionEvent localMotionEvent = MotionEvent.obtain(l1, l1, 3, 0.0F, 0.0F, 0);
-        locala1.Iy.onTouchEvent(localMotionEvent);
+        locala1.Ij.onTouchEvent(localMotionEvent);
         localMotionEvent.recycle();
       }
-      if (locala.IT == 0L) {
+      if (locala.IA == 0L) {
         throw new RuntimeException("Cannot compute scroll delta before calling start()");
       }
       long l1 = AnimationUtils.currentAnimationTimeMillis();
-      float f = locala.l(l1);
+      float f = locala.j(l1);
       f = f * 4.0F + -4.0F * f * f;
-      long l2 = l1 - locala.IT;
-      locala.IT = l1;
-      locala.qP = ((int)((float)l2 * f * locala.IR));
-      locala.qQ = ((int)((float)l2 * f * locala.IS));
-      i = locala.qQ;
-      a.this.aC(i);
-      q.b(a.this.Iy, this);
+      long l2 = l1 - locala.IA;
+      locala.IA = l1;
+      locala.rM = ((int)((float)l2 * f * locala.Iy));
+      locala.rN = ((int)((float)l2 * f * locala.Iz));
+      i = locala.rN;
+      a.this.az(i);
+      t.b(a.this.Ij, this);
     }
   }
 }

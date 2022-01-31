@@ -1,86 +1,99 @@
 package com.tencent.mm.plugin.aa.ui;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.af;
+import com.tencent.mm.model.ag;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.a.d;
-import com.tencent.mm.ui.contact.q;
+import com.tencent.mm.ui.contact.r;
 
 public final class e
-  extends q
+  extends r
 {
-  private String bVk;
   private String chatroomName;
-  private String[] eYc;
-  private Cursor eYd;
+  private String[] gpZ;
+  private Cursor gqa;
+  private String query;
   
   public e(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
   {
     super(paramMMBaseSelectContactUI, null, true, 0);
+    AppMethodBeat.i(40770);
     this.chatroomName = paramString;
-    paramMMBaseSelectContactUI = ((c)g.r(c.class)).FF().ir(this.chatroomName);
+    paramMMBaseSelectContactUI = ((c)g.E(c.class)).YJ().oY(this.chatroomName);
     if (paramMMBaseSelectContactUI != null) {
-      this.eYc = bk.dj(paramMMBaseSelectContactUI);
+      this.gpZ = bo.er(paramMMBaseSelectContactUI);
     }
+    AppMethodBeat.o(40770);
   }
   
   public final void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean)
   {
-    y.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
+    AppMethodBeat.i(40771);
+    ab.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
     clearCache();
-    this.bVk = paramString;
-    if (this.eYd != null)
+    this.query = paramString;
+    if (this.gqa != null)
     {
-      this.eYd.close();
-      this.eYd = null;
+      this.gqa.close();
+      this.gqa = null;
     }
-    if ((!bk.bl(this.bVk)) && (this.eYc != null))
+    if ((!bo.isNullOrNil(this.query)) && (this.gpZ != null))
     {
-      g.DQ();
-      this.eYd = ((j)g.r(j.class)).Fw().a(this.eYc, "@all.chatroom", this.bVk, null, null);
+      g.RM();
+      this.gqa = ((j)g.E(j.class)).YA().a(this.gpZ, "@all.chatroom", this.query, null, null);
     }
     notifyDataSetChanged();
-    bN(paramString, true);
+    cp(paramString, true);
+    AppMethodBeat.o(40771);
   }
   
   public final void finish()
   {
+    AppMethodBeat.i(40773);
     super.finish();
-    if (this.eYd != null)
+    if (this.gqa != null)
     {
-      this.eYd.close();
-      this.eYd = null;
+      this.gqa.close();
+      this.gqa = null;
     }
+    AppMethodBeat.o(40773);
   }
   
   public final int getCount()
   {
-    if (this.eYd == null) {
+    AppMethodBeat.i(40774);
+    if (this.gqa == null)
+    {
+      AppMethodBeat.o(40774);
       return 0;
     }
-    return this.eYd.getCount();
+    int i = this.gqa.getCount();
+    AppMethodBeat.o(40774);
+    return i;
   }
   
-  protected final a jQ(int paramInt)
+  public final a mM(int paramInt)
   {
-    d locald = null;
-    if (this.eYd.moveToPosition(paramInt))
+    AppMethodBeat.i(40772);
+    com.tencent.mm.ui.contact.a.e locale = null;
+    if (this.gqa.moveToPosition(paramInt))
     {
       ad localad = new ad();
-      localad.d(this.eYd);
-      locald = new d(paramInt);
-      locald.dnp = localad;
-      locald.vLJ = true;
+      localad.convertFrom(this.gqa);
+      locale = new com.tencent.mm.ui.contact.a.e(paramInt);
+      locale.contact = localad;
+      locale.Adl = true;
     }
-    return locald;
+    AppMethodBeat.o(40772);
+    return locale;
   }
 }
 

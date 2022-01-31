@@ -4,37 +4,38 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.BaseAdapter;
 import com.tencent.mm.a.f;
+import com.tencent.mm.memory.a.b;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 
 public abstract class a<T>
   extends BaseAdapter
 {
-  private static int kWG = 500;
-  protected LinkedList<T> kQN;
-  private a.a kWD;
-  protected boolean kWE = false;
-  private f<String, Bitmap> kWF;
-  private am kWH = new am(new a.2(this), false);
-  private final j.a kWI = new a.3(this);
+  private static int nuI = 500;
   protected Context mContext;
+  protected LinkedList<T> noR;
+  private a.a nuF;
+  protected boolean nuG = false;
+  private f<String, Bitmap> nuH;
+  private ap nuJ = new ap(new a.2(this), false);
+  private final k.a nuK = new a.3(this);
   
   public a(Context paramContext)
   {
     this.mContext = paramContext;
-    this.kQN = new LinkedList();
-    this.kWF = new f(20);
-    com.tencent.mm.plugin.z.a.brn().c(this.kWI);
+    this.noR = new LinkedList();
+    this.nuH = new b(20, getClass());
+    com.tencent.mm.plugin.s.a.cac().add(this.nuK);
   }
   
-  protected final Bitmap EX(String paramString)
+  protected final Bitmap Qp(String paramString)
   {
     Object localObject;
-    if (bk.bl(paramString)) {
+    if (bo.isNullOrNil(paramString)) {
       localObject = null;
     }
     Bitmap localBitmap;
@@ -45,10 +46,10 @@ public abstract class a<T>
         do
         {
           return localObject;
-          if (!this.kWF.aC(paramString)) {
+          if (!this.nuH.Z(paramString)) {
             break;
           }
-          localBitmap = (Bitmap)this.kWF.get(paramString);
+          localBitmap = (Bitmap)this.nuH.get(paramString);
           if (localBitmap == null) {
             break;
           }
@@ -59,62 +60,62 @@ public abstract class a<T>
       } while (localBitmap == null);
       localObject = localBitmap;
     } while (localBitmap.isRecycled());
-    this.kWF.f(paramString, localBitmap);
+    this.nuH.f(paramString, localBitmap);
     return localBitmap;
   }
   
-  public void U(LinkedList<T> paramLinkedList)
+  public void ab(LinkedList<T> paramLinkedList)
   {
     if (paramLinkedList == null)
     {
-      if (this.kWD != null) {
-        this.kQN.size();
+      if (this.nuF != null) {
+        this.noR.size();
       }
       return;
     }
-    this.kQN.addAll(paramLinkedList);
-    if (this.kWD != null) {
-      this.kQN.size();
+    this.noR.addAll(paramLinkedList);
+    if (this.nuF != null) {
+      this.noR.size();
     }
     super.notifyDataSetChanged();
   }
   
-  public void V(LinkedList<T> paramLinkedList)
+  public void ac(LinkedList<T> paramLinkedList)
   {
     if (paramLinkedList == null)
     {
-      if (this.kWD != null) {
-        this.kQN.size();
+      if (this.nuF != null) {
+        this.noR.size();
       }
       return;
     }
-    this.kQN = paramLinkedList;
-    if (this.kWD != null) {
-      this.kQN.size();
+    this.noR = paramLinkedList;
+    if (this.nuF != null) {
+      this.noR.size();
     }
     super.notifyDataSetChanged();
   }
   
   public void clear()
   {
-    if (this.kQN != null) {
-      this.kQN.clear();
+    if (this.noR != null) {
+      this.noR.clear();
     }
-    if (this.kWF != null) {
-      this.kWF.a(new a.1(this));
+    if (this.nuH != null) {
+      this.nuH.a(new a.1(this));
     }
-    this.kWF = null;
-    com.tencent.mm.plugin.z.a.brn().d(this.kWI);
+    this.nuH = null;
+    com.tencent.mm.plugin.s.a.cac().remove(this.nuK);
   }
   
   public int getCount()
   {
-    return this.kQN.size();
+    return this.noR.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.kQN.get(paramInt);
+    return this.noR.get(paramInt);
   }
   
   public long getItemId(int paramInt)

@@ -3,6 +3,7 @@ package com.tencent.mm.ui.conversation;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingCheckUnProcessWalletConvUI$2
   implements View.OnTouchListener
@@ -11,15 +12,18 @@ final class SettingCheckUnProcessWalletConvUI$2
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(34611);
     switch (paramMotionEvent.getAction())
     {
-    default: 
-      return false;
     }
-    this.vUd.XM();
-    SettingCheckUnProcessWalletConvUI.a(this.vUd)[0] = ((int)paramMotionEvent.getRawX());
-    SettingCheckUnProcessWalletConvUI.a(this.vUd)[1] = ((int)paramMotionEvent.getRawY());
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(34611);
+      return false;
+      this.AlZ.hideVKB();
+      SettingCheckUnProcessWalletConvUI.a(this.AlZ)[0] = ((int)paramMotionEvent.getRawX());
+      SettingCheckUnProcessWalletConvUI.a(this.AlZ)[1] = ((int)paramMotionEvent.getRawY());
+    }
   }
 }
 

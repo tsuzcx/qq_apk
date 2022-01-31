@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.audio;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.p;
-import com.tencent.mm.modelvoice.m;
+import com.tencent.mm.model.q;
+import com.tencent.mm.modelvoice.o;
 import com.tencent.mm.plugin.audio.a.a;
 
 public class PluginVoice
@@ -12,9 +13,11 @@ public class PluginVoice
 {
   public void execute(g paramg)
   {
-    if (paramg.Ex()) {
-      pin(new p(m.class));
+    AppMethodBeat.i(116801);
+    if (paramg.SD()) {
+      pin(new q(o.class));
     }
+    AppMethodBeat.o(116801);
   }
   
   public String name()

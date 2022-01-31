@@ -1,17 +1,23 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.walletlock.c.g;
+import com.tencent.mm.plugin.walletlock.fingerprint.a.a;
 
 final class FingerprintWalletLockUI$7
-  implements View.OnClickListener
+  implements Runnable
 {
   FingerprintWalletLockUI$7(FingerprintWalletLockUI paramFingerprintWalletLockUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    FingerprintWalletLockUI.bXZ();
-    FingerprintWalletLockUI.a(this.qPy, "user cancel setting fingerprint lock");
+    AppMethodBeat.i(51504);
+    a.cXx();
+    a.afY(FingerprintWalletLockUI.l(this.uEG));
+    a.ni(-1L);
+    g localg = g.uGh;
+    g.cYh();
+    AppMethodBeat.o(51504);
   }
 }
 

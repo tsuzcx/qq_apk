@@ -13,8 +13,10 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.graphics.Point;
 import android.net.Uri;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.WebView;
 import java.io.File;
 import java.net.URLEncoder;
@@ -27,29 +29,39 @@ public class d
 {
   public static int a(Context paramContext, String paramString, HashMap<String, String> paramHashMap, WebView paramWebView)
   {
-    if (paramContext == null) {
+    AppMethodBeat.i(65155);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(65155);
       return 3;
     }
     Object localObject1 = paramString;
     if (!a(paramString)) {
-      localObject1 = "http://" + paramString;
+      localObject1 = "http://".concat(String.valueOf(paramString));
     }
     try
     {
       localObject1 = Uri.parse((String)localObject1);
-      if (localObject1 == null) {
+      if (localObject1 == null)
+      {
+        AppMethodBeat.o(65155);
         return 2;
       }
     }
     catch (Exception paramContext)
     {
+      AppMethodBeat.o(65155);
       return 2;
     }
     Object localObject2 = a(paramContext);
-    if (((d.a)localObject2).a == -1) {
+    if (((d.a)localObject2).a == -1)
+    {
+      AppMethodBeat.o(65155);
       return 4;
     }
-    if ((((d.a)localObject2).a == 2) && (((d.a)localObject2).b < 33)) {
+    if ((((d.a)localObject2).a == 2) && (((d.a)localObject2).b < 33))
+    {
+      AppMethodBeat.o(65155);
       return 5;
     }
     paramString = new Intent("android.intent.action.VIEW");
@@ -58,7 +70,7 @@ public class d
         paramString.setClassName("com.tencent.mtt", "com.tencent.mtt.MainActivity");
       }
     }
-    label595:
+    label628:
     for (;;)
     {
       paramString.setData((Uri)localObject1);
@@ -84,7 +96,7 @@ public class d
                   break;
                 }
                 if (((d.a)localObject2).b < 46) {
-                  break label595;
+                  break label628;
                 }
                 paramString = new Intent("com.tencent.QQBrowser.action.VIEW");
                 localObject2 = a(paramContext, (Uri)localObject1);
@@ -100,7 +112,7 @@ public class d
                     break;
                   }
                   if (((d.a)localObject2).b != 2) {
-                    break label595;
+                    break label628;
                   }
                   paramString.setClassName("com.tencent.qbx5", "com.tencent.qbx5.SplashActivity");
                   break;
@@ -113,7 +125,7 @@ public class d
                     break;
                   }
                   if (((d.a)localObject2).b <= 6) {
-                    break label595;
+                    break label628;
                   }
                   paramString = new Intent("com.tencent.QQBrowser.action.VIEW");
                   localObject2 = a(paramContext, (Uri)localObject1);
@@ -143,10 +155,12 @@ public class d
           paramString.putExtra("ContentSize", new Point(paramWebView.getContentWidth(), paramWebView.getContentHeight()));
         }
         paramContext.startActivity(paramString);
+        AppMethodBeat.o(65155);
         return 0;
       }
       catch (ActivityNotFoundException paramContext)
       {
+        AppMethodBeat.o(65155);
         return 4;
       }
     }
@@ -155,6 +169,7 @@ public class d
   public static int a(Context paramContext, String paramString1, HashMap<String, String> paramHashMap, String paramString2, WebView paramWebView)
   {
     j = 0;
+    AppMethodBeat.i(65154);
     StringBuilder localStringBuilder = new StringBuilder();
     for (;;)
     {
@@ -199,16 +214,29 @@ public class d
     if (i != 0)
     {
       localObject = ",encoded=1";
-      localStringBuilder.append("mttbrowser://url=").append(paramString1).append(",product=TBS,packagename=").append(paramContext.getPackageName()).append(",from=").append(paramString2).append(",version=3.6.0.1350").append((String)localObject);
-      return a(paramContext, localStringBuilder.toString(), paramHashMap, paramWebView);
+      localStringBuilder.append("mttbrowser://url=").append(paramString1).append(",product=TBS,packagename=").append(paramContext.getPackageName()).append(",from=").append(paramString2).append(",version=4.3.0.1114").append((String)localObject);
+      i = a(paramContext, localStringBuilder.toString(), paramHashMap, paramWebView);
+      AppMethodBeat.o(65154);
+      return i;
     }
+  }
+  
+  private static Uri a(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(65152);
+    paramContext = Uri.fromFile(new File(paramString));
+    AppMethodBeat.o(65152);
+    return paramContext;
   }
   
   public static d.a a(Context paramContext)
   {
+    AppMethodBeat.i(65158);
     boolean bool = paramContext.getApplicationContext().getSharedPreferences("x5_proxy_setting", 0).getBoolean("qb_install_status", false);
     locala = new d.a();
-    if (bool) {
+    if (bool)
+    {
+      AppMethodBeat.o(65158);
       return locala;
     }
     for (;;)
@@ -239,6 +267,7 @@ public class d
               locala.c += ((PackageInfo)localObject6).versionName.replaceAll("\\.", "");
               localObject1 = localObject6;
               locala.d = ((PackageInfo)localObject6).versionName.replaceAll("\\.", "");
+              AppMethodBeat.o(65158);
               return locala;
             }
           }
@@ -348,15 +377,19 @@ public class d
       locala.c += paramContext.versionName.replaceAll("\\.", "");
       locala.d = paramContext.versionName.replaceAll("\\.", "");
     }
+    AppMethodBeat.o(65158);
     return locala;
   }
   
   private static d.b a(Context paramContext, Uri paramUri)
   {
+    AppMethodBeat.i(65157);
     Object localObject = new Intent("com.tencent.QQBrowser.action.VIEW");
     ((Intent)localObject).setData(paramUri);
     paramUri = paramContext.getPackageManager().queryIntentActivities((Intent)localObject, 0);
-    if (paramUri.size() <= 0) {
+    if (paramUri.size() <= 0)
+    {
+      AppMethodBeat.o(65157);
       return null;
     }
     paramContext = new d.b(null);
@@ -369,6 +402,7 @@ public class d
       {
         paramContext.a = ((ResolveInfo)localObject).activityInfo.name;
         paramContext.b = ((ResolveInfo)localObject).activityInfo.packageName;
+        AppMethodBeat.o(65157);
         return paramContext;
       }
       if (str.contains("com.tencent.qbx"))
@@ -377,36 +411,42 @@ public class d
         paramContext.b = ((ResolveInfo)localObject).activityInfo.packageName;
       }
     }
+    AppMethodBeat.o(65157);
     return paramContext;
   }
   
   public static boolean a(Context paramContext, long paramLong1, long paramLong2)
   {
+    boolean bool2 = true;
+    AppMethodBeat.i(65162);
     paramContext = a(paramContext);
-    boolean bool = false;
+    boolean bool1 = false;
     try
     {
       long l = Long.valueOf(paramContext.d).longValue();
       if (l >= paramLong1) {
-        bool = true;
+        bool1 = true;
       }
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      label30:
-      break label30;
+      for (;;) {}
     }
-    if (paramContext.b >= paramLong2) {
-      return true;
+    if (paramContext.b >= paramLong2)
+    {
+      bool1 = bool2;
+      AppMethodBeat.o(65162);
+      return bool1;
     }
-    return bool;
   }
   
   public static boolean a(Context paramContext, String paramString1, int paramInt, String paramString2, HashMap<String, String> paramHashMap, Bundle paramBundle)
   {
+    AppMethodBeat.i(65151);
+    Intent localIntent;
     try
     {
-      Intent localIntent = new Intent("com.tencent.QQBrowser.action.sdk.document");
+      localIntent = new Intent("com.tencent.QQBrowser.action.sdk.document");
       if (paramHashMap != null)
       {
         Object localObject = paramHashMap.keySet();
@@ -423,33 +463,47 @@ public class d
           }
         }
       }
-      paramHashMap = new File(paramString1);
-      localIntent.putExtra("key_reader_sdk_id", 3);
-      localIntent.putExtra("key_reader_sdk_type", paramInt);
-      if (paramInt == 0) {
-        localIntent.putExtra("key_reader_sdk_path", paramString1);
-      }
-      for (;;)
-      {
-        localIntent.putExtra("key_reader_sdk_format", paramString2);
-        localIntent.setDataAndType(Uri.fromFile(paramHashMap), "mtt/" + paramString2);
-        localIntent.putExtra("loginType", d(paramContext.getApplicationContext()));
-        if (paramBundle != null) {
-          localIntent.putExtra("key_reader_sdk_extrals", paramBundle);
-        }
-        paramContext.startActivity(localIntent);
-        return true;
-        if (paramInt == 1) {
-          localIntent.putExtra("key_reader_sdk_url", paramString1);
-        }
-      }
+      new File(paramString1);
+    }
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(65151);
       return false;
     }
-    catch (Exception paramContext) {}
+    localIntent.putExtra("key_reader_sdk_id", 3);
+    localIntent.putExtra("key_reader_sdk_type", paramInt);
+    if (paramInt == 0) {
+      localIntent.putExtra("key_reader_sdk_path", paramString1);
+    }
+    for (;;)
+    {
+      localIntent.putExtra("key_reader_sdk_format", paramString2);
+      if ((paramContext != null) && (paramContext.getApplicationInfo().targetSdkVersion >= 24) && (Build.VERSION.SDK_INT >= 24)) {
+        localIntent.addFlags(1);
+      }
+      paramString1 = a(paramContext, paramString1);
+      if (paramString1 != null) {
+        break;
+      }
+      AppMethodBeat.o(65151);
+      return false;
+      if (paramInt == 1) {
+        localIntent.putExtra("key_reader_sdk_url", paramString1);
+      }
+    }
+    localIntent.setDataAndType(paramString1, "mtt/".concat(String.valueOf(paramString2)));
+    localIntent.putExtra("loginType", d(paramContext.getApplicationContext()));
+    if (paramBundle != null) {
+      localIntent.putExtra("key_reader_sdk_extrals", paramBundle);
+    }
+    paramContext.startActivity(localIntent);
+    AppMethodBeat.o(65151);
+    return true;
   }
   
   public static boolean a(Context paramContext, String paramString, HashMap<String, String> paramHashMap)
   {
+    AppMethodBeat.i(65153);
     Object localObject = Uri.parse(paramString);
     paramString = new Intent("android.intent.action.VIEW");
     paramString.setFlags(268435456);
@@ -485,11 +539,16 @@ public class d
         {
           paramString.setComponent(null);
           paramContext.startActivity(paramString);
+          AppMethodBeat.o(65153);
           return true;
         }
-        catch (Throwable paramContext) {}
+        catch (Throwable paramContext)
+        {
+          int i;
+          AppMethodBeat.o(65153);
+        }
         paramHashMap = paramHashMap;
-        int i = 0;
+        i = 0;
       }
     }
     if (i == 0) {}
@@ -498,69 +557,87 @@ public class d
   
   private static boolean a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    int i;
-    int j;
-    do
+    AppMethodBeat.i(65159);
+    if ((paramString == null) || (paramString.length() == 0))
     {
+      AppMethodBeat.o(65159);
       return false;
-      paramString = paramString.trim();
-      i = paramString.toLowerCase().indexOf("://");
-      j = paramString.toLowerCase().indexOf('.');
-    } while ((i > 0) && (j > 0) && (i > j));
-    return paramString.toLowerCase().contains("://");
+    }
+    paramString = paramString.trim();
+    int i = paramString.toLowerCase().indexOf("://");
+    int j = paramString.toLowerCase().indexOf('.');
+    if ((i > 0) && (j > 0) && (i > j))
+    {
+      AppMethodBeat.o(65159);
+      return false;
+    }
+    boolean bool = paramString.toLowerCase().contains("://");
+    AppMethodBeat.o(65159);
+    return bool;
   }
   
   public static boolean b(Context paramContext)
   {
-    return a(paramContext).a != -1;
+    AppMethodBeat.i(65160);
+    if (a(paramContext).a == -1)
+    {
+      AppMethodBeat.o(65160);
+      return false;
+    }
+    AppMethodBeat.o(65160);
+    return true;
   }
   
   public static boolean c(Context paramContext)
   {
+    boolean bool2 = true;
+    AppMethodBeat.i(65161);
     paramContext = a(paramContext);
-    boolean bool = false;
+    boolean bool1 = false;
     try
     {
       long l = Long.valueOf(paramContext.d).longValue();
       if (l >= 6001500L) {
-        bool = true;
+        bool1 = true;
       }
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      label28:
-      break label28;
+      for (;;) {}
     }
-    if (paramContext.b >= 601500) {
-      return true;
+    if (paramContext.b >= 601500)
+    {
+      bool1 = bool2;
+      AppMethodBeat.o(65161);
+      return bool1;
     }
-    return bool;
   }
   
   private static int d(Context paramContext)
   {
+    AppMethodBeat.i(65156);
     int i = 26;
     paramContext = paramContext.getApplicationInfo().processName;
     if (paramContext.equals("com.tencent.mobileqq")) {
       i = 13;
     }
-    do
+    for (;;)
     {
+      AppMethodBeat.o(65156);
       return i;
       if (paramContext.equals("com.qzone")) {
-        return 14;
+        i = 14;
+      } else if (paramContext.equals("com.tencent.WBlog")) {
+        i = 15;
+      } else if (paramContext.equals("com.tencent.mm")) {
+        i = 24;
       }
-      if (paramContext.equals("com.tencent.WBlog")) {
-        return 15;
-      }
-    } while (!paramContext.equals("com.tencent.mm"));
-    return 24;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.d
  * JD-Core Version:    0.7.0.1
  */

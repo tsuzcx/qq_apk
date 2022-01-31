@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.a;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.b;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.c;
@@ -14,6 +15,7 @@ final class a$1
 {
   a$1()
   {
+    AppMethodBeat.i(129491);
     d(d.class, 20);
     d(c.class, 40);
     d(e.class, 80);
@@ -21,6 +23,7 @@ final class a$1
     d(f.class, 120);
     d(h.class, 150);
     d(b.class, 160);
+    AppMethodBeat.o(129491);
   }
 }
 

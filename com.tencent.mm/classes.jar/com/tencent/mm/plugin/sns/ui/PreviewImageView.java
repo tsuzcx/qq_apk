@@ -10,12 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -28,51 +25,76 @@ public class PreviewImageView
   implements v
 {
   private final Context context;
-  private List<String> list = new ArrayList();
-  private TableLayout oSr;
-  private final Map<Integer, View> oSs = new HashMap();
-  private final Map<Integer, TableRow> oSt = new HashMap();
-  private final int oSu = 4;
-  private HashMap<String, Bitmap> oSv = new HashMap();
-  private v.a oSw;
-  private boolean oSx = true;
-  private boolean oSy = false;
+  private List<String> list;
+  private TableLayout rKk;
+  private final Map<Integer, View> rKl;
+  private final Map<Integer, TableRow> rKm;
+  private final int rKn;
+  private HashMap<String, Bitmap> rKo;
+  private v.a rKp;
+  private boolean rKq;
+  private boolean rKr;
   
   public PreviewImageView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(38516);
+    this.list = new ArrayList();
+    this.rKl = new HashMap();
+    this.rKm = new HashMap();
+    this.rKo = new HashMap();
+    this.rKn = 4;
+    this.rKq = true;
+    this.rKr = false;
     this.context = paramContext;
     init();
+    AppMethodBeat.o(38516);
   }
   
   public PreviewImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(38515);
+    this.list = new ArrayList();
+    this.rKl = new HashMap();
+    this.rKm = new HashMap();
+    this.rKo = new HashMap();
+    this.rKn = 4;
+    this.rKq = true;
+    this.rKr = false;
     this.context = paramContext;
     init();
+    AppMethodBeat.o(38515);
   }
   
   private void init()
   {
-    this.oSr = ((TableLayout)LayoutInflater.from(this.context).inflate(i.g.sns_preview_view, this, true).findViewById(i.f.content));
+    AppMethodBeat.i(38517);
+    this.rKk = ((TableLayout)LayoutInflater.from(this.context).inflate(2130970856, this, true).findViewById(2131820946));
+    AppMethodBeat.o(38517);
   }
   
   public final void clean()
   {
-    this.oSy = true;
-    Iterator localIterator = this.oSv.values().iterator();
+    AppMethodBeat.i(38519);
+    this.rKr = true;
+    Iterator localIterator = this.rKo.values().iterator();
     while (localIterator.hasNext())
     {
       Bitmap localBitmap = (Bitmap)localIterator.next();
-      if (i.s(localBitmap)) {
+      if (i.A(localBitmap)) {
         localBitmap.recycle();
       }
     }
+    AppMethodBeat.o(38519);
   }
   
   public int getCount()
   {
-    return this.oSs.size();
+    AppMethodBeat.i(38518);
+    int i = this.rKl.size();
+    AppMethodBeat.o(38518);
+    return i;
   }
   
   public View getView()
@@ -82,38 +104,40 @@ public class PreviewImageView
   
   public void setImageClick(v.a parama)
   {
-    this.oSw = parama;
+    this.rKp = parama;
   }
   
   public void setIsShowAddImage(boolean paramBoolean)
   {
-    this.oSx = paramBoolean;
+    this.rKq = paramBoolean;
   }
   
   public final void setList$22875ea3(List<String> paramList)
   {
+    AppMethodBeat.i(38520);
     long l = System.currentTimeMillis();
-    if (paramList == null) {
+    if (paramList == null)
+    {
+      AppMethodBeat.o(38520);
       return;
     }
     this.list = paramList;
     int i = 0;
-    this.oSr.removeAllViews();
+    this.rKk.removeAllViews();
     int m = paramList.size() + 1;
     int j = 0;
-    label36:
     TableRow localTableRow;
     if (i < m)
     {
-      localTableRow = (TableRow)this.oSt.get(Integer.valueOf(j));
+      localTableRow = (TableRow)this.rKm.get(Integer.valueOf(j));
       if (localTableRow != null) {
-        break label521;
+        break label533;
       }
       localTableRow = new TableRow(this.context);
-      this.oSt.put(Integer.valueOf(j), localTableRow);
+      this.rKm.put(Integer.valueOf(j), localTableRow);
     }
-    label392:
-    label521:
+    label398:
+    label533:
     for (;;)
     {
       localTableRow.removeAllViews();
@@ -126,41 +150,40 @@ public class PreviewImageView
       for (;;)
       {
         if (localTableRow.getChildCount() > 0) {
-          this.oSr.addView(localTableRow);
+          this.rKk.addView(localTableRow);
         }
-        y.d("MicroMsg.PreviewImageView", "initlist time : " + (System.currentTimeMillis() - l));
+        ab.d("MicroMsg.PreviewImageView", "initlist time : " + (System.currentTimeMillis() - l));
         j += 1;
-        break label36;
         break;
-        Object localObject2 = (View)this.oSs.get(Integer.valueOf(i));
+        Object localObject2 = (View)this.rKl.get(Integer.valueOf(i));
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = View.inflate(this.context, i.g.sns_preview_view_item, null);
-          this.oSs.put(Integer.valueOf(i), localObject1);
+          localObject1 = View.inflate(this.context, 2130970857, null);
+          this.rKl.put(Integer.valueOf(i), localObject1);
         }
-        label242:
+        label251:
         ImageView localImageView;
         if (i == m - 1)
         {
           localObject2 = "";
-          localImageView = (ImageView)((View)localObject1).findViewById(i.f.iv);
+          localImageView = (ImageView)((View)localObject1).findViewById(2131822812);
           if (i != m - 1) {
-            break label392;
+            break label398;
           }
-          if (this.oSx)
+          if (this.rKq)
           {
-            localImageView.setBackgroundResource(i.e.sns_add_item);
-            localImageView.setContentDescription(getContext().getString(i.j.sns_add_photo));
+            localImageView.setBackgroundResource(2130840378);
+            localImageView.setContentDescription(getContext().getString(2131303770));
             localImageView.setImageDrawable(null);
-            label299:
-            if (this.oSw != null)
+            label305:
+            if (this.rKp != null)
             {
               if (i != m - 1) {
-                break label488;
+                break label494;
               }
               ((View)localObject1).setTag(Integer.valueOf(-1));
-              ((View)localObject1).setOnClickListener(this.oSw.oPK);
+              ((View)localObject1).setOnClickListener(this.rKp.rHw);
               ((View)localObject1).setClickable(true);
             }
           }
@@ -173,24 +196,26 @@ public class PreviewImageView
           k += 1;
           break;
           localObject2 = (String)paramList.get(i);
-          break label242;
+          break label251;
           localImageView.setBackgroundDrawable(null);
           localImageView.setTag(localObject2);
-          localImageView.setContentDescription(getContext().getString(i.j.sns_img));
-          Bitmap localBitmap = (Bitmap)this.oSv.get(localObject2);
-          if (!i.s(localBitmap))
+          localImageView.setContentDescription(getContext().getString(2131303840));
+          Bitmap localBitmap = (Bitmap)this.rKo.get(localObject2);
+          if (!i.A(localBitmap))
           {
-            y.d("MicroMsg.PreviewImageView", "bm is null");
-            new PreviewImageView.a(this, localImageView, (String)localObject2).p(new String[] { "" });
-            break label299;
+            ab.d("MicroMsg.PreviewImageView", "bm is null");
+            new PreviewImageView.a(this, localImageView, (String)localObject2).v(new String[] { "" });
+            break label305;
           }
           localImageView.setImageBitmap(localBitmap);
-          break label299;
-          label488:
+          break label305;
+          label494:
           ((View)localObject1).setTag(Integer.valueOf(i));
-          ((View)localObject1).setOnClickListener(this.oSw.oPK);
+          ((View)localObject1).setOnClickListener(this.rKp.rHw);
           ((View)localObject1).setClickable(true);
         }
+        AppMethodBeat.o(38520);
+        return;
       }
     }
   }

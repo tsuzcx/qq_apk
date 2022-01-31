@@ -1,29 +1,36 @@
 package com.tencent.mm.plugin.music.f;
 
-import com.tencent.mm.sdk.platformtools.at.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ax.a;
 
 final class a$1
-  implements at.a
+  implements ax.a
 {
   a$1(a parama) {}
   
-  public final void fQ(int paramInt)
+  public final void ie(int paramInt)
   {
+    AppMethodBeat.i(137547);
     switch (paramInt)
     {
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-      } while (!this.mAw.mxm);
-      this.mAw.mxm = false;
-      this.mAw.resume();
+      AppMethodBeat.o(137547);
       return;
-    } while (!this.mAw.Pu());
-    this.mAw.mxm = true;
-    this.mAw.pause();
+      if (this.paC.oXj)
+      {
+        this.paC.oXj = false;
+        this.paC.resume();
+        AppMethodBeat.o(137547);
+        return;
+        if (this.paC.aiw())
+        {
+          this.paC.oXj = true;
+          this.paC.pause();
+        }
+      }
+    }
   }
 }
 

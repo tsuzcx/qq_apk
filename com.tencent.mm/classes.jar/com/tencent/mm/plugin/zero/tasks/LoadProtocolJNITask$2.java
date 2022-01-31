@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.zero.tasks;
 
 import com.tencent.mars.xlog.Xlog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.MMProtocalJni;
 
 class LoadProtocolJNITask$2
@@ -10,7 +11,9 @@ class LoadProtocolJNITask$2
   
   public void run()
   {
+    AppMethodBeat.i(58782);
     MMProtocalJni.setProtocalJniLogLevel(new Xlog().getLogLevel());
+    AppMethodBeat.o(58782);
   }
 }
 

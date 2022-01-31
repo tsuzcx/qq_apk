@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,11 +16,12 @@ final class ag$4
   
   public final void run()
   {
+    AppMethodBeat.i(38480);
     long l = System.currentTimeMillis();
-    Iterator localIterator = this.oSk.oSd.oSo.iterator();
+    Iterator localIterator = this.rKd.rJW.rKh.iterator();
     Exif localExif;
     int i;
-    label73:
+    label78:
     String str2;
     int k;
     int j;
@@ -34,7 +36,7 @@ final class ag$4
         k = localExif.imageWidth;
         j = localExif.imageHeight;
         if ((k > 0) && (j > 0)) {
-          break label225;
+          break label235;
         }
         BitmapFactory.Options localOptions = new BitmapFactory.Options();
         localOptions.inJustDecodeBounds = true;
@@ -43,15 +45,16 @@ final class ag$4
         j = localOptions.outHeight;
       }
     }
-    label225:
+    label235:
     for (;;)
     {
       int m = (int)localExif.getUxtimeDatatimeOriginal();
-      h.nFQ.f(15523, new Object[] { Integer.valueOf(i), str2, Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(m) });
+      h.qsU.e(15523, new Object[] { Integer.valueOf(i), str2, Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(m) });
       break;
       i = 0;
-      break label73;
-      y.d("MicroMsg.PicWidget", "report photo info cost " + (System.currentTimeMillis() - l));
+      break label78;
+      ab.d("MicroMsg.PicWidget", "report photo info cost " + (System.currentTimeMillis() - l));
+      AppMethodBeat.o(38480);
       return;
     }
   }

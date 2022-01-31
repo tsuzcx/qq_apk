@@ -1,20 +1,33 @@
 package com.tencent.mm.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 
 public final class b
 {
-  public String dYa;
-  public String dYb;
-  public String dYc;
-  public String dYd;
-  public HashMap<String, e> dYe = new HashMap();
+  public String ewh;
+  public String fof;
+  public String fog;
+  public String foh;
+  public HashMap<String, e> foi;
   
-  public final e iX(String paramString)
+  public b()
   {
-    if ((this.dYe != null) && (this.dYe.containsKey(paramString))) {
-      return (e)this.dYe.get(paramString);
+    AppMethodBeat.i(118140);
+    this.foi = new HashMap();
+    AppMethodBeat.o(118140);
+  }
+  
+  public final e pL(String paramString)
+  {
+    AppMethodBeat.i(118141);
+    if ((this.foi != null) && (this.foi.containsKey(paramString)))
+    {
+      paramString = (e)this.foi.get(paramString);
+      AppMethodBeat.o(118141);
+      return paramString;
     }
+    AppMethodBeat.o(118141);
     return null;
   }
 }

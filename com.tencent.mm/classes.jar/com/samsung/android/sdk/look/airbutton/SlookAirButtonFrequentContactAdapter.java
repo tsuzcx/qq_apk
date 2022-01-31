@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import com.samsung.android.sdk.look.Slook;
 import com.samsung.android.sdk.look.SlookResourceManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public final class SlookAirButtonFrequentContactAdapter
@@ -28,24 +29,39 @@ public final class SlookAirButtonFrequentContactAdapter
   public static final String PHOTO = "photo";
   public static final String PHOTO_URI = "photo_uri";
   private static final String TAG = "AirButtonFrequentContactAdapter";
-  private boolean DEBUG = false;
-  private final String EXTRA_CONDITION = "extra_condition";
-  private final String IS_PRIVATE = "is_private";
+  private boolean DEBUG;
+  private final String EXTRA_CONDITION;
+  private final String IS_PRIVATE;
   private Context mContext;
-  private int mCount = 0;
-  private ArrayList<Bundle> mData = new ArrayList();
-  private boolean mIsShowing = false;
-  private int mMaxCount = 15;
-  private boolean mNeedUpdate = true;
+  private int mCount;
+  private ArrayList<Bundle> mData;
+  private boolean mIsShowing;
+  private int mMaxCount;
+  private boolean mNeedUpdate;
   private StringBuilder mSelectionSb;
-  private Slook mSlook = new Slook();
+  private Slook mSlook;
   
   public SlookAirButtonFrequentContactAdapter(View paramView, Bundle paramBundle)
   {
-    if ((paramView == null) && (paramBundle == null)) {
-      throw new IllegalArgumentException("You should set the View and Bundle in Param");
+    AppMethodBeat.i(117235);
+    this.IS_PRIVATE = "is_private";
+    this.EXTRA_CONDITION = "extra_condition";
+    this.mData = new ArrayList();
+    this.mSlook = new Slook();
+    this.mMaxCount = 15;
+    this.DEBUG = false;
+    this.mIsShowing = false;
+    this.mNeedUpdate = true;
+    this.mCount = 0;
+    if ((paramView == null) && (paramBundle == null))
+    {
+      paramView = new IllegalArgumentException("You should set the View and Bundle in Param");
+      AppMethodBeat.o(117235);
+      throw paramView;
     }
-    if (!isSupport(1)) {
+    if (!isSupport(1))
+    {
+      AppMethodBeat.o(117235);
       return;
     }
     if (paramBundle != null)
@@ -53,7 +69,7 @@ public final class SlookAirButtonFrequentContactAdapter
       String str = paramBundle.getString("MIME_TYPE");
       this.mSelectionSb = new StringBuilder();
       if (str == null) {
-        break label286;
+        break label308;
       }
       this.mSelectionSb.append("view_data.");
       this.mSelectionSb.append("mimetype");
@@ -61,7 +77,7 @@ public final class SlookAirButtonFrequentContactAdapter
       this.mSelectionSb.append(str);
       this.mSelectionSb.append("'");
     }
-    label286:
+    label308:
     for (int i = 1;; i = 0)
     {
       boolean bool = paramBundle.getBoolean("PRIVATE", false);
@@ -82,93 +98,113 @@ public final class SlookAirButtonFrequentContactAdapter
       }
       this.mMaxCount = SlookResourceManager.getInt(2);
       this.DEBUG = true;
-      if (paramView == null) {
-        break;
+      if (paramView != null)
+      {
+        this.mContext = paramView.getContext();
+        setEmptyText(SlookResourceManager.getText(this.mContext, 0));
       }
-      this.mContext = paramView.getContext();
-      setEmptyText(SlookResourceManager.getText(this.mContext, 0));
+      AppMethodBeat.o(117235);
       return;
     }
   }
   
   private boolean isSupport(int paramInt)
   {
-    return this.mSlook.isFeatureEnabled(1);
+    AppMethodBeat.i(117241);
+    if (this.mSlook.isFeatureEnabled(1))
+    {
+      AppMethodBeat.o(117241);
+      return true;
+    }
+    AppMethodBeat.o(117241);
+    return false;
   }
   
   private void updateData()
   {
+    Object localObject4;
+    Object localObject3;
     for (;;)
     {
       try
       {
-        if (this.mNeedUpdate)
+        AppMethodBeat.i(117240);
+        if ((!this.mNeedUpdate) || (this.mIsShowing))
         {
-          bool = this.mIsShowing;
-          if (!bool) {}
-        }
-        else
-        {
+          AppMethodBeat.o(117240);
           return;
         }
         this.mNeedUpdate = false;
         this.mData.clear();
-        Object localObject4 = Uri.parse("content://com.android.contacts/contacts/frequent_data");
+        localObject4 = Uri.parse("content://com.android.contacts/contacts/frequent_data");
         ContentResolver localContentResolver = this.mContext.getContentResolver();
         if (this.mSelectionSb != null)
         {
           Object localObject1 = this.mSelectionSb.toString();
           String str = "_id LIMIT " + this.mMaxCount;
           localObject1 = localContentResolver.query((Uri)localObject4, new String[] { "_id", "display_name", "photo_uri", "data15", "lookup", "mimetype", "data1", "is_private" }, (String)localObject1, null, str);
-          if (localObject1 == null) {
-            continue;
+          if (localObject1 != null) {
+            break;
           }
-          try
+          AppMethodBeat.o(117240);
+        }
+        else
+        {
+          localObject3 = null;
+        }
+      }
+      finally {}
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        try
+        {
+          if (localObject3.moveToNext())
           {
-            if (!((Cursor)localObject1).moveToNext()) {
-              break label316;
-            }
             localObject4 = new Bundle();
-            ((Bundle)localObject4).putInt("id", ((Cursor)localObject1).getInt(0));
-            ((Bundle)localObject4).putString("display_name", ((Cursor)localObject1).getString(1));
-            ((Bundle)localObject4).putString("photo_uri", ((Cursor)localObject1).getString(2));
-            ((Bundle)localObject4).putByteArray("photo", ((Cursor)localObject1).getBlob(3));
-            ((Bundle)localObject4).putString("lookup_key", ((Cursor)localObject1).getString(4));
-            ((Bundle)localObject4).putString("MIME_TYPE", ((Cursor)localObject1).getString(5));
-            ((Bundle)localObject4).putString("data", ((Cursor)localObject1).getString(6));
-            if (((Cursor)localObject1).getInt(7) != 1) {
-              break label311;
+            ((Bundle)localObject4).putInt("id", localObject3.getInt(0));
+            ((Bundle)localObject4).putString("display_name", localObject3.getString(1));
+            ((Bundle)localObject4).putString("photo_uri", localObject3.getString(2));
+            ((Bundle)localObject4).putByteArray("photo", localObject3.getBlob(3));
+            ((Bundle)localObject4).putString("lookup_key", localObject3.getString(4));
+            ((Bundle)localObject4).putString("MIME_TYPE", localObject3.getString(5));
+            ((Bundle)localObject4).putString("data", localObject3.getString(6));
+            if (localObject3.getInt(7) != 1) {
+              break label370;
             }
             bool = true;
             ((Bundle)localObject4).putBoolean("is_private", bool);
             this.mData.add(localObject4);
             continue;
-            localObject2 = finally;
           }
-          finally
-          {
-            if (localObject1 != null) {
-              ((Cursor)localObject1).close();
-            }
+          if (localObject3 == null) {
+            break label342;
           }
         }
-        localObject3 = null;
-      }
-      finally {}
-      Object localObject3;
-      continue;
-      label311:
-      boolean bool = false;
-      continue;
-      label316:
-      if (localObject3 != null) {
+        finally
+        {
+          if (localObject3 != null) {
+            localObject3.close();
+          }
+          AppMethodBeat.o(117240);
+        }
         localObject3.close();
+        try
+        {
+          label342:
+          this.mCount = this.mData.size();
+          AppMethodBeat.o(117240);
+        }
+        catch (NoSuchMethodError localNoSuchMethodError)
+        {
+          AppMethodBeat.o(117240);
+        }
       }
-      try
-      {
-        this.mCount = this.mData.size();
-      }
-      catch (NoSuchMethodError localNoSuchMethodError) {}
+      break;
+      label370:
+      boolean bool = false;
     }
   }
   
@@ -179,6 +215,7 @@ public final class SlookAirButtonFrequentContactAdapter
   
   public final SlookAirButtonAdapter.AirButtonItem getItem(int paramInt)
   {
+    AppMethodBeat.i(117239);
     Bundle localBundle = (Bundle)this.mData.get(paramInt);
     String str1 = localBundle.getString("display_name");
     String str2 = localBundle.getString("data");
@@ -186,32 +223,41 @@ public final class SlookAirButtonFrequentContactAdapter
     if (localObject == null) {
       paramInt = SlookResourceManager.getDrawableId(1);
     }
-    for (localObject = this.mContext.getResources().getDrawable(paramInt);; localObject = new BitmapDrawable(this.mContext.getResources(), BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length))) {
-      return new SlookAirButtonAdapter.AirButtonItem((Drawable)localObject, str1, str2, localBundle);
+    for (localObject = this.mContext.getResources().getDrawable(paramInt);; localObject = new BitmapDrawable(this.mContext.getResources(), BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length)))
+    {
+      localObject = new SlookAirButtonAdapter.AirButtonItem((Drawable)localObject, str1, str2, localBundle);
+      AppMethodBeat.o(117239);
+      return localObject;
     }
   }
   
   public final void onDismiss(View paramView)
   {
+    AppMethodBeat.i(117238);
     this.mIsShowing = false;
     this.mNeedUpdate = true;
     this.mData.clear();
     super.onDismiss(paramView);
+    AppMethodBeat.o(117238);
   }
   
   public final void onHide(View paramView)
   {
+    AppMethodBeat.i(117237);
     this.mIsShowing = false;
     this.mNeedUpdate = true;
     this.mData.clear();
     super.onHide(paramView);
+    AppMethodBeat.o(117237);
   }
   
   public final void onShow(View paramView)
   {
+    AppMethodBeat.i(117236);
     updateData();
     this.mIsShowing = true;
     super.onShow(paramView);
+    AppMethodBeat.o(117236);
   }
 }
 

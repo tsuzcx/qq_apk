@@ -1,9 +1,9 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
 import android.database.Cursor;
@@ -12,18 +12,17 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
 import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.plugin.comm.a.d;
-import com.tencent.mm.plugin.comm.a.h;
-import com.tencent.mm.plugin.z.a.a.a;
-import com.tencent.mm.pluginsdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.s.a.a.a;
+import com.tencent.mm.pluginsdk.c.a;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,301 +31,330 @@ import java.util.Map;
 
 public final class g
 {
-  private static List<f> DJ(int paramInt)
+  public static int LB(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (a.a.bru() == null) {
-      y.e("MicroMsg.AppInfoLogic", "getServiceByAppInfoFlagAndShowFlag, getISubCorePluginBase() == null");
-    }
-    Cursor localCursor;
-    do
+    AppMethodBeat.i(79272);
+    new ArrayList();
+    if (a.a.caj() == null)
     {
-      return localArrayList;
-      localCursor = a.a.bru().dz(1, paramInt);
-    } while (localCursor == null);
-    while (localCursor.moveToNext())
-    {
-      f localf = new f();
-      localf.d(localCursor);
-      if (!bk.bl(localf.field_openId)) {
-        localArrayList.add(localf);
-      }
+      ab.e("MicroMsg.AppInfoLogic", "getServiceByAppInfoFlagAndShowFlag, getISubCorePluginBase() == null");
+      AppMethodBeat.o(79272);
+      return 0;
     }
+    Cursor localCursor = a.a.caj().eZ(0, paramInt);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(79272);
+      return 0;
+    }
+    paramInt = localCursor.getCount();
     localCursor.close();
-    return localArrayList;
+    AppMethodBeat.o(79272);
+    return paramInt;
   }
   
-  public static f KC(String paramString)
+  public static int LC(int paramInt)
   {
-    return by(paramString, true);
-  }
-  
-  public static boolean S(Context paramContext, int paramInt)
-  {
-    Long localLong = b.a.Vx(String.valueOf(paramInt));
-    if (localLong == null) {}
-    while (b(paramContext, localLong.longValue(), true).size() == 0) {
-      return false;
+    if (paramInt == 1) {
+      return 19;
     }
-    return true;
+    return -1;
   }
   
-  public static boolean VR(String paramString)
+  public static f WD(String paramString)
   {
-    if (bk.bl(paramString)) {}
-    do
-    {
-      do
-      {
-        return false;
-        paramString = by(paramString, true);
-      } while ((paramString == null) || (bk.bl(paramString.field_appId)));
-      if (paramString.field_appId.equals("wx7fa037cc7dfabad5")) {
-        return true;
-      }
-    } while ((paramString.field_appInfoFlag & 0x8) <= 0);
-    return true;
+    AppMethodBeat.i(156858);
+    paramString = ca(paramString, true);
+    AppMethodBeat.o(156858);
+    return paramString;
   }
   
   public static List<f> a(Context paramContext, boolean paramBoolean, int paramInt)
   {
-    Object localObject1 = new ArrayList();
-    if (a.a.bru() == null) {
-      y.e("MicroMsg.AppInfoLogic", "getISubCorePluginBase() == null");
+    AppMethodBeat.i(79270);
+    Object localObject = new ArrayList();
+    if (a.a.caj() == null)
+    {
+      ab.e("MicroMsg.AppInfoLogic", "getISubCorePluginBase() == null");
+      AppMethodBeat.o(79270);
+      return localObject;
     }
-    List localList;
-    Object localObject2;
-    do
+    List localList = gZ(1, paramInt);
+    localObject = null;
+    if (paramBoolean)
     {
-      do
-      {
-        return localObject1;
-        localList = DJ(paramInt);
-        localObject2 = null;
-        if (paramBoolean)
-        {
-          localObject2 = new int[1];
-          localObject2[0] = 5;
-        }
-        localObject1 = localList;
-      } while (localObject2 == null);
-      localObject2 = a.a.bru().p((int[])localObject2);
-      localObject1 = localList;
-    } while (localObject2 == null);
-    while (((Cursor)localObject2).moveToNext())
+      localObject = new int[1];
+      localObject[0] = 5;
+    }
+    if (localObject == null)
     {
-      localObject1 = new f();
-      ((f)localObject1).d((Cursor)localObject2);
-      if (((f)localObject1).field_status == 1)
+      AppMethodBeat.o(79270);
+      return localList;
+    }
+    localObject = a.a.caj().z((int[])localObject);
+    if (localObject != null)
+    {
+      while (((Cursor)localObject).moveToNext())
       {
-        if (o(paramContext, ((f)localObject1).field_appId))
+        f localf = new f();
+        localf.convertFrom((Cursor)localObject);
+        if (localf.field_status == 1)
         {
-          if (!bk.bl(((f)localObject1).field_signature)) {
-            localList.add(localObject1);
+          if (u(paramContext, localf.field_appId))
+          {
+            if (!bo.isNullOrNil(localf.field_signature)) {
+              localList.add(localf);
+            }
+          }
+          else
+          {
+            localf.field_status = 4;
+            a.a.caj().g(localf);
           }
         }
-        else
-        {
-          ((f)localObject1).field_status = 4;
-          a.a.bru().e((f)localObject1);
+        else if (localf.field_signature != null) {
+          localList.add(localf);
         }
       }
-      else if (((f)localObject1).field_signature != null) {
-        localList.add(localObject1);
-      }
+      ((Cursor)localObject).close();
     }
-    ((Cursor)localObject2).close();
+    AppMethodBeat.o(79270);
     return localList;
   }
   
-  public static boolean a(Context paramContext, Intent paramIntent, String paramString)
+  public static void a(String paramString1, String paramString2, a parama)
   {
-    return a(paramContext, paramIntent, paramString, null, null);
+    AppMethodBeat.i(151615);
+    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)))
+    {
+      ab.e("MicroMsg.AppInfoLogic", "getAppInfoASync, appId is null");
+      parama.a(null);
+      AppMethodBeat.o(151615);
+      return;
+    }
+    d.ysm.b(new g.1(parama, paramString1, paramString2), "GetAppInfoASyncThread");
+    AppMethodBeat.o(151615);
   }
   
-  public static boolean a(Context paramContext, Intent paramIntent, String paramString, int paramInt, am paramam, Bundle paramBundle)
+  public static boolean a(Context paramContext, final Intent paramIntent, String paramString, int paramInt, final ai paramai, final Bundle paramBundle)
   {
+    AppMethodBeat.i(79296);
     if ((paramContext == null) || (paramIntent == null))
     {
-      y.i("MicroMsg.AppInfoLogic", "launchApp failed, context or intent is null.");
-      if (paramam != null) {
-        paramam.cW(false);
+      ab.i("MicroMsg.AppInfoLogic", "launchApp failed, context or intent is null.");
+      if (paramai != null) {
+        paramai.dZ(false);
       }
+      AppMethodBeat.o(79296);
       return false;
     }
-    String str;
+    final String str;
     if (paramBundle != null)
     {
       localObject = paramBundle.getString("current_page_url", "");
       str = paramBundle.getString("current_page_appid", "");
       paramBundle = (Bundle)localObject;
-      localObject = bk.A(paramContext, paramIntent);
+      localObject = bo.H(paramContext, paramIntent);
       if ((localObject == null) || (((List)localObject).isEmpty())) {
-        break label325;
+        break label347;
       }
       if ((!TextUtils.isEmpty(paramIntent.getPackage())) || (((List)localObject).size() != 1)) {
-        break label184;
+        break label199;
       }
     }
-    label184:
+    label199:
     for (Object localObject = b((ResolveInfo)((List)localObject).get(0));; localObject = paramIntent.getPackage())
     {
-      y.d("MicroMsg.AppInfoLogic", "launchApp, wxpkg : %s.", new Object[] { ae.getPackageName() });
-      if (!bk.pm(ae.getPackageName()).equals(localObject)) {
-        break label193;
+      ab.d("MicroMsg.AppInfoLogic", "launchApp, wxpkg : %s.", new Object[] { ah.getPackageName() });
+      if (!bo.nullAsNil(ah.getPackageName()).equals(localObject)) {
+        break label208;
       }
-      y.i("MicroMsg.AppInfoLogic", "launchApp failed, can not launch wechat page.");
-      if (paramam != null) {
-        paramam.cW(false);
+      ab.i("MicroMsg.AppInfoLogic", "launchApp failed, can not launch wechat page.");
+      if (paramai != null) {
+        paramai.dZ(false);
       }
+      AppMethodBeat.o(79296);
       return false;
       paramBundle = "";
       str = "";
       break;
     }
-    label193:
-    y.i("MicroMsg.AppInfoLogic", "launchApp(pkg : %s) by wechat with intent", new Object[] { localObject });
+    label208:
+    ab.i("MicroMsg.AppInfoLogic", "launchApp(pkg : %s) by wechat with intent", new Object[] { localObject });
     if (paramInt == 2)
     {
       paramContext.startActivity(paramIntent);
-      if (paramam != null) {
-        paramam.cW(true);
+      if (paramai != null) {
+        paramai.dZ(true);
       }
+      AppMethodBeat.o(79296);
       return true;
     }
     if (!TextUtils.isEmpty(paramString)) {}
-    for (paramString = paramContext.getString(a.h.launch_3rd_detail_app_tips, new Object[] { paramString });; paramString = paramContext.getString(a.h.launch_3rd_app_tips))
+    for (paramString = paramContext.getString(2131301023, new Object[] { paramString });; paramString = paramContext.getString(2131301022))
     {
-      com.tencent.mm.ui.base.h.a(paramContext, paramString, "", paramContext.getString(a.h.launch_3rd_app_confirm), paramContext.getString(a.h.app_cancel), false, new g.4(paramContext, paramIntent, (String)localObject, paramBundle, str, paramam), new g.5((String)localObject, paramBundle, str, paramam));
+      com.tencent.mm.ui.base.h.a(paramContext, paramString, "", paramContext.getString(2131301019), paramContext.getString(2131296888), false, new DialogInterface.OnClickListener()new g.6
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(79259);
+          this.val$context.startActivity(paramIntent);
+          com.tencent.mm.plugin.report.service.h.qsU.e(14102, new Object[] { Integer.valueOf(0), Integer.valueOf(1), "", Integer.valueOf(1), this.Cl, paramBundle, str });
+          if (paramai != null) {
+            paramai.dZ(true);
+          }
+          AppMethodBeat.o(79259);
+        }
+      }, new g.6((String)localObject, paramBundle, str, paramai));
+      AppMethodBeat.o(79296);
       return true;
     }
-    label325:
-    y.w("MicroMsg.AppInfoLogic", "launchApp failed, not activity can resolve the intent.");
-    if (paramam != null) {
-      paramam.cW(false);
+    label347:
+    ab.w("MicroMsg.AppInfoLogic", "launchApp failed, not activity can resolve the intent.");
+    if (paramai != null) {
+      paramai.dZ(false);
     }
+    AppMethodBeat.o(79296);
     return false;
   }
   
-  public static boolean a(Context paramContext, Intent paramIntent, String paramString, am paramam)
+  public static boolean a(Context paramContext, Intent paramIntent, String paramString, ai paramai)
   {
-    return a(paramContext, paramIntent, paramString, paramam, null);
+    AppMethodBeat.i(79294);
+    boolean bool = a(paramContext, paramIntent, paramString, paramai, null);
+    AppMethodBeat.o(79294);
+    return bool;
   }
   
-  public static boolean a(Context paramContext, Intent paramIntent, String paramString, am paramam, Bundle paramBundle)
+  public static boolean a(Context paramContext, Intent paramIntent, String paramString, ai paramai, Bundle paramBundle)
   {
-    return a(paramContext, paramIntent, paramString, 0, paramam, paramBundle);
+    AppMethodBeat.i(79295);
+    boolean bool = a(paramContext, paramIntent, paramString, 0, paramai, paramBundle);
+    AppMethodBeat.o(79295);
+    return bool;
   }
   
   public static boolean a(Context paramContext, f paramf)
   {
+    AppMethodBeat.i(79275);
     if (paramf == null)
     {
-      y.w("MicroMsg.AppInfoLogic", "app is null");
+      ab.w("MicroMsg.AppInfoLogic", "app is null");
+      AppMethodBeat.o(79275);
       return false;
     }
     if ((paramf.field_packageName == null) || (paramf.field_packageName.length() == 0))
     {
-      y.w("MicroMsg.AppInfoLogic", "field_packageName is null");
+      ab.w("MicroMsg.AppInfoLogic", "field_packageName is null");
+      AppMethodBeat.o(79275);
       return false;
     }
-    return p.o(paramContext, paramf.field_packageName);
+    boolean bool = p.u(paramContext, paramf.field_packageName);
+    AppMethodBeat.o(79275);
+    return bool;
   }
   
-  public static boolean a(Context paramContext, String paramString, WXMediaMessage paramWXMediaMessage, int paramInt, am paramam, Bundle paramBundle)
+  public static boolean a(Context paramContext, String paramString, WXMediaMessage paramWXMediaMessage, int paramInt, ai paramai, Bundle paramBundle)
   {
+    AppMethodBeat.i(79289);
     if (paramContext == null)
     {
-      y.e("MicroMsg.AppInfoLogic", "launch app failed: context is null");
-      if (paramam != null) {
-        paramam.cW(false);
+      ab.e("MicroMsg.AppInfoLogic", "launch app failed: context is null");
+      if (paramai != null) {
+        paramai.dZ(false);
       }
-    }
-    f localf;
-    label148:
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if (!bk.bl(paramString)) {
-            break;
-          }
-          y.e("MicroMsg.AppInfoLogic", "launch app failed: appid is null or nil");
-        } while (paramam == null);
-        paramam.cW(false);
-        return false;
-        if (paramWXMediaMessage != null) {
-          break;
-        }
-        y.e("MicroMsg.AppInfoLogic", "launch app failed: wxMsg is null");
-      } while (paramam == null);
-      paramam.cW(false);
+      AppMethodBeat.o(79289);
       return false;
-      if (Looper.myLooper() == Looper.getMainLooper()) {}
-      for (localf = dh(paramString, 2147483647);; localf = bx(paramString, false))
-      {
-        if (localf != null) {
-          break label148;
-        }
-        y.e("MicroMsg.AppInfoLogic", "get appinfo is null, appid is : [%s]", new Object[] { paramString });
-        if (paramam == null) {
-          break;
-        }
-        paramam.cW(false);
-        return false;
+    }
+    if (bo.isNullOrNil(paramString))
+    {
+      ab.e("MicroMsg.AppInfoLogic", "launch app failed: appid is null or nil");
+      if (paramai != null) {
+        paramai.dZ(false);
       }
-      if (localf.field_status != 3) {
-        break;
+      AppMethodBeat.o(79289);
+      return false;
+    }
+    if (paramWXMediaMessage == null)
+    {
+      ab.e("MicroMsg.AppInfoLogic", "launch app failed: wxMsg is null");
+      if (paramai != null) {
+        paramai.dZ(false);
       }
-      y.e("MicroMsg.AppInfoLogic", "requestAppShow fail, app is in blacklist, packageName = " + localf.field_packageName);
-    } while (paramam == null);
-    paramam.cW(false);
-    return false;
-    return a(paramContext, localf.field_packageName, paramWXMediaMessage, paramString, localf.field_openId, paramInt, paramam, paramBundle);
+      AppMethodBeat.o(79289);
+      return false;
+    }
+    if (Looper.myLooper() == Looper.getMainLooper()) {}
+    for (f localf = em(paramString, 2147483647); localf == null; localf = bZ(paramString, false))
+    {
+      ab.e("MicroMsg.AppInfoLogic", "get appinfo is null, appid is : [%s]", new Object[] { paramString });
+      if (paramai != null) {
+        paramai.dZ(false);
+      }
+      AppMethodBeat.o(79289);
+      return false;
+    }
+    if (localf.field_status == 3)
+    {
+      ab.e("MicroMsg.AppInfoLogic", "requestAppShow fail, app is in blacklist, packageName = " + localf.field_packageName);
+      if (paramai != null) {
+        paramai.dZ(false);
+      }
+      AppMethodBeat.o(79289);
+      return false;
+    }
+    boolean bool = a(paramContext, localf.field_packageName, paramWXMediaMessage, paramString, localf.field_openId, paramInt, paramai, paramBundle);
+    AppMethodBeat.o(79289);
+    return bool;
   }
   
-  public static boolean a(Context paramContext, String paramString1, WXMediaMessage paramWXMediaMessage, String paramString2, String paramString3, int paramInt, am paramam, Bundle paramBundle)
+  public static boolean a(Context paramContext, String paramString1, WXMediaMessage paramWXMediaMessage, String paramString2, String paramString3, int paramInt, ai paramai, Bundle paramBundle)
   {
-    y.d("MicroMsg.AppInfoLogic", "request pkg = " + paramString1 + ", openId = " + paramString3);
-    return a(paramContext, paramString1, paramString2, c(paramContext, paramWXMediaMessage, paramString3), paramInt, paramam, paramBundle);
+    AppMethodBeat.i(79290);
+    ab.d("MicroMsg.AppInfoLogic", "request pkg = " + paramString1 + ", openId = " + paramString3);
+    boolean bool = a(paramContext, paramString1, paramString2, c(paramContext, paramWXMediaMessage, paramString3), paramInt, paramai, paramBundle);
+    AppMethodBeat.o(79290);
+    return bool;
   }
   
-  public static boolean a(Context paramContext, String paramString1, String paramString2, ShowMessageFromWX.Req paramReq, int paramInt, am paramam, Bundle paramBundle)
+  public static boolean a(Context paramContext, String paramString1, String paramString2, ShowMessageFromWX.Req paramReq, int paramInt, ai paramai, Bundle paramBundle)
   {
+    AppMethodBeat.i(79291);
     if (paramReq == null)
     {
-      y.i("MicroMsg.AppInfoLogic", "launchApp failed, req is null.");
-      if (paramam != null) {
-        paramam.cW(false);
+      ab.i("MicroMsg.AppInfoLogic", "launchApp failed, req is null.");
+      if (paramai != null) {
+        paramai.dZ(false);
       }
+      AppMethodBeat.o(79291);
       return false;
     }
-    if ((TextUtils.isEmpty(paramString1)) || (!p.o(paramContext, paramString1)))
+    if ((TextUtils.isEmpty(paramString1)) || (!p.u(paramContext, paramString1)))
     {
-      y.i("MicroMsg.AppInfoLogic", "launchApp failed, pkg is null or application has not installed.");
-      com.tencent.mm.ui.base.h.bC(paramContext, paramContext.getString(a.h.chatting_send_app_not_installed));
-      if (paramam != null) {
-        paramam.cW(false);
+      ab.i("MicroMsg.AppInfoLogic", "launchApp failed, pkg is null or application has not installed.");
+      com.tencent.mm.ui.base.h.bO(paramContext, paramContext.getString(2131298313));
+      if (paramai != null) {
+        paramai.dZ(false);
       }
+      AppMethodBeat.o(79291);
       return false;
     }
-    y.i("MicroMsg.AppInfoLogic", "launchApp(pkg : %s) with appId(%s)", new Object[] { paramString1, paramString2 });
-    if (bk.pm(ae.getPackageName()).equals(paramString1))
+    ab.i("MicroMsg.AppInfoLogic", "launchApp(pkg : %s) with appId(%s)", new Object[] { paramString1, paramString2 });
+    if (bo.nullAsNil(ah.getPackageName()).equals(paramString1))
     {
-      y.i("MicroMsg.AppInfoLogic", "launchApp failed, can not launch wechat page.");
-      if (paramam != null) {
-        paramam.cW(false);
+      ab.i("MicroMsg.AppInfoLogic", "launchApp failed, can not launch wechat page.");
+      if (paramai != null) {
+        paramai.dZ(false);
       }
+      AppMethodBeat.o(79291);
       return false;
     }
-    g.1 local1 = new g.1(paramReq, paramString1, paramContext, paramam);
+    g.2 local2 = new g.2(paramReq, paramString1, paramContext, paramai);
     if (paramInt == 2)
     {
-      y.i("MicroMsg.AppInfoLogic", "launchApp with show confirm dialog(%s).", new Object[] { paramString1 });
-      local1.run();
+      ab.i("MicroMsg.AppInfoLogic", "launchApp with show confirm dialog(%s).", new Object[] { paramString1 });
+      local2.run();
+      AppMethodBeat.o(79291);
       return true;
     }
     Object localObject;
@@ -334,185 +362,245 @@ public final class g
     {
       paramReq = paramBundle.getString("current_page_url", "");
       paramBundle = paramBundle.getString("current_page_appid", "");
-      localObject = by(paramString2, true);
-      if ((localObject == null) || (bk.bl(b(paramContext, (f)localObject, null)))) {
-        break label386;
+      localObject = ca(paramString2, true);
+      if ((localObject == null) || (bo.isNullOrNil(b(paramContext, (f)localObject, null)))) {
+        break label383;
       }
-      localObject = paramContext.getString(a.h.launch_3rd_detail_app_tips, new Object[] { b(paramContext, (f)localObject, null) });
-      label251:
+      localObject = paramContext.getString(2131301023, new Object[] { b(paramContext, (f)localObject, null) });
+      label280:
       if (paramString2 != null) {
-        break label398;
+        break label395;
       }
       paramString2 = "";
     }
-    label386:
-    label398:
+    label395:
     for (;;)
     {
-      if ("wx073f4a4daff0abe8".equalsIgnoreCase(paramString2)) {
-        com.tencent.mm.plugin.report.service.h.nFQ.f(15413, new Object[] { Integer.valueOf(1), "", "" });
-      }
-      y.i("MicroMsg.AppInfoLogic", "launchApp with args(showType : %s, pkg : %s)", new Object[] { Integer.valueOf(paramInt), paramString1 });
-      com.tencent.mm.ui.base.h.a(paramContext, (String)localObject, "", paramContext.getString(a.h.launch_3rd_app_confirm), paramContext.getString(a.h.app_cancel), false, new g.2(paramString1, paramReq, paramBundle, paramString2, local1), new g.3(paramString1, paramReq, paramBundle, paramString2, paramam));
+      alq(paramString2);
+      ab.i("MicroMsg.AppInfoLogic", "launchApp with args(showType : %s, pkg : %s)", new Object[] { Integer.valueOf(paramInt), paramString1 });
+      com.tencent.mm.ui.base.h.a(paramContext, (String)localObject, "", paramContext.getString(2131301019), paramContext.getString(2131296888), false, new g.3(paramString1, paramReq, paramBundle, paramString2, local2), new g.4(paramString1, paramReq, paramBundle, paramString2, paramai));
+      AppMethodBeat.o(79291);
       return true;
       paramReq = "";
       paramBundle = "";
       break;
-      localObject = paramContext.getString(a.h.launch_3rd_app_tips);
-      break label251;
+      label383:
+      localObject = paramContext.getString(2131301022);
+      break label280;
     }
   }
   
-  public static boolean a(f paramf, int paramInt)
+  private static boolean a(f paramf, int paramInt)
   {
-    if ((paramf == null) || (bk.bl(paramf.field_appId))) {
+    return (paramf == null) || (paramf.field_appVersion < paramInt);
+  }
+  
+  public static boolean ag(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(79268);
+    Long localLong = c.a.akT(String.valueOf(paramInt));
+    if (localLong == null)
+    {
+      AppMethodBeat.o(79268);
       return false;
     }
-    if ((paramf.field_appInfoFlag & paramInt) > 0) {}
-    for (boolean bool = true;; bool = false)
+    if (b(paramContext, localLong.longValue(), true).size() == 0)
     {
-      y.i("MicroMsg.AppInfoLogic", "isAppHasFlag, appid = %s, flag = %s, ret = %b", new Object[] { paramf.field_appId, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-      y.i("MicroMsg.AppInfoLogic", "appInfoFlag = " + paramf.field_appInfoFlag);
-      return bool;
+      AppMethodBeat.o(79268);
+      return false;
     }
+    AppMethodBeat.o(79268);
+    return true;
+  }
+  
+  public static boolean alp(String paramString)
+  {
+    AppMethodBeat.i(79285);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(79285);
+      return false;
+    }
+    boolean bool = l(ca(paramString, true));
+    AppMethodBeat.o(79285);
+    return bool;
+  }
+  
+  private static void alq(String paramString)
+  {
+    AppMethodBeat.i(79292);
+    if ("wx073f4a4daff0abe8".equalsIgnoreCase(paramString)) {
+      com.tencent.mm.plugin.report.service.h.qsU.e(15413, new Object[] { Integer.valueOf(1), "", "" });
+    }
+    AppMethodBeat.o(79292);
   }
   
   public static Bitmap b(String paramString, int paramInt, float paramFloat)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      y.e("MicroMsg.AppInfoLogic", "getAppIcon, appId is null");
-    }
-    Bitmap localBitmap;
-    do
+    AppMethodBeat.i(79265);
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      do
+      ab.e("MicroMsg.AppInfoLogic", "getAppIcon, appId is null");
+      AppMethodBeat.o(79265);
+      return null;
+    }
+    if (!com.tencent.mm.kernel.g.RJ().QU())
+    {
+      AppMethodBeat.o(79265);
+      return null;
+    }
+    if (!com.tencent.mm.kernel.g.RL().isSDCardAvailable())
+    {
+      if (ah.getContext() == null)
       {
-        do
-        {
-          do
-          {
-            return null;
-          } while (!com.tencent.mm.kernel.g.DN().Dc());
-          if (com.tencent.mm.kernel.g.DP().isSDCardAvailable()) {
-            break;
-          }
-        } while ((ae.getContext() == null) || (ae.getContext().getResources() == null));
-        switch (paramInt)
-        {
-        case 2: 
-        default: 
-          y.e("MicroMsg.AppInfoLogic", "getAppIcon, unknown iconType = " + paramInt);
-          return null;
-        }
-        paramString = BitmapFactory.decodeResource(ae.getContext().getResources(), a.d.sharemore_nosdcard_icon);
-      } while ((paramString == null) || (paramString.isRecycled()));
-      return paramString;
-      localBitmap = a.a.bru().a(paramString, paramInt, paramFloat);
-      if (localBitmap == null)
-      {
-        y.w("MicroMsg.AppInfoLogic", "getAppIcon, bm does not exist or has been recycled");
-        a.a.bru().cf(paramString, paramInt);
+        AppMethodBeat.o(79265);
         return null;
       }
-    } while (localBitmap.isRecycled());
+      if (ah.getContext().getResources() == null)
+      {
+        AppMethodBeat.o(79265);
+        return null;
+      }
+      switch (paramInt)
+      {
+      default: 
+        ab.e("MicroMsg.AppInfoLogic", "getAppIcon, unknown iconType = ".concat(String.valueOf(paramInt)));
+        AppMethodBeat.o(79265);
+        return null;
+      case 1: 
+      case 3: 
+      case 4: 
+      case 5: 
+        paramString = BitmapFactory.decodeResource(ah.getContext().getResources(), 2130840316);
+        if ((paramString == null) || (paramString.isRecycled()))
+        {
+          AppMethodBeat.o(79265);
+          return null;
+        }
+        AppMethodBeat.o(79265);
+        return paramString;
+      }
+      AppMethodBeat.o(79265);
+      return null;
+    }
+    Bitmap localBitmap = a.a.caj().a(paramString, paramInt, paramFloat);
+    if (localBitmap == null)
+    {
+      ab.w("MicroMsg.AppInfoLogic", "getAppIcon, bm does not exist or has been recycled");
+      a.a.caj().cX(paramString, paramInt);
+      AppMethodBeat.o(79265);
+      return null;
+    }
+    if (localBitmap.isRecycled())
+    {
+      AppMethodBeat.o(79265);
+      return null;
+    }
+    AppMethodBeat.o(79265);
     return localBitmap;
   }
   
   public static String b(Context paramContext, f paramf, String paramString)
   {
-    if ((paramContext == null) || (paramf == null)) {}
-    label134:
-    label175:
-    label183:
-    label191:
-    label197:
-    for (;;)
+    AppMethodBeat.i(79279);
+    if ((paramContext == null) || (paramf == null))
     {
+      AppMethodBeat.o(79279);
       return paramString;
-      String str = eR(paramContext);
-      Object localObject = null;
-      if (str.equalsIgnoreCase("zh_CN")) {
+    }
+    String str = fR(paramContext);
+    Object localObject = null;
+    if (str.equalsIgnoreCase("zh_CN")) {
+      localObject = paramf.field_appName;
+    }
+    if (str.equalsIgnoreCase("en"))
+    {
+      if (bo.isNullOrNil(paramf.field_appName_en)) {
         localObject = paramf.field_appName;
       }
-      if (str.equalsIgnoreCase("en"))
+    }
+    else
+    {
+      if (!str.equalsIgnoreCase("zh_TW"))
       {
-        if (bk.bl(paramf.field_appName_en)) {
-          localObject = paramf.field_appName;
-        }
+        paramContext = (Context)localObject;
+        if (!str.equalsIgnoreCase("zh_HK")) {}
       }
       else
       {
-        if (!str.equalsIgnoreCase("zh_TW"))
+        if (str.equalsIgnoreCase("zh_HK"))
         {
-          paramContext = (Context)localObject;
-          if (!str.equalsIgnoreCase("zh_HK")) {}
+          if (!bo.isNullOrNil(paramf.field_appName_hk)) {
+            break label193;
+          }
+          localObject = paramf.field_appName_tw;
         }
-        else
+        label122:
+        paramContext = (Context)localObject;
+        if (bo.isNullOrNil((String)localObject))
         {
-          if (str.equalsIgnoreCase("zh_HK"))
-          {
-            if (!bk.bl(paramf.field_appName_hk)) {
-              break label175;
-            }
-            localObject = paramf.field_appName_tw;
+          if (!bo.isNullOrNil(paramf.field_appName_tw)) {
+            break label201;
           }
-          label110:
-          paramContext = (Context)localObject;
-          if (bk.bl((String)localObject))
-          {
-            if (!bk.bl(paramf.field_appName_tw)) {
-              break label183;
-            }
-            paramContext = paramf.field_appName;
-          }
-        }
-        localObject = paramContext;
-        if (bk.bl(paramContext)) {
-          if (!bk.bl(paramf.field_appName_en)) {
-            break label191;
-          }
+          paramContext = paramf.field_appName;
         }
       }
-      for (localObject = paramf.field_appName;; localObject = paramf.field_appName_en)
-      {
-        if (bk.bl((String)localObject)) {
-          break label197;
+      label146:
+      localObject = paramContext;
+      if (bo.isNullOrNil(paramContext)) {
+        if (!bo.isNullOrNil(paramf.field_appName_en)) {
+          break label209;
         }
-        return localObject;
-        localObject = paramf.field_appName_en;
-        break;
-        localObject = paramf.field_appName_hk;
-        break label110;
-        paramContext = paramf.field_appName_tw;
-        break label134;
       }
     }
+    label193:
+    label201:
+    label209:
+    for (localObject = paramf.field_appName;; localObject = paramf.field_appName_en)
+    {
+      if (!bo.isNullOrNil((String)localObject)) {
+        break label217;
+      }
+      AppMethodBeat.o(79279);
+      return paramString;
+      localObject = paramf.field_appName_en;
+      break;
+      localObject = paramf.field_appName_hk;
+      break label122;
+      paramContext = paramf.field_appName_tw;
+      break label146;
+    }
+    label217:
+    AppMethodBeat.o(79279);
+    return localObject;
   }
   
   public static String b(ResolveInfo paramResolveInfo)
   {
-    Object localObject;
-    if (paramResolveInfo == null) {
-      localObject = null;
-    }
-    do
+    AppMethodBeat.i(79298);
+    if (paramResolveInfo == null)
     {
-      String str;
-      do
-      {
-        return localObject;
-        str = paramResolveInfo.resolvePackageName;
-        localObject = str;
-      } while (!TextUtils.isEmpty(str));
-      localObject = str;
-    } while (paramResolveInfo.activityInfo == null);
-    return paramResolveInfo.activityInfo.packageName;
+      AppMethodBeat.o(79298);
+      return null;
+    }
+    String str2 = paramResolveInfo.resolvePackageName;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
+    {
+      str1 = str2;
+      if (paramResolveInfo.activityInfo != null) {
+        str1 = paramResolveInfo.activityInfo.packageName;
+      }
+    }
+    AppMethodBeat.o(79298);
+    return str1;
   }
   
   public static List<f> b(Context paramContext, long paramLong, boolean paramBoolean)
   {
+    AppMethodBeat.i(79266);
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = com.tencent.mm.plugin.z.a.brn();
+    Object localObject1 = com.tencent.mm.plugin.s.a.cac();
     Object localObject2 = new StringBuilder(256);
     ((StringBuilder)localObject2).append("select * from AppInfo");
     ((StringBuilder)localObject2).append(" where ");
@@ -523,33 +611,35 @@ public final class g
     if (!paramBoolean) {
       ((StringBuilder)localObject2).append(" and  ( appInfoFlag & 16384 ) == 0");
     }
-    y.v("MicroMsg.AppInfoStorage", "getAppInfoByContentFlag sql %s", new Object[] { ((StringBuilder)localObject2).toString() });
+    ab.v("MicroMsg.AppInfoStorage", "getAppInfoByContentFlag sql %s", new Object[] { ((StringBuilder)localObject2).toString() });
     localObject2 = ((i)localObject1).rawQuery(((StringBuilder)localObject2).toString(), new String[0]);
     localObject1 = localObject2;
     if (localObject2 == null)
     {
-      y.e("MicroMsg.AppInfoStorage", "getAppByStatus : cursor is null");
+      ab.e("MicroMsg.AppInfoStorage", "getAppByStatus : cursor is null");
       localObject1 = null;
     }
-    if (localObject1 == null) {
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(79266);
       return localArrayList;
     }
     while (((Cursor)localObject1).moveToNext())
     {
       localObject2 = new f();
-      ((f)localObject2).d((Cursor)localObject1);
+      ((f)localObject2).convertFrom((Cursor)localObject1);
       if (((f)localObject2).field_status == 1)
       {
-        if (o(paramContext, ((f)localObject2).field_appId))
+        if (u(paramContext, ((f)localObject2).field_appId))
         {
-          if (!bk.bl(((f)localObject2).field_signature)) {
+          if (!bo.isNullOrNil(((f)localObject2).field_signature)) {
             localArrayList.add(localObject2);
           }
         }
         else
         {
           ((f)localObject2).field_status = 4;
-          a.a.bru().e((f)localObject2);
+          a.a.caj().g((f)localObject2);
         }
       }
       else if (((f)localObject2).field_signature != null) {
@@ -557,159 +647,286 @@ public final class g
       }
     }
     ((Cursor)localObject1).close();
+    AppMethodBeat.o(79266);
     return localArrayList;
   }
   
-  public static f bx(String paramString, boolean paramBoolean)
+  public static boolean b(Context paramContext, Intent paramIntent, String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      y.e("MicroMsg.AppInfoLogic", "getAppInfo, appId is null");
-      return null;
-    }
-    com.tencent.mm.plugin.z.a.a locala = a.a.bru();
-    if (locala == null)
-    {
-      y.e("MicroMsg.AppInfoLogic", "getISubCorePluginBase() == null");
-      return null;
-    }
-    if (paramBoolean) {
-      return locala.KD(paramString);
-    }
-    f localf = locala.KC(paramString);
-    if (localf == null) {
-      return locala.KD(paramString);
-    }
-    locala.KE(paramString);
-    return localf;
+    AppMethodBeat.i(79293);
+    boolean bool = a(paramContext, paramIntent, paramString, null, null);
+    AppMethodBeat.o(79293);
+    return bool;
   }
   
-  public static f by(String paramString, boolean paramBoolean)
+  public static boolean b(f paramf, int paramInt)
   {
-    Object localObject = null;
-    if ((paramString == null) || (paramString.length() == 0)) {
-      y.e("MicroMsg.AppInfoLogic", "getAppInfo, appId is null");
-    }
-    f localf;
-    do
+    AppMethodBeat.i(79287);
+    if ((paramf == null) || (bo.isNullOrNil(paramf.field_appId)))
     {
-      return localObject;
-      if (a.a.bru() == null)
-      {
-        y.e("MicroMsg.AppInfoLogic", "getISubCorePluginBase() == null");
-        return null;
-      }
-      localf = a.a.bru().KC(paramString);
-      localObject = localf;
-    } while (!paramBoolean);
-    if ((localf == null) || (localf.field_appName == null) || (localf.field_appName.length() == 0)) {}
-    for (int i = 1;; i = 0)
-    {
-      localObject = localf;
-      if (i == 0) {
-        break;
-      }
-      a.a.bru().KE(paramString);
-      return localf;
+      AppMethodBeat.o(79287);
+      return false;
     }
+    if ((paramf.field_appInfoFlag & paramInt) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ab.i("MicroMsg.AppInfoLogic", "isAppHasFlag, appid = %s, flag = %s, ret = %b", new Object[] { paramf.field_appId, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+      ab.i("MicroMsg.AppInfoLogic", "appInfoFlag = " + paramf.field_appInfoFlag);
+      AppMethodBeat.o(79287);
+      return bool;
+    }
+  }
+  
+  public static f bZ(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(79262);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      ab.e("MicroMsg.AppInfoLogic", "getAppInfo, appId is null");
+      AppMethodBeat.o(79262);
+      return null;
+    }
+    com.tencent.mm.plugin.s.a.a locala = a.a.caj();
+    if (locala == null)
+    {
+      ab.e("MicroMsg.AppInfoLogic", "getISubCorePluginBase() == null");
+      AppMethodBeat.o(79262);
+      return null;
+    }
+    if (paramBoolean)
+    {
+      paramString = locala.WE(paramString);
+      AppMethodBeat.o(79262);
+      return paramString;
+    }
+    f localf = locala.WD(paramString);
+    if (localf == null)
+    {
+      paramString = locala.WE(paramString);
+      AppMethodBeat.o(79262);
+      return paramString;
+    }
+    locala.WF(paramString);
+    AppMethodBeat.o(79262);
+    return localf;
   }
   
   public static ShowMessageFromWX.Req c(Context paramContext, WXMediaMessage paramWXMediaMessage, String paramString)
   {
+    AppMethodBeat.i(79297);
     ShowMessageFromWX.Req localReq = new ShowMessageFromWX.Req();
     Context localContext = paramContext;
     if (paramContext == null) {
-      localContext = ae.getContext();
+      localContext = ah.getContext();
     }
     localReq.message = paramWXMediaMessage;
-    localReq.transaction = com.tencent.mm.a.g.o(bk.UY().getBytes());
+    localReq.transaction = com.tencent.mm.a.g.w(bo.aoy().getBytes());
     localReq.openId = paramString;
-    localReq.lang = x.d(localContext.getSharedPreferences(ae.cqR(), 0));
-    localReq.country = ((String)com.tencent.mm.kernel.g.DP().Dz().get(274436, null));
+    localReq.lang = aa.f(localContext.getSharedPreferences(ah.dsP(), 0));
+    localReq.country = ((String)com.tencent.mm.kernel.g.RL().Ru().get(274436, null));
+    AppMethodBeat.o(79297);
     return localReq;
   }
   
-  public static void ckQ()
+  public static String c(Context paramContext, f paramf, String paramString)
   {
-    SharedPreferences localSharedPreferences = ae.cqS();
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putString("key_app_ids_registion_while_not_login", "").commit();
-    }
-  }
-  
-  public static boolean ct(String paramString)
-  {
-    return (paramString != null) && (paramString.trim().length() != 0) && (!paramString.equals("weixinfile")) && (!paramString.equals("invalid_appname"));
-  }
-  
-  public static boolean cu(String paramString)
-  {
-    if (bk.bl(paramString)) {
-      return false;
-    }
-    f localf = by(paramString, false);
-    if (localf == null)
+    AppMethodBeat.i(79280);
+    if ((paramContext == null) || (paramf == null))
     {
-      y.w("MicroMsg.AppInfoLogic", "app is null, appId = " + paramString);
-      return false;
+      AppMethodBeat.o(79280);
+      return paramString;
     }
-    return localf.ZH();
+    String str = fR(paramContext);
+    paramContext = null;
+    if (str.equalsIgnoreCase("zh_CN")) {
+      paramContext = paramf.field_appName;
+    }
+    if (str.equalsIgnoreCase("en"))
+    {
+      if (bo.isNullOrNil(paramf.field_appName_en)) {
+        paramContext = paramf.field_appName;
+      }
+    }
+    else if (!str.equalsIgnoreCase("zh_TW"))
+    {
+      localObject = paramContext;
+      if (!str.equalsIgnoreCase("zh_HK")) {}
+    }
+    else
+    {
+      if (str.equalsIgnoreCase("zh_HK"))
+      {
+        if (!bo.isNullOrNil(paramf.field_appName_hk)) {
+          break label169;
+        }
+        paramContext = paramf.field_appName_tw;
+      }
+      label122:
+      localObject = paramContext;
+      if (bo.isNullOrNil(paramContext)) {
+        if (!bo.isNullOrNil(paramf.field_appName_tw)) {
+          break label177;
+        }
+      }
+    }
+    label169:
+    label177:
+    for (Object localObject = paramf.field_appName;; localObject = paramf.field_appName_tw)
+    {
+      if (!bo.isNullOrNil((String)localObject)) {
+        break label185;
+      }
+      AppMethodBeat.o(79280);
+      return paramString;
+      paramContext = paramf.field_appName_en;
+      break;
+      paramContext = paramf.field_appName_hk;
+      break label122;
+    }
+    label185:
+    AppMethodBeat.o(79280);
+    return localObject;
   }
   
-  public static f dh(String paramString, int paramInt)
+  public static f ca(String paramString, boolean paramBoolean)
   {
-    Object localObject = null;
+    AppMethodBeat.i(79263);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      y.e("MicroMsg.AppInfoLogic", "getAppInfo, appId is null");
-      return localObject;
-    }
-    if (a.a.bru() == null)
-    {
-      y.e("MicroMsg.AppInfoLogic", "getISubCorePluginBase() == null");
+      ab.e("MicroMsg.AppInfoLogic", "getAppInfo, appId is null");
+      AppMethodBeat.o(79263);
       return null;
     }
-    f localf = a.a.bru().KC(paramString);
-    if ((localf == null) || (localf.field_appVersion < paramInt)) {}
-    for (paramInt = 1;; paramInt = 0)
+    if (a.a.caj() == null)
     {
-      localObject = localf;
-      if (paramInt == 0) {
-        break;
-      }
-      a.a.bru().KE(paramString);
-      return localf;
+      ab.e("MicroMsg.AppInfoLogic", "getISubCorePluginBase() == null");
+      AppMethodBeat.o(79263);
+      return null;
     }
+    f localf = a.a.caj().WD(paramString);
+    if ((paramBoolean) && (i(localf))) {
+      a.a.caj().WF(paramString);
+    }
+    AppMethodBeat.o(79263);
+    return localf;
   }
   
-  public static List<f> eQ(Context paramContext)
+  public static boolean dF(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (a.a.bru() == null) {
-      y.e("MicroMsg.AppInfoLogic", "getISubCorePluginBase() == null");
-    }
-    Cursor localCursor;
-    do
+    AppMethodBeat.i(79276);
+    if ((paramString == null) || (paramString.trim().length() == 0) || (paramString.equals("weixinfile")) || (paramString.equals("invalid_appname")))
     {
+      AppMethodBeat.o(79276);
+      return false;
+    }
+    AppMethodBeat.o(79276);
+    return true;
+  }
+  
+  public static boolean dG(String paramString)
+  {
+    AppMethodBeat.i(79282);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(79282);
+      return false;
+    }
+    f localf = ca(paramString, false);
+    if (localf == null)
+    {
+      ab.w("MicroMsg.AppInfoLogic", "app is null, appId = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(79282);
+      return false;
+    }
+    boolean bool = localf.vY();
+    AppMethodBeat.o(79282);
+    return bool;
+  }
+  
+  public static List<f> dlA()
+  {
+    AppMethodBeat.i(79273);
+    ArrayList localArrayList = new ArrayList();
+    if (a.a.caj() == null)
+    {
+      ab.e("MicroMsg.AppInfoLogic", "getAllServices, getISubCorePluginBase() == null");
+      AppMethodBeat.o(79273);
       return localArrayList;
-      localCursor = a.a.bru().brr();
-    } while (localCursor == null);
+    }
+    Cursor localCursor = a.a.caj().cai();
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(79273);
+      return localArrayList;
+    }
     while (localCursor.moveToNext())
     {
       f localf = new f();
-      localf.d(localCursor);
+      localf.convertFrom(localCursor);
+      if (!bo.isNullOrNil(localf.field_openId)) {
+        localArrayList.add(localf);
+      }
+    }
+    localCursor.close();
+    AppMethodBeat.o(79273);
+    return localArrayList;
+  }
+  
+  public static f em(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(79261);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      ab.e("MicroMsg.AppInfoLogic", "getAppInfo, appId is null");
+      AppMethodBeat.o(79261);
+      return null;
+    }
+    if (a.a.caj() == null)
+    {
+      ab.e("MicroMsg.AppInfoLogic", "getISubCorePluginBase() == null");
+      AppMethodBeat.o(79261);
+      return null;
+    }
+    f localf = a.a.caj().WD(paramString);
+    if (a(localf, paramInt)) {
+      a.a.caj().WF(paramString);
+    }
+    AppMethodBeat.o(79261);
+    return localf;
+  }
+  
+  public static List<f> fQ(Context paramContext)
+  {
+    AppMethodBeat.i(79269);
+    ArrayList localArrayList = new ArrayList();
+    if (a.a.caj() == null)
+    {
+      ab.e("MicroMsg.AppInfoLogic", "getISubCorePluginBase() == null");
+      AppMethodBeat.o(79269);
+      return localArrayList;
+    }
+    Cursor localCursor = a.a.caj().cag();
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(79269);
+      return localArrayList;
+    }
+    while (localCursor.moveToNext())
+    {
+      f localf = new f();
+      localf.convertFrom(localCursor);
       if (localf.field_status == 1)
       {
-        if (o(paramContext, localf.field_appId))
+        if (u(paramContext, localf.field_appId))
         {
-          if (!bk.bl(localf.field_signature)) {
+          if (!bo.isNullOrNil(localf.field_signature)) {
             localArrayList.add(localf);
           }
         }
         else
         {
           localf.field_status = 4;
-          a.a.bru().e(localf);
+          a.a.caj().g(localf);
         }
       }
       else if (localf.field_signature != null) {
@@ -717,34 +934,81 @@ public final class g
       }
     }
     localCursor.close();
+    AppMethodBeat.o(79269);
     return localArrayList;
   }
   
-  public static String eR(Context paramContext)
+  public static String fR(Context paramContext)
   {
-    String str = x.d(paramContext.getSharedPreferences(ae.cqR(), 0));
-    if ((str != null) && (str.length() != 0))
+    AppMethodBeat.i(79281);
+    paramContext = aa.f(paramContext.getSharedPreferences(ah.dsP(), 0));
+    if ((paramContext == null) || (paramContext.length() == 0) || (paramContext.equalsIgnoreCase("zh_CN")))
     {
-      paramContext = str;
-      if (!str.equalsIgnoreCase("zh_CN")) {}
+      AppMethodBeat.o(79281);
+      return "zh_CN";
     }
-    else
-    {
-      paramContext = "zh_CN";
-    }
+    AppMethodBeat.o(79281);
     return paramContext;
   }
   
-  public static boolean g(f paramf)
+  public static List<f> gZ(int paramInt1, int paramInt2)
   {
-    if ((paramf == null) || (bk.bl(paramf.field_appId))) {}
-    while ((paramf.field_appInfoFlag & 0x1) <= 0) {
-      return false;
+    AppMethodBeat.i(79271);
+    ArrayList localArrayList = new ArrayList();
+    if (a.a.caj() == null)
+    {
+      ab.e("MicroMsg.AppInfoLogic", "getServiceByAppInfoFlagAndShowFlag, getISubCorePluginBase() == null");
+      AppMethodBeat.o(79271);
+      return localArrayList;
     }
-    return true;
+    Cursor localCursor = a.a.caj().eZ(paramInt1, paramInt2);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(79271);
+      return localArrayList;
+    }
+    while (localCursor.moveToNext())
+    {
+      f localf = new f();
+      localf.convertFrom(localCursor);
+      localArrayList.add(localf);
+    }
+    localCursor.close();
+    ab.i("MicroMsg.AppInfoLogic", "getServiceByAppInfoFlagAndShowFlag: size is %s", new Object[] { Integer.valueOf(localArrayList.size()) });
+    AppMethodBeat.o(79271);
+    return localArrayList;
   }
   
-  public static boolean h(f paramf)
+  private static boolean i(f paramf)
+  {
+    AppMethodBeat.i(79264);
+    if ((paramf == null) || (paramf.field_appName == null) || (paramf.field_appName.length() == 0))
+    {
+      AppMethodBeat.o(79264);
+      return true;
+    }
+    AppMethodBeat.o(79264);
+    return false;
+  }
+  
+  public static boolean j(f paramf)
+  {
+    AppMethodBeat.i(79283);
+    if ((paramf == null) || (bo.isNullOrNil(paramf.field_appId)))
+    {
+      AppMethodBeat.o(79283);
+      return false;
+    }
+    if ((paramf.field_appInfoFlag & 0x1) > 0)
+    {
+      AppMethodBeat.o(79283);
+      return true;
+    }
+    AppMethodBeat.o(79283);
+    return false;
+  }
+  
+  public static boolean k(f paramf)
   {
     if (paramf == null) {}
     while ((paramf.field_appInfoFlag & 0x2) == 0) {
@@ -753,22 +1017,51 @@ public final class g
     return false;
   }
   
-  public static boolean i(f paramf)
+  private static boolean l(f paramf)
   {
-    if ((paramf == null) || (bk.bl(paramf.field_appId))) {
+    AppMethodBeat.i(79284);
+    if ((paramf == null) || (bo.isNullOrNil(paramf.field_appId)))
+    {
+      AppMethodBeat.o(79284);
+      return false;
+    }
+    if (paramf.field_appId.equals("wx7fa037cc7dfabad5"))
+    {
+      AppMethodBeat.o(79284);
+      return true;
+    }
+    if ((paramf.field_appInfoFlag & 0x8) > 0)
+    {
+      AppMethodBeat.o(79284);
+      return true;
+    }
+    AppMethodBeat.o(79284);
+    return false;
+  }
+  
+  public static boolean m(f paramf)
+  {
+    AppMethodBeat.i(79286);
+    if ((paramf == null) || (bo.isNullOrNil(paramf.field_appId)))
+    {
+      AppMethodBeat.o(79286);
       return false;
     }
     if ((paramf.field_appInfoFlag & 0x40) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      y.v("MicroMsg.AppInfoLogic", "canReadMMMsg, appid = %s, ret = %b", new Object[] { paramf.field_appId, Boolean.valueOf(bool) });
+      ab.v("MicroMsg.AppInfoLogic", "canReadMMMsg, appid = %s, ret = %b", new Object[] { paramf.field_appId, Boolean.valueOf(bool) });
+      AppMethodBeat.o(79286);
       return bool;
     }
   }
   
-  public static boolean j(f paramf)
+  public static boolean n(f paramf)
   {
-    if ((paramf == null) || (bk.bl(paramf.field_appId))) {
+    AppMethodBeat.i(79288);
+    if ((paramf == null) || (bo.isNullOrNil(paramf.field_appId)))
+    {
+      AppMethodBeat.o(79288);
       return false;
     }
     int i;
@@ -777,58 +1070,84 @@ public final class g
     {
       i = 1;
       if (1 != i) {
-        break label100;
+        break label124;
       }
       paramf = paramf.field_appId;
       localHashMap = new HashMap();
-      q.j(localHashMap);
+      r.n(localHashMap);
       if (!localHashMap.containsKey(paramf)) {
-        break label93;
+        break label111;
       }
     }
-    label93:
+    label111:
     for (paramf = (String)localHashMap.get(paramf);; paramf = null)
     {
       if ((paramf != null) && (!paramf.equals("0"))) {
-        break label98;
+        break label116;
       }
+      AppMethodBeat.o(79288);
       return true;
       i = 0;
       break;
     }
-    label98:
+    label116:
+    AppMethodBeat.o(79288);
     return false;
-    label100:
+    label124:
+    AppMethodBeat.o(79288);
     return false;
   }
   
-  public static boolean m(Context paramContext, long paramLong)
+  public static boolean o(Context paramContext, long paramLong)
   {
-    boolean bool = true;
-    if (b(paramContext, paramLong, true).size() == 0) {
-      bool = false;
+    AppMethodBeat.i(79267);
+    if (b(paramContext, paramLong, true).size() == 0)
+    {
+      AppMethodBeat.o(79267);
+      return false;
     }
+    AppMethodBeat.o(79267);
+    return true;
+  }
+  
+  public static String q(Context paramContext, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(79277);
+    paramContext = b(paramContext, em(paramString, paramInt), null);
+    AppMethodBeat.o(79277);
+    return paramContext;
+  }
+  
+  public static String t(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(79278);
+    paramContext = b(paramContext, ca(paramString, true), null);
+    AppMethodBeat.o(79278);
+    return paramContext;
+  }
+  
+  public static boolean u(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(79274);
+    if ((paramContext == null) || (paramString == null) || (paramString.length() == 0))
+    {
+      ab.e("MicroMsg.AppInfoLogic", "isAppInstalled, invalid arguments");
+      AppMethodBeat.o(79274);
+      return false;
+    }
+    boolean bool = a(paramContext, ca(paramString, true));
+    AppMethodBeat.o(79274);
     return bool;
   }
   
-  public static String n(Context paramContext, String paramString)
+  public static abstract interface a
   {
-    return b(paramContext, by(paramString, true), null);
-  }
-  
-  public static boolean o(Context paramContext, String paramString)
-  {
-    if ((paramContext == null) || (paramString == null) || (paramString.length() == 0))
-    {
-      y.e("MicroMsg.AppInfoLogic", "isAppInstalled, invalid arguments");
-      return false;
-    }
-    return a(paramContext, by(paramString, true));
+    public abstract void a(f paramf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.g
  * JD-Core Version:    0.7.0.1
  */

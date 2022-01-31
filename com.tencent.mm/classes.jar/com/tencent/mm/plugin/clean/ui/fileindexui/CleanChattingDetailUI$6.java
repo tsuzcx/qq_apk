@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 
 final class CleanChattingDetailUI$6
@@ -13,17 +13,19 @@ final class CleanChattingDetailUI$6
   
   public final void run()
   {
-    CleanChattingDetailUI.c(this.iCT).dismiss();
+    AppMethodBeat.i(18771);
+    CleanChattingDetailUI.c(this.kIa).dismiss();
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_pos", CleanChattingDetailUI.d(this.iCT));
-    localIntent.putExtra("key_delete_size", CleanChattingDetailUI.e(this.iCT));
-    this.iCT.setResult(1000, localIntent);
-    h.b(this.iCT, this.iCT.getString(R.l.clean_del_data_ok_tip, new Object[] { bk.cm(this.iCV) }), "", true);
+    localIntent.putExtra("key_pos", CleanChattingDetailUI.d(this.kIa));
+    localIntent.putExtra("key_delete_size", CleanChattingDetailUI.e(this.kIa));
+    this.kIa.setResult(1000, localIntent);
+    h.b(this.kIa, this.kIa.getString(2131298375, new Object[] { bo.hk(this.kIc) }), "", true);
+    AppMethodBeat.o(18771);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.CleanChattingDetailUI.6
  * JD-Core Version:    0.7.0.1
  */

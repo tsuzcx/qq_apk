@@ -1,0 +1,12 @@
+package com.tencent.mm.g.a;
+
+public final class vc$a
+{
+  public String uri;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.tencent.mm.g.a.vc.a
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,42 +1,67 @@
 package com.tencent.mm.plugin.card.model;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
 public final class c
-  extends i<CardInfo>
+  extends j<CardInfo>
 {
-  public static final String[] dXp = { i.a(CardInfo.buS, "UserCardInfo"), "CREATE INDEX IF NOT EXISTS  stickyIndexIndex ON UserCardInfo ( stickyIndex ) " };
-  public com.tencent.mm.sdk.e.e dXw;
+  public static final String[] SQL_CREATE;
+  public com.tencent.mm.sdk.e.e db;
+  
+  static
+  {
+    AppMethodBeat.i(87828);
+    SQL_CREATE = new String[] { j.getCreateSQLs(CardInfo.info, "UserCardInfo"), "CREATE INDEX IF NOT EXISTS  stickyIndexIndex ON UserCardInfo ( stickyIndex ) " };
+    AppMethodBeat.o(87828);
+  }
   
   public c(com.tencent.mm.sdk.e.e parame)
   {
-    super(parame, CardInfo.buS, "UserCardInfo", null);
-    this.dXw = parame;
+    super(parame, CardInfo.info, "UserCardInfo", null);
+    this.db = parame;
+  }
+  
+  public final CardInfo HJ(String paramString)
+  {
+    AppMethodBeat.i(87826);
+    CardInfo localCardInfo = new CardInfo();
+    localCardInfo.field_card_id = paramString;
+    if (super.get(localCardInfo, new String[0]))
+    {
+      AppMethodBeat.o(87826);
+      return localCardInfo;
+    }
+    AppMethodBeat.o(87826);
+    return null;
   }
   
   public final Cursor a(n.a parama)
   {
-    long l = bk.UX();
+    AppMethodBeat.i(87825);
+    long l = bo.aox();
     Object localObject = "update UserCardInfo set stickyIndex=0, stickyEndTime=0 where stickyIndex>0 and (" + l + ">stickyEndTime and stickyEndTime<>0)";
-    this.dXw.gk("UserCardInfo", (String)localObject);
+    this.db.execSQL("UserCardInfo", (String)localObject);
     localObject = new StringBuilder("select * from UserCardInfo");
-    switch (c.1.imx[parama.ordinal()])
+    switch (c.1.knt[parama.ordinal()])
     {
     }
     for (;;)
     {
       ((StringBuilder)localObject).append(" order by stickyIndex desc, status asc , updateTime desc");
-      if (parama == n.a.ink)
+      if (parama == n.a.kof)
       {
-        int i = ((Integer)g.DP().Dz().get(ac.a.ups, Integer.valueOf(3))).intValue();
+        int i = ((Integer)g.RL().Ru().get(ac.a.yzo, Integer.valueOf(3))).intValue();
         ((StringBuilder)localObject).append(" LIMIT ").append(i);
       }
-      return this.dXw.rawQuery(((StringBuilder)localObject).toString(), null);
+      parama = this.db.rawQuery(((StringBuilder)localObject).toString(), null);
+      AppMethodBeat.o(87825);
+      return parama;
       ((StringBuilder)localObject).append(" where (status=0 OR status=5)");
       continue;
       ((StringBuilder)localObject).append(" where (status=0 OR status=5) AND card_type=10");
@@ -52,98 +77,95 @@ public final class c
   }
   
   /* Error */
-  public final java.util.List<CardInfo> aAh()
+  public final java.util.List<CardInfo> bbT()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 37	com/tencent/mm/plugin/card/model/c:dXw	Lcom/tencent/mm/sdk/e/e;
-    //   4: ldc 150
-    //   6: iconst_1
-    //   7: anewarray 13	java/lang/String
-    //   10: dup
-    //   11: iconst_0
-    //   12: ldc 152
-    //   14: aastore
-    //   15: invokeinterface 132 3 0
-    //   20: astore_1
-    //   21: aload_1
-    //   22: ifnonnull +12 -> 34
-    //   25: ldc 154
-    //   27: ldc 156
-    //   29: invokestatic 162	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   32: aconst_null
-    //   33: areturn
-    //   34: new 164	java/util/ArrayList
-    //   37: dup
-    //   38: invokespecial 166	java/util/ArrayList:<init>	()V
-    //   41: astore_2
-    //   42: aload_1
-    //   43: invokeinterface 172 1 0
-    //   48: ifeq +54 -> 102
-    //   51: new 15	com/tencent/mm/plugin/card/model/CardInfo
-    //   54: dup
-    //   55: invokespecial 173	com/tencent/mm/plugin/card/model/CardInfo:<init>	()V
-    //   58: astore_3
-    //   59: aload_3
-    //   60: aload_1
-    //   61: invokevirtual 177	com/tencent/mm/plugin/card/model/CardInfo:d	(Landroid/database/Cursor;)V
-    //   64: aload_2
-    //   65: aload_3
-    //   66: invokeinterface 183 2 0
-    //   71: pop
-    //   72: goto -30 -> 42
-    //   75: astore_3
-    //   76: ldc 154
-    //   78: ldc 185
-    //   80: iconst_1
-    //   81: anewarray 187	java/lang/Object
-    //   84: dup
-    //   85: iconst_0
-    //   86: aload_3
-    //   87: invokevirtual 190	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   90: aastore
-    //   91: invokestatic 193	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   94: aload_1
-    //   95: invokeinterface 196 1 0
-    //   100: aload_2
-    //   101: areturn
-    //   102: aload_1
-    //   103: invokeinterface 196 1 0
-    //   108: aload_2
-    //   109: areturn
-    //   110: astore_2
-    //   111: aload_1
-    //   112: invokeinterface 196 1 0
-    //   117: aload_2
-    //   118: athrow
+    //   0: ldc 173
+    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: getfield 47	com/tencent/mm/plugin/card/model/c:db	Lcom/tencent/mm/sdk/e/e;
+    //   9: ldc 175
+    //   11: iconst_1
+    //   12: anewarray 20	java/lang/String
+    //   15: dup
+    //   16: iconst_0
+    //   17: ldc 177
+    //   19: aastore
+    //   20: invokeinterface 156 3 0
+    //   25: astore_1
+    //   26: aload_1
+    //   27: ifnonnull +17 -> 44
+    //   30: ldc 179
+    //   32: ldc 181
+    //   34: invokestatic 187	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   37: ldc 173
+    //   39: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: aconst_null
+    //   43: areturn
+    //   44: new 189	java/util/ArrayList
+    //   47: dup
+    //   48: invokespecial 190	java/util/ArrayList:<init>	()V
+    //   51: astore_2
+    //   52: aload_1
+    //   53: invokeinterface 196 1 0
+    //   58: ifeq +59 -> 117
+    //   61: new 22	com/tencent/mm/plugin/card/model/CardInfo
+    //   64: dup
+    //   65: invokespecial 52	com/tencent/mm/plugin/card/model/CardInfo:<init>	()V
+    //   68: astore_3
+    //   69: aload_3
+    //   70: aload_1
+    //   71: invokevirtual 200	com/tencent/mm/plugin/card/model/CardInfo:convertFrom	(Landroid/database/Cursor;)V
+    //   74: aload_2
+    //   75: aload_3
+    //   76: invokeinterface 206 2 0
+    //   81: pop
+    //   82: goto -30 -> 52
+    //   85: astore_3
+    //   86: ldc 179
+    //   88: ldc 208
+    //   90: iconst_1
+    //   91: anewarray 210	java/lang/Object
+    //   94: dup
+    //   95: iconst_0
+    //   96: aload_3
+    //   97: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   100: aastore
+    //   101: invokestatic 216	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   104: aload_1
+    //   105: invokeinterface 219 1 0
+    //   110: ldc 173
+    //   112: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   115: aload_2
+    //   116: areturn
+    //   117: aload_1
+    //   118: invokeinterface 219 1 0
+    //   123: goto -13 -> 110
+    //   126: astore_2
+    //   127: aload_1
+    //   128: invokeinterface 219 1 0
+    //   133: ldc 173
+    //   135: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   138: aload_2
+    //   139: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	119	0	this	c
-    //   20	92	1	localCursor	Cursor
-    //   41	68	2	localArrayList	java.util.ArrayList
-    //   110	8	2	localObject	Object
-    //   58	8	3	localCardInfo	CardInfo
-    //   75	12	3	localException	java.lang.Exception
+    //   0	140	0	this	c
+    //   25	103	1	localCursor	Cursor
+    //   51	65	2	localArrayList	java.util.ArrayList
+    //   126	13	2	localObject	Object
+    //   68	8	3	localCardInfo	CardInfo
+    //   85	12	3	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   42	72	75	java/lang/Exception
-    //   42	72	110	finally
-    //   76	94	110	finally
-  }
-  
-  public final CardInfo yi(String paramString)
-  {
-    CardInfo localCardInfo = new CardInfo();
-    localCardInfo.field_card_id = paramString;
-    if (super.b(localCardInfo, new String[0])) {
-      return localCardInfo;
-    }
-    return null;
+    //   52	82	85	java/lang/Exception
+    //   52	82	126	finally
+    //   86	104	126	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.c
  * JD-Core Version:    0.7.0.1
  */

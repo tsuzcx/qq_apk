@@ -8,8 +8,8 @@ public class ViewPager$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new ViewPager.SavedState.1();
-  Parcelable Hw;
-  ClassLoader Hx;
+  Parcelable He;
+  ClassLoader Hf;
   int position;
   
   ViewPager$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
@@ -20,8 +20,8 @@ public class ViewPager$SavedState
       localClassLoader = getClass().getClassLoader();
     }
     this.position = paramParcel.readInt();
-    this.Hw = paramParcel.readParcelable(localClassLoader);
-    this.Hx = localClassLoader;
+    this.He = paramParcel.readParcelable(localClassLoader);
+    this.Hf = localClassLoader;
   }
   
   public ViewPager$SavedState(Parcelable paramParcelable)
@@ -38,12 +38,12 @@ public class ViewPager$SavedState
   {
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeInt(this.position);
-    paramParcel.writeParcelable(this.Hw, paramInt);
+    paramParcel.writeParcelable(this.He, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.view.ViewPager.SavedState
  * JD-Core Version:    0.7.0.1
  */

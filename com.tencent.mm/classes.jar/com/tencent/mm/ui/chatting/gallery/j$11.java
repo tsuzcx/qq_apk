@@ -1,47 +1,59 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.os.Message;
-import com.tencent.mm.model.d;
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ah.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.vfs.e;
+import java.util.HashMap;
 
 final class j$11
-  implements ah.a
+  implements Runnable
 {
-  j$11(j paramj) {}
+  j$11(j paramj, String paramString) {}
   
-  public final boolean handleMessage(Message paramMessage)
+  public final void run()
   {
-    if (paramMessage.what == 1)
+    AppMethodBeat.i(32326);
+    if ((this.zNd.zJI == null) || (this.zNd.zJI.dJY() == null) || (j.l(this.zNd) == null))
     {
-      paramMessage = this.vwT.vtH.cFV();
-      if ((paramMessage != null) && (!bk.bl(j.a(this.vwT))))
-      {
-        y.i("MicroMsg.Imagegallery.handler.video", "%d ui on pause, pause video now. %s", new Object[] { Integer.valueOf(hashCode()), j.a(this.vwT) });
-        if (!j.b(this.vwT)) {
-          u.f(j.a(this.vwT), paramMessage.cGH().vxj.getCurrentPosition(), j.c(this.vwT));
-        }
-        j.a(this.vwT, paramMessage);
-        j.d(this.vwT).bH(false);
-        if (j.c(this.vwT))
-        {
-          a.udP.d(j.e(this.vwT));
-          j.f(this.vwT).cGJ();
-          j.a(this.vwT, false);
-        }
-      }
-      j.g(this.vwT);
+      ab.w("MicroMsg.Imagegallery.handler.video", "show error alert but adapter is null.");
+      AppMethodBeat.o(32326);
+      return;
     }
-    return false;
+    this.zNd.zJI.dJY().a(false, 0.0F);
+    if (!bo.isNullOrNil(this.mED)) {
+      ab.e("MicroMsg.Imagegallery.handler.video", "mediaplay play video error, use third player.[%s]", new Object[] { this.mED });
+    }
+    try
+    {
+      Object localObject = new Intent();
+      ((Intent)localObject).setAction("android.intent.action.VIEW");
+      com.tencent.mm.sdk.platformtools.k.a(this.zNd.zJI.zJK, (Intent)localObject, e.avH(this.mED), "video/*");
+      this.zNd.zJI.zJK.startActivity((Intent)localObject);
+      localObject = (j.a)j.l(this.zNd).get(j.a(this.zNd));
+      if ((localObject == null) || (((j.a)localObject).cmQ == null))
+      {
+        AppMethodBeat.o(32326);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ab.e("MicroMsg.Imagegallery.handler.video", "startActivity fail, activity not found");
+        h.h(this.zNd.zJI.zJK, 2131299759, 2131299760);
+      }
+      this.zNd.Ql(localException.pos);
+      AppMethodBeat.o(32326);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.j.11
  * JD-Core Version:    0.7.0.1
  */

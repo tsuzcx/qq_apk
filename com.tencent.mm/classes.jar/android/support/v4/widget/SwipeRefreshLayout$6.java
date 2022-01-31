@@ -10,14 +10,14 @@ final class SwipeRefreshLayout$6
   
   public final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (!this.MA.Mv) {}
-    for (int i = this.MA.Mm - Math.abs(this.MA.Ml);; i = this.MA.Mm)
+    if (!this.Mk.Mf) {}
+    for (int i = this.Mk.LV - Math.abs(this.Mk.LU);; i = this.Mk.LV)
     {
-      int j = this.MA.mFrom;
-      i = (int)((i - this.MA.mFrom) * paramFloat);
-      int k = this.MA.Mi.getTop();
-      this.MA.setTargetOffsetTopAndBottom(i + j - k);
-      this.MA.Mn.A(1.0F - paramFloat);
+      int j = this.Mk.mFrom;
+      i = (int)((i - this.Mk.mFrom) * paramFloat);
+      int k = this.Mk.LQ.getTop();
+      this.Mk.setTargetOffsetTopAndBottom(i + j - k);
+      this.Mk.LX.A(1.0F - paramFloat);
       return;
     }
   }

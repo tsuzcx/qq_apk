@@ -1,24 +1,30 @@
 package com.tencent.mm.plugin.brandservice.ui.base;
 
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.mm.ai.d;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.sortview.c;
+import java.util.List;
 
 final class BrandServiceSortView$4
   implements Runnable
 {
-  BrandServiceSortView$4(BrandServiceSortView paramBrandServiceSortView, String paramString, Context paramContext, int paramInt) {}
+  BrandServiceSortView$4(BrandServiceSortView paramBrandServiceSortView, int paramInt) {}
   
   public final void run()
   {
-    d locald = z.My().kQ(this.dol);
-    ad localad = ((j)com.tencent.mm.kernel.g.r(j.class)).Fw().abl(this.dol);
-    ((com.tencent.mm.pluginsdk.g)com.tencent.mm.kernel.g.r(com.tencent.mm.pluginsdk.g.class)).a(locald, (Activity)this.val$context, localad, false, new BrandServiceSortView.4.1(this));
+    AppMethodBeat.i(14061);
+    ab.i("MicroMsg.BrandServiceSortView", "showRemoveBizAlertDialog run");
+    List localList = this.jVl.getDatas();
+    if ((this.lU >= 0) && (localList != null) && (this.lU < localList.size()))
+    {
+      localList.remove(this.lU);
+      this.jVl.getAdapter().refresh();
+      AppMethodBeat.o(14061);
+      return;
+    }
+    ab.i("MicroMsg.BrandServiceSortView", "showRemoveBizAlertDialog run refresh all");
+    this.jVl.refresh();
+    AppMethodBeat.o(14061);
   }
 }
 

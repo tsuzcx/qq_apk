@@ -3,9 +3,10 @@ package com.tencent.mm.pluginsdk.ui.websearch;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mm.pluginsdk.ui.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.k;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WebSearchVoiceInputLayoutImpl$2
   implements View.OnTouchListener
@@ -14,28 +15,32 @@ final class WebSearchVoiceInputLayoutImpl$2
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(28222);
     switch (paramMotionEvent.getAction())
     {
-    default: 
-      return false;
-    case 0: 
-      WebSearchVoiceInputLayoutImpl.a(this.snR, false);
-      WebSearchVoiceInputLayoutImpl.a(this.snR, bk.UZ());
-      y.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_DOWN currentState %s longClickStartTime %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.c(this.snR)), Long.valueOf(WebSearchVoiceInputLayoutImpl.d(this.snR)) });
-      WebSearchVoiceInputLayoutImpl.b(this.snR).cmx();
-      this.snR.y(false, false);
-      return false;
     }
-    y.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_UP currentState %s longClickDown %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.e(this.snR)), Boolean.valueOf(WebSearchVoiceInputLayoutImpl.f(this.snR)) });
-    if (WebSearchVoiceInputLayoutImpl.f(this.snR))
+    for (;;)
     {
-      this.snR.y(true, false);
-      WebSearchVoiceInputLayoutImpl.a(this.snR, false);
-      WebSearchVoiceInputLayoutImpl.a(this.snR, 0L);
+      AppMethodBeat.o(28222);
       return false;
+      WebSearchVoiceInputLayoutImpl.a(this.wgp, false);
+      WebSearchVoiceInputLayoutImpl.a(this.wgp, bo.yB());
+      ab.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_DOWN currentState %s longClickStartTime %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.c(this.wgp)), Long.valueOf(WebSearchVoiceInputLayoutImpl.d(this.wgp)) });
+      WebSearchVoiceInputLayoutImpl.b(this.wgp).dnn();
+      this.wgp.B(false, false);
+      continue;
+      ab.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_UP currentState %s longClickDown %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.e(this.wgp)), Boolean.valueOf(WebSearchVoiceInputLayoutImpl.f(this.wgp)) });
+      if (WebSearchVoiceInputLayoutImpl.f(this.wgp))
+      {
+        this.wgp.B(true, false);
+        WebSearchVoiceInputLayoutImpl.a(this.wgp, false);
+        WebSearchVoiceInputLayoutImpl.a(this.wgp, 0L);
+      }
+      else
+      {
+        this.wgp.B(false, true);
+      }
     }
-    this.snR.y(false, true);
-    return false;
   }
 }
 

@@ -2,12 +2,20 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONArray;
 
 public class RealSetFillStyleActionArg
   extends BaseDrawActionArg
 {
-  public static final Parcelable.Creator<RealSetFillStyleActionArg> CREATOR = new RealSetFillStyleActionArg.1();
+  public static final Parcelable.Creator<RealSetFillStyleActionArg> CREATOR;
+  
+  static
+  {
+    AppMethodBeat.i(103361);
+    CREATOR = new RealSetFillStyleActionArg.1();
+    AppMethodBeat.o(103361);
+  }
   
   public RealSetFillStyleActionArg() {}
   
@@ -21,11 +29,11 @@ public class RealSetFillStyleActionArg
     return 0;
   }
   
-  public void e(JSONArray paramJSONArray) {}
+  public void f(JSONArray paramJSONArray) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionArg
  * JD-Core Version:    0.7.0.1
  */

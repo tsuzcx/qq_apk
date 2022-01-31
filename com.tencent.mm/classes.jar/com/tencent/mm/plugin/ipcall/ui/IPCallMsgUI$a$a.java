@@ -4,9 +4,9 @@ import android.widget.TextView;
 
 final class IPCallMsgUI$a$a
 {
-  TextView eXr;
-  TextView fuN;
-  TextView igx;
+  TextView gMp;
+  TextView timeTv;
+  TextView titleTv;
   
   IPCallMsgUI$a$a(IPCallMsgUI.a parama) {}
 }

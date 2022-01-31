@@ -1,48 +1,61 @@
 package com.tencent.mm.plugin.qqmail.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class h
   extends com.tencent.mm.bv.a
 {
-  public int ndm;
-  public long ndp;
+  public int pIE;
+  public long pIG;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(67927);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.gB(1, this.ndm);
-      paramVarArgs.Y(2, this.ndp);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aO(1, this.pIE);
+      paramVarArgs.am(2, this.pIG);
+      AppMethodBeat.o(67927);
       return 0;
     }
-    if (paramInt == 1) {
-      return d.a.a.a.gy(1, this.ndm) + 0 + d.a.a.a.X(2, this.ndp);
+    if (paramInt == 1)
+    {
+      paramInt = e.a.a.b.b.a.bl(1, this.pIE);
+      int i = e.a.a.b.b.a.p(2, this.pIG);
+      AppMethodBeat.o(67927);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
+      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.eqQ();
         }
       }
+      AppMethodBeat.o(67927);
       return 0;
     }
     if (paramInt == 3)
     {
-      d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
       h localh = (h)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
+        AppMethodBeat.o(67927);
         return -1;
       case 1: 
-        localh.ndm = locala.xpH.oD();
+        localh.pIE = locala.CLY.sl();
+        AppMethodBeat.o(67927);
         return 0;
       }
-      localh.ndp = locala.xpH.oE();
+      localh.pIG = locala.CLY.sm();
+      AppMethodBeat.o(67927);
       return 0;
     }
+    AppMethodBeat.o(67927);
     return -1;
   }
 }

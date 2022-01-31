@@ -16,40 +16,40 @@ final class ActivityChooserView$5
   public final void onChanged()
   {
     super.onChanged();
-    ActivityChooserView localActivityChooserView = this.YX;
-    if (localActivityChooserView.YH.getCount() > 0)
+    ActivityChooserView localActivityChooserView = this.ZI;
+    if (localActivityChooserView.Zs.getCount() > 0)
     {
-      localActivityChooserView.YL.setEnabled(true);
-      int i = localActivityChooserView.YH.YY.fO();
-      int j = localActivityChooserView.YH.YY.getHistorySize();
+      localActivityChooserView.Zw.setEnabled(true);
+      int i = localActivityChooserView.Zs.ZJ.gI();
+      int j = localActivityChooserView.Zs.ZJ.getHistorySize();
       if ((i != 1) && ((i <= 1) || (j <= 0))) {
         break label186;
       }
-      localActivityChooserView.YN.setVisibility(0);
-      Object localObject = localActivityChooserView.YH.YY.fP();
+      localActivityChooserView.Zy.setVisibility(0);
+      Object localObject = localActivityChooserView.Zs.ZJ.gJ();
       PackageManager localPackageManager = localActivityChooserView.getContext().getPackageManager();
-      localActivityChooserView.YO.setImageDrawable(((ResolveInfo)localObject).loadIcon(localPackageManager));
-      if (localActivityChooserView.YW != 0)
+      localActivityChooserView.Zz.setImageDrawable(((ResolveInfo)localObject).loadIcon(localPackageManager));
+      if (localActivityChooserView.ZH != 0)
       {
         localObject = ((ResolveInfo)localObject).loadLabel(localPackageManager);
-        localObject = localActivityChooserView.getContext().getString(localActivityChooserView.YW, new Object[] { localObject });
-        localActivityChooserView.YN.setContentDescription((CharSequence)localObject);
+        localObject = localActivityChooserView.getContext().getString(localActivityChooserView.ZH, new Object[] { localObject });
+        localActivityChooserView.Zy.setContentDescription((CharSequence)localObject);
       }
     }
     for (;;)
     {
-      if (localActivityChooserView.YN.getVisibility() != 0) {
+      if (localActivityChooserView.Zy.getVisibility() != 0) {
         break label198;
       }
-      localActivityChooserView.YJ.setBackgroundDrawable(localActivityChooserView.YK);
+      localActivityChooserView.Zu.setBackgroundDrawable(localActivityChooserView.Zv);
       return;
-      localActivityChooserView.YL.setEnabled(false);
+      localActivityChooserView.Zw.setEnabled(false);
       break;
       label186:
-      localActivityChooserView.YN.setVisibility(8);
+      localActivityChooserView.Zy.setVisibility(8);
     }
     label198:
-    localActivityChooserView.YJ.setBackgroundDrawable(null);
+    localActivityChooserView.Zu.setBackgroundDrawable(null);
   }
 }
 

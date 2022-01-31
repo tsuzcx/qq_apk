@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.appbrand.widget.desktop;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.support.v7.widget.ar;
+import android.support.v7.widget.as;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 final class c$2
@@ -14,13 +15,15 @@ final class c$2
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.abP.setListener(null);
+    AppMethodBeat.i(133775);
+    this.acA.setListener(null);
     this.val$view.setAlpha(1.0F);
     this.val$view.setTranslationX(0.0F);
     this.val$view.setTranslationY(0.0F);
-    this.hpW.l(this.hpX.abS);
-    this.hpW.abF.remove(this.hpX.abS);
-    this.hpW.gB();
+    this.jed.m(this.jee.acD);
+    this.jed.acq.remove(this.jee.acD);
+    this.jed.hB();
+    AppMethodBeat.o(133775);
   }
   
   public final void onAnimationStart(Animator paramAnimator) {}

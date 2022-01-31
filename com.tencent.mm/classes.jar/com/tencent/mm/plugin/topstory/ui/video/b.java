@@ -4,63 +4,80 @@ import android.graphics.Point;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.aj;
-import com.tencent.mm.protocal.c.bse;
-import com.tencent.mm.protocal.c.byf;
-import com.tencent.mm.protocal.c.byg;
+import android.view.View;
+import com.tencent.mm.protocal.protobuf.ccp;
+import com.tencent.mm.protocal.protobuf.ckw;
+import com.tencent.mm.protocal.protobuf.ckx;
 import com.tencent.mm.ui.MMActivity;
 import java.util.List;
 
 public abstract interface b
 {
-  public abstract boolean Bj();
+  public abstract boolean DP();
   
-  public abstract void PL(String paramString);
+  public abstract void GA(int paramInt);
   
-  public abstract void a(bse parambse);
+  public abstract void GB(int paramInt);
   
-  public abstract aj bNA();
+  public abstract boolean Gz(int paramInt);
   
-  public abstract int bNB();
+  public abstract void a(ccp paramccp);
   
-  public abstract boolean bNC();
+  public abstract void a(ckx paramckx);
   
-  public abstract e bND();
+  public abstract void aen(String paramString);
   
-  public abstract boolean bNE();
+  public abstract void aeo(String paramString);
   
-  public abstract void bNF();
+  public abstract void ah(View paramView, int paramInt);
   
-  public abstract int bNG();
+  public abstract MMActivity bMN();
   
-  public abstract void bNH();
+  public abstract void cIZ();
   
-  public abstract void bNI();
+  public abstract void cJa();
   
-  public abstract n bNJ();
+  public abstract l cJc();
   
-  public abstract void bNp();
+  public abstract o cJd();
   
-  public abstract void bNq();
+  public abstract String cJe();
   
-  public abstract l bNs();
+  public abstract ckw cJf();
   
-  public abstract o bNt();
+  public abstract m cJg();
   
-  public abstract String bNu();
+  public abstract r cJh();
   
-  public abstract byf bNv();
+  public abstract Point cJi();
   
-  public abstract m bNw();
+  public abstract aj cJj();
   
-  public abstract r bNx();
+  public abstract int cJk();
   
-  public abstract Point bNz();
+  public abstract boolean cJl();
   
-  public abstract MMActivity bfn();
+  public abstract e cJm();
   
-  public abstract boolean ej(int paramInt1, int paramInt2);
+  public abstract boolean cJn();
   
-  public abstract void f(List<byg> paramList, boolean paramBoolean);
+  public abstract void cJo();
+  
+  public abstract int cJp();
+  
+  public abstract void cJq();
+  
+  public abstract void cJr();
+  
+  public abstract n cJs();
+  
+  public abstract String cJt();
+  
+  public abstract int cJu();
+  
+  public abstract void cJv();
+  
+  public abstract int cJw();
   
   public abstract RecyclerView.i getLayoutManager();
   
@@ -70,13 +87,11 @@ public abstract interface b
   
   public abstract int getVideoWidth();
   
+  public abstract boolean gh(int paramInt1, int paramInt2);
+  
   public abstract boolean isFullscreenMode();
   
-  public abstract void zw(int paramInt);
-  
-  public abstract void zx(int paramInt);
-  
-  public abstract void zy(int paramInt);
+  public abstract void k(List<ckx> paramList, boolean paramBoolean);
 }
 
 

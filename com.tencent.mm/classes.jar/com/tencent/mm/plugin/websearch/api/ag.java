@@ -1,12 +1,21 @@
 package com.tencent.mm.plugin.websearch.api;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class ag
 {
-  private static k qUv = new ad();
+  private static k uJG;
   
-  public static k bZD()
+  static
   {
-    return qUv;
+    AppMethodBeat.i(124169);
+    uJG = new ad();
+    AppMethodBeat.o(124169);
+  }
+  
+  public static k cZz()
+  {
+    return uJG;
   }
 }
 

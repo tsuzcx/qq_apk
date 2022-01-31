@@ -50,7 +50,7 @@ public abstract class c$a
       if (paramParcel1.readInt() != 0) {
         paramParcel2 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      s(paramParcel2);
+      B(paramParcel2);
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.appbrand.ipc.IMainProcessService");
@@ -58,7 +58,7 @@ public abstract class c$a
       if (paramParcel1.readInt() != 0) {
         localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      t((Bundle)localObject1);
+      C((Bundle)localObject1);
       paramParcel2.writeNoException();
       if (localObject1 != null)
       {

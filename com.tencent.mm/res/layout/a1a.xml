@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bw5" android:padding="2.0dip" android:layout_width="22.0dip" android:layout_height="22.0dip" android:scaleType="centerInside" />
-    <com.tencent.mm.plugin.game.widget.AutoResizeTextView android:textSize="@dimen/lj" android:textColor="@color/pf" android:gravity="center" android:id="@id/bw6" android:layout_width="20.0dip" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:singleLine="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/b8t" android:background="@color/a6q" android:padding="@dimen/fx" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColorHint="@color/s3" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/byf" android:layout_width="fill_parent" android:layout_height="@dimen/n7" android:hint="@string/b47" android:singleLine="true" android:drawableLeft="@raw/searchbar_icon" android:imeOptions="actionSearch" />
+    </LinearLayout>
+    <TextView android:background="@color/zm" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/l2" android:paddingRight="@dimen/m1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/byb" style="@style/mo" />
+    <View android:background="@color/mo" android:layout_width="fill_parent" android:layout_height="1.0px" />
 </LinearLayout>

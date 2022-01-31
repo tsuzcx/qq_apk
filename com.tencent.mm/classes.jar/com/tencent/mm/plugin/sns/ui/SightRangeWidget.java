@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SightRangeWidget
   extends RangeWidget
@@ -20,25 +20,28 @@ public class SightRangeWidget
   
   public final boolean a(int paramInt1, int paramInt2, Intent paramIntent, AtContactWidget paramAtContactWidget)
   {
+    AppMethodBeat.i(38582);
     super.a(paramInt1, paramInt2, paramIntent, paramAtContactWidget);
     if (paramAtContactWidget != null)
     {
-      if (getLabelRange() == 1)
-      {
-        paramAtContactWidget.setVisibility(4);
-        paramAtContactWidget.bHk();
+      if (getLabelRange() != 1) {
+        break label46;
       }
+      paramAtContactWidget.setVisibility(4);
+      paramAtContactWidget.cto();
     }
-    else {
+    for (;;)
+    {
+      AppMethodBeat.o(38582);
       return true;
+      label46:
+      paramAtContactWidget.setVisibility(0);
     }
-    paramAtContactWidget.setVisibility(0);
-    return true;
   }
   
   protected int getLayoutResource()
   {
-    return i.g.sight_range_layout;
+    return 2130970753;
   }
   
   protected int getMaxTagNameLen()

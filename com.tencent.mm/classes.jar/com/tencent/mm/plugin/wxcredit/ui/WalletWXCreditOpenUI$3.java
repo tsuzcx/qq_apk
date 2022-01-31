@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wxcredit.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletWXCreditOpenUI$3
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class WalletWXCreditOpenUI$3
   
   public final void onClick(View paramView)
   {
-    this.rRU.cN();
+    AppMethodBeat.i(48752);
+    this.vIK.next();
+    AppMethodBeat.o(48752);
   }
 }
 

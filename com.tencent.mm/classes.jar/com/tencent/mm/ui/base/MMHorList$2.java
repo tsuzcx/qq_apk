@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.base;
 
 import android.database.DataSetObserver;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMHorList$2
   extends DataSetObserver
@@ -9,16 +10,20 @@ final class MMHorList$2
   
   public final void onChanged()
   {
-    MMHorList.a(this.uWr);
-    this.uWr.invalidate();
-    this.uWr.requestLayout();
+    AppMethodBeat.i(106654);
+    MMHorList.a(this.zkK);
+    this.zkK.invalidate();
+    this.zkK.requestLayout();
+    AppMethodBeat.o(106654);
   }
   
   public final void onInvalidated()
   {
-    MMHorList.b(this.uWr);
-    this.uWr.invalidate();
-    this.uWr.requestLayout();
+    AppMethodBeat.i(106655);
+    MMHorList.b(this.zkK);
+    this.zkK.invalidate();
+    this.zkK.requestLayout();
+    AppMethodBeat.o(106655);
   }
 }
 

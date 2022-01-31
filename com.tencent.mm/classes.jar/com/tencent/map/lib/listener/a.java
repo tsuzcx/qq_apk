@@ -2,7 +2,7 @@ package com.tencent.map.lib.listener;
 
 public abstract interface a
 {
-  public abstract void e();
+  public abstract void a();
 }
 
 

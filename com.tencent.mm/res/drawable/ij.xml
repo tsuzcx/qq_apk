@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@color/qp" />
-    <item android:state_focused="true" android:drawable="@color/qp" />
-    <item android:drawable="@drawable/rn" />
-</selector>
+    <item android:left="-0.5dip" android:right="-0.5dip">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/a1" />
+            <stroke android:width="0.5dip" android:color="@color/k" />
+        </shape>
+    </item>
+</layer-list>

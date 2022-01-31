@@ -1,6 +1,7 @@
 package com.tencent.mm.sandbox.updater;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class f$2
   implements Runnable
@@ -9,9 +10,11 @@ final class f$2
   
   public final void run()
   {
-    y.d("MicroMsg.TrafficStatistic", "onUpstreamTraffic upstream : %s", new Object[] { Long.valueOf(this.ucV) });
-    f.a(this.ucU, f.a(this.ucU) + Math.max(0L, this.ucV));
-    f.a(this.ucU, false);
+    AppMethodBeat.i(28900);
+    ab.d("MicroMsg.TrafficStatistic", "onUpstreamTraffic upstream : %s", new Object[] { Long.valueOf(this.ylk) });
+    f.a(this.ylj, f.a(this.ylj) + Math.max(0L, this.ylk));
+    f.a(this.ylj, false);
+    AppMethodBeat.o(28900);
   }
 }
 

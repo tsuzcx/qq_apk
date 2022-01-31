@@ -1,68 +1,89 @@
 package com.tencent.mm.plugin.voip.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h.b;
-import com.tencent.mm.plugin.voip.a.b;
-import com.tencent.mm.plugin.voip.a.c;
-import com.tencent.mm.plugin.voip.a.e;
 import com.tencent.mm.plugin.voip.model.VoipScoreState;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.widget.a.c;
-import com.tencent.mm.ui.widget.a.e.a;
+import com.tencent.mm.ui.widget.b.c;
+import com.tencent.mm.ui.widget.b.e.a;
 
 @a(3)
 public class VoipScoreDialog
   extends MMActivity
 {
-  private VoipScoreState pQq;
-  private ViewGroup pXn;
-  private ImageView[] pXo = new ImageView[5];
-  private c pXp = null;
-  private int pXq = 0;
+  private ViewGroup tCQ;
+  private ImageView[] tCR;
+  private c tCS;
+  private int tCT;
+  private VoipScoreState tvv;
   
-  protected final int getLayoutId()
+  public VoipScoreDialog()
   {
-    return a.c.voip_transparent_layout;
+    AppMethodBeat.i(4862);
+    this.tCR = new ImageView[5];
+    this.tCS = null;
+    this.tCT = 0;
+    AppMethodBeat.o(4862);
+  }
+  
+  public int getLayoutId()
+  {
+    return 2130971111;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(4863);
     super.onCreate(paramBundle);
-    this.pQq = ((VoipScoreState)getIntent().getParcelableExtra("key_score_state"));
-    if (this.pQq == null)
+    this.tvv = ((VoipScoreState)getIntent().getParcelableExtra("key_score_state"));
+    if (this.tvv == null)
     {
       b.e("MicroMsg.VoipScoreDialog", "onCreate error, scoreState is null", new Object[0]);
       finish();
-    }
-    do
-    {
+      AppMethodBeat.o(4863);
       return;
-      this.pXn = ((ViewGroup)View.inflate(this, a.c.voip_score_star_line, null));
-      this.pXo[0] = ((ImageView)this.pXn.findViewById(a.b.score_1));
-      this.pXo[1] = ((ImageView)this.pXn.findViewById(a.b.score_2));
-      this.pXo[2] = ((ImageView)this.pXn.findViewById(a.b.score_3));
-      this.pXo[3] = ((ImageView)this.pXn.findViewById(a.b.score_4));
-      this.pXo[4] = ((ImageView)this.pXn.findViewById(a.b.score_5));
-      int i = 0;
-      while (i < this.pXo.length)
-      {
-        this.pXo[i].setOnClickListener(new VoipScoreDialog.1(this, i));
-        i += 1;
-      }
-      paramBundle = new e.a(this);
-      paramBundle.aeF(this.pQq.pTn);
-      paramBundle.ek(this.pXn);
-      paramBundle.wnv = getString(a.e.voip_score_dialog_reject);
-      paramBundle.b(new VoipScoreDialog.2(this));
-      paramBundle.nY(false);
-      this.pXp = paramBundle.few;
-    } while (this.pXp == null);
-    this.pXp.show();
+    }
+    this.tCQ = ((ViewGroup)View.inflate(this, 2130971110, null));
+    this.tCR[0] = ((ImageView)this.tCQ.findViewById(2131828835));
+    this.tCR[1] = ((ImageView)this.tCQ.findViewById(2131828836));
+    this.tCR[2] = ((ImageView)this.tCQ.findViewById(2131828837));
+    this.tCR[3] = ((ImageView)this.tCQ.findViewById(2131828838));
+    this.tCR[4] = ((ImageView)this.tCQ.findViewById(2131828839));
+    int i = 0;
+    while (i < this.tCR.length)
+    {
+      this.tCR[i].setOnClickListener(new VoipScoreDialog.1(this, i));
+      i += 1;
+    }
+    paramBundle = new e.a(this);
+    paramBundle.aj(this.tvv.tyO);
+    paramBundle.fv(this.tCQ);
+    paramBundle.AHs = getString(2131304730);
+    paramBundle.b(new VoipScoreDialog.2(this));
+    paramBundle.rI(false);
+    paramBundle.b(new VoipScoreDialog.3(this));
+    this.tCS = paramBundle.gwf;
+    if (this.tCS != null)
+    {
+      this.tCS.show();
+      AppMethodBeat.o(4863);
+      return;
+    }
+    finish();
+    AppMethodBeat.o(4863);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.ipcall.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 final class IPCallShareCouponUI$3
@@ -16,9 +16,10 @@ final class IPCallShareCouponUI$3
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(22319);
     Intent localIntent = new Intent();
-    paramView = this.lyX.getString(R.l.ip_call_recharge_price_url) + "&usedcc=";
-    Object localObject = com.tencent.mm.plugin.ipcall.a.c.bbS().bbV();
+    paramView = this.nWj.getString(2131300879) + "&usedcc=";
+    Object localObject = com.tencent.mm.plugin.ipcall.a.c.bIZ().bJc();
     int j;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
@@ -30,25 +31,26 @@ final class IPCallShareCouponUI$3
       j = 0;
       if (j < i)
       {
-        String str = a.FZ(((Integer)((List)localObject).get(j)).toString());
-        if (bk.bl(str)) {
-          break label230;
+        String str = a.RB(((Integer)((List)localObject).get(j)).toString());
+        if (bo.isNullOrNil(str)) {
+          break label241;
         }
         paramView = paramView + str + "|";
       }
     }
-    label230:
+    label241:
     for (;;)
     {
       j += 1;
       break;
       localObject = paramView;
       if (paramView.endsWith("|")) {}
-      for (localObject = paramView.substring(0, paramView.length() - 1);; localObject = paramView + a.FZ(com.tencent.mm.plugin.ipcall.b.c.bdr()))
+      for (localObject = paramView.substring(0, paramView.length() - 1);; localObject = paramView + a.RB(com.tencent.mm.plugin.ipcall.b.c.bKM()))
       {
         localIntent.putExtra("rawUrl", (String)localObject);
         localIntent.putExtra("showShare", false);
-        d.b(this.lyX, "webview", ".ui.tools.WebViewUI", localIntent);
+        d.b(this.nWj, "webview", ".ui.tools.WebViewUI", localIntent);
+        AppMethodBeat.o(22319);
         return;
       }
     }

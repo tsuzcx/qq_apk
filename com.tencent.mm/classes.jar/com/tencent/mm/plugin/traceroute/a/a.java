@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.traceroute.a;
 
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public final class a
-  implements n
+  implements o
 {
-  public static m eUR;
+  public static n gmO;
   
-  public final void a(l paraml) {}
+  public final void a(m paramm) {}
   
-  public final void a(m paramm)
+  public final void a(n paramn)
   {
-    eUR = paramm;
+    gmO = paramn;
   }
 }
 

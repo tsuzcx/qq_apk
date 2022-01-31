@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.ext.voicecontrol;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ExtControlProviderVoiceControl$4
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class ExtControlProviderVoiceControl$4
   
   public final void run()
   {
-    this.jLC.a(this.jLD.jLF, this.jLD.appId, this.jLD.jLG);
+    AppMethodBeat.i(20443);
+    this.mfG.a(this.mfH.mfJ, this.mfH.appId, this.mfH.mfK);
+    AppMethodBeat.o(20443);
   }
 }
 

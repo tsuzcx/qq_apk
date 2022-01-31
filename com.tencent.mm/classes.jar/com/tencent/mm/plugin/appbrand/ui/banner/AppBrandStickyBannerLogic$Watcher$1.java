@@ -1,15 +1,19 @@
 package com.tencent.mm.plugin.appbrand.ui.banner;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class AppBrandStickyBannerLogic$Watcher$1
   implements f
 {
   AppBrandStickyBannerLogic$Watcher$1(AppBrandStickyBannerLogic.Watcher paramWatcher) {}
   
-  public final void aP(String paramString, int paramInt)
+  public final void bf(String paramString, int paramInt)
   {
-    this.hfW.hfT = paramString;
-    this.hfW.hfU = paramInt;
-    AppBrandStickyBannerLogic.Watcher.a(this.hfW);
+    AppMethodBeat.i(133305);
+    this.iRk.iRh = paramString;
+    this.iRk.iRi = paramInt;
+    AppBrandStickyBannerLogic.Watcher.a(this.iRk);
+    AppMethodBeat.o(133305);
   }
 }
 

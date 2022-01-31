@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.data.i;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class b$36
   implements View.OnClickListener
@@ -18,31 +18,45 @@ final class b$36
   
   public final void onClick(View paramView)
   {
-    if (!(paramView.getTag() instanceof String)) {}
-    do
+    AppMethodBeat.i(40298);
+    if (!(paramView.getTag() instanceof String))
     {
+      AppMethodBeat.o(40298);
       return;
-      paramView = (String)paramView.getTag();
-      paramView = af.bDF().OB(paramView);
-    } while ((paramView == null) || (!paramView.yr(32)));
-    y.i("MicroMsg.TimelineClickListener", "click the ad tailLink button");
-    paramView = b.a(this.ppl, paramView);
+    }
+    paramView = (String)paramView.getTag();
+    paramView = ag.cpf().abv(paramView);
     if (paramView == null)
     {
-      y.e("MicroMsg.TimelineClickListener", "the adInfo is null");
+      AppMethodBeat.o(40298);
       return;
     }
-    if (bk.bl(paramView.oAh))
+    if (paramView.Ex(32))
     {
-      y.e("MicroMsg.TimelineClickListener", "the adActionExtTailLink is null");
+      ab.i("MicroMsg.TimelineClickListener", "click the ad tailLink button");
+      paramView = b.a(this.skd, paramView);
+      if (paramView == null)
+      {
+        ab.e("MicroMsg.TimelineClickListener", "the adInfo is null");
+        AppMethodBeat.o(40298);
+        return;
+      }
+      if (bo.isNullOrNil(paramView.rpr))
+      {
+        ab.e("MicroMsg.TimelineClickListener", "the adActionExtTailLink is null");
+        AppMethodBeat.o(40298);
+        return;
+      }
+      ab.i("MicroMsg.TimelineClickListener", "open webview url : " + paramView.rpr);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("jsapiargs", new Bundle());
+      localIntent.putExtra("useJs", true);
+      localIntent.putExtra("rawUrl", i.gg(paramView.rpr, paramView.cFe));
+      com.tencent.mm.plugin.sns.c.a.gmO.i(localIntent, this.skd.activity);
+      AppMethodBeat.o(40298);
       return;
     }
-    y.i("MicroMsg.TimelineClickListener", "open webview url : " + paramView.oAh);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("jsapiargs", new Bundle());
-    localIntent.putExtra("useJs", true);
-    localIntent.putExtra("rawUrl", paramView.oAh);
-    com.tencent.mm.plugin.sns.c.a.eUR.j(localIntent, this.ppl.activity);
+    AppMethodBeat.o(40298);
   }
 }
 

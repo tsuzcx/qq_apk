@@ -7,104 +7,109 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ContactRemarkAndLabelPreference
   extends Preference
 {
-  private TextView haW;
-  private String jRT;
+  private TextView iJG;
   private Context mContext;
-  private TextView mWu;
-  private TextView mWv;
-  private boolean mWw = false;
-  private String mWx;
-  private String mWy;
+  private String mmp;
+  private TextView pzq;
+  private TextView pzr;
+  private boolean pzs;
+  private String pzt;
+  private String pzu;
   
   public ContactRemarkAndLabelPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.pzs = false;
     this.mContext = paramContext;
   }
   
   public ContactRemarkAndLabelPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(23428);
+    this.pzs = false;
     this.mContext = paramContext;
-    setLayoutResource(R.i.mm_preference);
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(23428);
   }
   
   public final void onBindView(View paramView)
   {
-    this.haW = ((TextView)paramView.findViewById(R.h.title));
-    this.mWu = ((TextView)paramView.findViewById(R.h.remark));
-    this.mWv = ((TextView)paramView.findViewById(R.h.label));
+    AppMethodBeat.i(23430);
+    this.iJG = ((TextView)paramView.findViewById(2131820680));
+    this.pzq = ((TextView)paramView.findViewById(2131826227));
+    this.pzr = ((TextView)paramView.findViewById(2131826228));
     RelativeLayout.LayoutParams localLayoutParams;
-    if ((this.haW != null) && (!bk.bl(this.jRT)))
+    if ((this.iJG != null) && (!bo.isNullOrNil(this.mmp)))
     {
-      this.haW.setVisibility(0);
-      this.haW.setText(this.jRT);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.haW.getLayoutParams();
-      localLayoutParams.width = a.aa(this.mContext, R.f.FixedTitleWidth);
-      this.haW.setLayoutParams(localLayoutParams);
+      this.iJG.setVisibility(0);
+      this.iJG.setText(this.mmp);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.iJG.getLayoutParams();
+      localLayoutParams.width = a.ao(this.mContext, 2131427664);
+      this.iJG.setLayoutParams(localLayoutParams);
     }
-    if (this.mWu != null) {
-      if (!this.mWw)
+    if (this.pzq != null) {
+      if (!this.pzs)
       {
-        this.mWu.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        this.pzq.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         i = 0;
-        if (!bk.bl(this.mWx))
+        if (!bo.isNullOrNil(this.pzt))
         {
-          this.mWu.setVisibility(0);
-          this.mWu.setText(j.a(this.mContext, bk.pm(this.mWx), this.mWu.getTextSize()));
+          this.pzq.setVisibility(0);
+          this.pzq.setText(j.b(this.mContext, bo.nullAsNil(this.pzt), this.pzq.getTextSize()));
         }
       }
     }
     for (int i = 1;; i = 0)
     {
       int j = i;
-      if (this.mWv != null)
+      if (this.pzr != null)
       {
         j = i;
-        if (!bk.bl(this.mWy))
+        if (!bo.isNullOrNil(this.pzu))
         {
           j = i | 0x2;
-          this.mWv.setVisibility(0);
-          this.mWv.setText(this.mWy);
+          this.pzr.setVisibility(0);
+          this.pzr.setText(this.pzu);
         }
       }
       if (j == 1) {
-        ((RelativeLayout.LayoutParams)this.mWu.getLayoutParams()).addRule(15);
+        ((RelativeLayout.LayoutParams)this.pzq.getLayoutParams()).addRule(15);
       }
       if (j == 2)
       {
-        localLayoutParams = (RelativeLayout.LayoutParams)this.mWv.getLayoutParams();
+        localLayoutParams = (RelativeLayout.LayoutParams)this.pzr.getLayoutParams();
         localLayoutParams.addRule(3, 0);
         localLayoutParams.addRule(15);
       }
       super.onBindView(paramView);
+      AppMethodBeat.o(23430);
       return;
-      this.mWu.setVisibility(0);
-      this.mWu.setCompoundDrawablesWithIntrinsicBounds(R.k.card_photoicon, 0, 0, 0);
+      this.pzq.setVisibility(0);
+      this.pzq.setCompoundDrawablesWithIntrinsicBounds(2131231080, 0, 0, 0);
       i = 1;
       break;
     }
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(23429);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.mm_preference_content_remark_and_label_info, localViewGroup);
+    localLayoutInflater.inflate(2130970216, localViewGroup);
+    AppMethodBeat.o(23429);
     return paramViewGroup;
   }
 }

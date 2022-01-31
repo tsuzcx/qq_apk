@@ -26,15 +26,21 @@ public abstract class SQLiteProgram
     switch (i)
     {
     default: 
-      if (i != 1) {
-        break;
+      if (i == 1)
+      {
+        bool1 = true;
+        paramString = new SQLiteStatementInfo();
+        paramSQLiteDatabase.getThreadSession().prepare(this.mSql, paramSQLiteDatabase.getThreadDefaultConnectionFlags(bool1), paramCancellationSignal, paramString);
+        if ((i == 8) || (!paramString.readOnly)) {
+          break label214;
+        }
       }
+      break;
     }
-    for (;;)
+    label214:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramString = new SQLiteStatementInfo();
-      paramSQLiteDatabase.getThreadSession().prepare(this.mSql, paramSQLiteDatabase.getThreadDefaultConnectionFlags(bool), paramCancellationSignal, paramString);
-      this.mReadOnly = paramString.readOnly;
+      this.mReadOnly = bool1;
       this.mColumnNames = paramString.columnNames;
       for (this.mNumParameters = paramString.numParameters; (paramArrayOfObject != null) && (paramArrayOfObject.length > this.mNumParameters); this.mNumParameters = 0)
       {
@@ -42,7 +48,8 @@ public abstract class SQLiteProgram
         this.mReadOnly = false;
         this.mColumnNames = EMPTY_STRING_ARRAY;
       }
-      bool = false;
+      bool1 = false;
+      break;
     }
     if (this.mNumParameters != 0)
     {
@@ -68,7 +75,7 @@ public abstract class SQLiteProgram
     this.mBindArgs[(paramInt - 1)] = paramObject;
   }
   
-  protected boolean acquirePreparedStatement()
+  protected boolean acquirePreparedStatement(boolean paramBoolean)
   {
     for (;;)
     {
@@ -78,18 +85,18 @@ public abstract class SQLiteProgram
         SQLiteSession localSQLiteSession2 = this.mBoundSession;
         if (localSQLiteSession1 == localSQLiteSession2)
         {
-          bool = false;
-          return bool;
+          paramBoolean = false;
+          return paramBoolean;
         }
         if (this.mBoundSession != null) {
           throw new IllegalStateException("SQLiteProgram has bound to another thread.");
         }
       }
       finally {}
-      this.mBoundSession = localObject;
-      this.mPreparedStatement = localObject.acquirePreparedStatement(this.mSql, this.mDatabase.getThreadDefaultConnectionFlags(this.mReadOnly));
+      this.mPreparedStatement = localObject.acquirePreparedStatement(this.mSql, this.mDatabase.getThreadDefaultConnectionFlags(this.mReadOnly), paramBoolean);
       this.mPreparedStatement.bindArguments(this.mBindArgs);
-      boolean bool = true;
+      this.mBoundSession = localObject;
+      paramBoolean = true;
     }
   }
   
@@ -137,7 +144,7 @@ public abstract class SQLiteProgram
     bind(paramInt, paramString);
   }
   
-  public final void checkCorruption(SQLiteException paramSQLiteException)
+  protected final void checkCorruption(SQLiteException paramSQLiteException)
   {
     int i = 1;
     if ((paramSQLiteException instanceof SQLiteDatabaseCorruptException)) {}
@@ -226,7 +233,7 @@ public abstract class SQLiteProgram
     return this.mDatabase.getThreadSession();
   }
   
-  public final String getSql()
+  protected final String getSql()
   {
     return this.mSql;
   }

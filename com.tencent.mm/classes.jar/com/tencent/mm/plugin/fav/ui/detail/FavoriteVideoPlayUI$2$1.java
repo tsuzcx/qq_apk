@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import com.tencent.mm.plugin.fav.ui.n.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.vfs.e;
@@ -10,15 +10,17 @@ final class FavoriteVideoPlayUI$2$1
 {
   FavoriteVideoPlayUI$2$1(FavoriteVideoPlayUI.2 param2) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    if (FavoriteVideoPlayUI.a(this.kgE.kgD))
+    AppMethodBeat.i(74458);
+    if (FavoriteVideoPlayUI.a(this.mBs.mBr))
     {
-      if (e.bK(FavoriteVideoPlayUI.b(this.kgE.kgD))) {
-        paraml.add(0, 1, 0, this.kgE.kgD.getString(n.i.favorite_share_with_friend));
+      if (e.cN(FavoriteVideoPlayUI.b(this.mBs.mBr))) {
+        paraml.add(0, 1, 0, this.mBs.mBr.getString(2131299826));
       }
-      paraml.add(0, 2, 0, this.kgE.kgD.getString(n.i.save_video_to_local));
+      paraml.add(0, 2, 0, this.mBs.mBr.getString(2131302872));
     }
+    AppMethodBeat.o(74458);
   }
 }
 

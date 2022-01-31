@@ -1,57 +1,75 @@
 package com.tencent.mm.plugin.fts;
 
-import android.util.Log;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.vfs.b;
+import com.tencent.mm.vfs.j;
+import com.tencent.wcdb.DatabaseErrorHandler;
 
 final class PluginFTS$b
   extends a
 {
-  private PluginFTS$b(PluginFTS paramPluginFTS) {}
+  PluginFTS$b(PluginFTS paramPluginFTS) {}
   
   public final boolean execute()
   {
-    g.DQ();
-    if (2 != ((Integer)g.DP().Dz().get(ac.a.uxh, Integer.valueOf(0))).intValue())
+    AppMethodBeat.i(136599);
+    g.RM();
+    if (2 != ((Integer)g.RL().Ru().get(ac.a.yHq, Integer.valueOf(0))).intValue())
     {
-      d.aVp();
-      g.DQ();
-      g.DP().Dz().c(ac.a.uxh, Integer.valueOf(2));
+      d.bBO();
+      g.RM();
+      g.RL().Ru().set(ac.a.yHq, Integer.valueOf(2));
     }
-    g.DQ();
-    Object localObject = new b(g.DP().cachePath, "IndexMicroMsg.db");
+    g.RM();
+    Object localObject = new b(g.RL().cachePath, "IndexMicroMsg.db");
     if (((b)localObject).exists()) {
       ((b)localObject).delete();
     }
-    try
+    for (;;)
     {
-      localObject = this.kuy;
-      g.DQ();
-      PluginFTS.access$202((PluginFTS)localObject, new d(g.DP().cachePath));
-      PluginFTS.access$600(this.kuy);
-      PluginFTS.access$700(this.kuy);
-      PluginFTS.access$800(this.kuy);
-      PluginFTS.access$900(this.kuy);
-      return true;
+      g.RM();
+      localObject = new b(g.RL().cachePath, "FTS5IndexMicroMsg.db");
+      if (((b)localObject).exists()) {
+        ((b)localObject).delete();
+      }
+      try
+      {
+        for (;;)
+        {
+          localObject = this.mQm;
+          g.RM();
+          PluginFTS.access$102((PluginFTS)localObject, new d(g.RL().cachePath));
+          PluginFTS.access$500(this.mQm);
+          PluginFTS.access$600(this.mQm);
+          PluginFTS.access$700(this.mQm);
+          PluginFTS.access$800(this.mQm);
+          AppMethodBeat.o(136599);
+          return true;
+          ab.i("MicroMsg.FTS.PluginFTS", "not exist fts3DBFile %s", new Object[] { j.p(((b)localObject).dQJ()) });
+          break;
+          ab.i("MicroMsg.FTS.PluginFTS", "not exist fts5DBUnEncrypt %s", new Object[] { j.p(((b)localObject).dQJ()) });
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (PluginFTS.mPY)
+          {
+            AppMethodBeat.o(136599);
+            return true;
+          }
+          ab.printErrStackTrace("MicroMsg.FTS.PluginFTS", localException, "Index database corruption detected", new Object[0]);
+          PluginFTS.access$900(this.mQm).onCorruption(null);
+        }
+      }
     }
-    catch (Exception localException)
-    {
-      while (PluginFTS.kuk) {}
-      y.printErrStackTrace("MicroMsg.FTS.PluginFTS", localException, "Index database corruption detected", new Object[0]);
-      com.tencent.mm.plugin.fts.a.e.rv(19);
-      PluginFTS.access$300(this.kuy);
-      PluginFTS.access$400(this.kuy);
-      PluginFTS.access$200(this.kuy).close();
-      d.aVp();
-      String str = "InitSearchTask: " + Log.getStackTraceString(localException);
-      h.nFQ.d("FTS", str, null);
-    }
-    return true;
   }
   
   public final String getName()
@@ -61,7 +79,7 @@ final class PluginFTS$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.PluginFTS.b
  * JD-Core Version:    0.7.0.1
  */

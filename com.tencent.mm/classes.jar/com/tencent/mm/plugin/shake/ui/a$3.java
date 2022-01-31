@@ -1,26 +1,29 @@
 package com.tencent.mm.plugin.shake.ui;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.TimerTask;
 
 final class a$3
   extends TimerTask
 {
-  a$3(ProgressDialog paramProgressDialog, ah paramah) {}
+  a$3(ProgressDialog paramProgressDialog, ak paramak) {}
   
   public final void run()
   {
-    if (this.iMq != null)
+    AppMethodBeat.i(24691);
+    if (this.kTo != null)
     {
-      this.iMq.dismiss();
-      this.hZR.sendEmptyMessage(0);
+      this.kTo.dismiss();
+      this.mFP.sendEmptyMessage(0);
     }
+    AppMethodBeat.o(24691);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.a.3
  * JD-Core Version:    0.7.0.1
  */

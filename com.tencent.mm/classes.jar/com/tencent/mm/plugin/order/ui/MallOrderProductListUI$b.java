@@ -3,31 +3,34 @@ package com.tencent.mm.plugin.order.ui;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x.a;
 
 final class MallOrderProductListUI$b
   implements x.a
 {
-  String ilp;
-  ImageView iwn;
-  TextView mQJ;
-  TextView mQK;
-  TextView mQL;
-  TextView mQM;
-  TextView mQN;
+  String kmm;
+  ImageView kxr;
+  TextView pqW;
+  TextView pqX;
+  TextView pqY;
+  TextView pqZ;
+  TextView pra;
   
   private MallOrderProductListUI$b(MallOrderProductListUI paramMallOrderProductListUI) {}
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void m(String paramString, Bitmap paramBitmap)
   {
-    if ((paramString != null) && (paramString.equals(this.ilp))) {
-      this.iwn.post(new MallOrderProductListUI.b.1(this, paramBitmap));
+    AppMethodBeat.i(43841);
+    if ((paramString != null) && (paramString.equals(this.kmm))) {
+      this.kxr.post(new MallOrderProductListUI.b.1(this, paramBitmap));
     }
+    AppMethodBeat.o(43841);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.MallOrderProductListUI.b
  * JD-Core Version:    0.7.0.1
  */

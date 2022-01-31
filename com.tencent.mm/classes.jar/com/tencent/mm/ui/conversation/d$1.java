@@ -1,14 +1,17 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.h.a.nh;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.oe;
 import com.tencent.mm.sdk.b.c;
 
 final class d$1
-  extends c<nh>
+  extends c<oe>
 {
   d$1(d paramd)
   {
-    this.udX = nh.class.getName().hashCode();
+    AppMethodBeat.i(34174);
+    this.__eventId = oe.class.getName().hashCode();
+    AppMethodBeat.o(34174);
   }
 }
 

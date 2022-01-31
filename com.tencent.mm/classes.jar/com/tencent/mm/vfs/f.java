@@ -1,5 +1,6 @@
 package com.tencent.mm.vfs;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FilterOutputStream;
 
 public final class f
@@ -7,7 +8,9 @@ public final class f
 {
   public f(b paramb)
   {
-    super(e.a(paramb.mUri, paramb.cLo(), false));
+    super(e.a(paramb.mUri, paramb.dQG(), false));
+    AppMethodBeat.i(54664);
+    AppMethodBeat.o(54664);
   }
 }
 

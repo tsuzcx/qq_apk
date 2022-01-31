@@ -1,29 +1,58 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.e.a;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONObject;
 
 public class ai
-  extends ax<e>
+  extends bi<com.tencent.mm.plugin.webview.luggage.e>
 {
-  public final void a(Context paramContext, String paramString, aw.a parama) {}
+  public final void a(Context paramContext, String paramString, bh.a parama) {}
   
-  public final int aGj()
+  public final void b(a<com.tencent.mm.plugin.webview.luggage.e>.a parama)
+  {
+    AppMethodBeat.i(6342);
+    ab.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "invokeInOwn");
+    String str = parama.byF.bxK.optString("url");
+    ab.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "url: %s", new Object[] { str });
+    if (bo.isNullOrNil(str))
+    {
+      parama.a("fail", null);
+      AppMethodBeat.o(6342);
+      return;
+    }
+    Object localObject = Uri.parse(str);
+    if ((((Uri)localObject).getHost() != null) && (!((Uri)localObject).getHost().equals("game.weixin.qq.com")))
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("rawUrl", str);
+      d.b(((com.tencent.mm.plugin.webview.luggage.e)parama.byE).mContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+      parama.a("", null);
+      AppMethodBeat.o(6342);
+      return;
+    }
+    al.d(new ai.1(this, str, parama));
+    parama.a("", null);
+    AppMethodBeat.o(6342);
+  }
+  
+  public final int bjL()
   {
     return 0;
   }
   
-  public final void b(a<e>.a parama)
-  {
-    y.i("MicroMsg.JsApiRecordVideo", "invoke");
-    i.a(parama, 1);
-  }
-  
   public final String name()
   {
-    return "recordVideo";
+    return "openUrlWithExtraWebview";
   }
 }
 

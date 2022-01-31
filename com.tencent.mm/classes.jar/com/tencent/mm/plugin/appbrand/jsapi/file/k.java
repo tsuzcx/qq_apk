@@ -1,14 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class k
-  extends b<ao>
+  extends d<ap>
 {
-  private static final int CTRL_INDEX = 399;
-  private static final String NAME = "fs_copyFile";
+  private static final int CTRL_INDEX = 461;
+  private static final String NAME = "fs_appendFile";
   
   public k()
   {
-    super(new ao());
+    super(new ap());
+    AppMethodBeat.i(102778);
+    AppMethodBeat.o(102778);
   }
 }
 

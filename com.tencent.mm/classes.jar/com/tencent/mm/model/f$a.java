@@ -2,7 +2,7 @@ package com.tencent.mm.model;
 
 public abstract interface f$a
 {
-  public abstract void cw(String paramString);
+  public abstract void dJ(String paramString);
 }
 
 

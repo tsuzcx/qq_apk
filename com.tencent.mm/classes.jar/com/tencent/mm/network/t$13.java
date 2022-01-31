@@ -1,19 +1,22 @@
 package com.tencent.mm.network;
 
-import com.tencent.mars.BaseEvent;
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mars.stn.StnLogic;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bj;
 
-final class t$13
-  extends bf<Object>
+public final class t$13
+  extends bj<Object>
 {
-  t$13(t paramt, Object paramObject)
+  public t$13(t paramt, String paramString1, String paramString2)
   {
-    super(3000L, paramObject, (byte)0);
+    super(1000L, null, (byte)0);
   }
   
   public final Object run()
   {
-    BaseEvent.onNetworkChange();
+    AppMethodBeat.i(58563);
+    StnLogic.setDebugIP(this.gec, this.gea);
+    AppMethodBeat.o(58563);
     return null;
   }
 }

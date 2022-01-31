@@ -9,16 +9,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.protocal.c.aop;
-import com.tencent.mm.protocal.c.aoq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.protocal.protobuf.auh;
+import com.tencent.mm.protocal.protobuf.aui;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.Assert;
@@ -26,169 +24,212 @@ import junit.framework.Assert;
 final class ExdeviceBindDeviceUI$a
   extends BaseAdapter
 {
-  private c jAJ;
-  List<ExdeviceBindDeviceUI.f> jBD;
-  private String jBE;
-  private ExdeviceBindDeviceUI.e jBF;
-  private String jBG;
+  private c lKi;
+  List<ExdeviceBindDeviceUI.f> lLc;
+  private String lLd;
+  private ExdeviceBindDeviceUI.e lLe;
+  private String lLf;
   
   public ExdeviceBindDeviceUI$a(String paramString1, ExdeviceBindDeviceUI.e parame, String paramString2)
   {
-    this.jBE = paramString1;
-    this.jBF = parame;
-    this.jBG = paramString2;
-    this.jBD = new ArrayList();
+    AppMethodBeat.i(19837);
+    this.lLd = paramString1;
+    this.lLe = parame;
+    this.lLf = paramString2;
+    this.lLc = new ArrayList();
     paramString1 = new c.a();
-    paramString1.ery = R.e.settings_bg;
-    this.jAJ = paramString1.OV();
+    paramString1.eOa = 2131690446;
+    this.lKi = paramString1.ahY();
+    AppMethodBeat.o(19837);
   }
   
-  private int BO(String paramString)
+  private int LQ(String paramString)
   {
+    AppMethodBeat.i(19845);
     int i = 0;
-    while (i < this.jBD.size())
+    while (i < this.lLc.size())
     {
-      if (((ExdeviceBindDeviceUI.f)this.jBD.get(i)).getKey().compareTo(paramString) == 0) {
+      if (((ExdeviceBindDeviceUI.f)this.lLc.get(i)).getKey().compareTo(paramString) == 0)
+      {
+        AppMethodBeat.o(19845);
         return i;
       }
       i += 1;
     }
+    AppMethodBeat.o(19845);
     return -1;
   }
   
-  private static boolean BP(String paramString)
+  private static boolean LR(String paramString)
   {
-    return (paramString == null) || (paramString.length() == 0);
-  }
-  
-  public final boolean BM(String paramString)
-  {
-    return BO(paramString) >= 0;
-  }
-  
-  public final ExdeviceBindDeviceUI.f BN(String paramString)
-  {
-    Object localObject;
+    AppMethodBeat.i(19848);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      localObject = null;
-      return localObject;
+      AppMethodBeat.o(19848);
+      return true;
     }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= this.jBD.size()) {
-        break label78;
-      }
-      ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.jBD.get(i);
-      if (!BP(localf.aMu()))
-      {
-        localObject = localf;
-        if (paramString.equalsIgnoreCase(localf.aMu())) {
-          break;
-        }
-      }
-      i += 1;
-    }
-    label78:
-    return null;
+    AppMethodBeat.o(19848);
+    return false;
   }
   
-  public final void aMt()
+  public final boolean LO(String paramString)
   {
-    int i = 0;
-    while (i < this.jBD.size())
+    AppMethodBeat.i(19840);
+    if (LQ(paramString) >= 0)
     {
-      ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.jBD.get(i);
-      localf.jBP = c(localf);
+      AppMethodBeat.o(19840);
+      return true;
+    }
+    AppMethodBeat.o(19840);
+    return false;
+  }
+  
+  public final ExdeviceBindDeviceUI.f LP(String paramString)
+  {
+    AppMethodBeat.i(19841);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(19841);
+      return null;
+    }
+    int i = 0;
+    while (i < this.lLc.size())
+    {
+      ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.lLc.get(i);
+      if ((!LR(localf.bqH())) && (paramString.equalsIgnoreCase(localf.bqH())))
+      {
+        AppMethodBeat.o(19841);
+        return localf;
+      }
       i += 1;
     }
+    AppMethodBeat.o(19841);
+    return null;
   }
   
   public final boolean b(ExdeviceBindDeviceUI.f paramf)
   {
-    if (BO(paramf.getKey()) < 0) {
+    AppMethodBeat.i(19839);
+    if (LQ(paramf.getKey()) < 0)
+    {
+      AppMethodBeat.o(19839);
       return false;
     }
-    paramf.jBP = c(paramf);
+    paramf.lLo = c(paramf);
+    AppMethodBeat.o(19839);
     return true;
+  }
+  
+  final void bqG()
+  {
+    AppMethodBeat.i(19838);
+    int i = 0;
+    while (i < this.lLc.size())
+    {
+      ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.lLc.get(i);
+      localf.lLo = c(localf);
+      i += 1;
+    }
+    AppMethodBeat.o(19838);
   }
   
   final boolean c(ExdeviceBindDeviceUI.f paramf)
   {
-    if (paramf.jBU == null) {}
-    do
+    AppMethodBeat.i(19847);
+    if (paramf.lLt == null)
     {
+      AppMethodBeat.o(19847);
       return false;
-      if (this.jBF != ExdeviceBindDeviceUI.e.jBN) {
-        break;
-      }
-    } while ((paramf.jBU.tkr == null) || (paramf.jBU.tkr.compareTo(this.jBE) != 0) || (paramf.jBU.tkA == null) || (paramf.jBU.tkA.compareTo(this.jBG) != 0));
-    do
+    }
+    if (this.lLe == ExdeviceBindDeviceUI.e.lLm)
     {
-      return true;
-      if (this.jBF != ExdeviceBindDeviceUI.e.jBM) {
-        break;
+      if ((paramf.lLt.xji == null) || (paramf.lLt.xji.compareTo(this.lLd) != 0))
+      {
+        AppMethodBeat.o(19847);
+        return false;
       }
-    } while (paramf.jBU.cMX != 0);
-    return false;
-    Assert.assertTrue(false);
-    return false;
+      if ((paramf.lLt.xjr == null) || (paramf.lLt.xjr.compareTo(this.lLf) != 0))
+      {
+        AppMethodBeat.o(19847);
+        return false;
+      }
+    }
+    else if (this.lLe == ExdeviceBindDeviceUI.e.lLl)
+    {
+      if (paramf.lLt.dCN == 0)
+      {
+        AppMethodBeat.o(19847);
+        return false;
+      }
+    }
+    else
+    {
+      Assert.assertTrue(false);
+      AppMethodBeat.o(19847);
+      return false;
+    }
+    AppMethodBeat.o(19847);
+    return true;
   }
   
-  final int cT(String paramString1, String paramString2)
+  final int dX(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(19846);
     int i = 0;
-    while (i < this.jBD.size())
+    while (i < this.lLc.size())
     {
-      Object localObject = (ExdeviceBindDeviceUI.f)this.jBD.get(i);
+      Object localObject = (ExdeviceBindDeviceUI.f)this.lLc.get(i);
       String str;
-      if (((ExdeviceBindDeviceUI.f)localObject).jBT != null)
+      if (((ExdeviceBindDeviceUI.f)localObject).lLs != null)
       {
-        str = ((ExdeviceBindDeviceUI.f)localObject).jBT.syI;
-        if (((ExdeviceBindDeviceUI.f)localObject).jBT == null) {
-          break label132;
+        str = ((ExdeviceBindDeviceUI.f)localObject).lLs.wsq;
+        if (((ExdeviceBindDeviceUI.f)localObject).lLs == null) {
+          break label144;
         }
-        localObject = ((ExdeviceBindDeviceUI.f)localObject).jBT.hQb;
+        localObject = ((ExdeviceBindDeviceUI.f)localObject).lLs.jJD;
       }
       for (;;)
       {
-        if ((BP(str)) || (BP((String)localObject)) || (paramString1.compareTo(str) != 0) || (paramString2.compareTo((String)localObject) != 0)) {
-          break label162;
+        if ((LR(str)) || (LR((String)localObject)) || (paramString1.compareTo(str) != 0) || (paramString2.compareTo((String)localObject) != 0)) {
+          break label174;
         }
+        AppMethodBeat.o(19846);
         return i;
-        if (((ExdeviceBindDeviceUI.f)localObject).jBQ == ExdeviceBindDeviceUI.b.jBH)
+        if (((ExdeviceBindDeviceUI.f)localObject).lLp == ExdeviceBindDeviceUI.b.lLg)
         {
-          str = ((ExdeviceBindDeviceUI.f)localObject).jBS.jAa;
+          str = ((ExdeviceBindDeviceUI.f)localObject).lLr.lJz;
           break;
         }
         str = null;
         break;
-        label132:
-        if (((ExdeviceBindDeviceUI.f)localObject).jBQ == ExdeviceBindDeviceUI.b.jBH) {
-          localObject = ((ExdeviceBindDeviceUI.f)localObject).jBS.juM;
+        label144:
+        if (((ExdeviceBindDeviceUI.f)localObject).lLp == ExdeviceBindDeviceUI.b.lLg) {
+          localObject = ((ExdeviceBindDeviceUI.f)localObject).lLr.lEl;
         } else {
           localObject = null;
         }
       }
-      label162:
+      label174:
       i += 1;
     }
+    AppMethodBeat.o(19846);
     return -1;
   }
   
   public final int getCount()
   {
+    AppMethodBeat.i(19842);
     int i = 0;
     int k;
-    for (int j = 0; i < this.jBD.size(); j = k)
+    for (int j = 0; i < this.lLc.size(); j = k)
     {
       k = j;
-      if (((ExdeviceBindDeviceUI.f)this.jBD.get(i)).jBP) {
+      if (((ExdeviceBindDeviceUI.f)this.lLc.get(i)).lLo) {
         k = j + 1;
       }
       i += 1;
     }
+    AppMethodBeat.o(19842);
     return j;
   }
   
@@ -199,78 +240,81 @@ final class ExdeviceBindDeviceUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    ExdeviceBindDeviceUI.f localf = qt(paramInt);
+    AppMethodBeat.i(19844);
+    ExdeviceBindDeviceUI.f localf = va(paramInt);
     ExdeviceBindDeviceUI.a.a locala;
     View localView;
     if (paramView == null)
     {
       locala = new ExdeviceBindDeviceUI.a.a((byte)0);
-      localView = View.inflate(paramViewGroup.getContext(), R.i.exdevice_bind_device_item, null);
-      locala.fhD = ((TextView)localView.findViewById(R.h.nameTV));
-      locala.gSx = ((ImageView)localView.findViewById(R.h.iconIV));
+      localView = View.inflate(paramViewGroup.getContext(), 2130969445, null);
+      locala.gzk = ((TextView)localView.findViewById(2131823741));
+      locala.ivs = ((ImageView)localView.findViewById(2131823740));
       localView.setTag(locala);
     }
-    while ((localf == null) || (localf.jBU == null))
+    while ((localf == null) || (localf.lLt == null))
     {
       Assert.assertTrue(false);
+      AppMethodBeat.o(19844);
       return localView;
       locala = (ExdeviceBindDeviceUI.a.a)paramView.getTag();
       localView = paramView;
     }
     Object localObject;
-    if (localf.jBQ == ExdeviceBindDeviceUI.b.jBI)
+    if (localf.lLp == ExdeviceBindDeviceUI.b.lLh)
     {
-      y.d("MicroMsg.ExdeviceBindDeviceUI", "position(%s), broadcastname(%s), mac(%s), deviceTitle(%s).", new Object[] { Integer.valueOf(paramInt), localf.jBR.jBK, localf.jBR.btt, localf.jBU.tky });
+      ab.d("MicroMsg.ExdeviceBindDeviceUI", "position(%s), broadcastname(%s), mac(%s), deviceTitle(%s).", new Object[] { Integer.valueOf(paramInt), localf.lLq.lLj, localf.lLq.bUD, localf.lLt.xjp });
       localObject = "";
-      paramView = localf.jBU.cNb;
+      paramView = localf.lLt.dCR;
       if ((paramView != null) && (paramView.length() >= 4))
       {
         paramView = paramView.substring(paramView.length() - 4, paramView.length());
-        paramView = localf.jBU.tky + " " + paramView;
+        paramView = localf.lLt.xjp + " " + paramView;
         localObject = new SpannableString(paramView);
-        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramViewGroup.getContext().getResources().getColor(R.e.hint_text_color)), localf.jBU.tky.length() + 1, paramView.length(), 17);
-        locala.fhD.setText((CharSequence)localObject);
+        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramViewGroup.getContext().getResources().getColor(2131690168)), localf.lLt.xjp.length() + 1, paramView.length(), 17);
+        locala.gzk.setText((CharSequence)localObject);
       }
     }
     for (;;)
     {
-      paramView = localf.jBU.kSy;
-      if (!BP(paramView)) {
-        o.ON().a(paramView, locala.gSx, this.jAJ);
+      paramView = localf.lLt.IconUrl;
+      if (!LR(paramView)) {
+        o.ahG().a(paramView, locala.ivs, this.lKi);
       }
+      AppMethodBeat.o(19844);
       return localView;
       paramView = (View)localObject;
-      if (localf.jBR.btt == null) {
+      if (localf.lLq.bUD == null) {
         break;
       }
       paramView = (View)localObject;
-      if (localf.jBR.btt.length() < 4) {
+      if (localf.lLq.bUD.length() < 4) {
         break;
       }
-      paramView = localf.jBR.btt;
+      paramView = localf.lLq.bUD;
       paramView = paramView.substring(paramView.length() - 4, paramView.length());
       break;
-      if (localf.jBQ == ExdeviceBindDeviceUI.b.jBH)
+      if (localf.lLp == ExdeviceBindDeviceUI.b.lLg)
       {
         localObject = "";
-        paramView = localf.jBU.cNb;
+        paramView = localf.lLt.dCR;
         if ((paramView != null) && (paramView.length() >= 4)) {
           paramView = paramView.substring(paramView.length() - 4, paramView.length());
         }
         for (;;)
         {
-          paramView = localf.jBU.tky + " " + paramView;
+          paramView = localf.lLt.xjp + " " + paramView;
           localObject = new SpannableString(paramView);
-          ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramViewGroup.getContext().getResources().getColor(R.e.hint_text_color)), localf.jBU.tky.length() + 1, paramView.length(), 17);
-          locala.fhD.setText((CharSequence)localObject);
+          ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramViewGroup.getContext().getResources().getColor(2131690168)), localf.lLt.xjp.length() + 1, paramView.length(), 17);
+          locala.gzk.setText((CharSequence)localObject);
           break;
           paramView = (View)localObject;
-          if (localf.jBU.sAE != null)
+          if (localf.lLt.wuT != null)
           {
             paramView = (View)localObject;
-            if (localf.jBU.sAE.length() >= 4)
+            if (localf.lLt.wuT.length() >= 4)
             {
-              paramView = localf.jBU.sAE;
+              paramView = localf.lLt.wuT;
               paramView = paramView.substring(paramView.length() - 4, paramView.length());
             }
           }
@@ -280,22 +324,27 @@ final class ExdeviceBindDeviceUI$a
     }
   }
   
-  public final ExdeviceBindDeviceUI.f qt(int paramInt)
+  public final ExdeviceBindDeviceUI.f va(int paramInt)
   {
+    AppMethodBeat.i(19843);
     int j = -1;
     int i = 0;
-    while (i < this.jBD.size())
+    while (i < this.lLc.size())
     {
       int k = j;
-      if (((ExdeviceBindDeviceUI.f)this.jBD.get(i)).jBP) {
+      if (((ExdeviceBindDeviceUI.f)this.lLc.get(i)).lLo) {
         k = j + 1;
       }
-      if (k == paramInt) {
-        return (ExdeviceBindDeviceUI.f)this.jBD.get(i);
+      if (k == paramInt)
+      {
+        ExdeviceBindDeviceUI.f localf = (ExdeviceBindDeviceUI.f)this.lLc.get(i);
+        AppMethodBeat.o(19843);
+        return localf;
       }
       i += 1;
       j = k;
     }
+    AppMethodBeat.o(19843);
     return null;
   }
 }

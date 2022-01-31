@@ -4,37 +4,99 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import com.google.android.gms.common.internal.Objects;
+import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.ReflectedParcelable;
-import com.google.android.gms.common.internal.zzaa;
-import com.google.android.gms.common.internal.zzac;
-import com.google.android.gms.internal.zzuz;
+import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.List;
+import javax.annotation.Nonnull;
 
+@SafeParcelable.Class(creator="CredentialCreator")
+@SafeParcelable.Reserved({1000})
 public class Credential
-  extends com.google.android.gms.common.internal.safeparcel.zza
+  extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
-  public static final Parcelable.Creator<Credential> CREATOR = new zza();
+  public static final Parcelable.Creator<Credential> CREATOR;
   public static final String EXTRA_KEY = "com.google.android.gms.credentials.Credential";
+  @SafeParcelable.Field(getter="getName", id=2)
   private final String mName;
-  private final String zzGV;
-  final int zzaiI;
-  private final Uri zzajf;
-  private final List<IdToken> zzajg;
-  private final String zzajh;
-  private final String zzaji;
-  private final String zzajj;
-  private final String zzajk;
-  private final String zzajl;
-  private final String zzajm;
+  @SafeParcelable.Field(getter="getAccountType", id=6)
+  private final String zzbx;
+  @Nonnull
+  @SafeParcelable.Field(getter="getId", id=1)
+  private final String zzci;
+  @SafeParcelable.Field(getter="getProfilePictureUri", id=3)
+  private final Uri zzcj;
+  @Nonnull
+  @SafeParcelable.Field(getter="getIdTokens", id=4)
+  private final List<IdToken> zzck;
+  @SafeParcelable.Field(getter="getPassword", id=5)
+  private final String zzcl;
+  @SafeParcelable.Field(getter="getGeneratedPassword", id=7)
+  private final String zzcm;
+  @SafeParcelable.Field(getter="getGeneratedHintId", id=8)
+  private final String zzcn;
+  @SafeParcelable.Field(getter="getGivenName", id=9)
+  private final String zzco;
+  @SafeParcelable.Field(getter="getFamilyName", id=10)
+  private final String zzcp;
   
-  Credential(int paramInt, String paramString1, String paramString2, Uri paramUri, List<IdToken> paramList, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  static
   {
-    this.zzaiI = paramInt;
-    paramString1 = ((String)zzac.zzb(paramString1, "credential identifier cannot be null")).trim();
-    zzac.zzh(paramString1, "credential identifier cannot be empty");
-    this.zzGV = paramString1;
+    AppMethodBeat.i(50314);
+    CREATOR = new zzd();
+    AppMethodBeat.o(50314);
+  }
+  
+  @SafeParcelable.Constructor
+  Credential(@SafeParcelable.Param(id=1) String paramString1, @SafeParcelable.Param(id=2) String paramString2, @SafeParcelable.Param(id=3) Uri paramUri, @SafeParcelable.Param(id=4) List<IdToken> paramList, @SafeParcelable.Param(id=5) String paramString3, @SafeParcelable.Param(id=6) String paramString4, @SafeParcelable.Param(id=7) String paramString5, @SafeParcelable.Param(id=8) String paramString6, @SafeParcelable.Param(id=9) String paramString7, @SafeParcelable.Param(id=10) String paramString8)
+  {
+    AppMethodBeat.i(50310);
+    String str = ((String)Preconditions.checkNotNull(paramString1, "credential identifier cannot be null")).trim();
+    Preconditions.checkNotEmpty(str, "credential identifier cannot be empty");
+    if ((paramString3 != null) && (TextUtils.isEmpty(paramString3)))
+    {
+      paramString1 = new IllegalArgumentException("Password must not be empty if set");
+      AppMethodBeat.o(50310);
+      throw paramString1;
+    }
+    if (paramString4 != null)
+    {
+      int i;
+      if (!TextUtils.isEmpty(paramString4))
+      {
+        paramString1 = Uri.parse(paramString4);
+        if ((!paramString1.isAbsolute()) || (!paramString1.isHierarchical()) || (TextUtils.isEmpty(paramString1.getScheme())) || (TextUtils.isEmpty(paramString1.getAuthority()))) {
+          i = 0;
+        }
+      }
+      while (i == 0)
+      {
+        paramString1 = new IllegalArgumentException("Account type must be a valid Http/Https URI");
+        AppMethodBeat.o(50310);
+        throw paramString1;
+        if (("http".equalsIgnoreCase(paramString1.getScheme())) || ("https".equalsIgnoreCase(paramString1.getScheme()))) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+      }
+    }
+    if ((!TextUtils.isEmpty(paramString4)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      paramString1 = new IllegalArgumentException("Password and AccountType are mutually exclusive");
+      AppMethodBeat.o(50310);
+      throw paramString1;
+    }
     paramString1 = paramString2;
     if (paramString2 != null)
     {
@@ -44,72 +106,76 @@ public class Credential
       }
     }
     this.mName = paramString1;
-    this.zzajf = paramUri;
+    this.zzcj = paramUri;
     if (paramList == null) {}
     for (paramString1 = Collections.emptyList();; paramString1 = Collections.unmodifiableList(paramList))
     {
-      this.zzajg = paramString1;
-      this.zzajh = paramString3;
-      if ((paramString3 == null) || (!paramString3.isEmpty())) {
-        break;
-      }
-      throw new IllegalArgumentException("password cannot be empty");
-    }
-    if (!TextUtils.isEmpty(paramString4)) {
-      zzuz.zzct(paramString4);
-    }
-    this.zzaji = paramString4;
-    this.zzajj = paramString5;
-    this.zzajk = paramString6;
-    this.zzajl = paramString7;
-    this.zzajm = paramString8;
-    if ((!TextUtils.isEmpty(this.zzajh)) && (!TextUtils.isEmpty(this.zzaji))) {
-      throw new IllegalStateException("password and accountType cannot both be set");
+      this.zzck = paramString1;
+      this.zzci = str;
+      this.zzcl = paramString3;
+      this.zzbx = paramString4;
+      this.zzcm = paramString5;
+      this.zzcn = paramString6;
+      this.zzco = paramString7;
+      this.zzcp = paramString8;
+      AppMethodBeat.o(50310);
+      return;
     }
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(50312);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(50312);
       return true;
-      if (!(paramObject instanceof Credential)) {
-        return false;
-      }
-      paramObject = (Credential)paramObject;
-    } while ((TextUtils.equals(this.zzGV, paramObject.zzGV)) && (TextUtils.equals(this.mName, paramObject.mName)) && (zzaa.equal(this.zzajf, paramObject.zzajf)) && (TextUtils.equals(this.zzajh, paramObject.zzajh)) && (TextUtils.equals(this.zzaji, paramObject.zzaji)) && (TextUtils.equals(this.zzajj, paramObject.zzajj)));
+    }
+    if (!(paramObject instanceof Credential))
+    {
+      AppMethodBeat.o(50312);
+      return false;
+    }
+    paramObject = (Credential)paramObject;
+    if ((TextUtils.equals(this.zzci, paramObject.zzci)) && (TextUtils.equals(this.mName, paramObject.mName)) && (Objects.equal(this.zzcj, paramObject.zzcj)) && (TextUtils.equals(this.zzcl, paramObject.zzcl)) && (TextUtils.equals(this.zzbx, paramObject.zzbx)) && (TextUtils.equals(this.zzcm, paramObject.zzcm)))
+    {
+      AppMethodBeat.o(50312);
+      return true;
+    }
+    AppMethodBeat.o(50312);
     return false;
   }
   
   public String getAccountType()
   {
-    return this.zzaji;
+    return this.zzbx;
   }
   
   public String getFamilyName()
   {
-    return this.zzajm;
+    return this.zzcp;
   }
   
   public String getGeneratedPassword()
   {
-    return this.zzajj;
+    return this.zzcm;
   }
   
   public String getGivenName()
   {
-    return this.zzajl;
+    return this.zzco;
   }
   
+  @Nonnull
   public String getId()
   {
-    return this.zzGV;
+    return this.zzci;
   }
   
+  @Nonnull
   public List<IdToken> getIdTokens()
   {
-    return this.zzajg;
+    return this.zzck;
   }
   
   public String getName()
@@ -119,27 +185,38 @@ public class Credential
   
   public String getPassword()
   {
-    return this.zzajh;
+    return this.zzcl;
   }
   
   public Uri getProfilePictureUri()
   {
-    return this.zzajf;
+    return this.zzcj;
   }
   
   public int hashCode()
   {
-    return zzaa.hashCode(new Object[] { this.zzGV, this.mName, this.zzajf, this.zzajh, this.zzaji, this.zzajj });
+    AppMethodBeat.i(50313);
+    int i = Objects.hashCode(new Object[] { this.zzci, this.mName, this.zzcj, this.zzcl, this.zzbx, this.zzcm });
+    AppMethodBeat.o(50313);
+    return i;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    zza.zza(this, paramParcel, paramInt);
-  }
-  
-  public String zzqV()
-  {
-    return this.zzajk;
+    AppMethodBeat.i(50311);
+    int i = SafeParcelWriter.beginObjectHeader(paramParcel);
+    SafeParcelWriter.writeString(paramParcel, 1, getId(), false);
+    SafeParcelWriter.writeString(paramParcel, 2, getName(), false);
+    SafeParcelWriter.writeParcelable(paramParcel, 3, getProfilePictureUri(), paramInt, false);
+    SafeParcelWriter.writeTypedList(paramParcel, 4, getIdTokens(), false);
+    SafeParcelWriter.writeString(paramParcel, 5, getPassword(), false);
+    SafeParcelWriter.writeString(paramParcel, 6, getAccountType(), false);
+    SafeParcelWriter.writeString(paramParcel, 7, getGeneratedPassword(), false);
+    SafeParcelWriter.writeString(paramParcel, 8, this.zzcn, false);
+    SafeParcelWriter.writeString(paramParcel, 9, getGivenName(), false);
+    SafeParcelWriter.writeString(paramParcel, 10, getFamilyName(), false);
+    SafeParcelWriter.finishObjectHeader(paramParcel, i);
+    AppMethodBeat.o(50311);
   }
 }
 

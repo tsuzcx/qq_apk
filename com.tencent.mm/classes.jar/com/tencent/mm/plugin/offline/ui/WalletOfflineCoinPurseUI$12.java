@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import com.tencent.mm.h.a.ck;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cn;
 import com.tencent.mm.sdk.b.c;
 
 final class WalletOfflineCoinPurseUI$12
-  extends c<ck>
+  extends c<cn>
 {
   WalletOfflineCoinPurseUI$12(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI)
   {
-    this.udX = ck.class.getName().hashCode();
+    AppMethodBeat.i(43517);
+    this.__eventId = cn.class.getName().hashCode();
+    AppMethodBeat.o(43517);
   }
 }
 

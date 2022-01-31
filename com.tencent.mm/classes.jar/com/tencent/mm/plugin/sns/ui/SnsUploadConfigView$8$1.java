@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsUploadConfigView$8$1
   implements DialogInterface.OnClickListener
@@ -10,12 +11,14 @@ final class SnsUploadConfigView$8$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.pjb.piZ;
-    if (SnsUploadConfigView.d(this.pjb.piZ)) {}
+    AppMethodBeat.i(39694);
+    paramDialogInterface = this.sbD.sbB;
+    if (SnsUploadConfigView.d(this.sbD.sbB)) {}
     for (boolean bool = false;; bool = true)
     {
       SnsUploadConfigView.b(paramDialogInterface, bool);
-      SnsUploadConfigView.e(this.pjb.piZ);
+      SnsUploadConfigView.e(this.sbD.sbB);
+      AppMethodBeat.o(39694);
       return;
     }
   }

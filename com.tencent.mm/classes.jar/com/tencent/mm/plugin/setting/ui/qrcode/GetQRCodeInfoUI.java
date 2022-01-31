@@ -1,115 +1,134 @@
 package com.tencent.mm.plugin.setting.ui.qrcode;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.o;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bi;
+import com.tencent.mm.model.bk;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.setting.a.g;
-import com.tencent.mm.plugin.setting.a.i;
 import com.tencent.mm.plugin.setting.b;
-import com.tencent.mm.pluginsdk.i;
-import com.tencent.mm.protocal.c.bnm;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.j;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.protocal.protobuf.bxh;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMBaseActivity;
 
 public class GetQRCodeInfoUI
   extends MMBaseActivity
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
-  private ProgressDialog dnm = null;
-  private com.tencent.mm.plugin.messenger.a.f nRw;
+  private ProgressDialog eeN = null;
+  private com.tencent.mm.plugin.messenger.a.f qFu;
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    b.eUR.q(new Intent(), this);
+    AppMethodBeat.i(126910);
+    b.gmO.p(new Intent(), this);
     finish();
+    AppMethodBeat.o(126910);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(126906);
     super.onCreate(paramBundle);
-    setContentView(a.g.empty);
+    setContentView(2130969422);
     Object localObject = getIntent().getData();
     if (localObject == null)
     {
       finish();
+      AppMethodBeat.o(126906);
       return;
     }
-    paramBundle = bk.pm(((Uri)localObject).getHost());
-    localObject = bk.pm(((Uri)localObject).getScheme());
+    paramBundle = bo.nullAsNil(((Uri)localObject).getHost());
+    localObject = bo.nullAsNil(((Uri)localObject).getScheme());
     if ((("http".equals(localObject)) && ("weixin.qq.com".equals(paramBundle))) || (("weixin".equals(localObject)) && ("qr".equals(paramBundle))))
     {
-      g.Dk().a(new bi(new GetQRCodeInfoUI.1(this)), 0);
+      g.Rc().a(new bk(new GetQRCodeInfoUI.1(this)), 0);
+      AppMethodBeat.o(126906);
       return;
     }
     finish();
+    AppMethodBeat.o(126906);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(126908);
     super.onDestroy();
-    if (this.nRw != null) {
-      g.Dk().c(this.nRw);
+    if (this.qFu != null) {
+      g.Rc().a(this.qFu);
     }
-    g.Dk().b(106, this);
+    g.Rc().b(106, this);
+    AppMethodBeat.o(126908);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(126907);
     super.onResume();
-    getString(a.i.app_tip);
-    this.dnm = com.tencent.mm.ui.base.h.b(this, getString(a.i.address_searching), true, new GetQRCodeInfoUI.2(this));
+    getString(2131297087);
+    this.eeN = com.tencent.mm.ui.base.h.b(this, getString(2131296492), true, new GetQRCodeInfoUI.2(this));
+    AppMethodBeat.o(126907);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.GetQRCodeInfoUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.dnm != null)
+    AppMethodBeat.i(126909);
+    ab.i("MicroMsg.GetQRCodeInfoUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.eeN != null)
     {
-      this.dnm.dismiss();
-      this.dnm = null;
+      this.eeN.dismiss();
+      this.eeN = null;
     }
-    if ((paramInt1 == 4) && (paramInt2 == -2004)) {
-      com.tencent.mm.ui.base.h.a(this, a.i.qrcode_ban_by_expose, a.i.app_tip, new DialogInterface.OnClickListener()
+    if ((paramInt1 == 4) && (paramInt2 == -2004))
+    {
+      com.tencent.mm.ui.base.h.a(this, 2131302239, 2131297087, new GetQRCodeInfoUI.3(this));
+      AppMethodBeat.o(126909);
+      return;
+    }
+    if ((paramInt1 != 0) || (paramInt2 != 0))
+    {
+      com.tencent.mm.ui.base.h.a(this, getString(2131300093, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), getString(2131297087), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
+          AppMethodBeat.i(126905);
           GetQRCodeInfoUI.this.finish();
+          AppMethodBeat.o(126905);
         }
       });
-    }
-    do
-    {
+      AppMethodBeat.o(126909);
       return;
-      if ((paramInt1 != 0) || (paramInt2 != 0))
-      {
-        com.tencent.mm.ui.base.h.a(this, getString(a.i.fmt_search_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), getString(a.i.app_tip), new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            GetQRCodeInfoUI.this.finish();
-          }
-        });
-        return;
-      }
-      paramString = ((com.tencent.mm.plugin.messenger.a.f)paramm).bhH();
-      paramm = aa.a(paramString.sQs);
-      o.JQ().h(paramm, aa.a(paramString.svJ));
-      Intent localIntent = new Intent();
-      ((i)g.r(i.class)).a(localIntent, paramString, 30);
-    } while (bk.pm(paramm).length() <= 0);
-    if ((paramString.tpg & 0x8) > 0) {
-      com.tencent.mm.plugin.report.service.h.nFQ.aC(10298, paramm + ",30");
     }
-    com.tencent.mm.br.d.c(this, "profile", ".ui.ContactInfoUI", 1);
+    paramString = ((com.tencent.mm.plugin.messenger.a.f)paramm).bPI();
+    paramm = aa.a(paramString.wOT);
+    o.acQ().n(paramm, aa.a(paramString.woT));
+    Intent localIntent = new Intent();
+    ((j)g.E(j.class)).a(localIntent, paramString, 30);
+    if (bo.nullAsNil(paramm).length() > 0)
+    {
+      if ((paramString.xpe & 0x8) > 0) {
+        com.tencent.mm.plugin.report.service.h.qsU.kvStat(10298, paramm + ",30");
+      }
+      com.tencent.mm.bq.d.c(this, "profile", ".ui.ContactInfoUI", 1);
+    }
+    AppMethodBeat.o(126909);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

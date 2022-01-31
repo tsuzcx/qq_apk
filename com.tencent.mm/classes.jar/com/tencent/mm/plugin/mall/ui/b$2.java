@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.mall.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$2
   implements View.OnClickListener
@@ -12,10 +13,12 @@ final class b$2
   
   public final void onClick(View paramView)
   {
-    y.v("MicroMsg.FunctionListAdapter", "on Click");
-    if (b.c(this.lYU) != null) {
-      b.c(this.lYU).a(this.lYV, this.lYW);
+    AppMethodBeat.i(43136);
+    ab.v("MicroMsg.FunctionListAdapter", "on Click");
+    if (b.c(this.oyC) != null) {
+      b.c(this.oyC).a(this.oyD, this.oyE);
     }
+    AppMethodBeat.o(43136);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import android.os.Bundle;
-import com.tencent.mm.aa.b.b.a;
 import com.tencent.mm.ipcinvoker.c;
+import com.tencent.mm.z.b.b.a;
 
 final class h$1
   implements c<Bundle>

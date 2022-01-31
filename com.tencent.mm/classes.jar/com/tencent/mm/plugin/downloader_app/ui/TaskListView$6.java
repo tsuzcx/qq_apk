@@ -1,41 +1,23 @@
 package com.tencent.mm.plugin.downloader_app.ui;
 
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView.b;
-import com.tencent.mm.plugin.downloader_app.b.h;
-import com.tencent.mm.plugin.downloader_app.b.j;
-import java.util.Iterator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader_app.b.d.e;
 
 final class TaskListView$6
-  implements MRecyclerView.b
+  implements d.e
 {
   TaskListView$6(TaskListView paramTaskListView) {}
   
-  public final boolean cx(View paramView)
+  public final void JY(String paramString)
   {
-    if (!TaskListView.a(this.iUe)) {
-      return false;
-    }
-    if ((((ViewGroup)paramView).getChildAt(0) instanceof TaskItemView))
-    {
-      Object localObject = TaskListView.b(this.iUe).iTQ;
-      if (localObject != null)
-      {
-        localObject = ((h)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((j)((Iterator)localObject).next()).ilB = true;
-        }
-        ((TaskItemView)((ViewGroup)paramView).getChildAt(0)).setSelected(true);
-        TaskListView.c(this.iUe);
-      }
-    }
-    return true;
+    AppMethodBeat.i(136296);
+    TaskListView.b(this.ldh, paramString);
+    AppMethodBeat.o(136296);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.TaskListView.6
  * JD-Core Version:    0.7.0.1
  */

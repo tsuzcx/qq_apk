@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout style="@style/p1"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/bmk" android:background="@color/a23" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
-    <include android:id="@id/bml" android:visibility="gone" layout="@layout/y_" />
-    <include android:id="@id/bmm" android:visibility="gone" layout="@layout/ya" />
-</FrameLayout>
+    <RelativeLayout android:id="@id/bog" android:background="@color/o6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/boh" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/b59" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="21.0dip" android:textColor="@color/a6q" android:id="@id/boi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="328.0dip" android:text="@string/bnv" android:layout_centerHorizontal="true" />
+        <Button android:textSize="18.0dip" android:textColor="@color/a6q" android:id="@id/bpp" android:background="@drawable/nu" android:layout_width="200.0dip" android:layout_height="44.0dip" android:layout_marginTop="525.0dip" android:text="@string/rc" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/bol" android:background="@color/o6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/bom" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/b61" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/bon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="237.0dip" android:layout_marginTop="253.0dip" android:src="@drawable/b60" />
+        <TextView android:textSize="24.0dip" android:textColor="@color/a6q" android:id="@id/boo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:text="@string/bnw" android:layout_below="@id/bom" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/boq" android:layout_width="100.0dip" android:layout_height="wrap_content" android:layout_marginTop="148.0dip" android:src="@drawable/b5y" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/bor" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/b65" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="21.0dip" android:textColor="@color/a6q" android:id="@id/bos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="323.0dip" android:text="@string/bnt" android:layout_centerHorizontal="true" />
+</merge>

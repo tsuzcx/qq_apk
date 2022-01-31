@@ -1,8 +1,17 @@
 package com.tencent.mm.plugin.wepkg.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a$a
 {
-  private static a rQd = new a((byte)0);
+  private static a vGV;
+  
+  static
+  {
+    AppMethodBeat.i(63606);
+    vGV = new a((byte)0);
+    AppMethodBeat.o(63606);
+  }
 }
 
 

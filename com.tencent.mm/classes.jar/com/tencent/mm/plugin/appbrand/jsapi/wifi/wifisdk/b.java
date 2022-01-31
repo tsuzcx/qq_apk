@@ -1,29 +1,35 @@
 package com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONObject;
 
 public final class b
 {
-  public String gGV = "";
-  public String gGW = "";
-  public int gGX;
-  public boolean gGY = false;
-  public boolean gGZ = false;
-  public boolean gHa = false;
+  public String ihD = "";
+  public String ihE = "";
+  public int ihF;
+  public boolean ihG = false;
+  public boolean ihH = false;
+  public boolean ihI = false;
   
-  public final JSONObject rB()
+  public final JSONObject toJSONObject()
   {
+    AppMethodBeat.i(94380);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("SSID", this.gGV);
-    localJSONObject.put("BSSID", this.gGW);
-    localJSONObject.put("secure", this.gGY);
-    localJSONObject.put("signalStrength", this.gGX);
+    localJSONObject.put("SSID", this.ihD);
+    localJSONObject.put("BSSID", this.ihE);
+    localJSONObject.put("secure", this.ihG);
+    localJSONObject.put("signalStrength", this.ihF);
+    AppMethodBeat.o(94380);
     return localJSONObject;
   }
   
   public final String toString()
   {
-    return "WiFiItem{mSsid='" + this.gGV + '\'' + ", mBssid='" + this.gGW + '\'' + ", mSignalStrength=" + this.gGX + ", mSecurity=" + this.gGY + '}';
+    AppMethodBeat.i(94379);
+    String str = "WiFiItem{mSsid='" + this.ihD + '\'' + ", mBssid='" + this.ihE + '\'' + ", mSignalStrength=" + this.ihF + ", mSecurity=" + this.ihG + '}';
+    AppMethodBeat.o(94379);
+    return str;
   }
 }
 

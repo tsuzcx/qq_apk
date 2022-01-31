@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.c;
 
 final class ReadMailUI$13$1
@@ -8,24 +9,27 @@ final class ReadMailUI$13$1
 {
   ReadMailUI$13$1(ReadMailUI.13 param13) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
     int j = 0;
+    AppMethodBeat.i(68436);
     if (paramInt == 3)
     {
-      ReadMailUI.J(this.njQ.njK);
+      ReadMailUI.J(this.pPd.pOX);
+      AppMethodBeat.o(68436);
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.setClass(this.njQ.njK, ComposeUI.class);
-    localIntent.putExtra("mailid", ReadMailUI.a(this.njQ.njK));
-    localIntent.putExtra("subject", ReadMailUI.K(this.njQ.njK));
-    String[] arrayOfString1 = ReadMailUI.L(this.njQ.njK).a(false, ReadMailUI.l(this.njQ.njK));
-    String[] arrayOfString2 = ReadMailUI.c(this.njQ.njK).a(true, ReadMailUI.l(this.njQ.njK));
-    String[] arrayOfString3 = ReadMailUI.d(this.njQ.njK).a(true, ReadMailUI.l(this.njQ.njK));
+    localIntent.setClass(this.pPd.pOX, ComposeUI.class);
+    localIntent.putExtra("mailid", ReadMailUI.a(this.pPd.pOX));
+    localIntent.putExtra("subject", ReadMailUI.K(this.pPd.pOX));
+    String[] arrayOfString1 = ReadMailUI.L(this.pPd.pOX).a(false, ReadMailUI.l(this.pPd.pOX));
+    String[] arrayOfString2 = ReadMailUI.c(this.pPd.pOX).a(true, ReadMailUI.l(this.pPd.pOX));
+    String[] arrayOfString3 = ReadMailUI.d(this.pPd.pOX).a(true, ReadMailUI.l(this.pPd.pOX));
     switch (paramInt)
     {
     default: 
+      AppMethodBeat.o(68436);
       return;
     case 0: 
       localIntent.putExtra("composeType", 2);
@@ -33,7 +37,8 @@ final class ReadMailUI$13$1
     }
     for (;;)
     {
-      this.njQ.njK.startActivity(localIntent);
+      this.pPd.pOX.startActivity(localIntent);
+      AppMethodBeat.o(68436);
       return;
       localIntent.putExtra("composeType", 2);
       String[] arrayOfString4 = new String[arrayOfString1.length + arrayOfString2.length];
@@ -63,7 +68,7 @@ final class ReadMailUI$13$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ReadMailUI.13.1
  * JD-Core Version:    0.7.0.1
  */

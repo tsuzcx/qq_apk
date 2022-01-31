@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 
 public class CacheBytesManager
@@ -12,7 +13,10 @@ public class CacheBytesManager
   
   public static CacheBytesManager getInstance()
   {
-    return CacheBytesManager.SingletonHolder.access$000();
+    AppMethodBeat.i(128439);
+    CacheBytesManager localCacheBytesManager = CacheBytesManager.SingletonHolder.access$000();
+    AppMethodBeat.o(128439);
+    return localCacheBytesManager;
   }
   
   public static byte[] getStatic(int paramInt)
@@ -21,22 +25,25 @@ public class CacheBytesManager
     {
       try
       {
-        Logger.d("CBM", "cache get:" + paramInt);
+        AppMethodBeat.i(128440);
+        Logger.d("CBM", "cache get:".concat(String.valueOf(paramInt)));
         byte[] arrayOfByte1;
         if ((paramInt == 1024) && (mCache1024 != null))
         {
           arrayOfByte1 = mCache1024;
           mCache1024 = null;
+          AppMethodBeat.o(128440);
           return arrayOfByte1;
         }
         if ((paramInt == 4096) && (mCache4096 != null))
         {
           arrayOfByte1 = mCache4096;
           mCache4096 = null;
+          AppMethodBeat.o(128440);
           continue;
         }
         if (paramInt != 8192) {
-          break label104;
+          break label117;
         }
       }
       finally {}
@@ -45,11 +52,13 @@ public class CacheBytesManager
       {
         arrayOfByte2 = mCache8192;
         mCache8192 = null;
+        AppMethodBeat.o(128440);
       }
       else
       {
-        label104:
+        label117:
         arrayOfByte2 = new byte[paramInt];
+        AppMethodBeat.o(128440);
       }
     }
   }
@@ -79,7 +88,7 @@ public class CacheBytesManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.CacheBytesManager
  * JD-Core Version:    0.7.0.1
  */

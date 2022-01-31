@@ -2,43 +2,46 @@ package com.tencent.mm.ui.tools;
 
 import android.content.ContentResolver;
 import android.net.Uri;
-import com.tencent.mm.pluginsdk.i.d;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.i.e;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
 
 final class AddFavoriteUI$a
   implements Runnable
 {
+  private AddFavoriteUI.b Aqq;
   private Uri mUri;
-  private AddFavoriteUI.b vYe;
   
   public AddFavoriteUI$a(AddFavoriteUI paramAddFavoriteUI, Uri paramUri, AddFavoriteUI.b paramb)
   {
     this.mUri = paramUri;
-    this.vYe = paramb;
+    this.Aqq = paramb;
   }
   
   public final void run()
   {
-    this.vYd.filePath = AddFavoriteUI.a(this.vYd, this.mUri);
-    if ((bk.bl(this.vYd.filePath)) || (!new File(this.vYd.filePath).exists())) {
-      if (AddFavoriteUI.aei(this.vYd.getContentResolver().getType(this.mUri)) != 2) {
-        break label111;
+    AppMethodBeat.i(34758);
+    this.Aqp.filePath = AddFavoriteUI.a(this.Aqp, this.mUri);
+    if ((bo.isNullOrNil(this.Aqp.filePath)) || (!new File(this.Aqp.filePath).exists())) {
+      if (AddFavoriteUI.auP(this.Aqp.getContentResolver().getType(this.mUri)) != 2) {
+        break label121;
       }
     }
-    label111:
-    for (this.vYd.filePath = d.a(this.vYd.getContentResolver(), this.mUri, 1);; this.vYd.filePath = d.a(this.vYd.getContentResolver(), this.mUri))
+    label121:
+    for (this.Aqp.filePath = e.a(this.Aqp.getContentResolver(), this.mUri, 1);; this.Aqp.filePath = e.a(this.Aqp.getContentResolver(), this.mUri))
     {
-      if (this.vYe != null) {
-        this.vYe.cIP();
+      if (this.Aqq != null) {
+        this.Aqq.dND();
       }
+      AppMethodBeat.o(34758);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.tools.AddFavoriteUI.a
  * JD-Core Version:    0.7.0.1
  */

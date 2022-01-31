@@ -3,70 +3,67 @@ package com.tencent.mm.ui.contact.a;
 import android.content.Context;
 import android.text.TextPaint;
 import com.tencent.mm.plugin.fts.a.a.g;
-import com.tencent.mm.plugin.selectcontact.a.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.storage.ad;
 
 public abstract class a
 {
-  public static final int kAd = com.tencent.mm.cb.a.aa(ae.getContext(), a.c.NormalTextSize);
-  public static final TextPaint kAe;
-  public static final int kAf = com.tencent.mm.cb.a.aa(ae.getContext(), a.c.HintTextSize);
-  public static final TextPaint kAg;
-  public String bHQ;
-  public String bVk;
-  public boolean dDQ;
-  public ad dnp;
-  public boolean icY;
-  public final int ivk;
-  public g kwi;
-  public int kxV;
-  public int kya;
-  public int kyb;
+  public static final int mVV = com.tencent.mm.cb.a.ao(ah.getContext(), 2131427809);
+  public static final TextPaint mVW;
+  public static final int mVX = com.tencent.mm.cb.a.ao(ah.getContext(), 2131427758);
+  public static final TextPaint mVY;
+  public boolean Adl;
+  public boolean Adm;
+  public boolean AfQ;
+  boolean AfR;
+  public boolean AfS;
+  public ad contact;
+  public String cpf;
+  public boolean eBr;
+  public boolean jTN;
+  public final int kwo;
+  public g mRX;
+  public int mTI;
+  public int mTN;
+  public int mTO;
   public final int position;
+  public String query;
   public int scene;
-  public boolean vLJ;
-  public boolean vLK;
-  public boolean vOi;
-  boolean vOj;
-  public boolean vOk;
   
   static
   {
-    kAe = new TextPaint();
-    kAg = new TextPaint();
-    kAe.setTextSize(kAd);
-    kAg.setTextSize(kAf);
+    mVW = new TextPaint();
+    mVY = new TextPaint();
+    mVW.setTextSize(mVV);
+    mVY.setTextSize(mVX);
   }
   
   public a(int paramInt1, int paramInt2)
   {
-    this.ivk = paramInt1;
+    this.kwo = paramInt1;
     this.position = paramInt2;
-    y.i("MicroMsg.BaseContactDataItem", "Create BaseContactDataItem viewType=%d | position=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ab.i("MicroMsg.BaseContactDataItem", "Create BaseContactDataItem viewType=%d | position=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
   }
   
-  public abstract a.a VA();
+  public abstract void a(Context paramContext, a.a parama);
   
-  public abstract a.b Vz();
+  public abstract a.b aoY();
   
-  public boolean aVG()
+  public boolean bCi()
   {
     return false;
   }
   
-  public abstract void bW(Context paramContext);
-  
-  public final void cU(int paramInt1, int paramInt2)
+  public final void es(int paramInt1, int paramInt2)
   {
-    this.kya = paramInt1;
-    this.kyb = paramInt2;
+    this.mTN = paramInt1;
+    this.mTO = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.sns.ui;
 
 final class SnsAdNativeLandingPagesUI$a
 {
-  public String jxS = "";
-  public String oBT = "";
-  public String oBU = "";
+  public String lHr = "";
+  public String rrm = "";
+  public String rrn = "";
   
   private SnsAdNativeLandingPagesUI$a(SnsAdNativeLandingPagesUI paramSnsAdNativeLandingPagesUI) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI.a
  * JD-Core Version:    0.7.0.1
  */

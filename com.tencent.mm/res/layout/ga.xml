@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/gd" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/g6" />
-    <LinearLayout android:id="@id/a3d" android:background="@drawable/hb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" layout="@layout/gc" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/a3e" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@id/a3f" android:background="@color/ia" android:layout_width="fill_parent" android:layout_height="@dimen/v3" android:scaleType="centerCrop" />
-            <ImageView android:id="@id/a3g" android:background="@drawable/dn" android:layout_width="fill_parent" android:layout_height="@dimen/v3" />
-        </FrameLayout>
-    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/a57" android:background="@color/gm" android:scrollbars="none" android:overScrollMode="never" style="@style/mn" />
+        <com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitScrollBar android:layout_gravity="center|right" android:id="@id/a58" android:layout_width="@dimen/dj" android:layout_height="fill_parent" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff888888" android:layout_gravity="center_horizontal" android:id="@id/a59" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/fgi" />
+    </FrameLayout>
 </LinearLayout>

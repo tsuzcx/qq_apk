@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RegSetInfoUI$11
   implements DialogInterface.OnDismissListener
@@ -10,7 +11,9 @@ final class RegSetInfoUI$11
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    RegSetInfoUI.G(this.fso);
+    AppMethodBeat.i(125517);
+    RegSetInfoUI.H(this.gJQ);
+    AppMethodBeat.o(125517);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.subapp.jdbiz;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class JDRemindDialog$2
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class JDRemindDialog$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.puV.finish();
+    AppMethodBeat.i(25180);
+    this.sWw.finish();
+    AppMethodBeat.o(25180);
   }
 }
 

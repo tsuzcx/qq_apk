@@ -1,28 +1,24 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.util.ArrayList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class cv
-  extends dc
-  implements Cloneable
+public class cv
 {
-  private static ArrayList<cu> b;
-  public ArrayList<cu> a = null;
+  private String a;
+  private String b;
   
-  public final void a(da paramda)
+  public cv(String paramString1, String paramString2)
   {
-    if (b == null)
-    {
-      b = new ArrayList();
-      cu localcu = new cu();
-      b.add(localcu);
-    }
-    this.a = ((ArrayList)paramda.a(b, 0, true));
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public final void a(db paramdb)
+  public String toString()
   {
-    paramdb.a(this.a, 0);
+    AppMethodBeat.i(150022);
+    String str = this.a + "_" + this.b;
+    AppMethodBeat.o(150022);
+    return str;
   }
 }
 

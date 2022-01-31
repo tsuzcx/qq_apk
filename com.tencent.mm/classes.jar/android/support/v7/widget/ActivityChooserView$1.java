@@ -10,13 +10,13 @@ final class ActivityChooserView$1
   public final void onChanged()
   {
     super.onChanged();
-    this.YX.YH.notifyDataSetChanged();
+    this.ZI.Zs.notifyDataSetChanged();
   }
   
   public final void onInvalidated()
   {
     super.onInvalidated();
-    this.YX.YH.notifyDataSetInvalidated();
+    this.ZI.Zs.notifyDataSetInvalidated();
   }
 }
 

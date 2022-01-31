@@ -1,39 +1,42 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.plugin.topstory.ui.video.e;
-import com.tencent.mm.protocal.c.byg;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.protocal.protobuf.ckx;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.List;
 
 public final class i
   extends e
 {
-  protected b pEP;
-  boolean pHA;
-  boolean pHB;
-  g pHC;
+  protected b tim;
+  boolean tlc;
+  boolean tld;
+  g tle;
   
   public i(b paramb)
   {
     super(paramb);
-    this.pEP = paramb;
+    this.tim = paramb;
   }
   
-  protected final void g(List<byg> paramList, boolean paramBoolean)
-  {
-    super.g(paramList, paramBoolean);
-    ai.d(new i.1(this, paramList, paramBoolean));
-  }
-  
-  public final int zA(int paramInt)
+  public final int GD(int paramInt)
   {
     return 0;
+  }
+  
+  public final void l(List<ckx> paramList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(2009);
+    super.l(paramList, paramBoolean);
+    al.d(new i.1(this, paramList, paramBoolean));
+    AppMethodBeat.o(2009);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.i
  * JD-Core Version:    0.7.0.1
  */

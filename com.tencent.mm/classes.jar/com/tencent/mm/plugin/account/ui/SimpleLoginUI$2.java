@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SimpleLoginUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class SimpleLoginUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    SimpleLoginUI.f(this.fsR);
+    AppMethodBeat.i(125597);
+    SimpleLoginUI.f(this.gKt);
+    AppMethodBeat.o(125597);
     return true;
   }
 }

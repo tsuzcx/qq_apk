@@ -2,17 +2,21 @@ package com.tencent.mm.plugin.gallery.ui;
 
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 final class SelectAlbumPreviewFolderUI$2
   implements Runnable
 {
-  SelectAlbumPreviewFolderUI$2(SelectAlbumPreviewFolderUI paramSelectAlbumPreviewFolderUI, ArrayList paramArrayList) {}
+  SelectAlbumPreviewFolderUI$2(SelectAlbumPreviewFolderUI paramSelectAlbumPreviewFolderUI, LinkedList paramLinkedList) {}
   
   public final void run()
   {
-    SelectAlbumPreviewFolderUI.a(this.kKF).addAll(this.kKG);
-    SelectAlbumPreviewFolderUI.b(this.kKF).agL.notifyChanged();
+    AppMethodBeat.i(21591);
+    SelectAlbumPreviewFolderUI.a(this.nhg).addAll(this.nhh);
+    SelectAlbumPreviewFolderUI.b(this.nhg).ajb.notifyChanged();
+    AppMethodBeat.o(21591);
   }
 }
 

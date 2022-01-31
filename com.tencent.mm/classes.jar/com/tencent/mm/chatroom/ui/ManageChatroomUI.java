@@ -1,20 +1,26 @@
 package com.tencent.mm.chatroom.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.chatroom.ui.preference.RoomManagerPreference;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.af;
-import com.tencent.mm.model.m;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.ag;
+import com.tencent.mm.model.n;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.t;
+import com.tencent.mm.openim.d.q;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.awx;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.bdn;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.u;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -24,149 +30,222 @@ import com.tencent.mm.ui.base.preference.f;
 public class ManageChatroomUI
   extends MMPreference
 {
-  private SharedPreferences dnD = null;
-  private f dnn;
-  CheckBoxPreference dph;
-  RoomManagerPreference dpi;
-  private String dpj;
-  private String dpk;
+  CheckBoxPreference egD;
+  RoomManagerPreference egE;
+  private String egF;
+  private String egG;
+  private f screen;
+  private SharedPreferences sp = null;
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
+  {
+    return 2131165249;
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(104116);
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(104116);
+      return;
+      if (paramIntent == null)
+      {
+        AppMethodBeat.o(104116);
+        return;
+      }
+      paramInt1 = paramIntent.getIntExtra("into_room_type", -1);
+      ab.i("MicroMsg.ManageChatroomUI", "[openVerify] roomId:%s, type:%s", new Object[] { this.egF, Integer.valueOf(paramInt1) });
+      paramIntent = new bdn();
+      paramIntent.wot = bo.nullAsNil(this.egF);
+      paramIntent.qsl = paramInt1;
+      paramIntent = new j.a(66, paramIntent);
+      ((j)g.E(j.class)).Yz().c(paramIntent);
+      AppMethodBeat.o(104116);
+      return;
+      ab.i("MicroMsg.ManageChatroomUI", "[onActivityResult] requestCode:%s", new Object[] { Integer.valueOf(2) });
+    }
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(104112);
+    super.onCreate(paramBundle);
+    ab.i("MicroMsg.ManageChatroomUI", "[onCreate]");
+    this.egF = getIntent().getStringExtra("RoomInfo_Id");
+    this.egG = getIntent().getStringExtra("room_owner_name");
+    AppMethodBeat.o(104112);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(104114);
+    super.onDestroy();
+    AppMethodBeat.o(104114);
+  }
+  
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     int i = 2;
+    int j = 1;
+    AppMethodBeat.i(104115);
     paramf = paramPreference.mKey;
-    y.d("MicroMsg.ManageChatroomUI", "[onPreferenceTreeClick] key:%s", new Object[] { paramf });
+    ab.d("MicroMsg.ManageChatroomUI", "[onPreferenceTreeClick] key:%s", new Object[] { paramf });
     if (paramf.equals("room_transfer_room_ower"))
     {
-      y.i("MicroMsg.ManageChatroomUI", "[selectNewRoomOwner] roomId:%s", new Object[] { this.dpj });
-      paramf = bk.c(m.gK(this.dpj), ",");
+      ab.i("MicroMsg.ManageChatroomUI", "[selectNewRoomOwner] roomId:%s", new Object[] { this.egF });
+      paramf = bo.d(n.nt(this.egF), ",");
       paramPreference = new Intent();
-      paramPreference.putExtra("Block_list", q.Gj());
+      paramPreference.putExtra("Block_list", r.Zn());
       paramPreference.putExtra("Chatroom_member_list", paramf);
       paramPreference.putExtra("from_scene", 2);
-      paramPreference.putExtra("RoomInfo_Id", this.dpj);
+      paramPreference.putExtra("RoomInfo_Id", this.egF);
       paramPreference.putExtra("is_show_owner", false);
-      paramPreference.putExtra("title", getString(a.i.room_select_new_owner));
+      paramPreference.putExtra("title", getString(2131302788));
       paramPreference.setClass(this, TransferRoomOwnerUI.class);
       startActivity(paramPreference);
     }
     do
     {
+      AppMethodBeat.o(104115);
       return false;
       if (paramf.equals("allow_by_identity"))
       {
-        boolean bool = this.dph.isChecked();
-        com.tencent.mm.plugin.report.service.h.nFQ.a(219L, 22L, 1L, true);
-        y.i("MicroMsg.ManageChatroomUI", "[selectAllowByIdentity] roomId:%s isOpen:%s", new Object[] { this.dpj, Boolean.valueOf(bool) });
-        paramf = new awx();
-        paramf.svm = bk.pm(this.dpj);
+        boolean bool = this.egD.isChecked();
+        h.qsU.idkeyStat(219L, 22L, 1L, true);
+        ab.i("MicroMsg.ManageChatroomUI", "[selectAllowByIdentity] roomId:%s isOpen:%s", new Object[] { this.egF, Boolean.valueOf(bool) });
+        if (t.nK(this.egF))
+        {
+          paramf = ((j)g.E(j.class)).Yz();
+          paramPreference = bo.nullAsNil(this.egF);
+          if (bool == true) {}
+          for (i = j;; i = 0)
+          {
+            paramf.c(new q(paramPreference, i));
+            this.egD.zsk = false;
+            break;
+          }
+        }
+        paramf = new bdn();
+        paramf.wot = bo.nullAsNil(this.egF);
         if (bool == true) {}
         for (;;)
         {
-          paramf.nFj = i;
-          paramf = new i.a(66, paramf);
-          ((j)g.r(j.class)).Fv().b(paramf);
-          return false;
+          paramf.qsl = i;
+          paramf = new j.a(66, paramf);
+          ((j)g.E(j.class)).Yz().c(paramf);
+          break;
           i = 0;
         }
       }
     } while (!paramf.equals("room_manager"));
-    y.i("MicroMsg.ManageChatroomUI", "[selectRoomManager] roomId:%s", new Object[] { this.dpj });
-    paramf = ((c)g.r(c.class)).FF().in(this.dpj);
+    ab.i("MicroMsg.ManageChatroomUI", "[selectRoomManager] roomId:%s", new Object[] { this.egF });
+    paramf = ((c)g.E(c.class)).YJ().oU(this.egF);
     paramPreference = new Intent();
-    if (paramf.aaM(q.Gj())) {
+    if (paramf.aqW(r.Zn())) {
       paramPreference.setClass(this, SeeRoomOwnerManagerUI.class);
     }
     for (;;)
     {
-      paramPreference.putExtra("RoomInfo_Id", this.dpj);
+      paramPreference.putExtra("RoomInfo_Id", this.egF);
       startActivity(paramPreference);
-      return false;
+      break;
       paramPreference.setClass(this, SeeRoomManagerUI.class);
     }
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onResume()
   {
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    switch (paramInt1)
+    boolean bool3 = true;
+    boolean bool2 = true;
+    AppMethodBeat.i(104113);
+    Object localObject1 = ((c)g.E(c.class)).YJ().oU(this.egF);
+    if ((localObject1 != null) && (this.sp == null))
     {
-    default: 
-    case 1: 
-      do
+      this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
+      localObject2 = this.sp.edit();
+      if (((u)localObject1).dwq() == 2)
       {
-        return;
-      } while (paramIntent == null);
-      paramInt1 = paramIntent.getIntExtra("into_room_type", -1);
-      y.i("MicroMsg.ManageChatroomUI", "[openVerify] roomId:%s, type:%s", new Object[] { this.dpj, Integer.valueOf(paramInt1) });
-      paramIntent = new awx();
-      paramIntent.svm = bk.pm(this.dpj);
-      paramIntent.nFj = paramInt1;
-      paramIntent = new i.a(66, paramIntent);
-      ((j)g.r(j.class)).Fv().b(paramIntent);
-      return;
-    }
-    y.i("MicroMsg.ManageChatroomUI", "[onActivityResult] requestCode:%s", new Object[] { Integer.valueOf(2) });
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    y.i("MicroMsg.ManageChatroomUI", "[onCreate]");
-    this.dpj = getIntent().getStringExtra("RoomInfo_Id");
-    this.dpk = getIntent().getStringExtra("room_owner_name");
-    this.dnn = this.vdd;
-    if (this.dnn == null) {
-      return;
-    }
-    setMMTitle(a.i.manage_chatroom_title);
-    this.dph = ((CheckBoxPreference)this.dnn.add("allow_by_identity"));
-    this.dpi = ((RoomManagerPreference)this.dnn.add("room_manager"));
-    paramBundle = this.dnn;
-    if (!((c)g.r(c.class)).zl(this.dpj)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramBundle.bJ("room_manager", bool);
-      this.dnn.bJ("select_enable_qrcode", true);
-      this.dnn.bJ("select_into_room_type", true);
-      if (!q.Gj().equals(this.dpk)) {
-        this.dnn.bJ("room_transfer_room_ower", true);
-      }
-      setBackBtn(new ManageChatroomUI.1(this));
-      return;
-    }
-  }
-  
-  protected void onDestroy()
-  {
-    super.onDestroy();
-  }
-  
-  protected void onResume()
-  {
-    u localu = ((c)g.r(c.class)).FF().in(this.dpj);
-    SharedPreferences.Editor localEditor;
-    if ((localu != null) && (this.dnD == null))
-    {
-      this.dnD = getSharedPreferences(getPackageName() + "_preferences", 0);
-      localEditor = this.dnD.edit();
-      if (localu.ctQ() != 2) {
-        break label115;
+        bool1 = true;
+        ((SharedPreferences.Editor)localObject2).putBoolean("allow_by_identity", bool1).commit();
       }
     }
-    label115:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      localEditor.putBoolean("allow_by_identity", bool).commit();
       super.onResume();
-      this.dnn.notifyDataSetChanged();
+      this.screen = getPreferenceScreen();
+      if (this.screen != null)
+      {
+        setMMTitle(2131301521);
+        this.egD = ((CheckBoxPreference)this.screen.atx("allow_by_identity"));
+        this.egE = ((RoomManagerPreference)this.screen.atx("room_manager"));
+        localObject1 = this.screen;
+        if (((c)g.E(c.class)).IV(this.egF)) {
+          break label405;
+        }
+        bool1 = true;
+        label209:
+        ((f)localObject1).cl("room_manager", bool1);
+        this.screen.cl("select_enable_qrcode", true);
+        this.screen.cl("select_into_room_type", true);
+        if (!r.Zn().equals(this.egG)) {
+          this.screen.cl("room_transfer_room_ower", true);
+        }
+        localObject1 = ((c)g.E(c.class)).YJ().oU(this.egF);
+        if (localObject1 != null)
+        {
+          if (!t.nK(this.egF)) {
+            break label420;
+          }
+          if (((u)localObject1).dwq() != 1) {
+            break label410;
+          }
+          bool1 = true;
+          label322:
+          ab.i("MicroMsg.ManageChatroomUI", "isChecked = %s", new Object[] { Boolean.valueOf(bool1) });
+          localObject2 = this.egD;
+          if (((u)localObject1).dwq() != 1) {
+            break label415;
+          }
+        }
+      }
+    }
+    label405:
+    label410:
+    label415:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      ((CheckBoxPreference)localObject2).vxW = bool1;
+      this.egD.zsk = false;
+      setBackBtn(new ManageChatroomUI.1(this));
+      this.screen.notifyDataSetChanged();
+      AppMethodBeat.o(104113);
       return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label209;
+      bool1 = false;
+      break label322;
+    }
+    label420:
+    Object localObject2 = this.egD;
+    if (((u)localObject1).dwq() == 2) {}
+    for (bool1 = bool3;; bool1 = false)
+    {
+      ((CheckBoxPreference)localObject2).vxW = bool1;
+      break;
     }
   }
   
-  public final int xj()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return a.k.manage_room_pref;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

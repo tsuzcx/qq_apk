@@ -5,37 +5,53 @@ import android.content.Intent;
 import android.database.ContentObserver;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.friend.a.l;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class AddrBookObserver
   extends ContentObserver
 {
-  private static boolean ekO = false;
-  private static Intent ekP;
-  private static ah handler = new AddrBookObserver.1(Looper.getMainLooper());
+  private static boolean fBf;
+  private static Intent fBg;
+  private static ak handler;
   private final Context context;
+  
+  static
+  {
+    AppMethodBeat.i(124503);
+    fBf = false;
+    handler = new AddrBookObserver.1(Looper.getMainLooper());
+    AppMethodBeat.o(124503);
+  }
   
   public AddrBookObserver(Context paramContext)
   {
-    super(ah.fetchFreeHandler());
+    super(ak.fetchFreeHandler());
+    AppMethodBeat.i(124501);
     this.context = paramContext;
+    AppMethodBeat.o(124501);
   }
   
   public final void onChange(boolean paramBoolean)
   {
+    AppMethodBeat.i(124502);
     super.onChange(paramBoolean);
-    y.i("MicroMsg.AddrBookObserver", "address book changed, start sync after 20 second");
-    if (ekO)
+    ab.i("MicroMsg.AddrBookObserver", "address book changed, start sync after 20 second");
+    if (!fBf)
     {
-      y.e("MicroMsg.AddrBookObserver", "isSyncing:" + ekO + ", is time to sync:true , return");
+      l.aqu();
+      handler.removeMessages(0);
+      Message localMessage = handler.obtainMessage();
+      localMessage.obj = this.context;
+      localMessage.what = 0;
+      handler.sendMessageDelayed(localMessage, 20000L);
+      AppMethodBeat.o(124502);
       return;
     }
-    handler.removeMessages(0);
-    Message localMessage = handler.obtainMessage();
-    localMessage.obj = this.context;
-    localMessage.what = 0;
-    handler.sendMessageDelayed(localMessage, 20000L);
+    ab.e("MicroMsg.AddrBookObserver", "isSyncing:" + fBf + ", is time to sync:" + l.aqu() + " , return");
+    AppMethodBeat.o(124502);
   }
 }
 

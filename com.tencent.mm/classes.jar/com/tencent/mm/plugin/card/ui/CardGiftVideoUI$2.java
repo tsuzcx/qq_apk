@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.card.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 final class CardGiftVideoUI$2
@@ -10,23 +11,25 @@ final class CardGiftVideoUI$2
   
   public final void run()
   {
-    if (CardGiftVideoUI.h(this.iuJ) != null)
+    AppMethodBeat.i(88449);
+    if (CardGiftVideoUI.h(this.kvN) != null)
     {
-      if (this.epd == 0) {
-        CardGiftVideoUI.h(this.iuJ).setVisibility(8);
+      if (this.fFB == 0)
+      {
+        CardGiftVideoUI.h(this.kvN).setVisibility(8);
+        AppMethodBeat.o(88449);
+        return;
       }
+      if (CardGiftVideoUI.h(this.kvN).getVisibility() != 0) {
+        CardGiftVideoUI.h(this.kvN).setVisibility(0);
+      }
+      ab.i("MicroMsg.CardGiftVideoUI", "update progress %d %d", new Object[] { Integer.valueOf(this.fzv), Integer.valueOf(this.fFB) });
+      if ((CardGiftVideoUI.h(this.kvN).getMax() != this.fFB) && (this.fFB > 0)) {
+        CardGiftVideoUI.h(this.kvN).setMax(this.fFB);
+      }
+      CardGiftVideoUI.h(this.kvN).setProgress(this.fzv);
     }
-    else {
-      return;
-    }
-    if (CardGiftVideoUI.h(this.iuJ).getVisibility() != 0) {
-      CardGiftVideoUI.h(this.iuJ).setVisibility(0);
-    }
-    y.i("MicroMsg.CardGiftVideoUI", "update progress %d %d", new Object[] { Integer.valueOf(this.ejr), Integer.valueOf(this.epd) });
-    if ((CardGiftVideoUI.h(this.iuJ).getMax() != this.epd) && (this.epd > 0)) {
-      CardGiftVideoUI.h(this.iuJ).setMax(this.epd);
-    }
-    CardGiftVideoUI.h(this.iuJ).setProgress(this.ejr);
+    AppMethodBeat.o(88449);
   }
 }
 

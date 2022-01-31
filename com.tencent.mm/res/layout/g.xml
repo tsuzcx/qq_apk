@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/p1"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/hb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/li" />
-    <ListView android:id="@id/hc" android:background="@color/sz" android:paddingBottom="60.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/hb" style="@style/ls" />
-    <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/hd" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hb" />
-    <ImageView android:id="@id/he" android:background="@drawable/axo" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hd" />
-    <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/hf" android:visibility="gone" android:layout_width="@dimen/dk" android:layout_height="fill_parent" android:layout_below="@id/hd" android:layout_alignParentRight="true" />
-    <com.tencent.mm.ui.contact.LabelContainerView android:orientation="vertical" android:id="@id/hg" android:background="#f7ffffff" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/dl" android:paddingRight="@dimen/li" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/hd">
+    <View android:id="@id/j7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/m1" />
+    <ListView android:id="@id/j8" android:background="@color/vy" android:paddingBottom="60.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/j7" style="@style/mn" />
+    <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/j9" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/j7" />
+    <ImageView android:id="@id/j_" android:background="@drawable/b4r" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/j9" />
+    <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/ja" android:visibility="gone" android:layout_width="@dimen/dj" android:layout_height="fill_parent" android:layout_below="@id/j9" android:layout_alignParentRight="true" />
+    <com.tencent.mm.ui.contact.LabelContainerView android:orientation="vertical" android:id="@id/jb" android:background="#f7ffffff" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/dl" android:paddingRight="@dimen/m1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/j9">
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include layout="@layout/an0" />
-            <com.tencent.mm.ui.base.MMTagPanel android:id="@id/hh" android:paddingTop="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/mq" flowlayout:verticalSpacing="@dimen/dl" />
+            <include layout="@layout/as2" />
+            <com.tencent.mm.ui.base.MMTagPanel android:id="@id/jc" android:paddingTop="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/n_" flowlayout:verticalSpacing="@dimen/dl" />
         </LinearLayout>
     </com.tencent.mm.ui.contact.LabelContainerView>
-    <LinearLayout android:gravity="center_horizontal" android:id="@id/hi" android:background="#f7ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/hd">
-        <TextView android:id="@id/hj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/an" />
+    <LinearLayout android:gravity="center_horizontal" android:id="@id/jd" android:background="#f7ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/j9">
+        <TextView android:id="@id/je" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/bl" />
     </LinearLayout>
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/t7" android:gravity="center_vertical" android:id="@id/hk" android:background="#f2ebebeb" android:padding="@dimen/li" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawableRight="@raw/list_deletetext_icon" android:drawablePadding="@dimen/li" android:layout_below="@id/hd" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/w6" android:gravity="center_vertical" android:id="@id/jf" android:background="#f2ebebeb" android:padding="@dimen/m1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawableRight="@raw/list_deletetext_icon" android:drawablePadding="@dimen/m1" android:layout_below="@id/j9" />
     <LinearLayout android:gravity="center_vertical" android:background="#fff7f7fa" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_alignParentBottom="true">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hl" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <CheckBox android:layout_gravity="center_vertical" android:id="@id/hm" android:background="@drawable/r4" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/mq" android:layout_marginRight="@dimen/mq" />
-            <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b5" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jg" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <CheckBox android:layout_gravity="center_vertical" android:id="@id/jh" android:background="@drawable/vm" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/n_" android:layout_marginRight="@dimen/n_" />
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c3" />
         </LinearLayout>
-        <TextView android:textSize="@dimen/k9" android:textColor="@color/c4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/b7" />
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/dh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/c5" />
     </LinearLayout>
 </RelativeLayout>

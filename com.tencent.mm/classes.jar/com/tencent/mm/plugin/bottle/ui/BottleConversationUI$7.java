@@ -1,26 +1,30 @@
 package com.tencent.mm.plugin.bottle.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.tools.j;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.storage.ak;
 
 final class BottleConversationUI$7
-  implements AdapterView.OnItemLongClickListener
+  implements AdapterView.OnItemClickListener
 {
-  BottleConversationUI$7(BottleConversationUI paramBottleConversationUI, j paramj) {}
+  BottleConversationUI$7(BottleConversationUI paramBottleConversationUI) {}
   
-  public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt < BottleConversationUI.c(this.hZr).getHeaderViewsCount())
-    {
-      y.w("MicroMsg.Bottle.BottleConversationUI", "on header view long click, ignore");
-      return true;
-    }
-    this.hZt.a(paramView, paramInt, paramLong, this.hZr, BottleConversationUI.d(this.hZr));
-    return true;
+    AppMethodBeat.i(18562);
+    paramAdapterView = (ak)BottleConversationUI.a(this.jSo).getItem(paramInt);
+    paramView = new Intent();
+    paramView.addFlags(67108864);
+    paramView.putExtra("Chat_User", paramAdapterView.field_username);
+    paramView.putExtra("finish_direct", true);
+    paramView.putExtra("key_need_send_video", false);
+    com.tencent.mm.plugin.bottle.a.gmO.d(paramView, this.jSo);
+    AppMethodBeat.o(18562);
   }
 }
 

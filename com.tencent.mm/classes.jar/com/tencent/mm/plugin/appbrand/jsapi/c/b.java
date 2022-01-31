@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,12 +18,13 @@ public final class b
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    y.d("MicroMsg.JsApiGetBeacons", "getBeacons!");
+    AppMethodBeat.i(94359);
+    ab.d("MicroMsg.JsApiGetBeacons", "getBeacons!");
     paramJSONObject = new JSONArray();
-    Object localObject = a.ub(paramc.getAppId());
+    Object localObject = a.Ca(paramc.getAppId());
     if (localObject != null)
     {
-      localObject = ((a.a)localObject).gqY;
+      localObject = ((a.a)localObject).hMn;
       if ((localObject != null) && (((Map)localObject).size() > 0))
       {
         localObject = ((Map)localObject).values().iterator();
@@ -33,11 +35,12 @@ public final class b
     }
     else
     {
-      y.e("MicroMsg.JsApiGetBeacons", "not found device");
+      ab.e("MicroMsg.JsApiGetBeacons", "not found device");
     }
     localObject = new HashMap();
     ((Map)localObject).put("beacons", paramJSONObject);
-    paramc.C(paramInt, h("ok", (Map)localObject));
+    paramc.h(paramInt, j("ok", (Map)localObject));
+    AppMethodBeat.o(94359);
   }
 }
 

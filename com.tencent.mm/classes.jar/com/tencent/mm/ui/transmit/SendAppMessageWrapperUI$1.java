@@ -2,26 +2,30 @@ package com.tencent.mm.ui.transmit;
 
 import android.view.View;
 import android.view.Window;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class SendAppMessageWrapperUI$1
-  implements am.a
+  implements ap.a
 {
   SendAppMessageWrapperUI$1(SendAppMessageWrapperUI paramSendAppMessageWrapperUI) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    boolean bool = false;
-    if ((this.whK.getWindow() == null) || (this.whK.getWindow().getDecorView() == null) || (this.whK.getWindow().getDecorView().getWindowToken() == null))
+    AppMethodBeat.i(35213);
+    if ((this.AAH.getWindow() == null) || (this.AAH.getWindow().getDecorView() == null) || (this.AAH.getWindow().getDecorView().getWindowToken() == null))
     {
-      if (SendAppMessageWrapperUI.a(this.whK) < 10)
+      if (SendAppMessageWrapperUI.a(this.AAH) < 10)
       {
-        SendAppMessageWrapperUI.b(this.whK);
-        bool = true;
+        SendAppMessageWrapperUI.b(this.AAH);
+        AppMethodBeat.o(35213);
+        return true;
       }
-      return bool;
+      AppMethodBeat.o(35213);
+      return false;
     }
-    SendAppMessageWrapperUI.c(this.whK);
+    SendAppMessageWrapperUI.c(this.AAH);
+    AppMethodBeat.o(35213);
     return false;
   }
 }

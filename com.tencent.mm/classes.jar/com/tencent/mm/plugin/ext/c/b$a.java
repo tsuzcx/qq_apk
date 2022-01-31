@@ -1,7 +1,19 @@
 package com.tencent.mm.plugin.ext.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
  enum b$a
 {
+  static
+  {
+    AppMethodBeat.i(20391);
+    meW = new a("PREFIX", 0);
+    meX = new a("SUBDOMAIN", 1);
+    meY = new a("DOMAIN", 2);
+    meZ = new a[] { meW, meX, meY };
+    AppMethodBeat.o(20391);
+  }
+  
   private b$a() {}
 }
 

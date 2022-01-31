@@ -6,62 +6,62 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public abstract class b
 {
-  private static float rHr = 3.4028235E+38F;
-  private static float rHs = 3.4028235E+38F;
-  private static int rHt = -1;
-  public static float rHu = 48.0F;
+  private static float bLI = 3.4028235E+38F;
+  private static float vxZ = 3.4028235E+38F;
+  private static int vya = -1;
+  public static float vyb = 48.0F;
   
-  public static int Do(int paramInt)
+  public static int Lh(int paramInt)
   {
-    return Math.round(paramInt * chV());
+    return Math.round(paramInt * dil());
   }
   
-  public static int Dp(int paramInt)
+  public static int Li(int paramInt)
   {
-    return Math.round(paramInt / chV());
+    return Math.round(paramInt / dil());
   }
   
-  private static float chU()
+  private static float dik()
   {
     try
     {
-      if (rHr == 3.4028235E+38F) {
-        rHr = getDisplayMetrics().density;
+      if (bLI == 3.4028235E+38F) {
+        bLI = getDisplayMetrics().density;
       }
-      float f = rHr;
+      float f = bLI;
       return f;
     }
     finally {}
   }
   
-  private static float chV()
+  private static float dil()
   {
     try
     {
-      if (rHs == 3.4028235E+38F) {
-        rHs = getDisplayMetrics().density * ae.getContext().getResources().getConfiguration().fontScale;
+      if (vxZ == 3.4028235E+38F) {
+        vxZ = getDisplayMetrics().density * ah.getContext().getResources().getConfiguration().fontScale;
       }
-      float f = rHs;
+      float f = vxZ;
       return f;
     }
     finally {}
   }
   
-  public static int chW()
+  public static int dim()
   {
-    if (rHt == -1) {
-      rHt = Math.round(chU() * 30.0F);
+    if (vya == -1) {
+      vya = Math.round(dik() * 30.0F);
     }
-    return rHt;
+    return vya;
   }
   
   private static DisplayMetrics getDisplayMetrics()
   {
-    Display localDisplay = ((WindowManager)ae.getContext().getSystemService("window")).getDefaultDisplay();
+    Display localDisplay = ((WindowManager)ah.getContext().getSystemService("window")).getDefaultDisplay();
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     localDisplay.getMetrics(localDisplayMetrics);
     return localDisplayMetrics;
@@ -69,17 +69,17 @@ public abstract class b
   
   public static float getTextSize()
   {
-    return rHu;
+    return vyb;
   }
   
   public static void setTextSize(float paramFloat)
   {
-    rHu = paramFloat;
+    vyb = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.b
  * JD-Core Version:    0.7.0.1
  */

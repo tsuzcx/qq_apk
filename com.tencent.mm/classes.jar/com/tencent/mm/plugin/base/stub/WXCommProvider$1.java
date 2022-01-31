@@ -4,9 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import com.tencent.mm.pluginsdk.model.app.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.model.app.an;
 import com.tencent.mm.pluginsdk.model.app.p;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class WXCommProvider$1
   extends BroadcastReceiver
@@ -15,27 +16,29 @@ public class WXCommProvider$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (System.currentTimeMillis() - ar.rVB >= 600000L) {
-      y.e("MicroMsg.AppUtil", "hy: get comm model time expired");
+    AppMethodBeat.i(18162);
+    if (System.currentTimeMillis() - an.vMp >= 600000L) {
+      ab.e("MicroMsg.AppUtil", "hy: get comm model time expired");
     }
-    for (paramContext = null;; paramContext = ar.rVA)
+    for (paramContext = null;; paramContext = an.vMo)
     {
       if (paramContext != null)
       {
-        y.i("MicroMsg.WXCommProvider", "hy: has wxcomm query request. start to continue requesting");
-        paramContext = this.hSr.a(paramContext.uri, paramContext.projection, paramContext.selection, paramContext.selectionArgs, paramContext.rVy, paramContext.code, paramContext.rVz);
+        ab.i("MicroMsg.WXCommProvider", "hy: has wxcomm query request. start to continue requesting");
+        paramContext = this.jMa.a(paramContext.uri, paramContext.projection, paramContext.selection, paramContext.selectionArgs, paramContext.vMm, paramContext.code, paramContext.vMn);
         if (paramContext != null) {
           paramContext.close();
         }
-        p.ckW();
+        p.dlF();
       }
+      AppMethodBeat.o(18162);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.WXCommProvider.1
  * JD-Core Version:    0.7.0.1
  */

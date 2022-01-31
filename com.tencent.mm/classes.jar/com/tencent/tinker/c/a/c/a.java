@@ -2,36 +2,37 @@ package com.tencent.tinker.c.a.c;
 
 import com.tencent.tinker.a.a.e.a;
 import com.tencent.tinker.a.a.e.b;
+import java.io.ByteArrayInputStream;
 
 public abstract class a
 {
-  public abstract int JV(int paramInt);
+  public abstract int SP(int paramInt);
   
-  public abstract int JW(int paramInt);
+  public abstract int SQ(int paramInt);
   
-  public abstract int JX(int paramInt);
+  public abstract int SR(int paramInt);
   
-  public abstract int JY(int paramInt);
+  public abstract int SS(int paramInt);
   
-  public abstract int JZ(int paramInt);
+  public abstract int ST(int paramInt);
   
-  public abstract int Ka(int paramInt);
+  public abstract int SU(int paramInt);
   
-  public abstract int Kb(int paramInt);
+  public abstract int SV(int paramInt);
   
-  public abstract int Kc(int paramInt);
+  public abstract int SW(int paramInt);
   
-  public abstract int Kd(int paramInt);
+  public abstract int SX(int paramInt);
   
-  public abstract int Ke(int paramInt);
+  public abstract int SY(int paramInt);
   
-  public abstract int Kf(int paramInt);
+  public abstract int SZ(int paramInt);
   
-  public abstract int Kg(int paramInt);
+  public abstract int Ta(int paramInt);
   
-  public abstract int Kh(int paramInt);
+  public abstract int Tb(int paramInt);
   
-  public abstract int Ki(int paramInt);
+  public abstract int Tc(int paramInt);
   
   public final e.a[] b(e.a[] paramArrayOfa)
   {
@@ -40,7 +41,7 @@ public abstract class a
     while (i < paramArrayOfa.length)
     {
       e.a locala = paramArrayOfa[i];
-      arrayOfa[i] = new e.a(JY(locala.wSa), locala.wSb);
+      arrayOfa[i] = new e.a(SS(locala.BoH), locala.BoI);
       i += 1;
     }
     return arrayOfa;
@@ -53,9 +54,9 @@ public abstract class a
     while (i < paramArrayOfb.length)
     {
       e.b localb = paramArrayOfb[i];
-      int j = JZ(localb.wSc);
-      int k = Ki(localb.wSd);
-      arrayOfb[i] = new e.b(j, localb.wSb, k);
+      int j = ST(localb.BoJ);
+      int k = Tc(localb.BoK);
+      arrayOfb[i] = new e.b(j, localb.BoI, k);
       i += 1;
     }
     return arrayOfb;
@@ -63,7 +64,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.c.a.c.a
  * JD-Core Version:    0.7.0.1
  */

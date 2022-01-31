@@ -2,28 +2,32 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CreateAvatarUI$4
-  implements View.OnKeyListener
+  implements TextView.OnEditorActionListener
 {
   CreateAvatarUI$4(CreateAvatarUI paramCreateAvatarUI) {}
   
-  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt == 4)
+    AppMethodBeat.i(7356);
+    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      CreateAvatarUI.a(this.rkL, (InputMethodManager)this.rkL.getSystemService("input_method"));
-      if ((CreateAvatarUI.a(this.rkL) != null) && (CreateAvatarUI.a(this.rkL).isActive()))
+      CreateAvatarUI.a(this.vam, (InputMethodManager)this.vam.getSystemService("input_method"));
+      if ((CreateAvatarUI.a(this.vam) != null) && (CreateAvatarUI.a(this.vam).isActive()))
       {
-        CreateAvatarUI.a(this.rkL).hideSoftInputFromWindow(this.rkL.getCurrentFocus().getWindowToken(), 0);
-        CreateAvatarUI.b(this.rkL).setCursorVisible(false);
-        this.rkL.getWindow().getDecorView().requestFocus();
+        CreateAvatarUI.a(this.vam).hideSoftInputFromWindow(this.vam.getCurrentFocus().getWindowToken(), 0);
+        CreateAvatarUI.b(this.vam).setCursorVisible(false);
+        this.vam.getWindow().getDecorView().requestFocus();
       }
     }
+    AppMethodBeat.o(7356);
     return false;
   }
 }

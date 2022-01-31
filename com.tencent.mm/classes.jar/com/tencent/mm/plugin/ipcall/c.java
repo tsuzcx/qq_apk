@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.ipcall;
 
 import android.app.Notification;
-import android.app.Notification.Builder;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -11,425 +10,474 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Looper;
+import android.support.v4.app.s.c;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.compatible.b.f.a;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.an;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.ipcall.a.b.a.1;
 import com.tencent.mm.plugin.ipcall.a.b.b.a;
 import com.tencent.mm.plugin.ipcall.a.b.c.a;
-import com.tencent.mm.plugin.ipcall.a.g.a;
-import com.tencent.mm.plugin.ipcall.a.g.k;
+import com.tencent.mm.plugin.ipcall.a.f;
 import com.tencent.mm.plugin.ipcall.a.g.l;
 import com.tencent.mm.plugin.ipcall.a.g.m;
+import com.tencent.mm.plugin.ipcall.a.i;
 import com.tencent.mm.plugin.ipcall.ui.IPCallTalkUI;
+import com.tencent.mm.plugin.ipcall.ui.j;
 import com.tencent.mm.plugin.voip.HeadsetPlugReceiver;
 import com.tencent.mm.plugin.voip.HeadsetPlugReceiver.a;
-import com.tencent.mm.plugin.voip.model.p;
-import com.tencent.mm.plugin.voip.model.p.a;
-import com.tencent.mm.plugin.voip.model.r;
+import com.tencent.mm.plugin.voip.model.q;
+import com.tencent.mm.plugin.voip.model.q.a;
+import com.tencent.mm.plugin.voip.model.t;
+import com.tencent.mm.plugin.voip.model.u;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.plugin.voip.video.i.7;
-import com.tencent.mm.plugin.voip.video.i.8;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.voip.video.h;
+import com.tencent.mm.plugin.voip.video.h.7;
+import com.tencent.mm.plugin.voip.video.h.8;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
 public final class c
-  implements com.tencent.mm.plugin.ipcall.a.c.a.a, g.a, p.a
+  implements com.tencent.mm.plugin.ipcall.a.c.a.a, com.tencent.mm.plugin.ipcall.a.g.a, q.a
 {
-  public static ah dPi = new ah(Looper.getMainLooper());
-  private am byQ;
-  public Object jYz = new Object();
-  public e lof;
-  public k loh;
-  public boolean loi = false;
-  public TelephonyManager loj;
-  public PhoneStateListener lok = new c.1(this);
-  public com.tencent.mm.sdk.b.c lol = new c.2(this);
-  public Runnable lom = new c.3(this);
-  public Runnable lon = new Runnable()
-  {
-    /* Error */
-    public final void run()
-    {
-      // Byte code:
-      //   0: iconst_0
-      //   1: istore_1
-      //   2: iconst_1
-      //   3: istore 4
-      //   5: invokestatic 27	com/tencent/mm/plugin/ipcall/a/i:bcq	()Lcom/tencent/mm/plugin/voip/video/i;
-      //   8: astore 6
-      //   10: getstatic 33	com/tencent/mm/R$k:ipcall_phonering	I
-      //   13: istore_2
-      //   14: aload 6
-      //   16: iconst_0
-      //   17: putfield 38	com/tencent/mm/plugin/voip/video/i:qbC	I
-      //   20: iload_2
-      //   21: ifne +10 -> 31
-      //   24: aload 6
-      //   26: iconst_1
-      //   27: invokevirtual 42	com/tencent/mm/plugin/voip/video/i:kh	(Z)V
-      //   30: return
-      //   31: ldc2_w 43
-      //   34: ldc2_w 45
-      //   37: lcmp
-      //   38: ifeq +229 -> 267
-      //   41: invokestatic 52	com/tencent/mm/kernel/g:DP	()Lcom/tencent/mm/kernel/e;
-      //   44: invokevirtual 58	com/tencent/mm/kernel/e:Dz	()Lcom/tencent/mm/storage/z;
-      //   47: ldc 59
-      //   49: iconst_1
-      //   50: invokestatic 65	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-      //   53: invokevirtual 71	com/tencent/mm/storage/z:get	(ILjava/lang/Object;)Ljava/lang/Object;
-      //   56: checkcast 61	java/lang/Boolean
-      //   59: invokevirtual 75	java/lang/Boolean:booleanValue	()Z
-      //   62: istore_3
-      //   63: ldc 77
-      //   65: ldc 79
-      //   67: iconst_3
-      //   68: anewarray 4	java/lang/Object
-      //   71: dup
-      //   72: iconst_0
-      //   73: iload_3
-      //   74: invokestatic 65	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-      //   77: aastore
-      //   78: dup
-      //   79: iconst_1
-      //   80: invokestatic 84	com/tencent/mm/m/a:zT	()Z
-      //   83: invokestatic 65	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-      //   86: aastore
-      //   87: dup
-      //   88: iconst_2
-      //   89: iconst_1
-      //   90: invokestatic 65	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-      //   93: aastore
-      //   94: invokestatic 90	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   97: iload 4
-      //   99: istore_3
-      //   100: iload_3
-      //   101: ifeq -71 -> 30
-      //   104: aload 6
-      //   106: getfield 94	com/tencent/mm/plugin/voip/video/i:bus	Z
-      //   109: ifne -79 -> 30
-      //   112: aload 6
-      //   114: invokestatic 100	java/lang/System:currentTimeMillis	()J
-      //   117: putfield 104	com/tencent/mm/plugin/voip/video/i:qbD	J
-      //   120: aload 6
-      //   122: new 106	com/tencent/mm/compatible/b/j
-      //   125: dup
-      //   126: invokespecial 107	com/tencent/mm/compatible/b/j:<init>	()V
-      //   129: putfield 111	com/tencent/mm/plugin/voip/video/i:qbB	Landroid/media/MediaPlayer;
-      //   132: ldc 77
-      //   134: ldc 113
-      //   136: iconst_2
-      //   137: anewarray 4	java/lang/Object
-      //   140: dup
-      //   141: iconst_0
-      //   142: invokestatic 119	com/tencent/mm/compatible/b/f:yi	()Lcom/tencent/mm/compatible/b/f;
-      //   145: invokevirtual 122	com/tencent/mm/compatible/b/f:yn	()Z
-      //   148: invokestatic 65	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-      //   151: aastore
-      //   152: dup
-      //   153: iconst_1
-      //   154: invokestatic 119	com/tencent/mm/compatible/b/f:yi	()Lcom/tencent/mm/compatible/b/f;
-      //   157: invokevirtual 125	com/tencent/mm/compatible/b/f:yt	()Z
-      //   160: invokestatic 65	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-      //   163: aastore
-      //   164: invokestatic 128	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   167: getstatic 134	com/tencent/mm/compatible/e/q:dye	Lcom/tencent/mm/compatible/e/b;
-      //   170: getfield 139	com/tencent/mm/compatible/e/b:dvt	I
-      //   173: iflt +10 -> 183
-      //   176: getstatic 134	com/tencent/mm/compatible/e/q:dye	Lcom/tencent/mm/compatible/e/b;
-      //   179: getfield 139	com/tencent/mm/compatible/e/b:dvt	I
-      //   182: istore_1
-      //   183: aload 6
-      //   185: iconst_0
-      //   186: invokevirtual 142	com/tencent/mm/plugin/voip/video/i:kg	(Z)V
-      //   189: aload 6
-      //   191: iload_2
-      //   192: ldc2_w 43
-      //   195: iconst_1
-      //   196: iload_1
-      //   197: invokevirtual 146	com/tencent/mm/plugin/voip/video/i:a	(IJZI)V
-      //   200: aload 6
-      //   202: iconst_1
-      //   203: putfield 94	com/tencent/mm/plugin/voip/video/i:bus	Z
-      //   206: return
-      //   207: astore 5
-      //   209: ldc 77
-      //   211: new 148	java/lang/StringBuilder
-      //   214: dup
-      //   215: ldc 150
-      //   217: invokespecial 153	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   220: aload 5
-      //   222: invokevirtual 157	java/lang/Exception:toString	()Ljava/lang/String;
-      //   225: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   228: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   231: invokestatic 166	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   234: return
-      //   235: astore 5
-      //   237: iconst_1
-      //   238: istore_3
-      //   239: ldc 77
-      //   241: new 148	java/lang/StringBuilder
-      //   244: dup
-      //   245: ldc 168
-      //   247: invokespecial 153	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   250: aload 5
-      //   252: invokevirtual 171	java/lang/Exception:getMessage	()Ljava/lang/String;
-      //   255: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   258: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   261: invokestatic 166	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   264: goto -164 -> 100
-      //   267: aload 6
-      //   269: iload_2
-      //   270: iconst_2
-      //   271: iconst_1
-      //   272: invokevirtual 175	com/tencent/mm/plugin/voip/video/i:m	(IIZ)V
-      //   275: return
-      //   276: astore 5
-      //   278: goto -39 -> 239
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	281	0	this	4
-      //   1	196	1	i	int
-      //   13	257	2	j	int
-      //   62	177	3	bool1	boolean
-      //   3	95	4	bool2	boolean
-      //   207	14	5	localException1	java.lang.Exception
-      //   235	16	5	localException2	java.lang.Exception
-      //   276	1	5	localException3	java.lang.Exception
-      //   8	260	6	locali	com.tencent.mm.plugin.voip.video.i
-      // Exception table:
-      //   from	to	target	type
-      //   112	167	207	java/lang/Exception
-      //   167	183	207	java/lang/Exception
-      //   183	206	207	java/lang/Exception
-      //   41	63	235	java/lang/Exception
-      //   63	97	276	java/lang/Exception
-    }
-  };
-  public boolean loo;
-  public com.tencent.mm.plugin.voip.ui.a lop = new c.5(this);
-  private long loq = 0L;
+  private static ak faV;
+  private ap caS;
+  public Object iiG;
+  public e nLC;
+  private com.tencent.mm.plugin.ipcall.a.g.k nLD;
+  private boolean nLE;
+  private TelephonyManager nLF;
+  private PhoneStateListener nLG;
+  private com.tencent.mm.sdk.b.c nLH;
+  private Runnable nLI;
+  private Runnable nLJ;
+  public boolean nLK;
+  public com.tencent.mm.plugin.voip.ui.a nLL;
+  private long nLM;
   
-  public static boolean Fw(String paramString)
+  static
   {
-    y.d("MicroMsg.IPCallManager", "dialWhenTalking, dialButton: %s", new Object[] { paramString });
-    if (!com.tencent.mm.plugin.ipcall.a.i.bck().bcd()) {
-      y.i("MicroMsg.IPCallManager", "ipcall not connect, cannot call dialWhenTalking now");
-    }
-    for (;;)
-    {
-      return false;
-      if ((!bk.bl(paramString)) && (paramString.length() == 1))
-      {
-        int i;
-        if ((!bk.bl(paramString)) && (paramString.length() == 1))
-        {
-          i = paramString.charAt(0);
-          if ((i >= 48) && (i <= 57)) {
-            i -= 48;
-          }
-        }
-        while (i != -1)
-        {
-          paramString = com.tencent.mm.plugin.ipcall.a.i.bch();
-          y.d("MicroMsg.IPCallEngineManager", "sendDTMF: %d", new Object[] { Integer.valueOf(i) });
-          com.tencent.mm.plugin.ipcall.a.c.b localb = com.tencent.mm.plugin.ipcall.a.i.bci();
-          localb.lrn += 1;
-          y.i("MicroMsg.IPCallReportHelper", "now addCallClickCnt %d", new Object[] { Integer.valueOf(localb.lrn) });
-          i = paramString.lqG.SendDTMF(i);
-          if (i < 0) {
-            y.i("MicroMsg.IPCallEngineManager", "sendDTMF failed, ret: %d", new Object[] { Integer.valueOf(i) });
-          }
-          return true;
-          if (i == 42) {
-            i = 10;
-          } else if (i == 35) {
-            i = 11;
-          } else if ((i >= 65) && (i <= 68)) {
-            i = i - 65 + 12;
-          } else {
-            i = -1;
-          }
-        }
-      }
-    }
+    AppMethodBeat.i(21701);
+    faV = new ak(Looper.getMainLooper());
+    AppMethodBeat.o(21701);
   }
   
-  private boolean L(int paramInt1, int paramInt2, int paramInt3)
+  public c()
   {
-    ??? = com.tencent.mm.plugin.ipcall.a.i.bcg().loW;
-    if (!com.tencent.mm.plugin.ipcall.a.i.bck().sF(paramInt1))
+    AppMethodBeat.i(21672);
+    this.nLE = false;
+    this.iiG = new Object();
+    this.nLG = new c.1(this);
+    this.nLH = new c.2(this);
+    this.nLI = new c.3(this);
+    this.nLJ = new Runnable()
     {
-      y.i("MicroMsg.IPCallManager", "finishIPCall, cannot finish now, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-      if (??? != null) {
-        y.i("MicroMsg.IPCallManager", "finishIPCall, cannot finish now inviteId:%d, roomId:%d, state:%d,errStatus:%d, pstnErrCode:%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.ipcall.a.a.c)???).lpG), Integer.valueOf(((com.tencent.mm.plugin.ipcall.a.a.c)???).lpD), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      /* Error */
+      public final void run()
+      {
+        // Byte code:
+        //   0: iconst_0
+        //   1: istore_1
+        //   2: iconst_1
+        //   3: istore_3
+        //   4: sipush 21668
+        //   7: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   10: invokestatic 33	com/tencent/mm/plugin/ipcall/a/i:bJx	()Lcom/tencent/mm/plugin/voip/video/h;
+        //   13: astore 5
+        //   15: aload 5
+        //   17: iconst_0
+        //   18: putfield 39	com/tencent/mm/plugin/voip/video/h:tHo	I
+        //   21: ldc2_w 40
+        //   24: ldc2_w 42
+        //   27: lcmp
+        //   28: ifeq +239 -> 267
+        //   31: invokestatic 49	com/tencent/mm/kernel/g:RL	()Lcom/tencent/mm/kernel/e;
+        //   34: invokevirtual 55	com/tencent/mm/kernel/e:Ru	()Lcom/tencent/mm/storage/z;
+        //   37: ldc 56
+        //   39: getstatic 62	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+        //   42: invokevirtual 68	com/tencent/mm/storage/z:get	(ILjava/lang/Object;)Ljava/lang/Object;
+        //   45: checkcast 58	java/lang/Boolean
+        //   48: invokevirtual 72	java/lang/Boolean:booleanValue	()Z
+        //   51: istore_2
+        //   52: ldc 74
+        //   54: ldc 76
+        //   56: iconst_3
+        //   57: anewarray 4	java/lang/Object
+        //   60: dup
+        //   61: iconst_0
+        //   62: iload_2
+        //   63: invokestatic 80	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+        //   66: aastore
+        //   67: dup
+        //   68: iconst_1
+        //   69: invokestatic 85	com/tencent/mm/m/a:MB	()Z
+        //   72: invokestatic 80	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+        //   75: aastore
+        //   76: dup
+        //   77: iconst_2
+        //   78: getstatic 62	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+        //   81: aastore
+        //   82: invokestatic 90	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   85: iload_3
+        //   86: istore_2
+        //   87: iload_2
+        //   88: ifeq +172 -> 260
+        //   91: aload 5
+        //   93: getfield 94	com/tencent/mm/plugin/voip/video/h:bVD	Z
+        //   96: ifne +164 -> 260
+        //   99: aload 5
+        //   101: invokestatic 100	java/lang/System:currentTimeMillis	()J
+        //   104: putfield 104	com/tencent/mm/plugin/voip/video/h:tHp	J
+        //   107: aload 5
+        //   109: new 106	com/tencent/mm/compatible/b/k
+        //   112: dup
+        //   113: invokespecial 107	com/tencent/mm/compatible/b/k:<init>	()V
+        //   116: putfield 111	com/tencent/mm/plugin/voip/video/h:tHn	Landroid/media/MediaPlayer;
+        //   119: ldc 74
+        //   121: ldc 113
+        //   123: iconst_2
+        //   124: anewarray 4	java/lang/Object
+        //   127: dup
+        //   128: iconst_0
+        //   129: invokestatic 119	com/tencent/mm/compatible/b/g:KC	()Lcom/tencent/mm/compatible/b/g;
+        //   132: invokevirtual 122	com/tencent/mm/compatible/b/g:KH	()Z
+        //   135: invokestatic 80	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+        //   138: aastore
+        //   139: dup
+        //   140: iconst_1
+        //   141: invokestatic 119	com/tencent/mm/compatible/b/g:KC	()Lcom/tencent/mm/compatible/b/g;
+        //   144: invokevirtual 125	com/tencent/mm/compatible/b/g:KN	()Z
+        //   147: invokestatic 80	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+        //   150: aastore
+        //   151: invokestatic 128	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   154: getstatic 134	com/tencent/mm/compatible/e/ac:erv	Lcom/tencent/mm/compatible/e/b;
+        //   157: getfield 139	com/tencent/mm/compatible/e/b:enk	I
+        //   160: iflt +10 -> 170
+        //   163: getstatic 134	com/tencent/mm/compatible/e/ac:erv	Lcom/tencent/mm/compatible/e/b;
+        //   166: getfield 139	com/tencent/mm/compatible/e/b:enk	I
+        //   169: istore_1
+        //   170: aload 5
+        //   172: iconst_0
+        //   173: invokevirtual 143	com/tencent/mm/plugin/voip/video/h:nf	(Z)V
+        //   176: aload 5
+        //   178: ldc 144
+        //   180: ldc2_w 40
+        //   183: iconst_1
+        //   184: iload_1
+        //   185: invokevirtual 148	com/tencent/mm/plugin/voip/video/h:a	(IJZI)V
+        //   188: aload 5
+        //   190: iconst_1
+        //   191: putfield 94	com/tencent/mm/plugin/voip/video/h:bVD	Z
+        //   194: sipush 21668
+        //   197: invokestatic 151	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   200: return
+        //   201: astore 4
+        //   203: iconst_1
+        //   204: istore_2
+        //   205: ldc 74
+        //   207: new 153	java/lang/StringBuilder
+        //   210: dup
+        //   211: ldc 155
+        //   213: invokespecial 158	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+        //   216: aload 4
+        //   218: invokevirtual 162	java/lang/Exception:getMessage	()Ljava/lang/String;
+        //   221: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   224: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   227: invokestatic 173	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   230: goto -143 -> 87
+        //   233: astore 4
+        //   235: ldc 74
+        //   237: new 153	java/lang/StringBuilder
+        //   240: dup
+        //   241: ldc 175
+        //   243: invokespecial 158	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+        //   246: aload 4
+        //   248: invokevirtual 176	java/lang/Exception:toString	()Ljava/lang/String;
+        //   251: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   254: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   257: invokestatic 173	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   260: sipush 21668
+        //   263: invokestatic 151	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   266: return
+        //   267: aload 5
+        //   269: ldc 144
+        //   271: iconst_2
+        //   272: iconst_1
+        //   273: invokevirtual 180	com/tencent/mm/plugin/voip/video/h:q	(IIZ)V
+        //   276: sipush 21668
+        //   279: invokestatic 151	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   282: return
+        //   283: astore 4
+        //   285: goto -80 -> 205
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	288	0	this	4
+        //   1	184	1	i	int
+        //   51	154	2	bool1	boolean
+        //   3	83	3	bool2	boolean
+        //   201	16	4	localException1	java.lang.Exception
+        //   233	14	4	localException2	java.lang.Exception
+        //   283	1	4	localException3	java.lang.Exception
+        //   13	255	5	localh	h
+        // Exception table:
+        //   from	to	target	type
+        //   31	52	201	java/lang/Exception
+        //   99	154	233	java/lang/Exception
+        //   154	170	233	java/lang/Exception
+        //   170	194	233	java/lang/Exception
+        //   52	85	283	java/lang/Exception
       }
+    };
+    this.nLL = new com.tencent.mm.plugin.voip.ui.a()
+    {
+      public final void a(Intent paramAnonymousIntent, com.tencent.mm.plugin.voip.ui.e paramAnonymouse)
+      {
+        AppMethodBeat.i(21670);
+        if (!i.bJr().bJk())
+        {
+          paramAnonymouse.aeI(ah.getContext().getString(2131301716));
+          AppMethodBeat.o(21670);
+          return;
+        }
+        int i = c.this.bIR();
+        paramAnonymouse.aeJ(String.format("%02d:%02d", new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) }));
+        AppMethodBeat.o(21670);
+      }
+      
+      public final boolean bIS()
+      {
+        AppMethodBeat.i(21669);
+        if (i.bJr().bJh())
+        {
+          AppMethodBeat.o(21669);
+          return true;
+        }
+        AppMethodBeat.o(21669);
+        return false;
+      }
+    };
+    this.nLM = 0L;
+    AppMethodBeat.o(21672);
+  }
+  
+  public static boolean QV(String paramString)
+  {
+    AppMethodBeat.i(21676);
+    ab.d("MicroMsg.IPCallManager", "dialWhenTalking, dialButton: %s", new Object[] { paramString });
+    if (!i.bJr().bJk())
+    {
+      ab.i("MicroMsg.IPCallManager", "ipcall not connect, cannot call dialWhenTalking now");
+      AppMethodBeat.o(21676);
+      return false;
+    }
+    if ((!bo.isNullOrNil(paramString)) && (paramString.length() == 1))
+    {
+      int i;
+      if ((!bo.isNullOrNil(paramString)) && (paramString.length() == 1))
+      {
+        i = paramString.charAt(0);
+        if ((i >= 48) && (i <= 57)) {
+          i -= 48;
+        }
+      }
+      while (i != -1)
+      {
+        paramString = i.bJo();
+        ab.d("MicroMsg.IPCallEngineManager", "sendDTMF: %d", new Object[] { Integer.valueOf(i) });
+        com.tencent.mm.plugin.ipcall.a.c.b localb = i.bJp();
+        localb.nOJ += 1;
+        ab.i("MicroMsg.IPCallReportHelper", "now addCallClickCnt %d", new Object[] { Integer.valueOf(localb.nOJ) });
+        i = paramString.nOc.SendDTMF(i);
+        if (i < 0) {
+          ab.i("MicroMsg.IPCallEngineManager", "sendDTMF failed, ret: %d", new Object[] { Integer.valueOf(i) });
+        }
+        AppMethodBeat.o(21676);
+        return true;
+        if (i == 42) {
+          i = 10;
+        } else if (i == 35) {
+          i = 11;
+        } else if ((i >= 65) && (i <= 68)) {
+          i = i - 65 + 12;
+        } else {
+          i = -1;
+        }
+      }
+    }
+    AppMethodBeat.o(21676);
+    return false;
+  }
+  
+  private boolean X(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(21675);
+    ??? = i.bJn().nMs;
+    if (!i.bJr().xF(paramInt1))
+    {
+      ab.i("MicroMsg.IPCallManager", "finishIPCall, cannot finish now, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+      if (??? != null) {
+        ab.i("MicroMsg.IPCallManager", "finishIPCall, cannot finish now inviteId:%d, roomId:%d, state:%d,errStatus:%d, pstnErrCode:%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.ipcall.a.a.c)???).nNc), Integer.valueOf(((com.tencent.mm.plugin.ipcall.a.a.c)???).nMZ), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      }
+      AppMethodBeat.o(21675);
       return false;
     }
     if (??? != null) {
-      y.i("MicroMsg.IPCallManager", "finishIPCall inviteId:%d, roomId:%d, state:%d, errStatus:%d, pstnErrCode:%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.ipcall.a.a.c)???).lpG), Integer.valueOf(((com.tencent.mm.plugin.ipcall.a.a.c)???).lpD), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      ab.i("MicroMsg.IPCallManager", "finishIPCall inviteId:%d, roomId:%d, state:%d, errStatus:%d, pstnErrCode:%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.ipcall.a.a.c)???).nNc), Integer.valueOf(((com.tencent.mm.plugin.ipcall.a.a.c)???).nMZ), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }
-    y.i("MicroMsg.IPCallManager", "closeDeviceEngine");
-    p.bQU().bQW();
-    p.bQU().pTc = null;
-    ??? = com.tencent.mm.plugin.ipcall.a.i.bci();
-    ??? = com.tencent.mm.plugin.ipcall.a.i.bcj();
-    label312:
+    ab.i("MicroMsg.IPCallManager", "closeDeviceEngine");
+    q.cNr().cNt();
+    q.cNr().a(null);
+    ??? = i.bJp();
+    ??? = i.bJq();
+    label324:
     Object localObject6;
-    if (((com.tencent.mm.plugin.ipcall.a.b.b)???).lqp != null)
+    if (((com.tencent.mm.plugin.ipcall.a.b.b)???).nNL != null)
     {
-      ??? = ((com.tencent.mm.plugin.ipcall.a.b.b)???).lqp;
-      if (((com.tencent.mm.plugin.ipcall.a.b.c)???).lqv != null)
+      ??? = ((com.tencent.mm.plugin.ipcall.a.b.b)???).nNL;
+      if (((com.tencent.mm.plugin.ipcall.a.b.c)???).nNR != null)
       {
-        i = ((com.tencent.mm.plugin.ipcall.a.b.c)???).lqv.bCt;
-        if (((com.tencent.mm.plugin.ipcall.a.c.b)???).lrk == 0) {
-          ((com.tencent.mm.plugin.ipcall.a.c.b)???).lrk = i;
+        i = ((com.tencent.mm.plugin.ipcall.a.b.c)???).nNR.cjh;
+        if (((com.tencent.mm.plugin.ipcall.a.c.b)???).nOG == 0) {
+          ((com.tencent.mm.plugin.ipcall.a.c.b)???).nOG = i;
         }
-        ??? = com.tencent.mm.plugin.ipcall.a.i.bci();
-        ??? = com.tencent.mm.plugin.ipcall.a.i.bcj();
-        if (((com.tencent.mm.plugin.ipcall.a.b.b)???).lqo == null) {
-          break label1735;
+        ??? = i.bJp();
+        ??? = i.bJq();
+        if (((com.tencent.mm.plugin.ipcall.a.b.b)???).nNK == null) {
+          break label1664;
         }
-        ??? = ((com.tencent.mm.plugin.ipcall.a.b.b)???).lqo;
-        if (((com.tencent.mm.plugin.ipcall.a.b.a)???).iEF == null) {
-          break label1729;
+        ??? = ((com.tencent.mm.plugin.ipcall.a.b.b)???).nNK;
+        if (((com.tencent.mm.plugin.ipcall.a.b.a)???).kJR == null) {
+          break label1658;
         }
-        y.d("MicroMsg.IPCallAudioPlayer", "AudioPlayer  mAudioPlayErrState:" + ((com.tencent.mm.plugin.ipcall.a.b.a)???).iEF.bPG());
-        i = ((com.tencent.mm.plugin.ipcall.a.b.a)???).iEF.bPG();
-        if (((com.tencent.mm.plugin.ipcall.a.c.b)???).lrl == 0) {
-          ((com.tencent.mm.plugin.ipcall.a.c.b)???).lrl = i;
+        ab.d("MicroMsg.IPCallAudioPlayer", "AudioPlayer  mAudioPlayErrState:" + ((com.tencent.mm.plugin.ipcall.a.b.a)???).kJR.cLK());
+        i = ((com.tencent.mm.plugin.ipcall.a.b.a)???).kJR.cLK();
+        if (((com.tencent.mm.plugin.ipcall.a.c.b)???).nOH == 0) {
+          ((com.tencent.mm.plugin.ipcall.a.c.b)???).nOH = i;
         }
-        ??? = com.tencent.mm.plugin.ipcall.a.i.bcj();
-        ??? = com.tencent.mm.plugin.ipcall.a.i.bch();
+        ??? = i.bJq();
+        ??? = i.bJo();
         i = 0;
-        if (((com.tencent.mm.plugin.ipcall.a.b.b)???).lqo != null)
+        if (((com.tencent.mm.plugin.ipcall.a.b.b)???).nNK != null)
         {
-          localObject6 = ((com.tencent.mm.plugin.ipcall.a.b.b)???).lqo;
-          if ((((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).iEF == null) || (!((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).bSr)) {
-            break label1741;
+          localObject6 = ((com.tencent.mm.plugin.ipcall.a.b.b)???).nNK;
+          if ((((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).kJR == null) || (!((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).isStart)) {
+            break label1670;
           }
-          i = ((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).iEF.bPH();
+          i = ((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).kJR.cLL();
         }
-        label381:
+        label393:
         if (i != -1) {
-          break label1747;
+          break label1676;
         }
         i = 0;
-        label390:
-        ((com.tencent.mm.plugin.ipcall.a.c.a)???).lqG.pVa = i;
-        ((com.tencent.mm.plugin.ipcall.a.b.b)???).eLi.zE();
-        localObject6 = ((com.tencent.mm.plugin.ipcall.a.b.b)???).lqo;
-        if (((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).bSr) {
-          y.i("MicroMsg.IPCallAudioPlayer", "stopPlay");
+        label402:
+        ((com.tencent.mm.plugin.ipcall.a.c.a)???).nOc.tAC = i;
+        ((com.tencent.mm.plugin.ipcall.a.b.b)???).gaP.Mh();
+        localObject6 = ((com.tencent.mm.plugin.ipcall.a.b.b)???).nNK;
+        if (((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).isStart) {
+          ab.i("MicroMsg.IPCallAudioPlayer", "stopPlay");
         }
-        synchronized (((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).lqj)
+        synchronized (((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).nNF)
         {
-          com.tencent.mm.sdk.f.e.post(new com.tencent.mm.plugin.ipcall.a.b.a.a((com.tencent.mm.plugin.ipcall.a.b.a)localObject6, ((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).iEF), "IPCallAudioPlayer_stop");
-          ((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).bSr = false;
-          ((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).iEF = null;
-          ((com.tencent.mm.plugin.ipcall.a.b.b)???).bER = null;
-          ((com.tencent.mm.plugin.ipcall.a.b.b)???).iEH.ek(ae.getContext());
-          au.Hy().yl();
-          au.Hy().b((f.a)???);
-          ((com.tencent.mm.plugin.ipcall.a.b.b)???).lqt = null;
-          ((com.tencent.mm.plugin.ipcall.a.b.b)???).lqr = null;
-          ??? = com.tencent.mm.plugin.ipcall.a.i.bcj();
-          localObject6 = ((com.tencent.mm.plugin.ipcall.a.b.b)???).lqp;
-          if (((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).bSr) {
-            y.i("MicroMsg.IPCallRecorder", "stop record");
+          com.tencent.mm.sdk.g.d.post(new com.tencent.mm.plugin.ipcall.a.b.a.a((com.tencent.mm.plugin.ipcall.a.b.a)localObject6, ((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).kJR), "IPCallAudioPlayer_stop");
+          ((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).isStart = false;
+          ((com.tencent.mm.plugin.ipcall.a.b.a)localObject6).kJR = null;
+          ((com.tencent.mm.plugin.ipcall.a.b.b)???).cmc = null;
+          ((com.tencent.mm.plugin.ipcall.a.b.b)???).kJT.fg(ah.getContext());
+          aw.aaA().KF();
+          aw.aaA().b((com.tencent.mm.compatible.b.g.a)???);
+          ((com.tencent.mm.plugin.ipcall.a.b.b)???).nNP = null;
+          ((com.tencent.mm.plugin.ipcall.a.b.b)???).nNN = null;
+          ??? = i.bJq();
+          localObject6 = ((com.tencent.mm.plugin.ipcall.a.b.b)???).nNL;
+          if (((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).isStart) {
+            ab.i("MicroMsg.IPCallRecorder", "stop record");
           }
         }
       }
     }
     for (;;)
     {
-      synchronized (((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).lqw)
+      synchronized (((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).nNS)
       {
-        if (((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).lqv != null)
+        if (((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).nNR != null)
         {
-          com.tencent.mm.sdk.f.e.post(new c.a((com.tencent.mm.plugin.ipcall.a.b.c)localObject6, ((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).lqv), "IPCallRecorder_stopRecord");
-          ((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).lqv = null;
-          ((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).bSr = false;
-          ((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).dnJ = false;
+          com.tencent.mm.sdk.g.d.post(new c.a((com.tencent.mm.plugin.ipcall.a.b.c)localObject6, ((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).nNR), "IPCallRecorder_stopRecord");
+          ((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).nNR = null;
+          ((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).isStart = false;
+          ((com.tencent.mm.plugin.ipcall.a.b.c)localObject6).efg = false;
         }
-        ((com.tencent.mm.plugin.ipcall.a.b.b)???).bER = null;
-        ??? = com.tencent.mm.plugin.ipcall.a.i.bch();
-        y.i("MicroMsg.IPCallEngineManager", "close engine");
-        ((com.tencent.mm.plugin.ipcall.a.c.a)???).lqG.kb(true);
-        ??? = com.tencent.mm.plugin.ipcall.a.i.bci();
+        ((com.tencent.mm.plugin.ipcall.a.b.b)???).cmc = null;
+        ??? = i.bJo();
+        ab.i("MicroMsg.IPCallEngineManager", "close engine");
+        ((com.tencent.mm.plugin.ipcall.a.c.a)???).nOc.mX(true);
+        ??? = i.bJp();
         boolean bool;
-        if ((bk.bl(((com.tencent.mm.plugin.ipcall.a.c.b)???).lrf)) && (bk.bl(((com.tencent.mm.plugin.ipcall.a.c.b)???).lre)))
+        if ((bo.isNullOrNil(((com.tencent.mm.plugin.ipcall.a.c.b)???).nOB)) && (bo.isNullOrNil(((com.tencent.mm.plugin.ipcall.a.c.b)???).nOA)))
         {
-          Object localObject7 = com.tencent.mm.plugin.ipcall.a.i.bcg().loW;
-          localObject6 = com.tencent.mm.plugin.ipcall.a.i.bch().lqG;
-          if (((com.tencent.mm.plugin.ipcall.a.c.b)???).lqU == 1)
+          Object localObject7 = i.bJn().nMs;
+          localObject6 = i.bJo().nOc;
+          if (((com.tencent.mm.plugin.ipcall.a.c.b)???).nOq == 1)
           {
             i = 1;
-            int j = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject7).lpZ;
-            localObject7 = ((v2protocal)localObject6).pWe;
-            int k = ((v2protocal)localObject6).pWe.length;
+            int j = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject7).nNv;
+            localObject7 = ((v2protocal)localObject6).tBJ;
+            int k = ((v2protocal)localObject6).tBJ.length;
             if (i == 0) {
-              break label1802;
+              break label1743;
             }
             i = 1;
             ((v2protocal)localObject6).getPstnChannelInfo((byte[])localObject7, k, i, j);
-            y.d("MicroMsg.Voip", "field_pstnChannelInfoLength: %d", new Object[] { Integer.valueOf(((v2protocal)localObject6).field_pstnChannelInfoLength) });
-            ((com.tencent.mm.plugin.ipcall.a.c.b)???).lrf = new String(((v2protocal)localObject6).pWe, 0, ((v2protocal)localObject6).field_pstnChannelInfoLength);
-            localObject6 = com.tencent.mm.plugin.ipcall.a.i.bch().lqG;
-            ((v2protocal)localObject6).getPstnEngineInfo(((v2protocal)localObject6).pWf, ((v2protocal)localObject6).pWf.length);
-            y.d("MicroMsg.Voip", "field_pstnEngineInfoLength: %d", new Object[] { Integer.valueOf(((v2protocal)localObject6).field_pstnEngineInfoLength) });
-            ((com.tencent.mm.plugin.ipcall.a.c.b)???).lre = new String(((v2protocal)localObject6).pWf, 0, ((v2protocal)localObject6).field_pstnEngineInfoLength);
-            localObject6 = com.tencent.mm.plugin.ipcall.a.i.bch().lqG;
-            i = v2protocal.cpuFlag0;
-            ((com.tencent.mm.plugin.ipcall.a.c.b)???).lrg = (v2protocal.bRE() + "," + ((v2protocal)localObject6).pVb + "," + (i & 0xFF) + ((v2protocal)localObject6).bRJ() + "," + ((v2protocal)localObject6).pVa);
-            y.d("MicroMsg.IPCallReportHelper", "nativeChannelReportString: %s", new Object[] { ((com.tencent.mm.plugin.ipcall.a.c.b)???).lrf });
-            y.d("MicroMsg.IPCallReportHelper", "nativeEngineReportString: %s", new Object[] { ((com.tencent.mm.plugin.ipcall.a.c.b)???).lre });
-            y.d("MicroMsg.IPCallReportHelper", "clientReportExString: %s", new Object[] { ((com.tencent.mm.plugin.ipcall.a.c.b)???).lrg });
+            ab.d("MicroMsg.Voip", "field_pstnChannelInfoLength: %d", new Object[] { Integer.valueOf(((v2protocal)localObject6).field_pstnChannelInfoLength) });
+            ((com.tencent.mm.plugin.ipcall.a.c.b)???).nOB = new String(((v2protocal)localObject6).tBJ, 0, ((v2protocal)localObject6).field_pstnChannelInfoLength);
+            localObject6 = i.bJo().nOc;
+            ((v2protocal)localObject6).getPstnEngineInfo(((v2protocal)localObject6).tBK, ((v2protocal)localObject6).tBK.length);
+            ab.d("MicroMsg.Voip", "field_pstnEngineInfoLength: %d", new Object[] { Integer.valueOf(((v2protocal)localObject6).field_pstnEngineInfoLength) });
+            ((com.tencent.mm.plugin.ipcall.a.c.b)???).nOA = new String(((v2protocal)localObject6).tBK, 0, ((v2protocal)localObject6).field_pstnEngineInfoLength);
+            ((com.tencent.mm.plugin.ipcall.a.c.b)???).nOC = i.bJo().nOc.cOF();
+            ab.d("MicroMsg.IPCallReportHelper", "nativeChannelReportString: %s", new Object[] { ((com.tencent.mm.plugin.ipcall.a.c.b)???).nOB });
+            ab.d("MicroMsg.IPCallReportHelper", "nativeEngineReportString: %s", new Object[] { ((com.tencent.mm.plugin.ipcall.a.c.b)???).nOA });
+            ab.d("MicroMsg.IPCallReportHelper", "clientReportExString: %s", new Object[] { ((com.tencent.mm.plugin.ipcall.a.c.b)???).nOC });
           }
         }
         else
         {
-          ((com.tencent.mm.plugin.ipcall.a.c.a)???).lqG.reset();
-          ((com.tencent.mm.plugin.ipcall.a.c.a)???).bcB();
-          com.tencent.mm.plugin.ipcall.a.i.bcq().stop();
-          ??? = com.tencent.mm.plugin.ipcall.a.i.bcq();
-          i = R.k.playend;
-          com.tencent.mm.plugin.ipcall.a.i.bcj();
-          bool = au.Hy().dui.isSpeakerphoneOn();
-          ((com.tencent.mm.plugin.voip.video.i)???).mContext.getSharedPreferences(ae.cqR(), 0).getBoolean("settings_shake", true);
-          com.tencent.mm.compatible.b.f.yi().setSpeakerphoneOn(bool);
+          ((com.tencent.mm.plugin.ipcall.a.c.a)???).nOc.reset();
+          ((com.tencent.mm.plugin.ipcall.a.c.a)???).aEa();
+          i.bJx().stop();
+          ??? = i.bJx();
+          i.bJq();
+          bool = aw.aaA().elW.isSpeakerphoneOn();
+          ((h)???).mContext.getSharedPreferences(ah.dsP(), 0).getBoolean("settings_shake", true);
+          com.tencent.mm.compatible.b.g.KC().setSpeakerphoneOn(bool);
           if (!bool) {
-            break label1808;
+            break label1749;
           }
-          com.tencent.mm.compatible.b.f.yi().setMode(0);
-          y.i("MicroMsg.RingPlayer", "playSound, shake: %s, isSpeakerOn: %s, type: %s", new Object[] { Boolean.valueOf(false), Boolean.valueOf(bool), Integer.valueOf(2) });
-          ((com.tencent.mm.plugin.voip.video.i)???).qbE = System.currentTimeMillis();
-          ??? = new com.tencent.mm.compatible.b.j();
+          com.tencent.mm.compatible.b.g.KC().setMode(0);
+          ab.i("MicroMsg.RingPlayer", "playSound, shake: %s, isSpeakerOn: %s, type: %s", new Object[] { Boolean.FALSE, Boolean.valueOf(bool), Integer.valueOf(2) });
+          ((h)???).tHq = System.currentTimeMillis();
+          ??? = new com.tencent.mm.compatible.b.k();
         }
         try
         {
-          ((MediaPlayer)???).setDataSource(((com.tencent.mm.plugin.voip.video.i)???).mContext, Uri.parse("android.resource://" + ((com.tencent.mm.plugin.voip.video.i)???).mContext.getPackageName() + "/" + i));
-          ((MediaPlayer)???).setOnCompletionListener(new i.7((com.tencent.mm.plugin.voip.video.i)???));
-          ((MediaPlayer)???).setOnErrorListener(new i.8((com.tencent.mm.plugin.voip.video.i)???));
-          if (com.tencent.mm.compatible.b.f.yi().yn()) {
-            break label2324;
+          ((MediaPlayer)???).setDataSource(((h)???).mContext, Uri.parse("android.resource://" + ((h)???).mContext.getPackageName() + "/2131231865"));
+          ((MediaPlayer)???).setOnCompletionListener(new h.7((h)???));
+          ((MediaPlayer)???).setOnErrorListener(new h.8((h)???));
+          if (com.tencent.mm.compatible.b.g.KC().KH()) {
+            break label2265;
           }
           if (bool) {
-            break label1818;
+            break label1759;
           }
         }
         catch (Throwable localThrowable)
@@ -437,97 +485,97 @@ public final class c
           long l2;
           long l3;
           float f;
-          y.w("MicroMsg.RingPlayer", "playSound Failed Throwable t = ", new Object[] { localThrowable });
-          localObject2.qbC = 6;
+          ab.w("MicroMsg.RingPlayer", "playSound Failed Throwable t = ", new Object[] { localThrowable });
+          localObject2.tHo = 6;
           localObject5.stop();
           localObject5.release();
           continue;
           if (paramInt1 != 12) {
-            break label1964;
+            break label1905;
           }
-          com.tencent.mm.plugin.ipcall.a.i.bcg().bce();
-          com.tencent.mm.plugin.ipcall.a.i.bci().bcD();
+          i.bJn().bJl();
+          i.bJp().bJK();
           if (paramInt2 != 11) {
-            break label1899;
+            break label1840;
           }
-          m.b(this.loh);
+          m.b(this.nLD);
           continue;
-          Object localObject3 = this.loh;
+          Object localObject3 = this.nLD;
           if (localObject3 == null) {
             continue;
           }
-          y.d("MicroMsg.IPCallRecordStorageLogic", "recordCallFailed, localId: %d", new Object[] { Long.valueOf(((k)localObject3).ujK) });
-          if (((k)localObject3).ujK == -1L) {
+          ab.d("MicroMsg.IPCallRecordStorageLogic", "recordCallFailed, localId: %d", new Object[] { Long.valueOf(((com.tencent.mm.plugin.ipcall.a.g.k)localObject3).systemRowid) });
+          if (((com.tencent.mm.plugin.ipcall.a.g.k)localObject3).systemRowid == -1L) {
             continue;
           }
-          ((k)localObject3).field_status = 6;
-          com.tencent.mm.plugin.ipcall.a.i.bcn().a((k)localObject3);
+          ((com.tencent.mm.plugin.ipcall.a.g.k)localObject3).field_status = 6;
+          i.bJu().a((com.tencent.mm.plugin.ipcall.a.g.k)localObject3);
           continue;
           if (paramInt1 != 9) {
-            break label2000;
+            break label1941;
           }
-          com.tencent.mm.plugin.ipcall.a.i.bcg().sG(1);
-          com.tencent.mm.plugin.ipcall.a.i.bci().bcC();
-          m.a(this.loh, com.tencent.mm.plugin.ipcall.a.i.bci().lqV);
+          i.bJn().xH(1);
+          i.bJp().bJJ();
+          m.a(this.nLD, i.bJp().nOr);
           continue;
           if (paramInt1 != 10) {
-            break label2119;
+            break label2060;
           }
-          com.tencent.mm.plugin.ipcall.a.i.bcg().sG(1);
-          localObject3 = com.tencent.mm.plugin.ipcall.a.i.bci();
-          y.i("MicroMsg.IPCallReportHelper", "otherSideUserShutdown");
-          ((com.tencent.mm.plugin.ipcall.a.c.b)localObject3).lqP = 1;
-          localObject3 = this.loh;
-          long l1 = com.tencent.mm.plugin.ipcall.a.i.bci().lqV;
+          i.bJn().xH(1);
+          localObject3 = i.bJp();
+          ab.i("MicroMsg.IPCallReportHelper", "otherSideUserShutdown");
+          ((com.tencent.mm.plugin.ipcall.a.c.b)localObject3).nOl = 1;
+          localObject3 = this.nLD;
+          long l1 = i.bJp().nOr;
           if (localObject3 == null) {
             continue;
           }
-          y.d("MicroMsg.IPCallRecordStorageLogic", "recordOthersideShutdownCall, localId: %d, talkTime: %d", new Object[] { Long.valueOf(((k)localObject3).ujK), Long.valueOf(l1) });
-          if (((k)localObject3).ujK == -1L) {
+          ab.d("MicroMsg.IPCallRecordStorageLogic", "recordOthersideShutdownCall, localId: %d, talkTime: %d", new Object[] { Long.valueOf(((com.tencent.mm.plugin.ipcall.a.g.k)localObject3).systemRowid), Long.valueOf(l1) });
+          if (((com.tencent.mm.plugin.ipcall.a.g.k)localObject3).systemRowid == -1L) {
             continue;
           }
-          ((k)localObject3).field_status = 5;
-          ((k)localObject3).field_duration = l1;
-          com.tencent.mm.plugin.ipcall.a.i.bcn().a((k)localObject3);
+          ((com.tencent.mm.plugin.ipcall.a.g.k)localObject3).field_status = 5;
+          ((com.tencent.mm.plugin.ipcall.a.g.k)localObject3).field_duration = l1;
+          i.bJu().a((com.tencent.mm.plugin.ipcall.a.g.k)localObject3);
           continue;
           if (paramInt1 != 11) {
             continue;
           }
           if (paramInt2 != 5) {
-            break label2160;
+            break label2101;
           }
-          com.tencent.mm.plugin.ipcall.a.i.bcg().sG(3);
+          i.bJn().xH(3);
           for (;;)
           {
-            com.tencent.mm.plugin.ipcall.a.i.bci().bcC();
+            i.bJp().bJJ();
             if (paramInt2 != 11) {
-              break label2186;
+              break label2127;
             }
-            m.b(this.loh);
+            m.b(this.nLD);
             break;
             if (paramInt2 == 11) {
-              com.tencent.mm.plugin.ipcall.a.i.bcg().sG(1);
+              i.bJn().xH(1);
             } else {
-              com.tencent.mm.plugin.ipcall.a.i.bcg().sG(2);
+              i.bJn().xH(2);
             }
           }
-          m.a(this.loh, com.tencent.mm.plugin.ipcall.a.i.bci().lqV);
+          m.a(this.nLD, i.bJp().nOr);
           continue;
           if (l3 - l2 >= 1800L) {
-            break label2227;
+            break label2168;
           }
-          y.i("MicroMsg.IPCallPluginUtil", "tryShowFeedbackDialog not reach INTERVAL_TIMES_TRY_SHOW_WCO_FEEDBACK_MAIN");
+          ab.i("MicroMsg.IPCallPluginUtil", "tryShowFeedbackDialog not reach INTERVAL_TIMES_TRY_SHOW_WCO_FEEDBACK_MAIN");
           continue;
-          au.Hx();
-          com.tencent.mm.model.c.Dz().c(ac.a.uqE, Integer.valueOf(paramInt1 + 1));
-          au.Hx();
-          com.tencent.mm.model.c.Dz().c(ac.a.uqD, Long.valueOf(l3));
+          aw.aaz();
+          com.tencent.mm.model.c.Ru().set(ac.a.yAE, Integer.valueOf(paramInt1 + 1));
+          aw.aaz();
+          com.tencent.mm.model.c.Ru().set(ac.a.yAD, Long.valueOf(l3));
           Intent localIntent = new Intent();
           localIntent.putExtra("IPCallFeedbackDialogUI_KRoomId", paramInt2);
           localIntent.putExtra("IPCallFeedbackDialogUI_KCallseq", l1);
-          com.tencent.mm.br.d.b((Context)localObject3, "ipcall", ".ui.IPCallFeedbackDialogUI", localIntent);
+          com.tencent.mm.bq.d.b((Context)localObject3, "ipcall", ".ui.IPCallFeedbackDialogUI", localIntent);
           continue;
-          y.e("MicroMsg.IPCallManager", "roomId = 0,ignore feedback");
+          ab.e("MicroMsg.IPCallManager", "roomId = 0,ignore feedback");
           continue;
           continue;
           i = 0;
@@ -537,529 +585,766 @@ public final class c
         ((MediaPlayer)???).prepare();
         ((MediaPlayer)???).setLooping(false);
         ((MediaPlayer)???).start();
-        if (System.currentTimeMillis() - ((com.tencent.mm.plugin.voip.video.i)???).qbE > 2000L) {
-          ((com.tencent.mm.plugin.voip.video.i)???).qbC = 7;
+        if (System.currentTimeMillis() - ((h)???).tHq > 2000L) {
+          ((h)???).tHo = 7;
         }
-        dPi.removeCallbacks(this.lon);
-        dPi.removeCallbacks(this.lom);
-        if (this.byQ != null)
+        faV.removeCallbacks(this.nLJ);
+        faV.removeCallbacks(this.nLI);
+        if (this.caS != null)
         {
-          this.byQ.stopTimer();
-          this.byQ = null;
+          this.caS.stopTimer();
+          this.caS = null;
         }
-        com.tencent.mm.plugin.ipcall.a.i.bci().lqW = paramInt3;
-        ??? = com.tencent.mm.plugin.ipcall.a.i.bci();
-        y.d("MicroMsg.IPCallReportHelper", "markEndTalk");
-        if ((((com.tencent.mm.plugin.ipcall.a.c.b)???).lrd == 0L) && (((com.tencent.mm.plugin.ipcall.a.c.b)???).lrc != 0L))
+        i.bJp().nOs = paramInt3;
+        ??? = i.bJp();
+        ab.d("MicroMsg.IPCallReportHelper", "markEndTalk");
+        if ((((com.tencent.mm.plugin.ipcall.a.c.b)???).nOz == 0L) && (((com.tencent.mm.plugin.ipcall.a.c.b)???).nOy != 0L))
         {
-          ((com.tencent.mm.plugin.ipcall.a.c.b)???).lrd = System.currentTimeMillis();
-          ((com.tencent.mm.plugin.ipcall.a.c.b)???).lqV = ((((com.tencent.mm.plugin.ipcall.a.c.b)???).lrd - ((com.tencent.mm.plugin.ipcall.a.c.b)???).lrc) / 1000L);
-          y.d("MicroMsg.IPCallReportHelper", "callTime: %d", new Object[] { Long.valueOf(((com.tencent.mm.plugin.ipcall.a.c.b)???).lqV) });
+          ((com.tencent.mm.plugin.ipcall.a.c.b)???).nOz = System.currentTimeMillis();
+          ((com.tencent.mm.plugin.ipcall.a.c.b)???).nOr = ((((com.tencent.mm.plugin.ipcall.a.c.b)???).nOz - ((com.tencent.mm.plugin.ipcall.a.c.b)???).nOy) / 1000L);
+          ab.d("MicroMsg.IPCallReportHelper", "callTime: %d", new Object[] { Long.valueOf(((com.tencent.mm.plugin.ipcall.a.c.b)???).nOr) });
         }
         if (paramInt1 != 8) {
-          break label1864;
+          break label1805;
         }
-        com.tencent.mm.plugin.ipcall.a.i.bcg().bce();
-        com.tencent.mm.plugin.ipcall.a.i.bci().bcD();
-        ??? = this.loh;
+        i.bJn().bJl();
+        i.bJp().bJK();
+        ??? = this.nLD;
         if (??? != null)
         {
-          y.d("MicroMsg.IPCallRecordStorageLogic", "recordCancelCall, localId: %d", new Object[] { Long.valueOf(((k)???).ujK) });
-          if (((k)???).ujK != -1L)
+          ab.d("MicroMsg.IPCallRecordStorageLogic", "recordCancelCall, localId: %d", new Object[] { Long.valueOf(((com.tencent.mm.plugin.ipcall.a.g.k)???).systemRowid) });
+          if (((com.tencent.mm.plugin.ipcall.a.g.k)???).systemRowid != -1L)
           {
-            ((k)???).field_status = 2;
-            com.tencent.mm.plugin.ipcall.a.i.bcn().a((k)???);
+            ((com.tencent.mm.plugin.ipcall.a.g.k)???).field_status = 2;
+            i.bJu().a((com.tencent.mm.plugin.ipcall.a.g.k)???);
           }
         }
-        if (com.tencent.mm.plugin.ipcall.a.i.bcg().bWb)
+        if (i.bJn().cDO)
         {
-          if ((this.loo) || (com.tencent.mm.plugin.ipcall.a.i.bcg().loW.lpD == 0) || (com.tencent.mm.plugin.ipcall.a.i.bcg().loW.lpF == 0L)) {
-            break label2310;
+          if ((this.nLK) || (i.bJn().nMs.nMZ == 0) || (i.bJn().nMs.nNb == 0L)) {
+            break label2251;
           }
-          ??? = ae.getContext();
-          paramInt2 = com.tencent.mm.plugin.ipcall.a.i.bcg().loW.lpD;
-          l1 = com.tencent.mm.plugin.ipcall.a.i.bcg().loW.lpF;
-          y.i("MicroMsg.IPCallPluginUtil", "tryShowFeedbackDialog");
-          if (d.bbM())
+          ??? = ah.getContext();
+          paramInt2 = i.bJn().nMs.nMZ;
+          l1 = i.bJn().nMs.nNb;
+          ab.i("MicroMsg.IPCallPluginUtil", "tryShowFeedbackDialog");
+          if (d.bIT())
           {
-            paramInt3 = com.tencent.mm.m.g.AA().getInt("WCOMaxTimesForShowFeedback", 0);
-            au.Hx();
-            paramInt1 = ((Integer)com.tencent.mm.model.c.Dz().get(ac.a.uqE, Integer.valueOf(0))).intValue();
-            au.Hx();
-            l2 = ((Long)com.tencent.mm.model.c.Dz().get(ac.a.uqD, Long.valueOf(0L))).longValue();
-            l3 = bk.UX();
+            paramInt3 = com.tencent.mm.m.g.Nq().getInt("WCOMaxTimesForShowFeedback", 0);
+            aw.aaz();
+            paramInt1 = ((Integer)com.tencent.mm.model.c.Ru().get(ac.a.yAE, Integer.valueOf(0))).intValue();
+            aw.aaz();
+            l2 = ((Long)com.tencent.mm.model.c.Ru().get(ac.a.yAD, Long.valueOf(0L))).longValue();
+            l3 = bo.aox();
             if (l3 - l2 <= 86400L) {
-              break label2321;
+              break label2262;
             }
             paramInt1 = 0;
-            y.i("MicroMsg.IPCallPluginUtil", "tryShowFeedbackDialog reset time");
+            ab.i("MicroMsg.IPCallPluginUtil", "tryShowFeedbackDialog reset time");
             if (paramInt1 < paramInt3) {
-              break label2203;
+              break label2144;
             }
-            y.i("MicroMsg.IPCallPluginUtil", "tryShowFeedbackDialog reach max time" + paramInt3);
+            ab.i("MicroMsg.IPCallPluginUtil", "tryShowFeedbackDialog reach max time".concat(String.valueOf(paramInt3)));
           }
         }
-        com.tencent.mm.plugin.ipcall.a.i.bcg().loN = null;
-        com.tencent.mm.plugin.ipcall.a.i.bch().lqL = null;
-        com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState = -1;
-        bbJ();
-        ch();
+        i.bJn().nMj = null;
+        i.bJo().nOh = null;
+        i.bJr().mCurrentState = -1;
+        bIQ();
+        removeListener();
+        AppMethodBeat.o(21675);
         return true;
         i = 0;
         break;
         i = 0;
         break;
-        label1729:
+        label1658:
         i = 0;
-        break label312;
-        label1735:
+        break label324;
+        label1664:
         i = 0;
-        break label312;
-        label1741:
+        break label324;
+        label1670:
         i = -1;
-        break label381;
-        label1747:
-        f = au.Hy().getStreamMaxVolume(i);
-        i = (int)(au.Hy().getStreamVolume(i) / f * 100.0F);
-        break label390;
+        break label393;
+        label1676:
+        f = aw.aaA().getStreamMaxVolume(i);
+        i = (int)(aw.aaA().getStreamVolume(i) / f * 100.0F);
+        break label402;
         localObject2 = finally;
+        AppMethodBeat.o(21675);
         throw localObject2;
       }
       i = 0;
       continue;
-      label1802:
+      label1743:
       i = 0;
       continue;
-      label1808:
-      com.tencent.mm.compatible.b.f.yi().setMode(2);
+      label1749:
+      com.tencent.mm.compatible.b.g.KC().setMode(2);
       continue;
-      label1818:
+      label1759:
       i = 2;
     }
   }
   
-  private void XW()
+  private void arF()
   {
-    y.i("MicroMsg.IPCallManager", "startTimeCount");
-    if (this.byQ != null)
+    AppMethodBeat.i(21700);
+    ab.i("MicroMsg.IPCallManager", "startTimeCount");
+    if (this.caS != null)
     {
-      this.byQ.stopTimer();
+      this.caS.stopTimer();
+      AppMethodBeat.o(21700);
       return;
     }
-    if (this.byQ == null) {
-      this.byQ = new am(Looper.getMainLooper(), new c.6(this), true);
+    if (this.caS == null) {
+      this.caS = new ap(Looper.getMainLooper(), new ap.a()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(21671);
+          c.this.bIP();
+          if ((i.bJr().bJk()) && (c.a(c.this) != null)) {
+            c.a(c.this).bIX();
+          }
+          AppMethodBeat.o(21671);
+          return true;
+        }
+      }, true);
     }
-    this.byQ.S(1000L, 1000L);
+    this.caS.ag(1000L, 1000L);
+    AppMethodBeat.o(21700);
   }
   
-  public final void A(String paramString1, String paramString2, int paramInt)
+  private void removeListener()
   {
-    y.i("MicroMsg.IPCallManager", "onCallRestricted, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    if (da(10, 0)) {
+    AppMethodBeat.i(21673);
+    if (this.nLF != null)
+    {
+      this.nLF.listen(this.nLG, 0);
+      this.nLF = null;
+    }
+    com.tencent.mm.sdk.b.a.ymk.d(this.nLH);
+    AppMethodBeat.o(21673);
+  }
+  
+  public final void F(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(21678);
+    ab.i("MicroMsg.IPCallManager", "onInviteFailed, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    if (ex(2, 0)) {
+      d(2, paramString1, paramString2, paramInt);
+    }
+    AppMethodBeat.o(21678);
+  }
+  
+  public final void G(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(21687);
+    ab.i("MicroMsg.IPCallManager", "onAccountOverdue, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    if (ex(8, 9)) {
+      d(8, paramString1, paramString2, paramInt);
+    }
+    AppMethodBeat.o(21687);
+  }
+  
+  public final void H(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(21688);
+    ab.i("MicroMsg.IPCallManager", "onCallRestricted, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    if (ex(10, 0)) {
       d(10, paramString1, paramString2, paramInt);
     }
+    AppMethodBeat.o(21688);
   }
   
-  public final void B(String paramString1, String paramString2, int paramInt)
+  public final void I(String paramString1, String paramString2, int paramInt)
   {
-    y.i("MicroMsg.IPCallManager", "onCallPhoneNumberInvalid, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    if (da(11, 0)) {
+    AppMethodBeat.i(21689);
+    ab.i("MicroMsg.IPCallManager", "onCallPhoneNumberInvalid, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    if (ex(11, 0)) {
       d(11, paramString1, paramString2, paramInt);
     }
+    AppMethodBeat.o(21689);
   }
   
-  public final void bI(String paramString, int paramInt)
+  public final boolean a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3)
   {
-    y.i("MicroMsg.IPCallManager", "onUnAvaliable, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    if (da(3, 5)) {
-      d(3, null, paramString, paramInt);
-    }
-  }
-  
-  public final void bJ(String paramString, int paramInt)
-  {
-    y.i("MicroMsg.IPCallManager", "onBusy, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    if (da(1, 4)) {
-      d(1, null, paramString, paramInt);
-    }
-  }
-  
-  public final void bK(String paramString, int paramInt)
-  {
-    y.i("MicroMsg.IPCallManager", "onSyncFailed");
-    if (da(7, 35)) {
-      d(7, null, paramString, paramInt);
-    }
-  }
-  
-  public final void bbA()
-  {
-    y.i("MicroMsg.IPCallManager", "onAccept, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    if (!com.tencent.mm.plugin.ipcall.a.i.bck().sF(5)) {}
-    do
+    AppMethodBeat.i(21674);
+    if (i.bJr().bJh())
     {
-      return;
-      com.tencent.mm.plugin.ipcall.a.c.b localb = com.tencent.mm.plugin.ipcall.a.i.bci();
-      y.d("MicroMsg.IPCallReportHelper", "markUserAccept");
-      if (localb.loq == 0L)
+      ab.i("MicroMsg.IPCallManager", "startIPCall, already start!");
+      AppMethodBeat.o(21674);
+      return false;
+    }
+    ab.i("MicroMsg.IPCallManager", "startIPCall");
+    i.bJn().nMj = this;
+    i.bJo().nOh = this;
+    i.bJr().mCurrentState = -1;
+    removeListener();
+    this.nLF = ((TelephonyManager)ah.getContext().getSystemService("phone"));
+    this.nLF.listen(this.nLG, 32);
+    com.tencent.mm.sdk.b.a.ymk.c(this.nLH);
+    ab.d("MicroMsg.IPCallRecordStorageLogic", "recordStartCall, phoneNumber: %s, contactId: %s", new Object[] { paramString4, paramString5 });
+    Object localObject = new com.tencent.mm.plugin.ipcall.a.g.k();
+    ((com.tencent.mm.plugin.ipcall.a.g.k)localObject).field_phonenumber = paramString4;
+    if (!bo.isNullOrNil(paramString5))
+    {
+      com.tencent.mm.plugin.ipcall.a.g.c localc = i.bJt().Ra(paramString5);
+      if ((localc != null) && (localc.systemRowid != -1L))
       {
-        localb.loq = System.currentTimeMillis();
-        localb.lqT = (localb.loq - localb.lra);
-        y.d("MicroMsg.IPCallReportHelper", "answerTime: %d", new Object[] { Long.valueOf(localb.lqT) });
+        ((com.tencent.mm.plugin.ipcall.a.g.k)localObject).field_addressId = localc.systemRowid;
+        if (paramInt1 == -1) {
+          break label798;
+        }
+        ((com.tencent.mm.plugin.ipcall.a.g.k)localObject).field_phoneType = paramInt1;
+        label201:
+        ((com.tencent.mm.plugin.ipcall.a.g.k)localObject).field_calltime = bo.aoy();
+        ((com.tencent.mm.plugin.ipcall.a.g.k)localObject).field_status = 1;
+        if (!i.bJu().insert((com.tencent.mm.sdk.e.c)localObject)) {
+          break label807;
+        }
+        label226:
+        this.nLD = ((com.tencent.mm.plugin.ipcall.a.g.k)localObject);
+        faV.postDelayed(this.nLJ, 1754L);
+        this.nLE = false;
+        localObject = i.bJp();
+        ab.d("MicroMsg.IPCallReportHelper", "reset");
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOj = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOk = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOl = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOm = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOn = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOo = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOp = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOq = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOr = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOs = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nMZ = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nNa = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOt = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).gAF = "";
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOu = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOv = "";
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOx = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOw = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nLM = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOy = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOz = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOE = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOD = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOA = "";
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOB = "";
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).countryCode = "";
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOF = 0L;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOG = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOH = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOI = 0;
+        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOJ = 0;
+        i.bJr().mCurrentState = -1;
+        ab.d("MicroMsg.IPCallManager", "startIPCall, username: %s, phoneNumber: %s", new Object[] { paramString3, paramString4 });
+        localObject = i.bJn();
+        ab.d("MicroMsg.IPCallSvrLogic", "startIPCall, toUsername: %s, toPhoneNumber: %s", new Object[] { paramString3, paramString4 });
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).cDO = false;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMt = false;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMe = 0;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMf = 0;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMg = 0;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMh = false;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMi = false;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMu = false;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs = new com.tencent.mm.plugin.ipcall.a.a.c();
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs.nickname = paramString1;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs.nNA = paramString2;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs.cJk = paramString5;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs.nNB = paramString4;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs.cGY = paramString3;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs.nNc = ((int)System.currentTimeMillis());
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs.nNd = paramInt2;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs.nNe = paramInt3;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs.nND = paramInt1;
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMk.a(((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs);
+        ((com.tencent.mm.plugin.ipcall.a.g)localObject).nMp.a(((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs);
+        ab.i("MicroMsg.IPCallSvrLogic", "startIPCallInternal, inviteId: %d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.ipcall.a.g)localObject).nMs.nNc) });
+        i.bJr().xF(1);
+        paramString1 = i.bJo();
+        if (!paramString1.nOg) {
+          break label813;
+        }
+        ab.d("MicroMsg.IPCallEngineManager", "already start engine");
       }
-      com.tencent.mm.plugin.ipcall.a.i.bch().bcA();
-      localb = com.tencent.mm.plugin.ipcall.a.i.bci();
-      y.i("MicroMsg.IPCallReportHelper", "userAccept");
-      localb.lqO = 1;
-      dPi.removeCallbacks(this.lom);
-      com.tencent.mm.plugin.ipcall.a.i.bcq().stop();
-      dPi.removeCallbacks(this.lon);
-      com.tencent.mm.plugin.ipcall.a.i.bcj().startRecord();
-    } while ((!com.tencent.mm.plugin.ipcall.a.i.bch().lqJ) || (this.loi));
-    com.tencent.mm.plugin.ipcall.a.i.bci().bcE();
-    com.tencent.mm.plugin.ipcall.a.i.bci().bcH();
-    this.loi = true;
-    this.loq = bk.UX();
-    XW();
-    com.tencent.mm.plugin.ipcall.a.i.bch().bcz();
-    if (this.lof != null) {
-      this.lof.bbN();
-    }
-    com.tencent.mm.plugin.ipcall.a.i.bci().bcG();
-    p.bQU().bQV();
-    p.bQU().pTc = this;
-  }
-  
-  public final void bbB()
-  {
-    y.i("MicroMsg.IPCallManager", "onShutdownByOtherSide, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    if (L(10, 0, 32))
-    {
-      if (this.lof != null) {
-        this.lof.bbO();
-      }
-    }
-    else {
-      return;
-    }
-    Toast.makeText(ae.getContext(), ae.getContext().getString(R.l.ip_call_status_other_side_shutdown), 1).show();
-  }
-  
-  public final void bbC()
-  {
-    y.i("MicroMsg.IPCallManager", "onHeartbeatFailed");
-    if (da(7, 29)) {
-      d(7, null, ae.getContext().getString(R.l.calling_failed_network), 1);
-    }
-  }
-  
-  public final void bbD()
-  {
-    do
-    {
-      y.i("MicroMsg.IPCallManager", "onDisasterHappen, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    } while (da(12, 0));
-  }
-  
-  public final void bbE()
-  {
-    y.i("MicroMsg.IPCallManager", "onStartEngineFailed, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    if (da(6, 0)) {
-      d(6, null, ae.getContext().getString(R.l.callout_failed_network), 1);
-    }
-  }
-  
-  public final void bbF()
-  {
-    y.i("MicroMsg.IPCallManager", "onChannelConnected, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    com.tencent.mm.plugin.ipcall.a.i.bcq().stop();
-    dPi.removeCallbacks(this.lon);
-    Object localObject;
-    com.tencent.mm.plugin.ipcall.a.b.a locala;
-    if (com.tencent.mm.plugin.ipcall.a.i.bck().bcb())
-    {
-      localObject = com.tencent.mm.plugin.ipcall.a.i.bcj();
-      ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).iEH.a(ae.getContext(), (HeadsetPlugReceiver.a)localObject);
-      au.Hy().a((f.a)localObject);
-      au.Hy().yk();
-      ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).iEI = au.Hy().yt();
-      ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).iEJ = au.Hy().yn();
-      y.d("MicroMsg.IPCallDeviceManager", "startPlay, isHeadsetPlugged: %b, isBluetoothConnected: %b", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.ipcall.a.b.b)localObject).iEI), Boolean.valueOf(((com.tencent.mm.plugin.ipcall.a.b.b)localObject).iEJ) });
-      ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).eLi.requestFocus();
-      locala = ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).lqo;
-      if (!locala.bSr) {
-        break label369;
-      }
-      y.d("MicroMsg.IPCallAudioPlayer", "startPlay, already start");
     }
     for (;;)
     {
-      if ((((com.tencent.mm.plugin.ipcall.a.b.b)localObject).iEI) && (!((com.tencent.mm.plugin.ipcall.a.b.b)localObject).iEJ) && (((com.tencent.mm.plugin.ipcall.a.b.b)localObject).lqt != null)) {
-        ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).lqt.gX(true);
-      }
-      if ((((com.tencent.mm.plugin.ipcall.a.b.b)localObject).iEJ) && (!((com.tencent.mm.plugin.ipcall.a.b.b)localObject).iEI) && (((com.tencent.mm.plugin.ipcall.a.b.b)localObject).lqt != null)) {
-        ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).lqt.gY(true);
-      }
-      com.tencent.mm.plugin.ipcall.a.i.bci().bcE();
-      com.tencent.mm.plugin.ipcall.a.i.bcj().startRecord();
-      if ((com.tencent.mm.plugin.ipcall.a.i.bck().bcd()) && (!this.loi))
+      faV.removeCallbacks(this.nLI);
+      faV.postDelayed(this.nLI, 60000L);
+      AppMethodBeat.o(21674);
+      return true;
+      ((com.tencent.mm.plugin.ipcall.a.g.k)localObject).field_addressId = -1L;
+      break;
+      ((com.tencent.mm.plugin.ipcall.a.g.k)localObject).field_addressId = -1L;
+      break;
+      label798:
+      ((com.tencent.mm.plugin.ipcall.a.g.k)localObject).field_phoneType = -1;
+      break label201;
+      label807:
+      localObject = null;
+      break label226;
+      label813:
+      paramString1.aEa();
+      ab.i("MicroMsg.IPCallEngineManager", "start engine");
+      if (paramString1.nOc.cOG())
       {
-        com.tencent.mm.plugin.ipcall.a.i.bci().bcH();
-        com.tencent.mm.plugin.ipcall.a.i.bch().bcz();
-        this.loi = true;
-        this.loq = bk.UX();
-        XW();
-        if (this.lof != null) {
-          this.lof.bbN();
+        paramString1.nOc.mX(false);
+        paramString1.nOc.reset();
+      }
+      paramString1.nOc.tAa = 1;
+      long l = System.currentTimeMillis();
+      paramInt1 = paramString1.nOc.cOI();
+      ab.d("MicroMsg.IPCallEngineManager", "protocal init finish, ret: %d, used %dms", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() - l) });
+      if ((paramString1.nOc.field_capInfo != null) && (paramString1.nOc.exchangeCabInfo(paramString1.nOc.field_capInfo, paramString1.nOc.field_capInfo.length) < 0))
+      {
+        ab.e("MicroMsg.IPCallEngineManager", "exchangeCabInfo failed");
+        i.bJp().nOs = 24;
+      }
+      if (paramInt1 < 0) {
+        ab.e("MicroMsg.IPCallEngineManager", "engine init failed!");
+      }
+      paramString1.nOc.tAa = 1;
+      paramString1.nOg = true;
+    }
+  }
+  
+  public final void bIG()
+  {
+    AppMethodBeat.i(21677);
+    ab.i("MicroMsg.IPCallManager", "onInviteSuccess");
+    if (!i.bJr().xF(3))
+    {
+      AppMethodBeat.o(21677);
+      return;
+    }
+    Object localObject = i.bJp();
+    ab.d("MicroMsg.IPCallReportHelper", "markStartInvite");
+    if (((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOw == 0L) {
+      ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).nOw = System.currentTimeMillis();
+    }
+    localObject = i.bJn().nMs;
+    com.tencent.mm.plugin.ipcall.a.c.b localb = i.bJp();
+    int i = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).nNc;
+    String str1 = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).cGY;
+    String str2 = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).nNB;
+    int j = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).nMZ;
+    long l1 = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).nNa;
+    long l2 = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).nNb;
+    localb.nNc = i;
+    localb.nOv = str1;
+    localb.gAF = str2;
+    localb.nMZ = j;
+    localb.nNa = l1;
+    localb.nOt = l2;
+    if (this.nLC != null) {
+      this.nLC.bIG();
+    }
+    AppMethodBeat.o(21677);
+  }
+  
+  public final void bIH()
+  {
+    AppMethodBeat.i(21679);
+    ab.i("MicroMsg.IPCallManager", "onStartRing, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    if (!i.bJr().xF(4))
+    {
+      AppMethodBeat.o(21679);
+      return;
+    }
+    com.tencent.mm.plugin.ipcall.a.c.b localb = i.bJp();
+    ab.d("MicroMsg.IPCallReportHelper", "markStartRing");
+    if (localb.nOx == 0L)
+    {
+      localb.nOx = System.currentTimeMillis();
+      localb.nOo = (localb.nOx - localb.nOw);
+      ab.d("MicroMsg.IPCallReportHelper", "ringTime: %d", new Object[] { Long.valueOf(localb.nOo) });
+    }
+    i.bJo().bJI();
+    localb = i.bJp();
+    ab.i("MicroMsg.IPCallReportHelper", "startRing");
+    localb.nOj = 1;
+    if (this.nLC != null) {
+      this.nLC.bIH();
+    }
+    AppMethodBeat.o(21679);
+  }
+  
+  public final void bII()
+  {
+    AppMethodBeat.i(21680);
+    ab.i("MicroMsg.IPCallManager", "onAccept, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    if (!i.bJr().xF(5))
+    {
+      AppMethodBeat.o(21680);
+      return;
+    }
+    com.tencent.mm.plugin.ipcall.a.c.b localb = i.bJp();
+    ab.d("MicroMsg.IPCallReportHelper", "markUserAccept");
+    if (localb.nLM == 0L)
+    {
+      localb.nLM = System.currentTimeMillis();
+      localb.nOp = (localb.nLM - localb.nOw);
+      ab.d("MicroMsg.IPCallReportHelper", "answerTime: %d", new Object[] { Long.valueOf(localb.nOp) });
+    }
+    i.bJo().bJI();
+    localb = i.bJp();
+    ab.i("MicroMsg.IPCallReportHelper", "userAccept");
+    localb.nOk = 1;
+    faV.removeCallbacks(this.nLI);
+    i.bJx().stop();
+    faV.removeCallbacks(this.nLJ);
+    i.bJq().nNL.aCJ();
+    if ((i.bJo().nOf) && (!this.nLE))
+    {
+      i.bJp().bJL();
+      i.bJp().bJO();
+      this.nLE = true;
+      this.nLM = bo.aox();
+      arF();
+      i.bJo().bJH();
+      if (this.nLC != null) {
+        this.nLC.bIU();
+      }
+      i.bJp().bJN();
+      q.cNr().cNs();
+      q.cNr().a(this);
+    }
+    AppMethodBeat.o(21680);
+  }
+  
+  public final void bIJ()
+  {
+    AppMethodBeat.i(21684);
+    ab.i("MicroMsg.IPCallManager", "onShutdownByOtherSide, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    if (X(10, 0, 32))
+    {
+      if (this.nLC != null)
+      {
+        this.nLC.bIV();
+        AppMethodBeat.o(21684);
+        return;
+      }
+      Toast.makeText(ah.getContext(), ah.getContext().getString(2131300899), 1).show();
+    }
+    AppMethodBeat.o(21684);
+  }
+  
+  public final void bIK()
+  {
+    AppMethodBeat.i(21686);
+    ab.i("MicroMsg.IPCallManager", "onHeartbeatFailed");
+    if (ex(7, 29)) {
+      d(7, null, ah.getContext().getString(2131297829), 1);
+    }
+    AppMethodBeat.o(21686);
+  }
+  
+  public final void bIL()
+  {
+    AppMethodBeat.i(21690);
+    do
+    {
+      ab.i("MicroMsg.IPCallManager", "onDisasterHappen, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    } while (ex(12, 0));
+    AppMethodBeat.o(21690);
+  }
+  
+  public final void bIM()
+  {
+    AppMethodBeat.i(21691);
+    ab.i("MicroMsg.IPCallManager", "onStartEngineFailed, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    if (ex(6, 0)) {
+      d(6, null, ah.getContext().getString(2131297835), 1);
+    }
+    AppMethodBeat.o(21691);
+  }
+  
+  public final void bIN()
+  {
+    AppMethodBeat.i(21692);
+    ab.i("MicroMsg.IPCallManager", "onChannelConnected, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    i.bJx().stop();
+    faV.removeCallbacks(this.nLJ);
+    Object localObject;
+    com.tencent.mm.plugin.ipcall.a.b.a locala;
+    if (i.bJr().bJi())
+    {
+      localObject = i.bJq();
+      ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).kJT.a(ah.getContext(), (HeadsetPlugReceiver.a)localObject);
+      aw.aaA().a((com.tencent.mm.compatible.b.g.a)localObject);
+      aw.aaA().KE();
+      ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).kJU = aw.aaA().KN();
+      ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).kJV = aw.aaA().KH();
+      ab.d("MicroMsg.IPCallDeviceManager", "startPlay, isHeadsetPlugged: %b, isBluetoothConnected: %b", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.ipcall.a.b.b)localObject).kJU), Boolean.valueOf(((com.tencent.mm.plugin.ipcall.a.b.b)localObject).kJV) });
+      ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).gaP.requestFocus();
+      locala = ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).nNK;
+      if (!locala.isStart) {
+        break label384;
+      }
+      ab.d("MicroMsg.IPCallAudioPlayer", "startPlay, already start");
+    }
+    for (;;)
+    {
+      if ((((com.tencent.mm.plugin.ipcall.a.b.b)localObject).kJU) && (!((com.tencent.mm.plugin.ipcall.a.b.b)localObject).kJV) && (((com.tencent.mm.plugin.ipcall.a.b.b)localObject).nNP != null)) {
+        ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).nNP.iH(true);
+      }
+      if ((((com.tencent.mm.plugin.ipcall.a.b.b)localObject).kJV) && (!((com.tencent.mm.plugin.ipcall.a.b.b)localObject).kJU) && (((com.tencent.mm.plugin.ipcall.a.b.b)localObject).nNP != null)) {
+        ((com.tencent.mm.plugin.ipcall.a.b.b)localObject).nNP.iI(true);
+      }
+      i.bJp().bJL();
+      i.bJq().nNL.aCJ();
+      if ((i.bJr().bJk()) && (!this.nLE))
+      {
+        i.bJp().bJO();
+        i.bJo().bJH();
+        this.nLE = true;
+        this.nLM = bo.aox();
+        arF();
+        if (this.nLC != null) {
+          this.nLC.bIU();
         }
-        localObject = this.loh;
+        localObject = this.nLD;
         if (localObject != null)
         {
-          y.d("MicroMsg.IPCallRecordStorageLogic", "recordStartTalk, localId: %d", new Object[] { Long.valueOf(((k)localObject).ujK) });
-          if (((k)localObject).ujK != -1L)
+          ab.d("MicroMsg.IPCallRecordStorageLogic", "recordStartTalk, localId: %d", new Object[] { Long.valueOf(((com.tencent.mm.plugin.ipcall.a.g.k)localObject).systemRowid) });
+          if (((com.tencent.mm.plugin.ipcall.a.g.k)localObject).systemRowid != -1L)
           {
-            ((k)localObject).field_status = 3;
-            com.tencent.mm.plugin.ipcall.a.i.bcn().a((k)localObject);
+            ((com.tencent.mm.plugin.ipcall.a.g.k)localObject).field_status = 3;
+            i.bJu().a((com.tencent.mm.plugin.ipcall.a.g.k)localObject);
           }
         }
-        com.tencent.mm.plugin.ipcall.a.i.bci().bcG();
-        p.bQU().bQV();
-        p.bQU().pTc = this;
+        i.bJp().bJN();
+        q.cNr().cNs();
+        q.cNr().a(this);
       }
+      AppMethodBeat.o(21692);
       return;
-      label369:
-      y.i("MicroMsg.IPCallAudioPlayer", "startPlay");
-      if (locala.iEF == null)
+      label384:
+      ab.i("MicroMsg.IPCallAudioPlayer", "startPlay");
+      if (locala.kJR == null)
       {
-        locala.iEF = new com.tencent.mm.plugin.voip.model.b();
-        locala.iEF.z(v2protocal.VOICE_SAMPLERATE, 1, 20, 1);
+        locala.kJR = new com.tencent.mm.plugin.voip.model.c();
+        locala.kJR.F(v2protocal.VOICE_SAMPLERATE, 1, 20, 1);
       }
-      locala.lqk = locala.iEF.t(ae.getContext(), false);
-      locala.iEF.pNy = new a.1(locala);
-      if (locala.iEF.bPD() <= 0) {
-        com.tencent.mm.plugin.ipcall.a.i.bci().bcF();
+      locala.nNG = locala.kJR.x(ah.getContext(), false);
+      locala.kJR.ttu = new a.1(locala);
+      if (locala.kJR.cLH() <= 0) {
+        i.bJp().bJM();
       }
-      locala.gV(locala.lql);
-      locala.bSr = true;
+      locala.iE(locala.nNH);
+      locala.isStart = true;
     }
   }
   
-  public final void bbG()
+  public final void bIO()
   {
-    if (com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState != 5) {
-      y.i("MicroMsg.IPCallManager", "onBadNetStatus currentState != accept:%d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    }
-    com.tencent.mm.plugin.ipcall.a.b.b localb;
-    long l;
-    do
+    AppMethodBeat.i(21696);
+    if (i.bJr().mCurrentState != 5)
     {
-      do
-      {
-        return;
-        localb = com.tencent.mm.plugin.ipcall.a.i.bcj();
-        y.i("MicroMsg.IPCallDeviceManager", "onBadNetStatus");
-        if (localb.lqr != null)
-        {
-          com.tencent.mm.plugin.ipcall.ui.j localj = localb.lqr;
-          if (localj.lzQ != null) {
-            localj.lzQ.setVisibility(0);
-          }
-          if (localj.lzR != null) {
-            localj.lzR.setVisibility(0);
-          }
-        }
-      } while (au.Hy().dui.isSpeakerphoneOn());
-      l = System.currentTimeMillis();
-    } while (l - localb.lqu <= 30000L);
-    localb.lqu = l;
-    com.tencent.mm.plugin.voip.b.bPx().Al(R.k.voip_bad_netstatus_hint);
-  }
-  
-  public final void bbH()
-  {
-    if (com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState != 5) {
-      y.i("MicroMsg.IPCallManager", "onResumeGoodNetStatus currentState != accept:%d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    }
-    com.tencent.mm.plugin.ipcall.a.b.b localb;
-    do
-    {
+      ab.i("MicroMsg.IPCallManager", "onResumeGoodNetStatus currentState != accept:%d", new Object[] { Integer.valueOf(i.bJr().mCurrentState) });
+      AppMethodBeat.o(21696);
       return;
-      localb = com.tencent.mm.plugin.ipcall.a.i.bcj();
-      y.i("MicroMsg.IPCallDeviceManager", "onResumeGoodNetStatus");
-    } while (localb.lqr == null);
-    localb.lqr.bdl();
+    }
+    com.tencent.mm.plugin.ipcall.a.b.b localb = i.bJq();
+    ab.i("MicroMsg.IPCallDeviceManager", "onResumeGoodNetStatus");
+    if (localb.nNN != null) {
+      localb.nNN.bKF();
+    }
+    AppMethodBeat.o(21696);
   }
   
-  public final void bbI()
+  public final void bIP()
   {
-    if (com.tencent.mm.plugin.ipcall.a.i.bck().bcd()) {}
-    for (Object localObject1 = ae.getContext().getString(R.l.ip_call_minimize_wording_with_time, new Object[] { String.format("%02d:%02d", new Object[] { Long.valueOf(bk.cn(this.loq) / 60L), Long.valueOf(bk.cn(this.loq) % 60L) }) });; localObject1 = ae.getContext().getString(R.l.ip_call_minimize_wording))
+    AppMethodBeat.i(21697);
+    if (i.bJr().bJk()) {}
+    for (Object localObject1 = ah.getContext().getString(2131300858, new Object[] { String.format("%02d:%02d", new Object[] { Long.valueOf(bo.gz(this.nLM) / 60L), Long.valueOf(bo.gz(this.nLM) % 60L) }) });; localObject1 = ah.getContext().getString(2131300857))
     {
-      Object localObject2 = new Intent(ae.getContext(), IPCallTalkUI.class);
+      Object localObject2 = new Intent(ah.getContext(), IPCallTalkUI.class);
       ((Intent)localObject2).putExtra("IPCallTalkUI_isFromMiniNotification", true);
-      localObject2 = PendingIntent.getActivity(ae.getContext(), 42, (Intent)localObject2, 134217728);
-      int i = R.g.notification_icon_gray;
-      if (com.tencent.mm.compatible.util.d.gG(19)) {
-        i = R.g.notification_icon;
+      localObject2 = PendingIntent.getActivity(ah.getContext(), 42, (Intent)localObject2, 134217728);
+      int i = 2130839847;
+      if (com.tencent.mm.compatible.util.d.fw(19)) {
+        i = 2130839845;
       }
-      localObject1 = new Notification.Builder(ae.getContext()).setTicker(ae.getContext().getString(R.l.ip_call_minimize_wording)).setWhen(System.currentTimeMillis()).setContentTitle(ae.getContext().getString(R.l.ip_call_func_name)).setContentText((CharSequence)localObject1).setContentIntent((PendingIntent)localObject2).getNotification();
+      localObject1 = com.tencent.mm.bp.a.br(ah.getContext(), "reminder_channel_id").h(ah.getContext().getString(2131300857)).g(System.currentTimeMillis()).e(ah.getContext().getString(2131300847)).f((CharSequence)localObject1);
+      ((s.c)localObject1).ya = ((PendingIntent)localObject2);
+      localObject1 = ((s.c)localObject1).build();
       ((Notification)localObject1).icon = i;
       ((Notification)localObject1).flags |= 0x20;
-      au.getNotification().a(42, (Notification)localObject1, false);
-      if (com.tencent.mm.plugin.ipcall.a.i.bck().bcd()) {
+      aw.getNotification().a(42, (Notification)localObject1, false);
+      if (i.bJr().bJk()) {
         break;
       }
-      com.tencent.mm.plugin.voip.b.bPy().Qb(ae.getContext().getString(R.l.multitalk_waiting_wording));
+      com.tencent.mm.plugin.voip.b.cLD().aeI(ah.getContext().getString(2131301716));
+      AppMethodBeat.o(21697);
       return;
     }
-    com.tencent.mm.plugin.voip.b.bPy().yg(bbK());
+    com.tencent.mm.plugin.voip.b.cLD().Ef(bIR());
+    AppMethodBeat.o(21697);
   }
   
-  public final void bbJ()
+  public final void bIQ()
   {
-    synchronized (this.jYz)
+    AppMethodBeat.i(21698);
+    synchronized (this.iiG)
     {
-      this.loo = false;
-      com.tencent.mm.plugin.voip.b.bPy().dismiss();
-      ((NotificationManager)ae.getContext().getSystemService("notification")).cancel(42);
+      this.nLK = false;
+      com.tencent.mm.plugin.voip.b.cLD().dismiss();
+      ((NotificationManager)ah.getContext().getSystemService("notification")).cancel(42);
+      AppMethodBeat.o(21698);
       return;
     }
   }
   
-  public final int bbK()
+  public final int bIR()
   {
-    int i = (int)bk.cn(this.loq);
-    if (i > 0) {
+    AppMethodBeat.i(21699);
+    int i = (int)bo.gz(this.nLM);
+    if (i > 0)
+    {
+      AppMethodBeat.o(21699);
       return i;
     }
+    AppMethodBeat.o(21699);
     return 0;
   }
   
-  public final void bby()
+  public final void cv(String paramString, int paramInt)
   {
-    y.i("MicroMsg.IPCallManager", "onInviteSuccess");
-    if (!com.tencent.mm.plugin.ipcall.a.i.bck().sF(3)) {}
-    do
-    {
-      return;
-      Object localObject = com.tencent.mm.plugin.ipcall.a.i.bci();
-      y.d("MicroMsg.IPCallReportHelper", "markStartInvite");
-      if (((com.tencent.mm.plugin.ipcall.a.c.b)localObject).lra == 0L) {
-        ((com.tencent.mm.plugin.ipcall.a.c.b)localObject).lra = System.currentTimeMillis();
-      }
-      localObject = com.tencent.mm.plugin.ipcall.a.i.bcg().loW;
-      com.tencent.mm.plugin.ipcall.a.c.b localb = com.tencent.mm.plugin.ipcall.a.i.bci();
-      int i = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).lpG;
-      String str1 = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).bYR;
-      String str2 = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).lqf;
-      int j = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).lpD;
-      long l1 = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).lpE;
-      long l2 = ((com.tencent.mm.plugin.ipcall.a.a.c)localObject).lpF;
-      localb.lpG = i;
-      localb.lqZ = str1;
-      localb.fjn = str2;
-      localb.lpD = j;
-      localb.lpE = l1;
-      localb.lqX = l2;
-    } while (this.lof == null);
-    this.lof.bby();
-  }
-  
-  public final void bbz()
-  {
-    y.i("MicroMsg.IPCallManager", "onStartRing, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    if (!com.tencent.mm.plugin.ipcall.a.i.bck().sF(4)) {}
-    do
-    {
-      return;
-      com.tencent.mm.plugin.ipcall.a.c.b localb = com.tencent.mm.plugin.ipcall.a.i.bci();
-      y.d("MicroMsg.IPCallReportHelper", "markStartRing");
-      if (localb.lrb == 0L)
-      {
-        localb.lrb = System.currentTimeMillis();
-        localb.lqS = (localb.lrb - localb.lra);
-        y.d("MicroMsg.IPCallReportHelper", "ringTime: %d", new Object[] { Long.valueOf(localb.lqS) });
-      }
-      com.tencent.mm.plugin.ipcall.a.i.bch().bcA();
-      localb = com.tencent.mm.plugin.ipcall.a.i.bci();
-      y.i("MicroMsg.IPCallReportHelper", "startRing");
-      localb.lqN = 1;
-    } while (this.lof == null);
-    this.lof.bbz();
-  }
-  
-  public final void ch()
-  {
-    if (this.loj != null)
-    {
-      this.loj.listen(this.lok, 0);
-      this.loj = null;
+    AppMethodBeat.i(21682);
+    ab.i("MicroMsg.IPCallManager", "onUnAvaliable, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    if (ex(3, 5)) {
+      d(3, null, paramString, paramInt);
     }
-    com.tencent.mm.sdk.b.a.udP.d(this.lol);
+    AppMethodBeat.o(21682);
+  }
+  
+  public final void cw(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(21683);
+    ab.i("MicroMsg.IPCallManager", "onBusy, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    if (ex(1, 4)) {
+      d(1, null, paramString, paramInt);
+    }
+    AppMethodBeat.o(21683);
+  }
+  
+  public final void cx(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(21685);
+    ab.i("MicroMsg.IPCallManager", "onSyncFailed");
+    if (ex(7, 35)) {
+      d(7, null, paramString, paramInt);
+    }
+    AppMethodBeat.o(21685);
   }
   
   public final void d(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    if (this.lof != null)
+    AppMethodBeat.i(21681);
+    if (this.nLC != null)
     {
-      this.lof.d(paramInt1, paramString1, paramString2, paramInt2);
+      this.nLC.d(paramInt1, paramString1, paramString2, paramInt2);
+      AppMethodBeat.o(21681);
       return;
     }
-    Toast.makeText(ae.getContext(), paramString2, 1).show();
+    Toast.makeText(ah.getContext(), paramString2, 1).show();
+    AppMethodBeat.o(21681);
   }
   
-  public final boolean da(int paramInt1, int paramInt2)
+  public final boolean ex(int paramInt1, int paramInt2)
   {
-    if (com.tencent.mm.plugin.ipcall.a.i.bck().bcd())
+    AppMethodBeat.i(21694);
+    if (i.bJr().bJk())
     {
-      if (paramInt1 == 0) {
-        return L(9, paramInt1, paramInt2);
+      if (paramInt1 == 0)
+      {
+        bool = X(9, paramInt1, paramInt2);
+        AppMethodBeat.o(21694);
+        return bool;
       }
-      return L(11, paramInt1, paramInt2);
+      bool = X(11, paramInt1, paramInt2);
+      AppMethodBeat.o(21694);
+      return bool;
     }
-    if (paramInt1 == 0) {
-      return L(8, paramInt1, paramInt2);
+    if (paramInt1 == 0)
+    {
+      bool = X(8, paramInt1, paramInt2);
+      AppMethodBeat.o(21694);
+      return bool;
     }
-    return L(12, paramInt1, paramInt2);
+    boolean bool = X(12, paramInt1, paramInt2);
+    AppMethodBeat.o(21694);
+    return bool;
   }
   
-  public final void sD(int paramInt)
+  public final void iw(boolean paramBoolean)
   {
-    y.i("MicroMsg.IPCallManager", "onChannelConnectFailed, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    if (com.tencent.mm.plugin.ipcall.a.i.bch().lqJ)
+    AppMethodBeat.i(21695);
+    if (i.bJr().mCurrentState != 5)
     {
-      y.i("MicroMsg.IPCallManager", "onChannelConnectFailed, channel already connected");
-      if (da(5, paramInt)) {
-        d(5, null, ae.getContext().getString(R.l.calling_failed_network), 1);
-      }
-    }
-    do
-    {
+      ab.i("MicroMsg.IPCallManager", "onBadNetStatus currentState != accept:%d", new Object[] { Integer.valueOf(i.bJr().mCurrentState) });
+      AppMethodBeat.o(21695);
       return;
-      y.i("MicroMsg.IPCallManager", "onChannelConnectFailed, channel not connet, may be request connect failed");
-    } while (!da(4, paramInt));
-    d(4, null, ae.getContext().getString(R.l.calling_failed_network), 1);
+    }
+    com.tencent.mm.plugin.ipcall.a.b.b localb = i.bJq();
+    ab.i("MicroMsg.IPCallDeviceManager", "onBadNetStatus");
+    if (localb.nNN != null)
+    {
+      j localj = localb.nNN;
+      if (localj.nXc != null) {
+        localj.nXc.setVisibility(0);
+      }
+      if (localj.nXd != null) {
+        localj.nXd.setVisibility(0);
+      }
+    }
+    if (!aw.aaA().elW.isSpeakerphoneOn())
+    {
+      long l = System.currentTimeMillis();
+      if (l - localb.nNQ > 30000L)
+      {
+        localb.nNQ = l;
+        com.tencent.mm.plugin.voip.b.cLC().tyR.cOl();
+      }
+    }
+    AppMethodBeat.o(21695);
   }
   
-  public final void y(String paramString1, String paramString2, int paramInt)
+  public final void xD(int paramInt)
   {
-    y.i("MicroMsg.IPCallManager", "onInviteFailed, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    if (da(2, 0)) {
-      d(2, paramString1, paramString2, paramInt);
+    AppMethodBeat.i(21693);
+    ab.i("MicroMsg.IPCallManager", "onChannelConnectFailed, currentState: %s", new Object[] { f.stateToString(i.bJr().mCurrentState) });
+    if (i.bJo().nOf)
+    {
+      ab.i("MicroMsg.IPCallManager", "onChannelConnectFailed, channel already connected");
+      if (ex(5, paramInt))
+      {
+        d(5, null, ah.getContext().getString(2131297829), 1);
+        AppMethodBeat.o(21693);
+      }
     }
-  }
-  
-  public final void z(String paramString1, String paramString2, int paramInt)
-  {
-    y.i("MicroMsg.IPCallManager", "onAccountOverdue, currentState: %s", new Object[] { com.tencent.mm.plugin.ipcall.a.f.stateToString(com.tencent.mm.plugin.ipcall.a.i.bck().mCurrentState) });
-    if (da(8, 9)) {
-      d(8, paramString1, paramString2, paramInt);
+    else
+    {
+      ab.i("MicroMsg.IPCallManager", "onChannelConnectFailed, channel not connet, may be request connect failed");
+      if (ex(4, paramInt)) {
+        d(4, null, ah.getContext().getString(2131297829), 1);
+      }
     }
+    AppMethodBeat.o(21693);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.c
  * JD-Core Version:    0.7.0.1
  */

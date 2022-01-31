@@ -4,11 +4,12 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.plugin.brandservice.a;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.plugin.brandservice.b;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class EnterpriseBizContactListView$1
   implements AdapterView.OnItemClickListener
@@ -17,19 +18,24 @@ final class EnterpriseBizContactListView$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(13955);
     paramAdapterView = paramView.getTag();
-    if ((paramAdapterView == null) || (!(paramAdapterView instanceof EnterpriseBizContactListView.c))) {}
-    EnterpriseBizContactListView.c localc;
-    do
+    if ((paramAdapterView == null) || (!(paramAdapterView instanceof EnterpriseBizContactListView.c)))
     {
+      AppMethodBeat.o(13955);
       return;
-      localc = (EnterpriseBizContactListView.c)paramAdapterView;
-    } while (bk.bl(localc.username));
-    boolean bool1 = f.ld(localc.username);
-    boolean bool2 = f.eW(localc.username);
-    com.tencent.mm.ai.d locald = f.kX(localc.username);
+    }
+    EnterpriseBizContactListView.c localc = (EnterpriseBizContactListView.c)paramAdapterView;
+    if (bo.isNullOrNil(localc.username))
+    {
+      AppMethodBeat.o(13955);
+      return;
+    }
+    boolean bool1 = f.rY(localc.username);
+    boolean bool2 = f.lg(localc.username);
+    com.tencent.mm.aj.d locald = f.rS(localc.username);
     if (locald == null) {}
-    for (paramAdapterView = null;; paramAdapterView = locald.LC())
+    for (paramAdapterView = null;; paramAdapterView = locald.aek())
     {
       paramView = paramAdapterView;
       if (paramAdapterView == null) {
@@ -44,8 +50,9 @@ final class EnterpriseBizContactListView$1
       paramAdapterView.putExtra("srcUsername", localc.username);
       paramAdapterView.putExtra("bizofstartfrom", "enterpriseHomeSubBrand");
       paramAdapterView.addFlags(67108864);
-      com.tencent.mm.br.d.b(this.idA.getContext(), "webview", ".ui.tools.WebViewUI", paramAdapterView);
-      EnterpriseBizContactListView.a(this.idA, locald, 2);
+      com.tencent.mm.bq.d.b(this.jUo.getContext(), "webview", ".ui.tools.WebViewUI", paramAdapterView);
+      EnterpriseBizContactListView.a(this.jUo, locald, 2);
+      AppMethodBeat.o(13955);
       return;
     }
     if (bool2)
@@ -54,7 +61,8 @@ final class EnterpriseBizContactListView$1
       paramAdapterView.putExtra("Contact_User", localc.username);
       paramAdapterView.addFlags(67108864);
       paramAdapterView.putExtra("biz_chat_from_scene", 3);
-      com.tencent.mm.br.d.e(this.idA.getContext(), ".ui.bizchat.BizChatConversationUI", paramAdapterView);
+      com.tencent.mm.bq.d.f(this.jUo.getContext(), ".ui.bizchat.BizChatConversationUI", paramAdapterView);
+      AppMethodBeat.o(13955);
       return;
     }
     paramAdapterView = new Intent();
@@ -62,10 +70,11 @@ final class EnterpriseBizContactListView$1
     paramAdapterView.putExtra("finish_direct", true);
     paramAdapterView.putExtra("Chat_User", localc.username);
     paramAdapterView.putExtra("chat_from_scene", 2);
-    paramView = this.idA.getContext();
-    y.i("MicroMsg.BrandService.BrandServiceApplication", "startChattingUI");
-    a.eUR.e(paramAdapterView, paramView);
-    EnterpriseBizContactListView.a(this.idA, locald, 1);
+    paramView = this.jUo.getContext();
+    ab.i("MicroMsg.BrandService.BrandServiceApplication", "startChattingUI");
+    b.gmO.d(paramAdapterView, paramView);
+    EnterpriseBizContactListView.a(this.jUo, locald, 1);
+    AppMethodBeat.o(13955);
   }
 }
 

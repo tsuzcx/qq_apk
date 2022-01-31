@@ -8,87 +8,87 @@ import android.graphics.RectF;
 
 final class d$a
 {
-  int Aw;
-  int JA;
-  int JB = 255;
-  final RectF Jl = new RectF();
-  final Paint Jm = new Paint();
-  final Paint Jn = new Paint();
-  float Jo = 0.0F;
-  float Jp = 0.0F;
-  int[] Jq;
-  int Jr;
-  float Js;
-  float Jt;
-  float Ju;
-  boolean Jv;
-  Path Jw;
-  float Jx = 1.0F;
-  float Jy;
-  int Jz;
-  float gb = 0.0F;
+  int[] Aq;
+  int Bi;
+  final RectF IU = new RectF();
+  final Paint IV = new Paint();
+  final Paint IW = new Paint();
+  float IX = 0.0F;
+  float IY = 0.0F;
+  int IZ;
+  float Ja;
+  float Jb;
+  float Jc;
+  boolean Jd;
+  Path Je;
+  float Jf = 1.0F;
+  float Jg;
+  int Jh;
+  int Ji;
+  float gV = 0.0F;
+  int mAlpha = 255;
   final Paint mPaint = new Paint();
-  float na = 5.0F;
+  float nX = 5.0F;
   
   d$a()
   {
     this.mPaint.setStrokeCap(Paint.Cap.SQUARE);
     this.mPaint.setAntiAlias(true);
     this.mPaint.setStyle(Paint.Style.STROKE);
-    this.Jm.setStyle(Paint.Style.FILL);
-    this.Jm.setAntiAlias(true);
-    this.Jn.setColor(0);
+    this.IV.setStyle(Paint.Style.FILL);
+    this.IV.setAntiAlias(true);
+    this.IW.setColor(0);
   }
   
-  final void J(boolean paramBoolean)
+  final void I(boolean paramBoolean)
   {
-    if (this.Jv != paramBoolean) {
-      this.Jv = paramBoolean;
+    if (this.Jd != paramBoolean) {
+      this.Jd = paramBoolean;
     }
   }
   
-  final void aG(int paramInt)
+  final void aD(int paramInt)
   {
-    this.Jr = paramInt;
-    this.Aw = this.Jq[this.Jr];
+    this.IZ = paramInt;
+    this.Bi = this.Aq[this.IZ];
   }
   
-  final int dA()
+  final int dQ()
   {
-    return this.Jq[this.Jr];
+    return (this.IZ + 1) % this.Aq.length;
   }
   
-  final void dB()
+  final int dR()
   {
-    this.Js = this.Jo;
-    this.Jt = this.Jp;
-    this.Ju = this.gb;
+    return this.Aq[this.IZ];
   }
   
-  final void dC()
+  final void dS()
   {
-    this.Js = 0.0F;
-    this.Jt = 0.0F;
-    this.Ju = 0.0F;
-    this.Jo = 0.0F;
-    this.Jp = 0.0F;
-    this.gb = 0.0F;
+    this.Ja = this.IX;
+    this.Jb = this.IY;
+    this.Jc = this.gV;
   }
   
-  final int dz()
+  final void dT()
   {
-    return (this.Jr + 1) % this.Jq.length;
+    this.Ja = 0.0F;
+    this.Jb = 0.0F;
+    this.Jc = 0.0F;
+    this.IX = 0.0F;
+    this.IY = 0.0F;
+    this.gV = 0.0F;
   }
   
   final void setColors(int[] paramArrayOfInt)
   {
-    this.Jq = paramArrayOfInt;
-    aG(0);
+    this.Aq = paramArrayOfInt;
+    aD(0);
   }
   
   final void setStrokeWidth(float paramFloat)
   {
-    this.na = paramFloat;
+    this.nX = paramFloat;
     this.mPaint.setStrokeWidth(paramFloat);
   }
 }

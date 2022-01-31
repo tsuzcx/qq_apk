@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.backup.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.b.b.d;
 
 final class c$2
@@ -9,14 +10,16 @@ final class c$2
   
   public final void run()
   {
-    if (c.n(this.hIn) != null) {
-      c.n(this.hIn).nt(this.hIo);
+    AppMethodBeat.i(17247);
+    if (c.o(this.jBL) != null) {
+      c.o(this.jBL).rf(this.jBM);
     }
+    AppMethodBeat.o(17247);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.d.c.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.base.stub;
 
 import android.content.Context;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.f;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 
 public class d
 {
   protected String appId;
   protected Context context;
-  protected d.a hRU;
+  protected d.a jLz;
   protected String openId;
   
   public d(Context paramContext, String paramString1, String paramString2, d.a parama)
@@ -22,45 +22,53 @@ public class d
     this.context = paramContext;
     this.appId = paramString1;
     this.openId = paramString2;
-    this.hRU = parama;
+    this.jLz = parama;
   }
   
-  protected void UF()
+  protected void aVD()
   {
-    h.b(this.context, R.l.openid_checker_fail_msg, R.l.app_tip, new d.1(this), new d.2(this));
+    AppMethodBeat.i(18125);
+    h.a(this.context, 2131302030, 2131297087, false, new d.1(this));
+    AppMethodBeat.o(18125);
   }
   
-  public final void awa()
+  public final void aVE()
   {
+    AppMethodBeat.i(18124);
     if ((this.openId == null) || (this.openId.length() == 0))
     {
-      y.w("MicroMsg.OpenIdChecker", "doCheck, openId is null");
-      this.hRU.em(true);
+      ab.w("MicroMsg.OpenIdChecker", "doCheck, openId is null");
+      this.jLz.fH(true);
+      AppMethodBeat.o(18124);
       return;
     }
-    f localf = g.by(this.appId, false);
+    f localf = g.ca(this.appId, false);
     if (localf == null)
     {
-      y.e("MicroMsg.OpenIdChecker", "doCheck fail, local app is null, appId = " + this.appId);
-      this.hRU.em(true);
+      ab.e("MicroMsg.OpenIdChecker", "doCheck fail, local app is null, appId = " + this.appId);
+      this.jLz.fH(true);
+      AppMethodBeat.o(18124);
       return;
     }
-    if (ah.bl(localf.field_openId))
+    if (ah.isNullOrNil(localf.field_openId))
     {
-      y.w("MicroMsg.OpenIdChecker", "doCheck fail, local openId is null, appId = " + this.appId);
-      y.d("MicroMsg.OpenIdChecker", "doCheck, trigger getappsetting, appId = " + this.appId);
-      ap.brp().qh(this.appId);
-      this.hRU.em(true);
+      ab.w("MicroMsg.OpenIdChecker", "doCheck fail, local openId is null, appId = " + this.appId);
+      ab.d("MicroMsg.OpenIdChecker", "doCheck, trigger getappsetting, appId = " + this.appId);
+      al.cae().xB(this.appId);
+      this.jLz.fH(true);
+      AppMethodBeat.o(18124);
       return;
     }
     if (this.openId.equalsIgnoreCase(localf.field_openId))
     {
-      y.d("MicroMsg.OpenIdChecker", "doCheck succ, appId = " + this.appId);
-      this.hRU.em(true);
+      ab.d("MicroMsg.OpenIdChecker", "doCheck succ, appId = " + this.appId);
+      this.jLz.fH(true);
+      AppMethodBeat.o(18124);
       return;
     }
-    y.w("MicroMsg.OpenIdChecker", "doCheck fail, appId = " + this.appId + ", openId = " + this.openId + ", localOpenId = " + localf.field_openId);
-    UF();
+    ab.w("MicroMsg.OpenIdChecker", "doCheck fail, appId = " + this.appId + ", openId = " + this.openId + ", localOpenId = " + localf.field_openId);
+    aVD();
+    AppMethodBeat.o(18124);
   }
 }
 

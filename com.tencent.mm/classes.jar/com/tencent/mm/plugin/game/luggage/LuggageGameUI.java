@@ -1,13 +1,21 @@
 package com.tencent.mm.plugin.game.luggage;
 
+import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
 public class LuggageGameUI
   extends MMActivity
 {
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
     return -1;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

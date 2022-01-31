@@ -2,79 +2,97 @@ package com.tencent.mm.plugin.downloader_app.detail;
 
 import android.os.Bundle;
 import android.view.View;
-import com.tencent.luggage.e.a.a;
-import com.tencent.luggage.e.g;
-import com.tencent.luggage.e.k;
-import com.tencent.luggage.e.n;
-import com.tencent.luggage.e.n.a;
-import com.tencent.luggage.j.h;
-import com.tencent.mm.plugin.game.luggage.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.g;
+import com.tencent.luggage.d.k;
+import com.tencent.luggage.d.n;
+import com.tencent.luggage.d.n.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.widget.MMWebView;
 
 public final class c
   extends n
 {
-  private MMWebView dYF;
-  boolean iRx = false;
-  private n.a iRy = new c.3(this);
+  private MMWebView foJ;
+  boolean lag;
+  private n.a lah;
   
   public c(g paramg, k paramk, Bundle paramBundle)
   {
     super(paramg, paramk, paramBundle);
+    AppMethodBeat.i(136046);
+    this.lag = false;
+    this.lah = new c.2(this);
     if (paramk != null) {
-      this.iRx = true;
+      this.lag = true;
     }
-    y.i("MicroMsg.DownloadDetailWebPage", "preload = %b", new Object[] { Boolean.valueOf(this.iRx) });
-    a(this.iRy);
-    this.biT.biJ = a.biZ;
-    f.a(this);
-    this.biT.a(new c.1(this));
+    ab.i("MicroMsg.DownloadDetailWebPage", "preload = %b", new Object[] { Boolean.valueOf(this.lag) });
+    a(this.lah);
+    this.bzs.bzh = a.bzy;
+    com.tencent.mm.plugin.webview.luggage.i.b(this);
+    AppMethodBeat.o(136046);
   }
   
-  private void zU(String paramString)
+  private void JR(String paramString)
   {
-    this.biT.a(new c.2(this, paramString));
+    AppMethodBeat.i(136053);
+    this.bzs.a(new c.1(this, paramString));
+    AppMethodBeat.o(136053);
   }
   
-  public final void c(String paramString, Bundle paramBundle)
+  public final void g(String paramString, Bundle paramBundle)
   {
-    if (!this.iRx) {
-      this.biT.loadUrl(paramString);
+    AppMethodBeat.i(136051);
+    if (!this.lag) {
+      this.bzs.loadUrl(paramString);
     }
+    AppMethodBeat.o(136051);
   }
   
-  protected final void onDestroy()
+  public final void onBackground()
   {
-    y.i("MicroMsg.DownloadDetailWebPage", "onDestroy");
-    zU("onDestroy");
-    f.b(this);
+    AppMethodBeat.i(136049);
+    ab.i("MicroMsg.DownloadDetailWebPage", "onBackground");
+    JR("onPause");
+    this.foJ.onPause();
+    AppMethodBeat.o(136049);
   }
   
-  protected final View pW()
+  public final void onDestroy()
   {
-    this.dYF = ((MMWebView)this.biT.qp());
-    return super.pW();
+    AppMethodBeat.i(136050);
+    ab.i("MicroMsg.DownloadDetailWebPage", "onDestroy");
+    JR("onDestroy");
+    com.tencent.mm.plugin.webview.luggage.i.c(this);
+    AppMethodBeat.o(136050);
   }
   
-  protected final void pY()
+  public final void onForeground()
   {
-    y.i("MicroMsg.DownloadDetailWebPage", "onForeground");
-    zU("onResume");
-    this.dYF.onResume();
+    AppMethodBeat.i(136048);
+    ab.i("MicroMsg.DownloadDetailWebPage", "onForeground");
+    JR("onResume");
+    this.foJ.onResume();
+    AppMethodBeat.o(136048);
   }
   
-  protected final void qa()
+  public final View tZ()
   {
-    y.i("MicroMsg.DownloadDetailWebPage", "onBackground");
-    zU("onPause");
-    this.dYF.onPause();
+    AppMethodBeat.i(136047);
+    this.foJ = ((MMWebView)this.bzs.uv());
+    View localView = super.tZ();
+    AppMethodBeat.o(136047);
+    return localView;
   }
   
-  protected final String qq()
+  public final String ux()
   {
-    return h.k(ae.getContext(), "luggage_game_adapter.js");
+    AppMethodBeat.i(136052);
+    String str = com.tencent.luggage.g.i.p(ah.getContext(), "luggage_mm_adapter.js");
+    AppMethodBeat.o(136052);
+    return str;
   }
 }
 

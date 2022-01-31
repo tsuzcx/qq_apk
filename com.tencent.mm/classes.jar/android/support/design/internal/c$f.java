@@ -5,12 +5,12 @@ import android.support.v7.view.menu.j;
 final class c$f
   implements c.d
 {
-  final j dY;
-  boolean dZ;
+  final j eX;
+  boolean eY;
   
   c$f(j paramj)
   {
-    this.dY = paramj;
+    this.eX = paramj;
   }
 }
 

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="#fff6f6f8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@color/pa" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/pf" android:gravity="center_horizontal" android:id="@id/hi" android:background="#f7ffffff" android:paddingTop="@dimen/kr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ListView android:id="@id/bp0" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/ls" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/bp2" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ProgressBar android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/zh" />
-        <TextView android:textSize="14.0dip" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/chh" />
-    </LinearLayout>
+    <ListView android:id="@id/buk" android:background="@color/pa" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
+    <ListView android:id="@id/bul" android:background="@color/pa" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/oz" android:dividerHeight="@dimen/hv" style="@style/mn" />
+    <include android:id="@id/bum" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/zm" />
+    <TextView android:gravity="center_horizontal" android:id="@id/bun" android:background="@color/a6q" android:paddingTop="@dimen/l6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/brs" />
 </FrameLayout>

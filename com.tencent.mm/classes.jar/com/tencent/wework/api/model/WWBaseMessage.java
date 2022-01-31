@@ -9,7 +9,7 @@ public abstract class WWBaseMessage
   extends BaseMessage
 {
   public String appId;
-  public String fPI;
+  public String hiM;
   public String transaction;
   
   public boolean checkArgs()
@@ -23,7 +23,7 @@ public abstract class WWBaseMessage
     this.transaction = str;
     paramBundle.putString("_wwapi_basereq_transaction", str);
     paramBundle.putString("_wwapi_basereq_openid", this.appId);
-    paramBundle.putString("_wwapi_basereq_agentid", this.fPI);
+    paramBundle.putString("_wwapi_basereq_agentid", this.hiM);
     try
     {
       paramBundle.putString("_wwapi_basereq_appbundle", this.mContext.getPackageName());

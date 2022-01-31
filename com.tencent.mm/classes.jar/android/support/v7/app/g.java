@@ -1,274 +1,391 @@
 package android.support.v7.app;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.ComponentName;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.location.LocationManager;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.support.v7.view.b;
-import android.support.v7.view.f.a;
-import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
+import android.graphics.drawable.Drawable;
+import android.support.v4.view.t;
+import android.support.v7.view.i;
+import android.support.v7.view.menu.h;
+import android.support.v7.view.menu.h.a;
+import android.support.v7.view.menu.o.a;
+import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.Toolbar.b;
+import android.support.v7.widget.ba;
+import android.support.v7.widget.u;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
+import android.view.ViewGroup;
 import android.view.Window.Callback;
+import java.util.ArrayList;
 
-class g
-  extends AppCompatDelegateImplV9
+final class g
+  extends ActionBar
 {
-  private int OZ = -100;
-  private boolean Pa;
-  boolean Pb = true;
-  private b Pc;
-  
-  g(Context paramContext, Window paramWindow, c paramc)
+  u PY;
+  boolean PZ;
+  Window.Callback Qa;
+  private boolean Qb;
+  private boolean Qc;
+  private ArrayList<Object> Qd = new ArrayList();
+  private final Runnable Qe = new Runnable()
   {
-    super(paramContext, paramWindow, paramc);
-  }
-  
-  private void el()
-  {
-    if (this.Pc == null)
+    public final void run()
     {
-      Context localContext = this.mContext;
-      if (n.QC == null)
+      g localg = g.this;
+      Menu localMenu = localg.getMenu();
+      if ((localMenu instanceof h)) {}
+      for (localh = (h)localMenu;; localh = null)
       {
-        localContext = localContext.getApplicationContext();
-        n.QC = new n(localContext, (LocationManager)localContext.getSystemService("location"));
+        if (localh != null) {
+          localh.fX();
+        }
+        try
+        {
+          localMenu.clear();
+          if ((!localg.Qa.onCreatePanelMenu(0, localMenu)) || (!localg.Qa.onPreparePanel(0, null, localMenu))) {
+            localMenu.clear();
+          }
+          return;
+        }
+        finally
+        {
+          if (localh == null) {
+            break;
+          }
+          localh.fY();
+        }
       }
-      this.Pc = new b(n.QC);
+    }
+  };
+  private final Toolbar.b Qf = new Toolbar.b()
+  {
+    public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+    {
+      return g.this.Qa.onMenuItemSelected(0, paramAnonymousMenuItem);
+    }
+  };
+  
+  g(Toolbar paramToolbar, CharSequence paramCharSequence, Window.Callback paramCallback)
+  {
+    this.PY = new ba(paramToolbar, false);
+    this.Qa = new c(paramCallback);
+    this.PY.setWindowCallback(this.Qa);
+    paramToolbar.setOnMenuItemClickListener(this.Qf);
+    this.PY.setWindowTitle(paramCharSequence);
+  }
+  
+  private void setDisplayOptions(int paramInt1, int paramInt2)
+  {
+    int i = this.PY.getDisplayOptions();
+    this.PY.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+  }
+  
+  public final void K(boolean paramBoolean) {}
+  
+  public final void L(boolean paramBoolean) {}
+  
+  public final void M(boolean paramBoolean)
+  {
+    if (paramBoolean == this.Qc) {}
+    for (;;)
+    {
+      return;
+      this.Qc = paramBoolean;
+      int j = this.Qd.size();
+      int i = 0;
+      while (i < j)
+      {
+        this.Qd.get(i);
+        i += 1;
+      }
     }
   }
   
-  private boolean em()
+  public final boolean b(KeyEvent paramKeyEvent)
   {
-    PackageManager localPackageManager;
-    if ((this.Pa) && ((this.mContext instanceof Activity))) {
-      localPackageManager = this.mContext.getPackageManager();
+    if (paramKeyEvent.getAction() == 1) {
+      ex();
     }
-    try
-    {
-      int i = localPackageManager.getActivityInfo(new ComponentName(this.mContext, this.mContext.getClass()), 0).configChanges;
-      return (i & 0x200) == 0;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
-    return false;
     return true;
   }
   
-  final View a(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  public final boolean collapseActionView()
   {
-    return null;
-  }
-  
-  Window.Callback a(Window.Callback paramCallback)
-  {
-    return new a(paramCallback);
-  }
-  
-  int aU(int paramInt)
-  {
-    switch (paramInt)
+    if (this.PY.hasExpandedActionView())
     {
-    default: 
-      return paramInt;
-    case 0: 
-      el();
-      b localb = this.Pc;
-      localb.Pf = localb.Pe.eu();
-      if (localb.Pf) {
-        return 2;
-      }
-      return 1;
+      this.PY.collapseActionView();
+      return true;
     }
-    return -1;
+    return false;
   }
   
-  public final boolean eh()
+  public final void es()
   {
+    this.PY.setIcon(2130840999);
+  }
+  
+  public final void et()
+  {
+    setDisplayOptions(0, 2);
+  }
+  
+  public final void eu()
+  {
+    setDisplayOptions(0, 8);
+  }
+  
+  public final void ev()
+  {
+    setDisplayOptions(16, 16);
+  }
+  
+  public final boolean ex()
+  {
+    return this.PY.showOverflowMenu();
+  }
+  
+  public final boolean ey()
+  {
+    return this.PY.hideOverflowMenu();
+  }
+  
+  public final boolean ez()
+  {
+    this.PY.hz().removeCallbacks(this.Qe);
+    t.b(this.PY.hz(), this.Qe);
+    return true;
+  }
+  
+  public final View getCustomView()
+  {
+    return this.PY.getCustomView();
+  }
+  
+  public final int getDisplayOptions()
+  {
+    return this.PY.getDisplayOptions();
+  }
+  
+  public final int getHeight()
+  {
+    return this.PY.getHeight();
+  }
+  
+  final Menu getMenu()
+  {
+    if (!this.Qb)
+    {
+      this.PY.a(new a(), new b());
+      this.Qb = true;
+    }
+    return this.PY.getMenu();
+  }
+  
+  public final Context getThemedContext()
+  {
+    return this.PY.getContext();
+  }
+  
+  public final CharSequence getTitle()
+  {
+    return this.PY.getTitle();
+  }
+  
+  public final void hide()
+  {
+    this.PY.setVisibility(8);
+  }
+  
+  public final boolean isShowing()
+  {
+    return this.PY.getVisibility() == 0;
+  }
+  
+  public final void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+  }
+  
+  final void onDestroy()
+  {
+    this.PY.hz().removeCallbacks(this.Qe);
+  }
+  
+  public final boolean onKeyShortcut(int paramInt, KeyEvent paramKeyEvent)
+  {
+    boolean bool = false;
+    Menu localMenu = getMenu();
     int i;
-    int j;
-    Object localObject;
-    Configuration localConfiguration;
-    label55:
-    label80:
-    boolean bool;
-    if (this.OZ != -100)
+    if (localMenu != null)
     {
-      i = this.OZ;
-      j = aU(i);
-      if (j == -1) {
-        break label324;
+      if (paramKeyEvent == null) {
+        break label61;
       }
-      localObject = this.mContext.getResources();
-      localConfiguration = ((Resources)localObject).getConfiguration();
-      int k = localConfiguration.uiMode;
-      if (j != 2) {
-        break label211;
+      i = paramKeyEvent.getDeviceId();
+      if (KeyCharacterMap.load(i).getKeyboardType() == 1) {
+        break label66;
       }
-      j = 32;
-      if ((k & 0x30) == j) {
-        break label318;
-      }
-      if (!em()) {
-        break label217;
-      }
-      ((Activity)this.mContext).recreate();
-      bool = true;
     }
-    for (;;)
+    label61:
+    label66:
+    for (bool = true;; bool = false)
     {
-      if (i == 0)
-      {
-        el();
-        localObject = this.Pc;
-        ((b)localObject).cleanup();
-        if (((b)localObject).Pg == null) {
-          ((b)localObject).Pg = new g.b.1((b)localObject);
-        }
-        if (((b)localObject).Ph == null)
-        {
-          ((b)localObject).Ph = new IntentFilter();
-          ((b)localObject).Ph.addAction("android.intent.action.TIME_SET");
-          ((b)localObject).Ph.addAction("android.intent.action.TIMEZONE_CHANGED");
-          ((b)localObject).Ph.addAction("android.intent.action.TIME_TICK");
-        }
-        ((b)localObject).Pd.mContext.registerReceiver(((b)localObject).Pg, ((b)localObject).Ph);
-      }
-      this.Pa = true;
+      localMenu.setQwertyMode(bool);
+      bool = localMenu.performShortcut(paramInt, paramKeyEvent, 0);
       return bool;
-      i = d.OF;
+      i = -1;
       break;
-      label211:
-      j = 16;
-      break label55;
-      label217:
-      localConfiguration = new Configuration(localConfiguration);
-      DisplayMetrics localDisplayMetrics = ((Resources)localObject).getDisplayMetrics();
-      localConfiguration.uiMode = (j | localConfiguration.uiMode & 0xFFFFFFCF);
-      ((Resources)localObject).updateConfiguration(localConfiguration, localDisplayMetrics);
-      if (Build.VERSION.SDK_INT >= 26) {
-        break label80;
-      }
-      if (Build.VERSION.SDK_INT >= 24)
-      {
-        k.c((Resources)localObject);
-        break label80;
-      }
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        k.b((Resources)localObject);
-        break label80;
-      }
-      if (Build.VERSION.SDK_INT < 21) {
-        break label80;
-      }
-      k.a((Resources)localObject);
-      break label80;
-      label318:
-      bool = false;
-      continue;
-      label324:
-      bool = false;
     }
   }
   
-  public final void onCreate(Bundle paramBundle)
+  public final void setBackgroundDrawable(Drawable paramDrawable)
   {
-    super.onCreate(paramBundle);
-    if ((paramBundle != null) && (this.OZ == -100)) {
-      this.OZ = paramBundle.getInt("appcompat:local_night_mode", -100);
+    this.PY.setBackgroundDrawable(paramDrawable);
+  }
+  
+  public final void setCustomView(int paramInt)
+  {
+    setCustomView(LayoutInflater.from(this.PY.getContext()).inflate(paramInt, this.PY.hz(), false));
+  }
+  
+  public final void setCustomView(View paramView)
+  {
+    ActionBar.LayoutParams localLayoutParams = new ActionBar.LayoutParams(-2);
+    if (paramView != null) {
+      paramView.setLayoutParams(localLayoutParams);
     }
+    this.PY.setCustomView(paramView);
   }
   
-  public final void onDestroy()
+  public final void setDisplayHomeAsUpEnabled(boolean paramBoolean)
   {
-    super.onDestroy();
-    if (this.Pc != null) {
-      this.Pc.cleanup();
-    }
-  }
-  
-  public final void onSaveInstanceState(Bundle paramBundle)
-  {
-    super.onSaveInstanceState(paramBundle);
-    if (this.OZ != -100) {
-      paramBundle.putInt("appcompat:local_night_mode", this.OZ);
-    }
-  }
-  
-  public final void onStart()
-  {
-    super.onStart();
-    eh();
-  }
-  
-  public final void onStop()
-  {
-    super.onStop();
-    if (this.Pc != null) {
-      this.Pc.cleanup();
-    }
-  }
-  
-  class a
-    extends e.b
-  {
-    a(Window.Callback paramCallback)
+    if (paramBoolean) {}
+    for (int i = 4;; i = 0)
     {
-      super(paramCallback);
+      setDisplayOptions(i, 4);
+      return;
+    }
+  }
+  
+  @SuppressLint({"WrongConstant"})
+  public final void setDisplayOptions(int paramInt)
+  {
+    setDisplayOptions(paramInt, -1);
+  }
+  
+  public final void setElevation(float paramFloat)
+  {
+    t.i(this.PY.hz(), paramFloat);
+  }
+  
+  public final void setHomeActionContentDescription(int paramInt)
+  {
+    this.PY.setNavigationContentDescription(paramInt);
+  }
+  
+  public final void setLogo(Drawable paramDrawable)
+  {
+    this.PY.setLogo(paramDrawable);
+  }
+  
+  public final void setWindowTitle(CharSequence paramCharSequence)
+  {
+    this.PY.setWindowTitle(paramCharSequence);
+  }
+  
+  public final void show()
+  {
+    this.PY.setVisibility(0);
+  }
+  
+  final class a
+    implements o.a
+  {
+    private boolean OV;
+    
+    a() {}
+    
+    public final void a(h paramh, boolean paramBoolean)
+    {
+      if (this.OV) {
+        return;
+      }
+      this.OV = true;
+      g.this.PY.dismissPopupMenus();
+      if (g.this.Qa != null) {
+        g.this.Qa.onPanelClosed(108, paramh);
+      }
+      this.OV = false;
     }
     
-    final ActionMode a(ActionMode.Callback paramCallback)
+    public final boolean d(h paramh)
     {
-      paramCallback = new f.a(g.this.mContext, paramCallback);
-      b localb = g.this.startSupportActionMode(paramCallback);
-      if (localb != null) {
-        return paramCallback.b(localb);
+      if (g.this.Qa != null)
+      {
+        g.this.Qa.onMenuOpened(108, paramh);
+        return true;
       }
-      return null;
-    }
-    
-    public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
-    {
-      if (g.this.Pb) {
-        return a(paramCallback);
-      }
-      return super.onWindowStartingActionMode(paramCallback);
+      return false;
     }
   }
   
   final class b
+    implements h.a
   {
-    n Pe;
-    boolean Pf;
-    BroadcastReceiver Pg;
-    IntentFilter Ph;
+    b() {}
     
-    b(n paramn)
+    public final boolean a(h paramh, MenuItem paramMenuItem)
     {
-      this.Pe = paramn;
-      this.Pf = paramn.eu();
+      return false;
     }
     
-    final void cleanup()
+    public final void b(h paramh)
     {
-      if (this.Pg != null)
+      if (g.this.Qa != null)
       {
-        g.this.mContext.unregisterReceiver(this.Pg);
-        this.Pg = null;
+        if (!g.this.PY.isOverflowMenuShowing()) {
+          break label41;
+        }
+        g.this.Qa.onPanelClosed(108, paramh);
       }
+      label41:
+      while (!g.this.Qa.onPreparePanel(0, null, paramh)) {
+        return;
+      }
+      g.this.Qa.onMenuOpened(108, paramh);
+    }
+  }
+  
+  final class c
+    extends i
+  {
+    public c(Window.Callback paramCallback)
+    {
+      super();
+    }
+    
+    public final View onCreatePanelView(int paramInt)
+    {
+      if (paramInt == 0) {
+        return new View(g.this.PY.getContext());
+      }
+      return super.onCreatePanelView(paramInt);
+    }
+    
+    public final boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
+    {
+      boolean bool = super.onPreparePanel(paramInt, paramView, paramMenu);
+      if ((bool) && (!g.this.PZ))
+      {
+        g.this.PY.gz();
+        g.this.PZ = true;
+      }
+      return bool;
     }
   }
 }

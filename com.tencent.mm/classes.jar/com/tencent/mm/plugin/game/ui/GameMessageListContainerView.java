@@ -6,11 +6,11 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
-import com.tencent.mm.plugin.game.g.c;
-import com.tencent.mm.plugin.game.model.o;
-import com.tencent.mm.plugin.game.model.o.h;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.game.model.n;
+import com.tencent.mm.plugin.game.model.n.i;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 
 public class GameMessageListContainerView
@@ -24,11 +24,13 @@ public class GameMessageListContainerView
     this.mContext = paramContext;
   }
   
-  public final void a(o paramo, LinkedList<o.h> paramLinkedList, int paramInt1, int paramInt2, f<String, Bitmap> paramf)
+  public final void a(n paramn, LinkedList<n.i> paramLinkedList, int paramInt1, int paramInt2, f<String, Bitmap> paramf)
   {
-    if ((paramo == null) || (bk.dk(paramLinkedList)))
+    AppMethodBeat.i(112089);
+    if ((paramn == null) || (bo.es(paramLinkedList)))
     {
       setVisibility(8);
+      AppMethodBeat.o(112089);
       return;
     }
     setVisibility(0);
@@ -37,7 +39,7 @@ public class GameMessageListContainerView
     GameMessageListUserIconView localGameMessageListUserIconView;
     for (int i = 1;; i = 2)
     {
-      j = this.mContext.getResources().getDimensionPixelSize(g.c.BasicPaddingSize);
+      j = this.mContext.getResources().getDimensionPixelSize(2131427496);
       while (getChildCount() < i)
       {
         localGameMessageListUserIconView = new GameMessageListUserIconView(this.mContext);
@@ -49,36 +51,36 @@ public class GameMessageListContainerView
       }
     }
     paramInt2 = 0;
-    label113:
     if (paramInt2 < getChildCount())
     {
-      if (paramInt2 >= i) {
-        break label225;
-      }
-      getChildAt(paramInt2).setVisibility(0);
-      localGameMessageListUserIconView = (GameMessageListUserIconView)getChildAt(paramInt2);
-      LinkedList localLinkedList = new LinkedList();
-      j = paramInt2 * paramInt1;
-      while ((j < (paramInt2 + 1) * paramInt1) && (j < paramLinkedList.size()))
+      if (paramInt2 < i)
       {
-        localLinkedList.add(paramLinkedList.get(j));
-        j += 1;
+        getChildAt(paramInt2).setVisibility(0);
+        localGameMessageListUserIconView = (GameMessageListUserIconView)getChildAt(paramInt2);
+        LinkedList localLinkedList = new LinkedList();
+        j = paramInt2 * paramInt1;
+        while ((j < (paramInt2 + 1) * paramInt1) && (j < paramLinkedList.size()))
+        {
+          localLinkedList.add(paramLinkedList.get(j));
+          j += 1;
+        }
+        localGameMessageListUserIconView.a(paramn, localLinkedList, paramf);
       }
-      localGameMessageListUserIconView.a(paramo, localLinkedList, paramf);
+      for (;;)
+      {
+        paramInt2 += 1;
+        break;
+        getChildAt(paramInt2).setVisibility(8);
+      }
     }
-    for (;;)
-    {
-      paramInt2 += 1;
-      break label113;
-      break;
-      label225:
-      getChildAt(paramInt2).setVisibility(8);
-    }
+    AppMethodBeat.o(112089);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(112088);
     super.onFinishInflate();
+    AppMethodBeat.o(112088);
   }
 }
 

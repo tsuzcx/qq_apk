@@ -2,34 +2,38 @@ package com.tencent.mm.plugin.appbrand.widget.desktop;
 
 import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
   extends RecyclerView.v
 {
-  public TextView eXr;
-  public ImageView gSx;
-  public ImageView hqB;
-  public TextView hqC;
-  public ImageView hqD;
-  public AppBrandDesktopView.a hqE;
+  public ImageView ivs;
+  public ImageView jfs;
+  public FrameLayout jft;
+  public TextView jfu;
+  public ImageView jfv;
+  public AppBrandDesktopView.c jfw;
+  public TextView titleTv;
   
   public e(View paramView)
   {
     super(paramView);
-    this.gSx = ((ImageView)paramView.findViewById(y.g.icon));
-    this.hqB = ((ImageView)paramView.findViewById(y.g.icon_bg));
-    this.eXr = ((TextView)paramView.findViewById(y.g.title));
-    this.hqC = ((TextView)paramView.findViewById(y.g.test_mask));
-    this.hqD = ((ImageView)paramView.findViewById(y.g.status_icon));
-    paramView.setOnClickListener(new e.1(this));
+    AppMethodBeat.i(133896);
+    this.ivs = ((ImageView)paramView.findViewById(2131820929));
+    this.jfs = ((ImageView)paramView.findViewById(2131821522));
+    this.jft = ((FrameLayout)paramView.findViewById(2131821540));
+    this.titleTv = ((TextView)paramView.findViewById(2131820680));
+    this.jfu = ((TextView)paramView.findViewById(2131821523));
+    this.jfv = ((ImageView)paramView.findViewById(2131823387));
+    AppMethodBeat.o(133896);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.e
  * JD-Core Version:    0.7.0.1
  */

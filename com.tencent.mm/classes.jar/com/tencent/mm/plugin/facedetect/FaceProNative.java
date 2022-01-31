@@ -1,17 +1,14 @@
 package com.tencent.mm.plugin.facedetect;
 
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
 import android.support.annotation.Keep;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.k;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.m.e;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,22 +23,29 @@ public class FaceProNative
   public static final int ROTSTABLE = 0;
   private static final String TAG = "MicroMsg.FaceProNative";
   private static final long TIMEOUT_CHECKER = 3600000L;
-  private static String[] cachedStr = null;
-  public static volatile boolean hasDetectInit = false;
-  private static long lastCheckTime = -1L;
+  private static String[] cachedStr;
+  public static volatile boolean hasDetectInit;
+  private static long lastCheckTime;
   private long nativePtr;
   
   static
   {
-    k.b("FacePro", FaceProNative.class.getClassLoader());
-    k.b("wechatvoicereco", FaceProNative.class.getClassLoader());
-    k.b("wechatxlog", FaceProNative.class.getClassLoader());
+    AppMethodBeat.i(49);
+    hasDetectInit = false;
+    k.a("FacePro", FaceProNative.class.getClassLoader());
+    k.a("wechatvoicereco", FaceProNative.class.getClassLoader());
+    k.a("wechatxlog", FaceProNative.class.getClassLoader());
     nativeInit();
+    cachedStr = null;
+    lastCheckTime = -1L;
+    AppMethodBeat.o(49);
   }
   
   public FaceProNative()
   {
+    AppMethodBeat.i(44);
     NativeConstructor();
+    AppMethodBeat.o(44);
   }
   
   private native void NativeConstructor();
@@ -50,39 +54,22 @@ public class FaceProNative
   
   public static void checkInitDetectFace()
   {
+    AppMethodBeat.i(47);
     try
     {
-      y.l("MicroMsg.FaceProNative", "checkInitDetectFace, hasDetectInit: %s", new Object[] { Boolean.valueOf(hasDetectInit) });
-      ai.d(new FaceProNative.1());
+      ab.b("MicroMsg.FaceProNative", "checkInitDetectFace, hasDetectInit: %s", new Object[] { Boolean.valueOf(hasDetectInit) });
+      al.d(new FaceProNative.1());
       return;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(47);
+    }
   }
   
   public static int detectFaceCnt(String paramString)
   {
-    
-    if (!hasDetectInit) {
-      return 0;
-    }
-    Object localObject = c.YU(paramString);
-    int i = ((BitmapFactory.Options)localObject).outWidth;
-    i = ((BitmapFactory.Options)localObject).outHeight * i / 270000;
-    if (i >= 4) {}
-    for (i = (int)Math.sqrt(i);; i = 1)
-    {
-      localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
-      ((BitmapFactory.Options)localObject).inSampleSize = i;
-      localObject = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
-      if (localObject == null)
-      {
-        y.e("MicroMsg.FaceProNative", "detectFaceCnt  bitmap is null: %s", new Object[] { paramString });
-        return 0;
-      }
-      y.i("MicroMsg.FaceProNative", "detectFaceCnt  bitmap is not  null: %s", new Object[] { localObject });
-      return nativeFacedetectWithBitmap(localObject);
-    }
+    return 0;
   }
   
   public static native int engineVersion();
@@ -90,11 +77,12 @@ public class FaceProNative
   @Keep
   public static String[] getDynamicValue(String paramString)
   {
+    AppMethodBeat.i(48);
     if (System.currentTimeMillis() - lastCheckTime >= 3600000L)
     {
       lastCheckTime = System.currentTimeMillis();
-      paramString = ((a)g.r(a.class)).AA().getValue(paramString);
-      if (bk.bl(paramString)) {}
+      paramString = ((a)g.E(a.class)).Nq().getValue(paramString);
+      if (bo.isNullOrNil(paramString)) {}
     }
     try
     {
@@ -114,10 +102,12 @@ public class FaceProNative
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.FaceProNative", paramString, "hy: array resolve failed", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.FaceProNative", paramString, "hy: array resolve failed", new Object[0]);
       }
     }
-    return cachedStr;
+    paramString = cachedStr;
+    AppMethodBeat.o(48);
+    return paramString;
   }
   
   public static native int nativeFacedetectInitBin(byte[] paramArrayOfByte);
@@ -130,7 +120,9 @@ public class FaceProNative
   
   public void destroy()
   {
+    AppMethodBeat.i(45);
     NativeDestructor();
+    AppMethodBeat.o(45);
   }
   
   public native FaceProNative.FaceStatus engineFaceProcess(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
@@ -159,8 +151,10 @@ public class FaceProNative
   
   protected void finalize()
   {
+    AppMethodBeat.i(46);
     super.finalize();
     NativeDestructor();
+    AppMethodBeat.o(46);
   }
 }
 

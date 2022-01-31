@@ -6,13 +6,13 @@ import android.view.ViewGroup;
 
 public abstract interface j$a
 {
-  public abstract j a(View paramView, ViewGroup paramViewGroup, Matrix paramMatrix);
+  public abstract void A(View paramView);
   
-  public abstract void x(View paramView);
+  public abstract j a(View paramView, ViewGroup paramViewGroup, Matrix paramMatrix);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.transition.j.a
  * JD-Core Version:    0.7.0.1
  */

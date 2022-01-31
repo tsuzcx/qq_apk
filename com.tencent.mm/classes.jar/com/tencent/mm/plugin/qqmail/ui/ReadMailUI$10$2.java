@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.widget.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class ReadMailUI$10$2
@@ -11,11 +12,13 @@ final class ReadMailUI$10$2
   
   public final void run()
   {
-    int i = (int)(ReadMailUI.g(this.njP.njK).getContentHeight() * ReadMailUI.g(this.njP.njK).getScale());
-    y.d("MicroMsg.ReadMailUI", ReadMailUI.g(this.njP.njK).getContentHeight() + "," + ReadMailUI.g(this.njP.njK).getHeight() + "," + ReadMailUI.g(this.njP.njK).getScale());
-    if (Math.abs(i - ReadMailUI.g(this.njP.njK).getHeight()) < 10) {
-      ((h)ReadMailUI.g(this.njP.njK)).lx(true);
+    AppMethodBeat.i(68431);
+    int i = (int)(ReadMailUI.g(this.pPc.pOX).getContentHeight() * ReadMailUI.g(this.pPc.pOX).getScale());
+    ab.d("MicroMsg.ReadMailUI", ReadMailUI.g(this.pPc.pOX).getContentHeight() + "," + ReadMailUI.g(this.pPc.pOX).getHeight() + "," + ReadMailUI.g(this.pPc.pOX).getScale());
+    if (Math.abs(i - ReadMailUI.g(this.pPc.pOX).getHeight()) < 10) {
+      ((h)ReadMailUI.g(this.pPc.pOX)).oH(true);
     }
+    AppMethodBeat.o(68431);
   }
 }
 

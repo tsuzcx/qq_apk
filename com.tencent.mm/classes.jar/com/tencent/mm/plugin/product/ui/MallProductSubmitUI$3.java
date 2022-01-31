@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.product.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.product.b.c;
 import com.tencent.mm.plugin.product.b.k;
 import com.tencent.mm.plugin.product.b.l;
-import com.tencent.mm.protocal.c.bsn;
 
 final class MallProductSubmitUI$3
   implements View.OnClickListener
@@ -17,24 +17,22 @@ final class MallProductSubmitUI$3
   
   public final void onClick(View paramView)
   {
-    paramView = MallProductSubmitUI.d(this.mUW);
-    if (paramView.mTL.bsc()) {
-      if (paramView.mTL.brT() != 0) {
-        break label78;
-      }
-    }
-    label78:
-    for (int i = 1; i != 0; i = 0)
+    AppMethodBeat.i(44141);
+    paramView = MallProductSubmitUI.d(this.pxb);
+    if (paramView.pvR.cbi())
     {
-      g.DQ();
-      p localp = g.DO().dJT;
-      bsn localbsn = paramView.mTL.bse();
-      paramView.mTL.getAppId();
-      localp.a(new k(localbsn), 0);
-      return;
+      if (paramView.pvR.caZ() == 0) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        g.RM();
+        g.RK().eHt.a(new k(paramView.pvR.cbk()), 0);
+        AppMethodBeat.o(44141);
+        return;
+      }
+      g.RM();
+      g.RK().eHt.a(new l(paramView.pvR.cbk(), paramView.pvR.getAppId()), 0);
     }
-    g.DQ();
-    g.DO().dJT.a(new l(paramView.mTL.bse(), paramView.mTL.getAppId()), 0);
+    AppMethodBeat.o(44141);
   }
 }
 

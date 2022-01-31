@@ -1,30 +1,32 @@
 package com.tencent.mm.plugin.appbrand.u;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.u.d.d.a;
+import com.tencent.mm.plugin.appbrand.u.e.i;
 
-public final class b
+public abstract class b
+  implements d
 {
-  public static PackageInfo getPackageInfo(Context paramContext, String paramString)
+  protected boolean iYH;
+  
+  public final void a(a parama, com.tencent.mm.plugin.appbrand.u.d.d paramd)
   {
-    if (paramString == null)
-    {
-      y.e("Luggage.AndroidPackageUtil", "getPackageInfo fail, packageName is null");
-      return null;
-    }
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-      return paramContext;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      y.printErrStackTrace("Luggage.AndroidPackageUtil", paramContext, "", new Object[0]);
-    }
-    return null;
+    paramd = new com.tencent.mm.plugin.appbrand.u.d.e(paramd);
+    paramd.a(d.a.iZJ);
+    parama.b(paramd);
+  }
+  
+  public final i aOc()
+  {
+    return new com.tencent.mm.plugin.appbrand.u.e.e();
+  }
+  
+  public void b(com.tencent.mm.plugin.appbrand.u.e.a parama) {}
+  
+  public void c(com.tencent.mm.plugin.appbrand.u.d.d paramd) {}
+  
+  public final void setTcpNoDelay(boolean paramBoolean)
+  {
+    this.iYH = paramBoolean;
   }
 }
 

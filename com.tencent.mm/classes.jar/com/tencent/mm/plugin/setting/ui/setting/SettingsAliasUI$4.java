@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 
 final class SettingsAliasUI$4
@@ -12,9 +13,11 @@ final class SettingsAliasUI$4
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (SettingsAliasUI.f(this.nUa) != null) {
-      g.Dk().c(SettingsAliasUI.f(this.nUa));
+    AppMethodBeat.i(127188);
+    if (SettingsAliasUI.f(this.qIa) != null) {
+      g.Rc().a(SettingsAliasUI.f(this.qIa));
     }
+    AppMethodBeat.o(127188);
   }
 }
 

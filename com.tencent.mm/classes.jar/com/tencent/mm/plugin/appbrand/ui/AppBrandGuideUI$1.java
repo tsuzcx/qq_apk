@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandGuideUI$1
   implements DialogInterface.OnDismissListener
@@ -10,7 +11,9 @@ final class AppBrandGuideUI$1
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.hcM.finish();
+    AppMethodBeat.i(132955);
+    this.iMz.finish();
+    AppMethodBeat.o(132955);
   }
 }
 

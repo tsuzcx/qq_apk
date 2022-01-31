@@ -1,50 +1,49 @@
 package com.tencent.mm.plugin.webview.fts.a.a;
 
-import com.tencent.mm.h.b.a.bc;
-import com.tencent.mm.protocal.c.cli;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.dl;
+import com.tencent.mm.protocal.protobuf.cyy;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$a$1
   implements com.tencent.mm.modelappbrand.h
 {
-  b$a$1(b.a parama, cli paramcli, long paramLong) {}
+  b$a$1(b.a parama, cyy paramcyy, long paramLong) {}
   
-  public final void a(boolean paramBoolean, long paramLong)
+  public final void b(boolean paramBoolean, long paramLong)
   {
-    long l = 1L;
-    y.i("WidgetPkgPreDownloadMgr", "down succ %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    bc localbc;
+    AppMethodBeat.i(5766);
+    ab.i("WidgetPkgPreDownloadMgr", "down succ %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    dl localdl;
     if (paramBoolean)
     {
-      com.tencent.mm.plugin.report.service.h.nFQ.h(918L, 2L, 1L);
-      b.a.a(this.rai);
-      localbc = new bc();
-      localbc.cjv = this.rah.bOL;
-      localbc.cqR = this.rah.sEs;
-      localbc.cqT = this.rah.tYE;
-      localbc.cqS = this.rah.tYD;
-      localbc.cqW = System.currentTimeMillis();
+      com.tencent.mm.plugin.report.service.h.qsU.cT(918, 2);
+      b.a.a(this.uPP);
+      localdl = new dl().iR(this.uPO.cwc);
+      localdl.dfp = this.uPO.wAy;
+      localdl = localdl.iT(this.uPO.yfX).iS(this.uPO.yfW);
+      localdl.dfu = System.currentTimeMillis();
       if (!paramBoolean) {
-        break label164;
+        break label168;
       }
     }
-    for (;;)
+    label168:
+    for (long l = 1L;; l = 0L)
     {
-      localbc.cqU = l;
-      localbc.cqV = (System.currentTimeMillis() - this.qWL);
-      localbc.cqX = paramLong;
-      localbc.QX();
+      localdl.dfs = l;
+      localdl.dft = (System.currentTimeMillis() - this.uLY);
+      localdl.dfv = paramLong;
+      localdl.ake();
+      AppMethodBeat.o(5766);
       return;
-      com.tencent.mm.plugin.report.service.h.nFQ.h(918L, 3L, 1L);
+      com.tencent.mm.plugin.report.service.h.qsU.cT(918, 3);
       break;
-      label164:
-      l = 0L;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.a.a.b.a.1
  * JD-Core Version:    0.7.0.1
  */

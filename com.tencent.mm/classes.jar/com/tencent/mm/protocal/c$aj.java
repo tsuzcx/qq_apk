@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$aj
+public final class c$aj
   extends c.g
 {
-  c$aj()
+  public c$aj()
   {
-    super("closeWindowAndGoNext", "closeWindowAndGoNext", 293, false);
+    super("clearLocalData", "clearLocalData", 181, false);
   }
 }
 

@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_below="@id/aa" style="@style/fx"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/ki" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:id="@id/mp" android:visibility="gone" style="@style/g1" />
-        <com.tencent.mm.ui.widget.MMNeatTextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/mq" android:background="@drawable/go" android:maxWidth="@dimen/vb" android:minHeight="@dimen/ed" style="@style/g7" />
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mv" android:layout_marginTop="@dimen/mx">
-            <ImageView android:id="@id/akn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/mv" android:src="@drawable/asp" android:layout_centerVertical="true" />
-            <TextView android:textSize="@dimen/k9" android:textColor="@color/a3c" android:id="@id/ako" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/alz" android:layout_toRightOf="@id/akn" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <ViewStub android:id="@id/akp" android:layout="@layout/mk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/kv" />
-    </LinearLayout>
-</LinearLayout>
+    <include android:id="@id/acu" layout="@layout/l6" />
+    <View android:id="@id/acv" android:background="@drawable/m2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/dv" android:layout_marginRight="@dimen/dv" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/acu" android:layerType="software" />
+</RelativeLayout>

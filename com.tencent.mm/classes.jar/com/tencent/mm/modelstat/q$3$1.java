@@ -1,5 +1,6 @@
 package com.tencent.mm.modelstat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 
 final class q$3$1
@@ -9,15 +10,22 @@ final class q$3$1
   
   public final void run()
   {
-    if (!com.tencent.mm.kernel.g.DN().Dc()) {
+    AppMethodBeat.i(78789);
+    if (!com.tencent.mm.kernel.g.RJ().QU())
+    {
+      AppMethodBeat.o(78789);
       return;
     }
-    q.RA().Rt();
+    q.akJ().akC();
+    AppMethodBeat.o(78789);
   }
   
   public final String toString()
   {
-    return super.toString() + "|onNetworkChange";
+    AppMethodBeat.i(78790);
+    String str = super.toString() + "|onNetworkChange";
+    AppMethodBeat.o(78790);
+    return str;
   }
 }
 

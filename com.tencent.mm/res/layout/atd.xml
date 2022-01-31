@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/k9" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.SnsUnScaleTextView android:textSize="30.0dip" android:textStyle="bold" android:textColor="@color/fc" android:id="@id/e81" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a6d" android:layout_marginBottom="@dimen/a6_" android:text="1900" android:singleLine="true" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l5">
+            <View android:layout_width="0.0dip" android:layout_height="@dimen/eg" android:layout_weight="1.0" />
+            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/eex" android:background="@drawable/k6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/xc" android:minHeight="@dimen/eg" android:text="@string/di0" style="@style/gr" />
+            <ImageView android:id="@id/eey" android:layout_marginRight="@dimen/n_" style="@style/gd" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l5">
+            <ImageView android:id="@id/eez" android:layout_marginLeft="@dimen/n_" android:src="@drawable/icon" style="@style/g_" />
+            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/ef0" android:background="@drawable/j1" android:maxWidth="@dimen/xc" android:minHeight="@dimen/eg" android:text="@string/e8e" style="@style/gr" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l5">
+            <ImageView android:id="@id/ef1" android:layout_marginLeft="@dimen/n_" android:src="@drawable/icon" style="@style/g_" />
+            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/ef2" android:background="@drawable/j1" android:maxWidth="@dimen/xc" android:minHeight="@dimen/eg" android:text="@string/e8c" style="@style/gr" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.mm.plugin.setting.ui.widget.FontSelectorView android:id="@id/ef3" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

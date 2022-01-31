@@ -5,137 +5,185 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.downloader.model.c;
+import com.tencent.mm.plugin.downloader.g.b;
 import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.plugin.downloader.model.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.plugin.downloader.model.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 public final class a
-  implements k
+  implements m
 {
-  private static Set<a.b> iOA = new CopyOnWriteArraySet();
-  private static a iOy = null;
-  private static BroadcastReceiver iOz = null;
+  private static Set<a.b> jmL;
+  private static a kVG;
+  private static BroadcastReceiver kVH;
+  private static com.tencent.mm.sdk.b.c kVI;
+  
+  static
+  {
+    AppMethodBeat.i(2300);
+    kVG = null;
+    kVH = null;
+    jmL = new CopyOnWriteArraySet();
+    kVI = new a.1();
+    AppMethodBeat.o(2300);
+  }
+  
+  private static void G(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(2298);
+    ab.i("MicroMsg.DownloadEventBus", "dispatch event = %d, id = %d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    com.tencent.mm.plugin.downloader.g.a locala = d.iJ(paramLong);
+    if (locala == null)
+    {
+      AppMethodBeat.o(2298);
+      return;
+    }
+    Iterator localIterator = jmL.iterator();
+    while (localIterator.hasNext()) {
+      ((a.b)localIterator.next()).H(paramInt, locala.field_downloadId);
+    }
+    AppMethodBeat.o(2298);
+  }
   
   public static void a(a.b paramb)
   {
+    AppMethodBeat.i(2286);
     if (paramb != null) {
-      iOA.add(paramb);
+      jmL.add(paramb);
     }
-  }
-  
-  public static void aFI()
-  {
-    if (iOy == null) {
-      iOy = new a();
-    }
-    if (iOz == null) {
-      iOz = new a((byte)0);
-    }
-    d.aFP();
-    com.tencent.mm.plugin.downloader.model.b.a(iOy);
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
-    localIntentFilter.addAction("android.intent.action.PACKAGE_REPLACED");
-    localIntentFilter.addDataScheme("package");
-    ae.getContext().registerReceiver(iOz, localIntentFilter);
-  }
-  
-  public static void aFJ()
-  {
-    d.aFP();
-    com.tencent.mm.plugin.downloader.model.b.b(iOy);
-    ae.getContext().unregisterReceiver(iOz);
-    iOy = null;
-    iOz = null;
-    iOA.clear();
+    AppMethodBeat.o(2286);
   }
   
   public static void b(a.b paramb)
   {
+    AppMethodBeat.i(2287);
     if (paramb != null) {
-      iOA.remove(paramb);
+      jmL.remove(paramb);
     }
+    AppMethodBeat.o(2287);
   }
   
-  private static void s(int paramInt, long paramLong)
+  public static void bje()
   {
-    y.i("MicroMsg.DownloadEventBus", "dispatch event = %d, id = %d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-    com.tencent.mm.plugin.downloader.f.a locala = c.dk(paramLong);
-    if (locala == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = iOA.iterator();
-      while (localIterator.hasNext()) {
-        ((a.b)localIterator.next()).X(paramInt, locala.field_appId);
-      }
+    AppMethodBeat.i(2288);
+    if (kVG == null) {
+      kVG = new a();
     }
+    if (kVH == null) {
+      kVH = new a((byte)0);
+    }
+    f.bjl();
+    com.tencent.mm.plugin.downloader.model.c.a(kVG);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
+    localIntentFilter.addAction("android.intent.action.PACKAGE_REPLACED");
+    localIntentFilter.addDataScheme("package");
+    ah.getContext().registerReceiver(kVH, localIntentFilter);
+    com.tencent.mm.sdk.b.a.ymk.c(kVI);
+    AppMethodBeat.o(2288);
+  }
+  
+  public static void bjf()
+  {
+    AppMethodBeat.i(2289);
+    f.bjl();
+    com.tencent.mm.plugin.downloader.model.c.b(kVG);
+    ah.getContext().unregisterReceiver(kVH);
+    kVG = null;
+    kVH = null;
+    jmL.clear();
+    com.tencent.mm.sdk.b.a.ymk.d(kVI);
+    AppMethodBeat.o(2289);
   }
   
   public final void b(long paramLong, int paramInt, boolean paramBoolean)
   {
-    s(5, paramLong);
+    AppMethodBeat.i(2292);
+    G(5, paramLong);
+    AppMethodBeat.o(2292);
   }
   
   public final void b(long paramLong, String paramString, boolean paramBoolean)
   {
-    s(3, paramLong);
+    AppMethodBeat.i(2291);
+    G(3, paramLong);
+    AppMethodBeat.o(2291);
   }
   
-  public final void cy(long paramLong)
+  public final void hx(long paramLong)
   {
-    s(6, paramLong);
+    AppMethodBeat.i(2295);
+    G(6, paramLong);
+    AppMethodBeat.o(2295);
   }
   
-  public final void cz(long paramLong)
+  public final void hy(long paramLong)
   {
-    s(8, paramLong);
+    AppMethodBeat.i(2297);
+    G(8, paramLong);
+    AppMethodBeat.o(2297);
   }
   
-  public final void k(long paramLong, String paramString)
+  public final void i(long paramLong, String paramString)
   {
-    s(7, paramLong);
+    AppMethodBeat.i(2296);
+    G(7, paramLong);
+    AppMethodBeat.o(2296);
   }
   
   public final void onTaskPaused(long paramLong)
   {
-    s(2, paramLong);
+    AppMethodBeat.i(2294);
+    G(2, paramLong);
+    AppMethodBeat.o(2294);
   }
   
   public final void onTaskRemoved(long paramLong)
   {
-    s(4, paramLong);
+    AppMethodBeat.i(2293);
+    G(4, paramLong);
+    AppMethodBeat.o(2293);
   }
   
   public final void onTaskStarted(long paramLong, String paramString)
   {
-    s(1, paramLong);
+    AppMethodBeat.i(2290);
+    G(1, paramLong);
+    AppMethodBeat.o(2290);
   }
   
-  private static final class a
+  static final class a
     extends BroadcastReceiver
   {
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
-      if ((paramContext == null) || (paramIntent == null)) {}
-      do
+      AppMethodBeat.i(2285);
+      if ((paramContext == null) || (paramIntent == null))
       {
+        AppMethodBeat.o(2285);
         return;
-        paramContext = paramIntent.getAction();
-        y.i("MicroMsg.DownloadEventBus", paramContext);
-        if (bk.bl(paramContext))
-        {
-          y.e("MicroMsg.DownloadEventBus", "action is null or nill, ignore");
-          return;
-        }
-      } while ((!paramContext.equals("android.intent.action.PACKAGE_ADDED")) && (!paramContext.equals("android.intent.action.PACKAGE_REPLACED")));
+      }
+      paramContext = paramIntent.getAction();
+      ab.i("MicroMsg.DownloadEventBus", paramContext);
+      if (bo.isNullOrNil(paramContext))
+      {
+        ab.e("MicroMsg.DownloadEventBus", "action is null or nill, ignore");
+        AppMethodBeat.o(2285);
+        return;
+      }
+      if ((!paramContext.equals("android.intent.action.PACKAGE_ADDED")) && (!paramContext.equals("android.intent.action.PACKAGE_REPLACED")))
+      {
+        AppMethodBeat.o(2285);
+        return;
+      }
       paramContext = "";
       try
       {
@@ -146,42 +194,43 @@ public final class a
       {
         for (;;)
         {
-          y.e("MicroMsg.DownloadEventBus", "%s", new Object[] { bk.j(paramIntent) });
+          ab.e("MicroMsg.DownloadEventBus", "%s", new Object[] { bo.l(paramIntent) });
         }
         paramIntent = paramContext;
         if (!paramContext.startsWith("package:")) {
-          break label133;
+          break label164;
         }
         paramIntent = paramContext.substring(8);
-        if ((g.DK()) && (!com.tencent.mm.kernel.a.CW())) {
-          break label153;
+        if ((g.RG()) && (!com.tencent.mm.kernel.a.QP())) {
+          break label190;
         }
-        y.e("MicroMsg.DownloadEventBus", "no user login");
+        ab.e("MicroMsg.DownloadEventBus", "no user login");
+        AppMethodBeat.o(2285);
         return;
-        paramContext = c.FC();
+        paramContext = d.YG();
         if (paramContext != null) {
-          break label175;
+          break label211;
         }
       }
-      y.i("MicroMsg.DownloadEventBus", "get added package name : %s", new Object[] { paramContext });
-      if (bk.bl(paramContext))
+      ab.i("MicroMsg.DownloadEventBus", "get added package name : %s", new Object[] { paramContext });
+      if (bo.isNullOrNil(paramContext))
       {
-        y.e("MicroMsg.DownloadEventBus", "get installed broadcast, while the package name is null or nil");
+        ab.e("MicroMsg.DownloadEventBus", "get installed broadcast, while the package name is null or nil");
+        AppMethodBeat.o(2285);
         return;
       }
-      label133:
-      label153:
+      label164:
+      label190:
       paramContext = null;
-      label163:
-      label175:
+      label211:
       Cursor localCursor;
-      while (paramContext != null)
+      while (paramContext == null)
       {
-        a.db(paramContext.field_downloadId);
+        AppMethodBeat.o(2285);
         return;
-        if (bk.bl(paramIntent))
+        if (bo.isNullOrNil(paramIntent))
         {
-          y.e("MicroMsg.FileDownloadInfoStorage", "Null or nil PakcageName");
+          ab.e("MicroMsg.FileDownloadInfoStorage", "Null or nil PakcageName");
           paramContext = null;
         }
         else
@@ -194,10 +243,10 @@ public final class a
           else
           {
             if (!localCursor.moveToFirst()) {
-              break label272;
+              break label322;
             }
-            paramIntent = new com.tencent.mm.plugin.downloader.f.a();
-            paramIntent.d(localCursor);
+            paramIntent = new com.tencent.mm.plugin.downloader.g.a();
+            paramIntent.convertFrom(localCursor);
           }
         }
       }
@@ -205,13 +254,15 @@ public final class a
       {
         paramContext = paramIntent;
         if (localCursor == null) {
-          break label163;
+          break;
         }
         localCursor.close();
         paramContext = paramIntent;
-        break label163;
         break;
-        label272:
+        a.iw(paramContext.field_downloadId);
+        AppMethodBeat.o(2285);
+        return;
+        label322:
         paramIntent = null;
       }
     }

@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Intent;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.pluginsdk.ui.d.o;
 
 final class SnsStrangerCommentDetailUI$a$2
@@ -16,9 +17,11 @@ final class SnsStrangerCommentDetailUI$a$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(39323);
     Intent localIntent = new Intent();
     localIntent.putExtra("Contact_User", paramView.getTag().toString());
-    a.eUR.d(localIntent, SnsStrangerCommentDetailUI.a.a(this.pdL));
+    a.gmO.c(localIntent, SnsStrangerCommentDetailUI.a.a(this.rWy));
+    AppMethodBeat.o(39323);
   }
 }
 

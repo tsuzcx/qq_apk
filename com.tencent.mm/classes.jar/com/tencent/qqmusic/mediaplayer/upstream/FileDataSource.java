@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.AudioFormat.AudioType;
 import com.tencent.qqmusic.mediaplayer.AudioRecognition;
 import com.tencent.qqmusic.mediaplayer.util.StreamUtils;
@@ -24,7 +25,10 @@ public class FileDataSource
   
   public void close()
   {
-    if (!this.opened) {
+    AppMethodBeat.i(128359);
+    if (!this.opened)
+    {
+      AppMethodBeat.o(128359);
       return;
     }
     if (this.fileInputStream != null) {
@@ -34,21 +38,36 @@ public class FileDataSource
       this.readingStream.close();
     }
     this.opened = false;
+    AppMethodBeat.o(128359);
   }
   
   public AudioFormat.AudioType getAudioType()
   {
-    return AudioRecognition.recognitionAudioFormatExactly(this.filePath);
+    AppMethodBeat.i(128358);
+    AudioFormat.AudioType localAudioType = AudioRecognition.recognitionAudioFormatExactly(this.filePath);
+    AppMethodBeat.o(128358);
+    return localAudioType;
+  }
+  
+  public String getFilePath()
+  {
+    return this.filePath;
   }
   
   public long getSize()
   {
-    return this.file.length();
+    AppMethodBeat.i(128357);
+    long l = this.file.length();
+    AppMethodBeat.o(128357);
+    return l;
   }
   
   public void open()
   {
-    if (this.opened) {
+    AppMethodBeat.i(128355);
+    if (this.opened)
+    {
+      AppMethodBeat.o(128355);
       return;
     }
     this.opened = true;
@@ -56,42 +75,42 @@ public class FileDataSource
     this.fileInputStream = new FileInputStream(this.filePath);
     this.readingStream = new BufferedInputStream(this.fileInputStream);
     this.currentPosition = 0L;
+    AppMethodBeat.o(128355);
   }
   
   public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    long l;
-    if (this.currentPosition != paramLong) {
+    AppMethodBeat.i(128356);
+    if (this.currentPosition != paramLong)
+    {
       if (this.currentPosition > paramLong)
       {
         this.readingStream.close();
         this.fileInputStream.close();
         this.fileInputStream = new FileInputStream(this.filePath);
         this.readingStream = new BufferedInputStream(this.fileInputStream);
-        l = StreamUtils.skipForBufferStream(this.readingStream, paramLong);
-        if (l == paramLong) {
-          break label108;
-        }
-        paramInt1 = -1;
       }
-    }
-    label108:
-    do
-    {
-      return paramInt1;
-      l = this.currentPosition + StreamUtils.skipForBufferStream(this.readingStream, paramLong - this.currentPosition);
-      break;
+      for (long l = StreamUtils.skipForBufferStream(this.readingStream, paramLong); l != paramLong; l = this.currentPosition + StreamUtils.skipForBufferStream(this.readingStream, paramLong - this.currentPosition))
+      {
+        AppMethodBeat.o(128356);
+        return -1;
+      }
       this.currentPosition = paramLong;
-      paramInt2 = this.readingStream.read(paramArrayOfByte, paramInt1, paramInt2);
-      paramInt1 = paramInt2;
-    } while (paramInt2 < 0);
-    this.currentPosition += paramInt2;
-    return paramInt2;
+    }
+    paramInt1 = this.readingStream.read(paramArrayOfByte, paramInt1, paramInt2);
+    if (paramInt1 >= 0) {
+      this.currentPosition += paramInt1;
+    }
+    AppMethodBeat.o(128356);
+    return paramInt1;
   }
   
   public String toString()
   {
-    return "(fd)" + this.filePath;
+    AppMethodBeat.i(128360);
+    String str = "(fd)" + this.filePath;
+    AppMethodBeat.o(128360);
+    return str;
   }
 }
 

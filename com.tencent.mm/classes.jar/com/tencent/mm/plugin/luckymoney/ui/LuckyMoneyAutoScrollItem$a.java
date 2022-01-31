@@ -6,8 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyAutoScrollItem$a
   extends BaseAdapter
@@ -21,6 +20,8 @@ final class LuckyMoneyAutoScrollItem$a
   
   public final Object getItem(int paramInt)
   {
+    AppMethodBeat.i(42562);
+    AppMethodBeat.o(42562);
     return Integer.valueOf(paramInt % 10);
   }
   
@@ -31,18 +32,20 @@ final class LuckyMoneyAutoScrollItem$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(42563);
     View localView;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      localView = LayoutInflater.from(LuckyMoneyAutoScrollItem.c(this.lTX)).inflate(a.g.lucky_money_auto_scroll_item, null);
+      localView = LayoutInflater.from(LuckyMoneyAutoScrollItem.c(this.ore)).inflate(2130970014, null);
       paramView = new LuckyMoneyAutoScrollItem.a.a(this);
-      paramView.lTZ = ((ImageView)localView.findViewById(a.f.text_number));
+      paramView.org = ((ImageView)localView.findViewById(2131825544));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      paramViewGroup.lTZ.setImageResource(((Integer)LuckyMoneyAutoScrollItem.lTV.get(paramInt % 10)).intValue());
+      paramViewGroup.org.setImageResource(((Integer)LuckyMoneyAutoScrollItem.orc.get(paramInt % 10)).intValue());
+      AppMethodBeat.o(42563);
       return localView;
       paramViewGroup = (LuckyMoneyAutoScrollItem.a.a)paramView.getTag();
       localView = paramView;

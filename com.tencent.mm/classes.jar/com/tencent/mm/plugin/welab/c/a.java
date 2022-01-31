@@ -1,81 +1,66 @@
 package com.tencent.mm.plugin.welab.c;
 
-import android.database.Cursor;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.websearch.api.aa;
+import com.tencent.mm.plugin.websearch.api.ac;
+import com.tencent.mm.plugin.websearch.api.m;
+import com.tencent.mm.plugin.welab.a.a.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONObject;
 
 public final class a
-  extends i<com.tencent.mm.plugin.welab.c.a.a>
+  implements b
 {
-  private e dXw;
-  
-  public a(e parame)
+  public final String dhr()
   {
-    super(parame, com.tencent.mm.plugin.welab.c.a.a.buS, "LabAppInfo", null);
-    this.dXw = parame;
+    AppMethodBeat.i(26577);
+    String str = ac.agv("discoverRecommendEntry").optString("labIcon");
+    AppMethodBeat.o(26577);
+    return str;
   }
   
-  private boolean d(com.tencent.mm.plugin.welab.c.a.a parama)
+  public final String dhs()
   {
-    com.tencent.mm.plugin.welab.c.a.a locala = new com.tencent.mm.plugin.welab.c.a.a();
-    locala.field_LabsAppId = parama.field_LabsAppId;
-    b(locala, new String[0]);
-    if (parama.field_sequence <= locala.field_sequence)
+    AppMethodBeat.i(26578);
+    String str = ac.agv("discoverRecommendEntry").optString("wording");
+    if (bo.isNullOrNil(str))
     {
-      y.i("LabAppInfoStorage", "sequence old origin.seq " + locala.field_sequence + " old.seq " + parama.field_sequence);
-      return false;
+      str = ah.getContext().getString(2131299915);
+      AppMethodBeat.o(26578);
+      return str;
     }
-    return super.a(parama);
+    AppMethodBeat.o(26578);
+    return str;
   }
   
-  public final void c(com.tencent.mm.plugin.welab.c.a.a parama)
+  public final void h(Activity paramActivity, String paramString)
   {
-    if (!d(parama)) {
-      b(parama);
-    }
-  }
-  
-  public final List<com.tencent.mm.plugin.welab.c.a.a> chl()
-  {
-    Cursor localCursor = aAn();
-    ArrayList localArrayList = new ArrayList();
-    while (localCursor.moveToNext())
+    AppMethodBeat.i(26576);
+    if (!aa.Je(0))
     {
-      com.tencent.mm.plugin.welab.c.a.a locala = new com.tencent.mm.plugin.welab.c.a.a();
-      locala.d(localCursor);
-      localArrayList.add(locala);
-    }
-    localCursor.close();
-    return localArrayList;
-  }
-  
-  public final void de(List<com.tencent.mm.plugin.welab.c.a.a> paramList)
-  {
-    h localh = null;
-    if ((this.dXw instanceof h)) {
-      localh = (h)this.dXw;
-    }
-    for (long l = localh.eV(-1L);; l = 0L)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        c((com.tencent.mm.plugin.welab.c.a.a)paramList.next());
-      }
-      if (localh != null) {
-        localh.hI(l);
-      }
+      ab.e("MicroMsg.FTS.LookOneLookOpener", "fts h5 template not avail");
+      AppMethodBeat.o(26576);
       return;
     }
+    paramString = ac.agv("discoverRecommendEntry").optString("wording");
+    if (bo.isNullOrNil(paramString))
+    {
+      ab.e("MicroMsg.FTS.LookOneLookOpener", "empty query");
+      AppMethodBeat.o(26576);
+      return;
+    }
+    ((m)g.E(m.class)).a(ah.getContext(), new a.1(this, paramString, paramActivity));
+    AppMethodBeat.o(26576);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.c.a
  * JD-Core Version:    0.7.0.1
  */

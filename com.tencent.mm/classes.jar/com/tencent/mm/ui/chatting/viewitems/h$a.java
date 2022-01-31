@@ -5,31 +5,33 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMTextView;
 
 final class h$a
   extends c.a
 {
-  View eML;
-  ImageView vBN;
-  MMTextView vCB;
+  View gcq;
+  ImageView zSm;
+  MMTextView zTF;
   
-  public final c.a s(View paramView, boolean paramBoolean)
+  public final c.a A(View paramView, boolean paramBoolean)
   {
-    super.dN(paramView);
-    this.dsz = ((TextView)paramView.findViewById(R.h.chatting_time_tv));
-    this.nSa = ((TextView)paramView.findViewById(R.h.chatting_user_tv));
-    this.vCB = ((MMTextView)paramView.findViewById(R.h.chatting_content_itv));
-    this.khV = ((CheckBox)paramView.findViewById(R.h.chatting_checkbox));
-    this.hoY = paramView.findViewById(R.h.chatting_maskview);
-    this.eML = paramView.findViewById(R.h.chatting_content_area);
+    AppMethodBeat.i(32902);
+    super.eV(paramView);
+    this.ekh = ((TextView)paramView.findViewById(2131820587));
+    this.qFY = ((TextView)paramView.findViewById(2131821122));
+    this.zTF = ((MMTextView)paramView.findViewById(2131821123));
+    this.mCC = ((CheckBox)paramView.findViewById(2131820579));
+    this.jbK = paramView.findViewById(2131820586);
+    this.gcq = paramView.findViewById(2131820580);
     if (!paramBoolean)
     {
-      this.vBN = ((ImageView)paramView.findViewById(R.h.chatting_status_tick));
-      this.vBa = ((ImageView)paramView.findViewById(R.h.chatting_state_iv));
-      this.nhQ = ((ProgressBar)paramView.findViewById(R.h.uploading_pb));
+      this.zSm = ((ImageView)paramView.findViewById(2131822729));
+      this.zRC = ((ImageView)paramView.findViewById(2131822695));
+      this.pNd = ((ProgressBar)paramView.findViewById(2131822728));
     }
+    AppMethodBeat.o(32902);
     return this;
   }
 }

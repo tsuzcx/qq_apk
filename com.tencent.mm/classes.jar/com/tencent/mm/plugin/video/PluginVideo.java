@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.p;
+import com.tencent.mm.model.q;
 import com.tencent.mm.modelcontrol.d;
 import com.tencent.mm.modelvideo.n;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.plugin.video.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class PluginVideo
   extends f
@@ -15,13 +16,15 @@ public class PluginVideo
 {
   public void execute(g paramg)
   {
-    y.i("MicroMsg.PluginVideo", "plugin video execute");
-    if (paramg.Ex())
+    AppMethodBeat.i(50969);
+    ab.i("MicroMsg.PluginVideo", "plugin video execute");
+    if (paramg.SD())
     {
-      pin(new p(o.class));
-      pin(new p(d.class));
-      pin(new p(n.class));
+      pin(new q(o.class));
+      pin(new q(d.class));
+      pin(new q(n.class));
     }
+    AppMethodBeat.o(50969);
   }
   
   public String name()

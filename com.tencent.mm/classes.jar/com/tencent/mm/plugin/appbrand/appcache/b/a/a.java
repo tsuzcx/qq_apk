@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.a;
 
-import com.tencent.mm.plugin.appbrand.appcache.b.d.c;
+import com.tencent.mm.plugin.appbrand.appcache.b.e.c;
 
 public final class a
   implements com.tencent.mm.vending.c.a<Boolean, c>

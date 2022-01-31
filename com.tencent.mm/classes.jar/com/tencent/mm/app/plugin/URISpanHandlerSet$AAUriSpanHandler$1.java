@@ -2,7 +2,8 @@ package com.tencent.mm.app.plugin;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.h.a.bq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.bs;
 import com.tencent.mm.sdk.b.a;
 
 final class URISpanHandlerSet$AAUriSpanHandler$1
@@ -12,11 +13,13 @@ final class URISpanHandlerSet$AAUriSpanHandler$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new bq();
-    paramDialogInterface.bHO.bHP = this.byl;
-    paramDialogInterface.bHO.bHQ = this.bym;
-    paramDialogInterface.bHO.bHR = this.byn;
-    a.udP.m(paramDialogInterface);
+    AppMethodBeat.i(15628);
+    paramDialogInterface = new bs();
+    paramDialogInterface.cpd.cpe = this.can;
+    paramDialogInterface.cpd.cpf = this.cao;
+    paramDialogInterface.cpd.cpg = this.cap;
+    a.ymk.l(paramDialogInterface);
+    AppMethodBeat.o(15628);
   }
 }
 

@@ -13,27 +13,25 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.ai.m.a;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.aj.m.a;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.b.d;
-import com.tencent.mm.plugin.brandservice.b.e;
-import com.tencent.mm.plugin.brandservice.b.h;
 import com.tencent.mm.plugin.brandservice.b.c;
-import com.tencent.mm.protocal.c.jt;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.ui.d.j;
+import com.tencent.mm.protocal.protobuf.me;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.sortview.BaseSortView;
 import com.tencent.mm.ui.base.sortview.BaseSortView.a;
-import com.tencent.mm.ui.widget.b.a;
+import com.tencent.mm.ui.widget.c.a;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -41,272 +39,299 @@ public class BrandServiceSortView
   extends BaseSortView
   implements View.OnCreateContextMenuListener, AdapterView.OnItemLongClickListener, com.tencent.mm.plugin.brandservice.b.c.a, BaseSortView.a
 {
-  private boolean Zc;
-  private String hcm;
-  private boolean idi;
-  private int idy = 0;
-  private int idz = 0;
-  private HashMap<String, SpannableString> iem = new HashMap();
-  private c ien = new c();
-  private int ieo = 251658241;
-  private a iep;
-  private boolean ieq = false;
-  private ListView ier;
-  private BrandServiceSortView.a ies;
-  private String iet;
-  private View ieu;
-  private TextView iev;
-  private n.d iew = new BrandServiceSortView.3(this);
+  private boolean ZN;
+  private String ikj;
+  private boolean jTW;
+  private int jUm;
+  private int jUn;
+  private HashMap<String, SpannableString> jVa;
+  private c jVb;
+  private int jVc;
+  private a jVd;
+  private boolean jVe;
+  private ListView jVf;
+  private BrandServiceSortView.a jVg;
+  private String jVh;
+  private View jVi;
+  private TextView jVj;
+  private n.d jVk;
   
   public BrandServiceSortView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(14062);
+    this.jVa = new HashMap();
+    this.jVb = new c();
+    this.jVc = 251658241;
+    this.jUm = 0;
+    this.jUn = 0;
+    this.jVk = new BrandServiceSortView.3(this);
+    this.jVe = false;
     setShowFooterView(false);
     refresh();
-    paramContext = this.ien;
-    if ((this != null) && (!paramContext.ibV.contains(this)))
+    paramContext = this.jVb;
+    if (!paramContext.jSL.contains(this))
     {
-      y.i("MicroMsg.BrandService.BrandServiceMgr", "addListener:add");
-      paramContext.ibV.add(this);
+      ab.i("MicroMsg.BrandService.BrandServiceMgr", "addListener:add");
+      paramContext.jSL.add(this);
     }
-    this.iep = new a(getContext());
+    this.jVd = new a(getContext());
     setDataSetObserver(this);
     setOnItemClickListener(new BrandServiceSortView.1(this));
     setOnItemLongClickListener(this);
+    AppMethodBeat.o(14062);
+  }
+  
+  private static List<com.tencent.mm.ui.base.sortview.d> aR(List<me> paramList)
+  {
+    AppMethodBeat.i(14064);
+    if (paramList != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      if (i < paramList.size())
+      {
+        me localme = (me)paramList.get(i);
+        com.tencent.mm.ui.base.sortview.d locald;
+        int j;
+        if ((localme != null) && (localme.contact != null))
+        {
+          locald = new com.tencent.mm.ui.base.sortview.d();
+          locald.data = localme;
+          int k = localme.contact.field_showHead;
+          j = k;
+          if (k >= 97)
+          {
+            j = k;
+            if (k <= 122) {
+              j = k - 32;
+            }
+          }
+          if ((j < 65) || (j > 90)) {
+            break label151;
+          }
+        }
+        label151:
+        for (locald.zsM = ((char)j);; locald.zsM = "#")
+        {
+          localArrayList.add(locald);
+          i += 1;
+          break;
+        }
+      }
+      AppMethodBeat.o(14064);
+      return localArrayList;
+    }
+    AppMethodBeat.o(14064);
+    return null;
   }
   
   public final boolean a(String paramString, com.tencent.mm.ui.base.sortview.d paramd)
   {
-    if ((!bk.bl(paramString)) && (paramd != null))
+    AppMethodBeat.i(14066);
+    if ((!bo.isNullOrNil(paramString)) && (paramd != null))
     {
-      this.iet = paramString;
-      paramd = (jt)paramd.data;
-      if ((paramd == null) || (paramd.dnp == null))
+      this.jVh = paramString;
+      paramd = (me)paramd.data;
+      if ((paramd == null) || (paramd.contact == null))
       {
-        y.w("MicroMsg.BrandServiceSortView", "BrandServiceItem or contact is null.");
+        ab.w("MicroMsg.BrandServiceSortView", "BrandServiceItem or contact is null.");
+        AppMethodBeat.o(14066);
         return false;
       }
-      Object localObject = paramd.dnp;
-      paramd = ((ad)localObject).Bq();
-      String str = ((ad)localObject).vn();
-      localObject = ((ad)localObject).vo();
+      Object localObject = paramd.contact;
+      paramd = ((ad)localObject).Of();
+      String str = ((ad)localObject).Ht();
+      localObject = ((ad)localObject).Hu();
       paramString = paramString.toUpperCase();
-      if (((!bk.bl(paramd)) && (paramd.toUpperCase().indexOf(paramString) != -1)) || ((!bk.bl(str)) && (str.toUpperCase().indexOf(paramString) != -1)) || ((!bk.bl((String)localObject)) && (((String)localObject).toUpperCase().startsWith(paramString)))) {
+      if (((!bo.isNullOrNil(paramd)) && (paramd.toUpperCase().indexOf(paramString) != -1)) || ((!bo.isNullOrNil(str)) && (str.toUpperCase().indexOf(paramString) != -1)) || ((!bo.isNullOrNil((String)localObject)) && (((String)localObject).toUpperCase().startsWith(paramString))))
+      {
+        AppMethodBeat.o(14066);
         return true;
       }
     }
+    AppMethodBeat.o(14066);
     return false;
   }
   
-  public final void aH(List<com.tencent.mm.ui.base.sortview.d> paramList)
+  public final void aS(List<com.tencent.mm.ui.base.sortview.d> paramList)
   {
-    if ((this.iev != null) && (paramList != null)) {
-      this.iev.setText(getContext().getString(b.h.brandservice_count, new Object[] { Integer.valueOf(paramList.size()) }));
+    AppMethodBeat.i(14076);
+    if ((this.jVj != null) && (paramList != null)) {
+      this.jVj.setText(getContext().getString(2131297810, new Object[] { Integer.valueOf(paramList.size()) }));
     }
-  }
-  
-  public final void axs()
-  {
-    refresh();
+    AppMethodBeat.o(14076);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(14073);
     if (paramMotionEvent.getAction() == 0)
     {
-      this.idy = ((int)paramMotionEvent.getRawX());
-      this.idz = ((int)paramMotionEvent.getRawY());
+      this.jUm = ((int)paramMotionEvent.getRawX());
+      this.jUn = ((int)paramMotionEvent.getRawY());
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(14073);
+    return bool;
   }
   
   public BrandServiceSortView.a getITransferToChildOnTouchListener()
   {
-    return this.ies;
+    return this.jVg;
   }
   
   public com.tencent.mm.ui.base.sortview.c.a getItemViewCreator()
   {
-    return new BrandServiceSortView.2(this);
+    AppMethodBeat.i(14071);
+    BrandServiceSortView.2 local2 = new BrandServiceSortView.2(this);
+    AppMethodBeat.o(14071);
+    return local2;
   }
   
   public ListView getListView()
   {
-    this.ier = ((ListView)findViewById(b.d.listview));
-    if (this.ieu == null)
+    AppMethodBeat.i(14069);
+    this.jVf = ((ListView)findViewById(2131821736));
+    if (this.jVi == null)
     {
-      this.ieu = inflate(getContext(), b.e.count_view, null);
-      if ((this.ier != null) && (this.ieu != null))
+      this.jVi = inflate(getContext(), 2130969279, null);
+      if ((this.jVf != null) && (this.jVi != null))
       {
-        this.iev = ((TextView)this.ieu.findViewById(b.d.count_tv));
-        this.ier.addFooterView(this.ieu, null, false);
+        this.jVj = ((TextView)this.jVi.findViewById(2131823263));
+        this.jVf.addFooterView(this.jVi, null, false);
       }
     }
-    return this.ier;
+    ListView localListView = this.jVf;
+    AppMethodBeat.o(14069);
+    return localListView;
   }
   
   public View getNoResultView()
   {
-    return findViewById(b.d.no_result);
+    AppMethodBeat.i(14070);
+    View localView = findViewById(2131821961);
+    AppMethodBeat.o(14070);
+    return localView;
   }
   
   public VerticalScrollBar getScrollBar()
   {
-    return (VerticalScrollBar)findViewById(b.d.sidrbar);
+    AppMethodBeat.i(14068);
+    VerticalScrollBar localVerticalScrollBar = (VerticalScrollBar)findViewById(2131821737);
+    AppMethodBeat.o(14068);
+    return localVerticalScrollBar;
   }
   
   public final View inflate()
   {
-    return View.inflate(getContext(), b.e.brand_service_sortview, this);
+    AppMethodBeat.i(14067);
+    View localView = View.inflate(getContext(), 2130968902, this);
+    AppMethodBeat.o(14067);
+    return localView;
+  }
+  
+  public final void onChange()
+  {
+    AppMethodBeat.i(14072);
+    refresh();
+    AppMethodBeat.o(14072);
   }
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    if (paramContextMenuInfo == null) {
-      y.i("MicroMsg.BrandServiceSortView", "menuInfo is null.");
-    }
-    do
+    AppMethodBeat.i(14075);
+    if (paramContextMenuInfo == null)
     {
+      ab.i("MicroMsg.BrandServiceSortView", "menuInfo is null.");
+      AppMethodBeat.o(14075);
       return;
-      y.i("MicroMsg.BrandServiceSortView", "onCreateContextMenu");
-      paramContextMenuInfo = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-      paramView = (com.tencent.mm.ui.base.sortview.d)((AdapterView)paramView).getItemAtPosition(paramContextMenuInfo.position);
-      if ((paramView == null) || (paramView.data == null))
-      {
-        y.i("MicroMsg.BrandServiceSortView", "SortEntity(%s) is null or its data is null.", new Object[] { paramView });
-        return;
-      }
-      paramView = ((jt)paramView.data).dnp;
-      if (paramView == null)
-      {
-        y.e("MicroMsg.BrandServiceSortView", "onCreateContextMenu, contact is null");
-        return;
-      }
-      this.hcm = paramView.field_username;
-      String str = paramView.Bq();
-      paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.d.j.b(getContext(), str));
-      paramView = com.tencent.mm.ai.f.kX(paramView.field_username);
-    } while ((paramView == null) || (paramView.Lx()));
-    paramContextMenu.add(paramContextMenuInfo.position, 0, 0, b.h.main_conversation_longclick_delete_biz_service);
+    }
+    ab.i("MicroMsg.BrandServiceSortView", "onCreateContextMenu");
+    paramContextMenuInfo = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
+    paramView = (com.tencent.mm.ui.base.sortview.d)((AdapterView)paramView).getItemAtPosition(paramContextMenuInfo.position);
+    if ((paramView == null) || (paramView.data == null))
+    {
+      ab.i("MicroMsg.BrandServiceSortView", "SortEntity(%s) is null or its data is null.", new Object[] { paramView });
+      AppMethodBeat.o(14075);
+      return;
+    }
+    paramView = ((me)paramView.data).contact;
+    if (paramView == null)
+    {
+      ab.e("MicroMsg.BrandServiceSortView", "onCreateContextMenu, contact is null");
+      AppMethodBeat.o(14075);
+      return;
+    }
+    this.ikj = paramView.field_username;
+    String str = paramView.Of();
+    paramContextMenu.setHeaderTitle(j.b(getContext(), str));
+    paramView = f.rS(paramView.field_username);
+    if ((paramView != null) && (!paramView.aef())) {
+      paramContextMenu.add(paramContextMenuInfo.position, 0, 0, 2131301402);
+    }
+    AppMethodBeat.o(14075);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.ies != null) {
-      this.ies.axC();
+    AppMethodBeat.i(14078);
+    if (this.jVg != null) {
+      this.jVg.aWA();
     }
-    return super.onInterceptTouchEvent(paramMotionEvent);
+    if (super.onInterceptTouchEvent(paramMotionEvent))
+    {
+      AppMethodBeat.o(14078);
+      return true;
+    }
+    AppMethodBeat.o(14078);
+    return false;
   }
   
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.iep.wof = paramView;
-    this.iep.a(paramAdapterView, paramInt, paramLong, this, this.iew, this.idy, this.idz);
+    AppMethodBeat.i(14074);
+    this.jVd.AIF = paramView;
+    this.jVd.a(paramAdapterView, paramInt, paramLong, this, this.jVk, this.jUm, this.jUn);
+    AppMethodBeat.o(14074);
     return true;
   }
   
   public final void refresh()
   {
-    this.ien.init();
-    Object localObject = this.ien;
-    ArrayList localArrayList;
-    int i;
-    label59:
-    com.tencent.mm.ui.base.sortview.d locald;
-    int j;
-    switch (this.ieo)
-    {
-    default: 
-      localObject = ((c)localObject).ibY;
-      if (localObject == null) {
-        break label227;
-      }
-      localArrayList = new ArrayList();
-      i = 0;
-      if (i >= ((List)localObject).size()) {
-        break label212;
-      }
-      jt localjt = (jt)((List)localObject).get(i);
-      if ((localjt != null) && (localjt.dnp != null))
-      {
-        locald = new com.tencent.mm.ui.base.sortview.d();
-        locald.data = localjt;
-        int k = localjt.dnp.field_showHead;
-        j = k;
-        if (k >= 97)
-        {
-          j = k;
-          if (k <= 122) {
-            j = k - 32;
-          }
-        }
-        if ((j < 65) || (j > 90)) {
-          break label201;
-        }
-      }
-      break;
-    }
-    label201:
-    for (locald.vem = ((char)j);; locald.vem = "#")
-    {
-      localArrayList.add(locald);
-      i += 1;
-      break label59;
-      localObject = ((c)localObject).ibX;
-      break;
-    }
-    label212:
-    label227:
-    for (localObject = localArrayList;; localObject = null)
-    {
-      dM((List)localObject);
-      super.refresh();
-      return;
-    }
+    AppMethodBeat.i(14063);
+    this.jVb.init();
+    dI(aR(this.jVb.rW(this.jVc)));
+    super.refresh();
+    AppMethodBeat.o(14063);
   }
   
   public final void release()
   {
-    if (g.DK()) {
-      z.MI().Ms();
+    AppMethodBeat.i(14065);
+    if (g.RG()) {
+      z.afs().afc();
     }
-    Object localObject1 = this.ien;
-    if (this == null)
-    {
-      y.w("MicroMsg.BrandService.BrandServiceMgr", "removeListener:onChange is null");
-      ((c)localObject1).ibV.remove(null);
-    }
-    Object localObject2 = this.ien;
-    g.Dk().b(387, (com.tencent.mm.ah.f)localObject2);
-    if (((c)localObject2).ibW)
-    {
-      localObject1 = new ArrayList(((c)localObject2).ibX.size() + ((c)localObject2).ibY.size());
-      Iterator localIterator = ((c)localObject2).ibX.iterator();
-      while (localIterator.hasNext()) {
-        ((List)localObject1).add((jt)localIterator.next());
-      }
-      localObject2 = ((c)localObject2).ibY.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((List)localObject1).add((jt)((Iterator)localObject2).next());
-      }
-      g.Dk().a(new com.tencent.mm.plugin.brandservice.b.j((List)localObject1), 0);
-    }
+    this.jVb.release();
+    AppMethodBeat.o(14065);
   }
   
   public void setITransferToChildOnTouchListener(BrandServiceSortView.a parama)
   {
-    this.ies = parama;
+    this.jVg = parama;
   }
   
   public void setReturnResult(boolean paramBoolean)
   {
-    this.idi = paramBoolean;
+    this.jTW = paramBoolean;
   }
   
   public void setShowFooterView(boolean paramBoolean)
   {
-    this.Zc = paramBoolean;
-    q(this.iev, paramBoolean);
+    AppMethodBeat.i(14077);
+    this.ZN = paramBoolean;
+    y(this.jVj, paramBoolean);
+    AppMethodBeat.o(14077);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wallet_payu.security_question.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView.a;
 
 final class WalletPayUSecurityQuestionSettingUI$4
@@ -7,9 +8,11 @@ final class WalletPayUSecurityQuestionSettingUI$4
 {
   WalletPayUSecurityQuestionSettingUI$4(WalletPayUSecurityQuestionSettingUI paramWalletPayUSecurityQuestionSettingUI) {}
   
-  public final void gG(boolean paramBoolean)
+  public final void onInputValidChange(boolean paramBoolean)
   {
-    WalletPayUSecurityQuestionSettingUI.a.a(WalletPayUSecurityQuestionSettingUI.d(this.qOX));
+    AppMethodBeat.i(48585);
+    WalletPayUSecurityQuestionSettingUI.a.a(WalletPayUSecurityQuestionSettingUI.d(this.uEe));
+    AppMethodBeat.o(48585);
   }
 }
 

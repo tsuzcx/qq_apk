@@ -1,5 +1,7 @@
 package com.google.android.exoplayer2.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class e$a$6
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class e$a$6
   
   public final void run()
   {
-    this.awb.avZ.cC(this.awk);
+    AppMethodBeat.i(94657);
+    this.ayr.ayp.cX(this.ayA);
+    AppMethodBeat.o(94657);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.exoplayer2.a.e.a.6
  * JD-Core Version:    0.7.0.1
  */

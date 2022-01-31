@@ -6,53 +6,63 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
-import com.tencent.mm.ac.a.k;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.d;
 import com.tencent.mm.ui.base.h;
 
 final class a$2
   extends AsyncTask<Integer, Integer, Integer>
 {
+  private ProgressDialog Aqr;
+  private boolean Aqs;
   private String filePath;
   private Uri uri;
-  private ProgressDialog vYf;
-  private boolean vYg;
   
   a$2(Intent paramIntent1, Activity paramActivity, String paramString, a.a parama, Intent paramIntent2, int paramInt) {}
   
-  private Integer cIQ()
+  private Integer dNE()
   {
+    AppMethodBeat.i(107593);
     try
     {
-      if (this.uri == null) {
+      Object localObject = this.uri;
+      if (localObject == null)
+      {
+        AppMethodBeat.o(107593);
         return null;
       }
-      Bitmap localBitmap = c.l(this.uri);
-      this.filePath = a.t(this.vYi, localBitmap);
-      return null;
+      localObject = d.n(this.uri);
+      this.filePath = a.v(this.Aqu, (Bitmap)localObject);
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.AsyncObtainImage", localException, "doInBackground", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.AsyncObtainImage", localException, "doInBackground", new Object[0]);
+      }
     }
+    AppMethodBeat.o(107593);
     return null;
   }
   
   protected final void onPreExecute()
   {
+    AppMethodBeat.i(107592);
     try
     {
-      this.uri = this.hSF.getData();
-      this.vYg = false;
-      Activity localActivity = this.vYl;
-      this.vYl.getString(a.k.app_tip);
-      this.vYf = h.b(localActivity, this.vYl.getString(a.k.app_getting_img), true, new a.2.1(this));
+      this.uri = this.val$data.getData();
+      this.Aqs = false;
+      Activity localActivity = this.Aqx;
+      this.Aqx.getString(2131297087);
+      this.Aqr = h.b(localActivity, this.Aqx.getString(2131296972), true, new a.2.1(this));
+      AppMethodBeat.o(107592);
       return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.AsyncObtainImage", localException, "onPreExecute", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.AsyncObtainImage", localException, "onPreExecute", new Object[0]);
+      AppMethodBeat.o(107592);
     }
   }
 }

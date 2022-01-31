@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.ipcall.a;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.plugin.ipcall.a.g.l;
 
 final class i$8
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return l.dXp;
+    return l.SQL_CREATE;
   }
 }
 

@@ -1,44 +1,47 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.os.Message;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
-import com.tencent.mm.protocal.c.bev;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
+import com.tencent.mm.protocal.protobuf.bmq;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.p;
 
 final class n$2
-  extends ah
+  extends ak
 {
   n$2(boolean paramBoolean) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    int i = q.Gu();
-    if (this.hZO)
+    AppMethodBeat.i(23602);
+    int i = r.Zy();
+    if (this.ldm)
     {
       i &= 0xFDFFFFFF;
-      au.Hx();
-      c.Dz().o(34, Integer.valueOf(i));
-      paramMessage = new bev();
-      paramMessage.stP = 33554432;
-      if (!this.hZO) {
-        break label107;
+      aw.aaz();
+      c.Ru().set(34, Integer.valueOf(i));
+      paramMessage = new bmq();
+      paramMessage.wmt = 33554432;
+      if (!this.ldm) {
+        break label119;
       }
     }
-    label107:
+    label119:
     for (i = 0;; i = 1)
     {
-      paramMessage.tzI = i;
-      au.Hx();
-      c.Fv().b(new i.a(39, paramMessage));
-      if (this.hZP != null) {
-        this.hZP.a(null, null);
+      paramMessage.xBb = i;
+      aw.aaz();
+      c.Yz().c(new j.a(39, paramMessage));
+      if (this.oBt != null) {
+        this.oBt.a(null, null);
       }
+      AppMethodBeat.o(23602);
       return;
       i |= 0x2000000;
       break;
@@ -47,7 +50,7 @@ final class n$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.n.2
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.fts;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSSOSHomeWebViewUI$8
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class FTSSOSHomeWebViewUI$8
   
   public final void onClick(View paramView)
   {
-    FTSSOSHomeWebViewUI.B(this.ruD);
+    AppMethodBeat.i(153291);
+    FTSSOSHomeWebViewUI.x(this.vkS);
+    AppMethodBeat.o(153291);
   }
 }
 

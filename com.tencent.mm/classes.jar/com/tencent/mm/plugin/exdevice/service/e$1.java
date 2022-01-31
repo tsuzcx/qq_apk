@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.exdevice.service;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.model.c;
 
 final class e$1
@@ -9,9 +10,11 @@ final class e$1
   
   public final void run()
   {
-    if (u.aMn().jtr != null) {
-      u.aMn().jtr.a(this.jtI, this.jtJ, this.jza);
+    AppMethodBeat.i(19577);
+    if (u.bqA().lCQ != null) {
+      u.bqA().lCQ.a(this.lDg, this.lDh, this.lIz);
     }
+    AppMethodBeat.o(19577);
   }
 }
 

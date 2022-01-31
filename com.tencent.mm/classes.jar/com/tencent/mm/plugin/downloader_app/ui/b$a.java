@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.downloader_app.ui;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b$a
   extends RecyclerView.v
@@ -12,7 +13,9 @@ public final class b$a
   public b$a(View paramView)
   {
     super(paramView);
+    AppMethodBeat.i(136284);
     this.contentView = ((ViewGroup)paramView).getChildAt(0);
+    AppMethodBeat.o(136284);
   }
 }
 

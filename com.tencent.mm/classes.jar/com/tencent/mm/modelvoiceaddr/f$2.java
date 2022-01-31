@@ -1,55 +1,63 @@
 package com.tencent.mm.modelvoiceaddr;
 
 import android.os.Message;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class f$2
-  extends ah
+  extends ak
 {
   f$2(f paramf) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 2) {
-      if (this.eLS.eLO != null) {
-        this.eLS.eLO.Ty();
+    AppMethodBeat.i(116694);
+    if (paramMessage.what == 2)
+    {
+      if (this.gbz.gbv != null)
+      {
+        this.gbz.gbv.amK();
+        AppMethodBeat.o(116694);
       }
     }
-    label143:
-    label169:
-    do
+    else
     {
-      return;
       if (paramMessage.what == 0)
       {
-        if (f.b(this.eLS) == 0)
+        if (f.b(this.gbz) == 0)
         {
-          y.d("MicroMsg.SceneVoiceAddr", "addSceneEndListener MMFunc_UploadInputVoice");
-          g.Dk().a(349, this.eLS);
-          if (f.b(this.eLS) != 0) {
-            break label169;
+          ab.d("MicroMsg.SceneVoiceAddr", "addSceneEndListener MMFunc_UploadInputVoice");
+          g.Rc().a(349, this.gbz);
+          if (f.b(this.gbz) != 0) {
+            break label184;
           }
-          if (f.c(this.eLS)) {
-            break label143;
+          if (f.c(this.gbz)) {
+            break label158;
           }
-          f.a(this.eLS, new e(f.d(this.eLS), 0));
+          f.a(this.gbz, new e(f.d(this.gbz), 0));
         }
         for (;;)
         {
-          g.Dk().a(f.e(this.eLS), 0);
+          g.Rc().a(f.e(this.gbz), 0);
+          AppMethodBeat.o(116694);
           return;
-          g.Dk().a(206, this.eLS);
+          g.Rc().a(206, this.gbz);
           break;
-          f.a(this.eLS, new e(f.d(this.eLS), 1));
+          label158:
+          f.a(this.gbz, new e(f.d(this.gbz), 1));
           continue;
-          f.a(this.eLS, new d(f.d(this.eLS), f.b(this.eLS)));
+          label184:
+          f.a(this.gbz, new d(f.d(this.gbz), f.b(this.gbz)));
         }
       }
-    } while ((paramMessage.what != 3) || (this.eLS.eLO == null));
-    this.eLS.eLO.a(new String[0], -1L);
+      if ((paramMessage.what == 3) && (this.gbz.gbv != null)) {
+        this.gbz.gbv.a(new String[0], -1L);
+      }
+    }
+    AppMethodBeat.o(116694);
   }
 }
 

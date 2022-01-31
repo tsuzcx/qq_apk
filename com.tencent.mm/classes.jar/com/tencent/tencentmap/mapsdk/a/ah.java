@@ -3,174 +3,163 @@ package com.tencent.tencentmap.mapsdk.a;
 import android.content.Context;
 import android.graphics.Bitmap.Config;
 import android.location.Location;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.ka;
+import com.tencent.tencentmap.mapsdk.maps.a.lh;
+import com.tencent.tencentmap.mapsdk.maps.a.nk;
+import com.tencent.tencentmap.mapsdk.maps.a.nn;
 
 public final class ah
 {
-  private static int I = 1;
-  public static final int a = q.a + 0;
-  public static final int b = q.a + 9;
-  public static final int c = q.a + 10;
+  private static int J = 1;
+  public static final int a = o.a + 0;
+  public static final int b = o.a + 9;
+  public static final int c = o.a + 10;
   @Deprecated
-  public static final int d = q.a + 11;
-  public static final int e = q.a + 13;
-  public static final int f = q.a + 12;
+  public static final int d = o.a + 11;
+  public static final int e = o.a + 13;
+  public static final int f = o.a + 12;
   @Deprecated
   public static final int g = b;
   @Deprecated
   public static final int h = e;
-  private pn A = null;
-  private on B = null;
-  private or C;
-  private ob D;
-  private boolean E = false;
-  private nt F = null;
-  private aj G;
-  private af H = null;
-  private final oo.a J = new ah.1(this);
-  private nv i = null;
-  private ox j = null;
-  private ov k = null;
-  private oh l = null;
-  private of m = null;
-  private oa n = null;
-  private nz o = null;
-  private po p = null;
-  private os q;
-  private oc r;
-  private op s = null;
-  private ag t = null;
-  private ow u = null;
-  private ou v = null;
-  private og w = null;
-  private oe x = null;
-  private nx y = null;
-  private ny z = null;
+  private as A;
+  private cg B;
+  private bf C;
+  private bk D;
+  private av E;
+  private boolean F;
+  private an G;
+  private ak H;
+  private aa I;
+  private final bg.a K;
+  private ap i;
+  private lh j;
+  private bq k;
+  private bo l;
+  private bb m;
+  private az n;
+  private au o;
+  private at p;
+  private ch q;
+  private bl r;
+  private aw s;
+  private bi t;
+  private ag u;
+  private bp v;
+  private bn w;
+  private ba x;
+  private ay y;
+  private ar z;
   
   protected ah()
   {
-    this.i = new nv(null, null, null);
-    this.F = new nt(this.i, b());
+    AppMethodBeat.i(147104);
+    this.i = null;
+    this.j = null;
+    this.k = null;
+    this.l = null;
+    this.m = null;
+    this.n = null;
+    this.o = null;
+    this.p = null;
+    this.q = null;
+    this.t = null;
+    this.u = null;
+    this.v = null;
+    this.w = null;
+    this.x = null;
+    this.y = null;
+    this.z = null;
+    this.A = null;
+    this.B = null;
+    this.C = null;
+    this.F = false;
+    this.G = null;
+    this.I = null;
+    this.K = new ah.1(this);
+    this.i = new ap(0, null, null);
+    this.G = new an(this.i, b());
+    AppMethodBeat.o(147104);
   }
   
-  protected ah(af paramaf, Context paramContext, ai paramai)
+  protected ah(aa paramaa, Context paramContext, ai paramai)
   {
-    lq.b(paramContext);
-    lq.a(paramContext);
-    my.a().a(paramContext);
-    nb.a(paramContext);
-    this.H = paramaf;
-    this.i = new nv(this.H, paramContext, paramai);
-    this.F = new nt(this.i, b());
-    b().b();
-    if (this.B == null)
-    {
-      this.i.a(this.J);
-      this.B = new on(this.i.a());
-    }
-    nd.a(0, w.a(paramContext));
+    AppMethodBeat.i(147103);
+    this.i = null;
+    this.j = null;
+    this.k = null;
+    this.l = null;
+    this.m = null;
+    this.n = null;
+    this.o = null;
+    this.p = null;
+    this.q = null;
+    this.t = null;
+    this.u = null;
+    this.v = null;
+    this.w = null;
+    this.x = null;
+    this.y = null;
+    this.z = null;
+    this.A = null;
+    this.B = null;
+    this.C = null;
+    this.F = false;
+    this.G = null;
+    this.I = null;
+    this.K = new ah.1(this);
+    ka.b(paramContext);
+    ka.a(paramContext);
+    this.I = paramaa;
+    nk.a().a(paramContext);
+    nn.a(paramContext);
+    this.i = new ap(paramaa.getMapViewType(), paramaa, paramai);
+    this.t = new bi(this.i);
+    this.G = new an(this.i, b());
+    this.v = new bp(this.i);
+    this.o = new au(this.I, this.t.b());
+    this.z = new ar(this.o);
+    this.m = new bb(this.t.b());
+    this.x = new ba(this.m);
+    this.n = new az(this.t.b());
+    this.y = new ay(this.n);
+    this.l = new bo(this.t.b());
+    this.w = new bn(this.l);
+    this.C = new bf(this.i.a());
+    this.i.a(this.K);
+    this.i.a(this.z, paramai);
+    this.j = new lh(this.i);
+    this.j.a(this.z, paramai);
+    this.j.a();
+    AppMethodBeat.o(147103);
   }
   
   private void A()
   {
-    if (this.B != null)
-    {
-      this.B.a();
-      this.B = null;
+    AppMethodBeat.i(147124);
+    if (this.q == null) {
+      this.q = new ch(this.z, this.w, this.v);
     }
-    if (this.A != null)
-    {
-      this.A.a();
-      this.A = null;
+    if (this.B == null) {
+      this.B = new cg(this.q);
     }
-    if (this.y != null)
-    {
-      this.y.a();
-      this.y = null;
-    }
-    if (this.x != null)
-    {
-      this.x.a();
-      this.x = null;
-    }
-    if (this.w != null)
-    {
-      this.w.a();
-      this.w = null;
-    }
-    if (this.v != null)
-    {
-      this.v.a();
-      this.v = null;
-    }
-    if (this.C != null)
-    {
-      this.C.a();
-      this.C = null;
-    }
-    if (this.z != null)
-    {
-      this.z.a();
-      this.z = null;
-    }
-    if (this.D != null)
-    {
-      this.D.a();
-      this.D = null;
-    }
-    if (this.u != null)
-    {
-      this.u.a();
-      this.u = null;
-    }
-    if (this.t != null)
-    {
-      this.t.a();
-      this.t = null;
-    }
-    if (this.s != null)
-    {
-      this.s.a();
-      this.s = null;
-    }
+    AppMethodBeat.o(147124);
   }
   
-  public static int a()
+  private void B()
   {
-    return I;
-  }
-  
-  private void y()
-  {
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    if (this.y == null)
+    AppMethodBeat.i(147139);
+    if (this.q != null)
     {
-      if (this.n == null) {
-        this.n = new oa(this.H, this.s.b());
-      }
-      this.y = new nx(this.n);
+      this.q.e();
+      this.q = null;
     }
-    if (this.k == null) {
-      this.k = new ov(this.s.b());
-    }
-    if (this.v == null) {
-      this.v = new ou(this.k);
-    }
-    if (this.p == null) {
-      this.p = new po(this.y, this.v, this.u);
-    }
-    if (this.A == null) {
-      this.A = new pn(this.p);
-    }
-  }
-  
-  private void z()
-  {
-    if (this.p != null)
+    if (this.o != null)
     {
-      this.p.e();
-      this.p = null;
+      this.o.a();
+      this.o = null;
     }
     if (this.n != null)
     {
@@ -187,693 +176,879 @@ public final class ah
       this.l.a();
       this.l = null;
     }
-    if (this.k != null)
-    {
-      this.k.a();
-      this.k = null;
-    }
     if (this.i != null)
     {
-      this.i.d();
+      this.i.c();
       this.i = null;
     }
-    if (this.q != null)
+    if (this.r != null)
     {
-      this.q.a();
-      this.q = null;
-    }
-    if (this.o != null)
-    {
-      this.o.a();
-      this.o = null;
-    }
-    if (this.r != null) {
       this.r.a();
+      this.r = null;
     }
-  }
-  
-  public final pv a(pw parampw)
-  {
-    if ((this.E) || (parampw == null)) {
-      return null;
-    }
-    if (this.k == null) {
-      this.k = new ov(this.s.b());
-    }
-    if (this.v == null) {
-      this.v = new ou(this.k);
-    }
-    return this.v.a(parampw);
-  }
-  
-  public final qf a(qg paramqg)
-  {
-    if ((this.E) || (paramqg == null)) {}
-    do
+    if (this.p != null)
     {
-      return null;
-      if (this.n != null) {
-        break;
-      }
-    } while ((this.H == null) || (this.s == null));
-    this.n = new oa(this.H, this.s.b());
-    if (this.y == null) {
-      this.y = new nx(this.n);
+      this.p.a();
+      this.p = null;
     }
-    return this.y.a(paramqg, this.y);
+    if (this.s != null) {
+      this.s.a();
+    }
+    AppMethodBeat.o(147139);
   }
   
-  public final qi a(qj paramqj)
+  private void C()
   {
-    if ((this.E) || (paramqj == null)) {
-      return null;
-    }
-    if (this.m == null) {
-      this.m = new of(this.s.b());
-    }
-    if (this.x == null) {
-      this.x = new oe(this.m);
-    }
-    return this.x.a(paramqj);
-  }
-  
-  public final qk a(ql paramql)
-  {
-    if (this.E) {}
-    do
+    AppMethodBeat.i(147140);
+    if (this.C != null)
     {
-      return null;
-      if (this.l != null) {
-        break;
-      }
-    } while (this.s == null);
-    this.l = new oh(this.s.b());
-    if (this.w == null) {
-      this.w = new og(this.l);
+      this.C.a();
+      this.C = null;
     }
-    return this.w.a(paramql);
+    if (this.B != null)
+    {
+      this.B.a();
+      this.B = null;
+    }
+    if (this.z != null)
+    {
+      this.z.a();
+      this.z = null;
+    }
+    if (this.y != null)
+    {
+      this.y.a();
+      this.y = null;
+    }
+    if (this.x != null)
+    {
+      this.x.a();
+      this.x = null;
+    }
+    if (this.w != null)
+    {
+      this.w.a();
+      this.w = null;
+    }
+    if (this.D != null)
+    {
+      this.D.a();
+      this.D = null;
+    }
+    if (this.A != null)
+    {
+      this.A.a();
+      this.A = null;
+    }
+    if (this.E != null)
+    {
+      this.E.a();
+      this.E = null;
+    }
+    if (this.v != null)
+    {
+      this.v.a();
+      this.v = null;
+    }
+    if (this.u != null)
+    {
+      this.u.a();
+      this.u = null;
+    }
+    if (this.t != null)
+    {
+      this.t.a();
+      this.t = null;
+    }
+    AppMethodBeat.o(147140);
   }
   
-  public final String a(qc paramqc)
+  public static int a()
   {
-    if (this.E) {
+    return J;
+  }
+  
+  public final co a(cp paramcp)
+  {
+    AppMethodBeat.i(147115);
+    if ((this.F) || (this.w == null) || (paramcp == null))
+    {
+      AppMethodBeat.o(147115);
       return null;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
+    paramcp = this.w.a(paramcp);
+    AppMethodBeat.o(147115);
+    return paramcp;
+  }
+  
+  public final dc a(dd paramdd)
+  {
+    AppMethodBeat.i(147116);
+    if ((this.F) || (this.z == null) || (paramdd == null))
+    {
+      AppMethodBeat.o(147116);
+      return null;
     }
-    return this.u.a(paramqc);
+    paramdd = this.z.a(paramdd, this.z);
+    AppMethodBeat.o(147116);
+    return paramdd;
+  }
+  
+  public final dh a(di paramdi)
+  {
+    AppMethodBeat.i(147114);
+    if ((this.F) || (this.y == null) || (paramdi == null))
+    {
+      AppMethodBeat.o(147114);
+      return null;
+    }
+    paramdi = this.y.a(paramdi);
+    AppMethodBeat.o(147114);
+    return paramdi;
+  }
+  
+  public final dj a(dk paramdk)
+  {
+    AppMethodBeat.i(147113);
+    if ((this.F) || (this.x == null) || (paramdk == null))
+    {
+      AppMethodBeat.o(147113);
+      return null;
+    }
+    paramdk = this.x.a(paramdk);
+    AppMethodBeat.o(147113);
+    return paramdk;
+  }
+  
+  public final String a(cz paramcz)
+  {
+    AppMethodBeat.i(147159);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147159);
+      return null;
+    }
+    paramcz = this.v.a(paramcz);
+    AppMethodBeat.o(147159);
+    return paramcz;
   }
   
   public final void a(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    if (this.E) {
+    AppMethodBeat.i(147146);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147146);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramFloat1, paramFloat2, paramBoolean);
+    this.v.a(paramFloat1, paramFloat2, paramBoolean);
+    AppMethodBeat.o(147146);
   }
   
   @Deprecated
   public final void a(int paramInt)
   {
+    AppMethodBeat.i(147118);
     b(paramInt);
+    AppMethodBeat.o(147118);
   }
   
-  public final void a(ac paramac)
+  public final void a(ab paramab)
   {
-    if (this.E) {
+    AppMethodBeat.i(147108);
+    if ((this.F) || (this.v == null) || (this.v.q()))
+    {
+      AppMethodBeat.o(147108);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramac);
+    this.v.a(paramab);
+    AppMethodBeat.o(147108);
   }
   
-  public final void a(ac paramac, long paramLong, a parama)
+  public final void a(ab paramab, long paramLong, a parama)
   {
-    if (this.E) {
+    AppMethodBeat.i(147111);
+    if ((this.F) || (this.v == null) || (this.v.q()))
+    {
+      AppMethodBeat.o(147111);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramac, paramLong, parama);
+    this.v.a(paramab, paramLong, parama);
+    AppMethodBeat.o(147111);
   }
   
-  public final void a(ac paramac, a parama)
+  public final void a(ab paramab, a parama)
   {
-    if (this.E) {
+    AppMethodBeat.i(147110);
+    if ((this.F) || (this.v == null) || (this.v.q()))
+    {
+      AppMethodBeat.o(147110);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramac, 500L, parama);
+    this.v.a(paramab, 500L, parama);
+    AppMethodBeat.o(147110);
   }
   
-  public final void a(ah.b paramb)
+  public final void a(b paramb)
   {
-    if (this.E) {
+    AppMethodBeat.i(147153);
+    if ((this.F) || (this.z == null))
+    {
+      AppMethodBeat.o(147153);
       return;
     }
-    if (this.n == null) {
-      this.n = new oa(this.H, this.s.b());
-    }
-    if (this.y == null) {
-      this.y = new nx(this.n);
-    }
-    this.y.a(paramb);
+    this.z.a(paramb);
+    AppMethodBeat.o(147153);
   }
   
   public final void a(ah.c paramc)
   {
-    if (this.E) {
+    AppMethodBeat.i(147129);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147129);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramc);
+    this.v.a(paramc);
+    AppMethodBeat.o(147129);
   }
   
   public final void a(ah.f paramf)
   {
-    if (this.E) {
+    AppMethodBeat.i(147154);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147154);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramf);
+    this.v.a(paramf);
+    AppMethodBeat.o(147154);
   }
   
   public final void a(ah.g paramg)
   {
-    if (this.E) {
+    AppMethodBeat.i(147152);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147152);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramg);
+    this.v.a(paramg);
+    AppMethodBeat.o(147152);
   }
   
   public final void a(ah.h paramh)
   {
-    if (this.E) {
+    AppMethodBeat.i(147130);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147130);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramh);
+    this.v.a(paramh);
+    AppMethodBeat.o(147130);
   }
   
-  public final void a(ah.i parami)
+  public final void a(i parami)
   {
-    if (this.E) {
+    AppMethodBeat.i(147132);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147132);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(parami);
+    this.v.a(parami);
+    AppMethodBeat.o(147132);
   }
   
-  public final void a(ah.j paramj)
+  public final void a(j paramj)
   {
-    if (this.E) {
+    AppMethodBeat.i(147131);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147131);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramj);
+    this.v.a(paramj);
+    AppMethodBeat.o(147131);
   }
   
-  public final void a(ah.k paramk)
+  public final void a(k paramk)
   {
-    if (this.E) {
+    AppMethodBeat.i(147160);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147160);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramk);
+    this.v.a(paramk);
+    AppMethodBeat.o(147160);
   }
   
   public final void a(ah.l paraml)
   {
-    if (this.E) {
+    AppMethodBeat.i(147150);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147150);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paraml);
+    this.v.a(paraml);
+    AppMethodBeat.o(147150);
   }
   
   public final void a(ah.m paramm)
   {
-    if (this.E) {
+    AppMethodBeat.i(147151);
+    if ((this.F) || (this.z == null))
+    {
+      AppMethodBeat.o(147151);
       return;
     }
-    if (this.n == null) {
-      this.n = new oa(this.H, this.s.b());
-    }
-    if (this.y == null) {
-      this.y = new nx(this.n);
-    }
-    this.y.a(paramm);
+    this.z.a(paramm);
+    AppMethodBeat.o(147151);
   }
   
   public final void a(ah.p paramp)
   {
+    AppMethodBeat.i(147142);
     a(paramp, Bitmap.Config.ARGB_8888);
+    AppMethodBeat.o(147142);
   }
   
   public final void a(ah.p paramp, Bitmap.Config paramConfig)
   {
-    if (this.u == null) {
-      this.u = new ow(this.i);
+    AppMethodBeat.i(147141);
+    if (this.v != null) {
+      this.v.a(paramp, paramConfig);
     }
-    this.u.a(paramp, paramConfig);
+    AppMethodBeat.o(147141);
   }
   
-  public final void a(qb paramqb)
+  public final void a(cy paramcy)
   {
-    ((ma)b().b()).getWorldMapOverlayManager().a(paramqb);
+    AppMethodBeat.i(147167);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147167);
+      return;
+    }
+    this.v.a(paramcy);
+    AppMethodBeat.o(147167);
   }
   
   @Deprecated
-  public final void a(qn paramqn)
+  public final void a(dl paramdl)
   {
-    b(paramqn);
+    AppMethodBeat.i(147143);
+    b(paramdl);
+    AppMethodBeat.o(147143);
   }
   
   public final void a(String paramString1, String paramString2)
   {
-    if (this.E) {
+    AppMethodBeat.i(147163);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147163);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramString1, paramString2);
+    this.v.a(paramString1, paramString2);
+    AppMethodBeat.o(147163);
   }
   
   public final void a(boolean paramBoolean)
   {
-    if (this.E) {
+    AppMethodBeat.i(147121);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147121);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramBoolean);
+    this.v.a(paramBoolean);
+    AppMethodBeat.o(147121);
   }
   
-  final op b()
+  final bi b()
   {
-    if (this.s == null) {
-      this.s = new op(this.i);
-    }
-    return this.s;
+    return this.t;
   }
   
   public final void b(int paramInt)
   {
-    if (this.E) {
+    AppMethodBeat.i(147119);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147119);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramInt);
+    this.v.a(paramInt);
+    AppMethodBeat.o(147119);
   }
   
-  public final void b(ac paramac)
+  public final void b(ab paramab)
   {
-    if (this.E) {
+    AppMethodBeat.i(147109);
+    if ((this.F) || (this.v == null) || (this.v.q()))
+    {
+      AppMethodBeat.o(147109);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramac, 500L, null);
+    this.v.a(paramab, 500L, null);
+    AppMethodBeat.o(147109);
   }
   
-  public final void b(qn paramqn)
+  public final void b(dl paramdl)
   {
-    if (this.E) {
+    AppMethodBeat.i(147144);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147144);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.a(paramqn);
+    this.v.a(paramdl);
+    AppMethodBeat.o(147144);
   }
   
   public final void b(boolean paramBoolean)
   {
-    if (this.E) {
+    AppMethodBeat.i(147122);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147122);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.b(paramBoolean);
+    this.v.b(paramBoolean);
+    AppMethodBeat.o(147122);
   }
   
-  public final nv c()
+  public final ap c()
   {
     return this.i;
   }
   
   public final void c(int paramInt)
   {
-    if (this.E) {
+    AppMethodBeat.i(147156);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147156);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.b(paramInt);
+    this.v.b(paramInt);
+    AppMethodBeat.o(147156);
   }
   
-  public final void c(qn paramqn)
+  public final void c(dl paramdl)
   {
-    if (this.E) {
+    AppMethodBeat.i(147145);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147145);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.b(paramqn);
+    this.v.b(paramdl);
+    AppMethodBeat.o(147145);
   }
   
   public final void c(boolean paramBoolean)
   {
-    if (this.E) {}
-    do
+    AppMethodBeat.i(147125);
+    if (this.F)
     {
+      AppMethodBeat.o(147125);
       return;
-      y();
-      if (!paramBoolean)
-      {
-        this.A.d();
-        return;
-      }
-    } while (j() == true);
-    this.A.c();
+    }
+    A();
+    if (!paramBoolean)
+    {
+      this.B.d();
+      AppMethodBeat.o(147125);
+      return;
+    }
+    if (j() == true)
+    {
+      AppMethodBeat.o(147125);
+      return;
+    }
+    this.B.c();
+    AppMethodBeat.o(147125);
   }
   
-  public final pu d()
+  public final cn d()
   {
-    if (this.E) {
+    AppMethodBeat.i(147105);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147105);
       return null;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    return this.u.b();
+    cn localcn = this.v.b();
+    AppMethodBeat.o(147105);
+    return localcn;
   }
   
   protected final void d(boolean paramBoolean)
   {
-    if ((this.E) || (this.i == null)) {
+    AppMethodBeat.i(147148);
+    if ((this.F) || (this.i == null))
+    {
+      AppMethodBeat.o(147148);
       return;
     }
     this.i.c(paramBoolean);
+    AppMethodBeat.o(147148);
   }
   
   public final float e()
   {
-    if (this.E) {
+    AppMethodBeat.i(147106);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147106);
       return 0.0F;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    return this.u.c();
+    float f1 = this.v.c();
+    AppMethodBeat.o(147106);
+    return f1;
   }
   
   public final void e(boolean paramBoolean)
   {
-    if ((this.E) || (this.i == null)) {
+    AppMethodBeat.i(147149);
+    if ((this.F) || (this.i == null))
+    {
+      AppMethodBeat.o(147149);
       return;
     }
     this.i.a(paramBoolean, false);
+    AppMethodBeat.o(147149);
   }
   
   public final float f()
   {
-    if (this.E) {
+    AppMethodBeat.i(147107);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147107);
       return 0.0F;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    return this.u.d();
+    float f1 = this.v.d();
+    AppMethodBeat.o(147107);
+    return f1;
   }
   
   public final void f(boolean paramBoolean)
   {
-    if (this.E) {
+    AppMethodBeat.i(147155);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147155);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.c(paramBoolean);
+    this.v.c(paramBoolean);
+    AppMethodBeat.o(147155);
   }
   
   public final void g()
   {
-    if (this.E) {
+    AppMethodBeat.i(147112);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147112);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.e();
+    this.v.e();
+    AppMethodBeat.o(147112);
   }
   
   public final void g(boolean paramBoolean)
   {
-    if (this.E) {
+    AppMethodBeat.i(147161);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147161);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.d(paramBoolean);
+    this.v.d(paramBoolean);
+    AppMethodBeat.o(147161);
   }
   
   public final void h()
   {
-    if (this.w != null) {
-      this.w.b();
-    }
+    AppMethodBeat.i(147117);
     if (this.x != null) {
       this.x.b();
-    }
-    if (this.v != null) {
-      this.v.b();
     }
     if (this.y != null) {
       this.y.b();
     }
-    if (this.C != null) {
-      this.C.b();
+    if (this.w != null) {
+      this.w.b();
     }
+    if (this.z != null) {
+      this.z.b();
+    }
+    if (this.D != null) {
+      this.D.b();
+    }
+    AppMethodBeat.o(147117);
   }
   
   public final void h(boolean paramBoolean)
   {
-    if (this.E) {
+    AppMethodBeat.i(147164);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147164);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.e(paramBoolean);
+    this.v.e(paramBoolean);
+    AppMethodBeat.o(147164);
   }
   
   public final boolean i()
   {
-    if (this.E) {
+    AppMethodBeat.i(147120);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147120);
       return false;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    return this.u.f();
+    boolean bool = this.v.f();
+    AppMethodBeat.o(147120);
+    return bool;
   }
   
   public final boolean j()
   {
-    if (this.E) {
+    AppMethodBeat.i(147123);
+    if (this.F)
+    {
+      AppMethodBeat.o(147123);
       return false;
     }
-    y();
-    return this.A.e();
+    A();
+    boolean bool = this.B.e();
+    AppMethodBeat.o(147123);
+    return bool;
   }
   
   public final Location k()
   {
-    if (this.E) {
+    AppMethodBeat.i(147126);
+    if (this.F)
+    {
+      AppMethodBeat.o(147126);
       return null;
     }
-    y();
-    return this.A.b();
+    A();
+    Location localLocation = this.B.b();
+    AppMethodBeat.o(147126);
+    return localLocation;
   }
   
-  public final aj l()
+  public final ak l()
   {
-    if (this.E) {
+    AppMethodBeat.i(147127);
+    if (this.F)
+    {
+      AppMethodBeat.o(147127);
       return null;
     }
-    if (this.G == null)
-    {
-      if (this.B == null) {
-        this.B = new on(this.i.a());
-      }
-      this.G = new aj(this.B);
+    if (this.H == null) {
+      this.H = new ak(this.C);
     }
-    return this.G;
+    ak localak = this.H;
+    AppMethodBeat.o(147127);
+    return localak;
   }
   
   public final ag m()
   {
-    if (this.E) {
+    AppMethodBeat.i(147128);
+    if ((this.F) || (this.i == null))
+    {
+      AppMethodBeat.o(147128);
       return null;
     }
-    if (this.t == null) {
-      this.t = new ag(this.i);
+    if (this.u == null) {
+      this.u = new ag(this.i);
     }
-    return this.t;
+    ag localag = this.u;
+    AppMethodBeat.o(147128);
+    return localag;
   }
   
   final void n()
   {
-    if (this.E) {
+    AppMethodBeat.i(147133);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147133);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.g();
+    this.v.g();
+    AppMethodBeat.o(147133);
   }
   
   final void o()
   {
-    if (this.E) {
+    AppMethodBeat.i(147134);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147134);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.h();
+    this.v.h();
+    AppMethodBeat.o(147134);
   }
   
   final void p()
   {
-    if (this.E) {
+    AppMethodBeat.i(147135);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147135);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.i();
+    this.v.i();
+    AppMethodBeat.o(147135);
   }
   
   final void q()
   {
-    if (this.E) {
+    AppMethodBeat.i(147136);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147136);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.j();
+    this.v.j();
+    AppMethodBeat.o(147136);
   }
   
   final void r()
   {
-    if (this.E) {
+    AppMethodBeat.i(147137);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147137);
       return;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    this.u.k();
+    this.v.k();
+    AppMethodBeat.o(147137);
   }
   
   final void s()
   {
-    if (this.E) {
+    AppMethodBeat.i(147138);
+    if (this.F)
+    {
+      AppMethodBeat.o(147138);
       return;
     }
-    if (this.u != null) {
-      this.u.l();
+    if (this.v != null) {
+      this.v.l();
     }
-    A();
-    z();
-    this.E = true;
+    if (this.j != null) {
+      this.j.b();
+    }
+    C();
+    B();
+    this.F = true;
+    AppMethodBeat.o(147138);
   }
   
-  public final af t()
+  public final String t()
   {
-    return this.H;
-  }
-  
-  public final String u()
-  {
-    if (this.E) {
+    AppMethodBeat.i(147147);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147147);
       return "";
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    return this.u.m();
+    String str = this.v.m();
+    AppMethodBeat.o(147147);
+    return str;
   }
   
-  public final int v()
+  public final int u()
   {
-    if (this.E) {
+    AppMethodBeat.i(147157);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147157);
       return -1;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    return this.u.n();
+    int i1 = this.v.n();
+    AppMethodBeat.o(147157);
+    return i1;
   }
   
-  public final String[] w()
+  public final String[] v()
   {
-    if (this.E) {
+    AppMethodBeat.i(147158);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147158);
       return null;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
-    }
-    return this.u.o();
+    String[] arrayOfString = this.v.o();
+    AppMethodBeat.o(147158);
+    return arrayOfString;
   }
   
-  public final boolean x()
+  public final boolean w()
   {
-    if (this.E) {
+    AppMethodBeat.i(147162);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147162);
       return false;
     }
-    if (this.u == null) {
-      this.u = new ow(this.i);
+    boolean bool = this.v.p();
+    AppMethodBeat.o(147162);
+    return bool;
+  }
+  
+  public final int x()
+  {
+    AppMethodBeat.i(147165);
+    if (this.I == null)
+    {
+      AppMethodBeat.o(147165);
+      return 0;
     }
-    return this.u.p();
+    int i1 = this.I.getWidth();
+    AppMethodBeat.o(147165);
+    return i1;
+  }
+  
+  public final int y()
+  {
+    AppMethodBeat.i(147166);
+    if (this.I == null)
+    {
+      AppMethodBeat.o(147166);
+      return 0;
+    }
+    int i1 = this.I.getHeight();
+    AppMethodBeat.o(147166);
+    return i1;
+  }
+  
+  public final String z()
+  {
+    AppMethodBeat.i(147168);
+    if ((this.F) || (this.v == null))
+    {
+      AppMethodBeat.o(147168);
+      return null;
+    }
+    String str = this.v.r();
+    AppMethodBeat.o(147168);
+    return str;
   }
   
   public static abstract interface a
@@ -882,10 +1057,32 @@ public final class ah
     
     public abstract void b();
   }
+  
+  public static abstract interface b
+  {
+    public abstract View a(dc paramdc);
+    
+    public abstract View b(dc paramdc);
+  }
+  
+  public static abstract interface i
+  {
+    public abstract void a();
+  }
+  
+  public static abstract interface j
+  {
+    public abstract void a(cz paramcz);
+  }
+  
+  public static abstract interface k
+  {
+    public abstract void a(db paramdb);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.ah
  * JD-Core Version:    0.7.0.1
  */

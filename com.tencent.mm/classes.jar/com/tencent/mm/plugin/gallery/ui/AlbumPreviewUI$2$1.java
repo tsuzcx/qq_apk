@@ -4,30 +4,32 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AlbumPreviewUI$2$1
   implements DialogInterface.OnClickListener
 {
-  AlbumPreviewUI$2$1(AlbumPreviewUI.2 param2, int paramInt) {}
+  AlbumPreviewUI$2$1(AlbumPreviewUI.2 param2, GalleryItem.MediaItem paramMediaItem, int paramInt) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = AlbumPreviewUI.a(this.kIG.kIF).rS(this.kX);
-    if (paramDialogInterface == null)
+    AppMethodBeat.i(155063);
+    if (this.neW == null)
     {
-      y.w("MicroMsg.AlbumPreviewUI", "get item for video error, null, position %d", new Object[] { Integer.valueOf(this.kX) });
-      this.kIG.kIF.setResult(0);
+      ab.w("MicroMsg.AlbumPreviewUI", "get item for video error, null, position %d", new Object[] { Integer.valueOf(this.lU) });
+      this.neX.neV.setResult(0);
     }
     for (;;)
     {
-      this.kIG.kIF.finish();
+      this.neX.neV.finish();
+      AppMethodBeat.o(155063);
       return;
-      y.i("MicroMsg.AlbumPreviewUI", "ShowAlert");
-      Intent localIntent = new Intent();
-      localIntent.setData(Uri.parse("file://" + Uri.encode(paramDialogInterface.eAu)));
-      this.kIG.kIF.setResult(-1, localIntent);
+      ab.i("MicroMsg.AlbumPreviewUI", "ShowAlert");
+      paramDialogInterface = new Intent();
+      paramDialogInterface.setData(Uri.parse("file://" + Uri.encode(this.neW.fQn)));
+      this.neX.neV.setResult(-1, paramDialogInterface);
     }
   }
 }

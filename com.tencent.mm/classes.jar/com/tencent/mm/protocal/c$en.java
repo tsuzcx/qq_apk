@@ -5,7 +5,7 @@ final class c$en
 {
   c$en()
   {
-    super("openBizChat", "openBizChat", 296, true);
+    super("makePhoneCall", "makePhoneCall", 10000, true);
   }
 }
 

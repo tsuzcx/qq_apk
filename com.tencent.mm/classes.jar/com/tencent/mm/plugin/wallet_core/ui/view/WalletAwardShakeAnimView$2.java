@@ -1,42 +1,46 @@
 package com.tencent.mm.plugin.wallet_core.ui.view;
 
-import com.tencent.mm.pluginsdk.i.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.i.d.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WalletAwardShakeAnimView$2
-  extends c.a
+  extends d.a
 {
   WalletAwardShakeAnimView$2(WalletAwardShakeAnimView paramWalletAwardShakeAnimView) {}
   
-  public final void bnY()
+  public final void onRelease() {}
+  
+  public final void onShake(boolean paramBoolean)
   {
-    y.i("MicroMsg.WalletAwardShakeAnimView", "onShake");
-    long l = bk.cp(WalletAwardShakeAnimView.b(this.qIg));
-    if (!WalletAwardShakeAnimView.c(this.qIg)) {
-      if (l >= 1200L) {
-        break label45;
+    AppMethodBeat.i(142574);
+    ab.i("MicroMsg.WalletAwardShakeAnimView", "onShake");
+    long l = bo.av(WalletAwardShakeAnimView.b(this.uwO));
+    if (!WalletAwardShakeAnimView.c(this.uwO))
+    {
+      if (l < 1200L) {
+        AppMethodBeat.o(142574);
       }
     }
-    label45:
-    do
+    else if (l < 80L)
     {
-      do
-      {
-        return;
-      } while (l < 80L);
-      WalletAwardShakeAnimView.a(this.qIg, bk.UZ());
-      WalletAwardShakeAnimView.d(this.qIg);
-    } while (WalletAwardShakeAnimView.e(this.qIg));
-    WalletAwardShakeAnimView.f(this.qIg);
-    WalletAwardShakeAnimView.g(this.qIg);
+      AppMethodBeat.o(142574);
+      return;
+    }
+    WalletAwardShakeAnimView.a(this.uwO, bo.yB());
+    WalletAwardShakeAnimView.d(this.uwO);
+    if (!WalletAwardShakeAnimView.e(this.uwO))
+    {
+      WalletAwardShakeAnimView.f(this.uwO);
+      WalletAwardShakeAnimView.g(this.uwO);
+    }
+    AppMethodBeat.o(142574);
   }
-  
-  public final void onRelease() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.WalletAwardShakeAnimView.2
  * JD-Core Version:    0.7.0.1
  */

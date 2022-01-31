@@ -7,11 +7,11 @@ import android.widget.ListAdapter;
 public abstract interface b
   extends ListAdapter
 {
-  public abstract int HU(int paramInt);
+  public abstract int QG(int paramInt);
   
   public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
   
-  public abstract int cIA();
+  public abstract int dNk();
 }
 
 

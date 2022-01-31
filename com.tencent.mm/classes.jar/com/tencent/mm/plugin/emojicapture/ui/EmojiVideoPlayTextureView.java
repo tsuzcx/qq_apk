@@ -1,193 +1,244 @@
 package com.tencent.mm.plugin.emojicapture.ui;
 
-import a.d.a.a;
-import a.d.a.b;
-import a.d.b.h;
-import a.n;
+import a.f.a.a;
+import a.f.b.j;
+import a.f.b.k;
+import a.l;
+import a.y;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
-import android.opengl.EGL14;
-import android.opengl.GLES20;
-import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.Surface;
 import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.mm.plugin.s.c;
-import com.tencent.mm.plugin.s.i;
-import com.tencent.mm.pluginsdk.ui.tools.f.a;
-import com.tencent.mm.pluginsdk.ui.tools.f.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.n.c;
+import com.tencent.mm.pluginsdk.ui.tools.e.a;
+import com.tencent.mm.pluginsdk.ui.tools.e.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.MMTextureView;
-import com.tencent.ttpic.PTSegment;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/ui/EmojiVideoPlayTextureView;", "Lcom/tencent/mm/ui/base/MMTextureView;", "Landroid/view/TextureView$SurfaceTextureListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;)V", "TAG", "", "afterSeekPlay", "", "callback", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView$IVideoCallback;", "isMute", "isOnlineVideo", "isPrepared", "isRemoveBg", "lastSurfaceUpdatedTime", "", "needReset", "onSurfaceCallback", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView$OnSurfaceCallback;", "oneTimeTextureUpdateCallback", "Lkotlin/Function0;", "", "openWithNoneSurface", "path", "pauseByDestroyed", "pauseWhenUpdated", "player", "Lcom/tencent/mm/plugin/mmplayer/VideoPlayer;", "playerCallback", "Lcom/tencent/mm/plugin/mmplayer/IPlayerCallback;", "removeBgEnable", "renderSurface", "Lcom/tencent/mm/plugin/emojicapture/ui/EmojiVideoPlayTextureRenderSurface;", "renderer", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiVideoPlayTextureRenderer;", "seekCompleteCallback", "Lkotlin/Function1;", "surface", "Landroid/view/Surface;", "useMp4Extrator", "videoHeight", "videoWidth", "getDuration", "getPlayRate", "", "getVideoPath", "isPlaying", "onSurfaceTextureAvailable", "Landroid/graphics/SurfaceTexture;", "width", "height", "onSurfaceTextureDestroyed", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "openVideo", "pause", "seekTo", "time", "", "setOneTimeVideoTextureUpdateCallback", "_callback", "setPlayRate", "rate", "setRemoveBackground", "remove", "afterDraw", "setRemoveBgEnable", "setVideoCallback", "setVideoPath", "start", "stop", "plugin-emojicapture_release"})
 public final class EmojiVideoPlayTextureView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  private boolean PT;
-  private final String TAG = "MicroMsg.EmojiVideoPlayTextureView";
-  private Surface avf;
-  private boolean dnJ;
-  private boolean jmD;
-  private com.tencent.mm.plugin.emojicapture.ui.a.g joB = new com.tencent.mm.plugin.emojicapture.ui.a.g();
-  public d joH;
-  public i joI;
-  public boolean joJ = true;
-  private long joK;
-  private boolean joL;
-  private f.a joM;
-  private a<n> joN;
-  private b<? super Boolean, n> joO;
-  private f.d joP;
-  private boolean joQ;
-  private boolean joR;
-  private boolean joS;
-  public boolean joT;
-  private boolean joU;
-  private c joV;
-  private String path = "";
+  private boolean Pz;
+  private final String TAG;
+  private Surface axw;
+  private boolean efg;
+  private boolean lux;
+  private e.a lxA;
+  private a<y> lxB;
+  private a.f.a.b<? super Boolean, y> lxC;
+  private e.d lxD;
+  private boolean lxE;
+  private boolean lxF;
+  private boolean lxG;
+  private boolean lxH;
+  private boolean lxI;
+  private boolean lxJ;
+  private c lxK;
+  private com.tencent.mm.plugin.emojicapture.ui.b.i lxp;
+  private b lxv;
+  public com.tencent.mm.plugin.n.i lxw;
+  public boolean lxx;
+  private long lxy;
+  private boolean lxz;
+  private String path;
   private int videoHeight;
   private int videoWidth;
+  
+  public EmojiVideoPlayTextureView(Context paramContext)
+  {
+    super(paramContext);
+    AppMethodBeat.i(2931);
+    this.TAG = "MicroMsg.EmojiVideoPlayTextureView";
+    this.path = "";
+    this.lxx = true;
+    this.lxJ = true;
+    setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
+    setOpaque(false);
+    this.lxK = ((c)new EmojiVideoPlayTextureView.c(this));
+    AppMethodBeat.o(2931);
+  }
   
   public EmojiVideoPlayTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(2929);
+    this.TAG = "MicroMsg.EmojiVideoPlayTextureView";
+    this.path = "";
+    this.lxx = true;
+    this.lxJ = true;
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
     setOpaque(false);
-    this.joV = ((c)new EmojiVideoPlayTextureView.c(this));
+    this.lxK = ((c)new EmojiVideoPlayTextureView.c(this));
+    AppMethodBeat.o(2929);
   }
   
   public EmojiVideoPlayTextureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(2930);
+    this.TAG = "MicroMsg.EmojiVideoPlayTextureView";
+    this.path = "";
+    this.lxx = true;
+    this.lxJ = true;
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
     setOpaque(false);
-    this.joV = ((c)new EmojiVideoPlayTextureView.c(this));
+    this.lxK = ((c)new EmojiVideoPlayTextureView.c(this));
+    AppMethodBeat.o(2930);
   }
   
-  private final void aKM()
+  private final void boV()
   {
-    y.i(this.TAG, "%d open video [%s]", new Object[] { Integer.valueOf(hashCode()), this.path });
-    i locali;
-    if (this.joI != null)
+    AppMethodBeat.i(2920);
+    ab.i(this.TAG, "%d open video [%s]", new Object[] { Integer.valueOf(hashCode()), this.path });
+    com.tencent.mm.plugin.n.i locali;
+    if (this.lxw != null)
     {
-      locali = this.joI;
+      locali = this.lxw;
       if (locali != null) {
         locali.a(null);
       }
-      locali = this.joI;
+      locali = this.lxw;
       if (locali != null) {
         locali.stop();
       }
-      locali = this.joI;
+      locali = this.lxw;
       if (locali != null) {
         locali.release();
       }
-      this.joI = null;
+      this.lxw = null;
     }
-    if ((bk.bl(this.path)) || (this.avf == null)) {
-      y.w(this.TAG, "%d open video but path is null or mSurface is null", new Object[] { Integer.valueOf(hashCode()) });
-    }
-    Object localObject;
-    label323:
-    do
+    if ((bo.isNullOrNil(this.path)) || (this.axw == null))
     {
-      do
+      ab.w(this.TAG, "%d open video but path is null or mSurface is null", new Object[] { Integer.valueOf(hashCode()) });
+      AppMethodBeat.o(2920);
+      return;
+    }
+    try
+    {
+      this.Pz = false;
+      this.lxw = new com.tencent.mm.plugin.n.i(Looper.getMainLooper());
+      locali = this.lxw;
+      if (locali != null) {
+        locali.setPath(this.path);
+      }
+      locali = this.lxw;
+      if (locali != null) {
+        locali.setNeedResetExtractor(this.lxE);
+      }
+      locali = this.lxw;
+      if (locali != null) {
+        locali.setIsOnlineVideoType(this.lxF);
+      }
+      locali = this.lxw;
+      if (locali != null) {
+        locali.a(this.lxK);
+      }
+      locali = this.lxw;
+      if (locali != null) {
+        locali.setSurface(this.axw);
+      }
+      locali = this.lxw;
+      if (locali != null) {
+        locali.jl(this.lxG);
+      }
+      locali = this.lxw;
+      if (locali != null) {
+        locali.setMute(true);
+      }
+      if (this.axw != null)
       {
-        do
+        locali = this.lxw;
+        if (locali != null)
         {
-          for (;;)
-          {
-            return;
-            try
-            {
-              this.PT = false;
-              this.joI = new i(Looper.getMainLooper());
-              locali = this.joI;
-              if (locali != null) {
-                locali.setPath(this.path);
-              }
-              locali = this.joI;
-              if (locali != null) {
-                locali.setNeedResetExtractor(this.joQ);
-              }
-              locali = this.joI;
-              if (locali != null) {
-                locali.setIsOnlineVideoType(this.joR);
-              }
-              locali = this.joI;
-              if (locali != null) {
-                locali.a(this.joV);
-              }
-              locali = this.joI;
-              if (locali != null) {
-                locali.setSurface(this.avf);
-              }
-              locali = this.joI;
-              if (locali != null) {
-                locali.hr(this.joS);
-              }
-              locali = this.joI;
-              if (locali != null) {
-                locali.setMute(true);
-              }
-              if (this.avf == null) {
-                break label323;
-              }
-              locali = this.joI;
-              if (locali != null)
-              {
-                locali.prepare();
-                return;
-              }
-            }
-            catch (Exception localException)
-            {
-              y.printErrStackTrace(this.TAG, (Throwable)localException, "prepare async error %s", new Object[] { localException.getMessage() });
-              localObject = this.joM;
-            }
-          }
-        } while (localObject == null);
-        ((f.a)localObject).onError(-1, -1);
+          locali.prepare();
+          AppMethodBeat.o(2920);
+          return;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      ab.printErrStackTrace(this.TAG, (Throwable)localException, "prepare async error %s", new Object[] { localException.getMessage() });
+      Object localObject = this.lxA;
+      if (localObject != null)
+      {
+        ((e.a)localObject).onError(-1, -1);
+        AppMethodBeat.o(2920);
         return;
-      } while (!this.joL);
-      localObject = this.joI;
-    } while (localObject == null);
-    ((i)localObject).prepare();
+        AppMethodBeat.o(2920);
+        return;
+        if (this.lxz)
+        {
+          localObject = this.lxw;
+          if (localObject != null)
+          {
+            ((com.tencent.mm.plugin.n.i)localObject).prepare();
+            AppMethodBeat.o(2920);
+            return;
+          }
+        }
+        AppMethodBeat.o(2920);
+        return;
+      }
+      AppMethodBeat.o(2920);
+    }
   }
   
-  public final void b(boolean paramBoolean, a<n> parama)
+  public final void b(boolean paramBoolean, a<y> parama)
   {
-    this.jmD = paramBoolean;
-    this.joB.jll = paramBoolean;
-    this.joB.jsK = ((a)new EmojiVideoPlayTextureView.d(this, parama));
+    AppMethodBeat.i(2917);
+    this.lux = paramBoolean;
+    com.tencent.mm.plugin.emojicapture.ui.b.i locali = this.lxp;
+    if (locali != null) {
+      locali.lva = paramBoolean;
+    }
+    locali = this.lxp;
+    if (locali != null)
+    {
+      locali.lCg = ((a)new EmojiVideoPlayTextureView.d(this, parama));
+      AppMethodBeat.o(2917);
+      return;
+    }
+    AppMethodBeat.o(2917);
   }
   
   public final int getDuration()
   {
-    if (this.joI != null)
+    AppMethodBeat.i(2924);
+    if (this.lxw != null)
     {
-      i locali = this.joI;
+      com.tencent.mm.plugin.n.i locali = this.lxw;
       if (locali == null) {
-        a.d.b.g.cUk();
+        j.ebi();
       }
-      return (int)locali.biw();
+      int i = (int)locali.bQy();
+      AppMethodBeat.o(2924);
+      return i;
     }
+    AppMethodBeat.o(2924);
     return 0;
   }
   
   public final float getPlayRate()
   {
-    if (this.joI != null)
+    AppMethodBeat.i(2919);
+    if (this.lxw != null)
     {
-      i locali = this.joI;
+      com.tencent.mm.plugin.n.i locali = this.lxw;
       if (locali == null) {
-        a.d.b.g.cUk();
+        j.ebi();
       }
-      return locali.getPlayRate();
+      float f = locali.getPlayRate();
+      AppMethodBeat.o(2919);
+      return f;
     }
+    AppMethodBeat.o(2919);
     return 1.0F;
   }
   
@@ -198,230 +249,281 @@ public final class EmojiVideoPlayTextureView
   
   public final boolean isPlaying()
   {
-    if (((this.joI instanceof i)) && (this.joI != null))
+    AppMethodBeat.i(2913);
+    if (((this.lxw instanceof com.tencent.mm.plugin.n.i)) && (this.lxw != null))
     {
-      i locali = this.joI;
+      com.tencent.mm.plugin.n.i locali = this.lxw;
       if (locali == null) {
-        a.d.b.g.cUk();
+        j.ebi();
       }
-      return locali.isPlaying();
+      boolean bool = locali.isPlaying();
+      AppMethodBeat.o(2913);
+      return bool;
     }
+    AppMethodBeat.o(2913);
     return false;
   }
   
   public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, final int paramInt1, final int paramInt2)
   {
-    cBe();
-    y.i(this.TAG, "onSurfaceTextureAvailable, " + paramInt1 + ", " + paramInt2 + ", " + paramSurfaceTexture);
-    if (paramSurfaceTexture != null) {}
-    try
-    {
-      this.joB = new com.tencent.mm.plugin.emojicapture.ui.a.g();
-      if (this.joT)
+    AppMethodBeat.i(2928);
+    dEs();
+    ab.i(this.TAG, "onSurfaceTextureAvailable, " + paramInt1 + ", " + paramInt2 + ", " + paramSurfaceTexture);
+    if (paramSurfaceTexture != null) {
+      try
       {
-        setVisibility(4);
-        this.joB.jll = this.jmD;
-        this.joB.jsK = ((a)new EmojiVideoPlayTextureView.a(this));
+        final com.tencent.mm.plugin.emojicapture.ui.b.i locali1 = new com.tencent.mm.plugin.emojicapture.ui.b.i(this.lxJ);
+        com.tencent.mm.plugin.emojicapture.ui.b.i locali2 = this.lxp;
+        if (locali2 != null) {
+          locali2.release();
+        }
+        this.lxp = locali1;
+        if (this.lxH)
+        {
+          setVisibility(4);
+          locali2 = this.lxp;
+          if (locali2 != null) {
+            locali2.lva = this.lux;
+          }
+          locali2 = this.lxp;
+          if (locali2 != null) {
+            locali2.lCg = ((a)new EmojiVideoPlayTextureView.a(this));
+          }
+        }
+        this.lxv = new b(paramSurfaceTexture, locali1, (a.f.a.b)new b(this, paramInt1, paramInt2, locali1));
+        AppMethodBeat.o(2928);
+        return;
       }
-      this.joH = new d(paramSurfaceTexture, this.joB, (b)new b(this, paramInt1, paramInt2));
-      return;
+      catch (Exception paramSurfaceTexture)
+      {
+        ab.i(this.TAG, "onSurfaceTextureAvailable error: ".concat(String.valueOf(paramSurfaceTexture)));
+      }
     }
-    catch (Exception paramSurfaceTexture)
-    {
-      y.i(this.TAG, "onSurfaceTextureAvailable error: " + paramSurfaceTexture);
-    }
+    AppMethodBeat.o(2928);
   }
   
   public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    y.i(this.TAG, "onSurfaceTextureDestroyed");
-    paramSurfaceTexture = this.joH;
+    AppMethodBeat.i(2927);
+    ab.i(this.TAG, "onSurfaceTextureDestroyed");
+    paramSurfaceTexture = this.lxv;
     if (paramSurfaceTexture != null) {
-      paramSurfaceTexture.needRender = false;
+      paramSurfaceTexture.gW(false);
     }
-    paramSurfaceTexture = this.joH;
-    com.tencent.mm.plugin.emojicapture.ui.a.g localg;
-    if (paramSurfaceTexture != null)
-    {
-      y.i(paramSurfaceTexture.TAG, "destroyGL");
-      localg = paramSurfaceTexture.joB;
+    paramSurfaceTexture = this.lxv;
+    if (paramSurfaceTexture != null) {
+      paramSurfaceTexture.d((a)new b.a(paramSurfaceTexture));
     }
-    try
-    {
-      GLES20.glDeleteTextures(3, new int[] { localg.jsu, localg.jsF, localg.jsG }, 0);
-      GLES20.glDeleteProgram(localg.jsv);
-      GLES20.glDeleteProgram(localg.jrA);
-      GLES20.glDeleteFramebuffers(1, new int[] { localg.jsE }, 0);
-      localg.jrI.destroy();
-      EGL14.eglDestroyContext(paramSurfaceTexture.jov, paramSurfaceTexture.jow);
-      EGL14.eglDestroySurface(paramSurfaceTexture.jov, paramSurfaceTexture.jox);
-      paramSurfaceTexture.jow = EGL14.EGL_NO_CONTEXT;
-      paramSurfaceTexture.jox = EGL14.EGL_NO_SURFACE;
-      paramSurfaceTexture.fwG.release();
-      paramSurfaceTexture.joz.quit();
-      this.avf = null;
-      this.joT = false;
-      this.joU = false;
-      if (this.joI != null)
+    this.axw = null;
+    this.lxH = false;
+    this.lxI = false;
+    if (this.lxw != null) {
+      if (isPlaying())
       {
-        if (isPlaying())
-        {
-          this.joT = true;
-          paramSurfaceTexture = this.joI;
-          if (paramSurfaceTexture != null) {
-            paramSurfaceTexture.pause();
-          }
+        this.lxH = true;
+        paramSurfaceTexture = this.lxw;
+        if (paramSurfaceTexture != null) {
+          paramSurfaceTexture.pause();
         }
-        return false;
       }
     }
-    catch (Exception localException)
+    for (;;)
     {
-      for (;;)
-      {
-        y.printErrStackTrace(localg.TAG, (Throwable)localException, "release error " + localException.getMessage(), new Object[0]);
-      }
-      this.joT = false;
+      AppMethodBeat.o(2927);
+      return false;
+      this.lxH = false;
     }
-    return false;
   }
   
   public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    y.i(this.TAG, "onSurfaceTextureSizeChanged " + paramInt1 + ", " + paramInt2);
-    this.joB.cK(paramInt1, paramInt2);
+    AppMethodBeat.i(2925);
+    ab.i(this.TAG, "onSurfaceTextureSizeChanged " + paramInt1 + ", " + paramInt2);
+    paramSurfaceTexture = this.lxp;
+    if (paramSurfaceTexture != null)
+    {
+      paramSurfaceTexture.eh(paramInt1, paramInt2);
+      AppMethodBeat.o(2925);
+      return;
+    }
+    AppMethodBeat.o(2925);
   }
   
   public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
-    if ((this.joU) && (this.joK > 0L))
+    AppMethodBeat.i(2926);
+    if ((this.lxI) && (this.lxy > 0L))
     {
-      paramSurfaceTexture = this.joI;
+      paramSurfaceTexture = this.lxw;
       if (paramSurfaceTexture != null) {
         paramSurfaceTexture.pause();
       }
-      paramSurfaceTexture = this.joI;
+      paramSurfaceTexture = this.lxw;
       if (paramSurfaceTexture != null) {
-        paramSurfaceTexture.setMute(this.dnJ);
+        paramSurfaceTexture.setMute(this.efg);
       }
-      this.joU = false;
+      this.lxI = false;
     }
-    if ((this.joK > 0L) && (this.joN != null))
+    if ((this.lxy > 0L) && (this.lxB != null))
     {
-      y.i(this.TAG, "%d notify surface update", new Object[] { Integer.valueOf(hashCode()) });
-      paramSurfaceTexture = this.joN;
+      ab.i(this.TAG, "%d notify surface update", new Object[] { Integer.valueOf(hashCode()) });
+      paramSurfaceTexture = this.lxB;
       if (paramSurfaceTexture != null) {
         paramSurfaceTexture.invoke();
       }
-      this.joN = null;
+      this.lxB = null;
     }
-    this.joK = System.currentTimeMillis();
+    this.lxy = System.currentTimeMillis();
+    AppMethodBeat.o(2926);
   }
   
-  public final void setOneTimeVideoTextureUpdateCallback(a<n> parama)
+  public final void pause()
   {
-    this.joN = parama;
+    AppMethodBeat.i(2923);
+    if (this.lxw != null)
+    {
+      Object localObject = this.lxw;
+      if (localObject == null) {
+        j.ebi();
+      }
+      if (((com.tencent.mm.plugin.n.i)localObject).isPlaying())
+      {
+        localObject = this.lxw;
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.n.i)localObject).pause();
+        }
+        localObject = this.lxv;
+        if (localObject != null) {
+          ((b)localObject).gX(true);
+        }
+      }
+    }
+    this.lxH = false;
+    AppMethodBeat.o(2923);
+  }
+  
+  public final void setOneTimeVideoTextureUpdateCallback(a<y> parama)
+  {
+    this.lxB = parama;
   }
   
   public final void setPlayRate(float paramFloat)
   {
-    i locali = this.joI;
-    if (locali != null) {
+    AppMethodBeat.i(2916);
+    com.tencent.mm.plugin.n.i locali = this.lxw;
+    if (locali != null)
+    {
       locali.setPlayRate(paramFloat);
+      AppMethodBeat.o(2916);
+      return;
     }
+    AppMethodBeat.o(2916);
   }
   
-  public final void setVideoCallback(f.a parama)
+  public final void setRemoveBgEnable(boolean paramBoolean)
   {
-    a.d.b.g.k(parama, "callback");
-    this.joM = parama;
+    this.lxJ = paramBoolean;
+  }
+  
+  public final void setVideoCallback(e.a parama)
+  {
+    AppMethodBeat.i(2915);
+    j.q(parama, "callback");
+    this.lxA = parama;
+    AppMethodBeat.o(2915);
   }
   
   public final void setVideoPath(String paramString)
   {
-    a.d.b.g.k(paramString, "path");
-    y.i(this.TAG, "%d set video path [%s]", new Object[] { Integer.valueOf(hashCode()), paramString });
+    AppMethodBeat.i(2914);
+    j.q(paramString, "path");
+    ab.i(this.TAG, "%d set video path [%s]", new Object[] { Integer.valueOf(hashCode()), paramString });
     this.path = paramString;
-    aKM();
+    boV();
     requestLayout();
+    AppMethodBeat.o(2914);
   }
   
   public final boolean start()
   {
-    if ((this.joI != null) && (this.PT))
+    AppMethodBeat.i(2921);
+    if ((this.lxw != null) && (this.Pz))
     {
       localObject = this.TAG;
       i = hashCode();
-      boolean bool2 = this.joU;
-      boolean bool3 = this.joT;
-      if (this.avf != null)
+      boolean bool2 = this.lxI;
+      boolean bool3 = this.lxH;
+      if (this.axw != null) {}
+      for (bool1 = true;; bool1 = false)
       {
-        bool1 = true;
-        y.i((String)localObject, "%d player start pauseWhenUpdated[%b] pauseByDestroyed[%b] surface[%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
-        if (this.avf != null) {
-          break label105;
+        ab.i((String)localObject, "%d player start pauseWhenUpdated[%b] pauseByDestroyed[%b] surface[%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
+        if (this.axw != null) {
+          break;
         }
-        this.joT = true;
-      }
-      label105:
-      do
-      {
+        this.lxH = true;
+        AppMethodBeat.o(2921);
         return true;
-        bool1 = false;
-        break;
-        if (this.joU)
-        {
-          this.joT = true;
-          this.joU = false;
-          return true;
-        }
-        localObject = this.joI;
-        if (localObject != null) {
-          ((i)localObject).start();
-        }
-        localObject = this.joH;
-      } while (localObject == null);
-      ((d)localObject).joy = false;
+      }
+      if (this.lxI)
+      {
+        this.lxH = true;
+        this.lxI = false;
+        AppMethodBeat.o(2921);
+        return true;
+      }
+      localObject = this.lxw;
+      if (localObject != null) {
+        ((com.tencent.mm.plugin.n.i)localObject).start();
+      }
+      localObject = this.lxv;
+      if (localObject != null) {
+        ((b)localObject).gX(false);
+      }
+      AppMethodBeat.o(2921);
       return true;
     }
     Object localObject = this.TAG;
     int i = hashCode();
-    if (this.joI == null) {}
+    if (this.lxw == null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      y.w((String)localObject, "%d player is null[%b] or it prepared [%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(this.PT) });
+      ab.w((String)localObject, "%d player is null[%b] or it prepared [%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(this.Pz) });
+      AppMethodBeat.o(2921);
       return false;
     }
   }
   
   public final void stop()
   {
-    y.i(this.TAG, "%d player stop [%s]", new Object[] { Integer.valueOf(hashCode()), bk.csb() });
-    i locali = this.joI;
+    AppMethodBeat.i(2922);
+    ab.i(this.TAG, "%d player stop [%s]", new Object[] { Integer.valueOf(hashCode()), bo.dtY() });
+    com.tencent.mm.plugin.n.i locali = this.lxw;
     if (locali != null) {
       locali.a(null);
     }
-    locali = this.joI;
+    locali = this.lxw;
     if (locali != null) {
       locali.stop();
     }
-    locali = this.joI;
+    locali = this.lxw;
     if (locali != null) {
       locali.release();
     }
-    this.joI = null;
+    this.lxw = null;
     this.videoWidth = 0;
     this.videoHeight = 0;
-    this.PT = false;
+    this.Pz = false;
     this.path = "";
-    this.joK = 0L;
+    this.lxy = 0L;
+    AppMethodBeat.o(2922);
   }
   
+  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "Lcom/tencent/mm/plugin/emojicapture/ui/EmojiVideoPlayTextureRenderSurface;", "invoke"})
   static final class b
-    extends h
-    implements b<d, n>
+    extends k
+    implements a.f.a.b<b, y>
   {
-    b(EmojiVideoPlayTextureView paramEmojiVideoPlayTextureView, int paramInt1, int paramInt2)
+    b(EmojiVideoPlayTextureView paramEmojiVideoPlayTextureView, int paramInt1, int paramInt2, com.tencent.mm.plugin.emojicapture.ui.b.i parami)
     {
       super();
     }

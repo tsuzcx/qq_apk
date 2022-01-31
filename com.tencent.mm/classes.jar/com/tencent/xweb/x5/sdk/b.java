@@ -6,11 +6,11 @@ public abstract interface b
 {
   public abstract boolean a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, f.a parama);
   
-  public abstract boolean in(Context paramContext);
-  
   public abstract boolean isDownloadForeground();
   
   public abstract boolean isDownloading();
+  
+  public abstract boolean jU(Context paramContext);
   
   public abstract void startDownload(Context paramContext, boolean paramBoolean);
   

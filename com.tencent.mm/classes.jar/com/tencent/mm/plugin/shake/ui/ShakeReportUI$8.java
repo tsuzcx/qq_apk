@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.shake.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShakeReportUI$8
   implements View.OnClickListener
@@ -11,9 +12,11 @@ final class ShakeReportUI$8
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.odm, ShakeSayHiListUI.class);
+    AppMethodBeat.i(24785);
+    paramView = new Intent(this.qRs, ShakeSayHiListUI.class);
     paramView.putExtra("IntentSayHiType", 1);
-    this.odm.startActivity(paramView);
+    this.qRs.startActivity(paramView);
+    AppMethodBeat.o(24785);
   }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="g" parent="@style/e0" />
-    <style name="h" parent="@style/e4" />
+    <style name="g" parent="@style/e6" />
+    <style name="h" parent="@style/e_" />
 </resources>

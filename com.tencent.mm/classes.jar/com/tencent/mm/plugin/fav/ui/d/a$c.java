@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fav.ui.d;
 
 public abstract interface a$c
 {
-  public abstract void eI(long paramLong);
+  public abstract void kf(long paramLong);
 }
 
 

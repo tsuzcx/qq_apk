@@ -2,19 +2,18 @@ package com.tencent.mm.plugin.webview.ui.tools.game;
 
 import android.content.Intent;
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.model.an;
-import com.tencent.mm.plugin.webview.model.an.e;
-import com.tencent.mm.plugin.webview.ui.tools.f;
+import com.tencent.mm.plugin.webview.model.as;
+import com.tencent.mm.plugin.webview.model.as.e;
 import com.tencent.mm.plugin.webview.ui.tools.game.menu.b.c;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.d.62;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.d.70;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.i.a;
+import com.tencent.mm.plugin.webview.ui.tools.k;
 import com.tencent.mm.protocal.GeneralControlWrapper;
-import com.tencent.mm.protocal.c.awk;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.protocal.protobuf.bcz;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,73 +23,85 @@ final class GameWebViewUI$2
 {
   GameWebViewUI$2(GameWebViewUI paramGameWebViewUI) {}
   
-  public final void f(MenuItem paramMenuItem)
+  public final void c(MenuItem paramMenuItem)
   {
-    paramMenuItem = (awk)GameWebViewUI.d(this.rwB).get(Integer.valueOf(paramMenuItem.getItemId()));
-    if (paramMenuItem == null) {}
-    do
+    AppMethodBeat.i(8725);
+    paramMenuItem = (bcz)GameWebViewUI.l(this.vnt).get(Integer.valueOf(paramMenuItem.getItemId()));
+    if (paramMenuItem == null)
     {
-      do
+      AppMethodBeat.o(8725);
+      return;
+    }
+    switch (GameWebViewUI.8.vnw[com.tencent.mm.plugin.webview.ui.tools.game.menu.c.a.KP(paramMenuItem.wzE).ordinal()])
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(8725);
+      return;
+      Object localObject = new Intent();
+      ((Intent)localObject).putExtra("rawUrl", paramMenuItem.wXs);
+      com.tencent.mm.bq.d.b(this.vnt.getContext(), "webview", ".ui.tools.game.GameWebViewUI", (Intent)localObject);
+      AppMethodBeat.o(8725);
+      return;
+      paramMenuItem = GameWebViewUI.m(this.vnt).dcp();
+      paramMenuItem.uWQ = new Object[] { this.vnt.cJr, Integer.valueOf(32), Integer.valueOf(1) };
+      paramMenuItem.b(this.vnt.igU);
+      if (!GameWebViewUI.n(this.vnt))
       {
-        do
+        this.vnt.finish();
+        AppMethodBeat.o(8725);
+        return;
+        paramMenuItem = this.vnt.getIntent().getStringExtra("KPublisherId");
+        localObject = this.vnt.getIntent().getStringExtra("KAppId");
+        String str = this.vnt.getIntent().getStringExtra("srcUsername");
+        as.e locale = GameWebViewUI.o(this.vnt).dcp();
+        locale.uWQ = new Object[] { this.vnt.cJr, Integer.valueOf(1), Integer.valueOf(1), paramMenuItem, localObject, str };
+        locale.b(this.vnt.igU);
+        GameWebViewUI.b(this.vnt, GameWebViewUI.p(this.vnt).ddW().dqx());
+        GameWebViewUI.q(this.vnt);
+        AppMethodBeat.o(8725);
+        return;
+        paramMenuItem = GameWebViewUI.r(this.vnt).dcp();
+        paramMenuItem.uWQ = new Object[] { this.vnt.cJr, Integer.valueOf(3), Integer.valueOf(1) };
+        paramMenuItem.b(this.vnt.igU);
+        h.qsU.idkeyStat(157L, 6L, 1L, false);
+        GameWebViewUI.c(this.vnt, GameWebViewUI.s(this.vnt).ddW().dqx());
+        GameWebViewUI.t(this.vnt);
+        AppMethodBeat.o(8725);
+        return;
+        paramMenuItem = GameWebViewUI.u(this.vnt).dcp();
+        paramMenuItem.uWQ = new Object[] { this.vnt.cJr, Integer.valueOf(10), Integer.valueOf(1) };
+        paramMenuItem.b(this.vnt.igU);
+        if (GameWebViewUI.v(this.vnt) != null)
         {
+          GameWebViewUI.w(this.vnt).reload();
+          AppMethodBeat.o(8725);
           return;
-          switch (GameWebViewUI.8.rwD[com.tencent.mm.plugin.webview.ui.tools.game.menu.c.a.CU(paramMenuItem.sYX).ordinal()])
+          paramMenuItem = GameWebViewUI.x(this.vnt).dcp();
+          paramMenuItem.uWQ = new Object[] { this.vnt.cJr, Integer.valueOf(31), Integer.valueOf(1) };
+          paramMenuItem.b(this.vnt.igU);
+          GameWebViewUI.y(this.vnt);
+          AppMethodBeat.o(8725);
+          return;
+          paramMenuItem = GameWebViewUI.z(this.vnt).dcp();
+          paramMenuItem.uWQ = new Object[] { this.vnt.cJr, Integer.valueOf(11), Integer.valueOf(1) };
+          paramMenuItem.b(this.vnt.igU);
+          GameWebViewUI.A(this.vnt);
+          AppMethodBeat.o(8725);
+          return;
+          if (this.vnt.uQS != null)
           {
-          default: 
-            return;
-          case 1: 
-            localObject = new Intent();
-            ((Intent)localObject).putExtra("rawUrl", paramMenuItem.sYY);
-            com.tencent.mm.br.d.b(this.rwB.mController.uMN, "webview", ".ui.tools.game.GameWebViewUI", (Intent)localObject);
-            return;
-          case 2: 
-            paramMenuItem = GameWebViewUI.f(this.rwB).ccm();
-            paramMenuItem.rgD = new Object[] { this.rwB.caS, Integer.valueOf(32), Integer.valueOf(1) };
-            paramMenuItem.c(GameWebViewUI.e(this.rwB));
+            localObject = this.vnt.uQS;
+            int i = paramMenuItem.xsZ;
+            ab.i("MicroMsg.JsApiHandler", "onCustomGameMenuClicked");
+            paramMenuItem = new HashMap();
+            paramMenuItem.put("itemId", Integer.valueOf(i));
+            al.d(new d.70((com.tencent.mm.plugin.webview.ui.tools.jsapi.d)localObject, i.a.b("onCustomGameMenuClicked", paramMenuItem, ((com.tencent.mm.plugin.webview.ui.tools.jsapi.d)localObject).voB, ((com.tencent.mm.plugin.webview.ui.tools.jsapi.d)localObject).voC)));
           }
-        } while (GameWebViewUI.g(this.rwB));
-        this.rwB.finish();
-        return;
-        paramMenuItem = this.rwB.getIntent().getStringExtra("KPublisherId");
-        localObject = this.rwB.getIntent().getStringExtra("KAppId");
-        String str = this.rwB.getIntent().getStringExtra("srcUsername");
-        an.e locale = GameWebViewUI.i(this.rwB).ccm();
-        locale.rgD = new Object[] { this.rwB.caS, Integer.valueOf(1), Integer.valueOf(1), paramMenuItem, localObject, str };
-        locale.c(GameWebViewUI.h(this.rwB));
-        GameWebViewUI.a(this.rwB, GameWebViewUI.j(this.rwB).cdJ().coX());
-        GameWebViewUI.k(this.rwB);
-        return;
-        paramMenuItem = GameWebViewUI.m(this.rwB).ccm();
-        paramMenuItem.rgD = new Object[] { this.rwB.caS, Integer.valueOf(3), Integer.valueOf(1) };
-        paramMenuItem.c(GameWebViewUI.l(this.rwB));
-        h.nFQ.a(157L, 6L, 1L, false);
-        GameWebViewUI.b(this.rwB, GameWebViewUI.n(this.rwB).cdJ().coX());
-        GameWebViewUI.o(this.rwB);
-        return;
-        paramMenuItem = GameWebViewUI.q(this.rwB).ccm();
-        paramMenuItem.rgD = new Object[] { this.rwB.caS, Integer.valueOf(10), Integer.valueOf(1) };
-        paramMenuItem.c(GameWebViewUI.p(this.rwB));
-      } while (GameWebViewUI.r(this.rwB) == null);
-      GameWebViewUI.s(this.rwB).reload();
-      return;
-      paramMenuItem = GameWebViewUI.u(this.rwB).ccm();
-      paramMenuItem.rgD = new Object[] { this.rwB.caS, Integer.valueOf(31), Integer.valueOf(1) };
-      paramMenuItem.c(GameWebViewUI.t(this.rwB));
-      GameWebViewUI.v(this.rwB);
-      return;
-      paramMenuItem = GameWebViewUI.x(this.rwB).ccm();
-      paramMenuItem.rgD = new Object[] { this.rwB.caS, Integer.valueOf(11), Integer.valueOf(1) };
-      paramMenuItem.c(GameWebViewUI.w(this.rwB));
-      GameWebViewUI.y(this.rwB);
-      return;
-    } while (GameWebViewUI.z(this.rwB) == null);
-    Object localObject = GameWebViewUI.A(this.rwB);
-    int i = paramMenuItem.tsZ;
-    y.i("MicroMsg.JsApiHandler", "onCustomGameMenuClicked");
-    paramMenuItem = new HashMap();
-    paramMenuItem.put("itemId", Integer.valueOf(i));
-    ai.d(new d.62((com.tencent.mm.plugin.webview.ui.tools.jsapi.d)localObject, i.a.a("onCustomGameMenuClicked", paramMenuItem, ((com.tencent.mm.plugin.webview.ui.tools.jsapi.d)localObject).rxI, ((com.tencent.mm.plugin.webview.ui.tools.jsapi.d)localObject).rxJ)));
+        }
+      }
+    }
   }
 }
 

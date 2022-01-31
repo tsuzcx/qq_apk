@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.f.a.b;
-import com.tencent.mm.ui.f.a.c.a;
-import com.tencent.mm.ui.f.a.d;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.g.a.b;
+import com.tencent.mm.ui.g.a.c.a;
+import com.tencent.mm.ui.g.a.e;
 
 final class ShowNonWeixinFriendUI$2$1
   implements c.a
@@ -16,23 +15,31 @@ final class ShowNonWeixinFriendUI$2$1
   
   public final void a(b paramb)
   {
-    y.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite error");
+    AppMethodBeat.i(125587);
+    ab.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite error");
+    AppMethodBeat.o(125587);
   }
   
-  public final void a(d paramd)
+  public final void a(e parame)
   {
-    y.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite error");
-  }
-  
-  public final void l(Bundle paramBundle)
-  {
-    y.i("MicroMsg.ShowNonWeixinFriendUI", "fbinvite oncomplete");
-    h.a(this.fsP.fsO.mController.uMN, q.j.facebook_inviteqqfriends_invite_success, q.j.app_tip, new ShowNonWeixinFriendUI.2.1.1(this));
+    AppMethodBeat.i(125586);
+    ab.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite error");
+    AppMethodBeat.o(125586);
   }
   
   public final void onCancel()
   {
-    y.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite cancle");
+    AppMethodBeat.i(125589);
+    ab.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite cancle");
+    AppMethodBeat.o(125589);
+  }
+  
+  public final void u(Bundle paramBundle)
+  {
+    AppMethodBeat.i(125588);
+    ab.i("MicroMsg.ShowNonWeixinFriendUI", "fbinvite oncomplete");
+    h.a(this.gKr.gKq.getContext(), 2131299638, 2131297087, new ShowNonWeixinFriendUI.2.1.1(this));
+    AppMethodBeat.o(125588);
   }
 }
 

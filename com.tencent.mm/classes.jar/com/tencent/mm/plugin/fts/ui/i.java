@@ -3,14 +3,15 @@ package com.tencent.mm.plugin.fts.ui;
 import android.os.Looper;
 import android.view.View;
 import android.widget.AbsListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.c;
 import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.ui.a.h;
 import com.tencent.mm.plugin.sns.b.f;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,20 +21,24 @@ public final class i
   extends d
   implements e.b
 {
-  private boolean fiq;
-  private boolean hps;
-  private ah kAl = new ah(Looper.getMainLooper());
-  private boolean kBj;
-  private com.tencent.mm.plugin.fts.a.d.e kBp;
-  private com.tencent.mm.plugin.fts.ui.c.a kBq;
-  private ah kBr = new i.1(this, Looper.getMainLooper());
-  private boolean kBs;
-  private int kxU;
+  private boolean gzX;
+  private int ibk;
+  private boolean jcK;
+  private int lox;
+  private ak mWd;
+  private boolean mXb;
+  private com.tencent.mm.plugin.fts.a.d.e mXh;
+  private com.tencent.mm.plugin.fts.ui.c.a mXi;
+  private ak mXj;
+  private boolean mXk;
   
   public i(e parame, int paramInt1, int paramInt2)
   {
     super(parame);
-    this.kxU = paramInt1;
+    AppMethodBeat.i(61836);
+    this.mWd = new ak(Looper.getMainLooper());
+    this.mXj = new i.1(this, Looper.getMainLooper());
+    this.lox = paramInt1;
     parame = getContext();
     int j = -1;
     int i = j;
@@ -44,11 +49,13 @@ public final class i
     }
     for (;;)
     {
-      y.i("MicroMsg.FTS.FTSDetailAdapter", "searchType=%d | uiLogicType=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(i) });
+      ab.i("MicroMsg.FTS.FTSDetailAdapter", "searchType=%d | uiLogicType=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(i) });
       HashSet localHashSet = new HashSet();
       localHashSet.add(Integer.valueOf(i));
-      this.kBp = ((com.tencent.mm.plugin.fts.a.d.e)((com.tencent.mm.plugin.fts.a.n)g.t(com.tencent.mm.plugin.fts.a.n.class)).createFTSUIUnitList(localHashSet, parame, this, paramInt2).get(0));
-      this.kBq = new com.tencent.mm.plugin.fts.ui.c.a();
+      this.mXh = ((com.tencent.mm.plugin.fts.a.d.e)((com.tencent.mm.plugin.fts.a.n)g.G(com.tencent.mm.plugin.fts.a.n.class)).createFTSUIUnitList(localHashSet, parame, this, paramInt2).get(0));
+      this.mXi = new com.tencent.mm.plugin.fts.ui.c.a();
+      this.ibk = paramInt2;
+      AppMethodBeat.o(61836);
       return;
       i = 4112;
       continue;
@@ -72,111 +79,133 @@ public final class i
   
   public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
   {
-    if (paramString.equals(this.bVk)) {
-      this.fiq = false;
+    AppMethodBeat.i(61842);
+    if (paramString.equals(this.query)) {
+      this.gzX = false;
     }
-    setCount(parame.rx(0));
+    setCount(parame.wt(0));
     notifyDataSetChanged();
-    N(getCount(), true);
-    this.kBq.kDV = System.currentTimeMillis();
-    paramString = this.kBq;
-    parame = ((a)parame).kzW.iterator();
+    V(getCount(), true);
+    this.mXi.nae = System.currentTimeMillis();
+    paramString = this.mXi;
+    parame = ((a)parame).mVO.iterator();
     while (parame.hasNext())
     {
       e.a locala = (e.a)parame.next();
-      int i = paramString.kDW;
-      paramString.kDW = (locala.kxO.size() + i);
+      int i = paramString.naf;
+      paramString.naf = (locala.mTC.size() + i);
     }
+    AppMethodBeat.o(61842);
   }
   
   protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
-    this.kBp.a(paramView, parama, paramBoolean);
-    if (parama.kyc)
+    AppMethodBeat.i(61840);
+    this.mXh.a(paramView, parama, paramBoolean);
+    if (parama.mTP)
     {
-      y.d("MicroMsg.FTS.FTSDetailAdapter", "searchType=%d | searchScene=%d | kvPosition=%d | kvSubPosition=%d | kvSearchId=%s | kvDocId=%d", new Object[] { Integer.valueOf(parama.kxU), Integer.valueOf(parama.kxJ), Integer.valueOf(parama.kxV), Integer.valueOf(parama.kxW), parama.kxX, Long.valueOf(parama.kxY) });
-      if (!this.kBj)
+      ab.d("MicroMsg.FTS.FTSDetailAdapter", "searchType=%d | searchScene=%d | kvPosition=%d | kvSubPosition=%d | kvSearchId=%s | kvDocId=%d", new Object[] { Integer.valueOf(parama.lox), Integer.valueOf(parama.ibk), Integer.valueOf(parama.mTI), Integer.valueOf(parama.mTJ), parama.mTK, Long.valueOf(parama.mTL) });
+      if (!this.mXb)
       {
-        k.c(this.bVk, true, aVE(), parama.kxU);
-        this.kBj = true;
+        k.c(this.query, true, bCf(), parama.lox);
+        this.mXb = true;
       }
-      k.a(parama, this.kBq);
+      k.a(parama, this.mXi);
     }
-    while (!(parama instanceof h)) {
+    for (;;)
+    {
+      AppMethodBeat.o(61840);
       return false;
+      if ((parama instanceof h))
+      {
+        this.mXk = true;
+        k.a(parama, this.mXi);
+      }
     }
-    this.kBs = true;
-    k.a(parama, this.kBq);
-    return false;
   }
   
-  protected final int aVE()
+  protected final int bCf()
   {
-    return this.kBp.aVE();
+    AppMethodBeat.i(61844);
+    int i = this.mXh.bCf();
+    AppMethodBeat.o(61844);
+    return i;
   }
   
-  protected final void aVV()
+  protected final void bCy()
   {
-    this.fiq = true;
-    this.kBj = false;
-    this.kBq.reset();
-    this.kBp.a(this.bVk, this.kAl, new HashSet());
+    AppMethodBeat.i(61838);
+    this.gzX = true;
+    this.mXb = false;
+    this.mXi.nag = com.tencent.mm.plugin.fts.a.d.wp(this.ibk);
+    this.mXh.a(this.query, this.mWd, new HashSet(), 0L);
+    AppMethodBeat.o(61838);
   }
   
   protected final void clearCache()
   {
+    AppMethodBeat.i(61839);
     super.clearCache();
-    this.kBp.adg();
-    this.kBp.aVC();
-    this.kBr.removeMessages(1);
+    this.mXi.reset();
+    this.mXh.clearData();
+    this.mXh.bCd();
+    this.mXj.removeMessages(1);
+    AppMethodBeat.o(61839);
   }
   
   public final void finish()
   {
-    if (!this.kBj)
+    AppMethodBeat.i(61841);
+    if (!this.mXb)
     {
-      this.kBj = true;
-      if (!this.kBs) {
-        k.c(this.bVk, false, aVE(), this.kxU);
+      this.mXb = true;
+      if (!this.mXk) {
+        k.c(this.query, false, bCf(), this.lox);
       }
     }
-    this.kBq.reset();
+    this.mXi.reset();
     super.finish();
+    AppMethodBeat.o(61841);
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
+    AppMethodBeat.i(61843);
     super.onScrollStateChanged(paramAbsListView, paramInt);
     if (paramInt == 2)
     {
-      this.hps = true;
-      ((com.tencent.mm.plugin.fts.a.n)g.t(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().aVk();
-      com.tencent.mm.plugin.sns.b.n.omC.pause();
-      y.d("MicroMsg.FTS.FTSDetailAdapter", "ImageEngine attach is false");
-    }
-    do
-    {
+      this.jcK = true;
+      ((com.tencent.mm.plugin.fts.a.n)g.G(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().bBJ();
+      com.tencent.mm.plugin.sns.b.n.raQ.pause();
+      ab.d("MicroMsg.FTS.FTSDetailAdapter", "ImageEngine attach is false");
+      AppMethodBeat.o(61843);
       return;
-      this.hps = false;
-    } while (((com.tencent.mm.plugin.fts.a.n)g.t(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().aVl());
-    this.kBr.removeMessages(1);
-    this.kBr.sendEmptyMessageDelayed(1, 200L);
+    }
+    this.jcK = false;
+    if (!((com.tencent.mm.plugin.fts.a.n)g.G(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().bBK())
+    {
+      this.mXj.removeMessages(1);
+      this.mXj.sendEmptyMessageDelayed(1, 200L);
+    }
+    AppMethodBeat.o(61843);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a ry(int paramInt)
+  protected final com.tencent.mm.plugin.fts.a.d.a.a wu(int paramInt)
   {
-    com.tencent.mm.plugin.fts.a.d.a.a locala = this.kBp.ry(paramInt);
+    AppMethodBeat.i(61837);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.mXh.wu(paramInt);
     if (locala != null)
     {
-      locala.kxV = paramInt;
+      locala.mTI = paramInt;
       locala.pageType = 2;
     }
+    AppMethodBeat.o(61837);
     return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.i
  * JD-Core Version:    0.7.0.1
  */

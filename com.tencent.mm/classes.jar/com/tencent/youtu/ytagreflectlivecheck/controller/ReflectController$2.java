@@ -1,6 +1,7 @@
 package com.tencent.youtu.ytagreflectlivecheck.controller;
 
 import android.graphics.ColorMatrixColorFilter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytagreflectlivecheck.jni.JNIUtils;
 import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
 import com.tencent.youtu.ytagreflectlivecheck.manager.ProcessManager.ProcessResult;
@@ -23,6 +24,7 @@ class ReflectController$2
   
   public void onFinish()
   {
+    AppMethodBeat.i(123153);
     try
     {
       YTLogger.i("YoutuLightLiveCheck", "finish timer.");
@@ -34,17 +36,20 @@ class ReflectController$2
       YTLogger.i("mCountDownTimer", "current thread1: " + Thread.currentThread());
       new Timer().schedule(new ReflectController.2.1(this), 400L);
       ReflectController.access$1000(this.this$0);
+      AppMethodBeat.o(123153);
       return;
     }
     catch (Exception localException)
     {
       YTException.report(localException);
       ReflectController.access$1200(this.this$0).onFailed(ReflectController.access$1100(), "Finish check failed. ", "Check error report to get more information.");
+      AppMethodBeat.o(123153);
     }
   }
   
   public void onTick(long paramLong)
   {
+    AppMethodBeat.i(123152);
     ReflectController.access$102(this.this$0, System.currentTimeMillis());
     YTLogger.i("mCountDownTimer", "unit:" + this.val$unit + " | real unit:" + (ReflectController.access$100(this.this$0) - ReflectController.access$200(this.this$0)));
     ReflectController.access$202(this.this$0, ReflectController.access$100(this.this$0));
@@ -68,6 +73,7 @@ class ReflectController$2
           ((ArrayList)localObject).add(Integer.valueOf((int)f2));
           ((ArrayList)localObject).add(Integer.valueOf((int)f3));
           ReflectController.access$308(this.this$0);
+          AppMethodBeat.o(123152);
           return;
         }
         if (ReflectController.access$300(this.this$0) == ReflectController.access$500(this.this$0))
@@ -83,6 +89,7 @@ class ReflectController$2
       catch (JSONException localJSONException)
       {
         YTException.report(localJSONException);
+        AppMethodBeat.o(123152);
         return;
       }
       YTLogger.i("YoutuLightLiveCheck", "change color point. mFrame: " + ReflectController.access$300(this.this$0));

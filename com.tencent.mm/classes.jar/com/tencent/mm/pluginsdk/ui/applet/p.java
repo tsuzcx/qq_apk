@@ -1,20 +1,20 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import com.tencent.mm.as.a.a.c;
+import com.tencent.mm.at.a.a.c;
 
 public abstract interface p
 {
-  public abstract boolean WC(String paramString);
+  public abstract boolean ami(String paramString);
   
-  public abstract Object WD(String paramString);
+  public abstract Object amj(String paramString);
   
-  public abstract c WE(String paramString);
+  public abstract c amk(String paramString);
   
-  public abstract String bJ(Object paramObject);
+  public abstract String cn(Object paramObject);
   
-  public abstract String bK(Object paramObject);
+  public abstract String co(Object paramObject);
   
-  public abstract String bL(Object paramObject);
+  public abstract String cp(Object paramObject);
 }
 
 

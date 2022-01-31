@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.a.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.a.b.a.a;
 import java.util.Map;
 
@@ -10,51 +11,46 @@ final class g$4
   
   public final void run()
   {
-    g localg;
-    long l1;
-    long l2;
-    boolean bool;
-    h localh;
-    if (this.olj.fF(this.olh))
+    AppMethodBeat.i(35719);
+    if (this.qZr.li(this.qZp))
     {
-      localg = this.olj;
-      l1 = this.olh;
-      l2 = this.dET;
-      bool = this.oli;
-      if (!bool) {
-        break label136;
+      g localg = this.qZr;
+      long l1 = this.qZp;
+      long l2 = this.eCv;
+      boolean bool = this.qZq;
+      h localh;
+      if (bool) {
+        if (localg.qZg.containsKey(Long.valueOf(l1))) {
+          localh = (h)localg.qZg.get(Long.valueOf(l1));
+        }
       }
-      if (!localg.okX.containsKey(Long.valueOf(l1))) {
-        break label122;
-      }
-      localh = (h)localg.okX.get(Long.valueOf(l1));
-    }
-    for (;;)
-    {
-      if (localh.olx.omz == 0L) {
-        localh.olx.omz = l2;
-      }
-      if (!bool) {
-        break;
-      }
-      localg.okX.put(Long.valueOf(l1), localh);
-      return;
-      label122:
-      localh = new h("timeline");
-      continue;
-      label136:
-      if (localg.okW.containsKey(Long.valueOf(l1))) {
-        localh = (h)localg.okW.get(Long.valueOf(l1));
-      } else {
+      for (;;)
+      {
+        if (localh.qZJ.raN == 0L) {
+          localh.qZJ.raN = l2;
+        }
+        if (!bool) {
+          break;
+        }
+        localg.qZg.put(Long.valueOf(l1), localh);
+        AppMethodBeat.o(35719);
+        return;
         localh = new h("timeline");
+        continue;
+        if (localg.qZf.containsKey(Long.valueOf(l1))) {
+          localh = (h)localg.qZf.get(Long.valueOf(l1));
+        } else {
+          localh = new h("timeline");
+        }
       }
+      localg.qZf.put(Long.valueOf(l1), localh);
     }
-    localg.okW.put(Long.valueOf(l1), localh);
+    AppMethodBeat.o(35719);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.b.g.4
  * JD-Core Version:    0.7.0.1
  */

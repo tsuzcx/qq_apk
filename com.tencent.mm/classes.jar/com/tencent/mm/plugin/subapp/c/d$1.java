@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.subapp.c;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class d$1
   implements MediaPlayer.OnCompletionListener
@@ -11,14 +12,17 @@ final class d$1
   
   public final void onCompletion(MediaPlayer paramMediaPlayer)
   {
+    AppMethodBeat.i(25260);
     try
     {
       paramMediaPlayer.release();
+      AppMethodBeat.o(25260);
       return;
     }
     catch (Exception paramMediaPlayer)
     {
-      y.printErrStackTrace("MicroMsg.SubCoreVoiceRemind", paramMediaPlayer, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.SubCoreVoiceRemind", paramMediaPlayer, "", new Object[0]);
+      AppMethodBeat.o(25260);
     }
   }
 }

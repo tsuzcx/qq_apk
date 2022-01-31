@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.concurrent.CountDownLatch;
 
 final class PreLoadWebViewUI$2
@@ -11,29 +12,31 @@ final class PreLoadWebViewUI$2
   
   public final void run()
   {
+    AppMethodBeat.i(8560);
     try
     {
-      PreLoadWebViewUI.b(this.rvf).await();
-      if (PreLoadWebViewUI.c(this.rvf))
+      PreLoadWebViewUI.b(this.vlu).await();
+      if (PreLoadWebViewUI.c(this.vlu))
       {
-        y.i("PreLoadWebViewUI", "send onUiInit to webview");
-        this.rvf.cfy();
-        PreLoadWebViewUI.d(this.rvf).am(this.rvf.cfJ());
+        ab.i("MicroMsg.WebSearch.PreLoadWebViewUI", "send onUiInit to webview");
+        this.vlu.dfG();
+        this.vlu.uQS.aL(this.vlu.dfS());
       }
+      AppMethodBeat.o(8560);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
       for (;;)
       {
-        y.printErrStackTrace("PreLoadWebViewUI", localInterruptedException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.WebSearch.PreLoadWebViewUI", localInterruptedException, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.PreLoadWebViewUI.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Context;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class r
   implements HelperHeaderPreference.a
@@ -16,22 +15,27 @@ final class r
   
   public final void a(HelperHeaderPreference paramHelperHeaderPreference)
   {
-    if ((q.Gu() & 0x1000000) == 0) {}
+    AppMethodBeat.i(23618);
+    if ((com.tencent.mm.model.r.Zy() & 0x8000) == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramHelperHeaderPreference.ig(bool);
+      paramHelperHeaderPreference.kf(bool);
+      AppMethodBeat.o(23618);
       return;
     }
   }
   
   public final CharSequence getHint()
   {
-    return this.context.getString(R.l.contact_info_linkedin_tip);
+    AppMethodBeat.i(23617);
+    String str = this.context.getString(2131298615);
+    AppMethodBeat.o(23617);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.r
  * JD-Core Version:    0.7.0.1
  */

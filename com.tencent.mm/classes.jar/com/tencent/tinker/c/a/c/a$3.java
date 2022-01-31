@@ -10,7 +10,7 @@ public final class a$3
   
   public final void writeByte(int paramInt)
   {
-    this.wVn.write(paramInt);
+    this.BrS.write(paramInt);
   }
 }
 

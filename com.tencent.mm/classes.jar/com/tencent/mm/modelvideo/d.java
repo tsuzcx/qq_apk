@@ -3,31 +3,33 @@ package com.tencent.mm.modelvideo;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m.a;
-import com.tencent.mm.ah.m.b;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.j.f.a;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bd.b;
-import com.tencent.mm.network.ab;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.m.a;
+import com.tencent.mm.ai.m.b;
+import com.tencent.mm.al.c;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.i.g.a;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.bf.b;
+import com.tencent.mm.model.n;
+import com.tencent.mm.network.ac;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.c;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.uh;
-import com.tencent.mm.protocal.c.ui;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.yu;
+import com.tencent.mm.protocal.protobuf.yv;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.storage.bh;
 import com.tencent.mm.storage.bi;
 import java.util.HashSet;
@@ -35,30 +37,30 @@ import java.util.Map;
 import junit.framework.Assert;
 
 public final class d
-  extends com.tencent.mm.ah.m
+  extends m
   implements k
 {
-  private String bUi;
-  private com.tencent.mm.ah.b dmK;
-  com.tencent.mm.ah.f dmL;
-  boolean eFK;
-  boolean eFL;
-  s eFM = null;
-  com.tencent.mm.j.g eFN;
-  int eFO = com.tencent.mm.j.a.MediaType_VIDEO;
-  private boolean eFP = false;
-  boolean eFQ = true;
-  long eFR = 0L;
-  int ebK = 0;
-  private am ebj = new am(new d.3(this), false);
-  String eoQ = "";
-  String eoX = null;
-  int eoY = 0;
-  private f.a epa = new d.1(this);
+  private String cBO;
+  com.tencent.mm.ai.f callback;
+  String fFo;
+  String fFv;
+  int fFw;
+  private g.a fFy;
+  boolean fVB;
+  boolean fVC;
+  s fVD;
+  com.tencent.mm.i.h fVE;
+  int fVF;
+  private boolean fVG;
+  boolean fVH;
+  long fVI;
   String fileName;
-  int retCode = 0;
-  private int startOffset = 0;
-  long startTime = 0L;
+  private ap frx;
+  int fsd;
+  int retCode;
+  private com.tencent.mm.ai.b rr;
+  private int startOffset;
+  long startTime;
   
   public d(String paramString)
   {
@@ -67,248 +69,269 @@ public final class d
   
   public d(String paramString, boolean paramBoolean)
   {
+    AppMethodBeat.i(50670);
+    this.fVD = null;
+    this.fFo = "";
+    this.startOffset = 0;
+    this.startTime = 0L;
+    this.fsd = 0;
+    this.retCode = 0;
+    this.fVF = com.tencent.mm.i.a.MediaType_VIDEO;
+    this.fVG = false;
+    this.fVH = true;
+    this.fFv = null;
+    this.fFw = 0;
+    this.fVI = 0L;
+    this.fFy = new d.1(this);
+    this.frx = new ap(new d.3(this), false);
     if (paramString != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
       this.fileName = paramString;
-      this.eFK = paramBoolean;
-      y.i("MicroMsg.NetSceneDownloadVideo", "%s NetSceneDownloadVideo:  file [%s] isCompleteOnlineVideo [%b]", new Object[] { Sj(), paramString, Boolean.valueOf(paramBoolean) });
+      this.fVB = paramBoolean;
+      ab.i("MicroMsg.NetSceneDownloadVideo", "%s NetSceneDownloadVideo:  file [%s] isCompleteOnlineVideo [%b]", new Object[] { alu(), paramString, Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(50670);
       return;
     }
   }
   
-  private boolean Si()
+  private boolean alt()
   {
-    y.d("MicroMsg.NetSceneDownloadVideo", "%s parseVideoMsgXML content: %s", new Object[] { Sj(), this.eFM.SD() });
-    Object localObject4 = bn.s(this.eFM.SD(), "msg");
+    AppMethodBeat.i(50671);
+    ab.d("MicroMsg.NetSceneDownloadVideo", "%s parseVideoMsgXML content: %s", new Object[] { alu(), this.fVD.alP() });
+    Object localObject4 = br.F(this.fVD.alP(), "msg");
     if (localObject4 == null)
     {
-      h.nFQ.a(111L, 214L, 1L, false);
-      y.w("MicroMsg.NetSceneDownloadVideo", "%s cdntra parse video recv xml failed", new Object[] { Sj() });
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(111L, 214L, 1L, false);
+      ab.w("MicroMsg.NetSceneDownloadVideo", "%s cdntra parse video recv xml failed", new Object[] { alu() });
+      AppMethodBeat.o(50671);
       return false;
     }
     String str1 = (String)((Map)localObject4).get(".msg.videomsg.$cdnvideourl");
     Object localObject1 = (String)((Map)localObject4).get(".msg.videomsg.$tpvideourl");
-    if ((bk.bl(str1)) && (bk.bl((String)localObject1)))
+    if ((bo.isNullOrNil(str1)) && (bo.isNullOrNil((String)localObject1)))
     {
-      h.nFQ.a(111L, 213L, 1L, false);
-      y.w("MicroMsg.NetSceneDownloadVideo", "%s cdntra parse video recv xml failed", new Object[] { Sj() });
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(111L, 213L, 1L, false);
+      ab.w("MicroMsg.NetSceneDownloadVideo", "%s cdntra parse video recv xml failed", new Object[] { alu() });
+      AppMethodBeat.o(50671);
       return false;
     }
     Object localObject5 = (String)((Map)localObject4).get(".msg.videomsg.$aeskey");
-    this.ebK = bk.getInt((String)((Map)localObject4).get(".msg.videomsg.$length"), 0);
+    this.fsd = bo.getInt((String)((Map)localObject4).get(".msg.videomsg.$length"), 0);
     String str2 = (String)((Map)localObject4).get(".msg.videomsg.$fileparam");
-    this.eoQ = c.a("downvideo", this.eFM.createTime, this.eFM.SA(), this.eFM.getFileName());
-    if (bk.bl(this.eoQ))
+    this.fFo = c.a("downvideo", this.fVD.createTime, this.fVD.getUser(), this.fVD.getFileName());
+    if (bo.isNullOrNil(this.fFo))
     {
-      y.w("MicroMsg.NetSceneDownloadVideo", "%s cdntra genClientId failed not use cdn file:%s", new Object[] { Sj(), this.eFM.getFileName() });
+      ab.w("MicroMsg.NetSceneDownloadVideo", "%s cdntra genClientId failed not use cdn file:%s", new Object[] { alu(), this.fVD.getFileName() });
+      AppMethodBeat.o(50671);
       return false;
     }
-    if ((!this.eFK) && (this.ebK < 1048576) && (this.eFM != null) && (this.eFM.bRT > 0))
+    if ((!this.fVB) && (this.fsd < 1048576) && (this.fVD != null) && (this.fVD.czu > 0))
     {
-      this.eFK = true;
-      y.i("MicroMsg.NetSceneDownloadVideo", "%s less 1M and had preload, reset isCompleteOnlineVideo [%b]", new Object[] { Sj(), Boolean.valueOf(this.eFK) });
+      this.fVB = true;
+      ab.i("MicroMsg.NetSceneDownloadVideo", "%s less 1M and had preload, reset isCompleteOnlineVideo [%b]", new Object[] { alu(), Boolean.valueOf(this.fVB) });
     }
     Object localObject2 = (String)((Map)localObject4).get(".msg.videomsg.$md5");
     Object localObject3 = new StringBuilder();
-    o.Sr();
-    localObject3 = t.nS(this.fileName) + ".tmp";
-    this.eFN = new com.tencent.mm.j.g();
-    this.eFN.filename = this.eFM.getFileName();
-    this.eFN.dme = ((String)localObject2);
-    this.eFN.dmf = this.ebK;
-    this.eFN.dmg = 0;
-    this.eFN.bRO = this.eFM.SB();
-    this.eFN.dmh = this.eFM.SA();
-    com.tencent.mm.j.g localg = this.eFN;
+    o.alE();
+    localObject3 = t.vf(this.fileName) + ".tmp";
+    this.fVE = new com.tencent.mm.i.h();
+    this.fVE.filename = this.fVD.getFileName();
+    this.fVE.edH = ((String)localObject2);
+    this.fVE.edI = this.fsd;
+    this.fVE.edJ = 0;
+    this.fVE.czp = this.fVD.alM();
+    this.fVE.edK = this.fVD.getUser();
+    com.tencent.mm.i.h localh = this.fVE;
     int i;
-    label619:
+    label639:
     int k;
-    if (com.tencent.mm.model.s.fn(this.eFM.SA()))
+    if (com.tencent.mm.model.t.lA(this.fVD.getUser()))
     {
-      i = com.tencent.mm.model.m.gM(this.eFM.SA());
-      localg.bRQ = i;
-      this.eFN.field_mediaId = this.eoQ;
-      this.eFN.field_fullpath = ((String)localObject3);
-      this.eFN.field_fileType = com.tencent.mm.j.a.MediaType_VIDEO;
-      this.eFN.field_totalLen = this.ebK;
-      this.eFN.field_aesKey = ((String)localObject5);
-      this.eFN.field_fileId = str1;
-      this.eFN.field_priority = com.tencent.mm.j.a.dlk;
-      this.eFN.dlP = this.epa;
-      this.eFN.field_wxmsgparam = str2;
-      localObject5 = this.eFN;
-      if (!com.tencent.mm.model.s.fn(this.eFM.SA())) {
-        break label1639;
+      i = n.nv(this.fVD.getUser());
+      localh.czr = i;
+      this.fVE.field_mediaId = this.fFo;
+      this.fVE.field_fullpath = ((String)localObject3);
+      this.fVE.field_fileType = com.tencent.mm.i.a.MediaType_VIDEO;
+      this.fVE.field_totalLen = this.fsd;
+      this.fVE.field_aesKey = ((String)localObject5);
+      this.fVE.field_fileId = str1;
+      this.fVE.field_priority = com.tencent.mm.i.a.ecF;
+      this.fVE.edp = this.fFy;
+      this.fVE.field_wxmsgparam = str2;
+      localObject5 = this.fVE;
+      if (!com.tencent.mm.model.t.lA(this.fVD.getUser())) {
+        break label1664;
       }
       i = 1;
-      ((com.tencent.mm.j.g)localObject5).field_chattype = i;
-      this.eFN.dmi = this.eFM.dmi;
-      if (!bk.bl((String)localObject1))
+      ((com.tencent.mm.i.h)localObject5).field_chattype = i;
+      this.fVE.edL = this.fVD.edL;
+      if (!bo.isNullOrNil((String)localObject1))
       {
         localObject4 = (String)((Map)localObject4).get(".msg.videomsg.$tpauthkey");
-        this.eFN.field_fileId = "";
-        this.eFN.field_fileType = 19;
-        this.eFN.field_authKey = ((String)localObject4);
-        this.eFN.dlQ = ((String)localObject1);
+        this.fVE.field_fileId = "";
+        this.fVE.field_fileType = 19;
+        this.fVE.field_authKey = ((String)localObject4);
+        this.fVE.eds = ((String)localObject1);
       }
-      localObject4 = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().O(this.eFM.SA(), this.eFM.bXr);
-      this.eFN.dmk = ((cs)localObject4).field_createTime;
-      this.eFN.bXr = ((cs)localObject4).field_msgSvrId;
-      localObject1 = bd.iM(((cs)localObject4).czr);
-      localObject5 = this.eFN;
+      localObject4 = ((j)com.tencent.mm.kernel.g.E(j.class)).bPQ().ag(this.fVD.getUser(), this.fVD.cFn);
+      this.fVE.edN = ((dd)localObject4).field_createTime;
+      this.fVE.cFn = ((dd)localObject4).field_msgSvrId;
+      localObject1 = bf.pA(((dd)localObject4).dns);
+      localObject5 = this.fVE;
       if (localObject1 == null) {
-        break label1644;
+        break label1669;
       }
-      i = ((bd.b)localObject1).dWM;
-      label784:
-      ((com.tencent.mm.j.g)localObject5).dml = i;
-      if (this.eFM.SA().equals(((cs)localObject4).field_talker))
+      i = ((bf.b)localObject1).fmU;
+      label804:
+      ((com.tencent.mm.i.h)localObject5).edO = i;
+      if (this.fVD.getUser().equals(((dd)localObject4).field_talker))
       {
-        localObject5 = this.eFN;
+        localObject5 = this.fVE;
         if (localObject1 != null) {
-          break label1649;
+          break label1674;
         }
         i = 0;
-        label821:
-        ((com.tencent.mm.j.g)localObject5).field_limitrate = i;
+        label841:
+        ((com.tencent.mm.i.h)localObject5).field_limitrate = i;
       }
-      y.d("MicroMsg.NetSceneDownloadVideo", "%s limitrate:%d file:%s", new Object[] { Sj(), Integer.valueOf(this.eFN.field_limitrate), this.eFM.getFileName() });
-      if (!com.tencent.mm.ak.f.Nd().eiM.contains("video_" + this.eFM.eHI)) {
-        break label1661;
+      ab.d("MicroMsg.NetSceneDownloadVideo", "%s limitrate:%d file:%s", new Object[] { alu(), Integer.valueOf(this.fVE.field_limitrate), this.fVD.getFileName() });
+      if (!com.tencent.mm.al.f.afO().fyQ.contains("video_" + this.fVD.fXy)) {
+        break label1686;
       }
-      com.tencent.mm.ak.f.Nd().eiM.remove("video_" + this.eFM.eHI);
-      this.eFN.field_autostart = true;
-      label945:
-      if (3 == this.eFM.eHO) {
-        this.eFN.field_smallVideoFlag = 1;
+      com.tencent.mm.al.f.afO().fyQ.remove("video_" + this.fVD.fXy);
+      this.fVE.field_autostart = true;
+      label965:
+      if (3 == this.fVD.fXE) {
+        this.fVE.field_smallVideoFlag = 1;
       }
-      if ((bk.bl((String)localObject2)) || (this.eFK)) {
-        break label1692;
+      if ((bo.isNullOrNil((String)localObject2)) || (this.fVB)) {
+        break label1717;
       }
-      localObject1 = ((com.tencent.mm.plugin.r.a.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.r.a.a.class)).FD().dx((String)localObject2, this.ebK);
-      j = (int)com.tencent.mm.vfs.e.aeQ((String)localObject1);
-      k = this.ebK - j;
-      o.Sr();
-      localObject5 = t.nS(this.fileName);
-      int m = (int)com.tencent.mm.vfs.e.aeQ((String)localObject5);
+      localObject1 = ((com.tencent.mm.plugin.m.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.m.a.a.class)).YH().eG((String)localObject2, this.fsd);
+      j = (int)com.tencent.mm.vfs.e.avI((String)localObject1);
+      k = this.fsd - j;
+      o.alE();
+      localObject5 = t.vf(this.fileName);
+      int m = (int)com.tencent.mm.vfs.e.avI((String)localObject5);
       if (m > 0)
       {
-        y.w("MicroMsg.NetSceneDownloadVideo", "%s already copy dup file, but download again, something error here.", new Object[] { Sj() });
+        ab.w("MicroMsg.NetSceneDownloadVideo", "%s already copy dup file, but download again, something error here.", new Object[] { alu() });
         bool = com.tencent.mm.vfs.e.deleteFile((String)localObject5);
-        localObject1 = ((com.tencent.mm.plugin.r.a.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.r.a.a.class)).FD();
-        int n = this.ebK;
+        localObject1 = ((com.tencent.mm.plugin.m.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.m.a.a.class)).YH();
+        int n = this.fsd;
         i = 0;
-        if (!bk.bl((String)localObject2)) {
-          i = ((bh)localObject1).dXw.delete("MediaDuplication", "md5=? AND size=? AND status!=?", new String[] { localObject2, String.valueOf(n), "100" });
+        if (!bo.isNullOrNil((String)localObject2)) {
+          i = ((bh)localObject1).db.delete("MediaDuplication", "md5=? AND size=? AND status!=?", new String[] { localObject2, String.valueOf(n), "100" });
         }
-        localObject1 = u.oe(this.fileName);
-        ((s)localObject1).eHC = 0;
-        ((s)localObject1).bcw = 16;
+        localObject1 = u.vr(this.fileName);
+        ((s)localObject1).fXs = 0;
+        ((s)localObject1).bsY = 16;
         u.f((s)localObject1);
-        y.w("MicroMsg.NetSceneDownloadVideo", "%s don't copy dup file, go to download now. target video len %d, delete file:%b,delete db: %d", new Object[] { Sj(), Integer.valueOf(m), Boolean.valueOf(bool), Integer.valueOf(i) });
+        ab.w("MicroMsg.NetSceneDownloadVideo", "%s don't copy dup file, go to download now. target video len %d, delete file:%b,delete db: %d", new Object[] { alu(), Integer.valueOf(m), Boolean.valueOf(bool), Integer.valueOf(i) });
         localObject1 = "";
       }
-      y.i("MicroMsg.NetSceneDownloadVideo", "%s MediaCheckDuplicationStorage: totallen:%s md5:%s  dup(len:%d path:%s) diffLen:%d to:%s target video len %d", new Object[] { Sj(), Integer.valueOf(this.ebK), localObject2, Integer.valueOf(j), localObject1, Integer.valueOf(k), localObject3, Integer.valueOf(m) });
-      if (bk.bl((String)localObject1)) {
-        break label1678;
-      }
-      if ((k < 0) || (k > 16)) {
-        break label1692;
-      }
-      y.i("MicroMsg.NetSceneDownloadVideo", "%s MediaCheckDuplicationStorage copy dup file now :%s -> %s", new Object[] { Sj(), localObject1, localObject3 });
-      com.tencent.mm.vfs.e.r((String)localObject1, (String)localObject3);
-      jt(this.ebK);
-      ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().a(new g.c(((cs)localObject4).field_talker, "update", (bi)localObject4));
-      localObject1 = h.nFQ;
-      long l1 = this.eFM.bXr;
-      long l2 = this.eFM.createTime;
-      localObject3 = this.eFM.SA();
-      if (3 == this.eFM.eHO) {
-        break label1672;
-      }
-      i = 43;
-      label1430:
-      ((h)localObject1).f(13267, new Object[] { str1, Long.valueOf(l1), localObject2, Long.valueOf(l2), localObject3, Integer.valueOf(i), Integer.valueOf(j) });
-      i = 1;
-      label1491:
-      if (i != 0) {
-        break label1724;
-      }
-      this.bUi = this.eFN.field_mediaId;
-      this.eFR = bk.UY();
-      if (this.eFM.videoFormat != 2) {
-        break label1697;
-      }
-    }
-    label1672:
-    label1678:
-    label1692:
-    label1697:
-    for (boolean bool = true;; bool = false)
-    {
-      this.eFL = bool;
-      y.i("MicroMsg.NetSceneDownloadVideo", "%s check use cdn isHadHevcLocalFile[%b] isCompleteOnlineVideo[%b]", new Object[] { Sj(), Boolean.valueOf(this.eFL), Boolean.valueOf(this.eFK) });
-      if (this.eFK) {
-        break label1937;
-      }
-      if (com.tencent.mm.ak.f.Nd().b(this.eFN, -1)) {
+      ab.i("MicroMsg.NetSceneDownloadVideo", "%s MediaCheckDuplicationStorage: totallen:%s md5:%s  dup(len:%d path:%s) diffLen:%d to:%s target video len %d", new Object[] { alu(), Integer.valueOf(this.fsd), localObject2, Integer.valueOf(j), localObject1, Integer.valueOf(k), localObject3, Integer.valueOf(m) });
+      if (bo.isNullOrNil((String)localObject1)) {
         break label1703;
       }
-      h.nFQ.a(111L, 212L, 1L, false);
-      y.e("MicroMsg.NetSceneDownloadVideo", "%s cdntra addSendTask failed.", new Object[] { Sj() });
-      this.eoQ = "";
+      if ((k < 0) || (k > 16)) {
+        break label1717;
+      }
+      ab.i("MicroMsg.NetSceneDownloadVideo", "%s MediaCheckDuplicationStorage copy dup file now :%s -> %s", new Object[] { alu(), localObject1, localObject3 });
+      com.tencent.mm.vfs.e.C((String)localObject1, (String)localObject3);
+      ml(this.fsd);
+      ((j)com.tencent.mm.kernel.g.E(j.class)).bPQ().a(new h.c(((dd)localObject4).field_talker, "update", (bi)localObject4));
+      localObject1 = com.tencent.mm.plugin.report.service.h.qsU;
+      long l1 = this.fVD.cFn;
+      long l2 = this.fVD.createTime;
+      localObject3 = this.fVD.getUser();
+      if (3 == this.fVD.fXE) {
+        break label1697;
+      }
+      i = 43;
+      label1450:
+      ((com.tencent.mm.plugin.report.service.h)localObject1).e(13267, new Object[] { str1, Long.valueOf(l1), localObject2, Long.valueOf(l2), localObject3, Integer.valueOf(i), Integer.valueOf(j) });
+      i = 1;
+      label1511:
+      if (i != 0) {
+        break label1749;
+      }
+      this.cBO = this.fVE.field_mediaId;
+      this.fVI = bo.aoy();
+      if (this.fVD.videoFormat != 2) {
+        break label1722;
+      }
+    }
+    label1664:
+    label1669:
+    label1674:
+    label1686:
+    label1697:
+    label1703:
+    label1717:
+    label1722:
+    for (boolean bool = true;; bool = false)
+    {
+      this.fVC = bool;
+      ab.i("MicroMsg.NetSceneDownloadVideo", "%s check use cdn isHadHevcLocalFile[%b] isCompleteOnlineVideo[%b]", new Object[] { alu(), Boolean.valueOf(this.fVC), Boolean.valueOf(this.fVB) });
+      if (this.fVB) {
+        break label1967;
+      }
+      if (com.tencent.mm.al.f.afO().b(this.fVE, -1)) {
+        break label1728;
+      }
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(111L, 212L, 1L, false);
+      ab.e("MicroMsg.NetSceneDownloadVideo", "%s cdntra addSendTask failed.", new Object[] { alu() });
+      this.fFo = "";
+      AppMethodBeat.o(50671);
       return false;
       i = 0;
       break;
-      label1639:
       i = 0;
-      break label619;
-      label1644:
+      break label639;
       i = 0;
-      break label784;
-      label1649:
-      i = ((bd.b)localObject1).dWK / 8;
-      break label821;
-      label1661:
-      this.eFN.field_autostart = false;
-      break label945;
+      break label804;
+      i = ((bf.b)localObject1).fmS / 8;
+      break label841;
+      this.fVE.field_autostart = false;
+      break label965;
       i = 62;
-      break label1430;
-      this.eoX = ((String)localObject2);
-      this.eoY = this.ebK;
+      break label1450;
+      this.fFv = ((String)localObject2);
+      this.fFw = this.fsd;
       i = 0;
-      break label1491;
+      break label1511;
     }
-    label1703:
-    if (this.eFL) {
-      h.nFQ.a(354L, 135L, 1L, false);
+    label1728:
+    if (this.fVC) {
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(354L, 135L, 1L, false);
     }
-    label1724:
-    if (this.eFM.eHM != 1)
+    label1749:
+    if (this.fVD.fXC != 1)
     {
-      this.eFM.eHM = 1;
-      this.eFM.bcw = 524288;
-      u.f(this.eFM);
+      this.fVD.fXC = 1;
+      this.fVD.bsY = 524288;
+      u.f(this.fVD);
     }
-    if (3 != this.eFM.eHO)
+    if (3 != this.fVD.fXE)
     {
-      localObject1 = this.eFM.SA();
-      if (!bk.bl((String)localObject1)) {
-        if (!com.tencent.mm.model.s.fn((String)localObject1)) {
-          break label2110;
+      localObject1 = this.fVD.getUser();
+      if (!bo.isNullOrNil((String)localObject1)) {
+        if (!com.tencent.mm.model.t.lA((String)localObject1)) {
+          break label2140;
         }
       }
     }
-    label1937:
-    label2110:
-    for (int j = com.tencent.mm.model.m.gM((String)localObject1);; j = 0) {
+    label1967:
+    label2140:
+    for (int j = n.nv((String)localObject1);; j = 0) {
       for (;;)
       {
         try
         {
-          localObject2 = ((ConnectivityManager)ae.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
+          localObject2 = ((ConnectivityManager)ah.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
           i = ((NetworkInfo)localObject2).getSubtype();
           k = ((NetworkInfo)localObject2).getType();
           if (k != 1) {
@@ -318,24 +341,25 @@ public final class d
         }
         catch (Exception localException)
         {
-          y.e("MicroMsg.NetSceneDownloadVideo", "getNetType : %s", new Object[] { bk.j(localException) });
+          ab.e("MicroMsg.NetSceneDownloadVideo", "getNetType : %s", new Object[] { bo.l(localException) });
           i = 0;
           continue;
         }
-        localObject1 = (String)localObject1 + "," + j + "," + str1 + "," + this.ebK + "," + i;
-        y.i("MicroMsg.NetSceneDownloadVideo", "%s dk12024 report:%s", new Object[] { Sj(), localObject1 });
-        h.nFQ.aC(12024, (String)localObject1);
+        localObject1 = (String)localObject1 + "," + j + "," + str1 + "," + this.fsd + "," + i;
+        ab.i("MicroMsg.NetSceneDownloadVideo", "%s dk12024 report:%s", new Object[] { alu(), localObject1 });
+        com.tencent.mm.plugin.report.service.h.qsU.kvStat(12024, (String)localObject1);
+        AppMethodBeat.o(50671);
         return true;
-        this.eFQ = false;
-        localObject1 = this.eFN;
-        o.Sr();
-        ((com.tencent.mm.j.g)localObject1).field_fullpath = t.nS(this.fileName);
-        if (this.eFL)
+        this.fVH = false;
+        localObject1 = this.fVE;
+        o.alE();
+        ((com.tencent.mm.i.h)localObject1).field_fullpath = t.vf(this.fileName);
+        if (this.fVC)
         {
-          this.eFN.field_requestVideoFormat = 2;
-          h.nFQ.a(354L, 251L, 1L, false);
+          this.fVE.field_requestVideoFormat = 2;
+          com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(354L, 251L, 1L, false);
         }
-        o.Ss().a(this.eFN, false);
+        o.alF().a(this.fVE, false);
         break;
         if ((i == 13) || (i == 15) || (i == 14)) {
           i = 4;
@@ -350,275 +374,126 @@ public final class d
     }
   }
   
-  protected final int Ka()
+  final boolean Ez()
   {
-    return 2500;
-  }
-  
-  public final boolean Ky()
-  {
-    boolean bool = super.Ky();
-    if (bool) {
-      h.nFQ.a(111L, 210L, 1L, false);
+    boolean bool = false;
+    AppMethodBeat.i(50669);
+    if (!bo.isNullOrNil(this.cBO))
+    {
+      if (!this.fVB) {
+        break label71;
+      }
+      ab.i("MicroMsg.NetSceneDownloadVideo", "%s cancel online video task.", new Object[] { alu() });
+      o.alF().j(this.cBO, null);
     }
-    return bool;
+    for (;;)
+    {
+      bool = true;
+      this.fVG = true;
+      AppMethodBeat.o(50669);
+      return bool;
+      label71:
+      ab.i("MicroMsg.NetSceneDownloadVideo", "%s cancel offline video task.", new Object[] { alu() });
+      com.tencent.mm.al.f.afO().sJ(this.cBO);
+    }
   }
   
-  final String Sj()
+  final String alu()
   {
-    return this.fileName + "_" + hashCode();
+    AppMethodBeat.i(50678);
+    String str = this.fileName + "_" + hashCode();
+    AppMethodBeat.o(50678);
+    return str;
   }
   
-  public final int a(com.tencent.mm.network.e parame, com.tencent.mm.ah.f paramf)
+  public final void cancel()
+  {
+    AppMethodBeat.i(50668);
+    Ez();
+    super.cancel();
+    AppMethodBeat.o(50668);
+  }
+  
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ai.f paramf)
   {
     int i = 1;
-    this.dmL = paramf;
-    this.eFM = u.oe(this.fileName);
-    if (this.eFM == null)
+    AppMethodBeat.i(50673);
+    this.callback = paramf;
+    this.fVD = u.vr(this.fileName);
+    if (this.fVD == null)
     {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: Get INFO FAILED :" + this.fileName);
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: Get INFO FAILED :" + this.fileName);
       this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+      AppMethodBeat.o(50673);
       return -1;
     }
-    if ((this.eFM != null) && (3 == this.eFM.eHO)) {
-      this.eFO = com.tencent.mm.j.a.MediaType_TinyVideo;
+    if ((this.fVD != null) && (3 == this.fVD.fXE)) {
+      this.fVF = com.tencent.mm.i.a.MediaType_TinyVideo;
     }
     if (this.startTime == 0L)
     {
-      this.startTime = bk.UY();
-      this.startOffset = this.eFM.eHC;
+      this.startTime = bo.aoy();
+      this.startOffset = this.fVD.fXs;
     }
-    if (Si())
+    if (alt())
     {
-      y.d("MicroMsg.NetSceneDownloadVideo", "cdntra use cdn return -1 for onGYNetEnd clientid:%s", new Object[] { this.fileName });
+      ab.d("MicroMsg.NetSceneDownloadVideo", "cdntra use cdn return -1 for onGYNetEnd clientid:%s", new Object[] { this.fileName });
+      AppMethodBeat.o(50673);
       return 0;
     }
-    if (this.eFM.status != 112)
+    if (this.fVD.status != 112)
     {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: STATUS: " + this.eFM.status + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "]");
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: STATUS: " + this.fVD.status + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "]");
       this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+      AppMethodBeat.o(50673);
       return -1;
     }
-    y.d("MicroMsg.NetSceneDownloadVideo", "start doScene  [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "]  filesize:" + this.eFM.eHC + " file:" + this.eFM.ebK + " netTimes:" + this.eFM.eHJ);
-    if (!u.nW(this.fileName))
+    ab.d("MicroMsg.NetSceneDownloadVideo", "start doScene  [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "]  filesize:" + this.fVD.fXs + " file:" + this.fVD.fsd + " netTimes:" + this.fVD.fXz);
+    if (!u.vj(this.fileName))
     {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: NET TIMES: " + this.eFM.eHJ + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: NET TIMES: " + this.fVD.fXz + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
       this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+      AppMethodBeat.o(50673);
       return -1;
     }
-    if (this.eFM.bXr <= 0L)
+    if (this.fVD.cFn <= 0L)
     {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: MSGSVRID: " + this.eFM.bXr + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: MSGSVRID: " + this.fVD.cFn + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
       this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+      AppMethodBeat.o(50673);
       return -1;
     }
-    if ((this.eFM.eHC < 0) || (this.eFM.ebK <= this.eFM.eHC) || (this.eFM.ebK <= 0))
+    if ((this.fVD.fXs < 0) || (this.fVD.fsd <= this.fVD.fXs) || (this.fVD.fsd <= 0))
     {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: fileSize:" + this.eFM.eHC + " total:" + this.eFM.ebK + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: fileSize:" + this.fVD.fXs + " total:" + this.fVD.fsd + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
       this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+      AppMethodBeat.o(50673);
       return -1;
     }
     paramf = new b.a();
-    paramf.ecH = new uh();
-    paramf.ecI = new ui();
+    paramf.fsX = new yu();
+    paramf.fsY = new yv();
     paramf.uri = "/cgi-bin/micromsg-bin/downloadvideo";
-    paramf.ecG = 150;
-    paramf.ecJ = 40;
-    paramf.ecK = 1000000040;
-    this.dmK = paramf.Kt();
-    paramf = (uh)this.dmK.ecE.ecN;
-    paramf.ndp = this.eFM.bXr;
-    paramf.ndg = this.eFM.eHC;
-    paramf.ndf = this.eFM.ebK;
-    if (ab.bG(ae.getContext())) {}
+    paramf.funcId = 150;
+    paramf.reqCmdId = 40;
+    paramf.respCmdId = 1000000040;
+    this.rr = paramf.ado();
+    paramf = (yu)this.rr.fsV.fta;
+    paramf.pIG = this.fVD.cFn;
+    paramf.pIy = this.fVD.fXs;
+    paramf.pIx = this.fVD.fsd;
+    if (ac.cm(ah.getContext())) {}
     for (;;)
     {
-      paramf.sRb = i;
-      return a(parame, this.dmK, this);
+      paramf.wPR = i;
+      i = dispatch(parame, this.rr, this);
+      AppMethodBeat.o(50673);
+      return i;
       i = 2;
     }
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    if (this.eFP)
-    {
-      y.d("MicroMsg.NetSceneDownloadVideo", "onGYNetEnd Call Stop by Service  [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if ((paramInt2 == 3) && (paramInt3 == -1) && (!bk.bl(this.eoQ)))
-    {
-      y.w("MicroMsg.NetSceneDownloadVideo", "cdntra using cdn trans,  wait cdn service callback! clientid:%s", new Object[] { this.eoQ });
-      return;
-    }
-    paramArrayOfByte = (ui)((com.tencent.mm.ah.b)paramq).ecF.ecN;
-    paramq = (uh)((com.tencent.mm.ah.b)paramq).ecE.ecN;
-    this.eFM = u.oe(this.fileName);
-    if (this.eFM == null)
-    {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd Get INFO FAILED :" + this.fileName);
-      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if (this.eFM.status == 113)
-    {
-      y.w("MicroMsg.NetSceneDownloadVideo", "onGYNetEnd STATUS PAUSE [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if (this.eFM.status != 112)
-    {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd STATUS ERR: status:" + this.eFM.status + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if ((paramInt2 == 4) && (paramInt3 != 0))
-    {
-      h.nFQ.a(111L, 208L, 1L, false);
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd SERVER FAILED errtype:" + paramInt2 + " errCode:" + paramInt3 + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
-      h.nFQ.f(10420, new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(2), Long.valueOf(this.startTime), Long.valueOf(bk.UY()), Integer.valueOf(c.bx(ae.getContext())), Integer.valueOf(this.eFO), Integer.valueOf(this.ebK - this.startOffset) });
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      h.nFQ.a(111L, 207L, 1L, false);
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd SERVER FAILED (SET PAUSE) errtype:" + paramInt2 + " errCode:" + paramInt3 + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      this.eFM.status = 113;
-      u.f(this.eFM);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if (bk.bE(paramArrayOfByte.ndi.tFM.oY))
-    {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd Recv BUF ZERO length  [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if (paramArrayOfByte.ndg != paramq.ndg)
-    {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd OFFSET ERROR respStartPos:" + paramArrayOfByte.ndg + " reqStartPos:" + paramq.ndg + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if (paramArrayOfByte.ndf != paramq.ndf)
-    {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd respTotal:" + paramArrayOfByte.ndf + " reqTotal:" + paramq.ndf + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if (paramq.ndf < paramArrayOfByte.ndg)
-    {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd respTotal:" + paramArrayOfByte.ndf + " respStartPos:" + paramq.ndg + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if (paramArrayOfByte.ndp != paramq.ndp)
-    {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd respMsgId:" + paramArrayOfByte.ndp + " reqMsgId:" + paramq.ndp + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    y.d("MicroMsg.NetSceneDownloadVideo", "onGYNetEnd respBuf:" + paramArrayOfByte.ndi.tFK + " reqStartPos:" + paramq.ndg + " totallen:" + paramq.ndf + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-    o.Sr();
-    int j = t.a(t.nS(this.fileName), paramq.ndg, paramArrayOfByte.ndi.tFM.toByteArray());
-    if (j < 0)
-    {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd WRITEFILE RET:" + j + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if (j > this.eFM.ebK)
-    {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd WRITEFILE newOffset:" + j + " totalLen:" + this.eFM.ebK + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    paramq = this.fileName;
-    paramArrayOfByte = u.oe(paramq);
-    if (paramArrayOfByte == null)
-    {
-      y.e("MicroMsg.VideoLogic", "ERR:" + com.tencent.mm.compatible.util.g.zI() + " getinfo failed: " + paramq);
-      paramInt1 = 0 - com.tencent.mm.compatible.util.g.getLine();
-    }
-    while (paramInt1 < 0)
-    {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd updateAfterRecv Ret:" + paramInt1 + " newOffset :" + j + " [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-      paramArrayOfByte.eHC = j;
-      paramArrayOfByte.eHF = bk.UX();
-      paramArrayOfByte.bcw = 1040;
-      int i = 0;
-      paramInt1 = i;
-      if (paramArrayOfByte.ebK > 0)
-      {
-        paramInt1 = i;
-        if (j >= paramArrayOfByte.ebK)
-        {
-          u.e(paramArrayOfByte);
-          paramArrayOfByte.status = 199;
-          paramArrayOfByte.bcw |= 0x100;
-          y.i("MicroMsg.VideoLogic", "END!!!  updateRecv  file:" + paramq + " newsize:" + j + " total:" + paramArrayOfByte.ebK + " status:" + paramArrayOfByte.status + " netTimes:" + paramArrayOfByte.eHJ);
-          paramInt1 = 1;
-        }
-      }
-      y.d("MicroMsg.VideoLogic", "updateRecv " + com.tencent.mm.compatible.util.g.zI() + " file:" + paramq + " newsize:" + j + " total:" + paramArrayOfByte.ebK + " status:" + paramArrayOfByte.status);
-      if (!u.f(paramArrayOfByte)) {
-        paramInt1 = 0 - com.tencent.mm.compatible.util.g.getLine();
-      }
-    }
-    if (paramInt1 == 1)
-    {
-      h.nFQ.f(10420, new Object[] { Integer.valueOf(0), Integer.valueOf(2), Long.valueOf(this.startTime), Long.valueOf(bk.UY()), Integer.valueOf(c.bx(ae.getContext())), Integer.valueOf(this.eFO), Integer.valueOf(this.ebK - this.startOffset) });
-      a.a(this.eFM, 1);
-      y.i("MicroMsg.NetSceneDownloadVideo", "!!!FIN [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "]");
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if (this.eFP)
-    {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    this.ebj.S(0L, 0L);
-  }
-  
-  protected final void a(m.a parama)
-  {
-    h.nFQ.a(111L, 211L, 1L, false);
-    u.nX(this.fileName);
-  }
-  
-  protected final m.b b(q paramq)
-  {
-    paramq = (uh)((com.tencent.mm.ah.b)paramq).ecE.ecN;
-    if ((paramq.ndp <= 0L) || (paramq.ndg < 0) || (paramq.ndf <= 0) || (paramq.ndf <= paramq.ndg))
-    {
-      y.e("MicroMsg.NetSceneDownloadVideo", "ERR: SECURITY CHECK FAILED [" + this.fileName + "," + this.eFM.bXr + "," + this.eFM.SB() + "," + this.eFM.SA() + "] ");
-      u.nX(this.fileName);
-      return m.b.eds;
-    }
-    return m.b.edr;
-  }
-  
-  protected final void cancel()
-  {
-    un();
-    super.cancel();
   }
   
   public final int getType()
@@ -626,51 +501,246 @@ public final class d
     return 150;
   }
   
-  final void jt(int paramInt)
+  final void ml(int paramInt)
   {
+    AppMethodBeat.i(50672);
     Object localObject;
-    if (this.eFQ)
+    if (this.fVH)
     {
       localObject = new StringBuilder();
-      o.Sr();
-      localObject = new com.tencent.mm.vfs.b(t.nS(this.fileName) + ".tmp");
-      o.Sr();
+      o.alE();
+      localObject = new com.tencent.mm.vfs.b(t.vf(this.fileName) + ".tmp");
+      o.alE();
     }
-    for (boolean bool = ((com.tencent.mm.vfs.b)localObject).n(new com.tencent.mm.vfs.b(t.nS(this.fileName)));; bool = true)
+    for (boolean bool = ((com.tencent.mm.vfs.b)localObject).p(new com.tencent.mm.vfs.b(t.vf(this.fileName)));; bool = true)
     {
-      com.tencent.mm.kernel.g.DS().O(new d.2(this, bool, paramInt));
+      com.tencent.mm.kernel.g.RO().ac(new d.2(this, bool, paramInt));
+      AppMethodBeat.o(50672);
       return;
       localObject = new StringBuilder();
-      o.Sr();
-      com.tencent.mm.vfs.e.deleteFile(t.nS(this.fileName) + ".tmp");
+      o.alE();
+      com.tencent.mm.vfs.e.deleteFile(t.vf(this.fileName) + ".tmp");
     }
   }
   
-  final boolean un()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    boolean bool = false;
-    if (!bk.bl(this.bUi))
+    AppMethodBeat.i(50677);
+    if (this.fVG)
     {
-      if (!this.eFK) {
-        break label59;
+      ab.d("MicroMsg.NetSceneDownloadVideo", "onGYNetEnd Call Stop by Service  [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    if ((paramInt2 == 3) && (paramInt3 == -1) && (!bo.isNullOrNil(this.fFo)))
+    {
+      ab.w("MicroMsg.NetSceneDownloadVideo", "cdntra using cdn trans,  wait cdn service callback! clientid:%s", new Object[] { this.fFo });
+      AppMethodBeat.o(50677);
+      return;
+    }
+    paramArrayOfByte = (yv)((com.tencent.mm.ai.b)paramq).fsW.fta;
+    paramq = (yu)((com.tencent.mm.ai.b)paramq).fsV.fta;
+    this.fVD = u.vr(this.fileName);
+    if (this.fVD == null)
+    {
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd Get INFO FAILED :" + this.fileName);
+      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    if (this.fVD.status == 113)
+    {
+      ab.w("MicroMsg.NetSceneDownloadVideo", "onGYNetEnd STATUS PAUSE [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    if (this.fVD.status != 112)
+    {
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd STATUS ERR: status:" + this.fVD.status + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    if ((paramInt2 == 4) && (paramInt3 != 0))
+    {
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(111L, 208L, 1L, false);
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd SERVER FAILED errtype:" + paramInt2 + " errCode:" + paramInt3 + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
+      com.tencent.mm.plugin.report.service.h.qsU.e(10420, new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(2), Long.valueOf(this.startTime), Long.valueOf(bo.aoy()), Integer.valueOf(c.cb(ah.getContext())), Integer.valueOf(this.fVF), Integer.valueOf(this.fsd - this.startOffset) });
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(111L, 207L, 1L, false);
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd SERVER FAILED (SET PAUSE) errtype:" + paramInt2 + " errCode:" + paramInt3 + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      this.fVD.status = 113;
+      u.f(this.fVD);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    if (bo.ce(paramArrayOfByte.pIA.getBuffer().pW))
+    {
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd Recv BUF ZERO length  [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    if (paramArrayOfByte.pIy != paramq.pIy)
+    {
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd OFFSET ERROR respStartPos:" + paramArrayOfByte.pIy + " reqStartPos:" + paramq.pIy + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    if (paramArrayOfByte.pIx != paramq.pIx)
+    {
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd respTotal:" + paramArrayOfByte.pIx + " reqTotal:" + paramq.pIx + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    if (paramq.pIx < paramArrayOfByte.pIy)
+    {
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd respTotal:" + paramArrayOfByte.pIx + " respStartPos:" + paramq.pIy + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    if (paramArrayOfByte.pIG != paramq.pIG)
+    {
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd respMsgId:" + paramArrayOfByte.pIG + " reqMsgId:" + paramq.pIG + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    ab.d("MicroMsg.NetSceneDownloadVideo", "onGYNetEnd respBuf:" + paramArrayOfByte.pIA.getILen() + " reqStartPos:" + paramq.pIy + " totallen:" + paramq.pIx + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+    o.alE();
+    int j = t.a(t.vf(this.fileName), paramq.pIy, paramArrayOfByte.pIA.getBuffer().toByteArray());
+    if (j < 0)
+    {
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd WRITEFILE RET:" + j + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    if (j > this.fVD.fsd)
+    {
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd WRITEFILE newOffset:" + j + " totalLen:" + this.fVD.fsd + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    paramq = this.fileName;
+    paramArrayOfByte = u.vr(paramq);
+    if (paramArrayOfByte == null)
+    {
+      ab.e("MicroMsg.VideoLogic", "ERR:" + com.tencent.mm.compatible.util.g.Ml() + " getinfo failed: " + paramq);
+      paramInt1 = 0 - com.tencent.mm.compatible.util.g.getLine();
+    }
+    while (paramInt1 < 0)
+    {
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: onGYNetEnd updateAfterRecv Ret:" + paramInt1 + " newOffset :" + j + " [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+      paramArrayOfByte.fXs = j;
+      paramArrayOfByte.fXv = bo.aox();
+      paramArrayOfByte.bsY = 1040;
+      int i = 0;
+      paramInt1 = i;
+      if (paramArrayOfByte.fsd > 0)
+      {
+        paramInt1 = i;
+        if (j >= paramArrayOfByte.fsd)
+        {
+          u.e(paramArrayOfByte);
+          paramArrayOfByte.status = 199;
+          paramArrayOfByte.bsY |= 0x100;
+          ab.i("MicroMsg.VideoLogic", "END!!!  updateRecv  file:" + paramq + " newsize:" + j + " total:" + paramArrayOfByte.fsd + " status:" + paramArrayOfByte.status + " netTimes:" + paramArrayOfByte.fXz);
+          paramInt1 = 1;
+        }
       }
-      y.i("MicroMsg.NetSceneDownloadVideo", "%s cancel online video task.", new Object[] { Sj() });
-      o.Ss().k(this.bUi, null);
+      ab.d("MicroMsg.VideoLogic", "updateRecv " + com.tencent.mm.compatible.util.g.Ml() + " file:" + paramq + " newsize:" + j + " total:" + paramArrayOfByte.fsd + " status:" + paramArrayOfByte.status);
+      if (!u.f(paramArrayOfByte)) {
+        paramInt1 = 0 - com.tencent.mm.compatible.util.g.getLine();
+      }
     }
-    for (;;)
+    if (paramInt1 == 1)
     {
-      bool = true;
-      this.eFP = true;
-      return bool;
-      label59:
-      y.i("MicroMsg.NetSceneDownloadVideo", "%s cancel offline video task.", new Object[] { Sj() });
-      com.tencent.mm.ak.f.Nd().lM(this.bUi);
+      com.tencent.mm.plugin.report.service.h.qsU.e(10420, new Object[] { Integer.valueOf(0), Integer.valueOf(2), Long.valueOf(this.startTime), Long.valueOf(bo.aoy()), Integer.valueOf(c.cb(ah.getContext())), Integer.valueOf(this.fVF), Integer.valueOf(this.fsd - this.startOffset) });
+      a.a(this.fVD, 1);
+      ab.i("MicroMsg.NetSceneDownloadVideo", "!!!FIN [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "]");
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
     }
+    if (this.fVG)
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(50677);
+      return;
+    }
+    this.frx.ag(0L, 0L);
+    AppMethodBeat.o(50677);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 2500;
+  }
+  
+  public final boolean securityLimitCountReach()
+  {
+    AppMethodBeat.i(50675);
+    boolean bool = super.securityLimitCountReach();
+    if (bool) {
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(111L, 210L, 1L, false);
+    }
+    AppMethodBeat.o(50675);
+    return bool;
+  }
+  
+  public final m.b securityVerificationChecked(q paramq)
+  {
+    AppMethodBeat.i(50674);
+    paramq = (yu)((com.tencent.mm.ai.b)paramq).fsV.fta;
+    if ((paramq.pIG <= 0L) || (paramq.pIy < 0) || (paramq.pIx <= 0) || (paramq.pIx <= paramq.pIy))
+    {
+      ab.e("MicroMsg.NetSceneDownloadVideo", "ERR: SECURITY CHECK FAILED [" + this.fileName + "," + this.fVD.cFn + "," + this.fVD.alM() + "," + this.fVD.getUser() + "] ");
+      u.vk(this.fileName);
+      paramq = m.b.ftv;
+      AppMethodBeat.o(50674);
+      return paramq;
+    }
+    paramq = m.b.ftu;
+    AppMethodBeat.o(50674);
+    return paramq;
+  }
+  
+  public final void setSecurityCheckError(m.a parama)
+  {
+    AppMethodBeat.i(50676);
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(111L, 211L, 1L, false);
+    u.vk(this.fileName);
+    AppMethodBeat.o(50676);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelvideo.d
  * JD-Core Version:    0.7.0.1
  */

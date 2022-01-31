@@ -7,12 +7,12 @@ import com.tencent.mm.ui.base.MaskLayout;
 
 public final class SelectMemberUI$c
 {
-  public TextView drB;
-  public SelectMemberUI.a dsj;
-  public MaskLayout dsk;
-  public TextView dsl;
-  public ImageButton dsm;
-  public LinearLayout dsn;
+  public SelectMemberUI.a ejR;
+  public MaskLayout ejS;
+  public TextView ejT;
+  public ImageButton ejU;
+  public LinearLayout ejV;
+  public TextView ejj;
   public int position;
 }
 

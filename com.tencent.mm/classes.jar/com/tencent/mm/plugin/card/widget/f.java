@@ -6,196 +6,200 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.b;
-import com.tencent.mm.plugin.card.a.c;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.d.m;
-import com.tencent.mm.protocal.c.mb;
-import com.tencent.mm.protocal.c.mg;
-import com.tencent.mm.protocal.c.ra;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.oz;
+import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.protocal.protobuf.uo;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public final class f
   extends a
 {
-  protected TextView eXO;
-  private View iAa;
-  private ImageView iAb;
-  private TextView iAc;
-  private TextView iAd;
-  private View iAe;
-  private TextView iAf;
-  private TextView iAg;
-  private ImageView iAh;
-  private TextView iAi;
-  public ArrayList<mb> ikq;
+  protected TextView gpL;
+  private View kDf;
+  private ImageView kDg;
+  private TextView kDh;
+  private TextView kDi;
+  private View kDj;
+  private TextView kDk;
+  private TextView kDl;
+  private ImageView kDm;
+  private TextView kDn;
+  public ArrayList<oz> klq;
   
   public f(Context paramContext)
   {
     super(paramContext);
   }
   
-  protected final void aDk()
+  protected final void bfH()
   {
-    this.eXO = ((TextView)aDj().findViewById(a.d.card_title));
-    this.iAa = aDj().findViewById(a.d.card_bottom_dash_divider);
-    this.iAb = ((ImageView)aDj().findViewById(a.d.ticket_icon));
-    this.iAc = ((TextView)aDj().findViewById(a.d.ticket_content_title));
-    this.iAd = ((TextView)aDj().findViewById(a.d.ticket_content_sub_title));
-    this.iAe = aDj().findViewById(a.d.ticket_shop_layout);
-    this.iAf = ((TextView)aDj().findViewById(a.d.ticket_shop_title));
-    this.iAg = ((TextView)aDj().findViewById(a.d.ticket_shop_sub_title));
-    this.iAh = ((ImageView)aDj().findViewById(a.d.ticket_place_icon));
-    this.iAi = ((TextView)aDj().findViewById(a.d.ticket_check_more_adapted_stores));
+    AppMethodBeat.i(88985);
+    this.gpL = ((TextView)bfG().findViewById(2131822059));
+    this.kDf = bfG().findViewById(2131822057);
+    this.kDg = ((ImageView)bfG().findViewById(2131822400));
+    this.kDh = ((TextView)bfG().findViewById(2131822401));
+    this.kDi = ((TextView)bfG().findViewById(2131822402));
+    this.kDj = bfG().findViewById(2131822403);
+    this.kDk = ((TextView)bfG().findViewById(2131822405));
+    this.kDl = ((TextView)bfG().findViewById(2131822406));
+    this.kDm = ((ImageView)bfG().findViewById(2131822404));
+    this.kDn = ((TextView)bfG().findViewById(2131822407));
+    AppMethodBeat.o(88985);
   }
   
-  protected final void aDl()
+  protected final void bfI()
   {
-    label124:
+    AppMethodBeat.i(88986);
+    label129:
+    label206:
+    Object localObject;
     StringBuilder localStringBuilder;
-    label205:
-    ra localra1;
-    if ((this.ikk.azx().sIS != null) && (!TextUtils.isEmpty(this.ikk.azx().sIS.title)))
+    uo localuo1;
+    if ((this.klk.bbd().wGB != null) && (!TextUtils.isEmpty(this.klk.bbd().wGB.title)))
     {
-      this.izy.setText(this.ikk.azx().sIS.title);
-      if ((this.ikk.azx().sIS == null) || (TextUtils.isEmpty(this.ikk.azx().sIS.ilq))) {
-        break label599;
+      this.iVS.setText(this.klk.bbd().wGB.title);
+      if ((this.klk.bbd().wGB == null) || (TextUtils.isEmpty(this.klk.bbd().wGB.kmn))) {
+        break label604;
       }
-      this.eXO.setText(this.ikk.azx().sIS.ilq);
-      this.eXO.setVisibility(0);
-      y.i("MicroMsg.CardWidgetTicket", "updateContentView()");
-      if (bk.bl(this.ikk.azx().sIy)) {
-        break label621;
+      this.gpL.setText(this.klk.bbd().wGB.kmn);
+      this.gpL.setVisibility(0);
+      ab.i("MicroMsg.CardWidgetTicket", "updateContentView()");
+      if (bo.isNullOrNil(this.klk.bbd().wGh)) {
+        break label625;
       }
-      int i = this.mContext.getResources().getDimensionPixelSize(a.b.card_ticket_widget_logo_size);
-      m.a(this.mContext, this.iAb, this.ikk.azx().sIy, i, a.c.card_ticket_normal_icon, l.yR(this.ikk.azx().color));
+      int i = this.mContext.getResources().getDimensionPixelSize(2131428201);
+      m.a(this.mContext, this.kDg, this.klk.bbd().wGh, i, l.IB(this.klk.bbd().color));
       localObject = new StringBuilder();
       localStringBuilder = new StringBuilder();
-      if ((this.ikk.azx().sIq == null) || (this.ikk.azx().sIq.size() < 2)) {
-        break label649;
+      if ((this.klk.bbd().wFZ == null) || (this.klk.bbd().wFZ.size() < 2)) {
+        break label652;
       }
-      y.i("MicroMsg.CardWidgetTicket", "primary_fields length is >= 2");
-      localra1 = (ra)this.ikk.azx().sIq.get(0);
-      ra localra2 = (ra)this.ikk.azx().sIq.get(1);
-      ((StringBuilder)localObject).append(localra1.title).append(" - ").append(localra2.title);
-      if ((!TextUtils.isEmpty(localra1.ilr)) && (!TextUtils.isEmpty(localra2.ilr)))
+      ab.i("MicroMsg.CardWidgetTicket", "primary_fields length is >= 2");
+      localuo1 = (uo)this.klk.bbd().wFZ.get(0);
+      uo localuo2 = (uo)this.klk.bbd().wFZ.get(1);
+      ((StringBuilder)localObject).append(localuo1.title).append(" - ").append(localuo2.title);
+      if ((!TextUtils.isEmpty(localuo1.kmo)) && (!TextUtils.isEmpty(localuo2.kmo)))
       {
-        localStringBuilder.append(localra1.ilr).append(" ").append(localra1.ilq);
+        localStringBuilder.append(localuo1.kmo).append(" ").append(localuo1.kmn);
         localStringBuilder.append(" - ");
-        localStringBuilder.append(localra2.ilr).append(" ").append(localra2.ilq);
+        localStringBuilder.append(localuo2.kmo).append(" ").append(localuo2.kmn);
       }
-      label402:
+      label403:
       if (TextUtils.isEmpty(((StringBuilder)localObject).toString())) {
-        break label735;
+        break label737;
       }
-      this.iAc.setText(((StringBuilder)localObject).toString());
-      label423:
+      this.kDh.setText(((StringBuilder)localObject).toString());
+      label424:
       if (TextUtils.isEmpty(localStringBuilder.toString())) {
-        break label748;
+        break label749;
       }
-      y.i("MicroMsg.CardWidgetTicket", "sub_title_builder is not empty!");
-      this.iAd.setText(localStringBuilder.toString());
-      this.iAd.setVisibility(0);
+      ab.i("MicroMsg.CardWidgetTicket", "sub_title_builder is not empty!");
+      this.kDi.setText(localStringBuilder.toString());
+      this.kDi.setVisibility(0);
+      label460:
+      ab.e("MicroMsg.CardWidgetTicket", "updateShopView(), shop_count:" + this.klk.bbd().wGd);
+      if (this.klk.bbd().wGd > 0) {
+        break label816;
+      }
+      this.kDj.setVisibility(8);
+      this.kDn.setVisibility(8);
     }
     for (;;)
     {
-      y.e("MicroMsg.CardWidgetTicket", "updateShopView(), shop_count:" + this.ikk.azx().sIu);
-      if (this.ikk.azx().sIu > 0) {
-        break label816;
+      if (!this.klk.bbc()) {
+        break label1198;
       }
-      this.iAe.setVisibility(8);
-      this.iAi.setVisibility(8);
-      if (!this.ikk.azw()) {
-        break label1192;
-      }
-      this.iAa.setVisibility(8);
+      this.kDf.setVisibility(8);
+      AppMethodBeat.o(88986);
       return;
-      if (!TextUtils.isEmpty(this.ikk.azx().imA))
+      if (!TextUtils.isEmpty(this.klk.bbd().knw))
       {
-        this.izy.setText(this.ikk.azx().imA);
+        this.iVS.setText(this.klk.bbd().knw);
         break;
       }
-      this.izy.setText("");
+      this.iVS.setText("");
       break;
-      label599:
-      this.eXO.setText("");
-      this.eXO.setVisibility(8);
-      break label124;
-      label621:
-      m.a(this.iAb, a.c.card_ticket_normal_icon, l.yR(this.ikk.azx().color));
-      break label205;
-      label649:
-      if ((this.ikk.azx().sIq == null) || (this.ikk.azx().sIq.size() != 1)) {
-        break label402;
+      label604:
+      this.gpL.setText("");
+      this.gpL.setVisibility(8);
+      break label129;
+      label625:
+      m.a(this.kDg, 2130838175, l.IB(this.klk.bbd().color));
+      break label206;
+      label652:
+      if ((this.klk.bbd().wFZ == null) || (this.klk.bbd().wFZ.size() != 1)) {
+        break label403;
       }
-      y.i("MicroMsg.CardWidgetTicket", "primary_fields length is == 1");
-      localra1 = (ra)this.ikk.azx().sIq.get(0);
-      ((StringBuilder)localObject).append(localra1.title);
-      localStringBuilder.append(localra1.ilq);
-      break label402;
-      label735:
-      this.iAc.setText("");
-      break label423;
-      label748:
-      if (!TextUtils.isEmpty(this.ikk.azx().sIG))
+      ab.i("MicroMsg.CardWidgetTicket", "primary_fields length is == 1");
+      localuo1 = (uo)this.klk.bbd().wFZ.get(0);
+      ((StringBuilder)localObject).append(localuo1.title);
+      localStringBuilder.append(localuo1.kmn);
+      break label403;
+      label737:
+      this.kDh.setText("");
+      break label424;
+      label749:
+      if (!TextUtils.isEmpty(this.klk.bbd().wGp))
       {
-        y.i("MicroMsg.CardWidgetTicket", "primary_sub_title is not empty!");
-        this.iAd.setText(this.ikk.azx().sIG);
-        this.iAd.setVisibility(0);
+        ab.i("MicroMsg.CardWidgetTicket", "primary_sub_title is not empty!");
+        this.kDi.setText(this.klk.bbd().wGp);
+        this.kDi.setVisibility(0);
+        break label460;
       }
-      else
+      this.kDi.setVisibility(8);
+      break label460;
+      label816:
+      this.kDj.setVisibility(0);
+      this.kDj.setOnClickListener(this.gMO);
+      m.a(this.kDm, 2130838176, l.IB(this.klk.bbd().color));
+      localStringBuilder = null;
+      localObject = localStringBuilder;
+      if (this.klq != null)
       {
-        this.iAd.setVisibility(8);
+        localObject = localStringBuilder;
+        if (this.klq.size() > 0) {
+          localObject = (oz)this.klq.get(0);
+        }
+      }
+      if ((this.klk.bbd().wGd == 1) && (localObject != null))
+      {
+        this.kDk.setText(((oz)localObject).name);
+        this.kDl.setText(this.mContext.getString(2131298054, new Object[] { l.g(this.mContext, ((oz)localObject).rqZ), ((oz)localObject).fBq }));
+        this.kDn.setVisibility(8);
+        this.kDj.setTag(((oz)localObject).name);
+      }
+      else if ((this.klk.bbd().wGd > 1) && (localObject != null))
+      {
+        this.kDk.setText(((oz)localObject).name);
+        this.kDl.setText(this.mContext.getString(2131298054, new Object[] { l.g(this.mContext, ((oz)localObject).rqZ), ((oz)localObject).fBq }));
+        this.kDn.setVisibility(0);
+        this.kDn.setOnClickListener(this.gMO);
+        this.kDj.setTag(((oz)localObject).name);
+      }
+      else if (this.klk.bbd().wGd > 0)
+      {
+        this.kDk.setText(2131297874);
+        this.kDl.setText(this.mContext.getString(2131298080, new Object[] { Integer.valueOf(this.klk.bbd().wGd) }));
+        this.kDn.setVisibility(8);
+        this.kDn.setOnClickListener(null);
+        this.kDj.setTag(this.mContext.getString(2131297874));
       }
     }
-    label816:
-    this.iAe.setVisibility(0);
-    this.iAe.setOnClickListener(this.fvj);
-    m.a(this.iAh, a.c.card_ticket_place_icon, l.yR(this.ikk.azx().color));
-    if ((this.ikq != null) && (this.ikq.size() > 0)) {}
-    for (Object localObject = (mb)this.ikq.get(0);; localObject = null)
-    {
-      if ((this.ikk.azx().sIu == 1) && (localObject != null))
-      {
-        this.iAf.setText(((mb)localObject).name);
-        this.iAg.setText(this.mContext.getString(a.g.card_shop_distance_address, new Object[] { l.f(this.mContext, ((mb)localObject).sIe), ((mb)localObject).ekZ }));
-        this.iAi.setVisibility(8);
-        this.iAe.setTag(((mb)localObject).name);
-        break;
-      }
-      if ((this.ikk.azx().sIu > 1) && (localObject != null))
-      {
-        this.iAf.setText(((mb)localObject).name);
-        this.iAg.setText(this.mContext.getString(a.g.card_shop_distance_address, new Object[] { l.f(this.mContext, ((mb)localObject).sIe), ((mb)localObject).ekZ }));
-        this.iAi.setVisibility(0);
-        this.iAi.setOnClickListener(this.fvj);
-        this.iAe.setTag(((mb)localObject).name);
-        break;
-      }
-      if (this.ikk.azx().sIu <= 0) {
-        break;
-      }
-      this.iAf.setText(a.g.card_check_all_adapted_stores);
-      this.iAg.setText(this.mContext.getString(a.g.card_total_adapted_stores, new Object[] { Integer.valueOf(this.ikk.azx().sIu) }));
-      this.iAi.setVisibility(8);
-      this.iAi.setOnClickListener(null);
-      this.iAe.setTag(this.mContext.getString(a.g.card_check_all_adapted_stores));
-      break;
-      label1192:
-      this.iAa.setVisibility(0);
-      return;
-    }
+    label1198:
+    this.kDf.setVisibility(0);
+    AppMethodBeat.o(88986);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.f
  * JD-Core Version:    0.7.0.1
  */

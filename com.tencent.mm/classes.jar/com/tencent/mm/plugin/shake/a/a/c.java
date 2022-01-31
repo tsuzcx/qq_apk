@@ -6,31 +6,31 @@ import android.database.Cursor;
 public abstract class c
   extends com.tencent.mm.sdk.e.c
 {
-  private static final int cOc = "createtime".hashCode();
-  public static final String[] cqY = new String[0];
-  private static final int crh = "rowid".hashCode();
-  private static final int ctF = "username".hashCode();
-  private static final int cvZ;
-  private static final int nYC = "deeplink".hashCode();
-  private static final int nYD;
-  private boolean cNX = true;
-  private boolean ctD = true;
-  private boolean cvV = true;
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int dDS = "createtime".hashCode();
+  private static final int dhU = "username".hashCode();
+  private static final int dkj;
+  private static final int qMM = "deeplink".hashCode();
+  private static final int qMN;
+  private static final int rowid_HASHCODE = "rowid".hashCode();
+  private boolean dDN = true;
+  private boolean dhS = true;
+  private boolean dkg = true;
   public long field_createtime;
   public String field_deeplink;
   public String field_iconurl;
   public String field_title;
   public String field_username;
-  private boolean nYA = true;
-  private boolean nYB = true;
+  private boolean qMK = true;
+  private boolean qML = true;
   
   static
   {
-    cvZ = "title".hashCode();
-    nYD = "iconurl".hashCode();
+    dkj = "title".hashCode();
+    qMN = "iconurl".hashCode();
   }
   
-  public final void d(Cursor paramCursor)
+  public void convertFrom(Cursor paramCursor)
   {
     String[] arrayOfString = paramCursor.getColumnNames();
     if (arrayOfString == null) {
@@ -43,11 +43,11 @@ public abstract class c
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ctF != k) {
+      if (dhU != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.ctD = true;
+      this.dhS = true;
     }
     for (;;)
     {
@@ -55,52 +55,52 @@ public abstract class c
       break label20;
       break;
       label65:
-      if (nYC == k) {
+      if (qMM == k) {
         this.field_deeplink = paramCursor.getString(i);
-      } else if (cvZ == k) {
+      } else if (dkj == k) {
         this.field_title = paramCursor.getString(i);
-      } else if (nYD == k) {
+      } else if (qMN == k) {
         this.field_iconurl = paramCursor.getString(i);
-      } else if (cOc == k) {
+      } else if (dDS == k) {
         this.field_createtime = paramCursor.getLong(i);
-      } else if (crh == k) {
-        this.ujK = paramCursor.getLong(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
   
-  public final ContentValues vf()
+  public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
     if (this.field_username == null) {
       this.field_username = "";
     }
-    if (this.ctD) {
+    if (this.dhS) {
       localContentValues.put("username", this.field_username);
     }
     if (this.field_deeplink == null) {
       this.field_deeplink = "";
     }
-    if (this.nYA) {
+    if (this.qMK) {
       localContentValues.put("deeplink", this.field_deeplink);
     }
     if (this.field_title == null) {
       this.field_title = "";
     }
-    if (this.cvV) {
+    if (this.dkg) {
       localContentValues.put("title", this.field_title);
     }
     if (this.field_iconurl == null) {
       this.field_iconurl = "";
     }
-    if (this.nYB) {
+    if (this.qML) {
       localContentValues.put("iconurl", this.field_iconurl);
     }
-    if (this.cNX) {
+    if (this.dDN) {
       localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
-    if (this.ujK > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.ujK));
+    if (this.systemRowid > 0L) {
+      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
     }
     return localContentValues;
   }

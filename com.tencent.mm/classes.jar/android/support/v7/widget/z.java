@@ -1,516 +1,352 @@
 package android.support.v7.widget;
 
-import android.content.Context;
+import android.animation.ValueAnimator;
 import android.graphics.Canvas;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.support.v4.view.u;
-import android.support.v4.widget.k;
-import android.support.v7.a.a.a;
+import android.graphics.drawable.StateListDrawable;
+import android.support.v4.view.t;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AbsListView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import java.lang.reflect.Field;
 
-class z
-  extends ListView
+final class z
+  extends RecyclerView.h
+  implements RecyclerView.l
 {
-  private final Rect acb = new Rect();
-  private int acc = 0;
-  private int acd = 0;
-  private int ace = 0;
-  private int acf = 0;
-  private int acg;
-  private Field ach;
-  private a aci;
-  private boolean acj;
-  private boolean ack;
-  private boolean acl;
-  private u acm;
-  private k acn;
-  private b aco;
+  private static final int[] EMPTY_STATE_SET = new int[0];
+  private static final int[] PRESSED_STATE_SET = { 16842919 };
+  private int Mw = 0;
+  private final RecyclerView.m adA = new z.2(this);
+  final int adc;
+  private final StateListDrawable add;
+  private final Drawable ade;
+  private final int adf;
+  private final int adg;
+  private final StateListDrawable adh;
+  private final Drawable adi;
+  private final int adj;
+  private final int adk;
+  int adl;
+  int adm;
+  float adn;
+  int ado;
+  int adp;
+  float adq;
+  int adr = 0;
+  int ads = 0;
+  RecyclerView adt;
+  boolean adu = false;
+  boolean adv = false;
+  private final int[] adw = new int[2];
+  private final int[] adx = new int[2];
+  final ValueAnimator ady = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+  int adz = 0;
+  private final Runnable mHideRunnable = new z.1(this);
+  private final int mMargin;
+  int mState = 0;
   
-  z(Context paramContext, boolean paramBoolean)
+  z(RecyclerView paramRecyclerView, StateListDrawable paramStateListDrawable1, Drawable paramDrawable1, StateListDrawable paramStateListDrawable2, Drawable paramDrawable2, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramContext, null, a.a.dropDownListViewStyle);
-    this.ack = paramBoolean;
-    setCacheColorHint(0);
-    try
+    this.add = paramStateListDrawable1;
+    this.ade = paramDrawable1;
+    this.adh = paramStateListDrawable2;
+    this.adi = paramDrawable2;
+    this.adf = Math.max(paramInt1, paramStateListDrawable1.getIntrinsicWidth());
+    this.adg = Math.max(paramInt1, paramDrawable1.getIntrinsicWidth());
+    this.adj = Math.max(paramInt1, paramStateListDrawable2.getIntrinsicWidth());
+    this.adk = Math.max(paramInt1, paramDrawable2.getIntrinsicWidth());
+    this.adc = paramInt2;
+    this.mMargin = paramInt3;
+    this.add.setAlpha(255);
+    this.ade.setAlpha(255);
+    this.ady.addListener(new z.a(this, (byte)0));
+    this.ady.addUpdateListener(new z.b(this, (byte)0));
+    if (this.adt != paramRecyclerView)
     {
-      this.ach = AbsListView.class.getDeclaredField("mIsChildViewEnabled");
-      this.ach.setAccessible(true);
-      return;
-    }
-    catch (NoSuchFieldException paramContext) {}
-  }
-  
-  private void gD()
-  {
-    Drawable localDrawable = getSelector();
-    if ((localDrawable != null) && (this.acl) && (isPressed())) {
-      localDrawable.setState(getDrawableState());
-    }
-  }
-  
-  private void setSelectorEnabled(boolean paramBoolean)
-  {
-    if (this.aci != null) {
-      this.aci.IL = paramBoolean;
+      if (this.adt != null)
+      {
+        this.adt.c(this);
+        this.adt.b(this);
+        this.adt.b(this.adA);
+        hF();
+      }
+      this.adt = paramRecyclerView;
+      if (this.adt != null)
+      {
+        this.adt.a(this);
+        this.adt.a(this);
+        this.adt.a(this.adA);
+      }
     }
   }
   
-  public boolean b(MotionEvent paramMotionEvent, int paramInt)
+  private static int a(float paramFloat1, float paramFloat2, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool1 = true;
-    boolean bool2 = true;
-    int i = 0;
-    int j = paramMotionEvent.getActionMasked();
-    View localView;
-    switch (j)
+    int i = paramArrayOfInt[1] - paramArrayOfInt[0];
+    if (i == 0) {}
+    do
     {
+      return 0;
+      paramFloat1 = (paramFloat2 - paramFloat1) / i;
+      paramInt1 -= paramInt3;
+      paramInt3 = (int)(paramFloat1 * paramInt1);
+      paramInt2 += paramInt3;
+    } while ((paramInt2 >= paramInt1) || (paramInt2 < 0));
+    return paramInt3;
+  }
+  
+  private void bw(int paramInt)
+  {
+    hF();
+    this.adt.postDelayed(this.mHideRunnable, paramInt);
+  }
+  
+  private boolean hE()
+  {
+    return t.T(this.adt) == 1;
+  }
+  
+  private void hF()
+  {
+    this.adt.removeCallbacks(this.mHideRunnable);
+  }
+  
+  private void show()
+  {
+    switch (this.adz)
+    {
+    case 1: 
+    case 2: 
     default: 
-      paramInt = i;
-      bool1 = bool2;
-      if ((!bool1) || (paramInt != 0))
-      {
-        this.acl = false;
-        setPressed(false);
-        drawableStateChanged();
-        localView = getChildAt(this.acg - getFirstVisiblePosition());
-        if (localView != null) {
-          localView.setPressed(false);
-        }
-        if (this.acm != null)
-        {
-          this.acm.cancel();
-          this.acm = null;
-        }
-      }
-      if (bool1)
-      {
-        if (this.acn == null) {
-          this.acn = new k(this);
-        }
-        this.acn.H(true);
-        this.acn.onTouch(this, paramMotionEvent);
-      }
-      break;
+      return;
+    case 3: 
+      this.ady.cancel();
     }
-    label418:
-    label555:
-    label576:
-    label708:
-    label714:
-    while (this.acn == null)
+    this.adz = 1;
+    this.ady.setFloatValues(new float[] { ((Float)this.ady.getAnimatedValue()).floatValue(), 1.0F });
+    this.ady.setDuration(500L);
+    this.ady.setStartDelay(0L);
+    this.ady.start();
+  }
+  
+  private boolean v(float paramFloat1, float paramFloat2)
+  {
+    if (hE())
     {
-      return bool1;
-      bool1 = false;
-      paramInt = i;
-      break;
-      bool1 = false;
-      int k = paramMotionEvent.findPointerIndex(paramInt);
-      if (k < 0)
+      if (paramFloat1 > this.adf / 2) {}
+    }
+    else {
+      while (paramFloat1 >= this.adr - this.adf)
       {
-        bool1 = false;
-        paramInt = i;
-        break;
-      }
-      paramInt = (int)paramMotionEvent.getX(k);
-      int m = (int)paramMotionEvent.getY(k);
-      k = pointToPosition(paramInt, m);
-      if (k == -1)
-      {
-        paramInt = 1;
-        break;
-      }
-      localView = getChildAt(k - getFirstVisiblePosition());
-      float f1 = paramInt;
-      float f2 = m;
-      this.acl = true;
-      if (Build.VERSION.SDK_INT >= 21) {
-        drawableHotspotChanged(f1, f2);
-      }
-      if (!isPressed()) {
-        setPressed(true);
-      }
-      layoutChildren();
-      if (this.acg != -1)
-      {
-        localObject1 = getChildAt(this.acg - getFirstVisiblePosition());
-        if ((localObject1 != null) && (localObject1 != localView) && (((View)localObject1).isPressed())) {
-          ((View)localObject1).setPressed(false);
-        }
-      }
-      this.acg = k;
-      float f3 = localView.getLeft();
-      float f4 = localView.getTop();
-      if (Build.VERSION.SDK_INT >= 21) {
-        localView.drawableHotspotChanged(f1 - f3, f2 - f4);
-      }
-      if (!localView.isPressed()) {
-        localView.setPressed(true);
-      }
-      Object localObject1 = getSelector();
-      Object localObject2;
-      if ((localObject1 != null) && (k != -1))
-      {
-        paramInt = 1;
-        if (paramInt != 0) {
-          ((Drawable)localObject1).setVisible(false, false);
-        }
-        localObject2 = this.acb;
-        ((Rect)localObject2).set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
-        ((Rect)localObject2).left -= this.acc;
-        ((Rect)localObject2).top -= this.acd;
-        ((Rect)localObject2).right += this.ace;
-        ((Rect)localObject2).bottom += this.acf;
-      }
-      try
-      {
-        bool1 = this.ach.getBoolean(this);
-        if (localView.isEnabled() != bool1)
-        {
-          localObject2 = this.ach;
-          if (bool1) {
-            break label708;
-          }
-          bool1 = true;
-          ((Field)localObject2).set(this, Boolean.valueOf(bool1));
-          if (k != -1) {
-            refreshDrawableState();
-          }
-        }
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        break label576;
-      }
-      if (paramInt != 0)
-      {
-        localObject2 = this.acb;
-        f3 = ((Rect)localObject2).exactCenterX();
-        f4 = ((Rect)localObject2).exactCenterY();
-        if (getVisibility() != 0) {
-          break label714;
-        }
-      }
-      for (bool1 = true;; bool1 = false)
-      {
-        ((Drawable)localObject1).setVisible(bool1, false);
-        android.support.v4.a.a.a.a((Drawable)localObject1, f3, f4);
-        localObject1 = getSelector();
-        if ((localObject1 != null) && (k != -1)) {
-          android.support.v4.a.a.a.a((Drawable)localObject1, f1, f2);
-        }
-        setSelectorEnabled(false);
-        refreshDrawableState();
-        bool2 = true;
-        bool1 = bool2;
-        paramInt = i;
-        if (j != 1) {
+        if ((paramFloat2 < this.adm - this.adl / 2) || (paramFloat2 > this.adm + this.adl / 2)) {
           break;
         }
-        performItemClick(localView, k, getItemIdAtPosition(k));
-        bool1 = bool2;
-        paramInt = i;
-        break;
-        paramInt = 0;
-        break label418;
-        bool1 = false;
-        break label555;
+        return true;
       }
     }
-    this.acn.H(false);
-    return bool1;
+    return false;
   }
   
-  public int d(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  private boolean w(float paramFloat1, float paramFloat2)
   {
-    paramInt2 = getListPaddingTop();
-    paramInt3 = getListPaddingBottom();
-    getListPaddingLeft();
-    getListPaddingRight();
-    int i = getDividerHeight();
-    Object localObject = getDivider();
-    ListAdapter localListAdapter = getAdapter();
-    if (localListAdapter == null)
+    return (paramFloat2 >= this.ads - this.adj) && (paramFloat1 >= this.adp - this.ado / 2) && (paramFloat1 <= this.adp + this.ado / 2);
+  }
+  
+  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView)
+  {
+    if ((this.adr != this.adt.getWidth()) || (this.ads != this.adt.getHeight()))
     {
-      paramInt2 += paramInt3;
-      return paramInt2;
+      this.adr = this.adt.getWidth();
+      this.ads = this.adt.getHeight();
+      setState(0);
     }
-    paramInt3 += paramInt2;
-    label63:
-    int m;
-    int j;
-    int k;
-    View localView;
-    if ((i > 0) && (localObject != null))
-    {
-      paramInt2 = 0;
-      localObject = null;
-      m = 0;
-      int i1 = localListAdapter.getCount();
-      j = 0;
-      if (j >= i1) {
-        break label292;
-      }
-      int n = localListAdapter.getItemViewType(j);
-      k = m;
-      if (n != m)
-      {
-        localObject = null;
-        k = n;
-      }
-      localView = localListAdapter.getView(j, (View)localObject, this);
-      ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (localLayoutParams == null)
-      {
-        localObject = generateDefaultLayoutParams();
-        localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      if (((ViewGroup.LayoutParams)localObject).height <= 0) {
-        break label251;
-      }
-      m = View.MeasureSpec.makeMeasureSpec(((ViewGroup.LayoutParams)localObject).height, 1073741824);
-      label183:
-      localView.measure(paramInt1, m);
-      localView.forceLayout();
-      if (j <= 0) {
-        break label297;
-      }
-      paramInt3 += i;
-    }
-    label292:
-    label297:
     for (;;)
     {
-      paramInt3 = localView.getMeasuredHeight() + paramInt3;
-      if (paramInt3 >= paramInt4)
+      return;
+      if (this.adz != 0)
       {
-        if ((paramInt5 >= 0) && (j > paramInt5) && (paramInt2 > 0) && (paramInt3 != paramInt4)) {
-          break;
+        int i;
+        int j;
+        if (this.adu)
+        {
+          i = this.adr - this.adf;
+          j = this.adm - this.adl / 2;
+          this.add.setBounds(0, 0, this.adf, this.adl);
+          this.ade.setBounds(0, 0, this.adg, this.ads);
+          if (!hE()) {
+            break label297;
+          }
+          this.ade.draw(paramCanvas);
+          paramCanvas.translate(this.adf, j);
+          paramCanvas.scale(-1.0F, 1.0F);
+          this.add.draw(paramCanvas);
+          paramCanvas.scale(1.0F, 1.0F);
+          paramCanvas.translate(-this.adf, -j);
         }
-        return paramInt4;
-        i = 0;
-        break label63;
-        label251:
-        m = View.MeasureSpec.makeMeasureSpec(0, 0);
-        break label183;
+        while (this.adv)
+        {
+          i = this.ads - this.adj;
+          j = this.adp - this.ado / 2;
+          this.adh.setBounds(0, 0, this.ado, this.adj);
+          this.adi.setBounds(0, 0, this.adr, this.adk);
+          paramCanvas.translate(0.0F, i);
+          this.adi.draw(paramCanvas);
+          paramCanvas.translate(j, 0.0F);
+          this.adh.draw(paramCanvas);
+          paramCanvas.translate(-j, -i);
+          return;
+          label297:
+          paramCanvas.translate(i, 0.0F);
+          this.ade.draw(paramCanvas);
+          paramCanvas.translate(0.0F, j);
+          this.add.draw(paramCanvas);
+          paramCanvas.translate(-i, -j);
+        }
       }
-      if ((paramInt5 >= 0) && (j >= paramInt5)) {
-        paramInt2 = paramInt3;
+    }
+  }
+  
+  public final void ac(boolean paramBoolean) {}
+  
+  public final boolean h(MotionEvent paramMotionEvent)
+  {
+    if (this.mState == 1)
+    {
+      bool1 = v(paramMotionEvent.getX(), paramMotionEvent.getY());
+      bool2 = w(paramMotionEvent.getX(), paramMotionEvent.getY());
+      if ((paramMotionEvent.getAction() == 0) && ((bool1) || (bool2))) {
+        if (bool2)
+        {
+          this.Mw = 1;
+          this.adq = ((int)paramMotionEvent.getX());
+          setState(2);
+        }
       }
+    }
+    while (this.mState == 2)
+    {
       for (;;)
       {
-        j += 1;
-        m = k;
-        localObject = localView;
-        break;
-        return paramInt3;
+        boolean bool1;
+        boolean bool2;
+        return true;
+        if (bool1)
+        {
+          this.Mw = 2;
+          this.adn = ((int)paramMotionEvent.getY());
+        }
       }
+      return false;
     }
+    return false;
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
+  public final void i(MotionEvent paramMotionEvent)
   {
-    if (!this.acb.isEmpty())
-    {
-      Drawable localDrawable = getSelector();
-      if (localDrawable != null)
-      {
-        localDrawable.setBounds(this.acb);
-        localDrawable.draw(paramCanvas);
-      }
-    }
-    super.dispatchDraw(paramCanvas);
-  }
-  
-  protected void drawableStateChanged()
-  {
-    if (this.aco != null) {
-      return;
-    }
-    super.drawableStateChanged();
-    setSelectorEnabled(true);
-    gD();
-  }
-  
-  public boolean hasFocus()
-  {
-    return (this.ack) || (super.hasFocus());
-  }
-  
-  public boolean hasWindowFocus()
-  {
-    return (this.ack) || (super.hasWindowFocus());
-  }
-  
-  public boolean isFocused()
-  {
-    return (this.ack) || (super.isFocused());
-  }
-  
-  public boolean isInTouchMode()
-  {
-    return ((this.ack) && (this.acj)) || (super.isInTouchMode());
-  }
-  
-  protected void onDetachedFromWindow()
-  {
-    this.aco = null;
-    super.onDetachedFromWindow();
-  }
-  
-  public boolean onHoverEvent(MotionEvent paramMotionEvent)
-  {
-    boolean bool1;
-    if (Build.VERSION.SDK_INT < 26) {
-      bool1 = super.onHoverEvent(paramMotionEvent);
-    }
-    int i;
-    boolean bool2;
+    if (this.mState == 0) {}
+    float f;
     do
     {
       do
       {
-        return bool1;
-        i = paramMotionEvent.getActionMasked();
-        if ((i == 10) && (this.aco == null))
+        do
         {
-          this.aco = new b((byte)0);
-          b localb = this.aco;
-          localb.acp.post(localb);
+          boolean bool1;
+          boolean bool2;
+          do
+          {
+            return;
+            if (paramMotionEvent.getAction() != 0) {
+              break;
+            }
+            bool1 = v(paramMotionEvent.getX(), paramMotionEvent.getY());
+            bool2 = w(paramMotionEvent.getX(), paramMotionEvent.getY());
+          } while ((!bool1) && (!bool2));
+          if (bool2)
+          {
+            this.Mw = 1;
+            this.adq = ((int)paramMotionEvent.getX());
+          }
+          for (;;)
+          {
+            setState(2);
+            return;
+            if (bool1)
+            {
+              this.Mw = 2;
+              this.adn = ((int)paramMotionEvent.getY());
+            }
+          }
+          if ((paramMotionEvent.getAction() == 1) && (this.mState == 2))
+          {
+            this.adn = 0.0F;
+            this.adq = 0.0F;
+            setState(1);
+            this.Mw = 0;
+            return;
+          }
+        } while ((paramMotionEvent.getAction() != 2) || (this.mState != 2));
+        show();
+        if (this.Mw == 1)
+        {
+          f = paramMotionEvent.getX();
+          this.adx[0] = this.mMargin;
+          this.adx[1] = (this.adr - this.mMargin);
+          int[] arrayOfInt = this.adx;
+          f = Math.max(arrayOfInt[0], Math.min(arrayOfInt[1], f));
+          if (Math.abs(this.adp - f) >= 2.0F)
+          {
+            i = a(this.adq, f, arrayOfInt, this.adt.computeHorizontalScrollRange(), this.adt.computeHorizontalScrollOffset(), this.adr);
+            if (i != 0) {
+              this.adt.scrollBy(i, 0);
+            }
+            this.adq = f;
+          }
         }
-        bool2 = super.onHoverEvent(paramMotionEvent);
-        if ((i != 9) && (i != 7)) {
-          break;
-        }
-        i = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-        bool1 = bool2;
-      } while (i == -1);
-      bool1 = bool2;
-    } while (i == getSelectedItemPosition());
-    paramMotionEvent = getChildAt(i - getFirstVisiblePosition());
-    if (paramMotionEvent.isEnabled()) {
-      setSelectionFromTop(i, paramMotionEvent.getTop() - getTop());
+      } while (this.Mw != 2);
+      f = paramMotionEvent.getY();
+      this.adw[0] = this.mMargin;
+      this.adw[1] = (this.ads - this.mMargin);
+      paramMotionEvent = this.adw;
+      f = Math.max(paramMotionEvent[0], Math.min(paramMotionEvent[1], f));
+    } while (Math.abs(this.adm - f) < 2.0F);
+    int i = a(this.adn, f, paramMotionEvent, this.adt.computeVerticalScrollRange(), this.adt.computeVerticalScrollOffset(), this.ads);
+    if (i != 0) {
+      this.adt.scrollBy(0, i);
     }
-    gD();
-    return bool2;
-    setSelection(-1);
-    return bool2;
+    this.adn = f;
   }
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  final void setState(int paramInt)
   {
-    switch (paramMotionEvent.getAction())
+    if ((paramInt == 2) && (this.mState != 2))
     {
+      this.add.setState(PRESSED_STATE_SET);
+      hF();
+    }
+    if (paramInt == 0)
+    {
+      this.adt.invalidate();
+      if ((this.mState != 2) || (paramInt == 2)) {
+        break label83;
+      }
+      this.add.setState(EMPTY_STATE_SET);
+      bw(1200);
     }
     for (;;)
     {
-      if (this.aco != null)
-      {
-        b localb = this.aco;
-        localb.acp.aco = null;
-        localb.acp.removeCallbacks(localb);
-      }
-      return super.onTouchEvent(paramMotionEvent);
-      this.acg = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-    }
-  }
-  
-  void setListSelectionHidden(boolean paramBoolean)
-  {
-    this.acj = paramBoolean;
-  }
-  
-  public void setSelector(Drawable paramDrawable)
-  {
-    if (paramDrawable != null) {}
-    for (Object localObject = new a(paramDrawable);; localObject = null)
-    {
-      this.aci = ((a)localObject);
-      super.setSelector(this.aci);
-      localObject = new Rect();
-      if (paramDrawable != null) {
-        paramDrawable.getPadding((Rect)localObject);
-      }
-      this.acc = ((Rect)localObject).left;
-      this.acd = ((Rect)localObject).top;
-      this.ace = ((Rect)localObject).right;
-      this.acf = ((Rect)localObject).bottom;
+      this.mState = paramInt;
       return;
-    }
-  }
-  
-  private static final class a
-    extends android.support.v7.d.a.a
-  {
-    boolean IL = true;
-    
-    a(Drawable paramDrawable)
-    {
-      super();
-    }
-    
-    public final void draw(Canvas paramCanvas)
-    {
-      if (this.IL) {
-        super.draw(paramCanvas);
+      show();
+      break;
+      label83:
+      if (paramInt == 1) {
+        bw(1500);
       }
-    }
-    
-    public final void setHotspot(float paramFloat1, float paramFloat2)
-    {
-      if (this.IL) {
-        super.setHotspot(paramFloat1, paramFloat2);
-      }
-    }
-    
-    public final void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-    {
-      if (this.IL) {
-        super.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-      }
-    }
-    
-    public final boolean setState(int[] paramArrayOfInt)
-    {
-      if (this.IL) {
-        return super.setState(paramArrayOfInt);
-      }
-      return false;
-    }
-    
-    public final boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-    {
-      if (this.IL) {
-        return super.setVisible(paramBoolean1, paramBoolean2);
-      }
-      return false;
-    }
-  }
-  
-  private final class b
-    implements Runnable
-  {
-    private b() {}
-    
-    public final void run()
-    {
-      z.a(z.this);
-      z.this.drawableStateChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v7.widget.z
  * JD-Core Version:    0.7.0.1
  */

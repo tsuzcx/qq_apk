@@ -1,5 +1,6 @@
 package com.tencent.tmassistantsdk.openSDK.param.jce;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
 
 public final class IPCCmd
@@ -26,11 +27,12 @@ public final class IPCCmd
   public static final int _ServiceFreeAction = 8;
   public static final int _URIAction = 5;
   private static IPCCmd[] __values;
-  private String __T = new String();
+  private String __T;
   private int __value;
   
   static
   {
+    AppMethodBeat.i(75991);
     if (!IPCCmd.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
@@ -46,46 +48,67 @@ public final class IPCCmd
       QueryLoginState = new IPCCmd(7, 7, "QueryLoginState");
       ServiceFreeAction = new IPCCmd(8, 8, "ServiceFreeAction");
       BatchDownloadAction = new IPCCmd(9, 9, "BatchDownloadAction");
+      AppMethodBeat.o(75991);
       return;
     }
   }
   
   private IPCCmd(int paramInt1, int paramInt2, String paramString)
   {
+    AppMethodBeat.i(75990);
+    this.__T = new String();
     this.__T = paramString;
     this.__value = paramInt2;
     __values[paramInt1] = this;
+    AppMethodBeat.o(75990);
   }
   
   public static IPCCmd convert(int paramInt)
   {
+    AppMethodBeat.i(75988);
     int i = 0;
+    Object localObject;
     while (i < __values.length)
     {
-      if (__values[i].value() == paramInt) {
-        return __values[i];
+      if (__values[i].value() == paramInt)
+      {
+        localObject = __values[i];
+        AppMethodBeat.o(75988);
+        return localObject;
       }
       i += 1;
     }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
+    if (!$assertionsDisabled)
+    {
+      localObject = new AssertionError();
+      AppMethodBeat.o(75988);
+      throw ((Throwable)localObject);
     }
+    AppMethodBeat.o(75988);
     return null;
   }
   
   public static IPCCmd convert(String paramString)
   {
+    AppMethodBeat.i(75989);
     int i = 0;
     while (i < __values.length)
     {
-      if (__values[i].toString().equals(paramString)) {
-        return __values[i];
+      if (__values[i].toString().equals(paramString))
+      {
+        paramString = __values[i];
+        AppMethodBeat.o(75989);
+        return paramString;
       }
       i += 1;
     }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
+    if (!$assertionsDisabled)
+    {
+      paramString = new AssertionError();
+      AppMethodBeat.o(75989);
+      throw paramString;
     }
+    AppMethodBeat.o(75989);
     return null;
   }
   

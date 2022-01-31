@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class EmojiStoreV2SingleProductUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -11,8 +12,10 @@ final class EmojiStoreV2SingleProductUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    y.d("MicroMsg.emoji.EmojiStoreV2SingleProductUI", "on shard click.");
-    EmojiStoreV2SingleProductUI.o(this.jiI);
+    AppMethodBeat.i(53745);
+    ab.d("MicroMsg.emoji.EmojiStoreV2SingleProductUI", "on shard click.");
+    EmojiStoreV2SingleProductUI.o(this.lrz);
+    AppMethodBeat.o(53745);
     return true;
   }
 }

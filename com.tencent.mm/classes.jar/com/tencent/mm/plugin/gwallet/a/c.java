@@ -1,27 +1,32 @@
 package com.tencent.mm.plugin.gwallet.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class c
 {
-  public int ljp;
-  String ljq;
+  public int nGE;
+  String nGF;
   
   public c(int paramInt, String paramString)
   {
-    this.ljp = paramInt;
+    AppMethodBeat.i(41705);
+    this.nGE = paramInt;
     if ((paramString == null) || (paramString.trim().length() == 0))
     {
-      this.ljq = b.sq(paramInt);
+      this.nGF = b.xq(paramInt);
+      AppMethodBeat.o(41705);
       return;
     }
-    this.ljq = (paramString + " (response: " + b.sq(paramInt) + ")");
+    this.nGF = (paramString + " (response: " + b.xq(paramInt) + ")");
+    AppMethodBeat.o(41705);
   }
   
-  public final int baN()
+  public final int bHN()
   {
-    switch (this.ljp)
+    switch (this.nGE)
     {
     default: 
-      return this.ljp;
+      return this.nGE;
     case 0: 
       return 0;
     case 1: 
@@ -47,12 +52,15 @@ public final class c
   
   public final boolean isSuccess()
   {
-    return this.ljp == 0;
+    return this.nGE == 0;
   }
   
   public final String toString()
   {
-    return "IapResult: " + this.ljq;
+    AppMethodBeat.i(41706);
+    String str = "IapResult: " + this.nGF;
+    AppMethodBeat.o(41706);
+    return str;
   }
 }
 

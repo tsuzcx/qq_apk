@@ -1,7 +1,20 @@
 package com.tencent.mm.plugin.webview.fts.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
  enum a$a
 {
+  static
+  {
+    AppMethodBeat.i(5821);
+    uQc = new a("None", 0);
+    uQd = new a("Volume", 1);
+    uQe = new a("Brightness", 2);
+    uQf = new a("FastBackwardOrForward", 3);
+    uQg = new a[] { uQc, uQd, uQe, uQf };
+    AppMethodBeat.o(5821);
+  }
+  
   private a$a() {}
 }
 

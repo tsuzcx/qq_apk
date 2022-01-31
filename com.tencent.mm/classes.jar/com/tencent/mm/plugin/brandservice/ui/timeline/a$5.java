@@ -1,28 +1,24 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import android.widget.ImageView;
-import com.tencent.mm.plugin.brandservice.b.c;
-import com.tencent.mm.plugin.brandservice.ui.b.c;
-import com.tencent.mm.pluginsdk.ui.applet.e.a;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.q;
 
 final class a$5
-  implements e.a
+  implements View.OnLongClickListener
 {
-  a$5(a parama, c.e parame, q paramq) {}
+  a$5(a parama, q paramq, int paramInt) {}
   
-  public final void onFinish()
+  public final boolean onLongClick(View paramView)
   {
-    this.ifm.igd.ifL.setVisibility(0);
-    if ((this.hSM.field_msgId + "_0").equals(c.ayD())) {
-      this.ifm.igd.ifH.setImageResource(b.c.chatting_item_biz_music_pause_selector);
-    }
-    for (;;)
-    {
-      a.g(this.ifl).aog();
-      return;
-      this.ifm.igd.ifH.setImageResource(b.c.chatting_item_biz_music_play_selector);
-    }
+    AppMethodBeat.i(14102);
+    this.jVZ.jVF = this.jMz;
+    this.jVZ.jVG = this.jMC;
+    this.jVZ.jVH = 1;
+    a.e(this.jVZ).a(paramView, this.jVZ, a.b(this.jVZ), a.c(this.jVZ), a.d(this.jVZ));
+    AppMethodBeat.o(14102);
+    return true;
   }
 }
 

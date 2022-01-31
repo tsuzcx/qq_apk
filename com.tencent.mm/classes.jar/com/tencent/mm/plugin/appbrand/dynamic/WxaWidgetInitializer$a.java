@@ -4,7 +4,7 @@ public abstract interface WxaWidgetInitializer$a
 {
   public abstract void a(String paramString1, String paramString2, boolean paramBoolean, WxaWidgetContext paramWxaWidgetContext);
   
-  public abstract void bk(String paramString1, String paramString2);
+  public abstract void bL(String paramString1, String paramString2);
 }
 
 

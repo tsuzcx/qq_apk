@@ -1,70 +1,92 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class q
   implements f
 {
-  public q.a pLO = null;
-  private String pLf = null;
-  private int pLl = 0;
-  public String pLy = null;
-  public int pLz = -1;
+  public q.a trK;
+  private String trb;
+  private int trh;
+  public String tru;
+  public int trv;
   
   public q()
   {
-    au.Dk().a(611, this);
-    au.Dk().a(613, this);
+    AppMethodBeat.i(26128);
+    this.trK = null;
+    this.trv = -1;
+    this.tru = null;
+    this.trb = null;
+    this.trh = 0;
+    aw.Rc().a(611, this);
+    aw.Rc().a(613, this);
+    AppMethodBeat.o(26128);
   }
   
   public q(q.a parama)
   {
     this();
-    this.pLO = parama;
+    this.trK = parama;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.d("MicroMsg.VoicePrintUnLockService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if ((paramInt1 != 0) && (paramInt2 != 0)) {
-      if (this.pLO != null) {
-        this.pLO.bPa();
+    AppMethodBeat.i(26129);
+    ab.d("MicroMsg.VoicePrintUnLockService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if ((paramInt1 != 0) && (paramInt2 != 0))
+    {
+      if (paramInt2 == -34)
+      {
+        ab.d("MicroMsg.VoicePrintUnLockService", "blocked by limit");
+        if (this.trK != null) {
+          this.trK.cLg();
+        }
+        AppMethodBeat.o(26129);
+        return;
+      }
+      if (this.trK != null) {
+        this.trK.cLf();
+      }
+      AppMethodBeat.o(26129);
+      return;
+    }
+    if (paramm.getType() == 611)
+    {
+      paramString = (d)paramm;
+      this.trv = paramString.tra;
+      this.tru = paramString.tqZ;
+      this.trb = paramString.trb;
+      ab.d("MicroMsg.VoicePrintUnLockService", "onGetVoiceText, resId:%d, verifyKey:%s, voiceText==null:%b", new Object[] { Integer.valueOf(this.trv), this.trb, Boolean.valueOf(bo.isNullOrNil(this.tru)) });
+      if (this.trK != null) {
+        this.trK.aeD(this.tru);
       }
     }
-    do
-    {
-      do
+    if (paramm.getType() == 613) {
+      if (((j)paramm).DW == 0)
       {
-        do
+        ab.d("MicroMsg.VoicePrintUnLockService", "onVerify, success");
+        if (this.trK != null)
         {
-          return;
-          if (paramm.getType() == 611)
-          {
-            paramString = (d)paramm;
-            this.pLz = paramString.pLe;
-            this.pLy = paramString.pLd;
-            this.pLf = paramString.pLf;
-            y.d("MicroMsg.VoicePrintUnLockService", "onGetVoiceText, resId:%d, verifyKey:%s, voiceText==null:%b", new Object[] { Integer.valueOf(this.pLz), this.pLf, Boolean.valueOf(bk.bl(this.pLy)) });
-            if (this.pLO != null) {
-              this.pLO.PX(this.pLy);
-            }
-          }
-        } while (paramm.getType() != 613);
-        if (((j)paramm).Do != 0) {
-          break;
+          this.trK.mI(true);
+          AppMethodBeat.o(26129);
         }
-        y.d("MicroMsg.VoicePrintUnLockService", "onVerify, success");
-      } while (this.pLO == null);
-      this.pLO.jP(true);
-      return;
-      y.d("MicroMsg.VoicePrintUnLockService", "onVerify, failed");
-    } while (this.pLO == null);
-    this.pLO.jP(false);
+      }
+      else
+      {
+        ab.d("MicroMsg.VoicePrintUnLockService", "onVerify, failed");
+        if (this.trK != null) {
+          this.trK.mI(false);
+        }
+      }
+    }
+    AppMethodBeat.o(26129);
   }
 }
 

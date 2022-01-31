@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/p1"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView style="@style/mn">
-        <LinearLayout style="@style/k5">
-            <TextView android:id="@id/dir" android:padding="0.0dip" android:text="@string/der" android:layout_weight="1.0" style="@style/lr" />
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dis" android:background="@drawable/a58" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li" android:minHeight="@dimen/mp">
-                <TextView android:textSize="@dimen/lj" android:textColor="@color/pf" android:id="@id/dit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/kl" android:text="@string/e61" />
-                <TextView android:textSize="@dimen/dq" android:textColor="@color/pf" android:gravity="left" android:id="@id/dh1" android:paddingRight="@dimen/kl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout android:orientation="horizontal" android:id="@id/diu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li">
-                <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:id="@id/div" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/kl" android:text="@string/deo" />
-                <EditText android:id="@id/diw" android:minHeight="@dimen/kg" android:hint="@string/dej" style="@style/lp" />
-            </LinearLayout>
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li">
-                <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:id="@id/dix" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/kl" android:text="@string/dem" />
-                <EditText android:id="@id/diy" android:minHeight="@dimen/kg" android:hint="@string/dei" style="@style/lp" />
-            </LinearLayout>
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li">
-                <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:id="@id/diz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/kl" android:text="@string/deh" />
-                <EditText android:id="@id/dj0" android:minHeight="@dimen/kg" android:hint="@string/dek" style="@style/lp" />
-            </LinearLayout>
-            <TextView android:textSize="@dimen/k9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li" android:text="@string/eqh" />
-            <TextView android:textSize="@dimen/k9" android:textColor="@color/a3c" android:id="@id/dj1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bu3" />
-        </LinearLayout>
-    </ScrollView>
+    <TextView android:id="@id/dot" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/da2" style="@style/a0k" />
+    <TextView android:id="@id/dou" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/daj" style="@style/a0k" />
+    <TextView android:id="@id/dov" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/daf" style="@style/a0k" />
+    <TextView android:id="@id/dow" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dag" style="@style/a0k" />
+    <TextView android:id="@id/dox" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/da4" style="@style/a0k" />
+    <TextView android:id="@id/doy" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/da3" style="@style/a0k" />
+    <TextView android:id="@id/doz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dab" style="@style/a0k" />
+    <TextView android:id="@id/dp0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/da5" style="@style/a0k" />
 </LinearLayout>

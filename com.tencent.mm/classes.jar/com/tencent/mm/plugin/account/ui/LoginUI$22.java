@@ -1,18 +1,17 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginUI$22
-  implements View.OnClickListener
+  implements ResizeLayout.a
 {
   LoginUI$22(LoginUI paramLoginUI) {}
   
-  public final void onClick(View paramView)
+  public final void aru()
   {
-    paramView = this.fnM.getString(q.j.login_forget_password_help) + x.cqJ();
-    LoginUI.O(this.fnM, paramView);
+    AppMethodBeat.i(152568);
+    LoginUI.b(this.gFf);
+    AppMethodBeat.o(152568);
   }
 }
 

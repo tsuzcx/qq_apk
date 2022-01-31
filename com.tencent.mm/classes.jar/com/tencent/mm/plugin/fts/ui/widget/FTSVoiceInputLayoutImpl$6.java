@@ -1,8 +1,7 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
-import android.animation.ValueAnimator;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FTSVoiceInputLayoutImpl$6
   implements Runnable
@@ -11,20 +10,16 @@ final class FTSVoiceInputLayoutImpl$6
   
   public final void run()
   {
-    c localc = FTSVoiceInputLayoutImpl.a(this.kFs);
-    y.d("MicroMsg.VoiceInputDrawable", "recognizingState %s", new Object[] { Integer.valueOf(localc.kFU) });
-    localc.kFU = 4;
-    localc.hsF.cancel();
-    localc.kFN = 0.0F;
-    localc.hsF.setInterpolator(new AccelerateDecelerateInterpolator());
-    localc.hsF.setDuration(1000L);
-    localc.hsF.setRepeatCount(-1);
-    localc.hsF.start();
+    AppMethodBeat.i(62186);
+    b localb = FTSVoiceInputLayoutImpl.b(this.ncg);
+    ab.d("MicroMsg.FTSVoiceInputDrawable", "recognizingState %s", new Object[] { Integer.valueOf(localb.currentState) });
+    localb.currentState = 4;
+    AppMethodBeat.o(62186);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.FTSVoiceInputLayoutImpl.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,20 @@
 package com.tencent.mm.chatroom.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RoomCardUI$10
-  implements DialogInterface.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   RoomCardUI$10(RoomCardUI paramRoomCardUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.dpS.setResult(0);
-    this.dpS.finish();
+    AppMethodBeat.i(155175);
+    RoomCardUI.c(this.ehp);
+    AppMethodBeat.o(155175);
+    return true;
   }
 }
 

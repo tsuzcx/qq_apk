@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.collect.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.ui.view.a;
-import com.tencent.mm.plugin.wxpay.a.i;
 
 final class CollectCreateQRCodeUI$4
   implements View.OnClickListener
@@ -12,8 +12,10 @@ final class CollectCreateQRCodeUI$4
   
   public final void onClick(View paramView)
   {
-    this.iKI.VH();
-    a.a(this.iKI, this.iKI.getString(a.i.collect_main_add_desc_title), CollectCreateQRCodeUI.b(this.iKI), "", 32, new CollectCreateQRCodeUI.4.1(this), new CollectCreateQRCodeUI.4.2(this));
+    AppMethodBeat.i(41236);
+    this.kRn.hideTenpayKB();
+    a.a(this.kRn, this.kRn.getString(2131298441), CollectCreateQRCodeUI.b(this.kRn), "", 32, new CollectCreateQRCodeUI.4.1(this), new CollectCreateQRCodeUI.4.2(this));
+    AppMethodBeat.o(41236);
   }
 }
 

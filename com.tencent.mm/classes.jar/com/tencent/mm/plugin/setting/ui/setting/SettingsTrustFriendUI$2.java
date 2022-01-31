@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.setting.model.b;
 
@@ -13,7 +14,9 @@ final class SettingsTrustFriendUI$2
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.Dk().c(this.nWq);
+    AppMethodBeat.i(127533);
+    g.Rc().a(this.qKA);
+    AppMethodBeat.o(127533);
   }
 }
 

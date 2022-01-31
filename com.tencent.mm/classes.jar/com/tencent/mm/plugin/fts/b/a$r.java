@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.b;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.g;
 import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.j;
@@ -20,71 +21,81 @@ final class a$r
     super(parami);
   }
   
-  protected final void a(j paramj)
+  public final void a(j paramj)
   {
-    DW("start");
-    paramj.kwi = g.aF(this.kwT.bVk, true);
-    Object localObject1 = a.a(this.kyt);
-    Object localObject2 = paramj.kwi;
-    Object localObject3 = ((g)localObject2).aVy();
+    AppMethodBeat.i(136690);
+    Pg("start");
+    paramj.mRX = g.aU(this.mSJ.query, true);
+    Object localObject1 = a.a(this.mUg);
+    Object localObject2 = paramj.mRX;
+    Object localObject3 = ((g)localObject2).bBX();
     long l1 = System.currentTimeMillis();
-    long l2 = ((g)localObject2).kwK.size();
-    localObject3 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp, content, MMHighlight(%s, %d, type, subtype) AS Offsets, MMChatroomRank(%s, timestamp / 1000 - %d / 1000, subtype, ?, entity_id, %d) AS Rank FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND type = 131075 ORDER BY Rank, timestamp desc ;", new Object[] { ((com.tencent.mm.plugin.fts.c.a)localObject1).aVs(), ((com.tencent.mm.plugin.fts.c.a)localObject1).aVt(), Long.valueOf(l2), ((com.tencent.mm.plugin.fts.c.a)localObject1).aVt(), Long.valueOf(l1 - 1209600000L), Long.valueOf(l2), ((com.tencent.mm.plugin.fts.c.a)localObject1).aVs(), ((com.tencent.mm.plugin.fts.c.a)localObject1).aVt(), ((com.tencent.mm.plugin.fts.c.a)localObject1).aVs(), ((com.tencent.mm.plugin.fts.c.a)localObject1).aVt(), ((com.tencent.mm.plugin.fts.c.a)localObject1).aVt(), localObject3 });
-    localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject1).kuE.rawQuery((String)localObject3, new String[] { ((g)localObject2).kwH });
+    long l2 = ((g)localObject2).mSA.size();
+    localObject3 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp, content, MMHighlight(%s, %d, type, subtype) AS Offsets, MMChatroomRank(%s, timestamp / 1000 - %d / 1000, subtype, ?, entity_id, %d) AS Rank FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND type = 131075 ORDER BY Rank, timestamp desc ;", new Object[] { ((com.tencent.mm.plugin.fts.c.a)localObject1).bBR(), ((com.tencent.mm.plugin.fts.c.a)localObject1).bBS(), Long.valueOf(l2), ((com.tencent.mm.plugin.fts.c.a)localObject1).bBS(), Long.valueOf(l1 - 1209600000L), Long.valueOf(l2), ((com.tencent.mm.plugin.fts.c.a)localObject1).bBR(), ((com.tencent.mm.plugin.fts.c.a)localObject1).bBS(), ((com.tencent.mm.plugin.fts.c.a)localObject1).bBR(), ((com.tencent.mm.plugin.fts.c.a)localObject1).bBS(), ((com.tencent.mm.plugin.fts.c.a)localObject1).bBS(), localObject3 });
+    localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject1).mQr.rawQuery((String)localObject3, new String[] { ((g)localObject2).mSx });
     localObject2 = new ArrayList();
     localObject3 = new HashSet();
-    ((HashSet)localObject3).addAll(this.kwT.kxd);
+    ((HashSet)localObject3).addAll(this.mSJ.mSS);
     while (((Cursor)localObject1).moveToNext())
     {
-      m localm = new m().i((Cursor)localObject1);
-      if (((HashSet)localObject3).add(localm.kwg)) {
-        if (((List)localObject2).size() <= this.kwT.kxc)
+      m localm = new m().h((Cursor)localObject1);
+      if (((HashSet)localObject3).add(localm.mRV)) {
+        if (((List)localObject2).size() <= this.mSJ.mSR)
         {
           ((List)localObject2).add(localm);
           if (Thread.interrupted())
           {
             ((Cursor)localObject1).close();
-            throw new InterruptedException("Task is Cancel: " + this.kwT.bVk);
+            paramj = new InterruptedException("Task is Cancel: " + this.mSJ.query);
+            AppMethodBeat.o(136690);
+            throw paramj;
           }
         }
       }
     }
     ((Cursor)localObject1).close();
-    if (Thread.interrupted()) {
-      throw new InterruptedException();
+    if (Thread.interrupted())
+    {
+      paramj = new InterruptedException();
+      AppMethodBeat.o(136690);
+      throw paramj;
     }
-    DW("orm");
-    paramj.kxh = new ArrayList(((List)localObject2).size());
+    Pg("orm");
+    paramj.mSW = new ArrayList(((List)localObject2).size());
     localObject1 = ((List)localObject2).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (m)((Iterator)localObject1).next();
-      ((m)localObject2).aVA();
-      ((m)localObject2).a(paramj.kwi);
-      paramj.kxh.add(localObject2);
+      ((m)localObject2).bCa();
+      ((m)localObject2).a(paramj.mRX);
+      paramj.mSW.add(localObject2);
     }
-    if (Thread.interrupted()) {
-      throw new InterruptedException();
+    if (Thread.interrupted())
+    {
+      paramj = new InterruptedException();
+      AppMethodBeat.o(136690);
+      throw paramj;
     }
-    if (this.kwT.kxe != null) {
-      Collections.sort(paramj.kxh, this.kwT.kxe);
+    if (this.mSJ.mST != null) {
+      Collections.sort(paramj.mSW, this.mSJ.mST);
     }
-    DW("calOffsets");
-    if ((paramj.kwi.kwK.size() > 1) && (a.a(this.kyt).b(paramj.kwi)))
+    Pg("calOffsets");
+    if ((paramj.mRX.mSA.size() > 1) && (a.a(this.mUg).b(paramj.mRX)))
     {
       localObject1 = new l();
-      ((l)localObject1).kwg = "create_chatroom​";
-      if (paramj.kxh.size() <= 3) {
-        break label568;
+      ((l)localObject1).mRV = "create_chatroom​";
+      if (paramj.mSW.size() <= 3) {
+        break label599;
       }
-      paramj.kxh.add(3, localObject1);
+      paramj.mSW.add(3, localObject1);
     }
     for (;;)
     {
-      DW("checkChatroom");
+      Pg("checkChatroom");
+      AppMethodBeat.o(136690);
       return;
-      label568:
-      paramj.kxh.add(localObject1);
+      label599:
+      paramj.mSW.add(localObject1);
     }
   }
   
@@ -100,7 +111,7 @@ final class a$r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.a.r
  * JD-Core Version:    0.7.0.1
  */

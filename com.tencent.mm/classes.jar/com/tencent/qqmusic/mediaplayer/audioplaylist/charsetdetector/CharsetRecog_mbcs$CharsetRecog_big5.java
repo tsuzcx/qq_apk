@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class CharsetRecog_mbcs$CharsetRecog_big5
   extends CharsetRecog_mbcs
 {
@@ -17,31 +19,45 @@ class CharsetRecog_mbcs$CharsetRecog_big5
   
   CharsetMatch match(CharsetDetector paramCharsetDetector)
   {
+    AppMethodBeat.i(104759);
     int i = match(paramCharsetDetector, commonChars);
-    if (i == 0) {
+    if (i == 0)
+    {
+      AppMethodBeat.o(104759);
       return null;
     }
-    return new CharsetMatch(paramCharsetDetector, this, i);
+    paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i);
+    AppMethodBeat.o(104759);
+    return paramCharsetDetector;
   }
   
   boolean nextChar(CharsetRecog_mbcs.iteratedChar paramiteratedChar, CharsetDetector paramCharsetDetector)
   {
+    AppMethodBeat.i(104758);
     paramiteratedChar.error = false;
     int i = paramiteratedChar.nextByte(paramCharsetDetector);
     paramiteratedChar.charValue = i;
-    if (i < 0) {}
-    do
+    if (i < 0)
     {
+      AppMethodBeat.o(104758);
       return false;
-      if ((i <= 127) || (i == 255)) {
-        return true;
-      }
-      i = paramiteratedChar.nextByte(paramCharsetDetector);
-    } while (i < 0);
+    }
+    if ((i <= 127) || (i == 255))
+    {
+      AppMethodBeat.o(104758);
+      return true;
+    }
+    i = paramiteratedChar.nextByte(paramCharsetDetector);
+    if (i < 0)
+    {
+      AppMethodBeat.o(104758);
+      return false;
+    }
     paramiteratedChar.charValue = (paramiteratedChar.charValue << 8 | i);
     if ((i < 64) || (i == 127) || (i == 255)) {
       paramiteratedChar.error = true;
     }
+    AppMethodBeat.o(104758);
     return true;
   }
 }

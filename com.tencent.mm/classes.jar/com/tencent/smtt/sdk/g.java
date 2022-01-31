@@ -1,6 +1,7 @@
 package com.tencent.smtt.sdk;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.utils.c;
 import java.util.UnknownFormatConversionException;
 
@@ -15,6 +16,7 @@ public class g
   public static String a(Context paramContext, String paramString)
   {
     boolean bool = true;
+    AppMethodBeat.i(63982);
     paramContext = new c(paramString);
     paramContext.a(c);
     if (c[a] == '\001') {}
@@ -22,13 +24,16 @@ public class g
     {
       paramContext.a(bool);
       paramContext.a(e);
-      return a(new String(a(paramContext)));
+      paramContext = a(new String(a(paramContext)));
+      AppMethodBeat.o(63982);
+      return paramContext;
       bool = false;
     }
   }
   
   private static String a(String paramString)
   {
+    AppMethodBeat.i(63983);
     paramString = paramString.split(new String(""));
     int i = 0;
     while (i < paramString.length)
@@ -37,51 +42,59 @@ public class g
       Object localObject = paramString[i];
       i = j + 1;
       String str = paramString[j];
-      if (localObject.equals(d)) {
+      if (localObject.equals(d))
+      {
+        AppMethodBeat.o(63983);
         return str;
       }
     }
+    AppMethodBeat.o(63983);
     return "";
   }
   
   public static char[] a(c paramc)
   {
+    AppMethodBeat.i(63984);
     char[] arrayOfChar1 = new char[4];
     char[] arrayOfChar2 = new char[4];
     paramc.a(arrayOfChar1);
-    if ((arrayOfChar1[0] != 'o') || (arrayOfChar1[1] != 'a') || (arrayOfChar1[2] != 't')) {
-      throw new UnknownFormatConversionException(String.format("Invalid art magic %c%c%c", new Object[] { Character.valueOf(arrayOfChar1[0]), Character.valueOf(arrayOfChar1[1]), Character.valueOf(arrayOfChar1[2]) }));
+    if ((arrayOfChar1[0] != 'o') || (arrayOfChar1[1] != 'a') || (arrayOfChar1[2] != 't'))
+    {
+      paramc = new UnknownFormatConversionException(String.format("Invalid art magic %c%c%c", new Object[] { Character.valueOf(arrayOfChar1[0]), Character.valueOf(arrayOfChar1[1]), Character.valueOf(arrayOfChar1[2]) }));
+      AppMethodBeat.o(63984);
+      throw paramc;
     }
     paramc.a(arrayOfChar2);
-    paramc.a();
-    paramc.a();
-    paramc.a();
-    paramc.a();
-    paramc.a();
-    paramc.a();
-    paramc.a();
-    paramc.a();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
     if (arrayOfChar2[1] <= '4')
     {
-      paramc.a();
-      paramc.a();
-      paramc.a();
+      paramc.b();
+      paramc.b();
+      paramc.b();
     }
-    paramc.a();
-    paramc.a();
-    paramc.a();
-    paramc.a();
-    paramc.a();
-    paramc.a();
-    paramc.a();
-    arrayOfChar1 = new char[paramc.a()];
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    arrayOfChar1 = new char[paramc.b()];
     paramc.a(arrayOfChar1);
+    AppMethodBeat.o(63984);
     return arrayOfChar1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.g
  * JD-Core Version:    0.7.0.1
  */

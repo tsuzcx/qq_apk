@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BindLinkedInUI$10
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class BindLinkedInUI$10
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    BindLinkedInUI.a(this.fbn);
+    AppMethodBeat.i(13397);
+    BindLinkedInUI.a(this.gtf);
+    AppMethodBeat.o(13397);
     return true;
   }
 }

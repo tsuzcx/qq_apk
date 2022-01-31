@@ -2,119 +2,36 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Rect;
-import android.graphics.RectF;
 
-class r
-  implements t
+abstract interface r
 {
-  final RectF abf = new RectF();
+  public abstract float a(q paramq);
   
-  private void j(s params)
-  {
-    Rect localRect = new Rect();
-    k(params).getPadding(localRect);
-    params.L((int)Math.ceil(b(params)), (int)Math.ceil(c(params)));
-    params.d(localRect.left, localRect.top, localRect.right, localRect.bottom);
-  }
+  public abstract void a(q paramq, float paramFloat);
   
-  private static an k(s params)
-  {
-    return (an)params.gu();
-  }
+  public abstract void a(q paramq, Context paramContext, ColorStateList paramColorStateList, float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public final float a(s params)
-  {
-    return k(params).jv;
-  }
+  public abstract void a(q paramq, ColorStateList paramColorStateList);
   
-  public final void a(s params, float paramFloat)
-  {
-    an localan = k(params);
-    if (paramFloat < 0.0F) {
-      throw new IllegalArgumentException("Invalid radius " + paramFloat + ". Must be >= 0");
-    }
-    paramFloat = (int)(0.5F + paramFloat);
-    if (localan.js != paramFloat)
-    {
-      localan.js = paramFloat;
-      localan.jy = true;
-      localan.invalidateSelf();
-    }
-    j(params);
-  }
+  public abstract float b(q paramq);
   
-  public final void a(s params, Context paramContext, ColorStateList paramColorStateList, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    paramContext = new an(paramContext.getResources(), paramColorStateList, paramFloat1, paramFloat2, paramFloat3);
-    paramContext.ah(params.getPreventCornerOverlap());
-    params.j(paramContext);
-    j(params);
-  }
+  public abstract void b(q paramq, float paramFloat);
   
-  public final void a(s params, ColorStateList paramColorStateList)
-  {
-    params = k(params);
-    params.e(paramColorStateList);
-    params.invalidateSelf();
-  }
+  public abstract float c(q paramq);
   
-  public final float b(s params)
-  {
-    params = k(params);
-    float f1 = Math.max(params.jv, params.js + params.aiE + params.jv / 2.0F);
-    float f2 = params.jv;
-    return (params.aiE + f2) * 2.0F + f1 * 2.0F;
-  }
+  public abstract void c(q paramq, float paramFloat);
   
-  public final void b(s params, float paramFloat)
-  {
-    an localan = k(params);
-    localan.p(localan.jx, paramFloat);
-    j(params);
-  }
+  public abstract float d(q paramq);
   
-  public final float c(s params)
-  {
-    params = k(params);
-    float f1 = Math.max(params.jv, params.js + params.aiE + params.jv * 1.5F / 2.0F);
-    float f2 = params.jv;
-    return (params.aiE + f2 * 1.5F) * 2.0F + f1 * 2.0F;
-  }
+  public abstract float e(q paramq);
   
-  public final void c(s params, float paramFloat)
-  {
-    params = k(params);
-    params.p(paramFloat, params.jv);
-  }
+  public abstract void g(q paramq);
   
-  public final float d(s params)
-  {
-    return k(params).js;
-  }
+  public abstract void h(q paramq);
   
-  public final float e(s params)
-  {
-    return k(params).jx;
-  }
+  public abstract void hw();
   
-  public final void f(s params) {}
-  
-  public final void g(s params)
-  {
-    k(params).ah(params.getPreventCornerOverlap());
-    j(params);
-  }
-  
-  public void gw()
-  {
-    an.aiF = new r.1(this);
-  }
-  
-  public final ColorStateList h(s params)
-  {
-    return k(params).aiD;
-  }
+  public abstract ColorStateList i(q paramq);
 }
 
 

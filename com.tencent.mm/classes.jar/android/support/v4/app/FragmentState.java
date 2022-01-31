@@ -20,7 +20,7 @@ final class FragmentState
   final boolean mRetainInstance;
   Bundle mSavedFragmentState;
   final String mTag;
-  Fragment wu;
+  Fragment wJ;
   
   FragmentState(Parcel paramParcel)
   {

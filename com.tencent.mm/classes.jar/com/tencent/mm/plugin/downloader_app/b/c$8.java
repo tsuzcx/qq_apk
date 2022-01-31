@@ -1,38 +1,25 @@
 package com.tencent.mm.plugin.downloader_app.b;
 
-import java.util.Map;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$8
-  implements g.a
+  implements DialogInterface.OnClickListener
 {
-  c$8(a parama) {}
+  c$8(Context paramContext, i parami) {}
   
-  public final void eR(boolean paramBoolean)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      f localf = g.aGn();
-      if (localf != null)
-      {
-        String str = this.iRW.appId;
-        if (localf.iSl.get(str) == null) {
-          break label52;
-        }
-      }
-    }
-    label52:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        k.Af(this.iRW.appId);
-      }
-      return;
-    }
+    AppMethodBeat.i(136091);
+    c.a(this.val$context, this.laI);
+    AppMethodBeat.o(136091);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.b.c.8
  * JD-Core Version:    0.7.0.1
  */

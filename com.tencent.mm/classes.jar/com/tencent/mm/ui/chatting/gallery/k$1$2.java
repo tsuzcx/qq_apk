@@ -2,10 +2,10 @@ package com.tencent.mm.ui.chatting.gallery;
 
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import com.tencent.mm.R.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.protocal.c.bwa;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.cii;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class k$1$2
   implements Runnable
@@ -14,30 +14,36 @@ final class k$1$2
   
   public final void run()
   {
-    if ((this.vxA.vxz.vxf == null) || (this.vxA.vxz.vxf.getVisibility() == 0)) {
+    AppMethodBeat.i(32379);
+    if ((this.zNM.zNL.zNp == null) || (this.zNM.zNL.zNp.getVisibility() == 0))
+    {
+      AppMethodBeat.o(32379);
       return;
     }
-    if ((this.vxA.vxz.vxf.getTag() != null) && ((this.vxA.vxz.vxf.getTag() instanceof s)))
+    if ((this.zNM.zNL.zNp.getTag() != null) && ((this.zNM.zNL.zNp.getTag() instanceof s)))
     {
-      s locals = (s)this.vxA.vxz.vxf.getTag();
-      if ((locals.eHQ != null) && (!bk.bl(locals.eHQ.dSP)))
+      s locals = (s)this.zNM.zNL.zNp.getTag();
+      if ((locals.fXG != null) && (!bo.isNullOrNil(locals.fXG.fiO)))
       {
-        this.vxA.vxz.vxf.setVisibility(8);
+        this.zNM.zNL.zNp.setVisibility(8);
+        AppMethodBeat.o(32379);
         return;
       }
-      if ((locals.eHQ != null) && (!bk.bl(locals.eHQ.dSS)) && (!bk.bl(locals.eHQ.dST)))
+      if ((locals.fXG != null) && (!bo.isNullOrNil(locals.fXG.fiR)) && (!bo.isNullOrNil(locals.fXG.fiS)))
       {
-        this.vxA.vxz.vxf.setVisibility(8);
+        this.zNM.zNL.zNp.setVisibility(8);
+        AppMethodBeat.o(32379);
         return;
       }
     }
-    this.vxA.vxz.vxf.setVisibility(0);
-    this.vxA.vxz.vxf.startAnimation(AnimationUtils.loadAnimation(this.vxA.vxz.vxf.getContext(), R.a.fast_faded_in));
+    this.zNM.zNL.zNp.setVisibility(0);
+    this.zNM.zNL.zNp.startAnimation(AnimationUtils.loadAnimation(this.zNM.zNL.zNp.getContext(), 2131034181));
+    AppMethodBeat.o(32379);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.k.1.2
  * JD-Core Version:    0.7.0.1
  */

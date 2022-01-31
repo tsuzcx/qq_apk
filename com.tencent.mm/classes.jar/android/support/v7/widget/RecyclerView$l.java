@@ -4,7 +4,7 @@ import android.view.MotionEvent;
 
 public abstract interface RecyclerView$l
 {
-  public abstract void Z(boolean paramBoolean);
+  public abstract void ac(boolean paramBoolean);
   
   public abstract boolean h(MotionEvent paramMotionEvent);
   
@@ -12,7 +12,7 @@ public abstract interface RecyclerView$l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.widget.RecyclerView.l
  * JD-Core Version:    0.7.0.1
  */

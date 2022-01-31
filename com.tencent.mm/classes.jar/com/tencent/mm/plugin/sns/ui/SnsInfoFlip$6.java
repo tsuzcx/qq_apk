@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.widget.Gallery;
-import com.tencent.mm.plugin.sns.g.b;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.h.b;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
+import com.tencent.mm.plugin.sns.ui.a.c;
 import com.tencent.mm.ui.base.MultiTouchImageView.a;
 
 final class SnsInfoFlip$6
@@ -12,34 +14,38 @@ final class SnsInfoFlip$6
 {
   SnsInfoFlip$6(SnsInfoFlip paramSnsInfoFlip) {}
   
-  public final void bIU()
+  public final void cvp()
   {
-    if ((SnsInfoFlip.g(this.oZi).getSelectedItem() == null) || (SnsInfoFlip.d(this.oZi) == null)) {}
-    int i;
-    Object localObject;
-    do
+    AppMethodBeat.i(38972);
+    if ((SnsInfoFlip.g(this.rRB).getSelectedItem() == null) || (SnsInfoFlip.d(this.rRB) == null))
     {
+      AppMethodBeat.o(38972);
       return;
-      i = SnsInfoFlip.g(this.oZi).getSelectedItemPosition();
-      localObject = ((b)SnsInfoFlip.g(this.oZi).getSelectedItem()).owP;
-      localObject = af.bDF().OB((String)localObject);
-    } while (localObject == null);
-    aw.d((n)localObject, i);
+    }
+    int i = SnsInfoFlip.g(this.rRB).getSelectedItemPosition();
+    Object localObject = ((b)SnsInfoFlip.g(this.rRB).getSelectedItem()).rlJ;
+    localObject = ag.cpf().abv((String)localObject);
+    if (localObject != null) {
+      c.d((n)localObject, i);
+    }
+    AppMethodBeat.o(38972);
   }
   
-  public final void bIV()
+  public final void cvq()
   {
-    if ((SnsInfoFlip.g(this.oZi).getSelectedItem() == null) || (SnsInfoFlip.d(this.oZi) == null)) {}
-    int i;
-    Object localObject;
-    do
+    AppMethodBeat.i(38973);
+    if ((SnsInfoFlip.g(this.rRB).getSelectedItem() == null) || (SnsInfoFlip.d(this.rRB) == null))
     {
+      AppMethodBeat.o(38973);
       return;
-      i = SnsInfoFlip.g(this.oZi).getSelectedItemPosition();
-      localObject = ((b)SnsInfoFlip.g(this.oZi).getSelectedItem()).owP;
-      localObject = af.bDF().OB((String)localObject);
-    } while (localObject == null);
-    aw.e((n)localObject, i);
+    }
+    int i = SnsInfoFlip.g(this.rRB).getSelectedItemPosition();
+    Object localObject = ((b)SnsInfoFlip.g(this.rRB).getSelectedItem()).rlJ;
+    localObject = ag.cpf().abv((String)localObject);
+    if (localObject != null) {
+      c.e((n)localObject, i);
+    }
+    AppMethodBeat.o(38973);
   }
 }
 

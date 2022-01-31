@@ -2,13 +2,11 @@ package com.tencent.mm.plugin.cloudvoip.cloudvoice.b;
 
 public final class a
 {
-  public int iEo;
-  public String openId;
-  
-  public final String toString()
-  {
-    return "OpenVoiceMember{memberId=" + this.iEo + ", openId='" + this.openId + '\'' + '}';
-  }
+  public int bWt = 0;
+  public int height = 0;
+  public byte[] kJv = null;
+  public int kJw = -1;
+  public int width = 0;
 }
 
 

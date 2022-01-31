@@ -15,41 +15,18 @@ import java.util.WeakHashMap;
 public class LifecycleRegistry
   extends Lifecycle
 {
-  private a<LifecycleObserver, ObserverWithState> cd = new a();
-  private Lifecycle.State ce;
-  private final WeakReference<LifecycleOwner> cf;
-  private int cg = 0;
-  private boolean ch = false;
-  private boolean ci = false;
-  private ArrayList<Lifecycle.State> cj = new ArrayList();
+  private int cA = 0;
+  private boolean cB = false;
+  private boolean cC = false;
+  private ArrayList<Lifecycle.State> cD = new ArrayList();
+  private a<LifecycleObserver, ObserverWithState> cx = new a();
+  private Lifecycle.State cy;
+  private final WeakReference<LifecycleOwner> cz;
   
   public LifecycleRegistry(LifecycleOwner paramLifecycleOwner)
   {
-    this.cf = new WeakReference(paramLifecycleOwner);
-    this.ce = Lifecycle.State.INITIALIZED;
-  }
-  
-  private void P()
-  {
-    this.cj.remove(this.cj.size() - 1);
-  }
-  
-  static Lifecycle.State a(Lifecycle.Event paramEvent)
-  {
-    switch (1.cc[paramEvent.ordinal()])
-    {
-    default: 
-      throw new IllegalArgumentException("Unexpected event value " + paramEvent);
-    case 1: 
-    case 2: 
-      return Lifecycle.State.CREATED;
-    case 3: 
-    case 4: 
-      return Lifecycle.State.STARTED;
-    case 5: 
-      return Lifecycle.State.RESUMED;
-    }
-    return Lifecycle.State.DESTROYED;
+    this.cz = new WeakReference(paramLifecycleOwner);
+    this.cy = Lifecycle.State.INITIALIZED;
   }
   
   static Lifecycle.State a(Lifecycle.State paramState1, Lifecycle.State paramState2)
@@ -62,24 +39,24 @@ public class LifecycleRegistry
   
   private Lifecycle.State a(LifecycleObserver paramLifecycleObserver)
   {
-    Object localObject = this.cd;
+    Object localObject = this.cx;
     if (((a)localObject).contains(paramLifecycleObserver))
     {
-      paramLifecycleObserver = ((b.c)((a)localObject).bI.get(paramLifecycleObserver)).bO;
+      paramLifecycleObserver = ((b.c)((a)localObject).bM.get(paramLifecycleObserver)).bS;
       if (paramLifecycleObserver == null) {
         break label93;
       }
-      paramLifecycleObserver = ((ObserverWithState)paramLifecycleObserver.getValue()).ce;
+      paramLifecycleObserver = ((ObserverWithState)paramLifecycleObserver.getValue()).cy;
       label45:
-      if (this.cj.isEmpty()) {
+      if (this.cD.isEmpty()) {
         break label98;
       }
     }
     label93:
     label98:
-    for (localObject = (Lifecycle.State)this.cj.get(this.cj.size() - 1);; localObject = null)
+    for (localObject = (Lifecycle.State)this.cD.get(this.cD.size() - 1);; localObject = null)
     {
-      return a(a(this.ce, paramLifecycleObserver), (Lifecycle.State)localObject);
+      return a(a(this.cy, paramLifecycleObserver), (Lifecycle.State)localObject);
       paramLifecycleObserver = null;
       break;
       paramLifecycleObserver = null;
@@ -89,47 +66,118 @@ public class LifecycleRegistry
   
   private void a(Lifecycle.State paramState)
   {
-    if (this.ce == paramState) {
+    if (this.cy == paramState) {
       return;
     }
-    this.ce = paramState;
-    if ((this.ch) || (this.cg != 0))
+    this.cy = paramState;
+    if ((this.cB) || (this.cA != 0))
     {
-      this.ci = true;
+      this.cC = true;
       return;
     }
-    this.ch = true;
+    this.cB = true;
     sync();
-    this.ch = false;
+    this.cB = false;
   }
   
   private void a(LifecycleOwner paramLifecycleOwner)
   {
-    b.d locald = this.cd.N();
-    while ((locald.hasNext()) && (!this.ci))
+    b.d locald = this.cx.af();
+    while ((locald.hasNext()) && (!this.cC))
     {
       Map.Entry localEntry = (Map.Entry)locald.next();
       ObserverWithState localObserverWithState = (ObserverWithState)localEntry.getValue();
-      while ((localObserverWithState.ce.compareTo(this.ce) < 0) && (!this.ci) && (this.cd.contains(localEntry.getKey())))
+      while ((localObserverWithState.cy.compareTo(this.cy) < 0) && (!this.cC) && (this.cx.contains(localEntry.getKey())))
       {
-        b(localObserverWithState.ce);
-        localObserverWithState.a(paramLifecycleOwner, c(localObserverWithState.ce));
-        P();
+        b(localObserverWithState.cy);
+        localObserverWithState.a(paramLifecycleOwner, c(localObserverWithState.cy));
+        am();
       }
     }
   }
   
+  private boolean al()
+  {
+    if (this.cx.mSize == 0) {
+      return true;
+    }
+    Lifecycle.State localState1 = ((ObserverWithState)this.cx.bN.getValue()).cy;
+    Lifecycle.State localState2 = ((ObserverWithState)this.cx.bO.getValue()).cy;
+    return (localState1 == localState2) && (this.cy == localState2);
+  }
+  
+  private void am()
+  {
+    this.cD.remove(this.cD.size() - 1);
+  }
+  
+  static Lifecycle.State b(Lifecycle.Event paramEvent)
+  {
+    switch (1.cm[paramEvent.ordinal()])
+    {
+    default: 
+      throw new IllegalArgumentException("Unexpected event value ".concat(String.valueOf(paramEvent)));
+    case 1: 
+    case 2: 
+      return Lifecycle.State.CREATED;
+    case 3: 
+    case 4: 
+      return Lifecycle.State.STARTED;
+    case 5: 
+      return Lifecycle.State.RESUMED;
+    }
+    return Lifecycle.State.DESTROYED;
+  }
+  
   private void b(Lifecycle.State paramState)
   {
-    this.cj.add(paramState);
+    this.cD.add(paramState);
+  }
+  
+  private void b(LifecycleOwner paramLifecycleOwner)
+  {
+    Object localObject = this.cx;
+    b.b localb = new b.b(((b)localObject).bO, ((b)localObject).bN);
+    ((b)localObject).bP.put(localb, Boolean.FALSE);
+    while ((localb.hasNext()) && (!this.cC))
+    {
+      Map.Entry localEntry = (Map.Entry)localb.next();
+      ObserverWithState localObserverWithState = (ObserverWithState)localEntry.getValue();
+      if ((localObserverWithState.cy.compareTo(this.cy) > 0) && (!this.cC) && (this.cx.contains(localEntry.getKey())))
+      {
+        localObject = localObserverWithState.cy;
+        switch (1.cE[localObject.ordinal()])
+        {
+        default: 
+          throw new IllegalArgumentException("Unexpected state value ".concat(String.valueOf(localObject)));
+        case 1: 
+          throw new IllegalArgumentException();
+        case 2: 
+          localObject = Lifecycle.Event.ON_DESTROY;
+        case 3: 
+        case 4: 
+          for (;;)
+          {
+            b(b((Lifecycle.Event)localObject));
+            localObserverWithState.a(paramLifecycleOwner, (Lifecycle.Event)localObject);
+            am();
+            break;
+            localObject = Lifecycle.Event.ON_STOP;
+            continue;
+            localObject = Lifecycle.Event.ON_PAUSE;
+          }
+        }
+        throw new IllegalArgumentException();
+      }
+    }
   }
   
   private static Lifecycle.Event c(Lifecycle.State paramState)
   {
-    switch (1.ck[paramState.ordinal()])
+    switch (1.cE[paramState.ordinal()])
     {
     default: 
-      throw new IllegalArgumentException("Unexpected state value " + paramState);
+      throw new IllegalArgumentException("Unexpected state value ".concat(String.valueOf(paramState)));
     case 1: 
     case 5: 
       return Lifecycle.Event.ON_CREATE;
@@ -143,88 +191,33 @@ public class LifecycleRegistry
   
   private void sync()
   {
-    LifecycleOwner localLifecycleOwner = (LifecycleOwner)this.cf.get();
-    label16:
-    Object localObject1;
-    if (localLifecycleOwner == null)
-    {
+    LifecycleOwner localLifecycleOwner = (LifecycleOwner)this.cz.get();
+    if (localLifecycleOwner == null) {
       return;
-      break label147;
-      localObject1 = this.cd.bK;
-      if ((!this.ci) && (localObject1 != null) && (this.ce.compareTo(((ObserverWithState)((Map.Entry)localObject1).getValue()).ce) > 0)) {
+    }
+    while (!al())
+    {
+      this.cC = false;
+      if (this.cy.compareTo(((ObserverWithState)this.cx.bN.getValue()).cy) < 0) {
+        b(localLifecycleOwner);
+      }
+      b.c localc = this.cx.bO;
+      if ((!this.cC) && (localc != null) && (this.cy.compareTo(((ObserverWithState)localc.getValue()).cy) > 0)) {
         a(localLifecycleOwner);
       }
     }
-    int i;
-    if (this.cd.mSize == 0) {
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i == 0)
-      {
-        this.ci = false;
-        if (this.ce.compareTo(((ObserverWithState)this.cd.bJ.getValue()).ce) >= 0) {
-          break label16;
-        }
-        localObject1 = this.cd;
-        Object localObject2 = new b.b(((b)localObject1).bK, ((b)localObject1).bJ);
-        ((b)localObject1).bL.put(localObject2, Boolean.valueOf(false));
-        label147:
-        if ((!((Iterator)localObject2).hasNext()) || (this.ci)) {
-          break label16;
-        }
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-        ObserverWithState localObserverWithState = (ObserverWithState)localEntry.getValue();
-        if ((localObserverWithState.ce.compareTo(this.ce) <= 0) || (this.ci) || (!this.cd.contains(localEntry.getKey()))) {
-          break;
-        }
-        localObject1 = localObserverWithState.ce;
-        switch (1.ck[localObject1.ordinal()])
-        {
-        default: 
-          throw new IllegalArgumentException("Unexpected state value " + localObject1);
-          localObject1 = ((ObserverWithState)this.cd.bJ.getValue()).ce;
-          localObject2 = ((ObserverWithState)this.cd.bK.getValue()).ce;
-          if ((localObject1 == localObject2) && (this.ce == localObject2)) {
-            i = 1;
-          } else {
-            i = 0;
-          }
-          break;
-        case 1: 
-          throw new IllegalArgumentException();
-        case 2: 
-          localObject1 = Lifecycle.Event.ON_DESTROY;
-        case 3: 
-        case 4: 
-          for (;;)
-          {
-            b(a((Lifecycle.Event)localObject1));
-            localObserverWithState.a(localLifecycleOwner, (Lifecycle.Event)localObject1);
-            P();
-            break;
-            localObject1 = Lifecycle.Event.ON_STOP;
-            continue;
-            localObject1 = Lifecycle.Event.ON_PAUSE;
-          }
-        case 5: 
-          throw new IllegalArgumentException();
-        }
-      }
-    }
-    this.ci = false;
+    this.cC = false;
   }
   
   public void addObserver(LifecycleObserver paramLifecycleObserver)
   {
     Lifecycle.State localState;
     ObserverWithState localObserverWithState;
-    if (this.ce == Lifecycle.State.DESTROYED)
+    if (this.cy == Lifecycle.State.DESTROYED)
     {
       localState = Lifecycle.State.DESTROYED;
       localObserverWithState = new ObserverWithState(paramLifecycleObserver, localState);
-      if ((ObserverWithState)this.cd.putIfAbsent(paramLifecycleObserver, localObserverWithState) == null) {
+      if ((ObserverWithState)this.cx.putIfAbsent(paramLifecycleObserver, localObserverWithState) == null) {
         break label49;
       }
     }
@@ -235,40 +228,40 @@ public class LifecycleRegistry
       return;
       localState = Lifecycle.State.INITIALIZED;
       break;
-      localLifecycleOwner = (LifecycleOwner)this.cf.get();
+      localLifecycleOwner = (LifecycleOwner)this.cz.get();
     } while (localLifecycleOwner == null);
-    if ((this.cg != 0) || (this.ch)) {}
+    if ((this.cA != 0) || (this.cB)) {}
     for (int i = 1;; i = 0)
     {
       localState = a(paramLifecycleObserver);
-      this.cg += 1;
-      while ((localObserverWithState.ce.compareTo(localState) < 0) && (this.cd.contains(paramLifecycleObserver)))
+      this.cA += 1;
+      while ((localObserverWithState.cy.compareTo(localState) < 0) && (this.cx.contains(paramLifecycleObserver)))
       {
-        b(localObserverWithState.ce);
-        localObserverWithState.a(localLifecycleOwner, c(localObserverWithState.ce));
-        P();
+        b(localObserverWithState.cy);
+        localObserverWithState.a(localLifecycleOwner, c(localObserverWithState.cy));
+        am();
         localState = a(paramLifecycleObserver);
       }
     }
     if (i == 0) {
       sync();
     }
-    this.cg -= 1;
+    this.cA -= 1;
   }
   
   public Lifecycle.State getCurrentState()
   {
-    return this.ce;
+    return this.cy;
   }
   
   public int getObserverCount()
   {
-    return this.cd.mSize;
+    return this.cx.mSize;
   }
   
   public void handleLifecycleEvent(Lifecycle.Event paramEvent)
   {
-    a(a(paramEvent));
+    a(b(paramEvent));
   }
   
   public void markState(Lifecycle.State paramState)
@@ -278,26 +271,26 @@ public class LifecycleRegistry
   
   public void removeObserver(LifecycleObserver paramLifecycleObserver)
   {
-    this.cd.remove(paramLifecycleObserver);
+    this.cx.remove(paramLifecycleObserver);
   }
   
   static class ObserverWithState
   {
-    Lifecycle.State ce;
-    GenericLifecycleObserver cl;
+    GenericLifecycleObserver cF;
+    Lifecycle.State cy;
     
     ObserverWithState(LifecycleObserver paramLifecycleObserver, Lifecycle.State paramState)
     {
-      this.cl = Lifecycling.e(paramLifecycleObserver);
-      this.ce = paramState;
+      this.cF = Lifecycling.e(paramLifecycleObserver);
+      this.cy = paramState;
     }
     
     final void a(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
     {
-      Lifecycle.State localState = LifecycleRegistry.a(paramEvent);
-      this.ce = LifecycleRegistry.a(this.ce, localState);
-      this.cl.onStateChanged(paramLifecycleOwner, paramEvent);
-      this.ce = localState;
+      Lifecycle.State localState = LifecycleRegistry.b(paramEvent);
+      this.cy = LifecycleRegistry.a(this.cy, localState);
+      this.cF.onStateChanged(paramLifecycleOwner, paramEvent);
+      this.cy = localState;
     }
   }
 }

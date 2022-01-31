@@ -3,7 +3,8 @@ package com.tencent.toybrick.e;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.ui.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ak;
 import com.tencent.toybrick.f.a;
 import java.lang.ref.WeakReference;
 
@@ -17,24 +18,28 @@ final class c$1
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(113234);
     super.handleMessage(paramMessage);
     if (paramMessage.what == 2)
     {
       paramMessage = (c.c)paramMessage.obj;
-      locala = (a)c.c.a(paramMessage).get();
-      if ((locala != null) && (locala.xbN.hashCode() == c.c.b(paramMessage))) {
-        c.c.d(paramMessage).t(locala, c.c.c(paramMessage));
+      a locala = (a)c.c.a(paramMessage).get();
+      if ((locala != null) && (locala.Byt.hashCode() == c.c.b(paramMessage)))
+      {
+        c.c.d(paramMessage).E(locala, c.c.c(paramMessage));
+        AppMethodBeat.o(113234);
+        return;
       }
+      ak.w("WhenHandler", "[WhenHandler] has loaded! but not right,holder has changed!", new Object[0]);
+      AppMethodBeat.o(113234);
+      return;
     }
-    while (paramMessage.what != 3)
+    if (paramMessage.what == 3)
     {
-      a locala;
-      return;
-      ao.u("[WhenHandler] has loaded! but not right,holder has changed!", new Object[0]);
-      return;
+      paramMessage = (c.d)paramMessage.obj;
+      c.d.c(paramMessage).d(c.d.a(paramMessage).get(), ((Boolean)c.d.b(paramMessage)).booleanValue());
     }
-    paramMessage = (c.d)paramMessage.obj;
-    c.d.c(paramMessage).e(c.d.a(paramMessage).get(), ((Boolean)c.d.b(paramMessage)).booleanValue());
+    AppMethodBeat.o(113234);
   }
 }
 

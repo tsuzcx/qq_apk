@@ -1,5 +1,7 @@
 package com.tencent.tmassistantsdk.downloadservice;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class DownloadTask$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ class DownloadTask$1
   
   public void run()
   {
+    AppMethodBeat.i(75743);
     DownloadTask.access$000(this.this$0);
+    AppMethodBeat.o(75743);
   }
 }
 

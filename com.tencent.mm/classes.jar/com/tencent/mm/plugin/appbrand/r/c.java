@@ -1,26 +1,71 @@
 package com.tencent.mm.plugin.appbrand.r;
 
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.vending.g.e;
-import java.util.List;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
 
-public abstract interface c
-  extends a
+public abstract class c<_Model extends com.tencent.mm.sdk.e.c,  extends b>
+  extends j<_Model>
 {
-  public abstract void a(String paramString, c.a parama);
+  public c(e parame, c.a parama, String paramString, String[] paramArrayOfString)
+  {
+    super(parame, parama, paramString, paramArrayOfString);
+  }
   
-  public abstract void at(List<String> paramList);
+  public boolean delete(_Model param_Model, boolean paramBoolean, String... paramVarArgs)
+  {
+    String[] arrayOfString;
+    if (paramVarArgs != null)
+    {
+      arrayOfString = paramVarArgs;
+      if (paramVarArgs.length != 0) {}
+    }
+    else
+    {
+      arrayOfString = ((b)param_Model).getKeys();
+    }
+    return super.delete(param_Model, paramBoolean, arrayOfString);
+  }
   
-  public abstract void b(String paramString, c.a parama);
+  public boolean get(_Model param_Model, String... paramVarArgs)
+  {
+    String[] arrayOfString;
+    if (paramVarArgs != null)
+    {
+      arrayOfString = paramVarArgs;
+      if (paramVarArgs.length != 0) {}
+    }
+    else
+    {
+      arrayOfString = ((b)param_Model).getKeys();
+    }
+    return super.get(param_Model, arrayOfString);
+  }
   
-  public abstract WxaAttributes so(String paramString);
+  public boolean insertNotify(_Model param_Model, boolean paramBoolean)
+  {
+    super.insertNotify(param_Model, paramBoolean);
+    return get(param_Model, new String[0]);
+  }
   
-  public abstract e<WxaAttributes> sp(String paramString);
+  public boolean updateNotify(_Model param_Model, boolean paramBoolean, String... paramVarArgs)
+  {
+    String[] arrayOfString;
+    if (paramVarArgs != null)
+    {
+      arrayOfString = paramVarArgs;
+      if (paramVarArgs.length != 0) {}
+    }
+    else
+    {
+      arrayOfString = ((b)param_Model).getKeys();
+    }
+    return super.updateNotify(param_Model, paramBoolean, arrayOfString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.r.c
  * JD-Core Version:    0.7.0.1
  */

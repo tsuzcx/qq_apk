@@ -1,85 +1,121 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ListView;
-import com.tencent.mm.h.a.ii;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfContainer;
-import com.tencent.mm.plugin.appbrand.widget.header.HeaderContainer;
-import com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView;
-import com.tencent.mm.plugin.appbrand.widget.recentview.ConversationAppBrandRecentView;
-import com.tencent.mm.plugin.appbrand.widget.recentview.MenuAppBrandRecentView;
-import com.tencent.mm.plugin.appbrand.widget.recentview.b;
-import com.tencent.mm.plugin.appbrand.widget.recentview.d.a;
-import com.tencent.mm.plugin.appbrand.widget.recentview.d.b;
-import com.tencent.mm.plugin.appbrand.y.e;
-import com.tencent.mm.sdk.platformtools.y;
+import android.graphics.Canvas;
+import android.os.Build.VERSION;
+import android.support.v4.view.t;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.widget.FrameLayout;
+import com.tencent.luggage.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.aj;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public final class d
-  implements com.tencent.mm.plugin.appbrand.widget.recentview.d
+  extends FrameLayout
 {
-  public final com.tencent.mm.plugin.appbrand.widget.header.a a(Context paramContext, ListView paramListView, HeaderContainer paramHeaderContainer)
+  private final com.tencent.mm.plugin.appbrand.o.a jal;
+  public final Set<Runnable> jam;
+  
+  public d(Context paramContext)
   {
-    return new com.tencent.mm.plugin.appbrand.widget.desktop.a(paramContext, paramListView, paramHeaderContainer);
+    super(paramContext);
+    AppMethodBeat.i(87440);
+    this.jam = new HashSet();
+    setWillNotDraw(false);
+    this.jal = ((com.tencent.mm.plugin.appbrand.o.a)e.s(com.tencent.mm.plugin.appbrand.o.a.class));
+    AppMethodBeat.o(87440);
   }
   
-  public final AppBrandRecentView a(Context paramContext, d.b paramb, d.a parama)
+  protected final void dispatchDraw(Canvas paramCanvas)
   {
-    if (paramb == d.b.hDk)
+    AppMethodBeat.i(87441);
+    if (willNotDraw())
     {
-      paramb = new ConversationAppBrandRecentView(paramContext);
-      paramb.setSceneFactory(parama);
-      parama = new FrameLayout.LayoutParams(-1, (int)paramContext.getResources().getDimension(y.e.app_brand_recent_view_height));
-      paramb.setPadding(0, (int)paramContext.getResources().getDimension(y.e.app_brand_recent_view_padding_top), 0, 0);
-      paramb.setLayoutParams(parama);
-      return paramb;
+      AppMethodBeat.o(87441);
+      return;
     }
-    if (paramb == d.b.hDj)
+    try
     {
-      paramb = new MenuAppBrandRecentView(paramContext);
-      paramb.setSceneFactory(parama);
-      parama = new FrameLayout.LayoutParams(-1, (int)paramContext.getResources().getDimension(y.e.app_brand_recent_view_height));
-      paramb.setPadding(0, (int)paramContext.getResources().getDimension(y.e.app_brand_recent_view_padding_top), 0, 0);
-      paramb.setLayoutParams(parama);
-      return paramb;
+      super.dispatchDraw(paramCanvas);
+      AppMethodBeat.o(87441);
+      return;
     }
-    return null;
-  }
-  
-  public final b aqW()
-  {
-    return new b();
-  }
-  
-  public final void cE(Context paramContext)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setClassName(paramContext, "com.tencent.mm.ui.LauncherUI").addFlags(268435456).addFlags(67108864).addFlags(536870912);
-    localIntent.putExtra("isShowHeaderWithAnim", true);
-    localIntent.putExtra("isShowHeader", true);
-    localIntent.putExtra("isScrollFirst", true);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public final HeaderContainer cF(Context paramContext)
-  {
-    return new AppBrandDesktopHalfContainer(paramContext);
-  }
-  
-  public final void ci(int paramInt1, int paramInt2)
-  {
-    y.i("MicroMsg.AppBrandRecentViewService", "[hideAppBrandRecentView] delay:%s type:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (((h)g.DM().Dr()).Ex())
+    catch (Exception paramCanvas)
     {
-      ii localii = new ii();
-      localii.bQy.delay = paramInt1;
-      localii.bQy.type = paramInt2;
-      com.tencent.mm.sdk.b.a.udP.m(localii);
+      com.tencent.luggage.g.d.printErrStackTrace("Luggage.WXA.AppBrandRuntimeFrameLayout", paramCanvas, "", new Object[0]);
+      if (!(paramCanvas instanceof NullPointerException)) {
+        break label71;
+      }
     }
+    this.jal.idkeyStat(1088L, 0L, 1L, false);
+    for (;;)
+    {
+      AppMethodBeat.o(87441);
+      throw paramCanvas;
+      label71:
+      this.jal.idkeyStat(1088L, 1L, 1L, false);
+    }
+  }
+  
+  public final void dispatchSystemUiVisibilityChanged(int paramInt)
+  {
+    AppMethodBeat.i(141713);
+    super.dispatchSystemUiVisibilityChanged(paramInt);
+    Object localObject;
+    if ((isShown()) && (t.aw(this)) && (Build.VERSION.SDK_INT >= 26) && ((getWindowSystemUiVisibility() & 0x2) == 0))
+    {
+      localObject = com.tencent.mm.sdk.f.a.hr(getContext());
+      if ((localObject != null) && (((Activity)localObject).getWindow() != null))
+      {
+        bool = aj.Ow(((Activity)localObject).getWindow().getNavigationBarColor());
+        localObject = ((Activity)localObject).getWindow();
+        if (bool) {
+          break label93;
+        }
+      }
+    }
+    label93:
+    for (boolean bool = true;; bool = false)
+    {
+      af.d((Window)localObject, bool);
+      AppMethodBeat.o(141713);
+      return;
+    }
+  }
+  
+  protected final void onAnimationEnd()
+  {
+    AppMethodBeat.i(87442);
+    super.onAnimationEnd();
+    Iterator localIterator = this.jam.iterator();
+    while (localIterator.hasNext()) {
+      ((Runnable)localIterator.next()).run();
+    }
+    this.jam.clear();
+    AppMethodBeat.o(87442);
+  }
+  
+  public final void onViewRemoved(View paramView)
+  {
+    AppMethodBeat.i(155596);
+    super.onViewRemoved(paramView);
+    com.tencent.luggage.g.d.i("Luggage.WXA.AppBrandRuntimeFrameLayout", "onViewRemoved %s", new Object[] { paramView });
+    AppMethodBeat.o(155596);
+  }
+  
+  public final void removeAllViews()
+  {
+    AppMethodBeat.i(141712);
+    com.tencent.luggage.g.d.d("Luggage.WXA.AppBrandRuntimeFrameLayout", "removeAllViews stack = %s", new Object[] { Log.getStackTraceString(new Throwable()) });
+    super.removeAllViews();
+    AppMethodBeat.o(141712);
   }
 }
 

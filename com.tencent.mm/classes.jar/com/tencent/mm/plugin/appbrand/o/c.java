@@ -1,29 +1,41 @@
 package com.tencent.mm.plugin.appbrand.o;
 
+import android.os.SystemClock;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Map;
 
-public final class c
+public enum c
 {
-  private static AtomicInteger gQQ = new AtomicInteger(1);
-  public HashMap<String, b> goq = new HashMap();
+  private Map<c.a, Long> iEM;
+  private Map<c.a, Long> iEN;
   
-  public static int amC()
+  static
   {
-    return gQQ.incrementAndGet();
+    AppMethodBeat.i(91135);
+    iEL = new c("INSTANCE");
+    iEO = new c[] { iEL };
+    AppMethodBeat.o(91135);
   }
   
-  public static c amD()
+  private c()
   {
-    return c.a.amE();
+    AppMethodBeat.i(91133);
+    this.iEM = new HashMap();
+    this.iEN = new HashMap();
+    AppMethodBeat.o(91133);
   }
   
-  public final b vs(String paramString)
+  public final void a(c.a parama)
   {
-    if (this.goq.containsKey(paramString)) {
-      return (b)this.goq.get(paramString);
-    }
-    return null;
+    AppMethodBeat.i(91134);
+    this.iEM.put(parama, Long.valueOf(SystemClock.elapsedRealtime()));
+    AppMethodBeat.o(91134);
+  }
+  
+  public final String toString()
+  {
+    return "";
   }
 }
 

@@ -1,8 +1,6 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -20,19 +18,19 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
 import com.tencent.mm.api.h;
+import com.tencent.mm.api.i;
+import com.tencent.mm.model.t;
 import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.NoMeasuredTextView;
-import com.tencent.mm.ui.widget.edittext.PasterEditText;
+import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.widget.b.c.a.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -41,96 +39,97 @@ import junit.framework.Assert;
 public final class g
   implements q
 {
-  private static int[] sce = { R.h.title_image_0, R.h.title_image_1, R.h.title_image_2, R.h.title_image_3, R.h.title_image_4, R.h.title_image_5, R.h.title_image_6, R.h.title_image_7, R.h.title_image_8 };
+  private static int[] vTn = { 2131823009, 2131823010, 2131823011, 2131823012, 2131823013, 2131823014, 2131823015, 2131823016, 2131823017 };
   
-  private static View W(Context paramContext, int paramInt)
+  public static com.tencent.mm.ui.base.o a(com.tencent.mm.ui.q paramq, long paramLong, String paramString1, String paramString2, String paramString3, q.a parama)
   {
-    return ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(paramInt, null);
-  }
-  
-  public static com.tencent.mm.ui.base.o a(com.tencent.mm.ui.s params, long paramLong, String paramString1, String paramString2, String paramString3, q.a parama)
-  {
-    View localView = W(params.uMN, R.i.confirm_dialog_item8);
-    com.tencent.mm.ui.base.o localo = dt(localView);
+    AppMethodBeat.i(27692);
+    View localView = ak(paramq.zaO, 2130969206);
+    com.tencent.mm.ui.base.o localo = ez(localView);
     a(localView, parama, localo);
-    if (bk.bl(paramString1))
+    if (bo.isNullOrNil(paramString1))
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "showDialogItem8 fail,title or  message is empty");
+      ab.e("MicroMsg.MMConfirmDialog", "showDialogItem8 fail,title or  message is empty");
+      AppMethodBeat.o(27692);
       return null;
     }
-    a(localView, R.h.confirm_dialog_title_tv, paramString1, false, 0);
-    NoMeasuredTextView localNoMeasuredTextView = (NoMeasuredTextView)localView.findViewById(R.h.confirm_dialog_message_tv);
+    a(localView, 2131822997, paramString1, false, 0);
+    NoMeasuredTextView localNoMeasuredTextView = (NoMeasuredTextView)localView.findViewById(2131822992);
     localNoMeasuredTextView.setShouldEllipsize(true);
-    localNoMeasuredTextView.setTextSize(0, params.uMN.getResources().getDimension(R.f.BigTextSize) * com.tencent.mm.cb.a.cJ(params.uMN));
-    localNoMeasuredTextView.setTextColor(com.tencent.mm.cb.a.h(params.uMN, R.e.normal_text_color));
-    Object localObject = ((com.tencent.mm.api.g)com.tencent.mm.kernel.g.r(com.tencent.mm.api.g.class)).aj(paramLong);
+    localNoMeasuredTextView.setTextSize(0, paramq.zaO.getResources().getDimension(2131427501) * com.tencent.mm.cb.a.dr(paramq.zaO));
+    localNoMeasuredTextView.setTextColor(com.tencent.mm.cb.a.l(paramq.zaO, 2131690322));
+    Object localObject = ((h)com.tencent.mm.kernel.g.E(h.class)).aG(paramLong);
     String str1;
-    if ((localObject != null) && (((com.tencent.mm.ai.a.c)localObject).isGroup()))
+    if ((localObject != null) && (((com.tencent.mm.aj.a.c)localObject).isGroup()))
     {
-      paramString1 = ((com.tencent.mm.ai.a.c)localObject).field_chatName;
-      str1 = ((com.tencent.mm.ai.a.c)localObject).field_headImageUrl;
-      localObject = ((com.tencent.mm.ai.a.c)localObject).field_brandUserName;
+      paramString1 = ((com.tencent.mm.aj.a.c)localObject).field_chatName;
+      str1 = ((com.tencent.mm.aj.a.c)localObject).field_headImageUrl;
+      localObject = ((com.tencent.mm.aj.a.c)localObject).field_brandUserName;
       String str2 = paramString1;
       if (paramString1 == null) {
         str2 = paramString2;
       }
-      if (bk.bl(str2)) {
-        break label393;
+      if (bo.isNullOrNil(str2)) {
+        break label406;
       }
-      localNoMeasuredTextView.setText(com.tencent.mm.pluginsdk.ui.d.j.a(params.uMN, str2, localNoMeasuredTextView.getTextSize()));
+      localNoMeasuredTextView.setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramq.zaO, str2, localNoMeasuredTextView.getTextSize()));
     }
     for (;;)
     {
-      a(localView, R.h.confirm_dialog_count_tv, null, true, 8);
-      paramString1 = (Button)localView.findViewById(R.h.confirm_dialog_btn1);
-      if (!bk.bl(paramString3)) {
+      a(localView, 2131823002, null, true, 8);
+      paramString1 = (Button)localView.findViewById(2131822984);
+      if (!bo.isNullOrNil(paramString3)) {
         paramString1.setText(paramString3);
       }
       paramString1.setOnClickListener(new g.16(parama, localView, localo));
-      paramString1 = new com.tencent.mm.as.a.a.c.a();
-      paramString1.eri = com.tencent.mm.api.a.bT((String)localObject);
-      paramString1.erf = true;
-      paramString1.erC = true;
-      paramString1.eru = R.k.default_avatar;
-      paramString1 = paramString1.OV();
-      if (!bk.bl(str1)) {
-        com.tencent.mm.as.o.ON().a(str1, (ImageView)localView.findViewById(R.h.confirm_dialog_thumb_iv), paramString1);
+      paramString1 = new com.tencent.mm.at.a.a.c.a();
+      paramString1.eNP = com.tencent.mm.api.a.cV((String)localObject);
+      paramString1.eNM = true;
+      paramString1.eOe = true;
+      paramString1.eNY = 2131231207;
+      paramString1 = paramString1.ahY();
+      if (!bo.isNullOrNil(str1)) {
+        com.tencent.mm.at.o.ahG().a(str1, (ImageView)localView.findViewById(2131822991), paramString1);
       }
-      a(params, localo);
+      a(paramq, localo);
+      AppMethodBeat.o(27692);
       return localo;
-      localObject = ((h)com.tencent.mm.kernel.g.r(h.class)).bY(((com.tencent.mm.ai.a.c)localObject).field_bizChatServId);
+      localObject = ((i)com.tencent.mm.kernel.g.E(i.class)).df(((com.tencent.mm.aj.a.c)localObject).field_bizChatServId);
       if (localObject != null)
       {
-        paramString1 = ((com.tencent.mm.ai.a.j)localObject).field_userName;
-        str1 = ((com.tencent.mm.ai.a.j)localObject).field_headImageUrl;
-        localObject = ((com.tencent.mm.ai.a.j)localObject).field_brandUserName;
+        paramString1 = ((com.tencent.mm.aj.a.j)localObject).field_userName;
+        str1 = ((com.tencent.mm.aj.a.j)localObject).field_headImageUrl;
+        localObject = ((com.tencent.mm.aj.a.j)localObject).field_brandUserName;
         break;
       }
-      com.tencent.mm.sdk.platformtools.y.w("MicroMsg.MMConfirmDialog", "showDialogItem8 userInfo is null");
+      ab.w("MicroMsg.MMConfirmDialog", "showDialogItem8 userInfo is null");
+      AppMethodBeat.o(27692);
       return null;
-      label393:
-      localNoMeasuredTextView.setText(com.tencent.mm.pluginsdk.ui.d.j.a(params.uMN, paramString2, localNoMeasuredTextView.getTextSize()));
+      label406:
+      localNoMeasuredTextView.setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramq.zaO, paramString2, localNoMeasuredTextView.getTextSize()));
     }
   }
   
-  public static com.tencent.mm.ui.base.o a(com.tencent.mm.ui.s params, Bitmap paramBitmap, String paramString, q.a parama)
+  public static com.tencent.mm.ui.base.o a(com.tencent.mm.ui.q paramq, Bitmap paramBitmap, String paramString, q.a parama)
   {
-    final View localView = W(params.uMN, R.i.confirm_dialog_item7);
-    final com.tencent.mm.ui.base.o localo = dt(localView);
+    AppMethodBeat.i(27690);
+    final View localView = ak(paramq.zaO, 2130969205);
+    final com.tencent.mm.ui.base.o localo = ez(localView);
     a(localView, parama, localo);
-    if (bk.bl(paramString))
+    if (bo.isNullOrNil(paramString))
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "showDialogItem7 fail, message is empty");
+      ab.e("MicroMsg.MMConfirmDialog", "showDialogItem7 fail, message is empty");
+      AppMethodBeat.o(27690);
       return null;
     }
-    Object localObject = (TextView)localView.findViewById(R.h.confirm_dialog_message_tv);
-    ((TextView)localObject).setText(com.tencent.mm.pluginsdk.ui.d.j.a(params.uMN, paramString, ((TextView)localObject).getTextSize()));
-    paramString = (Button)localView.findViewById(R.h.confirm_dialog_btn1);
-    localObject = (ImageView)localView.findViewById(R.h.confirm_dialog_thumb_iv);
+    Object localObject = (TextView)localView.findViewById(2131822992);
+    ((TextView)localObject).setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramq.zaO, paramString, ((TextView)localObject).getTextSize()));
+    paramString = (Button)localView.findViewById(2131822984);
+    localObject = (ImageView)localView.findViewById(2131822991);
     if (localObject != null)
     {
       if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-        break label160;
+        break label173;
       }
       ((ImageView)localObject).setImageBitmap(paramBitmap);
       localo.setOnDismissListener(new g.8(paramBitmap));
@@ -141,418 +140,457 @@ public final class g
       {
         public final void onClick(View paramAnonymousView)
         {
-          if (this.sch != null) {
-            this.sch.a(true, g.du(localView), g.dv(localView));
+          AppMethodBeat.i(27652);
+          if (this.vTq != null) {
+            this.vTq.a(true, g.eA(localView), g.eB(localView));
           }
           localo.dismiss();
           localo.setFocusable(false);
           localo.setTouchable(false);
+          AppMethodBeat.o(27652);
         }
       });
-      a(params, localo);
+      a(paramq, localo);
+      AppMethodBeat.o(27690);
       return localo;
-      label160:
+      label173:
       ((ImageView)localObject).setVisibility(8);
     }
   }
   
-  public static com.tencent.mm.ui.base.o a(com.tencent.mm.ui.s params, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, q.a parama)
+  public static com.tencent.mm.ui.base.o a(com.tencent.mm.ui.q paramq, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, q.a parama)
   {
-    final View localView = W(params.uMN, R.i.confirm_dialog_item8);
-    final com.tencent.mm.ui.base.o localo = dt(localView);
+    AppMethodBeat.i(27691);
+    final View localView = ak(paramq.zaO, 2130969206);
+    final com.tencent.mm.ui.base.o localo = ez(localView);
     a(localView, parama, localo);
-    if (bk.bl(paramString2))
+    if (bo.isNullOrNil(paramString2))
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "showDialogItem8 fail,title or  message is empty");
+      ab.e("MicroMsg.MMConfirmDialog", "showDialogItem8 fail,title or  message is empty");
+      AppMethodBeat.o(27691);
       return null;
     }
-    a(localView, R.h.confirm_dialog_title_tv, paramString2, false, 0);
-    paramString2 = (NoMeasuredTextView)localView.findViewById(R.h.confirm_dialog_message_tv);
+    a(localView, 2131822997, paramString2, false, 0);
+    paramString2 = (NoMeasuredTextView)localView.findViewById(2131822992);
     paramString2.setShouldEllipsize(true);
-    paramString2.setTextSize(0, params.uMN.getResources().getDimension(R.f.BigTextSize) * com.tencent.mm.cb.a.cJ(params.uMN));
-    paramString2.setTextColor(com.tencent.mm.cb.a.h(params.uMN, R.e.normal_text_color));
-    if (!bk.bl(paramString1)) {
-      paramString2.setText(((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.emoji.b.a.class)).a(params.uMN, ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.a.b.class)).gV(paramString1), paramString2.getTextSize()));
+    paramString2.setTextSize(0, paramq.zaO.getResources().getDimension(2131427501) * com.tencent.mm.cb.a.dr(paramq.zaO));
+    paramString2.setTextColor(com.tencent.mm.cb.a.l(paramq.zaO, 2131690322));
+    if (!bo.isNullOrNil(paramString1)) {
+      paramString2.setText(((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.emoji.b.a.class)).b(paramq.zaO, ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.a.b.class)).nE(paramString1), paramString2.getTextSize()));
     }
     for (;;)
     {
-      a(localView, R.h.confirm_dialog_count_tv, paramString4, true, 8);
-      paramString2 = (Button)localView.findViewById(R.h.confirm_dialog_btn1);
-      if (!bk.bl(paramString5)) {
+      a(localView, 2131823002, paramString4, true, 8);
+      paramString2 = (Button)localView.findViewById(2131822984);
+      if (!bo.isNullOrNil(paramString5)) {
         paramString2.setText(paramString5);
       }
       paramString2.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          if (this.sch != null) {
-            this.sch.a(true, g.du(localView), g.dv(localView));
+          AppMethodBeat.i(27653);
+          if (this.vTq != null) {
+            this.vTq.a(true, g.eA(localView), g.eB(localView));
           }
           localo.dismiss();
           localo.setFocusable(false);
           localo.setTouchable(false);
+          AppMethodBeat.o(27653);
         }
       });
-      if (!bk.bl(paramString1)) {
-        a.b.a((ImageView)localView.findViewById(R.h.confirm_dialog_thumb_iv), paramString1);
+      if (!bo.isNullOrNil(paramString1)) {
+        a.b.c((ImageView)localView.findViewById(2131822991), paramString1);
       }
-      a(params, localo);
+      a(paramq, localo);
+      AppMethodBeat.o(27691);
       return localo;
-      paramString2.setText(((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.emoji.b.a.class)).a(params.uMN, paramString3, paramString2.getTextSize()));
+      paramString2.setText(((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.emoji.b.a.class)).b(paramq.zaO, paramString3, paramString2.getTextSize()));
     }
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, int paramInt, String paramString, boolean paramBoolean, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, int paramInt, String paramString, boolean paramBoolean, q.a parama)
   {
-    return a(params, paramInt, paramString, paramBoolean, "", parama);
+    AppMethodBeat.i(27684);
+    paramq = a(paramq, paramInt, paramString, paramBoolean, "", parama);
+    AppMethodBeat.o(27684);
+    return paramq;
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, int paramInt, String paramString1, boolean paramBoolean, String paramString2, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, int paramInt, String paramString1, boolean paramBoolean, String paramString2, q.a parama)
   {
-    com.tencent.mm.ui.widget.a.c.a locala = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    Object localObject = params.uMN.getIntent().getExtras().getString("Select_Conv_User", null);
+    AppMethodBeat.i(27685);
+    com.tencent.mm.ui.widget.b.c.a locala = new com.tencent.mm.ui.widget.b.c.a(paramq.zaO);
+    Object localObject = paramq.zaO.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null)
     {
-      localObject = bk.G(((String)localObject).split(","));
-      a(params.uMN, locala, localObject);
+      localObject = bo.P(((String)localObject).split(","));
+      a(paramq.zaO, locala, localObject);
     }
-    locala.nU(true);
-    if (paramInt == R.k.app_attach_file_icon_file) {
-      localObject = params.uMN.getResources().getString(R.l.app_file);
+    locala.rE(true);
+    if (paramInt == 2131230804) {
+      localObject = paramq.zaO.getResources().getString(2131296962);
     }
     for (;;)
     {
-      locala.U((String)localObject + paramString1).nW(false).nX(false);
+      locala.ai((String)localObject + paramString1).rG(false).rH(false);
       if (paramBoolean) {
-        locala.aeC(params.uMN.getString(R.l.confirm_dialog_edittext_hint));
+        locala.rF(true);
       }
-      paramString1 = locala.aoP();
-      a(params.uMN, paramString1, paramString2, null, parama, parama);
+      paramString1 = locala.aLZ();
+      a(paramq.zaO, paramString1, paramString2, null, parama, parama);
       paramString1.show();
+      AppMethodBeat.o(27685);
       return paramString1;
-      if (paramInt == R.k.app_attach_file_icon_music) {
-        localObject = params.uMN.getResources().getString(R.l.app_music);
-      } else if (paramInt == R.k.app_attach_file_icon_video) {
-        localObject = params.uMN.getResources().getString(R.l.app_video);
+      if (paramInt == 2131230809) {
+        localObject = paramq.zaO.getResources().getString(2131297003);
+      } else if (paramInt == 2131230826) {
+        localObject = paramq.zaO.getResources().getString(2131297102);
       } else {
-        localObject = params.uMN.getResources().getString(R.l.app_app);
+        localObject = paramq.zaO.getResources().getString(2131296543);
       }
     }
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, Bitmap paramBitmap, String paramString1, String paramString2, String paramString3, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, Bitmap paramBitmap, String paramString1, String paramString2, String paramString3, q.a parama)
   {
-    View localView = W(params.uMN, R.i.confirm_dialog_item4);
-    com.tencent.mm.ui.widget.a.c.a locala = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    locala.nW(false);
-    locala.nX(false);
-    o(localView, true);
-    a(params, locala, parama, localView, params.uMN.getResources().getString(R.l.confirm_dialog_share));
-    parama = (TextView)localView.findViewById(R.h.confirm_dialog_title_tv);
-    parama.setText(com.tencent.mm.pluginsdk.ui.d.j.a(params.uMN, paramString1, parama.getTextSize()));
-    paramString1 = (TextView)localView.findViewById(R.h.confirm_dialog_message_tv);
-    paramString1.setText(com.tencent.mm.pluginsdk.ui.d.j.a(params.uMN, paramString2, paramString1.getTextSize()));
-    params = (TextView)localView.findViewById(R.h.confirm_dialog_content_desc_tv);
+    AppMethodBeat.i(27688);
+    View localView = ak(paramq.zaO, 2130969203);
+    com.tencent.mm.ui.widget.b.c.a locala = new com.tencent.mm.ui.widget.b.c.a(paramq.zaO);
+    locala.rG(false);
+    locala.rH(false);
+    v(localView, true);
+    a(paramq, locala, parama, localView, paramq.zaO.getResources().getString(2131298503));
+    parama = (TextView)localView.findViewById(2131822997);
+    parama.setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramq.zaO, paramString1, parama.getTextSize()));
+    paramString1 = (TextView)localView.findViewById(2131822992);
+    paramString1.setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramq.zaO, paramString2, paramString1.getTextSize()));
+    paramq = (TextView)localView.findViewById(2131822993);
     if ((paramString3 == null) || (paramString3.length() == 0))
     {
-      params.setVisibility(8);
-      params = (ImageView)localView.findViewById(R.h.confirm_dialog_thumb_iv);
-      if (params != null)
+      paramq.setVisibility(8);
+      paramq = (ImageView)localView.findViewById(2131822991);
+      if (paramq != null)
       {
         if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-          break label233;
+          break label242;
         }
-        com.tencent.mm.sdk.platformtools.y.w("MicroMsg.MMConfirmDialog", "showDialogItem4, thumbBmp is null or recycled");
-        params.setVisibility(8);
+        ab.w("MicroMsg.MMConfirmDialog", "showDialogItem4, thumbBmp is null or recycled");
+        paramq.setVisibility(8);
       }
     }
     for (;;)
     {
-      locala.ei(localView);
-      params = locala.aoP();
-      params.show();
-      return params;
-      params.setText(paramString3);
-      params.setVisibility(0);
+      locala.fu(localView);
+      paramq = locala.aLZ();
+      paramq.show();
+      AppMethodBeat.o(27688);
+      return paramq;
+      paramq.setText(paramString3);
+      paramq.setVisibility(0);
       break;
-      label233:
-      params.setVisibility(0);
-      params.setImageBitmap(paramBitmap);
+      label242:
+      paramq.setVisibility(0);
+      paramq.setImageBitmap(paramBitmap);
       a(locala, paramBitmap);
     }
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, String paramString1, Bitmap paramBitmap, String paramString2, String paramString3, int paramInt, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, String paramString1, Bitmap paramBitmap, String paramString2, String paramString3, q.a parama)
   {
+    AppMethodBeat.i(27689);
     if (((paramString1 == null) || (paramString1.length() == 0)) && ((paramString2 == null) || (paramString2.length() == 0)))
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "showDialogItem6 fail, title message both are empty");
+      ab.e("MicroMsg.MMConfirmDialog", "showDialogItem6 fail, title message both are empty");
+      AppMethodBeat.o(27689);
       return null;
     }
-    View localView = W(params.uMN, R.i.confirm_dialog_item6);
-    com.tencent.mm.ui.widget.a.c.a locala = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    locala.nW(false);
-    locala.nX(false);
-    o(localView, false);
-    a(params, locala, parama, localView, params.uMN.getResources().getString(paramInt));
-    parama = (TextView)localView.findViewById(R.h.confirm_dialog_title_tv);
-    parama.setText(com.tencent.mm.pluginsdk.ui.d.j.a(params.uMN, paramString1, parama.getTextSize()));
-    paramString1 = (TextView)localView.findViewById(R.h.confirm_dialog_message_tv);
-    paramString1.setText(com.tencent.mm.pluginsdk.ui.d.j.a(params.uMN, paramString2, paramString1.getTextSize()));
+    View localView = ak(paramq.zaO, 2130969204);
+    com.tencent.mm.ui.widget.b.c.a locala = new com.tencent.mm.ui.widget.b.c.a(paramq.zaO);
+    locala.rG(false);
+    locala.rH(false);
+    v(localView, false);
+    a(paramq, locala, parama, localView, paramq.zaO.getResources().getString(2131298530));
+    parama = (TextView)localView.findViewById(2131822997);
+    parama.setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramq.zaO, paramString1, parama.getTextSize()));
+    paramString1 = (TextView)localView.findViewById(2131822992);
+    paramString1.setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramq.zaO, paramString2, paramString1.getTextSize()));
     if (paramString3.length() == 0)
     {
-      localView.findViewById(R.h.confirm_dialog_content_desc_tv).setVisibility(8);
-      params = (ImageView)localView.findViewById(R.h.confirm_dialog_thumb_iv);
-      if (params != null)
+      localView.findViewById(2131822993).setVisibility(8);
+      paramq = (ImageView)localView.findViewById(2131822991);
+      if (paramq != null)
       {
         if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-          break label256;
+          break label272;
         }
-        params.setImageBitmap(paramBitmap);
+        paramq.setImageBitmap(paramBitmap);
         a(locala, paramBitmap);
       }
     }
     for (;;)
     {
-      locala.ei(localView);
-      params = locala.aoP();
-      params.show();
-      return params;
-      ((TextView)localView.findViewById(R.h.confirm_dialog_content_desc_tv)).setText(paramString3);
+      locala.fu(localView);
+      paramq = locala.aLZ();
+      paramq.show();
+      AppMethodBeat.o(27689);
+      return paramq;
+      ((TextView)localView.findViewById(2131822993)).setText(paramString3);
       break;
-      label256:
-      params.setVisibility(4);
+      label272:
+      paramq.setVisibility(4);
     }
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, String paramString1, View paramView, String paramString2, q.b paramb)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, String paramString1, View paramView, String paramString2, q.b paramb)
   {
+    AppMethodBeat.i(27694);
     if ((paramString1 == null) || (paramString1.length() == 0))
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      ab.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      AppMethodBeat.o(27694);
       return null;
     }
-    com.tencent.mm.ui.widget.a.c.a locala = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    locala.nW(false);
-    locala.nX(false);
-    a(locala, params.uMN, paramString1);
-    if (!bk.bl(paramString2))
+    com.tencent.mm.ui.widget.b.c.a locala = new com.tencent.mm.ui.widget.b.c.a(paramq.zaO);
+    locala.rG(false);
+    locala.rH(false);
+    a(locala, paramq.zaO, paramString1);
+    if (!bo.isNullOrNil(paramString2))
     {
       paramString1 = paramString2;
       if (paramString2.length() != 0) {}
     }
     else
     {
-      paramString1 = params.uMN.getResources().getString(R.l.confirm_dialog_share);
+      paramString1 = paramq.zaO.getResources().getString(2131298503);
     }
-    locala.aeD(paramString1).a(new g.3(paramb));
-    locala.It(R.l.app_cancel).b(new g.4(paramb));
-    locala.ei(paramView);
-    paramString1 = locala.aoP();
-    paramString1.In(params.uMN.getResources().getColor(R.e.wechat_green));
+    locala.avs(paramString1).a(new g.3(paramb));
+    locala.Rj(2131296888).b(new g.4(paramb));
+    locala.fu(paramView);
+    paramString1 = locala.aLZ();
+    paramString1.QZ(paramq.zaO.getResources().getColor(2131689778));
     paramString1.show();
+    AppMethodBeat.o(27694);
     return paramString1;
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, String paramString1, String paramString2, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, String paramString1, String paramString2, q.a parama)
   {
-    return a(params, paramString1, paramString2, false, "", parama);
+    AppMethodBeat.i(27677);
+    paramq = a(paramq, paramString1, paramString2, false, "", parama);
+    AppMethodBeat.o(27677);
+    return paramq;
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, String paramString1, String paramString2, String paramString3, q.a parama1, q.a parama2)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, q.a parama)
   {
-    com.tencent.mm.ui.widget.a.c.a locala = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    locala.a(com.tencent.mm.compatible.g.a.decodeResource(params.uMN.getResources(), R.k.dialog_successful_icon), false, 3);
-    locala.nW(false);
-    locala.nX(false);
-    locala.wmT.wlC = paramString1;
-    locala.Ir(17);
-    paramString1 = locala.aoP();
-    a(params.uMN, paramString1, paramString3, paramString2, parama2, parama1);
-    paramString1.Io(params.uMN.getResources().getColor(R.e.green_text_color));
-    paramString1.show();
-    return paramString1;
-  }
-  
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, q.a parama)
-  {
+    AppMethodBeat.i(27673);
     if (((paramString1 == null) || (paramString1.length() == 0)) && ((paramString3 == null) || (paramString3.length() == 0)))
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      ab.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      AppMethodBeat.o(27673);
       return null;
     }
-    View localView = View.inflate(params.uMN, R.i.confirm_dialog_item1, null);
-    com.tencent.mm.ui.widget.a.c.a locala = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    locala.nW(false);
-    locala.nX(false);
-    a(locala, params.uMN, paramString1);
-    o(localView, paramBoolean);
-    a(params, locala, parama, localView, paramString4);
-    paramString1 = (TextView)localView.findViewById(R.h.confirm_dialog_message_tv);
-    paramString1.setText(com.tencent.mm.pluginsdk.ui.d.j.a(params.uMN, paramString3, paramString1.getTextSize()));
-    localView.findViewById(R.h.confirm_dialog_content_desc_tv).setVisibility(8);
-    int i = BackwardSupportUtil.b.b(params.uMN, 120.0F);
-    params = (CdnImageView)localView.findViewById(R.h.confirm_dialog_thumb_iv);
-    if (params != null) {
-      params.ah(paramString2, i, i);
+    View localView = View.inflate(paramq.zaO, 2130969202, null);
+    com.tencent.mm.ui.widget.b.c.a locala = new com.tencent.mm.ui.widget.b.c.a(paramq.zaO);
+    locala.rG(false);
+    locala.rH(false);
+    a(locala, paramq.zaO, paramString1);
+    v(localView, paramBoolean);
+    a(paramq, locala, parama, localView, paramString4);
+    paramString1 = (TextView)localView.findViewById(2131822992);
+    paramString1.setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramq.zaO, paramString3, paramString1.getTextSize()));
+    localView.findViewById(2131822993).setVisibility(8);
+    int i = BackwardSupportUtil.b.b(paramq.zaO, 120.0F);
+    paramq = (CdnImageView)localView.findViewById(2131822991);
+    if (paramq != null) {
+      paramq.ax(paramString2, i, i);
     }
-    locala.ei(localView);
-    params = locala.aoP();
-    params.show();
-    return params;
+    locala.fu(localView);
+    paramq = locala.aLZ();
+    paramq.show();
+    AppMethodBeat.o(27673);
+    return paramq;
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, String paramString1, String paramString2, boolean paramBoolean, String paramString3, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, String paramString1, String paramString2, boolean paramBoolean, String paramString3, q.a parama)
   {
-    return a(params, paramString1, paramString2, paramBoolean, paramString3, parama, params.uMN.getResources().getString(R.l.app_url));
+    AppMethodBeat.i(27674);
+    paramq = a(paramq, paramString1, paramString2, paramBoolean, paramString3, parama, paramq.zaO.getResources().getString(2131297097));
+    AppMethodBeat.o(27674);
+    return paramq;
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, String paramString1, String paramString2, boolean paramBoolean, String paramString3, q.a parama, String paramString4)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, String paramString1, String paramString2, boolean paramBoolean, String paramString3, q.a parama, String paramString4)
   {
+    AppMethodBeat.i(27675);
     if (((paramString1 == null) || (paramString1.length() == 0)) && ((paramString2 == null) || (paramString2.length() == 0)))
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      ab.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      AppMethodBeat.o(27675);
       return null;
     }
-    paramString2 = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    Object localObject = params.uMN.getIntent().getExtras().getString("Select_Conv_User", null);
+    paramString2 = new com.tencent.mm.ui.widget.b.c.a(paramq.zaO);
+    Object localObject = paramq.zaO.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null)
     {
-      localObject = bk.G(((String)localObject).split(","));
-      a(params.uMN, paramString2, localObject);
+      localObject = bo.P(((String)localObject).split(","));
+      a(paramq.zaO, paramString2, localObject);
     }
-    paramString2.nU(true);
-    paramString2.U(paramString4 + paramString1).nW(false).nX(false);
+    paramString2.rE(true);
+    paramString2.ai(paramString4 + paramString1).rG(false).rH(false);
     if (paramBoolean) {
-      paramString2.aeC(params.uMN.getString(R.l.confirm_dialog_edittext_hint));
+      paramString2.rF(true);
     }
-    paramString1 = paramString2.aoP();
-    a(params.uMN, paramString1, paramString3, null, parama, parama);
+    paramString1 = paramString2.aLZ();
+    a(paramq.zaO, paramString1, paramString3, null, parama, parama);
     paramString1.show();
+    AppMethodBeat.o(27675);
     return paramString1;
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, String paramString, boolean paramBoolean, int paramInt, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, String paramString, boolean paramBoolean, int paramInt, q.a parama)
   {
-    return a(params, paramString, paramBoolean, paramInt, "", parama);
+    AppMethodBeat.i(27686);
+    paramq = a(paramq, paramString, paramBoolean, paramInt, "", parama);
+    AppMethodBeat.o(27686);
+    return paramq;
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, String paramString1, boolean paramBoolean, int paramInt, String paramString2, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, String paramString1, boolean paramBoolean, int paramInt, String paramString2, q.a parama)
   {
-    com.tencent.mm.ui.widget.a.c.a locala = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    Object localObject = params.uMN.getIntent().getExtras().getString("Select_Conv_User", null);
+    AppMethodBeat.i(27687);
+    com.tencent.mm.ui.widget.b.c.a locala = new com.tencent.mm.ui.widget.b.c.a(paramq.zaO);
+    Object localObject = paramq.zaO.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null) {}
-    for (localObject = bk.G(((String)localObject).split(","));; localObject = null)
+    for (localObject = bo.P(((String)localObject).split(","));; localObject = null)
     {
-      a(params.uMN, locala, localObject);
-      locala.nU(true);
+      a(paramq.zaO, locala, localObject);
+      locala.rE(true);
       switch (paramInt)
       {
       default: 
-        localObject = params.uMN.getResources().getString(R.l.app_app);
+        localObject = paramq.zaO.getResources().getString(2131296543);
       }
       for (;;)
       {
-        locala.U((String)localObject + paramString1).nW(false).nX(false);
+        locala.ai((String)localObject + paramString1).rG(false).rH(false);
         if (paramBoolean) {
-          locala.aeC(params.uMN.getString(R.l.confirm_dialog_edittext_hint));
+          locala.rF(true);
         }
-        paramString1 = locala.aoP();
-        a(params.uMN, paramString1, paramString2, null, parama, parama);
+        paramString1 = locala.aLZ();
+        a(paramq.zaO, paramString1, paramString2, null, parama, parama);
         paramString1.show();
+        AppMethodBeat.o(27687);
         return paramString1;
-        localObject = params.uMN.getResources().getString(R.l.app_video);
+        localObject = paramq.zaO.getResources().getString(2131297102);
         continue;
-        localObject = params.uMN.getResources().getString(R.l.app_music);
+        localObject = paramq.zaO.getResources().getString(2131297003);
       }
     }
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, String paramString, boolean paramBoolean, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, String paramString, boolean paramBoolean, q.a parama)
   {
-    return a(params, paramString, paramBoolean, "", parama);
+    AppMethodBeat.i(27678);
+    paramq = a(paramq, paramString, paramBoolean, "", parama);
+    AppMethodBeat.o(27678);
+    return paramq;
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, String paramString1, boolean paramBoolean, String paramString2, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, String paramString1, boolean paramBoolean, String paramString2, q.a parama)
   {
+    AppMethodBeat.i(27679);
     if ((paramString1 == null) || (paramString1.length() == 0))
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "showDialogItem2 fail, message is empty");
+      ab.e("MicroMsg.MMConfirmDialog", "showDialogItem2 fail, message is empty");
+      AppMethodBeat.o(27679);
       return null;
     }
-    com.tencent.mm.ui.widget.a.c.a locala = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    Object localObject = params.uMN.getIntent().getExtras().getString("Select_Conv_User", null);
+    com.tencent.mm.ui.widget.b.c.a locala = new com.tencent.mm.ui.widget.b.c.a(paramq.zaO);
+    Object localObject = paramq.zaO.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null)
     {
-      localObject = bk.G(((String)localObject).split(","));
-      a(params.uMN, locala, localObject);
+      localObject = bo.P(((String)localObject).split(","));
+      a(paramq.zaO, locala, localObject);
     }
-    locala.nU(true);
-    locala.U(paramString1).nW(false).nX(false);
+    locala.rE(true);
+    locala.ai(paramString1).rG(false).rH(false);
     if (paramBoolean) {
-      locala.aeC(params.uMN.getString(R.l.confirm_dialog_edittext_hint));
+      locala.rF(true);
     }
-    paramString1 = locala.aoP();
-    a(params.uMN, paramString1, paramString2, null, parama, parama);
+    paramString1 = locala.aLZ();
+    a(paramq.zaO, paramString1, paramString2, null, parama, parama);
     paramString1.show();
+    AppMethodBeat.o(27679);
     return paramString1;
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, byte[] paramArrayOfByte, boolean paramBoolean, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, byte[] paramArrayOfByte, boolean paramBoolean, q.a parama)
   {
-    return a(params, paramArrayOfByte, paramBoolean, "", parama);
+    AppMethodBeat.i(27682);
+    paramq = a(paramq, paramArrayOfByte, paramBoolean, "", parama);
+    AppMethodBeat.o(27682);
+    return paramq;
   }
   
-  public static com.tencent.mm.ui.widget.a.c a(com.tencent.mm.ui.s params, byte[] paramArrayOfByte, boolean paramBoolean, String paramString, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c a(com.tencent.mm.ui.q paramq, byte[] paramArrayOfByte, boolean paramBoolean, String paramString, q.a parama)
   {
+    AppMethodBeat.i(27683);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "showDialogItem3 fail, imgData is null");
+      ab.e("MicroMsg.MMConfirmDialog", "showDialogItem3 fail, imgData is null");
+      AppMethodBeat.o(27683);
       return null;
     }
-    com.tencent.mm.ui.widget.a.c.a locala = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    Object localObject = params.uMN.getIntent().getExtras().getString("Select_Conv_User", null);
+    com.tencent.mm.ui.widget.b.c.a locala = new com.tencent.mm.ui.widget.b.c.a(paramq.zaO);
+    Object localObject = paramq.zaO.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null)
     {
-      localObject = bk.G(((String)localObject).split(","));
-      a(params.uMN, locala, localObject);
+      localObject = bo.P(((String)localObject).split(","));
+      a(paramq.zaO, locala, localObject);
     }
-    locala.nU(true);
-    locala.nW(false).nX(false);
+    locala.rE(true);
+    locala.rG(false).rH(false);
     if (paramBoolean) {
-      locala.aeC(params.uMN.getString(R.l.confirm_dialog_edittext_hint));
+      locala.rF(true);
     }
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);
-      if (paramArrayOfByte != null)
+      localObject = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);
+      int i = com.tencent.util.d.cv(paramArrayOfByte);
+      if (localObject != null)
       {
+        paramArrayOfByte = (byte[])localObject;
+        if (i != 0) {
+          paramArrayOfByte = com.tencent.mm.sdk.platformtools.d.b((Bitmap)localObject, i);
+        }
         locala.a(paramArrayOfByte, true, 3);
         a(locala, paramArrayOfByte);
-        locala.nU(false);
+        locala.rE(false);
       }
     }
-    paramArrayOfByte = locala.aoP();
-    a(params.uMN, paramArrayOfByte, paramString, null, parama, parama);
+    paramArrayOfByte = locala.aLZ();
+    a(paramq.zaO, paramArrayOfByte, paramString, null, parama, parama);
     paramArrayOfByte.show();
+    AppMethodBeat.o(27683);
     return paramArrayOfByte;
   }
   
-  private static void a(Context paramContext, com.tencent.mm.ui.widget.a.c.a parama, Object paramObject)
+  private static void a(Context paramContext, com.tencent.mm.ui.widget.b.c.a parama, Object paramObject)
   {
-    if (paramObject != null)
-    {
-      if (!(paramObject instanceof String)) {
-        break label33;
+    AppMethodBeat.i(27670);
+    if (paramObject != null) {
+      if ((paramObject instanceof String)) {
+        paramObject = bo.P(((String)paramObject).split(","));
       }
-      paramObject = bk.G(((String)paramObject).split(","));
     }
     for (;;)
     {
-      if (bk.dk(paramObject))
+      if (bo.es(paramObject))
       {
+        AppMethodBeat.o(27670);
         return;
-        label33:
         if ((paramObject instanceof List)) {
           paramObject = (List)paramObject;
         }
@@ -562,268 +600,294 @@ public final class g
         if (paramObject.size() == 1)
         {
           paramObject = (String)paramObject.get(0);
-          int i = com.tencent.mm.cb.a.fromDPToPix(paramContext, (int)(20.0F * com.tencent.mm.cb.a.cJ(paramContext)));
-          Object localObject1 = paramContext.getString(R.l.retransmit_to_conv_comfirm);
-          parama.S(((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.emoji.b.a.class)).a(((String)localObject1).toString(), i));
-          localObject1 = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.a.b.class)).gV(paramObject);
-          i = com.tencent.mm.cb.a.fromDPToPix(paramContext, (int)(14.0F * com.tencent.mm.cb.a.cJ(paramContext)));
-          if (com.tencent.mm.model.s.fn(paramObject))
+          int i = com.tencent.mm.cb.a.fromDPToPix(paramContext, (int)(20.0F * com.tencent.mm.cb.a.dr(paramContext)));
+          Object localObject1 = paramContext.getString(2131302655);
+          parama.ag(((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.emoji.b.a.class)).a(paramContext, ((String)localObject1).toString(), i)).Re(3);
+          localObject1 = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.a.b.class)).nE(paramObject);
+          i = com.tencent.mm.cb.a.fromDPToPix(paramContext, (int)(14.0F * com.tencent.mm.cb.a.dr(paramContext)));
+          if (t.lA(paramObject))
           {
-            Object localObject2 = paramContext.getString(R.l.select_contact_num, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.chatroom.a.b.class)).gM(paramObject)) });
+            Object localObject2 = paramContext.getString(2131303049, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.chatroom.a.b.class)).nv(paramObject)) });
             localObject1 = (String)localObject1 + (String)localObject2;
-            localObject1 = ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.emoji.b.a.class)).a(((String)localObject1).toString(), i);
-            localObject2 = com.tencent.mm.ui.y.gt(paramContext).inflate(R.i.dialog_chatroom_avater_detail, null);
-            GridView localGridView = (GridView)((View)localObject2).findViewById(R.h.chatroom_avatar_detail);
+            localObject1 = ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.emoji.b.a.class)).a(paramContext, ((String)localObject1).toString(), i);
+            localObject2 = w.hM(paramContext).inflate(2130969322, null);
+            GridView localGridView = (GridView)((View)localObject2).findViewById(2131823418);
             ArrayList localArrayList = new ArrayList();
-            List localList = ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.chatroom.a.b.class)).gK(paramObject);
-            parama.a(paramObject, (CharSequence)localObject1, Boolean.valueOf(true), new g.1((View)localObject2, localArrayList, paramObject, localList), new g.7());
+            List localList = ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.chatroom.a.b.class)).nt(paramObject);
+            parama.a(paramObject, (CharSequence)localObject1, Boolean.TRUE, new g.1((View)localObject2, localArrayList, paramObject, localList), new g.7());
             localGridView.setAdapter(new l(paramContext, localList, localArrayList));
-            localGridView.setSelector(new ColorDrawable(paramContext.getResources().getColor(R.e.transparent)));
+            localGridView.setSelector(new ColorDrawable(paramContext.getResources().getColor(2131690605)));
             if (localList != null)
             {
               if (localList.size() <= 16) {
-                break label427;
+                break label450;
               }
-              localGridView.setLayoutParams(new LinearLayout.LayoutParams(-1, com.tencent.mm.cb.a.aa(paramContext, R.f.DialogTitleDetailMaxHeight)));
-              localGridView.setPadding(com.tencent.mm.cb.a.aa(paramContext, R.f.DialogEdgePadding), 0, com.tencent.mm.cb.a.aa(paramContext, R.f.DialogEdgePadding), 0);
+              localGridView.setLayoutParams(new LinearLayout.LayoutParams(-1, com.tencent.mm.cb.a.ao(paramContext, 2131427572)));
+              localGridView.setPadding(com.tencent.mm.cb.a.ao(paramContext, 2131427568), 0, com.tencent.mm.cb.a.ao(paramContext, 2131427568), 0);
             }
             for (;;)
             {
-              parama.wmT.wmi = ((View)localObject2);
+              parama.AGP.AGe = ((View)localObject2);
+              AppMethodBeat.o(27670);
               return;
-              label427:
-              localGridView.setPadding(0, 0, 0, com.tencent.mm.cb.a.aa(paramContext, R.f.DialogAvatarLinePadding));
+              label450:
+              localGridView.setPadding(0, 0, 0, com.tencent.mm.cb.a.ao(paramContext, 2131427565));
             }
           }
-          parama.a(paramObject, ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.emoji.b.a.class)).a(((String)localObject1).toString(), i), Boolean.valueOf(false), null, new g.11());
+          parama.a(paramObject, ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.emoji.b.a.class)).a(paramContext, ((String)localObject1).toString(), i), Boolean.FALSE, null, new c.a.a()
+          {
+            public final void v(ImageView paramAnonymousImageView, String paramAnonymousString)
+            {
+              AppMethodBeat.i(27649);
+              com.tencent.mm.ui.f.a.a.c(paramAnonymousImageView, paramAnonymousString);
+              AppMethodBeat.o(27649);
+            }
+          });
+          AppMethodBeat.o(27670);
           return;
         }
         paramObject = d(paramContext, paramObject);
-        parama.wmT.wmh = paramObject;
-        parama.aez(paramContext.getString(R.l.multi_retransmit_comfirm));
+        parama.AGP.AGd = paramObject;
+        parama.avm(paramContext.getString(2131301650)).Re(3);
+        AppMethodBeat.o(27670);
         return;
       }
       paramObject = null;
     }
   }
   
-  private static void a(Context paramContext, com.tencent.mm.ui.widget.a.c paramc, String paramString1, String paramString2, final q.a parama1, final q.a parama2)
+  private static void a(Context paramContext, com.tencent.mm.ui.widget.b.c paramc, String paramString1, String paramString2, q.a parama1, q.a parama2)
   {
-    String str;
-    if (!bk.bl(paramString1))
+    AppMethodBeat.i(27672);
+    if (!bo.isNullOrNil(paramString1))
     {
-      str = paramString1;
+      paramString2 = paramString1;
       if (paramString1.length() != 0) {}
     }
     else
     {
-      str = paramContext.getResources().getString(R.l.confirm_dialog_share);
+      paramString2 = paramContext.getResources().getString(2131298503);
     }
-    if (!bk.bl(paramString2))
-    {
-      paramString1 = paramString2;
-      if (paramString2.length() != 0) {}
+    if (!bo.isNullOrNil(null)) {
+      throw new NullPointerException();
     }
-    else
-    {
-      paramString1 = paramContext.getResources().getString(R.l.app_cancel);
-    }
-    paramc.a(str, true, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        this.sck.dismiss();
-        String str;
-        com.tencent.mm.ui.widget.a.c localc;
-        if (parama1 != null)
-        {
-          paramAnonymousDialogInterface = parama1;
-          str = this.sck.cKe();
-          localc = this.sck;
-          if (!(localc.ln instanceof PasterEditText)) {
-            break label66;
-          }
-        }
-        label66:
-        for (paramAnonymousInt = ((PasterEditText)localc.ln).getPasterLen();; paramAnonymousInt = 0)
-        {
-          paramAnonymousDialogInterface.a(true, str, paramAnonymousInt);
-          return;
-        }
-      }
-    });
-    paramc.b(paramString1, true, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        this.sck.dismiss();
-        if (parama2 != null) {
-          parama2.a(false, null, 0);
-        }
-      }
-    });
+    paramContext = paramContext.getResources().getString(2131296888);
+    paramc.a(paramString2, true, new g.12(paramc, parama1));
+    paramc.b(paramContext, true, new g.13(paramc, parama2));
+    AppMethodBeat.o(27672);
   }
   
   private static void a(View paramView, int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
   {
+    AppMethodBeat.i(27701);
     paramView = (TextView)paramView.findViewById(paramInt1);
     if (paramView != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if ((!paramBoolean) || (!bk.bl(paramString))) {
+      if ((!paramBoolean) || (!bo.isNullOrNil(paramString))) {
         break;
       }
       paramView.setVisibility(paramInt2);
+      AppMethodBeat.o(27701);
       return;
     }
     paramView.setText(paramString);
+    AppMethodBeat.o(27701);
   }
   
-  private static void a(View paramView, q.a parama, com.tencent.mm.ui.base.o paramo)
+  private static void a(View paramView, q.a parama, final com.tencent.mm.ui.base.o paramo)
   {
-    ((Button)paramView.findViewById(R.h.confirm_dialog_btn1)).setOnClickListener(new g.5(parama, paramView, paramo));
-    paramView = (Button)paramView.findViewById(R.h.confirm_dialog_btn2);
+    AppMethodBeat.i(27699);
+    ((Button)paramView.findViewById(2131822984)).setOnClickListener(new g.5(parama, paramView, paramo));
+    paramView = (Button)paramView.findViewById(2131822983);
     if (paramView != null) {
-      paramView.setOnClickListener(new g.6(parama, paramo));
+      paramView.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(27644);
+          if (this.vTq != null) {
+            this.vTq.a(false, null, 0);
+          }
+          paramo.dismiss();
+          paramo.setFocusable(false);
+          paramo.setTouchable(false);
+          AppMethodBeat.o(27644);
+        }
+      });
     }
+    AppMethodBeat.o(27699);
   }
   
-  private static void a(com.tencent.mm.ui.s params, com.tencent.mm.ui.base.o paramo)
+  private static void a(com.tencent.mm.ui.q paramq, com.tencent.mm.ui.base.o paramo)
   {
+    AppMethodBeat.i(27702);
     try
     {
-      if (!params.uMN.isFinishing())
+      if (!paramq.zaO.isFinishing())
       {
         paramo.setInputMethodMode(1);
         paramo.setSoftInputMode(16);
         paramo.setFocusable(true);
         paramo.setTouchable(true);
-        paramo.showAtLocation(params.uMN.getWindow().getDecorView(), 17, 0, 0);
+        paramo.showAtLocation(paramq.zaO.getWindow().getDecorView(), 17, 0, 0);
       }
+      AppMethodBeat.o(27702);
       return;
     }
-    catch (Exception params)
+    catch (Exception paramq)
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "show dialog fail: %s", new Object[] { params.getMessage() });
-      com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.MMConfirmDialog", params, "", new Object[0]);
+      ab.e("MicroMsg.MMConfirmDialog", "show dialog fail: %s", new Object[] { paramq.getMessage() });
+      ab.printErrStackTrace("MicroMsg.MMConfirmDialog", paramq, "", new Object[0]);
+      AppMethodBeat.o(27702);
     }
   }
   
-  private static void a(com.tencent.mm.ui.s params, com.tencent.mm.ui.widget.a.c.a parama, q.a parama1, View paramView, String paramString)
+  private static void a(com.tencent.mm.ui.q paramq, com.tencent.mm.ui.widget.b.c.a parama, q.a parama1, View paramView, String paramString)
   {
+    AppMethodBeat.i(27697);
     String str;
-    if (!bk.bl(paramString))
+    if (!bo.isNullOrNil(paramString))
     {
       str = paramString;
       if (paramString.length() != 0) {}
     }
     else
     {
-      str = params.uMN.getResources().getString(R.l.confirm_dialog_share);
+      str = paramq.zaO.getResources().getString(2131298503);
     }
-    parama.aeD(str).a(new g.17(parama1, paramView));
-    parama.It(R.l.app_cancel).b(new g.2(parama1));
+    parama.avs(str).a(new g.17(parama1, paramView));
+    parama.Rj(2131296888).b(new g.2(parama1));
+    AppMethodBeat.o(27697);
   }
   
-  public static void a(com.tencent.mm.ui.s params, String paramString1, String paramString2, String paramString3, q.a parama)
+  public static void a(com.tencent.mm.ui.q paramq, String paramString1, String paramString2, String paramString3, q.a parama)
   {
-    params = new g.a(params.uMN).bM(paramString1).WF(paramString2).g(Boolean.valueOf(false));
-    params.sco = paramString3;
-    params.a(parama).few.show();
+    AppMethodBeat.i(27693);
+    paramq = new g.a(paramq.zaO).cq(paramString1).amm(paramString2).i(Boolean.FALSE);
+    paramq.vTu = paramString3;
+    paramq.a(parama).gwf.show();
+    AppMethodBeat.o(27693);
   }
   
-  private static void a(com.tencent.mm.ui.widget.a.c.a parama, Context paramContext, String paramString)
+  private static void a(com.tencent.mm.ui.widget.b.c.a parama, Context paramContext, String paramString)
   {
-    parama.aez(paramString);
-    int i = paramContext.getResources().getColor(R.e.normal_text_color);
-    parama.wmT.rYa = i;
-    parama.wmT.wmj = 2;
+    AppMethodBeat.i(27698);
+    parama.avm(paramString);
+    parama.Rc(paramContext.getResources().getColor(2131690322));
+    parama.Rd(2);
+    AppMethodBeat.o(27698);
   }
   
-  private static void a(com.tencent.mm.ui.widget.a.c.a parama, Bitmap paramBitmap)
+  private static void a(com.tencent.mm.ui.widget.b.c.a parama, Bitmap paramBitmap)
   {
+    AppMethodBeat.i(27703);
     parama.a(new g.9(paramBitmap));
+    AppMethodBeat.o(27703);
   }
   
-  public static com.tencent.mm.ui.widget.a.c b(com.tencent.mm.ui.s params, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, q.a parama)
+  private static View ak(Context paramContext, int paramInt)
   {
+    AppMethodBeat.i(27695);
+    paramContext = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(paramInt, null);
+    AppMethodBeat.o(27695);
+    return paramContext;
+  }
+  
+  public static com.tencent.mm.ui.widget.b.c b(com.tencent.mm.ui.q paramq, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, q.a parama)
+  {
+    AppMethodBeat.i(27676);
     if (((paramString1 == null) || (paramString1.length() == 0)) && ((paramString3 == null) || (paramString3.length() == 0)))
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      ab.e("MicroMsg.MMConfirmDialog", "showDialogItem1 fail, title message both are empty");
+      AppMethodBeat.o(27676);
       return null;
     }
-    View localView = View.inflate(params.uMN, R.i.confirm_dialog_item1, null);
-    com.tencent.mm.ui.widget.a.c.a locala = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    locala.nW(false);
-    locala.nX(false);
-    a(locala, params.uMN, paramString1);
+    View localView = View.inflate(paramq.zaO, 2130969202, null);
+    com.tencent.mm.ui.widget.b.c.a locala = new com.tencent.mm.ui.widget.b.c.a(paramq.zaO);
+    locala.rG(false);
+    locala.rH(false);
+    a(locala, paramq.zaO, paramString1);
     if (localView != null)
     {
-      paramString1 = (EditText)localView.findViewById(R.h.confirm_dialog_text_et);
+      paramString1 = (EditText)localView.findViewById(2131822990);
       if (paramString1 != null) {
         paramString1.setVisibility(0);
       }
       paramString1.setText(paramString4);
     }
-    a(params, locala, parama, localView, paramString5);
-    paramString1 = (TextView)localView.findViewById(R.h.confirm_dialog_message_tv);
-    paramString1.setText(com.tencent.mm.pluginsdk.ui.d.j.a(params.uMN, paramString3, paramString1.getTextSize()));
-    localView.findViewById(R.h.confirm_dialog_content_desc_tv).setVisibility(8);
-    int i = BackwardSupportUtil.b.b(params.uMN, 120.0F);
-    params = (CdnImageView)localView.findViewById(R.h.confirm_dialog_thumb_iv);
-    if (params != null) {
-      params.ah(paramString2, i, i);
+    a(paramq, locala, parama, localView, paramString5);
+    paramString1 = (TextView)localView.findViewById(2131822992);
+    paramString1.setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramq.zaO, paramString3, paramString1.getTextSize()));
+    localView.findViewById(2131822993).setVisibility(8);
+    int i = BackwardSupportUtil.b.b(paramq.zaO, 120.0F);
+    paramq = (CdnImageView)localView.findViewById(2131822991);
+    if (paramq != null) {
+      paramq.ax(paramString2, i, i);
     }
-    locala.ei(localView);
-    params = locala.aoP();
-    params.show();
-    return params;
+    locala.fu(localView);
+    paramq = locala.aLZ();
+    paramq.show();
+    AppMethodBeat.o(27676);
+    return paramq;
   }
   
-  public static com.tencent.mm.ui.widget.a.c b(com.tencent.mm.ui.s params, String paramString, boolean paramBoolean, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c b(com.tencent.mm.ui.q paramq, String paramString, boolean paramBoolean, q.a parama)
   {
-    return b(params, paramString, paramBoolean, "", parama);
+    AppMethodBeat.i(27680);
+    paramq = b(paramq, paramString, paramBoolean, "", parama);
+    AppMethodBeat.o(27680);
+    return paramq;
   }
   
-  public static com.tencent.mm.ui.widget.a.c b(com.tencent.mm.ui.s params, String paramString1, boolean paramBoolean, String paramString2, q.a parama)
+  public static com.tencent.mm.ui.widget.b.c b(com.tencent.mm.ui.q paramq, String paramString1, boolean paramBoolean, String paramString2, q.a parama)
   {
-    if ((paramString1 == null) || (!e.bK(paramString1)))
+    AppMethodBeat.i(27681);
+    if ((paramString1 == null) || (!e.cN(paramString1)))
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMConfirmDialog", "showDialogItem3 fail, img does not exist");
+      ab.e("MicroMsg.MMConfirmDialog", "showDialogItem3 fail, img does not exist");
+      AppMethodBeat.o(27681);
       return null;
     }
-    com.tencent.mm.ui.widget.a.c.a locala = new com.tencent.mm.ui.widget.a.c.a(params.uMN);
-    Object localObject = params.uMN.getIntent().getExtras().getString("Select_Conv_User", null);
+    com.tencent.mm.ui.widget.b.c.a locala = new com.tencent.mm.ui.widget.b.c.a(paramq.zaO);
+    Object localObject = paramq.zaO.getIntent().getExtras().getString("Select_Conv_User", null);
     if (localObject != null)
     {
-      localObject = bk.G(((String)localObject).split(","));
-      a(params.uMN, locala, localObject);
+      localObject = bo.P(((String)localObject).split(","));
+      a(paramq.zaO, locala, localObject);
     }
-    locala.nU(true);
-    locala.nW(false).nX(false);
+    locala.rE(true);
+    locala.rG(false).rH(false);
     if (paramBoolean) {
-      locala.aeC(params.uMN.getString(R.l.confirm_dialog_edittext_hint));
+      locala.rF(true);
     }
-    if (!bk.bl(paramString1))
+    if (!bo.isNullOrNil(paramString1))
     {
-      paramString1 = com.tencent.mm.sdk.platformtools.c.YW(paramString1);
-      if (paramString1 != null)
+      localObject = com.tencent.mm.sdk.platformtools.d.aoV(paramString1);
+      int i = BackwardSupportUtil.ExifHelper.bY(paramString1);
+      if (localObject != null)
       {
+        paramString1 = (String)localObject;
+        if (i != 0) {
+          paramString1 = com.tencent.mm.sdk.platformtools.d.b((Bitmap)localObject, i);
+        }
         locala.a(paramString1, true, 3);
         a(locala, paramString1);
-        locala.nU(false);
+        locala.rE(false);
       }
     }
-    paramString1 = locala.aoP();
-    a(params.uMN, paramString1, paramString2, null, parama, parama);
+    paramString1 = locala.aLZ();
+    a(paramq.zaO, paramString1, paramString2, null, parama, parama);
     paramString1.show();
+    AppMethodBeat.o(27681);
     return paramString1;
   }
   
   private static View d(Context paramContext, List<String> paramList)
   {
-    paramContext = View.inflate(paramContext, R.i.confirm_dialog_title_multi_image, null);
+    AppMethodBeat.i(27671);
+    paramContext = View.inflate(paramContext, 2130969209, null);
     if (paramList != null)
     {
       paramList = paramList.iterator();
@@ -832,52 +896,58 @@ public final class g
       {
         String str = (String)paramList.next();
         if ((i > 8) || (paramContext == null)) {
-          break label90;
+          break label102;
         }
-        ImageView localImageView = (ImageView)paramContext.findViewById(sce[i]);
+        ImageView localImageView = (ImageView)paramContext.findViewById(vTn[i]);
         if (str == null) {
-          break label90;
+          break label102;
         }
         localImageView.setVisibility(0);
-        com.tencent.mm.ui.e.a.a.a(localImageView, str);
+        com.tencent.mm.ui.f.a.a.c(localImageView, str);
         i += 1;
       }
     }
-    label90:
+    label102:
     for (;;)
     {
       break;
+      AppMethodBeat.o(27671);
       return paramContext;
     }
   }
   
-  private static com.tencent.mm.ui.base.o dt(View paramView)
+  private static com.tencent.mm.ui.base.o ez(View paramView)
   {
-    return new com.tencent.mm.ui.base.o(paramView, -1, -1);
+    AppMethodBeat.i(27696);
+    paramView = new com.tencent.mm.ui.base.o(paramView, -1, -1);
+    AppMethodBeat.o(27696);
+    return paramView;
   }
   
-  private static void o(View paramView, boolean paramBoolean)
+  private static void v(View paramView, boolean paramBoolean)
   {
+    AppMethodBeat.i(27700);
     if (paramView != null)
     {
-      paramView = (EditText)paramView.findViewById(R.h.confirm_dialog_text_et);
+      paramView = (EditText)paramView.findViewById(2131822990);
       if (paramView != null) {
         if (!paramBoolean) {
-          break label31;
+          break label43;
         }
       }
     }
-    label31:
+    label43:
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
+      AppMethodBeat.o(27700);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.g
  * JD-Core Version:    0.7.0.1
  */

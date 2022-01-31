@@ -1,97 +1,127 @@
 package com.tencent.mm.plugin.aa;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.h.a.bq;
-import com.tencent.mm.h.a.br;
-import com.tencent.mm.h.a.ms;
-import com.tencent.mm.h.a.mt;
-import com.tencent.mm.h.a.ts;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.g.a.bs;
+import com.tencent.mm.g.a.bt;
+import com.tencent.mm.g.a.no;
+import com.tencent.mm.g.a.np;
+import com.tencent.mm.g.a.vo;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.bx;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.bz;
+import com.tencent.mm.model.q;
 import com.tencent.mm.plugin.aa.a.b.d;
 import com.tencent.mm.plugin.messenger.foundation.a.o;
+import com.tencent.mm.plugin.messenger.foundation.a.p;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
 import java.util.HashMap;
 
 public class b
-  implements ar
+  implements at
 {
-  private static HashMap<Integer, h.d> dgp;
-  private c<mt> eUT = new b.1(this);
-  private c<ms> eUU = new b.2(this);
-  private c<bq> eUV = new c() {};
-  private c<br> eUW = new b.4(this);
-  private o eUX = new b.5(this);
-  c<ts> eUY = new b.6(this);
-  private d eUZ;
-  private com.tencent.mm.plugin.aa.a.b.b eVa;
+  private static HashMap<Integer, h.d> baseDBFactories;
+  private c<np> gmQ;
+  private c<no> gmR;
+  private c<bs> gmS;
+  private c<bt> gmT;
+  private o gmU;
+  c<vo> gmV;
+  private d gmW;
+  private com.tencent.mm.plugin.aa.a.b.b gmX;
   
   static
   {
+    AppMethodBeat.i(40593);
     HashMap localHashMap = new HashMap();
-    dgp = localHashMap;
+    baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("AARecord".hashCode()), new b.7());
-    dgp.put(Integer.valueOf("AAPayRecord".hashCode()), new b.8());
+    baseDBFactories.put(Integer.valueOf("AAPayRecord".hashCode()), new b.8());
+    AppMethodBeat.o(40593);
   }
   
-  private static b Vi()
+  public b()
   {
-    return (b)com.tencent.mm.model.p.B(b.class);
+    AppMethodBeat.i(40587);
+    this.gmQ = new b.1(this);
+    this.gmR = new b.2(this);
+    this.gmS = new b.3(this);
+    this.gmT = new b.4(this);
+    this.gmU = new b.5(this);
+    this.gmV = new b.6(this);
+    AppMethodBeat.o(40587);
   }
   
-  public static d Vj()
+  private static b aoG()
   {
-    if (Vi().eUZ == null)
+    AppMethodBeat.i(40588);
+    b localb = (b)q.S(b.class);
+    AppMethodBeat.o(40588);
+    return localb;
+  }
+  
+  public static d aoH()
+  {
+    AppMethodBeat.i(40589);
+    if (aoG().gmW == null)
     {
-      b localb = Vi();
-      g.DQ();
-      localb.eUZ = new d(g.DP().dKu);
+      localObject = aoG();
+      g.RM();
+      ((b)localObject).gmW = new d(g.RL().eHS);
     }
-    return Vi().eUZ;
+    Object localObject = aoG().gmW;
+    AppMethodBeat.o(40589);
+    return localObject;
   }
   
-  public static com.tencent.mm.plugin.aa.a.b.b Vk()
+  public static com.tencent.mm.plugin.aa.a.b.b aoI()
   {
-    if (Vi().eVa == null)
+    AppMethodBeat.i(40590);
+    if (aoG().gmX == null)
     {
-      b localb = Vi();
-      g.DQ();
-      localb.eVa = new com.tencent.mm.plugin.aa.a.b.b(g.DP().dKu);
+      localObject = aoG();
+      g.RM();
+      ((b)localObject).gmX = new com.tencent.mm.plugin.aa.a.b.b(g.RL().eHS);
     }
-    return Vi().eVa;
+    Object localObject = aoG().gmX;
+    AppMethodBeat.o(40590);
+    return localObject;
   }
   
-  public final void bh(boolean paramBoolean)
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    a.udP.c(this.eUT);
-    a.udP.c(this.eUU);
-    a.udP.c(this.eUV);
-    a.udP.c(this.eUW);
-    a.udP.c(this.eUY);
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)g.t(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().a("paymsg", this.eUX);
+    return baseDBFactories;
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
+  public void onAccountPostReset(boolean paramBoolean)
   {
-    a.udP.d(this.eUT);
-    a.udP.d(this.eUU);
-    a.udP.d(this.eUV);
-    a.udP.d(this.eUW);
-    a.udP.d(this.eUY);
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)g.t(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().b("paymsg", this.eUX);
+    AppMethodBeat.i(40591);
+    a.ymk.c(this.gmQ);
+    a.ymk.c(this.gmR);
+    a.ymk.c(this.gmS);
+    a.ymk.c(this.gmT);
+    a.ymk.c(this.gmV);
+    ((p)g.G(p.class)).getSysCmdMsgExtension().a("paymsg", this.gmU);
+    AppMethodBeat.o(40591);
   }
   
-  public final HashMap<Integer, h.d> xe()
+  public void onAccountRelease()
   {
-    return dgp;
+    AppMethodBeat.i(40592);
+    a.ymk.d(this.gmQ);
+    a.ymk.d(this.gmR);
+    a.ymk.d(this.gmS);
+    a.ymk.d(this.gmT);
+    a.ymk.d(this.gmV);
+    ((p)g.G(p.class)).getSysCmdMsgExtension().b("paymsg", this.gmU);
+    AppMethodBeat.o(40592);
   }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

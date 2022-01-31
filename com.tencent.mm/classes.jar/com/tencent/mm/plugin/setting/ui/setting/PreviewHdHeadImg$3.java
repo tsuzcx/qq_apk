@@ -1,36 +1,42 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.ag.d;
-import com.tencent.mm.ag.e;
-import com.tencent.mm.ag.e.b;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.d;
+import com.tencent.mm.ah.e;
+import com.tencent.mm.ah.e.c;
+import com.tencent.mm.ah.o;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class PreviewHdHeadImg$3
-  implements e.b
+  implements e.c
 {
   PreviewHdHeadImg$3(PreviewHdHeadImg paramPreviewHdHeadImg, Bitmap paramBitmap) {}
   
-  public final int bl(int paramInt1, int paramInt2)
+  public final int cv(int paramInt1, int paramInt2)
   {
-    PreviewHdHeadImg.c(this.nSq).JU();
-    y.i("MicroMsg.PreviewHdHeadImg", "onSceneEnd: errType=%d, errCode=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(126991);
+    PreviewHdHeadImg.c(this.qGo).acU();
+    ab.i("MicroMsg.PreviewHdHeadImg", "onSceneEnd: errType=%d, errCode=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      o.JQ();
-      Bitmap localBitmap = d.kh(PreviewHdHeadImg.a(this.nSq));
+      o.acQ();
+      Bitmap localBitmap = d.rb(PreviewHdHeadImg.a(this.qGo));
       if (localBitmap != null)
       {
-        PreviewHdHeadImg localPreviewHdHeadImg = this.nSq;
-        o.JQ();
-        PreviewHdHeadImg.a(localPreviewHdHeadImg, localBitmap, d.z(PreviewHdHeadImg.a(this.nSq), true));
-        return 0;
+        PreviewHdHeadImg localPreviewHdHeadImg = this.qGo;
+        o.acQ();
+        PreviewHdHeadImg.a(localPreviewHdHeadImg, localBitmap, d.D(PreviewHdHeadImg.a(this.qGo), true));
       }
-      PreviewHdHeadImg.a(this.nSq, this.nSs, null);
-      return 0;
+      for (;;)
+      {
+        AppMethodBeat.o(126991);
+        return 0;
+        PreviewHdHeadImg.a(this.qGo, this.qGq, null);
+      }
     }
-    PreviewHdHeadImg.a(this.nSq, this.nSs, null);
+    PreviewHdHeadImg.a(this.qGo, this.qGq, null);
+    AppMethodBeat.o(126991);
     return 0;
   }
 }

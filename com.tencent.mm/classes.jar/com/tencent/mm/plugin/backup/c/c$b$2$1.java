@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.backup.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.g.c;
 import com.tencent.mm.plugin.backup.i.x;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import junit.framework.Assert;
 
 final class c$b$2$1
@@ -13,16 +14,21 @@ final class c$b$2$1
   
   public final void run()
   {
-    Assert.assertTrue(toString() + ", check running. ", this.hGC.hGz.fSF);
-    long l1 = bk.UY();
-    this.hGA.auT();
-    long l2 = bk.UY();
-    y.i(this.hGC.hGz.TAG, "SendFileScene size:%d waitTime:%d netTime:%d [%s]", new Object[] { Integer.valueOf(this.hGA.ava()), Long.valueOf(l2 - this.hGB), Long.valueOf(l2 - l1), this.hGA.hLN.hQV });
+    AppMethodBeat.i(17178);
+    Assert.assertTrue(toString() + ", check running. ", this.jzY.jzV.hmf);
+    long l1 = bo.aoy();
+    this.jzW.aUv();
+    long l2 = bo.aoy();
+    ab.i(this.jzY.jzV.TAG, "SendFileScene size:%d waitTime:%d netTime:%d [%s]", new Object[] { Integer.valueOf(this.jzW.aUC()), Long.valueOf(l2 - this.jzX), Long.valueOf(l2 - l1), this.jzW.jFp.jKw });
+    AppMethodBeat.o(17178);
   }
   
   public final String toString()
   {
-    return this.hGC.hGz.TAG + ".sendFile";
+    AppMethodBeat.i(17177);
+    String str = this.jzY.jzV.TAG + ".sendFile";
+    AppMethodBeat.o(17177);
+    return str;
   }
 }
 

@@ -1,129 +1,96 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import com.tencent.mm.protocal.c.jy;
-import com.tencent.mm.protocal.c.yz;
-import com.tencent.mm.protocal.c.za;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.math.BigInteger;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
+  implements View.OnTouchListener
 {
-  yz nzH = null;
-  jy nzI;
+  private a qkS;
   
-  private static boolean a(List<za> paramList, yz paramyz)
+  public static a cgY()
   {
-    if (paramyz.sEJ.size() == 0) {
-      return false;
-    }
-    HashSet localHashSet = new HashSet();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localHashSet.add(Long.valueOf(((za)paramList.next()).sXU));
-    }
-    paramList = paramyz.sEJ.iterator();
-    while (paramList.hasNext()) {
-      if (!localHashSet.contains(Long.valueOf(((za)paramList.next()).sXU))) {
-        return false;
-      }
-    }
-    return true;
+    AppMethodBeat.i(44802);
+    a locala = new a();
+    AppMethodBeat.o(44802);
+    return locala;
   }
   
-  public final void LP(String paramString)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.nzH = null;
-    if (paramString == null) {
-      this.nzH = null;
+    AppMethodBeat.i(44803);
+    if (this.qkS == null) {
+      this.qkS = new a(paramView);
     }
-    yz localyz;
-    do
+    TextView localTextView = (TextView)paramView;
+    localTextView.setMovementMethod(null);
+    Object localObject = localTextView.getText();
+    localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
+    int i = paramMotionEvent.getAction();
+    if ((i == 0) || (i == 1))
     {
-      return;
-      Iterator localIterator;
-      while (!localIterator.hasNext())
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = localTextView.getTotalPaddingLeft();
+      int n = localTextView.getTotalPaddingTop();
+      int i1 = localTextView.getScrollX();
+      int i2 = localTextView.getScrollY();
+      paramMotionEvent = localTextView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length != 0)
       {
-        if (this.nzI == null)
+        if (i == 0) {
+          paramView.postDelayed(this.qkS, ViewConfiguration.getLongPressTimeout());
+        }
+        for (;;)
         {
-          y.e("MicroMsg.FavorInfoPicked", "error setSelectFavorComposeId currentFavorResp is null");
-          this.nzH = null;
-          return;
+          AppMethodBeat.o(44803);
+          return true;
+          paramView.removeCallbacks(this.qkS);
+          paramMotionEvent[0].onClick(localTextView);
         }
-        localIterator = this.nzI.sEK.iterator();
       }
-      localyz = (yz)localIterator.next();
-    } while (!paramString.equals(localyz.sXL));
-    this.nzH = localyz;
-  }
-  
-  public final boolean a(List<za> paramList, za paramza)
-  {
-    if (this.nzI == null)
+    }
+    else if (i == 3)
     {
-      y.e("MicroMsg.FavorInfoPicked", "error setFavorInfoList currentFavorResp is null");
-      return false;
+      paramView.removeCallbacks(this.qkS);
     }
-    if (paramza != null) {}
-    for (Object localObject1 = new BigInteger(Long.toBinaryString(paramza.sXU), 2).toString();; localObject1 = null)
+    AppMethodBeat.o(44803);
+    return false;
+  }
+  
+  static final class a
+    implements Runnable
+  {
+    private View view;
+    
+    a(View paramView)
     {
-      Object localObject2 = new LinkedList();
-      Iterator localIterator = this.nzI.sEK.iterator();
-      while (localIterator.hasNext())
+      this.view = paramView;
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(44801);
+      View localView = this.view;
+      for (boolean bool = localView.performLongClick(); !bool; bool = localView.performLongClick())
       {
-        yz localyz = (yz)localIterator.next();
-        if ((paramza == null) || ((!bk.bl((String)localObject1)) && (localyz.sXL.contains((CharSequence)localObject1)))) {
-          ((List)localObject2).add(localyz);
+        localView = (View)localView.getParent();
+        if (localView == null) {
+          break;
         }
       }
-      paramza = new LinkedList();
-      localObject1 = ((List)localObject2).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (yz)((Iterator)localObject1).next();
-        if (a(paramList, (yz)localObject2)) {
-          paramza.add(localObject2);
-        }
-      }
-      if (paramza.size() > 0)
-      {
-        Collections.sort(paramza, new a.a(this));
-        this.nzH = ((yz)paramza.get(0));
-        return true;
-      }
-      this.nzH = null;
-      return false;
+      AppMethodBeat.o(44801);
     }
-  }
-  
-  public final void bwj()
-  {
-    y.i("MicroMsg.FavorInfoPicked", "cleanBusiF2FFavor");
-    this.nzI = null;
-    this.nzH = null;
-  }
-  
-  public final List<za> bwk()
-  {
-    if (this.nzI != null) {
-      return this.nzI.sEJ;
-    }
-    return new LinkedList();
-  }
-  
-  public final boolean bwl()
-  {
-    return this.nzI != null;
-  }
-  
-  public final boolean bwm()
-  {
-    return (this.nzI != null) && (this.nzI.sEJ != null) && (this.nzI.sEJ.size() > 0);
   }
 }
 

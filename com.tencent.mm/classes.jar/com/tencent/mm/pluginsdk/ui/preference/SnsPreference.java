@@ -8,22 +8,17 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.my;
-import com.tencent.mm.h.a.my.b;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.nv;
+import com.tencent.mm.g.a.nv.b;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.sns.b.n;
-import com.tencent.mm.protocal.c.awd;
+import com.tencent.mm.protocal.protobuf.bcs;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.MMActivity;
@@ -37,186 +32,253 @@ public final class SnsPreference
   extends Preference
   implements g
 {
-  private MMActivity bER;
-  private int jRP = 255;
-  private List<awd> list = new LinkedList();
-  private String mTitle = "";
-  private az omX;
-  private QDisFadeImageView sjb = null;
-  private QDisFadeImageView sjc = null;
-  private QDisFadeImageView sjd = null;
-  private ImageView sje = null;
-  private ImageView sjf = null;
-  private ImageView sjg = null;
-  private SnsPreference.a sjh = new SnsPreference.a();
+  private MMActivity cmc;
+  private List<bcs> list;
+  private String mTitle;
+  private int mml;
+  private View ozm;
+  private az rbm;
+  private QDisFadeImageView wbF;
+  private QDisFadeImageView wbG;
+  private QDisFadeImageView wbH;
+  private QDisFadeImageView wbI;
+  private ImageView wbJ;
+  private ImageView wbK;
+  private ImageView wbL;
+  private ImageView wbM;
+  private SnsPreference.a wbN;
   
   public SnsPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    this.bER = ((MMActivity)paramContext);
+    AppMethodBeat.i(28117);
+    this.cmc = ((MMActivity)paramContext);
+    AppMethodBeat.o(28117);
   }
   
   public SnsPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.bER = ((MMActivity)paramContext);
-    this.mTitle = paramContext.getString(R.l.contact_info_sns_title);
-    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.i(28118);
+    this.mTitle = "";
+    this.wbF = null;
+    this.wbG = null;
+    this.wbH = null;
+    this.wbI = null;
+    this.wbJ = null;
+    this.wbK = null;
+    this.wbL = null;
+    this.wbM = null;
+    this.mml = 255;
+    this.list = new LinkedList();
+    this.wbN = new SnsPreference.a();
+    this.cmc = ((MMActivity)paramContext);
+    this.mTitle = paramContext.getString(2131298760);
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(28118);
   }
   
-  private void coa()
+  private void dpm()
   {
     int j = 0;
-    if (this.sjb != null)
+    AppMethodBeat.i(28119);
+    if (this.wbF != null)
     {
-      this.sjb.setImageResource(R.e.white);
-      this.sjb.setVisibility(4);
+      this.wbF.setImageResource(2131690709);
+      this.wbF.setVisibility(4);
     }
-    if (this.sjc != null)
+    if (this.wbG != null)
     {
-      this.sjc.setImageResource(R.e.white);
-      this.sjc.setVisibility(4);
+      this.wbG.setImageResource(2131690709);
+      this.wbG.setVisibility(4);
     }
-    if (this.sjd != null)
+    if (this.wbH != null)
     {
-      this.sjd.setImageResource(R.e.white);
-      this.sjd.setVisibility(4);
+      this.wbH.setImageResource(2131690709);
+      this.wbH.setVisibility(4);
+    }
+    if (this.wbI != null)
+    {
+      this.wbI.setImageResource(2131690709);
+      this.wbI.setVisibility(4);
     }
     ImageView localImageView;
-    if ((this.sjb != null) && (this.list.size() > 0))
+    if ((this.wbF != null) && (this.list.size() > 0))
     {
-      this.sjb.setVisibility(0);
-      if (com.tencent.mm.compatible.util.f.zF()) {
-        break label222;
+      this.wbF.setVisibility(0);
+      if (com.tencent.mm.compatible.util.f.Mi()) {
+        break label295;
       }
-      this.sjb.setImageResource(R.g.nosdcard_app);
-      localImageView = this.sje;
+      this.wbF.setImageResource(2130839820);
+      localImageView = this.wbJ;
     }
-    label443:
+    label295:
+    label440:
+    label587:
+    label600:
     for (;;)
     {
       for (int i = 8;; i = 0)
       {
         localImageView.setVisibility(i);
-        if ((this.sjc != null) && (this.list.size() >= 2))
+        if ((this.wbG != null) && (this.list.size() >= 2))
         {
-          this.sjc.setVisibility(0);
-          if (com.tencent.mm.compatible.util.f.zF()) {
+          this.wbG.setVisibility(0);
+          if (com.tencent.mm.compatible.util.f.Mi()) {
             break;
           }
-          this.sjc.setImageResource(R.g.nosdcard_app);
+          this.wbG.setImageResource(2130839820);
         }
-        if ((this.sjd != null) && (this.list.size() >= 3))
+        if ((this.wbH != null) && (this.list.size() >= 3))
         {
-          this.sjd.setVisibility(0);
-          if (com.tencent.mm.compatible.util.f.zF()) {
-            break label367;
+          this.wbH.setVisibility(0);
+          if (com.tencent.mm.compatible.util.f.Mi()) {
+            break label440;
           }
-          this.sjd.setImageResource(R.g.nosdcard_app);
+          this.wbH.setImageResource(2130839820);
         }
+        if ((this.wbI == null) || (this.list.size() < 4)) {
+          break label587;
+        }
+        this.wbI.setVisibility(0);
+        if (com.tencent.mm.compatible.util.f.Mi()) {
+          break label518;
+        }
+        this.wbI.setImageResource(2130839820);
+        AppMethodBeat.o(28119);
         return;
-        label222:
-        n.omC.b((awd)this.list.get(0), this.sjb, this.bER.hashCode(), this.omX);
-        localImageView = this.sje;
-        if (((awd)this.list.get(0)).hQR != 6) {
-          break label443;
+        n.raQ.b((bcs)this.list.get(0), this.wbF, this.cmc.hashCode(), this.rbm);
+        localImageView = this.wbJ;
+        if (((bcs)this.list.get(0)).jKs != 6) {
+          break label600;
         }
       }
-      n.omC.b((awd)this.list.get(1), this.sjc, this.bER.hashCode(), this.omX);
-      localImageView = this.sjf;
-      if (((awd)this.list.get(1)).hQR == 6) {}
+      n.raQ.b((bcs)this.list.get(1), this.wbG, this.cmc.hashCode(), this.rbm);
+      localImageView = this.wbK;
+      if (((bcs)this.list.get(1)).jKs == 6) {}
       for (i = 0;; i = 8)
       {
         localImageView.setVisibility(i);
         break;
       }
-      label367:
-      n.omC.b((awd)this.list.get(2), this.sjd, this.bER.hashCode(), this.omX);
-      localImageView = this.sjg;
-      if (((awd)this.list.get(2)).hQR == 6) {}
+      n.raQ.b((bcs)this.list.get(2), this.wbH, this.cmc.hashCode(), this.rbm);
+      localImageView = this.wbL;
+      if (((bcs)this.list.get(2)).jKs == 6) {}
+      for (i = 0;; i = 8)
+      {
+        localImageView.setVisibility(i);
+        break;
+      }
+      n.raQ.b((bcs)this.list.get(3), this.wbI, this.cmc.hashCode(), this.rbm);
+      localImageView = this.wbM;
+      if (((bcs)this.list.get(3)).jKs == 6) {}
       for (i = j;; i = 8)
       {
         localImageView.setVisibility(i);
+        AppMethodBeat.o(28119);
         return;
       }
     }
   }
   
-  public final void WP(String paramString)
+  public final void amx(String paramString)
   {
-    if (paramString == null) {
+    AppMethodBeat.i(28122);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(28122);
       return;
     }
     this.list.clear();
-    au.Hx();
-    Object localObject = c.Fw().abl(paramString);
-    if ((localObject != null) && ((int)((com.tencent.mm.n.a)localObject).dBe > 0) && (com.tencent.mm.n.a.gR(((ao)localObject).field_type))) {
-      this.omX = az.uBG;
+    aw.aaz();
+    Object localObject = c.YA().arw(paramString);
+    if ((localObject != null) && ((int)((com.tencent.mm.n.a)localObject).euF > 0) && (com.tencent.mm.n.a.je(((aq)localObject).field_type))) {
+      this.rbm = az.yNQ;
     }
     for (;;)
     {
-      localObject = new my();
-      ((my)localObject).bWA.username = paramString;
-      com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-      if (((my)localObject).bWB.bWC != null) {
-        this.list.add(((my)localObject).bWB.bWC);
+      localObject = new nv();
+      ((nv)localObject).cEp.username = paramString;
+      com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+      if (((nv)localObject).cEq.cEr != null) {
+        this.list.add(((nv)localObject).cEq.cEr);
       }
-      if (((my)localObject).bWB.bWD != null) {
-        this.list.add(((my)localObject).bWB.bWD);
+      if (((nv)localObject).cEq.cEs != null) {
+        this.list.add(((nv)localObject).cEq.cEs);
       }
-      if (((my)localObject).bWB.bWE != null) {
-        this.list.add(((my)localObject).bWB.bWE);
+      if (((nv)localObject).cEq.cEt != null) {
+        this.list.add(((nv)localObject).cEq.cEt);
       }
-      coa();
+      if (((nv)localObject).cEq.cEu != null) {
+        this.list.add(((nv)localObject).cEq.cEu);
+      }
+      dpm();
+      AppMethodBeat.o(28122);
       return;
-      if (paramString.equals(q.Gj())) {
-        this.omX = az.uBG;
+      if (paramString.equals(r.Zn())) {
+        this.rbm = az.yNQ;
       } else {
-        this.omX = az.uBH;
+        this.rbm = az.yNR;
       }
     }
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(28121);
     super.onBindView(paramView);
-    this.sjb = ((QDisFadeImageView)paramView.findViewById(R.h.image_iv1));
-    this.sjb.setAlpha(this.jRP);
-    this.sjb.setImageDrawable(this.sjh);
-    this.sjc = ((QDisFadeImageView)paramView.findViewById(R.h.image_iv2));
-    this.sjc.setAlpha(this.jRP);
-    this.sjc.setImageDrawable(this.sjh);
-    this.sjd = ((QDisFadeImageView)paramView.findViewById(R.h.image_iv3));
-    this.sjd.setAlpha(this.jRP);
-    this.sjd.setImageDrawable(this.sjh);
-    TextView localTextView = (TextView)paramView.findViewById(R.h.album_title);
-    if (!bk.bl(this.mTitle))
+    this.wbF = ((QDisFadeImageView)paramView.findViewById(2131826202));
+    this.wbF.setAlpha(this.mml);
+    this.wbF.setImageDrawable(this.wbN);
+    this.wbG = ((QDisFadeImageView)paramView.findViewById(2131826204));
+    this.wbG.setAlpha(this.mml);
+    this.wbG.setImageDrawable(this.wbN);
+    this.wbH = ((QDisFadeImageView)paramView.findViewById(2131826206));
+    this.wbH.setAlpha(this.mml);
+    this.wbH.setImageDrawable(this.wbN);
+    this.wbI = ((QDisFadeImageView)paramView.findViewById(2131826208));
+    this.wbI.setAlpha(this.mml);
+    this.wbI.setImageDrawable(this.wbN);
+    TextView localTextView = (TextView)paramView.findViewById(2131826192);
+    if (!bo.isNullOrNil(this.mTitle))
     {
       localTextView.setText(this.mTitle);
       ViewGroup.LayoutParams localLayoutParams = localTextView.getLayoutParams();
-      localLayoutParams.width = com.tencent.mm.cb.a.aa(this.mContext, R.f.FixedTitleWidth);
+      localLayoutParams.width = com.tencent.mm.cb.a.ao(this.mContext, 2131427664);
       localTextView.setLayoutParams(localLayoutParams);
     }
-    this.sje = ((ImageView)paramView.findViewById(R.h.sns_sight_icon1));
-    this.sjf = ((ImageView)paramView.findViewById(R.h.sns_sight_icon2));
-    this.sjg = ((ImageView)paramView.findViewById(R.h.sns_sight_icon3));
-    this.sje.setVisibility(8);
-    this.sjf.setVisibility(8);
-    this.sjg.setVisibility(8);
-    coa();
-    if ((paramView == null) || (this.list == null)) {
+    this.wbJ = ((ImageView)paramView.findViewById(2131826203));
+    this.wbK = ((ImageView)paramView.findViewById(2131826205));
+    this.wbL = ((ImageView)paramView.findViewById(2131826207));
+    this.wbM = ((ImageView)paramView.findViewById(2131826209));
+    this.wbJ.setVisibility(8);
+    this.wbK.setVisibility(8);
+    this.wbL.setVisibility(8);
+    this.wbM.setVisibility(8);
+    dpm();
+    if ((paramView == null) || (this.list == null))
+    {
+      AppMethodBeat.o(28121);
       return;
     }
-    paramView.setContentDescription(this.mContext.getString(R.l.profile_photo_desc, new Object[] { Integer.valueOf(this.list.size()) }));
+    paramView.setContentDescription(this.mContext.getString(2131302181, new Object[] { Integer.valueOf(this.list.size()) }));
+    AppMethodBeat.o(28121);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
-    paramViewGroup = super.onCreateView(paramViewGroup);
-    LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
-    localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.mm_preference_content_album, localViewGroup);
+    AppMethodBeat.i(28120);
+    if (this.ozm == null)
+    {
+      paramViewGroup = super.onCreateView(paramViewGroup);
+      LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+      localViewGroup.removeAllViews();
+      localLayoutInflater.inflate(2130970196, localViewGroup);
+      this.ozm = paramViewGroup;
+    }
+    paramViewGroup = this.ozm;
+    AppMethodBeat.o(28120);
     return paramViewGroup;
   }
 }

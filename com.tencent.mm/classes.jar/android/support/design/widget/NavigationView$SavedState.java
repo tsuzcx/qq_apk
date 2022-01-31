@@ -10,12 +10,12 @@ public class NavigationView$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new NavigationView.SavedState.1();
-  public Bundle jn;
+  public Bundle kl;
   
   public NavigationView$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
   {
     super(paramParcel, paramClassLoader);
-    this.jn = paramParcel.readBundle(paramClassLoader);
+    this.kl = paramParcel.readBundle(paramClassLoader);
   }
   
   public NavigationView$SavedState(Parcelable paramParcelable)
@@ -26,12 +26,12 @@ public class NavigationView$SavedState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeBundle(this.jn);
+    paramParcel.writeBundle(this.kl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.design.widget.NavigationView.SavedState
  * JD-Core Version:    0.7.0.1
  */

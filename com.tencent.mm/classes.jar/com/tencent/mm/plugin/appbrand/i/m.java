@@ -1,11 +1,9 @@
 package com.tencent.mm.plugin.appbrand.i;
 
 public abstract interface m
-  extends g
+  extends j
 {
-  public abstract void pause();
-  
-  public abstract void resume();
+  public abstract void a(m.a parama);
 }
 
 

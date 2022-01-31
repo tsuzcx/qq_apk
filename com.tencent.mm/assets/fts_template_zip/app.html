@@ -12,7 +12,7 @@
     <title>搜一搜</title>
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link rel="stylesheet" type="text/css" href="dist/style.css?t=1530194555304"/>
+    <link rel="stylesheet" type="text/css" href="dist/style.css?t=1560864390758"/>
 </head>
 
 <body id="body" ontouchstart="">
@@ -26,13 +26,15 @@
             </div>
             <div class="weui-cell__ft">
                 <a id="search_btn" href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary">按钮</a>
-                <a id="to_history" href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary">跳history</a>
             </div>
         </div>
     </div>
     <canvas id="canvas" style="display:none;"></canvas>
-
-    <div id="app" :class="[view,platform,isIOS8]">
+    <div id="app" :class="[view,platform,isIOS8]" ontouchstart="">
+        <action-sheet
+            :show="showActionSheet"
+            :data="actionSheet"
+        ></action-sheet>
 
         <!--进度条，只有在结果页的时候才展示-->
         <progress-bar v-show="view == 'result'"></progress-bar>
@@ -43,7 +45,7 @@
         </keep-alive>
         <suggestion-list></suggestion-list>
     </div>
-    <script src="dist/build.js?t=1530194555304"></script>
+    <script src="dist/build.js?t=1560864390758"></script>
 </body>
 
 </html>

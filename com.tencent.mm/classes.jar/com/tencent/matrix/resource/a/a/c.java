@@ -10,7 +10,7 @@ import java.util.zip.ZipFile;
 
 public final class c
 {
-  public static void S(Object paramObject)
+  public static void V(Object paramObject)
   {
     if (paramObject == null) {}
     for (;;)
@@ -49,7 +49,7 @@ public final class c
           }
           paramOutputStream.write(arrayOfByte, 0, i);
         }
-        S(paramOutputStream);
+        V(paramOutputStream);
       }
       finally
       {
@@ -66,7 +66,7 @@ public final class c
     }
     throw paramFile;
     paramOutputStream.flush();
-    S(paramFile);
+    V(paramFile);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class FTSSOSHomeWebViewUI$a$4
@@ -9,8 +10,10 @@ final class FTSSOSHomeWebViewUI$a$4
   
   public final void run()
   {
-    FTSSOSHomeWebViewUI.a.a(this.ruJ).clear();
-    this.ruJ.notifyDataSetChanged();
+    AppMethodBeat.i(8451);
+    FTSSOSHomeWebViewUI.a.a(this.vkY).clear();
+    this.vkY.notifyDataSetChanged();
+    AppMethodBeat.o(8451);
   }
 }
 

@@ -3,48 +3,58 @@ package com.tencent.mm.plugin.pwdgroup;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
-import com.tencent.mm.ag.b;
-import com.tencent.mm.ag.d;
-import com.tencent.mm.ag.d.a;
-import com.tencent.mm.ag.o;
+import com.tencent.mm.ah.d;
+import com.tencent.mm.ah.d.a;
+import com.tencent.mm.ah.o;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.pluginsdk.ui.i;
 import com.tencent.mm.pluginsdk.ui.i.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 final class c$1
   implements i.a
 {
-  private Bitmap bwa = null;
-  private f<String, WeakReference<Bitmap>> naw;
+  private Bitmap bXF;
+  private f<String, WeakReference<Bitmap>> pFM;
   
   c$1(c paramc)
   {
+    AppMethodBeat.i(23976);
+    this.bXF = null;
     try
     {
-      this.bwa = BackwardSupportUtil.b.a(ae.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
-      this.naw = new f(15);
+      this.bXF = BackwardSupportUtil.b.b(ah.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
+      this.pFM = new com.tencent.mm.memory.a.b(15, getClass());
+      AppMethodBeat.o(23976);
       return;
     }
     catch (IOException paramc)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.Facing.SubCorePwdGroup", paramc, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.Facing.SubCorePwdGroup", paramc, "", new Object[0]);
       }
     }
   }
   
+  public final Bitmap AY()
+  {
+    return this.bXF;
+  }
+  
   public final void a(i parami)
   {
+    AppMethodBeat.i(23977);
     if ((parami instanceof d.a)) {
-      o.JQ().a((d.a)parami);
+      o.acQ().a((d.a)parami);
     }
+    AppMethodBeat.o(23977);
   }
   
   public final Bitmap b(String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -52,29 +62,29 @@ final class c$1
     return null;
   }
   
-  public final Bitmap ch(String paramString)
+  public final Bitmap dt(String paramString)
   {
-    Object localObject = (WeakReference)this.naw.get(paramString);
-    if ((localObject == null) || (((WeakReference)localObject).get() == null) || (((Bitmap)((WeakReference)localObject).get()).isRecycled()) || (((WeakReference)localObject).get() != this.bwa))
+    AppMethodBeat.i(23978);
+    Object localObject = (WeakReference)this.pFM.get(paramString);
+    if ((localObject == null) || (((WeakReference)localObject).get() == null) || (((Bitmap)((WeakReference)localObject).get()).isRecycled()) || (((WeakReference)localObject).get() != AY()))
     {
-      localObject = b.a(paramString, false, -1);
-      if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
-        return this.bwa;
+      localObject = com.tencent.mm.ah.b.b(paramString, false, -1);
+      if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {}
+      for (paramString = this.bXF;; paramString = (String)localObject)
+      {
+        AppMethodBeat.o(23978);
+        return paramString;
+        this.pFM.f(paramString, new WeakReference(localObject));
       }
-      this.naw.f(paramString, new WeakReference(localObject));
-      return localObject;
     }
-    return (Bitmap)((WeakReference)localObject).get();
+    paramString = (Bitmap)((WeakReference)localObject).get();
+    AppMethodBeat.o(23978);
+    return paramString;
   }
   
-  public final Bitmap ci(String paramString)
+  public final Bitmap du(String paramString)
   {
     return null;
-  }
-  
-  public final Bitmap sG()
-  {
-    return this.bwa;
   }
 }
 

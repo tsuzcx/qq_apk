@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$hx
+public final class c$hx
   extends c.g
 {
-  c$hx()
+  public c$hx()
   {
-    super("setBackgroundAudioState", "setBackgroundAudioState", 262, false);
+    super("resendRemittanceMsg", "resendRemittanceMsg", 246, true);
   }
 }
 

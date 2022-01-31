@@ -4,22 +4,26 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface n
   extends IInterface
 {
-  public abstract void et(int paramInt);
+  public abstract void onNetworkChange(int paramInt);
   
   public static abstract class a
     extends Binder
     implements n
   {
+    private static final String DESCRIPTOR = "com.tencent.mm.network.IOnNetworkChange_AIDL";
+    static final int TRANSACTION_onNetworkChange = 1;
+    
     public a()
     {
       attachInterface(this, "com.tencent.mm.network.IOnNetworkChange_AIDL");
     }
     
-    public static n o(IBinder paramIBinder)
+    public static n asInterface(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -47,12 +51,12 @@ public abstract interface n
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.network.IOnNetworkChange_AIDL");
-      et(paramParcel1.readInt());
+      onNetworkChange(paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
     }
     
-    private static final class a
+    static final class a
       implements n
     {
       private IBinder mRemote;
@@ -67,8 +71,9 @@ public abstract interface n
         return this.mRemote;
       }
       
-      public final void et(int paramInt)
+      public final void onNetworkChange(int paramInt)
       {
+        AppMethodBeat.i(58526);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -83,6 +88,7 @@ public abstract interface n
         {
           localParcel2.recycle();
           localParcel1.recycle();
+          AppMethodBeat.o(58526);
         }
       }
     }

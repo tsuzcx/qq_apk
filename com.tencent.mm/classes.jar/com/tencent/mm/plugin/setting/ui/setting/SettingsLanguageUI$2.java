@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsLanguageUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class SettingsLanguageUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    SettingsLanguageUI.a(this.nUv, SettingsLanguageUI.a(this.nUv), SettingsLanguageUI.b(this.nUv));
-    this.nUv.finish();
+    AppMethodBeat.i(127238);
+    SettingsLanguageUI.a(this.qIB, SettingsLanguageUI.a(this.qIB), SettingsLanguageUI.b(this.qIB));
+    this.qIB.finish();
+    AppMethodBeat.o(127238);
     return true;
   }
 }

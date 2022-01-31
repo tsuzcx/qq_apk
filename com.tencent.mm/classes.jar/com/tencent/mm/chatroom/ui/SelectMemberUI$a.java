@@ -4,12 +4,12 @@ import com.tencent.mm.storage.ad;
 
 public final class SelectMemberUI$a
 {
-  public ad dnp;
+  public ad contact;
   public int type = 1;
   
   public SelectMemberUI$a(SelectMemberUI paramSelectMemberUI, ad paramad)
   {
-    this.dnp = paramad;
+    this.contact = paramad;
   }
 }
 

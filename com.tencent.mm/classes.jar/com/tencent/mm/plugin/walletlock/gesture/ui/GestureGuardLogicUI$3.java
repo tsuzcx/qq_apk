@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.walletlock.gesture.ui;
 
 import android.widget.Toast;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.plugin.walletlock.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
 import com.tencent.mm.plugin.walletlock.gesture.a.d;
 import java.util.List;
 
@@ -15,27 +15,33 @@ final class GestureGuardLogicUI$3
   
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
+    AppMethodBeat.i(51588);
     if (paramInt2 == 0)
     {
-      GestureGuardLogicUI.i(this.qPX);
-      GestureGuardLogicUI.j(this.qPX);
-      d.bYl();
-      d.bYf();
-      d.bYh();
-      GestureGuardLogicUI.a(this.qPX, this.qPZ);
-      GestureGuardLogicUI.a(this.qPX, 1);
-      GestureGuardLogicUI.h(this.qPX);
-      return 0;
+      GestureGuardLogicUI.i(this.uFf);
+      GestureGuardLogicUI.j(this.uFf);
+      d.cXT();
+      d.cXN();
+      d.cXP();
+      GestureGuardLogicUI.a(this.uFf, this.uFh);
+      GestureGuardLogicUI.a(this.uFf, 1);
+      GestureGuardLogicUI.h(this.uFf);
     }
-    if (paramInt2 == -3)
+    for (;;)
     {
-      GestureGuardLogicUI.k(this.qPX);
-      GestureGuardLogicUI.a(this.qPX, 2);
-      GestureGuardLogicUI.h(this.qPX);
+      AppMethodBeat.o(51588);
       return 0;
+      if (paramInt2 == -3)
+      {
+        GestureGuardLogicUI.k(this.uFf);
+        GestureGuardLogicUI.a(this.uFf, 2);
+        GestureGuardLogicUI.h(this.uFf);
+      }
+      else
+      {
+        Toast.makeText(this.uFf, this.uFf.getString(2131300505), 0).show();
+      }
     }
-    Toast.makeText(this.qPX, this.qPX.getString(a.g.gesture_pwd_err_srv_comm_failed), 0).show();
-    return 0;
   }
 }
 

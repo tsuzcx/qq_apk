@@ -1,101 +1,135 @@
 package com.tencent.mm.booter;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import com.tencent.mm.network.aa;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Process;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.ToolsProfile.a;
+import com.tencent.mm.cc.b;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.pluginsdk.model.t;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Locale;
 
 public final class e
 {
-  NetworkInfo dhI = null;
-  WifiInfo dhJ = null;
-  
-  final boolean vW()
+  public static class c
+    implements MMReceivers.a
   {
-    try
+    public void onReceive(Context paramContext, Intent paramIntent)
     {
-      Object localObject1 = (ConnectivityManager)aa.getContext().getSystemService("connectivity");
-      if (localObject1 == null)
+      AppMethodBeat.i(15844);
+      if ((paramContext == null) || (paramIntent == null))
       {
-        y.w("MicroMsg.NetworkChangeMgr", "can't get ConnectivityManager");
-        this.dhI = null;
-        this.dhJ = null;
-        return false;
+        AppMethodBeat.o(15844);
+        return;
       }
-      try
+      Object localObject = paramIntent.getStringExtra("tools_process_action_code_key");
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ToolsProcessReceiver", "onReceive, action = ".concat(String.valueOf(localObject)));
+      boolean bool;
+      if (((String)localObject).equals("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS"))
       {
-        localObject1 = ((ConnectivityManager)localObject1).getActiveNetworkInfo();
-        if (localObject1 == null)
-        {
-          y.w("MicroMsg.NetworkChangeMgr", "ActiveNetwork is null, has no network");
-          this.dhI = null;
-          this.dhJ = null;
-          return false;
+        com.tencent.mm.sdk.platformtools.ab.dsJ();
+        bool = ToolsProfile.a.isLocked();
+        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ToolsProcessReceiver", "onReceive, ACTION_KILL_TOOLS_PROCESS, x5 kernel video isLocked = %b", new Object[] { Boolean.valueOf(bool) });
+        if (!bool) {
+          Process.killProcess(Process.myPid());
         }
+        AppMethodBeat.o(15844);
+        return;
       }
-      catch (Exception localException1)
+      if (((String)localObject).equals("com.tencent.mm.intent.ACTION_RELOAD_RESOURCES"))
       {
+        localObject = paramIntent.getStringExtra("tools_language");
+        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ToolsProcessReceiver", "onReceive, language %s", new Object[] { localObject });
+        paramIntent = aa.apg((String)localObject);
+        if ("language_default".equalsIgnoreCase((String)localObject))
+        {
+          if (Build.VERSION.SDK_INT < 24) {
+            break label196;
+          }
+          paramIntent = aa.ynv;
+          Locale.setDefault(paramIntent);
+        }
         for (;;)
         {
-          y.e("MicroMsg.NetworkChangeMgr", "getActiveNetworkInfo failed.");
-          localObject2 = null;
+          aa.a(paramContext.getApplicationContext(), paramIntent);
+          ah.h(b.a(paramContext.getApplicationContext().getResources(), paramContext.getApplicationContext(), (String)localObject));
+          AppMethodBeat.o(15844);
+          return;
+          label196:
+          paramIntent = Locale.getDefault();
         }
       }
-      if (localObject2.getType() != 1) {
-        break label423;
-      }
-      i = 1;
-    }
-    catch (Exception localException2)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        y.printErrStackTrace("MicroMsg.NetworkChangeMgr", localException2, "", new Object[0]);
-        break;
-        WifiInfo localWifiInfo = null;
-        continue;
-        label423:
-        int i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      localWifiInfo = ((WifiManager)aa.getContext().getSystemService("wifi")).getConnectionInfo();
-      if ((localWifiInfo != null) && (this.dhJ != null) && (this.dhJ.getBSSID().equals(localWifiInfo.getBSSID())) && (this.dhJ.getSSID().equals(localWifiInfo.getSSID())) && (this.dhJ.getNetworkId() == localWifiInfo.getNetworkId()))
-      {
-        y.w("MicroMsg.NetworkChangeMgr", "Same Wifi, do not NetworkChanged");
-        return false;
-      }
-      y.d("MicroMsg.NetworkChangeMgr", "New Wifi Info:%s", new Object[] { localWifiInfo });
-      y.d("MicroMsg.NetworkChangeMgr", "OldWifi Info:%s", new Object[] { this.dhJ });
-      if (i == 0)
-      {
-        y.d("MicroMsg.NetworkChangeMgr", "New NetworkInfo:%s", new Object[] { localObject2 });
-        if (this.dhI != null) {
-          y.d("MicroMsg.NetworkChangeMgr", "Old NetworkInfo:%s", new Object[] { this.dhI });
+      if (((String)localObject).equals("com.tencent.mm.intent.ACTION_TOOLS_REMOVE_COOKIE")) {
+        try
+        {
+          com.tencent.xweb.ab.clearAllWebViewCache(paramContext.getApplicationContext(), true);
+          AppMethodBeat.o(15844);
+          return;
+        }
+        catch (Exception paramContext)
+        {
+          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ToolsProcessReceiver", "clear cookie faild : " + paramContext.getMessage());
+          AppMethodBeat.o(15844);
+          return;
         }
       }
-      this.dhI = localObject2;
-      this.dhJ = localWifiInfo;
-    }
-    else
-    {
-      if ((this.dhI != null) && (this.dhI.getExtraInfo() != null) && (localObject2.getExtraInfo() != null) && (this.dhI.getExtraInfo().equals(localObject2.getExtraInfo())) && (this.dhI.getSubtype() == localObject2.getSubtype()) && (this.dhI.getType() == localObject2.getType()))
+      if (!((String)localObject).equals("com.tencent.mm.intent.ACIONT_TOOLS_LOAD_DEX"))
       {
-        y.w("MicroMsg.NetworkChangeMgr", "Same Network, do not NetworkChanged");
-        return false;
+        if (((String)localObject).equals("com.tencent.mm.intent.ACTION_CLEAR_WEBVIEW_CACHE"))
+        {
+          bool = paramIntent.getBooleanExtra("tools_clean_webview_cache_ignore_cookie", true);
+          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ToolsProcessReceiver", "WebViewCacheClearTask, clearAllWebViewCache, includeCookie = %b", new Object[] { Boolean.valueOf(bool) });
+          com.tencent.xweb.ab.clearAllWebViewCache(paramContext.getApplicationContext(), bool);
+          AppMethodBeat.o(15844);
+          return;
+        }
+        if (((String)localObject).equals("com.tencent.mm.intent.ACTION_START_TOOLS_PROCESS"))
+        {
+          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ToolsProcessReceiver", "start tools process task, try to pre load tbs");
+          AppMethodBeat.o(15844);
+          return;
+        }
+        if (((String)localObject).equals("com.tencent.mm.intent.ACTION_START_TOOLS_PROCESS_DO_NOTHING"))
+        {
+          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ToolsProcessReceiver", "start tools process and do nothing");
+          AppMethodBeat.o(15844);
+          return;
+        }
+        if (((String)localObject).equals("com.tencent.mm.intent.ACTION_CHECK_MINIQB_CAN_OPEN_FILE"))
+        {
+          paramContext = paramIntent.getStringExtra("file_path");
+          paramIntent = paramIntent.getStringExtra("file_ext");
+          if ((System.currentTimeMillis() - t.vKO >= 1000L) && (!bo.isNullOrNil(paramContext)))
+          {
+            t.vKO = System.currentTimeMillis();
+            localObject = new Intent();
+            ((Intent)localObject).setClassName(ah.getContext(), "com.tencent.mm.pluginsdk.ui.tools.MiniQBReaderUI");
+            ((Intent)localObject).putExtra("file_path", paramContext);
+            ((Intent)localObject).putExtra("file_ext", paramIntent);
+            ((Intent)localObject).addFlags(268435456);
+            ah.getContext().startActivity((Intent)localObject);
+          }
+          AppMethodBeat.o(15844);
+          return;
+        }
+        if (((String)localObject).equals("com.tencent.mm.intent.ACTION_PRELOAD_SET_SWITCH"))
+        {
+          bool = paramIntent.getBooleanExtra("tools_param_preload_switch", false);
+          aj.cZB().oh(bool);
+          AppMethodBeat.o(15844);
+          return;
+        }
+        if (((String)localObject).equals("com.tencent.mm.intent.ACTION_PRELOAD_SEARCH")) {
+          aj.cZB().dK(paramIntent.getStringExtra("tools_param_preload_url"), paramIntent.getIntExtra("tools_param_preload_search_biz", -1));
+        }
       }
-      if ((this.dhI != null) && (this.dhI.getExtraInfo() == null) && (localObject2.getExtraInfo() == null) && (this.dhI.getSubtype() == localObject2.getSubtype()) && (this.dhI.getType() == localObject2.getType()))
-      {
-        y.w("MicroMsg.NetworkChangeMgr", "Same Network, do not NetworkChanged");
-        return false;
-      }
+      AppMethodBeat.o(15844);
     }
-    return true;
   }
 }
 

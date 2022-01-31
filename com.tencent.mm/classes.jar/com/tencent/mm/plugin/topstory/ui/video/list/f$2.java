@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.topstory.ui.video.list;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.f.a;
 import com.tencent.mm.plugin.topstory.ui.video.l;
 import com.tencent.mm.plugin.topstory.ui.video.r;
@@ -14,24 +15,30 @@ final class f$2
   
   public final void onClick(View paramView)
   {
-    if (f.a(this.pHJ) == f.a.pEM) {
-      this.pHJ.getListVideoUIComponent().bNs().pFL = true;
-    }
-    if (this.pHJ.getListVideoUIComponent().bNs().isConnected())
+    AppMethodBeat.i(2036);
+    if (f.a(this.tlr) == f.a.tij)
     {
-      if (this.pHJ.getListVideoUIComponent().bNx().pGx)
+      this.tlr.getListVideoUIComponent().cJc().tjk = true;
+      f.b(this.tlr).GB(2);
+    }
+    if (this.tlr.getListVideoUIComponent().cJc().isConnected())
+    {
+      f.a(this.tlr, f.a.tii);
+      if (this.tlr.getListVideoUIComponent().cJh().tjS)
       {
-        this.pHJ.getListVideoUIComponent().bNx().bMs();
-        this.pHJ.bNN();
+        this.tlr.getListVideoUIComponent().cJh().ctY();
+        this.tlr.cJB();
       }
       for (;;)
       {
-        a.jdMethod_if(19);
+        a.kS(19);
+        AppMethodBeat.o(2036);
         return;
-        this.pHJ.jI(true);
+        this.tlr.Q(true, false);
       }
     }
-    a.jdMethod_if(20);
+    a.kS(20);
+    AppMethodBeat.o(2036);
   }
 }
 

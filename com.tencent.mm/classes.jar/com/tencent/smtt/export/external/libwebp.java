@@ -3,6 +3,7 @@ package com.tencent.smtt.export.external;
 import android.content.Context;
 import android.graphics.Bitmap.Config;
 import android.os.Build;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,31 +22,38 @@ public class libwebp
   
   public static int checkIsHuaModel()
   {
+    int j = 1;
+    AppMethodBeat.i(63832);
     String str1 = Build.BRAND.trim().toLowerCase();
     String str2 = Build.MODEL.trim().toLowerCase();
-    int j = 0;
-    int i = j;
+    int k = 0;
+    int i = k;
     if (str1 != null)
     {
-      i = j;
+      i = k;
       if (str1.length() > 0)
       {
-        i = j;
+        i = k;
         if (str1.contains("huawei")) {
           i = 1;
         }
       }
     }
     if ((str2 != null) && (str2.length() > 0) && (str2.contains("huawei"))) {
-      return 1;
+      i = j;
     }
-    return i;
+    for (;;)
+    {
+      AppMethodBeat.o(63832);
+      return i;
+    }
   }
   
   private String getCPUinfo()
   {
+    AppMethodBeat.i(63826);
     String str1 = "";
-    String str2 = str1;
+    str2 = str1;
     try
     {
       InputStream localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/proc/cpuinfo" }).start().getInputStream();
@@ -62,62 +70,90 @@ public class libwebp
       }
       str2 = str1;
       localInputStream.close();
-      return str1;
     }
-    catch (IOException localIOException) {}
-    return str2;
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Object localObject = str2;
+      }
+    }
+    AppMethodBeat.o(63826);
+    return str1;
   }
   
   public static libwebp getInstance(Context paramContext)
   {
+    AppMethodBeat.i(63822);
     if (mInstance == null)
     {
       loadWepLibraryIfNeed(paramContext);
       mInstance = new libwebp();
     }
-    return mInstance;
+    paramContext = mInstance;
+    AppMethodBeat.o(63822);
+    return paramContext;
   }
   
   private boolean isMultiCore()
   {
-    return getCPUinfo().contains("processor");
+    AppMethodBeat.i(63825);
+    boolean bool = getCPUinfo().contains("processor");
+    AppMethodBeat.o(63825);
+    return bool;
   }
   
   public static void loadWepLibraryIfNeed(Context paramContext)
   {
-    if (!mIsLoadLibSuccess) {}
-    try
-    {
-      LibraryLoader.loadLibrary(paramContext, "webp_base");
-      mIsLoadLibSuccess = true;
-      return;
+    AppMethodBeat.i(63824);
+    if (!mIsLoadLibSuccess) {
+      try
+      {
+        LibraryLoader.loadLibrary(paramContext, "webp_base");
+        mIsLoadLibSuccess = true;
+        AppMethodBeat.o(63824);
+        return;
+      }
+      catch (UnsatisfiedLinkError paramContext) {}
     }
-    catch (UnsatisfiedLinkError paramContext) {}
+    AppMethodBeat.o(63824);
   }
   
   public static void loadWepLibraryIfNeed(Context paramContext, String paramString)
   {
-    if (!mIsLoadLibSuccess) {}
-    try
-    {
-      System.load(paramString + File.separator + "libwebp_base.so");
-      mIsLoadLibSuccess = true;
-      return;
+    AppMethodBeat.i(63823);
+    if (!mIsLoadLibSuccess) {
+      try
+      {
+        System.load(paramString + File.separator + "libwebp_base.so");
+        mIsLoadLibSuccess = true;
+        AppMethodBeat.o(63823);
+        return;
+      }
+      catch (UnsatisfiedLinkError paramContext) {}
     }
-    catch (UnsatisfiedLinkError paramContext) {}
+    AppMethodBeat.o(63823);
   }
   
   public int[] decodeBase(byte[] paramArrayOfByte, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if (!mIsLoadLibSuccess) {
+    AppMethodBeat.i(63828);
+    if (!mIsLoadLibSuccess)
+    {
+      AppMethodBeat.o(63828);
       return null;
     }
-    return nativeDecode(paramArrayOfByte, isMultiCore, paramArrayOfInt1, paramArrayOfInt2);
+    paramArrayOfByte = nativeDecode(paramArrayOfByte, isMultiCore, paramArrayOfInt1, paramArrayOfInt2);
+    AppMethodBeat.o(63828);
+    return paramArrayOfByte;
   }
   
   public int[] decodeBase_16bit(byte[] paramArrayOfByte, Bitmap.Config paramConfig)
   {
-    if (!mIsLoadLibSuccess) {
+    AppMethodBeat.i(63829);
+    if (!mIsLoadLibSuccess)
+    {
+      AppMethodBeat.o(63829);
       return null;
     }
     switch (libwebp.1.$SwitchMap$android$graphics$Bitmap$Config[paramConfig.ordinal()])
@@ -127,7 +163,9 @@ public class libwebp
     }
     for (;;)
     {
-      return nativeDecode_16bit(paramArrayOfByte, isMultiCore, this.mBitmapType);
+      paramArrayOfByte = nativeDecode_16bit(paramArrayOfByte, isMultiCore, this.mBitmapType);
+      AppMethodBeat.o(63829);
+      return paramArrayOfByte;
       this.mBitmapType = 3;
       continue;
       this.mBitmapType = 2;
@@ -136,26 +174,41 @@ public class libwebp
   
   public int[] decodeInto(byte[] paramArrayOfByte, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if (!mIsLoadLibSuccess) {
+    AppMethodBeat.i(63830);
+    if (!mIsLoadLibSuccess)
+    {
+      AppMethodBeat.o(63830);
       return null;
     }
-    return nativeDecodeInto(paramArrayOfByte, isMultiCore, paramArrayOfInt1, paramArrayOfInt2);
+    paramArrayOfByte = nativeDecodeInto(paramArrayOfByte, isMultiCore, paramArrayOfInt1, paramArrayOfInt2);
+    AppMethodBeat.o(63830);
+    return paramArrayOfByte;
   }
   
   public int getInfo(byte[] paramArrayOfByte, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if (!mIsLoadLibSuccess) {
+    AppMethodBeat.i(63827);
+    if (!mIsLoadLibSuccess)
+    {
+      AppMethodBeat.o(63827);
       return 0;
     }
-    return nativeGetInfo(paramArrayOfByte, paramArrayOfInt1, paramArrayOfInt2);
+    int i = nativeGetInfo(paramArrayOfByte, paramArrayOfInt1, paramArrayOfInt2);
+    AppMethodBeat.o(63827);
+    return i;
   }
   
   public int[] incDecode(byte[] paramArrayOfByte, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if (!mIsLoadLibSuccess) {
+    AppMethodBeat.i(63831);
+    if (!mIsLoadLibSuccess)
+    {
+      AppMethodBeat.o(63831);
       return null;
     }
-    return nativeIDecode(paramArrayOfByte, isMultiCore, paramArrayOfInt1, paramArrayOfInt2);
+    paramArrayOfByte = nativeIDecode(paramArrayOfByte, isMultiCore, paramArrayOfInt1, paramArrayOfInt2);
+    AppMethodBeat.o(63831);
+    return paramArrayOfByte;
   }
   
   public native int[] nativeDecode(byte[] paramArrayOfByte, boolean paramBoolean, int[] paramArrayOfInt1, int[] paramArrayOfInt2);
@@ -170,7 +223,7 @@ public class libwebp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.smtt.export.external.libwebp
  * JD-Core Version:    0.7.0.1
  */

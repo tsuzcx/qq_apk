@@ -1,18 +1,58 @@
 package com.tencent.mm.pluginsdk.wallet;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
+
 public final class i
 {
-  private static int nzY = -1;
-  private static int qLn = -1;
+  public HashMap<String, Object> wgO;
   
-  public static void Ez(int paramInt)
+  private i()
   {
-    qLn = paramInt;
+    AppMethodBeat.i(141118);
+    this.wgO = new HashMap();
+    AppMethodBeat.o(141118);
   }
   
-  public static int cdu()
+  public static i dpR()
   {
-    return qLn;
+    try
+    {
+      AppMethodBeat.i(141119);
+      i locali = a.dpS();
+      AppMethodBeat.o(141119);
+      return locali;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final Object get(String paramString, Object paramObject)
+  {
+    AppMethodBeat.i(141120);
+    if (this.wgO.containsKey(paramString))
+    {
+      paramString = this.wgO.get(paramString);
+      AppMethodBeat.o(141120);
+      return paramString;
+    }
+    AppMethodBeat.o(141120);
+    return paramObject;
+  }
+  
+  static final class a
+  {
+    private static final i wgP;
+    
+    static
+    {
+      AppMethodBeat.i(141117);
+      wgP = new i((byte)0);
+      AppMethodBeat.o(141117);
+    }
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mm.pluginsdk.ui;
 
 public abstract interface ProfileEditPhoneNumberView$a
 {
-  public abstract void axs();
+  public abstract void dnl();
   
-  public abstract void cmv();
+  public abstract void onChange();
 }
 
 

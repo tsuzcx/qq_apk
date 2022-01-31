@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
 public abstract interface f$a
 {
-  public abstract void Op(String paramString);
+  public abstract void abi(String paramString);
   
-  public abstract void bCF();
+  public abstract void coe();
   
-  public abstract void bFl();
+  public abstract void cqU();
 }
 
 

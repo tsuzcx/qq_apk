@@ -1,14 +1,21 @@
 package com.tencent.ttpic;
 
 import android.opengl.EGLContext;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.ApiHelper;
 import com.tencent.ttpic.thread.SegmentGLThread;
-import com.tencent.ttpic.util.VideoUtil;
 
 public enum PTModule
 {
-  INSTANCE;
-  
   private SegmentGLThread mSegGLThread;
+  
+  static
+  {
+    AppMethodBeat.i(81592);
+    INSTANCE = new PTModule("INSTANCE", 0);
+    $VALUES = new PTModule[] { INSTANCE };
+    AppMethodBeat.o(81592);
+  }
   
   private PTModule() {}
   
@@ -19,24 +26,22 @@ public enum PTModule
   
   public final void destroy()
   {
+    AppMethodBeat.i(81591);
     if (this.mSegGLThread != null)
     {
       this.mSegGLThread.destroy();
       this.mSegGLThread = null;
     }
-    PTFaceDetector.getInstance().destroy();
-  }
-  
-  public final SegmentGLThread getSegGLThread()
-  {
-    return this.mSegGLThread;
+    AppMethodBeat.o(81591);
   }
   
   public final void init(EGLContext paramEGLContext)
   {
-    if ((VideoUtil.hasJellyBeanMR1()) && (this.mSegGLThread == null)) {
+    AppMethodBeat.i(81590);
+    if ((ApiHelper.hasJellyBeanMR1()) && (this.mSegGLThread == null)) {
       this.mSegGLThread = new SegmentGLThread(paramEGLContext);
     }
+    AppMethodBeat.o(81590);
   }
 }
 

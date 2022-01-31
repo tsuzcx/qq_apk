@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.appbrand.widget.actionbar;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.b;
 import android.util.AttributeSet;
-import com.tencent.luggage.l.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class AppBrandCapsuleHomeButton
   extends AppBrandOptionButton
@@ -17,14 +19,17 @@ public final class AppBrandCapsuleHomeButton
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected final int getImageButtonResource()
+  protected final Drawable getDefaultImageDrawable()
   {
-    return a.c.app_brand_actionbar_capsule_home_dark;
+    AppMethodBeat.i(87497);
+    Drawable localDrawable = b.k(getContext(), 2130837710);
+    AppMethodBeat.o(87497);
+    return localDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleHomeButton
  * JD-Core Version:    0.7.0.1
  */

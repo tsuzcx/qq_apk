@@ -1,6 +1,5 @@
 package android.support.v7.view.menu;
 
-import android.support.v7.a.a.g;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,52 +9,53 @@ import java.util.ArrayList;
 public final class g
   extends BaseAdapter
 {
-  static final int Vs = a.g.abc_popup_menu_item_layout;
-  private final LayoutInflater Lu;
-  private final boolean UB;
-  boolean UQ;
-  private int Vq = -1;
-  public h Vt;
+  boolean VD;
+  private final int Vf;
+  private final boolean Vo;
+  private int Wg = -1;
+  public h Wi;
+  private final LayoutInflater mInflater;
   
-  public g(h paramh, LayoutInflater paramLayoutInflater, boolean paramBoolean)
+  public g(h paramh, LayoutInflater paramLayoutInflater, boolean paramBoolean, int paramInt)
   {
-    this.UB = paramBoolean;
-    this.Lu = paramLayoutInflater;
-    this.Vt = paramh;
-    fd();
+    this.Vo = paramBoolean;
+    this.mInflater = paramLayoutInflater;
+    this.Wi = paramh;
+    this.Vf = paramInt;
+    fS();
   }
   
-  private void fd()
+  private void fS()
   {
-    j localj = this.Vt.VP;
+    j localj = this.Wi.WE;
     if (localj != null)
     {
-      ArrayList localArrayList = this.Vt.fn();
+      ArrayList localArrayList = this.Wi.ge();
       int j = localArrayList.size();
       int i = 0;
       while (i < j)
       {
         if ((j)localArrayList.get(i) == localj)
         {
-          this.Vq = i;
+          this.Wg = i;
           return;
         }
         i += 1;
       }
     }
-    this.Vq = -1;
+    this.Wg = -1;
   }
   
-  public final j bd(int paramInt)
+  public final j bb(int paramInt)
   {
-    if (this.UB) {}
-    for (ArrayList localArrayList = this.Vt.fn();; localArrayList = this.Vt.fl())
+    if (this.Vo) {}
+    for (ArrayList localArrayList = this.Wi.ge();; localArrayList = this.Wi.gb())
     {
       int i = paramInt;
-      if (this.Vq >= 0)
+      if (this.Wg >= 0)
       {
         i = paramInt;
-        if (paramInt >= this.Vq) {
+        if (paramInt >= this.Wg) {
           i = paramInt + 1;
         }
       }
@@ -65,8 +65,8 @@ public final class g
   
   public final int getCount()
   {
-    if (this.UB) {}
-    for (ArrayList localArrayList = this.Vt.fn(); this.Vq < 0; localArrayList = this.Vt.fl()) {
+    if (this.Vo) {}
+    for (ArrayList localArrayList = this.Wi.ge(); this.Wg < 0; localArrayList = this.Wi.gb()) {
       return localArrayList.size();
     }
     return localArrayList.size() - 1;
@@ -80,22 +80,39 @@ public final class g
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null) {
-      paramView = this.Lu.inflate(Vs, paramViewGroup, false);
+      paramView = this.mInflater.inflate(this.Vf, paramViewGroup, false);
     }
     for (;;)
     {
-      paramViewGroup = (p.a)paramView;
-      if (this.UQ) {
-        ((ListMenuItemView)paramView).setForceShowIcon(true);
+      int j = bb(paramInt).getGroupId();
+      int i;
+      if (paramInt - 1 >= 0)
+      {
+        i = bb(paramInt - 1).getGroupId();
+        paramViewGroup = (ListMenuItemView)paramView;
+        if ((!this.Wi.fU()) || (j == i)) {
+          break label117;
+        }
       }
-      paramViewGroup.a(bd(paramInt));
-      return paramView;
+      label117:
+      for (boolean bool = true;; bool = false)
+      {
+        paramViewGroup.setGroupDividerEnabled(bool);
+        paramViewGroup = (p.a)paramView;
+        if (this.VD) {
+          ((ListMenuItemView)paramView).setForceShowIcon(true);
+        }
+        paramViewGroup.a(bb(paramInt));
+        return paramView;
+        i = j;
+        break;
+      }
     }
   }
   
   public final void notifyDataSetChanged()
   {
-    fd();
+    fS();
     super.notifyDataSetChanged();
   }
 }

@@ -5,23 +5,17 @@ import java.util.ArrayList;
 
 public abstract interface d
 {
-  public abstract void cIJ();
+  public abstract void dNx();
   
-  public abstract boolean cIK();
+  public abstract boolean dNy();
   
-  public abstract boolean cIL();
-  
-  public abstract void fF(int paramInt1, int paramInt2);
+  public abstract boolean dNz();
   
   public abstract String getSearchContent();
   
-  public abstract int getSelectionEnd();
+  public abstract void rr(boolean paramBoolean);
   
-  public abstract int getSelectionStart();
-  
-  public abstract void nH(boolean paramBoolean);
-  
-  public abstract void nI(boolean paramBoolean);
+  public abstract void rs(boolean paramBoolean);
   
   public abstract void setAutoMatchKeywords(boolean paramBoolean);
   

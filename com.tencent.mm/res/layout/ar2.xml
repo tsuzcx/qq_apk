@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/jr" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/aa9" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/e0r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/e0s" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.AdlandingDummyViewPager android:id="@id/e0t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ImageView android:layout_gravity="top" android:id="@id/e0u" android:background="@raw/sns_ad_native_landing_page_navigation" android:layout_width="fill_parent" android:layout_height="42.0dip" />
-        <FrameLayout android:layout_gravity="top" android:id="@id/e0v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
-            <ImageView android:id="@id/e0w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/aqf" />
-            <ImageView android:layout_gravity="right" android:id="@id/e0x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/aqr" />
-            <TextView android:textColor="#ff353535" android:layout_gravity="center|right" android:id="@id/e0y" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" />
-        </FrameLayout>
-        <ImageView android:layout_gravity="bottom|center" android:id="@id/e0z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/b88" android:scaleType="centerInside" />
-    </FrameLayout>
-</FrameLayout>
+    <com.tencent.mm.plugin.scanner.ui.HighlightRectSideView android:id="@id/ea3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/ko" android:textColor="#ffa5a5a5" android:id="@id/ea4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

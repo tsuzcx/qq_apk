@@ -2,6 +2,7 @@ package com.tencent.mm.ui.widget.picker;
 
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$1
   implements NumberPicker.OnValueChangeListener
@@ -10,7 +11,9 @@ final class b$1
   
   public final void onValueChange(NumberPicker paramNumberPicker, int paramInt1, int paramInt2)
   {
-    b.a(this.wow).setOptionsArray(b.a(this.wow, paramInt2));
+    AppMethodBeat.i(112820);
+    b.a(this.AIX).setOptionsArray(b.a(this.AIX, paramInt2));
+    AppMethodBeat.o(112820);
   }
 }
 

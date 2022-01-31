@@ -1,39 +1,49 @@
 package com.google.android.exoplayer2.metadata.scte35;
 
-import com.google.android.exoplayer2.i.i;
-import com.google.android.exoplayer2.i.j;
-import com.google.android.exoplayer2.i.q;
+import com.google.android.exoplayer2.i.l;
+import com.google.android.exoplayer2.i.m;
+import com.google.android.exoplayer2.i.u;
 import com.google.android.exoplayer2.metadata.Metadata;
 import com.google.android.exoplayer2.metadata.Metadata.Entry;
 import com.google.android.exoplayer2.metadata.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 
 public final class a
   implements com.google.android.exoplayer2.metadata.a
 {
-  private q aBX;
-  private final j aFe = new j();
-  private final i aHr = new i();
+  private u aGN;
+  private final m aLT;
+  private final l aOl;
+  
+  public a()
+  {
+    AppMethodBeat.i(95363);
+    this.aLT = new m();
+    this.aOl = new l();
+    AppMethodBeat.o(95363);
+  }
   
   public final Metadata a(d paramd)
   {
-    if ((this.aBX == null) || (paramd.auG != this.aBX.op()))
+    AppMethodBeat.i(95364);
+    if ((this.aGN == null) || (paramd.awY != this.aGN.rb()))
     {
-      this.aBX = new q(paramd.ayE);
-      this.aBX.X(paramd.ayE - paramd.auG);
+      this.aGN = new u(paramd.aAT);
+      this.aGN.ai(paramd.aAT - paramd.awY);
     }
-    paramd = paramd.ayD;
+    paramd = paramd.aAS;
     byte[] arrayOfByte = paramd.array();
     int i = paramd.limit();
-    this.aFe.m(arrayOfByte, i);
-    this.aHr.m(arrayOfByte, i);
-    this.aHr.dy(39);
-    long l = this.aHr.dz(1);
-    l = this.aHr.dz(32) | l << 32;
-    this.aHr.dy(20);
-    i = this.aHr.dz(12);
-    int j = this.aHr.dz(8);
-    this.aFe.dB(14);
+    this.aLT.l(arrayOfByte, i);
+    this.aOl.l(arrayOfByte, i);
+    this.aOl.dE(39);
+    long l = this.aOl.dD(1);
+    l = this.aOl.dD(32) | l << 32;
+    this.aOl.dE(20);
+    i = this.aOl.dD(12);
+    int j = this.aOl.dD(8);
+    this.aLT.en(14);
     switch (j)
     {
     default: 
@@ -41,18 +51,22 @@ public final class a
     }
     while (paramd == null)
     {
-      return new Metadata(new Metadata.Entry[0]);
+      paramd = new Metadata(new Metadata.Entry[0]);
+      AppMethodBeat.o(95364);
+      return paramd;
       paramd = new SpliceNullCommand();
       continue;
-      paramd = SpliceScheduleCommand.c(this.aFe);
+      paramd = SpliceScheduleCommand.y(this.aLT);
       continue;
-      paramd = SpliceInsertCommand.a(this.aFe, l, this.aBX);
+      paramd = SpliceInsertCommand.a(this.aLT, l, this.aGN);
       continue;
-      paramd = TimeSignalCommand.b(this.aFe, l, this.aBX);
+      paramd = TimeSignalCommand.b(this.aLT, l, this.aGN);
       continue;
-      paramd = PrivateCommand.a(this.aFe, i, l);
+      paramd = PrivateCommand.a(this.aLT, i, l);
     }
-    return new Metadata(new Metadata.Entry[] { paramd });
+    paramd = new Metadata(new Metadata.Entry[] { paramd });
+    AppMethodBeat.o(95364);
+    return paramd;
   }
 }
 

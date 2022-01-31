@@ -1,89 +1,107 @@
 package com.tencent.mm.pluginsdk.a;
 
-import android.content.Context;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.protocal.c.bsl;
-import com.tencent.mm.sdk.e.j.a;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.plugin.emojicapture.api.EmojiCaptureUploadManager.UploadTask;
+import com.tencent.mm.protocal.protobuf.cda;
+import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.emotion.u;
+import com.tencent.mm.storage.emotion.SmileyInfo;
+import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
+import com.tencent.mm.storage.emotion.s;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract interface e
 {
-  public abstract int AE(String paramString);
+  public abstract int KF(String paramString);
   
-  public abstract ArrayList<EmojiInfo> AF(String paramString);
+  public abstract boolean KG(String paramString);
   
-  public abstract boolean AG(String paramString);
+  public abstract void KH(String paramString);
   
-  public abstract EmojiInfo At(String paramString);
+  public abstract EmojiInfo Ku(String paramString);
   
-  public abstract String Aw(String paramString);
+  public abstract String Kx(String paramString);
   
-  public abstract String FU();
+  public abstract ArrayList<EmojiInfo> OA();
   
-  public abstract <T> T a(ac.a parama, T paramT);
+  public abstract ArrayList<EmojiGroupInfo> OB();
   
-  public abstract void a(bsl parambsl);
+  public abstract boolean OQ();
   
-  public abstract boolean a(Context paramContext, EmojiInfo paramEmojiInfo, int paramInt1, int paramInt2, boolean paramBoolean, String paramString1, ArrayList<String> paramArrayList, String paramString2);
+  public abstract boolean OR();
+  
+  public abstract void a(EmojiCaptureUploadManager.UploadTask paramUploadTask);
+  
+  public abstract void a(cda paramcda);
   
   public abstract boolean a(EmojiGroupInfo paramEmojiGroupInfo);
   
-  public abstract byte[] a(EmojiInfo paramEmojiInfo);
+  public abstract void b(EmojiCaptureUploadManager.UploadTask paramUploadTask);
   
-  public abstract bsl aHm();
+  public abstract ArrayList<SmileyInfo> bkU();
   
-  public abstract ArrayList<EmojiGroupInfo> aHn();
+  public abstract ArrayList<SmileyPanelConfigInfo> bkV();
   
-  public abstract int aHo();
+  public abstract String bkY();
   
-  public abstract ArrayList<EmojiInfo> aHp();
+  public abstract void bkZ();
   
-  public abstract ArrayList<EmojiInfo> aHq();
+  public abstract cda blb();
   
-  public abstract a aHr();
+  public abstract int blc();
   
-  public abstract boolean aHs();
+  public abstract a bld();
   
-  public abstract boolean aHt();
+  public abstract boolean ble();
   
-  public abstract boolean aHu();
+  public abstract List<s> blf();
   
-  public abstract List<u> aHv();
+  public abstract void blg();
   
-  public abstract void aHw();
+  public abstract boolean blh();
   
-  public abstract void b(ac.a parama, Object paramObject);
+  public abstract <T> T c(ac.a parama, T paramT);
   
-  public abstract boolean bNy();
+  public abstract void cb(String paramString, int paramInt);
   
-  public abstract void bv(String paramString, int paramInt);
+  public abstract ArrayList<EmojiInfo> ch(boolean paramBoolean);
   
-  public abstract EmojiInfo c(EmojiInfo paramEmojiInfo);
+  public abstract void d(ac.a parama, Object paramObject);
   
-  public abstract void d(EmojiInfo paramEmojiInfo);
+  public abstract void e(k.a parama);
   
-  public abstract int fc(boolean paramBoolean);
+  public abstract void f(k.a parama);
   
-  public abstract void g(j.a parama);
+  public abstract void g(k.a parama);
   
-  public abstract EmojiInfo h(String paramString, int paramInt1, int paramInt2, int paramInt3);
+  public abstract String getAccPath();
   
-  public abstract void h(j.a parama);
+  public abstract void h(k.a parama);
   
-  public abstract void i(j.a parama);
+  public abstract void i(k.a parama);
   
-  public abstract void j(j.a parama);
+  public abstract EmojiInfo j(String paramString, int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void k(j.a parama);
+  public abstract void j(k.a parama);
   
-  public abstract void l(j.a parama);
+  public abstract byte[] l(EmojiInfo paramEmojiInfo);
+  
+  public abstract ArrayList<EmojiInfo> lL(String paramString);
+  
+  public abstract EmojiInfo n(EmojiInfo paramEmojiInfo);
   
   public abstract void onDestroy();
+  
+  public abstract void r(EmojiInfo paramEmojiInfo);
+  
+  public abstract void s(EmojiInfo paramEmojiInfo);
+  
+  public abstract void updateEmojiInfo(EmojiInfo paramEmojiInfo);
+  
+  public abstract int y(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

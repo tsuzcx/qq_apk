@@ -1,26 +1,20 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CheckedTextView;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.plugin.wallet_core.model.q;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.model.v;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.MaxListView;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.q.b;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.util.Collections;
 import java.util.Iterator;
@@ -30,116 +24,110 @@ import java.util.List;
 public class WalletCardSelectUI
   extends WalletBaseUI
 {
-  private List<ElementQuery> qCB = new LinkedList();
-  private List<ElementQuery> qCC = new LinkedList();
-  private CheckedTextView qCD;
-  private CheckedTextView qCE;
-  private String qCF;
-  private int qCG;
-  private int qCH = -1;
-  private int qCI = -1;
-  private WalletCardSelectUI.a qCJ;
-  private MaxListView qCK;
-  private int qks = -1;
-  private int qoP = 3;
+  private int tTs;
+  private int tZc;
+  private List<ElementQuery> upl;
+  private List<ElementQuery> upm;
+  private CheckedTextView upn;
+  private CheckedTextView upo;
+  private String upp;
+  private int upq;
+  private int upr;
+  private int ups;
+  private WalletCardSelectUI.a upt;
+  private MaxListView upu;
   
-  private void kE(boolean paramBoolean)
+  public WalletCardSelectUI()
   {
-    this.qCK.setVisibility(0);
+    AppMethodBeat.i(47307);
+    this.upl = new LinkedList();
+    this.upm = new LinkedList();
+    this.tZc = 3;
+    this.upr = -1;
+    this.ups = -1;
+    this.tTs = -1;
+    AppMethodBeat.o(47307);
+  }
+  
+  private void nL(boolean paramBoolean)
+  {
+    AppMethodBeat.i(47310);
+    this.upu.setVisibility(0);
     if (paramBoolean)
     {
-      this.qCD.setChecked(true);
-      this.qCE.setChecked(false);
-      this.qCJ.items = this.qCB;
-      this.qCJ.notifyDataSetChanged();
-      this.qCK.clearChoices();
-      if (this.qCH >= 0)
+      this.upn.setChecked(true);
+      this.upo.setChecked(false);
+      this.upt.items = this.upl;
+      this.upt.notifyDataSetChanged();
+      this.upu.clearChoices();
+      if (this.upr >= 0)
       {
-        this.qCK.setItemChecked(this.qCH, true);
+        this.upu.setItemChecked(this.upr, true);
         enableOptionMenu(true);
+        AppMethodBeat.o(47310);
         return;
       }
       enableOptionMenu(false);
+      AppMethodBeat.o(47310);
       return;
     }
-    this.qCD.setChecked(false);
-    this.qCE.setChecked(true);
-    this.qCJ.items = this.qCC;
-    this.qCJ.notifyDataSetChanged();
-    this.qCK.clearChoices();
-    if (this.qCI >= 0)
+    this.upn.setChecked(false);
+    this.upo.setChecked(true);
+    this.upt.items = this.upm;
+    this.upt.notifyDataSetChanged();
+    this.upu.clearChoices();
+    if (this.ups >= 0)
     {
-      this.qCK.setItemChecked(this.qCI, true);
+      this.upu.setItemChecked(this.ups, true);
       enableOptionMenu(true);
+      AppMethodBeat.o(47310);
       return;
     }
     enableOptionMenu(false);
+    AppMethodBeat.o(47310);
   }
   
-  public final boolean bgK()
+  public boolean checkProcLife()
   {
     return false;
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    return false;
-  }
-  
-  protected final int getForceOrientation()
+  public int getForceOrientation()
   {
     return 1;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.wallet_cardselect_ui;
+    return 2130971157;
   }
   
-  public final void initView()
+  public void initView()
   {
-    this.qCF = this.BX.getString("key_bank_type");
-    this.qCG = this.BX.getInt("key_bankcard_type", 1);
-    this.qoP = this.BX.getInt("key_support_bankcard", 1);
-    this.qks = this.BX.getInt("key_bind_scene", -1);
-    this.qCK = ((MaxListView)findViewById(a.f.settings_lv_bank));
-    this.qCD = ((CheckedTextView)findViewById(a.f.check_type_first_tv));
-    this.qCE = ((CheckedTextView)findViewById(a.f.check_type_second_tv));
-    this.qCJ = new WalletCardSelectUI.a(this, this);
-    this.qCK.setAdapter(this.qCJ);
-    this.qCK.setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        paramAnonymousAdapterView = WalletCardSelectUI.a(WalletCardSelectUI.this).AU(paramAnonymousInt);
-        if (!bk.bl(paramAnonymousAdapterView.qvl))
-        {
-          h.a(WalletCardSelectUI.this, paramAnonymousAdapterView.qvl, null, true, null);
-          return;
-        }
-        if (paramAnonymousAdapterView.bVc()) {
-          WalletCardSelectUI.a(WalletCardSelectUI.this, paramAnonymousInt);
-        }
-        for (;;)
-        {
-          WalletCardSelectUI.this.enableOptionMenu(true);
-          return;
-          WalletCardSelectUI.b(WalletCardSelectUI.this, paramAnonymousInt);
-        }
-      }
-    });
+    AppMethodBeat.i(47309);
+    this.upp = getInput().getString("key_bank_type");
+    this.upq = getInput().getInt("key_bankcard_type", 1);
+    this.tZc = getInput().getInt("key_support_bankcard", 1);
+    this.tTs = getInput().getInt("key_bind_scene", -1);
+    this.upu = ((MaxListView)findViewById(2131829075));
+    this.upn = ((CheckedTextView)findViewById(2131829073));
+    this.upo = ((CheckedTextView)findViewById(2131829074));
+    this.upt = new WalletCardSelectUI.a(this, this);
+    this.upu.setAdapter(this.upt);
+    this.upu.setOnItemClickListener(new WalletCardSelectUI.1(this));
     setBackBtn(new WalletCardSelectUI.2(this));
-    a(0, getString(a.i.app_finish), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getString(2131296964), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
+        AppMethodBeat.i(47298);
         Object localObject = null;
         Intent localIntent = new Intent();
         if ((WalletCardSelectUI.b(WalletCardSelectUI.this).isChecked()) && (WalletCardSelectUI.c(WalletCardSelectUI.this) >= 0))
         {
           paramAnonymousMenuItem = (ElementQuery)WalletCardSelectUI.d(WalletCardSelectUI.this).get(WalletCardSelectUI.c(WalletCardSelectUI.this));
           if (paramAnonymousMenuItem == null) {
-            break label139;
+            break label149;
           }
           localIntent.putExtra("elemt_query", paramAnonymousMenuItem);
           WalletCardSelectUI.this.setResult(-1, localIntent);
@@ -147,6 +135,7 @@ public class WalletCardSelectUI
         for (;;)
         {
           WalletCardSelectUI.this.finish();
+          AppMethodBeat.o(47298);
           return true;
           paramAnonymousMenuItem = localObject;
           if (!WalletCardSelectUI.e(WalletCardSelectUI.this).isChecked()) {
@@ -158,143 +147,160 @@ public class WalletCardSelectUI
           }
           paramAnonymousMenuItem = (ElementQuery)WalletCardSelectUI.g(WalletCardSelectUI.this).get(WalletCardSelectUI.f(WalletCardSelectUI.this));
           break;
-          label139:
+          label149:
           WalletCardSelectUI.this.setResult(0);
         }
       }
-    }, s.b.uNx);
+    }, null, q.b.zby);
     enableOptionMenu(false);
-    this.qCD.setOnClickListener(new WalletCardSelectUI.4(this));
-    this.qCE.setOnClickListener(new WalletCardSelectUI.5(this));
+    this.upn.setOnClickListener(new WalletCardSelectUI.4(this));
+    this.upo.setOnClickListener(new WalletCardSelectUI.5(this));
+    AppMethodBeat.o(47309);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(47308);
     super.onCreate(paramBundle);
-    setMMTitle(a.i.wallet_card_select_ui);
+    setMMTitle(2131304986);
     initView();
-    this.qCC.clear();
-    this.qCB.clear();
-    if (o.bVA().qqW != null)
+    this.upm.clear();
+    this.upl.clear();
+    if (t.cTV().ubS != null)
     {
-      paramBundle = o.bVA().qqW.iterator();
+      paramBundle = t.cTV().ubS.iterator();
       while (paramBundle.hasNext())
       {
         ElementQuery localElementQuery = (ElementQuery)paramBundle.next();
-        if ((this.qks == 5) && (!localElementQuery.qvB)) {
-          localElementQuery.qvl = getString(a.i.wallet_wx_offline_no_support);
+        if ((this.tTs == 5) && (!localElementQuery.uhT)) {
+          localElementQuery.uhD = getString(2131305749);
         }
-        if (localElementQuery.bUS()) {
-          this.qCC.add(localElementQuery);
-        } else if (localElementQuery.bVc()) {
-          this.qCB.add(localElementQuery);
+        if (localElementQuery.cTh()) {
+          this.upm.add(localElementQuery);
+        } else if (localElementQuery.cTv()) {
+          this.upl.add(localElementQuery);
         }
       }
     }
-    if ((this.qoP == 3) && (!this.qCC.isEmpty()))
+    if ((this.tZc == 3) && (!this.upm.isEmpty()))
     {
-      if (!o.bVs().bVS()) {
-        break label241;
+      if (!t.cTN().cUu()) {
+        break label249;
       }
-      Collections.sort(this.qCC, new WalletCardSelectUI.6(this));
+      Collections.sort(this.upm, new WalletCardSelectUI.6(this));
     }
-    while (!this.qCB.isEmpty()) {
-      if (bk.bl(this.qCF))
+    while (!this.upl.isEmpty()) {
+      if (bo.isNullOrNil(this.upp))
       {
-        this.qCD.setChecked(false);
-        this.qCE.setChecked(false);
-        this.qCK.setVisibility(8);
+        this.upn.setChecked(false);
+        this.upo.setChecked(false);
+        this.upu.setVisibility(8);
+        AppMethodBeat.o(47308);
         return;
-        label241:
-        Collections.sort(this.qCC, new WalletCardSelectUI.7(this));
+        label249:
+        Collections.sort(this.upm, new WalletCardSelectUI.7(this));
       }
       else
       {
-        if (this.qCG == 2)
+        if (this.upq == 2)
         {
-          j = this.qCC.size();
+          j = this.upm.size();
           i = 0;
           for (;;)
           {
             if (i < j)
             {
-              if (((ElementQuery)this.qCC.get(i)).mOb.equals(this.qCF))
+              if (((ElementQuery)this.upm.get(i)).poq.equals(this.upp))
               {
-                this.qCI = i;
-                kE(false);
+                this.ups = i;
+                nL(false);
                 enableOptionMenu(true);
               }
             }
             else
             {
-              if (this.qCI >= 0) {
-                break;
+              if (this.ups < 0)
+              {
+                nL(false);
+                enableOptionMenu(false);
               }
-              kE(false);
-              enableOptionMenu(false);
+              AppMethodBeat.o(47308);
               return;
             }
             i += 1;
           }
         }
-        j = this.qCB.size();
+        j = this.upl.size();
         i = 0;
         for (;;)
         {
           if (i < j)
           {
-            if (((ElementQuery)this.qCB.get(i)).mOb.equals(this.qCF))
+            if (((ElementQuery)this.upl.get(i)).poq.equals(this.upp))
             {
-              this.qCH = i;
-              kE(true);
+              this.upr = i;
+              nL(true);
               enableOptionMenu(true);
             }
           }
           else
           {
-            if (this.qCH >= 0) {
-              break;
+            if (this.upr < 0)
+            {
+              nL(false);
+              enableOptionMenu(false);
             }
-            kE(false);
-            enableOptionMenu(false);
+            AppMethodBeat.o(47308);
             return;
           }
           i += 1;
         }
       }
     }
-    int j = this.qCC.size();
+    int j = this.upm.size();
     int i = 0;
     for (;;)
     {
       if (i < j)
       {
-        if (((ElementQuery)this.qCC.get(i)).mOb.equals(this.qCF))
+        if (((ElementQuery)this.upm.get(i)).poq.equals(this.upp))
         {
-          this.qCI = i;
-          kE(false);
+          this.ups = i;
+          nL(false);
           enableOptionMenu(true);
         }
       }
       else
       {
-        if (this.qCI < 0)
+        if (this.ups < 0)
         {
-          kE(false);
+          nL(false);
           enableOptionMenu(false);
         }
-        this.qCD.setVisibility(8);
-        this.qCE.setBackgroundResource(a.e.comm_list_item_selector);
-        this.qCE.setCheckMarkDrawable(a.e.round_selector);
+        this.upn.setVisibility(8);
+        this.upo.setBackgroundResource(2130838445);
+        this.upo.setCheckMarkDrawable(2130840179);
+        AppMethodBeat.o(47308);
         return;
       }
       i += 1;
     }
   }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletCardSelectUI
  * JD-Core Version:    0.7.0.1
  */

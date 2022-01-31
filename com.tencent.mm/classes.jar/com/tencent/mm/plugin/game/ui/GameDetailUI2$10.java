@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameDetailUI2$10
   implements ViewTreeObserver.OnGlobalLayoutListener
@@ -10,12 +11,15 @@ final class GameDetailUI2$10
   
   public final void onGlobalLayout()
   {
-    if (GameDetailUI2.b(this.laq).getLineCount() > 3)
+    AppMethodBeat.i(111849);
+    if (GameDetailUI2.b(this.nyn).getLineCount() > 3)
     {
-      GameDetailUI2.c(this.laq).setVisibility(0);
+      GameDetailUI2.c(this.nyn).setVisibility(0);
+      AppMethodBeat.o(111849);
       return;
     }
-    GameDetailUI2.c(this.laq).setVisibility(8);
+    GameDetailUI2.c(this.nyn).setVisibility(8);
+    AppMethodBeat.o(111849);
   }
 }
 

@@ -1,160 +1,138 @@
 package com.tencent.mm.plugin.backup.backuppcmodel;
 
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.plugin.backup.b.d;
 import com.tencent.mm.plugin.backup.g.b.c;
 import com.tencent.mm.plugin.backup.g.b.d;
 import com.tencent.mm.plugin.backup.g.h.a;
 import com.tencent.mm.plugin.backup.g.j.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class c
 {
-  private static int ebp = 2;
-  private static boolean hIf = false;
-  private am hIe;
-  final f hIg = new c.1(this);
-  private final f hIh = new c.3(this);
-  b.c hIl = new c.8(this);
-  private final j.a hIm = new c.6(this);
-  int hKA;
-  boolean hKB;
-  private com.tencent.mm.bv.b hKC;
-  public int hKD;
-  public boolean hKE = true;
-  private final b.d hKF = new c.4(this);
-  public final h.a hKG = new h.a()
-  {
-    public final void auD()
-    {
-      y.i("MicroMsg.BackupPcProcessMgr", "reconnectCallback callback to reconnect");
-      int i;
-      if (b.auw().atn().hFu != 5)
-      {
-        b.auw().atn().hFu = 5;
-        i = b.auw().aux().hKx;
-        if ((1 != i) && (3 != i)) {
-          break label70;
-        }
-        b.auw().auy().nD(5);
-      }
-      for (;;)
-      {
-        c.this.nB(9);
-        return;
-        label70:
-        if ((2 == i) || (4 == i)) {
-          b.auw().auz().nt(5);
-        }
-      }
-    }
-    
-    public final void auE()
-    {
-      int i = c.this.hKx;
-      y.i("MicroMsg.BackupPcProcessMgr", "reconnectCallback reconnectFail, commandMode[%d]", new Object[] { Integer.valueOf(i) });
-      if ((1 == i) || (3 == i))
-      {
-        b.auw().auy();
-        e.auG();
-        b.auw().auy().cancel(true);
-        b.auw().atT().stop();
-        b.auw().atn().hFu = -4;
-        b.auw().auy().nD(-4);
-        h.nFQ.a(400L, 9L, 1L, false);
-        b.auw().auy().nC(3);
-      }
-      while ((2 != i) && (4 != i)) {
-        return;
-      }
-      b.auw().auz();
-      d.auF();
-      b.auw().auz().a(true, false, -4);
-      b.auw().atT().stop();
-      h.nFQ.a(400L, 17L, 1L, false);
-      b.auw().auz().nC(3);
-    }
-  };
-  public int hKx = 0;
-  public String hKy;
-  String hKz;
+  private static int ePG = 2;
+  private static boolean jBD = false;
+  private ap jBC;
+  final f jBE;
+  private final f jBF;
+  b.c jBJ;
+  private final j.a jBK;
+  public int jEa;
+  public String jEb;
+  String jEc;
+  int jEd;
+  boolean jEe;
+  private com.tencent.mm.bv.b jEf;
+  public int jEg;
+  public boolean jEh;
+  private final b.d jEi;
+  public final h.a jEj;
   
-  private void auB()
+  public c()
   {
-    b.auw().atT().connect(this.hKz, this.hKA);
-    com.tencent.mm.plugin.backup.g.b.clear();
-    com.tencent.mm.plugin.backup.g.b.a(1, this.hIh);
-    com.tencent.mm.plugin.backup.g.a locala = new com.tencent.mm.plugin.backup.g.a(b.auw().hFn, b.auw().hFo, com.tencent.mm.plugin.backup.b.d.atr(), b.auw().hFm, 0, 1);
-    locala.t(true, true);
-    locala.hLu.hQT = 1;
-    locala.auT();
-    y.i("MicroMsg.BackupPcProcessMgr", "tryConnect start backupConnectTimerHandler.");
-    if (this.hIe == null) {
-      this.hIe = new am(new c.2(this), false);
-    }
-    this.hIe.S(3000L, 3000L);
+    AppMethodBeat.i(17510);
+    this.jEa = 0;
+    this.jEh = true;
+    this.jBE = new c.1(this);
+    this.jBF = new c.3(this);
+    this.jEi = new c.4(this);
+    this.jBK = new c.6(this);
+    this.jEj = new c.7(this);
+    this.jBJ = new c.8(this);
+    AppMethodBeat.o(17510);
   }
   
-  public static String auC()
+  public static void aTB()
   {
-    return com.tencent.mm.plugin.backup.g.b.auP();
-  }
-  
-  public static void auc()
-  {
-    y.i("MicroMsg.BackupPcProcessMgr", "backupSendCancelRequest.");
+    AppMethodBeat.i(17515);
+    ab.i("MicroMsg.BackupPcProcessMgr", "backupSendCancelRequest.");
     com.tencent.mm.plugin.backup.i.a locala = new com.tencent.mm.plugin.backup.i.a();
-    locala.ID = b.auw().hFm;
+    locala.ID = b.aTX().jyF;
     try
     {
-      com.tencent.mm.plugin.backup.g.b.I(locala.toByteArray(), 5);
+      com.tencent.mm.plugin.backup.g.b.J(locala.toByteArray(), 5);
+      AppMethodBeat.o(17515);
       return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.BackupPcProcessMgr", localException, "BackupCancelRequest to buf err.", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.BackupPcProcessMgr", localException, "BackupCancelRequest to buf err.", new Object[0]);
+      AppMethodBeat.o(17515);
     }
   }
   
-  public static void cp(int paramInt1, int paramInt2)
+  private void aUc()
   {
-    y.i("MicroMsg.BackupPcProcessMgr", "backupSendCommandResponse cmd:%d", new Object[] { Integer.valueOf(paramInt1) });
+    AppMethodBeat.i(17511);
+    b.aTX().aTs().connect(this.jEc, this.jEd);
+    com.tencent.mm.plugin.backup.g.b.clear();
+    com.tencent.mm.plugin.backup.g.b.a(1, this.jBF);
+    com.tencent.mm.plugin.backup.g.a locala = new com.tencent.mm.plugin.backup.g.a(b.aTX().jyG, b.aTX().jyH, d.aSP(), b.aTX().jyF, 0, 1);
+    locala.t(true, true);
+    locala.jEX.jKu = 1;
+    locala.aUv();
+    ab.i("MicroMsg.BackupPcProcessMgr", "tryConnect start backupConnectTimerHandler.");
+    if (this.jBC == null) {
+      this.jBC = new ap(new c.2(this), false);
+    }
+    this.jBC.ag(3000L, 3000L);
+    AppMethodBeat.o(17511);
+  }
+  
+  public static String aUd()
+  {
+    AppMethodBeat.i(17512);
+    String str = com.tencent.mm.plugin.backup.g.b.aUr();
+    AppMethodBeat.o(17512);
+    return str;
+  }
+  
+  public static void dF(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(17514);
+    ab.i("MicroMsg.BackupPcProcessMgr", "backupSendCommandResponse cmd:%d", new Object[] { Integer.valueOf(paramInt1) });
     com.tencent.mm.plugin.backup.i.c localc = new com.tencent.mm.plugin.backup.i.c();
-    localc.hPE = paramInt1;
+    localc.jJg = paramInt1;
     try
     {
-      com.tencent.mm.plugin.backup.g.b.o(localc.toByteArray(), 18, paramInt2);
+      com.tencent.mm.plugin.backup.g.b.r(localc.toByteArray(), 18, paramInt2);
+      AppMethodBeat.o(17514);
       return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.BackupPcProcessMgr", localException, "BackupCommandResponse to buf err.", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.BackupPcProcessMgr", localException, "BackupCommandResponse to buf err.", new Object[0]);
+      AppMethodBeat.o(17514);
     }
   }
   
   public final void a(boolean paramBoolean, com.tencent.mm.bv.b paramb)
   {
-    this.hKB = paramBoolean;
-    this.hKC = paramb;
+    this.jEe = paramBoolean;
+    this.jEf = paramb;
   }
   
-  public final void nB(int paramInt)
+  public final void rq(int paramInt)
   {
-    y.i("MicroMsg.BackupPcProcessMgr", "backupSendCommandRequest cmd:%d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(17513);
+    ab.i("MicroMsg.BackupPcProcessMgr", "backupSendCommandRequest cmd:%d", new Object[] { Integer.valueOf(paramInt) });
     com.tencent.mm.plugin.backup.i.b localb = new com.tencent.mm.plugin.backup.i.b();
-    localb.hPE = paramInt;
+    localb.jJg = paramInt;
     if (paramInt == 9) {
-      localb.hPF = this.hKC;
+      localb.jJh = this.jEf;
     }
     try
     {
-      com.tencent.mm.plugin.backup.g.b.I(localb.toByteArray(), 17);
+      com.tencent.mm.plugin.backup.g.b.J(localb.toByteArray(), 17);
+      AppMethodBeat.o(17513);
       return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.BackupPcProcessMgr", localException, "BackupCommandRequest to buf err.", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.BackupPcProcessMgr", localException, "BackupCommandRequest to buf err.", new Object[0]);
+      AppMethodBeat.o(17513);
     }
   }
 }

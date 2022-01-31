@@ -1,25 +1,30 @@
 package com.tencent.mm.plugin.qqmail.b;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class v$c
 {
-  public boolean neA = true;
-  public boolean ney = false;
-  public boolean nez = true;
+  public boolean pJN = false;
+  public boolean pJO = true;
+  public boolean pJP = true;
   
   public final void fromBundle(Bundle paramBundle)
   {
-    this.ney = paramBundle.getBoolean("qqmail_httpoptions_expired");
-    this.nez = paramBundle.getBoolean("qqmail_httpoptions_needcache");
-    this.neA = paramBundle.getBoolean("qqmail_httpoptions_needparse");
+    AppMethodBeat.i(68002);
+    this.pJN = paramBundle.getBoolean("qqmail_httpoptions_expired");
+    this.pJO = paramBundle.getBoolean("qqmail_httpoptions_needcache");
+    this.pJP = paramBundle.getBoolean("qqmail_httpoptions_needparse");
+    AppMethodBeat.o(68002);
   }
   
   public final void toBundle(Bundle paramBundle)
   {
-    paramBundle.putBoolean("qqmail_httpoptions_expired", this.ney);
-    paramBundle.putBoolean("qqmail_httpoptions_needcache", this.nez);
-    paramBundle.putBoolean("qqmail_httpoptions_needparse", this.neA);
+    AppMethodBeat.i(68001);
+    paramBundle.putBoolean("qqmail_httpoptions_expired", this.pJN);
+    paramBundle.putBoolean("qqmail_httpoptions_needcache", this.pJO);
+    paramBundle.putBoolean("qqmail_httpoptions_needparse", this.pJP);
+    AppMethodBeat.o(68001);
   }
 }
 

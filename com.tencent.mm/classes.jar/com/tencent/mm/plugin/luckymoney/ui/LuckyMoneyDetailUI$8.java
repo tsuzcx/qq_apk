@@ -1,31 +1,19 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.support.v7.app.AppCompatActivity;
-import com.tencent.mm.h.a.hn;
-import com.tencent.mm.h.a.hn.b;
-import com.tencent.mm.plugin.luckymoney.b.f;
-import com.tencent.mm.plugin.luckymoney.b.o;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyDetailUI$8
-  implements Runnable
+  implements View.OnClickListener
 {
-  LuckyMoneyDetailUI$8(LuckyMoneyDetailUI paramLuckyMoneyDetailUI, hn paramhn, f paramf) {}
+  LuckyMoneyDetailUI$8(LuckyMoneyDetailUI paramLuckyMoneyDetailUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    if (this.lUI.bPw.bPy)
-    {
-      y.i("MicroMsg.LuckyMoneyDetailUI", "Get res Ok, path=" + this.lUI.bPw.bPz);
-      AppCompatActivity localAppCompatActivity = this.lVz.mController.uMN;
-      o.e(LuckyMoneyDetailUI.v(this.lVz), this.lUI.bPw.bPz, a.e.lucky_money_busi_default_avatar);
-      return;
-    }
-    y.i("MicroMsg.LuckyMoneyDetailUI", "Get res fail & load from url.");
-    o.a(LuckyMoneyDetailUI.v(this.lVz), this.lUJ.lPV, this.lUJ.lQp);
+    AppMethodBeat.i(42653);
+    LuckyMoneyDetailUI.t(this.otz).setVisibility(0);
+    AppMethodBeat.o(42653);
   }
 }
 

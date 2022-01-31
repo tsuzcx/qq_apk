@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.fav.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FavSearchUI$11$1$1$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class FavSearchUI$11$1$1$1
   
   public final void run()
   {
-    this.kcU.kcT.kcS.kcM.finish();
+    AppMethodBeat.i(74079);
+    this.mxF.mxE.mxD.mxx.finish();
+    AppMethodBeat.o(74079);
   }
 }
 

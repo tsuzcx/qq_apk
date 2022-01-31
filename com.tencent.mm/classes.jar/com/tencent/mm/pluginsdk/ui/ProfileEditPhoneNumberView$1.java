@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ProfileEditPhoneNumberView$1
   implements DialogInterface.OnClickListener
@@ -10,12 +11,14 @@ final class ProfileEditPhoneNumberView$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.saH.saA = "";
-    this.saH.saF.cmv();
-    ProfileEditPhoneNumberView.a(this.saH, this.saG);
-    if (!ProfileEditPhoneNumberView.a(this.saH)) {
-      ProfileEditPhoneNumberView.b(this.saH);
+    AppMethodBeat.i(27509);
+    this.vRy.vRr = "";
+    this.vRy.vRw.dnl();
+    ProfileEditPhoneNumberView.a(this.vRy, this.vRx);
+    if (!ProfileEditPhoneNumberView.a(this.vRy)) {
+      ProfileEditPhoneNumberView.b(this.vRy);
     }
+    AppMethodBeat.o(27509);
   }
 }
 

@@ -1,29 +1,31 @@
 package com.tencent.mm.plugin.appbrand.dynamic.launching;
 
-import com.tencent.mm.ah.a.a;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.x;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appcache.ar;
-import com.tencent.mm.protocal.c.cls;
-import com.tencent.mm.protocal.c.or;
-import com.tencent.mm.protocal.c.os;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.a.d;
+import com.tencent.mm.plugin.appbrand.appcache.ay;
+import com.tencent.mm.protocal.protobuf.czj;
+import com.tencent.mm.protocal.protobuf.rt;
+import com.tencent.mm.protocal.protobuf.ru;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class c
 {
   private final String appId;
-  private final String bIW;
-  private final String fWH;
-  private final boolean fWI;
+  private final String cqq;
+  private final String hqh;
+  private final boolean hqi;
   
   private c(String paramString1, String paramString2, String paramString3)
   {
     this.appId = paramString1;
-    this.bIW = paramString2;
-    this.fWH = paramString3;
-    this.fWI = false;
+    this.cqq = paramString2;
+    this.hqh = paramString3;
+    this.hqi = false;
   }
   
   public c(String paramString1, String paramString2, String paramString3, byte paramByte)
@@ -31,57 +33,71 @@ public final class c
     this(paramString1, paramString2, paramString3);
   }
   
-  private void g(int paramInt, String paramString1, String paramString2)
+  private void o(int paramInt, String paramString1, String paramString2)
   {
-    ((com.tencent.mm.plugin.appbrand.a.c)g.r(com.tencent.mm.plugin.appbrand.a.c.class)).aaG().a(this.appId, paramInt, paramString1, paramString2, 0L, 0L);
+    AppMethodBeat.i(10927);
+    ((d)g.E(d.class)).we().a(this.appId, paramInt, paramString1, paramString2, 0L, 0L);
+    AppMethodBeat.o(10927);
   }
   
-  public final int afv()
+  public final int azZ()
   {
+    AppMethodBeat.i(10928);
     Object localObject = this.appId;
-    String str1 = this.bIW;
-    String str2 = this.fWH;
+    String str1 = this.cqq;
+    String str2 = this.hqh;
     b.a locala = new b.a();
-    or localor = new or();
-    localor.bOL = ((String)localObject);
-    localor.sMi = str1;
-    localor.sMj = str2;
-    locala.ecH = localor;
-    locala.ecI = new os();
+    rt localrt = new rt();
+    localrt.cwc = ((String)localObject);
+    localrt.wJV = str1;
+    localrt.wJW = str2;
+    locala.fsX = localrt;
+    locala.fsY = new ru();
     locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/checkdemoinfo";
-    locala.ecG = 1124;
-    localObject = x.c(locala.Kt());
+    locala.funcId = 1124;
+    localObject = x.c(locala.ado());
+    int i;
     if ((((a.a)localObject).errType != 0) || (((a.a)localObject).errCode != 0))
     {
-      y.e("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, errType %d, errCode %d, errMsg %s", new Object[] { this.appId, Integer.valueOf(((a.a)localObject).errType), Integer.valueOf(((a.a)localObject).errCode), ((a.a)localObject).aox });
-      return c.a.fWM.ordinal();
+      ab.e("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, errType %d, errCode %d, errMsg %s", new Object[] { this.appId, Integer.valueOf(((a.a)localObject).errType), Integer.valueOf(((a.a)localObject).errCode), ((a.a)localObject).errMsg });
+      i = c.a.hqm.ordinal();
+      AppMethodBeat.o(10928);
+      return i;
     }
     try
     {
-      localObject = (os)((a.a)localObject).ecw;
-      if (((os)localObject).sMk == null)
+      localObject = (ru)((a.a)localObject).fsN;
+      if (((ru)localObject).wJX == null)
       {
-        y.e("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, null wxaapp resp", new Object[] { this.appId });
-        return c.a.fWN.ordinal();
+        ab.e("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, null wxaapp resp", new Object[] { this.appId });
+        i = c.a.hqn.ordinal();
+        AppMethodBeat.o(10928);
+        return i;
       }
-      y.i("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, wxa.ErrCode %d, has_new_demo %b, url %s, md5 %s", new Object[] { this.appId, Integer.valueOf(((os)localObject).sMk.jxl), Boolean.valueOf(((os)localObject).sMl), ((os)localObject).sMm, ((os)localObject).sMn });
-      if (((os)localObject).sMk.jxl != 0) {
-        return ((os)localObject).sMk.jxl;
+      ab.i("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, wxa.ErrCode %d, has_new_demo %b, url %s, md5 %s", new Object[] { this.appId, Integer.valueOf(((ru)localObject).wJX.lGK), Boolean.valueOf(((ru)localObject).wJY), ((ru)localObject).wJZ, ((ru)localObject).wKa });
+      if (((ru)localObject).wJX.lGK != 0)
+      {
+        i = ((ru)localObject).wJX.lGK;
+        AppMethodBeat.o(10928);
+        return i;
       }
-      if ((((os)localObject).sMl) && (!bk.bl(((os)localObject).sMn)) && (!bk.bl(((os)localObject).sMm))) {
-        g(2, ((os)localObject).sMm, ((os)localObject).sMn);
+      if ((((ru)localObject).wJY) && (!bo.isNullOrNil(((ru)localObject).wKa)) && (!bo.isNullOrNil(((ru)localObject).wJZ))) {
+        o(2, ((ru)localObject).wJZ, ((ru)localObject).wKa);
       }
-      if ((((os)localObject).sMo) && (!bk.bl(((os)localObject).sMq)) && (!bk.bl(((os)localObject).sMp))) {
-        g(10001, ((os)localObject).sMp, ((os)localObject).sMq);
+      if ((((ru)localObject).wKb) && (!bo.isNullOrNil(((ru)localObject).wKd)) && (!bo.isNullOrNil(((ru)localObject).wKc))) {
+        o(10001, ((ru)localObject).wKc, ((ru)localObject).wKd);
       }
-      int i = c.a.fWJ.ordinal();
+      i = c.a.hqj.ordinal();
+      AppMethodBeat.o(10928);
       return i;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", localException, "CgiCheckDemoInfo, appId %s, cast response failed", new Object[] { this.appId });
+      ab.printErrStackTrace("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", localException, "CgiCheckDemoInfo, appId %s, cast response failed", new Object[] { this.appId });
+      i = c.a.hqn.ordinal();
+      AppMethodBeat.o(10928);
     }
-    return c.a.fWN.ordinal();
+    return i;
   }
 }
 

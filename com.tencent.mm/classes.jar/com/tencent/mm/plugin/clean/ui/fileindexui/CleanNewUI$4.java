@@ -3,12 +3,10 @@ package com.tencent.mm.plugin.clean.ui.fileindexui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class CleanNewUI$4
   implements View.OnClickListener
@@ -17,28 +15,30 @@ final class CleanNewUI$4
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.CleanNewUI", "qq mgr btn click");
-    com.tencent.mm.plugin.report.service.h.nFQ.a(714L, 3L, 1L, false);
-    if (!CleanNewUI.b(this.iDR))
+    AppMethodBeat.i(18815);
+    ab.i("MicroMsg.CleanNewUI", "qq mgr btn click");
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(714L, 3L, 1L, false);
+    if (!CleanNewUI.b(this.kIY))
     {
-      if (CleanNewUI.c(this.iDR)) {
-        com.tencent.mm.ui.base.h.a(this.iDR, this.iDR.getString(R.l.clean_download_qqmgr_tips, new Object[] { bk.ht(CleanNewUI.d(this.iDR)) }), "", this.iDR.getString(R.l.app_download), this.iDR.getString(R.l.app_cancel), new CleanNewUI.4.1(this), null);
+      if (CleanNewUI.c(this.kIY))
+      {
+        com.tencent.mm.ui.base.h.d(this.kIY, this.kIY.getString(2131298379, new Object[] { bo.nV(CleanNewUI.d(this.kIY)) }), "", this.kIY.getString(2131296907), this.kIY.getString(2131296888), new CleanNewUI.4.1(this), null);
+        AppMethodBeat.o(18815);
+        return;
       }
+      paramView = new Intent();
+      paramView.putExtra("rawUrl", "http://weixin.qq.com/cgi-bin/readtemplate?t=w_safe&qqpimenter=shoushen");
+      paramView.putExtra("show_bottom", false);
+      paramView.putExtra("showShare", false);
+      d.b(this.kIY.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(714L, 5L, 1L, false);
     }
-    else {
-      return;
-    }
-    paramView = new Intent();
-    paramView.putExtra("rawUrl", "http://weixin.qq.com/cgi-bin/readtemplate?t=w_safe&qqpimenter=shoushen");
-    paramView.putExtra("show_bottom", false);
-    paramView.putExtra("showShare", false);
-    d.b(this.iDR.mController.uMN, "webview", ".ui.tools.WebViewUI", paramView);
-    com.tencent.mm.plugin.report.service.h.nFQ.a(714L, 5L, 1L, false);
+    AppMethodBeat.o(18815);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.CleanNewUI.4
  * JD-Core Version:    0.7.0.1
  */

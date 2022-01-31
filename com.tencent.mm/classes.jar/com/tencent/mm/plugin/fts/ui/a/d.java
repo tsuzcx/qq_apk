@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.fts.ui.a;
 
 import android.content.Context;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.ui.b.c;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.u;
@@ -15,40 +16,45 @@ import com.tencent.mm.storage.u;
 public final class d
   extends m
 {
-  public u kBd;
-  public CharSequence kCI;
-  private d.a kCJ = new d.a(this);
+  public u mWV;
+  public CharSequence mYE;
+  private d.a mYF;
   
   public d(int paramInt)
   {
     super(paramInt);
+    AppMethodBeat.i(61976);
+    this.mYF = new d.a(this);
+    AppMethodBeat.o(61976);
   }
   
-  public final a.b BD()
+  public final a.b Pr()
   {
-    return this.kCJ;
+    return this.mYF;
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
+    AppMethodBeat.i(61977);
     super.a(paramContext, parama, paramVarArgs);
-    ad localad = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abl(this.fYx.talker);
+    ad localad = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(this.hrL.talker);
     if (localad == null) {
-      parama = com.tencent.mm.plugin.fts.a.d.Cy(this.fYx.kwg);
+      parama = com.tencent.mm.plugin.fts.a.d.NA(this.hrL.mRV);
     }
     for (;;)
     {
-      if (!bk.bl(parama)) {
-        this.kCI = com.tencent.mm.pluginsdk.ui.d.j.b(paramContext, parama, b.c.kAf);
+      if (!bo.isNullOrNil(parama)) {
+        this.mYE = com.tencent.mm.pluginsdk.ui.d.j.d(paramContext, parama, b.c.mVX);
       }
+      AppMethodBeat.o(61977);
       return;
-      if (bk.bl(localad.field_conRemark))
+      if (bo.isNullOrNil(localad.field_conRemark))
       {
-        if (this.kBd != null)
+        if (this.mWV != null)
         {
-          paramVarArgs = this.kBd.gV(this.fYx.talker);
+          paramVarArgs = this.mWV.nE(this.hrL.talker);
           parama = paramVarArgs;
-          if (bk.bl(paramVarArgs)) {
+          if (bo.isNullOrNil(paramVarArgs)) {
             parama = localad.field_nickname;
           }
         }

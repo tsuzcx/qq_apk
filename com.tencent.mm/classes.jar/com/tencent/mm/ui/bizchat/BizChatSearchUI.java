@@ -1,216 +1,364 @@
 package com.tencent.mm.ui.bizchat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.aj.a.l;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.modelvoiceaddr.ui.b;
 import com.tencent.mm.modelvoiceaddr.ui.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.fts.a.a.d;
+import com.tencent.mm.plugin.fts.a.a.e;
+import com.tencent.mm.plugin.fts.a.f;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.s;
 
 @a(3)
 public class BizChatSearchUI
   extends MMActivity
   implements b.a, BizChatSearchListView.a
 {
-  String idQ;
-  b idl;
-  private AbsListView.OnScrollListener kXQ = new BizChatSearchUI.1(this);
+  b jTZ;
+  String jUE;
+  private AbsListView.OnScrollListener nvS;
   private int scene;
-  private String vfd;
-  private BizChatSearchUI.c vfe;
-  BizChatSearchListView vff;
-  TextView vfg;
-  private BizChatSearchUI.a vfh;
+  private String ztC;
+  private BizChatSearchUI.c ztD;
+  private BizChatSearchListView ztE;
+  private TextView ztF;
+  private BizChatSearchUI.a ztG;
   
-  public final void GE(int paramInt)
+  public BizChatSearchUI()
   {
-    BizChatSearchUI.c localc;
-    if (this.vfe != null) {
-      localc = this.vfe;
-    }
-    switch (paramInt)
+    AppMethodBeat.i(30159);
+    this.nvS = new AbsListView.OnScrollListener()
     {
-    default: 
-      localc.v(false, false);
-      return;
-    case 1: 
-      localc.v(true, false);
+      boolean jTN = false;
+      
+      public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      {
+        if (paramAnonymousInt1 + paramAnonymousInt2 == paramAnonymousInt3)
+        {
+          this.jTN = true;
+          return;
+        }
+        this.jTN = false;
+      }
+      
+      public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(30135);
+        if ((paramAnonymousInt == 0) && (this.jTN) && (BizChatSearchUI.a(BizChatSearchUI.this).ztV))
+        {
+          paramAnonymousAbsListView = BizChatSearchUI.a(BizChatSearchUI.this);
+          if ((paramAnonymousAbsListView.dEZ()) && (!paramAnonymousAbsListView.ztX))
+          {
+            paramAnonymousAbsListView.ztX = true;
+            l locall = new l(paramAnonymousAbsListView.jUE, paramAnonymousAbsListView.ejd, paramAnonymousAbsListView.zub);
+            aw.Rc().a(locall, 0);
+            paramAnonymousAbsListView.dFd();
+          }
+        }
+        AppMethodBeat.o(30135);
+      }
+    };
+    AppMethodBeat.o(30159);
+  }
+  
+  private void OY(int paramInt)
+  {
+    AppMethodBeat.i(30173);
+    if (this.ztD != null) {
+      this.ztD.sb(paramInt);
+    }
+    AppMethodBeat.o(30173);
+  }
+  
+  public final void a(BizChatSearchUI.a parama)
+  {
+    AppMethodBeat.i(30163);
+    if (BizChatSearchUI.a.c(parama))
+    {
+      if (bo.isNullOrNil(BizChatSearchUI.a.d(parama)))
+      {
+        this.ztF.setVisibility(8);
+        this.ztE.setVisibility(8);
+        AppMethodBeat.o(30163);
+        return;
+      }
+      if (parama.getCount() <= 0)
+      {
+        this.ztF.setVisibility(0);
+        this.ztE.setVisibility(8);
+        AppMethodBeat.o(30163);
+        return;
+      }
+      this.ztF.setVisibility(8);
+      this.ztE.setVisibility(0);
+      AppMethodBeat.o(30163);
       return;
     }
-    localc.v(false, true);
+    if (bo.isNullOrNil(BizChatSearchUI.a.d(parama)))
+    {
+      this.ztF.setVisibility(0);
+      this.ztF.setText("");
+      this.ztE.setVisibility(8);
+    }
+    while (BizChatSearchUI.a.b(parama)) {
+      if (parama.ztX)
+      {
+        OY(1);
+        AppMethodBeat.o(30163);
+        return;
+        if ((BizChatSearchUI.a.b(parama)) && (parama.ztW))
+        {
+          this.ztF.setVisibility(0);
+          this.ztF.setText(2131297758);
+          this.ztE.setVisibility(8);
+        }
+        else if ((BizChatSearchUI.a.b(parama)) && (parama.zua))
+        {
+          this.ztF.setVisibility(0);
+          this.ztF.setText(2131297759);
+          this.ztE.setVisibility(8);
+        }
+        else if (parama.getCount() <= 0)
+        {
+          this.ztF.setVisibility(0);
+          this.ztF.setText(f.a(getString(2131302982), getString(2131302981), d.b(BizChatSearchUI.a.d(parama), BizChatSearchUI.a.d(parama))).mSp);
+          this.ztE.setVisibility(8);
+        }
+        else
+        {
+          this.ztF.setVisibility(8);
+          this.ztE.setVisibility(0);
+        }
+      }
+      else
+      {
+        if (parama.ztV)
+        {
+          OY(2);
+          AppMethodBeat.o(30163);
+          return;
+        }
+        OY(0);
+      }
+    }
+    AppMethodBeat.o(30163);
   }
-  
-  public final void TP()
-  {
-    XM();
-  }
-  
-  public final void Wl()
-  {
-    finish();
-  }
-  
-  public final void Wm() {}
-  
-  public final void Wn() {}
-  
-  public final void Wo() {}
   
   public final void a(boolean paramBoolean, String[] paramArrayOfString, long paramLong, int paramInt) {}
   
-  public final boolean axC()
+  public final boolean aWA()
   {
-    XM();
+    AppMethodBeat.i(30172);
+    hideVKB();
+    AppMethodBeat.o(30172);
     return false;
   }
   
-  protected final int getLayoutId()
+  public final void anc()
   {
-    return R.i.enterprise_bizchat_search;
+    AppMethodBeat.i(30167);
+    hideVKB();
+    AppMethodBeat.o(30167);
   }
   
-  protected final void initView()
+  public final void apN()
   {
-    if (bk.bl(this.idQ))
+    AppMethodBeat.i(30164);
+    finish();
+    AppMethodBeat.o(30164);
+  }
+  
+  public final void apO() {}
+  
+  public final void apP() {}
+  
+  public final void apQ() {}
+  
+  public int getLayoutId()
+  {
+    return 2130969435;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(30161);
+    if (bo.isNullOrNil(this.jUE))
     {
-      this.idQ = getIntent().getStringExtra("enterprise_biz_name");
+      this.jUE = getIntent().getStringExtra("enterprise_biz_name");
       this.scene = getIntent().getIntExtra("biz_chat_search_scene", 1);
-      this.vfd = getIntent().getStringExtra("biz_chat_search_text");
-      if (bk.bl(this.idQ)) {
+      this.ztC = getIntent().getStringExtra("biz_chat_search_text");
+      if (bo.isNullOrNil(this.jUE)) {
         finish();
       }
     }
-    this.vff = ((BizChatSearchListView)findViewById(R.h.bizchat_lv));
-    this.vfg = ((TextView)findViewById(R.h.no_result_tv));
-    this.vfh = new BizChatSearchUI.a(this.mController.uMN, this.idQ, this.scene);
-    if (BizChatSearchUI.a.a(this.vfh))
+    this.ztE = ((BizChatSearchListView)findViewById(2131823737));
+    this.ztF = ((TextView)findViewById(2131820918));
+    this.ztG = new BizChatSearchUI.a(getContext(), this.jUE, this.scene);
+    if (BizChatSearchUI.a.b(this.ztG))
     {
-      this.vfe = new BizChatSearchUI.c((byte)0);
-      BizChatSearchListView localBizChatSearchListView = this.vff;
-      BizChatSearchUI.c localc = this.vfe;
-      View localView = View.inflate(this.mController.uMN, R.i.loading_footer, null);
-      localc.ida = localView.findViewById(R.h.loading_progress);
-      localc.idb = localView.findViewById(R.h.loading_end);
-      localc.idc = localView.findViewById(R.h.loading_tip);
-      localc.ida.setVisibility(8);
-      localc.idb.setVisibility(8);
-      localc.idc.setVisibility(8);
+      this.ztD = new BizChatSearchUI.c((byte)0);
+      BizChatSearchListView localBizChatSearchListView = this.ztE;
+      BizChatSearchUI.c localc = this.ztD;
+      View localView = View.inflate(getContext(), 2130969988, null);
+      localc.jTP = localView.findViewById(2131825426);
+      localc.jTQ = localView.findViewById(2131822313);
+      localc.jTR = localView.findViewById(2131825427);
+      localc.jTP.setVisibility(8);
+      localc.jTQ.setVisibility(8);
+      localc.jTR.setVisibility(8);
       localBizChatSearchListView.addFooterView(localView);
-      GE(0);
+      OY(0);
     }
-    this.vff.setAdapter(this.vfh);
-    this.vff.setOnItemClickListener(new BizChatSearchUI.2(this));
-    this.vff.setOnTouchListener(this);
-    if (BizChatSearchUI.a.a(this.vfh)) {
-      this.vff.setOnScrollListener(this.kXQ);
+    this.ztE.setAdapter(this.ztG);
+    this.ztE.setOnItemClickListener(new BizChatSearchUI.2(this));
+    this.ztE.setOnTouchListener(this);
+    if (BizChatSearchUI.a.b(this.ztG)) {
+      this.ztE.setOnScrollListener(this.nvS);
     }
-    this.idl = new b();
-    this.idl.nK(BizChatSearchUI.a.b(this.vfh));
-    this.idl.a(this);
-    this.idl.eNe = false;
+    this.jTZ = new b();
+    this.jTZ.ru(BizChatSearchUI.a.c(this.ztG));
+    this.jTZ.a(this);
+    this.jTZ.gcJ = false;
+    AppMethodBeat.o(30161);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(30160);
     super.onCreate(paramBundle);
     initView();
+    AppMethodBeat.o(30160);
   }
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    this.idl.a(this, paramMenu);
+    AppMethodBeat.i(30170);
+    this.jTZ.a(this, paramMenu);
+    AppMethodBeat.o(30170);
     return true;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(30169);
     super.onDestroy();
+    AppMethodBeat.o(30169);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(30168);
     super.onPause();
-    this.idl.cancel();
-    this.idl.clearFocus();
+    this.jTZ.cancel();
+    this.jTZ.clearFocus();
+    AppMethodBeat.o(30168);
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
-    this.idl.a(this, paramMenu);
+    AppMethodBeat.i(30171);
+    this.jTZ.a(this, paramMenu);
+    AppMethodBeat.o(30171);
     return true;
   }
   
-  public final boolean pB(String paramString)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    XM();
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public final boolean wR(String paramString)
+  {
+    AppMethodBeat.i(30166);
+    hideVKB();
+    AppMethodBeat.o(30166);
     return true;
   }
   
-  public final void pC(String paramString)
+  public final void wS(String paramString)
   {
     BizChatSearchUI.a locala = null;
-    if ((bk.bl(paramString)) && (this.vfd != null))
+    AppMethodBeat.i(30165);
+    if ((bo.isNullOrNil(paramString)) && (this.ztC != null))
     {
-      paramString = this.vfd;
-      this.vfd = null;
+      paramString = this.ztC;
+      this.ztC = null;
       if (!paramString.equals("")) {
-        this.idl.setSearchContent(paramString);
+        this.jTZ.setSearchContent(paramString);
       }
-      b localb = this.idl;
-      if (BizChatSearchUI.a.b(this.vfh))
+      b localb = this.jTZ;
+      if (BizChatSearchUI.a.c(this.ztG)) {
+        paramString = getContext().getResources().getString(2131297760);
+      }
+      for (;;)
       {
-        paramString = this.mController.uMN.getResources().getString(R.l.bizchat_search_main_hint);
         localb.setHint(paramString);
-        this.idl.clearFocus();
+        this.jTZ.clearFocus();
+        AppMethodBeat.o(30165);
+        return;
+        if (BizChatSearchUI.a.b(this.ztG))
+        {
+          paramString = getContext().getResources().getString(2131297764);
+        }
+        else
+        {
+          paramString = locala;
+          if (BizChatSearchUI.a.e(this.ztG)) {
+            paramString = getContext().getResources().getString(2131297757);
+          }
+        }
       }
     }
-    do
+    locala = this.ztG;
+    locala.ejd = paramString;
+    if (bo.isNullOrNil(paramString))
     {
+      locala.clearData();
+      locala.ztW = false;
+      locala.zua = false;
+      locala.qN(true);
+      AppMethodBeat.o(30165);
       return;
-      if (BizChatSearchUI.a.a(this.vfh))
-      {
-        paramString = this.mController.uMN.getResources().getString(R.l.bizchat_search_user_hint);
-        break;
-      }
-      paramString = locala;
-      if (!BizChatSearchUI.a.d(this.vfh)) {
-        break;
-      }
-      paramString = this.mController.uMN.getResources().getString(R.l.bizchat_search_group_hint);
-      break;
-      locala = this.vfh;
-      locala.drv = paramString;
-      if (bk.bl(paramString))
-      {
-        locala.adg();
-        locala.vfx = false;
-        locala.vfB = false;
-        locala.nh(true);
-        return;
-      }
-      if (locala.cBF())
-      {
-        locala.vfx = true;
-        locala.vfB = false;
-        locala.cBH();
-        locala.bK(paramString, false);
-        locala.adk(paramString);
-        return;
-      }
-      locala.bK(paramString, true);
-    } while ((!locala.vfl) || (!locala.vfx));
-    locala.adk(paramString);
+    }
+    if (locala.dEZ())
+    {
+      locala.ztW = true;
+      locala.zua = false;
+      locala.dFd();
+      locala.cm(paramString, false);
+      locala.atF(paramString);
+      AppMethodBeat.o(30165);
+      return;
+    }
+    locala.cm(paramString, true);
+    if ((locala.ztK) && (locala.ztW)) {
+      locala.atF(paramString);
+    }
+    AppMethodBeat.o(30165);
+  }
+  
+  static final class f
+  {
+    public View contentView;
+    public ImageView egq;
+    public TextView gpL;
+    public TextView gpM;
   }
 }
 

@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.appbrand.canvas;
 
 import android.graphics.Canvas;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionWrapper;
 import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
 import com.tencent.mm.plugin.appbrand.canvas.widget.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -16,51 +18,60 @@ import org.json.JSONObject;
 public final class b
   implements com.tencent.mm.plugin.appbrand.canvas.widget.a
 {
-  volatile boolean fKP;
-  JSONArray fKQ;
-  volatile DrawCanvasArg fKR;
-  private d fKS;
-  private c fKT;
-  com.tencent.mm.plugin.appbrand.canvas.widget.a fKU;
-  private volatile String fKV;
-  public volatile boolean fKW;
-  private Runnable fKX = new Runnable()
-  {
-    public final void run()
-    {
-      b.this.fLf = 0L;
-      b.this.fKW = true;
-    }
-  };
-  private Runnable fKY = new b.2(this);
-  private volatile long fKZ;
-  private volatile long fLa;
-  protected volatile int fLb = 0;
-  protected volatile long fLc;
-  protected volatile long fLd;
-  protected volatile long fLe;
-  protected volatile long fLf;
-  private com.tencent.mm.plugin.appbrand.canvas.c.a fLg;
-  boolean fLh = true;
-  private String fLi;
+  volatile boolean hed;
+  JSONArray hee;
+  volatile DrawCanvasArg hef;
+  private d heg;
+  private c heh;
+  com.tencent.mm.plugin.appbrand.canvas.widget.a hei;
+  private Runnable hej;
+  private Runnable hek;
+  private volatile long hel;
+  private volatile long hem;
+  protected volatile int hen;
+  protected volatile long heo;
+  protected volatile long hep;
+  protected volatile long heq;
+  protected volatile long her;
+  private com.tencent.mm.plugin.appbrand.canvas.c.a hes;
+  boolean het;
+  private String heu;
   protected volatile int mCount;
+  public volatile boolean mPause;
+  private volatile String mSessionId;
   
   public b(com.tencent.mm.plugin.appbrand.canvas.widget.a parama)
   {
-    this.fKU = parama;
-    this.fKS = new d(new b.a(parama));
-    this.fKT = new c();
+    AppMethodBeat.i(103149);
+    this.hej = new Runnable()
+    {
+      public final void run()
+      {
+        b.this.her = 0L;
+        b.this.mPause = true;
+      }
+    };
+    this.hek = new b.2(this);
+    this.hen = 0;
+    this.het = true;
+    this.hei = parama;
+    this.heg = new d(new b.a(parama));
+    this.heh = new c();
+    AppMethodBeat.o(103149);
   }
   
   private boolean a(Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    this.fKP = false;
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
+    AppMethodBeat.i(103152);
+    this.hed = false;
+    if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
+    {
+      AppMethodBeat.o(103152);
       return false;
     }
-    long l1 = this.fKZ;
+    long l1 = this.hel;
     long l2 = System.nanoTime();
-    this.fKS.reset();
+    this.heg.reset();
     int i = 0;
     for (;;)
     {
@@ -70,55 +81,63 @@ public final class b
         if (localJSONObject != null) {}
         try
         {
-          this.fKT.a(this.fKS, paramCanvas, localJSONObject);
+          this.heh.a(this.heg, paramCanvas, localJSONObject);
           i += 1;
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            y.e("MicroMsg.DrawActionDelegateImpl", "drawAction error, exception : %s", new Object[] { localException });
+            ab.e("MicroMsg.DrawActionDelegateImpl", "drawAction error, exception : %s", new Object[] { localException });
           }
         }
       }
     }
-    c(l1, l2, System.nanoTime());
+    e(l1, l2, System.nanoTime());
     l1 = System.currentTimeMillis();
-    if (!this.fKW) {
-      this.fLf = l1;
+    if (!this.mPause) {
+      this.her = l1;
     }
+    AppMethodBeat.o(103152);
     return true;
   }
   
-  private void c(long paramLong1, long paramLong2, long paramLong3)
+  private void e(long paramLong1, long paramLong2, long paramLong3)
   {
     if (paramLong1 != 0L)
     {
-      this.fLe = (paramLong3 - paramLong2 + this.fLe);
-      this.fLd += paramLong3 - paramLong1;
+      this.heq = (paramLong3 - paramLong2 + this.heq);
+      this.hep += paramLong3 - paramLong1;
       this.mCount += 1;
     }
   }
   
   private boolean g(Canvas paramCanvas)
   {
-    this.fKS.fLy = true;
-    if (this.fKR == null)
+    AppMethodBeat.i(103151);
+    this.heg.heJ = true;
+    if (this.hef == null)
     {
-      this.fKP = false;
+      this.hed = false;
+      AppMethodBeat.o(103151);
       return false;
     }
-    if ((this.fKR.fMI) && (!this.fKR.fMM)) {
-      return a(paramCanvas, this.fKR.fMJ);
+    if ((this.hef.hfS) && (!this.hef.hfW))
+    {
+      boolean bool = a(paramCanvas, this.hef.hfT);
+      AppMethodBeat.o(103151);
+      return bool;
     }
-    this.fKP = false;
-    if (this.fKR == null) {}
-    for (Object localObject1 = null; (localObject1 == null) || (((List)localObject1).size() == 0); localObject1 = this.fKR.fMg) {
+    this.hed = false;
+    if (this.hef == null) {}
+    for (Object localObject1 = null; (localObject1 == null) || (((List)localObject1).size() == 0); localObject1 = this.hef.hfq)
+    {
+      AppMethodBeat.o(103151);
       return false;
     }
-    long l1 = this.fKZ;
+    long l1 = this.hel;
     long l2 = System.nanoTime();
-    this.fKS.reset();
+    this.heg.reset();
     localObject1 = ((List)localObject1).iterator();
     for (;;)
     {
@@ -126,170 +145,195 @@ public final class b
       {
         if (((Iterator)localObject1).hasNext())
         {
-          localObject3 = (DrawActionWrapper)((Iterator)localObject1).next();
-          if (localObject3 == null) {
+          localObject4 = (DrawActionWrapper)((Iterator)localObject1).next();
+          if (localObject4 == null) {
             continue;
           }
           try
           {
-            switch (((DrawActionWrapper)localObject3).type)
+            switch (((DrawActionWrapper)localObject4).type)
             {
             case 1: 
-              y.w("MicroMsg.DrawActionDelegateImpl", "unknown arg type %d", new Object[] { Integer.valueOf(((DrawActionWrapper)localObject3).type) });
+              ab.w("MicroMsg.DrawActionDelegateImpl", "unknown arg type %d", new Object[] { Integer.valueOf(((DrawActionWrapper)localObject4).type) });
             }
           }
           catch (Exception localException)
           {
-            y.e("MicroMsg.DrawActionDelegateImpl", "drawAction error, exception : %s", new Object[] { localException });
+            ab.e("MicroMsg.DrawActionDelegateImpl", "drawAction error, exception : %s", new Object[] { localException });
           }
           continue;
         }
-        this.fKT.a(this.fKS, paramCanvas, ((DrawActionWrapper)localObject3).fLB);
+        this.heh.a(this.heg, paramCanvas, ((DrawActionWrapper)localObject4).heM);
       }
       catch (Exception paramCanvas)
       {
-        y.printErrStackTrace("MicroMsg.DrawActionDelegateImpl", paramCanvas, "", new Object[0]);
-        c(l1, l2, System.nanoTime());
+        ab.printErrStackTrace("MicroMsg.DrawActionDelegateImpl", paramCanvas, "", new Object[0]);
+        e(l1, l2, System.nanoTime());
         l1 = System.currentTimeMillis();
-        if (!this.fKW) {
-          this.fLf = l1;
+        if (!this.mPause) {
+          this.her = l1;
         }
+        AppMethodBeat.o(103151);
         return true;
       }
-      throw new IllegalStateException("please use draw obj " + ((DrawActionWrapper)localObject3).fLB.toString());
-      Object localObject2 = this.fKT;
-      d locald = this.fKS;
-      Object localObject3 = ((DrawActionWrapper)localObject3).fLA;
-      localObject2 = (com.tencent.mm.plugin.appbrand.canvas.action.d)((c)localObject2).fLo.get(((BaseDrawActionArg)localObject3).method);
-      if (localObject2 != null) {
-        ((com.tencent.mm.plugin.appbrand.canvas.action.d)localObject2).a(locald, paramCanvas, (DrawActionArg)localObject3);
+      Object localObject2 = new IllegalStateException("please use draw obj " + ((DrawActionWrapper)localObject4).heM.toString());
+      AppMethodBeat.o(103151);
+      throw ((Throwable)localObject2);
+      Object localObject3 = this.heh;
+      localObject2 = this.heg;
+      Object localObject4 = ((DrawActionWrapper)localObject4).heL;
+      localObject3 = (com.tencent.mm.plugin.appbrand.canvas.action.d)((c)localObject3).heA.get(((BaseDrawActionArg)localObject4).method);
+      if (localObject3 != null) {
+        ((com.tencent.mm.plugin.appbrand.canvas.action.d)localObject3).a((d)localObject2, paramCanvas, (DrawActionArg)localObject4);
       }
     }
+  }
+  
+  public final void B(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(103159);
+    if (equals(this.hei))
+    {
+      AppMethodBeat.o(103159);
+      return;
+    }
+    al.d(paramRunnable);
+    AppMethodBeat.o(103159);
   }
   
   public final void a(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
-    this.fKU.t(new b.5(this, paramDrawCanvasArg, parama));
+    AppMethodBeat.i(103155);
+    this.hei.B(new b.5(this, paramDrawCanvasArg, parama));
+    AppMethodBeat.o(103155);
   }
   
   public final void a(JSONArray paramJSONArray, a.a parama)
   {
-    this.fKU.t(new b.3(this, paramJSONArray, parama));
+    AppMethodBeat.i(103153);
+    this.hei.B(new b.3(this, paramJSONArray, parama));
+    AppMethodBeat.o(103153);
   }
   
-  public final void adB() {}
+  public final void axT() {}
   
-  public final void adC()
+  public final void axU()
   {
-    this.fKU.t(new b.7(this));
+    AppMethodBeat.i(103157);
+    this.hei.B(new b.7(this));
+    AppMethodBeat.o(103157);
   }
   
-  public final void adD()
+  public final void axV()
   {
+    AppMethodBeat.i(103160);
     int i = this.mCount;
-    long l1 = this.fLe;
-    long l2 = this.fLd;
-    if ((i <= 0) || (l1 <= 0L) || (l2 <= 0L)) {}
-    float f1;
-    float f2;
-    do
+    long l1 = this.heq;
+    long l2 = this.hep;
+    if ((i <= 0) || (l1 <= 0L) || (l2 <= 0L))
     {
+      AppMethodBeat.o(103160);
       return;
-      f1 = (float)this.fLc * 1.0F / this.fLb / 1000000.0F;
-      f2 = (float)l1 * 1.0F / i / 1000000.0F;
-      y.i("MicroMsg.DrawActionDelegateImpl", "firstDraw timecost %f, onDraw timecost %f, firstDraw count %d, drawCount %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(this.fLb), Integer.valueOf(i) });
-    } while (this.fLg == null);
-    this.fLg.cv(l1 / i);
-    this.fLg.cw(l2 / i);
-    this.fLg.b(l1, l2, i);
-    this.fLg.ae(f1);
-    this.fLg.af(f2);
+    }
+    float f1 = (float)this.heo * 1.0F / this.hen / 1000000.0F;
+    float f2 = (float)l1 * 1.0F / i / 1000000.0F;
+    ab.i("MicroMsg.DrawActionDelegateImpl", "firstDraw timecost %f, onDraw timecost %f, firstDraw count %d, drawCount %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(this.hen), Integer.valueOf(i) });
+    if (this.hes != null)
+    {
+      this.hes.hu(l1 / i);
+      this.hes.hv(l2 / i);
+      this.hes.b(l1, l2, i);
+      this.hes.ap(f1);
+      this.hes.aq(f2);
+    }
+    AppMethodBeat.o(103160);
   }
   
   public final void b(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
-    if (paramDrawCanvasArg == null) {
+    AppMethodBeat.i(103156);
+    if (paramDrawCanvasArg == null)
+    {
+      AppMethodBeat.o(103156);
       return;
     }
-    this.fKU.t(new b.6(this, paramDrawCanvasArg, parama));
+    this.hei.B(new b.6(this, paramDrawCanvasArg, parama));
+    AppMethodBeat.o(103156);
   }
   
   public final void b(JSONArray paramJSONArray, a.a parama)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
+    AppMethodBeat.i(103154);
+    if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
+    {
+      AppMethodBeat.o(103154);
       return;
     }
-    this.fKU.t(new b.4(this, paramJSONArray, parama));
+    this.hei.B(new b.4(this, paramJSONArray, parama));
+    AppMethodBeat.o(103154);
   }
   
   public final boolean f(Canvas paramCanvas)
   {
-    if (this.fLh)
+    AppMethodBeat.i(103150);
+    if (this.het)
     {
-      this.fKS.fLy = false;
-      return a(paramCanvas, this.fKQ);
+      this.heg.heJ = false;
+      bool = a(paramCanvas, this.hee);
+      AppMethodBeat.o(103150);
+      return bool;
     }
-    return g(paramCanvas);
+    boolean bool = g(paramCanvas);
+    AppMethodBeat.o(103150);
+    return bool;
   }
   
   public final d getDrawContext()
   {
-    return this.fKS;
+    return this.heg;
   }
   
   public final String getSessionId()
   {
-    return this.fKV;
+    return this.mSessionId;
   }
   
   public final String getTraceId()
   {
-    return this.fLi;
+    return this.heu;
   }
   
   public final boolean isPaused()
   {
-    return this.fKW;
-  }
-  
-  public final void onPause()
-  {
-    this.fKZ = 0L;
-    this.fKU.t(this.fKX);
+    return this.mPause;
   }
   
   public final void onResume()
   {
-    this.fKU.t(this.fKY);
+    AppMethodBeat.i(103158);
+    this.hei.B(this.hek);
+    AppMethodBeat.o(103158);
   }
   
   public final void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
-    this.fLg = parama;
+    this.hes = parama;
   }
   
   public final void setSessionId(String paramString)
   {
-    this.fKV = paramString;
+    this.mSessionId = paramString;
   }
   
   public final void setStartTime(long paramLong)
   {
-    this.fKZ = paramLong;
-    this.fLa = paramLong;
+    this.hel = paramLong;
+    this.hem = paramLong;
   }
   
   public final void setTraceId(String paramString)
   {
-    this.fLi = paramString;
-  }
-  
-  public final void t(Runnable paramRunnable)
-  {
-    if (equals(this.fKU)) {
-      return;
-    }
-    this.fKU.t(paramRunnable);
+    this.heu = paramString;
   }
 }
 

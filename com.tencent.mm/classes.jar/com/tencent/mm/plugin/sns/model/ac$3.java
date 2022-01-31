@@ -1,37 +1,41 @@
 package com.tencent.mm.plugin.sns.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.r;
 import com.tencent.mm.plugin.sns.storage.s;
-import com.tencent.mm.protocal.c.avn;
-import com.tencent.mm.protocal.c.awg;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bby;
+import com.tencent.mm.protocal.protobuf.bcv;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ac$3
   implements Runnable
 {
-  ac$3(ac paramac, avn paramavn) {}
+  ac$3(ac paramac, bby parambby) {}
   
   public final void run()
   {
-    this.orm.trb += 1;
+    AppMethodBeat.i(36373);
+    this.rfY.xrb += 1;
     try
     {
-      y.i("MicroMsg.SightCdnUpload", "add try count %d", new Object[] { Integer.valueOf(this.orm.trb) });
-      awg localawg = (awg)new awg().aH(this.orn.ori.oLV);
-      localawg.tsP = this.orm;
-      this.orn.ori.oLV = localawg.toByteArray();
-      af.bDu().a(this.orn.ori.oLk, this.orn.ori);
+      ab.i("MicroMsg.SightCdnUpload", "add try count %d", new Object[] { Integer.valueOf(this.rfY.xrb) });
+      bcv localbcv = (bcv)new bcv().parseFrom(this.rfZ.rfU.rDG);
+      localbcv.xsQ = this.rfY;
+      this.rfZ.rfU.rDG = localbcv.toByteArray();
+      ag.coU().a(this.rfZ.rfU.rCV, this.rfZ.rfU);
+      AppMethodBeat.o(36373);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.SightCdnUpload", "parseFrom MediaUploadInfo error in checkUploadaddCount %s", new Object[] { localException.getMessage() });
+      ab.e("MicroMsg.SightCdnUpload", "parseFrom MediaUploadInfo error in checkUploadaddCount %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(36373);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ac.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.webview.ui.tools.bag;
 
-import com.tencent.mm.plugin.webview.d.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.e.a;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class m
   implements a
 {
-  public final void ccW()
+  public final void dcS()
   {
-    ai.d(new m.1(this));
+    AppMethodBeat.i(8245);
+    al.d(new m.1(this));
+    AppMethodBeat.o(8245);
   }
   
-  public final void ccX()
+  public final void dcT()
   {
-    ai.d(new m.2(this));
+    AppMethodBeat.i(8246);
+    al.d(new m.2(this));
+    AppMethodBeat.o(8246);
   }
 }
 

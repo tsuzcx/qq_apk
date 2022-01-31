@@ -2,42 +2,50 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.graphics.BitmapFactory;
 import android.widget.ProgressBar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class w$1
   implements f.a
 {
   w$1(w paramw) {}
   
-  public final void Op(String paramString)
+  public final void abi(String paramString)
   {
+    AppMethodBeat.i(37265);
     try
     {
       paramString = BitmapFactory.decodeFile(paramString);
-      this.oHJ.K(paramString);
+      this.rxy.W(paramString);
+      AppMethodBeat.o(37265);
       return;
     }
     catch (Exception paramString)
     {
-      y.e("AdLandingPagePureImageComponet", "%s" + bk.j(paramString));
+      ab.e("AdLandingPagePureImageComponet", "%s" + bo.l(paramString));
+      AppMethodBeat.o(37265);
     }
   }
   
-  public final void bCF()
+  public final void coe()
   {
-    this.oHJ.frw.setVisibility(8);
+    AppMethodBeat.i(37264);
+    this.rxy.progressBar.setVisibility(8);
+    AppMethodBeat.o(37264);
   }
   
-  public final void bFl()
+  public final void cqU()
   {
-    this.oHJ.startLoading();
+    AppMethodBeat.i(37263);
+    this.rxy.startLoading();
+    AppMethodBeat.o(37263);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.w.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.search.a;
 final class a$a
 {
   int id;
-  int nQa;
-  String nQb;
-  boolean nQc;
+  int qDX;
+  String qDY;
+  boolean qDZ;
   String uri;
   String username;
   
@@ -17,15 +17,15 @@ final class a$a
   public a$a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, byte paramByte)
   {
     this.id = paramInt1;
-    this.nQa = paramInt2;
+    this.qDX = paramInt2;
     this.uri = paramString1;
-    this.nQb = paramString2;
+    this.qDY = paramString2;
     this.username = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.search.a.a.a
  * JD-Core Version:    0.7.0.1
  */

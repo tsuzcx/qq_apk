@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.ax;
-import com.tencent.mm.protocal.c.auf;
-import com.tencent.mm.protocal.c.awd;
-import com.tencent.mm.protocal.c.awe;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.rp;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ay;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.bam;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.protocal.protobuf.bct;
+import com.tencent.mm.protocal.protobuf.vi;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.vfs.e;
 import java.util.LinkedList;
 
@@ -22,74 +23,77 @@ final class ac$4
   
   public final void run()
   {
-    ac localac = this.oRe;
+    AppMethodBeat.i(38341);
+    ac localac = this.rIQ;
     long l = System.currentTimeMillis();
-    ax localax;
+    ay localay;
     Object localObject2;
     Object localObject1;
     int i;
-    if ((!TextUtils.isEmpty(localac.lnw)) && (!TextUtils.isEmpty(localac.dQL)))
+    if ((!TextUtils.isEmpty(localac.nKP)) && (!TextUtils.isEmpty(localac.fgM)))
     {
-      localax = localac.oRa;
+      localay = localac.rIM;
       String str5 = localac.videoPath;
       localObject2 = localac.thumbPath;
       localObject1 = localac.desc;
-      String str1 = localac.bIW;
-      String str2 = localac.lnw;
-      String str3 = localac.dQL;
-      String str4 = af.getAccSnsTmpPath() + g.o(str5.getBytes());
-      ax.Ob(str4);
-      e.r(str5, str4);
-      str5 = af.getAccSnsTmpPath() + g.o(((String)localObject2).getBytes());
-      e.r((String)localObject2, str5);
-      localObject2 = ax.c("", str4, str5, str1, str2, str3);
+      String str1 = localac.cqq;
+      String str2 = localac.nKP;
+      String str3 = localac.fgM;
+      String str4 = ag.getAccSnsTmpPath() + g.w(str5.getBytes());
+      ay.aaV(str4);
+      e.C(str5, str4);
+      str5 = ag.getAccSnsTmpPath() + g.w(((String)localObject2).getBytes());
+      e.C((String)localObject2, str5);
+      localObject2 = ay.c("", str4, str5, str1, str2, str3);
       if (localObject2 == null)
       {
-        y.e("MicroMsg.UploadPackHelper", "share img o.imagePath is null!");
+        ab.e("MicroMsg.UploadPackHelper", "share img o.imagePath is null!");
         i = 0;
         if (i != 0) {
-          break label475;
+          break label485;
         }
-        y.i("MicroMsg.SightWidget", "commitInThread videopath " + e.aeQ(localac.videoPath) + " thumb: " + e.aeQ(localac.thumbPath) + ",cdnUrl " + localac.lnw + "cdnThubmUrl " + localac.dQL);
-        ai.d(new ac.7(localac));
+        ab.i("MicroMsg.SightWidget", "commitInThread videopath " + e.avI(localac.videoPath) + " thumb: " + e.avI(localac.thumbPath) + ",cdnUrl " + localac.nKP + "cdnThubmUrl " + localac.fgM);
+        al.d(new ac.7(localac));
       }
     }
     for (;;)
     {
-      y.i("MicroMsg.SightWidget", "removeRunnable showProgress");
-      ai.S(this.oRe.oRd);
-      if (this.oRe.oRa != null) {
-        break label500;
+      ab.i("MicroMsg.SightWidget", "removeRunnable showProgress");
+      al.ae(this.rIQ.rIP);
+      if (this.rIQ.rIM != null) {
+        break label510;
       }
+      AppMethodBeat.o(38341);
       return;
-      ((awd)localObject2).kRN = ((String)localObject1);
-      if (bk.bl(((awd)localObject2).bGw)) {
-        ((awd)localObject2).bGw = ((String)localObject1);
+      ((bcs)localObject2).Desc = ((String)localObject1);
+      if (bo.isNullOrNil(((bcs)localObject2).Title)) {
+        ((bcs)localObject2).Title = ((String)localObject1);
       }
-      localax.ouy.tNr.sPJ.add(localObject2);
-      localObject1 = new auf();
-      ((auf)localObject1).tpH = ((awd)localObject2).onc;
-      localax.ouz.tsn.add(localObject1);
+      localay.rjr.xTS.wOa.add(localObject2);
+      localObject1 = new bam();
+      ((bam)localObject1).xpE = ((bcs)localObject2).cIp;
+      localay.rjs.xsq.add(localObject1);
       i = 1;
       break;
-      if (!localac.oRa.q(localac.videoPath, localac.thumbPath, localac.desc, localac.bIW))
+      if (!localac.rIM.t(localac.videoPath, localac.thumbPath, localac.desc, localac.cqq))
       {
-        y.i("MicroMsg.SightWidget", "commitInThread videopath " + e.aeQ(localac.videoPath) + " thumb: " + e.aeQ(localac.thumbPath));
-        ai.d(new ac.8(localac));
+        ab.i("MicroMsg.SightWidget", "commitInThread videopath " + e.avI(localac.videoPath) + " thumb: " + e.avI(localac.thumbPath));
+        al.d(new ac.8(localac));
       }
       else
       {
-        label475:
-        y.i("MicroMsg.SightWidget", "commitInThread cost time %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+        label485:
+        ab.i("MicroMsg.SightWidget", "commitInThread cost time %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       }
     }
-    label500:
-    ai.d(this.oRe.oRc);
+    label510:
+    al.d(this.rIQ.rIO);
+    AppMethodBeat.o(38341);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ac.4
  * JD-Core Version:    0.7.0.1
  */

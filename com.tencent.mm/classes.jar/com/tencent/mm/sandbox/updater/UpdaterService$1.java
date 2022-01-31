@@ -1,15 +1,23 @@
 package com.tencent.mm.sandbox.updater;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class UpdaterService$1
-  implements am.a
+  implements ap.a
 {
   UpdaterService$1(UpdaterService paramUpdaterService) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    return !UpdaterService.a(this.udH);
+    AppMethodBeat.i(28984);
+    if (!UpdaterService.a(this.ylW))
+    {
+      AppMethodBeat.o(28984);
+      return true;
+    }
+    AppMethodBeat.o(28984);
+    return false;
   }
 }
 

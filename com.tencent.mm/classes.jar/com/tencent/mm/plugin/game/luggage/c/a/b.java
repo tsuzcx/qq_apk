@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.game.luggage.c.a;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
+import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.game.luggage.ipc.CommonLogicTask;
-import com.tencent.mm.plugin.webview.luggage.ipc.LuggageMainProcessService;
-import com.tencent.mm.plugin.webview.luggage.ipc.MainProcessTask;
-import com.tencent.mm.protocal.c.aol;
-import com.tencent.mm.protocal.c.awk;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aud;
+import com.tencent.mm.protocal.protobuf.bcz;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -17,15 +18,16 @@ import java.util.Map;
 
 public final class b
 {
-  List<awk> kNn;
-  Map<Integer, a> kNo;
   private String mAppId;
+  List<bcz> njS;
+  Map<Integer, a> njT;
   
   public b(String paramString)
   {
+    AppMethodBeat.i(135891);
     this.mAppId = paramString;
-    this.kNo = new HashMap();
-    aYN();
+    this.njT = new HashMap();
+    bFq();
     a(new h());
     a(new f());
     a(new j());
@@ -33,36 +35,40 @@ public final class b
     a(new i());
     a(new d());
     a(new e());
+    AppMethodBeat.o(135891);
   }
   
   private void a(a parama)
   {
-    this.kNo.put(Integer.valueOf(parama.id), parama);
+    AppMethodBeat.i(135892);
+    this.njT.put(Integer.valueOf(parama.id), parama);
+    AppMethodBeat.o(135892);
   }
   
-  private void aYN()
+  private void bFq()
   {
-    this.kNn = com.tencent.mm.plugin.webview.ui.tools.game.menu.a.rwG;
+    AppMethodBeat.i(135893);
+    this.njS = com.tencent.mm.plugin.webview.ui.tools.game.menu.a.vnz;
     try
     {
       Object localObject1 = new CommonLogicTask();
       ((CommonLogicTask)localObject1).type = 9;
-      ((CommonLogicTask)localObject1).kke.putString("game_hv_menu_appid", this.mAppId);
-      LuggageMainProcessService.b((MainProcessTask)localObject1);
-      localObject1 = ((CommonLogicTask)localObject1).kke.getString("game_hv_menu_pbcache");
-      if (!bk.bl((String)localObject1))
+      ((CommonLogicTask)localObject1).mEJ.putString("game_hv_menu_appid", this.mAppId);
+      AppBrandMainProcessService.b((MainProcessTask)localObject1);
+      localObject1 = ((CommonLogicTask)localObject1).mEJ.getString("game_hv_menu_pbcache");
+      if (!bo.isNullOrNil((String)localObject1))
       {
         localObject1 = ((String)localObject1).getBytes("ISO-8859-1");
-        localObject2 = new aol();
-        ((aol)localObject2).aH((byte[])localObject1);
-        if (!bk.dk(((aol)localObject2).tkc))
+        localObject2 = new aud();
+        ((aud)localObject2).parseFrom((byte[])localObject1);
+        if (!bo.es(((aud)localObject2).xiT))
         {
-          this.kNn = ((aol)localObject2).tkc;
-          y.i("MicroMsg.H5GameMenuHelp", "use net menu data");
+          this.njS = ((aud)localObject2).xiT;
+          ab.i("MicroMsg.H5GameMenuHelp", "use net menu data");
         }
       }
-      Collections.sort(this.kNn, new b.1(this));
-      int j = ((awk)this.kNn.get(this.kNn.size() - 1)).tta;
+      Collections.sort(this.njS, new b.1(this));
+      int j = ((bcz)this.njS.get(this.njS.size() - 1)).xta;
       localObject1 = new ArrayList();
       int i = 0;
       while (i < j)
@@ -75,23 +81,24 @@ public final class b
     {
       for (;;)
       {
-        y.e("MicroMsg.H5GameMenuHelp", "get cache hv game menu fail! exception:%s", new Object[] { localException.getMessage() });
+        ab.e("MicroMsg.H5GameMenuHelp", "get cache hv game menu fail! exception:%s", new Object[] { localException.getMessage() });
       }
-      Object localObject2 = this.kNn.iterator();
+      Object localObject2 = this.njS.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        awk localawk = (awk)((Iterator)localObject2).next();
-        if ((localawk.tta > 0) && (localawk.tta <= localException.size())) {
-          localException.set(localawk.tta - 1, localawk);
+        bcz localbcz = (bcz)((Iterator)localObject2).next();
+        if ((localbcz.xta > 0) && (localbcz.xta <= localException.size())) {
+          localException.set(localbcz.xta - 1, localbcz);
         }
       }
-      this.kNn = localException;
+      this.njS = localException;
+      AppMethodBeat.o(135893);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.c.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,22 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.rg;
+import com.tencent.mm.sdk.b.c;
 
 final class SnsCommentDetailUI$36
-  implements View.OnClickListener
+  extends c<rg>
 {
-  SnsCommentDetailUI$36(SnsCommentDetailUI paramSnsCommentDetailUI) {}
-  
-  public final void onClick(View paramView)
+  SnsCommentDetailUI$36(SnsCommentDetailUI paramSnsCommentDetailUI)
   {
-    y.e("MicroMsg.SnsCommentDetailUI", "scrollTopClickListener");
-    SnsCommentDetailUI.g(this.oWW);
-    if (!SnsCommentDetailUI.h(this.oWW)) {
-      return;
-    }
-    SnsCommentDetailUI.i(this.oWW);
+    AppMethodBeat.i(38820);
+    this.__eventId = rg.class.getName().hashCode();
+    AppMethodBeat.o(38820);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI.36
  * JD-Core Version:    0.7.0.1
  */

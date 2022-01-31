@@ -6,12 +6,12 @@ import android.support.v4.os.ResultReceiver;
 class MediaBrowserCompat$CustomActionResultReceiver
   extends ResultReceiver
 {
-  private final MediaBrowserCompat.c AI;
+  private final MediaBrowserCompat.c Bu;
   private final Bundle mExtras;
   
-  protected final void onReceiveResult(int paramInt, Bundle paramBundle)
+  public final void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    if (this.AI == null) {
+    if (this.Bu == null) {
       return;
     }
     switch (paramInt)

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.y;
-import com.tencent.mm.plugin.setting.a.i;
 import com.tencent.mm.ui.base.h;
 
 final class SettingsModifyEmailAddrUI$22
@@ -15,18 +15,20 @@ final class SettingsModifyEmailAddrUI$22
   
   public final void onClick(View paramView)
   {
-    paramView = new y(y.fgs);
-    g.Dk().a(paramView, 0);
-    paramView = this.nUU;
-    SettingsModifyEmailAddrUI localSettingsModifyEmailAddrUI = this.nUU;
-    this.nUU.getString(a.i.app_tip);
-    SettingsModifyEmailAddrUI.a(paramView, h.b(localSettingsModifyEmailAddrUI, this.nUU.getString(a.i.settings_unbinding), true, new SettingsModifyEmailAddrUI.22.1(this)));
-    this.nUU.XM();
+    AppMethodBeat.i(127284);
+    paramView = new y(y.gya);
+    g.Rc().a(paramView, 0);
+    paramView = this.qIZ;
+    SettingsModifyEmailAddrUI localSettingsModifyEmailAddrUI = this.qIZ;
+    this.qIZ.getString(2131297087);
+    SettingsModifyEmailAddrUI.a(paramView, h.b(localSettingsModifyEmailAddrUI, this.qIZ.getString(2131303500), true, new SettingsModifyEmailAddrUI.22.1(this)));
+    this.qIZ.hideVKB();
+    AppMethodBeat.o(127284);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsModifyEmailAddrUI.22
  * JD-Core Version:    0.7.0.1
  */

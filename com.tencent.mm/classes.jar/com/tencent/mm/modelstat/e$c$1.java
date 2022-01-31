@@ -2,8 +2,9 @@ package com.tencent.mm.modelstat;
 
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,72 +15,76 @@ final class e$c$1
   
   public final void run()
   {
-    y.i("MicroMsg.IndoorReporter", "start wifi");
+    AppMethodBeat.i(78723);
+    ab.i("MicroMsg.IndoorReporter", "start wifi");
     for (;;)
     {
       int k;
+      int i;
       try
       {
-        if (this.eDr.eDp)
-        {
-          long l = bk.UY();
-          List localList = this.eDr.bci.getScanResults();
-          Object localObject1 = "";
-          if ((localList == null) || (localList.size() <= 0)) {
-            break label404;
-          }
-          Collections.sort(localList, new e.c.1.1(this));
-          k = 0;
-          i = 0;
-          j = i;
-          localObject2 = localObject1;
-          if (k < localList.size())
-          {
-            localObject2 = (ScanResult)localList.get(k);
-            if ((localObject2 == null) || (bk.bl(((ScanResult)localObject2).BSSID)) || (bk.bl(((ScanResult)localObject2).SSID))) {
-              break label401;
-            }
-            String str = ((ScanResult)localObject2).SSID.replace(";", "").replace(" ", "").replace(",", "").replace("#", "");
-            localObject2 = (String)localObject1 + str + ";" + ((ScanResult)localObject2).BSSID + ";" + ((ScanResult)localObject2).level + ";";
-            i += 1;
-            if (i >= this.eDr.eCN) {
-              break label420;
-            }
-            localObject1 = localObject2;
-            break label413;
-          }
-          localObject1 = new StringBuilder().append(l - this.eDr.startTime).append(";");
-          if (localList != null)
-          {
-            i = localList.size();
-            localObject1 = i + ";" + j + ";" + (String)localObject2;
-            y.i("MicroMsg.IndoorReporter", "%d %s", new Object[] { Integer.valueOf(((String)localObject1).length()), localObject1 });
-            this.eDr.eDq.add(localObject1);
-            this.eDr.bci.startScan();
-            Thread.sleep(this.eDr.eDo);
-          }
+        if (!this.fTi.fTg) {
+          break label411;
         }
-        else
-        {
-          return;
+        long l = bo.aoy();
+        List localList = this.fTi.bsO.getScanResults();
+        Object localObject1 = "";
+        if ((localList == null) || (localList.size() <= 0)) {
+          break label420;
         }
+        Collections.sort(localList, new e.c.1.1(this));
+        k = 0;
+        i = 0;
+        j = i;
+        localObject2 = localObject1;
+        if (k < localList.size())
+        {
+          localObject2 = (ScanResult)localList.get(k);
+          if ((localObject2 == null) || (bo.isNullOrNil(((ScanResult)localObject2).BSSID)) || (bo.isNullOrNil(((ScanResult)localObject2).SSID))) {
+            break label417;
+          }
+          String str = ((ScanResult)localObject2).SSID.replace(";", "").replace(" ", "").replace(",", "").replace("#", "");
+          localObject2 = (String)localObject1 + str + ";" + ((ScanResult)localObject2).BSSID + ";" + ((ScanResult)localObject2).level + ";";
+          i += 1;
+          if (i >= this.fTi.fSE) {
+            break label436;
+          }
+          localObject1 = localObject2;
+          break label429;
+        }
+        localObject1 = new StringBuilder().append(l - this.fTi.startTime).append(";");
+        if (localList != null)
+        {
+          i = localList.size();
+          localObject1 = i + ";" + j + ";" + (String)localObject2;
+          ab.i("MicroMsg.IndoorReporter", "%d %s", new Object[] { Integer.valueOf(((String)localObject1).length()), localObject1 });
+          this.fTi.fTh.add(localObject1);
+          this.fTi.bsO.startScan();
+          Thread.sleep(this.fTi.fTf);
+          continue;
+        }
+        i = 0;
       }
       catch (Exception localException)
       {
-        y.e("MicroMsg.IndoorReporter", "Except:%s", new Object[] { localException.getMessage() });
+        ab.e("MicroMsg.IndoorReporter", "Except:%s", new Object[] { localException.getMessage() });
+        AppMethodBeat.o(78723);
+        return;
       }
-      int i = 0;
       continue;
-      label401:
-      break label413;
-      label404:
+      label411:
+      AppMethodBeat.o(78723);
+      return;
+      label417:
+      break label429;
+      label420:
       int j = 0;
       Object localObject2 = localException;
       continue;
-      label413:
+      label429:
       k += 1;
       continue;
-      label420:
+      label436:
       j = i;
     }
   }

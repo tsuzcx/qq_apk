@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BakOperatingUI$9
   implements Runnable
@@ -11,14 +11,16 @@ final class BakOperatingUI$9
   
   public final void run()
   {
-    if (BakOperatingUI.h(this.hPc) != null) {
-      BakOperatingUI.h(this.hPc).setProgress(this.fjt);
+    AppMethodBeat.i(17941);
+    if (BakOperatingUI.h(this.jIE) != null) {
+      BakOperatingUI.h(this.jIE).setProgress(this.gAL);
     }
-    if ((BakOperatingUI.i(this.hPc) != null) && (BakOperatingUI.k(this.hPc) != null))
+    if ((BakOperatingUI.i(this.jIE) != null) && (BakOperatingUI.k(this.jIE) != null))
     {
-      BakOperatingUI.i(this.hPc).setText(this.hPc.getString(R.l.bak_chat_pc_merge_progress_tip) + this.fjt + "%");
-      BakOperatingUI.k(this.hPc).setText(this.hPc.getString(R.l.bak_chat_to_pc_merging_tip));
+      BakOperatingUI.i(this.jIE).setText(this.jIE.getString(2131297414) + this.gAL + "%");
+      BakOperatingUI.k(this.jIE).setText(this.jIE.getString(2131297424));
     }
+    AppMethodBeat.o(17941);
   }
 }
 

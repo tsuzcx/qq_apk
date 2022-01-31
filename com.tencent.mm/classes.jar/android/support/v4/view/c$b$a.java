@@ -15,31 +15,31 @@ final class c$b$a
     switch (paramMessage.what)
     {
     default: 
-      throw new RuntimeException("Unknown message " + paramMessage);
+      throw new RuntimeException("Unknown message ".concat(String.valueOf(paramMessage)));
     case 1: 
-      this.Fg.ER.onShowPress(this.Fg.EY);
+      this.FP.FA.onShowPress(this.FP.FH);
     }
     do
     {
       return;
-      paramMessage = this.Fg;
+      paramMessage = this.FP;
       paramMessage.mHandler.removeMessages(3);
-      paramMessage.EU = false;
-      paramMessage.EV = true;
-      paramMessage.ER.onLongPress(paramMessage.EY);
+      paramMessage.FD = false;
+      paramMessage.FE = true;
+      paramMessage.FA.onLongPress(paramMessage.FH);
       return;
-    } while (this.Fg.ES == null);
-    if (!this.Fg.ET)
+    } while (this.FP.FB == null);
+    if (!this.FP.FC)
     {
-      this.Fg.ES.onSingleTapConfirmed(this.Fg.EY);
+      this.FP.FB.onSingleTapConfirmed(this.FP.FH);
       return;
     }
-    this.Fg.EU = true;
+    this.FP.FD = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.view.c.b.a
  * JD-Core Version:    0.7.0.1
  */

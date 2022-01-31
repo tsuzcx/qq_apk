@@ -3,26 +3,26 @@ package android.support.design.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.design.a.k;
-import android.support.v7.widget.ax;
+import android.support.design.a.a;
+import android.support.v7.widget.az;
 import android.util.AttributeSet;
 import android.view.View;
 
 public final class TabItem
   extends View
 {
-  final Drawable kc;
-  final int kd;
+  final Drawable la;
+  final int lb;
   final CharSequence mText;
   
   public TabItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = ax.a(paramContext, paramAttributeSet, a.k.TabItem);
-    this.mText = paramContext.getText(a.k.TabItem_android_text);
-    this.kc = paramContext.getDrawable(a.k.TabItem_android_icon);
-    this.kd = paramContext.getResourceId(a.k.TabItem_android_layout, 0);
-    paramContext.alZ.recycle();
+    paramContext = az.a(paramContext, paramAttributeSet, a.a.TabItem);
+    this.mText = paramContext.getText(2);
+    this.la = paramContext.getDrawable(0);
+    this.lb = paramContext.getResourceId(1, 0);
+    paramContext.aoo.recycle();
   }
 }
 

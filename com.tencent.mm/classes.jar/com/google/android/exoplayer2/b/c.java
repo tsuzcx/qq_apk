@@ -6,9 +6,9 @@ public abstract interface c<I, O, E extends Exception>
   
   public abstract void flush();
   
-  public abstract I lB();
+  public abstract I nG();
   
-  public abstract O lC();
+  public abstract O nH();
   
   public abstract void release();
 }

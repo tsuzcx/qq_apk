@@ -1,22 +1,29 @@
 package com.tencent.mm.plugin.freewifi;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.plugin.freewifi.model.j;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
-    return new g();
+    AppMethodBeat.i(20622);
+    g localg = new g();
+    AppMethodBeat.o(20622);
+    return localg;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new j();
+    AppMethodBeat.i(20623);
+    j localj = new j();
+    AppMethodBeat.o(20623);
+    return localj;
   }
   
   public b getContactWidgetFactory()

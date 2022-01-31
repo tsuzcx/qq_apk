@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.fts.b;
 
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.plugin.fts.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,32 +11,37 @@ import java.util.HashSet;
 final class a$e
   extends com.tencent.mm.plugin.fts.a.a.a
 {
-  private boolean dCg = false;
-  private String djD;
+  private String eaX;
+  private boolean ezx = false;
   
   public a$e(a parama, String paramString)
   {
-    this.djD = paramString;
+    this.eaX = paramString;
   }
   
-  public final String afJ()
+  public final String aAn()
   {
-    return String.format("{username: %s isSkipped: %b}", new Object[] { this.djD, Boolean.valueOf(this.dCg) });
+    AppMethodBeat.i(136673);
+    String str = String.format("{username: %s isSkipped: %b}", new Object[] { this.eaX, Boolean.valueOf(this.ezx) });
+    AppMethodBeat.o(136673);
+    return str;
   }
   
   public final boolean execute()
   {
-    y.i("MicroMsg.FTS.FTS5SearchContactLogic", "Insert Contact %s", new Object[] { this.djD });
-    ad localad = a.d(this.kyt).DK(this.djD);
-    if ((localad != null) && (localad.field_username.length() > 0) && (this.kyt.G(localad))) {
-      this.kyt.H(localad);
+    AppMethodBeat.i(136672);
+    ab.i("MicroMsg.FTS.FTS5SearchContactLogic", "Insert Contact %s", new Object[] { this.eaX });
+    ad localad = a.d(this.mUg).OT(this.eaX);
+    if ((localad != null) && (localad.field_username.length() > 0) && (this.mUg.H(localad))) {
+      this.mUg.I(localad);
     }
     for (;;)
     {
-      a.b(this.kyt).remove(this.djD);
-      a.c(this.kyt).remove(this.djD);
+      a.b(this.mUg).remove(this.eaX);
+      a.c(this.mUg).remove(this.eaX);
+      AppMethodBeat.o(136672);
       return true;
-      this.dCg = true;
+      this.ezx = true;
     }
   }
   
@@ -46,7 +52,7 @@ final class a$e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.a.e
  * JD-Core Version:    0.7.0.1
  */

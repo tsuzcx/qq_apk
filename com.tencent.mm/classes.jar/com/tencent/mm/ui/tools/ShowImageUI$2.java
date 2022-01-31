@@ -3,10 +3,10 @@ package com.tencent.mm.ui.tools;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.a.do;
-import com.tencent.mm.h.a.do.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.a.dr;
+import com.tencent.mm.g.a.dr.b;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.ui.base.h;
 import java.util.LinkedList;
@@ -19,33 +19,35 @@ final class ShowImageUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
+    AppMethodBeat.i(34993);
     paramMenuItem = new LinkedList();
     LinkedList localLinkedList = new LinkedList();
-    if ((ShowImageUI.a(this.weX)) && (d.SP("favorite")))
+    if ((ShowImageUI.a(this.AxN)) && (d.ahR("favorite")))
     {
       localLinkedList.add(Integer.valueOf(0));
-      paramMenuItem.add(this.weX.getString(R.l.retransmits));
+      paramMenuItem.add(this.AxN.getString(2131302657));
       localLinkedList.add(Integer.valueOf(1));
-      paramMenuItem.add(this.weX.getString(R.l.plugin_favorite_opt));
+      paramMenuItem.add(this.AxN.getString(2131302102));
       localLinkedList.add(Integer.valueOf(2));
-      paramMenuItem.add(this.weX.getString(R.l.save_to_local));
+      paramMenuItem.add(this.AxN.getString(2131302871));
     }
     for (;;)
     {
-      do localdo = new do();
-      localdo.bJZ.bIt = this.weX.getIntent().getLongExtra("key_message_id", -1L);
-      a.udP.m(localdo);
-      if (localdo.bKa.bJy)
+      dr localdr = new dr();
+      localdr.crt.cpO = this.AxN.getIntent().getLongExtra("key_message_id", -1L);
+      a.ymk.l(localdr);
+      if (localdr.cru.cqS)
       {
         localLinkedList.add(Integer.valueOf(3));
-        paramMenuItem.add(this.weX.getString(R.l.chatting_long_click_menu_open));
+        paramMenuItem.add(this.AxN.getString(2131298238));
       }
-      h.a(this.weX, "", paramMenuItem, localLinkedList, "", false, new ShowImageUI.2.1(this));
+      h.a(this.AxN, "", paramMenuItem, localLinkedList, "", false, new ShowImageUI.2.1(this));
+      AppMethodBeat.o(34993);
       return true;
       localLinkedList.add(Integer.valueOf(0));
-      paramMenuItem.add(this.weX.getString(R.l.retransmits));
+      paramMenuItem.add(this.AxN.getString(2131302657));
       localLinkedList.add(Integer.valueOf(2));
-      paramMenuItem.add(this.weX.getString(R.l.save_to_local));
+      paramMenuItem.add(this.AxN.getString(2131302871));
     }
   }
 }

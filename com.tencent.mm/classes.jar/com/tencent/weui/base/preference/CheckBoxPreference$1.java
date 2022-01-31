@@ -1,5 +1,6 @@
 package com.tencent.weui.base.preference;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
 final class CheckBoxPreference$1
@@ -7,9 +8,11 @@ final class CheckBoxPreference$1
 {
   CheckBoxPreference$1(CheckBoxPreference paramCheckBoxPreference) {}
   
-  public final void cr(boolean paramBoolean)
+  public final void onStatusChange(boolean paramBoolean)
   {
-    CheckBoxPreference.a(this.xfQ, Boolean.valueOf(paramBoolean));
+    AppMethodBeat.i(113248);
+    CheckBoxPreference.a(this.BCx, Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(113248);
   }
 }
 

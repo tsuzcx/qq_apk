@@ -1,18 +1,9 @@
 package com.tencent.mm.view.a;
 
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mm.plugin.l.a.e;
+import a.l;
 
-final class b$a
-{
-  ImageView gSx;
-  
-  public b$a(b paramb, View paramView)
-  {
-    this.gSx = ((ImageView)paramView.findViewById(a.e.art_emoji_icon_iv));
-  }
-}
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/view/adapter/CaptureEmojiAdapter$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
+public final class b$a {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar

@@ -10,19 +10,49 @@ import java.util.Set;
 
 public final class f
 {
+  private static HashMap<String, String> Bhi = new HashMap();
   private static Object sLock = new Object();
-  private static HashMap<String, String> wJI = new HashMap();
   
-  public static void adg()
+  public static void F(int paramInt1, int paramInt2, String paramString)
   {
-    synchronized (sLock)
+    if (paramString == null)
     {
-      wJI.clear();
+      c.w("gyz", new Object[] { "addEmergencyRecord value is null" });
       return;
+    }
+    try
+    {
+      StringBuffer localStringBuffer = new StringBuffer();
+      localStringBuffer.append(paramInt1);
+      localStringBuffer.append("---");
+      localStringBuffer.append(paramInt2);
+      synchronized (sLock)
+      {
+        String str = (String)Bhi.get(localStringBuffer.toString());
+        Object localObject1 = paramString;
+        if (str != null)
+        {
+          localObject1 = paramString;
+          if (str.length() > 0)
+          {
+            localObject1 = new StringBuffer(str);
+            ((StringBuffer)localObject1).append("---");
+            ((StringBuffer)localObject1).append(paramString);
+            localObject1 = ((StringBuffer)localObject1).toString();
+          }
+        }
+        Bhi.put(localStringBuffer.toString(), localObject1);
+        return;
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      c.w("gyz", new Object[] { paramString });
     }
   }
   
-  private static void al(ArrayList<a.w> paramArrayList)
+  private static void au(ArrayList<a.w> paramArrayList)
   {
     for (;;)
     {
@@ -32,7 +62,7 @@ public final class f
       String str;
       synchronized (sLock)
       {
-        Object localObject2 = wJI.keySet();
+        Object localObject2 = Bhi.keySet();
         if ((localObject2 == null) || (((Set)localObject2).size() <= 0)) {
           return;
         }
@@ -51,7 +81,7 @@ public final class f
       }
       synchronized (sLock)
       {
-        localObject4 = (String)wJI.get(localObject4);
+        localObject4 = (String)Bhi.get(localObject4);
         if ((localObject4 != null) && (((String)localObject4).length() != 0))
         {
           localObject4 = ((String)localObject4).split("---");
@@ -69,12 +99,12 @@ public final class f
                   ??? = localObject5[1];
                 }
                 localObject5 = new a.w();
-                ((a.w)localObject5).wHx = localObject3;
+                ((a.w)localObject5).BeX = localObject3;
                 localStringBuffer.setLength(0);
                 localStringBuffer.append(str);
                 localStringBuffer.append("%");
                 localStringBuffer.append((String)???);
-                ((a.w)localObject5).wHy = localStringBuffer.toString();
+                ((a.w)localObject5).BeY = localStringBuffer.toString();
                 paramArrayList.add(localObject5);
               }
               i += 1;
@@ -87,75 +117,45 @@ public final class f
     }
   }
   
-  public static void cOk()
+  public static void clearData()
+  {
+    synchronized (sLock)
+    {
+      Bhi.clear();
+      return;
+    }
+  }
+  
+  public static void dTW()
   {
     if (!h.isNetworkConnected())
     {
-      c.x("StatisticsUtil", new Object[] { "reportStatisticsData network is false" });
+      c.w("StatisticsUtil", new Object[] { "reportStatisticsData network is false" });
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    al(localArrayList);
+    au(localArrayList);
     a.c localc;
     if (localArrayList.size() > 0)
     {
       localc = new a.c();
       a.w[] arrayOfw = new a.w[localArrayList.size()];
       localArrayList.toArray(arrayOfw);
-      localc.wGg = arrayOfw;
+      localc.BdH = arrayOfw;
     }
     while (localc == null)
     {
-      c.x("StatisticsUtil", new Object[] { "reportStatisticsData CSClientReportReq is null" });
+      c.w("StatisticsUtil", new Object[] { "reportStatisticsData CSClientReportReq is null" });
       return;
       localc = null;
     }
-    c.x("yunying", new Object[] { "reportStatisticsData" });
-    c.d("StatisticsUtil", new Object[] { "reportStatisticsData start ret: ", Integer.valueOf(com.tencent.pb.common.b.f.cNV().a(new f.1(), "CsCmd.Cmd_CSClientReportReq", localc)) });
-  }
-  
-  public static void y(int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramString == null)
-    {
-      c.x("gyz", new Object[] { "addEmergencyRecord value is null" });
-      return;
-    }
-    try
-    {
-      StringBuffer localStringBuffer = new StringBuffer();
-      localStringBuffer.append(paramInt1);
-      localStringBuffer.append("---");
-      localStringBuffer.append(paramInt2);
-      synchronized (sLock)
-      {
-        String str = (String)wJI.get(localStringBuffer.toString());
-        Object localObject1 = paramString;
-        if (str != null)
-        {
-          localObject1 = paramString;
-          if (str.length() > 0)
-          {
-            localObject1 = new StringBuffer(str);
-            ((StringBuffer)localObject1).append("---");
-            ((StringBuffer)localObject1).append(paramString);
-            localObject1 = ((StringBuffer)localObject1).toString();
-          }
-        }
-        wJI.put(localStringBuffer.toString(), localObject1);
-        return;
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      c.x("gyz", new Object[] { paramString });
-    }
+    c.w("yunying", new Object[] { "reportStatisticsData" });
+    c.d("StatisticsUtil", new Object[] { "reportStatisticsData start ret: ", Integer.valueOf(com.tencent.pb.common.b.f.dTH().a(new f.1(), "CsCmd.Cmd_CSClientReportReq", localc)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.c.f
  * JD-Core Version:    0.7.0.1
  */

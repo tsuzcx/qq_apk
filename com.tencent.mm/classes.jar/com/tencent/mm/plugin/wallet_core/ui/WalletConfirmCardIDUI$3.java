@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tenpay.bankcard.TenpaySegmentEditText;
 
@@ -12,15 +13,17 @@ final class WalletConfirmCardIDUI$3
   
   public final void onClick(View paramView)
   {
-    paramView = WalletConfirmCardIDUI.f(this.qDr).get3DesEncrptData();
-    if ((paramView != null) && (paramView.equals(this.qDs))) {
-      h.nFQ.f(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(1) });
+    AppMethodBeat.i(47367);
+    paramView = WalletConfirmCardIDUI.f(this.uqm).get3DesEncrptData();
+    if ((paramView != null) && (paramView.equals(this.uqn))) {
+      h.qsU.e(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(1) });
     }
     for (;;)
     {
-      WalletConfirmCardIDUI.g(this.qDr);
+      WalletConfirmCardIDUI.g(this.uqm);
+      AppMethodBeat.o(47367);
       return;
-      h.nFQ.f(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(2) });
+      h.qsU.e(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(2) });
     }
   }
 }

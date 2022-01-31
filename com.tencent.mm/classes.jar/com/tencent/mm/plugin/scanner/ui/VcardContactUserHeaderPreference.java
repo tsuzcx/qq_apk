@@ -5,23 +5,22 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class VcardContactUserHeaderPreference
   extends Preference
 {
-  String aVr;
+  String blZ;
   private final Context context;
-  String nHN;
-  private ImageView nOd;
-  private TextView nOe;
-  private TextView nOf;
-  private TextView nOg;
-  private TextView nOh;
-  String nOi;
+  private ImageView qBN;
+  private TextView qBO;
+  private TextView qBP;
+  private TextView qBQ;
+  private TextView qBR;
+  String qBS;
+  String qvn;
   String title;
   
   public VcardContactUserHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -36,33 +35,35 @@ public class VcardContactUserHeaderPreference
     this.context = paramContext;
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(81360);
     super.onBindView(paramView);
-    y.e("MicroMsg.scanner.VcardContactUserHeaderPreference", "onbindview");
-    this.nOd = ((ImageView)paramView.findViewById(R.h.vcontact_info_avatar_iv));
-    this.nOe = ((TextView)paramView.findViewById(R.h.vcontact_info_name_tv));
-    if (this.nOi != null) {
-      this.nOe.setText(this.nOi);
+    ab.e("MicroMsg.scanner.VcardContactUserHeaderPreference", "onbindview");
+    this.qBN = ((ImageView)paramView.findViewById(2131828670));
+    this.qBO = ((TextView)paramView.findViewById(2131828671));
+    if (this.qBS != null) {
+      this.qBO.setText(this.qBS);
     }
-    this.nOf = ((TextView)paramView.findViewById(R.h.vcontact_info_nickname_tv));
-    if (this.aVr != null)
+    this.qBP = ((TextView)paramView.findViewById(2131828672));
+    if (this.blZ != null)
     {
-      this.nOf.setText(this.context.getString(R.l.v_contact_nick_name, new Object[] { this.aVr }));
-      this.nOf.setVisibility(0);
+      this.qBP.setText(this.context.getString(2131304476, new Object[] { this.blZ }));
+      this.qBP.setVisibility(0);
     }
-    this.nOg = ((TextView)paramView.findViewById(R.h.vcontact_info_role_tv));
-    if (this.nHN != null)
+    this.qBQ = ((TextView)paramView.findViewById(2131828674));
+    if (this.qvn != null)
     {
-      this.nOg.setText(this.context.getString(R.l.v_contact_role, new Object[] { this.nHN }));
-      this.nOg.setVisibility(0);
+      this.qBQ.setText(this.context.getString(2131304481, new Object[] { this.qvn }));
+      this.qBQ.setVisibility(0);
     }
-    this.nOh = ((TextView)paramView.findViewById(R.h.vcontact_info_title_tv));
+    this.qBR = ((TextView)paramView.findViewById(2131828673));
     if (this.title != null)
     {
-      this.nOh.setText(this.context.getString(R.l.v_contact_tile, new Object[] { this.title }));
-      this.nOh.setVisibility(0);
+      this.qBR.setText(this.context.getString(2131304482, new Object[] { this.title }));
+      this.qBR.setVisibility(0);
     }
+    AppMethodBeat.o(81360);
   }
 }
 

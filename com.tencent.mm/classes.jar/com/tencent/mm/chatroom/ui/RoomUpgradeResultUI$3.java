@@ -1,18 +1,29 @@
 package com.tencent.mm.chatroom.ui;
 
 import android.view.View;
-import com.tencent.mm.model.am.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ao.b.a;
 
 final class RoomUpgradeResultUI$3
-  implements am.b.a
+  implements ao.b.a
 {
   RoomUpgradeResultUI$3(RoomUpgradeResultUI paramRoomUpgradeResultUI, String paramString) {}
   
-  public final void m(String paramString, boolean paramBoolean)
+  public final void p(String paramString, boolean paramBoolean)
   {
+    AppMethodBeat.i(104223);
     if (paramBoolean) {
-      RoomUpgradeResultUI.b(this.dqw).post(new RoomUpgradeResultUI.3.1(this));
+      RoomUpgradeResultUI.b(this.ehU).post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(104222);
+          RoomUpgradeResultUI.a(RoomUpgradeResultUI.3.this.ehU, RoomUpgradeResultUI.3.this.ehV);
+          AppMethodBeat.o(104222);
+        }
+      });
     }
+    AppMethodBeat.o(104223);
   }
 }
 

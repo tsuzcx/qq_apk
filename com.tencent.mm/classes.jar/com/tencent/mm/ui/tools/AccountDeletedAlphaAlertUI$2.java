@@ -2,6 +2,7 @@ package com.tencent.mm.ui.tools;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AccountDeletedAlphaAlertUI$2
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class AccountDeletedAlphaAlertUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AccountDeletedAlphaAlertUI.a(this.vXD);
+    AppMethodBeat.i(34740);
+    AccountDeletedAlphaAlertUI.a(this.ApQ);
+    AppMethodBeat.o(34740);
   }
 }
 

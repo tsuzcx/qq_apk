@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.os.Handler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$12
   implements Runnable
@@ -9,15 +9,17 @@ final class i$12
   
   public final void run()
   {
-    i.a(this.fyM);
-    this.fyM.dNk = true;
-    i locali = this.fyM;
-    locali.mHandler.removeCallbacks(locali.fyK);
+    AppMethodBeat.i(86664);
+    if (!this.gPY.atu()) {
+      this.gPY.atn();
+    }
+    this.gPY.onReady();
+    AppMethodBeat.o(86664);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.i.12
  * JD-Core Version:    0.7.0.1
  */

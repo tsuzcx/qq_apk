@@ -1,56 +1,34 @@
 package com.google.android.exoplayer2.h;
 
-import android.net.Uri;
-import com.google.android.exoplayer2.i.t;
+import com.google.android.exoplayer2.i.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.List;
+import java.util.Map;
 
-public final class s<T>
-  implements r.c
+public abstract interface s
+  extends g
 {
-  public final i aJa;
-  private final s.a<? extends T> aSc;
-  private volatile boolean aSd;
-  public volatile long aSe;
-  private final f ayZ;
-  public volatile T result;
-  public final int type;
+  public static final o<String> aZm = new s.1();
   
-  public s(f paramf, Uri paramUri, s.a<? extends T> parama)
+  public static final class e
+    extends s.c
   {
-    this.ayZ = paramf;
-    this.aJa = new i(paramUri);
-    this.type = 4;
-    this.aSc = parama;
-  }
-  
-  public final void mR()
-  {
-    this.aSd = true;
-  }
-  
-  public final boolean mS()
-  {
-    return this.aSd;
-  }
-  
-  public final void mT()
-  {
-    h localh = new h(this.ayZ, this.aJa);
-    try
+    public final Map<String, List<String>> aZo;
+    public final int responseCode;
+    
+    public e(int paramInt, Map<String, List<String>> paramMap, j paramj)
     {
-      localh.nQ();
-      this.result = this.aSc.b(this.ayZ.getUri(), localh);
-      return;
-    }
-    finally
-    {
-      this.aSe = localh.aQT;
-      t.closeQuietly(localh);
+      super(paramj);
+      AppMethodBeat.i(95841);
+      this.responseCode = paramInt;
+      this.aZo = paramMap;
+      AppMethodBeat.o(95841);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.s
  * JD-Core Version:    0.7.0.1
  */

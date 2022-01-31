@@ -1,47 +1,47 @@
 package android.support.v7.widget;
 
 final class RecyclerView$4
-  implements be.b
+  implements bg.b
 {
   RecyclerView$4(RecyclerView paramRecyclerView) {}
   
   public final void a(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
-    this.agK.afy.p(paramv);
-    RecyclerView localRecyclerView = this.agK;
+    this.aja.ahO.t(paramv);
+    RecyclerView localRecyclerView = this.aja;
     localRecyclerView.f(paramv);
-    paramv.ag(false);
-    if (localRecyclerView.agf.d(paramv, paramc1, paramc2)) {
-      localRecyclerView.hC();
+    paramv.ap(false);
+    if (localRecyclerView.aiv.d(paramv, paramc1, paramc2)) {
+      localRecyclerView.je();
     }
   }
   
   public final void b(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
-    RecyclerView localRecyclerView = this.agK;
-    paramv.ag(false);
-    if (localRecyclerView.agf.e(paramv, paramc1, paramc2)) {
-      localRecyclerView.hC();
+    RecyclerView localRecyclerView = this.aja;
+    paramv.ap(false);
+    if (localRecyclerView.aiv.e(paramv, paramc1, paramc2)) {
+      localRecyclerView.je();
     }
   }
   
   public final void c(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
-    paramv.ag(false);
-    if (this.agK.afW) {
-      if (this.agK.agf.a(paramv, paramv, paramc1, paramc2)) {
-        this.agK.hC();
+    paramv.ap(false);
+    if (this.aja.aim) {
+      if (this.aja.aiv.a(paramv, paramv, paramc1, paramc2)) {
+        this.aja.je();
       }
     }
-    while (!this.agK.agf.f(paramv, paramc1, paramc2)) {
+    while (!this.aja.aiv.f(paramv, paramc1, paramc2)) {
       return;
     }
-    this.agK.hC();
+    this.aja.je();
   }
   
   public final void j(RecyclerView.v paramv)
   {
-    this.agK.afG.a(paramv.aie, this.agK.afy);
+    this.aja.ahW.a(paramv.aku, this.aja.ahO);
   }
 }
 

@@ -5,7 +5,7 @@ import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.RecommendView;
 
 public abstract interface e$a
 {
-  public abstract ChatFooterPanel.RecommendView q(Context paramContext, boolean paramBoolean);
+  public abstract ChatFooterPanel.RecommendView t(Context paramContext, boolean paramBoolean);
 }
 
 

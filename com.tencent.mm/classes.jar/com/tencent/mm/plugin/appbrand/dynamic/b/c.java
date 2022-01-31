@@ -4,10 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.model.u.b;
+import com.tencent.mm.model.v.b;
 import com.tencent.mm.modelappbrand.a.b;
-import com.tencent.mm.modelappbrand.a.b.h;
+import com.tencent.mm.modelappbrand.a.b.i;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObject;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
 import com.tencent.mm.plugin.appbrand.canvas.d;
@@ -21,69 +22,89 @@ final class c
 {
   public final Bitmap a(d paramd, String paramString)
   {
-    return a(paramd, paramString, null);
+    AppMethodBeat.i(10772);
+    paramd = a(paramd, paramString, null);
+    AppMethodBeat.o(10772);
+    return paramd;
   }
   
-  public final Bitmap a(final d paramd, final String paramString, final Rect paramRect, final e.a parama)
+  public final Bitmap a(final d paramd, final String paramString, Rect paramRect, final e.a parama)
   {
-    paramRect = paramd.dIV.getString("id", "");
+    AppMethodBeat.i(10774);
+    final String str = paramd.eGu.getString("id", "");
     if (paramString.startsWith("wxfile://"))
     {
-      paramd = AppBrandLocalMediaObjectManager.getItemByLocalId(paramRect, paramString);
-      if ((paramd == null) || (TextUtils.isEmpty(paramd.dXY))) {
+      paramd = AppBrandLocalMediaObjectManager.bw(str, paramString);
+      if ((paramd == null) || (TextUtils.isEmpty(paramd.fod)))
+      {
+        AppMethodBeat.o(10774);
         return null;
       }
-      paramString = paramd.dXY;
+      paramString = paramd.fod;
       paramd = paramString;
       if (!paramString.startsWith("file://")) {
-        paramd = "file://" + paramString;
+        paramd = "file://".concat(String.valueOf(paramString));
       }
-      return b.JD().a(paramd, null);
+      paramd = b.acD().a(paramd, null);
     }
-    Bitmap localBitmap;
-    if ((paramString.startsWith("https://")) || (paramString.startsWith("http://")))
+    for (;;)
     {
-      localBitmap = b.JD().a(paramString, null);
-      if (localBitmap == null)
+      AppMethodBeat.o(10774);
+      return paramd;
+      if ((paramString.startsWith("https://")) || (paramString.startsWith("http://")))
       {
-        b.JD().a(new b.h()
+        paramRect = b.acD().a(paramString, null);
+        if (paramRect == null)
         {
-          public final void JG() {}
-          
-          public final void JH()
+          b.acD().a(new b.i()
           {
-            Bundle localBundle = new Bundle();
-            localBundle.putString("id", paramRect);
-            localBundle.putInt("widgetState", 2103);
-            f.a(i.aeX().sX(paramRect), localBundle, f.a.class, null);
-          }
-          
-          public final void p(Bitmap paramAnonymousBitmap)
-          {
-            if ((parama == null) || (paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled())) {
-              return;
+            public final void acG() {}
+            
+            public final void acH()
+            {
+              AppMethodBeat.i(10771);
+              Bundle localBundle = new Bundle();
+              localBundle.putString("id", str);
+              localBundle.putInt("widgetState", 2103);
+              f.a(i.azB().AY(str), localBundle, f.a.class, null);
+              AppMethodBeat.o(10771);
             }
-            parama.a(paramd);
-          }
-          
-          public final String pU()
-          {
-            return "WxaWidgetIcon";
-          }
-        }, paramString, null, null);
-        return localBitmap;
+            
+            public final String tX()
+            {
+              return "WxaWidgetIcon";
+            }
+            
+            public final void w(Bitmap paramAnonymousBitmap)
+            {
+              AppMethodBeat.i(10770);
+              if ((parama == null) || (paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled()))
+              {
+                AppMethodBeat.o(10770);
+                return;
+              }
+              parama.a(paramd);
+              AppMethodBeat.o(10770);
+            }
+          }, paramString, null, null);
+          paramd = paramRect;
+        }
       }
+      else
+      {
+        paramd = a.bP(str, paramString);
+        continue;
+      }
+      paramd = paramRect;
     }
-    else
-    {
-      return a.bo(paramRect, paramString);
-    }
-    return localBitmap;
   }
   
   public final Bitmap a(d paramd, String paramString, e.a parama)
   {
-    return a(paramd, paramString, null, parama);
+    AppMethodBeat.i(10773);
+    paramd = a(paramd, paramString, null, parama);
+    AppMethodBeat.o(10773);
+    return paramd;
   }
 }
 

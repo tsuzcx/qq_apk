@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.os.Bundle;
-import com.tencent.mm.plugin.webview.ui.tools.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 
@@ -12,9 +12,11 @@ final class k$5$11
   
   public final void run()
   {
-    if ((this.rCx.rCv.rvZ != null) && (this.rCx.rCv.rxH != null) && (this.rCx.rCv.rxH.cdI() != null) && (this.rCx.rCv.rxH.cdI().hi(42))) {
-      this.rCx.rCv.rvZ.h(this.byv, "download_removed");
+    AppMethodBeat.i(9935);
+    if ((this.vsJ.vsH.vmp != null) && (this.vsJ.vsH.voA != null) && (this.vsJ.vsH.voA.ddV() != null) && (this.vsJ.vsH.voA.ddV().jy(42))) {
+      this.vsJ.vsH.vmp.i(this.cax, "download_removed");
     }
+    AppMethodBeat.o(9935);
   }
 }
 

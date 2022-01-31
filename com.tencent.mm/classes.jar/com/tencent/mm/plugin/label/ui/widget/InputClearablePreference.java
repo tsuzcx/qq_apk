@@ -4,16 +4,17 @@ import android.content.Context;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.tools.f;
 import com.tencent.mm.ui.widget.MMEditText;
@@ -21,18 +22,18 @@ import com.tencent.mm.ui.widget.MMEditText;
 public class InputClearablePreference
   extends Preference
 {
-  public String gio;
-  private String hnV;
-  public TextView lCA;
-  private int lCB;
-  public InputClearablePreference.a lCC;
-  public String lCt;
-  public String lCu;
-  public int lCv;
-  private int lCw;
-  public boolean lCx;
-  public MMEditText lCy;
-  private ImageView lCz;
+  public String hBF;
+  private String mText;
+  public String nZF;
+  public String nZG;
+  public int nZH;
+  private int nZI;
+  public boolean nZJ;
+  public MMEditText nZK;
+  private ImageView nZL;
+  public TextView nZM;
+  private int nZN;
+  public InputClearablePreference.a nZO;
   
   public InputClearablePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,112 +45,132 @@ public class InputClearablePreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void Gu(String paramString)
+  private void RX(String paramString)
   {
-    boolean bool = true;
-    int i;
-    if (!bk.bl(paramString))
+    boolean bool2 = true;
+    AppMethodBeat.i(22711);
+    if (!bo.isNullOrNil(paramString))
     {
-      int j = f.aek(paramString);
-      if (j <= this.lCv) {
-        break label128;
+      int i = f.auQ(paramString);
+      if (i <= this.nZH) {
+        break label90;
       }
-      i = 1;
-      int k = f.bi(this.lCv, "");
-      int m = f.bj(this.lCv, paramString);
-      if (this.lCA != null)
+      bool1 = true;
+      e(bool1, f.bO(this.nZH, ""), f.bP(this.nZH, paramString));
+      if (this.nZO != null)
       {
-        if (i == 0) {
-          break label133;
-        }
-        this.lCA.setText(String.format(this.gio, new Object[] { Integer.valueOf(k), Integer.valueOf(m) }));
-        this.lCA.setVisibility(0);
-      }
-      label99:
-      if (this.lCC != null)
-      {
-        paramString = this.lCC;
-        if (j > this.lCv) {
-          break label145;
+        paramString = this.nZO;
+        if (i > this.nZH) {
+          break label95;
         }
       }
     }
-    for (;;)
+    label90:
+    label95:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramString.he(bool);
+      paramString.iO(bool1);
+      AppMethodBeat.o(22711);
       return;
-      label128:
-      i = 0;
+      bool1 = false;
       break;
-      label133:
-      this.lCA.setVisibility(8);
-      break label99;
-      label145:
-      bool = false;
     }
   }
   
-  public final void hg(boolean paramBoolean)
+  private void e(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (this.lCA != null)
+    AppMethodBeat.i(22712);
+    if (this.nZM != null)
     {
       if (paramBoolean)
       {
-        this.lCA.setText(this.lCu);
-        this.lCA.setVisibility(0);
+        this.nZM.setText(String.format(this.hBF, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+        this.nZM.setVisibility(0);
+        AppMethodBeat.o(22712);
+        return;
       }
+      this.nZM.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.lCA.setVisibility(8);
+    AppMethodBeat.o(22712);
   }
   
-  protected final void onBindView(View paramView)
+  public final void iQ(boolean paramBoolean)
   {
-    super.onBindView(paramView);
-    this.lCB = a.aa(this.mContext, R.f.HintTextSize);
-    this.lCy = ((MMEditText)paramView.findViewById(R.h.edittext));
-    this.lCz = ((ImageView)paramView.findViewById(R.h.delete));
-    this.lCA = ((TextView)paramView.findViewById(R.h.err_msg));
-    if (this.lCy != null)
+    AppMethodBeat.i(22713);
+    if (this.nZM != null)
     {
-      if (this.lCw <= 0) {
-        break label265;
+      if (paramBoolean)
+      {
+        this.nZM.setText(this.nZG);
+        this.nZM.setVisibility(0);
+        AppMethodBeat.o(22713);
+        return;
       }
-      this.lCy.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.lCw), new InputClearablePreference.b(this) });
+      this.nZM.setVisibility(8);
+    }
+    AppMethodBeat.o(22713);
+  }
+  
+  public final void onBindView(View paramView)
+  {
+    AppMethodBeat.i(22710);
+    super.onBindView(paramView);
+    this.nZN = a.ao(this.mContext, 2131427758);
+    this.nZK = ((MMEditText)paramView.findViewById(2131820995));
+    this.nZL = ((ImageView)paramView.findViewById(2131823370));
+    this.nZM = ((TextView)paramView.findViewById(2131826243));
+    if (this.nZK != null)
+    {
+      if (this.nZI <= 0) {
+        break label273;
+      }
+      this.nZK.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.nZI), new InputClearablePreference.b(this) });
     }
     for (;;)
     {
-      this.lCy.addTextChangedListener(new InputClearablePreference.1(this));
-      y.d("MicroMsg.Label.InputClearablePreference", "mText %s", new Object[] { this.hnV });
-      setText(this.hnV);
-      if (!bk.bl(this.hnV)) {
-        this.lCy.setSelection(this.hnV.length());
+      this.nZK.addTextChangedListener(new InputClearablePreference.1(this));
+      ab.d("MicroMsg.Label.InputClearablePreference", "mText %s", new Object[] { this.mText });
+      setText(this.mText);
+      if (!bo.isNullOrNil(this.mText)) {
+        this.nZK.setSelection(this.mText.length());
       }
-      if (this.lCx) {
-        new ah().postDelayed(new InputClearablePreference.4(this), 0L);
+      if (this.nZJ) {
+        new ak().postDelayed(new InputClearablePreference.4(this), 0L);
       }
-      this.lCy.setHint(this.lCt);
-      this.lCz.setOnClickListener(new InputClearablePreference.2(this));
-      if (this.lCA != null) {
-        this.lCA.setOnTouchListener(new InputClearablePreference.3(this));
+      this.nZK.setHint(this.nZF);
+      this.nZL.setOnClickListener(new InputClearablePreference.2(this));
+      if (this.nZM != null) {
+        this.nZM.setOnTouchListener(new View.OnTouchListener()
+        {
+          public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+          {
+            AppMethodBeat.i(22705);
+            if (InputClearablePreference.b(InputClearablePreference.this) != null) {
+              InputClearablePreference.b(InputClearablePreference.this).clearFocus();
+            }
+            AppMethodBeat.o(22705);
+            return false;
+          }
+        });
       }
+      AppMethodBeat.o(22710);
       return;
-      label265:
-      this.lCy.setFilters(new InputFilter[] { new InputClearablePreference.b(this) });
+      label273:
+      this.nZK.setFilters(new InputFilter[] { new InputClearablePreference.b(this) });
     }
   }
   
   public final void setText(String paramString)
   {
-    this.hnV = paramString;
-    if ((this.lCy != null) && (!bk.bl(paramString)))
+    AppMethodBeat.i(22709);
+    this.mText = paramString;
+    if ((this.nZK != null) && (!bo.isNullOrNil(paramString)))
     {
-      paramString = j.b(this.mContext, this.hnV, this.lCB);
-      this.lCy.setText(paramString);
-      Gu(this.hnV);
+      paramString = j.b(this.mContext, this.mText, this.nZN);
+      this.nZK.setText(paramString);
+      RX(this.mText);
     }
+    AppMethodBeat.o(22709);
   }
 }
 

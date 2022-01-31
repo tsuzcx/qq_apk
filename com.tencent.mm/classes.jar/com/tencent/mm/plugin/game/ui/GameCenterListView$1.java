@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.game.ui;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameCenterListView$1
   implements AbsListView.OnScrollListener
@@ -11,12 +12,15 @@ final class GameCenterListView$1
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 == 0) && (GameCenterListView.a(this.kYs) != null) && (GameCenterListView.a(this.kYs).getTop() == 0))
+    AppMethodBeat.i(111776);
+    if ((paramInt1 == 0) && (GameCenterListView.a(this.nwq) != null) && (GameCenterListView.a(this.nwq).getTop() == 0))
     {
-      GameCenterListView.a(this.kYs, true);
+      GameCenterListView.a(this.nwq, true);
+      AppMethodBeat.o(111776);
       return;
     }
-    GameCenterListView.a(this.kYs, false);
+    GameCenterListView.a(this.nwq, false);
+    AppMethodBeat.o(111776);
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}

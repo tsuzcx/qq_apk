@@ -1,20 +1,31 @@
 package com.tencent.mm.plugin.masssend.ui;
 
-import android.media.ToneGenerator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.masssend.a.f;
 
 final class b$6
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  b$6(b paramb) {}
+  b$6(b paramb, f paramf) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.mbb.ibo.stopTone();
+    AppMethodBeat.i(156064);
+    aw.Rc().a(this.oBE);
+    if (this.oBD.tipDialog != null)
+    {
+      this.oBD.tipDialog.dismiss();
+      this.oBD.tipDialog = null;
+    }
+    AppMethodBeat.o(156064);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.b.6
  * JD-Core Version:    0.7.0.1
  */

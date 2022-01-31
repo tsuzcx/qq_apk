@@ -7,7 +7,7 @@ public final class g$a
 {
   public g$a(g paramg) {}
   
-  public final String vP()
+  public final String HY()
   {
     return "Vending.LOGIC";
   }

@@ -1,40 +1,36 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
-import com.tencent.mm.plugin.account.bind.ui.MobileFriendUI;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.s;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.tools.l;
 
 final class FMessageConversationUI$4
-  implements View.OnClickListener
+  implements AdapterView.OnItemLongClickListener
 {
-  FMessageConversationUI$4(FMessageConversationUI paramFMessageConversationUI) {}
+  FMessageConversationUI$4(FMessageConversationUI paramFMessageConversationUI, l paraml) {}
   
-  public final void onClick(View paramView)
+  public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    au.Hx();
-    if (!bk.bl((String)c.Dz().get(6, null)))
+    AppMethodBeat.i(25361);
+    if (paramInt < FMessageConversationUI.b(this.sYg).getHeaderViewsCount())
     {
-      paramView = new Intent(this.pwx, MobileFriendUI.class);
-      this.pwx.startActivity(paramView);
-      return;
+      ab.w("MicroMsg.FMessageConversationUI", "on header view long click, ignore");
+      AppMethodBeat.o(25361);
+      return true;
     }
-    paramView = new Intent(this.pwx.mController.uMN, BindMContactIntroUI.class);
-    paramView.putExtra("key_upload_scene", 5);
-    MMWizardActivity.C(this.pwx, paramView);
+    int i = FMessageConversationUI.b(this.sYg).getHeaderViewsCount();
+    this.jSq.a(paramView, paramInt - i, paramLong, this.sYg, FMessageConversationUI.c(this.sYg));
+    AppMethodBeat.o(25361);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.friend.FMessageConversationUI.4
  * JD-Core Version:    0.7.0.1
  */

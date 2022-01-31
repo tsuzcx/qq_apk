@@ -1,93 +1,62 @@
 package com.tencent.liteav;
 
-import android.content.Context;
-import android.os.AsyncTask;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.tencent.liteav.basic.c.a;
+import com.tencent.liteav.basic.structs.b;
+import javax.microedition.khronos.egl.EGLContext;
 
-public class j
+public abstract interface j
 {
-  private String a = "";
-  private String b = "";
-  private String c = "";
-  private long d = 0L;
-  private long e = 0L;
-  private long f = 0L;
+  public abstract void a();
   
-  public j(Context paramContext) {}
+  public abstract void a(float paramFloat);
   
-  private String a(String paramString)
-  {
-    if (paramString.contains("#EXT-TX-TS-START-TIME"))
-    {
-      int i = paramString.indexOf("#EXT-TX-TS-START-TIME:") + 22;
-      if (i > 0)
-      {
-        paramString = paramString.substring(i);
-        i = paramString.indexOf("#");
-        if (i > 0) {
-          return paramString.substring(0, i).replaceAll("\r\n", "");
-        }
-      }
-    }
-    return null;
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
   
-  private String a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0))
-    {
-      paramString1 = null;
-      return paramString1;
-    }
-    String str = paramString1.toLowerCase();
-    paramString2 = paramString2.split("[?&]");
-    int j = paramString2.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label112;
-      }
-      paramString1 = paramString2[i];
-      if (paramString1.indexOf("=") != -1)
-      {
-        paramString1 = paramString1.split("[=]");
-        if (paramString1.length == 2)
-        {
-          Object localObject = paramString1[0];
-          paramString1 = paramString1[1];
-          if ((localObject != null) && (localObject.toLowerCase().equalsIgnoreCase(str))) {
-            break;
-          }
-        }
-      }
-      i += 1;
-    }
-    label112:
-    return "";
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public int a(String paramString, j.a parama)
-  {
-    if ((paramString == null) || (paramString.isEmpty())) {
-      return -1;
-    }
-    AsyncTask.execute(new j.1(this, paramString, parama));
-    return 0;
-  }
+  public abstract void a(a parama);
   
-  public long a()
-  {
-    this.f = (System.currentTimeMillis() - this.d);
-    return this.f;
-  }
+  public abstract void a(b paramb);
   
-  public String a(long paramLong)
-  {
-    String str = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(this.d + 1000L * paramLong));
-    return String.format("http://playtimeshift.live.myqcloud.com/%s/%s/timeshift.m3u8?starttime=%s&appid=%s&txKbps=0", new Object[] { this.b, this.a, str, this.c });
-  }
+  public abstract void a(k paramk);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(int paramInt);
+  
+  public abstract boolean d();
+  
+  public abstract boolean d(boolean paramBoolean);
+  
+  public abstract int e();
+  
+  public abstract void e(int paramInt);
+  
+  public abstract void e(boolean paramBoolean);
+  
+  public abstract EGLContext f();
+  
+  public abstract void f(int paramInt);
+  
+  public abstract boolean g();
 }
 
 

@@ -1,55 +1,72 @@
 package com.tencent.mm.plugin.webview.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.sk;
-import com.tencent.mm.protocal.c.sl;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.protocal.protobuf.sw;
+import com.tencent.mm.protocal.protobuf.sx;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.LinkedList;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 public final class h
-  extends m
-  implements k
 {
-  private f dIJ;
-  private final b dmK;
+  private final int uNE = 0;
+  private final int uNF = 1;
+  private final int uNG = 2;
+  public LinkedList<String> uVv = null;
+  public boolean uVw = false;
   
-  public h(int paramInt)
+  public final int f(LinkedList<String> paramLinkedList, String paramString)
   {
-    b.a locala = new b.a();
-    locala.ecH = new sk();
-    locala.ecI = new sl();
-    locala.uri = "/cgi-bin/mmbiz-bin/oauth_delavatar";
-    locala.ecG = 2700;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    ((sk)this.dmK.ecE.ecN).sQr = paramInt;
-  }
-  
-  public final int a(e parame, f paramf)
-  {
-    this.dIJ = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    this.dIJ.onSceneEnd(paramInt2, paramInt3, paramString, this);
-  }
-  
-  public final int getType()
-  {
-    return 2700;
+    AppMethodBeat.i(153131);
+    try
+    {
+      int[] arrayOfInt = new int[1];
+      arrayOfInt[0] = 2;
+      b.a locala = new b.a();
+      locala.fsX = new sw();
+      locala.fsY = new sx();
+      locala.uri = "/cgi-bin/micromsg-bin/checktextlanguage";
+      locala.funcId = 528;
+      locala.reqCmdId = 0;
+      locala.respCmdId = 0;
+      sw localsw = (sw)locala.ado().fsV.fta;
+      localsw.wLo = paramLinkedList;
+      localsw.wLp = paramString;
+      paramLinkedList = new CountDownLatch(1);
+      new Bundle();
+      com.tencent.mm.ipcinvoker.wx_extension.b.a(locala.ado(), new h.1(this, arrayOfInt, paramLinkedList));
+      try
+      {
+        paramLinkedList.await(1000L, TimeUnit.MILLISECONDS);
+        ab.i("MicroMsg.NetSceneCheckTextLanguage", "CheckTextLanguage end");
+        int i = arrayOfInt[0];
+        AppMethodBeat.o(153131);
+        return i;
+      }
+      catch (InterruptedException paramLinkedList)
+      {
+        for (;;)
+        {
+          ab.w("MicroMsg.NetSceneCheckTextLanguage", paramLinkedList.getMessage());
+          ab.printErrStackTrace("MicroMsg.NetSceneCheckTextLanguage", paramLinkedList, "", new Object[0]);
+        }
+      }
+      return 2;
+    }
+    catch (Exception paramLinkedList)
+    {
+      ab.e("MicroMsg.NetSceneCheckTextLanguage", "CheckTextLanguage failed");
+      AppMethodBeat.o(153131);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.dynamic.widget;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.f;
 
 final class IPCDynamicPageView$7
@@ -9,7 +10,9 @@ final class IPCDynamicPageView$7
   
   public final void run()
   {
-    this.fXQ.y(this.fXO, this.fH);
+    AppMethodBeat.i(11043);
+    this.hrq.I(this.hro, this.gB);
+    AppMethodBeat.o(11043);
   }
 }
 

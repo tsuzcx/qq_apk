@@ -2,45 +2,77 @@ package com.tencent.mm.plugin.account.friend.a;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class q
-  extends j
+  extends k
 {
-  public static final String[] dXp = { "CREATE TABLE IF NOT EXISTS invitefriendopen ( username text  PRIMARY KEY , friendtype int  , updatetime int  , reserved1 int  , reserved2 int  , reserved3 text  , reserved4 text  ) " };
-  private h dXo;
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS invitefriendopen ( username text  PRIMARY KEY , friendtype int  , updatetime int  , reserved1 int  , reserved2 int  , reserved3 text  , reserved4 text  ) " };
+  private h fnw;
   
   public q(h paramh)
   {
-    this.dXo = paramh;
+    this.fnw = paramh;
   }
   
-  public final boolean a(p paramp)
+  private boolean a(p paramp)
   {
-    if (pQ(paramp.getUsername()))
+    AppMethodBeat.i(108402);
+    if (paramp == null)
     {
-      paramp.bcw = -1;
-      ContentValues localContentValues = paramp.vf();
-      if (this.dXo.update("invitefriendopen", localContentValues, "username=?", new String[] { paramp.getUsername() }) <= 0) {}
-    }
-    do
-    {
-      return true;
+      AppMethodBeat.o(108402);
       return false;
-      paramp.bcw = -1;
-      paramp = paramp.vf();
-    } while ((int)this.dXo.insert("invitefriendopen", "username", paramp) != -1);
+    }
+    paramp.bsY = -1;
+    paramp = paramp.convertTo();
+    if ((int)this.fnw.a("invitefriendopen", "username", paramp) != -1)
+    {
+      AppMethodBeat.o(108402);
+      return true;
+    }
+    AppMethodBeat.o(108402);
     return false;
   }
   
-  public final boolean pQ(String paramString)
+  private boolean c(p paramp)
   {
-    paramString = "select invitefriendopen.username,invitefriendopen.friendtype,invitefriendopen.updatetime,invitefriendopen.reserved1,invitefriendopen.reserved2,invitefriendopen.reserved3,invitefriendopen.reserved4 from invitefriendopen   where invitefriendopen.username = \"" + bk.pl(paramString) + "\"";
-    paramString = this.dXo.a(paramString, null, 2);
+    AppMethodBeat.i(108404);
+    paramp.bsY = -1;
+    ContentValues localContentValues = paramp.convertTo();
+    if (this.fnw.update("invitefriendopen", localContentValues, "username=?", new String[] { paramp.getUsername() }) > 0)
+    {
+      AppMethodBeat.o(108404);
+      return true;
+    }
+    AppMethodBeat.o(108404);
+    return false;
+  }
+  
+  public final boolean b(p paramp)
+  {
+    AppMethodBeat.i(108403);
+    if (xm(paramp.getUsername()))
+    {
+      bool = c(paramp);
+      AppMethodBeat.o(108403);
+      return bool;
+    }
+    boolean bool = a(paramp);
+    AppMethodBeat.o(108403);
+    return bool;
+  }
+  
+  public final boolean xm(String paramString)
+  {
+    AppMethodBeat.i(108405);
+    paramString = "select invitefriendopen.username,invitefriendopen.friendtype,invitefriendopen.updatetime,invitefriendopen.reserved1,invitefriendopen.reserved2,invitefriendopen.reserved3,invitefriendopen.reserved4 from invitefriendopen   where invitefriendopen.username = \"" + bo.wC(String.valueOf(paramString)) + "\"";
+    paramString = this.fnw.a(paramString, null, 2);
     boolean bool = paramString.moveToFirst();
     paramString.close();
+    AppMethodBeat.o(108405);
     return bool;
   }
 }

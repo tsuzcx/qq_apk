@@ -1,28 +1,32 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.widget.ImageView;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.sdk.platformtools.MMBitmapFactory;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class r$4
-  implements f.a
+  implements ad
 {
-  r$4(r paramr) {}
+  r$4(r paramr, Context paramContext) {}
   
-  public final void Op(String paramString)
+  public final void ls(boolean paramBoolean)
   {
-    if (this.oHr.kHQ.getVisibility() == 0) {
-      this.oHr.kHQ.setImageBitmap(MMBitmapFactory.decodeFile(paramString));
+    AppMethodBeat.i(37207);
+    Intent localIntent = new Intent("com.tencent.mm.adlanding.video_progressbar_change");
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localIntent.putExtra("show", i);
+      d.R(this.val$context).c(localIntent);
+      AppMethodBeat.o(37207);
+      return;
     }
   }
-  
-  public final void bCF() {}
-  
-  public final void bFl() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.r.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,8 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.account.bind.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class BindLinkedInUI$7
@@ -14,25 +12,26 @@ final class BindLinkedInUI$7
   
   public final void onClick(View paramView)
   {
-    if (!BindLinkedInUI.b(this.fbn))
+    AppMethodBeat.i(13392);
+    if (!BindLinkedInUI.b(this.gtf))
     {
-      BindLinkedInUI.c(this.fbn);
+      BindLinkedInUI.c(this.gtf);
+      AppMethodBeat.o(13392);
       return;
     }
-    if (!BindLinkedInUI.d(this.fbn))
+    if (!BindLinkedInUI.d(this.gtf))
     {
-      BindLinkedInUI.e(this.fbn);
+      BindLinkedInUI.e(this.gtf);
+      AppMethodBeat.o(13392);
       return;
     }
-    h.a(this.fbn, this.fbn.getString(a.i.contact_info_linkedin_account_overwrite_binded_account), null, new BindLinkedInUI.7.1(this), new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-    });
+    h.a(this.gtf, this.gtf.getString(2131298642), null, new BindLinkedInUI.7.1(this), new BindLinkedInUI.7.2(this));
+    AppMethodBeat.o(13392);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindLinkedInUI.7
  * JD-Core Version:    0.7.0.1
  */

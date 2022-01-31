@@ -1,15 +1,34 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class j$2
-  implements Runnable
+  implements f.a
 {
-  j$2(j paramj, String paramString, s params) {}
+  j$2(j paramj, String paramString) {}
   
-  public final void run()
+  public final void abi(String paramString)
   {
-    j.a(this.oKJ, this.oJA, this.oKK);
+    AppMethodBeat.i(145435);
+    j.a(this.rCs, this.rCt);
+    ab.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download timeLineThumbUrl succ, url=" + this.rCt);
+    AppMethodBeat.o(145435);
+  }
+  
+  public final void coe()
+  {
+    AppMethodBeat.i(145434);
+    ab.e("AdLandingPagesPreDownloadResHelper.SphereImageView", " pre download timeLineThumbUrl err, url=" + this.rCt);
+    j.a(this.rCs, this.rCt);
+    AppMethodBeat.o(145434);
+  }
+  
+  public final void cqU()
+  {
+    AppMethodBeat.i(145433);
+    ab.i("AdLandingPagesPreDownloadResHelper.SphereImageView", "pre download timeLineThumbUrl");
+    AppMethodBeat.o(145433);
   }
 }
 

@@ -1,20 +1,24 @@
 package com.tencent.xweb.x5;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a$a
   implements com.tencent.smtt.sdk.DownloadListener
 {
-  android.webkit.DownloadListener xki;
+  android.webkit.DownloadListener BHN;
   
   public a$a(android.webkit.DownloadListener paramDownloadListener)
   {
-    this.xki = paramDownloadListener;
+    this.BHN = paramDownloadListener;
   }
   
   public final void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    if (this.xki != null) {
-      this.xki.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
+    AppMethodBeat.i(84777);
+    if (this.BHN != null) {
+      this.BHN.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
     }
+    AppMethodBeat.o(84777);
   }
 }
 

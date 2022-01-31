@@ -1,30 +1,34 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget.input;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  boolean hxQ = false;
-  int hxU;
-  int hxV;
-  Context hxz;
-  b rDw;
-  WebViewSmileyPanel.a rDx;
+  Context jpJ;
+  boolean jqa = false;
+  int jqe;
+  int jqf;
+  b vtI;
+  WebViewSmileyPanel.a vtJ;
   
-  public final a cgW()
+  public final a dhd()
   {
-    if (this.rDw == null)
+    AppMethodBeat.i(10119);
+    if (this.vtI == null)
     {
-      this.rDw = new b();
-      this.rDw.hxz = this.hxz;
-      this.rDw.setPanelManager(this);
+      this.vtI = new b();
+      this.vtI.jpJ = this.jpJ;
+      this.vtI.setPanelManager(this);
     }
-    return this.rDw;
+    b localb = this.vtI;
+    AppMethodBeat.o(10119);
+    return localb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mm.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -8,11 +9,13 @@ final class MMNewPhotoEditUI$3
 {
   MMNewPhotoEditUI$3(MMNewPhotoEditUI paramMMNewPhotoEditUI) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.e(0, this.uOz.getString(ag.d.retransmits));
-    paraml.e(1, this.uOz.getString(ag.d.plugin_favorite_opt));
-    paraml.e(2, this.uOz.getString(ag.d.save_img_to_local));
+    AppMethodBeat.i(11923);
+    paraml.e(0, this.zcs.getString(2131302657));
+    paraml.e(1, this.zcs.getString(2131302102));
+    paraml.e(2, this.zcs.getString(2131302869));
+    AppMethodBeat.o(11923);
   }
 }
 

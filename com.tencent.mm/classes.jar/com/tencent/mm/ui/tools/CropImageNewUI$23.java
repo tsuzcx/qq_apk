@@ -3,6 +3,7 @@ package com.tencent.mm.ui.tools;
 import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CropImageNewUI$23
   implements Runnable
@@ -11,15 +12,18 @@ final class CropImageNewUI$23
   
   public final void run()
   {
-    if (this.vYH.getIntent().getBooleanExtra("CropImage_DirectlyIntoFilter", false))
+    AppMethodBeat.i(34837);
+    if (this.AqU.getIntent().getBooleanExtra("CropImage_DirectlyIntoFilter", false))
     {
-      this.vYH.finish();
+      this.AqU.finish();
+      AppMethodBeat.o(34837);
       return;
     }
-    CropImageNewUI.e(this.vYH).setVisibility(8);
-    CropImageNewUI.p(this.vYH).setVisibility(0);
-    CropImageNewUI.q(this.vYH).setVisibility(((Integer)CropImageNewUI.q(this.vYH).getTag()).intValue());
-    CropImageNewUI.j(this.vYH).setVisibility(0);
+    CropImageNewUI.e(this.AqU).setVisibility(8);
+    CropImageNewUI.p(this.AqU).setVisibility(0);
+    CropImageNewUI.q(this.AqU).setVisibility(((Integer)CropImageNewUI.q(this.AqU).getTag()).intValue());
+    CropImageNewUI.j(this.AqU).setVisibility(0);
+    AppMethodBeat.o(34837);
   }
 }
 

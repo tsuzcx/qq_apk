@@ -1,55 +1,43 @@
 package com.tencent.mm.ui.transmit;
 
 import android.content.Intent;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.t;
 import com.tencent.mm.pluginsdk.ui.applet.q.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.be;
 
 final class SelectConversationUI$26
   implements q.a
 {
-  SelectConversationUI$26(SelectConversationUI paramSelectConversationUI, Intent paramIntent) {}
+  SelectConversationUI$26(SelectConversationUI paramSelectConversationUI, String paramString) {}
   
   public final void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.whw.XM();
-    boolean bool = this.val$intent.getBooleanExtra("need_delete_chatroom_when_cancel", false);
-    if (bool)
+    AppMethodBeat.i(35148);
+    this.AAp.hideVKB();
+    Intent localIntent;
+    if (paramBoolean)
     {
-      if (paramBoolean)
-      {
-        paramInt = 1;
-        y.i("MicroMsg.SelectContactReportLogic", "reportCreateChatroomOperation %d %d", new Object[] { Integer.valueOf(13943), Integer.valueOf(paramInt) });
-        h.nFQ.f(13943, new Object[] { Integer.valueOf(paramInt) });
+      localIntent = new Intent();
+      if (!t.lA(this.AAu)) {
+        break label83;
       }
+      SelectConversationUI.c(localIntent, SelectConversationUI.g(this.AAp), this.AAu);
     }
-    else
+    for (;;)
     {
-      if (!paramBoolean) {
-        break label116;
-      }
-      this.val$intent.putExtra("custom_send_text", paramString);
-      SelectConversationUI.a(this.whw, this.val$intent);
-      this.whw.finish();
-    }
-    label116:
-    while (!bool)
-    {
+      localIntent.putExtra("custom_send_text", paramString);
+      SelectConversationUI.a(this.AAp, -1, localIntent);
+      this.AAp.finish();
+      AppMethodBeat.o(35148);
       return;
-      paramInt = 0;
-      break;
+      label83:
+      SelectConversationUI.d(localIntent, SelectConversationUI.g(this.AAp), this.AAu);
     }
-    paramString = this.val$intent.getStringExtra("Select_Contact");
-    au.Hx();
-    c.FB().abu(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.SelectConversationUI.26
  * JD-Core Version:    0.7.0.1
  */

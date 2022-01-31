@@ -5,9 +5,8 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.p;
-import android.support.v7.a.a.a;
-import android.support.v7.c.a.b;
+import android.support.v4.view.s;
+import android.support.v7.c.a.a;
 import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
@@ -15,104 +14,104 @@ import android.widget.MultiAutoCompleteTextView;
 
 public class AppCompatMultiAutoCompleteTextView
   extends MultiAutoCompleteTextView
-  implements p
+  implements s
 {
-  private static final int[] Vb = { 16843126 };
-  private final f Zo;
-  private final m Zp;
+  private static final int[] VO = { 16843126 };
+  private final e ZZ;
+  private final l aaa;
   
   public AppCompatMultiAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, a.a.autoCompleteTextViewStyle);
+    this(paramContext, paramAttributeSet, 2130772224);
   }
   
   public AppCompatMultiAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(au.V(paramContext), paramAttributeSet, paramInt);
-    paramContext = ax.a(getContext(), paramAttributeSet, Vb, paramInt, 0);
+    super(aw.Z(paramContext), paramAttributeSet, paramInt);
+    paramContext = az.a(getContext(), paramAttributeSet, VO, paramInt, 0);
     if (paramContext.hasValue(0)) {
       setDropDownBackgroundDrawable(paramContext.getDrawable(0));
     }
-    paramContext.alZ.recycle();
-    this.Zo = new f(this);
-    this.Zo.b(paramAttributeSet, paramInt);
-    this.Zp = m.d(this);
-    this.Zp.b(paramAttributeSet, paramInt);
-    this.Zp.gm();
+    paramContext.aoo.recycle();
+    this.ZZ = new e(this);
+    this.ZZ.a(paramAttributeSet, paramInt);
+    this.aaa = new l(this);
+    this.aaa.a(paramAttributeSet, paramInt);
+    this.aaa.hk();
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.Zo != null) {
-      this.Zo.gf();
+    if (this.ZZ != null) {
+      this.ZZ.hc();
     }
-    if (this.Zp != null) {
-      this.Zp.gm();
+    if (this.aaa != null) {
+      this.aaa.hk();
     }
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.Zo != null) {
-      return this.Zo.getSupportBackgroundTintList();
+    if (this.ZZ != null) {
+      return this.ZZ.getSupportBackgroundTintList();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.Zo != null) {
-      return this.Zo.getSupportBackgroundTintMode();
+    if (this.ZZ != null) {
+      return this.ZZ.getSupportBackgroundTintMode();
     }
     return null;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    return i.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
+    return h.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.Zo != null) {
-      this.Zo.ge();
+    if (this.ZZ != null) {
+      this.ZZ.hb();
     }
   }
   
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.Zo != null) {
-      this.Zo.bp(paramInt);
+    if (this.ZZ != null) {
+      this.ZZ.bo(paramInt);
     }
   }
   
   public void setDropDownBackgroundResource(int paramInt)
   {
-    setDropDownBackgroundDrawable(b.g(getContext(), paramInt));
+    setDropDownBackgroundDrawable(a.k(getContext(), paramInt));
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.Zo != null) {
-      this.Zo.setSupportBackgroundTintList(paramColorStateList);
+    if (this.ZZ != null) {
+      this.ZZ.setSupportBackgroundTintList(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.Zo != null) {
-      this.Zo.setSupportBackgroundTintMode(paramMode);
+    if (this.ZZ != null) {
+      this.ZZ.setSupportBackgroundTintMode(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.Zp != null) {
-      this.Zp.p(paramContext, paramInt);
+    if (this.aaa != null) {
+      this.aaa.t(paramContext, paramInt);
     }
   }
 }

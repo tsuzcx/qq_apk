@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 
 final class BindGoogleContactUI$8
@@ -12,10 +13,12 @@ final class BindGoogleContactUI$8
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    BindGoogleContactUI.f(this.faN);
-    if (BindGoogleContactUI.g(this.faN) != null) {
-      g.Dk().c(BindGoogleContactUI.g(this.faN));
+    AppMethodBeat.i(13355);
+    BindGoogleContactUI.f(this.gsF);
+    if (BindGoogleContactUI.g(this.gsF) != null) {
+      g.Rc().a(BindGoogleContactUI.g(this.gsF));
     }
+    AppMethodBeat.o(13355);
   }
 }
 

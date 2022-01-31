@@ -1,92 +1,109 @@
 package com.tencent.mm.ay;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.m.b;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.qv;
-import com.tencent.mm.protocal.c.qw;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.bi;
+import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
+import junit.framework.Assert;
 
-public final class a
-  extends m
-  implements k
+public abstract class a
 {
-  private f dmL;
-  public a.a evQ;
-  public final List<i.b> evR = new ArrayList();
+  public static String fLj = "";
+  public static String fLk = "";
+  public String TEXT;
+  public String TYPE;
+  public bi cEE;
+  public String fLl = "";
+  public String fLm;
+  public LinkedList<String> fLn = new LinkedList();
+  public LinkedList<Integer> fLo = new LinkedList();
+  public LinkedList<Integer> fLp = new LinkedList();
+  public Map<String, String> values;
   
-  public a(List<i.b> paramList)
+  public a(Map<String, String> paramMap)
   {
-    this.evR.addAll(paramList);
-    this.evQ = new a.a();
-    ((a.b)this.evQ.Kv()).evU.tvu = T(paramList);
+    this.values = paramMap;
   }
   
-  private static qw T(List<i.b> paramList)
+  public a(Map<String, String> paramMap, bi parambi)
   {
-    qw localqw = new qw();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    this.values = paramMap;
+    this.cEE = parambi;
+  }
+  
+  protected abstract boolean Zh();
+  
+  public final boolean aiH()
+  {
+    if ((this.values != null) && (this.values.size() > 0))
     {
-      i.b localb = (i.b)localIterator.next();
-      byte[] arrayOfByte = localb.getBuffer();
-      qv localqv = new qv();
-      localqv.sOA = localb.getCmdId();
-      localqv.sOB = new bmk().bs(arrayOfByte);
-      localqw.hPT.add(localqv);
+      if (this.values.containsKey(".sysmsg.$type")) {
+        this.TYPE = ((String)this.values.get(".sysmsg.$type"));
+      }
+      fLj = ".sysmsg." + this.TYPE + ".text";
+      if (this.values.containsKey(fLj)) {
+        this.TEXT = ((String)this.values.get(fLj));
+      }
+      fLk = ".sysmsg." + this.TYPE + ".link.scene";
+      if (this.values.containsKey(fLk)) {
+        this.fLm = ((String)this.values.get(fLk));
+      }
+      return Zh();
     }
-    localqw.hPS = paramList.size();
-    y.d("MicroMsg.NetSceneOplog", "summeroplog oplogs size=" + paramList.size());
-    return localqw;
+    ab.e("MicroMsg.BaseNewXmlMsg", "values == null || values.size() == 0 ");
+    return false;
   }
   
-  protected final int Ka()
+  public static abstract class a
   {
-    return 5;
-  }
-  
-  public final int a(e parame, f paramf)
-  {
-    Iterator localIterator = this.evR.iterator();
-    while (localIterator.hasNext()) {
-      if (((i.b)localIterator.next()).getCmdId() == 1) {
-        ae.getContext().getSharedPreferences(ae.cqR(), 0).edit().putBoolean(com.tencent.mm.model.q.Gj() + "_has_mod_userinfo", true).commit();
+    private static HashMap<String, a> fLq = new HashMap();
+    
+    public static void a(String paramString, a parama)
+    {
+      Assert.assertNotNull(paramString);
+      Assert.assertNotNull(parama);
+      synchronized (fLq)
+      {
+        fLq.put(paramString.toLowerCase(), parama);
+        return;
       }
     }
-    this.dmL = paramf;
-    return a(parame, this.evQ, this);
+    
+    public static a b(Map<String, String> paramMap, bi parambi)
+    {
+      if (paramMap == null)
+      {
+        ab.e("MicroMsg.BaseNewXmlMsg", "values is null !!!");
+        return null;
+      }
+      String str = bo.bf((String)paramMap.get(".sysmsg.$type"), "");
+      synchronized (fLq)
+      {
+        a locala = (a)fLq.get(str.toLowerCase());
+        if (locala == null)
+        {
+          ab.w("MicroMsg.BaseNewXmlMsg", "TYPE %s is unDefine", new Object[] { str });
+          return null;
+        }
+        paramMap = locala.a(paramMap, parambi);
+        return paramMap;
+      }
+    }
+    
+    public abstract a a(Map<String, String> paramMap, bi parambi);
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public static abstract interface b
   {
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-  }
-  
-  protected final m.b b(com.tencent.mm.network.q paramq)
-  {
-    return m.b.edr;
-  }
-  
-  public final int getType()
-  {
-    return 681;
+    public abstract void a(View paramView, bi parambi, a parama, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ay.a
  * JD-Core Version:    0.7.0.1
  */

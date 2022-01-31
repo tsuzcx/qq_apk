@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
 import android.content.Context;
-import com.tencent.mm.aa.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.z.b.c;
 import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class d
@@ -20,35 +22,38 @@ public final class d
     super("onNetworkStatusChange", paramInt);
   }
   
-  public final JSONObject rB()
+  public final JSONObject toJSONObject()
   {
-    HashMap localHashMap = new HashMap();
-    Context localContext = ae.getContext();
-    boolean bool = aq.isConnected(localContext);
-    localHashMap.put("isConnected", Boolean.valueOf(bool));
+    AppMethodBeat.i(10913);
+    Object localObject = new HashMap();
+    Context localContext = ah.getContext();
+    boolean bool = at.isConnected(localContext);
+    ((HashMap)localObject).put("isConnected", Boolean.valueOf(bool));
     if (!bool) {
-      localHashMap.put("networkType", "none");
+      ((HashMap)localObject).put("networkType", "none");
     }
     for (;;)
     {
-      return new JSONObject(localHashMap);
-      if (aq.is2G(localContext)) {
-        localHashMap.put("networkType", "2g");
-      } else if (aq.is3G(localContext)) {
-        localHashMap.put("networkType", "3g");
-      } else if (aq.is4G(localContext)) {
-        localHashMap.put("networkType", "4g");
-      } else if (aq.isWifi(localContext)) {
-        localHashMap.put("networkType", "wifi");
+      localObject = new JSONObject((Map)localObject);
+      AppMethodBeat.o(10913);
+      return localObject;
+      if (at.is2G(localContext)) {
+        ((HashMap)localObject).put("networkType", "2g");
+      } else if (at.is3G(localContext)) {
+        ((HashMap)localObject).put("networkType", "3g");
+      } else if (at.is4G(localContext)) {
+        ((HashMap)localObject).put("networkType", "4g");
+      } else if (at.isWifi(localContext)) {
+        ((HashMap)localObject).put("networkType", "wifi");
       } else {
-        localHashMap.put("networkType", "unknown");
+        ((HashMap)localObject).put("networkType", "unknown");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.d
  * JD-Core Version:    0.7.0.1
  */

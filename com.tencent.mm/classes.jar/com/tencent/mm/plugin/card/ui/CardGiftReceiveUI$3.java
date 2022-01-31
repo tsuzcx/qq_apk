@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.card.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.p;
 
 final class CardGiftReceiveUI$3
@@ -13,19 +14,21 @@ final class CardGiftReceiveUI$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((CardGiftReceiveUI.c(this.iuv) != null) && (CardGiftReceiveUI.c(this.iuv).isShowing())) {
-      CardGiftReceiveUI.c(this.iuv).dismiss();
+    AppMethodBeat.i(88417);
+    if ((CardGiftReceiveUI.c(this.kvA) != null) && (CardGiftReceiveUI.c(this.kvA).isShowing())) {
+      CardGiftReceiveUI.c(this.kvA).dismiss();
     }
-    if ((CardGiftReceiveUI.d(this.iuv).getVisibility() == 8) || (CardGiftReceiveUI.e(this.iuv).getVisibility() == 4))
+    if ((CardGiftReceiveUI.d(this.kvA).getVisibility() == 8) || (CardGiftReceiveUI.e(this.kvA).getVisibility() == 4))
     {
-      y.i("MicroMsg.CardGiftReceiveUI", "user cancel & finish");
-      this.iuv.finish();
+      ab.i("MicroMsg.CardGiftReceiveUI", "user cancel & finish");
+      this.kvA.finish();
     }
+    AppMethodBeat.o(88417);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftReceiveUI.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,9 @@
 package com.tencent.mm.plugin.card.ui;
 
-import android.database.Cursor;
 import android.os.MessageQueue.IdleHandler;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.card.model.CardInfo;
-import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.plugin.card.model.c;
-import com.tencent.mm.plugin.card.model.n.a;
-import com.tencent.mm.protocal.c.mg;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.sharecard.a.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CardHomePageUI$9
   implements MessageQueue.IdleHandler
@@ -20,62 +12,18 @@ final class CardHomePageUI$9
   
   public final boolean queueIdle()
   {
-    Object localObject;
-    int i;
-    if (CardHomePageUI.g(this.ivb) != null)
+    AppMethodBeat.i(88491);
+    if (CardHomePageUI.g(this.kwf) != null)
     {
-      CardHomePageUI.g(this.ivb);
-      localObject = (Integer)g.DP().Dz().get(ac.a.upn, Integer.valueOf(0));
-      if ((localObject == null) || (((Integer)localObject).intValue() != 1)) {
-        break label72;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i != 0)
+      CardHomePageUI.g(this.kwf);
+      if (b.bcH())
       {
-        y.i("MicroMsg.CardHomePageUI", "try2UpdateCardType");
-        CardHomePageUI.h(this.ivb);
-      }
-      return false;
-      label72:
-      g.DP().Dz().c(ac.a.upn, Integer.valueOf(1));
-      localObject = am.aAs().a(n.a.inf);
-      if ((localObject != null) && (((Cursor)localObject).getCount() > 0))
-      {
-        ((Cursor)localObject).moveToFirst();
-        if (!((Cursor)localObject).isAfterLast())
-        {
-          CardInfo localCardInfo = new CardInfo();
-          localCardInfo.d((Cursor)localObject);
-          if (localCardInfo.field_card_type == -1)
-          {
-            if (localCardInfo.azx() != null) {
-              break label172;
-            }
-            y.e("MicroMsg.ShareCardDataMgr", "updateCardType fail , info.getCardTpInfo() == null");
-          }
-          for (;;)
-          {
-            ((Cursor)localObject).moveToNext();
-            break;
-            label172:
-            localCardInfo.field_card_type = localCardInfo.azx().ilo;
-            if (!am.aAs().c(localCardInfo, new String[0])) {
-              y.e("MicroMsg.ShareCardDataMgr", "updateCardType fail , cardId = %s", new Object[] { localCardInfo.field_card_id });
-            }
-          }
-        }
-        ((Cursor)localObject).close();
-        i = 1;
-      }
-      else
-      {
-        y.e("MicroMsg.ShareCardDataMgr", "updateAllCardInfoByBlockField cursor is null or size is 0");
-        i = 0;
+        ab.i("MicroMsg.CardHomePageUI", "try2UpdateCardType");
+        CardHomePageUI.h(this.kwf);
       }
     }
+    AppMethodBeat.o(88491);
+    return false;
   }
 }
 

@@ -1,201 +1,112 @@
 package android.support.v7.widget;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.support.v4.view.q;
-import android.support.v7.a.a.j;
+import android.support.v4.widget.e;
+import android.support.v7.a.a.a;
 import android.util.AttributeSet;
-import android.view.View;
+import android.widget.CompoundButton;
 
 final class f
 {
-  private final h Zq;
-  private int Zr = -1;
-  private av Zs;
-  private av Zt;
-  private av Zu;
-  private final View mView;
+  private final CompoundButton aah;
+  ColorStateList aai = null;
+  PorterDuff.Mode aaj = null;
+  private boolean aak = false;
+  private boolean aal = false;
+  private boolean aam;
   
-  f(View paramView)
+  f(CompoundButton paramCompoundButton)
   {
-    this.mView = paramView;
-    this.Zq = h.gi();
+    this.aah = paramCompoundButton;
   }
   
-  private void d(ColorStateList paramColorStateList)
+  private void hf()
   {
-    if (paramColorStateList != null)
+    Drawable localDrawable = e.a(this.aah);
+    if ((localDrawable != null) && ((this.aak) || (this.aal)))
     {
-      if (this.Zs == null) {
-        this.Zs = new av();
+      localDrawable = android.support.v4.graphics.drawable.a.e(localDrawable).mutate();
+      if (this.aak) {
+        android.support.v4.graphics.drawable.a.a(localDrawable, this.aai);
       }
-      this.Zs.alV = paramColorStateList;
-      this.Zs.alX = true;
-    }
-    for (;;)
-    {
-      gf();
-      return;
-      this.Zs = null;
+      if (this.aal) {
+        android.support.v4.graphics.drawable.a.a(localDrawable, this.aaj);
+      }
+      if (localDrawable.isStateful()) {
+        localDrawable.setState(this.aah.getDrawableState());
+      }
+      this.aah.setButtonDrawable(localDrawable);
     }
   }
   
-  final void b(AttributeSet paramAttributeSet, int paramInt)
+  final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    paramAttributeSet = ax.a(this.mView.getContext(), paramAttributeSet, a.j.ViewBackgroundHelper, paramInt, 0);
+    paramAttributeSet = this.aah.getContext().obtainStyledAttributes(paramAttributeSet, a.a.CompoundButton, paramInt, 0);
     try
     {
-      if (paramAttributeSet.hasValue(a.j.ViewBackgroundHelper_android_background))
+      if (paramAttributeSet.hasValue(0))
       {
-        this.Zr = paramAttributeSet.getResourceId(a.j.ViewBackgroundHelper_android_background, -1);
-        ColorStateList localColorStateList = this.Zq.n(this.mView.getContext(), this.Zr);
-        if (localColorStateList != null) {
-          d(localColorStateList);
+        paramInt = paramAttributeSet.getResourceId(0, 0);
+        if (paramInt != 0) {
+          this.aah.setButtonDrawable(android.support.v7.c.a.a.k(this.aah.getContext(), paramInt));
         }
       }
-      if (paramAttributeSet.hasValue(a.j.ViewBackgroundHelper_backgroundTint)) {
-        q.a(this.mView, paramAttributeSet.getColorStateList(a.j.ViewBackgroundHelper_backgroundTint));
+      if (paramAttributeSet.hasValue(1)) {
+        e.a(this.aah, paramAttributeSet.getColorStateList(1));
       }
-      if (paramAttributeSet.hasValue(a.j.ViewBackgroundHelper_backgroundTintMode)) {
-        q.a(this.mView, y.c(paramAttributeSet.getInt(a.j.ViewBackgroundHelper_backgroundTintMode, -1), null));
+      if (paramAttributeSet.hasValue(2)) {
+        e.a(this.aah, x.c(paramAttributeSet.getInt(2, -1), null));
       }
       return;
     }
     finally
     {
-      paramAttributeSet.alZ.recycle();
+      paramAttributeSet.recycle();
     }
   }
   
-  final void bp(int paramInt)
+  final int bp(int paramInt)
   {
-    this.Zr = paramInt;
-    if (this.Zq != null) {}
-    for (ColorStateList localColorStateList = this.Zq.n(this.mView.getContext(), paramInt);; localColorStateList = null)
+    int i = paramInt;
+    if (Build.VERSION.SDK_INT < 17)
     {
-      d(localColorStateList);
-      gf();
+      Drawable localDrawable = e.a(this.aah);
+      i = paramInt;
+      if (localDrawable != null) {
+        i = paramInt + localDrawable.getIntrinsicWidth();
+      }
+    }
+    return i;
+  }
+  
+  final void he()
+  {
+    if (this.aam)
+    {
+      this.aam = false;
       return;
     }
+    this.aam = true;
+    hf();
   }
   
-  final void ge()
+  final void setSupportButtonTintList(ColorStateList paramColorStateList)
   {
-    this.Zr = -1;
-    d(null);
-    gf();
+    this.aai = paramColorStateList;
+    this.aak = true;
+    hf();
   }
   
-  final ColorStateList getSupportBackgroundTintList()
+  final void setSupportButtonTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.Zt != null) {
-      return this.Zt.alV;
-    }
-    return null;
-  }
-  
-  final PorterDuff.Mode getSupportBackgroundTintMode()
-  {
-    if (this.Zt != null) {
-      return this.Zt.nN;
-    }
-    return null;
-  }
-  
-  final void gf()
-  {
-    int j = 0;
-    Drawable localDrawable = this.mView.getBackground();
-    int i;
-    if (localDrawable != null)
-    {
-      i = Build.VERSION.SDK_INT;
-      if (i <= 21) {
-        break label163;
-      }
-      if (this.Zs == null) {
-        break label158;
-      }
-      i = 1;
-      if (i == 0) {
-        break label179;
-      }
-      if (this.Zu == null) {
-        this.Zu = new av();
-      }
-      av localav = this.Zu;
-      localav.clear();
-      Object localObject = q.ah(this.mView);
-      if (localObject != null)
-      {
-        localav.alX = true;
-        localav.alV = ((ColorStateList)localObject);
-      }
-      localObject = q.ai(this.mView);
-      if (localObject != null)
-      {
-        localav.alW = true;
-        localav.nN = ((PorterDuff.Mode)localObject);
-      }
-      if (!localav.alX)
-      {
-        i = j;
-        if (!localav.alW) {}
-      }
-      else
-      {
-        h.a(localDrawable, localav, this.mView.getDrawableState());
-        i = 1;
-      }
-      if (i == 0) {
-        break label179;
-      }
-    }
-    label158:
-    label163:
-    label179:
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (i == 21)
-      {
-        i = 1;
-        break;
-      }
-      i = 0;
-      break;
-      if (this.Zt != null)
-      {
-        h.a(localDrawable, this.Zt, this.mView.getDrawableState());
-        return;
-      }
-    } while (this.Zs == null);
-    h.a(localDrawable, this.Zs, this.mView.getDrawableState());
-  }
-  
-  final void setSupportBackgroundTintList(ColorStateList paramColorStateList)
-  {
-    if (this.Zt == null) {
-      this.Zt = new av();
-    }
-    this.Zt.alV = paramColorStateList;
-    this.Zt.alX = true;
-    gf();
-  }
-  
-  final void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
-  {
-    if (this.Zt == null) {
-      this.Zt = new av();
-    }
-    this.Zt.nN = paramMode;
-    this.Zt.alW = true;
-    gf();
+    this.aaj = paramMode;
+    this.aal = true;
+    hf();
   }
 }
 

@@ -1,48 +1,58 @@
 package com.tencent.mm.plugin.appbrand.c;
 
-import com.tencent.mm.j.g.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.i.d;
+import com.tencent.mm.i.h.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 
 final class b$2
-  implements g.a
+  implements h.a
 {
   b$2(b paramb) {}
   
-  public final void e(String paramString, int paramInt1, int paramInt2)
+  public final void a(String paramString, int paramInt, d paramd)
   {
-    y.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on progress [%s %d %d]", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    paramString = (d.c)this.fNj.fNh.get(paramString);
-    if (paramString != null) {
-      paramString.bN(paramInt1, paramInt2);
+    AppMethodBeat.i(129817);
+    ab.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on finish [%s %d]", new Object[] { paramString, Integer.valueOf(paramInt) });
+    paramd = (d.c)this.hgt.hgr.get(paramString);
+    if (paramd != null) {
+      paramd.ad(paramString, paramInt);
     }
+    AppMethodBeat.o(129817);
   }
   
-  public final void onDataAvailable(String paramString, int paramInt1, int paramInt2)
+  public final void l(String paramString, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on data available [%s %d %d]", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    paramString = (d.c)this.fNj.fNh.get(paramString);
+    AppMethodBeat.i(129814);
+    ab.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on moov ready [%s %d %d]", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    paramString = (d.c)this.hgt.hgr.get(paramString);
     if (paramString != null) {
-      paramString.bM(paramInt1, paramInt2);
+      paramString.cW(paramInt1, paramInt2);
     }
+    AppMethodBeat.o(129814);
   }
   
-  public final void onMoovReady(String paramString, int paramInt1, int paramInt2)
+  public final void m(String paramString, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on moov ready [%s %d %d]", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    paramString = (d.c)this.fNj.fNh.get(paramString);
+    AppMethodBeat.i(129815);
+    ab.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on data available [%s %d %d]", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    paramString = (d.c)this.hgt.hgr.get(paramString);
     if (paramString != null) {
-      paramString.bL(paramInt1, paramInt2);
+      paramString.cX(paramInt1, paramInt2);
     }
+    AppMethodBeat.o(129815);
   }
   
-  public final void x(String paramString, int paramInt)
+  public final void n(String paramString, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on finish [%s %d]", new Object[] { paramString, Integer.valueOf(paramInt) });
-    d.c localc = (d.c)this.fNj.fNh.get(paramString);
-    if (localc != null) {
-      localc.V(paramString, paramInt);
+    AppMethodBeat.i(129816);
+    ab.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on progress [%s %d %d]", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    paramString = (d.c)this.hgt.hgr.get(paramString);
+    if (paramString != null) {
+      paramString.cY(paramInt1, paramInt2);
     }
+    AppMethodBeat.o(129816);
   }
 }
 

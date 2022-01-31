@@ -5,16 +5,28 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.ReflectedParcelable;
+import com.google.android.gms.common.util.VisibleForTesting;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@VisibleForTesting
 public class PendingCallback
   implements Parcelable, ReflectedParcelable
 {
-  public static final Parcelable.Creator<PendingCallback> CREATOR = new PendingCallback.1();
-  final IBinder zzaFz;
+  public static final Parcelable.Creator<PendingCallback> CREATOR;
+  final IBinder zzal;
+  
+  static
+  {
+    AppMethodBeat.i(69996);
+    CREATOR = new zzj();
+    AppMethodBeat.o(69996);
+  }
   
   public PendingCallback(Parcel paramParcel)
   {
-    this.zzaFz = paramParcel.readStrongBinder();
+    AppMethodBeat.i(69994);
+    this.zzal = paramParcel.readStrongBinder();
+    AppMethodBeat.o(69994);
   }
   
   public int describeContents()
@@ -22,14 +34,11 @@ public class PendingCallback
     return 0;
   }
   
-  public IBinder getIBinder()
-  {
-    return this.zzaFz;
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeStrongBinder(this.zzaFz);
+    AppMethodBeat.i(69995);
+    paramParcel.writeStrongBinder(this.zzal);
+    AppMethodBeat.o(69995);
   }
 }
 

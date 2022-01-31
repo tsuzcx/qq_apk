@@ -1,93 +1,87 @@
 package com.tencent.mm.plugin.appbrand.launching.precondition;
 
+import android.content.ComponentName;
 import android.content.Context;
-import android.os.Handler;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ServiceInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.backgroundfetch.b;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.launching.c;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
-public final class j
+final class j
 {
-  static int gMH = 112;
-  private static Object gMI;
-  private static Handler gMJ;
-  
-  private static Handler aS(Object paramObject)
+  static String Ds(String paramString)
   {
-    if (gMJ != null) {
-      return gMJ;
+    AppMethodBeat.i(132082);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(132082);
+      return "";
     }
-    Field localField = paramObject.getClass().getDeclaredField("mH");
-    localField.setAccessible(true);
-    paramObject = (Handler)localField.get(paramObject);
-    gMJ = paramObject;
-    return paramObject;
-  }
-  
-  public static void cs(Context paramContext)
-  {
+    paramString = new ComponentName(ah.getContext(), paramString);
+    PackageManager localPackageManager = ah.getContext().getPackageManager();
+    if (localPackageManager == null)
+    {
+      AppMethodBeat.o(132082);
+      return "";
+    }
     try
     {
-      paramContext = aS(ct(paramContext));
-      Field localField = paramContext.getClass().getDeclaredField("NEW_INTENT");
-      localField.setAccessible(true);
-      gMH = ((Integer)localField.get(paramContext)).intValue();
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      y.printErrStackTrace("MicroMsg.AppBrand.PreconditionActivityThreadHack", paramContext, "hack constants in ActivityThread$H", new Object[0]);
-    }
-  }
-  
-  private static Object ct(Context paramContext)
-  {
-    if (gMI != null) {
-      return gMI;
-    }
-    Object localObject = Class.forName("android.app.ActivityThread").getMethod("currentActivityThread", new Class[0]);
-    ((Method)localObject).setAccessible(true);
-    localObject = ((Method)localObject).invoke(null, new Object[0]);
-    if (localObject != null)
-    {
-      gMI = localObject;
+      Object localObject = localPackageManager.getActivityInfo(paramString, 128);
+      if (localObject == null)
+      {
+        AppMethodBeat.o(132082);
+        return "";
+      }
+      localObject = ((ActivityInfo)localObject).processName;
+      AppMethodBeat.o(132082);
       return localObject;
     }
-    localObject = paramContext.getClass().getField("mLoadedApk");
-    ((Field)localObject).setAccessible(true);
-    paramContext = ((Field)localObject).get(paramContext);
-    localObject = paramContext.getClass().getDeclaredField("mActivityThread");
-    ((Field)localObject).setAccessible(true);
-    paramContext = ((Field)localObject).get(paramContext);
-    gMI = paramContext;
-    return paramContext;
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      try
+      {
+        paramString = localPackageManager.getServiceInfo(paramString, 128);
+        if (paramString == null)
+        {
+          AppMethodBeat.o(132082);
+          return "";
+        }
+        paramString = paramString.processName;
+        AppMethodBeat.o(132082);
+        return paramString;
+      }
+      catch (PackageManager.NameNotFoundException paramString)
+      {
+        AppMethodBeat.o(132082);
+      }
+    }
+    return "";
   }
   
-  static boolean lQ(int paramInt)
+  static void b(Context paramContext, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
-    try
-    {
-      Handler localHandler = aS(ct(ae.getContext()));
-      if (localHandler == null) {
-        return false;
-      }
+    AppMethodBeat.i(132083);
+    ab.i("MicroMsg.AppBrand.PreconditionUtil", "startAppOnInitConfigGot, %s", new Object[] { paramAppBrandInitConfigWC });
+    if (b.a(paramAppBrandInitConfigWC)) {
+      b.a(paramAppBrandInitConfigWC.appId, paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC.gXd, paramAppBrandInitConfigWC.hiw, paramAppBrandStatObject.scene, new com.tencent.mm.plugin.appbrand.backgroundfetch.j());
     }
-    catch (Exception localException)
-    {
-      Object localObject;
-      for (;;)
-      {
-        y.printErrStackTrace("MicroMsg.AppBrand.PreconditionActivityThreadHack", localException, "hasPendingMessageInQueue, hack mH", new Object[0]);
-        localObject = null;
-      }
-      return localObject.hasMessages(paramInt);
-    }
+    c.a(paramAppBrandInitConfigWC, paramAppBrandStatObject);
+    com.tencent.mm.plugin.appbrand.launching.f.a(paramContext, paramAppBrandInitConfigWC, paramAppBrandStatObject);
+    com.tencent.mm.plugin.appbrand.config.f.ayv().a(paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC);
+    AppMethodBeat.o(132083);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.precondition.j
  * JD-Core Version:    0.7.0.1
  */

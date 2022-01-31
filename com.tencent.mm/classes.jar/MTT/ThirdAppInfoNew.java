@@ -3,6 +3,7 @@ package MTT;
 public final class ThirdAppInfoNew
   implements Cloneable
 {
+  public boolean bIsSandboxMode = false;
   public int iCoreType = 0;
   public long iPv = 0L;
   public int localCoreVersion = 0;

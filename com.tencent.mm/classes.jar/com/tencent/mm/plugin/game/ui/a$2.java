@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class a$2
-  implements am.a
+  implements ap.a
 {
   a$2(a parama) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    this.kWJ.notifyDataSetChanged();
+    AppMethodBeat.i(111696);
+    this.nuL.notifyDataSetChanged();
+    AppMethodBeat.o(111696);
     return false;
   }
 }

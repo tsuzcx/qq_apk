@@ -1,16 +1,20 @@
 package com.tencent.mm.console;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class Shell$10
   implements Shell.a
 {
-  public final void g(Intent paramIntent)
+  public final void s(Intent paramIntent)
   {
-    ae.eTv = paramIntent.getIntExtra("flag", 0);
-    y.w("MicroMsg.Shell", "dkwt shell [%d]", new Object[] { Integer.valueOf(ae.eTv) });
+    AppMethodBeat.i(16118);
+    ae.gkO = paramIntent.getStringExtra("acc");
+    ae.gkP = paramIntent.getStringExtra("pass");
+    ab.w("MicroMsg.Shell", "dkwt shell [%s %s]", new Object[] { ae.gkO, ae.gkP });
+    AppMethodBeat.o(16118);
   }
 }
 

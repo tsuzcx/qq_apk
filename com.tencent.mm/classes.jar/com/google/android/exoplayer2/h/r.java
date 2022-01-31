@@ -1,95 +1,25 @@
 package com.google.android.exoplayer2.h;
 
-import android.os.Looper;
-import android.os.SystemClock;
-import com.google.android.exoplayer2.i.a;
-import com.google.android.exoplayer2.i.t;
-import java.io.IOException;
-import java.util.concurrent.ExecutorService;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class r
+  implements g.a
 {
-  IOException aJx;
-  final ExecutorService aRR;
-  r.b<? extends c> aRS;
+  private final w<? super q> aYq = null;
   
-  public r(String paramString)
+  public r()
   {
-    this.aRR = t.aC(paramString);
+    this((byte)0);
   }
   
-  public final <T extends c> long a(T paramT, r.a<T> parama, int paramInt)
-  {
-    Looper localLooper = Looper.myLooper();
-    if (localLooper != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a.aC(bool);
-      long l = SystemClock.elapsedRealtime();
-      new r.b(this, localLooper, paramT, parama, paramInt, l).start(0L);
-      return l;
-    }
-  }
+  private r(byte paramByte) {}
   
-  public final boolean a(r.d paramd)
+  public final g qn()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this.aRS != null)
-    {
-      this.aRS.cancel(true);
-      bool1 = bool2;
-      if (paramd != null)
-      {
-        this.aRR.execute(new r.e(paramd));
-        bool1 = bool2;
-      }
-    }
-    for (;;)
-    {
-      this.aRR.shutdown();
-      return bool1;
-      bool1 = bool2;
-      if (paramd != null)
-      {
-        paramd.nc();
-        bool1 = true;
-      }
-    }
-  }
-  
-  public final void cancelLoading()
-  {
-    this.aRS.cancel(false);
-  }
-  
-  public final boolean isLoading()
-  {
-    return this.aRS != null;
-  }
-  
-  public final void mD()
-  {
-    if (this.aJx != null) {
-      throw this.aJx;
-    }
-    if (this.aRS != null)
-    {
-      r.b localb = this.aRS;
-      int i = this.aRS.aRV;
-      if ((localb.aRX != null) && (localb.aRY > i)) {
-        throw localb.aRX;
-      }
-    }
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void mR();
-    
-    public abstract boolean mS();
-    
-    public abstract void mT();
+    AppMethodBeat.i(95838);
+    q localq = new q(this.aYq);
+    AppMethodBeat.o(95838);
+    return localq;
   }
 }
 

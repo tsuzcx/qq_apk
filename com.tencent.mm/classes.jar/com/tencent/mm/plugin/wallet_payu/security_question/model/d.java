@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wallet_payu.security_question.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,18 +10,26 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public ArrayList<PayUSecurityQuestion> qOO;
+  public ArrayList<PayUSecurityQuestion> uDV;
   
   public d()
   {
-    D(new HashMap());
+    AppMethodBeat.i(48572);
+    setRequestData(new HashMap());
+    AppMethodBeat.o(48572);
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
+  public final int cTa()
   {
+    return 11;
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(48573);
     if (paramJSONObject != null)
     {
-      this.qOO = new ArrayList();
+      this.uDV = new ArrayList();
       paramString = paramJSONObject.optJSONArray("security_question_list");
       if (paramString != null)
       {
@@ -31,17 +40,13 @@ public final class d
           if (paramJSONObject != null)
           {
             paramJSONObject = new PayUSecurityQuestion(paramJSONObject.optString("id"), paramJSONObject.optString("description"));
-            this.qOO.add(paramJSONObject);
+            this.uDV.add(paramJSONObject);
           }
           paramInt += 1;
         }
       }
     }
-  }
-  
-  public final int bUM()
-  {
-    return 11;
+    AppMethodBeat.o(48573);
   }
 }
 

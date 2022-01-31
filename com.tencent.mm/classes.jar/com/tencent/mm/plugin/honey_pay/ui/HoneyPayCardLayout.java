@@ -7,105 +7,116 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.honey_pay.model.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.c.apf;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.ab;
+import com.tencent.mm.protocal.protobuf.ave;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.c.ae;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 import com.tencent.mm.wallet_core.ui.e;
 
 public class HoneyPayCardLayout
   extends LinearLayout
 {
-  private ImageView iIS;
-  private TextView lkA;
-  private TextView lkB;
-  private WalletTextView lkC;
-  private TextView lkD;
-  private CdnImageView lkE;
-  private String lki;
+  private ImageView kPy;
+  private String nHE;
+  private TextView nHW;
+  private TextView nHX;
+  private WalletTextView nHY;
+  private TextView nHZ;
+  private CdnImageView nIa;
   
   public HoneyPayCardLayout(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(41788);
     init();
+    AppMethodBeat.o(41788);
   }
   
   public HoneyPayCardLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(41789);
     init();
+    AppMethodBeat.o(41789);
   }
   
   public HoneyPayCardLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(41790);
     init();
+    AppMethodBeat.o(41790);
   }
   
   private void init()
   {
-    View localView = inflate(getContext(), a.g.honey_pay_card_layout, this);
-    this.iIS = ((ImageView)localView.findViewById(a.f.hpcl_avatar_iv));
-    this.lkC = ((WalletTextView)localView.findViewById(a.f.hpcl_quota_tv));
-    this.lkA = ((TextView)localView.findViewById(a.f.hpcl_username_tv));
-    this.lkB = ((TextView)localView.findViewById(a.f.hpcl_remain_tv));
-    this.lkD = ((TextView)localView.findViewById(a.f.hpcl_card_type_tv));
-    this.lkE = ((CdnImageView)localView.findViewById(a.f.hpcl_card_type_iv));
-    this.lkC.setPrefix(ab.cML());
+    AppMethodBeat.i(41791);
+    View localView = inflate(getContext(), 2130969862, this);
+    this.kPy = ((ImageView)localView.findViewById(2131825000));
+    this.nHY = ((WalletTextView)localView.findViewById(2131825002));
+    this.nHW = ((TextView)localView.findViewById(2131825001));
+    this.nHX = ((TextView)localView.findViewById(2131825003));
+    this.nHZ = ((TextView)localView.findViewById(2131824999));
+    this.nIa = ((CdnImageView)localView.findViewById(2131824998));
+    this.nHY.setPrefix(ae.dSz());
+    AppMethodBeat.o(41791);
   }
   
-  public void setCardRecord(apf paramapf)
+  public void setCardRecord(ave paramave)
   {
     long l1 = 0L;
-    this.lki = paramapf.tef;
-    this.lkD.setText(paramapf.imz);
-    if (!bk.bl(paramapf.bVO)) {
-      this.lkE.dl(paramapf.bVO, c.sr(paramapf.ilo));
+    AppMethodBeat.i(41792);
+    this.nHE = paramave.xcf;
+    this.nHZ.setText(paramave.knv);
+    if (!bo.isNullOrNil(paramave.cDz)) {
+      this.nIa.eq(paramave.cDz, c.xr(paramave.iFL));
     }
-    a.b.a(this.iIS, paramapf.sMy, 0.06F, false);
-    e.f(this.lkA, paramapf.sMy);
-    this.lkC.setText(c.eR(paramapf.sQd));
-    if (paramapf.tlh == 0)
+    a.b.a(this.kPy, paramave.wKl, 0.06F, false);
+    e.d(this.nHW, paramave.wKl);
+    this.nHY.setText(c.kn(paramave.wOy));
+    if (paramave.xkA == 0)
     {
-      this.lkB.setTextColor(Color.parseColor("#FA9D3B"));
-      this.lkB.setText(a.i.honey_pay_waiting_for_receive);
+      this.nHX.setTextColor(Color.parseColor("#FA9D3B"));
+      this.nHX.setText(2131300717);
+      AppMethodBeat.o(41792);
       return;
     }
     long l2;
-    if (paramapf.tlh == 1) {
-      if (paramapf.tlj == 0L)
+    if (paramave.xkA == 1) {
+      if (paramave.xkC == 0L)
       {
-        l2 = paramapf.tli;
+        l2 = paramave.xkB;
         if (l2 >= 0L) {
-          break label254;
+          break label277;
         }
-        y.w("MicroMsg.HoneyPayCardLayout", "unused quota wrong: %s", new Object[] { Long.valueOf(l2) });
+        ab.w("MicroMsg.HoneyPayCardLayout", "unused quota wrong: %s", new Object[] { Long.valueOf(l2) });
       }
     }
     for (;;)
     {
-      this.lkB.setText(getContext().getString(a.i.honey_pay_used_month, new Object[] { ab.cML() + c.eR(l1) }));
+      this.nHX.setText(getContext().getString(2131300716, new Object[] { ae.dSz() + c.kn(l1) }));
+      AppMethodBeat.o(41792);
       return;
-      y.i("MicroMsg.HoneyPayCardLayout", "show check detail");
-      this.lkB.setText("");
+      ab.i("MicroMsg.HoneyPayCardLayout", "show check detail");
+      this.nHX.setText("");
+      AppMethodBeat.o(41792);
       return;
-      y.w("MicroMsg.HoneyPayCardLayout", "unknown rcvd: %s", new Object[] { Integer.valueOf(paramapf.tlh) });
+      ab.w("MicroMsg.HoneyPayCardLayout", "unknown rcvd: %s", new Object[] { Integer.valueOf(paramave.xkA) });
+      AppMethodBeat.o(41792);
       return;
-      label254:
+      label277:
       l1 = l2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayCardLayout
  * JD-Core Version:    0.7.0.1
  */

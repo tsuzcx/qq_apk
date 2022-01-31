@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import com.tencent.mm.protocal.c.fd;
+import com.tencent.mm.protocal.protobuf.gm;
 
 public final class FreeWifiFrontPageUI$b
 {
-  public fd krS;
+  public gm mNG;
 }
 
 

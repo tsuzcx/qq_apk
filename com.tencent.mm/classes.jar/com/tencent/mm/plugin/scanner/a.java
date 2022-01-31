@@ -2,107 +2,126 @@ package com.tencent.mm.plugin.scanner;
 
 import android.os.Bundle;
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.m.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class a
 {
-  public static boolean aD(int paramInt, String paramString)
+  public static boolean CA(int paramInt)
   {
-    if (paramInt != 22) {}
-    do
+    switch (paramInt)
     {
-      while (!((Iterator)localObject).hasNext())
-      {
-        do
-        {
-          return false;
-        } while (bk.bl(paramString));
-        if ((!ae.cqV()) && ((Looper.myLooper() != Looper.getMainLooper()) || (b.BT().fC("com.tencent.mm")))) {
-          break;
-        }
-        localObject = bxb();
-        localObject = ((Set)localObject).iterator();
-      }
-    } while (!paramString.startsWith((String)((Iterator)localObject).next()));
+    default: 
+      return false;
+    }
     return true;
-    HashSet localHashSet = new HashSet();
+  }
+  
+  public static boolean CB(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean ba(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(79165);
+    if (paramInt != 22)
+    {
+      AppMethodBeat.o(79165);
+      return false;
+    }
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(79165);
+      return false;
+    }
+    Object localObject;
+    if ((ah.brt()) || ((Looper.myLooper() == Looper.getMainLooper()) && (!b.PK().lX("com.tencent.mm")))) {
+      localObject = chV();
+    }
+    for (;;)
+    {
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (paramString.startsWith((String)((Iterator)localObject).next()))
+        {
+          AppMethodBeat.o(79165);
+          return true;
+          localObject = new HashSet();
+          String[] arrayOfString = chU().split("|");
+          paramInt = 0;
+          while (paramInt < arrayOfString.length)
+          {
+            if (!bo.isNullOrNil(arrayOfString[paramInt])) {
+              ((Set)localObject).add(arrayOfString[paramInt]);
+            }
+            paramInt += 1;
+          }
+        }
+      }
+      AppMethodBeat.o(79165);
+      return false;
+    }
+  }
+  
+  private static String chU()
+  {
+    AppMethodBeat.i(79166);
     Object localObject = (Bundle)f.a("com.tencent.mm", null, a.a.class);
     if (localObject != null) {}
     for (localObject = ((Bundle)localObject).getString("wxCodePrefix", "");; localObject = "")
     {
-      localObject = ((String)localObject).split("|");
-      paramInt = 0;
-      while (paramInt < localObject.length)
-      {
-        if (!bk.bl(localObject[paramInt])) {
-          localHashSet.add(localObject[paramInt]);
-        }
-        paramInt += 1;
-      }
-      localObject = localHashSet;
-      break;
+      AppMethodBeat.o(79166);
+      return localObject;
     }
   }
   
-  private static Set<String> bxb()
+  private static Set<String> chV()
   {
+    AppMethodBeat.i(79167);
     HashSet localHashSet = new HashSet();
     localHashSet.add("k");
     localHashSet.add("l");
-    if (ae.cqV())
+    if (ah.brt())
     {
-      localObject = ((com.tencent.mm.plugin.zero.b.a)g.r(com.tencent.mm.plugin.zero.b.a.class)).AB();
+      localObject = ((com.tencent.mm.plugin.zero.b.a)g.E(com.tencent.mm.plugin.zero.b.a.class)).Nr();
       if (localObject == null) {
-        break label124;
+        break label134;
       }
     }
-    label124:
-    for (Object localObject = ((c)localObject).H("ScanCode", "weAppCodePrefix");; localObject = "")
+    label134:
+    for (Object localObject = ((c)localObject).R("ScanCode", "weAppCodePrefix");; localObject = "")
     {
-      y.v("MicroMsg.QRCodeLogic", "getWxCodePrefix(%s)", new Object[] { localObject });
-      if (!bk.bl((String)localObject))
+      ab.v("MicroMsg.QRCodeLogic", "getWxCodePrefix(%s)", new Object[] { localObject });
+      if (!bo.isNullOrNil((String)localObject))
       {
         localObject = ((String)localObject).split("|");
         int i = 0;
         while (i < localObject.length)
         {
-          if (!bk.bl(localObject[i])) {
+          if (!bo.isNullOrNil(localObject[i])) {
             localHashSet.add(localObject[i]);
           }
           i += 1;
         }
       }
+      AppMethodBeat.o(79167);
       return localHashSet;
     }
-  }
-  
-  public static boolean wL(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean wM(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
   }
 }
 

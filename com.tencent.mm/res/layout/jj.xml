@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/rn" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:id="@id/iv" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/di" android:textColor="#ff555555" android:gravity="center" android:id="@id/ag2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ko" android:layout_marginBottom="@dimen/kp" android:text="@string/aag" />
-</LinearLayout>
+    <com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView android:id="@id/ahm" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:dividerHeight="8.0dip" android:overScrollMode="never" />
+    <include android:visibility="gone" layout="@layout/jd" />
+    <LinearLayout android:gravity="center" android:id="@id/ahn" android:background="@color/a6q" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.3">
+        <ProgressBar android:visibility="visible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:indeterminateDrawable="@drawable/z1" />
+    </LinearLayout>
+</RelativeLayout>

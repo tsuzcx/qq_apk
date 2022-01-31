@@ -3,17 +3,25 @@ package com.tencent.tmassistantsdk.downloadclient;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TMAssistantDownloadTaskInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TMAssistantDownloadTaskInfo> CREATOR = new TMAssistantDownloadTaskInfo.1();
+  public static final Parcelable.Creator<TMAssistantDownloadTaskInfo> CREATOR;
   public String mContentType;
   public long mReceiveDataLen;
   public String mSavePath;
   public int mState;
   public long mTotalDataLen;
   public String mUrl;
+  
+  static
+  {
+    AppMethodBeat.i(75679);
+    CREATOR = new TMAssistantDownloadTaskInfo.1();
+    AppMethodBeat.o(75679);
+  }
   
   public TMAssistantDownloadTaskInfo(String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2, String paramString3)
   {
@@ -32,11 +40,12 @@ public class TMAssistantDownloadTaskInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(75678);
     if (this.mUrl != null)
     {
       paramParcel.writeString(this.mUrl);
       if (this.mSavePath == null) {
-        break label72;
+        break label82;
       }
       paramParcel.writeString(this.mSavePath);
     }
@@ -46,10 +55,11 @@ public class TMAssistantDownloadTaskInfo
       paramParcel.writeLong(this.mReceiveDataLen);
       paramParcel.writeLong(this.mTotalDataLen);
       paramParcel.writeString(this.mContentType);
+      AppMethodBeat.o(75678);
       return;
       paramParcel.writeString("");
       break;
-      label72:
+      label82:
       paramParcel.writeString("");
     }
   }

@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.protocal.c.cmb;
-import com.tencent.mm.protocal.c.cmf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
+import com.tencent.mm.protocal.protobuf.czs;
+import com.tencent.mm.protocal.protobuf.czw;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -16,17 +17,19 @@ final class AppBrandIDKeyBatchReport$b$3
   
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
+    AppMethodBeat.i(132522);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      AppBrandIDKeyBatchReport.b.en(((cmb)paramb.ecF.ecN).tYZ);
-      AppBrandIDKeyBatchReport.b.hZ(AppBrandIDKeyBatchReport.b.su());
+      AppBrandIDKeyBatchReport.b.ga(((czs)paramb.fsW.fta).ygv);
+      AppBrandIDKeyBatchReport.b.kM(AppBrandIDKeyBatchReport.b.AL());
     }
     for (;;)
     {
+      AppMethodBeat.o(132522);
       return 0;
-      paramString = this.gXt.iterator();
+      paramString = this.iFw.iterator();
       while (paramString.hasNext()) {
-        AppBrandIDKeyBatchReport.b.d((cmf)paramString.next());
+        AppBrandIDKeyBatchReport.b.d((czw)paramString.next());
       }
     }
   }

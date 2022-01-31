@@ -1,28 +1,22 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import com.tencent.luggage.e.c;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter;
+import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter.c;
 
 final class e$23
-  extends c
+  implements WebViewInputFooter.c
 {
-  e$23(e parame, String paramString) {}
+  e$23(e parame) {}
   
-  public final String name()
+  public final void agO(String paramString)
   {
-    return "activity:state_change";
-  }
-  
-  public final JSONObject pV()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("state", this.iRA);
-      return localJSONObject;
+    AppMethodBeat.i(153110);
+    e.dbe();
+    if (e.b(this.uRQ) != null) {
+      e.b(this.uRQ).hide();
     }
-    catch (Exception localException) {}
-    return localJSONObject;
+    AppMethodBeat.o(153110);
   }
 }
 

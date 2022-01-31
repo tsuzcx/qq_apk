@@ -3,11 +3,9 @@ package com.tencent.mm.plugin.product.ui;
 import android.content.res.Resources;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.wxpay.a.b;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class MallGalleryUI$4
   implements MenuItem.OnMenuItemClickListener
@@ -16,17 +14,19 @@ final class MallGalleryUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (d.SP("favorite")) {}
-    for (paramMenuItem = this.mTy.getResources().getStringArray(a.b.mall_product_gallery_ui_opt_list_with_fav);; paramMenuItem = this.mTy.getResources().getStringArray(a.b.mall_product_gallery_ui_opt_list_without_fav))
+    AppMethodBeat.i(44039);
+    if (d.ahR("favorite")) {}
+    for (paramMenuItem = this.pvE.getResources().getStringArray(2131755033);; paramMenuItem = this.pvE.getResources().getStringArray(2131755034))
     {
-      h.a(this.mTy.mController.uMN, null, paramMenuItem, null, false, new MallGalleryUI.4.1(this));
+      h.a(this.pvE.getContext(), null, paramMenuItem, null, false, new MallGalleryUI.4.1(this));
+      AppMethodBeat.o(44039);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MallGalleryUI.4
  * JD-Core Version:    0.7.0.1
  */

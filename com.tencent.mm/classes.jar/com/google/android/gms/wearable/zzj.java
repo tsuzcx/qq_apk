@@ -1,6 +1,11 @@
 package com.google.android.gms.wearable;
 
-public abstract interface zzj {}
+import com.google.android.gms.common.api.Api.AbstractClientBuilder;
+import com.google.android.gms.wearable.internal.zzhg;
+
+final class zzj
+  extends Api.AbstractClientBuilder<zzhg, Wearable.WearableOptions>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar

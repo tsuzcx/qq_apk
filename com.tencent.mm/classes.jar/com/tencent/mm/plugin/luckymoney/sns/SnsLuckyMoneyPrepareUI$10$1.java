@@ -4,8 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 
 final class SnsLuckyMoneyPrepareUI$10$1
@@ -15,17 +14,19 @@ final class SnsLuckyMoneyPrepareUI$10$1
   
   public final void run()
   {
-    if ((!this.lTL.lTI.lMr.isShown()) && (this.val$view.isShown())) {
-      SnsLuckyMoneyPrepareUI.k(this.lTL.lTI);
+    AppMethodBeat.i(42517);
+    if ((!this.oqQ.oqN.mKBLayout.isShown()) && (this.val$view.isShown())) {
+      SnsLuckyMoneyPrepareUI.k(this.oqQ.oqN);
     }
-    SnsLuckyMoneyPrepareUI.b(this.lTL.lTI, this.lTL.eYk);
-    this.lTL.lTI.mKeyboard.setInputEditText((EditText)this.val$view);
-    ((InputMethodManager)this.lTL.lTI.mController.uMN.getSystemService("input_method")).hideSoftInputFromWindow(this.val$view.getWindowToken(), 0);
+    SnsLuckyMoneyPrepareUI.b(this.oqQ.oqN, this.oqQ.val$editMode);
+    this.oqQ.oqN.mKeyboard.setInputEditText((EditText)this.val$view);
+    ((InputMethodManager)this.oqQ.oqN.getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.val$view.getWindowToken(), 0);
+    AppMethodBeat.o(42517);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.sns.SnsLuckyMoneyPrepareUI.10.1
  * JD-Core Version:    0.7.0.1
  */

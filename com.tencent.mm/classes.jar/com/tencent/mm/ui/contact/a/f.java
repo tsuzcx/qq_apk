@@ -1,57 +1,60 @@
 package com.tencent.mm.ui.contact.a;
 
 import android.content.Context;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import com.tencent.mm.plugin.fts.a.a.g;
-import com.tencent.mm.plugin.fts.ui.b.b;
-import com.tencent.mm.plugin.selectcontact.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.a.b;
+import com.tencent.mm.pluginsdk.ui.d.j;
 
-public final class f
+public class f
   extends a
 {
-  private CharSequence kDf;
-  private a.b vOD = new f.b(this);
-  a.a vOE = new f.a(this);
+  public CharSequence Agi;
+  public int Agj;
+  private f.b Agk;
+  f.a Agl;
+  public CharSequence gpH;
+  public String username;
   
   public f(int paramInt)
   {
-    super(5, paramInt);
+    super(4, paramInt);
+    AppMethodBeat.i(105287);
+    this.Agj = 0;
+    this.Agk = new f.b(this);
+    this.Agl = new f.a(this);
+    AppMethodBeat.o(105287);
   }
   
-  protected final a.a VA()
+  public void a(Context paramContext, a.a parama)
   {
-    return this.vOE;
-  }
-  
-  public final a.b Vz()
-  {
-    return this.vOD;
-  }
-  
-  public final void bW(Context paramContext)
-  {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    String[] arrayOfString = this.kwi.kwI;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    AppMethodBeat.i(105288);
+    if ((this.Agj != 0) && (this.Agi != null))
     {
-      String str = arrayOfString[i];
-      SpannableString localSpannableString = new SpannableString(str);
-      localSpannableString.setSpan(new ForegroundColorSpan(b.b.kzY), 0, str.length(), 33);
-      localSpannableStringBuilder.append(localSpannableString);
-      localSpannableStringBuilder.append("、");
-      i += 1;
+      AppMethodBeat.o(105288);
+      return;
     }
-    this.kDf = TextUtils.concat(new CharSequence[] { paramContext.getString(a.h.select_contact_create_desc_prefix), localSpannableStringBuilder.subSequence(0, localSpannableStringBuilder.length() - 1), paramContext.getString(a.h.select_contact_create_desc_prefix) });
+    if (this.contact == null)
+    {
+      this.gpH = "";
+      this.username = "";
+      AppMethodBeat.o(105288);
+      return;
+    }
+    this.gpH = j.b(paramContext, ((b)g.E(b.class)).c(this.contact), com.tencent.mm.cb.a.ao(paramContext, 2131427809));
+    this.username = this.contact.field_username;
+    AppMethodBeat.o(105288);
+  }
+  
+  public a.b aoY()
+  {
+    return this.Agk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.f
  * JD-Core Version:    0.7.0.1
  */

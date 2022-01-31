@@ -1,82 +1,89 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
-import java.util.LinkedList;
+import android.content.Context;
+import android.graphics.Color;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONObject;
 
-public final class ay
+public class ay
+  extends bi<e>
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.e.a>> iRP;
+  public final void a(Context paramContext, String paramString, bh.a parama) {}
   
-  private static void O(Class<? extends com.tencent.luggage.e.a> paramClass)
+  public final void b(a<e>.a parama)
   {
-    iRP.add(paramClass);
+    AppMethodBeat.i(6374);
+    ab.i("MicroMsg.JsApiSetNavigationBarColor", "invoke");
+    int i;
+    if (parama.byF.bxK.optInt("actionCode") == 1) {
+      i = 1;
+    }
+    for (;;)
+    {
+      int j = -1;
+      try
+      {
+        k = Color.parseColor(parama.byF.bxK.optString("color"));
+        k |= 0xFF000000;
+        j = i;
+        i = k;
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          for (;;)
+          {
+            bo.getFloat(parama.byF.bxK.optString("alpha"), 1.0F);
+            if (j == 0) {
+              break label150;
+            }
+            ((e)parama.byE).aAJ();
+            parama.a("", null);
+            AppMethodBeat.o(6374);
+            return;
+            i = 0;
+            break;
+            localException1 = localException1;
+            ab.e("MicroMsg.JsApiSetNavigationBarColor", localException1.getMessage());
+            int k = 1;
+            i = j;
+            j = k;
+          }
+        }
+        catch (Exception localException2)
+        {
+          for (;;)
+          {
+            ab.e("MicroMsg.JsApiSetNavigationBarColor", localException2.getMessage());
+            continue;
+            label150:
+            ((e)parama.byE).setStatusBarColor(i);
+          }
+        }
+      }
+    }
   }
   
-  public static LinkedList<Class<? extends com.tencent.luggage.e.a>> aGk()
+  public final int bjL()
   {
-    try
-    {
-      iRP = new LinkedList();
-      O(ad.class);
-      O(ak.class);
-      O(ar.class);
-      O(af.class);
-      O(z.class);
-      O(a.class);
-      O(ae.class);
-      O(aj.class);
-      O(o.class);
-      O(ah.class);
-      O(t.class);
-      O(ac.class);
-      O(q.class);
-      O(p.class);
-      O(k.class);
-      O(b.class);
-      O(c.class);
-      O(e.class);
-      O(f.class);
-      O(g.class);
-      O(h.class);
-      O(i.class);
-      O(j.class);
-      O(m.class);
-      O(n.class);
-      O(r.class);
-      O(u.class);
-      O(v.class);
-      O(w.class);
-      O(x.class);
-      O(y.class);
-      O(ab.class);
-      O(ag.class);
-      O(ai.class);
-      O(al.class);
-      O(am.class);
-      O(an.class);
-      O(ao.class);
-      O(ap.class);
-      O(aq.class);
-      O(as.class);
-      O(at.class);
-      O(av.class);
-      O(au.class);
-      O(s.class);
-      O(d.class);
-      O(l.class);
-      O(aa.class);
-      LinkedList localLinkedList = iRP;
-      return localLinkedList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return 0;
+  }
+  
+  public final String name()
+  {
+    return "setNavigationBarColor";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.ay
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.card.ui.view;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.b.f;
 
 final class b$1
@@ -12,12 +13,15 @@ final class b$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(88731);
     if (((CheckBox)paramView).isChecked())
     {
-      this.ixL.azW().ilC = true;
+      this.kAS.bbH().cJz = true;
+      AppMethodBeat.o(88731);
       return;
     }
-    this.ixL.azW().ilC = false;
+    this.kAS.bbH().cJz = false;
+    AppMethodBeat.o(88731);
   }
 }
 

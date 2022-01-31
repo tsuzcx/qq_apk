@@ -1,25 +1,39 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import com.tencent.mm.pluginsdk.ui.tools.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
 
 final class j$7
-  implements f.e
+  implements b
 {
   j$7(j paramj) {}
   
-  public final void bkk()
+  public final long bQp()
   {
-    y.i("MicroMsg.Imagegallery.handler.video", "%d on texture update.", new Object[] { Integer.valueOf(this.vwT.hashCode()) });
+    AppMethodBeat.i(32322);
+    ab.i("MicroMsg.Imagegallery.handler.video", "%d video get online cache sec", new Object[] { Integer.valueOf(this.zNd.hashCode()) });
+    aw.aaz();
+    c.Ru().set(ac.a.yFa, Boolean.TRUE);
     try
     {
-      this.vwT.vtH.cFV().a(true, 1.0F);
-      return;
+      if ((j.c(this.zNd)) && (j.f(this.zNd) != null))
+      {
+        int i = j.f(this.zNd).fVp;
+        long l = i;
+        AppMethodBeat.o(32322);
+        return l;
+      }
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.Imagegallery.handler.video", "texture view update. error " + localException.toString());
+      AppMethodBeat.o(32322);
     }
+    return 0L;
   }
 }
 

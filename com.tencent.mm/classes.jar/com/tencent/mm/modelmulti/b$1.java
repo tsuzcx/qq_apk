@@ -1,24 +1,27 @@
 package com.tencent.mm.modelmulti;
 
-import com.tencent.mm.protocal.s.b;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.t.b;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class b$1
-  implements am.a
+  implements ap.a
 {
-  b$1(b paramb, s.b paramb1) {}
+  b$1(b paramb, t.b paramb1) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    b.a(this.esr);
-    b.a locala = new b.a(this.esq);
-    this.esr.a(-1, 0, 0, "", locala, null);
+    AppMethodBeat.i(58347);
+    b.a(this.fIe);
+    b.a locala = new b.a(this.fId);
+    this.fIe.onGYNetEnd(-1, 0, 0, "", locala, null);
+    AppMethodBeat.o(58347);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelmulti.b.1
  * JD-Core Version:    0.7.0.1
  */

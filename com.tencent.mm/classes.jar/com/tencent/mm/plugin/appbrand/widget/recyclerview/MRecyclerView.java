@@ -3,175 +3,207 @@ package com.tencent.mm.plugin.appbrand.widget.recyclerview;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.c;
 import android.support.v7.widget.RecyclerView.v;
 import android.util.AttributeSet;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 public class MRecyclerView
   extends RecyclerView
 {
-  protected a hDT;
-  private MRecyclerView.a hDU;
-  private MRecyclerView.b hDV;
-  private View hrf;
+  protected a jwt;
+  private MRecyclerView.a jwu;
+  private MRecyclerView.b jwv;
+  private View xy;
   
   public MRecyclerView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(77494);
     init();
+    AppMethodBeat.o(77494);
   }
   
   public MRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(77495);
     init();
+    AppMethodBeat.o(77495);
   }
   
   public MRecyclerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(77496);
     init();
+    AppMethodBeat.o(77496);
   }
   
   private void init()
   {
-    this.hDT = new a();
-    if (atd()) {
-      this.hDT.hO();
+    AppMethodBeat.i(77497);
+    this.jwt = new a();
+    if (aSn()) {
+      this.jwt.jv();
     }
-    super.setAdapter(this.hDT);
-    this.hDT.a(new RecyclerView.c()
-    {
-      public final void onChanged()
-      {
-        View localView;
-        if (MRecyclerView.a(MRecyclerView.this) != null)
-        {
-          localView = MRecyclerView.a(MRecyclerView.this);
-          if (!MRecyclerView.this.atc()) {
-            break label36;
-          }
-        }
-        label36:
-        for (int i = 0;; i = 8)
-        {
-          localView.setVisibility(i);
-          return;
-        }
-      }
-    });
+    super.setAdapter(this.jwt);
+    this.jwt.a(new MRecyclerView.1(this));
+    AppMethodBeat.o(77497);
   }
   
-  public final int N(RecyclerView.v paramv)
+  public final int S(RecyclerView.v paramv)
   {
-    if (this.hDT == null) {}
-    a locala;
-    do
+    AppMethodBeat.i(77498);
+    if (this.jwt == null)
     {
+      AppMethodBeat.o(77498);
       return -1;
-      locala = this.hDT;
-    } while ((paramv == null) || (paramv.id() == -1));
-    int j = paramv.id();
-    if (locala.hDH.isEmpty()) {}
-    for (int i = 0;; i = 1) {
+    }
+    a locala = this.jwt;
+    if (paramv == null)
+    {
+      AppMethodBeat.o(77498);
+      return -1;
+    }
+    if (paramv.jN() == -1)
+    {
+      AppMethodBeat.o(77498);
+      return -1;
+    }
+    int j = paramv.jN();
+    if (locala.jwh.isEmpty()) {}
+    for (int i = 0;; i = 1)
+    {
+      AppMethodBeat.o(77498);
       return j - i;
     }
   }
   
-  public final void a(int paramInt, View paramView)
+  protected boolean aSm()
   {
-    this.hDT.a(paramInt, paramView);
+    AppMethodBeat.i(77508);
+    if (this.jwt.getItemCount() == 0)
+    {
+      AppMethodBeat.o(77508);
+      return true;
+    }
+    AppMethodBeat.o(77508);
+    return false;
   }
   
-  public void addFooterView(View paramView)
-  {
-    this.hDT.addFooterView(paramView);
-  }
-  
-  public final void addHeaderView(View paramView)
-  {
-    a locala = this.hDT;
-    locala.hDH.add(paramView);
-    locala.ah(0, 1);
-  }
-  
-  protected boolean atc()
-  {
-    return this.hDT.getItemCount() == 0;
-  }
-  
-  public boolean atd()
+  protected boolean aSn()
   {
     return true;
   }
   
-  public final void bE(int paramInt)
+  public void addFooterView(View paramView)
   {
-    super.bE(paramInt);
+    AppMethodBeat.i(77502);
+    this.jwt.addFooterView(paramView);
+    AppMethodBeat.o(77502);
   }
   
-  public final void cv(View paramView)
+  public final void addHeaderView(View paramView)
   {
-    this.hDT.cv(paramView);
+    AppMethodBeat.i(77501);
+    a locala = this.jwt;
+    locala.jwh.add(paramView);
+    locala.an(0, 1);
+    AppMethodBeat.o(77501);
+  }
+  
+  public final void b(int paramInt, View paramView)
+  {
+    AppMethodBeat.i(77503);
+    this.jwt.b(paramInt, paramView);
+    AppMethodBeat.o(77503);
+  }
+  
+  public final void bJ(int paramInt)
+  {
+    AppMethodBeat.i(77500);
+    super.bJ(paramInt);
+    AppMethodBeat.o(77500);
+  }
+  
+  public final void cZ(View paramView)
+  {
+    AppMethodBeat.i(77504);
+    this.jwt.cZ(paramView);
+    AppMethodBeat.o(77504);
   }
   
   public RecyclerView.a getAdapter()
   {
-    return this.hDT;
+    return this.jwt;
   }
   
   public View getEmptyView()
   {
-    return this.hrf;
+    return this.xy;
   }
   
   public void setAdapter(RecyclerView.a parama)
   {
-    a locala = this.hDT;
-    if (locala.Sw != null)
+    AppMethodBeat.i(77499);
+    a locala = this.jwt;
+    if (locala.Tg != null)
     {
-      if (!locala.Sw.equals(parama)) {
-        locala.Sw.b(locala.hDL);
+      if (!locala.Tg.equals(parama)) {
+        locala.Tg.b(locala.jwl);
       }
     }
     else
     {
-      locala.Sw = parama;
-      if (locala.Sw != null) {
-        locala.Sw.a(locala.hDL);
+      locala.Tg = parama;
+      if (locala.Tg != null) {
+        locala.Tg.a(locala.jwl);
       }
     }
+    AppMethodBeat.o(77499);
   }
   
   public void setEmptyView(View paramView)
   {
-    if (this.hrf == paramView) {}
-    do
+    AppMethodBeat.i(77505);
+    if (this.xy == paramView)
     {
+      AppMethodBeat.o(77505);
       return;
-      this.hrf = paramView;
-    } while (this.hrf == null);
-    paramView = this.hrf;
-    if (atc()) {}
+    }
+    this.xy = paramView;
+    if (this.xy != null)
+    {
+      paramView = this.xy;
+      if (!aSm()) {
+        break label56;
+      }
+    }
+    label56:
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
+      AppMethodBeat.o(77505);
       return;
     }
   }
   
   public void setOnItemClickListener(MRecyclerView.a parama)
   {
-    this.hDU = parama;
-    this.hDT.hDJ = new MRecyclerView.2(this);
+    AppMethodBeat.i(77506);
+    this.jwu = parama;
+    this.jwt.jwj = new MRecyclerView.2(this);
+    AppMethodBeat.o(77506);
   }
   
   public void setOnItemLongClickListener(MRecyclerView.b paramb)
   {
-    this.hDV = paramb;
-    this.hDT.hDK = new MRecyclerView.3(this);
+    AppMethodBeat.i(77507);
+    this.jwv = paramb;
+    this.jwt.jwk = new MRecyclerView.3(this);
+    AppMethodBeat.o(77507);
   }
 }
 

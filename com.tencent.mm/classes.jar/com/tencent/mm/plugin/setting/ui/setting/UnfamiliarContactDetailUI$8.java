@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class UnfamiliarContactDetailUI$8
   implements View.OnClickListener
@@ -11,10 +12,12 @@ final class UnfamiliarContactDetailUI$8
   
   public final void onClick(View paramView)
   {
-    paramView = new d(this.nWX, 1, false);
-    paramView.phH = new UnfamiliarContactDetailUI.8.1(this);
-    paramView.phI = new UnfamiliarContactDetailUI.8.2(this);
-    paramView.cfU();
+    AppMethodBeat.i(127644);
+    paramView = new d(this.qLi, 1, false);
+    paramView.sao = new UnfamiliarContactDetailUI.8.1(this);
+    paramView.sap = new UnfamiliarContactDetailUI.8.2(this);
+    paramView.crd();
+    AppMethodBeat.o(127644);
   }
 }
 

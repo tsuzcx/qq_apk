@@ -1,166 +1,67 @@
 package com.tencent.mm.plugin.fts.b;
 
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.fts.a.d;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.bi.b;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.a.a.i;
+import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.a.l;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.n;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 final class c$f
+  extends com.tencent.mm.plugin.fts.a.a.h
 {
-  long bIt;
-  String content;
-  long createTime;
-  int kzl;
-  int kzm;
-  String kzn;
-  String kzo;
-  int msgType;
-  String talker;
-  
-  private c$f(c paramc) {}
-  
-  public final boolean aVK()
+  c$f(c paramc, i parami)
   {
-    return (this.msgType & 0xFFFF) == 49;
+    super(parami);
   }
   
-  public final boolean aVL()
+  public final void a(j paramj)
   {
-    return this.msgType == 1;
-  }
-  
-  public final boolean aVM()
-  {
-    return this.msgType == 48;
-  }
-  
-  public final void aVN()
-  {
-    if (aVL())
+    AppMethodBeat.i(136756);
+    Pg("start");
+    paramj.mRX = com.tencent.mm.plugin.fts.a.a.g.a(this.mSJ.query, false, this.mUU.mUT);
+    Object localObject1 = this.mUU.mUM;
+    Object localObject3 = paramj.mRX;
+    Object localObject2 = this.mSJ.mSN;
+    localObject3 = ((com.tencent.mm.plugin.fts.a.a.g)localObject3).bBX();
+    localObject3 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp, talker FROM %s JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND aux_index = ? AND status >= 0 ORDER BY timestamp desc;", new Object[] { ((com.tencent.mm.plugin.fts.c.c)localObject1).bBR(), ((com.tencent.mm.plugin.fts.c.c)localObject1).bBR(), ((com.tencent.mm.plugin.fts.c.c)localObject1).bBS(), ((com.tencent.mm.plugin.fts.c.c)localObject1).bBR(), ((com.tencent.mm.plugin.fts.c.c)localObject1).bBS(), ((com.tencent.mm.plugin.fts.c.c)localObject1).bBS(), localObject3 });
+    localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject1).mQr.rawQuery((String)localObject3, new String[] { localObject2 });
+    paramj.mSW = new ArrayList();
+    while (((Cursor)localObject1).moveToNext())
     {
-      this.kzl = 41;
-      if (s.fn(this.talker)) {
-        this.kzn = bd.iJ(this.content);
-      }
+      localObject2 = new m().g((Cursor)localObject1);
+      paramj.mSW.add(localObject2);
     }
-    for (;;)
+    ((Cursor)localObject1).close();
+    Pg("findConversationMessage");
+    if ((paramj.mRX.mSz.length > 1) && (!this.mSJ.mSS.contains("create_talker_message​")))
     {
-      if (!bk.bl(this.kzn)) {
-        this.kzn = d.DQ(this.kzn);
-      }
-      if (this.kzm != 1) {
-        break;
-      }
-      this.kzo = q.Gj();
-      return;
-      this.kzn = this.content;
-      continue;
-      Object localObject;
-      if (aVK())
+      localObject1 = com.tencent.mm.plugin.fts.a.a.g.aU(paramj.mRX.mSz[0], true);
+      localObject1 = ((com.tencent.mm.plugin.fts.c.a)((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexStorage(3)).a((com.tencent.mm.plugin.fts.a.a.g)localObject1, null, com.tencent.mm.plugin.fts.a.c.mQJ, com.tencent.mm.plugin.fts.a.c.mQN);
+      if (((Cursor)localObject1).moveToNext())
       {
-        localObject = g.a.gp(this.content);
-        if (localObject != null) {
-          switch (((g.a)localObject).type)
-          {
-          default: 
-            break;
-          case 3: 
-          case 4: 
-          case 5: 
-          case 8: 
-          case 10: 
-          case 13: 
-          case 15: 
-          case 16: 
-          case 20: 
-          case 25: 
-            this.kzn = bk.aM(((g.a)localObject).getTitle(), "");
-            this.kzl = 43;
-            break;
-          case 6: 
-            this.kzn = bk.aM(((g.a)localObject).getTitle(), "");
-            this.kzl = 42;
-            break;
-          case 19: 
-            this.kzn = bk.aM(((g.a)localObject).getDescription(), "");
-            if (this.kzn != null) {
-              this.kzn = this.kzn.replace(":", "​");
-            }
-            this.kzl = 44;
-            break;
-          case 24: 
-            this.kzn = bk.aM(((g.a)localObject).getDescription(), "");
-            if (this.kzn != null) {
-              this.kzn = this.kzn.replace(":", "​");
-            }
-            this.kzl = 49;
-            break;
-          case 33: 
-            this.kzn = bk.aM(((g.a)localObject).getTitle(), "");
-            this.kzl = 48;
-            break;
-          case 2000: 
-            this.kzn = (bk.aM(((g.a)localObject).title, "") + "​" + bk.aM(((g.a)localObject).description, ""));
-            this.kzl = 45;
-            break;
-          case 2001: 
-            if ("1001".equals(((g.a)localObject).dSh))
-            {
-              this.kzl = 47;
-              if (this.kzm == 1)
-              {
-                this.kzn = (bk.aM(((g.a)localObject).dSf, "") + "​" + bk.aM(((g.a)localObject).dSc, ""));
-                continue;
-              }
-              this.kzn = (bk.aM(((g.a)localObject).dSf, "") + "​" + bk.aM(((g.a)localObject).dSb, ""));
-              continue;
-            }
-            if (!"1002".equals(((g.a)localObject).dSh)) {
-              continue;
-            }
-            this.kzl = 46;
-            if (this.kzm == 1)
-            {
-              this.kzn = (bk.aM(((g.a)localObject).dSf, "") + "​" + bk.aM(((g.a)localObject).dSc, ""));
-              continue;
-            }
-            this.kzn = (bk.aM(((g.a)localObject).dSf, "") + "​" + bk.aM(((g.a)localObject).dSb, ""));
-            break;
-          }
-        }
+        localObject2 = new l();
+        ((l)localObject2).mRV = "create_talker_message​";
+        paramj.mSW.add(0, localObject2);
       }
-      else if (aVM())
-      {
-        this.kzl = 50;
-        if (s.fn(this.talker)) {}
-        for (localObject = bd.iJ(this.content);; localObject = this.content)
-        {
-          localObject = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().HO((String)localObject);
-          if (!((bi.b)localObject).cvN()) {
-            break label791;
-          }
-          this.kzn = (((bi.b)localObject).lFn + "​" + ((bi.b)localObject).label);
-          break;
-        }
-        label791:
-        this.kzn = ((bi.b)localObject).label;
-      }
+      ((Cursor)localObject1).close();
+      Pg("findTalkerConversation");
     }
-    if (s.fn(this.talker))
-    {
-      this.kzo = bk.aM(bd.iI(this.content), this.talker);
-      return;
-    }
-    this.kzo = this.talker;
+    AppMethodBeat.o(136756);
   }
   
-  public final boolean isAvailable()
+  public final int getId()
   {
-    return !bk.bl(this.kzn);
+    return 14;
+  }
+  
+  public final String getName()
+  {
+    return "SearchConversationMessageTask";
   }
 }
 

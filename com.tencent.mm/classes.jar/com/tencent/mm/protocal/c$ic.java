@@ -5,7 +5,7 @@ public final class c$ic
 {
   public c$ic()
   {
-    super("setFreeWifiOwner", "setFreeWifiOwner", 169, false);
+    super("secureTunnel", "", 329, false);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SimpleLoginUI$1
   implements TextWatcher
@@ -10,7 +11,9 @@ final class SimpleLoginUI$1
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    SimpleLoginUI.a(this.fsR);
+    AppMethodBeat.i(125596);
+    SimpleLoginUI.a(this.gKt);
+    AppMethodBeat.o(125596);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

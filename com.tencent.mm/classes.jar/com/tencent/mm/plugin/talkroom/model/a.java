@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.e.m;
 
 public final class a
 {
   private static int cpuFlag0;
-  public static final int pzY;
+  public static final int tbK;
   
   static
   {
-    int i = m.yR();
+    AppMethodBeat.i(25754);
+    int i = m.Lo();
     cpuFlag0 = i;
     if ((i & 0x400) != 0) {}
     for (i = 16000;; i = 8000)
     {
-      pzY = i;
+      tbK = i;
+      AppMethodBeat.o(25754);
       return;
     }
   }

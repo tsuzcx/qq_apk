@@ -1,51 +1,55 @@
 package com.tencent.mm.plugin.wear.model;
 
-import com.tencent.mm.h.a.td;
-import com.tencent.mm.h.a.td.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ux;
+import com.tencent.mm.g.a.ux.a;
 import com.tencent.mm.plugin.wear.model.f.l;
-import com.tencent.mm.protocal.c.cfe;
+import com.tencent.mm.protocal.protobuf.csp;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.IOException;
 
 final class e$6
-  extends c<td>
+  extends c<ux>
 {
   e$6(e parame)
   {
-    this.udX = td.class.getName().hashCode();
+    AppMethodBeat.i(26306);
+    this.__eventId = ux.class.getName().hashCode();
+    AppMethodBeat.o(26306);
   }
   
-  private static boolean a(td paramtd)
+  private static boolean a(ux paramux)
   {
-    switch (paramtd.ccJ.bNb)
+    AppMethodBeat.i(26307);
+    switch (paramux.cLs.cut)
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(26307);
       return false;
-      paramtd = paramtd.ccJ.ccD;
-      if ((paramtd == null) || (paramtd.length < 10) || (paramtd[0] != 1)) {
+      paramux = paramux.cLs.cLl;
+      if ((paramux == null) || (paramux.length < 10) || (paramux[0] != 1)) {
         continue;
       }
-      Object localObject = new byte[paramtd.length - 1];
-      System.arraycopy(paramtd, 1, localObject, 0, localObject.length);
+      Object localObject = new byte[paramux.length - 1];
+      System.arraycopy(paramux, 1, localObject, 0, localObject.length);
       try
       {
-        paramtd = (cfe)new cfe().aH((byte[])localObject);
-        if (paramtd == null) {
+        paramux = (csp)new csp().parseFrom((byte[])localObject);
+        if (paramux == null) {
           continue;
         }
-        localObject = paramtd.tTO;
-        y.i("MicroMsg.Wear.WearLogic", "voip invite talker=%s | type=%s", new Object[] { localObject, Integer.valueOf(paramtd.tTG) });
-        a.bYL().qRA.a(new l(20010, (String)localObject));
-        return false;
+        localObject = paramux.ybf;
+        ab.i("MicroMsg.Wear.WearLogic", "voip invite talker=%s | type=%s", new Object[] { localObject, Integer.valueOf(paramux.yaX) });
+        a.cYy().uGI.a(new l(20010, (String)localObject));
       }
-      catch (IOException paramtd)
+      catch (IOException paramux)
       {
         for (;;)
         {
-          paramtd = null;
+          paramux = null;
         }
       }
     }

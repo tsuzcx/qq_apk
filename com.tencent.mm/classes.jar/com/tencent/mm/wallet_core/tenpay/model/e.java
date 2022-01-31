@@ -3,21 +3,21 @@ package com.tencent.mm.wallet_core.tenpay.model;
 import java.util.Map;
 
 public final class e
-  extends f
+  extends g
 {
   public e(Map<String, String> paramMap)
   {
     super(paramMap);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
-    return 1318;
+    return 1692;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/offlinequeryorder";
+    return "/cgi-bin/mmpay-bin/tenpay/ts_payorderquery";
   }
 }
 

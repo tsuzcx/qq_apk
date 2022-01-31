@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
-import com.tencent.mm.pluginsdk.ui.tools.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.u;
 import com.tencent.mm.ui.base.p;
 
 final class ComposeUI$13$2
@@ -8,13 +9,15 @@ final class ComposeUI$13$2
 {
   ComposeUI$13$2(ComposeUI.13 param13) {}
   
-  public final void btV() {}
+  public final void ceh() {}
   
   public final void onComplete()
   {
-    ComposeUI.G(this.ngP.ngJ).dismiss();
-    s.c(ComposeUI.s(this.ngP.ngJ), ComposeUI.n(this.ngP.ngJ), ComposeUI.x(this.ngP.ngJ));
-    ComposeUI.I(this.ngP.ngJ);
+    AppMethodBeat.i(68186);
+    ComposeUI.G(this.pMd.pLX).dismiss();
+    u.b(ComposeUI.s(this.pMd.pLX), ComposeUI.n(this.pMd.pLX), ComposeUI.x(this.pMd.pLX));
+    ComposeUI.I(this.pMd.pLX);
+    AppMethodBeat.o(68186);
   }
 }
 

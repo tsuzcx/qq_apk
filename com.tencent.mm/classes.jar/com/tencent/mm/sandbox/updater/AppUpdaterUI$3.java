@@ -2,6 +2,7 @@ package com.tencent.mm.sandbox.updater;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppUpdaterUI$3
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class AppUpdaterUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppUpdaterUI.i(this.ucg);
+    AppMethodBeat.i(28816);
+    AppUpdaterUI.i(this.ykv);
+    AppMethodBeat.o(28816);
   }
 }
 

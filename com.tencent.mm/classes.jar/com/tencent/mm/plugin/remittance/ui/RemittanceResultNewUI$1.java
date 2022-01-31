@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vk;
+import com.tencent.mm.sdk.b.c;
 
 final class RemittanceResultNewUI$1
-  implements View.OnClickListener
+  extends c<vk>
 {
-  RemittanceResultNewUI$1(RemittanceResultNewUI paramRemittanceResultNewUI) {}
-  
-  public final void onClick(View paramView)
+  RemittanceResultNewUI$1(RemittanceResultNewUI paramRemittanceResultNewUI)
   {
-    RemittanceResultNewUI.a(this.nEw);
+    AppMethodBeat.i(45114);
+    this.__eventId = vk.class.getName().hashCode();
+    AppMethodBeat.o(45114);
   }
 }
 

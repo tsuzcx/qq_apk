@@ -1,6 +1,7 @@
 package com.tencent.mm.sandbox.monitor;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ExceptionMonitorService$1
   implements Runnable
@@ -9,8 +10,10 @@ final class ExceptionMonitorService$1
   
   public final void run()
   {
-    y.d("MicroMsg.CrashMonitorService", "stopSelf");
-    this.ubP.stopSelf();
+    AppMethodBeat.i(28787);
+    ab.d("MicroMsg.CrashMonitorService", "stopSelf");
+    this.yke.stopSelf();
+    AppMethodBeat.o(28787);
   }
 }
 

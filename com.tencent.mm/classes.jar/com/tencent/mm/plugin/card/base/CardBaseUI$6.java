@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.card.base;
 
 import android.content.res.Resources;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.q.a;
 import com.tencent.mm.ui.base.h;
 
@@ -12,14 +12,16 @@ final class CardBaseUI$6
   
   public final void a(boolean paramBoolean, String paramString, int paramInt)
   {
+    AppMethodBeat.i(87622);
     if (paramBoolean)
     {
-      CardBaseUI.c(this.ijO, this.dol);
-      h.bC(this.ijO, this.ijO.getResources().getString(a.g.card_has_gift_tips));
-      if (this.ijR) {
-        this.ijO.finish();
+      CardBaseUI.c(this.kkO, this.efI);
+      h.bO(this.kkO, this.kkO.getResources().getString(2131297941));
+      if (this.kkR) {
+        this.kkO.finish();
       }
     }
+    AppMethodBeat.o(87622);
   }
 }
 

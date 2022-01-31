@@ -1,24 +1,33 @@
 package com.google.android.gms.auth.api.credentials;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class CredentialRequest$Builder
 {
-  private boolean zzajr;
-  private String[] zzajs;
-  private CredentialPickerConfig zzajt;
-  private CredentialPickerConfig zzaju;
-  private boolean zzajv = false;
-  private String zzajw = null;
-  private String zzajx;
+  private boolean zzcu;
+  private String[] zzcv;
+  private CredentialPickerConfig zzcw;
+  private CredentialPickerConfig zzcx;
+  private boolean zzcy = false;
+  private String zzcz = null;
+  private String zzda;
+  private boolean zzdb = false;
   
   public final CredentialRequest build()
   {
-    if (this.zzajs == null) {
-      this.zzajs = new String[0];
+    AppMethodBeat.i(50321);
+    if (this.zzcv == null) {
+      this.zzcv = new String[0];
     }
-    if ((!this.zzajr) && (this.zzajs.length == 0)) {
-      throw new IllegalStateException("At least one authentication method must be specified");
+    if ((!this.zzcu) && (this.zzcv.length == 0))
+    {
+      localObject = new IllegalStateException("At least one authentication method must be specified");
+      AppMethodBeat.o(50321);
+      throw ((Throwable)localObject);
     }
-    return new CredentialRequest(this, null);
+    Object localObject = new CredentialRequest(this, null);
+    AppMethodBeat.o(50321);
+    return localObject;
   }
   
   public final Builder setAccountTypes(String... paramVarArgs)
@@ -27,55 +36,58 @@ public final class CredentialRequest$Builder
     if (paramVarArgs == null) {
       arrayOfString = new String[0];
     }
-    this.zzajs = arrayOfString;
+    this.zzcv = arrayOfString;
     return this;
   }
   
   public final Builder setCredentialHintPickerConfig(CredentialPickerConfig paramCredentialPickerConfig)
   {
-    this.zzaju = paramCredentialPickerConfig;
+    this.zzcx = paramCredentialPickerConfig;
     return this;
   }
   
   public final Builder setCredentialPickerConfig(CredentialPickerConfig paramCredentialPickerConfig)
   {
-    this.zzajt = paramCredentialPickerConfig;
+    this.zzcw = paramCredentialPickerConfig;
     return this;
   }
   
   public final Builder setIdTokenNonce(String paramString)
   {
-    this.zzajx = paramString;
+    this.zzda = paramString;
     return this;
   }
   
   public final Builder setIdTokenRequested(boolean paramBoolean)
   {
-    this.zzajv = paramBoolean;
+    this.zzcy = paramBoolean;
     return this;
   }
   
   public final Builder setPasswordLoginSupported(boolean paramBoolean)
   {
-    this.zzajr = paramBoolean;
+    this.zzcu = paramBoolean;
     return this;
   }
   
   public final Builder setServerClientId(String paramString)
   {
-    this.zzajw = paramString;
+    this.zzcz = paramString;
     return this;
   }
   
   @Deprecated
   public final Builder setSupportsPasswordLogin(boolean paramBoolean)
   {
-    return setPasswordLoginSupported(paramBoolean);
+    AppMethodBeat.i(50320);
+    Builder localBuilder = setPasswordLoginSupported(paramBoolean);
+    AppMethodBeat.o(50320);
+    return localBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.credentials.CredentialRequest.Builder
  * JD-Core Version:    0.7.0.1
  */

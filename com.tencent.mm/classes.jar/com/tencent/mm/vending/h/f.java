@@ -1,100 +1,98 @@
 package com.tencent.mm.vending.h;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vending.c.a;
 
 public final class f
 {
-  private volatile d wub;
-  volatile a wuc;
+  private volatile d AOZ;
+  volatile a APa;
   
   public f(d paramd, a parama)
   {
-    b(paramd);
-    this.wuc = parama;
+    AppMethodBeat.i(126124);
+    c(paramd);
+    this.APa = parama;
+    AppMethodBeat.o(126124);
   }
   
-  private void c(d paramd)
+  public final void a(final a parama, final Object paramObject, boolean paramBoolean)
   {
-    try
-    {
-      this.wub = paramd;
-      return;
-    }
-    finally
-    {
-      paramd = finally;
-      throw paramd;
-    }
-  }
-  
-  public void a(final a parama, final Object paramObject, boolean paramBoolean)
-  {
-    label149:
-    label161:
+    label162:
+    label179:
     for (;;)
     {
       d locald;
       try
       {
-        locald = this.wub;
+        AppMethodBeat.i(126125);
+        locald = this.AOZ;
         if (!(parama instanceof e)) {
-          break label161;
+          break label179;
         }
         e locale = (e)parama;
-        if ("Vending.ANY".equals(locale.vP())) {
-          break label161;
+        if ("Vending.ANY".equals(locale.HY())) {
+          break label179;
         }
-        locald = g.aeL(locale.vP());
+        locald = g.avD(locale.HY());
         if (locald == null)
         {
-          if (this.wuc != null) {
-            this.wuc.interrupt();
+          if (this.APa != null) {
+            this.APa.interrupt();
           }
+          AppMethodBeat.o(126125);
           return;
         }
         parama = new Runnable()
         {
           public final void run()
           {
-            if (f.this.wuc != null) {
-              f.this.wuc.cKZ();
+            AppMethodBeat.i(126126);
+            if (f.this.APa != null) {
+              f.this.APa.dQp();
             }
             try
             {
               Object localObject = parama.call(paramObject);
-              if (f.this.wuc != null) {
-                f.this.wuc.ch(localObject);
+              if (f.this.APa != null) {
+                f.this.APa.cM(localObject);
               }
+              AppMethodBeat.o(126126);
               return;
             }
             catch (ClassCastException localClassCastException)
             {
-              this.wtM.initCause(localClassCastException);
-              throw this.wtM;
+              this.AOK.initCause(localClassCastException);
+              RuntimeException localRuntimeException = this.AOK;
+              AppMethodBeat.o(126126);
+              throw localRuntimeException;
             }
           }
         };
         if (-1L >= 0L) {
-          break label149;
+          break label162;
         }
-        if ((paramBoolean) && (g.cLe() == locald))
+        if ((paramBoolean) && (g.dQu() == locald))
         {
           parama.run();
+          AppMethodBeat.o(126125);
           continue;
         }
-        locald.k(parama);
+        locald.o(parama);
       }
       finally {}
+      AppMethodBeat.o(126125);
       continue;
-      locald.j(parama, -1L);
+      locald.n(parama, -1L);
+      AppMethodBeat.o(126125);
     }
   }
   
-  public final void b(d paramd)
+  public final void c(d paramd)
   {
     try
     {
-      c(paramd);
+      this.AOZ = paramd;
       return;
     }
     finally
@@ -106,9 +104,9 @@ public final class f
   
   public static abstract interface a
   {
-    public abstract void cKZ();
+    public abstract void cM(Object paramObject);
     
-    public abstract void ch(Object paramObject);
+    public abstract void dQp();
     
     public abstract void interrupt();
   }

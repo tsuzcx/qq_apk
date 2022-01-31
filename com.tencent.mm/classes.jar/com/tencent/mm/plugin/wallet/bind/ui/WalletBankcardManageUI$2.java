@@ -1,30 +1,37 @@
 package com.tencent.mm.plugin.wallet.bind.ui;
 
-import com.tencent.mm.plugin.wallet_core.ui.q.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.ui.s.a;
 
 final class WalletBankcardManageUI$2
-  implements q.a
+  implements s.a
 {
   WalletBankcardManageUI$2(WalletBankcardManageUI paramWalletBankcardManageUI, Runnable paramRunnable) {}
   
-  public final void bgR()
+  public final void bOM()
   {
-    this.qkl.run();
+    AppMethodBeat.i(45762);
+    this.tTl.run();
+    AppMethodBeat.o(45762);
   }
   
-  public final void bgS()
+  public final void bON()
   {
-    this.qkl.run();
+    AppMethodBeat.i(45764);
+    this.tTl.run();
+    AppMethodBeat.o(45764);
   }
   
   public final void cancel()
   {
-    WalletBankcardManageUI.c(this.qkk).bHj = false;
+    AppMethodBeat.i(45763);
+    WalletBankcardManageUI.c(this.tTk).coy = false;
+    AppMethodBeat.o(45763);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardManageUI.2
  * JD-Core Version:    0.7.0.1
  */

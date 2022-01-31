@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.d.35;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.d.36;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.i.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,30 +16,30 @@ final class BaseSOSWebViewUI$5
   
   public final void run()
   {
-    d locald;
-    String str;
-    if (BaseSOSWebViewUI.s(this.rtA) != null)
+    AppMethodBeat.i(8335);
+    if (this.vjG.getJsapi() != null)
     {
-      locald = BaseSOSWebViewUI.t(this.rtA);
-      str = this.hdV;
-      if (!locald.ready) {
-        y.e("MicroMsg.JsApiHandler", "onSearchHistoryReady fail, not ready");
+      d locald = this.vjG.getJsapi();
+      String str = this.iOH;
+      if (!locald.ready)
+      {
+        ab.e("MicroMsg.JsApiHandler", "onSearchHistoryReady fail, not ready");
+        AppMethodBeat.o(8335);
+        return;
+      }
+      ab.i("MicroMsg.JsApiHandler", "onSearchHistoryReady success, ready");
+      try
+      {
+        al.d(new d.36(locald, i.a.a("onSearchHistoryReady", new JSONObject(str), locald.voB, locald.voC)));
+        AppMethodBeat.o(8335);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        ab.printErrStackTrace("MicroMsg.JsApiHandler", localJSONException, "", new Object[0]);
       }
     }
-    else
-    {
-      return;
-    }
-    y.i("MicroMsg.JsApiHandler", "onSearchHistoryReady success, ready");
-    try
-    {
-      ai.d(new d.35(locald, i.a.a("onSearchHistoryReady", new JSONObject(str), locald.rxI, locald.rxJ)));
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      y.printErrStackTrace("MicroMsg.JsApiHandler", localJSONException, "", new Object[0]);
-    }
+    AppMethodBeat.o(8335);
   }
 }
 

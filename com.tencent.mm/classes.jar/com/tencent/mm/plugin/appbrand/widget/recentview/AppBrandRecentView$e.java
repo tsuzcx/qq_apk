@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.recentview;
 
 public abstract interface AppBrandRecentView$e
 {
-  public abstract void mH(int paramInt);
+  public abstract void qj(int paramInt);
 }
 
 

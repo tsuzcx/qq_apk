@@ -1,5 +1,6 @@
 package com.tencent.youtu.ytagreflectlivecheck.controller;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytagreflectlivecheck.jni.model.ColorSeqRes;
 import com.tencent.youtu.ytagreflectlivecheck.manager.ProcessManager;
 import com.tencent.youtu.ytagreflectlivecheck.manager.ProcessManager.ProcessResult;
@@ -15,11 +16,14 @@ class InitController$1
   
   public void onFailed(int paramInt)
   {
+    AppMethodBeat.i(123148);
     this.val$checkResult.onFailed(InitController.access$200(), "get rgbconfig failed.", "Check \"LightLiveCheck.setRGBConfigRequest()\" params. Or maybe net error?");
+    AppMethodBeat.o(123148);
   }
   
   public void onSuccess(String paramString)
   {
+    AppMethodBeat.i(123147);
     if (paramString != null)
     {
       if (paramString != null) {}
@@ -28,18 +32,21 @@ class InitController$1
         if (paramString.equals(""))
         {
           this.val$checkResult.onFailed(InitController.access$000(), "get rgbconfig return string is null.", "Check \"RGBConfigRequester.RGBConfigRequestCallBack()\" return value. Is it null?");
+          AppMethodBeat.o(123147);
           return;
         }
         if (YTCommonExInterface.getBusinessCode() == 1)
         {
           ProcessManager.dataWorker().mRgbConfigCode = paramString;
           this.val$checkResult.onSuccess();
+          AppMethodBeat.o(123147);
           return;
         }
       }
       catch (WeJsonException paramString)
       {
         this.val$checkResult.onFailed(InitController.access$200(), "get rgbconfig failed.", "Check \"LightLiveCheck.setRGBConfigRequest()\" params. Or maybe net error?");
+        AppMethodBeat.o(123147);
         return;
       }
       paramString = (ColorSeqRes)new WeJson().fromJson(paramString, ColorSeqRes.class);
@@ -47,12 +54,15 @@ class InitController$1
       {
         ProcessManager.dataWorker().mRgbConfigCode = paramString.color_data;
         this.val$checkResult.onSuccess();
+        AppMethodBeat.o(123147);
         return;
       }
       this.val$checkResult.onFailed(InitController.access$100(), "get rgbconfig youtu server return code not 0, current is: " + paramString.error_code, "Request rgbConfig youtu server return value not currect. Check request and response log for more details.");
+      AppMethodBeat.o(123147);
       return;
     }
     this.val$checkResult.onFailed(InitController.access$300(), "get rgbconfig return null.", "Server return value not currect.");
+    AppMethodBeat.o(123147);
   }
 }
 

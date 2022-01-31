@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/dzy" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="17.0dip" android:textColor="@color/a23" android:layout_gravity="center_horizontal" android:id="@id/dzz" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" android:layout_centerHorizontal="true" />
-    <View android:id="@id/e00" android:background="@drawable/eh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:gravity="center_horizontal" android:id="@id/e9t" android:src="@drawable/aex" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/r1" />
+    <ImageView android:gravity="center" android:id="@id/e9u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cv" android:layout_alignLeft="@id/e9t" android:layout_alignTop="@id/e9t" />
+    <ImageView android:id="@id/e9v" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_alignRight="@id/e9t" android:layout_alignBottom="@id/e9t" />
+    <ImageView android:id="@id/awz" android:visibility="gone" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/ap6" android:layout_alignRight="@id/e9t" android:layout_alignBottom="@id/e9t" />
+    <RelativeLayout android:id="@id/e9w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/e9t" android:layout_centerHorizontal="true">
+        <TextView android:id="@id/e9x" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/r2" />
+        <TextView android:id="@id/e9y" android:paddingTop="@dimen/dl" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/r2" />
+    </RelativeLayout>
+    <TextView android:textColor="#fffd8f44" android:id="@id/e9z" android:visibility="gone" android:layout_below="@id/e9w" android:layout_centerHorizontal="true" style="@style/r2" />
 </RelativeLayout>

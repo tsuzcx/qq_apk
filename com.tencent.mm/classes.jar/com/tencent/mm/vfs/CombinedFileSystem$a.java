@@ -4,15 +4,15 @@ import java.util.regex.Pattern;
 
 final class CombinedFileSystem$a
 {
-  final Pattern fsW;
-  final int wum;
-  final FileSystem wun;
+  final int APl;
+  final FileSystem APm;
+  final Pattern hpo;
   
   CombinedFileSystem$a(Pattern paramPattern, int paramInt, FileSystem paramFileSystem)
   {
-    this.fsW = paramPattern;
-    this.wum = paramInt;
-    this.wun = paramFileSystem;
+    this.hpo = paramPattern;
+    this.APl = paramInt;
+    this.APm = paramFileSystem;
   }
 }
 

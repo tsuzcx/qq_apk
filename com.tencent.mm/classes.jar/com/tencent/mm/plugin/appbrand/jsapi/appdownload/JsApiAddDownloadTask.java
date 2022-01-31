@@ -2,229 +2,244 @@ package com.tencent.mm.plugin.appbrand.jsapi.appdownload;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.game.report.api.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.plugin.downloader.model.e.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.downloader.model.g.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class JsApiAddDownloadTask
-  extends a<o>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 474;
   public static final String NAME = "addDownloadTask";
   
-  private static class AddDownloadTask
+  static class AddDownloadTask
     extends MainProcessTask
   {
-    public static final Parcelable.Creator<AddDownloadTask> CREATOR = new JsApiAddDownloadTask.AddDownloadTask.1();
-    private int bhx;
-    private o fyo;
-    private String ghO;
-    private String ghP;
-    private String ghQ;
-    private long ghR;
-    private String ghS;
-    private String ghT;
-    private boolean ghU;
-    private int ghV;
-    private i gho;
-    private long ghp;
-    private boolean ghq;
-    private boolean ghr;
-    private String ghs;
+    public static final Parcelable.Creator<AddDownloadTask> CREATOR;
+    private int bxX;
+    private r gPA;
+    private boolean hAU;
+    private int hAV;
+    private m hyA;
+    private String hyB;
+    private String hyC;
+    private String hyD;
+    private long hyF;
+    private String hyG;
+    private String hyH;
+    private boolean hyI;
+    private String hyJ;
+    private long hyK;
+    private boolean hzD;
     private String mAppId;
     private String mPackageName;
     
+    static
+    {
+      AppMethodBeat.i(130658);
+      CREATOR = new JsApiAddDownloadTask.AddDownloadTask.1();
+      AppMethodBeat.o(130658);
+    }
+    
     public AddDownloadTask(Parcel paramParcel)
     {
-      e(paramParcel);
+      AppMethodBeat.i(130653);
+      f(paramParcel);
+      AppMethodBeat.o(130653);
     }
     
-    public AddDownloadTask(i parami, o paramo, int paramInt, JSONObject paramJSONObject)
+    public AddDownloadTask(m paramm, r paramr, int paramInt, JSONObject paramJSONObject)
     {
-      ahC();
-      this.gho = parami;
-      this.fyo = paramo;
-      this.bhx = paramInt;
-      this.ghO = paramJSONObject.optString("taskName");
-      this.ghP = paramJSONObject.optString("taskUrl");
-      this.ghQ = paramJSONObject.optString("fileMd5");
-      this.ghR = paramJSONObject.optInt("taskSize", 0);
-      this.ghS = paramJSONObject.optString("extInfo");
-      this.ghT = paramJSONObject.optString("fileType");
+      AppMethodBeat.i(130652);
+      aBj();
+      this.hyA = paramm;
+      this.gPA = paramr;
+      this.bxX = paramInt;
+      this.hyB = paramJSONObject.optString("taskName");
+      this.hyC = paramJSONObject.optString("taskUrl");
+      this.hyD = paramJSONObject.optString("fileMd5");
+      this.hyF = paramJSONObject.optInt("taskSize", 0);
+      this.hyG = paramJSONObject.optString("extInfo");
+      this.hyH = paramJSONObject.optString("fileType");
       this.mAppId = paramJSONObject.optString("appId");
       this.mPackageName = paramJSONObject.optString("packageName");
-      this.ghq = paramJSONObject.optBoolean("downloadInWifi", false);
-      this.ghU = paramJSONObject.optBoolean("showNotification", false);
-      this.ghV = paramJSONObject.optInt("downloaderType", 0);
-      this.ghr = true;
+      this.hzD = paramJSONObject.optBoolean("downloadInWifi", false);
+      this.hAU = paramJSONObject.optBoolean("showNotification", false);
+      this.hAV = paramJSONObject.optInt("downloaderType", 0);
+      this.hyI = true;
+      AppMethodBeat.o(130652);
     }
     
-    public final void Zu()
+    public final void ata()
     {
-      g.DQ();
-      if (!g.DP().isSDCardAvailable()) {
-        this.ghs = "fail_sdcard_not_ready";
+      AppMethodBeat.i(130654);
+      com.tencent.mm.kernel.g.RM();
+      if (!com.tencent.mm.kernel.g.RL().isSDCardAvailable()) {
+        this.hyJ = "fail_sdcard_not_ready";
       }
       for (;;)
       {
-        ahI();
+        aBp();
+        AppMethodBeat.o(130654);
         return;
-        if ((this.ghR > 0L) && (!f.bs(this.ghR)))
+        if ((this.hyF > 0L) && (!com.tencent.mm.compatible.util.f.gc(this.hyF)))
         {
-          this.ghs = "fail_sdcard_has_not_enough_space";
+          this.hyJ = "fail_sdcard_has_not_enough_space";
         }
-        else if (bk.bl(this.ghP))
+        else if (bo.isNullOrNil(this.hyC))
         {
-          this.ghs = "fail_invalid_url";
+          this.hyJ = "fail_invalid_url";
         }
         else
         {
-          y.i("MicroMsg.JsApiAddDownloadTask", "runInMainProcess taskUrl:%s md5:%s", new Object[] { this.ghP, this.ghQ });
-          Object localObject = new e.a();
-          ((e.a)localObject).zN(this.ghP);
-          ((e.a)localObject).dp(this.ghR);
-          ((e.a)localObject).zP(this.ghO);
-          ((e.a)localObject).zQ(this.ghQ);
-          ((e.a)localObject).setAppId(this.mAppId);
-          ((e.a)localObject).cq(this.mPackageName);
-          ((e.a)localObject).eO(true);
-          ((e.a)localObject).pE(bk.getInt(this.ghT, 1));
-          ((e.a)localObject).setScene(6001);
-          ((e.a)localObject).zR(this.ghS);
-          ((e.a)localObject).eP(this.ghU);
-          ((e.a)localObject).eQ(this.ghq);
-          ((e.a)localObject).eO(false);
-          ((e.a)localObject).iPG.iPD = true;
-          localObject = ((e.a)localObject).iPG;
-          if (this.ghV == 1) {}
-          for (long l = d.aFP().b((com.tencent.mm.plugin.downloader.model.e)localObject);; l = d.aFP().a((com.tencent.mm.plugin.downloader.model.e)localObject))
+          ab.i("MicroMsg.JsApiAddDownloadTask", "runInMainProcess taskUrl:%s md5:%s", new Object[] { this.hyC, this.hyD });
+          Object localObject = new g.a();
+          ((g.a)localObject).JJ(this.hyC);
+          ((g.a)localObject).iR(this.hyF);
+          ((g.a)localObject).JL(this.hyB);
+          ((g.a)localObject).JM(this.hyD);
+          ((g.a)localObject).setAppId(this.mAppId);
+          ((g.a)localObject).dC(this.mPackageName);
+          ((g.a)localObject).gr(true);
+          ((g.a)localObject).tV(bo.getInt(this.hyH, 1));
+          ((g.a)localObject).setScene(6001);
+          ((g.a)localObject).JN(this.hyG);
+          ((g.a)localObject).gs(this.hAU);
+          ((g.a)localObject).gt(this.hzD);
+          ((g.a)localObject).gr(false);
+          ((g.a)localObject).bju();
+          localObject = ((g.a)localObject).kYR;
+          if (this.hAV == 1) {}
+          for (long l = com.tencent.mm.plugin.downloader.model.f.bjl().b((com.tencent.mm.plugin.downloader.model.g)localObject);; l = com.tencent.mm.plugin.downloader.model.f.bjl().a((com.tencent.mm.plugin.downloader.model.g)localObject))
           {
-            y.i("MicroMsg.JsApiAddDownloadTask", "doAddDownloadTaskStraight, downloadId = " + l);
+            ab.i("MicroMsg.JsApiAddDownloadTask", "doAddDownloadTaskStraight, downloadId = ".concat(String.valueOf(l)));
             if (l > 0L) {
-              break label304;
+              break label297;
             }
-            y.e("MicroMsg.JsApiAddDownloadTask", "doAddDownloadTaskStraight fail, downloadId = " + l);
-            this.ghs = "";
+            ab.e("MicroMsg.JsApiAddDownloadTask", "doAddDownloadTaskStraight fail, downloadId = ".concat(String.valueOf(l)));
+            this.hyJ = "";
             break;
           }
-          label304:
-          this.ghr = false;
-          this.ghp = l;
-          if (this.ghq) {
-            b.dCw.a(this.mAppId, 6001, 11, l, "", this.ghS);
-          }
+          label297:
+          this.hyI = false;
+          this.hyK = l;
         }
       }
     }
     
-    public final void Zv()
+    public final void atb()
     {
-      ahD();
-      if (this.ghr)
+      AppMethodBeat.i(130655);
+      aBk();
+      if (this.hyI)
       {
-        if (bk.bl(this.ghs)) {}
-        for (localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.ghs }))
+        if (bo.isNullOrNil(this.hyJ)) {}
+        for (localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.hyJ }))
         {
-          this.fyo.C(this.bhx, this.gho.h((String)localObject, null));
+          this.gPA.h(this.bxX, this.hyA.j((String)localObject, null));
+          AppMethodBeat.o(130655);
           return;
         }
       }
       Object localObject = new HashMap();
-      ((Map)localObject).put("downloadId", Long.valueOf(this.ghp));
-      this.fyo.C(this.bhx, this.gho.h("ok", (Map)localObject));
+      ((Map)localObject).put("downloadId", Long.valueOf(this.hyK));
+      this.gPA.h(this.bxX, this.hyA.j("ok", (Map)localObject));
+      AppMethodBeat.o(130655);
     }
     
-    public final void e(Parcel paramParcel)
+    public final void f(Parcel paramParcel)
     {
       boolean bool2 = true;
-      this.ghO = paramParcel.readString();
-      this.ghP = paramParcel.readString();
-      this.ghQ = paramParcel.readString();
-      this.ghR = paramParcel.readLong();
-      this.ghS = paramParcel.readString();
-      this.ghT = paramParcel.readString();
+      AppMethodBeat.i(130656);
+      this.hyB = paramParcel.readString();
+      this.hyC = paramParcel.readString();
+      this.hyD = paramParcel.readString();
+      this.hyF = paramParcel.readLong();
+      this.hyG = paramParcel.readString();
+      this.hyH = paramParcel.readString();
       this.mAppId = paramParcel.readString();
       this.mPackageName = paramParcel.readString();
       if (paramParcel.readByte() == 1)
       {
         bool1 = true;
-        this.ghq = bool1;
+        this.hzD = bool1;
         if (paramParcel.readByte() != 1) {
-          break label141;
+          break label153;
         }
         bool1 = true;
-        label91:
-        this.ghU = bool1;
-        this.ghV = paramParcel.readInt();
+        label97:
+        this.hAU = bool1;
+        this.hAV = paramParcel.readInt();
         if (paramParcel.readInt() != 1) {
-          break label146;
+          break label158;
         }
       }
-      label141:
-      label146:
+      label153:
+      label158:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.ghr = bool1;
-        this.ghs = paramParcel.readString();
-        this.ghp = paramParcel.readLong();
+        this.hyI = bool1;
+        this.hyJ = paramParcel.readString();
+        this.hyK = paramParcel.readLong();
+        AppMethodBeat.o(130656);
         return;
         bool1 = false;
         break;
         bool1 = false;
-        break label91;
+        break label97;
       }
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       paramInt = 1;
-      paramParcel.writeString(this.ghO);
-      paramParcel.writeString(this.ghP);
-      paramParcel.writeString(this.ghQ);
-      paramParcel.writeLong(this.ghR);
-      paramParcel.writeString(this.ghS);
-      paramParcel.writeString(this.ghT);
+      AppMethodBeat.i(130657);
+      paramParcel.writeString(this.hyB);
+      paramParcel.writeString(this.hyC);
+      paramParcel.writeString(this.hyD);
+      paramParcel.writeLong(this.hyF);
+      paramParcel.writeString(this.hyG);
+      paramParcel.writeString(this.hyH);
       paramParcel.writeString(this.mAppId);
       paramParcel.writeString(this.mPackageName);
       byte b;
-      if (this.ghq)
+      if (this.hzD)
       {
         b = 1;
         paramParcel.writeByte(b);
-        if (!this.ghU) {
-          break label136;
+        if (!this.hAU) {
+          break label148;
         }
         b = 1;
-        label89:
+        label95:
         paramParcel.writeByte(b);
-        paramParcel.writeInt(this.ghV);
-        if (!this.ghr) {
-          break label141;
+        paramParcel.writeInt(this.hAV);
+        if (!this.hyI) {
+          break label153;
         }
       }
       for (;;)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.ghs);
-        paramParcel.writeLong(this.ghp);
+        paramParcel.writeString(this.hyJ);
+        paramParcel.writeLong(this.hyK);
+        AppMethodBeat.o(130657);
         return;
         b = 0;
         break;
-        label136:
+        label148:
         b = 0;
-        break label89;
-        label141:
+        break label95;
+        label153:
         paramInt = 0;
       }
     }
@@ -232,7 +247,7 @@ public final class JsApiAddDownloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.appdownload.JsApiAddDownloadTask
  * JD-Core Version:    0.7.0.1
  */

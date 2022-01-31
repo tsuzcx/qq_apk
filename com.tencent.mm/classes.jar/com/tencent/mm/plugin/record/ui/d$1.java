@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.record.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.c;
 import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.p;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 
 final class d$1
@@ -15,20 +16,23 @@ final class d$1
   
   public final void d(c paramc)
   {
-    b localb = (b)this.ntx.ntO;
-    if (paramc.field_favLocalId != localb.khA.field_localId)
+    AppMethodBeat.i(24196);
+    b localb = (b)this.pZe.pZv;
+    if (paramc.field_favLocalId != localb.mCk.field_localId)
     {
-      y.i("MicroMsg.FavRecordAdapter", "not equal Id %d %d", new Object[] { Long.valueOf(paramc.field_favLocalId), Long.valueOf(localb.khA.field_localId) });
+      ab.i("MicroMsg.FavRecordAdapter", "not equal Id %d %d", new Object[] { Long.valueOf(paramc.field_favLocalId), Long.valueOf(localb.mCk.field_localId) });
+      AppMethodBeat.o(24196);
       return;
     }
-    y.d("MicroMsg.FavRecordAdapter", "on cdn status changed, fav local id %d, data id %s, status %d", new Object[] { Long.valueOf(paramc.field_favLocalId), paramc.field_dataId, Integer.valueOf(paramc.field_status) });
+    ab.d("MicroMsg.FavRecordAdapter", "on cdn status changed, fav local id %d, data id %s, status %d", new Object[] { Long.valueOf(paramc.field_favLocalId), paramc.field_dataId, Integer.valueOf(paramc.field_status) });
     if (4 == paramc.field_status) {
-      d.aYI().put(bk.aM(paramc.field_dataId, "null"), Boolean.valueOf(true));
+      d.bFm().put(bo.bf(paramc.field_dataId, "null"), Boolean.TRUE);
     }
     if (paramc.isFinished()) {
-      this.ntx.ntK.post(new d.1.1(this, paramc));
+      this.pZe.mHV.post(new d.1.1(this, paramc));
     }
-    this.ntx.bvK();
+    this.pZe.cgb();
+    AppMethodBeat.o(24196);
   }
 }
 

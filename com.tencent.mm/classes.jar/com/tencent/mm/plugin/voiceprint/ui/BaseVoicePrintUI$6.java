@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
 import android.widget.Button;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseVoicePrintUI$6
   implements Runnable
@@ -10,11 +10,13 @@ final class BaseVoicePrintUI$6
   
   public final void run()
   {
-    BaseVoicePrintUI.c(this.pMb).setErr(R.l.voice_record_permission_denied);
-    BaseVoicePrintUI.c(this.pMb).bPu();
-    BaseVoicePrintUI.f(this.pMb).setPressed(false);
-    BaseVoicePrintUI.f(this.pMb).setEnabled(false);
-    BaseVoicePrintUI.g(this.pMb).stop();
+    AppMethodBeat.i(26136);
+    BaseVoicePrintUI.c(this.trX).setErr(2131304578);
+    BaseVoicePrintUI.c(this.trX).cLz();
+    BaseVoicePrintUI.f(this.trX).setPressed(false);
+    BaseVoicePrintUI.f(this.trX).setEnabled(false);
+    BaseVoicePrintUI.g(this.trX).stop();
+    AppMethodBeat.o(26136);
   }
 }
 

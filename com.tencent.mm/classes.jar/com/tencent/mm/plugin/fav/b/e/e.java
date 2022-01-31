@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.fav.b.e;
 
 import android.os.HandlerThread;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.compatible.util.g.a;
 import com.tencent.mm.plugin.fav.a.ac;
 import com.tencent.mm.plugin.fav.a.aj;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -20,51 +21,76 @@ import java.util.Set;
 public final class e
   implements f, ac
 {
-  private static Map<Long, g.a> bDU = new HashMap();
-  private static Map<Long, Integer> kaO = new HashMap();
-  private static Set<Long> kaQ = new HashSet();
-  private Queue<com.tencent.mm.plugin.fav.a.g> bDS = new LinkedList();
-  private boolean bDW = false;
-  private boolean bDX = false;
-  public int bDY = 0;
-  private long bDZ = 0L;
-  public am bEd = new am(com.tencent.mm.kernel.g.DS().mnU.getLooper(), new e.3(this), false);
+  private static Map<Long, g.a> ckJ;
+  private static Map<Long, Integer> mvk;
+  private static Set<Long> mvm;
+  private Queue<com.tencent.mm.plugin.fav.a.g> ckH;
+  private boolean ckL;
+  public int ckM;
+  private long ckN;
+  public ap ckR;
+  private boolean running;
+  
+  static
+  {
+    AppMethodBeat.i(5401);
+    ckJ = new HashMap();
+    mvk = new HashMap();
+    mvm = new HashSet();
+    AppMethodBeat.o(5401);
+  }
   
   public e()
   {
-    com.tencent.mm.kernel.g.Dk().a(401, this);
+    AppMethodBeat.i(5394);
+    this.running = false;
+    this.ckM = 0;
+    this.ckN = 0L;
+    this.ckL = false;
+    this.ckH = new LinkedList();
+    this.ckR = new ap(com.tencent.mm.kernel.g.RO().oNc.getLooper(), new e.3(this), false);
+    com.tencent.mm.kernel.g.Rc().a(401, this);
+    AppMethodBeat.o(5394);
   }
   
   public static void startSync()
   {
+    AppMethodBeat.i(5398);
     aj localaj = new aj();
-    com.tencent.mm.kernel.g.Dk().a(localaj, 0);
+    com.tencent.mm.kernel.g.Rc().a(localaj, 0);
+    AppMethodBeat.o(5398);
   }
   
-  public final boolean Tk()
+  public final void ET()
   {
-    return this.bDW;
+    AppMethodBeat.i(5397);
+    ab.i("MicroMsg.Fav.FavSendService", "on finish");
+    this.ckH.clear();
+    ckJ.clear();
+    this.running = false;
+    this.ckL = false;
+    mvk.clear();
+    AppMethodBeat.o(5397);
+  }
+  
+  public final boolean amw()
+  {
+    return this.ckL;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.Fav.FavSendService", "on scene end, errType %d, errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    com.tencent.mm.kernel.g.DS().O(new e.1(this, paramm, paramInt1, paramInt2));
+    AppMethodBeat.i(5395);
+    ab.i("MicroMsg.Fav.FavSendService", "on scene end, errType %d, errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    com.tencent.mm.kernel.g.RO().ac(new e.1(this, paramm, paramInt1, paramInt2));
+    AppMethodBeat.o(5395);
   }
   
   public final void run()
   {
-    com.tencent.mm.kernel.g.DS().O(new e.2(this));
-  }
-  
-  public final void uB()
-  {
-    y.i("MicroMsg.Fav.FavSendService", "on finish");
-    this.bDS.clear();
-    bDU.clear();
-    this.bDX = false;
-    this.bDW = false;
-    kaO.clear();
+    AppMethodBeat.i(5396);
+    com.tencent.mm.kernel.g.RO().ac(new e.2(this));
+    AppMethodBeat.o(5396);
   }
 }
 

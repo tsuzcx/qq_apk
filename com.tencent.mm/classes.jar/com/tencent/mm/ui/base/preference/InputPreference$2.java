@@ -4,6 +4,7 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class InputPreference$2
   implements TextView.OnEditorActionListener
@@ -12,13 +13,21 @@ final class InputPreference$2
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((3 == paramInt) && (InputPreference.a(this.vcQ) != null) && (InputPreference.b(this.vcQ) != null))
+    AppMethodBeat.i(107196);
+    if ((3 == paramInt) && (InputPreference.a(this.zrq) != null) && (InputPreference.b(this.zrq) != null))
     {
-      if (InputPreference.b(this.vcQ).getText() != null) {
-        InputPreference.b(this.vcQ).getText().toString();
+      if (InputPreference.b(this.zrq).getText() == null) {
+        InputPreference.a(this.zrq);
       }
-      return true;
+      for (;;)
+      {
+        AppMethodBeat.o(107196);
+        return true;
+        InputPreference.a(this.zrq);
+        InputPreference.b(this.zrq).getText();
+      }
     }
+    AppMethodBeat.o(107196);
     return false;
   }
 }

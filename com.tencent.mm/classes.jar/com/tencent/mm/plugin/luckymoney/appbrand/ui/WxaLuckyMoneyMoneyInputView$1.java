@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.luckymoney.appbrand.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mm.plugin.luckymoney.ui.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.ui.g;
 
 final class WxaLuckyMoneyMoneyInputView$1
   implements TextWatcher
@@ -11,12 +12,14 @@ final class WxaLuckyMoneyMoneyInputView$1
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    if (WxaLuckyMoneyMoneyInputView.a(this.lLF) != null)
+    AppMethodBeat.i(42003);
+    if (WxaLuckyMoneyMoneyInputView.a(this.oiZ) != null)
     {
-      paramEditable = WxaLuckyMoneyMoneyInputView.a(this.lLF);
-      this.lLF.getInputViewId();
-      paramEditable.bfq();
+      paramEditable = WxaLuckyMoneyMoneyInputView.a(this.oiZ);
+      this.oiZ.getInputViewId();
+      paramEditable.bMQ();
     }
+    AppMethodBeat.o(42003);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

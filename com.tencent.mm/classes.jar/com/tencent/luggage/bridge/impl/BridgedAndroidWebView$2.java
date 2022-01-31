@@ -5,6 +5,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import com.tencent.luggage.bridge.o;
 import com.tencent.luggage.bridge.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class BridgedAndroidWebView$2
   extends WebChromeClient
@@ -13,12 +14,15 @@ class BridgedAndroidWebView$2
   
   public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    paramWebView = BridgedAndroidWebView.a(this.bhX).bhN.aW(paramString2);
+    AppMethodBeat.i(90751);
+    paramWebView = BridgedAndroidWebView.a(this.byx).byn.bx(paramString2);
     if (paramWebView != null)
     {
       paramJsPromptResult.confirm(paramWebView);
+      AppMethodBeat.o(90751);
       return true;
     }
+    AppMethodBeat.o(90751);
     return false;
   }
 }

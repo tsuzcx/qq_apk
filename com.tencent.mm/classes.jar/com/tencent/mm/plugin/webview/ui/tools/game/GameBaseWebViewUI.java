@@ -1,78 +1,88 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
-import android.graphics.Bitmap;
+import android.app.Activity;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.plugin.webview.ui.tools.WebViewUI.i;
-import com.tencent.xweb.WebView;
 
 public class GameBaseWebViewUI
   extends WebViewUI
 {
-  private c kMB = new GameBaseWebViewUI.1(this);
-  protected a rvQ;
+  private c nkG;
+  protected a vmg;
   
-  protected final void S(Bundle paramBundle)
+  public GameBaseWebViewUI()
   {
-    this.kMB.rwj.ae(paramBundle);
+    AppMethodBeat.i(8637);
+    this.nkG = new GameBaseWebViewUI.1(this);
+    AppMethodBeat.o(8637);
   }
   
-  protected final boolean aoZ()
+  public final boolean aMh()
   {
     return true;
   }
   
+  public final void ak(Bundle paramBundle)
+  {
+    AppMethodBeat.i(8638);
+    this.nkG.vmB.ax(paramBundle);
+    AppMethodBeat.o(8638);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(8639);
     super.onCreate(paramBundle);
+    AppMethodBeat.o(8639);
   }
   
   public void onDestroy()
   {
-    c.a(this.kMB.rwj.rwk);
-    if (this.rvQ != null) {
-      this.rvQ.onDestroy();
+    AppMethodBeat.i(8642);
+    c.a(this.nkG.vmB.vmC);
+    if (this.vmg != null) {
+      this.vmg.onDestroy();
     }
     super.onDestroy();
+    AppMethodBeat.o(8642);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(8641);
     super.onPause();
-    this.kMB.rwj.onPause();
-    if (this.rvQ != null) {
-      this.rvQ.kMB.rwj.onPause();
+    this.nkG.vmB.onPause();
+    if (this.vmg != null)
+    {
+      a locala = this.vmg;
+      locala.nkG.vmB.onPause();
+      GameWebPerformanceInfo localGameWebPerformanceInfo = locala.nkv;
+      localGameWebPerformanceInfo.eAp += System.currentTimeMillis() - locala.nkH;
+      locala.nkH = System.currentTimeMillis();
     }
+    AppMethodBeat.o(8641);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    this.kMB.rwj.onResume();
-    if (this.rvQ != null) {
-      this.rvQ.kMB.rwj.onResume();
+    AppMethodBeat.i(8640);
+    this.nkG.vmB.onResume();
+    if (this.vmg != null)
+    {
+      a locala = this.vmg;
+      locala.nkG.vmB.onResume();
+      locala.nkH = System.currentTimeMillis();
     }
     super.onResume();
+    AppMethodBeat.o(8640);
   }
   
-  protected class a
-    extends WebViewUI.i
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    protected a()
-    {
-      super();
-    }
-    
-    public void a(WebView paramWebView, String paramString)
-    {
-      super.a(paramWebView, paramString);
-      GameBaseWebViewUI.c(GameBaseWebViewUI.this).rwj.cfQ();
-    }
-    
-    public void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
-    {
-      GameBaseWebViewUI.c(GameBaseWebViewUI.this).rwj.cfP();
-      super.b(paramWebView, paramString, paramBitmap);
-    }
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

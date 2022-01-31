@@ -4,12 +4,12 @@ import android.support.annotation.Keep;
 
 class CircleProgressDrawable$RingRotation
 {
-  private float gb;
+  private float gV;
   
   @Keep
   public void setRotation(float paramFloat)
   {
-    this.gb = paramFloat;
+    this.gV = paramFloat;
   }
 }
 

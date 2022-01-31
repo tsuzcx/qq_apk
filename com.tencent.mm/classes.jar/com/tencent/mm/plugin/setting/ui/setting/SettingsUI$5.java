@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SettingsUI$5
   implements DialogInterface.OnClickListener
@@ -12,8 +13,10 @@ final class SettingsUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    h.nFQ.f(11545, new Object[] { Integer.valueOf(5) });
-    y.i("MicroMsg.SettingsUI", "reprot: MM_LightPushCloseWechat == OP_CloseCancel");
+    AppMethodBeat.i(127564);
+    h.qsU.e(11545, new Object[] { Integer.valueOf(5) });
+    ab.i("MicroMsg.SettingsUI", "reprot: MM_LightPushCloseWechat == OP_CloseCancel");
+    AppMethodBeat.o(127564);
   }
 }
 

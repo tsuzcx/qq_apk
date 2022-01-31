@@ -1,39 +1,40 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Map;
 
-final class x$b
-  extends c.a
+public final class x$b
 {
-  TextView frb;
-  TextView vDK;
-  TextView vEC;
-  View vED;
-  ImageView vEE;
-  ImageView vEF;
-  TextView vEG;
-  TextView vEH;
+  public String cMO;
+  public String fhC;
+  public String fjH;
+  public String fjI;
+  public String fjJ;
+  public String fjK;
+  public String fjL;
+  public long time;
+  public String title;
+  public int type;
+  public String url;
   
-  public final c.a dX(View paramView)
+  public static b aY(Map<String, String> paramMap)
   {
-    super.dN(paramView);
-    this.dsz = ((TextView)paramView.findViewById(R.h.chatting_time_tv));
-    this.vDK = ((TextView)paramView.findViewById(R.h.chatting_type_tv));
-    this.frb = ((TextView)paramView.findViewById(R.h.chatting_username_tv));
-    this.vEC = ((TextView)paramView.findViewById(R.h.chatting_content_itv));
-    this.igg = paramView.findViewById(R.h.chatting_click_area);
-    this.vEH = ((TextView)paramView.findViewById(R.h.chatting_mobliename_tv));
-    this.vED = paramView.findViewById(R.h.chatting_from_message_add_layout);
-    this.vEE = ((ImageView)paramView.findViewById(R.h.chatfrom_bg_fmessage_okicon_iv));
-    this.vEF = ((ImageView)paramView.findViewById(R.h.chatting_from_message_add_plus));
-    this.vEG = ((TextView)paramView.findViewById(R.h.chatfrom_bg_fmessage_okicon_tv));
-    this.khV = ((CheckBox)paramView.findViewById(R.h.chatting_checkbox));
-    this.hoY = paramView.findViewById(R.h.chatting_maskview);
-    return this;
+    AppMethodBeat.i(33156);
+    b localb = new b();
+    localb.title = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.title"));
+    localb.url = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.url"));
+    localb.cMO = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.native_url"));
+    localb.fjH = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.shorturl"));
+    localb.fjI = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.longurl"));
+    localb.time = bo.getLong((String)paramMap.get(".msg.appmsg.mmreader.category.item.pub_time"), 0L);
+    localb.fjJ = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.cover"));
+    localb.fjK = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.tweetid"));
+    localb.fjL = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.digest"));
+    localb.type = bo.getInt((String)paramMap.get(".msg.appmsg.mmreader.category.item.itemshowtype"), 0);
+    localb.fhC = ((String)paramMap.get(".msg.appmsg.template_id"));
+    AppMethodBeat.o(33156);
+    return localb;
   }
 }
 

@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$1
   implements View.OnClickListener
@@ -14,23 +15,28 @@ final class b$1
   
   public final void onClick(View paramView)
   {
-    switch (b.3.vJv[this.vJt.ordinal()])
+    AppMethodBeat.i(33531);
+    switch (b.3.AaR[this.AaP.ordinal()])
     {
     default: 
-      y.e("MicroMsg.ChatroomContactEntranceView", "[cpan] unknow type for click. type:%s", new Object[] { this.vJt });
+      ab.e("MicroMsg.ChatroomContactEntranceView", "[cpan] unknow type for click. type:%s", new Object[] { this.AaP });
+      AppMethodBeat.o(33531);
       return;
     case 1: 
       paramView = new Intent();
-      paramView.setClassName(b.a(this.vJu), "com.tencent.mm.ui.contact.ChatroomContactUI");
-      b.a(this.vJu).startActivity(paramView);
+      paramView.setClassName(b.a(this.AaQ), "com.tencent.mm.ui.contact.ChatroomContactUI");
+      b.a(this.AaQ).startActivity(paramView);
+      AppMethodBeat.o(33531);
       return;
     case 2: 
       paramView = new Intent();
-      d.b(b.a(this.vJu), "label", ".ui.ContactLabelManagerUI", paramView);
+      d.b(b.a(this.AaQ), "label", ".ui.ContactLabelManagerUI", paramView);
+      AppMethodBeat.o(33531);
       return;
     }
     paramView = new Intent();
-    d.b(b.a(this.vJu), "ipcall", ".ui.IPCallAddressUI", paramView);
+    d.b(b.a(this.AaQ), "ipcall", ".ui.IPCallAddressUI", paramView);
+    AppMethodBeat.o(33531);
   }
 }
 

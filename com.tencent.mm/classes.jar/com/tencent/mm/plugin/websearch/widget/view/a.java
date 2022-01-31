@@ -1,28 +1,49 @@
 package com.tencent.mm.plugin.websearch.widget.view;
 
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.ui.widget.b.d;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
 {
-  private static final a qXv = new a();
-  public Map<Integer, d> qXt = new HashMap();
-  private c qXu;
+  private static final a uMK;
+  public Map<Integer, d> uMI;
+  private c uMJ;
+  
+  static
+  {
+    AppMethodBeat.i(91479);
+    uMK = new a();
+    AppMethodBeat.o(91479);
+  }
   
   private a()
   {
+    AppMethodBeat.i(91477);
+    this.uMI = new HashMap();
     c.a locala = new c.a();
-    locala.erf = true;
-    locala.ere = true;
-    this.qXu = locala.OV();
+    locala.eNM = true;
+    locala.eNL = true;
+    this.uMJ = locala.ahY();
+    AppMethodBeat.o(91477);
   }
   
-  public static a cak()
+  public static a daf()
   {
-    return qXv;
+    return uMK;
+  }
+  
+  public final void JA(int paramInt)
+  {
+    AppMethodBeat.i(91478);
+    d locald = (d)this.uMI.remove(Integer.valueOf(paramInt));
+    if (locald != null) {
+      locald.cre();
+    }
+    AppMethodBeat.o(91478);
   }
 }
 

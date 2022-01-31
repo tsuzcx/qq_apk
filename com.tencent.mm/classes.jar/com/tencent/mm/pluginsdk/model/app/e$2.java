@@ -2,13 +2,14 @@ package com.tencent.mm.pluginsdk.model.app;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.plugin.z.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.s.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.List;
 
 final class e$2
-  extends ah
+  extends ak
 {
   e$2(e parame, Looper paramLooper)
   {
@@ -17,22 +18,27 @@ final class e$2
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(79243);
     paramMessage = (v)paramMessage.obj;
-    r localr = new r(paramMessage.appId, paramMessage.ezA);
-    if (this.rTZ.rTX.contains(localr))
+    r localr = new r(paramMessage.appId, paramMessage.fPp);
+    if (this.vKW.vKU.contains(localr))
     {
-      this.rTZ.rTX.remove(localr);
-      if (!a.brn().e(paramMessage.appId, paramMessage.data, paramMessage.ezA)) {
-        y.e("MicroMsg.AppIconService", "handleMessage, saveIcon fail");
+      this.vKW.vKU.remove(localr);
+      if (!a.cac().e(paramMessage.appId, paramMessage.data, paramMessage.fPp)) {
+        ab.e("MicroMsg.AppIconService", "handleMessage, saveIcon fail");
       }
     }
-    while (this.rTZ.nVU.size() > 0)
+    while (this.vKW.qKd.size() > 0)
     {
-      paramMessage = (r)this.rTZ.nVU.remove(0);
-      if (this.rTZ.a(paramMessage)) {
-        this.rTZ.rTX.add(paramMessage);
+      paramMessage = (r)this.vKW.qKd.remove(0);
+      if (this.vKW.a(paramMessage))
+      {
+        this.vKW.vKU.add(paramMessage);
+        AppMethodBeat.o(79243);
+        return;
       }
     }
+    AppMethodBeat.o(79243);
   }
 }
 

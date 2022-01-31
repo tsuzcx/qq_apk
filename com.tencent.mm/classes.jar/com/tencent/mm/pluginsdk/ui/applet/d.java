@@ -1,28 +1,32 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import com.tencent.mm.ai.a.e;
-import com.tencent.mm.ai.a.j;
-import com.tencent.mm.ai.a.k;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.plugin.biz.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.a.e;
+import com.tencent.mm.aj.a.j;
+import com.tencent.mm.aj.a.k;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class d
   implements p
 {
-  public final boolean WC(String paramString)
+  public final boolean ami(String paramString)
   {
-    return f.eW(paramString);
+    AppMethodBeat.i(11682);
+    boolean bool = f.lg(paramString);
+    AppMethodBeat.o(11682);
+    return bool;
   }
   
-  public final Object WD(String paramString)
+  public final Object amj(String paramString)
   {
-    j localj2 = z.MC().bY(paramString);
+    AppMethodBeat.i(11683);
+    j localj2 = z.afm().df(paramString);
     j localj1;
-    if ((localj2 != null) && (!bk.bl(localj2.field_userId)))
+    if ((localj2 != null) && (!bo.isNullOrNil(localj2.field_userId)))
     {
       localj1 = localj2;
       if (localj2.field_userId.equals(paramString)) {}
@@ -32,37 +36,41 @@ public final class d
       localj1 = new j();
       localj1.field_userId = paramString;
     }
+    AppMethodBeat.o(11683);
     return localj1;
   }
   
-  public final c WE(String paramString)
+  public final c amk(String paramString)
   {
+    AppMethodBeat.i(11684);
     c.a locala = new c.a();
-    locala.eri = e.ly(paramString);
-    locala.erf = true;
-    locala.erC = true;
-    locala.eru = b.a.default_avatar;
-    return locala.OV();
+    locala.eNP = e.su(paramString);
+    locala.eNM = true;
+    locala.eOe = true;
+    locala.eNY = 2131231207;
+    paramString = locala.ahY();
+    AppMethodBeat.o(11684);
+    return paramString;
   }
   
-  public final String bJ(Object paramObject)
+  public final String cn(Object paramObject)
   {
     return ((j)paramObject).field_userName;
   }
   
-  public final String bK(Object paramObject)
+  public final String co(Object paramObject)
   {
     return ((j)paramObject).field_headImageUrl;
   }
   
-  public final String bL(Object paramObject)
+  public final String cp(Object paramObject)
   {
     return ((j)paramObject).field_userId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.d
  * JD-Core Version:    0.7.0.1
  */

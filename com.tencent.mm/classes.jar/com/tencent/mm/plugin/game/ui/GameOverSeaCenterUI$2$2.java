@@ -1,24 +1,28 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.plugin.game.model.ag;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.af;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class GameOverSeaCenterUI$2$2
   implements Runnable
 {
-  GameOverSeaCenterUI$2$2(GameOverSeaCenterUI.2 param2, ag paramag) {}
+  GameOverSeaCenterUI$2$2(GameOverSeaCenterUI.2 param2, af paramaf) {}
   
   public final void run()
   {
+    AppMethodBeat.i(112127);
     try
     {
-      GameOverSeaCenterUI.a(this.les.ler, this.let, 1);
+      GameOverSeaCenterUI.a(this.nCn.nCm, this.nCo, 1);
+      AppMethodBeat.o(112127);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.GameOverSeaCenterUI", "GameOverSeaCenterUI crash, %s", new Object[] { localException.getMessage() });
-      this.les.ler.finish();
+      ab.e("MicroMsg.GameOverSeaCenterUI", "GameOverSeaCenterUI crash, %s", new Object[] { localException.getMessage() });
+      this.nCn.nCm.finish();
+      AppMethodBeat.o(112127);
     }
   }
 }

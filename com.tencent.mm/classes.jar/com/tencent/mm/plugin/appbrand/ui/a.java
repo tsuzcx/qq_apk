@@ -1,33 +1,59 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
+import a.l;
 import android.content.Context;
-import com.tencent.mm.ui.widget.a.c;
-import com.tencent.mm.ui.widget.a.c.a;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.h;
 
-public final class a
-  extends c.a
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/AccountReleasePromptMMTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "TAG", "", "checkShouldLogin", "", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"})
+final class a
+  extends AppBrandProxyUIProcessTask
 {
-  private boolean hcl = false;
+  private final String TAG = "MicroMsg.AccountReleasePromptMMTask";
   
-  public a(Context paramContext)
+  private final boolean aLY()
   {
-    super(paramContext);
-    if ((paramContext instanceof Activity)) {
-      this.hcl = l.c(((Activity)paramContext).getWindow());
+    AppMethodBeat.i(134977);
+    if (com.tencent.mm.kernel.a.QP())
+    {
+      ab.i(this.TAG, "checkShouldLogin account hold, return true");
+      AppMethodBeat.o(134977);
+      return true;
     }
+    if ((g.RM().RF()) && (g.RJ().QU()))
+    {
+      ab.i(this.TAG, "checkShouldLogin account initialized, return false");
+      AppMethodBeat.o(134977);
+      return false;
+    }
+    ab.i(this.TAG, "checkShouldLogin fallback return true");
+    AppMethodBeat.o(134977);
+    return true;
   }
   
-  public final c aoP()
+  public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
-    c localc = super.aoP();
-    l.a(localc.getWindow(), this.hcl);
-    return localc;
+    AppMethodBeat.i(134976);
+    if (!aLY())
+    {
+      a((AppBrandProxyUIProcessTask.ProcessResult)new AccountReleaseProxyUILaunchResult());
+      AppMethodBeat.o(134976);
+      return;
+    }
+    h.a((Context)aBf(), getString(2131296557), getString(2131297087), getString(2131296599), false, (DialogInterface.OnClickListener)new a.a(this));
+    new a.b(this).alive();
+    AppMethodBeat.o(134976);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.a
  * JD-Core Version:    0.7.0.1
  */

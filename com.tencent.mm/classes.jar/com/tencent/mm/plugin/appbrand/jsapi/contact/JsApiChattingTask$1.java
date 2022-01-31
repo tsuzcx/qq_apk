@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.contact;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.r.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.service.i.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class JsApiChattingTask$1
-  implements c.a
+  implements i.a
 {
   JsApiChattingTask$1(JsApiChattingTask paramJsApiChattingTask) {}
   
-  public final void b(WxaAttributes paramWxaAttributes)
+  public final void d(WxaAttributes paramWxaAttributes)
   {
+    AppMethodBeat.i(130982);
     if (paramWxaAttributes == null) {
-      y.w("MicroMsg.JsApiChattingTask", "info is null, err");
+      ab.w("MicroMsg.JsApiChattingTask", "info is null, err");
     }
-    JsApiChattingTask.a(this.gpG);
+    JsApiChattingTask.a(this.hKm);
+    AppMethodBeat.o(130982);
   }
 }
 

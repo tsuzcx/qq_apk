@@ -1,23 +1,33 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.protocal.c.akv;
-import com.tencent.mm.protocal.c.bly;
-import com.tencent.mm.protocal.c.gd;
-import com.tencent.mm.protocal.k;
-import com.tencent.mm.protocal.k.c;
-import com.tencent.mm.protocal.k.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.l;
+import com.tencent.mm.protocal.l.c;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.aqi;
 
 public final class t$b
-  extends k.e
-  implements k.c
+  extends l.e
+  implements l.c
 {
-  public akv fgd = new akv();
+  public aqi gxL;
   
-  public final int A(byte[] paramArrayOfByte)
+  public t$b()
   {
-    this.fgd = ((akv)new akv().aH(paramArrayOfByte));
-    k.a(this, this.fgd.tFx);
-    return this.fgd.tFx.sze;
+    AppMethodBeat.i(108414);
+    this.gxL = new aqi();
+    AppMethodBeat.o(108414);
+  }
+  
+  public final int fromProtoBuf(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(108415);
+    this.gxL = ((aqi)new aqi().parseFrom(paramArrayOfByte));
+    l.a(this, this.gxL.getBaseResponse());
+    int i = this.gxL.getBaseResponse().Ret;
+    AppMethodBeat.o(108415);
+    return i;
   }
 }
 

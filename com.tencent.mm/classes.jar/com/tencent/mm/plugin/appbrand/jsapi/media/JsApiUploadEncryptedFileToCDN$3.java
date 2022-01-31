@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class JsApiUploadEncryptedFileToCDN$3
   implements DialogInterface.OnClickListener
@@ -13,9 +14,11 @@ final class JsApiUploadEncryptedFileToCDN$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.e("MicroMsg.JsApiUploadEncryptedFileToCDN", "do cancel upload in 2G/3G/4G network");
-    this.ggH.C(this.dIS, this.gwt.h("cancel", null));
-    this.gws.ahD();
+    AppMethodBeat.i(131303);
+    ab.e("MicroMsg.JsApiUploadEncryptedFileToCDN", "do cancel upload in 2G/3G/4G network");
+    this.hxW.h(this.bAX, this.hSo.j("cancel", null));
+    this.hSn.aBk();
+    AppMethodBeat.o(131303);
   }
 }
 

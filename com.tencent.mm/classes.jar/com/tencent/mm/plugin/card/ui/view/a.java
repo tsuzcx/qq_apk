@@ -4,15 +4,14 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.b.f;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.e.a;
 import com.tencent.mm.plugin.card.ui.n;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.c.bru;
-import com.tencent.mm.protocal.c.mg;
+import com.tencent.mm.protocal.protobuf.ccf;
+import com.tencent.mm.protocal.protobuf.pg;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.MMActivity;
@@ -20,89 +19,98 @@ import com.tencent.mm.ui.MMActivity;
 public final class a
   extends i
 {
-  private View ixH;
+  private View kAO;
   
-  public final void aCU()
+  public final void bfq()
   {
-    this.ixH.setVisibility(8);
+    AppMethodBeat.i(88730);
+    this.kAO.setVisibility(8);
+    AppMethodBeat.o(88730);
   }
   
   public final void initView()
   {
-    this.ixH = findViewById(a.d.card_accept_header_layout);
+    AppMethodBeat.i(88728);
+    this.kAO = findViewById(2131822073);
+    AppMethodBeat.o(88728);
   }
   
   public final void update()
   {
-    Object localObject = this.iya.aBJ();
-    b localb = this.iya.aBE();
-    MMActivity localMMActivity = this.iya.aBH();
-    e.a locala = this.iya.aBL();
-    f localf = this.iya.aBM();
-    if (((com.tencent.mm.plugin.card.ui.a.g)localObject).aCE())
+    AppMethodBeat.i(88729);
+    Object localObject = this.kBh.bdA();
+    b localb = this.kBh.bdv();
+    MMActivity localMMActivity = this.kBh.bdy();
+    e.a locala = this.kBh.bdC();
+    f localf = this.kBh.bdD();
+    if (((com.tencent.mm.plugin.card.ui.a.g)localObject).beO())
     {
-      this.ixH.setVisibility(0);
-      findViewById(a.d.accept_header_from_username_container).setVisibility(0);
-      localObject = (ImageView)findViewById(a.d.accept_header_from_username_avatar);
-      TextView localTextView1 = (TextView)findViewById(a.d.accept_header_from_username_tv);
-      TextView localTextView2 = (TextView)findViewById(a.d.accept_ui_title);
-      if (locala.irV != null) {
-        localTextView1.setText(com.tencent.mm.pluginsdk.ui.d.j.a(localMMActivity, ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abl(locala.irV).Bp(), localTextView1.getTextSize()));
+      this.kAO.setVisibility(0);
+      findViewById(2131821988).setVisibility(0);
+      localObject = (ImageView)findViewById(2131821989);
+      TextView localTextView1 = (TextView)findViewById(2131821990);
+      TextView localTextView2 = (TextView)findViewById(2131821991);
+      if (locala.ktc != null) {
+        localTextView1.setText(com.tencent.mm.pluginsdk.ui.d.j.b(localMMActivity, ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(locala.ktc).Oe(), localTextView1.getTextSize()));
       }
-      if (locala.drX == 23) {
-        if (!TextUtils.isEmpty(localb.azx().sIQ)) {
-          localTextView2.setText(localb.azx().sIQ);
+      if (locala.ejF == 23) {
+        if (!TextUtils.isEmpty(localb.bbd().wGz)) {
+          localTextView2.setText(localb.bbd().wGz);
         }
       }
       for (;;)
       {
-        a.b.a((ImageView)localObject, locala.irV, 0.15F, false);
-        ((ImageView)localObject).setOnClickListener(this.iya.aBI());
+        a.b.a((ImageView)localObject, locala.ktc, 0.15F, false);
+        ((ImageView)localObject).setOnClickListener(this.kBh.bdz());
+        AppMethodBeat.o(88729);
         return;
-        if (!TextUtils.isEmpty(localb.azx().imz))
+        if (!TextUtils.isEmpty(localb.bbd().knv))
         {
-          localTextView2.setText(localMMActivity.getString(a.g.card_recommend_tips, new Object[] { localb.azx().imz }));
+          localTextView2.setText(localMMActivity.getString(2131298012, new Object[] { localb.bbd().knv }));
         }
         else
         {
-          localTextView2.setText(localMMActivity.getString(a.g.card_recommend_tips, new Object[] { localf.getTitle() }));
+          localTextView2.setText(localMMActivity.getString(2131298012, new Object[] { localf.getTitle() }));
           continue;
-          if ((localb.azz() != null) && (!TextUtils.isEmpty(localb.azz().tIn))) {
-            localTextView2.setText(localb.azz().tIn);
-          } else if (!TextUtils.isEmpty(localb.azx().imz))
+          if ((localb.bbf() != null) && (!TextUtils.isEmpty(localb.bbf().xMB))) {
+            localTextView2.setText(localb.bbf().xMB);
+          } else if (!TextUtils.isEmpty(localb.bbd().knv))
           {
-            if (localb.azj()) {
-              localTextView2.setText(localMMActivity.getString(a.g.card_invoice_tips, new Object[] { localb.azx().imz }));
+            if (localb.baP()) {
+              localTextView2.setText(localMMActivity.getString(2131297965, new Object[] { localb.bbd().knv }));
             } else {
-              localTextView2.setText(localMMActivity.getString(a.g.card_gift_tips, new Object[] { localb.azx().imz }));
+              localTextView2.setText(localMMActivity.getString(2131297938, new Object[] { localb.bbd().knv }));
             }
           }
-          else if (localb.azj()) {
-            localTextView2.setText(localMMActivity.getString(a.g.card_invoice_tips, new Object[] { localf.getTitle() }));
+          else if (localb.baP()) {
+            localTextView2.setText(localMMActivity.getString(2131297965, new Object[] { localf.getTitle() }));
           } else {
-            localTextView2.setText(localMMActivity.getString(a.g.card_gift_tips, new Object[] { localf.getTitle() }));
+            localTextView2.setText(localMMActivity.getString(2131297938, new Object[] { localf.getTitle() }));
           }
         }
       }
     }
-    if (((com.tencent.mm.plugin.card.ui.a.g)localObject).aCF())
+    if (((com.tencent.mm.plugin.card.ui.a.g)localObject).beP())
     {
-      if (!TextUtils.isEmpty(localb.azx().sIQ))
+      if (!TextUtils.isEmpty(localb.bbd().wGz))
       {
-        this.ixH.setVisibility(0);
-        findViewById(a.d.accept_header_from_username_container).setVisibility(8);
-        ((TextView)findViewById(a.d.accept_ui_title)).setText(localb.azx().sIQ);
+        this.kAO.setVisibility(0);
+        findViewById(2131821988).setVisibility(8);
+        ((TextView)findViewById(2131821991)).setText(localb.bbd().wGz);
+        AppMethodBeat.o(88729);
         return;
       }
-      this.ixH.setVisibility(8);
+      this.kAO.setVisibility(8);
+      AppMethodBeat.o(88729);
       return;
     }
-    aCU();
+    bfq();
+    AppMethodBeat.o(88729);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.xweb.xwalk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class XWAppBrandEngine$a$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class XWAppBrandEngine$a$2
   
   public final void run()
   {
-    XWAppBrandEngine.a(this.xlF.xlE, XWAppBrandEngine.b(this.xlF.xlE), this.xlF.bks);
+    AppMethodBeat.i(4166);
+    XWAppBrandEngine.a(this.BJv.BJu, XWAppBrandEngine.b(this.BJv.BJu), this.BJv.BJs);
+    AppMethodBeat.o(4166);
   }
 }
 

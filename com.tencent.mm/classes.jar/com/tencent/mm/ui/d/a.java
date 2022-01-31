@@ -5,66 +5,70 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.b.b.b;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class a
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  private String lyg = null;
-  String mUrl = null;
-  private boolean uSD = false;
-  private b.b uSE = null;
-  private String uSF = "";
+  String mUrl;
+  private String mWording;
+  private boolean zhe;
+  private b.b zhf;
+  private String zhg;
   
   public a(Context paramContext, b.b paramb)
   {
     super(paramContext);
-    this.uSE = paramb;
+    AppMethodBeat.i(29991);
+    this.mWording = null;
+    this.mUrl = null;
+    this.zhe = false;
+    this.zhf = null;
+    this.zhg = "";
+    this.zhf = paramb;
     refresh();
+    AppMethodBeat.o(29991);
   }
   
   private void refresh()
   {
-    au.Hx().FZ();
-    if (com.tencent.mm.model.b.b.a(this.uSE))
+    AppMethodBeat.i(29992);
+    aw.aaz().Za();
+    if (com.tencent.mm.model.b.b.a(this.zhf))
     {
-      y.i("MicroMsg.ChattingMonitoredBanner", "hy: start show banner: %s, %s, %s, %b", new Object[] { this.uSE, this.lyg, this.mUrl, Boolean.valueOf(this.uSD) });
+      ab.i("MicroMsg.ChattingMonitoredBanner", "hy: start show banner: %s, %s, %s, %b", new Object[] { this.zhf, this.mWording, this.mUrl, Boolean.valueOf(this.zhe) });
       Object localObject;
       ImageView localImageView;
-      if (this.uSE == b.b.dYr)
+      if (this.zhf == b.b.fow)
       {
-        au.Hx().FZ();
-        this.lyg = com.tencent.mm.model.b.b.IE();
-        au.Hx().FZ();
-        this.mUrl = com.tencent.mm.model.b.b.IF();
-        au.Hx().FZ();
-        this.uSD = com.tencent.mm.model.b.b.IG();
-        localObject = (TextView)getView().findViewById(R.h.chatting_monitored_banner_text);
-        localImageView = (ImageView)getView().findViewById(R.h.close_icon);
-        if (bk.bl(this.lyg)) {
-          break label353;
+        aw.aaz().Za();
+        this.mWording = com.tencent.mm.model.b.b.abC();
+        aw.aaz().Za();
+        this.mUrl = com.tencent.mm.model.b.b.abD();
+        aw.aaz().Za();
+        this.zhe = com.tencent.mm.model.b.b.abE();
+        localObject = (TextView)getView().findViewById(2131822761);
+        localImageView = (ImageView)getView().findViewById(2131822762);
+        if (bo.isNullOrNil(this.mWording)) {
+          break label359;
         }
-        ((TextView)localObject).setText(this.lyg);
-        label157:
+        ((TextView)localObject).setText(this.mWording);
+        label161:
         ((TextView)localObject).setSelected(true);
-        if (bk.bl(this.mUrl)) {
-          break label363;
+        if (bo.isNullOrNil(this.mUrl)) {
+          break label368;
         }
-        getView().findViewById(R.h.monitor_content).setBackgroundResource(R.g.tips_bar_white_selector);
-        localImageView.setImageResource(R.g.monitor_close_dark);
-        ((TextView)localObject).setTextColor(ae.getContext().getResources().getColor(R.e.tipsbar_text_color));
+        getView().findViewById(2131822760).setBackgroundResource(2130840583);
+        localImageView.setImageResource(2130839717);
+        ((TextView)localObject).setTextColor(ah.getContext().getResources().getColor(2131690589));
       }
       for (;;)
       {
@@ -72,69 +76,79 @@ public final class a
         if (getView().getVisibility() != 0)
         {
           localObject = new StringBuilder();
-          g.DN();
-          this.uSF = (com.tencent.mm.kernel.a.CK() + "_" + System.currentTimeMillis());
-          Gg(0);
+          g.RJ();
+          this.zhg = (com.tencent.mm.kernel.a.getUin() + "_" + System.currentTimeMillis());
+          Ox(0);
         }
         setVisibility(0);
-        if (!this.uSD) {
-          break label405;
+        if (!this.zhe) {
+          break label406;
         }
         localImageView.setVisibility(0);
         localImageView.setOnClickListener(new a.2(this));
+        AppMethodBeat.o(29992);
         return;
-        au.Hx().FZ();
-        this.lyg = com.tencent.mm.model.b.b.IB();
-        au.Hx().FZ();
-        this.mUrl = com.tencent.mm.model.b.b.IC();
-        au.Hx().FZ();
-        this.uSD = com.tencent.mm.model.b.b.ID();
+        aw.aaz().Za();
+        this.mWording = com.tencent.mm.model.b.b.abz();
+        aw.aaz().Za();
+        this.mUrl = com.tencent.mm.model.b.b.abA();
+        aw.aaz().Za();
+        this.zhe = com.tencent.mm.model.b.b.abB();
         break;
-        label353:
-        ((TextView)localObject).setText(R.l.app_waiting);
-        break label157;
-        label363:
-        getView().findViewById(R.h.monitor_content).setBackgroundResource(R.e.tipsbar_black_bg_color);
-        localImageView.setImageResource(R.g.monitor_close);
-        ((TextView)localObject).setTextColor(ae.getContext().getResources().getColor(R.e.white));
+        label359:
+        ((TextView)localObject).setText(2131297112);
+        break label161;
+        label368:
+        getView().findViewById(2131822760).setBackgroundResource(2131690583);
+        localImageView.setImageResource(2130839716);
+        ((TextView)localObject).setTextColor(ah.getContext().getResources().getColor(2131690709));
       }
-      label405:
+      label406:
       localImageView.setVisibility(8);
+      AppMethodBeat.o(29992);
       return;
     }
-    y.i("MicroMsg.ChattingMonitoredBanner", "hy: should not show banner");
+    ab.i("MicroMsg.ChattingMonitoredBanner", "hy: should not show banner");
     setVisibility(8);
+    AppMethodBeat.o(29992);
   }
   
-  final void Gg(int paramInt)
+  final void Ox(int paramInt)
   {
     int i = 1;
-    h localh = h.nFQ;
-    String str = this.uSF;
-    if (this.uSE == b.b.dYq) {
+    AppMethodBeat.i(29995);
+    h localh = h.qsU;
+    String str = this.zhg;
+    if (this.zhf == b.b.fou) {
       i = 0;
     }
-    localh.f(14439, new Object[] { str, Integer.valueOf(paramInt), Integer.valueOf(i) });
-    h.nFQ.a(633L, paramInt, 1L, false);
+    localh.e(14439, new Object[] { str, Integer.valueOf(paramInt), Integer.valueOf(i) });
+    h.qsU.idkeyStat(633L, paramInt, 1L, false);
+    AppMethodBeat.o(29995);
   }
   
-  public final boolean apu()
+  public final boolean aMK()
   {
+    AppMethodBeat.i(29994);
     refresh();
-    return super.apu();
+    boolean bool = super.aMK();
+    AppMethodBeat.o(29994);
+    return bool;
   }
   
   public final void destroy() {}
   
   public final int getLayoutId()
   {
-    return R.i.chatting_monitored_banner;
+    return 2130969136;
   }
   
   public final void setVisibility(int paramInt)
   {
+    AppMethodBeat.i(29993);
     super.setVisibility(paramInt);
-    getView().findViewById(R.h.monitor_content).setVisibility(paramInt);
+    getView().findViewById(2131822760).setVisibility(paramInt);
+    AppMethodBeat.o(29993);
   }
 }
 

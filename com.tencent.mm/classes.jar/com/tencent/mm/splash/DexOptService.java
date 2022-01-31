@@ -7,40 +7,54 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class DexOptService
   extends Service
 {
-  private HandlerThread mHandlerThread = new HandlerThread("DexOpt-Thread");
-  private volatile boolean ulA = false;
-  private Handler ulB = new Handler()
-  {
-    public final void handleMessage(Message paramAnonymousMessage)
-    {
-      i.c("WxSplash.DexOptService", "dexopt process quit.", new Object[0]);
-      DexOptService.this.stopSelf();
-    }
-  };
-  private volatile Throwable ulC;
-  private Handler ulz;
+  private HandlerThread mHandlerThread;
+  private Handler yve;
+  private volatile boolean yvf;
+  private Handler yvg;
+  private volatile Throwable yvh;
   
-  private boolean csT()
+  public DexOptService()
   {
-    i.c("WxSplash.DexOptService", "doDexOpt start", new Object[0]);
+    AppMethodBeat.i(114815);
+    this.mHandlerThread = new HandlerThread("DexOpt-Thread");
+    this.yvf = false;
+    this.yvg = new Handler()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(114813);
+        h.c("WxSplash.DexOptService", "dexopt process quit.", new Object[0]);
+        DexOptService.this.stopSelf();
+        AppMethodBeat.o(114813);
+      }
+    };
+    AppMethodBeat.o(114815);
+  }
+  
+  private boolean dvr()
+  {
+    AppMethodBeat.i(114817);
+    h.c("WxSplash.DexOptService", "doDexOpt start", new Object[0]);
     try
     {
-      bool = i.ulJ.aG(getApplicationContext());
-      i.c("WxSplash.DexOptService", "schedule to quit", new Object[0]);
-      this.ulB.removeCallbacksAndMessages(null);
-      this.ulB.sendEmptyMessageDelayed(0, 120000L);
-      i.c("WxSplash.DexOptService", "doDexOpt done, result %s", new Object[] { Boolean.valueOf(bool) });
+      bool = h.yvo.be(getApplicationContext());
+      h.c("WxSplash.DexOptService", "schedule to quit", new Object[0]);
+      this.yvg.removeCallbacksAndMessages(null);
+      this.yvg.sendEmptyMessageDelayed(0, 120000L);
+      h.c("WxSplash.DexOptService", "doDexOpt done, result %s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(114817);
       return bool;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        this.ulC = localThrowable;
+        this.yvh = localThrowable;
         boolean bool = false;
       }
     }
@@ -48,51 +62,63 @@ public class DexOptService
   
   public IBinder onBind(Intent paramIntent)
   {
-    i.c("WxSplash.DexOptService", "onBind", new Object[0]);
+    AppMethodBeat.i(114819);
+    h.c("WxSplash.DexOptService", "onBind", new Object[0]);
+    AppMethodBeat.o(114819);
     return null;
   }
   
   public void onCreate()
   {
-    i.c("WxSplash.DexOptService", "onCreate", new Object[0]);
+    AppMethodBeat.i(114816);
+    h.c("WxSplash.DexOptService", "onCreate", new Object[0]);
     super.onCreate();
     this.mHandlerThread.start();
-    this.ulz = new Handler(this.mHandlerThread.getLooper())
+    this.yve = new Handler(this.mHandlerThread.getLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
+        AppMethodBeat.i(114814);
         if (DexOptService.a(DexOptService.this))
         {
-          i.c("WxSplash.DexOptService", "dex opt progressing.", new Object[0]);
+          h.c("WxSplash.DexOptService", "dex opt progressing.", new Object[0]);
+          AppMethodBeat.o(114814);
           return;
         }
         DexOptService.a(DexOptService.this, true);
         if (DexOptService.b(DexOptService.this)) {
-          DexOptService.tf();
+          DexOptService.access$200();
         }
         for (;;)
         {
-          DexOptService.aoH();
+          DexOptService.aLP();
           DexOptService.a(DexOptService.this, false);
+          AppMethodBeat.o(114814);
           return;
-          DexOptService.IV();
+          DexOptService.access$300();
           DexOptService.c(DexOptService.this);
         }
       }
     };
+    AppMethodBeat.o(114816);
   }
   
   public void onDestroy()
   {
-    i.c("WxSplash.DexOptService", "onDestroy", new Object[0]);
+    AppMethodBeat.i(114820);
+    h.c("WxSplash.DexOptService", "onDestroy", new Object[0]);
     super.onDestroy();
+    AppMethodBeat.o(114820);
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    this.ulz.sendEmptyMessage(0);
-    i.c("WxSplash.DexOptService", "onStartCommand", new Object[0]);
-    return super.onStartCommand(paramIntent, paramInt1, paramInt2);
+    AppMethodBeat.i(114818);
+    this.yve.sendEmptyMessage(0);
+    h.c("WxSplash.DexOptService", "onStartCommand", new Object[0]);
+    paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
+    AppMethodBeat.o(114818);
+    return paramInt1;
   }
 }
 

@@ -3,8 +3,8 @@ package com.tencent.mm.pluginsdk.ui.preference;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnLongClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 
 final class FMessageListView$4
@@ -14,11 +14,13 @@ final class FMessageListView$4
   
   public final boolean onLongClick(View paramView)
   {
-    y.d("MicroMsg.FMessageListView", "jacks long click digest");
-    paramView = this.sip.getContext();
-    String str = this.sip.getContext().getString(R.l.chatting_copy);
+    AppMethodBeat.i(28041);
+    ab.d("MicroMsg.FMessageListView", "jacks long click digest");
+    paramView = this.waO.getContext();
+    String str = this.waO.getContext().getString(2131298161);
     FMessageListView.4.1 local1 = new FMessageListView.4.1(this);
     h.a(paramView, null, new String[] { str }, local1);
+    AppMethodBeat.o(28041);
     return true;
   }
 }

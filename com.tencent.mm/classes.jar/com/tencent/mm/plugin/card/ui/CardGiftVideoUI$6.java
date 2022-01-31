@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.card.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CardGiftVideoUI$6
   implements View.OnTouchListener
@@ -11,7 +12,9 @@ final class CardGiftVideoUI$6
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.iuJ.aBR();
+    AppMethodBeat.i(88453);
+    this.kvN.bdV();
+    AppMethodBeat.o(88453);
     return true;
   }
 }

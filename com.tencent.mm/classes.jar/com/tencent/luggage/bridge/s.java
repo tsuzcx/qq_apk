@@ -4,9 +4,9 @@ import android.content.Context;
 
 public abstract interface s
 {
-  public abstract void aX(String paramString);
-  
   public abstract void addJavascriptInterface(Object paramObject, String paramString);
+  
+  public abstract void by(String paramString);
   
   public abstract Context getContext();
 }

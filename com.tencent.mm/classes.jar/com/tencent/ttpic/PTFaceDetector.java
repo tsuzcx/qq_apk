@@ -1,220 +1,308 @@
 package com.tencent.ttpic;
 
 import android.graphics.PointF;
+import android.opengl.EGL14;
+import android.util.Pair;
+import com.tencent.filter.BaseFilter;
+import com.tencent.filter.GLSLRender;
+import com.tencent.filter.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.ApiHelper;
+import com.tencent.ttpic.gles.SegmentDataPipe;
+import com.tencent.ttpic.thread.FaceGestureDetGLThread;
+import com.tencent.ttpic.util.AlgoUtils;
+import com.tencent.ttpic.util.FrameUtil;
 import com.tencent.ttpic.util.RetrieveDataManager;
 import com.tencent.ttpic.util.youtu.VideoPreviewFaceOutlineDetector;
+import com.tencent.ttpic.util.youtu.bodydetector.BodyDetectResult;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public enum PTFaceDetector
+public class PTFaceDetector
 {
-  INSTANCE;
+  private static final String TAG;
+  public static AtomicInteger activeRefCount;
+  private boolean firstDet;
+  private volatile SegmentDataPipe mDetDataPipe;
+  private FaceGestureDetGLThread mDetGLThread;
+  private final Object mFaceDetLock;
+  private VideoPreviewFaceOutlineDetector mFaceDetector;
+  private h mLastInputFrame;
+  private h mLastOriginLargeFrame;
+  private BaseFilter mRotateFilter;
+  private h mRotateFrame;
   
-  public static float MINWIDTH = 360.0F;
-  private int faceDetHeight;
-  private int faceDetWidth;
-  private byte[] mData;
-  private VideoPreviewFaceOutlineDetector mFaceDetector = VideoPreviewFaceOutlineDetector.getInstance();
-  
-  private PTFaceDetector() {}
-  
-  private PTFaceAttr genFaceAttr(float paramFloat, byte[] paramArrayOfByte, List<List<PointF>> paramList, List<float[]> paramList1, Set<Integer> paramSet, boolean paramBoolean)
+  static
   {
-    PTFaceAttr localPTFaceAttr = new PTFaceAttr();
-    localPTFaceAttr.setFaceScale(paramFloat);
-    localPTFaceAttr.setData(paramArrayOfByte);
-    paramArrayOfByte = new ArrayList();
+    AppMethodBeat.i(81587);
+    TAG = PTFaceDetector.class.getSimpleName();
+    activeRefCount = new AtomicInteger(0);
+    AppMethodBeat.o(81587);
+  }
+  
+  public PTFaceDetector()
+  {
+    AppMethodBeat.i(81575);
+    this.mRotateFilter = new BaseFilter(GLSLRender.btg);
+    this.mRotateFrame = new h();
+    this.mFaceDetLock = new Object();
+    AppMethodBeat.o(81575);
+  }
+  
+  private void setDataPipe(SegmentDataPipe paramSegmentDataPipe)
+  {
+    AppMethodBeat.i(81578);
+    synchronized (this.mFaceDetLock)
+    {
+      this.mDetDataPipe = paramSegmentDataPipe;
+      this.mFaceDetLock.notifyAll();
+      AppMethodBeat.o(81578);
+      return;
+    }
+  }
+  
+  public void destroy()
+  {
+    AppMethodBeat.i(81579);
+    if (this.mFaceDetector != null) {
+      this.mDetGLThread.postFaceDetectorDestroy();
+    }
+    RetrieveDataManager.getInstance().clear();
+    this.mRotateFilter.ClearGLSL();
+    this.mRotateFrame.clear();
+    if (this.mDetGLThread != null)
+    {
+      this.mDetGLThread.destroy();
+      activeRefCount.getAndDecrement();
+      this.mDetGLThread = null;
+    }
+    AppMethodBeat.o(81579);
+  }
+  
+  public PTFaceAttr detectFrame(h paramh1, h paramh2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, double paramDouble)
+  {
+    AppMethodBeat.i(81580);
+    paramh1 = detectFrame(paramh1, paramh2, paramInt, paramBoolean1, paramBoolean2, paramBoolean3, paramDouble, false, false);
+    AppMethodBeat.o(81580);
+    return paramh1;
+  }
+  
+  public PTFaceAttr detectFrame(h paramh1, h paramh2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, double paramDouble, boolean paramBoolean4)
+  {
+    AppMethodBeat.i(81581);
+    paramh1 = detectFrame(paramh1, paramh2, paramInt, paramBoolean1, paramBoolean2, paramBoolean3, paramDouble, paramBoolean4, false);
+    AppMethodBeat.o(81581);
+    return paramh1;
+  }
+  
+  public PTFaceAttr detectFrame(h paramh1, h paramh2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, double paramDouble, boolean paramBoolean4, boolean paramBoolean5)
+  {
+    AppMethodBeat.i(81582);
+    h localh2 = FrameUtil.rotateCorrect(paramh1, paramh1.width, paramh1.height, paramInt, this.mRotateFilter, this.mRotateFrame);
+    int i = (int)(localh2.width * paramDouble);
+    int j = (int)(localh2.height * paramDouble);
+    Object localObject7 = new ArrayList();
+    Object localObject8 = new ArrayList();
+    Object localObject9 = new ArrayList();
+    Object localObject10 = new ArrayList();
+    Object localObject11 = new ArrayList();
+    Object localObject12 = new ArrayList();
+    Object localObject13 = new HashSet();
+    ((Set)localObject13).add(Integer.valueOf(1));
+    Object localObject4 = new ArrayList();
+    byte[] arrayOfByte = new byte[0];
+    Pair localPair = null;
+    Object localObject14 = null;
+    Object localObject6 = Pair.create(Integer.valueOf(255), null);
+    Object localObject5 = new HashMap();
+    if ((this.mDetGLThread != null) && (this.mDetGLThread.isInitReady()))
+    {
+      Object localObject1 = null;
+      if (paramBoolean4)
+      {
+        this.firstDet = false;
+        this.mDetGLThread.postFaceGestureDet(localh2, paramBoolean1, paramBoolean2, paramBoolean3, paramDouble, paramBoolean5);
+      }
+      if (this.firstDet) {}
+    }
+    for (;;)
+    {
+      synchronized (this.mFaceDetLock)
+      {
+        try
+        {
+          if (this.mDetDataPipe == null)
+          {
+            this.mFaceDetLock.wait();
+            continue;
+          }
+          this.firstDet = false;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          localObject2 = this.mDetDataPipe;
+          this.mDetDataPipe = null;
+        }
+        if ((localObject2 == null) || (((SegmentDataPipe)localObject2).mTexFrame.width != localh2.width)) {
+          break label638;
+        }
+        localObject7 = ((SegmentDataPipe)localObject2).allFacePoints;
+        localObject8 = ((SegmentDataPipe)localObject2).allIrisPoints;
+        localObject9 = ((SegmentDataPipe)localObject2).allFaceAngles;
+        localObject13 = ((SegmentDataPipe)localObject2).mTriggeredExpressionType;
+        localObject10 = ((SegmentDataPipe)localObject2).allHandPoints;
+        localObject11 = ((SegmentDataPipe)localObject2).allHandAngles;
+        localObject6 = ((SegmentDataPipe)localObject2).faceStatus;
+        localObject12 = ((SegmentDataPipe)localObject2).bodyDetectResults;
+        arrayOfByte = ((SegmentDataPipe)localObject2).mData;
+        localObject4 = ((SegmentDataPipe)localObject2).brightnessAdjustmentCurve;
+        localObject5 = ((SegmentDataPipe)localObject2).faceActionCounter;
+        ??? = this.mLastInputFrame;
+        localh1 = this.mLastOriginLargeFrame;
+        localPair = ((SegmentDataPipe)localObject2).histogram;
+        localObject2 = localObject6;
+        localObject6 = localPair;
+        if (!paramBoolean4) {
+          this.mDetGLThread.postFaceGestureDet(localh2, paramBoolean1, paramBoolean2, paramBoolean3, paramDouble, paramBoolean5);
+        }
+        this.mLastInputFrame = paramh1;
+        this.mLastOriginLargeFrame = paramh2;
+        paramh1 = (h)localObject13;
+        paramh2 = (h)localObject12;
+        localObject12 = localObject10;
+        localObject10 = localObject8;
+        localObject8 = localObject12;
+        localObject12 = localObject7;
+        localObject7 = localObject11;
+        localObject11 = AlgoUtils.rotatePointsForList((List)localObject12, i, j, paramInt);
+        localObject10 = AlgoUtils.rotatePointsForList((List)localObject10, i, j, paramInt);
+        localObject9 = AlgoUtils.rotateAngles((List)localObject9, -paramInt);
+        localObject8 = AlgoUtils.rotatePoints((List)localObject8, i, j, paramInt);
+        localObject12 = AlgoUtils.rotateAngles((List)localObject7, -paramInt);
+        localObject2 = AlgoUtils.rotateFaceStatusFor3D((List)localObject2, i, j, paramInt);
+        localObject7 = rotateBodyDetectResults(paramh2, i, j, paramInt);
+        if ((localObject12 != null) && (((List)localObject12).size() > 0))
+        {
+          paramh2 = (float[])((List)localObject12).get(0);
+          paramh1 = PTFaceAttr.genFaceAttr((List)localObject11, (List)localObject10, (List)localObject9, paramh1, (List)localObject8, paramh2, (List)localObject2, (List)localObject7, paramDouble, arrayOfByte, false, (h)???, localh1, localh2, paramInt, (int[])localObject4, (Map)localObject5, (Pair)localObject6, this.mFaceDetector);
+          AppMethodBeat.o(81582);
+          return paramh1;
+        }
+      }
+      paramh2 = new float[] { 0.0F, 0.0F, 0.0F };
+      continue;
+      label638:
+      h localh1 = paramh2;
+      ??? = paramh1;
+      Object localObject2 = localObject4;
+      localObject4 = localObject14;
+      continue;
+      localh1 = paramh2;
+      ??? = paramh1;
+      localObject2 = localObject4;
+      paramh1 = (h)localObject13;
+      paramh2 = (h)localObject12;
+      localObject4 = localObject10;
+      localObject12 = localObject7;
+      localObject7 = localObject11;
+      localObject10 = localObject8;
+      localObject8 = localObject4;
+      localObject4 = localPair;
+    }
+  }
+  
+  public VideoPreviewFaceOutlineDetector getFaceDetector()
+  {
+    return this.mFaceDetector;
+  }
+  
+  public String getHistogramInfo()
+  {
+    AppMethodBeat.i(81584);
+    if (this.mDetGLThread != null)
+    {
+      String str = this.mDetGLThread.getHistogramInfo();
+      AppMethodBeat.o(81584);
+      return str;
+    }
+    AppMethodBeat.o(81584);
+    return "";
+  }
+  
+  public void init()
+  {
+    AppMethodBeat.i(81576);
+    init(false);
+    AppMethodBeat.o(81576);
+  }
+  
+  public void init(boolean paramBoolean)
+  {
+    AppMethodBeat.i(81577);
+    if ((ApiHelper.hasJellyBeanMR1()) && (this.mDetGLThread == null))
+    {
+      this.mDetGLThread = new FaceGestureDetGLThread(EGL14.eglGetCurrentContext());
+      activeRefCount.getAndIncrement();
+      this.mDetGLThread.setOnFaceDetListener(new PTFaceDetector.1(this));
+      this.mFaceDetector = this.mDetGLThread.getDetector();
+      if (!paramBoolean) {
+        this.mFaceDetector.setDoTrackHandler(this.mDetGLThread.getHandler());
+      }
+    }
+    this.mRotateFilter.ApplyGLSLFilter();
+    this.firstDet = true;
+    AppMethodBeat.o(81577);
+  }
+  
+  public void resetBodyDetector()
+  {
+    AppMethodBeat.i(81585);
+    if (this.mDetGLThread != null)
+    {
+      this.mDetGLThread.resetBodyDetector();
+      if (this.mDetDataPipe != null) {
+        this.mDetDataPipe.bodyDetectResults = new ArrayList();
+      }
+    }
+    AppMethodBeat.o(81585);
+  }
+  
+  public List<BodyDetectResult> rotateBodyDetectResults(List<BodyDetectResult> paramList, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(81583);
+    if ((paramList == null) || (paramInt3 != 180))
+    {
+      AppMethodBeat.o(81583);
+      return paramList;
+    }
     int i = 0;
-    PTFaceAttr.PTFace localPTFace;
     while (i < paramList.size())
     {
-      localPTFace = new PTFaceAttr.PTFace();
-      localPTFace.setFacePoints((List)paramList.get(i));
-      localPTFace.setFaceAngle((float[])paramList1.get(i));
-      paramArrayOfByte.add(localPTFace);
+      ArrayList localArrayList = new ArrayList();
+      BodyDetectResult localBodyDetectResult = (BodyDetectResult)paramList.get(i);
+      int j = 0;
+      while (j < localBodyDetectResult.bodyPoints.size())
+      {
+        localArrayList.add(localBodyDetectResult.bodyPoints.get(j));
+        j += 1;
+      }
+      AlgoUtils.rotatePoints(localArrayList, paramInt1, paramInt2, paramInt3);
+      j = 0;
+      while (j < localArrayList.size())
+      {
+        ((PointF)localBodyDetectResult.bodyPoints.get(j)).x = ((PointF)localArrayList.get(j)).x;
+        ((PointF)localBodyDetectResult.bodyPoints.get(j)).y = ((PointF)localArrayList.get(j)).y;
+        j += 1;
+      }
       i += 1;
     }
-    paramList = new HashMap();
-    paramList1 = PTFaceAttr.PTExpression.values();
-    int j = paramList1.length;
-    i = 0;
-    if (i < j)
-    {
-      localPTFace = paramList1[i];
-      if (paramSet.contains(Integer.valueOf(localPTFace.value))) {
-        paramList.put(localPTFace, Boolean.valueOf(true));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        paramList.put(localPTFace, Boolean.valueOf(false));
-      }
-    }
-    localPTFaceAttr.setFaceInfos(paramArrayOfByte);
-    localPTFaceAttr.setFaceExpression(paramList);
-    if (paramBoolean)
-    {
-      localPTFaceAttr.setHandPoints(null);
-      localPTFaceAttr.setHandAngles(null);
-    }
-    return localPTFaceAttr;
-  }
-  
-  public static PTFaceDetector getInstance()
-  {
-    return INSTANCE;
-  }
-  
-  public final void destroy()
-  {
-    this.mFaceDetector.destroy();
-    RetrieveDataManager.getInstance().clear();
-  }
-  
-  public final PTFaceAttr detectImageBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (this.mFaceDetector.init() != 0) {}
-    while ((paramArrayOfByte == null) || (paramArrayOfByte.length != paramInt1 * paramInt2 * 4)) {
-      return null;
-    }
-    this.mFaceDetector.doFaceDetect(paramArrayOfByte, paramInt1, paramInt2);
-    this.mFaceDetector.doTrack(paramArrayOfByte, paramInt1, paramInt2);
-    return genFaceAttr(1.0F, paramArrayOfByte, this.mFaceDetector.getAllFaces(), this.mFaceDetector.getAllFaceAngles(), this.mFaceDetector.getTriggeredExpression(), paramBoolean);
-  }
-  
-  public final PTFaceAttr detectVideoBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (this.mFaceDetector.init() != 0) {}
-    while ((paramArrayOfByte == null) || (paramArrayOfByte.length != paramInt1 * paramInt2 * 4)) {
-      return null;
-    }
-    this.mFaceDetector.doTrackByRGBA(paramArrayOfByte, paramInt1, paramInt2);
-    return genFaceAttr(1.0F, paramArrayOfByte, this.mFaceDetector.getAllFaces(), this.mFaceDetector.getAllFaceAngles(), this.mFaceDetector.getTriggeredExpression(), paramBoolean);
-  }
-  
-  /* Error */
-  public final PTFaceAttr detectVideoTexture(int paramInt1, int paramInt2, int paramInt3, float paramFloat, boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 42	com/tencent/ttpic/PTFaceDetector:mFaceDetector	Lcom/tencent/ttpic/util/youtu/VideoPreviewFaceOutlineDetector;
-    //   6: invokevirtual 162	com/tencent/ttpic/util/youtu/VideoPreviewFaceOutlineDetector:init	()I
-    //   9: istore 6
-    //   11: iload 6
-    //   13: ifeq +11 -> 24
-    //   16: aconst_null
-    //   17: astore 7
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: aload 7
-    //   23: areturn
-    //   24: iload_2
-    //   25: i2f
-    //   26: fload 4
-    //   28: fmul
-    //   29: f2i
-    //   30: istore_2
-    //   31: aload_0
-    //   32: iload_2
-    //   33: putfield 190	com/tencent/ttpic/PTFaceDetector:faceDetWidth	I
-    //   36: aload_0
-    //   37: iload_3
-    //   38: i2f
-    //   39: fload 4
-    //   41: fmul
-    //   42: f2i
-    //   43: putfield 192	com/tencent/ttpic/PTFaceDetector:faceDetHeight	I
-    //   46: ldc 194
-    //   48: invokestatic 200	com/tencent/ttpic/util/BenchUtil:benchStart	(Ljava/lang/String;)V
-    //   51: aload_0
-    //   52: getfield 190	com/tencent/ttpic/PTFaceDetector:faceDetWidth	I
-    //   55: aload_0
-    //   56: getfield 192	com/tencent/ttpic/PTFaceDetector:faceDetHeight	I
-    //   59: imul
-    //   60: iconst_4
-    //   61: imul
-    //   62: istore_2
-    //   63: aload_0
-    //   64: getfield 202	com/tencent/ttpic/PTFaceDetector:mData	[B
-    //   67: ifnull +12 -> 79
-    //   70: iload_2
-    //   71: aload_0
-    //   72: getfield 202	com/tencent/ttpic/PTFaceDetector:mData	[B
-    //   75: arraylength
-    //   76: if_icmpeq +10 -> 86
-    //   79: aload_0
-    //   80: iload_2
-    //   81: newarray byte
-    //   83: putfield 202	com/tencent/ttpic/PTFaceDetector:mData	[B
-    //   86: invokestatic 154	com/tencent/ttpic/util/RetrieveDataManager:getInstance	()Lcom/tencent/ttpic/util/RetrieveDataManager;
-    //   89: getstatic 208	com/tencent/ttpic/util/RetrieveDataManager$DATA_TYPE:RGBA	Lcom/tencent/ttpic/util/RetrieveDataManager$DATA_TYPE;
-    //   92: getfield 209	com/tencent/ttpic/util/RetrieveDataManager$DATA_TYPE:value	I
-    //   95: iload_1
-    //   96: aload_0
-    //   97: getfield 190	com/tencent/ttpic/PTFaceDetector:faceDetWidth	I
-    //   100: aload_0
-    //   101: getfield 192	com/tencent/ttpic/PTFaceDetector:faceDetHeight	I
-    //   104: aload_0
-    //   105: getfield 202	com/tencent/ttpic/PTFaceDetector:mData	[B
-    //   108: invokevirtual 213	com/tencent/ttpic/util/RetrieveDataManager:retrieveData	(IIII[B)Z
-    //   111: pop
-    //   112: ldc 194
-    //   114: invokestatic 217	com/tencent/ttpic/util/BenchUtil:benchEnd	(Ljava/lang/String;)J
-    //   117: pop2
-    //   118: aload_0
-    //   119: getfield 42	com/tencent/ttpic/PTFaceDetector:mFaceDetector	Lcom/tencent/ttpic/util/youtu/VideoPreviewFaceOutlineDetector;
-    //   122: aload_0
-    //   123: getfield 202	com/tencent/ttpic/PTFaceDetector:mData	[B
-    //   126: aload_0
-    //   127: getfield 190	com/tencent/ttpic/PTFaceDetector:faceDetWidth	I
-    //   130: aload_0
-    //   131: getfield 192	com/tencent/ttpic/PTFaceDetector:faceDetHeight	I
-    //   134: invokevirtual 186	com/tencent/ttpic/util/youtu/VideoPreviewFaceOutlineDetector:doTrackByRGBA	([BII)V
-    //   137: aload_0
-    //   138: fload 4
-    //   140: aload_0
-    //   141: getfield 202	com/tencent/ttpic/PTFaceDetector:mData	[B
-    //   144: aload_0
-    //   145: getfield 42	com/tencent/ttpic/PTFaceDetector:mFaceDetector	Lcom/tencent/ttpic/util/youtu/VideoPreviewFaceOutlineDetector;
-    //   148: invokevirtual 173	com/tencent/ttpic/util/youtu/VideoPreviewFaceOutlineDetector:getAllFaces	()Ljava/util/List;
-    //   151: aload_0
-    //   152: getfield 42	com/tencent/ttpic/PTFaceDetector:mFaceDetector	Lcom/tencent/ttpic/util/youtu/VideoPreviewFaceOutlineDetector;
-    //   155: invokevirtual 176	com/tencent/ttpic/util/youtu/VideoPreviewFaceOutlineDetector:getAllFaceAngles	()Ljava/util/List;
-    //   158: aload_0
-    //   159: getfield 42	com/tencent/ttpic/PTFaceDetector:mFaceDetector	Lcom/tencent/ttpic/util/youtu/VideoPreviewFaceOutlineDetector;
-    //   162: invokevirtual 180	com/tencent/ttpic/util/youtu/VideoPreviewFaceOutlineDetector:getTriggeredExpression	()Ljava/util/Set;
-    //   165: iload 5
-    //   167: invokespecial 182	com/tencent/ttpic/PTFaceDetector:genFaceAttr	(F[BLjava/util/List;Ljava/util/List;Ljava/util/Set;Z)Lcom/tencent/ttpic/PTFaceAttr;
-    //   170: astore 7
-    //   172: goto -153 -> 19
-    //   175: astore 7
-    //   177: aload_0
-    //   178: monitorexit
-    //   179: aload 7
-    //   181: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	182	0	this	PTFaceDetector
-    //   0	182	1	paramInt1	int
-    //   0	182	2	paramInt2	int
-    //   0	182	3	paramInt3	int
-    //   0	182	4	paramFloat	float
-    //   0	182	5	paramBoolean	boolean
-    //   9	3	6	i	int
-    //   17	154	7	localPTFaceAttr	PTFaceAttr
-    //   175	5	7	localObject	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	175	finally
-    //   31	79	175	finally
-    //   79	86	175	finally
-    //   86	172	175	finally
+    AppMethodBeat.o(81583);
+    return paramList;
   }
 }
 

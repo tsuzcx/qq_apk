@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/a95" android:background="@drawable/wa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/uo" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_margin="5.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dvw" android:background="@drawable/wb" android:layout_width="fill_parent" android:layout_height="77.0dip" android:layout_alignParentTop="true">
-            <ImageView android:id="@id/dvx" android:layout_width="@dimen/a4y" android:layout_height="@dimen/a4y" android:layout_marginLeft="@dimen/l3" android:src="@raw/shake_card_package_defaultlogo" android:scaleType="fitCenter" />
-            <TextView android:textSize="@dimen/fj" android:textColor="@color/a23" android:ellipsize="end" android:id="@id/a98" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kv" android:layout_marginRight="@dimen/l3" android:singleLine="true" />
-        </LinearLayout>
-        <ImageView android:id="@id/dvy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bad" android:layout_alignBottom="@id/dvw" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dvz" android:layout_width="fill_parent" android:layout_height="31.0dip">
-        <TextView android:textSize="@dimen/my" android:textColor="@color/pf" android:ellipsize="end" android:gravity="left" android:id="@id/a6t" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l3" android:singleLine="true" android:layout_weight="1.0" />
-        <TextView android:textSize="@dimen/my" android:textColor="@color/pf" android:gravity="right" android:id="@id/dw0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mq" android:layout_marginRight="@dimen/l3" android:minWidth="80.0dip" android:singleLine="true" />
+    <ImageView android:id="@id/e19" android:padding="5.0dip" android:paddingLeft="0.0dip" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ak4" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/h6" android:id="@id/e1_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="240.0dip" android:singleLine="true" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/re" android:id="@id/e1a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
     </LinearLayout>
+    <ImageView android:id="@id/e1b" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mm_submenu_normal" />
 </LinearLayout>

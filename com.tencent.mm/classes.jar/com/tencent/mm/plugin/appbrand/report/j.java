@@ -1,76 +1,57 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mm.sdk.d.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.xweb.WebView;
 
-public final class j
-  extends d
+public enum j
 {
-  long gXM;
-  public long gXN;
-  private final j.c gXO = new j.c(this, (byte)0);
-  final j.b gXP = new j.b(this, (byte)0);
-  final j.a gXQ = new j.a(this, (byte)0);
-  private boolean gXR = false;
-  public boolean mStopped = false;
-  
-  public j(String paramString)
+  static
   {
-    super("MicroMsg.StayingRecorder[" + paramString + "]", Looper.getMainLooper());
-    a(this.gXP);
-    a(this.gXQ);
-    a(this.gXO);
-    b(this.gXO);
-    start();
+    AppMethodBeat.i(132568);
+    iFZ = new j("X5", 0);
+    iGa = new j("Sys", 1);
+    iGb = new j("XWalk", 2);
+    iGc = new j("Invalid", 3);
+    iGd = new j[] { iFZ, iGa, iGb, iGc };
+    AppMethodBeat.o(132568);
   }
   
-  private void ku(int paramInt)
+  private j() {}
+  
+  public static j aLa()
   {
-    if (csk() == null)
+    AppMethodBeat.i(132567);
+    boolean bool1 = WebView.isSys();
+    boolean bool2 = WebView.isXWalk();
+    boolean bool3 = WebView.isX5();
+    if (((!bool1) || (bool2) || (bool3)) && ((bool1) || (!bool2) || (bool3)) && ((bool1) || (bool2) || (!bool3)))
     {
-      Ff(paramInt);
-      return;
+      if (f.DEBUG)
+      {
+        localObject = new IllegalStateException("WebViewType invalid");
+        AppMethodBeat.o(132567);
+        throw ((Throwable)localObject);
+      }
+      localObject = iGc;
+      AppMethodBeat.o(132567);
+      return localObject;
     }
-    if (Looper.myLooper() == this.ujd.getLooper())
+    if (bool3)
     {
-      this.ujd.handleMessage(Message.obtain(this.ujd, paramInt));
-      return;
+      localObject = iFZ;
+      AppMethodBeat.o(132567);
+      return localObject;
     }
-    Fg(paramInt);
-  }
-  
-  protected final void abD()
-  {
-    super.abD();
-    this.gXR = true;
-  }
-  
-  public final boolean aod()
-  {
-    return (csl() == this.gXQ) || (this.gXR);
-  }
-  
-  public final void aoe()
-  {
-    y.d(this.mName, "toForeground");
-    ku(2);
-  }
-  
-  public final void aof()
-  {
-    y.d(this.mName, "toBackground");
-    ku(1);
-  }
-  
-  public final void start()
-  {
-    if (this.mStopped) {
-      return;
+    if (bool2)
+    {
+      localObject = iGb;
+      AppMethodBeat.o(132567);
+      return localObject;
     }
-    super.start();
+    Object localObject = iGa;
+    AppMethodBeat.o(132567);
+    return localObject;
   }
 }
 

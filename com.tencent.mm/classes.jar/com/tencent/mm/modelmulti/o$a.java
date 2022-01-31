@@ -1,92 +1,103 @@
 package com.tencent.mm.modelmulti;
 
 import android.os.HandlerThread;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.protocal.c.azg;
-import com.tencent.mm.protocal.c.qw;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.cb;
+import com.tencent.mm.protocal.protobuf.bgj;
+import com.tencent.mm.protocal.protobuf.ue;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import java.util.LinkedList;
 
 final class o$a
 {
-  int esB = 0;
-  boolean etQ = false;
-  azg etR = null;
-  o.b etS = null;
-  o.c etT;
-  am etU = new am(g.DS().mnU.getLooper(), new o.a.1(this), true);
+  int fIo;
+  boolean fJD;
+  bgj fJE;
+  o.b fJF;
+  o.c fJG;
+  ap fJH;
   
-  private o$a(o paramo, o.c paramc, boolean paramBoolean, azg paramazg, o.b paramb)
+  private o$a(o paramo, o.c paramc, boolean paramBoolean, bgj parambgj, o.b paramb)
   {
-    this.etS = paramb;
-    this.etT = paramc;
-    this.etQ = paramBoolean;
-    this.etR = paramazg;
-    this.esB = 0;
-    if ((this.etS != null) && (this.etT != null)) {}
+    AppMethodBeat.i(58400);
+    this.fIo = 0;
+    this.fJD = false;
+    this.fJE = null;
+    this.fJF = null;
+    this.fJH = new ap(g.RO().oNc.getLooper(), new o.a.1(this), true);
+    this.fJF = paramb;
+    this.fJG = paramc;
+    this.fJD = paramBoolean;
+    this.fJE = parambgj;
+    this.fIo = 0;
+    if ((this.fJF != null) && (this.fJG != null)) {}
     for (boolean bool = true;; bool = false)
     {
-      o.G("", bool);
-      if (this.etR != null) {
+      o.K("", bool);
+      if (this.fJE != null) {
         break;
       }
-      o.G("resp Not null", false);
-      y.w("MicroMsg.SyncService", "CmdProcHandler %s NewSyncResponse is null", new Object[] { this.etT });
-      this.etS.iU(0);
+      o.K("resp Not null", false);
+      ab.w("MicroMsg.SyncService", "CmdProcHandler %s NewSyncResponse is null", new Object[] { this.fJG });
+      this.fJF.lM(0);
+      AppMethodBeat.o(58400);
       return;
     }
-    if ((g.DK()) && (!a.CW()))
+    if ((g.RG()) && (!a.QP()))
     {
-      g.DQ();
-      if (g.DP() != null)
+      g.RM();
+      if (g.RL() != null)
       {
-        g.DQ();
-        if (g.DP().Dz() != null) {
-          break label259;
+        g.RM();
+        if (g.RL().Ru() != null) {
+          break label274;
         }
       }
     }
-    paramo = this.etT;
-    paramBoolean = g.DK();
-    bool = a.CW();
-    g.DQ();
-    y.e("MicroMsg.SyncService", "CmdProcHandler %s accready:%s hold:%s accstg:%s ", new Object[] { paramo, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool), g.DP() });
-    this.etS.iU(0);
+    paramo = this.fJG;
+    paramBoolean = g.RG();
+    bool = a.QP();
+    g.RM();
+    ab.e("MicroMsg.SyncService", "CmdProcHandler %s accready:%s hold:%s accstg:%s ", new Object[] { paramo, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool), g.RL() });
+    this.fJF.lM(0);
+    AppMethodBeat.o(58400);
     return;
-    label259:
-    o.a(paramazg);
-    long l2 = paramazg.tvx;
+    label274:
+    o.a(parambgj);
+    long l2 = parambgj.xvI;
     long l1 = l2;
     if (String.valueOf(l2).length() == 10) {
       l1 = l2 * 1000L;
     }
     l2 = System.currentTimeMillis();
     long l3 = l2 - l1;
-    y.i("MicroMsg.SyncService", "[oneliang] client time is:%s,server time is:%s,diff time is:%s, diff second time is:%s,just save millisecond diff time", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l3 / 1000L) });
-    g.DQ();
-    g.DP().Dz().c(ac.a.uwf, Long.valueOf(l3));
-    bz.bE(l1);
-    g.DQ();
-    g.DN().be(this.etR.hQq, this.etR.tvw);
-    g.DQ();
-    g.DN();
-    a.hv(this.etR.hQq);
-    if ((this.etR.sIl == null) || (this.etR.sIl.hPT == null) || (this.etR.sIl.hPT.size() <= 0))
+    ab.i("MicroMsg.SyncService", "[oneliang] client time is:%s,server time is:%s,diff time is:%s, diff second time is:%s,just save millisecond diff time", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l3 / 1000L) });
+    g.RM();
+    g.RL().Ru().set(ac.a.yGn, Long.valueOf(l3));
+    cb.gy(l1);
+    g.RM();
+    g.RJ().ci(this.fJE.jJS, this.fJE.xvH);
+    g.RM();
+    g.RJ();
+    a.jL(this.fJE.jJS);
+    if ((this.fJE.wFU == null) || (this.fJE.wFU.jJv == null) || (this.fJE.wFU.jJv.size() <= 0))
     {
-      y.w("MicroMsg.SyncService", "CmdProcHandler %s cmdlist is null.  synckey may be changed, I have to merge it.", new Object[] { this.etT });
-      o.a(paramBoolean, this.etR, this.etT);
-      this.etS.iU(0);
+      ab.w("MicroMsg.SyncService", "CmdProcHandler %s cmdlist is null.  synckey may be changed, I have to merge it.", new Object[] { this.fJG });
+      o.a(paramBoolean, this.fJE, this.fJG);
+      this.fJF.lM(0);
+      AppMethodBeat.o(58400);
       return;
     }
-    y.i("MicroMsg.SyncService", "CmdProcHandler %s Start docmd:%s respStatus:%s respOnlineVer:%s", new Object[] { this.etT, Integer.valueOf(this.etR.sIl.hPT.size()), Integer.valueOf(this.etR.hQq), Integer.valueOf(this.etR.tvw) });
-    this.etU.S(50L, 50L);
+    ab.i("MicroMsg.SyncService", "CmdProcHandler %s Start docmd:%s respStatus:%s respOnlineVer:%s", new Object[] { this.fJG, Integer.valueOf(this.fJE.wFU.jJv.size()), Integer.valueOf(this.fJE.jJS), Integer.valueOf(this.fJE.xvH) });
+    this.fJH.ag(50L, 50L);
+    AppMethodBeat.o(58400);
   }
 }
 

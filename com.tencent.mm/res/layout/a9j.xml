@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cpi" android:background="@color/dv" style="@style/p1"
+<RelativeLayout android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.conversation.ConversationWithAppBrandListView android:id="@id/cpj" android:background="@color/a23" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_alignParentTop="true" android:overScrollMode="always" />
-    <TextView android:id="@id/cpk" android:background="@color/a23" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cp7" android:singleLine="false" style="@style/kk" />
-    <com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopDragView android:id="@id/af" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/cmu" android:background="@color/a2y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/cmv" />
+    <ListView android:id="@id/cmv" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
+    <FrameLayout android:id="@id/cmw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="30.0dip" android:layout_marginTop="148.0dip" android:layout_marginRight="30.0dip">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_width="214.0dip" android:layout_height="wrap_content" android:src="@raw/ipcall_welcome" android:scaleType="fitCenter" android:adjustViewBounds="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ffb2b2b2" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/ciq" android:singleLine="false" android:lineSpacingExtra="7.0dip" />
+        </LinearLayout>
+    </FrameLayout>
+    <ImageButton android:id="@id/cmx" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bf" android:layout_marginBottom="@dimen/be" android:src="@drawable/ax" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
 </RelativeLayout>

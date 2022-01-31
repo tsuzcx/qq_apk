@@ -1,37 +1,47 @@
 package com.tencent.mm.lan_cs;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class Server
 {
-  public static a dOI;
+  public static a eMv;
   
   public static class C2Java
   {
     public static void onConnect(String paramString, int paramInt)
     {
-      if (Server.dOI != null) {
-        Server.dOI.onConnect(paramString, paramInt);
+      AppMethodBeat.i(114648);
+      if (Server.eMv != null) {
+        Server.eMv.onConnect(paramString, paramInt);
       }
+      AppMethodBeat.o(114648);
     }
     
     public static void onDisconnect(String paramString, int paramInt)
     {
-      if (Server.dOI != null) {
-        Server.dOI.EL();
+      AppMethodBeat.i(114649);
+      if (Server.eMv != null) {
+        Server.eMv.ST();
       }
+      AppMethodBeat.o(114649);
     }
     
     public static void onRecv(String paramString, int paramInt, byte[] paramArrayOfByte)
     {
-      if (Server.dOI != null) {
-        Server.dOI.onRecv(paramString, paramInt, paramArrayOfByte);
+      AppMethodBeat.i(114647);
+      if (Server.eMv != null) {
+        Server.eMv.onRecv(paramString, paramInt, paramArrayOfByte);
       }
+      AppMethodBeat.o(114647);
     }
     
     public static void onSend(String paramString, int paramInt1, int paramInt2)
     {
-      if (Server.dOI != null) {
-        Server.dOI.hC(paramInt2);
+      AppMethodBeat.i(114646);
+      if (Server.eMv != null) {
+        Server.eMv.jT(paramInt2);
       }
+      AppMethodBeat.o(114646);
     }
   }
   
@@ -46,9 +56,9 @@ public final class Server
   
   public static abstract interface a
   {
-    public abstract void EL();
+    public abstract void ST();
     
-    public abstract void hC(int paramInt);
+    public abstract void jT(int paramInt);
     
     public abstract void onConnect(String paramString, int paramInt);
     

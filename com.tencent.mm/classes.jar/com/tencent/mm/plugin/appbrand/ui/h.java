@@ -1,139 +1,60 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v4.view.q;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.y.a;
-import com.tencent.mm.ui.MMFragmentActivity.a;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.statusbar.b;
 
+@SuppressLint({"ViewConstructor"})
 public final class h
+  extends b
   implements r
 {
-  private static int a(AppBrandStatObject paramAppBrandStatObject)
+  private final Bitmap iOx;
+  
+  public h(Context paramContext, Bitmap paramBitmap)
   {
-    if (paramAppBrandStatObject == null) {
-      return 0;
-    }
-    return paramAppBrandStatObject.scene;
+    super(paramContext);
+    AppMethodBeat.i(143611);
+    this.iOx = paramBitmap;
+    rq(true);
+    setBackground(new BitmapDrawable(getResources(), paramBitmap));
+    paramContext = LayoutInflater.from(paramContext).inflate(2130968739, this, true);
+    ((TextView)paramContext.findViewById(2131820680)).setText(2131296709);
+    paramContext.findViewById(2131821405).setVisibility(8);
+    AppMethodBeat.o(143611);
   }
   
-  private static void a(i parami, int paramInt, Runnable paramRunnable)
+  public final void aHA()
   {
-    if (!q.al(parami.fyq))
-    {
-      parami.fyq.setWillNotDraw(true);
-      parami.fyq.post(new h.1(parami, paramInt, paramRunnable));
-      return;
-    }
-    Animation localAnimation = AnimationUtils.loadAnimation(parami.getContext(), paramInt);
-    localAnimation.setAnimationListener(new h.2(paramRunnable, parami));
-    parami.fyq.startAnimation(localAnimation);
+    AppMethodBeat.i(133092);
+    post(new h.1(this));
+    AppMethodBeat.o(133092);
   }
   
-  public final void a(Activity paramActivity, AppBrandStatObject paramAppBrandStatObject)
+  public final void aHB() {}
+  
+  public final void cD(String paramString1, String paramString2) {}
+  
+  public final View getView()
   {
-    int j = 1;
-    if ((paramActivity == null) || (paramActivity.getIntent() == null)) {
-      return;
-    }
-    if (a(paramAppBrandStatObject) == 1023) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      paramActivity.overridePendingTransition(y.a.appbrand_ui_push_open_enter, y.a.anim_not_change);
-      return;
-    }
-    if (1024 == a(paramAppBrandStatObject)) {
-      if (paramAppBrandStatObject == null)
-      {
-        i = 0;
-        if (6 != i) {
-          break label94;
-        }
-      }
-    }
-    label94:
-    for (i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label99;
-      }
-      paramActivity.overridePendingTransition(MMFragmentActivity.a.uOg, MMFragmentActivity.a.uOh);
-      return;
-      i = paramAppBrandStatObject.caB;
-      break;
-    }
-    label99:
-    Intent localIntent = paramActivity.getIntent();
-    if ((localIntent != null) && (localIntent.getBooleanExtra("key_appbrand_bring_ui_to_front_from_task_Base_by_task_top_ui", false))) {}
-    for (i = j; i != 0; i = 0)
-    {
-      paramActivity.overridePendingTransition(y.a.appbrand_ui_push_open_enter, y.a.anim_not_change);
-      return;
-    }
-    if (1090 == a(paramAppBrandStatObject))
-    {
-      paramActivity.overridePendingTransition(y.a.appbrand_ui_switch_enter, y.a.appbrand_ui_push_enter_exit);
-      return;
-    }
-    paramActivity.overridePendingTransition(y.a.appbrand_ui_push_open_enter, y.a.appbrand_ui_push_enter_exit);
+    return this;
   }
   
-  public final void a(i parami1, i parami2, Runnable paramRunnable)
+  protected final void onDetachedFromWindow()
   {
-    if (parami1 == null) {}
-    do
-    {
-      return;
-      if (!parami1.ZG()) {
-        break;
-      }
-      i = MMFragmentActivity.a.uOe;
-      a(parami1, i, null);
-    } while (parami2 == null);
-    if (parami1.ZG()) {}
-    for (int i = MMFragmentActivity.a.uOf;; i = y.a.anim_not_change)
-    {
-      a(parami2, i, paramRunnable);
-      return;
-      i = y.a.appbrand_ui_push_open_enter;
-      break;
-    }
+    AppMethodBeat.i(133093);
+    super.onDetachedFromWindow();
+    this.iOx.recycle();
+    AppMethodBeat.o(133093);
   }
   
-  public final void b(i parami1, i parami2, Runnable paramRunnable)
-  {
-    if (parami2 == null) {}
-    do
-    {
-      return;
-      if (!parami2.ZG()) {
-        break;
-      }
-      i = MMFragmentActivity.a.uOh;
-      a(parami2, i, paramRunnable);
-    } while (parami1 == null);
-    if (parami2.ZG()) {}
-    for (int i = MMFragmentActivity.a.uOg;; i = y.a.anim_not_change)
-    {
-      a(parami1, i, null);
-      return;
-      i = y.a.appbrand_ui_push_close_exit;
-      break;
-    }
-  }
-  
-  public final void h(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      return;
-    }
-    paramActivity.overridePendingTransition(y.a.appbrand_ui_push_close_enter, y.a.appbrand_ui_push_close_exit);
-  }
+  public final void setProgress(int paramInt) {}
 }
 
 

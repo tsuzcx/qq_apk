@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$fs
+final class c$fs
   extends c.g
 {
-  public c$fs()
+  c$fs()
   {
-    super("openWCPaySpecificView", "open_wcpay_specific_view", 76, true);
+    super("openLuckyMoneyHistory", "openLuckyMoneyHistory", 258, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.c.fs
  * JD-Core Version:    0.7.0.1
  */

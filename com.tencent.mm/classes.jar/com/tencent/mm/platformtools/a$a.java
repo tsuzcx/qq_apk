@@ -2,13 +2,14 @@ package com.tencent.mm.platformtools;
 
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g.a;
 import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bi;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bm;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -18,73 +19,93 @@ import java.util.List;
 final class a$a
   implements Runnable
 {
-  private static byte[] dMQ = new byte[0];
-  private static final ah eRg = new ah(Looper.getMainLooper())
-  {
-    public final void handleMessage(Message paramAnonymousMessage)
-    {
-      if (!com.tencent.mm.kernel.g.DK()) {
-        return;
-      }
-      g.a locala = new g.a();
-      int i = a.eQX.size();
-      boolean bool = Boolean.parseBoolean(paramAnonymousMessage.obj.toString());
-      paramAnonymousMessage = a.eQX.iterator();
-      while (paramAnonymousMessage.hasNext()) {
-        ((com.tencent.mm.plugin.account.a.a.b)paramAnonymousMessage.next()).bW(bool);
-      }
-      a.eQX.clear();
-      y.i("MicroMsg.AddrBookSyncHelper", "callBackHandler setSize:%d time:%d", new Object[] { Integer.valueOf(i), Long.valueOf(locala.zJ()) });
-    }
-  };
-  public static boolean ekO = false;
-  private List<String[]> eRb;
-  private List<String[]> eRc;
-  private List<com.tencent.mm.plugin.account.friend.a.a> eRd;
-  private List<com.tencent.mm.plugin.account.friend.a.a> eRe;
-  private bi eRf;
+  private static byte[] eKs;
+  public static boolean fBf;
+  private static final ak gjb;
+  private List<String[]> giW;
+  private List<String[]> giX;
+  private List<com.tencent.mm.plugin.account.friend.a.a> giY;
+  private List<com.tencent.mm.plugin.account.friend.a.a> giZ;
+  private bm gja;
   
-  private static void UJ()
+  static
   {
-    bi localbi = new bi("MicroMsg.AddrBookSyncHelper", "delete");
+    AppMethodBeat.i(124511);
+    fBf = false;
+    eKs = new byte[0];
+    gjb = new ak(Looper.getMainLooper())
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(124506);
+        if (!com.tencent.mm.kernel.g.RG())
+        {
+          AppMethodBeat.o(124506);
+          return;
+        }
+        g.a locala = new g.a();
+        int i = a.giS.size();
+        boolean bool = Boolean.parseBoolean(paramAnonymousMessage.obj.toString());
+        paramAnonymousMessage = a.giS.iterator();
+        while (paramAnonymousMessage.hasNext()) {
+          ((com.tencent.mm.plugin.account.a.a.b)paramAnonymousMessage.next()).cY(bool);
+        }
+        a.giS.clear();
+        ab.i("MicroMsg.AddrBookSyncHelper", "callBackHandler setSize:%d time:%d", new Object[] { Integer.valueOf(i), Long.valueOf(locala.Mm()) });
+        AppMethodBeat.o(124506);
+      }
+    };
+    AppMethodBeat.o(124511);
+  }
+  
+  private static void aoi()
+  {
+    AppMethodBeat.i(124509);
+    bm localbm = new bm("MicroMsg.AddrBookSyncHelper", "delete");
     ArrayList localArrayList = new ArrayList();
-    List localList = com.tencent.mm.pluginsdk.a.eI(ae.getContext());
-    Iterator localIterator = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).WG().iterator();
+    List localList = com.tencent.mm.pluginsdk.a.fI(ah.getContext());
+    Iterator localIterator = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).aqi().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String[])localIterator.next();
-      String str = bk.pm(localObject[0]);
-      localObject = bk.pm(localObject[1]);
+      String str = bo.nullAsNil(localObject[0]);
+      localObject = bo.nullAsNil(localObject[1]);
       if ((!str.equals("")) && (!localList.contains(str))) {
         localArrayList.add(localObject);
       }
     }
     if (localArrayList.size() > 0)
     {
-      ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).af(localArrayList);
-      l.ah(localArrayList);
+      ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).an(localArrayList);
+      l.ap(localArrayList);
     }
-    localbi.addSplit("end");
-    localbi.dumpToLog();
+    localbm.addSplit("end");
+    localbm.dumpToLog();
+    AppMethodBeat.o(124509);
   }
   
-  private static List<com.tencent.mm.plugin.account.friend.a.a> a(List<com.tencent.mm.plugin.account.friend.a.a> paramList, int paramInt1, int paramInt2)
+  private static List<com.tencent.mm.plugin.account.friend.a.a> b(List<com.tencent.mm.plugin.account.friend.a.a> paramList, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(124507);
     LinkedList localLinkedList = new LinkedList();
     while (paramInt1 < paramInt2)
     {
       localLinkedList.add(paramList.get(paramInt1));
       paramInt1 += 1;
     }
+    AppMethodBeat.o(124507);
     return localLinkedList;
   }
   
   private static List<com.tencent.mm.plugin.account.friend.a.a> c(int paramInt, List<String[]> paramList)
   {
+    AppMethodBeat.i(124510);
     if (paramList == null)
     {
-      y.e("MicroMsg.AddrBookSyncHelper", "sync address book failed, null info list");
-      return new LinkedList();
+      ab.e("MicroMsg.AddrBookSyncHelper", "sync address book failed, null info list");
+      paramList = new LinkedList();
+      AppMethodBeat.o(124510);
+      return paramList;
     }
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = paramList.iterator();
@@ -97,143 +118,145 @@ final class a$a
         String str1 = paramList[1];
         String str2 = paramList[2];
         Object localObject2 = paramList[3];
-        long l = bk.ZS(paramList[4]);
+        long l = bo.apW(paramList[4]);
         if ((str2 != null) && (!str2.equals("")))
         {
           paramList = "";
           if (paramInt == 1) {
-            paramList = com.tencent.mm.a.g.o(str2.getBytes());
+            paramList = com.tencent.mm.a.g.w(str2.getBytes());
           }
           if (paramInt == 0)
           {
-            paramList = com.tencent.mm.pluginsdk.a.qa(str2);
-            if (bk.bl(paramList)) {
-              y.d("MicroMsg.AddrBookSyncHelper", "formatted mobile null, continue");
+            paramList = com.tencent.mm.pluginsdk.a.xw(str2);
+            if (bo.isNullOrNil(paramList)) {
+              ab.d("MicroMsg.AddrBookSyncHelper", "formatted mobile null, continue");
             } else {
-              paramList = com.tencent.mm.a.g.o(paramList.getBytes());
+              paramList = com.tencent.mm.a.g.w(paramList.getBytes());
             }
           }
           else
           {
             com.tencent.mm.plugin.account.friend.a.a locala = new com.tencent.mm.plugin.account.friend.a.a();
-            locala.dBS = str1;
-            locala.feY = g.oZ(str1);
-            locala.feZ = g.oY(str1);
-            locala.feW = localObject1;
-            locala.ebN = localObject2;
-            locala.pG(paramList);
-            locala.ffz = l;
-            locala.fff = locala.AE();
+            locala.ezj = str1;
+            locala.gwG = g.wr(str1);
+            locala.gwH = g.wq(str1);
+            locala.gwE = localObject1;
+            locala.fsf = localObject2;
+            locala.wW(paramList);
+            locala.gxh = l;
+            locala.gwN = locala.Nu();
             if (paramInt == 1) {
-              locala.cCt = str2;
+              locala.dqF = str2;
             }
             if (paramInt == 0) {
-              locala.ffc = str2;
+              locala.gwK = str2;
             }
             locala.type = paramInt;
-            locala.bcw = 1095798;
+            locala.bsY = 1095798;
             localArrayList.add(locala);
           }
         }
       }
     }
+    AppMethodBeat.o(124510);
     return localArrayList;
   }
   
   public final void run()
   {
-    for (;;)
+    AppMethodBeat.i(124508);
+    synchronized (eKs)
     {
-      synchronized (dMQ)
+      this.gja = new bm("MicroMsg.AddrBookSyncHelper", "sync addrBook");
+      this.gja.addSplit("sync begin");
+      ab.d("MicroMsg.AddrBookSyncHelper", "reading email info");
+      this.giW = com.tencent.mm.pluginsdk.a.fH(ah.getContext());
+      if (this.giW != null) {
+        ab.i("MicroMsg.AddrBookSyncHelper", "sync address book email size: " + this.giW.size());
+      }
+      this.giZ = c(1, this.giW);
+      ab.d("MicroMsg.AddrBookSyncHelper", "reading mobile info");
+      this.giX = com.tencent.mm.pluginsdk.a.fG(ah.getContext());
+      if (this.giX != null) {
+        ab.i("MicroMsg.AddrBookSyncHelper", "sync address book mobile size: " + this.giX.size());
+      }
+      this.giY = c(0, this.giX);
+      ab.d("MicroMsg.AddrBookSyncHelper", "reading done, begin sync to addr_upload");
+      if ((this.giW != null) && (this.giZ.size() > 0))
       {
-        this.eRf = new bi("MicroMsg.AddrBookSyncHelper", "sync addrBook");
-        this.eRf.addSplit("sync begin");
-        y.d("MicroMsg.AddrBookSyncHelper", "reading email info");
-        this.eRb = com.tencent.mm.pluginsdk.a.eH(ae.getContext());
-        if (this.eRb != null) {
-          y.i("MicroMsg.AddrBookSyncHelper", "sync address book email size: " + this.eRb.size());
-        }
-        this.eRe = c(1, this.eRb);
-        y.d("MicroMsg.AddrBookSyncHelper", "reading mobile info");
-        this.eRc = com.tencent.mm.pluginsdk.a.eG(ae.getContext());
-        if (this.eRc != null) {
-          y.i("MicroMsg.AddrBookSyncHelper", "sync address book mobile size: " + this.eRc.size());
-        }
-        this.eRd = c(0, this.eRc);
-        y.d("MicroMsg.AddrBookSyncHelper", "reading done, begin sync to addr_upload");
-        if ((this.eRb != null) && (this.eRe.size() > 0))
+        i = 0;
+        if (i < this.giZ.size())
         {
-          i = 0;
-          if (i < this.eRe.size())
+          ab.i("MicroMsg.AddrBookSyncHelper", "sync email index: ".concat(String.valueOf(i)));
+          if (i + 100 < this.giZ.size()) {}
+          for (localObject1 = b(this.giZ, i, i + 100);; localObject1 = b((List)localObject1, i, ((List)localObject1).size()))
           {
-            y.i("MicroMsg.AddrBookSyncHelper", "sync email index: " + i);
-            if (i + 100 < this.eRe.size())
-            {
-              localObject1 = a(this.eRe, i, i + 100);
-              y.i("MicroMsg.AddrBookSyncHelper", "sync email listToSync size: " + ((List)localObject1).size());
-              l.ai((List)localObject1);
-              i += 100;
-              continue;
-            }
-            localObject1 = a(this.eRe, i, this.eRe.size());
-            continue;
+            ab.i("MicroMsg.AddrBookSyncHelper", "sync email listToSync size: " + ((List)localObject1).size());
+            l.aq((List)localObject1);
+            i += 100;
+            break;
+            localObject1 = this.giZ;
           }
         }
-        if ((this.eRd != null) && (this.eRd.size() != 0)) {
-          break label639;
-        }
-        y.i("MicroMsg.AddrBookSyncHelper", "mobile list null stop service");
-        Object localObject1 = eRg.obtainMessage();
-        ((Message)localObject1).obj = Boolean.valueOf(false);
-        eRg.sendMessage((Message)localObject1);
+      }
+      if ((this.giY == null) || (this.giY.size() == 0))
+      {
+        ab.i("MicroMsg.AddrBookSyncHelper", "mobile list null stop service");
+        localObject1 = gjb.obtainMessage();
+        ((Message)localObject1).obj = Boolean.FALSE;
+        gjb.sendMessage((Message)localObject1);
+        AppMethodBeat.o(124508);
         return;
-        if (i >= this.eRd.size()) {
-          break label541;
-        }
-        y.i("MicroMsg.AddrBookSyncHelper", "sync mobile index: " + i);
-        if (!com.tencent.mm.kernel.g.DK())
+      }
+      int i = 0;
+      if (i < this.giY.size())
+      {
+        ab.i("MicroMsg.AddrBookSyncHelper", "sync mobile index: ".concat(String.valueOf(i)));
+        if (!com.tencent.mm.kernel.g.RG())
         {
-          y.i("MicroMsg.AddrBookSyncHelper", "account not ready, stop sync");
-          localObject1 = eRg.obtainMessage();
-          ((Message)localObject1).obj = Boolean.valueOf(false);
-          eRg.sendMessage((Message)localObject1);
+          ab.i("MicroMsg.AddrBookSyncHelper", "account not ready, stop sync");
+          localObject1 = gjb.obtainMessage();
+          ((Message)localObject1).obj = Boolean.FALSE;
+          gjb.sendMessage((Message)localObject1);
+          AppMethodBeat.o(124508);
           return;
         }
+        if (i + 100 < this.giY.size()) {}
+        for (localObject1 = b(this.giY, i, i + 100);; localObject1 = b((List)localObject1, i, ((List)localObject1).size()))
+        {
+          ab.i("MicroMsg.AddrBookSyncHelper", "sync mobile listToSync size: " + ((List)localObject1).size());
+          l.aq((List)localObject1);
+          i += 100;
+          break;
+          localObject1 = this.giY;
+        }
       }
-      if (i + 100 < this.eRd.size()) {}
-      for (Object localObject3 = a(this.eRd, i, i + 100);; localObject3 = a(this.eRd, i, this.eRd.size()))
+      ab.i("MicroMsg.AddrBookSyncHelper", "sync ok");
+      if (!com.tencent.mm.kernel.g.RG())
       {
-        y.i("MicroMsg.AddrBookSyncHelper", "sync mobile listToSync size: " + ((List)localObject3).size());
-        l.ai((List)localObject3);
-        i += 100;
-        break;
-      }
-      label541:
-      y.i("MicroMsg.AddrBookSyncHelper", "sync ok");
-      if (!com.tencent.mm.kernel.g.DK())
-      {
-        y.i("MicroMsg.AddrBookSyncHelper", "account not ready, exit");
-        localObject3 = eRg.obtainMessage();
-        ((Message)localObject3).obj = Boolean.valueOf(false);
-        eRg.sendMessage((Message)localObject3);
+        ab.i("MicroMsg.AddrBookSyncHelper", "account not ready, exit");
+        localObject1 = gjb.obtainMessage();
+        ((Message)localObject1).obj = Boolean.FALSE;
+        gjb.sendMessage((Message)localObject1);
+        AppMethodBeat.o(124508);
         return;
       }
-      UJ();
+      aoi();
       System.currentTimeMillis();
-      this.eRf.addSplit("sync ok");
-      this.eRf.dumpToLog();
-      localObject3 = eRg.obtainMessage();
-      ((Message)localObject3).obj = Boolean.valueOf(true);
-      eRg.sendMessage((Message)localObject3);
+      l.aqv();
+      this.gja.addSplit("sync ok");
+      this.gja.dumpToLog();
+      Object localObject1 = gjb.obtainMessage();
+      ((Message)localObject1).obj = Boolean.TRUE;
+      gjb.sendMessage((Message)localObject1);
+      AppMethodBeat.o(124508);
       return;
-      label639:
-      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.a.a
  * JD-Core Version:    0.7.0.1
  */

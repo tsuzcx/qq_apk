@@ -1,142 +1,134 @@
 package com.tencent.mm.plugin.game.model;
 
-import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.d;
-import java.io.UnsupportedEncodingException;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader.a.d;
+import com.tencent.mm.pluginsdk.model.app.f;
+import com.tencent.mm.pluginsdk.model.app.i;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.vfs.e;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class b
 {
-  private static String TAG = "MicroMsg.GameABTestStrategy";
+  LinkedList<String> nlR;
+  LinkedList<f> nlS;
   
-  private static void a(com.tencent.mm.storage.c paramc, int paramInt1, String paramString, int paramInt2)
+  public b()
   {
-    if (paramc == null)
+    AppMethodBeat.i(111189);
+    this.nlS = new LinkedList();
+    this.nlR = new LinkedList();
+    AppMethodBeat.o(111189);
+  }
+  
+  private void bFP()
+  {
+    AppMethodBeat.i(111192);
+    Object localObject1 = new ArrayList();
+    Object localObject2 = ((d)com.tencent.mm.kernel.g.E(d.class)).YG().rawQuery("select * from FileDownloadInfo where status=3", new String[0]);
+    if (localObject2 == null) {}
+    while (!((List)localObject1).isEmpty())
     {
-      y.i(TAG, "ABTestItem is null");
+      localObject1 = ((List)localObject1).iterator();
+      Object localObject3;
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        if ((!bo.isNullOrNil((String)localObject2)) && (!this.nlR.contains(localObject2)))
+        {
+          localObject3 = com.tencent.mm.pluginsdk.model.app.g.ca((String)localObject2, false);
+          if ((localObject3 != null) && (!this.nlS.contains(localObject3)))
+          {
+            this.nlS.add(localObject3);
+            this.nlR.add(localObject2);
+          }
+        }
+      }
+      while (((Cursor)localObject2).moveToNext())
+      {
+        localObject3 = new com.tencent.mm.plugin.downloader.g.a();
+        ((com.tencent.mm.plugin.downloader.g.a)localObject3).convertFrom((Cursor)localObject2);
+        if ((!bo.isNullOrNil(((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId)) && (((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId.startsWith("wx")) && (((com.tencent.mm.plugin.downloader.g.a)localObject3).field_status == 3) && (e.cN(((com.tencent.mm.plugin.downloader.g.a)localObject3).field_filePath)) && (!((List)localObject1).contains(((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId))) {
+          ((List)localObject1).add(((com.tencent.mm.plugin.downloader.g.a)localObject3).field_appId);
+        }
+      }
+      ((Cursor)localObject2).close();
+    }
+    AppMethodBeat.o(111192);
+  }
+  
+  private void ea(Context paramContext)
+  {
+    AppMethodBeat.i(111191);
+    Cursor localCursor = com.tencent.mm.plugin.s.a.cac().dlD();
+    if (localCursor == null)
+    {
+      ab.e("MicroMsg.GameAppCacheService", "getInstalledGame faild: curosr is null");
+      AppMethodBeat.o(111191);
       return;
     }
-    str = "";
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      if (!bk.bl(paramString)) {
-        localJSONObject.put("url", paramString);
-      }
-      localJSONObject.put("jumpType", paramInt2);
-      paramString = q.encode(localJSONObject.toString(), "UTF-8");
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      for (;;)
+    if (localCursor.moveToFirst()) {
+      do
       {
-        paramString = str;
+        f localf = new f();
+        localf.convertFrom(localCursor);
+        if ((com.tencent.mm.pluginsdk.model.app.g.a(paramContext, localf)) && (!this.nlR.contains(localf.field_appId)))
+        {
+          ab.i("MicroMsg.GameAppCacheService", "installed game:[%s][%s]", new Object[] { localf.field_appName, localf.field_appId });
+          this.nlS.add(localf);
+          this.nlR.add(localf.field_appId);
+        }
+      } while (localCursor.moveToNext());
+    }
+    localCursor.close();
+    AppMethodBeat.o(111191);
+  }
+  
+  public final void clearCache()
+  {
+    AppMethodBeat.i(111193);
+    ab.i("MicroMsg.GameAppCacheService", "clear cached apppinfos");
+    if (this.nlS != null) {
+      this.nlS.clear();
+    }
+    if (this.nlR != null) {
+      this.nlR.clear();
+    }
+    AppMethodBeat.o(111193);
+  }
+  
+  public final void init(Context paramContext)
+  {
+    AppMethodBeat.i(111190);
+    if (this.nlS == null)
+    {
+      this.nlS = new LinkedList();
+      if (this.nlR != null) {
+        break label122;
       }
+      this.nlR = new LinkedList();
     }
-    catch (JSONException paramString)
+    for (;;)
     {
-      for (;;)
-      {
-        paramString = str;
-      }
+      long l1 = System.currentTimeMillis();
+      ea(paramContext);
+      long l2 = System.currentTimeMillis();
+      bFP();
+      long l3 = System.currentTimeMillis();
+      ab.i("MicroMsg.GameAppCacheService", "Init time: %d, %d, %d", new Object[] { Long.valueOf(l2 - l1), Long.valueOf(l3 - l2), Long.valueOf(l3 - l1) });
+      AppMethodBeat.o(111190);
+      return;
+      this.nlS.clear();
+      break;
+      label122:
+      this.nlR.clear();
     }
-    y.i(TAG, "reportABTest : " + paramc.field_layerId + " , " + paramc.field_business + " , " + paramc.field_expId + " , " + paramc.field_sequence + " , " + paramc.field_prioritylevel + " , " + paramc.field_startTime + " , " + paramc.field_endTime + " , " + paramInt1 + " , " + paramString);
-    h.nFQ.f(14841, new Object[] { paramc.field_layerId, paramc.field_business, paramc.field_expId, Long.valueOf(paramc.field_sequence), Integer.valueOf(paramc.field_prioritylevel), Long.valueOf(paramc.field_startTime), Long.valueOf(paramc.field_endTime), Integer.valueOf(paramInt1), paramString });
-  }
-  
-  public static b.a aYO()
-  {
-    b.a locala = new b.a();
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.IX().fJ("100003");
-    if (!localc.isValid())
-    {
-      y.e(TAG, "getLibraryABTestInfo is timeout,startTime: %d, endTime: %d", new Object[] { Long.valueOf(localc.field_startTime), Long.valueOf(localc.field_endTime) });
-      return locala;
-    }
-    y.i(TAG, "getLibraryABTestInfo success, layerId = %s", new Object[] { localc.field_layerId });
-    Object localObject = localc.ctr();
-    locala.bcw = bk.getInt((String)((Map)localObject).get("game_library_jump"), 0);
-    String str = (String)((Map)localObject).get("game_library_url");
-    localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    locala.url = ((String)localObject);
-    a(localc, 1005, locala.url, locala.bcw);
-    return locala;
-  }
-  
-  public static b.a aYP()
-  {
-    b.a locala = new b.a();
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.IX().fJ("100022");
-    if (!localc.isValid()) {
-      return locala;
-    }
-    Object localObject = localc.ctr();
-    locala.bcw = bk.getInt((String)((Map)localObject).get("game_message_jump"), 0);
-    String str = (String)((Map)localObject).get("game_message_url");
-    localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    locala.url = ((String)localObject);
-    a(localc, 1001, locala.url, locala.bcw);
-    return locala;
-  }
-  
-  public static b.a bH(String paramString, int paramInt)
-  {
-    b.a locala = new b.a();
-    if (bk.bl(paramString))
-    {
-      y.e(TAG, "appid is null");
-      return locala;
-    }
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.IX().fJ("100002");
-    if (!localc.isValid())
-    {
-      y.e(TAG, "getDetailABTestInfo is timeout,startTime: %d, endTime: %d", new Object[] { Long.valueOf(localc.field_startTime), Long.valueOf(localc.field_endTime) });
-      return locala;
-    }
-    y.i(TAG, "getDetailABTestInfo success, layerId = %s", new Object[] { localc.field_layerId });
-    Object localObject = localc.ctr();
-    locala.bcw = bk.getInt((String)((Map)localObject).get("game_detail_jump"), 0);
-    localObject = (String)((Map)localObject).get("game_detail_url");
-    if (localObject == null) {}
-    for (paramString = "";; paramString = (String)localObject + paramString)
-    {
-      locala.url = paramString;
-      a(localc, paramInt, locala.url, locala.bcw);
-      return locala;
-    }
-  }
-  
-  public static b.a sd(int paramInt)
-  {
-    b.a locala = new b.a();
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.IX().fJ("100001");
-    if (!localc.isValid())
-    {
-      y.e(TAG, "getIndexABTestInfo is timeout,startTime: %d, endTime: %d", new Object[] { Long.valueOf(localc.field_startTime), Long.valueOf(localc.field_endTime) });
-      return locala;
-    }
-    Object localObject = localc.ctr();
-    locala.bcw = bk.getInt((String)((Map)localObject).get("game_homepage_jump"), 0);
-    String str = (String)((Map)localObject).get("game_homepage_url");
-    localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    locala.url = ((String)localObject);
-    a(localc, paramInt, locala.url, locala.bcw);
-    y.i(TAG, "getIndexABTestInfo success, layerId = %s, expId = %s, flag = %d, url = %s", new Object[] { localc.field_layerId, localc.field_expId, Integer.valueOf(locala.bcw), locala.url });
-    return locala;
   }
 }
 

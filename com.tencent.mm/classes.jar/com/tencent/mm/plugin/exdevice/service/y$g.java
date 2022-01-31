@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.exdevice.service;
 
 final class y$g
 {
-  String gnO;
-  int goh;
-  String hXy;
-  boolean jzH;
-  byte[] jzI;
+  int hIe;
+  String jRr;
+  boolean lJg;
+  byte[] lJh;
+  String mDeviceName;
 }
 
 

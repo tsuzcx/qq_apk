@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.aa.ui;
 
 import android.view.MenuItem;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.n.d;
 
 final class AAQueryListUI$4$2
@@ -12,31 +12,41 @@ final class AAQueryListUI$4$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(40732);
     switch (paramMenuItem.getItemId())
     {
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-        y.i("MicroMsg.AAQueryListUI", "go to launch list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(this.eXH.eXG)) });
-      } while (AAQueryListUI.e(this.eXH.eXG) == 1);
-      AAQueryListUI.a(this.eXH.eXG, 1);
-      this.eXH.eXG.setMMTitle(a.i.aa_record_list_launch_title);
-      AAQueryListUI.f(this.eXH.eXG).mode = AAQueryListUI.e(this.eXH.eXG);
-      AAQueryListUI.f(this.eXH.eXG).Vy();
-      AAQueryListUI.f(this.eXH.eXG).notifyDataSetChanged();
-      AAQueryListUI.a(this.eXH.eXG, true, AAQueryListUI.e(this.eXH.eXG));
+      AppMethodBeat.o(40732);
       return;
-      y.i("MicroMsg.AAQueryListUI", "go to pay query list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(this.eXH.eXG)) });
-    } while (AAQueryListUI.e(this.eXH.eXG) == 2);
-    this.eXH.eXG.setMMTitle(a.i.aa_record_list_pay_title);
-    AAQueryListUI.f(this.eXH.eXG).mode = AAQueryListUI.e(this.eXH.eXG);
-    AAQueryListUI.f(this.eXH.eXG).Vy();
-    AAQueryListUI.f(this.eXH.eXG).notifyDataSetChanged();
-    AAQueryListUI.a(this.eXH.eXG, 2);
-    AAQueryListUI.a(this.eXH.eXG, true, AAQueryListUI.e(this.eXH.eXG));
+      ab.i("MicroMsg.AAQueryListUI", "go to launch list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(this.gpE.gpD)) });
+      if (AAQueryListUI.e(this.gpE.gpD) == 1)
+      {
+        AppMethodBeat.o(40732);
+        return;
+      }
+      AAQueryListUI.a(this.gpE.gpD, 1);
+      this.gpE.gpD.setMMTitle(2131296378);
+      AAQueryListUI.f(this.gpE.gpD).mode = AAQueryListUI.e(this.gpE.gpD);
+      AAQueryListUI.f(this.gpE.gpD).aoX();
+      AAQueryListUI.f(this.gpE.gpD).notifyDataSetChanged();
+      AAQueryListUI.a(this.gpE.gpD, true, AAQueryListUI.e(this.gpE.gpD));
+      AppMethodBeat.o(40732);
+      return;
+      ab.i("MicroMsg.AAQueryListUI", "go to pay query list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(this.gpE.gpD)) });
+      if (AAQueryListUI.e(this.gpE.gpD) == 2)
+      {
+        AppMethodBeat.o(40732);
+        return;
+      }
+      this.gpE.gpD.setMMTitle(2131296381);
+      AAQueryListUI.f(this.gpE.gpD).mode = AAQueryListUI.e(this.gpE.gpD);
+      AAQueryListUI.f(this.gpE.gpD).aoX();
+      AAQueryListUI.f(this.gpE.gpD).notifyDataSetChanged();
+      AAQueryListUI.a(this.gpE.gpD, 2);
+      AAQueryListUI.a(this.gpE.gpD, true, AAQueryListUI.e(this.gpE.gpD));
+    }
   }
 }
 

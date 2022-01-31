@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.card.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -16,297 +17,359 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
-import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.d.a.a;
 import com.tencent.mm.plugin.card.model.CardGiftInfo;
 import com.tencent.mm.pluginsdk.ui.tools.VideoTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.pluginsdk.ui.tools.f.a;
-import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.ui.tools.e.a;
+import com.tencent.mm.pluginsdk.ui.tools.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.mm.ui.tools.l;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 @com.tencent.mm.ui.base.a(3)
 public class CardGiftVideoUI
   extends MMActivity
-  implements a.a, f.a
+  implements a.a, e.a
 {
-  private j contextMenuHelper;
-  private boolean dnJ;
-  int duration = 0;
-  private com.tencent.mm.ui.tools.e itA;
-  private int itB = 0;
-  private int itC = 0;
-  private int itD = 0;
-  private int itE = 0;
-  private CardGiftInfo its;
-  private ImageView itt;
-  private ProgressBar itw;
-  private ah itx = new ah(Looper.getMainLooper());
-  private Bundle ity;
-  private boolean itz = false;
-  private RelativeLayout iuB;
-  private f iuC;
-  private RelativeLayout iuD;
-  private ImageView iuE;
-  TextView iuF;
-  private MMPinProgressBtn iuG;
-  private TextView iuH;
-  private am iuI = new am(new CardGiftVideoUI.10(this), true);
+  private l contextMenuHelper;
+  int duration;
+  private boolean efg;
+  private boolean isAnimated;
+  private com.tencent.mm.ui.tools.e kip;
+  private ImageView kuA;
+  private ProgressBar kuD;
+  private ak kuE;
+  private Bundle kuF;
+  private int kuG;
+  private int kuH;
+  private int kuI;
+  private int kuJ;
+  private CardGiftInfo kuz;
+  private RelativeLayout kvF;
+  private com.tencent.mm.pluginsdk.ui.tools.e kvG;
+  private RelativeLayout kvH;
+  private ImageView kvI;
+  TextView kvJ;
+  private MMPinProgressBtn kvK;
+  private TextView kvL;
+  private ap kvM;
   private String videoPath;
   
-  private void aBT()
+  public CardGiftVideoUI()
   {
-    if (this.contextMenuHelper == null) {
-      this.contextMenuHelper = new j(this.mController.uMN);
-    }
-    if (bk.bl(this.videoPath))
+    AppMethodBeat.i(88461);
+    this.kuE = new ak(Looper.getMainLooper());
+    this.isAnimated = false;
+    this.kuG = 0;
+    this.kuH = 0;
+    this.kuI = 0;
+    this.kuJ = 0;
+    this.kvM = new ap(new CardGiftVideoUI.10(this), true);
+    this.duration = 0;
+    AppMethodBeat.o(88461);
+  }
+  
+  private void Ih(String paramString)
+  {
+    AppMethodBeat.i(88463);
+    if (bo.isNullOrNil(paramString))
     {
-      y.e("MicroMsg.CardGiftVideoUI", "videoPath is null");
+      ab.e("MicroMsg.CardGiftVideoUI", "the videoPath is null, fail~!!!");
+      setResult(0);
+      finish();
+      AppMethodBeat.o(88463);
       return;
     }
-    this.contextMenuHelper.a((VideoTextureView)this.iuC, new CardGiftVideoUI.1(this), new n.d()
+    if (!com.tencent.mm.vfs.e.cN(paramString))
+    {
+      ab.e("MicroMsg.CardGiftVideoUI", "the videoPath is %s, the file isn't exist~!!!", new Object[] { paramString });
+      setResult(0);
+      finish();
+      AppMethodBeat.o(88463);
+      return;
+    }
+    this.kvG.setVideoPath(paramString);
+    AppMethodBeat.o(88463);
+  }
+  
+  private void bec()
+  {
+    AppMethodBeat.i(88464);
+    if (this.contextMenuHelper == null) {
+      this.contextMenuHelper = new l(getContext());
+    }
+    if (bo.isNullOrNil(this.videoPath))
+    {
+      ab.e("MicroMsg.CardGiftVideoUI", "videoPath is null");
+      AppMethodBeat.o(88464);
+      return;
+    }
+    this.contextMenuHelper.a((VideoTextureView)this.kvG, new CardGiftVideoUI.1(this), new n.d()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
+        AppMethodBeat.i(88452);
         switch (paramAnonymousMenuItem.getItemId())
         {
-        default: 
-          return;
         }
-        paramAnonymousMenuItem = u.of(CardGiftVideoUI.a(CardGiftVideoUI.this));
-        if (bk.bl(paramAnonymousMenuItem))
+        for (;;)
         {
-          Toast.makeText(CardGiftVideoUI.this, CardGiftVideoUI.this.getString(a.g.video_file_save_failed), 1).show();
+          AppMethodBeat.o(88452);
           return;
+          paramAnonymousMenuItem = u.vs(CardGiftVideoUI.a(CardGiftVideoUI.this));
+          if (bo.isNullOrNil(paramAnonymousMenuItem))
+          {
+            Toast.makeText(CardGiftVideoUI.this, CardGiftVideoUI.this.getString(2131304521), 1).show();
+            AppMethodBeat.o(88452);
+            return;
+          }
+          Toast.makeText(CardGiftVideoUI.this, CardGiftVideoUI.this.getString(2131304522, new Object[] { paramAnonymousMenuItem }), 1).show();
+          n.a(paramAnonymousMenuItem, CardGiftVideoUI.this);
         }
-        Toast.makeText(CardGiftVideoUI.this, CardGiftVideoUI.this.getString(a.g.video_file_saved, new Object[] { paramAnonymousMenuItem }), 1).show();
-        l.a(paramAnonymousMenuItem, CardGiftVideoUI.this);
       }
     });
+    AppMethodBeat.o(88464);
   }
   
-  private void yF(String paramString)
+  public final void Es()
   {
-    if (bk.bl(paramString))
-    {
-      y.e("MicroMsg.CardGiftVideoUI", "the videoPath is null, fail~!!!");
-      setResult(0);
-      finish();
-      return;
-    }
-    if (!com.tencent.mm.vfs.e.bK(paramString))
-    {
-      y.e("MicroMsg.CardGiftVideoUI", "the videoPath is %s, the file isn't exist~!!!", new Object[] { paramString });
-      setResult(0);
-      finish();
-      return;
-    }
-    this.iuC.setVideoPath(paramString);
+    AppMethodBeat.i(88474);
+    ab.i("MicroMsg.CardGiftVideoUI", "%d on completion", new Object[] { Integer.valueOf(hashCode()) });
+    this.kvG.A(0.0D);
+    AppMethodBeat.o(88474);
   }
   
-  public final void aBR()
+  public final void Ig(String paramString) {}
+  
+  public final void bO(String paramString, int paramInt)
   {
-    this.itA.E(this.itC, this.itB, this.itD, this.itE);
-    this.itA.a(this.iuB, this.itt, new CardGiftVideoUI.9(this), null);
-  }
-  
-  public final void bm(String paramString, int paramInt)
-  {
-    if (paramString.equals(this.its.ilH)) {
-      this.itx.post(new CardGiftVideoUI.2(this, paramInt));
+    AppMethodBeat.i(88475);
+    if (paramString.equals(this.kuz.kmE)) {
+      this.kuE.post(new CardGiftVideoUI.2(this, paramInt));
     }
+    AppMethodBeat.o(88475);
   }
   
-  public final int cv(int paramInt1, int paramInt2)
+  public final void bdV()
+  {
+    AppMethodBeat.i(88471);
+    this.kip.L(this.kuH, this.kuG, this.kuI, this.kuJ);
+    this.kip.a(this.kvF, this.kuA, new CardGiftVideoUI.9(this), null);
+    AppMethodBeat.o(88471);
+  }
+  
+  public final int dP(int paramInt1, int paramInt2)
   {
     return 0;
   }
   
-  public final void cw(int paramInt1, int paramInt2) {}
-  
-  public final void cx(String paramString1, String paramString2)
-  {
-    if (paramString1.equals(this.its.ilH))
-    {
-      this.itx.post(new CardGiftVideoUI.3(this, paramString2));
-      return;
-    }
-    if (paramString1.equals(this.its.ilI))
-    {
-      this.itx.post(new CardGiftVideoUI.4(this, paramString2));
-      return;
-    }
-    y.i("MicroMsg.CardGiftVideoUI", "fieldId:%s is unsuitable", new Object[] { paramString1 });
-  }
+  public final void dQ(int paramInt1, int paramInt2) {}
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(88470);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      y.d("MicroMsg.CardGiftVideoUI", "dispatchKeyEvent");
-      aBR();
+      ab.d("MicroMsg.CardGiftVideoUI", "dispatchKeyEvent");
+      bdV();
+      AppMethodBeat.o(88470);
       return true;
     }
-    return super.dispatchKeyEvent(paramKeyEvent);
+    boolean bool = super.dispatchKeyEvent(paramKeyEvent);
+    AppMethodBeat.o(88470);
+    return bool;
   }
   
-  public final void fail(String paramString) {}
-  
-  protected final int getLayoutId()
+  public final void du(String paramString1, String paramString2)
   {
-    return a.e.card_gift_video_ui;
+    AppMethodBeat.i(88476);
+    if (paramString1.equals(this.kuz.kmE))
+    {
+      this.kuE.post(new CardGiftVideoUI.3(this, paramString2));
+      AppMethodBeat.o(88476);
+      return;
+    }
+    if (paramString1.equals(this.kuz.kmF))
+    {
+      this.kuE.post(new CardGiftVideoUI.4(this, paramString2));
+      AppMethodBeat.o(88476);
+      return;
+    }
+    ab.i("MicroMsg.CardGiftVideoUI", "fieldId:%s is unsuitable", new Object[] { paramString1 });
+    AppMethodBeat.o(88476);
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
-    this.iuB = ((RelativeLayout)findViewById(a.d.video_ui_root));
-    this.iuD = ((RelativeLayout)findViewById(a.d.video_root));
-    this.iuE = ((ImageView)findViewById(a.d.video_thumb));
-    this.iuF = ((TextView)findViewById(a.d.video_duration));
-    this.iuG = ((MMPinProgressBtn)findViewById(a.d.video_progress));
-    this.itw = ((ProgressBar)findViewById(a.d.video_loading));
-    this.iuH = ((TextView)findViewById(a.d.video_tips));
-    this.iuC = new VideoTextureView(this);
+    return 2130968942;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(88465);
+    this.kvF = ((RelativeLayout)findViewById(2131822188));
+    this.kvH = ((RelativeLayout)findViewById(2131822190));
+    this.kvI = ((ImageView)findViewById(2131822189));
+    this.kvJ = ((TextView)findViewById(2131822191));
+    this.kvK = ((MMPinProgressBtn)findViewById(2131822192));
+    this.kuD = ((ProgressBar)findViewById(2131821842));
+    this.kvL = ((TextView)findViewById(2131822194));
+    this.kvG = new VideoTextureView(this);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(13);
-    this.iuC.setMute(this.dnJ);
-    this.iuC.setVideoCallback(this);
-    this.iuD.addView((View)this.iuC, localLayoutParams);
-    this.itt = ((ImageView)findViewById(a.d.gallery_bg));
-    this.itt.setLayerType(2, null);
-    this.iuB.setOnTouchListener(new CardGiftVideoUI.6(this));
-    ((View)this.iuC).setOnClickListener(new View.OnClickListener()
+    this.kvG.setMute(this.efg);
+    this.kvG.setVideoCallback(this);
+    this.kvH.addView((View)this.kvG, localLayoutParams);
+    this.kuA = ((ImageView)findViewById(2131822135));
+    this.kuA.setLayerType(2, null);
+    this.kvF.setOnTouchListener(new CardGiftVideoUI.6(this));
+    ((View)this.kvG).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        CardGiftVideoUI.this.aBR();
+        AppMethodBeat.i(88454);
+        CardGiftVideoUI.this.bdV();
+        AppMethodBeat.o(88454);
       }
     });
-    this.itA = new com.tencent.mm.ui.tools.e(this);
+    this.kip = new com.tencent.mm.ui.tools.e(this);
+    AppMethodBeat.o(88465);
   }
   
-  public final void kA()
+  public final void mG()
   {
+    AppMethodBeat.i(88473);
     setResult(-1);
-    this.itx.post(new CardGiftVideoUI.11(this));
-    this.itx.post(new CardGiftVideoUI.12(this));
-    this.iuC.start();
-    this.duration = (this.iuC.getDuration() / 1000);
-    this.iuI.S(500L, 500L);
-    y.i("MicroMsg.CardGiftVideoUI", "onPrepared videoView.start duration:%d", new Object[] { Integer.valueOf(this.duration) });
+    this.kuE.post(new CardGiftVideoUI.11(this));
+    this.kuE.post(new CardGiftVideoUI.12(this));
+    this.kvG.start();
+    this.duration = (this.kvG.getDuration() / 1000);
+    this.kvM.ag(500L, 500L);
+    ab.i("MicroMsg.CardGiftVideoUI", "onPrepared videoView.start duration:%d", new Object[] { Integer.valueOf(this.duration) });
+    AppMethodBeat.o(88473);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(88462);
     if (getIntent().getExtras() != null) {
       getIntent().getExtras().setClassLoader(getClass().getClassLoader());
     }
     super.onCreate(paramBundle);
-    this.mController.hideTitleView();
-    this.ity = paramBundle;
+    hideTitleView();
+    this.kuF = paramBundle;
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setFlags(1024, 1024);
     }
-    if (com.tencent.mm.booter.a.vR() != null) {
-      com.tencent.mm.booter.a.vR().vT();
+    if (com.tencent.mm.booter.a.Ia() != null) {
+      com.tencent.mm.booter.a.Ia().Ic();
     }
-    this.its = ((CardGiftInfo)getIntent().getParcelableExtra("key_gift_into"));
+    this.kuz = ((CardGiftInfo)getIntent().getParcelableExtra("key_gift_into"));
     this.videoPath = getIntent().getStringExtra("key_video_path");
-    this.dnJ = getIntent().getBooleanExtra("key_is_mute", false);
-    if (this.its == null) {}
-    for (paramBundle = "null";; paramBundle = this.its.toString())
+    this.efg = getIntent().getBooleanExtra("key_is_mute", false);
+    if (this.kuz == null) {}
+    for (paramBundle = "null";; paramBundle = this.kuz.toString())
     {
-      y.d("MicroMsg.CardGiftVideoUI", "cardGiftInfo %s", new Object[] { paramBundle });
-      y.d("MicroMsg.CardGiftVideoUI", "videoPath:%s, isMute:%b", new Object[] { this.videoPath, Boolean.valueOf(this.dnJ) });
+      ab.d("MicroMsg.CardGiftVideoUI", "cardGiftInfo %s", new Object[] { paramBundle });
+      ab.d("MicroMsg.CardGiftVideoUI", "videoPath:%s, isMute:%b", new Object[] { this.videoPath, Boolean.valueOf(this.efg) });
       initView();
       com.tencent.mm.plugin.card.d.a.a(this);
-      aBT();
-      if (this.its != null) {
+      bec();
+      if (this.kuz != null) {
         break;
       }
-      y.e("MicroMsg.CardGiftVideoUI", "cardGiftInfo is null");
+      ab.e("MicroMsg.CardGiftVideoUI", "cardGiftInfo is null");
+      AppMethodBeat.o(88462);
       return;
     }
-    if (!bk.bl(this.its.ilH))
+    if (!bo.isNullOrNil(this.kuz.kmE))
     {
-      com.tencent.mm.plugin.card.d.a.g(this.its.ilI, this.its.ilL, this.its.ilU, 2);
-      com.tencent.mm.plugin.card.d.a.g(this.its.ilH, this.its.ilK, this.its.ilT, 1);
+      com.tencent.mm.plugin.card.d.a.h(this.kuz.kmF, this.kuz.kmI, this.kuz.kmR, 2);
+      com.tencent.mm.plugin.card.d.a.h(this.kuz.kmE, this.kuz.kmH, this.kuz.kmQ, 1);
+      AppMethodBeat.o(88462);
       return;
     }
-    y.e("MicroMsg.CardGiftVideoUI", "fromUserContentVideoUrl is null");
+    ab.e("MicroMsg.CardGiftVideoUI", "fromUserContentVideoUrl is null");
+    AppMethodBeat.o(88462);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    this.iuC.stop();
-    this.iuI.stopTimer();
+    AppMethodBeat.i(88469);
+    this.kvG.stop();
+    this.kvM.stopTimer();
     com.tencent.mm.plugin.card.d.a.b(this);
     super.onDestroy();
+    AppMethodBeat.o(88469);
   }
   
   public final void onError(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(88472);
     setResult(0);
-    this.iuC.stop();
-    y.e("MicroMsg.CardGiftVideoUI", "%d on play video error what %d extra %d.", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.kvG.stop();
+    ab.e("MicroMsg.CardGiftVideoUI", "%d on play video error what %d extra %d.", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(88472);
   }
   
-  protected void onPause()
+  public void onPause()
   {
-    this.iuC.pause();
+    AppMethodBeat.i(88468);
+    this.kvG.pause();
     super.onPause();
+    AppMethodBeat.o(88468);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    if (!bk.bl(this.videoPath)) {
-      yF(this.videoPath);
+    AppMethodBeat.i(88467);
+    if (!bo.isNullOrNil(this.videoPath)) {
+      Ih(this.videoPath);
     }
     super.onResume();
+    AppMethodBeat.o(88467);
   }
   
   public void onStart()
   {
-    Bundle localBundle = this.ity;
-    if (!this.itz)
+    AppMethodBeat.i(88466);
+    Bundle localBundle = this.kuF;
+    if (!this.isAnimated)
     {
-      this.itz = true;
+      this.isAnimated = true;
       if (Build.VERSION.SDK_INT >= 12) {
-        break label51;
+        break label63;
       }
-      y.e("MicroMsg.CardGiftVideoUI", "version is %d, no animation", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      ab.e("MicroMsg.CardGiftVideoUI", "version is %d, no animation", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
     }
     for (;;)
     {
       super.onStart();
+      AppMethodBeat.o(88466);
       return;
-      label51:
-      this.itB = getIntent().getIntExtra("img_top", 0);
-      this.itC = getIntent().getIntExtra("img_left", 0);
-      this.itD = getIntent().getIntExtra("img_width", 0);
-      this.itE = getIntent().getIntExtra("img_height", 0);
-      this.itA.E(this.itC, this.itB, this.itD, this.itE);
+      label63:
+      this.kuG = getIntent().getIntExtra("img_top", 0);
+      this.kuH = getIntent().getIntExtra("img_left", 0);
+      this.kuI = getIntent().getIntExtra("img_width", 0);
+      this.kuJ = getIntent().getIntExtra("img_height", 0);
+      this.kip.L(this.kuH, this.kuG, this.kuI, this.kuJ);
       if (localBundle == null) {
-        this.iuB.getViewTreeObserver().addOnPreDrawListener(new CardGiftVideoUI.8(this));
+        this.kvF.getViewTreeObserver().addOnPreDrawListener(new CardGiftVideoUI.8(this));
       }
     }
   }
   
-  public final void ug()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    y.i("MicroMsg.CardGiftVideoUI", "%d on completion", new Object[] { Integer.valueOf(hashCode()) });
-    this.iuC.x(0.0D);
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

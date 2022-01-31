@@ -3,6 +3,7 @@ package com.tencent.soter.core.biometric;
 import android.content.Context;
 import android.os.CancellationSignal;
 import android.os.Handler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.core.c.d;
 
 class BiometricManagerCompat$FaceidManagerImpl
@@ -12,89 +13,139 @@ class BiometricManagerCompat$FaceidManagerImpl
   
   private static void informTooManyTrial(FaceidManagerProxy.AuthenticationCallback paramAuthenticationCallback)
   {
+    AppMethodBeat.i(72907);
     d.w("Soter.BiometricManagerCompat.Faceid", "soter: too many fail callback. inform it.", new Object[0]);
     paramAuthenticationCallback.onAuthenticationError(10308, "Too many failed times");
+    AppMethodBeat.o(72907);
   }
   
   private static boolean shouldInformTooManyTrial(FaceidManagerProxy.AuthenticationCallback paramAuthenticationCallback, Context paramContext)
   {
-    if (SoterBiometricAntiBruteForceStrategy.isSystemHasAntiBruteForce()) {
-      d.v("Soter.BiometricManagerCompat.Faceid", "soter: using system anti brute force strategy", new Object[0]);
-    }
-    do
+    AppMethodBeat.i(72906);
+    if (SoterBiometricAntiBruteForceStrategy.isSystemHasAntiBruteForce())
     {
+      d.v("Soter.BiometricManagerCompat.Faceid", "soter: using system anti brute force strategy", new Object[0]);
+      AppMethodBeat.o(72906);
       return false;
-      if (!SoterBiometricAntiBruteForceStrategy.isCurrentTweenTimeAvailable(paramContext)) {
-        break;
+    }
+    if (SoterBiometricAntiBruteForceStrategy.isCurrentTweenTimeAvailable(paramContext))
+    {
+      if (!SoterBiometricAntiBruteForceStrategy.isCurrentFailTimeAvailable(paramContext))
+      {
+        d.v("Soter.BiometricManagerCompat.Faceid", "soter: unfreeze former frozen status", new Object[0]);
+        SoterBiometricAntiBruteForceStrategy.unFreeze(paramContext);
       }
-    } while (SoterBiometricAntiBruteForceStrategy.isCurrentFailTimeAvailable(paramContext));
-    d.v("Soter.BiometricManagerCompat.Faceid", "soter: unfreeze former frozen status", new Object[0]);
-    SoterBiometricAntiBruteForceStrategy.unFreeze(paramContext);
-    return false;
+      AppMethodBeat.o(72906);
+      return false;
+    }
     if (SoterBiometricAntiBruteForceStrategy.isCurrentFailTimeAvailable(paramContext))
     {
       d.v("Soter.BiometricManagerCompat.Faceid", "soter: failure time available", new Object[0]);
+      AppMethodBeat.o(72906);
       return false;
     }
     informTooManyTrial(paramAuthenticationCallback);
+    AppMethodBeat.o(72906);
     return true;
   }
   
   private static BiometricManagerCompat.CryptoObject unwrapCryptoObject(FaceidManagerProxy.CryptoObject paramCryptoObject)
   {
-    if (paramCryptoObject == null) {}
-    do
+    AppMethodBeat.i(72904);
+    if (paramCryptoObject == null)
     {
+      AppMethodBeat.o(72904);
       return null;
-      if (paramCryptoObject.getCipher() != null) {
-        return new BiometricManagerCompat.CryptoObject(paramCryptoObject.getCipher());
-      }
-      if (paramCryptoObject.getSignature() != null) {
-        return new BiometricManagerCompat.CryptoObject(paramCryptoObject.getSignature());
-      }
-    } while (paramCryptoObject.getMac() == null);
-    return new BiometricManagerCompat.CryptoObject(paramCryptoObject.getMac());
+    }
+    if (paramCryptoObject.getCipher() != null)
+    {
+      paramCryptoObject = new BiometricManagerCompat.CryptoObject(paramCryptoObject.getCipher());
+      AppMethodBeat.o(72904);
+      return paramCryptoObject;
+    }
+    if (paramCryptoObject.getSignature() != null)
+    {
+      paramCryptoObject = new BiometricManagerCompat.CryptoObject(paramCryptoObject.getSignature());
+      AppMethodBeat.o(72904);
+      return paramCryptoObject;
+    }
+    if (paramCryptoObject.getMac() != null)
+    {
+      paramCryptoObject = new BiometricManagerCompat.CryptoObject(paramCryptoObject.getMac());
+      AppMethodBeat.o(72904);
+      return paramCryptoObject;
+    }
+    AppMethodBeat.o(72904);
+    return null;
   }
   
   private static FaceidManagerProxy.AuthenticationCallback wrapCallback(Context paramContext, BiometricManagerCompat.AuthenticationCallback paramAuthenticationCallback)
   {
-    return new BiometricManagerCompat.FaceidManagerImpl.1(paramAuthenticationCallback, paramContext);
+    AppMethodBeat.i(72905);
+    paramContext = new BiometricManagerCompat.FaceidManagerImpl.1(paramAuthenticationCallback, paramContext);
+    AppMethodBeat.o(72905);
+    return paramContext;
   }
   
   private static FaceidManagerProxy.CryptoObject wrapCryptoObject(BiometricManagerCompat.CryptoObject paramCryptoObject)
   {
-    if (paramCryptoObject == null) {}
-    do
+    AppMethodBeat.i(72903);
+    if (paramCryptoObject == null)
     {
+      AppMethodBeat.o(72903);
       return null;
-      if (paramCryptoObject.getCipher() != null) {
-        return new FaceidManagerProxy.CryptoObject(paramCryptoObject.getCipher());
-      }
-      if (paramCryptoObject.getSignature() != null) {
-        return new FaceidManagerProxy.CryptoObject(paramCryptoObject.getSignature());
-      }
-    } while (paramCryptoObject.getMac() == null);
-    return new FaceidManagerProxy.CryptoObject(paramCryptoObject.getMac());
+    }
+    if (paramCryptoObject.getCipher() != null)
+    {
+      paramCryptoObject = new FaceidManagerProxy.CryptoObject(paramCryptoObject.getCipher());
+      AppMethodBeat.o(72903);
+      return paramCryptoObject;
+    }
+    if (paramCryptoObject.getSignature() != null)
+    {
+      paramCryptoObject = new FaceidManagerProxy.CryptoObject(paramCryptoObject.getSignature());
+      AppMethodBeat.o(72903);
+      return paramCryptoObject;
+    }
+    if (paramCryptoObject.getMac() != null)
+    {
+      paramCryptoObject = new FaceidManagerProxy.CryptoObject(paramCryptoObject.getMac());
+      AppMethodBeat.o(72903);
+      return paramCryptoObject;
+    }
+    AppMethodBeat.o(72903);
+    return null;
   }
   
   public void authenticate(Context paramContext, BiometricManagerCompat.CryptoObject paramCryptoObject, int paramInt, CancellationSignal paramCancellationSignal, BiometricManagerCompat.AuthenticationCallback paramAuthenticationCallback, Handler paramHandler)
   {
+    AppMethodBeat.i(72902);
     FaceidManagerProxy.authenticate(paramContext, wrapCryptoObject(paramCryptoObject), paramInt, paramCancellationSignal, wrapCallback(paramContext, paramAuthenticationCallback), paramHandler);
+    AppMethodBeat.o(72902);
   }
   
   public String getBiometricName(Context paramContext)
   {
-    return FaceidManagerProxy.getBiometricName(paramContext);
+    AppMethodBeat.i(72901);
+    paramContext = FaceidManagerProxy.getBiometricName(paramContext);
+    AppMethodBeat.o(72901);
+    return paramContext;
   }
   
   public boolean hasEnrolledBiometric(Context paramContext)
   {
-    return FaceidManagerProxy.hasEnrolledFaceids(paramContext);
+    AppMethodBeat.i(72899);
+    boolean bool = FaceidManagerProxy.hasEnrolledFaceids(paramContext);
+    AppMethodBeat.o(72899);
+    return bool;
   }
   
   public boolean isHardwareDetected(Context paramContext)
   {
-    return FaceidManagerProxy.isHardwareDetected(paramContext);
+    AppMethodBeat.i(72900);
+    boolean bool = FaceidManagerProxy.isHardwareDetected(paramContext);
+    AppMethodBeat.o(72900);
+    return bool;
   }
 }
 

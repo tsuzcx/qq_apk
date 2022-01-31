@@ -1,33 +1,35 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.bs;
-import com.tencent.mm.h.a.bs.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.bu;
+import com.tencent.mm.g.a.bu.b;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wallet_core.c.y;
+import com.tencent.mm.plugin.wallet_core.c.ab;
 
 final class WalletPasswordSettingUI$8$1
   implements Runnable
 {
-  WalletPasswordSettingUI$8$1(WalletPasswordSettingUI.8 param8, bs parambs) {}
+  WalletPasswordSettingUI$8$1(WalletPasswordSettingUI.8 param8, bu parambu) {}
   
   public final void run()
   {
-    if (this.kkU.bHT != null)
+    AppMethodBeat.i(46357);
+    if (this.tYE.cpj != null)
     {
-      if (this.kkU.bHT.retCode == 0)
+      if (this.tYE.cpj.retCode == 0)
       {
-        WalletPasswordSettingUI.e(this.qpF.qpD);
-        g.DQ();
-        g.DO().dJT.a(new y(null, 19), 0);
+        WalletPasswordSettingUI.d(this.uab.tZZ);
+        g.RM();
+        g.RK().eHt.a(new ab(null, 19), 0);
+        AppMethodBeat.o(46357);
+        return;
       }
+      WalletPasswordSettingUI.e(this.uab.tZZ);
+      WalletPasswordSettingUI.f(this.uab.tZZ);
     }
-    else {
-      return;
-    }
-    WalletPasswordSettingUI.a(this.qpF.qpD, 1);
-    WalletPasswordSettingUI.f(this.qpF.qpD);
+    AppMethodBeat.o(46357);
   }
 }
 

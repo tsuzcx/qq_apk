@@ -6,13 +6,13 @@ import android.content.DialogInterface.OnCancelListener;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.hv;
-import com.tencent.mm.h.a.hv.b;
-import com.tencent.mm.h.a.hw;
-import com.tencent.mm.h.a.hw.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.hz;
+import com.tencent.mm.g.a.hz.b;
+import com.tencent.mm.g.a.ia;
+import com.tencent.mm.g.a.ia.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.bind.a.i;
 import com.tencent.mm.plugin.account.friend.a.x;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
@@ -25,32 +25,37 @@ final class BindMobileVerifyUI$2
   
   public final boolean onMenuItemClick(final MenuItem paramMenuItem)
   {
-    paramMenuItem = BindMobileVerifyUI.a(this.fcM).getText().toString().trim();
+    AppMethodBeat.i(13530);
+    paramMenuItem = BindMobileVerifyUI.a(this.guw).getText().toString().trim();
     if (paramMenuItem.equals(""))
     {
-      h.h(this.fcM, a.i.bind_mcontact_verifynull, a.i.app_tip);
+      h.h(this.guw, 2131297622, 2131297087);
+      AppMethodBeat.o(13530);
       return true;
     }
-    this.fcM.XM();
-    Object localObject1 = new hv();
-    ((hv)localObject1).bPQ.context = this.fcM;
-    a.udP.m((b)localObject1);
-    localObject1 = ((hv)localObject1).bPR.bPS;
-    Object localObject2 = new hw();
-    a.udP.m((b)localObject2);
-    localObject2 = ((hw)localObject2).bPT.bPU;
-    paramMenuItem = new x(BindMobileVerifyUI.b(this.fcM), 2, paramMenuItem, "", (String)localObject1, (String)localObject2);
-    g.Dk().a(paramMenuItem, 0);
-    localObject1 = this.fcM;
-    localObject2 = this.fcM;
-    this.fcM.getString(a.i.app_tip);
-    BindMobileVerifyUI.a((BindMobileVerifyUI)localObject1, h.b((Context)localObject2, this.fcM.getString(a.i.bind_mcontact_verifing), true, new DialogInterface.OnCancelListener()
+    this.guw.hideVKB();
+    Object localObject1 = new hz();
+    ((hz)localObject1).cxj.context = this.guw;
+    a.ymk.l((b)localObject1);
+    localObject1 = ((hz)localObject1).cxk.cxl;
+    Object localObject2 = new ia();
+    a.ymk.l((b)localObject2);
+    localObject2 = ((ia)localObject2).cxm.cxn;
+    paramMenuItem = new x(BindMobileVerifyUI.b(this.guw), 2, paramMenuItem, "", (String)localObject1, (String)localObject2);
+    g.Rc().a(paramMenuItem, 0);
+    localObject1 = this.guw;
+    localObject2 = this.guw;
+    this.guw.getString(2131297087);
+    BindMobileVerifyUI.a((BindMobileVerifyUI)localObject1, h.b((Context)localObject2, this.guw.getString(2131297610), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        g.Dk().c(paramMenuItem);
+        AppMethodBeat.i(13529);
+        g.Rc().a(paramMenuItem);
+        AppMethodBeat.o(13529);
       }
     }));
+    AppMethodBeat.o(13530);
     return true;
   }
 }

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.luckymoney.appbrand.ui.view;
 
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import com.tencent.mm.plugin.luckymoney.ui.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.ui.g;
 
 final class WxaLuckyMoneyTextInputView$1
   implements View.OnFocusChangeListener
@@ -11,12 +12,14 @@ final class WxaLuckyMoneyTextInputView$1
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (WxaLuckyMoneyTextInputView.a(this.lMZ) != null)
+    AppMethodBeat.i(42135);
+    if (WxaLuckyMoneyTextInputView.a(this.oks) != null)
     {
-      paramView = WxaLuckyMoneyTextInputView.a(this.lMZ);
-      this.lMZ.getInputViewId();
-      paramView.bfq();
+      paramView = WxaLuckyMoneyTextInputView.a(this.oks);
+      this.oks.getInputViewId();
+      paramView.bMQ();
     }
+    AppMethodBeat.o(42135);
   }
 }
 

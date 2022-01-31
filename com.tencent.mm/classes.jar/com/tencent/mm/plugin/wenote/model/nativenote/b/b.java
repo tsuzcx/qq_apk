@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.wenote.model.nativenote.b;
 
 public abstract interface b
 {
-  public abstract void lC(boolean paramBoolean);
+  public abstract void oN(boolean paramBoolean);
   
-  public abstract void lD(boolean paramBoolean);
+  public abstract void oO(boolean paramBoolean);
   
-  public abstract void lE(boolean paramBoolean);
+  public abstract void oP(boolean paramBoolean);
   
-  public abstract void lF(boolean paramBoolean);
+  public abstract void oQ(boolean paramBoolean);
 }
 
 

@@ -3,40 +3,62 @@ package com.tencent.mm.pluginsdk.ui.d;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextPaint;
-import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.comm.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.m;
-import com.tencent.mm.pluginsdk.ui.chat.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.base.a.a;
 import java.lang.ref.WeakReference;
-import java.util.LinkedList;
 
 public class n
   extends ClickableSpan
   implements a
 {
-  private int dIk;
-  private String fKV;
-  private WeakReference<View> fy = null;
-  boolean mEnable = true;
-  public boolean mmZ = false;
-  private Context sjZ = null;
-  private int ske;
-  private h skf = null;
-  private m skg = null;
+  private static final String TAG = "MicroMsg.PressableClickSpan";
+  private boolean isPressed;
+  private int mBgColor;
+  protected h mClickListener;
+  private boolean mEnable;
+  private m mHrefInfo;
+  private int mLinkColor;
+  private String mSessionId;
+  private WeakReference<View> mViewRef;
+  private Context uiContext;
   
-  public n() {}
+  public n()
+  {
+    this.isPressed = false;
+    this.mClickListener = null;
+    this.mHrefInfo = null;
+    this.mEnable = true;
+    this.mViewRef = null;
+    this.uiContext = null;
+  }
+  
+  public n(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(79879);
+    this.isPressed = false;
+    this.mClickListener = null;
+    this.mHrefInfo = null;
+    this.mEnable = true;
+    this.mViewRef = null;
+    this.uiContext = null;
+    setColor(paramInt1, paramInt2);
+    this.mClickListener = new h();
+    AppMethodBeat.o(79879);
+  }
   
   public n(int paramInt, m paramm)
   {
+    AppMethodBeat.i(79878);
+    this.isPressed = false;
+    this.mClickListener = null;
+    this.mHrefInfo = null;
+    this.mEnable = true;
+    this.mViewRef = null;
+    this.uiContext = null;
     int j;
     int i;
     if (paramm != null)
@@ -46,165 +68,140 @@ public class n
     }
     for (;;)
     {
-      if ((j == 0) && (i == 0)) {
-        AX(paramInt);
-      }
-      for (;;)
-      {
-        this.skf = new h();
-        this.skg = paramm;
-        return;
-        eY(j, i);
-      }
+      setColorConfig(paramInt, j, i);
+      this.mClickListener = new h();
+      this.mHrefInfo = paramm;
+      AppMethodBeat.o(79878);
+      return;
       i = 0;
       j = 0;
     }
   }
   
-  public void AX(int paramInt)
+  private void setColorConfig(int paramInt1, int paramInt2, int paramInt3)
   {
-    Context localContext = ae.getContext();
-    switch (paramInt)
+    AppMethodBeat.i(151632);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-    default: 
-      return;
-    case 1: 
-      eY(localContext.getResources().getColor(a.b.chat_url_color), -5908174);
-      return;
-    case 2: 
-      eY(localContext.getResources().getColor(a.b.link_color), localContext.getResources().getColor(a.b.sns_link_bg_color));
+      setColorConfig(paramInt1);
+      AppMethodBeat.o(151632);
       return;
     }
-    eY(localContext.getResources().getColor(a.b.sns_lucky_item_gold), localContext.getResources().getColor(a.b.sns_link_bg_color));
+    setColor(paramInt2, paramInt3);
+    AppMethodBeat.o(151632);
   }
   
-  public final void eY(int paramInt1, int paramInt2)
+  public int getBgColor()
   {
-    this.ske = paramInt1;
-    this.dIk = paramInt2;
+    return this.mBgColor;
   }
   
-  public final int getType()
+  public boolean getPress()
   {
-    if (this.skg == null) {
+    return this.isPressed;
+  }
+  
+  public int getType()
+  {
+    if (this.mHrefInfo == null) {
       return 2147483647;
     }
-    return this.skg.type;
-  }
-  
-  public final void mf(boolean paramBoolean)
-  {
-    this.mmZ = paramBoolean;
+    return this.mHrefInfo.type;
   }
   
   public void onClick(View paramView)
   {
-    Object localObject2;
-    Object localObject1;
+    AppMethodBeat.i(79881);
     h localh;
-    m localm;
-    if ((this.skf != null) && (this.skg != null) && (this.mEnable))
+    if ((this.mClickListener != null) && (this.mHrefInfo != null) && (this.mEnable))
     {
-      localObject2 = this.skf;
-      if (this.sjZ == null) {
-        break label92;
+      localh = this.mClickListener;
+      if (this.uiContext == null) {
+        break label74;
       }
-      localObject1 = this.sjZ;
-      ((h)localObject2).mContext = ((Context)localObject1);
-      localh = this.skf;
-      localm = this.skg;
-      if (System.currentTimeMillis() - localh.qrB > localh.qrA) {
-        break label100;
-      }
-      y.e("MicroMsg.MMSpanClickListener", "process pass");
     }
-    for (;;)
+    label74:
+    for (Context localContext = this.uiContext;; localContext = paramView.getContext())
     {
-      this.skf.mContext = null;
+      localh.mContext = localContext;
+      this.mClickListener.a(paramView, this.mHrefInfo);
+      this.mClickListener.mContext = null;
+      AppMethodBeat.o(79881);
       return;
-      label92:
-      localObject1 = paramView.getContext();
-      break;
-      label100:
-      localh.qrB = System.currentTimeMillis();
-      if (localm == null)
-      {
-        y.e("MicroMsg.MMSpanClickListener", "onClick error, hrefInfo is null!");
-      }
-      else
-      {
-        y.d("MicroMsg.MMSpanClickListener", "MMSpanClickListener.onClick, hrefInfo type = %d", new Object[] { Integer.valueOf(localm.type) });
-        if (localh.mContext != null) {
-          break label163;
-        }
-        y.e("MicroMsg.MMSpanClickListener", "onClick error, context is null!");
-      }
     }
-    label163:
-    if ((j.sjH != null) && (j.sjH.size() > 0))
+  }
+  
+  protected void setColor(int paramInt1, int paramInt2)
+  {
+    this.mLinkColor = paramInt1;
+    this.mBgColor = paramInt2;
+  }
+  
+  protected void setColorConfig(int paramInt)
+  {
+    AppMethodBeat.i(79880);
+    Context localContext = ah.getContext();
+    switch (paramInt)
     {
-      int i = j.sjH.size();
-      localObject1 = (g)j.sjH.getLast();
-      y.d("MicroMsg.MMSpanClickListener", "spanCallbackList.size:%d, get the last callback", new Object[] { Integer.valueOf(i) });
     }
     for (;;)
     {
-      bi localbi;
-      if ((paramView != null) && ((paramView.getTag() instanceof c)))
-      {
-        localbi = ((c)paramView.getTag()).bWO;
-        if (localbi != null)
-        {
-          localObject2 = localbi.field_talker;
-          paramView = (View)localObject2;
-          if (!s.gZ((String)localObject2)) {}
-        }
-      }
-      for (paramView = bd.iI(localbi.field_content);; paramView = null)
-      {
-        localm.username = paramView;
-        if (!TextUtils.isEmpty(localh.fKV)) {
-          localm.fKV = localh.fKV;
-        }
-        b.a.sjn.a(localh.mContext, localm, (g)localObject1);
-        localm.fKV = null;
-        break;
-      }
-      localObject1 = null;
+      AppMethodBeat.o(79880);
+      return;
+      setColor(localContext.getResources().getColor(2131689874), localContext.getResources().getColor(2131689482));
+      AppMethodBeat.o(79880);
+      return;
+      setColor(localContext.getResources().getColor(2131689778), localContext.getResources().getColor(2131690488));
+      AppMethodBeat.o(79880);
+      return;
+      setColor(localContext.getResources().getColor(2131690497), localContext.getResources().getColor(2131690488));
     }
   }
   
-  public final void setContext(Context paramContext)
+  public void setContext(Context paramContext)
   {
-    this.sjZ = paramContext;
-    this.skf.mContext = paramContext;
+    this.uiContext = paramContext;
+    this.mClickListener.mContext = paramContext;
   }
   
-  public final void setSessionId(String paramString)
+  public void setEnable(boolean paramBoolean)
   {
-    this.fKV = paramString;
-    if (this.skf != null) {
-      this.skf.fKV = this.fKV;
+    this.mEnable = paramBoolean;
+  }
+  
+  public void setIsPressed(boolean paramBoolean)
+  {
+    this.isPressed = paramBoolean;
+  }
+  
+  public void setSessionId(String paramString)
+  {
+    this.mSessionId = paramString;
+    if (this.mClickListener != null) {
+      this.mClickListener.mSessionId = this.mSessionId;
     }
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
+    AppMethodBeat.i(79882);
     super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.ske);
+    paramTextPaint.setColor(this.mLinkColor);
     paramTextPaint.setUnderlineText(false);
-    paramTextPaint.linkColor = this.ske;
-    if (this.mmZ)
+    paramTextPaint.linkColor = this.mLinkColor;
+    if (getPress())
     {
-      paramTextPaint.bgColor = this.dIk;
+      paramTextPaint.bgColor = this.mBgColor;
+      AppMethodBeat.o(79882);
       return;
     }
     paramTextPaint.bgColor = 0;
+    AppMethodBeat.o(79882);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.d.n
  * JD-Core Version:    0.7.0.1
  */

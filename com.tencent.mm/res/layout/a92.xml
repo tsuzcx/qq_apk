@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/bkn" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/co9" android:layout_width="18.0dip" android:layout_height="18.0dip" android:scaleType="fitCenter" />
-    <TextView android:ellipsize="end" android:gravity="center" android:id="@id/co_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />"
-</LinearLayout>
+    <ImageView android:id="@id/aez" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/cm4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/cm5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/g6">
+        <ViewStub android:id="@id/cm6" android:visibility="gone" android:clickable="true" android:layout="@layout/a8l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/g2" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</FrameLayout>

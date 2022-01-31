@@ -1,35 +1,36 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public final class cr
-  extends dc
-  implements Cloneable
+public class cr
 {
-  private static Map<Integer, byte[]> b;
-  public Map<Integer, byte[]> a = null;
+  private double a;
+  private double b;
+  private double c;
   
-  public final void a(da paramda)
+  public cr(double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    if (b == null)
-    {
-      b = new HashMap();
-      byte[] arrayOfByte = (byte[])new byte[1];
-      ((byte[])arrayOfByte)[0] = 0;
-      b.put(Integer.valueOf(0), arrayOfByte);
-    }
-    this.a = ((Map)paramda.a(b, 0, true));
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+    this.c = paramDouble3;
   }
   
-  public final void a(db paramdb)
+  public double a()
   {
-    paramdb.a(this.a, 0);
+    return this.a;
+  }
+  
+  public double b()
+  {
+    return this.b;
+  }
+  
+  public double c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.cr
  * JD-Core Version:    0.7.0.1
  */

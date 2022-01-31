@@ -4,48 +4,56 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.ui.chatting.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.chatting.ao;
 
 public class SplashImageView
   extends ImageView
 {
   private boolean hasDrawed;
-  private ar uQZ;
+  private ao zfl;
   
   public SplashImageView(Context paramContext)
   {
     super(paramContext);
-    setImageResource(R.g.welcome_bg);
+    AppMethodBeat.i(29908);
+    setImageResource(2130840935);
+    AppMethodBeat.o(29908);
   }
   
   public SplashImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    setImageResource(R.g.welcome_bg);
+    AppMethodBeat.i(29909);
+    setImageResource(2130840935);
+    AppMethodBeat.o(29909);
   }
   
   public SplashImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setImageResource(R.g.welcome_bg);
+    AppMethodBeat.i(29910);
+    setImageResource(2130840935);
+    AppMethodBeat.o(29910);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(29911);
     super.onDraw(paramCanvas);
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if (this.uQZ != null) {
-        this.uQZ.aXH();
+      if (this.zfl != null) {
+        this.zfl.bEm();
       }
     }
+    AppMethodBeat.o(29911);
   }
   
-  public void setOnDrawListener(ar paramar)
+  public void setOnDrawListener(ao paramao)
   {
-    this.uQZ = paramar;
+    this.zfl = paramao;
   }
 }
 

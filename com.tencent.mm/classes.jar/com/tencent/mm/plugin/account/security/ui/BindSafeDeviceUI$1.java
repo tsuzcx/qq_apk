@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.security.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BindSafeDeviceUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class BindSafeDeviceUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.fjZ.finish();
+    AppMethodBeat.i(69858);
+    this.gBq.finish();
+    AppMethodBeat.o(69858);
     return true;
   }
 }

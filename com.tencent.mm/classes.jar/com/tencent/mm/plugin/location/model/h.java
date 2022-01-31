@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.location.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.aig;
-import com.tencent.mm.protocal.c.aih;
-import com.tencent.mm.protocal.c.bco;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.anj;
+import com.tencent.mm.protocal.protobuf.ank;
+import com.tencent.mm.protocal.protobuf.bjs;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,107 +24,76 @@ public final class h
   extends m
   implements k
 {
-  public String aox;
-  public int bMC;
-  public final b dmK;
-  private com.tencent.mm.ah.f dmL;
-  private Runnable eAk;
+  private com.tencent.mm.ai.f callback;
+  public int ctW;
+  public boolean eRq;
   public int errCode;
+  public String errMsg;
   public int errType;
-  public String fTF;
-  public boolean inQ = false;
-  public byte[] lCW;
-  public byte[] lCX = null;
-  public String lCY = "";
-  public int lCZ;
-  public List<com.tencent.mm.plugin.location.ui.impl.f> list = new ArrayList();
+  private Runnable fQa;
+  public String hng;
+  public List<com.tencent.mm.plugin.location.ui.impl.f> list;
+  public byte[] oai;
+  public byte[] oaj;
+  public String oak;
+  public int oal;
+  public final b rr;
   
   public h(byte[] paramArrayOfByte, double paramDouble1, double paramDouble2, int paramInt1, int paramInt2, double paramDouble3, double paramDouble4, String paramString1, String paramString2, boolean paramBoolean)
   {
+    AppMethodBeat.i(113315);
+    this.list = new ArrayList();
+    this.oaj = null;
+    this.eRq = false;
+    this.oak = "";
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new aig();
-    ((b.a)localObject).ecI = new aih();
-    ((b.a)localObject).ecI = new aih();
+    ((b.a)localObject).fsX = new anj();
+    ((b.a)localObject).fsY = new ank();
+    ((b.a)localObject).fsY = new ank();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getpoilist";
-    ((b.a)localObject).ecG = 457;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    aig localaig = (aig)this.dmK.ecE.ecN;
+    ((b.a)localObject).funcId = 457;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    anj localanj = (anj)this.rr.fsV.fta;
     if (paramArrayOfByte == null)
     {
-      localObject = new bmk();
-      localaig.teH = ((bmk)localObject);
-      localaig.sYZ = paramString2;
-      localaig.sDn = paramDouble1;
-      localaig.sDm = paramDouble2;
-      localaig.pyo = paramInt1;
-      localaig.ssq = paramInt2;
-      localaig.tfx = paramDouble4;
-      localaig.tfw = paramDouble3;
+      localObject = new SKBuiltinBuffer_t();
+      localanj.xcE = ((SKBuiltinBuffer_t)localObject);
+      localanj.wXt = paramString2;
+      localanj.wyP = paramDouble1;
+      localanj.wyO = paramDouble2;
+      localanj.Scene = paramInt1;
+      localanj.OpCode = paramInt2;
+      localanj.xdK = paramDouble4;
+      localanj.xdJ = paramDouble3;
       if (!paramBoolean) {
-        break label329;
+        break label332;
       }
     }
-    label329:
+    label332:
     for (int i = 1;; i = 0)
     {
-      localaig.teJ = i;
-      this.bMC = localaig.ssq;
-      this.lCY = paramString1;
-      this.lCW = paramArrayOfByte;
-      y.i("MicroMsg.NetSceneGetPoiList", "lat %f lng %f scene %d opcode %d oriLat %f oriLng %f isAutuQuery %s" + paramArrayOfByte, new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Double.valueOf(paramDouble4), Double.valueOf(paramDouble3), Boolean.valueOf(paramBoolean) });
+      localanj.xcG = i;
+      this.ctW = localanj.OpCode;
+      this.oak = paramString1;
+      this.oai = paramArrayOfByte;
+      ab.i("MicroMsg.NetSceneGetPoiList", "lat %f lng %f scene %d opcode %d oriLat %f oriLng %f isAutuQuery %s".concat(String.valueOf(paramArrayOfByte)), new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Double.valueOf(paramDouble4), Double.valueOf(paramDouble3), Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(113315);
       return;
-      localObject = new bmk().bs(paramArrayOfByte);
+      localObject = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
       break;
     }
   }
   
-  public final int a(e parame, com.tencent.mm.ah.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
   {
-    y.d("MicroMsg.NetSceneGetPoiList", "scene done");
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneGetPoiList", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + "errMsg:" + paramString);
-    this.errType = paramInt2;
-    this.errCode = paramInt3;
-    this.aox = paramString;
-    paramq = (aih)this.dmK.ecF.ecN;
-    this.list.clear();
-    y.d("MicroMsg.NetSceneGetPoiList", "url " + paramq.teQ + " " + paramq.sRA + " " + paramq.kSC + " " + paramq.sFF);
-    y.d("MicroMsg.NetSceneGetPoiList", "autoInterval: %d", new Object[] { Integer.valueOf(paramq.teR) });
-    this.fTF = paramq.sFF;
-    this.lCZ = paramq.teR;
-    if (paramq.tfz != null)
-    {
-      y.d("MicroMsg.NetSceneGetPoiList", "poi result %d ", new Object[] { Integer.valueOf(paramq.tfz.size()) });
-      if (paramq.tfz.size() > 0) {
-        y.d("MicroMsg.NetSceneGetPoiList", "addr %s, province %s, street %s, city %s", new Object[] { ((bco)paramq.tfz.get(0)).txR, ((bco)paramq.tfz.get(0)).ffi, ((bco)paramq.tfz.get(0)).sQi, ((bco)paramq.tfz.get(0)).ffj });
-      }
-      paramArrayOfByte = paramq.tfz.iterator();
-      while (paramArrayOfByte.hasNext())
-      {
-        com.tencent.mm.plugin.location.ui.impl.f localf = new com.tencent.mm.plugin.location.ui.impl.f((bco)paramArrayOfByte.next(), this.fTF);
-        this.list.add(localf);
-      }
-    }
-    if (paramq.teH != null) {
-      this.lCX = aa.a(paramq.teH);
-    }
-    if (paramq.tfA == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.inQ = bool;
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      if (this.eAk != null) {
-        this.eAk.run();
-      }
-      return;
-    }
+    AppMethodBeat.i(113316);
+    ab.d("MicroMsg.NetSceneGetPoiList", "scene done");
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(113316);
+    return i;
   }
   
   public final int getType()
@@ -133,7 +103,49 @@ public final class h
   
   public final boolean isFirst()
   {
-    return this.lCW == null;
+    return this.oai == null;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(113317);
+    ab.d("MicroMsg.NetSceneGetPoiList", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + "errMsg:" + paramString);
+    this.errType = paramInt2;
+    this.errCode = paramInt3;
+    this.errMsg = paramString;
+    paramq = (ank)this.rr.fsW.fta;
+    this.list.clear();
+    ab.d("MicroMsg.NetSceneGetPoiList", "url " + paramq.xcN + " " + paramq.wxW + " " + paramq.Url + " " + paramq.wBZ);
+    ab.d("MicroMsg.NetSceneGetPoiList", "autoInterval: %d", new Object[] { Integer.valueOf(paramq.xcO) });
+    this.hng = paramq.wBZ;
+    this.oal = paramq.xcO;
+    if (paramq.xdM != null)
+    {
+      ab.d("MicroMsg.NetSceneGetPoiList", "poi result %d ", new Object[] { Integer.valueOf(paramq.xdM.size()) });
+      if (paramq.xdM.size() > 0) {
+        ab.d("MicroMsg.NetSceneGetPoiList", "addr %s, province %s, street %s, city %s", new Object[] { ((bjs)paramq.xdM.get(0)).xyb, ((bjs)paramq.xdM.get(0)).gwQ, ((bjs)paramq.xdM.get(0)).wOD, ((bjs)paramq.xdM.get(0)).gwR });
+      }
+      paramArrayOfByte = paramq.xdM.iterator();
+      while (paramArrayOfByte.hasNext())
+      {
+        com.tencent.mm.plugin.location.ui.impl.f localf = new com.tencent.mm.plugin.location.ui.impl.f((bjs)paramArrayOfByte.next(), this.hng);
+        this.list.add(localf);
+      }
+    }
+    if (paramq.xcE != null) {
+      this.oaj = aa.a(paramq.xcE);
+    }
+    if (paramq.wzD == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.eRq = bool;
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      if (this.fQa != null) {
+        this.fQa.run();
+      }
+      AppMethodBeat.o(113317);
+      return;
+    }
   }
 }
 

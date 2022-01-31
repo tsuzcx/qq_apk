@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
 import android.view.View;
 import android.view.View.OnLongClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 
 final class VoiceTransTextUI$2
@@ -13,11 +13,13 @@ final class VoiceTransTextUI$2
   
   public final boolean onLongClick(View paramView)
   {
-    y.d("MicroMsg.VoiceTransTextUI", "onLongClick");
-    paramView = this.pyO;
-    String str = this.pyO.getString(R.l.app_copy);
+    AppMethodBeat.i(25593);
+    ab.d("MicroMsg.VoiceTransTextUI", "onLongClick");
+    paramView = this.taB;
+    String str = this.taB.getString(2131296895);
     VoiceTransTextUI.2.1 local1 = new VoiceTransTextUI.2.1(this);
     h.a(paramView, "", new String[] { str }, "", local1);
+    AppMethodBeat.o(25593);
     return false;
   }
 }

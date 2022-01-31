@@ -1,22 +1,44 @@
 package com.tencent.mm.pluginsdk;
 
-import android.view.View;
-import android.view.Window;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMFragmentActivity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ao.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class e$3
-  implements Runnable
+  implements ao.b.a
 {
-  e$3(MMFragmentActivity paramMMFragmentActivity, View paramView) {}
+  e$3(Intent paramIntent, Context paramContext) {}
   
-  public final void run()
+  public final void p(String paramString, boolean paramBoolean)
   {
-    this.rSC.getWindow().getDecorView().setSystemUiVisibility(this.rSC.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
-    y.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to contentView, height: %s", new Object[] { Integer.valueOf(this.aUp) });
-    if (this.rSD != null) {
-      this.rSD.setPadding(0, this.aUp, 0, 0);
+    AppMethodBeat.i(11657);
+    if (!paramBoolean)
+    {
+      ab.e("MicroMsg.DeepLinkHelper", "getContact fail, %s", new Object[] { paramString });
+      AppMethodBeat.o(11657);
+      return;
     }
+    this.val$intent.putExtra("Chat_User", paramString);
+    try
+    {
+      if (this.val$context != null)
+      {
+        this.val$context.startActivity(this.val$intent);
+        AppMethodBeat.o(11657);
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      ab.printErrStackTrace("MicroMsg.DeepLinkHelper", paramString, "", new Object[] { "" });
+      AppMethodBeat.o(11657);
+      return;
+    }
+    ah.getContext().startActivity(this.val$intent);
+    AppMethodBeat.o(11657);
   }
 }
 

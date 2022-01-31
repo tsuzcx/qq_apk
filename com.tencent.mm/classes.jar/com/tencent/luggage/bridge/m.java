@@ -1,5 +1,6 @@
 package com.tencent.luggage.bridge;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONObject;
 
 final class m
@@ -7,11 +8,13 @@ final class m
 {
   m(JSONObject paramJSONObject)
   {
-    this.bhj = b.valueOf(paramJSONObject.getString("type"));
-    this.bhk = paramJSONObject.optJSONObject("data");
-    if (this.bhk == null) {
-      this.bhk = new JSONObject();
+    AppMethodBeat.i(90729);
+    this.bxJ = b.valueOf(paramJSONObject.getString("type"));
+    this.bxK = paramJSONObject.optJSONObject("data");
+    if (this.bxK == null) {
+      this.bxK = new JSONObject();
     }
+    AppMethodBeat.o(90729);
   }
 }
 

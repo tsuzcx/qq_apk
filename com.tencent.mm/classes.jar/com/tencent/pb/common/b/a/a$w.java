@@ -7,48 +7,48 @@ import com.google.a.a.e;
 public final class a$w
   extends e
 {
-  private static volatile w[] wHw;
-  public String wHx = "";
-  public String wHy = "";
+  private static volatile w[] BeW;
+  public String BeX = "";
+  public String BeY = "";
   
   public a$w()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
-  public static w[] cOa()
+  public static w[] dTM()
   {
-    if (wHw == null) {}
-    synchronized (c.aUH)
+    if (BeW == null) {}
+    synchronized (c.bgX)
     {
-      if (wHw == null) {
-        wHw = new w[0];
+      if (BeW == null) {
+        BeW = new w[0];
       }
-      return wHw;
+      return BeW;
     }
   }
   
   public final void a(b paramb)
   {
-    if (!this.wHx.equals("")) {
-      paramb.d(1, this.wHx);
+    if (!this.BeX.equals("")) {
+      paramb.e(1, this.BeX);
     }
-    if (!this.wHy.equals("")) {
-      paramb.d(2, this.wHy);
+    if (!this.BeY.equals("")) {
+      paramb.e(2, this.BeY);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
-    if (!this.wHx.equals("")) {
-      i = j + b.e(1, this.wHx);
+    if (!this.BeX.equals("")) {
+      i = j + b.f(1, this.BeX);
     }
     j = i;
-    if (!this.wHy.equals("")) {
-      j = i + b.e(2, this.wHy);
+    if (!this.BeY.equals("")) {
+      j = i + b.f(2, this.BeY);
     }
     return j;
   }

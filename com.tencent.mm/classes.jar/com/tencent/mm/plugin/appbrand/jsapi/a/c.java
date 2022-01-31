@@ -1,148 +1,102 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import android.text.SpannableStringBuilder;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.plugin.ag.a.a;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.widget.sms.EditVerifyCodeView;
-import com.tencent.mm.plugin.appbrand.y.d;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.protocal.c.art;
-import com.tencent.mm.protocal.c.aru;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONStringer;
+import a.f.b.j;
+import a.l;
+import android.annotation.TargetApi;
+import com.tencent.luggage.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.bn;
+import com.tencent.mm.plugin.appbrand.jsapi.m.a;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.vending.g.d.a;
+import com.tencent.mm.vending.g.d.b;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetPhoneNumberNew;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "()V", "getLocalPhoneItems", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "getServePhoneItems", "Lcom/tencent/mm/vending/tuple/Tuple2;", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "env", "apiName", "", "withCredentials", "", "localPhoneItems", "report", "Lcom/tencent/mm/autogen/mmdata/rpt/WAPhoneAuthActionLogStruct;", "invoke", "", "data", "Lorg/json/JSONObject;", "callbackId", "", "jumpToBindWxPhoneIfNeed", "tuple2", "needBindWxPhone", "phoneItems", "showPhoneNumberDialog", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi$CallResult;", "it", "progressDialog", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandProgressDialog;", "dialog", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManageDialog;", "context", "Landroid/content/Context;", "showProgressDialog", "", "Companion", "plugin-appbrand-integration_release"})
+@TargetApi(8)
 public final class c
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<v>
 {
-  public static final int CTRL_INDEX = 209;
-  public static final String NAME = "getPhoneNumber";
-  String aJD;
-  private String bFq;
-  String bSe = "";
-  int gfg;
-  q gkh;
-  private boolean gki;
-  String gkj;
-  String gkk;
-  String gkl = "";
-  boolean gkm = false;
-  View gkn;
-  EditVerifyCodeView gko;
-  TextView gkp;
-  c.a gkq;
-  com.tencent.mm.plugin.ag.a gkr = null;
-  private com.tencent.mm.ui.widget.a.c gks;
-  int gkt = 0;
-  int gku = 0;
-  int gkv = 0;
-  a.a gkw = new c.10(this);
-  String signature;
+  private static final int CTRL_INDEX = 209;
+  private static final String NAME = "getPhoneNumber";
+  public static final c.a hEg;
   
-  final void aie()
+  static
   {
-    y.i("MicroMsg.JsApiGetPhoneNumber", "requestBindPhoneNumber");
-    JSONStringer localJSONStringer = new JSONStringer();
-    try
+    AppMethodBeat.i(134663);
+    hEg = new c.a((byte)0);
+    NAME = "getPhoneNumber";
+    CTRL_INDEX = 209;
+    AppMethodBeat.o(134663);
+  }
+  
+  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi$CallResult;", "kotlin.jvm.PlatformType", "onTerminate"})
+  static final class i<T>
+    implements d.b<m.a>
+  {
+    i(c paramc, v paramv, int paramInt) {}
+  }
+  
+  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "res", "", "kotlin.jvm.PlatformType", "onInterrupt"})
+  static final class j<T>
+    implements d.a<Object>
+  {
+    j(c paramc, v paramv, int paramInt) {}
+    
+    public final void aX(Object paramObject)
     {
-      localJSONStringer.object();
-      localJSONStringer.key("api_name");
-      localJSONStringer.value(this.bFq);
-      localJSONStringer.key("with_credentials");
-      localJSONStringer.value(this.gki);
-      localJSONStringer.endObject();
-      y.i("MicroMsg.JsApiGetPhoneNumber", "getPhoneNumber appId:%s, api_name:%s, with_credentials:%b", new Object[] { this.gkh.mAppId, this.bFq, Boolean.valueOf(this.gki) });
-      Object localObject = new b.a();
-      ((b.a)localObject).ecH = new art();
-      ((b.a)localObject).ecI = new aru();
-      ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/js-getuserwxphone";
-      ((b.a)localObject).ecG = 1141;
-      ((b.a)localObject).ecJ = 0;
-      ((b.a)localObject).ecK = 0;
-      localObject = ((b.a)localObject).Kt();
-      art localart = (art)((com.tencent.mm.ah.b)localObject).ecE.ecN;
-      localart.euK = this.gkh.mAppId;
-      localart.hPF = new com.tencent.mm.bv.b(localJSONStringer.toString().getBytes());
-      com.tencent.mm.ipcinvoker.wx_extension.b.a((com.tencent.mm.ah.b)localObject, new c.11(this));
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        y.e("MicroMsg.JsApiGetPhoneNumber", "JSONException:%s", new Object[] { localJSONException.getMessage() });
+      AppMethodBeat.i(143755);
+      Object localObject1 = b.a.a.a.a.a.a.a.a.CKU;
+      Object localObject2 = this.hEl.getAppId();
+      j.p(localObject2, "env.appId");
+      localObject1 = ((b.a.a.a.a.a.a.a.a)localObject1).azy((String)localObject2);
+      if (localObject1 != null) {
+        ((bn)localObject1).ake();
       }
-    }
-  }
-  
-  final void aif()
-  {
-    y.i("MicroMsg.JsApiGetPhoneNumber", "doSuccCallback");
-    HashMap localHashMap = new HashMap(5);
-    localHashMap.put("encryptedData", this.gkk);
-    localHashMap.put("iv", this.aJD);
-    this.gkh.C(this.gfg, h("ok", localHashMap));
-  }
-  
-  final void aig()
-  {
-    y.i("MicroMsg.JsApiGetPhoneNumber", "updateSendText()");
-    String str1 = this.gkh.getContentView().getResources().getString(y.j.app_brand_get_phone_number_not_receive_verify_code);
-    String str2 = this.gkh.getContentView().getResources().getString(y.j.app_brand_get_phone_number_resend_verify_code);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    localSpannableStringBuilder.append(str1);
-    localSpannableStringBuilder.append(str2);
-    int i = str1.length();
-    int j = str2.length();
-    localSpannableStringBuilder.setSpan(new ClickableSpan()
-    {
-      public final void onClick(View paramAnonymousView)
+      localObject2 = b.a.a.a.a.a.a.a.a.CKU;
+      localObject1 = this.hEl;
+      if (localObject1 != null) {}
+      for (localObject1 = ((v)localObject1).getAppId();; localObject1 = null)
       {
-        y.i("MicroMsg.JsApiGetPhoneNumber", "click the resend spanBuilder, do resend sms");
-        if (c.this.gkm)
+        j.p(localObject1, "env?.appId");
+        ((b.a.a.a.a.a.a.a.a)localObject2).azz((String)localObject1);
+        if (!(paramObject instanceof String)) {
+          break label138;
+        }
+        d.e("MicroMsg.JsApiGetPhoneNumberNew", "getphonenumber fail:".concat(String.valueOf(paramObject)));
+        localObject1 = this.hEl;
+        if (localObject1 == null) {
+          break;
+        }
+        ((v)localObject1).h(this.hAB, this.hEj.BL("fail:".concat(String.valueOf(paramObject))));
+        AppMethodBeat.o(143755);
+        return;
+      }
+      AppMethodBeat.o(143755);
+      return;
+      label138:
+      if ((paramObject instanceof Exception))
+      {
+        d.e("MicroMsg.JsApiGetPhoneNumberNew", "getphonenumber fail:{" + paramObject + ".message}");
+        localObject1 = this.hEl;
+        if (localObject1 != null)
         {
-          c.b(c.this);
+          ((v)localObject1).h(this.hAB, this.hEj.BL("fail:{" + paramObject + ".message}"));
+          AppMethodBeat.o(143755);
           return;
         }
-        y.e("MicroMsg.JsApiGetPhoneNumber", "allow_send_sms is false, show send_verify_code_frequent error");
-        c.this.tR(c.this.gkh.getContentView().getResources().getString(y.j.app_brand_get_phone_number_send_verify_code_frequent));
+        AppMethodBeat.o(143755);
+        return;
       }
-    }, i, i + j, 17);
-    localSpannableStringBuilder.setSpan(new ForegroundColorSpan(this.gkh.mContext.getResources().getColor(y.d.link_color)), i, j + i, 17);
-    this.gkp.setText(localSpannableStringBuilder);
-    this.gkp.setMovementMethod(LinkMovementMethod.getInstance());
-  }
-  
-  final void aih()
-  {
-    y.i("MicroMsg.JsApiGetPhoneNumber", "stopSmsListener");
-    if (this.gkq != null) {
-      this.gkq.cancel();
+      d.e("MicroMsg.JsApiGetPhoneNumberNew", "getphonenumber fail");
+      paramObject = this.hEl;
+      if (paramObject != null)
+      {
+        paramObject.h(this.hAB, this.hEj.BL("fail"));
+        AppMethodBeat.o(143755);
+        return;
+      }
+      AppMethodBeat.o(143755);
     }
-    if (this.gkr != null)
-    {
-      this.gkr.stop();
-      this.gkr.oiY = null;
-    }
-  }
-  
-  final void tR(String paramString)
-  {
-    aih();
-    com.tencent.mm.ui.base.h.a(this.gkh.mContext, paramString, "", false, new c.7(this));
   }
 }
 

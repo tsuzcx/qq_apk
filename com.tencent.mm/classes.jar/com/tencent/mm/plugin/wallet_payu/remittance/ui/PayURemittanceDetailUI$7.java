@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.wallet_payu.remittance.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.c.a.a;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.ui.base.h;
 
 final class PayURemittanceDetailUI$7
@@ -12,12 +12,14 @@ final class PayURemittanceDetailUI$7
   
   public final void onClick(View paramView)
   {
-    h.a(this.qOI, this.qOI.getString(a.i.remittance_detail_refund_tips, new Object[] { PayURemittanceDetailUI.QY(PayURemittanceDetailUI.f(this.qOI)) }), this.qOI.getString(a.i.app_remind), this.qOI.getString(a.i.remittance_detail_refuse_btn_text), this.qOI.getString(a.i.app_cancel), new PayURemittanceDetailUI.7.1(this), new PayURemittanceDetailUI.7.2(this));
+    AppMethodBeat.i(48551);
+    h.d(this.uDP, this.uDP.getString(2131302555, new Object[] { PayURemittanceDetailUI.afW(PayURemittanceDetailUI.f(this.uDP)) }), this.uDP.getString(2131297056), this.uDP.getString(2131302560), this.uDP.getString(2131296888), new PayURemittanceDetailUI.7.1(this), new PayURemittanceDetailUI.7.2(this));
+    AppMethodBeat.o(48551);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.remittance.ui.PayURemittanceDetailUI.7
  * JD-Core Version:    0.7.0.1
  */

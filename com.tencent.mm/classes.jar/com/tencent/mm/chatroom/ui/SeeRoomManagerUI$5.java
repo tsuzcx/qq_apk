@@ -1,12 +1,12 @@
 package com.tencent.mm.chatroom.ui;
 
-import com.tencent.mm.ah.a.a;
-import com.tencent.mm.protocal.c.so;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.protocal.protobuf.wo;
 import com.tencent.mm.vending.c.a;
 import java.util.LinkedList;
 
 final class SeeRoomManagerUI$5
-  implements a<Void, a.a<so>>
+  implements a<Void, a.a<wo>>
 {
   SeeRoomManagerUI$5(SeeRoomManagerUI paramSeeRoomManagerUI, LinkedList paramLinkedList) {}
 }

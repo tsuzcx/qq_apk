@@ -2,7 +2,7 @@ package android.support.multidex;
 
 final class c$a
 {
-  long pj;
+  long offset;
   long size;
 }
 

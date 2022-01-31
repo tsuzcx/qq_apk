@@ -1,34 +1,84 @@
 package android.support.v4.widget;
 
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.OverScroller;
+import android.os.Build.VERSION;
+import android.widget.PopupWindow;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-@Deprecated
 public final class n
 {
-  public OverScroller iY;
+  private static Method KZ;
+  private static boolean La;
+  private static Field Lb;
+  private static boolean Lc;
   
-  private n(Context paramContext, Interpolator paramInterpolator)
+  public static void a(PopupWindow paramPopupWindow, int paramInt)
   {
-    if (paramInterpolator != null) {}
-    for (paramContext = new OverScroller(paramContext, paramInterpolator);; paramContext = new OverScroller(paramContext))
+    if (Build.VERSION.SDK_INT >= 23) {
+      paramPopupWindow.setWindowLayoutType(paramInt);
+    }
+    for (;;)
     {
-      this.iY = paramContext;
       return;
+      if (!La) {}
+      try
+      {
+        Method localMethod = PopupWindow.class.getDeclaredMethod("setWindowLayoutType", new Class[] { Integer.TYPE });
+        KZ = localMethod;
+        localMethod.setAccessible(true);
+        label47:
+        La = true;
+        if (KZ == null) {
+          continue;
+        }
+        try
+        {
+          KZ.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
+          return;
+        }
+        catch (Exception paramPopupWindow) {}
+      }
+      catch (Exception localException)
+      {
+        break label47;
+      }
     }
   }
   
-  @Deprecated
-  public static n a(Context paramContext, Interpolator paramInterpolator)
+  public static void a(PopupWindow paramPopupWindow, boolean paramBoolean)
   {
-    return new n(paramContext, paramInterpolator);
-  }
-  
-  @Deprecated
-  public final void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    this.iY.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+    if (Build.VERSION.SDK_INT >= 23) {
+      paramPopupWindow.setOverlapAnchor(paramBoolean);
+    }
+    for (;;)
+    {
+      return;
+      if (Build.VERSION.SDK_INT < 21) {
+        continue;
+      }
+      if (!Lc) {}
+      try
+      {
+        Field localField = PopupWindow.class.getDeclaredField("mOverlapAnchor");
+        Lb = localField;
+        localField.setAccessible(true);
+        label45:
+        Lc = true;
+        if (Lb == null) {
+          continue;
+        }
+        try
+        {
+          Lb.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
+          return;
+        }
+        catch (IllegalAccessException paramPopupWindow) {}
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        break label45;
+      }
+    }
   }
 }
 

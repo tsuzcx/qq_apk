@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.shake.ui;
 
-import com.tencent.mm.pluginsdk.ui.tools.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.n;
 import com.tencent.mm.ui.base.h.c;
 
 final class ShakeReportUI$7$1
@@ -8,20 +9,24 @@ final class ShakeReportUI$7$1
 {
   ShakeReportUI$7$1(ShakeReportUI.7 param7) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
-    ShakeReportUI.b(this.odo.odm, true);
+    AppMethodBeat.i(24782);
+    ShakeReportUI.b(this.qRv.qRs, true);
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    l.a(this.odo.odm, 1, null);
+    for (;;)
+    {
+      AppMethodBeat.o(24782);
+      return;
+      n.a(this.qRv.qRs, 1, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeReportUI.7.1
  * JD-Core Version:    0.7.0.1
  */

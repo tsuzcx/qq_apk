@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$ga
+final class c$ga
   extends c.g
 {
-  public c$ga()
+  c$ga()
   {
-    super("operateVideoPlayer", "", 10000, false);
+    super("openSearchWAWidgetLogView", "openSearchWAWidgetLogView", 10000, true);
   }
 }
 

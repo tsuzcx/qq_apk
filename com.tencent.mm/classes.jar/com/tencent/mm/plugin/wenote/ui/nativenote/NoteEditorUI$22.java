@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import android.content.Context;
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.c;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.g;
 
@@ -18,8 +19,9 @@ final class NoteEditorUI$22
   
   public final void run()
   {
-    int i = c.chX().size();
-    int j = NoteEditorUI.N(this.rLT).getChildCount();
+    AppMethodBeat.i(27018);
+    int i = c.din().size();
+    int j = NoteEditorUI.N(this.vCx).getChildCount();
     Object localObject;
     if (i == j)
     {
@@ -27,8 +29,8 @@ final class NoteEditorUI$22
       i = j - 1;
       if (i >= 0)
       {
-        localObject = NoteEditorUI.N(this.rLT).getChildAt(i);
-        float f2 = q.V((View)localObject);
+        localObject = NoteEditorUI.N(this.vCx).getChildAt(i);
+        float f2 = t.Y((View)localObject);
         if (f1 > ((View)localObject).getBottom() + f2) {}
         for (;;)
         {
@@ -37,26 +39,27 @@ final class NoteEditorUI$22
           f1 = ((View)localObject).getBottom() + f2;
         }
       }
-      if ((f1 < com.tencent.mm.compatible.util.j.cY(this.val$context)[1]) && (f1 > 0.0F))
+      if ((f1 < com.tencent.mm.compatible.util.j.dh(this.val$context)[1]) && (f1 > 0.0F))
       {
-        localObject = (RelativeLayout.LayoutParams)NoteEditorUI.b(this.rLT).getLayoutParams();
+        localObject = (RelativeLayout.LayoutParams)NoteEditorUI.b(this.vCx).getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).height = ((int)f1);
-        NoteEditorUI.b(this.rLT).setLayoutParams((ViewGroup.LayoutParams)localObject);
+        NoteEditorUI.b(this.vCx).setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
-    NoteEditorUI.b(this.rLT).setVisibility(0);
-    if (NoteEditorUI.a(this.rLT) != null)
+    NoteEditorUI.b(this.vCx).setVisibility(0);
+    if (NoteEditorUI.a(this.vCx) != null)
     {
-      localObject = NoteEditorUI.a(this.rLT);
+      localObject = NoteEditorUI.a(this.vCx);
       int[] arrayOfInt = new int[2];
-      int[] tmp179_177 = arrayOfInt;
-      tmp179_177[0] = 0;
-      int[] tmp183_179 = tmp179_177;
-      tmp183_179[1] = 0;
-      tmp183_179;
+      int[] tmp185_183 = arrayOfInt;
+      tmp185_183[0] = 0;
+      int[] tmp189_185 = tmp185_183;
+      tmp189_185[1] = 0;
+      tmp189_185;
       ((g)localObject).mParentView.getLocationOnScreen(arrayOfInt);
-      ((g)localObject).rHY.showAtLocation(((g)localObject).mParentView, 49, 0, arrayOfInt[1] + 50);
+      ((g)localObject).vyE.showAtLocation(((g)localObject).mParentView, 49, 0, arrayOfInt[1] + 50);
     }
+    AppMethodBeat.o(27018);
   }
 }
 

@@ -5,52 +5,55 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.l;
 import com.tencent.mm.modelappbrand.a.b.f;
-import com.tencent.mm.sdk.platformtools.c;
+import com.tencent.mm.sdk.platformtools.d;
 
 public final class a
   implements b.f
 {
-  private final int hgL;
-  private final int hgN;
-  private final int hgO;
+  private final int eln;
+  private final int elp;
+  private final int elq;
   
   public a(int paramInt1, int paramInt2)
   {
-    this.hgL = paramInt1;
-    this.hgN = paramInt2;
-    this.hgO = -1;
+    this.eln = paramInt1;
+    this.elp = paramInt2;
+    this.elq = -1;
   }
   
-  public final String pU()
+  public final String tX()
   {
     return "WxaNearbyShowcaseIcon";
   }
   
-  public final Bitmap q(Bitmap paramBitmap)
+  public final Bitmap x(Bitmap paramBitmap)
   {
-    Bitmap localBitmap = c.a(paramBitmap, false, paramBitmap.getWidth() / 2, false);
-    paramBitmap = Bitmap.createScaledBitmap(localBitmap, this.hgL, this.hgL, false);
+    AppMethodBeat.i(93769);
+    Bitmap localBitmap = d.a(paramBitmap, false, paramBitmap.getWidth() / 2, false);
+    paramBitmap = Bitmap.createScaledBitmap(localBitmap, this.eln, this.eln, false);
     if (localBitmap != paramBitmap) {
-      l.Fb().n(localBitmap);
+      l.XQ().u(localBitmap);
     }
-    localBitmap = Bitmap.createBitmap(this.hgL + this.hgN * 2, this.hgL + this.hgN * 2, Bitmap.Config.ARGB_8888);
+    localBitmap = Bitmap.createBitmap(this.eln + this.elp * 2, this.eln + this.elp * 2, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
-    localCanvas.drawBitmap(paramBitmap, this.hgN, this.hgN, new Paint());
-    l.Fb().n(paramBitmap);
+    localCanvas.drawBitmap(paramBitmap, this.elp, this.elp, new Paint());
+    l.XQ().u(paramBitmap);
     paramBitmap = new Paint();
-    paramBitmap.setColor(this.hgO);
+    paramBitmap.setColor(this.elq);
     paramBitmap.setAntiAlias(true);
     paramBitmap.setStyle(Paint.Style.STROKE);
-    paramBitmap.setStrokeWidth(this.hgN);
-    localCanvas.drawCircle(this.hgL / 2 + this.hgN, this.hgL / 2 + this.hgN, this.hgL / 2, paramBitmap);
+    paramBitmap.setStrokeWidth(this.elp);
+    localCanvas.drawCircle(this.eln / 2 + this.elp, this.eln / 2 + this.elp, this.eln / 2, paramBitmap);
+    AppMethodBeat.o(93769);
     return localBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.widget.a
  * JD-Core Version:    0.7.0.1
  */

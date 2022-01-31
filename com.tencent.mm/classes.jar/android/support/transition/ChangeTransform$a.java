@@ -3,38 +3,38 @@ package android.support.transition;
 import android.view.View;
 
 final class ChangeTransform$a
-  extends ae
+  extends ad
 {
   private View mView;
-  private j qn;
+  private j rk;
   
   ChangeTransform$a(View paramView, j paramj)
   {
     this.mView = paramView;
-    this.qn = paramj;
+    this.rk = paramj;
   }
   
   public final void a(Transition paramTransition)
   {
     paramTransition.b(this);
-    k.x(this.mView);
-    this.mView.setTag(z.a.transition_transform, null);
-    this.mView.setTag(z.a.parent_matrix, null);
+    k.A(this.mView);
+    this.mView.setTag(2131820686, null);
+    this.mView.setTag(2131820648, null);
   }
   
-  public final void bq()
+  public final void ce()
   {
-    this.qn.setVisibility(4);
+    this.rk.setVisibility(4);
   }
   
-  public final void br()
+  public final void cf()
   {
-    this.qn.setVisibility(0);
+    this.rk.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.transition.ChangeTransform.a
  * JD-Core Version:    0.7.0.1
  */

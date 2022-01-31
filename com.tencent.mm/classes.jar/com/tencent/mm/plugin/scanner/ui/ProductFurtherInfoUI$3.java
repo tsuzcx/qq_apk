@@ -4,6 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewParent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ProductFurtherInfoUI$3
   implements View.OnTouchListener
@@ -12,9 +13,11 @@ final class ProductFurtherInfoUI$3
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(81046);
     if ((paramView != null) && (paramView.getParent() != null)) {
       paramView.getParent().requestDisallowInterceptTouchEvent(true);
     }
+    AppMethodBeat.o(81046);
     return false;
   }
 }

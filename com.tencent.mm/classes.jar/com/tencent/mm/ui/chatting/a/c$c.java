@@ -8,7 +8,7 @@ public final class c$c
     this.timestamp = paramLong;
   }
   
-  public final boolean ado(String paramString)
+  public final boolean atP(String paramString)
   {
     return false;
   }

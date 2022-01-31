@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.c;
 
 final class IPCallShareCouponUI$6$1
@@ -7,29 +8,33 @@ final class IPCallShareCouponUI$6$1
 {
   IPCallShareCouponUI$6$1(IPCallShareCouponUI.6 param6) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(22323);
     int i = paramInt;
-    if (!IPCallShareCouponUI.h(this.lyZ.lyX)) {
+    if (!IPCallShareCouponUI.h(this.nWl.nWj)) {
       i = paramInt + 1;
     }
     switch (i)
     {
-    default: 
-      return;
-    case 0: 
-      IPCallShareCouponUI.i(this.lyZ.lyX);
-      return;
-    case 1: 
-      IPCallShareCouponUI.d(this.lyZ.lyX);
-      return;
     }
-    IPCallShareCouponUI.e(this.lyZ.lyX);
+    for (;;)
+    {
+      AppMethodBeat.o(22323);
+      return;
+      IPCallShareCouponUI.i(this.nWl.nWj);
+      AppMethodBeat.o(22323);
+      return;
+      IPCallShareCouponUI.d(this.nWl.nWj);
+      AppMethodBeat.o(22323);
+      return;
+      IPCallShareCouponUI.e(this.nWl.nWj);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallShareCouponUI.6.1
  * JD-Core Version:    0.7.0.1
  */

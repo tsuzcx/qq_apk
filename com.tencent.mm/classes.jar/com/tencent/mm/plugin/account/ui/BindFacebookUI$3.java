@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.f.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.g.a.c;
 
 final class BindFacebookUI$3
   implements View.OnClickListener
@@ -11,7 +12,9 @@ final class BindFacebookUI$3
   
   public final void onClick(View paramView)
   {
-    BindFacebookUI.c(this.flf).a(this.flf, FacebookAuthUI.flD, new BindFacebookUI.a(this.flf, (byte)0));
+    AppMethodBeat.i(124727);
+    BindFacebookUI.c(this.gCw).a(this.gCw, BindFacebookUI.arg(), new BindFacebookUI.a(this.gCw, (byte)0));
+    AppMethodBeat.o(124727);
   }
 }
 

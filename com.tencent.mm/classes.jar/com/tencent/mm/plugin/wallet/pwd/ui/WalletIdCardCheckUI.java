@@ -1,25 +1,23 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.h.b.a.aa;
-import com.tencent.mm.plugin.wallet_core.model.af;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.plugin.wallet_core.model.q;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.g.b.a.bt;
+import com.tencent.mm.plugin.wallet_core.model.al;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.model.v;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.c.l;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.wallet_core.c.n;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
@@ -31,114 +29,98 @@ public class WalletIdCardCheckUI
   extends WalletBaseUI
   implements TextView.OnEditorActionListener, WalletFormView.a
 {
-  private WalletFormView qpk;
-  private TextView qpl;
-  private TextView qpm;
-  private Button qpn;
-  private int qpo = 1;
+  private Button tZA;
+  private int tZB = 1;
+  private WalletFormView tZx;
+  private TextView tZy;
+  private TextView tZz;
   
-  protected final void bfH()
+  public void forceCancel()
   {
-    y.d("Micromsg.WalletIdCardCheckUI", "check pwd ");
-    this.wCh.bfH();
+    AppMethodBeat.i(46326);
+    ab.d("Micromsg.WalletIdCardCheckUI", "check pwd ");
+    cleanScenes();
+    AppMethodBeat.o(46326);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    return false;
-  }
-  
-  public final void gG(boolean paramBoolean)
-  {
-    this.qpm.setVisibility(4);
-  }
-  
-  protected final int getForceOrientation()
+  public int getForceOrientation()
   {
     return 1;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.wallet_check_id_card;
+    return 2130971161;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.qpk = ((WalletFormView)findViewById(a.f.identity_et));
-    this.qpm = ((TextView)findViewById(a.f.wallet_card_identify_err_hint));
-    this.qpl = ((TextView)findViewById(a.f.wallet_card_identify_tipmsg));
-    this.qpk.setOnInputValidChangeListener(this);
-    this.qpk.setOnEditorActionListener(this);
-    this.qpm.setVisibility(4);
-    this.qpn = ((Button)findViewById(a.f.install_query));
-    com.tencent.mm.wallet_core.ui.formview.a.d(this.qpk);
-    e(this.qpk, 1, false);
-    this.qpn.setOnClickListener(new WalletIdCardCheckUI.2(this));
-    this.qpo = o.bVs().bVT();
-    Object localObject1 = o.bVs();
-    if (((ag)localObject1).qzd != null)
+    AppMethodBeat.i(46330);
+    this.tZx = ((WalletFormView)findViewById(2131829052));
+    this.tZz = ((TextView)findViewById(2131829061));
+    this.tZy = ((TextView)findViewById(2131829050));
+    this.tZx.setOnInputValidChangeListener(this);
+    this.tZx.setOnEditorActionListener(this);
+    this.tZz.setVisibility(4);
+    this.tZA = ((Button)findViewById(2131829081));
+    com.tencent.mm.wallet_core.ui.formview.a.d(this.tZx);
+    setEditFocusListener(this.tZx, 1, false);
+    this.tZA.setOnClickListener(new WalletIdCardCheckUI.2(this));
+    this.tZB = t.cTN().cUv();
+    Object localObject1 = t.cTN();
+    if (((am)localObject1).ulN != null)
     {
-      localObject1 = ((ag)localObject1).qzd.field_cre_name;
-      y.i("Micromsg.WalletIdCardCheckUI", "mIdentityType %d %s", new Object[] { Integer.valueOf(this.qpo), localObject1 });
-      if (!bk.bl((String)localObject1)) {
-        break label300;
+      localObject1 = ((am)localObject1).ulN.field_cre_name;
+      ab.i("Micromsg.WalletIdCardCheckUI", "mIdentityType %d %s", new Object[] { Integer.valueOf(this.tZB), localObject1 });
+      if (!bo.isNullOrNil((String)localObject1)) {
+        break label305;
       }
-      localObject1 = o.bVA().O(this, this.qpo);
+      localObject1 = t.cTV().ab(this, this.tZB);
     }
-    label300:
+    label305:
     for (;;)
     {
-      Object localObject2 = this.qpk;
-      int i = this.qpo;
+      Object localObject2 = this.tZx;
+      int i = this.tZB;
       localObject2 = ((WalletFormView)localObject2).getLogicDelegate();
       if ((localObject2 instanceof a.a)) {
-        ((a.a)localObject2).Jd(i);
+        ((a.a)localObject2).RY(i);
       }
-      this.qpk.setTitleText((String)localObject1);
-      this.qpk.bvr();
-      if (this.qpo == 1) {
-        e(this.qpk, 1, false);
+      this.tZx.setTitleText((String)localObject1);
+      this.tZx.cfK();
+      if (this.tZB == 1) {
+        setEditFocusListener(this.tZx, 1, false);
       }
       for (;;)
       {
-        localObject1 = o.bVs().aEZ();
-        this.qpk.setHint(getString(a.i.wallet_password_setting_digitalcert_hint, new Object[] { e.afm((String)localObject1) }));
+        localObject1 = t.cTN().getTrueName();
+        this.tZx.setHint(getString(2131305394, new Object[] { e.awf((String)localObject1) }));
+        AppMethodBeat.o(46330);
         return;
         localObject1 = "";
         break;
-        e(this.qpk, 1, true);
+        setEditFocusListener(this.tZx, 1, true);
       }
     }
-  }
-  
-  public final boolean j(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    y.d("Micromsg.WalletIdCardCheckUI", " errCode: " + paramInt2 + " errMsg :" + paramString);
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramm instanceof l)))
-    {
-      paramString = new aa();
-      paramString.ckr = 1L;
-      paramString.cks = 2L;
-      paramString.QX();
-      h.a(this, getString(a.i.wallet_password_setting_digitalcert_install_ok), "", getString(a.i.wallet_i_know_it), false, new WalletIdCardCheckUI.3(this));
-    }
-    return true;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(46325);
     super.onCreate(paramBundle);
-    setMMTitle(a.i.wallet_password_setting_digitalcert_install_title);
-    kh(1580);
+    setMMTitle(2131305402);
+    addSceneEndListener(1580);
     initView();
     setBackBtn(new WalletIdCardCheckUI.1(this));
+    AppMethodBeat.o(46325);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(46329);
     super.onDestroy();
-    ki(1580);
+    removeSceneEndListener(1580);
+    AppMethodBeat.o(46329);
   }
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
@@ -146,24 +128,66 @@ public class WalletIdCardCheckUI
     return false;
   }
   
+  public final void onInputValidChange(boolean paramBoolean)
+  {
+    AppMethodBeat.i(46335);
+    this.tZz.setVisibility(4);
+    AppMethodBeat.o(46335);
+  }
+  
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((this.lMr != null) && (this.lMr.isShown()))
+    AppMethodBeat.i(46333);
+    if ((this.mKBLayout != null) && (this.mKBLayout.isShown()))
     {
-      this.lMr.setVisibility(8);
+      this.mKBLayout.setVisibility(8);
+      AppMethodBeat.o(46333);
       return true;
     }
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.o(46333);
+    return bool;
   }
   
   public void onPause()
   {
+    AppMethodBeat.i(46328);
     super.onPause();
+    AppMethodBeat.o(46328);
+  }
+  
+  public boolean onPreSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(46334);
+    ab.d("Micromsg.WalletIdCardCheckUI", " errCode: " + paramInt2 + " errMsg :" + paramString);
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramm instanceof n)))
+    {
+      paramString = new bt();
+      paramString.cRI = 1L;
+      paramString.cYT = 2L;
+      paramString.ake();
+      h.a(this, getString(2131305397), "", getString(2131305099), false, new WalletIdCardCheckUI.3(this));
+    }
+    AppMethodBeat.o(46334);
+    return true;
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(46327);
     super.onResume();
+    AppMethodBeat.o(46327);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

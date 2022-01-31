@@ -1,59 +1,60 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ChattingSendDataToDeviceUI$a$1
   implements Runnable
 {
-  ChattingSendDataToDeviceUI$a$1(ChattingSendDataToDeviceUI.a parama, int paramInt1, ChattingSendDataToDeviceUI.c paramc, as paramas, int paramInt2) {}
+  ChattingSendDataToDeviceUI$a$1(ChattingSendDataToDeviceUI.a parama, int paramInt1, ChattingSendDataToDeviceUI.c paramc, ap paramap, int paramInt2) {}
   
   public final void run()
   {
-    int i = this.vlB + 1;
-    while (this.vlG.vlx.vln)
+    AppMethodBeat.i(30776);
+    int i = this.zBa + 1;
+    int j;
+    while (this.zBf.zAW.zAN)
     {
-      int j;
-      if (i >= 100)
-      {
+      if (i >= 100) {
         j = i;
-        try
+      }
+      try
+      {
+        if (this.zAZ.csn.equals("send_data_sucess"))
         {
-          if (this.vlA.bKT.equals("send_data_sucess"))
-          {
-            j = i;
-            this.vlG.vlx.runOnUiThread(new ChattingSendDataToDeviceUI.a.1.1(this));
-            return;
-          }
           j = i;
-          if (!this.vlA.bKT.equals("send_data_failed")) {
-            continue;
-          }
-          j = i;
-          this.vlG.vlx.runOnUiThread(new ChattingSendDataToDeviceUI.a.1.2(this));
+          this.zBf.zAW.runOnUiThread(new ChattingSendDataToDeviceUI.a.1.1(this));
+          AppMethodBeat.o(30776);
           return;
         }
-        catch (Exception localException)
-        {
-          y.d("MicroMsg.ChattingSendDataToDeviceUI", "setSendingProgress exception %s", new Object[] { localException });
-          i = j;
+        j = i;
+        if (!this.zAZ.csn.equals("send_data_failed")) {
+          continue;
         }
+        j = i;
+        this.zBf.zAW.runOnUiThread(new ChattingSendDataToDeviceUI.a.1.2(this));
+        AppMethodBeat.o(30776);
+        return;
       }
-      else
+      catch (Exception localException)
       {
-        j = i;
-        this.vlz.vnu.setProgress(i);
-        j = i;
-        this.vlA.progress = i;
-        i += 1;
-        j = i;
-        Thread.sleep(this.vlC);
+        ab.d("MicroMsg.ChattingSendDataToDeviceUI", "setSendingProgress exception %s", new Object[] { localException });
+        i = j;
       }
+      j = i;
+      this.zAY.zCQ.Px(i);
+      j = i;
+      this.zAZ.progress = i;
+      i += 1;
+      j = i;
+      Thread.sleep(this.zBb);
     }
+    AppMethodBeat.o(30776);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingSendDataToDeviceUI.a.1
  * JD-Core Version:    0.7.0.1
  */

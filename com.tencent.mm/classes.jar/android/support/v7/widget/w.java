@@ -1,88 +1,123 @@
 package android.support.v7.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.u;
-import android.support.v7.view.menu.h.a;
-import android.support.v7.view.menu.o.a;
-import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window.Callback;
 
-public abstract interface w
+public final class w
+  extends RecyclerView.h
 {
-  public abstract void a(o.a parama, h.a parama1);
+  private static final int[] GC = { 16843284 };
+  private Drawable acK;
+  private int mOrientation;
+  private final Rect qA = new Rect();
   
-  public abstract void a(aq paramaq);
+  public w(Context paramContext)
+  {
+    paramContext = paramContext.obtainStyledAttributes(GC);
+    this.acK = paramContext.getDrawable(0);
+    paramContext.recycle();
+    this.mOrientation = 1;
+  }
   
-  public abstract void a(Menu paramMenu, o.a parama);
+  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
+  {
+    int m = 0;
+    int k = 0;
+    if ((paramRecyclerView.getLayoutManager() == null) || (this.acK == null)) {
+      return;
+    }
+    int j;
+    int i;
+    int n;
+    int i1;
+    if (this.mOrientation == 1)
+    {
+      paramCanvas.save();
+      if (paramRecyclerView.getClipToPadding())
+      {
+        j = paramRecyclerView.getPaddingLeft();
+        i = paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight();
+        paramCanvas.clipRect(j, paramRecyclerView.getPaddingTop(), i, paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom());
+      }
+      for (;;)
+      {
+        m = paramRecyclerView.getChildCount();
+        while (k < m)
+        {
+          params = paramRecyclerView.getChildAt(k);
+          RecyclerView.d(params, this.qA);
+          n = this.qA.bottom;
+          n = Math.round(params.getTranslationY()) + n;
+          i1 = this.acK.getIntrinsicHeight();
+          this.acK.setBounds(j, n - i1, i, n);
+          this.acK.draw(paramCanvas);
+          k += 1;
+        }
+        i = paramRecyclerView.getWidth();
+        j = 0;
+      }
+      paramCanvas.restore();
+      return;
+    }
+    paramCanvas.save();
+    if (paramRecyclerView.getClipToPadding())
+    {
+      j = paramRecyclerView.getPaddingTop();
+      i = paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom();
+      paramCanvas.clipRect(paramRecyclerView.getPaddingLeft(), j, paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight(), i);
+    }
+    for (;;)
+    {
+      n = paramRecyclerView.getChildCount();
+      k = m;
+      while (k < n)
+      {
+        params = paramRecyclerView.getChildAt(k);
+        paramRecyclerView.getLayoutManager();
+        RecyclerView.i.d(params, this.qA);
+        m = this.qA.right;
+        m = Math.round(params.getTranslationX()) + m;
+        i1 = this.acK.getIntrinsicWidth();
+        this.acK.setBounds(m - i1, j, m, i);
+        this.acK.draw(paramCanvas);
+        k += 1;
+      }
+      i = paramRecyclerView.getHeight();
+      j = 0;
+    }
+    paramCanvas.restore();
+  }
   
-  public abstract u c(int paramInt, long paramLong);
+  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+  {
+    if (this.acK == null)
+    {
+      paramRect.set(0, 0, 0, 0);
+      return;
+    }
+    if (this.mOrientation == 1)
+    {
+      paramRect.set(0, 0, 0, this.acK.getIntrinsicHeight());
+      return;
+    }
+    paramRect.set(0, 0, this.acK.getIntrinsicWidth(), 0);
+  }
   
-  public abstract void collapseActionView();
-  
-  public abstract void dismissPopupMenus();
-  
-  public abstract boolean fE();
-  
-  public abstract boolean fF();
-  
-  public abstract void fG();
-  
-  public abstract Context getContext();
-  
-  public abstract View getCustomView();
-  
-  public abstract int getDisplayOptions();
-  
-  public abstract int getHeight();
-  
-  public abstract Menu getMenu();
-  
-  public abstract int getNavigationMode();
-  
-  public abstract CharSequence getTitle();
-  
-  public abstract int getVisibility();
-  
-  public abstract ViewGroup gz();
-  
-  public abstract boolean hasExpandedActionView();
-  
-  public abstract boolean hideOverflowMenu();
-  
-  public abstract boolean isOverflowMenuShowing();
-  
-  public abstract void setBackgroundDrawable(Drawable paramDrawable);
-  
-  public abstract void setCollapsible(boolean paramBoolean);
-  
-  public abstract void setCustomView(View paramView);
-  
-  public abstract void setDisplayOptions(int paramInt);
-  
-  public abstract void setIcon(int paramInt);
-  
-  public abstract void setIcon(Drawable paramDrawable);
-  
-  public abstract void setLogo(int paramInt);
-  
-  public abstract void setLogo(Drawable paramDrawable);
-  
-  public abstract void setNavigationContentDescription(int paramInt);
-  
-  public abstract void setVisibility(int paramInt);
-  
-  public abstract void setWindowCallback(Window.Callback paramCallback);
-  
-  public abstract void setWindowTitle(CharSequence paramCharSequence);
-  
-  public abstract boolean showOverflowMenu();
+  public final void setDrawable(Drawable paramDrawable)
+  {
+    if (paramDrawable == null) {
+      throw new IllegalArgumentException("Drawable cannot be null.");
+    }
+    this.acK = paramDrawable;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.widget.w
  * JD-Core Version:    0.7.0.1
  */

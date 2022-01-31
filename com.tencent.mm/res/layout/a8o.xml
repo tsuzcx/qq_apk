@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:background="@color/rh" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/b1n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/cll" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="43.0dip" android:src="@drawable/b49" android:scaleType="fitCenter" android:layout_alignParentTop="true" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/clm" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
-        <Button android:textSize="@dimen/a23" android:textColor="#ff3b3b3b" android:id="@id/cln" android:background="@drawable/q4" android:layout_width="@dimen/a24" android:layout_height="@dimen/a22" android:text="@string/clb" />
-        <Button android:textSize="@dimen/a23" android:textColor="#ff3b3b3b" android:id="@id/clo" android:background="@drawable/q5" android:layout_width="@dimen/a24" android:layout_height="@dimen/a22" android:layout_marginTop="30.0dip" android:text="@string/clw" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/cl2" android:background="@drawable/rr" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar android:id="@id/b1o" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:onClick="onClick" />
     </LinearLayout>
-    <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:src="@drawable/b46" android:scaleType="fitCenter" android:layout_below="@id/clm" />
-    <LinearLayout android:gravity="center_horizontal" android:id="@id/clp" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="39.0dip" android:layout_above="@id/clm" />
-    <LinearLayout android:gravity="center_horizontal" android:id="@id/clq" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" />
-    <LinearLayout android:id="@id/clr" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="90.0dip" android:layout_alignParentBottom="true" />
 </RelativeLayout>

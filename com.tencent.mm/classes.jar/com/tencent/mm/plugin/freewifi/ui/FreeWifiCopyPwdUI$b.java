@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.freewifi.ui;
 public final class FreeWifiCopyPwdUI$b
 {
   Object data;
-  int krv;
+  int mNj;
   
   public FreeWifiCopyPwdUI$b(FreeWifiCopyPwdUI paramFreeWifiCopyPwdUI, int paramInt, Object paramObject)
   {
-    this.krv = paramInt;
+    this.mNj = paramInt;
     this.data = paramObject;
   }
 }

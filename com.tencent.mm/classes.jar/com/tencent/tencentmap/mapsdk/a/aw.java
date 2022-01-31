@@ -1,15 +1,25 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-public abstract class aw
-  implements np
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.kx;
+
+public class aw
+  extends by
 {
-  public ay.b _data;
+  private kx a;
+  private bf b;
   
-  public abstract int _onDispatch(String paramString, ju paramju);
+  public void a()
+  {
+    AppMethodBeat.i(100694);
+    this.a = null;
+    this.b = null;
+    AppMethodBeat.o(100694);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.aw
  * JD-Core Version:    0.7.0.1
  */

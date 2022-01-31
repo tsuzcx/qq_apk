@@ -3,11 +3,12 @@ package com.tencent.mm.plugin.fav.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.ui.widget.FavTagPanel;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,30 +19,33 @@ final class FavTagEditUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (FavTagEditUI.b(this.kdx))
+    AppMethodBeat.i(74139);
+    if (FavTagEditUI.b(this.myh))
     {
-      FavTagEditUI.c(this.kdx);
+      FavTagEditUI.c(this.myh);
+      AppMethodBeat.o(74139);
       return true;
     }
-    paramMenuItem = FavTagEditUI.d(this.kdx).getTagList();
-    Object localObject1 = FavTagEditUI.d(this.kdx).getEditText().trim();
-    if (!bk.bl((String)localObject1))
+    paramMenuItem = FavTagEditUI.d(this.myh).getTagList();
+    Object localObject1 = FavTagEditUI.d(this.myh).getEditText().trim();
+    if (!bo.isNullOrNil((String)localObject1))
     {
       paramMenuItem.remove(localObject1);
       paramMenuItem.add(localObject1);
     }
-    FavTagEditUI.a(this.kdx, ((ae)g.t(ae.class)).getFavItemInfoStorage().eE(this.kdy));
-    if (FavTagEditUI.e(this.kdx) != null)
+    FavTagEditUI.a(this.myh, ((ae)g.G(ae.class)).getFavItemInfoStorage().kb(this.myi));
+    if (FavTagEditUI.e(this.myh) != null)
     {
-      FavTagEditUI.a(FavTagEditUI.e(this.kdx), paramMenuItem, this.kdx.getIntent().getIntExtra("key_fav_scene", 1));
+      FavTagEditUI.a(FavTagEditUI.e(this.myh), paramMenuItem, this.myh.getIntent().getIntExtra("key_fav_scene", 1));
       localObject1 = new Intent();
       ((Intent)localObject1).putExtra("key_fav_result_list", paramMenuItem);
-      this.kdx.setResult(-1, (Intent)localObject1);
+      this.myh.setResult(-1, (Intent)localObject1);
     }
     for (;;)
     {
-      this.kdx.finish();
-      this.kdx.XM();
+      this.myh.finish();
+      this.myh.hideVKB();
+      AppMethodBeat.o(74139);
       return true;
       localObject1 = new String[paramMenuItem.size()];
       Object localObject2 = paramMenuItem.iterator();
@@ -54,7 +58,7 @@ final class FavTagEditUI$3
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("key_fav_result_array", (String[])localObject1);
       ((Intent)localObject2).putExtra("key_fav_result_list", paramMenuItem);
-      this.kdx.setResult(-1, (Intent)localObject2);
+      this.myh.setResult(-1, (Intent)localObject2);
     }
   }
 }

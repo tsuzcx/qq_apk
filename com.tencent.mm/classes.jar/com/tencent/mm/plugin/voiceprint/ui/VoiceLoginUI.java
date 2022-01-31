@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -7,176 +10,232 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.voiceprint.model.e;
 import com.tencent.mm.plugin.voiceprint.model.n;
 import com.tencent.mm.plugin.voiceprint.model.n.a;
-import com.tencent.mm.pluginsdk.permission.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class VoiceLoginUI
   extends BaseVoicePrintUI
   implements n.a
 {
-  private String hcm = null;
-  private n pMt = null;
+  private String ikj = null;
+  private n tso = null;
   
   private void goBack()
   {
+    AppMethodBeat.i(26196);
     setResult(0);
     finish();
+    AppMethodBeat.o(26196);
   }
   
-  public final void PX(String paramString)
+  public final void aeD(String paramString)
   {
-    y.d("MicroMsg.VoiceLoginUI", "onGetText");
-    this.pLy = paramString;
-    this.pLS.bPs();
-    this.pLS.setTipText(paramString);
-    this.pLS.bPr();
-    this.pLP.setEnabled(true);
+    AppMethodBeat.i(26198);
+    ab.d("MicroMsg.VoiceLoginUI", "onGetText");
+    this.tru = paramString;
+    this.trO.cLx();
+    this.trO.setTipText(paramString);
+    this.trO.bRO();
+    this.trL.setEnabled(true);
+    AppMethodBeat.o(26198);
   }
   
-  public final void bPa()
+  protected final void bMe()
   {
-    zO(R.l.voice_print_login_network_error);
+    AppMethodBeat.i(26195);
+    findViewById(2131823890).setVisibility(8);
+    this.trO.bRN();
+    this.trO.setTitleText(2131304561);
+    this.trO.cLy();
+    this.trL.setEnabled(false);
+    AppMethodBeat.o(26195);
   }
   
-  public final void bPc()
+  public final void cLf()
   {
-    this.pLP.setEnabled(false);
-    this.pLP.setVisibility(4);
-    this.pLS.bPr();
-    this.pLS.setErr(R.l.voice_print_login_blocked_by_limited);
-    this.pLS.bPu();
+    AppMethodBeat.i(26200);
+    GY(2131304568);
+    AppMethodBeat.o(26200);
   }
   
-  protected final void bPh()
+  public final void cLg()
   {
-    y.d("MicroMsg.VoiceLoginUI", "sendVoice, filename:%s", new Object[] { this.pLU });
-    if ((!bk.bl(this.pLU)) && (!bk.bl(this.pLy)))
+    AppMethodBeat.i(26201);
+    this.trL.setEnabled(false);
+    this.trL.setVisibility(4);
+    this.trO.bRO();
+    this.trO.setErr(2131304567);
+    this.trO.cLz();
+    AppMethodBeat.o(26201);
+  }
+  
+  protected final void cLn()
+  {
+    AppMethodBeat.i(26194);
+    ab.d("MicroMsg.VoiceLoginUI", "sendVoice, filename:%s", new Object[] { this.trQ });
+    if ((!bo.isNullOrNil(this.trQ)) && (!bo.isNullOrNil(this.tru)))
     {
-      Object localObject = this.pMt;
-      localObject = new com.tencent.mm.plugin.voiceprint.model.h(this.pLU, ((n)localObject).pLz, ((n)localObject).fRK);
-      ((com.tencent.mm.plugin.voiceprint.model.h)localObject).pLi = true;
-      au.Dk().a((m)localObject, 0);
-      this.pLP.setEnabled(false);
-      this.pLS.bPq();
+      Object localObject = this.tso;
+      localObject = new com.tencent.mm.plugin.voiceprint.model.h(this.trQ, ((n)localObject).trv, ((n)localObject).hll);
+      ((com.tencent.mm.plugin.voiceprint.model.h)localObject).tre = true;
+      aw.Rc().a((m)localObject, 0);
+      this.trL.setEnabled(false);
+      this.trO.bRN();
     }
+    AppMethodBeat.o(26194);
   }
   
-  protected final void beK()
+  public final void mH(boolean paramBoolean)
   {
-    findViewById(R.h.right_btn).setVisibility(8);
-    this.pLS.bPq();
-    this.pLS.setTitleText(R.l.voice_print_auth_title);
-    this.pLS.bPt();
-    this.pLP.setEnabled(false);
-  }
-  
-  public final void jO(boolean paramBoolean)
-  {
-    this.pLS.bPr();
-    this.pLP.setEnabled(true);
+    AppMethodBeat.i(26199);
+    this.trO.bRO();
+    this.trL.setEnabled(true);
     if (paramBoolean)
     {
-      y.i("MicroMsg.VoiceLoginUI", "login success[%s]", new Object[] { bk.aac(this.pMt.fmR) });
+      ab.i("MicroMsg.VoiceLoginUI", "login success[%s]", new Object[] { bo.aqg(this.tso.gEl) });
       Intent localIntent = new Intent();
-      localIntent.putExtra("VoiceLoginAuthPwd", this.pMt.fmR);
+      localIntent.putExtra("VoiceLoginAuthPwd", this.tso.gEl);
       setResult(-1, localIntent);
       finish();
+      AppMethodBeat.o(26199);
       return;
     }
-    y.i("MicroMsg.VoiceLoginUI", "login failed");
-    this.pLS.setErr(R.l.voice_print_auth_error);
-    this.pLS.bPu();
+    ab.i("MicroMsg.VoiceLoginUI", "login failed");
+    this.trO.setErr(2131304560);
+    this.trO.cLz();
+    AppMethodBeat.o(26199);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(26193);
     super.onCreate(paramBundle);
-    com.tencent.mm.plugin.report.service.h.nFQ.f(11557, new Object[] { Integer.valueOf(1) });
-    this.hcm = bk.aM(getIntent().getStringExtra("Kusername"), null);
-    paramBundle = bk.aM(getIntent().getStringExtra("Kvertify_key"), null);
-    y.d("MicroMsg.VoiceLoginUI", "summerauth onCreate, username:%s loginTicket==null:%b", new Object[] { this.hcm, Boolean.valueOf(bk.bl(paramBundle)) });
-    if ((bk.bl(this.hcm)) && (bk.bl(paramBundle)))
+    com.tencent.mm.plugin.report.service.h.qsU.e(11557, new Object[] { Integer.valueOf(1) });
+    this.ikj = bo.bf(getIntent().getStringExtra("Kusername"), null);
+    paramBundle = bo.bf(getIntent().getStringExtra("Kvertify_key"), null);
+    ab.d("MicroMsg.VoiceLoginUI", "summerauth onCreate, username:%s loginTicket==null:%b", new Object[] { this.ikj, Boolean.valueOf(bo.isNullOrNil(paramBundle)) });
+    if ((bo.isNullOrNil(this.ikj)) && (bo.isNullOrNil(paramBundle)))
     {
-      y.e("MicroMsg.VoiceLoginUI", "onCreate error, username and ticket are both null");
+      ab.e("MicroMsg.VoiceLoginUI", "onCreate error, username and ticket are both null");
+      AppMethodBeat.o(26193);
       return;
     }
-    this.pMt = new n();
-    this.pMt.hcm = this.hcm;
-    this.pMt.fRK = paramBundle;
-    this.pMt.pLB = this;
-    paramBundle = this.pMt;
-    if (bk.bl(paramBundle.fRK))
+    this.tso = new n();
+    this.tso.ikj = this.ikj;
+    this.tso.hll = paramBundle;
+    this.tso.trx = this;
+    paramBundle = this.tso;
+    if (bo.isNullOrNil(paramBundle.hll))
     {
-      paramBundle = new e(paramBundle.hcm);
-      au.Dk().a(paramBundle, 0);
+      paramBundle = new e(paramBundle.ikj);
+      aw.Rc().a(paramBundle, 0);
     }
     for (;;)
     {
-      y.i("MicroMsg.VoiceLoginUI", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(a.a(this, "android.permission.RECORD_AUDIO", 80, "", "")), bk.csb(), this });
+      ab.i("MicroMsg.VoiceLoginUI", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(b.a(this, "android.permission.RECORD_AUDIO", 80, "", "")), bo.dtY(), this });
       setBackBtn(new VoiceLoginUI.1(this));
-      if (!d.gF(23)) {
-        break;
+      if (d.fv(23))
+      {
+        getWindow().setStatusBarColor(getResources().getColor(2131690310));
+        supportLightStatusBar();
       }
-      getWindow().setStatusBarColor(getResources().getColor(R.e.navpage));
-      czk();
+      AppMethodBeat.o(26193);
       return;
-      paramBundle.bPb();
+      paramBundle.cLh();
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(26202);
     super.onDestroy();
-    if (this.pMt != null)
+    if (this.tso != null)
     {
-      n localn = this.pMt;
-      au.Dk().b(618, localn);
-      au.Dk().b(616, localn);
-      au.Dk().b(617, localn);
-      localn.pLB = null;
+      n localn = this.tso;
+      aw.Rc().b(618, localn);
+      aw.Rc().b(616, localn);
+      aw.Rc().b(617, localn);
+      localn.trx = null;
     }
+    AppMethodBeat.o(26202);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(26197);
     if (paramInt == 4)
     {
       goBack();
+      AppMethodBeat.o(26197);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(26197);
+    return bool;
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    y.i("MicroMsg.VoiceLoginUI", "summerper onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    AppMethodBeat.i(26203);
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
+    {
+      ab.i("MicroMsg.VoiceLoginUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      AppMethodBeat.o(26203);
+      return;
+    }
+    ab.i("MicroMsg.VoiceLoginUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    if (paramArrayOfInt[0] == 0)
+    for (;;)
     {
-      bPe();
+      AppMethodBeat.o(26203);
       return;
+      if (paramArrayOfInt[0] == 0)
+      {
+        cLk();
+        AppMethodBeat.o(26203);
+        return;
+      }
+      com.tencent.mm.ui.base.h.a(this, getString(2131302075), getString(2131302083), getString(2131300996), getString(2131297837), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(26191);
+          paramAnonymousDialogInterface.dismiss();
+          VoiceLoginUI.this.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+          AppMethodBeat.o(26191);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(26192);
+          paramAnonymousDialogInterface.dismiss();
+          AppMethodBeat.o(26192);
+        }
+      });
     }
-    com.tencent.mm.ui.base.h.a(this, getString(R.l.permission_microphone_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new VoiceLoginUI.2(this), new VoiceLoginUI.3(this));
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoiceLoginUI
  * JD-Core Version:    0.7.0.1
  */

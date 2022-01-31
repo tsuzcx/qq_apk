@@ -2,16 +2,16 @@ package com.google.android.exoplayer2;
 
 public final class w$b
 {
-  public long auP;
-  public long avC;
-  public long avD;
-  public boolean avE;
-  public boolean avF;
-  public int avG;
-  public int avH;
-  public long avI;
-  public long avJ;
-  public Object avu;
+  public Object axK;
+  public long axS;
+  public long axT;
+  public boolean axU;
+  public boolean axV;
+  public int axW;
+  public int axX;
+  public long axY;
+  public long axZ;
+  public long axh;
 }
 
 

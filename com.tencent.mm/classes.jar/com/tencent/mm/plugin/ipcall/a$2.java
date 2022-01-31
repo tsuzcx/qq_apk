@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.ipcall;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class a$2
   
   public final void run()
   {
-    a.a(this.loe);
+    AppMethodBeat.i(21659);
+    a.a(this.nLB);
+    AppMethodBeat.o(21659);
   }
 }
 

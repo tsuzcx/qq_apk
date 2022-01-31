@@ -4,6 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView;
 
 final class FTSSOSHomeWebViewUI$12
@@ -13,8 +14,10 @@ final class FTSSOSHomeWebViewUI$12
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.ruD.cfr().kEp.clearFocus();
-    this.ruD.XM();
+    AppMethodBeat.i(153296);
+    this.vkS.dfA().naN.clearFocus();
+    this.vkS.hideVKB();
+    AppMethodBeat.o(153296);
     return false;
   }
 }

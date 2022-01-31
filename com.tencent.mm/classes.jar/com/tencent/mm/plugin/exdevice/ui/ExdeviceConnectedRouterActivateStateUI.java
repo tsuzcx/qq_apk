@@ -1,79 +1,88 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.exdevice.a.b;
 import com.tencent.mm.plugin.exdevice.c.a.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 
 public class ExdeviceConnectedRouterActivateStateUI
   extends MMActivity
 {
   private String appId;
-  private String bJp;
-  private String bwK;
-  private final int jCO = 90000;
-  private ExdeviceConnectedRouterStateView jCP;
-  private TextView jCQ;
-  private TextView jCR;
-  private b<a> jCS = new ExdeviceConnectedRouterActivateStateUI.1(this);
-  private String jtn;
+  private String bYu;
+  private String cqJ;
+  private String lCM;
+  private final int lMl;
+  private ExdeviceConnectedRouterStateView lMm;
+  private TextView lMn;
+  private TextView lMo;
+  private b<a> lMp;
   private String ssid;
   
-  private void aMw()
+  public ExdeviceConnectedRouterActivateStateUI()
   {
+    AppMethodBeat.i(19921);
+    this.lMl = 90000;
+    this.lMp = new ExdeviceConnectedRouterActivateStateUI.1(this);
+    AppMethodBeat.o(19921);
+  }
+  
+  private void bqK()
+  {
+    AppMethodBeat.i(19927);
     finish();
     Intent localIntent = new Intent();
     localIntent.putExtra("From_fail_notify", true);
-    y.d("MicroMsg.ConnectedRouterActivateStateUi", "startMainUI");
-    d.e(this, "com.tencent.mm.ui.LauncherUI", localIntent);
+    ab.d("MicroMsg.ConnectedRouterActivateStateUi", "startMainUI");
+    d.f(this, "com.tencent.mm.ui.LauncherUI", localIntent);
+    AppMethodBeat.o(19927);
   }
   
-  protected final int getForceOrientation()
+  public int getForceOrientation()
   {
     return 1;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.exdevice_connected_router_state;
+    return 2130969450;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(19922);
     super.onCreate(paramBundle);
-    y.d("MicroMsg.ConnectedRouterActivateStateUi", "create activity");
-    setMMTitle(R.l.exdevice_connected_router_title);
+    ab.d("MicroMsg.ConnectedRouterActivateStateUi", "create activity");
+    setMMTitle(2131299398);
     setBackBtn(new ExdeviceConnectedRouterActivateStateUI.2(this));
-    this.jCP = ((ExdeviceConnectedRouterStateView)findViewById(R.h.exdevice_connected_router_connect_state));
-    this.jCQ = ((TextView)findViewById(R.h.exdevice_connected_router_connect_info));
-    this.jCR = ((TextView)findViewById(R.h.exdevice_connected_router_connect_tips));
+    this.lMm = ((ExdeviceConnectedRouterStateView)findViewById(2131823765));
+    this.lMn = ((TextView)findViewById(2131823766));
+    this.lMo = ((TextView)findViewById(2131823767));
     try
     {
       paramBundle = Uri.parse(getIntent().getStringExtra("key_connected_router"));
-      this.bwK = paramBundle.getQueryParameter("deviceid");
-      this.bJp = paramBundle.getQueryParameter("devicetype");
-      this.jtn = paramBundle.getQueryParameter("clientinfo");
+      this.bYu = paramBundle.getQueryParameter("deviceid");
+      this.cqJ = paramBundle.getQueryParameter("devicetype");
+      this.lCM = paramBundle.getQueryParameter("clientinfo");
       this.appId = paramBundle.getQueryParameter("appid");
-      if ((bk.bl(this.bwK)) || (bk.bl(this.bJp)) || (bk.bl(this.jtn)) || (bk.bl(this.appId)))
+      if ((bo.isNullOrNil(this.bYu)) || (bo.isNullOrNil(this.cqJ)) || (bo.isNullOrNil(this.lCM)) || (bo.isNullOrNil(this.appId)))
       {
-        y.e("MicroMsg.ConnectedRouterActivateStateUi", "loss param %s", new Object[] { paramBundle.toString() });
+        ab.e("MicroMsg.ConnectedRouterActivateStateUi", "loss param %s", new Object[] { paramBundle.toString() });
         finish();
       }
       this.ssid = paramBundle.getQueryParameter("ssid");
-      y.d("MicroMsg.ConnectedRouterActivateStateUi", "uri: %s, deviceid: %s, devicetype: %s, clientinfo: %s. ssid: %s", new Object[] { paramBundle.toString(), this.bwK, this.bJp, this.jtn, this.ssid });
+      ab.d("MicroMsg.ConnectedRouterActivateStateUi", "uri: %s, deviceid: %s, devicetype: %s, clientinfo: %s. ssid: %s", new Object[] { paramBundle.toString(), this.bYu, this.cqJ, this.lCM, this.ssid });
       if (this.ssid == null) {
         this.ssid = "";
       }
@@ -82,77 +91,96 @@ public class ExdeviceConnectedRouterActivateStateUI
     {
       for (;;)
       {
-        y.d("MicroMsg.ConnectedRouterActivateStateUi", paramBundle.toString());
+        ab.d("MicroMsg.ConnectedRouterActivateStateUi", paramBundle.toString());
       }
     }
-    qv(1);
-    au.Dk().a(new a(this.bwK, this.bJp, this.jtn, this.appId, this.jCS), 0);
+    vc(1);
+    aw.Rc().a(new a(this.bYu, this.cqJ, this.lCM, this.appId, this.lMp), 0);
+    AppMethodBeat.o(19922);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(19925);
     super.onDestroy();
+    AppMethodBeat.o(19925);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(19926);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      aMw();
+      bqK();
+      AppMethodBeat.o(19926);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(19926);
+    return bool;
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(19923);
     super.onResume();
+    AppMethodBeat.o(19923);
   }
   
-  protected final void qv(int paramInt)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    this.jCP.setOnClickListener(null);
-    y.d("MicroMsg.ConnectedRouterActivateStateUi", "Current connection state : %d", new Object[] { Integer.valueOf(paramInt) });
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  protected final void vc(int paramInt)
+  {
+    AppMethodBeat.i(19924);
+    this.lMm.setOnClickListener(null);
+    ab.d("MicroMsg.ConnectedRouterActivateStateUi", "Current connection state : %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
-    default: 
-      return;
-    case 3: 
-      this.jCP.setImageResource(R.k.connected_router_state_error);
-      this.jCP.setState(3);
-      this.jCP.startAngle = 2;
-      this.jCQ.setText(R.l.exdevice_connected_router_error);
-      this.jCR.setText(getString(R.l.exdevice_connected_router_error_tips, new Object[] { this.ssid }));
-      return;
-    case 4: 
-      this.jCP.setImageResource(R.k.connected_router_state_error);
-      this.jCP.setState(3);
-      this.jCP.startAngle = 2;
-      this.jCQ.setText(R.l.exdevice_connected_router_error);
-      this.jCR.setText(getString(R.l.exdevice_connected_router_network_error));
-      return;
-    case 5: 
-      this.jCP.setImageResource(R.k.connected_router_state_error);
-      this.jCP.setState(3);
-      this.jCP.startAngle = 2;
-      this.jCQ.setText(R.l.exdevice_connected_router_error);
-      this.jCR.setText(getString(R.l.exdevice_connected_router_system_error));
-      return;
-    case 2: 
-      this.jCP.setImageResource(R.k.connected_router_state_succ);
-      this.jCP.setState(2);
-      this.jCQ.setText(getString(R.l.exdevice_connected_router_success, new Object[] { this.ssid }));
-      addTextOptionMenu(0, getString(R.l.exdevice_connected_router_complete), new ExdeviceConnectedRouterActivateStateUI.3(this));
-      return;
     }
-    this.jCP.setImageResource(R.k.connected_router_state_normal);
-    this.jCP.setState(1);
-    this.jCQ.setText(R.l.exdevice_connected_router_connecting);
+    for (;;)
+    {
+      AppMethodBeat.o(19924);
+      return;
+      this.lMm.setImageResource(2131231182);
+      this.lMm.setState(3);
+      this.lMm.lMs = 2;
+      this.lMn.setText(2131299393);
+      this.lMo.setText(getString(2131299394, new Object[] { this.ssid }));
+      AppMethodBeat.o(19924);
+      return;
+      this.lMm.setImageResource(2131231182);
+      this.lMm.setState(3);
+      this.lMm.lMs = 2;
+      this.lMn.setText(2131299393);
+      this.lMo.setText(getString(2131299395));
+      AppMethodBeat.o(19924);
+      return;
+      this.lMm.setImageResource(2131231182);
+      this.lMm.setState(3);
+      this.lMm.lMs = 2;
+      this.lMn.setText(2131299393);
+      this.lMo.setText(getString(2131299397));
+      AppMethodBeat.o(19924);
+      return;
+      this.lMm.setImageResource(2131231184);
+      this.lMm.setState(2);
+      this.lMn.setText(getString(2131299396, new Object[] { this.ssid }));
+      addTextOptionMenu(0, getString(2131299391), new ExdeviceConnectedRouterActivateStateUI.3(this));
+      AppMethodBeat.o(19924);
+      return;
+      this.lMm.setImageResource(2131231183);
+      this.lMm.setState(1);
+      this.lMn.setText(2131299392);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectedRouterActivateStateUI
  * JD-Core Version:    0.7.0.1
  */

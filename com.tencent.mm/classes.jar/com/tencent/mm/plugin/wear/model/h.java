@@ -5,27 +5,30 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.h.a.td;
-import com.tencent.mm.h.a.td.b;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.ah.o;
+import com.tencent.mm.g.a.ux;
+import com.tencent.mm.g.a.ux.b;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bf;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.r;
-import com.tencent.mm.model.s;
-import com.tencent.mm.modelvoice.n;
+import com.tencent.mm.model.t;
+import com.tencent.mm.modelvoice.p;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.i.a;
-import com.tencent.mm.protocal.c.cjb;
-import com.tencent.mm.protocal.c.cjs;
+import com.tencent.mm.protocal.protobuf.cwo;
+import com.tencent.mm.protocal.protobuf.cxf;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.bi;
 import com.tencent.mm.storage.bi.a;
 import com.tencent.mm.storage.emotion.EmojiInfo;
@@ -36,210 +39,241 @@ import java.io.IOException;
 
 public final class h
 {
-  public static byte[] P(Bitmap paramBitmap)
+  public static boolean OV()
   {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  public static final Bitmap Ri(String paramString)
-  {
-    Bitmap localBitmap = a.b.cmd().ch(paramString);
-    if (localBitmap == null)
-    {
-      o.JQ();
-      paramString = com.tencent.mm.ag.d.A(paramString, false);
-      y.d("MicroMsg.Wear.WearUtil", "avatar fullpath: %s", new Object[] { paramString });
-      return com.tencent.mm.ag.d.kj(paramString);
-    }
-    y.d("MicroMsg.Wear.WearUtil", "get wear avatar from cache: %s", new Object[] { paramString });
-    return localBitmap;
-  }
-  
-  public static String Rj(String paramString)
-  {
-    au.Hx();
-    ad localad = c.Fw().abl(paramString);
-    String str;
-    if (s.fn(paramString))
-    {
-      str = ae.getContext().getString(R.l.chatting_roominfo_noname);
-      paramString = r.a(localad, paramString);
-      if ((!localad.field_username.equals(paramString)) && (!bk.bl(paramString))) {
-        return paramString;
-      }
-    }
-    else
-    {
-      return r.a(localad, paramString);
-    }
-    return str;
-  }
-  
-  public static byte[] Rk(String paramString)
-  {
-    paramString = "lib" + paramString + ".so";
-    return e.c(j.n(new com.tencent.mm.vfs.b(new com.tencent.mm.vfs.b(com.tencent.mm.loader.a.b.dOO, "lib"), paramString).cLr()), 0, -1);
-  }
-  
-  public static boolean aHI()
-  {
-    PackageManager localPackageManager = ae.getContext().getPackageManager();
+    boolean bool = true;
+    AppMethodBeat.i(26343);
+    PackageManager localPackageManager = ah.getContext().getPackageManager();
     try
     {
       localPackageManager.getPackageInfo("com.google.android.wearable.app.cn", 1);
-      return true;
+      AppMethodBeat.o(26343);
+      return bool;
     }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
-    return false;
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      for (;;)
+      {
+        bool = false;
+      }
+    }
   }
   
-  public static boolean aHJ()
+  public static boolean OW()
   {
-    PackageManager localPackageManager = ae.getContext().getPackageManager();
+    boolean bool = true;
+    AppMethodBeat.i(26344);
+    PackageManager localPackageManager = ah.getContext().getPackageManager();
     try
     {
       localPackageManager.getPackageInfo("com.google.android.wearable.app", 1);
-      return true;
+      AppMethodBeat.o(26344);
+      return bool;
     }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
-    return false;
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      for (;;)
+      {
+        bool = false;
+      }
+    }
   }
   
-  public static cjs aa(bi parambi)
+  public static byte[] ad(Bitmap paramBitmap)
   {
-    cjs localcjs = new cjs();
-    localcjs.tXq = parambi.field_msgId;
-    localcjs.tXv = parambi.field_createTime;
-    localcjs.kSW = 1;
-    localcjs.tXw = true;
+    AppMethodBeat.i(26342);
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
+    paramBitmap = localByteArrayOutputStream.toByteArray();
+    AppMethodBeat.o(26342);
+    return paramBitmap;
+  }
+  
+  public static final Bitmap agf(String paramString)
+  {
+    AppMethodBeat.i(26339);
+    Bitmap localBitmap = a.b.dmT().dt(paramString);
+    if (localBitmap == null)
+    {
+      o.acQ();
+      paramString = com.tencent.mm.ah.d.E(paramString, false);
+      ab.d("MicroMsg.Wear.WearUtil", "avatar fullpath: %s", new Object[] { paramString });
+    }
+    for (paramString = com.tencent.mm.ah.d.rd(paramString);; paramString = localBitmap)
+    {
+      AppMethodBeat.o(26339);
+      return paramString;
+      ab.d("MicroMsg.Wear.WearUtil", "get wear avatar from cache: %s", new Object[] { paramString });
+    }
+  }
+  
+  public static String agg(String paramString)
+  {
+    AppMethodBeat.i(26340);
+    aw.aaz();
+    ad localad = c.YA().arw(paramString);
+    String str;
+    if (t.lA(paramString))
+    {
+      str = ah.getContext().getString(2131298302);
+      paramString = com.tencent.mm.model.s.a(localad, paramString);
+      if ((localad.field_username.equals(paramString)) || (bo.isNullOrNil(paramString))) {
+        break label77;
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(26340);
+      return paramString;
+      paramString = com.tencent.mm.model.s.a(localad, paramString);
+      continue;
+      label77:
+      paramString = str;
+    }
+  }
+  
+  public static byte[] agh(String paramString)
+  {
+    AppMethodBeat.i(26345);
+    paramString = "lib" + paramString + ".so";
+    paramString = e.i(j.p(new com.tencent.mm.vfs.b(new com.tencent.mm.vfs.b(com.tencent.mm.loader.j.b.eQu, "lib"), paramString).dQJ()), 0, -1);
+    AppMethodBeat.o(26345);
+    return paramString;
+  }
+  
+  public static cxf aj(bi parambi)
+  {
+    AppMethodBeat.i(26341);
+    cxf localcxf = new cxf();
+    localcxf.wsz = parambi.field_msgId;
+    localcxf.wsC = parambi.field_createTime;
+    localcxf.nqW = 1;
+    localcxf.yeN = true;
     Object localObject2;
     Object localObject1;
-    label92:
+    label98:
     int i;
     if (parambi.field_isSend == 1)
     {
-      localcjs.tqh = Rj(com.tencent.mm.model.q.Gj());
-      localcjs.tXp = com.tencent.mm.model.q.Gj();
+      localcxf.Nickname = agg(r.Zn());
+      localcxf.xlH = r.Zn();
       localObject2 = null;
       if (parambi.isSystem())
       {
-        localObject1 = ae.getContext().getString(R.l.notification_sys_content);
-        localcjs.kSW = 3;
+        localObject1 = ah.getContext().getString(2131301965);
+        localcxf.nqW = 3;
         parambi = (bi)localObject1;
         if (localObject1 == null) {
-          parambi = ae.getContext().getString(R.l.notification_simple_tip);
+          parambi = ah.getContext().getString(2131301958);
         }
-        localcjs.kVs = parambi;
-        return localcjs;
+        localcxf.ntu = parambi;
+        AppMethodBeat.o(26341);
+        return localcxf;
       }
     }
-    else if (s.fn(parambi.field_talker))
+    else if (t.lA(parambi.field_talker))
     {
       localObject1 = parambi.field_talker;
-      i = com.tencent.mm.model.bd.iH(parambi.field_content);
+      i = bf.pt(parambi.field_content);
       if (i == -1) {
-        break label1534;
+        break label1546;
       }
       localObject2 = parambi.field_content.substring(0, i).trim();
       if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
-        break label1534;
+        break label1546;
       }
       localObject1 = localObject2;
     }
-    label1183:
-    label1231:
-    label1531:
-    label1534:
+    label1543:
+    label1546:
     for (;;)
     {
       for (;;)
       {
-        localcjs.tqh = Rj((String)localObject1);
-        localcjs.tXp = ((String)localObject1);
+        localcxf.Nickname = agg((String)localObject1);
+        localcxf.xlH = ((String)localObject1);
         break;
-        localcjs.tqh = Rj(parambi.field_talker);
-        localcjs.tXp = parambi.field_talker;
+        localcxf.Nickname = agg(parambi.field_talker);
+        localcxf.xlH = parambi.field_talker;
         break;
-        if (parambi.ctB())
+        if (parambi.dvX())
         {
-          localObject1 = ae.getContext().getString(R.l.notification_img_content);
-          localcjs.kSW = 4;
-          break label92;
+          localObject1 = ah.getContext().getString(2131301931);
+          localcxf.nqW = 4;
+          break label98;
         }
         if (parambi.isText())
         {
-          if ((s.fn(parambi.field_talker)) && (parambi.field_isSend != 1))
+          if ((t.lA(parambi.field_talker)) && (parambi.field_isSend != 1))
           {
-            i = com.tencent.mm.model.bd.iH(parambi.field_content);
+            i = bf.pt(parambi.field_content);
             if (i != -1)
             {
               localObject1 = parambi.field_content.substring(i + 1).trim();
-              break label92;
+              break label98;
             }
             localObject1 = parambi.field_content;
-            break label92;
+            break label98;
           }
           localObject1 = parambi.field_content;
-          break label92;
+          break label98;
         }
-        if (parambi.ctA())
+        if (parambi.dvW())
         {
-          localObject1 = ae.getContext().getString(R.l.notification_voice_content);
-          localcjs.kSW = 6;
-          localcjs.tXw = com.tencent.mm.modelvoice.q.F(parambi);
-          float f = com.tencent.mm.modelvoice.q.ck(new n(parambi.field_content).time);
-          localcjs.tXx = new com.tencent.mm.bv.b(ae.getContext().getString(R.l.fmt_time_length, new Object[] { Integer.valueOf((int)f) }).getBytes());
-          break label92;
+          localObject1 = ah.getContext().getString(2131301967);
+          localcxf.nqW = 6;
+          localcxf.yeN = com.tencent.mm.modelvoice.s.K(parambi);
+          float f = com.tencent.mm.modelvoice.s.hi(new p(parambi.field_content).time);
+          localcxf.yeO = new com.tencent.mm.bv.b(ah.getContext().getString(2131300103, new Object[] { Integer.valueOf((int)f) }).getBytes());
+          break label98;
         }
-        if (parambi.aRQ())
+        if (parambi.byj())
         {
-          localObject1 = ae.getContext().getString(R.l.notification_video_content);
-          break label92;
+          localObject1 = ah.getContext().getString(2131301966);
+          break label98;
         }
-        if (parambi.aRR())
+        if (parambi.byk())
         {
-          localObject1 = ae.getContext().getString(R.l.notification_short_video_content);
-          break label92;
+          localObject1 = ah.getContext().getString(2131301957);
+          break label98;
         }
-        if (parambi.cvg())
+        if (parambi.dxK())
         {
-          g.a locala = g.a.gp(parambi.field_content);
+          j.b localb = j.b.mY(parambi.field_content);
           localObject1 = localObject2;
-          if (locala == null) {
-            break label92;
+          if (localb == null) {
+            break label98;
           }
-          if (locala.dSi.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))
+          if (localb.fih.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))
           {
-            localcjs.kSW = 5;
+            localcxf.nqW = 5;
             if (parambi.field_isSend == 1)
             {
-              localObject1 = locala.dSc;
-              break label92;
+              localObject1 = localb.fib;
+              break label98;
             }
-            localObject1 = locala.dSb;
-            break label92;
+            localObject1 = localb.fia;
+            break label98;
           }
           if (parambi.field_isSend == 1) {}
-          for (parambi = locala.dSc;; parambi = locala.dSb)
+          for (parambi = localb.fib;; parambi = localb.fia)
           {
-            localObject1 = ae.getContext().getString(R.l.notification_c2c_template, new Object[] { parambi });
+            localObject1 = ah.getContext().getString(2131301910, new Object[] { parambi });
             break;
           }
         }
-        if (parambi.cvh())
+        if (parambi.dxL())
         {
-          localObject1 = ae.getContext().getString(R.l.notification_c2c_new_year_lucky_content);
-          localcjs.kSW = 5;
-          break label92;
+          localObject1 = ah.getContext().getString(2131301909);
+          localcxf.nqW = 5;
+          break label98;
         }
-        if (parambi.aVK())
+        if (parambi.bCn())
         {
-          parambi = g.a.gp(parambi.field_content);
+          parambi = j.b.mY(parambi.field_content);
           localObject1 = localObject2;
           if (parambi == null) {
-            break label92;
+            break label98;
           }
           switch (parambi.type)
           {
@@ -254,129 +288,136 @@ public final class h
             localObject1 = localObject2;
             break;
           case 2: 
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_img_content), new Object[0]);
+            localObject1 = String.format(ah.getContext().getString(2131301931), new Object[0]);
             break;
           case 5: 
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_app_link_content), new Object[] { bk.aM(parambi.title, "") });
+            localObject1 = String.format(ah.getContext().getString(2131301900), new Object[] { bo.bf(parambi.title, "") });
             break;
           case 3: 
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_app_music_content), new Object[] { bk.aM(parambi.title, "") });
+            localObject1 = String.format(ah.getContext().getString(2131301903), new Object[] { bo.bf(parambi.title, "") });
             break;
           case 6: 
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_app_file_content), new Object[] { bk.aM(parambi.title, "") });
+            localObject1 = String.format(ah.getContext().getString(2131301899), new Object[] { bo.bf(parambi.title, "") });
             break;
           case 4: 
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_app_video_content), new Object[] { bk.aM(parambi.title, "") });
+            localObject1 = String.format(ah.getContext().getString(2131301907), new Object[] { bo.bf(parambi.title, "") });
             break;
           case 19: 
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_app_record_content), new Object[] { bk.aM(parambi.title, "") });
+            localObject1 = String.format(ah.getContext().getString(2131301905), new Object[] { bo.bf(parambi.title, "") });
             break;
           case 15: 
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_app_emoji_share_content), new Object[] { bk.aM(parambi.title, "") });
+            localObject1 = String.format(ah.getContext().getString(2131301898), new Object[] { bo.bf(parambi.title, "") });
             break;
           case 10: 
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_app_product_content), new Object[] { bk.aM(parambi.title, "") });
+            localObject1 = String.format(ah.getContext().getString(2131301904), new Object[] { bo.bf(parambi.title, "") });
             break;
           case 13: 
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_app_mall_product_content), new Object[] { bk.aM(parambi.title, "") });
+            localObject1 = String.format(ah.getContext().getString(2131301902), new Object[] { bo.bf(parambi.title, "") });
             break;
           case 20: 
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_app_tv_content), new Object[] { bk.aM(parambi.title, "") });
+            localObject1 = String.format(ah.getContext().getString(2131301906), new Object[] { bo.bf(parambi.title, "") });
             break;
           case 16: 
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_card_content), new Object[] { bk.aM(parambi.title, "") });
+            localObject1 = String.format(ah.getContext().getString(2131301911), new Object[] { bo.bf(parambi.title, "") });
             break;
           case 8: 
-            localObject1 = ae.getContext().getString(R.l.notification_custom_emoji_content, new Object[] { bk.aM(parambi.title, "") });
+            localObject1 = ah.getContext().getString(2131301912, new Object[] { bo.bf(parambi.title, "") });
             break;
           }
         }
-        if (parambi.cvo())
+        if (parambi.dxS())
         {
-          localObject1 = ae.getContext().getString(R.l.notification_emoji_content);
-          if (((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr() == null) {
-            break label1531;
+          localObject1 = ah.getContext().getString(2131301920);
+          if (((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr() == null) {
+            break label1543;
           }
-          parambi = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().As(parambi.field_imgPath);
-          if (bk.bl(((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Aw(parambi.Wv())))
+          parambi = ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Kt(parambi.field_imgPath);
+          if (bo.isNullOrNil(((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Kx(parambi.Al())))
           {
-            localObject1 = ae.getContext().getString(R.l.notification_emoji_content);
-            localObject2 = new cjb();
-            ((cjb)localObject2).sRE = parambi.Wv();
+            localObject1 = ah.getContext().getString(2131301920);
+            label1195:
+            localObject2 = new cwo();
+            ((cwo)localObject2).wQr = parambi.Al();
             if (!parambi.isGif()) {
-              break label1289;
+              break label1301;
             }
-            ((cjb)localObject2).hQR = 1;
+            ((cwo)localObject2).jKs = 1;
           }
         }
         try
         {
           for (;;)
           {
-            localcjs.tXx = new com.tencent.mm.bv.b(((cjb)localObject2).toByteArray());
-            localcjs.kSW = 2;
+            localcxf.yeO = new com.tencent.mm.bv.b(((cwo)localObject2).toByteArray());
+            label1243:
+            localcxf.nqW = 2;
             break;
-            localObject1 = "[" + ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Aw(parambi.Wv()) + "]";
-            break label1183;
-            ((cjb)localObject2).hQR = 2;
+            localObject1 = "[" + ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Kx(parambi.Al()) + "]";
+            break label1195;
+            label1301:
+            ((cwo)localObject2).jKs = 2;
           }
-          if (parambi.aVM())
+          if (parambi.bCp())
           {
-            localObject1 = ae.getContext().getString(R.l.notification_location_content);
-            break label92;
+            localObject1 = ah.getContext().getString(2131301932);
+            break label98;
           }
-          if ((!parambi.cvj()) && (!parambi.cvk()))
+          if ((!parambi.dxN()) && (!parambi.dxO()))
           {
             if (parambi.getType() == 64)
             {
               i = 1;
+              label1355:
               if (i == 0) {
-                break label1450;
+                break label1462;
               }
             }
           }
-          else if (!parambi.field_content.equals(bi.uBP))
+          else if (!parambi.field_content.equals(bi.yOb))
           {
             parambi = parambi.field_content;
-            localObject1 = new td();
-            ((td)localObject1).ccJ.bNb = 1;
-            ((td)localObject1).ccJ.content = parambi;
-            a.udP.m((com.tencent.mm.sdk.b.b)localObject1);
-            if (((td)localObject1).ccK.type != 3) {
-              break label1432;
+            localObject1 = new ux();
+            ((ux)localObject1).cLs.cut = 1;
+            ((ux)localObject1).cLs.content = parambi;
+            a.ymk.l((com.tencent.mm.sdk.b.b)localObject1);
+            if (((ux)localObject1).cLt.type != 3) {
+              break label1444;
             }
           }
+          label1444:
           for (i = 1;; i = 0)
           {
             if (i == 0) {
-              break label1437;
+              break label1449;
             }
-            localObject1 = ae.getContext().getString(R.l.notification_voip_voice_content);
+            localObject1 = ah.getContext().getString(2131301969);
             break;
             i = 0;
-            break label1343;
+            break label1355;
           }
-          localObject1 = ae.getContext().getString(R.l.notification_voip_content);
-          break label92;
-          if (parambi.cvn())
+          label1449:
+          localObject1 = ah.getContext().getString(2131301968);
+          break label98;
+          label1462:
+          if (parambi.dxR())
           {
-            au.Hx();
-            parambi = c.Fy().HN(parambi.field_content);
-            localObject1 = String.format(ae.getContext().getString(R.l.notification_card_content), new Object[] { parambi.getDisplayName() });
-            break label92;
+            aw.aaz();
+            parambi = c.YC().Ty(parambi.field_content);
+            localObject1 = String.format(ah.getContext().getString(2131301911), new Object[] { parambi.getDisplayName() });
+            break label98;
           }
           localObject1 = localObject2;
           if (parambi.getType() != -1879048186) {
-            break label92;
+            break label98;
           }
-          localObject1 = ae.getContext().getString(R.l.notification_app_location_share_content);
+          localObject1 = ah.getContext().getString(2131301901);
         }
         catch (IOException parambi)
         {
-          break label1231;
+          break label1243;
         }
       }
-      break label92;
+      break label98;
     }
   }
 }

@@ -2,6 +2,7 @@ package org.xwalk.core;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class XWalkDialogManager$1$1
   implements View.OnClickListener
@@ -10,8 +11,10 @@ class XWalkDialogManager$1$1
   
   public void onClick(View paramView)
   {
+    AppMethodBeat.i(85602);
     this.this$1.this$0.dismissDialog();
     this.val$command.run();
+    AppMethodBeat.o(85602);
   }
 }
 

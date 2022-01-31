@@ -1,6 +1,7 @@
 package com.tencent.soter.a.a;
 
 import android.os.CancellationSignal;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.a.g.f;
 import com.tencent.soter.core.c.d;
 
@@ -11,11 +12,13 @@ final class a$1
   
   public final void run()
   {
+    AppMethodBeat.i(10459);
     d.v("Soter.SoterBiometricCanceller", "soter: enter worker thread. perform cancel", new Object[0]);
-    this.wPw.wuX.cancel();
-    if (this.wPv) {
-      f.cPH().cPJ();
+    this.BmV.APY.cancel();
+    if (this.BmU) {
+      f.dVD().dVF();
     }
+    AppMethodBeat.o(10459);
   }
 }
 

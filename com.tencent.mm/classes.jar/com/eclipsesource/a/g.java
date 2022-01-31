@@ -1,5 +1,7 @@
 package com.eclipsesource.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class g
   extends h
 {
@@ -7,40 +9,54 @@ final class g
   
   g(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("string is null");
+    AppMethodBeat.i(70580);
+    if (paramString == null)
+    {
+      paramString = new NullPointerException("string is null");
+      AppMethodBeat.o(70580);
+      throw paramString;
     }
     this.string = paramString;
+    AppMethodBeat.o(70580);
   }
   
   final void a(i parami)
   {
+    AppMethodBeat.i(70581);
     parami.writeString(this.string);
+    AppMethodBeat.o(70581);
   }
   
   public final boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this == paramObject) {
-      bool1 = true;
-    }
-    do
+    AppMethodBeat.i(70583);
+    if (this == paramObject)
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramObject == null);
-      bool1 = bool2;
-    } while (getClass() != paramObject.getClass());
+      AppMethodBeat.o(70583);
+      return true;
+    }
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(70583);
+      return false;
+    }
+    if (getClass() != paramObject.getClass())
+    {
+      AppMethodBeat.o(70583);
+      return false;
+    }
     paramObject = (g)paramObject;
-    return this.string.equals(paramObject.string);
+    boolean bool = this.string.equals(paramObject.string);
+    AppMethodBeat.o(70583);
+    return bool;
   }
   
   public final int hashCode()
   {
-    return this.string.hashCode();
+    AppMethodBeat.i(70582);
+    int i = this.string.hashCode();
+    AppMethodBeat.o(70582);
+    return i;
   }
   
   public final boolean isString()
@@ -48,14 +64,14 @@ final class g
     return true;
   }
   
-  public final String kb()
+  public final String mk()
   {
     return this.string;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.eclipsesource.a.g
  * JD-Core Version:    0.7.0.1
  */

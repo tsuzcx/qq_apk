@@ -1,27 +1,34 @@
 package com.tencent.mm.plugin.sns.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 public final class d
   implements a
 {
-  public final int bvs()
+  public final int cfL()
   {
     return 13182;
   }
   
-  public final void c(Object... paramVarArgs)
+  public final void e(int paramInt, Object... paramVarArgs)
   {
-    f(0, paramVarArgs);
-  }
-  
-  public final void f(int paramInt, Object... paramVarArgs)
-  {
+    AppMethodBeat.i(35697);
     switch (paramInt)
     {
     default: 
-      h.nFQ.f(13182, paramVarArgs);
+      h.qsU.e(13182, paramVarArgs);
+      AppMethodBeat.o(35697);
+      return;
     }
+    AppMethodBeat.o(35697);
+  }
+  
+  public final void u(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(35696);
+    e(0, paramVarArgs);
+    AppMethodBeat.o(35696);
   }
 }
 

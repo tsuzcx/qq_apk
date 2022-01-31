@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$ci
+final class c$ci
   extends c.g
 {
-  public c$ci()
+  c$ci()
   {
-    super("getRouteUrl", "getRouteUrl", 235, false);
+    super("getMatchContactList", "getMatchContactList", 10000, false);
   }
 }
 

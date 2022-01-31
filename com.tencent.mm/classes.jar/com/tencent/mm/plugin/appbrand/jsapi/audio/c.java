@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 public abstract interface c
 {
-  public abstract void ahX();
+  public abstract void Dh();
 }
 
 

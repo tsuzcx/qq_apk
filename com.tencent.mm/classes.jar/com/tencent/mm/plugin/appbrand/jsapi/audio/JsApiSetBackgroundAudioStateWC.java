@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.plugin.appbrand.appstorage.k;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.config.i;
-import com.tencent.mm.plugin.appbrand.g.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.v.b;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appstorage.o;
+import com.tencent.mm.plugin.appbrand.config.h;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.p;
 import com.tencent.mm.plugin.appbrand.ui.banner.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.File;
 import org.json.JSONObject;
 
@@ -18,78 +19,80 @@ public final class JsApiSetBackgroundAudioStateWC
 {
   protected final JsApiSetBackgroundAudioState.SetBackgroundAudioListenerTask a(a parama, c paramc, int paramInt)
   {
-    return new JsApiSetBackgroundAudioStateWC.SetBackgroundAudioListenerTaskWC(parama, paramc, paramInt);
+    AppMethodBeat.i(130766);
+    parama = new JsApiSetBackgroundAudioStateWC.SetBackgroundAudioListenerTaskWC(parama, paramc, paramInt);
+    AppMethodBeat.o(130766);
+    return parama;
   }
   
   protected final String a(JSONObject paramJSONObject, c paramc)
   {
-    String str = super.a(paramJSONObject, paramc);
-    if ((str == null) || (str.length() <= 0)) {
-      paramJSONObject = "";
-    }
-    do
+    AppMethodBeat.i(130768);
+    paramJSONObject = super.a(paramJSONObject, paramc);
+    if ((paramJSONObject == null) || (paramJSONObject.length() <= 0))
     {
-      do
-      {
-        do
-        {
-          return paramJSONObject;
-          paramJSONObject = str;
-        } while (str.startsWith("http://"));
-        paramJSONObject = str;
-      } while (str.startsWith("https://"));
-      paramJSONObject = paramc.Zl().rx(str);
-      if ((paramJSONObject == null) || (!paramJSONObject.exists())) {
-        break;
-      }
+      AppMethodBeat.o(130768);
+      return "";
+    }
+    if ((paramJSONObject.startsWith("http://")) || (paramJSONObject.startsWith("https://")))
+    {
+      AppMethodBeat.o(130768);
+      return paramJSONObject;
+    }
+    paramJSONObject = paramc.wX().zg(paramJSONObject);
+    if ((paramJSONObject != null) && (paramJSONObject.exists()))
+    {
       paramc = paramJSONObject.getAbsolutePath();
       paramJSONObject = paramc;
-    } while (paramc.startsWith("file://"));
-    return "file://" + paramc;
+      if (!paramc.startsWith("file://")) {
+        paramJSONObject = "file://".concat(String.valueOf(paramc));
+      }
+      AppMethodBeat.o(130768);
+      return paramJSONObject;
+    }
+    AppMethodBeat.o(130768);
     return "";
   }
   
   protected final void a(String paramString, c paramc)
   {
-    if (this.giA != null)
+    AppMethodBeat.i(130767);
+    if (this.hBT != null)
     {
-      i locali = (i)paramc.D(i.class);
-      this.giA.bOa = locali.aej();
-      this.giA.bJw = locali.bJw;
-      if ((locali instanceof AppBrandSysConfigWC)) {
-        this.giA.bNZ = ((AppBrandSysConfigWC)locali).bFn;
-      }
-      y.i("MicroMsg.Music.JsApiSetBackgroundAudioState", "pkgType:%d, brandName:%s, appUserName", new Object[] { Integer.valueOf(this.giA.bOa), this.giA.bJw, this.giA.bNZ });
-      synchronized (u.Hc().v(paramString, true))
+      h localh = (h)paramc.U(h.class);
+      this.hBT.cvs = localh.hiX.gXe;
+      this.hBT.cqQ = localh.cqQ;
+      this.hBT.cvr = p.b(paramc);
+      ab.i("MicroMsg.Music.JsApiSetBackgroundAudioState", "pkgType:%d, brandName:%s, appUserName", new Object[] { Integer.valueOf(this.hBT.cvs), this.hBT.cqQ, this.hBT.cvr });
+      synchronized (v.aae().z(paramString, true))
       {
         f localf = (f)???.get("StickyBannerChangeListener", null);
         paramString = localf;
         if (localf == null)
         {
           paramString = new JsApiSetBackgroundAudioStateWC.1(this, ???);
-          ???.h("pkgType", Integer.valueOf(locali.aej()));
-          ???.h("StickyBannerChangeListener", paramString);
-          ???.h("appId", paramc.getAppId());
+          ???.i("pkgType", Integer.valueOf(localh.hiX.gXe));
+          ???.i("StickyBannerChangeListener", paramString);
+          ???.i("appId", paramc.getAppId());
         }
-        if ((g.b)???.get("AppBrandLifeCycle.Listener", null) == null)
+        if ((this.hBT instanceof JsApiSetBackgroundAudioStateWC.SetBackgroundAudioListenerTaskWC))
         {
-          paramc = new JsApiSetBackgroundAudioStateWC.2(this, ???);
-          ???.h("AppBrandLifeCycle.Listener", paramc);
-          this.giA.gda = paramc;
+          ((JsApiSetBackgroundAudioStateWC.SetBackgroundAudioListenerTaskWC)this.hBT).hCc = paramString;
+          ((JsApiSetBackgroundAudioStateWC.SetBackgroundAudioListenerTaskWC)this.hBT).hCb = ???;
         }
-        if ((this.giA instanceof JsApiSetBackgroundAudioStateWC.SetBackgroundAudioListenerTaskWC))
-        {
-          ((JsApiSetBackgroundAudioStateWC.SetBackgroundAudioListenerTaskWC)this.giA).giI = paramString;
-          ((JsApiSetBackgroundAudioStateWC.SetBackgroundAudioListenerTaskWC)this.giA).fVQ = ???;
-        }
+        AppMethodBeat.o(130767);
         return;
       }
     }
+    AppMethodBeat.o(130767);
   }
   
   protected final JsApiSetBackgroundAudioState.SetBackgroundAudioStateTask b(a parama, c paramc, int paramInt)
   {
-    return new JsApiSetBackgroundAudioStateWC.SetBackgroundAudioStateTaskWC(parama, paramc, paramInt);
+    AppMethodBeat.i(130765);
+    parama = new JsApiSetBackgroundAudioStateWC.SetBackgroundAudioStateTaskWC(parama, paramc, paramInt);
+    AppMethodBeat.o(130765);
+    return parama;
   }
 }
 

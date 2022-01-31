@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.chat;
 
 public abstract interface ChatFooter$e
 {
-  public abstract boolean me(boolean paramBoolean);
+  public abstract boolean pu(boolean paramBoolean);
 }
 
 

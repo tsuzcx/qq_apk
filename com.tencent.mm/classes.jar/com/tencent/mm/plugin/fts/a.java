@@ -2,25 +2,36 @@ package com.tencent.mm.plugin.fts;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashSet;
 import java.util.Iterator;
 
 public final class a
   extends CursorWrapper
 {
-  private static HashSet<Cursor> ktt = new HashSet();
+  private static HashSet<Cursor> mPh;
+  
+  static
+  {
+    AppMethodBeat.i(136516);
+    mPh = new HashSet();
+    AppMethodBeat.o(136516);
+  }
   
   public a(Cursor paramCursor)
   {
     super(paramCursor);
-    ktt.add(paramCursor);
-    y.v("MicroMsg.FTS.FTSCursor", "add cursor %d", new Object[] { Integer.valueOf(paramCursor.hashCode()) });
+    AppMethodBeat.i(136513);
+    mPh.add(paramCursor);
+    ab.v("MicroMsg.FTS.FTSCursor", "add cursor %d", new Object[] { Integer.valueOf(paramCursor.hashCode()) });
+    AppMethodBeat.o(136513);
   }
   
-  public static final void aVi()
+  public static final void bBH()
   {
-    Iterator localIterator = ktt.iterator();
+    AppMethodBeat.i(136515);
+    Iterator localIterator = mPh.iterator();
     for (;;)
     {
       Cursor localCursor;
@@ -34,30 +45,33 @@ public final class a
       try
       {
         localCursor.close();
-        label41:
-        y.e("MicroMsg.FTS.FTSCursor", "not close cursor!!! %d", new Object[] { Integer.valueOf(localCursor.hashCode()) });
+        label46:
+        ab.e("MicroMsg.FTS.FTSCursor", "not close cursor!!! %d", new Object[] { Integer.valueOf(localCursor.hashCode()) });
         continue;
-        ktt.clear();
+        mPh.clear();
+        AppMethodBeat.o(136515);
         return;
       }
       catch (Exception localException)
       {
-        break label41;
+        break label46;
       }
     }
   }
   
   public final void close()
   {
+    AppMethodBeat.i(136514);
     super.close();
     Cursor localCursor = getWrappedCursor();
-    ktt.remove(localCursor);
-    y.v("MicroMsg.FTS.FTSCursor", "remove cursor %d", new Object[] { Integer.valueOf(localCursor.hashCode()) });
+    mPh.remove(localCursor);
+    ab.v("MicroMsg.FTS.FTSCursor", "remove cursor %d", new Object[] { Integer.valueOf(localCursor.hashCode()) });
+    AppMethodBeat.o(136514);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a
  * JD-Core Version:    0.7.0.1
  */

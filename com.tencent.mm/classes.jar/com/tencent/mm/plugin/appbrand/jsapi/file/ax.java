@@ -1,113 +1,86 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
-import com.tencent.mm.plugin.appbrand.appstorage.h;
-import com.tencent.mm.plugin.appbrand.appstorage.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.FileStructStat;
+import com.tencent.mm.plugin.appbrand.appstorage.j;
+import com.tencent.mm.plugin.appbrand.appstorage.o;
+import com.tencent.mm.plugin.appbrand.appstorage.u;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.vfs.b;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.j;
-import java.io.File;
-import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.ByteBuffer;
-import java.nio.channels.Channels;
-import java.nio.channels.WritableByteChannel;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import org.json.JSONObject;
 
 final class ax
-  extends d
+  extends f
 {
-  final f.a a(c paramc, String paramString, JSONObject paramJSONObject)
+  private static Map<String, Object> a(FileStructStat paramFileStructStat, Map<String, Object> paramMap)
   {
-    String str = paramJSONObject.optString("targetDirectory", "");
-    paramJSONObject = paramc.Zl().rv(str);
-    switch (1.gqS[paramJSONObject.ordinal()])
-    {
-    default: 
-      paramJSONObject = paramc.Zl().rx(paramString);
-      if ((paramJSONObject == null) || (!paramJSONObject.exists()))
-      {
-        if (paramc.Zl().ru(paramString) != h.fGU) {
-          break label560;
-        }
-        localObject = paramc.Zl().ry(URLEncoder.encode(paramString));
-        if (localObject == null) {
-          break label560;
-        }
-        paramJSONObject = new com.tencent.mm.plugin.appbrand.u.k();
-        paramc.Zl().b(paramString, paramJSONObject);
-      }
-      break;
-    case 1: 
-    case 2: 
-    case 3: 
-      try
-      {
-        Channels.newChannel(e.p((b)localObject)).write((ByteBuffer)paramJSONObject.value);
-        paramJSONObject = new File(j.n(((b)localObject).cLr()));
-        i = 1;
-      }
-      catch (IOException paramJSONObject)
-      {
-        for (;;)
-        {
-          y.e("MicroMsg.AppBrand.FileSystem.UnitUnzip", "copy ByteBuffer failed e = %s", new Object[] { paramJSONObject });
-          paramJSONObject = null;
-          i = 0;
-        }
-      }
-      localObject = paramJSONObject;
-      if (paramJSONObject != null) {
-        break label299;
-      }
-      return new f.a("fail no such file \"%s\"", new Object[] { paramString });
-      return new f.a(String.format("fail permission denied, open \"%s\"", new Object[] { str }), new Object[0]);
-    }
-    if ((paramJSONObject.isDirectory()) || (i.w(paramJSONObject))) {
-      return new f.a("fail permission denied, open \"%s\"", new Object[] { paramString });
-    }
-    int i = 0;
-    Object localObject = paramJSONObject;
-    for (;;)
-    {
-      try
-      {
-        label299:
-        paramc = paramc.Zl().b(str, (File)localObject);
-        if (i != 0) {
-          e.deleteFile(((File)localObject).getAbsolutePath());
-        }
-        switch (1.gqS[paramc.ordinal()])
-        {
-        case 2: 
-        case 3: 
-          paramc = new f.a("fail " + paramc.name(), new Object[0]);
-          return paramc;
-        }
-      }
-      catch (Exception paramc)
-      {
-        y.printErrStackTrace("MicroMsg.AppBrand.FileSystem.UnitUnzip", paramc, "write zip stream", new Object[0]);
-        return new f.a("fail read zip data", new Object[0]);
-      }
-      return new f.a("fail no such file or directory, open \"%s\"", new Object[] { paramString });
-      return new f.a("fail illegal operation on a filePath, open \"%s\"", new Object[] { paramString });
-      return new f.a("fail permission denied, open \"%s\"", new Object[] { paramString });
-      return new f.a("fail the maximum size of the file storage limit is exceeded", new Object[0]);
-      return new f.a("fail read zip data", new Object[0]);
-      return new f.a("fail write entry", new Object[0]);
-      paramc = new f.a("ok", new Object[0]);
-      return paramc;
-      label560:
-      i = 0;
-      break;
-    }
+    AppMethodBeat.i(102836);
+    paramMap.put("mode", Integer.valueOf(paramFileStructStat.st_mode));
+    paramMap.put("size", Long.valueOf(paramFileStructStat.st_size));
+    paramMap.put("lastAccessedTime", Long.valueOf(paramFileStructStat.st_atime));
+    paramMap.put("lastModifiedTime", Long.valueOf(paramFileStructStat.st_mtime));
+    AppMethodBeat.o(102836);
+    return paramMap;
   }
   
-  protected final String v(JSONObject paramJSONObject)
+  private static h.a h(c paramc, String paramString)
   {
-    return paramJSONObject.optString("zipFilePath");
+    AppMethodBeat.i(102835);
+    Object localObject = new LinkedList();
+    paramc = paramc.wX().h(paramString, (List)localObject);
+    switch (1.hMg[paramc.ordinal()])
+    {
+    default: 
+      paramc = new h.a("fail " + paramc.name(), new Object[0]);
+      AppMethodBeat.o(102835);
+      return paramc;
+    }
+    paramc = new h.a("ok", new Object[0]);
+    paramString = ((List)localObject).iterator();
+    while (paramString.hasNext())
+    {
+      localObject = (u)paramString.next();
+      paramc.n(((u)localObject).haf, a((FileStructStat)localObject, new HashMap()));
+    }
+    AppMethodBeat.o(102835);
+    return paramc;
+  }
+  
+  final h.a a(c paramc, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(102834);
+    boolean bool = paramJSONObject.optBoolean("recursive", false);
+    paramJSONObject = new FileStructStat();
+    j localj = paramc.wX().a(paramString, paramJSONObject);
+    switch (1.hMg[localj.ordinal()])
+    {
+    default: 
+      paramc = new h.a("fail " + localj.name(), new Object[0]);
+      AppMethodBeat.o(102834);
+      return paramc;
+    case 1: 
+      if ((!paramJSONObject.isDirectory()) || (!bool))
+      {
+        paramc = new h.a("ok", new Object[0]).z(a(paramJSONObject, new HashMap()));
+        AppMethodBeat.o(102834);
+        return paramc;
+      }
+      paramc = h(paramc, paramString);
+      AppMethodBeat.o(102834);
+      return paramc;
+    case 2: 
+    case 3: 
+      paramc = new h.a("fail no such file or directory \"%s\"", new Object[] { paramString });
+      AppMethodBeat.o(102834);
+      return paramc;
+    }
+    paramc = new h.a("fail permission denied, open \"%s\"", new Object[] { paramString });
+    AppMethodBeat.o(102834);
+    return paramc;
   }
 }
 

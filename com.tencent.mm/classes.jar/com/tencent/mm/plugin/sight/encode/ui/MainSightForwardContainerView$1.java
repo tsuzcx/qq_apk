@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sight.encode.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class MainSightForwardContainerView$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ public final class MainSightForwardContainerView$1
   
   public final void onClick(View paramView)
   {
-    this.ohP.iS(true);
+    AppMethodBeat.i(25034);
+    this.qWc.kW(true);
+    AppMethodBeat.o(25034);
   }
 }
 

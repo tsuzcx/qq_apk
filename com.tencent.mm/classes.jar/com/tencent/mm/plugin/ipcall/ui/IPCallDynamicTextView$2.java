@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class IPCallDynamicTextView$2
   implements ViewTreeObserver.OnGlobalLayoutListener
@@ -10,9 +11,11 @@ final class IPCallDynamicTextView$2
   
   public final void onGlobalLayout()
   {
-    if (IPCallDynamicTextView.b(this.lvS) != IPCallDynamicTextView.c(this.lvS)) {
-      IPCallDynamicTextView.e(this.lvS).sendEmptyMessage(1);
+    AppMethodBeat.i(22143);
+    if (IPCallDynamicTextView.b(this.nTh) != IPCallDynamicTextView.c(this.nTh)) {
+      IPCallDynamicTextView.e(this.nTh).sendEmptyMessage(1);
     }
+    AppMethodBeat.o(22143);
   }
 }
 

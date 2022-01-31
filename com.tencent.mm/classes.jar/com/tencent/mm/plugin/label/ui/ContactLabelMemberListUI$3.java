@@ -1,0 +1,25 @@
+package com.tencent.mm.plugin.label.ui;
+
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class ContactLabelMemberListUI$3
+  implements MenuItem.OnMenuItemClickListener
+{
+  ContactLabelMemberListUI$3(ContactLabelMemberListUI paramContactLabelMemberListUI) {}
+  
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(22641);
+    this.nZa.finish();
+    AppMethodBeat.o(22641);
+    return false;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.label.ui.ContactLabelMemberListUI.3
+ * JD-Core Version:    0.7.0.1
+ */

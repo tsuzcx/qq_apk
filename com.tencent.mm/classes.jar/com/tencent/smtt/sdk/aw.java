@@ -1,16 +1,20 @@
 package com.tencent.smtt.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FileFilter;
 
 class aw
   implements FileFilter
 {
-  aw(an paraman) {}
+  aw(ao paramao) {}
   
   public boolean accept(File paramFile)
   {
-    return paramFile.getName().endsWith(".jar");
+    AppMethodBeat.i(64404);
+    boolean bool = paramFile.getName().endsWith(".jar");
+    AppMethodBeat.o(64404);
+    return bool;
   }
 }
 

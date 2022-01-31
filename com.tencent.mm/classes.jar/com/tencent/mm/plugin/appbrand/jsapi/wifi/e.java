@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.wifi;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -16,34 +17,38 @@ public final class e
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    y.i("MicroMsg.JsApiStopWifi", "invoke registerHotspotHelper");
+    AppMethodBeat.i(94378);
+    ab.i("MicroMsg.JsApiStopWifi", "invoke registerHotspotHelper");
     paramJSONObject = paramc.getContext();
     if (paramJSONObject == null)
     {
-      y.e("MicroMsg.JsApiStopWifi", "mContext is null, invoke fail!");
+      ab.e("MicroMsg.JsApiStopWifi", "mContext is null, invoke fail!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(12010));
-      paramc.C(paramInt, h("fail:context is null", paramJSONObject));
+      paramc.h(paramInt, j("fail:context is null", paramJSONObject));
+      AppMethodBeat.o(94378);
       return;
     }
-    if (!d.gGR)
+    if (!d.ihz)
     {
-      y.e("MicroMsg.JsApiStopWifi", "not invoke startWifi");
+      ab.e("MicroMsg.JsApiStopWifi", "not invoke startWifi");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(12000));
-      paramc.C(paramInt, h("fail:not invoke startWifi", paramJSONObject));
+      paramc.h(paramInt, j("fail:not invoke startWifi", paramJSONObject));
+      AppMethodBeat.o(94378);
       return;
     }
-    if (d.gGS != null)
+    if (d.ihA != null)
     {
-      y.i("MicroMsg.JsApiStopWifi", "unregisterReceiver");
-      paramJSONObject.unregisterReceiver(d.gGS);
-      d.gGR = false;
-      d.gGS = null;
+      ab.i("MicroMsg.JsApiStopWifi", "unregisterReceiver");
+      paramJSONObject.unregisterReceiver(d.ihA);
+      d.ihz = false;
+      d.ihA = null;
     }
     paramJSONObject = new HashMap();
     paramJSONObject.put("errCode", Integer.valueOf(0));
-    paramc.C(paramInt, h("ok", paramJSONObject));
+    paramc.h(paramInt, j("ok", paramJSONObject));
+    AppMethodBeat.o(94378);
   }
 }
 

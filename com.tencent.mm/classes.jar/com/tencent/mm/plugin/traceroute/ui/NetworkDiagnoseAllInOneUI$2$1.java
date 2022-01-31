@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.traceroute.ui;
 
 import android.widget.Button;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.p;
 
 final class NetworkDiagnoseAllInOneUI$2$1
@@ -10,17 +11,19 @@ final class NetworkDiagnoseAllInOneUI$2$1
   
   public final void run()
   {
-    NetworkDiagnoseAllInOneUI.h(this.pJh.pJe).setEnabled(true);
-    if ((NetworkDiagnoseAllInOneUI.i(this.pJh.pJe) != null) && (NetworkDiagnoseAllInOneUI.i(this.pJh.pJe).isShowing())) {
-      NetworkDiagnoseAllInOneUI.i(this.pJh.pJe).dismiss();
+    AppMethodBeat.i(25995);
+    NetworkDiagnoseAllInOneUI.h(this.tnv.tns).setEnabled(true);
+    if ((NetworkDiagnoseAllInOneUI.i(this.tnv.tns) != null) && (NetworkDiagnoseAllInOneUI.i(this.tnv.tns).isShowing())) {
+      NetworkDiagnoseAllInOneUI.i(this.tnv.tns).dismiss();
     }
-    NetworkDiagnoseAllInOneUI.b(this.pJh.pJe, 6);
-    NetworkDiagnoseAllInOneUI.b(this.pJh.pJe);
+    NetworkDiagnoseAllInOneUI.b(this.tnv.tns, 6);
+    NetworkDiagnoseAllInOneUI.b(this.tnv.tns);
+    AppMethodBeat.o(25995);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.ui.NetworkDiagnoseAllInOneUI.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -7,190 +8,211 @@ import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ag.d.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.p;
+import com.tencent.mm.ah.d;
+import com.tencent.mm.ah.d.a;
+import com.tencent.mm.ah.o;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.platformtools.x;
-import com.tencent.mm.plugin.account.friend.a.c;
-import com.tencent.mm.plugin.account.friend.a.d;
-import com.tencent.mm.plugin.account.friend.a.e;
-import com.tencent.mm.plugin.account.friend.a.g;
-import com.tencent.mm.plugin.account.friend.a.h;
 import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.pluginsdk.ui.tools.c;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 
 public class InviteFriendUI
   extends MMActivity
   implements d.a
 {
-  private ImageView ffK;
-  private String fhJ;
-  private int fhK;
-  private String fhL;
-  private String fhM;
-  private String fhN;
-  private Button fhO;
-  private int fhP;
-  private int fhQ;
-  private String fhR = null;
-  private String fhS = null;
+  private ImageView gxs;
+  private String gzq;
+  private int gzr;
+  private String gzs;
+  private String gzt;
+  private String gzu;
+  private Button gzv;
+  private int gzw;
+  private int gzx;
+  private String gzy = null;
+  private String gzz = null;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.e.invite_friend;
+    return 2130969908;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.ffK = ((ImageView)findViewById(a.d.invite_friend_avatar_iv));
-    TextView localTextView1 = (TextView)findViewById(a.d.invite_friend_nickname_tv);
-    TextView localTextView3 = (TextView)findViewById(a.d.invite_friend_num_tv);
-    TextView localTextView2 = (TextView)findViewById(a.d.invite_friend_not_reg);
-    this.fhO = ((Button)findViewById(a.d.invite_friend_invite_btn));
-    Button localButton = (Button)findViewById(a.d.invite_friend_send_qq_message);
-    localTextView1.setText(this.fhL);
-    localTextView2.setText(getString(a.h.invite_friend_not_reg, new Object[] { this.fhL }));
-    label204:
-    long l;
-    if (this.fhK == 1)
+    AppMethodBeat.i(108584);
+    this.gxs = ((ImageView)findViewById(2131823967));
+    TextView localTextView1 = (TextView)findViewById(2131823968);
+    TextView localTextView3 = (TextView)findViewById(2131825150);
+    TextView localTextView2 = (TextView)findViewById(2131823969);
+    this.gzv = ((Button)findViewById(2131823970));
+    Button localButton = (Button)findViewById(2131825152);
+    localTextView1.setText(this.gzs);
+    localTextView2.setText(getString(2131300754, new Object[] { this.gzs }));
+    Object localObject;
+    if (this.gzr == 1)
     {
-      this.ffK.setBackgroundDrawable(com.tencent.mm.cb.a.g(this, a.g.default_mobile_avatar));
-      localTextView3.setText(getString(a.h.app_field_mobile) + this.fhJ);
-      localObject = com.tencent.mm.a.g.o(this.fhJ.getBytes());
-      if (!com.tencent.mm.kernel.g.DP().isSDCardAvailable())
+      this.gxs.setBackgroundDrawable(com.tencent.mm.cb.a.k(this, 2131231221));
+      localTextView3.setText(getString(2131296939) + this.gzq);
+      localObject = com.tencent.mm.a.g.w(this.gzq.getBytes());
+      if (!com.tencent.mm.kernel.g.RL().isSDCardAvailable())
       {
-        localObject = com.tencent.mm.ag.o.JQ().bv(ae.getContext());
+        localObject = o.acQ().bZ(ah.getContext());
         if (localObject == null) {
-          break label584;
+          break label578;
         }
-        this.ffK.setImageBitmap((Bitmap)localObject);
+        this.gxs.setImageBitmap((Bitmap)localObject);
       }
     }
-    else if (this.fhK == 0)
+    else
     {
-      this.ffK.setBackgroundDrawable(com.tencent.mm.cb.a.g(this, a.g.default_qq_avatar));
-      localTextView3.setText(getString(a.h.app_field_qquin) + this.fhJ);
-      l = com.tencent.mm.a.o.bS(this.fhJ);
-      if (l == 0L) {
-        break label653;
-      }
-    }
-    label384:
-    label396:
-    label653:
-    for (Object localObject = com.tencent.mm.ag.b.bG(l);; localObject = null)
-    {
-      if (localObject == null)
+      label200:
+      if (this.gzr == 0)
       {
-        this.ffK.setImageDrawable(com.tencent.mm.cb.a.g(this, a.g.default_qq_avatar));
-        label295:
-        localButton.setVisibility(0);
-        if (this.fhK == 2)
-        {
-          this.fhO.setText(a.h.gcontact_send_invite);
-          this.ffK.setBackgroundDrawable(com.tencent.mm.cb.a.g(this, a.c.default_google_avatar));
-          localTextView3.setText(getString(a.h.app_field_email) + this.fhJ);
-          if (com.tencent.mm.kernel.g.DP().isSDCardAvailable()) {
-            break label612;
-          }
-          localObject = com.tencent.mm.ag.o.JQ().bv(ae.getContext());
-          if (localObject == null) {
-            break label623;
-          }
-          this.ffK.setImageBitmap((Bitmap)localObject);
-          if (TextUtils.isEmpty(this.fhL))
-          {
-            localTextView1.setText(bk.aab(this.fhJ));
-            localTextView2.setText(getString(a.h.invite_friend_not_reg, new Object[] { bk.aab(this.fhJ) }));
-          }
-        }
-        if (this.fhK == 3)
-        {
-          this.fhO.setText(a.h.invite_friend_linkedin_invite);
-          localObject = x.a(new com.tencent.mm.pluginsdk.ui.tools.d(this.fhS, this.fhS));
-          if (localObject == null) {
-            break label640;
-          }
-          this.ffK.setImageBitmap((Bitmap)localObject);
-        }
-      }
-      for (;;)
-      {
-        localButton.setVisibility(8);
-        this.fhO.setOnClickListener(new InviteFriendUI.1(this));
-        localButton.setOnClickListener(new InviteFriendUI.2(this));
-        setBackBtn(new InviteFriendUI.3(this));
-        return;
-        localObject = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).pI((String)localObject);
-        if (localObject != null)
-        {
-          localObject = l.b(((com.tencent.mm.plugin.account.friend.a.a)localObject).Ww(), this);
-          break;
-        }
+        this.gxs.setBackgroundDrawable(com.tencent.mm.cb.a.k(this, 2131231226));
+        localTextView3.setText(getString(2131296944) + this.gzq);
+        long l = p.cU(this.gzq);
         localObject = null;
-        break;
-        label584:
-        this.ffK.setImageDrawable(com.tencent.mm.cb.a.g(this, a.g.default_mobile_avatar));
-        break label204;
-        this.ffK.setImageBitmap((Bitmap)localObject);
-        break label295;
-        label612:
-        localObject = com.tencent.mm.ag.b.jR(this.fhM);
-        break label384;
-        label623:
-        this.ffK.setImageDrawable(com.tencent.mm.cb.a.g(this, a.c.default_google_avatar));
-        break label396;
-        this.ffK.setImageResource(a.g.default_avatar);
+        if (l != 0L) {
+          localObject = com.tencent.mm.ah.b.gB(l);
+        }
+        if (localObject != null) {
+          break label594;
+        }
+        this.gxs.setImageDrawable(com.tencent.mm.cb.a.k(this, 2131231226));
+        localButton.setVisibility(0);
+      }
+      label290:
+      if (this.gzr == 2)
+      {
+        this.gzv.setText(2131300493);
+        this.gxs.setBackgroundDrawable(com.tencent.mm.cb.a.k(this, 2130838495));
+        localTextView3.setText(getString(2131296931) + this.gzq);
+        if (com.tencent.mm.kernel.g.RL().isSDCardAvailable()) {
+          break label605;
+        }
+        localObject = o.acQ().bZ(ah.getContext());
+        label376:
+        if (localObject == null) {
+          break label616;
+        }
+        this.gxs.setImageBitmap((Bitmap)localObject);
+        if (TextUtils.isEmpty(this.gzs))
+        {
+          localTextView1.setText(bo.aqf(this.gzq));
+          localTextView2.setText(getString(2131300754, new Object[] { bo.aqf(this.gzq) }));
+        }
+      }
+      label388:
+      if (this.gzr == 3)
+      {
+        this.gzv.setText(2131300753);
+        localObject = x.a(new c(this.gzz, this.gzz));
+        if (localObject == null) {
+          break label632;
+        }
+        this.gxs.setImageBitmap((Bitmap)localObject);
       }
     }
-  }
-  
-  public final void kk(String paramString)
-  {
-    if ((this.fhJ == null) || (this.fhJ.equals(""))) {}
-    long l;
-    do
+    for (;;)
     {
+      localButton.setVisibility(8);
+      this.gzv.setOnClickListener(new InviteFriendUI.1(this));
+      localButton.setOnClickListener(new InviteFriendUI.2(this));
+      setBackBtn(new InviteFriendUI.3(this));
+      AppMethodBeat.o(108584);
       return;
-      l = com.tencent.mm.ag.b.jW(paramString);
-    } while ((l <= 0L) || (!this.fhJ.equals(String.valueOf(l))) || (this.fhK != 0));
-    this.ffK.setImageBitmap(com.tencent.mm.ag.b.a(paramString, false, -1));
+      localObject = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).xa((String)localObject);
+      if (localObject != null)
+      {
+        localObject = l.b(((com.tencent.mm.plugin.account.friend.a.a)localObject).apY(), this);
+        break;
+      }
+      localObject = null;
+      break;
+      label578:
+      this.gxs.setImageDrawable(com.tencent.mm.cb.a.k(this, 2131231221));
+      break label200;
+      label594:
+      this.gxs.setImageBitmap((Bitmap)localObject);
+      break label290;
+      label605:
+      localObject = com.tencent.mm.ah.b.qK(this.gzt);
+      break label376;
+      label616:
+      this.gxs.setImageDrawable(com.tencent.mm.cb.a.k(this, 2130838495));
+      break label388;
+      label632:
+      this.gxs.setImageResource(2131231207);
+    }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(108580);
     super.onCreate(paramBundle);
-    setMMTitle(a.h.invite_friend_title);
+    setMMTitle(2131300756);
     paramBundle = getIntent();
-    this.fhK = paramBundle.getIntExtra("friend_type", -1);
-    this.fhL = paramBundle.getStringExtra("friend_nick");
-    this.fhJ = paramBundle.getStringExtra("friend_num");
-    this.fhM = paramBundle.getStringExtra("friend_googleID");
-    this.fhN = paramBundle.getStringExtra("friend_googleItemID");
-    this.fhJ = bk.pm(this.fhJ);
-    this.fhR = paramBundle.getStringExtra("friend_linkedInID");
-    this.fhS = paramBundle.getStringExtra("friend_linkedInPicUrl");
+    this.gzr = paramBundle.getIntExtra("friend_type", -1);
+    this.gzs = paramBundle.getStringExtra("friend_nick");
+    this.gzq = paramBundle.getStringExtra("friend_num");
+    this.gzt = paramBundle.getStringExtra("friend_googleID");
+    this.gzu = paramBundle.getStringExtra("friend_googleItemID");
+    this.gzq = bo.nullAsNil(this.gzq);
+    this.gzy = paramBundle.getStringExtra("friend_linkedInID");
+    this.gzz = paramBundle.getStringExtra("friend_linkedInPicUrl");
     initView();
-    this.fhP = paramBundle.getIntExtra("search_kvstat_scene", 0);
-    this.fhQ = paramBundle.getIntExtra("search_kvstat_position", 0);
+    this.gzw = paramBundle.getIntExtra("search_kvstat_scene", 0);
+    this.gzx = paramBundle.getIntExtra("search_kvstat_position", 0);
+    AppMethodBeat.o(108580);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(108583);
     super.onDestroy();
+    AppMethodBeat.o(108583);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(108581);
     super.onPause();
-    com.tencent.mm.ag.o.JQ().e(this);
+    o.acQ().e(this);
+    AppMethodBeat.o(108581);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(108582);
     super.onResume();
-    com.tencent.mm.ag.o.JQ().d(this);
+    o.acQ().d(this);
+    AppMethodBeat.o(108582);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public final void re(String paramString)
+  {
+    AppMethodBeat.i(108585);
+    if ((this.gzq == null) || (this.gzq.equals("")))
+    {
+      AppMethodBeat.o(108585);
+      return;
+    }
+    long l = com.tencent.mm.ah.b.qP(paramString);
+    if ((l > 0L) && (this.gzq.equals(String.valueOf(l))) && (this.gzr == 0)) {
+      this.gxs.setImageBitmap(com.tencent.mm.ah.b.b(paramString, false, -1));
+    }
+    AppMethodBeat.o(108585);
   }
 }
 

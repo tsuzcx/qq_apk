@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 
 final class GoogleFriendUI$5
@@ -12,8 +13,10 @@ final class GoogleFriendUI$5
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    GoogleFriendUI.c(this.fdH);
-    g.Dk().c(GoogleFriendUI.d(this.fdH));
+    AppMethodBeat.i(13654);
+    GoogleFriendUI.c(this.gvr);
+    g.Rc().a(GoogleFriendUI.d(this.gvr));
+    AppMethodBeat.o(13654);
   }
 }
 

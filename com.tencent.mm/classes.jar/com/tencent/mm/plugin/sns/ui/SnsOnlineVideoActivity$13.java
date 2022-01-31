@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnLongClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class SnsOnlineVideoActivity$13
   implements View.OnLongClickListener
@@ -13,11 +12,13 @@ final class SnsOnlineVideoActivity$13
   
   public final boolean onLongClick(View paramView)
   {
-    SnsOnlineVideoActivity.a(this.pbr, new d(this.pbr.mController.uMN, 1, false));
-    SnsOnlineVideoActivity.o(this.pbr).phH = this.pbr.pbq;
-    SnsOnlineVideoActivity.o(this.pbr).phI = this.pbr.ifj;
-    SnsOnlineVideoActivity.o(this.pbr).wmU = new SnsOnlineVideoActivity.13.1(this);
-    SnsOnlineVideoActivity.o(this.pbr).cfU();
+    AppMethodBeat.i(39160);
+    SnsOnlineVideoActivity.a(this.rUf, new d(this.rUf.getContext(), 1, false));
+    SnsOnlineVideoActivity.o(this.rUf).sao = this.rUf.rUe;
+    SnsOnlineVideoActivity.o(this.rUf).sap = this.rUf.jWw;
+    SnsOnlineVideoActivity.o(this.rUf).AGQ = new SnsOnlineVideoActivity.13.1(this);
+    SnsOnlineVideoActivity.o(this.rUf).crd();
+    AppMethodBeat.o(39160);
     return true;
   }
 }

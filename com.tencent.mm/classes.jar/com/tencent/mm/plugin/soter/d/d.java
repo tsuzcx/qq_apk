@@ -2,58 +2,99 @@ package com.tencent.mm.plugin.soter.d;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.soter.core.a;
 import com.tencent.soter.core.c.i;
 
 public final class d
 {
-  public static e bKR()
+  public static e cyc()
   {
-    Object localObject = ae.cqS();
-    if (localObject == null) {
-      return new e();
-    }
-    String str = ((SharedPreferences)localObject).getString("cpu_id", "");
-    localObject = ((SharedPreferences)localObject).getString("uid", "");
-    if ((!bk.bl(str)) && (!bk.bl((String)localObject)))
+    AppMethodBeat.i(59333);
+    dbY();
+    Object localObject2 = as.apq(ah.dsP());
+    if (localObject2 == null)
     {
-      y.i("MicroMsg.SoterDeviceInfoManager", "hy:device info exists in preference. directly return");
-      return new e(str, (String)localObject);
+      localObject1 = new e();
+      AppMethodBeat.o(59333);
+      return localObject1;
     }
-    y.w("MicroMsg.SoterDeviceInfoManager", "hy: no cpu id and uid retrieved. load again");
-    localObject = a.cPm();
-    if (localObject != null)
+    Object localObject1 = ((SharedPreferences)localObject2).getString("cpu_id", "");
+    localObject2 = ((SharedPreferences)localObject2).getString("uid", "");
+    if ((!bo.isNullOrNil((String)localObject1)) && (!bo.isNullOrNil((String)localObject2)))
     {
-      str = ((i)localObject).psl;
-      localObject = String.valueOf(((i)localObject).uid);
-      if ((!bk.bl(str)) && (!bk.bl((String)localObject)))
+      ab.i("MicroMsg.SoterDeviceInfoManager", "hy:device info exists in preference. directly return");
+      localObject1 = new e((String)localObject1, (String)localObject2);
+      AppMethodBeat.o(59333);
+      return localObject1;
+    }
+    ab.w("MicroMsg.SoterDeviceInfoManager", "hy: no cpu id and uid retrieved. load again");
+    localObject2 = a.dVh();
+    if (localObject2 != null)
+    {
+      localObject1 = ((i)localObject2).son;
+      localObject2 = String.valueOf(((i)localObject2).uid);
+      if ((!bo.isNullOrNil((String)localObject1)) && (!bo.isNullOrNil((String)localObject2)))
       {
-        fb(str, (String)localObject);
-        return new e(str, (String)localObject);
+        gJ((String)localObject1, (String)localObject2);
+        localObject1 = new e((String)localObject1, (String)localObject2);
+        AppMethodBeat.o(59333);
+        return localObject1;
       }
     }
-    return new e();
+    localObject1 = new e();
+    AppMethodBeat.o(59333);
+    return localObject1;
   }
   
-  public static void fb(String paramString1, String paramString2)
+  public static void dbY()
   {
-    Object localObject = ae.cqS();
-    if (localObject == null) {
+    AppMethodBeat.i(156848);
+    as localas = as.apq(ah.dsP());
+    String str1 = localas.getString("cpu_id", null);
+    String str2 = localas.getString("uid", null);
+    if ((bo.isNullOrNil(str1)) || (bo.isNullOrNil(str2)))
+    {
+      Object localObject = ah.dsQ();
+      if (localObject == null)
+      {
+        AppMethodBeat.o(156848);
+        return;
+      }
+      String str3 = ((SharedPreferences)localObject).getString("cpu_id", null);
+      localObject = ((SharedPreferences)localObject).getString("uid", null);
+      ab.i("MicroMsg.SoterDeviceInfoManager", "transfer old cpuId: %s, old uid: %s", new Object[] { str1, str2 });
+      localas.putString("cpu_id", str3);
+      localas.putString("uid", (String)localObject);
+      localas.commit();
+    }
+    AppMethodBeat.o(156848);
+  }
+  
+  public static void gJ(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(59334);
+    Object localObject = as.apq(ah.dsP());
+    if (localObject == null)
+    {
+      AppMethodBeat.o(59334);
       return;
     }
-    y.i("MicroMsg.SoterDeviceInfoManager", "hy: save device info");
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putString("cpu_id", paramString1);
     ((SharedPreferences.Editor)localObject).putString("uid", paramString2);
-    ((SharedPreferences.Editor)localObject).apply();
+    ((SharedPreferences.Editor)localObject).commit();
+    ab.i("MicroMsg.SoterDeviceInfoManager", "hy: save device info");
+    AppMethodBeat.o(59334);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.d.d
  * JD-Core Version:    0.7.0.1
  */

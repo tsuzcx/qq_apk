@@ -1,200 +1,230 @@
 package com.tencent.mm.ui;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mm.api.b;
-import com.tencent.mm.api.f;
-import com.tencent.mm.api.q.a.a;
-import com.tencent.mm.api.q.b;
-import com.tencent.mm.api.q.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.c;
+import com.tencent.mm.api.g;
+import com.tencent.mm.api.s;
+import com.tencent.mm.api.s.a.a;
+import com.tencent.mm.api.s.b;
+import com.tencent.mm.api.s.c;
+import com.tencent.mm.remoteservice.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.tools.l;
 import com.tencent.mm.vfs.e;
 
 @a(19)
 public class MMNewPhotoEditUI
   extends MMActivity
-  implements f
+  implements g
 {
-  private com.tencent.mm.ui.base.p dpF = null;
-  private int drX;
-  private com.tencent.mm.api.q mqU;
-  private String uOr;
-  private String uOs;
-  private String uOt;
-  private boolean uOu;
-  private boolean uOv;
-  private final com.tencent.mm.remoteservice.d uOw = new com.tencent.mm.remoteservice.d(this);
-  private PhotoEditProxy uOx;
-  private Dialog uOy;
+  private p ehb;
+  private int ejF;
+  private s oQJ;
+  private PhotoEditProxy qaM;
+  private final d qaN;
+  private Dialog uba;
+  private String zcm;
+  private long zcn;
+  private String zco;
+  private String zcp;
+  private boolean zcq;
+  private boolean zcr;
   
-  private void FV(int paramInt)
+  public MMNewPhotoEditUI()
   {
-    ew(true);
-    this.mqU.a(new MMNewPhotoEditUI.5(this, paramInt));
+    AppMethodBeat.i(11927);
+    this.qaN = new d(this);
+    this.ehb = null;
+    AppMethodBeat.o(11927);
   }
   
-  private void ew(boolean paramBoolean)
+  private void Oh(int paramInt)
   {
-    y.i("MicroMsg.MMNewPhotoEditUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (paramBoolean) {
-      this.dpF = com.tencent.mm.ui.base.p.b(this, getString(ag.d.processing), true, 0, null);
-    }
-    while ((this.dpF == null) || (!this.dpF.isShowing())) {
+    AppMethodBeat.i(11935);
+    fV(true);
+    this.oQJ.a(new MMNewPhotoEditUI.5(this, paramInt));
+    AppMethodBeat.o(11935);
+  }
+  
+  private void fV(boolean paramBoolean)
+  {
+    AppMethodBeat.i(11936);
+    ab.i("MicroMsg.MMNewPhotoEditUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
+    {
+      this.ehb = p.b(this, getString(2131306206), true, null);
+      AppMethodBeat.o(11936);
       return;
     }
-    this.dpF.dismiss();
-    this.dpF = null;
+    if ((this.ehb != null) && (this.ehb.isShowing()))
+    {
+      this.ehb.dismiss();
+      this.ehb = null;
+    }
+    AppMethodBeat.o(11936);
   }
   
-  protected final int getForceOrientation()
+  protected int getForceOrientation()
   {
     return 1;
   }
   
-  protected final int getLayoutId()
+  protected int getLayoutId()
   {
-    return ag.c.new_photo_edit_ui;
+    return 2130970360;
   }
   
-  protected final void initView()
+  protected void initView()
   {
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(ag.b.content);
-    this.mqU = com.tencent.mm.api.q.buU.rJ();
-    Object localObject = this.mqU;
-    q.a.a locala = new q.a.a();
-    if ((this.drX != 291) && (this.drX != 293)) {}
+    AppMethodBeat.i(11929);
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131820946);
+    this.oQJ = s.bWe.Ab();
+    Object localObject = this.oQJ;
+    s.a.a locala = new s.a.a();
+    if ((this.ejF != 291) && (this.ejF != 293)) {}
     for (boolean bool = true;; bool = false)
     {
-      locala.buW = bool;
-      locala.buY = true;
-      locala.buV = q.c.bvb;
-      locala.path = this.uOr;
-      ((com.tencent.mm.api.q)localObject).a(locala.sh());
-      localObject = this.mqU.ax(this.mController.uMN);
-      ((b)localObject).setActionBarCallback(this);
+      locala.bWg = bool;
+      locala.bWj = true;
+      locala.bWf = s.c.bWm;
+      locala.path = this.zcm;
+      ((s)localObject).a(locala.Ax());
+      localObject = this.oQJ.aV(getContext());
+      ((c)localObject).setActionBarCallback(this);
       localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-      ((b)localObject).setSelectedFeatureListener(new com.tencent.mm.api.p()
-      {
-        public final void a(com.tencent.mm.api.d paramAnonymousd)
-        {
-          y.i("MicroMsg.MMNewPhotoEditUI", "[onSelectedFeature] features:%s", new Object[] { paramAnonymousd.name() });
-        }
-        
-        public final void a(com.tencent.mm.api.d paramAnonymousd, int paramAnonymousInt)
-        {
-          y.i("MicroMsg.MMNewPhotoEditUI", "[onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousd.name(), Integer.valueOf(paramAnonymousInt) });
-        }
-        
-        public final void aL(boolean paramAnonymousBoolean)
-        {
-          if (paramAnonymousBoolean)
-          {
-            MMNewPhotoEditUI.this.showVKB();
-            return;
-          }
-          MMNewPhotoEditUI.this.hideVKB(MMNewPhotoEditUI.this.mController.contentView);
-        }
-      });
+      ((c)localObject).setSelectedFeatureListener(new MMNewPhotoEditUI.2(this));
+      AppMethodBeat.o(11929);
       return;
     }
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(11934);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 == -1) && (paramInt1 == 1) && (paramIntent != null))
     {
-      str = paramIntent.getStringExtra("Select_Conv_User");
-      y.d("MicroMsg.MMNewPhotoEditUI", "select %s for sending imagePath:%s", new Object[] { str, this.uOt });
-      this.uOy = com.tencent.mm.ui.base.h.b(this.mController.uMN, getString(ag.d.photo_edit_forward_tips), false, null);
+      String str = paramIntent.getStringExtra("Select_Conv_User");
+      ab.d("MicroMsg.MMNewPhotoEditUI", "select %s for sending imagePath:%s", new Object[] { str, this.zcp });
+      this.uba = com.tencent.mm.ui.base.h.b(getContext(), getString(2131306205), false, null);
       paramIntent = paramIntent.getStringExtra("custom_send_text");
-      this.uOx.sendImage(paramIntent, this.uOt, this.uOx.getSelfUsername(), str);
-      this.uOy.dismiss();
-      if (!this.uOu)
-      {
-        e.deleteFile(this.uOt);
-        finish();
+      this.qaM.sendImage(paramIntent, this.zcp, this.qaM.getSelfUsername(), str);
+      if (this.uba != null) {
+        this.uba.dismiss();
       }
-    }
-    while ((paramIntent != null) || (bk.bl(this.uOt)) || (this.drX != 291)) {
+      if (!this.zcq) {
+        e.deleteFile(this.zcp);
+      }
       for (;;)
       {
-        String str;
+        finish();
+        AppMethodBeat.o(11934);
         return;
-        com.tencent.mm.platformtools.q.a(this.uOt, this);
+        com.tencent.mm.sdk.f.b.a(this.zcp, this);
       }
     }
-    e.deleteFile(this.uOt);
+    if ((paramIntent == null) && (!bo.isNullOrNil(this.zcp)) && (this.ejF == 291)) {
+      e.deleteFile(this.zcp);
+    }
+    AppMethodBeat.o(11934);
   }
   
   public void onBackPressed()
   {
-    if (!this.mqU.rG())
+    AppMethodBeat.i(11931);
+    if (!this.oQJ.zY())
     {
-      if ((this.drX != 290) && (this.drX != 291)) {
-        break label62;
+      if ((this.ejF != 290) && (this.ejF != 291)) {
+        break label74;
       }
-      com.tencent.mm.plugin.report.service.h.nFQ.f(13859, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
+      com.tencent.mm.plugin.report.service.h.qsU.e(13859, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
     }
     for (;;)
     {
       finish();
+      AppMethodBeat.o(11931);
       return;
-      label62:
-      if ((this.drX == 4) || (this.drX == 293)) {
-        com.tencent.mm.plugin.report.service.h.nFQ.f(13859, new Object[] { Integer.valueOf(2), Integer.valueOf(2) });
+      label74:
+      if ((this.ejF == 4) || (this.ejF == 293)) {
+        com.tencent.mm.plugin.report.service.h.qsU.e(13859, new Object[] { Integer.valueOf(2), Integer.valueOf(2) });
       } else {
-        com.tencent.mm.plugin.report.service.h.nFQ.f(13859, new Object[] { Integer.valueOf(0), Integer.valueOf(2) });
+        com.tencent.mm.plugin.report.service.h.qsU.e(13859, new Object[] { Integer.valueOf(0), Integer.valueOf(2) });
       }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(11928);
     super.onCreate(paramBundle);
-    this.mController.czx();
-    this.uOx = new PhotoEditProxy(this.uOw);
-    this.uOw.connect(new MMNewPhotoEditUI.1(this));
+    fullScreenNoTitleBar(true, 0L);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      getWindow().setFlags(1024, 1024);
+      getWindow().addFlags(67108864);
+      b.c(this, false);
+    }
+    this.qaM = new PhotoEditProxy(this.qaN);
+    this.qaN.connect(new MMNewPhotoEditUI.1(this));
+    AppMethodBeat.o(11928);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(11930);
     super.onDestroy();
-    this.mqU.onDestroy();
-    this.uOw.release();
+    this.oQJ.onDestroy();
+    this.qaN.release();
+    AppMethodBeat.o(11930);
+  }
+  
+  public final void onExit()
+  {
+    AppMethodBeat.i(11933);
+    onBackPressed();
+    AppMethodBeat.o(11933);
   }
   
   public final void onFinish()
   {
-    if ((this.drX == 290) || (this.drX == 291)) {
-      com.tencent.mm.plugin.report.service.h.nFQ.f(13859, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
+    AppMethodBeat.i(11932);
+    if ((this.ejF == 290) || (this.ejF == 291)) {
+      com.tencent.mm.plugin.report.service.h.qsU.e(13859, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
     }
-    while ((this.drX == 291) || (this.drX == 293))
+    while ((this.ejF == 291) || (this.ejF == 293))
     {
-      j localj = new j(this.mController.uMN);
-      localj.phH = new MMNewPhotoEditUI.3(this);
-      localj.phI = new MMNewPhotoEditUI.4(this);
-      com.tencent.mm.ui.base.h.a(this.mController.uMN, localj.bJQ());
+      l locall = new l(getContext());
+      locall.sao = new MMNewPhotoEditUI.3(this);
+      locall.sap = new MMNewPhotoEditUI.4(this);
+      com.tencent.mm.ui.base.h.a(getContext(), locall.cwt());
+      AppMethodBeat.o(11932);
       return;
-      if ((this.drX == 4) || (this.drX == 293)) {
-        com.tencent.mm.plugin.report.service.h.nFQ.f(13859, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
+      if ((this.ejF == 4) || (this.ejF == 293)) {
+        com.tencent.mm.plugin.report.service.h.qsU.e(13859, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
       } else {
-        com.tencent.mm.plugin.report.service.h.nFQ.f(13859, new Object[] { Integer.valueOf(0), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.qsU.e(13859, new Object[] { Integer.valueOf(0), Integer.valueOf(1) });
       }
     }
-    FV(-1);
+    Oh(-1);
+    AppMethodBeat.o(11932);
   }
   
-  public final void rX()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    onBackPressed();
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

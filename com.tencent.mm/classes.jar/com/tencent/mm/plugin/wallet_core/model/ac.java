@@ -1,116 +1,85 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.database.Cursor;
-import com.tencent.mm.h.c.ew;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.bdo;
-import com.tencent.mm.protocal.c.chx;
-import com.tencent.mm.protocal.c.cib;
-import com.tencent.mm.protocal.c.cic;
-import com.tencent.mm.protocal.c.cie;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.fj;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.reflect.Field;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Map;
+import org.json.JSONObject;
 
 public final class ac
-  extends ew
+  extends fj
 {
-  public static c.a buS;
-  public String lRp = "";
-  private bdo qyQ = new bdo();
-  public chx qyR = null;
-  public cic qyS = null;
-  public boolean qyT = false;
-  public String qyU = "";
-  public String qyV = "";
-  public String qyW = "";
-  public String qyX = "";
+  public static c.a info;
   
   static
   {
+    AppMethodBeat.i(46911);
     c.a locala = new c.a();
-    locala.ujL = new Field[2];
-    locala.columns = new String[3];
+    locala.yrK = new Field[6];
+    locala.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "wallet_region";
-    locala.ujN.put("wallet_region", "INTEGER PRIMARY KEY ");
-    localStringBuilder.append(" wallet_region INTEGER PRIMARY KEY ");
+    locala.columns[0] = "wallet_tpa_country";
+    locala.yrM.put("wallet_tpa_country", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" wallet_tpa_country TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "wallet_region";
-    locala.columns[1] = "wallet_grey_item_buf";
-    locala.ujN.put("wallet_grey_item_buf", "BLOB");
-    localStringBuilder.append(" wallet_grey_item_buf BLOB");
-    locala.columns[2] = "rowid";
+    locala.yrL = "wallet_tpa_country";
+    locala.columns[1] = "wallet_type";
+    locala.yrM.put("wallet_type", "INTEGER");
+    localStringBuilder.append(" wallet_type INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "wallet_name";
+    locala.yrM.put("wallet_name", "TEXT");
+    localStringBuilder.append(" wallet_name TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "wallet_selected";
+    locala.yrM.put("wallet_selected", "INTEGER");
+    localStringBuilder.append(" wallet_selected INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "wallet_balance";
+    locala.yrM.put("wallet_balance", "INTEGER");
+    localStringBuilder.append(" wallet_balance INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "wallet_tpa_country_mask";
+    locala.yrM.put("wallet_tpa_country_mask", "INTEGER");
+    localStringBuilder.append(" wallet_tpa_country_mask INTEGER");
+    locala.columns[6] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(46911);
   }
   
-  public ac()
+  public static ac aI(JSONObject paramJSONObject)
   {
-    if (this.qyR == null) {
-      this.qyR = new chx();
+    AppMethodBeat.i(46910);
+    if (paramJSONObject == null)
+    {
+      ab.e("MicroMsg.WalletKindInfo", "json is null");
+      AppMethodBeat.o(46910);
+      return null;
     }
-    if (this.qyS == null) {
-      this.qyS = new cic();
+    ac localac = new ac();
+    localac.field_wallet_tpa_country = paramJSONObject.optString("wallet_tpa_country");
+    localac.field_wallet_name = paramJSONObject.optString("wallet_name");
+    localac.field_wallet_selected = paramJSONObject.optInt("wallet_selected");
+    localac.field_wallet_type = paramJSONObject.optInt("wallet_type");
+    localac.field_wallet_balance = paramJSONObject.optInt("wallet_balance");
+    localac.field_wallet_tpa_country_mask = paramJSONObject.optInt("wallet_tpa_country_mask");
+    if (bo.isNullOrNil(localac.field_wallet_tpa_country))
+    {
+      ab.e("MicroMsg.WalletKindInfo", "wallet_id is illegal");
+      AppMethodBeat.o(46910);
+      return null;
     }
+    AppMethodBeat.o(46910);
+    return localac;
   }
   
-  public final void d(Cursor paramCursor)
+  public final c.a getDBInfo()
   {
-    super.d(paramCursor);
-    this.qyQ = new bdo();
-    try
-    {
-      this.qyQ = ((bdo)this.qyQ.aH(this.field_wallet_grey_item_buf));
-      this.qyR = this.qyQ.tyJ;
-      this.qyS = this.qyQ.tyK;
-      this.qyT = this.qyQ.tyL;
-      this.qyX = "";
-      paramCursor = this.qyQ.tyM.iterator();
-      for (;;)
-      {
-        if (paramCursor.hasNext())
-        {
-          String str = (String)paramCursor.next();
-          this.qyX = (this.qyX + str + "\n");
-          continue;
-          if (this.qyR != null) {
-            break;
-          }
-        }
-      }
-    }
-    catch (Exception paramCursor)
-    {
-      y.e("WalletRegionGreyItem", "parser PayIBGGetOverseaWalletRsp error");
-    }
-    for (;;)
-    {
-      this.qyR = new chx();
-      if (this.qyS == null) {
-        this.qyS = new cic();
-      }
-      return;
-      if (this.qyQ.tyH != null)
-      {
-        this.qyU = aa.a(this.qyQ.tyH.tWH);
-        this.qyV = aa.a(this.qyQ.tyH.tWI);
-      }
-      if (this.qyQ.tyI != null)
-      {
-        this.qyW = aa.a(this.qyQ.tyI.tWF);
-        this.lRp = aa.a(this.qyQ.tyI.tWG);
-      }
-      y.v("WalletRegionGreyItem", "noticeContent %s", new Object[] { this.qyW });
-    }
-  }
-  
-  protected final c.a rM()
-  {
-    return buS;
+    return info;
   }
 }
 

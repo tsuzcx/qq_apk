@@ -1,6 +1,7 @@
 package com.tencent.mm.modelrecovery;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class PluginRecovery$3
   implements Runnable
@@ -9,8 +10,10 @@ final class PluginRecovery$3
   
   public final void run()
   {
-    y.i("MicroMsg.Recovery.PluginRecovery", "postLog");
-    a.PM();
+    AppMethodBeat.i(16527);
+    ab.i("MicroMsg.Recovery.PluginRecovery", "postLog");
+    a.aiR();
+    AppMethodBeat.o(16527);
   }
 }
 

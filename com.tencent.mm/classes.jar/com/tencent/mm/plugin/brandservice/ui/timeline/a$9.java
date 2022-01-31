@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ai.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.storage.q;
-import com.tencent.mm.storage.r;
 
 final class a$9
   implements View.OnClickListener
@@ -13,10 +14,17 @@ final class a$9
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(14106);
     paramView = (q)paramView.getTag();
-    paramView.field_isExpand = true;
-    z.ME().h(paramView);
-    a.d(this.ifl).c(paramView, 0);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("Chat_User", paramView.field_talker);
+    localIntent.putExtra("finish_direct", true);
+    localIntent.putExtra("KOpenArticleSceneFromScene", 90);
+    localIntent.putExtra("specific_chat_from_scene", 2);
+    localIntent.putExtra("preChatTYPE", 11);
+    d.f(a.a(this.jVZ), ".ui.chatting.ChattingUI", localIntent);
+    this.jVZ.jVS.d(paramView, 9);
+    AppMethodBeat.o(14106);
   }
 }
 

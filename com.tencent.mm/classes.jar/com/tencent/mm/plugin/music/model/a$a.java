@@ -1,14 +1,19 @@
 package com.tencent.mm.plugin.music.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a$a
 {
   public String content;
-  public boolean mzq;
+  public boolean oZw;
   public long timestamp;
   
   public final String toString()
   {
-    return String.format("[%d %s]", new Object[] { Long.valueOf(this.timestamp), this.content });
+    AppMethodBeat.i(104870);
+    String str = String.format("[%d %s]", new Object[] { Long.valueOf(this.timestamp), this.content });
+    AppMethodBeat.o(104870);
+    return str;
   }
 }
 

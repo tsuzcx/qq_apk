@@ -5,47 +5,57 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class EmojiStoreDetailUI$19
-  extends ah
+  extends ak
 {
   EmojiStoreDetailUI$19(EmojiStoreDetailUI paramEmojiStoreDetailUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(53436);
     switch (paramMessage.what)
     {
     default: 
-      y.w("MicroMsg.emoji.EmojiStoreDetailUI", "unknow message, cannt handle.");
+      ab.w("MicroMsg.emoji.EmojiStoreDetailUI", "unknow message, cannt handle.");
+      AppMethodBeat.o(53436);
       return;
     case 1001: 
-      EmojiStoreDetailUI.e(this.jeK);
+      EmojiStoreDetailUI.e(this.lnA);
+      AppMethodBeat.o(53436);
       return;
     case 1002: 
-      EmojiStoreDetailUI.f(this.jeK);
+      EmojiStoreDetailUI.f(this.lnA);
+      AppMethodBeat.o(53436);
       return;
     case 1003: 
-      EmojiStoreDetailUI.g(this.jeK);
+      EmojiStoreDetailUI.g(this.lnA);
+      AppMethodBeat.o(53436);
       return;
     case 1004: 
-      if (EmojiStoreDetailUI.h(this.jeK).getVisibility() == 0)
+      if (EmojiStoreDetailUI.h(this.lnA).getVisibility() == 0)
       {
-        EmojiStoreDetailUI.h(this.jeK).setVisibility(8);
-        EmojiStoreDetailUI.i(this.jeK).setVisibility(0);
-        EmojiStoreDetailUI.j(this.jeK).setVisibility(0);
+        EmojiStoreDetailUI.h(this.lnA).setVisibility(8);
+        EmojiStoreDetailUI.i(this.lnA).setVisibility(0);
+        EmojiStoreDetailUI.j(this.lnA).setVisibility(0);
       }
-      EmojiStoreDetailUI.l(this.jeK).setProgress(EmojiStoreDetailUI.k(this.jeK));
+      EmojiStoreDetailUI.l(this.lnA).setProgress(EmojiStoreDetailUI.k(this.lnA));
+      AppMethodBeat.o(53436);
       return;
     case 1005: 
-      EmojiStoreDetailUI.m(this.jeK).scrollTo(0, 0);
+      EmojiStoreDetailUI.m(this.lnA).scrollTo(0, 0);
+      AppMethodBeat.o(53436);
       return;
     case 1006: 
-      EmojiStoreDetailUI.n(this.jeK);
+      EmojiStoreDetailUI.n(this.lnA);
+      AppMethodBeat.o(53436);
       return;
     }
-    this.jeK.aJj();
+    this.lnA.bmL();
+    AppMethodBeat.o(53436);
   }
 }
 

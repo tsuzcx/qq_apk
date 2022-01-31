@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.aa.ui;
 
 public abstract interface a$a
 {
-  public abstract void Vx();
+  public abstract void aoW();
 }
 
 

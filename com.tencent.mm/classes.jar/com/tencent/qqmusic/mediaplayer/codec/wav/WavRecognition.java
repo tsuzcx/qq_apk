@@ -1,6 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.codec.wav;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.AudioFormat.AudioType;
 import com.tencent.qqmusic.mediaplayer.codec.IAudioRecognition;
 
@@ -9,18 +10,30 @@ public class WavRecognition
 {
   public AudioFormat.AudioType getAudioType(String paramString, byte[] paramArrayOfByte)
   {
-    if (WaveReader.isWavFormat(paramString)) {
-      return AudioFormat.AudioType.WAV;
+    AppMethodBeat.i(128533);
+    if (WaveReader.isWavFormat(paramString))
+    {
+      paramString = AudioFormat.AudioType.WAV;
+      AppMethodBeat.o(128533);
+      return paramString;
     }
-    return AudioFormat.AudioType.UNSUPPORT;
+    paramString = AudioFormat.AudioType.UNSUPPORT;
+    AppMethodBeat.o(128533);
+    return paramString;
   }
   
   public AudioFormat.AudioType guessAudioType(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.toLowerCase().contains(".wav"))) {
-      return AudioFormat.AudioType.WAV;
+    AppMethodBeat.i(128534);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.toLowerCase().contains(".wav")))
+    {
+      paramString = AudioFormat.AudioType.WAV;
+      AppMethodBeat.o(128534);
+      return paramString;
     }
-    return AudioFormat.AudioType.UNSUPPORT;
+    paramString = AudioFormat.AudioType.UNSUPPORT;
+    AppMethodBeat.o(128534);
+    return paramString;
   }
 }
 

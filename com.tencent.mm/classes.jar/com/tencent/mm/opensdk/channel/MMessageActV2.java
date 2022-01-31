@@ -2,6 +2,7 @@ package com.tencent.mm.opensdk.channel;
 
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.channel.a.b;
 import com.tencent.mm.opensdk.utils.Log;
 import com.tencent.mm.opensdk.utils.d;
@@ -15,14 +16,17 @@ public class MMessageActV2
   
   public static boolean send(Context paramContext, MMessageActV2.Args paramArgs)
   {
+    AppMethodBeat.i(128140);
     if ((paramContext == null) || (paramArgs == null))
     {
       Log.e("MicroMsg.SDK.MMessageAct", "send fail, invalid argument");
+      AppMethodBeat.o(128140);
       return false;
     }
     if (d.b(paramArgs.targetPkgName))
     {
       Log.e("MicroMsg.SDK.MMessageAct", "send fail, invalid targetPkgName, targetPkgName = " + paramArgs.targetPkgName);
+      AppMethodBeat.o(128140);
       return false;
     }
     if (d.b(paramArgs.targetClassName)) {
@@ -35,10 +39,10 @@ public class MMessageActV2
       localIntent.putExtras(paramArgs.bundle);
     }
     String str = paramContext.getPackageName();
-    localIntent.putExtra("_mmessage_sdkVersion", 620824064);
+    localIntent.putExtra("_mmessage_sdkVersion", 620954624);
     localIntent.putExtra("_mmessage_appPackage", str);
     localIntent.putExtra("_mmessage_content", paramArgs.content);
-    localIntent.putExtra("_mmessage_checksum", b.a(paramArgs.content, 620824064, str));
+    localIntent.putExtra("_mmessage_checksum", b.a(paramArgs.content, 620954624, str));
     localIntent.putExtra("_message_token", paramArgs.token);
     if (paramArgs.flags == -1) {
       localIntent.addFlags(268435456).addFlags(134217728);
@@ -48,12 +52,14 @@ public class MMessageActV2
       try
       {
         paramContext.startActivity(localIntent);
-        Log.d("MicroMsg.SDK.MMessageAct", "send mm message, intent=" + localIntent);
+        Log.d("MicroMsg.SDK.MMessageAct", "send mm message, intent=".concat(String.valueOf(localIntent)));
+        AppMethodBeat.o(128140);
         return true;
       }
       catch (Exception paramContext)
       {
         Log.e("MicroMsg.SDK.MMessageAct", "send fail, ex = " + paramContext.getMessage());
+        AppMethodBeat.o(128140);
       }
       localIntent.setFlags(paramArgs.flags);
     }
@@ -62,7 +68,7 @@ public class MMessageActV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.opensdk.channel.MMessageActV2
  * JD-Core Version:    0.7.0.1
  */

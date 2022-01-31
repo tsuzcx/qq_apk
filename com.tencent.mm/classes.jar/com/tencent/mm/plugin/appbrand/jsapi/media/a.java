@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import com.tencent.mm.plugin.appbrand.appstorage.h;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.plugin.appbrand.u.k;
-import com.tencent.mm.plugin.appbrand.v.m;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.nio.ByteBuffer;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.o;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.f.c;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.io.InputStream;
 
 abstract class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<p>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
 {
   /* Error */
-  static boolean d(String paramString, java.io.InputStream paramInputStream)
+  static boolean d(String paramString, InputStream paramInputStream)
   {
     // Byte code:
     //   0: new 18	java/io/File
@@ -65,11 +65,11 @@ abstract class a
     //   79: iconst_0
     //   80: aload 4
     //   82: aastore
-    //   83: invokestatic 56	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   83: invokestatic 56	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   86: aload_3
-    //   87: invokestatic 62	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
+    //   87: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
     //   90: aload_1
-    //   91: invokestatic 62	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
+    //   91: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
     //   94: iconst_0
     //   95: ireturn
     //   96: aload_3
@@ -77,18 +77,18 @@ abstract class a
     //   98: aload_3
     //   99: invokevirtual 65	java/io/FileOutputStream:flush	()V
     //   102: aload_3
-    //   103: invokestatic 62	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
+    //   103: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
     //   106: aload_1
-    //   107: invokestatic 62	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
+    //   107: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
     //   110: iconst_1
     //   111: ireturn
     //   112: astore_3
     //   113: aconst_null
     //   114: astore_0
     //   115: aload_0
-    //   116: invokestatic 62	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
+    //   116: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
     //   119: aload_1
-    //   120: invokestatic 62	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
+    //   120: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
     //   123: aload_3
     //   124: athrow
     //   125: astore_3
@@ -100,7 +100,7 @@ abstract class a
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	136	0	paramString	String
-    //   0	136	1	paramInputStream	java.io.InputStream
+    //   0	136	1	paramInputStream	InputStream
     //   47	13	2	i	int
     //   25	78	3	localFileOutputStream	java.io.FileOutputStream
     //   112	12	3	localObject1	Object
@@ -124,15 +124,15 @@ abstract class a
     //   0	26	129	java/lang/Exception
   }
   
-  abstract boolean ui(String paramString);
+  abstract boolean Ck(String paramString);
   
-  abstract String uj(String paramString);
+  abstract String Cl(String paramString);
   
-  abstract void uk(String paramString);
+  abstract void Cm(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.a
  * JD-Core Version:    0.7.0.1
  */

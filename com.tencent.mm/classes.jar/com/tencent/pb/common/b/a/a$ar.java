@@ -9,56 +9,56 @@ import java.util.Arrays;
 public final class a$ar
   extends e
 {
-  private static volatile ar[] wIf;
-  public int wIg = 0;
-  public int wIh = 0;
-  public byte[] wIi = g.aUP;
+  private static volatile ar[] BfF;
+  public int BfG = 0;
+  public int BfH = 0;
+  public byte[] BfI = g.bhf;
   
   public a$ar()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
-  public static ar[] cOd()
+  public static ar[] dTP()
   {
-    if (wIf == null) {}
-    synchronized (c.aUH)
+    if (BfF == null) {}
+    synchronized (c.bgX)
     {
-      if (wIf == null) {
-        wIf = new ar[0];
+      if (BfF == null) {
+        BfF = new ar[0];
       }
-      return wIf;
+      return BfF;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.wIg != 0) {
-      paramb.aL(1, this.wIg);
+    if (this.BfG != 0) {
+      paramb.bj(1, this.BfG);
     }
-    if (this.wIh != 0) {
-      paramb.aL(2, this.wIh);
+    if (this.BfH != 0) {
+      paramb.bj(2, this.BfH);
     }
-    if (!Arrays.equals(this.wIi, g.aUP)) {
-      paramb.b(3, this.wIi);
+    if (!Arrays.equals(this.BfI, g.bhf)) {
+      paramb.b(3, this.BfI);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
-    if (this.wIg != 0) {
-      i = j + b.aN(1, this.wIg);
+    if (this.BfG != 0) {
+      i = j + b.bl(1, this.BfG);
     }
     j = i;
-    if (this.wIh != 0) {
-      j = i + b.aN(2, this.wIh);
+    if (this.BfH != 0) {
+      j = i + b.bl(2, this.BfH);
     }
     i = j;
-    if (!Arrays.equals(this.wIi, g.aUP)) {
-      i = j + b.c(3, this.wIi);
+    if (!Arrays.equals(this.BfI, g.bhf)) {
+      i = j + b.c(3, this.BfI);
     }
     return i;
   }

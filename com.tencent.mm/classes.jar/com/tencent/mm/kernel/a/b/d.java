@@ -2,7 +2,7 @@ package com.tencent.mm.kernel.a.b;
 
 public abstract interface d<T>
 {
-  public abstract f.a<T> Ei();
+  public abstract f.a<T> Sm();
   
   public abstract void b(f.a<T> parama);
 }

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 public abstract interface MMSightRecordButton$c
 {
-  public abstract void qm(int paramInt);
+  public abstract void uR(int paramInt);
   
-  public abstract void qn(int paramInt);
+  public abstract void uS(int paramInt);
 }
 
 

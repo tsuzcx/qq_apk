@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class h$1
-  extends ah
+  extends ak
 {
   h$1(h paramh, Looper paramLooper)
   {
@@ -14,11 +15,13 @@ final class h$1
   
   public final void handleMessage(Message paramMessage)
   {
-    if (this.mje.miT != null)
+    AppMethodBeat.i(76573);
+    if (this.oJl.oIY != null)
     {
-      this.mje.miT.bjj();
-      this.mje.miT = null;
+      this.oJl.oIY.XF();
+      this.oJl.oIY = null;
     }
+    AppMethodBeat.o(76573);
   }
 }
 

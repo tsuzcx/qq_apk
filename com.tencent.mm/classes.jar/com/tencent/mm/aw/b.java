@@ -1,25 +1,60 @@
 package com.tencent.mm.aw;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class b
 {
-  public static int evd = 0;
-  public static int eve = 1;
-  public static int evf = 1;
-  public static int evg = 2;
-  public static int evh = 3;
-  public static String evi = "me";
-  public static String evj = "me_setting";
-  public static String evk = "me_setting_general";
-  public static String evl = "me_setting_privacy";
-  public static String evm = "me_setting_general_plugin";
-  public static int evn = 0;
-  public static int evo = 1;
-  public static int evp = 2;
-  public static int evq = 3;
-  public static int evr = 4;
-  public static int evs = 0;
-  public static int evt = 1;
-  public static int evu = 2;
+  public static boolean aiB()
+  {
+    AppMethodBeat.i(137254);
+    if ((a.aiy()) && (!a.aiw()))
+    {
+      a.KQ();
+      AppMethodBeat.o(137254);
+      return true;
+    }
+    AppMethodBeat.o(137254);
+    return false;
+  }
+  
+  public static boolean aiC()
+  {
+    AppMethodBeat.i(137255);
+    if (a.aiw())
+    {
+      a.KP();
+      AppMethodBeat.o(137255);
+      return true;
+    }
+    AppMethodBeat.o(137255);
+    return false;
+  }
+  
+  public static boolean aiD()
+  {
+    AppMethodBeat.i(137256);
+    if (a.aiy())
+    {
+      a.aiu();
+      AppMethodBeat.o(137256);
+      return true;
+    }
+    AppMethodBeat.o(137256);
+    return false;
+  }
+  
+  public static boolean tR(String paramString)
+  {
+    AppMethodBeat.i(137257);
+    e locale = a.aiz();
+    if ((locale != null) && (locale.fKp.equals(paramString)))
+    {
+      AppMethodBeat.o(137257);
+      return true;
+    }
+    AppMethodBeat.o(137257);
+    return false;
+  }
 }
 
 

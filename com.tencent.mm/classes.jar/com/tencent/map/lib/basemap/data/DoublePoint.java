@@ -1,5 +1,7 @@
 package com.tencent.map.lib.basemap.data;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class DoublePoint
 {
   public double x;
@@ -40,7 +42,10 @@ public class DoublePoint
   
   public String toString()
   {
-    return this.x + "," + this.y;
+    AppMethodBeat.i(97841);
+    String str = this.x + "," + this.y;
+    AppMethodBeat.o(97841);
+    return str;
   }
 }
 

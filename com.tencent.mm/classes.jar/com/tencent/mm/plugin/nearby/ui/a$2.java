@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.storage.z;
@@ -15,13 +16,15 @@ final class a$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = g.DP().Dz();
-    if (!a.b(this.mCU).isChecked()) {}
+    AppMethodBeat.i(55412);
+    paramDialogInterface = g.RL().Ru();
+    if (!a.b(this.pcO).isChecked()) {}
     for (boolean bool = true;; bool = false)
     {
-      paramDialogInterface.o(4104, Boolean.valueOf(bool));
-      com.tencent.mm.bp.a.eF(a.a(this.mCU));
-      ((Activity)a.a(this.mCU)).finish();
+      paramDialogInterface.set(4104, Boolean.valueOf(bool));
+      com.tencent.mm.bo.a.fF(a.a(this.pcO));
+      ((Activity)a.a(this.pcO)).finish();
+      AppMethodBeat.o(55412);
       return;
     }
   }

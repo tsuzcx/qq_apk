@@ -1,38 +1,42 @@
 package com.tencent.mm.plugin.mmsight.model;
 
 import android.graphics.Point;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g$b
 {
-  public Point jkk;
-  public Point mhq;
-  public Point mhr;
-  public Point mhs;
-  public Point mht;
-  public Point mhu;
+  public Point oHu;
+  public Point oHv;
+  public Point oHw;
+  public Point oHx;
+  public Point oHy;
+  public Point oHz;
   
   public final String toString()
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (this.jkk != null) {
-      localStringBuffer.append(this.jkk.toString() + ",");
+    AppMethodBeat.i(76513);
+    Object localObject = new StringBuffer();
+    if (this.oHu != null) {
+      ((StringBuffer)localObject).append(this.oHu.toString() + ",");
     }
-    if (this.mhq != null) {
-      localStringBuffer.append(this.mhq.toString() + ",");
+    if (this.oHv != null) {
+      ((StringBuffer)localObject).append(this.oHv.toString() + ",");
     }
-    if (this.mhr != null) {
-      localStringBuffer.append(this.mhr.toString() + ",");
+    if (this.oHw != null) {
+      ((StringBuffer)localObject).append(this.oHw.toString() + ",");
     }
-    if (this.mhs != null) {
-      localStringBuffer.append(this.mhs.toString() + ",");
+    if (this.oHx != null) {
+      ((StringBuffer)localObject).append(this.oHx.toString() + ",");
     }
-    if (this.mht != null) {
-      localStringBuffer.append(this.mht.toString() + ",");
+    if (this.oHy != null) {
+      ((StringBuffer)localObject).append(this.oHy.toString() + ",");
     }
-    if (this.mhu != null) {
-      localStringBuffer.append(this.mhu.toString() + ",");
+    if (this.oHz != null) {
+      ((StringBuffer)localObject).append(this.oHz.toString() + ",");
     }
-    return localStringBuffer.toString();
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(76513);
+    return localObject;
   }
 }
 

@@ -1,16 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.o;
-
 public final class ab
-  extends a<o>
+  extends a<h>
 {
-  public static final int CTRL_INDEX = 286;
-  public static final String NAME = "chooseInvoiceTitle";
+  public static final int CTRL_INDEX = 58;
+  public static final String NAME = "addCard";
+  int bxX;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ab
  * JD-Core Version:    0.7.0.1
  */

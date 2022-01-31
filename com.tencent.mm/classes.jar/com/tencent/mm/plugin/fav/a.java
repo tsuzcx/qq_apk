@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.fav;
 
 import android.os.Looper;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
-import com.tencent.mm.h.a.gf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.ai.e.b;
+import com.tencent.mm.g.a.gi;
 import com.tencent.mm.plugin.fav.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 public final class a
@@ -14,7 +15,8 @@ public final class a
 {
   public final e.b a(String paramString, Map<String, String> paramMap, e.a parama)
   {
-    y.i("MicroMsg.Fav.FavNewXmlConsumer", "consumeNewXml subtype: %s values: %s", new Object[] { paramString, paramMap.toString() });
+    AppMethodBeat.i(5281);
+    ab.i("MicroMsg.Fav.FavNewXmlConsumer", "consumeNewXml subtype: %s values: %s", new Object[] { paramString, paramMap.toString() });
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -26,6 +28,7 @@ public final class a
     }
     for (;;)
     {
+      AppMethodBeat.o(5281);
       return null;
       if (!paramString.equals("uploadfavitem")) {
         break;
@@ -37,24 +40,24 @@ public final class a
       }
       i = 1;
       break;
-      paramString = new gf();
-      paramString.bNF.type = 38;
-      paramString.bNF.bNO = ((String)paramMap.get(".sysmsg.favids"));
-      com.tencent.mm.sdk.b.a.udP.a(paramString, Looper.getMainLooper());
-      h.qV(1);
+      paramString = new gi();
+      paramString.cuX.type = 38;
+      paramString.cuX.cvg = ((String)paramMap.get(".sysmsg.favids"));
+      com.tencent.mm.sdk.b.a.ymk.a(paramString, Looper.getMainLooper());
+      h.vQ(1);
       continue;
-      paramString = new gf();
-      paramString.bNF.type = 39;
-      paramString.bNF.bNO = ((String)paramMap.get(".sysmsg.favitem.favid"));
-      paramString.bNF.bNP = ((String)paramMap.get(".sysmsg.favitem.dataidlist"));
-      com.tencent.mm.sdk.b.a.udP.a(paramString, Looper.getMainLooper());
-      h.qV(0);
+      paramString = new gi();
+      paramString.cuX.type = 39;
+      paramString.cuX.cvg = ((String)paramMap.get(".sysmsg.favitem.favid"));
+      paramString.cuX.cvh = ((String)paramMap.get(".sysmsg.favitem.dataidlist"));
+      com.tencent.mm.sdk.b.a.ymk.a(paramString, Looper.getMainLooper());
+      h.vQ(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a
  * JD-Core Version:    0.7.0.1
  */

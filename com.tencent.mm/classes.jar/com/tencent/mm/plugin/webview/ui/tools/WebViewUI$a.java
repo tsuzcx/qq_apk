@@ -1,48 +1,59 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.stub.d;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.b;
-import com.tencent.mm.pluginsdk.ui.tools.s;
+import com.tencent.mm.pluginsdk.ui.tools.u;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WebViewUI$a
   implements b
 {
   private WebViewUI$a(WebViewUI paramWebViewUI) {}
   
-  public final boolean Tq(String paramString)
+  public final boolean ait(String paramString)
   {
-    if (!this.rpH.gGo.cdJ().coV())
+    AppMethodBeat.i(7886);
+    if (!this.vgz.igV.ddW().dqv())
     {
-      y.e("MicroMsg.WebViewUI", "ActivityJumpHandler not allow, no inner url generalcontrol, url = %s", new Object[] { paramString });
+      ab.e("MicroMsg.WebViewUI", "ActivityJumpHandler not allow, no inner url generalcontrol, url = %s", new Object[] { paramString });
+      AppMethodBeat.o(7886);
       return true;
     }
     try
     {
-      this.rpH.gGn.bn(paramString, this.rpH.gGo.cdI().hi(7));
+      this.vgz.igU.bN(paramString, this.vgz.igV.ddV().jy(7));
+      AppMethodBeat.o(7886);
       return true;
     }
     catch (Exception paramString)
     {
-      y.w("MicroMsg.WebViewUI", "ActivityJumpHandler, ex = " + paramString.getMessage());
+      for (;;)
+      {
+        ab.w("MicroMsg.WebViewUI", "ActivityJumpHandler, ex = " + paramString.getMessage());
+      }
     }
-    return true;
   }
   
-  public final boolean Ty(String paramString)
+  public final boolean aiz(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(7885);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(7885);
       return false;
     }
-    return s.n(paramString, "weixin://jump/");
+    boolean bool = u.x(paramString, "weixin://jump/");
+    AppMethodBeat.o(7885);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.WebViewUI.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ public final class c$eg
 {
   public c$eg()
   {
-    super("nfcConnect", "nfcConnect", 140, false);
+    super("launchApp", "", 27, false);
   }
 }
 

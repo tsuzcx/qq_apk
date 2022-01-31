@@ -19,7 +19,7 @@ final class MallFormView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.form.MallFormView.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.SightParams;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
@@ -9,27 +10,34 @@ import com.tencent.mm.storage.ac.a;
 
 public final class k
 {
-  private static k mjj = new k();
-  public SightParams mjk;
+  private static k oJq;
+  public SightParams oJr;
   
-  public static k bjA()
+  static
   {
-    return mjj;
+    AppMethodBeat.i(76593);
+    oJq = new k();
+    AppMethodBeat.o(76593);
   }
   
-  public static int bjC()
+  public static k bRq()
   {
-    return j.mhB.videoBitrate;
+    return oJq;
   }
   
-  public static int bjD()
+  public static int bRs()
   {
-    return j.mhB.mgf;
+    return j.oHG.videoBitrate;
   }
   
-  public static String bjE()
+  public static int bRt()
   {
-    switch (j.mhB.dys)
+    return j.oHG.eZQ;
+  }
+  
+  public static String bRu()
+  {
+    switch (j.oHG.eqK)
     {
     default: 
       return "";
@@ -39,26 +47,40 @@ public final class k
     return "RECORDER_TYPE_FFMPEG";
   }
   
-  public static d d(VideoTransPara paramVideoTransPara)
-  {
-    switch (j.mhB.dys)
-    {
-    default: 
-      return null;
-    case 2: 
-      return new n(paramVideoTransPara);
-    }
-    return new l(paramVideoTransPara);
-  }
-  
   public static boolean isDebug()
   {
-    return CaptureMMProxy.getInstance().getInt(ac.a.utO, 0) == 1;
+    AppMethodBeat.i(76592);
+    if (CaptureMMProxy.getInstance().getInt(ac.a.yDR, 0) == 1)
+    {
+      AppMethodBeat.o(76592);
+      return true;
+    }
+    AppMethodBeat.o(76592);
+    return false;
   }
   
-  public final SightParams bjB()
+  public static d q(VideoTransPara paramVideoTransPara)
   {
-    return this.mjk;
+    AppMethodBeat.i(76591);
+    Object localObject = null;
+    switch (j.oHG.eqK)
+    {
+    default: 
+      paramVideoTransPara = localObject;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(76591);
+      return paramVideoTransPara;
+      paramVideoTransPara = new n(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = new l(paramVideoTransPara);
+    }
+  }
+  
+  public final SightParams bRr()
+  {
+    return this.oJr;
   }
 }
 

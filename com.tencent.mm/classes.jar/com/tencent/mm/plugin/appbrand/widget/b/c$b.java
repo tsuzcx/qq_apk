@@ -5,33 +5,38 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.plugin.appbrand.y.i;
-import com.tencent.mm.protocal.c.bna;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 final class c$b
   extends BaseAdapter
 {
-  private LinkedList<bna> fYa;
+  private LinkedList<c.c> jje;
   
-  c$b(LinkedList<bna> paramLinkedList)
+  c$b(LinkedList<c.c> paramLinkedList)
   {
-    this.fYa = paramLinkedList;
+    this.jje = paramLinkedList;
   }
   
-  private bna kN(int paramInt)
+  private c.c qm(int paramInt)
   {
-    return (bna)this.fYa.get(paramInt);
+    AppMethodBeat.i(102354);
+    c.c localc = (c.c)this.jje.get(paramInt);
+    AppMethodBeat.o(102354);
+    return localc;
   }
   
   public final int getCount()
   {
-    if (this.fYa == null) {
+    AppMethodBeat.i(102353);
+    if (this.jje == null)
+    {
+      AppMethodBeat.o(102353);
       return 0;
     }
-    return this.fYa.size();
+    int i = this.jje.size();
+    AppMethodBeat.o(102353);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -41,45 +46,49 @@ final class c$b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if ((this.fYa == null) || (this.fYa.size() <= 0)) {
+    AppMethodBeat.i(102355);
+    if ((this.jje == null) || (this.jje.size() <= 0))
+    {
+      AppMethodBeat.o(102355);
       return null;
     }
-    bna localbna = kN(paramInt);
+    c.c localc = qm(paramInt);
     Object localObject;
     if (paramView == null)
     {
       paramView = new c.b.a((byte)0);
-      localObject = View.inflate(paramViewGroup.getContext(), y.h.authorize_scope_item, null);
-      paramView.fYe = ((ImageView)((View)localObject).findViewById(y.g.app_auth_state));
-      paramView.fYf = ((TextView)((View)localObject).findViewById(y.g.app_auth_desc));
+      localObject = View.inflate(paramViewGroup.getContext(), 2130968791, null);
+      paramView.jji = ((ImageView)((View)localObject).findViewById(2131821584));
+      paramView.jjj = ((TextView)((View)localObject).findViewById(2131821585));
       ((View)localObject).setTag(paramView);
       paramViewGroup = paramView;
       paramView = (View)localObject;
-      if (localbna.tGf != 1) {
-        break label162;
+      if (localc.state != 1) {
+        break label173;
       }
-      paramViewGroup.fYe.setImageResource(y.i.login_auth_state_not_selected);
+      paramViewGroup.jji.setImageResource(2130839323);
     }
     for (;;)
     {
-      paramViewGroup.fYf.setText(localbna.kRN);
-      localObject = paramViewGroup.fYe;
-      paramViewGroup.fYe.setOnClickListener(new c.b.1(this, localbna, (ImageView)localObject));
+      paramViewGroup.jjj.setText(localc.desc);
+      localObject = paramViewGroup.jji;
+      paramViewGroup.jji.setOnClickListener(new c.b.1(this, localc, (ImageView)localObject));
+      AppMethodBeat.o(102355);
       return paramView;
       paramViewGroup = (c.b.a)paramView.getTag();
       break;
-      label162:
-      if (localbna.tGf == 3) {
-        paramViewGroup.fYe.setImageResource(y.i.login_auth_state_must_select);
+      label173:
+      if (localc.state == 3) {
+        paramViewGroup.jji.setImageResource(2130839322);
       } else {
-        paramViewGroup.fYe.setImageResource(y.i.login_auth_state_default_select);
+        paramViewGroup.jji.setImageResource(2130839321);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.b.c.b
  * JD-Core Version:    0.7.0.1
  */

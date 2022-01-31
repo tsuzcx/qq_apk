@@ -1,5 +1,9 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.f.a;
+import com.tencent.mm.sdk.platformtools.ab;
+
 final class SDKOAuthUI$1
   implements Runnable
 {
@@ -7,8 +11,12 @@ final class SDKOAuthUI$1
   
   public final void run()
   {
-    SDKOAuthUI.a(this.rmk, -2);
-    this.rmk.finish();
+    AppMethodBeat.i(7524);
+    ab.i("MicroMsg.SdkOAuthUI", "BackBtn click");
+    a.vtM.a(SDKOAuthUI.a(this.vbR), SDKOAuthUI.b(this.vbR), 0, SDKOAuthUI.c(this.vbR), SDKOAuthUI.d(this.vbR), 1, 0);
+    SDKOAuthUI.a(this.vbR, -2);
+    this.vbR.finish();
+    AppMethodBeat.o(7524);
   }
 }
 

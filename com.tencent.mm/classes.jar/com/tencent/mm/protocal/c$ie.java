@@ -5,12 +5,12 @@ public final class c$ie
 {
   public c$ie()
   {
-    super("setLocalData", "setLocalData", 180, false);
+    super("selectEnterpriseContact", "selectEnterpriseContact", 286, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ie
  * JD-Core Version:    0.7.0.1
  */

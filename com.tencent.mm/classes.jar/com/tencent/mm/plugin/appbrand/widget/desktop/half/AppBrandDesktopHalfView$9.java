@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.half;
 
 import android.support.v7.widget.RecyclerView.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recentview.ConversationAppBrandRecentView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AppBrandDesktopHalfView$9
   implements Runnable
@@ -11,8 +12,10 @@ final class AppBrandDesktopHalfView$9
   
   public final void run()
   {
-    y.i("MicroMsg.AppBrandDesktopHalfView", "alvinluo notifyMoveToFirstAnimation last page need notifyItemRangeChanged");
-    AppBrandDesktopHalfView.c(this.hrR).getRecentView().getAdapter().ah(this.kX, 5);
+    AppMethodBeat.i(134168);
+    ab.i("MicroMsg.AppBrandDesktopHalfView", "alvinluo notifyMoveToFirstAnimation last page need notifyItemRangeChanged");
+    AppBrandDesktopHalfView.c(this.jin).getRecentView().getAdapter().an(this.lU, 5);
+    AppMethodBeat.o(134168);
   }
 }
 

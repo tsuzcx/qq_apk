@@ -1,96 +1,87 @@
 package com.tencent.mm.plugin.nearby.a;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.atv;
-import com.tencent.mm.protocal.c.atw;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.baa;
+import com.tencent.mm.protocal.protobuf.bab;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
   extends m
   implements k
 {
-  private final com.tencent.mm.ah.b dmK;
-  private f dmL;
-  public String ePR;
-  public String mCz;
+  private f callback;
+  public String gfM;
+  public String pcq;
+  private final com.tencent.mm.ai.b rr;
   
   public d(float paramFloat1, float paramFloat2, int paramInt, String paramString1, String paramString2)
   {
+    AppMethodBeat.i(55367);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new atv();
-    ((b.a)localObject).ecI = new atw();
+    ((b.a)localObject).fsX = new baa();
+    ((b.a)localObject).fsY = new bab();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/joinlbsroom";
-    ((b.a)localObject).ecG = 376;
-    ((b.a)localObject).ecJ = 183;
-    ((b.a)localObject).ecK = 1000000183;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (atv)this.dmK.ecE.ecN;
-    ((atv)localObject).ssq = 1;
-    ((atv)localObject).sGJ = paramFloat1;
-    ((atv)localObject).sGK = paramFloat2;
-    ((atv)localObject).sUn = paramInt;
-    ((atv)localObject).sUo = paramString1;
-    ((atv)localObject).sUp = paramString2;
-    ((atv)localObject).sUq = 0;
-    y.d("MicroMsg.NetSceneLbsRoom", "Req: opcode:1 lon:" + paramFloat1 + " lat:" + paramFloat2 + " pre:" + paramInt + " gpsSource:0 mac" + paramString1 + " cell:" + paramString2);
+    ((b.a)localObject).funcId = 376;
+    ((b.a)localObject).reqCmdId = 183;
+    ((b.a)localObject).respCmdId = 1000000183;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (baa)this.rr.fsV.fta;
+    ((baa)localObject).OpCode = 1;
+    ((baa)localObject).wDh = paramFloat1;
+    ((baa)localObject).wDi = paramFloat2;
+    ((baa)localObject).wSk = paramInt;
+    ((baa)localObject).wSl = paramString1;
+    ((baa)localObject).wSm = paramString2;
+    ((baa)localObject).wSn = 0;
+    ab.d("MicroMsg.NetSceneLbsRoom", "Req: opcode:1 lon:" + paramFloat1 + " lat:" + paramFloat2 + " pre:" + paramInt + " gpsSource:0 mac" + paramString1 + " cell:" + paramString2);
+    AppMethodBeat.o(55367);
   }
   
   public d(String paramString, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(55368);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new atv();
-    ((b.a)localObject).ecI = new atw();
+    ((b.a)localObject).fsX = new baa();
+    ((b.a)localObject).fsY = new bab();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/joinlbsroom";
-    ((b.a)localObject).ecG = 376;
-    ((b.a)localObject).ecJ = 183;
-    ((b.a)localObject).ecK = 1000000183;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (atv)this.dmK.ecE.ecN;
-    ((atv)localObject).sGJ = 0.0F;
-    ((atv)localObject).sGK = 0.0F;
-    ((atv)localObject).sUn = 0;
-    ((atv)localObject).sUq = 0;
-    ((atv)localObject).sUo = "";
-    ((atv)localObject).sUp = "";
-    ((atv)localObject).ssq = 2;
-    ((atv)localObject).evE = paramString;
-    ((atv)localObject).tpy = paramInt1;
-    ((atv)localObject).tpx = paramInt2;
+    ((b.a)localObject).funcId = 376;
+    ((b.a)localObject).reqCmdId = 183;
+    ((b.a)localObject).respCmdId = 1000000183;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (baa)this.rr.fsV.fta;
+    ((baa)localObject).wDh = 0.0F;
+    ((baa)localObject).wDi = 0.0F;
+    ((baa)localObject).wSk = 0;
+    ((baa)localObject).wSn = 0;
+    ((baa)localObject).wSl = "";
+    ((baa)localObject).wSm = "";
+    ((baa)localObject).OpCode = 2;
+    ((baa)localObject).fLr = paramString;
+    ((baa)localObject).xpv = paramInt1;
+    ((baa)localObject).xpu = paramInt2;
+    AppMethodBeat.o(55368);
   }
   
-  public final int a(e parame, f paramf)
+  public final int Ac()
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    return ((baa)this.rr.fsV.fta).OpCode;
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final int doScene(e parame, f paramf)
   {
-    y.d("MicroMsg.NetSceneLbsRoom", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " opCode:" + rN());
-    paramArrayOfByte = (atw)((com.tencent.mm.ah.b)paramq).ecF.ecN;
-    if (paramInt2 != 0) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    do
-    {
-      return;
-      if (rN() == 1)
-      {
-        this.ePR = paramArrayOfByte.evE;
-        this.mCz = paramArrayOfByte.tpz;
-        this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        return;
-      }
-    } while (rN() != 2);
-    b.JO(((atv)((com.tencent.mm.ah.b)paramq).ecE.ecN).evE);
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(55369);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(55369);
+    return i;
   }
   
   public final int getType()
@@ -98,14 +89,36 @@ public final class d
     return 376;
   }
   
-  public final int rN()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    return ((atv)this.dmK.ecE.ecN).ssq;
+    AppMethodBeat.i(55370);
+    ab.d("MicroMsg.NetSceneLbsRoom", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " opCode:" + Ac());
+    paramArrayOfByte = (bab)((com.tencent.mm.ai.b)paramq).fsW.fta;
+    if (paramInt2 != 0)
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(55370);
+      return;
+    }
+    if (Ac() == 1)
+    {
+      this.gfM = paramArrayOfByte.fLr;
+      this.pcq = paramArrayOfByte.xpw;
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(55370);
+      return;
+    }
+    if (Ac() == 2)
+    {
+      b.VN(((baa)((com.tencent.mm.ai.b)paramq).fsV.fta).fLr);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(55370);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.a.d
  * JD-Core Version:    0.7.0.1
  */

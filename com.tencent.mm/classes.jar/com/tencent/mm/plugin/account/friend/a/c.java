@@ -1,43 +1,52 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.h.a.af;
-import com.tencent.mm.h.a.af.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.az.k;
+import com.tencent.mm.g.a.ag;
+import com.tencent.mm.g.a.ag.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 
 public final class c
-  extends com.tencent.mm.sdk.b.c<af>
+  extends com.tencent.mm.sdk.b.c<ag>
 {
   public c()
   {
-    this.udX = af.class.getName().hashCode();
+    AppMethodBeat.i(108323);
+    this.__eventId = ag.class.getName().hashCode();
+    AppMethodBeat.o(108323);
   }
   
-  private static boolean a(af paramaf)
+  private static boolean a(ag paramag)
   {
-    if (paramaf.bGf.bGh == 0) {}
+    AppMethodBeat.i(108324);
+    if (paramag.cno.cnq == 0) {}
     try
     {
-      int i = q.Gu() | 0x1000;
-      g.DP().Dz().o(34, Integer.valueOf(i));
-      ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fv().b(new com.tencent.mm.ay.j("", "", "", "", "", "", "", "", i, "", ""));
-      y.d("MicroMsg.FriendBindQQ.EventListener", "doClearQQFriendHelper succ ");
+      int i = r.Zy() | 0x1000;
+      g.RL().Ru().set(34, Integer.valueOf(i));
+      ((j)g.E(j.class)).Yz().c(new k("", "", "", "", "", "", "", "", i, "", ""));
+      ab.d("MicroMsg.FriendBindQQ.EventListener", "doClearQQFriendHelper succ ");
+      AppMethodBeat.o(108324);
       return false;
     }
-    catch (Exception paramaf)
+    catch (Exception paramag)
     {
-      y.printErrStackTrace("MicroMsg.FriendBindQQ.EventListener", paramaf, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.FriendBindQQ.EventListener", paramag, "", new Object[0]);
+      }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.c
  * JD-Core Version:    0.7.0.1
  */

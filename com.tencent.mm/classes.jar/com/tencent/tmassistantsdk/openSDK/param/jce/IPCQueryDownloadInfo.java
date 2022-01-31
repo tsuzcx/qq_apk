@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.openSDK.param.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class IPCQueryDownloadInfo
   extends JceStruct
@@ -30,6 +31,7 @@ public final class IPCQueryDownloadInfo
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(75997);
     this.url = paramJceInputStream.readString(0, true);
     this.savePath = paramJceInputStream.readString(1, false);
     this.state = paramJceInputStream.read(this.state, 2, false);
@@ -37,10 +39,12 @@ public final class IPCQueryDownloadInfo
     this.totalLen = paramJceInputStream.read(this.totalLen, 4, false);
     this.allTaskTotalProgress = paramJceInputStream.read(this.allTaskTotalProgress, 5, false);
     this.allTaskTotalLength = paramJceInputStream.read(this.allTaskTotalLength, 6, false);
+    AppMethodBeat.o(75997);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(75996);
     paramJceOutputStream.write(this.url, 0);
     if (this.savePath != null) {
       paramJceOutputStream.write(this.savePath, 1);
@@ -50,6 +54,7 @@ public final class IPCQueryDownloadInfo
     paramJceOutputStream.write(this.totalLen, 4);
     paramJceOutputStream.write(this.allTaskTotalProgress, 5);
     paramJceOutputStream.write(this.allTaskTotalLength, 6);
+    AppMethodBeat.o(75996);
   }
 }
 

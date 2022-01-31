@@ -9,7 +9,7 @@ final class SettingsManageFindMoreUI$2
   
   public final void run()
   {
-    this.nUK.rHo = true;
+    this.qIP.vxW = true;
   }
 }
 

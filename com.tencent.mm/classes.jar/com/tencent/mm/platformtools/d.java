@@ -1,7 +1,7 @@
 package com.tencent.mm.platformtools;
 
 import android.app.Activity;
-import com.tencent.mm.ah.f;
+import com.tencent.mm.ai.f;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +9,7 @@ public abstract class d
   implements f
 {
   public Activity activity;
-  Set<Integer> eRn = new HashSet();
+  Set<Integer> gji = new HashSet();
   
   public d(Activity paramActivity)
   {

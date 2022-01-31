@@ -9,9 +9,9 @@ import java.io.File;
 public class DefaultTinkerResultService
   extends AbstractResultService
 {
-  public static void Y(File paramFile)
+  public static void ah(File paramFile)
   {
-    if (!SharePatchFileUtil.ae(paramFile)) {}
+    if (!SharePatchFileUtil.an(paramFile)) {}
     Object localObject;
     do
     {
@@ -20,17 +20,17 @@ public class DefaultTinkerResultService
       localObject = paramFile.getName();
       if ((!((String)localObject).startsWith("patch-")) || (!((String)localObject).endsWith(".apk")))
       {
-        SharePatchFileUtil.ah(paramFile);
+        SharePatchFileUtil.aq(paramFile);
         return;
       }
       localObject = paramFile.getParentFile();
       if (!((File)localObject).getName().startsWith("patch-"))
       {
-        SharePatchFileUtil.ah(paramFile);
+        SharePatchFileUtil.aq(paramFile);
         return;
       }
     } while (((File)localObject).getParentFile().getName().equals("tinker"));
-    SharePatchFileUtil.ah(paramFile);
+    SharePatchFileUtil.aq(paramFile);
   }
   
   public void a(a parama)
@@ -42,9 +42,9 @@ public class DefaultTinkerResultService
     {
       return;
       com.tencent.tinker.lib.f.a.i("Tinker.DefaultTinkerResultService", "DefaultTinkerResultService received a result:%s ", new Object[] { parama.toString() });
-      b.hO(getApplicationContext());
-    } while (!parama.bKQ);
-    Y(new File(parama.wWa));
+      b.jp(getApplicationContext());
+    } while (!parama.csk);
+    ah(new File(parama.BsF));
     if (b(parama))
     {
       Process.killProcess(Process.myPid());
@@ -55,14 +55,14 @@ public class DefaultTinkerResultService
   
   public final boolean b(a parama)
   {
-    Object localObject = com.tencent.tinker.lib.e.a.hN(getApplicationContext());
-    if (((com.tencent.tinker.lib.e.a)localObject).wWr)
+    Object localObject = com.tencent.tinker.lib.e.a.jo(getApplicationContext());
+    if (((com.tencent.tinker.lib.e.a)localObject).BsU)
     {
-      localObject = ((com.tencent.tinker.lib.e.a)localObject).wWq;
+      localObject = ((com.tencent.tinker.lib.e.a)localObject).BsT;
       if (localObject != null)
       {
-        localObject = ((d)localObject).wWv;
-        if ((parama.wWb != null) && (parama.wWb.equals(localObject))) {
+        localObject = ((d)localObject).BsY;
+        if ((parama.BsG != null) && (parama.BsG.equals(localObject))) {
           return false;
         }
       }

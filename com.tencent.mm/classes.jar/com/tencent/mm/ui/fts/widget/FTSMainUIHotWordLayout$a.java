@@ -2,10 +2,10 @@ package com.tencent.mm.ui.fts.widget;
 
 public final class FTSMainUIHotWordLayout$a
 {
-  public int bXq;
+  public String Aos;
+  public int Aot;
+  public int cFm;
   public String jumpUrl;
-  public String vWk;
-  public int vWl;
 }
 
 

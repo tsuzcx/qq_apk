@@ -1,68 +1,78 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.h.c.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.c;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
   extends c
 {
-  protected static c.a buS;
+  protected static c.a info;
   
   static
   {
+    AppMethodBeat.i(118201);
     c.a locala = new c.a();
-    locala.ujL = new Field[8];
+    locala.yrK = new Field[8];
     locala.columns = new String[9];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "abtestkey";
-    locala.ujN.put("abtestkey", "TEXT PRIMARY KEY ");
+    locala.yrM.put("abtestkey", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" abtestkey TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "abtestkey";
+    locala.yrL = "abtestkey";
     locala.columns[1] = "value";
-    locala.ujN.put("value", "TEXT");
+    locala.yrM.put("value", "TEXT");
     localStringBuilder.append(" value TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "expId";
-    locala.ujN.put("expId", "TEXT");
+    locala.yrM.put("expId", "TEXT");
     localStringBuilder.append(" expId TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "sequence";
-    locala.ujN.put("sequence", "LONG");
+    locala.yrM.put("sequence", "LONG");
     localStringBuilder.append(" sequence LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "prioritylevel";
-    locala.ujN.put("prioritylevel", "INTEGER");
+    locala.yrM.put("prioritylevel", "INTEGER");
     localStringBuilder.append(" prioritylevel INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "startTime";
-    locala.ujN.put("startTime", "LONG");
+    locala.yrM.put("startTime", "LONG");
     localStringBuilder.append(" startTime LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "endTime";
-    locala.ujN.put("endTime", "LONG");
+    locala.yrM.put("endTime", "LONG");
     localStringBuilder.append(" endTime LONG");
     localStringBuilder.append(", ");
     locala.columns[7] = "noReport";
-    locala.ujN.put("noReport", "INTEGER");
+    locala.yrM.put("noReport", "INTEGER");
     localStringBuilder.append(" noReport INTEGER");
     locala.columns[8] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(118201);
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return info;
   }
   
   public final boolean isValid()
   {
-    long l = bk.UX();
-    return (l >= this.field_startTime) && (l < this.field_endTime);
-  }
-  
-  protected final c.a rM()
-  {
-    return buS;
+    AppMethodBeat.i(118200);
+    long l = bo.aox();
+    if ((l >= this.field_startTime) && (l < this.field_endTime))
+    {
+      AppMethodBeat.o(118200);
+      return true;
+    }
+    AppMethodBeat.o(118200);
+    return false;
   }
 }
 

@@ -1,7 +1,9 @@
 package com.tencent.mm.ui.statusbar;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -10,30 +12,38 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 public class DrawStatusBarPreference
   extends MMPreference
 {
-  private b hct = null;
+  private b iLE = null;
   
-  public boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
   {
-    return false;
+    return 0;
   }
   
-  protected void initSwipeBack()
+  public void initSwipeBack()
   {
+    AppMethodBeat.i(107548);
     super.initSwipeBack();
     if ((getSwipeBackLayout() != null) && (getSwipeBackLayout().getChildCount() > 0))
     {
       View localView = getSwipeBackLayout().getChildAt(0);
       getSwipeBackLayout().removeView(localView);
-      this.hct = new b(this);
-      this.hct.addView(localView, new FrameLayout.LayoutParams(-1, -1));
-      getSwipeBackLayout().addView(this.hct);
-      getSwipeBackLayout().setContentView(this.hct);
+      this.iLE = new b(this);
+      this.iLE.addView(localView, new FrameLayout.LayoutParams(-1, -1));
+      getSwipeBackLayout().addView(this.iLE);
+      getSwipeBackLayout().setContentView(this.iLE);
     }
+    AppMethodBeat.o(107548);
   }
   
-  public int xj()
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    return 0;
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

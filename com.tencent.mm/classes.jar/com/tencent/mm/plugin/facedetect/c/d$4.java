@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.ref.WeakReference;
 
 final class d$4
@@ -17,53 +18,59 @@ final class d$4
   
   public final void onClick(View paramView)
   {
-    if (bk.bl(this.jNw.jNv))
+    AppMethodBeat.i(137);
+    if (bo.isNullOrNil(this.mhH.mhE))
     {
-      y.e("MicroMsg.FaceDetectMpController", "alvinluo feedback url is null");
+      ab.e("MicroMsg.FaceDetectMpController", "alvinluo feedback url is null");
+      AppMethodBeat.o(137);
       return;
     }
-    if ((this.jNw.jNg != null) && (this.jNw.jNg.get() != null)) {
-      ((e)this.jNw.jNg.get()).aOe();
+    if ((this.mhH.mhp != null) && (this.mhH.mhp.get() != null)) {
+      ((f)this.mhH.mhp.get()).buh();
     }
     paramView = null;
-    if (this.jNu != null) {
-      paramView = this.jNu.getString("verify_result");
+    if (this.mhD != null) {
+      paramView = this.mhD.getString("verify_result");
     }
-    for (;;)
+    try
     {
-      try
+      Object localObject;
+      int i;
+      if (this.mhH.appId != null)
       {
-        if (this.jNw.appId != null)
-        {
-          localObject = this.jNw.appId;
-          int i = this.bEg;
-          if (paramView == null) {
-            break label232;
-          }
-          paramView = q.encode(String.format("appid=%s;errcode=%d;identifyid=%s", new Object[] { localObject, Integer.valueOf(i), paramView }), "UTF-8");
-          paramView = this.jNw.jNv + "?customInfo=" + paramView;
-          y.i("MicroMsg.FaceDetectMpController", "alvinluo feedback url: %s", new Object[] { paramView });
-          localObject = new Intent();
-          ((Intent)localObject).putExtra("rawUrl", paramView);
-          com.tencent.mm.br.d.b(this.val$context, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-          return;
+        localObject = this.mhH.appId;
+        i = this.val$errCode;
+        if (paramView == null) {
+          break label236;
         }
       }
-      catch (Exception paramView)
+      for (;;)
       {
-        y.printErrStackTrace("MicroMsg.FaceDetectMpController", paramView, "alvinluo start feedback webview exception", new Object[0]);
+        paramView = q.encode(String.format("appid=%s;errcode=%d;identifyid=%s", new Object[] { localObject, Integer.valueOf(i), paramView }), "UTF-8");
+        paramView = this.mhH.mhE + "?customInfo=" + paramView;
+        ab.i("MicroMsg.FaceDetectMpController", "alvinluo feedback url: %s", new Object[] { paramView });
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("rawUrl", paramView);
+        com.tencent.mm.bq.d.b(this.val$context, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+        AppMethodBeat.o(137);
         return;
+        localObject = "";
+        break;
+        label236:
+        paramView = "";
       }
-      Object localObject = "";
-      continue;
-      label232:
-      paramView = "";
+      return;
+    }
+    catch (Exception paramView)
+    {
+      ab.printErrStackTrace("MicroMsg.FaceDetectMpController", paramView, "alvinluo start feedback webview exception", new Object[0]);
+      AppMethodBeat.o(137);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.c.d.4
  * JD-Core Version:    0.7.0.1
  */

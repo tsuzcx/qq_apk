@@ -4,9 +4,10 @@ import android.bluetooth.BluetoothDevice;
 import android.os.ParcelUuid;
 import android.util.Base64;
 import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.ScanResultCompat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.f;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -17,55 +18,58 @@ import org.json.JSONObject;
 
 public final class d
 {
-  public int bLz;
-  public String bwK;
-  private JSONObject gmI;
-  public SparseArray<byte[]> gmJ;
-  public List<ParcelUuid> gmK;
-  public String gmL;
-  public Map<ParcelUuid, byte[]> gmM;
+  public String bYu;
+  public int csT;
+  public SparseArray<byte[]> hGI;
+  public List<ParcelUuid> hGJ;
+  public String hGK;
+  public Map<ParcelUuid, byte[]> hGL;
+  private JSONObject jsonObject;
   public String name;
   
   public d(ScanResultCompat paramScanResultCompat)
   {
-    this.name = bk.pm(paramScanResultCompat.getDevice().getName());
-    this.bwK = bk.pm(paramScanResultCompat.getDevice().getAddress());
-    this.bLz = paramScanResultCompat.goh;
-    this.gmJ = paramScanResultCompat.gog.goc;
-    this.gmK = paramScanResultCompat.gog.gob;
-    this.gmL = bk.pm(paramScanResultCompat.gog.gnO);
-    this.gmM = paramScanResultCompat.gog.god;
+    AppMethodBeat.i(94279);
+    this.name = bo.nullAsNil(paramScanResultCompat.getDevice().getName());
+    this.bYu = bo.nullAsNil(paramScanResultCompat.getDevice().getAddress());
+    this.csT = paramScanResultCompat.hIe;
+    this.hGI = paramScanResultCompat.hId.hHZ;
+    this.hGJ = paramScanResultCompat.hId.hHY;
+    this.hGK = bo.nullAsNil(paramScanResultCompat.hId.mDeviceName);
+    this.hGL = paramScanResultCompat.hId.hIa;
+    AppMethodBeat.o(94279);
   }
   
   public d(String paramString1, String paramString2)
   {
     this.name = paramString1;
-    this.bwK = paramString2;
+    this.bYu = paramString2;
   }
   
-  public final JSONObject ahT()
+  public final JSONObject aBI()
   {
-    if (this.gmI == null)
+    AppMethodBeat.i(94280);
+    if (this.jsonObject == null)
     {
-      this.gmI = new JSONObject();
-      this.gmI.put("deviceId", this.bwK);
-      this.gmI.put("name", this.name);
-      this.gmI.put("RSSI", this.bLz);
-      Object localObject1 = new byte[0];
+      this.jsonObject = new JSONObject();
+      this.jsonObject.put("deviceId", this.bYu);
+      this.jsonObject.put("name", this.name);
+      this.jsonObject.put("RSSI", this.csT);
+      localObject1 = new byte[0];
       Object localObject3 = new StringBuilder();
       Object localObject2 = localObject1;
-      if (this.gmJ != null)
+      if (this.hGI != null)
       {
         localObject2 = localObject1;
-        if (this.gmJ.size() >= 0)
+        if (this.hGI.size() >= 0)
         {
           int k = 0;
-          while (k < this.gmJ.size())
+          while (k < this.hGI.size())
           {
-            int m = this.gmJ.keyAt(0);
+            int m = this.hGI.keyAt(0);
             int i = (byte)(m & 0xFF);
             int j = (byte)(m >> 8 & 0xFF);
-            byte[] arrayOfByte = (byte[])this.gmJ.valueAt(k);
+            byte[] arrayOfByte = (byte[])this.hGI.valueAt(k);
             localObject2 = new byte[localObject1.length + 2 + arrayOfByte.length];
             System.arraycopy(localObject1, 0, localObject2, 0, localObject1.length);
             m = localObject1.length;
@@ -78,30 +82,32 @@ public final class d
         }
       }
       ((StringBuilder)localObject3).append(new String(Base64.encode((byte[])localObject2, 2)));
-      this.gmI.put("advertisData", localObject3);
+      this.jsonObject.put("advertisData", localObject3);
       localObject1 = new JSONArray();
-      if (this.gmK != null)
+      if (this.hGJ != null)
       {
-        localObject2 = this.gmK.iterator();
+        localObject2 = this.hGJ.iterator();
         while (((Iterator)localObject2).hasNext()) {
           ((JSONArray)localObject1).put(((ParcelUuid)((Iterator)localObject2).next()).getUuid().toString().toUpperCase());
         }
       }
-      this.gmI.put("advertisServiceUUIDs", localObject1);
-      this.gmI.put("localName", this.gmL);
+      this.jsonObject.put("advertisServiceUUIDs", localObject1);
+      this.jsonObject.put("localName", this.hGK);
       localObject1 = new JSONObject();
-      if ((this.gmM != null) && (this.gmM.size() > 0))
+      if ((this.hGL != null) && (this.hGL.size() > 0))
       {
-        localObject2 = this.gmM.keySet().iterator();
+        localObject2 = this.hGL.keySet().iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (ParcelUuid)((Iterator)localObject2).next();
-          ((JSONObject)localObject1).put(((ParcelUuid)localObject3).getUuid().toString().toUpperCase(), new String(Base64.encode((byte[])this.gmM.get(localObject3), 2)));
+          ((JSONObject)localObject1).put(((ParcelUuid)localObject3).getUuid().toString().toUpperCase(), new String(Base64.encode((byte[])this.hGL.get(localObject3), 2)));
         }
       }
-      this.gmI.put("serviceData", localObject1);
+      this.jsonObject.put("serviceData", localObject1);
     }
-    return this.gmI;
+    Object localObject1 = this.jsonObject;
+    AppMethodBeat.o(94280);
+    return localObject1;
   }
 }
 

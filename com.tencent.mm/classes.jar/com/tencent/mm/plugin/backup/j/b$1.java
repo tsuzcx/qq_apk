@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.backup.j;
 
-import com.tencent.mm.h.a.w;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.w;
 import com.tencent.mm.sdk.b.c;
 
 final class b$1
@@ -8,7 +9,9 @@ final class b$1
 {
   b$1(b paramb)
   {
-    this.udX = w.class.getName().hashCode();
+    AppMethodBeat.i(18101);
+    this.__eventId = w.class.getName().hashCode();
+    AppMethodBeat.o(18101);
   }
 }
 

@@ -5,21 +5,26 @@ import android.os.Bundle;
 
 public abstract interface l
 {
-  public abstract boolean Js();
+  public abstract boolean a(String paramString, a parama);
   
-  public abstract boolean Jt();
+  public abstract boolean acq();
   
-  public abstract boolean a(String paramString, l.a parama);
+  public abstract boolean acr();
   
-  public abstract boolean b(String paramString, l.a parama);
+  public abstract boolean b(String paramString, a parama);
   
-  public abstract void bJ(boolean paramBoolean);
+  public abstract void bY(Context paramContext);
   
-  public abstract void bu(Context paramContext);
+  public abstract void cL(boolean paramBoolean);
   
-  public abstract void d(Context paramContext, Bundle paramBundle);
+  public abstract void f(Context paramContext, Bundle paramBundle);
   
-  public abstract boolean id(int paramInt);
+  public abstract boolean kQ(int paramInt);
+  
+  public static abstract interface a
+  {
+    public abstract void kR(int paramInt);
+  }
 }
 
 

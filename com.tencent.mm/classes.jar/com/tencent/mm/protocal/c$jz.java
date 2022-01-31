@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-final class c$jz
+public final class c$jz
   extends c.g
 {
-  c$jz()
+  public c$jz()
   {
-    super("updateTimelineShareData", "updateTimelineShareData", 327, false);
+    super("getSupportSoter", "getSupportSoter", 213, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.c.jz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,27 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.sdk.platformtools.y;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.service.c;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiMarkScene;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandSyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "Companion", "plugin-appbrand-integration_release"})
 public final class au
-  extends a<f>
+  extends u<c>
 {
-  public static final int CTRL_INDEX = 406;
-  public static final String NAME = "private_openUrl";
+  public static final int CTRL_INDEX = 651;
+  public static final String NAME = "markScene";
+  public static final au.a hyR;
   
-  private void a(f paramf, int paramInt, String paramString)
+  static
   {
-    y.e("MicroMsg.JsApiPrivateOpenUrl", "switchCallback msg:%s", new Object[] { paramString });
-    if (paramf != null) {
-      paramf.C(paramInt, h(paramString, null));
-    }
+    AppMethodBeat.i(143737);
+    hyR = new au.a((byte)0);
+    AppMethodBeat.o(143737);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.au
  * JD-Core Version:    0.7.0.1
  */

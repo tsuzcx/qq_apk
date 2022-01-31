@@ -1,40 +1,56 @@
 package com.tencent.mm.plugin.music.h;
 
 import android.text.TextUtils;
-import com.tencent.mm.av.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.e;
 import com.tencent.mm.plugin.music.e.a;
 import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c
 {
-  public static boolean L(e parame)
+  public static boolean Az(int paramInt)
   {
-    if (parame == null) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (TextUtils.isEmpty(parame.protocol));
-      y.d("MicroMsg.Music.MusicPlayerSupport", "protocol:%s", new Object[] { parame.protocol });
-    } while (!"hls".equalsIgnoreCase(parame.protocol));
-    return true;
-  }
-  
-  public static boolean vb(int paramInt)
-  {
+    AppMethodBeat.i(137696);
     switch (paramInt)
     {
     default: 
-      a locala = k.bnl().myY;
-      if ((locala == null) || (!locala.uJ(paramInt))) {
-        break;
+      a locala = k.bVH().oZe;
+      if ((locala != null) && (locala.Af(paramInt)))
+      {
+        AppMethodBeat.o(137696);
+        return true;
       }
+      break;
     case 10: 
     case 11: 
+      AppMethodBeat.o(137696);
       return true;
     }
+    AppMethodBeat.o(137696);
+    return false;
+  }
+  
+  public static boolean M(e parame)
+  {
+    AppMethodBeat.i(137697);
+    if (parame == null)
+    {
+      AppMethodBeat.o(137697);
+      return false;
+    }
+    if (TextUtils.isEmpty(parame.protocol))
+    {
+      AppMethodBeat.o(137697);
+      return false;
+    }
+    ab.d("MicroMsg.Music.MusicPlayerSupport", "protocol:%s", new Object[] { parame.protocol });
+    if ("hls".equalsIgnoreCase(parame.protocol))
+    {
+      AppMethodBeat.o(137697);
+      return true;
+    }
+    AppMethodBeat.o(137697);
     return false;
   }
 }

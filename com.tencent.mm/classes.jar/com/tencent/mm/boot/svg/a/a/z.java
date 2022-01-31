@@ -16,7 +16,7 @@ public final class z
   private final int height = 72;
   private final int width = 72;
   
-  protected final int b(int paramInt, Object... paramVarArgs)
+  public final int a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
@@ -28,12 +28,12 @@ public final class z
       return 72;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      c.f(paramVarArgs);
-      c.e(paramVarArgs);
-      Paint localPaint = c.i(paramVarArgs);
+      c.h(paramVarArgs);
+      c.g(paramVarArgs);
+      Paint localPaint = c.k(paramVarArgs);
       localPaint.setFlags(385);
       localPaint.setStyle(Paint.Style.FILL);
-      Object localObject = c.i(paramVarArgs);
+      Object localObject = c.k(paramVarArgs);
       ((Paint)localObject).setFlags(385);
       ((Paint)localObject).setStyle(Paint.Style.STROKE);
       localPaint.setColor(-16777216);
@@ -48,7 +48,7 @@ public final class z
       localPaint.setColor(-855638017);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
-      localObject = c.j(paramVarArgs);
+      localObject = c.l(paramVarArgs);
       ((Path)localObject).moveTo(36.0F, 60.0F);
       ((Path)localObject).cubicTo(22.745167F, 60.0F, 12.0F, 49.254833F, 12.0F, 36.0F);
       ((Path)localObject).cubicTo(12.0F, 22.745167F, 22.745167F, 12.0F, 36.0F, 12.0F);
@@ -73,7 +73,7 @@ public final class z
       localCanvas.drawPath((Path)localObject, localPaint);
       localCanvas.restore();
       localCanvas.restore();
-      c.h(paramVarArgs);
+      c.j(paramVarArgs);
     }
   }
 }

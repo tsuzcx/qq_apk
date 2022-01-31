@@ -1,26 +1,14 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.ParcelFileDescriptor;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Status;
 
-public class zzaz
-  extends zza
+final class zzaz
+  extends zzn<Status>
 {
-  public static final Parcelable.Creator<zzaz> CREATOR = new zzba();
-  public final int statusCode;
-  public final ParcelFileDescriptor zzbUz;
-  
-  public zzaz(int paramInt, ParcelFileDescriptor paramParcelFileDescriptor)
+  zzaz(zzay paramzzay, GoogleApiClient paramGoogleApiClient)
   {
-    this.statusCode = paramInt;
-    this.zzbUz = paramParcelFileDescriptor;
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    zzba.zza(this, paramParcel, paramInt);
+    super(paramGoogleApiClient);
   }
 }
 

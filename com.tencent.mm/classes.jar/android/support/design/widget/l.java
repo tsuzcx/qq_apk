@@ -7,28 +7,28 @@ import java.lang.ref.WeakReference;
 
 final class l
 {
-  private static l jE;
-  l.b jF;
-  l.b jG;
+  private static l kC;
+  l.b kD;
+  l.b kE;
   private final Handler mHandler = new Handler(Looper.getMainLooper(), new l.1(this));
   final Object mLock = new Object();
   
-  static l aT()
+  static l bD()
   {
-    if (jE == null) {
-      jE = new l();
+    if (kC == null) {
+      kC = new l();
     }
-    return jE;
+    return kC;
   }
   
   public final void a(l.a parama)
   {
     synchronized (this.mLock)
     {
-      if ((d(parama)) && (!this.jF.jJ))
+      if ((d(parama)) && (!this.kD.kH))
       {
-        this.jF.jJ = true;
-        this.mHandler.removeCallbacksAndMessages(this.jF);
+        this.kD.kH = true;
+        this.mHandler.removeCallbacksAndMessages(this.kD);
       }
       return;
     }
@@ -36,7 +36,7 @@ final class l
   
   final boolean a(l.b paramb)
   {
-    if ((l.a)paramb.jI.get() != null)
+    if ((l.a)paramb.kG.get() != null)
     {
       this.mHandler.removeCallbacksAndMessages(paramb);
       return true;
@@ -48,10 +48,10 @@ final class l
   {
     synchronized (this.mLock)
     {
-      if ((d(parama)) && (this.jF.jJ))
+      if ((d(parama)) && (this.kD.kH))
       {
-        this.jF.jJ = false;
-        b(this.jF);
+        this.kD.kH = false;
+        b(this.kD);
       }
       return;
     }
@@ -102,17 +102,17 @@ final class l
   
   final boolean d(l.a parama)
   {
-    return (this.jF != null) && (this.jF.f(parama));
+    return (this.kD != null) && (this.kD.f(parama));
   }
   
   final boolean e(l.a parama)
   {
-    return (this.jG != null) && (this.jG.f(parama));
+    return (this.kE != null) && (this.kE.f(parama));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.design.widget.l
  * JD-Core Version:    0.7.0.1
  */

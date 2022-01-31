@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:orientation="vertical" android:background="@drawable/el" android:paddingLeft="@dimen/l2" android:paddingTop="@dimen/m1" android:paddingRight="@dimen/l2" android:paddingBottom="@dimen/la" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckedTextView android:textAppearance="@style/rl" android:gravity="start|center" android:id="@id/b2l" android:layout_width="0.0dip" android:layout_height="fill_parent" android:maxLines="1" android:drawablePadding="@dimen/wo" android:layout_weight="1.0" />
-    <ViewStub android:id="@id/b2m" android:layout="@layout/qm" android:inflatedId="@id/b2n" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-</merge>
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/dw" android:textColor="@color/h6" android:ellipsize="end" android:id="@id/b3v" android:paddingBottom="@dimen/lb" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" android:lineSpacingExtra="2.0dip" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/na" android:textColor="#88000000" android:ellipsize="end" android:id="@id/b3w" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:lineSpacingExtra="2.0dip" />
+</LinearLayout>

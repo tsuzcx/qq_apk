@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/oj" android:layout_height="wrap_content" style="@style/mp">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/ok" android:layout_width="@dimen/la" android:layout_height="@dimen/la" android:layout_marginRight="@dimen/md" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/mv" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:id="@id/om" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" android:layout_weight="1.0" style="@style/ks" />
-                <TextView android:id="@id/bpd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/li" android:text="" android:singleLine="true" style="@style/kr" />
-            </LinearLayout>
-            <TextView android:id="@id/jv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="{desc}" android:singleLine="true" style="@style/kr" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <EditText android:textSize="18.0dip" android:id="@id/bep" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" style="@style/mu" />
         </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    </ScrollView>
+    <TextView android:textColor="@color/h6" android:gravity="right" android:id="@id/bsi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/gd" />
+</LinearLayout>

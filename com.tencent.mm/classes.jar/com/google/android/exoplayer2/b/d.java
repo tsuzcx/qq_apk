@@ -2,15 +2,13 @@ package com.google.android.exoplayer2.b;
 
 public final class d
 {
-  public int ayA;
-  public int ayB;
-  public int ayv;
-  public int ayw;
-  public int ayx;
-  public int ayy;
-  public int ayz;
-  
-  public final void lD() {}
+  public int aAK;
+  public int aAL;
+  public int aAM;
+  public int aAN;
+  public int aAO;
+  public int aAP;
+  public int aAQ;
 }
 
 

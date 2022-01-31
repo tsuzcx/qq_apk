@@ -1,240 +1,174 @@
 package com.tencent.mm.sandbox.updater;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.widget.Button;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.c.i.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMBaseActivity;
-import com.tencent.mm.ui.widget.a.c.a;
+import com.tencent.mm.ui.widget.b.c.a;
 import java.util.ArrayList;
 
 public class AppUpdaterUI
   extends MMBaseActivity
 {
-  private static AppUpdaterUI ucc = null;
-  private com.tencent.mm.ui.widget.a.c few = null;
-  private Button hPe;
-  private DialogInterface.OnClickListener ubY = new AppUpdaterUI.10(this);
-  private Button ucb;
-  private j ucd;
-  private g uce = new g()
-  {
-    public final void Op(String paramAnonymousString)
-    {
-      if (AppUpdaterUI.b(AppUpdaterUI.this) != null) {
-        AppUpdaterUI.b(AppUpdaterUI.this).dismiss();
-      }
-      if (AppUpdaterUI.this.isFinishing()) {}
-      do
-      {
-        return;
-        y.d("MicroMsg.AppUpdaterUI", paramAnonymousString);
-      } while (paramAnonymousString == null);
-      AppUpdaterUI.a(AppUpdaterUI.this, paramAnonymousString);
-      AppUpdaterUI.a(AppUpdaterUI.this).setEnabled(false);
-    }
-    
-    public final void a(com.tencent.mm.sandbox.monitor.c paramAnonymousc)
-    {
-      if (AppUpdaterUI.this.isFinishing()) {}
-      do
-      {
-        return;
-        if (!(paramAnonymousc instanceof c)) {
-          break;
-        }
-        com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 67L, 1L, true);
-        y.e("MicroMsg.AppUpdaterUI", "download package from cdn error. switch to webserver");
-        if (AppUpdaterUI.b(AppUpdaterUI.this) != null) {
-          AppUpdaterUI.b(AppUpdaterUI.this).setMessage(AppUpdaterUI.this.getString(R.l.fmt_update_info, new Object[] { AppUpdaterUI.e(AppUpdaterUI.this).desc, AppUpdaterUI.this.getString(R.l.update_full_web_tips), bk.cm(AppUpdaterUI.e(AppUpdaterUI.this).size) }));
-        }
-      } while (!AppUpdaterUI.e(AppUpdaterUI.this).udp);
-      com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 68L, 1L, true);
-      AppUpdaterUI.a(AppUpdaterUI.this, paramAnonymousc);
-      return;
-      com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 69L, 1L, true);
-      com.tencent.mm.ui.base.h.a(AppUpdaterUI.this, R.l.update_get_pack_error, R.l.app_tip, new AppUpdaterUI.1.1(this), new AppUpdaterUI.1.2(this));
-    }
-    
-    public final void bFl()
-    {
-      if (AppUpdaterUI.this.isFinishing()) {
-        return;
-      }
-      AppUpdaterUI.a(AppUpdaterUI.this).setText(R.l.update_getting_updatepack);
-      AppUpdaterUI.a(AppUpdaterUI.this).setEnabled(false);
-    }
-    
-    public final void cpL()
-    {
-      y.e("MicroMsg.AppUpdaterUI", "no sdcard.");
-      if (AppUpdaterUI.b(AppUpdaterUI.this) != null) {
-        AppUpdaterUI.b(AppUpdaterUI.this).dismiss();
-      }
-      if (AppUpdaterUI.this.isFinishing()) {
-        return;
-      }
-      AppUpdaterUI.c(AppUpdaterUI.this);
-    }
-    
-    public final void cpM()
-    {
-      if (AppUpdaterUI.b(AppUpdaterUI.this) != null) {
-        AppUpdaterUI.b(AppUpdaterUI.this).dismiss();
-      }
-      if (AppUpdaterUI.this.isFinishing()) {
-        return;
-      }
-      AppUpdaterUI.d(AppUpdaterUI.this);
-    }
-    
-    public final void cy(int paramAnonymousInt1, int paramAnonymousInt2)
-    {
-      if (paramAnonymousInt1 <= 0) {}
-      for (long l = 0L;; l = paramAnonymousInt2 * 100L / paramAnonymousInt1)
-      {
-        paramAnonymousInt1 = (int)l;
-        if (paramAnonymousInt1 != 100) {
-          break;
-        }
-        AppUpdaterUI.a(AppUpdaterUI.this).setText(AppUpdaterUI.this.getString(R.l.update_merge_apk));
-        return;
-      }
-      AppUpdaterUI.a(AppUpdaterUI.this).setText(AppUpdaterUI.this.getString(R.l.update_getting_updatepack) + paramAnonymousInt1 + "%");
-    }
-  };
-  private DialogInterface.OnClickListener ucf = new DialogInterface.OnClickListener()
-  {
-    public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-    {
-      AppUpdaterUI.g(AppUpdaterUI.this);
-    }
-  };
+  private static AppUpdaterUI ykr = null;
+  private com.tencent.mm.ui.widget.b.c gwf;
+  private Button jIG;
+  private DialogInterface.OnClickListener ykn;
+  private Button ykq;
+  private j yks;
+  private g ykt;
+  private DialogInterface.OnClickListener yku;
   
-  public static AppUpdaterUI cpI()
+  public AppUpdaterUI()
   {
-    return ucc;
+    AppMethodBeat.i(28830);
+    this.gwf = null;
+    this.ykt = new AppUpdaterUI.1(this);
+    this.yku = new AppUpdaterUI.9(this);
+    this.ykn = new AppUpdaterUI.10(this);
+    AppMethodBeat.o(28830);
   }
   
-  public static void cpJ()
+  public static AppUpdaterUI drx()
   {
-    if (ucc != null) {
-      ucc.cpK();
-    }
+    return ykr;
   }
   
-  private void cpK()
+  public static void dry()
   {
-    if ((this.few != null) && (this.few.isShowing())) {
-      this.few.dismiss();
+    AppMethodBeat.i(28831);
+    if (ykr != null) {
+      ykr.drz();
+    }
+    AppMethodBeat.o(28831);
+  }
+  
+  private void drz()
+  {
+    AppMethodBeat.i(28834);
+    if ((this.gwf != null) && (this.gwf.isShowing())) {
+      this.gwf.dismiss();
     }
     finish();
+    AppMethodBeat.o(28834);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(28832);
     super.onCreate(paramBundle);
-    y.d("MicroMsg.AppUpdaterUI", "onCreate");
-    com.tencent.mm.sandbox.c.j(hashCode(), this);
+    ab.d("MicroMsg.AppUpdaterUI", "onCreate");
+    com.tencent.mm.sandbox.c.m(hashCode(), this);
     MMActivity.initLanguage(this);
-    if ((AppInstallerUI.cpH() != null) && (!AppInstallerUI.cpH().isFinishing()))
+    if ((AppInstallerUI.drw() != null) && (!AppInstallerUI.drw().isFinishing()))
     {
-      y.d("MicroMsg.AppUpdaterUI", "AppInstallerUI is there, finish self");
+      ab.d("MicroMsg.AppUpdaterUI", "AppInstallerUI is there, finish self");
       finish();
+      AppMethodBeat.o(28832);
       return;
     }
-    if ((ucc != null) && (!ucc.isFinishing()) && (ucc != this))
+    if ((ykr != null) && (!ykr.isFinishing()) && (ykr != this))
     {
-      y.d("MicroMsg.AppUpdaterUI", "duplicate instance, finish self");
-      y.d("MicroMsg.AppUpdaterUI", "we already got one instance, does it gonna leak?");
+      ab.d("MicroMsg.AppUpdaterUI", "duplicate instance, finish self");
+      ab.d("MicroMsg.AppUpdaterUI", "we already got one instance, does it gonna leak?");
       finish();
+      AppMethodBeat.o(28832);
       return;
     }
-    ucc = this;
-    setContentView(R.i.empty);
-    this.ucd = j.a.udB;
-    if (!this.ucd.ak(getIntent()))
+    ykr = this;
+    setContentView(2130969422);
+    this.yks = j.a.ylQ;
+    if (!this.yks.aJ(getIntent()))
     {
-      y.e("MicroMsg.AppUpdaterUI", "updaterManager.handleCommand return false");
-      cpK();
+      ab.e("MicroMsg.AppUpdaterUI", "updaterManager.handleCommand return false");
+      drz();
+      AppMethodBeat.o(28832);
       return;
     }
-    if ((this.ucd.ubR == 999) && (this.ucd.ucs != null) && (this.ucd.ucs.length > 0))
+    if ((this.yks.ykg == 999) && (this.yks.ykH != null) && (this.yks.ykH.length > 0))
     {
-      y.d("MicroMsg.AppUpdaterUI", "into emergency status");
-      new ah().postDelayed(new AppUpdaterUI.7(this), 100L);
+      ab.d("MicroMsg.AppUpdaterUI", "into emergency status");
+      new ak().postDelayed(new AppUpdaterUI.7(this), 100L);
+      AppMethodBeat.o(28832);
       return;
     }
-    y.d("MicroMsg.AppUpdaterUI", "showUpdateDlg, downloadUrls = " + this.ucd.ucs);
+    ab.d("MicroMsg.AppUpdaterUI", "showUpdateDlg, downloadUrls = " + this.yks.ykH);
     Object localObject = new c.a(this);
-    ((c.a)localObject).Ip(R.l.fmt_update);
-    ((c.a)localObject).nW(true);
+    ((c.a)localObject).Rb(2131300104);
+    ((c.a)localObject).rG(true);
     ((c.a)localObject).e(new AppUpdaterUI.8(this));
-    if ((this.ucd.udp) && (this.ucd.udo != null))
+    if ((this.yks.ylE) && (this.yks.ylD != null))
     {
-      paramBundle = getString(R.l.fmt_update_info, new Object[] { this.ucd.desc, getString(R.l.update_increment_tips), bk.cm(this.ucd.udo.size) });
-      label339:
-      if (this.ucd.ubR == 1) {
-        break label562;
+      paramBundle = getString(2131300106, new Object[] { this.yks.desc, getString(2131304431), bo.hk(this.yks.ylD.size) });
+      if (this.yks.ykg == 1) {
+        break label598;
       }
     }
-    label562:
-    for (int i = R.l.update_cancel;; i = R.l.update_exit)
+    label598:
+    for (int i = 2131304423;; i = 2131304426)
     {
-      ((c.a)localObject).aeA(paramBundle);
-      ((c.a)localObject).Is(R.l.update_now).a(false, this.ubY);
-      ((c.a)localObject).It(i);
-      this.few = ((c.a)localObject).aoP();
-      this.few.setCanceledOnTouchOutside(false);
-      this.ucb = this.few.getButton(-1);
-      this.hPe = this.few.getButton(-2);
-      this.few.show();
-      if (this.ucd.oRr == 1) {
-        i.af(this, 5);
+      ((c.a)localObject).avn(paramBundle);
+      ((c.a)localObject).Ri(2131304435).a(false, this.ykn);
+      ((c.a)localObject).Rj(i);
+      this.gwf = ((c.a)localObject).aLZ();
+      this.gwf.setCanceledOnTouchOutside(false);
+      this.ykq = this.gwf.getButton(-1);
+      this.jIG = this.gwf.getButton(-2);
+      this.gwf.show();
+      if (this.yks.rJd == 1) {
+        i.at(this, 5);
       }
-      if (this.ucd.udt) {
-        com.tencent.mm.plugin.report.service.h.nFQ.a(614L, 60L, 1L, false);
+      if (this.yks.ylI) {
+        h.qsU.idkeyStat(614L, 60L, 1L, false);
       }
-      paramBundle = this.ucd;
-      localObject = this.uce;
-      if ((localObject == null) || (paramBundle.udk.contains(localObject))) {
-        break;
+      paramBundle = this.yks;
+      localObject = this.ykt;
+      if ((localObject != null) && (!paramBundle.ylz.contains(localObject))) {
+        paramBundle.ylz.add(localObject);
       }
-      paramBundle.udk.add(localObject);
+      AppMethodBeat.o(28832);
       return;
-      y.d("MicroMsg.AppUpdaterUI", "had try to download full pack.");
-      paramBundle = getString(R.l.fmt_update_info, new Object[] { this.ucd.desc, getString(R.l.update_full_web_tips), bk.cm(this.ucd.size) });
-      break label339;
+      ab.d("MicroMsg.AppUpdaterUI", "had try to download full pack.");
+      paramBundle = getString(2131300106, new Object[] { this.yks.desc, getString(2131304427), bo.hk(this.yks.size) });
+      break;
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    y.d("MicroMsg.AppUpdaterUI", "onDestroy");
-    com.tencent.mm.sandbox.c.k(hashCode(), this);
-    if (this.ucd != null)
+    AppMethodBeat.i(28833);
+    ab.d("MicroMsg.AppUpdaterUI", "onDestroy");
+    com.tencent.mm.sandbox.c.n(hashCode(), this);
+    if (this.yks != null)
     {
-      j localj = this.ucd;
-      g localg = this.uce;
-      localj.udk.remove(localg);
+      j localj = this.yks;
+      g localg = this.ykt;
+      localj.ylz.remove(localg);
     }
-    if (ucc == this) {
-      ucc = null;
+    if (ykr == this) {
+      ykr = null;
     }
     super.onDestroy();
+    AppMethodBeat.o(28833);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.AppUpdaterUI
  * JD-Core Version:    0.7.0.1
  */

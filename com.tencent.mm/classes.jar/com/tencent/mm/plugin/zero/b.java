@@ -1,54 +1,67 @@
 package com.tencent.mm.plugin.zero;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.j.a;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bw;
+import com.tencent.mm.model.by;
 import com.tencent.mm.modelmulti.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Queue;
 
 public final class b
   implements c, com.tencent.mm.plugin.zero.b.b
 {
-  private bw rRX;
-  private o rRY;
+  private by vIS;
+  private o vIT;
   
-  public final o Pm()
+  public final o aio()
   {
-    g.DQ();
-    g.DN().CX();
-    if (this.rRY == null) {
-      this.rRY = new o();
+    AppMethodBeat.i(58743);
+    g.RM();
+    g.RJ().QQ();
+    if (this.vIT == null)
+    {
+      this.vIT = new o();
+      this.vIT.appForegroundListener.alive();
     }
-    return this.rRY;
+    o localo = this.vIT;
+    AppMethodBeat.o(58743);
+    return localo;
   }
   
-  public final bw ckh()
+  public final by dkL()
   {
-    g.DQ();
-    g.DN().CX();
-    if (this.rRX == null) {
-      this.rRX = new bw(new b.1(this));
+    AppMethodBeat.i(58744);
+    g.RM();
+    g.RJ().QQ();
+    if (this.vIS == null) {
+      this.vIS = new by(new b.1(this));
     }
-    return this.rRX;
+    by localby = this.vIS;
+    AppMethodBeat.o(58744);
+    return localby;
   }
   
   public final void onAccountInitialized(e.c paramc) {}
   
   public final void onAccountRelease()
   {
-    if (this.rRY != null)
+    AppMethodBeat.i(58745);
+    if (this.vIT != null)
     {
-      o localo = this.rRY;
-      y.i("MicroMsg.SyncService", "clear synclist:%s notify:%s running:%s", new Object[] { Integer.valueOf(localo.etI.size()), Integer.valueOf(localo.etJ.size()), localo.etL });
-      localo.etI.clear();
-      localo.etJ.clear();
+      o localo = this.vIT;
+      ab.i("MicroMsg.SyncService", "clear synclist:%s notify:%s running:%s", new Object[] { Integer.valueOf(localo.fJv.size()), Integer.valueOf(localo.fJw.size()), localo.fJy });
+      localo.fJv.clear();
+      localo.fJw.clear();
+      this.vIT.appForegroundListener.dead();
     }
-    if (this.rRX != null) {
-      this.rRX.Im();
+    if (this.vIS != null) {
+      this.vIS.abj();
     }
+    AppMethodBeat.o(58745);
   }
 }
 

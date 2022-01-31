@@ -1,13 +1,21 @@
 package com.tencent.oscarcamera.particlesystem;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.graphics.PointF;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
 import org.json.JSONObject;
 
 public class ParticleTemplate
 {
-  public static final String ATTR_COLOR_A = String.format("%s", new Object[] { "colorA" });
+  public static final String ATTR_COLOR_A;
   public static final String ATTR_COLOR_B;
   public static final String ATTR_COLOR_G;
   public static final String ATTR_COLOR_R;
@@ -15,27 +23,30 @@ public class ParticleTemplate
   public static final String ATTR_HEIGHT;
   public static final String ATTR_LIFE;
   public static final String ATTR_MAX_COUNT;
-  public static final String ATTR_POS_X = String.format("%s", new Object[] { "positionX" });
-  public static final String ATTR_POS_Y = String.format("%s", new Object[] { "positionY" });
-  public static final String ATTR_POS_Z = String.format("%s", new Object[] { "positionZ" });
+  public static final String ATTR_POS_X;
+  public static final String ATTR_POS_Y;
+  public static final String ATTR_POS_Z;
   public static final String ATTR_WIDTH;
-  private static final String TAG = ParticleTemplate.class.getSimpleName();
-  String mColorA = "0";
-  String mColorB = "0";
-  String mColorG = "0";
-  String mColorR = "0";
+  private static final String TAG;
+  String mColorA;
+  String mColorB;
+  String mColorG;
+  String mColorR;
   double mEmitRate;
-  String mHeight = "0";
-  String mLife = "0";
+  String mHeight;
+  String mLife;
   int mMaxCount;
-  String mPosX = "0";
-  String mPosY = "0";
-  String mPosZ = "0";
-  public Sprite mSprite = new Sprite();
-  String mWidth = "0";
+  String mPosX;
+  String mPosY;
+  String mPosZ;
+  public Sprite mSprite;
+  private ParticleSystemEx mSystem;
+  String mWidth;
   
   static
   {
+    AppMethodBeat.i(81560);
+    TAG = ParticleTemplate.class.getSimpleName();
     ATTR_MAX_COUNT = String.format("%s", new Object[] { "particleCountMax" });
     ATTR_EMIT_RATE = String.format("%s", new Object[] { "emissionRate" });
     ATTR_WIDTH = String.format("%s", new Object[] { "width" });
@@ -44,291 +55,269 @@ public class ParticleTemplate
     ATTR_COLOR_R = String.format("%s", new Object[] { "colorR" });
     ATTR_COLOR_G = String.format("%s", new Object[] { "colorG" });
     ATTR_COLOR_B = String.format("%s", new Object[] { "colorB" });
+    ATTR_COLOR_A = String.format("%s", new Object[] { "colorA" });
+    ATTR_POS_X = String.format("%s", new Object[] { "positionX" });
+    ATTR_POS_Y = String.format("%s", new Object[] { "positionY" });
+    ATTR_POS_Z = String.format("%s", new Object[] { "positionZ" });
+    AppMethodBeat.o(81560);
+  }
+  
+  public ParticleTemplate(ParticleSystemEx paramParticleSystemEx)
+  {
+    AppMethodBeat.i(81554);
+    this.mWidth = "0";
+    this.mHeight = "0";
+    this.mLife = "0";
+    this.mColorR = "0";
+    this.mColorG = "0";
+    this.mColorB = "0";
+    this.mColorA = "0";
+    this.mPosX = "0";
+    this.mPosY = "0";
+    this.mPosZ = "0";
+    this.mSystem = paramParticleSystemEx;
+    this.mSprite = new Sprite();
+    AppMethodBeat.o(81554);
   }
   
   private double doubleValue(JSONObject paramJSONObject, String paramString)
   {
+    AppMethodBeat.i(81559);
     paramJSONObject = paramJSONObject.opt(paramString);
-    if ((paramJSONObject != null) && ((paramJSONObject instanceof Number))) {
-      return ((Number)paramJSONObject).doubleValue();
+    if ((paramJSONObject != null) && ((paramJSONObject instanceof Number)))
+    {
+      double d = ((Number)paramJSONObject).doubleValue();
+      AppMethodBeat.o(81559);
+      return d;
     }
+    AppMethodBeat.o(81559);
     return 0.0D;
   }
   
-  static ParticleTemplate fromJson(JSONObject paramJSONObject, String paramString)
+  static ParticleTemplate fromJson(ParticleSystemEx paramParticleSystemEx, JSONObject paramJSONObject, String paramString)
   {
-    ParticleTemplate localParticleTemplate = new ParticleTemplate();
+    AppMethodBeat.i(81555);
+    paramParticleSystemEx = new ParticleTemplate(paramParticleSystemEx);
+    String str;
+    Object localObject;
     try
     {
       Iterator localIterator = paramJSONObject.keys();
-      while (localIterator.hasNext())
+      for (;;)
       {
-        String str = (String)localIterator.next();
-        Object localObject = paramJSONObject.get(str);
-        if (((localObject instanceof Number)) || ((localObject instanceof String))) {
-          initAttr(localParticleTemplate, str, localObject);
-        } else if (((localObject instanceof JSONObject)) && (TextUtils.equals(str, "sprite"))) {
-          localParticleTemplate.initSprite((JSONObject)localObject, paramString);
-        } else if (((localObject instanceof JSONObject)) && (TextUtils.equals(str, "audio"))) {
-          localParticleTemplate.mSprite.audioPath = ((JSONObject)localObject).getString("path");
+        if (localIterator.hasNext())
+        {
+          str = (String)localIterator.next();
+          localObject = paramJSONObject.get(str);
+          if (((localObject instanceof Number)) || ((localObject instanceof String)))
+          {
+            initAttr(paramParticleSystemEx, str, localObject);
+            continue;
+            AppMethodBeat.o(81555);
+          }
         }
       }
-      return localParticleTemplate;
     }
-    catch (Exception paramJSONObject) {}
-    return null;
+    catch (Exception paramParticleSystemEx)
+    {
+      paramParticleSystemEx = null;
+    }
+    for (;;)
+    {
+      return paramParticleSystemEx;
+      if (((localObject instanceof JSONObject)) && (TextUtils.equals(str, "sprite")))
+      {
+        paramParticleSystemEx.initSprite((JSONObject)localObject, paramString);
+        break;
+      }
+      if ((!(localObject instanceof JSONObject)) || (!TextUtils.equals(str, "audio"))) {
+        break;
+      }
+      paramParticleSystemEx.mSprite.audioPath = ((JSONObject)localObject).getString("path");
+      break;
+    }
   }
   
   private static void initAttr(ParticleTemplate paramParticleTemplate, String paramString, Object paramObject)
   {
+    AppMethodBeat.i(81556);
     String str = null;
     if ((paramObject instanceof String)) {
       str = (String)paramObject;
     }
-    label21:
-    do
+    while (str == null)
     {
-      break label21;
-      while (str == null)
+      AppMethodBeat.o(81556);
+      return;
+      if ((paramObject instanceof Number)) {
+        str = paramObject.toString();
+      }
+    }
+    if (TextUtils.equals(ATTR_MAX_COUNT, paramString))
+    {
+      if ((paramObject instanceof Number)) {}
+      for (int i = ((Number)paramObject).intValue();; i = 0)
       {
-        return;
-        if ((paramObject instanceof Number)) {
-          str = paramObject.toString();
+        paramParticleTemplate.mMaxCount = i;
+        if (paramParticleTemplate.mMaxCount >= 0) {
+          break;
         }
+        paramParticleTemplate.mMaxCount = 0;
+        AppMethodBeat.o(81556);
+        return;
       }
-      if (TextUtils.equals(ATTR_MAX_COUNT, paramString))
+    }
+    if (TextUtils.equals(ATTR_EMIT_RATE, paramString))
+    {
+      if ((paramObject instanceof Number)) {}
+      for (double d = ((Number)paramObject).doubleValue();; d = 0.0D)
       {
-        if ((paramObject instanceof Number)) {}
-        for (int i = ((Number)paramObject).intValue();; i = 0)
-        {
-          paramParticleTemplate.mMaxCount = i;
-          if (paramParticleTemplate.mMaxCount >= 0) {
-            break;
-          }
-          paramParticleTemplate.mMaxCount = 0;
-          return;
+        paramParticleTemplate.mEmitRate = d;
+        if (paramParticleTemplate.mEmitRate >= 0.0D) {
+          break;
         }
-      }
-      if (TextUtils.equals(ATTR_EMIT_RATE, paramString))
-      {
-        if ((paramObject instanceof Number)) {}
-        for (double d = ((Number)paramObject).doubleValue();; d = 0.0D)
-        {
-          paramParticleTemplate.mEmitRate = d;
-          if (paramParticleTemplate.mEmitRate >= 0.0D) {
-            break;
-          }
-          paramParticleTemplate.mEmitRate = 0.0D;
-          return;
-        }
-      }
-      if (TextUtils.equals(ATTR_WIDTH, paramString))
-      {
-        paramParticleTemplate.mWidth = str;
+        paramParticleTemplate.mEmitRate = 0.0D;
+        AppMethodBeat.o(81556);
         return;
       }
-      if (TextUtils.equals(ATTR_HEIGHT, paramString))
-      {
-        paramParticleTemplate.mHeight = str;
-        return;
-      }
-      if (TextUtils.equals(ATTR_LIFE, paramString))
-      {
-        paramParticleTemplate.mLife = str;
-        return;
-      }
-      if (TextUtils.equals(ATTR_COLOR_R, paramString))
-      {
-        paramParticleTemplate.mColorR = str;
-        return;
-      }
-      if (TextUtils.equals(ATTR_COLOR_G, paramString))
-      {
-        paramParticleTemplate.mColorG = str;
-        return;
-      }
-      if (TextUtils.equals(ATTR_COLOR_B, paramString))
-      {
-        paramParticleTemplate.mColorB = str;
-        return;
-      }
-      if (TextUtils.equals(ATTR_COLOR_A, paramString))
-      {
-        paramParticleTemplate.mColorA = str;
-        return;
-      }
-      if (TextUtils.equals(ATTR_POS_X, paramString))
-      {
-        paramParticleTemplate.mPosX = str;
-        return;
-      }
-      if (TextUtils.equals(ATTR_POS_Y, paramString))
-      {
-        paramParticleTemplate.mPosY = str;
-        return;
-      }
-    } while (!TextUtils.equals(ATTR_POS_Z, paramString));
-    paramParticleTemplate.mPosZ = str;
+    }
+    if (TextUtils.equals(ATTR_WIDTH, paramString))
+    {
+      paramParticleTemplate.mWidth = str;
+      AppMethodBeat.o(81556);
+      return;
+    }
+    if (TextUtils.equals(ATTR_HEIGHT, paramString))
+    {
+      paramParticleTemplate.mHeight = str;
+      AppMethodBeat.o(81556);
+      return;
+    }
+    if (TextUtils.equals(ATTR_LIFE, paramString))
+    {
+      paramParticleTemplate.mLife = str;
+      AppMethodBeat.o(81556);
+      return;
+    }
+    if (TextUtils.equals(ATTR_COLOR_R, paramString))
+    {
+      paramParticleTemplate.mColorR = str;
+      AppMethodBeat.o(81556);
+      return;
+    }
+    if (TextUtils.equals(ATTR_COLOR_G, paramString))
+    {
+      paramParticleTemplate.mColorG = str;
+      AppMethodBeat.o(81556);
+      return;
+    }
+    if (TextUtils.equals(ATTR_COLOR_B, paramString))
+    {
+      paramParticleTemplate.mColorB = str;
+      AppMethodBeat.o(81556);
+      return;
+    }
+    if (TextUtils.equals(ATTR_COLOR_A, paramString))
+    {
+      paramParticleTemplate.mColorA = str;
+      AppMethodBeat.o(81556);
+      return;
+    }
+    if (TextUtils.equals(ATTR_POS_X, paramString))
+    {
+      paramParticleTemplate.mPosX = str;
+      AppMethodBeat.o(81556);
+      return;
+    }
+    if (TextUtils.equals(ATTR_POS_Y, paramString))
+    {
+      paramParticleTemplate.mPosY = str;
+      AppMethodBeat.o(81556);
+      return;
+    }
+    if (TextUtils.equals(ATTR_POS_Z, paramString)) {
+      paramParticleTemplate.mPosZ = str;
+    }
+    AppMethodBeat.o(81556);
   }
   
-  /* Error */
   private void initSprite(JSONObject paramJSONObject, String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   4: aload_1
-    //   5: ldc 186
-    //   7: invokevirtual 209	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   10: putfield 211	com/tencent/oscarcamera/particlesystem/Sprite:path	Ljava/lang/String;
-    //   13: new 213	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 214	java/lang/StringBuilder:<init>	()V
-    //   20: aload_2
-    //   21: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: getstatic 223	java/io/File:separator	Ljava/lang/String;
-    //   27: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: aload_0
-    //   31: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   34: getfield 211	com/tencent/oscarcamera/particlesystem/Sprite:path	Ljava/lang/String;
-    //   37: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: invokevirtual 224	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: astore_3
-    //   44: new 226	android/graphics/BitmapFactory$Options
-    //   47: dup
-    //   48: invokespecial 227	android/graphics/BitmapFactory$Options:<init>	()V
-    //   51: astore_2
-    //   52: aload_2
-    //   53: iconst_1
-    //   54: putfield 231	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   57: aload_3
-    //   58: ldc 233
-    //   60: invokevirtual 237	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   63: ifeq +33 -> 96
-    //   66: aload_3
-    //   67: aload_2
-    //   68: invokestatic 243	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   71: pop
-    //   72: aload_2
-    //   73: getfield 246	android/graphics/BitmapFactory$Options:outWidth	I
-    //   76: ifeq +10 -> 86
-    //   79: aload_2
-    //   80: getfield 249	android/graphics/BitmapFactory$Options:outHeight	I
-    //   83: ifne +48 -> 131
-    //   86: new 251	java/lang/RuntimeException
-    //   89: dup
-    //   90: ldc 253
-    //   92: invokespecial 256	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   95: athrow
-    //   96: new 258	java/lang/NullPointerException
-    //   99: dup
-    //   100: invokespecial 259	java/lang/NullPointerException:<init>	()V
-    //   103: athrow
-    //   104: astore_3
-    //   105: iconst_0
-    //   106: ifeq -34 -> 72
-    //   109: aconst_null
-    //   110: invokevirtual 264	java/io/InputStream:close	()V
-    //   113: goto -41 -> 72
-    //   116: astore_3
-    //   117: goto -45 -> 72
-    //   120: astore_1
-    //   121: iconst_0
-    //   122: ifeq +7 -> 129
-    //   125: aconst_null
-    //   126: invokevirtual 264	java/io/InputStream:close	()V
-    //   129: aload_1
-    //   130: athrow
-    //   131: aload_0
-    //   132: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   135: aload_0
-    //   136: aload_1
-    //   137: ldc_w 266
-    //   140: invokespecial 268	com/tencent/oscarcamera/particlesystem/ParticleTemplate:doubleValue	(Lorg/json/JSONObject;Ljava/lang/String;)D
-    //   143: d2i
-    //   144: putfield 270	com/tencent/oscarcamera/particlesystem/Sprite:frameCount	I
-    //   147: aload_0
-    //   148: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   151: aload_0
-    //   152: aload_1
-    //   153: ldc 62
-    //   155: invokespecial 268	com/tencent/oscarcamera/particlesystem/ParticleTemplate:doubleValue	(Lorg/json/JSONObject;Ljava/lang/String;)D
-    //   158: d2i
-    //   159: putfield 272	com/tencent/oscarcamera/particlesystem/Sprite:width	I
-    //   162: aload_0
-    //   163: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   166: aload_0
-    //   167: aload_1
-    //   168: ldc 66
-    //   170: invokespecial 268	com/tencent/oscarcamera/particlesystem/ParticleTemplate:doubleValue	(Lorg/json/JSONObject;Ljava/lang/String;)D
-    //   173: d2i
-    //   174: putfield 274	com/tencent/oscarcamera/particlesystem/Sprite:height	I
-    //   177: aload_0
-    //   178: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   181: aload_0
-    //   182: aload_1
-    //   183: ldc_w 276
-    //   186: invokespecial 268	com/tencent/oscarcamera/particlesystem/ParticleTemplate:doubleValue	(Lorg/json/JSONObject;Ljava/lang/String;)D
-    //   189: d2i
-    //   190: putfield 278	com/tencent/oscarcamera/particlesystem/Sprite:blendMode	I
-    //   193: aload_0
-    //   194: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   197: aload_0
-    //   198: aload_1
-    //   199: ldc_w 280
-    //   202: invokespecial 268	com/tencent/oscarcamera/particlesystem/ParticleTemplate:doubleValue	(Lorg/json/JSONObject;Ljava/lang/String;)D
-    //   205: d2i
-    //   206: putfield 282	com/tencent/oscarcamera/particlesystem/Sprite:animated	I
-    //   209: aload_0
-    //   210: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   213: aload_0
-    //   214: aload_1
-    //   215: ldc_w 284
-    //   218: invokespecial 268	com/tencent/oscarcamera/particlesystem/ParticleTemplate:doubleValue	(Lorg/json/JSONObject;Ljava/lang/String;)D
-    //   221: d2i
-    //   222: putfield 286	com/tencent/oscarcamera/particlesystem/Sprite:looped	I
-    //   225: aload_0
-    //   226: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   229: aload_0
-    //   230: aload_1
-    //   231: ldc_w 288
-    //   234: invokespecial 268	com/tencent/oscarcamera/particlesystem/ParticleTemplate:doubleValue	(Lorg/json/JSONObject;Ljava/lang/String;)D
-    //   237: putfield 290	com/tencent/oscarcamera/particlesystem/Sprite:frameDuration	D
-    //   240: aload_0
-    //   241: aload_0
-    //   242: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   245: aload_2
-    //   246: getfield 246	android/graphics/BitmapFactory$Options:outWidth	I
-    //   249: aload_2
-    //   250: getfield 249	android/graphics/BitmapFactory$Options:outHeight	I
-    //   253: aload_0
-    //   254: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   257: getfield 272	com/tencent/oscarcamera/particlesystem/Sprite:width	I
-    //   260: aload_0
-    //   261: getfield 131	com/tencent/oscarcamera/particlesystem/ParticleTemplate:mSprite	Lcom/tencent/oscarcamera/particlesystem/Sprite;
-    //   264: getfield 274	com/tencent/oscarcamera/particlesystem/Sprite:height	I
-    //   267: invokespecial 294	com/tencent/oscarcamera/particlesystem/ParticleTemplate:preCalTexCoords	(Lcom/tencent/oscarcamera/particlesystem/Sprite;IIII)V
-    //   270: return
-    //   271: astore_2
-    //   272: goto -143 -> 129
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	275	0	this	ParticleTemplate
-    //   0	275	1	paramJSONObject	JSONObject
-    //   0	275	2	paramString	String
-    //   43	24	3	str	String
-    //   104	1	3	localIOException1	java.io.IOException
-    //   116	1	3	localIOException2	java.io.IOException
-    // Exception table:
-    //   from	to	target	type
-    //   96	104	104	java/io/IOException
-    //   109	113	116	java/io/IOException
-    //   96	104	120	finally
-    //   125	129	271	java/io/IOException
+    Object localObject = null;
+    InputStream localInputStream = null;
+    AppMethodBeat.i(81558);
+    this.mSprite.path = paramJSONObject.optString("path");
+    String str = paramString + File.separator + this.mSprite.path;
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    if (str.startsWith("/")) {
+      BitmapFactory.decodeFile(str, localOptions);
+    }
+    for (;;)
+    {
+      if ((localOptions.outWidth == 0) || (localOptions.outHeight == 0))
+      {
+        paramJSONObject = new RuntimeException("tex outWith or outHeight is 0");
+        AppMethodBeat.o(81558);
+        throw paramJSONObject;
+        AssetManager localAssetManager = this.mSystem.mContext.getAssets();
+        paramString = localInputStream;
+        try
+        {
+          localInputStream = localAssetManager.open(str);
+          paramString = localInputStream;
+          localObject = localInputStream;
+          BitmapFactory.decodeStream(localInputStream, null, localOptions);
+          if (localInputStream != null) {
+            try
+            {
+              localInputStream.close();
+            }
+            catch (IOException paramString) {}
+          }
+        }
+        catch (IOException localIOException)
+        {
+          if (paramString != null) {
+            try
+            {
+              paramString.close();
+            }
+            catch (IOException paramString) {}
+          }
+        }
+        finally
+        {
+          if (localIOException == null) {}
+        }
+      }
+    }
+    try
+    {
+      localIOException.close();
+      label203:
+      AppMethodBeat.o(81558);
+      throw paramJSONObject;
+      this.mSprite.frameCount = ((int)doubleValue(paramJSONObject, "frameCount"));
+      this.mSprite.width = ((int)doubleValue(paramJSONObject, "width"));
+      this.mSprite.height = ((int)doubleValue(paramJSONObject, "height"));
+      this.mSprite.blendMode = ((int)doubleValue(paramJSONObject, "blendMode"));
+      this.mSprite.animated = ((int)doubleValue(paramJSONObject, "animated"));
+      this.mSprite.looped = ((int)doubleValue(paramJSONObject, "looped"));
+      this.mSprite.frameDuration = doubleValue(paramJSONObject, "frameDuration");
+      preCalTexCoords(this.mSprite, localOptions.outWidth, localOptions.outHeight, this.mSprite.width, this.mSprite.height);
+      AppMethodBeat.o(81558);
+      return;
+    }
+    catch (IOException paramString)
+    {
+      break label203;
+    }
   }
   
   private void preCalTexCoords(Sprite paramSprite, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(81557);
     int i = paramInt2 / paramInt4;
     int j = paramInt1 / paramInt3;
     float f1 = paramInt3 * 1.0F / paramInt1;
@@ -385,6 +374,7 @@ public class ParticleTemplate
       }
       paramInt1 += 1;
     }
+    AppMethodBeat.o(81557);
   }
 }
 

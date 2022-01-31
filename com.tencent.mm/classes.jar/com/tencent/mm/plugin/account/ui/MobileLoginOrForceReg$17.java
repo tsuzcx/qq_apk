@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.modelsimple.q;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.modelsimple.s;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.base.h;
 
@@ -15,12 +16,14 @@ final class MobileLoginOrForceReg$17
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.d("MicorMsg.MobileLoginOrForceReg", "imgSid:" + MobileLoginOrForceReg.o(this.fpa).feA + " img len" + MobileLoginOrForceReg.o(this.fpa).fez.length + " " + com.tencent.mm.compatible.util.g.zI());
-    paramDialogInterface = new q(MobileLoginOrForceReg.o(this.fpa).account, MobileLoginOrForceReg.o(this.fpa).fnr, MobileLoginOrForceReg.o(this.fpa).fns, MobileLoginOrForceReg.p(this.fpa).getSecImgCode(), MobileLoginOrForceReg.p(this.fpa).getSecImgSid(), MobileLoginOrForceReg.p(this.fpa).getSecImgEncryptKey(), 1, "", false, true);
-    com.tencent.mm.kernel.g.Dk().a(paramDialogInterface, 0);
-    MobileLoginOrForceReg localMobileLoginOrForceReg = this.fpa;
-    this.fpa.getString(q.j.app_tip);
-    h.b(localMobileLoginOrForceReg, this.fpa.getString(q.j.login_logining), true, new MobileLoginOrForceReg.17.1(this, paramDialogInterface));
+    AppMethodBeat.i(125219);
+    ab.d("MicorMsg.MobileLoginOrForceReg", "imgSid:" + MobileLoginOrForceReg.q(this.gGw).gwj + " img len" + MobileLoginOrForceReg.q(this.gGw).gwi.length + " " + com.tencent.mm.compatible.util.g.Ml());
+    paramDialogInterface = new s(MobileLoginOrForceReg.q(this.gGw).account, MobileLoginOrForceReg.q(this.gGw).gEK, MobileLoginOrForceReg.q(this.gGw).gEL, MobileLoginOrForceReg.r(this.gGw).getSecImgCode(), MobileLoginOrForceReg.r(this.gGw).getSecImgSid(), MobileLoginOrForceReg.r(this.gGw).getSecImgEncryptKey(), 1, "", false, true);
+    com.tencent.mm.kernel.g.Rc().a(paramDialogInterface, 0);
+    MobileLoginOrForceReg localMobileLoginOrForceReg = this.gGw;
+    this.gGw.getString(2131297087);
+    h.b(localMobileLoginOrForceReg, this.gGw.getString(2131301149), true, new MobileLoginOrForceReg.17.1(this, paramDialogInterface));
+    AppMethodBeat.o(125219);
   }
 }
 

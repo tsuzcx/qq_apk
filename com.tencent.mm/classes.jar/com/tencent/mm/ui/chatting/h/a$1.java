@@ -1,39 +1,35 @@
 package com.tencent.mm.ui.chatting.h;
 
-import com.tencent.mm.plugin.appbrand.u.c.a;
-import com.tencent.mm.plugin.appbrand.u.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.chatting.d.b.b;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.modelsimple.v;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.storage.bi;
 
 final class a$1
-  implements c.a
+  implements Runnable
 {
   a$1(a parama) {}
   
-  public final void y(LinkedList<e> paramLinkedList)
+  public final void run()
   {
-    if (!bk.dk(paramLinkedList))
-    {
-      paramLinkedList = paramLinkedList.iterator();
-      while (paramLinkedList.hasNext())
-      {
-        Object localObject = (e)paramLinkedList.next();
-        localObject = new a.a(this.vyA, ((e)localObject).timestamp, ((e)localObject).type, ((e)localObject).title, ((e)localObject).bIt, ((e)localObject).username, ((e)localObject).nickname, ((e)localObject).aVs, ((e)localObject).hkV, ((e)localObject).dSZ, ((e)localObject).bWy, ((e)localObject).bXr, ((e)localObject).desc, ((e)localObject).imagePath);
-        this.vyA.hka.add(localObject);
-      }
-    }
-    this.vyA.vyF = this.vyA.hka;
-    if (this.vyA.vyD != null) {
-      this.vyA.vyD.k(this.kik, this.vyA.hka.size());
-    }
+    AppMethodBeat.i(32502);
+    this.zOU.cEE.setType(10002);
+    v.a(ah.getContext().getString(2131298301), "", this.zOU.cEE, "");
+    aw.aaz();
+    c.YC().a(this.zOU.cEE.field_msgId, this.zOU.cEE);
+    ab.i("MicroMsg.InvokeMessageNewXmlMsg", "checkExpired:%s", new Object[] { Long.valueOf(this.zOU.cEE.field_msgId) });
+    AppMethodBeat.o(32502);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.h.a.1
  * JD-Core Version:    0.7.0.1
  */

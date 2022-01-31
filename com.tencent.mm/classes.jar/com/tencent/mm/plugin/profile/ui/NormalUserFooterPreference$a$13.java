@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.profile.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.aq;
 
 final class NormalUserFooterPreference$a$13
   implements View.OnClickListener
@@ -13,11 +14,13 @@ final class NormalUserFooterPreference$a$13
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(23690);
     paramView = new Intent();
-    paramView.putExtra("sns_permission_userName", NormalUserFooterPreference.a(this.mYE.mYC).field_username);
+    paramView.putExtra("sns_permission_userName", NormalUserFooterPreference.a(this.pCf.pCe).field_username);
     paramView.putExtra("sns_permission_anim", true);
     paramView.putExtra("sns_permission_block_scene", 4);
-    d.b(NormalUserFooterPreference.b(this.mYE.mYC), "sns", ".ui.SnsPermissionUI", paramView);
+    d.b(NormalUserFooterPreference.b(this.pCf.pCe), "sns", ".ui.SnsPermissionUI", paramView);
+    AppMethodBeat.o(23690);
   }
 }
 

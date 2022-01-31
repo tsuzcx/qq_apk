@@ -7,16 +7,11 @@ public abstract interface b
 {
   public abstract boolean a(Context paramContext, m paramm, g paramg);
   
-  public abstract m r(Context paramContext, String paramString);
-  
-  public static final class a
-  {
-    public static b sjn;
-  }
+  public abstract m y(Context paramContext, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.d.b
  * JD-Core Version:    0.7.0.1
  */

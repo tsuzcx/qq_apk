@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.q.a;
 
 final class EnterpriseBizContactPlainListUI$5
@@ -10,14 +11,20 @@ final class EnterpriseBizContactPlainListUI$5
   
   public final void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (!paramBoolean) {}
-    while (EnterpriseBizContactPlainListUI.b(this.idM) != 3) {
+    AppMethodBeat.i(13984);
+    if (!paramBoolean)
+    {
+      AppMethodBeat.o(13984);
       return;
     }
-    paramString = this.idM.getIntent();
-    paramString.putExtra("enterprise_biz_name", this.idO);
-    this.idM.setResult(-1, paramString);
-    this.idM.finish();
+    if (EnterpriseBizContactPlainListUI.b(this.jUA) == 3)
+    {
+      paramString = this.jUA.getIntent();
+      paramString.putExtra("enterprise_biz_name", this.jUC);
+      this.jUA.setResult(-1, paramString);
+      this.jUA.finish();
+    }
+    AppMethodBeat.o(13984);
   }
 }
 

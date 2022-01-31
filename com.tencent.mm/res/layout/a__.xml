@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/crk" android:background="@drawable/b5p" android:padding="@dimen/mq" android:layout_height="0.0dip" android:layout_margin="0.0dip" android:minHeight="100.0dip" android:layout_weight="1.0" style="@style/ov"
+<RelativeLayout android:paddingLeft="@dimen/l5" android:paddingRight="@dimen/l5" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="top" android:id="@id/cs0" android:background="@raw/mall_order_detail_frame" android:layout_width="53.299988dip" android:layout_height="53.299988dip" android:layout_marginTop="23.599976dip" android:src="@raw/mall_order_trade_state_icon" />
-    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mq" android:layout_marginTop="23.599976dip" android:layout_marginBottom="23.599976dip" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/lj" android:textColor="@color/rx" android:id="@id/cs1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="@dimen/k9" android:textColor="@color/rv" android:ellipsize="end" android:id="@id/cs2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:maxLines="1" />
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.mm.plugin.ipcall.ui.IPCallShareGridView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/cr6" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@drawable/l_" android:horizontalSpacing="@dimen/l5" android:verticalSpacing="@dimen/l2" android:numColumns="3" />
+</RelativeLayout>

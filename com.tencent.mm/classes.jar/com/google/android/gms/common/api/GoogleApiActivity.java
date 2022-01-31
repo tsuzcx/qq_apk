@@ -10,134 +10,141 @@ import android.content.IntentSender.SendIntentException;
 import android.os.Bundle;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.internal.zzaax;
+import com.google.android.gms.common.api.internal.GoogleApiManager;
+import com.google.android.gms.common.util.VisibleForTesting;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class GoogleApiActivity
   extends Activity
   implements DialogInterface.OnCancelListener
 {
-  protected int zzazb = 0;
+  @VisibleForTesting
+  private int zzct = 0;
   
   public static PendingIntent zza(Context paramContext, PendingIntent paramPendingIntent, int paramInt)
   {
-    return zza(paramContext, paramPendingIntent, paramInt, true);
+    AppMethodBeat.i(60528);
+    paramContext = PendingIntent.getActivity(paramContext, 0, zza(paramContext, paramPendingIntent, paramInt, true), 134217728);
+    AppMethodBeat.o(60528);
+    return paramContext;
   }
   
-  public static PendingIntent zza(Context paramContext, PendingIntent paramPendingIntent, int paramInt, boolean paramBoolean)
+  public static Intent zza(Context paramContext, PendingIntent paramPendingIntent, int paramInt, boolean paramBoolean)
   {
-    return PendingIntent.getActivity(paramContext, 0, zzb(paramContext, paramPendingIntent, paramInt, paramBoolean), 134217728);
-  }
-  
-  private void zza(int paramInt, zzaax paramzzaax)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramzzaax.zza(new ConnectionResult(13, null), getIntent().getIntExtra("failing_client_id", -1));
-      return;
-    }
-    paramzzaax.zzvx();
-  }
-  
-  public static Intent zzb(Context paramContext, PendingIntent paramPendingIntent, int paramInt, boolean paramBoolean)
-  {
+    AppMethodBeat.i(60529);
     paramContext = new Intent(paramContext, GoogleApiActivity.class);
     paramContext.putExtra("pending_intent", paramPendingIntent);
     paramContext.putExtra("failing_client_id", paramInt);
     paramContext.putExtra("notify_manager", paramBoolean);
+    AppMethodBeat.o(60529);
     return paramContext;
-  }
-  
-  private void zzvl()
-  {
-    Object localObject = getIntent().getExtras();
-    if (localObject == null)
-    {
-      finish();
-      return;
-    }
-    PendingIntent localPendingIntent = (PendingIntent)((Bundle)localObject).get("pending_intent");
-    localObject = (Integer)((Bundle)localObject).get("error_code");
-    if ((localPendingIntent == null) && (localObject == null))
-    {
-      finish();
-      return;
-    }
-    if (localPendingIntent != null) {
-      try
-      {
-        startIntentSenderForResult(localPendingIntent.getIntentSender(), 1, null, 0, 0, 0);
-        this.zzazb = 1;
-        return;
-      }
-      catch (IntentSender.SendIntentException localSendIntentException)
-      {
-        finish();
-        return;
-      }
-    }
-    GoogleApiAvailability.getInstance().showErrorDialogFragment(this, ((Integer)localObject).intValue(), 2, this);
-    this.zzazb = 1;
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(60531);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt1 == 1)
     {
       boolean bool = getIntent().getBooleanExtra("notify_manager", true);
-      this.zzazb = 0;
-      setResultCode(paramInt2);
-      if (bool) {
-        zza(paramInt2, zzaax.zzaP(this));
+      this.zzct = 0;
+      setResult(paramInt2, paramIntent);
+      if (bool)
+      {
+        paramIntent = GoogleApiManager.zzb(this);
+        switch (paramInt2)
+        {
+        }
       }
     }
     for (;;)
     {
       finish();
+      AppMethodBeat.o(60531);
       return;
+      paramIntent.zza(new ConnectionResult(13, null), getIntent().getIntExtra("failing_client_id", -1));
+      continue;
+      paramIntent.zzr();
+      continue;
       if (paramInt1 == 2)
       {
-        this.zzazb = 0;
-        setResultCode(paramInt2);
+        this.zzct = 0;
+        setResult(paramInt2, paramIntent);
       }
     }
   }
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.zzazb = 0;
+    AppMethodBeat.i(60533);
+    this.zzct = 0;
     setResult(0);
     finish();
+    AppMethodBeat.o(60533);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(60530);
     super.onCreate(paramBundle);
     if (paramBundle != null) {
-      this.zzazb = paramBundle.getInt("resolution");
+      this.zzct = paramBundle.getInt("resolution");
     }
-    if (this.zzazb != 1) {
-      zzvl();
+    if (this.zzct != 1)
+    {
+      Object localObject = getIntent().getExtras();
+      if (localObject == null)
+      {
+        finish();
+        AppMethodBeat.o(60530);
+        return;
+      }
+      paramBundle = (PendingIntent)((Bundle)localObject).get("pending_intent");
+      localObject = (Integer)((Bundle)localObject).get("error_code");
+      if ((paramBundle == null) && (localObject == null))
+      {
+        finish();
+        AppMethodBeat.o(60530);
+        return;
+      }
+      if (paramBundle != null) {
+        try
+        {
+          startIntentSenderForResult(paramBundle.getIntentSender(), 1, null, 0, 0, 0);
+          this.zzct = 1;
+          AppMethodBeat.o(60530);
+          return;
+        }
+        catch (IntentSender.SendIntentException paramBundle)
+        {
+          finish();
+          AppMethodBeat.o(60530);
+          return;
+        }
+      }
+      GoogleApiAvailability.getInstance().showErrorDialogFragment(this, ((Integer)localObject).intValue(), 2, this);
+      this.zzct = 1;
     }
+    AppMethodBeat.o(60530);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
   {
-    paramBundle.putInt("resolution", this.zzazb);
+    AppMethodBeat.i(60532);
+    paramBundle.putInt("resolution", this.zzct);
     super.onSaveInstanceState(paramBundle);
+    AppMethodBeat.o(60532);
   }
   
-  protected void setResultCode(int paramInt)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    setResult(paramInt);
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.api.GoogleApiActivity
  * JD-Core Version:    0.7.0.1
  */

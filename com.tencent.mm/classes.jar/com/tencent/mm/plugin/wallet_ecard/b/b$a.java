@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.wallet_ecard.b;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet_core.c.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet_core.c.w;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
 import com.tencent.mm.plugin.wallet_ecard.a.a;
 import com.tencent.mm.plugin.wallet_ecard.a.d;
-import com.tencent.mm.protocal.c.baw;
-import com.tencent.mm.protocal.c.bcd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bhw;
+import com.tencent.mm.protocal.protobuf.bje;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.c;
@@ -26,49 +27,52 @@ final class b$a
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if ((paramm instanceof t))
+    AppMethodBeat.i(48074);
+    if ((paramm instanceof w))
     {
-      paramm = (t)paramm;
+      paramm = (w)paramm;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         paramString = new Bundle();
-        if ((paramm.qqX != null) && (paramm.qqX.qvd))
+        if ((paramm.ubT != null) && (paramm.ubT.uhv))
         {
-          paramString = b.F(this.qKz).getString(a.qKb);
-          str = b.G(this.qKz).getString(a.qKc);
-          paramm = paramm.qqX.mOb;
-          b.H(this.qKz).putString(a.qKd, paramm);
-          this.wBd.kh(1985);
-          paramString = new d(b.b(this.qKz), b.e(this.qKz), paramString, str, paramm, b.m(this.qKz), false);
-          this.wBd.a(paramString, true);
+          paramString = b.I(this.uzs).getString(a.uyT);
+          str = b.J(this.uzs).getString(a.uyU);
+          paramm = paramm.ubT.poq;
+          b.K(this.uzs).putString(a.uyV, paramm);
+          this.AXB.addSceneEndListener(1985);
+          paramString = new d(b.b(this.uzs), b.e(this.uzs), paramString, str, paramm, b.n(this.uzs), false, 0, "");
+          this.AXB.a(paramString, true);
         }
       }
     }
-    while (!(paramm instanceof d))
-    {
-      String str;
-      return false;
-      paramString.putBoolean(a.qKh, true);
-      this.qKz.a(this.gfb, 0, paramString);
-      return false;
-      y.w("MicroMsg.OpenECardProcess", "net error: %s", new Object[] { paramm });
-      paramString = com.tencent.mm.plugin.wallet_ecard.a.b.d(this.gfb, new String[] { paramString });
-      h.b(this.gfb, paramString, "", false);
-      return false;
+    while (!(paramm instanceof d)) {
+      for (;;)
+      {
+        String str;
+        AppMethodBeat.o(48074);
+        return false;
+        paramString.putBoolean(a.uyZ, true);
+        this.uzs.a(this.hwZ, 0, paramString);
+        continue;
+        ab.w("MicroMsg.OpenECardProcess", "net error: %s", new Object[] { paramm });
+        paramString = com.tencent.mm.plugin.wallet_ecard.a.b.d(this.hwZ, new String[] { paramString });
+        h.b(this.hwZ, paramString, "", false);
+      }
     }
-    this.wBd.ki(1985);
+    this.AXB.removeSceneEndListener(1985);
     paramm = (d)paramm;
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (paramm.qKs.ino == 0)
+      if (paramm.uzl.koj == 0)
       {
         paramString = new Bundle();
-        paramString.putBoolean(a.qKh, false);
-        if ((paramm.qKs.sAX != null) && (!bk.bl(paramm.qKs.sAX.title)))
+        paramString.putBoolean(a.uyZ, false);
+        if ((paramm.uzl.wvr != null) && (!bo.isNullOrNil(paramm.uzl.wvr.title)))
         {
-          y.i("MicroMsg.OpenECardProcess", "no need verify sms");
-          paramString.putBoolean(a.qKg, false);
+          ab.i("MicroMsg.OpenECardProcess", "no need verify sms");
+          paramString.putBoolean(a.uyY, false);
         }
       }
     }
@@ -76,40 +80,43 @@ final class b$a
     {
       try
       {
-        b.I(this.qKz).putByteArray(a.qKk, paramm.qKs.sAX.toByteArray());
-        this.qKz.a(this.gfb, 0, paramString);
+        b.L(this.uzs).putByteArray(a.uzc, paramm.uzl.wvr.toByteArray());
+        this.uzs.a(this.hwZ, 0, paramString);
+        AppMethodBeat.o(48074);
         return true;
       }
       catch (IOException paramm)
       {
-        y.printErrStackTrace("MicroMsg.OpenECardProcess", paramm, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.OpenECardProcess", paramm, "", new Object[0]);
         continue;
       }
-      y.i("MicroMsg.OpenECardProcess", "need verfiy sms");
-      paramString.putBoolean(a.qKg, true);
-      paramString.putString(a.qKe, paramm.qKs.sAV);
-      paramString.putString(a.qKf, paramm.qKs.twP);
+      ab.i("MicroMsg.OpenECardProcess", "need verfiy sms");
+      paramString.putBoolean(a.uyY, true);
+      paramString.putString(a.uyW, paramm.uzl.wvp);
+      paramString.putString(a.uyX, paramm.uzl.xwT);
       continue;
-      if ((!com.tencent.mm.plugin.wallet_ecard.a.b.a((WalletBaseUI)this.gfb, paramm.qKs.sAW)) && (!com.tencent.mm.plugin.wallet_ecard.a.b.a((WalletBaseUI)this.gfb, paramm, paramm.iHq, paramm.iHr, paramm.qKs.ino, paramm.qKs.inp)))
+      if ((!com.tencent.mm.plugin.wallet_ecard.a.b.a((WalletBaseUI)this.hwZ, paramm.uzl.wvq)) && (!com.tencent.mm.plugin.wallet_ecard.a.b.a((WalletBaseUI)this.hwZ, paramm, paramm.cnK, paramm.kNv, paramm.uzl.koj, paramm.uzl.kok)))
       {
-        paramString = com.tencent.mm.plugin.wallet_ecard.a.b.d(this.gfb, new String[] { paramm.qKs.inp, paramm.iHr, paramString });
-        h.b(this.gfb, paramString, "", false);
+        paramString = com.tencent.mm.plugin.wallet_ecard.a.b.d(this.hwZ, new String[] { paramm.uzl.kok, paramm.kNv, paramString });
+        h.b(this.hwZ, paramString, "", false);
         continue;
-        y.w("MicroMsg.OpenECardProcess", "net error: %s", new Object[] { paramm });
-        paramString = com.tencent.mm.plugin.wallet_ecard.a.b.d(this.gfb, new String[] { paramString });
-        h.b(this.gfb, paramString, "", false);
+        ab.w("MicroMsg.OpenECardProcess", "net error: %s", new Object[] { paramm });
+        paramString = com.tencent.mm.plugin.wallet_ecard.a.b.d(this.hwZ, new String[] { paramString });
+        h.b(this.hwZ, paramString, "", false);
       }
     }
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
+    AppMethodBeat.i(48073);
     String str = (String)paramVarArgs[0];
     paramVarArgs = (String)paramVarArgs[1];
-    b.D(this.qKz).putString(a.qKb, str);
-    b.E(this.qKz).putString(a.qKc, paramVarArgs);
-    paramVarArgs = new t("", str, null);
-    this.wBd.a(paramVarArgs, true);
+    b.G(this.uzs).putString(a.uyT, str);
+    b.H(this.uzs).putString(a.uyU, paramVarArgs);
+    paramVarArgs = new w("", str, null);
+    this.AXB.a(paramVarArgs, true);
+    AppMethodBeat.o(48073);
     return true;
   }
 }

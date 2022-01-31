@@ -6,17 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.k;
 import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.plugin.fav.ui.n.f;
-import com.tencent.mm.plugin.fav.ui.n.h;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.protocal.c.yc;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.protocal.c.yl;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.ach;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.acs;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class e
   extends a
@@ -29,53 +27,60 @@ public final class e
   @SuppressLint({"ResourceType"})
   public final View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg)
   {
+    AppMethodBeat.i(74623);
     Object localObject = paramViewGroup.getContext();
     if (paramView == null)
     {
       paramViewGroup = new e.a();
-      paramView = a(View.inflate((Context)localObject, n.f.fav_listitem_comm_card, null), paramViewGroup, paramg);
-      paramViewGroup.gSx = ((ImageView)paramView.findViewById(n.e.fav_icon));
-      paramViewGroup.eXO = ((TextView)paramView.findViewById(n.e.fav_title));
-      paramViewGroup.eXP = ((TextView)paramView.findViewById(n.e.fav_detail));
+      paramView = a(View.inflate((Context)localObject, 2130969540, null), paramViewGroup, paramg);
+      paramViewGroup.ivs = ((ImageView)paramView.findViewById(2131821517));
+      paramViewGroup.gpL = ((TextView)paramView.findViewById(2131820619));
+      paramViewGroup.gpM = ((TextView)paramView.findViewById(2131820603));
       a(paramViewGroup, paramg);
-      paramViewGroup.gSx.setImageResource(n.h.app_attach_file_icon_location);
-      localObject = paramg.field_favProto.sWf;
-      paramg = paramg.field_favProto.fGK;
-      if (!bk.bl(paramg)) {
-        break label187;
+      paramViewGroup.ivs.setImageResource(2131230807);
+      localObject = paramg.field_favProto.wUd;
+      paramg = paramg.field_favProto.hKa;
+      if (!bo.isNullOrNil(paramg)) {
+        break label193;
       }
-      if (!k.CZ(((yc)localObject).bVA)) {
-        break label164;
+      if (!k.Ob(((ach)localObject).cDl)) {
+        break label169;
       }
-      paramViewGroup.eXO.setText(((yc)localObject).bVA);
+      paramViewGroup.gpL.setText(((ach)localObject).cDl);
+      label139:
+      paramViewGroup.gpM.setText(((ach)localObject).label);
     }
-    label164:
-    label187:
-    do
+    for (;;)
     {
-      paramViewGroup.eXP.setText(((yc)localObject).label);
+      AppMethodBeat.o(74623);
       return paramView;
       paramViewGroup = (e.a)paramView.getTag();
       break;
-      paramViewGroup.eXO.setText(((yc)localObject).label);
-      paramViewGroup.eXP.setVisibility(8);
-      return paramView;
-      paramViewGroup.eXO.setText(j.a(paramViewGroup.eXO.getContext(), paramg, paramViewGroup.eXO.getTextSize()));
-    } while (!k.CZ(((yc)localObject).bVA));
-    paramViewGroup.eXP.setText(((yc)localObject).bVA);
-    return paramView;
+      label169:
+      paramViewGroup.gpL.setText(((ach)localObject).label);
+      paramViewGroup.gpM.setVisibility(8);
+      continue;
+      label193:
+      paramViewGroup.gpL.setText(j.b(paramViewGroup.gpL.getContext(), paramg, paramViewGroup.gpL.getTextSize()));
+      if (!k.Ob(((ach)localObject).cDl)) {
+        break label139;
+      }
+      paramViewGroup.gpM.setText(((ach)localObject).cDl);
+    }
   }
   
-  public final void a(View paramView, yl paramyl)
+  public final void a(View paramView, acs paramacs)
   {
+    AppMethodBeat.i(74624);
     e.a locala = (e.a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.r(y.class)).a(paramView, locala.jZN, paramyl);
+    ((y)com.tencent.mm.kernel.g.E(y.class)).a(paramView, locala.muk, paramacs);
+    AppMethodBeat.o(74624);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.d.e
  * JD-Core Version:    0.7.0.1
  */

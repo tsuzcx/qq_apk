@@ -5,7 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 final class ChangeBounds$8
   extends AnimatorListenerAdapter
 {
-  private ChangeBounds.a pI = this.pJ;
+  private ChangeBounds.a qF = this.qG;
   
   ChangeBounds$8(ChangeBounds paramChangeBounds, ChangeBounds.a parama) {}
 }

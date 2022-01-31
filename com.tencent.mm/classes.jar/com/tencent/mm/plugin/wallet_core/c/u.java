@@ -1,54 +1,67 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.tenpay.model.j;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.x;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class u
-  extends j
+  extends m
 {
-  public u(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  private int scene;
+  public String token;
+  public String ubN;
+  
+  public u(String paramString1, int paramInt, String paramString2)
   {
+    AppMethodBeat.i(46532);
     HashMap localHashMap = new HashMap();
-    try
-    {
-      localHashMap.put("appid", URLEncoder.encode(paramString1, "UTF-8"));
-      localHashMap.put("timestamp", URLEncoder.encode(paramString2, "UTF-8"));
-      localHashMap.put("noncestr", URLEncoder.encode(paramString3, "UTF-8"));
-      localHashMap.put("package", URLEncoder.encode(paramString4, "UTF-8"));
-      localHashMap.put("sign", URLEncoder.encode(paramString5, "UTF-8"));
-      D(localHashMap);
-      y.d("MicroMsg.NetSceneTenpayF2fJsapiCheck", "package: %s, sign: %s", new Object[] { paramString4, paramString5 });
-      return;
+    localHashMap.put("passwd", paramString1);
+    localHashMap.put("req_key", paramString2);
+    if (paramInt == 6) {
+      localHashMap.put("time_stamp", System.currentTimeMillis());
     }
-    catch (UnsupportedEncodingException paramString1)
+    setRequestData(localHashMap);
+    paramString1 = new HashMap();
+    paramString1.put("check_pwd_scene", String.valueOf(paramInt));
+    if (x.dSp())
     {
-      y.printErrStackTrace("MicroMsg.NetSceneTenpayF2fJsapiCheck", paramString1, "", new Object[0]);
+      paramString1.put("uuid_for_bindcard", x.dSr());
+      paramString1.put("bindcard_scene", x.dSq());
     }
+    setWXRequestData(paramString1);
+    this.scene = paramInt;
+    AppMethodBeat.o(46532);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
-    return 1973;
+    return 476;
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
+  public final int getTenpayCgicmd()
   {
-    y.d("MicroMsg.NetSceneTenpayF2fJsapiCheck", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-  }
-  
-  public final int aEC()
-  {
-    return 0;
+    return 18;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/f2frcvdlistjsapicheck";
+    return "/cgi-bin/mmpay-bin/tenpay/checkpwd";
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(46533);
+    ab.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    if ((this.scene == 6) || (this.scene == 8) || (this.scene == 18))
+    {
+      this.token = paramJSONObject.optString("usertoken");
+      this.ubN = paramJSONObject.optString("token_type");
+    }
+    AppMethodBeat.o(46533);
   }
 }
 

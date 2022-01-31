@@ -1,9 +1,9 @@
 package android.support.v7.widget;
 
 import android.os.Build.VERSION;
-import android.support.v4.os.f;
-import android.support.v4.view.i;
-import android.support.v4.view.q;
+import android.support.v4.os.e;
+import android.support.v4.view.l;
+import android.support.v4.view.t;
 import android.view.animation.Interpolator;
 import android.widget.OverScroller;
 import java.util.ArrayList;
@@ -11,19 +11,19 @@ import java.util.ArrayList;
 final class RecyclerView$u
   implements Runnable
 {
-  int aia;
-  int aib;
-  private boolean aic = false;
-  private boolean aid = false;
-  OverScroller iY;
-  Interpolator mInterpolator = RecyclerView.agI;
+  int akq;
+  int akr;
+  private boolean aks = false;
+  private boolean akt = false;
+  OverScroller jR;
+  Interpolator mInterpolator = RecyclerView.aiY;
   
   RecyclerView$u(RecyclerView paramRecyclerView)
   {
-    this.iY = new OverScroller(paramRecyclerView.getContext(), RecyclerView.agI);
+    this.jR = new OverScroller(paramRecyclerView.getContext(), RecyclerView.aiY);
   }
   
-  final int au(int paramInt1, int paramInt2)
+  private int aD(int paramInt1, int paramInt2)
   {
     int j = Math.abs(paramInt1);
     int k = Math.abs(paramInt2);
@@ -35,26 +35,26 @@ final class RecyclerView$u
       m = (int)Math.sqrt(0.0D);
       paramInt2 = (int)Math.sqrt(paramInt1 * paramInt1 + paramInt2 * paramInt2);
       if (i == 0) {
-        break label139;
+        break label131;
       }
     }
-    label139:
-    for (paramInt1 = this.agK.getWidth();; paramInt1 = this.agK.getHeight())
+    label131:
+    for (paramInt1 = this.aja.getWidth();; paramInt1 = this.aja.getHeight())
     {
       int n = paramInt1 / 2;
       float f3 = Math.min(1.0F, paramInt2 * 1.0F / paramInt1);
       float f1 = n;
       float f2 = n;
-      f3 = (float)Math.sin((f3 - 0.5F) * 0.4712389F);
+      f3 = distanceInfluenceForSnapDuration(f3);
       if (m <= 0) {
-        break label150;
+        break label142;
       }
       paramInt1 = Math.round(1000.0F * Math.abs((f3 * f2 + f1) / m)) * 4;
       return Math.min(paramInt1, 2000);
       i = 0;
       break;
     }
-    label150:
+    label142:
     if (i != 0) {}
     for (paramInt2 = j;; paramInt2 = k)
     {
@@ -63,51 +63,71 @@ final class RecyclerView$u
     }
   }
   
+  private static float distanceInfluenceForSnapDuration(float paramFloat)
+  {
+    return (float)Math.sin((paramFloat - 0.5F) * 0.4712389F);
+  }
+  
+  public final void a(int paramInt1, int paramInt2, Interpolator paramInterpolator)
+  {
+    int i = aD(paramInt1, paramInt2);
+    Interpolator localInterpolator = paramInterpolator;
+    if (paramInterpolator == null) {
+      localInterpolator = RecyclerView.aiY;
+    }
+    b(paramInt1, paramInt2, i, localInterpolator);
+  }
+  
+  final void aC(int paramInt1, int paramInt2)
+  {
+    m(paramInt1, paramInt2, aD(paramInt1, paramInt2));
+  }
+  
   public final void b(int paramInt1, int paramInt2, int paramInt3, Interpolator paramInterpolator)
   {
     if (this.mInterpolator != paramInterpolator)
     {
       this.mInterpolator = paramInterpolator;
-      this.iY = new OverScroller(this.agK.getContext(), paramInterpolator);
+      this.jR = new OverScroller(this.aja.getContext(), paramInterpolator);
     }
-    this.agK.setScrollState(2);
-    this.aib = 0;
-    this.aia = 0;
-    this.iY.startScroll(0, 0, paramInt1, paramInt2, paramInt3);
+    this.aja.setScrollState(2);
+    this.akr = 0;
+    this.akq = 0;
+    this.jR.startScroll(0, 0, paramInt1, paramInt2, paramInt3);
     if (Build.VERSION.SDK_INT < 23) {
-      this.iY.computeScrollOffset();
+      this.jR.computeScrollOffset();
     }
-    hZ();
+    jI();
   }
   
-  final void hZ()
+  final void jI()
   {
-    if (this.aic)
+    if (this.aks)
     {
-      this.aid = true;
+      this.akt = true;
       return;
     }
-    this.agK.removeCallbacks(this);
-    q.b(this.agK, this);
+    this.aja.removeCallbacks(this);
+    t.b(this.aja, this);
   }
   
   public final void m(int paramInt1, int paramInt2, int paramInt3)
   {
-    b(paramInt1, paramInt2, paramInt3, RecyclerView.agI);
+    b(paramInt1, paramInt2, paramInt3, RecyclerView.aiY);
   }
   
   public final void run()
   {
-    if (this.agK.afG == null)
+    if (this.aja.ahW == null)
     {
       stop();
       return;
     }
-    this.aid = false;
-    this.aic = true;
-    this.agK.hn();
-    OverScroller localOverScroller = this.iY;
-    RecyclerView.r localr = this.agK.afG.agY;
+    this.akt = false;
+    this.aks = true;
+    this.aja.iO();
+    OverScroller localOverScroller = this.jR;
+    RecyclerView.r localr = this.aja.ahW.ajo;
     int i5;
     int i6;
     int i2;
@@ -115,14 +135,14 @@ final class RecyclerView$u
     int i;
     if (localOverScroller.computeScrollOffset())
     {
-      int[] arrayOfInt = RecyclerView.a(this.agK);
+      int[] arrayOfInt = RecyclerView.b(this.aja);
       i5 = localOverScroller.getCurrX();
       i6 = localOverScroller.getCurrY();
-      i2 = i5 - this.aia;
-      i1 = i6 - this.aib;
-      this.aia = i5;
-      this.aib = i6;
-      if (!this.agK.a(i2, i1, arrayOfInt, null, 1)) {
+      i2 = i5 - this.akq;
+      i1 = i6 - this.akr;
+      this.akq = i5;
+      this.akr = i6;
+      if (!this.aja.a(i2, i1, arrayOfInt, null, 1)) {
         break label886;
       }
       i = arrayOfInt[0];
@@ -138,27 +158,27 @@ final class RecyclerView$u
       int n;
       int j;
       int k;
-      if (this.agK.Sw != null)
+      if (this.aja.Tg != null)
       {
-        this.agK.ho();
-        this.agK.hy();
-        f.beginSection("RV Scroll");
-        this.agK.m(this.agK.agu);
+        this.aja.iP();
+        this.aja.ja();
+        e.beginSection("RV Scroll");
+        this.aja.m(this.aja.aiK);
         if (i2 != 0)
         {
-          i = this.agK.afG.a(i2, this.agK.afy, this.agK.agu);
+          i = this.aja.ahW.a(i2, this.aja.ahO, this.aja.aiK);
           m = i2 - i;
           if (i1 != 0)
           {
-            n = this.agK.afG.b(i1, this.agK.afy, this.agK.agu);
+            n = this.aja.ahW.b(i1, this.aja.ahO, this.aja.aiK);
             j = i1 - n;
-            f.endSection();
-            this.agK.hN();
-            this.agK.ad(true);
-            this.agK.ac(false);
-            if ((localr != null) && (!localr.ahB) && (localr.ahC))
+            e.endSection();
+            this.aja.jt();
+            this.aja.am(true);
+            this.aja.al(false);
+            if ((localr != null) && (!localr.ajR) && (localr.ajS))
             {
-              k = this.agK.agu.getItemCount();
+              k = this.aja.aiK.getItemCount();
               if (k == 0)
               {
                 localr.stop();
@@ -171,14 +191,14 @@ final class RecyclerView$u
       }
       for (;;)
       {
-        if (!this.agK.afI.isEmpty()) {
-          this.agK.invalidate();
+        if (!this.aja.ahY.isEmpty()) {
+          this.aja.invalidate();
         }
-        if (this.agK.getOverScrollMode() != 2) {
-          this.agK.ad(i2, i1);
+        if (this.aja.getOverScrollMode() != 2) {
+          this.aja.ah(i2, i1);
         }
         int i3;
-        if ((!this.agK.a(j, n, m, k, null, 1)) && ((m != 0) || (k != 0)))
+        if ((!this.aja.a(j, n, m, k, null, 1)) && ((m != 0) || (k != 0)))
         {
           i3 = (int)localOverScroller.getCurrVelocity();
           if (m == i5) {
@@ -198,22 +218,22 @@ final class RecyclerView$u
           }
           for (;;)
           {
-            if (this.agK.getOverScrollMode() != 2) {
-              this.agK.ae(i4, i);
+            if (this.aja.getOverScrollMode() != 2) {
+              this.aja.ai(i4, i);
             }
             if (((i4 != 0) || (m == i5) || (localOverScroller.getFinalX() == 0)) && ((i != 0) || (k == i6) || (localOverScroller.getFinalY() == 0))) {
               localOverScroller.abortAnimation();
             }
             if ((j != 0) || (n != 0)) {
-              this.agK.ag(j, n);
+              this.aja.am(j, n);
             }
-            if (!RecyclerView.b(this.agK)) {
-              this.agK.invalidate();
+            if (!RecyclerView.c(this.aja)) {
+              this.aja.invalidate();
             }
-            if ((i1 != 0) && (this.agK.afG.gP()) && (n == i1))
+            if ((i1 != 0) && (this.aja.ahW.ik()) && (n == i1))
             {
               i = 1;
-              if ((i2 == 0) || (!this.agK.afG.gO()) || (j != i2)) {
+              if ((i2 == 0) || (!this.aja.ahW.ij()) || (j != i2)) {
                 break label801;
               }
               j = 1;
@@ -221,34 +241,34 @@ final class RecyclerView$u
                 break label806;
               }
               i = 1;
-              if ((!localOverScroller.isFinished()) && ((i != 0) || (this.agK.getScrollingChildHelper().au(1)))) {
+              if ((!localOverScroller.isFinished()) && ((i != 0) || (this.aja.getScrollingChildHelper().au(1)))) {
                 break label811;
               }
-              this.agK.setScrollState(0);
+              this.aja.setScrollState(0);
               if (RecyclerView.access$800()) {
-                this.agK.agt.gH();
+                this.aja.aiJ.hI();
               }
-              this.agK.av(1);
+              this.aja.av(1);
             }
             for (;;)
             {
               if (localr != null)
               {
-                if (localr.ahB) {
+                if (localr.ajR) {
                   RecyclerView.r.a(localr, 0, 0);
                 }
-                if (!this.aid) {
+                if (!this.akt) {
                   localr.stop();
                 }
               }
-              this.aic = false;
-              if (!this.aid) {
+              this.aks = false;
+              if (!this.akt) {
                 break;
               }
-              hZ();
+              jI();
               return;
-              if (localr.ahA >= k) {
-                localr.ahA = (k - 1);
+              if (localr.ajQ >= k) {
+                localr.ajQ = (k - 1);
               }
               RecyclerView.r.a(localr, i2 - m, i1 - j);
               k = j;
@@ -273,9 +293,9 @@ final class RecyclerView$u
               break label603;
               i = 0;
               break label623;
-              hZ();
-              if (this.agK.ags != null) {
-                this.agK.ags.b(this.agK, i2, i1);
+              jI();
+              if (this.aja.aiI != null) {
+                this.aja.aiI.b(this.aja, i2, i1);
               }
             }
             i = 0;
@@ -297,8 +317,8 @@ final class RecyclerView$u
   
   public final void stop()
   {
-    this.agK.removeCallbacks(this);
-    this.iY.abortAnimation();
+    this.aja.removeCallbacks(this);
+    this.jR.abortAnimation();
   }
 }
 

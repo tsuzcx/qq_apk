@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.order.a;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.plugin.order.b.b;
 
 final class b$1
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return b.dXp;
+    return b.SQL_CREATE;
   }
 }
 

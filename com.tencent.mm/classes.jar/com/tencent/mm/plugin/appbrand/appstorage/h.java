@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-public enum h
+public final class h
 {
-  private h() {}
+  public String fileName;
 }
 
 

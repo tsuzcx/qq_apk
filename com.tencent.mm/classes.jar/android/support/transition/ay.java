@@ -1,5 +1,6 @@
 package android.support.transition;
 
+import android.graphics.Matrix;
 import android.view.View;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -7,72 +8,94 @@ import java.lang.reflect.Method;
 class ay
   extends ax
 {
-  private static Method tA;
-  private static boolean tB;
-  private static Method tC;
-  private static boolean tD;
+  private static Method uF;
+  private static boolean uG;
+  private static Method uH;
+  private static boolean uI;
+  private static Method uJ;
+  private static boolean uK;
   
-  public final float H(View paramView)
+  public final void a(View paramView, Matrix paramMatrix)
   {
-    if (!tD) {}
+    if (!uG) {}
     try
     {
-      Method localMethod = View.class.getDeclaredMethod("getTransitionAlpha", new Class[0]);
-      tC = localMethod;
+      Method localMethod = View.class.getDeclaredMethod("transformMatrixToGlobal", new Class[] { Matrix.class });
+      uF = localMethod;
       localMethod.setAccessible(true);
-      label27:
-      tD = true;
-      if (tC != null) {
-        try
-        {
-          float f = ((Float)tC.invoke(paramView, new Object[0])).floatValue();
-          return f;
-        }
-        catch (InvocationTargetException paramView)
-        {
-          throw new RuntimeException(paramView.getCause());
-        }
-        catch (IllegalAccessException localIllegalAccessException) {}
-      }
-      return super.H(paramView);
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      break label27;
-    }
-  }
-  
-  public final void I(View paramView) {}
-  
-  public final void J(View paramView) {}
-  
-  public final void c(View paramView, float paramFloat)
-  {
-    if (!tB) {}
-    try
-    {
-      Method localMethod = View.class.getDeclaredMethod("setTransitionAlpha", new Class[] { Float.TYPE });
-      tA = localMethod;
-      localMethod.setAccessible(true);
-      label33:
-      tB = true;
-      if (tA != null) {}
+      label32:
+      uG = true;
+      if (uF != null) {}
       try
       {
-        tA.invoke(paramView, new Object[] { Float.valueOf(paramFloat) });
+        uF.invoke(paramView, new Object[] { paramMatrix });
         return;
       }
       catch (InvocationTargetException paramView)
       {
         throw new RuntimeException(paramView.getCause());
-        paramView.setAlpha(paramFloat);
-        return;
       }
       catch (IllegalAccessException paramView) {}
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      break label33;
+      break label32;
+    }
+  }
+  
+  public final void b(View paramView, Matrix paramMatrix)
+  {
+    if (!uI) {}
+    try
+    {
+      Method localMethod = View.class.getDeclaredMethod("transformMatrixToLocal", new Class[] { Matrix.class });
+      uH = localMethod;
+      localMethod.setAccessible(true);
+      label32:
+      uI = true;
+      if (uH != null) {}
+      try
+      {
+        uH.invoke(paramView, new Object[] { paramMatrix });
+        return;
+      }
+      catch (InvocationTargetException paramView)
+      {
+        throw new RuntimeException(paramView.getCause());
+      }
+      catch (IllegalAccessException paramView) {}
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label32;
+    }
+  }
+  
+  public final void c(View paramView, Matrix paramMatrix)
+  {
+    if (!uK) {}
+    try
+    {
+      Method localMethod = View.class.getDeclaredMethod("setAnimationMatrix", new Class[] { Matrix.class });
+      uJ = localMethod;
+      localMethod.setAccessible(true);
+      label32:
+      uK = true;
+      if (uJ != null) {}
+      try
+      {
+        uJ.invoke(paramView, new Object[] { paramMatrix });
+        return;
+      }
+      catch (IllegalAccessException paramView)
+      {
+        throw new RuntimeException(paramView.getCause());
+      }
+      catch (InvocationTargetException paramView) {}
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label32;
     }
   }
 }

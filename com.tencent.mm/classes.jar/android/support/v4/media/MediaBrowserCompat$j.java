@@ -7,13 +7,13 @@ import android.os.Messenger;
 
 final class MediaBrowserCompat$j
 {
-  Bundle AK;
-  private Messenger AZ;
+  private Messenger BL;
+  Bundle Bw;
   
   public MediaBrowserCompat$j(IBinder paramIBinder, Bundle paramBundle)
   {
-    this.AZ = new Messenger(paramIBinder);
-    this.AK = paramBundle;
+    this.BL = new Messenger(paramIBinder);
+    this.Bw = paramBundle;
   }
   
   final void a(int paramInt, Bundle paramBundle, Messenger paramMessenger)
@@ -23,7 +23,7 @@ final class MediaBrowserCompat$j
     localMessage.arg1 = 1;
     localMessage.setData(paramBundle);
     localMessage.replyTo = paramMessenger;
-    this.AZ.send(localMessage);
+    this.BL.send(localMessage);
   }
 }
 

@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView;
-import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.d;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class MMSightRecordViewTestUI$4
   implements View.OnClickListener
@@ -13,8 +14,10 @@ final class MMSightRecordViewTestUI$4
   
   public final void onClick(View paramView)
   {
-    MMSightRecordViewTestUI.a(this.moY).mfG.uq();
-    ai.l(new MMSightRecordViewTestUI.4.1(this), 5000L);
+    AppMethodBeat.i(55122);
+    MMSightRecordViewTestUI.a(this.oOk).oGg.EC();
+    al.p(new MMSightRecordViewTestUI.4.1(this), 5000L);
+    AppMethodBeat.o(55122);
   }
 }
 

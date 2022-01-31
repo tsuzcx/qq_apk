@@ -1,23 +1,31 @@
 package com.google.android.exoplayer2.f.b;
 
 import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$h
 {
-  public final SparseArray<b.a> aOA = new SparseArray();
-  public final SparseArray<b.c> aOB = new SparseArray();
-  public final SparseArray<b.a> aOC = new SparseArray();
-  public final SparseArray<b.c> aOD = new SparseArray();
-  public b.b aOE;
-  public b.d aOF;
-  public final SparseArray<b.f> aOi = new SparseArray();
-  public final int aOy;
-  public final int aOz;
+  public final SparseArray<b.f> aVC;
+  public final int aVS;
+  public final int aVT;
+  public final SparseArray<b.a> aVU;
+  public final SparseArray<b.c> aVV;
+  public final SparseArray<b.a> aVW;
+  public final SparseArray<b.c> aVX;
+  public b.b aVY;
+  public b.d aVZ;
   
   public b$h(int paramInt1, int paramInt2)
   {
-    this.aOy = paramInt1;
-    this.aOz = paramInt2;
+    AppMethodBeat.i(95625);
+    this.aVC = new SparseArray();
+    this.aVU = new SparseArray();
+    this.aVV = new SparseArray();
+    this.aVW = new SparseArray();
+    this.aVX = new SparseArray();
+    this.aVS = paramInt1;
+    this.aVT = paramInt2;
+    AppMethodBeat.o(95625);
   }
 }
 

@@ -1,30 +1,32 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.da;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.b.a;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.plugin.profile.ui.newbizinfo.c.c;
+import com.tencent.mm.ui.widget.b.d;
 
 final class b$6
-  implements DialogInterface.OnCancelListener
+  implements MenuItem.OnMenuItemClickListener
 {
-  b$6(b paramb, m paramm) {}
+  b$6(b paramb) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    au.Dk().b(536, this.mZA);
-    paramDialogInterface = new da();
-    paramDialogInterface.bJg.opType = 2;
-    paramDialogInterface.bJg.bJk = this.bEe;
-    a.udP.m(paramDialogInterface);
+    AppMethodBeat.i(153584);
+    paramMenuItem = new d(this.pDl.pDe, 1, false);
+    paramMenuItem.sao = new b.6.1(this);
+    paramMenuItem.sap = new b.6.2(this);
+    paramMenuItem.crd();
+    c.cZ(this.pDl.contact.field_username, 600);
+    AppMethodBeat.o(153584);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.b.6
  * JD-Core Version:    0.7.0.1
  */

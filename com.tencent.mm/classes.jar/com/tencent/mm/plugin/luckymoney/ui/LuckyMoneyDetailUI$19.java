@@ -1,6 +1,10 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import com.tencent.mm.compatible.util.j;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class LuckyMoneyDetailUI$19
   implements Runnable
@@ -9,7 +13,13 @@ final class LuckyMoneyDetailUI$19
   
   public final void run()
   {
-    j.p(this.lVz);
+    AppMethodBeat.i(42668);
+    int i = BackwardSupportUtil.b.b(this.otz.getContext(), 526.0F) + LuckyMoneyDetailUI.L(this.otz);
+    ab.d("MicroMsg.LuckyMoneyDetailUI", "header height: %s", new Object[] { Integer.valueOf(i) });
+    ViewGroup.LayoutParams localLayoutParams = LuckyMoneyDetailUI.M(this.otz).getLayoutParams();
+    localLayoutParams.height = i;
+    LuckyMoneyDetailUI.M(this.otz).setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(42668);
   }
 }
 

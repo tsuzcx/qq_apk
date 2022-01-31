@@ -1,32 +1,24 @@
 package com.tencent.mm.ui.chatting;
 
-import android.annotation.TargetApi;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnHoverListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@TargetApi(14)
-public final class ak$a
-  implements View.OnHoverListener
+public enum ak$a
 {
-  private ak.b vmC;
-  
-  public ak$a(ak.b paramb)
+  static
   {
-    this.vmC = paramb;
+    AppMethodBeat.i(30993);
+    zCh = new a("CHATTING_ITEM_VIDEO", 0);
+    zCi = new a("IMAGE_GALLERY_UI", 1);
+    zCj = new a("VIDEO_GALLERY", 2);
+    zCk = new a[] { zCh, zCi, zCj };
+    AppMethodBeat.o(30993);
   }
   
-  public final boolean onHover(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.vmC != null) {
-      return this.vmC.e(paramView, paramMotionEvent);
-    }
-    return false;
-  }
+  private ak$a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ak.a
  * JD-Core Version:    0.7.0.1
  */

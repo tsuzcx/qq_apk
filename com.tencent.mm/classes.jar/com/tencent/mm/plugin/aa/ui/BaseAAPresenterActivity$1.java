@@ -5,9 +5,8 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class BaseAAPresenterActivity$1
   implements View.OnFocusChangeListener
@@ -16,18 +15,21 @@ final class BaseAAPresenterActivity$1
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((paramView.isFocused()) && (!this.eYg))
+    AppMethodBeat.i(40777);
+    if ((paramView.isFocused()) && (!this.val$isShowSysKB))
     {
-      ((InputMethodManager)this.eYl.mController.uMN.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-      new ah().postDelayed(new BaseAAPresenterActivity.1.1(this, paramView), 300L);
+      ((InputMethodManager)this.gqc.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+      new ak().postDelayed(new BaseAAPresenterActivity.1.1(this, paramView), 300L);
+      AppMethodBeat.o(40777);
       return;
     }
-    new ah().postDelayed(new BaseAAPresenterActivity.1.2(this), 200L);
+    new ak().postDelayed(new BaseAAPresenterActivity.1.2(this), 200L);
+    AppMethodBeat.o(40777);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.BaseAAPresenterActivity.1
  * JD-Core Version:    0.7.0.1
  */

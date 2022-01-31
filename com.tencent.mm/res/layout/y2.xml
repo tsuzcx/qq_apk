@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/ih" android:paddingLeft="@dimen/dp" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/lh" style="@style/l2"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/b75" android:padding="@dimen/mv" android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <RelativeLayout android:id="@id/b76" android:paddingLeft="@dimen/l3" android:paddingRight="@dimen/l3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/bm0" android:layout_toRightOf="@id/b75" android:layout_centerVertical="true">
-        <TextView android:textSize="@dimen/kh" android:id="@id/b9a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" style="@style/ks" />
-        <TextView android:id="@id/b3z" android:paddingRight="@dimen/li" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/b9a" android:layout_alignParentLeft="true" style="@style/kr" />
-        <TextView android:id="@id/bm1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/b3z" android:layout_below="@id/b9a" style="@style/kr" />
+<merge>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="@dimen/a2_" android:textColor="@color/a6q" android:id="@id/bpc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a29" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
     </RelativeLayout>
-    <FrameLayout android:id="@id/bm0" android:layout_width="@dimen/lh" android:layout_height="@dimen/lh" android:layout_alignParentRight="true">
-        <View android:layout_gravity="center_vertical" android:background="#18000000" android:layout_width="1.0dip" android:layout_height="32.0dip" />
-        <CheckBox android:layout_gravity="center" android:id="@id/bm2" android:focusable="false" android:clickable="false" android:layout_width="@dimen/er" android:layout_height="@dimen/er" style="@style/ka" />
-    </FrameLayout>
-</RelativeLayout>
+</merge>

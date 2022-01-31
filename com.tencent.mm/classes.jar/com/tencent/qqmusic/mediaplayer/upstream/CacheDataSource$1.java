@@ -1,6 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.downstream.IDataSink;
 
 class CacheDataSource$1
@@ -10,7 +11,10 @@ class CacheDataSource$1
   
   public Loader createLoader(Loader.Listener paramListener)
   {
-    return new CacheDataSource.1.1(this, this.val$eventLooper, new DummyUriLoader(null), paramListener);
+    AppMethodBeat.i(104565);
+    paramListener = new CacheDataSource.1.1(this, this.val$eventLooper, new DummyUriLoader(null), paramListener);
+    AppMethodBeat.o(104565);
+    return paramListener;
   }
 }
 

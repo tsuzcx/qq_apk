@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.card.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
 
 final class CardGiftImageUI$1
@@ -7,9 +8,11 @@ final class CardGiftImageUI$1
 {
   CardGiftImageUI$1(CardGiftImageUI paramCardGiftImageUI) {}
   
-  public final void aBS()
+  public final void bdW()
   {
-    this.itG.aBR();
+    AppMethodBeat.i(88393);
+    this.kuL.bdV();
+    AppMethodBeat.o(88393);
   }
 }
 

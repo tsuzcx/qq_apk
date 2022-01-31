@@ -3,7 +3,8 @@ package com.tencent.tmassistantsdk.openSDK.param;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.tmassistantsdk.openSDK.param.jce.IPCCmd;
 import com.tencent.tmassistantsdk.openSDK.param.jce.IPCHead;
 import com.tencent.tmassistantsdk.openSDK.param.jce.IPCRequest;
@@ -20,7 +21,10 @@ public class IPCPackageTools
   
   public static IPCRequest buildIpcRequest(JceStruct paramJceStruct)
   {
-    if (paramJceStruct == null) {
+    AppMethodBeat.i(75972);
+    if (paramJceStruct == null)
+    {
+      AppMethodBeat.o(75972);
       return null;
     }
     IPCRequest localIPCRequest = new IPCRequest();
@@ -33,21 +37,30 @@ public class IPCPackageTools
     localIPCHead.hostVersionCode = String.valueOf(GlobalUtil.getAppVersionCode(GlobalUtil.getInstance().getContext()));
     localIPCRequest.head = localIPCHead;
     localIPCRequest.body = jceStruct2ByteArray(paramJceStruct);
+    AppMethodBeat.o(75972);
     return localIPCRequest;
   }
   
   public static byte[] buildPostData(IPCRequest paramIPCRequest)
   {
-    if (paramIPCRequest == null) {
+    AppMethodBeat.i(75973);
+    if (paramIPCRequest == null)
+    {
+      AppMethodBeat.o(75973);
       return null;
     }
     paramIPCRequest.body = ProtocolPackage.encrypt(paramIPCRequest.body, "ji*9^&43U0X-~./(".getBytes());
-    return jceStruct2ByteArray(paramIPCRequest);
+    paramIPCRequest = jceStruct2ByteArray(paramIPCRequest);
+    AppMethodBeat.o(75973);
+    return paramIPCRequest;
   }
   
   private static JceStruct createFromRequest(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    AppMethodBeat.i(75976);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(75976);
       return null;
     }
     paramString = IPCPackageTools.class.getPackage().getName() + ".jce." + paramString;
@@ -55,13 +68,14 @@ public class IPCPackageTools
     try
     {
       paramString = (JceStruct)Class.forName(paramString).newInstance();
+      AppMethodBeat.o(75976);
       return paramString;
     }
     catch (ClassNotFoundException paramString)
     {
       for (;;)
       {
-        y.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
+        ab.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
         paramString = null;
       }
     }
@@ -69,7 +83,7 @@ public class IPCPackageTools
     {
       for (;;)
       {
-        y.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
+        ab.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
         paramString = null;
       }
     }
@@ -77,7 +91,7 @@ public class IPCPackageTools
     {
       for (;;)
       {
-        y.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
+        ab.printErrStackTrace("IPCPackageTools", paramString, "", new Object[0]);
         paramString = null;
       }
     }
@@ -85,20 +99,29 @@ public class IPCPackageTools
   
   public static int getCmdId(JceStruct paramJceStruct)
   {
-    if (paramJceStruct == null) {
+    AppMethodBeat.i(75971);
+    if (paramJceStruct == null)
+    {
+      AppMethodBeat.o(75971);
       return -1;
     }
     paramJceStruct = paramJceStruct.getClass().getSimpleName();
-    return IPCCmd.convert(paramJceStruct.substring(0, paramJceStruct.length() - 7)).value();
+    int i = IPCCmd.convert(paramJceStruct.substring(0, paramJceStruct.length() - 7)).value();
+    AppMethodBeat.o(75971);
+    return i;
   }
   
   public static byte[] jceStruct2ByteArray(JceStruct paramJceStruct)
   {
-    return ProtocolPackage.jceStructToUTF8Byte(paramJceStruct);
+    AppMethodBeat.i(75977);
+    paramJceStruct = ProtocolPackage.jceStructToUTF8Byte(paramJceStruct);
+    AppMethodBeat.o(75977);
+    return paramJceStruct;
   }
   
   public static JceStruct unpackBodyStruct(IPCResponse paramIPCResponse)
   {
+    AppMethodBeat.i(75975);
     JceStruct localJceStruct = createFromRequest(IPCCmd.convert(paramIPCResponse.head.cmdId).toString());
     if ((localJceStruct != null) && (paramIPCResponse.body.length > 0)) {
       try
@@ -106,49 +129,51 @@ public class IPCPackageTools
         paramIPCResponse = new JceInputStream(paramIPCResponse.body);
         paramIPCResponse.setServerEncoding("utf-8");
         localJceStruct.readFrom(paramIPCResponse);
+        AppMethodBeat.o(75975);
         return localJceStruct;
       }
       catch (Exception paramIPCResponse)
       {
-        y.printErrStackTrace("IPCPackageTools", paramIPCResponse, "", new Object[0]);
+        ab.printErrStackTrace("IPCPackageTools", paramIPCResponse, "", new Object[0]);
+        AppMethodBeat.o(75975);
         return null;
       }
     }
+    AppMethodBeat.o(75975);
     return null;
   }
   
   public static IPCResponse unpackPackage(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 4)) {
-      paramArrayOfByte = null;
-    }
-    for (;;)
+    AppMethodBeat.i(75974);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 4))
     {
-      return paramArrayOfByte;
-      IPCResponse localIPCResponse = new IPCResponse();
-      try
-      {
-        paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-        paramArrayOfByte.setServerEncoding("utf-8");
-        localIPCResponse.readFrom(paramArrayOfByte);
-        paramArrayOfByte = localIPCResponse;
-        if (!TextUtils.isEmpty(localIPCResponse.head.hostPackageName))
-        {
-          localIPCResponse.body = ProtocolPackage.decrypt(localIPCResponse.body, "ji*9^&43U0X-~./(".getBytes());
-          return localIPCResponse;
-        }
+      AppMethodBeat.o(75974);
+      return null;
+    }
+    IPCResponse localIPCResponse = new IPCResponse();
+    try
+    {
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf-8");
+      localIPCResponse.readFrom(paramArrayOfByte);
+      if (!TextUtils.isEmpty(localIPCResponse.head.hostPackageName)) {
+        localIPCResponse.body = ProtocolPackage.decrypt(localIPCResponse.body, "ji*9^&43U0X-~./(".getBytes());
       }
-      catch (Exception paramArrayOfByte)
-      {
-        y.printErrStackTrace("IPCPackageTools", paramArrayOfByte, "", new Object[0]);
-      }
+      AppMethodBeat.o(75974);
+      return localIPCResponse;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      ab.printErrStackTrace("IPCPackageTools", paramArrayOfByte, "", new Object[0]);
+      AppMethodBeat.o(75974);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.IPCPackageTools
  * JD-Core Version:    0.7.0.1
  */

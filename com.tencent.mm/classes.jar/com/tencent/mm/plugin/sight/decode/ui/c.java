@@ -7,117 +7,129 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.h.a.si;
+import com.tencent.mm.g.a.ua;
 import com.tencent.mm.model.d.a;
-import com.tencent.mm.plugin.ai.a.b;
-import com.tencent.mm.plugin.ai.a.e;
-import com.tencent.mm.plugin.ai.a.f;
-import com.tencent.mm.plugin.ai.a.i;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSurfaceView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.i;
 
 public final class c
   extends i
   implements d.a
 {
-  public int cbW = 0;
-  public String erh;
-  private com.tencent.mm.model.d gEB = new com.tencent.mm.model.d();
-  public int hkH = 0;
+  public int cKC;
+  public String eNO;
+  private com.tencent.mm.model.d idF;
   public String imagePath;
-  private f iuC = null;
-  private TextView ofU = null;
-  private boolean ofV = false;
-  public int ofb = 0;
+  private e kvG;
+  public int mwo;
+  public int qTq;
+  private TextView qUj;
+  private boolean qUk;
   
   public c(Context paramContext)
   {
-    super(paramContext, a.i.videodialog);
+    super(paramContext, 2131493913);
+    AppMethodBeat.i(70285);
+    this.kvG = null;
+    this.qUj = null;
+    this.cKC = 0;
+    this.qTq = 0;
+    this.mwo = 0;
+    this.qUk = false;
+    this.idF = new com.tencent.mm.model.d();
+    AppMethodBeat.o(70285);
   }
   
-  private void bBn()
+  private void cmN()
   {
-    y.v("check", "onclick");
-    if (this.iuC.isPlaying())
+    AppMethodBeat.i(70287);
+    ab.v("check", "onclick");
+    if (this.kvG.isPlaying())
     {
-      this.iuC.pause();
-      this.gEB.bH(false);
+      this.kvG.pause();
+      this.idF.cJ(false);
     }
-    new ah().post(new c.4(this));
+    new ak().post(new c.4(this));
+    AppMethodBeat.o(70287);
   }
   
   public final void dismiss()
   {
-    y.d("MicroMsg.VideoPopupHelper", "on dismiss");
-    if (com.tencent.mm.booter.a.vR() != null) {
-      com.tencent.mm.booter.a.vR().vS();
+    AppMethodBeat.i(70288);
+    ab.d("MicroMsg.VideoPopupHelper", "on dismiss");
+    if (com.tencent.mm.booter.a.Ia() != null) {
+      com.tencent.mm.booter.a.Ia().Ib();
     }
-    if (this.iuC != null)
+    if (this.kvG != null)
     {
-      this.iuC.setVideoCallback(null);
-      this.iuC.stop();
-      this.iuC.onDetach();
-      findViewById(a.e.video_container).setOnClickListener(null);
+      this.kvG.setVideoCallback(null);
+      this.kvG.stop();
+      this.kvG.onDetach();
+      findViewById(2131824108).setOnClickListener(null);
     }
-    if ((!this.ofV) && (isShowing()))
+    if ((!this.qUk) && (isShowing()))
     {
-      si localsi = new si();
-      localsi.cbT.type = 0;
-      localsi.cbT.cbU = this.ofb;
-      localsi.cbT.cbV = this.hkH;
-      localsi.cbT.cbW = this.cbW;
-      com.tencent.mm.sdk.b.a.udP.m(localsi);
+      ua localua = new ua();
+      localua.cKz.type = 0;
+      localua.cKz.cKA = this.qTq;
+      localua.cKz.cKB = this.mwo;
+      localua.cKz.cKC = this.cKC;
+      com.tencent.mm.sdk.b.a.ymk.l(localua);
     }
     super.dismiss();
-    this.gEB.bH(true);
+    this.idF.cJ(true);
+    AppMethodBeat.o(70288);
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(70286);
     long l = System.currentTimeMillis();
-    y.d("MicroMsg.VideoPopupHelper", l + " initView beg");
+    ab.d("MicroMsg.VideoPopupHelper", l + " initView beg");
     super.onCreate(paramBundle);
     getWindow().setFlags(16777216, 16777216);
-    setContentView(a.f.shortvideoplayer);
-    if (com.tencent.mm.booter.a.vR() != null) {
-      com.tencent.mm.booter.a.vR().vT();
+    setContentView(2130970730);
+    if (com.tencent.mm.booter.a.Ia() != null) {
+      com.tencent.mm.booter.a.Ia().Ic();
     }
-    y.d("MicroMsg.VideoPopupHelper", g.zH() + " initView: fullpath:" + this.erh + ", imagepath:" + this.imagePath);
-    this.ofU = ((TextView)findViewById(a.e.tips_tv));
-    findViewById(a.e.show_ad_sight).setVisibility(8);
-    paramBundle = (ViewGroup)findViewById(a.e.video_container);
-    paramBundle.setBackgroundResource(a.b.black);
-    y.i("MicroMsg.VideoPopupHelper", "getVideoView, is normal video");
-    if (com.tencent.mm.compatible.util.d.gF(14)) {}
-    for (this.iuC = new VideoTextureView(getContext());; this.iuC = new VideoSurfaceView(getContext()))
+    ab.d("MicroMsg.VideoPopupHelper", g.Mk() + " initView: fullpath:" + this.eNO + ", imagepath:" + this.imagePath);
+    this.qUj = ((TextView)findViewById(2131823916));
+    findViewById(2131827797).setVisibility(8);
+    paramBundle = (ViewGroup)findViewById(2131824108);
+    paramBundle.setBackgroundResource(2131689763);
+    ab.i("MicroMsg.VideoPopupHelper", "getVideoView, is normal video");
+    if (com.tencent.mm.compatible.util.d.fv(14)) {}
+    for (this.kvG = new VideoTextureView(getContext());; this.kvG = new VideoSurfaceView(getContext()))
     {
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       localLayoutParams.addRule(13);
-      paramBundle.addView((View)this.iuC, localLayoutParams);
-      this.iuC.setVideoCallback(new c.1(this));
-      findViewById(a.e.video_container).setOnClickListener(new c.2(this));
-      ((View)this.iuC).setOnClickListener(new c.3(this));
-      if (this.erh != null)
+      paramBundle.addView((View)this.kvG, localLayoutParams);
+      this.kvG.setVideoCallback(new c.1(this));
+      findViewById(2131824108).setOnClickListener(new c.2(this));
+      ((View)this.kvG).setOnClickListener(new c.3(this));
+      if (this.eNO != null)
       {
-        this.iuC.stop();
-        this.iuC.setVideoPath(this.erh);
+        this.kvG.stop();
+        this.kvG.setVideoPath(this.eNO);
       }
-      y.d("MicroMsg.VideoPopupHelper", System.currentTimeMillis() - l + " initView end");
-      paramBundle = new si();
-      paramBundle.cbT.type = 1;
-      com.tencent.mm.sdk.b.a.udP.m(paramBundle);
+      ab.d("MicroMsg.VideoPopupHelper", System.currentTimeMillis() - l + " initView end");
+      paramBundle = new ua();
+      paramBundle.cKz.type = 1;
+      com.tencent.mm.sdk.b.a.ymk.l(paramBundle);
+      AppMethodBeat.o(70286);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.c
  * JD-Core Version:    0.7.0.1
  */

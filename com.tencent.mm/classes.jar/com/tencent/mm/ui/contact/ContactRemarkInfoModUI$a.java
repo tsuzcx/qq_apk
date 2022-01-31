@@ -2,6 +2,7 @@ package com.tencent.mm.ui.contact;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactRemarkInfoModUI$a
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class ContactRemarkInfoModUI$a
   
   public final void onClick(View paramView)
   {
-    ContactRemarkInfoModUI.c(this.vKT);
+    AppMethodBeat.i(33647);
+    ContactRemarkInfoModUI.c(this.Acv);
+    AppMethodBeat.o(33647);
   }
 }
 

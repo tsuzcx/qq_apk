@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.soter.d;
 
 public final class e
 {
-  public String psl = "";
-  public String psm = "";
+  public String kbP = "";
+  public String son = "";
   
   public e() {}
   
   public e(String paramString1, String paramString2)
   {
-    this.psl = paramString1;
-    this.psm = paramString2;
+    this.son = paramString1;
+    this.kbP = paramString2;
   }
 }
 

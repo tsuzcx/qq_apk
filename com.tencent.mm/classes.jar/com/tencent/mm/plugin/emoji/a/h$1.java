@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.emoji.a;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class h$1
   implements View.OnClickListener
@@ -10,9 +11,11 @@ final class h$1
   
   public final void onClick(View paramView)
   {
-    if (h.a(this.iVv) != null) {
-      h.a(this.iVv).pQ(this.hDN);
+    AppMethodBeat.i(52756);
+    if (h.a(this.leA) != null) {
+      h.a(this.leA).uk(this.jwn);
     }
+    AppMethodBeat.o(52756);
   }
 }
 

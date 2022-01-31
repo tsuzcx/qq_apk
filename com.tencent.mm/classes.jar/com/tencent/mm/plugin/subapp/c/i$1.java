@@ -1,35 +1,38 @@
 package com.tencent.mm.plugin.subapp.c;
 
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class i$1
-  implements am.a
+  implements ap.a
 {
   i$1(i parami) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    String str = i.a(this.pvU);
+    AppMethodBeat.i(25292);
+    String str = i.a(this.sXA);
     g localg;
     if (str != null)
     {
-      localg = h.PB(str);
+      localg = d.cGT().adV(str);
       if (localg != null) {
-        break label77;
+        break label85;
       }
-      y.d("MicroMsg.VoiceRemindLogic", "startSend null record : " + str);
+      ab.d("MicroMsg.VoiceRemindLogic", "startSend null record : ".concat(String.valueOf(str)));
     }
     for (;;)
     {
-      d.bLY().run();
-      y.d("MicroMsg.VoiceRemindRecorder", "Start Send fileName :" + i.a(this.pvU));
+      d.cGU().run();
+      ab.d("MicroMsg.VoiceRemindRecorder", "Start Send fileName :" + i.a(this.sXA));
+      AppMethodBeat.o(25292);
       return false;
-      label77:
+      label85:
       if (localg.field_status == 1)
       {
         localg.field_status = 2;
-        localg.bcw = 64;
+        localg.bsY = 64;
         h.a(localg);
       }
     }

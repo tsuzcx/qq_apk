@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class FloatBufferInfo
 {
   public int bufferSize;
@@ -8,11 +10,13 @@ public class FloatBufferInfo
   
   public void appendFloat(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(111096);
     if ((paramArrayOfFloat != null) && (paramInt1 >= 0) && (paramInt2 > 0) && (paramInt1 + paramInt2 <= paramArrayOfFloat.length))
     {
       setFloatBufferCapacity(this.bufferSize + paramInt2);
       System.arraycopy(paramArrayOfFloat, paramInt1, this.floatBuffer, this.bufferSize, paramInt2);
     }
+    AppMethodBeat.o(111096);
   }
   
   public FloatBufferInfo copy(FloatBufferInfo paramFloatBufferInfo)

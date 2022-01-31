@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.order.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMLoadMoreListView.a;
 
 final class MallOrderRecordListUI$3
@@ -7,15 +8,17 @@ final class MallOrderRecordListUI$3
 {
   MallOrderRecordListUI$3(MallOrderRecordListUI paramMallOrderRecordListUI) {}
   
-  public final void yb()
+  public final void Kt()
   {
-    if (!this.mQU.isLoading)
+    AppMethodBeat.i(43852);
+    if (!this.prh.isLoading)
     {
-      this.mQU.isLoading = true;
-      MallOrderRecordListUI localMallOrderRecordListUI = this.mQU;
-      localMallOrderRecordListUI.El += 10;
-      this.mQU.brK();
+      this.prh.isLoading = true;
+      MallOrderRecordListUI localMallOrderRecordListUI = this.prh;
+      localMallOrderRecordListUI.Fb += 10;
+      this.prh.caz();
     }
+    AppMethodBeat.o(43852);
   }
 }
 

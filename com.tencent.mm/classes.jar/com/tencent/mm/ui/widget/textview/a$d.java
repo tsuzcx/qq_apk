@@ -1,12 +1,8 @@
 package com.tencent.mm.ui.widget.textview;
 
-final class a$d
+public abstract interface a$d
 {
-  int Eo;
-  int aiH;
-  String wsI;
-  
-  a$d(a parama) {}
+  public abstract void ad(CharSequence paramCharSequence);
 }
 
 

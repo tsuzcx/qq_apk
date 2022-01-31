@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/my" android:textColor="@color/a23" android:background="@color/p7" android:padding="@dimen/dl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:id="@id/e3y" style="@style/ni">
+        <LinearLayout style="@style/l0">
+            <EditText android:id="@id/e3z" android:hint="@string/dqa" style="@style/ml" />
+            <View style="@style/nz" />
+            <TextView android:gravity="left" android:text="@string/dqb" style="@style/mm" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

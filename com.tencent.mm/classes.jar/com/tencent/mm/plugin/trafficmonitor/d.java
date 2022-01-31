@@ -1,73 +1,98 @@
 package com.tencent.mm.plugin.trafficmonitor;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public final class d
 {
-  private static Map<String, Long> pKm = new HashMap();
-  private static Map<String, Integer> pKn = new HashMap();
+  private static Map<String, Long> toA;
+  private static Map<String, Integer> toB;
   public final String TAG = "Traf.TrafficModel";
-  private long pKh;
-  private double pKi = 0.35D;
-  private double pKj = 3.0D;
-  long pKk = 0L;
-  double pKl = 0.0D;
+  private long tov;
+  private double tow = 0.35D;
+  private double tox = 3.0D;
+  long toy = 0L;
+  double toz = 0.0D;
   
   static
   {
-    pKm.put("null", Long.valueOf(4194304L));
-    pKm.put("Background", Long.valueOf(5242880L));
-    pKm.put("WebViewUI", Long.valueOf(68157440L));
-    pKm.put("SnsTimeLineUI", Long.valueOf(12582912L));
-    pKm.put("SnsUserUI", Long.valueOf(12582912L));
-    pKm.put("AppBrandLaunchProxyUI", Long.valueOf(12582912L));
-    pKm.put("AppBrandUI", Long.valueOf(20971520L));
-    pKm.put("ChattingUI", Long.valueOf(12582912L));
-    pKm.put("SnsBrowseUI", Long.valueOf(12582912L));
-    pKm.put("SnsOnlineVideoActivity", Long.valueOf(12582912L));
-    pKm.put("EmojiStoreV2UI", Long.valueOf(16777216L));
-    pKm.put("EmojiStoreDetailUI", Long.valueOf(16777216L));
-    pKm.put("FTSSOSMoreWebViewUI", Long.valueOf(12582912L));
-    pKm.put("FTSWebViewUI", Long.valueOf(12582912L));
-    pKm.put("TopStoryHomeUI", Long.valueOf(16777216L));
-    pKm.put("TopStoryVideoStreamUI", Long.valueOf(25165824L));
-    pKm.put("GameDemoActivity1", Long.valueOf(12582912L));
-    pKm.put("ImageGalleryUI", Long.valueOf(12582912L));
-    pKm.put("SnsGalleryUI", Long.valueOf(12582912L));
-    pKm.put("VideoActivity", Long.valueOf(16777216L));
-    pKm.put("MultiTalkMainUI", Long.valueOf(16777216L));
-    pKm.put("FavoriteVideoPlayUI", Long.valueOf(16777216L));
-    pKm.put("AppAttachDownloadUI", Long.valueOf(20971520L));
-    pKm.put("LuggageGameWebViewUI", Long.valueOf(20971520L));
-    pKn.put("AppAttachDownloadUI", Integer.valueOf(2));
-    pKn.put("SendImgProxyUI", Integer.valueOf(2));
+    AppMethodBeat.i(114780);
+    toA = new HashMap();
+    toB = new HashMap();
+    toA.put("null", Long.valueOf(4194304L));
+    toA.put("Background", Long.valueOf(5242880L));
+    toA.put("WebViewUI", Long.valueOf(83886080L));
+    toA.put("WebviewMpUI", Long.valueOf(83886080L));
+    toA.put("SnsTimeLineUI", Long.valueOf(15728640L));
+    toA.put("SnsUserUI", Long.valueOf(15728640L));
+    toA.put("AppBrandLaunchProxyUI", Long.valueOf(12582912L));
+    toA.put("AppBrandUI", Long.valueOf(20971520L));
+    toA.put("ChattingUI", Long.valueOf(12582912L));
+    toA.put("SnsBrowseUI", Long.valueOf(12582912L));
+    toA.put("SnsOnlineVideoActivity", Long.valueOf(12582912L));
+    toA.put("EmojiStoreV2UI", Long.valueOf(16777216L));
+    toA.put("EmojiStoreDetailUI", Long.valueOf(16777216L));
+    toA.put("FTSSOSMoreWebViewUI", Long.valueOf(12582912L));
+    toA.put("FTSWebViewUI", Long.valueOf(12582912L));
+    toA.put("TopStoryHomeUI", Long.valueOf(16777216L));
+    toA.put("TopStoryVideoStreamUI", Long.valueOf(25165824L));
+    toA.put("GameDemoActivity1", Long.valueOf(12582912L));
+    toA.put("ImageGalleryUI", Long.valueOf(12582912L));
+    toA.put("SnsGalleryUI", Long.valueOf(12582912L));
+    toA.put("VideoActivity", Long.valueOf(16777216L));
+    toA.put("MultiTalkMainUI", Long.valueOf(16777216L));
+    toA.put("FavoriteVideoPlayUI", Long.valueOf(16777216L));
+    toA.put("AppAttachDownloadUI", Long.valueOf(20971520L));
+    toA.put("LuggageGameWebViewUI", Long.valueOf(20971520L));
+    toB.put("AppAttachDownloadUI", Integer.valueOf(2));
+    toB.put("SendImgProxyUI", Integer.valueOf(2));
+    AppMethodBeat.o(114780);
   }
   
   public d() {}
   
   public d(long paramLong)
   {
-    this.pKh = paramLong;
+    this.tov = paramLong;
   }
   
-  public final boolean b(List<TrafficClickFlowReceiver.c> paramList, long paramLong1, long paramLong2)
+  public final boolean a(List<TrafficClickFlowReceiver.c> paramList, long paramLong1, long paramLong2, long paramLong3)
   {
-    this.pKk = 0L;
-    long l1 = 0L;
-    int j = 0;
-    int i = 0;
-    if (i < paramList.size())
+    AppMethodBeat.i(114778);
+    ab.i("Traf.TrafficModel", "realInterval:%d", new Object[] { Long.valueOf(paramLong3) });
+    if (paramLong3 <= 5000L)
     {
-      long l2 = Math.min(((TrafficClickFlowReceiver.c)paramList.get(i)).endTime - ((TrafficClickFlowReceiver.c)paramList.get(i)).startTime, paramLong2);
+      AppMethodBeat.o(114778);
+      return false;
+    }
+    int i;
+    int j;
+    label85:
+    long l2;
+    int k;
+    double d2;
+    if (paramLong3 <= 300000L)
+    {
+      i = 100;
+      this.tov = (i * paramLong3 * 1048576L / 60000L);
+      this.toy = 0L;
+      l1 = 0L;
+      j = 0;
+      i = 0;
+      if (i >= paramList.size()) {
+        break label395;
+      }
+      l2 = Math.min(((TrafficClickFlowReceiver.c)paramList.get(i)).endTime - ((TrafficClickFlowReceiver.c)paramList.get(i)).startTime, paramLong2);
       l1 += l2;
-      Object localObject2 = ((TrafficClickFlowReceiver.c)paramList.get(i)).pKe;
+      Object localObject2 = ((TrafficClickFlowReceiver.c)paramList.get(i)).tos;
       Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "null";
       }
-      int k = j;
+      k = j;
       if (((String)localObject1).equals("AppAttachDownloadUI"))
       {
         k = j;
@@ -80,47 +105,70 @@ public final class d
       if (((String)localObject1).contains("_")) {
         localObject2 = ((String)localObject1).substring(0, ((String)localObject1).indexOf("_"));
       }
-      double d1;
-      double d2;
-      if (pKm.containsKey(localObject2))
-      {
-        d1 = this.pKk;
-        d2 = ((Long)pKm.get(localObject2)).longValue();
+      if (!toA.containsKey(localObject2)) {
+        break label362;
       }
-      for (this.pKk = ((l2 / 1000.0D / 60.0D * d2 + d1));; this.pKk = ((l2 / 1000.0D / 60.0D * 8388608.0D + d1)))
+      d1 = this.toy;
+      d2 = ((Long)toA.get(localObject2)).longValue();
+    }
+    for (this.toy = ((l2 / 1000.0D / 60.0D * d2 + d1));; this.toy = ((l2 / 1000.0D / 60.0D * 8388608.0D + d1)))
+    {
+      i += 1;
+      j = k;
+      break label85;
+      if ((paramLong3 > 300000L) && (paramLong3 <= 600000L))
       {
-        i += 1;
-        j = k;
+        i = 90;
         break;
-        d1 = this.pKk;
       }
+      if ((paramLong3 > 600000L) && (paramLong3 <= 1800000L))
+      {
+        i = 60;
+        break;
+      }
+      i = 50;
+      break;
+      label362:
+      d1 = this.toy;
     }
+    label395:
     if (l1 < paramLong2) {
-      this.pKk += (paramLong2 - l1) / 1000L / 60L * 8388608L;
+      this.toy += (paramLong2 - l1) / 1000L / 60L * 8388608L;
     }
-    this.pKk = Math.max(((Long)pKm.get("null")).longValue() * (paramLong2 / 1000L / 60L), this.pKk);
+    this.toy = Math.max(((Long)toA.get("null")).longValue() * (paramLong2 / 1000L / 60L), this.toy);
     if (j != 0)
     {
-      paramLong2 = this.pKk;
-      this.pKk = (((Integer)pKn.get("AppAttachDownloadUI")).intValue() * paramLong2);
+      paramLong2 = this.toy;
+      this.toy = (((Integer)toB.get("AppAttachDownloadUI")).intValue() * paramLong2);
     }
     if (j != 0)
     {
-      paramLong2 = this.pKk;
-      this.pKk = (((Integer)pKn.get("SendImgProxyUI")).intValue() * paramLong2);
+      paramLong2 = this.toy;
+      this.toy = (((Integer)toB.get("SendImgProxyUI")).intValue() * paramLong2);
     }
-    paramLong2 = this.pKh;
-    l1 = this.pKk;
-    this.pKl = (paramLong1 / paramLong2 + paramLong1 / l1 * this.pKi);
-    if (this.pKl < 0.0D) {
-      this.pKl = 0.0D;
+    paramLong2 = this.tov;
+    long l1 = this.toy;
+    this.toz = (paramLong1 / paramLong2 + paramLong1 / l1 * this.tow);
+    if (this.toz < 0.0D) {
+      this.toz = 0.0D;
     }
-    return this.pKl > this.pKj;
+    double d1 = this.toz;
+    ab.i("Traf.TrafficModel", "compute Traffic realTraffic:%d , standardTraffic:%d, predictionTraffic:%d, realInterval:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.tov), Long.valueOf(this.toy), Long.valueOf(paramLong3) });
+    if (d1 > this.tox)
+    {
+      AppMethodBeat.o(114778);
+      return true;
+    }
+    AppMethodBeat.o(114778);
+    return false;
   }
   
   public final String toString()
   {
-    return "TrafficModel{standardTraffic=" + this.pKh + ", preciseRatio=" + this.pKi + ", threshold=" + this.pKj + '}';
+    AppMethodBeat.i(114779);
+    String str = "TrafficModel{standardTraffic=" + this.tov + ", preciseRatio=" + this.tow + ", threshold=" + this.tox + '}';
+    AppMethodBeat.o(114779);
+    return str;
   }
 }
 

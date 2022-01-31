@@ -5,6 +5,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import com.tencent.luggage.bridge.o;
 import com.tencent.luggage.bridge.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BridgedAndroidWebView$1
   extends WebViewClient
@@ -13,12 +14,16 @@ final class BridgedAndroidWebView$1
   
   public final void onPageFinished(WebView paramWebView, String paramString)
   {
-    BridgedAndroidWebView.a(this.bhX).bhN.onReady();
+    AppMethodBeat.i(90750);
+    BridgedAndroidWebView.a(this.byx).byn.onReady();
+    AppMethodBeat.o(90750);
   }
   
   public final void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    BridgedAndroidWebView.a(this.bhX).bhN.pT();
+    AppMethodBeat.i(90749);
+    BridgedAndroidWebView.a(this.byx).byn.tW();
+    AppMethodBeat.o(90749);
   }
 }
 

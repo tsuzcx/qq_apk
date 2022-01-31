@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.emoji;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gif.c;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.e.b.a;
-import com.tencent.mm.ui.e.b.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.f.b.a;
+import com.tencent.mm.ui.f.b.b;
 import java.io.IOException;
 
 final class PluginEmoji$1
@@ -11,16 +12,19 @@ final class PluginEmoji$1
 {
   PluginEmoji$1(PluginEmoji paramPluginEmoji) {}
   
-  public final a cI(String paramString1, String paramString2)
+  public final a dJ(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(62318);
     try
     {
-      paramString1 = c.baM().dt(paramString1, paramString2);
+      paramString1 = c.bHK().eK(paramString1, paramString2);
+      AppMethodBeat.o(62318);
       return paramString1;
     }
     catch (IOException paramString1)
     {
-      y.printErrStackTrace("MicroMsg.PluginEmoji", paramString1, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.PluginEmoji", paramString1, "", new Object[0]);
+      AppMethodBeat.o(62318);
     }
     return null;
   }

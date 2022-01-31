@@ -3,10 +3,11 @@ package com.tencent.mm.plugin.facedetect.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class FaceDetectPrepareUI$4
   implements View.OnClickListener
@@ -15,34 +16,34 @@ final class FaceDetectPrepareUI$4
   
   public final void onClick(View paramView)
   {
-    if (bk.bl(FaceDetectPrepareUI.e(this.jRg)))
+    AppMethodBeat.i(403);
+    if (bo.isNullOrNil(FaceDetectPrepareUI.e(this.mlC)))
     {
-      y.e("MicroMsg.FaceDetectPrepareUI", "alvinluo feedback url is null");
+      ab.e("MicroMsg.FaceDetectPrepareUI", "alvinluo feedback url is null");
+      AppMethodBeat.o(403);
       return;
     }
-    FaceDetectPrepareUI.f(this.jRg);
-    for (;;)
+    FaceDetectPrepareUI.f(this.mlC);
+    try
     {
-      try
+      if (FaceDetectPrepareUI.g(this.mlC) != null) {}
+      for (paramView = FaceDetectPrepareUI.g(this.mlC);; paramView = "")
       {
-        if (FaceDetectPrepareUI.g(this.jRg) != null)
-        {
-          paramView = FaceDetectPrepareUI.g(this.jRg);
-          paramView = q.encode(String.format("appid=%s;errcode=%d;identifyid=%s", new Object[] { paramView, Integer.valueOf(this.bEg), "" }), "UTF-8");
-          paramView = FaceDetectPrepareUI.e(this.jRg) + "?customInfo=" + paramView;
-          y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo feedback url: %s", new Object[] { paramView });
-          Intent localIntent = new Intent();
-          localIntent.putExtra("rawUrl", paramView);
-          d.b(this.jRg, "webview", ".ui.tools.WebViewUI", localIntent);
-          return;
-        }
-      }
-      catch (Exception paramView)
-      {
-        y.printErrStackTrace("MicroMsg.FaceDetectPrepareUI", paramView, "alvinluo start feedback webview exception", new Object[0]);
+        paramView = q.encode(String.format("appid=%s;errcode=%d;identifyid=%s", new Object[] { paramView, Integer.valueOf(this.val$errCode), "" }), "UTF-8");
+        paramView = FaceDetectPrepareUI.e(this.mlC) + "?customInfo=" + paramView;
+        ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo feedback url: %s", new Object[] { paramView });
+        Intent localIntent = new Intent();
+        localIntent.putExtra("rawUrl", paramView);
+        d.b(this.mlC, "webview", ".ui.tools.WebViewUI", localIntent);
+        AppMethodBeat.o(403);
         return;
       }
-      paramView = "";
+      return;
+    }
+    catch (Exception paramView)
+    {
+      ab.printErrStackTrace("MicroMsg.FaceDetectPrepareUI", paramView, "alvinluo start feedback webview exception", new Object[0]);
+      AppMethodBeat.o(403);
     }
   }
 }

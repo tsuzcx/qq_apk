@@ -1,18 +1,16 @@
 package com.tencent.magicbrush.a;
 
-import android.graphics.drawable.Drawable;
+import com.tencent.magicbrush.d.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$1
   implements b.a
 {
-  public final int l(String paramString, int paramInt)
+  public final void loadLibrary(String paramString)
   {
-    return 0;
-  }
-  
-  public final Drawable m(String paramString, int paramInt)
-  {
-    return null;
+    AppMethodBeat.i(115855);
+    e.cv(paramString);
+    AppMethodBeat.o(115855);
   }
 }
 

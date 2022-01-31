@@ -4,82 +4,84 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.voiceprint.model.p;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class BaseVoicePrintUI$10
   implements View.OnTouchListener
 {
-  private long lHp = 0L;
-  private boolean pMd = false;
+  private long oeC = 0L;
+  private boolean trZ = false;
   
   BaseVoicePrintUI$10(BaseVoicePrintUI paramBaseVoicePrintUI) {}
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(26140);
     switch (paramMotionEvent.getAction())
     {
-    case 2: 
-    default: 
-    case 0: 
-      do
-      {
-        return false;
-        BaseVoicePrintUI.a(this.pMb, false);
-      } while (bk.bl(this.pMb.pLy));
-      this.lHp = System.currentTimeMillis();
-      BaseVoicePrintUI.f(this.pMb).setPressed(true);
-      BaseVoicePrintUI.l(this.pMb);
-      this.pMb.bPf();
-      BaseVoicePrintUI.m(this.pMb).sendEmptyMessageDelayed(1, 300L);
-      y.i("MicroMsg.BaseVoicePrintUI", "mic press down");
-      return false;
-    }
-    BaseVoicePrintUI.f(this.pMb).setPressed(false);
-    BaseVoicePrintUI.m(this.pMb).removeMessages(1);
-    if (System.currentTimeMillis() - this.lHp < 300L)
-    {
-      y.d("MicroMsg.BaseVoicePrintUI", "just little touch the button, set touchDown to false");
-      BaseVoicePrintUI.a(this.pMb, false);
     }
     for (;;)
     {
-      y.i("MicroMsg.BaseVoicePrintUI", "mic press up %d, hasTouchDown:%b", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(BaseVoicePrintUI.n(this.pMb)) });
-      BaseVoicePrintUI.g(this.pMb).stop();
-      BaseVoicePrintUI.e(this.pMb).stopTimer();
-      BaseVoicePrintUI.a(this.pMb).un();
-      if (BaseVoicePrintUI.n(this.pMb)) {
-        break;
-      }
-      BaseVoicePrintUI.c(this.pMb).setErr(R.l.voice_print_err_time);
-      BaseVoicePrintUI.c(this.pMb).bPu();
+      AppMethodBeat.o(26140);
       return false;
-      BaseVoicePrintUI.a(this.pMb, true);
+      BaseVoicePrintUI.a(this.trX, false);
+      if (!bo.isNullOrNil(this.trX.tru))
+      {
+        this.oeC = System.currentTimeMillis();
+        BaseVoicePrintUI.f(this.trX).setPressed(true);
+        BaseVoicePrintUI.l(this.trX);
+        this.trX.cLl();
+        BaseVoicePrintUI.m(this.trX).sendEmptyMessageDelayed(1, 300L);
+        ab.i("MicroMsg.BaseVoicePrintUI", "mic press down");
+        continue;
+        BaseVoicePrintUI.f(this.trX).setPressed(false);
+        BaseVoicePrintUI.m(this.trX).removeMessages(1);
+        if (System.currentTimeMillis() - this.oeC < 300L)
+        {
+          ab.d("MicroMsg.BaseVoicePrintUI", "just little touch the button, set touchDown to false");
+          BaseVoicePrintUI.a(this.trX, false);
+        }
+        for (;;)
+        {
+          ab.i("MicroMsg.BaseVoicePrintUI", "mic press up %d, hasTouchDown:%b", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(BaseVoicePrintUI.n(this.trX)) });
+          BaseVoicePrintUI.g(this.trX).stop();
+          BaseVoicePrintUI.e(this.trX).stopTimer();
+          BaseVoicePrintUI.a(this.trX).Ez();
+          if (BaseVoicePrintUI.n(this.trX)) {
+            break label293;
+          }
+          BaseVoicePrintUI.c(this.trX).setErr(2131304563);
+          BaseVoicePrintUI.c(this.trX).cLz();
+          break;
+          BaseVoicePrintUI.a(this.trX, true);
+        }
+        label293:
+        paramView = this.trX;
+        ab.d("MicroMsg.BaseVoicePrintUI", "releaseMic");
+        if (!paramView.trP.trF)
+        {
+          paramView.trV.stopTimer();
+          paramView.trO.setErr(2131304563);
+          paramView.trO.cLz();
+          paramView.trQ = null;
+        }
+        paramView.trM.setVisibility(8);
+        paramView.trO.cLx();
+        paramView.trO.setTipText(paramView.tru);
+        ab.d("MicroMsg.BaseVoicePrintUI", "localMsgFileName %s", new Object[] { BaseVoicePrintUI.d(this.trX) });
+        if (!bo.isNullOrNil(BaseVoicePrintUI.d(this.trX))) {
+          this.trX.cLn();
+        }
+        this.oeC = 0L;
+        this.trZ = false;
+        BaseVoicePrintUI.a(this.trX, false);
+      }
     }
-    paramView = this.pMb;
-    y.d("MicroMsg.BaseVoicePrintUI", "releaseMic");
-    if (!paramView.pLT.pLJ)
-    {
-      paramView.pLZ.stopTimer();
-      paramView.pLS.setErr(R.l.voice_print_err_time);
-      paramView.pLS.bPu();
-      paramView.pLU = null;
-    }
-    paramView.pLQ.setVisibility(8);
-    paramView.pLS.bPs();
-    paramView.pLS.setTipText(paramView.pLy);
-    y.d("MicroMsg.BaseVoicePrintUI", "localMsgFileName %s", new Object[] { BaseVoicePrintUI.d(this.pMb) });
-    if (!bk.bl(BaseVoicePrintUI.d(this.pMb))) {
-      this.pMb.bPh();
-    }
-    this.lHp = 0L;
-    this.pMd = false;
-    BaseVoicePrintUI.a(this.pMb, false);
-    return false;
   }
 }
 

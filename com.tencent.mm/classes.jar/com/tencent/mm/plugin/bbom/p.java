@@ -2,43 +2,46 @@ package com.tencent.mm.plugin.bbom;
 
 public final class p
 {
-  private static boolean hSX = false;
+  private static boolean jMK = false;
   
   /* Error */
-  public static void cs(android.content.Context paramContext)
+  public static void cT(android.content.Context paramContext)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 10	com/tencent/mm/plugin/bbom/p:hSX	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +7 -> 15
-    //   11: ldc 2
-    //   13: monitorexit
-    //   14: return
-    //   15: iconst_1
-    //   16: putstatic 10	com/tencent/mm/plugin/bbom/p:hSX	Z
-    //   19: invokestatic 121	com/tencent/mm/kernel/g:DO	()Lcom/tencent/mm/kernel/b;
-    //   22: new 123	com/tencent/mm/plugin/bbom/p$1
-    //   25: dup
-    //   26: aload_0
-    //   27: invokespecial 125	com/tencent/mm/plugin/bbom/p$1:<init>	(Landroid/content/Context;)V
-    //   30: invokevirtual 131	com/tencent/mm/kernel/b:a	(Lcom/tencent/mm/network/n;)V
-    //   33: goto -22 -> 11
-    //   36: astore_0
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: aload_0
-    //   41: athrow
+    //   3: sipush 18276
+    //   6: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: getstatic 10	com/tencent/mm/plugin/bbom/p:jMK	Z
+    //   12: ifeq +13 -> 25
+    //   15: sipush 18276
+    //   18: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   21: ldc 2
+    //   23: monitorexit
+    //   24: return
+    //   25: iconst_1
+    //   26: putstatic 10	com/tencent/mm/plugin/bbom/p:jMK	Z
+    //   29: invokestatic 130	com/tencent/mm/kernel/g:RK	()Lcom/tencent/mm/kernel/b;
+    //   32: new 132	com/tencent/mm/plugin/bbom/p$1
+    //   35: dup
+    //   36: aload_0
+    //   37: invokespecial 134	com/tencent/mm/plugin/bbom/p$1:<init>	(Landroid/content/Context;)V
+    //   40: invokevirtual 140	com/tencent/mm/kernel/b:a	(Lcom/tencent/mm/network/n;)V
+    //   43: sipush 18276
+    //   46: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: goto -28 -> 21
+    //   52: astore_0
+    //   53: ldc 2
+    //   55: monitorexit
+    //   56: aload_0
+    //   57: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	42	0	paramContext	android.content.Context
-    //   6	2	1	bool	boolean
+    //   0	58	0	paramContext	android.content.Context
     // Exception table:
     //   from	to	target	type
-    //   3	7	36	finally
-    //   15	33	36	finally
+    //   3	21	52	finally
+    //   25	49	52	finally
   }
 }
 

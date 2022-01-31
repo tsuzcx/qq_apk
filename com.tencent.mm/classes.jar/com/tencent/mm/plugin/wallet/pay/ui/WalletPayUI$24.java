@@ -1,24 +1,19 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mm.ui.widget.a.c;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletPayUI$24
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  WalletPayUI$24(WalletPayUI paramWalletPayUI, c paramc) {}
+  WalletPayUI$24(WalletPayUI paramWalletPayUI) {}
   
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramCompoundButton = this.qnZ.getButton(-2);
-    if (paramBoolean)
-    {
-      paramCompoundButton.setEnabled(false);
-      return;
-    }
-    paramCompoundButton.setEnabled(true);
+    AppMethodBeat.i(46062);
+    this.tXq.finish();
+    AppMethodBeat.o(46062);
   }
 }
 

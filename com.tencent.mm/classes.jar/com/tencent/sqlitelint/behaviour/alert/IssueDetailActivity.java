@@ -1,77 +1,99 @@
 package com.tencent.sqlitelint.behaviour.alert;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.sqlitelint.SQLiteLintIssue;
-import com.tencent.sqlitelint.d.b;
-import com.tencent.sqlitelint.d.c;
-import com.tencent.sqlitelint.d.d;
 import com.tencent.sqlitelint.util.SLog;
 import com.tencent.sqlitelint.util.SQLiteLintUtil;
 
 public class IssueDetailActivity
   extends SQLiteLintBaseActivity
 {
-  protected final int getLayoutId()
+  public static final String KEY_ISSUE = "issue";
+  private static final String TAG = "MicroMsg.IssueDetailActivity";
+  
+  private void initView(final SQLiteLintIssue paramSQLiteLintIssue)
   {
-    return d.c.activity_diagnosis_detail;
+    AppMethodBeat.i(94065);
+    if (paramSQLiteLintIssue == null)
+    {
+      AppMethodBeat.o(94065);
+      return;
+    }
+    setTitle(getString(2131306147));
+    Object localObject = (TextView)findViewById(2131821004);
+    TextView localTextView = (TextView)findViewById(2131821005);
+    ((TextView)localObject).setText(SQLiteLintUtil.formatTime("yyyy-MM-dd HH:mm", paramSQLiteLintIssue.createTime));
+    localTextView.setText(SQLiteLintIssue.getLevelText(paramSQLiteLintIssue.level, getBaseContext()));
+    if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.desc))
+    {
+      localObject = (LinearLayout)findViewById(2131821006);
+      ((TextView)findViewById(2131821007)).setText(paramSQLiteLintIssue.desc);
+      ((LinearLayout)localObject).setVisibility(0);
+      ((LinearLayout)localObject).setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(94062);
+          SLog.v("MicroMsg.IssueDetailActivity", paramSQLiteLintIssue.desc.replace("%", "###"), new Object[0]);
+          AppMethodBeat.o(94062);
+        }
+      });
+    }
+    if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.detail))
+    {
+      localObject = (LinearLayout)findViewById(2131821008);
+      localTextView = (TextView)findViewById(2131821009);
+      localTextView.setText(paramSQLiteLintIssue.detail);
+      ((LinearLayout)localObject).setVisibility(0);
+      localTextView.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(94063);
+          SLog.v("MicroMsg.IssueDetailActivity", paramSQLiteLintIssue.detail.replace("%", "###"), new Object[0]);
+          AppMethodBeat.o(94063);
+        }
+      });
+    }
+    if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.advice))
+    {
+      localObject = (LinearLayout)findViewById(2131821010);
+      ((TextView)findViewById(2131821011)).setText(paramSQLiteLintIssue.advice);
+      ((LinearLayout)localObject).setVisibility(0);
+    }
+    if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.extInfo))
+    {
+      localObject = (LinearLayout)findViewById(2131821012);
+      ((TextView)findViewById(2131821013)).setText(getString(2131306148, new Object[] { paramSQLiteLintIssue.extInfo }));
+      ((LinearLayout)localObject).setVisibility(0);
+    }
+    AppMethodBeat.o(94065);
   }
   
-  protected void onCreate(final Bundle paramBundle)
+  protected int getLayoutId()
   {
+    return 2130968624;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(94064);
     super.onCreate(paramBundle);
-    paramBundle = (SQLiteLintIssue)getIntent().getParcelableExtra("issue");
-    if (paramBundle != null)
-    {
-      setTitle(getString(d.d.diagnosis_detail_title));
-      Object localObject = (TextView)findViewById(d.b.time_tv);
-      TextView localTextView = (TextView)findViewById(d.b.diagnosis_level_tv);
-      ((TextView)localObject).setText(SQLiteLintUtil.g("yyyy-MM-dd HH:mm", paramBundle.createTime));
-      localTextView.setText(SQLiteLintIssue.getLevelText(paramBundle.level, getBaseContext()));
-      if (!SQLiteLintUtil.bl(paramBundle.desc))
-      {
-        localObject = (LinearLayout)findViewById(d.b.desc_layout);
-        ((TextView)findViewById(d.b.desc_tv)).setText(paramBundle.desc);
-        ((LinearLayout)localObject).setVisibility(0);
-        ((LinearLayout)localObject).setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            SLog.v("MicroMsg.IssueDetailActivity", paramBundle.desc.replace("%", "###"), new Object[0]);
-          }
-        });
-      }
-      if (!SQLiteLintUtil.bl(paramBundle.detail))
-      {
-        localObject = (LinearLayout)findViewById(d.b.detail_layout);
-        localTextView = (TextView)findViewById(d.b.detail_tv);
-        localTextView.setText(paramBundle.detail);
-        ((LinearLayout)localObject).setVisibility(0);
-        localTextView.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            SLog.v("MicroMsg.IssueDetailActivity", paramBundle.detail.replace("%", "###"), new Object[0]);
-          }
-        });
-      }
-      if (!SQLiteLintUtil.bl(paramBundle.advice))
-      {
-        localObject = (LinearLayout)findViewById(d.b.advice_layout);
-        ((TextView)findViewById(d.b.advice_tv)).setText(paramBundle.advice);
-        ((LinearLayout)localObject).setVisibility(0);
-      }
-      if (!SQLiteLintUtil.bl(paramBundle.extInfo))
-      {
-        localObject = (LinearLayout)findViewById(d.b.ext_info_layout);
-        ((TextView)findViewById(d.b.ext_info_tv)).setText(getString(d.d.diagnosis_ext_info_title, new Object[] { paramBundle.extInfo }));
-        ((LinearLayout)localObject).setVisibility(0);
-      }
-    }
+    initView((SQLiteLintIssue)getIntent().getParcelableExtra("issue"));
+    AppMethodBeat.o(94064);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

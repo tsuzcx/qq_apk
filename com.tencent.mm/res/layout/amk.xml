@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:id="@id/dqj" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip">
-        <TextView android:textSize="@dimen/a0y" android:textColor="@color/q5" android:id="@id/dqk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b3l" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/a0y" android:textColor="@color/q5" android:id="@id/dql" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b3b" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/dqm" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip">
-        <ImageView android:id="@id/dqn" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/apj" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/dqo" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/api" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/a12" android:textColor="#ff323232" android:id="@id/dqp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_toLeftOf="@id/dqo" android:layout_toRightOf="@id/dqn" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/dqq" android:background="@drawable/hz" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/t_" android:layout_width="@dimen/a11" android:layout_height="@dimen/a11" android:layout_marginLeft="@dimen/a13" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/aoj" android:layout_alignParentLeft="true" />
-        <Button android:textSize="13.0sp" android:textColor="@color/a1x" android:id="@id/dqr" android:background="@drawable/jy" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="22.0dip" android:layout_marginRight="16.0dip" android:text="下载" android:layout_alignParentRight="true" />
-        <LinearLayout android:orientation="vertical" android:id="@id/dqs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a13" android:layout_marginBottom="12.0dip" android:layout_toLeftOf="@id/dqr" android:layout_toRightOf="@id/t_">
-            <TextView android:textSize="@dimen/a12" android:textColor="@color/q5" android:id="@id/nm" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <LinearLayout android:orientation="horizontal" android:id="@id/dqt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
-            <TextView android:textSize="14.0sp" android:textColor="@color/yh" android:id="@id/dqu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+    <android.support.v4.view.ViewPager android:id="@id/bqt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="215.0dip" />
+    <com.tencent.mm.ui.base.MMPageControlView android:gravity="center" android:id="@id/x8" android:paddingBottom="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

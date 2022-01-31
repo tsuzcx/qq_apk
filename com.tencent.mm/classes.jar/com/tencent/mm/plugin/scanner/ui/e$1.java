@@ -4,7 +4,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.preference.Preference;
 
 final class e$1
@@ -14,18 +15,20 @@ final class e$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(81018);
     if (paramMotionEvent.getAction() == 0)
     {
-      y.d("MicroMsg.scanner.PlainTextPreference", "moreTv onTouch");
-      e.a(this.nJB).setVisibility(4);
-      e.b(this.nJB).setMaxLines(2000);
-      this.nJB.nJw = true;
-      if (e.c(this.nJB) != null)
+      ab.d("MicroMsg.scanner.PlainTextPreference", "moreTv onTouch");
+      e.a(this.qxd).setVisibility(4);
+      e.b(this.qxd).setMaxLines(2000);
+      this.qxd.qwY = true;
+      if (e.c(this.qxd) != null)
       {
-        e.c(this.nJB).a(this.nJB.mKey, Boolean.valueOf(true));
-        e.c(this.nJB).bxI();
+        e.c(this.qxd).a(this.qxd.mKey, Boolean.TRUE);
+        e.c(this.qxd).ciJ();
       }
     }
+    AppMethodBeat.o(81018);
     return false;
   }
 }

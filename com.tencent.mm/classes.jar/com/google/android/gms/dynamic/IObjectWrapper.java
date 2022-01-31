@@ -2,29 +2,56 @@ package com.google.android.gms.dynamic;
 
 import android.os.IBinder;
 import android.os.IInterface;
+import com.google.android.gms.internal.stable.zza;
+import com.google.android.gms.internal.stable.zzb;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface IObjectWrapper
   extends IInterface
 {
-  private static class zza$zza
+  public static class Stub
+    extends zzb
     implements IObjectWrapper
   {
-    private IBinder zzrk;
-    
-    zza$zza(IBinder paramIBinder)
+    public Stub()
     {
-      this.zzrk = paramIBinder;
+      super();
     }
     
-    public IBinder asBinder()
+    public static IObjectWrapper asInterface(IBinder paramIBinder)
     {
-      return this.zzrk;
+      AppMethodBeat.i(90395);
+      if (paramIBinder == null)
+      {
+        AppMethodBeat.o(90395);
+        return null;
+      }
+      IInterface localIInterface = paramIBinder.queryLocalInterface("com.google.android.gms.dynamic.IObjectWrapper");
+      if ((localIInterface instanceof IObjectWrapper))
+      {
+        paramIBinder = (IObjectWrapper)localIInterface;
+        AppMethodBeat.o(90395);
+        return paramIBinder;
+      }
+      paramIBinder = new Proxy(paramIBinder);
+      AppMethodBeat.o(90395);
+      return paramIBinder;
+    }
+    
+    public static class Proxy
+      extends zza
+      implements IObjectWrapper
+    {
+      Proxy(IBinder paramIBinder)
+      {
+        super("com.google.android.gms.dynamic.IObjectWrapper");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.dynamic.IObjectWrapper
  * JD-Core Version:    0.7.0.1
  */

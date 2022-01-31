@@ -1,84 +1,96 @@
 package com.tencent.mm.plugin.product.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class g
   extends com.tencent.mm.bv.a
 {
-  public String cCA;
-  public String cCB;
+  public String city;
   public String country;
-  public String ekZ;
+  public String fBq;
+  public String province;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(56630);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
       if (this.country != null) {
-        paramVarArgs.d(1, this.country);
+        paramVarArgs.e(1, this.country);
       }
-      if (this.cCA != null) {
-        paramVarArgs.d(2, this.cCA);
+      if (this.province != null) {
+        paramVarArgs.e(2, this.province);
       }
-      if (this.cCB != null) {
-        paramVarArgs.d(3, this.cCB);
+      if (this.city != null) {
+        paramVarArgs.e(3, this.city);
       }
-      if (this.ekZ != null) {
-        paramVarArgs.d(4, this.ekZ);
+      if (this.fBq != null) {
+        paramVarArgs.e(4, this.fBq);
       }
+      AppMethodBeat.o(56630);
       return 0;
     }
     if (paramInt == 1) {
       if (this.country == null) {
-        break label344;
+        break label394;
       }
     }
-    label344:
-    for (int i = d.a.a.b.b.a.e(1, this.country) + 0;; i = 0)
+    label394:
+    for (int i = e.a.a.b.b.a.f(1, this.country) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.cCA != null) {
-        paramInt = i + d.a.a.b.b.a.e(2, this.cCA);
+      if (this.province != null) {
+        paramInt = i + e.a.a.b.b.a.f(2, this.province);
       }
       i = paramInt;
-      if (this.cCB != null) {
-        i = paramInt + d.a.a.b.b.a.e(3, this.cCB);
+      if (this.city != null) {
+        i = paramInt + e.a.a.b.b.a.f(3, this.city);
       }
       paramInt = i;
-      if (this.ekZ != null) {
-        paramInt = i + d.a.a.b.b.a.e(4, this.ekZ);
+      if (this.fBq != null) {
+        paramInt = i + e.a.a.b.b.a.f(4, this.fBq);
       }
+      AppMethodBeat.o(56630);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        AppMethodBeat.o(56630);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         g localg = (g)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(56630);
           return -1;
         case 1: 
-          localg.country = locala.xpH.readString();
+          localg.country = locala.CLY.readString();
+          AppMethodBeat.o(56630);
           return 0;
         case 2: 
-          localg.cCA = locala.xpH.readString();
+          localg.province = locala.CLY.readString();
+          AppMethodBeat.o(56630);
           return 0;
         case 3: 
-          localg.cCB = locala.xpH.readString();
+          localg.city = locala.CLY.readString();
+          AppMethodBeat.o(56630);
           return 0;
         }
-        localg.ekZ = locala.xpH.readString();
+        localg.fBq = locala.CLY.readString();
+        AppMethodBeat.o(56630);
         return 0;
       }
+      AppMethodBeat.o(56630);
       return -1;
     }
   }

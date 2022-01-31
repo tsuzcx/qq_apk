@@ -2,13 +2,13 @@ package com.google.android.exoplayer2.metadata.scte35;
 
 public final class SpliceScheduleCommand$a
 {
-  public final int aHF;
-  public final long aHJ;
+  public final long aOD;
+  public final int aOz;
   
   SpliceScheduleCommand$a(int paramInt, long paramLong)
   {
-    this.aHF = paramInt;
-    this.aHJ = paramLong;
+    this.aOz = paramInt;
+    this.aOD = paramLong;
   }
 }
 

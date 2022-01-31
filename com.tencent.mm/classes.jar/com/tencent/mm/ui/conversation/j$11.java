@@ -1,16 +1,21 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.modelmulti.n;
-import com.tencent.mm.modelmulti.o;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class j$11
   implements Runnable
 {
-  j$11(j paramj) {}
+  j$11(j paramj, int paramInt) {}
   
   public final void run()
   {
-    n.Pm().iT(5);
+    AppMethodBeat.i(34480);
+    if (j.h(this.Alf) != null) {
+      j.h(this.Alf).setMessage(j.a(this.Alf).getString(2131296988) + this.gAL + "%");
+    }
+    AppMethodBeat.o(34480);
   }
 }
 

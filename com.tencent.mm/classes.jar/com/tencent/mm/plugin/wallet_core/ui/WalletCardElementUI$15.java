@@ -1,13 +1,9 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.picker.a;
 
 final class WalletCardElementUI$15
   implements View.OnClickListener
@@ -16,20 +12,19 @@ final class WalletCardElementUI$15
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent();
-    paramView.putExtra("GetAddress", true);
-    paramView.putExtra("ShowSelectedLocation", false);
-    if (!Bankcard.AM(WalletCardElementUI.n(this.qCj).qqY))
-    {
-      paramView.putExtra("IsRealNameVerifyScene", true);
-      paramView.putExtra("IsNeedShowSearchBar", true);
+    AppMethodBeat.i(47232);
+    paramView = new a(this.uoW.getContext());
+    paramView.AIQ = new WalletCardElementUI.15.1(this, paramView);
+    if ((WalletCardElementUI.l(this.uoW) > 0) && (WalletCardElementUI.m(this.uoW) > 0) && (WalletCardElementUI.n(this.uoW) > 0)) {
+      paramView.aA(WalletCardElementUI.l(this.uoW), WalletCardElementUI.m(this.uoW), WalletCardElementUI.n(this.uoW));
     }
-    d.c(this.qCj.mController.uMN, ".ui.tools.MultiStageCitySelectUI", paramView, 4);
+    paramView.show();
+    AppMethodBeat.o(47232);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletCardElementUI.15
  * JD-Core Version:    0.7.0.1
  */

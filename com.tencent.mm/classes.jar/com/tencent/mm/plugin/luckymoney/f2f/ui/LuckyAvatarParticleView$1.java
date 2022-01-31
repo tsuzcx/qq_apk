@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.luckymoney.f2f.ui;
 
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class LuckyAvatarParticleView$1
@@ -11,26 +12,28 @@ final class LuckyAvatarParticleView$1
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
+    AppMethodBeat.i(42160);
     if (((Float)paramValueAnimator.getAnimatedValue()).floatValue() == 1.0F)
     {
-      LuckyAvatarParticleView.a(this.lNL).clear();
-      LuckyAvatarParticleView.b(this.lNL).clear();
-      LuckyAvatarParticleView.c(this.lNL).clear();
+      LuckyAvatarParticleView.a(this.olf).clear();
+      LuckyAvatarParticleView.b(this.olf).clear();
+      LuckyAvatarParticleView.c(this.olf).clear();
     }
     for (;;)
     {
-      this.lNL.invalidate();
+      this.olf.invalidate();
+      AppMethodBeat.o(42160);
       return;
       if (((Float)paramValueAnimator.getAnimatedValue()).floatValue() == 0.0F)
       {
-        LuckyAvatarParticleView.d(this.lNL);
+        LuckyAvatarParticleView.d(this.olf);
       }
       else
       {
         int i = 0;
-        while (i < LuckyAvatarParticleView.a(this.lNL).size())
+        while (i < LuckyAvatarParticleView.a(this.olf).size())
         {
-          LuckyAvatarParticleView.a(this.lNL, i);
+          LuckyAvatarParticleView.a(this.olf, i);
           i += 1;
         }
       }
@@ -39,7 +42,7 @@ final class LuckyAvatarParticleView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.ui.LuckyAvatarParticleView.1
  * JD-Core Version:    0.7.0.1
  */

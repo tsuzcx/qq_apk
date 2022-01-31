@@ -1,19 +1,18 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.storage.bi;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelvideo.u;
 
 final class j$1
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  j$1(j paramj, bi parambi, s params) {}
+  j$1(j paramj, String paramString, int paramInt) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    j.vwL = true;
-    j.a(this.vwT, this.dUy, this.vwS);
+    AppMethodBeat.i(32313);
+    u.ag(this.rdZ, this.fYl);
+    AppMethodBeat.o(32313);
   }
 }
 

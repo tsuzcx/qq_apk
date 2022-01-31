@@ -1,24 +1,28 @@
 package com.tencent.mm.plugin.pwdgroup.ui.widget;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class MMCallBackScrollView$1
-  extends ah
+  extends ak
 {
   MMCallBackScrollView$1(MMCallBackScrollView paramMMCallBackScrollView) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    int i = this.nbD.getScrollY();
-    if (i == MMCallBackScrollView.a(this.nbD))
+    AppMethodBeat.i(24039);
+    int i = this.pGV.getScrollY();
+    if (i == MMCallBackScrollView.a(this.pGV))
     {
-      MMCallBackScrollView.a(this.nbD, 0);
+      MMCallBackScrollView.a(this.pGV, 0);
+      AppMethodBeat.o(24039);
       return;
     }
-    MMCallBackScrollView.b(this.nbD, i);
-    MMCallBackScrollView.b(this.nbD).sendMessageDelayed(MMCallBackScrollView.b(this.nbD).obtainMessage(), 5L);
-    MMCallBackScrollView.a(this.nbD, 1);
+    MMCallBackScrollView.b(this.pGV, i);
+    MMCallBackScrollView.b(this.pGV).sendMessageDelayed(MMCallBackScrollView.b(this.pGV).obtainMessage(), 5L);
+    MMCallBackScrollView.a(this.pGV, 1);
+    AppMethodBeat.o(24039);
   }
 }
 

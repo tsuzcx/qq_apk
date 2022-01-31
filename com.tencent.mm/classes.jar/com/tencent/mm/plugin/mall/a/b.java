@@ -1,56 +1,37 @@
 package com.tencent.mm.plugin.mall.a;
 
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.wallet_core.tenpay.model.j;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.protocal.protobuf.ant;
+import com.tencent.mm.protocal.protobuf.anu;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class b
-  extends j
+  extends a<anu>
 {
-  public a lYh;
-  
-  public b()
+  public b(int paramInt)
   {
-    D(new HashMap());
-  }
-  
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    y.d("MicroMsg.NetSceneGetEUInfo", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0) {
-      return;
-    }
-    try
-    {
-      this.lYh = new a(paramJSONObject.toString());
-      g.DQ();
-      g.DP().Dz().c(ac.a.uzD, paramJSONObject.toString());
-      return;
-    }
-    catch (Exception paramString)
-    {
-      y.printErrStackTrace("MicroMsg.NetSceneGetEUInfo", paramString, "", new Object[0]);
-    }
-  }
-  
-  public final int aEC()
-  {
-    return 2713;
-  }
-  
-  public final String getUri()
-  {
-    return "/cgi-bin/mmpay-bin/tenpay/geteuinfo";
+    AppMethodBeat.i(43093);
+    ant localant = new ant();
+    localant.wuB = paramInt;
+    localant.wuC = 0;
+    localant.xdW = 1;
+    b.a locala = new b.a();
+    locala.fsX = localant;
+    locala.fsY = new anu();
+    locala.funcId = 2680;
+    locala.uri = "/cgi-bin/micromsg-bin/getpayfunctionswitchlist";
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ab.i("MicroMsg.CgiGetPayFunctionSwitchList", "TpaCountry: %s", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.o(43093);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.b
  * JD-Core Version:    0.7.0.1
  */

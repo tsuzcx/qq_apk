@@ -1,18 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.page.ah;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.widget.b.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.appbrand.page.v;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicReference;
 
 public final class c
-  extends a<o>
+  extends a<v>
 {
-  private static final int CTRL_INDEX = 104;
-  private static final String NAME = "showModal";
+  private static final int CTRL_INDEX = 280;
+  private static final String NAME = "getRegionData";
+  private static final AtomicReference<String> hWI;
+  
+  static
+  {
+    AppMethodBeat.i(131428);
+    hWI = new AtomicReference();
+    AppMethodBeat.o(131428);
+  }
 }
 
 

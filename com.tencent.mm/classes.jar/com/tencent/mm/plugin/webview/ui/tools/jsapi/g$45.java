@@ -1,55 +1,39 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.webview.model.ab;
-import com.tencent.mm.protocal.c.ccn;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.wallet.c.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.HashMap;
+import java.util.Map;
 
 final class g$45
-  implements f
+  implements c.a
 {
-  g$45(g paramg, ab paramab, i parami) {}
+  g$45(g paramg, i parami) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void CF(String paramString)
   {
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      paramString = (ccn)this.rzQ.esv.ecF.ecN;
-      if (paramString.jxl != 0) {
-        break label115;
-      }
-      paramString = paramString.tRG;
-      if ((paramString != null) && (!paramString.isEmpty())) {
-        paramString = paramString.iterator();
-      }
-      while (paramString.hasNext())
-      {
-        paramm = (String)paramString.next();
-        g.a(this.rzi, paramm);
-        continue;
-        g.a(this.rzi, this.rzR, "startMonitoringBeacons:no uuids", null);
-      }
-    }
-    for (;;)
-    {
-      au.Dk().b(1702, this);
-      return;
-      label115:
-      g.a(this.rzi, this.rzR, "startMonitoringBeacons:system error", null);
-      y.i("MicroMsg.MsgHandler", "verify beacon js permission err:%s", new Object[] { paramString.jxm });
-    }
+    AppMethodBeat.i(9100);
+    ab.i("MicroMsg.MsgHandler", "secureTunnel callback fail");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("err_desc", paramString);
+    this.vqm.a(this.uZa, "secureTunnel:fail", localHashMap);
+    AppMethodBeat.o(9100);
+  }
+  
+  public final void onSuccess(String paramString)
+  {
+    AppMethodBeat.i(154969);
+    ab.i("MicroMsg.MsgHandler", "secureTunnel callback success");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("respbuf", paramString);
+    this.vqm.a(this.uZa, "secureTunnel:ok", localHashMap);
+    AppMethodBeat.o(154969);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.45
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.appbrand.widget.input.autofill;
 
-import com.tencent.mm.plugin.appbrand.widget.input.aa.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.input.ab.a;
 
 final class b$1
-  implements aa.a
+  implements ab.a
 {
   b$1(b paramb) {}
   
-  public final void asr()
+  public final void gA()
   {
-    this.hwT.asy();
+    AppMethodBeat.i(123881);
+    this.jpd.aRC();
+    AppMethodBeat.o(123881);
   }
 }
 

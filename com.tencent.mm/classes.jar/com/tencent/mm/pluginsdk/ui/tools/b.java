@@ -1,54 +1,63 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 import java.util.List;
 
 public final class b
 {
-  public static boolean WT(String paramString)
+  public static boolean amD(String paramString)
   {
+    AppMethodBeat.i(79911);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      y.e("MicroMsg.AppNewIconUtil", "markNew fail, appId is empty");
+      ab.e("MicroMsg.AppNewIconUtil", "markNew fail, appId is empty");
+      AppMethodBeat.o(79911);
       return false;
     }
-    z localz = g.DP().Dz();
+    z localz = g.RL().Ru();
     if (localz == null)
     {
-      y.e("MicroMsg.AppNewIconUtil", "markNew fail, cfgStg is null");
+      ab.e("MicroMsg.AppNewIconUtil", "markNew fail, cfgStg is null");
+      AppMethodBeat.o(79911);
       return false;
     }
     b.a locala = new b.a((byte)0);
-    locala.LX((String)localz.get(69121, null));
-    if (!locala.nUB.contains(paramString)) {
-      locala.nUB.add(paramString);
+    locala.Yy((String)localz.get(69121, null));
+    if (!locala.qIG.contains(paramString)) {
+      locala.qIG.add(paramString);
     }
-    localz.o(69121, locala.cof());
+    localz.set(69121, locala.dpu());
+    AppMethodBeat.o(79911);
     return true;
   }
   
-  public static boolean WU(String paramString)
+  public static boolean amE(String paramString)
   {
+    AppMethodBeat.i(79912);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      y.e("MicroMsg.AppNewIconUtil", "unmarkNew fail, appId is empty");
+      ab.e("MicroMsg.AppNewIconUtil", "unmarkNew fail, appId is empty");
+      AppMethodBeat.o(79912);
       return false;
     }
-    z localz = g.DP().Dz();
+    z localz = g.RL().Ru();
     if (localz == null)
     {
-      y.e("MicroMsg.AppNewIconUtil", "unmarkNew fail, cfgStg is null");
+      ab.e("MicroMsg.AppNewIconUtil", "unmarkNew fail, cfgStg is null");
+      AppMethodBeat.o(79912);
       return false;
     }
     b.a locala = new b.a((byte)0);
-    locala.LX((String)localz.get(69121, null));
-    if (locala.nUB.contains(paramString)) {
-      locala.nUB.remove(paramString);
+    locala.Yy((String)localz.get(69121, null));
+    if (locala.qIG.contains(paramString)) {
+      locala.qIG.remove(paramString);
     }
-    localz.o(69121, locala.cof());
+    localz.set(69121, locala.dpu());
+    AppMethodBeat.o(79912);
     return true;
   }
 }

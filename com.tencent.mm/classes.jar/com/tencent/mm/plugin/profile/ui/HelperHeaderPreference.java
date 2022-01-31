@@ -5,27 +5,25 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.tools.p;
+import com.tencent.mm.ui.tools.s;
 import junit.framework.Assert;
 
 public class HelperHeaderPreference
   extends Preference
 {
-  private ad dnp;
-  private ImageView dpY;
-  private TextView eXu;
-  private boolean faU = false;
-  private TextView fuT;
-  private TextView mYa;
-  private HelperHeaderPreference.a mYb;
+  private ad contact;
+  private ImageView ehv;
+  private TextView gMv;
+  private TextView gpr;
+  private boolean gsM = false;
+  private TextView pAN;
+  private a pAO;
   
   public HelperHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,71 +37,98 @@ public class HelperHeaderPreference
   
   private void initView()
   {
-    if ((!this.faU) || (this.dnp == null)) {
-      y.w("MicroMsg.HelperHeaderPreference", "initView : bindView = " + this.faU + "contact = " + this.dnp);
-    }
-    do
+    AppMethodBeat.i(23641);
+    if ((!this.gsM) || (this.contact == null))
     {
-      return;
-      localObject = this.dnp.field_username;
-      y.d("MicroMsg.HelperHeaderPreference", "updateAvatar : user = " + (String)localObject);
-      if ((this.dpY != null) && (this.dnp.field_username.equals(localObject))) {
-        a.b.a(this.dpY, (String)localObject);
-      }
-      if (this.mYa != null) {
-        this.mYa.setText(this.dnp.Bp());
-      }
-    } while (this.mYb == null);
-    this.mYb.a(this);
-    Object localObject = this.mYb.getHint();
-    if (localObject != null)
-    {
-      this.fuT.setText((CharSequence)localObject);
-      this.fuT.setVisibility(0);
+      ab.w("MicroMsg.HelperHeaderPreference", "initView : bindView = " + this.gsM + "contact = " + this.contact);
+      AppMethodBeat.o(23641);
       return;
     }
-    this.fuT.setVisibility(8);
+    qU(this.contact.field_username);
+    if (this.pAN != null) {
+      this.pAN.setText(this.contact.Oe());
+    }
+    if (this.pAO != null)
+    {
+      this.pAO.a(this);
+      CharSequence localCharSequence = this.pAO.getHint();
+      if (localCharSequence != null)
+      {
+        this.gMv.setText(localCharSequence);
+        this.gMv.setVisibility(0);
+        AppMethodBeat.o(23641);
+        return;
+      }
+      this.gMv.setVisibility(8);
+    }
+    AppMethodBeat.o(23641);
   }
   
-  public final void a(ad paramad, HelperHeaderPreference.a parama)
+  private void qU(String paramString)
   {
+    AppMethodBeat.i(23639);
+    ab.d("MicroMsg.HelperHeaderPreference", "updateAvatar : user = ".concat(String.valueOf(paramString)));
+    if ((this.ehv != null) && (this.contact.field_username.equals(paramString))) {
+      a.b.c(this.ehv, paramString);
+    }
+    AppMethodBeat.o(23639);
+  }
+  
+  public final void a(ad paramad, a parama)
+  {
+    AppMethodBeat.i(23642);
     if (paramad != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.dnp = paramad;
-      this.mYb = parama;
+      this.contact = paramad;
+      this.pAO = parama;
       initView();
+      AppMethodBeat.o(23642);
       return;
     }
   }
   
-  public final void ig(boolean paramBoolean)
+  public final void kf(boolean paramBoolean)
   {
-    if (this.mYb == null) {
+    AppMethodBeat.i(23640);
+    if (this.pAO == null)
+    {
+      AppMethodBeat.o(23640);
       return;
     }
     if (paramBoolean)
     {
-      this.eXu.setTextColor(p.hf(this.mContext));
-      this.eXu.setText(R.l.settings_plugins_installed);
-      this.eXu.setCompoundDrawablesWithIntrinsicBounds(R.g.status_enable, 0, 0, 0);
+      this.gpr.setTextColor(s.iD(this.mContext));
+      this.gpr.setText(2131303378);
+      this.gpr.setCompoundDrawablesWithIntrinsicBounds(2130840454, 0, 0, 0);
+      AppMethodBeat.o(23640);
       return;
     }
-    this.eXu.setTextColor(p.hg(this.mContext));
-    this.eXu.setText(R.l.settings_plugins_uninstalled);
-    this.eXu.setCompoundDrawablesWithIntrinsicBounds(R.g.status_disable, 0, 0, 0);
+    this.gpr.setTextColor(s.iE(this.mContext));
+    this.gpr.setText(2131303386);
+    this.gpr.setCompoundDrawablesWithIntrinsicBounds(2130840453, 0, 0, 0);
+    AppMethodBeat.o(23640);
   }
   
   public final void onBindView(View paramView)
   {
-    this.dpY = ((ImageView)paramView.findViewById(R.h.contact_info_avatar_iv));
-    this.eXu = ((TextView)paramView.findViewById(R.h.contact_info_status_tv));
-    this.mYa = ((TextView)paramView.findViewById(R.h.contact_info_nickname_tv));
-    this.fuT = ((TextView)paramView.findViewById(R.h.contact_info_helper_hing_tv));
-    this.faU = true;
+    AppMethodBeat.i(23638);
+    this.ehv = ((ImageView)paramView.findViewById(2131821497));
+    this.gpr = ((TextView)paramView.findViewById(2131823105));
+    this.pAN = ((TextView)paramView.findViewById(2131821498));
+    this.gMv = ((TextView)paramView.findViewById(2131821499));
+    this.gsM = true;
     initView();
     super.onBindView(paramView);
+    AppMethodBeat.o(23638);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(HelperHeaderPreference paramHelperHeaderPreference);
+    
+    public abstract CharSequence getHint();
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fts.ui.widget;
 
 import android.content.Context;
 import android.view.inputmethod.InputMethodManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSEditTextView$5
   implements Runnable
@@ -10,7 +11,9 @@ final class FTSEditTextView$5
   
   public final void run()
   {
-    ((InputMethodManager)this.kEA.getContext().getSystemService("input_method")).showSoftInput(FTSEditTextView.a(this.kEA), 0);
+    AppMethodBeat.i(62109);
+    ((InputMethodManager)this.naY.getContext().getSystemService("input_method")).showSoftInput(FTSEditTextView.a(this.naY), 0);
+    AppMethodBeat.o(62109);
   }
 }
 

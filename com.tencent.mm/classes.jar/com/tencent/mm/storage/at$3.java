@@ -1,34 +1,51 @@
 package com.tencent.mm.storage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 final class at$3
-  implements j.a
+  implements k.a
 {
   at$3(at paramat) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
-    if (paramString == null) {}
-    do
+    AppMethodBeat.i(62711);
+    if (paramString == null)
     {
-      do
+      AppMethodBeat.o(62711);
+      return;
+    }
+    if (paramString.equalsIgnoreCase("delete_emoji_info_notify"))
+    {
+      at.a(this.yNJ).cj(true);
+      at.a(this.yNJ).ck(true);
+      at.a(this.yNJ).cm(true);
+      AppMethodBeat.o(62711);
+      return;
+    }
+    if (g.RG())
+    {
+      paramString = ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Kt(paramString);
+      if (paramString != null)
       {
-        return;
-        if (paramString.equalsIgnoreCase("delete_emoji_info_notify"))
+        if (paramString.field_catalog == EmojiInfo.yPm)
         {
-          at.uBo = true;
-          at.uBp = true;
+          at.a(this.yNJ).cj(true);
+          at.a(this.yNJ).ck(true);
+          AppMethodBeat.o(62711);
           return;
         }
-      } while (!g.DK());
-      paramString = ((com.tencent.mm.plugin.emoji.b.d)g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().As(paramString);
-    } while ((paramString == null) || (paramString.field_catalog != EmojiInfo.uCZ));
-    at.uBo = true;
-    at.uBp = true;
+        if (bo.isEqual(paramString.field_groupId, "capture")) {
+          at.a(this.yNJ).cm(true);
+        }
+      }
+    }
+    AppMethodBeat.o(62711);
   }
 }
 

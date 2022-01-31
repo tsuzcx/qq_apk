@@ -2,37 +2,26 @@ package com.tencent.mm.plugin.messenger;
 
 import android.os.Bundle;
 import android.view.View;
-import com.tencent.mm.h.b.a.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.a.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import java.lang.ref.WeakReference;
 import java.util.Map;
 
 final class PluginMessenger$6$1
   extends a
 {
-  PluginMessenger$6$1(PluginMessenger.6 param6, Bundle paramBundle, Map paramMap, String paramString) {}
+  PluginMessenger$6$1(PluginMessenger.6 param6, Map paramMap, String paramString1, Bundle paramBundle, WeakReference paramWeakReference, String paramString2) {}
   
   public final void onClickImp(View paramView)
   {
-    try
-    {
-      paramView = this.dmH.getString("send_msg_username", "");
-      String str = bk.aM((String)this.mcl.get(this.mcm + ".chatname"), "");
-      o localo = new o();
-      localo.cjb = paramView;
-      localo.cjc = 2L;
-      localo.cjd = 2L;
-      localo.cjg = 1L;
-      localo.QX();
-      PluginMessenger.access$100(this.mco.mci, str);
-      return;
-    }
-    catch (Throwable paramView) {}
+    AppMethodBeat.i(136881);
+    PluginMessenger.access$000(this.oCP.oCK, this.oCN, this.oCO, this.val$params, this.eej, this.irs, true);
+    AppMethodBeat.o(136881);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.PluginMessenger.6.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.rtmp.sharp.jni;
 
+import com.tencent.d.a.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -14,16 +16,23 @@ class AudioDeviceInterface$1
   
   public void a(int paramInt, String paramString)
   {
+    AppMethodBeat.i(65656);
     if (paramInt == 0) {
-      AudioDeviceInterface.access$400(this.a, paramString);
+      AudioDeviceInterface.access$500(this.a, paramString);
     }
+    AppMethodBeat.o(65656);
   }
   
   public void a(int paramInt, String paramString, boolean paramBoolean) {}
   
   public void a(int paramInt, boolean paramBoolean) {}
   
-  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
+  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(146906);
+    AudioDeviceInterface.access$302(paramArrayOfString);
+    AppMethodBeat.o(146906);
+  }
   
   public void a(String paramString, long paramLong) {}
   
@@ -31,42 +40,52 @@ class AudioDeviceInterface$1
   
   public void a(boolean paramBoolean)
   {
-    if (!paramBoolean) {}
-    try
-    {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+    AppMethodBeat.i(65654);
+    if (!paramBoolean) {
+      try
+      {
+        AudioDeviceInterface.access$000(this.a).lock();
+        AudioDeviceInterface.access$102(this.a, true);
+        a.dUd();
+        a.iO("TRAE", "onServiceStateUpdate signalAll");
+        AudioDeviceInterface.access$200(this.a).signalAll();
+        AudioDeviceInterface.access$000(this.a).unlock();
+        AppMethodBeat.o(65654);
+        return;
       }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
-      return;
+      catch (Exception localException) {}
     }
-    catch (Exception localException) {}
+    AppMethodBeat.o(65654);
   }
   
   public void a(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
   {
-    if (AudioDeviceInterface.access$300(this.a)) {
-      AudioDeviceInterface.access$400(this.a, paramString1);
+    AppMethodBeat.i(65655);
+    AudioDeviceInterface.access$302(paramArrayOfString);
+    if (AudioDeviceInterface.access$400(this.a)) {
+      AudioDeviceInterface.access$500(this.a, paramString1);
     }
+    AppMethodBeat.o(65655);
   }
   
   public void b(int paramInt)
   {
+    AppMethodBeat.i(65657);
     try
     {
       AudioDeviceInterface.access$000(this.a).lock();
       AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
+      a.dUd();
+      a.iO("TRAE", "onVoicecallPreprocessRes signalAll");
       AudioDeviceInterface.access$200(this.a).signalAll();
       AudioDeviceInterface.access$000(this.a).unlock();
+      AppMethodBeat.o(65657);
       return;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(65657);
+    }
   }
   
   public void b(int paramInt, String paramString) {}
@@ -77,7 +96,7 @@ class AudioDeviceInterface$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.AudioDeviceInterface.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.collect.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wallet_core.ui.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.ui.o.a;
 
 final class CollectMainUI$18
-  implements View.OnClickListener
+  implements o.a
 {
-  CollectMainUI$18(CollectMainUI paramCollectMainUI, m paramm1, m paramm2) {}
+  CollectMainUI$18(CollectMainUI paramCollectMainUI) {}
   
-  public final void onClick(View paramView)
+  public final void dj(View paramView)
   {
-    if (CollectMainUI.g(this.iLP).getText().toString().equals(CollectMainUI.i(this.iLP)))
-    {
-      this.iLW.onClick(paramView);
-      return;
-    }
-    this.iLX.onClick(paramView);
+    AppMethodBeat.i(41272);
+    this.kSz.kRX = false;
+    this.kSz.bir();
+    CollectMainUI.g(this.kSz).setText(CollectMainUI.f(this.kSz));
+    CollectMainUI.h(this.kSz);
+    AppMethodBeat.o(41272);
   }
 }
 

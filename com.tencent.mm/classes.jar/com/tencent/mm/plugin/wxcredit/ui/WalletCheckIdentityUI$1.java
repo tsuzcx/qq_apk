@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wxcredit.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
@@ -12,11 +13,13 @@ final class WalletCheckIdentityUI$1
   
   public final void onClick(View paramView)
   {
-    paramView = WalletCheckIdentityUI.a(this.rRk).getText();
-    String str = WalletCheckIdentityUI.b(this.rRk).getText();
-    if (WalletCheckIdentityUI.a(this.rRk, paramView, str)) {
-      this.rRk.cNk().m(new Object[] { paramView, str });
+    AppMethodBeat.i(48681);
+    paramView = WalletCheckIdentityUI.a(this.vIa).getText();
+    String str = WalletCheckIdentityUI.b(this.vIa).getText();
+    if (WalletCheckIdentityUI.a(this.vIa, paramView, str)) {
+      this.vIa.getNetController().p(new Object[] { paramView, str });
     }
+    AppMethodBeat.o(48681);
   }
 }
 

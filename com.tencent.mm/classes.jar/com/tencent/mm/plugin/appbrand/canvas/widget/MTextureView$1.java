@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.canvas.widget;
 
 import android.graphics.Canvas;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MTextureView$1
   implements Runnable
@@ -9,25 +10,34 @@ final class MTextureView$1
   
   public final void run()
   {
-    if (!this.fMY.isAvailable()) {}
-    Canvas localCanvas;
-    do
+    AppMethodBeat.i(103811);
+    if (!this.hgi.isAvailable())
     {
+      AppMethodBeat.o(103811);
       return;
-      localCanvas = this.fMY.lockCanvas();
-    } while (localCanvas == null);
-    synchronized (MTextureView.a(this.fMY))
+    }
+    Canvas localCanvas = this.hgi.lockCanvas();
+    if (localCanvas == null)
     {
-      MTextureView.a(this.fMY, true);
+      AppMethodBeat.o(103811);
+      return;
+    }
+    synchronized (MTextureView.a(this.hgi))
+    {
+      MTextureView.a(this.hgi, true);
       localCanvas.drawColor(-1);
-      this.fMY.f(localCanvas);
-      this.fMY.unlockCanvasAndPost(localCanvas);
-      synchronized (MTextureView.a(this.fMY))
-      {
-        MTextureView.a(this.fMY, false);
-        MTextureView.a(this.fMY).notifyAll();
-        return;
-      }
+      this.hgi.f(localCanvas);
+      this.hgi.unlockCanvasAndPost(localCanvas);
+    }
+    synchronized (MTextureView.a(this.hgi))
+    {
+      MTextureView.a(this.hgi, false);
+      MTextureView.a(this.hgi).notifyAll();
+      AppMethodBeat.o(103811);
+      return;
+      localObject2 = finally;
+      AppMethodBeat.o(103811);
+      throw localObject2;
     }
   }
 }

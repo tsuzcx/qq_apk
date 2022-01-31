@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.d.a.a;
-import a.d.b.h;
+import a.f.a.a;
+import a.f.b.k;
+import a.l;
 import android.view.animation.Animation;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
 final class RadarStateView$c
-  extends h
+  extends k
   implements a<Animation>
 {
   RadarStateView$c(RadarStateView paramRadarStateView)

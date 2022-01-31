@@ -1,47 +1,25 @@
 package com.tencent.mm.plugin.brandservice;
 
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.c;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.s;
-import java.util.ArrayList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
 
 final class PluginBrandService$3
-  implements g.a
+  implements h.a
 {
   PluginBrandService$3(PluginBrandService paramPluginBrandService) {}
   
-  public final void a(g paramg, g.c paramc)
+  public final void a(h paramh, h.c paramc)
   {
-    if ((paramg == null) || (paramc == null)) {}
-    for (;;)
+    AppMethodBeat.i(13805);
+    if ((paramh == null) || (paramc == null))
     {
+      AppMethodBeat.o(13805);
       return;
-      int i;
-      if ((("insert".equals(paramc.mdt)) || ("update".equals(paramc.mdt))) && (paramc.mdu != null))
-      {
-        i = 0;
-        while (i < paramc.mdu.size())
-        {
-          paramg = (bi)paramc.mdu.get(i);
-          if (paramg.field_isSend != 1) {
-            s.ag(paramg);
-          }
-          i += 1;
-        }
-      }
-      else if (("delete".equals(paramc.mdt)) && (paramc.mdu != null))
-      {
-        i = 0;
-        while (i < paramc.mdu.size())
-        {
-          s.ah((bi)paramc.mdu.get(i));
-          i += 1;
-        }
-      }
     }
+    b.a("BrandServiceWorkerThread", new PluginBrandService.3.1(this, paramc), 0L);
+    AppMethodBeat.o(13805);
   }
 }
 

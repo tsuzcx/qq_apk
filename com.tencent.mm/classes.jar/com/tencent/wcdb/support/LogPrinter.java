@@ -1,6 +1,7 @@
 package com.tencent.wcdb.support;
 
 import android.util.Printer;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class LogPrinter
   implements Printer
@@ -16,7 +17,9 @@ public class LogPrinter
   
   public void println(String paramString)
   {
+    AppMethodBeat.i(12724);
     Log.println(this.mPriority, this.mTag, paramString);
+    AppMethodBeat.o(12724);
   }
 }
 

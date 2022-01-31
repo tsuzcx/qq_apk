@@ -1,30 +1,39 @@
 package com.tencent.mm.modelfriend;
 
-import com.tencent.mm.ah.k;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.k.e;
-import com.tencent.mm.protocal.m.a;
-import com.tencent.mm.protocal.m.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.k;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.n.a;
+import com.tencent.mm.protocal.n.b;
 
 public final class a$b
   extends k
 {
-  private final m.a ekX = new m.a();
-  private final m.b ekY = new m.b();
+  private final n.a fBo;
+  private final n.b fBp;
   
-  protected final k.d HE()
+  public a$b()
   {
-    return this.ekX;
+    AppMethodBeat.i(123397);
+    this.fBo = new n.a();
+    this.fBp = new n.b();
+    AppMethodBeat.o(123397);
   }
   
-  public final k.e HF()
-  {
-    return this.ekY;
-  }
-  
-  public final int Kq()
+  public final int getOptions()
   {
     return 1;
+  }
+  
+  public final l.d getReqObjImp()
+  {
+    return this.fBo;
+  }
+  
+  public final l.e getRespObj()
+  {
+    return this.fBp;
   }
   
   public final int getType()
@@ -39,7 +48,7 @@ public final class a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelfriend.a.b
  * JD-Core Version:    0.7.0.1
  */

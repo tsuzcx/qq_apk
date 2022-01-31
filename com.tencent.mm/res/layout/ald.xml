@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/b4h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/image_download_fail_icon" />
-        <TextView android:textSize="@dimen/lj" android:textColor="@color/d_" android:id="@id/b4i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/c8y" />
+<LinearLayout android:gravity="center_vertical" android:id="@id/a3b" android:background="@drawable/sj" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/byk" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="@dimen/aai">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/dpt" android:layout_width="@dimen/nd" android:layout_height="@dimen/nd" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:src="@raw/icons_outlined_imac" app:iconColor="@color/a3h" />
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/a3h" android:id="@id/dpu" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/lg" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.tencent.tmassistantsdk.downloadservice;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tmassistantsdk.storage.DBManager;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
@@ -15,39 +16,56 @@ public class ApkDownloadManager
   protected static final long INTERVAL = 180000L;
   protected static final String TAG = "ApkDownloadManager";
   protected static ApkDownloadManager mApkDownloadManager = null;
-  final Map<String, DownloadInfo> mDownloads = new ConcurrentHashMap();
+  final Map<String, DownloadInfo> mDownloads;
+  
+  private ApkDownloadManager()
+  {
+    AppMethodBeat.i(75681);
+    this.mDownloads = new ConcurrentHashMap();
+    AppMethodBeat.o(75681);
+  }
   
   public static ApkDownloadManager getInstance()
   {
+    AppMethodBeat.i(75680);
     if (mApkDownloadManager == null) {
       mApkDownloadManager = new ApkDownloadManager();
     }
-    return mApkDownloadManager;
+    ApkDownloadManager localApkDownloadManager = mApkDownloadManager;
+    AppMethodBeat.o(75680);
+    return localApkDownloadManager;
   }
   
   public void AddDownloadListener(IDownloadManagerListener paramIDownloadManagerListener)
   {
-    TMLog.i("ApkDownloadManager", "call AddDownloadListener, dl: " + paramIDownloadManagerListener);
+    AppMethodBeat.i(75689);
+    TMLog.i("ApkDownloadManager", "call AddDownloadListener, dl: ".concat(String.valueOf(paramIDownloadManagerListener)));
     DownloadListenerManager.getInstance().Add(paramIDownloadManagerListener);
+    AppMethodBeat.o(75689);
   }
   
   public void RemoveDownloadListener(IDownloadManagerListener paramIDownloadManagerListener)
   {
-    TMLog.i("ApkDownloadManager", "call RemoveDownloadListener, dl: " + paramIDownloadManagerListener);
+    AppMethodBeat.i(75690);
+    TMLog.i("ApkDownloadManager", "call RemoveDownloadListener, dl: ".concat(String.valueOf(paramIDownloadManagerListener)));
     DownloadListenerManager.getInstance().Remove(paramIDownloadManagerListener);
+    AppMethodBeat.o(75690);
   }
   
   public void cancelDownload(String paramString)
   {
-    TMLog.i("ApkDownloadManager", "call cancelDownload, url: " + paramString);
+    AppMethodBeat.i(75686);
+    TMLog.i("ApkDownloadManager", "call cancelDownload, url: ".concat(String.valueOf(paramString)));
     paramString = (DownloadInfo)this.mDownloads.remove(paramString);
     if (paramString != null) {
       paramString.stopDownload();
     }
+    AppMethodBeat.o(75686);
   }
   
   public void init()
   {
+    AppMethodBeat.i(75682);
     TMLog.i("ApkDownloadManager", "Start to load DownloadInfo list.");
     this.mDownloads.clear();
     Object localObject = DBManager.getInstance().queryDownloadInfoList();
@@ -68,26 +86,34 @@ public class ApkDownloadManager
     }
     TMLog.i("ApkDownloadManager", "Add NetworkChangedObserver to NetworkMonitorReceiver");
     NetworkMonitorReceiver.getInstance().addNetworkChangedObserver(this);
+    AppMethodBeat.o(75682);
   }
   
   public Boolean isAllDownloadFinished()
   {
-    Iterator localIterator = this.mDownloads.keySet().iterator();
-    while (localIterator.hasNext()) {
-      if (!((DownloadInfo)this.mDownloads.get(localIterator.next())).hasFinished()) {
-        return Boolean.valueOf(false);
+    AppMethodBeat.i(75688);
+    Object localObject = this.mDownloads.keySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (!((DownloadInfo)this.mDownloads.get(((Iterator)localObject).next())).hasFinished())
+      {
+        localObject = Boolean.FALSE;
+        AppMethodBeat.o(75688);
+        return localObject;
       }
     }
-    return Boolean.valueOf(true);
+    localObject = Boolean.TRUE;
+    AppMethodBeat.o(75688);
+    return localObject;
   }
   
   public void onNetworkChanged()
   {
+    AppMethodBeat.i(75691);
     TMLog.i("ApkDownloadManager", "onNetworkChanged");
     if ((DownloadHelper.isNetworkConncted()) && (DownloadSetting.getInstance().isAutoDownload()))
     {
       String str = DownloadHelper.getNetStatus();
-      TMLog.i("ApkDownloadManager", "currentNetType = " + str);
+      TMLog.i("ApkDownloadManager", "currentNetType = ".concat(String.valueOf(str)));
       Iterator localIterator = this.mDownloads.keySet().iterator();
       while (localIterator.hasNext())
       {
@@ -106,20 +132,24 @@ public class ApkDownloadManager
         }
       }
     }
+    AppMethodBeat.o(75691);
   }
   
   public void pauseDownload(String paramString)
   {
-    TMLog.i("ApkDownloadManager", "call pauseDownload, url: " + paramString);
+    AppMethodBeat.i(75685);
+    TMLog.i("ApkDownloadManager", "call pauseDownload, url: ".concat(String.valueOf(paramString)));
     paramString = (DownloadInfo)this.mDownloads.get(paramString);
     if (paramString != null) {
       paramString.pauseDownload();
     }
+    AppMethodBeat.o(75685);
   }
   
   public DownloadInfo queryDownloadInfo(String paramString)
   {
-    TMLog.i("ApkDownloadManager", "call queryDownloadInfo, url: " + paramString);
+    AppMethodBeat.i(75687);
+    TMLog.i("ApkDownloadManager", "call queryDownloadInfo, url: ".concat(String.valueOf(paramString)));
     Object localObject2 = (DownloadInfo)this.mDownloads.get(paramString);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
@@ -128,10 +158,10 @@ public class ApkDownloadManager
     boolean bool = false;
     if (localObject1 != null) {
       if (!((DownloadInfo)localObject1).mContentType.equals("application/tm.android.apkdiff")) {
-        break label127;
+        break label134;
       }
     }
-    label127:
+    label134:
     for (bool = DownloadHelper.isDownloadFileExisted(paramString, ((DownloadInfo)localObject1).mContentType);; bool = DownloadHelper.isDownloadFileExisted(((DownloadInfo)localObject1).mFileName))
     {
       localObject2 = localObject1;
@@ -149,31 +179,37 @@ public class ApkDownloadManager
           }
         }
       }
+      AppMethodBeat.o(75687);
       return localObject2;
     }
   }
   
   public int startDownload(String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4, Map<String, String> paramMap)
   {
+    AppMethodBeat.i(75684);
     TMLog.i("ApkDownloadManager", "call startDownload, url: " + paramString1 + "priority: " + paramInt);
     if (!DownloadHelper.isNetworkConncted())
     {
       TMLog.i("ApkDownloadManager", "call startDownload, return errCode: 1");
+      AppMethodBeat.o(75684);
       return 1;
     }
     if ((!DownloadHelper.getNetStatus().equalsIgnoreCase("wifi")) && (DownloadSetting.getInstance().getIsDownloadWifiOnly()))
     {
       TMLog.i("ApkDownloadManager", "call startDownload, return errCode: 2");
+      AppMethodBeat.o(75684);
       return 2;
     }
     if (!DownloadHelper.isValidURL(paramString1))
     {
       TMLog.i("ApkDownloadManager", "call startDownload, return errCode: 3");
+      AppMethodBeat.o(75684);
       return 3;
     }
     if (DownloadHelper.isDownloadFileExisted(paramString1, paramString3))
     {
       TMLog.i("ApkDownloadManager", "call startDownload, return errCode: 4");
+      AppMethodBeat.o(75684);
       return 4;
     }
     Object localObject1 = (DownloadInfo)this.mDownloads.get(paramString1);
@@ -199,20 +235,22 @@ public class ApkDownloadManager
       if (((DownloadInfo)localObject1).mContentType.equals("application/tm.android.apkdiff")) {}
       for (boolean bool = DownloadHelper.isDownloadFileExisted(paramString1, ((DownloadInfo)localObject1).mContentType);; bool = DownloadHelper.isDownloadFileExisted(((DownloadInfo)localObject1).mFileName))
       {
-        TMLog.i("ApkDownloadManager", "fileExited = " + bool);
+        TMLog.i("ApkDownloadManager", "fileExited = ".concat(String.valueOf(bool)));
         if (!bool) {
-          break label337;
+          break label374;
         }
+        AppMethodBeat.o(75684);
         return 4;
         if (((DownloadInfo)localObject1).mContentType.equals("application/tm.android.apkdiff")) {}
         for (bool = DownloadHelper.isDownloadFileExisted(paramString1, ((DownloadInfo)localObject1).mContentType); bool; bool = DownloadHelper.isDownloadFileExisted(((DownloadInfo)localObject1).mFileName))
         {
           TMLog.i("ApkDownloadManager", "call startDownload, return errCode: 4");
+          AppMethodBeat.o(75684);
           return 4;
         }
         break;
       }
-      label337:
+      label374:
       localObject2 = localObject1;
       if (((DownloadInfo)localObject1).hasReceivedAllDataBytes())
       {
@@ -230,13 +268,15 @@ public class ApkDownloadManager
         }
       }
       paramInt = ((DownloadInfo)localObject2).startDownloadIfReady();
-      TMLog.i("ApkDownloadManager", "call startDownload, return errCode: " + paramInt);
+      TMLog.i("ApkDownloadManager", "call startDownload, return errCode: ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(75684);
       return paramInt;
     }
   }
   
   public void uninit()
   {
+    AppMethodBeat.i(75683);
     NetworkMonitorReceiver.getInstance().removeNetworkChangedObserver(this);
     ArrayList localArrayList = new ArrayList();
     if (!this.mDownloads.isEmpty())
@@ -253,11 +293,12 @@ public class ApkDownloadManager
     }
     TMLog.i("ApkDownloadManager", "Start to save DownloadInfo list.");
     DBManager.getInstance().saveDownloadInfoList(localArrayList);
+    AppMethodBeat.o(75683);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.ApkDownloadManager
  * JD-Core Version:    0.7.0.1
  */

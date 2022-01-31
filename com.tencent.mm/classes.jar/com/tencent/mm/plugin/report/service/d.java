@@ -1,31 +1,37 @@
 package com.tencent.mm.plugin.report.service;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class d
 {
-  public String bIW;
-  public long nFu;
-  public long nFv;
-  public String nFw;
-  public boolean nFx;
+  public String cqq;
+  public boolean qsA;
+  public long qsx;
+  public long qsy;
+  public String qsz;
   public String value;
   
   public d() {}
   
   public d(long paramLong1, String paramString, long paramLong2, boolean paramBoolean)
   {
-    this.nFu = paramLong1;
+    AppMethodBeat.i(72719);
+    this.qsx = paramLong1;
     this.value = paramString;
-    this.nFv = paramLong2;
-    this.nFx = paramBoolean;
-    this.nFw = new SimpleDateFormat("[yy-MM-dd HH:mm:ss:SSS]").format(new Date(paramLong2));
+    this.qsy = paramLong2;
+    this.qsA = paramBoolean;
+    this.qsz = new SimpleDateFormat("[yy-MM-dd HH:mm:ss:SSS]").format(new Date(paramLong2));
+    AppMethodBeat.o(72719);
   }
   
   public final String toString()
   {
-    return this.nFw + ":" + this.value;
+    AppMethodBeat.i(72720);
+    String str = this.qsz + ":" + this.value;
+    AppMethodBeat.o(72720);
+    return str;
   }
 }
 

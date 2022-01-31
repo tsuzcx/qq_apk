@@ -1,43 +1,42 @@
 package com.tencent.mm.ui.chatting.gallery;
 
+import android.content.DialogInterface.OnClickListener;
 import android.util.SparseArray;
-import android.widget.RelativeLayout;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelvideo.u;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.h;
 
 final class j$16
-  implements am.a
+  implements Runnable
 {
-  j$16(j paramj) {}
+  j$16(j paramj, int paramInt) {}
   
-  public final boolean tC()
+  public final void run()
   {
-    k localk = this.vwT.vtH.cFV();
-    if (localk == null) {
-      return false;
-    }
-    if (localk.vxg == null) {
-      return false;
-    }
-    if (localk.cGH().vxg.getVisibility() != 0) {
-      return false;
-    }
-    int i = this.vwT.vtH.vtJ.getCurrentItem();
-    if ((s)this.vwT.vwC.get(i) == null)
+    AppMethodBeat.i(32334);
+    ab.w("MicroMsg.Imagegallery.handler.video", "show play video error.");
+    u.vu(j.a(this.zNd));
+    if (this.zNd.zJI == null)
     {
-      this.vwT.HE(i);
-      return false;
+      AppMethodBeat.o(32334);
+      return;
     }
-    if (!localk.cGH().vxj.isPlaying())
+    Object localObject = this.zNd.zJI.dJY();
+    ((k)localObject).dKP().zNt.stop();
+    ((k)localObject).a(false, 0.0F);
+    String str = this.zNd.zJI.zJK.getString(2131304519);
+    if ((this.zNf == -5103059) || (this.zNf == -5103087)) {
+      str = this.zNd.zJI.zJK.getString(2131304518);
+    }
+    for (localObject = new j.16.1(this);; localObject = new j.16.2(this))
     {
-      y.i("MicroMsg.Imagegallery.handler.video", "it is not playing, stop offline timer");
-      return false;
+      h.a(this.zNd.zJI.zJK, str, this.zNd.zJI.zJK.getString(2131298283), (DialogInterface.OnClickListener)localObject);
+      this.zNd.zMN.clear();
+      AppMethodBeat.o(32334);
+      return;
     }
-    j.a(this.vwT, localk.cGH().vxj.getCurrentPosition());
-    this.vwT.HF(j.n(this.vwT) / 1000);
-    return true;
   }
 }
 

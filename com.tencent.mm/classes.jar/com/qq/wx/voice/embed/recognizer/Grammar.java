@@ -2,6 +2,7 @@ package com.qq.wx.voice.embed.recognizer;
 
 import android.content.Context;
 import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
@@ -10,56 +11,71 @@ public class Grammar
   public static String mData = null;
   public static String mDataPath = null;
   public static String mSo = null;
-  private f a = null;
-  private a b = new a();
-  private boolean c = false;
-  private boolean d = false;
-  private ArrayList e = null;
+  private f a;
+  private a b;
+  private boolean c;
+  private boolean d;
+  private ArrayList e;
+  
+  public Grammar()
+  {
+    AppMethodBeat.i(123213);
+    this.a = null;
+    this.b = new a();
+    this.c = false;
+    this.d = false;
+    this.e = null;
+    this.a = new f();
+    AppMethodBeat.o(123213);
+  }
   
   private String a()
   {
     int j = 0;
+    AppMethodBeat.i(123217);
     int i = 0;
-    StringBuffer localStringBuffer;
+    Object localObject;
     if (i >= this.e.size())
     {
-      localStringBuffer = new StringBuffer("");
+      localObject = new StringBuffer("");
       i = j;
     }
     for (;;)
     {
       if (i >= this.e.size())
       {
-        return localStringBuffer.toString();
-        ((d)this.e.get(i)).aVt = a(((d)this.e.get(i)).userName);
-        ((d)this.e.get(i)).aVu = a(((d)this.e.get(i)).aVr);
-        ((d)this.e.get(i)).aVv = a(((d)this.e.get(i)).aVs);
+        localObject = ((StringBuffer)localObject).toString();
+        AppMethodBeat.o(123217);
+        return localObject;
+        ((d)this.e.get(i)).bmb = a(((d)this.e.get(i)).userName);
+        ((d)this.e.get(i)).bmc = a(((d)this.e.get(i)).blZ);
+        ((d)this.e.get(i)).bmd = a(((d)this.e.get(i)).bma);
         i += 1;
         break;
       }
-      String str = ((d)this.e.get(i)).aVt;
+      String str = ((d)this.e.get(i)).bmb;
       if (!str.isEmpty())
       {
-        if (localStringBuffer.length() > 0) {
-          localStringBuffer.append("\n");
+        if (((StringBuffer)localObject).length() > 0) {
+          ((StringBuffer)localObject).append("\n");
         }
-        localStringBuffer.append(str);
+        ((StringBuffer)localObject).append(str);
       }
-      str = ((d)this.e.get(i)).aVu;
+      str = ((d)this.e.get(i)).bmc;
       if (!str.isEmpty())
       {
-        if (localStringBuffer.length() > 0) {
-          localStringBuffer.append("\n");
+        if (((StringBuffer)localObject).length() > 0) {
+          ((StringBuffer)localObject).append("\n");
         }
-        localStringBuffer.append(str);
+        ((StringBuffer)localObject).append(str);
       }
-      str = ((d)this.e.get(i)).aVv;
+      str = ((d)this.e.get(i)).bmd;
       if (!str.isEmpty())
       {
-        if (localStringBuffer.length() > 0) {
-          localStringBuffer.append("\n");
+        if (((StringBuffer)localObject).length() > 0) {
+          ((StringBuffer)localObject).append("\n");
         }
-        localStringBuffer.append(str);
+        ((StringBuffer)localObject).append(str);
       }
       i += 1;
     }
@@ -67,96 +83,122 @@ public class Grammar
   
   private static String a(String paramString)
   {
-    return new String(paramString).replaceAll("[^(a-zA-Z0-9\\u4e00-\\u9fa5)]", "").replaceAll("0", "零").replaceAll("1", "一").replaceAll("2", "二").replaceAll("3", "三").replaceAll("4", "四").replaceAll("5", "五").replaceAll("6", "六").replaceAll("7", "七").replaceAll("8", "八").replaceAll("9", "九");
+    AppMethodBeat.i(123218);
+    paramString = new String(paramString).replaceAll("[^(a-zA-Z0-9\\u4e00-\\u9fa5)]", "").replaceAll("0", "零").replaceAll("1", "一").replaceAll("2", "二").replaceAll("3", "三").replaceAll("4", "四").replaceAll("5", "五").replaceAll("6", "六").replaceAll("7", "七").replaceAll("8", "八").replaceAll("9", "九");
+    AppMethodBeat.o(123218);
+    return paramString;
   }
   
   public int begin()
   {
-    return GrammarNative.begin();
+    AppMethodBeat.i(123219);
+    int i = GrammarNative.begin();
+    AppMethodBeat.o(123219);
+    return i;
   }
   
   public int checkFiles(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    if (this.c) {
+    AppMethodBeat.i(123214);
+    if (this.c)
+    {
+      AppMethodBeat.o(123214);
       return 0;
     }
-    if ((paramContext == null) || (paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
+    if ((paramContext == null) || (paramString1 == null) || (paramString2 == null) || (paramString3 == null))
+    {
+      AppMethodBeat.o(123214);
       return -303;
     }
     if (Build.VERSION.SDK_INT >= 24)
     {
-      int j = this.a.c("/vendor/lib/", paramString2, paramString3);
+      int j = this.a.e("/vendor/lib/", paramString2, paramString3);
       i = j;
       if (j >= 0) {}
     }
-    for (int i = this.a.c(paramContext, paramString1, paramString2, paramString3);; i = this.a.c(paramString1, paramString2, paramString3))
+    for (int i = this.a.c(paramContext, paramString1, paramString2, paramString3);; i = this.a.e(paramString1, paramString2, paramString3))
     {
       if (i >= 0) {
-        break label117;
+        break label137;
       }
+      AppMethodBeat.o(123214);
       return i;
       if ((paramString1.compareTo("/system/lib") != 0) && (paramString1.compareTo("/system/lib/") != 0)) {
         break;
       }
     }
-    label117:
+    label137:
     mDataPath = this.a.b;
     mData = "libwxvoiceembed.bin";
     mSo = "libwxvoiceembed.so";
     this.c = true;
+    AppMethodBeat.o(123214);
     return 0;
   }
   
   public int end()
   {
-    return GrammarNative.end();
+    AppMethodBeat.i(123221);
+    int i = GrammarNative.end();
+    AppMethodBeat.o(123221);
+    return i;
   }
   
   public int getResult(a parama)
   {
-    int k = 0;
+    AppMethodBeat.i(123222);
     int i = GrammarNative.getResult(this);
-    if (i < 0) {
+    if (i < 0)
+    {
+      AppMethodBeat.o(123222);
       return i;
     }
     parama.text = this.b.text;
     if (this.b.name == null)
     {
       parama.name = null;
+      AppMethodBeat.o(123222);
       return 0;
     }
-    int j = 0;
+    i = 0;
     for (;;)
     {
-      i = k;
-      if (j >= this.e.size()) {
-        break;
-      }
-      if (((d)this.e.get(j)).aVt.compareTo(this.b.name) == 0)
+      if (i >= this.e.size()) {}
+      for (;;)
       {
-        parama.name = ((d)this.e.get(j)).userName;
+        AppMethodBeat.o(123222);
         return 0;
+        if (((d)this.e.get(i)).bmb.compareTo(this.b.name) == 0)
+        {
+          parama.name = ((d)this.e.get(i)).userName;
+        }
+        else if (((d)this.e.get(i)).bmc.compareTo(this.b.name) == 0)
+        {
+          parama.name = ((d)this.e.get(i)).userName;
+        }
+        else
+        {
+          if (((d)this.e.get(i)).bmd.compareTo(this.b.name) != 0) {
+            break;
+          }
+          parama.name = ((d)this.e.get(i)).userName;
+        }
       }
-      if (((d)this.e.get(j)).aVu.compareTo(this.b.name) == 0)
-      {
-        parama.name = ((d)this.e.get(j)).userName;
-        return 0;
-      }
-      if (((d)this.e.get(j)).aVv.compareTo(this.b.name) == 0)
-      {
-        parama.name = ((d)this.e.get(j)).userName;
-        return 0;
-      }
-      j += 1;
+      i += 1;
     }
   }
   
   public int init(ArrayList paramArrayList)
   {
-    if (this.d) {
+    AppMethodBeat.i(123215);
+    if (this.d)
+    {
+      AppMethodBeat.o(123215);
       return 0;
     }
-    if (paramArrayList == null) {
+    if (paramArrayList == null)
+    {
+      AppMethodBeat.o(123215);
       return -303;
     }
     try
@@ -171,65 +213,88 @@ public class Grammar
       try
       {
         if (GrammarNative.init(mDataPath.getBytes(), mData.getBytes(), paramArrayList.toString().getBytes("GBK")) >= 0) {
-          break label164;
+          break label198;
         }
         new StringBuilder(String.valueOf(mDataPath)).append(" ").append(mData).append(" ").append(paramArrayList);
+        AppMethodBeat.o(123215);
         return -101;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
         new StringBuilder(String.valueOf(mDataPath)).append(" ").append(mData).append(" ").append(paramArrayList);
+        AppMethodBeat.o(123215);
         return -101;
       }
       paramArrayList = paramArrayList;
+      AppMethodBeat.o(123215);
       return -205;
     }
-    label164:
+    label198:
+    AppMethodBeat.o(123215);
     return 0;
   }
   
   public void onGetResult(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
+    AppMethodBeat.i(123223);
     if (paramArrayOfByte1 != null) {}
-    try
+    for (;;)
     {
-      for (this.b.text = new String(paramArrayOfByte1, "GBK"); paramArrayOfByte3 != null; this.b.text = null)
+      try
       {
+        this.b.text = new String(paramArrayOfByte1, "GBK");
+        if (paramArrayOfByte3 == null) {
+          break;
+        }
         this.b.name = new String(paramArrayOfByte3, "GBK");
+        AppMethodBeat.o(123223);
         return;
       }
-      this.b.name = null;
-      return;
+      catch (UnsupportedEncodingException paramArrayOfByte1)
+      {
+        AppMethodBeat.o(123223);
+        return;
+      }
+      this.b.text = null;
     }
-    catch (UnsupportedEncodingException paramArrayOfByte1) {}
+    this.b.name = null;
+    AppMethodBeat.o(123223);
   }
   
   public int recognize(byte[] paramArrayOfByte, int paramInt)
   {
-    return GrammarNative.recognize(paramArrayOfByte, paramInt);
+    AppMethodBeat.i(123220);
+    paramInt = GrammarNative.recognize(paramArrayOfByte, paramInt);
+    AppMethodBeat.o(123220);
+    return paramInt;
   }
   
   public int update(ArrayList paramArrayList)
   {
-    int i = -106;
-    if (paramArrayList == null) {
-      i = -303;
-    }
-    for (;;)
+    AppMethodBeat.i(123216);
+    if (paramArrayList == null)
     {
-      return i;
-      this.e = paramArrayList;
-      paramArrayList = a();
-      try
-      {
-        int j = GrammarNative.update(paramArrayList.getBytes("GBK"));
-        if (j >= 0) {
-          return 0;
-        }
-      }
-      catch (UnsupportedEncodingException paramArrayList) {}
+      AppMethodBeat.o(123216);
+      return -303;
     }
-    return -106;
+    this.e = paramArrayList;
+    paramArrayList = a();
+    try
+    {
+      int i = GrammarNative.update(paramArrayList.getBytes("GBK"));
+      if (i < 0)
+      {
+        AppMethodBeat.o(123216);
+        return -106;
+      }
+    }
+    catch (UnsupportedEncodingException paramArrayList)
+    {
+      AppMethodBeat.o(123216);
+      return -106;
+    }
+    AppMethodBeat.o(123216);
+    return 0;
   }
 }
 

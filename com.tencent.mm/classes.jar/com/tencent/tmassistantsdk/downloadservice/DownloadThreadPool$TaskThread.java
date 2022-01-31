@@ -1,226 +1,245 @@
 package com.tencent.tmassistantsdk.downloadservice;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class DownloadThreadPool$TaskThread
   extends Thread
 {
-  private int mIndex = 0;
+  private int mIndex;
   
   public DownloadThreadPool$TaskThread(DownloadThreadPool paramDownloadThreadPool, int paramInt)
   {
+    AppMethodBeat.i(75760);
+    this.mIndex = 0;
     this.mIndex = paramInt;
     setName("download_thread_" + this.mIndex);
     start();
+    AppMethodBeat.o(75760);
   }
   
   /* Error */
   public void run()
   {
     // Byte code:
-    //   0: ldc 47
-    //   2: new 22	java/lang/StringBuilder
-    //   5: dup
-    //   6: ldc 49
-    //   8: invokespecial 27	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   11: aload_0
-    //   12: getfield 20	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:mIndex	I
-    //   15: invokevirtual 31	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   18: ldc 51
-    //   20: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: invokestatic 60	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   29: aload_0
-    //   30: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
-    //   33: getfield 64	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mThreadlock	Ljava/lang/Object;
-    //   36: astore_1
-    //   37: aload_1
-    //   38: monitorenter
-    //   39: ldc 47
-    //   41: new 22	java/lang/StringBuilder
-    //   44: dup
-    //   45: ldc 49
-    //   47: invokespecial 27	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   50: aload_0
-    //   51: getfield 20	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:mIndex	I
-    //   54: invokevirtual 31	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   57: ldc 66
-    //   59: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: invokestatic 60	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   68: aload_0
-    //   69: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
-    //   72: getfield 64	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mThreadlock	Ljava/lang/Object;
-    //   75: invokevirtual 71	java/lang/Object:wait	()V
-    //   78: aload_1
-    //   79: monitorexit
-    //   80: invokestatic 75	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   83: invokevirtual 79	java/lang/Thread:isInterrupted	()Z
-    //   86: ifeq +171 -> 257
-    //   89: ldc 47
-    //   91: new 22	java/lang/StringBuilder
-    //   94: dup
-    //   95: ldc 49
-    //   97: invokespecial 27	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   100: aload_0
-    //   101: getfield 20	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:mIndex	I
-    //   104: invokevirtual 31	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   107: ldc 81
-    //   109: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   115: invokestatic 60	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   118: return
-    //   119: astore_2
-    //   120: ldc 47
-    //   122: new 22	java/lang/StringBuilder
-    //   125: dup
-    //   126: ldc 49
-    //   128: invokespecial 27	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   131: aload_0
-    //   132: getfield 20	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:mIndex	I
-    //   135: invokevirtual 31	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   138: ldc 81
-    //   140: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   146: invokestatic 60	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   149: ldc 47
-    //   151: aload_2
-    //   152: ldc 83
-    //   154: iconst_0
-    //   155: anewarray 68	java/lang/Object
-    //   158: invokestatic 89	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   161: aload_1
-    //   162: monitorexit
-    //   163: return
-    //   164: astore_2
-    //   165: aload_1
-    //   166: monitorexit
-    //   167: aload_2
-    //   168: athrow
-    //   169: aload_1
-    //   170: ifnull +59 -> 229
-    //   173: ldc 47
-    //   175: new 22	java/lang/StringBuilder
-    //   178: dup
-    //   179: ldc 91
-    //   181: invokespecial 27	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   184: aload_0
-    //   185: invokevirtual 94	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:getName	()Ljava/lang/String;
-    //   188: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: ldc 96
-    //   193: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: aload_1
-    //   197: invokevirtual 101	com/tencent/tmassistantsdk/downloadservice/DownloadTask:getDownloadURI	()Ljava/lang/String;
-    //   200: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   203: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   206: invokestatic 60	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   209: invokestatic 107	com/tencent/tmassistantsdk/downloadservice/DownloadHelper:getWakeLock	()Landroid/os/PowerManager$WakeLock;
-    //   212: astore_2
-    //   213: aload_1
-    //   214: aload_0
-    //   215: invokevirtual 94	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:getName	()Ljava/lang/String;
-    //   218: invokevirtual 110	com/tencent/tmassistantsdk/downloadservice/DownloadTask:exec	(Ljava/lang/String;)V
-    //   221: aload_2
-    //   222: ifnull +7 -> 229
-    //   225: aload_2
-    //   226: invokevirtual 115	android/os/PowerManager$WakeLock:release	()V
-    //   229: aload_0
-    //   230: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
-    //   233: getfield 118	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mTaskLock	Ljava/lang/Object;
-    //   236: astore_2
-    //   237: aload_2
-    //   238: monitorenter
-    //   239: aload_1
-    //   240: ifnull +15 -> 255
-    //   243: aload_0
-    //   244: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
-    //   247: getfield 122	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mExecList	Ljava/util/ArrayList;
-    //   250: aload_1
-    //   251: invokevirtual 128	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
-    //   254: pop
-    //   255: aload_2
-    //   256: monitorexit
-    //   257: aload_0
-    //   258: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
-    //   261: invokevirtual 131	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:hasWaitingTask	()Z
-    //   264: ifeq -235 -> 29
-    //   267: aconst_null
-    //   268: astore_1
-    //   269: aload_0
-    //   270: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
-    //   273: getfield 118	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mTaskLock	Ljava/lang/Object;
-    //   276: astore_2
-    //   277: aload_2
-    //   278: monitorenter
-    //   279: aload_0
-    //   280: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
-    //   283: getfield 135	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mWaitingList	Ljava/util/PriorityQueue;
-    //   286: invokevirtual 141	java/util/PriorityQueue:size	()I
-    //   289: ifle +29 -> 318
-    //   292: aload_0
-    //   293: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
-    //   296: getfield 135	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mWaitingList	Ljava/util/PriorityQueue;
-    //   299: invokevirtual 144	java/util/PriorityQueue:remove	()Ljava/lang/Object;
-    //   302: checkcast 98	com/tencent/tmassistantsdk/downloadservice/DownloadTask
-    //   305: astore_1
-    //   306: aload_0
-    //   307: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
-    //   310: getfield 122	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mExecList	Ljava/util/ArrayList;
-    //   313: aload_1
-    //   314: invokevirtual 147	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   317: pop
-    //   318: aload_2
-    //   319: monitorexit
-    //   320: invokestatic 75	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   323: invokevirtual 79	java/lang/Thread:isInterrupted	()Z
-    //   326: ifeq -157 -> 169
-    //   329: ldc 47
-    //   331: new 22	java/lang/StringBuilder
-    //   334: dup
-    //   335: ldc 49
-    //   337: invokespecial 27	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   340: aload_0
-    //   341: getfield 20	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:mIndex	I
-    //   344: invokevirtual 31	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   347: ldc 81
-    //   349: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   352: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   355: invokestatic 60	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   358: return
-    //   359: astore_1
-    //   360: aload_2
-    //   361: monitorexit
-    //   362: aload_1
-    //   363: athrow
-    //   364: astore_1
-    //   365: aload_2
-    //   366: monitorexit
-    //   367: aload_1
-    //   368: athrow
+    //   0: ldc 56
+    //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 58
+    //   7: new 29	java/lang/StringBuilder
+    //   10: dup
+    //   11: ldc 60
+    //   13: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   16: aload_0
+    //   17: getfield 27	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:mIndex	I
+    //   20: invokevirtual 38	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   23: ldc 62
+    //   25: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   31: invokestatic 70	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   34: aload_0
+    //   35: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
+    //   38: getfield 74	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mThreadlock	Ljava/lang/Object;
+    //   41: astore_1
+    //   42: aload_1
+    //   43: monitorenter
+    //   44: ldc 58
+    //   46: new 29	java/lang/StringBuilder
+    //   49: dup
+    //   50: ldc 60
+    //   52: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   55: aload_0
+    //   56: getfield 27	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:mIndex	I
+    //   59: invokevirtual 38	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   62: ldc 76
+    //   64: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   70: invokestatic 70	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   73: aload_0
+    //   74: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
+    //   77: getfield 74	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mThreadlock	Ljava/lang/Object;
+    //   80: invokevirtual 81	java/lang/Object:wait	()V
+    //   83: aload_1
+    //   84: monitorexit
+    //   85: invokestatic 85	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   88: invokevirtual 89	java/lang/Thread:isInterrupted	()Z
+    //   91: ifeq +186 -> 277
+    //   94: ldc 58
+    //   96: new 29	java/lang/StringBuilder
+    //   99: dup
+    //   100: ldc 60
+    //   102: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   105: aload_0
+    //   106: getfield 27	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:mIndex	I
+    //   109: invokevirtual 38	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   112: ldc 91
+    //   114: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokestatic 70	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   123: ldc 56
+    //   125: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   128: return
+    //   129: astore_2
+    //   130: ldc 58
+    //   132: new 29	java/lang/StringBuilder
+    //   135: dup
+    //   136: ldc 60
+    //   138: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   141: aload_0
+    //   142: getfield 27	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:mIndex	I
+    //   145: invokevirtual 38	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   148: ldc 91
+    //   150: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   156: invokestatic 70	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   159: ldc 58
+    //   161: aload_2
+    //   162: ldc 93
+    //   164: iconst_0
+    //   165: anewarray 78	java/lang/Object
+    //   168: invokestatic 99	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   171: aload_1
+    //   172: monitorexit
+    //   173: ldc 56
+    //   175: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   178: return
+    //   179: astore_2
+    //   180: aload_1
+    //   181: monitorexit
+    //   182: ldc 56
+    //   184: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   187: aload_2
+    //   188: athrow
+    //   189: aload_1
+    //   190: ifnull +59 -> 249
+    //   193: ldc 58
+    //   195: new 29	java/lang/StringBuilder
+    //   198: dup
+    //   199: ldc 101
+    //   201: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   204: aload_0
+    //   205: invokevirtual 104	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:getName	()Ljava/lang/String;
+    //   208: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: ldc 106
+    //   213: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: aload_1
+    //   217: invokevirtual 111	com/tencent/tmassistantsdk/downloadservice/DownloadTask:getDownloadURI	()Ljava/lang/String;
+    //   220: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   226: invokestatic 70	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   229: invokestatic 117	com/tencent/tmassistantsdk/downloadservice/DownloadHelper:getWakeLock	()Landroid/os/PowerManager$WakeLock;
+    //   232: astore_2
+    //   233: aload_1
+    //   234: aload_0
+    //   235: invokevirtual 104	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:getName	()Ljava/lang/String;
+    //   238: invokevirtual 120	com/tencent/tmassistantsdk/downloadservice/DownloadTask:exec	(Ljava/lang/String;)V
+    //   241: aload_2
+    //   242: ifnull +7 -> 249
+    //   245: aload_2
+    //   246: invokevirtual 125	android/os/PowerManager$WakeLock:release	()V
+    //   249: aload_0
+    //   250: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
+    //   253: getfield 128	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mTaskLock	Ljava/lang/Object;
+    //   256: astore_2
+    //   257: aload_2
+    //   258: monitorenter
+    //   259: aload_1
+    //   260: ifnull +15 -> 275
+    //   263: aload_0
+    //   264: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
+    //   267: getfield 132	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mExecList	Ljava/util/ArrayList;
+    //   270: aload_1
+    //   271: invokevirtual 138	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   274: pop
+    //   275: aload_2
+    //   276: monitorexit
+    //   277: aload_0
+    //   278: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
+    //   281: invokevirtual 141	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:hasWaitingTask	()Z
+    //   284: ifeq -250 -> 34
+    //   287: aconst_null
+    //   288: astore_1
+    //   289: aload_0
+    //   290: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
+    //   293: getfield 128	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mTaskLock	Ljava/lang/Object;
+    //   296: astore_2
+    //   297: aload_2
+    //   298: monitorenter
+    //   299: aload_0
+    //   300: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
+    //   303: getfield 145	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mWaitingList	Ljava/util/PriorityQueue;
+    //   306: invokevirtual 151	java/util/PriorityQueue:size	()I
+    //   309: ifle +29 -> 338
+    //   312: aload_0
+    //   313: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
+    //   316: getfield 145	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mWaitingList	Ljava/util/PriorityQueue;
+    //   319: invokevirtual 154	java/util/PriorityQueue:remove	()Ljava/lang/Object;
+    //   322: checkcast 108	com/tencent/tmassistantsdk/downloadservice/DownloadTask
+    //   325: astore_1
+    //   326: aload_0
+    //   327: getfield 15	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:this$0	Lcom/tencent/tmassistantsdk/downloadservice/DownloadThreadPool;
+    //   330: getfield 132	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool:mExecList	Ljava/util/ArrayList;
+    //   333: aload_1
+    //   334: invokevirtual 157	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   337: pop
+    //   338: aload_2
+    //   339: monitorexit
+    //   340: invokestatic 85	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   343: invokevirtual 89	java/lang/Thread:isInterrupted	()Z
+    //   346: ifeq -157 -> 189
+    //   349: ldc 58
+    //   351: new 29	java/lang/StringBuilder
+    //   354: dup
+    //   355: ldc 60
+    //   357: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   360: aload_0
+    //   361: getfield 27	com/tencent/tmassistantsdk/downloadservice/DownloadThreadPool$TaskThread:mIndex	I
+    //   364: invokevirtual 38	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   367: ldc 91
+    //   369: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   375: invokestatic 70	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   378: ldc 56
+    //   380: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   383: return
+    //   384: astore_1
+    //   385: aload_2
+    //   386: monitorexit
+    //   387: ldc 56
+    //   389: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   392: aload_1
+    //   393: athrow
+    //   394: astore_1
+    //   395: aload_2
+    //   396: monitorexit
+    //   397: ldc 56
+    //   399: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   402: aload_1
+    //   403: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	369	0	this	TaskThread
-    //   36	278	1	localObject1	java.lang.Object
-    //   359	4	1	localObject2	java.lang.Object
-    //   364	4	1	localObject3	java.lang.Object
-    //   119	33	2	localInterruptedException	java.lang.InterruptedException
-    //   164	4	2	localObject4	java.lang.Object
+    //   0	404	0	this	TaskThread
+    //   41	293	1	localObject1	java.lang.Object
+    //   384	9	1	localObject2	java.lang.Object
+    //   394	9	1	localObject3	java.lang.Object
+    //   129	33	2	localInterruptedException	java.lang.InterruptedException
+    //   179	9	2	localObject4	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   39	78	119	java/lang/InterruptedException
-    //   39	78	164	finally
-    //   78	80	164	finally
-    //   120	163	164	finally
-    //   165	167	164	finally
-    //   279	318	359	finally
-    //   318	320	359	finally
-    //   360	362	359	finally
-    //   243	255	364	finally
-    //   255	257	364	finally
-    //   365	367	364	finally
+    //   44	83	129	java/lang/InterruptedException
+    //   44	83	179	finally
+    //   83	85	179	finally
+    //   130	173	179	finally
+    //   180	182	179	finally
+    //   299	338	384	finally
+    //   338	340	384	finally
+    //   385	387	384	finally
+    //   263	275	394	finally
+    //   275	277	394	finally
+    //   395	397	394	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.DownloadThreadPool.TaskThread
  * JD-Core Version:    0.7.0.1
  */

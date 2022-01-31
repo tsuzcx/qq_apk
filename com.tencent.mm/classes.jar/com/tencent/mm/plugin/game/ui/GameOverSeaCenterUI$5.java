@@ -2,10 +2,7 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameOverSeaCenterUI$5
   implements MenuItem.OnMenuItemClickListener
@@ -14,8 +11,10 @@ final class GameOverSeaCenterUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    int i = c.an(this.ler.mController.uMN, GameOverSeaCenterUI.d(this.ler));
-    b.a(this.ler.mController.uMN, 10, 1008, 1, i, this.ler.kQh, null);
+    AppMethodBeat.i(112132);
+    int i = com.tencent.mm.plugin.game.f.c.ax(this.nCm.getContext(), GameOverSeaCenterUI.d(this.nCm));
+    com.tencent.mm.game.report.c.a(this.nCm.getContext(), 10, 1008, 1, i, this.nCm.nok, null);
+    AppMethodBeat.o(112132);
     return true;
   }
 }

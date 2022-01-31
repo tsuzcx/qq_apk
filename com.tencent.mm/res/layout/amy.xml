@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/v_" android:background="@color/a23" style="@style/p1"
+<ScrollView android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jr" android:background="@drawable/b26" android:paddingLeft="@dimen/du" android:paddingTop="@dimen/mq" android:paddingRight="@dimen/du" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
-        <ImageView android:id="@id/b25" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/searchbar_icon" />
-        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/lj" android:textColor="@color/ta" android:textColorHint="@color/pe" android:gravity="center_vertical" android:id="@id/b26" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/dl" android:minHeight="@dimen/kf" android:hint="@string/rt" android:singleLine="true" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:background="@color/a6q" android:padding="12.0dip" android:layout_width="fill_parent" android:layout_height="110.0dip">
+            <ImageView android:id="@id/du4" android:layout_width="86.0dip" android:layout_height="86.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+            <TextView android:textColor="#ff999999" android:id="@id/du5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="4.0dip" android:maxLines="2" android:layout_toRightOf="@id/du4" android:layout_alignParentTop="true" android:lineSpacingExtra="0.0dip" style="@style/po" />
+            <TextView android:textSize="28.0dip" android:id="@id/du6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginBottom="2.0dip" android:layout_toRightOf="@id/du4" android:layout_alignParentBottom="true" style="@style/po" />
+        </RelativeLayout>
+        <View android:background="#ffd4d4d4" android:layout_width="fill_parent" android:layout_height="2.0px" />
+        <com.tencent.mm.ui.base.MaxListView android:id="@id/du7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:listSelector="@android:color/transparent" android:divider="#00000000" android:dividerHeight="0.0dip" android:choiceMode="singleChoice" />
+        <TextView android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:text="@string/d0g" style="@style/py" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2">
+            <com.tencent.mm.plugin.product.ui.MallProductSelectAmountView android:id="@id/du8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textColor="@color/y5" android:gravity="center" android:id="@id/du9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/l2" android:text="@string/d0e" style="@style/po" />
+        </LinearLayout>
+        <Button android:gravity="center" android:id="@id/du_" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="42.0dip" android:layout_marginRight="@dimen/l2" android:layout_marginBottom="@dimen/l2" android:text="@string/d0i" style="@style/nq" />
     </LinearLayout>
-    <GridView android:id="@id/dri" android:background="@color/sz" android:paddingLeft="@dimen/ku" android:paddingTop="@dimen/l3" android:paddingRight="@dimen/ku" android:paddingBottom="@dimen/l3" android:scrollbars="vertical" android:numColumns="5" style="@style/ls" />
-</LinearLayout>
+</ScrollView>

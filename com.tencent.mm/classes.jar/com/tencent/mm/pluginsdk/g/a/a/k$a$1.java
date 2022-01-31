@@ -1,6 +1,7 @@
 package com.tencent.mm.pluginsdk.g.a.a;
 
-import com.tencent.mm.h.a.bf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.bh;
 
 final class k$a$1
   implements Runnable
@@ -9,18 +10,20 @@ final class k$a$1
   
   public final void run()
   {
-    bf localbf = new bf();
-    localbf.bHy.bHv = this.rWZ.bHv;
-    localbf.bHy.brC = this.rWZ.brC;
-    localbf.bHy.bHB = this.rWZ.rWa;
-    localbf.bHy.bHz = 1;
-    localbf.bHy.bHA = false;
-    com.tencent.mm.sdk.b.a.udP.m(localbf);
+    AppMethodBeat.i(79544);
+    bh localbh = new bh();
+    localbh.coN.coJ = this.vNR.coJ;
+    localbh.coN.subType = this.vNR.subType;
+    localbh.coN.coQ = this.vNR.vMQ;
+    localbh.coN.coO = 1;
+    localbh.coN.coP = false;
+    com.tencent.mm.sdk.b.a.ymk.l(localbh);
+    AppMethodBeat.o(79544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.g.a.a.k.a.1
  * JD-Core Version:    0.7.0.1
  */

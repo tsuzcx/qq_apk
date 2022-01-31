@@ -1,29 +1,21 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsTimeLineUI$47
-  implements DialogInterface.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   SnsTimeLineUI$47(SnsTimeLineUI paramSnsTimeLineUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (SnsTimeLineUI.J(this.pfC).scene != 3)
-    {
-      if (paramInt != 0) {
-        break label40;
-      }
-      SnsTimeLineUI.J(this.pfC).yS(3);
-    }
-    for (;;)
-    {
-      SnsTimeLineUI.b(SnsTimeLineUI.J(this.pfC));
-      return;
-      label40:
-      SnsTimeLineUI.J(this.pfC).yS(2);
-    }
+    AppMethodBeat.i(155757);
+    this.rYv.hideVKB();
+    this.rYv.finish();
+    AppMethodBeat.o(155757);
+    return false;
   }
 }
 

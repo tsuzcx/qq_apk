@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 public abstract interface f$a
 {
-  public abstract void bjy();
+  public abstract void bRn();
 }
 
 

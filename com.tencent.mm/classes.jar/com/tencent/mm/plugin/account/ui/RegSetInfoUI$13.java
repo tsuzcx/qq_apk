@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.widget.EditText;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.s;
+import com.tencent.mm.modelsimple.u;
 import com.tencent.mm.ui.applet.SecurityImage.b;
 
 final class RegSetInfoUI$13
@@ -12,17 +13,20 @@ final class RegSetInfoUI$13
 {
   RegSetInfoUI$13(RegSetInfoUI paramRegSetInfoUI, m paramm) {}
   
-  public final void Ws()
+  public final void apW()
   {
-    this.fso.XM();
-    Object localObject = RegSetInfoUI.a(this.fso).getText().toString().trim();
-    String str = RegSetInfoUI.b(this.fso).getText().toString().trim();
-    int i = RegSetInfoUI.e(this.fso);
-    g.Dk().a(126, this.fso);
-    localObject = new s("", RegSetInfoUI.y(this.fso), str, RegSetInfoUI.z(this.fso), RegSetInfoUI.A(this.fso), RegSetInfoUI.B(this.fso), "", "", RegSetInfoUI.g(this.fso), i, (String)localObject, ((s)this.bEe).Qz(), "", RegSetInfoUI.D(this.fso), RegSetInfoUI.j(this.fso));
-    ((s)localObject).ne(RegSetInfoUI.E(this.fso));
-    ((s)localObject).jc(RegSetInfoUI.F(this.fso));
-    g.Dk().a((m)localObject, 0);
+    AppMethodBeat.i(125519);
+    this.gJQ.hideVKB();
+    Object localObject = RegSetInfoUI.a(this.gJQ).getText().toString().trim();
+    String str = RegSetInfoUI.b(this.gJQ).getText().toString().trim();
+    int i = RegSetInfoUI.e(this.gJQ);
+    g.Rc().a(126, this.gJQ);
+    localObject = new u("", RegSetInfoUI.y(this.gJQ), str, RegSetInfoUI.z(this.gJQ), RegSetInfoUI.A(this.gJQ), RegSetInfoUI.B(this.gJQ), "", "", RegSetInfoUI.g(this.gJQ), i, (String)localObject, ((u)this.ckS).ajG(), "", RegSetInfoUI.D(this.gJQ), RegSetInfoUI.j(this.gJQ));
+    ((u)localObject).uq(RegSetInfoUI.E(this.gJQ));
+    ((u)localObject).ur(RegSetInfoUI.F(this.gJQ));
+    ((u)localObject).lU(RegSetInfoUI.G(this.gJQ));
+    g.Rc().a((m)localObject, 0);
+    AppMethodBeat.o(125519);
   }
 }
 

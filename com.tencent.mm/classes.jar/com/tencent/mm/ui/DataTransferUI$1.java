@@ -1,23 +1,26 @@
 package com.tencent.mm.ui;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.p;
 
 final class DataTransferUI$1
-  extends ah
+  extends ak
 {
   DataTransferUI$1(DataTransferUI paramDataTransferUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    if ((DataTransferUI.a(this.uIH) != null) && (DataTransferUI.a(this.uIH).isShowing()))
+    AppMethodBeat.i(29190);
+    if ((DataTransferUI.a(this.yWa) != null) && (DataTransferUI.a(this.yWa).isShowing()))
     {
-      y.e("MicroMsg.DataTransferUI", "dialog has shown for a long time, auto dismiss it...");
-      DataTransferUI.a(this.uIH).dismiss();
-      this.uIH.finish();
+      ab.e("MicroMsg.DataTransferUI", "dialog has shown for a long time, auto dismiss it...");
+      DataTransferUI.a(this.yWa).dismiss();
+      this.yWa.finish();
     }
+    AppMethodBeat.o(29190);
   }
 }
 

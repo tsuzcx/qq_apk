@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
 import android.app.ProgressDialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$6
   implements Runnable
@@ -9,19 +10,21 @@ final class i$6
   
   public final void run()
   {
-    if (this.lKF.lIf)
+    AppMethodBeat.i(113744);
+    if (this.ohX.ofs)
     {
-      if (this.lKF.dnm != null) {
-        this.lKF.dnm.dismiss();
+      if (this.ohX.eeN != null) {
+        this.ohX.eeN.dismiss();
       }
-      this.lKF.beZ();
+      this.ohX.bMv();
     }
-    this.lKF.lIf = false;
+    this.ohX.ofs = false;
+    AppMethodBeat.o(113744);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.i.6
  * JD-Core Version:    0.7.0.1
  */

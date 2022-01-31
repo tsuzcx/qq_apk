@@ -1,17 +1,33 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
-import com.tencent.mm.plugin.appbrand.widget.picker.a;
-import com.tencent.mm.plugin.appbrand.widget.picker.b;
-import com.tencent.mm.plugin.appbrand.widget.picker.d.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.service.c;
+import java.util.Map;
 
 final class d$1
-  implements d.a
+  implements b.a
 {
-  d$1(d paramd) {}
+  d$1(d paramd, c paramc, int paramInt) {}
   
-  public final void d(boolean paramBoolean, Object paramObject)
+  public final void a(int paramInt, String paramString, Map<String, Object> paramMap)
   {
-    this.gzK.hzI.hide();
+    AppMethodBeat.i(131413);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(131413);
+      return;
+      this.hxC.h(this.bAX, this.hWp.j("ok", null));
+      AppMethodBeat.o(131413);
+      return;
+      this.hxC.h(this.bAX, this.hWp.j("fail:".concat(String.valueOf(paramString)), null));
+      AppMethodBeat.o(131413);
+      return;
+      this.hxC.h(this.bAX, this.hWp.j("cancel", null));
+    }
   }
 }
 

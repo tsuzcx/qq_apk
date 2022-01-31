@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingSnsBackgroundUI$6
   implements DialogInterface.OnClickListener
@@ -11,7 +12,9 @@ final class SettingSnsBackgroundUI$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.oTg.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.i(38558);
+    this.rLd.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.o(38558);
   }
 }
 

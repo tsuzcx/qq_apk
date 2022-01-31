@@ -1,11 +1,12 @@
 package com.tencent.mm.model.gdpr.ui;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.e;
-import com.tencent.mm.protocal.c.bqm;
-import com.tencent.mm.protocal.c.bqn;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.cau;
+import com.tencent.mm.protocal.protobuf.cav;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class MPGdprPolicyUI$1
@@ -13,48 +14,56 @@ final class MPGdprPolicyUI$1
 {
   MPGdprPolicyUI$1(MPGdprPolicyUI paramMPGdprPolicyUI) {}
   
-  public final boolean IP()
+  public final void a(MMWebView paramMMWebView)
   {
-    this.dYI.runOnUiThread(new MPGdprPolicyUI.1.1(this));
+    AppMethodBeat.i(1500);
+    this.foM.runOnUiThread(new MPGdprPolicyUI.1.3(this));
+    AppMethodBeat.o(1500);
+  }
+  
+  public final boolean abM()
+  {
+    AppMethodBeat.i(1498);
+    this.foM.runOnUiThread(new MPGdprPolicyUI.1.1(this));
+    AppMethodBeat.o(1498);
     return true;
   }
   
-  public final void IQ()
+  public final void abN()
   {
-    this.dYI.runOnUiThread(new MPGdprPolicyUI.1.2(this));
+    AppMethodBeat.i(1499);
+    this.foM.runOnUiThread(new MPGdprPolicyUI.1.2(this));
+    AppMethodBeat.o(1499);
   }
   
-  public final void a(MMWebView paramMMWebView)
+  public final boolean e(int paramInt, Bundle paramBundle)
   {
-    this.dYI.runOnUiThread(new MPGdprPolicyUI.1.3(this));
-  }
-  
-  public final boolean b(int paramInt, Bundle paramBundle)
-  {
+    AppMethodBeat.i(1501);
     if (paramInt == 200)
     {
       boolean bool = paramBundle.getBoolean("OnMPGdprPolicyAgreement_KIsAgree", false);
-      MPGdprPolicyUI.a(this.dYI, bool);
-      MPGdprPolicyUI.b(this.dYI);
-      if ((bool) && (!bk.bl(MPGdprPolicyUI.c(this.dYI))) && (MPGdprPolicyUI.d(this.dYI).dYx != 0))
+      MPGdprPolicyUI.a(this.foM, bool);
+      MPGdprPolicyUI.b(this.foM);
+      if ((bool) && (!bo.isNullOrNil(MPGdprPolicyUI.c(this.foM))) && (MPGdprPolicyUI.d(this.foM).foC != 0))
       {
-        paramBundle = new com.tencent.mm.ah.a();
-        bqm localbqm = new bqm();
-        localbqm.bOL = MPGdprPolicyUI.c(this.dYI);
-        localbqm.scene = MPGdprPolicyUI.d(this.dYI).dYx;
+        paramBundle = new com.tencent.mm.ai.a();
+        cau localcau = new cau();
+        localcau.cwc = MPGdprPolicyUI.c(this.foM);
+        localcau.scene = MPGdprPolicyUI.d(this.foM).foC;
         b.a locala = new b.a();
-        locala.ecH = localbqm;
-        locala.ecI = new bqn();
-        locala.ecG = 2734;
+        locala.fsX = localcau;
+        locala.fsY = new cav();
+        locala.funcId = 2734;
         locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/setgdrpauth";
-        paramBundle.dmK = locala.Kt();
-        paramBundle.Km();
+        paramBundle.rr = locala.ado();
+        paramBundle.adl();
       }
     }
+    AppMethodBeat.o(1501);
     return false;
   }
   
-  public final boolean jh(String paramString)
+  public final boolean pV(String paramString)
   {
     return false;
   }

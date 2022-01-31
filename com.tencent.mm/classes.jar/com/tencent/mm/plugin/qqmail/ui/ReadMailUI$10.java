@@ -3,11 +3,12 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.stub.ReadMailProxy;
 import com.tencent.mm.plugin.webview.ui.tools.widget.e;
 import com.tencent.mm.plugin.webview.ui.tools.widget.h;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class ReadMailUI$10
@@ -15,65 +16,70 @@ final class ReadMailUI$10
 {
   ReadMailUI$10(ReadMailUI paramReadMailUI) {}
   
-  public final boolean IP()
-  {
-    return false;
-  }
-  
-  public final void IQ() {}
-  
   public final void a(MMWebView paramMMWebView)
   {
+    AppMethodBeat.i(68433);
     paramMMWebView.evaluateJavascript("javascript:var meta = document.createElement(\"meta\");meta.name=\"viewport\";meta.id=\"viewport\";meta.content=\"initial-scale=1,user-scalable=yes,maximum-scale=3.0\";document.head.appendChild(meta);", null);
-    paramMMWebView.evaluateJavascript("javascript:" + ReadMailUI.bus(), null);
-    paramMMWebView.evaluateJavascript("javascript:" + ReadMailUI.but(), null);
-    paramMMWebView.evaluateJavascript("javascript:" + ReadMailUI.buu(), null);
-    if (ReadMailUI.l(this.njK).isConnected())
+    paramMMWebView.evaluateJavascript("javascript:" + ReadMailUI.ceE(), null);
+    paramMMWebView.evaluateJavascript("javascript:" + ReadMailUI.ceF(), null);
+    paramMMWebView.evaluateJavascript("javascript:" + ReadMailUI.ceG(), null);
+    if (ReadMailUI.l(this.pOX).isConnected())
     {
-      if (!ReadMailUI.t(this.njK)) {
-        ReadMailUI.u(this.njK);
+      if (!ReadMailUI.t(this.pOX)) {
+        ReadMailUI.u(this.pOX);
       }
-      ReadMailUI.a(this.njK, new ReadMailProxy(ReadMailUI.l(this.njK), null, new ReadMailUI.b(this.njK), new ReadMailUI.c(this.njK)));
-      ReadMailUI.v(this.njK).REMOTE_CALL("addDownloadCallback", new Object[0]);
+      ReadMailUI.a(this.pOX, new ReadMailProxy(ReadMailUI.l(this.pOX), null, new ReadMailUI.b(this.pOX), new ReadMailUI.c(this.pOX)));
+      ReadMailUI.v(this.pOX).REMOTE_CALL("addDownloadCallback", new Object[0]);
     }
-    new ah(this.njK.getMainLooper()).postDelayed(new ReadMailUI.10.1(this), 200L);
-    new ah(this.njK.getMainLooper()).postDelayed(new ReadMailUI.10.2(this), 400L);
+    new ak(this.pOX.getMainLooper()).postDelayed(new ReadMailUI.10.1(this), 200L);
+    new ak(this.pOX.getMainLooper()).postDelayed(new ReadMailUI.10.2(this), 400L);
+    AppMethodBeat.o(68433);
   }
   
-  public final boolean b(int paramInt, Bundle paramBundle)
+  public final boolean abM()
   {
     return false;
   }
   
-  public final boolean jh(String paramString)
+  public final void abN() {}
+  
+  public final boolean e(int paramInt, Bundle paramBundle)
   {
-    y.d("MicroMsg.ReadMailUI", "url:%s", new Object[] { paramString });
+    return false;
+  }
+  
+  public final boolean pV(String paramString)
+  {
+    AppMethodBeat.i(68432);
+    ab.d("MicroMsg.ReadMailUI", "url:%s", new Object[] { paramString });
     Intent localIntent;
     if ((paramString != null) && (paramString.startsWith("mailto:")))
     {
       paramString = paramString.trim().replace("mailto:", "");
-      localIntent = new Intent(this.njK, ComposeUI.class);
+      localIntent = new Intent(this.pOX, ComposeUI.class);
       localIntent.putExtra("composeType", 4);
       localIntent.putExtra("toList", new String[] { paramString + " " + paramString });
-      this.njK.startActivity(localIntent);
+      this.pOX.startActivity(localIntent);
     }
     for (;;)
     {
+      AppMethodBeat.o(68432);
       return true;
       if ((paramString != null) && (paramString.startsWith("tel:")))
       {
         paramString = new Intent("android.intent.action.DIAL", Uri.parse(paramString));
         paramString.addFlags(268435456);
-        this.njK.startActivity(paramString);
+        this.pOX.startActivity(paramString);
       }
       else
       {
         if ((paramString == null) || (paramString.startsWith("data:"))) {
-          break label244;
+          break label264;
         }
-        if (((h)ReadMailUI.g(this.njK)).cgL())
+        if (((h)ReadMailUI.g(this.pOX)).dgS())
         {
-          ((h)ReadMailUI.g(this.njK)).cgM();
+          ((h)ReadMailUI.g(this.pOX)).dgT();
+          AppMethodBeat.o(68432);
           return true;
         }
         if (!paramString.startsWith("http")) {
@@ -81,17 +87,19 @@ final class ReadMailUI$10
         }
         localIntent = new Intent();
         localIntent.putExtra("rawUrl", paramString);
-        com.tencent.mm.br.d.b(this.njK, "webview", ".ui.tools.WebViewUI", localIntent);
+        com.tencent.mm.bq.d.b(this.pOX, "webview", ".ui.tools.WebViewUI", localIntent);
       }
     }
+    AppMethodBeat.o(68432);
     return false;
-    label244:
+    label264:
+    AppMethodBeat.o(68432);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ReadMailUI.10
  * JD-Core Version:    0.7.0.1
  */

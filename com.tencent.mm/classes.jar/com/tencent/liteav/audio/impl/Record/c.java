@@ -1,50 +1,60 @@
 package com.tencent.liteav.audio.impl.Record;
 
 import android.content.Context;
-import com.tencent.liteav.audio.TXEAudioDef;
-import com.tencent.liteav.audio.e;
-import com.tencent.liteav.basic.a.a;
+import com.tencent.liteav.audio.d;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.structs.a;
 import java.lang.ref.WeakReference;
 
 public abstract class c
 {
   private static final String TAG = "AudioCenter:" + c.class.getSimpleName();
-  protected int mAECType = TXEAudioDef.TXE_AEC_NONE;
-  protected int mBits = a.h;
-  protected int mChannels = a.f;
+  protected int mAECType = 0;
+  protected int mAudioFormat = 10;
+  protected int mBits = 16;
+  protected int mChannels = 1;
   protected Context mContext;
   protected boolean mEnableHWEncoder = false;
+  protected boolean mEnableVolumeLevel = false;
+  protected float mFecRatio = 0.0F;
+  protected int mFrameLenMs = 21;
+  protected String mID;
   protected boolean mIsCustomRecord = false;
   protected boolean mIsEarphoneOn = false;
   protected boolean mIsMute = false;
   protected int mNSMode = -1;
-  protected int mReverbType = TXEAudioDef.TXE_REVERB_TYPE_0;
-  protected int mSampleRate = a.e;
+  protected int mReverbType = 0;
+  protected int mSampleRate = 48000;
+  protected int mSamplesNumPerFrame = 1024;
   protected int mVoiceEnvironment = -1;
   protected int mVoiceKind = -1;
   protected float mVolume = 1.0F;
-  protected WeakReference<e> mWeakRecordListener;
+  protected WeakReference<d> mWeakRecordListener;
+  
+  public void SetID(String paramString)
+  {
+    this.mID = paramString;
+  }
   
   public void enableHWEncoder(boolean paramBoolean)
   {
-    TXCLog.i(TAG, "enableHWEncoder: " + paramBoolean);
+    TXCLog.i(TAG, "enableHWEncoder: ".concat(String.valueOf(paramBoolean)));
     this.mEnableHWEncoder = paramBoolean;
   }
   
   /* Error */
-  public e getListener()
+  public d getListener()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 117	com/tencent/liteav/audio/impl/Record/c:mWeakRecordListener	Ljava/lang/ref/WeakReference;
+    //   3: getfield 125	com/tencent/liteav/audio/impl/Record/c:mWeakRecordListener	Ljava/lang/ref/WeakReference;
     //   6: ifnull +18 -> 24
     //   9: aload_0
-    //   10: getfield 117	com/tencent/liteav/audio/impl/Record/c:mWeakRecordListener	Ljava/lang/ref/WeakReference;
-    //   13: invokevirtual 123	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   16: checkcast 125	com/tencent/liteav/audio/e
+    //   10: getfield 125	com/tencent/liteav/audio/impl/Record/c:mWeakRecordListener	Ljava/lang/ref/WeakReference;
+    //   13: invokevirtual 131	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   16: checkcast 133	com/tencent/liteav/audio/d
     //   19: astore_1
     //   20: aload_0
     //   21: monitorexit
@@ -61,21 +71,45 @@ public abstract class c
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	34	0	this	c
-    //   19	7	1	locale	e
+    //   19	7	1	locald	d
     //   29	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
     //   2	20	29	finally
   }
   
+  public int getVolumeLevel()
+  {
+    return 0;
+  }
+  
   public abstract boolean isRecording();
+  
+  public abstract void sendCustomPCMData(a parama);
   
   public abstract void sendCustomPCMData(byte[] paramArrayOfByte);
   
   public void setAECType(int paramInt)
   {
-    TXCLog.i(TAG, "setAECType: " + paramInt);
+    TXCLog.i(TAG, "setAECType: ".concat(String.valueOf(paramInt)));
     this.mAECType = paramInt;
+  }
+  
+  public void setAudioFormat(int paramInt)
+  {
+    TXCLog.i(TAG, "setAudioFormat : ".concat(String.valueOf(paramInt)));
+    if (isRecording()) {}
+    do
+    {
+      return;
+      this.mAudioFormat = paramInt;
+      if (10 == this.mAudioFormat)
+      {
+        this.mSamplesNumPerFrame = 1024;
+        return;
+      }
+    } while (11 != this.mAudioFormat);
+    this.mSamplesNumPerFrame = 960;
   }
   
   public void setChangerType(int paramInt1, int paramInt2)
@@ -87,77 +121,97 @@ public abstract class c
   
   public void setChannels(int paramInt)
   {
-    TXCLog.i(TAG, "setChannels: " + paramInt);
+    TXCLog.i(TAG, "setChannels: ".concat(String.valueOf(paramInt)));
     this.mChannels = paramInt;
   }
   
   public void setEarphoneOn(boolean paramBoolean)
   {
-    TXCLog.i(TAG, "setEarphoneOn: " + paramBoolean);
+    TXCLog.i(TAG, "setEarphoneOn: ".concat(String.valueOf(paramBoolean)));
     this.mIsEarphoneOn = paramBoolean;
+  }
+  
+  public void setEnableVolumeLevel(boolean paramBoolean)
+  {
+    this.mEnableVolumeLevel = paramBoolean;
+  }
+  
+  public void setEncBitRate(int paramInt) {}
+  
+  public void setEncFrameLenMs(int paramInt)
+  {
+    TXCLog.i(TAG, "setEncFrameLenMs: ".concat(String.valueOf(paramInt)));
+    this.mFrameLenMs = paramInt;
+  }
+  
+  public void setEncInfo(int paramInt1, int paramInt2)
+  {
+    this.mFrameLenMs = paramInt1;
+  }
+  
+  public void setFecRatio(float paramFloat)
+  {
+    this.mFecRatio = paramFloat;
   }
   
   public void setIsCustomRecord(boolean paramBoolean)
   {
-    TXCLog.i(TAG, "setIsCustomRecord: " + paramBoolean);
+    TXCLog.i(TAG, "setIsCustomRecord: ".concat(String.valueOf(paramBoolean)));
     this.mIsCustomRecord = paramBoolean;
   }
   
   /* Error */
-  public void setListener(e parame)
+  public void setListener(d paramd)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: getstatic 52	com/tencent/liteav/audio/impl/Record/c:TAG	Ljava/lang/String;
-    //   5: new 31	java/lang/StringBuilder
-    //   8: dup
-    //   9: ldc 155
-    //   11: invokespecial 37	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   14: aload_1
-    //   15: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   18: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   21: invokestatic 113	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   24: aload_1
-    //   25: ifnonnull +11 -> 36
-    //   28: aload_0
-    //   29: aconst_null
-    //   30: putfield 117	com/tencent/liteav/audio/impl/Record/c:mWeakRecordListener	Ljava/lang/ref/WeakReference;
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: return
-    //   36: aload_0
-    //   37: new 119	java/lang/ref/WeakReference
-    //   40: dup
-    //   41: aload_1
-    //   42: invokespecial 161	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   45: putfield 117	com/tencent/liteav/audio/impl/Record/c:mWeakRecordListener	Ljava/lang/ref/WeakReference;
-    //   48: goto -15 -> 33
-    //   51: astore_1
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: aload_1
-    //   55: athrow
+    //   2: getstatic 58	com/tencent/liteav/audio/impl/Record/c:TAG	Ljava/lang/String;
+    //   5: ldc 182
+    //   7: aload_1
+    //   8: invokestatic 185	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   11: invokevirtual 115	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   14: invokestatic 121	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   17: aload_1
+    //   18: ifnonnull +11 -> 29
+    //   21: aload_0
+    //   22: aconst_null
+    //   23: putfield 125	com/tencent/liteav/audio/impl/Record/c:mWeakRecordListener	Ljava/lang/ref/WeakReference;
+    //   26: aload_0
+    //   27: monitorexit
+    //   28: return
+    //   29: aload_0
+    //   30: new 127	java/lang/ref/WeakReference
+    //   33: dup
+    //   34: aload_1
+    //   35: invokespecial 188	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   38: putfield 125	com/tencent/liteav/audio/impl/Record/c:mWeakRecordListener	Ljava/lang/ref/WeakReference;
+    //   41: goto -15 -> 26
+    //   44: astore_1
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: aload_1
+    //   48: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	56	0	this	c
-    //   0	56	1	parame	e
+    //   0	49	0	this	c
+    //   0	49	1	paramd	d
     // Exception table:
     //   from	to	target	type
-    //   2	24	51	finally
-    //   28	33	51	finally
-    //   36	48	51	finally
+    //   2	17	44	finally
+    //   21	26	44	finally
+    //   29	41	44	finally
   }
   
   public void setMute(boolean paramBoolean)
   {
-    TXCLog.i(TAG, "setMute: " + paramBoolean);
+    TXCLog.i(TAG, "setMute: ".concat(String.valueOf(paramBoolean)));
     this.mIsMute = paramBoolean;
   }
   
   public void setNoiseSuppression(int paramInt)
   {
-    TXCLog.i(TAG, "setNoiseSuppression: " + paramInt);
+    TXCLog.i(TAG, "setNoiseSuppression: ".concat(String.valueOf(paramInt)));
     this.mNSMode = paramInt;
   }
   
@@ -165,20 +219,20 @@ public abstract class c
   
   public void setReverbType(int paramInt)
   {
-    TXCLog.i(TAG, "setReverbType: " + paramInt);
+    TXCLog.i(TAG, "setReverbType: ".concat(String.valueOf(paramInt)));
     this.mReverbType = paramInt;
   }
   
   public void setSamplerate(int paramInt)
   {
-    TXCLog.i(TAG, "setSampleRate: " + paramInt);
+    TXCLog.i(TAG, "setSampleRate: ".concat(String.valueOf(paramInt)));
     this.mSampleRate = paramInt;
   }
   
   public void setVolume(float paramFloat)
   {
     if (paramFloat <= 0.2F) {
-      TXCLog.w(TAG, "setVolume, warning volume too low : " + paramFloat);
+      TXCLog.w(TAG, "setVolume, warning volume too low : ".concat(String.valueOf(paramFloat)));
     }
     float f = paramFloat;
     if (paramFloat < 0.0F) {
@@ -199,7 +253,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.liteav.audio.impl.Record.c
  * JD-Core Version:    0.7.0.1
  */

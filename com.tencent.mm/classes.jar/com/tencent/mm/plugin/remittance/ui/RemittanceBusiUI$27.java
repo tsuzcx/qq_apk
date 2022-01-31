@@ -1,27 +1,17 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.widget.ScrollView;
-import com.tencent.mm.wallet_core.ui.a;
-import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vr;
+import com.tencent.mm.sdk.b.c;
 
 final class RemittanceBusiUI$27
-  implements a
+  extends c<vr>
 {
-  RemittanceBusiUI$27(RemittanceBusiUI paramRemittanceBusiUI) {}
-  
-  public final void gK(boolean paramBoolean)
+  RemittanceBusiUI$27(RemittanceBusiUI paramRemittanceBusiUI)
   {
-    RemittanceBusiUI.a(this.nCA, paramBoolean);
-    if (paramBoolean) {
-      RemittanceBusiUI.a(this.nCA, RemittanceBusiUI.r(this.nCA), RemittanceBusiUI.s(this.nCA));
-    }
-    do
-    {
-      return;
-      RemittanceBusiUI.r(this.nCA).scrollTo(0, 0);
-    } while ((RemittanceBusiUI.d(this.nCA) == null) || (RemittanceBusiUI.d(this.nCA).getVisibility() != 0));
-    RemittanceBusiUI.d(this.nCA).setFocusable(false);
-    RemittanceBusiUI.d(this.nCA).setFocusable(true);
+    AppMethodBeat.i(142200);
+    this.__eventId = vr.class.getName().hashCode();
+    AppMethodBeat.o(142200);
   }
 }
 

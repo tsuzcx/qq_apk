@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:id="@id/cj" style="@style/kx" />
-    <com.tencent.mm.ui.base.MMClearEditText android:id="@id/ji" style="@style/kw" />
-</merge>
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/cvv" android:layout_width="56.0dip" android:layout_height="56.0dip" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip">
+        <TextView android:textSize="@dimen/dw" android:textColor="@color/h8" android:id="@id/cvw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        <TextView android:textSize="@dimen/dw" android:textColor="@color/rv" android:id="@id/cvx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="" />
+    </LinearLayout>
+</LinearLayout>

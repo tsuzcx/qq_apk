@@ -1,24 +1,29 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.os.Bundle;
-import com.tencent.mm.plugin.account.model.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.model.i;
 
 final class InviteFacebookFriendsUI$5
-  extends h
+  extends i
 {
   InviteFacebookFriendsUI$5(InviteFacebookFriendsUI paramInviteFacebookFriendsUI) {}
   
-  public final void l(Bundle paramBundle)
-  {
-    super.l(paramBundle);
-  }
-  
   public final void onError(int paramInt, String paramString)
   {
+    AppMethodBeat.i(124876);
     super.onError(paramInt, paramString);
     if (paramInt == 3) {
-      InviteFacebookFriendsUI.c(this.fmd);
+      InviteFacebookFriendsUI.c(this.gDx);
     }
+    AppMethodBeat.o(124876);
+  }
+  
+  public final void u(Bundle paramBundle)
+  {
+    AppMethodBeat.i(124875);
+    super.u(paramBundle);
+    AppMethodBeat.o(124875);
   }
 }
 

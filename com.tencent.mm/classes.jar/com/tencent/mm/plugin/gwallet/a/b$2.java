@@ -2,60 +2,68 @@ package com.tencent.mm.plugin.gwallet.a;
 
 import android.content.Context;
 import android.os.RemoteException;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.android.vending.billing.IInAppBillingService;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Iterator;
 import java.util.List;
 
 public final class b$2
   implements Runnable
 {
-  public b$2(b paramb, List paramList, b.b paramb1, ah paramah) {}
+  public b$2(b paramb, List paramList, b.b paramb1, ak paramak) {}
   
   public final void run()
   {
-    Object localObject = this.ljg.iterator();
+    AppMethodBeat.i(41694);
+    Object localObject1 = this.nGv.iterator();
     int i = 0;
     int j;
     for (;;)
     {
-      if (!((Iterator)localObject).hasNext()) {
-        break label227;
+      if (!((Iterator)localObject1).hasNext()) {
+        break label222;
       }
-      String str = (String)((Iterator)localObject).next();
+      Object localObject2 = (String)((Iterator)localObject1).next();
       try
       {
-        b localb = this.ljf;
-        localb.Fk("consume");
-        if (str != null) {}
+        b localb = this.nGu;
+        localb.QI("consume");
+        if (localObject2 != null) {}
         try
         {
-          if (str.equals("")) {
-            b.Fl("Can't consume " + str + ". No token.");
+          if (((String)localObject2).equals("")) {
+            b.QJ("Can't consume " + (String)localObject2 + ". No token.");
           }
-          j = localb.liY.c(3, localb.mContext.getPackageName(), str);
+          j = localb.nGn.c(3, localb.mContext.getPackageName(), (String)localObject2);
           if (j == 0) {
-            y.d("MicroMsg.IabHelper", "Successfully consumed token: " + str);
+            ab.d("MicroMsg.IabHelper", "Successfully consumed token: ".concat(String.valueOf(localObject2)));
           }
         }
         catch (RemoteException localRemoteException)
         {
-          throw new a("Remote exception while consuming. token: " + str, localRemoteException);
+          localObject2 = new a("Remote exception while consuming. token: ".concat(String.valueOf(localObject2)), localRemoteException);
+          AppMethodBeat.o(41694);
+          throw ((Throwable)localObject2);
         }
       }
-      catch (a locala)
+      catch (a locala1)
       {
-        i = locala.liX.baN();
+        i = locala1.nGm.bHN();
       }
     }
-    y.d("MicroMsg.IabHelper", "Error consuming consuming token " + locala);
-    throw new a(j, "Error consuming token " + locala);
-    label227:
-    if (this.ljh != null)
+    ab.d("MicroMsg.IabHelper", "Error consuming consuming token ".concat(String.valueOf(locala1)));
+    a locala2 = new a(j, "Error consuming token ".concat(String.valueOf(locala1)));
+    AppMethodBeat.o(41694);
+    throw locala2;
+    label222:
+    if (this.nGw != null)
     {
-      localObject = new c(i, "");
-      this.hZR.post(new b.2.1(this, (c)localObject));
+      localObject1 = new c(i, "");
+      this.mFP.post(new b.2.1(this, (c)localObject1));
     }
+    AppMethodBeat.o(41694);
   }
 }
 

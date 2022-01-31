@@ -7,8 +7,6 @@ import java.util.List;
 
 public abstract interface d
 {
-  public abstract void J(Intent paramIntent);
-  
   public abstract void a(File paramFile, SharePatchInfo paramSharePatchInfo, String paramString);
   
   public abstract void a(File paramFile1, File paramFile2, String paramString, int paramInt);
@@ -21,7 +19,9 @@ public abstract interface d
   
   public abstract void a(File paramFile, boolean paramBoolean, long paramLong);
   
-  public abstract void d(File paramFile, int paramInt);
+  public abstract void ac(Intent paramIntent);
+  
+  public abstract void e(File paramFile, int paramInt);
 }
 
 

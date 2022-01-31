@@ -4,31 +4,31 @@ import com.tencent.tinker.a.c.b;
 
 public abstract class a
 {
-  final b wTE = new b();
-  public int wTF = 0;
+  final b Bqj = new b();
+  public int afg = 0;
   
-  public final int cQB()
+  public final int dWr()
   {
-    int i = this.wTE.indexOfKey(this.wTF);
+    int i = this.Bqj.indexOfKey(this.afg);
     if (i < 0) {
-      return this.wTF;
+      return this.afg;
     }
-    return this.wTE.wTQ[i];
+    return this.Bqj.Bqu[i];
   }
   
-  protected final void cQC()
+  protected final void dWs()
   {
-    this.wTF += 1;
+    this.afg += 1;
   }
   
-  public final void gj(int paramInt1, int paramInt2)
+  public final void ir(int paramInt1, int paramInt2)
   {
-    this.wTE.put(paramInt1, paramInt2);
+    this.Bqj.put(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tinker.a.b.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.h.a.di;
-import com.tencent.mm.h.a.hf;
-import com.tencent.mm.h.a.lb;
-import com.tencent.mm.h.a.rp;
-import com.tencent.mm.model.bf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.dl;
+import com.tencent.mm.g.a.hj;
+import com.tencent.mm.g.a.lp;
+import com.tencent.mm.g.a.tg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.modelmulti.n;
 import com.tencent.mm.modelmulti.o;
-import com.tencent.mm.modelsimple.c;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.modelsimple.e;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.i;
 import com.tencent.mm.pluginsdk.model.app.m;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$1
   implements Runnable
@@ -22,30 +23,36 @@ final class a$1
   
   public final void run()
   {
-    bf.iO("ver" + d.spa);
-    ap.brp().addAll(com.tencent.mm.plugin.z.a.brn().ckS());
-    com.tencent.mm.sdk.b.a locala = com.tencent.mm.sdk.b.a.udP;
+    AppMethodBeat.i(18227);
+    bh.pC("ver" + d.whH);
+    al.cae().addAll(com.tencent.mm.plugin.s.a.cac().dlC());
+    com.tencent.mm.sdk.b.a locala = com.tencent.mm.sdk.b.a.ymk;
     if (locala == null)
     {
-      y.e("MicroMsg.BigBallAuthHandle", "EventPool is null.");
+      ab.e("MicroMsg.BigBallAuthHandle", "EventPool is null.");
+      AppMethodBeat.o(18227);
       return;
     }
-    Object localObject = new hf();
-    ((hf)localObject).bPc.bPd = true;
-    locala.m((b)localObject);
-    localObject = new rp();
-    ((rp)localObject).cbe.cbf = true;
-    locala.m((b)localObject);
-    locala.m(new di());
-    locala.m(new lb());
-    c.bZ(true);
-    n.Pm().iT(3);
-    y.i("MicroMsg.BigBallAuthHandle", "summerbadcr triggerSync bgfg after manual auth");
+    Object localObject = new hj();
+    ((hj)localObject).cwv.cww = true;
+    locala.l((b)localObject);
+    localObject = new tg();
+    ((tg)localObject).cJH.cJI = true;
+    locala.l((b)localObject);
+    locala.l(new dl());
+    locala.l(new lp());
+    e.dc(true);
+    n.aio().lL(3);
+    ab.i("MicroMsg.BigBallAuthHandle", "summerbadcr triggerSync bgfg after manual auth");
+    AppMethodBeat.o(18227);
   }
   
   public final String toString()
   {
-    return super.toString() + "|onGYNetEnd2";
+    AppMethodBeat.i(18228);
+    String str = super.toString() + "|onGYNetEnd2";
+    AppMethodBeat.o(18228);
+    return str;
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.ui.tools;
 
 public abstract interface MMGestureGallery$e
 {
-  public abstract void bIT();
+  public abstract void cvo();
 }
 
 

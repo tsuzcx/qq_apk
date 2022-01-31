@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.qqmail.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,27 +15,37 @@ final class l$a
 {
   private File file;
   private int length;
-  private String ndC;
-  private String ndD;
+  private String pIT;
+  private String pIU;
   
   public l$a(l paraml, String paramString1, String paramString2, String paramString3)
   {
-    this.ndC = paramString1;
+    AppMethodBeat.i(67944);
+    this.pIT = paramString1;
     this.file = new File(paramString2);
-    this.ndD = paramString3;
+    this.pIU = paramString3;
     this.length = (paramString1.length() + (int)this.file.length() + paramString3.length());
+    AppMethodBeat.o(67944);
   }
   
   public final void consumeContent()
   {
-    if (isStreaming()) {
-      throw new UnsupportedOperationException("Streaming entity does not implement #consumeContent()");
+    AppMethodBeat.i(67950);
+    if (isStreaming())
+    {
+      UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Streaming entity does not implement #consumeContent()");
+      AppMethodBeat.o(67950);
+      throw localUnsupportedOperationException;
     }
+    AppMethodBeat.o(67950);
   }
   
   public final InputStream getContent()
   {
-    throw new UnsupportedOperationException("Multipart form entity does not implement #getContent()");
+    AppMethodBeat.i(67948);
+    UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Multipart form entity does not implement #getContent()");
+    AppMethodBeat.o(67948);
+    throw localUnsupportedOperationException;
   }
   
   public final Header getContentEncoding()
@@ -49,12 +60,22 @@ final class l$a
   
   public final Header getContentType()
   {
-    return new BasicHeader("Content-Type", "multipart/form-data; boundary=----" + l.access$000());
+    AppMethodBeat.i(67947);
+    BasicHeader localBasicHeader = new BasicHeader("Content-Type", "multipart/form-data; boundary=----" + l.access$000());
+    AppMethodBeat.o(67947);
+    return localBasicHeader;
   }
   
   public final boolean isChunked()
   {
-    return !isRepeatable();
+    AppMethodBeat.i(67945);
+    if (!isRepeatable())
+    {
+      AppMethodBeat.o(67945);
+      return true;
+    }
+    AppMethodBeat.o(67945);
+    return false;
   }
   
   public final boolean isRepeatable()
@@ -64,13 +85,21 @@ final class l$a
   
   public final boolean isStreaming()
   {
-    return !isRepeatable();
+    AppMethodBeat.i(67946);
+    if (!isRepeatable())
+    {
+      AppMethodBeat.o(67946);
+      return true;
+    }
+    AppMethodBeat.o(67946);
+    return false;
   }
   
   public final void writeTo(OutputStream paramOutputStream)
   {
+    AppMethodBeat.i(67949);
     paramOutputStream = new DataOutputStream(paramOutputStream);
-    paramOutputStream.writeBytes(this.ndC);
+    paramOutputStream.writeBytes(this.pIT);
     try
     {
       byte[] arrayOfByte = new byte[1024];
@@ -86,7 +115,7 @@ final class l$a
           paramOutputStream.write(arrayOfByte, 0, i);
         }
         if (localFileInputStream == null) {
-          break label67;
+          break label72;
         }
       }
       finally {}
@@ -99,11 +128,13 @@ final class l$a
       }
     }
     localFileInputStream.close();
-    label67:
+    label72:
+    AppMethodBeat.o(67949);
     throw paramOutputStream;
     paramOutputStream.flush();
     localFileInputStream.close();
-    paramOutputStream.writeBytes(this.ndD);
+    paramOutputStream.writeBytes(this.pIU);
+    AppMethodBeat.o(67949);
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.sns.ui;
 
 abstract interface SnsAdNativeLandingTestUI$a$a
 {
-  public abstract void Oq(String paramString);
+  public abstract void CF(String paramString);
   
-  public abstract void cu(String paramString, int paramInt);
+  public abstract void dq(String paramString, int paramInt);
   
-  public abstract void uv(String paramString);
+  public abstract void mP(String paramString);
 }
 
 

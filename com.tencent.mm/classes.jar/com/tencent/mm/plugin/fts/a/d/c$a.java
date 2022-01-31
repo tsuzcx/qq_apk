@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c$a
   extends BitmapDrawable
@@ -16,15 +17,19 @@ public final class c$a
   
   public static void a(Resources paramResources, Bitmap paramBitmap, ImageView paramImageView)
   {
+    AppMethodBeat.i(114296);
     paramImageView.setImageDrawable(new a(paramResources, paramBitmap));
     paramImageView.postInvalidate();
+    AppMethodBeat.o(114296);
   }
   
   public final void draw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(114297);
     if ((getBitmap() != null) && (!getBitmap().isRecycled())) {
       super.draw(paramCanvas);
     }
+    AppMethodBeat.o(114297);
   }
 }
 

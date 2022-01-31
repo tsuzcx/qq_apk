@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetShadowActionArg;
-import com.tencent.mm.plugin.appbrand.u.h;
+import com.tencent.mm.plugin.appbrand.s.g;
 import org.json.JSONArray;
 
 public final class ae
@@ -13,40 +14,55 @@ public final class ae
 {
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
-    paramd.fLq.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
-    paramd.fLp.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    AppMethodBeat.i(103285);
+    paramd.heC.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    paramd.heB.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    AppMethodBeat.o(103285);
     return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
+    AppMethodBeat.i(103286);
     paramCanvas = (SetShadowActionArg)paramDrawActionArg;
-    if (paramCanvas == null) {
+    if (paramCanvas == null)
+    {
+      AppMethodBeat.o(103286);
       return false;
     }
-    return a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.fLZ, paramCanvas.color);
+    boolean bool = a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.hfj, paramCanvas.color);
+    AppMethodBeat.o(103286);
+    return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    if (paramJSONArray.length() < 4) {}
-    float f1;
-    float f2;
-    float f3;
-    do
+    AppMethodBeat.i(103284);
+    if (paramJSONArray.length() < 4)
     {
+      AppMethodBeat.o(103284);
       return false;
-      f1 = h.d(paramJSONArray, 0);
-      f2 = h.d(paramJSONArray, 1);
-      f3 = h.d(paramJSONArray, 2);
-      paramCanvas = paramJSONArray.optJSONArray(3);
-    } while ((paramCanvas == null) || (paramCanvas.length() < 4));
-    return a(paramd, f1, f2, f3, h.l(paramCanvas));
+    }
+    float f1 = g.d(paramJSONArray, 0);
+    float f2 = g.d(paramJSONArray, 1);
+    float f3 = g.d(paramJSONArray, 2);
+    paramCanvas = paramJSONArray.optJSONArray(3);
+    if ((paramCanvas == null) || (paramCanvas.length() < 4))
+    {
+      AppMethodBeat.o(103284);
+      return false;
+    }
+    boolean bool = a(paramd, f1, f2, f3, g.o(paramCanvas));
+    AppMethodBeat.o(103284);
+    return bool;
   }
   
-  public final BaseDrawActionArg adE()
+  public final BaseDrawActionArg axW()
   {
-    return new SetShadowActionArg();
+    AppMethodBeat.i(103283);
+    SetShadowActionArg localSetShadowActionArg = new SetShadowActionArg();
+    AppMethodBeat.o(103283);
+    return localSetShadowActionArg;
   }
   
   public final String getMethod()

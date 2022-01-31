@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMWizardActivity;
 
 final class FindMContactAlertUI$6
@@ -12,11 +13,13 @@ final class FindMContactAlertUI$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(this.fdg, FindMContactLearmMoreUI.class);
-    paramDialogInterface.putExtra("regsetinfo_ticket", FindMContactAlertUI.a(this.fdg));
-    paramDialogInterface.putExtra("regsetinfo_NextStep", FindMContactAlertUI.b(this.fdg));
-    paramDialogInterface.putExtra("regsetinfo_NextStyle", FindMContactAlertUI.c(this.fdg));
-    MMWizardActivity.C(this.fdg, paramDialogInterface);
+    AppMethodBeat.i(13568);
+    paramDialogInterface = new Intent(this.guR, FindMContactLearmMoreUI.class);
+    paramDialogInterface.putExtra("regsetinfo_ticket", FindMContactAlertUI.a(this.guR));
+    paramDialogInterface.putExtra("regsetinfo_NextStep", FindMContactAlertUI.b(this.guR));
+    paramDialogInterface.putExtra("regsetinfo_NextStyle", FindMContactAlertUI.c(this.guR));
+    MMWizardActivity.J(this.guR, paramDialogInterface);
+    AppMethodBeat.o(13568);
   }
 }
 

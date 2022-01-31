@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.a;
 
 import android.util.Pair;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Iterator;
@@ -11,74 +12,80 @@ import java.util.List;
 public final class h
   extends a
 {
-  private int[] aCR;
+  private int[] aIl;
   long duration;
-  List<g> eUA = new LinkedList();
-  List<Pair> eUB = new LinkedList();
-  long eUF;
-  private long eUG;
-  private long eUH;
-  private long eUI;
-  private long eUJ;
-  private int[] eUK;
-  private int[] eUL;
-  private int[] eUM;
-  private long[] eUN;
-  private int[] eUO;
-  private int[] eUP;
-  long eUv;
-  long[] eUy;
+  private long gmC;
+  private long gmD;
+  private long gmE;
+  private long gmF;
+  private long gmG;
+  private int[] gmH;
+  private int[] gmI;
+  private int[] gmJ;
+  private long[] gmK;
+  private int[] gmL;
+  private int[] gmM;
+  long gmt;
+  long[] gmw;
+  List<g> gmy;
+  List<Pair> gmz;
   
   public h(int paramInt1, long paramLong, int paramInt2)
   {
     super(paramInt1, paramLong, paramInt2, 0L);
+    AppMethodBeat.i(117852);
+    this.gmy = new LinkedList();
+    this.gmz = new LinkedList();
+    AppMethodBeat.o(117852);
   }
   
-  private boolean Vg()
+  private boolean aoE()
   {
-    if (this.eUM != null) {}
+    AppMethodBeat.i(117854);
+    if (this.gmJ != null) {}
     int m;
-    for (int i = this.eUM.length;; i = this.eUN.length)
+    for (int i = this.gmJ.length;; i = this.gmK.length)
     {
       j = i - 1;
-      m = this.eUK.length;
+      m = this.gmH.length;
       i = 1;
       while (i < m)
       {
-        this.eUK[(i - 1)] = (this.eUK[i] - this.eUK[(i - 1)]);
+        this.gmH[(i - 1)] = (this.gmH[i] - this.gmH[(i - 1)]);
         i += 1;
       }
     }
-    this.eUK[(m - 1)] = (j - this.eUK[(m - 1)] + 1);
-    this.eUP = new int[j + 1];
-    this.eUP[0] = 0;
-    i = 0;
+    this.gmH[(m - 1)] = (j - this.gmH[(m - 1)] + 1);
+    this.gmM = new int[j + 1];
+    this.gmM[0] = 0;
     int j = 1;
+    i = 0;
     int k;
     while (i < m)
     {
-      int n = this.eUK[i];
-      int i1 = this.eUL[i];
+      int n = this.gmH[i];
+      int i1 = this.gmI[i];
       k = 0;
       while (k < n)
       {
-        this.eUP[j] = (this.eUP[(j - 1)] + i1);
+        localObject = this.gmM;
+        localObject[j] = (localObject[(j - 1)] + i1);
         j += 1;
         k += 1;
       }
       i += 1;
     }
     i = 0;
-    while (i < this.eUy.length)
+    while (i < this.gmw.length)
     {
-      k = (int)this.eUy[i];
-      m = jN(k);
-      j = this.eUP[(m - 1)] + 1;
-      if (this.aCR.length == 1)
+      k = (int)this.gmw[i];
+      m = mJ(k);
+      j = this.gmM[(m - 1)] + 1;
+      if (this.aIl.length == 1)
       {
-        l2 = this.aCR[0] * (k - j);
-        l1 = jO(m);
-        this.eUy[i] = (l2 + l1);
+        l2 = this.aIl[0] * (k - j);
+        l1 = mK(m);
+        this.gmw[i] = (l2 + l1);
         i += 1;
       }
       else
@@ -90,292 +97,53 @@ public final class h
           if (j > k) {
             break;
           }
-          l1 += this.aCR[j];
+          l1 += this.aIl[j];
           j += 1;
         }
       }
     }
-    Object localObject = this.eUA.iterator();
-    long l1 = 0L;
-    long l2 = 0L;
-    j = 0;
     i = 1;
+    j = 0;
+    long l1 = 0L;
+    Object localObject = this.gmy.iterator();
+    long l2 = 0L;
     if (((Iterator)localObject).hasNext())
     {
       g localg = (g)((Iterator)localObject).next();
-      localg.size = this.aCR[i];
-      k = jN(i);
+      localg.size = this.aIl[i];
+      k = mJ(i);
       if (k != j) {}
-      for (localg.start = jO(k);; localg.start = l2)
+      for (localg.start = mK(k);; localg.start = l2)
       {
-        l2 = localg.start;
-        long l3 = localg.size;
-        l1 += localg.eUD;
-        localg.eUD = (((float)l1 * 1.0F / (float)this.eUv * 1000.0F * 1000.0F));
+        l2 = localg.start + localg.size;
+        l1 += localg.eUW;
+        localg.eUW = (((float)l1 * 1.0F / (float)this.gmt * 1000.0F * 1000.0F));
         localg.id = i;
-        l2 += l3;
-        j = k;
         i += 1;
+        j = k;
         break;
       }
     }
     i = 0;
-    while (i < this.eUO.length)
+    while (i < this.gmL.length)
     {
-      localObject = (g)this.eUA.get(this.eUO[i] - 1);
-      ((g)localObject).eUE = 1;
-      localObject = new Pair(Integer.valueOf(this.eUO[i] - 1), Long.valueOf(((g)localObject).eUD));
-      y.d("MicroMsg.StblAtom", "stss key frame [%s %s]", new Object[] { ((Pair)localObject).first, ((Pair)localObject).second });
-      this.eUB.add(localObject);
+      localObject = (g)this.gmy.get(this.gmL[i] - 1);
+      ((g)localObject).gmB = 1;
+      localObject = new Pair(Integer.valueOf(this.gmL[i] - 1), Long.valueOf(((g)localObject).eUW));
+      ab.d("MicroMsg.StblAtom", "stss key frame [%s %s]", new Object[] { ((Pair)localObject).first, ((Pair)localObject).second });
+      this.gmz.add(localObject);
       i += 1;
     }
+    AppMethodBeat.o(117854);
     return true;
   }
   
-  private long a(RandomAccessFile paramRandomAccessFile, int paramInt)
-  {
-    this.eUG = paramRandomAccessFile.getFilePointer();
-    if (!c.a(paramRandomAccessFile, 4L)) {
-      return -1L;
-    }
-    byte[] arrayOfByte = new byte[12];
-    if (paramRandomAccessFile.read(arrayOfByte, 0, 4) < 4)
-    {
-      y.w("MicroMsg.StblAtom", "stsc read entry count error");
-      return -1L;
-    }
-    int i = c.readInt(arrayOfByte, 0);
-    long l3 = 12L * i;
-    if ((l3 > paramInt - 16) || (l3 <= 0L))
-    {
-      y.w("MicroMsg.StblAtom", "stsc error entryCount : " + i);
-      return -1L;
-    }
-    y.d("MicroMsg.StblAtom", "handle stsc entryCount : " + i);
-    this.eUK = new int[i];
-    this.eUL = new int[i];
-    i = 0;
-    long l1 = 0L;
-    for (paramInt = paramRandomAccessFile.read(arrayOfByte);; paramInt = paramRandomAccessFile.read(arrayOfByte))
-    {
-      long l2 = l1;
-      if (paramInt >= 12)
-      {
-        l1 += paramInt;
-        this.eUK[i] = c.readInt(arrayOfByte, 0);
-        this.eUL[i] = c.readInt(arrayOfByte, 4);
-        i += 1;
-        if (l1 >= l3)
-        {
-          y.d("MicroMsg.StblAtom", "read stsc atom end");
-          l2 = l1;
-        }
-      }
-      else
-      {
-        return l2 + 8L;
-      }
-    }
-  }
-  
-  private long b(RandomAccessFile paramRandomAccessFile, int paramInt)
-  {
-    this.eUH = paramRandomAccessFile.getFilePointer();
-    if (!c.a(paramRandomAccessFile, 4L)) {
-      return -1L;
-    }
-    byte[] arrayOfByte = new byte[4];
-    if (paramRandomAccessFile.read(arrayOfByte, 0, 4) < 4)
-    {
-      y.w("MicroMsg.StblAtom", "stco read entry count error");
-      return -1L;
-    }
-    int i = c.readInt(arrayOfByte, 0);
-    long l3 = i * 4L;
-    if ((l3 <= 0L) || (l3 > paramInt - 16))
-    {
-      y.w("MicroMsg.StblAtom", "stco error entryCount : " + i);
-      return -1L;
-    }
-    this.eUM = new int[i + 1];
-    paramInt = 1;
-    i = paramRandomAccessFile.read(arrayOfByte);
-    long l1 = 0L;
-    for (;;)
-    {
-      long l2 = l1;
-      if (i >= 4)
-      {
-        l1 += i;
-        this.eUM[paramInt] = c.readInt(arrayOfByte, 0);
-        if (l1 >= l3)
-        {
-          y.d("MicroMsg.StblAtom", "read stco atom end");
-          l2 = l1;
-        }
-      }
-      else
-      {
-        return l2 + 8L;
-      }
-      i = paramRandomAccessFile.read(arrayOfByte);
-      paramInt += 1;
-    }
-  }
-  
-  private long c(RandomAccessFile paramRandomAccessFile, int paramInt)
-  {
-    this.eUI = paramRandomAccessFile.getFilePointer();
-    if (!c.a(paramRandomAccessFile, 4L)) {
-      return -1L;
-    }
-    byte[] arrayOfByte = new byte[8];
-    if (paramRandomAccessFile.read(arrayOfByte, 0, 4) < 4)
-    {
-      y.w("MicroMsg.StblAtom", "co64 read entry count error");
-      return -1L;
-    }
-    int i = c.readInt(arrayOfByte, 0);
-    long l3 = i * 8L;
-    if ((l3 <= 0L) || (l3 > paramInt - 16))
-    {
-      y.w("MicroMsg.StblAtom", "stco error entryCount : " + i);
-      return -1L;
-    }
-    this.eUN = new long[i + 1];
-    paramInt = 1;
-    i = paramRandomAccessFile.read(arrayOfByte);
-    long l1 = 0L;
-    for (;;)
-    {
-      long l2 = l1;
-      if (i >= 8)
-      {
-        l1 += i;
-        this.eUN[paramInt] = c.K(arrayOfByte);
-        if (l1 >= l3)
-        {
-          y.d("MicroMsg.StblAtom", "read stco atom end");
-          l2 = l1;
-        }
-      }
-      else
-      {
-        return l2 + 8L;
-      }
-      i = paramRandomAccessFile.read(arrayOfByte);
-      paramInt += 1;
-    }
-  }
-  
-  private long d(RandomAccessFile paramRandomAccessFile, int paramInt)
-  {
-    this.eUJ = paramRandomAccessFile.getFilePointer();
-    if (!c.a(paramRandomAccessFile, 4L)) {
-      return -1L;
-    }
-    byte[] arrayOfByte = new byte[4];
-    if (paramRandomAccessFile.read(arrayOfByte, 0, 4) < 4)
-    {
-      y.w("MicroMsg.StblAtom", "stsz read sample size error");
-      return -1L;
-    }
-    int i = c.readInt(arrayOfByte, 0);
-    if (i > 0)
-    {
-      this.aCR = new int[1];
-      this.aCR[0] = i;
-      y.i("MicroMsg.StblAtom", "all sample size is the same. size : " + i);
-      return 8L;
-    }
-    if (paramRandomAccessFile.read(arrayOfByte, 0, 4) < 4)
-    {
-      y.w("MicroMsg.StblAtom", "stsz read entry count error");
-      return -1L;
-    }
-    i = c.readInt(arrayOfByte, 0);
-    long l3 = 4L * i;
-    if ((l3 <= 0L) || (l3 > paramInt - 20))
-    {
-      y.w("MicroMsg.StblAtom", "stco error entryCount : " + i);
-      return -1L;
-    }
-    this.aCR = new int[i + 1];
-    paramInt = 1;
-    i = paramRandomAccessFile.read(arrayOfByte);
-    long l1 = 0L;
-    for (;;)
-    {
-      long l2 = l1;
-      if (i >= 4)
-      {
-        l1 += i;
-        this.aCR[paramInt] = c.readInt(arrayOfByte, 0);
-        if (l1 >= l3)
-        {
-          y.d("MicroMsg.StblAtom", "read stsz atom end");
-          l2 = l1;
-        }
-      }
-      else
-      {
-        return l2 + 12L;
-      }
-      i = paramRandomAccessFile.read(arrayOfByte);
-      paramInt += 1;
-    }
-  }
-  
-  private long e(RandomAccessFile paramRandomAccessFile, int paramInt)
-  {
-    if (!c.a(paramRandomAccessFile, 4L)) {
-      return -1L;
-    }
-    byte[] arrayOfByte = new byte[4];
-    if (paramRandomAccessFile.read(arrayOfByte, 0, 4) < 4)
-    {
-      y.w("MicroMsg.StblAtom", "stss rread entry count error");
-      return -1L;
-    }
-    int i = c.readInt(arrayOfByte, 0);
-    long l3 = i * 4L;
-    if ((l3 <= 0L) || (l3 > paramInt - 16))
-    {
-      y.w("MicroMsg.StblAtom", "stss error entryCount : " + i);
-      return -1L;
-    }
-    this.eUO = new int[i];
-    i = paramRandomAccessFile.read(arrayOfByte);
-    long l1 = 0L;
-    paramInt = 0;
-    for (;;)
-    {
-      long l2 = l1;
-      if (i >= 4)
-      {
-        l1 += i;
-        this.eUO[paramInt] = c.readInt(arrayOfByte, 0);
-        if (l1 >= l3)
-        {
-          y.d("MicroMsg.StblAtom", "read stss atom end");
-          l2 = l1;
-        }
-      }
-      else
-      {
-        return l2 + 8L;
-      }
-      i = paramRandomAccessFile.read(arrayOfByte);
-      paramInt += 1;
-    }
-  }
-  
-  private int jN(int paramInt)
+  private int mJ(int paramInt)
   {
     int i = 0;
-    while (i < this.eUP.length)
+    while (i < this.gmM.length)
     {
-      if (paramInt <= this.eUP[i]) {
+      if (paramInt <= this.gmM[i]) {
         return i;
       }
       i += 1;
@@ -383,19 +151,20 @@ public final class h
     return 0;
   }
   
-  private long jO(int paramInt)
+  private long mK(int paramInt)
   {
-    if (this.eUM != null) {
-      return this.eUM[paramInt];
+    if (this.gmJ != null) {
+      return this.gmJ[paramInt];
     }
-    if (this.eUN != null) {
-      return this.eUN[paramInt];
+    if (this.gmK != null) {
+      return this.gmK[paramInt];
     }
     return 0L;
   }
   
   public final void d(RandomAccessFile paramRandomAccessFile)
   {
+    AppMethodBeat.i(117853);
     byte[] arrayOfByte1 = new byte[8];
     int i1 = paramRandomAccessFile.read(arrayOfByte1);
     int n = 0;
@@ -406,16 +175,16 @@ public final class h
     int i7;
     int m;
     long l1;
-    label84:
+    label89:
     int i3;
     if (i1 >= 8)
     {
       i7 = c.readInt(arrayOfByte1, 0);
       m = c.readInt(arrayOfByte1, 4);
       l1 = 0L;
-      if (m == a.aAW)
+      if (m == a.aFB)
       {
-        this.eUF = paramRandomAccessFile.getFilePointer();
+        this.gmC = paramRandomAccessFile.getFilePointer();
         if (!c.a(paramRandomAccessFile, 4L))
         {
           l1 = -1L;
@@ -431,35 +200,38 @@ public final class h
     {
       if (!c.a(paramRandomAccessFile, i7 - l1 - i1))
       {
-        throw new IOException("skip file error.");
+        paramRandomAccessFile = new IOException("skip file error.");
+        AppMethodBeat.o(117853);
+        throw paramRandomAccessFile;
         byte[] arrayOfByte2 = new byte[8];
         if (paramRandomAccessFile.read(arrayOfByte2, 0, 4) < 4)
         {
-          y.w("MicroMsg.StblAtom", "stts read entry count error");
+          ab.w("MicroMsg.StblAtom", "stts read entry count error");
           l1 = -1L;
-          break label84;
+          break label89;
         }
         m = c.readInt(arrayOfByte2, 0);
         long l3 = 8L * m;
         if ((l3 > i7 - 16) || (l3 <= 0L))
         {
-          y.w("MicroMsg.StblAtom", "stts error entryCount : " + m);
+          ab.w("MicroMsg.StblAtom", "stts error entryCount : ".concat(String.valueOf(m)));
           l1 = -1L;
-          break label84;
+          break label89;
         }
         i3 = 0;
         m = 0;
-        this.eUy = new long[(int)(this.duration / this.eUv) + 2];
-        Object localObject = this.eUy;
+        this.gmw = new long[(int)(this.duration / this.gmt) + 2];
+        Object localObject = this.gmw;
         n = 1;
         localObject[0] = 1L;
         l1 = 0L;
         int i5 = paramRandomAccessFile.read(arrayOfByte2);
+        long l2;
         for (;;)
         {
           int i6 = n;
           int i4 = m;
-          long l2 = l1;
+          l2 = l1;
           if (i5 >= 8)
           {
             l1 += i5;
@@ -471,15 +243,15 @@ public final class h
             while (i3 < i6)
             {
               localObject = new g();
-              ((g)localObject).eUD = i8;
-              this.eUA.add(localObject);
+              ((g)localObject).eUW = i8;
+              this.gmy.add(localObject);
               i4 += i8;
               i5 = m + 1;
               m = i4;
-              while ((m >= this.eUv) && (n < this.eUy.length))
+              while ((m >= this.gmt) && (n < this.gmw.length))
               {
-                m = (int)(m - this.eUv);
-                this.eUy[n] = i5;
+                m = (int)(m - this.gmt);
+                this.gmw[n] = i5;
                 n += 1;
               }
               i3 += 1;
@@ -488,7 +260,7 @@ public final class h
             }
             if (l1 >= l3)
             {
-              y.d("MicroMsg.StblAtom", "read stts Atom end");
+              ab.d("MicroMsg.StblAtom", "read stts Atom end");
               l2 = l1;
               i4 = m;
               i6 = n;
@@ -496,8 +268,8 @@ public final class h
           }
           else
           {
-            if (i6 < this.eUy.length) {
-              this.eUy[i6] = i4;
+            if (i6 < this.gmw.length) {
+              this.gmw[i6] = i4;
             }
             l1 = 8L + l2;
             break;
@@ -505,60 +277,317 @@ public final class h
           i5 = paramRandomAccessFile.read(arrayOfByte2);
           i3 = i4;
         }
-        if (m == a.aAZ)
+        if (m == a.aFE)
         {
-          l1 = a(paramRandomAccessFile, i7);
+          this.gmD = paramRandomAccessFile.getFilePointer();
+          if (!c.a(paramRandomAccessFile, 4L)) {
+            l1 = -1L;
+          }
+          for (;;)
+          {
+            m = 1;
+            i = k;
+            k = m;
+            m = i2;
+            break;
+            arrayOfByte2 = new byte[12];
+            if (paramRandomAccessFile.read(arrayOfByte2, 0, 4) < 4)
+            {
+              ab.w("MicroMsg.StblAtom", "stsc read entry count error");
+              l1 = -1L;
+            }
+            else
+            {
+              i = c.readInt(arrayOfByte2, 0);
+              l3 = 12L * i;
+              if ((l3 <= i7 - 16) && (l3 > 0L)) {
+                break label666;
+              }
+              ab.w("MicroMsg.StblAtom", "stsc error entryCount : ".concat(String.valueOf(i)));
+              l1 = -1L;
+            }
+          }
+          label666:
+          ab.d("MicroMsg.StblAtom", "handle stsc entryCount : ".concat(String.valueOf(i)));
+          this.gmH = new int[i];
+          this.gmI = new int[i];
+          m = 0;
+          l1 = 0L;
+          for (i = paramRandomAccessFile.read(arrayOfByte2);; i = paramRandomAccessFile.read(arrayOfByte2))
+          {
+            l2 = l1;
+            if (i >= 12)
+            {
+              l1 += i;
+              this.gmH[m] = c.readInt(arrayOfByte2, 0);
+              this.gmI[m] = c.readInt(arrayOfByte2, 4);
+              m += 1;
+              if (l1 >= l3)
+              {
+                ab.d("MicroMsg.StblAtom", "read stsc atom end");
+                l2 = l1;
+              }
+            }
+            else
+            {
+              l1 = l2 + 8L;
+              break;
+            }
+          }
+        }
+        if (m == a.aFH)
+        {
+          this.gmE = paramRandomAccessFile.getFilePointer();
+          if (!c.a(paramRandomAccessFile, 4L)) {
+            l1 = -1L;
+          }
+          for (;;)
+          {
+            i2 = 1;
+            m = i;
+            i = k;
+            k = m;
+            m = i2;
+            break;
+            arrayOfByte2 = new byte[4];
+            if (paramRandomAccessFile.read(arrayOfByte2, 0, 4) < 4)
+            {
+              ab.w("MicroMsg.StblAtom", "stco read entry count error");
+              l1 = -1L;
+            }
+            else
+            {
+              m = c.readInt(arrayOfByte2, 0);
+              l3 = 4L * m;
+              if ((l3 > 0L) && (l3 <= i7 - 16)) {
+                break label938;
+              }
+              ab.w("MicroMsg.StblAtom", "stco error entryCount : ".concat(String.valueOf(m)));
+              l1 = -1L;
+            }
+          }
+          label938:
+          this.gmJ = new int[m + 1];
           m = 1;
-          i = k;
-          k = m;
-          m = i2;
-          continue;
+          l1 = 0L;
+          i2 = paramRandomAccessFile.read(arrayOfByte2);
+          for (;;)
+          {
+            l2 = l1;
+            if (i2 >= 4)
+            {
+              l1 += i2;
+              this.gmJ[m] = c.readInt(arrayOfByte2, 0);
+              if (l1 >= l3)
+              {
+                ab.d("MicroMsg.StblAtom", "read stco atom end");
+                l2 = l1;
+              }
+            }
+            else
+            {
+              l1 = l2 + 8L;
+              break;
+            }
+            i2 = paramRandomAccessFile.read(arrayOfByte2);
+            m += 1;
+          }
         }
-        if (m == a.aBc)
+        if (m == a.aFI)
         {
-          l1 = b(paramRandomAccessFile, i7);
-          i2 = 1;
-          m = i;
-          i = k;
-          k = m;
-          m = i2;
-          continue;
-        }
-        if (m == a.aBd)
-        {
-          l1 = c(paramRandomAccessFile, i7);
-          i2 = 1;
-          m = i;
-          i = k;
-          k = m;
-          m = i2;
-          continue;
-        }
-        if (m == a.aBa)
-        {
-          l1 = d(paramRandomAccessFile, i7);
+          this.gmF = paramRandomAccessFile.getFilePointer();
+          if (!c.a(paramRandomAccessFile, 4L)) {
+            l1 = -1L;
+          }
+          for (;;)
+          {
+            i2 = 1;
+            m = i;
+            i = k;
+            k = m;
+            m = i2;
+            break;
+            arrayOfByte2 = new byte[8];
+            if (paramRandomAccessFile.read(arrayOfByte2, 0, 4) < 4)
+            {
+              ab.w("MicroMsg.StblAtom", "co64 read entry count error");
+              l1 = -1L;
+            }
+            else
+            {
+              m = c.readInt(arrayOfByte2, 0);
+              l3 = 8L * m;
+              if ((l3 > 0L) && (l3 <= i7 - 16)) {
+                break label1184;
+              }
+              ab.w("MicroMsg.StblAtom", "stco error entryCount : ".concat(String.valueOf(m)));
+              l1 = -1L;
+            }
+          }
+          label1184:
+          this.gmK = new long[m + 1];
           m = 1;
-          j = k;
+          i2 = paramRandomAccessFile.read(arrayOfByte2);
+          l1 = 0L;
+          for (;;)
+          {
+            l2 = l1;
+            if (i2 >= 8)
+            {
+              l1 += i2;
+              this.gmK[m] = c.ae(arrayOfByte2);
+              if (l1 >= l3)
+              {
+                ab.d("MicroMsg.StblAtom", "read stco atom end");
+                l2 = l1;
+              }
+            }
+            else
+            {
+              l1 = l2 + 8L;
+              break;
+            }
+            i2 = paramRandomAccessFile.read(arrayOfByte2);
+            m += 1;
+          }
+        }
+        if (m == a.aFF)
+        {
+          this.gmG = paramRandomAccessFile.getFilePointer();
+          if (!c.a(paramRandomAccessFile, 4L)) {
+            l1 = -1L;
+          }
+          for (;;)
+          {
+            m = 1;
+            j = k;
+            k = i;
+            i = j;
+            j = m;
+            m = i2;
+            break;
+            arrayOfByte2 = new byte[4];
+            if (paramRandomAccessFile.read(arrayOfByte2, 0, 4) < 4)
+            {
+              ab.w("MicroMsg.StblAtom", "stsz read sample size error");
+              l1 = -1L;
+            }
+            else
+            {
+              j = c.readInt(arrayOfByte2, 0);
+              if (j > 0)
+              {
+                this.aIl = new int[1];
+                this.aIl[0] = j;
+                ab.i("MicroMsg.StblAtom", "all sample size is the same. size : ".concat(String.valueOf(j)));
+                l1 = 8L;
+              }
+              else if (paramRandomAccessFile.read(arrayOfByte2, 0, 4) < 4)
+              {
+                ab.w("MicroMsg.StblAtom", "stsz read entry count error");
+                l1 = -1L;
+              }
+              else
+              {
+                j = c.readInt(arrayOfByte2, 0);
+                l3 = 4L * j;
+                if ((l3 > 0L) && (l3 <= i7 - 20)) {
+                  break label1503;
+                }
+                ab.w("MicroMsg.StblAtom", "stco error entryCount : ".concat(String.valueOf(j)));
+                l1 = -1L;
+              }
+            }
+          }
+          label1503:
+          this.aIl = new int[j + 1];
+          j = 1;
+          m = paramRandomAccessFile.read(arrayOfByte2);
+          l1 = 0L;
+          for (;;)
+          {
+            l2 = l1;
+            if (m >= 4)
+            {
+              l1 += m;
+              this.aIl[j] = c.readInt(arrayOfByte2, 0);
+              if (l1 >= l3)
+              {
+                ab.d("MicroMsg.StblAtom", "read stsz atom end");
+                l2 = l1;
+              }
+            }
+            else
+            {
+              l1 = l2 + 12L;
+              break;
+            }
+            m = paramRandomAccessFile.read(arrayOfByte2);
+            j += 1;
+          }
+        }
+        if (m != a.aFC) {
+          break label1901;
+        }
+        if (!c.a(paramRandomAccessFile, 4L)) {
+          l1 = -1L;
+        }
+        for (;;)
+        {
+          m = 1;
           k = i;
-          i = j;
-          j = m;
+          i = m;
           m = i2;
-          continue;
+          break;
+          arrayOfByte2 = new byte[4];
+          if (paramRandomAccessFile.read(arrayOfByte2, 0, 4) < 4)
+          {
+            ab.w("MicroMsg.StblAtom", "stss rread entry count error");
+            l1 = -1L;
+          }
+          else
+          {
+            k = c.readInt(arrayOfByte2, 0);
+            l3 = 4L * k;
+            if ((l3 > 0L) && (l3 <= i7 - 16)) {
+              break label1733;
+            }
+            ab.w("MicroMsg.StblAtom", "stss error entryCount : ".concat(String.valueOf(k)));
+            l1 = -1L;
+          }
         }
-        if (m != a.aAX) {
-          break label769;
+        label1733:
+        this.gmL = new int[k];
+        k = 0;
+        m = paramRandomAccessFile.read(arrayOfByte2);
+        l1 = 0L;
+        for (;;)
+        {
+          l2 = l1;
+          if (m >= 4)
+          {
+            l1 += m;
+            this.gmL[k] = c.readInt(arrayOfByte2, 0);
+            if (l1 >= l3)
+            {
+              ab.d("MicroMsg.StblAtom", "read stss atom end");
+              l2 = l1;
+            }
+          }
+          else
+          {
+            l1 = l2 + 8L;
+            break;
+          }
+          m = paramRandomAccessFile.read(arrayOfByte2);
+          k += 1;
         }
-        l1 = e(paramRandomAccessFile, i7);
-        m = 1;
-        k = i;
-        i = m;
-        m = i2;
-        continue;
       }
       if ((n != 0) && (m != 0) && (k != 0) && (j != 0) && (i != 0))
       {
-        y.i("MicroMsg.StblAtom", "read stbl atom finish");
-        Vg();
+        ab.i("MicroMsg.StblAtom", "read stbl atom finish");
+        aoE();
+        AppMethodBeat.o(117853);
         return;
       }
       i1 = paramRandomAccessFile.read(arrayOfByte1);
@@ -567,7 +596,7 @@ public final class h
       i = i2;
       i2 = m;
       break;
-      label769:
+      label1901:
       m = i;
       i = k;
       k = m;

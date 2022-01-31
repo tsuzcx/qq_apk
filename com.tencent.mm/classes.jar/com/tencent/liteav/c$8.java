@@ -1,24 +1,18 @@
 package com.tencent.liteav;
 
-import com.tencent.liteav.videoencoder.b;
+import com.tencent.liteav.videoencoder.TXSVideoEncoderParam;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class c$8
   implements Runnable
 {
-  c$8(c paramc, b paramb) {}
+  c$8(c paramc) {}
   
   public void run()
   {
-    try
-    {
-      if (this.a != null)
-      {
-        this.a.a();
-        this.a.a(null);
-      }
-      return;
-    }
-    catch (Exception localException) {}
+    AppMethodBeat.i(146765);
+    c.a(this.a, c.b(this.a).width, c.b(this.a).height);
+    AppMethodBeat.o(146765);
   }
 }
 

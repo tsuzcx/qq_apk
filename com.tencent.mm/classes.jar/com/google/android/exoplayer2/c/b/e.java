@@ -1,42 +1,52 @@
 package com.google.android.exoplayer2.c.b;
 
-import com.google.android.exoplayer2.Format;
+import com.google.android.exoplayer2.c.f;
+import com.google.android.exoplayer2.i.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class e
+final class e
 {
-  public final int aBL;
-  public final long aCA;
-  public final int aCB;
-  public final long[] aCC;
-  public final long[] aCD;
-  private final f[] aCE;
-  public final long aCz;
-  public final Format auL;
-  public final long auP;
-  public final int id;
-  public final int type;
+  final m aBR;
+  int aDW;
   
-  public e(int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3, Format paramFormat, int paramInt3, f[] paramArrayOff, int paramInt4, long[] paramArrayOfLong1, long[] paramArrayOfLong2)
+  public e()
   {
-    this.id = paramInt1;
-    this.type = paramInt2;
-    this.aCz = paramLong1;
-    this.aCA = paramLong2;
-    this.auP = paramLong3;
-    this.auL = paramFormat;
-    this.aCB = paramInt3;
-    this.aCE = paramArrayOff;
-    this.aBL = paramInt4;
-    this.aCC = paramArrayOfLong1;
-    this.aCD = paramArrayOfLong2;
+    AppMethodBeat.i(94915);
+    this.aBR = new m(8);
+    AppMethodBeat.o(94915);
   }
   
-  public final f cY(int paramInt)
+  final long d(f paramf)
   {
-    if (this.aCE == null) {
-      return null;
+    int k = 0;
+    AppMethodBeat.i(94916);
+    paramf.b(this.aBR.data, 0, 1);
+    int m = this.aBR.data[0] & 0xFF;
+    if (m == 0)
+    {
+      AppMethodBeat.o(94916);
+      return -9223372036854775808L;
     }
-    return this.aCE[paramInt];
+    int i = 0;
+    int j = 128;
+    while ((m & j) == 0)
+    {
+      j >>= 1;
+      i += 1;
+    }
+    m = (j ^ 0xFFFFFFFF) & m;
+    paramf.b(this.aBR.data, 1, i);
+    j = k;
+    k = m;
+    while (j < i)
+    {
+      k = (k << 8) + (this.aBR.data[(j + 1)] & 0xFF);
+      j += 1;
+    }
+    this.aDW += i + 1;
+    long l = k;
+    AppMethodBeat.o(94916);
+    return l;
   }
 }
 

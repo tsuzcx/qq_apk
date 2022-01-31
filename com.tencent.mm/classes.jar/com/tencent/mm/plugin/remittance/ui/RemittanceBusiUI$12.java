@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.remittance.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RemittanceBusiUI$12
   implements MenuItem.OnMenuItemClickListener
@@ -10,21 +11,23 @@ final class RemittanceBusiUI$12
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (RemittanceBusiUI.f(this.nCA))
+    AppMethodBeat.i(44903);
+    if (RemittanceBusiUI.f(this.qoF))
     {
-      this.nCA.XM();
-      this.nCA.showDialog(1000);
+      this.qoF.hideVKB();
+      this.qoF.showDialog(1000);
     }
     for (;;)
     {
+      AppMethodBeat.o(44903);
       return true;
-      this.nCA.finish();
+      this.qoF.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceBusiUI.12
  * JD-Core Version:    0.7.0.1
  */

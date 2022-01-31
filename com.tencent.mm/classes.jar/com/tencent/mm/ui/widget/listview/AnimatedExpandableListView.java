@@ -6,12 +6,20 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AnimatedExpandableListView
   extends ExpandableListView
 {
-  private static final String TAG = AnimatedExpandableListView.a.class.getSimpleName();
-  private AnimatedExpandableListView.a wnJ;
+  private static final String TAG;
+  private AnimatedExpandableListView.a AHC;
+  
+  static
+  {
+    AppMethodBeat.i(112723);
+    TAG = AnimatedExpandableListView.a.class.getSimpleName();
+    AppMethodBeat.o(112723);
+  }
   
   public AnimatedExpandableListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,36 +37,48 @@ public class AnimatedExpandableListView
   }
   
   @SuppressLint({"NewApi"})
-  public final boolean Iw(int paramInt)
+  public final boolean Ro(int paramInt)
   {
+    AppMethodBeat.i(112720);
     int i = getFlatListPosition(getPackedPositionForGroup(paramInt));
     if (i != -1)
     {
       i -= getFirstVisiblePosition();
       if ((i < getChildCount()) && (getChildAt(i).getBottom() >= getBottom()))
       {
-        this.wnJ.Iy(paramInt).wnX = -1;
-        return expandGroup(paramInt);
+        this.AHC.Rr(paramInt);
+        bool = expandGroup(paramInt);
+        AppMethodBeat.o(112720);
+        return bool;
       }
     }
-    AnimatedExpandableListView.a.a(this.wnJ, paramInt);
-    return expandGroup(paramInt);
+    AnimatedExpandableListView.a.a(this.AHC, paramInt);
+    boolean bool = expandGroup(paramInt);
+    AppMethodBeat.o(112720);
+    return bool;
   }
   
-  public final boolean Ix(int paramInt)
+  public final boolean Rp(int paramInt)
   {
+    AppMethodBeat.i(112721);
     int i = getFlatListPosition(getPackedPositionForGroup(paramInt));
     if (i != -1)
     {
       i -= getFirstVisiblePosition();
       if ((i >= 0) && (i < getChildCount()))
       {
-        if (getChildAt(i).getBottom() >= getBottom()) {
-          return collapseGroup(paramInt);
+        if (getChildAt(i).getBottom() >= getBottom())
+        {
+          bool = collapseGroup(paramInt);
+          AppMethodBeat.o(112721);
+          return bool;
         }
       }
-      else {
-        return collapseGroup(paramInt);
+      else
+      {
+        bool = collapseGroup(paramInt);
+        AppMethodBeat.o(112721);
+        return bool;
       }
     }
     long l = getExpandableListPosition(getFirstVisiblePosition());
@@ -67,21 +87,27 @@ public class AnimatedExpandableListView
     if ((i == -1) || (j != paramInt)) {
       i = 0;
     }
-    AnimatedExpandableListView.a.a(this.wnJ, paramInt, i);
-    this.wnJ.notifyDataSetChanged();
-    return isGroupExpanded(paramInt);
+    AnimatedExpandableListView.a.a(this.AHC, paramInt, i);
+    this.AHC.notifyDataSetChanged();
+    boolean bool = isGroupExpanded(paramInt);
+    AppMethodBeat.o(112721);
+    return bool;
   }
   
   public void setAdapter(ExpandableListAdapter paramExpandableListAdapter)
   {
+    AppMethodBeat.i(112719);
     super.setAdapter(paramExpandableListAdapter);
     if ((paramExpandableListAdapter instanceof AnimatedExpandableListView.a))
     {
-      this.wnJ = ((AnimatedExpandableListView.a)paramExpandableListAdapter);
-      AnimatedExpandableListView.a.a(this.wnJ, this);
+      this.AHC = ((AnimatedExpandableListView.a)paramExpandableListAdapter);
+      AnimatedExpandableListView.a.a(this.AHC, this);
+      AppMethodBeat.o(112719);
       return;
     }
-    throw new ClassCastException(paramExpandableListAdapter.toString() + " must implement AnimatedExpandableListAdapter");
+    paramExpandableListAdapter = new ClassCastException(paramExpandableListAdapter.toString() + " must implement AnimatedExpandableListAdapter");
+    AppMethodBeat.o(112719);
+    throw paramExpandableListAdapter;
   }
 }
 

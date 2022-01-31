@@ -1,24 +1,24 @@
 package com.tencent.smtt.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.utils.TbsLog;
-import com.tencent.smtt.utils.m.a;
+import com.tencent.smtt.utils.n.a;
 
 class az
-  implements m.a
+  implements n.a
 {
   az(TbsLogReport paramTbsLogReport) {}
   
   public void a(int paramInt)
   {
-    TbsLog.i("TbsDownload", "[TbsApkDownloadStat.reportDownloadStat] onHttpResponseCode:" + paramInt);
-    if (paramInt < 300) {
-      TbsLogReport.b(this.a);
-    }
+    AppMethodBeat.i(64480);
+    TbsLog.i("TbsDownload", "[TbsApkDownloadStat.reportTbsLog] httpResponseCode=".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(64480);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.az
  * JD-Core Version:    0.7.0.1
  */

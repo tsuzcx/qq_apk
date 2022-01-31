@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.z;
 
@@ -13,7 +14,9 @@ final class EmailVerifyUI$3$1$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.Dk().c(this.flB);
+    AppMethodBeat.i(124759);
+    g.Rc().a(this.gCS);
+    AppMethodBeat.o(124759);
   }
 }
 

@@ -7,15 +7,15 @@ public class RecoveryStatusItem
   extends RecoveryPersistentItem
 {
   public static final Parcelable.Creator<RecoveryStatusItem> CREATOR = new Parcelable.Creator() {};
+  public int Bij;
+  public int Bil;
+  public int Bim;
   public String clientVersion;
-  public String dCX;
+  public String eAx;
   public String processName;
   public long timestamp;
-  public int wKI;
-  public int wKK;
-  public int wKL;
   
-  public final boolean afz(String paramString)
+  public final boolean awv(String paramString)
   {
     if ((paramString == null) || (paramString.length() == 0)) {
       return false;
@@ -24,11 +24,11 @@ public class RecoveryStatusItem
     {
       paramString = paramString.split(",");
       this.processName = paramString[0];
-      this.dCX = paramString[1];
+      this.eAx = paramString[1];
       this.clientVersion = paramString[2];
-      this.wKI = Integer.valueOf(paramString[3]).intValue();
-      this.wKL = Integer.valueOf(paramString[4]).intValue();
-      this.wKK = Integer.valueOf(paramString[5]).intValue();
+      this.Bij = Integer.valueOf(paramString[3]).intValue();
+      this.Bim = Integer.valueOf(paramString[4]).intValue();
+      this.Bil = Integer.valueOf(paramString[5]).intValue();
       this.timestamp = Long.valueOf(paramString[6]).longValue();
       return true;
     }
@@ -36,20 +36,20 @@ public class RecoveryStatusItem
     return false;
   }
   
-  public final String cOC()
+  public final String dUr()
   {
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append(this.processName);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.dCX);
+    localStringBuffer.append(this.eAx);
     localStringBuffer.append(",");
     localStringBuffer.append(this.clientVersion);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.wKI);
+    localStringBuffer.append(this.Bij);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.wKL);
+    localStringBuffer.append(this.Bim);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.wKK);
+    localStringBuffer.append(this.Bil);
     localStringBuffer.append(",");
     localStringBuffer.append(this.timestamp);
     return localStringBuffer.toString();
@@ -63,11 +63,11 @@ public class RecoveryStatusItem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.processName);
-    paramParcel.writeString(this.dCX);
+    paramParcel.writeString(this.eAx);
     paramParcel.writeString(this.clientVersion);
-    paramParcel.writeInt(this.wKI);
-    paramParcel.writeInt(this.wKL);
-    paramParcel.writeInt(this.wKK);
+    paramParcel.writeInt(this.Bij);
+    paramParcel.writeInt(this.Bim);
+    paramParcel.writeInt(this.Bil);
     paramParcel.writeLong(this.timestamp);
   }
 }

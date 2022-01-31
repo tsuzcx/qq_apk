@@ -3,50 +3,54 @@ package com.tencent.mm.plugin.profile.ui.newbizinfo.a;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class a
   implements com.tencent.mm.pluginsdk.cmd.a
 {
-  public final boolean a(Context paramContext, String[] paramArrayOfString)
+  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
+    AppMethodBeat.i(23932);
     if ("//usenewprofile".equals(paramArrayOfString[0]))
     {
-      paramContext = ae.cqS();
-      if (paramArrayOfString.length <= 1) {
+      paramContext = ah.dsQ();
+      if (paramArrayOfString.length <= 1)
+      {
         paramContext.edit().putBoolean("use_new_profile", true).commit();
+        AppMethodBeat.o(23932);
+        return true;
       }
-    }
-    else
-    {
-      return true;
-    }
-    paramArrayOfString = paramArrayOfString[1];
-    int i = -1;
-    switch (paramArrayOfString.hashCode())
-    {
-    }
-    for (;;)
-    {
-      switch (i)
+      paramArrayOfString = paramArrayOfString[1];
+      int i = -1;
+      switch (paramArrayOfString.hashCode())
       {
       default: 
-        return true;
-      case 0: 
-        paramContext.edit().putBoolean("use_new_profile", true).commit();
-        return true;
-        if (paramArrayOfString.equals("true"))
+        switch (i)
         {
-          i = 0;
-          continue;
-          if (paramArrayOfString.equals("false")) {
-            i = 1;
-          }
         }
         break;
       }
+      for (;;)
+      {
+        AppMethodBeat.o(23932);
+        return true;
+        if (!paramArrayOfString.equals("true")) {
+          break;
+        }
+        i = 0;
+        break;
+        if (!paramArrayOfString.equals("false")) {
+          break;
+        }
+        i = 1;
+        break;
+        paramContext.edit().putBoolean("use_new_profile", true).commit();
+        continue;
+        paramContext.edit().putBoolean("use_new_profile", false).commit();
+      }
     }
-    paramContext.edit().putBoolean("use_new_profile", false).commit();
+    AppMethodBeat.o(23932);
     return true;
   }
 }

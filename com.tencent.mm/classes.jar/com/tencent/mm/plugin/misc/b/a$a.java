@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.misc.b;
 
 final class a$a
 {
-  public boolean gyD;
-  public String mdQ;
-  public String mdR;
-  public String mdS;
-  public String mdT;
-  public int mdU;
+  public boolean hVn;
+  public String oEm;
+  public String oEn;
+  public String oEo;
+  public String oEp;
+  public int oEq;
   public String type;
 }
 

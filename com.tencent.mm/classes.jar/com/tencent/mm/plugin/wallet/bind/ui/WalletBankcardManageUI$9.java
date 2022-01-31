@@ -7,15 +7,16 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.ae;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet_core.model.ak;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import java.util.Iterator;
@@ -28,116 +29,119 @@ final class WalletBankcardManageUI$9
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(45773);
     paramAdapterView = (Bankcard)paramAdapterView.getAdapter().getItem(paramInt);
-    com.tencent.mm.wallet_core.ui.e.Jc(18);
-    label50:
-    label331:
-    label590:
+    com.tencent.mm.wallet_core.ui.e.RX(18);
+    label55:
+    label341:
+    label600:
     if (paramAdapterView != null)
     {
-      paramView = WalletBankcardManageUI.b(this.qkk);
+      paramView = WalletBankcardManageUI.b(this.tTk);
       Object localObject;
-      if ((paramView.qjz == null) || (paramView.qjz.isEmpty()))
+      if ((paramView.tSz == null) || (paramView.tSz.isEmpty()))
       {
-        break label241;
-        if (!paramAdapterView.bUP()) {
-          break label373;
+        break label251;
+        if (!paramAdapterView.cTe()) {
+          break label383;
         }
         if (paramAdapterView.field_wxcreditState != 0) {
-          break label344;
+          break label354;
         }
-        if ((b.a(paramAdapterView)) && (paramAdapterView != null))
+        if ((b.b(paramAdapterView)) && (paramAdapterView != null))
         {
-          g.DQ();
-          paramView = (String)g.DP().Dz().get(196659, null);
+          g.RM();
+          paramView = (String)g.RL().Ru().get(196659, null);
           localObject = new StringBuilder();
           if (TextUtils.isEmpty(paramView)) {
-            break label331;
+            break label341;
           }
           ((StringBuilder)localObject).append(paramView);
           ((StringBuilder)localObject).append("&");
           ((StringBuilder)localObject).append(paramAdapterView.field_bankcardType);
-          g.DQ();
-          g.DP().Dz().o(196659, ((StringBuilder)localObject).toString());
+          g.RM();
+          g.RL().Ru().set(196659, ((StringBuilder)localObject).toString());
         }
         paramView = new Bundle();
         paramView.putParcelable("key_bankcard", paramAdapterView);
         paramView.putString("key_bank_username", paramAdapterView.field_bizUsername);
         paramView.putString("key_bank_type", paramAdapterView.field_bankcardType);
-        com.tencent.mm.wallet_core.a.a(this.qkk, "WXCreditOpenProcess", paramView, null);
+        com.tencent.mm.wallet_core.a.a(this.tTk, "WXCreditOpenProcess", paramView, null);
       }
-      label344:
-      label617:
+      label354:
+      label627:
       for (;;)
       {
-        h.nFQ.f(14422, new Object[] { Integer.valueOf(1), paramAdapterView.field_bankcardType });
+        h.qsU.e(14422, new Object[] { Integer.valueOf(1), paramAdapterView.field_bankcardType });
+        AppMethodBeat.o(45773);
         return;
-        localObject = paramView.qjz.iterator();
-        label241:
+        localObject = paramView.tSz.iterator();
+        label251:
         if (!((Iterator)localObject).hasNext()) {
-          break label50;
+          break label55;
         }
         String str = (String)((Iterator)localObject).next();
         if (!str.equals(paramAdapterView.field_bindSerial)) {
           break;
         }
-        y.d("MicroMsg.BankcardListAdapter", "remove new: %s", new Object[] { str });
-        paramView.qjz.remove(str);
-        g.DQ();
-        g.DP().Dz().c(ac.a.uxt, bk.c(paramView.qjz, ","));
-        break label50;
+        ab.d("MicroMsg.BankcardListAdapter", "remove new: %s", new Object[] { str });
+        paramView.tSz.remove(str);
+        g.RM();
+        g.RL().Ru().set(ac.a.yHC, bo.d(paramView.tSz, ","));
+        break label55;
         ((StringBuilder)localObject).append(paramAdapterView.field_bankcardType);
-        break label136;
+        break label141;
         paramView = new Bundle();
         paramView.putParcelable("key_bankcard", paramAdapterView);
-        com.tencent.mm.wallet_core.a.a(this.qkk, "WXCreditManagerProcess", paramView, null);
+        com.tencent.mm.wallet_core.a.a(this.tTk, "WXCreditManagerProcess", paramView, null);
         continue;
-        label373:
-        if (paramAdapterView.bUU())
+        label383:
+        if (paramAdapterView.cTj())
         {
-          y.i("MicroMsg.WalletBankcardManageUI", "do honey pay card back");
+          ab.i("MicroMsg.WalletBankcardManageUI", "do honey pay card back");
           paramView = new Intent();
           paramView.putExtra("key_card_no", paramAdapterView.field_bindSerial);
-          d.b(this.qkk, "honey_pay", ".ui.HoneyPayCardBackUI", paramView);
+          d.b(this.tTk, "honey_pay", ".ui.HoneyPayCardBackUI", paramView);
         }
         else
         {
-          paramView = o.bVs().bVR();
-          if ((paramView.qza & 0x1000) > 0) {}
+          paramView = t.cTN().cUt();
+          if ((paramView.ulJ & 0x1000) > 0) {}
           for (boolean bool = true;; bool = false)
           {
-            y.i("MicroMsg.WalletSwitchConfig", "isReportLocation, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramView.qza) });
+            ab.i("MicroMsg.WalletSwitchConfig", "isReportLocation, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramView.ulJ) });
             if (!bool) {
-              break label617;
+              break label627;
             }
-            y.i("MicroMsg.WalletBankcardManageUI", "jump to H5 bankcard detail page");
-            g.DQ();
-            paramView = (String)g.DP().Dz().get(ac.a.usm, "");
-            g.DQ();
-            paramLong = ((Long)g.DP().Dz().get(ac.a.usn, Long.valueOf(0L))).longValue();
+            ab.i("MicroMsg.WalletBankcardManageUI", "jump to H5 bankcard detail page");
+            g.RM();
+            paramView = (String)g.RL().Ru().get(ac.a.yCm, "");
+            g.RM();
+            paramLong = ((Long)g.RL().Ru().get(ac.a.yCn, Long.valueOf(0L))).longValue();
             long l = System.currentTimeMillis() / 1000L;
-            if ((bk.bl(paramView)) || (l - paramLong >= 7200L)) {
-              break label590;
+            if ((bo.isNullOrNil(paramView)) || (l - paramLong >= 7200L)) {
+              break label600;
             }
-            y.i("MicroMsg.WalletBankcardManageUI", "bank's url is not null");
-            this.qkk.b(paramAdapterView);
+            ab.i("MicroMsg.WalletBankcardManageUI", "bank's url is not null");
+            this.tTk.c(paramAdapterView);
             break;
           }
-          y.i("MicroMsg.WalletBankcardManageUI", "listen BankcardLogoReadyEvent for newest url");
-          com.tencent.mm.sdk.b.a.udP.c(new WalletBankcardManageUI.9.1(this, paramAdapterView));
+          ab.i("MicroMsg.WalletBankcardManageUI", "listen BankcardLogoReadyEvent for newest url");
+          com.tencent.mm.sdk.b.a.ymk.c(new WalletBankcardManageUI.9.1(this, paramAdapterView));
           continue;
-          this.qkk.c(paramAdapterView);
+          this.tTk.d(paramAdapterView);
         }
       }
     }
-    label136:
-    this.qkk.bTE();
-    h.nFQ.f(14422, new Object[] { Integer.valueOf(2) });
+    label141:
+    this.tTk.cRA();
+    h.qsU.e(14422, new Object[] { Integer.valueOf(2) });
+    AppMethodBeat.o(45773);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardManageUI.9
  * JD-Core Version:    0.7.0.1
  */

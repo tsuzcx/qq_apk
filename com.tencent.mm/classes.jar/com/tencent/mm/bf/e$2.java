@@ -1,18 +1,30 @@
 package com.tencent.mm.bf;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.az;
 
 final class e$2
-  implements DialogInterface.OnCancelListener
+  implements MessageQueue.IdleHandler
 {
-  e$2(Runnable paramRunnable) {}
+  e$2(e parame) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final boolean queueIdle()
   {
-    if (this.eEU != null) {
-      this.eEU.run();
+    AppMethodBeat.i(145804);
+    if (g.Rc().foreground)
+    {
+      ab.w("MicroMsg.SpeexUploadCore", "skiped resume speex uploader, not foreground");
+      AppMethodBeat.o(145804);
+      return false;
     }
+    ab.d("MicroMsg.SpeexUploadCore", "now resume speex uploader");
+    e.a(this.fRn).pL(false);
+    AppMethodBeat.o(145804);
+    return false;
   }
 }
 

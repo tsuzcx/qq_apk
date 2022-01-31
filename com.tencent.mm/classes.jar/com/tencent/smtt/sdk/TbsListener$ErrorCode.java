@@ -11,6 +11,11 @@ public abstract interface TbsListener$ErrorCode
   public static final int COPY_SRCDIR_ERROR = 213;
   public static final int COPY_TMPDIR_ERROR = 214;
   public static final int CREATE_TEMP_CONF_ERROR = 225;
+  public static final int DECOUPLE_INCURUPDATE_FAIL = 235;
+  public static final int DECOUPLE_INCURUPDATE_SUCCESS = 234;
+  public static final int DECOUPLE_INSTLL_SUCCESS = 233;
+  public static final int DECOUPLE_TPATCH_FAIL = 239;
+  public static final int DECOUPLE_TPATCH_INSTALL_SUCCESS = 237;
   public static final int DEXOAT_EXCEPTION = 226;
   public static final int DEXOPT_EXCEPTION = 209;
   public static final int DISK_FULL = 105;
@@ -101,6 +106,7 @@ public abstract interface TbsListener$ErrorCode
   public static final int INFO_TEMP_CORE_EXIST_CONF_ERROR = 417;
   public static final int INFO_USE_BACKUP_FILE_INSTALL_BY_SERVER = 416;
   public static final int INSTALL_FROM_UNZIP = 229;
+  public static final int INSTALL_SUCCESS_AND_RELEASE_LOCK = 232;
   public static final int NEEDDOWNLOAD_1 = 140;
   public static final int NEEDDOWNLOAD_10 = 149;
   public static final int NEEDDOWNLOAD_2 = 141;
@@ -120,6 +126,7 @@ public abstract interface TbsListener$ErrorCode
   public static final int NEEDDOWNLOAD_TRUE = 170;
   public static final int NETWORK_NOT_WIFI_ERROR = 111;
   public static final int NETWORK_UNAVAILABLE = 101;
+  public static final int NONEEDDOWNLOAD_OTHER_PROCESS_DOWNLOADING = 177;
   public static final int NONEEDTODOWN_ERROR = 110;
   public static final int PV_UPLOAD_ERROR = 126;
   public static final int READ_RESPONSE_ERROR = 103;
@@ -144,6 +151,11 @@ public abstract interface TbsListener$ErrorCode
   public static final int THROWABLE_INITTESRUNTIMEENVIRONMENT = 328;
   public static final int THROWABLE_INITX5CORE = 325;
   public static final int THROWABLE_QBSDK_INIT = 306;
+  public static final int TPATCH_BACKUP_NOT_VALID = 241;
+  public static final int TPATCH_ENABLE_EXCEPTION = 242;
+  public static final int TPATCH_FAIL = 238;
+  public static final int TPATCH_INSTALL_SUCCESS = 236;
+  public static final int TPATCH_VERSION_FAILED = 240;
   public static final int UNKNOWN_ERROR = 107;
   public static final int UNLZMA_FAIURE = 222;
   public static final int UNZIP_DIR_ERROR = 205;
@@ -154,7 +166,7 @@ public abstract interface TbsListener$ErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsListener.ErrorCode
  * JD-Core Version:    0.7.0.1
  */

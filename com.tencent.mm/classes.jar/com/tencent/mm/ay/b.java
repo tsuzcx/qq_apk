@@ -1,29 +1,84 @@
 package com.tencent.mm.ay;
 
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.sr;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.bi;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 
-@Deprecated
 public final class b
-  extends i.b
+  extends a
 {
-  private sr evW = new sr();
-  public String username;
+  public String crs;
+  public String fLr;
+  public LinkedList<String> fLs;
+  public String fLt;
+  public String text;
   
-  public b(String paramString)
+  public b(Map<String, String> paramMap, bi parambi)
   {
-    this(paramString, 0);
-    this.username = paramString;
+    super(paramMap, parambi);
+    AppMethodBeat.i(5553);
+    this.fLs = new LinkedList();
+    this.text = null;
+    this.fLt = null;
+    this.crs = null;
+    AppMethodBeat.o(5553);
   }
   
-  public b(String paramString, int paramInt)
+  protected final boolean Zh()
   {
-    super(4);
-    this.evW.sQs = new bml().YI(bk.pm(paramString));
-    this.evW.sQt = paramInt;
-    this.mdD = this.evW;
+    AppMethodBeat.i(5554);
+    if (this.values == null)
+    {
+      ab.e("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] values == null ");
+      AppMethodBeat.o(5554);
+      return false;
+    }
+    ab.i("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] type:%s, values size:%s", new Object[] { bo.nullAsNil(this.TYPE), Integer.valueOf(this.values.size()) });
+    if ((!bo.isNullOrNil(this.TYPE)) && (this.TYPE.equalsIgnoreCase("NewXmlChatRoomAccessVerifyApproval")))
+    {
+      this.fLr = ((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.RoomName"));
+      if (this.values.containsKey(fLj)) {
+        this.text = bo.nullAsNil((String)this.values.get(fLj));
+      }
+      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.text")) {
+        this.fLt = bo.nullAsNil((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.text"));
+      }
+      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.ticket")) {
+        this.crs = bo.nullAsNil((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.ticket"));
+      }
+      this.fLl = this.text;
+      if (!this.cEE.dyn())
+      {
+        this.fLn.add(this.fLt);
+        this.fLo.add(Integer.valueOf(this.fLl.length()));
+        this.fLl += this.fLt;
+        this.fLp.add(Integer.valueOf(this.fLl.length()));
+      }
+      for (;;)
+      {
+        Iterator localIterator = this.values.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (str.startsWith(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.memberlist.username")) {
+            this.fLs.add(this.values.get(str));
+          }
+        }
+        this.fLl = (this.fLl + " " + ah.getContext().getString(2131300638));
+      }
+      AppMethodBeat.o(5554);
+      return true;
+    }
+    ab.e("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] type err :%s", new Object[] { bo.nullAsNil(this.TYPE) });
+    AppMethodBeat.o(5554);
+    return false;
   }
 }
 

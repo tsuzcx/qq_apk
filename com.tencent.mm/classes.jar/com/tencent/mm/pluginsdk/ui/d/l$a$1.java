@@ -5,9 +5,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 import com.tencent.mars.comm.PlatformComm.C2Java;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.t;
 
 final class l$a$1
   implements View.OnClickListener
@@ -16,20 +16,25 @@ final class l$a$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(28140);
     if (!PlatformComm.C2Java.isNetworkConnected())
     {
-      y.w("MicroMsg.MailPhoneMenuHelper", "hy: no network. abort download");
-      s.makeText(l.a.a(this.sjT), l.a.a(this.sjT).getString(R.l.fmt_iap_err), 0).show();
-      if (l.a.b(this.sjT) != null) {
-        l.a.b(this.sjT).hb(false);
+      ab.w("MicroMsg.MailPhoneMenuHelper", "hy: no network. abort download");
+      t.makeText(l.a.a(this.wcA), l.a.a(this.wcA).getString(2131300044), 0).show();
+      if (l.a.b(this.wcA) != null)
+      {
+        l.a.b(this.wcA).iL(false);
+        AppMethodBeat.o(28140);
       }
     }
-    do
+    else
     {
-      return;
-      q.g(l.a.a(this.sjT), l.a.c(this.sjT));
-    } while (l.a.b(this.sjT) == null);
-    l.a.b(this.sjT).hb(true);
+      q.i(l.a.a(this.wcA), l.a.c(this.wcA));
+      if (l.a.b(this.wcA) != null) {
+        l.a.b(this.wcA).iL(true);
+      }
+    }
+    AppMethodBeat.o(28140);
   }
 }
 

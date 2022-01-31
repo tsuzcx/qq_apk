@@ -2,7 +2,7 @@ package com.tencent.mm.ui.gridviewheaders;
 
 public abstract interface GridHeadersGridView$d
 {
-  public abstract boolean cIC();
+  public abstract boolean dNm();
 }
 
 

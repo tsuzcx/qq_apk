@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vs;
+import com.tencent.mm.sdk.b.c;
 
 final class WalletPayUI$12
-  implements Runnable
+  extends c<vs>
 {
-  WalletPayUI$12(WalletPayUI paramWalletPayUI) {}
-  
-  public final void run()
+  WalletPayUI$12(WalletPayUI paramWalletPayUI)
   {
-    y.i("MicroMsg.WalletPayUI", "auto reset create flag");
-    WalletPayUI.ape();
+    AppMethodBeat.i(46047);
+    this.__eventId = vs.class.getName().hashCode();
+    AppMethodBeat.o(46047);
   }
 }
 

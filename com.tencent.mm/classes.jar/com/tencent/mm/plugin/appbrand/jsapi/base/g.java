@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 
 public final class g
 {
-  int gfg;
-  c gld;
+  c hET;
+  int hry;
   
   public g(c paramc, int paramInt)
   {
-    this.gld = paramc;
-    this.gfg = paramInt;
+    this.hET = paramc;
+    this.hry = paramInt;
   }
   
-  public final void tT(String paramString)
+  public final void BS(String paramString)
   {
-    this.gld.C(this.gfg, paramString);
+    AppMethodBeat.i(91048);
+    this.hET.h(this.hry, paramString);
+    AppMethodBeat.o(91048);
   }
 }
 

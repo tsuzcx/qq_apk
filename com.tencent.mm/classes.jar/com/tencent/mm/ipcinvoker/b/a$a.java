@@ -16,7 +16,7 @@ public abstract class a$a
     attachInterface(this, "com.tencent.mm.ipcinvoker.aidl.AIDL_IPCInvokeBridge");
   }
   
-  public static a j(IBinder paramIBinder)
+  public static a k(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -75,7 +75,7 @@ public abstract class a$a
     if (paramParcel1.readInt() != 0)
     {
       localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-      paramParcel1 = e((Bundle)localObject, paramParcel1.readString());
+      paramParcel1 = f((Bundle)localObject, paramParcel1.readString());
       paramParcel2.writeNoException();
       if (paramParcel1 == null) {
         break label226;

@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import com.tencent.mm.plugin.f.a.e.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.d.a.e.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ExdeviceAddDataSourceUI$4$3
   implements Runnable
@@ -10,13 +11,16 @@ final class ExdeviceAddDataSourceUI$4$3
   
   public final void run()
   {
-    if (a.awB())
+    AppMethodBeat.i(19775);
+    if (a.aWe())
     {
-      ExdeviceAddDataSourceUI.a(this.jAG.jAD, 3);
-      y.i("MicroMsg.ExdeviceAddDataSourceUI", "Start scan...");
+      ExdeviceAddDataSourceUI.a(this.lKf.lKc, 3);
+      ab.i("MicroMsg.ExdeviceAddDataSourceUI", "Start scan...");
+      AppMethodBeat.o(19775);
       return;
     }
-    ExdeviceAddDataSourceUI.a(this.jAG.jAD, 1);
+    ExdeviceAddDataSourceUI.a(this.lKf.lKc, 1);
+    AppMethodBeat.o(19775);
   }
 }
 

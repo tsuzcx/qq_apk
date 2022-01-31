@@ -1,6 +1,7 @@
 package com.tencent.mapsdk.raster.model;
 
-import com.tencent.tencentmap.mapsdk.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.a.g;
 
 public final class VisibleRegion
 {
@@ -28,15 +29,24 @@ public final class VisibleRegion
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(101225);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(101225);
       return true;
-      if (!(paramObject instanceof VisibleRegion)) {
-        return false;
-      }
-      paramObject = (VisibleRegion)paramObject;
-    } while ((getNearLeft().equals(paramObject.getNearLeft())) && (getNearRight().equals(paramObject.getNearRight())) && (getFarLeft().equals(paramObject.getFarLeft())) && (getFarRight().equals(paramObject.getFarRight())) && (getLatLngBounds().equals(paramObject.getLatLngBounds())));
+    }
+    if (!(paramObject instanceof VisibleRegion))
+    {
+      AppMethodBeat.o(101225);
+      return false;
+    }
+    paramObject = (VisibleRegion)paramObject;
+    if ((getNearLeft().equals(paramObject.getNearLeft())) && (getNearRight().equals(paramObject.getNearRight())) && (getFarLeft().equals(paramObject.getFarLeft())) && (getFarRight().equals(paramObject.getFarRight())) && (getLatLngBounds().equals(paramObject.getLatLngBounds())))
+    {
+      AppMethodBeat.o(101225);
+      return true;
+    }
+    AppMethodBeat.o(101225);
     return false;
   }
   
@@ -72,17 +82,23 @@ public final class VisibleRegion
   
   public final int hashCode()
   {
-    return h.a(new Object[] { getNearLeft(), getNearRight(), getFarLeft(), getFarRight(), getLatLngBounds() });
+    AppMethodBeat.i(101224);
+    int i = g.a(new Object[] { getNearLeft(), getNearRight(), getFarLeft(), getFarRight(), getLatLngBounds() });
+    AppMethodBeat.o(101224);
+    return i;
   }
   
   public final String toString()
   {
-    return h.a(new String[] { h.a("nearLeft", getNearLeft()), h.a("nearRight", getNearRight()), h.a("farLeft", getFarLeft()), h.a("farRight", getFarRight()), h.a("latLngBounds", getLatLngBounds()) });
+    AppMethodBeat.i(101226);
+    String str = g.a(new String[] { g.a("nearLeft", getNearLeft()), g.a("nearRight", getNearRight()), g.a("farLeft", getFarLeft()), g.a("farRight", getFarRight()), g.a("latLngBounds", getLatLngBounds()) });
+    AppMethodBeat.o(101226);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.VisibleRegion
  * JD-Core Version:    0.7.0.1
  */

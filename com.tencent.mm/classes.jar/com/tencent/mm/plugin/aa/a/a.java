@@ -2,36 +2,36 @@ package com.tencent.mm.plugin.aa.a;
 
 public final class a
 {
-  public static int eVA = 1;
-  public static int eVB = 2;
-  public static int eVC = 3;
-  public static int eVD = 18;
-  public static int eVE = 19;
-  public static int eVF = 21;
-  public static int eVg = 1;
-  public static int eVh = 2;
-  public static int eVi = 3;
-  public static int eVj = 1;
-  public static int eVk = 2;
-  public static int eVl = 3;
-  public static int eVm = 1;
-  public static int eVn = 2;
-  public static int eVo = 3;
-  public static int eVp = 1;
-  public static int eVq = 2;
-  public static int eVr = 3;
-  public static int eVs = 1;
-  public static int eVt = 2;
-  public static int eVu = 6;
-  public static int eVv = 7;
-  public static int eVw = 1;
-  public static int eVx = 7;
-  public static int eVy = 1;
-  public static int eVz = 2;
+  public static int gnA = 18;
+  public static int gnB = 19;
+  public static int gnC = 21;
+  public static int gnd = 1;
+  public static int gne = 2;
+  public static int gnf = 3;
+  public static int gng = 1;
+  public static int gnh = 2;
+  public static int gni = 3;
+  public static int gnj = 1;
+  public static int gnk = 2;
+  public static int gnl = 3;
+  public static int gnm = 1;
+  public static int gnn = 2;
+  public static int gno = 3;
+  public static int gnp = 1;
+  public static int gnq = 2;
+  public static int gnr = 6;
+  public static int gns = 7;
+  public static int gnt = 1;
+  public static int gnu = 7;
+  public static int gnv = 1;
+  public static int gnw = 2;
+  public static int gnx = 1;
+  public static int gny = 2;
+  public static int gnz = 3;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.a.a
  * JD-Core Version:    0.7.0.1
  */

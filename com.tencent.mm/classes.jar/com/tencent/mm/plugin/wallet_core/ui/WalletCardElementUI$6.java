@@ -1,31 +1,19 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.CheckedTextView;
-import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
-import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletCardElementUI$6
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
   WalletCardElementUI$6(WalletCardElementUI paramWalletCardElementUI) {}
   
-  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void onClick(View paramView)
   {
-    this.qCj.dismissDialog(1);
-    paramInt = ((Integer)WalletCardElementUI.n(this.qCj).bVd().get(paramInt)).intValue();
-    if (WalletCardElementUI.u(this.qCj) != paramInt)
-    {
-      WalletCardElementUI.i(this.qCj, paramInt);
-      WalletCardElementUI.v(this.qCj).setText(((CheckedTextView)paramView).getText().toString());
-      WalletCardElementUI.b(WalletCardElementUI.w(this.qCj), WalletCardElementUI.u(this.qCj));
-      WalletCardElementUI.w(this.qCj).bvr();
-      WalletCardElementUI.g(this.qCj);
-      WalletCardElementUI.j(this.qCj, WalletCardElementUI.u(this.qCj));
-    }
+    AppMethodBeat.i(47216);
+    WalletCardElementUI.v(this.uoW);
+    AppMethodBeat.o(47216);
   }
 }
 

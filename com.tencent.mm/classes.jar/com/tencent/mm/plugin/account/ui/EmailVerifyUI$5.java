@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EmailVerifyUI$5
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class EmailVerifyUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    EmailVerifyUI.d(this.flz);
+    AppMethodBeat.i(124763);
+    EmailVerifyUI.d(this.gCQ);
+    AppMethodBeat.o(124763);
     return true;
   }
 }

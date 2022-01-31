@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.walletlock.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FingerprintWalletLockUI$14
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
   FingerprintWalletLockUI$14(FingerprintWalletLockUI paramFingerprintWalletLockUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    y.i("MicroMsg.FingerprintWalletLockUI", "alvinluo user click close wallet lock");
-    ((b)g.r(b.class)).h(this.qPy, 5);
+    AppMethodBeat.i(51511);
+    ab.i("MicroMsg.FingerprintWalletLockUI", "alvinluo cancel not support fingerprint dialog");
+    this.uEG.finish();
+    FingerprintWalletLockUI.cXH();
+    AppMethodBeat.o(51511);
   }
 }
 

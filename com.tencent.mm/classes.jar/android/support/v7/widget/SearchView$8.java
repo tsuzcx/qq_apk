@@ -11,7 +11,7 @@ final class SearchView$8
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.ajT.iy();
+    this.amj.kk();
     return true;
   }
 }

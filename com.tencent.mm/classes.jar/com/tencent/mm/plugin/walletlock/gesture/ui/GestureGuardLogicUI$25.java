@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.walletlock.gesture.ui;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class GestureGuardLogicUI$25
   implements GestureGuardLogicUI.a
@@ -9,7 +10,9 @@ final class GestureGuardLogicUI$25
   
   public final void onDone()
   {
-    GestureGuardLogicUI.f(this.qPX).postDelayed(new GestureGuardLogicUI.25.1(this), 500L);
+    AppMethodBeat.i(51611);
+    GestureGuardLogicUI.f(this.uFf).postDelayed(new GestureGuardLogicUI.25.1(this), 500L);
+    AppMethodBeat.o(51611);
   }
 }
 

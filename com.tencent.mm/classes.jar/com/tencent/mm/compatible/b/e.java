@@ -1,51 +1,25 @@
 package com.tencent.mm.compatible.b;
 
-import android.annotation.TargetApi;
-import android.media.AudioRecord;
-import android.media.audiofx.AcousticEchoCanceler;
-import com.tencent.mm.sdk.platformtools.y;
+import android.media.AudioTrack;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
-  implements g.a
+  extends AudioTrack
 {
-  private AcousticEchoCanceler dug = null;
-  
-  @TargetApi(16)
-  public e(AudioRecord paramAudioRecord)
+  public e(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    boolean bool = AcousticEchoCanceler.isAvailable();
-    y.d("MicroMsg.MMAcousticEchoCanceler", "available  " + bool);
-    if (bool) {
-      this.dug = AcousticEchoCanceler.create(paramAudioRecord.getAudioSessionId());
-    }
+    super(paramInt1, paramInt2, paramInt3, 2, paramInt4, 1);
+    AppMethodBeat.i(92836);
+    g.iH(hashCode());
+    AppMethodBeat.o(92836);
   }
   
-  @TargetApi(16)
-  public final boolean isAvailable()
+  public final void release()
   {
-    return AcousticEchoCanceler.isAvailable();
-  }
-  
-  @TargetApi(16)
-  public final boolean yh()
-  {
-    if (this.dug != null) {}
-    try
-    {
-      int i = this.dug.setEnabled(true);
-      if (i == 0) {
-        return true;
-      }
-      y.d("MicroMsg.MMAcousticEchoCanceler", "setEnabled failed " + i);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        y.printErrStackTrace("MicroMsg.MMAcousticEchoCanceler", localException, "", new Object[0]);
-      }
-    }
-    return false;
+    AppMethodBeat.i(92837);
+    super.release();
+    g.iI(hashCode());
+    AppMethodBeat.o(92837);
   }
 }
 

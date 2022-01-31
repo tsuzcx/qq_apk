@@ -1,12 +1,15 @@
 package com.tencent.qafpapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.k;
 
 public class QAFPNative
 {
   static
   {
-    k.b("wechatQAFP", QAFPNative.class.getClassLoader());
+    AppMethodBeat.i(35387);
+    k.a("wechatQAFP", QAFPNative.class.getClassLoader());
+    AppMethodBeat.o(35387);
   }
   
   public static native int QAFPGetAudioFingerPrint(byte[] paramArrayOfByte);

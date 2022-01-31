@@ -1,20 +1,21 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ah;
+import com.tencent.mm.model.ai;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
 public final class ad
-  extends ah
+  extends ai
 {
   public final String getTag()
   {
     return "MicroMsg.AppBrand.DuplicateUsageUsernameSetFlagDataTransfer";
   }
   
-  public final boolean hJ(int paramInt)
+  public final boolean kv(int paramInt)
   {
     int j = 1;
     int i;
@@ -36,16 +37,18 @@ public final class ad
   
   public final void transfer(int paramInt)
   {
-    if (hJ(paramInt))
+    AppMethodBeat.i(129715);
+    if (kv(paramInt))
     {
-      ac.a locala = ac.a.utk;
-      g.DP().Dz().c(locala, Boolean.valueOf(false));
+      ac.a locala = ac.a.yDm;
+      g.RL().Ru().set(locala, Boolean.FALSE);
     }
+    AppMethodBeat.o(129715);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ad
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.chatroom.ui.SeeRoomManagerUI;
 import java.lang.ref.WeakReference;
 
@@ -14,15 +15,17 @@ final class a$1
   
   public final void onClickImp(View paramView)
   {
-    if ((this.dmG != null) && (this.dmG.get() != null))
+    AppMethodBeat.i(103899);
+    if ((this.eej != null) && (this.eej.get() != null))
     {
-      paramView = this.dmH.getString("conv_talker_username");
-      Context localContext = (Context)this.dmG.get();
+      paramView = this.val$params.getString("conv_talker_username");
+      Context localContext = (Context)this.eej.get();
       Intent localIntent = new Intent(localContext, SeeRoomManagerUI.class);
       localIntent.setFlags(32768);
       localIntent.putExtra("RoomInfo_Id", paramView);
       localContext.startActivity(localIntent);
     }
+    AppMethodBeat.o(103899);
   }
 }
 

@@ -4,64 +4,61 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class SplashActivity
   extends Activity
 {
-  private boolean uma = false;
+  private boolean yvG = false;
   
-  private void cth()
+  private void dvE()
   {
-    if (i.ulI.b(this, new Runnable()
+    AppMethodBeat.i(114868);
+    if (h.yvn.b(this, new Runnable()
     {
       public final void run()
       {
+        AppMethodBeat.i(114860);
         SplashActivity.c(SplashActivity.this);
+        AppMethodBeat.o(114860);
       }
     })) {
-      ctj();
+      dvG();
     }
+    AppMethodBeat.o(114868);
   }
   
-  private void ctj()
+  private void dvG()
   {
-    if (this.uma) {
+    AppMethodBeat.i(114870);
+    if (this.yvG)
+    {
+      AppMethodBeat.o(114870);
       return;
     }
-    this.uma = true;
-    j localj;
-    boolean bool;
+    this.yvG = true;
     if (!isFinishing())
     {
       setResult(-100);
       int i = getIntent().getIntExtra("hashcode", 0);
-      Object localObject = i.ulE.iterator();
-      while (((Iterator)localObject).hasNext())
+      Iterator localIterator = h.yvj.iterator();
+      while (localIterator.hasNext())
       {
-        localj = (j)((Iterator)localObject).next();
-        if (i == localj.hashCode())
-        {
-          localObject = localj.umf;
-          if (i.bwZ == null) {
-            break label168;
-          }
-          bool = i.bwZ.cn((String)localObject);
-          if (bool) {
-            break label173;
-          }
-          localj.recreate();
-          i.c("WxSplash.SplashActivity", "do recreate for %s", new Object[] { localj.umf });
+        i locali = (i)localIterator.next();
+        if (i == locali.hashCode()) {
+          h.a(locali);
         }
       }
-      label123:
       new Handler().postDelayed(new Runnable()
       {
         public final void run()
         {
+          AppMethodBeat.i(114862);
           SplashActivity.this.finish();
           SplashActivity.d(SplashActivity.this);
+          AppMethodBeat.o(114862);
         }
       }, 50L);
     }
@@ -71,79 +68,97 @@ public class SplashActivity
       {
         public final void run()
         {
-          i.ulI = null;
+          h.yvn = null;
         }
-      }, 30000L);
+      }, 5000L);
+      AppMethodBeat.o(114870);
       return;
-      label168:
-      bool = false;
-      break;
-      label173:
-      localj.finish();
-      i.c("WxSplash.SplashActivity", "eat activity, %s", new Object[] { localj.umf });
-      break label123;
       onBackPressed();
     }
   }
   
-  public final void cti()
+  public final void dvF()
   {
-    if (i.ulI != null)
+    AppMethodBeat.i(114869);
+    if (h.yvn != null)
     {
-      if (!i.ulI.a(this, new Runnable()
+      if (!h.yvn.a(this, new Runnable()
       {
         public final void run()
         {
+          AppMethodBeat.i(114861);
           SplashActivity.c(SplashActivity.this);
+          AppMethodBeat.o(114861);
         }
-      })) {
-        cth();
+      }))
+      {
+        dvE();
+        AppMethodBeat.o(114869);
       }
-      return;
     }
-    i.c("WxSplash.SplashActivity", "permissions delegate is null, call splash finish directly.", new Object[0]);
-    ctj();
+    else
+    {
+      h.c("WxSplash.SplashActivity", "permissions delegate is null, call splash finish directly.", new Object[0]);
+      dvG();
+    }
+    AppMethodBeat.o(114869);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(114863);
     super.onCreate(paramBundle);
-    i.a(this);
-    i.c("WxSplash.SplashActivity", "onCreate", new Object[0]);
-    if (!i.csW())
+    h.a(this);
+    h.c("WxSplash.SplashActivity", "onCreate", new Object[0]);
+    if (!h.dvu())
     {
-      i.c("WxSplash.SplashActivity", "no need splash, finish", new Object[0]);
-      cti();
+      h.c("WxSplash.SplashActivity", "no need splash, finish", new Object[0]);
+      dvF();
     }
-    if (i.ulR != null) {
-      i.ulR.l(this);
+    if (h.yvw != null) {
+      h.yvw.m(this);
     }
+    AppMethodBeat.o(114863);
   }
   
   protected void onDestroy()
   {
-    i.b(this);
-    i.c("WxSplash.SplashActivity", "onDestroy", new Object[0]);
+    AppMethodBeat.i(114866);
+    h.b(this);
+    h.c("WxSplash.SplashActivity", "onDestroy", new Object[0]);
     super.onDestroy();
+    AppMethodBeat.o(114866);
   }
   
-  public void onPause()
+  protected void onPause()
   {
-    i.c("WxSplash.SplashActivity", "onPause", new Object[0]);
+    AppMethodBeat.i(114865);
+    h.c("WxSplash.SplashActivity", "onPause", new Object[0]);
     super.onPause();
+    AppMethodBeat.o(114865);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (i.ulI != null) {
-      i.ulI.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.i(114867);
+    if (h.yvn != null) {
+      h.yvn.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
     }
+    AppMethodBeat.o(114867);
   }
   
   protected void onResume()
   {
+    AppMethodBeat.i(114864);
     super.onResume();
-    i.c("WxSplash.SplashActivity", "onResume", new Object[0]);
+    h.c("WxSplash.SplashActivity", "onResume", new Object[0]);
+    AppMethodBeat.o(114864);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

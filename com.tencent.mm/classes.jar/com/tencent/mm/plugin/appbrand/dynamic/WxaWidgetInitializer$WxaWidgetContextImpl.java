@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.dynamic.debugger.DebuggerInfo;
 import com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetRuntimeConfig;
@@ -11,88 +12,99 @@ import junit.framework.Assert;
 class WxaWidgetInitializer$WxaWidgetContextImpl
   implements WxaWidgetContext
 {
-  public static final Parcelable.Creator<WxaWidgetContextImpl> CREATOR = new WxaWidgetInitializer.WxaWidgetContextImpl.1();
-  String dIX;
-  WxaPkgWrappingInfo fUm;
-  WxaPkgWrappingInfo fUn;
-  byte[] fUo;
-  int fUp;
-  DebuggerInfo fUq;
-  WidgetSysConfig fUr;
-  WidgetRuntimeConfig fUs;
+  public static final Parcelable.Creator<WxaWidgetContextImpl> CREATOR;
+  String equ;
+  WxaPkgWrappingInfo hnO;
+  WxaPkgWrappingInfo hnP;
+  byte[] hnQ;
+  int hnR;
+  DebuggerInfo hnS;
+  WidgetSysConfig hnT;
+  WidgetRuntimeConfig hnU;
   String mAppId;
+  
+  static
+  {
+    AppMethodBeat.i(10723);
+    CREATOR = new WxaWidgetInitializer.WxaWidgetContextImpl.1();
+    AppMethodBeat.o(10723);
+  }
   
   public WxaWidgetInitializer$WxaWidgetContextImpl(Parcel paramParcel)
   {
+    AppMethodBeat.i(10720);
     ClassLoader localClassLoader = getClass().getClassLoader();
-    this.dIX = paramParcel.readString();
+    this.equ = paramParcel.readString();
     this.mAppId = paramParcel.readString();
-    this.fUn = ((WxaPkgWrappingInfo)paramParcel.readParcelable(localClassLoader));
-    this.fUm = ((WxaPkgWrappingInfo)paramParcel.readParcelable(localClassLoader));
-    this.fUo = paramParcel.createByteArray();
-    this.fUp = paramParcel.readInt();
-    this.fUq = ((DebuggerInfo)paramParcel.readParcelable(localClassLoader));
-    this.fUr = ((WidgetSysConfig)paramParcel.readParcelable(localClassLoader));
-    this.fUs = ((WidgetRuntimeConfig)paramParcel.readParcelable(localClassLoader));
+    this.hnP = ((WxaPkgWrappingInfo)paramParcel.readParcelable(localClassLoader));
+    this.hnO = ((WxaPkgWrappingInfo)paramParcel.readParcelable(localClassLoader));
+    this.hnQ = paramParcel.createByteArray();
+    this.hnR = paramParcel.readInt();
+    this.hnS = ((DebuggerInfo)paramParcel.readParcelable(localClassLoader));
+    this.hnT = ((WidgetSysConfig)paramParcel.readParcelable(localClassLoader));
+    this.hnU = ((WidgetRuntimeConfig)paramParcel.readParcelable(localClassLoader));
+    AppMethodBeat.o(10720);
   }
   
   public WxaWidgetInitializer$WxaWidgetContextImpl(WxaPkgWrappingInfo paramWxaPkgWrappingInfo1, WxaPkgWrappingInfo paramWxaPkgWrappingInfo2)
   {
+    AppMethodBeat.i(10721);
     Assert.assertNotNull(paramWxaPkgWrappingInfo1);
     Assert.assertNotNull(paramWxaPkgWrappingInfo2);
-    this.fUn = paramWxaPkgWrappingInfo1;
-    this.fUm = paramWxaPkgWrappingInfo2;
+    this.hnP = paramWxaPkgWrappingInfo1;
+    this.hnO = paramWxaPkgWrappingInfo2;
+    AppMethodBeat.o(10721);
   }
   
-  public final int abp()
+  public final int avf()
   {
-    if (this.fUm != null) {
-      return this.fUm.fEM;
+    if (this.hnO != null) {
+      return this.hnO.gXe;
     }
     return 0;
   }
   
-  public final WxaPkgWrappingInfo afa()
+  public final WxaPkgWrappingInfo azE()
   {
-    return this.fUm;
+    return this.hnO;
   }
   
-  public final WxaPkgWrappingInfo afb()
+  public final WxaPkgWrappingInfo azF()
   {
-    return this.fUn;
+    return this.hnP;
   }
   
-  public final int afc()
+  public final int azG()
   {
-    if (this.fUm != null) {
-      return this.fUm.fEN;
+    if (this.hnO != null) {
+      return this.hnO.gXf;
     }
     return 0;
   }
   
-  public final byte[] afd()
+  public final byte[] azH()
   {
-    return this.fUo;
+    return this.hnQ;
   }
   
-  public final int afe()
+  public final int azI()
   {
-    return this.fUp;
+    return this.hnR;
   }
   
-  public final DebuggerInfo aff()
+  public final DebuggerInfo azJ()
   {
-    return this.fUq;
+    return this.hnS;
   }
   
-  public final WidgetSysConfig afg()
+  public final WidgetSysConfig azK()
   {
-    return this.fUr;
+    return this.hnT;
   }
   
-  public final WidgetRuntimeConfig afh()
+  public final WidgetRuntimeConfig azL()
   {
-    return this.fUs;
+    return this.hnU;
   }
   
   public int describeContents()
@@ -107,20 +119,22 @@ class WxaWidgetInitializer$WxaWidgetContextImpl
   
   public final String getId()
   {
-    return this.dIX;
+    return this.equ;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.dIX);
+    AppMethodBeat.i(10722);
+    paramParcel.writeString(this.equ);
     paramParcel.writeString(this.mAppId);
-    paramParcel.writeParcelable(this.fUn, paramInt);
-    paramParcel.writeParcelable(this.fUm, paramInt);
-    paramParcel.writeByteArray(this.fUo);
-    paramParcel.writeInt(this.fUp);
-    paramParcel.writeParcelable(this.fUq, paramInt);
-    paramParcel.writeParcelable(this.fUr, paramInt);
-    paramParcel.writeParcelable(this.fUs, paramInt);
+    paramParcel.writeParcelable(this.hnP, paramInt);
+    paramParcel.writeParcelable(this.hnO, paramInt);
+    paramParcel.writeByteArray(this.hnQ);
+    paramParcel.writeInt(this.hnR);
+    paramParcel.writeParcelable(this.hnS, paramInt);
+    paramParcel.writeParcelable(this.hnT, paramInt);
+    paramParcel.writeParcelable(this.hnU, paramInt);
+    AppMethodBeat.o(10722);
   }
 }
 

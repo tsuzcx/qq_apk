@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.ipcall.a.a;
 
 import android.os.Looper;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public abstract class b
   extends a
   implements a.a
 {
-  protected boolean eFF = false;
-  public b.a lpB = null;
-  private ah mHandler = new ah(Looper.getMainLooper());
+  protected boolean fVw = false;
+  private ak mHandler = new ak(Looper.getMainLooper());
+  public b.a nMX = null;
   
   public final void a(int paramInt1, Object paramObject, int paramInt2, int paramInt3)
   {
-    y.i("MicroMsg.BaseIPCallTimerService", "timer request success!, type: %d, isLoop: %b, interval: %d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(this.eFF), Integer.valueOf(bct()) });
-    bcu();
-    if (this.lpB != null) {
-      this.lpB.a(paramInt1, (m)paramObject, paramInt2, paramInt3);
+    ab.i("MicroMsg.BaseIPCallTimerService", "timer request success!, type: %d, isLoop: %b, interval: %d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(this.fVw), Integer.valueOf(bJA()) });
+    bJB();
+    if (this.nMX != null) {
+      this.nMX.a(paramInt1, (m)paramObject, paramInt2, paramInt3);
     }
-    if (this.eFF) {
-      this.mHandler.postDelayed(new b.1(this), bct());
+    if (this.fVw) {
+      this.mHandler.postDelayed(new b.1(this), bJA());
     }
   }
   
   public final void a(c paramc)
   {
     super.a(paramc);
-    this.eFF = true;
-    y.d("MicroMsg.BaseIPCallTimerService", "start service, type: %d", new Object[] { Integer.valueOf(LW()) });
+    this.fVw = true;
+    ab.d("MicroMsg.BaseIPCallTimerService", "start service, type: %d", new Object[] { Integer.valueOf(getServiceType()) });
   }
   
   public final void b(int paramInt1, Object paramObject, int paramInt2, int paramInt3)
   {
-    y.i("MicroMsg.BaseIPCallTimerService", "timer request failed, type: %d, isLoop: %b, interval: %d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(this.eFF), Integer.valueOf(bct()) });
-    bcv();
-    if (this.lpB != null) {
-      this.lpB.b(paramInt1, (m)paramObject, paramInt2, paramInt3);
+    ab.i("MicroMsg.BaseIPCallTimerService", "timer request failed, type: %d, isLoop: %b, interval: %d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(this.fVw), Integer.valueOf(bJA()) });
+    bJC();
+    if (this.nMX != null) {
+      this.nMX.b(paramInt1, (m)paramObject, paramInt2, paramInt3);
     }
-    if (this.eFF) {
-      this.mHandler.postDelayed(new b.2(this), bct());
+    if (this.fVw) {
+      this.mHandler.postDelayed(new b.2(this), bJA());
     }
   }
   
   public abstract void b(c paramc);
   
-  public abstract int bct();
+  public abstract int bJA();
   
-  public abstract void bcu();
+  public abstract void bJB();
   
-  public abstract void bcv();
+  public abstract void bJC();
   
   public final void destroy()
   {
@@ -59,7 +59,7 @@ public abstract class b
   
   public final void init()
   {
-    this.lpA = this;
+    a(this);
     super.init();
   }
   
@@ -67,9 +67,9 @@ public abstract class b
   
   public final void stop()
   {
-    this.eFF = false;
+    this.fVw = false;
     onStop();
-    y.d("MicroMsg.BaseIPCallTimerService", "stop service, type: %d", new Object[] { Integer.valueOf(LW()) });
+    ab.d("MicroMsg.BaseIPCallTimerService", "stop service, type: %d", new Object[] { Integer.valueOf(getServiceType()) });
   }
 }
 

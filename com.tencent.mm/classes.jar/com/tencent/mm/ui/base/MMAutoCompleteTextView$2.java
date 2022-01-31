@@ -2,6 +2,7 @@ package com.tencent.mm.ui.base;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMAutoCompleteTextView$2
   implements TextWatcher
@@ -14,7 +15,9 @@ final class MMAutoCompleteTextView$2
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    MMAutoCompleteTextView.b(this.uUi);
+    AppMethodBeat.i(106473);
+    MMAutoCompleteTextView.b(this.ziJ);
+    AppMethodBeat.o(106473);
   }
 }
 

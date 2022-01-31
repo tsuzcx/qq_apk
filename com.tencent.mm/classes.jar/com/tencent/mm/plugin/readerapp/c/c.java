@@ -2,19 +2,22 @@ package com.tencent.mm.plugin.readerapp.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.ah.d;
-import com.tencent.mm.ah.d.b;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
-import com.tencent.mm.ah.e.c;
-import com.tencent.mm.h.c.as;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.d;
+import com.tencent.mm.ai.d.b;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.ai.e.b;
+import com.tencent.mm.ai.e.c;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.bl;
+import com.tencent.mm.model.bm;
+import com.tencent.mm.model.r;
 import com.tencent.mm.platformtools.aa;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.bi;
@@ -28,105 +31,137 @@ import java.util.Map;
 public final class c
   implements d
 {
-  public static boolean buX()
+  public static boolean cfj()
   {
-    return (q.Gp() & 0x400) == 0;
+    AppMethodBeat.i(76757);
+    if ((r.Zt() & 0x400) == 0)
+    {
+      AppMethodBeat.o(76757);
+      return true;
+    }
+    AppMethodBeat.o(76757);
+    return false;
   }
   
   public final void a(e.c paramc)
   {
-    Object localObject3 = (String)paramc.ecW;
-    y.i("MicroMsg.ReaderAppMsgExtension", "[onPreDelMessage] functionId:%s", new Object[] { localObject3 });
-    Object localObject2 = g.buZ();
-    Object localObject1 = ((com.tencent.mm.model.bk)localObject2).J((String)localObject3, 20);
-    if ((localObject1 == null) || (((List)localObject1).size() == 0)) {
-      return;
-    }
-    paramc = (bj)((List)localObject1).get(0);
-    Iterator localIterator = ((List)localObject1).iterator();
-    if (localIterator.hasNext())
-    {
-      localObject1 = (bj)localIterator.next();
-      if (((bj)localObject1).dXj != 1) {
-        break label430;
-      }
-      paramc = (e.c)localObject1;
-    }
-    label430:
+    AppMethodBeat.i(76758);
+    Object localObject3 = (String)paramc.fti;
+    ab.i("MicroMsg.ReaderAppMsgExtension", "[onPreDelMessage] functionId:%s", new Object[] { localObject3 });
+    label501:
+    label504:
     for (;;)
     {
-      break;
-      if (((com.tencent.mm.model.bk)localObject2).dXo.delete(com.tencent.mm.model.bk.hT(20), "reserved3=?", new String[] { localObject3 }) >= 0) {
-        ((com.tencent.mm.model.bk)localObject2).doNotify();
-      }
-      localObject1 = com.tencent.mm.model.bk.iP(com.tencent.mm.model.bk.hT(20)) + " where istop = 1  group by time ORDER BY time DESC  limit 2";
-      y.i("MicroMsg.ReaderAppInfoStorage", "processConversationAfterDeleteInfo, sql is %s", new Object[] { localObject1 });
-      localObject3 = ((com.tencent.mm.model.bk)localObject2).dXo.a((String)localObject1, null, 2);
-      if (!((Cursor)localObject3).moveToFirst())
+      try
       {
-        ((Cursor)localObject3).close();
-        paramc = new ak();
-        paramc.setUsername(bj.hS(20));
-        paramc.setContent("");
-        paramc.ba(0L);
-        paramc.fA(0);
-        paramc.fy(0);
-        ((j)com.tencent.mm.kernel.g.r(j.class)).FB().a(paramc, bj.hS(20));
+        localObject2 = g.cfl();
+        localObject1 = ((bm)localObject2).R((String)localObject3, 20);
+        if ((localObject1 == null) || (((List)localObject1).size() == 0))
+        {
+          AppMethodBeat.o(76758);
+          return;
+        }
+        paramc = (bl)((List)localObject1).get(0);
+        Iterator localIterator = ((List)localObject1).iterator();
+        if (localIterator.hasNext())
+        {
+          localObject1 = (bl)localIterator.next();
+          if (((bl)localObject1).fnr != 1) {
+            break label501;
+          }
+          paramc = (e.c)localObject1;
+          break label504;
+        }
+        if (((bm)localObject2).fnw.delete(bm.kG(20), "reserved3=?", new String[] { localObject3 }) >= 0) {
+          ((bm)localObject2).doNotify();
+        }
+        localObject1 = bm.pD(bm.kG(20)) + " where istop = 1  group by time ORDER BY time DESC  limit 2";
+        ab.i("MicroMsg.ReaderAppInfoStorage", "processConversationAfterDeleteInfo, sql is %s", new Object[] { localObject1 });
+        localObject3 = ((bm)localObject2).fnw.a((String)localObject1, null, 2);
+        if (!((Cursor)localObject3).moveToFirst())
+        {
+          ((Cursor)localObject3).close();
+          paramc = new ak();
+          paramc.setUsername(bl.kF(20));
+          paramc.setContent("");
+          paramc.fK(0L);
+          paramc.hL(0);
+          paramc.hJ(0);
+          ((j)com.tencent.mm.kernel.g.E(j.class)).YF().a(paramc, bl.kF(20));
+          AppMethodBeat.o(76758);
+          return;
+        }
+      }
+      catch (Exception paramc)
+      {
+        ab.e("MicroMsg.ReaderAppMsgExtension", "[onPreDelMessage] Exception:%s", new Object[] { paramc });
+        AppMethodBeat.o(76758);
         return;
       }
-      localObject1 = ((j)com.tencent.mm.kernel.g.r(j.class)).FB().abv(bj.hS(20));
-      localObject2 = new bj();
-      ((bj)localObject2).d((Cursor)localObject3);
+      Object localObject1 = ((j)com.tencent.mm.kernel.g.E(j.class)).YF().arH(bl.kF(20));
+      if (localObject1 == null)
+      {
+        ab.e("MicroMsg.ReaderAppInfoStorage", "[processConversationAfterDeleteInfo] originConv[%s] is null!", new Object[] { bl.kF(20) });
+        AppMethodBeat.o(76758);
+        return;
+      }
+      Object localObject2 = new bl();
+      ((bl)localObject2).convertFrom((Cursor)localObject3);
       ((Cursor)localObject3).close();
       localObject3 = new ak();
-      ((ak)localObject3).setUsername(bj.hS(20));
-      ((ak)localObject3).setContent(((bj)localObject2).getTitle());
-      ((ak)localObject3).ba(((bj)localObject2).time);
-      ((ak)localObject3).fA(0);
-      if ((((as)localObject1).field_unReadCount > 0) && (paramc != null) && (((as)localObject1).field_content.equals(paramc.getTitle()))) {
-        ((ak)localObject3).fy(((as)localObject1).field_unReadCount - 1);
+      ((ak)localObject3).setUsername(bl.kF(20));
+      ((ak)localObject3).setContent(((bl)localObject2).getTitle());
+      ((ak)localObject3).fK(((bl)localObject2).time);
+      ((ak)localObject3).hL(0);
+      if ((((au)localObject1).field_unReadCount > 0) && (paramc != null) && (((au)localObject1).field_content.equals(paramc.getTitle()))) {
+        ((ak)localObject3).hJ(((au)localObject1).field_unReadCount - 1);
       }
       for (;;)
       {
-        ((j)com.tencent.mm.kernel.g.r(j.class)).FB().a((ak)localObject3, bj.hS(20));
+        ((j)com.tencent.mm.kernel.g.E(j.class)).YF().a((ak)localObject3, bl.kF(20));
+        AppMethodBeat.o(76758);
         return;
-        ((ak)localObject3).fy(0);
+        ((ak)localObject3).hJ(0);
       }
     }
   }
   
   public final e.b b(e.a parama)
   {
-    cd localcd = parama.dBs;
-    if (parama.ecW == null)
+    AppMethodBeat.i(76756);
+    cm localcm = parama.eyJ;
+    if (parama.fti == null)
     {
       parama = "fake#" + System.currentTimeMillis() / 1000L;
-      y.w("MicroMsg.ReaderAppMsgExtension", "[onPreAddMessage] fake! functionMsgId:%s", new Object[] { parama });
+      ab.w("MicroMsg.ReaderAppMsgExtension", "[onPreAddMessage] fake! functionMsgId:%s", new Object[] { parama });
     }
-    while (localcd == null)
+    while (localcm == null)
     {
-      y.e("MicroMsg.ReaderAppMsgExtension", "onPreAddMessage cmdAM is null");
+      ab.e("MicroMsg.ReaderAppMsgExtension", "onPreAddMessage cmdAM is null");
+      AppMethodBeat.o(76756);
       return null;
-      parama = ((d.b)parama.ecW).ecR;
+      parama = ((d.b)parama.fti).ftd;
     }
-    com.tencent.mm.plugin.report.service.h.nFQ.f(13440, new Object[] { Integer.valueOf(1) });
-    localObject1 = g.buZ();
-    localObject2 = "delete from " + com.tencent.mm.model.bk.hT(20) + " where reserved3 = " + com.tencent.mm.cf.h.fA(parama);
-    y.d("MicroMsg.ReaderAppInfoStorage", "deleteGroupByMsgSvrID:%s", new Object[] { localObject2 });
-    if (((com.tencent.mm.model.bk)localObject1).dXo.gk(com.tencent.mm.model.bk.hT(20), (String)localObject2)) {
-      ((com.tencent.mm.model.bk)localObject1).doNotify();
+    com.tencent.mm.plugin.report.service.h.qsU.e(13440, new Object[] { Integer.valueOf(1) });
+    localObject1 = g.cfl();
+    localObject2 = "delete from " + bm.kG(20) + " where reserved3 = " + com.tencent.mm.cg.h.escape(parama);
+    ab.d("MicroMsg.ReaderAppInfoStorage", "deleteGroupByMsgSvrID:%s", new Object[] { localObject2 });
+    if (((bm)localObject1).fnw.execSQL(bm.kG(20), (String)localObject2)) {
+      ((bm)localObject1).doNotify();
     }
-    localObject1 = aa.a(localcd.svH);
-    long l = localcd.mPL;
-    y.d("MicroMsg.ReaderAppMsgExtension", "parseMsg, createTime: %s, content: %s", new Object[] { Integer.valueOf(localcd.mPL), localObject1 });
+    localObject1 = aa.a(localcm.woR);
+    long l = localcm.CreateTime;
+    ab.i("MicroMsg.ReaderAppMsgExtension", "parseMsg, createTime: %s", new Object[] { Integer.valueOf(localcm.CreateTime) });
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
     int m = 0;
     ArrayList localArrayList = new ArrayList();
     k = 0;
     try
     {
-      localMap = bn.s((String)localObject1, "mmreader");
-      if (localMap == null) {
+      localMap = br.F((String)localObject1, "mmreader");
+      if (localMap == null)
+      {
+        AppMethodBeat.o(76756);
         return null;
       }
       i = 0;
@@ -138,87 +173,81 @@ public final class c
       for (;;)
       {
         Map localMap;
-        label2321:
         j = k;
         i = m;
-        y.printErrStackTrace("MicroMsg.ReaderAppMsgExtension", parama, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.ReaderAppMsgExtension", parama, "", new Object[0]);
         continue;
-        label2430:
         i1 = 0;
         continue;
-        label2436:
         i += 1;
         k = j;
         continue;
         j = k;
         continue;
-        if (com.tencent.mm.sdk.platformtools.bk.bl(((bj)localObject1).getUrl()))
+        if (bo.isNullOrNil(((bl)localObject1).getUrl()))
         {
-          y.e("MicroMsg.ReaderAppMsgExtension", "readerAppInfo.getUrl() is null, appInfo.tweetid = " + ((bj)localObject1).HW() + ", type = " + ((bj)localObject1).type);
+          ab.e("MicroMsg.ReaderAppMsgExtension", "readerAppInfo.getUrl() is null, appInfo.tweetid = " + ((bl)localObject1).aaV() + ", type = " + ((bl)localObject1).type);
           k = 0;
           continue;
-          localObject1 = ((bj)localObject3).dXf;
+          localObject1 = ((bl)localObject3).fnn;
           continue;
-          localObject1 = ((bj)localObject3).dXm;
+          localObject1 = ((bl)localObject3).fnu;
           continue;
-          localObject1 = ((bj)localObject3).dXn;
+          localObject1 = ((bl)localObject3).fnv;
           continue;
           n = 0;
         }
       }
-      y.i("MicroMsg.ReaderAppMsgExtension", "[onPreAddMessage] insertCount:%s catIdx:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(i) });
+      ab.i("MicroMsg.ReaderAppMsgExtension", "[onPreAddMessage] insertCount:%s catIdx:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(i) });
       if (m <= 0) {
-        break label2845;
+        break label2855;
       }
-      localObject1 = ((j)com.tencent.mm.kernel.g.r(j.class)).FB().abv(bj.hS(j));
-      if ((localObject1 != null) && (((as)localObject1).field_username.equals(bj.hS(j)))) {
-        break label2781;
+      localObject1 = ((j)com.tencent.mm.kernel.g.E(j.class)).YF().arH(bl.kF(j));
+      if ((localObject1 != null) && (((au)localObject1).field_username.equals(bl.kF(j)))) {
+        break label2791;
       }
       localObject2 = new ak();
-      ((ak)localObject2).setUsername(bj.hS(j));
+      ((ak)localObject2).setUsername(bl.kF(j));
       if (parama != null) {
-        break label2763;
+        break label2773;
       }
       localObject1 = "";
       ((ak)localObject2).setContent((String)localObject1);
       if (parama != null) {
-        break label2772;
+        break label2782;
       }
-      l = com.tencent.mm.sdk.platformtools.bk.UY();
-      label2663:
-      ((ak)localObject2).ba(l);
-      ((ak)localObject2).fA(0);
-      ((ak)localObject2).fy(i);
-      ((j)com.tencent.mm.kernel.g.r(j.class)).FB().d((ak)localObject2);
+      l = bo.aoy();
+      ((ak)localObject2).fK(l);
+      ((ak)localObject2).hL(0);
+      ((ak)localObject2).hJ(i);
+      ((j)com.tencent.mm.kernel.g.E(j.class)).YF().d((ak)localObject2);
       for (;;)
       {
-        g.buZ().doNotify();
+        g.cfl().doNotify();
         parama = parama.getTitle();
         localObject1 = new bi();
         ((bi)localObject1).setContent(parama);
-        ((bi)localObject1).ec(bj.hS(j));
+        ((bi)localObject1).kj(bl.kF(j));
         ((bi)localObject1).setType(1);
         ((bi)localObject1).setMsgId(7377812L);
-        return new e.b((bi)localObject1, true);
-        label2763:
+        parama = new e.b((bi)localObject1, true);
+        AppMethodBeat.o(76756);
+        return parama;
         localObject1 = parama.getTitle();
         break;
-        label2772:
         l = parama.time;
-        break label2663;
-        label2781:
+        break label2666;
         ((ak)localObject1).setContent(parama.getTitle());
-        ((ak)localObject1).ba(parama.time);
-        ((ak)localObject1).fA(0);
-        ((ak)localObject1).fy(((as)localObject1).field_unReadCount + i);
-        ((j)com.tencent.mm.kernel.g.r(j.class)).FB().a((ak)localObject1, bj.hS(j));
+        ((ak)localObject1).fK(parama.time);
+        ((ak)localObject1).hL(0);
+        ((ak)localObject1).hJ(((au)localObject1).field_unReadCount + i);
+        ((j)com.tencent.mm.kernel.g.E(j.class)).YF().a((ak)localObject1, bl.kF(j));
       }
-      label2845:
-      y.e("MicroMsg.ReaderAppMsgExtension", "insert error");
+      ab.e("MicroMsg.ReaderAppMsgExtension", "insert error");
+      AppMethodBeat.o(76756);
       return null;
     }
-    if (i <= 0)
-    {
+    if (i <= 0) {
       for (;;)
       {
         try
@@ -229,23 +258,23 @@ public final class c
           }
           localObject1 = Integer.valueOf(i);
           localObject1 = localObject1;
-          j = com.tencent.mm.sdk.platformtools.bk.getInt((String)localMap.get((String)localObject1 + ".$type"), 0);
+          j = bo.getInt((String)localMap.get((String)localObject1 + ".$type"), 0);
           if (j != 0) {
             continue;
           }
-          y.e("MicroMsg.ReaderAppMsgExtension", "get " + (String)localObject1 + ".$type  error");
+          ab.e("MicroMsg.ReaderAppMsgExtension", "get " + (String)localObject1 + ".$type  error");
           j = k;
-          boolean bool = buX();
-          y.d("MicroMsg.ReaderAppMsgExtension", "type = " + j + ", want to receive news? " + bool);
+          boolean bool = cfj();
+          ab.d("MicroMsg.ReaderAppMsgExtension", "type = " + j + ", want to receive news? " + bool);
           parama = localArrayList.iterator();
           if (!parama.hasNext()) {
             continue;
           }
-          localObject1 = (bj)parama.next();
-          if (!com.tencent.mm.sdk.platformtools.bk.bl(((bj)localObject1).getTitle())) {
+          localObject1 = (bl)parama.next();
+          if (!bo.isNullOrNil(((bl)localObject1).getTitle())) {
             continue;
           }
-          y.e("MicroMsg.ReaderAppMsgExtension", "readerAppInfo.getTitle() is null, appInfo.tweetid = " + ((bj)localObject1).HW() + ", type = " + ((bj)localObject1).type);
+          ab.e("MicroMsg.ReaderAppMsgExtension", "readerAppInfo.getTitle() is null, appInfo.tweetid = " + ((bl)localObject1).aaV() + ", type = " + ((bl)localObject1).type);
           k = 0;
         }
         catch (Exception parama)
@@ -256,7 +285,7 @@ public final class c
           String str2;
           int i2;
           String str3;
-          bj localbj;
+          bl localbl;
           int i1;
           int j = k;
           continue;
@@ -273,285 +302,291 @@ public final class c
           localObject2 = localObject3;
           continue;
         }
-        if ((localArrayList.size() <= 0) || (k == 0)) {
-          continue;
-        }
-        m = 0;
-        parama = null;
-        k = 0;
-        if (k >= localArrayList.size()) {
-          continue;
-        }
-        localObject2 = g.buZ();
-        localObject3 = (bj)localArrayList.get(k);
-        if (localObject3 == null) {
-          continue;
-        }
-        ((bj)localObject3).bcw = -1;
-        localObject4 = new ContentValues();
-        if ((((bj)localObject3).bcw & 0x1) != 0) {
-          ((ContentValues)localObject4).put("tweetid", ((bj)localObject3).HW());
-        }
-        if ((((bj)localObject3).bcw & 0x2) != 0) {
-          ((ContentValues)localObject4).put("time", Long.valueOf(((bj)localObject3).time));
-        }
-        if ((((bj)localObject3).bcw & 0x4) != 0) {
-          ((ContentValues)localObject4).put("type", Integer.valueOf(((bj)localObject3).type));
-        }
-        if ((((bj)localObject3).bcw & 0x8) != 0) {
-          ((ContentValues)localObject4).put("name", ((bj)localObject3).getName());
-        }
-        if ((((bj)localObject3).bcw & 0x10) != 0) {
-          ((ContentValues)localObject4).put("title", ((bj)localObject3).getTitle());
-        }
-        if ((((bj)localObject3).bcw & 0x20) != 0) {
-          ((ContentValues)localObject4).put("url", ((bj)localObject3).getUrl());
-        }
-        if ((((bj)localObject3).bcw & 0x40) != 0) {
-          ((ContentValues)localObject4).put("shorturl", ((bj)localObject3).HX());
-        }
-        if ((((bj)localObject3).bcw & 0x80) != 0)
+        if ((localArrayList.size() > 0) && (k != 0))
         {
-          if (((bj)localObject3).dXf != null) {
-            continue;
-          }
-          localObject1 = "";
-          ((ContentValues)localObject4).put("longurl", (String)localObject1);
-        }
-        if ((((bj)localObject3).bcw & 0x100) != 0) {
-          ((ContentValues)localObject4).put("pubtime", Long.valueOf(((bj)localObject3).dXg));
-        }
-        if ((((bj)localObject3).bcw & 0x200) != 0) {
-          ((ContentValues)localObject4).put("sourcename", ((bj)localObject3).HY());
-        }
-        if ((((bj)localObject3).bcw & 0x400) != 0) {
-          ((ContentValues)localObject4).put("sourceicon", ((bj)localObject3).HZ());
-        }
-        if ((((bj)localObject3).bcw & 0x800) != 0) {
-          ((ContentValues)localObject4).put("istop", Integer.valueOf(((bj)localObject3).dXj));
-        }
-        if ((((bj)localObject3).bcw & 0x1000) != 0) {
-          ((ContentValues)localObject4).put("cover", ((bj)localObject3).Ia());
-        }
-        if ((((bj)localObject3).bcw & 0x2000) != 0) {
-          ((ContentValues)localObject4).put("digest", ((bj)localObject3).getDigest());
-        }
-        if ((((bj)localObject3).bcw & 0x4000) != 0) {
-          ((ContentValues)localObject4).put("reserved1", Integer.valueOf(((bj)localObject3).dXk));
-        }
-        if ((((bj)localObject3).bcw & 0x8000) != 0) {
-          ((ContentValues)localObject4).put("reserved2", Long.valueOf(((bj)localObject3).dXl));
-        }
-        if ((((bj)localObject3).bcw & 0x10000) != 0)
-        {
-          if (((bj)localObject3).dXm != null) {
-            continue;
-          }
-          localObject1 = "";
-          ((ContentValues)localObject4).put("reserved3", (String)localObject1);
-        }
-        if ((((bj)localObject3).bcw & 0x20000) != 0)
-        {
-          if (((bj)localObject3).dXn != null) {
-            continue;
-          }
-          localObject1 = "";
-          ((ContentValues)localObject4).put("reserved4", (String)localObject1);
-        }
-        if ((int)((com.tencent.mm.model.bk)localObject2).dXo.insert(com.tencent.mm.model.bk.hT(((bj)localObject3).type), "tweetid", (ContentValues)localObject4) == -1) {
-          continue;
-        }
-        n = 1;
-        if (n == 0) {
-          continue;
-        }
-        if (parama != null) {
-          continue;
-        }
-        parama = (bj)localArrayList.get(k);
-        parama.dXj = 1;
-        m += 1;
-        k += 1;
-        continue;
-        localObject1 = "";
-        continue;
-        if ((j != 20) && (j != 11))
-        {
-          y.e("MicroMsg.ReaderAppMsgExtension", "get " + (String)localObject1 + ".$type  error Type:" + j);
-          j = k;
-        }
-        else
-        {
-          k = j;
-          m = i;
-          str1 = (String)localMap.get((String)localObject1 + ".name");
-          k = j;
-          m = i;
-          if (com.tencent.mm.sdk.platformtools.bk.bl(str1))
+          m = 0;
+          parama = null;
+          k = 0;
+          if (k < localArrayList.size())
           {
-            k = j;
-            m = i;
-            y.e("MicroMsg.ReaderAppMsgExtension", "get " + (String)localObject1 + ".name  error");
-          }
-          else
-          {
-            k = j;
-            m = i;
-            str2 = (String)localMap.get((String)localObject1 + ".topnew.cover");
-            k = j;
-            m = i;
-            localObject3 = (String)localMap.get((String)localObject1 + ".topnew.digest");
-            k = j;
-            m = i;
-            i2 = com.tencent.mm.sdk.platformtools.bk.getInt((String)localMap.get((String)localObject1 + ".$count"), 0);
-            if (i2 != 0) {
-              continue;
+            localObject2 = g.cfl();
+            localObject3 = (bl)localArrayList.get(k);
+            if (localObject3 != null)
+            {
+              ((bl)localObject3).bsY = -1;
+              localObject4 = new ContentValues();
+              if ((((bl)localObject3).bsY & 0x1) != 0) {
+                ((ContentValues)localObject4).put("tweetid", ((bl)localObject3).aaV());
+              }
+              if ((((bl)localObject3).bsY & 0x2) != 0) {
+                ((ContentValues)localObject4).put("time", Long.valueOf(((bl)localObject3).time));
+              }
+              if ((((bl)localObject3).bsY & 0x4) != 0) {
+                ((ContentValues)localObject4).put("type", Integer.valueOf(((bl)localObject3).type));
+              }
+              if ((((bl)localObject3).bsY & 0x8) != 0) {
+                ((ContentValues)localObject4).put("name", ((bl)localObject3).getName());
+              }
+              if ((((bl)localObject3).bsY & 0x10) != 0) {
+                ((ContentValues)localObject4).put("title", ((bl)localObject3).getTitle());
+              }
+              if ((((bl)localObject3).bsY & 0x20) != 0) {
+                ((ContentValues)localObject4).put("url", ((bl)localObject3).getUrl());
+              }
+              if ((((bl)localObject3).bsY & 0x40) != 0) {
+                ((ContentValues)localObject4).put("shorturl", ((bl)localObject3).aaW());
+              }
+              if ((((bl)localObject3).bsY & 0x80) != 0)
+              {
+                if (((bl)localObject3).fnn == null)
+                {
+                  localObject1 = "";
+                  ((ContentValues)localObject4).put("longurl", (String)localObject1);
+                }
+              }
+              else
+              {
+                if ((((bl)localObject3).bsY & 0x100) != 0) {
+                  ((ContentValues)localObject4).put("pubtime", Long.valueOf(((bl)localObject3).fno));
+                }
+                if ((((bl)localObject3).bsY & 0x200) != 0) {
+                  ((ContentValues)localObject4).put("sourcename", ((bl)localObject3).aaX());
+                }
+                if ((((bl)localObject3).bsY & 0x400) != 0) {
+                  ((ContentValues)localObject4).put("sourceicon", ((bl)localObject3).aaY());
+                }
+                if ((((bl)localObject3).bsY & 0x800) != 0) {
+                  ((ContentValues)localObject4).put("istop", Integer.valueOf(((bl)localObject3).fnr));
+                }
+                if ((((bl)localObject3).bsY & 0x1000) != 0) {
+                  ((ContentValues)localObject4).put("cover", ((bl)localObject3).aaZ());
+                }
+                if ((((bl)localObject3).bsY & 0x2000) != 0) {
+                  ((ContentValues)localObject4).put("digest", ((bl)localObject3).getDigest());
+                }
+                if ((((bl)localObject3).bsY & 0x4000) != 0) {
+                  ((ContentValues)localObject4).put("reserved1", Integer.valueOf(((bl)localObject3).fns));
+                }
+                if ((((bl)localObject3).bsY & 0x8000) != 0) {
+                  ((ContentValues)localObject4).put("reserved2", Long.valueOf(((bl)localObject3).fnt));
+                }
+                if ((((bl)localObject3).bsY & 0x10000) != 0)
+                {
+                  if (((bl)localObject3).fnu != null) {
+                    continue;
+                  }
+                  localObject1 = "";
+                  ((ContentValues)localObject4).put("reserved3", (String)localObject1);
+                }
+                if ((((bl)localObject3).bsY & 0x20000) != 0)
+                {
+                  if (((bl)localObject3).fnv != null) {
+                    continue;
+                  }
+                  localObject1 = "";
+                  ((ContentValues)localObject4).put("reserved4", (String)localObject1);
+                }
+                if ((int)((bm)localObject2).fnw.a(bm.kG(((bl)localObject3).type), "tweetid", (ContentValues)localObject4) == -1) {
+                  continue;
+                }
+                n = 1;
+                if (n == 0) {
+                  continue;
+                }
+                if (parama != null) {
+                  continue;
+                }
+                parama = (bl)localArrayList.get(k);
+                parama.fnr = 1;
+                m += 1;
+                k += 1;
+                continue;
+                localObject1 = "";
+                continue;
+                if ((j != 20) && (j != 11))
+                {
+                  ab.e("MicroMsg.ReaderAppMsgExtension", "get " + (String)localObject1 + ".$type  error Type:" + j);
+                  j = k;
+                  continue;
+                }
+                k = j;
+                m = i;
+                str1 = (String)localMap.get((String)localObject1 + ".name");
+                k = j;
+                m = i;
+                if (bo.isNullOrNil(str1))
+                {
+                  k = j;
+                  m = i;
+                  ab.e("MicroMsg.ReaderAppMsgExtension", "get " + (String)localObject1 + ".name  error");
+                  continue;
+                }
+                k = j;
+                m = i;
+                str2 = (String)localMap.get((String)localObject1 + ".topnew.cover");
+                k = j;
+                m = i;
+                localObject3 = (String)localMap.get((String)localObject1 + ".topnew.digest");
+                k = j;
+                m = i;
+                i2 = bo.getInt((String)localMap.get((String)localObject1 + ".$count"), 0);
+                if (i2 == 0)
+                {
+                  k = j;
+                  m = i;
+                  ab.e("MicroMsg.ReaderAppMsgExtension", "get " + (String)localObject1 + ".$count  error");
+                  continue;
+                }
+                if (i2 > 1)
+                {
+                  k = j;
+                  m = i;
+                  localObject2 = new StringBuilder().append((String)localObject1);
+                  if (j != 20) {
+                    continue;
+                  }
+                  localObject1 = ".newitem";
+                  k = j;
+                  m = i;
+                  localObject1 = (String)localObject1;
+                  continue;
+                  if (n >= i2) {
+                    continue;
+                  }
+                  k = j;
+                  m = i;
+                  localObject4 = new StringBuilder().append((String)localObject1);
+                  if (n <= 0) {
+                    continue;
+                  }
+                  k = j;
+                  m = i;
+                  localObject2 = Integer.valueOf(n);
+                  k = j;
+                  m = i;
+                  str3 = localObject2;
+                  k = j;
+                  m = i;
+                  localbl = new bl();
+                  k = j;
+                  m = i;
+                  localbl.fnt = localcm.pIE;
+                  k = j;
+                  m = i;
+                  localbl.title = ((String)localMap.get(str3 + ".title"));
+                  if (n != 0) {
+                    continue;
+                  }
+                  k = j;
+                  m = i;
+                  localbl.fnr = 1;
+                  k = j;
+                  m = i;
+                  localbl.fjJ = str2;
+                  k = j;
+                  m = i;
+                  if (!bo.isNullOrNil((String)localObject3)) {
+                    continue;
+                  }
+                  k = j;
+                  m = i;
+                  localObject2 = (String)localMap.get(str3 + ".digest");
+                  k = j;
+                  m = i;
+                }
+                for (localbl.fjL = ((String)localObject2);; localbl.fjL = ((String)localMap.get(str3 + ".digest")))
+                {
+                  k = j;
+                  m = i;
+                  if (!localMap.containsKey(str3 + ".vedio")) {
+                    break label2433;
+                  }
+                  i1 = 1;
+                  k = j;
+                  m = i;
+                  localbl.fns = i1;
+                  k = j;
+                  m = i;
+                  localbl.url = ((String)localMap.get(str3 + ".url"));
+                  k = j;
+                  m = i;
+                  localbl.fnm = ((String)localMap.get(str3 + ".shorturl"));
+                  k = j;
+                  m = i;
+                  localbl.fnn = ((String)localMap.get(str3 + ".longurl"));
+                  k = j;
+                  m = i;
+                  localbl.fno = bo.getLong((String)localMap.get(str3 + ".pub_time"), 0L);
+                  k = j;
+                  m = i;
+                  localObject4 = (String)localMap.get(str3 + ".tweetid");
+                  if (localObject4 != null)
+                  {
+                    localObject2 = localObject4;
+                    k = j;
+                    m = i;
+                    if (!"".equals(localObject4)) {}
+                  }
+                  else
+                  {
+                    k = j;
+                    m = i;
+                    localObject2 = new Date(System.currentTimeMillis() + n);
+                    k = j;
+                    m = i;
+                    localObject2 = "N" + localSimpleDateFormat.format((Date)localObject2);
+                    k = j;
+                    m = i;
+                    ab.i("MicroMsg.ReaderAppMsgExtension", "create tweetID = ".concat(String.valueOf(localObject2)));
+                  }
+                  k = j;
+                  m = i;
+                  localbl.fnl = ((String)localObject2);
+                  k = j;
+                  m = i;
+                  localbl.fnp = ((String)localMap.get(str3 + ".sources.source.name"));
+                  k = j;
+                  m = i;
+                  localbl.fnq = ((String)localMap.get(str3 + ".sources.source.icon"));
+                  k = j;
+                  m = i;
+                  localbl.time = (i + l * 1000L);
+                  k = j;
+                  m = i;
+                  localbl.type = j;
+                  k = j;
+                  m = i;
+                  localbl.name = str1;
+                  k = j;
+                  m = i;
+                  localbl.fnu = parama;
+                  k = j;
+                  m = i;
+                  localArrayList.add(localbl);
+                  n += 1;
+                  break;
+                  k = j;
+                  m = i;
+                  localObject1 = (String)localObject1 + ".item";
+                  break label2896;
+                  k = j;
+                  m = i;
+                  localbl.fjJ = ((String)localMap.get(str3 + ".cover"));
+                  k = j;
+                  m = i;
+                }
+              }
             }
-            k = j;
-            m = i;
-            y.e("MicroMsg.ReaderAppMsgExtension", "get " + (String)localObject1 + ".$count  error");
           }
         }
-      }
-      if (i2 > 1)
-      {
-        k = j;
-        m = i;
-        localObject2 = new StringBuilder().append((String)localObject1);
-        if (j != 20) {
-          break label2882;
-        }
-        localObject1 = ".newitem";
-        k = j;
-        m = i;
-        localObject1 = (String)localObject1;
-        break label2876;
-        if (n >= i2) {
-          break label2436;
-        }
-        k = j;
-        m = i;
-        localObject4 = new StringBuilder().append((String)localObject1);
-        if (n <= 0) {
-          break label2890;
-        }
-        k = j;
-        m = i;
-        localObject2 = Integer.valueOf(n);
-        k = j;
-        m = i;
-        str3 = localObject2;
-        k = j;
-        m = i;
-        localbj = new bj();
-        k = j;
-        m = i;
-        localbj.dXl = localcd.ndm;
-        k = j;
-        m = i;
-        localbj.title = ((String)localMap.get(str3 + ".title"));
-        if (n != 0) {
-          break label2321;
-        }
-        k = j;
-        m = i;
-        localbj.dXj = 1;
-        k = j;
-        m = i;
-        localbj.dTD = str2;
-        k = j;
-        m = i;
-        if (!com.tencent.mm.sdk.platformtools.bk.bl((String)localObject3)) {
-          break label2897;
-        }
-        k = j;
-        m = i;
-        localObject2 = (String)localMap.get(str3 + ".digest");
-        k = j;
-        m = i;
-      }
-      for (localbj.dTF = ((String)localObject2);; localbj.dTF = ((String)localMap.get(str3 + ".digest")))
-      {
-        k = j;
-        m = i;
-        if (!localMap.containsKey(str3 + ".vedio")) {
-          break label2430;
-        }
-        i1 = 1;
-        k = j;
-        m = i;
-        localbj.dXk = i1;
-        k = j;
-        m = i;
-        localbj.url = ((String)localMap.get(str3 + ".url"));
-        k = j;
-        m = i;
-        localbj.dXe = ((String)localMap.get(str3 + ".shorturl"));
-        k = j;
-        m = i;
-        localbj.dXf = ((String)localMap.get(str3 + ".longurl"));
-        k = j;
-        m = i;
-        localbj.dXg = com.tencent.mm.sdk.platformtools.bk.getLong((String)localMap.get(str3 + ".pub_time"), 0L);
-        k = j;
-        m = i;
-        localObject4 = (String)localMap.get(str3 + ".tweetid");
-        if (localObject4 != null)
-        {
-          localObject2 = localObject4;
-          k = j;
-          m = i;
-          if (!"".equals(localObject4)) {}
-        }
-        else
-        {
-          k = j;
-          m = i;
-          localObject2 = new Date(System.currentTimeMillis() + n);
-          k = j;
-          m = i;
-          localObject2 = "N" + localSimpleDateFormat.format((Date)localObject2);
-          k = j;
-          m = i;
-          y.d("MicroMsg.ReaderAppMsgExtension", "create tweetID = " + (String)localObject2);
-        }
-        k = j;
-        m = i;
-        localbj.dXd = ((String)localObject2);
-        k = j;
-        m = i;
-        localbj.dXh = ((String)localMap.get(str3 + ".sources.source.name"));
-        k = j;
-        m = i;
-        localbj.dXi = ((String)localMap.get(str3 + ".sources.source.icon"));
-        k = j;
-        m = i;
-        localbj.time = (i + l * 1000L);
-        k = j;
-        m = i;
-        localbj.type = j;
-        k = j;
-        m = i;
-        localbj.name = str1;
-        k = j;
-        m = i;
-        localbj.dXm = parama;
-        k = j;
-        m = i;
-        localArrayList.add(localbj);
-        n += 1;
-        break;
-        k = j;
-        m = i;
-        localObject1 = (String)localObject1 + ".item";
-        break label2876;
-        k = j;
-        m = i;
-        localbj.dTD = ((String)localMap.get(str3 + ".cover"));
-        k = j;
-        m = i;
       }
     }
+    label2433:
+    label2666:
+    AppMethodBeat.o(76756);
+    label2773:
+    label2782:
+    label2791:
     return null;
   }
 }

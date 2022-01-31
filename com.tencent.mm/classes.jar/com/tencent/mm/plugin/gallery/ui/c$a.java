@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.gallery.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.k;
 import java.io.File;
 
 final class c$a
@@ -19,20 +20,26 @@ final class c$a
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(21458);
     paramView = new Intent();
     paramView.setAction("android.intent.action.VIEW");
-    paramView.setDataAndType(Uri.fromFile(new File(this.filePath)), "video/*");
+    File localFile = new File(this.filePath);
+    k.a(this.nfB.mContext, paramView, localFile, "video/*");
     try
     {
-      this.kJe.mContext.startActivity(paramView);
+      this.nfB.mContext.startActivity(paramView);
+      AppMethodBeat.o(21458);
       return;
     }
-    catch (Exception paramView) {}
+    catch (Exception paramView)
+    {
+      AppMethodBeat.o(21458);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.widget.ImageView;
 
 final class a$f
 {
-  ImageView iIS;
+  ImageView kPy;
   
   a$f(a parama) {}
 }

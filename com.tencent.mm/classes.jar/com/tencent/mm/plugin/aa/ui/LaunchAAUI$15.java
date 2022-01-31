@@ -1,16 +1,28 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.aa.a.a;
+import com.tencent.mm.plugin.report.service.h;
 
 final class LaunchAAUI$15
-  implements View.OnClickListener
+  implements a.a
 {
   LaunchAAUI$15(LaunchAAUI paramLaunchAAUI) {}
   
-  public final void onClick(View paramView)
+  public final void aoW()
   {
-    LaunchAAUI.a(this.eZt);
+    AppMethodBeat.i(40836);
+    Intent localIntent = new Intent(this.grm, AAQueryListUI.class);
+    this.grm.startActivity(localIntent);
+    if (LaunchAAUI.b(this.grm) == a.gne)
+    {
+      h.qsU.e(13721, new Object[] { Integer.valueOf(5), Integer.valueOf(1) });
+      AppMethodBeat.o(40836);
+      return;
+    }
+    h.qsU.e(13721, new Object[] { Integer.valueOf(5), Integer.valueOf(2) });
+    AppMethodBeat.o(40836);
   }
 }
 

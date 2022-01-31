@@ -1,93 +1,105 @@
 package com.tencent.util;
 
-import android.util.Log;
-import com.tencent.view.b;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public final class g
 {
-  public static boolean xcF = false;
-  private static HashMap<String, Long> xcG = new HashMap();
-  private static f xcH = null;
+  public static final char DIR_SEPARATOR;
+  public static final String LINE_SEPARATOR;
   
-  public static int a(Object paramObject, String paramString, Throwable paramThrowable)
+  static
   {
-    if (b.xdc)
-    {
-      paramObject = cu(paramObject);
-      if (xcH == null) {
-        break label19;
-      }
-    }
-    label19:
-    while (!b.xdc) {
-      return 0;
-    }
-    return Log.e(paramObject, paramString, paramThrowable);
+    AppMethodBeat.i(86614);
+    DIR_SEPARATOR = File.separatorChar;
+    StringWriter localStringWriter = new StringWriter(4);
+    new PrintWriter(localStringWriter).println();
+    LINE_SEPARATOR = localStringWriter.toString();
+    AppMethodBeat.o(86614);
   }
   
-  private static String cu(Object paramObject)
+  public static void closeQuietly(InputStream paramInputStream)
   {
-    if (paramObject == null) {
-      return "filter process";
+    AppMethodBeat.i(86609);
+    if (paramInputStream != null) {}
+    try
+    {
+      paramInputStream.close();
+      AppMethodBeat.o(86609);
+      return;
     }
-    if ((paramObject instanceof String)) {
-      return (String)paramObject;
+    catch (IOException paramInputStream)
+    {
+      AppMethodBeat.o(86609);
     }
-    return paramObject.getClass().getSimpleName();
   }
   
-  public static int g(Object paramObject, String paramString)
+  public static void closeQuietly(OutputStream paramOutputStream)
   {
-    if (b.xdc)
+    AppMethodBeat.i(86610);
+    if (paramOutputStream != null) {}
+    try
     {
-      paramObject = cu(paramObject);
-      if (xcH == null) {
-        break label19;
-      }
+      paramOutputStream.close();
+      AppMethodBeat.o(86610);
+      return;
     }
-    label19:
-    while (!b.xdc) {
-      return 0;
+    catch (IOException paramOutputStream)
+    {
+      AppMethodBeat.o(86610);
     }
-    return Log.i(paramObject, paramString);
   }
   
-  public static int h(Object paramObject, String paramString)
+  public static int copy(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    if (b.xdc)
+    AppMethodBeat.i(86612);
+    long l = copyLarge(paramInputStream, paramOutputStream);
+    if (l > 2147483647L)
     {
-      paramObject = cu(paramObject);
-      if (xcH == null) {
-        break label19;
-      }
+      AppMethodBeat.o(86612);
+      return -1;
     }
-    label19:
-    while (!b.xdc) {
-      return 0;
-    }
-    return Log.d(paramObject, paramString);
+    int i = (int)l;
+    AppMethodBeat.o(86612);
+    return i;
   }
   
-  public static int i(Object paramObject, String paramString)
+  private static long copyLarge(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    if (b.xdc)
+    AppMethodBeat.i(86613);
+    byte[] arrayOfByte = new byte[4096];
+    int i;
+    for (long l = 0L;; l += i)
     {
-      paramObject = cu(paramObject);
-      if (xcH == null) {
-        break label19;
+      i = paramInputStream.read(arrayOfByte);
+      if (-1 == i) {
+        break;
       }
+      paramOutputStream.write(arrayOfByte, 0, i);
     }
-    label19:
-    while (!b.xdc) {
-      return 0;
-    }
-    return Log.e(paramObject, paramString);
+    AppMethodBeat.o(86613);
+    return l;
+  }
+  
+  public static byte[] toByteArray(InputStream paramInputStream)
+  {
+    AppMethodBeat.i(86611);
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    copy(paramInputStream, localByteArrayOutputStream);
+    paramInputStream = localByteArrayOutputStream.toByteArray();
+    AppMethodBeat.o(86611);
+    return paramInputStream;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.util.g
  * JD-Core Version:    0.7.0.1
  */

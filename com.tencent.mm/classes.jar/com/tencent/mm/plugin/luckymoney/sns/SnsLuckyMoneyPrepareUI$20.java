@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.luckymoney.sns;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 
 final class SnsLuckyMoneyPrepareUI$20
@@ -12,12 +13,14 @@ final class SnsLuckyMoneyPrepareUI$20
   
   public final void onClick(View paramView)
   {
-    this.eYi.setOnClickListener(null);
-    this.lMy.setOnClickListener(null);
-    this.lTI.J(this.lTI.lTx, 2);
-    this.lTI.J(this.lTI.lMm, 0);
-    this.lTI.mKeyboard.setXMode(2);
-    SnsLuckyMoneyPrepareUI.k(this.lTI);
+    AppMethodBeat.i(42530);
+    this.val$hintTv.setOnClickListener(null);
+    this.ojR.setOnClickListener(null);
+    this.oqN.Z(this.oqN.oqE, 2);
+    this.oqN.Z(this.oqN.ojG, 0);
+    this.oqN.mKeyboard.setXMode(2);
+    SnsLuckyMoneyPrepareUI.k(this.oqN);
+    AppMethodBeat.o(42530);
   }
 }
 

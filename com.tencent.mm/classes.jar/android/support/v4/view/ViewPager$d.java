@@ -1,8 +1,10 @@
 package android.support.v4.view;
 
+import android.view.View;
+
 public abstract interface ViewPager$d
 {
-  public abstract void a(ViewPager paramViewPager, n paramn1, n paramn2);
+  public abstract void k(View paramView, float paramFloat);
 }
 
 

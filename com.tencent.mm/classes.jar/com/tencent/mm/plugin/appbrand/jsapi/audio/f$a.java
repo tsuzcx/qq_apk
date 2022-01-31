@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import android.text.TextUtils;
-import com.tencent.mm.af.d;
-import com.tencent.mm.h.a.s;
-import com.tencent.mm.h.a.s.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ag.d;
+import com.tencent.mm.g.a.s;
+import com.tencent.mm.g.a.s.b;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,101 +15,109 @@ final class f$a
   extends a
 {
   public String appId = "";
-  public String bFM = "";
-  public int bFN;
+  public String ceq;
+  public String ceu = "";
+  public int cmU;
   public int duration = 0;
-  public int eCF;
-  public int eaX;
-  public String eaY;
   public boolean error = false;
-  private i gfG;
-  public int gfg;
-  public c ggu;
-  public String gio;
+  public int fSw;
+  public int frm;
+  public String hBF;
+  public int hry;
+  private m hxs;
+  public c hyO;
   public int startTime;
   
-  public f$a(i parami, c paramc, int paramInt)
+  public f$a(m paramm, c paramc, int paramInt)
   {
-    this.gfG = parami;
-    this.ggu = paramc;
-    this.gfg = paramInt;
+    this.hxs = paramm;
+    this.hyO = paramc;
+    this.hry = paramInt;
   }
   
-  public final void ahX()
+  public final void Dh()
   {
-    Object localObject = this.bFM;
+    AppMethodBeat.i(137726);
+    Object localObject = this.ceu;
     s locals = new s();
-    locals.bFK.action = 6;
-    locals.bFK.bFM = ((String)localObject);
+    locals.cmS.action = 6;
+    locals.cmS.ceu = ((String)localObject);
     com.tencent.mm.plugin.music.b.a.a(locals);
-    localObject = locals.bFL.bFR;
+    localObject = locals.cmT.cmY;
     if (localObject == null)
     {
-      y.e("MicroMsg.Audio.JsApiGetAudioState", "return parameter is invalid, audioState is null, audioId:%s", new Object[] { this.bFM });
+      ab.e("MicroMsg.Audio.JsApiGetAudioState", "return parameter is invalid, audioState is null, audioId:%s", new Object[] { this.ceu });
       this.error = true;
-      this.gio = "return parameter is invalid";
-      pQ();
+      this.hBF = "return parameter is invalid";
+      tU();
+      AppMethodBeat.o(137726);
       return;
     }
-    if ((((d)localObject).duration < 0) || (((d)localObject).bFN < 0))
+    if ((((d)localObject).duration < 0) || (((d)localObject).cmU < 0))
     {
-      y.e("MicroMsg.Audio.JsApiGetAudioState", "return parameter is invalid, duration:%d, currentTime:%d", new Object[] { Integer.valueOf(((d)localObject).duration), Integer.valueOf(((d)localObject).bFN) });
+      ab.e("MicroMsg.Audio.JsApiGetAudioState", "return parameter is invalid, duration:%d, currentTime:%d", new Object[] { Integer.valueOf(((d)localObject).duration), Integer.valueOf(((d)localObject).cmU) });
       this.error = true;
-      this.gio = "return parameter is invalid";
-      pQ();
+      this.hBF = "return parameter is invalid";
+      tU();
+      AppMethodBeat.o(137726);
       return;
     }
     this.duration = ((d)localObject).duration;
-    this.bFN = ((d)localObject).bFN;
-    if (((d)localObject).jJ) {}
+    this.cmU = ((d)localObject).cmU;
+    if (((d)localObject).kH) {}
     for (int i = 1;; i = 0)
     {
-      this.eCF = i;
-      this.eaY = ((d)localObject).eaY;
-      this.eaX = ((d)localObject).eaX;
+      this.fSw = i;
+      this.ceq = ((d)localObject).ceq;
+      this.frm = ((d)localObject).frm;
       this.startTime = ((d)localObject).startTime;
-      y.d("MicroMsg.Audio.JsApiGetAudioState", "duration: %d , currentTime: %d ,paused: %d , buffered: %d , src: %s, startTime:%d", new Object[] { Integer.valueOf(this.duration), Integer.valueOf(this.bFN), Integer.valueOf(this.eCF), Integer.valueOf(this.eaX), this.eaY, Integer.valueOf(this.startTime) });
-      pQ();
+      ab.d("MicroMsg.Audio.JsApiGetAudioState", "duration: %d , currentTime: %d ,paused: %d , buffered: %d , src: %s, startTime:%d", new Object[] { Integer.valueOf(this.duration), Integer.valueOf(this.cmU), Integer.valueOf(this.fSw), Integer.valueOf(this.frm), this.ceq, Integer.valueOf(this.startTime) });
+      tU();
+      AppMethodBeat.o(137726);
       return;
     }
   }
   
-  public final void pQ()
+  public final void tU()
   {
-    if (this.ggu == null)
+    AppMethodBeat.i(137727);
+    if (this.hyO == null)
     {
-      y.e("MicroMsg.Audio.JsApiGetAudioState", "service is null");
+      ab.e("MicroMsg.Audio.JsApiGetAudioState", "service is null");
+      AppMethodBeat.o(137727);
       return;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("duration", Integer.valueOf(this.duration));
-    localHashMap.put("currentTime", Integer.valueOf(this.bFN));
+    localHashMap.put("currentTime", Integer.valueOf(this.cmU));
     boolean bool;
-    if (this.eCF == 1)
+    if (this.fSw == 1)
     {
       bool = true;
       localHashMap.put("paused", Boolean.valueOf(bool));
-      localHashMap.put("buffered", Integer.valueOf(this.eaX));
-      localHashMap.put("src", this.eaY);
+      localHashMap.put("buffered", Integer.valueOf(this.frm));
+      localHashMap.put("src", this.ceq);
       localHashMap.put("startTime", Integer.valueOf(this.startTime));
-      if (!TextUtils.isEmpty(this.gio)) {
-        break label201;
-      }
-    }
-    label201:
-    for (String str = "";; str = this.gio)
-    {
-      if (!this.error) {
+      if (!TextUtils.isEmpty(this.hBF)) {
         break label209;
       }
-      y.e("MicroMsg.Audio.JsApiGetAudioState", "getAudioState fail, err:%s", new Object[] { str });
-      this.ggu.C(this.gfg, this.gfG.h("fail:" + str, null));
+    }
+    label209:
+    for (String str = "";; str = this.hBF)
+    {
+      if (!this.error) {
+        break label217;
+      }
+      ab.e("MicroMsg.Audio.JsApiGetAudioState", "getAudioState fail, err:%s", new Object[] { str });
+      this.hyO.h(this.hry, this.hxs.j("fail:".concat(String.valueOf(str)), null));
+      AppMethodBeat.o(137727);
       return;
       bool = false;
       break;
     }
-    label209:
-    this.ggu.C(this.gfg, this.gfG.h("ok", localHashMap));
+    label217:
+    this.hyO.h(this.hry, this.hxs.j("ok", localHashMap));
+    AppMethodBeat.o(137727);
   }
 }
 

@@ -1,21 +1,26 @@
 package com.tencent.mm.compatible.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class o
 {
-  public boolean dxP = false;
-  public int dxQ;
-  public int dxR;
+  public boolean epP;
+  public int epQ;
+  public int epR;
   
   public o()
   {
+    AppMethodBeat.i(92956);
+    this.epP = false;
     reset();
+    AppMethodBeat.o(92956);
   }
   
   public final void reset()
   {
-    this.dxP = false;
-    this.dxQ = 0;
-    this.dxR = 0;
+    this.epP = false;
+    this.epQ = 0;
+    this.epR = 0;
   }
 }
 

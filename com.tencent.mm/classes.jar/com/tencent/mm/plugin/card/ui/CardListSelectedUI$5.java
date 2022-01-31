@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class CardListSelectedUI$5
   implements View.OnClickListener
@@ -13,9 +13,11 @@ final class CardListSelectedUI$5
   
   public final void onClick(View paramView)
   {
-    if (!bk.bl(this.ivL.ivI)) {
-      b.a(this.ivL, this.ivL.ivI, this.ivL.getString(a.g.card_invoice_url_slogan));
+    AppMethodBeat.i(88559);
+    if (!bo.isNullOrNil(this.kwP.kwM)) {
+      b.a(this.kwP, this.kwP.kwM, this.kwP.getString(2131297967));
     }
+    AppMethodBeat.o(88559);
   }
 }
 

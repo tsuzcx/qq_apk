@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/sz" android:paddingLeft="@dimen/kl" android:paddingRight="@dimen/kl" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kl">
-        <TextView android:textSize="@dimen/dq" android:textColor="@color/ta" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mp" android:text="@string/fn_" android:drawableTop="@drawable/b6u" android:drawablePadding="@dimen/kp" />
-        <TextView android:textSize="@dimen/lj" android:textColor="@color/pf" android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kp" android:text="@string/fng" android:drawableTop="@drawable/ag0" android:drawablePadding="@dimen/kl" />
-        <Button android:id="@id/etz" android:layout_width="fill_parent" android:text="@string/d_d" style="@style/mu" />
-    </LinearLayout>
-</ScrollView>
+    <ListView android:id="@id/f1o" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

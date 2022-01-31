@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SnsMsgUI$8$1
   implements Runnable
@@ -9,18 +10,20 @@ final class SnsMsgUI$8$1
   
   public final void run()
   {
-    synchronized (SnsMsgUI.e(this.pas.paq))
+    AppMethodBeat.i(39072);
+    synchronized (SnsMsgUI.e(this.rSW.rSU))
     {
-      y.v("MicroMsg.SnsMsgUI", "comment notify");
-      SnsMsgUI.o(this.pas.paq);
-      SnsMsgUI.e(this.pas.paq).a(null, null);
+      ab.v("MicroMsg.SnsMsgUI", "comment notify");
+      SnsMsgUI.o(this.rSW.rSU);
+      SnsMsgUI.e(this.rSW.rSU).a(null, null);
+      AppMethodBeat.o(39072);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsMsgUI.8.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public abstract class d$a
     attachInterface(this, "com.tencent.mm.plugin.talkroom.component.IMicRecoder_AIDL");
   }
   
-  public static d D(IBinder paramIBinder)
+  public static d C(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -42,12 +42,12 @@ public abstract class d$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IMicRecoder_AIDL");
-      bMq();
+      cHp();
       paramParcel2.writeNoException();
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IMicRecoder_AIDL");
-      RG();
+      akP();
       paramParcel2.writeNoException();
       return true;
     case 3: 
@@ -57,7 +57,7 @@ public abstract class d$a
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IMicRecoder_AIDL");
-      paramInt1 = bMr();
+      paramInt1 = cHq();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;

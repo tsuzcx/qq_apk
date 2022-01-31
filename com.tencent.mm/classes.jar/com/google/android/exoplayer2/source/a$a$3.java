@@ -1,17 +1,22 @@
 package com.google.android.exoplayer2.source;
 
 import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.h.i;
+import com.google.android.exoplayer2.h.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$a$3
   implements Runnable
 {
-  a$a$3(a.a parama, i parami, int paramInt1, int paramInt2, Format paramFormat, int paramInt3, Object paramObject, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5) {}
+  a$a$3(a.a parama, j paramj, int paramInt1, int paramInt2, Format paramFormat, int paramInt3, Object paramObject, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5) {}
   
   public final void run()
   {
-    a.a.a(this.aHX, this.aHU);
-    a.a.a(this.aHX, this.aHV);
+    AppMethodBeat.i(95431);
+    a locala = this.aOR.aOG;
+    a.a.a(this.aOR, this.aOO);
+    a.a.a(this.aOR, this.aOP);
+    locala.oO();
+    AppMethodBeat.o(95431);
   }
 }
 

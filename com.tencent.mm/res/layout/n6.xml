@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/gf"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.FoursquareRelativeLayout android:background="#ff333333" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.MMImageView android:id="@id/aql" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" />
-        <ImageView android:id="@id/aqm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bcb" android:layout_alignParentBottom="true" />
-        <TextView android:ellipsize="middle" android:id="@id/pp" android:background="#33ffffff" android:padding="2.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        <View android:id="@id/aqn" android:background="#7f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <View android:id="@id/aqo" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <CheckBox android:id="@id/x8" android:background="@drawable/r5" android:focusable="false" android:clickable="false" android:layout_width="@dimen/er" android:layout_height="@dimen/er" android:layout_marginTop="@dimen/kv" android:layout_marginRight="@dimen/kv" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    </com.tencent.mm.ui.widget.FoursquareRelativeLayout>
+    <include android:layout_marginTop="5.0dip" layout="@layout/m0" style="@style/gb" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ar0" android:background="@drawable/j1" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gg">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/atn" style="@style/gu" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/lg" android:gravity="center" android:id="@id/au6" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fbm" />
+    </LinearLayout>
 </LinearLayout>

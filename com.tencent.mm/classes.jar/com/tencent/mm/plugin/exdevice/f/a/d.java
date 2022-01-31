@@ -1,37 +1,49 @@
 package com.tencent.mm.plugin.exdevice.f.a;
 
 import android.graphics.Bitmap.CompressFormat;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.c;
+import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.vfs.b;
 import com.tencent.mm.vfs.j;
 
 public final class d
 {
-  private static final String jxI = e.dzL + "uploaded_photos/";
-  private static final String jxJ = e.dzL + "temp/";
+  private static final String lHh;
+  private static final String lHi;
   
-  public static String Bx(String paramString)
+  static
   {
-    if (bk.bl(paramString)) {}
-    for (String str = "";; str = j.n(new b(aLY(), str).cLr()))
+    AppMethodBeat.i(19438);
+    lHh = e.esz + "uploaded_photos/";
+    lHi = e.esz + "temp/";
+    AppMethodBeat.o(19438);
+  }
+  
+  public static String Lz(String paramString)
+  {
+    AppMethodBeat.i(19436);
+    if (bo.isNullOrNil(paramString)) {}
+    for (String str = "";; str = j.p(new b(bql(), str).dQJ()))
     {
-      c.c(paramString, 640, 640, Bitmap.CompressFormat.JPEG, 100, str);
+      com.tencent.mm.sdk.platformtools.d.c(paramString, 640, 640, Bitmap.CompressFormat.JPEG, 100, str);
       System.currentTimeMillis();
+      AppMethodBeat.o(19436);
       return str;
-      str = ad.bB(paramString);
+      str = ag.cE(paramString);
       str = str + "_t";
     }
   }
   
-  public static b aLY()
+  public static b bql()
   {
-    b localb = new b(jxI);
+    AppMethodBeat.i(19437);
+    b localb = new b(lHh);
     if ((!localb.exists()) || (!localb.isDirectory())) {
       localb.mkdirs();
     }
+    AppMethodBeat.o(19437);
     return localb;
   }
 }

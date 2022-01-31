@@ -1,51 +1,75 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import com.tencent.mm.plugin.appbrand.i.o;
-import com.tencent.mm.plugin.appbrand.i.p;
-import com.tencent.mm.sdk.platformtools.d;
-import com.tencent.xweb.g;
+import a.f.b.j;
+import a.l;
+import a.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.protocal.protobuf.dm;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedList;
 
-public enum a
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandCrossProcessSafeReporter;", "", "()V", "TAG", "", "reportCacheList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportStruct;", "kvStat", "", "logID", "", "vals", "", "(I[Ljava/lang/Object;)V", "isReportNow", "", "isImportant", "ignoreFreqLimit", "(IZZZ[Ljava/lang/Object;)V", "IPC_reportKvSafe", "plugin-appbrand-integration_release"})
+public final class a
 {
-  private a() {}
+  private static final LinkedList<dm> iFd;
+  public static final a iFe;
   
-  public static a a(com.tencent.mm.plugin.appbrand.i.f paramf)
+  static
   {
-    if ((paramf instanceof com.tencent.mm.plugin.appbrand.game.f)) {
-      return gXw;
-    }
-    if ((paramf instanceof com.tencent.mm.plugin.appbrand.i.a)) {
-      return gXw;
-    }
-    if ((paramf instanceof p)) {
-      return gXx;
-    }
-    if ((paramf instanceof o)) {
-      paramf = g.cSh();
-    }
-    switch (a.1.gXB[paramf.ordinal()])
+    AppMethodBeat.i(155959);
+    iFe = new a();
+    iFd = new LinkedList();
+    AppMethodBeat.o(155959);
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(155957);
+    j.q(paramVarArgs, "vals");
+    for (;;)
     {
-    default: 
-      if (d.DEBUG) {
-        throw new IllegalStateException();
+      synchronized (iFd)
+      {
+        Object localObject = iFd;
+        dm localdm = new dm();
+        localdm.wjb = paramInt;
+        h localh = h.qsU;
+        localdm.value = h.t(Arrays.copyOf(paramVarArgs, paramVarArgs.length));
+        localdm.qsG = false;
+        localdm.qsi = false;
+        localdm.qsH = paramBoolean;
+        ((LinkedList)localObject).add(localdm);
+        if (iFd.size() < 1000) {
+          break label164;
+        }
+        paramVarArgs = new dl();
+        paramVarArgs.elu.addAll((Collection)iFd);
+        iFd.clear();
+        localObject = y.BMg;
+        if (paramVarArgs != null)
+        {
+          XIPCInvoker.a("com.tencent.mm", paramVarArgs, a.a.class, null);
+          AppMethodBeat.o(155957);
+          return;
+        }
       }
-      break;
-    case 1: 
-      return gXv;
-    case 2: 
-      return gXx;
-    case 3: 
-      return gXw;
-    case 4: 
-      return gXw;
-    case 5: 
-      return gXw;
-    case 6: 
-      return gXv;
-    case 7: 
-      return gXy;
+      AppMethodBeat.o(155957);
+      return;
+      label164:
+      paramVarArgs = null;
     }
-    return gXz;
+  }
+  
+  public static void e(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(155958);
+    j.q(paramVarArgs, "vals");
+    a(paramInt, false, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
+    AppMethodBeat.o(155958);
   }
 }
 

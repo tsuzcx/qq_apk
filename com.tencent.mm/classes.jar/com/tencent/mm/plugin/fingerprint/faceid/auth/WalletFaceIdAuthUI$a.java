@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.fingerprint.faceid.auth;
 
 import android.view.Window;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.soter.d.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class WalletFaceIdAuthUI$a
   extends WalletFaceIdAuthUI.c
@@ -12,64 +11,80 @@ final class WalletFaceIdAuthUI$a
   public WalletFaceIdAuthUI$a(WalletFaceIdAuthUI paramWalletFaceIdAuthUI)
   {
     super(paramWalletFaceIdAuthUI);
+    AppMethodBeat.i(41370);
+    a.Ft(0);
+    AppMethodBeat.o(41370);
   }
   
-  private void aSq()
+  private void byJ()
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.WalletFaceIdAuthUI", "do finish");
-    this.kkD.finish();
+    AppMethodBeat.i(41375);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletFaceIdAuthUI", "do finish");
+    this.mFs.finish();
+    AppMethodBeat.o(41375);
   }
   
-  protected final boolean aSk()
+  protected final void byF()
   {
-    return true;
+    AppMethodBeat.i(41372);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletFaceIdAuthUI", "do prepare ");
+    this.mFs.showProgress();
+    this.mFr.a(this.mFs, new WalletFaceIdAuthUI.a.1(this), this.gJv);
+    AppMethodBeat.o(41372);
   }
   
-  protected final void aSm()
+  protected final void byG()
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.WalletFaceIdAuthUI", "do prepare ");
-    this.kkD.aEg();
-    this.kkC.a(this.kkD, new WalletFaceIdAuthUI.a.1(this), this.frT);
+    AppMethodBeat.i(41374);
+    byJ();
+    AppMethodBeat.o(41374);
   }
   
-  protected final void aSn()
-  {
-    aSq();
-  }
+  protected final void byH() {}
   
-  protected final void aSo() {}
-  
-  protected final int aSp()
+  protected final int byI()
   {
     return 1;
   }
   
-  protected final boolean c(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  protected final boolean isTransparent()
   {
-    boolean bool = false;
-    if (this.kkC.c(paramInt1, paramInt2, paramString, paramm)) {
-      bool = true;
-    }
-    while (!(paramm instanceof com.tencent.mm.plugin.wallet_core.c.y)) {
-      return bool;
-    }
-    this.kkD.bka();
-    h.a(this.kkD, this.kkD.getString(a.i.faceid_open_success_msg_text), this.kkD.getString(a.i.faceid_open_success), this.kkD.getString(a.i.wallet_password_setting_ui_set_sys_faceid_guide_known_btn), false, new WalletFaceIdAuthUI.a.2(this));
     return true;
   }
   
   public final void onCreate()
   {
-    this.kkD.getWindow().setDimAmount(0.0F);
+    AppMethodBeat.i(41371);
+    this.mFs.getWindow().setDimAmount(0.0F);
     super.onCreate();
-    this.kkD.mController.hideTitleView();
-    this.kkD.czo();
-    this.kkD.vN(8);
+    this.mFs.hideTitleView();
+    this.mFs.hideActionbarLine();
+    this.mFs.setContentViewVisibility(8);
+    AppMethodBeat.o(41371);
+  }
+  
+  protected final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  {
+    AppMethodBeat.i(41373);
+    if (this.mFr.onSceneEnd(paramInt1, paramInt2, paramString, paramm))
+    {
+      AppMethodBeat.o(41373);
+      return true;
+    }
+    if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.ab))
+    {
+      this.mFs.hideProgress();
+      h.a(this.mFs, this.mFs.getString(2131299652), this.mFs.getString(2131299651), this.mFs.getString(2131305435), false, new WalletFaceIdAuthUI.a.2(this));
+      AppMethodBeat.o(41373);
+      return true;
+    }
+    AppMethodBeat.o(41373);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.faceid.auth.WalletFaceIdAuthUI.a
  * JD-Core Version:    0.7.0.1
  */

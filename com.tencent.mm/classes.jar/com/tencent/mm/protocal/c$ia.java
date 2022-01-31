@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$ia
+public final class c$ia
   extends c.g
 {
-  c$ia()
+  public c$ia()
   {
-    super("setGameData", "setGameData", 298, false);
+    super("scanQRCode", "scanQRCode", 7, true);
   }
 }
 

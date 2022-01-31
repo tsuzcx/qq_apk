@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WxaLuckyMoneyPrepareUI$1
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class WxaLuckyMoneyPrepareUI$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(42053);
     paramDialogInterface.dismiss();
+    AppMethodBeat.o(42053);
   }
 }
 

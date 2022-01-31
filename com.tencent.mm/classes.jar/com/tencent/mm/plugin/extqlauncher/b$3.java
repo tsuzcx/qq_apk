@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.os.Looper;
 import android.os.Message;
 import com.jg.JgMethodChecked;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class b$3
-  extends ah
+  extends ak
 {
   b$3(b paramb, Looper paramLooper)
   {
@@ -21,23 +22,26 @@ final class b$3
   @JgMethodChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.INTENTCHECK})
   public final void handleMessage(Message paramMessage)
   {
-    if ((ae.getContext() == null) || (!au.DK())) {
-      y.w("MicroMsg.SubCoreExtQLauncher", "wrong status");
-    }
-    int i;
-    do
+    AppMethodBeat.i(20476);
+    if ((ah.getContext() == null) || (!aw.RG()))
     {
-      do
+      ab.w("MicroMsg.SubCoreExtQLauncher", "wrong status");
+      AppMethodBeat.o(20476);
+      return;
+    }
+    if (b.a(this.mgf))
+    {
+      int i = b.btT();
+      if ((i > 0) || (i < this.mgf.mgd))
       {
-        return;
-      } while (!b.a(this.jMb));
-      i = b.aNQ();
-    } while ((i <= 0) && (i >= this.jMb.jLZ));
-    y.d("MicroMsg.SubCoreExtQLauncher", "notify unread");
-    paramMessage = new Intent("com.tencent.mm.ext.ACTION_EXT_NOTIFY");
-    paramMessage.putExtra("EXTRA_EXT_NOTIFY_TYPE", "NEW_UNREAD");
-    ae.getContext().sendBroadcast(paramMessage);
-    this.jMb.jLZ = i;
+        ab.d("MicroMsg.SubCoreExtQLauncher", "notify unread");
+        paramMessage = new Intent("com.tencent.mm.ext.ACTION_EXT_NOTIFY");
+        paramMessage.putExtra("EXTRA_EXT_NOTIFY_TYPE", "NEW_UNREAD");
+        ah.getContext().sendBroadcast(paramMessage);
+        this.mgf.mgd = i;
+      }
+    }
+    AppMethodBeat.o(20476);
   }
 }
 

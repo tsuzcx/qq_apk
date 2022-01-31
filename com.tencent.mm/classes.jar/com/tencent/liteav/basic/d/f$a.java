@@ -1,6 +1,13 @@
 package com.tencent.liteav.basic.d;
 
-public abstract interface f$a {}
+abstract interface f$a
+{
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar

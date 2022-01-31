@@ -6,108 +6,132 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.DragEvent;
 import android.widget.EditText;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class AutoMatchKeywordEditText
   extends MMEditText
 {
-  private a wiY;
-  private int wiZ;
-  private int wja;
+  private a ABV;
+  private int ABW;
+  private int ABX;
   
   public AutoMatchKeywordEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(107834);
     init();
+    AppMethodBeat.o(107834);
   }
   
   public AutoMatchKeywordEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(107833);
     init();
+    AppMethodBeat.o(107833);
   }
   
   private void init()
   {
-    this.wiZ = getSelectionStart();
-    this.wja = getSelectionEnd();
+    AppMethodBeat.i(107835);
+    this.ABW = getSelectionStart();
+    this.ABX = getSelectionEnd();
+    AppMethodBeat.o(107835);
   }
   
   public void extendSelection(int paramInt)
   {
-    y.d("MicroMsg.AutoMatchKeywordEditText", "extendSelection");
+    AppMethodBeat.i(107839);
+    ab.d("MicroMsg.AutoMatchKeywordEditText", "extendSelection");
     super.extendSelection(paramInt);
-    this.wiZ = getSelectionStart();
-    this.wja = getSelectionEnd();
+    this.ABW = getSelectionStart();
+    this.ABX = getSelectionEnd();
+    AppMethodBeat.o(107839);
   }
   
   public a getOnSelectionChangeListener()
   {
-    return this.wiY;
+    return this.ABV;
   }
   
   public boolean moveCursorToVisibleOffset()
   {
-    y.d("MicroMsg.AutoMatchKeywordEditText", "moveCursorToVisibleOffset");
-    return super.moveCursorToVisibleOffset();
+    AppMethodBeat.i(107840);
+    ab.d("MicroMsg.AutoMatchKeywordEditText", "moveCursorToVisibleOffset");
+    boolean bool = super.moveCursorToVisibleOffset();
+    AppMethodBeat.o(107840);
+    return bool;
   }
   
   public boolean onDragEvent(DragEvent paramDragEvent)
   {
-    y.d("MicroMsg.AutoMatchKeywordEditText", "onDragEvent");
-    return super.onDragEvent(paramDragEvent);
+    AppMethodBeat.i(107842);
+    ab.d("MicroMsg.AutoMatchKeywordEditText", "onDragEvent");
+    boolean bool = super.onDragEvent(paramDragEvent);
+    AppMethodBeat.o(107842);
+    return bool;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(107836);
     super.onDraw(paramCanvas);
     int i = getSelectionStart();
     int j = getSelectionEnd();
-    if ((this.wiZ != i) || (this.wja != j))
+    if ((this.ABW != i) || (this.ABX != j))
     {
-      this.wiZ = i;
-      this.wja = j;
-      if (this.wiY != null) {
-        this.wiY.b(this, getSelectionStart(), getSelectionEnd());
+      this.ABW = i;
+      this.ABX = j;
+      if (this.ABV != null) {
+        this.ABV.b(this, getSelectionStart(), getSelectionEnd());
       }
     }
+    AppMethodBeat.o(107836);
   }
   
   public boolean performAccessibilityAction(int paramInt, Bundle paramBundle)
   {
-    y.d("MicroMsg.AutoMatchKeywordEditText", "performAccessibilityAction");
-    return super.performAccessibilityAction(paramInt, paramBundle);
+    AppMethodBeat.i(107841);
+    ab.d("MicroMsg.AutoMatchKeywordEditText", "performAccessibilityAction");
+    boolean bool = super.performAccessibilityAction(paramInt, paramBundle);
+    AppMethodBeat.o(107841);
+    return bool;
   }
   
   public void setOnSelectionChangeListener(a parama)
   {
-    this.wiY = parama;
+    this.ABV = parama;
   }
   
   public void setSelection(int paramInt)
   {
-    y.d("MicroMsg.AutoMatchKeywordEditText", "setSelection");
+    AppMethodBeat.i(107837);
+    ab.d("MicroMsg.AutoMatchKeywordEditText", "setSelection");
     int i = getSelectionStart();
     int j = getSelectionEnd();
     super.setSelection(paramInt);
-    this.wiZ = getSelectionStart();
-    this.wja = getSelectionEnd();
-    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.wiY != null)) {
-      this.wiY.b(this, getSelectionStart(), getSelectionEnd());
+    this.ABW = getSelectionStart();
+    this.ABX = getSelectionEnd();
+    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.ABV != null)) {
+      this.ABV.b(this, getSelectionStart(), getSelectionEnd());
     }
+    AppMethodBeat.o(107837);
   }
   
   public void setSelection(int paramInt1, int paramInt2)
   {
-    y.d("MicroMsg.AutoMatchKeywordEditText", "setSelection.");
+    AppMethodBeat.i(107838);
+    ab.d("MicroMsg.AutoMatchKeywordEditText", "setSelection.");
     int i = getSelectionStart();
     int j = getSelectionEnd();
     super.setSelection(paramInt1, paramInt2);
-    this.wiZ = getSelectionStart();
-    this.wja = getSelectionEnd();
-    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.wiY != null)) {
-      this.wiY.b(this, getSelectionStart(), getSelectionEnd());
+    this.ABW = getSelectionStart();
+    this.ABX = getSelectionEnd();
+    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.ABV != null)) {
+      this.ABV.b(this, getSelectionStart(), getSelectionEnd());
     }
+    AppMethodBeat.o(107838);
   }
   
   public static abstract interface a

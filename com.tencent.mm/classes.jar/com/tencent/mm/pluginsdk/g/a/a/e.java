@@ -1,214 +1,227 @@
 package com.tencent.mm.pluginsdk.g.a.a;
 
-import com.tencent.mm.protocal.c.blr;
-import com.tencent.mm.protocal.c.blt;
-import com.tencent.mm.protocal.c.blu;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bvd;
+import com.tencent.mm.protocal.protobuf.bvf;
+import com.tencent.mm.protocal.protobuf.bvg;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Locale;
 import java.util.Map;
 
 public final class e
 {
+  private static boolean G(String paramString, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(79506);
+    if ((paramMap.get(paramString) == null) && (paramMap.get(paramString + ".resType") == null) && (paramMap.get(paramString + ".subType") == null))
+    {
+      AppMethodBeat.o(79506);
+      return true;
+    }
+    AppMethodBeat.o(79506);
+    return false;
+  }
+  
+  private static boolean H(String paramString, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(79510);
+    ab.d("MicroMsg.CheckResUpdateNewXmlParser", "handleResourceCache()");
+    String str1 = (String)paramMap.get(paramString + ".CDNUrl");
+    int k = bo.getInt((String)paramMap.get(paramString + ".subType"), -1);
+    int m = bo.getInt((String)paramMap.get(paramString + ".resType"), -1);
+    String str2 = (String)paramMap.get(paramString + ".md5");
+    int n = bo.getInt((String)paramMap.get(paramString + ".priority"), 0);
+    if ((bo.isNullOrNil(str1)) || (bo.isNullOrNil(str2)) || (-1 == k) || (-1 == m) || (n < 0))
+    {
+      AppMethodBeat.o(79510);
+      return false;
+    }
+    bvd localbvd = new bvd();
+    localbvd.xIN = new bvg();
+    if (bo.getInt((String)paramMap.get(paramString + ".fileEncrypt"), 0) > 0) {}
+    for (int i = i.a.dmk();; i = 0)
+    {
+      int j = i;
+      if (bo.getInt((String)paramMap.get(paramString + ".fileCompress"), 0) > 0) {
+        j = i.a.LH(i);
+      }
+      localbvd.xCa = k;
+      localbvd.xIS = bo.getInt((String)paramMap.get(paramString + ".networkType"), 2);
+      localbvd.wCO = bo.getInt((String)paramMap.get(paramString + ".expireTime"), 1);
+      localbvd.xIN.Url = str1;
+      localbvd.xIN.xIX = bo.getInt((String)paramMap.get(paramString + ".resVer"), 0);
+      localbvd.xIN.wQr = str2;
+      localbvd.xIN.xJa = ((String)paramMap.get(paramString + ".originalmd5"));
+      localbvd.xIN.xIY = j;
+      localbvd.xIN.xIZ = null;
+      localbvd.xIN.wPX = null;
+      localbvd.xkR = n;
+      localbvd.xbZ = i.b.vNC.bsY;
+      localbvd.xIP = bo.getInt((String)paramMap.get(paramString + ".reportID"), 0);
+      localbvd.xIQ = ((String)paramMap.get(paramString + ".sampleID"));
+      localbvd.xIR = bo.getInt((String)paramMap.get(paramString + ".retryTime"), 3);
+      localbvd.xIT = bo.getInt((String)paramMap.get(paramString + ".retryInterval"), 0);
+      localbvd.vNt = 0;
+      b.c.dmg().b(m, localbvd, true);
+      j.B(localbvd.xIP, 34L);
+      AppMethodBeat.o(79510);
+      return true;
+    }
+  }
+  
+  private static boolean I(String paramString, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(79512);
+    ab.d("MicroMsg.CheckResUpdateNewXmlParser", "handleResourceDelete()");
+    int i = bo.getInt((String)paramMap.get(paramString + ".resType"), -1);
+    int j = bo.getInt((String)paramMap.get(paramString + ".subType"), -1);
+    if ((-1 == i) || (-1 == j))
+    {
+      AppMethodBeat.o(79512);
+      return false;
+    }
+    bvd localbvd = new bvd();
+    localbvd.xCa = j;
+    localbvd.xIN = new bvg();
+    localbvd.xIN.xIX = bo.getInt((String)paramMap.get(paramString + ".resVer"), 0);
+    localbvd.xIQ = ((String)paramMap.get(paramString + ".sampleID"));
+    localbvd.xIP = bo.getInt((String)paramMap.get(paramString + ".reportID"), 0);
+    localbvd.xbZ = i.b.vNE.bsY;
+    b.c.dmg().a(i, localbvd, true);
+    j.B(localbvd.xIP, 40L);
+    AppMethodBeat.o(79512);
+    return true;
+  }
+  
+  private static boolean c(String paramString, Map<String, String> paramMap, boolean paramBoolean)
+  {
+    AppMethodBeat.i(79511);
+    ab.d("MicroMsg.CheckResUpdateNewXmlParser", "handleResourceDecrypt()");
+    int i = bo.getInt((String)paramMap.get(paramString + ".resType"), -1);
+    int j = bo.getInt((String)paramMap.get(paramString + ".subType"), -1);
+    if ((-1 == i) || (-1 == j))
+    {
+      AppMethodBeat.o(79511);
+      return false;
+    }
+    bvd localbvd = new bvd();
+    localbvd.xIO = new bvf();
+    localbvd.xCa = j;
+    localbvd.xIO.xIW = ((String)paramMap.get(paramString + ".resKey"));
+    localbvd.xIO.xIV = bo.getInt((String)paramMap.get(paramString + ".resKeyVersion"), 0);
+    localbvd.xIQ = ((String)paramMap.get(paramString + ".sampleID"));
+    localbvd.xIP = bo.getInt((String)paramMap.get(paramString + ".reportID"), 0);
+    localbvd.xbZ = i.b.vND.bsY;
+    localbvd.xIN = new bvg();
+    localbvd.xIN.xJa = ((String)paramMap.get(paramString + ".originalmd5"));
+    b.c.dmg().a(i, localbvd, true, false);
+    j.B(localbvd.xIP, 37L);
+    AppMethodBeat.o(79511);
+    return true;
+  }
+  
   private static boolean d(int paramInt, String paramString, Map<String, String> paramMap)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramMap.get(paramString + ".resType") == null) && (paramMap.get(paramString + ".subType") == null)) {
-      bool1 = true;
-    }
-    int i;
-    Object localObject;
-    int j;
-    int k;
-    String str;
-    int m;
-    do
+    AppMethodBeat.i(79509);
+    if ((paramMap.get(paramString + ".resType") == null) && (paramMap.get(paramString + ".subType") == null))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return bool1;
-                  if (!i.b.DS(paramInt)) {
-                    break;
-                  }
-                  y.d("MicroMsg.CheckResUpdateNewXmlParser", "handleResourceDelete()");
-                  paramInt = bk.getInt((String)paramMap.get(paramString + ".resType"), -1);
-                  i = bk.getInt((String)paramMap.get(paramString + ".subType"), -1);
-                  bool1 = bool2;
-                } while (-1 == paramInt);
-                bool1 = bool2;
-              } while (-1 == i);
-              localObject = new blr();
-              ((blr)localObject).tAu = i;
-              ((blr)localObject).tFh = new blu();
-              ((blr)localObject).tFh.tFr = bk.getInt((String)paramMap.get(paramString + ".resVer"), 0);
-              ((blr)localObject).tFk = ((String)paramMap.get(paramString + ".sampleID"));
-              ((blr)localObject).tFj = bk.getInt((String)paramMap.get(paramString + ".reportID"), 0);
-              ((blr)localObject).tea = i.b.rWM.bcw;
-              b.c.clv().a(paramInt, (blr)localObject, true);
-              j.s(((blr)localObject).tFj, 40L);
-              return true;
-              if (!i.b.DQ(paramInt)) {
-                break;
-              }
-              y.d("MicroMsg.CheckResUpdateNewXmlParser", "handleResourceCache()");
-              localObject = (String)paramMap.get(paramString + ".CDNUrl");
-              j = bk.getInt((String)paramMap.get(paramString + ".subType"), -1);
-              k = bk.getInt((String)paramMap.get(paramString + ".resType"), -1);
-              str = (String)paramMap.get(paramString + ".md5");
-              m = bk.getInt((String)paramMap.get(paramString + ".priority"), 0);
-              bool1 = bool2;
-            } while (bk.bl((String)localObject));
-            bool1 = bool2;
-          } while (bk.bl(str));
-          bool1 = bool2;
-        } while (-1 == j);
-        bool1 = bool2;
-      } while (-1 == k);
-      bool1 = bool2;
-    } while (m < 0);
-    blr localblr = new blr();
-    localblr.tFh = new blu();
-    if (bk.getInt((String)paramMap.get(paramString + ".fileEncrypt"), 0) > 0) {}
-    for (paramInt = i.a.cly();; paramInt = 0)
-    {
-      i = paramInt;
-      if (bk.getInt((String)paramMap.get(paramString + ".fileCompress"), 0) > 0) {
-        i = i.a.DO(paramInt);
-      }
-      localblr.tAu = j;
-      localblr.tFm = bk.getInt((String)paramMap.get(paramString + ".networkType"), 2);
-      localblr.sGq = bk.getInt((String)paramMap.get(paramString + ".expireTime"), 1);
-      localblr.tFh.kSC = ((String)localObject);
-      localblr.tFh.tFr = bk.getInt((String)paramMap.get(paramString + ".resVer"), 0);
-      localblr.tFh.sRE = str;
-      localblr.tFh.tFu = ((String)paramMap.get(paramString + ".originalmd5"));
-      localblr.tFh.tFs = i;
-      localblr.tFh.tFt = null;
-      localblr.tFh.sRj = null;
-      localblr.tly = m;
-      localblr.tea = i.b.rWK.bcw;
-      localblr.tFj = bk.getInt((String)paramMap.get(paramString + ".reportID"), 0);
-      localblr.tFk = ((String)paramMap.get(paramString + ".sampleID"));
-      localblr.tFl = bk.getInt((String)paramMap.get(paramString + ".retryTime"), 3);
-      localblr.tFn = bk.getInt((String)paramMap.get(paramString + ".retryInterval"), 0);
-      localblr.rWB = 0;
-      b.c.clv().b(k, localblr, true);
-      j.s(localblr.tFj, 34L);
-      return true;
-      bool1 = bool2;
-      if (!i.b.DR(paramInt)) {
-        break;
-      }
-      y.d("MicroMsg.CheckResUpdateNewXmlParser", "handleResourceDecrypt()");
-      paramInt = bk.getInt((String)paramMap.get(paramString + ".resType"), -1);
-      i = bk.getInt((String)paramMap.get(paramString + ".subType"), -1);
-      bool1 = bool2;
-      if (-1 == paramInt) {
-        break;
-      }
-      bool1 = bool2;
-      if (-1 == i) {
-        break;
-      }
-      localObject = new blr();
-      ((blr)localObject).tFi = new blt();
-      ((blr)localObject).tAu = i;
-      ((blr)localObject).tFi.tFq = ((String)paramMap.get(paramString + ".resKey"));
-      ((blr)localObject).tFi.tFp = bk.getInt((String)paramMap.get(paramString + ".resKeyVersion"), 0);
-      ((blr)localObject).tFk = ((String)paramMap.get(paramString + ".sampleID"));
-      ((blr)localObject).tFj = bk.getInt((String)paramMap.get(paramString + ".reportID"), 0);
-      ((blr)localObject).tea = i.b.rWL.bcw;
-      ((blr)localObject).tFh = new blu();
-      ((blr)localObject).tFh.tFu = ((String)paramMap.get(paramString + ".originalmd5"));
-      b.c.clv().a(paramInt, (blr)localObject, true, false);
-      j.s(((blr)localObject).tFj, 37L);
+      AppMethodBeat.o(79509);
       return true;
     }
-  }
-  
-  static void j(String paramString1, String paramString2, Map<String, String> paramMap)
-  {
-    if (x(String.format("%s.%s", new Object[] { paramString1, paramString2 }), paramMap)) {}
     boolean bool;
-    do
+    if (i.b.LL(paramInt))
     {
-      int i;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            bool = k(paramString1, paramString2, paramMap) | false;
-            i = 0;
-            for (;;)
-            {
-              i += 1;
-              if (x(String.format(Locale.US, "%s.%s%d", new Object[] { paramString1, paramString2, Integer.valueOf(i) }), paramMap)) {
-                break;
-              }
-              bool |= k(paramString1, paramString2, paramMap);
-            }
-            i = i.b.Wi(paramString2);
-            if (!i.b.DQ(i)) {
-              break;
-            }
-            j.s(0L, 32L);
-          } while (bool);
-          j.s(0L, 33L);
-          return;
-          if (!i.b.DR(i)) {
-            break;
-          }
-          j.s(0L, 35L);
-        } while (bool);
-        j.s(0L, 36L);
-        return;
-      } while (!i.b.DS(i));
-      j.s(0L, 38L);
-    } while (bool);
-    j.s(0L, 39L);
+      bool = I(paramString, paramMap);
+      AppMethodBeat.o(79509);
+      return bool;
+    }
+    if (i.b.LJ(paramInt))
+    {
+      bool = H(paramString, paramMap);
+      AppMethodBeat.o(79509);
+      return bool;
+    }
+    if (i.b.LK(paramInt))
+    {
+      bool = c(paramString, paramMap, true);
+      AppMethodBeat.o(79509);
+      return bool;
+    }
+    AppMethodBeat.o(79509);
+    return false;
   }
   
-  private static boolean k(String paramString1, String paramString2, Map<String, String> paramMap)
+  static void k(String paramString1, String paramString2, Map<String, String> paramMap)
   {
-    String str = String.format("%s.%s.%s", new Object[] { paramString1, paramString2, "Resource" });
-    int j = i.b.Wi(paramString2);
-    boolean bool2;
-    if (x(str, paramMap))
+    AppMethodBeat.i(79507);
+    if (G(String.format("%s.%s", new Object[] { paramString1, paramString2 }), paramMap))
     {
-      bool2 = true;
-      return bool2;
+      AppMethodBeat.o(79507);
+      return;
     }
-    boolean bool1 = d(j, str, paramMap) | false;
+    boolean bool = l(paramString1, paramString2, paramMap) | false;
+    int i = 0;
+    for (;;)
+    {
+      i += 1;
+      if (G(String.format(Locale.US, "%s.%s%d", new Object[] { paramString1, paramString2, Integer.valueOf(i) }), paramMap)) {
+        break;
+      }
+      bool |= l(paramString1, paramString2, paramMap);
+    }
+    i = i.b.alJ(paramString2);
+    if (i.b.LJ(i))
+    {
+      j.B(0L, 32L);
+      if (!bool)
+      {
+        j.B(0L, 33L);
+        AppMethodBeat.o(79507);
+      }
+    }
+    else if (i.b.LK(i))
+    {
+      j.B(0L, 35L);
+      if (!bool)
+      {
+        j.B(0L, 36L);
+        AppMethodBeat.o(79507);
+      }
+    }
+    else if (i.b.LL(i))
+    {
+      j.B(0L, 38L);
+      if (!bool) {
+        j.B(0L, 39L);
+      }
+    }
+    AppMethodBeat.o(79507);
+  }
+  
+  private static boolean l(String paramString1, String paramString2, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(79508);
+    String str = String.format("%s.%s.%s", new Object[] { paramString1, paramString2, "Resource" });
+    int j = i.b.alJ(paramString2);
+    if (G(str, paramMap))
+    {
+      AppMethodBeat.o(79508);
+      return true;
+    }
+    boolean bool = d(j, str, paramMap) | false;
     int i = 0;
     for (;;)
     {
       i += 1;
       str = String.format(Locale.US, "%s.%s.%s%d", new Object[] { paramString1, paramString2, "Resource", Integer.valueOf(i) });
-      bool2 = bool1;
-      if (x(str, paramMap)) {
+      if (G(str, paramMap)) {
         break;
       }
-      bool1 |= d(j, str, paramMap);
+      bool |= d(j, str, paramMap);
     }
-  }
-  
-  private static boolean x(String paramString, Map<String, String> paramMap)
-  {
-    return (paramMap.get(paramString) == null) && (paramMap.get(paramString + ".resType") == null) && (paramMap.get(paramString + ".subType") == null);
+    AppMethodBeat.o(79508);
+    return bool;
   }
 }
 

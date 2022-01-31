@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.scanner.util;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class ScanCameraLightDetector$1
-  extends ah
+  extends ak
 {
   public ScanCameraLightDetector$1(ScanCameraLightDetector paramScanCameraLightDetector, Looper paramLooper)
   {
@@ -17,25 +18,27 @@ public final class ScanCameraLightDetector$1
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(81446);
     if (paramMessage.what == 233)
     {
       paramMessage = (ScanCameraLightDetector.a)paramMessage.obj;
       if (paramMessage != null)
       {
-        long l = bk.UZ();
-        boolean bool = ScanCameraLightDetector.t(paramMessage.mip, paramMessage.width, paramMessage.height);
-        y.i("MicroMsg.ScanCameraLightDetector", "isYuvDark: %s, currentLight: %s, used %sms", new Object[] { Boolean.valueOf(bool), Float.valueOf(ScanCameraLightDetector.a(this.nPl)), Long.valueOf(bk.cp(l)) });
-        if (!bool) {
-          break label109;
+        long l = bo.yB();
+        boolean bool = ScanCameraLightDetector.x(paramMessage.oIw, paramMessage.width, paramMessage.height);
+        ab.i("MicroMsg.ScanCameraLightDetector", "isYuvDark: %s, currentLight: %s, used %sms", new Object[] { Boolean.valueOf(bool), Float.valueOf(ScanCameraLightDetector.a(this.qDe)), Long.valueOf(bo.av(l)) });
+        if (bool)
+        {
+          ab.i("MicroMsg.ScanCameraLightDetector", "is dark now");
+          al.d(new ScanCameraLightDetector.1.1(this));
+          AppMethodBeat.o(81446);
+          return;
         }
-        y.i("MicroMsg.ScanCameraLightDetector", "is dark now");
-        ai.d(new ScanCameraLightDetector.1.1(this));
+        ab.i("MicroMsg.ScanCameraLightDetector", "not dark");
+        al.d(new ScanCameraLightDetector.1.2(this));
       }
     }
-    return;
-    label109:
-    y.i("MicroMsg.ScanCameraLightDetector", "not dark");
-    ai.d(new ScanCameraLightDetector.1.2(this));
+    AppMethodBeat.o(81446);
   }
 }
 

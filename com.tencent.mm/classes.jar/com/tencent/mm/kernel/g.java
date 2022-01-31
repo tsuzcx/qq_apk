@@ -1,175 +1,263 @@
 package com.tencent.mm.kernel;
 
 import android.os.SystemClock;
-import com.tencent.mm.a.o;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.ah.p.a;
-import com.tencent.mm.ck.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p.a;
+import com.tencent.mm.ai.y;
+import com.tencent.mm.app.j;
+import com.tencent.mm.cm.a.a;
 import com.tencent.mm.kernel.a.c.b;
 import com.tencent.mm.kernel.a.c.c;
 import com.tencent.mm.kernel.a.c.d;
-import com.tencent.mm.model.ca;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ai.b;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.tinker.loader.app.ApplicationLifeCycle;
+import com.tencent.mm.kernel.a.c.e;
+import com.tencent.mm.model.cc;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.al.b;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.tinker.entry.ApplicationLifeCycle;
 import java.util.concurrent.ConcurrentHashMap;
 import junit.framework.Assert;
 
 public final class g
 {
-  private static g dKO;
-  public final b.a dJS = new b.a();
-  public h<com.tencent.mm.kernel.b.h> dKP;
-  private ai dKQ;
-  private ca dKR = null;
-  public e dKS;
-  public a dKT;
-  public b dKU;
-  public com.tencent.mm.ce.b dKV;
-  public final a dKW = new a((byte)0);
-  private final boolean dKX;
-  private ConcurrentHashMap dKY = new ConcurrentHashMap();
-  public volatile boolean dKZ = false;
+  private static g eIm;
+  public final b.a eHs;
+  public h<com.tencent.mm.kernel.b.h> eIn;
+  al eIo;
+  private cc eIp;
+  public e eIq;
+  public a eIr;
+  public b eIs;
+  public com.tencent.mm.cf.b eIt;
+  public final a eIu;
+  private final boolean eIv;
+  private ConcurrentHashMap eIw;
+  public volatile boolean eIx;
   
   private g(final com.tencent.mm.kernel.b.h paramh)
   {
-    this.dKP = h.c(paramh);
-    this.dKX = ((com.tencent.mm.kernel.b.h)this.dKP.DM().Dr()).Ex();
-    if (this.dKX)
+    AppMethodBeat.i(57995);
+    this.eIp = null;
+    this.eIu = new a((byte)0);
+    this.eHs = new b.a();
+    this.eIw = new ConcurrentHashMap();
+    this.eIx = false;
+    this.eIn = h.c(paramh);
+    this.eIv = ((com.tencent.mm.kernel.b.h)this.eIn.RI().Rj()).SD();
+    if (this.eIv)
     {
-      this.dKR = new ca();
-      this.dKQ = new ai("worker");
-      this.dKQ.O(new Runnable()
+      this.eIp = new cc();
+      this.eIo = com.tencent.mm.sdk.g.c.c.duH();
+      com.tencent.mm.sdk.g.d.ysi = false;
+      com.tencent.mm.sdk.g.d.ysn.a(new com.tencent.mm.sdk.g.a.c.a() {});
+      this.eIo.ac(new Runnable()
       {
         public final void run()
         {
-          aq.fL(ae.getContext());
+          AppMethodBeat.i(57979);
+          at.hb(ah.getContext());
+          AppMethodBeat.o(57979);
         }
       });
     }
-    this.dKP.DL().dKj = new c.a()
+    this.eIn.RH().eHH = new c.a()
     {
+      public final void a(com.tencent.mm.kernel.c.a paramAnonymousa)
+      {
+        AppMethodBeat.i(57981);
+        g.this.a(paramh, paramAnonymousa);
+        com.tencent.mm.kernel.a.c.RX().aq(paramAnonymousa);
+        AppMethodBeat.o(57981);
+      }
+      
       public final void b(com.tencent.mm.kernel.b.f paramAnonymousf)
       {
+        AppMethodBeat.i(57980);
         g.this.a(paramh, paramAnonymousf);
+        AppMethodBeat.o(57980);
       }
       
       public final void b(com.tencent.mm.kernel.c.a paramAnonymousa)
       {
-        g.this.a(paramh, paramAnonymousa);
-        com.tencent.mm.kernel.a.c.DY().ah(paramAnonymousa);
-      }
-      
-      public final void c(com.tencent.mm.kernel.b.f paramAnonymousf)
-      {
-        com.tencent.mm.kernel.a.c localc = com.tencent.mm.kernel.a.c.DY();
-        if (paramAnonymousf != null) {
-          localc.ai(paramAnonymousf);
-        }
-      }
-      
-      public final void c(com.tencent.mm.kernel.c.a paramAnonymousa)
-      {
+        AppMethodBeat.i(57982);
         g localg = g.this;
         com.tencent.mm.kernel.b.h localh = paramh;
-        Object localObject = com.tencent.mm.kernel.a.c.DY();
+        Object localObject = com.tencent.mm.kernel.a.c.RX();
         if ((paramAnonymousa instanceof com.tencent.mm.kernel.api.c)) {
-          ((com.tencent.mm.kernel.a.c)localObject).dLB.remove((com.tencent.mm.kernel.api.c)paramAnonymousa);
+          ((com.tencent.mm.kernel.a.c)localObject).eJa.remove((com.tencent.mm.kernel.api.c)paramAnonymousa);
         }
         if ((paramAnonymousa instanceof com.tencent.mm.kernel.api.e)) {
-          ((com.tencent.mm.kernel.a.c)localObject).dLC.remove((com.tencent.mm.kernel.api.e)paramAnonymousa);
+          ((com.tencent.mm.kernel.a.c)localObject).eJb.remove((com.tencent.mm.kernel.api.e)paramAnonymousa);
         }
         if ((paramAnonymousa instanceof com.tencent.mm.kernel.api.b)) {
-          ((com.tencent.mm.kernel.a.c)localObject).dLD.remove((com.tencent.mm.kernel.api.b)paramAnonymousa);
+          ((com.tencent.mm.kernel.a.c)localObject).eJc.remove((com.tencent.mm.kernel.api.b)paramAnonymousa);
         }
         if ((paramAnonymousa instanceof com.tencent.mm.kernel.api.f)) {
-          ((com.tencent.mm.kernel.a.c)localObject).dLE.remove((com.tencent.mm.kernel.api.f)paramAnonymousa);
+          ((com.tencent.mm.kernel.a.c)localObject).eJd.remove((com.tencent.mm.kernel.api.f)paramAnonymousa);
+        }
+        if ((paramAnonymousa instanceof j)) {
+          ((com.tencent.mm.kernel.a.c)localObject).eJe.remove((j)paramAnonymousa);
         }
         if ((paramAnonymousa instanceof ApplicationLifeCycle))
         {
           localObject = (ApplicationLifeCycle)paramAnonymousa;
-          localh.dMV.remove(localObject);
+          localh.eKH.remove(localObject);
         }
         if ((paramAnonymousa instanceof com.tencent.mm.kernel.api.d)) {
-          localg.dJS.remove((com.tencent.mm.kernel.api.d)paramAnonymousa);
+          localg.eHs.remove((com.tencent.mm.kernel.api.d)paramAnonymousa);
         }
         if ((paramAnonymousa instanceof com.tencent.mm.kernel.api.g)) {
-          localg.dKP.b((com.tencent.mm.kernel.api.g)paramAnonymousa);
+          localg.eIn.b((com.tencent.mm.kernel.api.g)paramAnonymousa);
         }
+        AppMethodBeat.o(57982);
       }
       
-      public final void d(com.tencent.mm.kernel.c.a paramAnonymousa)
+      public final void c(com.tencent.mm.kernel.b.f paramAnonymousf)
       {
-        com.tencent.mm.kernel.a.c localc = com.tencent.mm.kernel.a.c.DY();
-        if (paramAnonymousa != null) {
-          localc.ai(paramAnonymousa);
+        AppMethodBeat.i(57983);
+        com.tencent.mm.kernel.a.c localc = com.tencent.mm.kernel.a.c.RX();
+        if (paramAnonymousf != null) {
+          localc.ar(paramAnonymousf);
         }
+        AppMethodBeat.o(57983);
+      }
+      
+      public final void c(com.tencent.mm.kernel.c.a paramAnonymousa)
+      {
+        AppMethodBeat.i(57984);
+        com.tencent.mm.kernel.a.c localc = com.tencent.mm.kernel.a.c.RX();
+        if (paramAnonymousa != null) {
+          localc.ar(paramAnonymousa);
+        }
+        AppMethodBeat.o(57984);
       }
     };
+    AppMethodBeat.o(57995);
   }
   
-  public static boolean DK()
+  public static <T extends com.tencent.mm.kernel.c.a> T E(Class<T> paramClass)
   {
-    a locala = DQ().dKT;
-    return (locala != null) && (locala.Dc());
+    AppMethodBeat.i(58007);
+    RM();
+    paramClass = RH().E(paramClass);
+    AppMethodBeat.o(58007);
+    return paramClass;
   }
   
-  public static c DL()
+  public static void F(Class<? extends com.tencent.mm.kernel.c.a> paramClass)
   {
-    Assert.assertNotNull("mCorePlugins not initialized!", DQ().dKP.DL());
-    return DQ().dKP.DL();
+    AppMethodBeat.i(58010);
+    RM();
+    RH().F(paramClass);
+    AppMethodBeat.o(58010);
   }
   
-  public static d<com.tencent.mm.kernel.b.h> DM()
+  public static <T extends com.tencent.mm.kernel.b.a> T G(Class<T> paramClass)
   {
-    Assert.assertNotNull("mCoreProcess not initialized!", DQ().dKP.DM());
-    return DQ().dKP.DM();
+    AppMethodBeat.i(58006);
+    RM();
+    paramClass = RH().G(paramClass);
+    AppMethodBeat.o(58006);
+    return paramClass;
   }
   
-  public static a DN()
+  public static boolean RG()
   {
-    Assert.assertNotNull("mCoreAccount not initialized!", DQ().dKT);
-    return DQ().dKT;
+    AppMethodBeat.i(57999);
+    a locala = RM().eIr;
+    if ((locala != null) && (locala.QU()))
+    {
+      AppMethodBeat.o(57999);
+      return true;
+    }
+    AppMethodBeat.o(57999);
+    return false;
   }
   
-  public static b DO()
+  public static c RH()
   {
-    Assert.assertNotNull("mCoreNetwork not initialized!", DQ().dKU);
-    return DQ().dKU;
+    AppMethodBeat.i(58000);
+    Assert.assertNotNull("mCorePlugins not initialized!", RM().eIn.RH());
+    c localc = RM().eIn.RH();
+    AppMethodBeat.o(58000);
+    return localc;
   }
   
-  public static e DP()
+  public static d<com.tencent.mm.kernel.b.h> RI()
   {
-    Assert.assertNotNull("mCoreStorage not initialized!", DQ().dKS);
-    return DQ().dKS;
+    AppMethodBeat.i(58001);
+    Assert.assertNotNull("mCoreProcess not initialized!", RM().eIn.RI());
+    d locald = RM().eIn.RI();
+    AppMethodBeat.o(58001);
+    return locald;
   }
   
-  public static g DQ()
+  public static a RJ()
   {
-    Assert.assertNotNull("Kernel not initialized by MMApplication!", dKO);
-    return dKO;
+    AppMethodBeat.i(58002);
+    Assert.assertNotNull("mCoreAccount not initialized!", RM().eIr);
+    a locala = RM().eIr;
+    AppMethodBeat.o(58002);
+    return locala;
   }
   
-  public static ca DR()
+  public static b RK()
   {
-    Assert.assertTrue(DQ().dKX);
-    return DQ().dKR;
+    AppMethodBeat.i(58003);
+    Assert.assertNotNull("mCoreNetwork not initialized!", RM().eIs);
+    b localb = RM().eIs;
+    AppMethodBeat.o(58003);
+    return localb;
   }
   
-  public static ai DS()
+  public static e RL()
   {
-    Assert.assertTrue(DQ().dKX);
-    return DQ().dKQ;
+    AppMethodBeat.i(58004);
+    Assert.assertNotNull("mCoreStorage not initialized!", RM().eIq);
+    e locale = RM().eIq;
+    AppMethodBeat.o(58004);
+    return locale;
   }
   
-  public static p Dk()
+  public static g RM()
   {
-    DQ();
-    return DO().dJT;
+    AppMethodBeat.i(58005);
+    Assert.assertNotNull("Kernel not initialized by MMApplication!", eIm);
+    g localg = eIm;
+    AppMethodBeat.o(58005);
+    return localg;
+  }
+  
+  public static cc RN()
+  {
+    AppMethodBeat.i(58012);
+    Assert.assertTrue(RM().eIv);
+    cc localcc = RM().eIp;
+    AppMethodBeat.o(58012);
+    return localcc;
+  }
+  
+  @Deprecated
+  public static al RO()
+  {
+    AppMethodBeat.i(58013);
+    Assert.assertTrue(RM().eIv);
+    al localal = RM().eIo;
+    AppMethodBeat.o(58013);
+    return localal;
+  }
+  
+  public static com.tencent.mm.ai.p Rc()
+  {
+    AppMethodBeat.i(58011);
+    RM();
+    com.tencent.mm.ai.p localp = RK().eHt;
+    AppMethodBeat.o(58011);
+    return localp;
   }
   
   /* Error */
@@ -178,191 +266,232 @@ public final class g
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 172	com/tencent/mm/kernel/g:dKO	Lcom/tencent/mm/kernel/g;
-    //   6: ifnull +48 -> 54
-    //   9: getstatic 172	com/tencent/mm/kernel/g:dKO	Lcom/tencent/mm/kernel/g;
-    //   12: getfield 77	com/tencent/mm/kernel/g:dKP	Lcom/tencent/mm/kernel/h;
-    //   15: invokevirtual 81	com/tencent/mm/kernel/h:DM	()Lcom/tencent/mm/kernel/d;
-    //   18: invokevirtual 87	com/tencent/mm/kernel/d:Dr	()Lcom/tencent/mm/kernel/b/g;
-    //   21: checkcast 89	com/tencent/mm/kernel/b/h
-    //   24: astore_1
-    //   25: aload_0
-    //   26: getfield 196	com/tencent/mm/kernel/b/g:bT	Landroid/app/Application;
-    //   29: astore_2
-    //   30: aload_1
-    //   31: aload_0
-    //   32: getfield 200	com/tencent/mm/kernel/b/h:dMU	Lcom/tencent/tinker/loader/app/ApplicationLike;
-    //   35: putfield 200	com/tencent/mm/kernel/b/h:dMU	Lcom/tencent/tinker/loader/app/ApplicationLike;
-    //   38: aload_1
-    //   39: aload_2
-    //   40: putfield 196	com/tencent/mm/kernel/b/g:bT	Landroid/app/Application;
-    //   43: ldc 202
-    //   45: ldc 204
-    //   47: invokestatic 210	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   50: ldc 2
-    //   52: monitorexit
-    //   53: return
-    //   54: new 10	com/tencent/mm/kernel/g$3
-    //   57: dup
-    //   58: invokespecial 211	com/tencent/mm/kernel/g$3:<init>	()V
-    //   61: invokestatic 216	com/tencent/mm/kernel/k:a	(Lcom/tencent/mm/kernel/k$a;)V
-    //   64: ldc 202
-    //   66: ldc 218
-    //   68: invokestatic 210	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   71: new 2	com/tencent/mm/kernel/g
-    //   74: dup
-    //   75: aload_0
-    //   76: invokespecial 220	com/tencent/mm/kernel/g:<init>	(Lcom/tencent/mm/kernel/b/h;)V
-    //   79: putstatic 172	com/tencent/mm/kernel/g:dKO	Lcom/tencent/mm/kernel/g;
-    //   82: goto -32 -> 50
-    //   85: astore_0
-    //   86: ldc 2
-    //   88: monitorexit
+    //   3: ldc 249
+    //   5: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 226	com/tencent/mm/kernel/g:eIm	Lcom/tencent/mm/kernel/g;
+    //   11: ifnull +55 -> 66
+    //   14: getstatic 226	com/tencent/mm/kernel/g:eIm	Lcom/tencent/mm/kernel/g;
+    //   17: getfield 86	com/tencent/mm/kernel/g:eIn	Lcom/tencent/mm/kernel/h;
+    //   20: invokevirtual 90	com/tencent/mm/kernel/h:RI	()Lcom/tencent/mm/kernel/d;
+    //   23: invokevirtual 96	com/tencent/mm/kernel/d:Rj	()Lcom/tencent/mm/kernel/b/g;
+    //   26: checkcast 98	com/tencent/mm/kernel/b/h
+    //   29: astore_1
+    //   30: aload_0
+    //   31: getfield 255	com/tencent/mm/kernel/b/g:bX	Landroid/app/Application;
+    //   34: astore_2
+    //   35: aload_1
+    //   36: aload_0
+    //   37: getfield 259	com/tencent/mm/kernel/b/h:eKG	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   40: putfield 259	com/tencent/mm/kernel/b/h:eKG	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   43: aload_1
+    //   44: aload_2
+    //   45: putfield 255	com/tencent/mm/kernel/b/g:bX	Landroid/app/Application;
+    //   48: ldc_w 261
+    //   51: ldc_w 263
+    //   54: invokestatic 268	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   57: ldc 249
+    //   59: invokestatic 155	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   62: ldc 2
+    //   64: monitorexit
+    //   65: return
+    //   66: new 12	com/tencent/mm/kernel/g$4
+    //   69: dup
+    //   70: invokespecial 269	com/tencent/mm/kernel/g$4:<init>	()V
+    //   73: invokestatic 274	com/tencent/mm/kernel/j:a	(Lcom/tencent/mm/kernel/j$a;)V
+    //   76: ldc_w 261
+    //   79: ldc_w 276
+    //   82: invokestatic 268	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   85: new 2	com/tencent/mm/kernel/g
+    //   88: dup
     //   89: aload_0
-    //   90: athrow
+    //   90: invokespecial 278	com/tencent/mm/kernel/g:<init>	(Lcom/tencent/mm/kernel/b/h;)V
+    //   93: putstatic 226	com/tencent/mm/kernel/g:eIm	Lcom/tencent/mm/kernel/g;
+    //   96: ldc 249
+    //   98: invokestatic 155	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   101: goto -39 -> 62
+    //   104: astore_0
+    //   105: ldc 2
+    //   107: monitorexit
+    //   108: aload_0
+    //   109: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	91	0	paramh	com.tencent.mm.kernel.b.h
-    //   24	15	1	localh	com.tencent.mm.kernel.b.h
-    //   29	11	2	localApplication	android.app.Application
+    //   0	110	0	paramh	com.tencent.mm.kernel.b.h
+    //   29	15	1	localh	com.tencent.mm.kernel.b.h
+    //   34	11	2	localApplication	android.app.Application
     // Exception table:
     //   from	to	target	type
-    //   3	50	85	finally
-    //   54	82	85	finally
-  }
-  
-  public static <T extends com.tencent.mm.kernel.c.a, N extends T> void a(Class<T> paramClass, N paramN)
-  {
-    DQ();
-    DL().a(paramClass, new com.tencent.mm.kernel.c.e(paramN));
+    //   3	62	104	finally
+    //   66	101	104	finally
   }
   
   public static <T extends com.tencent.mm.kernel.c.a, N extends T> void a(Class<T> paramClass, com.tencent.mm.kernel.c.c<N> paramc)
   {
-    DQ();
-    DL().a(paramClass, paramc);
+    AppMethodBeat.i(58009);
+    RM();
+    RH().a(paramClass, paramc);
+    AppMethodBeat.o(58009);
   }
   
-  public static void hx(int paramInt)
+  public static <T extends com.tencent.mm.kernel.c.a, N extends T> void b(Class<T> paramClass, N paramN)
   {
-    a locala = DN();
-    if ((a.hu(paramInt)) && (a.b.a(a.dJt) == paramInt) && (locala.Dc()))
+    AppMethodBeat.i(58008);
+    RM();
+    RH().a(paramClass, new com.tencent.mm.kernel.c.e(paramN));
+    AppMethodBeat.o(58008);
+  }
+  
+  public static void jO(int paramInt)
+  {
+    AppMethodBeat.i(58015);
+    a locala = RJ();
+    if ((a.jK(paramInt)) && (a.b.a(a.eGR) == paramInt) && (locala.QU()))
     {
-      com.tencent.mm.sdk.platformtools.y.w("MMKernel.CoreAccount", "loginUin, uin not changed, return :%d", new Object[] { Integer.valueOf(paramInt) });
+      ab.w("MMKernel.CoreAccount", "loginUin, uin not changed, return :%d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(58015);
       return;
     }
-    synchronized (locala.dJs)
+    synchronized (locala.eGQ)
     {
-      a.b.a(a.dJt, paramInt);
-      locala.CR();
-      locala.dJF = SystemClock.elapsedRealtime();
-      locala.bE(true);
+      a.b.a(a.eGR, paramInt);
+      locala.QK();
+      locala.eHe = SystemClock.elapsedRealtime();
+      locala.cu(true);
+      AppMethodBeat.o(58015);
       return;
     }
   }
   
-  public static <T extends com.tencent.mm.kernel.c.a> T r(Class<T> paramClass)
+  public final boolean RF()
   {
-    DQ();
-    return DL().r(paramClass);
-  }
-  
-  public static void s(Class<? extends com.tencent.mm.kernel.c.a> paramClass)
-  {
-    DQ();
-    DL().s(paramClass);
-  }
-  
-  public static <T extends com.tencent.mm.kernel.b.a> T t(Class<T> paramClass)
-  {
-    DQ();
-    return DL().t(paramClass);
+    return this.eIx;
   }
   
   public final void a(com.tencent.mm.kernel.api.g paramg)
   {
-    this.dKP.a(paramg);
+    AppMethodBeat.i(57997);
+    this.eIn.a(paramg);
+    AppMethodBeat.o(57997);
   }
   
-  public final void a(com.tencent.mm.kernel.b.h paramh, Object paramObject)
+  final void a(com.tencent.mm.kernel.b.h paramh, Object paramObject)
   {
-    if (!this.dKY.containsKey(paramObject))
+    AppMethodBeat.i(57996);
+    if (!this.eIw.containsKey(paramObject))
     {
-      if (this.dKY.putIfAbsent(paramObject, this.dKY) == null) {
-        break label60;
-      }
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.MMKernel", "Already add, skip[%s].", new Object[] { paramObject });
-    }
-    label60:
-    do
-    {
-      return;
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.MMKernel", "Already add, skip it[%s].", new Object[] { paramObject });
-      return;
-      com.tencent.mm.kernel.a.c.DY().add(paramObject);
-      if ((paramObject instanceof ApplicationLifeCycle))
+      if (this.eIw.putIfAbsent(paramObject, this.eIw) != null)
       {
-        ApplicationLifeCycle localApplicationLifeCycle = (ApplicationLifeCycle)paramObject;
-        paramh.dMV.aj(localApplicationLifeCycle);
+        ab.i("MicroMsg.MMKernel", "Already add, skip[%s].", new Object[] { paramObject });
+        AppMethodBeat.o(57996);
       }
-      if ((paramObject instanceof com.tencent.mm.kernel.api.d)) {
-        this.dJS.aj((com.tencent.mm.kernel.api.d)paramObject);
-      }
-    } while (!(paramObject instanceof com.tencent.mm.kernel.api.g));
-    this.dKP.a((com.tencent.mm.kernel.api.g)paramObject);
+    }
+    else
+    {
+      ab.i("MicroMsg.MMKernel", "Already add, skip it[%s].", new Object[] { paramObject });
+      AppMethodBeat.o(57996);
+      return;
+    }
+    com.tencent.mm.kernel.a.c.RX().add(paramObject);
+    if ((paramObject instanceof ApplicationLifeCycle)) {
+      paramh.a((ApplicationLifeCycle)paramObject);
+    }
+    if ((paramObject instanceof com.tencent.mm.kernel.api.d)) {
+      this.eHs.at((com.tencent.mm.kernel.api.d)paramObject);
+    }
+    if ((paramObject instanceof com.tencent.mm.kernel.api.g)) {
+      this.eIn.a((com.tencent.mm.kernel.api.g)paramObject);
+    }
+    AppMethodBeat.o(57996);
+  }
+  
+  public final void a(com.tencent.mm.vending.h.d paramd)
+  {
+    AppMethodBeat.i(58018);
+    this.eIn.a(paramd);
+    AppMethodBeat.o(58018);
+  }
+  
+  public final void ao(Object paramObject)
+  {
+    AppMethodBeat.i(146100);
+    a((com.tencent.mm.kernel.b.h)RI().Rj(), paramObject);
+    AppMethodBeat.o(146100);
   }
   
   public final void b(com.tencent.mm.kernel.api.g paramg)
   {
-    this.dKP.b(paramg);
+    AppMethodBeat.i(57998);
+    this.eIn.b(paramg);
+    AppMethodBeat.o(57998);
   }
   
-  public final void gi(String paramString)
+  public final void cw(boolean paramBoolean)
   {
-    com.tencent.mm.sdk.platformtools.y.w("MicroMsg.MMKernel", "logoutAccount uin:%s info:%s stack:%s", new Object[] { o.getString(a.CK()), paramString, bk.csb() });
-    a.gc(bk.csb().toString() + paramString);
-    this.dKT.CU().bJ(a.CK());
+    AppMethodBeat.i(58019);
+    this.eIn.eIJ.br(paramBoolean);
+    AppMethodBeat.o(58019);
+  }
+  
+  public final void mD(String paramString)
+  {
+    AppMethodBeat.i(58016);
+    ab.w("MicroMsg.MMKernel", "logoutAccount uin:%s info:%s stack:%s", new Object[] { com.tencent.mm.a.p.getString(a.getUin()), paramString, bo.dtY() });
+    a.mw(bo.dtY().toString() + paramString);
+    this.eIr.QN().gE(a.getUin());
     releaseAll();
-    a.CP();
-    a.bF(false);
+    a.QI();
+    a.cv(false);
+    AppMethodBeat.o(58016);
   }
   
   public final void releaseAll()
   {
-    if (this.dKT != null) {}
-    for (String str = o.getString(a.CK());; str = "-1")
+    AppMethodBeat.i(58017);
+    long l = System.currentTimeMillis();
+    if (this.eIr != null) {}
+    for (String str = com.tencent.mm.a.p.getString(a.getUin());; str = "-1")
     {
-      com.tencent.mm.sdk.platformtools.y.w("MicroMsg.MMKernel", "release uin:%s ", new Object[] { str });
-      if (this.dKU.dJT != null) {
-        this.dKU.dJT.reset();
+      ab.w("MicroMsg.MMKernel", "release uin:%s ", new Object[] { str });
+      if (this.eIs.eHt != null) {
+        this.eIs.eHt.reset();
       }
-      if (this.dKQ != null) {
-        this.dKQ.a(new ai.b()
+      com.tencent.mm.sdk.g.d.ysm.cjN().shutdown();
+      if (this.eIo != null) {
+        this.eIo.a(new al.b()
         {
-          public final void pQ()
+          public final void tU()
           {
-            if (g.this.dKT != null) {
-              g.this.dKT.release();
+            AppMethodBeat.i(57990);
+            com.tencent.mm.sdk.g.d.ysm.cjN().reset();
+            if (g.this.eIr != null) {
+              g.this.eIr.release();
             }
+            AppMethodBeat.o(57990);
           }
         });
       }
+      ab.i("MicroMsg.MMKernel", "release uin:%s finish!!! cost:%sms", new Object[] { str, Long.valueOf(System.currentTimeMillis() - l) });
+      AppMethodBeat.o(58017);
       return;
     }
   }
   
-  private static final class a
-    extends com.tencent.mm.ck.a<p.a>
+  static final class a
+    extends com.tencent.mm.cm.a<p.a>
     implements p.a
   {
-    public final void a(final p paramp)
+    public final void a(final com.tencent.mm.ai.p paramp)
     {
+      AppMethodBeat.i(57994);
       a(new a.a() {});
+      AppMethodBeat.o(57994);
     }
     
-    public final void a(final p paramp, final boolean paramBoolean)
+    public final void a(final com.tencent.mm.ai.p paramp, final boolean paramBoolean)
     {
+      AppMethodBeat.i(57993);
       a(new a.a() {});
+      AppMethodBeat.o(57993);
     }
   }
 }

@@ -3,52 +3,59 @@ package com.tencent.mm.view.footer;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import com.tencent.mm.api.d;
-import com.tencent.mm.bo.a.g;
-import com.tencent.mm.bt.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.e;
+import com.tencent.mm.bs.b;
+import com.tencent.mm.sdk.platformtools.d;
 
 public final class c
   extends a
 {
-  private Bitmap wyy;
-  private Bitmap wyz;
+  private Bitmap ATQ;
+  private Bitmap ATR;
   
   public c(Context paramContext, b paramb)
   {
     super(paramContext, paramb);
   }
   
-  protected final boolean IS(int paramInt)
+  protected final boolean RM(int paramInt)
   {
-    boolean bool = super.IS(paramInt);
-    switch (c.1.soJ[IR(paramInt).ordinal()])
+    AppMethodBeat.i(116447);
+    boolean bool = super.RM(paramInt);
+    switch (c.1.whp[RL(paramInt).ordinal()])
     {
-    default: 
-      return bool;
     }
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(116447);
+      return bool;
+      bool = false;
+    }
   }
   
-  protected final Bitmap a(d paramd, boolean paramBoolean)
+  protected final Bitmap a(e parame, boolean paramBoolean)
   {
     Bitmap localBitmap = null;
-    if (paramd == d.buQ)
+    if (parame == e.bWb)
     {
       if (paramBoolean) {
-        localBitmap = this.wyz;
+        localBitmap = this.ATR;
       }
     }
     else {
       return localBitmap;
     }
-    return this.wyy;
+    return this.ATQ;
   }
   
-  protected final void cLD()
+  protected final void dQV()
   {
-    super.cLD();
-    this.wyy = com.tencent.mm.sdk.platformtools.c.q(getResources().getDrawable(a.g.crop_video_unselected));
-    this.wyz = com.tencent.mm.sdk.platformtools.c.q(getResources().getDrawable(a.g.crop_video_selected));
+    AppMethodBeat.i(116446);
+    super.dQV();
+    this.ATQ = d.u(getResources().getDrawable(2131231205));
+    this.ATR = d.u(getResources().getDrawable(2131231204));
+    AppMethodBeat.o(116446);
   }
 }
 

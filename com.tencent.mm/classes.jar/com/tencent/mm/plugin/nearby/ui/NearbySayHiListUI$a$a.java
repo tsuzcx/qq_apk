@@ -6,11 +6,11 @@ import android.widget.TextView;
 
 final class NearbySayHiListUI$a$a
 {
-  ImageView dpY;
-  TextView fdY;
-  View hZl;
-  TextView hZm;
-  TextView mbo;
+  ImageView ehv;
+  TextView gvI;
+  View jSj;
+  TextView jSk;
+  TextView oBQ;
   
   NearbySayHiListUI$a$a(NearbySayHiListUI.a parama) {}
 }

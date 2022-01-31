@@ -3,36 +3,36 @@ package android.support.v7.widget;
 import android.view.View;
 
 final class RecyclerView$i$1
-  implements bd.b
+  implements bf.b
 {
   RecyclerView$i$1(RecyclerView.i parami) {}
   
-  public final int bs(View paramView)
+  public final int bH(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    return RecyclerView.i.bo(paramView) - localLayoutParams.leftMargin;
+    return RecyclerView.i.bz(paramView) - localLayoutParams.leftMargin;
   }
   
-  public final int bt(View paramView)
+  public final int bI(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = RecyclerView.i.bq(paramView);
+    int i = RecyclerView.i.bB(paramView);
     return localLayoutParams.rightMargin + i;
   }
   
   public final View getChildAt(int paramInt)
   {
-    return this.ahh.getChildAt(paramInt);
+    return this.ajx.getChildAt(paramInt);
   }
   
-  public final int hT()
+  public final int jC()
   {
-    return this.ahh.getPaddingLeft();
+    return this.ajx.getPaddingLeft();
   }
   
-  public final int hU()
+  public final int jD()
   {
-    return this.ahh.mWidth - this.ahh.getPaddingRight();
+    return this.ajx.mWidth - this.ajx.getPaddingRight();
   }
 }
 

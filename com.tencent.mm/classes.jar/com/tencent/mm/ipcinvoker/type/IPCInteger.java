@@ -3,12 +3,20 @@ package com.tencent.mm.ipcinvoker.type;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class IPCInteger
   implements Parcelable
 {
-  public static final Parcelable.Creator<IPCInteger> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<IPCInteger> CREATOR;
   public int value;
+  
+  static
+  {
+    AppMethodBeat.i(114154);
+    CREATOR = new IPCInteger.1();
+    AppMethodBeat.o(114154);
+  }
   
   public IPCInteger() {}
   
@@ -24,30 +32,46 @@ public class IPCInteger
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
+    AppMethodBeat.i(114153);
+    if (paramObject == this)
     {
+      AppMethodBeat.o(114153);
       return true;
-      if (!(paramObject instanceof IPCInteger)) {
-        break;
-      }
-      paramObject = (IPCInteger)paramObject;
-    } while (this.value == paramObject.value);
-    return false;
-    if ((paramObject instanceof Integer)) {
-      return paramObject.equals(Integer.valueOf(this.value));
     }
+    if ((paramObject instanceof IPCInteger))
+    {
+      paramObject = (IPCInteger)paramObject;
+      if (this.value == paramObject.value)
+      {
+        AppMethodBeat.o(114153);
+        return true;
+      }
+      AppMethodBeat.o(114153);
+      return false;
+    }
+    if ((paramObject instanceof Integer))
+    {
+      boolean bool = paramObject.equals(Integer.valueOf(this.value));
+      AppMethodBeat.o(114153);
+      return bool;
+    }
+    AppMethodBeat.o(114153);
     return false;
   }
   
   public String toString()
   {
-    return Integer.toString(this.value);
+    AppMethodBeat.i(114152);
+    String str = Integer.toString(this.value);
+    AppMethodBeat.o(114152);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(114151);
     paramParcel.writeInt(this.value);
+    AppMethodBeat.o(114151);
   }
 }
 

@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class AppBrandIDKeyBatchReport$b$1
-  implements am.a
+  implements ap.a
 {
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    AppBrandIDKeyBatchReport.b.anZ();
-    y.d("MicroMsg.AppBrandIDKeyBatchReport", "on timer expired in monitor timer!");
+    AppMethodBeat.i(132520);
+    AppBrandIDKeyBatchReport.b.BI();
+    ab.d("MicroMsg.AppBrandIDKeyBatchReport", "on timer expired in monitor timer!");
+    AppMethodBeat.o(132520);
     return true;
   }
 }

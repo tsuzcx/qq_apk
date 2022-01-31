@@ -5,7 +5,7 @@ public final class c$dp
 {
   public c$dp()
   {
-    super("jumpWCMall", "jump_wcmall", 51, true);
+    super("hideNavigationBarLoading", "hideNavigationBarLoading", 198, false);
   }
 }
 

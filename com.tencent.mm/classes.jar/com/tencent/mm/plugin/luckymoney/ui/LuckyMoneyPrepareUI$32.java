@@ -1,28 +1,23 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.luckymoney.b.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.wallet_core.ui.e;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.x;
+import com.tencent.mm.plugin.report.service.h;
 
 final class LuckyMoneyPrepareUI$32
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnClickListener
 {
   LuckyMoneyPrepareUI$32(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(View paramView)
   {
-    if ((LuckyMoneyPrepareUI.d(this.lXg) != null) && (!bk.bl(LuckyMoneyPrepareUI.d(this.lXg).lPP))) {
-      e.l(this.lXg.mController.uMN, LuckyMoneyPrepareUI.d(this.lXg).lPP, false);
-    }
-    for (;;)
-    {
-      return true;
-      e.l(this.lXg.mController.uMN, "https://hkwallet.moneydata.hk/hybrid/www/weixin/hongbao_hk_v2/zh_hk/faq.shtml", false);
-    }
+    AppMethodBeat.i(42979);
+    h.qsU.e(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(LuckyMoneyPrepareUI.g(this.owL)), Integer.valueOf(6) });
+    x.a(this.owL, LuckyMoneyPrepareUI.d(this.owL), LuckyMoneyPrepareUI.D(this.owL), true);
+    LuckyMoneyPrepareUI.E(this.owL).postDelayed(new LuckyMoneyPrepareUI.32.1(this), 100L);
+    AppMethodBeat.o(42979);
   }
 }
 

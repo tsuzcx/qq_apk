@@ -1,24 +1,28 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.pluginsdk.ui.tools.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.e.e;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class OfflineVideoView$8
-  implements f.e
+  implements e.e
 {
   OfflineVideoView$8(OfflineVideoView paramOfflineVideoView) {}
   
-  public final void bkk()
+  public final void bSk()
   {
-    y.i("MicroMsg.OfflineVideoView", "%d on texture update.", new Object[] { Integer.valueOf(this.oRp.hashCode()) });
+    AppMethodBeat.i(38367);
+    ab.i("MicroMsg.OfflineVideoView", "%d on texture update.", new Object[] { Integer.valueOf(this.rJb.hashCode()) });
     try
     {
-      this.oRp.a(true, 1.0F);
+      this.rJb.a(true, 1.0F);
+      AppMethodBeat.o(38367);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.OfflineVideoView", "texture view update. error " + localException.toString());
+      ab.e("MicroMsg.OfflineVideoView", "texture view update. error " + localException.toString());
+      AppMethodBeat.o(38367);
     }
   }
 }

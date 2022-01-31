@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 final class SelectScanModeGrid$a$a
 {
-  public TextView mTE;
-  public TextView nNv;
-  public ImageView nNw;
+  public TextView pvK;
+  public TextView qBg;
+  public ImageView qBh;
 }
 
 

@@ -1,20 +1,14 @@
 package a.b;
 
-import a.d.b.g;
+import a.l;
 
-public class a
-  extends b
-{
-  public final void a(Throwable paramThrowable1, Throwable paramThrowable2)
-  {
-    g.k(paramThrowable1, "cause");
-    g.k(paramThrowable2, "exception");
-    paramThrowable1.addSuppressed(paramThrowable2);
-  }
-}
+@l(eaO={1, 1, 13}, eaP={"kotlin/comparisons/ComparisonsKt__ComparisonsKt", "kotlin/comparisons/ComparisonsKt___ComparisonsJvmKt", "kotlin/comparisons/ComparisonsKt___ComparisonsKt"}, eaR=1)
+public final class a
+  extends d
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     a.b.a
  * JD-Core Version:    0.7.0.1
  */

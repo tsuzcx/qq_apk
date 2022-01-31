@@ -1,21 +1,28 @@
 package com.tencent.mm.plugin.music;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.plugin.music.model.e;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
-    return new com.tencent.mm.plugin.music.model.b();
+    AppMethodBeat.i(104807);
+    com.tencent.mm.plugin.music.model.b localb = new com.tencent.mm.plugin.music.model.b();
+    AppMethodBeat.o(104807);
+    return localb;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new e();
+    AppMethodBeat.i(104808);
+    e locale = new e();
+    AppMethodBeat.o(104808);
+    return locale;
   }
   
   public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
@@ -25,7 +32,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.music.Plugin
  * JD-Core Version:    0.7.0.1
  */

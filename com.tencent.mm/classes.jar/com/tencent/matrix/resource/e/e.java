@@ -6,33 +6,39 @@ import android.os.Looper;
 
 public final class e
 {
-  final Handler bqj;
-  private final long bqk;
-  final Handler mMainHandler;
+  private final Handler bQn;
+  private final long bQo;
+  private final Handler mMainHandler;
   
   public e(long paramLong, HandlerThread paramHandlerThread)
   {
-    this.bqj = new Handler(paramHandlerThread.getLooper());
+    this.bQn = new Handler(paramHandlerThread.getLooper());
     this.mMainHandler = new Handler(Looper.getMainLooper());
-    this.bqk = paramLong;
+    this.bQo = paramLong;
   }
   
   public final void a(final a parama, final int paramInt)
   {
-    this.bqj.postDelayed(new Runnable()
+    this.bQn.postDelayed(new Runnable()
     {
       public final void run()
       {
-        if (parama.rj() == e.a.a.bqp) {
+        if (parama.zm() == e.a.a.bQt) {
           e.this.a(parama, paramInt + 1);
         }
       }
-    }, this.bqk);
+    }, this.bQo);
+  }
+  
+  public final void zp()
+  {
+    this.bQn.removeCallbacksAndMessages(null);
+    this.mMainHandler.removeCallbacksAndMessages(null);
   }
   
   public static abstract interface a
   {
-    public abstract a rj();
+    public abstract a zm();
     
     public static enum a
     {

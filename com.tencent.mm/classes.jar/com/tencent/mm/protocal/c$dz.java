@@ -5,7 +5,7 @@ final class c$dz
 {
   c$dz()
   {
-    super("makePhoneCall", "makePhoneCall", 10000, true);
+    super("jumpDownloaderWidget", "jumpDownloaderWidget", 339, true);
   }
 }
 

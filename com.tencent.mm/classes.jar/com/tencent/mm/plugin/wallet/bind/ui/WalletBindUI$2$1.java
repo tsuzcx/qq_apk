@@ -1,25 +1,32 @@
 package com.tencent.mm.plugin.wallet.bind.ui;
 
-import com.tencent.mm.plugin.wallet_core.ui.q.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.ui.s.a;
 
 final class WalletBindUI$2$1
-  implements q.a
+  implements s.a
 {
   WalletBindUI$2$1(WalletBindUI.2 param2) {}
   
-  public final void bgR()
+  public final void bOM()
   {
-    WalletBindUI.c(this.qkx.qkw);
+    AppMethodBeat.i(45793);
+    WalletBindUI.c(this.tTx.tTw);
+    AppMethodBeat.o(45793);
   }
   
-  public final void bgS()
+  public final void bON()
   {
-    WalletBindUI.c(this.qkx.qkw);
+    AppMethodBeat.i(45795);
+    WalletBindUI.c(this.tTx.tTw);
+    AppMethodBeat.o(45795);
   }
   
   public final void cancel()
   {
-    this.qkx.qkw.finish();
+    AppMethodBeat.i(45794);
+    this.tTx.tTw.finish();
+    AppMethodBeat.o(45794);
   }
 }
 

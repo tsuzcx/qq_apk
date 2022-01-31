@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class WebViewDownloadWithX5UI$2$2
@@ -11,8 +12,10 @@ final class WebViewDownloadWithX5UI$2$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    h.nFQ.f(14217, new Object[] { "", Integer.valueOf(6), this.rmP.rmF, this.rmP.val$url, Integer.valueOf(1) });
+    AppMethodBeat.i(7614);
+    h.qsU.e(14217, new Object[] { "", Integer.valueOf(6), this.vcw.uTj, this.vcw.val$url, Integer.valueOf(1) });
     paramDialogInterface.dismiss();
+    AppMethodBeat.o(7614);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.topstory.ui.video.fs;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.plugin.topstory.ui.video.d;
 import com.tencent.mm.plugin.topstory.ui.video.f;
@@ -9,95 +10,90 @@ import com.tencent.mm.plugin.topstory.ui.video.h;
 import com.tencent.mm.plugin.topstory.ui.video.l;
 import com.tencent.mm.plugin.topstory.ui.video.o;
 import com.tencent.mm.plugin.topstory.ui.video.r;
-import com.tencent.mm.protocal.c.byg;
 
 public final class c
   extends d
 {
   public final void a(b paramb)
   {
+    AppMethodBeat.i(1871);
     RecyclerView localRecyclerView = paramb.getRecyclerView();
     Object localObject = c(paramb);
+    int i;
+    int j;
     if ((localObject instanceof g))
     {
       localObject = (g)localObject;
-      int i;
-      int j;
-      if (localObject != null)
+      if (localObject == null) {
+        break label193;
+      }
+      i = ((g)localObject).jN();
+      if ((i != paramb.cJk()) && (paramb.cJh().tjS))
       {
-        i = ((g)localObject).id();
-        if ((i != paramb.bNB()) && (paramb.bNx().pGx))
-        {
-          paramb.bNx().stopPlay();
-          if (localObject != null) {
-            paramb.bNt().b(((g)localObject).pDy);
-          }
-        }
-        paramb.bNq();
-        j = 0;
-        label98:
-        if (j >= localRecyclerView.getChildCount()) {
-          return;
-        }
-        localObject = localRecyclerView.getChildAt(j);
-        if (((View)localObject).getTag() != null)
-        {
-          localObject = (g)paramb.getRecyclerView().aT((View)localObject);
-          if (((g)localObject).id() != i) {
-            break label185;
-          }
-          ((g)localObject).bNp();
-          if (!paramb.bNx().pGx) {
-            ((g)localObject).pHp.bNL();
-          }
+        paramb.cJh().stopPlay();
+        if (localObject != null) {
+          paramb.cJd().f(((g)localObject).tfm);
         }
       }
-      for (;;)
-      {
-        j += 1;
-        break label98;
-        i = -1;
-        break;
-        label185:
-        ((g)localObject).pHp.bNM();
+      paramb.cJa();
+      j = 0;
+      label104:
+      if (j >= localRecyclerView.getChildCount()) {
+        break label209;
       }
-    }
-  }
-  
-  public final void b(b paramb)
-  {
-    h localh = c(paramb);
-    if ((localh != null) && ((localh instanceof g))) {
-      if (!paramb.bNx().pGx)
+      localObject = localRecyclerView.getChildAt(j);
+      if (((View)localObject).getTag() != null)
       {
-        if ((!paramb.bNs().aIq()) && (!com.tencent.mm.plugin.topstory.a.g.bNg())) {
-          break label75;
+        localObject = (g)paramb.getRecyclerView().bb((View)localObject);
+        if (((g)localObject).jN() != i) {
+          break label198;
         }
-        localh.jJ(true);
+        ((g)localObject).cIZ();
+        if (!paramb.cJh().tjS) {
+          ((g)localObject).tkK.cJz();
+        }
       }
     }
     for (;;)
     {
-      localh.bNp();
-      paramb.zx(localh.bNr());
-      paramb.bNt().bOp();
+      j += 1;
+      break label104;
+      AppMethodBeat.o(1871);
       return;
-      label75:
-      byg localbyg = localh.pDy;
-      paramb.bNH();
-      if (paramb.bNs().pFL)
+      label193:
+      i = -1;
+      break;
+      label198:
+      ((g)localObject).tkK.cJA();
+    }
+    label209:
+    AppMethodBeat.o(1871);
+  }
+  
+  public final void b(b paramb)
+  {
+    AppMethodBeat.i(1872);
+    h localh = c(paramb);
+    if ((localh != null) && ((localh instanceof g))) {
+      if (!paramb.cJh().tjS)
       {
-        if (paramb.bNs().isConnected()) {
-          localh.bNZ().bNO();
+        if (!paramb.cJc().isConnected()) {
+          break label87;
         }
-        for (;;)
-        {
-          paramb.bNx().stopPlay();
-          break;
-          localh.bNZ().bNP();
-        }
+        paramb.cJq();
+        localh.mA(true);
       }
-      localh.jJ(true);
+    }
+    for (;;)
+    {
+      localh.cIZ();
+      paramb.GA(localh.cJb());
+      paramb.cJd().cKd();
+      AppMethodBeat.o(1872);
+      return;
+      label87:
+      localh.cJM().cJD();
+      paramb.cJh().stopPlay();
     }
   }
 }

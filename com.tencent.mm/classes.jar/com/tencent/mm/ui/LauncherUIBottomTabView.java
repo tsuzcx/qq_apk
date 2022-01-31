@@ -12,377 +12,526 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.kiss.a.b;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.tools.q;
+import com.tencent.mm.plugin.story.g.i;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ui.tools.t;
 
 public class LauncherUIBottomTabView
   extends RelativeLayout
   implements c
 {
-  protected int jQL = 0;
-  private long ldT = 0L;
-  private boolean uLA = false;
-  private int uLB = 0;
-  private boolean uLC = false;
-  private c.a uLd;
-  protected LauncherUIBottomTabView.a uLe;
-  protected LauncherUIBottomTabView.a uLf;
-  protected LauncherUIBottomTabView.a uLg;
-  protected LauncherUIBottomTabView.a uLh;
-  private int uLi = 0;
-  private int uLj;
-  private int uLk;
-  private int uLl;
-  private int uLm = 0;
-  private int uLn;
-  private int uLo;
-  private int uLp;
-  private int uLq;
-  private int uLr;
-  private int uLs;
-  private int uLt = -1;
-  private int uLu = 0;
-  protected View.OnClickListener uLv = new LauncherUIBottomTabView.1(this);
-  private ah uLw = new LauncherUIBottomTabView.2(this);
-  private int uLx = 0;
-  private int uLy = 0;
-  private int uLz = 0;
+  protected int eSO;
+  private long nBO;
+  private ak yZA;
+  private int yZB;
+  private int yZC;
+  private int yZD;
+  private boolean yZE;
+  private boolean yZF;
+  private int yZG;
+  private boolean yZH;
+  private c.a yZh;
+  protected LauncherUIBottomTabView.a yZi;
+  protected LauncherUIBottomTabView.a yZj;
+  protected LauncherUIBottomTabView.a yZk;
+  protected LauncherUIBottomTabView.a yZl;
+  private int yZm;
+  private int yZn;
+  private int yZo;
+  private int yZp;
+  private int yZq;
+  private int yZr;
+  private int yZs;
+  private int yZt;
+  private int yZu;
+  private int yZv;
+  private int yZw;
+  private int yZx;
+  private int yZy;
+  protected View.OnClickListener yZz;
   
   public LauncherUIBottomTabView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(29488);
+    this.eSO = 0;
+    this.yZm = 0;
+    this.yZq = 0;
+    this.nBO = 0L;
+    this.yZx = -1;
+    this.yZy = 0;
+    this.yZz = new LauncherUIBottomTabView.1(this);
+    this.yZA = new LauncherUIBottomTabView.2(this);
+    this.yZB = 0;
+    this.yZC = 0;
+    this.yZD = 0;
+    this.yZE = false;
+    this.yZF = false;
+    this.yZG = 0;
+    this.yZH = false;
     init();
+    AppMethodBeat.o(29488);
   }
   
   public LauncherUIBottomTabView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(29489);
+    this.eSO = 0;
+    this.yZm = 0;
+    this.yZq = 0;
+    this.nBO = 0L;
+    this.yZx = -1;
+    this.yZy = 0;
+    this.yZz = new LauncherUIBottomTabView.1(this);
+    this.yZA = new LauncherUIBottomTabView.2(this);
+    this.yZB = 0;
+    this.yZC = 0;
+    this.yZD = 0;
+    this.yZE = false;
+    this.yZF = false;
+    this.yZG = 0;
+    this.yZH = false;
     init();
+    AppMethodBeat.o(29489);
   }
   
   public LauncherUIBottomTabView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(29490);
+    this.eSO = 0;
+    this.yZm = 0;
+    this.yZq = 0;
+    this.nBO = 0L;
+    this.yZx = -1;
+    this.yZy = 0;
+    this.yZz = new LauncherUIBottomTabView.1(this);
+    this.yZA = new LauncherUIBottomTabView.2(this);
+    this.yZB = 0;
+    this.yZC = 0;
+    this.yZD = 0;
+    this.yZE = false;
+    this.yZF = false;
+    this.yZG = 0;
+    this.yZH = false;
     init();
+    AppMethodBeat.o(29490);
   }
   
-  private LauncherUIBottomTabView.a FM(int paramInt)
+  private LauncherUIBottomTabView.a Od(int paramInt)
   {
+    AppMethodBeat.i(29491);
     LauncherUIBottomTabView.a locala = new LauncherUIBottomTabView.a(this);
-    if (a.fh(getContext())) {}
-    for (locala.uLE = b.ED().a((Activity)getContext(), "R.layout.mm_bottom_tabitem_large", R.i.mm_bottom_tabitem_large);; locala.uLE = b.ED().a((Activity)getContext(), "R.layout.mm_bottom_tabitem", R.i.mm_bottom_tabitem))
-    {
-      locala.uLF = ((TabIconView)locala.uLE.findViewById(R.h.icon_iv));
-      locala.uLG = ((TextView)locala.uLE.findViewById(R.h.icon_tv));
-      locala.uLH = ((TextView)locala.uLE.findViewById(R.h.unread_tv));
-      locala.uLH.setBackgroundResource(q.hh(getContext()));
-      locala.uLI = ((ImageView)locala.uLE.findViewById(R.h.dot_iv));
-      locala.uLE.setTag(Integer.valueOf(paramInt));
-      locala.uLE.setOnClickListener(this.uLv);
-      float f1 = a.ab(getContext(), R.f.SmallestTextSize);
-      float f2 = a.ff(getContext());
-      locala.uLG.setTextSize(0, f1 * f2);
-      return locala;
+    if (a.gu(getContext())) {
+      b.SH();
     }
+    for (locala.yZJ = b.b((Activity)getContext(), 2130970154);; locala.yZJ = b.b((Activity)getContext(), 2130970153))
+    {
+      locala.yZK = ((TabIconView)locala.yZJ.findViewById(2131821253));
+      locala.yZL = ((TextView)locala.yZJ.findViewById(2131826164));
+      locala.yZM = ((TextView)locala.yZJ.findViewById(2131826163));
+      locala.yZM.setBackgroundResource(t.iF(getContext()));
+      locala.yZN = ((ImageView)locala.yZJ.findViewById(2131820977));
+      locala.yZJ.setTag(Integer.valueOf(paramInt));
+      locala.yZJ.setOnClickListener(this.yZz);
+      float f1 = a.ap(getContext(), 2131427862);
+      float f2 = a.gr(getContext());
+      locala.yZL.setTextSize(0, f1 * f2);
+      AppMethodBeat.o(29491);
+      return locala;
+      b.SH();
+    }
+  }
+  
+  private LauncherUIBottomTabView.a b(LinearLayout paramLinearLayout)
+  {
+    AppMethodBeat.i(29492);
+    LauncherUIBottomTabView.a locala = Od(0);
+    locala.yZJ.setId(-16777215);
+    locala.yZL.setText(2131301430);
+    locala.yZL.setTextColor(getResources().getColor(2131690308));
+    locala.yZK.g(2131231445, 2131231494, 2131231493, a.gu(getContext()));
+    locala.yZM.setVisibility(4);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, this.yZy);
+    localLayoutParams.weight = 1.0F;
+    paramLinearLayout.addView(locala.yZJ, localLayoutParams);
+    AppMethodBeat.o(29492);
+    return locala;
+  }
+  
+  private LauncherUIBottomTabView.a c(LinearLayout paramLinearLayout)
+  {
+    AppMethodBeat.i(29493);
+    LauncherUIBottomTabView.a locala = Od(1);
+    locala.yZJ.setId(-16777214);
+    locala.yZL.setText(2131301392);
+    locala.yZL.setTextColor(getResources().getColor(2131690309));
+    locala.yZK.g(2131231448, 2131231499, 2131231498, a.gu(getContext()));
+    locala.yZM.setVisibility(4);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, this.yZy);
+    localLayoutParams.weight = 1.0F;
+    paramLinearLayout.addView(locala.yZJ, localLayoutParams);
+    AppMethodBeat.o(29493);
+    return locala;
+  }
+  
+  private LauncherUIBottomTabView.a d(LinearLayout paramLinearLayout)
+  {
+    AppMethodBeat.i(29494);
+    LauncherUIBottomTabView.a locala = Od(2);
+    locala.yZJ.setId(-16777213);
+    locala.yZL.setText(2131301390);
+    locala.yZL.setTextColor(getResources().getColor(2131690309));
+    locala.yZK.g(2131231453, 2131231503, 2131231502, a.gu(getContext()));
+    locala.yZM.setVisibility(4);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, this.yZy);
+    localLayoutParams.weight = 1.0F;
+    paramLinearLayout.addView(locala.yZJ, localLayoutParams);
+    AppMethodBeat.o(29494);
+    return locala;
+  }
+  
+  private LauncherUIBottomTabView.a e(LinearLayout paramLinearLayout)
+  {
+    AppMethodBeat.i(29495);
+    LauncherUIBottomTabView.a locala = Od(3);
+    locala.yZJ.setId(-16777212);
+    locala.yZL.setText(2131301424);
+    locala.yZL.setTextColor(getResources().getColor(2131690309));
+    locala.yZK.g(2131231460, 2131231513, 2131231513, a.gu(getContext()));
+    locala.yZM.setVisibility(4);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, this.yZy);
+    localLayoutParams.weight = 1.0F;
+    paramLinearLayout.addView(locala.yZJ, localLayoutParams);
+    AppMethodBeat.o(29495);
+    return locala;
   }
   
   private void init()
   {
+    AppMethodBeat.i(29496);
     LinearLayout localLinearLayout = new LinearLayout(getContext());
+    localLinearLayout.setBackgroundColor(getResources().getColor(2131689499));
     localLinearLayout.setOrientation(0);
     addView(localLinearLayout, new RelativeLayout.LayoutParams(-1, -2));
-    this.uLu = ((int)(a.ab(getContext(), R.f.DefaultTabbarHeight) * a.ff(getContext())));
-    LauncherUIBottomTabView.a locala = FM(0);
-    locala.uLE.setId(-16777215);
-    locala.uLG.setText(R.l.main_title);
-    locala.uLG.setTextColor(getResources().getColor(R.e.navbar_text_focus));
-    locala.uLF.f(R.k.navbar_chat_icon_focus, R.k.navbar_chat_icon_middle, R.k.navbar_chat_icon_normal, a.fh(getContext()));
-    locala.uLH.setVisibility(4);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, this.uLu);
-    localLayoutParams.weight = 1.0F;
-    localLinearLayout.addView(locala.uLE, localLayoutParams);
-    this.uLe = locala;
-    locala = FM(1);
-    locala.uLE.setId(-16777214);
-    locala.uLG.setText(R.l.main_contact);
-    locala.uLG.setTextColor(getResources().getColor(R.e.navbar_text_normal));
-    locala.uLF.f(R.k.navbar_addresslist_icon_focus, R.k.navbar_addresslist_icon_middle, R.k.navbar_addresslist_icon_normal, a.fh(getContext()));
-    locala.uLH.setVisibility(4);
-    localLayoutParams = new LinearLayout.LayoutParams(0, this.uLu);
-    localLayoutParams.weight = 1.0F;
-    localLinearLayout.addView(locala.uLE, localLayoutParams);
-    this.uLg = locala;
-    locala = FM(2);
-    locala.uLE.setId(-16777213);
-    locala.uLG.setText(R.l.main_addcontact);
-    locala.uLG.setTextColor(getResources().getColor(R.e.navbar_text_normal));
-    locala.uLF.f(R.k.navbar_discovery_icon_focus, R.k.navbar_discovery_icon_middle, R.k.navbar_discovery_icon_normal, a.fh(getContext()));
-    locala.uLH.setVisibility(4);
-    localLayoutParams = new LinearLayout.LayoutParams(0, this.uLu);
-    localLayoutParams.weight = 1.0F;
-    localLinearLayout.addView(locala.uLE, localLayoutParams);
-    this.uLf = locala;
-    locala = FM(3);
-    locala.uLE.setId(-16777212);
-    locala.uLG.setText(R.l.main_more);
-    locala.uLG.setTextColor(getResources().getColor(R.e.navbar_text_normal));
-    locala.uLF.f(R.k.navbar_me_icon_focus, R.k.navbar_me_icon_middle, R.k.navbar_me_icon_normal, a.fh(getContext()));
-    locala.uLH.setVisibility(4);
-    localLayoutParams = new LinearLayout.LayoutParams(0, this.uLu);
-    localLayoutParams.weight = 1.0F;
-    localLinearLayout.addView(locala.uLE, localLayoutParams);
-    this.uLh = locala;
-    this.uLi = getResources().getColor(R.e.navbar_text_focus);
-    this.uLj = ((this.uLi & 0xFF0000) >> 16);
-    this.uLk = ((this.uLi & 0xFF00) >> 8);
-    this.uLl = (this.uLi & 0xFF);
-    this.uLm = getResources().getColor(R.e.navbar_text_normal);
-    this.uLn = ((this.uLm & 0xFF0000) >> 16);
-    this.uLo = ((this.uLm & 0xFF00) >> 8);
-    this.uLp = (this.uLm & 0xFF);
-    this.uLq = (this.uLj - this.uLn);
-    this.uLr = (this.uLk - this.uLo);
-    this.uLs = (this.uLl - this.uLp);
+    this.yZy = ((int)(a.ap(getContext(), 2131427563) * a.gr(getContext())));
+    this.yZi = b(localLinearLayout);
+    this.yZk = c(localLinearLayout);
+    this.yZj = d(localLinearLayout);
+    this.yZl = e(localLinearLayout);
+    this.yZm = getResources().getColor(2131690308);
+    this.yZn = ((this.yZm & 0xFF0000) >> 16);
+    this.yZo = ((this.yZm & 0xFF00) >> 8);
+    this.yZp = (this.yZm & 0xFF);
+    this.yZq = getResources().getColor(2131690309);
+    this.yZr = ((this.yZq & 0xFF0000) >> 16);
+    this.yZs = ((this.yZq & 0xFF00) >> 8);
+    this.yZt = (this.yZq & 0xFF);
+    this.yZu = (this.yZn - this.yZr);
+    this.yZv = (this.yZo - this.yZs);
+    this.yZw = (this.yZp - this.yZt);
+    AppMethodBeat.o(29496);
   }
   
-  public final void FH(int paramInt)
+  public final void NU(int paramInt)
   {
-    y.d("MicroMsg.LauncherUITabView", "updateMainTabUnread %d", new Object[] { Integer.valueOf(paramInt) });
-    this.uLx = paramInt;
+    AppMethodBeat.i(29497);
+    ab.d("MicroMsg.LauncherUITabView", "updateMainTabUnread %d", new Object[] { Integer.valueOf(paramInt) });
+    this.yZB = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.uLe.uLH.setText(getContext().getString(R.l.unread_count_overt_100));
-        this.uLe.uLH.setVisibility(0);
-        this.uLe.uLI.setVisibility(4);
+        this.yZi.yZM.setText("");
+        this.yZi.yZM.setBackgroundResource(2131230963);
+        this.yZi.yZM.setTextSize(0, a.ap(getContext(), 2131428775));
+        this.yZi.yZM.setVisibility(0);
+        this.yZi.yZN.setVisibility(4);
+        AppMethodBeat.o(29497);
         return;
       }
-      this.uLe.uLH.setText(String.valueOf(paramInt));
-      this.uLe.uLH.setVisibility(0);
-      this.uLe.uLI.setVisibility(4);
+      this.yZi.yZM.setText(String.valueOf(paramInt));
+      this.yZi.yZM.setBackgroundResource(t.iF(getContext()));
+      this.yZi.yZM.setTextSize(0, a.ap(getContext(), 2131428775) * a.gr(getContext()));
+      this.yZi.yZM.setVisibility(0);
+      this.yZi.yZN.setVisibility(4);
+      AppMethodBeat.o(29497);
       return;
     }
-    this.uLe.uLH.setText("");
-    this.uLe.uLH.setVisibility(4);
+    this.yZi.yZM.setText("");
+    this.yZi.yZM.setVisibility(4);
+    AppMethodBeat.o(29497);
   }
   
-  public final void FI(int paramInt)
+  public final void NV(int paramInt)
   {
-    this.uLy = paramInt;
+    AppMethodBeat.i(29498);
+    this.yZC = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.uLg.uLH.setText(getContext().getString(R.l.unread_count_overt_100));
-        this.uLg.uLH.setVisibility(0);
-        this.uLg.uLI.setVisibility(4);
+        this.yZk.yZM.setText("");
+        this.yZk.yZM.setBackgroundResource(2131230963);
+        this.yZk.yZM.setTextSize(0, a.ap(getContext(), 2131428775));
+        this.yZk.yZM.setVisibility(0);
+        this.yZk.yZN.setVisibility(4);
+        AppMethodBeat.o(29498);
         return;
       }
-      this.uLg.uLH.setText(String.valueOf(paramInt));
-      this.uLg.uLH.setVisibility(0);
-      this.uLg.uLI.setVisibility(4);
+      this.yZk.yZM.setText(String.valueOf(paramInt));
+      this.yZk.yZM.setTextSize(0, a.ap(getContext(), 2131428775) * a.gr(getContext()));
+      this.yZk.yZM.setBackgroundResource(t.iF(getContext()));
+      this.yZk.yZM.setVisibility(0);
+      this.yZk.yZN.setVisibility(4);
+      AppMethodBeat.o(29498);
       return;
     }
-    this.uLg.uLH.setText("");
-    this.uLg.uLH.setVisibility(4);
+    this.yZk.yZM.setText("");
+    this.yZk.yZM.setVisibility(4);
+    AppMethodBeat.o(29498);
   }
   
-  public final void FJ(int paramInt)
+  public final void NW(int paramInt)
   {
-    this.uLz = paramInt;
+    AppMethodBeat.i(29499);
+    this.yZD = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.uLf.uLH.setText(getContext().getString(R.l.unread_count_overt_100));
-        this.uLf.uLH.setVisibility(0);
-        this.uLf.uLI.setVisibility(4);
+        this.yZj.yZM.setText("");
+        this.yZj.yZM.setBackgroundResource(2131230963);
+        this.yZj.yZM.setTextSize(0, a.ap(getContext(), 2131428775));
+        this.yZj.yZM.setVisibility(0);
+        this.yZj.yZN.setVisibility(4);
+        AppMethodBeat.o(29499);
         return;
       }
-      this.uLf.uLH.setText(String.valueOf(paramInt));
-      this.uLf.uLH.setVisibility(0);
-      this.uLf.uLI.setVisibility(4);
+      this.yZj.yZM.setText(String.valueOf(paramInt));
+      this.yZj.yZM.setTextSize(0, a.ap(getContext(), 2131428775) * a.gr(getContext()));
+      this.yZj.yZM.setVisibility(0);
+      this.yZj.yZM.setBackgroundResource(t.iF(getContext()));
+      this.yZj.yZN.setVisibility(4);
+      AppMethodBeat.o(29499);
       return;
     }
-    this.uLf.uLH.setText("");
-    this.uLf.uLH.setVisibility(4);
+    this.yZj.yZM.setText("");
+    this.yZj.yZM.setVisibility(4);
+    AppMethodBeat.o(29499);
   }
   
-  public final void FK(int paramInt)
+  public final void NX(int paramInt)
   {
-    this.uLB = paramInt;
+    AppMethodBeat.i(29502);
+    if (this.yZF)
+    {
+      AppMethodBeat.o(29502);
+      return;
+    }
+    this.yZG = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.uLh.uLH.setText(getContext().getString(R.l.unread_count_overt_100));
-        this.uLh.uLH.setVisibility(0);
-        this.uLh.uLI.setVisibility(4);
+        this.yZl.yZM.setText("");
+        this.yZl.yZM.setBackgroundResource(2131230963);
+        this.yZl.yZM.setTextSize(0, a.ap(getContext(), 2131428775));
+        this.yZl.yZM.setVisibility(0);
+        this.yZl.yZN.setVisibility(4);
+        AppMethodBeat.o(29502);
         return;
       }
-      this.uLh.uLH.setText(String.valueOf(paramInt));
-      this.uLh.uLH.setVisibility(0);
-      this.uLh.uLI.setVisibility(4);
+      this.yZl.yZM.setText(String.valueOf(paramInt));
+      this.yZl.yZM.setTextSize(0, a.ap(getContext(), 2131428775) * a.gr(getContext()));
+      this.yZl.yZM.setVisibility(0);
+      this.yZl.yZM.setBackgroundResource(t.iF(getContext()));
+      this.yZl.yZN.setVisibility(4);
+      AppMethodBeat.o(29502);
       return;
     }
-    this.uLh.uLH.setText("");
-    this.uLh.uLH.setVisibility(4);
+    this.yZl.yZM.setText("");
+    this.yZl.yZM.setVisibility(4);
+    AppMethodBeat.o(29502);
   }
   
-  public final void cxS()
+  public final void dAP()
   {
-    if ((this.uLe != null) && (this.uLg != null) && (this.uLf == null)) {}
+    if ((this.yZi != null) && (this.yZk != null) && (this.yZj == null)) {}
   }
   
   public int getContactTabUnread()
   {
-    return this.uLy;
+    return this.yZC;
   }
   
   public int getCurIdx()
   {
-    return this.jQL;
+    return this.eSO;
   }
   
   public int getFriendTabUnread()
   {
-    return this.uLz;
+    return this.yZD;
   }
   
   public int getMainTabUnread()
   {
-    return this.uLx;
+    return this.yZB;
   }
   
   public boolean getSettingsPoint()
   {
-    return this.uLC;
+    return this.yZH;
   }
   
   public int getSettingsTabUnread()
   {
-    return this.uLB;
+    return this.yZG;
   }
   
   public boolean getShowFriendPoint()
   {
-    return this.uLA;
+    return this.yZE;
   }
   
-  public final void i(int paramInt, float paramFloat)
+  public final void k(int paramInt, float paramFloat)
   {
+    AppMethodBeat.i(29504);
     int i = (int)(255.0F * paramFloat);
     int j = 255 - i;
-    int k = ((int)(this.uLq * paramFloat + this.uLn) << 16) + ((int)(this.uLr * paramFloat + this.uLo) << 8) + (int)(this.uLs * paramFloat + this.uLp) - 16777216;
-    int m = ((int)(this.uLq * (1.0F - paramFloat) + this.uLn) << 16) + ((int)(this.uLr * (1.0F - paramFloat) + this.uLo) << 8) + (int)(this.uLs * (1.0F - paramFloat) + this.uLp) - 16777216;
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.uLe.uLF.setFocusAlpha(j);
-      this.uLg.uLF.setFocusAlpha(i);
-      this.uLe.uLG.setTextColor(m);
-      this.uLg.uLG.setTextColor(k);
-      return;
-    case 1: 
-      this.uLg.uLF.setFocusAlpha(j);
-      this.uLf.uLF.setFocusAlpha(i);
-      this.uLg.uLG.setTextColor(m);
-      this.uLf.uLG.setTextColor(k);
-      return;
-    }
-    this.uLf.uLF.setFocusAlpha(j);
-    this.uLh.uLF.setFocusAlpha(i);
-    this.uLf.uLG.setTextColor(m);
-    this.uLh.uLG.setTextColor(k);
-  }
-  
-  public final void mH(boolean paramBoolean)
-  {
-    int i = 4;
-    this.uLA = paramBoolean;
-    this.uLf.uLH.setVisibility(4);
-    ImageView localImageView = this.uLf.uLI;
-    if (paramBoolean) {
-      i = 0;
-    }
-    localImageView.setVisibility(i);
-  }
-  
-  public final void mI(boolean paramBoolean)
-  {
-    int i = 4;
-    this.uLC = paramBoolean;
-    this.uLh.uLH.setVisibility(4);
-    ImageView localImageView = this.uLh.uLI;
-    if (paramBoolean) {
-      i = 0;
-    }
-    localImageView.setVisibility(i);
-  }
-  
-  public void setOnTabClickListener(c.a parama)
-  {
-    this.uLd = parama;
-  }
-  
-  public void setTo(int paramInt)
-  {
-    this.jQL = paramInt;
+    int k = ((int)(this.yZu * paramFloat + this.yZr) << 16) + ((int)(this.yZv * paramFloat + this.yZs) << 8) + (int)(this.yZw * paramFloat + this.yZt) - 16777216;
+    int m = ((int)(this.yZu * (1.0F - paramFloat) + this.yZr) << 16) + ((int)(this.yZv * (1.0F - paramFloat) + this.yZs) << 8) + (int)(this.yZw * (1.0F - paramFloat) + this.yZt) - 16777216;
     switch (paramInt)
     {
     }
     for (;;)
     {
-      this.ldT = System.currentTimeMillis();
-      this.uLt = this.jQL;
+      AppMethodBeat.o(29504);
       return;
-      this.uLe.uLF.setFocusAlpha(255);
-      this.uLf.uLF.setFocusAlpha(0);
-      this.uLg.uLF.setFocusAlpha(0);
-      this.uLh.uLF.setFocusAlpha(0);
-      this.uLe.uLG.setTextColor(this.uLi);
-      this.uLf.uLG.setTextColor(this.uLm);
-      this.uLg.uLG.setTextColor(this.uLm);
-      this.uLh.uLG.setTextColor(this.uLm);
+      this.yZi.yZK.setFocusAlpha(j);
+      this.yZk.yZK.setFocusAlpha(i);
+      this.yZi.yZL.setTextColor(m);
+      this.yZk.yZL.setTextColor(k);
+      AppMethodBeat.o(29504);
+      return;
+      this.yZk.yZK.setFocusAlpha(j);
+      this.yZj.yZK.setFocusAlpha(i);
+      this.yZk.yZL.setTextColor(m);
+      this.yZj.yZL.setTextColor(k);
+      AppMethodBeat.o(29504);
+      return;
+      this.yZj.yZK.setFocusAlpha(j);
+      this.yZl.yZK.setFocusAlpha(i);
+      this.yZj.yZL.setTextColor(m);
+      this.yZl.yZL.setTextColor(k);
+    }
+  }
+  
+  public final void qa(boolean paramBoolean)
+  {
+    int i = 4;
+    AppMethodBeat.i(29500);
+    this.yZE = paramBoolean;
+    this.yZj.yZM.setVisibility(4);
+    ImageView localImageView = this.yZj.yZN;
+    if (paramBoolean) {
+      i = 0;
+    }
+    localImageView.setVisibility(i);
+    AppMethodBeat.o(29500);
+  }
+  
+  public final void qb(boolean paramBoolean)
+  {
+    AppMethodBeat.i(29503);
+    if (this.yZF)
+    {
+      AppMethodBeat.o(29503);
+      return;
+    }
+    Object localObject = i.sFa;
+    long l;
+    if (paramBoolean)
+    {
+      l = 1L;
+      i.mM(l);
+      this.yZH = paramBoolean;
+      this.yZl.yZM.setVisibility(4);
+      localObject = this.yZl.yZN;
+      if (!paramBoolean) {
+        break label84;
+      }
+    }
+    label84:
+    for (int i = 0;; i = 4)
+    {
+      ((ImageView)localObject).setVisibility(i);
+      AppMethodBeat.o(29503);
+      return;
+      l = 0L;
+      break;
+    }
+  }
+  
+  public void setOnTabClickListener(c.a parama)
+  {
+    this.yZh = parama;
+  }
+  
+  public void setTo(int paramInt)
+  {
+    AppMethodBeat.i(29505);
+    this.eSO = paramInt;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.nBO = System.currentTimeMillis();
+      this.yZx = this.eSO;
+      AppMethodBeat.o(29505);
+      return;
+      this.yZi.yZK.setFocusAlpha(255);
+      this.yZj.yZK.setFocusAlpha(0);
+      this.yZk.yZK.setFocusAlpha(0);
+      this.yZl.yZK.setFocusAlpha(0);
+      this.yZi.yZL.setTextColor(this.yZm);
+      this.yZj.yZL.setTextColor(this.yZq);
+      this.yZk.yZL.setTextColor(this.yZq);
+      this.yZl.yZL.setTextColor(this.yZq);
       continue;
-      this.uLe.uLF.setFocusAlpha(0);
-      this.uLf.uLF.setFocusAlpha(255);
-      this.uLg.uLF.setFocusAlpha(0);
-      this.uLh.uLF.setFocusAlpha(0);
-      this.uLe.uLG.setTextColor(this.uLm);
-      this.uLf.uLG.setTextColor(this.uLi);
-      this.uLg.uLG.setTextColor(this.uLm);
-      this.uLh.uLG.setTextColor(this.uLm);
+      this.yZi.yZK.setFocusAlpha(0);
+      this.yZj.yZK.setFocusAlpha(255);
+      this.yZk.yZK.setFocusAlpha(0);
+      this.yZl.yZK.setFocusAlpha(0);
+      this.yZi.yZL.setTextColor(this.yZq);
+      this.yZj.yZL.setTextColor(this.yZm);
+      this.yZk.yZL.setTextColor(this.yZq);
+      this.yZl.yZL.setTextColor(this.yZq);
       continue;
-      this.uLe.uLF.setFocusAlpha(0);
-      this.uLf.uLF.setFocusAlpha(0);
-      this.uLg.uLF.setFocusAlpha(255);
-      this.uLh.uLF.setFocusAlpha(0);
-      this.uLe.uLG.setTextColor(this.uLm);
-      this.uLf.uLG.setTextColor(this.uLm);
-      this.uLg.uLG.setTextColor(this.uLi);
-      this.uLh.uLG.setTextColor(this.uLm);
+      this.yZi.yZK.setFocusAlpha(0);
+      this.yZj.yZK.setFocusAlpha(0);
+      this.yZk.yZK.setFocusAlpha(255);
+      this.yZl.yZK.setFocusAlpha(0);
+      this.yZi.yZL.setTextColor(this.yZq);
+      this.yZj.yZL.setTextColor(this.yZq);
+      this.yZk.yZL.setTextColor(this.yZm);
+      this.yZl.yZL.setTextColor(this.yZq);
       continue;
-      this.uLe.uLF.setFocusAlpha(0);
-      this.uLf.uLF.setFocusAlpha(0);
-      this.uLg.uLF.setFocusAlpha(0);
-      this.uLh.uLF.setFocusAlpha(255);
-      this.uLe.uLG.setTextColor(this.uLm);
-      this.uLf.uLG.setTextColor(this.uLm);
-      this.uLg.uLG.setTextColor(this.uLm);
-      this.uLh.uLG.setTextColor(this.uLi);
+      this.yZi.yZK.setFocusAlpha(0);
+      this.yZj.yZK.setFocusAlpha(0);
+      this.yZk.yZK.setFocusAlpha(0);
+      this.yZl.yZK.setFocusAlpha(255);
+      this.yZi.yZL.setTextColor(this.yZq);
+      this.yZj.yZL.setTextColor(this.yZq);
+      this.yZk.yZL.setTextColor(this.yZq);
+      this.yZl.yZL.setTextColor(this.yZm);
     }
   }
 }

@@ -3,121 +3,188 @@ package com.tencent.mm.sdk.d;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
 {
   public String mName;
-  public volatile d.c ujd;
-  volatile HandlerThread uje;
+  public volatile d.c yrd;
+  volatile HandlerThread yre;
   
-  public d(String paramString, Looper paramLooper)
+  protected d(String paramString, Looper paramLooper)
   {
+    AppMethodBeat.i(52473);
     this.mName = paramString;
-    this.ujd = new d.c(paramLooper, this, (byte)0);
+    this.yrd = new d.c(paramLooper, this, (byte)0);
+    AppMethodBeat.o(52473);
   }
   
-  private Message obtainMessage(int paramInt)
+  protected final void Nh(int paramInt)
   {
-    return Message.obtain(this.ujd, paramInt);
-  }
-  
-  public final void Ff(int paramInt)
-  {
-    d.c localc = this.ujd;
-    if (localc == null) {
-      return;
-    }
-    localc.sendMessage(obtainMessage(paramInt));
-  }
-  
-  public final void Fg(int paramInt)
-  {
-    d.c localc = this.ujd;
-    if (localc == null) {
+    AppMethodBeat.i(52482);
+    d.c localc = this.yrd;
+    if (localc == null)
+    {
+      AppMethodBeat.o(52482);
       return;
     }
     localc.sendMessageAtFrontOfQueue(obtainMessage(paramInt));
+    AppMethodBeat.o(52482);
   }
   
   public final void a(c paramc)
   {
-    d.c.a(this.ujd, paramc);
+    AppMethodBeat.i(52474);
+    d.c.a(this.yrd, paramc);
+    AppMethodBeat.o(52474);
   }
   
-  public void abD() {}
+  protected void avu() {}
   
   public final void b(a parama)
   {
-    d.c.a(this.ujd, parama);
+    AppMethodBeat.i(52478);
+    d.c.a(this.yrd, parama);
+    AppMethodBeat.o(52478);
   }
   
   public final void b(c paramc)
   {
-    d.c.b(this.ujd, paramc);
+    AppMethodBeat.i(52475);
+    d.c.b(this.yrd, paramc);
+    AppMethodBeat.o(52475);
   }
   
-  public final Message csk()
+  protected final Message duh()
   {
-    d.c localc = this.ujd;
-    if (localc == null) {
+    AppMethodBeat.i(52476);
+    Object localObject = this.yrd;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(52476);
       return null;
     }
-    return d.c.b(localc);
+    localObject = d.c.b((d.c)localObject);
+    AppMethodBeat.o(52476);
+    return localObject;
   }
   
-  public final a csl()
+  public final a dui()
   {
-    d.c localc = this.ujd;
-    if (localc == null) {
+    AppMethodBeat.i(52477);
+    Object localObject = this.yrd;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(52477);
       return null;
     }
-    return d.c.c(localc);
+    localObject = d.c.c((d.c)localObject);
+    AppMethodBeat.o(52477);
+    return localObject;
   }
   
-  public boolean e(Message paramMessage)
+  protected final void duj()
+  {
+    AppMethodBeat.i(141970);
+    d.c localc = this.yrd;
+    if (localc == null)
+    {
+      AppMethodBeat.o(141970);
+      return;
+    }
+    d.c.f(localc);
+    AppMethodBeat.o(141970);
+  }
+  
+  protected boolean i(Message paramMessage)
   {
     return true;
   }
   
-  public void f(Message paramMessage)
+  protected void j(Message paramMessage)
   {
-    if (d.c.d(this.ujd)) {
-      new StringBuilder(" - unhandledMessage: msg.what=").append(paramMessage.what);
+    AppMethodBeat.i(52479);
+    if (d.c.d(this.yrd)) {
+      yQ(" - unhandledMessage: msg.what=" + paramMessage.what);
     }
+    AppMethodBeat.o(52479);
+  }
+  
+  protected void log(String paramString) {}
+  
+  public final Message obtainMessage(int paramInt)
+  {
+    AppMethodBeat.i(52480);
+    Message localMessage = Message.obtain(this.yrd, paramInt);
+    AppMethodBeat.o(52480);
+    return localMessage;
+  }
+  
+  public final Message obtainMessage(int paramInt, Object paramObject)
+  {
+    AppMethodBeat.i(141969);
+    paramObject = Message.obtain(this.yrd, paramInt, paramObject);
+    AppMethodBeat.o(141969);
+    return paramObject;
+  }
+  
+  public final void pP(boolean paramBoolean)
+  {
+    AppMethodBeat.i(141971);
+    d.c localc = this.yrd;
+    if (localc == null)
+    {
+      AppMethodBeat.o(141971);
+      return;
+    }
+    d.c.a(localc, paramBoolean);
+    AppMethodBeat.o(141971);
   }
   
   public final void quit()
   {
-    d.c localc = this.ujd;
-    if (localc == null) {
+    AppMethodBeat.i(52483);
+    d.c localc = this.yrd;
+    if (localc == null)
+    {
+      AppMethodBeat.o(52483);
       return;
     }
     d.c.e(localc);
+    AppMethodBeat.o(52483);
+  }
+  
+  public final void sendMessage(int paramInt)
+  {
+    AppMethodBeat.i(52481);
+    d.c localc = this.yrd;
+    if (localc == null)
+    {
+      AppMethodBeat.o(52481);
+      return;
+    }
+    localc.sendMessage(obtainMessage(paramInt));
+    AppMethodBeat.o(52481);
   }
   
   public void start()
   {
-    d.c localc = this.ujd;
-    if (localc == null) {
+    AppMethodBeat.i(52484);
+    d.c localc = this.yrd;
+    if (localc == null)
+    {
+      AppMethodBeat.o(52484);
       return;
     }
     d.c.g(localc);
+    AppMethodBeat.o(52484);
   }
   
-  private final class c$b
-    extends c
-  {
-    private c$b() {}
-    
-    public final boolean g(Message paramMessage)
-    {
-      return false;
-    }
-  }
+  protected void yQ(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.d.d
  * JD-Core Version:    0.7.0.1
  */

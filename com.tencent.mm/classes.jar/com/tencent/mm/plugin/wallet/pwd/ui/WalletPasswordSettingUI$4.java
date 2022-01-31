@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletPasswordSettingUI$4
   implements DialogInterface.OnCancelListener
@@ -11,9 +12,11 @@ final class WalletPasswordSettingUI$4
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (WalletPasswordSettingUI.h(this.qpD) != null) {
-      WalletPasswordSettingUI.h(this.qpD).dismiss();
+    AppMethodBeat.i(46351);
+    if (WalletPasswordSettingUI.g(this.tZZ) != null) {
+      WalletPasswordSettingUI.g(this.tZZ).dismiss();
     }
+    AppMethodBeat.o(46351);
   }
 }
 

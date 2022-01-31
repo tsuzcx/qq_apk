@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.card.sharecard.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ShareCardListUI$1
   implements Runnable
@@ -9,10 +10,12 @@ final class ShareCardListUI$1
   
   public final void run()
   {
-    ShareCardListUI.a(this.iqI);
-    ShareCardListUI.b(this.iqI);
-    this.iqI.iqG = true;
-    y.d("MicroMsg.ShareCardListUI", "initLocation end");
+    AppMethodBeat.i(88166);
+    ShareCardListUI.a(this.krQ);
+    ShareCardListUI.b(this.krQ);
+    this.krQ.krO = true;
+    ab.d("MicroMsg.ShareCardListUI", "initLocation end");
+    AppMethodBeat.o(88166);
   }
 }
 

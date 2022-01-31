@@ -1,19 +1,25 @@
 package com.tencent.mm.plugin.account.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SimpleLoginUI$18
   implements ResizeLayout.a
 {
   SimpleLoginUI$18(SimpleLoginUI paramSimpleLoginUI) {}
   
-  public final void XO()
+  public final void aru()
   {
-    SimpleLoginUI.e(this.fsR).post(new Runnable()
+    AppMethodBeat.i(125615);
+    SimpleLoginUI.e(this.gKt).post(new Runnable()
     {
       public final void run()
       {
-        SimpleLoginUI.e(SimpleLoginUI.18.this.fsR).fullScroll(130);
+        AppMethodBeat.i(125614);
+        SimpleLoginUI.e(SimpleLoginUI.18.this.gKt).fullScroll(130);
+        AppMethodBeat.o(125614);
       }
     });
+    AppMethodBeat.o(125615);
   }
 }
 

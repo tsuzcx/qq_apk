@@ -42,31 +42,31 @@ public abstract class o$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      long l = aMe();
+      long l = bqr();
       paramParcel2.writeNoException();
       paramParcel2.writeLong(l);
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramParcel1 = aMf();
+      paramParcel1 = bqs();
       paramParcel2.writeNoException();
       paramParcel2.writeByteArray(paramParcel1);
       return true;
     case 3: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramInt1 = aMg();
+      paramInt1 = bqt();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramInt1 = aMh();
+      paramInt1 = bqu();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-    paramInt1 = aMi();
+    paramInt1 = bqv();
     paramParcel2.writeNoException();
     paramParcel2.writeInt(paramInt1);
     return true;
@@ -74,7 +74,7 @@ public abstract class o$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.o.a
  * JD-Core Version:    0.7.0.1
  */

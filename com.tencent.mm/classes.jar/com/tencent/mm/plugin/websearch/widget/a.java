@@ -1,23 +1,31 @@
 package com.tencent.mm.plugin.websearch.widget;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.Parcelable;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.AbsoluteLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.af;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.loader.j.b;
 import com.tencent.mm.modelappbrand.u;
+import com.tencent.mm.modelappbrand.v;
+import com.tencent.mm.plugin.appbrand.s.p;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
-import com.tencent.mm.plugin.websearch.api.WidgetData.Style;
+import com.tencent.mm.plugin.websearch.api.WidgetData.Info;
 import com.tencent.mm.plugin.websearch.api.r;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -27,195 +35,227 @@ import org.json.JSONObject;
 public final class a
   implements com.tencent.mm.plugin.websearch.api.f
 {
-  private static u qWz = new u();
+  private static u uLL;
   private Context context;
-  private WidgetData qWA;
-  private Runnable qWB;
-  private String qWC;
-  private volatile String qWD = null;
-  private HashMap<String, Object> qWp = new HashMap();
-  private HashMap<String, Object> qWq = new HashMap();
-  private HashMap<String, Object> qWr = new HashMap();
-  private Map<String, String> qWs = new HashMap();
-  private int qWt = -1;
-  private com.tencent.mm.modelappbrand.e qWu;
-  private Map<String, a.d> qWv = new HashMap();
-  private Map<String, a.c> qWw = new HashMap();
-  public boolean qWx = true;
-  private r qWy;
+  private HashMap<String, Object> uLA;
+  private HashMap<String, Object> uLB;
+  private HashMap<String, Object> uLC;
+  private Map<String, String> uLD;
+  private int uLE;
+  private com.tencent.mm.modelappbrand.e uLF;
+  private Map<String, a.e> uLG;
+  private Map<String, a.d> uLH;
+  private Map<String, WidgetData> uLI;
+  public boolean uLJ;
+  private r uLK;
+  private WidgetData uLM;
+  private Runnable uLN;
+  private String uLO;
+  private volatile String uLP;
   
-  public a(Context paramContext, r paramr)
+  static
   {
-    this.context = paramContext;
-    this.qWy = paramr;
-    this.qWu = ((com.tencent.mm.modelappbrand.e)g.r(com.tencent.mm.modelappbrand.e.class));
-    if ((this.qWx) && (new File(com.tencent.mm.compatible.util.e.bkH, "websearch-widget-not-use-tools").exists())) {
-      this.qWx = false;
-    }
-    if (ae.cqV()) {
-      com.tencent.mm.ipcinvoker.f.a("com.tencent.mm:support", new a.1(this, paramr));
-    }
+    AppMethodBeat.i(91427);
+    uLL = new u();
+    AppMethodBeat.o(91427);
   }
   
-  private void RB(String paramString)
+  public a(Context paramContext, final r paramr)
   {
-    View localView;
+    AppMethodBeat.i(91408);
+    this.uLA = new HashMap();
+    this.uLB = new HashMap();
+    this.uLC = new HashMap();
+    this.uLD = new HashMap();
+    this.uLE = -1;
+    this.uLG = new HashMap();
+    this.uLH = new HashMap();
+    this.uLI = new HashMap();
+    this.uLJ = true;
+    this.uLP = null;
+    this.context = paramContext;
+    this.uLK = paramr;
+    this.uLF = ((com.tencent.mm.modelappbrand.e)g.E(com.tencent.mm.modelappbrand.e.class));
+    if ((this.uLJ) && (new File(com.tencent.mm.compatible.util.e.eQz, "websearch-widget-not-use-tools").exists())) {
+      this.uLJ = false;
+    }
+    if (ah.brt()) {
+      com.tencent.mm.ipcinvoker.f.a("com.tencent.mm:support", new j()
+      {
+        public final void onDisconnect()
+        {
+          AppMethodBeat.i(91378);
+          if ("com.tencent.mm:support".equals(a.a(a.this)))
+          {
+            u.i("FTSSearchWidgetMgr", "support process dead", new Object[0]);
+            if (a.b(a.this) != null)
+            {
+              af localaf = new af().fB(a.b(a.this).uKA.fqf);
+              localaf.cUl = a.b(a.this).uKA.fmF;
+              localaf.cUh = 21L;
+              localaf.cUi = System.currentTimeMillis();
+              localaf.fC(at.gU(ah.getContext())).ake();
+              v.kS(30);
+              paramr.cZh();
+            }
+          }
+          AppMethodBeat.o(91378);
+        }
+      });
+    }
+    AppMethodBeat.o(91408);
+  }
+  
+  private void a(View paramView1, View paramView2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  {
+    AppMethodBeat.i(91420);
+    al.d(new a.8(this, paramInt1, paramInt2, paramInt3, paramInt4, paramView1, paramView2, paramString));
+    AppMethodBeat.o(91420);
+  }
+  
+  private void agC(String paramString)
+  {
+    AppMethodBeat.i(91413);
     if ((paramString != null) && (paramString.length() > 0))
     {
-      localView = (View)this.qWp.get(paramString);
-      if (localView != null) {
-        break label43;
-      }
-      y.i("FTSSearchWidgetMgr", "removeWidget cacheKey %s, can not find view", new Object[] { paramString });
-    }
-    label43:
-    do
-    {
-      return;
-      y.i("FTSSearchWidgetMgr", "removing widget sessionId %s", new Object[] { localView.getTag().toString() });
-      if (this.qWu != null)
+      Object localObject1 = (WidgetData)this.uLI.get(paramString);
+      Object localObject2 = (a.d)this.uLH.get(paramString);
+      if ((localObject1 != null) && (localObject2 != null) && (((a.d)localObject2).isLoading))
       {
-        String str = (String)localView.getTag();
-        this.qWu.b(str, localView);
+        localObject2 = new af().fB(((WidgetData)localObject1).uKA.fqf);
+        ((af)localObject2).cUl = ((WidgetData)localObject1).uKA.fmF;
+        ((af)localObject2).cUh = 24L;
+        localObject1 = ((af)localObject2).fA(paramString);
+        ((af)localObject1).cUi = System.currentTimeMillis();
+        ((af)localObject1).fC(at.gU(ah.getContext())).ake();
       }
-      this.qWp.remove(paramString);
-      this.qWr.remove(paramString);
-      localView = (View)this.qWq.get(paramString);
-    } while (localView == null);
-    this.qWy.removeView(localView);
-    this.qWq.remove(paramString);
-  }
-  
-  private void a(View paramView1, View paramView2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    ai.d(new a.6(this, paramInt1, paramInt2, paramInt3, paramInt4, paramView1, paramView2));
-  }
-  
-  public static u cae()
-  {
-    return qWz;
-  }
-  
-  public final void Ro(String paramString)
-  {
-    paramString = (a.c)this.qWw.get(paramString);
-    if (paramString != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("app_id", paramString.bOL);
-      localBundle.putString("msg_id", paramString.fTW);
-      localBundle.putInt("pkg_type", paramString.bOa);
-      localBundle.putInt("pkg_version", paramString.fEN);
-      ((com.tencent.mm.modelappbrand.e)g.r(com.tencent.mm.modelappbrand.e.class)).Jn().d(this.context, localBundle);
+      localObject1 = (View)this.uLA.get(paramString);
+      if (localObject1 == null)
+      {
+        ab.i("FTSSearchWidgetMgr", "removeWidget cacheKey %s, can not find view", new Object[] { paramString });
+        AppMethodBeat.o(91413);
+        return;
+      }
+      ab.i("FTSSearchWidgetMgr", "removing widget sessionId %s", new Object[] { ((View)localObject1).getTag().toString() });
+      if (this.uLF != null)
+      {
+        localObject2 = (String)((View)localObject1).getTag();
+        this.uLF.a((String)localObject2, (View)localObject1);
+      }
+      this.uLA.remove(paramString);
+      this.uLC.remove(paramString);
+      localObject1 = (View)this.uLB.get(paramString);
+      if (localObject1 != null)
+      {
+        this.uLK.removeView((View)localObject1);
+        this.uLB.remove(paramString);
+      }
     }
+    AppMethodBeat.o(91413);
   }
   
-  public final void Rp(String paramString)
+  public static u daa()
   {
-    RB(paramString);
-    d.caf();
-    d.c(this.qWA);
+    return uLL;
   }
   
-  public final void a(final WidgetData paramWidgetData, final String paramString)
+  public final void a(WidgetData paramWidgetData, String paramString)
   {
+    AppMethodBeat.i(91415);
     if (paramString != null) {}
     try
     {
       if (paramString.length() > 0) {
-        ai.d(new Runnable()
-        {
-          public final void run()
-          {
-            View localView1 = (View)a.g(a.this).get(paramString);
-            View localView2 = (View)a.h(a.this).get(paramString);
-            Object localObject;
-            if (localView1 != null)
-            {
-              localObject = (AbsoluteLayout.LayoutParams)localView1.getLayoutParams();
-              int i = ((AbsoluteLayout.LayoutParams)localObject).height;
-              int j = com.tencent.mm.cb.a.fromDPToPix(a.e(a.this), paramWidgetData.qVp.height);
-              int k = ((AbsoluteLayout.LayoutParams)localObject).width;
-              int m = com.tencent.mm.cb.a.fromDPToPix(a.e(a.this), paramWidgetData.qVp.width);
-              a.a(a.this, localView1, (View)a.i(a.this).get(paramString), i, j, k, m);
-              localObject = localView2.getLayoutParams();
-              if (!(localObject instanceof AbsoluteLayout.LayoutParams)) {
-                break label278;
-              }
-              localObject = (AbsoluteLayout.LayoutParams)localObject;
-              ((AbsoluteLayout.LayoutParams)localObject).x = com.tencent.mm.cb.a.fromDPToPix(a.e(a.this), paramWidgetData.qVp.offsetX);
-              ((AbsoluteLayout.LayoutParams)localObject).y = com.tencent.mm.cb.a.fromDPToPix(a.e(a.this), paramWidgetData.qVp.offsetY);
-              localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            }
-            try
-            {
-              for (;;)
-              {
-                if (!TextUtils.isEmpty(paramWidgetData.qVp.fNR)) {
-                  localView1.setBackgroundColor(Color.parseColor(paramWidgetData.qVp.fNR));
-                }
-                if (!paramWidgetData.qVp.qVF) {
-                  break;
-                }
-                localView1.setVisibility(0);
-                localView2.setVisibility(0);
-                return;
-                label278:
-                if ((localObject instanceof ViewGroup.MarginLayoutParams))
-                {
-                  localObject = (ViewGroup.MarginLayoutParams)localObject;
-                  ((ViewGroup.MarginLayoutParams)localObject).leftMargin = com.tencent.mm.cb.a.fromDPToPix(a.e(a.this), paramWidgetData.qVp.offsetX);
-                  ((ViewGroup.MarginLayoutParams)localObject).topMargin = com.tencent.mm.cb.a.fromDPToPix(a.e(a.this), paramWidgetData.qVp.offsetY);
-                  localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-                }
-              }
-            }
-            catch (Exception localException)
-            {
-              for (;;)
-              {
-                y.e("FTSSearchWidgetMgr", bk.j(localException));
-              }
-              localView1.setVisibility(8);
-              localView2.setVisibility(8);
-            }
-          }
-        });
+        al.d(new a.6(this, paramString, paramWidgetData));
       }
+      AppMethodBeat.o(91415);
       return;
     }
     catch (Exception paramWidgetData)
     {
-      y.printErrStackTrace("FTSSearchWidgetMgr", paramWidgetData, "", new Object[0]);
+      ab.printErrStackTrace("FTSSearchWidgetMgr", paramWidgetData, "", new Object[0]);
+      AppMethodBeat.o(91415);
     }
   }
   
-  public final void a(WidgetData paramWidgetData, String paramString, int paramInt1, int paramInt2)
+  public final void a(final WidgetData paramWidgetData, final String paramString, final int paramInt1, final int paramInt2)
   {
-    com.tencent.mm.ipcinvoker.l.n(new a.2(this, paramWidgetData, paramString, paramInt2, paramInt1));
+    AppMethodBeat.i(91410);
+    com.tencent.mm.ipcinvoker.l.r(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(91392);
+        if ((paramWidgetData == null) || (paramWidgetData.uKA == null) || (paramWidgetData.uKB == null))
+        {
+          AppMethodBeat.o(91392);
+          return;
+        }
+        d.dab();
+        if (!d.a(paramWidgetData))
+        {
+          u.i("FTSSearchWidgetMgr", "local forbidden widget %s", new Object[] { paramWidgetData.uKA.fqf });
+          al.d(new a.2.1(this));
+          AppMethodBeat.o(91392);
+          return;
+        }
+        al.d(new a.2.2(this));
+        AppMethodBeat.o(91392);
+      }
+    });
+    AppMethodBeat.o(91410);
   }
   
-  public final void bZk()
+  public final void agn(String paramString)
   {
-    this.qWx = false;
+    AppMethodBeat.i(91409);
+    paramString = (a.d)this.uLH.get(paramString);
+    if (paramString != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("app_id", paramString.cwc);
+      localBundle.putString("msg_id", paramString.hny);
+      localBundle.putInt("pkg_type", paramString.cvs);
+      localBundle.putInt("pkg_version", paramString.gXf);
+      ((com.tencent.mm.modelappbrand.e)g.E(com.tencent.mm.modelappbrand.e.class)).acl().f(this.context, localBundle);
+    }
+    AppMethodBeat.o(91409);
+  }
+  
+  public final void ago(String paramString)
+  {
+    AppMethodBeat.i(91412);
+    agC(paramString);
+    d.dab();
+    d.c(this.uLM);
+    AppMethodBeat.o(91412);
+  }
+  
+  public final void cZe()
+  {
+    this.uLJ = false;
   }
   
   public final void f(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
+    AppMethodBeat.i(91419);
     u.v("FTSSearchWidgetMgr", "tapSearchWAWidgetView x %d, y %d, widgetId %s, eventId %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2 });
-    View localView = (View)this.qWp.get(paramString1);
+    View localView = (View)this.uLA.get(paramString1);
     if (localView != null)
     {
-      com.tencent.mm.sdk.f.e.post(new a.5(this, paramInt1, paramInt2, paramString2, this.qWu.bN(localView), paramString1), "tapSearchWAWidgetView");
+      com.tencent.mm.sdk.g.d.post(new a.7(this, paramInt1, paramInt2, paramString2, this.uLF.cm(localView), paramString1), "tapSearchWAWidgetView");
+      AppMethodBeat.o(91419);
       return;
     }
-    y.i("FTSSearchWidgetMgr", "onTap fail: can not find Widget by widgetId %s", new Object[] { paramString1 });
-    this.qWy.a(paramString2, false, "onTap fail: can not find Widget by widgetId " + paramString1, paramString1);
+    ab.i("FTSSearchWidgetMgr", "onTap fail: can not find Widget by widgetId %s", new Object[] { paramString1 });
+    this.uLK.a(paramString2, false, "onTap fail: can not find Widget by widgetId ".concat(String.valueOf(paramString1)), paramString1);
+    AppMethodBeat.o(91419);
   }
   
-  public final void fn(String paramString1, String paramString2)
+  public final void hg(String paramString1, String paramString2)
   {
-    y.i("FTSSearchWidgetMgr", "updating widget: widgetId %s, jsonData %s", new Object[] { paramString2, paramString1 });
+    AppMethodBeat.i(91414);
+    ab.i("FTSSearchWidgetMgr", "updating widget: widgetId %s, jsonData %s", new Object[] { paramString2, paramString1 });
     View localView1;
     View localView2;
     for (;;)
@@ -224,28 +264,28 @@ public final class a
       {
         paramString1 = new JSONObject(paramString1);
         if ((paramString2 == null) || (paramString2.length() <= 0)) {
-          return;
+          break label367;
         }
-        localView1 = (View)this.qWp.get(paramString2);
-        localView2 = (View)this.qWq.get(paramString2);
+        localView1 = (View)this.uLA.get(paramString2);
+        localView2 = (View)this.uLB.get(paramString2);
         if (localView1 == null) {
-          return;
+          break label367;
         }
         AbsoluteLayout.LayoutParams localLayoutParams1 = (AbsoluteLayout.LayoutParams)localView1.getLayoutParams();
         AbsoluteLayout.LayoutParams localLayoutParams2 = (AbsoluteLayout.LayoutParams)localView2.getLayoutParams();
         if ((paramString1.has("width")) || (paramString1.has("height")))
         {
           int i = localLayoutParams1.height;
-          int j = com.tencent.mm.cb.a.fromDPToPix(this.context, paramString1.optInt("height"));
+          int j = p.pQ(paramString1.optInt("height"));
           int k = localLayoutParams1.width;
-          int m = com.tencent.mm.cb.a.fromDPToPix(this.context, paramString1.optInt("width"));
-          a(localView1, (View)this.qWr.get(paramString2), i, j, k, m);
+          int m = p.pQ(paramString1.optInt("width"));
+          a(localView1, (View)this.uLC.get(paramString2), i, j, k, m, paramString2);
         }
         if (paramString1.has("offsetX")) {
-          localLayoutParams2.x = com.tencent.mm.cb.a.fromDPToPix(this.context, paramString1.optInt("offsetX"));
+          localLayoutParams2.x = p.pQ(paramString1.optInt("offsetX"));
         }
         if (paramString1.has("offsetY")) {
-          localLayoutParams2.y = com.tencent.mm.cb.a.fromDPToPix(this.context, paramString1.optInt("offsetY"));
+          localLayoutParams2.y = p.pQ(paramString1.optInt("offsetY"));
         }
         localView2.setLayoutParams(localLayoutParams2);
         boolean bool = paramString1.has("backgroundColor");
@@ -254,7 +294,7 @@ public final class a
         {
           localView1.setBackgroundColor(Color.parseColor(paramString1.getString("backgroundColor")));
           if (!paramString1.has("show")) {
-            return;
+            break label367;
           }
           if (paramString1.has("show"))
           {
@@ -264,103 +304,130 @@ public final class a
             }
             localView1.setVisibility(0);
             localView2.setVisibility(0);
+            AppMethodBeat.o(91414);
             return;
           }
         }
         catch (Exception paramString2)
         {
-          y.e("FTSSearchWidgetMgr", bk.j(paramString2));
+          ab.e("FTSSearchWidgetMgr", bo.l(paramString2));
           continue;
         }
         bool = false;
       }
       catch (Exception paramString1)
       {
-        y.e("FTSSearchWidgetMgr", "the error is e");
+        ab.e("FTSSearchWidgetMgr", "the error is e");
+        AppMethodBeat.o(91414);
         return;
       }
     }
     localView1.setVisibility(8);
     localView2.setVisibility(8);
+    label367:
+    AppMethodBeat.o(91414);
   }
   
   public final void n(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    a(WidgetData.Rz(paramString1), paramString2, paramInt1, paramInt2);
+    AppMethodBeat.i(91411);
+    a(WidgetData.agA(paramString1), paramString2, paramInt1, paramInt2);
+    AppMethodBeat.o(91411);
   }
   
   public final void onDestroy()
   {
+    int i = 0;
+    AppMethodBeat.i(91418);
     try
     {
-      if (this.qWu == null) {
-        break label166;
-      }
-      y.i("FTSSearchWidgetMgr", "remove all widget count %d", new Object[] { Integer.valueOf(this.qWp.size()) });
-      Iterator localIterator = new HashMap(this.qWp).keySet().iterator();
-      while (localIterator.hasNext())
+      Object localObject = new File(b.eQw.replace("/data/user/0", "/data/data") + "/fts_cache").listFiles(new a.4(this, ""));
+      String str1;
+      if (localObject != null)
       {
-        String str1 = (String)localIterator.next();
+        int j = localObject.length;
+        while (i < j)
+        {
+          str1 = localObject[i];
+          u.i("FTSSearchWidgetMgr", "deleting %s", new Object[] { str1.getAbsoluteFile() });
+          str1.delete();
+          i += 1;
+        }
+      }
+      if (this.uLF == null) {
+        break label292;
+      }
+      ab.i("FTSSearchWidgetMgr", "remove all widget count %d", new Object[] { Integer.valueOf(this.uLA.size()) });
+      localObject = new HashMap(this.uLA).keySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        str1 = (String)((Iterator)localObject).next();
         if ((str1 != null) && (str1.length() > 0))
         {
-          String str2 = (String)((View)this.qWp.get(str1)).getTag();
-          this.qWu.ju(str2);
-          if ((View)this.qWq.get(str1) != null)
+          String str2 = (String)((View)this.uLA.get(str1)).getTag();
+          this.uLF.qi(str2);
+          if ((View)this.uLB.get(str1) != null)
           {
-            RB(str1);
-            this.qWq.remove(str1);
+            agC(str1);
+            this.uLB.remove(str1);
           }
         }
       }
-      this.qWp.clear();
+      this.uLA.clear();
     }
     catch (Exception localException)
     {
-      y.e("FTSSearchWidgetMgr", bk.j(localException));
+      ab.e("FTSSearchWidgetMgr", bo.l(localException));
+      AppMethodBeat.o(91418);
       return;
     }
-    this.qWr.clear();
-    label166:
-    this.qWA = null;
+    this.uLC.clear();
+    label292:
+    this.uLM = null;
+    AppMethodBeat.o(91418);
   }
   
   public final void onPause()
   {
-    if (this.qWu != null)
+    AppMethodBeat.i(91417);
+    if (this.uLF != null)
     {
-      Iterator localIterator = this.qWp.keySet().iterator();
+      Iterator localIterator = this.uLA.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
         if ((str != null) && (str.length() > 0))
         {
-          str = (String)((View)this.qWp.get(str)).getTag();
-          ((com.tencent.mm.modelappbrand.e)g.r(com.tencent.mm.modelappbrand.e.class)).Jm().js(str);
+          str = (String)((View)this.uLA.get(str)).getTag();
+          ((com.tencent.mm.modelappbrand.e)g.E(com.tencent.mm.modelappbrand.e.class)).ack().qg(str);
         }
       }
     }
+    AppMethodBeat.o(91417);
   }
   
   public final void onResume()
   {
-    if (this.qWu != null)
+    AppMethodBeat.i(91416);
+    if (this.uLF != null)
     {
-      Iterator localIterator = this.qWp.keySet().iterator();
+      Iterator localIterator = this.uLA.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
         if ((str != null) && (str.length() > 0))
         {
-          str = (String)((View)this.qWp.get(str)).getTag();
-          ((com.tencent.mm.modelappbrand.e)g.r(com.tencent.mm.modelappbrand.e.class)).Jm().jt(str);
+          str = (String)((View)this.uLA.get(str)).getTag();
+          ((com.tencent.mm.modelappbrand.e)g.E(com.tencent.mm.modelappbrand.e.class)).ack().qh(str);
         }
       }
     }
+    AppMethodBeat.o(91416);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.a
  * JD-Core Version:    0.7.0.1
  */

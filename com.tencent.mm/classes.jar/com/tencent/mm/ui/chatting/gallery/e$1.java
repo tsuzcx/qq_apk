@@ -2,9 +2,10 @@ package com.tencent.mm.ui.chatting.gallery;
 
 import android.graphics.Bitmap;
 import com.davemorrissey.labs.subscaleview.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.a.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bi;
 
 final class e$1
@@ -14,62 +15,72 @@ final class e$1
   
   public final void a(c paramc)
   {
-    y.e("MicroMsg.ImageGalleryHolderImage", "alvinluo BigImgOpt onPreviewLoadError errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramc.errCode), paramc.aox });
+    AppMethodBeat.i(32085);
+    ab.e("MicroMsg.ImageGalleryHolderImage", "alvinluo BigImgOpt onPreviewLoadError errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramc.errCode), paramc.errMsg });
+    AppMethodBeat.o(32085);
   }
   
   public final void b(c paramc)
   {
-    y.e("MicroMsg.ImageGalleryHolderImage", "alvinluo BigImgOpt onImageLoadError errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramc.errCode), paramc.aox });
+    AppMethodBeat.i(32086);
+    ab.e("MicroMsg.ImageGalleryHolderImage", "alvinluo BigImgOpt onImageLoadError errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramc.errCode), paramc.errMsg });
     int i = paramc.errCode;
-    y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo reportLoadError errCode: %d", new Object[] { Integer.valueOf(i) });
+    ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo reportLoadError errCode: %d", new Object[] { Integer.valueOf(i) });
     if (i == 4) {
-      h.nFQ.h(896L, 2L, 1L);
+      h.qsU.j(896L, 2L, 1L);
     }
     for (;;)
     {
-      e.a(this.vvi, this.vvh, this.vtV, this.kX);
+      e.a(this.zLj, this.zLi, this.zJW, this.lU);
       if (paramc.errCode == 4) {
-        e.cGa();
+        e.dKe();
       }
+      AppMethodBeat.o(32086);
       return;
       if (i == 5) {
-        h.nFQ.h(896L, 3L, 1L);
+        h.qsU.j(896L, 3L, 1L);
       }
     }
   }
   
   public final void c(c paramc)
   {
-    y.e("MicroMsg.ImageGalleryHolderImage", "alvinluo BigImgOpt onTileLoadError errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramc.errCode), paramc.aox });
-    e.a(this.dUy, this.vtV);
+    AppMethodBeat.i(32087);
+    ab.e("MicroMsg.ImageGalleryHolderImage", "alvinluo BigImgOpt onTileLoadError errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramc.errCode), paramc.errMsg });
+    e.a(this.fkH, this.zJW);
+    AppMethodBeat.o(32087);
   }
   
-  public final void f(Bitmap paramBitmap)
+  public final void g(Bitmap paramBitmap)
   {
+    AppMethodBeat.i(32084);
     f localf;
-    if ((paramBitmap != null) && (this.vvi.vva != null))
+    if ((paramBitmap != null) && (this.zLj.zLb != null))
     {
-      y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo onImageLoaded cache bitmap, cacheImagePath: %s", new Object[] { this.vvh });
-      localf = this.vvi.vva;
-      if (this.kX <= 0) {
-        break label66;
+      ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo onImageLoaded cache bitmap, cacheImagePath: %s", new Object[] { this.zLi });
+      localf = this.zLj.zLb;
+      if (this.lU <= 0) {
+        break label78;
       }
     }
-    label66:
-    for (int i = this.kX;; i = this.vtV.mPosition)
+    label78:
+    for (int i = this.lU;; i = this.zJW.mPosition)
     {
-      localf.b(i, paramBitmap);
-      e.a(this.vtV);
+      localf.c(i, paramBitmap);
+      e.a(this.zJW);
+      AppMethodBeat.o(32084);
       return;
     }
   }
   
-  public final void jL()
+  public final void lF()
   {
-    y.i("MicroMsg.ImageGalleryHolderImage", "alvinluo SubsamplingImageView onPreviewLoaded");
+    AppMethodBeat.i(32083);
+    ab.i("MicroMsg.ImageGalleryHolderImage", "alvinluo SubsamplingImageView onPreviewLoaded");
+    AppMethodBeat.o(32083);
   }
   
-  public final void jM() {}
+  public final void lG() {}
 }
 
 

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.offline.c;
 
 public final class a$b
 {
-  public String iQn;
-  public String mOb;
+  public String kWy;
+  public String poq;
 }
 
 

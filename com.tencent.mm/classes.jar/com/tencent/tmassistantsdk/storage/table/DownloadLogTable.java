@@ -1,5 +1,7 @@
 package com.tencent.tmassistantsdk.storage.table;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class DownloadLogTable
   extends BaseLogTable
 {
@@ -12,10 +14,12 @@ public class DownloadLogTable
   {
     try
     {
+      AppMethodBeat.i(76203);
       if (mInstance == null) {
         mInstance = new DownloadLogTable();
       }
       DownloadLogTable localDownloadLogTable = mInstance;
+      AppMethodBeat.o(76203);
       return localDownloadLogTable;
     }
     finally {}
@@ -23,7 +27,10 @@ public class DownloadLogTable
   
   protected String[] getAlterSQL(int paramInt)
   {
-    return new String[] { getCreateTableSQL() };
+    AppMethodBeat.i(76204);
+    String str = getCreateTableSQL();
+    AppMethodBeat.o(76204);
+    return new String[] { str };
   }
   
   protected String getCreateTableSQL()
@@ -43,7 +50,7 @@ public class DownloadLogTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.DownloadLogTable
  * JD-Core Version:    0.7.0.1
  */

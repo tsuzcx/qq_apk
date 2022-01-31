@@ -4,7 +4,7 @@ import android.widget.TextView;
 
 final class c$b
 {
-  public TextView flb;
+  public TextView euY;
 }
 
 

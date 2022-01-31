@@ -1,107 +1,139 @@
 package com.tencent.mm.plugin.ipcall.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.b;
-import com.tencent.mm.protocal.c.bfs;
+import com.tencent.mm.protocal.protobuf.bny;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class c
 {
-  public String bYR;
-  public String caK;
-  public int goN;
-  public LinkedList<bfs> hID = new LinkedList();
-  public int jxl;
-  public String jxm;
-  public int lpD;
-  public long lpE;
-  public long lpF;
-  public int lpG;
-  public int lpH;
-  public int lpI;
-  public int lpJ;
-  public String lpK;
-  public int lpL;
-  public int lpM;
-  public int lpN;
-  public int lpO;
-  public boolean lpP = false;
-  public boolean lpQ = false;
-  public boolean lpR = false;
-  public boolean lpS = true;
-  public int lpT = 0;
-  public int lpU;
-  public int lpV;
-  public int lpW;
-  public b lpX;
-  public int lpY;
-  public int lpZ;
-  public b lqa;
-  public LinkedList<bfs> lqb = new LinkedList();
-  public int lqc = 999;
-  public LinkedList<d> lqd = new LinkedList();
-  public String lqe;
-  public String lqf;
-  public String lqg;
-  public int lqh;
-  public boolean lqi = false;
+  public String cGY;
+  public String cJk;
+  public int hIJ;
+  public LinkedList<bny> jCd;
+  public int lGK;
+  public String lGL;
+  public int nMZ;
+  public String nNA;
+  public String nNB;
+  public String nNC;
+  public int nND;
+  public boolean nNE;
+  public long nNa;
+  public long nNb;
+  public int nNc;
+  public int nNd;
+  public int nNe;
+  public int nNf;
+  public String nNg;
+  public int nNh;
+  public int nNi;
+  public int nNj;
+  public int nNk;
+  public boolean nNl;
+  public boolean nNm;
+  public boolean nNn;
+  public boolean nNo;
+  public int nNp;
+  public int nNq;
+  public int nNr;
+  public int nNs;
+  public b nNt;
+  public int nNu;
+  public int nNv;
+  public b nNw;
+  public LinkedList<bny> nNx;
+  public int nNy;
+  public LinkedList<d> nNz;
   public String nickname;
   
-  public final int bcw()
+  public c()
   {
-    if ((this.lqd != null) && (this.lqd.size() > 0)) {
-      return ((d)this.lqd.get(0)).lpM;
-    }
-    return this.lpM;
+    AppMethodBeat.i(21793);
+    this.nNl = false;
+    this.nNm = false;
+    this.nNn = false;
+    this.nNo = true;
+    this.nNp = 0;
+    this.jCd = new LinkedList();
+    this.nNx = new LinkedList();
+    this.nNy = 999;
+    this.nNz = new LinkedList();
+    this.nNE = false;
+    AppMethodBeat.o(21793);
   }
   
-  public final int bcx()
+  public final int bJD()
   {
-    if ((this.lqd != null) && (this.lqd.size() > 0)) {
-      return ((d)this.lqd.get(0)).dJB;
+    AppMethodBeat.i(21794);
+    if ((this.nNz != null) && (this.nNz.size() > 0))
+    {
+      i = ((d)this.nNz.get(0)).nNi;
+      AppMethodBeat.o(21794);
+      return i;
     }
-    return this.goN;
+    int i = this.nNi;
+    AppMethodBeat.o(21794);
+    return i;
+  }
+  
+  public final int bJE()
+  {
+    AppMethodBeat.i(21795);
+    if ((this.nNz != null) && (this.nNz.size() > 0))
+    {
+      i = ((d)this.nNz.get(0)).eHa;
+      AppMethodBeat.o(21795);
+      return i;
+    }
+    int i = this.hIJ;
+    AppMethodBeat.o(21795);
+    return i;
   }
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append("IPCallInfo: ");
-    localStringBuilder.append(String.format("[roomId: %d, roomKey: %d, callSeq: %d, inviteId: %d, roomMemberId: %d, syncKey: %d, syncInterval: %d, currentStatus: %d, ErrMsg: %s, ErrCode：%d, ErrLevel：%d]\n", new Object[] { Integer.valueOf(this.lpD), Long.valueOf(this.lpE), Long.valueOf(this.lpF), Integer.valueOf(this.lpG), Integer.valueOf(this.lpL), Integer.valueOf(this.lpM), Integer.valueOf(this.lpN), Integer.valueOf(this.goN), this.jxm, Integer.valueOf(this.jxl), Integer.valueOf(this.lpJ) }));
-    localStringBuilder.append(String.format("[toUsername: %s, toPhoneNumber: %s]\n", new Object[] { this.bYR, this.lqf }));
-    localStringBuilder.append("[addrList: ");
-    Iterator localIterator = this.hID.iterator();
-    Object localObject;
+    AppMethodBeat.i(21796);
+    Object localObject1 = new StringBuilder("");
+    ((StringBuilder)localObject1).append("IPCallInfo: ");
+    ((StringBuilder)localObject1).append(String.format("[roomId: %d, roomKey: %d, callSeq: %d, inviteId: %d, roomMemberId: %d, syncKey: %d, syncInterval: %d, currentStatus: %d, ErrMsg: %s, ErrCode：%d, ErrLevel：%d]\n", new Object[] { Integer.valueOf(this.nMZ), Long.valueOf(this.nNa), Long.valueOf(this.nNb), Integer.valueOf(this.nNc), Integer.valueOf(this.nNh), Integer.valueOf(this.nNi), Integer.valueOf(this.nNj), Integer.valueOf(this.hIJ), this.lGL, Integer.valueOf(this.lGK), Integer.valueOf(this.nNf) }));
+    ((StringBuilder)localObject1).append(String.format("[toUsername: %s, toPhoneNumber: %s]\n", new Object[] { this.cGY, this.nNB }));
+    ((StringBuilder)localObject1).append("[addrList: ");
+    Iterator localIterator = this.jCd.iterator();
+    Object localObject2;
     while (localIterator.hasNext())
     {
-      localObject = (bfs)localIterator.next();
-      localStringBuilder.append(String.format("{IP: %s, port: %d}", new Object[] { ((bfs)localObject).tpY, Integer.valueOf(((bfs)localObject).tAA) }));
+      localObject2 = (bny)localIterator.next();
+      ((StringBuilder)localObject1).append(String.format("{IP: %s, port: %d}", new Object[] { ((bny)localObject2).xpV, Integer.valueOf(((bny)localObject2).xCi) }));
     }
-    localStringBuilder.append("]");
-    localStringBuilder.append("\n");
-    if ((this.lqd != null) && (this.lqd.size() > 0))
+    ((StringBuilder)localObject1).append("]");
+    ((StringBuilder)localObject1).append("\n");
+    if ((this.nNz != null) && (this.nNz.size() > 0))
     {
-      localStringBuilder.append("[userInfoList: ");
-      localIterator = this.lqd.iterator();
+      ((StringBuilder)localObject1).append("[userInfoList: ");
+      localIterator = this.nNz.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (d)localIterator.next();
-        localStringBuilder.append("{");
-        localStringBuilder.append(((d)localObject).toString());
-        localStringBuilder.append("}");
+        localObject2 = (d)localIterator.next();
+        ((StringBuilder)localObject1).append("{");
+        ((StringBuilder)localObject1).append(((d)localObject2).toString());
+        ((StringBuilder)localObject1).append("}");
       }
-      localStringBuilder.append("]");
+      ((StringBuilder)localObject1).append("]");
     }
     for (;;)
     {
-      return localStringBuilder.toString();
-      localStringBuilder.append("userInfoList is empty");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      AppMethodBeat.o(21796);
+      return localObject1;
+      ((StringBuilder)localObject1).append("userInfoList is empty");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.a.c
  * JD-Core Version:    0.7.0.1
  */

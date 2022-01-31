@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.v7.a.a.b;
 
 public final class a
 {
@@ -15,12 +14,17 @@ public final class a
     this.mContext = paramContext;
   }
   
-  public static a T(Context paramContext)
+  public static a W(Context paramContext)
   {
     return new a(paramContext);
   }
   
-  public final int eL()
+  public final boolean fA()
+  {
+    return this.mContext.getApplicationInfo().targetSdkVersion < 14;
+  }
+  
+  public final int fy()
   {
     Configuration localConfiguration = this.mContext.getResources().getConfiguration();
     int i = localConfiguration.screenWidthDp;
@@ -37,14 +41,9 @@ public final class a
     return 2;
   }
   
-  public final boolean eM()
+  public final boolean fz()
   {
-    return this.mContext.getResources().getBoolean(a.b.abc_action_bar_embed_tabs);
-  }
-  
-  public final boolean eN()
-  {
-    return this.mContext.getApplicationInfo().targetSdkVersion < 14;
+    return this.mContext.getResources().getBoolean(2131558400);
   }
 }
 

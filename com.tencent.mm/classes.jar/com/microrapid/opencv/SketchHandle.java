@@ -2,11 +2,21 @@ package com.microrapid.opencv;
 
 import android.graphics.Bitmap;
 import com.tencent.filter.MRect;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SketchHandle
 {
-  private final long aVf = nativeBokehProcess();
-  private boolean aVg = false;
+  private final long blO;
+  private boolean blP;
+  
+  public SketchHandle()
+  {
+    AppMethodBeat.i(86268);
+    this.blP = false;
+    this.blO = nativeBokehProcess();
+    this.blP = true;
+    AppMethodBeat.o(86268);
+  }
   
   private static native void nativeAutobodyCut(long paramLong, Bitmap paramBitmap1, Bitmap paramBitmap2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -30,7 +40,7 @@ public class SketchHandle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.microrapid.opencv.SketchHandle
  * JD-Core Version:    0.7.0.1
  */

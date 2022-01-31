@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.facedetect.d;
 
 public final class b$b
 {
-  public String aox;
   public int errCode;
+  public String errMsg;
   
   public b$b(int paramInt, String paramString)
   {
     this.errCode = paramInt;
-    this.aox = paramString;
+    this.errMsg = paramString;
   }
 }
 

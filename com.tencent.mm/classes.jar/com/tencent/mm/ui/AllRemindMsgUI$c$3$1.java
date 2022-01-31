@@ -5,7 +5,7 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AllRemindMsgUI$c$3$1
   implements View.OnCreateContextMenuListener
@@ -14,12 +14,14 @@ final class AllRemindMsgUI$c$3$1
   
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    paramContextMenu.add(0, 0, 0, this.uGH.uGG.uGB.mController.uMN.getString(R.l.chatting_long_click_menu_delete_msg));
+    AppMethodBeat.i(29123);
+    paramContextMenu.add(0, 0, 0, this.yTJ.yTI.yTD.getContext().getString(2131298232));
+    AppMethodBeat.o(29123);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.AllRemindMsgUI.c.3.1
  * JD-Core Version:    0.7.0.1
  */

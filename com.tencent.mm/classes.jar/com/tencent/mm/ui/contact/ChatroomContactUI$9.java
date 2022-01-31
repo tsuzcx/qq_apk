@@ -2,6 +2,7 @@ package com.tencent.mm.ui.contact;
 
 import android.view.View;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
 
 final class ChatroomContactUI$9
@@ -9,9 +10,11 @@ final class ChatroomContactUI$9
 {
   ChatroomContactUI$9(ChatroomContactUI paramChatroomContactUI) {}
   
-  public final void D(View paramView, int paramInt)
+  public final void r(View paramView, int paramInt1, int paramInt2)
   {
-    ChatroomContactUI.b(this.vKh).performItemClick(paramView, paramInt, 0L);
+    AppMethodBeat.i(33581);
+    ChatroomContactUI.b(this.AbH).performItemClick(paramView, paramInt1, paramInt2);
+    AppMethodBeat.o(33581);
   }
 }
 

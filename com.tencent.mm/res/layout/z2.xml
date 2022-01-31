@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="@dimen/li" android:layout_width="fill_parent" android:layout_height="48.0dip"
+<LinearLayout android:orientation="horizontal" android:id="@id/bse" android:background="@drawable/b03" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/mw" android:textColor="#ff7a93af" android:id="@id/bpb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{more}" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/bpc" android:padding="@dimen/mq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@raw/dialog_chatroom_detail_down" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <ImageButton android:id="@id/bsf" android:background="@null" android:padding="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/ob" android:layout_weight="1.0" />
+    <ImageButton android:id="@id/bsg" android:background="@null" android:padding="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/o_" android:layout_weight="1.0" />
+    <ImageButton android:id="@id/bsh" android:background="@null" android:padding="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/oa" android:layout_weight="1.0" />
+</LinearLayout>

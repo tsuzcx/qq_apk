@@ -3,16 +3,18 @@ package com.tencent.ttpic.recorder;
 import android.os.HandlerThread;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.gles.EglCore;
 import com.tencent.ttpic.gles.WindowSurface;
 
 class RenderSrfTex$3
   implements Runnable
 {
-  RenderSrfTex$3(RenderSrfTex paramRenderSrfTex, RecorderListener paramRecorderListener) {}
+  RenderSrfTex$3(RenderSrfTex paramRenderSrfTex, VideoRecorderListener paramVideoRecorderListener) {}
   
   public void run()
   {
+    AppMethodBeat.i(83709);
     if (RenderSrfTex.access$700(this.this$0) != null) {
       RenderSrfTex.access$700(this.this$0).stop();
     }
@@ -25,7 +27,7 @@ class RenderSrfTex$3
     RenderSrfTex.access$500(this.this$0).clearGLSLSelf();
     RenderSrfTex.access$400(this.this$0).clear();
     if ((this.val$listener != null) && (RenderSrfTex.access$700(this.this$0) != null)) {
-      this.val$listener.onRecordFinish(RenderSrfTex.access$700(this.this$0).getOutputPath());
+      this.val$listener.onVideoRecordFinish(RenderSrfTex.access$700(this.this$0).getOutputPath());
     }
     if (RenderSrfTex.access$1100(this.this$0) != null)
     {
@@ -35,6 +37,7 @@ class RenderSrfTex$3
     if (RenderSrfTex.access$1200(this.this$0) != null) {
       RenderSrfTex.access$1202(this.this$0, null);
     }
+    AppMethodBeat.o(83709);
   }
 }
 

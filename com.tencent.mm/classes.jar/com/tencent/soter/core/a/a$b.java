@@ -2,7 +2,7 @@ package com.tencent.soter.core.a;
 
 public abstract class a$b
 {
-  public void bKW() {}
+  public void cys() {}
   
   public void onAuthenticationCancelled() {}
   
@@ -14,7 +14,7 @@ public abstract class a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.soter.core.a.a.b
  * JD-Core Version:    0.7.0.1
  */

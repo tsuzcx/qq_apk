@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.dbbackup;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.storage.be;
 import java.util.Arrays;
 import java.util.List;
@@ -16,66 +16,68 @@ final class d$4
   
   public final void run()
   {
+    AppMethodBeat.i(18973);
     try
     {
       Thread.sleep(200L);
-      label6:
-      au.Hx();
-      Object localObject2 = c.FT();
-      Object localObject1 = (String)localObject2 + this.iNs.getName().replace(".db", "temp.db");
-      y.i("MicroMsg.SubCoreDBBackup", "temp db path is %s", new Object[] { localObject1 });
-      this.iNs.n(new com.tencent.mm.vfs.b((String)localObject1));
+      label12:
+      aw.aaz();
+      Object localObject2 = c.Rp();
+      Object localObject1 = (String)localObject2 + this.kUs.getName().replace(".db", "temp.db");
+      ab.i("MicroMsg.SubCoreDBBackup", "temp db path is %s", new Object[] { localObject1 });
+      this.kUs.p(new com.tencent.mm.vfs.b((String)localObject1));
       String str = (String)localObject2 + "sqlTemp.sql";
       List localList = Arrays.asList(new String[] { "getcontactinfo", "contact", "contact_ext", "ContactCmdBuf", "rcontact", "img_flag", "userinfo" });
       localObject2 = new int[1];
       long l = System.currentTimeMillis();
-      au.Hx();
-      boolean bool = c.Dv().a((String)localObject1, this.doz, str, localList, new d.4.1(this, (int[])localObject2));
+      aw.aaz();
+      boolean bool = c.Rq().a((String)localObject1, this.val$key, str, localList, new d.4.1(this, (int[])localObject2));
       if (bool)
       {
-        au.Hx();
-        c.Fy().bhW();
-        au.Hx();
-        c.FB().cuF();
-        au.Hx();
-        c.Fy().bhY();
-        au.Hx();
-        c.Fy().bhX();
+        aw.aaz();
+        c.YC().bPY();
+        aw.aaz();
+        c.YF().dxf();
+        aw.aaz();
+        c.YC().bQa();
+        aw.aaz();
+        c.YC().bPZ();
         i = 12;
-        com.tencent.mm.plugin.report.service.h.nFQ.a(181L, i, 1L, true);
+        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(181L, i, 1L, true);
         l = System.currentTimeMillis() - l;
-        y.i("MicroMsg.SubCoreDBBackup", "execute %d sql and last %d", new Object[] { Integer.valueOf(localObject2[0]), Long.valueOf(l) });
-        localObject1 = com.tencent.mm.plugin.report.service.h.nFQ;
+        ab.i("MicroMsg.SubCoreDBBackup", "execute %d sql and last %d", new Object[] { Integer.valueOf(localObject2[0]), Long.valueOf(l) });
+        localObject1 = com.tencent.mm.plugin.report.service.h.qsU;
         if (!bool) {
-          break label378;
+          break label390;
         }
         i = 1;
-        label306:
-        ((com.tencent.mm.plugin.report.service.h)localObject1).f(11224, new Object[] { Integer.valueOf(i), localObject2, Long.valueOf(l) });
-        au.DS().cre();
-        if (this.iNb != null)
+        label312:
+        ((com.tencent.mm.plugin.report.service.h)localObject1).e(11224, new Object[] { Integer.valueOf(i), localObject2, Long.valueOf(l) });
+        aw.RO().dtd();
+        if (this.kUb != null)
         {
-          localObject1 = this.iNb;
+          localObject1 = this.kUb;
           if (!bool) {
-            break label383;
+            break label395;
           }
         }
       }
-      label378:
-      label383:
+      label390:
+      label395:
       for (int i = 0;; i = -1)
       {
-        ((b)localObject1).pC(i);
+        ((b)localObject1).tT(i);
+        AppMethodBeat.o(18973);
         return;
         i = 15;
         break;
         i = 0;
-        break label306;
+        break label312;
       }
     }
     catch (InterruptedException localInterruptedException)
     {
-      break label6;
+      break label12;
     }
   }
 }

@@ -1,5 +1,6 @@
 package com.tencent.ytcommon.auth;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.TimerTask;
 
 final class Auth$1
@@ -7,10 +8,12 @@ final class Auth$1
 {
   public final void run()
   {
+    AppMethodBeat.i(1);
     String str = Auth.access$000();
     if (str != "") {
       Auth.report(str);
     }
+    AppMethodBeat.o(1);
   }
 }
 

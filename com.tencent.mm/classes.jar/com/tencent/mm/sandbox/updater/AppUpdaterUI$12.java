@@ -2,8 +2,9 @@ package com.tencent.mm.sandbox.updater;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sandbox.monitor.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AppUpdaterUI$12
   implements DialogInterface.OnClickListener
@@ -12,19 +13,21 @@ final class AppUpdaterUI$12
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.d("MicroMsg.AppUpdaterUI", "click download button");
-    AppUpdaterUI.a(this.ucg, 11);
-    if (this.ucj != null) {
-      this.ucj.deleteTempFile();
+    AppMethodBeat.i(28827);
+    ab.d("MicroMsg.AppUpdaterUI", "click download button");
+    AppUpdaterUI.a(this.ykv, 11);
+    if (this.yky != null) {
+      this.yky.deleteTempFile();
     }
-    paramDialogInterface = AppUpdaterUI.e(this.ucg);
-    paramDialogInterface.udr = true;
-    paramDialogInterface.cqc();
+    paramDialogInterface = AppUpdaterUI.e(this.ykv);
+    paramDialogInterface.ylG = true;
+    paramDialogInterface.drS();
+    AppMethodBeat.o(28827);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.AppUpdaterUI.12
  * JD-Core Version:    0.7.0.1
  */

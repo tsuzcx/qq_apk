@@ -1,113 +1,135 @@
 package com.tencent.mm;
 
 import android.content.Context;
-import com.tencent.mm.api.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.n;
-import com.tencent.mm.api.q;
-import com.tencent.mm.api.q.a;
-import com.tencent.mm.api.q.c;
+import com.tencent.mm.api.p;
+import com.tencent.mm.api.s;
+import com.tencent.mm.api.s.a;
+import com.tencent.mm.api.s.c;
 import com.tencent.mm.cache.ArtistCacheManager;
 import com.tencent.mm.cache.ArtistCacheManager.1;
 import com.tencent.mm.cache.ArtistCacheManager.a;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.view.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
+import java.util.Stack;
 
 public final class a
-  extends q
+  extends s
 {
-  private com.tencent.mm.view.a btP;
-  private n btQ;
+  private com.tencent.mm.view.a bUZ;
+  private p bVa;
   
-  public final void a(m paramm)
+  public final void Aa()
   {
-    com.tencent.mm.bt.b localb = this.btP.getPresenter();
-    if (!rH().sg()) {}
+    AppMethodBeat.i(116134);
+    ArtistCacheManager.Jb().Jc();
+    AppMethodBeat.o(116134);
+  }
+  
+  public final void a(n paramn)
+  {
+    AppMethodBeat.i(116129);
+    com.tencent.mm.bs.b localb = this.bUZ.getPresenter();
+    if (!zZ().At()) {}
     for (boolean bool = true;; bool = false)
     {
-      localb.a(paramm, bool);
+      localb.a(paramn, bool);
+      AppMethodBeat.o(116129);
       return;
     }
   }
   
-  public final void a(q.a parama)
+  public final void a(s.a parama)
   {
+    AppMethodBeat.i(116131);
     super.a(parama);
-    parama = ArtistCacheManager.wL();
-    String str = bk.aM(this.buT.path, "MicroMsg.MMPhotoEditorImpl");
-    parama.dkS = str;
-    if (!ArtistCacheManager.dkQ.containsKey(str)) {
-      ArtistCacheManager.dkQ.put(str, new ArtistCacheManager.a(parama));
+    parama = ArtistCacheManager.Jb();
+    String str = bo.bf(this.bWd.path, "MicroMsg.MMPhotoEditorImpl");
+    parama.ecm = str;
+    if (!ArtistCacheManager.eck.containsKey(str)) {
+      ArtistCacheManager.eck.put(str, new ArtistCacheManager.a(parama));
     }
+    parama = com.tencent.mm.cache.c.Jg();
+    str = bo.bf(this.bWd.path, "MicroMsg.MMPhotoEditorImpl");
+    if (parama.bSA.containsKey(str)) {
+      parama.ecu = ((Stack)parama.bSA.get(str));
+    }
+    AppMethodBeat.o(116131);
   }
   
-  public final com.tencent.mm.api.b ax(Context paramContext)
+  public final com.tencent.mm.api.c aV(Context paramContext)
   {
-    if (this.btP == null)
+    AppMethodBeat.i(116128);
+    if (this.bUZ == null)
     {
-      if (this.buT.buV != q.c.bva) {
-        break label41;
+      if (this.bWd.bWf != s.c.bWl) {
+        break label53;
       }
-      this.btP = new c(paramContext, this.buT);
+      this.bUZ = new com.tencent.mm.view.d(paramContext, this.bWd);
     }
     for (;;)
     {
-      return this.btP;
-      label41:
-      if (this.buT.buV == q.c.bvb) {
-        this.btP = new com.tencent.mm.view.b(paramContext, this.buT);
+      paramContext = this.bUZ;
+      AppMethodBeat.o(116128);
+      return paramContext;
+      label53:
+      if (this.bWd.bWf == s.c.bWm) {
+        this.bUZ = new com.tencent.mm.view.b(paramContext, this.bWd);
       }
     }
   }
   
   public final void onDestroy()
   {
-    if (!this.buT.buW)
+    AppMethodBeat.i(116132);
+    if (!this.bWd.bWg)
     {
-      ArtistCacheManager localArtistCacheManager = ArtistCacheManager.wL();
-      String str = bk.aM(this.buT.path, "MicroMsg.MMPhotoEditorImpl");
-      localArtistCacheManager.dkS = null;
-      if (ArtistCacheManager.dkQ.containsKey(str))
+      ArtistCacheManager localArtistCacheManager = ArtistCacheManager.Jb();
+      String str = bo.bf(this.bWd.path, "MicroMsg.MMPhotoEditorImpl");
+      localArtistCacheManager.ecm = null;
+      if (ArtistCacheManager.eck.containsKey(str))
       {
-        ((ArtistCacheManager.a)ArtistCacheManager.dkQ.get(str)).clearAll();
-        ArtistCacheManager.dkQ.remove(str);
+        ((ArtistCacheManager.a)ArtistCacheManager.eck.get(str)).clearAll();
+        ArtistCacheManager.eck.remove(str);
       }
-      e.csu();
-      e.post(new ArtistCacheManager.1(localArtistCacheManager), "MicroMsg.ArtistCacheManager[clearAllCache]");
+      com.tencent.mm.sdk.g.d.post(new ArtistCacheManager.1(localArtistCacheManager), "MicroMsg.ArtistCacheManager[clearAllCache]");
     }
-    if (this.btP != null) {
-      this.btP.getPresenter().onDestroy();
+    if (this.bUZ != null) {
+      this.bUZ.getPresenter().onDestroy();
     }
     try
     {
-      this.btP.getChatFooterPanel().destroy();
+      this.bUZ.getChatFooterPanel().destroy();
+      AppMethodBeat.o(116132);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.MMPhotoEditorImpl", "[onDestroy] may be has destory!");
+      ab.e("MicroMsg.MMPhotoEditorImpl", "[onDestroy] may be has destory!");
+      AppMethodBeat.o(116132);
     }
   }
   
-  public final boolean rG()
+  public final boolean zY()
   {
-    return this.btP.getPresenter().rG();
+    AppMethodBeat.i(116130);
+    boolean bool = this.bUZ.getPresenter().zY();
+    AppMethodBeat.o(116130);
+    return bool;
   }
   
-  public final n rH()
+  public final p zZ()
   {
-    if (this.btQ == null) {
-      this.btQ = new com.tencent.mm.bz.a(this.btP.getPresenter());
+    AppMethodBeat.i(116133);
+    if (this.bVa == null) {
+      this.bVa = new com.tencent.mm.bz.c(this.bUZ.getPresenter());
     }
-    return this.btQ;
-  }
-  
-  public final void rI()
-  {
-    ArtistCacheManager.wL().wM();
+    p localp = this.bVa;
+    AppMethodBeat.o(116133);
+    return localp;
   }
 }
 

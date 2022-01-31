@@ -1,27 +1,29 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.wearable.DataApi.DataItemResult;
+import com.google.android.gms.wearable.DataItem;
 
-public class zzcg
-  extends zza
+public final class zzcg
+  implements DataApi.DataItemResult
 {
-  public static final Parcelable.Creator<zzcg> CREATOR = new zzch();
-  public final String label;
-  public final String packageName;
-  public final long zzbUT;
+  private final DataItem zzdg;
+  private final Status zzp;
   
-  public zzcg(String paramString1, String paramString2, long paramLong)
+  public zzcg(Status paramStatus, DataItem paramDataItem)
   {
-    this.packageName = paramString1;
-    this.label = paramString2;
-    this.zzbUT = paramLong;
+    this.zzp = paramStatus;
+    this.zzdg = paramDataItem;
   }
   
-  public void writeToParcel(Parcel paramParcel, int paramInt)
+  public final DataItem getDataItem()
   {
-    zzch.zza(this, paramParcel, paramInt);
+    return this.zzdg;
+  }
+  
+  public final Status getStatus()
+  {
+    return this.zzp;
   }
 }
 

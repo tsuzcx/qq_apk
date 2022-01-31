@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.card.sharecard.model;
 
 public final class m
 {
-  public String bZc;
-  public String iln;
-  public String ioW;
-  public long ioX;
-  public long ioY;
-  public int ioZ;
+  public String cHn;
+  public String kml;
+  public String kqd;
+  public long kqe;
+  public long kqf;
+  public int kqg;
   public int top;
 }
 

@@ -1,81 +1,91 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
-import android.content.Context;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.a.l;
-import com.tencent.mm.plugin.fts.a.c.d;
-import com.tencent.mm.plugin.fts.a.d.e.a;
-import com.tencent.mm.plugin.fts.a.d.e.b;
-import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ah;
-import java.util.HashSet;
-import java.util.List;
+import a.aa;
+import a.f.b.j;
+import a.l;
+import a.l.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
+import java.util.Map;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "kv", "", "defaultValue", "askRestart", "(Ljava/lang/String;ZZ)V", "enableAlert", "enableKv", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "Companion", "plugin-appbrand-integration_release"})
 public final class e
-  extends com.tencent.mm.plugin.fts.ui.a
+  extends g<Boolean>
 {
-  public e(Context paramContext, e.b paramb, int paramInt)
+  private static final HashMap<String, e> hsr;
+  public static final a hss;
+  final String hso;
+  private final boolean hsp;
+  private final boolean hsq;
+  
+  static
   {
-    super(paramContext, paramb, paramInt);
+    AppMethodBeat.i(134623);
+    hss = new a((byte)0);
+    hsr = new HashMap();
+    a.a(new e("localso", (byte)0));
+    a.a(new e("showmemory", (byte)0));
+    AppMethodBeat.o(134623);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.a.a a(ah paramah, HashSet<String> paramHashSet)
+  private e(String paramString)
   {
-    i locali = new i();
-    locali.bVk = this.bVk;
-    locali.kxe = d.kxG;
-    locali.kxf = this;
-    locali.handler = paramah;
-    locali.kxd = paramHashSet;
-    locali.kxe = h.gaK;
-    return ((n)g.t(n.class)).search(10, locali);
-  }
-  
-  protected final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
-  {
-    int i = paramInt - parama.kxK - 1;
-    l locall = null;
-    Object localObject = locall;
-    if (i < parama.kxO.size())
+    AppMethodBeat.i(134622);
+    this.hso = paramString;
+    this.hsp = false;
+    this.hsq = true;
+    if (!m.ap((CharSequence)this.hso)) {}
+    for (int i = 1; (aa.BMh) && (i == 0); i = 0)
     {
-      localObject = locall;
-      if (i >= 0)
-      {
-        locall = (l)parama.kxO.get(i);
-        localObject = new c(paramInt);
-        ((c)localObject).fYx = locall;
-        ((c)localObject).kwi = parama.kwi;
-        ((c)localObject).cU(locall.type, locall.kwf);
+      paramString = (Throwable)new AssertionError("Assertion failed");
+      AppMethodBeat.o(134622);
+      throw paramString;
+    }
+    AppMethodBeat.o(134622);
+  }
+  
+  public static final e Bt(String paramString)
+  {
+    AppMethodBeat.i(134624);
+    j.q(paramString, "kv_name");
+    paramString = hsr.get(paramString);
+    if (paramString == null) {
+      j.ebi();
+    }
+    paramString = (e)paramString;
+    AppMethodBeat.o(134624);
+    return paramString;
+  }
+  
+  protected final String aAs()
+  {
+    return this.hso;
+  }
+  
+  protected final boolean aAu()
+  {
+    return this.hsq;
+  }
+  
+  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple$Companion;", "", "()V", "registry", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSimple;", "Lkotlin/collections/HashMap;", "get", "kv_name", "getAll", "", "register", "", "config", "plugin-appbrand-integration_release"})
+  public static final class a
+  {
+    static void a(e parame)
+    {
+      AppMethodBeat.i(134619);
+      Map localMap = (Map)e.aAx();
+      String str = parame.hso;
+      if (str == null) {
+        j.ebi();
       }
+      localMap.put(str, parame);
+      AppMethodBeat.o(134619);
     }
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).kxW = (i + 1);
-    }
-    return localObject;
-  }
-  
-  protected final void a(j paramj, HashSet<String> paramHashSet)
-  {
-    if (bA(paramj.kxh))
-    {
-      paramHashSet = new e.a();
-      paramHashSet.businessType = -15;
-      paramHashSet.kwi = paramj.kwi;
-      paramHashSet.kxO = paramj.kxh;
-      this.kzW.add(paramHashSet);
-    }
-  }
-  
-  public final int getType()
-  {
-    return 4240;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.e
  * JD-Core Version:    0.7.0.1
  */

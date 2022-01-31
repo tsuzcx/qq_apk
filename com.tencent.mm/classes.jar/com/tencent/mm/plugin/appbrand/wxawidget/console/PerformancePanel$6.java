@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.wxawidget.console;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.collector.f;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
@@ -8,9 +9,11 @@ final class PerformancePanel$6
 {
   PerformancePanel$6(PerformancePanel paramPerformancePanel) {}
   
-  public final void cr(boolean paramBoolean)
+  public final void onStatusChange(boolean paramBoolean)
   {
-    f.cL(paramBoolean);
+    AppMethodBeat.i(11178);
+    f.dP(paramBoolean);
+    AppMethodBeat.o(11178);
   }
 }
 

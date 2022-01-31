@@ -1,31 +1,45 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
-import com.tencent.mm.protocal.c.but;
-import com.tencent.mm.protocal.c.zq;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.data.i;
+import com.tencent.mm.protocal.protobuf.aei;
+import com.tencent.mm.protocal.protobuf.cfj;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class m
-  extends com.tencent.mm.sdk.e.i<l>
+  extends j<l>
   implements com.tencent.mm.plugin.sns.b.e
 {
-  public static final String[] dXp = { com.tencent.mm.sdk.e.i.a(l.buS, "snsExtInfo3") };
-  public com.tencent.mm.sdk.e.e dXw;
-  private boolean oLp = false;
-  private g oLq = null;
+  public static final String[] SQL_CREATE;
+  public com.tencent.mm.sdk.e.e db;
+  private boolean rDa;
+  private g rDb;
+  
+  static
+  {
+    AppMethodBeat.i(37881);
+    SQL_CREATE = new String[] { j.getCreateSQLs(l.info, "snsExtInfo3") };
+    AppMethodBeat.o(37881);
+  }
   
   public m(com.tencent.mm.sdk.e.e parame, g paramg)
   {
-    super(parame, l.buS, "snsExtInfo3", null);
-    this.dXw = parame;
-    this.oLq = paramg;
-    y.i("MicroMsg.SnsExtStorage", "createExtStorage " + parame + "  " + Thread.currentThread().getId());
+    super(parame, l.info, "snsExtInfo3", null);
+    AppMethodBeat.i(37861);
+    this.rDa = false;
+    this.rDb = null;
+    this.db = parame;
+    this.rDb = paramg;
+    ab.i("MicroMsg.SnsExtStorage", "createExtStorage " + parame + "  " + Thread.currentThread().getId());
+    AppMethodBeat.o(37861);
   }
   
   private l a(String paramString, l paraml)
   {
+    AppMethodBeat.i(37874);
     int j;
     int k;
     if (paraml == null)
@@ -33,23 +47,24 @@ public final class m
       j = 0;
       k = 0;
       i = j;
-      label13:
+      label18:
       if ((k != 0) || (i != 0)) {
-        break label221;
+        break label236;
       }
-      paraml = this.dXw.a("select count(*)  from sqlite_master where type='table' and name = 'snsExtInfo2'", null, 2);
+      paraml = this.db.a("select count(*)  from sqlite_master where type='table' and name = 'snsExtInfo2'", null, 2);
       if (!paraml.moveToFirst()) {
-        break label223;
+        break label243;
       }
     }
-    label221:
-    label223:
+    label236:
+    label243:
     for (int i = paraml.getInt(0);; i = 0)
     {
       paraml.close();
       if (i == 0)
       {
-        y.v("MicroMsg.SnsExtStorage", "can not get snsextinfo2 %s", new Object[] { paramString });
+        ab.v("MicroMsg.SnsExtStorage", "can not get snsextinfo2 %s", new Object[] { paramString });
+        AppMethodBeat.o(37874);
         return null;
         if ((paraml.field_iFlag & 0x1) > 0) {}
         for (i = 1;; i = 0)
@@ -59,55 +74,174 @@ public final class m
             break;
           }
           k = 1;
-          break label13;
+          break label18;
         }
       }
-      paraml = "select * from snsExtInfo2 where userName=\"" + bk.pl(paramString) + "\"";
-      y.d("MicroMsg.SnsExtStorage", "get from snsextinfo2 sql %s", new Object[] { paraml });
-      paraml = this.dXw.a(paraml, null, 2);
+      paraml = "select * from snsExtInfo2 where userName=\"" + bo.wC(paramString) + "\"";
+      ab.d("MicroMsg.SnsExtStorage", "get from snsextinfo2 sql %s", new Object[] { paraml });
+      paraml = this.db.a(paraml, null, 2);
       l locall = new l();
       if (paraml.moveToFirst())
       {
-        locall.d(paraml);
+        locall.convertFrom(paraml);
         paraml.close();
-        y.i("MicroMsg.SnsExtStorage", "setSnsUserInfo fix newversion change snsextinfo3 %s", new Object[] { paramString });
+        ab.i("MicroMsg.SnsExtStorage", "setSnsUserInfo fix newversion change snsextinfo3 %s", new Object[] { paramString });
+        AppMethodBeat.o(37874);
         return locall;
       }
       paraml.close();
+      AppMethodBeat.o(37874);
       return null;
     }
   }
   
-  public final but MN(String paramString)
+  public final cfj Zu(String paramString)
   {
-    paramString = OF(paramString);
-    if (paramString == null) {
-      return new but();
+    AppMethodBeat.i(37875);
+    paramString = abz(paramString);
+    if (paramString == null)
+    {
+      paramString = new cfj();
+      AppMethodBeat.o(37875);
+      return paramString;
     }
-    return paramString.bGu();
+    paramString = paramString.csx();
+    AppMethodBeat.o(37875);
+    return paramString;
   }
   
-  public final void OC(String paramString)
+  public final boolean a(l paraml)
   {
-    l locall = OF(paramString);
+    AppMethodBeat.i(37863);
+    if ((this.rDa) && (this.rDb != null))
+    {
+      bool = this.rDb.a(paraml);
+      if (this.rDb != null) {
+        this.rDb.cpu();
+      }
+      AppMethodBeat.o(37863);
+      return bool;
+    }
+    boolean bool = super.replace(paraml);
+    AppMethodBeat.o(37863);
+    return bool;
+  }
+  
+  public final boolean a(String paramString, cfj paramcfj)
+  {
+    AppMethodBeat.i(37872);
+    if (paramcfj == null)
+    {
+      AppMethodBeat.o(37872);
+      return false;
+    }
+    paramString = abz(paramString);
+    String str = i.lq(paramcfj.gxc);
+    if ((!bo.isNullOrNil(paramcfj.gxb)) && ((paramString.field_bgUrl == null) || (!paramString.field_bgId.equals(str))))
+    {
+      paramString.field_older_bgId = paramString.field_bgId;
+      paramString.field_local_flag |= 0x1;
+      paramString.csv();
+      ab.d("MicroMsg.SnsExtStorage", "bg change");
+    }
+    paramString.field_bgId = str;
+    paramString.field_bgUrl = paramcfj.gxb;
+    paramString.field_iFlag = paramcfj.gxa;
+    paramString.field_snsBgId = paramcfj.gxc;
+    paramString.field_local_flag |= 0x4;
+    if ((paramcfj.xPN & 0x1000) == 0)
+    {
+      if ((paramcfj.xPN & 0x200) <= 0) {
+        break label185;
+      }
+      paramcfj.xPN |= 0x1000;
+      paramcfj.xPO = 4320;
+    }
+    for (;;)
+    {
+      paramString.a(paramcfj);
+      a(paramString);
+      AppMethodBeat.o(37872);
+      return true;
+      label185:
+      if ((paramcfj.xPN & 0x400) > 0)
+      {
+        paramcfj.xPN |= 0x1000;
+        paramcfj.xPO = 72;
+      }
+    }
+  }
+  
+  public final boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  {
+    AppMethodBeat.i(37878);
+    paramString = abz(paramString);
+    int k = paramString.field_iFlag;
+    if (paramString.csx() != null) {}
+    for (int i = paramString.csx().xPN;; i = 0)
+    {
+      int j = -1;
+      k |= 0x1000;
+      int m = i | 0x1000;
+      i = j;
+      if (paramBoolean1) {
+        i = 4320;
+      }
+      if (paramBoolean2) {
+        i = 72;
+      }
+      if (paramBoolean4) {
+        i = 720;
+      }
+      for (;;)
+      {
+        if (paramBoolean3) {
+          k |= 0x800;
+        }
+        for (j = m | 0x800;; j = m & 0xFFFFF7FF)
+        {
+          paramString.field_iFlag = k;
+          cfj localcfj = paramString.csx();
+          if (localcfj != null)
+          {
+            localcfj.xPN = j;
+            localcfj.xPO = i;
+            paramString.a(localcfj);
+          }
+          c(paramString);
+          AppMethodBeat.o(37878);
+          return true;
+          k &= 0xFFFFF7FF;
+        }
+      }
+    }
+  }
+  
+  public final void abw(String paramString)
+  {
+    AppMethodBeat.i(37864);
+    l locall = abz(paramString);
     locall.field_userName = paramString;
-    super.a(locall, new String[] { this.ujO.ujM });
+    super.delete(locall, new String[] { getPrimaryKey() });
+    AppMethodBeat.o(37864);
   }
   
-  public final zq OD(String paramString)
+  public final aei abx(String paramString)
   {
-    Object localObject = new zq();
+    AppMethodBeat.i(37868);
+    Object localObject = new aei();
     new l();
-    paramString = OF(paramString);
+    paramString = abz(paramString);
     try
     {
-      if (!bk.bE(paramString.field_faultS))
+      if (!bo.ce(paramString.field_faultS))
       {
-        paramString = (zq)new zq().aH(paramString.field_faultS);
+        paramString = (aei)new aei().parseFrom(paramString.field_faultS);
         localObject = paramString;
         if (paramString == null) {
-          localObject = new zq();
+          localObject = new aei();
         }
+        AppMethodBeat.o(37868);
         return localObject;
       }
     }
@@ -115,296 +249,256 @@ public final class m
     {
       for (;;)
       {
-        y.e("MicroMsg.SnsExtStorage", "parser field_faultS error");
+        ab.e("MicroMsg.SnsExtStorage", "parser field_faultS error");
         paramString = (String)localObject;
       }
     }
   }
   
-  public final void OE(String paramString)
+  public final void aby(String paramString)
   {
+    AppMethodBeat.i(37869);
     new l();
-    l locall = OF(paramString);
+    l locall = abz(paramString);
     locall.field_userName = paramString;
     locall.field_local_flag &= 0xFFFFFFFE;
     c(locall);
+    AppMethodBeat.o(37869);
   }
   
-  public final l OF(String paramString)
+  public final l abz(String paramString)
   {
+    AppMethodBeat.i(37870);
     l locall2 = new l();
     l locall1 = locall2;
-    if (this.oLq != null)
+    if (this.rDb != null)
     {
       locall1 = locall2;
-      if (this.oLp)
+      if (this.rDa)
       {
-        locall1 = this.oLq.NC(paramString);
-        if (locall1 != null) {
+        locall1 = this.rDb.aaw(paramString);
+        if (locall1 != null)
+        {
+          AppMethodBeat.o(37870);
           return locall1;
         }
         locall1 = new l();
       }
     }
     locall1.field_userName = paramString;
-    super.b(locall1, new String[] { this.ujO.ujM });
+    super.get(locall1, new String[] { getPrimaryKey() });
+    AppMethodBeat.o(37870);
     return locall1;
   }
   
-  public final boolean a(l paraml)
+  public final cfj b(String paramString, cfj paramcfj)
   {
-    if ((this.oLp) && (this.oLq != null))
-    {
-      boolean bool = this.oLq.a(paraml);
-      if (this.oLq != null) {
-        this.oLq.bDV();
-      }
-      return bool;
-    }
-    return super.a(paraml);
-  }
-  
-  public final boolean a(String paramString, but parambut)
-  {
-    paramString = OF(paramString);
-    String str = com.tencent.mm.plugin.sns.data.i.fN(parambut.ffu);
-    if ((!bk.bl(parambut.fft)) && ((paramString.field_bgUrl == null) || (!paramString.field_bgId.equals(str))))
-    {
-      paramString.field_older_bgId = paramString.field_bgId;
-      paramString.field_local_flag |= 0x1;
-      paramString.bGs();
-      y.d("MicroMsg.SnsExtStorage", "bg change");
-    }
-    paramString.field_bgId = str;
-    paramString.field_bgUrl = parambut.fft;
-    paramString.field_iFlag = parambut.ffs;
-    paramString.field_snsBgId = parambut.ffu;
-    paramString.field_local_flag |= 0x4;
-    if (parambut != null) {}
-    try
-    {
-      paramString.field_snsuser = parambut.toByteArray();
-      label123:
-      a(paramString);
-      return true;
-    }
-    catch (Exception parambut)
-    {
-      break label123;
-    }
-  }
-  
-  public final boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    paramString = OF(paramString);
-    int i = paramString.field_iFlag;
-    if (paramBoolean1)
-    {
-      i |= 0x200;
-      if (!paramBoolean2) {
-        break label74;
-      }
-      i |= 0x400;
-      label36:
-      if (!paramBoolean3) {
-        break label85;
-      }
-      i |= 0x800;
-    }
-    for (;;)
-    {
-      paramString.field_iFlag = i;
-      c(paramString);
-      return true;
-      i &= 0xFFFFFDFF;
-      break;
-      label74:
-      i &= 0xFFFFFBFF;
-      break label36;
-      label85:
-      i &= 0xFFFFF7FF;
-    }
-  }
-  
-  public final boolean aY(String paramString, boolean paramBoolean)
-  {
-    paramString = OF(paramString);
-    int i = paramString.field_iFlag;
-    if (paramBoolean) {
-      i |= 0x1;
-    }
-    for (;;)
-    {
-      paramString.field_iFlag = i;
-      c(paramString);
-      return true;
-      i &= 0xFFFFFFFE;
-    }
-  }
-  
-  public final but aZ(String paramString, boolean paramBoolean)
-  {
-    paramString = OF(paramString).bGu();
-    if (paramString == null)
-    {
-      y.e("MicroMsg.SnsExtStorage", "userinfo is null");
-      return null;
-    }
-    int i = paramString.tLp;
-    if (paramBoolean) {
-      i |= 0x1;
-    }
-    for (;;)
-    {
-      paramString.tLp = i;
-      return paramString;
-      i &= 0xFFFFFFFE;
-    }
-  }
-  
-  public final but b(String paramString, but parambut)
-  {
-    l locall = OF(paramString);
+    AppMethodBeat.i(37873);
+    l locall = abz(paramString);
     if (locall == null)
     {
       paramString = a(paramString, locall);
-      if (paramString != null)
-      {
-        if (parambut.ffs != -1) {
-          break label44;
+      if (paramString != null) {
+        if (paramcfj.gxa != -1) {
+          break label56;
         }
-        i = paramString.field_iFlag;
-        parambut.ffs = i;
+      }
+      label56:
+      for (i = paramString.field_iFlag;; i = paramcfj.gxa)
+      {
+        paramcfj.gxa = i;
+        AppMethodBeat.o(37873);
+        return paramcfj;
       }
     }
-    label44:
     String str;
-    label85:
+    label97:
     int j;
-    label96:
-    do
+    if (bo.isNullOrNil(paramcfj.gxb))
     {
-      return parambut;
-      i = parambut.ffs;
-      break;
-      if (!bk.bl(parambut.fft)) {
-        break label130;
-      }
       str = locall.field_bgUrl;
-      parambut.fft = str;
-      if (parambut.ffs != -1) {
-        break label139;
+      paramcfj.gxb = str;
+      if (paramcfj.gxa != -1) {
+        break label157;
       }
       i = 1;
       if (i == 0) {
-        break label144;
+        break label162;
       }
       j = locall.field_iFlag;
-      parambut.ffs = j;
+      label108:
+      paramcfj.gxa = j;
       paramString = a(paramString, locall);
-    } while (paramString == null);
-    if (i != 0) {}
-    for (int i = paramString.field_iFlag;; i = parambut.ffs)
+      if (paramString != null) {
+        if (i == 0) {
+          break label171;
+        }
+      }
+    }
+    label157:
+    label162:
+    label171:
+    for (int i = paramString.field_iFlag;; i = paramcfj.gxa)
     {
-      parambut.ffs = i;
-      return parambut;
-      label130:
-      str = parambut.fft;
+      paramcfj.gxa = i;
+      AppMethodBeat.o(37873);
+      return paramcfj;
+      str = paramcfj.gxb;
       break;
-      label139:
       i = 0;
-      break label85;
-      label144:
-      j = parambut.ffs;
-      break label96;
+      break label97;
+      j = paramcfj.gxa;
+      break label108;
     }
   }
   
-  public final but b(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public final cfj b(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    paramString = OF(paramString).bGu();
+    AppMethodBeat.i(37879);
+    paramString = abz(paramString).csx();
     if (paramString == null)
     {
-      y.e("MicroMsg.SnsExtStorage", "userinfo is null");
+      ab.e("MicroMsg.SnsExtStorage", "userinfo is null");
+      AppMethodBeat.o(37879);
       return null;
     }
-    int i = paramString.tLp;
-    if (paramBoolean1)
-    {
-      i |= 0x200;
-      if (!paramBoolean2) {
-        break label85;
-      }
-      i |= 0x400;
-      label53:
-      if (!paramBoolean3) {
-        break label96;
-      }
-      i |= 0x800;
+    int j = paramString.xPN;
+    int i = -1;
+    j |= 0x1000;
+    if (paramBoolean1) {
+      i = 4320;
+    }
+    if (paramBoolean2) {
+      i = 72;
+    }
+    if (paramBoolean4) {
+      i = 720;
     }
     for (;;)
     {
-      paramString.tLp = i;
-      return paramString;
-      i &= 0xFFFFFDFF;
-      break;
-      label85:
-      i &= 0xFFFFFBFF;
-      break label53;
-      label96:
-      i &= 0xFFFFF7FF;
+      if (paramBoolean3) {
+        j |= 0x800;
+      }
+      for (;;)
+      {
+        paramString.xPN = j;
+        paramString.xPO = i;
+        AppMethodBeat.o(37879);
+        return paramString;
+        j &= 0xFFFFF7FF;
+      }
     }
   }
   
   public final boolean b(l paraml)
   {
-    return super.a(paraml);
+    AppMethodBeat.i(37862);
+    boolean bool = super.replace(paraml);
+    AppMethodBeat.o(37862);
+    return bool;
   }
   
-  public final void bCk()
+  public final boolean bn(String paramString, boolean paramBoolean)
   {
-    y.d("MicroMsg.SnsExtStorage", "attachCache");
-    this.oLp = true;
+    AppMethodBeat.i(37876);
+    paramString = abz(paramString);
+    int i = paramString.field_iFlag;
+    if (paramBoolean) {
+      i |= 0x1;
+    }
+    for (;;)
+    {
+      paramString.field_iFlag = i;
+      c(paramString);
+      AppMethodBeat.o(37876);
+      return true;
+      i &= 0xFFFFFFFE;
+    }
   }
   
-  public final void bCl()
+  public final cfj bo(String paramString, boolean paramBoolean)
   {
-    this.oLp = false;
-    this.oLq.bDW();
-    y.d("MicroMsg.SnsExtStorage", "detchCache");
+    AppMethodBeat.i(37877);
+    paramString = abz(paramString).csx();
+    if (paramString == null)
+    {
+      ab.e("MicroMsg.SnsExtStorage", "userinfo is null");
+      AppMethodBeat.o(37877);
+      return null;
+    }
+    int i = paramString.xPN;
+    if (paramBoolean) {
+      i |= 0x1;
+    }
+    for (;;)
+    {
+      paramString.xPN = i;
+      AppMethodBeat.o(37877);
+      return paramString;
+      i &= 0xFFFFFFFE;
+    }
   }
   
   public final boolean c(l paraml)
   {
-    if ((paraml == null) || (paraml.field_userName == null) || (paraml.field_userName.equals(""))) {
+    AppMethodBeat.i(37871);
+    if ((paraml == null) || (paraml.field_userName == null) || (paraml.field_userName.equals("")))
+    {
+      AppMethodBeat.o(37871);
       return false;
     }
-    return super.a(paraml);
+    boolean bool = super.replace(paraml);
+    AppMethodBeat.o(37871);
+    return bool;
   }
   
-  public final boolean eX(String paramString1, String paramString2)
+  public final void cnK()
   {
-    paramString1 = OF(paramString1);
+    AppMethodBeat.i(37859);
+    ab.d("MicroMsg.SnsExtStorage", "attachCache");
+    this.rDa = true;
+    AppMethodBeat.o(37859);
+  }
+  
+  public final void cnL()
+  {
+    AppMethodBeat.i(37860);
+    this.rDa = false;
+    this.rDb.cpv();
+    ab.d("MicroMsg.SnsExtStorage", "detchCache");
+    AppMethodBeat.o(37860);
+  }
+  
+  public final boolean gF(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(37867);
+    paramString1 = abz(paramString1);
     paramString1.field_newerIds = paramString2;
-    return super.a(paramString1);
+    boolean bool = super.replace(paramString1);
+    AppMethodBeat.o(37867);
+    return bool;
   }
   
   public final int h(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    paramString1 = OF(paramString1);
+    AppMethodBeat.i(37866);
+    paramString1 = abz(paramString1);
     paramString1.field_md5 = paramString2;
     paramString1.field_adsession = paramArrayOfByte;
-    super.a(paramString1);
+    super.replace(paramString1);
+    AppMethodBeat.o(37866);
     return 0;
   }
   
   public final int l(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    paramString1 = OF(paramString1);
+    AppMethodBeat.i(37865);
+    paramString1 = abz(paramString1);
     paramString1.field_md5 = paramString2;
     paramString1.field_lastFirstPageRequestErrType = paramInt1;
     paramString1.field_lastFirstPageRequestErrCode = paramInt2;
-    super.a(paramString1);
+    super.replace(paramString1);
+    AppMethodBeat.o(37865);
     return 0;
   }
 }

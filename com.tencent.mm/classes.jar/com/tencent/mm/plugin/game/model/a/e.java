@@ -1,185 +1,126 @@
 package com.tencent.mm.plugin.game.model.a;
 
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.j.a;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class e
 {
-  static void C(String paramString, int paramInt1, int paramInt2)
+  private static j.a appForegroundListener;
+  private static int kZo;
+  private static e.b npH;
+  private static e.a npI;
+  private static c npJ;
+  private static com.tencent.mm.sdk.b.c npK;
+  private static com.tencent.mm.sdk.b.c npL;
+  
+  static
   {
-    if (bk.bl(paramString)) {
-      return;
-    }
-    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.d.aFP().zL(paramString);
-    if ((localFileDownloadTaskInfo != null) && (localFileDownloadTaskInfo.id > 0L))
-    {
-      long l = localFileDownloadTaskInfo.id;
-      String str = localFileDownloadTaskInfo.url;
-      if (localFileDownloadTaskInfo.hFz == 0L) {}
-      for (int i = 0;; i = (int)(localFileDownloadTaskInfo.iPM * 100L / localFileDownloadTaskInfo.hFz))
-      {
-        a(paramString, l, str, i, paramInt1, paramInt2, false, false, false, false, false, "");
-        return;
-      }
-    }
-    a(paramString, 0L, "", 0, paramInt1, paramInt2, false, false, false, false, false, "");
+    AppMethodBeat.i(111517);
+    kZo = -1;
+    appForegroundListener = new e.1();
+    npK = new e.2();
+    npL = new e.3();
+    AppMethodBeat.o(111517);
   }
   
-  public static void EP(String paramString)
+  public static void bje()
   {
-    if (bk.bl(paramString)) {
-      return;
-    }
-    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.d.aFP().zL(paramString);
-    Object localObject = ((com.tencent.mm.plugin.game.a.c)g.r(com.tencent.mm.plugin.game.a.c.class)).aYh().EQ(paramString);
-    if ((localFileDownloadTaskInfo != null) && (localFileDownloadTaskInfo.id > 0L))
+    AppMethodBeat.i(111515);
+    try
     {
-      if (localObject != null)
+      if (npH == null) {
+        npH = new e.b((byte)0);
+      }
+      localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
+      localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
+      localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+      ah.getContext().registerReceiver(npH, localIntentFilter);
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
       {
-        l = localFileDownloadTaskInfo.id;
-        String str = localFileDownloadTaskInfo.url;
-        if (localFileDownloadTaskInfo.hFz == 0L) {}
-        for (i = 0;; i = (int)(localFileDownloadTaskInfo.iPM * 100L / localFileDownloadTaskInfo.hFz))
+        IntentFilter localIntentFilter;
+        label107:
+        ab.i("MicroMsg.GameSilentDownloadListener", "registerNetChange err:%s", new Object[] { localException1.getMessage() });
+      }
+    }
+    try
+    {
+      if (npI == null) {
+        npI = new e.a((byte)0);
+      }
+      localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.BATTERY_OKAY");
+      localIntentFilter.addAction("android.intent.action.BATTERY_LOW");
+      ah.getContext().registerReceiver(npI, localIntentFilter);
+    }
+    catch (Exception localException2)
+    {
+      ab.i("MicroMsg.GameSilentDownloadListener", "registerBatteryChange err:%s", new Object[] { localException2.getMessage() });
+      break label107;
+    }
+    appForegroundListener.alive();
+    a.ymk.c(npK);
+    a.ymk.c(npL);
+    if (npJ == null) {
+      npJ = new c();
+    }
+    f.bjl();
+    com.tencent.mm.plugin.downloader.model.c.a(npJ);
+    AppMethodBeat.o(111515);
+  }
+  
+  public static void bjf()
+  {
+    AppMethodBeat.i(111516);
+    appForegroundListener.dead();
+    if (npH != null) {}
+    try
+    {
+      ah.getContext().unregisterReceiver(npH);
+      npH = null;
+      if (npI == null) {}
+    }
+    catch (Exception localException1)
+    {
+      try
+      {
+        ah.getContext().unregisterReceiver(npI);
+        npI = null;
+        a.ymk.d(npK);
+        a.ymk.d(npL);
+        if (npJ != null)
         {
-          a(paramString, l, str, i, 3, 0, ((c)localObject).field_noWifi, ((c)localObject).field_noSdcard, ((c)localObject).field_noEnoughSpace, ((c)localObject).field_lowBattery, ((c)localObject).field_continueDelay, "");
-          return;
+          f.bjl();
+          com.tencent.mm.plugin.downloader.model.c.b(npJ);
+          npJ = null;
+        }
+        AppMethodBeat.o(111516);
+        return;
+        localException1 = localException1;
+        ab.i("MicroMsg.GameSilentDownloadListener", "unregisterNetChange err:%s", new Object[] { localException1.getMessage() });
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          ab.i("MicroMsg.GameSilentDownloadListener", "unregisterBatteryChange err:%s", new Object[] { localException2.getMessage() });
         }
       }
-      long l = localFileDownloadTaskInfo.id;
-      localObject = localFileDownloadTaskInfo.url;
-      if (localFileDownloadTaskInfo.hFz == 0L) {}
-      for (int i = 0;; i = (int)(localFileDownloadTaskInfo.iPM * 100L / localFileDownloadTaskInfo.hFz))
-      {
-        a(paramString, l, (String)localObject, i, 3, 0, false, false, false, false, false, "");
-        return;
-      }
     }
-    if (localObject != null)
-    {
-      a(paramString, 0L, "", 0, 3, 0, ((c)localObject).field_noWifi, ((c)localObject).field_noSdcard, ((c)localObject).field_noEnoughSpace, ((c)localObject).field_lowBattery, ((c)localObject).field_continueDelay, "");
-      return;
-    }
-    a(paramString, 0L, "", 0, 3, 0, false, false, false, false, false, "");
-  }
-  
-  static void T(String paramString, int paramInt1, int paramInt2)
-  {
-    if (bk.bl(paramString)) {}
-    while (((com.tencent.mm.plugin.game.a.c)g.r(com.tencent.mm.plugin.game.a.c.class)).aYh().EQ(paramString) == null) {
-      return;
-    }
-    C(paramString, paramInt1, paramInt2);
-  }
-  
-  private static void a(String paramString1, long paramLong, String paramString2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, String paramString3)
-  {
-    y.i("MicroMsg.GameSilentDownloadReporter", "reportInfo, appId:%s, downloadId:%d, downloadUrl:%s, downloadedPct:%d, finishType:%d, errCode:%d, noWifi:%b, noSdcard:%b, noEnoughSpace:%b, lowBattery:%b, continueDelay:%b", new Object[] { paramString1, Long.valueOf(paramLong), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Boolean.valueOf(paramBoolean4), Boolean.valueOf(paramBoolean5) });
-    try
-    {
-      if (bk.bl(paramString2)) {
-        break label411;
-      }
-      str1 = URLEncoder.encode(paramString2, "UTF-8");
-      paramString2 = str1;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
-    {
-      String str4;
-      for (;;)
-      {
-        String str1;
-        str2 = paramString2;
-        str4 = paramString3;
-      }
-    }
-    str1 = paramString2;
-    str4 = paramString3;
-    try
-    {
-      if (!bk.bl(paramString3))
-      {
-        str4 = URLEncoder.encode(paramString3, "UTF-8");
-        str1 = paramString2;
-      }
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException2)
-    {
-      for (;;)
-      {
-        String str2;
-        String str3 = paramString2;
-        str4 = paramString3;
-      }
-    }
-    paramString2 = new Object[12];
-    paramString2[0] = paramString1;
-    paramString2[1] = Long.valueOf(paramLong);
-    paramString2[2] = str1;
-    paramString2[3] = Integer.valueOf(paramInt1);
-    paramString2[4] = Integer.valueOf(paramInt2);
-    paramString2[5] = Integer.valueOf(paramInt3);
-    if (paramBoolean1)
-    {
-      paramInt1 = 1;
-      paramString2[6] = Integer.valueOf(paramInt1);
-      if (!paramBoolean2) {
-        break label328;
-      }
-      paramInt1 = 1;
-      label212:
-      paramString2[7] = Integer.valueOf(paramInt1);
-      if (!paramBoolean3) {
-        break label334;
-      }
-      paramInt1 = 1;
-      label229:
-      paramString2[8] = Integer.valueOf(paramInt1);
-      if (!paramBoolean4) {
-        break label340;
-      }
-      paramInt1 = 1;
-      label246:
-      paramString2[9] = Integer.valueOf(paramInt1);
-      if (!paramBoolean5) {
-        break label346;
-      }
-    }
-    label328:
-    label334:
-    label340:
-    label346:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      paramString2[10] = Integer.valueOf(paramInt1);
-      paramString2[11] = str4;
-      paramString1 = new StringBuilder();
-      paramInt1 = 0;
-      while (paramInt1 < 11)
-      {
-        paramString1.append(String.valueOf(paramString2[paramInt1])).append(',');
-        paramInt1 += 1;
-      }
-      paramInt1 = 0;
-      break;
-      paramInt1 = 0;
-      break label212;
-      paramInt1 = 0;
-      break label229;
-      paramInt1 = 0;
-      break label246;
-    }
-    paramString1.append(String.valueOf(paramString2[11]));
-    paramString1 = paramString1.toString();
-    com.tencent.mm.game.report.api.c.dCx.a(new com.tencent.mm.game.report.api.d(15547, paramString1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.a.e
  * JD-Core Version:    0.7.0.1
  */

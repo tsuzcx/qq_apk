@@ -1,94 +1,145 @@
 package com.tencent.mm.plugin.game.d;
 
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
 
 public final class cx
   extends com.tencent.mm.bv.a
 {
-  public String bGw;
-  public LinkedList<am> kSr = new LinkedList();
-  public String kTQ;
-  public String kTx;
+  public String Desc;
+  public String Title;
+  public String fKw;
+  public String npQ;
+  public String npR;
+  public String nqt;
+  public String ntp;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(111664);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.bGw != null) {
-        paramVarArgs.d(1, this.bGw);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.ntp == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: AppName");
+        AppMethodBeat.o(111664);
+        throw paramVarArgs;
       }
-      paramVarArgs.d(2, 8, this.kSr);
-      if (this.kTx != null) {
-        paramVarArgs.d(3, this.kTx);
+      if (this.ntp != null) {
+        paramVarArgs.e(1, this.ntp);
       }
-      if (this.kTQ != null) {
-        paramVarArgs.d(4, this.kTQ);
+      if (this.npQ != null) {
+        paramVarArgs.e(2, this.npQ);
       }
+      if (this.Title != null) {
+        paramVarArgs.e(3, this.Title);
+      }
+      if (this.Desc != null) {
+        paramVarArgs.e(4, this.Desc);
+      }
+      if (this.nqt != null) {
+        paramVarArgs.e(5, this.nqt);
+      }
+      if (this.npR != null) {
+        paramVarArgs.e(6, this.npR);
+      }
+      if (this.fKw != null) {
+        paramVarArgs.e(7, this.fKw);
+      }
+      AppMethodBeat.o(111664);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.bGw == null) {
-        break label422;
+      if (this.ntp == null) {
+        break label626;
       }
     }
-    label422:
-    for (paramInt = d.a.a.b.b.a.e(1, this.bGw) + 0;; paramInt = 0)
+    label626:
+    for (int i = e.a.a.b.b.a.f(1, this.ntp) + 0;; i = 0)
     {
-      int i = paramInt + d.a.a.a.c(2, 8, this.kSr);
       paramInt = i;
-      if (this.kTx != null) {
-        paramInt = i + d.a.a.b.b.a.e(3, this.kTx);
+      if (this.npQ != null) {
+        paramInt = i + e.a.a.b.b.a.f(2, this.npQ);
       }
       i = paramInt;
-      if (this.kTQ != null) {
-        i = paramInt + d.a.a.b.b.a.e(4, this.kTQ);
+      if (this.Title != null) {
+        i = paramInt + e.a.a.b.b.a.f(3, this.Title);
       }
+      paramInt = i;
+      if (this.Desc != null) {
+        paramInt = i + e.a.a.b.b.a.f(4, this.Desc);
+      }
+      i = paramInt;
+      if (this.nqt != null) {
+        i = paramInt + e.a.a.b.b.a.f(5, this.nqt);
+      }
+      paramInt = i;
+      if (this.npR != null) {
+        paramInt = i + e.a.a.b.b.a.f(6, this.npR);
+      }
+      i = paramInt;
+      if (this.fKw != null) {
+        i = paramInt + e.a.a.b.b.a.f(7, this.fKw);
+      }
+      AppMethodBeat.o(111664);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.kSr.clear();
-        paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        if (this.ntp == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: AppName");
+          AppMethodBeat.o(111664);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(111664);
+        return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         cx localcx = (cx)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(111664);
           return -1;
         case 1: 
-          localcx.bGw = ((d.a.a.a.a)localObject1).xpH.readString();
+          localcx.ntp = locala.CLY.readString();
+          AppMethodBeat.o(111664);
           return 0;
         case 2: 
-          paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new am();
-            localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((am)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-            localcx.kSr.add(localObject1);
-            paramInt += 1;
-          }
+          localcx.npQ = locala.CLY.readString();
+          AppMethodBeat.o(111664);
+          return 0;
         case 3: 
-          localcx.kTx = ((d.a.a.a.a)localObject1).xpH.readString();
+          localcx.Title = locala.CLY.readString();
+          AppMethodBeat.o(111664);
+          return 0;
+        case 4: 
+          localcx.Desc = locala.CLY.readString();
+          AppMethodBeat.o(111664);
+          return 0;
+        case 5: 
+          localcx.nqt = locala.CLY.readString();
+          AppMethodBeat.o(111664);
+          return 0;
+        case 6: 
+          localcx.npR = locala.CLY.readString();
+          AppMethodBeat.o(111664);
           return 0;
         }
-        localcx.kTQ = ((d.a.a.a.a)localObject1).xpH.readString();
+        localcx.fKw = locala.CLY.readString();
+        AppMethodBeat.o(111664);
         return 0;
       }
+      AppMethodBeat.o(111664);
       return -1;
     }
   }

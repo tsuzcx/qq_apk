@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 
 final class LuggageUploadMediaFileManager$4
@@ -10,17 +11,20 @@ final class LuggageUploadMediaFileManager$4
   
   public final void run()
   {
-    this.reb.ahD();
-    LuggageUploadMediaFileManager.b(this.rea);
-    if (this.reb.success)
+    AppMethodBeat.i(6395);
+    this.uUe.aBk();
+    LuggageUploadMediaFileManager.b(this.uUd);
+    if (this.uUe.success)
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("serverId", bk.pm(this.reb.bUi));
-      localHashMap.put("mediaUrl", bk.pm(this.reb.rel));
-      this.rea.rdZ.a(true, localHashMap);
+      localHashMap.put("serverId", bo.nullAsNil(this.uUe.cBO));
+      localHashMap.put("mediaUrl", bo.nullAsNil(this.uUe.uUn));
+      this.uUd.uUc.a(true, localHashMap);
+      AppMethodBeat.o(6395);
       return;
     }
-    this.rea.rdZ.a(false, null);
+    this.uUd.uUc.a(false, null);
+    AppMethodBeat.o(6395);
   }
 }
 

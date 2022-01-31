@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletBalanceResultUI$2
-  implements DialogInterface.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   WalletBalanceResultUI$2(WalletBalanceResultUI paramWalletBalanceResultUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    WalletBalanceResultUI.b(this.qhw);
+    AppMethodBeat.i(45458);
+    WalletBalanceResultUI.a(this.tOR);
+    AppMethodBeat.o(45458);
+    return false;
   }
 }
 

@@ -1,20 +1,23 @@
 package com.tencent.mm.modelmulti;
 
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.protocal.s.b;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.protocal.t.b;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class j$1
-  implements am.a
+  implements ap.a
 {
-  j$1(j paramj, s.b paramb) {}
+  j$1(j paramj, t.b paramb) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    j.a(this.etj);
-    j.a locala = new j.a(this.esq);
-    f.nEG.a(99L, 230L, 1L, false);
-    this.etj.a(-1, 0, 0, "", locala, null);
+    AppMethodBeat.i(58379);
+    j.a(this.fIW);
+    j.a locala = new j.a(this.fId);
+    e.qrI.idkeyStat(99L, 230L, 1L, false);
+    this.fIW.onGYNetEnd(-1, 0, 0, "", locala, null);
+    AppMethodBeat.o(58379);
     return false;
   }
 }

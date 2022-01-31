@@ -11,12 +11,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
+import android.support.v4.e.a;
+import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.iid.InstanceID;
-import com.google.android.gms.iid.zzc;
-import com.google.android.gms.iid.zzd;
+import com.google.android.gms.iid.zzaf;
+import com.google.android.gms.iid.zzak;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -25,6 +27,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Deprecated
 public class GoogleCloudMessaging
 {
   public static final String ERROR_MAIN_THREAD = "MAIN_THREAD";
@@ -38,142 +41,173 @@ public class GoogleCloudMessaging
   public static final String MESSAGE_TYPE_SEND_ERROR = "send_error";
   @Deprecated
   public static final String MESSAGE_TYPE_SEND_EVENT = "send_event";
-  public static int zzbgB = 5000000;
-  public static int zzbgC = 6500000;
-  public static int zzbgD = 7000000;
-  static GoogleCloudMessaging zzbgE;
-  private static final AtomicInteger zzbgH = new AtomicInteger(1);
-  private PendingIntent zzbgF;
-  private Map<String, Handler> zzbgG = Collections.synchronizedMap(new HashMap());
-  private final BlockingQueue<Intent> zzbgI = new LinkedBlockingQueue();
-  final Messenger zzbgJ = new Messenger(new GoogleCloudMessaging.1(this, Looper.getMainLooper()));
-  private Context zzqn;
+  private static GoogleCloudMessaging zzac;
+  private static final AtomicInteger zzaf;
+  private PendingIntent zzad;
+  private final Map<String, Handler> zzae;
+  private final BlockingQueue<Intent> zzag;
+  private final Messenger zzah;
+  private Context zzk;
   
+  static
+  {
+    AppMethodBeat.i(69976);
+    zzaf = new AtomicInteger(1);
+    AppMethodBeat.o(69976);
+  }
+  
+  public GoogleCloudMessaging()
+  {
+    AppMethodBeat.i(69962);
+    this.zzae = Collections.synchronizedMap(new a());
+    this.zzag = new LinkedBlockingQueue();
+    this.zzah = new Messenger(new zzf(this, Looper.getMainLooper()));
+    AppMethodBeat.o(69962);
+  }
+  
+  @Deprecated
   public static GoogleCloudMessaging getInstance(Context paramContext)
   {
     try
     {
-      if (zzbgE == null)
+      AppMethodBeat.i(69960);
+      if (zzac == null)
       {
+        zze(paramContext);
         GoogleCloudMessaging localGoogleCloudMessaging = new GoogleCloudMessaging();
-        zzbgE = localGoogleCloudMessaging;
-        localGoogleCloudMessaging.zzqn = paramContext.getApplicationContext();
+        zzac = localGoogleCloudMessaging;
+        localGoogleCloudMessaging.zzk = paramContext.getApplicationContext();
       }
-      paramContext = zzbgE;
+      paramContext = zzac;
+      AppMethodBeat.o(69960);
       return paramContext;
     }
     finally {}
   }
   
-  private String zzGR()
+  @Deprecated
+  private final Intent zzd(Bundle paramBundle, boolean paramBoolean)
   {
-    String str1 = String.valueOf("google.rpc");
-    String str2 = String.valueOf(String.valueOf(zzbgH.getAndIncrement()));
-    if (str2.length() != 0) {
-      return str1.concat(str2);
-    }
-    return new String(str1);
-  }
-  
-  static String zza(Intent paramIntent, String paramString)
-  {
-    if (paramIntent == null) {
-      throw new IOException("SERVICE_NOT_AVAILABLE");
-    }
-    paramString = paramIntent.getStringExtra(paramString);
-    if (paramString != null) {
-      return paramString;
-    }
-    paramIntent = paramIntent.getStringExtra("error");
-    if (paramIntent != null) {
-      throw new IOException(paramIntent);
-    }
-    throw new IOException("SERVICE_NOT_AVAILABLE");
-  }
-  
-  private void zza(String paramString1, String paramString2, long paramLong, int paramInt, Bundle paramBundle)
-  {
-    if (paramString1 == null) {
-      throw new IllegalArgumentException("Missing 'to'");
-    }
-    String str = zzbv(this.zzqn);
-    if (str == null) {
-      throw new IOException("SERVICE_NOT_AVAILABLE");
-    }
-    Object localObject1 = new Intent("com.google.android.gcm.intent.SEND");
-    if (paramBundle != null) {
-      ((Intent)localObject1).putExtras(paramBundle);
-    }
-    zzr((Intent)localObject1);
-    ((Intent)localObject1).setPackage(str);
-    ((Intent)localObject1).putExtra("google.to", paramString1);
-    ((Intent)localObject1).putExtra("google.message_id", paramString2);
-    ((Intent)localObject1).putExtra("google.ttl", Long.toString(paramLong));
-    ((Intent)localObject1).putExtra("google.delay", Integer.toString(paramInt));
-    ((Intent)localObject1).putExtra("google.from", zzeE(paramString1));
-    if (str.contains(".gsf"))
+    AppMethodBeat.i(69970);
+    if (Looper.getMainLooper() == Looper.myLooper())
     {
-      localObject1 = new Bundle();
-      Iterator localIterator = paramBundle.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        str = (String)localIterator.next();
-        Object localObject2 = paramBundle.get(str);
-        if ((localObject2 instanceof String))
-        {
-          str = String.valueOf(str);
-          if (str.length() != 0) {}
-          for (str = "gcm.".concat(str);; str = new String("gcm."))
-          {
-            ((Bundle)localObject1).putString(str, (String)localObject2);
-            break;
-          }
-        }
-      }
-      ((Bundle)localObject1).putString("google.to", paramString1);
-      ((Bundle)localObject1).putString("google.message_id", paramString2);
-      InstanceID.getInstance(this.zzqn).zzc("GCM", "upstream", (Bundle)localObject1);
-      return;
+      paramBundle = new IOException("MAIN_THREAD");
+      AppMethodBeat.o(69970);
+      throw paramBundle;
     }
-    this.zzqn.sendOrderedBroadcast((Intent)localObject1, "com.google.android.gtalkservice.permission.GTALK_SERVICE");
-  }
-  
-  public static String zzbv(Context paramContext)
-  {
-    return zzc.zzbA(paramContext);
-  }
-  
-  public static int zzbw(Context paramContext)
-  {
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    paramContext = zzbv(paramContext);
-    if (paramContext != null) {
+    if (zzf(this.zzk) < 0)
+    {
+      paramBundle = new IOException("Google Play Services missing");
+      AppMethodBeat.o(69970);
+      throw paramBundle;
+    }
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = "com.google.iid.TOKEN_REQUEST";
+      localObject = new Intent((String)localObject);
+      ((Intent)localObject).setPackage(zzaf.zzl(this.zzk));
+      zze((Intent)localObject);
+      int i = zzaf.getAndIncrement();
+      ((Intent)localObject).putExtra("google.message_id", 21 + "google.rpc" + i);
+      ((Intent)localObject).putExtras(paramBundle);
+      ((Intent)localObject).putExtra("google.messenger", this.zzah);
+      if (!paramBoolean) {
+        break label197;
+      }
+      this.zzk.sendBroadcast((Intent)localObject);
+    }
+    for (;;)
+    {
       try
       {
-        paramContext = localPackageManager.getPackageInfo(paramContext, 0);
-        if (paramContext != null)
-        {
-          int i = paramContext.versionCode;
-          return i;
-        }
+        paramBundle = (Intent)this.zzag.poll(30000L, TimeUnit.MILLISECONDS);
+        AppMethodBeat.o(69970);
+        return paramBundle;
       }
-      catch (PackageManager.NameNotFoundException paramContext) {}
+      catch (InterruptedException paramBundle)
+      {
+        label197:
+        paramBundle = new IOException(paramBundle.getMessage());
+        AppMethodBeat.o(69970);
+        throw paramBundle;
+      }
+      localObject = "com.google.android.c2dm.intent.REGISTER";
+      break;
+      this.zzk.startService((Intent)localObject);
     }
-    return -1;
   }
   
-  private String zzeE(String paramString)
+  @Deprecated
+  @VisibleForTesting
+  private final String zzd(boolean paramBoolean, String... paramVarArgs)
   {
-    int i = paramString.indexOf('@');
-    String str = paramString;
-    if (i > 0) {
-      str = paramString.substring(0, i);
+    Object localObject1;
+    try
+    {
+      AppMethodBeat.i(69969);
+      localObject1 = zzaf.zzl(this.zzk);
+      if (localObject1 == null)
+      {
+        paramVarArgs = new IOException("SERVICE_NOT_AVAILABLE");
+        AppMethodBeat.o(69969);
+        throw paramVarArgs;
+      }
     }
-    return InstanceID.getInstance(this.zzqn).zzHi().zzh("", str, "GCM");
+    finally {}
+    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
+    {
+      paramVarArgs = new IllegalArgumentException("No senderIds");
+      AppMethodBeat.o(69969);
+      throw paramVarArgs;
+    }
+    Object localObject2 = new StringBuilder(paramVarArgs[0]);
+    int i = 1;
+    while (i < paramVarArgs.length)
+    {
+      ((StringBuilder)localObject2).append(',').append(paramVarArgs[i]);
+      i += 1;
+    }
+    paramVarArgs = ((StringBuilder)localObject2).toString();
+    localObject2 = new Bundle();
+    if (((String)localObject1).contains(".gsf"))
+    {
+      ((Bundle)localObject2).putString("legacy.sender", paramVarArgs);
+      paramVarArgs = InstanceID.getInstance(this.zzk).getToken(paramVarArgs, "GCM", (Bundle)localObject2);
+      AppMethodBeat.o(69969);
+    }
+    for (;;)
+    {
+      return paramVarArgs;
+      ((Bundle)localObject2).putString("sender", paramVarArgs);
+      localObject1 = zzd((Bundle)localObject2, paramBoolean);
+      if (localObject1 == null)
+      {
+        paramVarArgs = new IOException("SERVICE_NOT_AVAILABLE");
+        AppMethodBeat.o(69969);
+        throw paramVarArgs;
+      }
+      paramVarArgs = ((Intent)localObject1).getStringExtra("registration_id");
+      if (paramVarArgs == null) {
+        break;
+      }
+      AppMethodBeat.o(69969);
+    }
+    paramVarArgs = ((Intent)localObject1).getStringExtra("error");
+    if (paramVarArgs != null)
+    {
+      paramVarArgs = new IOException(paramVarArgs);
+      AppMethodBeat.o(69969);
+      throw paramVarArgs;
+    }
+    paramVarArgs = new IOException("SERVICE_NOT_AVAILABLE");
+    AppMethodBeat.o(69969);
+    throw paramVarArgs;
   }
   
-  private boolean zzq(Intent paramIntent)
+  private final boolean zzd(Intent paramIntent)
   {
+    AppMethodBeat.i(69966);
     Object localObject2 = paramIntent.getStringExtra("In-Reply-To");
     Object localObject1 = localObject2;
     if (localObject2 == null)
@@ -185,71 +219,198 @@ public class GoogleCloudMessaging
     }
     if (localObject1 != null)
     {
-      localObject1 = (Handler)this.zzbgG.remove(localObject1);
+      localObject1 = (Handler)this.zzae.remove(localObject1);
       if (localObject1 != null)
       {
         localObject2 = Message.obtain();
         ((Message)localObject2).obj = paramIntent;
-        return ((Handler)localObject1).sendMessage((Message)localObject2);
+        boolean bool = ((Handler)localObject1).sendMessage((Message)localObject2);
+        AppMethodBeat.o(69966);
+        return bool;
       }
     }
+    AppMethodBeat.o(69966);
     return false;
   }
   
-  public void close()
+  static void zze(Context paramContext)
   {
-    zzbgE = null;
-    zza.zzbgq = null;
-    zzGS();
+    AppMethodBeat.i(69961);
+    paramContext = paramContext.getPackageName();
+    new StringBuilder(String.valueOf(paramContext).length() + 48).append("GCM SDK is deprecated, ").append(paramContext).append(" should update to use FCM");
+    AppMethodBeat.o(69961);
   }
   
+  private final void zze(Intent paramIntent)
+  {
+    try
+    {
+      AppMethodBeat.i(69972);
+      if (this.zzad == null)
+      {
+        Intent localIntent = new Intent();
+        localIntent.setPackage("com.google.example.invalidpackage");
+        this.zzad = PendingIntent.getBroadcast(this.zzk, 0, localIntent, 0);
+      }
+      paramIntent.putExtra("app", this.zzad);
+      AppMethodBeat.o(69972);
+      return;
+    }
+    finally {}
+  }
+  
+  public static int zzf(Context paramContext)
+  {
+    AppMethodBeat.i(69974);
+    String str = zzaf.zzl(paramContext);
+    if (str != null) {
+      try
+      {
+        paramContext = paramContext.getPackageManager().getPackageInfo(str, 0);
+        if (paramContext != null)
+        {
+          int i = paramContext.versionCode;
+          AppMethodBeat.o(69974);
+          return i;
+        }
+      }
+      catch (PackageManager.NameNotFoundException paramContext) {}
+    }
+    AppMethodBeat.o(69974);
+    return -1;
+  }
+  
+  private final void zzg()
+  {
+    try
+    {
+      AppMethodBeat.i(69973);
+      if (this.zzad != null)
+      {
+        this.zzad.cancel();
+        this.zzad = null;
+      }
+      AppMethodBeat.o(69973);
+      return;
+    }
+    finally {}
+  }
+  
+  @Deprecated
+  public void close()
+  {
+    AppMethodBeat.i(69963);
+    zzac = null;
+    zzd.zzj = null;
+    zzg();
+    AppMethodBeat.o(69963);
+  }
+  
+  @Deprecated
   public String getMessageType(Intent paramIntent)
   {
-    if (!"com.google.android.c2dm.intent.RECEIVE".equals(paramIntent.getAction())) {
-      paramIntent = null;
-    }
-    String str;
-    do
+    AppMethodBeat.i(69971);
+    if (!"com.google.android.c2dm.intent.RECEIVE".equals(paramIntent.getAction()))
     {
+      AppMethodBeat.o(69971);
+      return null;
+    }
+    paramIntent = paramIntent.getStringExtra("message_type");
+    if (paramIntent != null)
+    {
+      AppMethodBeat.o(69971);
       return paramIntent;
-      str = paramIntent.getStringExtra("message_type");
-      paramIntent = str;
-    } while (str != null);
+    }
+    AppMethodBeat.o(69971);
     return "gcm";
   }
   
   @Deprecated
   public String register(String... paramVarArgs)
   {
-    String str;
     try
     {
-      str = zzbv(this.zzqn);
-      if (str == null) {
-        throw new IOException("SERVICE_NOT_AVAILABLE");
-      }
-    }
-    finally {}
-    paramVarArgs = zzf(paramVarArgs);
-    Bundle localBundle = new Bundle();
-    if (str.contains(".gsf")) {
-      localBundle.putString("legacy.sender", paramVarArgs);
-    }
-    for (paramVarArgs = InstanceID.getInstance(this.zzqn).getToken(paramVarArgs, "GCM", localBundle);; paramVarArgs = zza(zzJ(localBundle), "registration_id"))
-    {
+      AppMethodBeat.i(69968);
+      paramVarArgs = zzd(zzaf.zzk(this.zzk), paramVarArgs);
+      AppMethodBeat.o(69968);
       return paramVarArgs;
-      localBundle.putString("sender", paramVarArgs);
+    }
+    finally
+    {
+      paramVarArgs = finally;
+      throw paramVarArgs;
     }
   }
   
+  @Deprecated
   public void send(String paramString1, String paramString2, long paramLong, Bundle paramBundle)
   {
-    zza(paramString1, paramString2, paramLong, -1, paramBundle);
+    AppMethodBeat.i(69965);
+    if (paramString1 == null)
+    {
+      paramString1 = new IllegalArgumentException("Missing 'to'");
+      AppMethodBeat.o(69965);
+      throw paramString1;
+    }
+    Object localObject1 = zzaf.zzl(this.zzk);
+    if (localObject1 == null)
+    {
+      paramString1 = new IOException("SERVICE_NOT_AVAILABLE");
+      AppMethodBeat.o(69965);
+      throw paramString1;
+    }
+    Object localObject2 = new Intent("com.google.android.gcm.intent.SEND");
+    if (paramBundle != null) {
+      ((Intent)localObject2).putExtras(paramBundle);
+    }
+    zze((Intent)localObject2);
+    ((Intent)localObject2).setPackage((String)localObject1);
+    ((Intent)localObject2).putExtra("google.to", paramString1);
+    ((Intent)localObject2).putExtra("google.message_id", paramString2);
+    ((Intent)localObject2).putExtra("google.ttl", Long.toString(paramLong));
+    int i = paramString1.indexOf('@');
+    if (i > 0) {}
+    for (String str = paramString1.substring(0, i);; str = paramString1)
+    {
+      InstanceID.getInstance(this.zzk);
+      ((Intent)localObject2).putExtra("google.from", InstanceID.zzn().zze("", str, "GCM"));
+      if (((String)localObject1).contains(".gsf"))
+      {
+        localObject1 = new Bundle();
+        localObject2 = paramBundle.keySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          str = (String)((Iterator)localObject2).next();
+          Object localObject3 = paramBundle.get(str);
+          if ((localObject3 instanceof String))
+          {
+            str = String.valueOf(str);
+            if (str.length() != 0) {}
+            for (str = "gcm.".concat(str);; str = new String("gcm."))
+            {
+              ((Bundle)localObject1).putString(str, (String)localObject3);
+              break;
+            }
+          }
+        }
+        ((Bundle)localObject1).putString("google.to", paramString1);
+        ((Bundle)localObject1).putString("google.message_id", paramString2);
+        InstanceID.getInstance(this.zzk).zze("GCM", "upstream", (Bundle)localObject1);
+        AppMethodBeat.o(69965);
+        return;
+      }
+      this.zzk.sendOrderedBroadcast((Intent)localObject2, "com.google.android.gtalkservice.permission.GTALK_SERVICE");
+      AppMethodBeat.o(69965);
+      return;
+    }
   }
   
+  @Deprecated
   public void send(String paramString1, String paramString2, Bundle paramBundle)
   {
+    AppMethodBeat.i(69964);
     send(paramString1, paramString2, -1L, paramBundle);
+    AppMethodBeat.o(69964);
   }
   
   @Deprecated
@@ -257,92 +418,17 @@ public class GoogleCloudMessaging
   {
     try
     {
-      if (Looper.getMainLooper() == Looper.myLooper()) {
-        throw new IOException("MAIN_THREAD");
+      AppMethodBeat.i(69967);
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
+        IOException localIOException = new IOException("MAIN_THREAD");
+        AppMethodBeat.o(69967);
+        throw localIOException;
       }
     }
     finally {}
-    InstanceID.getInstance(this.zzqn).deleteInstanceID();
-  }
-  
-  void zzGS()
-  {
-    try
-    {
-      if (this.zzbgF != null)
-      {
-        this.zzbgF.cancel();
-        this.zzbgF = null;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  @Deprecated
-  Intent zzJ(Bundle paramBundle)
-  {
-    if (Looper.getMainLooper() == Looper.myLooper()) {
-      throw new IOException("MAIN_THREAD");
-    }
-    if (zzbw(this.zzqn) < 0) {
-      throw new IOException("Google Play Services missing");
-    }
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    paramBundle = new Intent("com.google.android.c2dm.intent.REGISTER");
-    paramBundle.setPackage(zzbv(this.zzqn));
-    zzr(paramBundle);
-    paramBundle.putExtra("google.message_id", zzGR());
-    paramBundle.putExtras(localBundle);
-    paramBundle.putExtra("google.messenger", this.zzbgJ);
-    this.zzqn.startService(paramBundle);
-    try
-    {
-      paramBundle = (Intent)this.zzbgI.poll(30000L, TimeUnit.MILLISECONDS);
-      return paramBundle;
-    }
-    catch (InterruptedException paramBundle)
-    {
-      throw new IOException(paramBundle.getMessage());
-    }
-  }
-  
-  String zzf(String... paramVarArgs)
-  {
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      throw new IllegalArgumentException("No senderIds");
-    }
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs[0]);
-    int i = 1;
-    while (i < paramVarArgs.length)
-    {
-      localStringBuilder.append(',').append(paramVarArgs[i]);
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  void zzr(Intent paramIntent)
-  {
-    try
-    {
-      if (this.zzbgF == null)
-      {
-        Intent localIntent = new Intent();
-        localIntent.setPackage("com.google.example.invalidpackage");
-        this.zzbgF = PendingIntent.getBroadcast(this.zzqn, 0, localIntent, 0);
-      }
-      paramIntent.putExtra("app", this.zzbgF);
-      return;
-    }
-    finally {}
+    InstanceID.getInstance(this.zzk).deleteInstanceID();
+    AppMethodBeat.o(69967);
   }
 }
 

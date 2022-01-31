@@ -2,118 +2,113 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.model.bz;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.w;
+import com.tencent.mm.model.cb;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.protocal.c.cbf;
-import com.tencent.mm.protocal.c.cbg;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.col;
+import com.tencent.mm.protocal.protobuf.com;
+import com.tencent.mm.sdk.platformtools.ab;
 
 class JsApiUploadWeRunData$UploadMiniAppStepTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<UploadMiniAppStepTask> CREATOR = new JsApiUploadWeRunData.UploadMiniAppStepTask.2();
+  public static final Parcelable.Creator<UploadMiniAppStepTask> CREATOR;
   private String appId;
-  private boolean bJy;
-  private i gfG;
-  private int gfg;
-  private c ggu;
-  private int ghE;
-  private boolean ghF;
+  private boolean cqS;
+  private int hAu;
+  private boolean hAv;
+  private int hry;
+  private m hxs;
+  private c hyO;
+  
+  static
+  {
+    AppMethodBeat.i(130630);
+    CREATOR = new JsApiUploadWeRunData.UploadMiniAppStepTask.2();
+    AppMethodBeat.o(130630);
+  }
   
   public JsApiUploadWeRunData$UploadMiniAppStepTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(130624);
+    f(paramParcel);
+    AppMethodBeat.o(130624);
   }
   
-  public JsApiUploadWeRunData$UploadMiniAppStepTask(i parami, c paramc, int paramInt1, int paramInt2, boolean paramBoolean)
+  public JsApiUploadWeRunData$UploadMiniAppStepTask(m paramm, c paramc, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    y.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask");
-    this.gfG = parami;
-    this.ggu = paramc;
-    this.gfg = paramInt1;
-    this.ghE = paramInt2;
-    this.ghF = paramBoolean;
+    AppMethodBeat.i(130623);
+    ab.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask");
+    this.hxs = paramm;
+    this.hyO = paramc;
+    this.hry = paramInt1;
+    this.hAu = paramInt2;
+    this.hAv = paramBoolean;
     this.appId = paramc.getAppId();
+    AppMethodBeat.o(130623);
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    long l2 = bz.Is();
-    y.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask currentTime %d", new Object[] { Long.valueOf(l2 / 1000L) });
+    AppMethodBeat.i(130625);
+    long l2 = cb.abp();
+    ab.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask currentTime %d", new Object[] { Long.valueOf(l2 / 1000L) });
     long l1 = l2;
     if (l2 == 0L) {
       l1 = System.currentTimeMillis();
     }
     b.a locala = new b.a();
-    cbf localcbf = new cbf();
-    locala.ecH = localcbf;
-    locala.ecI = new cbg();
+    col localcol = new col();
+    locala.fsX = localcol;
+    locala.fsY = new com();
     locala.uri = "/cgi-bin/mmoc-bin/hardware/uploadminiappstep";
-    locala.ecG = 1949;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    localcbf.euK = this.appId;
-    localcbf.hQP = this.ghE;
-    localcbf.tQo = this.ghF;
-    localcbf.kTR = ((int)(l1 / 1000L));
-    w.a(locala.Kt(), new w.a()
-    {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, m paramAnonymousm)
-      {
-        if (paramAnonymousm.getType() != 1949) {
-          return 0;
-        }
-        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
-        {
-          JsApiUploadWeRunData.UploadMiniAppStepTask.a(JsApiUploadWeRunData.UploadMiniAppStepTask.this, true);
-          y.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask ok.");
-        }
-        for (;;)
-        {
-          JsApiUploadWeRunData.UploadMiniAppStepTask.a(JsApiUploadWeRunData.UploadMiniAppStepTask.this);
-          return 0;
-          JsApiUploadWeRunData.UploadMiniAppStepTask.a(JsApiUploadWeRunData.UploadMiniAppStepTask.this, false);
-          y.i("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask fail: errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-        }
-      }
-    }, true);
+    locala.funcId = 1949;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    localcol.fKw = this.appId;
+    localcol.jKr = this.hAu;
+    localcol.xXj = this.hAv;
+    localcol.nrR = ((int)(l1 / 1000L));
+    w.a(locala.ado(), new JsApiUploadWeRunData.UploadMiniAppStepTask.1(this), true);
+    AppMethodBeat.o(130625);
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    if (this.bJy) {
-      this.ggu.C(this.gfg, this.gfG.h("ok", null));
+    AppMethodBeat.i(130626);
+    if (this.cqS) {
+      this.hyO.h(this.hry, this.hxs.j("ok", null));
     }
     for (;;)
     {
-      ahD();
+      aBk();
+      AppMethodBeat.o(130626);
       return;
-      this.ggu.C(this.gfg, this.gfG.h("fail", null));
+      this.hyO.h(this.hry, this.hxs.j("fail", null));
     }
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     boolean bool2 = true;
-    this.ghE = paramParcel.readInt();
+    AppMethodBeat.i(130627);
+    this.hAu = paramParcel.readInt();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.ghF = bool1;
+      this.hAv = bool1;
       if (paramParcel.readByte() == 0) {
-        break label52;
+        break label62;
       }
     }
-    label52:
+    label62:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.bJy = bool1;
+      this.cqS = bool1;
       this.appId = paramParcel.readString();
+      AppMethodBeat.o(130627);
       return;
       bool1 = false;
       break;
@@ -123,20 +118,22 @@ class JsApiUploadWeRunData$UploadMiniAppStepTask
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     byte b2 = 1;
-    paramParcel.writeInt(this.ghE);
-    if (this.ghF)
+    AppMethodBeat.i(130628);
+    paramParcel.writeInt(this.hAu);
+    if (this.hAv)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.bJy) {
-        break label54;
+      if (!this.cqS) {
+        break label64;
       }
     }
-    label54:
+    label64:
     for (byte b1 = b2;; b1 = 0)
     {
       paramParcel.writeByte(b1);
       paramParcel.writeString(this.appId);
+      AppMethodBeat.o(130628);
       return;
       b1 = 0;
       break;

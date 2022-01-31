@@ -1,5 +1,7 @@
 package com.tencent.mapsdk.raster.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class IndoorInfo
 {
   private String buildingId;
@@ -23,7 +25,10 @@ public class IndoorInfo
   
   public String toString()
   {
-    return this.buildingId + "_" + this.floorName;
+    AppMethodBeat.i(101187);
+    String str = this.buildingId + "_" + this.floorName;
+    AppMethodBeat.o(101187);
+    return str;
   }
 }
 

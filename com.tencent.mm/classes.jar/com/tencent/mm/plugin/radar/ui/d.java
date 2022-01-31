@@ -1,19 +1,32 @@
 package com.tencent.mm.plugin.radar.ui;
 
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/ui/RadarPressDetector;", "", "()V", "PressIsClickDuringThreshold", "", "getPressIsClickDuringThreshold", "()I", "PressTooShortDuringThreshold", "getPressTooShortDuringThreshold", "isClick", "", "during", "", "isPress", "isTooShort", "plugin-radar_release"})
 public final class d
 {
-  private static final int nmj = 1000;
-  private static final int nmk = 500;
-  public static final d nml = new d();
+  public static final d pRA;
+  private static final int pRy = 1000;
+  private static final int pRz = 500;
   
-  public static int buH()
+  static
   {
-    return nmj;
+    AppMethodBeat.i(102988);
+    pRA = new d();
+    pRy = 1000;
+    pRz = 500;
+    AppMethodBeat.o(102988);
   }
   
-  public static boolean fs(long paramLong)
+  public static int ceT()
   {
-    return paramLong <= nmk;
+    return pRy;
+  }
+  
+  public static boolean kU(long paramLong)
+  {
+    return paramLong <= pRz;
   }
 }
 

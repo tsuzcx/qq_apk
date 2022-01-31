@@ -1,23 +1,28 @@
 package com.google.android.exoplayer2.c.b;
 
-final class c
+import com.google.android.exoplayer2.c.f;
+
+abstract interface c
 {
-  public final int aBN;
-  public final int duration;
-  public final int flags;
-  public final int size;
+  public abstract void a(int paramInt1, int paramInt2, f paramf);
   
-  public c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.aBN = paramInt1;
-    this.duration = paramInt2;
-    this.size = paramInt3;
-    this.flags = paramInt4;
-  }
+  public abstract void c(int paramInt, double paramDouble);
+  
+  public abstract void d(int paramInt, String paramString);
+  
+  public abstract int jdMethod_do(int paramInt);
+  
+  public abstract boolean dp(int paramInt);
+  
+  public abstract void dq(int paramInt);
+  
+  public abstract void e(int paramInt, long paramLong1, long paramLong2);
+  
+  public abstract void i(int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.c.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.k;
+import a.l;
+import a.v;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TableRow;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/ui/GridDataAdapter;", "", "mGridView", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "mContext", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;Landroid/content/Context;)V", "count", "", "getCount", "()I", "mColumn", "getMContext", "()Landroid/content/Context;", "getMGridView", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "fillDataToTable", "", "getChanged", "", "position", "getItem", "getView", "Landroid/view/View;", "convertView", "makeRow", "Landroid/widget/TableRow;", "notifyDataChanged", "Companion", "plugin-radar_release"})
 public abstract class a
 {
   private static final String TAG = "MicroMsg.RadarGridView.GridDataAdapter";
-  public static final a.a nlJ = new a.a((byte)0);
+  public static final a.a pQY = new a.a((byte)0);
   private final Context mContext;
-  private int nlH;
-  final RadarSpecialGridView nlI;
+  private int pQW;
+  final RadarSpecialGridView pQX;
   
   public a(RadarSpecialGridView paramRadarSpecialGridView, Context paramContext)
   {
-    this.nlI = paramRadarSpecialGridView;
+    this.pQX = paramRadarSpecialGridView;
     this.mContext = paramContext;
-    this.nlH = 3;
+    this.pQW = 3;
   }
   
-  public abstract View L(View paramView, int paramInt);
-  
-  public final void buD()
+  public final void aPD()
   {
-    if (this.nlH == 0)
+    if (this.pQW == 0)
     {
-      y.e(TAG, "column is 0, pls check!");
+      ab.e(TAG, "column is 0, pls check!");
       return;
     }
     int k = getCount();
     int i = 0;
     if (i < k)
     {
-      int j = i / this.nlH;
-      int m = this.nlI.getMTable().getChildCount();
+      int j = i / this.pQW;
+      int m = this.pQX.getMTable().getChildCount();
       Object localObject;
       label93:
       label117:
@@ -46,12 +46,12 @@ public abstract class a
       View localView2;
       if (m > j)
       {
-        localObject = this.nlI.getMTable().getChildAt(m - 1 - j);
+        localObject = this.pQX.getMTable().getChildAt(m - 1 - j);
         if (localObject == null) {
-          throw new k("null cannot be cast to non-null type android.widget.TableRow");
+          throw new v("null cannot be cast to non-null type android.widget.TableRow");
         }
         localObject = (TableRow)localObject;
-        m = i % this.nlH;
+        m = i % this.pQW;
         int n = ((TableRow)localObject).getChildCount();
         if (n > m) {
           break label237;
@@ -62,7 +62,7 @@ public abstract class a
         if (j == 0) {
           localView1 = ((TableRow)localObject).getChildAt(m);
         }
-        localView2 = L(localView1, i);
+        localView2 = ac(localView1, i);
         if (j == 0) {
           break label242;
         }
@@ -75,7 +75,7 @@ public abstract class a
         break;
         localObject = new TableRow(this.mContext);
         ((TableRow)localObject).setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -2));
-        this.nlI.getMTable().addView((View)localObject, 0);
+        this.pQX.getMTable().addView((View)localObject, 0);
         break label93;
         label237:
         j = 0;
@@ -88,8 +88,10 @@ public abstract class a
         }
       }
     }
-    y.v(TAG, "mTable rows count : " + this.nlI.getMTable().getChildCount());
+    ab.v(TAG, "mTable rows count : " + this.pQX.getMTable().getChildCount());
   }
+  
+  public abstract View ac(View paramView, int paramInt);
   
   public abstract int getCount();
 }

@@ -1,381 +1,366 @@
 package com.tencent.mm.plugin.appbrand.jsapi.d;
 
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.model.v.b;
 import com.tencent.mm.plugin.appbrand.widget.input.d.f;
 import java.lang.ref.WeakReference;
 
 abstract class a<P extends f>
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.page.v>
 {
-  protected static void I(int paramInt, String paramString)
+  protected static void T(int paramInt, String paramString)
   {
-    u.Hc().v("AppBrandJsInput@" + paramInt, true).S("passing_data", paramString);
+    com.tencent.mm.model.v.aae().z("AppBrandJsInput@".concat(String.valueOf(paramInt)), true).ai("passing_data", paramString);
   }
   
-  protected static void a(int paramInt, q paramq)
+  protected static void a(int paramInt, com.tencent.mm.plugin.appbrand.page.v paramv)
   {
-    if (paramq == null) {
+    if (paramv == null) {
       return;
     }
-    u.Hc().v("AppBrandJsInput@" + paramInt, true).h("webview_reference", new WeakReference(paramq));
+    com.tencent.mm.model.v.aae().z("AppBrandJsInput@".concat(String.valueOf(paramInt)), true).i("webview_reference", new WeakReference(paramv));
   }
   
-  protected static String lr(int paramInt)
+  protected static String ob(int paramInt)
   {
-    return u.Hc().v("AppBrandJsInput@" + paramInt, true).getString("passing_data", "");
-  }
-  
-  protected static q ls(int paramInt)
-  {
-    Object localObject = u.Hc().ih("AppBrandJsInput@" + paramInt);
-    if (localObject == null) {
-      return null;
-    }
-    localObject = (WeakReference)((u.b)localObject).get("webview_reference", null);
-    if (localObject == null) {
-      return null;
-    }
-    return (q)((WeakReference)localObject).get();
+    return com.tencent.mm.model.v.aae().z("AppBrandJsInput@".concat(String.valueOf(paramInt)), true).getString("passing_data", "");
   }
   
   /* Error */
-  protected boolean a(P paramP, org.json.JSONObject paramJSONObject, q paramq, int paramInt)
+  protected boolean a(P paramP, org.json.JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.page.v paramv, int paramInt)
   {
     // Byte code:
-    //   0: new 88	org/json/JSONObject
+    //   0: new 69	org/json/JSONObject
     //   3: dup
     //   4: aload_2
-    //   5: ldc 90
-    //   7: invokevirtual 93	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   10: invokespecial 94	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   5: ldc 71
+    //   7: invokevirtual 73	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   10: invokespecial 76	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   13: astore 5
     //   15: aload_1
     //   16: aload 5
-    //   18: ldc 96
-    //   20: invokestatic 102	com/tencent/mm/plugin/appbrand/u/h:i	(Lorg/json/JSONObject;Ljava/lang/String;)I
-    //   23: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   26: putfield 114	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyy	Ljava/lang/Integer;
+    //   18: ldc 78
+    //   20: invokestatic 84	com/tencent/mm/plugin/appbrand/s/g:g	(Lorg/json/JSONObject;Ljava/lang/String;)I
+    //   23: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   26: putfield 95	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqI	Ljava/lang/Integer;
     //   29: aload_1
     //   30: aload 5
-    //   32: ldc 116
-    //   34: invokestatic 102	com/tencent/mm/plugin/appbrand/u/h:i	(Lorg/json/JSONObject;Ljava/lang/String;)I
-    //   37: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   40: putfield 119	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyz	Ljava/lang/Integer;
+    //   32: ldc 97
+    //   34: invokestatic 84	com/tencent/mm/plugin/appbrand/s/g:g	(Lorg/json/JSONObject;Ljava/lang/String;)I
+    //   37: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   40: putfield 100	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqJ	Ljava/lang/Integer;
     //   43: aload_1
     //   44: aload 5
-    //   46: ldc 121
-    //   48: invokestatic 102	com/tencent/mm/plugin/appbrand/u/h:i	(Lorg/json/JSONObject;Ljava/lang/String;)I
-    //   51: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   54: putfield 124	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyA	Ljava/lang/Integer;
+    //   46: ldc 102
+    //   48: invokestatic 84	com/tencent/mm/plugin/appbrand/s/g:g	(Lorg/json/JSONObject;Ljava/lang/String;)I
+    //   51: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   54: putfield 105	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqK	Ljava/lang/Integer;
     //   57: aload_1
     //   58: aload 5
-    //   60: ldc 126
-    //   62: invokestatic 102	com/tencent/mm/plugin/appbrand/u/h:i	(Lorg/json/JSONObject;Ljava/lang/String;)I
-    //   65: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   68: putfield 129	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyB	Ljava/lang/Integer;
+    //   60: ldc 107
+    //   62: invokestatic 84	com/tencent/mm/plugin/appbrand/s/g:g	(Lorg/json/JSONObject;Ljava/lang/String;)I
+    //   65: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   68: putfield 110	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqL	Ljava/lang/Integer;
     //   71: aload 5
     //   73: ifnonnull +78 -> 151
     //   76: aload_0
-    //   77: invokevirtual 133	com/tencent/mm/plugin/appbrand/jsapi/d/a:aiT	()Z
+    //   77: invokevirtual 114	com/tencent/mm/plugin/appbrand/jsapi/d/a:aCZ	()Z
     //   80: ifne +264 -> 344
-    //   83: ldc 135
-    //   85: ldc 137
-    //   87: invokestatic 143	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   83: ldc 116
+    //   85: ldc 118
+    //   87: invokestatic 124	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   90: aload_3
     //   91: iload 4
     //   93: aload_0
-    //   94: ldc 145
+    //   94: ldc 126
     //   96: aconst_null
-    //   97: invokevirtual 150	com/tencent/mm/plugin/appbrand/jsapi/i:h	(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
-    //   100: invokevirtual 153	com/tencent/mm/plugin/appbrand/page/q:C	(ILjava/lang/String;)V
+    //   97: invokevirtual 132	com/tencent/mm/plugin/appbrand/jsapi/m:j	(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+    //   100: invokevirtual 137	com/tencent/mm/plugin/appbrand/page/v:h	(ILjava/lang/String;)V
     //   103: iconst_0
     //   104: ireturn
     //   105: astore 6
     //   107: aconst_null
     //   108: astore 5
     //   110: aload_0
-    //   111: invokevirtual 133	com/tencent/mm/plugin/appbrand/jsapi/d/a:aiT	()Z
+    //   111: invokevirtual 114	com/tencent/mm/plugin/appbrand/jsapi/d/a:aCZ	()Z
     //   114: ifne -43 -> 71
-    //   117: ldc 135
-    //   119: ldc 155
+    //   117: ldc 116
+    //   119: ldc 139
     //   121: iconst_1
-    //   122: anewarray 157	java/lang/Object
+    //   122: anewarray 141	java/lang/Object
     //   125: dup
     //   126: iconst_0
     //   127: aload 6
-    //   129: invokestatic 163	com/tencent/mm/sdk/platformtools/bk:j	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   129: invokestatic 147	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   132: aastore
-    //   133: invokestatic 166	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   133: invokestatic 150	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   136: aload_3
     //   137: iload 4
     //   139: aload_0
-    //   140: ldc 145
+    //   140: ldc 126
     //   142: aconst_null
-    //   143: invokevirtual 150	com/tencent/mm/plugin/appbrand/jsapi/i:h	(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
-    //   146: invokevirtual 153	com/tencent/mm/plugin/appbrand/page/q:C	(ILjava/lang/String;)V
+    //   143: invokevirtual 132	com/tencent/mm/plugin/appbrand/jsapi/m:j	(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+    //   146: invokevirtual 137	com/tencent/mm/plugin/appbrand/page/v:h	(ILjava/lang/String;)V
     //   149: iconst_0
     //   150: ireturn
     //   151: aload_1
     //   152: aload 5
-    //   154: ldc 168
+    //   154: ldc 152
     //   156: aconst_null
-    //   157: invokevirtual 171	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   160: putfield 175	com/tencent/mm/plugin/appbrand/widget/input/d/f:fLT	Ljava/lang/String;
+    //   157: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   160: putfield 159	com/tencent/mm/plugin/appbrand/widget/input/d/f:hfd	Ljava/lang/String;
     //   163: aload_1
     //   164: aload 5
-    //   166: ldc 177
-    //   168: invokestatic 102	com/tencent/mm/plugin/appbrand/u/h:i	(Lorg/json/JSONObject;Ljava/lang/String;)I
-    //   171: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   174: putfield 180	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyC	Ljava/lang/Integer;
+    //   166: ldc 161
+    //   168: invokestatic 84	com/tencent/mm/plugin/appbrand/s/g:g	(Lorg/json/JSONObject;Ljava/lang/String;)I
+    //   171: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   174: putfield 164	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqM	Ljava/lang/Integer;
     //   177: aload_1
     //   178: aload 5
-    //   180: ldc 182
-    //   182: invokestatic 102	com/tencent/mm/plugin/appbrand/u/h:i	(Lorg/json/JSONObject;Ljava/lang/String;)I
-    //   185: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   188: putfield 185	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyD	Ljava/lang/Integer;
+    //   180: ldc 166
+    //   182: invokestatic 84	com/tencent/mm/plugin/appbrand/s/g:g	(Lorg/json/JSONObject;Ljava/lang/String;)I
+    //   185: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   188: putfield 169	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqN	Ljava/lang/Integer;
     //   191: aload_1
     //   192: aload 5
-    //   194: ldc 187
+    //   194: ldc 171
     //   196: aconst_null
-    //   197: invokevirtual 171	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   200: putfield 190	com/tencent/mm/plugin/appbrand/widget/input/d/f:fMb	Ljava/lang/String;
+    //   197: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   200: putfield 174	com/tencent/mm/plugin/appbrand/widget/input/d/f:hfl	Ljava/lang/String;
     //   203: aload_1
     //   204: aload 5
-    //   206: ldc 192
-    //   208: invokevirtual 93	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   211: ldc 193
-    //   213: invokestatic 197	com/tencent/mm/plugin/appbrand/u/h:bd	(Ljava/lang/String;I)I
-    //   216: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   219: putfield 200	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyF	Ljava/lang/Integer;
+    //   206: ldc 176
+    //   208: invokevirtual 73	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   211: ldc 177
+    //   213: invokestatic 181	com/tencent/mm/plugin/appbrand/s/g:bA	(Ljava/lang/String;I)I
+    //   216: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   219: putfield 184	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqP	Ljava/lang/Integer;
     //   222: aload_1
     //   223: aload 5
-    //   225: ldc 202
-    //   227: invokevirtual 93	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   225: ldc 186
+    //   227: invokevirtual 73	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   230: iconst_0
-    //   231: invokestatic 197	com/tencent/mm/plugin/appbrand/u/h:bd	(Ljava/lang/String;I)I
-    //   234: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   237: putfield 205	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyE	Ljava/lang/Integer;
+    //   231: invokestatic 181	com/tencent/mm/plugin/appbrand/s/g:bA	(Ljava/lang/String;I)I
+    //   234: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   237: putfield 189	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqO	Ljava/lang/Integer;
     //   240: aload_1
     //   241: aload 5
-    //   243: ldc 207
-    //   245: invokestatic 211	com/tencent/mm/plugin/appbrand/u/h:k	(Lorg/json/JSONObject;Ljava/lang/String;)F
-    //   248: invokestatic 216	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   251: putfield 220	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyG	Ljava/lang/Float;
+    //   243: ldc 191
+    //   245: invokestatic 194	com/tencent/mm/plugin/appbrand/s/g:i	(Lorg/json/JSONObject;Ljava/lang/String;)F
+    //   248: invokestatic 199	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   251: putfield 203	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqQ	Ljava/lang/Float;
     //   254: aload_1
     //   255: aload 5
-    //   257: ldc 222
-    //   259: invokestatic 102	com/tencent/mm/plugin/appbrand/u/h:i	(Lorg/json/JSONObject;Ljava/lang/String;)I
-    //   262: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   265: putfield 225	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyS	Ljava/lang/Integer;
+    //   257: ldc 205
+    //   259: invokestatic 84	com/tencent/mm/plugin/appbrand/s/g:g	(Lorg/json/JSONObject;Ljava/lang/String;)I
+    //   262: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   265: putfield 208	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrc	Ljava/lang/Integer;
     //   268: aload_1
     //   269: aload 5
-    //   271: ldc 227
-    //   273: invokevirtual 231	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
-    //   276: invokestatic 237	com/tencent/mm/plugin/appbrand/widget/input/d/d:bf	(Ljava/lang/Object;)Ljava/lang/Integer;
-    //   279: putfield 240	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyW	Ljava/lang/Integer;
+    //   271: ldc 210
+    //   273: invokevirtual 214	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   276: invokestatic 220	com/tencent/mm/plugin/appbrand/widget/input/d/d:bk	(Ljava/lang/Object;)Ljava/lang/Integer;
+    //   279: putfield 223	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrg	Ljava/lang/Integer;
     //   282: aload_1
-    //   283: getfield 240	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyW	Ljava/lang/Integer;
+    //   283: getfield 223	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrg	Ljava/lang/Integer;
     //   286: ifnull +20 -> 306
     //   289: aload_1
     //   290: aload_1
-    //   291: getfield 240	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyW	Ljava/lang/Integer;
-    //   294: invokevirtual 244	java/lang/Integer:intValue	()I
-    //   297: invokestatic 248	com/tencent/mm/plugin/appbrand/u/h:my	(I)I
-    //   300: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   303: putfield 240	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyW	Ljava/lang/Integer;
+    //   291: getfield 223	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrg	Ljava/lang/Integer;
+    //   294: invokevirtual 227	java/lang/Integer:intValue	()I
+    //   297: invokestatic 231	com/tencent/mm/plugin/appbrand/s/g:pO	(I)I
+    //   300: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   303: putfield 223	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrg	Ljava/lang/Integer;
     //   306: aload_1
     //   307: aload 5
-    //   309: ldc 250
-    //   311: invokevirtual 231	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
-    //   314: invokestatic 237	com/tencent/mm/plugin/appbrand/widget/input/d/d:bf	(Ljava/lang/Object;)Ljava/lang/Integer;
-    //   317: putfield 253	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyX	Ljava/lang/Integer;
+    //   309: ldc 233
+    //   311: invokevirtual 214	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   314: invokestatic 220	com/tencent/mm/plugin/appbrand/widget/input/d/d:bk	(Ljava/lang/Object;)Ljava/lang/Integer;
+    //   317: putfield 236	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrh	Ljava/lang/Integer;
     //   320: aload_1
-    //   321: getfield 253	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyX	Ljava/lang/Integer;
+    //   321: getfield 236	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrh	Ljava/lang/Integer;
     //   324: ifnull +20 -> 344
     //   327: aload_1
     //   328: aload_1
-    //   329: getfield 253	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyX	Ljava/lang/Integer;
-    //   332: invokevirtual 244	java/lang/Integer:intValue	()I
-    //   335: invokestatic 248	com/tencent/mm/plugin/appbrand/u/h:my	(I)I
-    //   338: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   341: putfield 253	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyX	Ljava/lang/Integer;
+    //   329: getfield 236	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrh	Ljava/lang/Integer;
+    //   332: invokevirtual 227	java/lang/Integer:intValue	()I
+    //   335: invokestatic 231	com/tencent/mm/plugin/appbrand/s/g:pO	(I)I
+    //   338: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   341: putfield 236	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrh	Ljava/lang/Integer;
     //   344: aload_1
     //   345: aload_2
-    //   346: ldc 255
-    //   348: invokevirtual 259	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
-    //   351: invokestatic 264	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   354: putfield 268	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyQ	Ljava/lang/Boolean;
+    //   346: ldc 238
+    //   348: invokevirtual 242	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
+    //   351: invokestatic 247	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   354: putfield 251	com/tencent/mm/plugin/appbrand/widget/input/d/f:jra	Ljava/lang/Boolean;
     //   357: aload_1
     //   358: aload_2
-    //   359: ldc_w 270
-    //   362: aload_2
-    //   363: ldc_w 272
-    //   366: aconst_null
-    //   367: invokevirtual 171	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   370: invokevirtual 171	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   373: putfield 275	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyx	Ljava/lang/String;
-    //   376: aload_1
-    //   377: aload_2
-    //   378: ldc_w 277
-    //   381: invokevirtual 281	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   384: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   387: putfield 284	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyH	Ljava/lang/Integer;
-    //   390: aload_1
-    //   391: aload_2
-    //   392: ldc_w 286
-    //   395: invokevirtual 288	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   398: putfield 291	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyI	Ljava/lang/String;
-    //   401: new 88	org/json/JSONObject
-    //   404: dup
-    //   405: aload_2
-    //   406: ldc_w 293
-    //   409: invokevirtual 93	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   412: invokespecial 94	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   415: astore_3
-    //   416: aload_1
-    //   417: aload_3
-    //   418: ldc 192
-    //   420: invokevirtual 93	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   423: invokestatic 298	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   426: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   429: putfield 301	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyL	Ljava/lang/Integer;
-    //   432: aload_1
-    //   433: aload_3
-    //   434: ldc 207
-    //   436: invokestatic 102	com/tencent/mm/plugin/appbrand/u/h:i	(Lorg/json/JSONObject;Ljava/lang/String;)I
-    //   439: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   442: putfield 304	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyK	Ljava/lang/Integer;
-    //   445: aload_1
-    //   446: aload_3
-    //   447: ldc 168
-    //   449: ldc_w 306
-    //   452: invokevirtual 171	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   455: putfield 309	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyJ	Ljava/lang/String;
-    //   458: aload_1
-    //   459: aload_2
-    //   460: ldc_w 311
-    //   463: invokevirtual 259	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
-    //   466: invokestatic 264	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   469: putfield 314	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyN	Ljava/lang/Boolean;
-    //   472: aload_1
-    //   473: aload_2
-    //   474: ldc_w 316
-    //   477: invokevirtual 259	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
-    //   480: invokestatic 264	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   483: putfield 319	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyM	Ljava/lang/Boolean;
-    //   486: aload_1
-    //   487: aload_2
-    //   488: ldc_w 321
-    //   491: invokevirtual 259	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
-    //   494: invokestatic 264	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   497: putfield 324	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyR	Ljava/lang/Boolean;
-    //   500: aload_1
-    //   501: aload_2
-    //   502: ldc_w 326
-    //   505: invokevirtual 288	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   508: invokestatic 332	com/tencent/mm/plugin/appbrand/widget/input/d/b:xc	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/widget/input/d/b;
-    //   511: putfield 336	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyT	Lcom/tencent/mm/plugin/appbrand/widget/input/d/b;
-    //   514: aload_1
-    //   515: aload_2
-    //   516: ldc_w 338
-    //   519: invokevirtual 259	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
-    //   522: invokestatic 264	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   525: putfield 341	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyU	Ljava/lang/Boolean;
-    //   528: aload_1
-    //   529: aload_2
-    //   530: ldc_w 343
-    //   533: invokevirtual 231	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
-    //   536: invokestatic 349	com/tencent/mm/plugin/appbrand/v/h:aY	(Ljava/lang/Object;)Ljava/lang/Boolean;
-    //   539: putfield 352	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyV	Ljava/lang/Boolean;
-    //   542: iconst_1
-    //   543: ireturn
-    //   544: astore_3
-    //   545: aload_1
-    //   546: aconst_null
-    //   547: putfield 225	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyS	Ljava/lang/Integer;
-    //   550: goto -282 -> 268
-    //   553: astore_3
-    //   554: aload_1
-    //   555: aconst_null
-    //   556: putfield 314	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyN	Ljava/lang/Boolean;
-    //   559: goto -87 -> 472
-    //   562: astore_3
-    //   563: aload_1
-    //   564: aconst_null
-    //   565: putfield 319	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyM	Ljava/lang/Boolean;
-    //   568: goto -82 -> 486
-    //   571: astore_3
-    //   572: aload_1
-    //   573: aconst_null
-    //   574: putfield 324	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyR	Ljava/lang/Boolean;
-    //   577: goto -77 -> 500
-    //   580: astore_3
-    //   581: aload_1
-    //   582: aconst_null
-    //   583: putfield 341	com/tencent/mm/plugin/appbrand/widget/input/d/f:hyU	Ljava/lang/Boolean;
-    //   586: goto -58 -> 528
-    //   589: astore_3
-    //   590: goto -132 -> 458
-    //   593: astore_3
-    //   594: goto -204 -> 390
-    //   597: astore_3
-    //   598: goto -241 -> 357
-    //   601: astore_3
-    //   602: goto -348 -> 254
-    //   605: astore_3
-    //   606: goto -366 -> 240
-    //   609: astore_3
-    //   610: goto -388 -> 222
-    //   613: astore_3
-    //   614: goto -423 -> 191
-    //   617: astore_3
-    //   618: goto -441 -> 177
-    //   621: astore 6
-    //   623: goto -513 -> 110
-    //   626: astore 6
-    //   628: goto -585 -> 43
+    //   359: ldc 253
+    //   361: aload_2
+    //   362: ldc 255
+    //   364: aconst_null
+    //   365: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   368: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   371: putfield 258	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqH	Ljava/lang/String;
+    //   374: aload_1
+    //   375: aload_2
+    //   376: ldc_w 260
+    //   379: invokevirtual 264	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   382: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   385: putfield 267	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqR	Ljava/lang/Integer;
+    //   388: aload_1
+    //   389: aload_2
+    //   390: ldc_w 269
+    //   393: invokevirtual 271	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   396: putfield 274	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqS	Ljava/lang/String;
+    //   399: new 69	org/json/JSONObject
+    //   402: dup
+    //   403: aload_2
+    //   404: ldc_w 276
+    //   407: invokevirtual 73	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   410: invokespecial 76	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   413: astore_3
+    //   414: aload_1
+    //   415: aload_3
+    //   416: ldc 176
+    //   418: invokevirtual 73	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   421: invokestatic 279	com/tencent/mm/plugin/appbrand/s/g:Fn	(Ljava/lang/String;)I
+    //   424: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   427: putfield 282	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqV	Ljava/lang/Integer;
+    //   430: aload_1
+    //   431: aload_3
+    //   432: ldc 191
+    //   434: invokestatic 84	com/tencent/mm/plugin/appbrand/s/g:g	(Lorg/json/JSONObject;Ljava/lang/String;)I
+    //   437: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   440: putfield 285	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqU	Ljava/lang/Integer;
+    //   443: aload_1
+    //   444: aload_3
+    //   445: ldc 152
+    //   447: ldc_w 287
+    //   450: invokevirtual 155	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   453: putfield 290	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqT	Ljava/lang/String;
+    //   456: aload_1
+    //   457: aload_2
+    //   458: ldc_w 292
+    //   461: invokevirtual 242	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
+    //   464: invokestatic 247	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   467: putfield 295	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqX	Ljava/lang/Boolean;
+    //   470: aload_1
+    //   471: aload_2
+    //   472: ldc_w 297
+    //   475: invokevirtual 242	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
+    //   478: invokestatic 247	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   481: putfield 300	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqW	Ljava/lang/Boolean;
+    //   484: aload_1
+    //   485: aload_2
+    //   486: ldc_w 302
+    //   489: invokevirtual 242	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
+    //   492: invokestatic 247	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   495: putfield 305	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrb	Ljava/lang/Boolean;
+    //   498: aload_1
+    //   499: aload_2
+    //   500: ldc_w 307
+    //   503: invokevirtual 271	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   506: invokestatic 313	com/tencent/mm/plugin/appbrand/widget/input/d/b:FP	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/widget/input/d/b;
+    //   509: putfield 317	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrd	Lcom/tencent/mm/plugin/appbrand/widget/input/d/b;
+    //   512: aload_1
+    //   513: aload_2
+    //   514: ldc_w 319
+    //   517: invokevirtual 242	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
+    //   520: invokestatic 247	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   523: putfield 322	com/tencent/mm/plugin/appbrand/widget/input/d/f:jre	Ljava/lang/Boolean;
+    //   526: aload_1
+    //   527: aload_2
+    //   528: ldc_w 324
+    //   531: invokevirtual 214	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   534: invokestatic 330	com/tencent/mm/plugin/appbrand/t/l:bv	(Ljava/lang/Object;)Ljava/lang/Boolean;
+    //   537: putfield 333	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrf	Ljava/lang/Boolean;
+    //   540: iconst_1
+    //   541: ireturn
+    //   542: astore_3
+    //   543: aload_1
+    //   544: aconst_null
+    //   545: putfield 208	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrc	Ljava/lang/Integer;
+    //   548: goto -280 -> 268
+    //   551: astore_3
+    //   552: aload_1
+    //   553: aconst_null
+    //   554: putfield 295	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqX	Ljava/lang/Boolean;
+    //   557: goto -87 -> 470
+    //   560: astore_3
+    //   561: aload_1
+    //   562: aconst_null
+    //   563: putfield 300	com/tencent/mm/plugin/appbrand/widget/input/d/f:jqW	Ljava/lang/Boolean;
+    //   566: goto -82 -> 484
+    //   569: astore_3
+    //   570: aload_1
+    //   571: aconst_null
+    //   572: putfield 305	com/tencent/mm/plugin/appbrand/widget/input/d/f:jrb	Ljava/lang/Boolean;
+    //   575: goto -77 -> 498
+    //   578: astore_3
+    //   579: aload_1
+    //   580: aconst_null
+    //   581: putfield 322	com/tencent/mm/plugin/appbrand/widget/input/d/f:jre	Ljava/lang/Boolean;
+    //   584: goto -58 -> 526
+    //   587: astore_3
+    //   588: goto -132 -> 456
+    //   591: astore_3
+    //   592: goto -204 -> 388
+    //   595: astore_3
+    //   596: goto -239 -> 357
+    //   599: astore_3
+    //   600: goto -346 -> 254
+    //   603: astore_3
+    //   604: goto -364 -> 240
+    //   607: astore_3
+    //   608: goto -386 -> 222
+    //   611: astore_3
+    //   612: goto -421 -> 191
+    //   615: astore_3
+    //   616: goto -439 -> 177
+    //   619: astore 6
+    //   621: goto -511 -> 110
+    //   624: astore 6
+    //   626: goto -583 -> 43
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	631	0	this	a
-    //   0	631	1	paramP	P
-    //   0	631	2	paramJSONObject	org.json.JSONObject
-    //   0	631	3	paramq	q
-    //   0	631	4	paramInt	int
+    //   0	629	0	this	a
+    //   0	629	1	paramP	P
+    //   0	629	2	paramJSONObject	org.json.JSONObject
+    //   0	629	3	paramv	com.tencent.mm.plugin.appbrand.page.v
+    //   0	629	4	paramInt	int
     //   13	295	5	localJSONObject	org.json.JSONObject
     //   105	23	6	localException1	java.lang.Exception
-    //   621	1	6	localException2	java.lang.Exception
-    //   626	1	6	localException3	java.lang.Exception
+    //   619	1	6	localException2	java.lang.Exception
+    //   624	1	6	localException3	java.lang.Exception
     // Exception table:
     //   from	to	target	type
     //   0	15	105	java/lang/Exception
-    //   254	268	544	java/lang/Exception
-    //   458	472	553	org/json/JSONException
-    //   472	486	562	java/lang/Exception
-    //   486	500	571	java/lang/Exception
-    //   514	528	580	java/lang/Exception
-    //   401	458	589	java/lang/Exception
-    //   376	390	593	java/lang/Exception
-    //   344	357	597	java/lang/Exception
-    //   240	254	601	java/lang/Exception
-    //   222	240	605	java/lang/Exception
-    //   203	222	609	java/lang/Exception
-    //   177	191	613	java/lang/Exception
-    //   163	177	617	java/lang/Exception
-    //   15	29	621	java/lang/Exception
-    //   43	71	621	java/lang/Exception
-    //   29	43	626	java/lang/Exception
+    //   254	268	542	java/lang/Exception
+    //   456	470	551	org/json/JSONException
+    //   470	484	560	java/lang/Exception
+    //   484	498	569	java/lang/Exception
+    //   512	526	578	java/lang/Exception
+    //   399	456	587	java/lang/Exception
+    //   374	388	591	java/lang/Exception
+    //   344	357	595	java/lang/Exception
+    //   240	254	599	java/lang/Exception
+    //   222	240	603	java/lang/Exception
+    //   203	222	607	java/lang/Exception
+    //   177	191	611	java/lang/Exception
+    //   163	177	615	java/lang/Exception
+    //   15	29	619	java/lang/Exception
+    //   43	71	619	java/lang/Exception
+    //   29	43	624	java/lang/Exception
   }
   
-  protected boolean aiT()
+  protected boolean aCZ()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.d.a
  * JD-Core Version:    0.7.0.1
  */

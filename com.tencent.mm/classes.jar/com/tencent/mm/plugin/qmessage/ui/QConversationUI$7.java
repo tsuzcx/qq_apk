@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qmessage.ui;
 
 import android.view.View;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
 
 final class QConversationUI$7
@@ -9,9 +10,11 @@ final class QConversationUI$7
 {
   QConversationUI$7(QConversationUI paramQConversationUI) {}
   
-  public final void D(View paramView, int paramInt)
+  public final void r(View paramView, int paramInt1, int paramInt2)
   {
-    QConversationUI.c(this.ncU).performItemClick(paramView, paramInt, 0L);
+    AppMethodBeat.i(24133);
+    QConversationUI.c(this.pIm).performItemClick(paramView, paramInt1, paramInt2);
+    AppMethodBeat.o(24133);
   }
 }
 

@@ -1,20 +1,12 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
+import com.tencent.mm.z.a.d;
+import com.tencent.mm.z.a.d.a;
+
 final class g$6
-  implements Runnable
+  implements d.a<d>
 {
-  g$6(g paramg, i parami) {}
-  
-  public final void run()
-  {
-    if (this.rzk.rAO.equals("login")) {
-      g.a(this.rzi, this.rzk, g.cgz());
-    }
-    while (!this.rzk.rAO.equals("authorize")) {
-      return;
-    }
-    g.b(this.rzi, this.rzk, g.cgz());
-  }
+  g$6(g paramg, i parami, g.a parama, int paramInt) {}
 }
 
 

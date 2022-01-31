@@ -1,22 +1,23 @@
 package com.tencent.mm.ui.contact;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.hx;
-import com.tencent.mm.h.a.hx.b;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.bto;
-import com.tencent.mm.sdk.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.WorkerProfile;
+import com.tencent.mm.g.a.ib;
+import com.tencent.mm.g.a.ib.b;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.plugin.sns.b.h;
+import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.mm.protocal.protobuf.bwc;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.MaskLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,101 +25,145 @@ import java.util.LinkedList;
 public class SnsLabelContactListUI
   extends MMActivity
 {
-  private ListView lBK;
-  private bto ojd;
-  private SnsLabelContactListUI.a vNP;
-  private ArrayList<String> vNQ = new ArrayList();
-  private int vNR;
-  private String vNS;
-  private SnsLabelContactListUI.b vNT;
+  private String AfA;
+  private SnsLabelContactListUI.b AfB;
+  private SnsLabelContactListUI.a Afx;
+  private ArrayList<String> Afy;
+  private int Afz;
+  private ListView nYW;
+  private SnsObject qXo;
   
-  private void cHS()
+  public SnsLabelContactListUI()
   {
+    AppMethodBeat.i(33948);
+    this.Afy = new ArrayList();
+    AppMethodBeat.o(33948);
+  }
+  
+  private void dMm()
+  {
+    AppMethodBeat.i(33950);
     Iterator localIterator;
-    if (this.ojd.ttI == 3)
+    if (this.qXo.ExtFlag == 3)
     {
-      this.vNS = getString(R.l.sns_label_can_not_see);
-      localIterator = this.ojd.tKj.iterator();
+      this.AfA = getString(2131303842);
+      localIterator = this.qXo.BlackList.iterator();
       while (localIterator.hasNext()) {
-        this.vNQ.add(((bml)localIterator.next()).tFO);
+        this.Afy.add(((bwc)localIterator.next()).xJE);
+      }
+      AppMethodBeat.o(33950);
+      return;
+    }
+    if (this.qXo.ExtFlag == 5)
+    {
+      this.AfA = getString(2131303843);
+      localIterator = this.qXo.GroupUser.iterator();
+      while (localIterator.hasNext()) {
+        this.Afy.add(((bwc)localIterator.next()).xJE);
       }
     }
-    if (this.ojd.ttI == 5)
-    {
-      this.vNS = getString(R.l.sns_label_can_see);
-      localIterator = this.ojd.tsx.iterator();
-      while (localIterator.hasNext()) {
-        this.vNQ.add(((bml)localIterator.next()).tFO);
-      }
-    }
+    AppMethodBeat.o(33950);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.address;
+    return 2130968639;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(this.vNS);
-    findViewById(R.h.loading_tips_area).setVisibility(8);
-    this.lBK = ((ListView)findViewById(R.h.address_contactlist));
-    ((TextView)findViewById(R.h.empty_blacklist_tip_tv)).setVisibility(8);
-    findViewById(R.h.address_scrollbar).setVisibility(8);
-    this.lBK.setBackgroundColor(getResources().getColor(R.e.white));
-    ((View)this.lBK.getParent()).setBackgroundColor(getResources().getColor(R.e.white));
+    AppMethodBeat.i(33951);
+    setMMTitle(this.AfA);
+    findViewById(2131828467).setVisibility(8);
+    this.nYW = ((ListView)findViewById(2131821074));
+    ((TextView)findViewById(2131821076)).setVisibility(8);
+    findViewById(2131821077).setVisibility(8);
+    this.nYW.setBackgroundColor(getResources().getColor(2131690709));
+    ((View)this.nYW.getParent()).setBackgroundColor(getResources().getColor(2131690709));
     setBackBtn(new SnsLabelContactListUI.1(this));
     showOptionMenu(false);
-    if ((this.vNQ != null) && (this.vNQ.size() != 0))
+    if ((this.Afy != null) && (this.Afy.size() != 0))
     {
-      this.vNP = new SnsLabelContactListUI.a(this, this.vNQ);
-      this.lBK.setAdapter(this.vNP);
-      this.lBK.setVisibility(0);
-      this.lBK.setOnItemClickListener(new SnsLabelContactListUI.2(this));
+      this.Afx = new SnsLabelContactListUI.a(this, this.Afy);
+      this.nYW.setAdapter(this.Afx);
+      this.nYW.setVisibility(0);
+      this.nYW.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      {
+        public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+        {
+          AppMethodBeat.i(33939);
+          paramAnonymousView = new Intent();
+          paramAnonymousAdapterView = (com.tencent.mm.n.a)SnsLabelContactListUI.a(SnsLabelContactListUI.this).getItem(paramAnonymousInt);
+          h localh = com.tencent.mm.plugin.sns.b.n.raV;
+          if (localh == null)
+          {
+            SnsLabelContactListUI.this.finish();
+            AppMethodBeat.o(33939);
+            return;
+          }
+          paramAnonymousView = localh.e(paramAnonymousView, paramAnonymousAdapterView.field_username);
+          if (paramAnonymousView == null)
+          {
+            SnsLabelContactListUI.this.finish();
+            AppMethodBeat.o(33939);
+            return;
+          }
+          paramAnonymousView.putExtra("Contact_User", paramAnonymousAdapterView.field_username);
+          WorkerProfile.BW().bZM.c(paramAnonymousView, SnsLabelContactListUI.this);
+          AppMethodBeat.o(33939);
+        }
+      });
     }
+    AppMethodBeat.o(33951);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(33949);
     super.onCreate(paramBundle);
-    this.vNT = new SnsLabelContactListUI.b(this, (byte)0);
-    a.udP.c(this.vNT);
-    this.vNR = getIntent().getIntExtra("sns_label_sns_info", -1);
-    if (this.vNR == -1) {
-      finish();
-    }
-    do
+    this.AfB = new SnsLabelContactListUI.b(this, (byte)0);
+    com.tencent.mm.sdk.b.a.ymk.c(this.AfB);
+    this.Afz = getIntent().getIntExtra("sns_label_sns_info", -1);
+    if (this.Afz == -1)
     {
+      finish();
+      AppMethodBeat.o(33949);
       return;
-      paramBundle = new hx();
-      paramBundle.bPV.bLK = this.vNR;
-      a.udP.m(paramBundle);
-      this.ojd = paramBundle.bPW.bPX;
-    } while ((this.ojd == null) || (((this.ojd.ttI != 3) || (this.ojd.tKj == null) || (this.ojd.tKj.size() <= 0)) && ((this.ojd.ttI != 5) || (this.ojd.tsx == null) || (this.ojd.tsx.size() <= 0))));
-    cHS();
-    initView();
+    }
+    paramBundle = new ib();
+    paramBundle.cxo.cte = this.Afz;
+    com.tencent.mm.sdk.b.a.ymk.l(paramBundle);
+    this.qXo = paramBundle.cxp.cxq;
+    if ((this.qXo != null) && (((this.qXo.ExtFlag == 3) && (this.qXo.BlackList != null) && (this.qXo.BlackList.size() > 0)) || ((this.qXo.ExtFlag == 5) && (this.qXo.GroupUser != null) && (this.qXo.GroupUser.size() > 0))))
+    {
+      dMm();
+      initView();
+    }
+    AppMethodBeat.o(33949);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    a.udP.d(this.vNT);
+    AppMethodBeat.i(33953);
+    com.tencent.mm.sdk.b.a.ymk.d(this.AfB);
     super.onDestroy();
+    AppMethodBeat.o(33953);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(33952);
     super.onResume();
-    if (this.vNP != null) {
-      this.vNP.notifyDataSetChanged();
+    if (this.Afx != null) {
+      this.Afx.notifyDataSetChanged();
     }
+    AppMethodBeat.o(33952);
   }
   
-  private static final class c
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    TextView drB;
-    MaskLayout dsk;
-    TextView lvb;
-    TextView vNZ;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

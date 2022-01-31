@@ -1,114 +1,97 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.h;
-import com.tencent.mm.h.a.fr;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ba.b;
+import com.tencent.mm.ba.r;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.modelvoice.n;
-import com.tencent.mm.modelvoice.q;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.messenger.a.e;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bi;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.chatting.b.b.af;
-import com.tencent.mm.ui.chatting.b.b.ai;
-import com.tencent.mm.ui.chatting.b.b.g;
-import com.tencent.mm.ui.chatting.d;
-import com.tencent.mm.ui.chatting.e;
-import com.tencent.mm.ui.x;
+import com.tencent.mm.ui.chatting.AppBrandServiceChattingUI.AppBrandServiceChattingFmUI;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import java.lang.ref.WeakReference;
 
-public final class al
+final class al
+  implements aj.a
 {
-  public static void a(com.tencent.mm.ui.chatting.c.a parama, aw paramaw)
+  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.d.a parama1, bi parambi)
   {
-    if ((com.tencent.mm.r.a.bk(parama.vtz.getContext())) || (com.tencent.mm.r.a.bi(parama.vtz.getContext()))) {
-      y.d("MicroMsg.ChattingItemVoice", "voip is running, not play voice");
-    }
-    Object localObject;
-    do
+    AppMethodBeat.i(33284);
+    String str = parama1.getTalkerUserName();
+    parama = (aj.b)parama;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("conv_talker_username", str);
+    if ((parama1.zJz instanceof AppBrandServiceChattingUI.AppBrandServiceChattingFmUI))
     {
-      do
-      {
-        return;
-        au.Hx();
-        if (!c.isSDCardAvailable())
-        {
-          s.gM(parama.vtz.getContext());
-          return;
-        }
-      } while ((paramaw == null) || (paramaw.bWO == null));
-      localObject = new n(paramaw.bWO.field_content);
-      if ((ah.bl(paramaw.bWO.field_content)) || (((n)localObject).time == 0L))
-      {
-        Toast.makeText(parama.vtz.getContext(), R.l.chatting_data_broken, 0).show();
-        return;
+      paramInt = 10;
+      localBundle.putInt("scene", paramInt);
+      localBundle.putLong("msg_id", parambi.field_msgId);
+      localBundle.putLong("msg_sever_id", parambi.field_msgSvrId);
+      localBundle.putString("send_msg_username", parambi.field_talker);
+      localBundle.putString("local_session", parama1.zJC);
+      e locale = (e)g.E(e.class);
+      parambi = parambi.field_content;
+      WeakReference localWeakReference = new WeakReference(parama1.zJz.getContext());
+      new WeakReference(parama.zWS);
+      parambi = locale.a(parambi, localBundle, localWeakReference);
+      if ((parambi != null) && (parambi.length() != 0)) {
+        break label350;
       }
-      localObject = ((ai)parama.ac(ai.class)).cFx();
-    } while ((parama.ac(g.class) == null) || (localObject == null));
-    bi localbi = paramaw.bWO;
-    int i;
-    if (((ai)parama.ac(ai.class)).cFx().vhz != localbi.field_msgId)
-    {
-      parama = (af)parama.ac(af.class);
-      if (!parama.hX(localbi.field_msgId)) {
-        break label457;
+      parama.ngZ.setVisibility(8);
+      label186:
+      parambi = r.aiQ().tS(str);
+      aw.aaz();
+      paramInt = ((Integer)c.Ru().get(12311, Integer.valueOf(-2))).intValue();
+      if (((parambi == null) || (parambi.fMk == -2)) && ((parambi != null) || (paramInt == -2))) {
+        break label370;
       }
-      i = 7;
+      parama.zWS.setTextColor(parama1.zJz.getContext().getResources().getColor(2131689766));
+      parama.zWS.setBackground(parama1.zJz.getContext().getResources().getDrawable(2130838246));
     }
     for (;;)
     {
-      if (i != 0)
+      parama.zWS.setOnClickListener(new View.OnClickListener()
       {
-        parama = new fr();
-        parama.bMI.bMJ = 1;
-        parama.bMI.scene = i;
-        parama.bMI.fileName = localbi.field_imgPath;
-        com.tencent.mm.sdk.b.a.udP.m(parama);
-      }
-      i = paramaw.position;
-      parama = paramaw.bWO;
-      if ((parama == null) || (!parama.ctA())) {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(33283);
+          ab.d("MicroMsg.ChattingItemNewXmlSysImpl", "hy: textview clicked");
+          AppMethodBeat.o(33283);
+        }
+      });
+      parama.zWS.invalidate();
+      AppMethodBeat.o(33284);
+      return;
+      if (parama1.dJG())
+      {
+        paramInt = 2;
         break;
       }
-      paramaw = new n(parama.field_content);
-      if (((paramaw.time == 0L) && (parama.field_isSend == 0)) || ((parama.field_status == 1) && (parama.field_isSend == 1)) || ((parama.field_isSend == 0) && (paramaw.time == -1L))) {
+      if (t.nU(str))
+      {
+        paramInt = 7;
         break;
       }
-      ((d)localObject).cBW();
-      au.Hx();
-      paramaw = (Boolean)c.Dz().get(4115, null);
-      if ((paramaw == null) || (!paramaw.booleanValue()))
-      {
-        au.Hx();
-        c.Dz().o(4115, Boolean.valueOf(true));
-        ((d)localObject).cCc();
-        ((d)localObject).vhC = s.a(((d)localObject).byx.vtz.getActivity(), ((d)localObject).context.getString(R.l.chatting_music_volumn_change), 4000L);
-      }
-      if ((((d)localObject).jZC.isPlaying()) && (parama.field_msgId == ((d)localObject).vhz))
-      {
-        ((d)localObject).vhI = true;
-        ((d)localObject).cCb();
-        return;
-        label457:
-        if (parama.hU(localbi.field_msgId)) {
-          i = 6;
-        }
-      }
-      else
-      {
-        ((d)localObject).an(parama);
-        if ((parama.field_isSend == 0) && (!q.F(parama))) {
-          ((d)localObject).GI(i + 1);
-        }
-        ((d)localObject).ni(true);
-        return;
-      }
-      i = 0;
+      paramInt = 1;
+      break;
+      label350:
+      parama.ngZ.setVisibility(0);
+      parama.zWS.af(parambi);
+      break label186;
+      label370:
+      parama.zWS.setTextColor(parama1.zJz.getContext().getResources().getColor(2131690564));
+      parama.zWS.setBackground(parama1.zJz.getContext().getResources().getDrawable(2130838245));
     }
   }
 }

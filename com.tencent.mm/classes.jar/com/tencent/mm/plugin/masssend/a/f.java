@@ -1,22 +1,25 @@
 package com.tencent.mm.plugin.masssend.a;
 
 import android.content.ContentValues;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.m.a;
-import com.tencent.mm.ah.m.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.m.a;
+import com.tencent.mm.ai.m.b;
 import com.tencent.mm.compatible.util.g.a;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.t.b;
+import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.c.avy;
-import com.tencent.mm.protocal.c.avz;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.bcn;
+import com.tencent.mm.protocal.protobuf.bco;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.be;
 import junit.framework.Assert;
@@ -25,14 +28,14 @@ public final class f
   extends m
   implements k
 {
-  public com.tencent.mm.ah.b dmK;
-  private com.tencent.mm.ah.f dmL;
-  int eHJ = 0;
-  boolean edT = false;
-  private int ent;
-  g.a esm = null;
-  private a maN = null;
-  int retCode = 0;
+  private com.tencent.mm.ai.f callback;
+  g.a eMo;
+  boolean eUJ;
+  private int fDP;
+  int fXz;
+  private a oBm;
+  int retCode;
+  public com.tencent.mm.ai.b rr;
   
   public f(a parama, boolean paramBoolean)
   {
@@ -41,587 +44,610 @@ public final class f
   
   public f(a parama, boolean paramBoolean, int paramInt)
   {
-    this.maN = parama;
-    this.ent = paramInt;
-    parama.createTime = bk.UY();
+    AppMethodBeat.i(22738);
+    this.oBm = null;
+    this.eMo = null;
+    this.retCode = 0;
+    this.fXz = 0;
+    this.eUJ = false;
+    this.oBm = parama;
+    this.fDP = paramInt;
+    parama.createTime = bo.aoy();
     if (parama.msgType == 43)
     {
       parama.status = 104;
-      com.tencent.mm.modelvideo.o.Sr();
-      parama.maJ = t.nU(t.nT(parama.bgW()));
-      com.tencent.mm.modelvideo.o.Sr();
-      parama.bvi = t.nU(t.nS(parama.bgW()));
-      this.eHJ = 2500;
+      o.alE();
+      parama.oBi = t.vh(t.vg(parama.bOU()));
+      o.alE();
+      parama.bWt = t.vh(t.vf(parama.bOU()));
+      this.fXz = 2500;
       if (parama.videoSource == 2) {
-        this.eHJ = 2500;
+        this.fXz = 2500;
       }
     }
     Object localObject;
     for (;;)
     {
       localObject = new b.a();
-      ((b.a)localObject).ecH = new avy();
-      ((b.a)localObject).ecI = new avz();
+      ((b.a)localObject).fsX = new bcn();
+      ((b.a)localObject).fsY = new bco();
       ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/masssend";
-      ((b.a)localObject).ecG = 193;
-      ((b.a)localObject).ecJ = 84;
-      ((b.a)localObject).ecK = 1000000084;
-      this.dmK = ((b.a)localObject).Kt();
-      localObject = (avy)this.dmK.ecE.ecN;
-      ((avy)localObject).tru = com.tencent.mm.a.g.o(parama.bgY().getBytes());
-      ((avy)localObject).trF = parama.maG;
-      ((avy)localObject).trt = parama.bgY();
-      parama.eAX = bk.UY();
-      ((avy)localObject).trv = parama.bgV();
-      ((avy)localObject).kSW = parama.msgType;
-      ((avy)localObject).trw = parama.maH;
+      ((b.a)localObject).funcId = 193;
+      ((b.a)localObject).reqCmdId = 84;
+      ((b.a)localObject).respCmdId = 1000000084;
+      this.rr = ((b.a)localObject).ado();
+      localObject = (bcn)this.rr.fsV.fta;
+      ((bcn)localObject).xrx = com.tencent.mm.a.g.w(parama.bOW().getBytes());
+      ((bcn)localObject).xrI = parama.oBf;
+      ((bcn)localObject).xrw = parama.bOW();
+      parama.fQQ = bo.aoy();
+      ((bcn)localObject).xry = parama.bOT();
+      ((bcn)localObject).nqW = parama.msgType;
+      ((bcn)localObject).xrz = parama.oBg;
       if (!paramBoolean) {
-        break label538;
+        break label550;
       }
       i = j;
-      label296:
-      ((avy)localObject).trG = i;
-      ((avy)localObject).tfc = paramInt;
-      this.esm = new g.a();
+      label302:
+      ((bcn)localObject).xrJ = i;
+      ((bcn)localObject).xdn = paramInt;
+      this.eMo = new g.a();
+      AppMethodBeat.o(22738);
       return;
       if (parama.msgType != 34) {
         break;
       }
-      this.eHJ = 40;
+      this.fXz = 40;
       parama.status = 104;
-      parama.bvi = com.tencent.mm.modelvoice.o.nU(parama.bgW());
-      parama.maJ = 0;
+      parama.bWt = com.tencent.mm.modelvoice.q.vh(parama.bOU());
+      parama.oBi = 0;
     }
     if (parama.msgType == 3)
     {
-      this.eHJ = 40;
+      this.fXz = 40;
       if (paramInt != 1) {
-        break label544;
+        break label556;
       }
-      this.eHJ = 1250;
+      this.fXz = 1250;
     }
-    label538:
-    label544:
+    label550:
+    label556:
     for (int i = 1;; i = 0)
     {
-      parama.maK = i;
+      parama.oBj = i;
       parama.status = 104;
-      parama.maJ = 0;
+      parama.oBi = 0;
       localObject = new StringBuilder();
-      au.Hx();
-      parama.bvi = ((int)com.tencent.mm.vfs.e.aeQ(com.tencent.mm.model.c.FG() + parama.bgW()));
+      aw.aaz();
+      parama.bWt = ((int)com.tencent.mm.vfs.e.avI(com.tencent.mm.model.c.YK() + parama.bOU()));
       break;
       if (parama.msgType == 1)
       {
-        this.eHJ = 1;
+        this.fXz = 1;
         parama.status = 104;
-        parama.bvi = parama.bgW().getBytes().length;
-        parama.maJ = 0;
+        parama.bWt = parama.bOU().getBytes().length;
+        parama.oBi = 0;
         break;
       }
-      y.d("MicroMsg.NetSceneMasSend", "error msgtype:" + parama.msgType);
+      ab.d("MicroMsg.NetSceneMasSend", "error msgtype:" + parama.msgType);
       Assert.assertTrue("error msgtype:" + parama.msgType, false);
       break;
       i = 0;
-      break label296;
+      break label302;
     }
-  }
-  
-  protected final int Ka()
-  {
-    return 2500;
-  }
-  
-  public final int a(com.tencent.mm.network.e parame, com.tencent.mm.ah.f paramf)
-  {
-    int i = 2;
-    int j = 0;
-    int k = 0;
-    this.dmL = paramf;
-    if (this.edT)
-    {
-      y.d("MicroMsg.NetSceneMasSend", "isCancel");
-      this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-      j = -1;
-    }
-    Object localObject1;
-    do
-    {
-      return j;
-      this.eHJ -= 1;
-      if (this.eHJ < 0)
-      {
-        y.d("MicroMsg.NetSceneMasSend", "MAX_SEND_TIMES");
-        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-        return -1;
-      }
-      if (this.maN == null)
-      {
-        y.d("MicroMsg.NetSceneMasSend", "MasSendInfo is null");
-        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-        return -1;
-      }
-      if (bk.bl(this.maN.bgY()))
-      {
-        y.d("MicroMsg.NetSceneMasSend", "MasSendInfo.toList is null");
-        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-        return -1;
-      }
-      if (this.maN.maG == 0)
-      {
-        y.d("MicroMsg.NetSceneMasSend", "getTolistCount is 0");
-        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-        return -1;
-      }
-      if (this.maN.bvi <= 0)
-      {
-        y.d("MicroMsg.NetSceneMasSend", "getDataLen is 0");
-        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-        return -1;
-      }
-      if ((this.maN.status == 103) && (this.maN.maJ <= 0))
-      {
-        y.d("MicroMsg.NetSceneMasSend", "getThumbTotalLen is 0");
-        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-        return -1;
-      }
-      if ((this.maN.status != 103) && (this.maN.status != 104))
-      {
-        y.d("MicroMsg.NetSceneMasSend", "msg type :" + this.maN.msgType);
-        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-        return -1;
-      }
-      paramf = (avy)this.dmK.ecE.ecN;
-      if (this.maN.msgType != 43) {
-        break label1228;
-      }
-      localObject1 = this.maN.bgW();
-      if (!bk.bl((String)localObject1)) {
-        break;
-      }
-      y.d("MicroMsg.NetSceneMasSend", "MasSendInfo.fileName is null");
-      this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-      i = -1;
-      j = i;
-    } while (i != 0);
-    for (;;)
-    {
-      return a(parame, this.dmK, this);
-      paramf.trx = new bmk();
-      paramf.jdField_try = 0;
-      paramf.trC = new bmk();
-      paramf.trB = 0;
-      paramf.trD = 2;
-      paramf.trw = this.maN.maH;
-      if (this.maN.videoSource > 0) {}
-      for (;;)
-      {
-        paramf.trE = i;
-        paramf.trA = this.maN.maJ;
-        paramf.trz = this.maN.bvi;
-        if (this.maN.status != 103) {
-          break label836;
-        }
-        com.tencent.mm.modelvideo.o.Sr();
-        localObject2 = t.k(t.nT((String)localObject1), this.maN.eHD, 8000);
-        if ((((t.b)localObject2).ret >= 0) && (((t.b)localObject2).bDu != 0)) {
-          break label604;
-        }
-        y.e("MicroMsg.NetSceneMasSend", "doScene READ THUMB[" + (String)localObject1 + "]  Error ");
-        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-        i = -1;
-        break;
-        i = 0;
-      }
-      label604:
-      y.d("MicroMsg.NetSceneMasSend", "doScene READ THUMB[" + (String)localObject1 + "] read ret:" + ((t.b)localObject2).ret + " readlen:" + ((t.b)localObject2).bDu + " newOff:" + ((t.b)localObject2).eIh + " netOff:" + this.maN.eHD);
-      if (((t.b)localObject2).eIh < this.maN.eHD)
-      {
-        y.e("MicroMsg.NetSceneMasSend", "Err doScene READ THUMB[" + (String)localObject1 + "] newOff:" + ((t.b)localObject2).eIh + " OldtOff:" + this.maN.eHD);
-        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-        i = -1;
-        break;
-      }
-      localObject1 = new byte[((t.b)localObject2).bDu];
-      System.arraycopy(((t.b)localObject2).buf, 0, localObject1, 0, ((t.b)localObject2).bDu);
-      paramf.trB = this.maN.eHD;
-      Object localObject2 = new bmk();
-      ((bmk)localObject2).bs((byte[])localObject1);
-      paramf.trC = ((bmk)localObject2);
-      for (;;)
-      {
-        i = 0;
-        break;
-        label836:
-        com.tencent.mm.modelvideo.o.Sr();
-        localObject2 = t.k(t.nS((String)localObject1), this.maN.maI, 8000);
-        if ((((t.b)localObject2).ret < 0) || (((t.b)localObject2).bDu == 0))
-        {
-          y.e("MicroMsg.NetSceneMasSend", "doScene READ VIDEO[" + (String)localObject1 + "]  Error ");
-          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-          i = -1;
-          break;
-        }
-        y.d("MicroMsg.NetSceneMasSend", "doScene READ VIDEO[" + (String)localObject1 + "] read ret:" + ((t.b)localObject2).ret + " readlen:" + ((t.b)localObject2).bDu + " newOff:" + ((t.b)localObject2).eIh + " netOff:" + this.maN.maI);
-        if (((t.b)localObject2).eIh < this.maN.maI)
-        {
-          y.e("MicroMsg.NetSceneMasSend", "Err doScene READ VIDEO[" + (String)localObject1 + "] newOff:" + ((t.b)localObject2).eIh + " OldtOff:" + this.maN.maI);
-          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-          i = -1;
-          break;
-        }
-        if (((t.b)localObject2).eIh >= com.tencent.mm.modelvideo.c.eFh)
-        {
-          y.e("MicroMsg.NetSceneMasSend", "Err doScene READ VIDEO[" + (String)localObject1 + "] maxsize:" + com.tencent.mm.modelvideo.c.eFh);
-          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-          i = -1;
-          break;
-        }
-        localObject1 = new byte[((t.b)localObject2).bDu];
-        System.arraycopy(((t.b)localObject2).buf, 0, localObject1, 0, ((t.b)localObject2).bDu);
-        paramf.jdField_try = this.maN.maI;
-        paramf.trB = this.maN.eHD;
-        localObject2 = new bmk();
-        ((bmk)localObject2).bs((byte[])localObject1);
-        paramf.trx = ((bmk)localObject2);
-      }
-      label1228:
-      if (this.maN.msgType == 34)
-      {
-        paramf.trD = 0;
-        paramf.trE = 0;
-        paramf.trx = new bmk().bs(new byte[0]);
-        paramf.jdField_try = 0;
-        paramf.trC = new bmk().bs(new byte[0]);
-        paramf.trB = 0;
-        paramf.trA = 0;
-        paramf.trz = this.maN.bvi;
-        localObject1 = com.tencent.mm.modelvoice.q.ox(this.maN.bgW());
-        if (localObject1 == null)
-        {
-          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-          y.d("MicroMsg.NetSceneMasSend", "fileop is null");
-          i = -1;
-        }
-        while (i != 0)
-        {
-          return -1;
-          localObject2 = ((com.tencent.mm.modelvoice.b)localObject1).bz(this.maN.maI, 8000);
-          if (((com.tencent.mm.modelvoice.g)localObject2).ret < 0)
-          {
-            y.e("MicroMsg.NetSceneMasSend", "Err doScene READ file[" + this.maN.bgW() + "] read ret:" + ((com.tencent.mm.modelvoice.g)localObject2).ret + " readlen:" + ((com.tencent.mm.modelvoice.g)localObject2).bDu + " newOff:" + ((com.tencent.mm.modelvoice.g)localObject2).eIh + " netOff:" + this.maN.maI);
-            this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-            i = -1;
-          }
-          else if ((((com.tencent.mm.modelvoice.g)localObject2).eIh < this.maN.maI) || (((com.tencent.mm.modelvoice.g)localObject2).eIh >= 469000))
-          {
-            y.e("MicroMsg.NetSceneMasSend", "Err doScene READ offseterror file[" + this.maN.bgW() + "] read ret:" + ((com.tencent.mm.modelvoice.g)localObject2).ret + " readlen:" + ((com.tencent.mm.modelvoice.g)localObject2).bDu + " newOff:" + ((com.tencent.mm.modelvoice.g)localObject2).eIh + " netOff:" + this.maN.maI);
-            this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-            i = -1;
-          }
-          else if (this.maN.bvi <= 0)
-          {
-            y.e("MicroMsg.NetSceneMasSend", "Err doScene READ datalen file[" + this.maN.bgW() + "] read totalLen:" + this.maN.bvi);
-            this.retCode = (com.tencent.mm.compatible.util.g.getLine() + 10000);
-            i = -1;
-          }
-          else
-          {
-            byte[] arrayOfByte = new byte[((com.tencent.mm.modelvoice.g)localObject2).bDu];
-            System.arraycopy(((com.tencent.mm.modelvoice.g)localObject2).buf, 0, arrayOfByte, 0, ((com.tencent.mm.modelvoice.g)localObject2).bDu);
-            paramf.trx = new bmk().bs(arrayOfByte);
-            paramf.trw = this.maN.maH;
-            paramf.jdField_try = this.maN.maI;
-            paramf.trH = ((com.tencent.mm.modelvoice.b)localObject1).getFormat();
-            i = k;
-          }
-        }
-      }
-      else if (this.maN.msgType == 3)
-      {
-        if (bk.bl(this.maN.bgW()))
-        {
-          y.d("MicroMsg.NetSceneMasSend", "getFilename is null");
-          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-          i = -1;
-        }
-        while (i != 0)
-        {
-          return -1;
-          paramf.trD = 0;
-          paramf.trE = 0;
-          paramf.trx = new bmk().bs(new byte[0]);
-          paramf.jdField_try = 0;
-          paramf.trC = new bmk().bs(new byte[0]);
-          paramf.trB = 0;
-          paramf.trA = 0;
-          paramf.trw = 0;
-          paramf.trA = this.maN.maJ;
-          paramf.trz = this.maN.bvi;
-          paramf.tfc = this.ent;
-          localObject1 = new StringBuilder();
-          au.Hx();
-          localObject1 = com.tencent.mm.model.c.FG() + this.maN.bgW();
-          k = this.maN.bvi - this.maN.maI;
-          i = k;
-          if (k > 8000) {
-            i = 8000;
-          }
-          localObject1 = com.tencent.mm.vfs.e.c((String)localObject1, this.maN.maI, i);
-          if (bk.bE((byte[])localObject1))
-          {
-            y.e("MicroMsg.NetSceneMasSend", "doScene READ data[" + this.maN.bgW() + "]  Error ");
-            this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-            i = -1;
-          }
-          else
-          {
-            paramf.jdField_try = this.maN.maI;
-            paramf.trB = this.maN.eHD;
-            localObject2 = new bmk();
-            ((bmk)localObject2).bs((byte[])localObject1);
-            paramf.trx = ((bmk)localObject2);
-            i = j;
-          }
-        }
-      }
-      else
-      {
-        if (this.maN.msgType != 1) {
-          break label2205;
-        }
-        paramf.trx = new bmk().bs(this.maN.bgW().getBytes());
-        paramf.trz = this.maN.bvi;
-        paramf.trw = 0;
-        paramf.jdField_try = 0;
-        paramf.trC = new bmk().bs(new byte[0]);
-        paramf.trB = 0;
-        paramf.trA = 0;
-        paramf.trD = 0;
-        paramf.trE = 0;
-      }
-    }
-    label2205:
-    y.d("MicroMsg.NetSceneMasSend", "error msgtype:" + this.maN.msgType);
-    this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-    return -1;
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneMasSend", "onGYNetEnd  errtype:" + paramInt2 + " errCode:" + paramInt3);
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      y.e("MicroMsg.NetSceneMasSend", "ERR: onGYNetEnd FAILED errtype:" + paramInt2 + " errCode:" + paramInt3);
-      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if (this.maN == null)
-    {
-      y.e("MicroMsg.NetSceneMasSend", "ERR: onGYNetEnd Get INFO FAILED :");
-      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if ((this.maN.status != 104) && (this.maN.status != 103))
-    {
-      y.e("MicroMsg.NetSceneMasSend", "ERR: onGYNetEnd STATUS ERR: status:" + this.maN.status);
-      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    paramArrayOfByte = (avz)this.dmK.ecF.ecN;
-    paramq = (avy)this.dmK.ecE.ecN;
-    if ((paramq.trA > 0) && (paramq.trC != null) && (paramq.trC.tFM != null) && (!bk.bE(paramq.trC.tFM.toByteArray())) && (paramq.trB != paramArrayOfByte.trB - paramq.trC.tFK))
-    {
-      y.e("MicroMsg.NetSceneMasSend", "onGYNetEnd Err Thumb ");
-      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
-      this.dmL.onSceneEnd(3, -1, "doScene failed", this);
-      return;
-    }
-    if ((paramq.trz > 0) && (paramq.trx != null) && (paramq.trx.tFM != null) && (!bk.bE(paramq.trx.tFM.toByteArray())) && (paramq.jdField_try != paramArrayOfByte.jdField_try - paramq.trx.tFK))
-    {
-      y.e("MicroMsg.NetSceneMasSend", "onGYNetEnd Err Data ");
-      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
-      this.dmL.onSceneEnd(3, -1, "doScene failed", this);
-      return;
-    }
-    this.maN.eHF = bk.UX();
-    paramInt1 = this.maN.status;
-    if (paramInt1 == 103)
-    {
-      paramArrayOfByte = this.maN;
-      paramInt1 = paramq.trB;
-      paramArrayOfByte.eHD = (paramq.trC.tFK + paramInt1);
-      if (this.maN.eHD >= this.maN.maJ) {
-        this.maN.status = 199;
-      }
-    }
-    for (;;)
-    {
-      if (this.maN.status != 199)
-      {
-        if (a(this.edc, this.dmL) != -1) {
-          break;
-        }
-        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
-        this.dmL.onSceneEnd(3, -1, "doScene failed", this);
-        return;
-        if (paramInt1 == 104)
-        {
-          paramArrayOfByte = this.maN;
-          paramInt1 = paramq.jdField_try;
-          paramArrayOfByte.maI = (paramq.trx.tFK + paramInt1);
-          if (this.maN.maI >= this.maN.bvi) {
-            if (this.maN.maJ > 0) {
-              this.maN.status = 103;
-            } else {
-              this.maN.status = 199;
-            }
-          }
-        }
-        else
-        {
-          y.e("MicroMsg.NetSceneMasSend", "onGYNetEnd ERROR STATUS:" + paramInt1);
-          this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
-          this.dmL.onSceneEnd(3, -1, "doScene failed", this);
-          return;
-        }
-      }
-    }
-    paramArrayOfByte = h.bhd();
-    a locala = this.maN;
-    if (locala != null)
-    {
-      locala.bcw = -1;
-      ContentValues localContentValues = new ContentValues();
-      if ((locala.bcw & 0x1) != 0) {
-        localContentValues.put("clientid", locala.bgV());
-      }
-      if ((locala.bcw & 0x2) != 0) {
-        localContentValues.put("status", Integer.valueOf(locala.status));
-      }
-      if ((locala.bcw & 0x4) != 0) {
-        localContentValues.put("createtime", Long.valueOf(locala.createTime));
-      }
-      if ((locala.bcw & 0x8) != 0) {
-        localContentValues.put("lastmodifytime", Long.valueOf(locala.eHF));
-      }
-      if ((locala.bcw & 0x10) != 0) {
-        localContentValues.put("filename", locala.bgW());
-      }
-      if ((locala.bcw & 0x20) != 0) {
-        localContentValues.put("thumbfilename", locala.bgX());
-      }
-      if ((locala.bcw & 0x40) != 0) {
-        localContentValues.put("tolist", locala.bgY());
-      }
-      if ((locala.bcw & 0x80) != 0) {
-        localContentValues.put("tolistcount", Integer.valueOf(locala.maG));
-      }
-      if ((locala.bcw & 0x100) != 0) {
-        localContentValues.put("msgtype", Integer.valueOf(locala.msgType));
-      }
-      if ((locala.bcw & 0x200) != 0) {
-        localContentValues.put("mediatime", Integer.valueOf(locala.maH));
-      }
-      if ((locala.bcw & 0x400) != 0) {
-        localContentValues.put("datanetoffset", Integer.valueOf(locala.maI));
-      }
-      if ((locala.bcw & 0x800) != 0) {
-        localContentValues.put("datalen", Integer.valueOf(locala.bvi));
-      }
-      if ((locala.bcw & 0x1000) != 0) {
-        localContentValues.put("thumbnetoffset", Integer.valueOf(locala.eHD));
-      }
-      if ((locala.bcw & 0x2000) != 0) {
-        localContentValues.put("thumbtotallen", Integer.valueOf(locala.maJ));
-      }
-      if ((locala.bcw & 0x4000) != 0) {
-        localContentValues.put("reserved1", Integer.valueOf(locala.videoSource));
-      }
-      if ((locala.bcw & 0x8000) != 0) {
-        localContentValues.put("reserved2", Integer.valueOf(locala.maK));
-      }
-      if ((locala.bcw & 0x10000) != 0)
-      {
-        if (locala.dXm != null) {
-          break label1426;
-        }
-        paramq = "";
-        localContentValues.put("reserved3", paramq);
-      }
-      if ((locala.bcw & 0x20000) != 0)
-      {
-        if (locala.dXn != null) {
-          break label1436;
-        }
-        paramq = "";
-        label1248:
-        localContentValues.put("reserved4", paramq);
-      }
-      if ((int)paramArrayOfByte.dXo.insert("massendinfo", "clientid", localContentValues) != -1)
-      {
-        au.Hx();
-        if (com.tencent.mm.model.c.FB().abv("masssendapp") != null) {
-          break label1446;
-        }
-        paramInt1 = 1;
-        label1299:
-        paramq = new ak();
-        paramq.setUsername("masssendapp");
-        paramq.setContent(b.a(locala));
-        paramq.ba(locala.createTime);
-        paramq.fA(0);
-        paramq.fy(0);
-        if (paramInt1 == 0) {
-          break label1451;
-        }
-        au.Hx();
-        com.tencent.mm.model.c.FB().d(paramq);
-        label1367:
-        paramArrayOfByte.doNotify();
-      }
-    }
-    if (this.esm != null) {}
-    for (long l = this.esm.zJ();; l = 0L)
-    {
-      y.d("MicroMsg.NetSceneMasSend", "!!!FIN: useTime:" + l);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-      label1426:
-      paramq = locala.dXm;
-      break;
-      label1436:
-      paramq = locala.dXn;
-      break label1248;
-      label1446:
-      paramInt1 = 0;
-      break label1299;
-      label1451:
-      au.Hx();
-      com.tencent.mm.model.c.FB().a(paramq, "masssendapp");
-      break label1367;
-    }
-  }
-  
-  protected final void a(m.a parama) {}
-  
-  protected final m.b b(com.tencent.mm.network.q paramq)
-  {
-    return m.b.edr;
   }
   
   public final void cancel()
   {
-    this.edT = true;
+    this.eUJ = true;
+  }
+  
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ai.f paramf)
+  {
+    int j = 0;
+    int i = 0;
+    AppMethodBeat.i(22739);
+    this.callback = paramf;
+    if (this.eUJ)
+    {
+      ab.d("MicroMsg.NetSceneMasSend", "isCancel");
+      this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+      AppMethodBeat.o(22739);
+      return -1;
+    }
+    this.fXz -= 1;
+    if (this.fXz < 0)
+    {
+      ab.d("MicroMsg.NetSceneMasSend", "MAX_SEND_TIMES");
+      this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+      AppMethodBeat.o(22739);
+      return -1;
+    }
+    if (this.oBm == null)
+    {
+      ab.d("MicroMsg.NetSceneMasSend", "MasSendInfo is null");
+      this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+      AppMethodBeat.o(22739);
+      return -1;
+    }
+    if (bo.isNullOrNil(this.oBm.bOW()))
+    {
+      ab.d("MicroMsg.NetSceneMasSend", "MasSendInfo.toList is null");
+      this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+      AppMethodBeat.o(22739);
+      return -1;
+    }
+    if (this.oBm.oBf == 0)
+    {
+      ab.d("MicroMsg.NetSceneMasSend", "getTolistCount is 0");
+      this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+      AppMethodBeat.o(22739);
+      return -1;
+    }
+    if (this.oBm.bWt <= 0)
+    {
+      ab.d("MicroMsg.NetSceneMasSend", "getDataLen is 0");
+      this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+      AppMethodBeat.o(22739);
+      return -1;
+    }
+    if ((this.oBm.status == 103) && (this.oBm.oBi <= 0))
+    {
+      ab.d("MicroMsg.NetSceneMasSend", "getThumbTotalLen is 0");
+      this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+      AppMethodBeat.o(22739);
+      return -1;
+    }
+    if ((this.oBm.status != 103) && (this.oBm.status != 104))
+    {
+      ab.d("MicroMsg.NetSceneMasSend", "msg type :" + this.oBm.msgType);
+      this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+      AppMethodBeat.o(22739);
+      return -1;
+    }
+    paramf = (bcn)this.rr.fsV.fta;
+    Object localObject1;
+    Object localObject2;
+    if (this.oBm.msgType == 43)
+    {
+      localObject1 = this.oBm.bOU();
+      if (bo.isNullOrNil((String)localObject1))
+      {
+        ab.d("MicroMsg.NetSceneMasSend", "MasSendInfo.fileName is null");
+        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+        i = -1;
+      }
+      for (;;)
+      {
+        if (i == 0) {
+          break label2254;
+        }
+        AppMethodBeat.o(22739);
+        return i;
+        paramf.xrA = new SKBuiltinBuffer_t();
+        paramf.xrB = 0;
+        paramf.xrF = new SKBuiltinBuffer_t();
+        paramf.xrE = 0;
+        paramf.xrG = 2;
+        paramf.xrz = this.oBm.oBg;
+        if (this.oBm.videoSource > 0) {}
+        for (i = 2;; i = 0)
+        {
+          paramf.xrH = i;
+          paramf.xrD = this.oBm.oBi;
+          paramf.xrC = this.oBm.bWt;
+          if (this.oBm.status != 103) {
+            break label879;
+          }
+          o.alE();
+          localObject2 = t.u(t.vg((String)localObject1), this.oBm.fXt, 8000);
+          if ((((t.b)localObject2).ret >= 0) && (((t.b)localObject2).ckj != 0)) {
+            break label647;
+          }
+          ab.e("MicroMsg.NetSceneMasSend", "doScene READ THUMB[" + (String)localObject1 + "]  Error ");
+          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+          i = -1;
+          break;
+        }
+        label647:
+        ab.d("MicroMsg.NetSceneMasSend", "doScene READ THUMB[" + (String)localObject1 + "] read ret:" + ((t.b)localObject2).ret + " readlen:" + ((t.b)localObject2).ckj + " newOff:" + ((t.b)localObject2).fXX + " netOff:" + this.oBm.fXt);
+        if (((t.b)localObject2).fXX >= this.oBm.fXt) {
+          break;
+        }
+        ab.e("MicroMsg.NetSceneMasSend", "Err doScene READ THUMB[" + (String)localObject1 + "] newOff:" + ((t.b)localObject2).fXX + " OldtOff:" + this.oBm.fXt);
+        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+        i = -1;
+      }
+      localObject1 = new byte[((t.b)localObject2).ckj];
+      System.arraycopy(((t.b)localObject2).buf, 0, localObject1, 0, ((t.b)localObject2).ckj);
+      paramf.xrE = this.oBm.fXt;
+      localObject2 = new SKBuiltinBuffer_t();
+      ((SKBuiltinBuffer_t)localObject2).setBuffer((byte[])localObject1);
+      paramf.xrF = ((SKBuiltinBuffer_t)localObject2);
+      for (;;)
+      {
+        i = 0;
+        break;
+        label879:
+        o.alE();
+        localObject2 = t.u(t.vf((String)localObject1), this.oBm.oBh, 8000);
+        if ((((t.b)localObject2).ret < 0) || (((t.b)localObject2).ckj == 0))
+        {
+          ab.e("MicroMsg.NetSceneMasSend", "doScene READ VIDEO[" + (String)localObject1 + "]  Error ");
+          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+          i = -1;
+          break;
+        }
+        ab.d("MicroMsg.NetSceneMasSend", "doScene READ VIDEO[" + (String)localObject1 + "] read ret:" + ((t.b)localObject2).ret + " readlen:" + ((t.b)localObject2).ckj + " newOff:" + ((t.b)localObject2).fXX + " netOff:" + this.oBm.oBh);
+        if (((t.b)localObject2).fXX < this.oBm.oBh)
+        {
+          ab.e("MicroMsg.NetSceneMasSend", "Err doScene READ VIDEO[" + (String)localObject1 + "] newOff:" + ((t.b)localObject2).fXX + " OldtOff:" + this.oBm.oBh);
+          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+          i = -1;
+          break;
+        }
+        if (((t.b)localObject2).fXX >= com.tencent.mm.modelvideo.c.fUY)
+        {
+          ab.e("MicroMsg.NetSceneMasSend", "Err doScene READ VIDEO[" + (String)localObject1 + "] maxsize:" + com.tencent.mm.modelvideo.c.fUY);
+          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+          i = -1;
+          break;
+        }
+        localObject1 = new byte[((t.b)localObject2).ckj];
+        System.arraycopy(((t.b)localObject2).buf, 0, localObject1, 0, ((t.b)localObject2).ckj);
+        paramf.xrB = this.oBm.oBh;
+        paramf.xrE = this.oBm.fXt;
+        localObject2 = new SKBuiltinBuffer_t();
+        ((SKBuiltinBuffer_t)localObject2).setBuffer((byte[])localObject1);
+        paramf.xrA = ((SKBuiltinBuffer_t)localObject2);
+      }
+    }
+    if (this.oBm.msgType == 34)
+    {
+      paramf.xrG = 0;
+      paramf.xrH = 0;
+      paramf.xrA = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+      paramf.xrB = 0;
+      paramf.xrF = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+      paramf.xrE = 0;
+      paramf.xrD = 0;
+      paramf.xrC = this.oBm.bWt;
+      localObject1 = s.vK(this.oBm.bOU());
+      if (localObject1 == null)
+      {
+        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+        ab.d("MicroMsg.NetSceneMasSend", "fileop is null");
+        i = -1;
+      }
+      while (i != 0)
+      {
+        AppMethodBeat.o(22739);
+        return -1;
+        localObject2 = ((com.tencent.mm.modelvoice.b)localObject1).cJ(this.oBm.oBh, 8000);
+        if (((com.tencent.mm.modelvoice.g)localObject2).ret < 0)
+        {
+          ab.e("MicroMsg.NetSceneMasSend", "Err doScene READ file[" + this.oBm.bOU() + "] read ret:" + ((com.tencent.mm.modelvoice.g)localObject2).ret + " readlen:" + ((com.tencent.mm.modelvoice.g)localObject2).ckj + " newOff:" + ((com.tencent.mm.modelvoice.g)localObject2).fXX + " netOff:" + this.oBm.oBh);
+          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+          i = -1;
+        }
+        else if ((((com.tencent.mm.modelvoice.g)localObject2).fXX < this.oBm.oBh) || (((com.tencent.mm.modelvoice.g)localObject2).fXX >= 469000))
+        {
+          ab.e("MicroMsg.NetSceneMasSend", "Err doScene READ offseterror file[" + this.oBm.bOU() + "] read ret:" + ((com.tencent.mm.modelvoice.g)localObject2).ret + " readlen:" + ((com.tencent.mm.modelvoice.g)localObject2).ckj + " newOff:" + ((com.tencent.mm.modelvoice.g)localObject2).fXX + " netOff:" + this.oBm.oBh);
+          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+          i = -1;
+        }
+        else if (this.oBm.bWt <= 0)
+        {
+          ab.e("MicroMsg.NetSceneMasSend", "Err doScene READ datalen file[" + this.oBm.bOU() + "] read totalLen:" + this.oBm.bWt);
+          this.retCode = (com.tencent.mm.compatible.util.g.getLine() + 10000);
+          i = -1;
+        }
+        else
+        {
+          byte[] arrayOfByte = new byte[((com.tencent.mm.modelvoice.g)localObject2).ckj];
+          System.arraycopy(((com.tencent.mm.modelvoice.g)localObject2).buf, 0, arrayOfByte, 0, ((com.tencent.mm.modelvoice.g)localObject2).ckj);
+          paramf.xrA = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
+          paramf.xrz = this.oBm.oBg;
+          paramf.xrB = this.oBm.oBh;
+          paramf.xrK = ((com.tencent.mm.modelvoice.b)localObject1).getFormat();
+        }
+      }
+    }
+    if (this.oBm.msgType == 3)
+    {
+      if (bo.isNullOrNil(this.oBm.bOU()))
+      {
+        ab.d("MicroMsg.NetSceneMasSend", "getFilename is null");
+        this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+        i = -1;
+      }
+      while (i != 0)
+      {
+        AppMethodBeat.o(22739);
+        return -1;
+        paramf.xrG = 0;
+        paramf.xrH = 0;
+        paramf.xrA = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+        paramf.xrB = 0;
+        paramf.xrF = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+        paramf.xrE = 0;
+        paramf.xrD = 0;
+        paramf.xrz = 0;
+        paramf.xrD = this.oBm.oBi;
+        paramf.xrC = this.oBm.bWt;
+        paramf.xdn = this.fDP;
+        localObject1 = new StringBuilder();
+        aw.aaz();
+        localObject1 = com.tencent.mm.model.c.YK() + this.oBm.bOU();
+        int k = this.oBm.bWt - this.oBm.oBh;
+        i = k;
+        if (k > 8000) {
+          i = 8000;
+        }
+        localObject1 = com.tencent.mm.vfs.e.i((String)localObject1, this.oBm.oBh, i);
+        if (bo.ce((byte[])localObject1))
+        {
+          ab.e("MicroMsg.NetSceneMasSend", "doScene READ data[" + this.oBm.bOU() + "]  Error ");
+          this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+          i = -1;
+        }
+        else
+        {
+          paramf.xrB = this.oBm.oBh;
+          paramf.xrE = this.oBm.fXt;
+          localObject2 = new SKBuiltinBuffer_t();
+          ((SKBuiltinBuffer_t)localObject2).setBuffer((byte[])localObject1);
+          paramf.xrA = ((SKBuiltinBuffer_t)localObject2);
+          i = j;
+        }
+      }
+    }
+    if (this.oBm.msgType == 1)
+    {
+      paramf.xrA = new SKBuiltinBuffer_t().setBuffer(this.oBm.bOU().getBytes());
+      paramf.xrC = this.oBm.bWt;
+      paramf.xrz = 0;
+      paramf.xrB = 0;
+      paramf.xrF = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+      paramf.xrE = 0;
+      paramf.xrD = 0;
+      paramf.xrG = 0;
+      paramf.xrH = 0;
+      label2254:
+      i = dispatch(parame, this.rr, this);
+      AppMethodBeat.o(22739);
+      return i;
+    }
+    ab.d("MicroMsg.NetSceneMasSend", "error msgtype:" + this.oBm.msgType);
+    this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+    AppMethodBeat.o(22739);
+    return -1;
   }
   
   public final int getType()
   {
     return 193;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(22740);
+    ab.d("MicroMsg.NetSceneMasSend", "onGYNetEnd  errtype:" + paramInt2 + " errCode:" + paramInt3);
+    updateDispatchId(paramInt1);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      ab.e("MicroMsg.NetSceneMasSend", "ERR: onGYNetEnd FAILED errtype:" + paramInt2 + " errCode:" + paramInt3);
+      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(22740);
+      return;
+    }
+    if (this.oBm == null)
+    {
+      ab.e("MicroMsg.NetSceneMasSend", "ERR: onGYNetEnd Get INFO FAILED :");
+      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(22740);
+      return;
+    }
+    if ((this.oBm.status != 104) && (this.oBm.status != 103))
+    {
+      ab.e("MicroMsg.NetSceneMasSend", "ERR: onGYNetEnd STATUS ERR: status:" + this.oBm.status);
+      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(22740);
+      return;
+    }
+    paramArrayOfByte = (bco)this.rr.fsW.fta;
+    paramq = (bcn)this.rr.fsV.fta;
+    if ((paramq.xrD > 0) && (paramq.xrF != null) && (paramq.xrF.getBuffer() != null) && (!bo.ce(paramq.xrF.getBuffer().toByteArray())) && (paramq.xrE != paramArrayOfByte.xrE - paramq.xrF.getILen()))
+    {
+      ab.e("MicroMsg.NetSceneMasSend", "onGYNetEnd Err Thumb ");
+      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+      this.callback.onSceneEnd(3, -1, "doScene failed", this);
+      AppMethodBeat.o(22740);
+      return;
+    }
+    if ((paramq.xrC > 0) && (paramq.xrA != null) && (paramq.xrA.getBuffer() != null) && (!bo.ce(paramq.xrA.getBuffer().toByteArray())) && (paramq.xrB != paramArrayOfByte.xrB - paramq.xrA.getILen()))
+    {
+      ab.e("MicroMsg.NetSceneMasSend", "onGYNetEnd Err Data ");
+      this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+      this.callback.onSceneEnd(3, -1, "doScene failed", this);
+      AppMethodBeat.o(22740);
+      return;
+    }
+    this.oBm.fXv = bo.aox();
+    paramInt1 = this.oBm.status;
+    if (paramInt1 == 103)
+    {
+      paramArrayOfByte = this.oBm;
+      paramInt1 = paramq.xrE;
+      paramArrayOfByte.fXt = (paramq.xrF.getILen() + paramInt1);
+      if (this.oBm.fXt >= this.oBm.oBi) {
+        this.oBm.status = 199;
+      }
+    }
+    while (this.oBm.status != 199)
+    {
+      if (doScene(dispatcher(), this.callback) != -1) {
+        break label1523;
+      }
+      this.retCode = (0 - (com.tencent.mm.compatible.util.g.getLine() + 10000));
+      this.callback.onSceneEnd(3, -1, "doScene failed", this);
+      AppMethodBeat.o(22740);
+      return;
+      if (paramInt1 == 104)
+      {
+        paramArrayOfByte = this.oBm;
+        paramInt1 = paramq.xrB;
+        paramArrayOfByte.oBh = (paramq.xrA.getILen() + paramInt1);
+        if (this.oBm.oBh >= this.oBm.bWt) {
+          if (this.oBm.oBi > 0) {
+            this.oBm.status = 103;
+          } else {
+            this.oBm.status = 199;
+          }
+        }
+      }
+      else
+      {
+        ab.e("MicroMsg.NetSceneMasSend", "onGYNetEnd ERROR STATUS:".concat(String.valueOf(paramInt1)));
+        this.retCode = (0 - com.tencent.mm.compatible.util.g.getLine() - 10000);
+        this.callback.onSceneEnd(3, -1, "doScene failed", this);
+        AppMethodBeat.o(22740);
+        return;
+      }
+    }
+    paramArrayOfByte = h.bPc();
+    a locala = this.oBm;
+    if (locala != null)
+    {
+      locala.bsY = -1;
+      ContentValues localContentValues = new ContentValues();
+      if ((locala.bsY & 0x1) != 0) {
+        localContentValues.put("clientid", locala.bOT());
+      }
+      if ((locala.bsY & 0x2) != 0) {
+        localContentValues.put("status", Integer.valueOf(locala.status));
+      }
+      if ((locala.bsY & 0x4) != 0) {
+        localContentValues.put("createtime", Long.valueOf(locala.createTime));
+      }
+      if ((locala.bsY & 0x8) != 0) {
+        localContentValues.put("lastmodifytime", Long.valueOf(locala.fXv));
+      }
+      if ((locala.bsY & 0x10) != 0) {
+        localContentValues.put("filename", locala.bOU());
+      }
+      if ((locala.bsY & 0x20) != 0) {
+        localContentValues.put("thumbfilename", locala.bOV());
+      }
+      if ((locala.bsY & 0x40) != 0) {
+        localContentValues.put("tolist", locala.bOW());
+      }
+      if ((locala.bsY & 0x80) != 0) {
+        localContentValues.put("tolistcount", Integer.valueOf(locala.oBf));
+      }
+      if ((locala.bsY & 0x100) != 0) {
+        localContentValues.put("msgtype", Integer.valueOf(locala.msgType));
+      }
+      if ((locala.bsY & 0x200) != 0) {
+        localContentValues.put("mediatime", Integer.valueOf(locala.oBg));
+      }
+      if ((locala.bsY & 0x400) != 0) {
+        localContentValues.put("datanetoffset", Integer.valueOf(locala.oBh));
+      }
+      if ((locala.bsY & 0x800) != 0) {
+        localContentValues.put("datalen", Integer.valueOf(locala.bWt));
+      }
+      if ((locala.bsY & 0x1000) != 0) {
+        localContentValues.put("thumbnetoffset", Integer.valueOf(locala.fXt));
+      }
+      if ((locala.bsY & 0x2000) != 0) {
+        localContentValues.put("thumbtotallen", Integer.valueOf(locala.oBi));
+      }
+      if ((locala.bsY & 0x4000) != 0) {
+        localContentValues.put("reserved1", Integer.valueOf(locala.videoSource));
+      }
+      if ((locala.bsY & 0x8000) != 0) {
+        localContentValues.put("reserved2", Integer.valueOf(locala.oBj));
+      }
+      if ((locala.bsY & 0x10000) != 0)
+      {
+        if (locala.fnu != null) {
+          break label1471;
+        }
+        paramq = "";
+        localContentValues.put("reserved3", paramq);
+      }
+      if ((locala.bsY & 0x20000) != 0)
+      {
+        if (locala.fnv != null) {
+          break label1481;
+        }
+        paramq = "";
+        label1294:
+        localContentValues.put("reserved4", paramq);
+      }
+      if ((int)paramArrayOfByte.fnw.a("massendinfo", "clientid", localContentValues) != -1)
+      {
+        aw.aaz();
+        if (com.tencent.mm.model.c.YF().arH("masssendapp") != null) {
+          break label1491;
+        }
+        paramInt1 = 1;
+        label1345:
+        paramq = new ak();
+        paramq.setUsername("masssendapp");
+        paramq.setContent(b.a(locala));
+        paramq.fK(locala.createTime);
+        paramq.hL(0);
+        paramq.hJ(0);
+        if (paramInt1 == 0) {
+          break label1496;
+        }
+        aw.aaz();
+        com.tencent.mm.model.c.YF().d(paramq);
+        label1413:
+        paramArrayOfByte.doNotify();
+      }
+    }
+    if (this.eMo != null) {}
+    for (long l = this.eMo.Mm();; l = 0L)
+    {
+      ab.d("MicroMsg.NetSceneMasSend", "!!!FIN: useTime:".concat(String.valueOf(l)));
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(22740);
+      return;
+      label1471:
+      paramq = locala.fnu;
+      break;
+      label1481:
+      paramq = locala.fnv;
+      break label1294;
+      label1491:
+      paramInt1 = 0;
+      break label1345;
+      label1496:
+      aw.aaz();
+      com.tencent.mm.model.c.YF().a(paramq, "masssendapp");
+      break label1413;
+    }
+    label1523:
+    AppMethodBeat.o(22740);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 2500;
+  }
+  
+  public final m.b securityVerificationChecked(com.tencent.mm.network.q paramq)
+  {
+    return m.b.ftu;
+  }
+  
+  public final void setSecurityCheckError(m.a parama) {}
 }
 
 

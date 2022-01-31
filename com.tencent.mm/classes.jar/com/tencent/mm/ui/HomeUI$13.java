@@ -1,23 +1,32 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.storage.z;
+import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.n.d;
 
 final class HomeUI$13
-  implements Runnable
+  implements n.d
 {
-  HomeUI$13(HomeUI paramHomeUI) {}
-  
-  public final void run()
+  HomeUI$13(HomeUI paramHomeUI)
   {
-    if (au.DK())
+    AppMethodBeat.i(29358);
+    AppMethodBeat.o(29358);
+  }
+  
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  {
+    AppMethodBeat.i(153771);
+    switch (paramMenuItem.getItemId())
     {
-      au.Hx();
-      z localz = c.Dz();
-      if (localz != null) {
-        localz.mC(true);
-      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(153771);
+      return;
+      HomeUI.l(this.yYw);
+      AppMethodBeat.o(153771);
+      return;
+      HomeUI.k(this.yYw);
     }
   }
 }

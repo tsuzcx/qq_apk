@@ -3,9 +3,10 @@ package com.tencent.mm.pluginsdk.ui.chat;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.VoiceInputLayout;
-import com.tencent.mm.ui.widget.a.c;
-import com.tencent.mm.ui.widget.a.e.a;
+import com.tencent.mm.ui.widget.b.c;
+import com.tencent.mm.ui.widget.b.e.a;
 import java.util.ArrayList;
 
 final class n$8$1
@@ -15,11 +16,17 @@ final class n$8$1
   
   public final void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    n.b(this.shF.shE, paramInt);
-    n.f(this.shF.shE).setText((CharSequence)n.e(this.shF.shE).get(n.d(this.shF.shE)));
-    n.h(this.shF.shE).setLangType(((Integer)n.g(this.shF.shE).get(n.d(this.shF.shE))).intValue());
-    this.gPd.few.dismiss();
-    this.shF.shE.Eq(2);
+    AppMethodBeat.i(27979);
+    n.b(this.vZX.vZW, paramInt);
+    n.e(this.vZX.vZW).setText((CharSequence)n.d(this.vZX.vZW).get(n.c(this.vZX.vZW)));
+    if (n.f(this.vZX.vZW) != null) {
+      n.f(this.vZX.vZW).setLangType(((Integer)n.g(this.vZX.vZW).get(n.c(this.vZX.vZW))).intValue());
+    }
+    if (this.jLl.gwf != null) {
+      this.jLl.gwf.dismiss();
+    }
+    this.vZX.vZW.Mo(2);
+    AppMethodBeat.o(27979);
   }
 }
 

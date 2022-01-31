@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.am.a;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.an.a;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class r$1
   implements View.OnClickListener
@@ -17,34 +18,46 @@ final class r$1
   
   public final void onClick(View paramView)
   {
-    if (r.a(this.oPe) == null) {
+    AppMethodBeat.i(38235);
+    if (r.a(this.rGQ) == null)
+    {
+      AppMethodBeat.o(38235);
       return;
     }
-    if (r.a(this.oPe).field_likeFlag == 0) {
-      if (r.a(this.oPe).bGD())
+    if (r.a(this.rGQ).field_likeFlag == 0) {
+      if (r.a(this.rGQ).csG())
       {
-        am.a.a(r.a(this.oPe), 1, "", "", r.b(this.oPe));
-        r.a(this.oPe).field_likeFlag = 1;
-        af.bDF().C(r.a(this.oPe));
-        label85:
-        if (r.a(this.oPe).field_snsId != 0L) {
-          break label255;
+        an.a.a(r.a(this.rGQ), 1, "", "", r.b(this.rGQ));
+        r.a(this.rGQ).field_likeFlag = 1;
+        ag.cpf().B(r.a(this.rGQ));
+        label95:
+        if (r.a(this.rGQ).field_snsId != 0L) {
+          break label270;
         }
       }
     }
-    label255:
-    for (paramView = "";; paramView = i.fN(r.a(this.oPe).field_snsId))
+    label270:
+    for (paramView = "";; paramView = i.lq(r.a(this.rGQ).field_snsId))
     {
-      h.nFQ.f(11989, new Object[] { Integer.valueOf(1), paramView, Integer.valueOf(0) });
-      new ah().postDelayed(new r.1.1(this), 500L);
+      h.qsU.e(11989, new Object[] { Integer.valueOf(1), paramView, Integer.valueOf(0) });
+      new ak().postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(38234);
+          r.1.this.rGQ.refresh();
+          AppMethodBeat.o(38234);
+        }
+      }, 500L);
+      AppMethodBeat.o(38235);
       return;
-      am.a.a(r.a(this.oPe).field_userName, 5, "", r.a(this.oPe), r.b(this.oPe));
+      an.a.a(r.a(this.rGQ).field_userName, 5, "", r.a(this.rGQ), r.b(this.rGQ));
       break;
-      r.a(this.oPe).field_likeFlag = 0;
-      af.bDF().C(r.a(this.oPe));
-      am.a.NI(r.a(this.oPe).bGk());
-      r.a(this.oPe, af.bDF().gt(r.a(this.oPe).field_snsId));
-      break label85;
+      r.a(this.rGQ).field_likeFlag = 0;
+      ag.cpf().B(r.a(this.rGQ));
+      an.a.aaC(r.a(this.rGQ).getSnsId());
+      r.a(this.rGQ, ag.cpf().lZ(r.a(this.rGQ).field_snsId));
+      break label95;
     }
   }
 }

@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ih" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="74.0dip"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.MMImageView android:id="@id/dxi" android:layout_width="51.0dip" android:layout_height="51.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <RelativeLayout android:orientation="vertical" android:id="@id/e1n" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/a6i" android:gravity="center_horizontal" android:id="@id/e1o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fyb" android:layout_centerVertical="true" />
+            <View android:id="@id/e1p" android:background="@color/a6o" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <RelativeLayout android:orientation="vertical" android:id="@id/e1q" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/a5l" android:gravity="center_horizontal" android:id="@id/e1r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fyc" android:layout_centerVertical="true" />
+            <View android:id="@id/e1s" android:background="@color/a6o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
     </LinearLayout>
-    <TextView android:textSize="17.0dip" android:textColor="@color/fc" android:ellipsize="end" android:id="@id/dxj" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" />
-    <TextView android:textSize="16.0dip" android:textColor="#ff888888" android:ellipsize="end" android:id="@id/dxk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    <View android:background="@color/a0a" android:layout_width="fill_parent" android:layout_height="@dimen/fq" />
+    <RelativeLayout android:id="@id/e1t" android:layout_width="fill_parent" android:layout_height="400.0dip">
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:id="@id/e1u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fxz" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.ListViewInScrollView android:id="@id/e1v" android:background="@null" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/a4b" android:transcriptMode="disabled" android:cacheColorHint="@android:color/transparent" android:divider="@color/a0a" android:dividerHeight="@dimen/fs" android:headerDividersEnabled="true" style="@style/q1" />
+        <com.tencent.mm.ui.ListViewInScrollView android:id="@id/e1w" android:background="@null" android:focusable="true" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/a4b" android:transcriptMode="disabled" android:cacheColorHint="@android:color/transparent" android:divider="@color/a0a" android:dividerHeight="@dimen/fs" android:headerDividersEnabled="true" style="@style/q1" />
+    </RelativeLayout>
 </LinearLayout>

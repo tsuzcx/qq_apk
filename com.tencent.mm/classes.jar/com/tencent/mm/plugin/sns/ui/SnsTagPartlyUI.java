@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -7,182 +8,223 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.model.x;
 import com.tencent.mm.plugin.sns.storage.t;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.r.a;
+import com.tencent.mm.ui.p.a;
 
 public class SnsTagPartlyUI
   extends MMActivity
   implements f
 {
-  private ListView fry;
-  private SnsTagPartlyUI.a pdS;
-  private View.OnClickListener pdT = new View.OnClickListener()
-  {
-    public final void onClick(View paramAnonymousView)
-    {
-      if (SnsTagPartlyUI.a(SnsTagPartlyUI.this) == null)
-      {
-        y.e("MicroMsg.SnsTagPartlyUI", "The adapter is null..");
-        return;
-      }
-      paramAnonymousView = paramAnonymousView.getTag();
-      if (paramAnonymousView == null)
-      {
-        y.e("MicroMsg.SnsTagPartlyUI", "The tag is null..");
-        return;
-      }
-      if (!(paramAnonymousView instanceof Integer))
-      {
-        y.e("MicroMsg.SnsTagPartlyUI", "The tag is not a instance of Integer.");
-        return;
-      }
-      paramAnonymousView = (t)SnsTagPartlyUI.a(SnsTagPartlyUI.this).getItem(((Integer)paramAnonymousView).intValue());
-      SnsTagPartlyUI.this.tipDialog = h.b(SnsTagPartlyUI.this, null, true, new SnsTagPartlyUI.5.1(this));
-      g.DQ();
-      g.DO().dJT.a(new x(paramAnonymousView.field_tagId, paramAnonymousView.field_tagName), 0);
-    }
-  };
-  protected com.tencent.mm.ui.base.p tipDialog = null;
+  private ListView gJa;
+  private SnsTagPartlyUI.a rWF;
+  private View.OnClickListener rWG;
+  protected com.tencent.mm.ui.base.p tipDialog;
   
-  protected final int getLayoutId()
+  public SnsTagPartlyUI()
   {
-    return i.g.sns_tag_partly_ui2;
+    AppMethodBeat.i(39386);
+    this.tipDialog = null;
+    this.rWG = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(39380);
+        if (SnsTagPartlyUI.a(SnsTagPartlyUI.this) == null)
+        {
+          ab.e("MicroMsg.SnsTagPartlyUI", "The adapter is null..");
+          AppMethodBeat.o(39380);
+          return;
+        }
+        paramAnonymousView = paramAnonymousView.getTag();
+        if (paramAnonymousView == null)
+        {
+          ab.e("MicroMsg.SnsTagPartlyUI", "The tag is null..");
+          AppMethodBeat.o(39380);
+          return;
+        }
+        if (!(paramAnonymousView instanceof Integer))
+        {
+          ab.e("MicroMsg.SnsTagPartlyUI", "The tag is not a instance of Integer.");
+          AppMethodBeat.o(39380);
+          return;
+        }
+        paramAnonymousView = (t)SnsTagPartlyUI.a(SnsTagPartlyUI.this).getItem(((Integer)paramAnonymousView).intValue());
+        SnsTagPartlyUI.this.tipDialog = h.b(SnsTagPartlyUI.this, null, true, new SnsTagPartlyUI.5.1(this));
+        g.RM();
+        g.RK().eHt.a(new x(paramAnonymousView.field_tagId, paramAnonymousView.field_tagName), 0);
+        AppMethodBeat.o(39380);
+      }
+    };
+    AppMethodBeat.o(39386);
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
-    setMMTitle(i.j.settings_privacy_edit_sns_group);
+    return 2130970874;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(39390);
+    setMMTitle(2131303389);
     setBackBtn(new SnsTagPartlyUI.1(this));
-    this.fry = ((ListView)findViewById(i.f.sns_tag_list));
-    this.fry.setOnItemClickListener(new SnsTagPartlyUI.2(this));
-    this.pdS = new SnsTagPartlyUI.a(this, this);
-    View localView = View.inflate(this, i.g.sns_tag_partly_footer, null);
-    this.fry.addFooterView(localView);
-    this.fry.setAdapter(this.pdS);
-    addTextOptionMenu(0, getString(i.j.sns_tag_partly_edit), new MenuItem.OnMenuItemClickListener()
+    this.gJa = ((ListView)findViewById(2131828101));
+    this.gJa.setOnItemClickListener(new SnsTagPartlyUI.2(this));
+    this.rWF = new SnsTagPartlyUI.a(this, this);
+    View localView = View.inflate(this, 2130970873, null);
+    this.gJa.addFooterView(localView);
+    this.gJa.setAdapter(this.rWF);
+    addTextOptionMenu(0, getString(2131303990), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
+        AppMethodBeat.i(39378);
         paramAnonymousMenuItem = SnsTagPartlyUI.a(SnsTagPartlyUI.this);
         boolean bool;
         SnsTagPartlyUI localSnsTagPartlyUI;
-        if (!SnsTagPartlyUI.a(SnsTagPartlyUI.this).pdW)
+        if (!SnsTagPartlyUI.a(SnsTagPartlyUI.this).rWJ)
         {
           bool = true;
-          paramAnonymousMenuItem.pdW = bool;
+          paramAnonymousMenuItem.rWJ = bool;
           localSnsTagPartlyUI = SnsTagPartlyUI.this;
-          if (!SnsTagPartlyUI.a(SnsTagPartlyUI.this).pdW) {
-            break label80;
+          if (!SnsTagPartlyUI.a(SnsTagPartlyUI.this).rWJ) {
+            break label89;
           }
         }
-        label80:
-        for (paramAnonymousMenuItem = SnsTagPartlyUI.this.getString(i.j.app_finish);; paramAnonymousMenuItem = SnsTagPartlyUI.this.getString(i.j.sns_tag_partly_edit))
+        label89:
+        for (paramAnonymousMenuItem = SnsTagPartlyUI.this.getString(2131296964);; paramAnonymousMenuItem = SnsTagPartlyUI.this.getString(2131303990))
         {
           localSnsTagPartlyUI.updateOptionMenuText(0, paramAnonymousMenuItem);
           SnsTagPartlyUI.a(SnsTagPartlyUI.this).notifyDataSetChanged();
+          AppMethodBeat.o(39378);
           return true;
           bool = false;
           break;
         }
       }
     });
-    this.pdS.uMi = new r.a()
+    this.rWF.a(new p.a()
     {
-      public final void Wp()
+      public final void apT()
       {
         boolean bool = true;
+        AppMethodBeat.i(39379);
         SnsTagPartlyUI localSnsTagPartlyUI = SnsTagPartlyUI.this;
         if (SnsTagPartlyUI.a(SnsTagPartlyUI.this).getCount() > 1) {}
         for (;;)
         {
           localSnsTagPartlyUI.enableOptionMenu(bool);
+          AppMethodBeat.o(39379);
           return;
           bool = false;
         }
       }
-    };
+    });
+    AppMethodBeat.o(39390);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(39391);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt2 != -1) {}
-    String str;
-    do
+    if (paramInt2 != -1)
     {
-      do
+      AppMethodBeat.o(39391);
+      return;
+    }
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(39391);
+      return;
+      if (paramIntent == null)
       {
+        AppMethodBeat.o(39391);
         return;
-        switch (paramInt1)
-        {
-        default: 
-          return;
-        }
-      } while (paramIntent == null);
-      str = paramIntent.getStringExtra("Select_Contact");
+      }
+      String str = paramIntent.getStringExtra("Select_Contact");
       paramIntent = paramIntent.getStringExtra("Select_room_name");
-    } while (str == null);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("k_sns_tag_id", 0);
-    localIntent.putExtra("k_sns_tag_name", bk.aM(paramIntent, ""));
-    localIntent.putExtra("k_sns_tag_list", str);
-    localIntent.setClass(this, SnsTagDetailUI.class);
-    startActivity(localIntent);
+      if (str == null)
+      {
+        AppMethodBeat.o(39391);
+        return;
+      }
+      Intent localIntent = new Intent();
+      localIntent.putExtra("k_sns_tag_id", 0);
+      localIntent.putExtra("k_sns_tag_name", bo.bf(paramIntent, ""));
+      localIntent.putExtra("k_sns_tag_list", str);
+      localIntent.setClass(this, SnsTagDetailUI.class);
+      startActivity(localIntent);
+    }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(39387);
     super.onCreate(paramBundle);
-    g.DQ();
-    g.DO().dJT.a(292, this);
-    g.DQ();
-    g.DO().dJT.a(290, this);
+    g.RM();
+    g.RK().eHt.a(292, this);
+    g.RM();
+    g.RK().eHt.a(290, this);
     initView();
+    AppMethodBeat.o(39387);
   }
   
   public void onDestroy()
   {
-    g.DQ();
-    g.DO().dJT.b(292, this);
-    g.DQ();
-    g.DO().dJT.b(290, this);
-    if (this.pdS != null) {
-      this.pdS.bcS();
+    AppMethodBeat.i(39388);
+    g.RM();
+    g.RK().eHt.b(292, this);
+    g.RM();
+    g.RK().eHt.b(290, this);
+    if (this.rWF != null) {
+      this.rWF.bKb();
     }
     super.onDestroy();
+    AppMethodBeat.o(39388);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(39389);
     super.onResume();
-    if (this.pdS != null) {
-      this.pdS.a("", null);
+    if (this.rWF != null) {
+      this.rWF.a("", null);
     }
+    AppMethodBeat.o(39389);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.SnsTagPartlyUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.i(39392);
+    ab.i("MicroMsg.SnsTagPartlyUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    if (this.pdS != null) {
-      this.pdS.a("", null);
+    if (this.rWF != null) {
+      this.rWF.a("", null);
     }
+    AppMethodBeat.o(39392);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

@@ -1,41 +1,27 @@
 package com.tencent.mm.plugin.collect.ui;
 
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.tools.j;
-import com.tencent.mm.ui.widget.a.d;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.ui.o;
 
 final class CollectMainUI$19
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
-  CollectMainUI$19(CollectMainUI paramCollectMainUI) {}
+  CollectMainUI$19(CollectMainUI paramCollectMainUI, o paramo1, o paramo2) {}
   
-  public final boolean onLongClick(View paramView)
+  public final void onClick(View paramView)
   {
-    if (CollectMainUI.b(this.iLP) == 0)
+    AppMethodBeat.i(41273);
+    if (CollectMainUI.g(this.kSz).getText().toString().equals(CollectMainUI.i(this.kSz)))
     {
-      paramView = new j(this.iLP.mController.uMN);
-      paramView.phH = new n.c()
-      {
-        public final void a(l paramAnonymousl)
-        {
-          paramAnonymousl.e(0, CollectMainUI.19.this.iLP.getString(a.i.collect_main_save));
-        }
-      };
-      paramView.phI = new CollectMainUI.19.2(this);
-      paramView.bJQ();
-      return true;
+      this.kSH.onClick(paramView);
+      AppMethodBeat.o(41273);
+      return;
     }
-    paramView = new d(this.iLP.mController.uMN, 1, false);
-    paramView.phH = new CollectMainUI.19.3(this);
-    paramView.phI = new CollectMainUI.19.4(this);
-    paramView.cfU();
-    return true;
+    this.kSI.onClick(paramView);
+    AppMethodBeat.o(41273);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget.input;
 
 public abstract interface WebViewInputFooter$c
 {
-  public abstract void RJ(String paramString);
+  public abstract void agO(String paramString);
 }
 
 

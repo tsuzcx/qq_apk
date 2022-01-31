@@ -1,6 +1,6 @@
 package com.tencent.wcdb.support;
 
-import android.os.RemoteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class CancellationSignal
 {
@@ -11,7 +11,10 @@ public final class CancellationSignal
   
   public static ICancellationSignal createTransport()
   {
-    return new Transport(null);
+    AppMethodBeat.i(12696);
+    Transport localTransport = new Transport(null);
+    AppMethodBeat.o(12696);
+    return localTransport;
   }
   
   public static CancellationSignal fromTransport(ICancellationSignal paramICancellationSignal)
@@ -24,6 +27,7 @@ public final class CancellationSignal
   
   private void waitForCancelFinishedLocked()
   {
+    AppMethodBeat.i(12695);
     while (this.mCancelInProgress) {
       try
       {
@@ -31,103 +35,118 @@ public final class CancellationSignal
       }
       catch (InterruptedException localInterruptedException) {}
     }
+    AppMethodBeat.o(12695);
   }
   
   /* Error */
   public final void cancel()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 48	com/tencent/wcdb/support/CancellationSignal:mIsCanceled	Z
-    //   6: ifeq +6 -> 12
-    //   9: aload_0
-    //   10: monitorexit
-    //   11: return
-    //   12: aload_0
-    //   13: iconst_1
-    //   14: putfield 48	com/tencent/wcdb/support/CancellationSignal:mIsCanceled	Z
-    //   17: aload_0
-    //   18: iconst_1
-    //   19: putfield 40	com/tencent/wcdb/support/CancellationSignal:mCancelInProgress	Z
-    //   22: aload_0
-    //   23: getfield 50	com/tencent/wcdb/support/CancellationSignal:mOnCancelListener	Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;
-    //   26: astore_1
-    //   27: aload_0
-    //   28: getfield 52	com/tencent/wcdb/support/CancellationSignal:mRemote	Lcom/tencent/wcdb/support/ICancellationSignal;
-    //   31: astore_2
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: aload_1
-    //   35: ifnull +9 -> 44
-    //   38: aload_1
-    //   39: invokeinterface 55 1 0
-    //   44: aload_2
-    //   45: ifnull +9 -> 54
-    //   48: aload_2
-    //   49: invokeinterface 59 1 0
-    //   54: aload_0
-    //   55: monitorenter
-    //   56: aload_0
-    //   57: iconst_0
-    //   58: putfield 40	com/tencent/wcdb/support/CancellationSignal:mCancelInProgress	Z
-    //   61: aload_0
-    //   62: invokevirtual 62	java/lang/Object:notifyAll	()V
-    //   65: aload_0
-    //   66: monitorexit
-    //   67: return
-    //   68: astore_1
-    //   69: aload_0
-    //   70: monitorexit
-    //   71: aload_1
-    //   72: athrow
-    //   73: astore_1
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: aload_1
-    //   77: athrow
-    //   78: astore_1
-    //   79: aload_0
-    //   80: monitorenter
-    //   81: aload_0
-    //   82: iconst_0
-    //   83: putfield 40	com/tencent/wcdb/support/CancellationSignal:mCancelInProgress	Z
-    //   86: aload_0
-    //   87: invokevirtual 62	java/lang/Object:notifyAll	()V
-    //   90: aload_0
-    //   91: monitorexit
-    //   92: aload_1
-    //   93: athrow
-    //   94: astore_1
-    //   95: aload_0
-    //   96: monitorexit
-    //   97: aload_1
-    //   98: athrow
-    //   99: astore_1
-    //   100: goto -46 -> 54
+    //   0: sipush 12692
+    //   3: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: monitorenter
+    //   8: aload_0
+    //   9: getfield 57	com/tencent/wcdb/support/CancellationSignal:mIsCanceled	Z
+    //   12: ifeq +12 -> 24
+    //   15: aload_0
+    //   16: monitorexit
+    //   17: sipush 12692
+    //   20: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   23: return
+    //   24: aload_0
+    //   25: iconst_1
+    //   26: putfield 57	com/tencent/wcdb/support/CancellationSignal:mIsCanceled	Z
+    //   29: aload_0
+    //   30: iconst_1
+    //   31: putfield 49	com/tencent/wcdb/support/CancellationSignal:mCancelInProgress	Z
+    //   34: aload_0
+    //   35: getfield 59	com/tencent/wcdb/support/CancellationSignal:mOnCancelListener	Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;
+    //   38: astore_1
+    //   39: aload_0
+    //   40: getfield 61	com/tencent/wcdb/support/CancellationSignal:mRemote	Lcom/tencent/wcdb/support/ICancellationSignal;
+    //   43: astore_2
+    //   44: aload_0
+    //   45: monitorexit
+    //   46: aload_1
+    //   47: ifnull +9 -> 56
+    //   50: aload_1
+    //   51: invokeinterface 64 1 0
+    //   56: aload_2
+    //   57: ifnull +9 -> 66
+    //   60: aload_2
+    //   61: invokeinterface 68 1 0
+    //   66: aload_0
+    //   67: monitorenter
+    //   68: aload_0
+    //   69: iconst_0
+    //   70: putfield 49	com/tencent/wcdb/support/CancellationSignal:mCancelInProgress	Z
+    //   73: aload_0
+    //   74: invokevirtual 71	java/lang/Object:notifyAll	()V
+    //   77: aload_0
+    //   78: monitorexit
+    //   79: sipush 12692
+    //   82: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: return
+    //   86: astore_1
+    //   87: aload_0
+    //   88: monitorexit
+    //   89: sipush 12692
+    //   92: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   95: aload_1
+    //   96: athrow
+    //   97: astore_1
+    //   98: aload_0
+    //   99: monitorexit
+    //   100: sipush 12692
+    //   103: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   106: aload_1
+    //   107: athrow
+    //   108: astore_1
+    //   109: aload_0
+    //   110: monitorenter
+    //   111: aload_0
+    //   112: iconst_0
+    //   113: putfield 49	com/tencent/wcdb/support/CancellationSignal:mCancelInProgress	Z
+    //   116: aload_0
+    //   117: invokevirtual 71	java/lang/Object:notifyAll	()V
+    //   120: aload_0
+    //   121: monitorexit
+    //   122: sipush 12692
+    //   125: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   128: aload_1
+    //   129: athrow
+    //   130: astore_1
+    //   131: aload_0
+    //   132: monitorexit
+    //   133: sipush 12692
+    //   136: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   139: aload_1
+    //   140: athrow
+    //   141: astore_1
+    //   142: goto -76 -> 66
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	103	0	this	CancellationSignal
-    //   26	13	1	localOnCancelListener	OnCancelListener
-    //   68	4	1	localObject1	Object
-    //   73	4	1	localObject2	Object
-    //   78	15	1	localObject3	Object
-    //   94	4	1	localObject4	Object
-    //   99	1	1	localRemoteException	RemoteException
-    //   31	18	2	localICancellationSignal	ICancellationSignal
+    //   0	145	0	this	CancellationSignal
+    //   38	13	1	localOnCancelListener	OnCancelListener
+    //   86	10	1	localObject1	Object
+    //   97	10	1	localObject2	Object
+    //   108	21	1	localObject3	Object
+    //   130	10	1	localObject4	Object
+    //   141	1	1	localRemoteException	android.os.RemoteException
+    //   43	18	2	localICancellationSignal	ICancellationSignal
     // Exception table:
     //   from	to	target	type
-    //   56	67	68	finally
-    //   69	71	68	finally
-    //   2	11	73	finally
-    //   12	34	73	finally
-    //   74	76	73	finally
-    //   38	44	78	finally
-    //   48	54	78	finally
-    //   81	92	94	finally
-    //   95	97	94	finally
-    //   48	54	99	android/os/RemoteException
+    //   8	17	86	finally
+    //   24	46	86	finally
+    //   87	89	86	finally
+    //   68	79	97	finally
+    //   98	100	97	finally
+    //   50	56	108	finally
+    //   60	66	108	finally
+    //   111	122	130	finally
+    //   131	133	130	finally
+    //   60	66	141	android/os/RemoteException
   }
   
   public final boolean isCanceled()
@@ -142,6 +161,7 @@ public final class CancellationSignal
   
   public final void setOnCancelListener(OnCancelListener paramOnCancelListener)
   {
+    AppMethodBeat.i(12693);
     try
     {
       waitForCancelFinishedLocked();
@@ -152,38 +172,90 @@ public final class CancellationSignal
       if ((!this.mIsCanceled) || (paramOnCancelListener == null)) {
         return;
       }
-    }
-    finally {}
-    paramOnCancelListener.onCancel();
-  }
-  
-  public final void setRemote(ICancellationSignal paramICancellationSignal)
-  {
-    try
-    {
-      waitForCancelFinishedLocked();
-      if (this.mRemote == paramICancellationSignal) {
-        return;
-      }
-      this.mRemote = paramICancellationSignal;
-      if ((!this.mIsCanceled) || (paramICancellationSignal == null)) {
-        return;
-      }
-    }
-    finally {}
-    try
-    {
-      paramICancellationSignal.cancel();
+      paramOnCancelListener.onCancel();
+      AppMethodBeat.o(12693);
       return;
     }
-    catch (RemoteException paramICancellationSignal) {}
+    finally
+    {
+      AppMethodBeat.o(12693);
+    }
+  }
+  
+  /* Error */
+  public final void setRemote(ICancellationSignal paramICancellationSignal)
+  {
+    // Byte code:
+    //   0: sipush 12694
+    //   3: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: monitorenter
+    //   8: aload_0
+    //   9: invokespecial 77	com/tencent/wcdb/support/CancellationSignal:waitForCancelFinishedLocked	()V
+    //   12: aload_0
+    //   13: getfield 61	com/tencent/wcdb/support/CancellationSignal:mRemote	Lcom/tencent/wcdb/support/ICancellationSignal;
+    //   16: aload_1
+    //   17: if_acmpne +12 -> 29
+    //   20: aload_0
+    //   21: monitorexit
+    //   22: sipush 12694
+    //   25: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   28: return
+    //   29: aload_0
+    //   30: aload_1
+    //   31: putfield 61	com/tencent/wcdb/support/CancellationSignal:mRemote	Lcom/tencent/wcdb/support/ICancellationSignal;
+    //   34: aload_0
+    //   35: getfield 57	com/tencent/wcdb/support/CancellationSignal:mIsCanceled	Z
+    //   38: ifeq +7 -> 45
+    //   41: aload_1
+    //   42: ifnonnull +12 -> 54
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: sipush 12694
+    //   50: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   53: return
+    //   54: aload_0
+    //   55: monitorexit
+    //   56: aload_1
+    //   57: invokeinterface 68 1 0
+    //   62: sipush 12694
+    //   65: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   68: return
+    //   69: astore_1
+    //   70: aload_0
+    //   71: monitorexit
+    //   72: sipush 12694
+    //   75: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   78: aload_1
+    //   79: athrow
+    //   80: astore_1
+    //   81: sipush 12694
+    //   84: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	88	0	this	CancellationSignal
+    //   0	88	1	paramICancellationSignal	ICancellationSignal
+    // Exception table:
+    //   from	to	target	type
+    //   8	22	69	finally
+    //   29	41	69	finally
+    //   45	47	69	finally
+    //   54	56	69	finally
+    //   70	72	69	finally
+    //   56	62	80	android/os/RemoteException
   }
   
   public final void throwIfCanceled()
   {
-    if (isCanceled()) {
-      throw new OperationCanceledException();
+    AppMethodBeat.i(12691);
+    if (isCanceled())
+    {
+      OperationCanceledException localOperationCanceledException = new OperationCanceledException();
+      AppMethodBeat.o(12691);
+      throw localOperationCanceledException;
     }
+    AppMethodBeat.o(12691);
   }
   
   public static abstract interface OnCancelListener
@@ -191,14 +263,23 @@ public final class CancellationSignal
     public abstract void onCancel();
   }
   
-  private static final class Transport
+  static final class Transport
     extends ICancellationSignal.Stub
   {
-    final CancellationSignal mCancellationSignal = new CancellationSignal();
+    final CancellationSignal mCancellationSignal;
+    
+    private Transport()
+    {
+      AppMethodBeat.i(12689);
+      this.mCancellationSignal = new CancellationSignal();
+      AppMethodBeat.o(12689);
+    }
     
     public final void cancel()
     {
+      AppMethodBeat.i(12690);
       this.mCancellationSignal.cancel();
+      AppMethodBeat.o(12690);
     }
   }
 }

@@ -6,67 +6,67 @@ import com.google.a.a.e;
 public final class a$k
   extends e
 {
+  public int BdM = 0;
   public String groupId = "";
-  public int iEo = -1;
+  public int kJx = -1;
   public int netType = 0;
-  public int pRI = 0;
-  public long pRJ = 0L;
-  public int wGl = 0;
+  public int twP = 0;
+  public long twQ = 0L;
   
   public a$k()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
     if (!this.groupId.equals("")) {
-      paramb.d(1, this.groupId);
+      paramb.e(1, this.groupId);
     }
-    if (this.pRI != 0) {
-      paramb.aL(2, this.pRI);
+    if (this.twP != 0) {
+      paramb.bj(2, this.twP);
     }
-    if (this.pRJ != 0L) {
-      paramb.i(3, this.pRJ);
+    if (this.twQ != 0L) {
+      paramb.n(3, this.twQ);
     }
-    if (this.iEo != -1) {
-      paramb.aL(4, this.iEo);
+    if (this.kJx != -1) {
+      paramb.bj(4, this.kJx);
     }
-    if (this.wGl != 0) {
-      paramb.aM(5, this.wGl);
+    if (this.BdM != 0) {
+      paramb.bk(5, this.BdM);
     }
     if (this.netType != 0) {
-      paramb.aM(6, this.netType);
+      paramb.bk(6, this.netType);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.e(1, this.groupId);
+      i = j + b.f(1, this.groupId);
     }
     j = i;
-    if (this.pRI != 0) {
-      j = i + b.aN(2, this.pRI);
+    if (this.twP != 0) {
+      j = i + b.bl(2, this.twP);
     }
     i = j;
-    if (this.pRJ != 0L) {
-      i = j + b.k(3, this.pRJ);
+    if (this.twQ != 0L) {
+      i = j + b.p(3, this.twQ);
     }
     j = i;
-    if (this.iEo != -1) {
-      j = i + b.aN(4, this.iEo);
+    if (this.kJx != -1) {
+      j = i + b.bl(4, this.kJx);
     }
     i = j;
-    if (this.wGl != 0) {
-      i = j + b.aO(5, this.wGl);
+    if (this.BdM != 0) {
+      i = j + b.bm(5, this.BdM);
     }
     j = i;
     if (this.netType != 0) {
-      j = i + b.aO(6, this.netType);
+      j = i + b.bm(6, this.netType);
     }
     return j;
   }

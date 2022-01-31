@@ -2,7 +2,7 @@ package com.tencent.mm.network;
 
 public abstract interface k
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte);
+  public abstract void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte);
 }
 
 

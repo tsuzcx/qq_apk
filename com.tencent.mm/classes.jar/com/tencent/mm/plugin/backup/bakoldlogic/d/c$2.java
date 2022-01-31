@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.d;
 
-import com.tencent.mm.cf.f;
-import com.tencent.mm.cf.g;
-import com.tencent.mm.cf.g.a;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.cf.h.a;
-import com.tencent.mm.cf.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.f;
+import com.tencent.mm.cg.g;
+import com.tencent.mm.cg.g.a;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.cg.h.a;
+import com.tencent.mm.cg.i;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Queue;
@@ -18,122 +19,125 @@ final class c$2
 {
   c$2(c paramc) {}
   
-  public final void DG()
+  public final void RB()
   {
-    if (this.hPD.hPB != null)
+    AppMethodBeat.i(18023);
+    if (this.jJf.jJd != null)
     {
-      g localg = this.hPD.hPB;
-      Iterator localIterator = localg.uEe.keySet().iterator();
+      g localg = this.jJf.jJd;
+      Iterator localIterator = localg.yQN.keySet().iterator();
       while (localIterator.hasNext()) {
-        ((i)localg.uEe.get(localIterator.next())).cxh();
+        ((i)localg.yQN.get(localIterator.next())).dzW();
       }
     }
+    AppMethodBeat.o(18023);
   }
   
-  public final void DH() {}
+  public final void RC() {}
   
-  public final void DI()
+  public final void RD()
   {
-    g localg;
-    if (this.hPD.hPB != null)
+    AppMethodBeat.i(18024);
+    if (this.jJf.jJd != null)
     {
-      localg = this.hPD.hPB;
-      if (localg.uEf.size() != 0)
+      g localg = this.jJf.jJd;
+      if (localg.yQO.size() != 0)
       {
-        y.i("MicroMsg.MemoryStorage", "attachTable begin stg:%s size:%d", new Object[] { "stg_null", Integer.valueOf(localg.uEf.size()) });
-        if (localg.uDC != null) {
-          break label76;
-        }
-        y.e("MicroMsg.MemoryStorage", "attachTable db is null");
-      }
-    }
-    label189:
-    label586:
-    for (;;)
-    {
-      return;
-      label76:
-      g.a locala;
-      if (localg.uEc.inTransaction())
-      {
-        y.w("MicroMsg.MemoryStorage", "attachTable is in transcation ,give up attach table size:%d", new Object[] { Integer.valueOf(localg.uEf.size()) });
-        return;
-        locala = (g.a)localg.uEf.peek();
-        if (locala != null) {
-          break label189;
-        }
-        localg.uEf.poll();
-      }
-      for (;;)
-      {
-        if (localg.uEf.size() <= 0) {
-          break label586;
-        }
-        if (!localg.uEc.inTransaction()) {
-          break;
-        }
-        y.w("MicroMsg.MemoryStorage", "attachTable is in transcation , break attach table size:%d", new Object[] { Integer.valueOf(localg.uEf.size()) });
-        return;
-        String str = locala.getTableName();
-        if (bk.bl(str))
+        ab.i("MicroMsg.MemoryStorage", "attachTable begin stg:%s size:%d", new Object[] { "stg_null", Integer.valueOf(localg.yQO.size()) });
+        if (localg.yQj == null)
         {
-          y.e("MicroMsg.MemoryStorage", "attachTable Error table Name :%s", new Object[] { str });
-          localg.uEf.poll();
+          ab.e("MicroMsg.MemoryStorage", "attachTable db is null");
+          AppMethodBeat.o(18024);
+          return;
         }
-        else if (f.a(localg.uDC, str))
+        g.a locala;
+        if (localg.yQL.inTransaction())
         {
-          y.e("MicroMsg.MemoryStorage", "attachTable Error Attach table twice :%s", new Object[] { str });
-          localg.uEf.poll();
+          ab.w("MicroMsg.MemoryStorage", "attachTable is in transcation ,give up attach table size:%d", new Object[] { Integer.valueOf(localg.yQO.size()) });
+          AppMethodBeat.o(18024);
+          return;
+          locala = (g.a)localg.yQO.peek();
+          if (locala != null) {
+            break label213;
+          }
+          localg.yQO.poll();
         }
-        else
+        for (;;)
         {
-          if (localg.acO(str) != 0) {
-            for (;;)
-            {
-              try
+          if (localg.yQO.size() <= 0) {
+            break label611;
+          }
+          if (!localg.yQL.inTransaction()) {
+            break;
+          }
+          ab.w("MicroMsg.MemoryStorage", "attachTable is in transcation , break attach table size:%d", new Object[] { Integer.valueOf(localg.yQO.size()) });
+          AppMethodBeat.o(18024);
+          return;
+          label213:
+          String str = locala.getTableName();
+          if (bo.isNullOrNil(str))
+          {
+            ab.e("MicroMsg.MemoryStorage", "attachTable Error table Name :%s", new Object[] { str });
+            localg.yQO.poll();
+          }
+          else if (f.a(localg.yQj, str))
+          {
+            ab.e("MicroMsg.MemoryStorage", "attachTable Error Attach table twice :%s", new Object[] { str });
+            localg.yQO.poll();
+          }
+          else
+          {
+            if (localg.atc(str) != 0) {
+              for (;;)
               {
-                if (localg.rUU)
+                try
                 {
-                  localg.uDC.execSQL("DETACH DATABASE old");
-                  y.i("MicroMsg.MemoryStorage", "DETACH DATABASE ");
-                  localg.rUU = false;
+                  if (localg.vLI)
+                  {
+                    localg.yQj.execSQL("DETACH DATABASE old");
+                    ab.i("MicroMsg.MemoryStorage", "DETACH DATABASE ");
+                    localg.vLI = false;
+                  }
+                  if (!bo.isNullOrNil(localg.yQL.getKey())) {
+                    continue;
+                  }
+                  localg.yQj.execSQL("ATTACH DATABASE '" + localg.yQL.getPath() + "' AS old ");
+                  ab.i("MicroMsg.MemoryStorage", "ATTACH DATABASE ");
+                  localg.vLI = true;
                 }
-                if (!bk.bl(localg.uEc.getKey())) {
+                catch (Exception localException)
+                {
+                  localg.vLI = false;
+                  ab.e("MicroMsg.MemoryStorage", "ERROR : attach disk db [%s] , will do again !", new Object[] { localException.getMessage() });
+                  ab.e("MicroMsg.MemoryStorage", "exception:%s", new Object[] { bo.l(localException) });
                   continue;
                 }
-                localg.uDC.execSQL("ATTACH DATABASE '" + localg.uEc.getPath() + "' AS old ");
-                y.i("MicroMsg.MemoryStorage", "ATTACH DATABASE ");
-                localg.rUU = true;
+                if (localg.atc(str) == 0) {
+                  break label518;
+                }
+                ab.e("MicroMsg.MemoryStorage", "copy table failed :".concat(String.valueOf(str)));
+                AppMethodBeat.o(18024);
+                return;
+                localg.yQj.execSQL("ATTACH DATABASE '" + localg.yQL.getPath() + "' AS old KEY '" + localg.yQL.getKey() + "'");
               }
-              catch (Exception localException)
-              {
-                localg.rUU = false;
-                y.e("MicroMsg.MemoryStorage", "ERROR : attach disk db [%s] , will do again !", new Object[] { localException.getMessage() });
-                y.e("MicroMsg.MemoryStorage", "exception:%s", new Object[] { bk.j(localException) });
-                continue;
-              }
-              if (localg.acO(str) == 0) {
-                break label495;
-              }
-              y.e("MicroMsg.MemoryStorage", "copy table failed :" + str);
-              return;
-              localg.uDC.execSQL("ATTACH DATABASE '" + localg.uEc.getPath() + "' AS old KEY '" + localg.uEc.getKey() + "'");
             }
+            label518:
+            ab.i("MicroMsg.MemoryStorage", "attachTable %s succ , waitsize:%d finsize:%d", new Object[] { str, Integer.valueOf(localg.yQO.size()), Integer.valueOf(localg.yQN.size()) });
+            i locali = new i(localg.yQL, str);
+            localg.yQN.put(str, locali);
+            locala.a(localg);
+            localg.yQO.poll();
           }
-          label495:
-          y.i("MicroMsg.MemoryStorage", "attachTable %s succ , waitsize:%d finsize:%d", new Object[] { str, Integer.valueOf(localg.uEf.size()), Integer.valueOf(localg.uEe.size()) });
-          i locali = new i(localg.uEc, str);
-          localg.uEe.put(str, locali);
-          locala.a(localg);
-          localg.uEf.poll();
         }
       }
     }
+    label611:
+    AppMethodBeat.o(18024);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.d.c.2
  * JD-Core Version:    0.7.0.1
  */

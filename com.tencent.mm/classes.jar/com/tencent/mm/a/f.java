@@ -1,69 +1,60 @@
 package com.tencent.mm.a;
 
-import com.tencent.mm.sdk.platformtools.ab;
+import java.util.Map;
+import java.util.Set;
 
-public class f<K, O>
-  extends ab<K, O>
+public abstract interface f<K, O>
 {
-  private b<K, O> bub = null;
+  public abstract O Y(K paramK);
   
-  public f(int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract boolean Z(K paramK);
   
-  public f(int paramInt, b<K, O> paramb)
-  {
-    super(paramInt);
-    this.bub = paramb;
-  }
+  public abstract void a(a<K, O> parama);
   
-  public void a(a<K, O> parama)
-  {
-    clear();
-  }
+  public abstract boolean aa(K paramK);
   
-  public void clear()
-  {
-    super.trimToSize(-1);
-  }
+  public abstract void clear();
   
-  protected final O create(K paramK)
-  {
-    return super.create(paramK);
-  }
+  public abstract int createCount();
   
-  public void entryRemoved(boolean paramBoolean, K paramK, O paramO1, O paramO2)
-  {
-    super.entryRemoved(paramBoolean, paramK, paramO1, paramO2);
-    if ((this.bub != null) && (paramO2 == null)) {
-      this.bub.g(paramK, paramO1);
-    }
-  }
+  public abstract int evictionCount();
   
-  public final void f(K paramK, O paramO)
-  {
-    if (paramO == null) {
-      return;
-    }
-    put(paramK, paramO);
-  }
+  public abstract void f(K paramK, O paramO);
   
-  public int sizeOf(K paramK, O paramO)
-  {
-    return super.sizeOf(paramK, paramO);
-  }
+  public abstract O get(K paramK);
   
-  public final void trimToSize(int paramInt)
-  {
-    super.trimToSize(paramInt);
-  }
+  public abstract int hitCount();
+  
+  public abstract Set<K> keySet();
+  
+  public abstract int maxSize();
+  
+  public abstract int missCount();
+  
+  public abstract O put(K paramK, O paramO);
+  
+  public abstract int putCount();
+  
+  public abstract O remove(K paramK);
+  
+  public abstract int size();
+  
+  public abstract int sizeOf(K paramK, O paramO);
+  
+  public abstract Map<K, O> snapshot();
+  
+  public abstract void trimToSize(int paramInt);
   
   public static abstract interface a<K, O> {}
   
   public static abstract interface b<K, O>
   {
-    public abstract void g(K paramK, O paramO);
+    public abstract void c(K paramK, O paramO1, O paramO2);
+  }
+  
+  public static abstract interface c<K, O>
+  {
+    public abstract int g(K paramK, O paramO);
   }
 }
 

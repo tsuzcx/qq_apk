@@ -1,16 +1,8 @@
 package com.tencent.mm.ai;
 
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.storage.p;
-
 public abstract interface o
-  extends a
 {
-  public abstract p FA();
-  
-  public abstract String FP();
-  
-  public abstract com.tencent.mm.storage.o Fz();
+  public abstract int ads();
 }
 
 

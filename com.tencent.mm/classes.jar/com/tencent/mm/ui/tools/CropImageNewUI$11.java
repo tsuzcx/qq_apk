@@ -2,6 +2,7 @@ package com.tencent.mm.ui.tools;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CropImageNewUI$11
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class CropImageNewUI$11
   
   public final void onClick(View paramView)
   {
-    CropImageNewUI.r(this.vYH);
+    AppMethodBeat.i(34824);
+    CropImageNewUI.r(this.AqU);
+    AppMethodBeat.o(34824);
   }
 }
 

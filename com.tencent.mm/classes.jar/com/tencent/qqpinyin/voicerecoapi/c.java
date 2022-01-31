@@ -1,53 +1,65 @@
 package com.tencent.qqpinyin.voicerecoapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class c
 {
-  private int eLM;
-  private int gRb;
-  private TRVADNative wKm = new TRVADNative();
+  private TRVADNative BhN;
+  private int gbt;
+  private int isQ;
   
   public c()
   {
-    this.eLM = 500000;
-    this.gRb = 10000000;
+    AppMethodBeat.i(35437);
+    this.BhN = new TRVADNative();
+    this.gbt = 500000;
+    this.isQ = 10000000;
+    AppMethodBeat.o(35437);
   }
   
   public c(int paramInt)
   {
-    this.eLM = paramInt;
-    this.gRb = 5000000;
+    AppMethodBeat.i(35436);
+    this.BhN = new TRVADNative();
+    this.gbt = paramInt;
+    this.isQ = 5000000;
+    AppMethodBeat.o(35436);
   }
   
   public final void a(short[] paramArrayOfShort, int paramInt, c.a parama)
   {
     double d1 = 26.0D;
-    if (paramInt <= 0) {
-      return;
-    }
     for (;;)
     {
-      label55:
-      label56:
+      label67:
+      label68:
       try
       {
-        switch (this.wKm.mfeSendData(paramArrayOfShort, paramInt))
+        AppMethodBeat.i(35440);
+        if (paramInt <= 0)
+        {
+          AppMethodBeat.o(35440);
+          return;
+        }
+        switch (this.BhN.mfeSendData(paramArrayOfShort, paramInt))
         {
         case 1: 
-          parama.wKn = 0;
+          parama.BhO = 0;
         }
       }
       finally {}
-      parama.wKr = ((int)d1);
-      new StringBuilder("volumn��").append(parama.wKr);
+      parama.BhS = ((int)d1);
+      new StringBuilder("volumn��").append(parama.BhS);
+      AppMethodBeat.o(35440);
       break;
-      parama.wKn = 1;
-      break label183;
-      parama.wKn = 2;
-      break label183;
-      parama.wKn = 3;
+      parama.BhO = 1;
+      break label200;
+      parama.BhO = 2;
+      break label200;
+      parama.BhO = 3;
       int j;
       int i;
-      label183:
+      label200:
       do
       {
         double d2 = j;
@@ -56,65 +68,73 @@ public final class c
         i += 1;
         continue;
         if (j > 16383) {
-          break label56;
+          break label68;
         }
         d1 = 26.0D * ((j - 100.0D) / 32667.0D);
-        break label56;
+        break label68;
         break;
         i = 0;
         j = 0;
       } while (i < paramInt);
       if (j >= 100) {
-        break label55;
+        break label67;
       }
       d1 = 0.0D;
     }
   }
   
-  public final int start()
+  public final int dUg()
   {
-    int j = this.wKm.mfeInit(this.eLM, this.gRb);
+    AppMethodBeat.i(35438);
+    int j = this.BhN.mfeInit(this.gbt, this.isQ);
     int i = j;
     if (j == 0)
     {
-      j = this.wKm.mfeOpen();
+      j = this.BhN.mfeOpen();
       i = j;
       if (j == 0)
       {
-        j = this.wKm.mfeEnableNoiseDetection(true);
+        j = this.BhN.mfeEnableNoiseDetection(true);
         i = j;
         if (j == 0) {
-          i = this.wKm.mfeStart();
+          i = this.BhN.mfeStart();
         }
       }
     }
-    if (i == 0) {
+    if (i == 0)
+    {
+      AppMethodBeat.o(35438);
       return 0;
     }
+    AppMethodBeat.o(35438);
     return -1;
   }
   
   public final int stop()
   {
-    int j = this.wKm.mfeStop();
+    AppMethodBeat.i(35439);
+    int j = this.BhN.mfeStop();
     int i = j;
     if (j == 0)
     {
-      j = this.wKm.mfeClose();
+      j = this.BhN.mfeClose();
       i = j;
       if (j == 0) {
-        i = this.wKm.mfeExit();
+        i = this.BhN.mfeExit();
       }
     }
-    if (i == 0) {
+    if (i == 0)
+    {
+      AppMethodBeat.o(35439);
       return 0;
     }
+    AppMethodBeat.o(35439);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.qqpinyin.voicerecoapi.c
  * JD-Core Version:    0.7.0.1
  */

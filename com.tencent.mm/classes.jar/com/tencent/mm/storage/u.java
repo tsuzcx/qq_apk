@@ -1,154 +1,185 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.h.c.am;
-import com.tencent.mm.k.a.a.a;
-import com.tencent.mm.k.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.an;
+import com.tencent.mm.j.a.a.a;
+import com.tencent.mm.j.a.a.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.protocal.c.ob;
+import com.tencent.mm.protocal.protobuf.rd;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class u
-  extends am
+  extends an
 {
-  protected static c.a buS;
-  private Map<String, b> eho = new HashMap();
-  private a unl = new a();
-  public a unm = this.unl;
-  private List<String> unn = new LinkedList();
+  protected static c.a info;
+  private Map<String, b> fxs;
+  private a ywX;
+  public a ywY;
+  private List<String> ywZ;
   
   static
   {
+    AppMethodBeat.i(60102);
     c.a locala = new c.a();
-    locala.ujL = new Field[19];
-    locala.columns = new String[20];
+    locala.yrK = new Field[20];
+    locala.columns = new String[21];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "chatroomname";
-    locala.ujN.put("chatroomname", "TEXT default ''  PRIMARY KEY ");
+    locala.yrM.put("chatroomname", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" chatroomname TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "chatroomname";
+    locala.yrL = "chatroomname";
     locala.columns[1] = "addtime";
-    locala.ujN.put("addtime", "LONG");
+    locala.yrM.put("addtime", "LONG");
     localStringBuilder.append(" addtime LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "memberlist";
-    locala.ujN.put("memberlist", "TEXT");
+    locala.yrM.put("memberlist", "TEXT");
     localStringBuilder.append(" memberlist TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "displayname";
-    locala.ujN.put("displayname", "TEXT");
+    locala.yrM.put("displayname", "TEXT");
     localStringBuilder.append(" displayname TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "chatroomnick";
-    locala.ujN.put("chatroomnick", "TEXT");
+    locala.yrM.put("chatroomnick", "TEXT");
     localStringBuilder.append(" chatroomnick TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "roomflag";
-    locala.ujN.put("roomflag", "INTEGER");
+    locala.yrM.put("roomflag", "INTEGER");
     localStringBuilder.append(" roomflag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "roomowner";
-    locala.ujN.put("roomowner", "TEXT");
+    locala.yrM.put("roomowner", "TEXT");
     localStringBuilder.append(" roomowner TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "roomdata";
-    locala.ujN.put("roomdata", "BLOB");
+    locala.yrM.put("roomdata", "BLOB");
     localStringBuilder.append(" roomdata BLOB");
     localStringBuilder.append(", ");
     locala.columns[8] = "isShowname";
-    locala.ujN.put("isShowname", "INTEGER");
+    locala.yrM.put("isShowname", "INTEGER");
     localStringBuilder.append(" isShowname INTEGER");
     localStringBuilder.append(", ");
     locala.columns[9] = "selfDisplayName";
-    locala.ujN.put("selfDisplayName", "TEXT");
+    locala.yrM.put("selfDisplayName", "TEXT");
     localStringBuilder.append(" selfDisplayName TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "style";
-    locala.ujN.put("style", "INTEGER");
+    locala.yrM.put("style", "INTEGER");
     localStringBuilder.append(" style INTEGER");
     localStringBuilder.append(", ");
     locala.columns[11] = "chatroomdataflag";
-    locala.ujN.put("chatroomdataflag", "INTEGER");
+    locala.yrM.put("chatroomdataflag", "INTEGER");
     localStringBuilder.append(" chatroomdataflag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[12] = "modifytime";
-    locala.ujN.put("modifytime", "LONG");
+    locala.yrM.put("modifytime", "LONG");
     localStringBuilder.append(" modifytime LONG");
     localStringBuilder.append(", ");
     locala.columns[13] = "chatroomnotice";
-    locala.ujN.put("chatroomnotice", "TEXT");
+    locala.yrM.put("chatroomnotice", "TEXT");
     localStringBuilder.append(" chatroomnotice TEXT");
     localStringBuilder.append(", ");
     locala.columns[14] = "chatroomVersion";
-    locala.ujN.put("chatroomVersion", "INTEGER");
+    locala.yrM.put("chatroomVersion", "INTEGER");
     localStringBuilder.append(" chatroomVersion INTEGER");
     localStringBuilder.append(", ");
     locala.columns[15] = "chatroomnoticeEditor";
-    locala.ujN.put("chatroomnoticeEditor", "TEXT");
+    locala.yrM.put("chatroomnoticeEditor", "TEXT");
     localStringBuilder.append(" chatroomnoticeEditor TEXT");
     localStringBuilder.append(", ");
     locala.columns[16] = "chatroomnoticePublishTime";
-    locala.ujN.put("chatroomnoticePublishTime", "LONG");
+    locala.yrM.put("chatroomnoticePublishTime", "LONG");
     localStringBuilder.append(" chatroomnoticePublishTime LONG");
     localStringBuilder.append(", ");
     locala.columns[17] = "chatroomLocalVersion";
-    locala.ujN.put("chatroomLocalVersion", "LONG");
+    locala.yrM.put("chatroomLocalVersion", "LONG");
     localStringBuilder.append(" chatroomLocalVersion LONG");
     localStringBuilder.append(", ");
     locala.columns[18] = "chatroomStatus";
-    locala.ujN.put("chatroomStatus", "INTEGER default '0' ");
+    locala.yrM.put("chatroomStatus", "INTEGER default '0' ");
     localStringBuilder.append(" chatroomStatus INTEGER default '0' ");
-    locala.columns[19] = "rowid";
+    localStringBuilder.append(", ");
+    locala.columns[19] = "memberCount";
+    locala.yrM.put("memberCount", "INTEGER default '-1' ");
+    localStringBuilder.append(" memberCount INTEGER default '-1' ");
+    locala.columns[20] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(60102);
   }
   
-  private static int Oh(String paramString)
+  public u()
   {
-    int i = 0;
-    try
-    {
-      int j = bk.getInt(paramString, 0);
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      while (paramString == null) {}
-      y.e("MicroMsg.ChatRoomMember", "parserInt error " + paramString);
-    }
-    return i;
-    return 0;
+    AppMethodBeat.i(60074);
+    this.ywX = new a();
+    this.ywY = this.ywX;
+    this.ywZ = new LinkedList();
+    this.fxs = new ConcurrentHashMap();
+    AppMethodBeat.o(60074);
   }
   
   private void a(a parama)
   {
+    AppMethodBeat.i(60077);
     if (this.field_roomdata == null) {
       parama = new a();
     }
-    parama = parama.dtH.iterator();
+    parama = parama.elu.iterator();
     while (parama.hasNext())
     {
       b localb = (b)parama.next();
-      this.eho.put(localb.userName, localb);
+      if ((localb != null) && (localb.userName != null)) {
+        this.fxs.put(localb.userName, localb);
+      }
+    }
+    AppMethodBeat.o(60077);
+  }
+  
+  private static int abb(String paramString)
+  {
+    int j = 0;
+    AppMethodBeat.i(60090);
+    try
+    {
+      i = bo.getInt(paramString, 0);
+      AppMethodBeat.o(60090);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = j;
+        if (paramString != null)
+        {
+          ab.e("MicroMsg.ChatRoomMember", "parserInt error ".concat(String.valueOf(paramString)));
+          i = j;
+        }
+      }
     }
   }
   
-  private static a aaN(String paramString)
+  private static a aqY(String paramString)
   {
+    AppMethodBeat.i(60091);
     a locala = new a();
-    if (bk.bl(paramString)) {
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(60091);
       return locala;
     }
     int i = paramString.indexOf('<');
@@ -156,10 +187,11 @@ public final class u
     if (i > 0) {
       str1 = paramString.substring(i);
     }
-    Map localMap = bn.s(str1, "RoomData");
+    Map localMap = br.F(str1, "RoomData");
     if (localMap == null)
     {
-      y.e("MicroMsg.ChatRoomMember", "parse RoomData failed");
+      ab.e("MicroMsg.ChatRoomMember", "parse RoomData failed");
+      AppMethodBeat.o(60091);
       return null;
     }
     i = 0;
@@ -173,47 +205,52 @@ public final class u
           str2 = ".RoomData.Member.$UserName";
           str1 = ".RoomData.Member.DisplayName";
           paramString = ".RoomData.Member.Flag";
-          str2 = bk.aM((String)localMap.get(str2), "");
-          if (!bk.bl(str2))
+          str2 = bo.bf((String)localMap.get(str2), "");
+          if (!bo.isNullOrNil(str2))
           {
             localb.userName = str2;
-            localb.dtK = bk.aM((String)localMap.get(str1), "");
-            localb.dtL = Oh((String)localMap.get(paramString));
-            locala.dtH.add(localb);
+            localb.elx = bo.bf((String)localMap.get(str1), "");
+            localb.ely = abb((String)localMap.get(paramString));
+            locala.elu.add(localb);
             i += 1;
           }
         }
         else
         {
           if (i == 0) {
-            break label348;
+            break label377;
           }
           str2 = ".RoomData.Member" + i + ".$UserName";
           str1 = ".RoomData.Member" + i + ".DisplayName";
           paramString = ".RoomData.Member" + i + ".Flag";
           continue;
         }
-        locala.type = Oh((String)localMap.get(".RoomData.Type"));
-        locala.status = Oh((String)localMap.get(".RoomData.Status"));
-        locala.dng = Oh((String)localMap.get(".RoomData.MaxCount"));
-        locala.dtI = bk.aM((String)localMap.get(".RoomData.ExtInfo.Upgrader"), "");
+        locala.type = abb((String)localMap.get(".RoomData.Type"));
+        locala.status = abb((String)localMap.get(".RoomData.Status"));
+        locala.eeH = abb((String)localMap.get(".RoomData.MaxCount"));
+        locala.elv = bo.bf((String)localMap.get(".RoomData.ExtInfo.Upgrader"), "");
+        AppMethodBeat.o(60091);
         return locala;
       }
       catch (Exception paramString)
       {
+        AppMethodBeat.o(60091);
         return locala;
       }
-      label348:
+      label377:
       paramString = null;
       str1 = null;
       String str2 = null;
     }
   }
   
-  public static List<String> aaO(String paramString)
+  public static List<String> aqZ(String paramString)
   {
+    AppMethodBeat.i(60093);
     LinkedList localLinkedList = new LinkedList();
-    if (bk.bl(paramString)) {
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(60093);
       return localLinkedList;
     }
     paramString = paramString.split(";");
@@ -223,230 +260,372 @@ public final class u
       localLinkedList.add(paramString[i]);
       i += 1;
     }
+    AppMethodBeat.o(60093);
     return localLinkedList;
   }
   
-  public static boolean ctP()
+  private static String da(List<String> paramList)
   {
+    AppMethodBeat.i(60092);
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      AppMethodBeat.o(60092);
+      return "";
+    }
+    Object localObject = "";
+    int i = 0;
+    while (i < paramList.size())
+    {
+      String str = (String)localObject + (String)paramList.get(i);
+      localObject = str;
+      if (i < paramList.size() - 1) {
+        localObject = str + ";";
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(60092);
+    return localObject;
+  }
+  
+  public final boolean JP()
+  {
+    AppMethodBeat.i(60100);
+    if (bo.isNullOrNil(this.field_roomowner))
+    {
+      AppMethodBeat.o(60100);
+      return false;
+    }
+    String str = r.Zn();
+    if ((((c)g.E(c.class)).IV(this.field_chatroomname)) && (aqW(str))) {}
+    for (int i = 1;; i = 0)
+    {
+      boolean bool = this.field_roomowner.equals(str);
+      if ((i == 0) && (!bool)) {
+        break;
+      }
+      AppMethodBeat.o(60100);
+      return true;
+    }
+    AppMethodBeat.o(60100);
     return false;
   }
   
-  public final void Fk(int paramInt)
+  public final void Nq(int paramInt)
   {
-    if (b(this.unm)) {
-      ctM();
+    AppMethodBeat.i(60082);
+    if (b(this.ywY)) {
+      dwn();
     }
-    this.unm.bSZ = paramInt;
+    this.ywY.cAE = paramInt;
     try
     {
-      this.field_roomdata = this.unm.toByteArray();
+      this.field_roomdata = this.ywY.toByteArray();
+      AppMethodBeat.o(60082);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.ChatRoomMember", "exception:%s", new Object[] { bk.j(localException) });
+      ab.e("MicroMsg.ChatRoomMember", "exception:%s", new Object[] { bo.l(localException) });
+      AppMethodBeat.o(60082);
     }
-  }
-  
-  public final List<String> MN()
-  {
-    if ((this.unn == null) || (this.unn.size() == 0)) {
-      this.unn = aaO(this.field_memberlist);
-    }
-    return this.unn;
   }
   
   public final u a(String paramString, a parama, boolean paramBoolean)
   {
+    AppMethodBeat.i(60097);
     this.field_modifytime = System.currentTimeMillis();
     Object localObject;
     if (!paramBoolean)
     {
       localObject = null;
-      Iterator localIterator = parama.dtH.iterator();
+      Iterator localIterator = parama.elu.iterator();
       if (localIterator.hasNext())
       {
         b localb = (b)localIterator.next();
         if ((localb.userName == null) || (!localb.userName.equals(paramString))) {
-          break label214;
+          break label226;
         }
         localObject = localb;
       }
     }
-    label214:
+    label226:
     for (;;)
     {
       break;
       if (localObject != null)
       {
-        this.field_selfDisplayName = localObject.dtK;
-        this.field_isShowname = (localObject.dtL & 0x1);
+        this.field_selfDisplayName = localObject.elx;
+        this.field_isShowname = (localObject.ely & 0x1);
       }
-      for (int i = localObject.dtL;; i = 0)
+      for (int i = localObject.ely;; i = 0)
       {
-        y.d("MicroMsg.ChatRoomMember", "displayName[%s] roomFlag[%d] flag[%d]", new Object[] { this.field_selfDisplayName, Integer.valueOf(this.field_chatroomdataflag), Integer.valueOf(i) });
-        parama.bcw = (i & 0x2 | parama.bcw & 0xFFFFFFFD);
-        this.field_chatroomdataflag = parama.bcw;
+        ab.d("MicroMsg.ChatRoomMember", "displayName[%s] roomFlag[%d] flag[%d]", new Object[] { this.field_selfDisplayName, Integer.valueOf(this.field_chatroomdataflag), Integer.valueOf(i) });
+        parama.bsY = (i & 0x2 | parama.bsY & 0xFFFFFFFD);
+        this.field_chatroomdataflag = parama.bsY;
         try
         {
           this.field_roomdata = parama.toByteArray();
-          this.unm = parama;
+          this.ywY = parama;
           a(parama);
+          AppMethodBeat.o(60097);
           return this;
         }
         catch (Exception paramString)
         {
           for (;;)
           {
-            y.e("MicroMsg.ChatRoomMember", "exception:%s", new Object[] { bk.j(paramString) });
+            ab.e("MicroMsg.ChatRoomMember", "exception:%s", new Object[] { bo.l(paramString) });
           }
         }
       }
     }
   }
   
-  public final b aaL(String paramString)
+  public final List<String> afx()
   {
-    if (this.eho.size() <= 0) {
-      ctM();
+    AppMethodBeat.i(60076);
+    if ((this.ywZ == null) || (this.ywZ.size() == 0)) {
+      this.ywZ = aqZ(this.field_memberlist);
     }
-    if (this.eho.containsKey(paramString)) {
-      return (b)this.eho.get(paramString);
-    }
-    return null;
+    List localList = this.ywZ;
+    AppMethodBeat.o(60076);
+    return localList;
   }
   
-  public final boolean aaM(String paramString)
+  public final b aqV(String paramString)
   {
-    paramString = aaL(paramString);
-    if (paramString == null) {}
-    while ((paramString.dtL & 0x800) == 0) {
+    AppMethodBeat.i(60080);
+    if (this.fxs == null)
+    {
+      ab.e("MicroMsg.ChatRoomMember", "getChatroomData hashMap is null!");
+      AppMethodBeat.o(60080);
+      return null;
+    }
+    if (this.fxs.size() <= 0) {
+      dwn();
+    }
+    paramString = (b)this.fxs.get(paramString);
+    AppMethodBeat.o(60080);
+    return paramString;
+  }
+  
+  public final boolean aqW(String paramString)
+  {
+    AppMethodBeat.i(60086);
+    paramString = aqV(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(60086);
       return false;
     }
-    return true;
+    if ((paramString.ely & 0x800) != 0)
+    {
+      AppMethodBeat.o(60086);
+      return true;
+    }
+    AppMethodBeat.o(60086);
+    return false;
   }
   
-  public final boolean aaP(String paramString)
+  public final String aqX(String paramString)
   {
-    return (!bk.bl(this.field_roomowner)) && (this.field_roomowner.equals(paramString));
+    AppMethodBeat.i(60088);
+    paramString = aqV(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(60088);
+      return "";
+    }
+    paramString = bo.bf(paramString.elz, "");
+    AppMethodBeat.o(60088);
+    return paramString;
+  }
+  
+  public final boolean ara(String paramString)
+  {
+    AppMethodBeat.i(60101);
+    if ((!bo.isNullOrNil(this.field_roomowner)) && (this.field_roomowner.equals(paramString)))
+    {
+      AppMethodBeat.o(60101);
+      return true;
+    }
+    AppMethodBeat.o(60101);
+    return false;
   }
   
   public final boolean b(a parama)
   {
-    return this.unl.btq() == parama.btq();
+    AppMethodBeat.i(60079);
+    if (this.ywX.computeSize() == parama.computeSize())
+    {
+      AppMethodBeat.o(60079);
+      return true;
+    }
+    AppMethodBeat.o(60079);
+    return false;
   }
   
-  public final void ctM()
+  public final void c(a parama)
   {
-    if (bk.bE(this.field_roomdata)) {
+    AppMethodBeat.i(60095);
+    try
+    {
+      this.field_roomdata = parama.toByteArray();
+      AppMethodBeat.o(60095);
+      return;
+    }
+    catch (Exception parama)
+    {
+      ab.e("MicroMsg.ChatRoomMember", "exception:%s", new Object[] { bo.l(parama) });
+      AppMethodBeat.o(60095);
+    }
+  }
+  
+  public final a dwm()
+  {
+    AppMethodBeat.i(60075);
+    if (b(this.ywY)) {
+      dwn();
+    }
+    a locala = this.ywY;
+    AppMethodBeat.o(60075);
+    return locala;
+  }
+  
+  public final void dwn()
+  {
+    AppMethodBeat.i(60078);
+    if (bo.ce(this.field_roomdata))
+    {
+      AppMethodBeat.o(60078);
       return;
     }
     try
     {
-      this.unm = ((a)new a().aH(this.field_roomdata));
-      a(this.unm);
+      this.ywY = ((a)new a().parseFrom(this.field_roomdata));
+      a(this.ywY);
+      AppMethodBeat.o(60078);
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        this.unm = new a();
+        this.ywY = new a();
       }
     }
   }
   
-  public final int ctN()
+  public final int dwo()
   {
-    if (b(this.unm)) {
-      ctM();
+    AppMethodBeat.i(60081);
+    if (b(this.ywY)) {
+      dwn();
     }
-    return this.unm.bSZ;
+    int i = this.ywY.cAE;
+    AppMethodBeat.o(60081);
+    return i;
   }
   
-  public final boolean ctO()
+  public final boolean dwp()
   {
-    if (b(this.unm)) {
-      ctM();
+    AppMethodBeat.i(60083);
+    if (b(this.ywY)) {
+      dwn();
     }
-    return this.unm.bSZ < this.unm.dtJ;
+    if (this.ywY.cAE < this.ywY.elw)
+    {
+      AppMethodBeat.o(60083);
+      return true;
+    }
+    AppMethodBeat.o(60083);
+    return false;
   }
   
-  public final int ctQ()
+  public final int dwq()
   {
-    if (b(this.unm)) {
-      ctM();
+    AppMethodBeat.i(60085);
+    if (b(this.ywY)) {
+      dwn();
     }
-    return this.unm.type;
+    int i = this.ywY.type;
+    AppMethodBeat.o(60085);
+    return i;
   }
   
-  public final int ctR()
+  public final int dwr()
   {
-    if (b(this.unm)) {
-      ctM();
+    AppMethodBeat.i(60087);
+    if (b(this.ywY)) {
+      dwn();
     }
-    return this.unm.dng;
+    int i = this.ywY.eeH;
+    AppMethodBeat.o(60087);
+    return i;
   }
   
-  public final boolean ctS()
+  public final boolean dws()
   {
     return this.field_isShowname > 0;
   }
   
-  public final a ctT()
+  public final a dwt()
   {
-    if (b(this.unm)) {
-      ctM();
+    AppMethodBeat.i(60099);
+    if (b(this.ywY)) {
+      dwn();
     }
-    return this.unm;
+    a locala = this.ywY;
+    AppMethodBeat.o(60099);
+    return locala;
   }
   
-  public final u jdMethod_do(List<String> paramList)
+  public final u ex(List<String> paramList)
   {
-    Object localObject2;
-    if ((paramList == null) || (paramList.size() == 0))
+    AppMethodBeat.i(60094);
+    this.field_memberlist = da(paramList);
+    AppMethodBeat.o(60094);
+    return this;
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return info;
+  }
+  
+  public final u io(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(60096);
+    paramString1 = a(paramString1, aqY(paramString2), false);
+    AppMethodBeat.o(60096);
+    return paramString1;
+  }
+  
+  public final void jf(int paramInt)
+  {
+    AppMethodBeat.i(60084);
+    if (b(this.ywY)) {
+      dwn();
+    }
+    this.field_chatroomdataflag = (this.ywY.bsY & 0xFFFFFFFD | paramInt & 0x2);
+    AppMethodBeat.o(60084);
+  }
+  
+  public final String nE(String paramString)
+  {
+    AppMethodBeat.i(60089);
+    paramString = aqV(paramString);
+    if (paramString == null)
     {
-      localObject2 = "";
-      this.field_memberlist = ((String)localObject2);
-      return this;
-    }
-    Object localObject1 = "";
-    int i = 0;
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (i >= paramList.size()) {
-        break;
-      }
-      localObject2 = (String)localObject1 + (String)paramList.get(i);
-      localObject1 = localObject2;
-      if (i < paramList.size() - 1) {
-        localObject1 = (String)localObject2 + ";";
-      }
-      i += 1;
-    }
-  }
-  
-  public final void gS(int paramInt)
-  {
-    this.field_chatroomdataflag = (this.unm.bcw & 0xFFFFFFFD | paramInt & 0x2);
-  }
-  
-  public final String gV(String paramString)
-  {
-    paramString = aaL(paramString);
-    if (paramString == null) {
+      AppMethodBeat.o(60089);
       return "";
     }
-    return bk.aM(paramString.dtK, "");
+    paramString = bo.bf(paramString.elx, "");
+    AppMethodBeat.o(60089);
+    return paramString;
   }
   
-  public final u gn(String paramString1, String paramString2)
-  {
-    return a(paramString1, aaN(paramString2), false);
-  }
-  
-  public final u mB(boolean paramBoolean)
+  public final u pS(boolean paramBoolean)
   {
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
@@ -456,54 +635,34 @@ public final class u
     }
   }
   
-  protected final c.a rM()
+  public final void w(String paramString, List<rd> paramList)
   {
-    return buS;
-  }
-  
-  public final void t(String paramString, List<ob> paramList)
-  {
-    if (b(this.unm)) {
-      ctM();
+    AppMethodBeat.i(60098);
+    if (b(this.ywY)) {
+      dwn();
     }
     paramList = paramList.iterator();
     Object localObject;
     while (paramList.hasNext())
     {
-      localObject = (ob)paramList.next();
-      if (this.eho.containsKey(((ob)localObject).hPY))
+      localObject = (rd)paramList.next();
+      if (this.fxs.containsKey(((rd)localObject).jJA))
       {
-        b localb = (b)this.eho.get(((ob)localObject).hPY);
-        localb.dtK = ((ob)localObject).sLC;
-        localb.dtL = ((ob)localObject).sLF;
-        localb.dtM = ((ob)localObject).sLG;
+        b localb = (b)this.fxs.get(((rd)localObject).jJA);
+        localb.elx = ((rd)localObject).wJp;
+        localb.ely = ((rd)localObject).wJs;
+        localb.elz = ((rd)localObject).wJt;
       }
     }
-    this.unm.dtH.clear();
-    paramList = this.eho.keySet().iterator();
+    this.ywY.elu.clear();
+    paramList = this.fxs.keySet().iterator();
     while (paramList.hasNext())
     {
       localObject = (String)paramList.next();
-      this.unm.dtH.add(this.eho.get(localObject));
+      this.ywY.elu.add(this.fxs.get(localObject));
     }
-    a(paramString, this.unm, false);
-  }
-  
-  public final boolean xw()
-  {
-    if (bk.bl(this.field_roomowner)) {
-      return false;
-    }
-    String str = q.Gj();
-    if ((((c)g.r(c.class)).zl(this.field_chatroomname)) && (aaM(str))) {}
-    for (int i = 1;; i = 0)
-    {
-      boolean bool = this.field_roomowner.equals(str);
-      if ((i == 0) && (!bool)) {
-        break;
-      }
-      return true;
-    }
+    a(paramString, this.ywY, false);
+    AppMethodBeat.o(60098);
   }
 }
 

@@ -1,82 +1,77 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.report.model.k;
 import com.tencent.mm.plugin.appbrand.report.model.k.a;
 import com.tencent.mm.plugin.appbrand.report.model.k.b;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.plugin.appbrand.y.j;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.statusbar.DrawStatusBarActivity;
 
 public final class AppBrandNearbyEmptyUI
-  extends DrawStatusBarActivity
+  extends MMActivity
 {
-  protected final int getLayoutId()
+  public final int getLayoutId()
   {
-    return y.h.app_brand_nearby_empty_ui;
-  }
-  
-  public final int getStatusBarColor()
-  {
-    if ((Build.VERSION.SDK_INT >= 23) && (l.b(getWindow()))) {
-      return -855310;
-    }
-    if (Build.VERSION.SDK_INT >= 21) {
-      return AppBrandLauncherUI.hcS;
-    }
-    return super.getStatusBarColor();
+    return 2130968699;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(132993);
     super.onCreate(paramBundle);
     if (getIntent() == null)
     {
       finish();
+      AppMethodBeat.o(132993);
       return;
     }
-    this.mController.contentView.setBackgroundColor(-855310);
-    ta(-855310);
-    setMMTitle(y.j.app_brand_nearby_list_title);
-    oX(-16777216);
+    getContentView().setBackgroundColor(-855310);
+    setActionbarColor(-855310);
+    setMMTitle(2131296744);
+    setMMTitleColor(-16777216);
     setBackBtn(new AppBrandNearbyEmptyUI.1(this));
-    m.b(this);
-    paramBundle = (TextView)findViewById(y.g.content_title);
-    TextView localTextView = (TextView)findViewById(y.g.content_message);
+    q.b(this);
+    paramBundle = (TextView)findViewById(2131821264);
+    TextView localTextView = (TextView)findViewById(2131821265);
     switch (getIntent().getIntExtra("extra_enter_reason", 0))
     {
     default: 
       finish();
+      AppMethodBeat.o(132993);
       return;
     case 0: 
       paramBundle = new k();
-      paramBundle.gZc = k.b.gZp;
-      paramBundle.gZg = k.a.gZi;
-      paramBundle.wn();
+      paramBundle.iHs = k.b.iHF;
+      paramBundle.iHw = k.a.iHy;
+      paramBundle.IE();
     }
     for (;;)
     {
       setResult(-1);
+      AppMethodBeat.o(132993);
       return;
-      paramBundle.setText(y.j.app_brand_nearby_lbs_not_allowed_title);
-      localTextView.setText(y.j.app_brand_nearby_lbs_not_allowed_message);
+      paramBundle.setText(2131296743);
+      localTextView.setText(2131296742);
       paramBundle = new k();
-      paramBundle.gZc = k.b.gZp;
-      paramBundle.gZg = k.a.gZj;
-      paramBundle.wn();
+      paramBundle.iHs = k.b.iHF;
+      paramBundle.iHw = k.a.iHz;
+      paramBundle.IE();
     }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandNearbyEmptyUI
  * JD-Core Version:    0.7.0.1
  */

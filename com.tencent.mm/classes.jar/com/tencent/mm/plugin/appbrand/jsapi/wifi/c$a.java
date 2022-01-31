@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.wifi;
 
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
 
 public final class c$a
-  extends ac
+  extends ai
 {
   private static final int CTRL_INDEX = 321;
   private static final String NAME = "onGetWifiList";

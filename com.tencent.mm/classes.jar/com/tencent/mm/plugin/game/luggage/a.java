@@ -1,23 +1,46 @@
 package com.tencent.mm.plugin.game.luggage;
 
-import android.app.Activity;
-import com.tencent.luggage.e.d;
-import com.tencent.luggage.e.f;
-import com.tencent.mm.plugin.webview.luggage.q;
+import android.os.Build.VERSION;
+import android.webkit.WebResourceResponse;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.luggage.d.e;
+import com.tencent.mm.plugin.webview.ui.tools.game.d;
 
 public final class a
-  extends q
+  implements com.tencent.luggage.webview.a.c
 {
-  public a(Activity paramActivity)
+  private e njh;
+  
+  public a(e parame)
   {
-    super(paramActivity);
-    this.bip = c.class;
-    this.bis.x(com.tencent.mm.plugin.game.luggage.b.a.aGk());
+    this.njh = parame;
+  }
+  
+  public final WebResourceResponse bG(String paramString)
+  {
+    AppMethodBeat.i(135806);
+    if (Build.VERSION.SDK_INT < 21)
+    {
+      AppMethodBeat.o(135806);
+      return null;
+    }
+    boolean bool = false;
+    if (this.njh.getWePkgPlugin() != null) {
+      bool = this.njh.getWePkgPlugin().vEy;
+    }
+    paramString = d.oA(bool);
+    AppMethodBeat.o(135806);
+    return paramString;
+  }
+  
+  public final String xd()
+  {
+    return "weixin://game.js";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.a
  * JD-Core Version:    0.7.0.1
  */

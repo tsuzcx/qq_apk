@@ -1,13 +1,15 @@
 package com.tencent.mm.plugin.emojicapture.ui;
 
-import a.d.a.a;
+import a.f.a.a;
+import a.l;
 
+@l(eaO={1, 1, 13})
 final class c
   implements Runnable
 {
   c(a parama)
   {
-    this.jlN = parama;
+    this.bLN = parama;
   }
 }
 

@@ -1,457 +1,588 @@
 package com.tencent.mm.plugin.cdndownloader.d;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.ServiceConnection;
+import android.database.Cursor;
 import android.os.HandlerThread;
 import android.os.RemoteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
+import com.tencent.mm.ipcinvoker.l;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.n.a;
 import com.tencent.mm.plugin.cdndownloader.f.c;
 import com.tencent.mm.plugin.cdndownloader.ipc.CDNTaskInfo;
 import com.tencent.mm.plugin.cdndownloader.ipc.CDNTaskState;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.cdndownloader.service.CDNDownloadService;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Set;
 
 public final class a
   implements com.tencent.mm.ipcinvoker.wx_extension.b.a
 {
-  private static a iAv;
-  private static final Object iAy = new Object();
-  private Set<CDNTaskInfo> iAA = new com.tencent.mm.plugin.cdndownloader.e.a(new a.1(this));
-  public b iAB;
-  private ServiceConnection iAC = new a.2(this);
-  private am iAD = new am(com.tencent.mm.cg.a.cxw().getLooper(), new a.3(this), true);
-  private com.tencent.mm.plugin.cdndownloader.a.b iAE = new a.4(this);
-  private n.a iAF = new a.5(this);
-  private long iAw = 0L;
-  private long iAx = 0L;
-  com.tencent.mm.plugin.cdndownloader.a.a iAz;
-  private Context mContext = ae.getContext();
+  private static a kDB;
+  private static final Object kDE;
+  private long kDC;
+  private long kDD;
+  com.tencent.mm.plugin.cdndownloader.a.a kDF;
+  private Set<CDNTaskInfo> kDG;
+  public b kDH;
+  private ServiceConnection kDI;
+  private ap kDJ;
+  private com.tencent.mm.plugin.cdndownloader.a.b kDK;
+  private n.a kDL;
+  private Context mContext;
+  
+  static
+  {
+    AppMethodBeat.i(922);
+    kDE = new Object();
+    AppMethodBeat.o(922);
+  }
   
   public a()
   {
-    g.DQ();
-    g.DO().a(this.iAF);
-    aDx();
+    AppMethodBeat.i(900);
+    this.kDC = 0L;
+    this.kDD = 0L;
+    this.kDG = new com.tencent.mm.plugin.cdndownloader.e.a(new a.1(this));
+    this.kDI = new a.2(this);
+    this.kDJ = new ap(l.PP().getLooper(), new a.3(this), true);
+    this.kDK = new a.4(this);
+    this.kDL = new a.5(this);
+    this.mContext = ah.getContext();
+    g.RM();
+    g.RK().a(this.kDL);
+    bfU();
+    AppMethodBeat.o(900);
   }
   
-  private void aDs()
+  private void bfP()
   {
-    if (this.iAz != null) {}
-    try
-    {
-      this.iAz.aDs();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      y.e("MicroMsg.CDNDownloadClient", "addIPCTaskMarker: " + localRemoteException);
-    }
-  }
-  
-  public static a aDw()
-  {
-    try
-    {
-      if (iAv == null) {
-        iAv = new a();
+    AppMethodBeat.i(908);
+    if (this.kDF != null) {
+      try
+      {
+        this.kDF.bfP();
+        AppMethodBeat.o(908);
+        return;
       }
-      a locala = iAv;
+      catch (RemoteException localRemoteException)
+      {
+        ab.e("MicroMsg.CDNDownloadClient", "addIPCTaskMarker: ".concat(String.valueOf(localRemoteException)));
+      }
+    }
+    AppMethodBeat.o(908);
+  }
+  
+  public static a bfT()
+  {
+    try
+    {
+      AppMethodBeat.i(899);
+      if (kDB == null) {
+        kDB = new a();
+      }
+      a locala = kDB;
+      AppMethodBeat.o(899);
       return locala;
     }
     finally {}
   }
   
-  /* Error */
-  private void aDx()
+  private void bfU()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 169	android/content/Intent
-    //   5: dup
-    //   6: aload_0
-    //   7: getfield 99	com/tencent/mm/plugin/cdndownloader/d/a:mContext	Landroid/content/Context;
-    //   10: ldc 171
-    //   12: invokespecial 174	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   15: astore_2
-    //   16: aload_0
-    //   17: getfield 99	com/tencent/mm/plugin/cdndownloader/d/a:mContext	Landroid/content/Context;
-    //   20: aload_2
-    //   21: aload_0
-    //   22: getfield 59	com/tencent/mm/plugin/cdndownloader/d/a:iAC	Landroid/content/ServiceConnection;
-    //   25: iconst_1
-    //   26: invokevirtual 180	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
-    //   29: istore_1
-    //   30: ldc 139
-    //   32: new 141	java/lang/StringBuilder
-    //   35: dup
-    //   36: ldc 182
-    //   38: invokespecial 146	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   41: iload_1
-    //   42: invokevirtual 185	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokestatic 188	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   51: aload_0
-    //   52: monitorexit
-    //   53: return
-    //   54: astore_2
-    //   55: ldc 139
-    //   57: new 141	java/lang/StringBuilder
-    //   60: dup
-    //   61: ldc 182
-    //   63: invokespecial 146	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   66: aload_2
-    //   67: invokevirtual 191	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   70: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokestatic 160	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   79: goto -28 -> 51
-    //   82: astore_2
-    //   83: aload_0
-    //   84: monitorexit
-    //   85: aload_2
-    //   86: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	87	0	this	a
-    //   29	13	1	bool	boolean
-    //   15	6	2	localIntent	android.content.Intent
-    //   54	13	2	localException	java.lang.Exception
-    //   82	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   16	51	54	java/lang/Exception
-    //   2	16	82	finally
-    //   16	51	82	finally
-    //   55	79	82	finally
+    try
+    {
+      AppMethodBeat.i(901);
+      Intent localIntent = new Intent(this.mContext, CDNDownloadService.class);
+      try
+      {
+        ab.i("MicroMsg.CDNDownloadClient", "bindService: ".concat(String.valueOf(this.mContext.bindService(localIntent, this.kDI, 1))));
+        AppMethodBeat.o(901);
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ab.e("MicroMsg.CDNDownloadClient", "bindService: " + localException.getMessage());
+          AppMethodBeat.o(901);
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
   private void c(CDNTaskInfo paramCDNTaskInfo)
   {
-    this.iAA.add(paramCDNTaskInfo);
-    com.tencent.mm.plugin.cdndownloader.f.a locala = new com.tencent.mm.plugin.cdndownloader.f.a();
-    locala.field_mediaId = paramCDNTaskInfo.bUi;
-    locala.field_downloadUrlHashCode = paramCDNTaskInfo.downloadUrl.hashCode();
-    locala.field_downloadUrl = paramCDNTaskInfo.downloadUrl;
-    locala.field_httpsUrl = paramCDNTaskInfo.iAH;
-    locala.field_filePath = paramCDNTaskInfo.filePath;
-    locala.field_verifyHeaders = paramCDNTaskInfo.iAI;
-    locala.field_allowMobileNetDownload = Boolean.valueOf(paramCDNTaskInfo.iAL);
-    locala.field_wifiAutoDownload = Boolean.valueOf(paramCDNTaskInfo.iAM);
-    locala.field_game_package_download = Boolean.valueOf(paramCDNTaskInfo.dlW);
-    paramCDNTaskInfo = com.tencent.mm.plugin.cdndownloader.f.b.aDr();
-    if (paramCDNTaskInfo != null)
-    {
-      boolean bool = paramCDNTaskInfo.b(locala);
-      y.i("MicroMsg.CdnDownloadInfoDBHelp", "insert: " + bool);
-    }
+    AppMethodBeat.i(909);
+    this.kDG.add(paramCDNTaskInfo);
+    com.tencent.mm.plugin.cdndownloader.f.b.a(e(paramCDNTaskInfo));
+    AppMethodBeat.o(909);
   }
   
   private void d(CDNTaskInfo paramCDNTaskInfo)
   {
-    this.iAA.remove(paramCDNTaskInfo);
-    paramCDNTaskInfo = paramCDNTaskInfo.downloadUrl;
-    c localc = com.tencent.mm.plugin.cdndownloader.f.b.aDr();
-    if (localc != null)
-    {
-      boolean bool = localc.gk("CdnDownloadInfo", String.format("delete from %s where %s=%s", new Object[] { "CdnDownloadInfo", "downloadUrlHashCode", Integer.valueOf(paramCDNTaskInfo.hashCode()) }));
-      y.i("MicroMsg.CdnDownloadInfoDBHelp", "removeDownloadInfoByDownloadUrl: " + bool);
-    }
+    AppMethodBeat.i(910);
+    this.kDG.remove(paramCDNTaskInfo);
+    com.tencent.mm.plugin.cdndownloader.f.b.IT(paramCDNTaskInfo.downloadUrl);
+    AppMethodBeat.o(910);
   }
   
-  public final int a(CDNTaskInfo paramCDNTaskInfo)
+  private static com.tencent.mm.plugin.cdndownloader.f.a e(CDNTaskInfo paramCDNTaskInfo)
   {
-    if ((paramCDNTaskInfo == null) || (bk.bl(paramCDNTaskInfo.downloadUrl)))
+    AppMethodBeat.i(911);
+    com.tencent.mm.plugin.cdndownloader.f.a locala = new com.tencent.mm.plugin.cdndownloader.f.a();
+    locala.field_mediaId = paramCDNTaskInfo.cBO;
+    locala.field_downloadUrlHashCode = paramCDNTaskInfo.downloadUrl.hashCode();
+    locala.field_downloadUrl = paramCDNTaskInfo.downloadUrl;
+    locala.field_httpsUrl = paramCDNTaskInfo.kDN;
+    locala.field_filePath = paramCDNTaskInfo.filePath;
+    locala.field_verifyHeaders = paramCDNTaskInfo.kDO;
+    locala.field_allowMobileNetDownload = Boolean.valueOf(paramCDNTaskInfo.kDR);
+    locala.field_wifiAutoDownload = Boolean.valueOf(paramCDNTaskInfo.kDS);
+    locala.field_game_package_download = Boolean.valueOf(paramCDNTaskInfo.edy);
+    AppMethodBeat.o(911);
+    return locala;
+  }
+  
+  public final boolean IO(String paramString)
+  {
+    boolean bool1 = false;
+    for (;;)
     {
-      y.w("MicroMsg.CDNDownloadClient", "addDownloadTask, info invalid");
-      return -1;
-    }
-    y.i("MicroMsg.CDNDownloadClient", "addDownloadTask filePath:%s, url:%s", new Object[] { paramCDNTaskInfo.filePath, paramCDNTaskInfo.downloadUrl });
-    if (this.iAA.contains(paramCDNTaskInfo))
-    {
-      y.i("MicroMsg.CDNDownloadClient", "addDownloadTask, already in running");
-      return -2;
-    }
-    CDNTaskState localCDNTaskState = zh(paramCDNTaskInfo.downloadUrl);
-    if ((localCDNTaskState != null) && (localCDNTaskState.taskState == 104) && (e.bK(paramCDNTaskInfo.filePath)))
-    {
-      y.i("MicroMsg.CDNDownloadClient", "addDownloadTask, has download success");
-      return 1;
-    }
-    if (this.iAz != null) {
       try
       {
-        int i = this.iAz.a(paramCDNTaskInfo);
-        this.iAE.e(paramCDNTaskInfo.bUi, 1, 0, "");
-        if ((i == 0) || (i == -2)) {
-          c(paramCDNTaskInfo);
+        AppMethodBeat.i(903);
+        ab.i("MicroMsg.CDNDownloadClient", "pauseDownloadTask: ".concat(String.valueOf(paramString)));
+        if (bo.isNullOrNil(paramString))
+        {
+          ab.w("MicroMsg.CDNDownloadClient", "pauseDownloadTask, url invalid");
+          AppMethodBeat.o(903);
+          return bool1;
         }
-        return i;
+        d(new CDNTaskInfo(paramString));
+        com.tencent.mm.plugin.cdndownloader.a.a locala = this.kDF;
+        if (locala == null) {}
       }
-      catch (RemoteException localRemoteException)
+      finally
       {
-        y.e("MicroMsg.CDNDownloadClient", "addDownloadTask, " + localRemoteException.getMessage());
-      }
-    }
-    c(paramCDNTaskInfo);
-    aDx();
-    return 0;
-  }
-  
-  public final int b(CDNTaskInfo paramCDNTaskInfo)
-  {
-    if ((paramCDNTaskInfo == null) || (bk.bl(paramCDNTaskInfo.downloadUrl)))
-    {
-      y.w("MicroMsg.CDNDownloadClient", "resumeDownloadTask, info invalid");
-      return -1;
-    }
-    y.i("MicroMsg.CDNDownloadClient", "resumeDownloadTask: " + paramCDNTaskInfo.downloadUrl);
-    if (this.iAA.contains(paramCDNTaskInfo))
-    {
-      y.i("MicroMsg.CDNDownloadClient", "resumeDownloadTask, already in running");
-      return -2;
-    }
-    CDNTaskState localCDNTaskState = zh(paramCDNTaskInfo.downloadUrl);
-    if ((localCDNTaskState != null) && (localCDNTaskState.taskState == 104) && (e.bK(paramCDNTaskInfo.filePath)))
-    {
-      y.i("MicroMsg.CDNDownloadClient", "resumeDownloadTask, has download success");
-      return 1;
-    }
-    paramCDNTaskInfo.iAN = true;
-    if (this.iAz != null) {
-      try
-      {
-        int i = this.iAz.b(paramCDNTaskInfo);
-        this.iAE.e(paramCDNTaskInfo.bUi, 1, 0, "");
-        if ((i == 0) || (i == -2)) {
-          c(paramCDNTaskInfo);
+        try
+        {
+          boolean bool2 = this.kDF.IO(paramString);
+          bool1 = bool2;
+          AppMethodBeat.o(903);
         }
-        return i;
+        catch (RemoteException paramString)
+        {
+          ab.e("MicroMsg.CDNDownloadClient", "pauseDownloadTask, " + paramString.getMessage());
+        }
+        paramString = finally;
       }
-      catch (RemoteException localRemoteException)
-      {
-        y.e("MicroMsg.CDNDownloadClient", "resumeDownloadTask, " + localRemoteException.getMessage());
-      }
+      ab.i("MicroMsg.CDNDownloadClient", "pauseDownloadTask false, service interface is null");
+      AppMethodBeat.o(903);
     }
-    c(paramCDNTaskInfo);
-    aDx();
-    return 0;
   }
   
-  public final boolean zf(String paramString)
+  public final boolean IP(String paramString)
   {
-    y.i("MicroMsg.CDNDownloadClient", "pauseDownloadTask: " + paramString);
-    if (bk.bl(paramString))
+    boolean bool1 = false;
+    for (;;)
     {
-      y.w("MicroMsg.CDNDownloadClient", "pauseDownloadTask, url invalid");
-      return false;
-    }
-    d(new CDNTaskInfo(paramString));
-    if (this.iAz != null) {
       try
       {
-        boolean bool = this.iAz.zf(paramString);
-        return bool;
+        AppMethodBeat.i(905);
+        ab.i("MicroMsg.CDNDownloadClient", "removeDownloadTask: ".concat(String.valueOf(paramString)));
+        if (bo.isNullOrNil(paramString))
+        {
+          ab.w("MicroMsg.CDNDownloadClient", "removeDownloadTask, url invalid");
+          AppMethodBeat.o(905);
+          return bool1;
+        }
+        d(new CDNTaskInfo(paramString));
+        com.tencent.mm.plugin.cdndownloader.a.a locala = this.kDF;
+        if (locala == null) {}
       }
-      catch (RemoteException paramString)
+      finally
       {
-        y.e("MicroMsg.CDNDownloadClient", "pauseDownloadTask, " + paramString.getMessage());
+        try
+        {
+          boolean bool2 = this.kDF.IP(paramString);
+          bool1 = bool2;
+          AppMethodBeat.o(905);
+        }
+        catch (RemoteException paramString)
+        {
+          ab.e("MicroMsg.CDNDownloadClient", "removeDownloadTask, " + paramString.getMessage());
+        }
+        paramString = finally;
       }
+      ab.i("MicroMsg.CDNDownloadClient", "removeDownloadTask false, service interface is null");
+      AppMethodBeat.o(905);
     }
-    y.i("MicroMsg.CDNDownloadClient", "pauseDownloadTask false, service interface is null");
-    return false;
   }
   
-  public final boolean zg(String paramString)
+  public final CDNTaskState IQ(String paramString)
   {
-    y.i("MicroMsg.CDNDownloadClient", "removeDownloadTask: " + paramString);
-    if (bk.bl(paramString))
-    {
-      y.w("MicroMsg.CDNDownloadClient", "removeDownloadTask, url invalid");
-      return false;
-    }
-    d(new CDNTaskInfo(paramString));
-    if (this.iAz != null) {
-      try
-      {
-        boolean bool = this.iAz.zg(paramString);
-        return bool;
-      }
-      catch (RemoteException paramString)
-      {
-        y.e("MicroMsg.CDNDownloadClient", "removeDownloadTask, " + paramString.getMessage());
-      }
-    }
-    y.i("MicroMsg.CDNDownloadClient", "removeDownloadTask false, service interface is null");
-    return false;
-  }
-  
-  public final CDNTaskState zh(String paramString)
-  {
-    y.i("MicroMsg.CDNDownloadClient", "queryDownloadTask: " + paramString);
-    if (bk.bl(paramString))
-    {
-      y.w("MicroMsg.CDNDownloadClient", "queryDownloadTask, url invalid");
-      return null;
-    }
-    if (this.iAz != null) {
-      y.d("MicroMsg.CDNDownloadClient", "queryDownloadTask service has connected");
-    }
+    Object localObject3 = null;
     for (;;)
     {
       CDNTaskState localCDNTaskState;
+      Object localObject4;
       try
       {
-        localCDNTaskState = this.iAz.zh(paramString);
-        if ((localCDNTaskState.taskState == 100) || (localCDNTaskState.taskState == 101))
+        AppMethodBeat.i(906);
+        ab.i("MicroMsg.CDNDownloadClient", "queryDownloadTask: ".concat(String.valueOf(paramString)));
+        if (bo.isNullOrNil(paramString))
         {
-          if (!this.iAA.contains(new CDNTaskInfo(paramString)))
+          ab.w("MicroMsg.CDNDownloadClient", "queryDownloadTask, url invalid");
+          AppMethodBeat.o(906);
+          paramString = localObject3;
+          return paramString;
+        }
+        if (this.kDF != null)
+        {
+          ab.d("MicroMsg.CDNDownloadClient", "queryDownloadTask service has connected");
+          try
           {
-            Object localObject1 = com.tencent.mm.plugin.cdndownloader.f.b.aDr();
-            if (localObject1 == null) {
-              break label326;
+            localCDNTaskState = this.kDF.IQ(paramString);
+            if ((localCDNTaskState.taskState != 100) && (localCDNTaskState.taskState != 101)) {
+              break label425;
             }
-            localObject1 = ((c)localObject1).zk(paramString);
-            if (localObject1 == null) {
-              break label331;
+            if (this.kDG.contains(new CDNTaskInfo(paramString))) {
+              break label403;
             }
-            CDNTaskInfo localCDNTaskInfo = new CDNTaskInfo(paramString);
-            localCDNTaskInfo.iAH = ((com.tencent.mm.plugin.cdndownloader.f.a)localObject1).field_httpsUrl;
-            localCDNTaskInfo.bUi = ((com.tencent.mm.plugin.cdndownloader.f.a)localObject1).field_mediaId;
-            localCDNTaskInfo.filePath = ((com.tencent.mm.plugin.cdndownloader.f.a)localObject1).field_filePath;
-            localCDNTaskInfo.iAI = ((com.tencent.mm.plugin.cdndownloader.f.a)localObject1).field_verifyHeaders;
-            localCDNTaskInfo.iAL = ((com.tencent.mm.plugin.cdndownloader.f.a)localObject1).field_allowMobileNetDownload.booleanValue();
-            localCDNTaskInfo.iAM = ((com.tencent.mm.plugin.cdndownloader.f.a)localObject1).field_wifiAutoDownload.booleanValue();
-            localCDNTaskInfo.dlW = ((com.tencent.mm.plugin.cdndownloader.f.a)localObject1).field_game_package_download.booleanValue();
-            localCDNTaskInfo.iAJ = 15;
-            localCDNTaskInfo.iAK = 3600;
-            localObject1 = localCDNTaskInfo;
-            if (localObject1 != null) {
-              this.iAA.add(localObject1);
+            Object localObject1 = com.tencent.mm.plugin.cdndownloader.f.b.bfO();
+            if (localObject1 == null) {
+              break label415;
+            }
+            localObject4 = ((c)localObject1).rawQuery(String.format("select * from %s where %s=%s", new Object[] { "CdnDownloadInfo", "downloadUrlHashCode", Integer.valueOf(paramString.hashCode()) }), new String[0]);
+            if (localObject4 == null) {
+              break label415;
+            }
+            localObject1 = null;
+            if (!((Cursor)localObject4).moveToNext()) {
+              break label277;
+            }
+            localObject1 = new com.tencent.mm.plugin.cdndownloader.f.a();
+            ((com.tencent.mm.plugin.cdndownloader.f.a)localObject1).convertFrom((Cursor)localObject4);
+            continue;
+            if (!this.kDG.contains(new CDNTaskInfo(paramString))) {
+              break label455;
             }
           }
+          catch (RemoteException localRemoteException)
+          {
+            ab.e("MicroMsg.CDNDownloadClient", "queryDownloadTask, " + localRemoteException.getMessage());
+          }
         }
-        else if (this.iAA.contains(new CDNTaskInfo(paramString))) {
+        else
+        {
+          paramString = new CDNTaskState();
+          paramString.taskState = 101;
+          AppMethodBeat.o(906);
+          continue;
+        }
+        ((Cursor)localObject4).close();
+      }
+      finally {}
+      label277:
+      label284:
+      Object localObject2;
+      if (localRemoteException != null)
+      {
+        localObject4 = new CDNTaskInfo(paramString);
+        ((CDNTaskInfo)localObject4).kDN = localRemoteException.field_httpsUrl;
+        ((CDNTaskInfo)localObject4).cBO = localRemoteException.field_mediaId;
+        ((CDNTaskInfo)localObject4).filePath = localRemoteException.field_filePath;
+        ((CDNTaskInfo)localObject4).kDO = localRemoteException.field_verifyHeaders;
+        ((CDNTaskInfo)localObject4).kDR = localRemoteException.field_allowMobileNetDownload.booleanValue();
+        ((CDNTaskInfo)localObject4).kDS = localRemoteException.field_wifiAutoDownload.booleanValue();
+        ((CDNTaskInfo)localObject4).edy = localRemoteException.field_game_package_download.booleanValue();
+        ((CDNTaskInfo)localObject4).kDP = 15;
+        ((CDNTaskInfo)localObject4).kDQ = 3600;
+        localObject2 = localObject4;
+        label388:
+        if (localObject2 != null) {
+          this.kDG.add(localObject2);
+        }
+      }
+      for (;;)
+      {
+        label403:
+        AppMethodBeat.o(906);
+        paramString = localCDNTaskState;
+        break;
+        label415:
+        localObject2 = null;
+        break label284;
+        localObject2 = null;
+        break label388;
+        label425:
+        if (this.kDG.contains(new CDNTaskInfo(paramString))) {
           localCDNTaskState.taskState = 101;
         }
       }
-      catch (RemoteException localRemoteException)
-      {
-        y.e("MicroMsg.CDNDownloadClient", "queryDownloadTask, " + localRemoteException.getMessage());
-      }
-      if (!this.iAA.contains(new CDNTaskInfo(paramString))) {
-        break;
-      }
-      paramString = new CDNTaskState();
-      paramString.taskState = 101;
-      return paramString;
-      return localCDNTaskState;
-      label326:
-      Object localObject2 = null;
-      continue;
-      label331:
-      localObject2 = null;
+      label455:
+      AppMethodBeat.o(906);
+      paramString = localObject3;
     }
   }
   
   /* Error */
-  public final CDNTaskState zj(String paramString)
+  public final CDNTaskState IS(String paramString)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 124	com/tencent/mm/plugin/cdndownloader/d/a:iAz	Lcom/tencent/mm/plugin/cdndownloader/a/a;
-    //   4: ifnull +9 -> 13
-    //   7: aload_0
-    //   8: aload_1
-    //   9: invokevirtual 437	com/tencent/mm/plugin/cdndownloader/d/a:zh	(Ljava/lang/String;)Lcom/tencent/mm/plugin/cdndownloader/ipc/CDNTaskState;
-    //   12: areturn
-    //   13: invokestatic 518	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   16: invokevirtual 521	java/lang/Thread:getId	()J
-    //   19: invokestatic 526	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   22: invokevirtual 529	android/os/Looper:getThread	()Ljava/lang/Thread;
-    //   25: invokevirtual 521	java/lang/Thread:getId	()J
-    //   28: lcmp
-    //   29: ifne +5 -> 34
-    //   32: aconst_null
-    //   33: areturn
-    //   34: aload_0
-    //   35: invokespecial 118	com/tencent/mm/plugin/cdndownloader/d/a:aDx	()V
-    //   38: getstatic 37	com/tencent/mm/plugin/cdndownloader/d/a:iAy	Ljava/lang/Object;
-    //   41: astore_2
-    //   42: aload_2
-    //   43: monitorenter
-    //   44: aload_0
-    //   45: getfield 124	com/tencent/mm/plugin/cdndownloader/d/a:iAz	Lcom/tencent/mm/plugin/cdndownloader/a/a;
-    //   48: ifnonnull +48 -> 96
-    //   51: ldc 139
-    //   53: new 141	java/lang/StringBuilder
-    //   56: dup
-    //   57: ldc_w 531
-    //   60: invokespecial 146	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   63: invokestatic 402	java/lang/System:currentTimeMillis	()J
-    //   66: invokevirtual 534	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   69: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   72: invokestatic 188	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   75: new 536	com/tencent/mm/plugin/cdndownloader/d/a$6
-    //   78: dup
-    //   79: aload_0
-    //   80: invokespecial 537	com/tencent/mm/plugin/cdndownloader/d/a$6:<init>	(Lcom/tencent/mm/plugin/cdndownloader/d/a;)V
-    //   83: ldc2_w 538
-    //   86: invokestatic 542	com/tencent/mm/cg/a:e	(Ljava/lang/Runnable;J)Z
-    //   89: pop
-    //   90: getstatic 37	com/tencent/mm/plugin/cdndownloader/d/a:iAy	Ljava/lang/Object;
-    //   93: invokevirtual 545	java/lang/Object:wait	()V
-    //   96: aload_2
-    //   97: monitorexit
-    //   98: aload_0
-    //   99: aload_1
-    //   100: invokevirtual 437	com/tencent/mm/plugin/cdndownloader/d/a:zh	(Ljava/lang/String;)Lcom/tencent/mm/plugin/cdndownloader/ipc/CDNTaskState;
-    //   103: areturn
-    //   104: astore_3
-    //   105: aload_2
-    //   106: monitorexit
-    //   107: aload_3
-    //   108: athrow
-    //   109: astore_2
-    //   110: ldc 139
-    //   112: ldc_w 547
-    //   115: iconst_2
-    //   116: anewarray 4	java/lang/Object
-    //   119: dup
-    //   120: iconst_0
-    //   121: invokestatic 402	java/lang/System:currentTimeMillis	()J
-    //   124: invokestatic 552	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   127: aastore
-    //   128: dup
-    //   129: iconst_1
-    //   130: aload_2
-    //   131: invokevirtual 191	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   134: aastore
-    //   135: invokestatic 368	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   138: goto -40 -> 98
+    //   1: monitorenter
+    //   2: sipush 907
+    //   5: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 131	com/tencent/mm/plugin/cdndownloader/d/a:kDF	Lcom/tencent/mm/plugin/cdndownloader/a/a;
+    //   12: ifnull +19 -> 31
+    //   15: aload_0
+    //   16: aload_1
+    //   17: invokevirtual 510	com/tencent/mm/plugin/cdndownloader/d/a:IQ	(Ljava/lang/String;)Lcom/tencent/mm/plugin/cdndownloader/ipc/CDNTaskState;
+    //   20: astore_1
+    //   21: sipush 907
+    //   24: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   27: aload_0
+    //   28: monitorexit
+    //   29: aload_1
+    //   30: areturn
+    //   31: invokestatic 516	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   34: invokevirtual 519	java/lang/Thread:getId	()J
+    //   37: invokestatic 524	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   40: invokevirtual 527	android/os/Looper:getThread	()Ljava/lang/Thread;
+    //   43: invokevirtual 519	java/lang/Thread:getId	()J
+    //   46: lcmp
+    //   47: ifne +19 -> 66
+    //   50: aconst_null
+    //   51: astore_1
+    //   52: sipush 907
+    //   55: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   58: goto -31 -> 27
+    //   61: astore_1
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: aload_1
+    //   65: athrow
+    //   66: aload_0
+    //   67: invokespecial 127	com/tencent/mm/plugin/cdndownloader/d/a:bfU	()V
+    //   70: getstatic 43	com/tencent/mm/plugin/cdndownloader/d/a:kDE	Ljava/lang/Object;
+    //   73: astore_2
+    //   74: aload_2
+    //   75: monitorenter
+    //   76: aload_0
+    //   77: getfield 131	com/tencent/mm/plugin/cdndownloader/d/a:kDF	Lcom/tencent/mm/plugin/cdndownloader/a/a;
+    //   80: ifnonnull +48 -> 128
+    //   83: ldc 144
+    //   85: new 204	java/lang/StringBuilder
+    //   88: dup
+    //   89: ldc_w 529
+    //   92: invokespecial 207	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   95: invokestatic 390	java/lang/System:currentTimeMillis	()J
+    //   98: invokevirtual 532	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   101: invokevirtual 218	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   104: invokestatic 151	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   107: new 534	com/tencent/mm/plugin/cdndownloader/d/a$6
+    //   110: dup
+    //   111: aload_0
+    //   112: invokespecial 535	com/tencent/mm/plugin/cdndownloader/d/a$6:<init>	(Lcom/tencent/mm/plugin/cdndownloader/d/a;)V
+    //   115: ldc2_w 536
+    //   118: invokestatic 540	com/tencent/mm/ipcinvoker/l:h	(Ljava/lang/Runnable;J)Z
+    //   121: pop
+    //   122: getstatic 43	com/tencent/mm/plugin/cdndownloader/d/a:kDE	Ljava/lang/Object;
+    //   125: invokevirtual 543	java/lang/Object:wait	()V
+    //   128: aload_2
+    //   129: monitorexit
+    //   130: aload_0
+    //   131: aload_1
+    //   132: invokevirtual 510	com/tencent/mm/plugin/cdndownloader/d/a:IQ	(Ljava/lang/String;)Lcom/tencent/mm/plugin/cdndownloader/ipc/CDNTaskState;
+    //   135: astore_1
+    //   136: sipush 907
+    //   139: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   142: goto -115 -> 27
+    //   145: astore_3
+    //   146: aload_2
+    //   147: monitorexit
+    //   148: sipush 907
+    //   151: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   154: aload_3
+    //   155: athrow
+    //   156: astore_2
+    //   157: ldc 144
+    //   159: ldc_w 545
+    //   162: iconst_2
+    //   163: anewarray 4	java/lang/Object
+    //   166: dup
+    //   167: iconst_0
+    //   168: invokestatic 390	java/lang/System:currentTimeMillis	()J
+    //   171: invokestatic 550	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   174: aastore
+    //   175: dup
+    //   176: iconst_1
+    //   177: aload_2
+    //   178: invokevirtual 211	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   181: aastore
+    //   182: invokestatic 355	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   185: goto -55 -> 130
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	141	0	this	a
-    //   0	141	1	paramString	String
-    //   109	22	2	localException	java.lang.Exception
-    //   104	4	3	localObject2	Object
+    //   0	188	0	this	a
+    //   0	188	1	paramString	String
+    //   156	22	2	localException	Exception
+    //   145	10	3	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   44	96	104	finally
-    //   96	98	104	finally
-    //   105	107	104	finally
-    //   38	44	109	java/lang/Exception
-    //   107	109	109	java/lang/Exception
+    //   2	27	61	finally
+    //   31	50	61	finally
+    //   52	58	61	finally
+    //   66	70	61	finally
+    //   70	76	61	finally
+    //   130	142	61	finally
+    //   148	156	61	finally
+    //   157	185	61	finally
+    //   76	128	145	finally
+    //   128	130	145	finally
+    //   146	148	145	finally
+    //   70	76	156	java/lang/Exception
+    //   148	156	156	java/lang/Exception
+  }
+  
+  public final int a(CDNTaskInfo paramCDNTaskInfo)
+  {
+    int i = -2;
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(902);
+        if ((paramCDNTaskInfo == null) || (bo.isNullOrNil(paramCDNTaskInfo.downloadUrl)))
+        {
+          ab.w("MicroMsg.CDNDownloadClient", "addDownloadTask, info invalid");
+          i = -1;
+          AppMethodBeat.o(902);
+          return i;
+        }
+        ab.i("MicroMsg.CDNDownloadClient", "addDownloadTask filePath:%s, url:%s", new Object[] { paramCDNTaskInfo.filePath, paramCDNTaskInfo.downloadUrl });
+        if (this.kDG.contains(paramCDNTaskInfo))
+        {
+          ab.i("MicroMsg.CDNDownloadClient", "addDownloadTask, already in running");
+          AppMethodBeat.o(902);
+          continue;
+        }
+        localObject = IQ(paramCDNTaskInfo.downloadUrl);
+      }
+      finally {}
+      Object localObject;
+      if ((localObject != null) && (((CDNTaskState)localObject).taskState == 104) && (e.cN(paramCDNTaskInfo.filePath)))
+      {
+        ab.i("MicroMsg.CDNDownloadClient", "addDownloadTask, has download success");
+        AppMethodBeat.o(902);
+        i = 1;
+      }
+      else
+      {
+        localObject = this.kDF;
+        if (localObject != null)
+        {
+          try
+          {
+            i = this.kDF.a(paramCDNTaskInfo);
+            this.kDK.e(paramCDNTaskInfo.cBO, 1, 0, "");
+            if ((i == 0) || (i == -2)) {
+              c(paramCDNTaskInfo);
+            }
+            AppMethodBeat.o(902);
+          }
+          catch (RemoteException localRemoteException)
+          {
+            ab.e("MicroMsg.CDNDownloadClient", "addDownloadTask, " + localRemoteException.getMessage());
+          }
+        }
+        else
+        {
+          c(paramCDNTaskInfo);
+          bfU();
+          AppMethodBeat.o(902);
+          i = 0;
+        }
+      }
+    }
+  }
+  
+  public final int b(CDNTaskInfo paramCDNTaskInfo)
+  {
+    int i = -2;
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(904);
+        if ((paramCDNTaskInfo == null) || (bo.isNullOrNil(paramCDNTaskInfo.downloadUrl)))
+        {
+          ab.w("MicroMsg.CDNDownloadClient", "resumeDownloadTask, info invalid");
+          i = -1;
+          AppMethodBeat.o(904);
+          return i;
+        }
+        ab.i("MicroMsg.CDNDownloadClient", "resumeDownloadTask: " + paramCDNTaskInfo.downloadUrl);
+        if (this.kDG.contains(paramCDNTaskInfo))
+        {
+          ab.i("MicroMsg.CDNDownloadClient", "resumeDownloadTask, already in running");
+          AppMethodBeat.o(904);
+          continue;
+        }
+        localObject = IQ(paramCDNTaskInfo.downloadUrl);
+      }
+      finally {}
+      Object localObject;
+      if ((localObject != null) && (((CDNTaskState)localObject).taskState == 104) && (e.cN(paramCDNTaskInfo.filePath)))
+      {
+        ab.i("MicroMsg.CDNDownloadClient", "resumeDownloadTask, has download success");
+        AppMethodBeat.o(904);
+        i = 1;
+      }
+      else
+      {
+        paramCDNTaskInfo.kDT = true;
+        localObject = this.kDF;
+        if (localObject != null)
+        {
+          try
+          {
+            i = this.kDF.b(paramCDNTaskInfo);
+            this.kDK.e(paramCDNTaskInfo.cBO, 1, 0, "");
+            if ((i == 0) || (i == -2)) {
+              c(paramCDNTaskInfo);
+            }
+            AppMethodBeat.o(904);
+          }
+          catch (RemoteException localRemoteException)
+          {
+            ab.e("MicroMsg.CDNDownloadClient", "resumeDownloadTask, " + localRemoteException.getMessage());
+          }
+        }
+        else
+        {
+          c(paramCDNTaskInfo);
+          bfU();
+          AppMethodBeat.o(904);
+          i = 0;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.d.a
  * JD-Core Version:    0.7.0.1
  */

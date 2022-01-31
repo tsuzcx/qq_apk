@@ -1,23 +1,28 @@
 package com.tencent.mm.plugin.notification.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a.b.a.a;
 import com.tencent.mm.kernel.a.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.p;
+import com.tencent.mm.model.q;
 import com.tencent.mm.plugin.fts.a.n;
 
 public final class a
-  extends p
+  extends q
   implements b
 {
   public a()
   {
-    super(com.tencent.mm.br.c.Xh("notification"));
+    super(com.tencent.mm.bq.c.anc("notification"));
+    AppMethodBeat.i(23118);
+    AppMethodBeat.o(23118);
   }
   
   public final void parallelsDependency()
   {
-    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).ao(g.t(n.class));
+    AppMethodBeat.i(23119);
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).az(g.G(n.class));
+    AppMethodBeat.o(23119);
   }
 }
 

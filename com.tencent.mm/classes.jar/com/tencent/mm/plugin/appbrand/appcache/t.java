@@ -1,48 +1,94 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import java.util.HashSet;
-import java.util.Set;
+import android.util.Pair;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.a.b;
+import com.tencent.mm.plugin.appbrand.app.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
-public final class t
+public enum t
+  implements b
 {
-  private static final Set<b> fCS = new HashSet();
+  private int gUU = -1;
+  private String gUV = null;
   
-  static t.a a(a parama)
+  static
   {
-    for (;;)
-    {
-      int i;
-      synchronized (fCS)
-      {
-        Object[] arrayOfObject = fCS.toArray();
-        int j = arrayOfObject.length;
-        i = 0;
-        if (i >= j) {
-          break;
-        }
-        ??? = ((b)arrayOfObject[i]).a(parama);
-        if (??? != null) {
-          return ???;
-        }
-      }
-      i += 1;
-    }
-    return null;
+    AppMethodBeat.i(129396);
+    gUT = new t("INSTANCE");
+    gUW = new t[] { gUT };
+    AppMethodBeat.o(129396);
   }
   
-  public static void a(b paramb)
+  private t() {}
+  
+  final void H(int paramInt, String paramString)
   {
-    synchronized (fCS)
+    this.gUU = paramInt;
+    this.gUV = paramString;
+  }
+  
+  public final void dF(boolean paramBoolean)
+  {
+    AppMethodBeat.i(129395);
+    Object localObject = as.p(paramBoolean, true);
+    if (((Pair)localObject).second != null)
     {
-      fCS.add(paramb);
+      AppMethodBeat.o(129395);
       return;
     }
-  }
-  
-  public static abstract interface b
-  {
-    public abstract t.a a(a parama);
+    if (((Pair)localObject).first == as.a.gWw)
+    {
+      localObject = g.auM();
+      if (paramBoolean)
+      {
+        i = 0;
+        localObject = ((ay)localObject).a("@LibraryAppId", i, new String[] { "downloadURL", "version" });
+        if ((localObject == null) || (bo.isNullOrNil(((at)localObject).field_downloadURL))) {
+          break label283;
+        }
+        if (!paramBoolean) {
+          break label206;
+        }
+      }
+      t.1 local1;
+      label206:
+      for (int i = ((at)localObject).field_version;; i = 0)
+      {
+        local1 = new t.1(this, i);
+        if (!paramBoolean) {
+          break label259;
+        }
+        if ((this.gUU <= 0) || (bo.isNullOrNil(this.gUV))) {
+          break label239;
+        }
+        paramBoolean = r.avw();
+        ab.i("MicroMsg.AppBrand.PkgDownloadService", "[incremental] lib can be patch, abtest open %b", new Object[] { Boolean.valueOf(paramBoolean) });
+        if (!paramBoolean) {
+          break label239;
+        }
+        if (as.F("@LibraryAppId", 0, this.gUU).first != as.a.gWs) {
+          break label211;
+        }
+        ab.i("MicroMsg.AppBrand.PkgDownloadService", "[incremental] start incremental lib download");
+        p.a("@LibraryAppId", this.gUU, ((at)localObject).field_version, this.gUV, local1);
+        AppMethodBeat.o(129395);
+        return;
+        i = 999;
+        break;
+      }
+      label211:
+      ab.e("MicroMsg.AppBrand.PkgDownloadService", "[incremental] OldLibPkg[%d] or PatchUrl[%s] Invalid", new Object[] { Integer.valueOf(this.gUU), this.gUV });
+      label239:
+      ba.a(((at)localObject).field_downloadURL, ((at)localObject).field_version, local1);
+      AppMethodBeat.o(129395);
+      return;
+      label259:
+      ba.a("@LibraryAppId", 999, ((at)localObject).field_downloadURL, local1, new t.2(this, (at)localObject));
+    }
+    label283:
+    AppMethodBeat.o(129395);
   }
 }
 

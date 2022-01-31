@@ -1,208 +1,186 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.map.lib.element.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.List;
 
-public class ba
-  implements Runnable
+public final class ba
 {
-  public static final ba a = new ba();
-  private static int d = 60000;
-  private ConcurrentHashMap<av, az> b = new ConcurrentHashMap(128);
-  private ConcurrentHashMap<av, Object> c = new ConcurrentHashMap(128);
+  private cb a = null;
   
-  public static int a()
+  public ba(cb paramcb)
   {
-    return d;
+    this.a = paramcb;
   }
   
-  private int a(boolean paramBoolean, String paramString1, hs paramhs, String paramString2, mn parammn1, mn parammn2)
+  public final dj a(dk paramdk)
   {
-    if (paramBoolean) {
-      return paramhs.a(paramString2, paramString1, parammn1, parammn2);
-    }
-    return paramhs.a(paramString2, parammn1, parammn2);
-  }
-  
-  private az a(az paramaz)
-  {
-    az localaz = new az(paramaz.j);
-    localaz.b((ArrayList)paramaz.a(), (ArrayList)paramaz.b());
-    return localaz;
-  }
-  
-  private az a(String paramString, ArrayList<fq> paramArrayList1, ArrayList<fq> paramArrayList2)
-  {
-    if (paramArrayList1.size() > 0)
+    AppMethodBeat.i(100727);
+    if (this.a == null)
     {
-      az localaz = new az(paramString);
-      localaz.a(paramArrayList1, paramArrayList2);
-      bc.c(paramString + " cacheServerData get config from " + localaz);
-      return localaz;
+      AppMethodBeat.o(100727);
+      return null;
     }
-    bc.b(paramString + " callback_findObjectById4All get config from register active size = 0");
+    paramdk = this.a.a(paramdk, this);
+    AppMethodBeat.o(100727);
+    return paramdk;
+  }
+  
+  public final void a()
+  {
+    if (this.a != null) {
+      this.a = null;
+    }
+  }
+  
+  public final void a(String paramString)
+  {
+    AppMethodBeat.i(100728);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(100728);
+      return;
+    }
+    this.a.a(paramString);
+    AppMethodBeat.o(100728);
+  }
+  
+  public final void a(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(100732);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(100732);
+      return;
+    }
+    this.a.a(paramString, paramFloat);
+    AppMethodBeat.o(100732);
+  }
+  
+  public final void a(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(100729);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(100729);
+      return;
+    }
+    this.a.a(paramString, paramInt);
+    AppMethodBeat.o(100729);
+  }
+  
+  public final void a(String paramString, int paramInt, cz paramcz)
+  {
+    AppMethodBeat.i(149808);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(149808);
+      return;
+    }
+    this.a.a(paramString, paramInt, paramcz);
+    AppMethodBeat.o(149808);
+  }
+  
+  public final void a(String paramString, ck paramck)
+  {
+    AppMethodBeat.i(149807);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(149807);
+      return;
+    }
+    this.a.a(paramString, paramck);
+    AppMethodBeat.o(149807);
+  }
+  
+  public final void a(String paramString, List<cz> paramList)
+  {
+    AppMethodBeat.i(100730);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(100730);
+      return;
+    }
+    this.a.a(paramString, paramList);
+    AppMethodBeat.o(100730);
+  }
+  
+  public final void a(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(100733);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(100733);
+      return;
+    }
+    this.a.a(paramString, paramBoolean);
+    AppMethodBeat.o(100733);
+  }
+  
+  public final List<j> b(String paramString)
+  {
+    AppMethodBeat.i(100736);
+    if (this.a != null)
+    {
+      paramString = this.a.b(paramString);
+      AppMethodBeat.o(100736);
+      return paramString;
+    }
+    AppMethodBeat.o(100736);
     return null;
   }
   
-  private void a(av paramav, hs paramhs, String paramString)
+  public final void b()
   {
-    try
+    AppMethodBeat.i(100735);
+    if (this.a == null)
     {
-      bc.c(paramString + " asyncRefreshConfig, " + paramav.b.k + ", " + paramav.b.m + " " + paramav.b.hashCode());
-      ba.a locala = new ba.a(this, paramav, paramString);
-      a(paramav.b.k, paramav.b.m, paramhs, locala, paramString);
+      AppMethodBeat.o(100735);
       return;
     }
-    catch (Exception paramav)
-    {
-      bc.b(paramString + " asyncRefreshConfig error", paramav);
-    }
+    this.a.b();
+    AppMethodBeat.o(100735);
   }
   
-  private void a(boolean paramBoolean, String paramString1, hs paramhs, ba.a parama, String paramString2)
+  public final void b(String paramString, float paramFloat)
   {
-    if (paramBoolean)
+    AppMethodBeat.i(100734);
+    if (this.a == null)
     {
-      paramhs.a(parama, paramString2, paramString1);
+      AppMethodBeat.o(100734);
       return;
     }
-    paramhs.a(parama, paramString2);
+    this.a.b(paramString, paramFloat);
+    AppMethodBeat.o(100734);
   }
   
-  private az b(av paramav, hs paramhs, String paramString)
+  public final void b(String paramString, int paramInt)
   {
-    for (;;)
+    AppMethodBeat.i(100731);
+    if (this.a == null)
     {
-      try
-      {
-        bc.c(paramString + " refreshConfig, " + paramav.b.k + ", " + paramav.b.m);
-        localObject = new mn();
-        mn localmn = new mn();
-        i = a(paramav.b.k, paramav.b.m, paramhs, paramString, (mn)localObject, localmn);
-        if (i != 0) {
-          continue;
-        }
-        paramhs = a(paramString, ((mn)localObject).a(), localmn.a());
-        i = 1;
-      }
-      catch (Exception paramhs)
-      {
-        Object localObject;
-        bc.b(paramString + " findObjectByQuery error " + paramhs, paramhs);
-        paramhs = null;
-        int i = 0;
-        continue;
-      }
-      localObject = paramhs;
-      if (i == 0)
-      {
-        paramav = paramav.b;
-        paramav = cb.a(paramav.c(), paramav.d, paramav.c, paramav.g);
-        localObject = paramhs;
-        if (paramav != null) {
-          localObject = b(paramString, (ArrayList)paramav.a, (ArrayList)paramav.b);
-        }
-      }
-      return localObject;
-      bc.b(paramString + " findObjectByQuery error , return " + i);
-      paramhs = null;
-      i = 0;
-    }
-  }
-  
-  private az b(String paramString, ArrayList<bg> paramArrayList1, ArrayList<bg> paramArrayList2)
-  {
-    if (paramArrayList1.size() > 0)
-    {
-      az localaz = new az(paramString);
-      localaz.b(paramArrayList1, paramArrayList2);
-      bc.c(paramString + " cacheServerData get config from " + localaz);
-      return localaz;
-    }
-    bc.b(paramString + " callback_findObjectById4All get config from register active size = 0");
-    return null;
-  }
-  
-  public void a(av paramav)
-  {
-    if (!this.c.contains(paramav)) {
-      this.c.putIfAbsent(paramav, new Object());
-    }
-    if ((!this.b.contains(paramav)) && (paramav.d == null))
-    {
-      az localaz = new az(paramav.b.a);
-      localaz.b((ArrayList)paramav.b.h.a(), (ArrayList)paramav.b.h.b());
-      this.b.putIfAbsent(paramav, localaz);
-    }
-  }
-  
-  public void b(av paramav)
-  {
-    if (paramav.c())
-    {
-      a(paramav, paramav.d, paramav.b.a);
-      paramav.b();
+      AppMethodBeat.o(100731);
       return;
     }
-    bc.a(paramav.b.a + " can not async refresh config for refreshing in 2s or queryPrx is null");
+    this.a.b(paramString, paramInt);
+    AppMethodBeat.o(100731);
   }
   
-  public az c(av paramav)
+  public final void b(String paramString, boolean paramBoolean)
   {
-    az localaz1 = (az)this.b.get(paramav);
-    if (localaz1 != null) {
-      return a(localaz1);
-    }
-    synchronized (this.c.get(paramav))
+    AppMethodBeat.i(149809);
+    if (this.a == null)
     {
-      localaz1 = (az)this.b.get(paramav);
-      az localaz2 = localaz1;
-      if (localaz1 == null)
-      {
-        if (!(paramav instanceof hs)) {
-          localaz1 = b(paramav, paramav.d, paramav.b.a);
-        }
-        if (localaz1 != null)
-        {
-          this.b.putIfAbsent(paramav, localaz1);
-          localaz2 = localaz1;
-        }
-      }
-      else
-      {
-        if (localaz2 == null) {
-          break label145;
-        }
-        return a(localaz2);
-      }
-      bc.b(paramav.e.j + " sync get config is null");
-      localaz2 = localaz1;
+      AppMethodBeat.o(149809);
+      return;
     }
-    label145:
-    return new az(paramav.e.j);
-  }
-  
-  public void run()
-  {
-    long l = System.currentTimeMillis();
-    Iterator localIterator = this.c.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      av localav = (av)localIterator.next();
-      if (localav.d != null) {
-        a(localav, localav.d, localav.b.a);
-      } else {
-        bc.a(localav.b.a + " proxy.queryFPrx is null, can not refresh serviceInfo");
-      }
-    }
-    bc.a("ServiceInfosRefresher run(), use: " + (System.currentTimeMillis() - l));
+    this.a.b(paramString, paramBoolean);
+    AppMethodBeat.o(149809);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.ba
  * JD-Core Version:    0.7.0.1
  */

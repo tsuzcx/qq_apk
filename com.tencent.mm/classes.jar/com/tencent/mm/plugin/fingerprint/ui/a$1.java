@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.fingerprint.ui;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
@@ -15,16 +16,18 @@ final class a$1
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
+    AppMethodBeat.i(41591);
     paramVarArgs = (String)paramVarArgs[0];
-    a.a(this.klQ).putString("pwd", paramVarArgs);
-    y.i("MicroMsg.FingerPrintAuthProcess", "this is onNext");
+    a.a(this.mGH).putString("pwd", paramVarArgs);
+    ab.i("MicroMsg.FingerPrintAuthProcess", "this is onNext");
+    AppMethodBeat.o(41591);
     return false;
   }
 }

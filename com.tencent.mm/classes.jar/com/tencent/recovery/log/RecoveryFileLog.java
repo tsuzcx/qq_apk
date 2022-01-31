@@ -9,21 +9,21 @@ import java.util.Date;
 public class RecoveryFileLog
   implements RecoveryLog.RecoveryLogImpl
 {
-  private boolean iBb;
-  private MMappedFileStorage wKS;
-  private SimpleDateFormat wKT;
+  private MMappedFileStorage Bis;
+  private SimpleDateFormat Bit;
+  private boolean kEj;
   
-  private String as(String paramString1, String paramString2, String paramString3)
+  private String aJ(String paramString1, String paramString2, String paramString3)
   {
-    String str = this.wKT.format(new Date());
+    String str = this.Bit.format(new Date());
     return String.format("%s​%s​[%d][%d][%s]: %s​​", new Object[] { paramString1, paramString2, Integer.valueOf(Process.myPid()), Long.valueOf(Thread.currentThread().getId()), str, paramString3 });
   }
   
-  public final void bQ(String paramString, boolean paramBoolean)
+  public final void ct(String paramString, boolean paramBoolean)
   {
     try
     {
-      this.wKS.e(paramString.getBytes(), paramBoolean);
+      this.Bis.f(paramString.getBytes(), paramBoolean);
       return;
     }
     finally
@@ -35,24 +35,24 @@ public class RecoveryFileLog
   
   public final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    bQ(as("D", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.iBb) {
+    ct(aJ("D", paramString1, String.format(paramString2, paramVarArgs)), false);
+    if (this.kEj) {
       String.format(paramString2, paramVarArgs);
     }
   }
   
   public final void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    bQ(as("E", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.iBb) {
+    ct(aJ("E", paramString1, String.format(paramString2, paramVarArgs)), false);
+    if (this.kEj) {
       String.format(paramString2, paramVarArgs);
     }
   }
   
   public final void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    bQ(as("I", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.iBb) {
+    ct(aJ("I", paramString1, String.format(paramString2, paramVarArgs)), false);
+    if (this.kEj) {
       String.format(paramString2, paramVarArgs);
     }
   }
@@ -60,24 +60,24 @@ public class RecoveryFileLog
   public final void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     String str = String.format(paramString2, paramVarArgs);
-    bQ(as("E", paramString1, str + "  " + Log.getStackTraceString(paramThrowable)), false);
-    if (this.iBb) {
+    ct(aJ("E", paramString1, str + "  " + Log.getStackTraceString(paramThrowable)), false);
+    if (this.kEj) {
       String.format(paramString2, paramVarArgs);
     }
   }
   
   public final void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    bQ(as("V", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.iBb) {
+    ct(aJ("V", paramString1, String.format(paramString2, paramVarArgs)), false);
+    if (this.kEj) {
       String.format(paramString2, paramVarArgs);
     }
   }
   
   public final void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    bQ(as("W", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.iBb) {
+    ct(aJ("W", paramString1, String.format(paramString2, paramVarArgs)), false);
+    if (this.kEj) {
       String.format(paramString2, paramVarArgs);
     }
   }

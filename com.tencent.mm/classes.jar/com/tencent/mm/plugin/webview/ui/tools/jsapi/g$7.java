@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.aa.a.d;
-import com.tencent.mm.aa.a.d.a;
+import com.tencent.mm.z.a.c;
+import com.tencent.mm.z.a.c.a;
 
 final class g$7
-  implements d.a<d>
+  implements c.a<c>
 {
-  g$7(g paramg, i parami, g.a parama, int paramInt) {}
+  g$7(g paramg, i parami, g.a parama, String paramString) {}
 }
 
 

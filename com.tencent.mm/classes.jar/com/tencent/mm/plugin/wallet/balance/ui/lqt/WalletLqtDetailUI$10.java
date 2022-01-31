@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mm.wallet_core.ui.e;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class WalletLqtDetailUI$10
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
-  WalletLqtDetailUI$10(WalletLqtDetailUI paramWalletLqtDetailUI, LinearLayout paramLinearLayout) {}
+  WalletLqtDetailUI$10(WalletLqtDetailUI paramWalletLqtDetailUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramView = (String)this.qip.getTag();
-    e.l(this.qil, paramView, false);
+    AppMethodBeat.i(142294);
+    paramMenuItem = new d(this.tPQ, 1, false);
+    paramMenuItem.sao = new WalletLqtDetailUI.10.1(this);
+    paramMenuItem.sap = new WalletLqtDetailUI.10.2(this);
+    paramMenuItem.crd();
+    AppMethodBeat.o(142294);
+    return false;
   }
 }
 

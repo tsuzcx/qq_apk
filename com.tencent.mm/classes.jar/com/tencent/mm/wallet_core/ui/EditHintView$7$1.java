@@ -3,9 +3,9 @@ package com.tencent.mm.wallet_core.ui;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
 import android.widget.DatePicker;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.text.DecimalFormat;
@@ -17,24 +17,29 @@ final class EditHintView$7$1
   
   public final void onDateSet(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 < EditHintView.i(this.wBZ.wBY)) && (paramInt2 < EditHintView.j(this.wBZ.wBY)))
+    AppMethodBeat.i(49183);
+    if ((paramInt1 < EditHintView.i(this.AYs.AYr)) && (paramInt2 < EditHintView.j(this.AYs.AYr)))
     {
-      h.b(this.wBZ.wBY.getContext(), this.wBZ.wBY.getContext().getString(a.i.wallet_err_expired_date), null, true);
-      EditHintView.a(this.wBZ.wBY, this.wBZ.wBY.YL());
-      if (EditHintView.d(this.wBZ.wBY) != null) {
-        y.d("MicroMsg.EditHintView", "View:" + EditHintView.e(this.wBZ.wBY) + ", editType:" + EditHintView.f(this.wBZ.wBY) + " inputValid change to " + EditHintView.c(this.wBZ.wBY));
+      h.b(this.AYs.AYr.getContext(), this.AYs.AYr.getContext().getString(2131305058), null, true);
+      EditHintView.a(this.AYs.AYr, this.AYs.AYr.asv());
+      if (EditHintView.d(this.AYs.AYr) != null)
+      {
+        ab.d("MicroMsg.EditHintView", "View:" + EditHintView.e(this.AYs.AYr) + ", editType:" + EditHintView.f(this.AYs.AYr) + " inputValid change to " + EditHintView.c(this.AYs.AYr));
+        EditHintView.d(this.AYs.AYr);
+        EditHintView.c(this.AYs.AYr);
       }
+      AppMethodBeat.o(49183);
       return;
     }
     paramDatePicker = new DecimalFormat("00");
-    if (q.Gw()) {
-      EditHintView.a(this.wBZ.wBY, paramDatePicker.format(paramInt2 + 1) + paramInt1);
+    if (r.ZB()) {
+      EditHintView.a(this.AYs.AYr, paramDatePicker.format(paramInt2 + 1) + paramInt1);
     }
     for (;;)
     {
-      EditHintView.k(this.wBZ.wBY).setText(paramDatePicker.format(paramInt2 + 1) + paramDatePicker.format(paramInt1).substring(2));
+      EditHintView.k(this.AYs.AYr).setText(paramDatePicker.format(paramInt2 + 1) + paramDatePicker.format(paramInt1).substring(2));
       break;
-      EditHintView.a(this.wBZ.wBY, paramDatePicker.format(paramInt1).substring(2) + paramDatePicker.format(paramInt2 + 1));
+      EditHintView.a(this.AYs.AYr, paramDatePicker.format(paramInt1).substring(2) + paramDatePicker.format(paramInt2 + 1));
     }
   }
 }

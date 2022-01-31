@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.wallet.pay.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WalletLoanRepaymentUI$4
   implements DialogInterface.OnClickListener
@@ -11,13 +12,15 @@ final class WalletLoanRepaymentUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.WalletLoanRepaymentUI", "to bind a new bankcard");
-    this.qmQ.bUb();
+    AppMethodBeat.i(45994);
+    ab.i("MicroMsg.WalletLoanRepaymentUI", "to bind a new bankcard");
+    this.tWh.cRV();
+    AppMethodBeat.o(45994);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletLoanRepaymentUI.4
  * JD-Core Version:    0.7.0.1
  */

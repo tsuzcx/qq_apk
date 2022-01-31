@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.offline.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class OfflineAlertView$2
   implements Runnable
@@ -9,7 +10,9 @@ final class OfflineAlertView$2
   
   public final void run()
   {
-    OfflineAlertView.a(this.mLZ, this.mLW, this.bns);
+    AppMethodBeat.i(43444);
+    OfflineAlertView.a(this.pmp, this.pmm, this.bHS);
+    AppMethodBeat.o(43444);
   }
 }
 

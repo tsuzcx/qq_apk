@@ -1,5 +1,6 @@
 package com.tencent.wecall.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multi.talk.a;
 import com.tencent.pb.common.c.c;
 
@@ -11,6 +12,7 @@ final class f$1
   public final void keep_OnError(int paramInt)
   {
     int m = -401;
+    AppMethodBeat.i(127866);
     int j = 207;
     int i = -3007;
     int k = 103;
@@ -21,11 +23,12 @@ final class f$1
     }
     for (;;)
     {
-      h.KD(i);
-      this.xeA.xdZ.KE(j);
+      h.Tw(i);
+      this.BBh.BAG.Tx(j);
       c.d("TalkRoomService", new Object[] { "engine exitTalkRoom engineCallback OnError:", Integer.valueOf(paramInt) });
-      this.xeA.a(f.b(this.xeA), f.g(this.xeA), f.h(this.xeA), k, true);
-      f.f(this.xeA).i(m, null);
+      this.BBh.a(f.b(this.BBh), f.g(this.BBh), f.h(this.BBh), k, true);
+      f.f(this.BBh).l(m, null);
+      AppMethodBeat.o(127866);
       return;
       j = 203;
       k = 112;
@@ -48,22 +51,24 @@ final class f$1
   
   public final void keep_OnNotify(int paramInt)
   {
-    c.x("TalkRoomService", new Object[] { "keep_OnNotify eventCode: ", Integer.valueOf(paramInt) });
+    AppMethodBeat.i(127867);
+    c.w("TalkRoomService", new Object[] { "keep_OnNotify eventCode: ", Integer.valueOf(paramInt) });
     h localh;
     if (paramInt == 5)
     {
-      this.xeA.xdZ.xfp = 1;
-      localh = this.xeA.xdZ;
-      if (localh.xfC != 0L) {
-        break label111;
+      this.BBh.BAG.BBW = 1;
+      localh = this.BBh.BAG;
+      if (localh.BCj != 0L) {
+        break label121;
       }
     }
-    label111:
-    for (localh.xfq = 0L;; localh.xfq = (System.currentTimeMillis() - localh.xfC))
+    label121:
+    for (localh.BBX = 0L;; localh.BBX = (System.currentTimeMillis() - localh.BCj))
     {
-      c.d(h.TAG, new Object[] { "endRecvFirstPcm", Long.valueOf(localh.xfC), Long.valueOf(localh.xfq) });
-      f.i(this.xeA);
-      f.j(this.xeA);
+      c.d(h.TAG, new Object[] { "endRecvFirstPcm", Long.valueOf(localh.BCj), Long.valueOf(localh.BBX) });
+      f.i(this.BBh);
+      f.j(this.BBh);
+      AppMethodBeat.o(127867);
       return;
     }
   }
@@ -74,377 +79,397 @@ final class f$1
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
-    //   3: aload_0
-    //   4: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   7: getfield 32	com/tencent/wecall/talkroom/model/f:xdZ	Lcom/tencent/wecall/talkroom/model/h;
-    //   10: iconst_1
-    //   11: putfield 123	com/tencent/wecall/talkroom/model/h:lqU	I
-    //   14: ldc 37
-    //   16: iconst_1
-    //   17: anewarray 4	java/lang/Object
-    //   20: dup
-    //   21: iconst_0
-    //   22: ldc 125
-    //   24: aastore
-    //   25: invokestatic 51	com/tencent/pb/common/c/c:d	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   28: aload_0
-    //   29: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   32: invokestatic 127	com/tencent/wecall/talkroom/model/f:a	(Lcom/tencent/wecall/talkroom/model/f;)I
-    //   35: iconst_4
-    //   36: if_icmpeq +31 -> 67
-    //   39: ldc 37
-    //   41: iconst_2
-    //   42: anewarray 4	java/lang/Object
-    //   45: dup
-    //   46: iconst_0
-    //   47: ldc 129
-    //   49: aastore
+    //   3: ldc 131
+    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   12: getfield 38	com/tencent/wecall/talkroom/model/f:BAG	Lcom/tencent/wecall/talkroom/model/h;
+    //   15: iconst_1
+    //   16: putfield 134	com/tencent/wecall/talkroom/model/h:nOq	I
+    //   19: ldc 43
+    //   21: iconst_1
+    //   22: anewarray 4	java/lang/Object
+    //   25: dup
+    //   26: iconst_0
+    //   27: ldc 136
+    //   29: aastore
+    //   30: invokestatic 57	com/tencent/pb/common/c/c:d	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   33: aload_0
+    //   34: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   37: invokestatic 138	com/tencent/wecall/talkroom/model/f:a	(Lcom/tencent/wecall/talkroom/model/f;)I
+    //   40: iconst_4
+    //   41: if_icmpeq +36 -> 77
+    //   44: ldc 43
+    //   46: iconst_2
+    //   47: anewarray 4	java/lang/Object
     //   50: dup
-    //   51: iconst_1
-    //   52: aload_0
-    //   53: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   56: invokestatic 127	com/tencent/wecall/talkroom/model/f:a	(Lcom/tencent/wecall/talkroom/model/f;)I
-    //   59: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   62: aastore
-    //   63: invokestatic 83	com/tencent/pb/common/c/c:x	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   66: return
-    //   67: aload_0
-    //   68: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   71: astore 6
-    //   73: invokestatic 135	com/tencent/wecall/talkroom/model/c:cRC	()Lcom/tencent/wecall/talkroom/model/c;
-    //   76: astore 4
-    //   78: aload_0
-    //   79: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   82: invokestatic 55	com/tencent/wecall/talkroom/model/f:b	(Lcom/tencent/wecall/talkroom/model/f;)Ljava/lang/String;
-    //   85: astore 7
-    //   87: aload 7
-    //   89: invokestatic 141	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   92: ifeq +334 -> 426
-    //   95: aload 5
-    //   97: astore 4
-    //   99: aload 6
-    //   101: aload 4
-    //   103: invokestatic 144	com/tencent/wecall/talkroom/model/f:a	(Lcom/tencent/wecall/talkroom/model/f;[I)V
-    //   106: aload_0
-    //   107: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   110: invokestatic 148	com/tencent/wecall/talkroom/model/f:c	(Lcom/tencent/wecall/talkroom/model/f;)Lcom/tencent/wecall/talkroom/model/b;
-    //   113: ifnull +38 -> 151
+    //   51: iconst_0
+    //   52: ldc 140
+    //   54: aastore
+    //   55: dup
+    //   56: iconst_1
+    //   57: aload_0
+    //   58: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   61: invokestatic 138	com/tencent/wecall/talkroom/model/f:a	(Lcom/tencent/wecall/talkroom/model/f;)I
+    //   64: invokestatic 51	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   67: aastore
+    //   68: invokestatic 93	com/tencent/pb/common/c/c:w	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   71: ldc 131
+    //   73: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: return
+    //   77: aload_0
+    //   78: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   81: astore 6
+    //   83: invokestatic 146	com/tencent/wecall/talkroom/model/c:dXv	()Lcom/tencent/wecall/talkroom/model/c;
+    //   86: astore 4
+    //   88: aload_0
+    //   89: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   92: invokestatic 61	com/tencent/wecall/talkroom/model/f:b	(Lcom/tencent/wecall/talkroom/model/f;)Ljava/lang/String;
+    //   95: astore 7
+    //   97: aload 7
+    //   99: invokestatic 152	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   102: ifeq +336 -> 438
+    //   105: aload 5
+    //   107: astore 4
+    //   109: aload 6
+    //   111: aload 4
+    //   113: invokestatic 155	com/tencent/wecall/talkroom/model/f:a	(Lcom/tencent/wecall/talkroom/model/f;[I)V
     //   116: aload_0
-    //   117: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   120: invokestatic 148	com/tencent/wecall/talkroom/model/f:c	(Lcom/tencent/wecall/talkroom/model/f;)Lcom/tencent/wecall/talkroom/model/b;
-    //   123: astore 4
-    //   125: invokestatic 151	com/tencent/wecall/talkroom/model/f:ys	()Z
-    //   128: istore_3
-    //   129: getstatic 157	com/tencent/pb/common/a/a:wFa	Z
-    //   132: ifeq +19 -> 151
-    //   135: iload_3
-    //   136: ifeq +433 -> 569
-    //   139: aload 4
-    //   141: getfield 163	com/tencent/wecall/talkroom/model/b:xdr	Lcom/tencent/mm/plugin/multi/talk;
-    //   144: sipush 401
-    //   147: invokevirtual 169	com/tencent/mm/plugin/multi/talk:um	(I)I
-    //   150: pop
-    //   151: aload_0
-    //   152: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   155: invokestatic 172	com/tencent/wecall/talkroom/model/f:d	(Lcom/tencent/wecall/talkroom/model/f;)Z
-    //   158: pop
-    //   159: aload_0
-    //   160: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   163: invokestatic 148	com/tencent/wecall/talkroom/model/f:c	(Lcom/tencent/wecall/talkroom/model/f;)Lcom/tencent/wecall/talkroom/model/b;
-    //   166: pop
-    //   167: invokestatic 176	com/tencent/wecall/talkroom/model/f:cRT	()Lcom/tencent/pb/talkroom/sdk/e;
-    //   170: astore 4
-    //   172: aload 4
-    //   174: ifnull +11 -> 185
-    //   177: aload 4
-    //   179: invokeinterface 182 1 0
-    //   184: pop
-    //   185: aload_0
-    //   186: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   189: invokestatic 148	com/tencent/wecall/talkroom/model/f:c	(Lcom/tencent/wecall/talkroom/model/f;)Lcom/tencent/wecall/talkroom/model/b;
-    //   192: getfield 163	com/tencent/wecall/talkroom/model/b:xdr	Lcom/tencent/mm/plugin/multi/talk;
-    //   195: astore 6
-    //   197: getstatic 157	com/tencent/pb/common/a/a:wFa	Z
-    //   200: ifeq +83 -> 283
-    //   203: new 184	java/util/concurrent/atomic/AtomicInteger
-    //   206: dup
-    //   207: invokespecial 185	java/util/concurrent/atomic/AtomicInteger:<init>	()V
-    //   210: astore 4
-    //   212: new 184	java/util/concurrent/atomic/AtomicInteger
-    //   215: dup
-    //   216: invokespecial 185	java/util/concurrent/atomic/AtomicInteger:<init>	()V
-    //   219: astore 5
-    //   221: aload 6
-    //   223: aload 4
-    //   225: aload 5
-    //   227: invokevirtual 189	com/tencent/mm/plugin/multi/talk:getSampleRate	(Ljava/util/concurrent/atomic/AtomicInteger;Ljava/util/concurrent/atomic/AtomicInteger;)I
-    //   230: pop
-    //   231: aload 4
-    //   233: invokevirtual 192	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   236: istore_1
-    //   237: aload 5
-    //   239: invokevirtual 192	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   242: istore_2
-    //   243: iload_1
-    //   244: putstatic 195	com/tencent/mm/plugin/multi/talk:VOICE_SAMPLERATE	I
-    //   247: iload_2
-    //   248: putstatic 198	com/tencent/mm/plugin/multi/talk:VOICE_FRAME_DURATION	I
-    //   251: ldc 200
-    //   253: iconst_3
-    //   254: anewarray 4	java/lang/Object
-    //   257: dup
-    //   258: iconst_0
-    //   259: ldc 202
-    //   261: aastore
-    //   262: dup
-    //   263: iconst_1
-    //   264: getstatic 195	com/tencent/mm/plugin/multi/talk:VOICE_SAMPLERATE	I
-    //   267: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   270: aastore
-    //   271: dup
-    //   272: iconst_2
-    //   273: getstatic 198	com/tencent/mm/plugin/multi/talk:VOICE_FRAME_DURATION	I
-    //   276: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   279: aastore
-    //   280: invokestatic 83	com/tencent/pb/common/c/c:x	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   283: new 204	android/os/Handler
-    //   286: dup
-    //   287: invokestatic 210	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   290: invokespecial 213	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   293: new 215	com/tencent/wecall/talkroom/model/f$1$1
-    //   296: dup
-    //   297: aload_0
-    //   298: invokespecial 218	com/tencent/wecall/talkroom/model/f$1$1:<init>	(Lcom/tencent/wecall/talkroom/model/f$1;)V
-    //   301: invokevirtual 222	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   304: pop
-    //   305: aload_0
-    //   306: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   309: getfield 32	com/tencent/wecall/talkroom/model/f:xdZ	Lcom/tencent/wecall/talkroom/model/h;
-    //   312: astore 4
-    //   314: aload 4
-    //   316: getfield 91	com/tencent/wecall/talkroom/model/h:xfC	J
-    //   319: lconst_0
-    //   320: lcmp
-    //   321: ifne +288 -> 609
-    //   324: aload 4
-    //   326: lconst_0
-    //   327: putfield 225	com/tencent/wecall/talkroom/model/h:xfr	J
-    //   330: getstatic 98	com/tencent/wecall/talkroom/model/h:TAG	Ljava/lang/String;
-    //   333: iconst_3
-    //   334: anewarray 4	java/lang/Object
-    //   337: dup
-    //   338: iconst_0
-    //   339: ldc 227
-    //   341: aastore
-    //   342: dup
-    //   343: iconst_1
-    //   344: aload 4
-    //   346: getfield 225	com/tencent/wecall/talkroom/model/h:xfr	J
-    //   349: invokestatic 105	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   352: aastore
-    //   353: dup
-    //   354: iconst_2
-    //   355: aload 4
-    //   357: getfield 91	com/tencent/wecall/talkroom/model/h:xfC	J
-    //   360: invokestatic 105	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   363: aastore
-    //   364: invokestatic 51	com/tencent/pb/common/c/c:d	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   367: aload_0
-    //   368: getfield 17	com/tencent/wecall/talkroom/model/f$1:xeA	Lcom/tencent/wecall/talkroom/model/f;
-    //   371: invokestatic 71	com/tencent/wecall/talkroom/model/f:f	(Lcom/tencent/wecall/talkroom/model/f;)Lcom/tencent/wecall/talkroom/model/g;
-    //   374: astore 4
-    //   376: new 229	com/tencent/wecall/talkroom/model/g$3
-    //   379: dup
-    //   380: aload 4
-    //   382: invokespecial 232	com/tencent/wecall/talkroom/model/g$3:<init>	(Lcom/tencent/wecall/talkroom/model/g;)V
-    //   385: astore 5
-    //   387: invokestatic 235	android/os/Looper:myLooper	()Landroid/os/Looper;
-    //   390: invokestatic 210	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   393: if_acmpne +233 -> 626
-    //   396: aload 5
-    //   398: invokeinterface 240 1 0
-    //   403: return
-    //   404: astore 4
-    //   406: ldc 37
-    //   408: iconst_2
-    //   409: anewarray 4	java/lang/Object
-    //   412: dup
-    //   413: iconst_0
-    //   414: ldc 242
-    //   416: aastore
-    //   417: dup
-    //   418: iconst_1
-    //   419: aload 4
-    //   421: aastore
-    //   422: invokestatic 83	com/tencent/pb/common/c/c:x	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   425: return
+    //   117: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   120: invokestatic 159	com/tencent/wecall/talkroom/model/f:c	(Lcom/tencent/wecall/talkroom/model/f;)Lcom/tencent/wecall/talkroom/model/b;
+    //   123: ifnull +30 -> 153
+    //   126: aload_0
+    //   127: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   130: invokestatic 159	com/tencent/wecall/talkroom/model/f:c	(Lcom/tencent/wecall/talkroom/model/f;)Lcom/tencent/wecall/talkroom/model/b;
+    //   133: astore 4
+    //   135: invokestatic 162	com/tencent/wecall/talkroom/model/f:KM	()Z
+    //   138: istore_3
+    //   139: getstatic 168	com/tencent/pb/common/a/a:BcB	Z
+    //   142: ifeq +11 -> 153
+    //   145: aload 4
+    //   147: getfield 174	com/tencent/wecall/talkroom/model/b:BzZ	Lcom/tencent/mm/plugin/multi/talk;
+    //   150: ifnonnull +431 -> 581
+    //   153: aload_0
+    //   154: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   157: invokestatic 177	com/tencent/wecall/talkroom/model/f:d	(Lcom/tencent/wecall/talkroom/model/f;)Z
+    //   160: pop
+    //   161: aload_0
+    //   162: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   165: invokestatic 159	com/tencent/wecall/talkroom/model/f:c	(Lcom/tencent/wecall/talkroom/model/f;)Lcom/tencent/wecall/talkroom/model/b;
+    //   168: pop
+    //   169: invokestatic 181	com/tencent/wecall/talkroom/model/f:dXO	()Lcom/tencent/pb/talkroom/sdk/e;
+    //   172: astore 4
+    //   174: aload 4
+    //   176: ifnull +11 -> 187
+    //   179: aload 4
+    //   181: invokeinterface 187 1 0
+    //   186: pop
+    //   187: aload_0
+    //   188: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   191: invokestatic 159	com/tencent/wecall/talkroom/model/f:c	(Lcom/tencent/wecall/talkroom/model/f;)Lcom/tencent/wecall/talkroom/model/b;
+    //   194: getfield 174	com/tencent/wecall/talkroom/model/b:BzZ	Lcom/tencent/mm/plugin/multi/talk;
+    //   197: astore 6
+    //   199: getstatic 168	com/tencent/pb/common/a/a:BcB	Z
+    //   202: ifeq +83 -> 285
+    //   205: new 189	java/util/concurrent/atomic/AtomicInteger
+    //   208: dup
+    //   209: invokespecial 190	java/util/concurrent/atomic/AtomicInteger:<init>	()V
+    //   212: astore 4
+    //   214: new 189	java/util/concurrent/atomic/AtomicInteger
+    //   217: dup
+    //   218: invokespecial 190	java/util/concurrent/atomic/AtomicInteger:<init>	()V
+    //   221: astore 5
+    //   223: aload 6
+    //   225: aload 4
+    //   227: aload 5
+    //   229: invokevirtual 196	com/tencent/mm/plugin/multi/talk:getSampleRate	(Ljava/util/concurrent/atomic/AtomicInteger;Ljava/util/concurrent/atomic/AtomicInteger;)I
+    //   232: pop
+    //   233: aload 4
+    //   235: invokevirtual 199	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   238: istore_1
+    //   239: aload 5
+    //   241: invokevirtual 199	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   244: istore_2
+    //   245: iload_1
+    //   246: putstatic 202	com/tencent/mm/plugin/multi/talk:VOICE_SAMPLERATE	I
+    //   249: iload_2
+    //   250: putstatic 205	com/tencent/mm/plugin/multi/talk:VOICE_FRAME_DURATION	I
+    //   253: ldc 207
+    //   255: iconst_3
+    //   256: anewarray 4	java/lang/Object
+    //   259: dup
+    //   260: iconst_0
+    //   261: ldc 209
+    //   263: aastore
+    //   264: dup
+    //   265: iconst_1
+    //   266: getstatic 202	com/tencent/mm/plugin/multi/talk:VOICE_SAMPLERATE	I
+    //   269: invokestatic 51	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   272: aastore
+    //   273: dup
+    //   274: iconst_2
+    //   275: getstatic 205	com/tencent/mm/plugin/multi/talk:VOICE_FRAME_DURATION	I
+    //   278: invokestatic 51	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   281: aastore
+    //   282: invokestatic 93	com/tencent/pb/common/c/c:w	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   285: new 211	android/os/Handler
+    //   288: dup
+    //   289: invokestatic 217	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   292: invokespecial 220	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   295: new 222	com/tencent/wecall/talkroom/model/f$1$1
+    //   298: dup
+    //   299: aload_0
+    //   300: invokespecial 225	com/tencent/wecall/talkroom/model/f$1$1:<init>	(Lcom/tencent/wecall/talkroom/model/f$1;)V
+    //   303: invokevirtual 229	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   306: pop
+    //   307: aload_0
+    //   308: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   311: getfield 38	com/tencent/wecall/talkroom/model/f:BAG	Lcom/tencent/wecall/talkroom/model/h;
+    //   314: astore 4
+    //   316: aload 4
+    //   318: getfield 101	com/tencent/wecall/talkroom/model/h:BCj	J
+    //   321: lconst_0
+    //   322: lcmp
+    //   323: ifne +317 -> 640
+    //   326: aload 4
+    //   328: lconst_0
+    //   329: putfield 232	com/tencent/wecall/talkroom/model/h:BBY	J
+    //   332: getstatic 108	com/tencent/wecall/talkroom/model/h:TAG	Ljava/lang/String;
+    //   335: iconst_3
+    //   336: anewarray 4	java/lang/Object
+    //   339: dup
+    //   340: iconst_0
+    //   341: ldc 234
+    //   343: aastore
+    //   344: dup
+    //   345: iconst_1
+    //   346: aload 4
+    //   348: getfield 232	com/tencent/wecall/talkroom/model/h:BBY	J
+    //   351: invokestatic 115	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   354: aastore
+    //   355: dup
+    //   356: iconst_2
+    //   357: aload 4
+    //   359: getfield 101	com/tencent/wecall/talkroom/model/h:BCj	J
+    //   362: invokestatic 115	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   365: aastore
+    //   366: invokestatic 57	com/tencent/pb/common/c/c:d	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   369: aload_0
+    //   370: getfield 17	com/tencent/wecall/talkroom/model/f$1:BBh	Lcom/tencent/wecall/talkroom/model/f;
+    //   373: invokestatic 77	com/tencent/wecall/talkroom/model/f:f	(Lcom/tencent/wecall/talkroom/model/f;)Lcom/tencent/wecall/talkroom/model/g;
+    //   376: astore 4
+    //   378: new 236	com/tencent/wecall/talkroom/model/g$3
+    //   381: dup
+    //   382: aload 4
+    //   384: invokespecial 239	com/tencent/wecall/talkroom/model/g$3:<init>	(Lcom/tencent/wecall/talkroom/model/g;)V
+    //   387: astore 5
+    //   389: invokestatic 242	android/os/Looper:myLooper	()Landroid/os/Looper;
+    //   392: invokestatic 217	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   395: if_acmpne +262 -> 657
+    //   398: aload 5
+    //   400: invokeinterface 247 1 0
+    //   405: ldc 131
+    //   407: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   410: return
+    //   411: astore 4
+    //   413: ldc 43
+    //   415: iconst_2
+    //   416: anewarray 4	java/lang/Object
+    //   419: dup
+    //   420: iconst_0
+    //   421: ldc 249
+    //   423: aastore
+    //   424: dup
+    //   425: iconst_1
     //   426: aload 4
-    //   428: aload 7
-    //   430: invokevirtual 246	com/tencent/wecall/talkroom/model/c:agw	(Ljava/lang/String;)Lcom/tencent/wecall/talkroom/model/TalkRoom;
-    //   433: astore 7
-    //   435: aload 5
-    //   437: astore 4
-    //   439: aload 7
-    //   441: ifnull -342 -> 99
-    //   444: aload 7
-    //   446: invokevirtual 252	com/tencent/wecall/talkroom/model/TalkRoom:cRw	()Ljava/util/List;
-    //   449: astore 7
-    //   451: aload 5
-    //   453: astore 4
-    //   455: aload 7
-    //   457: ifnull -358 -> 99
-    //   460: aload 7
-    //   462: invokeinterface 257 1 0
-    //   467: newarray int
-    //   469: astore 4
-    //   471: new 259	java/lang/StringBuffer
-    //   474: dup
-    //   475: invokespecial 260	java/lang/StringBuffer:<init>	()V
-    //   478: astore 5
-    //   480: iconst_0
-    //   481: istore_1
-    //   482: iload_1
-    //   483: aload 7
-    //   485: invokeinterface 257 1 0
-    //   490: if_icmpge +52 -> 542
-    //   493: aload 7
-    //   495: iload_1
-    //   496: invokeinterface 263 2 0
-    //   501: checkcast 265	com/tencent/wecall/talkroom/model/d
-    //   504: astore 8
-    //   506: aload 8
-    //   508: ifnull +130 -> 638
-    //   511: aload 4
-    //   513: iload_1
-    //   514: aload 8
-    //   516: invokevirtual 268	com/tencent/wecall/talkroom/model/d:cRF	()I
-    //   519: iastore
-    //   520: aload 5
-    //   522: aload 4
-    //   524: iload_1
-    //   525: iaload
-    //   526: invokevirtual 272	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
-    //   529: pop
-    //   530: aload 5
-    //   532: ldc_w 274
-    //   535: invokevirtual 277	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   538: pop
-    //   539: goto +99 -> 638
-    //   542: ldc_w 279
-    //   545: iconst_2
-    //   546: anewarray 4	java/lang/Object
-    //   549: dup
-    //   550: iconst_0
-    //   551: ldc_w 281
-    //   554: aastore
-    //   555: dup
-    //   556: iconst_1
-    //   557: aload 5
-    //   559: invokevirtual 285	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   562: aastore
-    //   563: invokestatic 83	com/tencent/pb/common/c/c:x	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   566: goto -467 -> 99
-    //   569: aload 4
-    //   571: getfield 163	com/tencent/wecall/talkroom/model/b:xdr	Lcom/tencent/mm/plugin/multi/talk;
-    //   574: sipush 402
-    //   577: invokevirtual 169	com/tencent/mm/plugin/multi/talk:um	(I)I
-    //   580: pop
-    //   581: goto -430 -> 151
-    //   584: astore 6
-    //   586: ldc 200
-    //   588: iconst_2
-    //   589: anewarray 4	java/lang/Object
-    //   592: dup
-    //   593: iconst_0
-    //   594: ldc_w 287
-    //   597: aastore
-    //   598: dup
-    //   599: iconst_1
-    //   600: aload 6
-    //   602: aastore
-    //   603: invokestatic 83	com/tencent/pb/common/c/c:x	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   606: goto -375 -> 231
-    //   609: aload 4
-    //   611: invokestatic 117	java/lang/System:currentTimeMillis	()J
-    //   614: aload 4
-    //   616: getfield 91	com/tencent/wecall/talkroom/model/h:xfC	J
-    //   619: lsub
-    //   620: putfield 225	com/tencent/wecall/talkroom/model/h:xfr	J
-    //   623: goto -293 -> 330
-    //   626: aload 4
-    //   628: getfield 291	com/tencent/wecall/talkroom/model/g:handler	Landroid/os/Handler;
-    //   631: aload 5
-    //   633: invokevirtual 222	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   636: pop
-    //   637: return
-    //   638: iload_1
-    //   639: iconst_1
-    //   640: iadd
-    //   641: istore_1
-    //   642: goto -160 -> 482
+    //   428: aastore
+    //   429: invokestatic 93	com/tencent/pb/common/c/c:w	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   432: ldc 131
+    //   434: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   437: return
+    //   438: aload 4
+    //   440: aload 7
+    //   442: invokevirtual 253	com/tencent/wecall/talkroom/model/c:axp	(Ljava/lang/String;)Lcom/tencent/wecall/talkroom/model/TalkRoom;
+    //   445: astore 7
+    //   447: aload 5
+    //   449: astore 4
+    //   451: aload 7
+    //   453: ifnull -344 -> 109
+    //   456: aload 7
+    //   458: invokevirtual 259	com/tencent/wecall/talkroom/model/TalkRoom:dXm	()Ljava/util/List;
+    //   461: astore 7
+    //   463: aload 5
+    //   465: astore 4
+    //   467: aload 7
+    //   469: ifnull -360 -> 109
+    //   472: aload 7
+    //   474: invokeinterface 264 1 0
+    //   479: newarray int
+    //   481: astore 4
+    //   483: new 266	java/lang/StringBuffer
+    //   486: dup
+    //   487: invokespecial 267	java/lang/StringBuffer:<init>	()V
+    //   490: astore 5
+    //   492: iconst_0
+    //   493: istore_1
+    //   494: iload_1
+    //   495: aload 7
+    //   497: invokeinterface 264 1 0
+    //   502: if_icmpge +52 -> 554
+    //   505: aload 7
+    //   507: iload_1
+    //   508: invokeinterface 270 2 0
+    //   513: checkcast 272	com/tencent/wecall/talkroom/model/d
+    //   516: astore 8
+    //   518: aload 8
+    //   520: ifnull +154 -> 674
+    //   523: aload 4
+    //   525: iload_1
+    //   526: aload 8
+    //   528: invokevirtual 275	com/tencent/wecall/talkroom/model/d:getMemberId	()I
+    //   531: iastore
+    //   532: aload 5
+    //   534: aload 4
+    //   536: iload_1
+    //   537: iaload
+    //   538: invokevirtual 279	java/lang/StringBuffer:append	(I)Ljava/lang/StringBuffer;
+    //   541: pop
+    //   542: aload 5
+    //   544: ldc_w 281
+    //   547: invokevirtual 284	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   550: pop
+    //   551: goto +123 -> 674
+    //   554: ldc_w 286
+    //   557: iconst_2
+    //   558: anewarray 4	java/lang/Object
+    //   561: dup
+    //   562: iconst_0
+    //   563: ldc_w 288
+    //   566: aastore
+    //   567: dup
+    //   568: iconst_1
+    //   569: aload 5
+    //   571: invokevirtual 292	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   574: aastore
+    //   575: invokestatic 93	com/tencent/pb/common/c/c:w	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   578: goto -469 -> 109
+    //   581: iload_3
+    //   582: ifeq +18 -> 600
+    //   585: aload 4
+    //   587: getfield 174	com/tencent/wecall/talkroom/model/b:BzZ	Lcom/tencent/mm/plugin/multi/talk;
+    //   590: sipush 401
+    //   593: invokevirtual 296	com/tencent/mm/plugin/multi/talk:setAppCmd	(I)I
+    //   596: pop
+    //   597: goto -444 -> 153
+    //   600: aload 4
+    //   602: getfield 174	com/tencent/wecall/talkroom/model/b:BzZ	Lcom/tencent/mm/plugin/multi/talk;
+    //   605: sipush 402
+    //   608: invokevirtual 296	com/tencent/mm/plugin/multi/talk:setAppCmd	(I)I
+    //   611: pop
+    //   612: goto -459 -> 153
+    //   615: astore 6
+    //   617: ldc 207
+    //   619: iconst_2
+    //   620: anewarray 4	java/lang/Object
+    //   623: dup
+    //   624: iconst_0
+    //   625: ldc_w 298
+    //   628: aastore
+    //   629: dup
+    //   630: iconst_1
+    //   631: aload 6
+    //   633: aastore
+    //   634: invokestatic 93	com/tencent/pb/common/c/c:w	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   637: goto -404 -> 233
+    //   640: aload 4
+    //   642: invokestatic 127	java/lang/System:currentTimeMillis	()J
+    //   645: aload 4
+    //   647: getfield 101	com/tencent/wecall/talkroom/model/h:BCj	J
+    //   650: lsub
+    //   651: putfield 232	com/tencent/wecall/talkroom/model/h:BBY	J
+    //   654: goto -322 -> 332
+    //   657: aload 4
+    //   659: getfield 302	com/tencent/wecall/talkroom/model/g:handler	Landroid/os/Handler;
+    //   662: aload 5
+    //   664: invokevirtual 229	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   667: pop
+    //   668: ldc 131
+    //   670: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   673: return
+    //   674: iload_1
+    //   675: iconst_1
+    //   676: iadd
+    //   677: istore_1
+    //   678: goto -184 -> 494
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	645	0	this	1
-    //   236	406	1	i	int
-    //   242	6	2	j	int
-    //   128	8	3	bool	boolean
-    //   76	305	4	localObject1	Object
-    //   404	23	4	localThrowable1	java.lang.Throwable
-    //   437	190	4	localObject2	Object
-    //   1	631	5	localObject3	Object
-    //   71	151	6	localObject4	Object
-    //   584	17	6	localThrowable2	java.lang.Throwable
-    //   85	409	7	localObject5	Object
-    //   504	11	8	locald	d
+    //   0	681	0	this	1
+    //   238	440	1	i	int
+    //   244	6	2	j	int
+    //   138	444	3	bool	boolean
+    //   86	297	4	localObject1	Object
+    //   411	28	4	localThrowable1	java.lang.Throwable
+    //   449	209	4	localObject2	Object
+    //   1	662	5	localObject3	Object
+    //   81	143	6	localObject4	Object
+    //   615	17	6	localThrowable2	java.lang.Throwable
+    //   95	411	7	localObject5	Object
+    //   516	11	8	locald	d
     // Exception table:
     //   from	to	target	type
-    //   67	95	404	java/lang/Throwable
-    //   99	135	404	java/lang/Throwable
-    //   139	151	404	java/lang/Throwable
-    //   151	172	404	java/lang/Throwable
-    //   177	185	404	java/lang/Throwable
-    //   185	221	404	java/lang/Throwable
-    //   231	283	404	java/lang/Throwable
-    //   283	330	404	java/lang/Throwable
-    //   330	403	404	java/lang/Throwable
-    //   426	435	404	java/lang/Throwable
-    //   444	451	404	java/lang/Throwable
-    //   460	480	404	java/lang/Throwable
-    //   482	506	404	java/lang/Throwable
-    //   511	539	404	java/lang/Throwable
-    //   542	566	404	java/lang/Throwable
-    //   569	581	404	java/lang/Throwable
-    //   586	606	404	java/lang/Throwable
-    //   609	623	404	java/lang/Throwable
-    //   626	637	404	java/lang/Throwable
-    //   221	231	584	java/lang/Throwable
+    //   77	105	411	java/lang/Throwable
+    //   109	153	411	java/lang/Throwable
+    //   153	174	411	java/lang/Throwable
+    //   179	187	411	java/lang/Throwable
+    //   187	223	411	java/lang/Throwable
+    //   233	285	411	java/lang/Throwable
+    //   285	332	411	java/lang/Throwable
+    //   332	410	411	java/lang/Throwable
+    //   438	447	411	java/lang/Throwable
+    //   456	463	411	java/lang/Throwable
+    //   472	492	411	java/lang/Throwable
+    //   494	518	411	java/lang/Throwable
+    //   523	551	411	java/lang/Throwable
+    //   554	578	411	java/lang/Throwable
+    //   585	597	411	java/lang/Throwable
+    //   600	612	411	java/lang/Throwable
+    //   617	637	411	java/lang/Throwable
+    //   640	654	411	java/lang/Throwable
+    //   657	668	411	java/lang/Throwable
+    //   223	233	615	java/lang/Throwable
   }
   
   public final void keep_OnReportChannel(String paramString)
   {
+    AppMethodBeat.i(127870);
     c.d("TalkRoomService", new Object[] { "keep_OnReportChannel:", paramString });
-    StringBuilder localStringBuilder = new StringBuilder(com.tencent.pb.common.c.g.afu(this.xeA.xel));
+    StringBuilder localStringBuilder = new StringBuilder(com.tencent.pb.common.c.g.aws(this.BBh.BAS));
     localStringBuilder.append(",");
     localStringBuilder.append(paramString);
-    h.agH(localStringBuilder.toString());
+    h.axC(localStringBuilder.toString());
+    AppMethodBeat.o(127870);
   }
   
   public final void keep_OnReportEngineRecv(String paramString, int paramInt)
   {
+    AppMethodBeat.i(127868);
     c.d("TalkRoomService", new Object[] { "keep_OnReportEngineRecv:", Integer.valueOf(paramInt), paramString });
-    StringBuilder localStringBuilder = new StringBuilder(com.tencent.pb.common.c.g.afu(this.xeA.xel));
+    StringBuilder localStringBuilder = new StringBuilder(com.tencent.pb.common.c.g.aws(this.BBh.BAS));
     localStringBuilder.append(",");
     localStringBuilder.append(paramString);
-    h.agF(localStringBuilder.toString());
+    h.axA(localStringBuilder.toString());
+    AppMethodBeat.o(127868);
   }
   
   public final void keep_OnReportEngineSend(String paramString)
   {
+    AppMethodBeat.i(127869);
     c.d("TalkRoomService", new Object[] { "keep_OnReportEngineSend:", paramString });
-    StringBuilder localStringBuilder = new StringBuilder(com.tencent.pb.common.c.g.afu(this.xeA.xel));
+    StringBuilder localStringBuilder = new StringBuilder(com.tencent.pb.common.c.g.aws(this.BBh.BAS));
     localStringBuilder.append(",");
     localStringBuilder.append(paramString);
-    h.agG(localStringBuilder.toString());
+    h.axB(localStringBuilder.toString());
+    AppMethodBeat.o(127869);
   }
 }
 

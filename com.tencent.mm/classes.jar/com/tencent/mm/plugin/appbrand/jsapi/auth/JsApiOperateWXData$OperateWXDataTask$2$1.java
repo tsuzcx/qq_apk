@@ -1,46 +1,50 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
-import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.widget.b.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.widget.b.i.d;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 
 final class JsApiOperateWXData$OperateWXDataTask$2$1
-  implements c.a
+  implements i.d
 {
   JsApiOperateWXData$OperateWXDataTask$2$1(JsApiOperateWXData.OperateWXDataTask.2 param2) {}
   
-  public final void e(int paramInt, Bundle paramBundle)
+  public final void a(int paramInt, ArrayList<String> paramArrayList)
   {
-    y.i("MicroMsg.JsApiOperateWXData", "stev onRevMsg resultCode %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(130879);
+    ab.i("MicroMsg.AppBrand.JsApiOperateWXData", "stev onRevMsg resultCode %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
-      y.d("MicroMsg.JsApiOperateWXData", "press back button!");
-      this.gkb.gka.gjH.b(this.gkb.gka.gjI, this.gkb.gka.gfg, "fail auth cancel");
-      this.gkb.gka.gjJ.aib();
+      ab.d("MicroMsg.AppBrand.JsApiOperateWXData", "press back button!");
+      this.hEa.hDY.hDu.b(this.hEa.hDY.hDv, this.hEa.hDY.hry, "fail auth cancel");
+      this.hEa.hDY.hDw.aBV();
+      AppMethodBeat.o(130879);
       return;
     }
-    this.gkb.gka.gjL = "operateWXDataConfirm";
-    paramBundle = (ArrayList)paramBundle.getSerializable("key_scope");
-    if ((paramBundle != null) && (paramBundle.size() > 0)) {}
-    for (this.gkb.gka.gjZ = ((String)paramBundle.get(0));; this.gkb.gka.gjZ = "")
+    this.hEa.hDY.hDy = "operateWXDataConfirm";
+    JsApiOperateWXData.OperateWXDataTask localOperateWXDataTask = this.hEa.hDY;
+    if (paramArrayList.size() > 0) {}
+    for (paramArrayList = (String)paramArrayList.get(0);; paramArrayList = "")
     {
-      this.gkb.gka.gjN = paramInt;
-      AppBrandMainProcessService.a(this.gkb.gka);
+      localOperateWXDataTask.hDW = paramArrayList;
+      this.hEa.hDY.hDA = paramInt;
+      AppBrandMainProcessService.a(this.hEa.hDY);
       if (paramInt != 2) {
         break;
       }
-      this.gkb.gka.gjH.b(this.gkb.gka.gjI, this.gkb.gka.gfg, "fail auth deny");
-      this.gkb.gka.gjJ.aib();
+      this.hEa.hDY.hDu.b(this.hEa.hDY.hDv, this.hEa.hDY.hry, "fail auth deny");
+      this.hEa.hDY.hDw.aBV();
+      AppMethodBeat.o(130879);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.JsApiOperateWXData.OperateWXDataTask.2.1
  * JD-Core Version:    0.7.0.1
  */

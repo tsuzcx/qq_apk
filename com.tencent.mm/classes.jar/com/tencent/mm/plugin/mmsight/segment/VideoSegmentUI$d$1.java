@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.mmsight.segment;
 
 import android.view.View;
 import android.view.ViewPropertyAnimator;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoSegmentUI$d$1
   implements Runnable
@@ -11,20 +12,23 @@ final class VideoSegmentUI$d$1
   
   public final void run()
   {
-    if ((VideoSegmentUI.t(this.mnJ.mnw)) || (this.mnJ.mnw.isFinishing()) || (VideoSegmentUI.j(this.mnJ.mnw) == null) || (VideoSegmentUI.d(this.mnJ.mnw) == null))
+    AppMethodBeat.i(55051);
+    if ((VideoSegmentUI.t(this.oMR.oME)) || (this.oMR.oME.isFinishing()) || (VideoSegmentUI.j(this.oMR.oME) == null) || (VideoSegmentUI.d(this.oMR.oME) == null))
     {
-      y.i("MicroMsg.VideoSegmentUI", "waiting end, main thread, activity not valid.");
+      ab.i("MicroMsg.VideoSegmentUI", "waiting end, main thread, activity not valid.");
+      AppMethodBeat.o(55051);
       return;
     }
-    ((View)VideoSegmentUI.j(this.mnJ.mnw)).setAlpha(0.0F);
-    ((View)VideoSegmentUI.j(this.mnJ.mnw)).setVisibility(0);
-    ((View)VideoSegmentUI.j(this.mnJ.mnw)).animate().setDuration(300L).setStartDelay(200L).alpha(1.0F);
-    float f1 = VideoSegmentUI.j(this.mnJ.mnw).bjK();
-    float f2 = VideoSegmentUI.j(this.mnJ.mnw).bjL();
-    if ((f2 - f1) * VideoSegmentUI.e(this.mnJ.mnw) <= VideoSegmentUI.p(this.mnJ.mnw)) {
-      this.mnJ.mnw.enableOptionMenu(true);
+    ((View)VideoSegmentUI.j(this.oMR.oME)).setAlpha(0.0F);
+    ((View)VideoSegmentUI.j(this.oMR.oME)).setVisibility(0);
+    ((View)VideoSegmentUI.j(this.oMR.oME)).animate().setDuration(300L).setStartDelay(200L).alpha(1.0F);
+    float f1 = VideoSegmentUI.j(this.oMR.oME).bRy();
+    float f2 = VideoSegmentUI.j(this.oMR.oME).bRz();
+    if ((f2 - f1) * VideoSegmentUI.e(this.oMR.oME) <= VideoSegmentUI.p(this.oMR.oME)) {
+      this.oMR.oME.enableOptionMenu(true);
     }
-    VideoSegmentUI.d(this.mnJ.mnw).setLoop((int)(f1 * VideoSegmentUI.e(this.mnJ.mnw)), (int)(f2 * VideoSegmentUI.e(this.mnJ.mnw)));
+    VideoSegmentUI.d(this.oMR.oME).setLoop((int)(f1 * VideoSegmentUI.e(this.oMR.oME)), (int)(f2 * VideoSegmentUI.e(this.oMR.oME)));
+    AppMethodBeat.o(55051);
   }
 }
 

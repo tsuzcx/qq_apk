@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 public class PMSInterceptHandler
   implements ServiceBinderInterceptor.BinderInvocationHandler
 {
-  private static Object c(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  private static Object d(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     Class[] arrayOfClass = paramMethod.getExceptionTypes();
     for (;;)
@@ -49,7 +49,7 @@ public class PMSInterceptHandler
           new StringBuilder("locate componentName field of ").append(paramMethod.getName()).append(" done at idx: ").append(i);
           paramObject = (ComponentName)paramArrayOfObject[i];
           if (paramObject != null) {
-            return IncrementComponentManager.agh(paramObject.getClassName());
+            return IncrementComponentManager.awY(paramObject.getClassName());
           }
           new StringBuilder("failed to locate componentName field of ").append(paramMethod.getName()).append(", notice any crashes or mistakes after resolve works.");
           return null;
@@ -67,7 +67,7 @@ public class PMSInterceptHandler
     }
   }
   
-  private static Object d(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  private static Object e(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     Class[] arrayOfClass = paramMethod.getExceptionTypes();
     for (;;)
@@ -106,7 +106,7 @@ public class PMSInterceptHandler
           new StringBuilder("locate intent field of ").append(paramMethod.getName()).append(" done at idx: ").append(i);
           paramObject = (Intent)paramArrayOfObject[i];
           if (paramObject != null) {
-            return IncrementComponentManager.ay(paramObject);
+            return IncrementComponentManager.ba(paramObject);
           }
           new StringBuilder("failed to locate intent field of ").append(paramMethod.getName()).append(", notice any crashes or mistakes after resolve works.");
           return null;
@@ -128,10 +128,10 @@ public class PMSInterceptHandler
   {
     String str = paramMethod.getName();
     if ("getActivityInfo".equals(str)) {
-      return c(paramObject, paramMethod, paramArrayOfObject);
+      return d(paramObject, paramMethod, paramArrayOfObject);
     }
     if ("resolveIntent".equals(str)) {
-      return d(paramObject, paramMethod, paramArrayOfObject);
+      return e(paramObject, paramMethod, paramArrayOfObject);
     }
     return paramMethod.invoke(paramObject, paramArrayOfObject);
   }

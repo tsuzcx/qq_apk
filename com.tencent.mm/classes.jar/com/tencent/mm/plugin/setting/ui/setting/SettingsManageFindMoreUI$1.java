@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 
 final class SettingsManageFindMoreUI$1
@@ -9,8 +10,10 @@ final class SettingsManageFindMoreUI$1
   
   public final void run()
   {
-    this.nUK.rHo = false;
-    SettingsManageFindMoreUI.a(this.nUL, this.nUK.isChecked());
+    AppMethodBeat.i(127269);
+    this.qIP.vxW = false;
+    SettingsManageFindMoreUI.a(this.qIQ, this.qIP.isChecked());
+    AppMethodBeat.o(127269);
   }
 }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ui.PhotosContent android:id="@id/e6j" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/e3e" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_margin="1.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/e6s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:scaleType="centerCrop" />
-</com.tencent.mm.plugin.sns.ui.PhotosContent>
+    <CheckedTextView android:gravity="center_vertical" android:layout_gravity="left" android:id="@id/eee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/e85" android:singleLine="true" android:drawableLeft="?android:listChoiceIndicatorMultiple" />
+    <TextView android:id="@id/b02" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/so" style="@style/nq" />
+</LinearLayout>

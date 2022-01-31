@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.address.c;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -16,17 +17,19 @@ final class b$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((this.ftz.ftk != null) && (this.ftz.fti.isEmpty()))
+    AppMethodBeat.i(16778);
+    if ((this.gLb.gKM != null) && (this.gLb.gKK.isEmpty()))
     {
-      this.ftz.ftk.dismiss();
-      paramDialogInterface = this.ftz.ftj.iterator();
+      this.gLb.gKM.dismiss();
+      paramDialogInterface = this.gLb.gKL.iterator();
       while (paramDialogInterface.hasNext())
       {
         m localm = (m)paramDialogInterface.next();
-        au.Dk().c(localm);
+        aw.Rc().a(localm);
       }
-      this.ftz.ftj.clear();
+      this.gLb.gKL.clear();
     }
+    AppMethodBeat.o(16778);
   }
 }
 

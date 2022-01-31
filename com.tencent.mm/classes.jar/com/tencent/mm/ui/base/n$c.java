@@ -2,7 +2,7 @@ package com.tencent.mm.ui.base;
 
 public abstract interface n$c
 {
-  public abstract void a(l paraml);
+  public abstract void onCreateMMMenu(l paraml);
 }
 
 

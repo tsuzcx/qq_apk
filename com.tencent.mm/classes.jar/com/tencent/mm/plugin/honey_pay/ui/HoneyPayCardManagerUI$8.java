@@ -2,19 +2,20 @@ package com.tencent.mm.plugin.honey_pay.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.protocal.c.ayj;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bfg;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class HoneyPayCardManagerUI$8
   implements View.OnClickListener
 {
-  HoneyPayCardManagerUI$8(HoneyPayCardManagerUI paramHoneyPayCardManagerUI, ayj paramayj) {}
+  HoneyPayCardManagerUI$8(HoneyPayCardManagerUI paramHoneyPayCardManagerUI, bfg parambfg) {}
   
   public final void onClick(View paramView)
   {
-    e.l(this.lla.mController.uMN, this.lld.url, false);
+    AppMethodBeat.i(41800);
+    e.m(this.nIw.getContext(), this.nIz.url, false);
+    AppMethodBeat.o(41800);
   }
 }
 

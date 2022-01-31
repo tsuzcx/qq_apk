@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.MMTagPanel;
 import com.tencent.mm.ui.base.MMTagPanel.a;
 
@@ -9,27 +10,31 @@ final class EmojiStoreV2SingleProductUI$12
 {
   EmojiStoreV2SingleProductUI$12(EmojiStoreV2SingleProductUI paramEmojiStoreV2SingleProductUI) {}
   
-  public final void Bc(String paramString)
+  public final void Le(String paramString)
   {
-    if ((!bk.bl(EmojiStoreV2SingleProductUI.l(this.jiI))) && (!bk.bl(paramString)) && (paramString.equals(EmojiStoreV2SingleProductUI.l(this.jiI)))) {
-      EmojiStoreV2SingleProductUI.m(this.jiI).bI(EmojiStoreV2SingleProductUI.l(this.jiI), true);
+    AppMethodBeat.i(53757);
+    if ((!bo.isNullOrNil(EmojiStoreV2SingleProductUI.l(this.lrz))) && (!bo.isNullOrNil(paramString)) && (paramString.equals(EmojiStoreV2SingleProductUI.l(this.lrz)))) {
+      EmojiStoreV2SingleProductUI.m(this.lrz).ck(EmojiStoreV2SingleProductUI.l(this.lrz), true);
     }
+    AppMethodBeat.o(53757);
   }
   
-  public final void Bd(String paramString)
+  public final void Lf(String paramString)
   {
-    EmojiStoreV2SingleProductUI.a(this.jiI, paramString);
+    AppMethodBeat.i(53758);
+    EmojiStoreV2SingleProductUI.a(this.lrz, paramString);
+    AppMethodBeat.o(53758);
   }
   
-  public final void Be(String paramString) {}
+  public final void Lg(String paramString) {}
   
-  public final void Bf(String paramString) {}
+  public final void Lh(String paramString) {}
   
-  public final void Bg(String paramString) {}
+  public final void Li(String paramString) {}
   
-  public final void aJI() {}
+  public final void bnq() {}
   
-  public final void i(boolean paramBoolean, int paramInt) {}
+  public final void t(boolean paramBoolean, int paramInt) {}
 }
 
 

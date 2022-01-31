@@ -1,7 +1,7 @@
 package com.tencent.mm.ui.tools;
 
 import android.widget.ListView;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.VerticalScrollBar.a;
 
 final class CountryCodeUI$5
@@ -9,29 +9,34 @@ final class CountryCodeUI$5
 {
   CountryCodeUI$5(CountryCodeUI paramCountryCodeUI) {}
   
-  public final void eU(String paramString)
+  public final void lf(String paramString)
   {
     int i = 0;
-    if (this.vYt.getString(R.l.scroll_bar_search).equals(paramString)) {
-      CountryCodeUI.b(this.vYt).setSelection(0);
-    }
-    for (;;)
+    AppMethodBeat.i(34804);
+    if (this.AqG.getString(2131302955).equals(paramString))
     {
+      CountryCodeUI.b(this.AqG).setSelection(0);
+      AppMethodBeat.o(34804);
       return;
-      int j = Integer.decode(paramString.substring(0, paramString.length() - 1)).intValue();
-      paramString = CountryCodeUI.c(this.vYt).luY;
-      if (paramString != null) {
-        while (i < paramString.length)
-        {
-          if (paramString[i] == j)
-          {
-            CountryCodeUI.b(this.vYt).setSelection(i + CountryCodeUI.b(this.vYt).getHeaderViewsCount());
-            return;
-          }
-          i += 1;
-        }
-      }
     }
+    int j = Integer.decode(paramString.substring(0, paramString.length() - 1)).intValue();
+    paramString = CountryCodeUI.c(this.AqG).nSp;
+    if (paramString == null)
+    {
+      AppMethodBeat.o(34804);
+      return;
+    }
+    do
+    {
+      i += 1;
+      if (i >= paramString.length) {
+        break;
+      }
+    } while (paramString[i] != j);
+    CountryCodeUI.b(this.AqG).setSelection(i + CountryCodeUI.b(this.AqG).getHeaderViewsCount());
+    AppMethodBeat.o(34804);
+    return;
+    AppMethodBeat.o(34804);
   }
 }
 

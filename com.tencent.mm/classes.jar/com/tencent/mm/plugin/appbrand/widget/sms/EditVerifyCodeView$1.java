@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.appbrand.widget.sms;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class EditVerifyCodeView$1
   implements TextWatcher
@@ -11,16 +12,20 @@ final class EditVerifyCodeView$1
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    if ((paramEditable == null) || (paramEditable.length() == 0)) {
+    AppMethodBeat.i(134402);
+    if ((paramEditable == null) || (paramEditable.length() == 0))
+    {
+      AppMethodBeat.o(134402);
       return;
     }
-    y.i("MicroMsg.EditVerifyCodeView", "afterTextChanged:%s", new Object[] { paramEditable.toString() });
-    if (EditVerifyCodeView.a(this.hEb).length() < 6)
+    ab.i("MicroMsg.EditVerifyCodeView", "afterTextChanged:%s", new Object[] { paramEditable.toString() });
+    if (EditVerifyCodeView.a(this.jwB).length() < 6)
     {
-      EditVerifyCodeView.a(this.hEb).append(paramEditable.toString());
-      EditVerifyCodeView.b(this.hEb);
+      EditVerifyCodeView.a(this.jwB).append(paramEditable.toString());
+      EditVerifyCodeView.b(this.jwB);
     }
     paramEditable.delete(0, paramEditable.length());
+    AppMethodBeat.o(134402);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

@@ -1,35 +1,37 @@
 package com.tencent.mm.plugin.wallet.pay;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 final class b$1
-  extends b.a
+  implements Runnable
 {
-  b$1(b paramb, WalletBaseUI paramWalletBaseUI, i parami)
-  {
-    super(paramb, paramWalletBaseUI, parami);
-  }
+  b$1(b paramb) {}
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void run()
   {
-    return super.c(paramInt1, paramInt2, paramString, paramm);
-  }
-  
-  public final boolean m(Object... paramVarArgs)
-  {
-    return false;
-  }
-  
-  public final boolean s(Object... paramVarArgs)
-  {
-    return false;
+    AppMethodBeat.i(45862);
+    Iterator localIterator = b.a(this.tVh).iterator();
+    while (localIterator.hasNext())
+    {
+      WalletBaseUI localWalletBaseUI = (WalletBaseUI)((WeakReference)localIterator.next()).get();
+      if ((localWalletBaseUI != null) && (!localWalletBaseUI.hasFinish()))
+      {
+        ab.i("MicroMsg.PayProcess", "do finish activity: %s", new Object[] { localWalletBaseUI });
+        localWalletBaseUI.finish();
+      }
+    }
+    b.a(this.tVh).clear();
+    AppMethodBeat.o(45862);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.b.1
  * JD-Core Version:    0.7.0.1
  */

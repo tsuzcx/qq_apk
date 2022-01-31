@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/yf" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/lp" android:paddingLeft="@dimen/ll" android:paddingRight="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/ei7" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:layout_marginLeft="@dimen/dl" android:layout_marginTop="10.0dip" android:scaleType="fitXY" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingTop="7.0dip" android:paddingBottom="7.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_weight="1.0">
-        <TextView android:textAppearance="@style/mc" android:textColor="@color/ta" android:ellipsize="marquee" android:id="@id/cj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:ellipsize="end" android:id="@id/a3t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="10" />
-            <com.tencent.mm.plugin.wallet_core.ui.view.FavourLayout android:orientation="vertical" android:id="@id/ekx" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
-    <CheckedTextView android:gravity="center" android:layout_gravity="center|right" android:id="@id/cxq" android:background="@null" android:layout_width="wrap_content" android:layout_height="54.0dip" android:checkMark="@drawable/ve" />
+    <RelativeLayout android:gravity="bottom" android:orientation="horizontal" android:background="@color/h6" android:layout_height="wrap_content" android:minHeight="50.0dip" style="@style/lo">
+        <ImageButton android:id="@id/d5b" android:background="@null" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz" android:src="@raw/sight_icon_emoji" android:minWidth="0.0dip" android:layout_centerVertical="true" android:contentDescription="@string/aka" style="@style/no" />
+        <com.tencent.mm.plugin.sns.ui.SightLocationWidget android:id="@id/ern" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/d5b" />
+        <com.tencent.mm.plugin.sns.ui.SightRangeWidget android:id="@id/d5c" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
+    </RelativeLayout>
 </LinearLayout>

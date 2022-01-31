@@ -1,23 +1,27 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class d$48
   implements Runnable
 {
-  d$48(d paramd, String paramString) {}
+  d$48(d paramd, String paramString1, String paramString2) {}
   
   public final void run()
   {
+    AppMethodBeat.i(8912);
     try
     {
-      d.d(this.rxV).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.fZS + ")", null);
+      d.d(this.voP).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.voU + ")", null);
+      AppMethodBeat.o(8912);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.JsApiHandler", "switchToTabSearch fail, ex = %s", new Object[] { localException.getMessage() });
+      ab.e("MicroMsg.JsApiHandler", "onSendEventToJSBridge fail, event=%s, ex=%s", new Object[] { this.uUq, localException.getMessage() });
+      AppMethodBeat.o(8912);
     }
   }
 }

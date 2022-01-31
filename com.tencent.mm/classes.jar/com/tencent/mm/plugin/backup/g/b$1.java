@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.backup.g;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$1
   implements Runnable
@@ -9,17 +10,20 @@ final class b$1
   
   public final void run()
   {
-    if (b.auW() != null)
+    AppMethodBeat.i(17638);
+    if (b.aUy() != null)
     {
-      b.auW().a(this.hFS, this.bns, this.hFT, this.hFQ);
+      b.aUy().a(this.jzp, this.bHS, this.ePW, this.jzn);
+      AppMethodBeat.o(17638);
       return;
     }
-    y.w("MicroMsg.BackupBaseScene", "callbackToNotify, onNotify is null");
+    ab.w("MicroMsg.BackupBaseScene", "callbackToNotify, onNotify is null");
+    AppMethodBeat.o(17638);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.g.b.1
  * JD-Core Version:    0.7.0.1
  */

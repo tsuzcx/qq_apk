@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.scanner.ui;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.graphics.Rect;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ScanMaskView$1
   implements ValueAnimator.AnimatorUpdateListener
@@ -11,14 +12,16 @@ final class ScanMaskView$1
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
+    AppMethodBeat.i(81147);
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ScanMaskView.b(this.nLs).left += (int)(ScanMaskView.c(this.nLs) * f);
-    ScanMaskView.b(this.nLs).right += (int)(ScanMaskView.d(this.nLs) * f);
-    ScanMaskView.b(this.nLs).top += (int)(ScanMaskView.e(this.nLs) * f);
-    paramValueAnimator = ScanMaskView.a(this.nLs);
-    int i = ScanMaskView.b(this.nLs).bottom;
-    paramValueAnimator.bottom = ((int)(f * ScanMaskView.f(this.nLs)) + i);
-    this.nLs.invalidate();
+    ScanMaskView.b(this.qyX).left += (int)(ScanMaskView.c(this.qyX) * f);
+    ScanMaskView.b(this.qyX).right += (int)(ScanMaskView.d(this.qyX) * f);
+    ScanMaskView.b(this.qyX).top += (int)(ScanMaskView.e(this.qyX) * f);
+    paramValueAnimator = ScanMaskView.a(this.qyX);
+    int i = ScanMaskView.b(this.qyX).bottom;
+    paramValueAnimator.bottom = ((int)(f * ScanMaskView.f(this.qyX)) + i);
+    this.qyX.invalidate();
+    AppMethodBeat.o(81147);
   }
 }
 

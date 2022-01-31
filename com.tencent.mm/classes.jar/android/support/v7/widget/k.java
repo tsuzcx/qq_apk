@@ -1,122 +1,83 @@
 package android.support.v7.widget;
 
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Paint;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ClipDrawable;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
-import android.support.v4.a.a.f;
+import android.support.v4.graphics.drawable.a;
+import android.support.v4.view.t;
+import android.support.v7.a.a.a;
 import android.util.AttributeSet;
-import android.widget.ProgressBar;
+import android.widget.SeekBar;
 
-class k
+final class k
+  extends j
 {
-  private static final int[] Vb = { 16843067, 16843068 };
-  private final ProgressBar ZX;
-  Bitmap ZY;
+  final SeekBar aaL;
+  Drawable aaM;
+  private ColorStateList aaN = null;
+  private PorterDuff.Mode aaO = null;
+  private boolean aaP = false;
+  private boolean aaQ = false;
   
-  k(ProgressBar paramProgressBar)
+  k(SeekBar paramSeekBar)
   {
-    this.ZX = paramProgressBar;
+    super(paramSeekBar);
+    this.aaL = paramSeekBar;
   }
   
-  private Drawable b(Drawable paramDrawable, boolean paramBoolean)
+  private void hi()
   {
-    int j = 0;
-    if ((paramDrawable instanceof f))
+    if ((this.aaM != null) && ((this.aaP) || (this.aaQ)))
     {
-      localObject1 = ((f)paramDrawable).cr();
-      if (localObject1 != null)
-      {
-        localObject1 = b((Drawable)localObject1, paramBoolean);
-        ((f)paramDrawable).h((Drawable)localObject1);
+      this.aaM = a.e(this.aaM.mutate());
+      if (this.aaP) {
+        a.a(this.aaM, this.aaN);
+      }
+      if (this.aaQ) {
+        a.a(this.aaM, this.aaO);
+      }
+      if (this.aaM.isStateful()) {
+        this.aaM.setState(this.aaL.getDrawableState());
       }
     }
-    do
-    {
-      return paramDrawable;
-      if ((paramDrawable instanceof LayerDrawable))
-      {
-        paramDrawable = (LayerDrawable)paramDrawable;
-        int k = paramDrawable.getNumberOfLayers();
-        localObject1 = new Drawable[k];
-        int i = 0;
-        if (i < k)
-        {
-          int m = paramDrawable.getId(i);
-          localObject2 = paramDrawable.getDrawable(i);
-          if ((m == 16908301) || (m == 16908303)) {}
-          for (paramBoolean = true;; paramBoolean = false)
-          {
-            localObject1[i] = b((Drawable)localObject2, paramBoolean);
-            i += 1;
-            break;
-          }
-        }
-        localObject1 = new LayerDrawable((Drawable[])localObject1);
-        i = j;
-        while (i < k)
-        {
-          ((LayerDrawable)localObject1).setId(i, paramDrawable.getId(i));
-          i += 1;
-        }
-        return localObject1;
-      }
-    } while (!(paramDrawable instanceof BitmapDrawable));
-    paramDrawable = (BitmapDrawable)paramDrawable;
-    Object localObject2 = paramDrawable.getBitmap();
-    if (this.ZY == null) {
-      this.ZY = ((Bitmap)localObject2);
-    }
-    Object localObject1 = new ShapeDrawable(new RoundRectShape(new float[] { 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F }, null, null));
-    localObject2 = new BitmapShader((Bitmap)localObject2, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
-    ((ShapeDrawable)localObject1).getPaint().setShader((Shader)localObject2);
-    ((ShapeDrawable)localObject1).getPaint().setColorFilter(paramDrawable.getPaint().getColorFilter());
-    if (paramBoolean) {
-      return new ClipDrawable((Drawable)localObject1, 3, 1);
-    }
-    return localObject1;
   }
   
-  void b(AttributeSet paramAttributeSet, int paramInt)
+  final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    ax localax = ax.a(this.ZX.getContext(), paramAttributeSet, Vb, paramInt, 0);
-    Object localObject = localax.cr(0);
-    if (localObject != null)
+    super.a(paramAttributeSet, paramInt);
+    paramAttributeSet = az.a(this.aaL.getContext(), paramAttributeSet, a.a.AppCompatSeekBar, paramInt, 0);
+    Drawable localDrawable = paramAttributeSet.cH(0);
+    if (localDrawable != null) {
+      this.aaL.setThumb(localDrawable);
+    }
+    localDrawable = paramAttributeSet.getDrawable(1);
+    if (this.aaM != null) {
+      this.aaM.setCallback(null);
+    }
+    this.aaM = localDrawable;
+    if (localDrawable != null)
     {
-      ProgressBar localProgressBar = this.ZX;
-      paramAttributeSet = (AttributeSet)localObject;
-      if ((localObject instanceof AnimationDrawable))
-      {
-        localObject = (AnimationDrawable)localObject;
-        int i = ((AnimationDrawable)localObject).getNumberOfFrames();
-        paramAttributeSet = new AnimationDrawable();
-        paramAttributeSet.setOneShot(((AnimationDrawable)localObject).isOneShot());
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Drawable localDrawable = b(((AnimationDrawable)localObject).getFrame(paramInt), true);
-          localDrawable.setLevel(10000);
-          paramAttributeSet.addFrame(localDrawable, ((AnimationDrawable)localObject).getDuration(paramInt));
-          paramInt += 1;
-        }
-        paramAttributeSet.setLevel(10000);
+      localDrawable.setCallback(this.aaL);
+      a.b(localDrawable, t.T(this.aaL));
+      if (localDrawable.isStateful()) {
+        localDrawable.setState(this.aaL.getDrawableState());
       }
-      localProgressBar.setIndeterminateDrawable(paramAttributeSet);
+      hi();
     }
-    paramAttributeSet = localax.cr(1);
-    if (paramAttributeSet != null) {
-      this.ZX.setProgressDrawable(b(paramAttributeSet, false));
+    this.aaL.invalidate();
+    if (paramAttributeSet.hasValue(3))
+    {
+      this.aaO = x.c(paramAttributeSet.getInt(3, -1), this.aaO);
+      this.aaQ = true;
     }
-    localax.alZ.recycle();
+    if (paramAttributeSet.hasValue(2))
+    {
+      this.aaN = paramAttributeSet.getColorStateList(2);
+      this.aaP = true;
+    }
+    paramAttributeSet.aoo.recycle();
+    hi();
   }
 }
 

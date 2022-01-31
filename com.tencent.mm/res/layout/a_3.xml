@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/crb" android:background="@color/rz" android:paddingLeft="@dimen/a39" android:paddingRight="@dimen/a39" android:layout_width="fill_parent" android:layout_height="64.0dip"
+<RelativeLayout android:orientation="vertical" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/crc" android:background="@null" android:layout_width="36.0dip" android:layout_height="36.0dip" android:scaleType="fitCenter" />
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/s0" android:gravity="left" android:id="@id/crd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:includeFontPadding="false" />
-</LinearLayout>
+    <ListView android:id="@id/cqg" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/mn" />
+    <TextView android:textSize="@dimen/dq" android:textColor="@color/a8i" android:gravity="center" android:id="@id/cqh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/cll" android:layout_centerVertical="true" />
+</RelativeLayout>

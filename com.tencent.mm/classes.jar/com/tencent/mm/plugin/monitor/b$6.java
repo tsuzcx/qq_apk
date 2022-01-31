@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.monitor;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
@@ -13,19 +14,26 @@ final class b$6
   
   public final void run()
   {
-    g.DQ();
-    g.DP().Dz().c(ac.a.uuZ, Long.valueOf(this.mss));
-    if (this.mst != null)
+    AppMethodBeat.i(84522);
+    if (!g.RG())
     {
-      g.DQ();
-      g.DP().Dz().c(this.mst, Long.valueOf(this.dCp));
+      AppMethodBeat.o(84522);
+      return;
     }
-    y.i("MicroMsg.SubCoreBaseMonitor", "summerhv resetHeavyUser heavyUser[%d, %d], fkey[%s], value[%d]", new Object[] { Long.valueOf(this.mss), Long.valueOf(b.r(this.msl)), this.mst, Long.valueOf(this.dCp) });
+    g.RM();
+    g.RL().Ru().set(ac.a.yFg, Long.valueOf(this.oSd));
+    if (this.oSe != null)
+    {
+      g.RM();
+      g.RL().Ru().set(this.oSe, Long.valueOf(this.kZt));
+    }
+    ab.i("MicroMsg.SubCoreBaseMonitor", "summerhv resetHeavyUser heavyUser[%d, %d], fkey[%s], value[%d]", new Object[] { Long.valueOf(this.oSd), Long.valueOf(b.s(this.oRW)), this.oSe, Long.valueOf(this.kZt) });
+    AppMethodBeat.o(84522);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.monitor.b.6
  * JD-Core Version:    0.7.0.1
  */

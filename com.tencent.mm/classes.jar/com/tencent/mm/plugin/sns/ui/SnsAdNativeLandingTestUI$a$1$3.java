@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SnsAdNativeLandingTestUI$a$1$3
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class SnsAdNativeLandingTestUI$a$1$3
   
   public final void run()
   {
-    this.oVp.oVn.Oq(this.val$filePath);
+    AppMethodBeat.i(38720);
+    this.rNr.rNp.mP(this.val$filePath);
+    AppMethodBeat.o(38720);
   }
 }
 

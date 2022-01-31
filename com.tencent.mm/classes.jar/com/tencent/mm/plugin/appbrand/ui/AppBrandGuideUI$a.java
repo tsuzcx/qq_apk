@@ -8,31 +8,41 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.ui.banner.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class AppBrandGuideUI$a
   implements Application.ActivityLifecycleCallbacks, f
 {
-  public boolean hcN = false;
-  public String hcO;
+  public boolean iMA = false;
+  String iMB;
   
-  public static Application aoU()
+  public static Application aMc()
   {
-    return (Application)ae.getContext().getApplicationContext();
+    AppMethodBeat.i(132959);
+    Application localApplication = (Application)ah.getContext().getApplicationContext();
+    AppMethodBeat.o(132959);
+    return localApplication;
   }
   
-  public final void aP(String paramString, int paramInt)
+  public final void Fd(String paramString)
   {
-    this.hcN = false;
+    this.iMA = true;
+    this.iMB = paramString;
+  }
+  
+  public final void bf(String paramString, int paramInt)
+  {
+    this.iMA = false;
   }
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
     if ((paramActivity instanceof AppBrandGuideUI)) {
-      this.hcN = false;
+      this.iMA = false;
     }
   }
   
@@ -42,16 +52,17 @@ public final class AppBrandGuideUI$a
   
   public final void onActivityResumed(Activity paramActivity)
   {
+    AppMethodBeat.i(132960);
     if (((paramActivity instanceof AppBrandGuideUI)) || ((paramActivity instanceof AppBrandLauncherUI))) {
-      this.hcN = false;
+      this.iMA = false;
     }
     ActivityManager.RunningTaskInfo localRunningTaskInfo;
     int i;
-    if ((g.DK()) && (this.hcN))
+    if ((g.RG()) && (this.iMA))
     {
-      localRunningTaskInfo = bk.al(paramActivity, paramActivity.getTaskId());
+      localRunningTaskInfo = bo.ay(paramActivity, paramActivity.getTaskId());
       if ((localRunningTaskInfo != null) && (localRunningTaskInfo.baseActivity != null)) {
-        break label78;
+        break label88;
       }
       i = 0;
     }
@@ -59,11 +70,12 @@ public final class AppBrandGuideUI$a
     {
       if (i != 0)
       {
-        this.hcN = false;
+        this.iMA = false;
         paramActivity.startActivity(new Intent(paramActivity, AppBrandGuideUI.class));
       }
+      AppMethodBeat.o(132960);
       return;
-      label78:
+      label88:
       if ((!localRunningTaskInfo.baseActivity.getClassName().endsWith(".LauncherUI")) && (localRunningTaskInfo.baseActivity.getClassName().contains(".AppBrandUI"))) {
         i = 0;
       } else {

@@ -1,22 +1,45 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.normsg.a.b;
 
 final class MobileInputUI$5
-  implements View.OnFocusChangeListener
+  implements TextWatcher
 {
   MobileInputUI$5(MobileInputUI paramMobileInputUI, boolean[] paramArrayOfBoolean) {}
   
-  public final void onFocusChange(View paramView, boolean paramBoolean)
+  public final void afterTextChanged(Editable paramEditable)
   {
-    if (paramBoolean)
+    AppMethodBeat.i(125164);
+    this.gGb.gFP.setEnabled(this.gGb.arB());
+    AppMethodBeat.o(125164);
+  }
+  
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(125165);
+    if (this.gGc[0] != 0)
     {
-      this.foI[0] = true;
-      return;
+      this.gGc[0] = false;
+      if (MobileInputUI.e(this.gGb)) {
+        b.pgQ.VV("ie_reg_eu");
+      }
+      if (MobileInputUI.f(this.gGb)) {
+        b.pgQ.VV("ie_login");
+      }
     }
-    b.mGK.JX("ie_reg_eu");
+    if (MobileInputUI.e(this.gGb)) {
+      b.pgQ.VW("ie_reg_eu");
+    }
+    if (MobileInputUI.f(this.gGb)) {
+      b.pgQ.VW("ie_login");
+    }
+    AppMethodBeat.o(125165);
   }
 }
 

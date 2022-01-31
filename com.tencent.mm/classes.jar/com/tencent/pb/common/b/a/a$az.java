@@ -7,79 +7,79 @@ import com.google.a.a.e;
 public final class a$az
   extends e
 {
-  private static volatile az[] wJr;
+  private static volatile az[] BgR;
+  public int BgS = 0;
+  public int BgT = 0;
+  public int BgU = 0;
+  public int BgV = 0;
   public int timestamp = 0;
-  public int wJs = 0;
-  public int wJt = 0;
-  public int wJu = 0;
-  public int wJv = 0;
   
   public a$az()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
-  public static az[] cOh()
+  public static az[] dTT()
   {
-    if (wJr == null) {}
-    synchronized (c.aUH)
+    if (BgR == null) {}
+    synchronized (c.bgX)
     {
-      if (wJr == null) {
-        wJr = new az[0];
+      if (BgR == null) {
+        BgR = new az[0];
       }
-      return wJr;
+      return BgR;
     }
   }
   
   public final void a(b paramb)
   {
     if (this.timestamp != 0) {
-      paramb.aL(1, this.timestamp);
+      paramb.bj(1, this.timestamp);
     }
-    if (this.wJs != 0) {
-      paramb.aL(2, this.wJs);
+    if (this.BgS != 0) {
+      paramb.bj(2, this.BgS);
     }
-    if (this.wJt != 0) {
-      paramb.aL(3, this.wJt);
+    if (this.BgT != 0) {
+      paramb.bj(3, this.BgT);
     }
-    if (this.wJu != 0) {
-      paramb.aL(4, this.wJu);
+    if (this.BgU != 0) {
+      paramb.bj(4, this.BgU);
     }
-    if (this.wJv != 0) {
-      paramb.aL(5, this.wJv);
+    if (this.BgV != 0) {
+      paramb.bj(5, this.BgV);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
     if (this.timestamp != 0) {
-      i = j + b.aN(1, this.timestamp);
+      i = j + b.bl(1, this.timestamp);
     }
     j = i;
-    if (this.wJs != 0) {
-      j = i + b.aN(2, this.wJs);
+    if (this.BgS != 0) {
+      j = i + b.bl(2, this.BgS);
     }
     i = j;
-    if (this.wJt != 0) {
-      i = j + b.aN(3, this.wJt);
+    if (this.BgT != 0) {
+      i = j + b.bl(3, this.BgT);
     }
     j = i;
-    if (this.wJu != 0) {
-      j = i + b.aN(4, this.wJu);
+    if (this.BgU != 0) {
+      j = i + b.bl(4, this.BgU);
     }
     i = j;
-    if (this.wJv != 0) {
-      i = j + b.aN(5, this.wJv);
+    if (this.BgV != 0) {
+      i = j + b.bl(5, this.BgV);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.az
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,22 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.res.Resources;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mm.plugin.sns.i.d;
-import com.tencent.mm.sdk.platformtools.u;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.matrix.trace.e.b;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SnsUserUI$15
-  implements Runnable
+  extends b
 {
   SnsUserUI$15(SnsUserUI paramSnsUserUI) {}
   
-  public final void run()
+  public final void a(String paramString, long paramLong, int paramInt)
   {
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = (u.V(this.pjB) + this.pjB.getResources().getDimensionPixelSize(i.d.ActionBarHeight));
-    SnsUserUI.k(this.pjB).setLayoutParams(localLayoutParams);
+    AppMethodBeat.i(39805);
+    super.a(paramString, paramLong, paramInt);
+    if ((paramInt > 0) && (!bo.isNullOrNil(paramString)) && (paramString.endsWith(this.sce.getClass().getSimpleName()))) {
+      SnsUserUI.a(this.sce, SnsUserUI.j(this.sce) + paramInt);
+    }
+    AppMethodBeat.o(39805);
   }
 }
 

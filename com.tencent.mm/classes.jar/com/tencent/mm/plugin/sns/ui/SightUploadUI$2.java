@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.h.a.pv;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.rd;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.ui.widget.MMEditText.a;
 
@@ -9,14 +10,16 @@ final class SightUploadUI$2
 {
   SightUploadUI$2(SightUploadUI paramSightUploadUI) {}
   
-  public final void bgg()
+  public final void bNU()
   {
-    this.oTB.XM();
-    pv localpv = new pv();
-    localpv.bZp.type = 0;
-    localpv.bZp.bZr = false;
-    a.udP.m(localpv);
-    this.oTB.finish();
+    AppMethodBeat.i(38584);
+    this.rLy.hideVKB();
+    rd localrd = new rd();
+    localrd.cHE.type = 0;
+    localrd.cHE.cHG = false;
+    a.ymk.l(localrd);
+    this.rLy.finish();
+    AppMethodBeat.o(38584);
   }
 }
 

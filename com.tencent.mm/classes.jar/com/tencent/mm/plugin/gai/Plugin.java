@@ -4,44 +4,55 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.h;
+import com.tencent.mm.model.at;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public class Plugin
   implements c
 {
   public Plugin()
   {
-    boolean bool = ae.getContext().getSharedPreferences(ae.cqR() + "_google_aid", 4).getBoolean("already_report_googleaid", false);
-    y.i("MicroMsg.Plugin.gai", "gai Plugin! %b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.i(21211);
+    boolean bool = ah.getContext().getSharedPreferences(ah.dsP() + "_google_aid", h.Mp()).getBoolean("already_report_googleaid", false);
+    ab.i("MicroMsg.Plugin.gai", "gai Plugin! %b", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
-      int i = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(ae.getContext());
-      if ((i != 1) && (i != 9)) {
-        e.post(new Plugin.2(this, ae.getContext(), new Plugin.1(this)), "Advertisement-MAT-thread");
+      int i = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(ah.getContext());
+      if ((i != 1) && (i != 9))
+      {
+        ah.getContext();
+        new Plugin.1(this);
+        d.post(new Plugin.2(this), "Advertisement-MAT-thread");
+        AppMethodBeat.o(21211);
+        return;
       }
+      ab.w("MicroMsg.Plugin.gai", "gp service invalid, just ignore");
+      ah.getContext().getSharedPreferences(ah.dsP() + "_google_aid", h.Mp()).edit().putBoolean("already_report_googleaid", true).commit();
     }
-    else
-    {
-      return;
-    }
-    y.w("MicroMsg.Plugin.gai", "gp service invalid, just ignore");
-    ae.getContext().getSharedPreferences(ae.cqR() + "_google_aid", 4).edit().putBoolean("already_report_googleaid", true).commit();
+    AppMethodBeat.o(21211);
   }
   
-  public n createApplication()
+  public o createApplication()
   {
-    return new com.tencent.mm.plugin.gai.a.a();
+    AppMethodBeat.i(21212);
+    com.tencent.mm.plugin.gai.a.a locala = new com.tencent.mm.plugin.gai.a.a();
+    AppMethodBeat.o(21212);
+    return locala;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new com.tencent.mm.plugin.gai.b.a();
+    AppMethodBeat.i(21213);
+    com.tencent.mm.plugin.gai.b.a locala = new com.tencent.mm.plugin.gai.b.a();
+    AppMethodBeat.o(21213);
+    return locala;
   }
   
   public b getContactWidgetFactory()

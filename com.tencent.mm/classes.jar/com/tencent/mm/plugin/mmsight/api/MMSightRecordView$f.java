@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.api;
 
 public abstract interface MMSightRecordView$f
 {
-  public abstract void db(boolean paramBoolean);
+  public abstract void aCP();
 }
 
 

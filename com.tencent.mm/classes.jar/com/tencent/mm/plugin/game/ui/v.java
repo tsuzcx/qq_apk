@@ -3,65 +3,74 @@ package com.tencent.mm.plugin.game.ui;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.model.o;
-import com.tencent.mm.plugin.game.model.o.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.n;
+import com.tencent.mm.plugin.game.model.n.i;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 
 public final class v
   implements View.OnClickListener
 {
-  private int fzn;
-  private int kQh;
-  private int lfO;
   private Context mContext;
   private int mPosition;
+  private int mScene;
+  private int nDJ;
+  private int nok;
   
   public v(Context paramContext)
   {
     this.mContext = paramContext;
-    this.fzn = 13;
+    this.mScene = 13;
   }
   
-  public final void cY(int paramInt1, int paramInt2)
+  public final void ev(int paramInt1, int paramInt2)
   {
-    this.kQh = paramInt1;
-    this.lfO = 1301;
+    this.nok = paramInt1;
+    this.nDJ = 1301;
     this.mPosition = paramInt2;
   }
   
   public final void onClick(View paramView)
   {
-    if (paramView.getTag() == null) {}
-    do
+    AppMethodBeat.i(112217);
+    if (paramView.getTag() == null)
     {
-      do
+      AppMethodBeat.o(112217);
+      return;
+    }
+    int i;
+    if ((paramView.getTag() instanceof n))
+    {
+      paramView = (n)paramView.getTag();
+      if (!bo.es(paramView.nmZ))
       {
-        do
+        String str = ((n.i)paramView.nmZ.get(0)).nod;
+        if (!bo.isNullOrNil(str))
         {
-          return;
-          if (!(paramView.getTag() instanceof o)) {
-            break;
-          }
-          paramView = (o)paramView.getTag();
-        } while (bk.dk(paramView.kPd));
-        String str = ((o.h)paramView.kPd.get(0)).kQc;
-        if (!bk.bl(str))
-        {
-          i = c.an(this.mContext, str);
-          b.a(this.mContext, this.fzn, this.lfO, this.mPosition, i, 0, paramView.field_appId, this.kQh, paramView.field_msgType, paramView.field_gameMsgId, paramView.kPN, null);
+          i = com.tencent.mm.plugin.game.f.c.ax(this.mContext, str);
+          com.tencent.mm.game.report.c.a(this.mContext, this.mScene, this.nDJ, this.mPosition, i, 0, paramView.field_appId, this.nok, paramView.field_msgType, paramView.field_gameMsgId, paramView.nnM, null);
+          AppMethodBeat.o(112217);
           return;
         }
-        y.e("MicroMsg.GameURLClickListener", "message's jumpurl is null");
-        return;
-      } while (!(paramView.getTag() instanceof String));
+        ab.e("MicroMsg.GameURLClickListener", "message's jumpurl is null");
+      }
+      AppMethodBeat.o(112217);
+      return;
+    }
+    if ((paramView.getTag() instanceof String))
+    {
       paramView = (String)paramView.getTag();
-    } while (bk.bl(paramView));
-    int i = c.an(this.mContext, paramView);
-    b.a(this.mContext, this.fzn, this.lfO, this.mPosition, i, this.kQh, null);
+      if (bo.isNullOrNil(paramView))
+      {
+        AppMethodBeat.o(112217);
+        return;
+      }
+      i = com.tencent.mm.plugin.game.f.c.ax(this.mContext, paramView);
+      com.tencent.mm.game.report.c.a(this.mContext, this.mScene, this.nDJ, this.mPosition, i, this.nok, null);
+    }
+    AppMethodBeat.o(112217);
   }
 }
 

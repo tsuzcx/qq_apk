@@ -1,59 +1,75 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
+import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.bizui.a.a;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.pluginsdk.ui.applet.g;
 import com.tencent.mm.pluginsdk.ui.applet.q.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class GameChattingRoomWebViewUI
   extends WebViewUI
 {
-  private String jumpUrl = "";
-  private int rvS = 4;
-  private int rvT = 5;
-  final q.a rvU = new GameChattingRoomWebViewUI.1(this);
-  final q.a rvV = new GameChattingRoomWebViewUI.2(this);
+  private String jumpUrl;
+  private int vmi;
+  private int vmj;
+  final q.a vmk;
+  final q.a vml;
   
-  protected final void Tp(String paramString)
+  public GameChattingRoomWebViewUI()
   {
-    y.i("MicroMsg.GameChattingRoomWebViewUI", "url = %s", new Object[] { paramString });
+    AppMethodBeat.i(8645);
+    this.jumpUrl = "";
+    this.vmi = 4;
+    this.vmj = 5;
+    this.vmk = new GameChattingRoomWebViewUI.1(this);
+    this.vml = new GameChattingRoomWebViewUI.2(this);
+    AppMethodBeat.o(8645);
+  }
+  
+  public final void ais(String paramString)
+  {
+    AppMethodBeat.i(8646);
+    ab.i("MicroMsg.GameChattingRoomWebViewUI", "url = %s", new Object[] { paramString });
     this.jumpUrl = paramString;
     String str1 = getIntent().getStringExtra("action");
-    String str2;
     if (str1 != null)
     {
       paramString = getIntent().getStringExtra("app_name");
-      if (paramString != null) {
-        break label99;
+      if (paramString == null) {}
+      String str2;
+      for (paramString = getString(2131296546);; paramString = getString(2131298498, new Object[] { paramString }))
+      {
+        str2 = getString(2131298505);
+        if (!str1.equals("action_create")) {
+          break;
+        }
+        a.a(this.mController, getString(2131298885), paramString, str2, this.vmk, this.vml);
+        AppMethodBeat.o(8646);
+        return;
       }
-      paramString = getString(R.l.app_back);
-      str2 = getString(R.l.confirm_dialog_stay_in_weixin);
-      if (!str1.equals("action_create")) {
-        break label118;
+      if (str1.equals("action_join")) {
+        a.a(this.mController, getString(2131300975), paramString, str2, this.vmk, this.vml);
       }
-      g.a(this.mController, getString(R.l.created_chatroom), paramString, str2, this.rvU, this.rvV);
     }
-    label99:
-    label118:
-    while (!str1.equals("action_join"))
-    {
-      return;
-      paramString = getString(R.l.confirm_dialog_back_app, new Object[] { paramString });
-      break;
-    }
-    g.a(this.mController, getString(R.l.joined_chatroom), paramString, str2, this.rvU, this.rvV);
+    AppMethodBeat.o(8646);
   }
   
-  protected final boolean Tq(String paramString)
+  public final boolean ait(String paramString)
   {
     return true;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.game.GameChattingRoomWebViewUI
  * JD-Core Version:    0.7.0.1
  */

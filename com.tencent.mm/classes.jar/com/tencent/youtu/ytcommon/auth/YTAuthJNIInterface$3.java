@@ -1,5 +1,6 @@
 package com.tencent.youtu.ytcommon.auth;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytcommon.tools.YTLogger;
 
 final class YTAuthJNIInterface$3
@@ -7,26 +8,36 @@ final class YTAuthJNIInterface$3
 {
   public final void onFail(int paramInt)
   {
+    AppMethodBeat.i(118066);
     try
     {
-      YTLogger.d("log_print_java", "http request error : " + paramInt);
+      YTLogger.d("log_print_java", "http request error : ".concat(String.valueOf(paramInt)));
       YTLogger.d("log_print_java", "handle: " + YTAuthJNIInterface.access$200());
       YTAuthJNIInterface.access$300(YTAuthJNIInterface.access$200(), null);
+      AppMethodBeat.o(118066);
       return;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(118066);
+    }
   }
   
   public final void onSuccess(String paramString)
   {
+    AppMethodBeat.i(118065);
     try
     {
-      YTLogger.d("log_print_java", "response: " + paramString);
+      YTLogger.d("log_print_java", "response: ".concat(String.valueOf(paramString)));
       YTLogger.d("log_print_java", "handle: " + YTAuthJNIInterface.access$200());
       YTAuthJNIInterface.access$300(YTAuthJNIInterface.access$200(), paramString);
+      AppMethodBeat.o(118065);
       return;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(118065);
+    }
   }
 }
 

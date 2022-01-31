@@ -3,9 +3,8 @@ package com.tencent.mm.plugin.freewifi.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class FreeWifiPcUI$3
   implements View.OnClickListener
@@ -14,11 +13,13 @@ final class FreeWifiPcUI$3
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(21065);
     paramView = new Intent();
-    paramView.putExtra("rawUrl", FreeWifiPcUI.f(this.ksF));
+    paramView.putExtra("rawUrl", FreeWifiPcUI.f(this.mOu));
     paramView.putExtra("showShare", false);
     paramView.putExtra("show_bottom", false);
-    d.b(this.ksF.mController.uMN, "webview", ".ui.tools.WebViewUI", paramView);
+    d.b(this.mOu.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+    AppMethodBeat.o(21065);
   }
 }
 

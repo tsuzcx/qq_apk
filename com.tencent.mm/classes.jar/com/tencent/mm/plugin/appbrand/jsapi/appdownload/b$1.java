@@ -1,24 +1,27 @@
 package com.tencent.mm.plugin.appbrand.jsapi.appdownload;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent.c;
-import com.tencent.mm.plugin.appbrand.jsapi.l;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.r;
 import org.json.JSONObject;
 
 final class b$1
   implements MMToClientEvent.c
 {
-  b$1(b paramb, o paramo) {}
+  b$1(b paramb, r paramr) {}
   
-  public final void aG(Object paramObject)
+  public final void aZ(Object paramObject)
   {
+    AppMethodBeat.i(143270);
     if ((paramObject instanceof AppbrandDownloadState))
     {
       paramObject = (AppbrandDownloadState)paramObject;
-      if (this.gcp != null) {
-        this.ghN.d(this.gcp).tL(paramObject.ahT().toString()).dispatch();
+      if (this.bAW != null) {
+        this.hAT.i(this.bAW).BM(paramObject.aBI().toString()).aBz();
       }
     }
+    AppMethodBeat.o(143270);
   }
 }
 

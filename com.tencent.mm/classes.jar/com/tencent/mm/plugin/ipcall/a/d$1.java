@@ -1,42 +1,46 @@
 package com.tencent.mm.plugin.ipcall.a;
 
-import com.tencent.mm.az.n;
-import com.tencent.mm.az.r;
-import com.tencent.mm.h.a.co;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ba.n;
+import com.tencent.mm.ba.r;
+import com.tencent.mm.g.a.cr;
 import com.tencent.mm.m.g;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import java.io.File;
 import java.util.ArrayList;
 
 final class d$1
-  extends com.tencent.mm.sdk.b.c<co>
+  extends com.tencent.mm.sdk.b.c<cr>
 {
   d$1(d paramd)
   {
-    this.udX = co.class.getName().hashCode();
+    AppMethodBeat.i(21725);
+    this.__eventId = cr.class.getName().hashCode();
+    AppMethodBeat.o(21725);
   }
   
-  private boolean a(co paramco)
+  private boolean a(cr paramcr)
   {
+    AppMethodBeat.i(21726);
     Object localObject;
-    if ((paramco instanceof co))
+    if ((paramcr instanceof cr))
     {
-      y.d("MicroMsg.IPCallCoutryConfigUpdater", "detect DynamicConfigUpdatedEvent");
-      au.Hx();
-      int i = ((Integer)com.tencent.mm.model.c.Dz().get(ac.a.upZ, Integer.valueOf(0))).intValue();
-      int j = g.AA().getInt("WeChatOutCountryCodeRestrictionPackageID", 0);
-      y.d("MicroMsg.IPCallCoutryConfigUpdater", "oldConfig: %d, newConfig: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      ab.d("MicroMsg.IPCallCoutryConfigUpdater", "detect DynamicConfigUpdatedEvent");
+      aw.aaz();
+      int i = ((Integer)com.tencent.mm.model.c.Ru().get(ac.a.yzZ, Integer.valueOf(0))).intValue();
+      int j = g.Nq().getInt("WeChatOutCountryCodeRestrictionPackageID", 0);
+      ab.d("MicroMsg.IPCallCoutryConfigUpdater", "oldConfig: %d, newConfig: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       if (i != j)
       {
-        au.Hx();
-        com.tencent.mm.model.c.Dz().c(ac.a.upZ, Integer.valueOf(j));
-        r.PK().iZ(26);
-        paramco = c.bbS();
-        localObject = com.tencent.mm.compatible.util.e.dOP + "ipcallCountryCodeConfig.cfg";
-        y.d("MicroMsg.IPCallCountryCodeConfig", "deleteRestrictionCountryConfigIfExist, path: %s", new Object[] { localObject });
+        aw.aaz();
+        com.tencent.mm.model.c.Ru().set(ac.a.yzZ, Integer.valueOf(j));
+        r.aiP().lR(26);
+        paramcr = c.bIZ();
+        localObject = com.tencent.mm.compatible.util.e.eQv + "ipcallCountryCodeConfig.cfg";
+        ab.d("MicroMsg.IPCallCountryCodeConfig", "deleteRestrictionCountryConfigIfExist, path: %s", new Object[] { localObject });
       }
     }
     try
@@ -45,23 +49,24 @@ final class d$1
       if (((File)localObject).exists()) {
         ((File)localObject).delete();
       }
-      paramco.dBn = false;
-      paramco.loA.clear();
+      paramcr.bRB = false;
+      paramcr.nLW.clear();
     }
-    catch (Exception paramco)
+    catch (Exception paramcr)
     {
       for (;;)
       {
-        y.e("MicroMsg.IPCallCountryCodeConfig", "deleteRestrictionCountryConfigIfExist, error: %s", new Object[] { paramco.getMessage() });
+        ab.e("MicroMsg.IPCallCountryCodeConfig", "deleteRestrictionCountryConfigIfExist, error: %s", new Object[] { paramcr.getMessage() });
       }
     }
-    this.loD.gP(true);
+    this.nLZ.iy(true);
+    AppMethodBeat.o(21726);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.d.1
  * JD-Core Version:    0.7.0.1
  */

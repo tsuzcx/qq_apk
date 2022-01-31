@@ -1,36 +1,39 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.plugin.appbrand.g.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v.b;
+import com.tencent.mm.plugin.appbrand.e.c;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class JsApiSetBackgroundAudioState$1
-  extends g.b
+  extends e.c
 {
-  JsApiSetBackgroundAudioState$1(JsApiSetBackgroundAudioState paramJsApiSetBackgroundAudioState, u.b paramb, c paramc, int paramInt) {}
+  JsApiSetBackgroundAudioState$1(JsApiSetBackgroundAudioState paramJsApiSetBackgroundAudioState, v.b paramb, c paramc, int paramInt) {}
   
   public final void onDestroy()
   {
-    String str = this.giE.getString("appId", "");
-    y.i("MicroMsg.Music.JsApiSetBackgroundAudioState", "onDestroy, appId:%s", new Object[] { str });
+    AppMethodBeat.i(137769);
+    String str = this.hBX.getString("appId", "");
+    ab.i("MicroMsg.Music.JsApiSetBackgroundAudioState", "onDestroy, appId:%s", new Object[] { str });
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("operationType", "stop");
-      label44:
-      JsApiSetBackgroundAudioState.SetBackgroundAudioStateTask localSetBackgroundAudioStateTask = new JsApiSetBackgroundAudioState.SetBackgroundAudioStateTask(this.gjj, this.ggH, this.dIS);
-      localSetBackgroundAudioStateTask.giD = localJSONObject.toString();
+      label49:
+      JsApiSetBackgroundAudioState.SetBackgroundAudioStateTask localSetBackgroundAudioStateTask = new JsApiSetBackgroundAudioState.SetBackgroundAudioStateTask(this.hCD, this.hxW, this.bAX);
+      localSetBackgroundAudioStateTask.hBW = localJSONObject.toString();
       localSetBackgroundAudioStateTask.appId = str;
       AppBrandMainProcessService.b(localSetBackgroundAudioStateTask);
+      AppMethodBeat.o(137769);
       return;
     }
     catch (JSONException localJSONException)
     {
-      break label44;
+      break label49;
     }
   }
 }

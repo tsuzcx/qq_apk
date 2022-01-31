@@ -1,7 +1,10 @@
 package com.tencent.mm.plugin.setting.model;
 
 import android.database.Cursor;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +17,8 @@ final class l$3
   
   public final void b(com.tencent.mm.plugin.fts.a.a.j paramj)
   {
-    paramj = paramj.kxh;
+    AppMethodBeat.i(126869);
+    paramj = paramj.mSW;
     Object localObject;
     if (paramj != null)
     {
@@ -22,27 +26,27 @@ final class l$3
       while (paramj.hasNext())
       {
         localObject = (com.tencent.mm.plugin.fts.a.a.l)paramj.next();
-        this.nRc.remove(((com.tencent.mm.plugin.fts.a.a.l)localObject).kwg);
-        this.nRa.nQU.add(((com.tencent.mm.plugin.fts.a.a.l)localObject).kwg);
+        this.qEZ.remove(((com.tencent.mm.plugin.fts.a.a.l)localObject).mRV);
+        this.qEX.qER.add(((com.tencent.mm.plugin.fts.a.a.l)localObject).mRV);
       }
     }
-    paramj = this.nRc.iterator();
+    paramj = this.qEZ.iterator();
     while (paramj.hasNext())
     {
       localObject = (String)paramj.next();
-      int i = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().q((String)localObject, this.nRd, System.currentTimeMillis());
+      int i = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().y((String)localObject, this.qFa, System.currentTimeMillis());
       if (i > 0)
       {
-        y.i("MicroMsg.UnfamiliarContactEngine", "[getHalfYearNotChatInfo] talker:%s voipCount:%s", new Object[] { localObject, Integer.valueOf(i) });
+        ab.i("MicroMsg.UnfamiliarContactEngine", "[getHalfYearNotChatInfo] talker:%s voipCount:%s", new Object[] { localObject, Integer.valueOf(i) });
       }
       else
       {
-        Cursor localCursor1 = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().a((String)localObject, this.nRd, System.currentTimeMillis(), true);
+        Cursor localCursor1 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().a((String)localObject, this.qFa, System.currentTimeMillis(), true);
         if (localCursor1.getCount() > 0)
         {
-          Cursor localCursor2 = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().a((String)localObject, this.nRd, System.currentTimeMillis(), false);
+          Cursor localCursor2 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().a((String)localObject, this.qFa, System.currentTimeMillis(), false);
           if (localCursor2.getCount() <= 0) {
-            this.nRa.nQU.add(localObject);
+            this.qEX.qER.add(localObject);
           }
           localCursor2.close();
         }
@@ -50,17 +54,18 @@ final class l$3
         {
           localCursor1.close();
           break;
-          this.nRa.nQU.add(localObject);
+          this.qEX.qER.add(localObject);
         }
       }
     }
-    y.i("MicroMsg.UnfamiliarContactEngine", "[getHalfYearNotChatInfo] query:%s cost:%sms", new Object[] { Long.valueOf(this.nRd), Long.valueOf(System.currentTimeMillis() - this.dhV) });
-    this.nRa.nQS.countDown();
+    ab.i("MicroMsg.UnfamiliarContactEngine", "[getHalfYearNotChatInfo] query:%s cost:%sms", new Object[] { Long.valueOf(this.qFa), Long.valueOf(System.currentTimeMillis() - this.dZo) });
+    this.qEX.qEP.countDown();
+    AppMethodBeat.o(126869);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.l.3
  * JD-Core Version:    0.7.0.1
  */

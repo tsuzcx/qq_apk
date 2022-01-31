@@ -1,14 +1,14 @@
 package com.tencent.mm.openim;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.openim.d.b;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.openim.e.b;
 
 final class PluginOpenIM$4
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return b.dXp;
+    return b.SQL_CREATE;
   }
 }
 

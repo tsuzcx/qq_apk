@@ -1,51 +1,44 @@
 package com.tencent.matrix.d;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-import java.util.HashSet;
-import java.util.Iterator;
+import android.content.Context;
 
 public class a
+  implements c
 {
-  private static volatile HandlerThread bsP;
-  private static volatile Handler bsQ;
-  private static HashSet<HandlerThread> bsR = new HashSet();
+  private final Context context;
   
-  public static HandlerThread bA(String paramString)
+  public a(Context paramContext)
   {
-    Object localObject = bsR.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (!((HandlerThread)((Iterator)localObject).next()).isAlive())
-      {
-        ((Iterator)localObject).remove();
-        b.w("Matrix.HandlerThread", "warning: remove dead handler thread with name %s", new Object[] { paramString });
-      }
-    }
-    localObject = new HandlerThread(paramString);
-    ((HandlerThread)localObject).start();
-    bsR.add(localObject);
-    b.w("Matrix.HandlerThread", "warning: create new handler thread with name %s, alive thread size:%d", new Object[] { paramString, Integer.valueOf(bsR.size()) });
-    return localObject;
+    this.context = paramContext;
   }
   
-  public static HandlerThread rt()
+  public void a(com.tencent.matrix.e.b paramb)
   {
-    if (bsP != null) {
-      return bsP;
+    Object localObject = paramb;
+    if (paramb == null) {
+      localObject = "";
     }
-    try
-    {
-      if (bsP == null)
-      {
-        HandlerThread localHandlerThread = new HandlerThread("default_matrix_thread");
-        bsP = localHandlerThread;
-        localHandlerThread.start();
-        bsQ = new Handler(bsP.getLooper());
-        b.w("Matrix.HandlerThread", "create default handler thread, we should use these thread normal", new Object[0]);
-      }
-      return bsP;
-    }
-    finally {}
+    com.tencent.matrix.g.c.i("Matrix.DefaultPluginListener", "report issue content: %s", new Object[] { localObject });
+  }
+  
+  public final void b(b paramb)
+  {
+    com.tencent.matrix.g.c.i("Matrix.DefaultPluginListener", "%s plugin is inited", new Object[] { paramb.getTag() });
+  }
+  
+  public final void c(b paramb)
+  {
+    com.tencent.matrix.g.c.i("Matrix.DefaultPluginListener", "%s plugin is started", new Object[] { paramb.getTag() });
+  }
+  
+  public final void d(b paramb)
+  {
+    com.tencent.matrix.g.c.i("Matrix.DefaultPluginListener", "%s plugin is stopped", new Object[] { paramb.getTag() });
+  }
+  
+  public final void e(b paramb)
+  {
+    com.tencent.matrix.g.c.i("Matrix.DefaultPluginListener", "%s plugin is destroyed", new Object[] { paramb.getTag() });
   }
 }
 

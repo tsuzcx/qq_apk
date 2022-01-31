@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.danmu;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Deque;
 import java.util.List;
 
@@ -11,20 +12,22 @@ public final class DanmuView$5
   
   public final void run()
   {
-    synchronized (DanmuView.b(this.gFJ))
+    AppMethodBeat.i(126603);
+    synchronized (DanmuView.b(this.ieM))
     {
-      int i = DanmuView.a(this.gFJ).size() - 1;
+      int i = DanmuView.a(this.ieM).size() - 1;
       while (i >= 0)
       {
-        d locald = (d)DanmuView.a(this.gFJ).get(i);
-        if (locald.akZ() < this.gFM) {
+        d locald = (d)DanmuView.a(this.ieM).get(i);
+        if (locald.aFK() < this.ieP) {
           break;
         }
-        y.v("MicroMsg.DanmuView", "seekToPlayTime addBack i=%d showTime=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(locald.akZ()) });
-        DanmuView.b(this.gFJ).addFirst(locald);
+        ab.v("MicroMsg.DanmuView", "seekToPlayTime addBack i=%d showTime=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(locald.aFK()) });
+        DanmuView.b(this.ieM).addFirst(locald);
         i -= 1;
       }
-      DanmuView.c(this.gFJ);
+      DanmuView.c(this.ieM);
+      AppMethodBeat.o(126603);
       return;
     }
   }

@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.account.ui;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class RegSetInfoUI$28
   implements TextWatcher
@@ -12,19 +13,22 @@ final class RegSetInfoUI$28
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = RegSetInfoUI.b(this.fso).getText().toString().trim();
-    if ((paramEditable != null) && (paramEditable.length() > 16)) {
-      RegSetInfoUI.b(this.fso).setText(paramEditable.substring(0, 16));
-    }
-    do
+    AppMethodBeat.i(125533);
+    paramEditable = RegSetInfoUI.b(this.gJQ).getText().toString().trim();
+    if ((paramEditable != null) && (paramEditable.length() > 16))
     {
+      RegSetInfoUI.b(this.gJQ).setText(paramEditable.substring(0, 16));
+      AppMethodBeat.o(125533);
       return;
-      if (!RegSetInfoUI.m(this.fso).crl()) {
-        RegSetInfoUI.m(this.fso).stopTimer();
-      }
-      RegSetInfoUI.n(this.fso);
-    } while (RegSetInfoUI.o(this.fso));
-    RegSetInfoUI.a(this.fso).setText(paramEditable);
+    }
+    if (!RegSetInfoUI.m(this.gJQ).dtj()) {
+      RegSetInfoUI.m(this.gJQ).stopTimer();
+    }
+    RegSetInfoUI.n(this.gJQ);
+    if (!RegSetInfoUI.o(this.gJQ)) {
+      RegSetInfoUI.a(this.gJQ).setText(paramEditable);
+    }
+    AppMethodBeat.o(125533);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -33,7 +37,7 @@ final class RegSetInfoUI$28
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegSetInfoUI.28
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.monitor;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class b$12
-  implements am.a
+  implements ap.a
 {
   b$12(b paramb) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    b.e(this.msl);
+    AppMethodBeat.i(84530);
+    b.e(this.oRW);
+    AppMethodBeat.o(84530);
     return true;
   }
 }

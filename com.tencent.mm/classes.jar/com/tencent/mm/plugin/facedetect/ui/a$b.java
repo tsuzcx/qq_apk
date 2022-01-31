@@ -2,17 +2,18 @@ package com.tencent.mm.plugin.facedetect.ui;
 
 import android.os.CountDownTimer;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 
 public final class a$b
   extends CountDownTimer
 {
-  WeakReference<TextView> jQH = null;
-  WeakReference<TextView> jQI = null;
-  String jQJ = null;
-  int jQK = 0;
-  int jQL = 0;
+  int eSO = 0;
+  WeakReference<TextView> mlc = null;
+  WeakReference<TextView> mld = null;
+  String mle = null;
+  int mlf = 0;
   
   public a$b()
   {
@@ -23,25 +24,27 @@ public final class a$b
   
   public final void onTick(long paramLong)
   {
-    if ((this.jQH != null) && (this.jQH.get() != null) && (this.jQI != null) && (this.jQI.get() != null))
+    AppMethodBeat.i(385);
+    if ((this.mlc != null) && (this.mlc.get() != null) && (this.mld != null) && (this.mld.get() != null))
     {
-      TextView localTextView1 = (TextView)this.jQH.get();
-      TextView localTextView2 = (TextView)this.jQI.get();
-      localTextView1.setText(this.jQJ.substring(0, this.jQK));
-      localTextView2.setText(this.jQJ.substring(this.jQK, this.jQK + this.jQL % (this.jQJ.length() - this.jQK + 1)));
+      TextView localTextView1 = (TextView)this.mlc.get();
+      TextView localTextView2 = (TextView)this.mld.get();
+      localTextView1.setText(this.mle.substring(0, this.mlf));
+      localTextView2.setText(this.mle.substring(this.mlf, this.mlf + this.eSO % (this.mle.length() - this.mlf + 1)));
     }
     for (;;)
     {
-      this.jQL += 1;
+      this.eSO += 1;
+      AppMethodBeat.o(385);
       return;
-      y.w("MicroMsg.FaceDetectJumper", "hy: tv ref released");
+      ab.w("MicroMsg.FaceDetectJumper", "hy: tv ref released");
       cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

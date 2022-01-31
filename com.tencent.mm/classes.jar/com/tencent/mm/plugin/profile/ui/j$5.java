@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.p;
 import java.util.TimerTask;
 
 final class j$5
   extends TimerTask
 {
-  j$5(p paramp, ah paramah) {}
+  j$5(p paramp, ak paramak) {}
   
   public final void run()
   {
-    if (this.hZQ != null)
+    AppMethodBeat.i(23552);
+    if (this.oBu != null)
     {
-      this.hZQ.dismiss();
-      this.hZR.sendEmptyMessage(0);
+      this.oBu.dismiss();
+      this.mFP.sendEmptyMessage(0);
     }
+    AppMethodBeat.o(23552);
   }
 }
 

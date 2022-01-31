@@ -1,107 +1,142 @@
 package com.tencent.mm.ax;
 
 import android.content.Context;
-import com.tencent.mm.plugin.chatroom.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.bi;
-import java.util.LinkedList;
-import java.util.Map;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.protocal.protobuf.ckh;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.bm;
+import com.tencent.mm.storage.bn;
 
 public final class d
-  extends a
+  implements f
 {
-  public String bJY;
-  public String evE;
-  public LinkedList<String> evF = new LinkedList();
-  public int evH;
-  public LinkedList<String> evI = new LinkedList();
-  public LinkedList<String> evJ = new LinkedList();
-  public String evK = null;
-  public String evL = null;
-  public String evM = null;
-  public String text = null;
+  public d.a fLi = null;
   
-  public d(Map<String, String> paramMap, bi parambi)
+  public static void b(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    super(paramMap, parambi);
+    AppMethodBeat.i(78426);
+    bm localbm = com.tencent.mm.plugin.r.a.bWT().Ny(paramInt1);
+    if (localbm == null)
+    {
+      localbm = new bm();
+      localbm.field_tipId = paramInt1;
+      localbm.field_tipVersion = 1;
+      localbm.field_tipkey = paramString1;
+      localbm.field_tipType = paramInt2;
+      if (localbm.field_tipsShowInfo == null) {
+        localbm.field_tipsShowInfo = new ckh();
+      }
+      localbm.field_tipsShowInfo.path = paramString2;
+      com.tencent.mm.plugin.r.a.bWT().f(localbm);
+      if ((paramInt2 == b.fKQ) && ((!localbm.field_isExit) || (1 != localbm.field_tipVersion)))
+      {
+        paramString1 = new a(paramInt1, paramString1);
+        g.Rc().a(paramString1, 0);
+        ab.d("MicroMsg.NewTipsManager", "dancy doScene NetScenePushNewTips！！");
+        AppMethodBeat.o(78426);
+      }
+    }
+    else
+    {
+      if ((paramInt2 == b.fKQ) && ((!localbm.field_isExit) || (1 != localbm.field_tipVersion)))
+      {
+        a locala = new a(paramInt1, paramString1);
+        g.Rc().a(locala, 0);
+        ab.d("MicroMsg.NewTipsManager", "dancy doScene NetScenePushNewTips！！");
+      }
+      if (((paramInt2 == b.fKQ) && (1 != localbm.field_tipVersion)) || ((paramInt2 == b.fKR) && (localbm.field_tipVersion <= 0)))
+      {
+        localbm.field_tipId = paramInt1;
+        localbm.field_tipVersion = 1;
+        localbm.field_tipkey = paramString1;
+        localbm.field_tipType = paramInt2;
+        localbm.field_isExit = false;
+        if (localbm.field_tipsShowInfo == null) {
+          localbm.field_tipsShowInfo = new ckh();
+        }
+        localbm.field_tipsShowInfo.path = paramString2;
+        com.tencent.mm.plugin.r.a.bWT().a(localbm, new String[0]);
+      }
+    }
+    AppMethodBeat.o(78426);
   }
   
-  protected final boolean Ib()
+  public static void lP(int paramInt)
   {
-    int i = 0;
-    if (this.values == null)
+    AppMethodBeat.i(78427);
+    bm localbm = com.tencent.mm.plugin.r.a.bWT().Ny(paramInt);
+    if (localbm == null)
     {
-      y.e("MicroMsg.ChatroomAccessVerifyApplicationNewXmlMsg", "[parseXml] values == null ");
-      return false;
+      ab.e("MicroMsg.NewTipsManager", "newTipsInfo is null , makeRead failed!!");
+      AppMethodBeat.o(78427);
+      return;
     }
-    y.i("MicroMsg.ChatroomAccessVerifyApplicationNewXmlMsg", "[parseXml] type:%s, values size:%s", new Object[] { bk.pm(this.TYPE), Integer.valueOf(this.values.size()) });
-    if ((!bk.bl(this.TYPE)) && (this.TYPE.equalsIgnoreCase("NewXmlChatRoomAccessVerifyApplication")))
+    ab.i("MicroMsg.NewTipsManager", "dancy new tips tipsId:%s, make read: %s", new Object[] { Integer.valueOf(paramInt), Boolean.TRUE });
+    if (localbm.field_tipType == b.fKQ)
     {
-      this.evE = ((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.RoomName"));
-      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.text")) {
-        this.evM = bk.pm((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.text"));
-      }
-      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.inviterusername")) {
-        this.evK = bk.pm((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.inviterusername"));
-      }
-      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.invitationreason")) {
-        this.evL = bk.pm((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.invitationreason"));
-      }
-      if (this.values.containsKey(evw)) {
-        this.text = bk.pm((String)this.values.get(evw));
-      }
-      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.ticket")) {
-        this.bJY = ((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.ticket"));
-      }
-      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.memberlist.memberlistsize")) {
-        this.evH = bk.getInt((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.memberlist.memberlistsize"), 0);
-      }
-      if (!this.bWO.cvF())
-      {
-        this.evB.add(Integer.valueOf(this.text.length()));
-        this.evA.add(this.evM);
-        this.evy = (this.text + this.evM);
-        this.evC.add(Integer.valueOf(this.evy.length()));
-        if (i >= this.evH) {
-          break label755;
-        }
-        if (i != 0) {
-          break label620;
-        }
-        this.evF.add(bk.pm((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.memberlist.member.username")));
-        this.evI.add(bk.pm((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.memberlist.member.nickname")));
-        this.evJ.add(bk.pm((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.memberlist.member.headimgurl")));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.evA.clear();
-        this.evB.clear();
-        this.evC.clear();
-        this.evy = (this.text + " ");
-        this.evB.add(Integer.valueOf(this.evy.length()));
-        this.evA.add(ae.getContext().getString(b.a.has_approve_info));
-        this.evy += ae.getContext().getString(b.a.has_approve_info);
-        this.evC.add(Integer.valueOf(this.evy.length()));
-        break;
-        label620:
-        this.evF.add(bk.pm((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.memberlist.member" + i + ".username")));
-        this.evI.add(bk.pm((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.memberlist.member" + i + ".nickname")));
-        this.evJ.add(bk.pm((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApplication.link.memberlist.member" + i + ".headimgurl")));
-      }
-      label755:
-      return true;
+      localbm.field_hadRead = true;
+      com.tencent.mm.plugin.r.a.bWT().a(localbm, new String[0]);
     }
-    y.e("MicroMsg.ChatroomAccessVerifyApplicationNewXmlMsg", "[parseXml] type err :%s", new Object[] { bk.pm(this.TYPE) });
-    return false;
+    if (localbm.field_tipType == b.fKR)
+    {
+      localbm.field_hadRead = true;
+      com.tencent.mm.plugin.r.a.bWT().a(localbm, new String[0]);
+    }
+    long l = bo.aoy();
+    ah.getContext().getSharedPreferences(ah.dsP() + "_newtips_report", 0).edit().putLong("newtips_makeread_time", l).commit();
+    AppMethodBeat.o(78427);
+  }
+  
+  public static void w(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(78428);
+    bm localbm = com.tencent.mm.plugin.r.a.bWT().Ny(paramInt);
+    if (localbm == null)
+    {
+      ab.e("MicroMsg.NewTipsManager", "setPageStayTime fail! newTipsInfo is null!!");
+      AppMethodBeat.o(78428);
+      return;
+    }
+    localbm.field_pagestaytime = paramLong;
+    com.tencent.mm.plugin.r.a.bWT().a(localbm, new String[0]);
+    AppMethodBeat.o(78428);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(78425);
+    ab.i("MicroMsg.NewTipsManager", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (paramm.getType() == 597)
+    {
+      if ((paramInt1 != 0) || (paramInt2 != 0))
+      {
+        AppMethodBeat.o(78425);
+        return;
+      }
+      boolean bool = ((a)paramm).fKO;
+      paramInt1 = ((a)paramm).fKP;
+      paramString = com.tencent.mm.plugin.r.a.bWT().Ny(paramInt1);
+      if (paramString != null)
+      {
+        paramString.field_isReject = bool;
+        ab.i("MicroMsg.NewTipsManager", "Newtips push is reject: %s", new Object[] { Boolean.valueOf(bool) });
+        com.tencent.mm.plugin.r.a.bWT().a(paramString, new String[0]);
+      }
+    }
+    AppMethodBeat.o(78425);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ax.d
  * JD-Core Version:    0.7.0.1
  */

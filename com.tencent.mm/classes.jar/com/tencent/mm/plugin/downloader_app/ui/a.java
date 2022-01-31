@@ -11,73 +11,91 @@ import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.s;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.downloader_app.b.b;
-import com.tencent.mm.plugin.downloader_app.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
   extends RecyclerView.h
 {
-  private final Drawable adT;
+  private final Drawable acK;
+  private final Drawable lcs;
   private int mSize;
   
   public a(Resources paramResources)
   {
-    this.adT = new ColorDrawable(paramResources.getColor(b.b.divided_color));
-    this.mSize = paramResources.getDimensionPixelSize(b.c.item_divided_size);
+    AppMethodBeat.i(136257);
+    this.acK = new ColorDrawable(paramResources.getColor(2131689965));
+    this.mSize = paramResources.getDimensionPixelSize(2131428471);
+    this.lcs = new ColorDrawable(-1);
+    AppMethodBeat.o(136257);
   }
   
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
+    AppMethodBeat.i(136258);
     int j = paramRecyclerView.getPaddingLeft();
     int k = paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight();
     int m = paramRecyclerView.getChildCount();
     int i = 0;
-    if (i < m - 1)
+    if (i < m)
     {
-      View localView = paramRecyclerView.getChildAt(i);
-      Object localObject1 = ((ViewGroup)localView).getChildAt(0);
-      if ((localView.getVisibility() == 8) || (((View)localObject1).getVisibility() == 8)) {
-        super.a(paramCanvas, paramRecyclerView, params);
+      View localView2 = paramRecyclerView.getChildAt(i);
+      View localView1 = ((ViewGroup)localView2).getChildAt(0);
+      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)localView2.getLayoutParams();
+      int n = localView2.getBottom() + localLayoutParams.bottomMargin;
+      int i1 = n + this.mSize;
+      if ((localView2.getVisibility() == 8) || (localView1.getVisibility() == 8)) {
+        if ((localView1 instanceof TaskItemView))
+        {
+          this.lcs.setBounds(j, n, k, i1);
+          this.lcs.draw(paramCanvas);
+        }
       }
       for (;;)
       {
         i += 1;
         break;
-        int n;
-        int i1;
-        if (((localObject1 instanceof TaskManagerHeaderView)) || ((localObject1 instanceof TaskHeaderView)))
+        if (((localView1 instanceof TaskManagerHeaderView)) || ((localView1 instanceof TaskHeaderView)) || ((localView1 instanceof ExpandView)))
         {
-          localObject1 = (RecyclerView.LayoutParams)localView.getLayoutParams();
-          n = localView.getBottom();
-          n = ((RecyclerView.LayoutParams)localObject1).bottomMargin + n;
-          i1 = this.mSize;
-          this.adT.setBounds(j, n, k, i1 + n);
-          this.adT.draw(paramCanvas);
+          this.acK.setBounds(j, n, k, i1);
+          this.acK.draw(paramCanvas);
         }
-        else if ((localObject1 instanceof TaskItemView))
+        else
         {
-          Object localObject2;
-          if (i < m - 2)
+          if ((localView1 instanceof TaskItemView))
           {
-            localObject2 = paramRecyclerView.getChildAt(i + 1);
-            if ((localObject2 != null) && (!(((ViewGroup)localObject2).getChildAt(0) instanceof TaskItemView))) {}
+            localView2 = paramRecyclerView.getChildAt(i + 1);
+            if (localView2 != null)
+            {
+              localView2 = ((ViewGroup)localView2).getChildAt(0);
+              if ((localView2 instanceof TaskHeaderView)) {
+                break label352;
+              }
+              if (((localView2 instanceof ExpandView)) && (localView2.getVisibility() == 8))
+              {
+                this.acK.setBounds(j, n, k, i1);
+                this.acK.draw(paramCanvas);
+                continue;
+              }
+            }
+            this.acK.setBounds(((TaskItemView)localView1).getNamePaddingLeft() + j, n, k, i1);
+            this.acK.draw(paramCanvas);
+            this.lcs.setBounds(j, n, ((TaskItemView)localView1).getNamePaddingLeft() + j, i1);
+            this.lcs.draw(paramCanvas);
+            continue;
           }
-          else
-          {
-            localObject2 = (RecyclerView.LayoutParams)localView.getLayoutParams();
-            n = localView.getBottom() + ((RecyclerView.LayoutParams)localObject2).bottomMargin;
-            i1 = this.mSize;
-            this.adT.setBounds(((TaskItemView)localObject1).getNamePaddingLeft() + j, n, k, n + i1);
-            this.adT.draw(paramCanvas);
-          }
+          label352:
+          super.a(paramCanvas, paramRecyclerView, params);
         }
       }
     }
+    AppMethodBeat.o(136258);
   }
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
+    AppMethodBeat.i(136259);
     paramRect.set(0, 0, 0, this.mSize);
+    AppMethodBeat.o(136259);
   }
 }
 

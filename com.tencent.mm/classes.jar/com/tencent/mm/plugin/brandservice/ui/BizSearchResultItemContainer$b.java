@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.brandservice.ui;
 
 public abstract interface BizSearchResultItemContainer$b
 {
-  public abstract void axA();
+  public abstract void aWy();
   
-  public abstract void axB();
+  public abstract void aWz();
 }
 
 

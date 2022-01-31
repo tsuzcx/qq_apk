@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.openSDK.param.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class IPCBaseParam
   extends JceStruct
@@ -32,6 +33,7 @@ public final class IPCBaseParam
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(75987);
     this.hostAppId = paramJceInputStream.readString(0, true);
     this.taskAppId = paramJceInputStream.readString(1, false);
     this.taskVersion = paramJceInputStream.readString(2, true);
@@ -40,10 +42,12 @@ public final class IPCBaseParam
     this.uinType = paramJceInputStream.readString(5, false);
     this.via = paramJceInputStream.readString(6, false);
     this.channelId = paramJceInputStream.readString(7, false);
+    AppMethodBeat.o(75987);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(75986);
     paramJceOutputStream.write(this.hostAppId, 0);
     if (this.taskAppId != null) {
       paramJceOutputStream.write(this.taskAppId, 1);
@@ -62,11 +66,12 @@ public final class IPCBaseParam
     if (this.channelId != null) {
       paramJceOutputStream.write(this.channelId, 7);
     }
+    AppMethodBeat.o(75986);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.IPCBaseParam
  * JD-Core Version:    0.7.0.1
  */

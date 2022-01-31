@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$lc
+public final class c$lc
   extends c.g
 {
-  c$lc()
+  public c$lc()
   {
-    super("openRealnameAuth", "openRealnameAuth", 314, true);
+    super("uploadVideo", "uploadVideo", 192, true);
   }
 }
 

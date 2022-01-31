@@ -4,35 +4,34 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.e.a.a;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import java.io.Serializable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class g
-  extends ax<com.tencent.mm.plugin.webview.luggage.e>
+  extends bi<com.tencent.mm.plugin.webview.luggage.e>
 {
-  public final void a(Context paramContext, String paramString, aw.a parama) {}
+  public final void a(Context paramContext, String paramString, bh.a parama) {}
   
-  public final int aGj()
+  public final void b(a<com.tencent.mm.plugin.webview.luggage.e>.a parama)
   {
-    return 0;
-  }
-  
-  public final void b(com.tencent.luggage.e.a<com.tencent.mm.plugin.webview.luggage.e>.a parama)
-  {
-    y.i("MicroMsg.JsApiChooseImage", "invoke");
-    Object localObject3 = parama.bih.bhk;
+    AppMethodBeat.i(6287);
+    ab.i("MicroMsg.JsApiChooseImage", "invoke");
+    Object localObject3 = parama.byF.bxK;
     Object localObject1 = ((JSONObject)localObject3).optJSONArray("sourceType");
     int k;
     int i;
     int j;
     if (localObject1 != null)
     {
-      y.i("MicroMsg.JsApiChooseImage", "sourceType = " + ((JSONArray)localObject1).toString());
+      ab.i("MicroMsg.JsApiChooseImage", "sourceType = " + ((JSONArray)localObject1).toString());
       k = 0;
       i = 0;
       if (k < ((JSONArray)localObject1).length())
@@ -57,20 +56,21 @@ public class g
       if (i == 0) {}
       for (j = 3;; j = i)
       {
-        y.i("MicroMsg.JsApiChooseImage", "real scene = %d", new Object[] { Integer.valueOf(j) });
+        ab.i("MicroMsg.JsApiChooseImage", "real scene = %d", new Object[] { Integer.valueOf(j) });
         if ((j == 2) || (j == 3))
         {
-          boolean bool = com.tencent.mm.pluginsdk.permission.a.a((Activity)((com.tencent.mm.plugin.webview.luggage.e)parama.big).mContext, "android.permission.CAMERA", 113, "", "");
-          y.d("MicroMsg.JsApiChooseImage", " checkPermission checkcamera[%b]", new Object[] { Boolean.valueOf(bool) });
+          boolean bool = b.a((Activity)((com.tencent.mm.plugin.webview.luggage.e)parama.byE).mContext, "android.permission.CAMERA", 113, "", "");
+          ab.d("MicroMsg.JsApiChooseImage", " checkPermission checkcamera[%b]", new Object[] { Boolean.valueOf(bool) });
           if (!bool)
           {
             parama.a("android_permission_denied", null);
+            AppMethodBeat.o(6287);
             return;
           }
         }
         k = ((JSONObject)localObject3).optInt("count", 0);
-        localObject1 = Boolean.valueOf(false);
-        Object localObject2 = Boolean.valueOf(false);
+        localObject1 = Boolean.FALSE;
+        Object localObject2 = Boolean.FALSE;
         JSONArray localJSONArray = ((JSONObject)localObject3).optJSONArray("sizeType");
         localObject3 = localObject2;
         Object localObject4 = localObject1;
@@ -82,7 +82,7 @@ public class g
           if (i < localJSONArray.length())
           {
             if (localJSONArray.optString(i).equals("original")) {
-              localObject3 = Boolean.valueOf(true);
+              localObject3 = Boolean.TRUE;
             }
             for (;;)
             {
@@ -92,7 +92,7 @@ public class g
               localObject3 = localObject1;
               if (localJSONArray.optString(i).equals("compressed"))
               {
-                localObject2 = Boolean.valueOf(true);
+                localObject2 = Boolean.TRUE;
                 localObject3 = localObject1;
               }
             }
@@ -101,7 +101,7 @@ public class g
         if ((localObject4.booleanValue()) && (!((Boolean)localObject3).booleanValue()))
         {
           i = 7;
-          localObject1 = Boolean.valueOf(true);
+          localObject1 = Boolean.TRUE;
         }
         for (;;)
         {
@@ -111,24 +111,30 @@ public class g
           ((Intent)localObject2).putExtra("key_pick_local_pic_query_source_type", i);
           ((Intent)localObject2).putExtra("key_pick_local_pic_send_raw", (Serializable)localObject1);
           ((Intent)localObject2).putExtra("query_media_type", 1);
-          y.i("MicroMsg.JsApiChooseImage", "doChooseImage: realScene: %d, count: %d, querySourceType: %d, sendRaw: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), localObject1 });
-          ((MMActivity)((com.tencent.mm.plugin.webview.luggage.e)parama.big).mContext).gJb = new g.1(this, parama);
-          d.a(((com.tencent.mm.plugin.webview.luggage.e)parama.big).mContext, "webview", ".ui.tools.OpenFileChooserUI", (Intent)localObject2, hashCode() & 0xFFFF, false);
+          ab.i("MicroMsg.JsApiChooseImage", "doChooseImage: realScene: %d, count: %d, querySourceType: %d, sendRaw: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), localObject1 });
+          ((MMActivity)((com.tencent.mm.plugin.webview.luggage.e)parama.byE).mContext).mmSetOnActivityResultCallback(new g.1(this, parama));
+          d.a(((com.tencent.mm.plugin.webview.luggage.e)parama.byE).mContext, "webview", ".ui.tools.OpenFileChooserUI", (Intent)localObject2, hashCode() & 0xFFFF, false);
+          AppMethodBeat.o(6287);
           return;
           if ((!localObject4.booleanValue()) && (((Boolean)localObject3).booleanValue()))
           {
             i = 7;
-            localObject1 = Boolean.valueOf(false);
+            localObject1 = Boolean.FALSE;
           }
           else
           {
             i = 8;
-            localObject1 = Boolean.valueOf(false);
+            localObject1 = Boolean.FALSE;
           }
         }
       }
       i = 0;
     }
+  }
+  
+  public final int bjL()
+  {
+    return 0;
   }
   
   public final String name()

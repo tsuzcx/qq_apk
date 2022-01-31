@@ -2,6 +2,7 @@ package com.tencent.ttpic.filter;
 
 import android.annotation.TargetApi;
 import android.opengl.GLES30;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.gles.GlUtil;
 import com.tencent.ttpic.gles.ProgramTools;
 import java.nio.Buffer;
@@ -12,13 +13,17 @@ import java.nio.FloatBuffer;
 @TargetApi(18)
 public class TransformFeedback
 {
-  private final String TAG = "TransformFeedback";
-  private final String fragmentShaderCode = "#version 300 es \nprecision mediump float;\nout vec4 fragColor;\nvoid main() {\n  fragColor = vec4(1.0,1.0,1.0,1.0);\n}";
+  private final String TAG;
+  private final String fragmentShaderCode;
   private final int mProgram;
-  private final String vertexShaderSrc = "#version 300 es \nin float inValue;\nout float outValue;\nvoid main() {\n    outValue = sqrt(inValue);\n}";
+  private final String vertexShaderSrc;
   
   public TransformFeedback()
   {
+    AppMethodBeat.i(83020);
+    this.TAG = "TransformFeedback";
+    this.vertexShaderSrc = "#version 300 es \nin float inValue;\nout float outValue;\nvoid main() {\n    outValue = sqrt(inValue);\n}";
+    this.fragmentShaderCode = "#version 300 es \nprecision mediump float;\nout vec4 fragColor;\nvoid main() {\n  fragColor = vec4(1.0,1.0,1.0,1.0);\n}";
     int i = ProgramTools.loadShader(35633, "#version 300 es \nin float inValue;\nout float outValue;\nvoid main() {\n    outValue = sqrt(inValue);\n}");
     int j = ProgramTools.loadShader(35632, "#version 300 es \nprecision mediump float;\nout vec4 fragColor;\nvoid main() {\n  fragColor = vec4(1.0,1.0,1.0,1.0);\n}");
     this.mProgram = GLES30.glCreateProgram();
@@ -72,11 +77,12 @@ public class TransformFeedback
     GLES30.glDeleteShader(j);
     GLES30.glDeleteBuffers(1, (int[])localObject1, 0);
     GLES30.glDeleteBuffers(1, arrayOfInt, 0);
+    AppMethodBeat.o(83020);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.ttpic.filter.TransformFeedback
  * JD-Core Version:    0.7.0.1
  */

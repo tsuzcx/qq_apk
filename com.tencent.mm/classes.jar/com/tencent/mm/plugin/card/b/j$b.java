@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.card.b;
 
 public final class j$b
 {
-  public String ila;
-  public int ilb = 0;
-  public String ilc;
-  public int ild;
-  public String ile;
+  public String klY;
+  public int klZ = 0;
+  public String kma;
+  public int kmb;
+  public String kmc;
 }
 
 

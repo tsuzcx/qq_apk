@@ -1,6 +1,6 @@
 package android.support.transition;
 
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -15,7 +15,7 @@ final class Slide$2
   public final float b(ViewGroup paramViewGroup, View paramView)
   {
     int i = 1;
-    if (q.Q(paramViewGroup) == 1) {}
+    if (t.T(paramViewGroup) == 1) {}
     while (i != 0)
     {
       return paramView.getTranslationX() + paramViewGroup.getWidth();

@@ -3,29 +3,47 @@ package com.tencent.mm.plugin.music.cache.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class IPCAudioParamRequest
   implements Parcelable
 {
-  public static final Parcelable.Creator<IPCAudioParamRequest> CREATOR = new IPCAudioParamRequest.1();
-  public String bSB = "";
-  public byte[] euY;
-  public String mimeType = "";
-  public int myn = 0;
+  public static final Parcelable.Creator<IPCAudioParamRequest> CREATOR;
+  public String cAd;
+  public byte[] fKK;
+  public String mimeType;
+  public int oYu;
   
-  public IPCAudioParamRequest() {}
+  static
+  {
+    AppMethodBeat.i(137460);
+    CREATOR = new IPCAudioParamRequest.1();
+    AppMethodBeat.o(137460);
+  }
+  
+  public IPCAudioParamRequest()
+  {
+    this.cAd = "";
+    this.oYu = 0;
+    this.mimeType = "";
+  }
   
   public IPCAudioParamRequest(Parcel paramParcel)
   {
-    this.bSB = paramParcel.readString();
-    this.myn = paramParcel.readInt();
+    AppMethodBeat.i(137458);
+    this.cAd = "";
+    this.oYu = 0;
+    this.mimeType = "";
+    this.cAd = paramParcel.readString();
+    this.oYu = paramParcel.readInt();
     this.mimeType = paramParcel.readString();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.euY = new byte[i];
-      paramParcel.readByteArray(this.euY);
+      this.fKK = new byte[i];
+      paramParcel.readByteArray(this.fKK);
     }
+    AppMethodBeat.o(137458);
   }
   
   public int describeContents()
@@ -35,16 +53,19 @@ public class IPCAudioParamRequest
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.bSB);
-    paramParcel.writeInt(this.myn);
+    AppMethodBeat.i(137459);
+    paramParcel.writeString(this.cAd);
+    paramParcel.writeInt(this.oYu);
     paramParcel.writeString(this.mimeType);
-    if (this.euY != null)
+    if (this.fKK != null)
     {
-      paramParcel.writeInt(this.euY.length);
-      paramParcel.writeByteArray(this.euY);
+      paramParcel.writeInt(this.fKK.length);
+      paramParcel.writeByteArray(this.fKK);
+      AppMethodBeat.o(137459);
       return;
     }
     paramParcel.writeInt(0);
+    AppMethodBeat.o(137459);
   }
 }
 

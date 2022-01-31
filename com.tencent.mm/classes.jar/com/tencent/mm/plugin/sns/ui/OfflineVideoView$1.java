@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class OfflineVideoView$1
   implements Runnable
@@ -11,11 +12,13 @@ final class OfflineVideoView$1
   
   public final void run()
   {
-    if (OfflineVideoView.a(this.oRp) != null)
+    AppMethodBeat.i(38360);
+    if (OfflineVideoView.a(this.rJb) != null)
     {
-      y.i("MicroMsg.OfflineVideoView", "%d fresh thumb image", new Object[] { Integer.valueOf(hashCode()) });
-      OfflineVideoView.a(this.oRp).setImageBitmap(BackwardSupportUtil.b.e(this.oRo, 1.0F));
+      ab.i("MicroMsg.OfflineVideoView", "%d fresh thumb image", new Object[] { Integer.valueOf(hashCode()) });
+      OfflineVideoView.a(this.rJb).setImageBitmap(BackwardSupportUtil.b.k(this.rJa, 1.0F));
     }
+    AppMethodBeat.o(38360);
   }
 }
 

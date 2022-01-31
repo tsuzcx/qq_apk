@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.wear.model.f;
 
 import android.content.Context;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.c.cjn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cxa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.storage.bi;
 import java.io.IOException;
 
 public final class g
   extends b
 {
-  private bi bWO;
+  private bi cEE;
   
   public g(bi parambi)
   {
-    this.bWO = parambi;
+    this.cEE = parambi;
   }
   
   public final String getName()
@@ -30,55 +30,60 @@ public final class g
   
   protected final void send()
   {
-    cjn localcjn = new cjn();
-    Object localObject = this.bWO.field_content;
+    AppMethodBeat.i(26445);
+    cxa localcxa = new cxa();
+    Object localObject = this.cEE.field_content;
+    String str;
     if (localObject != null)
     {
-      localObject = g.a.M((String)localObject, this.bWO.field_reserved);
-      if ((localObject == null) || (!((g.a)localObject).dSi.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))) {
-        break label219;
+      localObject = j.b.ab((String)localObject, this.cEE.field_reserved);
+      if ((localObject == null) || (!((j.b)localObject).fih.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))) {
+        break label244;
       }
-      localcjn.tXq = this.bWO.field_msgId;
-      localcjn.tXp = this.bWO.field_talker;
-      if (this.bWO.field_isSend != 1) {
-        break label203;
+      localcxa.wsz = this.cEE.field_msgId;
+      localcxa.xlH = this.cEE.field_talker;
+      if (this.cEE.field_isSend != 1) {
+        break label220;
       }
-      localObject = ((g.a)localObject).dSc;
-      localcjn.bGw = h.Rj(this.bWO.field_talker);
-      if (!s.fn(this.bWO.field_talker)) {
-        break label211;
+      localObject = ((j.b)localObject).fib;
+      localcxa.Title = h.agg(this.cEE.field_talker);
+      if (!t.lA(this.cEE.field_talker)) {
+        break label228;
       }
-      String str = c(this.bWO.field_talker, this.bWO);
-      localcjn.kVs = String.format(ae.getContext().getString(R.l.notification_msg_chatroom_template), new Object[] { h.Rj(str), Character.valueOf('​'), localObject });
+      str = c(this.cEE.field_talker, this.cEE);
     }
-    for (;;)
+    for (localcxa.ntu = String.format(ah.getContext().getString(2131301939), new Object[] { h.agg(str), Character.valueOf('​'), localObject });; localcxa.ntu = ((String)localObject))
     {
-      label203:
-      label211:
-      label219:
       try
       {
-        com.tencent.mm.plugin.wear.model.a.bYL();
-        r.b(20014, localcjn.toByteArray(), true);
-        com.tencent.mm.plugin.wear.model.c.a.ez(10, 0);
-        com.tencent.mm.plugin.wear.model.c.a.Bf(10);
+        com.tencent.mm.plugin.wear.model.a.cYy();
+        r.a(20014, localcxa.toByteArray(), true);
+        com.tencent.mm.plugin.wear.model.c.a.gD(10, 0);
+        com.tencent.mm.plugin.wear.model.c.a.IR(10);
+        AppMethodBeat.o(26445);
         return;
       }
-      catch (IOException localIOException) {}
-      y.w("MicroMsg.Wear.WearLuckyCreateTask", "xml is null!");
+      catch (IOException localIOException)
+      {
+        label220:
+        label228:
+        AppMethodBeat.o(26445);
+        return;
+      }
+      ab.w("MicroMsg.Wear.WearLuckyCreateTask", "xml is null!");
+      AppMethodBeat.o(26445);
       return;
-      localObject = ((g.a)localObject).dSb;
+      localObject = ((j.b)localObject).fia;
       break;
-      localcjn.kVs = ((String)localObject);
-      continue;
-      y.i("MicroMsg.Wear.WearLuckyCreateTask", "biz c2c message, do not send to watch!");
-      return;
     }
+    label244:
+    ab.i("MicroMsg.Wear.WearLuckyCreateTask", "biz c2c message, do not send to watch!");
+    AppMethodBeat.o(26445);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.g
  * JD-Core Version:    0.7.0.1
  */

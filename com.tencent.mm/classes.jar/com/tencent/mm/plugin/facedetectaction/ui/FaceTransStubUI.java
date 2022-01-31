@@ -4,61 +4,79 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.h.a.nv;
-import com.tencent.mm.h.a.nv.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ov;
+import com.tencent.mm.g.a.ov.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 
 @com.tencent.mm.ui.base.a(3)
 public class FaceTransStubUI
   extends MMActivity
 {
-  private Context context = this;
+  private Context context;
   
-  protected final int getLayoutId()
+  public FaceTransStubUI()
+  {
+    AppMethodBeat.i(746);
+    this.context = this;
+    AppMethodBeat.o(746);
+  }
+  
+  public int getLayoutId()
   {
     return -1;
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(748);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    y.i("MicroMsg.FaceTransStubUI", "carson : on activity result in FaceTransStubUI");
+    ab.i("MicroMsg.FaceTransStubUI", "carson : on activity result in FaceTransStubUI");
     setResult(paramInt2, paramIntent);
     finish();
+    AppMethodBeat.o(748);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(747);
     super.onCreate(paramBundle);
-    y.i("MicroMsg.FaceTransStubUI", "carson: start FaceTransStubUI ");
-    paramBundle = new nv();
-    paramBundle.bXy.scene = getIntent().getIntExtra("scene", 0);
-    paramBundle.bXy.packageName = getIntent().getStringExtra("package");
-    paramBundle.bXy.bXA = getIntent().getStringExtra("packageSign");
-    paramBundle.bXy.bXB = getIntent().getStringExtra("otherVerifyTitle");
-    paramBundle.bXy.bQU = 63;
+    ab.i("MicroMsg.FaceTransStubUI", "carson: start FaceTransStubUI ");
+    paramBundle = new ov();
+    paramBundle.cFu.scene = getIntent().getIntExtra("scene", 0);
+    paramBundle.cFu.packageName = getIntent().getStringExtra("package");
+    paramBundle.cFu.cFw = getIntent().getStringExtra("packageSign");
+    paramBundle.cFu.cFx = getIntent().getStringExtra("otherVerifyTitle");
+    paramBundle.cFu.requestCode = 63;
     if ((this.context instanceof Activity)) {
-      paramBundle.bXy.bMV = ((Activity)this.context);
+      paramBundle.cFu.cup = ((Activity)this.context);
     }
-    com.tencent.mm.sdk.b.a.udP.m(paramBundle);
-    y.i("MicroMsg.FaceTransStubUI", "carson: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.bXz.bXC) });
-    if (!paramBundle.bXz.bXC)
+    com.tencent.mm.sdk.b.a.ymk.l(paramBundle);
+    ab.i("MicroMsg.FaceTransStubUI", "carson: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.cFv.cFy) });
+    if (!paramBundle.cFv.cFy)
     {
-      if (paramBundle.bXz.extras == null) {
-        break label201;
+      if (paramBundle.cFv.extras == null) {
+        break label213;
       }
       Intent localIntent = new Intent();
-      localIntent.putExtras(paramBundle.bXz.extras);
+      localIntent.putExtras(paramBundle.cFv.extras);
       setResult(1, localIntent);
     }
     for (;;)
     {
       finish();
+      AppMethodBeat.o(747);
       return;
-      label201:
+      label213:
       setResult(1);
     }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

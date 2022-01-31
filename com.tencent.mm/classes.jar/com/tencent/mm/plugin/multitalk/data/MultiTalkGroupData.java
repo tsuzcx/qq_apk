@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.multitalk.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
 import java.util.List;
@@ -11,14 +12,21 @@ import java.util.List;
 public class MultiTalkGroupData
   implements Parcelable
 {
-  public static final Parcelable.Creator<MultiTalkGroupData> CREATOR = new MultiTalkGroupData.1();
-  private MultiTalkGroup mtn;
+  public static final Parcelable.Creator<MultiTalkGroupData> CREATOR;
+  private MultiTalkGroup oSY;
+  
+  static
+  {
+    AppMethodBeat.i(53881);
+    CREATOR = new MultiTalkGroupData.1();
+    AppMethodBeat.o(53881);
+  }
   
   public MultiTalkGroupData() {}
   
   public MultiTalkGroupData(MultiTalkGroup paramMultiTalkGroup)
   {
-    this.mtn = paramMultiTalkGroup;
+    this.oSY = paramMultiTalkGroup;
   }
   
   public int describeContents()
@@ -28,23 +36,25 @@ public class MultiTalkGroupData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(bk.aM(this.mtn.wJL, ""));
-    paramParcel.writeString(bk.aM(this.mtn.wJM, ""));
-    paramParcel.writeString(bk.aM(this.mtn.wJN, ""));
-    paramParcel.writeInt(this.mtn.wFA);
-    paramParcel.writeString(bk.aM(this.mtn.wJO, ""));
-    paramParcel.writeInt(this.mtn.wJP.size());
+    AppMethodBeat.i(53880);
+    paramParcel.writeString(bo.bf(this.oSY.Bhl, ""));
+    paramParcel.writeString(bo.bf(this.oSY.Bhm, ""));
+    paramParcel.writeString(bo.bf(this.oSY.Bhn, ""));
+    paramParcel.writeInt(this.oSY.Bda);
+    paramParcel.writeString(bo.bf(this.oSY.Bho, ""));
+    paramParcel.writeInt(this.oSY.Bhp.size());
     int i = 0;
-    while (i < this.mtn.wJP.size())
+    while (i < this.oSY.Bhp.size())
     {
-      paramParcel.writeParcelable(new MultiTalkGroupMemberData((MultiTalkGroupMember)this.mtn.wJP.get(i)), paramInt);
+      paramParcel.writeParcelable(new MultiTalkGroupMemberData((MultiTalkGroupMember)this.oSY.Bhp.get(i)), paramInt);
       i += 1;
     }
+    AppMethodBeat.o(53880);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.data.MultiTalkGroupData
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sns.b.m;
 import com.tencent.mm.pluginsdk.ui.a.b;
@@ -14,9 +15,9 @@ public final class FriendSnsPreference
   extends IconPreference
 {
   private Context context;
-  String uJx = null;
-  Bitmap uJy = null;
-  long uJz;
+  private String yXd = null;
+  private Bitmap yXe = null;
+  private long yXf;
   
   public FriendSnsPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,20 +30,48 @@ public final class FriendSnsPreference
     this.context = paramContext;
   }
   
-  protected final void onBindView(View paramView)
+  public final void atm(String paramString)
   {
+    AppMethodBeat.i(29303);
+    this.yXe = null;
+    this.yUb = -1;
+    this.yXd = paramString;
+    this.yXf = 0L;
+    if (this.oyN != null) {
+      a.b.c(this.oyN, paramString);
+    }
+    AppMethodBeat.o(29303);
+  }
+  
+  public final void onBindView(View paramView)
+  {
+    AppMethodBeat.i(29305);
     super.onBindView(paramView);
-    if ((this.uJx != null) && (g.DK())) {
-      a.b.a(this.lZf, this.uJx);
+    if ((this.yXd != null) && (g.RG())) {
+      a.b.c(this.oyN, this.yXd);
     }
-    if ((this.uJz != 0L) && (this.lZf != null)) {
-      ((m)g.r(m.class)).a(this.uJz, this.lZf, this.mContext.hashCode());
+    if ((this.yXf != 0L) && (this.oyN != null)) {
+      ((m)g.E(m.class)).a(this.yXf, this.oyN, this.mContext.hashCode());
     }
+    AppMethodBeat.o(29305);
+  }
+  
+  public final void ou(long paramLong)
+  {
+    AppMethodBeat.i(29304);
+    this.yXd = null;
+    this.yXe = null;
+    this.yUb = -1;
+    this.yXf = paramLong;
+    if ((this.yXf != 0L) && (this.oyN != null)) {
+      ((m)g.E(m.class)).a(this.yXf, this.oyN, this.mContext.hashCode());
+    }
+    AppMethodBeat.o(29304);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.FriendSnsPreference
  * JD-Core Version:    0.7.0.1
  */

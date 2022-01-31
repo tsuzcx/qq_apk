@@ -1,59 +1,41 @@
 package com.tencent.mm.plugin.sns.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import java.util.List;
+
 public final class g
-  extends com.tencent.mm.bv.a
+  implements f
 {
-  public String oxc;
-  public int oxd;
+  h rlG;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final boolean cqa()
   {
-    if (paramInt == 0)
+    AppMethodBeat.i(36810);
+    if ((this.rlG == null) || (this.rlG.rlv.size() == 0))
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.oxc != null) {
-        paramVarArgs.d(1, this.oxc);
-      }
-      paramVarArgs.gB(2, this.oxd);
-      return 0;
+      AppMethodBeat.o(36810);
+      return false;
     }
-    if (paramInt == 1) {
-      if (this.oxc == null) {
-        break label212;
-      }
-    }
-    label212:
-    for (paramInt = d.a.a.b.b.a.e(1, this.oxc) + 0;; paramInt = 0)
-    {
-      return paramInt + d.a.a.a.gy(2, this.oxd);
-      if (paramInt == 2)
-      {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
-          }
-        }
-        break;
-      }
-      if (paramInt == 3)
-      {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
-        g localg = (g)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          return -1;
-        case 1: 
-          localg.oxc = locala.xpH.readString();
-          return 0;
-        }
-        localg.oxd = locala.xpH.oD();
-        return 0;
-      }
-      return -1;
-    }
+    AppMethodBeat.o(36810);
+    return true;
   }
+  
+  public final h cqb()
+  {
+    AppMethodBeat.i(36811);
+    if ((this.rlG == null) || (this.rlG.rlv.size() == 0))
+    {
+      AppMethodBeat.o(36811);
+      return null;
+    }
+    h localh = this.rlG;
+    AppMethodBeat.o(36811);
+    return localh;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm) {}
 }
 
 

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 
@@ -13,9 +14,11 @@ final class EmojiSortUI$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (EmojiSortUI.c(this.jdC) != null) {
-      g.DO().dJT.c(EmojiSortUI.c(this.jdC));
+    AppMethodBeat.i(53410);
+    if (EmojiSortUI.c(this.lmp) != null) {
+      g.RK().eHt.a(EmojiSortUI.c(this.lmp));
     }
+    AppMethodBeat.o(53410);
   }
 }
 

@@ -11,85 +11,85 @@ final class aj$2
     super(parami, (byte)0);
   }
   
-  public final int aX(View paramView)
+  public final void bN(int paramInt)
   {
-    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    return RecyclerView.i.bp(paramView) - localLayoutParams.topMargin;
+    this.ahB.bW(paramInt);
   }
   
-  public final int aY(View paramView)
+  public final int bh(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = RecyclerView.i.br(paramView);
+    return RecyclerView.i.bA(paramView) - localLayoutParams.topMargin;
+  }
+  
+  public final int bi(View paramView)
+  {
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+    int i = RecyclerView.i.bC(paramView);
     return localLayoutParams.bottomMargin + i;
   }
   
-  public final int aZ(View paramView)
+  public final int bj(View paramView)
   {
-    this.afm.f(paramView, this.hc);
-    return this.hc.bottom;
+    this.ahB.f(paramView, this.hV);
+    return this.hV.bottom;
   }
   
-  public final void bI(int paramInt)
+  public final int bk(View paramView)
   {
-    this.afm.bQ(paramInt);
+    this.ahB.f(paramView, this.hV);
+    return this.hV.top;
   }
   
-  public final int ba(View paramView)
-  {
-    this.afm.f(paramView, this.hc);
-    return this.hc.top;
-  }
-  
-  public final int bb(View paramView)
+  public final int bl(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = RecyclerView.i.bn(paramView);
+    int i = RecyclerView.i.by(paramView);
     int j = localLayoutParams.topMargin;
     return localLayoutParams.bottomMargin + (i + j);
   }
   
-  public final int bc(View paramView)
+  public final int bm(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = RecyclerView.i.bm(paramView);
+    int i = RecyclerView.i.bx(paramView);
     int j = localLayoutParams.leftMargin;
     return localLayoutParams.rightMargin + (i + j);
   }
   
   public final int getEnd()
   {
-    return this.afm.mHeight;
+    return this.ahB.mHeight;
   }
   
   public final int getEndPadding()
   {
-    return this.afm.getPaddingBottom();
+    return this.ahB.getPaddingBottom();
   }
   
   public final int getMode()
   {
-    return this.afm.ahg;
+    return this.ahB.ajw;
   }
   
-  public final int hh()
+  public final int iI()
   {
-    return this.afm.getPaddingTop();
+    return this.ahB.getPaddingTop();
   }
   
-  public final int hi()
+  public final int iJ()
   {
-    return this.afm.mHeight - this.afm.getPaddingBottom();
+    return this.ahB.mHeight - this.ahB.getPaddingBottom();
   }
   
-  public final int hj()
+  public final int iK()
   {
-    return this.afm.mHeight - this.afm.getPaddingTop() - this.afm.getPaddingBottom();
+    return this.ahB.mHeight - this.ahB.getPaddingTop() - this.ahB.getPaddingBottom();
   }
   
-  public final int hk()
+  public final int iL()
   {
-    return this.afm.ahf;
+    return this.ahB.ajv;
   }
 }
 

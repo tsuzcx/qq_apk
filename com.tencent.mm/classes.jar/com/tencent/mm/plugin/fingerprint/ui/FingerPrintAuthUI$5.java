@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.fingerprint.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.a;
 
 final class FingerPrintAuthUI$5
@@ -12,7 +13,9 @@ final class FingerPrintAuthUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a.b(this.kmg, new Bundle(), -1);
+    AppMethodBeat.i(41637);
+    a.b(this.mGW, new Bundle(), -1);
+    AppMethodBeat.o(41637);
   }
 }
 

@@ -3,7 +3,7 @@ package android.support.design.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
-import android.support.b.a.c;
+import android.support.b.a.a;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -14,22 +14,22 @@ public final class CoordinatorLayout$d
 {
   public int anchorGravity = 0;
   public int gravity = 0;
-  CoordinatorLayout.Behavior hP;
-  boolean hQ = false;
-  public int hR = -1;
-  int hS = -1;
-  public int hT = 0;
-  public int hU = 0;
-  int hV;
-  int hW;
-  View hX;
-  View hY;
-  boolean hZ;
-  private boolean ia;
-  private boolean ib;
-  boolean ic;
-  final Rect ie = new Rect();
-  Object jdField_if;
+  CoordinatorLayout.Behavior iM;
+  boolean iN = false;
+  public int iO = -1;
+  int iP = -1;
+  public int iQ = 0;
+  public int iR = 0;
+  int iS;
+  int iT;
+  View iU;
+  View iV;
+  boolean iW;
+  private boolean iX;
+  private boolean iY;
+  boolean iZ;
+  final Rect ja = new Rect();
+  Object jb;
   
   public CoordinatorLayout$d()
   {
@@ -39,20 +39,20 @@ public final class CoordinatorLayout$d
   CoordinatorLayout$d(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.c.CoordinatorLayout_Layout);
-    this.gravity = localTypedArray.getInteger(a.c.CoordinatorLayout_Layout_android_layout_gravity, 0);
-    this.hS = localTypedArray.getResourceId(a.c.CoordinatorLayout_Layout_layout_anchor, -1);
-    this.anchorGravity = localTypedArray.getInteger(a.c.CoordinatorLayout_Layout_layout_anchorGravity, 0);
-    this.hR = localTypedArray.getInteger(a.c.CoordinatorLayout_Layout_layout_keyline, -1);
-    this.hT = localTypedArray.getInt(a.c.CoordinatorLayout_Layout_layout_insetEdge, 0);
-    this.hU = localTypedArray.getInt(a.c.CoordinatorLayout_Layout_layout_dodgeInsetEdges, 0);
-    this.hQ = localTypedArray.hasValue(a.c.CoordinatorLayout_Layout_layout_behavior);
-    if (this.hQ) {
-      this.hP = CoordinatorLayout.a(paramContext, paramAttributeSet, localTypedArray.getString(a.c.CoordinatorLayout_Layout_layout_behavior));
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.CoordinatorLayout_Layout);
+    this.gravity = localTypedArray.getInteger(0, 0);
+    this.iP = localTypedArray.getResourceId(2, -1);
+    this.anchorGravity = localTypedArray.getInteger(4, 0);
+    this.iO = localTypedArray.getInteger(3, -1);
+    this.iQ = localTypedArray.getInt(5, 0);
+    this.iR = localTypedArray.getInt(6, 0);
+    this.iN = localTypedArray.hasValue(1);
+    if (this.iN) {
+      this.iM = CoordinatorLayout.a(paramContext, paramAttributeSet, localTypedArray.getString(1));
     }
     localTypedArray.recycle();
-    if (this.hP != null) {
-      this.hP.a(this);
+    if (this.iM != null) {
+      this.iM.a(this);
     }
   }
   
@@ -71,47 +71,52 @@ public final class CoordinatorLayout$d
     super(paramMarginLayoutParams);
   }
   
-  final boolean I(int paramInt)
+  final boolean H(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return false;
     case 0: 
-      return this.ia;
+      return this.iX;
     }
-    return this.ib;
+    return this.iY;
   }
   
   public final void a(CoordinatorLayout.Behavior paramBehavior)
   {
-    if (this.hP != paramBehavior)
+    if (this.iM != paramBehavior)
     {
-      this.hP = paramBehavior;
-      this.jdField_if = null;
-      this.hQ = true;
+      this.iM = paramBehavior;
+      this.jb = null;
+      this.iN = true;
       if (paramBehavior != null) {
         paramBehavior.a(this);
       }
     }
   }
   
-  final void i(int paramInt, boolean paramBoolean)
+  final boolean bq()
+  {
+    return (this.iU == null) && (this.iP != -1);
+  }
+  
+  final void e(int paramInt, boolean paramBoolean)
   {
     switch (paramInt)
     {
     default: 
       return;
     case 0: 
-      this.ia = paramBoolean;
+      this.iX = paramBoolean;
       return;
     }
-    this.ib = paramBoolean;
+    this.iY = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.design.widget.CoordinatorLayout.d
  * JD-Core Version:    0.7.0.1
  */

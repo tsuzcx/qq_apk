@@ -1,68 +1,120 @@
 package com.tencent.mm.ui.contact;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.openim.a.b;
-import com.tencent.mm.openim.a.b.a;
-import com.tencent.mm.ui.base.MaskLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.bd;
+import java.util.List;
 
 public final class v
   extends LinearLayout
 {
+  private List<String> Aew;
+  private v.a Aex;
+  private v.b Aey;
   private Context context;
-  private String vMR;
+  private LinearLayout mDJ;
   
-  public v(Context paramContext, String paramString)
+  public v(Context paramContext, v.a parama)
   {
     super(paramContext);
+    AppMethodBeat.i(33807);
+    this.mDJ = null;
     this.context = paramContext;
-    this.vMR = paramString;
-    paramContext = View.inflate(getContext(), R.i.openim_item_in_addressui_header, this);
-    paramString = findViewById(R.h.enterprise_biz_item_ll);
-    paramContext.setOnClickListener(new View.OnClickListener()
+    this.Aex = parama;
+    reset();
+    AppMethodBeat.o(33807);
+  }
+  
+  public final int getOpenIMCount()
+  {
+    AppMethodBeat.i(33808);
+    if (this.Aew == null)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        paramAnonymousView = paramAnonymousView.getContext();
-        Intent localIntent = new Intent(paramAnonymousView, OpenIMAddressUI.class);
-        localIntent.addFlags(67108864);
-        localIntent.putExtra("key_openim_acctype_id", v.a(v.this));
-        paramAnonymousView.startActivity(localIntent);
-      }
-    });
-    paramString.setOnTouchListener(new v.2(this));
-    paramString = (MaskLayout)paramString.findViewById(R.h.biz_contact_entrance_avatar_iv);
-    paramContext = ((b)com.tencent.mm.kernel.g.r(b.class)).b(this.vMR, "openim_acct_type_icon", b.a.ePJ);
-    if (paramContext != null)
-    {
-      paramString = (ImageView)paramString.getContentView();
-      Object localObject = new c.a();
-      ((c.a)localObject).erf = true;
-      StringBuilder localStringBuilder = new StringBuilder();
-      com.tencent.mm.kernel.g.DQ();
-      ((c.a)localObject).erh = (com.tencent.mm.kernel.g.DP().dKt + "openim/" + com.tencent.mm.a.g.o(paramContext.getBytes()));
-      localObject = ((c.a)localObject).OV();
-      o.ON().a(paramContext, paramString, (c)localObject, null, null);
+      AppMethodBeat.o(33808);
+      return 0;
     }
-    paramContext = ((b)com.tencent.mm.kernel.g.r(b.class)).b(this.vMR, "openim_acct_type_title", b.a.ePI);
-    ((TextView)findViewById(R.h.enterprise_biz_title)).setText(paramContext);
+    int i = this.Aew.size();
+    AppMethodBeat.o(33808);
+    return i;
+  }
+  
+  public final void reset()
+  {
+    AppMethodBeat.i(33809);
+    aw.aaz();
+    this.Aew = c.YA().dwK();
+    if ((this.Aew == null) || (this.Aew.size() <= 0))
+    {
+      ab.i("MicroMsg.OpenIMListHeaderView", "openimIdList is null");
+      AppMethodBeat.o(33809);
+      return;
+    }
+    ab.i("MicroMsg.OpenIMListHeaderView", "openim list size = %s", new Object[] { Integer.valueOf(this.Aew.size()) });
+    if (this.mDJ == null)
+    {
+      View.inflate(getContext(), 2130970393, this);
+      this.mDJ = ((LinearLayout)findViewById(2131821084));
+    }
+    this.mDJ.removeAllViews();
+    int i = 0;
+    if (i < this.Aew.size())
+    {
+      Object localObject = (String)this.Aew.get(i);
+      localObject = new w(getContext(), (String)localObject);
+      this.mDJ.addView((View)localObject);
+      if (i == this.Aew.size() - 1)
+      {
+        localObject = ((w)localObject).findViewById(2131823728);
+        int j = ((View)localObject).getPaddingLeft();
+        ((View)localObject).setBackgroundResource(2130839276);
+        ((View)localObject).findViewById(2131826642).setBackground(null);
+        ((View)localObject).setPadding(j, 0, 0, 0);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((w)localObject).findViewById(2131823728).setBackground(null);
+        ((w)localObject).findViewById(2131823728).findViewById(2131826642).setBackgroundResource(2130839276);
+      }
+    }
+    AppMethodBeat.o(33809);
+  }
+  
+  public final void setOnVisibilityChangeListener(v.b paramb)
+  {
+    this.Aey = paramb;
+  }
+  
+  public final void setVisibility(int paramInt)
+  {
+    AppMethodBeat.i(33810);
+    v.b localb;
+    if ((this.Aey != null) && (paramInt != getVisibility()))
+    {
+      localb = this.Aey;
+      if (paramInt != 0) {
+        break label49;
+      }
+    }
+    label49:
+    for (boolean bool = true;; bool = false)
+    {
+      localb.rf(bool);
+      super.setVisibility(paramInt);
+      AppMethodBeat.o(33810);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.contact.v
  * JD-Core Version:    0.7.0.1
  */

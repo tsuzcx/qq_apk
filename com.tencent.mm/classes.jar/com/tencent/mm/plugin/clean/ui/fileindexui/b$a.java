@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 final class b$a
 {
-  TextView iCG;
-  TextView iCH;
-  CheckBox iCI;
+  TextView kHN;
+  TextView kHO;
+  CheckBox kHP;
   int position;
   
   b$a(b paramb) {}

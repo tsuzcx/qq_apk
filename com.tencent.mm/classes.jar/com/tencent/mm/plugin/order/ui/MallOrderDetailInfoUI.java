@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.order.ui;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
@@ -13,8 +14,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.platformtools.x.a;
@@ -26,19 +28,13 @@ import com.tencent.mm.plugin.order.model.ProductSectionItem;
 import com.tencent.mm.plugin.order.model.ProductSectionItem.Skus;
 import com.tencent.mm.plugin.order.model.f;
 import com.tencent.mm.plugin.order.model.j;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.h;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.plugin.order.model.j.a;
+import com.tencent.mm.plugin.order.model.j.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,200 +43,49 @@ public class MallOrderDetailInfoUI
   extends WalletBaseUI
   implements x.a
 {
-  private ListView Nn;
-  private View.OnClickListener fvj = new MallOrderDetailInfoUI.1(this);
-  private String iGK = "";
-  private HashMap<String, View> mMl = new HashMap();
-  private List<MallOrderDetailObject.a> mOz = new ArrayList();
-  protected MallOrderDetailObject mPG = null;
-  private boolean mQA = false;
-  private boolean mQB = false;
-  private int mQC = 0;
-  private CheckedTextView mQD;
-  private CheckedTextView mQE;
-  View.OnClickListener mQF = new MallOrderDetailInfoUI.7(this);
-  String mQr;
-  private MallOrderDetailInfoUI.a mQs;
-  private View mQt;
-  private View mQu;
-  private View mQv;
-  private View mQw;
-  private View mQx;
-  private View mQy;
-  private View mQz;
+  private View.OnClickListener gMO;
+  private String kMN;
+  private ListView mListView;
+  private HashMap<String, View> pmB;
+  private List<MallOrderDetailObject.a> poP;
+  protected MallOrderDetailObject ppW;
+  String pqF;
+  private MallOrderDetailInfoUI.a pqG;
+  private View pqH;
+  private View pqI;
+  private View pqJ;
+  private View pqK;
+  private View pqL;
+  private View pqM;
+  private View pqN;
+  private boolean pqO;
+  private boolean pqP;
+  private int pqQ;
+  private CheckedTextView pqR;
+  private CheckedTextView pqS;
+  View.OnClickListener pqT;
   
-  private void XS()
+  public MallOrderDetailInfoUI()
   {
-    if (this.mPG == null) {
-      return;
-    }
-    x.a(this);
-    this.mMl.clear();
-    MallOrderDetailObject.b localb = this.mPG.mOx;
-    Object localObject;
-    if (localb != null)
-    {
-      localObject = localb.mOF;
-      if (TextUtils.isEmpty(localb.mOG)) {
-        break label1497;
-      }
-      localObject = (String)localObject + "：" + localb.mOG;
-    }
-    label331:
-    label1495:
-    label1497:
-    for (;;)
-    {
-      if (!this.mQA)
-      {
-        this.mQu.setVisibility(8);
-        this.mQt.setVisibility(0);
-        ((TextView)this.mQt.findViewById(a.f.order_latest_status_title_tv)).setText((CharSequence)localObject);
-        ((TextView)this.mQt.findViewById(a.f.order_latest_status_subtitle_tv)).setText(e.hP(this.mPG.mOE));
-        if ((!TextUtils.isEmpty(localb.thumbUrl)) && (e.afi(localb.thumbUrl)))
-        {
-          l((ImageView)this.mQt.findViewById(a.f.order_merchant_logo_img), localb.thumbUrl);
-          localObject = this.mPG.mOy;
-          if ((localObject != null) && (((List)localObject).size() != 0)) {
-            break label619;
-          }
-          this.mQx.setVisibility(8);
-          this.mQy.setVisibility(8);
-          this.mQz.setVisibility(8);
-          label230:
-          localObject = this.mPG.mOw;
-          if (localObject == null) {
-            break label1323;
-          }
-          this.mQv.setVisibility(0);
-          ((TextView)findViewById(a.f.order_transaction_subtitle_tv)).setText(e.d(((MallTransactionObject)localObject).iHP, ((MallTransactionObject)localObject).mOZ));
-          if ((this.mPG != null) && (this.mPG.mOz != null) && (this.mPG.mOz.size() > 0))
-          {
-            localObject = (MallOrderDetailObject.a)this.mPG.mOz.get(0);
-            a(this.mQw, (MallOrderDetailObject.a)localObject);
-          }
-          localObject = this.mPG.mOz;
-          if (localObject != null)
-          {
-            this.mOz.addAll((Collection)localObject);
-            this.mQs.notifyDataSetChanged();
-          }
-          findViewById(a.f.mall_order_contact_layout).setVisibility(0);
-          if ((this.mPG == null) || (!TextUtils.isEmpty(this.mPG.mOD)) || (!TextUtils.isEmpty(this.mPG.bNZ))) {
-            break label1335;
-          }
-          findViewById(a.f.mall_order_contact_layout).setVisibility(8);
-        }
-      }
-      for (;;)
-      {
-        if ((this.mPG == null) || (TextUtils.isEmpty(this.mPG.mOC))) {
-          break label1495;
-        }
-        addIconOptionMenu(0, a.e.mm_title_btn_menu, new MallOrderDetailInfoUI.4(this));
-        return;
-        f((ImageView)this.mQt.findViewById(a.f.order_merchant_logo_img));
-        break;
-        this.mQt.setVisibility(8);
-        this.mQu.setVisibility(0);
-        ((TextView)this.mQu.findViewById(a.f.order_latest_status_title_tv)).setText((CharSequence)localObject);
-        ((TextView)this.mQu.findViewById(a.f.order_latest_status_subtitle_tv)).setText(e.hP(this.mPG.mOE));
-        if ((!TextUtils.isEmpty(localb.thumbUrl)) && (e.afi(localb.thumbUrl)))
-        {
-          l((ImageView)this.mQu.findViewById(a.f.order_merchant_logo_img), localb.thumbUrl);
-          break;
-        }
-        f((ImageView)this.mQu.findViewById(a.f.order_merchant_logo_img));
-        break;
-        this.mQt.setVisibility(8);
-        this.mQu.setVisibility(8);
-        break;
-        label619:
-        if (((List)localObject).size() == 1)
-        {
-          this.mQz.setVisibility(8);
-          localObject = (ProductSectionItem)((List)localObject).get(0);
-          if (!TextUtils.isEmpty(((ProductSectionItem)localObject).iconUrl))
-          {
-            this.mQx.setVisibility(8);
-            this.mQy.setVisibility(0);
-            ((TextView)this.mQy.findViewById(a.f.item_product_descript_tv)).setText(((ProductSectionItem)localObject).name);
-            ((TextView)this.mQy.findViewById(a.f.item_product_price_tv)).setText(((ProductSectionItem)localObject).mQn);
-            ((TextView)this.mQy.findViewById(a.f.item_product_count_tv)).setText("+" + ((ProductSectionItem)localObject).count);
-            ((TextView)this.mQy.findViewById(a.f.item_product_catalog_tv)).setText(ProductSectionItem.Skus.bT(((ProductSectionItem)localObject).mQm));
-            if (TextUtils.isEmpty(((ProductSectionItem)localObject).iconUrl)) {
-              break label230;
-            }
-            l((ImageView)this.mQy.findViewById(a.f.item_product_logo_img), ((ProductSectionItem)localObject).iconUrl);
-            break label230;
-          }
-          this.mQy.setVisibility(8);
-          this.mQx.setVisibility(0);
-          ((TextView)this.mQx.findViewById(a.f.item_product_descript_tv)).setText(((ProductSectionItem)localObject).name);
-          if (TextUtils.isEmpty(((ProductSectionItem)localObject).jumpUrl))
-          {
-            localObject = new Rect();
-            ((Rect)localObject).set(this.mQx.findViewById(a.f.item_product_descript_layout).getPaddingLeft(), this.mQx.findViewById(a.f.item_product_descript_layout).getPaddingTop(), this.mQx.findViewById(a.f.item_product_descript_layout).getPaddingRight(), this.mQx.findViewById(a.f.item_product_descript_layout).getPaddingBottom());
-            this.mQx.findViewById(a.f.item_product_descript_layout).setBackgroundResource(a.e.list_item_normal);
-            this.mQx.findViewById(a.f.item_product_descript_layout).setPadding(((Rect)localObject).left, ((Rect)localObject).top, ((Rect)localObject).right, ((Rect)localObject).bottom);
-            break label230;
-          }
-          ((TextView)this.mQx.findViewById(a.f.item_product_descript_tv)).setTextColor(getResources().getColor(a.c.mall_order_detail_item_title_color));
-          break label230;
-        }
-        this.mQx.setVisibility(8);
-        this.mQy.setVisibility(8);
-        this.mQz.setVisibility(0);
-        if (((List)localObject).size() == 2)
-        {
-          a(this.mQz.findViewById(a.f.order_product_item_x4_1_layout), (ProductSectionItem)((List)localObject).get(0));
-          a(this.mQz.findViewById(a.f.order_product_item_x4_2_layout), (ProductSectionItem)((List)localObject).get(1));
-          this.mQz.findViewById(a.f.order_product_item_x4_3_layout).setVisibility(8);
-          this.mQz.findViewById(a.f.order_product_item_x4_4_layout).setVisibility(8);
-          break label230;
-        }
-        if (((List)localObject).size() == 3)
-        {
-          a(this.mQz.findViewById(a.f.order_product_item_x4_1_layout), (ProductSectionItem)((List)localObject).get(0));
-          a(this.mQz.findViewById(a.f.order_product_item_x4_2_layout), (ProductSectionItem)((List)localObject).get(1));
-          a(this.mQz.findViewById(a.f.order_product_item_x4_3_layout), (ProductSectionItem)((List)localObject).get(2));
-          this.mQz.findViewById(a.f.order_product_item_x4_4_layout).setVisibility(8);
-          break label230;
-        }
-        if (((List)localObject).size() < 4) {
-          break label230;
-        }
-        a(this.mQz.findViewById(a.f.order_product_item_x4_1_layout), (ProductSectionItem)((List)localObject).get(0));
-        a(this.mQz.findViewById(a.f.order_product_item_x4_2_layout), (ProductSectionItem)((List)localObject).get(1));
-        a(this.mQz.findViewById(a.f.order_product_item_x4_3_layout), (ProductSectionItem)((List)localObject).get(2));
-        a(this.mQz.findViewById(a.f.order_product_item_x4_4_layout), (ProductSectionItem)((List)localObject).get(3));
-        break label230;
-        this.mQv.setVisibility(8);
-        break label331;
-        if ((this.mPG != null) && (!TextUtils.isEmpty(this.mPG.mOD)) && (TextUtils.isEmpty(this.mPG.bNZ)))
-        {
-          findViewById(a.f.wx_contact_service_title_tv).setVisibility(8);
-          findViewById(a.f.wx_contact_divider_tv).setVisibility(8);
-          localObject = (TextView)findViewById(a.f.hot_contact_phone_title_tv);
-          ((TextView)localObject).setVisibility(0);
-          ((TextView)localObject).setGravity(3);
-        }
-        else if ((this.mPG != null) && (TextUtils.isEmpty(this.mPG.mOD)) && (!TextUtils.isEmpty(this.mPG.bNZ)))
-        {
-          findViewById(a.f.hot_contact_phone_title_tv).setVisibility(8);
-          findViewById(a.f.wx_contact_divider_tv).setVisibility(8);
-          localObject = (TextView)findViewById(a.f.wx_contact_service_title_tv);
-          ((TextView)localObject).setVisibility(0);
-          ((TextView)localObject).setGravity(3);
-        }
-      }
-      break;
-    }
+    AppMethodBeat.i(43809);
+    this.poP = new ArrayList();
+    this.ppW = null;
+    this.pmB = new HashMap();
+    this.pqO = false;
+    this.kMN = "";
+    this.pqP = false;
+    this.pqQ = 0;
+    this.gMO = new MallOrderDetailInfoUI.1(this);
+    this.pqT = new MallOrderDetailInfoUI.7(this);
+    AppMethodBeat.o(43809);
   }
   
   private static void a(View paramView, MallOrderDetailObject.a parama)
   {
-    if (parama == null) {
+    AppMethodBeat.i(43822);
+    if (parama == null)
+    {
+      AppMethodBeat.o(43822);
       return;
     }
     Rect localRect = new Rect();
@@ -249,222 +94,540 @@ public class MallOrderDetailInfoUI
     localRect.top = paramView.getPaddingTop();
     localRect.bottom = paramView.getPaddingBottom();
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    if ((parama != null) && (parama.ilA)) {
-      paramView.setBackgroundResource(a.e.mm_trans);
+    if ((parama != null) && (parama.kmy)) {
+      paramView.setBackgroundResource(2130839676);
     }
     for (;;)
     {
       paramView.setLayoutParams(localLayoutParams);
       paramView.setPadding(localRect.left, localRect.top, localRect.right, localRect.bottom);
+      AppMethodBeat.o(43822);
       return;
-      paramView.setBackgroundResource(a.e.list_item_normal);
+      paramView.setBackgroundResource(2130839276);
     }
   }
   
   private void a(View paramView, ProductSectionItem paramProductSectionItem)
   {
-    if ((paramView == null) || (paramProductSectionItem == null)) {}
-    do
+    AppMethodBeat.i(43819);
+    if ((paramView == null) || (paramProductSectionItem == null))
     {
+      AppMethodBeat.o(43819);
       return;
-      paramView.setVisibility(0);
-      TextView localTextView = (TextView)paramView.findViewById(a.f.item_product_descript_tv);
-      if (localTextView != null) {
-        localTextView.setText(paramProductSectionItem.name);
-      }
-    } while (TextUtils.isEmpty(paramProductSectionItem.iconUrl));
-    l((ImageView)paramView.findViewById(a.f.item_product_logo_img), paramProductSectionItem.iconUrl);
+    }
+    paramView.setVisibility(0);
+    TextView localTextView = (TextView)paramView.findViewById(2131826015);
+    if (localTextView != null) {
+      localTextView.setText(paramProductSectionItem.name);
+    }
+    if (!TextUtils.isEmpty(paramProductSectionItem.iconUrl)) {
+      q((ImageView)paramView.findViewById(2131826014), paramProductSectionItem.iconUrl);
+    }
+    AppMethodBeat.o(43819);
   }
   
-  private void brG()
+  private void a(MallOrderDetailObject.b paramb)
   {
-    if ((!this.mQB) && (this.mQC != 0))
+    AppMethodBeat.i(43815);
+    String str;
+    if (paramb != null)
     {
-      g.DQ();
-      g.DO().dJT.a(new f(this.iGK, "", this.mQC), 0);
-      this.mQB = true;
+      str = paramb.poV;
+      if (TextUtils.isEmpty(paramb.poW)) {
+        break label334;
+      }
+      str = str + "：" + paramb.poW;
+    }
+    label334:
+    for (;;)
+    {
+      if (!this.pqO)
+      {
+        this.pqI.setVisibility(8);
+        this.pqH.setVisibility(0);
+        ((TextView)this.pqH.findViewById(2131825999)).setText(str);
+        ((TextView)this.pqH.findViewById(2131826000)).setText(e.kB(this.ppW.poU));
+        if ((!TextUtils.isEmpty(paramb.thumbUrl)) && (e.awb(paramb.thumbUrl)))
+        {
+          q((ImageView)this.pqH.findViewById(2131825998), paramb.thumbUrl);
+          AppMethodBeat.o(43815);
+          return;
+        }
+        i((ImageView)this.pqH.findViewById(2131825998));
+        AppMethodBeat.o(43815);
+        return;
+      }
+      this.pqH.setVisibility(8);
+      this.pqI.setVisibility(0);
+      ((TextView)this.pqI.findViewById(2131825999)).setText(str);
+      ((TextView)this.pqI.findViewById(2131826000)).setText(e.kB(this.ppW.poU));
+      if ((!TextUtils.isEmpty(paramb.thumbUrl)) && (e.awb(paramb.thumbUrl)))
+      {
+        q((ImageView)this.pqI.findViewById(2131825998), paramb.thumbUrl);
+        AppMethodBeat.o(43815);
+        return;
+      }
+      i((ImageView)this.pqI.findViewById(2131825998));
+      AppMethodBeat.o(43815);
+      return;
+      this.pqH.setVisibility(8);
+      this.pqI.setVisibility(8);
+      AppMethodBeat.o(43815);
+      return;
     }
   }
   
-  private void brH()
+  private void a(MallTransactionObject paramMallTransactionObject)
   {
-    com.tencent.mm.ui.base.h.a(this.mController.uMN, a.i.wallet_order_info_err, 0, new MallOrderDetailInfoUI.8(this));
+    AppMethodBeat.i(43816);
+    if (paramMallTransactionObject != null)
+    {
+      this.pqJ.setVisibility(0);
+      ((TextView)findViewById(2131825989)).setText(e.e(paramMallTransactionObject.kNS, paramMallTransactionObject.ppp));
+      if ((this.ppW != null) && (this.ppW.poP != null) && (this.ppW.poP.size() > 0))
+      {
+        paramMallTransactionObject = (MallOrderDetailObject.a)this.ppW.poP.get(0);
+        a(this.pqK, paramMallTransactionObject);
+        AppMethodBeat.o(43816);
+      }
+    }
+    else
+    {
+      this.pqJ.setVisibility(8);
+    }
+    AppMethodBeat.o(43816);
   }
   
-  private void f(ImageView paramImageView)
+  private void ary()
   {
-    Bitmap localBitmap = com.tencent.mm.compatible.g.a.decodeResource(getResources(), a.h.mall_order_trade_state_icon);
+    AppMethodBeat.i(43814);
+    if (this.ppW == null)
+    {
+      AppMethodBeat.o(43814);
+      return;
+    }
+    x.a(this);
+    this.pmB.clear();
+    a(this.ppW.poN);
+    ct(this.ppW.poO);
+    a(this.ppW.poM);
+    cs(this.ppW.poP);
+    findViewById(2131825991).setVisibility(0);
+    if ((this.ppW != null) && (TextUtils.isEmpty(this.ppW.poT)) && (TextUtils.isEmpty(this.ppW.cvr))) {
+      findViewById(2131825991).setVisibility(8);
+    }
+    for (;;)
+    {
+      if ((this.ppW != null) && (!TextUtils.isEmpty(this.ppW.poS))) {
+        bdQ();
+      }
+      AppMethodBeat.o(43814);
+      return;
+      TextView localTextView;
+      if ((this.ppW != null) && (!TextUtils.isEmpty(this.ppW.poT)) && (TextUtils.isEmpty(this.ppW.cvr)))
+      {
+        findViewById(2131825994).setVisibility(8);
+        findViewById(2131825993).setVisibility(8);
+        localTextView = (TextView)findViewById(2131825992);
+        localTextView.setVisibility(0);
+        localTextView.setGravity(3);
+      }
+      else if ((this.ppW != null) && (TextUtils.isEmpty(this.ppW.poT)) && (!TextUtils.isEmpty(this.ppW.cvr)))
+      {
+        findViewById(2131825992).setVisibility(8);
+        findViewById(2131825993).setVisibility(8);
+        localTextView = (TextView)findViewById(2131825994);
+        localTextView.setVisibility(0);
+        localTextView.setGravity(3);
+      }
+    }
+  }
+  
+  private void bdQ()
+  {
+    AppMethodBeat.i(43821);
+    addIconOptionMenu(0, 2130839668, new MallOrderDetailInfoUI.4(this));
+    AppMethodBeat.o(43821);
+  }
+  
+  private void cav()
+  {
+    AppMethodBeat.i(43825);
+    if ((!this.pqP) && (this.pqQ != 0))
+    {
+      g.RM();
+      g.RK().eHt.a(new f(this.kMN, "", this.pqQ), 0);
+      this.pqP = true;
+    }
+    AppMethodBeat.o(43825);
+  }
+  
+  private void caw()
+  {
+    AppMethodBeat.i(43829);
+    com.tencent.mm.ui.base.h.a(getContext(), 2131305336, 0, new MallOrderDetailInfoUI.8(this));
+    AppMethodBeat.o(43829);
+  }
+  
+  private void cs(List<MallOrderDetailObject.a> paramList)
+  {
+    AppMethodBeat.i(43817);
+    if (paramList != null)
+    {
+      this.poP.addAll(paramList);
+      this.pqG.notifyDataSetChanged();
+    }
+    AppMethodBeat.o(43817);
+  }
+  
+  private void ct(List<ProductSectionItem> paramList)
+  {
+    AppMethodBeat.i(43818);
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      this.pqL.setVisibility(8);
+      this.pqM.setVisibility(8);
+      this.pqN.setVisibility(8);
+      AppMethodBeat.o(43818);
+      return;
+    }
+    if (paramList.size() == 1)
+    {
+      this.pqN.setVisibility(8);
+      paramList = (ProductSectionItem)paramList.get(0);
+      if (!TextUtils.isEmpty(paramList.iconUrl))
+      {
+        this.pqL.setVisibility(8);
+        this.pqM.setVisibility(0);
+        ((TextView)this.pqM.findViewById(2131826015)).setText(paramList.name);
+        ((TextView)this.pqM.findViewById(2131826023)).setText(paramList.pqC);
+        ((TextView)this.pqM.findViewById(2131826024)).setText("+" + paramList.count);
+        ((TextView)this.pqM.findViewById(2131826022)).setText(ProductSectionItem.Skus.cr(paramList.pqB));
+        if (!TextUtils.isEmpty(paramList.iconUrl))
+        {
+          q((ImageView)this.pqM.findViewById(2131826014), paramList.iconUrl);
+          AppMethodBeat.o(43818);
+        }
+      }
+      else
+      {
+        this.pqM.setVisibility(8);
+        this.pqL.setVisibility(0);
+        ((TextView)this.pqL.findViewById(2131826015)).setText(paramList.name);
+        if (TextUtils.isEmpty(paramList.jumpUrl))
+        {
+          paramList = new Rect();
+          paramList.set(this.pqL.findViewById(2131826019).getPaddingLeft(), this.pqL.findViewById(2131826019).getPaddingTop(), this.pqL.findViewById(2131826019).getPaddingRight(), this.pqL.findViewById(2131826019).getPaddingBottom());
+          this.pqL.findViewById(2131826019).setBackgroundResource(2130839276);
+          this.pqL.findViewById(2131826019).setPadding(paramList.left, paramList.top, paramList.right, paramList.bottom);
+          AppMethodBeat.o(43818);
+          return;
+        }
+        ((TextView)this.pqL.findViewById(2131826015)).setTextColor(getResources().getColor(2131690271));
+      }
+      AppMethodBeat.o(43818);
+      return;
+    }
+    this.pqL.setVisibility(8);
+    this.pqM.setVisibility(8);
+    this.pqN.setVisibility(0);
+    if (paramList.size() == 2)
+    {
+      a(this.pqN.findViewById(2131826013), (ProductSectionItem)paramList.get(0));
+      a(this.pqN.findViewById(2131826016), (ProductSectionItem)paramList.get(1));
+      this.pqN.findViewById(2131826017).setVisibility(8);
+      this.pqN.findViewById(2131826018).setVisibility(8);
+      AppMethodBeat.o(43818);
+      return;
+    }
+    if (paramList.size() == 3)
+    {
+      a(this.pqN.findViewById(2131826013), (ProductSectionItem)paramList.get(0));
+      a(this.pqN.findViewById(2131826016), (ProductSectionItem)paramList.get(1));
+      a(this.pqN.findViewById(2131826017), (ProductSectionItem)paramList.get(2));
+      this.pqN.findViewById(2131826018).setVisibility(8);
+      AppMethodBeat.o(43818);
+      return;
+    }
+    if (paramList.size() >= 4)
+    {
+      a(this.pqN.findViewById(2131826013), (ProductSectionItem)paramList.get(0));
+      a(this.pqN.findViewById(2131826016), (ProductSectionItem)paramList.get(1));
+      a(this.pqN.findViewById(2131826017), (ProductSectionItem)paramList.get(2));
+      a(this.pqN.findViewById(2131826018), (ProductSectionItem)paramList.get(3));
+    }
+    AppMethodBeat.o(43818);
+  }
+  
+  private void i(ImageView paramImageView)
+  {
+    AppMethodBeat.i(43824);
+    Bitmap localBitmap = com.tencent.mm.compatible.g.a.decodeResource(getResources(), 2131231629);
     if (localBitmap != null) {
-      paramImageView.setImageBitmap(com.tencent.mm.sdk.platformtools.c.a(localBitmap, false, 96.0F));
+      paramImageView.setImageBitmap(d.a(localBitmap, false, 96.0F));
     }
+    AppMethodBeat.o(43824);
   }
   
-  private void l(ImageView paramImageView, String paramString)
+  private void q(ImageView paramImageView, String paramString)
   {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)) || (!e.afi(paramString))) {
+    AppMethodBeat.i(43820);
+    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)) || (!e.awb(paramString)))
+    {
+      AppMethodBeat.o(43820);
       return;
     }
     paramImageView.setImageBitmap(x.a(new com.tencent.mm.plugin.order.c.b(paramString)));
-    this.mMl.put(paramString, paramImageView);
+    this.pmB.put(paramString, paramImageView);
+    AppMethodBeat.o(43820);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void cleanUiData(int paramInt)
   {
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      if ((paramm instanceof com.tencent.mm.plugin.order.model.h))
-      {
-        paramString = ((com.tencent.mm.plugin.order.model.h)paramm).mPG;
-        y.d("MicroMsg.MallOrderDetailInfoUI", "tempObject:" + paramString);
-        if (paramString != null)
-        {
-          this.mPG = paramString;
-          XS();
-        }
-      }
-      return true;
-    }
-    return false;
+    AppMethodBeat.i(43828);
+    finish();
+    AppMethodBeat.o(43828);
   }
   
   public void finish()
   {
-    brG();
+    AppMethodBeat.i(43826);
+    cav();
     super.finish();
+    AppMethodBeat.o(43826);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.mall_order_detail_info_ui;
+    return 2130970097;
   }
   
-  protected final void initView()
+  public void initView()
   {
+    AppMethodBeat.i(43811);
     int i;
-    if (this.mQA)
+    if (this.pqO)
     {
-      com.tencent.mm.plugin.order.a.b.brv();
-      j localj = com.tencent.mm.plugin.order.a.b.bry().KI(this.iGK);
-      if ((localj != null) && (!TextUtils.isEmpty(localj.mQc)) && (com.tencent.mm.plugin.order.c.c.yS(localj.mQc)))
+      com.tencent.mm.plugin.order.a.b.cak();
+      j localj = com.tencent.mm.plugin.order.a.b.can().WJ(this.kMN);
+      if ((localj != null) && (!TextUtils.isEmpty(localj.pqr)) && (com.tencent.mm.plugin.order.c.c.isNumeric(localj.pqr)))
       {
-        i = Integer.valueOf(localj.mQc).intValue();
+        i = Integer.valueOf(localj.pqr).intValue();
         if (i != 2) {
-          break label313;
+          break label325;
         }
-        setMMTitle(a.i.mall_order_detail_ui_for_notify_title);
+        setMMTitle(2131301456);
       }
     }
     for (;;)
     {
-      this.mQt = findViewById(a.f.order_latest_status_info_layout);
-      this.mQu = findViewById(a.f.order_latest_status_info_for_msg_layout);
-      this.mQy = findViewById(a.f.order_product_item_text_x4);
-      this.mQz = findViewById(a.f.order_product_item_icon_text_x4);
-      this.mQx = findViewById(a.f.order_product_item_text_x1);
-      this.mQv = findViewById(a.f.order_transaction_info_parent_layout);
-      this.mQw = findViewById(a.f.order_transaction_info_layout);
-      this.mQt.setOnClickListener(this.fvj);
-      this.mQz.setOnClickListener(this.fvj);
-      this.mQy.setOnClickListener(this.fvj);
-      this.mQx.setOnClickListener(this.fvj);
-      this.mQv.setOnClickListener(this.fvj);
-      findViewById(a.f.order_confirm_result_btn).setOnClickListener(this.fvj);
-      findViewById(a.f.hot_contact_phone_title_tv).setOnClickListener(this.fvj);
-      findViewById(a.f.wx_contact_service_title_tv).setOnClickListener(this.fvj);
-      this.Nn = ((ListView)findViewById(a.f.order_action_list));
-      this.mQs = new MallOrderDetailInfoUI.a(this, (byte)0);
-      this.Nn.setAdapter(this.mQs);
-      this.mQs.notifyDataSetChanged();
-      this.Nn.setOnItemClickListener(new MallOrderDetailInfoUI.6(this));
-      XS();
+      this.pqH = findViewById(2131825982);
+      this.pqI = findViewById(2131825983);
+      this.pqM = findViewById(2131825984);
+      this.pqN = findViewById(2131825985);
+      this.pqL = findViewById(2131825986);
+      this.pqJ = findViewById(2131825987);
+      this.pqK = findViewById(2131825988);
+      this.pqH.setOnClickListener(this.gMO);
+      this.pqN.setOnClickListener(this.gMO);
+      this.pqM.setOnClickListener(this.gMO);
+      this.pqL.setOnClickListener(this.gMO);
+      this.pqJ.setOnClickListener(this.gMO);
+      findViewById(2131826001).setOnClickListener(this.gMO);
+      findViewById(2131825992).setOnClickListener(this.gMO);
+      findViewById(2131825994).setOnClickListener(this.gMO);
+      this.mListView = ((ListView)findViewById(2131825990));
+      this.pqG = new MallOrderDetailInfoUI.a(this, (byte)0);
+      this.mListView.setAdapter(this.pqG);
+      this.pqG.notifyDataSetChanged();
+      this.mListView.setOnItemClickListener(new MallOrderDetailInfoUI.6(this));
+      ary();
+      AppMethodBeat.o(43811);
       return;
       i = -1;
       break;
-      label313:
+      label325:
       if (i == 1)
       {
-        setMMTitle(a.i.mall_order_detail_ui_for_reminder_title);
+        setMMTitle(2131301457);
         continue;
-        setMMTitle(a.i.mall_order_detail_ui_title);
+        setMMTitle(2131301458);
       }
     }
   }
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void m(String paramString, Bitmap paramBitmap)
   {
-    paramString = (ImageView)this.mMl.get(paramString);
+    AppMethodBeat.i(43823);
+    paramString = (ImageView)this.pmB.get(paramString);
     if (paramString != null) {
       paramString.setImageBitmap(paramBitmap);
     }
+    AppMethodBeat.o(43823);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    Object localObject1 = null;
+    AppMethodBeat.i(43810);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.mm.wallet_core.a.aj(this);
+    paramBundle = com.tencent.mm.wallet_core.a.aM(this);
     if ((paramBundle != null) && ((paramBundle instanceof com.tencent.mm.plugin.order.a.a)))
     {
-      paramBundle = this.BX.getString("key_trans_id");
-      this.iGK = paramBundle;
+      paramBundle = getInput().getString("key_trans_id");
+      this.kMN = paramBundle;
       if (paramBundle == null) {
-        break label79;
+        break label91;
       }
-      com.tencent.mm.plugin.order.a.b.brv();
-      if (com.tencent.mm.plugin.order.a.b.bry().KH(paramBundle)) {
-        break label79;
+      com.tencent.mm.plugin.order.a.b.cak();
+      if (com.tencent.mm.plugin.order.a.b.can().WI(paramBundle)) {
+        break label91;
       }
-      this.mQA = false;
-      a(new com.tencent.mm.plugin.order.model.h(paramBundle), true, true);
+      this.pqO = false;
+      doSceneProgress(new com.tencent.mm.plugin.order.model.h(paramBundle));
     }
     for (;;)
     {
       initView();
+      AppMethodBeat.o(43810);
       return;
-      label79:
-      com.tencent.mm.plugin.order.a.b.brv();
-      if (com.tencent.mm.plugin.order.a.b.bry().KH(paramBundle))
+      label91:
+      com.tencent.mm.plugin.order.a.b.cak();
+      if (com.tencent.mm.plugin.order.a.b.can().WI(paramBundle))
       {
-        this.mQA = true;
-        com.tencent.mm.plugin.order.a.b.brv();
-        com.tencent.mm.plugin.order.model.c localc = com.tencent.mm.plugin.order.a.b.bry();
-        if (TextUtils.isEmpty(paramBundle)) {}
-        for (paramBundle = null;; paramBundle = com.tencent.mm.plugin.order.model.c.a(localc.KI(paramBundle)))
+        this.pqO = true;
+        com.tencent.mm.plugin.order.a.b.cak();
+        Object localObject2 = com.tencent.mm.plugin.order.a.b.can();
+        if (TextUtils.isEmpty(paramBundle)) {
+          paramBundle = (Bundle)localObject1;
+        }
+        do
         {
-          this.mPG = paramBundle;
-          if (this.mPG != null) {
+          this.ppW = paramBundle;
+          if (this.ppW != null) {
             break;
           }
-          brH();
+          caw();
           break;
-          y.v("MicroMsg.MallPayMsgManager", "getMallOrderDetailObjectByMsgId msgId:" + paramBundle);
+          ab.v("MicroMsg.MallPayMsgManager", "getMallOrderDetailObjectByMsgId msgId:".concat(String.valueOf(paramBundle)));
+          localObject2 = ((com.tencent.mm.plugin.order.model.c)localObject2).WJ(paramBundle);
+          paramBundle = (Bundle)localObject1;
+        } while (localObject2 == null);
+        paramBundle = new MallOrderDetailObject();
+        localObject1 = new MallOrderDetailObject.b();
+        ((MallOrderDetailObject.b)localObject1).poV = ((j)localObject2).pqv;
+        if ((!TextUtils.isEmpty(((j)localObject2).pqt)) && (com.tencent.mm.plugin.order.c.c.isNumeric(((j)localObject2).pqt))) {}
+        int i;
+        Object localObject3;
+        MallOrderDetailObject.a locala;
+        for (((MallOrderDetailObject.b)localObject1).oLs = Integer.valueOf(((j)localObject2).pqt).intValue();; ((MallOrderDetailObject.b)localObject1).oLs = ((int)(System.currentTimeMillis() / 1000L)))
+        {
+          ((MallOrderDetailObject.b)localObject1).thumbUrl = ((j)localObject2).pqu;
+          ((MallOrderDetailObject.b)localObject1).npR = ((j)localObject2).pqw;
+          ((MallOrderDetailObject.b)localObject1).poW = ((j)localObject2).cDI;
+          paramBundle.poN = ((MallOrderDetailObject.b)localObject1);
+          localObject1 = ((j)localObject2).pqz;
+          if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
+            break;
+          }
+          paramBundle.poP = new ArrayList();
+          i = 0;
+          while (i < ((List)localObject1).size())
+          {
+            localObject3 = (j.a)((List)localObject1).get(i);
+            locala = new MallOrderDetailObject.a();
+            locala.name = ((j.a)localObject3).name;
+            locala.value = "";
+            locala.jumpUrl = ((j.a)localObject3).jumpUrl;
+            locala.kmy = false;
+            paramBundle.poP.add(locala);
+            i += 1;
+          }
+        }
+        localObject1 = ((j)localObject2).pqA;
+        if ((localObject1 != null) && (((List)localObject1).size() > 0))
+        {
+          if (paramBundle.poP == null) {
+            paramBundle.poP = new ArrayList();
+          }
+          i = 0;
+          while (i < ((List)localObject1).size())
+          {
+            localObject3 = (j.b)((List)localObject1).get(i);
+            locala = new MallOrderDetailObject.a();
+            locala.name = ((j.b)localObject3).name;
+            locala.value = ((j.b)localObject3).value;
+            locala.jumpUrl = ((j.b)localObject3).jumpUrl;
+            locala.kmy = false;
+            if (i == 0) {
+              locala.kmy = true;
+            }
+            paramBundle.poP.add(locala);
+            i += 1;
+          }
+        }
+        paramBundle.poT = ((j)localObject2).pqy;
+        paramBundle.cvr = ((j)localObject2).pqx;
+        if ((!TextUtils.isEmpty(((j)localObject2).pqt)) && (com.tencent.mm.plugin.order.c.c.isNumeric(((j)localObject2).pqt))) {}
+        for (paramBundle.poU = Integer.valueOf(((j)localObject2).pqt).intValue();; paramBundle.poU = ((int)(System.currentTimeMillis() / 1000L))) {
+          break;
         }
       }
-      y.w("MicroMsg.MallOrderDetailInfoUI", "mOrders info is Illegal!");
-      brH();
+      ab.w("MicroMsg.MallOrderDetailInfoUI", "mOrders info is Illegal!");
+      caw();
     }
   }
   
   public void onDestroy()
   {
-    brG();
+    AppMethodBeat.i(43827);
+    cav();
     super.onDestroy();
+    AppMethodBeat.o(43827);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(43812);
     if (paramInt == 4)
     {
-      if ((com.tencent.mm.wallet_core.a.aj(this) instanceof com.tencent.mm.plugin.order.a.a)) {
-        com.tencent.mm.wallet_core.a.ag(this);
+      if ((com.tencent.mm.wallet_core.a.aM(this) instanceof com.tencent.mm.plugin.order.a.a)) {
+        com.tencent.mm.wallet_core.a.aJ(this);
       }
+      AppMethodBeat.o(43812);
       return true;
     }
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.o(43812);
+    return bool;
   }
   
-  public final void st(int paramInt)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    finish();
+    AppMethodBeat.i(43813);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      if ((paramm instanceof com.tencent.mm.plugin.order.model.h))
+      {
+        paramString = ((com.tencent.mm.plugin.order.model.h)paramm).ppW;
+        ab.d("MicroMsg.MallOrderDetailInfoUI", "tempObject:".concat(String.valueOf(paramString)));
+        if (paramString != null)
+        {
+          this.ppW = paramString;
+          ary();
+        }
+      }
+      AppMethodBeat.o(43813);
+      return true;
+    }
+    AppMethodBeat.o(43813);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

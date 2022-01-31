@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.wallet_index.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jd;
+import com.tencent.mm.sdk.b.c;
 
 final class OrderHandlerUI$2
-  implements DialogInterface.OnClickListener
+  extends c<jd>
 {
-  OrderHandlerUI$2(OrderHandlerUI paramOrderHandlerUI) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  OrderHandlerUI$2(OrderHandlerUI paramOrderHandlerUI)
   {
-    paramDialogInterface.dismiss();
-    this.qLT.finish();
+    AppMethodBeat.i(142587);
+    this.__eventId = jd.class.getName().hashCode();
+    AppMethodBeat.o(142587);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.ui.OrderHandlerUI.2
  * JD-Core Version:    0.7.0.1
  */

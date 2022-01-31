@@ -2,10 +2,11 @@ package com.tencent.mm.chatroom.ui;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class ChatroomInfoUI$1
-  extends ah
+  extends ak
 {
   ChatroomInfoUI$1(ChatroomInfoUI paramChatroomInfoUI, Looper paramLooper)
   {
@@ -14,12 +15,14 @@ final class ChatroomInfoUI$1
   
   public final void handleMessage(Message paramMessage)
   {
-    ChatroomInfoUI.a(this.dod);
+    AppMethodBeat.i(103962);
+    ChatroomInfoUI.a(this.efA);
+    AppMethodBeat.o(103962);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ChatroomInfoUI.1
  * JD-Core Version:    0.7.0.1
  */

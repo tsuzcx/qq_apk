@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.g;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
 
 final class b$1
   extends AnimatorListenerAdapter
@@ -12,7 +13,9 @@ final class b$1
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.gkW.tT(this.gqp.h("ok", null));
+    AppMethodBeat.i(126290);
+    this.hEM.BS(this.hLj.j("ok", null));
+    AppMethodBeat.o(126290);
   }
 }
 

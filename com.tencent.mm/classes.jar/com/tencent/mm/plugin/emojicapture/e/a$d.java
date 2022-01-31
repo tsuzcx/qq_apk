@@ -1,9 +1,12 @@
 package com.tencent.mm.plugin.emojicapture.e;
 
+import a.l;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureUI.b;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
 final class a$d
   implements DialogInterface.OnCancelListener
 {
@@ -11,7 +14,9 @@ final class a$d
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jme.jmd.aKK();
+    AppMethodBeat.i(2742);
+    a.c(this.lwa).boQ();
+    AppMethodBeat.o(2742);
   }
 }
 

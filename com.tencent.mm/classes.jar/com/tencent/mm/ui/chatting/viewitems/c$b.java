@@ -1,58 +1,61 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.ai.h;
-import com.tencent.mm.ai.h.a;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.protocal.c.cln;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.chatting.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.h;
+import com.tencent.mm.aj.h.a;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.protocal.protobuf.czd;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.chatting.d.a;
 import java.util.LinkedList;
 
 final class c$b
   implements h.a
 {
-  a byx;
-  private String rAL;
+  a caz;
+  private String vrN;
   
   protected c$b(a parama, String paramString)
   {
-    this.rAL = paramString;
-    this.byx = parama;
+    this.vrN = paramString;
+    this.caz = parama;
   }
   
-  public final String Mq()
+  public final String aeZ()
   {
-    return this.rAL;
+    return this.vrN;
   }
   
-  public final void e(LinkedList<cln> paramLinkedList)
+  public final void e(LinkedList<czd> paramLinkedList)
   {
     int k = 0;
-    z.Mz().b(this);
-    y.d("MicroMsg.ChattingItem", "onKFSceneEnd.");
+    AppMethodBeat.i(32791);
+    z.afj().b(this);
+    ab.d("MicroMsg.ChattingItem", "onKFSceneEnd.");
     int i;
     if ((paramLinkedList != null) && (paramLinkedList.size() > 0))
     {
-      y.i("MicroMsg.ChattingItem", "onKFSceneEnd, workers size : %d. callbackid=%s", new Object[] { Integer.valueOf(paramLinkedList.size()), this.rAL });
-      if (this.byx != null)
+      ab.i("MicroMsg.ChattingItem", "onKFSceneEnd, workers size : %d. callbackid=%s", new Object[] { Integer.valueOf(paramLinkedList.size()), this.vrN });
+      if (this.caz != null)
       {
         i = k;
         if (paramLinkedList != null)
         {
           if (paramLinkedList.size() != 0) {
-            break label96;
+            break label106;
           }
           i = k;
         }
         if (i != 0) {
-          ai.d(new c.b.1(this));
+          al.d(new c.b.1(this));
         }
       }
     }
+    AppMethodBeat.o(32791);
     return;
-    label96:
+    label106:
     int j = 0;
     for (;;)
     {
@@ -60,13 +63,13 @@ final class c$b
       if (j >= paramLinkedList.size()) {
         break;
       }
-      cln localcln = (cln)paramLinkedList.get(j);
-      if ((localcln != null) && (!bk.bl(localcln.tYK)) && (localcln.tYK.equals(this.rAL)))
+      czd localczd = (czd)paramLinkedList.get(j);
+      if ((localczd != null) && (!bo.isNullOrNil(localczd.ygd)) && (localczd.ygd.equals(this.vrN)))
       {
-        y.i("MicroMsg.ChattingItem", "needCallback find match kfopenid");
-        if (!bk.bl(localcln.tqh))
+        ab.i("MicroMsg.ChattingItem", "needCallback find match kfopenid");
+        if (!bo.isNullOrNil(localczd.Nickname))
         {
-          y.i("MicroMsg.ChattingItem", "needCallback: true");
+          ab.i("MicroMsg.ChattingItem", "needCallback: true");
           i = 1;
           break;
         }

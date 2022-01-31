@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.record.ui;
 
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class RecordMsgFileUI$3
   implements Runnable
@@ -12,8 +12,10 @@ final class RecordMsgFileUI$3
   
   public final void run()
   {
-    RecordMsgFileUI.n(this.nue).setProgress(this.fyT);
-    RecordMsgFileUI.o(this.nue).setText(this.nue.getString(R.l.favorite_downloading, new Object[] { bk.ar(this.ejr), bk.ar(this.nug) }));
+    AppMethodBeat.i(24255);
+    RecordMsgFileUI.n(this.pZN).setProgress(this.gQj);
+    RecordMsgFileUI.o(this.pZN).setText(this.pZN.getString(2131299700, new Object[] { bo.aJ(this.fzv), bo.aJ(this.pZP) }));
+    AppMethodBeat.o(24255);
   }
 }
 

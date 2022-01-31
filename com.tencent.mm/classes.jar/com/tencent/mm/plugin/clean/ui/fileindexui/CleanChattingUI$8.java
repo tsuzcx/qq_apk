@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.app.ProgressDialog;
 import android.widget.TextView;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 
 final class CleanChattingUI$8
@@ -13,9 +13,11 @@ final class CleanChattingUI$8
   
   public final void run()
   {
-    CleanChattingUI.g(this.iDb).dismiss();
-    h.b(this.iDb, this.iDb.getString(R.l.clean_del_data_ok_tip, new Object[] { bk.cm(this.iCV) }), "", true);
-    CleanChattingUI.e(this.iDb).setText(this.iDb.getString(R.l.analyse_file_profress, new Object[] { " " }));
+    AppMethodBeat.i(18787);
+    CleanChattingUI.g(this.kIi).dismiss();
+    h.b(this.kIi, this.kIi.getString(2131298375, new Object[] { bo.hk(this.kIc) }), "", true);
+    CleanChattingUI.e(this.kIi).setText(this.kIi.getString(2131296534, new Object[] { " " }));
+    AppMethodBeat.o(18787);
   }
 }
 

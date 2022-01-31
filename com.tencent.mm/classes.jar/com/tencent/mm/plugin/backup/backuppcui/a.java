@@ -8,10 +8,9 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.model.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.backup.b.f.b;
 import com.tencent.mm.plugin.backup.backuppcmodel.b;
 import com.tencent.mm.pluginsdk.ui.a.b;
@@ -22,32 +21,44 @@ import java.util.LinkedList;
 public final class a
   extends BaseAdapter
 {
-  static boolean hLc = false;
-  HashSet<Integer> hIR;
-  BackupPcChooseUI hLb;
+  static boolean jEF = false;
+  HashSet<Integer> jCr;
+  BackupPcChooseUI jEE;
   
   public a(BackupPcChooseUI paramBackupPcChooseUI)
   {
-    this.hLb = paramBackupPcChooseUI;
-    this.hIR = new HashSet();
-    hLc = false;
+    AppMethodBeat.i(17568);
+    this.jEE = paramBackupPcChooseUI;
+    this.jCr = new HashSet();
+    jEF = false;
+    AppMethodBeat.o(17568);
   }
   
-  private static String ke(int paramInt)
+  private static String getItem(int paramInt)
   {
-    LinkedList localLinkedList = b.auw().auA().atP();
-    if (localLinkedList.get(paramInt) == null) {
+    AppMethodBeat.i(17570);
+    Object localObject = b.aTX().aUb().aTn();
+    if (((LinkedList)localObject).get(paramInt) == null)
+    {
+      AppMethodBeat.o(17570);
       return null;
     }
-    return ((f.b)localLinkedList.get(paramInt)).hFD;
+    localObject = ((f.b)((LinkedList)localObject).get(paramInt)).jza;
+    AppMethodBeat.o(17570);
+    return localObject;
   }
   
   public final int getCount()
   {
-    LinkedList localLinkedList = b.auw().auA().atP();
-    if (localLinkedList != null) {
-      return localLinkedList.size();
+    AppMethodBeat.i(17569);
+    LinkedList localLinkedList = b.aTX().aUb().aTn();
+    if (localLinkedList != null)
+    {
+      int i = localLinkedList.size();
+      AppMethodBeat.o(17569);
+      return i;
     }
+    AppMethodBeat.o(17569);
     return 0;
   }
   
@@ -58,39 +69,42 @@ public final class a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(17571);
     String str;
     if (paramView == null)
     {
-      paramView = this.hLb.getLayoutInflater().inflate(R.i.backup_pc_choose_item, paramViewGroup, false);
+      paramView = this.jEE.getLayoutInflater().inflate(2130968803, paramViewGroup, false);
       paramViewGroup = new a.a(this);
-      paramViewGroup.doU = ((ImageView)paramView.findViewById(R.h.avatar_iv));
-      paramViewGroup.eXO = ((TextView)paramView.findViewById(R.h.title_tv));
-      paramViewGroup.eXQ = ((CheckBox)paramView.findViewById(R.h.select_cb));
-      paramViewGroup.hIU = ((RelativeLayout)paramView.findViewById(R.h.select_cb_click_layout));
+      paramViewGroup.egq = ((ImageView)paramView.findViewById(2131821210));
+      paramViewGroup.gpL = ((TextView)paramView.findViewById(2131821212));
+      paramViewGroup.gpN = ((CheckBox)paramView.findViewById(2131821631));
+      paramViewGroup.jCu = ((RelativeLayout)paramView.findViewById(2131821630));
       paramView.setTag(paramViewGroup);
-      paramViewGroup.hIU.setOnClickListener(new a.1(this, paramInt));
-      str = ke(paramInt);
-      a.b.a(paramViewGroup.doU, str);
-      if (!s.fn(str)) {
-        break label192;
+      paramViewGroup.jCu.setOnClickListener(new a.1(this, paramInt));
+      str = getItem(paramInt);
+      a.b.c(paramViewGroup.egq, str);
+      if (!t.lA(str)) {
+        break label199;
       }
-      paramViewGroup.eXO.setText(j.a(this.hLb, r.getDisplayName(str, str), paramViewGroup.eXO.getTextSize()));
+      paramViewGroup.gpL.setText(j.b(this.jEE, s.getDisplayName(str, str), paramViewGroup.gpL.getTextSize()));
+      label158:
+      if (!this.jCr.contains(Integer.valueOf(paramInt))) {
+        break label228;
+      }
+      paramViewGroup.gpN.setChecked(true);
     }
     for (;;)
     {
-      if (!this.hIR.contains(Integer.valueOf(paramInt))) {
-        break label221;
-      }
-      paramViewGroup.eXQ.setChecked(true);
+      AppMethodBeat.o(17571);
       return paramView;
       paramViewGroup = (a.a)paramView.getTag();
       break;
-      label192:
-      paramViewGroup.eXO.setText(j.a(this.hLb, r.gV(str), paramViewGroup.eXO.getTextSize()));
+      label199:
+      paramViewGroup.gpL.setText(j.b(this.jEE, s.nE(str), paramViewGroup.gpL.getTextSize()));
+      break label158;
+      label228:
+      paramViewGroup.gpN.setChecked(false);
     }
-    label221:
-    paramViewGroup.eXQ.setChecked(false);
-    return paramView;
   }
 }
 

@@ -5,7 +5,7 @@ public final class c$in
 {
   public c$in()
   {
-    super("setStatusBarStyle", "setStatusBarStyle", 206, false);
+    super("sendEmail", "send_email", 35, false);
   }
 }
 

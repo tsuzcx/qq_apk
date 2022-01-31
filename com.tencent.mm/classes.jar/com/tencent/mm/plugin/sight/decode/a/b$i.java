@@ -1,55 +1,65 @@
 package com.tencent.mm.plugin.sight.decode.a;
 
 import android.media.MediaPlayer;
-import com.tencent.mm.compatible.b.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.b.k;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class b$i
   implements Runnable
 {
-  double oeR = -1.0D;
-  MediaPlayer ofi;
+  double qTg = -1.0D;
+  MediaPlayer qTw;
   public int type;
   
   private b$i(b paramb) {}
   
-  private void bnj()
+  private void bVF()
   {
-    y.i("MicroMsg.SightPlayController", "stopPlayer");
+    AppMethodBeat.i(70243);
+    ab.i("MicroMsg.SightPlayController", "stopPlayer");
     try
     {
-      if (this.ofi != null)
+      if (this.qTw != null)
       {
-        this.ofi.stop();
-        this.ofi.release();
-        this.ofi = null;
+        this.qTw.stop();
+        this.qTw.release();
+        this.qTw = null;
       }
+      AppMethodBeat.o(70243);
       return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.SightPlayController", localException, "stop play sound error: %s", new Object[] { localException.getMessage() });
-      this.ofi = null;
+      ab.printErrStackTrace("MicroMsg.SightPlayController", localException, "stop play sound error: %s", new Object[] { localException.getMessage() });
+      this.qTw = null;
+      AppMethodBeat.o(70243);
     }
   }
   
-  public final double bBk()
+  public final double cmK()
   {
-    if (this.ofi == null) {
+    AppMethodBeat.i(70244);
+    if (this.qTw == null)
+    {
+      AppMethodBeat.o(70244);
       return 0.0D;
     }
-    return this.ofi.getCurrentPosition();
+    double d = this.qTw.getCurrentPosition();
+    AppMethodBeat.o(70244);
+    return d;
   }
   
   public final void run()
   {
+    AppMethodBeat.i(70245);
     String str;
     switch (this.type)
     {
     default: 
       str = "unknown";
-      y.i("MicroMsg.SightPlayController", "do play sound, operation %s", new Object[] { str });
+      ab.i("MicroMsg.SightPlayController", "do play sound, operation %s", new Object[] { str });
       switch (this.type)
       {
       }
@@ -57,6 +67,7 @@ public final class b$i
     }
     for (;;)
     {
+      AppMethodBeat.o(70245);
       return;
       str = "start";
       break;
@@ -68,79 +79,84 @@ public final class b$i
       break;
       str = "seek";
       break;
-      bnj();
-      if (!bk.bl(b.a(this.oeY)))
+      bVF();
+      if (!bo.isNullOrNil(b.a(this.qTn)))
       {
         try
         {
-          this.ofi = new j();
-          this.ofi.setDisplay(null);
-          this.ofi.reset();
-          this.ofi.setDataSource(b.a(this.oeY));
-          this.ofi.setAudioStreamType(3);
-          this.ofi.setOnErrorListener(new b.i.1(this));
-          this.ofi.prepare();
-          this.ofi.start();
+          this.qTw = new k();
+          this.qTw.setDisplay(null);
+          this.qTw.reset();
+          this.qTw.setDataSource(b.a(this.qTn));
+          this.qTw.setAudioStreamType(3);
+          this.qTw.setOnErrorListener(new b.i.1(this));
+          this.qTw.prepare();
+          this.qTw.start();
+          AppMethodBeat.o(70245);
           return;
         }
         catch (Exception localException1)
         {
-          y.printErrStackTrace("MicroMsg.SightPlayController", localException1, "play sound error: %s", new Object[] { localException1.getMessage() });
-          y.e("MicroMsg.SightPlayController", "on Exception: play %s ERROR!!", new Object[] { b.a(this.oeY) });
-          this.oeY.clear();
+          ab.printErrStackTrace("MicroMsg.SightPlayController", localException1, "play sound error: %s", new Object[] { localException1.getMessage() });
+          ab.e("MicroMsg.SightPlayController", "on Exception: play %s ERROR!!", new Object[] { b.a(this.qTn) });
+          this.qTn.clear();
+          if (b.b(this.qTn) != null) {
+            b.b(this.qTn).c(this.qTn, -1);
+          }
+          AppMethodBeat.o(70245);
+          return;
         }
-        if (b.b(this.oeY) != null)
+        bVF();
+        AppMethodBeat.o(70245);
+        return;
+        try
         {
-          b.b(this.oeY).d(this.oeY, -1);
+          if ((this.qTw != null) && (this.qTw.isPlaying())) {
+            this.qTw.pause();
+          }
+          AppMethodBeat.o(70245);
           return;
-          bnj();
+        }
+        catch (Exception localException2)
+        {
+          ab.printErrStackTrace("MicroMsg.SightPlayController", localException2, "pause sound error: %s", new Object[] { localException2.getMessage() });
+          bVF();
+          AppMethodBeat.o(70245);
           return;
-          try
-          {
-            if ((this.ofi == null) || (!this.ofi.isPlaying())) {
-              continue;
-            }
-            this.ofi.pause();
-            return;
+        }
+        try
+        {
+          if (this.qTw != null) {
+            this.qTw.start();
           }
-          catch (Exception localException2)
-          {
-            y.printErrStackTrace("MicroMsg.SightPlayController", localException2, "pause sound error: %s", new Object[] { localException2.getMessage() });
-            bnj();
-            return;
-          }
-          try
-          {
-            if (this.ofi != null)
-            {
-              this.ofi.start();
-              return;
-            }
-          }
-          catch (Exception localException3)
-          {
-            y.printErrStackTrace("MicroMsg.SightPlayController", localException3, "pause sound error: %s", new Object[] { localException3.getMessage() });
-            bnj();
-            return;
-          }
+          AppMethodBeat.o(70245);
+          return;
+        }
+        catch (Exception localException3)
+        {
+          ab.printErrStackTrace("MicroMsg.SightPlayController", localException3, "pause sound error: %s", new Object[] { localException3.getMessage() });
+          bVF();
+          AppMethodBeat.o(70245);
+          return;
+        }
+        try
+        {
+          ab.i("MicroMsg.SightPlayController", "soundplayer seek %f", new Object[] { Double.valueOf(this.qTg) });
+          this.qTw.seekTo((int)(this.qTg * 1000.0D));
+          AppMethodBeat.o(70245);
+          return;
+        }
+        catch (Exception localException4)
+        {
+          ab.printErrStackTrace("MicroMsg.SightPlayController", localException4, "seek sound error: %s", new Object[] { localException4.getMessage() });
         }
       }
-    }
-    try
-    {
-      y.i("MicroMsg.SightPlayController", "soundplayer seek %f", new Object[] { Double.valueOf(this.oeR) });
-      this.ofi.seekTo((int)(this.oeR * 1000.0D));
-      return;
-    }
-    catch (Exception localException4)
-    {
-      y.printErrStackTrace("MicroMsg.SightPlayController", localException4, "seek sound error: %s", new Object[] { localException4.getMessage() });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.a.b.i
  * JD-Core Version:    0.7.0.1
  */

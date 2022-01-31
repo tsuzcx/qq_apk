@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class IPCallMsgUI$5
   implements AbsListView.OnScrollListener
@@ -14,31 +15,32 @@ final class IPCallMsgUI$5
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
+    AppMethodBeat.i(22190);
     if (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1)
     {
-      paramAbsListView = IPCallMsgUI.b(this.lwI);
-      if (!paramAbsListView.aCc()) {
-        break label72;
+      paramAbsListView = IPCallMsgUI.b(this.nTV);
+      if (paramAbsListView.bem()) {
+        if (IPCallMsgUI.d(paramAbsListView.nTV).getParent() != null) {
+          IPCallMsgUI.a(paramAbsListView.nTV).removeFooterView(IPCallMsgUI.d(paramAbsListView.nTV));
+        }
       }
-      if (IPCallMsgUI.d(paramAbsListView.lwI).getParent() != null) {
-        IPCallMsgUI.a(paramAbsListView.lwI).removeFooterView(IPCallMsgUI.d(paramAbsListView.lwI));
+      for (;;)
+      {
+        IPCallMsgUI.b(this.nTV).a(null, null);
+        AppMethodBeat.o(22190);
+        return;
+        paramAbsListView.kxm += 10;
+        if (paramAbsListView.kxm > paramAbsListView.eke) {
+          paramAbsListView.kxm = paramAbsListView.eke;
+        }
       }
     }
-    for (;;)
-    {
-      IPCallMsgUI.b(this.lwI).a(null, null);
-      return;
-      label72:
-      paramAbsListView.iwi += 10;
-      if (paramAbsListView.iwi > paramAbsListView.dsw) {
-        paramAbsListView.iwi = paramAbsListView.dsw;
-      }
-    }
+    AppMethodBeat.o(22190);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallMsgUI.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package android.support.v7.widget;
 
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
@@ -11,17 +12,21 @@ final class SearchView$7
   
   public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.ajT.ajJ == null) {}
-    do
+    if (this.amj.alZ == null) {}
+    for (;;)
     {
       return false;
-      if ((this.ajT.aiX.isPopupShowing()) && (this.ajT.aiX.getListSelection() != -1)) {
-        return this.ajT.b(paramInt, paramKeyEvent);
+      if ((this.amj.aln.isPopupShowing()) && (this.amj.aln.getListSelection() != -1)) {
+        return this.amj.b(paramInt, paramKeyEvent);
       }
-    } while ((SearchView.SearchAutoComplete.a(this.ajT.aiX)) || (!paramKeyEvent.hasNoModifiers()) || (paramKeyEvent.getAction() != 1) || (paramInt != 66));
-    paramView.cancelLongPress();
-    this.ajT.R(this.ajT.aiX.getText().toString());
-    return true;
+      if (TextUtils.getTrimmedLength(this.amj.aln.getText()) == 0) {}
+      for (int i = 1; (i == 0) && (paramKeyEvent.hasNoModifiers()) && (paramKeyEvent.getAction() == 1) && (paramInt == 66); i = 0)
+      {
+        paramView.cancelLongPress();
+        this.amj.T(this.amj.aln.getText().toString());
+        return true;
+      }
+    }
   }
 }
 

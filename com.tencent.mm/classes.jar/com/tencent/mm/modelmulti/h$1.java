@@ -1,9 +1,10 @@
 package com.tencent.mm.modelmulti;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.modelsimple.ab;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.modelsimple.ac;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.List;
 
 final class h$1
@@ -13,29 +14,33 @@ final class h$1
   
   public final void run()
   {
-    new ab(5, "", "", "", "", false, 1, false).a(h.a(this.esV), new f()
+    AppMethodBeat.i(59966);
+    new ac(5, "", "", "", "", false, 1, false).doScene(h.a(this.fII), new f()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm)
       {
-        paramAnonymousm.edh = true;
-        y.i("MicroMsg.NetSceneSendMsg", "summerdktext verifypsw onSceneEnd[%d, %d] needVerifyPswList size[%d] errMsg[%s] verifyingPsw[%b], retryVerifyCount[%d]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(h.b(h.1.this.esV).size()), paramAnonymousString, Boolean.valueOf(h.c(h.1.this.esV)), Integer.valueOf(h.d(h.1.this.esV)) });
+        AppMethodBeat.i(59965);
+        paramAnonymousm.setHasCallbackToQueue(true);
+        ab.i("MicroMsg.NetSceneSendMsg", "summerdktext verifypsw onSceneEnd[%d, %d] needVerifyPswList size[%d] errMsg[%s] verifyingPsw[%b], retryVerifyCount[%d]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(h.b(h.1.this.fII).size()), paramAnonymousString, Boolean.valueOf(h.c(h.1.this.fII)), Integer.valueOf(h.d(h.1.this.fII)) });
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          h.b(h.1.this.esV).clear();
-          h.a(h.1.this.esV, paramAnonymousString);
+          h.b(h.1.this.fII).clear();
+          h.a(h.1.this.fII, paramAnonymousString);
         }
         for (;;)
         {
-          h.f(h.1.this.esV);
-          com.tencent.mm.platformtools.ae.eTw = false;
+          h.f(h.1.this.fII);
+          com.tencent.mm.platformtools.ae.glr = false;
+          AppMethodBeat.o(59965);
           return;
-          h.R(h.b(h.1.this.esV));
-          h.e(h.1.this.esV).onSceneEnd(4, -49, h.1.this.esU, h.1.this.esV);
-          h.S(h.b(h.1.this.esV));
-          h.b(h.1.this.esV).clear();
+          h.Y(h.b(h.1.this.fII));
+          h.e(h.1.this.fII).onSceneEnd(4, -49, h.1.this.fIH, h.1.this.fII);
+          h.Z(h.b(h.1.this.fII));
+          h.b(h.1.this.fII).clear();
         }
       }
     });
+    AppMethodBeat.o(59966);
   }
 }
 

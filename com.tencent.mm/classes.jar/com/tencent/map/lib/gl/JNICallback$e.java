@@ -2,7 +2,7 @@ package com.tencent.map.lib.gl;
 
 public abstract interface JNICallback$e
 {
-  public abstract void B();
+  public abstract void y();
 }
 
 

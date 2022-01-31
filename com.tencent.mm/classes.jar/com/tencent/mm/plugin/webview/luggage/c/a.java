@@ -1,152 +1,69 @@
 package com.tencent.mm.plugin.webview.luggage.c;
 
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.Window;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static Map<Integer, a.a> reN = new HashMap();
-  private static boolean reO = false;
-  private static boolean reP = false;
-  private static boolean reQ = false;
-  private static boolean reR = false;
-  private static boolean reS = false;
-  private static boolean reT = false;
-  private static Map<Integer, Long> startTimeMap = new HashMap();
-  
-  public static a.a RT(String paramString)
+  public static int b(Window paramWindow, boolean paramBoolean)
   {
-    if (!reN.containsKey(Integer.valueOf(paramString.hashCode()))) {
-      reN.put(Integer.valueOf(paramString.hashCode()), new a.a());
-    }
-    return (a.a)reN.get(Integer.valueOf(paramString.hashCode()));
-  }
-  
-  public static void RU(String paramString)
-  {
-    long l1 = Sb(paramString);
-    long l2 = System.currentTimeMillis() - l1;
-    y.i("MicroMsg.WebCostTimeReport", "reportOpenPageCostTime, url: %s, startTime = %d, costTime = %d", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l2) });
-    if ((l1 != 0L) && (!reO))
+    AppMethodBeat.i(6496);
+    int i = paramWindow.getDecorView().getSystemUiVisibility();
+    int j;
+    if (paramBoolean)
     {
-      h.nFQ.a(846L, 1L, l2, false);
-      RT(paramString).reU = l2;
+      j = i | 0x400 | 0x100;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 20) {
+        i = j | 0x200 | 0x2;
+      }
+      j = i | 0x4;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 19) {
+        i = j | 0x1000;
+      }
     }
-    reO = true;
-  }
-  
-  public static void RV(String paramString)
-  {
-    long l1 = Sb(paramString);
-    long l2 = System.currentTimeMillis() - l1;
-    y.i("MicroMsg.WebCostTimeReport", "reportGetA8KeyCostTime, url: %s, startTime = %d, costTime = %d", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l2) });
-    if ((l1 != 0L) && (!reP))
+    for (;;)
     {
-      h.nFQ.a(846L, 2L, l2, false);
-      RT(paramString).reX = (System.currentTimeMillis() - RT(paramString).rfa);
+      AppMethodBeat.o(6496);
+      return i;
+      j = i & 0xFFFFFBFF & 0xFFFFFEFF;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 20) {
+        i = j & 0xFFFFFDFF & 0xFFFFFFFD;
+      }
+      j = i & 0xFFFFFFFB;
+      i = j;
+      if (Build.VERSION.SDK_INT >= 19) {
+        i = j & 0xFFFFEFFF;
+      }
     }
-    reP = true;
   }
   
-  public static void RW(String paramString)
+  public static void c(Window paramWindow, boolean paramBoolean)
   {
-    long l1 = Sb(paramString);
-    RT(paramString).reZ = System.currentTimeMillis();
-    long l2 = RT(paramString).reZ - l1;
-    y.i("MicroMsg.WebCostTimeReport", "reportPageStarted, url: %s, startTime = %d, costTime = %d", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l2) });
-    if ((l1 != 0L) && (!reQ))
+    AppMethodBeat.i(6495);
+    if (paramBoolean)
     {
-      h.nFQ.a(846L, 3L, l2, false);
-      RT(paramString).reV = l2;
+      i = b(paramWindow, paramBoolean);
+      paramWindow.getDecorView().setSystemUiVisibility(i);
+      paramWindow.setFlags(1024, 1024);
+      paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new a.1(paramWindow, paramBoolean));
+      AppMethodBeat.o(6495);
+      return;
     }
-    reQ = true;
-  }
-  
-  public static void RX(String paramString)
-  {
-    long l1 = Sb(paramString);
-    long l2 = System.currentTimeMillis() - l1;
-    y.i("MicroMsg.WebCostTimeReport", "reportPageFinished, url: %s, startTime = %d, costTime = %d", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l2) });
-    if ((l1 != 0L) && (!reR))
-    {
-      h.nFQ.a(846L, 4L, l2, false);
-      RT(paramString).reW = (System.currentTimeMillis() - RT(paramString).reZ);
-    }
-    reR = true;
-  }
-  
-  public static void RY(String paramString)
-  {
-    long l1 = Sb(paramString);
-    long l2 = System.currentTimeMillis() - l1;
-    y.i("MicroMsg.WebCostTimeReport", "reportPreverifyStarted, url: %s, startTime = %d, costTime = %d", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l2) });
-    if ((l1 != 0L) && (!reS))
-    {
-      h.nFQ.a(846L, 5L, l2, false);
-      RT(paramString).rfb = System.currentTimeMillis();
-    }
-    reS = true;
-  }
-  
-  public static void RZ(String paramString)
-  {
-    long l1 = Sb(paramString);
-    long l2 = System.currentTimeMillis() - l1;
-    y.i("MicroMsg.WebCostTimeReport", "reportPreverifyFinished, url: %s, startTime = %d, costTime = %d", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l2) });
-    if ((l1 != 0L) && (!reT))
-    {
-      h.nFQ.a(846L, 6L, l2, false);
-      RT(paramString).reY = (System.currentTimeMillis() - RT(paramString).rfb);
-    }
-    reT = true;
-  }
-  
-  public static void Sa(String paramString)
-  {
-    RT(paramString).rfa = System.currentTimeMillis();
-  }
-  
-  private static long Sb(String paramString)
-  {
-    if (startTimeMap.containsKey(Integer.valueOf(paramString.hashCode()))) {
-      return ((Long)startTimeMap.get(Integer.valueOf(paramString.hashCode()))).longValue();
-    }
-    return 0L;
-  }
-  
-  public static void clean()
-  {
-    startTimeMap.clear();
-    reN.clear();
-  }
-  
-  public static void w(long paramLong, String paramString)
-  {
-    y.i("MicroMsg.WebCostTimeReport", "setStartTime, url: %s, startTime = %d", new Object[] { paramString, Long.valueOf(paramLong) });
-    startTimeMap.put(Integer.valueOf(paramString.hashCode()), Long.valueOf(paramLong));
-    paramString = RT(paramString);
-    paramString.reU = 0L;
-    paramString.reV = 0L;
-    paramString.reW = 0L;
-    paramString.reX = 0L;
-    paramString.reY = 0L;
-    paramString.reZ = 0L;
-    paramString.rfa = 0L;
-    paramString.rfb = 0L;
-    reO = false;
-    reP = false;
-    reQ = false;
-    reR = false;
-    reS = false;
-    reT = false;
-    h.nFQ.a(846L, 0L, 1L, false);
+    int i = b(paramWindow, paramBoolean);
+    paramWindow.getDecorView().setSystemUiVisibility(i);
+    paramWindow.clearFlags(1024);
+    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(null);
+    AppMethodBeat.o(6495);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.c.a
  * JD-Core Version:    0.7.0.1
  */

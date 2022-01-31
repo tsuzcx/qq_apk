@@ -1,39 +1,48 @@
 package com.tencent.mm.plugin.facedetectaction.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetectaction.b.d.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class FaceActionUI$2
   implements d.a
 {
   FaceActionUI$2(FaceActionUI paramFaceActionUI) {}
   
-  public final void Cu(String paramString)
+  public final void Nv(String paramString)
   {
-    y.i("MicroMsg.FaceActionUI", "onVerifyFinish:   authToken ：%s", new Object[] { paramString });
-    ai.d(new FaceActionUI.2.3(this, paramString));
+    AppMethodBeat.i(718);
+    ab.i("MicroMsg.FaceActionUI", "onVerifyFinish:   authToken ：%s", new Object[] { paramString });
+    al.d(new FaceActionUI.2.3(this, paramString));
+    AppMethodBeat.o(718);
   }
   
   public final void a(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    y.i("MicroMsg.FaceActionUI", "onError, err: %s, cgiErrCode: %s, cgiErrMsg: %s,retry: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramInt3) });
-    FaceActionUI.b(this.jWU, paramInt1);
-    FaceActionUI.c(this.jWU, paramInt2);
-    FaceActionUI.b(this.jWU, paramString);
-    ai.d(new FaceActionUI.2.4(this, paramString, paramInt3, paramInt2));
+    AppMethodBeat.i(719);
+    ab.i("MicroMsg.FaceActionUI", "onError, err: %s, cgiErrCode: %s, cgiErrMsg: %s,retry: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramInt3) });
+    FaceActionUI.b(this.mrl, paramInt1);
+    FaceActionUI.c(this.mrl, paramInt2);
+    FaceActionUI.b(this.mrl, paramString);
+    al.d(new FaceActionUI.2.4(this, paramString, paramInt3, paramInt2));
+    AppMethodBeat.o(719);
   }
   
-  public final void aPx()
+  public final void aA(int paramInt, String paramString)
   {
-    y.i("MicroMsg.FaceActionUI", "onStartUpload");
-    ai.d(new FaceActionUI.2.2(this));
+    AppMethodBeat.i(716);
+    ab.i("MicroMsg.FaceActionUI", "onInitFaceCheckFinish: %s", new Object[] { Integer.valueOf(paramInt) });
+    al.d(new FaceActionUI.2.1(this, paramInt, paramString));
+    AppMethodBeat.o(716);
   }
   
-  public final void ah(int paramInt, String paramString)
+  public final void bvG()
   {
-    y.i("MicroMsg.FaceActionUI", "onInitFaceCheckFinish: %s", new Object[] { Integer.valueOf(paramInt) });
-    ai.d(new FaceActionUI.2.1(this, paramInt, paramString));
+    AppMethodBeat.i(717);
+    ab.i("MicroMsg.FaceActionUI", "onStartUpload");
+    al.d(new FaceActionUI.2.2(this));
+    AppMethodBeat.o(717);
   }
 }
 

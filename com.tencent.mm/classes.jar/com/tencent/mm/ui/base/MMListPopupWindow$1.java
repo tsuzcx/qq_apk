@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.base;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMListPopupWindow$1
   implements Runnable
@@ -9,10 +10,12 @@ final class MMListPopupWindow$1
   
   public final void run()
   {
-    View localView = this.uWx.aeU;
+    AppMethodBeat.i(112505);
+    View localView = this.zkQ.ahj;
     if ((localView != null) && (localView.getWindowToken() != null)) {
-      this.uWx.show();
+      this.zkQ.show();
     }
+    AppMethodBeat.o(112505);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.youtu.ytagreflectlivecheck.controller;
 
 import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class ReflectController$3
   implements Camera.PreviewCallback
@@ -10,7 +11,9 @@ class ReflectController$3
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
+    AppMethodBeat.i(123154);
     ReflectController.access$1300(this.this$0, paramArrayOfByte, paramCamera);
+    AppMethodBeat.o(123154);
   }
 }
 

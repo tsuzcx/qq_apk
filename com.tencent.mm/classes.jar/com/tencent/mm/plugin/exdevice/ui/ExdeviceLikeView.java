@@ -4,25 +4,22 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class ExdeviceLikeView
   extends RelativeLayout
 {
-  private int jDt;
-  private ExdeviceLikeView.a jDu;
-  private int jDv = 2;
-  private TextView jDw;
-  private ImageView jDx;
-  private ProgressBar jDy;
+  private int lMS;
+  private ExdeviceLikeView.a lMT;
+  private int lMU;
+  private TextView lMV;
+  private ImageView lMW;
+  private ProgressBar lMX;
   private Context mContext;
   
   public ExdeviceLikeView(Context paramContext, AttributeSet paramAttributeSet)
@@ -33,97 +30,89 @@ public class ExdeviceLikeView
   public ExdeviceLikeView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(19977);
+    this.lMU = 2;
     this.mContext = paramContext;
-    paramContext = LayoutInflater.from(this.mContext).inflate(R.i.exdevice_like_view, this, true);
-    this.jDw = ((TextView)paramContext.findViewById(R.h.exdevice_like_num));
-    this.jDx = ((ImageView)paramContext.findViewById(R.h.exdevice_like_icon));
-    this.jDy = ((ProgressBar)paramContext.findViewById(R.h.exdevice_loading));
-    setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        if ((ExdeviceLikeView.a(ExdeviceLikeView.this) != null) && (!ExdeviceLikeView.a(ExdeviceLikeView.this).aMA()) && (ExdeviceLikeView.b(ExdeviceLikeView.this) == 0))
-        {
-          y.d("MicroMsg.ExdeviceLikeView", "click listener is not null");
-          ExdeviceLikeView.this.setSelfLikeState(ExdeviceLikeView.qx(ExdeviceLikeView.b(ExdeviceLikeView.this)));
-          if (ExdeviceLikeView.b(ExdeviceLikeView.this) == 1) {
-            ExdeviceLikeView.c(ExdeviceLikeView.this);
-          }
-          if (ExdeviceLikeView.a(ExdeviceLikeView.this) != null) {
-            ExdeviceLikeView.a(ExdeviceLikeView.this).gl(ExdeviceLikeView.b(ExdeviceLikeView.this));
-          }
-          return;
-        }
-        y.d("MicroMsg.ExdeviceLikeView", "hy: loading or has liked or consumed. abort event");
-      }
-    });
+    paramContext = LayoutInflater.from(this.mContext).inflate(2130969457, this, true);
+    this.lMV = ((TextView)paramContext.findViewById(2131823779));
+    this.lMW = ((ImageView)paramContext.findViewById(2131823780));
+    this.lMX = ((ProgressBar)paramContext.findViewById(2131823781));
+    setOnClickListener(new ExdeviceLikeView.1(this));
+    AppMethodBeat.o(19977);
   }
   
   public void setLikeNum(int paramInt)
   {
-    this.jDt = paramInt;
-    String str = this.jDt;
-    if (this.jDt < 0)
+    AppMethodBeat.i(19978);
+    this.lMS = paramInt;
+    String str = this.lMS;
+    if (this.lMS < 0)
     {
-      y.w("MicroMsg.ExdeviceLikeView", "hy: like num is negative. set to 0");
+      ab.w("MicroMsg.ExdeviceLikeView", "hy: like num is negative. set to 0");
       str = "0";
-      if (this.jDt > 0) {
-        break label85;
+      if (this.lMS > 0) {
+        break label97;
       }
-      this.jDw.setVisibility(8);
+      this.lMV.setVisibility(8);
     }
     for (;;)
     {
-      this.jDw.setText(str);
+      this.lMV.setText(str);
+      AppMethodBeat.o(19978);
       return;
       if (paramInt <= 999) {
         break;
       }
-      y.d("MicroMsg.ExdeviceLikeView", "hy: like num exceeded the limit. put plus");
+      ab.d("MicroMsg.ExdeviceLikeView", "hy: like num exceeded the limit. put plus");
       str = "999+";
       break;
-      label85:
-      this.jDw.setVisibility(0);
+      label97:
+      this.lMV.setVisibility(0);
     }
   }
   
   public void setOnLikeViewClickListener(ExdeviceLikeView.a parama)
   {
-    this.jDu = parama;
+    this.lMT = parama;
   }
   
   public void setSelfLikeState(int paramInt)
   {
-    this.jDv = paramInt;
-    if (this.jDv == 1)
+    AppMethodBeat.i(19979);
+    this.lMU = paramInt;
+    if (this.lMU == 1)
     {
-      this.jDy.setVisibility(8);
-      this.jDw.setVisibility(0);
-      this.jDx.setVisibility(0);
-      this.jDx.setImageResource(R.k.device_rank_item_liked);
+      this.lMX.setVisibility(8);
+      this.lMV.setVisibility(0);
+      this.lMW.setVisibility(0);
+      this.lMW.setImageResource(2131231247);
+      AppMethodBeat.o(19979);
       return;
     }
-    if (this.jDv == 0)
+    if (this.lMU == 0)
     {
-      this.jDy.setVisibility(8);
-      this.jDw.setVisibility(0);
-      this.jDx.setVisibility(0);
-      this.jDx.setImageResource(R.k.device_rank_item_unliked);
+      this.lMX.setVisibility(8);
+      this.lMV.setVisibility(0);
+      this.lMW.setVisibility(0);
+      this.lMW.setImageResource(2131231248);
+      AppMethodBeat.o(19979);
       return;
     }
-    if (this.jDv == 2)
+    if (this.lMU == 2)
     {
-      this.jDw.setVisibility(8);
-      this.jDy.setVisibility(0);
-      this.jDx.setVisibility(8);
+      this.lMV.setVisibility(8);
+      this.lMX.setVisibility(0);
+      this.lMW.setVisibility(8);
+      AppMethodBeat.o(19979);
       return;
     }
-    y.w("MicroMsg.ExdeviceLikeView", "hy: error state");
+    ab.w("MicroMsg.ExdeviceLikeView", "hy: error state");
+    AppMethodBeat.o(19979);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceLikeView
  * JD-Core Version:    0.7.0.1
  */

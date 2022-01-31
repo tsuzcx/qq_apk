@@ -1,124 +1,134 @@
 package com.tencent.mm.network;
 
-import android.os.RemoteException;
 import com.tencent.mars.magicbox.IPxxLogic.ICallBack;
 import com.tencent.mars.mm.MMLogic;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class p
   implements IPxxLogic.ICallBack
 {
-  private static long eNE = 0L;
-  private static int eNF = 0;
+  private static long gds = 0L;
+  private static int gdt = 0;
   private final String TAG = "IPxxCallback";
   
-  private static void jC(int paramInt)
+  private static void mv(int paramInt)
   {
+    AppMethodBeat.i(58535);
     try
     {
-      t localt = aa.Uu();
-      g localg = localt.eNS;
-      if (localg != null) {}
-      try
-      {
-        localt.eNS.eq(paramInt);
-        return;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        y.e("MicroMsg.AutoAuth", "exception:%s", new Object[] { bk.j(localRemoteException) });
-        return;
-      }
+      ab.anF().mw(paramInt);
+      AppMethodBeat.o(58535);
       return;
     }
     catch (Exception localException)
     {
-      y.e("IPxxCallback", "exception:%s", new Object[] { bk.j(localException) });
+      com.tencent.mm.sdk.platformtools.ab.e("IPxxCallback", "exception:%s", new Object[] { bo.l(localException) });
+      AppMethodBeat.o(58535);
     }
   }
   
   public final String getCrashFilePath(int paramInt)
   {
+    AppMethodBeat.i(58530);
     Object localObject = new Date(System.currentTimeMillis() - paramInt * 86400000L);
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-    localObject = com.tencent.mm.compatible.util.e.dOR + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
-    if (com.tencent.mm.a.e.bK((String)localObject)) {
+    localObject = com.tencent.mm.compatible.util.e.eQA + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
+    if (com.tencent.mm.a.e.cN((String)localObject))
+    {
+      AppMethodBeat.o(58530);
       return localObject;
     }
+    AppMethodBeat.o(58530);
     return null;
   }
   
   public final String getUplodLogExtrasInfo()
   {
+    AppMethodBeat.i(58528);
     try
     {
       Object localObject = new StringBuffer();
-      ((StringBuffer)localObject).append("Device:").append(d.soV).append(" ").append(d.soW).append("\n");
+      ((StringBuffer)localObject).append("Device:").append(d.whC).append(" ").append(d.whD).append("\n");
       localObject = ((StringBuffer)localObject).toString();
+      AppMethodBeat.o(58528);
       return localObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(58528);
+    }
     return null;
   }
   
-  public final void recoverLinkAddrs() {}
+  public final void recoverLinkAddrs()
+  {
+    AppMethodBeat.i(58531);
+    MMLogic.recoverLinkAddrs();
+    AppMethodBeat.o(58531);
+  }
   
   public final void setNewDnsDebugHostInfo(String paramString, int paramInt)
   {
+    AppMethodBeat.i(58529);
     MMLogic.setNewDnsDebugHost(paramString, String.valueOf(paramInt));
+    AppMethodBeat.o(58529);
   }
   
   public final void uploadLogFail()
   {
-    eNF = 0;
-    jC(-1);
+    AppMethodBeat.i(58533);
+    gdt = 0;
+    mv(-1);
+    AppMethodBeat.o(58533);
   }
   
   public final void uploadLogResponse(long paramLong1, long paramLong2)
   {
-    int j = 100;
-    int k = 0;
-    y.i("IPxxCallback", "ipxx progress totalSize:%d uploadSize:%d lastPercent:%d ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(eNF) });
-    long l = bk.UX();
-    if (l - 1L < eNE) {
+    AppMethodBeat.i(58532);
+    com.tencent.mm.sdk.platformtools.ab.i("IPxxCallback", "ipxx progress totalSize:%d uploadSize:%d lastPercent:%d ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(gdt) });
+    long l = bo.aox();
+    if (l - 1L < gds)
+    {
+      AppMethodBeat.o(58532);
       return;
     }
-    eNE = l;
-    int i = k;
+    gds = l;
+    int j = 0;
+    int i = j;
     if (paramLong2 >= 0L)
     {
-      i = k;
+      i = j;
       if (paramLong1 > 0L)
       {
-        i = k;
+        i = j;
         if (paramLong2 < paramLong1) {
           i = (int)(100L * paramLong2 / paramLong1);
         }
       }
     }
+    j = i;
     if (i > 100) {
-      i = j;
+      j = 100;
     }
-    for (;;)
-    {
-      j = i;
-      if (eNF > i) {
-        j = eNF;
-      }
-      eNF = j;
-      jC(j);
-      return;
+    i = j;
+    if (gdt > j) {
+      i = gdt;
     }
+    gdt = i;
+    mv(i);
+    AppMethodBeat.o(58532);
   }
   
   public final void uploadLogSuccess()
   {
-    eNF = 0;
-    jC(100);
+    AppMethodBeat.i(58534);
+    gdt = 0;
+    mv(100);
+    AppMethodBeat.o(58534);
   }
 }
 

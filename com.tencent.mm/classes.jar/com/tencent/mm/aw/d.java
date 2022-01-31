@@ -1,123 +1,70 @@
 package com.tencent.mm.aw;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.c.bxw;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.bm;
-import com.tencent.mm.storage.bn;
+import android.telephony.TelephonyManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.m.e;
+import com.tencent.mm.m.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.TimeZone;
 
 public final class d
-  implements f
 {
-  public d.a evv = null;
-  
-  public static void b(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  public static boolean aiE()
   {
-    bm localbm = com.tencent.mm.plugin.y.a.bou().Fr(paramInt1);
-    if (localbm == null)
+    AppMethodBeat.i(108007);
+    if ((aiG()) || (aiF()))
     {
-      localbm = new bm();
-      localbm.field_tipId = paramInt1;
-      localbm.field_tipVersion = 1;
-      localbm.field_tipkey = paramString1;
-      localbm.field_tipType = paramInt2;
-      if (localbm.field_tipsShowInfo == null) {
-        localbm.field_tipsShowInfo = new bxw();
-      }
-      localbm.field_tipsShowInfo.path = paramString2;
-      com.tencent.mm.plugin.y.a.bou().f(localbm);
-      if ((paramInt2 == b.evd) && ((!localbm.field_isExit) || (1 != localbm.field_tipVersion)))
+      AppMethodBeat.o(108007);
+      return true;
+    }
+    AppMethodBeat.o(108007);
+    return false;
+  }
+  
+  public static boolean aiF()
+  {
+    AppMethodBeat.i(108008);
+    int i = g.Nq().getInt("ShakeMusicGlobalSwitch", 0);
+    ab.i("MicroMsg.Music.MusicHelperUtils", "isShakeMusicGlobalUser: %d", new Object[] { Integer.valueOf(i) });
+    if (i == 0)
+    {
+      AppMethodBeat.o(108008);
+      return false;
+    }
+    AppMethodBeat.o(108008);
+    return true;
+  }
+  
+  public static boolean aiG()
+  {
+    AppMethodBeat.i(108009);
+    Object localObject = TimeZone.getDefault();
+    TimeZone localTimeZone = TimeZone.getTimeZone("GMT+08:00");
+    if (((TimeZone)localObject).getRawOffset() != localTimeZone.getRawOffset())
+    {
+      AppMethodBeat.o(108009);
+      return false;
+    }
+    localObject = (TelephonyManager)ah.getContext().getSystemService("phone");
+    if (localObject != null)
+    {
+      localObject = ((TelephonyManager)localObject).getNetworkCountryIso();
+      if ((!bo.isNullOrNil((String)localObject)) && (!((String)localObject).equalsIgnoreCase("cn")))
       {
-        paramString1 = new a(paramInt1, paramString1);
-        g.Dk().a(paramString1, 0);
-        y.d("MicroMsg.NewTipsManager", "dancy doScene NetScenePushNewTips！！");
+        AppMethodBeat.o(108009);
+        return false;
       }
     }
-    do
-    {
-      return;
-      if ((paramInt2 == b.evd) && ((!localbm.field_isExit) || (1 != localbm.field_tipVersion)))
-      {
-        a locala = new a(paramInt1, paramString1);
-        g.Dk().a(locala, 0);
-        y.d("MicroMsg.NewTipsManager", "dancy doScene NetScenePushNewTips！！");
-      }
-    } while (((paramInt2 != b.evd) || (1 == localbm.field_tipVersion)) && ((paramInt2 != b.eve) || (localbm.field_tipVersion > 0)));
-    localbm.field_tipId = paramInt1;
-    localbm.field_tipVersion = 1;
-    localbm.field_tipkey = paramString1;
-    localbm.field_tipType = paramInt2;
-    localbm.field_isExit = false;
-    if (localbm.field_tipsShowInfo == null) {
-      localbm.field_tipsShowInfo = new bxw();
-    }
-    localbm.field_tipsShowInfo.path = paramString2;
-    com.tencent.mm.plugin.y.a.bou().a(localbm, new String[0]);
-  }
-  
-  public static void iX(int paramInt)
-  {
-    bm localbm = com.tencent.mm.plugin.y.a.bou().Fr(paramInt);
-    if (localbm == null)
-    {
-      y.e("MicroMsg.NewTipsManager", "newTipsInfo is null , makeRead failed!!");
-      return;
-    }
-    y.i("MicroMsg.NewTipsManager", "dancy new tips tipsId:%s, make read: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true) });
-    if (localbm.field_tipType == b.evd)
-    {
-      localbm.field_hadRead = true;
-      com.tencent.mm.plugin.y.a.bou().a(localbm, new String[0]);
-    }
-    if (localbm.field_tipType == b.eve)
-    {
-      localbm.field_hadRead = true;
-      com.tencent.mm.plugin.y.a.bou().a(localbm, new String[0]);
-    }
-    long l = bk.UY();
-    ae.getContext().getSharedPreferences(ae.cqR() + "_newtips_report", 0).edit().putLong("newtips_makeread_time", l).commit();
-  }
-  
-  public static void l(int paramInt, long paramLong)
-  {
-    bm localbm = com.tencent.mm.plugin.y.a.bou().Fr(paramInt);
-    if (localbm == null)
-    {
-      y.e("MicroMsg.NewTipsManager", "setPageStayTime fail! newTipsInfo is null!!");
-      return;
-    }
-    localbm.field_pagestaytime = paramLong;
-    com.tencent.mm.plugin.y.a.bou().a(localbm, new String[0]);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    y.i("MicroMsg.NewTipsManager", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if ((paramm.getType() != 597) || (paramInt1 != 0) || (paramInt2 != 0)) {}
-    boolean bool;
-    do
-    {
-      return;
-      bool = ((a)paramm).evb;
-      paramInt1 = ((a)paramm).evc;
-      paramString = com.tencent.mm.plugin.y.a.bou().Fr(paramInt1);
-    } while (paramString == null);
-    paramString.field_isReject = bool;
-    y.i("MicroMsg.NewTipsManager", "Newtips push is reject: %s", new Object[] { Boolean.valueOf(bool) });
-    com.tencent.mm.plugin.y.a.bou().a(paramString, new String[0]);
+    AppMethodBeat.o(108009);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.aw.d
  * JD-Core Version:    0.7.0.1
  */

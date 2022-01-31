@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.ui.b;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.a;
 import com.tencent.mm.plugin.fts.a.d.e;
 import com.tencent.mm.plugin.fts.a.d.e.b;
@@ -10,7 +11,10 @@ public final class c
 {
   public final e a(Context paramContext, e.b paramb, int paramInt)
   {
-    return new com.tencent.mm.plugin.fts.ui.d.c(paramContext, paramb, paramInt);
+    AppMethodBeat.i(62042);
+    paramContext = new com.tencent.mm.plugin.fts.ui.d.c(paramContext, paramb, paramInt);
+    AppMethodBeat.o(62042);
+    return paramContext;
   }
   
   public final int getPriority()

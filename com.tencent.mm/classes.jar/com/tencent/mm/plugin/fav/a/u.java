@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.protocal.c.axi;
-import com.tencent.mm.protocal.c.axl;
+import com.tencent.mm.protocal.protobuf.bdy;
+import com.tencent.mm.protocal.protobuf.beb;
 import java.util.LinkedList;
 
 public abstract interface u
 {
-  public abstract void a(long paramLong, LinkedList<axi> paramLinkedList, LinkedList<axl> paramLinkedList1, int paramInt);
+  public abstract void a(long paramLong, LinkedList<bdy> paramLinkedList, LinkedList<beb> paramLinkedList1, int paramInt);
 }
 
 

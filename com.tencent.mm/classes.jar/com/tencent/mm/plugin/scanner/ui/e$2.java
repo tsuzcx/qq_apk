@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.scanner.ui;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.preference.Preference;
 
 final class e$2
@@ -13,28 +14,30 @@ final class e$2
   
   public final void onGlobalLayout()
   {
-    y.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() = " + e.b(this.nJB).getHeight() + ", summaryTv.getLineHeight() = " + e.b(this.nJB).getLineHeight());
-    if ((e.b(this.nJB).getText() != null) && (e.b(this.nJB).getHeight() > 0) && (e.b(this.nJB).getLineHeight() > 0) && (e.d(this.nJB) == null))
+    AppMethodBeat.i(81019);
+    ab.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() = " + e.b(this.qxd).getHeight() + ", summaryTv.getLineHeight() = " + e.b(this.qxd).getLineHeight());
+    if ((e.b(this.qxd).getText() != null) && (e.b(this.qxd).getHeight() > 0) && (e.b(this.qxd).getLineHeight() > 0) && (e.d(this.qxd) == null))
     {
-      if ((e.b(this.nJB).getHeight() / e.b(this.nJB).getLineHeight() > 5) && (!this.nJB.nJx) && (!this.nJB.nJw))
+      if ((e.b(this.qxd).getHeight() / e.b(this.qxd).getLineHeight() > 5) && (!this.qxd.qwZ) && (!this.qxd.qwY))
       {
-        e.a(this.nJB).setVisibility(0);
-        e.b(this.nJB).setMaxLines(5);
-        this.nJB.nJx = true;
-        if ((e.c(this.nJB) != null) && (e.c(this.nJB).LY(this.nJB.mKey) == null))
+        e.a(this.qxd).setVisibility(0);
+        e.b(this.qxd).setMaxLines(5);
+        this.qxd.qwZ = true;
+        if ((e.c(this.qxd) != null) && (e.c(this.qxd).YA(this.qxd.mKey) == null))
         {
-          e.c(this.nJB).a(this.nJB.mKey, Boolean.valueOf(false));
-          e.c(this.nJB).bxI();
+          e.c(this.qxd).a(this.qxd.mKey, Boolean.FALSE);
+          e.c(this.qxd).ciJ();
         }
       }
-      y.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() / summaryTv.getLineHeight() = " + e.b(this.nJB).getHeight() / e.b(this.nJB).getLineHeight());
+      ab.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() / summaryTv.getLineHeight() = " + e.b(this.qxd).getHeight() / e.b(this.qxd).getLineHeight());
     }
-    e.b(this.nJB).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    e.b(this.qxd).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    AppMethodBeat.o(81019);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.e.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,12 @@ import com.tencent.mm.storage.ad;
 public abstract class ProfileItemView
   extends FrameLayout
 {
-  public ad jgl;
+  public ad lpe;
+  
+  public ProfileItemView(Context paramContext)
+  {
+    this(paramContext, null);
+  }
   
   public ProfileItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,13 +28,13 @@ public abstract class ProfileItemView
     init();
   }
   
-  public boolean P(ad paramad)
+  public boolean S(ad paramad)
   {
-    this.jgl = paramad;
-    return bsP();
+    this.lpe = paramad;
+    return ccG();
   }
   
-  public abstract boolean bsP();
+  public abstract boolean ccG();
   
   public abstract int getLayout();
   

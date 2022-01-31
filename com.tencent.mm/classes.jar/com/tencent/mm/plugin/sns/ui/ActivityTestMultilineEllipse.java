@@ -6,12 +6,14 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class ActivityTestMultilineEllipse
   extends Activity
 {
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(38045);
     super.onCreate(paramBundle);
     paramBundle = new LinearLayout(this);
     paramBundle.setOrientation(1);
@@ -44,11 +46,18 @@ public class ActivityTestMultilineEllipse
     ((QTextView)localObject).setBackgroundColor(-204878);
     ((QTextView)localObject).setOnClickListener(new ActivityTestMultilineEllipse.1(this, (QTextView)localObject));
     paramBundle.addView((View)localObject);
+    AppMethodBeat.o(38045);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ActivityTestMultilineEllipse
  * JD-Core Version:    0.7.0.1
  */

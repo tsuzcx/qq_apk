@@ -1,5 +1,6 @@
 package org.xwalk.core.extension;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONObject;
 
 public class JsContextInfo
@@ -19,7 +20,10 @@ public class JsContextInfo
   
   public String getConstructorName()
   {
-    return this.targetClass.getSimpleName();
+    AppMethodBeat.i(86109);
+    String str = this.targetClass.getSimpleName();
+    AppMethodBeat.o(86109);
+    return str;
   }
   
   public XWalkExternalExtension getExtensionClient()
@@ -34,22 +38,32 @@ public class JsContextInfo
   
   public String getTag()
   {
-    return "Extension-" + this.extensionClient.getExtensionName();
+    AppMethodBeat.i(86107);
+    String str = "Extension-" + this.extensionClient.getExtensionName();
+    AppMethodBeat.o(86107);
+    return str;
   }
   
   public ReflectionHelper getTargetReflect()
   {
-    return this.extensionClient.getTargetReflect(this.targetClass.getSimpleName());
+    AppMethodBeat.i(86108);
+    ReflectionHelper localReflectionHelper = this.extensionClient.getTargetReflect(this.targetClass.getSimpleName());
+    AppMethodBeat.o(86108);
+    return localReflectionHelper;
   }
   
   public void postMessage(JSONObject paramJSONObject)
   {
+    AppMethodBeat.i(86110);
     this.extensionClient.postMessage(this.extInstanceId, paramJSONObject.toString());
+    AppMethodBeat.o(86110);
   }
   
   public void postMessage(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(86111);
     this.extensionClient.postBinaryMessage(this.extInstanceId, paramArrayOfByte);
+    AppMethodBeat.o(86111);
   }
 }
 

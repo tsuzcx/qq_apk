@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.voip.model;
 
-public abstract interface a
+public final class a
 {
-  public abstract int L(byte[] paramArrayOfByte, int paramInt);
+  public int channels;
+  public int pJf;
+  public int tth;
+  public int tti;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a
  * JD-Core Version:    0.7.0.1
  */

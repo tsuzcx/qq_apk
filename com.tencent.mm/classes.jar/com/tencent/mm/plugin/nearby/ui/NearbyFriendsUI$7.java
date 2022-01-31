@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.nearby.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class NearbyFriendsUI$7
   implements DialogInterface.OnCancelListener
@@ -12,17 +13,19 @@ final class NearbyFriendsUI$7
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.mDs.edT = true;
-    com.tencent.mm.plugin.report.service.g.wK(11);
-    if (NearbyFriendsUI.b(this.mDs) != null) {
-      com.tencent.mm.kernel.g.Dk().c(NearbyFriendsUI.b(this.mDs));
+    AppMethodBeat.i(55447);
+    this.pdm.eUJ = true;
+    com.tencent.mm.plugin.report.service.g.Cz(11);
+    if (NearbyFriendsUI.b(this.pdm) != null) {
+      com.tencent.mm.kernel.g.Rc().a(NearbyFriendsUI.b(this.pdm));
     }
-    y.i("MicroMsg.NearbyFriend", "[MonsterzDai]  [loading cancel] cancel in loading");
-    if (!NearbyFriendsUI.c(this.mDs))
+    ab.i("MicroMsg.NearbyFriend", "[MonsterzDai]  [loading cancel] cancel in loading");
+    if (!NearbyFriendsUI.c(this.pdm))
     {
-      this.mDs.finish();
-      y.i("MicroMsg.NearbyFriend", "[MonsterzDai]  [loading cancel] cancel in first loading");
+      this.pdm.finish();
+      ab.i("MicroMsg.NearbyFriend", "[MonsterzDai]  [loading cancel] cancel in first loading");
     }
+    AppMethodBeat.o(55447);
   }
 }
 

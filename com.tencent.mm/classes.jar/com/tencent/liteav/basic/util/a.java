@@ -2,725 +2,490 @@ package com.tencent.liteav.basic.util;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.media.MediaFormat;
+import android.content.res.AssetManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Process;
-import android.telephony.TelephonyManager;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import android.os.StatFs;
 import android.text.TextUtils;
-import com.tencent.liteav.basic.datareport.TXCDRApi;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.lang.ref.WeakReference;
-import java.nio.ByteBuffer;
-import java.util.UUID;
+import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.File;
+import java.io.IOException;
 
 public class a
 {
-  public static long a = 0L;
-  private static float b = 0.0F;
-  private static float c = 0.0F;
-  private static float d = 0.0F;
-  private static float e = 0.0F;
-  private static float f = 0.0F;
-  private static float g = 0.0F;
-  private static boolean h = true;
-  private static int[] i = new int[2];
-  private static long j = 0L;
-  private static String k = "";
-  private static final Object l = new Object();
-  private static boolean m = false;
-  private static int[] n = { 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350 };
-  
-  public static int a(int paramInt)
+  @TargetApi(18)
+  public static long a(StatFs paramStatFs)
   {
-    int i1 = 0;
-    while ((i1 < n.length) && (n[i1] != paramInt)) {
-      i1 += 1;
-    }
-    paramInt = i1;
-    if (i1 >= n.length) {
-      paramInt = -1;
-    }
-    return paramInt;
-  }
-  
-  @TargetApi(16)
-  public static MediaFormat a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int i1 = a(paramInt1);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(2);
-    localByteBuffer.put(0, (byte)(paramInt3 << 3 | i1 >> 1));
-    localByteBuffer.put(1, (byte)((i1 & 0x1) << 7 | paramInt2 << 3));
-    MediaFormat localMediaFormat = MediaFormat.createAudioFormat("audio/mp4a-latm", paramInt1, paramInt2);
-    localMediaFormat.setInteger("channel-count", paramInt2);
-    localMediaFormat.setInteger("sample-rate", paramInt1);
-    localMediaFormat.setByteBuffer("csd-0", localByteBuffer);
-    return localMediaFormat;
-  }
-  
-  @TargetApi(16)
-  public static MediaFormat a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    MediaFormat localMediaFormat = MediaFormat.createVideoFormat("video/avc", paramInt1, paramInt2);
-    paramInt1 = 0;
-    int i6 = 0;
-    int i2 = 0;
-    int i1 = 0;
-    paramInt2 = 0;
-    if (paramInt1 + 3 < paramArrayOfByte.length) {
-      if ((paramArrayOfByte[paramInt1] != 0) || (paramArrayOfByte[(paramInt1 + 1)] != 0) || (paramArrayOfByte[(paramInt1 + 2)] != 1)) {
-        break label299;
-      }
-    }
-    label299:
-    for (int i4 = 3;; i4 = 0)
+    AppMethodBeat.i(66031);
+    if (Build.VERSION.SDK_INT >= 18) {}
+    for (long l = paramStatFs.getAvailableBytes();; l = paramStatFs.getAvailableBlocks() * paramStatFs.getBlockSize())
     {
-      int i3 = i4;
-      if (paramArrayOfByte[paramInt1] == 0)
-      {
-        i3 = i4;
-        if (paramArrayOfByte[(paramInt1 + 1)] == 0)
-        {
-          i3 = i4;
-          if (paramArrayOfByte[(paramInt1 + 2)] == 0)
-          {
-            i3 = i4;
-            if (paramArrayOfByte[(paramInt1 + 3)] == 1) {
-              i3 = 4;
-            }
-          }
-        }
-      }
-      int i5 = paramInt1;
-      i4 = i2;
-      if (i3 > 0)
-      {
-        if (i2 == 0)
-        {
-          i5 = paramInt1 + i3;
-          i4 = i3;
-        }
-      }
-      else
-      {
-        i3 = i5;
-        i2 = i4;
-      }
-      for (;;)
-      {
-        paramInt1 = i3 + 1;
-        break;
-        i5 = paramArrayOfByte[i2] & 0x1F;
-        if (i5 == 7)
-        {
-          a("csd-0", localMediaFormat, paramArrayOfByte, i2, paramInt1);
-          i4 = 1;
-        }
-        for (;;)
-        {
-          paramInt2 = paramInt1 + i3;
-          if ((i4 == 0) || (i1 == 0)) {
-            break;
-          }
-          return localMediaFormat;
-          i4 = paramInt2;
-          if (i5 == 8)
-          {
-            a("csd-1", localMediaFormat, paramArrayOfByte, i2, paramInt1);
-            i1 = 1;
-            i4 = paramInt2;
-          }
-        }
-        paramInt1 = paramArrayOfByte[i2] & 0x1F;
-        if ((paramInt2 != 0) && (paramInt1 == 8))
-        {
-          a("csd-1", localMediaFormat, paramArrayOfByte, i2, i6);
-          return localMediaFormat;
-        }
-        if ((i1 != 0) && (paramInt1 == 7))
-        {
-          a("csd-0", localMediaFormat, paramArrayOfByte, i2, i6);
-          return localMediaFormat;
-        }
-        return null;
-        i3 = paramInt2;
-        i6 = paramInt1;
-        i2 = paramInt2;
-        paramInt2 = i4;
-      }
+      AppMethodBeat.o(66031);
+      return l;
     }
-  }
-  
-  public static com.tencent.liteav.basic.d.a a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int i1 = 0;
-    if (paramInt1 * paramInt4 >= paramInt2 * paramInt3)
-    {
-      paramInt4 = paramInt2 * paramInt3 / paramInt4;
-      paramInt3 = paramInt2;
-      if (paramInt1 <= paramInt4) {
-        break label67;
-      }
-    }
-    label67:
-    for (paramInt1 = paramInt1 - paramInt4 >> 1;; paramInt1 = 0)
-    {
-      if (paramInt2 > paramInt3) {
-        i1 = paramInt2 - paramInt3 >> 1;
-      }
-      return new com.tencent.liteav.basic.d.a(paramInt1, i1, paramInt4, paramInt3);
-      paramInt3 = paramInt1 * paramInt4 / paramInt3;
-      paramInt4 = paramInt1;
-      break;
-    }
-  }
-  
-  public static String a(Context paramContext)
-  {
-    return TXCDRApi.getSimulateIDFA(paramContext);
-  }
-  
-  public static void a(String paramString)
-  {
-    try
-    {
-      System.loadLibrary(paramString);
-      return;
-    }
-    catch (Error localError)
-    {
-      new StringBuilder("load library : ").append(localError.toString());
-      b(k, paramString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      new StringBuilder("load library : ").append(localException.toString());
-      b(k, paramString);
-    }
-  }
-  
-  private static void a(String paramString, MediaFormat paramMediaFormat, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 - paramInt1);
-    localByteBuffer.put(paramArrayOfByte, paramInt1, paramInt2 - paramInt1);
-    localByteBuffer.position(0);
-    paramMediaFormat.setByteBuffer(paramString, localByteBuffer);
-  }
-  
-  public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, int paramInt, Bundle paramBundle)
-  {
-    if (paramWeakReference == null) {}
-    do
-    {
-      return;
-      paramWeakReference = (com.tencent.liteav.basic.c.a)paramWeakReference.get();
-    } while (paramWeakReference == null);
-    paramWeakReference.onNotifyEvent(paramInt, paramBundle);
-  }
-  
-  public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, int paramInt, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("EVT_ID", paramInt);
-    localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
-    if (paramString != null) {
-      localBundle.putCharSequence("EVT_MSG", paramString);
-    }
-    a(paramWeakReference, paramInt, localBundle);
-  }
-  
-  public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, long paramLong, int paramInt, Bundle paramBundle)
-  {
-    if (paramWeakReference == null) {}
-    do
-    {
-      return;
-      paramWeakReference = (com.tencent.liteav.basic.c.a)paramWeakReference.get();
-    } while (paramWeakReference == null);
-    paramBundle.putLong("EVT_USERID", paramLong);
-    paramWeakReference.onNotifyEvent(paramInt, paramBundle);
-  }
-  
-  public static void a(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference, long paramLong, int paramInt, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("EVT_USERID", paramLong);
-    localBundle.putInt("EVT_ID", paramInt);
-    localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
-    if (paramString != null) {
-      localBundle.putCharSequence("EVT_MSG", paramString);
-    }
-    a(paramWeakReference, paramInt, localBundle);
   }
   
   /* Error */
-  public static boolean a(String paramString1, String paramString2)
+  public static void a(String paramString, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: ifnull +7 -> 8
-    //   4: aload_1
-    //   5: ifnonnull +5 -> 10
-    //   8: iconst_0
-    //   9: ireturn
-    //   10: new 219	java/io/File
-    //   13: dup
-    //   14: aload_0
-    //   15: invokespecial 220	java/io/File:<init>	(Ljava/lang/String;)V
-    //   18: invokevirtual 224	java/io/File:exists	()Z
-    //   21: ifeq -13 -> 8
-    //   24: new 226	android/media/MediaMetadataRetriever
-    //   27: dup
-    //   28: invokespecial 227	android/media/MediaMetadataRetriever:<init>	()V
-    //   31: astore_2
-    //   32: aload_2
-    //   33: aload_0
-    //   34: invokevirtual 230	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
-    //   37: aload_2
-    //   38: invokevirtual 234	android/media/MediaMetadataRetriever:getFrameAtTime	()Landroid/graphics/Bitmap;
-    //   41: astore_0
-    //   42: new 219	java/io/File
+    //   0: ldc 44
+    //   2: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 46	java/io/FileOutputStream
+    //   8: dup
+    //   9: new 48	java/io/File
+    //   12: dup
+    //   13: aload_0
+    //   14: invokespecial 52	java/io/File:<init>	(Ljava/lang/String;)V
+    //   17: invokespecial 55	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   20: astore_0
+    //   21: new 57	java/io/BufferedOutputStream
+    //   24: dup
+    //   25: aload_0
+    //   26: invokespecial 60	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   29: astore_2
+    //   30: aload_2
+    //   31: aload_1
+    //   32: invokevirtual 64	java/io/BufferedOutputStream:write	([B)V
+    //   35: aload_2
+    //   36: invokevirtual 68	java/io/BufferedOutputStream:close	()V
+    //   39: aload_0
+    //   40: invokevirtual 69	java/io/FileOutputStream:close	()V
+    //   43: ldc 44
+    //   45: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   48: return
+    //   49: astore_0
+    //   50: ldc 44
+    //   52: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: return
+    //   56: astore_0
+    //   57: aconst_null
+    //   58: astore_1
+    //   59: aconst_null
+    //   60: astore_0
+    //   61: aload_0
+    //   62: ifnull +7 -> 69
+    //   65: aload_0
+    //   66: invokevirtual 68	java/io/BufferedOutputStream:close	()V
+    //   69: aload_1
+    //   70: ifnull +7 -> 77
+    //   73: aload_1
+    //   74: invokevirtual 69	java/io/FileOutputStream:close	()V
+    //   77: ldc 44
+    //   79: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   82: return
+    //   83: astore_0
+    //   84: ldc 44
+    //   86: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   89: return
+    //   90: astore_0
+    //   91: aconst_null
+    //   92: astore_1
+    //   93: aconst_null
+    //   94: astore_2
+    //   95: aload_2
+    //   96: ifnull +7 -> 103
+    //   99: aload_2
+    //   100: invokevirtual 68	java/io/BufferedOutputStream:close	()V
+    //   103: aload_1
+    //   104: ifnull +7 -> 111
+    //   107: aload_1
+    //   108: invokevirtual 69	java/io/FileOutputStream:close	()V
+    //   111: ldc 44
+    //   113: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   116: aload_0
+    //   117: athrow
+    //   118: astore_1
+    //   119: goto -8 -> 111
+    //   122: astore_1
+    //   123: aload_0
+    //   124: astore_2
+    //   125: aconst_null
+    //   126: astore_3
+    //   127: aload_1
+    //   128: astore_0
+    //   129: aload_2
+    //   130: astore_1
+    //   131: aload_3
+    //   132: astore_2
+    //   133: goto -38 -> 95
+    //   136: astore_1
+    //   137: aload_0
+    //   138: astore_3
+    //   139: aload_1
+    //   140: astore_0
+    //   141: aload_3
+    //   142: astore_1
+    //   143: goto -48 -> 95
+    //   146: astore_1
+    //   147: aconst_null
+    //   148: astore_2
+    //   149: aload_0
+    //   150: astore_1
+    //   151: aload_2
+    //   152: astore_0
+    //   153: goto -92 -> 61
+    //   156: astore_1
+    //   157: aload_0
+    //   158: astore_1
+    //   159: aload_2
+    //   160: astore_0
+    //   161: goto -100 -> 61
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	164	0	paramString	String
+    //   0	164	1	paramArrayOfByte	byte[]
+    //   29	131	2	localObject	Object
+    //   126	16	3	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   35	43	49	java/lang/Exception
+    //   5	21	56	java/lang/Exception
+    //   65	69	83	java/lang/Exception
+    //   73	77	83	java/lang/Exception
+    //   5	21	90	finally
+    //   99	103	118	java/lang/Exception
+    //   107	111	118	java/lang/Exception
+    //   21	30	122	finally
+    //   30	35	136	finally
+    //   21	30	146	java/lang/Exception
+    //   30	35	156	java/lang/Exception
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    AppMethodBeat.i(66032);
+    if (a(new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath())) > paramLong)
+    {
+      AppMethodBeat.o(66032);
+      return true;
+    }
+    AppMethodBeat.o(66032);
+    return false;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    AppMethodBeat.i(66030);
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(66030);
+      return false;
+    }
+    paramContext = paramContext.getActiveNetworkInfo();
+    if ((paramContext != null) && (paramContext.isConnectedOrConnecting()))
+    {
+      AppMethodBeat.o(66030);
+      return true;
+    }
+    AppMethodBeat.o(66030);
+    return false;
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(66036);
+    paramContext = paramContext.getAssets();
+    try
+    {
+      paramContext = paramContext.list("");
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        if (paramContext[i].equals(paramString.trim()))
+        {
+          TXCLog.i("isAssetFileExists", paramString + " exist");
+          AppMethodBeat.o(66036);
+          return true;
+        }
+        i += 1;
+      }
+      TXCLog.i("isAssetFileExists", paramString + " not exist");
+    }
+    catch (IOException paramContext)
+    {
+      TXCLog.i("isAssetFileExists", paramString + " not exist");
+      AppMethodBeat.o(66036);
+      return false;
+    }
+    AppMethodBeat.o(66036);
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    AppMethodBeat.i(66033);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(66033);
+      return false;
+    }
+    paramString = new File(paramString);
+    if ((paramString.exists()) && (paramString.isFile()))
+    {
+      AppMethodBeat.o(66033);
+      return true;
+    }
+    AppMethodBeat.o(66033);
+    return false;
+  }
+  
+  /* Error */
+  public static String b(Context paramContext, String paramString)
+  {
+    // Byte code:
+    //   0: ldc 170
+    //   2: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aconst_null
+    //   6: astore_2
+    //   7: aload_0
+    //   8: invokevirtual 114	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   11: aload_1
+    //   12: invokevirtual 174	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   15: astore_0
+    //   16: aload_0
+    //   17: invokevirtual 179	java/io/InputStream:available	()I
+    //   20: newarray byte
+    //   22: astore_1
+    //   23: aload_0
+    //   24: aload_1
+    //   25: invokevirtual 183	java/io/InputStream:read	([B)I
+    //   28: ifgt +19 -> 47
+    //   31: aload_0
+    //   32: ifnull +7 -> 39
+    //   35: aload_0
+    //   36: invokevirtual 184	java/io/InputStream:close	()V
+    //   39: ldc 170
+    //   41: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   44: ldc 116
+    //   46: areturn
+    //   47: aload_0
+    //   48: invokevirtual 184	java/io/InputStream:close	()V
+    //   51: new 124	java/lang/String
+    //   54: dup
+    //   55: aload_1
+    //   56: ldc 186
+    //   58: invokespecial 189	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   61: astore_1
+    //   62: aload_0
+    //   63: ifnull +7 -> 70
+    //   66: aload_0
+    //   67: invokevirtual 184	java/io/InputStream:close	()V
+    //   70: ldc 170
+    //   72: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: aload_1
+    //   76: areturn
+    //   77: astore_0
+    //   78: aload_2
+    //   79: astore_0
+    //   80: aload_0
+    //   81: ifnull +7 -> 88
+    //   84: aload_0
+    //   85: invokevirtual 184	java/io/InputStream:close	()V
+    //   88: ldc 170
+    //   90: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: ldc 116
+    //   95: areturn
+    //   96: astore_0
+    //   97: aconst_null
+    //   98: astore_1
+    //   99: aload_1
+    //   100: ifnull +7 -> 107
+    //   103: aload_1
+    //   104: invokevirtual 184	java/io/InputStream:close	()V
+    //   107: ldc 170
+    //   109: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   112: aload_0
+    //   113: athrow
+    //   114: astore_0
+    //   115: goto -76 -> 39
+    //   118: astore_0
+    //   119: goto -49 -> 70
+    //   122: astore_0
+    //   123: goto -35 -> 88
+    //   126: astore_1
+    //   127: goto -20 -> 107
+    //   130: astore_1
+    //   131: aload_0
+    //   132: astore_2
+    //   133: aload_1
+    //   134: astore_0
+    //   135: aload_2
+    //   136: astore_1
+    //   137: goto -38 -> 99
+    //   140: astore_1
+    //   141: goto -61 -> 80
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	144	0	paramContext	Context
+    //   0	144	1	paramString	String
+    //   6	130	2	localContext	Context
+    // Exception table:
+    //   from	to	target	type
+    //   7	16	77	java/io/IOException
+    //   7	16	96	finally
+    //   35	39	114	java/io/IOException
+    //   66	70	118	java/io/IOException
+    //   84	88	122	java/io/IOException
+    //   103	107	126	java/io/IOException
+    //   16	31	130	finally
+    //   47	62	130	finally
+    //   16	31	140	java/io/IOException
+    //   47	62	140	java/io/IOException
+  }
+  
+  /* Error */
+  public static String b(String paramString)
+  {
+    // Byte code:
+    //   0: ldc 191
+    //   2: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 48	java/io/File
+    //   8: dup
+    //   9: aload_0
+    //   10: invokespecial 52	java/io/File:<init>	(Ljava/lang/String;)V
+    //   13: astore_0
+    //   14: new 135	java/lang/StringBuilder
+    //   17: dup
+    //   18: ldc 116
+    //   20: invokespecial 192	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   23: astore_2
+    //   24: aload_0
+    //   25: invokevirtual 167	java/io/File:isFile	()Z
+    //   28: ifne +10 -> 38
+    //   31: ldc 191
+    //   33: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   36: aconst_null
+    //   37: areturn
+    //   38: new 194	java/io/BufferedReader
+    //   41: dup
+    //   42: new 196	java/io/InputStreamReader
     //   45: dup
-    //   46: aload_1
-    //   47: invokespecial 220	java/io/File:<init>	(Ljava/lang/String;)V
-    //   50: astore_1
-    //   51: aload_1
-    //   52: invokevirtual 224	java/io/File:exists	()Z
-    //   55: ifeq +8 -> 63
-    //   58: aload_1
-    //   59: invokevirtual 237	java/io/File:delete	()Z
-    //   62: pop
-    //   63: new 239	java/io/FileOutputStream
-    //   66: dup
-    //   67: aload_1
-    //   68: invokespecial 242	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   71: astore_1
-    //   72: aload_0
-    //   73: getstatic 248	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   76: bipush 100
-    //   78: aload_1
-    //   79: invokevirtual 254	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   82: pop
-    //   83: aload_1
-    //   84: invokevirtual 257	java/io/FileOutputStream:flush	()V
-    //   87: aload_1
-    //   88: invokevirtual 260	java/io/FileOutputStream:close	()V
-    //   91: aload_2
-    //   92: invokevirtual 263	android/media/MediaMetadataRetriever:release	()V
-    //   95: iconst_1
-    //   96: ireturn
-    //   97: astore_0
-    //   98: aconst_null
-    //   99: astore_2
-    //   100: aconst_null
-    //   101: astore_0
-    //   102: aload_0
-    //   103: ifnull +7 -> 110
-    //   106: aload_0
-    //   107: invokevirtual 260	java/io/FileOutputStream:close	()V
-    //   110: aload_2
-    //   111: ifnull -103 -> 8
-    //   114: aload_2
-    //   115: invokevirtual 263	android/media/MediaMetadataRetriever:release	()V
-    //   118: iconst_0
-    //   119: ireturn
-    //   120: astore_0
-    //   121: aconst_null
-    //   122: astore_2
-    //   123: aconst_null
-    //   124: astore_1
-    //   125: aload_1
-    //   126: ifnull +7 -> 133
-    //   129: aload_1
-    //   130: invokevirtual 260	java/io/FileOutputStream:close	()V
-    //   133: aload_2
-    //   134: ifnull +7 -> 141
-    //   137: aload_2
-    //   138: invokevirtual 263	android/media/MediaMetadataRetriever:release	()V
-    //   141: aload_0
-    //   142: athrow
-    //   143: astore_0
-    //   144: goto -53 -> 91
-    //   147: astore_0
-    //   148: goto -38 -> 110
-    //   151: astore_1
-    //   152: goto -19 -> 133
-    //   155: astore_0
-    //   156: aconst_null
-    //   157: astore_1
-    //   158: goto -33 -> 125
-    //   161: astore_0
-    //   162: goto -37 -> 125
-    //   165: astore_0
-    //   166: aconst_null
+    //   46: new 198	java/io/FileInputStream
+    //   49: dup
+    //   50: aload_0
+    //   51: invokespecial 199	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   54: invokespecial 202	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   57: invokespecial 205	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   60: astore_1
+    //   61: aload_1
+    //   62: astore_0
+    //   63: aload_1
+    //   64: invokevirtual 208	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   67: astore_3
+    //   68: aload_3
+    //   69: ifnull +55 -> 124
+    //   72: aload_1
+    //   73: astore_0
+    //   74: aload_2
+    //   75: aload_3
+    //   76: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: pop
+    //   80: goto -19 -> 61
+    //   83: astore_2
+    //   84: aload_1
+    //   85: astore_0
+    //   86: new 210	java/lang/RuntimeException
+    //   89: dup
+    //   90: ldc 212
+    //   92: aload_2
+    //   93: invokespecial 215	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   96: astore_2
+    //   97: aload_1
+    //   98: astore_0
+    //   99: ldc 191
+    //   101: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   104: aload_1
+    //   105: astore_0
+    //   106: aload_2
+    //   107: athrow
+    //   108: astore_1
+    //   109: aload_0
+    //   110: ifnull +7 -> 117
+    //   113: aload_0
+    //   114: invokevirtual 216	java/io/BufferedReader:close	()V
+    //   117: ldc 191
+    //   119: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   122: aload_1
+    //   123: athrow
+    //   124: aload_1
+    //   125: astore_0
+    //   126: aload_1
+    //   127: invokevirtual 216	java/io/BufferedReader:close	()V
+    //   130: aload_1
+    //   131: astore_0
+    //   132: aload_2
+    //   133: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   136: astore_2
+    //   137: aload_1
+    //   138: invokevirtual 216	java/io/BufferedReader:close	()V
+    //   141: ldc 191
+    //   143: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   146: aload_2
+    //   147: areturn
+    //   148: astore_0
+    //   149: new 210	java/lang/RuntimeException
+    //   152: dup
+    //   153: ldc 212
+    //   155: aload_0
+    //   156: invokespecial 215	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   159: astore_0
+    //   160: ldc 191
+    //   162: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   165: aload_0
+    //   166: athrow
     //   167: astore_0
-    //   168: goto -66 -> 102
-    //   171: astore_0
-    //   172: aload_1
-    //   173: astore_0
-    //   174: goto -72 -> 102
+    //   168: new 210	java/lang/RuntimeException
+    //   171: dup
+    //   172: ldc 212
+    //   174: aload_0
+    //   175: invokespecial 215	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   178: astore_0
+    //   179: ldc 191
+    //   181: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   184: aload_0
+    //   185: athrow
+    //   186: astore_1
+    //   187: aconst_null
+    //   188: astore_0
+    //   189: goto -80 -> 109
+    //   192: astore_2
+    //   193: aconst_null
+    //   194: astore_1
+    //   195: goto -111 -> 84
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	177	0	paramString1	String
-    //   0	177	1	paramString2	String
-    //   31	107	2	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
+    //   0	198	0	paramString	String
+    //   60	45	1	localBufferedReader	java.io.BufferedReader
+    //   108	30	1	localObject1	Object
+    //   186	1	1	localObject2	Object
+    //   194	1	1	localObject3	Object
+    //   23	52	2	localStringBuilder	java.lang.StringBuilder
+    //   83	10	2	localIOException1	IOException
+    //   96	51	2	localObject4	Object
+    //   192	1	2	localIOException2	IOException
+    //   67	9	3	str	String
     // Exception table:
     //   from	to	target	type
-    //   10	32	97	java/lang/Exception
-    //   10	32	120	finally
-    //   87	91	143	java/io/IOException
-    //   106	110	147	java/io/IOException
-    //   129	133	151	java/io/IOException
-    //   32	63	155	finally
-    //   63	72	155	finally
-    //   72	87	161	finally
-    //   32	63	165	java/lang/Exception
-    //   63	72	165	java/lang/Exception
-    //   72	87	171	java/lang/Exception
-  }
-  
-  public static int[] a()
-  {
-    if ((j != 0L) && (TXCTimeUtil.getTimeTick() - j < 2000L)) {
-      return i;
-    }
-    int[] arrayOfInt = new int[2];
-    if (h)
-    {
-      d = (float)f();
-      g();
-      h = false;
-      arrayOfInt[0] = 0;
-      arrayOfInt[1] = 0;
-      return arrayOfInt;
-    }
-    e = (float)f();
-    g();
-    float f2;
-    float f1;
-    if (c != b)
-    {
-      f2 = (e - d) * 100.0F / (c - b);
-      f1 = (c - b - (g - f)) * 100.0F / (c - b);
-    }
-    for (;;)
-    {
-      b = c;
-      d = e;
-      f = g;
-      arrayOfInt[0] = ((int)(f2 * 10.0F));
-      arrayOfInt[1] = ((int)(f1 * 10.0F));
-      i[0] = arrayOfInt[0];
-      i[1] = arrayOfInt[1];
-      j = TXCTimeUtil.getTimeTick();
-      return arrayOfInt;
-      f1 = 0.0F;
-      f2 = 0.0F;
-    }
-  }
-  
-  public static String b()
-  {
-    return Build.MODEL;
-  }
-  
-  public static String b(Context paramContext)
-  {
-    String str = "";
-    if (paramContext != null) {}
-    try
-    {
-      str = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).packageName;
-      return str;
-    }
-    catch (Exception paramContext) {}
-    return "";
-  }
-  
-  public static void b(String paramString)
-  {
-    k = paramString;
-  }
-  
-  private static void b(String paramString1, String paramString2)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString1)) {
-        System.load(paramString1 + "/lib" + paramString2 + ".so");
-      }
-      return;
-    }
-    catch (Error paramString1)
-    {
-      new StringBuilder("load library : ").append(paramString1.toString());
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      new StringBuilder("load library : ").append(paramString1.toString());
-    }
-  }
-  
-  public static int c(Context paramContext)
-  {
-    if (paramContext == null) {
-      return 255;
-    }
-    Object localObject = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-    localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
-    if (localObject == null) {
-      return 255;
-    }
-    if (!((NetworkInfo)localObject).isConnected()) {
-      return 255;
-    }
-    if (((NetworkInfo)localObject).getType() == 9) {
-      return 5;
-    }
-    if (((NetworkInfo)localObject).getType() == 1) {
-      return 1;
-    }
-    if (((NetworkInfo)localObject).getType() == 0)
-    {
-      switch (paramContext.getNetworkType())
-      {
-      default: 
-        return 2;
-      case 1: 
-      case 2: 
-      case 4: 
-      case 7: 
-      case 11: 
-        return 4;
-      case 3: 
-      case 5: 
-      case 6: 
-      case 8: 
-      case 9: 
-      case 10: 
-      case 12: 
-      case 14: 
-      case 15: 
-        return 3;
-      }
-      return 2;
-    }
-    return 255;
-  }
-  
-  public static String c()
-  {
-    return UUID.randomUUID().toString();
-  }
-  
-  public static String d(Context paramContext)
-  {
-    return TXCDRApi.getDevUUID(paramContext, TXCDRApi.getSimulateIDFA(paramContext));
-  }
-  
-  public static void d()
-  {
-    synchronized (l)
-    {
-      if (!m)
-      {
-        a("stlport_shared");
-        a("saturn");
-        a("txffmpeg");
-        a("liteavsdk");
-        m = true;
-      }
-      return;
-    }
-  }
-  
-  public static String e()
-  {
-    return k;
-  }
-  
-  private static long f()
-  {
-    long l2 = 0L;
-    try
-    {
-      int i1 = Process.myPid();
-      Object localObject = new BufferedReader(new InputStreamReader(new FileInputStream("/proc/" + i1 + "/stat")), 1000);
-      String str = ((BufferedReader)localObject).readLine();
-      ((BufferedReader)localObject).close();
-      localObject = str.split(" ");
-      long l1 = l2;
-      if (localObject != null)
-      {
-        l1 = l2;
-        if (!TextUtils.isEmpty(localObject[13]))
-        {
-          l1 = Long.parseLong(localObject[13]);
-          l2 = Long.parseLong(localObject[14]);
-          long l3 = Long.parseLong(localObject[15]);
-          long l4 = Long.parseLong(localObject[16]);
-          l1 = l4 + (l1 + l2 + l3);
-        }
-      }
-      return l1;
-    }
-    catch (Exception localException) {}
-    return 0L;
-  }
-  
-  /* Error */
-  private static void g()
-  {
-    // Byte code:
-    //   0: getstatic 411	android/os/Build$VERSION:SDK_INT	I
-    //   3: bipush 26
-    //   5: if_icmpge +215 -> 220
-    //   8: new 369	java/io/BufferedReader
-    //   11: dup
-    //   12: new 371	java/io/InputStreamReader
-    //   15: dup
-    //   16: new 373	java/io/FileInputStream
-    //   19: dup
-    //   20: ldc_w 413
-    //   23: invokespecial 381	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   26: invokespecial 384	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   29: sipush 1000
-    //   32: invokespecial 387	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   35: astore 14
-    //   37: aload 14
-    //   39: invokevirtual 390	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   42: astore 15
-    //   44: aload 14
-    //   46: invokevirtual 391	java/io/BufferedReader:close	()V
-    //   49: aload 15
-    //   51: ldc_w 393
-    //   54: invokevirtual 399	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   57: astore 14
-    //   59: aload 14
-    //   61: ifnull +159 -> 220
-    //   64: aload 14
-    //   66: arraylength
-    //   67: bipush 9
-    //   69: if_icmplt +151 -> 220
-    //   72: aload 14
-    //   74: iconst_2
-    //   75: aaload
-    //   76: invokestatic 405	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   79: lstore_0
-    //   80: aload 14
-    //   82: iconst_3
-    //   83: aaload
-    //   84: invokestatic 405	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   87: lstore_2
-    //   88: aload 14
-    //   90: iconst_4
-    //   91: aaload
-    //   92: invokestatic 405	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   95: lstore 4
-    //   97: aload 14
-    //   99: bipush 6
-    //   101: aaload
-    //   102: invokestatic 405	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   105: lstore 6
-    //   107: aload 14
-    //   109: iconst_5
-    //   110: aaload
-    //   111: invokestatic 405	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   114: lstore 8
-    //   116: aload 14
-    //   118: bipush 7
-    //   120: aaload
-    //   121: invokestatic 405	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   124: lstore 10
-    //   126: aload 14
-    //   128: bipush 8
-    //   130: aaload
-    //   131: invokestatic 405	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   134: lstore 12
-    //   136: lload_0
-    //   137: lload_2
-    //   138: ladd
-    //   139: lload 4
-    //   141: ladd
-    //   142: lload 6
-    //   144: ladd
-    //   145: lload 8
-    //   147: ladd
-    //   148: lload 10
-    //   150: ladd
-    //   151: lload 12
-    //   153: ladd
-    //   154: lstore_2
-    //   155: aload 14
-    //   157: iconst_5
-    //   158: aaload
-    //   159: invokestatic 405	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   162: lstore_0
-    //   163: aload 14
-    //   165: bipush 6
-    //   167: aaload
-    //   168: invokestatic 405	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   171: lstore 4
-    //   173: lload 4
-    //   175: lload_0
-    //   176: ladd
-    //   177: lstore_0
-    //   178: getstatic 40	com/tencent/liteav/basic/util/a:h	Z
-    //   181: ifeq +23 -> 204
-    //   184: lload_2
-    //   185: l2f
-    //   186: putstatic 28	com/tencent/liteav/basic/util/a:b	F
-    //   189: lload_0
-    //   190: l2f
-    //   191: putstatic 36	com/tencent/liteav/basic/util/a:f	F
-    //   194: return
-    //   195: astore 14
-    //   197: lconst_0
-    //   198: lstore_2
-    //   199: lconst_0
-    //   200: lstore_0
-    //   201: goto -23 -> 178
-    //   204: lload_2
-    //   205: l2f
-    //   206: putstatic 30	com/tencent/liteav/basic/util/a:c	F
-    //   209: lload_0
-    //   210: l2f
-    //   211: putstatic 38	com/tencent/liteav/basic/util/a:g	F
-    //   214: return
-    //   215: astore 14
-    //   217: goto -18 -> 199
-    //   220: lconst_0
-    //   221: lstore_0
-    //   222: lconst_0
-    //   223: lstore_2
-    //   224: goto -46 -> 178
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   79	143	0	l1	long
-    //   87	137	2	l2	long
-    //   95	79	4	l3	long
-    //   105	38	6	l4	long
-    //   114	32	8	l5	long
-    //   124	25	10	l6	long
-    //   134	18	12	l7	long
-    //   35	129	14	localObject	Object
-    //   195	1	14	localException1	Exception
-    //   215	1	14	localException2	Exception
-    //   42	8	15	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   8	59	195	java/lang/Exception
-    //   64	136	195	java/lang/Exception
-    //   155	173	215	java/lang/Exception
+    //   63	68	83	java/io/IOException
+    //   74	80	83	java/io/IOException
+    //   126	130	83	java/io/IOException
+    //   132	137	83	java/io/IOException
+    //   63	68	108	finally
+    //   74	80	108	finally
+    //   86	97	108	finally
+    //   99	104	108	finally
+    //   106	108	108	finally
+    //   126	130	108	finally
+    //   132	137	108	finally
+    //   137	141	148	java/io/IOException
+    //   113	117	167	java/io/IOException
+    //   38	61	186	finally
+    //   38	61	192	java/io/IOException
   }
 }
 

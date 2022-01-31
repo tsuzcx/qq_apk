@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.backup.j;
 
-import com.tencent.mm.plugin.x.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.q.f;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$6$1
   implements Runnable
@@ -10,8 +11,10 @@ final class a$6$1
   
   public final void run()
   {
-    y.i("MicroMsg.BackupCore.MsgSynchronize", "start MsgSynchronizeServer");
-    f.hD(false).e(this.BI, this.ggg, this.hRA);
+    AppMethodBeat.i(18095);
+    ab.i("MicroMsg.BackupCore.MsgSynchronize", "start MsgSynchronizeServer");
+    f.jw(false).e(this.val$action, this.hyf, this.jLb);
+    AppMethodBeat.o(18095);
   }
 }
 

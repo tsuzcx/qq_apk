@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
 
 final class ShakeSayHiListUI$10
@@ -11,7 +12,9 @@ final class ShakeSayHiListUI$10
   
   public final void onClick(View paramView)
   {
-    BackwardSupportUtil.c.a(ShakeSayHiListUI.d(this.odv));
+    AppMethodBeat.i(24883);
+    BackwardSupportUtil.c.a(ShakeSayHiListUI.d(this.qRC));
+    AppMethodBeat.o(24883);
   }
 }
 

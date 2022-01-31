@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.openSDK.param.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public final class BatchDownloadActionRequest
@@ -28,6 +29,7 @@ public final class BatchDownloadActionRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(75979);
     this.batchRequestType = paramJceInputStream.read(this.batchRequestType, 0, true);
     if (cache_batchData == null)
     {
@@ -39,10 +41,12 @@ public final class BatchDownloadActionRequest
     this.uin = paramJceInputStream.readString(2, false);
     this.uinType = paramJceInputStream.readString(3, false);
     this.via = paramJceInputStream.readString(4, false);
+    AppMethodBeat.o(75979);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(75978);
     paramJceOutputStream.write(this.batchRequestType, 0);
     if (this.batchData != null) {
       paramJceOutputStream.write(this.batchData, 1);
@@ -56,6 +60,7 @@ public final class BatchDownloadActionRequest
     if (this.via != null) {
       paramJceOutputStream.write(this.via, 4);
     }
+    AppMethodBeat.o(75978);
   }
 }
 

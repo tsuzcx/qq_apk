@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.multitalk.ui;
 
-import com.tencent.mm.plugin.multitalk.a.f;
-import com.tencent.mm.plugin.multitalk.a.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.multitalk.model.f;
+import com.tencent.mm.plugin.multitalk.model.p;
 
 final class MultiTalkMainUI$1
   implements Runnable
@@ -10,7 +11,9 @@ final class MultiTalkMainUI$1
   
   public final void run()
   {
-    p.blF().blp();
+    AppMethodBeat.i(54118);
+    p.bTF().bTp();
+    AppMethodBeat.o(54118);
   }
 }
 

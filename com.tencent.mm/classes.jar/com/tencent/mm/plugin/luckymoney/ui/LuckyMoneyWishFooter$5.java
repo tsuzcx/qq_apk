@@ -1,18 +1,30 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.ui.widget.MMEditText;
+import android.view.View.OnTouchListener;
+import android.widget.ImageButton;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 
 final class LuckyMoneyWishFooter$5
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  LuckyMoneyWishFooter$5(LuckyMoneyWishFooter paramLuckyMoneyWishFooter, LuckyMoneyWishFooter.b paramb) {}
+  LuckyMoneyWishFooter$5(LuckyMoneyWishFooter paramLuckyMoneyWishFooter) {}
   
-  public final void onClick(View paramView)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.lXX.GP(LuckyMoneyWishFooter.a(this.lXW).getText().toString());
-    LuckyMoneyWishFooter.a(this.lXW).setText("");
+    AppMethodBeat.i(43051);
+    LuckyMoneyWishFooter.e(this.oxv);
+    LuckyMoneyWishFooter.a(this.oxv).setVisibility(8);
+    LuckyMoneyWishFooter.a(this.oxv).onPause();
+    LuckyMoneyWishFooter.d(this.oxv).setImageResource(2130838345);
+    if (LuckyMoneyWishFooter.g(this.oxv) != null) {
+      LuckyMoneyWishFooter.g(this.oxv);
+    }
+    LuckyMoneyWishFooter.a(this.oxv, 0);
+    AppMethodBeat.o(43051);
+    return false;
   }
 }
 

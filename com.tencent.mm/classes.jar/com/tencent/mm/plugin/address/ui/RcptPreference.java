@@ -6,15 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.address.model.RcptItem;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RcptPreference
   extends Preference
 {
-  RcptItem fvm;
+  RcptItem gMR;
   
   public RcptPreference(Context paramContext)
   {
@@ -29,32 +28,46 @@ public class RcptPreference
   public RcptPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.i(16929);
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(16929);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(16931);
     super.onBindView(paramView);
-    if (this.fvm == null) {
+    if (this.gMR == null)
+    {
+      AppMethodBeat.o(16931);
       return;
     }
-    ((TextView)paramView.findViewById(R.h.zonename)).setText(this.fvm.name);
+    ((TextView)paramView.findViewById(2131826226)).setText(this.gMR.name);
     paramView = paramView.findViewById(16908312);
-    if (this.fvm.ftr)
+    if (paramView == null)
+    {
+      AppMethodBeat.o(16931);
+      return;
+    }
+    if (this.gMR.gKT)
     {
       paramView.setVisibility(0);
+      AppMethodBeat.o(16931);
       return;
     }
     paramView.setVisibility(8);
+    AppMethodBeat.o(16931);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(16930);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.mm_preference_content_rcpt, localViewGroup);
+    localLayoutInflater.inflate(2130970215, localViewGroup);
+    AppMethodBeat.o(16930);
     return paramViewGroup;
   }
 }

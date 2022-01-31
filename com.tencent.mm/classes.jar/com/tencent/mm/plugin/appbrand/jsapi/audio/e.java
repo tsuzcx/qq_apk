@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONObject;
 
 public final class e
@@ -15,29 +16,33 @@ public final class e
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
+    AppMethodBeat.i(137725);
     if (paramJSONObject == null)
     {
-      y.e("MicroMsg.Audio.JsApiDestroyInstanceAudio", "destroyAudioInstance fail, data is null");
-      paramc.C(paramInt, h("fail:data is null", null));
+      ab.e("MicroMsg.Audio.JsApiDestroyInstanceAudio", "destroyAudioInstance fail, data is null");
+      paramc.h(paramInt, j("fail:data is null", null));
+      AppMethodBeat.o(137725);
       return;
     }
-    y.i("MicroMsg.Audio.JsApiDestroyInstanceAudio", "destroyAudioInstance data:%s", new Object[] { paramJSONObject.toString() });
+    ab.i("MicroMsg.Audio.JsApiDestroyInstanceAudio", "destroyAudioInstance data:%s", new Object[] { paramJSONObject.toString() });
     paramJSONObject = paramJSONObject.optString("audioId");
     if (TextUtils.isEmpty(paramJSONObject))
     {
-      y.e("MicroMsg.Audio.JsApiDestroyInstanceAudio", "audioId is empty");
-      paramc.C(paramInt, h("fail:audioId is empty", null));
+      ab.e("MicroMsg.Audio.JsApiDestroyInstanceAudio", "audioId is empty");
+      paramc.h(paramInt, j("fail:audioId is empty", null));
+      AppMethodBeat.o(137725);
       return;
     }
     e.a locala = new e.a(this, paramc, paramInt);
     locala.appId = paramc.getAppId();
-    locala.bFM = paramJSONObject;
-    locala.ahU();
+    locala.ceu = paramJSONObject;
+    locala.aBL();
+    AppMethodBeat.o(137725);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.e
  * JD-Core Version:    0.7.0.1
  */

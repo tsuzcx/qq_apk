@@ -1,29 +1,57 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 
 public class z
 {
-  public static boolean a(Context paramContext)
-  {
-    paramContext = b(paramContext);
-    return (paramContext != null) && (paramContext.getType() == 1);
-  }
+  private static String a = "fdea30d4-c4f3-11e7-ae5f-6c0b84ab3a9e";
   
-  public static NetworkInfo b(Context paramContext)
+  public static final byte[] a(String paramString)
   {
-    paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-    if ((paramContext != null) && (paramContext.isConnected())) {
-      return paramContext;
+    AppMethodBeat.i(150405);
+    Object localObject = null;
+    try
+    {
+      Mac localMac = Mac.getInstance("HmacSHA256");
+      localMac.init(new SecretKeySpec(a.getBytes("UTF-8"), "HmacSHA256"));
+      paramString = localMac.doFinal(paramString.getBytes());
+      AppMethodBeat.o(150405);
+      return paramString;
     }
-    return null;
+    catch (UnsupportedEncodingException paramString)
+    {
+      for (;;)
+      {
+        h.a("sha256Encode failed with error:" + paramString.getMessage());
+        paramString = localObject;
+      }
+    }
+    catch (NoSuchAlgorithmException paramString)
+    {
+      for (;;)
+      {
+        h.a("sha256Encode failed with error:" + paramString.getMessage());
+        paramString = localObject;
+      }
+    }
+    catch (InvalidKeyException paramString)
+    {
+      for (;;)
+      {
+        h.a("sha256Encode failed with error:" + paramString.getMessage());
+        paramString = localObject;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.z
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.chatroom.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ModRemarkRoomNameUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class ModRemarkRoomNameUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.dpp.setResult(0);
-    this.dpp.finish();
+    AppMethodBeat.i(104118);
+    this.egL.setResult(0);
+    this.egL.finish();
+    AppMethodBeat.o(104118);
     return true;
   }
 }

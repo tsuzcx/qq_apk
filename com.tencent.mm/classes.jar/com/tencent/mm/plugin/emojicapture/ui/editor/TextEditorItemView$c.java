@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import a.f.a.b;
+import a.f.b.k;
+import a.l;
+import a.y;
+import android.graphics.Matrix;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
 final class TextEditorItemView$c
-  implements Runnable
+  extends k
+  implements b<Matrix, y>
 {
-  TextEditorItemView$c(TextEditorItemView paramTextEditorItemView) {}
-  
-  public final void run()
+  TextEditorItemView$c(TextEditorItemView paramTextEditorItemView)
   {
-    if (this.jqJ.getDrawingCache() != null) {
-      TextEditorItemView.a(this.jqJ)[TextEditorItemView.b(this.jqJ)] = Bitmap.createBitmap(this.jqJ.getDrawingCache(), TextEditorItemView.c(this.jqJ).left, TextEditorItemView.c(this.jqJ).top, TextEditorItemView.c(this.jqJ).width(), TextEditorItemView.c(this.jqJ).height());
-    }
-    this.jqJ.destroyDrawingCache();
+    super(1);
   }
 }
 

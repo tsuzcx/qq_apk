@@ -1,92 +1,104 @@
 package com.tencent.mm.plugin.gallery.model;
 
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashSet;
 
 public final class l
 {
-  private int gvt = 3;
-  HashSet<g.a> kHm = new HashSet();
-  public HashSet<g.b> kHn = new HashSet();
-  g kHo;
-  public int kHp = 1;
+  public int hQK;
+  HashSet<i.a> ndv;
+  public HashSet<i.c> ndw;
+  public HashSet<i.b> ndx;
+  public i ndy;
+  public int ndz;
   
-  private void aXD()
+  public l()
   {
-    y.i("MicroMsg.MediaQueryService", "initQueryType: %d", new Object[] { Integer.valueOf(this.kHp) });
-    switch (this.kHp)
+    AppMethodBeat.i(21323);
+    this.hQK = 3;
+    this.ndz = 1;
+    this.ndv = new HashSet();
+    this.ndw = new HashSet();
+    this.ndx = new HashSet();
+    AppMethodBeat.o(21323);
+  }
+  
+  private void bEk()
+  {
+    AppMethodBeat.i(21325);
+    ab.i("MicroMsg.MediaQueryService", "initQueryType: %d", new Object[] { Integer.valueOf(this.ndz) });
+    switch (this.ndz)
     {
     default: 
-      this.kHo = new i();
+      this.ndy = new a();
+      AppMethodBeat.o(21325);
       return;
     case 1: 
-      this.kHo = new i();
+      this.ndy = new j();
+      AppMethodBeat.o(21325);
       return;
     case 2: 
-      this.kHo = new n();
+      this.ndy = new n();
+      AppMethodBeat.o(21325);
       return;
     }
-    this.kHo = new h();
+    this.ndy = new a();
+    AppMethodBeat.o(21325);
   }
   
-  public final void a(g.a parama)
+  public final void a(i.a parama)
   {
-    this.kHm.add(parama);
+    AppMethodBeat.i(21326);
+    this.ndv.add(parama);
+    AppMethodBeat.o(21326);
   }
   
-  public final int aXE()
+  public final void b(i.a parama)
   {
-    y.i("MicroMsg.MediaQueryService", "getQuerySource, %d, %s", new Object[] { Integer.valueOf(this.gvt), bk.csb() });
-    return this.gvt;
+    AppMethodBeat.i(21327);
+    this.ndv.remove(parama);
+    AppMethodBeat.o(21327);
   }
   
-  public final int aXF()
+  public final void bEl()
   {
-    y.i("MicroMsg.MediaQueryService", "getQueryType, %d, %s", new Object[] { Integer.valueOf(this.kHp), bk.csb() });
-    return this.kHp;
-  }
-  
-  public final void aXG()
-  {
-    if (this.kHo == null)
+    AppMethodBeat.i(21328);
+    if (this.ndy == null)
     {
-      y.f("MicroMsg.MediaQueryService", "media query not init, init again");
-      aXD();
+      ab.f("MicroMsg.MediaQueryService", "media query not init, init again");
+      bEk();
     }
-    c.aXc().K(new l.1(this));
+    e.bDR().T(new l.1(this));
+    AppMethodBeat.o(21328);
   }
   
-  public final void b(g.a parama)
+  public final void i(String paramString, int paramInt, long paramLong)
   {
-    this.kHm.remove(parama);
-  }
-  
-  public final void e(String paramString, int paramInt, long paramLong)
-  {
-    if (this.kHo == null)
+    AppMethodBeat.i(21329);
+    if (this.ndy == null)
     {
-      y.f("MicroMsg.MediaQueryService", "media query not init, init again");
-      aXD();
+      ab.e("MicroMsg.MediaQueryService", "media query not init, init again");
+      bEk();
     }
-    c.aXc().aXp().removeCallbacksAndMessages(null);
-    this.kHo.aXw();
-    e locale = c.aXc();
+    ab.i("MicroMsg.MediaQueryService", "queryMediaInAlbums %s", new Object[] { bo.dtY().toString() });
+    e.bDR().bEe().removeCallbacksAndMessages(null);
+    this.ndy.bDK();
+    g localg = e.bDR();
     paramString = new l.2(this, paramString, paramInt, paramLong);
-    locale.aXp().post(paramString);
+    localg.bEe().post(paramString);
+    AppMethodBeat.o(21329);
   }
   
-  public final void rO(int paramInt)
+  public final void wM(int paramInt)
   {
-    this.kHp = paramInt;
-    aXD();
-  }
-  
-  public final void rP(int paramInt)
-  {
-    y.i("MicroMsg.MediaQueryService", "setQuerySource, %d, %s", new Object[] { Integer.valueOf(paramInt), bk.csb() });
-    this.gvt = paramInt;
+    AppMethodBeat.i(21324);
+    this.ndz = paramInt;
+    bEk();
+    AppMethodBeat.o(21324);
   }
 }
 

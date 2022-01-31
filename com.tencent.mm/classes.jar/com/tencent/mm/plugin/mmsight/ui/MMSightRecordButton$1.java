@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMSightRecordButton$1
   implements MMSightCircularProgressBar.a
 {
   MMSightRecordButton$1(MMSightRecordButton paramMMSightRecordButton, MMSightCircularProgressBar.a parama) {}
   
-  public final void aKR()
+  public final void boZ()
   {
-    y.l("MicroMsg.MMSightRecordButton", "outer, onProgressFinish", new Object[0]);
-    this.moU.bka();
-    MMSightRecordButton.a(this.moU, new MMSightRecordButton.1.1(this));
+    AppMethodBeat.i(55091);
+    ab.b("MicroMsg.MMSightRecordButton", "outer, onProgressFinish", new Object[0]);
+    this.oOg.hideProgress();
+    MMSightRecordButton.a(this.oOg, new MMSightRecordButton.1.1(this));
+    AppMethodBeat.o(55091);
   }
 }
 

@@ -12,363 +12,427 @@ import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
-import com.tencent.mm.plugin.facedetect.FaceProNative;
-import com.tencent.mm.plugin.facedetect.a.a;
-import com.tencent.mm.plugin.facedetect.a.c;
-import com.tencent.mm.plugin.facedetect.a.e;
-import com.tencent.mm.plugin.facedetect.a.f;
-import com.tencent.mm.plugin.facedetect.a.g;
-import com.tencent.mm.plugin.facedetect.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.FaceCharacteristicsResult;
 import com.tencent.mm.plugin.facedetect.model.f;
-import com.tencent.mm.plugin.facedetect.model.g;
-import com.tencent.mm.plugin.facedetect.service.FaceDetectProcessService;
 import com.tencent.mm.plugin.facedetect.views.FaceNumberItemView;
 import com.tencent.mm.plugin.facedetect.views.FaceNumberView;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 
 public final class d
   implements b
 {
-  private View iVb = null;
-  boolean inQ = false;
-  private a.b jOQ = new d.9(this);
-  boolean jPA = false;
-  boolean jPB = false;
-  private Animation jPC;
-  private Animation jPD;
-  private AnimationSet jPE;
-  private Animation jPF;
-  final Object jPG = new Object();
-  boolean jPH = false;
-  b.a jPI = null;
-  ah jPJ = new d.1(this, Looper.getMainLooper());
-  private CountDownTimer jPK = new d.2(this);
-  Runnable jPL = new d.3(this);
-  boolean jPb = false;
-  private String jPp = null;
-  private int jPq = 0;
-  a jPr = null;
-  String[] jPs = null;
-  int jPt = 0;
-  int jPu = 0;
-  private FaceNumberView jPv = null;
-  private long jPw = -1L;
-  private long jPx = -1L;
-  boolean jPy = false;
-  boolean jPz = false;
+  boolean eRq;
+  private View lef;
+  private String mjF;
+  private int mjG;
+  a mjH;
+  String[] mjI;
+  int mjJ;
+  int mjK;
+  private FaceNumberView mjL;
+  private long mjM;
+  private long mjN;
+  boolean mjO;
+  boolean mjP;
+  boolean mjQ;
+  boolean mjR;
+  private Animation mjS;
+  private Animation mjT;
+  private AnimationSet mjU;
+  private Animation mjV;
+  final Object mjW;
+  boolean mjX;
+  b.a mjY;
+  ak mjZ;
+  private a.b mjg;
+  boolean mjr;
+  private View mjt;
+  private CountDownTimer mka;
+  Runnable mkb;
   
   public d(String paramString)
   {
-    this.jPr.jOQ = this.jOQ;
-    this.jPC = AnimationUtils.loadAnimation(ae.getContext(), a.a.slide_right_in);
-    this.jPD = AnimationUtils.loadAnimation(ae.getContext(), a.a.face_slide_left_out);
-    this.jPF = AnimationUtils.loadAnimation(ae.getContext(), a.a.fast_faded_in);
-    this.jPF.setDuration(250L);
-    this.jPF.setFillAfter(true);
-    this.jPp = paramString;
+    AppMethodBeat.i(321);
+    this.mjF = null;
+    this.mjG = 0;
+    this.mjH = null;
+    this.mjI = null;
+    this.mjJ = 0;
+    this.mjK = 0;
+    this.lef = null;
+    this.mjL = null;
+    this.mjr = false;
+    this.mjM = -1L;
+    this.mjN = -1L;
+    this.mjO = false;
+    this.mjP = false;
+    this.mjQ = false;
+    this.mjR = false;
+    this.mjW = new Object();
+    this.eRq = false;
+    this.mjX = false;
+    this.mjY = null;
+    this.mjZ = new d.1(this, Looper.getMainLooper());
+    this.mka = new d.2(this);
+    this.mkb = new d.3(this);
+    this.mjg = new d.9(this);
+    this.mjH = new a();
+    this.mjH.mjg = this.mjg;
+    this.mjS = AnimationUtils.loadAnimation(ah.getContext(), 2131034266);
+    this.mjT = AnimationUtils.loadAnimation(ah.getContext(), 2131034168);
+    this.mjV = AnimationUtils.loadAnimation(ah.getContext(), 2131034181);
+    this.mjV.setDuration(250L);
+    this.mjV.setFillAfter(true);
+    this.mjF = paramString;
     int i;
-    if (this.jPp == null)
+    if (this.mjF == null)
     {
       i = 0;
-      this.jPq = i;
-      aOQ();
-      if (!aOP()) {
-        break label361;
+      this.mjG = i;
+      buU();
+      if (!buT()) {
+        break label367;
       }
     }
-    label361:
-    for (this.jPE = ((AnimationSet)AnimationUtils.loadAnimation(ae.getContext(), a.a.face_title_scale_multi));; this.jPE = ((AnimationSet)AnimationUtils.loadAnimation(ae.getContext(), a.a.face_title_scale_single)))
+    label367:
+    for (this.mjU = ((AnimationSet)AnimationUtils.loadAnimation(ah.getContext(), 2131034169));; this.mjU = ((AnimationSet)AnimationUtils.loadAnimation(ah.getContext(), 2131034170)))
     {
-      paramString = new TranslateAnimation(0.0F, 0.0F, 0.0F, ae.getResources().getDimensionPixelSize(a.c.face_hint_msg_tv_anim_distance));
-      paramString.setDuration(ae.getContext().getResources().getInteger(a.f.scaleAnimDuration));
-      this.jPE.addAnimation(paramString);
-      y.i("MicroMsg.NumberFaceMotion", "hy: starting read number: %s", new Object[] { this.jPp });
+      paramString = new TranslateAnimation(0.0F, 0.0F, 0.0F, ah.getResources().getDimensionPixelSize(2131428407));
+      paramString.setDuration(ah.getContext().getResources().getInteger(2131623945));
+      this.mjU.addAnimation(paramString);
+      ab.i("MicroMsg.NumberFaceMotion", "hy: starting read number: %s", new Object[] { this.mjF });
+      AppMethodBeat.o(321);
       return;
-      i = this.jPp.length();
+      i = this.mjF.length();
       break;
     }
   }
   
-  private TextView aOO()
+  private TextView buS()
   {
-    if (this.iVb != null) {
-      return (TextView)this.iVb.findViewById(a.e.hint_msg_tv);
+    AppMethodBeat.i(323);
+    if (this.lef != null)
+    {
+      TextView localTextView = (TextView)this.lef.findViewById(2131823891);
+      AppMethodBeat.o(323);
+      return localTextView;
     }
+    AppMethodBeat.o(323);
     return null;
   }
   
-  private boolean aOP()
+  private boolean buT()
   {
-    return this.jPq >= 6;
+    return this.mjG >= 6;
   }
   
-  private void aOQ()
+  private void buU()
   {
     int i = 0;
-    int j;
-    if ((!bk.bl(this.jPp)) && (aOP()))
+    AppMethodBeat.i(322);
+    if ((!bo.isNullOrNil(this.mjF)) && (buT()))
     {
-      y.i("MicroMsg.NumberFaceMotion", "hy: data too long. need to split into %d rounds", new Object[] { Integer.valueOf(2) });
-      this.jPs = new String[2];
-      j = this.jPq / 2;
-    }
-    while (i < 2)
-    {
-      this.jPs[i] = this.jPp.substring(j * i, (i + 1) * j);
-      i += 1;
-      continue;
-      this.jPs = new String[1];
-      this.jPs[0] = this.jPp;
-    }
-  }
-  
-  private void cN(int paramInt1, int paramInt2)
-  {
-    y.i("MicroMsg.NumberFaceMotion", "alvinluo groupIndex: %d, itemDataLength: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-    if (aOO() != null)
-    {
-      if (paramInt1 == 1) {
-        aOO().setText(ae.getContext().getString(a.i.face_number_msg_single));
-      }
-    }
-    else {
-      return;
-    }
-    TextView localTextView = aOO();
-    Context localContext;
-    int i;
-    if (paramInt2 == -1)
-    {
-      localContext = ae.getContext();
-      i = a.i.face_number_msg_first;
-      switch (paramInt1)
+      ab.i("MicroMsg.NumberFaceMotion", "hy: data too long. need to split into %d rounds", new Object[] { Integer.valueOf(2) });
+      this.mjI = new String[2];
+      int j = this.mjG / 2;
+      while (i < 2)
       {
-      default: 
-        localObject = qP(paramInt1);
+        this.mjI[i] = this.mjF.substring(j * i, (i + 1) * j);
+        i += 1;
       }
-    }
-    label102:
-    for (Object localObject = localContext.getString(i, new Object[] { localObject });; localObject = ae.getContext().getString(a.i.face_number_msg, new Object[] { qP(this.jPt + 1) }))
-    {
-      localTextView.setText((CharSequence)localObject);
-      if (paramInt2 <= 0) {
-        break;
-      }
-      y.i("MicroMsg.NumberFaceMotion", "alvinluo start %d group number", new Object[] { Integer.valueOf(paramInt2 + 1) });
-      localObject = f.jNM.jNN.jPP;
-      if (((g)localObject).jNQ != null) {
-        break label224;
-      }
-      y.e("MicroMsg.FaceDetectNativeManager", "hy: startRecord not init");
+      AppMethodBeat.o(322);
       return;
-      localObject = ae.getContext().getString(a.i.face_number_hint_2nd);
-      break label102;
     }
-    label224:
-    ((g)localObject).jNQ.engineGroupChange();
+    this.mjI = new String[1];
+    this.mjI[0] = this.mjF;
+    AppMethodBeat.o(322);
   }
   
-  private static String qP(int paramInt)
+  private void el(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(327);
+    ab.i("MicroMsg.NumberFaceMotion", "alvinluo groupIndex: %d, itemDataLength: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+    TextView localTextView;
+    if (buS() != null)
+    {
+      if (paramInt1 == 1)
+      {
+        buS().setText(ah.getContext().getString(2131299591));
+        AppMethodBeat.o(327);
+        return;
+      }
+      localTextView = buS();
+      if (paramInt2 != -1) {
+        break label144;
+      }
+    }
+    label144:
+    for (String str = ah.getContext().getString(2131299590, new Object[] { vL(paramInt1) });; str = ah.getContext().getString(2131299589, new Object[] { vK(this.mjJ + 1) }))
+    {
+      localTextView.setText(str);
+      if (paramInt2 > 0)
+      {
+        ab.i("MicroMsg.NumberFaceMotion", "alvinluo start %d group number", new Object[] { Integer.valueOf(paramInt2 + 1) });
+        f.mhY.bux();
+      }
+      AppMethodBeat.o(327);
+      return;
+    }
+  }
+  
+  private static String vK(int paramInt)
+  {
+    AppMethodBeat.i(326);
     switch (paramInt)
     {
     default: 
-      y.e("MicroMsg.NumberFaceMotion", "hy: unknown length!!");
+      ab.e("MicroMsg.NumberFaceMotion", "hy: unknown length!!");
+      AppMethodBeat.o(326);
       return "";
     case 1: 
-      return ae.getContext().getString(a.i.face_number_hint_1);
+      str = ah.getContext().getString(2131299584);
+      AppMethodBeat.o(326);
+      return str;
     case 2: 
-      return ae.getContext().getString(a.i.face_number_hint_2);
+      str = ah.getContext().getString(2131299585);
+      AppMethodBeat.o(326);
+      return str;
     case 3: 
-      return ae.getContext().getString(a.i.face_number_hint_3);
+      str = ah.getContext().getString(2131299587);
+      AppMethodBeat.o(326);
+      return str;
     }
-    return ae.getContext().getString(a.i.face_number_hint_4);
+    String str = ah.getContext().getString(2131299588);
+    AppMethodBeat.o(326);
+    return str;
+  }
+  
+  private static String vL(int paramInt)
+  {
+    AppMethodBeat.i(330);
+    switch (paramInt)
+    {
+    default: 
+      str = vK(paramInt);
+      AppMethodBeat.o(330);
+      return str;
+    }
+    String str = ah.getContext().getString(2131299586);
+    AppMethodBeat.o(330);
+    return str;
   }
   
   public final void a(Context paramContext, ViewGroup paramViewGroup1, ViewGroup paramViewGroup2)
   {
-    y.d("MicroMsg.NumberFaceMotion", "hy: on number init motion");
-    this.iVb = LayoutInflater.from(paramContext).inflate(a.g.face_hint_number, paramViewGroup2);
-    this.jPv = ((FaceNumberView)this.iVb.findViewById(a.e.face_text_number));
-    cN(this.jPs.length, -1);
-    aOO().startAnimation(this.jPC);
-    if (this.jPv != null)
+    AppMethodBeat.i(325);
+    ab.d("MicroMsg.NumberFaceMotion", "hy: on number init motion");
+    this.lef = LayoutInflater.from(paramContext).inflate(2130969496, paramViewGroup2);
+    this.mjL = ((FaceNumberView)this.lef.findViewById(2131823893));
+    this.mjt = LayoutInflater.from(paramContext).inflate(2130969494, paramViewGroup1);
+    el(this.mjI.length, -1);
+    buS().startAnimation(this.mjS);
+    if (this.mjL != null)
     {
-      this.jPv.setVisibility(0);
-      this.jPv.startAnimation(this.jPC);
-      this.jPt = 0;
-      fP(false);
-      this.jPu = -1;
-      aOR();
-      this.jPw = bk.UZ();
-      this.jPx = bk.UZ();
-      this.inQ = false;
+      this.mjL.setVisibility(0);
+      this.mjL.startAnimation(this.mjS);
+      this.mjJ = 0;
+      hs(false);
+      this.mjK = -1;
+      buV();
+      this.mjM = bo.yB();
+      this.mjN = bo.yB();
+      this.eRq = false;
     }
+    AppMethodBeat.o(325);
   }
   
   public final boolean a(FaceCharacteristicsResult paramFaceCharacteristicsResult)
   {
-    this.jPz = true;
-    return this.jPH;
+    this.mjP = true;
+    return this.mjX;
   }
   
-  public final boolean aOJ()
+  public final boolean b(FaceCharacteristicsResult paramFaceCharacteristicsResult)
   {
-    return this.jPb;
+    this.mjP = false;
+    return this.mjX;
   }
   
-  public final boolean aOK()
+  public final boolean buN()
   {
-    this.jPz = true;
-    return this.jPH;
+    return this.mjr;
   }
   
-  public final void aOL()
+  public final boolean buO()
   {
-    this.inQ = true;
-    this.jPH = false;
-    Object localObject1 = this.jPr;
-    ((a)localObject1).jOR = true;
-    y.i("MicroMsg.FaceVoiceRecordLogic", "hy: face start reset");
+    this.mjP = true;
+    return this.mjX;
+  }
+  
+  public final void buP()
+  {
+    AppMethodBeat.i(331);
+    this.eRq = true;
+    this.mjX = false;
+    Object localObject1 = this.mjH;
+    ((a)localObject1).mjh = true;
+    ab.i("MicroMsg.FaceVoiceRecordLogic", "hy: face start reset");
     for (;;)
     {
       try
       {
-        if (((a)localObject1).bCc != null)
+        if (((a)localObject1).ciR != null)
         {
-          ((a)localObject1).bCc.uh();
-          ((a)localObject1).bCc = null;
+          ((a)localObject1).ciR.Et();
+          ((a)localObject1).ciR = null;
         }
-        if (((a)localObject1).eLP != null)
+        if (((a)localObject1).gbw != null)
         {
-          ((a)localObject1).eLP.uE();
-          ((a)localObject1).eLP = null;
+          ((a)localObject1).gbw.Fb();
+          ((a)localObject1).gbw = null;
         }
-        Object localObject2 = ((a)localObject1).eLY;
+        Object localObject2 = ((a)localObject1).gbF;
         if (localObject2 != null) {}
         try
         {
-          ((a)localObject1).eLY.release();
-          ((a)localObject1).eLY = null;
-          ((a)localObject1).eMz = true;
-          ((a)localObject1).eLK = 0;
-          localObject1 = this.jPr;
-          y.i("MicroMsg.FaceVoiceRecordLogic", "hy: recycling voice.");
-          ((a)localObject1).jOQ = null;
-          this.jPr.aOH();
-          if ((com.tencent.mm.plugin.facedetect.e.a.aPj().jST) && (com.tencent.mm.plugin.facedetect.e.a.aPj().isStarted()))
+          ((a)localObject1).gbF.release();
+          ((a)localObject1).gbF = null;
+          ((a)localObject1).gcf = true;
+          ((a)localObject1).gbr = 0;
+          localObject1 = this.mjH;
+          ab.i("MicroMsg.FaceVoiceRecordLogic", "hy: recycling voice.");
+          ((a)localObject1).mjg = null;
+          this.mjH.buL();
+          if ((com.tencent.mm.plugin.facedetect.e.a.bvo().mnp) && (com.tencent.mm.plugin.facedetect.e.a.bvo().isStarted()))
           {
-            localObject1 = this.jPr;
-            localObject2 = com.tencent.mm.plugin.facedetect.e.a.aPj().aPk();
-            ((a)localObject1).jOT.remove(localObject2);
-            if (this.jPb) {
-              com.tencent.mm.plugin.facedetect.e.a.aPj().a(null);
+            localObject1 = this.mjH;
+            localObject2 = com.tencent.mm.plugin.facedetect.e.a.bvo().bvp();
+            ((a)localObject1).mjj.remove(localObject2);
+            if (this.mjr) {
+              com.tencent.mm.plugin.facedetect.e.a.bvo().a(null);
             }
           }
           else
           {
-            this.jPK.cancel();
-            this.jPJ.removeCallbacksAndMessages(null);
-            if (this.jPv != null)
+            this.mka.cancel();
+            this.mjZ.removeCallbacksAndMessages(null);
+            if (this.mjL != null)
             {
-              localObject1 = this.jPv;
-              if ((((FaceNumberView)localObject1).jVa != null) && (((FaceNumberView)localObject1).jVa.length > 0)) {
-                break label285;
+              localObject1 = this.mjL;
+              if ((((FaceNumberView)localObject1).mpt != null) && (((FaceNumberView)localObject1).mpt.length > 0)) {
+                break label303;
               }
             }
-            if (this.iVb != null)
+            if (this.lef != null)
             {
-              this.jPb = false;
-              this.jPw = -1L;
-              this.iVb = null;
-              this.jPv = null;
+              this.mjr = false;
+              this.mjM = -1L;
+              this.lef = null;
+              this.mjL = null;
             }
+            AppMethodBeat.o(331);
             return;
           }
         }
         catch (Exception localException)
         {
-          y.printErrStackTrace("MicroMsg.FaceVoiceRecordLogic", localException, "mVoiceSilentDetectAPI.release error", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.FaceVoiceRecordLogic", localException, "mVoiceSilentDetectAPI.release error", new Object[0]);
           continue;
         }
-        com.tencent.mm.plugin.facedetect.e.a.aPj().aPl();
+        com.tencent.mm.plugin.facedetect.e.a.bvo().bvq();
       }
-      finally {}
-      continue;
-      label285:
-      int i = 0;
-      while (i < ((FaceNumberView)localObject1).jVa.length)
+      finally
       {
-        localObject1.jVa[i].aPv();
+        AppMethodBeat.o(331);
+      }
+      continue;
+      label303:
+      int i = 0;
+      while (i < ((FaceNumberView)localObject1).mpt.length)
+      {
+        localObject1.mpt[i].bvB();
         i += 1;
       }
     }
   }
   
-  public final b.b aOM()
+  public final b.b buQ()
   {
-    return new b.b(90004, "user cancelled in processing");
+    AppMethodBeat.i(332);
+    b.b localb = new b.b(90004, "user cancelled in processing");
+    AppMethodBeat.o(332);
+    return localb;
   }
   
-  public final b.a aON()
+  public final b.a buR()
   {
-    return this.jPI;
+    return this.mjY;
   }
   
-  final void aOR()
+  final void buV()
   {
-    if (this.jPv != null)
+    AppMethodBeat.i(329);
+    if (this.mjL != null)
     {
-      if (this.jPt >= 0) {
-        this.jPv.Ct(this.jPs[this.jPt].substring(0, this.jPu + 1));
+      if (this.mjJ >= 0)
+      {
+        this.mjL.Nu(this.mjI[this.mjJ].substring(0, this.mjK + 1));
+        AppMethodBeat.o(329);
+        return;
       }
+      this.mjL.Nu(null);
     }
-    else {
-      return;
-    }
-    this.jPv.Ct(null);
+    AppMethodBeat.o(329);
   }
   
-  final void aOS()
+  final void buW()
   {
-    this.jPK.start();
+    AppMethodBeat.i(333);
+    this.mka.start();
+    AppMethodBeat.o(333);
   }
   
-  public final boolean b(FaceCharacteristicsResult paramFaceCharacteristicsResult)
+  final void hs(boolean paramBoolean)
   {
-    this.jPz = false;
-    return this.jPH;
-  }
-  
-  final void fP(boolean paramBoolean)
-  {
-    if (this.jPv != null)
+    AppMethodBeat.i(328);
+    if (this.mjL != null)
     {
-      cN(this.jPs.length, this.jPt);
-      this.jPv.setNumberLengthAndInflate(this.jPs[this.jPt].length());
-      this.jPB = false;
-      if (!paramBoolean) {
-        break label82;
+      el(this.mjI.length, this.mjJ);
+      this.mjL.setNumberLengthAndInflate(this.mjI[this.mjJ].length());
+      this.mjR = false;
+      if (paramBoolean)
+      {
+        this.mjS.setAnimationListener(new d.4(this));
+        if (this.lef != null)
+        {
+          this.lef.startAnimation(this.mjS);
+          AppMethodBeat.o(328);
+        }
       }
-      this.jPC.setAnimationListener(new d.4(this));
-      if (this.iVb != null) {
-        this.iVb.startAnimation(this.jPC);
+      else
+      {
+        al.p(new d.5(this), 500L);
       }
     }
-    return;
-    label82:
-    ai.l(new d.5(this), 500L);
+    AppMethodBeat.o(328);
+  }
+  
+  public final void setBusinessTip(String paramString)
+  {
+    AppMethodBeat.i(324);
+    ((TextView)this.mjt.findViewById(2131823891)).setText(paramString);
+    AppMethodBeat.o(324);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.d
  * JD-Core Version:    0.7.0.1
  */

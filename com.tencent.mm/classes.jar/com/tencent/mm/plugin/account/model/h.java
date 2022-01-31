@@ -1,50 +1,39 @@
 package com.tencent.mm.plugin.account.model;
 
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.friend.a.v;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ui.g.a.a;
+import com.tencent.mm.ui.g.a.a.1;
+import com.tencent.mm.ui.g.a.c;
 
-public class h
-  implements f, g.a
+public final class h
 {
-  public void l(Bundle paramBundle)
+  private c gAP;
+  h.a gAQ;
+  ak handler;
+  
+  public h(c paramc, h.a parama)
   {
-    String str = paramBundle.getString("access_token");
-    paramBundle = paramBundle.getString("expires");
-    y.i("MicroMsg.RefreshTokenListener", "onComplete : newToken = " + str + ", expires = " + paramBundle);
-    if (paramBundle != null) {
-      g.DP().Dz().o(65832, paramBundle);
-    }
-    g.DP().Dz().o(65830, str);
-    g.DP().Dz().o(65831, Long.valueOf(System.currentTimeMillis()));
-    g.Dk().a(183, this);
-    paramBundle = new v(2, str);
-    g.Dk().a(paramBundle, 0);
+    this.gAP = paramc;
+    this.gAQ = parama;
   }
   
-  public void onError(int paramInt, String paramString)
+  public final void apL()
   {
-    y.e("MicroMsg.RefreshTokenListener", "onError : errType = " + paramInt + ", errMsg = " + paramString);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    if (paramm.getType() != 183) {
-      return;
-    }
-    g.Dk().b(183, this);
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      y.i("MicroMsg.RefreshTokenListener", "update token success");
-      return;
-    }
-    y.e("MicroMsg.RefreshTokenListener", "update token fail");
+    AppMethodBeat.i(124693);
+    this.handler = new h.1(this);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("client_id", ah.getContext().getString(2131306163));
+    localBundle.putString("client_secret", ah.getContext().getString(2131306164));
+    localBundle.putString("grant_type", "fb_exchange_token");
+    localBundle.putString("fb_exchange_token", this.gAP.gsH);
+    h.2 local2 = new h.2(this);
+    d.post(new a.1(new a(this.gAP), "oauth/access_token", localBundle, "GET", local2), "AsyncFacebookRunner_request");
+    AppMethodBeat.o(124693);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.facedetect.e;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$7
   implements Runnable
@@ -9,20 +10,23 @@ final class a$7
   
   public final void run()
   {
-    synchronized (a.a(this.jTm))
+    AppMethodBeat.i(551);
+    synchronized (a.a(this.mnI))
     {
-      if (a.n(this.jTm) == a.a.jTy)
+      if (a.n(this.mnI) == a.a.mnS)
       {
-        y.e("MicroMsg.FaceVideoRecorder", "hy: not started when cancel. should not happen");
-        a.d(this.jTm);
+        ab.e("MicroMsg.FaceVideoRecorder", "hy: not started when cancel. should not happen");
+        a.d(this.mnI);
+        AppMethodBeat.o(551);
         return;
       }
-      y.i("MicroMsg.FaceVideoRecorder", "hy: cancel record");
-      a.g(this.jTm).cancel();
-      a.d(this.jTm);
-      com.tencent.mm.plugin.facedetect.model.d.aOf().b(a.o(this.jTm));
-      a.a(this.jTm, a.a.jTD);
-      a.m(this.jTm).release();
+      ab.i("MicroMsg.FaceVideoRecorder", "hy: cancel record");
+      a.g(this.mnI).cancel();
+      a.d(this.mnI);
+      com.tencent.mm.plugin.facedetect.model.d.bui().b(a.o(this.mnI));
+      a.a(this.mnI, a.a.mnX);
+      a.m(this.mnI).release();
+      AppMethodBeat.o(551);
       return;
     }
   }

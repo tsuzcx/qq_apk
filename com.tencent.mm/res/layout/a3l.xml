@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jr" android:layout_marginBottom="@dimen/jr"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/c0r" android:background="@color/wl" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-    <FrameLayout android:id="@id/c0g" android:background="@drawable/a58" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m9" android:layout_marginRight="@dimen/m9">
-        <TextView android:textColor="@color/pf" android:ellipsize="end" android:id="@id/c0k" android:paddingTop="@dimen/m9" android:paddingBottom="@dimen/m9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
-    </FrameLayout>
+    <TextView android:textSize="@dimen/kg" android:textStyle="bold" android:textColor="@color/qj" android:ellipsize="end" android:id="@id/c4f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jr" android:singleLine="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/c4g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jr" android:layout_marginBottom="@dimen/jr" />
+    <RelativeLayout android:id="@id/c4h" android:background="@drawable/a13" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jr">
+        <TextView android:textSize="@dimen/jx" android:textColor="@color/qi" android:id="@id/c4i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+        <ImageView android:layout_width="6.0dip" android:layout_height="12.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/aht" android:scaleType="fitXY" android:layout_toRightOf="@id/c4i" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </LinearLayout>

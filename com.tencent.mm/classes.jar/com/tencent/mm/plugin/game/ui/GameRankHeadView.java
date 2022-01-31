@@ -7,121 +7,133 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.j;
+import com.tencent.mm.plugin.game.model.j.a;
 import com.tencent.mm.plugin.game.model.k;
-import com.tencent.mm.plugin.game.model.k.a;
-import com.tencent.mm.plugin.game.model.l;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class GameRankHeadView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private TextView fcy;
-  private com.tencent.mm.plugin.game.model.d kQE;
-  private TextView kYW;
-  private l kZA;
-  k.a kZy;
-  private TextView lew;
-  private ImageView lex;
+  private TextView gui;
+  private TextView nCr;
+  private ImageView nCs;
+  private com.tencent.mm.plugin.game.model.c noI;
+  private TextView nwT;
+  j.a nxv;
+  private k nxx;
   
   public GameRankHeadView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private void bah()
+  private void bHm()
   {
-    if (g.a(getContext(), this.kQE))
+    AppMethodBeat.i(112146);
+    if (g.a(getContext(), this.noI))
     {
-      int i = c.Fe(this.kQE.field_packageName);
-      if (this.kQE.versionCode > i)
+      int i = com.tencent.mm.plugin.game.f.c.Qy(this.noI.field_packageName);
+      if (this.noI.versionCode > i)
       {
-        this.kYW.setText(g.i.game_detail_rank_update);
+        this.nwT.setText(2131300351);
+        AppMethodBeat.o(112146);
         return;
       }
-      this.kYW.setText(g.i.game_detail_rank_launch);
+      this.nwT.setText(2131300349);
+      AppMethodBeat.o(112146);
       return;
     }
-    switch (this.kQE.status)
+    switch (this.noI.status)
     {
     default: 
-      this.kYW.setText(g.i.game_detail_rank_download);
+      this.nwT.setText(2131300346);
+      AppMethodBeat.o(112146);
       return;
     }
-    if (this.kZA == null)
+    if (this.nxx == null)
     {
-      this.kYW.setVisibility(8);
-      this.lex.setVisibility(8);
+      this.nwT.setVisibility(8);
+      this.nCs.setVisibility(8);
+      AppMethodBeat.o(112146);
       return;
     }
-    this.kYW.setVisibility(0);
-    this.lex.setVisibility(0);
-    switch (this.kZA.status)
+    this.nwT.setVisibility(0);
+    this.nCs.setVisibility(0);
+    switch (this.nxx.status)
     {
-    default: 
-      return;
-    case 0: 
-      this.kYW.setText(g.i.game_detail_rank_download);
-      return;
-    case 1: 
-      this.kYW.setText(g.i.game_detail_rank_downloading);
-      return;
-    case 2: 
-      this.kYW.setText(g.i.game_detail_rank_continue);
-      return;
     }
-    this.kYW.setText(g.i.game_detail_rank_install);
+    for (;;)
+    {
+      AppMethodBeat.o(112146);
+      return;
+      this.nwT.setText(2131300346);
+      AppMethodBeat.o(112146);
+      return;
+      this.nwT.setText(2131300347);
+      AppMethodBeat.o(112146);
+      return;
+      this.nwT.setText(2131300345);
+      AppMethodBeat.o(112146);
+      return;
+      this.nwT.setText(2131300348);
+    }
   }
   
   public void onClick(View paramView)
   {
+    AppMethodBeat.i(112148);
     paramView = new d(getContext());
-    l locall = new l(this.kQE);
-    paramView.a(this.kQE, locall);
+    k localk = new k(this.noI);
+    paramView.a(this.noI, localk);
+    AppMethodBeat.o(112148);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(112145);
     super.onFinishInflate();
-    this.fcy = ((TextView)findViewById(g.e.game_detail_rank_title));
-    this.lew = ((TextView)findViewById(g.e.game_detail_rank_desc));
-    this.kYW = ((TextView)findViewById(g.e.game_detail_rank_tag));
-    this.lex = ((ImageView)findViewById(g.e.game_more_icon));
-    y.i("MicroMsg.GameRankHeadView", "initView finished");
+    this.gui = ((TextView)findViewById(2131824598));
+    this.nCr = ((TextView)findViewById(2131824599));
+    this.nwT = ((TextView)findViewById(2131824600));
+    this.nCs = ((ImageView)findViewById(2131824601));
+    ab.i("MicroMsg.GameRankHeadView", "initView finished");
+    AppMethodBeat.o(112145);
   }
   
   public void setData(GameDetailRankUI.a parama)
   {
-    this.fcy.setText(parama.kZr);
-    this.lew.setText(parama.kZs);
-    this.kQE = parama.kZt;
-    this.kQE.bXn = 1203;
-    this.kQE.position = 2;
-    if (this.kZA == null) {
-      this.kZA = new l(this.kQE);
+    AppMethodBeat.i(112147);
+    this.gui.setText(parama.nxo);
+    this.nCr.setText(parama.nxp);
+    this.noI = parama.nxq;
+    this.noI.cFj = 1203;
+    this.noI.position = 2;
+    if (this.nxx == null) {
+      this.nxx = new k(this.noI);
     }
-    this.kZA.dz(getContext());
-    this.kZA.aGu();
-    bah();
-    if (this.kZy != null) {
-      k.a(this.kZy);
+    this.nxx.em(getContext());
+    this.nxx.bjZ();
+    bHm();
+    if (this.nxv != null) {
+      j.a(this.nxv);
     }
     for (;;)
     {
-      this.kYW.setOnClickListener(this);
+      this.nwT.setOnClickListener(this);
+      AppMethodBeat.o(112147);
       return;
-      this.kZy = new GameRankHeadView.1(this);
-      k.a(this.kZy);
+      this.nxv = new GameRankHeadView.1(this);
+      j.a(this.nxv);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameRankHeadView
  * JD-Core Version:    0.7.0.1
  */

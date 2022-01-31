@@ -1,92 +1,121 @@
 package com.tencent.mm.ipcinvoker.wx_extension.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b
 {
-  private final List<b.b<a>> dHt = new LinkedList();
-  private final List<Object> dHu = new LinkedList();
+  private final List<b.b<a>> eEX;
+  private final List<Object> eEY;
   
-  private void Ce()
+  private b()
+  {
+    AppMethodBeat.i(126214);
+    this.eEX = new LinkedList();
+    this.eEY = new LinkedList();
+    AppMethodBeat.o(126214);
+  }
+  
+  private void PW()
   {
     try
     {
-      Iterator localIterator = this.dHu.iterator();
+      AppMethodBeat.i(126219);
+      Iterator localIterator = this.eEY.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
+      AppMethodBeat.o(126219);
     }
     finally {}
   }
   
-  private void Cf()
+  private void PX()
   {
     try
     {
-      Iterator localIterator = this.dHu.iterator();
+      AppMethodBeat.i(126220);
+      Iterator localIterator = this.eEY.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
+      AppMethodBeat.o(126220);
     }
     finally {}
   }
   
   public final boolean a(a parama)
   {
-    if (c(parama)) {
+    AppMethodBeat.i(126215);
+    if (c(parama))
+    {
+      AppMethodBeat.o(126215);
       return false;
     }
-    synchronized (this.dHt)
+    synchronized (this.eEX)
     {
-      this.dHt.add(new b.b(parama));
-      Ce();
+      this.eEX.add(new b.b(parama));
+      PW();
+      AppMethodBeat.o(126215);
       return true;
     }
   }
   
   public final boolean b(a parama)
   {
-    if (parama == null) {
+    AppMethodBeat.i(126216);
+    if (parama == null)
+    {
+      AppMethodBeat.o(126216);
       return false;
     }
-    synchronized (this.dHt)
+    synchronized (this.eEX)
     {
-      boolean bool = this.dHt.remove(new b.b(parama));
-      Cf();
+      boolean bool = this.eEX.remove(new b.b(parama));
+      PX();
+      AppMethodBeat.o(126216);
       return bool;
     }
   }
   
   public final boolean c(a parama)
   {
-    if (parama == null) {
+    AppMethodBeat.i(126217);
+    if (parama == null)
+    {
+      AppMethodBeat.o(126217);
       return false;
     }
-    synchronized (this.dHt)
+    synchronized (this.eEX)
     {
-      Iterator localIterator = this.dHt.iterator();
+      Iterator localIterator = this.eEX.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (b.b)localIterator.next();
         if (localObject != null)
         {
           localObject = (a)((b.b)localObject).get();
-          if ((localObject != null) && (parama.equals(localObject))) {
+          if ((localObject != null) && (parama.equals(localObject)))
+          {
+            AppMethodBeat.o(126217);
             return true;
           }
         }
       }
+      AppMethodBeat.o(126217);
+      return false;
     }
-    return false;
   }
   
   public final int size()
   {
-    synchronized (this.dHt)
+    AppMethodBeat.i(126218);
+    synchronized (this.eEX)
     {
-      int i = this.dHt.size();
+      int i = this.eEX.size();
+      AppMethodBeat.o(126218);
       return i;
     }
   }

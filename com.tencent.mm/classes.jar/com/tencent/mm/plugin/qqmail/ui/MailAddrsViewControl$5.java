@@ -4,6 +4,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import android.widget.AutoCompleteTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.o;
 import java.util.LinkedList;
 
@@ -14,39 +15,41 @@ final class MailAddrsViewControl$5
   
   public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(68342);
     if ((paramInt == 67) && (paramKeyEvent.getAction() == 0))
     {
-      paramView = this.nir.nik.getEditableText().toString();
-      if ((paramView.length() == 0) && (MailAddrsViewControl.c(this.nir) != null) && (MailAddrsViewControl.c(this.nir).isSelected()))
+      paramView = this.pNE.pNx.getEditableText().toString();
+      if ((paramView.length() == 0) && (MailAddrsViewControl.c(this.pNE) != null) && (MailAddrsViewControl.c(this.pNE).isSelected()))
       {
-        this.nir.f((o)MailAddrsViewControl.c(this.nir).getTag());
-        MailAddrsViewControl.a(this.nir, null);
-        this.nir.buk();
+        this.pNE.f((o)MailAddrsViewControl.c(this.pNE).getTag());
+        MailAddrsViewControl.a(this.pNE, null);
+        this.pNE.cew();
       }
     }
     for (;;)
     {
+      AppMethodBeat.o(68342);
       return false;
-      if ((paramView.length() == 0) && (MailAddrsViewControl.f(this.nir).size() > 0))
+      if ((paramView.length() == 0) && (MailAddrsViewControl.f(this.pNE).size() > 0))
       {
-        paramInt = MailAddrsViewControl.f(this.nir).size() - 1;
-        paramView = this.nir.getChildAt(paramInt);
+        paramInt = MailAddrsViewControl.f(this.pNE).size() - 1;
+        paramView = this.pNE.getChildAt(paramInt);
         if (!paramView.isSelected())
         {
           paramView.setSelected(true);
         }
         else
         {
-          this.nir.f((o)MailAddrsViewControl.f(this.nir).get(paramInt));
-          this.nir.buk();
+          this.pNE.f((o)MailAddrsViewControl.f(this.pNE).get(paramInt));
+          this.pNE.cew();
           continue;
           if ((paramInt == 66) && (paramKeyEvent.getAction() == 0))
           {
-            paramView = this.nir.nik.getEditableText().toString();
+            paramView = this.pNE.pNx.getEditableText().toString();
             if ((paramView != null) && (paramView.length() > 0))
             {
-              MailAddrsViewControl.a(this.nir, paramView, true);
-              this.nir.buk();
+              MailAddrsViewControl.a(this.pNE, paramView, true);
+              this.pNE.cew();
             }
           }
         }

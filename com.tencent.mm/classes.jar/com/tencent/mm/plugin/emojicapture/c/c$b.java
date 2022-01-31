@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.emojicapture.c;
 
+import a.l;
 import com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer;
 import com.tencent.mm.plugin.emojicapture.ui.editor.a;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/IEditorItemView;", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "plugin-emojicapture_release"})
 public abstract interface c$b
   extends a
 {

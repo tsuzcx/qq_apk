@@ -14,64 +14,64 @@ import java.util.Map;
 public class ShareElfFile
   implements Closeable
 {
-  private final FileInputStream wYu;
-  private final Map<String, SectionHeader> wYv = new HashMap();
-  public ElfHeader wYw = null;
-  public ProgramHeader[] wYx = null;
-  public SectionHeader[] wYy = null;
+  private final FileInputStream BuY;
+  private final Map<String, SectionHeader> BuZ = new HashMap();
+  public ElfHeader Bva = null;
+  public ProgramHeader[] Bvb = null;
+  public SectionHeader[] Bvc = null;
   
   public ShareElfFile(File paramFile)
   {
-    this.wYu = new FileInputStream(paramFile);
-    Object localObject = this.wYu.getChannel();
-    this.wYw = new ElfHeader((FileChannel)localObject, (byte)0);
+    this.BuY = new FileInputStream(paramFile);
+    Object localObject = this.BuY.getChannel();
+    this.Bva = new ElfHeader((FileChannel)localObject, (byte)0);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(128);
-    localByteBuffer.limit(this.wYw.wYI);
-    if (this.wYw.wYz[5] == 1) {}
+    localByteBuffer.limit(this.Bva.Bvm);
+    if (this.Bva.Bvd[5] == 1) {}
     for (paramFile = ByteOrder.LITTLE_ENDIAN;; paramFile = ByteOrder.BIG_ENDIAN)
     {
       localByteBuffer.order(paramFile);
-      ((FileChannel)localObject).position(this.wYw.wYE);
-      this.wYx = new ProgramHeader[this.wYw.wYJ];
+      ((FileChannel)localObject).position(this.Bva.Bvi);
+      this.Bvb = new ProgramHeader[this.Bva.Bvn];
       i = 0;
-      while (i < this.wYx.length)
+      while (i < this.Bvb.length)
       {
         a((FileChannel)localObject, localByteBuffer, "failed to read phdr.");
-        this.wYx[i] = new ProgramHeader(localByteBuffer, this.wYw.wYz[4], 0);
+        this.Bvb[i] = new ProgramHeader(localByteBuffer, this.Bva.Bvd[4], 0);
         i += 1;
       }
     }
-    ((FileChannel)localObject).position(this.wYw.wYF);
-    localByteBuffer.limit(this.wYw.wYK);
-    this.wYy = new SectionHeader[this.wYw.wYL];
+    ((FileChannel)localObject).position(this.Bva.Bvj);
+    localByteBuffer.limit(this.Bva.Bvo);
+    this.Bvc = new SectionHeader[this.Bva.Bvp];
     int i = 0;
-    while (i < this.wYy.length)
+    while (i < this.Bvc.length)
     {
       a((FileChannel)localObject, localByteBuffer, "failed to read shdr.");
-      this.wYy[i] = new SectionHeader(localByteBuffer, this.wYw.wYz[4], 0);
+      this.Bvc[i] = new SectionHeader(localByteBuffer, this.Bva.Bvd[4], 0);
       i += 1;
     }
-    if (this.wYw.wYM > 0)
+    if (this.Bva.Bvq > 0)
     {
-      localObject = this.wYy[this.wYw.wYM];
-      paramFile = ByteBuffer.allocate((int)((SectionHeader)localObject).wZa);
-      this.wYu.getChannel().position(((SectionHeader)localObject).wYZ);
-      a(this.wYu.getChannel(), paramFile, "failed to read section: " + ((SectionHeader)localObject).wZf);
-      localObject = this.wYy;
+      localObject = this.Bvc[this.Bva.Bvq];
+      paramFile = ByteBuffer.allocate((int)((SectionHeader)localObject).BvE);
+      this.BuY.getChannel().position(((SectionHeader)localObject).BvD);
+      a(this.BuY.getChannel(), paramFile, "failed to read section: " + ((SectionHeader)localObject).BvJ);
+      localObject = this.Bvc;
       int k = localObject.length;
       i = j;
       while (i < k)
       {
         localByteBuffer = localObject[i];
-        paramFile.position(localByteBuffer.wYV);
-        localByteBuffer.wZf = D(paramFile);
-        this.wYv.put(localByteBuffer.wZf, localByteBuffer);
+        paramFile.position(localByteBuffer.Bvz);
+        localByteBuffer.BvJ = G(paramFile);
+        this.BuZ.put(localByteBuffer.BvJ, localByteBuffer);
         i += 1;
       }
     }
   }
   
-  private static String D(ByteBuffer paramByteBuffer)
+  private static String G(ByteBuffer paramByteBuffer)
   {
     byte[] arrayOfByte = paramByteBuffer.array();
     int i = paramByteBuffer.position();
@@ -93,7 +93,7 @@ public class ShareElfFile
   }
   
   /* Error */
-  public static int ac(File paramFile)
+  public static int al(File paramFile)
   {
     // Byte code:
     //   0: iconst_4
@@ -106,7 +106,7 @@ public class ShareElfFile
     //   12: astore_2
     //   13: aload_2
     //   14: aload_3
-    //   15: invokevirtual 226	java/io/InputStream:read	([B)I
+    //   15: invokevirtual 227	java/io/InputStream:read	([B)I
     //   18: pop
     //   19: aload_3
     //   20: iconst_0
@@ -131,7 +131,7 @@ public class ShareElfFile
     //   48: bipush 10
     //   50: if_icmpne +9 -> 59
     //   53: aload_2
-    //   54: invokevirtual 229	java/io/InputStream:close	()V
+    //   54: invokevirtual 230	java/io/InputStream:close	()V
     //   57: iconst_0
     //   58: ireturn
     //   59: aload_3
@@ -155,11 +155,11 @@ public class ShareElfFile
     //   86: bipush 70
     //   88: if_icmpne +9 -> 97
     //   91: aload_2
-    //   92: invokevirtual 229	java/io/InputStream:close	()V
+    //   92: invokevirtual 230	java/io/InputStream:close	()V
     //   95: iconst_1
     //   96: ireturn
     //   97: aload_2
-    //   98: invokevirtual 229	java/io/InputStream:close	()V
+    //   98: invokevirtual 230	java/io/InputStream:close	()V
     //   101: iconst_m1
     //   102: ireturn
     //   103: astore_0
@@ -168,7 +168,7 @@ public class ShareElfFile
     //   106: aload_2
     //   107: ifnull +7 -> 114
     //   110: aload_2
-    //   111: invokevirtual 229	java/io/InputStream:close	()V
+    //   111: invokevirtual 230	java/io/InputStream:close	()V
     //   114: aload_0
     //   115: athrow
     //   116: astore_0
@@ -201,46 +201,46 @@ public class ShareElfFile
   
   public void close()
   {
-    this.wYu.close();
-    this.wYv.clear();
-    this.wYx = null;
-    this.wYy = null;
+    this.BuY.close();
+    this.BuZ.clear();
+    this.Bvb = null;
+    this.Bvc = null;
   }
   
   public static class ElfHeader
   {
-    public final short wYA;
-    public final short wYB;
-    public final int wYC;
-    public final long wYD;
-    public final long wYE;
-    public final long wYF;
-    public final int wYG;
-    public final short wYH;
-    public final short wYI;
-    public final short wYJ;
-    public final short wYK;
-    public final short wYL;
-    public final short wYM;
-    public final byte[] wYz = new byte[16];
+    public final byte[] Bvd = new byte[16];
+    public final short Bve;
+    public final short Bvf;
+    public final int Bvg;
+    public final long Bvh;
+    public final long Bvi;
+    public final long Bvj;
+    public final int Bvk;
+    public final short Bvl;
+    public final short Bvm;
+    public final short Bvn;
+    public final short Bvo;
+    public final short Bvp;
+    public final short Bvq;
     
     private ElfHeader(FileChannel paramFileChannel)
     {
       paramFileChannel.position(0L);
-      paramFileChannel.read(ByteBuffer.wrap(this.wYz));
-      if ((this.wYz[0] != 127) || (this.wYz[1] != 69) || (this.wYz[2] != 76) || (this.wYz[3] != 70)) {
-        throw new IOException(String.format("bad elf magic: %x %x %x %x.", new Object[] { Byte.valueOf(this.wYz[0]), Byte.valueOf(this.wYz[1]), Byte.valueOf(this.wYz[2]), Byte.valueOf(this.wYz[3]) }));
+      paramFileChannel.read(ByteBuffer.wrap(this.Bvd));
+      if ((this.Bvd[0] != 127) || (this.Bvd[1] != 69) || (this.Bvd[2] != 76) || (this.Bvd[3] != 70)) {
+        throw new IOException(String.format("bad elf magic: %x %x %x %x.", new Object[] { Byte.valueOf(this.Bvd[0]), Byte.valueOf(this.Bvd[1]), Byte.valueOf(this.Bvd[2]), Byte.valueOf(this.Bvd[3]) }));
       }
-      ShareElfFile.z(this.wYz[4], 2, "bad elf class: " + this.wYz[4]);
-      ShareElfFile.z(this.wYz[5], 2, "bad elf data encoding: " + this.wYz[5]);
+      ShareElfFile.G(this.Bvd[4], 2, "bad elf class: " + this.Bvd[4]);
+      ShareElfFile.G(this.Bvd[5], 2, "bad elf data encoding: " + this.Bvd[5]);
       int i;
       label214:
       ByteBuffer localByteBuffer;
-      if (this.wYz[4] == 1)
+      if (this.Bvd[4] == 1)
       {
         i = 36;
         localByteBuffer = ByteBuffer.allocate(i);
-        if (this.wYz[5] != 1) {
+        if (this.Bvd[5] != 1) {
           break label367;
         }
       }
@@ -249,119 +249,119 @@ public class ShareElfFile
       {
         localByteBuffer.order(localByteOrder);
         ShareElfFile.a(paramFileChannel, localByteBuffer, "failed to read rest part of ehdr.");
-        this.wYA = localByteBuffer.getShort();
-        this.wYB = localByteBuffer.getShort();
-        this.wYC = localByteBuffer.getInt();
-        ShareElfFile.z(this.wYC, 1, "bad elf version: " + this.wYC);
-        switch (this.wYz[4])
+        this.Bve = localByteBuffer.getShort();
+        this.Bvf = localByteBuffer.getShort();
+        this.Bvg = localByteBuffer.getInt();
+        ShareElfFile.G(this.Bvg, 1, "bad elf version: " + this.Bvg);
+        switch (this.Bvd[4])
         {
         default: 
-          throw new IOException("Unexpected elf class: " + this.wYz[4]);
+          throw new IOException("Unexpected elf class: " + this.Bvd[4]);
           i = 48;
           break label214;
         }
       }
-      this.wYD = localByteBuffer.getInt();
-      this.wYE = localByteBuffer.getInt();
-      for (this.wYF = localByteBuffer.getInt();; this.wYF = localByteBuffer.getLong())
+      this.Bvh = localByteBuffer.getInt();
+      this.Bvi = localByteBuffer.getInt();
+      for (this.Bvj = localByteBuffer.getInt();; this.Bvj = localByteBuffer.getLong())
       {
-        this.wYG = localByteBuffer.getInt();
-        this.wYH = localByteBuffer.getShort();
-        this.wYI = localByteBuffer.getShort();
-        this.wYJ = localByteBuffer.getShort();
-        this.wYK = localByteBuffer.getShort();
-        this.wYL = localByteBuffer.getShort();
-        this.wYM = localByteBuffer.getShort();
+        this.Bvk = localByteBuffer.getInt();
+        this.Bvl = localByteBuffer.getShort();
+        this.Bvm = localByteBuffer.getShort();
+        this.Bvn = localByteBuffer.getShort();
+        this.Bvo = localByteBuffer.getShort();
+        this.Bvp = localByteBuffer.getShort();
+        this.Bvq = localByteBuffer.getShort();
         return;
-        this.wYD = localByteBuffer.getLong();
-        this.wYE = localByteBuffer.getLong();
+        this.Bvh = localByteBuffer.getLong();
+        this.Bvi = localByteBuffer.getLong();
       }
     }
   }
   
   public static class ProgramHeader
   {
-    public final int wYN;
-    public final int wYO;
-    public final long wYP;
-    public final long wYQ;
-    public final long wYR;
-    public final long wYS;
-    public final long wYT;
-    public final long wYU;
+    public final int Bvr;
+    public final int Bvs;
+    public final long Bvt;
+    public final long Bvu;
+    public final long Bvv;
+    public final long Bvw;
+    public final long Bvx;
+    public final long Bvy;
     
     private ProgramHeader(ByteBuffer paramByteBuffer, int paramInt)
     {
       switch (paramInt)
       {
       default: 
-        throw new IOException("Unexpected elf class: " + paramInt);
+        throw new IOException("Unexpected elf class: ".concat(String.valueOf(paramInt)));
       case 1: 
-        this.wYN = paramByteBuffer.getInt();
-        this.wYP = paramByteBuffer.getInt();
-        this.wYQ = paramByteBuffer.getInt();
-        this.wYR = paramByteBuffer.getInt();
-        this.wYS = paramByteBuffer.getInt();
-        this.wYT = paramByteBuffer.getInt();
-        this.wYO = paramByteBuffer.getInt();
-        this.wYU = paramByteBuffer.getInt();
+        this.Bvr = paramByteBuffer.getInt();
+        this.Bvt = paramByteBuffer.getInt();
+        this.Bvu = paramByteBuffer.getInt();
+        this.Bvv = paramByteBuffer.getInt();
+        this.Bvw = paramByteBuffer.getInt();
+        this.Bvx = paramByteBuffer.getInt();
+        this.Bvs = paramByteBuffer.getInt();
+        this.Bvy = paramByteBuffer.getInt();
         return;
       }
-      this.wYN = paramByteBuffer.getInt();
-      this.wYO = paramByteBuffer.getInt();
-      this.wYP = paramByteBuffer.getLong();
-      this.wYQ = paramByteBuffer.getLong();
-      this.wYR = paramByteBuffer.getLong();
-      this.wYS = paramByteBuffer.getLong();
-      this.wYT = paramByteBuffer.getLong();
-      this.wYU = paramByteBuffer.getLong();
+      this.Bvr = paramByteBuffer.getInt();
+      this.Bvs = paramByteBuffer.getInt();
+      this.Bvt = paramByteBuffer.getLong();
+      this.Bvu = paramByteBuffer.getLong();
+      this.Bvv = paramByteBuffer.getLong();
+      this.Bvw = paramByteBuffer.getLong();
+      this.Bvx = paramByteBuffer.getLong();
+      this.Bvy = paramByteBuffer.getLong();
     }
   }
   
   public static class SectionHeader
   {
-    public final int wYV;
-    public final int wYW;
-    public final long wYX;
-    public final long wYY;
-    public final long wYZ;
-    public final long wZa;
-    public final int wZb;
-    public final int wZc;
-    public final long wZd;
-    public final long wZe;
-    public String wZf;
+    public final int BvA;
+    public final long BvB;
+    public final long BvC;
+    public final long BvD;
+    public final long BvE;
+    public final int BvF;
+    public final int BvG;
+    public final long BvH;
+    public final long BvI;
+    public String BvJ;
+    public final int Bvz;
     
     private SectionHeader(ByteBuffer paramByteBuffer, int paramInt)
     {
       switch (paramInt)
       {
       default: 
-        throw new IOException("Unexpected elf class: " + paramInt);
+        throw new IOException("Unexpected elf class: ".concat(String.valueOf(paramInt)));
       case 1: 
-        this.wYV = paramByteBuffer.getInt();
-        this.wYW = paramByteBuffer.getInt();
-        this.wYX = paramByteBuffer.getInt();
-        this.wYY = paramByteBuffer.getInt();
-        this.wYZ = paramByteBuffer.getInt();
-        this.wZa = paramByteBuffer.getInt();
-        this.wZb = paramByteBuffer.getInt();
-        this.wZc = paramByteBuffer.getInt();
-        this.wZd = paramByteBuffer.getInt();
+        this.Bvz = paramByteBuffer.getInt();
+        this.BvA = paramByteBuffer.getInt();
+        this.BvB = paramByteBuffer.getInt();
+        this.BvC = paramByteBuffer.getInt();
+        this.BvD = paramByteBuffer.getInt();
+        this.BvE = paramByteBuffer.getInt();
+        this.BvF = paramByteBuffer.getInt();
+        this.BvG = paramByteBuffer.getInt();
+        this.BvH = paramByteBuffer.getInt();
       }
-      for (this.wZe = paramByteBuffer.getInt();; this.wZe = paramByteBuffer.getLong())
+      for (this.BvI = paramByteBuffer.getInt();; this.BvI = paramByteBuffer.getLong())
       {
-        this.wZf = null;
+        this.BvJ = null;
         return;
-        this.wYV = paramByteBuffer.getInt();
-        this.wYW = paramByteBuffer.getInt();
-        this.wYX = paramByteBuffer.getLong();
-        this.wYY = paramByteBuffer.getLong();
-        this.wYZ = paramByteBuffer.getLong();
-        this.wZa = paramByteBuffer.getLong();
-        this.wZb = paramByteBuffer.getInt();
-        this.wZc = paramByteBuffer.getInt();
-        this.wZd = paramByteBuffer.getLong();
+        this.Bvz = paramByteBuffer.getInt();
+        this.BvA = paramByteBuffer.getInt();
+        this.BvB = paramByteBuffer.getLong();
+        this.BvC = paramByteBuffer.getLong();
+        this.BvD = paramByteBuffer.getLong();
+        this.BvE = paramByteBuffer.getLong();
+        this.BvF = paramByteBuffer.getInt();
+        this.BvG = paramByteBuffer.getInt();
+        this.BvH = paramByteBuffer.getLong();
       }
     }
   }

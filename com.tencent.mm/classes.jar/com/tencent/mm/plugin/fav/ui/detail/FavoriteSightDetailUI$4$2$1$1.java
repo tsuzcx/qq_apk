@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.p;
 
 final class FavoriteSightDetailUI$4$2$1$1
@@ -11,10 +12,12 @@ final class FavoriteSightDetailUI$4$2$1$1
   
   public final void run()
   {
-    this.kgk.kgj.kgi.kgg.keY.jYQ = true;
-    this.kfC.dismiss();
-    y.i("MicroMsg.FavoriteSightDetailUI", "do del fav file, local id %d, fav id %d", new Object[] { Long.valueOf(FavoriteSightDetailUI.a(this.kgk.kgj.kgi.kgg).field_localId), Integer.valueOf(FavoriteSightDetailUI.a(this.kgk.kgj.kgi.kgg).field_id) });
-    this.kgk.kgj.kgi.kgg.finish();
+    AppMethodBeat.i(74416);
+    this.mAW.mAV.mAU.mAS.mzH.mtj = true;
+    this.mAo.dismiss();
+    ab.i("MicroMsg.FavoriteSightDetailUI", "do del fav file, local id %d, fav id %d", new Object[] { Long.valueOf(FavoriteSightDetailUI.a(this.mAW.mAV.mAU.mAS).field_localId), Integer.valueOf(FavoriteSightDetailUI.a(this.mAW.mAV.mAU.mAS).field_id) });
+    this.mAW.mAV.mAU.mAS.finish();
+    AppMethodBeat.o(74416);
   }
 }
 

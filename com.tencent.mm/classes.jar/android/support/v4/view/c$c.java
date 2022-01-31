@@ -8,16 +8,16 @@ import android.view.MotionEvent;
 final class c$c
   implements c.a
 {
-  private final GestureDetector Fh;
+  private final GestureDetector FQ;
   
   c$c(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    this.Fh = new GestureDetector(paramContext, paramOnGestureListener, null);
+    this.FQ = new GestureDetector(paramContext, paramOnGestureListener, null);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.Fh.onTouchEvent(paramMotionEvent);
+    return this.FQ.onTouchEvent(paramMotionEvent);
   }
 }
 

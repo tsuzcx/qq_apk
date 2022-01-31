@@ -1,23 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.d;
 
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.widget.input.n;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.sdk.platformtools.bj;
 
 final class f$1
-  implements Runnable
+  extends bj<Void>
 {
-  f$1(f paramf, q paramq, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public final void run()
-  {
-    if (n.a(this.gkf, this.grq, this.grs, this.grt))
-    {
-      this.gkf.C(this.dIS, this.gru.h("ok", null));
-      return;
-    }
-    this.gkf.C(this.dIS, this.gru.h("fail:invalid data", null));
-  }
+  f$1(f paramf, v paramv, boolean paramBoolean) {}
 }
 
 

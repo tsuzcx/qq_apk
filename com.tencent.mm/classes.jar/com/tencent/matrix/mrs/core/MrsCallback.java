@@ -2,9 +2,13 @@ package com.tencent.matrix.mrs.core;
 
 public abstract interface MrsCallback
 {
+  public abstract String getCryptKey(MatrixUploadDataSlice paramMatrixUploadDataSlice);
+  
+  public abstract String getHost(MatrixUploadDataSlice paramMatrixUploadDataSlice);
+  
   public abstract String getPublicSharePath();
   
-  public abstract void onMrsReportDataReady(byte[] paramArrayOfByte);
+  public abstract String getUrl(MatrixUploadDataSlice paramMatrixUploadDataSlice);
   
   public abstract boolean onRequestGetMrsStrategy(byte[] paramArrayOfByte);
   

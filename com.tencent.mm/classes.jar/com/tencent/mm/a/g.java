@@ -39,7 +39,7 @@ public final class g
     return null;
   }
   
-  public static String bQ(String paramString)
+  public static String cT(String paramString)
   {
     if (paramString == null) {}
     do
@@ -47,10 +47,10 @@ public final class g
       return null;
       paramString = new File(paramString);
     } while (!paramString.exists());
-    return m(paramString);
+    return s(paramString);
   }
   
-  public static String bR(String paramString)
+  public static String getMD5(String paramString)
   {
     if (paramString == null) {}
     do
@@ -58,10 +58,10 @@ public final class g
       return null;
       paramString = new File(paramString);
     } while (!paramString.exists());
-    return n(paramString);
+    return r(paramString);
   }
   
-  public static String l(InputStream paramInputStream)
+  public static String n(InputStream paramInputStream)
   {
     int j = 0;
     if (paramInputStream == null) {}
@@ -109,11 +109,16 @@ public final class g
     return null;
   }
   
+  public static String q(File paramFile)
+  {
+    return r(paramFile);
+  }
+  
   /* Error */
-  public static String m(File paramFile)
+  public static String r(File paramFile)
   {
     // Byte code:
-    //   0: ldc2_w 85
+    //   0: ldc2_w 86
     //   3: lstore_1
     //   4: aload_0
     //   5: ifnull +10 -> 15
@@ -122,32 +127,32 @@ public final class g
     //   12: ifne +5 -> 17
     //   15: aconst_null
     //   16: areturn
-    //   17: new 88	java/io/FileInputStream
+    //   17: new 89	java/io/FileInputStream
     //   20: dup
     //   21: aload_0
-    //   22: invokespecial 91	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   22: invokespecial 92	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   25: astore_3
-    //   26: ldc2_w 85
+    //   26: ldc2_w 86
     //   29: aload_0
-    //   30: invokevirtual 95	java/io/File:length	()J
+    //   30: invokevirtual 96	java/io/File:length	()J
     //   33: lcmp
     //   34: ifgt +23 -> 57
     //   37: aload_3
     //   38: lload_1
     //   39: l2i
-    //   40: invokestatic 97	com/tencent/mm/a/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   40: invokestatic 98	com/tencent/mm/a/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
     //   43: astore_0
     //   44: aload_3
-    //   45: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   45: invokevirtual 102	java/io/FileInputStream:close	()V
     //   48: aload_3
-    //   49: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   49: invokevirtual 102	java/io/FileInputStream:close	()V
     //   52: aload_0
     //   53: areturn
     //   54: astore_3
     //   55: aload_0
     //   56: areturn
     //   57: aload_0
-    //   58: invokevirtual 95	java/io/File:length	()J
+    //   58: invokevirtual 96	java/io/File:length	()J
     //   61: lstore_1
     //   62: goto -25 -> 37
     //   65: astore_0
@@ -156,7 +161,7 @@ public final class g
     //   68: aload_0
     //   69: ifnull +7 -> 76
     //   72: aload_0
-    //   73: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   73: invokevirtual 102	java/io/FileInputStream:close	()V
     //   76: aconst_null
     //   77: areturn
     //   78: astore_0
@@ -165,7 +170,7 @@ public final class g
     //   81: aload_3
     //   82: ifnull +7 -> 89
     //   85: aload_3
-    //   86: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   86: invokevirtual 102	java/io/FileInputStream:close	()V
     //   89: aload_0
     //   90: athrow
     //   91: astore_0
@@ -202,7 +207,7 @@ public final class g
   }
   
   /* Error */
-  private static String n(File paramFile)
+  private static String s(File paramFile)
   {
     // Byte code:
     //   0: aload_0
@@ -210,18 +215,18 @@ public final class g
     //   4: ifne +5 -> 9
     //   7: aconst_null
     //   8: areturn
-    //   9: new 88	java/io/FileInputStream
+    //   9: new 89	java/io/FileInputStream
     //   12: dup
     //   13: aload_0
-    //   14: invokespecial 91	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   14: invokespecial 92	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   17: astore_0
     //   18: aload_0
-    //   19: invokestatic 103	com/tencent/mm/a/g:l	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   19: invokestatic 104	com/tencent/mm/a/g:n	(Ljava/io/InputStream;)Ljava/lang/String;
     //   22: astore_1
     //   23: aload_0
-    //   24: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   24: invokevirtual 102	java/io/FileInputStream:close	()V
     //   27: aload_0
-    //   28: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   28: invokevirtual 102	java/io/FileInputStream:close	()V
     //   31: aload_1
     //   32: areturn
     //   33: astore_0
@@ -230,7 +235,7 @@ public final class g
     //   36: aload_0
     //   37: ifnull -30 -> 7
     //   40: aload_0
-    //   41: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   41: invokevirtual 102	java/io/FileInputStream:close	()V
     //   44: aconst_null
     //   45: areturn
     //   46: astore_0
@@ -242,7 +247,7 @@ public final class g
     //   52: aload_0
     //   53: ifnull +7 -> 60
     //   56: aload_0
-    //   57: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   57: invokevirtual 102	java/io/FileInputStream:close	()V
     //   60: aload_1
     //   61: athrow
     //   62: astore_0
@@ -271,7 +276,7 @@ public final class g
     //   18	27	74	java/lang/Exception
   }
   
-  public static final String o(byte[] paramArrayOfByte)
+  public static final String w(byte[] paramArrayOfByte)
   {
     char[] arrayOfChar = new char[16];
     char[] tmp8_6 = arrayOfChar;
@@ -341,7 +346,7 @@ public final class g
     }
   }
   
-  public static final byte[] p(byte[] paramArrayOfByte)
+  public static final byte[] x(byte[] paramArrayOfByte)
   {
     try
     {

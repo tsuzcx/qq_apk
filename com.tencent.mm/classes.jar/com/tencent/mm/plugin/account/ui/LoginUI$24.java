@@ -1,20 +1,21 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aa;
 
 final class LoginUI$24
-  implements n.c
+  implements View.OnClickListener
 {
   LoginUI$24(LoginUI paramLoginUI) {}
   
-  public final void a(l paraml)
+  public final void onClick(View paramView)
   {
-    if (paraml.cAR())
-    {
-      paraml.fq(5001, q.j.wechat_safe_center);
-      paraml.fq(5002, q.j.wechat_help_center);
-    }
+    AppMethodBeat.i(152569);
+    paramView = this.gFf.getString(2131306168, new Object[] { aa.dsG() });
+    LoginUI.S(this.gFf, paramView);
+    AppMethodBeat.o(152569);
   }
 }
 

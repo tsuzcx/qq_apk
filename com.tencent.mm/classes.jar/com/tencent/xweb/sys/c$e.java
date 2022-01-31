@@ -3,31 +3,34 @@ package com.tencent.xweb.sys;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.webkit.WebResourceRequest;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.a.a;
-import com.tencent.xweb.l;
+import com.tencent.xweb.r;
 import java.util.Map;
 
 public final class c$e
-  implements l
+  implements r
 {
+  private boolean BHm;
+  private boolean BHn;
+  a BHo;
   private String method;
-  private Map<String, String> rXB;
-  private Uri xjH;
-  private boolean xjI;
-  private boolean xjJ;
-  a xjK;
+  private Uri url;
+  private Map<String, String> vOs;
   
   public c$e(WebResourceRequest paramWebResourceRequest)
   {
+    AppMethodBeat.i(84658);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.xjH = paramWebResourceRequest.getUrl();
-      this.xjI = paramWebResourceRequest.isForMainFrame();
-      this.xjJ = paramWebResourceRequest.hasGesture();
+      this.url = paramWebResourceRequest.getUrl();
+      this.BHm = paramWebResourceRequest.isForMainFrame();
+      this.BHn = paramWebResourceRequest.hasGesture();
       this.method = paramWebResourceRequest.getMethod();
-      this.rXB = paramWebResourceRequest.getRequestHeaders();
-      this.xjK = new a(this);
+      this.vOs = paramWebResourceRequest.getRequestHeaders();
+      this.BHo = new a(this);
     }
+    AppMethodBeat.o(84658);
   }
   
   public final String getMethod()
@@ -37,27 +40,27 @@ public final class c$e
   
   public final Map<String, String> getRequestHeaders()
   {
-    return this.rXB;
+    return this.vOs;
   }
   
   public final Uri getUrl()
   {
-    return this.xjH;
+    return this.url;
   }
   
   public final boolean hasGesture()
   {
-    return this.xjJ;
+    return this.BHn;
   }
   
   public final boolean isForMainFrame()
   {
-    return this.xjI;
+    return this.BHm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.sys.c.e
  * JD-Core Version:    0.7.0.1
  */

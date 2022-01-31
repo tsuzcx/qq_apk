@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.y.a;
-import com.tencent.mm.y.c;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.websearch.api.aa;
 
 final class EmojiStoreV2UI$3
   implements Runnable
@@ -13,12 +13,29 @@ final class EmojiStoreV2UI$3
   
   public final void run()
   {
-    c.BS().v(262147, false);
-    c.BS().v(262149, false);
-    c.BS().bd(262147, 266244);
-    c.BS().bd(262149, 266244);
-    g.DP().Dz().o(208899, Boolean.valueOf(false));
-    g.DP().Dz().o(208913, Boolean.valueOf(false));
+    AppMethodBeat.i(53818);
+    Intent localIntent = aa.cZp();
+    if (EmojiStoreV2UI.f(this.lsd) == 17)
+    {
+      i = 50;
+      aa.a(localIntent, i);
+      localIntent.putExtra("ftsneedkeyboard", true);
+      localIntent.putExtra("key_load_js_without_delay", true);
+      localIntent.putExtra("ftsInitToSearch", true);
+      d.b(this.lsd.getContext(), "webview", ".ui.tools.fts.FTSSOSHomeWebViewUI", localIntent);
+      if (EmojiStoreV2UI.b(this.lsd) != 0) {
+        break label124;
+      }
+    }
+    label124:
+    for (int i = 0;; i = 1)
+    {
+      h.qsU.e(13054, new Object[] { Integer.valueOf(i), Integer.valueOf(0), "" });
+      AppMethodBeat.o(53818);
+      return;
+      i = 24;
+      break;
+    }
   }
 }
 

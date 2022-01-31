@@ -4,15 +4,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandSharedMessageUI$b
   extends BaseAdapter
 {
-  private LayoutInflater Lu;
+  private LayoutInflater mInflater;
   
   public AppBrandSharedMessageUI$b(LayoutInflater paramLayoutInflater)
   {
-    this.Lu = paramLayoutInflater;
+    this.mInflater = paramLayoutInflater;
   }
   
   public final int getCount()
@@ -32,7 +33,10 @@ final class AppBrandSharedMessageUI$b
   
   public final int getItemViewType(int paramInt)
   {
-    return super.getItemViewType(paramInt);
+    AppMethodBeat.i(133096);
+    paramInt = super.getItemViewType(paramInt);
+    AppMethodBeat.o(133096);
+    return paramInt;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -47,7 +51,7 @@ final class AppBrandSharedMessageUI$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandSharedMessageUI.b
  * JD-Core Version:    0.7.0.1
  */

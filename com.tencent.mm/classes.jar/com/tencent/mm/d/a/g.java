@@ -1,72 +1,44 @@
 package com.tencent.mm.d.a;
 
-import com.tencent.mm.plugin.appbrand.v.n;
-import com.tencent.mm.sdk.platformtools.y;
-import java.nio.ByteBuffer;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.eclipsesource.v8.V8;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
-  implements a
 {
-  private final AtomicInteger bzy = new AtomicInteger(0);
-  private final HashMap<Integer, ByteBuffer> bzz = new HashMap();
-  
-  public final void a(int paramInt, ByteBuffer paramByteBuffer)
+  static
   {
-    y.i("V8EngineBufferStore", "setBuffer %d isDirect:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramByteBuffer.isDirect()) });
-    if (paramByteBuffer == null) {
-      return;
-    }
-    ByteBuffer localByteBuffer;
-    if (paramByteBuffer == null) {
-      localByteBuffer = paramByteBuffer;
-    }
-    while (!localByteBuffer.isDirect())
-    {
-      y.i("V8EngineBufferStore", "setBuffer: cannot convert to direct buffer");
-      return;
-      localByteBuffer = paramByteBuffer;
-      if (!paramByteBuffer.isDirect())
-      {
-        localByteBuffer = paramByteBuffer;
-        if (paramByteBuffer.hasArray()) {
-          localByteBuffer = n.Q(paramByteBuffer.array());
-        }
-      }
-    }
-    if (!this.bzz.containsKey(Integer.valueOf(paramInt)))
-    {
-      y.i("V8EngineBufferStore", "setBuffer: already in the store");
-      return;
-    }
-    this.bzz.put(Integer.valueOf(paramInt), localByteBuffer);
+    AppMethodBeat.i(113803);
+    V8.setLoadLibraryDelegate(new g.1());
+    AppMethodBeat.o(113803);
   }
   
-  public final ByteBuffer eu(int paramInt)
+  public static i g(String paramString, byte[] paramArrayOfByte)
   {
-    y.i("V8EngineBufferStore", "getBuffer:%d", new Object[] { Integer.valueOf(paramInt) });
-    if (!this.bzz.containsKey(Integer.valueOf(paramInt)))
-    {
-      y.i("V8EngineBufferStore", "getBuffer:%d not contains", new Object[] { Integer.valueOf(paramInt) });
-      return null;
-    }
-    ByteBuffer localByteBuffer = (ByteBuffer)this.bzz.get(Integer.valueOf(paramInt));
-    this.bzz.remove(Integer.valueOf(paramInt));
-    return localByteBuffer;
+    AppMethodBeat.i(113800);
+    paramString = i.j(paramString, paramArrayOfByte);
+    AppMethodBeat.o(113800);
+    return paramString;
   }
   
-  public final int tD()
+  public static v h(String paramString, byte[] paramArrayOfByte)
   {
-    Integer localInteger = Integer.valueOf(this.bzy.addAndGet(1));
-    this.bzz.put(localInteger, null);
-    y.i("V8EngineBufferStore", "generateId:%d", new Object[] { localInteger });
-    return localInteger.intValue();
+    AppMethodBeat.i(113801);
+    paramString = v.k(paramString, paramArrayOfByte);
+    AppMethodBeat.o(113801);
+    return paramString;
+  }
+  
+  public static v i(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(113802);
+    paramString = b.f(paramString, paramArrayOfByte);
+    AppMethodBeat.o(113802);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.d.a.g
  * JD-Core Version:    0.7.0.1
  */

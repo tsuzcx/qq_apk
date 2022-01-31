@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RegByMobileSetPwdUI$1$2
   implements DialogInterface.OnClickListener
@@ -11,10 +12,12 @@ final class RegByMobileSetPwdUI$1$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(this.frn.frm, MobileVerifyUI.class);
-    paramDialogInterface.putExtra("bindmcontact_mobile", this.fbL);
+    AppMethodBeat.i(125437);
+    paramDialogInterface = new Intent(this.gIP.gIO, MobileVerifyUI.class);
+    paramDialogInterface.putExtra("bindmcontact_mobile", this.gtC);
     paramDialogInterface.putExtra("mobile_verify_purpose", 5);
-    this.frn.frm.startActivityForResult(paramDialogInterface, 10001);
+    this.gIP.gIO.startActivityForResult(paramDialogInterface, 10001);
+    AppMethodBeat.o(125437);
   }
 }
 

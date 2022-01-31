@@ -7,13 +7,13 @@ import com.tencent.soter.a.c.a;
 abstract class c
   extends d
 {
-  protected static void dV(String paramString, int paramInt)
+  protected static void ff(String paramString, int paramInt)
   {
     com.tencent.soter.core.c.d.d("Soter.BaseSoterPrepareKeyTask", "soter: marking preference. key: %s, status: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
     try
     {
-      if (a.cPy().cPB() != null) {
-        a.cPy().cPB().edit().putInt(paramString, paramInt).apply();
+      if (a.dVu().dVx() != null) {
+        a.dVu().dVx().edit().putInt(paramString, paramInt).apply();
       }
       return;
     }

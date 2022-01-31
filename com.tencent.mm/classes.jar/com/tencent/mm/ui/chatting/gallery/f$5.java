@@ -1,8 +1,9 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class f$5
   implements Runnable
@@ -11,16 +12,21 @@ final class f$5
   
   public final void run()
   {
-    if (f.b(this.vvu) == null) {
-      y.e("MicroMsg.ImageGalleryLazyLoader", "loader is null!");
-    }
-    Bitmap localBitmap;
-    do
+    AppMethodBeat.i(32139);
+    if (f.b(this.zLv) == null)
     {
+      ab.e("MicroMsg.ImageGalleryLazyLoader", "loader is null!");
+      AppMethodBeat.o(32139);
       return;
-      localBitmap = f.b(this.vvu).Hx(this.kX);
-    } while (localBitmap == null);
-    f.c(this.vvu).post(new f.5.1(this, localBitmap));
+    }
+    Bitmap localBitmap = f.b(this.zLv).Qe(this.lU);
+    if (localBitmap == null)
+    {
+      AppMethodBeat.o(32139);
+      return;
+    }
+    f.c(this.zLv).post(new f.5.1(this, localBitmap));
+    AppMethodBeat.o(32139);
   }
 }
 

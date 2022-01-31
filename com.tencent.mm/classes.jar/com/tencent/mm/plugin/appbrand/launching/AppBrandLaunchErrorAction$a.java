@@ -3,67 +3,69 @@ package com.tencent.mm.plugin.appbrand.launching;
 import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.b;
-import com.tencent.mm.protocal.c.atg;
+import com.tencent.mm.protocal.protobuf.azj;
 import java.lang.reflect.Constructor;
 
 final class AppBrandLaunchErrorAction$a
   implements Parcelable.Creator<AppBrandLaunchErrorAction>
 {
-  static AppBrandLaunchErrorAction a(String paramString, int paramInt, t paramt)
+  static AppBrandLaunchErrorAction a(String paramString, int paramInt, ab paramab)
   {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramt != null)
+    Intent localIntent = null;
+    AppMethodBeat.i(131694);
+    if ((paramab == null) || (paramab.field_launchAction == null))
     {
-      if (paramt.field_launchAction == null) {
-        localObject1 = localObject2;
-      }
+      AppMethodBeat.o(131694);
+      return null;
     }
-    else {
-      return localObject1;
-    }
-    switch (paramt.field_launchAction.ssy)
+    switch (paramab.field_launchAction.wld)
     {
     default: 
-      paramString = localObject3;
+      paramString = localIntent;
     }
     for (;;)
     {
-      localObject1 = paramString;
-      if (paramString == null) {
-        break;
+      if (paramString != null) {
+        AppBrandStickyBannerLogic.b.aMO();
       }
-      AppBrandStickyBannerLogic.b.apy();
+      AppMethodBeat.o(131694);
       return paramString;
-      paramString = new AppBrandLaunchErrorActionAlert(paramString, paramInt, paramt.field_launchAction.tiz, paramt.field_launchAction.toN);
+      paramString = new AppBrandLaunchErrorActionAlert(paramString, paramInt, paramab.field_launchAction.xhl, paramab.field_launchAction.xoH);
       continue;
-      localObject1 = new Intent();
-      ((Intent)localObject1).putExtra("rawUrl", paramt.field_launchAction.toL);
-      ((Intent)localObject1).putExtra("forceHideShare", true);
-      paramString = new AppBrandLaunchErrorActionStartActivity(paramString, paramInt, "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
+      localIntent = new Intent();
+      localIntent.putExtra("rawUrl", paramab.field_launchAction.xoF);
+      localIntent.putExtra("forceHideShare", true);
+      paramString = new AppBrandLaunchErrorActionStartActivity(paramString, paramInt, "webview", ".ui.tools.WebViewUI", localIntent);
     }
   }
   
-  private static AppBrandLaunchErrorAction i(Parcel paramParcel)
+  private static AppBrandLaunchErrorAction k(Parcel paramParcel)
   {
+    AppMethodBeat.i(131693);
     String str = paramParcel.readString();
-    if (str == null) {
+    if (str == null)
+    {
+      AppMethodBeat.o(131693);
       return null;
     }
     try
     {
       paramParcel = (AppBrandLaunchErrorAction)Class.forName(str).getDeclaredConstructor(new Class[] { Parcel.class }).newInstance(new Object[] { paramParcel });
+      AppMethodBeat.o(131693);
       return paramParcel;
     }
-    catch (Exception paramParcel) {}
+    catch (Exception paramParcel)
+    {
+      AppMethodBeat.o(131693);
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchErrorAction.a
  * JD-Core Version:    0.7.0.1
  */

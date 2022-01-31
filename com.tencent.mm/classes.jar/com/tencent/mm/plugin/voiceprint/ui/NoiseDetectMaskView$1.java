@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.voiceprint.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NoiseDetectMaskView$1
   implements View.OnClickListener
@@ -10,9 +11,11 @@ final class NoiseDetectMaskView$1
   
   public final void onClick(View paramView)
   {
-    if (NoiseDetectMaskView.a(this.pMh) != null) {
-      NoiseDetectMaskView.a(this.pMh).bPl();
+    AppMethodBeat.i(26141);
+    if (NoiseDetectMaskView.a(this.tsd) != null) {
+      NoiseDetectMaskView.a(this.tsd).cLr();
     }
+    AppMethodBeat.o(26141);
   }
 }
 

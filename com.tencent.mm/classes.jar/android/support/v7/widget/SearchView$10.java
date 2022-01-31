@@ -13,17 +13,17 @@ final class SearchView$10
   
   public final void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = this.ajT;
-    if ((paramAdapterView.ajv == null) || (!paramAdapterView.ajv.iE()))
+    paramAdapterView = this.amj;
+    if ((paramAdapterView.alL == null) || (!paramAdapterView.alL.kq()))
     {
-      paramView = paramAdapterView.aiX.getText();
-      Object localObject = paramAdapterView.ajz.JM;
+      paramView = paramAdapterView.aln.getText();
+      Object localObject = paramAdapterView.alP.getCursor();
       if (localObject != null)
       {
         if (!((Cursor)localObject).moveToPosition(paramInt)) {
           break label86;
         }
-        localObject = paramAdapterView.ajz.convertToString((Cursor)localObject);
+        localObject = paramAdapterView.alP.convertToString((Cursor)localObject);
         if (localObject == null) {
           break label80;
         }
@@ -42,7 +42,7 @@ final class SearchView$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v7.widget.SearchView.10
  * JD-Core Version:    0.7.0.1
  */

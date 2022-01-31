@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.base.a;
+import android.view.WindowManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
-@a(3)
+@com.tencent.mm.ui.base.a(3)
 public class MMBaseActivity
   extends Activity
 {
@@ -16,77 +18,133 @@ public class MMBaseActivity
   
   public Resources getResources()
   {
-    if ((getAssets() != null) && (ae.getResources() != null)) {
-      return ae.getResources();
+    AppMethodBeat.i(106016);
+    if ((getAssets() != null) && (ah.getResources() != null))
+    {
+      localResources = ah.getResources();
+      AppMethodBeat.o(106016);
+      return localResources;
     }
-    return super.getResources();
+    Resources localResources = super.getResources();
+    AppMethodBeat.o(106016);
+    return localResources;
   }
   
   public Object getSystemService(String paramString)
   {
-    Object localObject2 = super.getSystemService(paramString);
-    Object localObject1 = localObject2;
-    if (getAssets() != null)
+    AppMethodBeat.i(106017);
+    Object localObject = super.getSystemService(paramString);
+    if ((getAssets() != null) && ("layout_inflater".equals(paramString)))
     {
-      localObject1 = localObject2;
-      if ("layout_inflater".equals(paramString)) {
-        localObject1 = y.a((LayoutInflater)localObject2);
+      paramString = w.b((LayoutInflater)localObject);
+      AppMethodBeat.o(106017);
+      return paramString;
+    }
+    AppMethodBeat.o(106017);
+    return localObject;
+  }
+  
+  public WindowManager getWindowManager()
+  {
+    AppMethodBeat.i(156396);
+    try
+    {
+      Object localObject = new Throwable().getStackTrace();
+      if ((localObject != null) && (localObject.length >= 2) && (localObject[1].getMethodName().equals("handleDestroyActivity")))
+      {
+        localObject = com.tencent.mm.plugin.crashfix.b.a.a.a(super.getWindowManager());
+        AppMethodBeat.o(156396);
+        return localObject;
       }
     }
-    return localObject1;
+    catch (Throwable localThrowable)
+    {
+      ab.e("MicroMsg.MMBaseActivity", localThrowable.getMessage());
+      WindowManager localWindowManager = super.getWindowManager();
+      AppMethodBeat.o(156396);
+      return localWindowManager;
+    }
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
+    AppMethodBeat.i(106018);
     super.onDestroy();
+    AppMethodBeat.o(106018);
   }
   
-  public void onPause()
+  protected void onPause()
   {
+    AppMethodBeat.i(106020);
     this.mIsPaused = true;
     super.onPause();
+    AppMethodBeat.o(106020);
   }
   
-  public void onResume()
+  protected void onResume()
   {
+    AppMethodBeat.i(106019);
     this.mIsPaused = false;
     super.onResume();
+    AppMethodBeat.o(106019);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
   
   public void startActivities(Intent[] paramArrayOfIntent)
   {
+    AppMethodBeat.i(106024);
     super.startActivities(paramArrayOfIntent);
+    AppMethodBeat.o(106024);
   }
   
   public void startActivities(Intent[] paramArrayOfIntent, Bundle paramBundle)
   {
-    if (d.a(this, this.mIsPaused, paramArrayOfIntent, new Object[] { paramBundle })) {
+    AppMethodBeat.i(106025);
+    if (d.a(this, this.mIsPaused, paramArrayOfIntent, new Object[] { paramBundle }))
+    {
+      AppMethodBeat.o(106025);
       return;
     }
     super.startActivities(paramArrayOfIntent, paramBundle);
+    AppMethodBeat.o(106025);
   }
   
   public void startActivity(Intent paramIntent)
   {
+    AppMethodBeat.i(106023);
     super.startActivity(paramIntent);
+    AppMethodBeat.o(106023);
   }
   
   public void startActivity(Intent paramIntent, Bundle paramBundle)
   {
+    AppMethodBeat.i(106026);
     super.startActivity(paramIntent, paramBundle);
+    AppMethodBeat.o(106026);
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt)
   {
+    AppMethodBeat.i(106021);
     super.startActivityForResult(paramIntent, paramInt);
+    AppMethodBeat.o(106021);
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    if (d.a(this, this.mIsPaused, new Intent[] { paramIntent }, new Object[] { Integer.valueOf(paramInt), paramBundle })) {
+    AppMethodBeat.i(106022);
+    if (d.a(this, this.mIsPaused, new Intent[] { paramIntent }, new Object[] { Integer.valueOf(paramInt), paramBundle }))
+    {
+      AppMethodBeat.o(106022);
       return;
     }
     super.startActivityForResult(paramIntent, paramInt, paramBundle);
+    AppMethodBeat.o(106022);
   }
 }
 

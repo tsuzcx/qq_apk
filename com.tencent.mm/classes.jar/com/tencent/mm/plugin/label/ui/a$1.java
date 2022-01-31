@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.label.ui;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
   implements Runnable
@@ -9,12 +10,14 @@ final class a$1
   
   public final void run()
   {
-    this.lBI.k(this.lBH);
+    AppMethodBeat.i(22626);
+    this.nYU.j(this.nYT);
+    AppMethodBeat.o(22626);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.a.1
  * JD-Core Version:    0.7.0.1
  */

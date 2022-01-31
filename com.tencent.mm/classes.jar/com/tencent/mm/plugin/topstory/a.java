@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.topstory;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.a.d;
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,7 +10,14 @@ import java.util.Map;
 public final class a
   implements d
 {
-  Map<String, List<Object>> pCQ = Collections.synchronizedMap(new HashMap());
+  Map<String, List<Object>> teA;
+  
+  public a()
+  {
+    AppMethodBeat.i(65452);
+    this.teA = Collections.synchronizedMap(new HashMap());
+    AppMethodBeat.o(65452);
+  }
 }
 
 

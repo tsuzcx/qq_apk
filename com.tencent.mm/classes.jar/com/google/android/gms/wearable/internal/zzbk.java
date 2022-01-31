@@ -1,52 +1,17 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
-import com.google.android.gms.common.internal.safeparcel.zzc;
-import com.google.android.gms.wearable.ConnectionConfiguration;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class zzbk
-  implements Parcelable.Creator<zzbj>
+final class zzbk
+  implements zzbs
 {
-  static void zza(zzbj paramzzbj, Parcel paramParcel, int paramInt)
-  {
-    int i = zzc.zzaZ(paramParcel);
-    zzc.zzc(paramParcel, 2, paramzzbj.statusCode);
-    zzc.zza(paramParcel, 3, paramzzbj.zzbUE, paramInt, false);
-    zzc.zzJ(paramParcel, i);
-  }
+  zzbk(zzbj paramzzbj) {}
   
-  public zzbj zzli(Parcel paramParcel)
+  public final void zzb(zzav paramzzav)
   {
-    int j = zzb.zzaY(paramParcel);
-    int i = 0;
-    ConnectionConfiguration[] arrayOfConnectionConfiguration = null;
-    while (paramParcel.dataPosition() < j)
-    {
-      int k = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(k))
-      {
-      default: 
-        zzb.zzb(paramParcel, k);
-        break;
-      case 2: 
-        i = zzb.zzg(paramParcel, k);
-        break;
-      case 3: 
-        arrayOfConnectionConfiguration = (ConnectionConfiguration[])zzb.zzb(paramParcel, k, ConnectionConfiguration.CREATOR);
-      }
-    }
-    if (paramParcel.dataPosition() != j) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + j, paramParcel);
-    }
-    return new zzbj(i, arrayOfConnectionConfiguration);
-  }
-  
-  public zzbj[] zzpK(int paramInt)
-  {
-    return new zzbj[paramInt];
+    AppMethodBeat.i(71087);
+    this.zzcx.zza(paramzzav);
+    AppMethodBeat.o(71087);
   }
 }
 

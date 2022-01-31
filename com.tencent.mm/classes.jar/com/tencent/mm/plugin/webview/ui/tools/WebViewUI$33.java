@@ -1,31 +1,20 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import com.tencent.mm.pluginsdk.f.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.h.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 
 final class WebViewUI$33
-  implements h.c
+  implements Runnable
 {
-  WebViewUI$33(WebViewUI paramWebViewUI, String paramString) {}
+  WebViewUI$33(WebViewUI paramWebViewUI, int paramInt) {}
   
-  public final void gl(int paramInt)
+  public final void run()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      if (!WebViewUI.g(this.rpH, this.val$url))
-      {
-        y.f("MicroMsg.WebViewUI", "showLoadUrlMenu, canLoadUrl fail, url = " + this.val$url);
-        WebViewUI.P(this.rpH);
-        return;
-      }
-      this.rpH.b(this.val$url, null, false);
-      return;
+    AppMethodBeat.i(153244);
+    if (this.vgz.uQS != null) {
+      this.vgz.uQS.KT(this.uRR);
     }
-    a.a(this.rpH.getApplicationContext(), this.val$url, this.val$url);
+    AppMethodBeat.o(153244);
   }
 }
 

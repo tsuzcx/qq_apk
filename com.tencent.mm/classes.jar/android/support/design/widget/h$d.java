@@ -8,9 +8,9 @@ final class h$d
     super(paramh, (byte)0);
   }
   
-  protected final float aR()
+  protected final float bA()
   {
-    return this.iS.iK;
+    return this.jL.jD;
   }
 }
 

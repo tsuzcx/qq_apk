@@ -2,9 +2,11 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 public abstract interface b$a
 {
-  public abstract void aw(float paramFloat);
+  public abstract void bRC();
   
-  public abstract void onAnimationEnd();
+  public abstract void bRD();
+  
+  public abstract void onError();
 }
 
 

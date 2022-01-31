@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel;
 public abstract interface e$e
   extends e.b
 {
-  public abstract void avH();
+  public abstract void aVk();
 }
 
 

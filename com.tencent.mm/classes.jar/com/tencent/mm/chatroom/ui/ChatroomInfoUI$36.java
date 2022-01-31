@@ -1,5 +1,6 @@
 package com.tencent.mm.chatroom.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelmulti.o;
 import com.tencent.mm.plugin.zero.b.b;
@@ -11,7 +12,9 @@ final class ChatroomInfoUI$36
   
   public final void run()
   {
-    ((b)g.r(b.class)).Pm().iT(7);
+    AppMethodBeat.i(104004);
+    ((b)g.E(b.class)).aio().lL(7);
+    AppMethodBeat.o(104004);
   }
 }
 

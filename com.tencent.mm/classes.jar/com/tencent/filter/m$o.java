@@ -4,76 +4,80 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
-import com.tencent.util.a;
-import com.tencent.util.d;
-import com.tencent.util.g;
-import com.tencent.view.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.util.f;
+import com.tencent.util.i;
 
 public final class m$o
   extends m.n
 {
-  String bfY = null;
-  double bfZ = 0.0D;
-  int bga = 0;
+  String bwA = null;
+  double bwB = 0.0D;
+  int bwC = 0;
   
   public m$o(String paramString1, String paramString2, double paramDouble)
   {
     super(paramString1, 0, 33986);
-    this.bfY = paramString2;
-    this.bfZ = paramDouble;
+    this.bwA = paramString2;
+    this.bwB = paramDouble;
   }
   
   public m$o(String paramString1, String paramString2, int paramInt)
   {
     super(paramString1, 0, paramInt);
-    this.bfY = paramString2;
+    this.bwA = paramString2;
   }
   
   public m$o(String paramString1, String paramString2, int paramInt, byte paramByte)
   {
     super(paramString1, 0, 33986);
-    this.bfY = paramString2;
-    this.bga = paramInt;
+    this.bwA = paramString2;
+    this.bwC = paramInt;
   }
   
   public final void clear()
   {
-    GLES20.glActiveTexture(this.bfX);
-    d.cRj().z(this.texture);
+    AppMethodBeat.i(86423);
+    GLES20.glActiveTexture(this.textureId);
+    f.dWZ().J(this.texture);
     super.clear();
+    AppMethodBeat.o(86423);
   }
   
   public final void initialParams(int paramInt)
   {
+    AppMethodBeat.i(86422);
     super.initialParams(paramInt);
-    if (this.bfY == null) {
+    if (this.bwA == null)
+    {
+      AppMethodBeat.o(86422);
       return;
     }
-    GLES20.glActiveTexture(this.bfX);
-    d.cRj().y(this.texture);
+    GLES20.glActiveTexture(this.textureId);
+    f.dWZ().I(this.texture);
     GLES20.glBindTexture(3553, this.texture[0]);
-    Object localObject1 = b.pe(this.bfY);
+    Object localObject1 = com.tencent.view.b.wv(this.bwA);
     Object localObject2 = null;
     if (localObject1 != null) {
-      if (this.bfZ > 0.0D) {
-        if (this.bfZ < 1.0D)
+      if (this.bwB > 0.0D) {
+        if (this.bwB < 1.0D)
         {
-          localObject2 = a.e((Bitmap)localObject1, (int)(((Bitmap)localObject1).getHeight() * this.bfZ), ((Bitmap)localObject1).getHeight());
+          localObject2 = com.tencent.util.b.g((Bitmap)localObject1, (int)(((Bitmap)localObject1).getHeight() * this.bwB), ((Bitmap)localObject1).getHeight());
           ((Bitmap)localObject1).recycle();
           localObject1 = null;
-          label100:
-          if (this.bga != 1) {
-            break label308;
+          label110:
+          if (this.bwC != 1) {
+            break label323;
           }
           localObject2 = new Matrix();
           ((Matrix)localObject2).setValues(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -1.0F, ((Bitmap)localObject1).getHeight(), 0.0F, 0.0F, 1.0F });
-          localObject2 = a.a((Bitmap)localObject1, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), (Matrix)localObject2);
+          localObject2 = com.tencent.util.b.a((Bitmap)localObject1, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), (Matrix)localObject2);
           if (localObject2 != null) {
-            break label304;
+            break label319;
           }
-          label186:
+          label196:
           if (localObject1 == null) {
-            break label313;
+            break label328;
           }
           GLUtils.texImage2D(3553, 0, (Bitmap)localObject1, 0);
           ((Bitmap)localObject1).recycle();
@@ -86,20 +90,21 @@ public final class m$o
       GLES20.glTexParameterf(3553, 10241, 9729.0F);
       GLES20.glTexParameterf(3553, 10242, 33071.0F);
       GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      AppMethodBeat.o(86422);
       return;
-      localObject2 = a.e((Bitmap)localObject1, ((Bitmap)localObject1).getWidth(), (int)(((Bitmap)localObject1).getWidth() / this.bfZ));
+      localObject2 = com.tencent.util.b.g((Bitmap)localObject1, ((Bitmap)localObject1).getWidth(), (int)(((Bitmap)localObject1).getWidth() / this.bwB));
       break;
       localObject2 = localObject1;
-      break label100;
-      g.i("Param", "lastBitmap is null " + this.bfY);
-      break label100;
-      label304:
+      break label110;
+      i.n("Param", "lastBitmap is null " + this.bwA);
+      break label110;
+      label319:
       ((Bitmap)localObject1).recycle();
-      label308:
+      label323:
       localObject1 = localObject2;
-      break label186;
-      label313:
-      g.i("Param", "bitmap is null");
+      break label196;
+      label328:
+      i.n("Param", "bitmap is null");
     }
   }
 }

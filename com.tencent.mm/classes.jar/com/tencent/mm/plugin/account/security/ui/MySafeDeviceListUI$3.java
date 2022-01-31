@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.account.security.ui;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.preference.f;
 
 final class MySafeDeviceListUI$3
-  extends ah
+  extends ak
 {
   MySafeDeviceListUI$3(MySafeDeviceListUI paramMySafeDeviceListUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    MySafeDeviceListUI.b(this.fkm).notifyDataSetChanged();
+    AppMethodBeat.i(69874);
+    MySafeDeviceListUI.b(this.gBD).notifyDataSetChanged();
     super.handleMessage(paramMessage);
+    AppMethodBeat.o(69874);
   }
 }
 

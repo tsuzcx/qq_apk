@@ -5,14 +5,13 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import com.tencent.mm.bf.c;
-import com.tencent.mm.plugin.map.a.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bg.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class k$7
   implements View.OnTouchListener
@@ -21,64 +20,61 @@ final class k$7
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(113537);
     switch (paramMotionEvent.getAction())
     {
     }
-    do
+    for (;;)
     {
-      do
+      AppMethodBeat.o(113537);
+      return false;
+      this.oeg.odV = true;
+      this.oeg.odQ.setVisibility(0);
+      this.oeg.odP.reset();
+      paramView = this.oeg.odP;
+      if (!paramView.oeI)
       {
-        do
-        {
-          do
-          {
-            return false;
-            this.lGT.lGI = true;
-            this.lGT.lGD.setVisibility(0);
-            this.lGT.lGC.reset();
-            paramView = this.lGT.lGC;
-            if (!paramView.lHv)
-            {
-              paramView.eku = true;
-              paramView.beF();
-            }
-            this.lGT.lGB.setPressed(true);
-          } while (!this.lGT.lGI);
-          au.b(ae.getContext(), a.h.talkroom_press, new au.a()
-          {
-            public final void ug()
-            {
-              y.i("MicroMsg.TalkMgr", "play press sound end");
-            }
-          });
-          this.lGT.lGJ = 1;
-          y.i("MicroMsg.TalkMgr", "micBtn pressed down");
-          this.lGT.lGL = bk.UZ();
-          this.lGT.lGP.RJ();
-          this.lGT.bez();
-          return false;
-        } while (!this.lGT.lGI);
-        return false;
-        this.lGT.lGB.setPressed(false);
-        this.lGT.lGD.setVisibility(8);
-        this.lGT.lGC.reset();
-        this.lGT.lGC.eku = false;
-      } while (!this.lGT.lGI);
-      this.lGT.lGI = false;
-      if (this.lGT.lGJ == 5)
-      {
-        y.i("MicroMsg.TalkMgr", "cancel during seize-success prepare time");
-        this.lGT.lGM.stopTimer();
-        this.lGT.lGN.stopTimer();
+        paramView.fAK = true;
+        paramView.bLZ();
       }
-      this.lGT.lGJ = 0;
-      this.lGT.lGR.stopTimer();
-      this.lGT.lGP.RK();
-      au.G(ae.getContext(), a.h.talkroom_up);
-      this.lGT.bez();
-    } while (this.lGT.lGQ == null);
-    this.lGT.lGQ.bev();
-    return false;
+      this.oeg.odO.setPressed(true);
+      if (this.oeg.odV)
+      {
+        ay.a(ah.getContext(), 2131304257, new k.7.1(this));
+        this.oeg.odW = 1;
+        ab.i("MicroMsg.TalkMgr", "micBtn pressed down");
+        this.oeg.odY = bo.yB();
+        this.oeg.oec.akS();
+        this.oeg.display();
+        continue;
+        if (this.oeg.odV)
+        {
+          continue;
+          this.oeg.odO.setPressed(false);
+          this.oeg.odQ.setVisibility(8);
+          this.oeg.odP.reset();
+          this.oeg.odP.fAK = false;
+          if (this.oeg.odV)
+          {
+            this.oeg.odV = false;
+            if (this.oeg.odW == 5)
+            {
+              ab.i("MicroMsg.TalkMgr", "cancel during seize-success prepare time");
+              this.oeg.odZ.stopTimer();
+              this.oeg.oea.stopTimer();
+            }
+            this.oeg.odW = 0;
+            this.oeg.oee.stopTimer();
+            this.oeg.oec.akT();
+            ay.ax(ah.getContext(), 2131304260);
+            this.oeg.display();
+            if (this.oeg.oed != null) {
+              this.oeg.oed.bLP();
+            }
+          }
+        }
+      }
+    }
   }
 }
 

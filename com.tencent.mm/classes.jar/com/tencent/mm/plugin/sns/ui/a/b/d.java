@@ -1,63 +1,91 @@
 package com.tencent.mm.plugin.sns.ui.a.b;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.plugin.sns.ui.c.a.c;
-import com.tencent.mm.plugin.sns.ui.c.b.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.sns.data.i;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.an.a;
+import com.tencent.mm.plugin.sns.storage.l;
+import com.tencent.mm.plugin.sns.storage.m;
+import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.plugin.sns.storage.o;
+import com.tencent.mm.protocal.protobuf.abx;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.z;
 
 public final class d
-  extends b
+  extends a
 {
-  b.a plG;
-  private ValueAnimator plk;
-  private ValueAnimator pll;
-  AnimatorSet plm;
-  ViewGroup pln;
-  LinearLayout.LayoutParams plo;
-  LinearLayout.LayoutParams plp;
-  LinearLayout.LayoutParams plq;
-  int[] pls = new int[2];
-  FrameLayout.LayoutParams plv;
+  public boolean ctJ;
+  public String userName;
   
-  public d(MMActivity paramMMActivity, a.c paramc)
+  public d(String paramString, boolean paramBoolean)
   {
-    this.gfb = paramMMActivity;
-    this.plG = ((b.a)paramc);
-    this.plk = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-    this.plk.addUpdateListener(new d.1(this));
-    this.plk.setDuration(400L);
-    this.pll = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-    this.pll.addUpdateListener(new d.2(this));
-    this.pll.setDuration(100L);
-    this.plo = ((LinearLayout.LayoutParams)this.plG.pnL.getLayoutParams());
-    this.plp = ((LinearLayout.LayoutParams)this.plG.pnM.getLayoutParams());
-    this.plq = ((LinearLayout.LayoutParams)this.plG.pnN.getLayoutParams());
-    this.plm = new AnimatorSet();
-    this.plm.playTogether(new Animator[] { this.plk, this.pll });
-    this.pln = ((FrameLayout)paramMMActivity.mController.uMz.getParent());
-    this.plm.addListener(new d.3(this));
+    super(new n());
+    AppMethodBeat.i(39956);
+    this.userName = paramString;
+    this.ctJ = paramBoolean;
+    dQd();
+    AppMethodBeat.o(39956);
   }
   
-  public final void gA(long paramLong)
+  public final Cursor cwQ()
   {
-    if (!this.plm.isStarted())
+    AppMethodBeat.i(39957);
+    init();
+    g.RM();
+    Object localObject = (String)g.RL().Ru().get(2, null);
+    if (this.userName.equals(localObject)) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.plm.setStartDelay(paramLong);
-      this.plm.start();
+      ab.d("MicroMsg.SnsUserPageVending", "prepareCursorAsynchronous");
+      localObject = ag.cpf().e(this.userName, bool, cwN());
+      AppMethodBeat.o(39957);
+      return localObject;
     }
+  }
+  
+  public final String w(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(39958);
+    ab.d("MicroMsg.SnsUserPageVending", "updateLitmitSeq %s %s", new Object[] { Integer.valueOf(ag.coV().cpD()), paramString });
+    Object localObject = i.lr(ag.cpf().a(paramLong, ag.coV().aaB(this.userName), this.userName, this.ctJ));
+    if (this.rKW.equals("")) {
+      paramString = (String)localObject;
+    }
+    for (;;)
+    {
+      localObject = ag.cpj().abz(this.userName).csy();
+      if (((abx)localObject).wSq != 0L) {
+        break;
+      }
+      AppMethodBeat.o(39958);
+      return paramString;
+      paramString = (String)localObject;
+      if (((String)localObject).compareTo(this.rKW) >= 0) {
+        paramString = this.rKW;
+      }
+    }
+    localObject = i.lr(((abx)localObject).wSq);
+    if (paramString.equals(""))
+    {
+      AppMethodBeat.o(39958);
+      return localObject;
+    }
+    if (((String)localObject).compareTo(paramString) > 0)
+    {
+      AppMethodBeat.o(39958);
+      return localObject;
+    }
+    AppMethodBeat.o(39958);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a.b.d
  * JD-Core Version:    0.7.0.1
  */

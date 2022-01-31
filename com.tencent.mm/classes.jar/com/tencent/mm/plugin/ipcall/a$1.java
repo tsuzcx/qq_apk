@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.ipcall;
 
-import com.tencent.mm.h.a.ht;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.hx;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$1
   implements Runnable
@@ -10,11 +11,13 @@ final class a$1
   
   public final void run()
   {
-    y.d("MicroMsg.IPCallAddressBookUsernameUpdater", "start GetMFriend");
-    ht localht = new ht();
-    localht.bPN.scene = 2;
-    com.tencent.mm.sdk.b.a.udP.m(localht);
-    a.a(this.loe, System.currentTimeMillis());
+    AppMethodBeat.i(21658);
+    ab.d("MicroMsg.IPCallAddressBookUsernameUpdater", "start GetMFriend");
+    hx localhx = new hx();
+    localhx.cxg.scene = 2;
+    com.tencent.mm.sdk.b.a.ymk.l(localhx);
+    a.a(this.nLB, System.currentTimeMillis());
+    AppMethodBeat.o(21658);
   }
 }
 

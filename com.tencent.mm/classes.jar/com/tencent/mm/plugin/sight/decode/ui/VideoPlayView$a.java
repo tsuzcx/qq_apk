@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.sight.decode.ui;
 
 public abstract interface VideoPlayView$a
 {
-  public abstract void bBr();
+  public abstract void Dv(int paramInt);
   
-  public abstract void bBs();
+  public abstract void cmR();
   
-  public abstract void bBt();
+  public abstract void cmS();
   
-  public abstract void iQ(boolean paramBoolean);
+  public abstract void cmT();
   
-  public abstract void xv(int paramInt);
+  public abstract void kU(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.VideoPlayView.a
  * JD-Core Version:    0.7.0.1
  */

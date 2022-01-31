@@ -4,13 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.backup.b.e;
 import com.tencent.mm.plugin.backup.b.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMWizardActivity;
@@ -22,58 +21,63 @@ final class BackupUI$1
   
   public final void onClick(View paramView)
   {
-    au.Hx();
-    if (((Boolean)c.Dz().get(ac.a.uuq, Boolean.valueOf(false))).booleanValue())
+    AppMethodBeat.i(17428);
+    aw.aaz();
+    if (((Boolean)c.Ru().get(ac.a.yEt, Boolean.FALSE)).booleanValue())
     {
-      if (com.tencent.mm.plugin.backup.d.b.atS().atn().hFu == -100)
+      if (com.tencent.mm.plugin.backup.d.b.aTr().aSL().jyN == -100)
       {
-        au.Hx();
-        c.Dz().c(ac.a.uuq, Boolean.valueOf(false));
+        aw.aaz();
+        c.Ru().set(ac.a.yEt, Boolean.FALSE);
       }
     }
     else
     {
-      au.Hx();
-      if (!((Boolean)c.Dz().get(ac.a.uum, Boolean.valueOf(false))).booleanValue())
+      aw.aaz();
+      if (!((Boolean)c.Ru().get(ac.a.yEp, Boolean.FALSE)).booleanValue())
       {
-        au.Hx();
-        if (!((Boolean)c.Dz().get(ac.a.uun, Boolean.valueOf(false))).booleanValue()) {}
+        aw.aaz();
+        if (!((Boolean)c.Ru().get(ac.a.yEq, Boolean.FALSE)).booleanValue()) {}
       }
       else
       {
-        if (com.tencent.mm.plugin.backup.backuppcmodel.b.auw().atn().hFu != -100) {
-          break label276;
+        if (com.tencent.mm.plugin.backup.backuppcmodel.b.aTX().aSL().jyN != -100) {
+          break label283;
         }
-        au.Hx();
-        c.Dz().c(ac.a.uum, Boolean.valueOf(false));
-        au.Hx();
-        c.Dz().c(ac.a.uun, Boolean.valueOf(false));
+        aw.aaz();
+        c.Ru().set(ac.a.yEp, Boolean.FALSE);
+        aw.aaz();
+        c.Ru().set(ac.a.yEq, Boolean.FALSE);
       }
-      int i = g.atz();
+      int i = g.aSX();
       if (i >= 50) {
-        break label316;
+        break label329;
       }
-      com.tencent.mm.plugin.report.service.h.nFQ.a(485L, 7L, 1L, false);
-      com.tencent.mm.plugin.report.service.h.nFQ.f(11787, new Object[] { Integer.valueOf(4) });
-      com.tencent.mm.ui.base.h.a(this.hJK, R.l.backup_move_error_low_battery_tip, R.l.backup_move_error_low_battery, R.l.backup_sure, R.l.backup_cancel, false, new BackupUI.1.1(this, i), null, R.e.backup_green);
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(485L, 7L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.qsU.e(11787, new Object[] { Integer.valueOf(4) });
+      com.tencent.mm.ui.base.h.a(this.jDo, 2131297249, 2131297248, 2131297394, 2131297220, false, new BackupUI.1.1(this, i), null, 2131689739);
+      AppMethodBeat.o(17428);
       return;
     }
-    paramView = new Intent().setClassName(ae.getContext(), "com.tencent.mm.ui.LauncherUI");
+    paramView = new Intent().setClassName(ah.getContext(), "com.tencent.mm.ui.LauncherUI");
     paramView.addFlags(335544320);
     paramView.putExtra("nofification_type", "backup_move_notification");
-    ae.getContext().startActivity(paramView);
+    ah.getContext().startActivity(paramView);
+    AppMethodBeat.o(17428);
     return;
-    label276:
-    paramView = new Intent().setClassName(ae.getContext(), "com.tencent.mm.ui.LauncherUI");
+    label283:
+    paramView = new Intent().setClassName(ah.getContext(), "com.tencent.mm.ui.LauncherUI");
     paramView.addFlags(335544320);
     paramView.putExtra("nofification_type", "back_to_pcmgr_notification");
-    ae.getContext().startActivity(paramView);
+    ah.getContext().startActivity(paramView);
+    AppMethodBeat.o(17428);
     return;
-    label316:
-    com.tencent.mm.plugin.report.service.h.nFQ.a(485L, 21L, 1L, false);
-    com.tencent.mm.plugin.report.service.h.nFQ.f(11788, new Object[] { Integer.valueOf(3) });
-    paramView = new Intent(this.hJK, BackupMoveChooseUI.class);
-    MMWizardActivity.C(this.hJK, paramView);
+    label329:
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(485L, 21L, 1L, false);
+    com.tencent.mm.plugin.report.service.h.qsU.e(11788, new Object[] { Integer.valueOf(3) });
+    paramView = new Intent(this.jDo, BackupMoveChooseUI.class);
+    MMWizardActivity.J(this.jDo, paramView);
+    AppMethodBeat.o(17428);
   }
 }
 

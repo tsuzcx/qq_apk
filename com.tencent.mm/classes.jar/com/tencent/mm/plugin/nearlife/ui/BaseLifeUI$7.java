@@ -1,82 +1,97 @@
 package com.tencent.mm.plugin.nearlife.ui;
 
-import com.tencent.mm.modelgeo.a.a;
-import com.tencent.mm.modelgeo.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b.a;
+import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.modelstat.o;
-import com.tencent.mm.protocal.c.ato;
+import com.tencent.mm.protocal.protobuf.azt;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper.LatLongData;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.h;
 import java.util.ArrayList;
 
 final class BaseLifeUI$7
-  implements a.a
+  implements b.a
 {
   BaseLifeUI$7(BaseLifeUI paramBaseLifeUI) {}
   
   public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    if (this.mEV.edT) {
+    AppMethodBeat.i(22948);
+    if (this.pfa.eUJ)
+    {
+      AppMethodBeat.o(22948);
       return false;
     }
-    if (this.mEV.dic) {
+    if (this.pfa.dZw)
+    {
+      AppMethodBeat.o(22948);
       return false;
     }
-    if (!paramBoolean) {
+    if (!paramBoolean)
+    {
+      if ((!BaseLifeUI.j(this.pfa)) && (!d.agR()))
+      {
+        BaseLifeUI.k(this.pfa);
+        h.a(this.pfa, this.pfa.getString(2131300538), this.pfa.getString(2131297087), this.pfa.getString(2131300996), this.pfa.getString(2131296888), false, new BaseLifeUI.7.1(this), null);
+      }
+      AppMethodBeat.o(22948);
       return true;
     }
     o.a(2003, paramFloat1, paramFloat2, (int)paramDouble2);
-    this.mEV.dic = true;
-    y.i("MicroMsg.BaseLifeUI", "on get location %f %f " + System.currentTimeMillis(), new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1) });
-    this.mEV.mEG = new ato();
-    this.mEV.mEG.sUp = "";
-    this.mEV.mEG.sUq = 0;
-    this.mEV.mEG.sGK = paramFloat2;
-    this.mEV.mEG.sGJ = paramFloat1;
-    this.mEV.mEG.sUo = "";
-    this.mEV.mEG.sUn = ((int)paramDouble2);
-    this.mEV.mEH = paramFloat2;
-    this.mEV.mEI = paramFloat1;
-    this.mEV.mEJ = paramInt;
-    this.mEV.mEK = ((float)paramDouble2);
-    Object localObject = this.mEV;
-    label316:
+    this.pfa.dZw = true;
+    ab.i("MicroMsg.BaseLifeUI", "on get location %f %f " + System.currentTimeMillis(), new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1) });
+    this.pfa.peJ = new azt();
+    this.pfa.peJ.wSm = "";
+    this.pfa.peJ.wSn = 0;
+    this.pfa.peJ.wDi = paramFloat2;
+    this.pfa.peJ.wDh = paramFloat1;
+    this.pfa.peJ.wSl = "";
+    this.pfa.peJ.wSk = ((int)paramDouble2);
+    this.pfa.peK = paramFloat2;
+    this.pfa.peL = paramFloat1;
+    this.pfa.peM = paramInt;
+    this.pfa.peN = ((float)paramDouble2);
+    Object localObject = this.pfa;
+    label418:
     BaseLifeUI localBaseLifeUI;
-    if (BaseLifeUI.j(this.mEV) == null)
+    if (BaseLifeUI.l(this.pfa) == null)
     {
       paramBoolean = false;
-      ((BaseLifeUI)localObject).elu = paramBoolean;
-      localObject = BaseLifeUI.f(this.mEV).mEo;
+      ((BaseLifeUI)localObject).fBM = paramBoolean;
+      localObject = BaseLifeUI.f(this.pfa).per;
       if ((localObject == null) || (((ArrayList)localObject).size() <= 0)) {
-        break label460;
+        break label569;
       }
       localObject = (BackwardSupportUtil.ExifHelper.LatLongData)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
-      this.mEV.m(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).bRt, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).epo);
-      this.mEV.mER = BaseLifeUI.f(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).bRt, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).epo, paramFloat2, paramFloat1);
-      BaseLifeUI.f(this.mEV).mEs = new BackwardSupportUtil.ExifHelper.LatLongData(this.mEV.mEG.sGK, this.mEV.mEG.sGJ);
-      BaseLifeUI.b(this.mEV).mEs = new BackwardSupportUtil.ExifHelper.LatLongData(this.mEV.mEG.sGK, this.mEV.mEG.sGJ);
-      localBaseLifeUI = this.mEV;
-      if (!this.mEV.fiq) {
-        break label474;
+      this.pfa.p(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).cyV, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).fFN);
+      this.pfa.peU = BaseLifeUI.h(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).cyV, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).fFN, paramFloat2, paramFloat1);
+      BaseLifeUI.f(this.pfa).pev = new BackwardSupportUtil.ExifHelper.LatLongData(this.pfa.peJ.wDi, this.pfa.peJ.wDh);
+      BaseLifeUI.b(this.pfa).pev = new BackwardSupportUtil.ExifHelper.LatLongData(this.pfa.peJ.wDi, this.pfa.peJ.wDh);
+      localBaseLifeUI = this.pfa;
+      if (!this.pfa.gzX) {
+        break label583;
       }
     }
-    label460:
-    label474:
-    for (localObject = BaseLifeUI.b(this.mEV);; localObject = BaseLifeUI.f(this.mEV))
+    label569:
+    label583:
+    for (localObject = BaseLifeUI.b(this.pfa);; localObject = BaseLifeUI.f(this.pfa))
     {
       BaseLifeUI.a(localBaseLifeUI, (a)localObject);
-      BaseLifeUI.k(this.mEV);
-      this.mEV.a(BaseLifeUI.i(this.mEV));
+      BaseLifeUI.m(this.pfa);
+      this.pfa.addSearchMenu(true, BaseLifeUI.i(this.pfa));
+      AppMethodBeat.o(22948);
       return false;
-      paramBoolean = BaseLifeUI.j(this.mEV).elu;
+      paramBoolean = BaseLifeUI.l(this.pfa).fBM;
       break;
-      this.mEV.m(paramFloat2, paramFloat1);
-      break label316;
+      this.pfa.p(paramFloat2, paramFloat1);
+      break label418;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.BaseLifeUI.7
  * JD-Core Version:    0.7.0.1
  */

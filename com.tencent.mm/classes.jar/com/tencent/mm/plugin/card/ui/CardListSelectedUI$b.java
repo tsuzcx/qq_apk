@@ -6,13 +6,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.c;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.model.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -21,14 +19,20 @@ final class CardListSelectedUI$b
 {
   CardListSelectedUI$b(CardListSelectedUI paramCardListSelectedUI) {}
   
-  private a pb(int paramInt)
+  private a tl(int paramInt)
   {
-    return (a)this.ivL.dBw.get(paramInt);
+    AppMethodBeat.i(88566);
+    a locala = (a)this.kwP.eyN.get(paramInt);
+    AppMethodBeat.o(88566);
+    return locala;
   }
   
   public final int getCount()
   {
-    return this.ivL.dBw.size();
+    AppMethodBeat.i(88565);
+    int i = this.kwP.eyN.size();
+    AppMethodBeat.o(88565);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -38,110 +42,113 @@ final class CardListSelectedUI$b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    a locala = pb(paramInt);
+    AppMethodBeat.i(88567);
+    a locala = tl(paramInt);
     if (paramView == null)
     {
-      paramView = View.inflate(this.ivL, a.e.card_select_card_invoice_item, null);
-      paramViewGroup = new CardListSelectedUI.c(this.ivL);
-      paramViewGroup.ivM = ((ImageView)paramView.findViewById(a.d.card_select_img));
-      paramViewGroup.ivN = ((TextView)paramView.findViewById(a.d.invoice_status));
-      paramViewGroup.fcy = ((TextView)paramView.findViewById(a.d.title));
-      paramViewGroup.ivO = ((TextView)paramView.findViewById(a.d.sub_title));
-      paramViewGroup.ivP = paramView.findViewById(a.d.v_line);
-      paramViewGroup.ivQ = ((TextView)paramView.findViewById(a.d.invoice_title));
-      paramViewGroup.ivR = ((TextView)paramView.findViewById(a.d.invoice_item));
+      paramView = View.inflate(this.kwP, 2130968988, null);
+      paramViewGroup = new CardListSelectedUI.c(this.kwP);
+      paramViewGroup.kwQ = ((ImageView)paramView.findViewById(2131822349));
+      paramViewGroup.kwR = ((TextView)paramView.findViewById(2131822350));
+      paramViewGroup.gui = ((TextView)paramView.findViewById(2131820680));
+      paramViewGroup.kwS = ((TextView)paramView.findViewById(2131821272));
+      paramViewGroup.kwT = paramView.findViewById(2131822157);
+      paramViewGroup.kwU = ((TextView)paramView.findViewById(2131822351));
+      paramViewGroup.kwV = ((TextView)paramView.findViewById(2131822352));
       paramView.setTag(paramViewGroup);
-      if (!l.oN(locala.ilo)) {
-        break label548;
+      if (!l.sX(locala.iFL)) {
+        break label549;
       }
       if (TextUtils.isEmpty(locala.title)) {
-        break label386;
+        break label387;
       }
-      paramViewGroup.fcy.setVisibility(0);
-      paramViewGroup.fcy.setText(locala.title);
-      label177:
-      if (TextUtils.isEmpty(locala.ilq)) {
-        break label398;
+      paramViewGroup.gui.setVisibility(0);
+      paramViewGroup.gui.setText(locala.title);
+      label174:
+      if (TextUtils.isEmpty(locala.kmn)) {
+        break label399;
       }
-      paramViewGroup.ivO.setVisibility(0);
-      paramViewGroup.ivO.setText(locala.ilq);
-      label208:
-      if (locala.ilu != 0) {
+      paramViewGroup.kwS.setVisibility(0);
+      paramViewGroup.kwS.setText(locala.kmn);
+      label205:
+      if (locala.kms != 0) {
         break label423;
       }
       paramView.setAlpha(1.0F);
-      paramViewGroup.ivM.setVisibility(0);
-      paramViewGroup.ivN.setVisibility(8);
-      Boolean localBoolean = (Boolean)this.ivL.ivy.get(Integer.valueOf(paramInt));
+      paramViewGroup.kwQ.setVisibility(0);
+      paramViewGroup.kwR.setVisibility(8);
+      Boolean localBoolean = (Boolean)this.kwP.kwC.get(Integer.valueOf(paramInt));
       if ((localBoolean == null) || (!localBoolean.booleanValue())) {
-        break label410;
+        break label411;
       }
-      paramViewGroup.ivM.setImageResource(a.c.card_add_selected_btn_bg);
-      label280:
-      if (bk.bl(locala.ilv)) {
+      paramViewGroup.kwQ.setImageResource(2130838096);
+      label276:
+      if (bo.isNullOrNil(locala.kmt)) {
         break label514;
       }
-      paramViewGroup.ivQ.setVisibility(0);
-      paramViewGroup.ivQ.setText(locala.ilv);
-      label311:
-      if (bk.bl(locala.ilw)) {
+      paramViewGroup.kwU.setVisibility(0);
+      paramViewGroup.kwU.setText(locala.kmt);
+      label307:
+      if (bo.isNullOrNil(locala.kmu)) {
         break label526;
       }
-      paramViewGroup.ivR.setVisibility(0);
-      paramViewGroup.ivR.setText(locala.ilw);
+      paramViewGroup.kwV.setVisibility(0);
+      paramViewGroup.kwV.setText(locala.kmu);
+      label338:
+      if ((!bo.isNullOrNil(locala.kmt)) || (!bo.isNullOrNil(locala.kmu))) {
+        break label538;
+      }
+      paramViewGroup.kwT.setVisibility(8);
     }
     for (;;)
     {
-      if ((!bk.bl(locala.ilv)) || (!bk.bl(locala.ilw))) {
-        break label538;
-      }
-      paramViewGroup.ivP.setVisibility(8);
+      AppMethodBeat.o(88567);
       return paramView;
       paramViewGroup = (CardListSelectedUI.c)paramView.getTag();
       break;
-      label386:
-      paramViewGroup.fcy.setVisibility(8);
-      break label177;
-      label398:
-      paramViewGroup.ivO.setVisibility(8);
-      break label208;
-      label410:
-      paramViewGroup.ivM.setImageResource(a.c.card_add_unselected_btn_bg);
-      break label280;
+      label387:
+      paramViewGroup.gui.setVisibility(8);
+      break label174;
+      label399:
+      paramViewGroup.kwS.setVisibility(8);
+      break label205;
+      label411:
+      paramViewGroup.kwQ.setImageResource(2130838097);
+      break label276;
       label423:
-      if (locala.ilu == 1)
+      if (locala.kms == 1)
       {
         paramView.setAlpha(0.2F);
-        paramViewGroup.ivM.setVisibility(8);
-        if (!bk.bl(locala.ilx))
+        paramViewGroup.kwQ.setVisibility(8);
+        if (!bo.isNullOrNil(locala.kmv))
         {
-          paramViewGroup.ivN.setVisibility(0);
-          paramViewGroup.ivN.setText(locala.ilx);
-          break label280;
+          paramViewGroup.kwR.setVisibility(0);
+          paramViewGroup.kwR.setText(locala.kmv);
+          break label276;
         }
-        paramViewGroup.ivN.setVisibility(8);
-        break label280;
+        paramViewGroup.kwR.setVisibility(8);
+        break label276;
       }
-      paramViewGroup.ivM.setVisibility(8);
-      paramViewGroup.ivN.setVisibility(8);
-      break label280;
+      paramViewGroup.kwQ.setVisibility(8);
+      paramViewGroup.kwR.setVisibility(8);
+      break label276;
       label514:
-      paramViewGroup.ivQ.setVisibility(8);
-      break label311;
+      paramViewGroup.kwU.setVisibility(8);
+      break label307;
       label526:
-      paramViewGroup.ivR.setVisibility(8);
+      paramViewGroup.kwV.setVisibility(8);
+      break label338;
+      label538:
+      paramViewGroup.kwT.setVisibility(0);
+      continue;
+      label549:
+      ab.i("MicroMsg.CardListSelectedUI", "not support type");
     }
-    label538:
-    paramViewGroup.ivP.setVisibility(0);
-    return paramView;
-    label548:
-    y.i("MicroMsg.CardListSelectedUI", "not support type");
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardListSelectedUI.b
  * JD-Core Version:    0.7.0.1
  */

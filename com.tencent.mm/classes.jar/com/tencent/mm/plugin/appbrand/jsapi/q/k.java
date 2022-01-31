@@ -1,72 +1,86 @@
 package com.tencent.mm.plugin.appbrand.jsapi.q;
 
-import android.app.Activity;
-import android.content.Context;
-import android.media.AudioManager;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.s.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class k
-  extends a
 {
-  public static final int CTRL_INDEX = 534;
-  public static final String NAME = "setVolume";
+  static int hZb;
+  private com.tencent.mm.plugin.appbrand.t.k hYw;
+  final List<ai> hZc;
+  Runnable hZd;
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  private k()
   {
-    y.i("MicroMsg.JsApiSetVolume", "invoke JsApiSetVolume!");
-    if (paramc == null)
+    AppMethodBeat.i(126400);
+    this.hZc = new LinkedList();
+    hZb = i.hYY.aEC();
+    this.hZd = new k.1(this);
+    this.hYw = new com.tencent.mm.plugin.appbrand.t.k(hZb, new k.2(this));
+    AppMethodBeat.o(126400);
+  }
+  
+  public final boolean a(ai paramai, c arg2)
+  {
+    AppMethodBeat.i(126401);
+    if (paramai == null)
     {
-      y.e("MicroMsg.JsApiSetVolume", "fail:component is null");
-      return;
+      AppMethodBeat.o(126401);
+      return false;
     }
-    Object localObject = paramc.getContext();
-    if (localObject == null)
+    if (!i.hYY.a(???, paramai))
     {
-      y.e("MicroMsg.JsApiSetVolume", "fail:context is null");
-      paramc.C(paramInt, h("fail:context is null", null));
-      return;
+      AppMethodBeat.o(126401);
+      return false;
     }
-    if (!(localObject instanceof Activity))
+    for (;;)
     {
-      y.e("MicroMsg.JsApiSetVolume", "fail:context is not Activity");
-      paramc.C(paramInt, h("fail:context is not Activity", null));
-      return;
-    }
-    localObject = (AudioManager)((Context)localObject).getSystemService("audio");
-    if (localObject == null)
-    {
-      y.e("MicroMsg.JsApiSetVolume", "fail:manager is null");
-      paramc.C(paramInt, h("fail:manager is null", null));
-      return;
-    }
-    int m = ((AudioManager)localObject).getStreamVolume(3);
-    int j = ((AudioManager)localObject).getStreamMaxVolume(3);
-    int k = paramJSONObject.optInt("value", m);
-    y.i("MicroMsg.JsApiSetVolume", "JsApiSetVolume value:%d, current:%d, max:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j) });
-    int i;
-    if (k < 0) {
-      i = 0;
-    }
-    while (i != m)
-    {
-      ((AudioManager)localObject).setStreamVolume(3, i, 0);
-      paramc.C(paramInt, h("ok", null));
-      return;
-      i = j;
-      if (k <= j) {
-        i = k;
+      synchronized (this.hZc)
+      {
+        boolean bool = this.hZc.isEmpty();
+        if (!this.hZc.isEmpty())
+        {
+          if (((ai)this.hZc.get(0)).equals(paramai))
+          {
+            this.hZc.add(0, paramai);
+            this.hZc.remove(1);
+            if ((bool) && (!this.hYw.l(new Object[0])))
+            {
+              ab.v("MicroMsg.SensorJsEventPublisher", "post delay publish event(event : %s).", new Object[] { paramai.getName() });
+              m.aNS().o(this.hZd, hZb);
+            }
+            AppMethodBeat.o(126401);
+            return true;
+          }
+          this.hZc.remove(paramai);
+          this.hZc.add(paramai);
+        }
       }
+      this.hZc.add(paramai);
     }
-    paramc.C(paramInt, h("fail:volume does not change", null));
+  }
+  
+  static final class a
+  {
+    static k hZf;
+    
+    static
+    {
+      AppMethodBeat.i(126399);
+      hZf = new k((byte)0);
+      AppMethodBeat.o(126399);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.q.k
  * JD-Core Version:    0.7.0.1
  */

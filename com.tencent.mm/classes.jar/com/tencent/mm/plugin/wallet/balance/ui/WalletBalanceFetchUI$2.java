@@ -1,33 +1,18 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import com.tencent.mm.plugin.wallet_core.c.y;
-import com.tencent.mm.wallet_core.c.d;
-import com.tencent.mm.wallet_core.c.i;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletBalanceFetchUI$2
-  implements d
+  implements Runnable
 {
-  WalletBalanceFetchUI$2(WalletBalanceFetchUI paramWalletBalanceFetchUI, i parami, y paramy) {}
+  WalletBalanceFetchUI$2(WalletBalanceFetchUI paramWalletBalanceFetchUI, int paramInt) {}
   
-  public final void bTn()
+  public final void run()
   {
-    if (this.qgR.cMu()) {
-      WalletBalanceFetchUI.j(this.qgO);
-    }
-  }
-  
-  public final void bTo()
-  {
-    if (this.qgR.cMu()) {
-      this.qgO.finish();
-    }
-  }
-  
-  public final void onCancel()
-  {
-    if (this.qgR.cMu()) {
-      this.qgO.finish();
-    }
+    AppMethodBeat.i(45354);
+    WalletBalanceFetchUI.l(this.tOj).scrollBy(0, this.val$scrollDistance);
+    AppMethodBeat.o(45354);
   }
 }
 

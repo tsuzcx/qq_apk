@@ -1,46 +1,27 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
-import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.f.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SightCaptureUI$19
-  implements f.a
+  implements Runnable
 {
   SightCaptureUI$19(SightCaptureUI paramSightCaptureUI) {}
   
-  public final int cv(int paramInt1, int paramInt2)
+  public final void run()
   {
-    return 0;
-  }
-  
-  public final void cw(int paramInt1, int paramInt2) {}
-  
-  public final void kA()
-  {
-    if (SightCaptureUI.S(this.mqB) != null)
+    AppMethodBeat.i(55212);
+    if (SightCaptureUI.g(this.oQf) != 4)
     {
-      SightCaptureUI.S(this.mqB).start();
-      SightCaptureUI.S(this.mqB).setLoop(true);
+      ab.e("MicroMsg.SightCaptureUI", "checkPreviewStatusRunnable, not previewing now!!!");
+      SightCaptureUI.g(this.oQf, 9);
     }
-    ai.S(SightCaptureUI.M(this.mqB));
-    SightCaptureUI.S(this.mqB).setOneTimeVideoTextureUpdateCallback(new SightCaptureUI.19.1(this));
-  }
-  
-  public final void onError(int paramInt1, int paramInt2)
-  {
-    y.e("MicroMsg.SightCaptureUI", "%d on error what %d extra %d", new Object[] { Integer.valueOf(this.mqB.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-  }
-  
-  public final void ug()
-  {
-    SightCaptureUI.S(this.mqB).d(0.0D, true);
+    AppMethodBeat.o(55212);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.SightCaptureUI.19
  * JD-Core Version:    0.7.0.1
  */

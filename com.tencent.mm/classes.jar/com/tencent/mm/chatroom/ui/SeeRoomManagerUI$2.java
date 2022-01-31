@@ -3,6 +3,7 @@ package com.tencent.mm.chatroom.ui;
 import android.content.res.Resources;
 import android.widget.GridView;
 import android.widget.LinearLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SeeRoomManagerUI$2
   implements Runnable
@@ -11,12 +12,14 @@ final class SeeRoomManagerUI$2
   
   public final void run()
   {
-    int j = (int)(this.drh.getResources().getDimension(a.c.BigPadding) + this.drh.getResources().getDimension(a.c.NormalAvatarSize) + this.drh.getResources().getDimension(a.c.SmallerTextSize));
+    AppMethodBeat.i(104283);
+    int j = (int)(this.eiP.getResources().getDimension(2131427500) + this.eiP.getResources().getDimension(2131427800) + this.eiP.getResources().getDimension(2131427860));
     int i = j;
-    if (SeeRoomManagerUI.a(this.drh).getCount() / 4 > 0) {
-      i = j * (SeeRoomManagerUI.a(this.drh).getCount() / 4 + 1);
+    if (SeeRoomManagerUI.a(this.eiP).getCount() / 4 > 0) {
+      i = j * (SeeRoomManagerUI.a(this.eiP).getCount() / 4 + 1);
     }
-    SeeRoomManagerUI.b(this.drh).setLayoutParams(new LinearLayout.LayoutParams(SeeRoomManagerUI.b(this.drh).getWidth(), i));
+    SeeRoomManagerUI.b(this.eiP).setLayoutParams(new LinearLayout.LayoutParams(SeeRoomManagerUI.b(this.eiP).getWidth(), i));
+    AppMethodBeat.o(104283);
   }
 }
 

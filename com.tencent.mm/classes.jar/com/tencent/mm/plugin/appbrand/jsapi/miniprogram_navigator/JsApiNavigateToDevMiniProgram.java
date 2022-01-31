@@ -1,13 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.p;
-
 public final class JsApiNavigateToDevMiniProgram
-  extends a<p>
+  extends a
 {
   private static final int CTRL_INDEX = 351;
   private static final String NAME = "navigateToDevMiniProgram";
+  
+  protected final c aCU()
+  {
+    return k.hTv;
+  }
 }
 
 

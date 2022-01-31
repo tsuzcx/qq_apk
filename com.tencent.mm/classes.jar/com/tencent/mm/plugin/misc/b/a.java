@@ -2,481 +2,528 @@ package com.tencent.mm.plugin.misc.b;
 
 import android.os.Handler;
 import android.support.v4.content.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.report.service.e;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
   implements f, com.tencent.mm.kernel.api.c, com.tencent.mm.kernel.b.c
 {
-  private static volatile a mdO;
-  private Handler mHandler = new Handler();
+  private static volatile a oEk;
+  private Handler mHandler;
   
-  public static a bij()
+  public a()
+  {
+    AppMethodBeat.i(50505);
+    this.mHandler = new Handler();
+    AppMethodBeat.o(50505);
+  }
+  
+  public static a bQk()
   {
     try
     {
-      if (mdO == null) {
-        mdO = new a();
+      AppMethodBeat.i(50506);
+      if (oEk == null) {
+        oEk = new a();
       }
-      a locala = mdO;
+      a locala = oEk;
+      AppMethodBeat.o(50506);
       return locala;
     }
     finally {}
   }
   
   /* Error */
-  private static List<a.a> dK(android.content.Context paramContext)
+  private static List<a.a> ew(android.content.Context paramContext)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: new 37	java/util/LinkedList
-    //   6: dup
-    //   7: invokespecial 38	java/util/LinkedList:<init>	()V
-    //   10: astore_3
-    //   11: aload_0
-    //   12: ldc 40
-    //   14: invokevirtual 46	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   17: checkcast 48	android/telephony/TelephonyManager
-    //   20: astore_0
-    //   21: getstatic 54	android/os/Build$VERSION:SDK_INT	I
-    //   24: istore_2
-    //   25: aload_0
-    //   26: invokevirtual 58	android/telephony/TelephonyManager:getAllCellInfo	()Ljava/util/List;
-    //   29: astore_0
+    //   3: ldc 47
+    //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: new 49	java/util/LinkedList
+    //   11: dup
+    //   12: invokespecial 50	java/util/LinkedList:<init>	()V
+    //   15: astore_3
+    //   16: aload_0
+    //   17: ldc 52
+    //   19: invokevirtual 58	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   22: checkcast 60	android/telephony/TelephonyManager
+    //   25: astore_0
+    //   26: getstatic 66	android/os/Build$VERSION:SDK_INT	I
+    //   29: istore_2
     //   30: aload_0
-    //   31: ifnull +263 -> 294
-    //   34: aload_0
-    //   35: invokeinterface 64 1 0
-    //   40: astore_0
-    //   41: aload_0
-    //   42: invokeinterface 70 1 0
-    //   47: ifeq +247 -> 294
-    //   50: aload_0
-    //   51: invokeinterface 74 1 0
-    //   56: checkcast 76	android/telephony/CellInfo
-    //   59: astore 4
-    //   61: new 12	com/tencent/mm/plugin/misc/b/a$a
-    //   64: dup
-    //   65: invokespecial 77	com/tencent/mm/plugin/misc/b/a$a:<init>	()V
-    //   68: astore 5
-    //   70: aload 4
-    //   72: instanceof 79
-    //   75: ifeq +224 -> 299
-    //   78: aload 4
-    //   80: checkcast 79	android/telephony/CellInfoGsm
-    //   83: invokevirtual 83	android/telephony/CellInfoGsm:getCellSignalStrength	()Landroid/telephony/CellSignalStrengthGsm;
-    //   86: astore 6
-    //   88: aload 4
-    //   90: checkcast 79	android/telephony/CellInfoGsm
-    //   93: invokevirtual 87	android/telephony/CellInfoGsm:getCellIdentity	()Landroid/telephony/CellIdentityGsm;
-    //   96: astore 7
-    //   98: aload 7
-    //   100: invokevirtual 93	android/telephony/CellIdentityGsm:getMnc	()I
-    //   103: istore_1
-    //   104: aload 5
-    //   106: new 95	java/lang/StringBuilder
-    //   109: dup
-    //   110: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   113: aload 7
-    //   115: invokevirtual 99	android/telephony/CellIdentityGsm:getCid	()I
-    //   118: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   121: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   124: putfield 111	com/tencent/mm/plugin/misc/b/a$a:mdS	Ljava/lang/String;
-    //   127: aload 5
-    //   129: new 95	java/lang/StringBuilder
-    //   132: dup
-    //   133: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   136: aload 7
-    //   138: invokevirtual 114	android/telephony/CellIdentityGsm:getMcc	()I
-    //   141: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   144: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   147: putfield 117	com/tencent/mm/plugin/misc/b/a$a:mdQ	Ljava/lang/String;
-    //   150: aload 5
-    //   152: new 95	java/lang/StringBuilder
-    //   155: dup
-    //   156: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   159: aload 7
-    //   161: invokevirtual 93	android/telephony/CellIdentityGsm:getMnc	()I
-    //   164: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   167: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: putfield 120	com/tencent/mm/plugin/misc/b/a$a:mdR	Ljava/lang/String;
-    //   173: aload 5
-    //   175: new 95	java/lang/StringBuilder
-    //   178: dup
-    //   179: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   182: aload 7
-    //   184: invokevirtual 123	android/telephony/CellIdentityGsm:getLac	()I
-    //   187: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   190: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   193: putfield 126	com/tencent/mm/plugin/misc/b/a$a:mdT	Ljava/lang/String;
-    //   196: aload 5
-    //   198: aload 6
-    //   200: invokevirtual 131	android/telephony/CellSignalStrengthGsm:getDbm	()I
-    //   203: putfield 134	com/tencent/mm/plugin/misc/b/a$a:mdU	I
-    //   206: aload 5
-    //   208: aload 4
-    //   210: invokevirtual 137	android/telephony/CellInfo:isRegistered	()Z
-    //   213: putfield 141	com/tencent/mm/plugin/misc/b/a$a:gyD	Z
-    //   216: aload 5
-    //   218: ldc 143
-    //   220: putfield 146	com/tencent/mm/plugin/misc/b/a$a:type	Ljava/lang/String;
-    //   223: aload 5
-    //   225: getfield 120	com/tencent/mm/plugin/misc/b/a$a:mdR	Ljava/lang/String;
-    //   228: invokevirtual 151	java/lang/String:length	()I
-    //   231: iconst_1
-    //   232: if_icmpne +28 -> 260
-    //   235: aload 5
-    //   237: new 95	java/lang/StringBuilder
-    //   240: dup
-    //   241: ldc 153
-    //   243: invokespecial 156	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   246: aload 5
-    //   248: getfield 120	com/tencent/mm/plugin/misc/b/a$a:mdR	Ljava/lang/String;
-    //   251: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   254: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   257: putfield 120	com/tencent/mm/plugin/misc/b/a$a:mdR	Ljava/lang/String;
-    //   260: iload_1
-    //   261: ldc 160
-    //   263: if_icmpeq -222 -> 41
-    //   266: aload_3
-    //   267: aload 5
-    //   269: invokeinterface 164 2 0
-    //   274: pop
-    //   275: goto -234 -> 41
-    //   278: astore_0
-    //   279: ldc 166
-    //   281: ldc 168
-    //   283: iconst_1
-    //   284: anewarray 4	java/lang/Object
-    //   287: dup
-    //   288: iconst_0
-    //   289: aload_0
-    //   290: aastore
-    //   291: invokestatic 174	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   294: ldc 2
-    //   296: monitorexit
-    //   297: aload_3
-    //   298: areturn
-    //   299: aload 4
-    //   301: instanceof 176
-    //   304: ifeq +128 -> 432
-    //   307: aload 4
-    //   309: checkcast 176	android/telephony/CellInfoCdma
-    //   312: invokevirtual 179	android/telephony/CellInfoCdma:getCellSignalStrength	()Landroid/telephony/CellSignalStrengthCdma;
-    //   315: astore 6
+    //   31: invokevirtual 70	android/telephony/TelephonyManager:getAllCellInfo	()Ljava/util/List;
+    //   34: astore_0
+    //   35: aload_0
+    //   36: ifnull +263 -> 299
+    //   39: aload_0
+    //   40: invokeinterface 76 1 0
+    //   45: astore_0
+    //   46: aload_0
+    //   47: invokeinterface 82 1 0
+    //   52: ifeq +247 -> 299
+    //   55: aload_0
+    //   56: invokeinterface 86 1 0
+    //   61: checkcast 88	android/telephony/CellInfo
+    //   64: astore 4
+    //   66: new 12	com/tencent/mm/plugin/misc/b/a$a
+    //   69: dup
+    //   70: invokespecial 89	com/tencent/mm/plugin/misc/b/a$a:<init>	()V
+    //   73: astore 5
+    //   75: aload 4
+    //   77: instanceof 91
+    //   80: ifeq +229 -> 309
+    //   83: aload 4
+    //   85: checkcast 91	android/telephony/CellInfoGsm
+    //   88: invokevirtual 95	android/telephony/CellInfoGsm:getCellSignalStrength	()Landroid/telephony/CellSignalStrengthGsm;
+    //   91: astore 6
+    //   93: aload 4
+    //   95: checkcast 91	android/telephony/CellInfoGsm
+    //   98: invokevirtual 99	android/telephony/CellInfoGsm:getCellIdentity	()Landroid/telephony/CellIdentityGsm;
+    //   101: astore 7
+    //   103: aload 7
+    //   105: invokevirtual 105	android/telephony/CellIdentityGsm:getMnc	()I
+    //   108: istore_1
+    //   109: aload 5
+    //   111: new 107	java/lang/StringBuilder
+    //   114: dup
+    //   115: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   118: aload 7
+    //   120: invokevirtual 111	android/telephony/CellIdentityGsm:getCid	()I
+    //   123: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   126: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   129: putfield 123	com/tencent/mm/plugin/misc/b/a$a:oEo	Ljava/lang/String;
+    //   132: aload 5
+    //   134: new 107	java/lang/StringBuilder
+    //   137: dup
+    //   138: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   141: aload 7
+    //   143: invokevirtual 126	android/telephony/CellIdentityGsm:getMcc	()I
+    //   146: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   149: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   152: putfield 129	com/tencent/mm/plugin/misc/b/a$a:oEm	Ljava/lang/String;
+    //   155: aload 5
+    //   157: new 107	java/lang/StringBuilder
+    //   160: dup
+    //   161: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   164: aload 7
+    //   166: invokevirtual 105	android/telephony/CellIdentityGsm:getMnc	()I
+    //   169: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   172: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   175: putfield 132	com/tencent/mm/plugin/misc/b/a$a:oEn	Ljava/lang/String;
+    //   178: aload 5
+    //   180: new 107	java/lang/StringBuilder
+    //   183: dup
+    //   184: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   187: aload 7
+    //   189: invokevirtual 135	android/telephony/CellIdentityGsm:getLac	()I
+    //   192: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   195: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   198: putfield 138	com/tencent/mm/plugin/misc/b/a$a:oEp	Ljava/lang/String;
+    //   201: aload 5
+    //   203: aload 6
+    //   205: invokevirtual 143	android/telephony/CellSignalStrengthGsm:getDbm	()I
+    //   208: putfield 146	com/tencent/mm/plugin/misc/b/a$a:oEq	I
+    //   211: aload 5
+    //   213: aload 4
+    //   215: invokevirtual 149	android/telephony/CellInfo:isRegistered	()Z
+    //   218: putfield 153	com/tencent/mm/plugin/misc/b/a$a:hVn	Z
+    //   221: aload 5
+    //   223: ldc 155
+    //   225: putfield 158	com/tencent/mm/plugin/misc/b/a$a:type	Ljava/lang/String;
+    //   228: aload 5
+    //   230: getfield 132	com/tencent/mm/plugin/misc/b/a$a:oEn	Ljava/lang/String;
+    //   233: invokevirtual 163	java/lang/String:length	()I
+    //   236: iconst_1
+    //   237: if_icmpne +28 -> 265
+    //   240: aload 5
+    //   242: new 107	java/lang/StringBuilder
+    //   245: dup
+    //   246: ldc 165
+    //   248: invokespecial 168	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   251: aload 5
+    //   253: getfield 132	com/tencent/mm/plugin/misc/b/a$a:oEn	Ljava/lang/String;
+    //   256: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   262: putfield 132	com/tencent/mm/plugin/misc/b/a$a:oEn	Ljava/lang/String;
+    //   265: iload_1
+    //   266: ldc 172
+    //   268: if_icmpeq -222 -> 46
+    //   271: aload_3
+    //   272: aload 5
+    //   274: invokeinterface 176 2 0
+    //   279: pop
+    //   280: goto -234 -> 46
+    //   283: astore_0
+    //   284: ldc 178
+    //   286: ldc 180
+    //   288: iconst_1
+    //   289: anewarray 4	java/lang/Object
+    //   292: dup
+    //   293: iconst_0
+    //   294: aload_0
+    //   295: aastore
+    //   296: invokestatic 186	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   299: ldc 47
+    //   301: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   304: ldc 2
+    //   306: monitorexit
+    //   307: aload_3
+    //   308: areturn
+    //   309: aload 4
+    //   311: instanceof 188
+    //   314: ifeq +128 -> 442
     //   317: aload 4
-    //   319: checkcast 176	android/telephony/CellInfoCdma
-    //   322: invokevirtual 182	android/telephony/CellInfoCdma:getCellIdentity	()Landroid/telephony/CellIdentityCdma;
-    //   325: astore 7
-    //   327: aload 7
-    //   329: invokevirtual 187	android/telephony/CellIdentityCdma:getSystemId	()I
-    //   332: istore_1
-    //   333: aload 5
-    //   335: new 95	java/lang/StringBuilder
-    //   338: dup
-    //   339: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   342: aload 7
-    //   344: invokevirtual 190	android/telephony/CellIdentityCdma:getBasestationId	()I
-    //   347: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   350: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   353: putfield 111	com/tencent/mm/plugin/misc/b/a$a:mdS	Ljava/lang/String;
-    //   356: aload 5
-    //   358: new 95	java/lang/StringBuilder
-    //   361: dup
-    //   362: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   365: aload 7
-    //   367: invokevirtual 187	android/telephony/CellIdentityCdma:getSystemId	()I
-    //   370: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   373: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   376: putfield 120	com/tencent/mm/plugin/misc/b/a$a:mdR	Ljava/lang/String;
-    //   379: aload 5
-    //   381: new 95	java/lang/StringBuilder
-    //   384: dup
-    //   385: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   388: aload 7
-    //   390: invokevirtual 193	android/telephony/CellIdentityCdma:getNetworkId	()I
-    //   393: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   396: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   399: putfield 126	com/tencent/mm/plugin/misc/b/a$a:mdT	Ljava/lang/String;
-    //   402: aload 5
-    //   404: aload 6
-    //   406: invokevirtual 196	android/telephony/CellSignalStrengthCdma:getDbm	()I
-    //   409: putfield 134	com/tencent/mm/plugin/misc/b/a$a:mdU	I
+    //   319: checkcast 188	android/telephony/CellInfoCdma
+    //   322: invokevirtual 191	android/telephony/CellInfoCdma:getCellSignalStrength	()Landroid/telephony/CellSignalStrengthCdma;
+    //   325: astore 6
+    //   327: aload 4
+    //   329: checkcast 188	android/telephony/CellInfoCdma
+    //   332: invokevirtual 194	android/telephony/CellInfoCdma:getCellIdentity	()Landroid/telephony/CellIdentityCdma;
+    //   335: astore 7
+    //   337: aload 7
+    //   339: invokevirtual 199	android/telephony/CellIdentityCdma:getSystemId	()I
+    //   342: istore_1
+    //   343: aload 5
+    //   345: new 107	java/lang/StringBuilder
+    //   348: dup
+    //   349: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   352: aload 7
+    //   354: invokevirtual 202	android/telephony/CellIdentityCdma:getBasestationId	()I
+    //   357: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   360: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   363: putfield 123	com/tencent/mm/plugin/misc/b/a$a:oEo	Ljava/lang/String;
+    //   366: aload 5
+    //   368: new 107	java/lang/StringBuilder
+    //   371: dup
+    //   372: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   375: aload 7
+    //   377: invokevirtual 199	android/telephony/CellIdentityCdma:getSystemId	()I
+    //   380: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   383: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   386: putfield 132	com/tencent/mm/plugin/misc/b/a$a:oEn	Ljava/lang/String;
+    //   389: aload 5
+    //   391: new 107	java/lang/StringBuilder
+    //   394: dup
+    //   395: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   398: aload 7
+    //   400: invokevirtual 205	android/telephony/CellIdentityCdma:getNetworkId	()I
+    //   403: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   406: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   409: putfield 138	com/tencent/mm/plugin/misc/b/a$a:oEp	Ljava/lang/String;
     //   412: aload 5
-    //   414: aload 4
-    //   416: invokevirtual 137	android/telephony/CellInfo:isRegistered	()Z
-    //   419: putfield 141	com/tencent/mm/plugin/misc/b/a$a:gyD	Z
+    //   414: aload 6
+    //   416: invokevirtual 208	android/telephony/CellSignalStrengthCdma:getDbm	()I
+    //   419: putfield 146	com/tencent/mm/plugin/misc/b/a$a:oEq	I
     //   422: aload 5
-    //   424: ldc 198
-    //   426: putfield 146	com/tencent/mm/plugin/misc/b/a$a:type	Ljava/lang/String;
-    //   429: goto -206 -> 223
-    //   432: aload 4
-    //   434: instanceof 200
-    //   437: ifeq +151 -> 588
-    //   440: aload 4
-    //   442: checkcast 200	android/telephony/CellInfoLte
-    //   445: invokevirtual 203	android/telephony/CellInfoLte:getCellSignalStrength	()Landroid/telephony/CellSignalStrengthLte;
-    //   448: astore 6
+    //   424: aload 4
+    //   426: invokevirtual 149	android/telephony/CellInfo:isRegistered	()Z
+    //   429: putfield 153	com/tencent/mm/plugin/misc/b/a$a:hVn	Z
+    //   432: aload 5
+    //   434: ldc 210
+    //   436: putfield 158	com/tencent/mm/plugin/misc/b/a$a:type	Ljava/lang/String;
+    //   439: goto -211 -> 228
+    //   442: aload 4
+    //   444: instanceof 212
+    //   447: ifeq +151 -> 598
     //   450: aload 4
-    //   452: checkcast 200	android/telephony/CellInfoLte
-    //   455: invokevirtual 206	android/telephony/CellInfoLte:getCellIdentity	()Landroid/telephony/CellIdentityLte;
-    //   458: astore 7
-    //   460: aload 7
-    //   462: invokevirtual 209	android/telephony/CellIdentityLte:getMnc	()I
-    //   465: istore_1
-    //   466: aload 5
-    //   468: new 95	java/lang/StringBuilder
-    //   471: dup
-    //   472: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   475: aload 7
-    //   477: invokevirtual 212	android/telephony/CellIdentityLte:getCi	()I
-    //   480: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   483: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   486: putfield 111	com/tencent/mm/plugin/misc/b/a$a:mdS	Ljava/lang/String;
-    //   489: aload 5
-    //   491: new 95	java/lang/StringBuilder
-    //   494: dup
-    //   495: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   498: aload 7
-    //   500: invokevirtual 213	android/telephony/CellIdentityLte:getMcc	()I
-    //   503: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   506: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   509: putfield 117	com/tencent/mm/plugin/misc/b/a$a:mdQ	Ljava/lang/String;
-    //   512: aload 5
-    //   514: new 95	java/lang/StringBuilder
-    //   517: dup
-    //   518: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   521: aload 7
-    //   523: invokevirtual 209	android/telephony/CellIdentityLte:getMnc	()I
-    //   526: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   529: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   532: putfield 120	com/tencent/mm/plugin/misc/b/a$a:mdR	Ljava/lang/String;
-    //   535: aload 5
-    //   537: new 95	java/lang/StringBuilder
-    //   540: dup
-    //   541: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   544: aload 7
-    //   546: invokevirtual 216	android/telephony/CellIdentityLte:getTac	()I
-    //   549: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   552: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   555: putfield 126	com/tencent/mm/plugin/misc/b/a$a:mdT	Ljava/lang/String;
-    //   558: aload 5
-    //   560: aload 6
-    //   562: invokevirtual 219	android/telephony/CellSignalStrengthLte:getDbm	()I
-    //   565: putfield 134	com/tencent/mm/plugin/misc/b/a$a:mdU	I
+    //   452: checkcast 212	android/telephony/CellInfoLte
+    //   455: invokevirtual 215	android/telephony/CellInfoLte:getCellSignalStrength	()Landroid/telephony/CellSignalStrengthLte;
+    //   458: astore 6
+    //   460: aload 4
+    //   462: checkcast 212	android/telephony/CellInfoLte
+    //   465: invokevirtual 218	android/telephony/CellInfoLte:getCellIdentity	()Landroid/telephony/CellIdentityLte;
+    //   468: astore 7
+    //   470: aload 7
+    //   472: invokevirtual 221	android/telephony/CellIdentityLte:getMnc	()I
+    //   475: istore_1
+    //   476: aload 5
+    //   478: new 107	java/lang/StringBuilder
+    //   481: dup
+    //   482: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   485: aload 7
+    //   487: invokevirtual 224	android/telephony/CellIdentityLte:getCi	()I
+    //   490: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   493: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   496: putfield 123	com/tencent/mm/plugin/misc/b/a$a:oEo	Ljava/lang/String;
+    //   499: aload 5
+    //   501: new 107	java/lang/StringBuilder
+    //   504: dup
+    //   505: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   508: aload 7
+    //   510: invokevirtual 225	android/telephony/CellIdentityLte:getMcc	()I
+    //   513: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   516: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   519: putfield 129	com/tencent/mm/plugin/misc/b/a$a:oEm	Ljava/lang/String;
+    //   522: aload 5
+    //   524: new 107	java/lang/StringBuilder
+    //   527: dup
+    //   528: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   531: aload 7
+    //   533: invokevirtual 221	android/telephony/CellIdentityLte:getMnc	()I
+    //   536: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   539: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   542: putfield 132	com/tencent/mm/plugin/misc/b/a$a:oEn	Ljava/lang/String;
+    //   545: aload 5
+    //   547: new 107	java/lang/StringBuilder
+    //   550: dup
+    //   551: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   554: aload 7
+    //   556: invokevirtual 228	android/telephony/CellIdentityLte:getTac	()I
+    //   559: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   562: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   565: putfield 138	com/tencent/mm/plugin/misc/b/a$a:oEp	Ljava/lang/String;
     //   568: aload 5
-    //   570: aload 4
-    //   572: invokevirtual 137	android/telephony/CellInfo:isRegistered	()Z
-    //   575: putfield 141	com/tencent/mm/plugin/misc/b/a$a:gyD	Z
+    //   570: aload 6
+    //   572: invokevirtual 231	android/telephony/CellSignalStrengthLte:getDbm	()I
+    //   575: putfield 146	com/tencent/mm/plugin/misc/b/a$a:oEq	I
     //   578: aload 5
-    //   580: ldc 221
-    //   582: putfield 146	com/tencent/mm/plugin/misc/b/a$a:type	Ljava/lang/String;
-    //   585: goto -362 -> 223
-    //   588: iload_2
-    //   589: bipush 18
-    //   591: if_icmplt +159 -> 750
-    //   594: aload 4
-    //   596: instanceof 223
-    //   599: ifeq +151 -> 750
-    //   602: aload 4
-    //   604: checkcast 223	android/telephony/CellInfoWcdma
-    //   607: invokevirtual 226	android/telephony/CellInfoWcdma:getCellSignalStrength	()Landroid/telephony/CellSignalStrengthWcdma;
-    //   610: astore 6
+    //   580: aload 4
+    //   582: invokevirtual 149	android/telephony/CellInfo:isRegistered	()Z
+    //   585: putfield 153	com/tencent/mm/plugin/misc/b/a$a:hVn	Z
+    //   588: aload 5
+    //   590: ldc 233
+    //   592: putfield 158	com/tencent/mm/plugin/misc/b/a$a:type	Ljava/lang/String;
+    //   595: goto -367 -> 228
+    //   598: iload_2
+    //   599: bipush 18
+    //   601: if_icmplt +159 -> 760
+    //   604: aload 4
+    //   606: instanceof 235
+    //   609: ifeq +151 -> 760
     //   612: aload 4
-    //   614: checkcast 223	android/telephony/CellInfoWcdma
-    //   617: invokevirtual 229	android/telephony/CellInfoWcdma:getCellIdentity	()Landroid/telephony/CellIdentityWcdma;
-    //   620: astore 7
-    //   622: aload 7
-    //   624: invokevirtual 232	android/telephony/CellIdentityWcdma:getMnc	()I
-    //   627: istore_1
-    //   628: aload 5
-    //   630: new 95	java/lang/StringBuilder
-    //   633: dup
-    //   634: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   637: aload 7
-    //   639: invokevirtual 233	android/telephony/CellIdentityWcdma:getCid	()I
-    //   642: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   645: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   648: putfield 111	com/tencent/mm/plugin/misc/b/a$a:mdS	Ljava/lang/String;
-    //   651: aload 5
-    //   653: new 95	java/lang/StringBuilder
-    //   656: dup
-    //   657: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   660: aload 7
-    //   662: invokevirtual 234	android/telephony/CellIdentityWcdma:getMcc	()I
-    //   665: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   668: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   671: putfield 117	com/tencent/mm/plugin/misc/b/a$a:mdQ	Ljava/lang/String;
-    //   674: aload 5
-    //   676: new 95	java/lang/StringBuilder
-    //   679: dup
-    //   680: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   683: aload 7
-    //   685: invokevirtual 232	android/telephony/CellIdentityWcdma:getMnc	()I
-    //   688: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   691: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   694: putfield 120	com/tencent/mm/plugin/misc/b/a$a:mdR	Ljava/lang/String;
-    //   697: aload 5
-    //   699: new 95	java/lang/StringBuilder
-    //   702: dup
-    //   703: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   706: aload 7
-    //   708: invokevirtual 235	android/telephony/CellIdentityWcdma:getLac	()I
-    //   711: invokevirtual 103	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   714: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   717: putfield 126	com/tencent/mm/plugin/misc/b/a$a:mdT	Ljava/lang/String;
-    //   720: aload 5
-    //   722: aload 6
-    //   724: invokevirtual 238	android/telephony/CellSignalStrengthWcdma:getDbm	()I
-    //   727: putfield 134	com/tencent/mm/plugin/misc/b/a$a:mdU	I
+    //   614: checkcast 235	android/telephony/CellInfoWcdma
+    //   617: invokevirtual 238	android/telephony/CellInfoWcdma:getCellSignalStrength	()Landroid/telephony/CellSignalStrengthWcdma;
+    //   620: astore 6
+    //   622: aload 4
+    //   624: checkcast 235	android/telephony/CellInfoWcdma
+    //   627: invokevirtual 241	android/telephony/CellInfoWcdma:getCellIdentity	()Landroid/telephony/CellIdentityWcdma;
+    //   630: astore 7
+    //   632: aload 7
+    //   634: invokevirtual 244	android/telephony/CellIdentityWcdma:getMnc	()I
+    //   637: istore_1
+    //   638: aload 5
+    //   640: new 107	java/lang/StringBuilder
+    //   643: dup
+    //   644: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   647: aload 7
+    //   649: invokevirtual 245	android/telephony/CellIdentityWcdma:getCid	()I
+    //   652: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   655: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   658: putfield 123	com/tencent/mm/plugin/misc/b/a$a:oEo	Ljava/lang/String;
+    //   661: aload 5
+    //   663: new 107	java/lang/StringBuilder
+    //   666: dup
+    //   667: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   670: aload 7
+    //   672: invokevirtual 246	android/telephony/CellIdentityWcdma:getMcc	()I
+    //   675: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   678: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   681: putfield 129	com/tencent/mm/plugin/misc/b/a$a:oEm	Ljava/lang/String;
+    //   684: aload 5
+    //   686: new 107	java/lang/StringBuilder
+    //   689: dup
+    //   690: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   693: aload 7
+    //   695: invokevirtual 244	android/telephony/CellIdentityWcdma:getMnc	()I
+    //   698: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   701: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   704: putfield 132	com/tencent/mm/plugin/misc/b/a$a:oEn	Ljava/lang/String;
+    //   707: aload 5
+    //   709: new 107	java/lang/StringBuilder
+    //   712: dup
+    //   713: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   716: aload 7
+    //   718: invokevirtual 247	android/telephony/CellIdentityWcdma:getLac	()I
+    //   721: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   724: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   727: putfield 138	com/tencent/mm/plugin/misc/b/a$a:oEp	Ljava/lang/String;
     //   730: aload 5
-    //   732: aload 4
-    //   734: invokevirtual 137	android/telephony/CellInfo:isRegistered	()Z
-    //   737: putfield 141	com/tencent/mm/plugin/misc/b/a$a:gyD	Z
+    //   732: aload 6
+    //   734: invokevirtual 250	android/telephony/CellSignalStrengthWcdma:getDbm	()I
+    //   737: putfield 146	com/tencent/mm/plugin/misc/b/a$a:oEq	I
     //   740: aload 5
-    //   742: ldc 240
-    //   744: putfield 146	com/tencent/mm/plugin/misc/b/a$a:type	Ljava/lang/String;
-    //   747: goto -524 -> 223
-    //   750: ldc 166
-    //   752: new 95	java/lang/StringBuilder
-    //   755: dup
-    //   756: ldc 242
-    //   758: invokespecial 156	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   761: aload 4
-    //   763: invokevirtual 246	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   766: invokevirtual 251	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   769: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   772: ldc 253
-    //   774: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   777: aload 4
-    //   779: invokevirtual 254	android/telephony/CellInfo:toString	()Ljava/lang/String;
-    //   782: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   785: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   788: invokestatic 258	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   791: iconst_0
-    //   792: istore_1
-    //   793: goto -570 -> 223
-    //   796: astore_0
-    //   797: ldc 2
-    //   799: monitorexit
-    //   800: aload_0
-    //   801: athrow
+    //   742: aload 4
+    //   744: invokevirtual 149	android/telephony/CellInfo:isRegistered	()Z
+    //   747: putfield 153	com/tencent/mm/plugin/misc/b/a$a:hVn	Z
+    //   750: aload 5
+    //   752: ldc 252
+    //   754: putfield 158	com/tencent/mm/plugin/misc/b/a$a:type	Ljava/lang/String;
+    //   757: goto -529 -> 228
+    //   760: ldc 178
+    //   762: new 107	java/lang/StringBuilder
+    //   765: dup
+    //   766: ldc 254
+    //   768: invokespecial 168	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   771: aload 4
+    //   773: invokevirtual 258	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   776: invokevirtual 263	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   779: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   782: ldc_w 265
+    //   785: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   788: aload 4
+    //   790: invokevirtual 266	android/telephony/CellInfo:toString	()Ljava/lang/String;
+    //   793: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   796: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   799: invokestatic 269	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   802: iconst_0
+    //   803: istore_1
+    //   804: goto -576 -> 228
+    //   807: astore_0
+    //   808: ldc 2
+    //   810: monitorexit
+    //   811: aload_0
+    //   812: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	802	0	paramContext	android.content.Context
-    //   103	690	1	i	int
-    //   24	568	2	j	int
-    //   10	288	3	localLinkedList	java.util.LinkedList
-    //   59	719	4	localCellInfo	android.telephony.CellInfo
-    //   68	673	5	locala	a.a
-    //   86	637	6	localObject1	Object
-    //   96	611	7	localObject2	Object
+    //   0	813	0	paramContext	android.content.Context
+    //   108	696	1	i	int
+    //   29	573	2	j	int
+    //   15	293	3	localLinkedList	java.util.LinkedList
+    //   64	725	4	localCellInfo	android.telephony.CellInfo
+    //   73	678	5	locala	a.a
+    //   91	642	6	localObject1	Object
+    //   101	616	7	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   25	30	278	java/lang/Exception
-    //   34	41	278	java/lang/Exception
-    //   41	223	278	java/lang/Exception
-    //   223	260	278	java/lang/Exception
-    //   266	275	278	java/lang/Exception
-    //   299	429	278	java/lang/Exception
-    //   432	585	278	java/lang/Exception
-    //   594	747	278	java/lang/Exception
-    //   750	791	278	java/lang/Exception
-    //   3	25	796	finally
-    //   25	30	796	finally
-    //   34	41	796	finally
-    //   41	223	796	finally
-    //   223	260	796	finally
-    //   266	275	796	finally
-    //   279	294	796	finally
-    //   299	429	796	finally
-    //   432	585	796	finally
-    //   594	747	796	finally
-    //   750	791	796	finally
+    //   30	35	283	java/lang/Exception
+    //   39	46	283	java/lang/Exception
+    //   46	228	283	java/lang/Exception
+    //   228	265	283	java/lang/Exception
+    //   271	280	283	java/lang/Exception
+    //   309	439	283	java/lang/Exception
+    //   442	595	283	java/lang/Exception
+    //   604	757	283	java/lang/Exception
+    //   760	802	283	java/lang/Exception
+    //   3	30	807	finally
+    //   30	35	807	finally
+    //   39	46	807	finally
+    //   46	228	807	finally
+    //   228	265	807	finally
+    //   271	280	807	finally
+    //   284	299	807	finally
+    //   299	304	807	finally
+    //   309	439	807	finally
+    //   442	595	807	finally
+    //   604	757	807	finally
+    //   760	802	807	finally
   }
   
-  public static void t(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static void z(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(50510);
     for (;;)
     {
       boolean bool;
       int i;
       int j;
+      long l;
       try
       {
-        if (!aq.isMobile(ae.getContext())) {
+        bool = at.isMobile(ah.getContext());
+        if (!bool)
+        {
+          AppMethodBeat.o(50510);
           return;
         }
-        if (b.checkSelfPermission(ae.getContext(), "android.permission.ACCESS_COARSE_LOCATION") != 0) {
-          break;
+        i = b.checkSelfPermission(ah.getContext(), "android.permission.ACCESS_COARSE_LOCATION");
+        if (i != 0)
+        {
+          AppMethodBeat.o(50510);
+          return;
         }
         if ((paramInt2 != 0) || (paramInt3 != 0)) {
-          break label424;
+          break label548;
         }
         bool = true;
-        Object localObject2 = dK(ae.getContext());
-        if (((List)localObject2).size() == 0) {
-          break;
+        Object localObject2 = ew(ah.getContext());
+        i = ((List)localObject2).size();
+        if (i == 0)
+        {
+          AppMethodBeat.o(50510);
+          return;
         }
         Object localObject1 = (a.a)((List)localObject2).get(0);
         Object localObject3 = ((List)localObject2).iterator();
         if (!((Iterator)localObject3).hasNext()) {
-          break label421;
+          break label545;
         }
         localObject2 = (a.a)((Iterator)localObject3).next();
-        if (!((a.a)localObject2).gyD) {
+        if (!((a.a)localObject2).hVn) {
           continue;
         }
         localObject1 = localObject2;
-        localObject2 = ((a.a)localObject1).mdQ;
-        localObject3 = ((a.a)localObject1).mdR;
-        String str1 = ((a.a)localObject1).mdT;
-        String str2 = ((a.a)localObject1).mdS;
+        localObject2 = ((a.a)localObject1).oEm;
+        localObject3 = ((a.a)localObject1).oEn;
+        String str1 = ((a.a)localObject1).oEp;
+        String str2 = ((a.a)localObject1).oEo;
         String str3 = ((a.a)localObject1).type;
-        int k = ((a.a)localObject1).mdU;
+        int k = ((a.a)localObject1).oEq;
         if (paramInt1 == 1)
         {
           i = 3;
-          y.i("MicroMsg.NetworkOptReport", "reportCellInfo mcc[%s] mnc[%s] lac[%s] cellid[%s] netType[%s] dbm[%d] type[%d] success[%s] errType[%d] errCode[%d] cmdid[%d] reportType[%d]", new Object[] { localObject2, localObject3, str1, str2, str3, Integer.valueOf(k), Integer.valueOf(paramInt1), Boolean.valueOf(bool), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(i) });
-          localObject1 = h.nFQ;
+          ab.i("MicroMsg.NetworkOptReport", "reportCellInfo mcc[%s] mnc[%s] lac[%s] cellid[%s] netType[%s] dbm[%d] type[%d] success[%s] errType[%d] errCode[%d] cmdid[%d] reportType[%d]", new Object[] { localObject2, localObject3, str1, str2, str3, Integer.valueOf(k), Integer.valueOf(paramInt1), Boolean.valueOf(bool), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(i) });
+          localObject1 = h.qsU;
           if (!bool) {
-            break label409;
+            break label489;
           }
           j = 0;
-          h.d(15608, i, h.o(new Object[] { localObject2, localObject3, str1, str2, str3, Integer.valueOf(paramInt1), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(k), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(i) }), false);
+          localObject1 = h.t(new Object[] { localObject2, localObject3, str1, str2, str3, Integer.valueOf(paramInt1), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(k), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(i) });
+          if (!ah.brt()) {
+            break label520;
+          }
+          if (!com.tencent.mm.plugin.report.a.c.qrL) {
+            break label495;
+          }
+          l = i;
+          bool = com.tencent.mm.plugin.report.a.c.qrM;
+          e.a(15608L, l, (String)localObject1, bool, bool, false);
+          AppMethodBeat.o(50510);
           return;
         }
       }
       catch (Exception localException)
       {
-        y.e("MicroMsg.NetworkOptReport", "getNetType : %s", new Object[] { bk.j(localException) });
+        ab.e("MicroMsg.NetworkOptReport", "getNetType : %s", new Object[] { bo.l(localException) });
+        AppMethodBeat.o(50510);
         return;
       }
       if (!bool)
       {
         i = 2;
         continue;
-        label409:
+        label489:
         j = 1;
+        continue;
+        label495:
+        l = i;
+        e.a(15608L, l, localException, false, false, false);
+        AppMethodBeat.o(50510);
+        return;
+        label520:
+        h.a(15608, i, localException, false, false);
+        AppMethodBeat.o(50510);
       }
       else
       {
         i = 1;
         continue;
-        label421:
+        label545:
         continue;
-        label424:
+        label548:
         bool = false;
       }
     }
@@ -484,20 +531,28 @@ public final class a
   
   public final void onAccountInitialized(e.c paramc)
   {
-    g.Dk().a(-1, this);
+    AppMethodBeat.i(50507);
+    g.Rc().a(-1, this);
+    AppMethodBeat.o(50507);
   }
   
   public final void onAccountRelease()
   {
-    g.Dk().b(-1, this);
+    AppMethodBeat.i(50508);
+    g.Rc().b(-1, this);
+    AppMethodBeat.o(50508);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if ((paramString != null) && (paramString.startsWith("autoauth_errmsg_"))) {
+    AppMethodBeat.i(50509);
+    if ((paramString != null) && (paramString.startsWith("autoauth_errmsg_")))
+    {
+      AppMethodBeat.o(50509);
       return;
     }
     this.mHandler.post(new a.1(this, paramm, paramInt1, paramInt2));
+    AppMethodBeat.o(50509);
   }
 }
 

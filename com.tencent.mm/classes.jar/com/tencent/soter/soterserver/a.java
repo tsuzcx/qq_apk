@@ -8,29 +8,29 @@ import android.os.Parcel;
 public abstract interface a
   extends IInterface
 {
-  public abstract SoterSessionResult E(int paramInt, String paramString1, String paramString2);
+  public abstract SoterSessionResult M(int paramInt, String paramString1, String paramString2);
   
-  public abstract int Jn(int paramInt);
+  public abstract int Sj(int paramInt);
   
-  public abstract SoterExportResult Jo(int paramInt);
+  public abstract SoterExportResult Sk(int paramInt);
   
-  public abstract boolean Jp(int paramInt);
+  public abstract boolean Sl(int paramInt);
   
-  public abstract int Jq(int paramInt);
+  public abstract int Sm(int paramInt);
   
-  public abstract int bl(int paramInt, String paramString);
+  public abstract int bR(int paramInt, String paramString);
   
-  public abstract int bm(int paramInt, String paramString);
+  public abstract int bS(int paramInt, String paramString);
   
-  public abstract SoterExportResult bn(int paramInt, String paramString);
+  public abstract SoterExportResult bT(int paramInt, String paramString);
   
-  public abstract boolean bo(int paramInt, String paramString);
+  public abstract boolean bU(int paramInt, String paramString);
   
-  public abstract SoterDeviceResult cPv();
+  public abstract SoterDeviceResult dVr();
   
   public abstract int getVersion();
   
-  public abstract SoterSignResult io(long paramLong);
+  public abstract SoterSignResult pa(long paramLong);
   
   public static abstract class a
     extends Binder
@@ -62,13 +62,13 @@ public abstract interface a
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramInt1 = Jn(paramParcel1.readInt());
+        paramInt1 = Sj(paramParcel1.readInt());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 2: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramParcel1 = Jo(paramParcel1.readInt());
+        paramParcel1 = Sk(paramParcel1.readInt());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -80,7 +80,7 @@ public abstract interface a
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        bool = Jp(paramParcel1.readInt());
+        bool = Sl(paramParcel1.readInt());
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -90,19 +90,19 @@ public abstract interface a
         return true;
       case 4: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramInt1 = bl(paramParcel1.readInt(), paramParcel1.readString());
+        paramInt1 = bR(paramParcel1.readInt(), paramParcel1.readString());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 5: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramInt1 = bm(paramParcel1.readInt(), paramParcel1.readString());
+        paramInt1 = bS(paramParcel1.readInt(), paramParcel1.readString());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 6: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramParcel1 = bn(paramParcel1.readInt(), paramParcel1.readString());
+        paramParcel1 = bT(paramParcel1.readInt(), paramParcel1.readString());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -114,13 +114,13 @@ public abstract interface a
         return true;
       case 7: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramInt1 = Jq(paramParcel1.readInt());
+        paramInt1 = Sm(paramParcel1.readInt());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        bool = bo(paramParcel1.readInt(), paramParcel1.readString());
+        bool = bU(paramParcel1.readInt(), paramParcel1.readString());
         paramParcel2.writeNoException();
         paramInt1 = j;
         if (bool) {
@@ -130,7 +130,7 @@ public abstract interface a
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramParcel1 = E(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readString());
+        paramParcel1 = M(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readString());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -142,7 +142,7 @@ public abstract interface a
         return true;
       case 10: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramParcel1 = io(paramParcel1.readLong());
+        paramParcel1 = pa(paramParcel1.readLong());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -154,7 +154,7 @@ public abstract interface a
         return true;
       case 11: 
         paramParcel1.enforceInterface("com.tencent.soter.soterserver.ISoterService");
-        paramParcel1 = cPv();
+        paramParcel1 = dVr();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {

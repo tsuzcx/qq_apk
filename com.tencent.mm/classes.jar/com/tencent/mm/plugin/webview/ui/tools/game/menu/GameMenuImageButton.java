@@ -9,67 +9,71 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 
 public class GameMenuImageButton
   extends LinearLayout
 {
-  private ImageView bNu;
-  public boolean rwH;
+  private ImageView cuM;
+  public boolean vnA;
   
   public GameMenuImageButton(Context paramContext)
   {
     super(paramContext);
-    ca(paramContext);
+    AppMethodBeat.i(8806);
+    aA(paramContext);
+    AppMethodBeat.o(8806);
   }
   
   public GameMenuImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ca(paramContext);
+    AppMethodBeat.i(8807);
+    aA(paramContext);
+    AppMethodBeat.o(8807);
   }
   
   public GameMenuImageButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    ca(paramContext);
+    AppMethodBeat.i(8808);
+    aA(paramContext);
+    AppMethodBeat.o(8808);
   }
   
-  private void ca(Context paramContext)
+  private void aA(Context paramContext)
   {
-    this.bNu = new ImageView(paramContext);
-    this.bNu.setLayoutParams(new ViewGroup.LayoutParams(a.ab(paramContext, R.f.game_menu_button_size), a.ab(paramContext, R.f.game_menu_button_size)));
-    this.bNu.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.bNu.setImageResource(R.g.game_menu_btn_icon);
+    AppMethodBeat.i(8809);
+    this.cuM = new ImageView(paramContext);
+    this.cuM.setLayoutParams(new ViewGroup.LayoutParams(a.ap(paramContext, 2131428443), a.ap(paramContext, 2131428443)));
+    this.cuM.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.cuM.setImageResource(2130838994);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, a.ab(paramContext, R.f.game_menu_button_margin), a.ab(paramContext, R.f.game_menu_button_margin), 0);
-    addView(this.bNu, localLayoutParams);
+    localLayoutParams.setMargins(0, a.ap(paramContext, 2131428442), a.ap(paramContext, 2131428442), 0);
+    addView(this.cuM, localLayoutParams);
+    AppMethodBeat.o(8809);
   }
   
-  public final void a(FrameLayout paramFrameLayout, a parama)
+  public final void a(FrameLayout paramFrameLayout, GameMenuImageButton.a parama)
   {
+    AppMethodBeat.i(8810);
     if ((getParent() == null) && (paramFrameLayout != null))
     {
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 53;
       paramFrameLayout.addView(this, localLayoutParams);
     }
-    if (this.bNu != null) {
-      this.bNu.setOnClickListener(new GameMenuImageButton.1(this, parama));
+    if (this.cuM != null) {
+      this.cuM.setOnClickListener(new GameMenuImageButton.1(this, parama));
     }
-    this.rwH = true;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void aYF();
+    this.vnA = true;
+    AppMethodBeat.o(8810);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.game.menu.GameMenuImageButton
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice.service;
 
 final class y$l
 {
-  long jyG = 0L;
+  long lIf = 0L;
 }
 
 

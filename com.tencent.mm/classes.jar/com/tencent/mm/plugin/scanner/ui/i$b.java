@@ -1,41 +1,42 @@
 package com.tencent.mm.plugin.scanner.ui;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.scanner.util.e.a;
+import com.tencent.mm.plugin.scanner.util.f.a;
 
 public abstract interface i$b
 {
-  public abstract void V(int paramInt1, int paramInt2, int paramInt3);
-  
   public abstract void a(i.a parama);
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3, e.a parama);
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, f.a parama, Bundle paramBundle);
+  
+  public abstract void ag(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract void b(int paramInt, View.OnClickListener paramOnClickListener);
   
-  public abstract void bxD();
+  public abstract void ciE();
   
-  public abstract boolean bxE();
+  public abstract boolean ciF();
   
-  public abstract void bxF();
+  public abstract void ciG();
   
-  public abstract void bxG();
+  public abstract void ciH();
   
-  public abstract void bxH();
+  public abstract void ciI();
   
-  public abstract void bxy();
-  
-  public abstract void fC(long paramLong);
-  
-  public abstract void fD(long paramLong);
+  public abstract void ciy();
   
   public abstract View findViewById(int paramInt);
   
   public abstract Activity getContext();
   
-  public abstract void ix(boolean paramBoolean);
+  public abstract void kA(boolean paramBoolean);
+  
+  public abstract void lf(long paramLong);
+  
+  public abstract void lg(long paramLong);
 }
 
 

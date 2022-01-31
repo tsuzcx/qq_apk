@@ -3,8 +3,9 @@ package com.tencent.mm.ui.chatting.gallery;
 import android.graphics.Bitmap;
 import android.view.View;
 import com.davemorrissey.labs.subscaleview.view.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.WxImageView;
 
 final class f$6$1
@@ -15,48 +16,52 @@ final class f$6$1
   public final void run()
   {
     boolean bool2 = true;
-    f.6 local6 = this.vvz;
+    AppMethodBeat.i(32140);
+    f.6 local6 = this.zLB;
     WxImageView localWxImageView = (WxImageView)this.val$view;
-    String str = this.vvz.gAy;
-    Object localObject = this.vvy;
-    int i = this.vvz.gHv;
-    if ((f.b(local6.vvu) != null) && (localWxImageView != null) && (!bk.bl(str)))
+    String str = this.zLB.hXK;
+    Object localObject = this.zLA;
+    int i = this.zLB.zLz;
+    if ((f.b(local6.zLv) != null) && (localWxImageView != null) && (!bo.isNullOrNil(str)))
     {
-      int j = f.k(local6.vvu);
+      int j = f.k(local6.zLv);
       boolean bool1;
-      if (f.l(local6.vvu) == null)
+      if (f.l(local6.zLv) == null)
       {
         bool1 = true;
-        if ((f.l(local6.vvu) == null) || (!f.l(local6.vvu).isRecycled())) {
-          break label219;
+        if ((f.l(local6.zLv) == null) || (!f.l(local6.zLv).isRecycled())) {
+          break label235;
         }
       }
       for (;;)
       {
-        y.i("MicroMsg.ImageGalleryLazyLoader", "alvinluo loadWxImageView position: %d, mLastPosition: %d, previewBitmap == null: %b, recycle: %b", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-        if ((i != f.k(local6.vvu)) || (f.l(local6.vvu) == null) || (f.l(local6.vvu).isRecycled())) {
-          break label256;
+        ab.i("MicroMsg.ImageGalleryLazyLoader", "alvinluo loadWxImageView position: %d, mLastPosition: %d, previewBitmap == null: %b, recycle: %b", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        if ((i != f.k(local6.zLv)) || (f.l(local6.zLv) == null) || (f.l(local6.zLv).isRecycled())) {
+          break label278;
         }
-        localObject = f.l(local6.vvu);
+        localObject = f.l(local6.zLv);
         if (localObject != null) {
-          break label225;
+          break label241;
         }
-        throw new NullPointerException("Bitmap must not be null");
+        localObject = new NullPointerException("Bitmap must not be null");
+        AppMethodBeat.o(32140);
+        throw ((Throwable)localObject);
         bool1 = false;
         break;
-        label219:
+        label235:
         bool2 = false;
       }
-      label225:
+      label241:
       localObject = new a((Bitmap)localObject);
     }
     for (;;)
     {
-      f.b(local6.vvu).a(localWxImageView, str, (a)localObject);
+      f.b(local6.zLv).a(localWxImageView, str, (a)localObject);
+      AppMethodBeat.o(32140);
       return;
-      label256:
-      if (!bk.bl((String)localObject)) {
-        localObject = a.U((String)localObject);
+      label278:
+      if (!bo.isNullOrNil((String)localObject)) {
+        localObject = a.Y((String)localObject);
       } else {
         localObject = null;
       }
@@ -65,7 +70,7 @@ final class f$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.f.6.1
  * JD-Core Version:    0.7.0.1
  */

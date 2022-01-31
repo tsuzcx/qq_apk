@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.fts.ui;
 
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.c;
 import com.tencent.mm.plugin.sns.b.f;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class j$1
-  extends ah
+  extends ak
 {
   j$1(j paramj, Looper paramLooper)
   {
@@ -17,21 +18,26 @@ final class j$1
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(61850);
     switch (paramMessage.what)
     {
     }
-    do
+    for (;;)
     {
+      AppMethodBeat.o(61850);
       return;
-    } while ((j.f(this.kBG)) || (this.kBG.getCount() <= 0));
-    ((com.tencent.mm.plugin.fts.a.n)g.t(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().aVm();
-    com.tencent.mm.plugin.sns.b.n.omC.start();
-    this.kBG.notifyDataSetChanged();
+      if ((!j.i(this.mXB)) && (this.mXB.getCount() > 0))
+      {
+        ((com.tencent.mm.plugin.fts.a.n)g.G(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().bBL();
+        com.tencent.mm.plugin.sns.b.n.raQ.start();
+        this.mXB.notifyDataSetChanged();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.j.1
  * JD-Core Version:    0.7.0.1
  */

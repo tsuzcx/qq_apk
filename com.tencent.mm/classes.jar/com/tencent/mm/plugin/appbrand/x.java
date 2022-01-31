@@ -1,59 +1,70 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.ipcinvoker.wx_extension.a.a;
-import com.tencent.mm.ipcinvoker.wx_extension.a.a.b;
-import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.c;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
+import java.util.HashSet;
+import java.util.Set;
 
-public final class x
+public class x
 {
-  private static volatile Boolean fAx = null;
+  private static volatile boolean gRS;
+  private static volatile boolean gRT;
+  private static final Set<x.a> gRU;
   
-  public static boolean aaF()
+  static
   {
-    boolean bool1;
-    boolean bool2;
-    if (fAx == null)
+    AppMethodBeat.i(129141);
+    gRS = false;
+    gRT = false;
+    gRU = new HashSet();
+    AppMethodBeat.o(129141);
+  }
+  
+  public static void a(x.a parama)
+  {
+    AppMethodBeat.i(129138);
+    try
     {
-      Object localObject = a.b.dHs;
-      localObject = a.fJ("100400");
-      if ((localObject == null) || (!((c)localObject).isValid())) {
-        break label141;
+      boolean bool1 = gRS;
+      boolean bool2 = gRT;
+      if (!bool2)
+      {
+        gRU.add(parama);
+        gRS = true;
+        gRT = false;
       }
-      if (bk.getInt((String)((c)localObject).ctr().get("openIsolateContext"), 0) <= 0) {
-        break label131;
+      if (bool1) {
+        return;
       }
-      bool1 = true;
-      int i = bk.getInt((String)((c)localObject).ctr().get("isolateContextLibVersion"), 2147483647);
-      if ((!bool1) || (i > WxaCommLibRuntimeReader.abQ().fEN)) {
-        break label136;
+      if (bool2)
+      {
+        parama.atZ();
+        AppMethodBeat.o(129138);
+        return;
       }
-      bool2 = true;
-      label86:
-      fAx = Boolean.valueOf(bool2);
-      y.i("MicroMsg.AppBrand.MultiContextABTests", "openLibraryIsolateContext exp(%b, %d), result %b", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i), fAx });
     }
-    for (;;)
+    finally
     {
-      return fAx.booleanValue();
-      label131:
-      bool1 = false;
-      break;
-      label136:
-      bool2 = false;
-      break label86;
-      label141:
-      fAx = Boolean.valueOf(false);
+      AppMethodBeat.o(129138);
     }
+    parama = new x.1();
+    new al().ac(new x.2(parama));
+    AppMethodBeat.o(129138);
+  }
+  
+  public static boolean aul()
+  {
+    try
+    {
+      boolean bool = gRT;
+      return bool;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.x
  * JD-Core Version:    0.7.0.1
  */

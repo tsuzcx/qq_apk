@@ -1,19 +1,21 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
-import com.tencent.mm.plugin.wallet_core.c.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.c.v;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
-import com.tencent.mm.plugin.wallet_core.ui.o.c;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.plugin.wallet_core.ui.q.c;
 
 final class WalletLoanRepaymentUI$1
-  implements o.c
+  implements q.c
 {
   WalletLoanRepaymentUI$1(WalletLoanRepaymentUI paramWalletLoanRepaymentUI) {}
   
   public final void a(String paramString, FavorPayInfo paramFavorPayInfo, boolean paramBoolean)
   {
-    WalletLoanRepaymentUI.a(this.qmQ, paramString);
-    this.qmQ.a(new s(WalletLoanRepaymentUI.a(this.qmQ), WalletLoanRepaymentUI.b(this.qmQ), (byte)0), true, true);
+    AppMethodBeat.i(45991);
+    WalletLoanRepaymentUI.a(this.tWh, paramString);
+    this.tWh.doSceneProgress(new v(WalletLoanRepaymentUI.a(this.tWh), WalletLoanRepaymentUI.b(this.tWh), (byte)0));
+    AppMethodBeat.o(45991);
   }
 }
 

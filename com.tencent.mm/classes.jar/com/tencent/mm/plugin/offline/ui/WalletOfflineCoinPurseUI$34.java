@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.offline.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.h.a.gm;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gr;
 
 final class WalletOfflineCoinPurseUI$34
   implements MenuItem.OnMenuItemClickListener
@@ -12,13 +13,15 @@ final class WalletOfflineCoinPurseUI$34
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = new gm();
-    paramMenuItem.bOm.bOn = "ok";
-    com.tencent.mm.sdk.b.a.udP.m(paramMenuItem);
-    if (WalletOfflineCoinPurseUI.c(this.mNj) == 8) {
-      com.tencent.mm.plugin.offline.c.a.KA(this.mNj.getIntent().getStringExtra("key_appid"));
+    AppMethodBeat.i(43544);
+    paramMenuItem = new gr();
+    paramMenuItem.cvE.cvF = "ok";
+    com.tencent.mm.sdk.b.a.ymk.l(paramMenuItem);
+    if (WalletOfflineCoinPurseUI.c(this.pny) == 8) {
+      com.tencent.mm.plugin.offline.c.a.WC(this.pny.getIntent().getStringExtra("key_appid"));
     }
-    this.mNj.finish();
+    this.pny.finish();
+    AppMethodBeat.o(43544);
     return false;
   }
 }

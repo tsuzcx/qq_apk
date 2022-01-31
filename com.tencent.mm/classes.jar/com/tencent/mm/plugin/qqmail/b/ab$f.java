@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.qqmail.b;
 
 public abstract interface ab$f
 {
-  public abstract void Z(String paramString, int paramInt1, int paramInt2);
+  public abstract void aq(String paramString, int paramInt1, int paramInt2);
 }
 
 

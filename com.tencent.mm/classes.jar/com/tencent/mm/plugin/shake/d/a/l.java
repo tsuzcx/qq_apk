@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.shake.d.a;
 
 import android.app.Activity;
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.shake.b.d;
 import com.tencent.mm.plugin.shake.b.l.a;
 import com.tencent.mm.plugin.shake.b.l.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,51 +16,61 @@ public final class l
 {
   private static boolean isInited = false;
   private static boolean isRunning = false;
-  private boolean bFk = false;
   private Context context;
-  private long hkx;
-  private a oaW = new a();
+  private long iWt;
+  private boolean isActive;
+  private a qPf;
   
   public l(Context paramContext, l.a parama)
   {
     super(parama);
+    AppMethodBeat.i(24657);
+    this.isActive = false;
+    this.qPf = new a();
     this.context = paramContext;
     isRunning = false;
+    AppMethodBeat.o(24657);
   }
   
-  private void b(List<d> paramList, long paramLong)
+  private void c(List<d> paramList, long paramLong)
   {
-    if (this.nYU != null) {
-      this.nYU.a(paramList, paramLong);
+    AppMethodBeat.i(24661);
+    if (this.qNe != null) {
+      this.qNe.b(paramList, paramLong);
     }
+    AppMethodBeat.o(24661);
   }
   
-  public final void bzH()
+  public final void ckR()
   {
-    super.bzH();
-    this.oaW.uh();
+    AppMethodBeat.i(24660);
+    super.ckR();
+    this.qPf.Et();
     if (isRunning)
     {
-      long l = System.currentTimeMillis() - this.hkx;
-      y.d("Micromsg.ShakeTVService", "a%s, isRunning=%s", new Object[] { Long.valueOf(l), Boolean.valueOf(isRunning) });
-      h.nFQ.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(2), Integer.valueOf((int)l) });
-      h.nFQ.h(835L, 1L, 1L);
+      long l = System.currentTimeMillis() - this.iWt;
+      ab.d("Micromsg.ShakeTVService", "a%s, isRunning=%s", new Object[] { Long.valueOf(l), Boolean.valueOf(isRunning) });
+      h.qsU.e(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(2), Integer.valueOf((int)l) });
+      h.qsU.j(835L, 1L, 1L);
       isRunning = false;
     }
+    AppMethodBeat.o(24660);
   }
   
   public final void init()
   {
+    AppMethodBeat.i(24659);
     if (!isInited)
     {
-      if (!this.oaW.bAu()) {
-        y.e("Micromsg.ShakeTVService", "init MusicFingerPrintRecorder false");
+      if (!this.qPf.clO())
+      {
+        ab.e("Micromsg.ShakeTVService", "init MusicFingerPrintRecorder false");
+        AppMethodBeat.o(24659);
+        return;
       }
+      isInited = true;
     }
-    else {
-      return;
-    }
-    isInited = true;
+    AppMethodBeat.o(24659);
   }
   
   public final void pause() {}
@@ -70,22 +81,26 @@ public final class l
   
   public final void start()
   {
-    y.v("Micromsg.ShakeTVService", "hy: start shake tv!");
-    if (this.nYU == null)
+    AppMethodBeat.i(24658);
+    ab.v("Micromsg.ShakeTVService", "hy: start shake tv!");
+    if (this.qNe == null)
     {
-      y.w("Micromsg.ShakeTVService", "shakeGetListener == null");
+      ab.w("Micromsg.ShakeTVService", "shakeGetListener == null");
+      AppMethodBeat.o(24658);
       return;
     }
     if (!(this.context instanceof Activity))
     {
-      y.e("Micromsg.ShakeTVService", "context not an Activity");
-      this.nYU.a(new ArrayList(), 0L);
+      ab.e("Micromsg.ShakeTVService", "context not an Activity");
+      this.qNe.b(new ArrayList(), 0L);
+      AppMethodBeat.o(24658);
       return;
     }
     isRunning = true;
-    this.hkx = System.currentTimeMillis();
-    this.oaW.a(408, new l.1(this));
-    h.nFQ.h(835L, 5L, 1L);
+    this.iWt = System.currentTimeMillis();
+    this.qPf.a(408, new l.1(this));
+    h.qsU.j(835L, 5L, 1L);
+    AppMethodBeat.o(24658);
   }
 }
 

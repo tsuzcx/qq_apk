@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.modelbiz;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.utils.Log;
 import java.util.Iterator;
@@ -18,17 +19,23 @@ public class AddCardToWXCardPackage
     
     public boolean checkArgs()
     {
-      if ((this.cardArrary == null) || (this.cardArrary.size() == 0) || (this.cardArrary.size() > 40)) {
+      AppMethodBeat.i(128174);
+      if ((this.cardArrary == null) || (this.cardArrary.size() == 0) || (this.cardArrary.size() > 40))
+      {
+        AppMethodBeat.o(128174);
         return false;
       }
       Iterator localIterator = this.cardArrary.iterator();
       while (localIterator.hasNext())
       {
         AddCardToWXCardPackage.WXCardItem localWXCardItem = (AddCardToWXCardPackage.WXCardItem)localIterator.next();
-        if ((localWXCardItem == null) || (localWXCardItem.cardId == null) || (localWXCardItem.cardId.length() > 1024) || ((localWXCardItem.cardExtMsg != null) && (localWXCardItem.cardExtMsg.length() > 1024))) {
+        if ((localWXCardItem == null) || (localWXCardItem.cardId == null) || (localWXCardItem.cardId.length() > 1024) || ((localWXCardItem.cardExtMsg != null) && (localWXCardItem.cardExtMsg.length() > 1024)))
+        {
+          AppMethodBeat.o(128174);
           return false;
         }
       }
+      AppMethodBeat.o(128174);
       return true;
     }
     
@@ -39,6 +46,7 @@ public class AddCardToWXCardPackage
     
     public void toBundle(Bundle paramBundle)
     {
+      AppMethodBeat.i(128175);
       super.toBundle(paramBundle);
       JSONStringer localJSONStringer = new JSONStringer();
       try
@@ -73,6 +81,7 @@ public class AddCardToWXCardPackage
       }
       for (;;)
       {
+        AppMethodBeat.o(128175);
         return;
         String str = localException.cardExtMsg;
         break;

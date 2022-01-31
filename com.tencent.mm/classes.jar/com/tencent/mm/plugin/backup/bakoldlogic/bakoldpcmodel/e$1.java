@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.bakoldlogic.d.b.a;
 import com.tencent.mm.plugin.backup.i.s;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$1
   extends b.a
@@ -11,26 +12,29 @@ final class e$1
   
   public final void run()
   {
+    AppMethodBeat.i(17838);
     s locals = new s();
-    if (this.hPx)
+    if (this.jIZ)
     {
-      locals.hQm = this.dbSize;
-      locals.hQK = (this.hPz - this.dbSize);
-      locals.hQJ = this.hPy;
-      e locale = this.hOl;
+      locals.jJO = this.dbSize;
+      locals.jKm = (this.jJb - this.dbSize);
+      locals.jKl = this.jJa;
+      e locale = this.jHN;
       e.a(6, 0, locals);
       com.tencent.mm.plugin.backup.g.b.a(3, new e.2(locale));
-      y.i("MicroMsg.BakPcProcessMgr", "send restore info cmd");
-      new com.tencent.mm.plugin.backup.bakoldlogic.c.b(2).auT();
+      ab.i("MicroMsg.BakPcProcessMgr", "send restore info cmd");
+      new com.tencent.mm.plugin.backup.bakoldlogic.c.b(2).aUv();
+      AppMethodBeat.o(17838);
       return;
     }
-    if ((this.dbSize > this.hPz) && (this.hPz > 0L))
+    if ((this.dbSize > this.jJb) && (this.jJb > 0L))
     {
-      locals.hQm = this.dbSize;
-      locals.hQK = (this.hPz - this.dbSize);
+      locals.jJO = this.dbSize;
+      locals.jKm = (this.jJb - this.dbSize);
     }
     e.a(6, 14, locals);
-    y.e("MicroMsg.BakPcProcessMgr", "init TempDB error");
+    ab.e("MicroMsg.BakPcProcessMgr", "init TempDB error");
+    AppMethodBeat.o(17838);
   }
 }
 

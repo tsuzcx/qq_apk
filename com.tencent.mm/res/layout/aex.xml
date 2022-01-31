@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/j8" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="93.0dip" android:layout_height="93.0dip" android:layout_marginTop="42.0dip" android:src="@raw/native_oauth_error_icon" android:scaleType="centerInside" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/fc" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/li" android:layout_marginTop="25.0dip" android:layout_marginRight="@dimen/li" android:text="@string/ds2" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff888888" android:id="@id/d1w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/li" android:layout_marginTop="15.0dip" android:layout_marginRight="@dimen/li" />
-</LinearLayout>
+<RadioButton android:background="@drawable/vs" style="@style/gx"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

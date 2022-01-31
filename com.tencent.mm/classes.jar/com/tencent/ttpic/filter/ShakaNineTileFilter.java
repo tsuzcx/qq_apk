@@ -1,6 +1,7 @@
 package com.tencent.ttpic.filter;
 
 import com.tencent.filter.m.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import java.util.Map;
 
@@ -16,10 +17,12 @@ public class ShakaNineTileFilter
   
   private void setParams(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
+    AppMethodBeat.i(82844);
     addParam(new m.f("x_min", paramFloat1));
     addParam(new m.f("x_max", paramFloat2));
     addParam(new m.f("y_min", paramFloat3));
     addParam(new m.f("y_max", paramFloat4));
+    AppMethodBeat.o(82844);
   }
   
   protected float getDefaultParamValue()
@@ -34,12 +37,16 @@ public class ShakaNineTileFilter
   
   public void initParams()
   {
+    AppMethodBeat.i(82843);
     setParams(0.0F, 0.0F, 0.0F, 0.0F);
+    AppMethodBeat.o(82843);
   }
   
   public void setParameterDic(Map<String, Float> paramMap)
   {
+    AppMethodBeat.i(82845);
     setParams(((Float)paramMap.get("xMin")).floatValue(), ((Float)paramMap.get("xMax")).floatValue(), ((Float)paramMap.get("yMin")).floatValue(), ((Float)paramMap.get("yMax")).floatValue());
+    AppMethodBeat.o(82845);
   }
 }
 

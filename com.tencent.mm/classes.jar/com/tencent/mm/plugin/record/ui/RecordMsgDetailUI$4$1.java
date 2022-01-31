@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.record.ui;
 
 import android.app.Dialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RecordMsgDetailUI$4$1
   implements Runnable
@@ -9,7 +10,9 @@ final class RecordMsgDetailUI$4$1
   
   public final void run()
   {
-    this.nuc.kbH.dismiss();
+    AppMethodBeat.i(24239);
+    this.pZL.mwd.dismiss();
+    AppMethodBeat.o(24239);
   }
 }
 

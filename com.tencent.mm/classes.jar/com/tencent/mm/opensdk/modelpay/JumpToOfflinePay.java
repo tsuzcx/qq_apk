@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.modelpay;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 public class JumpToOfflinePay
@@ -12,7 +13,9 @@ public class JumpToOfflinePay
     
     public Resp(Bundle paramBundle)
     {
+      AppMethodBeat.i(128145);
       fromBundle(paramBundle);
+      AppMethodBeat.o(128145);
     }
     
     public boolean checkArgs()
@@ -22,7 +25,9 @@ public class JumpToOfflinePay
     
     public void fromBundle(Bundle paramBundle)
     {
+      AppMethodBeat.i(128147);
       super.fromBundle(paramBundle);
+      AppMethodBeat.o(128147);
     }
     
     public int getType()
@@ -32,7 +37,9 @@ public class JumpToOfflinePay
     
     public void toBundle(Bundle paramBundle)
     {
+      AppMethodBeat.i(128146);
       super.toBundle(paramBundle);
+      AppMethodBeat.o(128146);
     }
   }
 }

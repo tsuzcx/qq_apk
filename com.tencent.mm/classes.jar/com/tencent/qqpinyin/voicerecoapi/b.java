@@ -1,13 +1,17 @@
 package com.tencent.qqpinyin.voicerecoapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class b
   extends Exception
 {
-  private String gio = "";
+  private String hBF;
   private int mErrorCode;
   
   public b(int paramInt)
   {
+    AppMethodBeat.i(35441);
+    this.hBF = "";
     this.mErrorCode = paramInt;
     String str;
     switch (paramInt)
@@ -17,8 +21,9 @@ public final class b
     }
     for (;;)
     {
-      this.gio = str;
-      new StringBuilder("errorCode: ").append(this.mErrorCode).append("\t msg: ").append(this.gio);
+      this.hBF = str;
+      new StringBuilder("errorCode: ").append(this.mErrorCode).append("\t msg: ").append(this.hBF);
+      AppMethodBeat.o(35441);
       return;
       str = "speex engine error";
       continue;
@@ -34,7 +39,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.qqpinyin.voicerecoapi.b
  * JD-Core Version:    0.7.0.1
  */

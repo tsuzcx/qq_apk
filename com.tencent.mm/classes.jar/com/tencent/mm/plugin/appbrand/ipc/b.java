@@ -6,9 +6,9 @@ public abstract interface b
 {
   public abstract void a(AppBrandProxyUIProcessTask.ProcessResult paramProcessResult);
   
-  public abstract MMActivity ahy();
+  public abstract MMActivity aBf();
   
-  public abstract boolean ahz();
+  public abstract boolean aBg();
   
   public abstract void b(AppBrandProxyUIProcessTask.ProcessResult paramProcessResult);
   
@@ -16,7 +16,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class d$2
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class d$2
   
   public final void run()
   {
-    this.gqs.scrollTo(this.gqs.getScrollX(), this.gqt);
+    AppMethodBeat.i(126299);
+    this.hLm.scrollTo(this.hLm.getScrollX(), this.hLn);
+    AppMethodBeat.o(126299);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.d.2
  * JD-Core Version:    0.7.0.1
  */

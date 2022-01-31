@@ -1,19 +1,31 @@
 package com.tencent.mm.plugin.appbrand.widget.input.a;
 
-import com.tencent.luggage.b.e;
+import com.tencent.luggage.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static final b hxs = new a.1();
+  private static final b jpC;
   
-  public static b asB()
+  static
   {
-    b localb2 = (b)e.i(b.class);
-    b localb1 = localb2;
-    if (localb2 == null) {
-      localb1 = hxs;
+    AppMethodBeat.i(123936);
+    jpC = new a.1();
+    AppMethodBeat.o(123936);
+  }
+  
+  public static b aRE()
+  {
+    AppMethodBeat.i(123935);
+    b localb = (b)e.q(b.class);
+    if (localb == null)
+    {
+      localb = jpC;
+      AppMethodBeat.o(123935);
+      return localb;
     }
-    return localb1;
+    AppMethodBeat.o(123935);
+    return localb;
   }
 }
 

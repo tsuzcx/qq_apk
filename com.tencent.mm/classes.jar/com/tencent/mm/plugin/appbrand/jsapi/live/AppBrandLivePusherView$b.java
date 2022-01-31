@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
+import java.util.HashMap;
+
 public abstract interface AppBrandLivePusherView$b
 {
-  public abstract void ajb();
+  public abstract void a(int paramInt, String paramString, HashMap<String, Object> paramHashMap);
 }
 
 

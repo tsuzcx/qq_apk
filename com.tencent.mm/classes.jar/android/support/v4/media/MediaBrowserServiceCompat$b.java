@@ -3,24 +3,24 @@ package android.support.v4.media;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.IBinder.DeathRecipient;
-import android.support.v4.f.j;
+import android.support.v4.e.j;
 import java.util.HashMap;
 import java.util.List;
 
 final class MediaBrowserServiceCompat$b
   implements IBinder.DeathRecipient
 {
-  String Bo;
-  Bundle Bp;
-  MediaBrowserServiceCompat.e Bq;
-  MediaBrowserServiceCompat.a Br;
-  HashMap<String, List<j<IBinder, Bundle>>> Bs = new HashMap();
+  String Ca;
+  Bundle Cb;
+  MediaBrowserServiceCompat.e Cc;
+  MediaBrowserServiceCompat.a Cd;
+  HashMap<String, List<j<IBinder, Bundle>>> Ce = new HashMap();
   
   MediaBrowserServiceCompat$b(MediaBrowserServiceCompat paramMediaBrowserServiceCompat) {}
   
   public final void binderDied()
   {
-    this.Bm.Bi.post(new MediaBrowserServiceCompat.b.1(this));
+    this.BY.BU.post(new MediaBrowserServiceCompat.b.1(this));
   }
 }
 

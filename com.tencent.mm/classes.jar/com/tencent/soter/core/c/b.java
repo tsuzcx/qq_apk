@@ -4,7 +4,7 @@ import android.os.Process;
 
 public abstract interface b
 {
-  public static final String wOQ = "Wechat" + Process.myUid();
+  public static final String Bmo = "Wechat" + Process.myUid();
 }
 
 

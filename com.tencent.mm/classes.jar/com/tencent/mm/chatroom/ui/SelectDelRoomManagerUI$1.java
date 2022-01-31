@@ -3,7 +3,8 @@ package com.tencent.mm.chatroom.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 
 final class SelectDelRoomManagerUI$1
@@ -13,15 +14,18 @@ final class SelectDelRoomManagerUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (SelectDelRoomManagerUI.a(this.drR))
+    AppMethodBeat.i(104397);
+    if (SelectDelRoomManagerUI.a(this.ejz))
     {
-      h.a(this.drR, this.drR.getString(a.i.room_del_this_members_tip), "", new SelectDelRoomManagerUI.1.1(this), new SelectDelRoomManagerUI.1.2(this));
+      h.a(this.ejz, this.ejz.getString(2131302687), "", new SelectDelRoomManagerUI.1.1(this), new SelectDelRoomManagerUI.1.2(this));
+      AppMethodBeat.o(104397);
       return true;
     }
     paramMenuItem = new Intent();
-    paramMenuItem.putExtra("Select_Contact", bk.c(SelectDelRoomManagerUI.b(this.drR), ","));
-    this.drR.setResult(-1, paramMenuItem);
-    this.drR.finish();
+    paramMenuItem.putExtra("Select_Contact", bo.d(SelectDelRoomManagerUI.b(this.ejz), ","));
+    this.ejz.setResult(-1, paramMenuItem);
+    this.ejz.finish();
+    AppMethodBeat.o(104397);
     return true;
   }
 }

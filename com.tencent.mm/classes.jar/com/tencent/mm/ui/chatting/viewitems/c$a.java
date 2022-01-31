@@ -7,64 +7,81 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.ui.chatting.view.AvatarImageView;
 
 public class c$a
 {
-  public ImageView doU;
-  public TextView dsz;
-  public View hoY;
-  public View igg;
-  public View kKz;
-  public CheckBox khV;
-  public TextView nSa;
-  public ProgressBar nhQ;
-  public ViewStub vAY;
-  public View vAZ;
-  public ImageView vBa;
-  public String vBb;
-  public c vBc;
+  public TextView ekh;
+  public View jYu;
+  public View jbK;
+  public CheckBox mCC;
+  public View ngZ;
+  public ProgressBar pNd;
+  public TextView qFY;
+  public ViewStub zRA;
+  public View zRB;
+  public ImageView zRC;
+  public String zRD;
+  public c zRE;
+  public AvatarImageView zRz;
   
-  public static void Y(View paramView, int paramInt)
+  public static void ar(View paramView, int paramInt)
   {
+    AppMethodBeat.i(32789);
     if (paramView != null)
     {
       ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localLayoutParams.width = paramInt;
+      localLayoutParams.width = ((int)(paramInt / a.dqS()));
       paramView.setLayoutParams(localLayoutParams);
       paramView.requestLayout();
     }
+    AppMethodBeat.o(32789);
   }
   
-  public final void dN(View paramView)
+  public final void eV(View paramView)
   {
-    this.kKz = paramView;
-    this.dsz = ((TextView)paramView.findViewById(R.h.chatting_time_tv));
-    this.doU = ((ImageView)paramView.findViewById(R.h.chatting_avatar_iv));
-    this.vAZ = paramView.findViewById(R.h.chatting_histroy_msg_tip);
-    this.igg = paramView.findViewById(R.h.chatting_click_area);
-    this.vBa = ((ImageView)paramView.findViewById(R.h.chatting_state_iv));
-    this.vAY = ((ViewStub)paramView.findViewById(R.h.chatting_send_from_watch_vs));
+    AppMethodBeat.i(32787);
+    this.ngZ = paramView;
+    this.ekh = ((TextView)paramView.findViewById(2131820587));
+    this.zRz = ((AvatarImageView)paramView.findViewById(2131821121));
+    this.zRB = paramView.findViewById(2131820582);
+    this.jYu = paramView.findViewById(2131822580);
+    this.zRC = ((ImageView)paramView.findViewById(2131822695));
+    this.zRA = ((ViewStub)paramView.findViewById(2131822516));
+    AppMethodBeat.o(32787);
   }
   
-  public final void nt(boolean paramBoolean)
+  public final void rc(boolean paramBoolean)
   {
+    AppMethodBeat.i(32788);
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
-      if ((this.khV != null) && (this.khV.getVisibility() != i)) {
-        this.khV.setVisibility(i);
+      if ((this.mCC != null) && (this.mCC.getVisibility() != i)) {
+        this.mCC.setVisibility(i);
       }
-      if ((this.hoY != null) && (this.hoY.getVisibility() != i)) {
-        this.hoY.setVisibility(i);
+      if ((this.jbK != null) && (this.jbK.getVisibility() != i)) {
+        this.jbK.setVisibility(i);
       }
+      AppMethodBeat.o(32788);
       return;
     }
+  }
+  
+  public final void setChattingBG(boolean paramBoolean)
+  {
+    AppMethodBeat.i(32786);
+    if (this.zRz != null) {
+      this.zRz.setChattingBG(paramBoolean);
+    }
+    AppMethodBeat.o(32786);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.c.a
  * JD-Core Version:    0.7.0.1
  */

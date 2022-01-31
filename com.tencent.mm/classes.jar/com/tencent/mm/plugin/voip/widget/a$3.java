@@ -1,21 +1,22 @@
 package com.tencent.mm.plugin.voip.widget;
 
-import android.view.View;
-import com.tencent.mm.plugin.voip.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jo;
+import com.tencent.mm.sdk.b.c;
 
 final class a$3
-  implements Runnable
+  extends c<jo>
 {
-  a$3(a parama) {}
-  
-  public final void run()
+  a$3(a parama)
   {
-    this.qcB.findViewById(a.b.voip_maximize).setVisibility(8);
+    AppMethodBeat.i(5140);
+    this.__eventId = jo.class.getName().hashCode();
+    AppMethodBeat.o(5140);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.widget.a.3
  * JD-Core Version:    0.7.0.1
  */

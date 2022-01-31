@@ -1,17 +1,10 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mm.protocal.protobuf.le;
 
 final class f$a
-{
-  ImageView dpY;
-  TextView eXr;
-  TextView feh;
-  View hgH;
-  TextView igx;
-}
+  extends le
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar

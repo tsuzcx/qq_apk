@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.talkroom.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class TalkRoomUI$11
@@ -12,7 +12,9 @@ final class TalkRoomUI$11
   
   public final void onClick(View paramView)
   {
-    h.a(this.pCk, this.pCk.getString(R.l.talk_room_exit_room_tip), this.pCk.getString(R.l.talk_room_exit_room), new TalkRoomUI.11.1(this), null);
+    AppMethodBeat.i(25916);
+    h.a(this.tdT, this.tdT.getString(2131304237), this.tdT.getString(2131304236), new TalkRoomUI.11.1(this), null);
+    AppMethodBeat.o(25916);
   }
 }
 

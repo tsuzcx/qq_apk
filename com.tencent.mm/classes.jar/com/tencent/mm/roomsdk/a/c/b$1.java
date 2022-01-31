@@ -1,7 +1,8 @@
 package com.tencent.mm.roomsdk.a.c;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.kernel.g;
 
 final class b$1
@@ -11,31 +12,33 @@ final class b$1
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    g.DQ();
-    g.DO().dJT.b(paramm.getType(), this.ubw.eeo);
-    if (this.ubw.tipDialog != null) {
-      this.ubw.tipDialog.dismiss();
+    AppMethodBeat.i(80257);
+    g.RM();
+    g.RK().eHt.b(paramm.getType(), this.yjL.fur);
+    if (this.yjL.tipDialog != null) {
+      this.yjL.tipDialog.dismiss();
     }
-    if (this.ubw.ubv.equals(paramm))
+    if (this.yjL.uAW.equals(paramm))
     {
       if ((paramm instanceof com.tencent.mm.roomsdk.a.a)) {
-        ((com.tencent.mm.roomsdk.a.a)paramm).a(this.ubw.ubu);
+        ((com.tencent.mm.roomsdk.a.a)paramm).a(this.yjL.yjK);
       }
-      if (this.ubw.ubu != null) {
-        this.ubw.ubu.a(paramInt1, paramInt2, paramString, this.ubw.ubu);
+      if (this.yjL.yjK != null) {
+        this.yjL.yjK.a(paramInt1, paramInt2, paramString, this.yjL.yjK);
       }
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label157;
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        if (this.yjL.yjI != null)
+        {
+          this.yjL.yjI.a(paramInt1, paramInt2, paramString, this.yjL.yjI);
+          AppMethodBeat.o(80257);
+        }
       }
-      if (this.ubw.ubs != null) {
-        this.ubw.ubs.a(paramInt1, paramInt2, paramString, this.ubw.ubs);
+      else if (this.yjL.yjJ != null) {
+        this.yjL.yjJ.a(paramInt1, paramInt2, paramString, this.yjL.yjJ);
       }
     }
-    label157:
-    while (this.ubw.ubt == null) {
-      return;
-    }
-    this.ubw.ubt.a(paramInt1, paramInt2, paramString, this.ubw.ubt);
+    AppMethodBeat.o(80257);
   }
 }
 

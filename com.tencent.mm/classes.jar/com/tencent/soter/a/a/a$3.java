@@ -1,5 +1,6 @@
 package com.tencent.soter.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.a.g.f;
 import com.tencent.soter.core.c.d;
 
@@ -10,8 +11,10 @@ final class a$3
   
   public final void run()
   {
+    AppMethodBeat.i(10461);
     d.w("Soter.SoterBiometricCanceller", "hy: waiting for %s ms not callback to system callback. cancel manually", new Object[] { Long.valueOf(350L) });
-    f.cPH().cPJ();
+    f.dVD().dVF();
+    AppMethodBeat.o(10461);
   }
 }
 

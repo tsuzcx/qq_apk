@@ -1,325 +1,377 @@
 package com.tencent.mm.modelvoiceaddr;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac;
-import java.util.Set;
+import java.util.List;
 
 public final class g
   implements f, b
 {
-  private static int bEl = 5000;
-  private static final String eLH;
-  public static int eLT = 1;
-  public static int eLU = 2;
-  public static int eLV = 4;
-  private com.tencent.mm.f.b.c.a bCP = new g.1(this);
-  private com.tencent.mm.f.b.c bCc;
-  private int eLJ = 0;
-  private int eLK = 0;
-  private boolean eLL = false;
-  private com.tencent.mm.f.c.a eLP;
-  private a eLR = null;
-  private boolean eLW = false;
-  private g.b eLX = null;
-  private com.tencent.mm.modelvoiceaddr.a.c eLY;
-  private com.tencent.mm.modelvoiceaddr.a.c.a eLZ = new g.2(this);
-  private int eLu = eLT;
-  private int scene = 0;
+  private static int ckX;
+  public static int gbA;
+  public static int gbB;
+  public static int gbC;
+  private static final String gbo;
+  private com.tencent.mm.audio.b.c ciR;
+  private com.tencent.mm.audio.b.c.a cjD;
+  private boolean gbD;
+  private g.b gbE;
+  private com.tencent.mm.modelvoiceaddr.a.c gbF;
+  private com.tencent.mm.modelvoiceaddr.a.c.a gbG;
+  private int gbb;
+  private int gbq;
+  private int gbr;
+  private boolean gbs;
+  private com.tencent.mm.audio.e.a gbw;
+  private a gby;
+  private int scene;
   
   static
   {
-    eLH = ac.dOP + "voice_temp.silk";
+    AppMethodBeat.i(116721);
+    gbA = 1;
+    gbB = 2;
+    gbC = 4;
+    gbo = ac.eQv + "voice_temp.silk";
+    ckX = 5000;
+    AppMethodBeat.o(116721);
   }
   
-  public g() {}
+  public g()
+  {
+    AppMethodBeat.i(116712);
+    this.gbq = 0;
+    this.gbr = 0;
+    this.gbs = false;
+    this.gbD = false;
+    this.scene = 0;
+    this.gbb = gbA;
+    this.gbE = null;
+    this.gby = null;
+    this.cjD = new g.1(this);
+    this.gbG = new g.2(this);
+    AppMethodBeat.o(116712);
+  }
   
   public g(int paramInt1, int paramInt2, g.b paramb)
   {
-    this.eLu = paramInt1;
-    this.eLX = paramb;
+    AppMethodBeat.i(116713);
+    this.gbq = 0;
+    this.gbr = 0;
+    this.gbs = false;
+    this.gbD = false;
+    this.scene = 0;
+    this.gbb = gbA;
+    this.gbE = null;
+    this.gby = null;
+    this.cjD = new g.1(this);
+    this.gbG = new g.2(this);
+    this.gbb = paramInt1;
+    this.gbE = paramb;
     this.scene = paramInt2;
+    AppMethodBeat.o(116713);
   }
   
   /* Error */
-  private void k(boolean paramBoolean1, boolean paramBoolean2)
+  private void l(boolean paramBoolean1, boolean paramBoolean2)
   {
     // Byte code:
-    //   0: ldc 120
-    //   2: ldc 156
-    //   4: iconst_2
-    //   5: anewarray 4	java/lang/Object
-    //   8: dup
-    //   9: iconst_0
-    //   10: iload_1
-    //   11: invokestatic 161	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   14: aastore
-    //   15: dup
-    //   16: iconst_1
-    //   17: iload_2
-    //   18: invokestatic 161	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   21: aastore
-    //   22: invokestatic 163	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   25: aload_0
-    //   26: monitorenter
-    //   27: aload_0
-    //   28: iconst_1
-    //   29: putfield 82	com/tencent/mm/modelvoiceaddr/g:eLW	Z
+    //   0: ldc 168
+    //   2: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 132
+    //   7: ldc 170
+    //   9: iconst_2
+    //   10: anewarray 4	java/lang/Object
+    //   13: dup
+    //   14: iconst_0
+    //   15: iload_1
+    //   16: invokestatic 175	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   19: aastore
+    //   20: dup
+    //   21: iconst_1
+    //   22: iload_2
+    //   23: invokestatic 175	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   26: aastore
+    //   27: invokestatic 177	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   30: aload_0
+    //   31: monitorenter
     //   32: aload_0
-    //   33: getfield 109	com/tencent/mm/modelvoiceaddr/g:bCc	Lcom/tencent/mm/f/b/c;
-    //   36: ifnull +16 -> 52
-    //   39: aload_0
-    //   40: getfield 109	com/tencent/mm/modelvoiceaddr/g:bCc	Lcom/tencent/mm/f/b/c;
-    //   43: invokevirtual 169	com/tencent/mm/f/b/c:uh	()Z
-    //   46: pop
-    //   47: aload_0
-    //   48: aconst_null
-    //   49: putfield 109	com/tencent/mm/modelvoiceaddr/g:bCc	Lcom/tencent/mm/f/b/c;
+    //   33: iconst_1
+    //   34: putfield 93	com/tencent/mm/modelvoiceaddr/g:gbD	Z
+    //   37: aload_0
+    //   38: getfield 120	com/tencent/mm/modelvoiceaddr/g:ciR	Lcom/tencent/mm/audio/b/c;
+    //   41: ifnull +16 -> 57
+    //   44: aload_0
+    //   45: getfield 120	com/tencent/mm/modelvoiceaddr/g:ciR	Lcom/tencent/mm/audio/b/c;
+    //   48: invokevirtual 183	com/tencent/mm/audio/b/c:Et	()Z
+    //   51: pop
     //   52: aload_0
-    //   53: getfield 113	com/tencent/mm/modelvoiceaddr/g:eLP	Lcom/tencent/mm/f/c/a;
-    //   56: ifnull +17 -> 73
-    //   59: aload_0
-    //   60: getfield 113	com/tencent/mm/modelvoiceaddr/g:eLP	Lcom/tencent/mm/f/c/a;
-    //   63: invokeinterface 174 1 0
-    //   68: aload_0
-    //   69: aconst_null
-    //   70: putfield 113	com/tencent/mm/modelvoiceaddr/g:eLP	Lcom/tencent/mm/f/c/a;
+    //   53: aconst_null
+    //   54: putfield 120	com/tencent/mm/modelvoiceaddr/g:ciR	Lcom/tencent/mm/audio/b/c;
+    //   57: aload_0
+    //   58: getfield 124	com/tencent/mm/modelvoiceaddr/g:gbw	Lcom/tencent/mm/audio/e/a;
+    //   61: ifnull +17 -> 78
+    //   64: aload_0
+    //   65: getfield 124	com/tencent/mm/modelvoiceaddr/g:gbw	Lcom/tencent/mm/audio/e/a;
+    //   68: invokeinterface 188 1 0
     //   73: aload_0
-    //   74: getfield 116	com/tencent/mm/modelvoiceaddr/g:eLY	Lcom/tencent/mm/modelvoiceaddr/a/c;
-    //   77: astore 4
-    //   79: aload 4
-    //   81: ifnull +15 -> 96
-    //   84: aload_0
-    //   85: getfield 116	com/tencent/mm/modelvoiceaddr/g:eLY	Lcom/tencent/mm/modelvoiceaddr/a/c;
-    //   88: invokevirtual 179	com/tencent/mm/modelvoiceaddr/a/c:release	()V
-    //   91: aload_0
-    //   92: aconst_null
-    //   93: putfield 116	com/tencent/mm/modelvoiceaddr/g:eLY	Lcom/tencent/mm/modelvoiceaddr/a/c;
+    //   74: aconst_null
+    //   75: putfield 124	com/tencent/mm/modelvoiceaddr/g:gbw	Lcom/tencent/mm/audio/e/a;
+    //   78: aload_0
+    //   79: getfield 127	com/tencent/mm/modelvoiceaddr/g:gbF	Lcom/tencent/mm/modelvoiceaddr/a/c;
+    //   82: astore 4
+    //   84: aload 4
+    //   86: ifnull +15 -> 101
+    //   89: aload_0
+    //   90: getfield 127	com/tencent/mm/modelvoiceaddr/g:gbF	Lcom/tencent/mm/modelvoiceaddr/a/c;
+    //   93: invokevirtual 193	com/tencent/mm/modelvoiceaddr/a/c:release	()V
     //   96: aload_0
-    //   97: iconst_0
-    //   98: putfield 78	com/tencent/mm/modelvoiceaddr/g:eLK	I
+    //   97: aconst_null
+    //   98: putfield 127	com/tencent/mm/modelvoiceaddr/g:gbF	Lcom/tencent/mm/modelvoiceaddr/a/c;
     //   101: aload_0
-    //   102: getfield 90	com/tencent/mm/modelvoiceaddr/g:eLR	Lcom/tencent/mm/modelvoiceaddr/a;
-    //   105: ifnull +38 -> 143
-    //   108: aload_0
-    //   109: getfield 90	com/tencent/mm/modelvoiceaddr/g:eLR	Lcom/tencent/mm/modelvoiceaddr/a;
-    //   112: instanceof 181
-    //   115: ifeq +28 -> 143
-    //   118: aload_0
-    //   119: getfield 90	com/tencent/mm/modelvoiceaddr/g:eLR	Lcom/tencent/mm/modelvoiceaddr/a;
-    //   122: invokevirtual 186	com/tencent/mm/modelvoiceaddr/a:Tp	()V
-    //   125: getstatic 70	com/tencent/mm/modelvoiceaddr/g:eLH	Ljava/lang/String;
-    //   128: invokestatic 192	com/tencent/mm/a/e:bJ	(Ljava/lang/String;)I
-    //   131: istore_3
-    //   132: aload_0
-    //   133: getfield 90	com/tencent/mm/modelvoiceaddr/g:eLR	Lcom/tencent/mm/modelvoiceaddr/a;
-    //   136: checkcast 181	com/tencent/mm/modelvoiceaddr/c
-    //   139: iload_3
-    //   140: invokevirtual 196	com/tencent/mm/modelvoiceaddr/c:jA	(I)V
-    //   143: iload_1
-    //   144: ifne +10 -> 154
-    //   147: aload_0
-    //   148: getfield 80	com/tencent/mm/modelvoiceaddr/g:eLL	Z
-    //   151: ifne +56 -> 207
-    //   154: aload_0
-    //   155: monitorexit
-    //   156: return
-    //   157: astore 4
-    //   159: ldc 120
-    //   161: aload 4
-    //   163: ldc 198
-    //   165: iconst_0
-    //   166: anewarray 4	java/lang/Object
-    //   169: invokestatic 202	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   172: goto -76 -> 96
-    //   175: astore 4
-    //   177: aload_0
-    //   178: monitorexit
-    //   179: aload 4
-    //   181: athrow
-    //   182: astore 4
-    //   184: ldc 120
-    //   186: aload 4
-    //   188: ldc 204
-    //   190: iconst_0
-    //   191: anewarray 4	java/lang/Object
-    //   194: invokestatic 202	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   197: aload_0
-    //   198: bipush 6
-    //   200: iconst_m1
-    //   201: invokevirtual 208	com/tencent/mm/modelvoiceaddr/g:bA	(II)V
-    //   204: goto -61 -> 143
-    //   207: aload_0
-    //   208: getfield 90	com/tencent/mm/modelvoiceaddr/g:eLR	Lcom/tencent/mm/modelvoiceaddr/a;
-    //   211: ifnull +55 -> 266
-    //   214: aload_0
-    //   215: getfield 90	com/tencent/mm/modelvoiceaddr/g:eLR	Lcom/tencent/mm/modelvoiceaddr/a;
-    //   218: instanceof 181
-    //   221: ifeq +45 -> 266
-    //   224: ldc 120
-    //   226: ldc 210
-    //   228: iconst_1
-    //   229: anewarray 4	java/lang/Object
-    //   232: dup
-    //   233: iconst_0
-    //   234: iload_2
-    //   235: invokestatic 161	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   238: aastore
-    //   239: invokestatic 163	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   242: iload_2
-    //   243: ifeq +13 -> 256
-    //   246: aload_0
-    //   247: getfield 90	com/tencent/mm/modelvoiceaddr/g:eLR	Lcom/tencent/mm/modelvoiceaddr/a;
-    //   250: checkcast 181	com/tencent/mm/modelvoiceaddr/c
-    //   253: invokevirtual 213	com/tencent/mm/modelvoiceaddr/c:Tv	()V
-    //   256: invokestatic 219	com/tencent/mm/kernel/g:Dk	()Lcom/tencent/mm/ah/p;
-    //   259: sipush 235
-    //   262: aload_0
-    //   263: invokevirtual 224	com/tencent/mm/ah/p:b	(ILcom/tencent/mm/ah/f;)V
-    //   266: aload_0
-    //   267: aconst_null
-    //   268: putfield 90	com/tencent/mm/modelvoiceaddr/g:eLR	Lcom/tencent/mm/modelvoiceaddr/a;
-    //   271: aload_0
-    //   272: iconst_0
-    //   273: putfield 80	com/tencent/mm/modelvoiceaddr/g:eLL	Z
-    //   276: aload_0
-    //   277: monitorexit
-    //   278: return
+    //   102: iconst_0
+    //   103: putfield 89	com/tencent/mm/modelvoiceaddr/g:gbr	I
+    //   106: aload_0
+    //   107: getfield 101	com/tencent/mm/modelvoiceaddr/g:gby	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   110: ifnull +38 -> 148
+    //   113: aload_0
+    //   114: getfield 101	com/tencent/mm/modelvoiceaddr/g:gby	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   117: instanceof 195
+    //   120: ifeq +28 -> 148
+    //   123: aload_0
+    //   124: getfield 101	com/tencent/mm/modelvoiceaddr/g:gby	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   127: invokevirtual 200	com/tencent/mm/modelvoiceaddr/a:amB	()V
+    //   130: getstatic 77	com/tencent/mm/modelvoiceaddr/g:gbo	Ljava/lang/String;
+    //   133: invokestatic 206	com/tencent/mm/a/e:cM	(Ljava/lang/String;)I
+    //   136: istore_3
+    //   137: aload_0
+    //   138: getfield 101	com/tencent/mm/modelvoiceaddr/g:gby	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   141: checkcast 195	com/tencent/mm/modelvoiceaddr/c
+    //   144: iload_3
+    //   145: invokevirtual 209	com/tencent/mm/modelvoiceaddr/c:mt	(I)V
+    //   148: iload_1
+    //   149: ifne +10 -> 159
+    //   152: aload_0
+    //   153: getfield 91	com/tencent/mm/modelvoiceaddr/g:gbs	Z
+    //   156: ifne +66 -> 222
+    //   159: aload_0
+    //   160: monitorexit
+    //   161: ldc 168
+    //   163: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   166: return
+    //   167: astore 4
+    //   169: ldc 132
+    //   171: aload 4
+    //   173: ldc 211
+    //   175: iconst_0
+    //   176: anewarray 4	java/lang/Object
+    //   179: invokestatic 215	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   182: goto -81 -> 101
+    //   185: astore 4
+    //   187: aload_0
+    //   188: monitorexit
+    //   189: ldc 168
+    //   191: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   194: aload 4
+    //   196: athrow
+    //   197: astore 4
+    //   199: ldc 132
+    //   201: aload 4
+    //   203: ldc 217
+    //   205: iconst_0
+    //   206: anewarray 4	java/lang/Object
+    //   209: invokestatic 215	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   212: aload_0
+    //   213: bipush 6
+    //   215: iconst_m1
+    //   216: invokevirtual 221	com/tencent/mm/modelvoiceaddr/g:cL	(II)V
+    //   219: goto -71 -> 148
+    //   222: aload_0
+    //   223: getfield 101	com/tencent/mm/modelvoiceaddr/g:gby	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   226: ifnull +55 -> 281
+    //   229: aload_0
+    //   230: getfield 101	com/tencent/mm/modelvoiceaddr/g:gby	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   233: instanceof 195
+    //   236: ifeq +45 -> 281
+    //   239: ldc 132
+    //   241: ldc 223
+    //   243: iconst_1
+    //   244: anewarray 4	java/lang/Object
+    //   247: dup
+    //   248: iconst_0
+    //   249: iload_2
+    //   250: invokestatic 175	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   253: aastore
+    //   254: invokestatic 177	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   257: iload_2
+    //   258: ifeq +13 -> 271
+    //   261: aload_0
+    //   262: getfield 101	com/tencent/mm/modelvoiceaddr/g:gby	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   265: checkcast 195	com/tencent/mm/modelvoiceaddr/c
+    //   268: invokevirtual 226	com/tencent/mm/modelvoiceaddr/c:amH	()V
+    //   271: invokestatic 232	com/tencent/mm/kernel/g:Rc	()Lcom/tencent/mm/ai/p;
+    //   274: sipush 235
+    //   277: aload_0
+    //   278: invokevirtual 237	com/tencent/mm/ai/p:b	(ILcom/tencent/mm/ai/f;)V
+    //   281: aload_0
+    //   282: aconst_null
+    //   283: putfield 101	com/tencent/mm/modelvoiceaddr/g:gby	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   286: aload_0
+    //   287: iconst_0
+    //   288: putfield 91	com/tencent/mm/modelvoiceaddr/g:gbs	Z
+    //   291: aload_0
+    //   292: monitorexit
+    //   293: ldc 168
+    //   295: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   298: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	279	0	this	g
-    //   0	279	1	paramBoolean1	boolean
-    //   0	279	2	paramBoolean2	boolean
-    //   131	9	3	i	int
-    //   77	3	4	localc	com.tencent.mm.modelvoiceaddr.a.c
-    //   157	5	4	localException1	java.lang.Exception
-    //   175	5	4	localObject	Object
-    //   182	5	4	localException2	java.lang.Exception
+    //   0	299	0	this	g
+    //   0	299	1	paramBoolean1	boolean
+    //   0	299	2	paramBoolean2	boolean
+    //   136	9	3	i	int
+    //   82	3	4	localc	com.tencent.mm.modelvoiceaddr.a.c
+    //   167	5	4	localException1	java.lang.Exception
+    //   185	10	4	localObject	Object
+    //   197	5	4	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   84	96	157	java/lang/Exception
-    //   27	52	175	finally
-    //   52	73	175	finally
-    //   73	79	175	finally
-    //   84	96	175	finally
-    //   96	132	175	finally
-    //   132	143	175	finally
-    //   147	154	175	finally
-    //   154	156	175	finally
-    //   159	172	175	finally
-    //   177	179	175	finally
-    //   184	204	175	finally
-    //   207	242	175	finally
-    //   246	256	175	finally
-    //   256	266	175	finally
-    //   266	278	175	finally
-    //   132	143	182	java/lang/Exception
+    //   89	101	167	java/lang/Exception
+    //   32	57	185	finally
+    //   57	78	185	finally
+    //   78	84	185	finally
+    //   89	101	185	finally
+    //   101	137	185	finally
+    //   137	148	185	finally
+    //   152	159	185	finally
+    //   159	161	185	finally
+    //   169	182	185	finally
+    //   187	189	185	finally
+    //   199	219	185	finally
+    //   222	257	185	finally
+    //   261	271	185	finally
+    //   271	281	185	finally
+    //   281	293	185	finally
+    //   137	148	197	java/lang/Exception
   }
   
-  public final void bA(int paramInt1, int paramInt2)
+  public final void cL(int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.SceneVoiceInputAddr", "error localCode = %s,errType = %s,errCode = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(-1) });
-    if (this.eLX != null) {
-      this.eLX.c(paramInt1, paramInt2, -1, -1L);
+    AppMethodBeat.i(116716);
+    ab.i("MicroMsg.SceneVoiceInputAddr", "error localCode = %s,errType = %s,errCode = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(-1) });
+    if (this.gbE != null) {
+      this.gbE.c(paramInt1, paramInt2, -1, -1L);
     }
-    k(false, true);
+    l(false, true);
+    AppMethodBeat.o(116716);
   }
   
   public final void cancel(boolean paramBoolean)
   {
-    y.i("MicroMsg.SceneVoiceInputAddr", "cancel fromUI = %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.eLX = null;
-    k(false, paramBoolean);
+    AppMethodBeat.i(116718);
+    ab.i("MicroMsg.SceneVoiceInputAddr", "cancel fromUI = %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.gbE = null;
+    l(false, paramBoolean);
+    AppMethodBeat.o(116718);
   }
   
   public final int getMaxAmplitudeRate()
   {
-    int i = this.eLJ;
-    this.eLJ = 0;
-    if (i > bEl) {
-      bEl = i;
+    int i = this.gbq;
+    this.gbq = 0;
+    if (i > ckX) {
+      ckX = i;
     }
-    return i * 100 / bEl;
+    return i * 100 / ckX;
   }
   
   public final void init(int paramInt1, int paramInt2, g.b paramb)
   {
-    this.eLu = paramInt1;
-    this.eLX = paramb;
+    this.gbb = paramInt1;
+    this.gbE = paramb;
     this.scene = paramInt2;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    String[] arrayOfString = ((a)paramm).Tq();
-    Set localSet = ((a)paramm).Tt();
+    AppMethodBeat.i(116715);
+    String[] arrayOfString = ((a)paramm).amC();
+    List localList = ((a)paramm).amF();
     long l = System.currentTimeMillis();
     int i;
-    int j;
+    int k;
     if (arrayOfString == null)
     {
       i = -1;
-      int k = paramm.hashCode();
-      if (this.eLR != null) {
-        break label148;
-      }
-      j = -1;
-      label50:
-      y.d("MicroMsg.SceneVoiceInputAddr", "onSceneEnd time %s errType:%s errCode:%s list:%s scene.hashCode():%s,this.hashCode():%s", new Object[] { Long.valueOf(l), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) });
-      if ((this.eLR != null) && (paramm.hashCode() == this.eLR.hashCode())) {
+      k = paramm.hashCode();
+      if (this.gby != null) {
         break label160;
       }
-      y.d("MicroMsg.SceneVoiceInputAddr", "onSceneEnd scene.hashCode() != mVoiceRecogScene.hashCode()");
     }
-    label148:
     label160:
-    do
+    for (int j = -1;; j = this.gby.hashCode())
     {
-      do
-      {
-        return;
-        i = arrayOfString.length;
-        break;
-        j = this.eLR.hashCode();
-        break label50;
-      } while (this.eLX == null);
+      ab.d("MicroMsg.SceneVoiceInputAddr", "onSceneEnd time %s errType:%s errCode:%s list:%s scene.hashCode():%s,this.hashCode():%s", new Object[] { Long.valueOf(l), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) });
+      if ((this.gby != null) && (paramm.hashCode() == this.gby.hashCode())) {
+        break label172;
+      }
+      ab.d("MicroMsg.SceneVoiceInputAddr", "onSceneEnd scene.hashCode() != mVoiceRecogScene.hashCode()");
+      AppMethodBeat.o(116715);
+      return;
+      i = arrayOfString.length;
+      break;
+    }
+    label172:
+    if (this.gbE != null)
+    {
       if ((paramInt2 != 0) || (paramInt1 != 0))
       {
         if ((paramString != null) && (paramString.equalsIgnoreCase("SecurityCheckError"))) {
-          this.eLX.c(13, 132, -1, -1L);
+          this.gbE.c(13, 132, -1, -1L);
         }
         for (;;)
         {
           cancel(false);
+          AppMethodBeat.o(116715);
           return;
           if ((paramString != null) && (paramString.equalsIgnoreCase("ReadFileLengthError"))) {
-            this.eLX.c(13, 133, -1, -1L);
+            this.gbE.c(13, 133, -1, -1L);
           } else {
-            this.eLX.c(11, paramInt1, paramInt2, ((a)paramm).Ts());
+            this.gbE.c(11, paramInt1, paramInt2, ((a)paramm).amE());
           }
         }
       }
-      this.eLX.a(arrayOfString, localSet);
-    } while ((!(paramm instanceof c)) || (this.eLK != 0) || (!((c)paramm).eLp.TE()));
-    this.eLX.TC();
-    cancel(false);
+      this.gbE.b(arrayOfString, localList);
+      if (((paramm instanceof c)) && (this.gbr == 0) && (((c)paramm).gaW.amQ()))
+      {
+        this.gbE.amO();
+        cancel(false);
+      }
+    }
+    AppMethodBeat.o(116715);
   }
   
   public final void start()
   {
-    y.i("MicroMsg.SceneVoiceInputAddr", "start record");
-    e.a(new g.a(this, (byte)0), "SceneVoiceInputAddr_record", 10);
+    AppMethodBeat.i(116714);
+    ab.i("MicroMsg.SceneVoiceInputAddr", "start record");
+    d.f(new g.a(this, (byte)0), "SceneVoiceInputAddr_record");
+    AppMethodBeat.o(116714);
   }
   
   public final void stop(boolean paramBoolean)
   {
-    y.i("MicroMsg.SceneVoiceInputAddr", "stop fromUI = %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((!paramBoolean) && (this.eLX != null)) {
-      this.eLX.Ty();
+    AppMethodBeat.i(116717);
+    ab.i("MicroMsg.SceneVoiceInputAddr", "stop fromUI = %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if ((!paramBoolean) && (this.gbE != null)) {
+      this.gbE.amK();
     }
-    k(true, true);
+    l(true, true);
+    AppMethodBeat.o(116717);
   }
 }
 

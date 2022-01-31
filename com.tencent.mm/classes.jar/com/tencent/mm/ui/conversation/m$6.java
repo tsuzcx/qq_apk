@@ -1,24 +1,33 @@
 package com.tencent.mm.ui.conversation;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mm.plugin.report.service.h;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.account.friend.a.al;
+import com.tencent.mm.plugin.account.friend.a.l;
+import com.tencent.mm.plugin.account.friend.a.l.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class m$6
-  implements DialogInterface.OnClickListener
+  implements MessageQueue.IdleHandler
 {
-  m$6(SharedPreferences paramSharedPreferences, int paramInt1, int paramInt2) {}
+  m$6(m paramm) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final boolean queueIdle()
   {
-    this.vTP.edit().putInt("show_rating_flag", 4).commit();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    AppMethodBeat.i(34600);
+    ab.d("MicroMsg.RefreshHelper", "dkuploadAddrBook idleHandler");
+    if ((aw.RG()) && (l.aqq() == l.a.gxB) && (!l.aqp()))
+    {
+      al localal = new al(l.aqz(), l.aqy());
+      aw.Rc().a(localal, 0);
     }
-    m.cIu();
-    h.nFQ.f(11216, new Object[] { Integer.valueOf(1), Integer.valueOf(this.vTR), Integer.valueOf(this.vTS) });
+    Looper.myQueue().removeIdleHandler(this.AlR.jZm);
+    AppMethodBeat.o(34600);
+    return false;
   }
 }
 

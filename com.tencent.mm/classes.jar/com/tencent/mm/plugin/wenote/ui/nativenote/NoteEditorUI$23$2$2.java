@@ -1,11 +1,16 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
-import com.tencent.mm.h.a.gf;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.a.gi;
+import com.tencent.mm.g.a.gi.b;
+import com.tencent.mm.plugin.fav.a.h.a;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.c;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class NoteEditorUI$23$2$2
   implements Runnable
@@ -14,35 +19,80 @@ final class NoteEditorUI$23$2$2
   
   public final void run()
   {
-    NoteEditorUI localNoteEditorUI = this.rMb.rMa.rLT;
-    Object localObject = c.chX().cie();
-    if (NoteEditorUI.UI((String)localObject))
+    AppMethodBeat.i(27022);
+    NoteEditorUI localNoteEditorUI = this.vCF.vCE.vCx;
+    Object localObject = c.din().div();
+    if (NoteEditorUI.aka((String)localObject))
     {
-      localObject = new gf();
-      ((gf)localObject).bNF.type = 12;
-      ((gf)localObject).bNF.bIr = localNoteEditorUI.enp;
-      a.udP.m((b)localObject);
-      if (NoteEditorUI.c(this.rMb.rMa.rLT) != null) {}
+      localObject = new gi();
+      ((gi)localObject).cuX.type = 12;
+      ((gi)localObject).cuX.cpM = localNoteEditorUI.fDL;
+      a.ymk.l((b)localObject);
+      if (NoteEditorUI.c(this.vCF.vCE.vCx) == null) {
+        AppMethodBeat.o(27022);
+      }
     }
     else
     {
-      if ((localNoteEditorUI.rFK) || (localNoteEditorUI.rFs))
+      if ((localNoteEditorUI.vwt) || (localNoteEditorUI.vwb))
       {
-        y.i("MicroMsg.Note.NoteEditorUI", "syncWNNoteFavItem noteeditorui, do savewnnotefavitem");
-        localNoteEditorUI.f((String)localObject, true, true);
+        ab.i("MicroMsg.Note.NoteEditorUI", "syncWNNoteFavItem noteeditorui, do savewnnotefavitem");
+        localNoteEditorUI.j((String)localObject, true, true);
       }
       for (;;)
       {
-        localNoteEditorUI.rLJ = true;
+        localNoteEditorUI.vCn = true;
         break;
-        if (localNoteEditorUI.rLp)
+        if (localNoteEditorUI.vBT)
         {
-          y.i("MicroMsg.Note.NoteEditorUI", "syncWNNoteFavItem noteeditorui, do updateWNNoteFavitem");
-          localNoteEditorUI.f((String)localObject, false, true);
+          ab.i("MicroMsg.Note.NoteEditorUI", "syncWNNoteFavItem noteeditorui, do updateWNNoteFavitem");
+          localNoteEditorUI.j((String)localObject, false, true);
         }
       }
     }
-    ai.d(new NoteEditorUI.23.2.2.1(this));
+    al.d(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(27021);
+        NoteEditorUI.g(NoteEditorUI.23.2.2.this.vCF.vCE.vCx);
+        Object localObject = new gi();
+        ((gi)localObject).cuX.type = 32;
+        ((gi)localObject).cuX.cpM = NoteEditorUI.h(NoteEditorUI.23.2.2.this.vCF.vCE.vCx);
+        a.ymk.l((b)localObject);
+        boolean bool = ((gi)localObject).cuY.cvo;
+        if (((gi)localObject).cuY.ret != 0) {}
+        for (int i = 1; ((gi)localObject).cuY.path == null; i = 0)
+        {
+          com.tencent.mm.ui.base.h.bO(NoteEditorUI.23.2.2.this.vCF.vCE.vCx.getContext(), NoteEditorUI.23.2.2.this.vCF.vCE.vCx.getString(2131299813));
+          AppMethodBeat.o(27021);
+          return;
+        }
+        if (bool)
+        {
+          com.tencent.mm.ui.base.h.bO(NoteEditorUI.23.2.2.this.vCF.vCE.vCx.getContext(), NoteEditorUI.23.2.2.this.vCF.vCE.vCx.getString(2131296333));
+          AppMethodBeat.o(27021);
+          return;
+        }
+        if (i != 0)
+        {
+          com.tencent.mm.ui.base.h.bO(NoteEditorUI.23.2.2.this.vCF.vCE.vCx.getContext(), NoteEditorUI.23.2.2.this.vCF.vCE.vCx.getString(2131296334));
+          AppMethodBeat.o(27021);
+          return;
+        }
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("Select_Conv_Type", 3);
+        ((Intent)localObject).putExtra("scene_from", 1);
+        ((Intent)localObject).putExtra("mutil_select_is_ret", true);
+        ((Intent)localObject).putExtra("select_fav_local_id", NoteEditorUI.h(NoteEditorUI.23.2.2.this.vCF.vCE.vCx));
+        d.b(NoteEditorUI.23.2.2.this.vCF.vCE.vCx, ".ui.transmit.SelectConversationUI", (Intent)localObject, 4101);
+        com.tencent.mm.plugin.fav.a.h.i(NoteEditorUI.h(NoteEditorUI.23.2.2.this.vCF.vCE.vCx), 1, 0);
+        localObject = NoteEditorUI.i(NoteEditorUI.23.2.2.this.vCF.vCE.vCx);
+        ((h.a)localObject).mtf += 1;
+        AppMethodBeat.o(27021);
+      }
+    });
+    AppMethodBeat.o(27022);
   }
 }
 

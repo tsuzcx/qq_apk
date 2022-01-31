@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$ft
+public final class c$ft
   extends c.g
 {
-  c$ft()
+  public c$ft()
   {
-    super("openWeApp", "openWeApp", 250, false);
+    super("openMapNavigateMenu", "openMapNavigateMenu", 184, true);
   }
 }
 

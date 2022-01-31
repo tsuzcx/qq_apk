@@ -2,8 +2,7 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletDelayTransferSettingUI$1
@@ -13,7 +12,9 @@ final class WalletDelayTransferSettingUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    e.l(this.qoA.mController.uMN, WalletDelayTransferSettingUI.a(this.qoA), false);
+    AppMethodBeat.i(46239);
+    e.m(this.tYN.getContext(), WalletDelayTransferSettingUI.a(this.tYN), false);
+    AppMethodBeat.o(46239);
     return false;
   }
 }

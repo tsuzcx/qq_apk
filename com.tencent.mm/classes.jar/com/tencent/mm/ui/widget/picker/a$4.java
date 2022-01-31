@@ -2,6 +2,7 @@ package com.tencent.mm.ui.widget.picker;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$4
   implements DialogInterface.OnDismissListener
@@ -10,7 +11,9 @@ final class a$4
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    a.b(this.wop);
+    AppMethodBeat.i(112811);
+    a.b(this.AIR);
+    AppMethodBeat.o(112811);
   }
 }
 

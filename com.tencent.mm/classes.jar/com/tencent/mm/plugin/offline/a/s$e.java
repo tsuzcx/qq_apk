@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.offline.a;
 public final class s$e
   extends s.c
 {
-  public String mLG;
-  public String mLH;
-  public String mLI;
-  public String mLJ;
-  public String mLK;
-  public boolean mLL = true;
+  public String plX;
+  public String plY;
+  public String plZ;
+  public String pma;
+  public String pmb;
+  public boolean pmc = true;
   
   public s$e(s params)
   {

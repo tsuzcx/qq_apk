@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.dbbackup;
 
-import com.tencent.mm.ui.widget.a.c;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DBRecoveryUI$6
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  DBRecoveryUI$6(DBRecoveryUI paramDBRecoveryUI, c paramc) {}
+  DBRecoveryUI$6(DBRecoveryUI paramDBRecoveryUI) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.fdh.dismiss();
-    this.iMK.finish();
-    d.aFz();
+    AppMethodBeat.i(18952);
+    this.kTI.finish();
+    d.biS();
+    AppMethodBeat.o(18952);
   }
 }
 

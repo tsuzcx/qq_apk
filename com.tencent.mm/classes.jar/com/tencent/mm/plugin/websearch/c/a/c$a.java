@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.websearch.c.a;
 
 public abstract interface c$a<T>
 {
-  public abstract void bZZ();
+  public abstract void cZV();
 }
 
 

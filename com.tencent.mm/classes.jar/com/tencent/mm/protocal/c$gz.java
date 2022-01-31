@@ -5,7 +5,7 @@ final class c$gz
 {
   c$gz()
   {
-    super("requestWxFaceRegisterInternal", "requestWxFaceRegisterInternal", 272, true);
+    super("privateCommonApi", "privateCommonApi", 330, true);
   }
 }
 

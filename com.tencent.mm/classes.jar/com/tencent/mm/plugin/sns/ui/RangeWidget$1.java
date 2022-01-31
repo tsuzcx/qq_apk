@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RangeWidget$1
   implements View.OnClickListener
@@ -12,12 +13,15 @@ final class RangeWidget$1
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(RangeWidget.a(this.oSX), SnsLabelUI.class);
-    paramView.putExtra("KLabel_range_index", RangeWidget.b(this.oSX));
-    paramView.putExtra("Klabel_name_list", RangeWidget.c(this.oSX));
-    paramView.putExtra("Kother_user_name_list", RangeWidget.d(this.oSX));
-    paramView.putExtra("k_sns_label_ui_style", this.oSX.style);
-    RangeWidget.a(this.oSX).startActivityForResult(paramView, 5);
+    AppMethodBeat.i(38539);
+    paramView = new Intent(RangeWidget.a(this.rKU), SnsLabelUI.class);
+    paramView.putExtra("KLabel_range_index", RangeWidget.b(this.rKU));
+    paramView.putExtra("Klabel_name_list", RangeWidget.c(this.rKU));
+    paramView.putExtra("Kother_user_name_list", RangeWidget.d(this.rKU));
+    paramView.putExtra("Kchat_room_name_list", RangeWidget.e(this.rKU));
+    paramView.putExtra("k_sns_label_ui_style", this.rKU.style);
+    RangeWidget.a(this.rKU).startActivityForResult(paramView, 5);
+    AppMethodBeat.o(38539);
   }
 }
 

@@ -10,14 +10,14 @@ final class b$2
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    this.oMj.ovC = false;
+    this.rDU.rkx = false;
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    this.oMj.ovC = true;
+    this.rDU.rkx = true;
   }
 }
 

@@ -1,20 +1,37 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.luckymoney.b.o;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.a.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.c.g;
 
 final class LuckyMoneyPrepareUI$20
-  implements View.OnClickListener
+  implements g
 {
   LuckyMoneyPrepareUI$20(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final void onClick(View paramView)
+  public final void aQ(int paramInt, String paramString)
   {
-    h.nFQ.f(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(LuckyMoneyPrepareUI.f(this.lXg)), Integer.valueOf(6) });
-    o.a(this.lXg, LuckyMoneyPrepareUI.c(this.lXg), LuckyMoneyPrepareUI.t(this.lXg), true);
-    LuckyMoneyPrepareUI.u(this.lXg).postDelayed(new LuckyMoneyPrepareUI.20.1(this), 100L);
+    AppMethodBeat.i(142073);
+    ab.i("MicroMsg.LuckyMoneyPrepareUI", "onSceneEnd() scene:NetScenePrepareLuckyMoney JumpRemind:onNext()");
+    if ((bo.hl(paramInt, 2)) && (bo.isEqual(paramString, "requestwxhb")))
+    {
+      LuckyMoneyPrepareUI.x(this.owL);
+      AppMethodBeat.o(142073);
+      return;
+    }
+    if (bo.hl(paramInt, 1)) {
+      a.b(this.owL, paramString, 0, true);
+    }
+    AppMethodBeat.o(142073);
+  }
+  
+  public final void onCancel()
+  {
+    AppMethodBeat.i(142074);
+    ab.i("MicroMsg.LuckyMoneyPrepareUI", "onSceneEnd() scene:NetScenePrepareLuckyMoney JumpRemind:onCancel()");
+    AppMethodBeat.o(142074);
   }
 }
 

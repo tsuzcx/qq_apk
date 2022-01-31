@@ -1,57 +1,55 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.cf.h;
-import com.tencent.mm.model.bd.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.c;
+import com.tencent.mm.model.bf.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 
 public abstract class e
 {
-  public static l umQ;
-  protected g umP;
+  public static l yww;
+  protected com.tencent.mm.plugin.messenger.foundation.a.a.h ywv;
   
-  public e(g paramg)
+  public e(com.tencent.mm.plugin.messenger.foundation.a.a.h paramh)
   {
-    this.umP = paramg;
+    this.ywv = paramh;
   }
   
-  protected final String HT(String paramString)
+  protected final String TC(String paramString)
   {
-    return this.umP.HT(paramString);
+    return this.ywv.TC(paramString);
   }
   
-  protected final void a(h paramh, String paramString)
+  protected final void a(com.tencent.mm.cg.h paramh, String paramString)
   {
-    this.umP.a(paramh, paramString);
+    this.ywv.a(paramh, paramString);
   }
   
-  protected final void a(g.b paramb)
+  protected final void a(h.b paramb)
   {
-    this.umP.a(paramb);
+    this.ywv.a(paramb);
   }
   
-  protected final void a(g.c paramc)
+  protected final void a(h.c paramc)
   {
-    this.umP.a(paramc);
+    this.ywv.a(paramc);
   }
   
-  protected boolean a(bi parambi, bd.b paramb)
+  protected boolean a(bi parambi, bf.b paramb)
   {
     return true;
   }
   
-  public abstract String aaD(String paramString);
+  public abstract String aqO(String paramString);
   
-  public final h bhV()
+  public final com.tencent.mm.cg.h bPX()
   {
-    return this.umP.bhV();
+    return this.ywv.bPX();
   }
   
-  protected final void gl(String paramString1, String paramString2)
+  protected final void im(String paramString1, String paramString2)
   {
-    this.umP.b(paramString1, paramString2, null);
+    this.ywv.b(paramString1, paramString2, null);
   }
 }
 

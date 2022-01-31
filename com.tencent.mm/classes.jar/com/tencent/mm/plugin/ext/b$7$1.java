@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.ext;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.a.a.a;
 
 final class b$7$1
@@ -10,7 +11,9 @@ final class b$7$1
   
   public final void run()
   {
+    AppMethodBeat.i(20265);
     this.val$intent.setFlags(32);
+    AppMethodBeat.o(20265);
   }
 }
 

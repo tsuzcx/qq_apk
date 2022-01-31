@@ -1,88 +1,111 @@
 package com.tencent.mm.plugin.brandservice.ui.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.d;
+import com.tencent.mm.plugin.expt.a.a.a;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.bxp;
-import com.tencent.mm.protocal.c.bxq;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.as;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.q;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 public final class a
 {
-  public static int iiR = 180;
-  private static long iiS = 43200000L;
-  private static long iiT = 0L;
+  public static int kiQ = 180;
+  private static long kiR = 43200000L;
+  private static long kiS = 0L;
+  private static boolean kiT = false;
   
-  public static long ayC()
+  public static boolean a(com.tencent.mm.storage.q paramq, com.tencent.mm.af.q paramq1)
   {
-    if (iiS <= 0L) {
-      iiS = 43200000L;
-    }
-    return iiS;
-  }
-  
-  public static void cP(long paramLong)
-  {
-    iiS = paramLong;
-  }
-  
-  public static void cQ(long paramLong)
-  {
-    iiT = paramLong;
-  }
-  
-  public static boolean e(q paramq)
-  {
-    if (paramq == null) {}
-    do
+    AppMethodBeat.i(152661);
+    if (paramq == null)
     {
-      do
+      AppMethodBeat.o(152661);
+      return false;
+    }
+    paramq.ywB = d.GO(paramq.field_talker);
+    if ((paramq1 != null) && ((paramq1.type == 5) || (paramq1.type == 7) || (paramq1.type == 8)))
+    {
+      AppMethodBeat.o(152661);
+      return true;
+    }
+    if (paramq.dvZ())
+    {
+      AppMethodBeat.o(152661);
+      return true;
+    }
+    if ((sM(2)) && (paramq.ywB))
+    {
+      AppMethodBeat.o(152661);
+      return true;
+    }
+    if (sM(1))
+    {
+      paramq = ((j)g.E(j.class)).YA().arw(paramq.field_talker);
+      if ((paramq != null) && (paramq.Oa()))
       {
-        return false;
-        String str = paramq.field_talker;
-        if (!bk.bl(str))
-        {
-          Object localObject = d.ayg();
-          if (localObject != null)
-          {
-            localObject = ((bxp)localObject).tNF;
-            if (!bk.dk((List)localObject))
-            {
-              localObject = ((LinkedList)localObject).iterator();
-              bxq localbxq;
-              do
-              {
-                if (!((Iterator)localObject).hasNext()) {
-                  break;
-                }
-                localbxq = (bxq)((Iterator)localObject).next();
-              } while ((localbxq == null) || (!str.equals(localbxq.sxi)));
-            }
-          }
-        }
-        for (boolean bool = true;; bool = false)
-        {
-          paramq.umV = bool;
-          if ((!oF(2)) || (!paramq.umV)) {
-            break;
-          }
-          return true;
-        }
-      } while (!oF(1));
-      paramq = ((j)g.r(j.class)).Fw().abl(paramq.field_talker);
-    } while ((paramq == null) || (!paramq.Bl()));
-    return true;
+        AppMethodBeat.o(152661);
+        return true;
+      }
+    }
+    AppMethodBeat.o(152661);
+    return false;
   }
   
-  public static boolean oF(int paramInt)
+  public static long aZU()
   {
-    return (iiT & paramInt) != 0L;
+    if (kiR <= 0L) {
+      kiR = 43200000L;
+    }
+    return kiR;
+  }
+  
+  public static void aZV()
+  {
+    AppMethodBeat.i(152662);
+    if (((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lWe, 0) == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      kiT = bool;
+      if (as.eu("brandService", 1).decodeInt("BizTimeLineShowDigest", 0) == 1)
+      {
+        ab.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest force show");
+        kiT = true;
+      }
+      ab.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest: %b", new Object[] { Boolean.valueOf(kiT) });
+      AppMethodBeat.o(152662);
+      return;
+    }
+  }
+  
+  public static boolean aZW()
+  {
+    return kiT;
+  }
+  
+  public static boolean f(com.tencent.mm.storage.q paramq)
+  {
+    AppMethodBeat.i(14446);
+    boolean bool = a(paramq, null);
+    AppMethodBeat.o(14446);
+    return bool;
+  }
+  
+  public static void ic(long paramLong)
+  {
+    kiR = paramLong;
+  }
+  
+  public static void id(long paramLong)
+  {
+    kiS = paramLong;
+  }
+  
+  public static boolean sM(int paramInt)
+  {
+    return (kiS & paramInt) != 0L;
   }
 }
 

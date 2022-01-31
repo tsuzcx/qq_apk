@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/i3"
+<RelativeLayout android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="@dimen/m0" android:minHeight="@dimen/f1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:padding="@dimen/hk" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/hv">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <ImageView android:id="@id/bho" style="@style/ht" />
-                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hf">
-                    <TextView android:id="@id/b3" android:text="{title}" style="@style/i0" />
-                    <TextView android:id="@id/an" android:layout_marginTop="@dimen/hp" android:text="{detail}" style="@style/hx" />
-                </LinearLayout>
-            </LinearLayout>
-            <include layout="@layout/wi" />
-            <include layout="@layout/wh" />
-        </LinearLayout>
-        <include layout="@layout/wg" />
+    <ImageView android:id="@id/ra" android:layout_width="@dimen/ey" android:layout_height="@dimen/ey" android:layout_marginLeft="@dimen/m1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dj" android:layout_toRightOf="@id/ra" android:layout_centerVertical="true">
+        <TextView android:textSize="@dimen/m2" android:id="@id/sh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/ln" />
     </LinearLayout>
-</FrameLayout>
+</RelativeLayout>

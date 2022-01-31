@@ -1,6 +1,6 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NewBizConversationUI$13
   implements Runnable
@@ -9,10 +9,14 @@ final class NewBizConversationUI$13
   
   public final void run()
   {
-    if ((this.vTG.uMr) || (this.vTG.isFinishing())) {
+    AppMethodBeat.i(34548);
+    if ((this.AlC.activityHasDestroyed()) || (this.AlC.isFinishing()))
+    {
+      AppMethodBeat.o(34548);
       return;
     }
-    NewBizConversationUI.a(this.vTG);
+    NewBizConversationUI.a(this.AlC);
+    AppMethodBeat.o(34548);
   }
 }
 

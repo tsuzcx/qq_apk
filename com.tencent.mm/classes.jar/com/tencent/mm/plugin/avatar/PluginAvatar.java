@@ -1,81 +1,101 @@
 package com.tencent.mm.plugin.avatar;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.vfs.FileSystem;
 import com.tencent.mm.vfs.FileSystemManager;
 import com.tencent.mm.vfs.FileSystemManager.a;
 import com.tencent.mm.vfs.MigrationFileSystem;
 import com.tencent.mm.vfs.QuotaFileSystem;
 import com.tencent.mm.vfs.RawFileSystem;
+import com.tencent.mm.vfs.a;
 import java.util.Map;
 
 public class PluginAvatar
-  extends com.tencent.mm.kernel.b.f
-  implements a
+  extends f
+  implements b
 {
   public void configure(g paramg)
   {
-    if (paramg.Ex())
+    AppMethodBeat.i(79058);
+    if (paramg.SD())
     {
       paramg = new a((byte)0);
       Object localObject = new MigrationFileSystem(new RawFileSystem("${data}/MicroMsg/${account}/avatar", (byte)0), new FileSystem[] { new RawFileSystem("${storage}/tencent/MicroMsg/${account}/avatar") });
       ((MigrationFileSystem)localObject).a("avatarMigration", paramg);
       localObject = new QuotaFileSystem((FileSystem)localObject);
       ((QuotaFileSystem)localObject).a("avatarQuota", paramg);
-      FileSystemManager.cVw().cVy().a("avatar", (FileSystem)localObject).gA("${data}/MicroMsg/${account}/avatar", "avatar").oc(false);
+      FileSystemManager.dQE().erS().a("avatar", (FileSystem)localObject).iD("${data}/MicroMsg/${account}/avatar", "avatar").rM(false);
     }
+    AppMethodBeat.o(79058);
   }
   
   public void execute(g paramg)
   {
-    if (paramg.Ex()) {
-      pin(b.atf());
+    AppMethodBeat.i(79059);
+    if (paramg.SD()) {
+      pin(c.aSD());
     }
+    AppMethodBeat.o(79059);
   }
   
-  private static final class a
-    implements com.tencent.mm.vfs.a
+  static final class a
+    implements a
   {
-    private static void co(int paramInt1, int paramInt2)
+    private static void dD(int paramInt1, int paramInt2)
     {
-      com.tencent.mm.plugin.report.f.nEG.a(857L, paramInt1, paramInt2, false);
+      AppMethodBeat.i(79056);
+      e.qrI.idkeyStat(857L, paramInt1, paramInt2, false);
+      AppMethodBeat.o(79056);
     }
     
     public final void b(String paramString, int paramInt, Map<String, Object> paramMap)
     {
-      if (paramInt == 4) {
-        co(1, 1);
-      }
-      do
+      AppMethodBeat.i(79057);
+      if (paramInt == 4)
       {
-        do
-        {
-          return;
-          if (paramInt == 5)
-          {
-            co(2, 1);
-            return;
-          }
-          if (paramInt != 1) {
-            break;
-          }
-        } while (!paramString.equals("avatarQuota"));
-        co(0, 1);
+        dD(1, 1);
+        AppMethodBeat.o(79057);
         return;
-        if (paramInt != 3) {
-          break;
-        }
+      }
+      if (paramInt == 5)
+      {
+        dD(2, 1);
+        AppMethodBeat.o(79057);
+        return;
+      }
+      Integer localInteger;
+      if (paramInt == 1)
+      {
         if (paramString.equals("avatarQuota"))
         {
-          co(6, 1);
+          dD(0, 1);
+          AppMethodBeat.o(79057);
+        }
+      }
+      else if (paramInt == 3)
+      {
+        if (paramString.equals("avatarQuota"))
+        {
+          dD(6, 1);
+          AppMethodBeat.o(79057);
           return;
         }
-      } while (!paramString.equals("avatarMigration"));
-      co(3, 1);
-      paramString = (Integer)paramMap.get("filesCopied");
-      Integer localInteger = (Integer)paramMap.get("filesFailed");
-      paramMap = (Long)paramMap.get("sizeCopied");
-      if (paramString != null) {}
+        if (!paramString.equals("avatarMigration")) {
+          break label276;
+        }
+        dD(3, 1);
+        paramString = (Integer)paramMap.get("filesCopied");
+        localInteger = (Integer)paramMap.get("filesFailed");
+        paramMap = (Long)paramMap.get("sizeCopied");
+        if (paramString == null) {
+          break label282;
+        }
+      }
+      label276:
+      label282:
       for (paramInt = paramString.intValue() + 0;; paramInt = 0)
       {
         int i = paramInt;
@@ -84,26 +104,26 @@ public class PluginAvatar
         }
         if (i > 0)
         {
-          co(7, 1);
-          co(13, i);
+          dD(7, 1);
+          dD(13, i);
         }
-        if (paramMap == null) {
-          break;
+        if (paramMap != null) {
+          dD(15, (int)paramMap.longValue());
         }
-        co(15, (int)paramMap.longValue());
+        AppMethodBeat.o(79057);
         return;
-        if (((paramInt != 2) && (paramInt != 6)) || (!paramString.equals("avatarQuota"))) {
-          break;
+        if (((paramInt == 2) || (paramInt == 6)) && (paramString.equals("avatarQuota")))
+        {
+          paramString = (Integer)paramMap.get("fileCount");
+          paramMap = (Long)paramMap.get("totalSize");
+          if (paramString != null) {
+            dD(9, paramString.intValue());
+          }
+          if (paramMap != null) {
+            dD(11, (int)paramMap.longValue());
+          }
         }
-        paramString = (Integer)paramMap.get("fileCount");
-        paramMap = (Long)paramMap.get("totalSize");
-        if (paramString != null) {
-          co(9, paramString.intValue());
-        }
-        if (paramMap == null) {
-          break;
-        }
-        co(11, (int)paramMap.longValue());
+        AppMethodBeat.o(79057);
         return;
       }
     }
@@ -111,7 +131,7 @@ public class PluginAvatar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.avatar.PluginAvatar
  * JD-Core Version:    0.7.0.1
  */

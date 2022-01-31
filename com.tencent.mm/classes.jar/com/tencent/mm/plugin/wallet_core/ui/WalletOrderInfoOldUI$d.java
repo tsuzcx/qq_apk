@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 final class WalletOrderInfoOldUI$d
 {
-  public String bOT;
-  public String nzq;
-  public String qEw;
-  public String qEx;
-  public String qEy;
-  public String qrd;
-  public long qxP;
+  public String cwk;
+  public String qkt;
+  public String uca;
+  public long ukx;
+  public String urE;
+  public String urF;
+  public String urG;
   
   public WalletOrderInfoOldUI$d(WalletOrderInfoOldUI paramWalletOrderInfoOldUI, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong)
   {
-    this.qrd = paramString1;
-    this.qEw = paramString2;
-    this.qEx = paramString3;
-    this.qEy = paramString4;
-    this.bOT = paramString5;
-    this.nzq = paramString6;
-    this.qxP = paramLong;
+    this.uca = paramString1;
+    this.urE = paramString2;
+    this.urF = paramString3;
+    this.urG = paramString4;
+    this.cwk = paramString5;
+    this.qkt = paramString6;
+    this.ukx = paramLong;
   }
 }
 

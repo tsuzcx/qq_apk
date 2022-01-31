@@ -1,6 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.codec.ape;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.AudioFormat.AudioType;
 import com.tencent.qqmusic.mediaplayer.AudioInformation;
 import com.tencent.qqmusic.mediaplayer.codec.IAudioRecognition;
@@ -14,41 +15,49 @@ public class ApeRecognition
   
   public AudioFormat.AudioType getAudioType(String paramString, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0) && (new String(paramArrayOfByte).startsWith("MAC"))) {
-      paramArrayOfByte = AudioFormat.AudioType.APE;
-    }
-    do
+    AppMethodBeat.i(128547);
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0) && (new String(paramArrayOfByte).startsWith("MAC")))
     {
-      AudioFormat.AudioType localAudioType;
-      do
-      {
-        NativeDecoder localNativeDecoder;
-        do
-        {
-          return paramArrayOfByte;
-          localAudioType = AudioFormat.AudioType.UNSUPPORT;
-          localNativeDecoder = new NativeDecoder();
-          paramArrayOfByte = localAudioType;
-        } while (localNativeDecoder.init(new FileDataSource(paramString)) != 0);
-        paramString = localNativeDecoder.getAudioInformation();
-        paramArrayOfByte = localAudioType;
-      } while (paramString == null);
+      paramString = AudioFormat.AudioType.APE;
+      AppMethodBeat.o(128547);
+      return paramString;
+    }
+    AudioFormat.AudioType localAudioType = AudioFormat.AudioType.UNSUPPORT;
+    NativeDecoder localNativeDecoder = new NativeDecoder();
+    paramArrayOfByte = localAudioType;
+    if (localNativeDecoder.init(new FileDataSource(paramString)) == 0)
+    {
+      paramString = localNativeDecoder.getAudioInformation();
       paramArrayOfByte = localAudioType;
-    } while (paramString.getAudioType() != AudioFormat.AudioType.APE);
-    return AudioFormat.AudioType.APE;
+      if (paramString != null)
+      {
+        paramArrayOfByte = localAudioType;
+        if (paramString.getAudioType() == AudioFormat.AudioType.APE) {
+          paramArrayOfByte = AudioFormat.AudioType.APE;
+        }
+      }
+    }
+    AppMethodBeat.o(128547);
+    return paramArrayOfByte;
   }
   
   public AudioFormat.AudioType guessAudioType(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && ((paramString.toLowerCase().contains(".ape")) || (paramString.toLowerCase().contains(".mac")))) {
-      return AudioFormat.AudioType.APE;
+    AppMethodBeat.i(128548);
+    if ((!TextUtils.isEmpty(paramString)) && ((paramString.toLowerCase().contains(".ape")) || (paramString.toLowerCase().contains(".mac"))))
+    {
+      paramString = AudioFormat.AudioType.APE;
+      AppMethodBeat.o(128548);
+      return paramString;
     }
-    return AudioFormat.AudioType.UNSUPPORT;
+    paramString = AudioFormat.AudioType.UNSUPPORT;
+    AppMethodBeat.o(128548);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.codec.ape.ApeRecognition
  * JD-Core Version:    0.7.0.1
  */

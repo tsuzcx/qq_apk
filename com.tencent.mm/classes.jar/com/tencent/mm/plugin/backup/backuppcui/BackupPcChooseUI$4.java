@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.backup.backuppcui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.backuppcmodel.b;
 import java.util.HashSet;
 
@@ -13,23 +14,25 @@ final class BackupPcChooseUI$4
   public final void onClick(View paramView)
   {
     int i = 0;
-    if (b.auw().auA().hHx)
+    AppMethodBeat.i(17577);
+    if (b.aTX().aUb().jAT)
     {
-      paramView = BackupPcChooseUI.a(this.hLh);
-      if (paramView.hIR.size() != paramView.getCount()) {
-        break label63;
+      paramView = BackupPcChooseUI.a(this.jEK);
+      if (paramView.jCr.size() != paramView.getCount()) {
+        break label75;
       }
-      paramView.hIR.clear();
+      paramView.jCr.clear();
     }
-    for (a.hLc = false;; a.hLc = true)
+    for (a.jEF = false;; a.jEF = true)
     {
       paramView.notifyDataSetChanged();
-      paramView.hLb.a(paramView.hIR);
+      paramView.jEE.a(paramView.jCr);
+      AppMethodBeat.o(17577);
       return;
-      label63:
+      label75:
       while (i < paramView.getCount())
       {
-        paramView.hIR.add(Integer.valueOf(i));
+        paramView.jCr.add(Integer.valueOf(i));
         i += 1;
       }
     }
@@ -37,7 +40,7 @@ final class BackupPcChooseUI$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backuppcui.BackupPcChooseUI.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fav.ui;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.HandlerThread;
@@ -15,13 +16,14 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fav.a.ac;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.aj;
-import com.tencent.mm.plugin.fav.a.ak;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.o;
 import com.tencent.mm.plugin.fav.a.r;
@@ -29,174 +31,180 @@ import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.ui.a.a;
 import com.tencent.mm.plugin.fav.ui.widget.c;
 import com.tencent.mm.plugin.fav.ui.widget.c.a;
-import com.tencent.mm.pluginsdk.wallet.i;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.pluginsdk.wallet.j;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.w;
 
 public abstract class FavBaseUI
   extends MMActivity
   implements AdapterView.OnItemClickListener
 {
-  protected ah dPi = new ah(Looper.getMainLooper());
-  private HandlerThread jWm;
-  protected ah jWn;
-  private boolean kaW = false;
-  protected boolean kaX = false;
-  private boolean kaY = false;
-  private long kaZ = 0L;
-  protected ListView kba;
-  protected TextView kbb;
-  protected View kbc;
-  private View kbd;
-  protected c kbe;
-  protected View kbf;
-  protected l kbg;
-  protected c.a kbh = null;
-  private f kbi = new FavBaseUI.8(this);
-  private f kbj = new FavBaseUI.9(this);
-  private Runnable kbk = new Runnable()
+  protected com.tencent.mm.sdk.platformtools.ak faV = new com.tencent.mm.sdk.platformtools.ak(Looper.getMainLooper());
+  private final Object lockObj = new Object();
+  private HandlerThread mqE;
+  protected com.tencent.mm.sdk.platformtools.ak mqF;
+  protected c mvA;
+  protected View mvB;
+  protected l mvC;
+  protected c.a mvD = null;
+  private f mvE = new FavBaseUI.8(this);
+  private f mvF = new FavBaseUI.9(this);
+  private Runnable mvG = new Runnable()
   {
     public final void run()
     {
-      a locala = FavBaseUI.this.aQX();
-      locala.aRz();
-      locala.aRA();
-      FavBaseUI.this.aRc();
+      AppMethodBeat.i(73935);
+      a locala = FavBaseUI.this.bxl();
+      locala.bxO();
+      locala.bxP();
+      FavBaseUI.this.bxq();
+      AppMethodBeat.o(73935);
     }
   };
-  protected Runnable kbl = new Runnable()
+  protected Runnable mvH = new Runnable()
   {
     public final void run()
     {
-      a locala = FavBaseUI.this.aQX();
+      AppMethodBeat.i(73936);
+      a locala = FavBaseUI.this.bxl();
       if ((!locala.isEmpty()) && (SystemClock.elapsedRealtime() - FavBaseUI.e(FavBaseUI.this) < 400L))
       {
-        com.tencent.mm.sdk.platformtools.y.d("MicroMsg.FavoriteBaseUI", "try refresh, time limit, now %d last %d delay %d", new Object[] { Long.valueOf(SystemClock.elapsedRealtime()), Long.valueOf(FavBaseUI.e(FavBaseUI.this)), Integer.valueOf(400) });
-        FavBaseUI.this.dPi.postDelayed(this, 200L);
-      }
-      do
-      {
+        ab.d("MicroMsg.FavoriteBaseUI", "try refresh, time limit, now %d last %d delay %d", new Object[] { Long.valueOf(SystemClock.elapsedRealtime()), Long.valueOf(FavBaseUI.e(FavBaseUI.this)), Integer.valueOf(400) });
+        FavBaseUI.this.faV.postDelayed(this, 200L);
+        AppMethodBeat.o(73936);
         return;
-        FavBaseUI.f(FavBaseUI.this);
-        FavBaseUI.a(FavBaseUI.this, SystemClock.elapsedRealtime());
-        com.tencent.mm.sdk.platformtools.y.v("MicroMsg.FavoriteBaseUI", "do refresh job");
-        locala.notifyDataSetChanged();
-        FavBaseUI.this.a(locala);
-      } while (!FavBaseUI.this.kaX);
-      com.tencent.mm.sdk.platformtools.y.v("MicroMsg.FavoriteBaseUI", "do scroll to first");
-      FavBaseUI.this.kba.setSelection(0);
-      FavBaseUI.this.kaX = false;
+      }
+      FavBaseUI.f(FavBaseUI.this);
+      FavBaseUI.a(FavBaseUI.this, SystemClock.elapsedRealtime());
+      ab.v("MicroMsg.FavoriteBaseUI", "do refresh job");
+      locala.notifyDataSetChanged();
+      FavBaseUI.this.a(locala);
+      if (FavBaseUI.this.mvt)
+      {
+        ab.v("MicroMsg.FavoriteBaseUI", "do scroll to first");
+        FavBaseUI.this.mvw.setSelection(0);
+        FavBaseUI.this.mvt = false;
+      }
+      AppMethodBeat.o(73936);
     }
   };
-  private Runnable kbm = new FavBaseUI.2(this);
-  private j.a kbn = new FavBaseUI.3(this);
-  private final Object lockObj = new Object();
+  private Runnable mvI = new FavBaseUI.2(this);
+  private k.a mvJ = new FavBaseUI.3(this);
+  private boolean mvs = false;
+  protected boolean mvt = false;
+  private boolean mvu = false;
+  private long mvv = 0L;
+  protected ListView mvw;
+  protected TextView mvx;
+  protected View mvy;
+  private View mvz;
   
-  private void fV(boolean paramBoolean)
+  private void hz(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.kbb == null) {
-        this.kbb = ((TextView)((ViewStub)findViewById(n.e.empty_view_stub)).inflate().findViewById(n.e.empty_fav_view));
+      if (this.mvx == null) {
+        this.mvx = ((TextView)((ViewStub)findViewById(2131824107)).inflate().findViewById(2131823725));
       }
-      this.kbb.setVisibility(0);
+      this.mvx.setVisibility(0);
     }
-    while (this.kbb == null) {
+    while (this.mvx == null) {
       return;
     }
-    this.kbb.setVisibility(8);
+    this.mvx.setVisibility(8);
   }
   
   protected final void a(a parama)
   {
     if (parama == null) {
-      com.tencent.mm.sdk.platformtools.y.w("MicroMsg.FavoriteBaseUI", "handle empty view fail, adapter is null");
+      ab.w("MicroMsg.FavoriteBaseUI", "handle empty view fail, adapter is null");
     }
     do
     {
       return;
       if (parama.isEmpty()) {
-        if (aQZ())
+        if (bxn())
         {
-          fU(true);
-          fV(false);
+          hy(true);
+          hz(false);
         }
       }
-      while ((parama.isEmpty()) || (((ae)g.t(ae.class)).getFavItemInfoStorage().q(parama.aRx(), parama.getType())))
+      while ((parama.isEmpty()) || (((ae)g.G(ae.class)).getFavItemInfoStorage().v(parama.bxM(), parama.getType())))
       {
-        this.kba.removeFooterView(this.kbc);
+        this.mvw.removeFooterView(this.mvy);
         return;
-        fU(false);
-        fV(true);
-        aRa();
+        hy(false);
+        hz(true);
+        bxo();
         continue;
-        fU(false);
-        fV(false);
+        hy(false);
+        hz(false);
       }
-    } while (this.kba.getFooterViewsCount() != 0);
-    this.kba.addFooterView(this.kbc);
+    } while (this.mvw.getFooterViewsCount() != 0);
+    this.mvw.addFooterView(this.mvy);
   }
   
-  public abstract a aQX();
+  public abstract a bxl();
   
-  protected abstract void aQY();
+  protected abstract void bxm();
   
-  protected abstract boolean aQZ();
+  protected abstract boolean bxn();
   
-  protected abstract void aRa();
+  protected abstract void bxo();
   
-  protected abstract View.OnClickListener aRb();
+  protected abstract View.OnClickListener bxp();
   
-  protected void aRc()
+  protected void bxq()
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.FavoriteBaseUI", "on storage change, try refresh job");
-    this.dPi.removeCallbacks(this.kbl);
-    this.dPi.post(this.kbl);
+    ab.i("MicroMsg.FavoriteBaseUI", "on storage change, try refresh job");
+    this.faV.removeCallbacks(this.mvH);
+    this.faV.post(this.mvH);
   }
   
-  protected final void fU(boolean paramBoolean)
+  public int getLayoutId()
+  {
+    return 2130969568;
+  }
+  
+  protected final void hy(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.kbd == null) {
-        this.kbd = ((ViewStub)findViewById(n.e.empty_load_view_stub)).inflate();
+      if (this.mvz == null) {
+        this.mvz = ((ViewStub)findViewById(2131823999)).inflate();
       }
-      this.kbd.setVisibility(0);
+      this.mvz.setVisibility(0);
     }
-    while (this.kbd == null) {
+    while (this.mvz == null) {
       return;
     }
-    this.kbd.setVisibility(8);
-  }
-  
-  protected final int getLayoutId()
-  {
-    return n.f.favorite_base_ui;
+    this.mvz.setVisibility(8);
   }
   
   protected void initHeaderView()
   {
-    this.kbe = new c(this.mController.uMN);
-    this.kbe.setCleanFavSpace(this.kbh);
-    this.kbe.gd(false);
-    this.kbe.kju.setVisibility(8);
-    this.kbe.kjv.setVisibility(8);
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.FavoriteBaseUI", "padding %s, %s", new Object[] { Integer.valueOf(this.kbe.getPaddingTop()), Integer.valueOf(this.kbe.getPaddingBottom()) });
-    this.kba.addHeaderView(this.kbe);
-    this.kbf = View.inflate(this.mController.uMN, n.f.fav_type_header, null);
-    TextView localTextView1 = (TextView)this.kbf.findViewById(n.e.fav_sub_url_tv);
-    final TextView localTextView2 = (TextView)this.kbf.findViewById(n.e.fav_sub_image_tv);
-    TextView localTextView3 = (TextView)this.kbf.findViewById(n.e.fav_sub_voice_tv);
-    TextView localTextView4 = (TextView)this.kbf.findViewById(n.e.fav_sub_music_tv);
-    TextView localTextView5 = (TextView)this.kbf.findViewById(n.e.fav_sub_location_tv);
-    TextView localTextView6 = (TextView)this.kbf.findViewById(n.e.fav_sub_file_tv);
-    final TextView localTextView7 = (TextView)this.kbf.findViewById(n.e.fav_sub_record_tv);
-    TextView localTextView8 = (TextView)this.kbf.findViewById(n.e.fav_sub_note_tv);
-    View.OnClickListener localOnClickListener = aRb();
+    this.mvA = new c(getContext());
+    this.mvA.setCleanFavSpace(this.mvD);
+    this.mvA.hE(false);
+    this.mvA.mEa.setVisibility(8);
+    this.mvA.mEb.setVisibility(8);
+    ab.d("MicroMsg.FavoriteBaseUI", "padding %s, %s", new Object[] { Integer.valueOf(this.mvA.getPaddingTop()), Integer.valueOf(this.mvA.getPaddingBottom()) });
+    this.mvw.addHeaderView(this.mvA);
+    this.mvB = View.inflate(getContext(), 2130969565, null);
+    TextView localTextView1 = (TextView)this.mvB.findViewById(2131824099);
+    final TextView localTextView2 = (TextView)this.mvB.findViewById(2131824098);
+    TextView localTextView3 = (TextView)this.mvB.findViewById(2131824103);
+    TextView localTextView4 = (TextView)this.mvB.findViewById(2131824101);
+    TextView localTextView5 = (TextView)this.mvB.findViewById(2131824105);
+    TextView localTextView6 = (TextView)this.mvB.findViewById(2131824100);
+    final TextView localTextView7 = (TextView)this.mvB.findViewById(2131824102);
+    TextView localTextView8 = (TextView)this.mvB.findViewById(2131824104);
+    View.OnClickListener localOnClickListener = bxp();
     localTextView1.setOnClickListener(localOnClickListener);
     localTextView1.setTag(Integer.valueOf(5));
     localTextView2.setOnClickListener(localOnClickListener);
@@ -213,117 +221,125 @@ public abstract class FavBaseUI
     localTextView7.setTag(Integer.valueOf(17));
     localTextView8.setOnClickListener(localOnClickListener);
     localTextView8.setTag(Integer.valueOf(18));
-    this.kbf.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+    this.mvB.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
-        FavBaseUI.this.kbf.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        int i = FavBaseUI.this.kbf.findViewById(n.e.fav_type_wrapper_layout1).getWidth() / 4;
+        AppMethodBeat.i(73932);
+        FavBaseUI.this.mvB.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        int i = FavBaseUI.this.mvB.findViewById(2131824097).getWidth() / 4;
         if ((i > 0) && (localTextView2.getWidth() < i))
         {
           localTextView2.setWidth(i);
           localTextView7.setWidth(i);
         }
+        AppMethodBeat.o(73932);
       }
     });
-    this.kba.addHeaderView(this.kbf);
+    this.mvw.addHeaderView(this.mvB);
   }
   
-  protected final void initView()
+  public void initView()
   {
     long l = System.currentTimeMillis();
-    this.kba = ((ListView)findViewById(n.e.favorite_lv));
-    this.kba.setDrawingCacheEnabled(false);
-    new FavBaseUI.4(this);
+    this.mvw = ((ListView)findViewById(2131824106));
+    this.mvw.setDrawingCacheEnabled(false);
+    setToTop(new FavBaseUI.4(this));
     initHeaderView();
-    this.kbc = com.tencent.mm.ui.y.gt(this).inflate(n.f.fav_loading_footer, null);
-    this.kba.setOnScrollListener(new FavBaseUI.5(this));
-    this.kba.setOnItemClickListener(this);
-    this.kba.setOnTouchListener(new FavBaseUI.6(this));
-    this.kba.setAdapter(aQX());
-    a(aQX());
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.FavoriteBaseUI", "init view use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    this.mvy = w.hM(this).inflate(2130969551, null);
+    this.mvw.setOnScrollListener(new FavBaseUI.5(this));
+    this.mvw.setOnItemClickListener(this);
+    this.mvw.setOnTouchListener(new FavBaseUI.6(this));
+    this.mvw.setAdapter(bxl());
+    a(bxl());
+    ab.d("MicroMsg.FavoriteBaseUI", "init view use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
   }
   
   public void onCreate(Bundle paramBundle)
   {
     long l = System.currentTimeMillis();
     super.onCreate(paramBundle);
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.FavoriteBaseUI", "onCreate MMCore.accHasReady[%b]", new Object[] { Boolean.valueOf(g.DK()) });
-    paramBundle = new ak();
-    g.Dk().a(paramBundle, 0);
-    ((ae)g.t(ae.class)).getFavItemInfoStorage().c(this.kbn);
-    g.Dk().a(400, this.kbi);
-    g.Dk().a(402, this.kbj);
-    this.jWm = com.tencent.mm.sdk.f.e.aap(getClass().getName() + "_handlerThread_" + System.currentTimeMillis());
-    this.jWm.start();
-    this.jWn = new ah(this.jWm.getLooper());
-    this.kbg = new l(this.mController.uMN, 64);
+    ab.i("MicroMsg.FavoriteBaseUI", "onCreate MMCore.accHasReady[%b]", new Object[] { Boolean.valueOf(g.RG()) });
+    paramBundle = new com.tencent.mm.plugin.fav.a.ak();
+    g.Rc().a(paramBundle, 0);
+    ((ae)g.G(ae.class)).getFavItemInfoStorage().add(this.mvJ);
+    g.Rc().a(400, this.mvE);
+    g.Rc().a(402, this.mvF);
+    this.mqE = d.aqu(getClass().getName() + "_handlerThread_" + System.currentTimeMillis());
+    this.mqE.start();
+    this.mqF = new com.tencent.mm.sdk.platformtools.ak(this.mqE.getLooper());
+    this.mvC = new l(getContext(), 64);
     initView();
-    ta(this.mController.uMN.getResources().getColor(n.b.normal_actionbar_color));
-    if (bk.g((Integer)g.DP().Dz().get(8217, null)) == 0)
+    setActionbarColor(getContext().getResources().getColor(2131690316));
+    if (bo.g((Integer)g.RL().Ru().get(8217, null)) == 0)
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.FavoriteBaseUI", "do init data for first time");
-      this.kaY = true;
+      ab.i("MicroMsg.FavoriteBaseUI", "do init data for first time");
+      this.mvu = true;
       paramBundle = new aj();
-      g.Dk().a(paramBundle, 0);
-      if (this.kaY)
+      g.Rc().a(paramBundle, 0);
+      if (this.mvu)
       {
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.FavoriteBaseUI", "show loading dialog");
-        if ((aQX() == null) || (aQX().isEmpty())) {
-          fU(true);
+        ab.i("MicroMsg.FavoriteBaseUI", "show loading dialog");
+        if ((bxl() == null) || (bxl().isEmpty())) {
+          hy(true);
         }
-        fV(false);
+        hz(false);
       }
     }
     for (;;)
     {
-      ((ae)g.t(ae.class)).getFavCdnService().run();
-      ((ae)g.t(ae.class)).getCheckCdnService().run();
-      ((ae)g.t(ae.class)).getSendService().run();
-      ((ae)g.t(ae.class)).getModService().run();
-      g.DS().O(new FavBaseUI.1(this));
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.FavoriteBaseUI", "on create use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      ((ae)g.G(ae.class)).getFavCdnService().run();
+      ((ae)g.G(ae.class)).getCheckCdnService().run();
+      ((ae)g.G(ae.class)).getSendService().run();
+      ((ae)g.G(ae.class)).getModService().run();
+      g.RO().ac(new FavBaseUI.1(this));
+      ab.d("MicroMsg.FavoriteBaseUI", "on create use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       return;
       b.startSync();
-      if (aQX().isEmpty())
+      if (bxl().isEmpty())
       {
-        fU(true);
-        fV(false);
-        this.kbc.setVisibility(8);
+        hy(true);
+        hz(false);
+        this.mvy.setVisibility(8);
       }
       else
       {
-        fU(false);
-        fV(false);
+        hy(false);
+        hz(false);
       }
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
-    if (((ae)g.t(ae.class)).getFavItemInfoStorage().aQt() == null) {
+    if (((ae)g.G(ae.class)).getFavItemInfoStorage().bwI() == null) {
       return;
     }
-    this.kbg.destory();
-    this.kbg = null;
-    this.jWm.quit();
-    ((ae)g.t(ae.class)).getFavItemInfoStorage().d(this.kbn);
-    g.Dk().b(400, this.kbi);
-    g.Dk().b(402, this.kbj);
+    this.mvC.destory();
+    this.mvC = null;
+    this.mqE.quit();
+    ((ae)g.G(ae.class)).getFavItemInfoStorage().remove(this.mvJ);
+    g.Rc().b(400, this.mvE);
+    g.Rc().b(402, this.mvF);
   }
   
-  protected void onPause()
+  public void onPause()
   {
     super.onPause();
-    aQX();
+    bxl();
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
-    i.Ez(5);
+    j.Mx(5);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

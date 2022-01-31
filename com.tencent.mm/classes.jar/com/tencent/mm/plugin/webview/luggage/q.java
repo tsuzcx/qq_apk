@@ -1,63 +1,80 @@
 package com.tencent.mm.plugin.webview.luggage;
 
 import android.app.Activity;
-import com.tencent.luggage.e.d;
-import com.tencent.luggage.e.f;
-import com.tencent.luggage.e.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.ay;
+import com.tencent.luggage.d.d;
+import com.tencent.luggage.d.f;
+import com.tencent.luggage.d.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bj;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 import java.util.LinkedList;
+import java.util.Set;
 
 public class q
   extends f
 {
+  private com.tencent.mm.plugin.webview.modeltools.a uSO;
+  
   public q(Activity paramActivity)
   {
     super(paramActivity);
-    this.bip = h.class;
-    this.bis.x(ay.aGk());
+    AppMethodBeat.i(6225);
+    this.byN = com.tencent.mm.plugin.webview.luggage.d.a.class;
+    this.byQ.z(bj.bjM());
+    this.uSO = new com.tencent.mm.plugin.webview.modeltools.a();
+    com.tencent.luggage.g.e locale = this.byV.up();
+    paramActivity = new q.1(this, paramActivity);
+    locale.bFA.add(paramActivity);
+    AppMethodBeat.o(6225);
   }
   
-  private void cbr()
+  private void dbv()
   {
-    SwipeBackLayout localSwipeBackLayout;
+    AppMethodBeat.i(6227);
     if ((this.mContext instanceof MMActivity))
     {
-      localSwipeBackLayout = ((MMActivity)this.mContext).getSwipeBackLayout();
+      SwipeBackLayout localSwipeBackLayout = ((MMActivity)this.mContext).getSwipeBackLayout();
       if (localSwipeBackLayout != null)
       {
-        if (this.bix.getPageStack().size() > 1) {
-          break label45;
+        if (this.byV.um().size() <= 1)
+        {
+          localSwipeBackLayout.setEnableGesture(true);
+          AppMethodBeat.o(6227);
+          return;
         }
-        localSwipeBackLayout.setEnableGesture(true);
+        localSwipeBackLayout.setEnableGesture(false);
       }
     }
-    return;
-    label45:
-    localSwipeBackLayout.setEnableGesture(false);
+    AppMethodBeat.o(6227);
   }
   
   public final void onResume()
   {
+    AppMethodBeat.i(6226);
     super.onResume();
-    cbr();
+    dbv();
+    AppMethodBeat.o(6226);
   }
   
-  protected final void qh()
+  public final void uk()
   {
-    ((e)qd()).caQ();
-    cbr();
+    AppMethodBeat.i(6228);
+    ((e)uf()).daR();
+    dbv();
+    AppMethodBeat.o(6228);
   }
   
-  protected final void qi()
+  public final void ul()
   {
-    cbr();
+    AppMethodBeat.i(6229);
+    dbv();
+    AppMethodBeat.o(6229);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.q
  * JD-Core Version:    0.7.0.1
  */

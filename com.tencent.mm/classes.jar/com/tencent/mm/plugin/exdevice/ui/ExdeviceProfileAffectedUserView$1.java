@@ -6,8 +6,9 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class ExdeviceProfileAffectedUserView$1
   implements AdapterView.OnItemClickListener
@@ -16,16 +17,19 @@ final class ExdeviceProfileAffectedUserView$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(20009);
     paramAdapterView = (String)paramAdapterView.getAdapter().getItem(paramInt);
-    y.d("MicroMsg.ExdeviceProfileAffectedUserView", "onItemClick, username : %s", new Object[] { paramAdapterView });
-    if (bk.bl(paramAdapterView))
+    ab.d("MicroMsg.ExdeviceProfileAffectedUserView", "onItemClick, username : %s", new Object[] { paramAdapterView });
+    if (bo.isNullOrNil(paramAdapterView))
     {
-      y.w("MicroMsg.ExdeviceProfileAffectedUserView", "username is null.");
+      ab.w("MicroMsg.ExdeviceProfileAffectedUserView", "username is null.");
+      AppMethodBeat.o(20009);
       return;
     }
     paramView = new Intent(this.val$context, ExdeviceProfileUI.class);
     paramView.putExtra("username", paramAdapterView);
     this.val$context.startActivity(paramView);
+    AppMethodBeat.o(20009);
   }
 }
 

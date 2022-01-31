@@ -2,10 +2,9 @@ package com.tencent.mm.plugin.collect.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.collect.b.m;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.collect.model.m;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class CollectHKMainUI$3
@@ -15,9 +14,11 @@ final class CollectHKMainUI$3
   
   public final void onClick(View paramView)
   {
-    if (!bk.bl(this.iKL.iHD)) {
-      e.l(this.iKN.mController.uMN, this.iKL.iHD, true);
+    AppMethodBeat.i(41245);
+    if (!bo.isNullOrNil(this.kRq.kNH)) {
+      e.m(this.kRs.getContext(), this.kRq.kNH, true);
     }
+    AppMethodBeat.o(41245);
   }
 }
 

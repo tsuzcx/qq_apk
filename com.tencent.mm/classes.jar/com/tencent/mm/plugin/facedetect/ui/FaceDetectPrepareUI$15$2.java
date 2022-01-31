@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.facedetect.ui;
 
 import android.graphics.Bitmap;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FaceDetectPrepareUI$15$2
   implements Runnable
@@ -10,9 +11,11 @@ final class FaceDetectPrepareUI$15$2
   
   public final void run()
   {
-    d locald = a.a(this.jRl.jRg, this.jRm);
-    locald.jSv = this.jRn;
-    this.jRl.jRg.a(false, false, locald);
+    AppMethodBeat.i(419);
+    c localc = a.a(this.mlH.mlC, this.mlI);
+    localc.mmR = this.mlJ;
+    this.mlH.mlC.a(false, false, localc);
+    AppMethodBeat.o(419);
   }
 }
 

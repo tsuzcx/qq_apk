@@ -1,17 +1,29 @@
 package com.tencent.mapsdk.raster.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class CameraPosition$Builder
 {
-  private float bearing = 0.0F;
-  private float skew = 0.0F;
+  private float bearing;
+  private float skew;
   private LatLng target;
-  private float zoom = -1.0F;
+  private float zoom;
   
-  public CameraPosition$Builder() {}
+  public CameraPosition$Builder()
+  {
+    this.zoom = -1.0F;
+    this.skew = 0.0F;
+    this.bearing = 0.0F;
+  }
   
   public CameraPosition$Builder(CameraPosition paramCameraPosition)
   {
+    AppMethodBeat.i(101164);
+    this.zoom = -1.0F;
+    this.skew = 0.0F;
+    this.bearing = 0.0F;
     target(paramCameraPosition.getTarget()).zoom(paramCameraPosition.getZoom());
+    AppMethodBeat.o(101164);
   }
   
   public final Builder bearing(float paramFloat)
@@ -22,7 +34,10 @@ public final class CameraPosition$Builder
   
   public final CameraPosition build()
   {
-    return new CameraPosition(this.target, this.zoom, this.skew, this.bearing);
+    AppMethodBeat.i(101165);
+    CameraPosition localCameraPosition = new CameraPosition(this.target, this.zoom, this.skew, this.bearing);
+    AppMethodBeat.o(101165);
+    return localCameraPosition;
   }
   
   public final Builder skew(float paramFloat)

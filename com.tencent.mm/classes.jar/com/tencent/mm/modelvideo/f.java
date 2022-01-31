@@ -1,320 +1,382 @@
 package com.tencent.mm.modelvideo;
 
-import com.tencent.mm.ak.b;
-import com.tencent.mm.h.b.a.p;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.j.f.b;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bd.b;
-import com.tencent.mm.model.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.b;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.i.g.a;
+import com.tencent.mm.i.g.b;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.bf.b;
+import com.tencent.mm.model.n;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.z;
 import java.util.Map;
 
 public final class f
 {
-  long bIt;
-  public String bJQ;
-  private String bUi;
-  private f.b dmc = new f.2(this);
-  String dme;
-  private com.tencent.mm.j.g eFN;
-  boolean eFY = false;
-  String eFZ;
-  private long eGa;
-  long eGb;
-  long eGc;
-  int eGd;
-  private String eGe;
-  public f.a eGf;
-  private com.tencent.mm.j.f.a epa = new f.1(this);
+  private String cBO;
+  long cpO;
+  public String crk;
+  private g.b edF;
+  String edH;
+  private g.a fFy;
+  private com.tencent.mm.i.h fVE;
+  boolean fVP;
+  String fVQ;
+  private long fVR;
+  long fVS;
+  long fVT;
+  int fVU;
+  private String fVV;
+  public f.a fVW;
   
   public f(long paramLong)
   {
-    this.bIt = paramLong;
-    this.eFY = true;
+    AppMethodBeat.i(50684);
+    this.fVP = false;
+    this.fFy = new f.1(this);
+    this.edF = new f.2(this);
+    this.cpO = paramLong;
+    this.fVP = true;
+    AppMethodBeat.o(50684);
   }
   
-  public f(com.tencent.mm.j.g paramg, String paramString)
+  public f(com.tencent.mm.i.h paramh, String paramString)
   {
-    this.eFN = paramg;
-    this.bJQ = paramString;
-    this.eFY = false;
+    AppMethodBeat.i(50685);
+    this.fVP = false;
+    this.fFy = new f.1(this);
+    this.edF = new f.2(this);
+    this.fVE = paramh;
+    this.crk = paramString;
+    this.fVP = false;
+    AppMethodBeat.o(50685);
   }
   
   static int e(String paramString, int paramInt, boolean paramBoolean)
   {
-    s locals = u.oe(paramString);
+    int i = 0;
+    AppMethodBeat.i(50689);
+    s locals = u.vr(paramString);
+    int j;
     if (locals != null)
     {
-      int i = locals.bRT;
+      j = locals.czu;
       if (paramBoolean)
       {
-        locals.bRT = paramInt;
-        y.i("MicroMsg.NetScenePreloadVideoFake", "update video info[%s] preload[%d %d %d] isFinish[%b] ", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(locals.bRT), Boolean.valueOf(paramBoolean) });
-        locals.eHF = bk.UX();
-        locals.bcw = 1025;
+        locals.czu = paramInt;
+        ab.i("MicroMsg.NetScenePreloadVideoFake", "update video info[%s] preload[%d %d %d] isFinish[%b] ", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(paramInt), Integer.valueOf(locals.czu), Boolean.valueOf(paramBoolean) });
+        locals.fXv = bo.aox();
+        locals.bsY = 1025;
         u.f(locals);
         if (!paramBoolean) {
-          break label121;
+          break label139;
         }
-        paramInt -= i;
-      }
-      label121:
-      for (;;)
-      {
+        paramInt -= j;
+        label114:
         if (paramInt >= 0) {
-          return paramInt;
+          break label149;
         }
-        return 0;
-        locals.bRT = (i + paramInt);
-        break;
+        paramInt = i;
       }
     }
-    return paramInt;
-    return paramInt;
+    label139:
+    label149:
+    for (;;)
+    {
+      AppMethodBeat.o(50689);
+      return paramInt;
+      locals.czu = (j + paramInt);
+      break;
+      break label114;
+      AppMethodBeat.o(50689);
+      return paramInt;
+    }
+  }
+  
+  private static boolean i(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(50691);
+    if (bo.isNullOrNil(paramString1))
+    {
+      AppMethodBeat.o(50691);
+      return false;
+    }
+    o.alE();
+    paramString2 = t.vf(paramString2);
+    if ((bo.isNullOrNil(paramString1)) || (paramInt <= 0) || (bo.isNullOrNil(paramString2)) || (!com.tencent.mm.vfs.e.cN(paramString2)))
+    {
+      ab.w("MicroMsg.NetScenePreloadVideoFake", "insert media duplication but args is error.[%d, %s, %s]", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
+      AppMethodBeat.o(50691);
+      return false;
+    }
+    boolean bool = ((com.tencent.mm.plugin.m.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.m.a.a.class)).YH().y(paramString1, paramInt, paramString2);
+    AppMethodBeat.o(50691);
+    return bool;
   }
   
   public final int a(f.a parama)
   {
-    this.eGf = parama;
+    AppMethodBeat.i(50688);
+    this.fVW = parama;
     Object localObject;
     int i;
-    label180:
+    label185:
+    label212:
     String str1;
     int j;
     for (;;)
     {
       try
       {
-        y.i("MicroMsg.NetScenePreloadVideoFake", "%d preload begin msgId[%d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.bIt) });
-        if (!this.eFY) {
-          break label640;
-        }
-        parama = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().fd(this.bIt);
-        localObject = bd.iM(parama.czr);
-        if ((localObject == null) || (((bd.b)localObject).dWM <= 0))
+        ab.i("MicroMsg.NetScenePreloadVideoFake", "%d preload begin msgId[%d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.cpO) });
+        if (this.fVP)
         {
-          y.w("MicroMsg.NetScenePreloadVideoFake", "%d msgsource is null", new Object[] { Integer.valueOf(hashCode()) });
-          parama = null;
-          if (parama != null)
+          parama = ((j)com.tencent.mm.kernel.g.E(j.class)).bPQ().kB(this.cpO);
+          localObject = bf.pA(parama.dns);
+          if ((localObject == null) || (((bf.b)localObject).fmU <= 0))
           {
-            if (!com.tencent.mm.model.s.fn(parama.dmh)) {
-              break label976;
+            ab.w("MicroMsg.NetScenePreloadVideoFake", "%d msgsource is null", new Object[] { Integer.valueOf(hashCode()) });
+            parama = null;
+            if (parama != null)
+            {
+              if (!com.tencent.mm.model.t.lA(parama.edK)) {
+                break label996;
+              }
+              i = 2;
+              this.fVU = i;
+              com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(354L, 140L, 1L, false);
+              if (this.fVU == 1) {
+                com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(354L, 121L, 1L, false);
+              }
             }
-            i = 2;
-            this.eGd = i;
-            h.nFQ.a(354L, 140L, 1L, false);
-            if (this.eGd == 1) {
-              h.nFQ.a(354L, 121L, 1L, false);
+            else
+            {
+              if (this.fVE != null) {
+                break label983;
+              }
+              this.fVE = parama;
+              if (parama != null) {
+                break;
+              }
+              ab.w("MicroMsg.NetScenePreloadVideoFake", "%d preload task is null", new Object[] { Integer.valueOf(hashCode()) });
+              i = 0;
+              if (i == 0) {
+                continue;
+              }
+              AppMethodBeat.o(50688);
+              return 0;
             }
           }
           else
           {
-            if (this.eFN != null) {
-              break label957;
+            str1 = parama.field_imgPath;
+            s locals = u.vr(str1);
+            if (locals == null)
+            {
+              parama = null;
+              continue;
             }
-            this.eFN = parama;
-            if (parama != null) {
-              break;
+            parama = br.F(locals.alP(), "msg");
+            if (parama == null)
+            {
+              ab.w("MicroMsg.NetScenePreloadVideoFake", "cdntra parse video recv xml failed");
+              parama = null;
+              continue;
             }
-            y.w("MicroMsg.NetScenePreloadVideoFake", "%d preload task is null", new Object[] { Integer.valueOf(hashCode()) });
-            i = 0;
-            break label960;
-          }
-        }
-        else
-        {
-          str1 = parama.field_imgPath;
-          s locals = u.oe(str1);
-          if (locals == null)
-          {
-            parama = null;
+            String str2 = (String)parama.get(".msg.videomsg.$cdnvideourl");
+            if (bo.isNullOrNil(str2))
+            {
+              ab.w("MicroMsg.NetScenePreloadVideoFake", "cdntra parse video recv xml failed");
+              parama = null;
+              continue;
+            }
+            j = Integer.valueOf((String)parama.get(".msg.videomsg.$length")).intValue();
+            String str3 = (String)parama.get(".msg.videomsg.$md5");
+            String str4 = (String)parama.get(".msg.videomsg.$newmd5");
+            String str5 = (String)parama.get(".msg.videomsg.$aeskey");
+            String str6 = (String)parama.get(".msg.videomsg.$fileparam");
+            String str7 = com.tencent.mm.al.c.a("downvideo", locals.createTime, locals.getUser(), locals.getFileName());
+            if (bo.isNullOrNil(str7))
+            {
+              ab.w("MicroMsg.NetScenePreloadVideoFake", "cdntra genClientId failed not use cdn file:%s", new Object[] { locals.getFileName() });
+              parama = null;
+              continue;
+            }
+            o.alE();
+            String str8 = t.vf(str1);
+            parama = new com.tencent.mm.i.h();
+            parama.filename = str1;
+            parama.edH = str3;
+            parama.edI = j;
+            parama.edJ = 2;
+            parama.czp = locals.alM();
+            parama.edK = locals.getUser();
+            if (!com.tencent.mm.model.t.lA(locals.getUser())) {
+              break label986;
+            }
+            i = n.nv(locals.getUser());
+            label519:
+            parama.czr = i;
+            parama.field_mediaId = str7;
+            parama.field_fullpath = str8;
+            parama.field_fileType = com.tencent.mm.i.a.MediaType_VIDEO;
+            parama.field_totalLen = j;
+            parama.field_aesKey = str5;
+            parama.field_fileId = str2;
+            parama.field_priority = com.tencent.mm.i.a.ecF;
+            parama.field_wxmsgparam = str6;
+            if (!com.tencent.mm.model.t.lA(locals.getUser())) {
+              break label991;
+            }
+            i = 1;
+            label586:
+            parama.field_chattype = i;
+            parama.field_autostart = false;
+            parama.field_requestVideoFormat = com.tencent.mm.modelcontrol.d.a(2, locals);
+            parama.field_preloadRatio = ((bf.b)localObject).fmU;
+            parama.bWM = str4;
             continue;
           }
-          parama = bn.s(locals.SD(), "msg");
-          if (parama == null)
-          {
-            y.w("MicroMsg.NetScenePreloadVideoFake", "cdntra parse video recv xml failed");
-            parama = null;
-            continue;
-          }
-          String str2 = (String)parama.get(".msg.videomsg.$cdnvideourl");
-          if (bk.bl(str2))
-          {
-            y.w("MicroMsg.NetScenePreloadVideoFake", "cdntra parse video recv xml failed");
-            parama = null;
-            continue;
-          }
-          j = Integer.valueOf((String)parama.get(".msg.videomsg.$length")).intValue();
-          String str3 = (String)parama.get(".msg.videomsg.$md5");
-          String str4 = (String)parama.get(".msg.videomsg.$newmd5");
-          String str5 = (String)parama.get(".msg.videomsg.$aeskey");
-          String str6 = (String)parama.get(".msg.videomsg.$fileparam");
-          String str7 = com.tencent.mm.ak.c.a("downvideo", locals.createTime, locals.SA(), locals.getFileName());
-          if (bk.bl(str7))
-          {
-            y.w("MicroMsg.NetScenePreloadVideoFake", "cdntra genClientId failed not use cdn file:%s", new Object[] { locals.getFileName() });
-            parama = null;
-            continue;
-          }
-          o.Sr();
-          String str8 = t.nS(str1);
-          parama = new com.tencent.mm.j.g();
-          parama.filename = str1;
-          parama.dme = str3;
-          parama.dmf = j;
-          parama.dmg = 2;
-          parama.bRO = locals.SB();
-          parama.dmh = locals.SA();
-          if (!com.tencent.mm.model.s.fn(locals.SA())) {
-            break label966;
-          }
-          i = m.gM(locals.SA());
-          label497:
-          parama.bRQ = i;
-          parama.field_mediaId = str7;
-          parama.field_fullpath = str8;
-          parama.field_fileType = com.tencent.mm.j.a.MediaType_VIDEO;
-          parama.field_totalLen = j;
-          parama.field_aesKey = str5;
-          parama.field_fileId = str2;
-          parama.field_priority = com.tencent.mm.j.a.dlk;
-          parama.field_wxmsgparam = str6;
-          if (!com.tencent.mm.model.s.fn(locals.SA())) {
-            break label971;
-          }
-          i = 1;
-          label564:
-          parama.field_chattype = i;
-          parama.field_autostart = false;
-          parama.field_requestVideoFormat = com.tencent.mm.modelcontrol.d.a(2, locals);
-          parama.field_preloadRatio = ((bd.b)localObject).dWM;
-          parama.bvB = str4;
+          com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(354L, 122L, 1L, false);
           continue;
         }
-        h.nFQ.a(354L, 122L, 1L, false);
-        continue;
-        this.eGf = null;
+        this.fVU = 3;
       }
       catch (Exception parama)
       {
-        y.printErrStackTrace("MicroMsg.NetScenePreloadVideoFake", parama, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.NetScenePreloadVideoFake", parama, "", new Object[0]);
+        this.fVW = null;
+        AppMethodBeat.o(50688);
+        return -1;
       }
-      label633:
-      return -1;
-      label640:
-      this.eGd = 3;
-      parama = this.eFN;
-      h.nFQ.a(354L, 141L, 1L, false);
+      parama = this.fVE;
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(354L, 141L, 1L, false);
     }
-    if (((Integer)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.utw, Integer.valueOf(-1))).intValue() == 2) {
-      y.i("MicroMsg.NetScenePreloadVideoFake", "command set do not check media duplication.");
+    if (((Integer)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yDz, Integer.valueOf(-1))).intValue() == 2) {
+      ab.i("MicroMsg.NetScenePreloadVideoFake", "command set do not check media duplication.");
     }
     for (;;)
     {
       if (i != 0)
       {
-        y.i("MicroMsg.NetScenePreloadVideoFake", "%d it already had video file", new Object[] { Integer.valueOf(hashCode()) });
+        ab.i("MicroMsg.NetScenePreloadVideoFake", "%d it already had video file", new Object[] { Integer.valueOf(hashCode()) });
         i = 0;
-        break label960;
-        if (parama.xa()) {
-          break label981;
+        break label212;
+        if (parama.Js()) {
+          break label1001;
         }
-        localObject = parama.dme;
-        i = parama.dmf;
-        str1 = ((com.tencent.mm.plugin.r.a.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.r.a.a.class)).FD().dx((String)localObject, i);
-        j = i - (int)com.tencent.mm.vfs.e.aeQ(str1);
-        if ((bk.bl(str1)) || (j < 0) || (j > 16)) {
-          break label981;
+        localObject = parama.edH;
+        i = parama.edI;
+        str1 = ((com.tencent.mm.plugin.m.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.m.a.a.class)).YH().eG((String)localObject, i);
+        j = i - (int)com.tencent.mm.vfs.e.avI(str1);
+        if ((bo.isNullOrNil(str1)) || (j < 0) || (j > 16)) {
+          break label1001;
         }
-        y.i("MicroMsg.NetScenePreloadVideoFake", "it had download this video[%d, %s, %s].", new Object[] { Integer.valueOf(i), localObject, str1 });
-        com.tencent.mm.vfs.e.r(str1, parama.field_fullpath);
-        f(parama.filename, i, (String)localObject);
+        ab.i("MicroMsg.NetScenePreloadVideoFake", "it had download this video[%d, %s, %s].", new Object[] { Integer.valueOf(i), localObject, str1 });
+        com.tencent.mm.vfs.e.C(str1, parama.field_fullpath);
+        e(parama.filename, i, (String)localObject);
         i = 1;
+        continue;
       }
-      else
-      {
-        parama.dmc = this.dmc;
-        parama.dlP = this.epa;
-        parama.dma = 2;
-        this.dme = parama.dme;
-        this.bUi = parama.field_mediaId;
-        this.eFZ = parama.filename;
-        this.eGa = bk.UX();
-        this.eGe = parama.bvB;
-        y.i("MicroMsg.NetScenePreloadVideoFake", "%d send to cdn service task[%s]", new Object[] { Integer.valueOf(hashCode()), parama });
-        com.tencent.mm.ak.f.Nd().b(parama, -1);
-        i = 1;
-        break label960;
-        label957:
-        break label180;
-      }
-      label960:
-      if (i == 0) {
-        break label633;
-      }
-      return 0;
-      label966:
+      parama.edF = this.edF;
+      parama.edp = this.fFy;
+      parama.edD = 2;
+      this.edH = parama.edH;
+      this.cBO = parama.field_mediaId;
+      this.fVQ = parama.filename;
+      this.fVR = bo.aox();
+      this.fVV = parama.bWM;
+      ab.i("MicroMsg.NetScenePreloadVideoFake", "%d send to cdn service task[%s]", new Object[] { Integer.valueOf(hashCode()), parama });
+      com.tencent.mm.al.f.afO().b(parama, -1);
+      i = 1;
+      break label212;
+      label983:
+      break label185;
+      label986:
       i = 0;
-      break label497;
-      label971:
+      break label519;
+      label991:
       i = 0;
-      break label564;
-      label976:
+      break label586;
+      label996:
       i = 1;
       break;
-      label981:
+      label1001:
       i = 0;
     }
   }
   
-  final void f(String paramString1, int paramInt, String paramString2)
+  public final String alv()
   {
-    y.i("MicroMsg.NetScenePreloadVideoFake", "%d update finish video [%s] [%d] [%s]", new Object[] { Integer.valueOf(hashCode()), paramString1, Integer.valueOf(paramInt), paramString2 });
-    if (u.oe(paramString1) != null)
+    AppMethodBeat.i(50686);
+    if (this.fVP)
     {
-      u.W(paramString1, paramInt);
-      if (!bk.bl(paramString2))
+      str = this.cpO;
+      AppMethodBeat.o(50686);
+      return str;
+    }
+    String str = this.crk;
+    AppMethodBeat.o(50686);
+    return str;
+  }
+  
+  final void e(String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(50690);
+    ab.i("MicroMsg.NetScenePreloadVideoFake", "%d update finish video [%s] [%d] [%s]", new Object[] { Integer.valueOf(hashCode()), paramString1, Integer.valueOf(paramInt), paramString2 });
+    if (u.vr(paramString1) != null)
+    {
+      u.ae(paramString1, paramInt);
+      i(paramInt, paramString2, paramString1);
+    }
+    AppMethodBeat.o(50690);
+  }
+  
+  public final void stop()
+  {
+    AppMethodBeat.i(50687);
+    ab.i("MicroMsg.NetScenePreloadVideoFake", "%d stop preload video[%s]", new Object[] { Integer.valueOf(hashCode()), this.cBO });
+    if (!bo.isNullOrNil(this.cBO))
+    {
+      com.tencent.mm.i.d locald = new com.tencent.mm.i.d();
+      b localb = com.tencent.mm.al.f.afO();
+      String str = this.cBO;
+      int i = 0;
+      com.tencent.mm.i.g localg = (com.tencent.mm.i.g)localb.fyM.remove(str);
+      if (localg != null)
       {
-        o.Sr();
-        paramString1 = t.nS(paramString1);
-        if ((!bk.bl(paramString2)) && (paramInt > 0) && (!bk.bl(paramString1)) && (com.tencent.mm.vfs.e.bK(paramString1))) {
-          break label119;
-        }
-        y.w("MicroMsg.NetScenePreloadVideoFake", "insert media duplication but args is error.[%d, %s, %s]", new Object[] { Integer.valueOf(paramInt), paramString2, paramString1 });
+        com.tencent.mm.al.f.afP();
+        i = com.tencent.mm.al.a.b(str, locald);
+        com.tencent.mm.plugin.report.service.h.qsU.e(10769, new Object[] { Integer.valueOf(com.tencent.mm.al.c.fzg), Integer.valueOf(localg.field_fileType), Long.valueOf(bo.aoy() - localg.field_startTime) });
       }
+      localb.fyL.remove(str);
+      localb.fyN.remove(str);
+      ab.i("MicroMsg.CdnTransportService", "summersafecdn cdntra cancelRecvTask mediaid:%s mapremove:%s engine ret:%d", new Object[] { str, localg, Integer.valueOf(i) });
+      this.fVS = bo.aox();
+      this.fVT = e(this.fVQ, locald.field_recvedBytes, false);
+      uT(locald.Jn());
     }
-    return;
-    label119:
-    ((com.tencent.mm.plugin.r.a.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.r.a.a.class)).FD().A(paramString2, paramInt, paramString1);
+    this.fVW = null;
+    AppMethodBeat.o(50687);
   }
   
-  public final String getTips()
+  final void uT(String paramString)
   {
-    if (this.eFY) {
-      return this.bIt;
-    }
-    return this.bJQ;
-  }
-  
-  final void nG(String paramString)
-  {
+    AppMethodBeat.i(50692);
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(this.eGa).append(",");
-    localStringBuffer.append(this.eGb).append(",");
-    localStringBuffer.append(this.eGc).append(",");
-    localStringBuffer.append(this.eGe).append(",");
-    localStringBuffer.append(this.eGd).append(",");
+    localStringBuffer.append(this.fVR).append(",");
+    localStringBuffer.append(this.fVS).append(",");
+    localStringBuffer.append(this.fVT).append(",");
+    localStringBuffer.append(this.fVV).append(",");
+    localStringBuffer.append(this.fVU).append(",");
     try
     {
-      long l = this.eGc / 1024L / (this.eGb - this.eGa);
+      long l = this.fVT / 1024L / (this.fVS - this.fVR);
       i = (int)l;
     }
     catch (Exception localException)
@@ -327,41 +389,16 @@ public final class f
     localStringBuffer.append(i).append(",");
     localStringBuffer.append(0).append(",");
     localStringBuffer.append(paramString).append(",");
-    localStringBuffer.append(this.eFN.bRO).append(",");
-    localStringBuffer.append(this.eFN.dmh).append(",");
-    localStringBuffer.append(this.eFN.bRQ).append(",");
-    localStringBuffer.append(this.eFN.field_fileId).append(",");
-    localStringBuffer.append(this.eFN.url).append(",");
-    localStringBuffer.append(com.tencent.mm.plugin.video.c.PU(this.eFN.bRV));
+    localStringBuffer.append(this.fVE.czp).append(",");
+    localStringBuffer.append(this.fVE.edK).append(",");
+    localStringBuffer.append(this.fVE.czr).append(",");
+    localStringBuffer.append(this.fVE.field_fileId).append(",");
+    localStringBuffer.append(this.fVE.url).append(",");
+    localStringBuffer.append(com.tencent.mm.plugin.video.c.aeA(this.fVE.czw));
     paramString = localStringBuffer.toString();
-    y.d("MicroMsg.NetScenePreloadVideoFake", "%d rpt content[%s]", new Object[] { Integer.valueOf(hashCode()), paramString });
-    new p(paramString).QX();
-  }
-  
-  public final void stop()
-  {
-    y.i("MicroMsg.NetScenePreloadVideoFake", "%d stop preload video[%s]", new Object[] { Integer.valueOf(hashCode()), this.bUi });
-    if (!bk.bl(this.bUi))
-    {
-      com.tencent.mm.j.d locald = new com.tencent.mm.j.d();
-      b localb = com.tencent.mm.ak.f.Nd();
-      String str = this.bUi;
-      int i = 0;
-      com.tencent.mm.j.f localf = (com.tencent.mm.j.f)localb.eiI.remove(str);
-      if (localf != null)
-      {
-        com.tencent.mm.ak.f.Ne();
-        i = com.tencent.mm.ak.a.b(str, locald);
-        h.nFQ.f(10769, new Object[] { Integer.valueOf(com.tencent.mm.ak.c.ejc), Integer.valueOf(localf.field_fileType), Long.valueOf(bk.UY() - localf.field_startTime) });
-      }
-      localb.eiH.remove(str);
-      localb.eiJ.remove(str);
-      y.i("MicroMsg.CdnTransportService", "summersafecdn cdntra cancelRecvTask mediaid:%s mapremove:%s engine ret:%d", new Object[] { str, localf, Integer.valueOf(i) });
-      this.eGb = bk.UX();
-      this.eGc = e(this.eFZ, locald.field_recvedBytes, false);
-      nG(locald.wW());
-    }
-    this.eGf = null;
+    ab.d("MicroMsg.NetScenePreloadVideoFake", "%d rpt content[%s]", new Object[] { Integer.valueOf(hashCode()), paramString });
+    new com.tencent.mm.g.b.a.z(paramString).ake();
+    AppMethodBeat.o(50692);
   }
 }
 

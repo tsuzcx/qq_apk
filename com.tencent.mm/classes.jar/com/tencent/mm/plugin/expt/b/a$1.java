@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.expt.b;
 
-import com.tencent.mm.h.a.md;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.mv;
 import com.tencent.mm.sdk.b.c;
 
 final class a$1
-  extends c<md>
+  extends c<mv>
 {
   a$1(a parama)
   {
     super(0);
-    this.udX = md.class.getName().hashCode();
+    AppMethodBeat.i(73485);
+    this.__eventId = mv.class.getName().hashCode();
+    AppMethodBeat.o(73485);
   }
 }
 

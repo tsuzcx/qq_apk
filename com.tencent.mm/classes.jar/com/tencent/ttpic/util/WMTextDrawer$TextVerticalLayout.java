@@ -1,109 +1,49 @@
 package com.tencent.ttpic.util;
 
 import android.graphics.Canvas;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.TextPaint;
-import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.model.TextWMElement;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class WMTextDrawer$TextVerticalLayout
   extends WMTextDrawer.TextLayout
 {
-  public WMTextDrawer$TextVerticalLayout(WMTextDrawer paramWMTextDrawer, String paramString, TextPaint paramTextPaint, TextWMElement paramTextWMElement)
+  public WMTextDrawer$TextVerticalLayout(WMTextDrawer paramWMTextDrawer, TextWMElement paramTextWMElement, int paramInt1, int paramInt2, String paramString)
   {
-    super(paramWMTextDrawer, paramString, paramTextPaint, paramTextWMElement);
-  }
-  
-  private float calculateYByAlign(TextWMElement paramTextWMElement, float paramFloat, int paramInt, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    if ((!TextUtils.isEmpty(paramTextWMElement.alignment)) && (!TextUtils.isEmpty(paramTextWMElement.alignment)))
-    {
-      if (this.mWMElement.alignment.equals("center")) {
-        return (this.mWMElement.height + paramFontMetricsInt.ascent - (paramInt - 1) * paramFloat) / 2.0F;
-      }
-      if (this.mWMElement.alignment.equals("down")) {
-        return this.mWMElement.height + paramFontMetricsInt.ascent - (paramInt - 1) * paramFloat;
-      }
-      return -paramFontMetricsInt.ascent;
-    }
-    return 0.0F;
+    super(paramTextWMElement, paramInt1, paramInt2, paramString);
   }
   
   protected void drawText(Canvas paramCanvas)
   {
-    Object localObject = this.mPaint.getFontMetricsInt();
-    Rect localRect = new Rect();
-    this.mPaint.getTextBounds(this.mSource, 0, this.mSource.length(), localRect);
-    int j = localRect.height();
-    int i = this.mSource.length();
-    float f2 = this.mWMElement.width / 2;
-    float f1 = calculateYByAlign(this.mWMElement, j, i, (Paint.FontMetricsInt)localObject);
-    setTextRect(this.mWMElement, f2, f1, j, this.mSource, (Paint.FontMetricsInt)localObject);
+    AppMethodBeat.i(84281);
+    this.mWMElement.mTextRect.set(this.mWMTokenizer.getTextRect());
+    float f2 = this.mWMTokenizer.getFontHeight() / 2.0F;
+    float f3 = (Math.abs(this.mPaint.ascent()) - this.mPaint.descent()) / 2.0F;
     paramCanvas.save();
-    i = 0;
-    while (i < this.mSource.length())
+    Iterator localIterator = this.mWMTokenizer.getTokens().iterator();
+    while (localIterator.hasNext())
     {
-      localObject = this.mSource.substring(i, i + 1);
-      paramCanvas.rotate(this.mWMElement.rotate, f2, f1);
-      paramCanvas.drawText((String)localObject, 0, ((String)localObject).length(), f2, f1, this.mPaint);
-      paramCanvas.rotate(-this.mWMElement.rotate, f2, f1);
-      f1 += this.mWMElement.kern + j;
-      i += 1;
+      WMTokenizer.Token localToken = (WMTokenizer.Token)localIterator.next();
+      float f4 = localToken.x;
+      float f1 = localToken.y + (f2 + f3);
+      int i = 0;
+      while (i < localToken.text.length())
+      {
+        draw(paramCanvas, String.valueOf(localToken.text.charAt(i)), f4, f1);
+        f1 += this.mWMTokenizer.getFontHeight();
+        i += 1;
+      }
     }
     paramCanvas.restore();
-  }
-  
-  protected void fitText()
-  {
-    if (this.mWMElement.fontFit == 0)
-    {
-      Rect localRect = new Rect();
-      this.mPaint.getTextBounds(this.mSource, 0, this.mSource.length(), localRect);
-      int i = localRect.height();
-      int j = this.mSource.length();
-      int k = this.mWMElement.height - (j - 1) * this.mWMElement.kern;
-      if (j * i > k)
-      {
-        j = k / i - 3;
-        i = j;
-        if (j < 0) {
-          i = 0;
-        }
-        this.mSource = this.mSource.substring(0, i);
-        this.mSource += "...";
-      }
-    }
-  }
-  
-  public void setTextRect(TextWMElement paramTextWMElement, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    if (this.mPaint == null) {
-      return;
-    }
-    float[] arrayOfFloat = new float[paramString.length()];
-    this.mPaint.getTextWidths(paramString, arrayOfFloat);
-    float f1 = 0.0F;
-    int i = 0;
-    while (i < arrayOfFloat.length)
-    {
-      float f2 = f1;
-      if (arrayOfFloat[i] > f1) {
-        f2 = arrayOfFloat[i];
-      }
-      i += 1;
-      f1 = f2;
-    }
-    paramTextWMElement.mTextRect.left = paramFloat1;
-    paramTextWMElement.mTextRect.top = (paramFontMetricsInt.ascent + paramFloat2);
-    paramTextWMElement.mTextRect.right = (f1 + paramTextWMElement.mTextRect.left);
-    paramTextWMElement.mTextRect.bottom = (paramTextWMElement.mTextRect.top + paramString.length() * paramFloat3 + (paramString.length() - 1) * paramTextWMElement.kern);
+    AppMethodBeat.o(84281);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.ttpic.util.WMTextDrawer.TextVerticalLayout
  * JD-Core Version:    0.7.0.1
  */

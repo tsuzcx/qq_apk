@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.plugin.setting.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.CheckPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -14,35 +14,77 @@ import com.tencent.mm.ui.base.preference.f;
 public class UnfamiliarContactUI
   extends MMPreference
 {
-  private boolean nQP;
-  private boolean nQQ;
-  private boolean nQR;
+  private boolean qEM;
+  private boolean qEN;
+  private boolean qEO;
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
+  {
+    return 2131165295;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(127687);
+    super.initView();
+    setMMTitle(2131303501);
+    setBackBtn(new UnfamiliarContactUI.1(this));
+    ((CheckPreference)getPreferenceScreen().atx("settings_half_year_not_chat")).zqz = 0;
+    ((CheckPreference)getPreferenceScreen().atx("settings_has_not_same_chatroom")).zqz = 0;
+    ((CheckPreference)getPreferenceScreen().atx("settings_half_year_not_response")).zqz = 0;
+    ((TextButtonPreference)getPreferenceScreen().atx("settings_next_step")).setEnabled(false);
+    getPreferenceScreen().notifyDataSetChanged();
+    AppMethodBeat.o(127687);
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(127685);
+    super.onCreate(paramBundle);
+    initView();
+    AppMethodBeat.o(127685);
+  }
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(127688);
+    if (paramInt == 4)
+    {
+      onBackPressed();
+      AppMethodBeat.o(127688);
+      return true;
+    }
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(127688);
+    return bool;
+  }
+  
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     boolean bool2 = false;
+    AppMethodBeat.i(127686);
     CheckPreference localCheckPreference;
     boolean bool1;
     if ((paramPreference instanceof CheckPreference))
     {
       localCheckPreference = (CheckPreference)paramPreference;
       if (paramPreference.mKey.equals("settings_half_year_not_chat")) {
-        if (!this.nQP)
+        if (!this.qEM)
         {
           bool1 = true;
-          localCheckPreference.rHo = bool1;
-          if (this.nQP) {
-            break label113;
+          localCheckPreference.vxW = bool1;
+          if (this.qEM) {
+            break label123;
           }
           bool1 = true;
-          label52:
-          this.nQP = bool1;
           label57:
-          paramPreference = (TextButtonPreference)paramf.add("settings_next_step");
-          if ((!this.nQP) && (!this.nQR))
+          this.qEM = bool1;
+          label62:
+          paramPreference = (TextButtonPreference)paramf.atx("settings_next_step");
+          if ((!this.qEM) && (!this.qEO))
           {
             bool1 = bool2;
-            if (!this.nQQ) {}
+            if (!this.qEN) {}
           }
           else
           {
@@ -55,94 +97,68 @@ public class UnfamiliarContactUI
     for (;;)
     {
       paramf.notifyDataSetChanged();
+      AppMethodBeat.o(127686);
       return true;
       bool1 = false;
       break;
-      label113:
+      label123:
       bool1 = false;
-      break label52;
+      break label57;
       if (paramPreference.mKey.equals("settings_has_not_same_chatroom"))
       {
-        if (!this.nQR)
+        if (!this.qEO)
         {
           bool1 = true;
-          label139:
-          localCheckPreference.rHo = bool1;
-          if (this.nQR) {
-            break label167;
+          label149:
+          localCheckPreference.vxW = bool1;
+          if (this.qEO) {
+            break label177;
           }
         }
-        label167:
+        label177:
         for (bool1 = true;; bool1 = false)
         {
-          this.nQR = bool1;
+          this.qEO = bool1;
           break;
           bool1 = false;
-          break label139;
+          break label149;
         }
       }
       if (!paramPreference.mKey.equals("settings_half_year_not_response")) {
-        break label57;
+        break label62;
       }
-      if (!this.nQQ)
+      if (!this.qEN)
       {
         bool1 = true;
-        label193:
-        localCheckPreference.rHo = bool1;
-        if (this.nQQ) {
-          break label221;
+        label203:
+        localCheckPreference.vxW = bool1;
+        if (this.qEN) {
+          break label231;
         }
       }
-      label221:
+      label231:
       for (bool1 = true;; bool1 = false)
       {
-        this.nQQ = bool1;
+        this.qEN = bool1;
         break;
         bool1 = false;
-        break label193;
+        break label203;
       }
       if (paramPreference.mKey.equals("settings_next_step"))
       {
         paramPreference = new Intent(this, UnfamiliarContactDetailUI.class);
-        paramPreference.putExtra("half_year_not_chat", this.nQP);
-        paramPreference.putExtra("half_year_not_response", this.nQQ);
-        paramPreference.putExtra("has_not_same_chatroom", this.nQR);
+        paramPreference.putExtra("half_year_not_chat", this.qEM);
+        paramPreference.putExtra("half_year_not_response", this.qEN);
+        paramPreference.putExtra("has_not_same_chatroom", this.qEO);
         startActivityForResult(paramPreference, 291);
       }
     }
   }
   
-  protected final void initView()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    super.initView();
-    setMMTitle(a.i.settings_unfamiliar_contact);
-    setBackBtn(new UnfamiliarContactUI.1(this));
-    ((CheckPreference)this.vdd.add("settings_half_year_not_chat")).vbY = 0;
-    ((CheckPreference)this.vdd.add("settings_has_not_same_chatroom")).vbY = 0;
-    ((CheckPreference)this.vdd.add("settings_half_year_not_response")).vbY = 0;
-    ((TextButtonPreference)this.vdd.add("settings_next_step")).setEnabled(false);
-    this.vdd.notifyDataSetChanged();
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    initView();
-  }
-  
-  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      onBackPressed();
-      return true;
-    }
-    return super.onKeyDown(paramInt, paramKeyEvent);
-  }
-  
-  public final int xj()
-  {
-    return a.k.settings_unfamiliar_contact_ui;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

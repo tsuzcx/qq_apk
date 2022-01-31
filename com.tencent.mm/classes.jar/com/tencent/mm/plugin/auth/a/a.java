@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.auth.a;
 
-import com.tencent.mm.protocal.i.f;
-import com.tencent.mm.protocal.i.g;
-import com.tencent.mm.protocal.u.b;
+import com.tencent.mm.protocal.j.h;
+import com.tencent.mm.protocal.j.i;
+import com.tencent.mm.protocal.v.b;
 
 public abstract interface a
 {
-  public abstract void a(i.f paramf, i.g paramg, boolean paramBoolean);
+  public abstract void a(j.h paramh, j.i parami, boolean paramBoolean);
   
-  public abstract void a(u.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2);
+  public abstract void a(v.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2);
 }
 
 

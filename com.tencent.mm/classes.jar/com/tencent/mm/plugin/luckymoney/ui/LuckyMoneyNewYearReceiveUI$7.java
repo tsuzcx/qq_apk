@@ -2,25 +2,26 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
-import com.tencent.mm.plugin.luckymoney.b.ad;
-import com.tencent.mm.plugin.luckymoney.b.f;
-import com.tencent.mm.plugin.luckymoney.b.o;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.an;
+import com.tencent.mm.plugin.luckymoney.model.k;
+import com.tencent.mm.plugin.luckymoney.model.x;
 
 final class LuckyMoneyNewYearReceiveUI$7
   implements LuckyMoneyAutoScrollView.a
 {
-  LuckyMoneyNewYearReceiveUI$7(LuckyMoneyNewYearReceiveUI paramLuckyMoneyNewYearReceiveUI, ad paramad) {}
+  LuckyMoneyNewYearReceiveUI$7(LuckyMoneyNewYearReceiveUI paramLuckyMoneyNewYearReceiveUI, an paraman) {}
   
-  public final void bga()
+  public final void bNO()
   {
-    LuckyMoneyNewYearReceiveUI.j(this.lWq).setVisibility(4);
-    o.a(this.lWq.mController.uMN, LuckyMoneyNewYearReceiveUI.j(this.lWq), this.lWv.lQZ.lLm);
+    AppMethodBeat.i(42792);
+    LuckyMoneyNewYearReceiveUI.i(this.ouD).setVisibility(4);
+    x.a(this.ouD.getContext(), LuckyMoneyNewYearReceiveUI.i(this.ouD), this.ouG.ooO.oiG);
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     localAlphaAnimation.setDuration(500L);
     localAlphaAnimation.setAnimationListener(new LuckyMoneyNewYearReceiveUI.7.1(this));
-    LuckyMoneyNewYearReceiveUI.j(this.lWq).startAnimation(localAlphaAnimation);
+    LuckyMoneyNewYearReceiveUI.i(this.ouD).startAnimation(localAlphaAnimation);
+    AppMethodBeat.o(42792);
   }
 }
 

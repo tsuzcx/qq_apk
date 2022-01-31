@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.wallet_payu.pay.a;
 
 import android.content.Intent;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.wallet_core.c.b.a;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
@@ -17,31 +18,34 @@ final class e$1
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
     return false;
   }
   
-  public final boolean s(Object... paramVarArgs)
+  public final boolean x(Object... paramVarArgs)
   {
-    paramVarArgs = (PayInfo)this.gfb.getIntent().getParcelableExtra("key_pay_info");
-    if ((paramVarArgs != null) && (!bk.bl(paramVarArgs.bMX)))
+    AppMethodBeat.i(48446);
+    paramVarArgs = (PayInfo)this.hwZ.getIntent().getParcelableExtra("key_pay_info");
+    if ((paramVarArgs != null) && (!bo.isNullOrNil(paramVarArgs.cnI)))
     {
-      this.wBd.a(new c(paramVarArgs.bMX), paramVarArgs.snV, 1);
-      this.wBd.a(new a(), paramVarArgs.snV, 1);
+      this.AXB.a(new c(paramVarArgs.cnI), paramVarArgs.wgt, 1);
+      this.AXB.a(new a(), paramVarArgs.wgt, 1);
+      AppMethodBeat.o(48446);
       return true;
     }
+    AppMethodBeat.o(48446);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pay.a.e.1
  * JD-Core Version:    0.7.0.1
  */

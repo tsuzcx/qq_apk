@@ -3,6 +3,7 @@ package com.tencent.mm.ui.tools;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 
 final class HardCoderSettingUI$5
@@ -12,16 +13,19 @@ final class HardCoderSettingUI$5
   
   public final void onTimeSet(TimePicker paramTimePicker, int paramInt1, int paramInt2)
   {
-    if (HardCoderSettingUI.s(this.wcp))
+    AppMethodBeat.i(34874);
+    if (HardCoderSettingUI.s(this.AuJ))
     {
       WXHardCoderJNI.hcBeginTimeHour = paramInt1;
       WXHardCoderJNI.hcBeginTimeMin = paramInt2;
-      HardCoderSettingUI.t(this.wcp).setText(HardCoderSettingUI.i(this.wcp, WXHardCoderJNI.hcBeginTimeHour, WXHardCoderJNI.hcBeginTimeMin));
+      HardCoderSettingUI.t(this.AuJ).setText(HardCoderSettingUI.i(this.AuJ, WXHardCoderJNI.hcBeginTimeHour, WXHardCoderJNI.hcBeginTimeMin));
+      AppMethodBeat.o(34874);
       return;
     }
     WXHardCoderJNI.hcEndTimeHour = paramInt1;
     WXHardCoderJNI.hcEndTimeMin = paramInt2;
-    HardCoderSettingUI.u(this.wcp).setText(HardCoderSettingUI.i(this.wcp, WXHardCoderJNI.hcEndTimeHour, WXHardCoderJNI.hcEndTimeMin));
+    HardCoderSettingUI.u(this.AuJ).setText(HardCoderSettingUI.i(this.AuJ, WXHardCoderJNI.hcEndTimeHour, WXHardCoderJNI.hcEndTimeMin));
+    AppMethodBeat.o(34874);
   }
 }
 

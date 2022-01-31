@@ -5,7 +5,7 @@ public final class c$ea
 {
   public c$ea()
   {
-    super("musicPlay", "playMusic", 69, false);
+    super("jumpToInstallUrl", "", 26, false);
   }
 }
 

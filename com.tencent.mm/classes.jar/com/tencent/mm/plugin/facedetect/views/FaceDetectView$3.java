@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.facedetect.views;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FaceDetectView$3
   implements Runnable
 {
@@ -7,9 +9,12 @@ final class FaceDetectView$3
   
   public final void run()
   {
-    if ((FaceDetectView.d(this.jUI) != null) && (!FaceDetectView.a(this.jUI))) {
-      FaceDetectView.d(this.jUI).J(0, "");
+    AppMethodBeat.i(622);
+    if ((FaceDetectView.d(this.mpb) != null) && (!FaceDetectView.a(this.mpb))) {
+      FaceDetectView.d(this.mpb).U(0, "");
     }
+    FaceDetectView.bvA();
+    AppMethodBeat.o(622);
   }
 }
 

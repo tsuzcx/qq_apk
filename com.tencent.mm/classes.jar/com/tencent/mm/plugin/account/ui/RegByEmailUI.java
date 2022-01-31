@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,17 +10,16 @@ import android.view.View.OnKeyListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.j;
 import com.tencent.mm.platformtools.w;
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMAutoCompleteTextView;
 import com.tencent.mm.ui.base.h;
@@ -30,201 +30,234 @@ public class RegByEmailUI
   extends MMActivity
   implements f
 {
-  private static String[] fqj;
-  private String cCt;
-  private ProgressDialog dnm = null;
-  private String fcX;
-  private String fey;
-  private MMAutoCompleteTextView fqe;
-  private EditText fqf;
-  private CheckBox fqg;
-  private String fqh;
-  private Map<String, String> fqi;
+  private static String[] gHG;
+  private String dqF;
+  private ProgressDialog eeN = null;
+  private MMAutoCompleteTextView gHB;
+  private EditText gHC;
+  private CheckBox gHD;
+  private String gHE;
+  private Map<String, String> gHF;
+  private String guI;
+  private String gwh;
   
   private void goBack()
   {
-    h.a(this, q.j.regby_email_cancel_registion_tip, q.j.regby_email_err_tip_title, q.j.app_ok, q.j.app_cancel, new RegByEmailUI.2(this), null);
+    AppMethodBeat.i(125317);
+    h.a(this, 2131302382, 2131302385, 2131297018, 2131296888, new RegByEmailUI.2(this), null);
+    AppMethodBeat.o(125317);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return q.g.reg_by_email;
+    return 2130970552;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.fqe = ((MMAutoCompleteTextView)findViewById(q.f.reg_email));
-    this.fqf = ((EditText)findViewById(q.f.reg_password));
-    this.fqg = ((CheckBox)findViewById(q.f.agree_cb));
-    if (!bk.bl(this.fqh))
+    AppMethodBeat.i(125316);
+    this.gHB = ((MMAutoCompleteTextView)findViewById(2131827129));
+    this.gHC = ((EditText)findViewById(2131827130));
+    this.gHD = ((CheckBox)findViewById(2131826244));
+    if (!bo.isNullOrNil(this.gHE))
     {
-      this.fqf.postDelayed(new RegByEmailUI.1(this), 500L);
-      this.fqe.setText(this.fqh);
+      this.gHC.postDelayed(new RegByEmailUI.1(this), 500L);
+      this.gHB.setText(this.gHE);
     }
-    if (fqj != null)
+    if (gHG != null)
     {
-      c localc = new c(this, fqj, "@");
-      this.fqe.setSpilter("@");
-      this.fqe.setDropDownAnchor(q.f.reg_email_ll);
-      this.fqe.setDropDownVerticalOffset(this.fqe.getPaddingBottom());
-      this.fqe.setAdapter(localc);
+      c localc = new c(this, gHG, "@");
+      this.gHB.setSpilter("@");
+      this.gHB.setDropDownAnchor(2131827128);
+      this.gHB.setDropDownVerticalOffset(this.gHB.getPaddingBottom());
+      this.gHB.setAdapter(localc);
     }
-    findViewById(q.f.agree_btn).setOnClickListener(new RegByEmailUI.5(this));
-    this.fqg.setOnCheckedChangeListener(new RegByEmailUI.6(this));
-    addTextOptionMenu(0, getString(q.j.app_nextstep), new RegByEmailUI.7(this));
+    findViewById(2131826245).setOnClickListener(new RegByEmailUI.5(this));
+    this.gHD.setOnCheckedChangeListener(new RegByEmailUI.6(this));
+    addTextOptionMenu(0, getString(2131297013), new RegByEmailUI.7(this));
     enableOptionMenu(false);
-    this.fqe.addTextChangedListener(new RegByEmailUI.8(this));
-    this.fqf.addTextChangedListener(new RegByEmailUI.9(this));
-    this.fqf.setOnEditorActionListener(new RegByEmailUI.10(this));
-    this.fqf.setOnKeyListener(new View.OnKeyListener()
+    this.gHB.addTextChangedListener(new RegByEmailUI.8(this));
+    this.gHC.addTextChangedListener(new RegByEmailUI.9(this));
+    this.gHC.setOnEditorActionListener(new RegByEmailUI.10(this));
+    this.gHC.setOnKeyListener(new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
-        if ((66 != paramAnonymousInt) || (paramAnonymousKeyEvent.getAction() != 0) || (!RegByEmailUI.d(RegByEmailUI.this).isChecked())) {
-          return false;
+        AppMethodBeat.i(125311);
+        if ((66 == paramAnonymousInt) && (paramAnonymousKeyEvent.getAction() == 0))
+        {
+          if (!RegByEmailUI.d(RegByEmailUI.this).isChecked())
+          {
+            AppMethodBeat.o(125311);
+            return false;
+          }
+          RegByEmailUI.c(RegByEmailUI.this);
+          AppMethodBeat.o(125311);
+          return true;
         }
-        RegByEmailUI.c(RegByEmailUI.this);
-        return true;
+        AppMethodBeat.o(125311);
+        return false;
       }
     });
     setBackBtn(new RegByEmailUI.12(this));
+    AppMethodBeat.o(125316);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(125313);
     super.onCreate(paramBundle);
-    paramBundle = getString(q.j.regby_email_title);
-    if (d.spd) {
-      paramBundle = getString(q.j.app_name) + getString(q.j.alpha_version_alpha);
+    paramBundle = getString(2131302398);
+    if (d.whK) {
+      paramBundle = getString(2131297005) + getString(2131296529);
     }
     setMMTitle(paramBundle);
-    com.tencent.mm.plugin.account.a.a.eUS.tn();
-    this.fqh = w.bS(this);
-    y.i("MicroMsg.RegByEmailUI", "get google account:[%s]", new Object[] { this.fqh });
-    this.fqi = j.eRu.bK(this);
-    if ((this.fqi != null) && (!this.fqi.isEmpty()))
+    com.tencent.mm.plugin.account.a.a.gmP.BR();
+    this.gHE = w.cz(this);
+    ab.i("MicroMsg.RegByEmailUI", "get google account:[%s]", new Object[] { this.gHE });
+    this.gHF = j.gjp.cr(this);
+    if ((this.gHF != null) && (!this.gHF.isEmpty()))
     {
-      fqj = new String[this.fqi.size()];
-      this.fqi.keySet().toArray(fqj);
+      gHG = new String[this.gHF.size()];
+      this.gHF.keySet().toArray(gHG);
     }
-    this.fcX = com.tencent.mm.plugin.b.a.YA();
+    this.guI = com.tencent.mm.plugin.b.a.awy();
     initView();
+    AppMethodBeat.o(125313);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(125318);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       goBack();
+      AppMethodBeat.o(125318);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(125318);
+    return bool;
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(125315);
     super.onPause();
-    g.Dk().b(481, this);
+    g.Rc().b(481, this);
     StringBuilder localStringBuilder = new StringBuilder();
-    g.DN();
-    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.Df()).append(",").append(getClass().getName()).append(",R500_100,");
-    g.DN();
-    com.tencent.mm.plugin.b.a.d(false, com.tencent.mm.kernel.a.gd("R500_100") + ",2");
+    g.RJ();
+    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",R500_100,");
+    g.RJ();
+    com.tencent.mm.plugin.b.a.g(false, com.tencent.mm.kernel.a.mx("R500_100") + ",2");
+    AppMethodBeat.o(125315);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(125314);
     super.onResume();
-    g.Dk().a(481, this);
+    g.Rc().a(481, this);
     StringBuilder localStringBuilder = new StringBuilder();
-    g.DN();
-    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.Df()).append(",").append(getClass().getName()).append(",R500_100,");
-    g.DN();
-    com.tencent.mm.plugin.b.a.d(true, com.tencent.mm.kernel.a.gd("R500_100") + ",1");
-    com.tencent.mm.plugin.b.a.qi("R500_100");
+    g.RJ();
+    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",R500_100,");
+    g.RJ();
+    com.tencent.mm.plugin.b.a.g(true, com.tencent.mm.kernel.a.mx("R500_100") + ",1");
+    com.tencent.mm.plugin.b.a.xC("R500_100");
+    AppMethodBeat.o(125314);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    y.i("MicroMsg.RegByEmailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if ((this.dnm != null) && (this.dnm.isShowing()))
+    AppMethodBeat.i(125319);
+    ab.i("MicroMsg.RegByEmailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if ((this.eeN != null) && (this.eeN.isShowing()))
     {
-      this.dnm.dismiss();
-      this.dnm = null;
+      this.eeN.dismiss();
+      this.eeN = null;
     }
-    if (paramm.getType() != 481) {
-      y.e("MicroMsg.RegByEmailUI", "error cgi type callback:[%d]", new Object[] { Integer.valueOf(paramm.getType()) });
-    }
-    for (;;)
+    if (paramm.getType() != 481)
     {
+      ab.e("MicroMsg.RegByEmailUI", "error cgi type callback:[%d]", new Object[] { Integer.valueOf(paramm.getType()) });
+      AppMethodBeat.o(125319);
       return;
-      if ((paramInt1 == 0) && (paramInt2 == 0))
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      com.tencent.mm.plugin.b.a.xD("R500_200");
+      paramString = new Intent(this, EmailVerifyUI.class);
+      paramString.putExtra("email_address", this.dqF);
+      paramString.putExtra("password", this.gwh);
+      if ((this.gHF != null) && (!this.gHF.isEmpty()))
       {
-        com.tencent.mm.plugin.b.a.qj("R500_200");
-        paramString = new Intent(this, EmailVerifyUI.class);
-        paramString.putExtra("email_address", this.cCt);
-        paramString.putExtra("password", this.fey);
-        if ((this.fqi != null) && (!this.fqi.isEmpty()))
+        paramm = this.dqF.split("@");
+        if ((paramm != null) && (paramm.length == 2))
         {
-          paramm = this.cCt.split("@");
-          if ((paramm != null) && (paramm.length == 2))
-          {
-            paramm = paramm[1];
-            paramString.putExtra("email_login_page", (String)this.fqi.get(paramm));
-          }
+          paramm = paramm[1];
+          paramString.putExtra("email_login_page", (String)this.gHF.get(paramm));
         }
-        startActivity(paramString);
-        return;
       }
-      int i;
-      if (com.tencent.mm.plugin.account.a.a.eUS.a(this, paramInt1, paramInt2, paramString)) {
+      startActivity(paramString);
+      AppMethodBeat.o(125319);
+      return;
+    }
+    int i;
+    if (com.tencent.mm.plugin.account.a.a.gmP.a(this, paramInt1, paramInt2, paramString)) {
+      i = 1;
+    }
+    while (i != 0)
+    {
+      AppMethodBeat.o(125319);
+      return;
+      switch (paramInt2)
+      {
+      default: 
+        i = 0;
+        break;
+      case -7: 
+        paramm = new StringBuilder();
+        g.RJ();
+        paramm = paramm.append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",R20_email_duplicate_confirm,");
+        g.RJ();
+        com.tencent.mm.plugin.b.a.xE(com.tencent.mm.kernel.a.mx("R20_email_duplicate_confirm") + ",3");
+        h.a(this, 2131302399, 2131302385, 2131302401, 2131302400, new RegByEmailUI.4(this), null);
+        i = 1;
+        break;
+      case -111: 
+        h.h(this, 2131302388, 2131302385);
+        i = 1;
+        break;
+      case -34: 
+        Toast.makeText(this, 2131302383, 0).show();
+        i = 1;
+        break;
+      case -75: 
+        h.h(this, 2131296532, 2131302378);
         i = 1;
       }
-      while (i == 0)
+    }
+    if (!bo.isNullOrNil(paramString))
+    {
+      paramString = br.F(paramString, "e");
+      if ((paramString != null) && (paramString.size() > 0))
       {
-        if (bk.bl(paramString)) {
-          break label525;
-        }
-        paramString = bn.s(paramString, "e");
-        if ((paramString == null) || (paramString.size() <= 0)) {
-          break label525;
-        }
         paramString = (String)paramString.get(".e.Content");
-        if (bk.bl(paramString)) {
-          break label525;
-        }
-        h.b(this, paramString, getString(q.j.regby_email_err_tip_title), true);
-        return;
-        switch (paramInt2)
+        if (!bo.isNullOrNil(paramString))
         {
-        default: 
-          i = 0;
-          break;
-        case -7: 
-          paramm = new StringBuilder();
-          g.DN();
-          paramm = paramm.append(com.tencent.mm.kernel.a.Df()).append(",").append(getClass().getName()).append(",R20_email_duplicate_confirm,");
-          g.DN();
-          com.tencent.mm.plugin.b.a.qk(com.tencent.mm.kernel.a.gd("R20_email_duplicate_confirm") + ",3");
-          h.a(this, q.j.regby_email_user_already_exist, q.j.regby_email_err_tip_title, q.j.regby_email_user_already_exist_op_signin, q.j.regby_email_user_already_exist_op_cancel, new RegByEmailUI.4(this), null);
-          i = 1;
-          break;
-        case -111: 
-          h.h(this, q.j.regby_email_invaild_email, q.j.regby_email_err_tip_title);
-          i = 1;
-          break;
-        case -34: 
-          Toast.makeText(this, q.j.regby_email_err_freq_limit, 0).show();
-          i = 1;
-          break;
-        case -75: 
-          h.h(this, q.j.alpha_version_tip_reg, q.j.reg_username_exist_title);
-          i = 1;
+          h.b(this, paramString, getString(2131302385), true);
+          AppMethodBeat.o(125319);
+          return;
         }
       }
     }
-    label525:
-    Toast.makeText(this, getString(q.j.regby_email_send_verify_code_failed, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    Toast.makeText(this, getString(2131302396, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    AppMethodBeat.o(125319);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

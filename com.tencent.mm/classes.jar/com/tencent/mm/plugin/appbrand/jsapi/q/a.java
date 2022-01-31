@@ -1,23 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.q;
 
-import com.tencent.mm.plugin.appbrand.jsapi.s;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.luggage.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
 
-public final class a
-  extends s
+public abstract interface a
+  extends b
 {
-  public static final int CTRL_INDEX = 425;
-  public static final String NAME = "getBatteryInfo";
+  public abstract boolean a(c paramc, ai paramai);
   
-  public final String a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
-  {
-    paramc = com.tencent.mm.plugin.appbrand.v.a.a.hlJ.aqx();
-    paramJSONObject = new HashMap();
-    paramJSONObject.put("level", Integer.valueOf(paramc.hlT));
-    paramJSONObject.put("isCharging", Boolean.valueOf(paramc.hlS));
-    return h("ok", paramJSONObject);
-  }
+  public abstract int aEB();
+  
+  public abstract int aEC();
 }
 
 

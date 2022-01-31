@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.address.e;
 
-import android.content.Context;
 import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public static void P(Context paramContext, String paramString)
+  public static void xJ(String paramString)
   {
+    AppMethodBeat.i(17013);
     if (Build.VERSION.SDK_INT >= 11)
     {
       new b();
-      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
+      b.xJ(paramString);
+      AppMethodBeat.o(17013);
       return;
     }
     new c();
-    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
+    c.xJ(paramString);
+    AppMethodBeat.o(17013);
   }
 }
 

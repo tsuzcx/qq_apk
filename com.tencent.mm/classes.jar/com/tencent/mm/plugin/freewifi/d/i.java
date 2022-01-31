@@ -1,47 +1,52 @@
 package com.tencent.mm.plugin.freewifi.d;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.protocal.c.aiy;
-import com.tencent.mm.protocal.c.aiz;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.protocal.protobuf.aod;
+import com.tencent.mm.protocal.protobuf.aoe;
 
 public final class i
   extends c
 {
   public i(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    aUp();
-    aiy localaiy = (aiy)this.dmK.ecE.ecN;
-    localaiy.bHI = paramString1;
-    localaiy.koB = paramString2;
-    localaiy.koC = paramString3;
-    localaiy.koD = paramString4;
-    localaiy.bJY = paramString5;
-    localaiy.sst = paramString6;
+    AppMethodBeat.i(20792);
+    bAR();
+    aod localaod = (aod)this.rr.fsV.fta;
+    localaod.coX = paramString1;
+    localaod.mKo = paramString2;
+    localaod.mKp = paramString3;
+    localaod.mKq = paramString4;
+    localaod.crs = paramString5;
+    localaod.wkY = paramString6;
+    AppMethodBeat.o(20792);
   }
   
-  public final String aUA()
+  protected final void bAR()
   {
-    return ((aiz)this.dmK.ecF.ecN).kpJ;
-  }
-  
-  public final String aUB()
-  {
-    return ((aiz)this.dmK.ecF.ecN).kpK;
-  }
-  
-  protected final void aUp()
-  {
+    AppMethodBeat.i(20791);
     b.a locala = new b.a();
-    locala.ecH = new aiy();
-    locala.ecI = new aiz();
+    locala.fsX = new aod();
+    locala.fsY = new aoe();
     locala.uri = "/cgi-bin/mmo2o-bin/getportalapinfo";
-    locala.ecG = 1709;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
+    locala.funcId = 1709;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    AppMethodBeat.o(20791);
+  }
+  
+  public final String bBa()
+  {
+    return ((aoe)this.rr.fsW.fta).mLv;
+  }
+  
+  public final String bBb()
+  {
+    return ((aoe)this.rr.fsW.fta).mLw;
   }
   
   public final int getType()

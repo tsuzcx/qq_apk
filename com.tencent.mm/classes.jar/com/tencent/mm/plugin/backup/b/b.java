@@ -4,7 +4,7 @@ public final class b
 {
   public static abstract interface a
   {
-    public abstract void ns(int paramInt);
+    public abstract void re(int paramInt);
   }
 }
 

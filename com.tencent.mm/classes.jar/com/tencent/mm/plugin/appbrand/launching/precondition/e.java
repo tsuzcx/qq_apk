@@ -1,45 +1,50 @@
 package com.tencent.mm.plugin.appbrand.launching.precondition;
 
-import android.content.Context;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
+import android.content.ContextWrapper;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
+import com.tencent.mm.plugin.appbrand.ui.o;
 
-final class e
-  extends b
+public final class e
+  extends ContextWrapper
+  implements g
 {
-  private static final Map<String, e> gMB = new ConcurrentHashMap();
-  private final String gMC;
-  private final String gMD;
-  
-  e(Context paramContext, String paramString)
+  public e(AppBrandLaunchProxyUI paramAppBrandLaunchProxyUI)
   {
-    this.gMC = paramString;
-    this.gMD = paramContext.getClass().getName();
-    gMB.put(paramString, this);
-    paramContext = new e.a(paramString);
-    long l = TimeUnit.SECONDS.toMillis(300L);
-    paramContext.S(l, l);
+    super(paramAppBrandLaunchProxyUI);
   }
   
-  static e uX(String paramString)
+  public final void F(Intent paramIntent)
   {
-    if (bk.bl(paramString)) {
-      return null;
+    AppMethodBeat.i(132074);
+    o.a(((AppBrandLaunchProxyUI)super.getBaseContext()).getWindow());
+    o.a(((AppBrandLaunchProxyUI)super.getBaseContext()).getWindow(), true);
+    paramIntent = d.Dr(paramIntent.getStringExtra("extra_entry_token"));
+    if (paramIntent == null)
+    {
+      ((AppBrandLaunchProxyUI)super.getBaseContext()).finish();
+      AppMethodBeat.o(132074);
+      return;
     }
-    return (e)gMB.remove(paramString);
+    paramIntent.setBaseContext((AppBrandLaunchProxyUI)super.getBaseContext());
+    AppMethodBeat.o(132074);
   }
   
-  protected final String alZ()
+  public final boolean aHw()
   {
-    return this.gMD;
+    return true;
   }
+  
+  public final void onDestroy() {}
+  
+  public final void onPause() {}
+  
+  public final void onResume() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.precondition.e
  * JD-Core Version:    0.7.0.1
  */

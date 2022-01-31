@@ -1,34 +1,39 @@
 package com.tencent.mm.plugin.location.model;
 
-import com.tencent.mm.modelgeo.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.ccg;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cpm;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class o$2
-  implements a.a
+  implements b.a
 {
   o$2(o paramo) {}
   
   public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    if (!paramBoolean) {
+    AppMethodBeat.i(113384);
+    if (!paramBoolean)
+    {
+      AppMethodBeat.o(113384);
       return false;
     }
-    y.d("MicorMsg.TrackRefreshManager", "onGetlocatoin fLongitude:%f, fLatitude:%f, locType:%d, speed:%f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt), Double.valueOf(paramDouble1) });
-    if (this.lEk.lEg)
+    ab.d("MicorMsg.TrackRefreshManager", "onGetlocatoin fLongitude:%f, fLatitude:%f, locType:%d, speed:%f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt), Double.valueOf(paramDouble1) });
+    if (this.obx.obt)
     {
-      this.lEk.lEg = false;
-      this.lEk.lEi = System.currentTimeMillis();
-      long l = this.lEk.lEi - this.lEk.lEh;
-      y.d("MicorMsg.TrackRefreshManager", "locate time:%d", new Object[] { Long.valueOf(l) });
-      h.nFQ.f(10997, new Object[] { "10", "", Integer.valueOf(0), Long.valueOf(l) });
+      this.obx.obt = false;
+      this.obx.obv = System.currentTimeMillis();
+      long l = this.obx.obv - this.obx.obu;
+      ab.d("MicorMsg.TrackRefreshManager", "locate time:%d", new Object[] { Long.valueOf(l) });
+      h.qsU.e(10997, new Object[] { "10", "", Integer.valueOf(0), Long.valueOf(l) });
     }
-    if ((this.lEk.lDX != null) && (this.lEk.lDX.tRA != null))
+    if ((this.obx.obk != null) && (this.obx.obk.xYw != null))
     {
-      this.lEk.lDX.tRA.sDn = paramFloat2;
-      this.lEk.lDX.tRA.sDm = paramFloat1;
+      this.obx.obk.xYw.wyP = paramFloat2;
+      this.obx.obk.xYw.wyO = paramFloat1;
     }
+    AppMethodBeat.o(113384);
     return true;
   }
 }

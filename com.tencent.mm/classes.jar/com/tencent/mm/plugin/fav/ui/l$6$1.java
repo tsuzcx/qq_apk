@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fav.ui;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class l$6$1
   implements Runnable
@@ -10,7 +11,9 @@ final class l$6$1
   
   public final void run()
   {
-    this.kdV.jxK.setImageBitmap(this.kdU);
+    AppMethodBeat.i(74197);
+    this.myF.lHj.setImageBitmap(this.myE);
+    AppMethodBeat.o(74197);
   }
 }
 

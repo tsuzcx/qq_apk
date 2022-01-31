@@ -1,16 +1,24 @@
 package com.tencent.mm.plugin.downloader_app.ui;
 
-import android.widget.ProgressBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class TaskItemView$6
-  implements Runnable
+  implements View.OnClickListener
 {
-  TaskItemView$6(TaskItemView paramTaskItemView, int paramInt) {}
+  TaskItemView$6(TaskItemView paramTaskItemView) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    TaskItemView.i(this.iTP).setSecondaryProgress(100);
-    TaskItemView.i(this.iTP).setProgress(this.fyT);
+    AppMethodBeat.i(136267);
+    TaskItemView.a(this.lcM, false);
+    TaskItemView.g(this.lcM).setMaxLines(2);
+    TaskItemView.e(this.lcM).setVisibility(8);
+    TaskItemView.d(this.lcM).setVisibility(0);
+    AppMethodBeat.o(136267);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.shake.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -9,80 +10,101 @@ import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.shake.d.a.n;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMImageView;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.mm.ui.tools.l;
 
 public class ShakeTvHistoryListUI
   extends MMActivity
 {
-  private n.d hZq = new ShakeTvHistoryListUI.5(this);
-  private ShakeTvHistoryListUI.a odx;
-  private ListView ody;
+  private n.d jSn;
+  private ShakeTvHistoryListUI.a qRE;
+  private ListView qRF;
   private String username;
   
-  protected final int getLayoutId()
+  public ShakeTvHistoryListUI()
   {
-    return R.i.shake_tv_history_list;
+    AppMethodBeat.i(24903);
+    this.jSn = new ShakeTvHistoryListUI.5(this);
+    AppMethodBeat.o(24903);
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
-    setMMTitle(R.l.shake_tv_history_list_title);
+    return 2130970720;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(24906);
+    setMMTitle(2131303653);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        ShakeTvHistoryListUI.this.XM();
+        AppMethodBeat.i(24892);
+        ShakeTvHistoryListUI.this.hideVKB();
         ShakeTvHistoryListUI.this.finish();
+        AppMethodBeat.o(24892);
         return true;
       }
     });
-    addTextOptionMenu(0, getString(R.l.app_clear), new ShakeTvHistoryListUI.2(this));
-    this.ody = ((ListView)findViewById(R.h.shake_tv_history_listview));
-    this.odx = new ShakeTvHistoryListUI.a(this, this);
-    this.ody.setAdapter(this.odx);
-    this.ody.setOnItemClickListener(new ShakeTvHistoryListUI.3(this));
-    j localj = new j(this);
-    this.ody.setOnItemLongClickListener(new ShakeTvHistoryListUI.4(this, localj));
+    addTextOptionMenu(0, getString(2131296891), new ShakeTvHistoryListUI.2(this));
+    this.qRF = ((ListView)findViewById(2131827758));
+    this.qRE = new ShakeTvHistoryListUI.a(this, this);
+    this.qRF.setAdapter(this.qRE);
+    this.qRF.setOnItemClickListener(new ShakeTvHistoryListUI.3(this));
+    l locall = new l(this);
+    this.qRF.setOnItemLongClickListener(new ShakeTvHistoryListUI.4(this, locall));
+    AppMethodBeat.o(24906);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(24904);
     super.onCreate(paramBundle);
     initView();
+    AppMethodBeat.o(24904);
   }
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
+    AppMethodBeat.i(24907);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    this.username = ((n)this.odx.getItem(paramView.position)).field_username;
-    paramContextMenu.add(paramView.position, 0, 0, R.l.app_delete);
+    this.username = ((n)this.qRE.getItem(paramView.position)).field_username;
+    paramContextMenu.add(paramView.position, 0, 0, 2131296901);
+    AppMethodBeat.o(24907);
   }
   
   public void onDestroy()
   {
-    this.odx.bcS();
+    AppMethodBeat.i(24905);
+    this.qRE.bKb();
     super.onDestroy();
+    AppMethodBeat.o(24905);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
   
   final class a$a
   {
-    TextView haW;
-    TextView lLL;
-    MMImageView odB;
+    TextView iJG;
+    TextView ojf;
+    MMImageView qRI;
     
     a$a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeTvHistoryListUI
  * JD-Core Version:    0.7.0.1
  */

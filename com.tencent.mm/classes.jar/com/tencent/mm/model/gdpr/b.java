@@ -2,7 +2,7 @@ package com.tencent.mm.model.gdpr;
 
 public abstract interface b
 {
-  public abstract void hX(int paramInt);
+  public abstract void kK(int paramInt);
 }
 
 

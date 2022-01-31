@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.bind.a.i;
 import com.tencent.mm.plugin.account.bind.a.d;
 import com.tencent.mm.ui.base.h;
 
@@ -15,12 +15,14 @@ final class StartUnbindQQ$2$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(13762);
     paramDialogInterface = new d("");
-    g.Dk().a(paramDialogInterface, 0);
-    paramDialogInterface = this.feK.feJ;
-    StartUnbindQQ localStartUnbindQQ = this.feK.feJ;
-    this.feK.feJ.getString(a.i.app_tip);
-    StartUnbindQQ.a(paramDialogInterface, h.b(localStartUnbindQQ, this.feK.feJ.getString(a.i.setting_unbinding_qq), true, null));
+    g.Rc().a(paramDialogInterface, 0);
+    paramDialogInterface = this.gwt.gws;
+    StartUnbindQQ localStartUnbindQQ = this.gwt.gws;
+    this.gwt.gws.getString(2131297087);
+    StartUnbindQQ.a(paramDialogInterface, h.b(localStartUnbindQQ, this.gwt.gws.getString(2131303176), true, null));
+    AppMethodBeat.o(13762);
   }
 }
 

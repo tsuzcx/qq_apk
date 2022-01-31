@@ -3,11 +3,9 @@ package com.tencent.mm.plugin.traceroute.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.traceroute.a.a;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.pluginsdk.n;
 
 final class NetworkDiagnoseIntroUI$2
   implements View.OnClickListener
@@ -16,11 +14,13 @@ final class NetworkDiagnoseIntroUI$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(26012);
     paramView = new Intent();
-    paramView.putExtra("title", this.pJk.getString(R.l.privacy_tip));
-    paramView.putExtra("rawUrl", this.pJk.getString(R.l.url_agreement));
+    paramView.putExtra("title", this.tny.getString(2131302170));
+    paramView.putExtra("rawUrl", this.tny.getString(2131304454));
     paramView.putExtra("showShare", false);
-    a.eUR.j(paramView, this.pJk.mController.uMN);
+    a.gmO.i(paramView, this.tny.getContext());
+    AppMethodBeat.o(26012);
   }
 }
 

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnGroupClickListener;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.listview.AnimatedExpandableListView;
 import java.util.ArrayList;
@@ -16,72 +16,78 @@ final class SnsLabelUI$5
   
   public final boolean onGroupClick(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
   {
-    int i = SnsLabelUI.a(this.oZN).oZT;
-    y.i("MicroMsg.SnsLabelUI", "dz[previousGroup: %d    onGroupClick:%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+    AppMethodBeat.i(39015);
+    int i = SnsLabelUI.a(this.rSh).rSq;
+    ab.i("MicroMsg.SnsLabelUI", "dz[previousGroup: %d    onGroupClick:%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
     if (paramInt > 1)
     {
-      if ((SnsLabelUI.b(this.oZN) != null) && (SnsLabelUI.b(this.oZN).size() != 0) && (SnsLabelUI.bJd() == 0))
+      if ((SnsLabelUI.b(this.rSh) != null) && (SnsLabelUI.b(this.rSh).size() != 0) && (SnsLabelUI.cvA() == 0))
       {
-        SnsLabelUI.a(this.oZN, paramInt);
-        SnsLabelUI.c(this.oZN);
-        y.i("MicroMsg.SnsLabelUI", "dz[previousGroup: need transform]");
+        SnsLabelUI.a(this.rSh, paramInt);
+        SnsLabelUI.c(this.rSh);
+        ab.i("MicroMsg.SnsLabelUI", "dz[previousGroup: need transform]");
+        AppMethodBeat.o(39015);
         return true;
       }
-      if (SnsLabelUI.d(this.oZN))
+      if (SnsLabelUI.d(this.rSh))
       {
-        SnsLabelUI.e(this.oZN);
-        SnsLabelUI.a(this.oZN, paramInt);
-        SnsLabelUI.a(this.oZN, h.b(this.oZN, this.oZN.getString(i.j.sns_label_is_transforming), false, null));
-        y.i("MicroMsg.SnsLabelUI", "dz[previousGroup: isGettingTagInfo]");
+        SnsLabelUI.e(this.rSh);
+        SnsLabelUI.a(this.rSh, paramInt);
+        SnsLabelUI.a(this.rSh, h.b(this.rSh, this.rSh.getString(2131303858), false, null));
+        ab.i("MicroMsg.SnsLabelUI", "dz[previousGroup: isGettingTagInfo]");
+        AppMethodBeat.o(39015);
         return true;
       }
-      if ((SnsLabelUI.a(this.oZN).oZS == null) || (SnsLabelUI.a(this.oZN).oZS.size() == 0))
+      if ((SnsLabelUI.a(this.rSh).rSp == null) || (SnsLabelUI.a(this.rSh).rSp.size() == 0))
       {
-        SnsLabelUI.a(this.oZN, paramInt);
-        SnsLabelUI.f(this.oZN);
-        y.i("MicroMsg.SnsLabelUI", "dz[previousGroup: gotoSelectContact]");
+        SnsLabelUI.a(this.rSh, paramInt);
+        SnsLabelUI.f(this.rSh);
+        ab.i("MicroMsg.SnsLabelUI", "dz[previousGroup: gotoSelectContact]");
+        AppMethodBeat.o(39015);
         return true;
       }
       if (i == paramInt)
       {
-        if (SnsLabelUI.g(this.oZN).isGroupExpanded(paramInt)) {
-          SnsLabelUI.g(this.oZN).Ix(paramInt);
+        if (SnsLabelUI.g(this.rSh).isGroupExpanded(paramInt)) {
+          SnsLabelUI.g(this.rSh).Rp(paramInt);
         }
         for (;;)
         {
-          SnsLabelUI.a(this.oZN).oZT = paramInt;
+          SnsLabelUI.a(this.rSh).rSq = paramInt;
+          AppMethodBeat.o(39015);
           return true;
-          SnsLabelUI.g(this.oZN).Iw(paramInt);
+          SnsLabelUI.g(this.rSh).Ro(paramInt);
         }
       }
       if (i == 2)
       {
-        SnsLabelUI.g(this.oZN).collapseGroup(2);
-        SnsLabelUI.a(this.oZN).oZV.clear();
-        SnsLabelUI.a(this.oZN).oZX.clear();
+        SnsLabelUI.g(this.rSh).collapseGroup(2);
+        SnsLabelUI.a(this.rSh).rSs.clear();
+        SnsLabelUI.a(this.rSh).rSu.clear();
       }
       for (;;)
       {
-        SnsLabelUI.g(this.oZN).post(new SnsLabelUI.5.1(this, paramInt));
+        SnsLabelUI.g(this.rSh).post(new SnsLabelUI.5.1(this, paramInt));
         break;
         if (i == 3)
         {
-          SnsLabelUI.g(this.oZN).collapseGroup(3);
-          SnsLabelUI.a(this.oZN).oZW.clear();
-          SnsLabelUI.a(this.oZN).oZY.clear();
+          SnsLabelUI.g(this.rSh).collapseGroup(3);
+          SnsLabelUI.a(this.rSh).rSt.clear();
+          SnsLabelUI.a(this.rSh).rSv.clear();
         }
       }
     }
     if (i > 1) {
-      SnsLabelUI.g(this.oZN).Ix(i);
+      SnsLabelUI.g(this.rSh).Rp(i);
     }
-    SnsLabelUI.a(this.oZN).oZT = paramInt;
+    SnsLabelUI.a(this.rSh).rSq = paramInt;
+    AppMethodBeat.o(39015);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsLabelUI.5
  * JD-Core Version:    0.7.0.1
  */

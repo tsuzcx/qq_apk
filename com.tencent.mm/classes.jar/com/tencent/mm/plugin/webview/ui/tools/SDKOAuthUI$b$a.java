@@ -5,10 +5,10 @@ import android.widget.TextView;
 
 final class SDKOAuthUI$b$a
 {
-  ImageView rmt;
-  TextView rmu;
-  TextView rmv;
-  ImageView rmw;
+  ImageView vca;
+  TextView vcb;
+  TextView vcc;
+  ImageView vcd;
 }
 
 

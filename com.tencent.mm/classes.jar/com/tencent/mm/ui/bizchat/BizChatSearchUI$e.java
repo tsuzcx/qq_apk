@@ -7,8 +7,8 @@ import android.widget.TextView;
 final class BizChatSearchUI$e
 {
   public View contentView;
-  public ImageView gSx;
-  public TextView kCv;
+  public ImageView ivs;
+  public TextView mYs;
 }
 
 

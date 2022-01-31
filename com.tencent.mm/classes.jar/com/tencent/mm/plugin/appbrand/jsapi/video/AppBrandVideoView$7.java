@@ -2,15 +2,19 @@ package com.tencent.mm.plugin.appbrand.jsapi.video;
 
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandVideoView$7
-  implements c.d
+  implements d.d
 {
   AppBrandVideoView$7(AppBrandVideoView paramAppBrandVideoView) {}
   
-  public final void bX(int paramInt1, int paramInt2)
+  public final void dj(int paramInt1, int paramInt2)
   {
-    if (paramInt2 <= 0) {
+    AppMethodBeat.i(126448);
+    if (paramInt2 <= 0)
+    {
+      AppMethodBeat.o(126448);
       return;
     }
     if (paramInt1 < 0) {
@@ -22,11 +26,12 @@ final class AppBrandVideoView$7
       if (paramInt1 > paramInt2) {
         i = paramInt2;
       }
-      paramInt1 = i * AppBrandVideoView.D(this.gDS).getWidth() / paramInt2;
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)AppBrandVideoView.E(this.gDS).getLayoutParams();
+      paramInt1 = i * AppBrandVideoView.E(this.icX).getWidth() / paramInt2;
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)AppBrandVideoView.F(this.icX).getLayoutParams();
       localLayoutParams.width = paramInt1;
-      AppBrandVideoView.E(this.gDS).setLayoutParams(localLayoutParams);
-      AppBrandVideoView.E(this.gDS).requestLayout();
+      AppBrandVideoView.F(this.icX).setLayoutParams(localLayoutParams);
+      AppBrandVideoView.F(this.icX).requestLayout();
+      AppMethodBeat.o(126448);
       return;
     }
   }

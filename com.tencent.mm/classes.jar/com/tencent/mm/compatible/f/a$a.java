@@ -1,19 +1,23 @@
 package com.tencent.mm.compatible.f;
 
 import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Locale;
 
 public final class a$a
 {
-  public String bwQ;
-  public int dzi;
-  public int dzj;
-  public int dzk;
-  SparseArray<String> dzl;
+  public String bYA;
+  public int erX;
+  public int erY;
+  public int erZ;
+  SparseArray<String> esa;
   
   public final String toString()
   {
-    return String.format(Locale.US, "pkgname: %s, minCode:%d, maxCode: %d, value: %s, chkExp: %d", new Object[] { this.bwQ, Integer.valueOf(this.dzi), Integer.valueOf(this.dzj), this.dzl, Integer.valueOf(this.dzk) });
+    AppMethodBeat.i(93039);
+    String str = String.format(Locale.US, "pkgname: %s, minCode:%d, maxCode: %d, value: %s, chkExp: %d", new Object[] { this.bYA, Integer.valueOf(this.erX), Integer.valueOf(this.erY), this.esa, Integer.valueOf(this.erZ) });
+    AppMethodBeat.o(93039);
+    return str;
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.label.ui;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactLabelEditUI$13
   implements AbsListView.OnScrollListener
@@ -12,9 +13,11 @@ final class ContactLabelEditUI$13
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
+    AppMethodBeat.i(22554);
     if ((paramInt == 2) || (paramInt == 1)) {
-      this.lBl.XM();
+      this.nYx.hideVKB();
     }
+    AppMethodBeat.o(22554);
   }
 }
 

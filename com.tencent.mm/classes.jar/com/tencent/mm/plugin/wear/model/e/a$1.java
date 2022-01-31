@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wear.model.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.d;
 
 final class a$1
@@ -9,12 +10,14 @@ final class a$1
   
   public final void run()
   {
-    com.tencent.mm.plugin.wear.model.a.bYL().qRu.bc(this.qSw);
+    AppMethodBeat.i(26384);
+    com.tencent.mm.plugin.wear.model.a.cYy().uGC.bD(this.uHD);
+    AppMethodBeat.o(26384);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.a.1
  * JD-Core Version:    0.7.0.1
  */

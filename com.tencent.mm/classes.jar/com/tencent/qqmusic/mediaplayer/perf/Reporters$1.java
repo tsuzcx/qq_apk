@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.perf;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.AudioFormat.AudioType;
 import com.tencent.qqmusic.mediaplayer.AudioInformation;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
@@ -18,6 +19,7 @@ final class Reporters$1
   public final void visitSpeedCheck(List<PerformanceTracer.SpeedCheck> paramList, PerformanceTracer.OverallInfo paramOverallInfo)
   {
     int i = 1;
+    AppMethodBeat.i(128432);
     long l1 = Math.round(paramOverallInfo.totalPcmToBePlayed / paramOverallInfo.timeCostInMs);
     long l2 = this.val$audioInformation.getPlaySample();
     long l3 = this.val$audioInformation.getChannels();
@@ -54,6 +56,7 @@ final class Reporters$1
     Reporters.access$000(paramList, localStringBuilder, paramOverallInfo.timeCostInMs);
     localStringBuilder.append("============== Info end ==============");
     Logger.i("PERFORMANCE", localStringBuilder.toString());
+    AppMethodBeat.o(128432);
   }
 }
 

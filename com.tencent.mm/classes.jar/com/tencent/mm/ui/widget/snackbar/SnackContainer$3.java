@@ -3,6 +3,7 @@ package com.tencent.mm.ui.widget.snackbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Queue;
 
 final class SnackContainer$3
@@ -12,17 +13,19 @@ final class SnackContainer$3
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(112994);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(112994);
       return true;
-      this.wqa.removeCallbacks(SnackContainer.c(this.wqa));
-      SnackContainer.c(this.wqb);
-      this.wqa.startAnimation(SnackContainer.a(this.wqa));
-      if (!SnackContainer.b(this.wqa).isEmpty()) {
-        SnackContainer.b(this.wqa).clear();
+      this.AKD.removeCallbacks(SnackContainer.c(this.AKD));
+      SnackContainer.d(this.AKE);
+      this.AKD.startAnimation(SnackContainer.a(this.AKD));
+      if (!SnackContainer.b(this.AKD).isEmpty()) {
+        SnackContainer.b(this.AKD).clear();
       }
     }
   }

@@ -1,33 +1,40 @@
 package com.tencent.mm.plugin.downloader_app;
 
-import com.tencent.mm.kernel.api.bucket.c;
-import com.tencent.mm.kernel.b.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.plugin.downloader_app.a.b;
-import com.tencent.mm.plugin.downloader_app.b.d;
-import com.tencent.mm.plugin.downloader_app.b.k;
+import com.tencent.mm.plugin.downloader_app.a.e;
+import com.tencent.mm.plugin.downloader_app.b.j;
 
 public class PluginDownloaderApp
-  extends f
-  implements c, b
+  extends com.tencent.mm.kernel.b.f
+  implements com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.downloader_app.a.f
 {
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    if (paramg.Ex()) {
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.downloader_app.a.a.class, new a());
+    AppMethodBeat.i(136027);
+    if (paramg.SD())
+    {
+      com.tencent.mm.kernel.g.b(e.class, new c());
+      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.downloader_app.a.d.class, new b());
+      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.downloader_app.a.c.class, new a());
     }
+    AppMethodBeat.o(136027);
   }
   
   public void onAccountInitialized(e.c paramc)
   {
-    d.aFI();
-    k.aGq();
+    AppMethodBeat.i(136028);
+    com.tencent.mm.plugin.downloader_app.b.d.bje();
+    j.bjT();
+    AppMethodBeat.o(136028);
   }
   
   public void onAccountRelease()
   {
-    d.aFJ();
-    k.stop();
+    AppMethodBeat.i(136029);
+    com.tencent.mm.plugin.downloader_app.b.d.bjf();
+    j.stop();
+    AppMethodBeat.o(136029);
   }
 }
 

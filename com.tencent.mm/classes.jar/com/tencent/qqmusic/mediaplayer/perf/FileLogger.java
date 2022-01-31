@@ -8,85 +8,100 @@ public class FileLogger
   public static void write(java.lang.StringBuilder paramStringBuilder, java.io.File paramFile, boolean paramBoolean)
   {
     // Byte code:
-    //   0: new 19	java/io/FileWriter
-    //   3: dup
-    //   4: aload_1
-    //   5: iload_2
-    //   6: invokespecial 22	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
-    //   9: astore_3
-    //   10: aload_3
-    //   11: astore_1
-    //   12: aload_3
-    //   13: aload_0
-    //   14: invokevirtual 28	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   17: invokevirtual 31	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   20: aload_3
-    //   21: astore_1
-    //   22: aload_3
-    //   23: invokevirtual 34	java/io/FileWriter:flush	()V
-    //   26: aload_3
-    //   27: invokevirtual 37	java/io/FileWriter:close	()V
-    //   30: return
-    //   31: astore 4
-    //   33: aconst_null
-    //   34: astore_0
-    //   35: aload_0
-    //   36: astore_1
-    //   37: ldc 8
-    //   39: ldc 39
-    //   41: aload 4
-    //   43: invokestatic 45	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   46: aload_0
-    //   47: ifnull -17 -> 30
-    //   50: aload_0
-    //   51: invokevirtual 37	java/io/FileWriter:close	()V
-    //   54: return
-    //   55: astore_0
-    //   56: return
-    //   57: astore_0
-    //   58: aconst_null
-    //   59: astore_1
-    //   60: aload_1
-    //   61: ifnull +7 -> 68
-    //   64: aload_1
-    //   65: invokevirtual 37	java/io/FileWriter:close	()V
-    //   68: aload_0
-    //   69: athrow
-    //   70: astore_0
-    //   71: return
-    //   72: astore_1
-    //   73: goto -5 -> 68
-    //   76: astore_0
-    //   77: goto -17 -> 60
-    //   80: astore 4
-    //   82: aload_3
-    //   83: astore_0
-    //   84: goto -49 -> 35
+    //   0: ldc 18
+    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 26	java/io/FileWriter
+    //   8: dup
+    //   9: aload_1
+    //   10: iload_2
+    //   11: invokespecial 29	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
+    //   14: astore_3
+    //   15: aload_3
+    //   16: astore_1
+    //   17: aload_3
+    //   18: aload_0
+    //   19: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   22: invokevirtual 38	java/io/FileWriter:write	(Ljava/lang/String;)V
+    //   25: aload_3
+    //   26: astore_1
+    //   27: aload_3
+    //   28: invokevirtual 41	java/io/FileWriter:flush	()V
+    //   31: aload_3
+    //   32: invokevirtual 44	java/io/FileWriter:close	()V
+    //   35: ldc 18
+    //   37: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   40: return
+    //   41: astore_0
+    //   42: ldc 18
+    //   44: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   47: return
+    //   48: astore 4
+    //   50: aconst_null
+    //   51: astore_0
+    //   52: aload_0
+    //   53: astore_1
+    //   54: ldc 8
+    //   56: ldc 49
+    //   58: aload 4
+    //   60: invokestatic 55	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   63: aload_0
+    //   64: ifnull +38 -> 102
+    //   67: aload_0
+    //   68: invokevirtual 44	java/io/FileWriter:close	()V
+    //   71: ldc 18
+    //   73: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: return
+    //   77: astore_0
+    //   78: ldc 18
+    //   80: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: return
+    //   84: astore_0
+    //   85: aconst_null
+    //   86: astore_1
+    //   87: aload_1
+    //   88: ifnull +7 -> 95
+    //   91: aload_1
+    //   92: invokevirtual 44	java/io/FileWriter:close	()V
+    //   95: ldc 18
+    //   97: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: aload_0
+    //   101: athrow
+    //   102: ldc 18
+    //   104: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   107: return
+    //   108: astore_1
+    //   109: goto -14 -> 95
+    //   112: astore_0
+    //   113: goto -26 -> 87
+    //   116: astore 4
+    //   118: aload_3
+    //   119: astore_0
+    //   120: goto -68 -> 52
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	87	0	paramStringBuilder	java.lang.StringBuilder
-    //   0	87	1	paramFile	java.io.File
-    //   0	87	2	paramBoolean	boolean
-    //   9	74	3	localFileWriter	java.io.FileWriter
-    //   31	11	4	localIOException1	java.io.IOException
-    //   80	1	4	localIOException2	java.io.IOException
+    //   0	123	0	paramStringBuilder	java.lang.StringBuilder
+    //   0	123	1	paramFile	java.io.File
+    //   0	123	2	paramBoolean	boolean
+    //   14	105	3	localFileWriter	java.io.FileWriter
+    //   48	11	4	localIOException1	java.io.IOException
+    //   116	1	4	localIOException2	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   0	10	31	java/io/IOException
-    //   50	54	55	java/io/IOException
-    //   0	10	57	finally
-    //   26	30	70	java/io/IOException
-    //   64	68	72	java/io/IOException
-    //   12	20	76	finally
-    //   22	26	76	finally
-    //   37	46	76	finally
-    //   12	20	80	java/io/IOException
-    //   22	26	80	java/io/IOException
+    //   31	35	41	java/io/IOException
+    //   5	15	48	java/io/IOException
+    //   67	71	77	java/io/IOException
+    //   5	15	84	finally
+    //   91	95	108	java/io/IOException
+    //   17	25	112	finally
+    //   27	31	112	finally
+    //   54	63	112	finally
+    //   17	25	116	java/io/IOException
+    //   27	31	116	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.perf.FileLogger
  * JD-Core Version:    0.7.0.1
  */

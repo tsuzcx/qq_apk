@@ -1,44 +1,56 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.p;
+import com.tencent.xweb.w;
 
 final class ContactQZoneWebView$1
-  extends p
+  extends w
 {
   ContactQZoneWebView$1(ContactQZoneWebView paramContactQZoneWebView) {}
   
-  public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public final boolean a(WebView paramWebView, String paramString)
   {
+    AppMethodBeat.i(7348);
     if (paramString.startsWith("weixin://viewimage/"))
     {
-      this.rkF.SX(paramString);
+      this.vab.ahZ(paramString);
       paramWebView.stopLoading();
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(7348);
+      return true;
+      if ((paramString.startsWith("weixinping://iframe")) || (paramString.startsWith("weixinpreinject://iframe")))
+      {
+        AppMethodBeat.o(7348);
+        return true;
+      }
+      paramWebView.loadUrl(paramString);
+    }
+  }
+  
+  public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(7349);
+    if (paramString.startsWith("weixin://viewimage/"))
+    {
+      this.vab.ahZ(paramString);
+      paramWebView.stopLoading();
+      AppMethodBeat.o(7349);
       return;
     }
-    if (paramString.equals(ContactQZoneWebView.a(this.rkF)))
+    if (paramString.equals(ContactQZoneWebView.a(this.vab)))
     {
-      bk.I(this.rkF, paramString);
+      bo.M(this.vab, paramString);
       paramWebView.stopLoading();
+      AppMethodBeat.o(7349);
       return;
     }
     super.b(paramWebView, paramString, paramBitmap);
-  }
-  
-  public final boolean b(WebView paramWebView, String paramString)
-  {
-    if (paramString.startsWith("weixin://viewimage/"))
-    {
-      this.rkF.SX(paramString);
-      paramWebView.stopLoading();
-    }
-    while ((paramString.startsWith("weixinping://iframe")) || (paramString.startsWith("weixinpreinject://iframe"))) {
-      return true;
-    }
-    paramWebView.loadUrl(paramString);
-    return true;
+    AppMethodBeat.o(7349);
   }
 }
 

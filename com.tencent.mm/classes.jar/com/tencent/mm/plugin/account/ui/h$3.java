@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 
 final class h$3
@@ -11,11 +12,13 @@ final class h$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(125087);
     paramDialogInterface = new StringBuilder();
-    g.DN();
-    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.Df()).append(",").append(getClass().getName()).append(",F200_200,");
-    g.DN();
-    com.tencent.mm.plugin.b.a.d(true, com.tencent.mm.kernel.a.gd("F200_200") + ",2");
+    g.RJ();
+    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",F200_200,");
+    g.RJ();
+    com.tencent.mm.plugin.b.a.g(true, com.tencent.mm.kernel.a.mx("F200_200") + ",2");
+    AppMethodBeat.o(125087);
   }
 }
 

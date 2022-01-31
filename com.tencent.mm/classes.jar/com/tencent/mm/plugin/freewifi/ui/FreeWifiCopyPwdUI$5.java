@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.freewifi.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FreeWifiCopyPwdUI$5
   implements View.OnClickListener
@@ -12,17 +12,19 @@ final class FreeWifiCopyPwdUI$5
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(20940);
     paramView = new Intent();
     paramView.putExtra("free_wifi_show_detail_error", 1);
-    paramView.putExtra("free_wifi_error_ui_error_msg", this.krr.getString(R.l.free_wifi_connect_fail_msg));
-    paramView.putExtra("free_wifi_error_ui_error_msg_detail1", this.krs);
-    paramView.setClass(this.krr, FreeWifiErrorUI.class);
-    this.krr.startActivity(paramView);
+    paramView.putExtra("free_wifi_error_ui_error_msg", this.mNe.getString(2131300140));
+    paramView.putExtra("free_wifi_error_ui_error_msg_detail1", this.mNf);
+    paramView.setClass(this.mNe, FreeWifiErrorUI.class);
+    this.mNe.startActivity(paramView);
+    AppMethodBeat.o(20940);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiCopyPwdUI.5
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.base.stub;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bj;
 
 final class WXCommProvider$4
-  extends bf<Cursor>
+  extends bj<Cursor>
 {
   WXCommProvider$4(WXCommProvider paramWXCommProvider, Uri paramUri, int paramInt, String[] paramArrayOfString, MatrixCursor paramMatrixCursor)
   {

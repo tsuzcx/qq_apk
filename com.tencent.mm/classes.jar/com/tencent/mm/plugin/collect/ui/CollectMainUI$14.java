@@ -1,17 +1,24 @@
 package com.tencent.mm.plugin.collect.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
+import java.util.List;
 
 final class CollectMainUI$14
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnClickListener
 {
-  CollectMainUI$14(CollectMainUI paramCollectMainUI) {}
+  CollectMainUI$14(CollectMainUI paramCollectMainUI, List paramList) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(View paramView)
   {
-    this.iLP.finish();
-    return true;
+    AppMethodBeat.i(142006);
+    paramView = new d(this.kSz.getContext(), 1, false);
+    paramView.sao = new CollectMainUI.14.1(this);
+    paramView.sap = new CollectMainUI.14.2(this);
+    paramView.crd();
+    AppMethodBeat.o(142006);
   }
 }
 

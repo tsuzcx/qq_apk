@@ -4,9 +4,9 @@ import android.widget.TextView;
 
 final class i$a
 {
-  public j mUB = null;
-  public TextView mUy = null;
-  public MaxGridView mUz = null;
+  public TextView pwE = null;
+  public MaxGridView pwF = null;
+  public j pwG = null;
   
   i$a(i parami) {}
 }

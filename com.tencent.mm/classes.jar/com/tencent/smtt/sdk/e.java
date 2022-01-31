@@ -1,5 +1,7 @@
 package com.tencent.smtt.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class e
   implements ValueCallback<String>
 {
@@ -7,7 +9,9 @@ class e
   
   public void a(String paramString)
   {
+    AppMethodBeat.i(63957);
     this.a.onReceiveValue(paramString);
+    AppMethodBeat.o(63957);
   }
 }
 

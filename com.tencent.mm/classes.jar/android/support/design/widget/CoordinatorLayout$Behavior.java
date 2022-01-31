@@ -3,7 +3,7 @@ package android.support.design.widget;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Parcelable;
-import android.support.v4.view.y;
+import android.support.v4.view.ab;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,9 +15,9 @@ public abstract class CoordinatorLayout$Behavior<V extends View>
   
   public CoordinatorLayout$Behavior(Context paramContext, AttributeSet paramAttributeSet) {}
   
-  public static y b(y paramy)
+  public static ab b(ab paramab)
   {
-    return paramy;
+    return paramab;
   }
   
   public void a(CoordinatorLayout.d paramd) {}
@@ -77,7 +77,7 @@ public abstract class CoordinatorLayout$Behavior<V extends View>
   public boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, View paramView, int paramInt1, int paramInt2)
   {
     if (paramInt2 == 0) {
-      return t(paramInt1);
+      return s(paramInt1);
     }
     return false;
   }
@@ -105,7 +105,7 @@ public abstract class CoordinatorLayout$Behavior<V extends View>
   }
   
   @Deprecated
-  public boolean t(int paramInt)
+  public boolean s(int paramInt)
   {
     return false;
   }

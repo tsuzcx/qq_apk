@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 public abstract interface v$b
 {
-  public abstract Bitmap pe(String paramString);
+  public abstract Bitmap wv(String paramString);
 }
 
 

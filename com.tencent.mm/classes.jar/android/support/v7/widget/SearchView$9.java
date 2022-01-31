@@ -11,7 +11,7 @@ final class SearchView$9
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.ajT.cb(paramInt);
+    this.amj.cj(paramInt);
   }
 }
 

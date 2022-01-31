@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$ct
+public final class c$ct
   extends c.g
 {
-  c$ct()
+  public c$ct()
   {
-    super("getSystemInfo", "getSystemInfo", 311, false);
+    super("getSearchEmotionData", "getSearchEmotionData", 20000, false);
   }
 }
 

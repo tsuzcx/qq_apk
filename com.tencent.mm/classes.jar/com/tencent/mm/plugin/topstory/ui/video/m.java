@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import com.tencent.mm.ak.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.f;
 import com.tencent.mm.plugin.topstory.a.g;
-import com.tencent.mm.protocal.c.byf;
-import com.tencent.mm.protocal.c.byh;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ckw;
+import com.tencent.mm.protocal.protobuf.cky;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.io.File;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,13 +18,22 @@ import java.util.Set;
 
 public final class m
 {
-  b pEp;
-  String pFR;
-  Map<String, byh> pFS = Collections.synchronizedMap(new HashMap());
-  Set<String> pFT = Collections.synchronizedSet(new HashSet());
-  private int pFU = 0;
+  private int smh;
+  b thM;
+  String tjp;
+  Map<String, cky> tjq;
+  Set<String> tjr;
   
-  static long N(long paramLong1, long paramLong2)
+  public m()
+  {
+    AppMethodBeat.i(1751);
+    this.smh = 0;
+    this.tjq = Collections.synchronizedMap(new HashMap());
+    this.tjr = Collections.synchronizedSet(new HashSet());
+    AppMethodBeat.o(1751);
+  }
+  
+  static long ac(long paramLong1, long paramLong2)
   {
     long l = 0L;
     if (paramLong2 != 0L) {
@@ -30,35 +42,41 @@ public final class m
     return l;
   }
   
-  public final void akT()
+  public final void aEM()
   {
-    this.pFU -= 1;
-    y.i("MicroMsg.TopStory.TopStoryPreloadMgr", "onUIDestroy %d", new Object[] { Integer.valueOf(this.pFU) });
-    if (this.pFU <= 0)
+    AppMethodBeat.i(1753);
+    this.smh -= 1;
+    ab.i("MicroMsg.TopStory.TopStoryPreloadMgr", "onUIDestroy %d", new Object[] { Integer.valueOf(this.smh) });
+    if (this.smh <= 0)
     {
-      bOo();
-      this.pFT.clear();
-      e.post(new m.b(this, this.pFR), "TopStory.DeleteVideoFolderTask");
-      this.pEp = null;
+      cKa();
+      this.tjr.clear();
+      d.post(new m.b(this, this.tjp), "TopStory.DeleteVideoFolderTask");
+      this.thM = null;
     }
+    AppMethodBeat.o(1753);
   }
   
-  public final void bOo()
+  public final void cKa()
   {
-    Iterator localIterator = this.pFT.iterator();
+    AppMethodBeat.i(1754);
+    Iterator localIterator = this.tjr.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      f.Nd().lM(str);
+      f.afO().sJ(str);
     }
+    AppMethodBeat.o(1754);
   }
   
   public final void d(b paramb)
   {
-    this.pFU += 1;
-    y.i("MicroMsg.TopStory.TopStoryPreloadMgr", "onUICreate %d", new Object[] { Integer.valueOf(this.pFU) });
-    this.pEp = paramb;
-    this.pFR = g.PJ(paramb.bNv().tNY);
+    AppMethodBeat.i(1752);
+    this.smh += 1;
+    ab.i("MicroMsg.TopStory.TopStoryPreloadMgr", "onUICreate %d", new Object[] { Integer.valueOf(this.smh) });
+    this.thM = paramb;
+    this.tjp = g.aef(paramb.cJf().xUt);
+    AppMethodBeat.o(1752);
   }
 }
 

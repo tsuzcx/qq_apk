@@ -1,29 +1,23 @@
 package com.tencent.matrix.resource;
 
-import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.matrix.a;
+import com.tencent.matrix.g.c;
 import org.json.JSONObject;
 
 public class CanaryResultService
-  extends IntentService
+  extends MatrixJobIntentService
 {
-  public CanaryResultService()
-  {
-    super("Matrix.CanaryResultService");
-  }
-  
   public static void d(Context paramContext, String paramString1, String paramString2)
   {
     Intent localIntent = new Intent(paramContext, CanaryResultService.class);
     localIntent.setAction("com.tencent.matrix.resource.result.action.REPORT_HPROF_RESULT");
     localIntent.putExtra("RESULT_PATH", paramString1);
     localIntent.putExtra("RESULT_ACTIVITY", paramString2);
-    paramContext.startService(localIntent);
+    a(paramContext, CanaryResultService.class, -84148994, localIntent);
   }
   
-  protected void onHandleIntent(Intent paramIntent)
+  protected final void l(Intent paramIntent)
   {
     Object localObject;
     String str;
@@ -40,19 +34,19 @@ public class CanaryResultService
         paramIntent = new JSONObject();
         paramIntent.put("resultZipPath", localObject);
         paramIntent.put("activity", str);
-        localObject = a.qO().l(c.class);
+        localObject = com.tencent.matrix.b.yD().z(b.class);
         if (localObject != null) {
-          ((com.tencent.matrix.b.b)localObject).a(new com.tencent.matrix.c.b(paramIntent));
+          ((com.tencent.matrix.d.b)localObject).onDetectIssue(new com.tencent.matrix.e.b(paramIntent));
         }
         return;
       }
       catch (Throwable paramIntent)
       {
-        com.tencent.matrix.d.b.printErrStackTrace("Matrix.CanaryResultService", paramIntent, "unexpected exception, skip reporting.", new Object[0]);
+        c.printErrStackTrace("Matrix.CanaryResultService", paramIntent, "unexpected exception, skip reporting.", new Object[0]);
         return;
       }
     }
-    com.tencent.matrix.d.b.e("Matrix.CanaryResultService", "resultPath or activityName is null or empty, skip reporting.", new Object[0]);
+    c.e("Matrix.CanaryResultService", "resultPath or activityName is null or empty, skip reporting.", new Object[0]);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.notification.ui;
 public class FailSendMsgNotification$FailSendNormalMsgNotificationService
   extends FailSendMsgNotification.FailSendMsgNotificationService
 {
-  protected final int bpO()
+  protected final int bYu()
   {
     return 1;
   }

@@ -2,6 +2,7 @@ package com.tencent.mm.ui.transmit;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 final class MMCreateChatroomUI$4
@@ -11,7 +12,9 @@ final class MMCreateChatroomUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MMCreateChatroomUI.a(this.wgf, this.vNG);
+    AppMethodBeat.i(35043);
+    MMCreateChatroomUI.a(this.AyW, this.Afj);
+    AppMethodBeat.o(35043);
   }
 }
 

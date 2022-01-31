@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.account.security.ui;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelfriend.a;
 import com.tencent.mm.plugin.account.friend.a.x;
-import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.plugin.account.security.a.f;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 
 final class SecurityAccountVerifyUI$6
@@ -19,23 +19,26 @@ final class SecurityAccountVerifyUI$6
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = SecurityAccountVerifyUI.g(this.fkK).getText().toString().trim();
-    if (bk.bl(paramMenuItem))
+    AppMethodBeat.i(69922);
+    paramMenuItem = SecurityAccountVerifyUI.g(this.gCb).getText().toString().trim();
+    if (bo.isNullOrNil(paramMenuItem))
     {
-      h.h(this.fkK, a.d.bind_mcontact_verifynull, a.d.app_tip);
+      h.h(this.gCb, 2131297622, 2131297087);
+      AppMethodBeat.o(69922);
       return true;
     }
-    this.fkK.XM();
-    SecurityAccountVerifyUI.a(this.fkK, f.bZ(this.fkK));
-    SecurityAccountVerifyUI.b(this.fkK, f.Xz());
-    if (!SecurityAccountVerifyUI.h(this.fkK)) {}
-    for (paramMenuItem = new a(SecurityAccountVerifyUI.d(this.fkK), paramMenuItem, "", SecurityAccountVerifyUI.e(this.fkK), SecurityAccountVerifyUI.i(this.fkK), SecurityAccountVerifyUI.j(this.fkK));; paramMenuItem = new x(SecurityAccountVerifyUI.d(this.fkK), 11, paramMenuItem, "", SecurityAccountVerifyUI.i(this.fkK), SecurityAccountVerifyUI.j(this.fkK)))
+    this.gCb.hideVKB();
+    SecurityAccountVerifyUI.a(this.gCb, f.cF(this.gCb));
+    SecurityAccountVerifyUI.b(this.gCb, f.arb());
+    if (!SecurityAccountVerifyUI.h(this.gCb)) {}
+    for (paramMenuItem = new a(SecurityAccountVerifyUI.d(this.gCb), paramMenuItem, "", SecurityAccountVerifyUI.e(this.gCb), SecurityAccountVerifyUI.i(this.gCb), SecurityAccountVerifyUI.j(this.gCb));; paramMenuItem = new x(SecurityAccountVerifyUI.d(this.gCb), 11, paramMenuItem, "", SecurityAccountVerifyUI.i(this.gCb), SecurityAccountVerifyUI.j(this.gCb)))
     {
-      g.Dk().a(paramMenuItem, 0);
-      SecurityAccountVerifyUI localSecurityAccountVerifyUI1 = this.fkK;
-      SecurityAccountVerifyUI localSecurityAccountVerifyUI2 = this.fkK;
-      this.fkK.getString(a.d.app_tip);
-      SecurityAccountVerifyUI.a(localSecurityAccountVerifyUI1, h.b(localSecurityAccountVerifyUI2, this.fkK.getString(a.d.bind_mcontact_verifing), true, new SecurityAccountVerifyUI.6.1(this, paramMenuItem)));
+      g.Rc().a(paramMenuItem, 0);
+      SecurityAccountVerifyUI localSecurityAccountVerifyUI1 = this.gCb;
+      SecurityAccountVerifyUI localSecurityAccountVerifyUI2 = this.gCb;
+      this.gCb.getString(2131297087);
+      SecurityAccountVerifyUI.a(localSecurityAccountVerifyUI1, h.b(localSecurityAccountVerifyUI2, this.gCb.getString(2131297610), true, new SecurityAccountVerifyUI.6.1(this, paramMenuItem)));
+      AppMethodBeat.o(69922);
       return true;
     }
   }

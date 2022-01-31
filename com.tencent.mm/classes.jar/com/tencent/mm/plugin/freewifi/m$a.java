@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.freewifi;
 
-import com.tencent.mm.ah.m;
+import com.tencent.mm.ai.m;
 
 public abstract interface m$a
 {
-  public abstract void i(int paramInt1, int paramInt2, String paramString, m paramm);
+  public abstract void g(int paramInt1, int paramInt2, String paramString, m paramm);
 }
 
 

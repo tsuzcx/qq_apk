@@ -1,13 +1,17 @@
 package com.tencent.mm.plugin.facedetect.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FaceDetectPrepareUI$5
   implements Runnable
 {
-  FaceDetectPrepareUI$5(FaceDetectPrepareUI paramFaceDetectPrepareUI, d paramd) {}
+  FaceDetectPrepareUI$5(FaceDetectPrepareUI paramFaceDetectPrepareUI, c paramc) {}
   
   public final void run()
   {
-    this.jRg.a(true, this.jRj, this.jQG);
+    AppMethodBeat.i(404);
+    this.mlC.a(true, this.mlF, this.mlb);
+    AppMethodBeat.o(404);
   }
 }
 

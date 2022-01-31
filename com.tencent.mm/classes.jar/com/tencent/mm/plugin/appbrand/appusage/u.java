@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.plugin.appbrand.config.l.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.config.k.a;
 import com.tencent.mm.plugin.appbrand.config.s;
-import com.tencent.mm.protocal.c.cmc;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.czt;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -13,23 +14,25 @@ import java.util.Set;
 
  enum u
 {
-  static void a(int paramInt, LinkedList<cmc> paramLinkedList)
+  static void a(int paramInt, LinkedList<czt> paramLinkedList)
   {
+    AppMethodBeat.i(129665);
     HashSet localHashSet = new HashSet();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      localObject = (cmc)paramLinkedList.next();
-      if (!bk.bl(((cmc)localObject).username)) {
-        localHashSet.add(((cmc)localObject).username);
+      localObject = (czt)paramLinkedList.next();
+      if (!bo.isNullOrNil(((czt)localObject).username)) {
+        localHashSet.add(((czt)localObject).username);
       }
     }
     Object localObject = new ArrayList(localHashSet.size());
     ((List)localObject).addAll(localHashSet);
     if (paramInt == 3) {}
-    for (paramLinkedList = l.a.fQv;; paramLinkedList = l.a.fQu)
+    for (paramLinkedList = k.a.hjg;; paramLinkedList = k.a.hjf)
     {
       s.a((List)localObject, paramLinkedList);
+      AppMethodBeat.o(129665);
       return;
     }
   }

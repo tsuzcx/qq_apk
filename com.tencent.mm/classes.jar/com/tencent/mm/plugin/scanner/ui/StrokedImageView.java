@@ -9,7 +9,7 @@ import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import com.tencent.mm.R.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class StrokedImageView
   extends ImageView
@@ -19,12 +19,15 @@ public class StrokedImageView
   public StrokedImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.color = paramContext.getResources().getColor(R.e.scan_product_img_stroke_color);
+    AppMethodBeat.i(81341);
+    this.color = paramContext.getResources().getColor(2131690415);
+    AppMethodBeat.o(81341);
   }
   
   @SuppressLint({"DrawAllocation"})
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(81342);
     super.onDraw(paramCanvas);
     Rect localRect = paramCanvas.getClipBounds();
     localRect.left += 1;
@@ -37,6 +40,7 @@ public class StrokedImageView
     localPaint.setAntiAlias(true);
     localPaint.setStrokeWidth(1.5F);
     paramCanvas.drawRect(localRect, localPaint);
+    AppMethodBeat.o(81342);
   }
   
   public void setStrokeColor(int paramInt)

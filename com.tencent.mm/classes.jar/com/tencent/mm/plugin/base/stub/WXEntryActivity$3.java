@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.base.stub;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WXEntryActivity$3
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
   WXEntryActivity$3(WXEntryActivity paramWXEntryActivity) {}
   
-  public final void onClick(View paramView)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    WXEntryActivity.c(this.hSD);
-    this.hSD.finish();
+    AppMethodBeat.i(153506);
+    this.jMo.finish();
+    AppMethodBeat.o(153506);
   }
 }
 

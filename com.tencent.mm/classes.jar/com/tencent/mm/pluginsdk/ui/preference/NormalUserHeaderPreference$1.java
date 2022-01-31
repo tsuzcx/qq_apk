@@ -1,8 +1,13 @@
 package com.tencent.mm.pluginsdk.ui.preference;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.pluginsdk.ui.ProfileHdHeadImg;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.ui.MMActivity;
 
 final class NormalUserHeaderPreference$1
   implements View.OnClickListener
@@ -11,7 +16,16 @@ final class NormalUserHeaderPreference$1
   
   public final void onClick(View paramView)
   {
-    d.x(NormalUserHeaderPreference.a(this.siZ), "bottle", ".ui.BottlePersonalInfoUI");
+    AppMethodBeat.i(28071);
+    Object localObject = NormalUserHeaderPreference.a(this.wbA).field_username;
+    paramView = (View)localObject;
+    if (ad.nM((String)localObject)) {
+      paramView = ad.ark((String)localObject);
+    }
+    localObject = new Intent(NormalUserHeaderPreference.b(this.wbA), ProfileHdHeadImg.class);
+    ((Intent)localObject).putExtra("username", paramView);
+    NormalUserHeaderPreference.b(this.wbA).startActivity((Intent)localObject);
+    AppMethodBeat.o(28071);
   }
 }
 

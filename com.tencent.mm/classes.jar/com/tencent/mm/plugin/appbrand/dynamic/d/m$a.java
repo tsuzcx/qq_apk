@@ -1,7 +1,10 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.a;
+import com.tencent.mm.ipcinvoker.c;
+import com.tencent.mm.modelappbrand.t;
 
 class m$a
   implements a<Bundle, Bundle>

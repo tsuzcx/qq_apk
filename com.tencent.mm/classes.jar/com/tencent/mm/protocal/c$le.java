@@ -5,7 +5,7 @@ public final class c$le
 {
   public c$le()
   {
-    super("WNNativeCallbackOnBecomeEdited", "WNNativeCallbackOnBecomeEdited", 10006, false);
+    super("uxSearchOpLog", "uxSearchOpLog", 10000, false);
   }
 }
 

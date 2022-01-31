@@ -1,57 +1,74 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.e.a;
-import com.tencent.luggage.e.a.a;
-import com.tencent.mm.plugin.webview.luggage.b.l;
+import com.tencent.luggage.d.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.e.q;
+import com.tencent.mm.plugin.webview.luggage.c.b;
 import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONArray;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class t
-  extends ax<e>
+  extends bi<e>
 {
-  public final void a(Context paramContext, String paramString, aw.a parama) {}
-  
-  public final int aGj()
+  public final void a(Context paramContext, String paramString, bh.a parama)
   {
-    return 0;
-  }
-  
-  public final void b(a<e>.a parama)
-  {
-    y.i("MicroMsg.JsApiHideMenuItems", "invokeInOwn");
-    JSONArray localJSONArray = parama.bih.bhk.optJSONArray("menuList");
-    if (localJSONArray == null)
+    AppMethodBeat.i(6313);
+    ab.i("MicroMsg.JsApiGetOpenDeviceId", "invokeInMM");
+    paramContext = b.BJ(paramString);
+    if (paramContext == null)
     {
-      y.i("MicroMsg.JsApiHideMenuItems", "data is null");
-      parama.a("invalid_data", null);
+      ab.e("MicroMsg.JsApiGetOpenDeviceId", "data is null");
+      parama.c("fail", null);
+      AppMethodBeat.o(6313);
       return;
     }
-    m localm = ((e)parama.big).rbE;
-    if ((localm != null) && (localJSONArray != null))
+    paramString = paramContext.optString("preVerifyAppId");
+    paramContext = q.bP(true);
+    String str = q.LK();
+    if ((!bo.isNullOrNil(paramContext)) && (!bo.isNullOrNil(str)) && (!bo.isNullOrNil(paramString)))
     {
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        localm.getMenuHelp().RN(localJSONArray.optString(i));
-        i += 1;
-      }
+      paramContext = ag.cE(ag.cE(paramString + paramContext));
+      str = ag.cE(ag.cE(paramString + str));
+      paramString = new JSONObject();
     }
-    parama.a("", null);
+    try
+    {
+      paramString.put("deviceid", paramContext);
+      paramString.put("newDeviceId", str);
+      label159:
+      parama.c(null, paramString);
+      AppMethodBeat.o(6313);
+      return;
+      parama.c("fail", null);
+      AppMethodBeat.o(6313);
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      break label159;
+    }
+  }
+  
+  public final void b(a<e>.a parama) {}
+  
+  public final int bjL()
+  {
+    return 1;
   }
   
   public final String name()
   {
-    return "hideMenuItems";
+    return "getOpenDeviceId";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.t
  * JD-Core Version:    0.7.0.1
  */

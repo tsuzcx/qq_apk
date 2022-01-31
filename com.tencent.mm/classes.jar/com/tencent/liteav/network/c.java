@@ -2,6 +2,7 @@ package com.tencent.liteav.network;
 
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,6 +32,7 @@ class c
   
   private a a(JSONObject paramJSONObject)
   {
+    AppMethodBeat.i(67453);
     a locala = new a();
     try
     {
@@ -42,15 +44,20 @@ class c
       if ((paramJSONObject.has("type")) && (paramJSONObject.getInt("type") == 2)) {
         locala.c = true;
       }
+      AppMethodBeat.o(67453);
       return locala;
     }
-    catch (JSONException paramJSONObject) {}
+    catch (JSONException paramJSONObject)
+    {
+      AppMethodBeat.o(67453);
+    }
     return null;
   }
   
   private ArrayList<a> a(String paramString)
   {
     int m = 0;
+    AppMethodBeat.i(67452);
     Object localObject = new ArrayList();
     for (;;)
     {
@@ -59,12 +66,17 @@ class c
       try
       {
         paramString = new JSONObject(paramString);
-        if (paramString.getInt("state") != 0) {
+        j = paramString.getInt("state");
+        if (j != 0)
+        {
+          AppMethodBeat.o(67452);
           return null;
         }
         paramString = paramString.getJSONObject("content").getJSONArray("list");
-        if (paramString == null) {
-          break label278;
+        if (paramString == null)
+        {
+          AppMethodBeat.o(67452);
+          return null;
         }
         j = 0;
         k = m;
@@ -73,70 +85,76 @@ class c
         {
           locala = a((JSONObject)paramString.opt(j));
           if ((locala == null) || (!locala.c)) {
-            break label280;
+            break label315;
           }
           ((ArrayList)localObject).add(locala);
-          break label280;
+          break label315;
         }
         if (k < paramString.length())
         {
           locala = a((JSONObject)paramString.opt(k));
           if ((locala == null) || (locala.c)) {
-            break label287;
+            break label322;
           }
           ((ArrayList)localObject).add(locala);
-          break label287;
+          break label322;
         }
         if ((com.tencent.liteav.basic.e.b.a().a("Network", "EnableRouteOptimize") == 1L) && (i.a().c()))
         {
           paramString = a((ArrayList)localObject, true);
           localObject = paramString;
           paramString = (String)localObject;
-          try
-          {
-            a((ArrayList)localObject);
-            return localObject;
-          }
-          catch (JSONException localJSONException)
-          {
-            return paramString;
-          }
-        }
-        long l1 = com.tencent.liteav.basic.e.b.a().a("Network", "RouteSamplingMaxCount");
-        if (l1 >= 1L)
-        {
-          long l2 = i.a().a("51451748-d8f2-4629-9071-db2983aa7251");
-          if (l2 <= l1)
-          {
-            paramString = a(localJSONException, false);
-            str = paramString;
-            paramString = str;
-            i.a().a("51451748-d8f2-4629-9071-db2983aa7251", l2 + 1L);
-            paramString = str;
-            a(str);
-            return str;
-          }
         }
       }
       catch (JSONException paramString)
       {
-        String str;
-        return str;
+        long l1;
+        long l2;
+        paramString = (String)localObject;
+        AppMethodBeat.o(67452);
+        return paramString;
       }
-      continue;
-      label278:
-      return null;
-      label280:
+      try
+      {
+        a((ArrayList)localObject);
+        AppMethodBeat.o(67452);
+        return localObject;
+      }
+      catch (JSONException localJSONException)
+      {
+        continue;
+        continue;
+      }
+      l1 = com.tencent.liteav.basic.e.b.a().a("Network", "RouteSamplingMaxCount");
+      if (l1 >= 1L)
+      {
+        l2 = i.a().a("51451748-d8f2-4629-9071-db2983aa7251");
+        if (l2 <= l1)
+        {
+          paramString = a((ArrayList)localObject, false);
+          localObject = paramString;
+          paramString = (String)localObject;
+          i.a().a("51451748-d8f2-4629-9071-db2983aa7251", l2 + 1L);
+          paramString = (String)localObject;
+          a((ArrayList)localObject);
+          AppMethodBeat.o(67452);
+          return localObject;
+        }
+      }
+      label315:
       j += 1;
       continue;
-      label287:
+      label322:
       k += 1;
     }
   }
   
   private ArrayList<a> a(ArrayList<a> paramArrayList, boolean paramBoolean)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+    AppMethodBeat.i(67456);
+    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      AppMethodBeat.o(67456);
       return null;
     }
     Object localObject2 = new ArrayList();
@@ -155,7 +173,7 @@ class c
       }
     }
     Object localObject1 = new ArrayList();
-    label241:
+    label251:
     while ((((ArrayList)localObject2).size() > 0) || (localArrayList.size() > 0))
     {
       if (paramBoolean)
@@ -172,7 +190,7 @@ class c
       for (;;)
       {
         if (localArrayList.size() <= 0) {
-          break label241;
+          break label251;
         }
         ((ArrayList)localObject1).add(localArrayList.get(0));
         localArrayList.remove(0);
@@ -195,11 +213,13 @@ class c
         ((ArrayList)localObject1).add(paramArrayList);
       }
     }
+    AppMethodBeat.o(67456);
     return localObject1;
   }
   
   private void a(ArrayList<a> paramArrayList)
   {
+    AppMethodBeat.i(67457);
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
       Iterator localIterator = paramArrayList.iterator();
@@ -209,15 +229,19 @@ class c
       }
       TXCLog.e("TXCIntelligentRoute", paramArrayList);
     }
+    AppMethodBeat.o(67457);
   }
   
   private String b(String paramString, int paramInt)
   {
-    localStringBuffer = new StringBuffer("");
+    AppMethodBeat.i(67450);
+    StringBuffer localStringBuffer = new StringBuffer("");
     try
     {
       paramString = c(paramString, paramInt);
-      if (paramString == null) {
+      if (paramString == null)
+      {
+        AppMethodBeat.o(67450);
         return "";
       }
       paramString = new BufferedReader(new InputStreamReader(paramString));
@@ -229,54 +253,54 @@ class c
         }
         localStringBuffer.append(str);
       }
-      return localStringBuffer.toString();
+      return paramString;
     }
-    catch (IOException paramString) {}
+    catch (IOException paramString)
+    {
+      paramString = localStringBuffer.toString();
+      AppMethodBeat.o(67450);
+    }
   }
   
   private boolean b(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int k;
-    int j;
+    AppMethodBeat.i(67454);
     if (paramString != null)
     {
       paramString = paramString.split("[.]");
-      k = paramString.length;
-      j = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (j < k)
+      int k = paramString.length;
+      int j = 0;
+      while (j < k)
       {
-        if (!c(paramString[j])) {
-          bool1 = true;
+        if (!c(paramString[j]))
+        {
+          AppMethodBeat.o(67454);
+          return true;
         }
+        j += 1;
       }
-      else {
-        return bool1;
-      }
-      j += 1;
     }
+    AppMethodBeat.o(67454);
+    return false;
   }
   
   private InputStream c(String paramString, int paramInt)
   {
+    AppMethodBeat.i(67451);
     Object localObject = new URL("http://tcdns.myqcloud.com/queryip").openConnection();
-    try
+    for (;;)
     {
-      localObject = (HttpURLConnection)localObject;
-      ((HttpURLConnection)localObject).setRequestMethod("GET");
-      ((HttpURLConnection)localObject).setRequestProperty("forward_stream", paramString);
-      ((HttpURLConnection)localObject).setRequestProperty("forward_num", "2");
-      ((HttpURLConnection)localObject).setRequestProperty("sdk_version", TXCCommonUtil.getSDKVersionStr());
-      if (paramInt == 1) {
-        ((HttpURLConnection)localObject).setRequestProperty("request_type", "1");
-      }
-      for (;;)
+      try
       {
+        localObject = (HttpURLConnection)localObject;
+        ((HttpURLConnection)localObject).setRequestMethod("GET");
+        ((HttpURLConnection)localObject).setRequestProperty("forward_stream", paramString);
+        ((HttpURLConnection)localObject).setRequestProperty("forward_num", "2");
+        ((HttpURLConnection)localObject).setRequestProperty("sdk_version", TXCCommonUtil.getSDKVersionStr());
+        if (paramInt != 1) {
+          continue;
+        }
+        ((HttpURLConnection)localObject).setRequestProperty("request_type", "1");
         if (this.b > 0)
         {
           ((HttpURLConnection)localObject).setConnectTimeout(this.b * 1000);
@@ -284,34 +308,44 @@ class c
         }
         ((HttpURLConnection)localObject).connect();
         if (((HttpURLConnection)localObject).getResponseCode() != 200) {
-          break;
+          continue;
         }
-        return ((HttpURLConnection)localObject).getInputStream();
-        if (paramInt == 2) {
-          ((HttpURLConnection)localObject).setRequestProperty("request_type", "2");
-        } else {
-          ((HttpURLConnection)localObject).setRequestProperty("request_type", "3");
-        }
+        paramString = ((HttpURLConnection)localObject).getInputStream();
       }
-      return null;
+      catch (Exception paramString)
+      {
+        paramString = null;
+        continue;
+      }
+      AppMethodBeat.o(67451);
+      return paramString;
+      if (paramInt == 2) {
+        ((HttpURLConnection)localObject).setRequestProperty("request_type", "2");
+      } else {
+        ((HttpURLConnection)localObject).setRequestProperty("request_type", "3");
+      }
     }
-    catch (Exception paramString) {}
   }
   
   private boolean c(String paramString)
   {
-    return Pattern.compile("[0-9]*").matcher(paramString).matches();
+    AppMethodBeat.i(67455);
+    boolean bool = Pattern.compile("[0-9]*").matcher(paramString).matches();
+    AppMethodBeat.o(67455);
+    return bool;
   }
   
   public void a(String paramString, int paramInt)
   {
+    AppMethodBeat.i(67449);
     this.i = new c.1(this, "TXCPushRoute", paramString, paramInt);
     this.i.start();
+    AppMethodBeat.o(67449);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.liteav.network.c
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ import android.os.Bundle;
 public class ReportFragment
   extends Fragment
 {
-  private ActivityInitializationListener cF;
+  ActivityInitializationListener dl;
   
-  private void b(Lifecycle.Event paramEvent)
+  private void a(Lifecycle.Event paramEvent)
   {
     Object localObject = getActivity();
     if ((localObject instanceof LifecycleRegistryOwner)) {
@@ -28,6 +28,11 @@ public class ReportFragment
     ((LifecycleRegistry)localObject).handleLifecycleEvent(paramEvent);
   }
   
+  static ReportFragment b(Activity paramActivity)
+  {
+    return (ReportFragment)paramActivity.getFragmentManager().findFragmentByTag("android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag");
+  }
+  
   public static void injectIfNeededIn(Activity paramActivity)
   {
     paramActivity = paramActivity.getFragmentManager();
@@ -41,50 +46,50 @@ public class ReportFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    paramBundle = this.cF;
+    paramBundle = this.dl;
     if (paramBundle != null) {
       paramBundle.onCreate();
     }
-    b(Lifecycle.Event.ON_CREATE);
+    a(Lifecycle.Event.ON_CREATE);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    b(Lifecycle.Event.ON_DESTROY);
-    this.cF = null;
+    a(Lifecycle.Event.ON_DESTROY);
+    this.dl = null;
   }
   
   public void onPause()
   {
     super.onPause();
-    b(Lifecycle.Event.ON_PAUSE);
+    a(Lifecycle.Event.ON_PAUSE);
   }
   
   public void onResume()
   {
     super.onResume();
-    ActivityInitializationListener localActivityInitializationListener = this.cF;
+    ActivityInitializationListener localActivityInitializationListener = this.dl;
     if (localActivityInitializationListener != null) {
       localActivityInitializationListener.onResume();
     }
-    b(Lifecycle.Event.ON_RESUME);
+    a(Lifecycle.Event.ON_RESUME);
   }
   
   public void onStart()
   {
     super.onStart();
-    ActivityInitializationListener localActivityInitializationListener = this.cF;
+    ActivityInitializationListener localActivityInitializationListener = this.dl;
     if (localActivityInitializationListener != null) {
       localActivityInitializationListener.onStart();
     }
-    b(Lifecycle.Event.ON_START);
+    a(Lifecycle.Event.ON_START);
   }
   
   public void onStop()
   {
     super.onStop();
-    b(Lifecycle.Event.ON_STOP);
+    a(Lifecycle.Event.ON_STOP);
   }
   
   static abstract interface ActivityInitializationListener

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.pwdgroup.ui.widget;
 
 public abstract interface MMCallBackScrollView$a
 {
-  public abstract void bR(int paramInt);
+  public abstract void bX(int paramInt);
 }
 
 

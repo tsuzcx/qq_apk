@@ -2,7 +2,8 @@ package com.tencent.mm.ui.tools;
 
 import android.os.Message;
 import android.view.MotionEvent;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.TimerTask;
 
 final class CropImageView$3$1
@@ -12,19 +13,21 @@ final class CropImageView$3$1
   
   public final void run()
   {
-    if (CropImageView.z(this.vZl.vZj))
+    AppMethodBeat.i(107602);
+    if (CropImageView.z(this.Ary.Arw))
     {
       Message localMessage = new Message();
       localMessage.what = 4661;
-      localMessage.obj = this.vZk;
-      CropImageView.l(this.vZl.vZj).sendMessage(localMessage);
-      CropImageView.c(this.vZl.vZj, false);
+      localMessage.obj = this.Arx;
+      CropImageView.l(this.Ary.Arw).sendMessage(localMessage);
+      CropImageView.c(this.Ary.Arw, false);
     }
+    AppMethodBeat.o(107602);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.tools.CropImageView.3.1
  * JD-Core Version:    0.7.0.1
  */

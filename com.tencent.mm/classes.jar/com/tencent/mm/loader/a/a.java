@@ -1,64 +1,38 @@
 package com.tencent.mm.loader.a;
 
-import android.os.Build.VERSION;
-import android.os.Bundle;
+import a.f.b.j;
+import a.l;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mm.loader.e.b.c;
+import com.tencent.mm.loader.e.b.g;
 
-public final class a
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/builder/BitmapRequestBuilder;", "T", "Lcom/tencent/mm/loader/builder/RequestBuilder;", "Landroid/graphics/Bitmap;", "reqValue", "Lcom/tencent/mm/loader/model/data/DataItem;", "mImageLoaderConfiguration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "(Lcom/tencent/mm/loader/model/data/DataItem;Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;)V", "into", "", "imageView", "Landroid/widget/ImageView;", "needDefault", "", "withStruct", "Lcom/tencent/mm/loader/IRequestBuilder;", "V", "(Ljava/lang/Object;)Lcom/tencent/mm/loader/IRequestBuilder;", "libimageloader_release"})
+public final class a<T>
+  extends b<T, Bitmap>
 {
-  public static String BUILD_TAG;
-  public static String CLIENT_VERSION;
-  public static String COMMAND;
-  public static String HOSTNAME;
-  public static String OWNER;
-  public static String PATCH_ENABLED;
-  public static String REV;
-  public static String SVNPATH;
-  public static String TIME;
-  public static String dOM = "android-" + Build.VERSION.SDK_INT;
-  public static String dON;
-  
-  public static String EO()
+  public a(com.tencent.mm.loader.h.a.a<T> parama, com.tencent.mm.loader.c.d<T, Bitmap> paramd)
   {
-    if (dON == null) {
-      return REV;
-    }
-    return REV + "." + dON;
+    super(parama, paramd);
   }
   
-  public static String EP()
+  public final void d(ImageView paramImageView)
   {
-    return REV;
+    j.q(paramImageView, "imageView");
+    this.eNa = ((com.tencent.mm.loader.e.b.d)new c(new g(paramImageView)));
+    ph();
   }
   
-  public static boolean EQ()
+  public final void e(ImageView paramImageView)
   {
-    return !"false".equalsIgnoreCase(PATCH_ENABLED);
-  }
-  
-  public static void h(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    if (paramBundle.getBoolean("com.tencent.mm.BuildInfo.PATCH_ENABLED")) {}
-    for (String str = "true";; str = "false")
-    {
-      PATCH_ENABLED = str;
-      REV = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_REV");
-      CLIENT_VERSION = "0x" + Integer.toHexString(paramBundle.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION"));
-      TIME = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_TIME");
-      HOSTNAME = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_HOSTNAME");
-      BUILD_TAG = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_TAG");
-      OWNER = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_OWNER");
-      COMMAND = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_COMMAND");
-      SVNPATH = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_SVNPATH");
-      return;
-    }
+    j.q(paramImageView, "imageView");
+    this.eNa = ((com.tencent.mm.loader.e.b.d)new c(new g(paramImageView), (byte)0));
+    ph();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.loader.a.a
  * JD-Core Version:    0.7.0.1
  */

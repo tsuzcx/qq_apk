@@ -1,44 +1,47 @@
 package com.tencent.mm.booter;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.az.k;
-import com.tencent.mm.be.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.ba.k;
+import com.tencent.mm.bf.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.ah;
 import com.tencent.mm.storage.z;
 
 public final class n
 {
-  private static long dil = 86400000L;
+  private static long dZF = 86400000L;
   
   public static void run()
   {
-    au.Hx();
-    if (ah.cn(Long.valueOf(ah.c((Long)c.Dz().get(81944, null))).longValue()) * 1000L > dil) {}
+    AppMethodBeat.i(15862);
+    aw.aaz();
+    if (ah.gz(ah.c((Long)c.Ru().get(81944, null))) * 1000L > dZF) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        Object localObject = d.Rc();
-        d.Rd();
-        if (!((d)localObject).dZI)
+        Object localObject = d.akj();
+        d.akk();
+        if (!((d)localObject).fpN)
         {
-          g.DQ();
-          if (g.DP().isSDCardAvailable())
+          g.RM();
+          if (g.RL().isSDCardAvailable())
           {
             ((d)localObject).release();
-            ((d)localObject).dZI = true;
-            g.Dk().a(159, (f)localObject);
+            ((d)localObject).fpN = true;
+            g.Rc().a(159, (f)localObject);
             localObject = new k(9);
-            g.Dk().a((m)localObject, 0);
+            g.Rc().a((m)localObject, 0);
           }
         }
       }
+      AppMethodBeat.o(15862);
       return;
     }
   }

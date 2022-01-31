@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.wallet.pwd;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet.pwd.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet.pwd.a.r;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
@@ -14,18 +15,20 @@ final class a$2
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
+    AppMethodBeat.i(46128);
     if (paramVarArgs.length == 3)
     {
-      paramVarArgs = new k(paramVarArgs[0].toString(), ((Integer)paramVarArgs[1]).intValue(), (String)paramVarArgs[2]);
-      this.wBd.a(paramVarArgs, true);
+      paramVarArgs = new r(paramVarArgs[0].toString(), ((Integer)paramVarArgs[1]).intValue(), (String)paramVarArgs[2]);
+      this.AXB.a(paramVarArgs, true);
     }
+    AppMethodBeat.o(46128);
     return true;
   }
 }

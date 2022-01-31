@@ -2,11 +2,11 @@ package com.google.android.exoplayer2.a;
 
 public abstract interface f$f
 {
-  public abstract void cC(int paramInt);
+  public abstract void cX(int paramInt);
   
   public abstract void d(int paramInt, long paramLong1, long paramLong2);
   
-  public abstract void kT();
+  public abstract void nc();
 }
 
 

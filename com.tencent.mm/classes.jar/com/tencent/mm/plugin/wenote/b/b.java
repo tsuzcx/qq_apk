@@ -1,15 +1,19 @@
 package com.tencent.mm.plugin.wenote.b;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class b
 {
-  public static ArrayList<String> UA(String paramString)
+  public static ArrayList<String> ajP(String paramString)
   {
-    if ((bk.bl(paramString)) || (paramString.length() == 0)) {
+    AppMethodBeat.i(26977);
+    if ((bo.isNullOrNil(paramString)) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(26977);
       return null;
     }
     paramString = Pattern.compile("<div><object[^>]*></object></div>", 2).matcher(paramString).replaceAll("<object>");
@@ -38,12 +42,16 @@ public final class b
       }
       i += 1;
     }
+    AppMethodBeat.o(26977);
     return localArrayList;
   }
   
-  public static String UB(String paramString)
+  public static String ajQ(String paramString)
   {
-    if ((bk.bl(paramString)) || (paramString.length() == 0)) {
+    AppMethodBeat.i(26978);
+    if ((bo.isNullOrNil(paramString)) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(26978);
       return paramString;
     }
     paramString = Pattern.compile("<br[^>]*>", 2).matcher(paramString).replaceAll("\n");
@@ -54,33 +62,56 @@ public final class b
     paramString = Pattern.compile("<p [^>]*>", 2).matcher(paramString).replaceAll("");
     paramString = Pattern.compile("</p>", 2).matcher(paramString).replaceAll("");
     paramString = Pattern.compile("<[^>]*>", 2).matcher(paramString).replaceAll("");
-    return Pattern.compile("&nbsp;", 2).matcher(paramString).replaceAll(" ");
+    paramString = Pattern.compile("&nbsp;", 2).matcher(paramString).replaceAll(" ");
+    AppMethodBeat.o(26978);
+    return paramString;
   }
   
-  public static boolean UC(String paramString)
+  public static boolean ajR(String paramString)
   {
+    AppMethodBeat.i(26979);
     int k = "<br/>".length();
-    if ((bk.bl(paramString)) || (paramString.length() < k)) {
+    if ((bo.isNullOrNil(paramString)) || (paramString.length() < k))
+    {
+      AppMethodBeat.o(26979);
       return false;
     }
     int j;
-    for (int i = 0;; i = j)
+    for (int i = 0; i < paramString.length(); i = j)
     {
-      if (i >= paramString.length()) {
-        break label64;
-      }
       j = i + k;
-      if ((j > paramString.length()) || (!"<br/>".equalsIgnoreCase(paramString.substring(i, j)))) {
-        break;
+      if (j > paramString.length())
+      {
+        AppMethodBeat.o(26979);
+        return false;
+      }
+      if (!"<br/>".equalsIgnoreCase(paramString.substring(i, j)))
+      {
+        AppMethodBeat.o(26979);
+        return false;
       }
     }
-    label64:
+    AppMethodBeat.o(26979);
     return true;
+  }
+  
+  public static String ajS(String paramString)
+  {
+    AppMethodBeat.i(26980);
+    paramString = ajQ(Pattern.compile("<object[^>]*>", 2).matcher(paramString).replaceAll("#WNNoteNode#<ThisisNoteNodeObj>#WNNoteNode#"));
+    if ((bo.isNullOrNil(paramString)) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(26980);
+      return paramString;
+    }
+    paramString = Pattern.compile("\\s*|\t|\r|\n").matcher(paramString).replaceAll("");
+    AppMethodBeat.o(26980);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.b.b
  * JD-Core Version:    0.7.0.1
  */

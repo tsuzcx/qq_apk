@@ -1,22 +1,17 @@
 package com.tencent.rtmp;
 
-import com.tencent.liteav.basic.util.a;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class TXLivePusher$3
   implements Runnable
 {
-  TXLivePusher$3(TXLivePusher paramTXLivePusher, String paramString) {}
+  TXLivePusher$3(TXLivePusher paramTXLivePusher) {}
   
   public void run()
   {
-    Object localObject = new File(this.val$videoFilePath).getParentFile();
-    String str = new SimpleDateFormat("yyyyMMdd_HHmmssSSS").format(new Date(System.currentTimeMillis()));
-    localObject = localObject + File.separator + String.format("TXUGCCover_%s.jpg", new Object[] { str });
-    a.a(this.val$videoFilePath, (String)localObject);
-    TXLivePusher.access$400(this.this$0, this.val$videoFilePath, (String)localObject);
+    AppMethodBeat.i(65593);
+    TXLivePusher.access$102(this.this$0, false);
+    AppMethodBeat.o(65593);
   }
 }
 

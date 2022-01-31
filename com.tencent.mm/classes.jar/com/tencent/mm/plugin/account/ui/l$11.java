@@ -1,21 +1,22 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.ah.p;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.modelfriend.a;
 
 final class l$11
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  l$11(l paraml) {}
+  l$11(l paraml, a parama) {}
   
-  public final void onClick(View paramView)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.fok.fnW.fmY[1] = 1;
-    this.fok.fnW.dVU = 6;
-    g.Dk().a(145, this.fok);
-    l.a(this.fok);
+    AppMethodBeat.i(125144);
+    g.Rc().a(this.gEH);
+    AppMethodBeat.o(125144);
   }
 }
 

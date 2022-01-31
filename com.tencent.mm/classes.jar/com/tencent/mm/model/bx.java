@@ -1,287 +1,293 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.ah.e;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
-import com.tencent.mm.ah.e.c;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.ba;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.vfs.e;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
+import org.json.JSONObject;
 
 public final class bx
-  implements e
 {
-  private Map<String, List<a>> dXQ = new HashMap();
-  private Map<String, List<a>> dXR = new HashMap();
-  private Map<String, List<o>> dXS = new HashMap();
-  private Map<String, n> dXT = new ConcurrentHashMap();
+  public static bx fnO;
+  private SharedPreferences fnP;
+  private SharedPreferences fny;
   
-  @Deprecated
-  private void a(String paramString, e.a parama, boolean paramBoolean)
+  static
   {
-    Map localMap;
-    if (paramBoolean)
-    {
-      localMap = this.dXR;
-      paramString = (List)localMap.get(paramString);
-      if ((paramString != null) && (!paramString.isEmpty())) {
-        break label52;
-      }
-      y.w("MicroMsg.SysCmdMsgExtension", "listener list is empty, return now");
-    }
-    for (;;)
-    {
-      return;
-      localMap = this.dXQ;
-      break;
-      label52:
-      y.i("MicroMsg.SysCmdMsgExtension", "listener list size is %d", new Object[] { Integer.valueOf(paramString.size()) });
-      paramString = paramString.iterator();
-      while (paramString.hasNext()) {
-        ((a)paramString.next()).a(parama);
-      }
-    }
+    AppMethodBeat.i(58129);
+    fnO = new bx();
+    AppMethodBeat.o(58129);
   }
   
-  public final void a(e.c paramc) {}
-  
-  @Deprecated
-  public final void a(String paramString, a parama, boolean paramBoolean)
+  private bx()
   {
-    if ((bk.bl(paramString)) || (parama == null)) {
-      return;
-    }
-    if (paramBoolean) {}
-    for (Map localMap = this.dXR;; localMap = this.dXQ)
-    {
-      List localList = (List)localMap.get(paramString);
-      Object localObject = localList;
-      if (localList == null)
-      {
-        localObject = new LinkedList();
-        localMap.put(paramString, localObject);
-      }
-      if (((List)localObject).contains(parama)) {
-        break;
-      }
-      ((List)localObject).add(parama);
-      return;
-    }
+    AppMethodBeat.i(58118);
+    this.fny = ah.getContext().getSharedPreferences(ah.dsP() + "_account_history", 0);
+    this.fnP = ah.getContext().getSharedPreferences(ah.dsP() + "_account_switch", 0);
+    AppMethodBeat.o(58118);
   }
   
-  public final void a(String paramString, n paramn)
+  private void pJ(String paramString)
   {
-    if ((bk.bl(paramString)) || (paramn == null)) {
+    AppMethodBeat.i(58126);
+    if (this.fny.contains(paramString)) {}
+    try
+    {
+      e.deleteFile(getString(paramString, "last_avatar_path"));
+      this.fny.edit().remove(paramString).commit();
+      AppMethodBeat.o(58126);
       return;
     }
-    if (this.dXT.containsKey(paramString)) {
-      y.w("MicroMsg.SysCmdMsgExtension", "NewXmlConsumer for %s has exist! %s", new Object[] { paramString, bk.csb() });
-    }
-    this.dXT.put(paramString, paramn);
-  }
-  
-  public final void a(String paramString, o paramo)
-  {
-    if ((bk.bl(paramString)) || (paramo == null)) {
-      return;
-    }
-    for (;;)
-    {
-      Object localObject;
-      synchronized (this.dXS)
-      {
-        localObject = (List)this.dXS.get(paramString);
-        if (localObject == null)
-        {
-          localObject = new LinkedList();
-          this.dXS.put(paramString, localObject);
-          paramString = (String)localObject;
-          try
-          {
-            if (!paramString.contains(paramo)) {
-              paramString.add(paramo);
-            }
-            return;
-          }
-          finally {}
-        }
-      }
-      paramString = (String)localObject;
-    }
-  }
-  
-  public final e.b b(e.a parama)
-  {
-    Object localObject1 = parama.dBs;
-    String str;
-    switch (((cd)localObject1).kSW)
-    {
-    default: 
-      y.w("MicroMsg.SysCmdMsgExtension", "cmdAM msgType is %d, ignore, return now", new Object[] { Integer.valueOf(((cd)localObject1).kSW) });
-      return null;
-    case 10001: 
-      str = aa.a(((cd)localObject1).svF);
-      aa.a(((cd)localObject1).svH);
-      a(str, parama, false);
-      f.nEG.aC(10395, String.valueOf(((cd)localObject1).ndp));
-      return null;
-    }
-    Object localObject2 = aa.a(((cd)localObject1).svH);
-    if (bk.bl((String)localObject2))
-    {
-      y.e("MicroMsg.SysCmdMsgExtension", "null msg content");
-      return null;
-    }
-    if (((String)localObject2).startsWith("~SEMI_XML~"))
-    {
-      localObject1 = ba.Zx((String)localObject2);
-      if (localObject1 == null)
-      {
-        y.e("MicroMsg.SysCmdMsgExtension", "SemiXml values is null, msgContent %s", new Object[] { localObject2 });
-        return null;
-      }
-      str = "brand_service";
-      y.d("MicroMsg.SysCmdMsgExtension", "recieve a syscmd_newxml %s subType %s", new Object[] { localObject2, str });
-      if (str != null) {
-        a(str, parama, true);
-      }
-    }
-    else
+    catch (Exception localException)
     {
       for (;;)
       {
-        synchronized (this.dXS)
-        {
-          localObject2 = (List)this.dXS.get(str);
-          if ((localObject2 == null) || (((List)localObject2).isEmpty()))
-          {
-            y.w("MicroMsg.SysCmdMsgExtension", "listener list is empty, return now");
-            localObject2 = (n)this.dXT.get(str);
-            if (localObject2 == null) {
-              break label555;
-            }
-            return ((n)localObject2).a(str, (Map)localObject1, parama);
-            int i = ((String)localObject2).indexOf("<sysmsg");
-            if (i != -1)
-            {
-              localObject1 = ((String)localObject2).substring(i);
-              y.d("MicroMsg.SysCmdMsgExtension", "oneliang, msg content:%s,sub content:%s", new Object[] { localObject2, localObject1 });
-              localObject1 = bn.s((String)localObject1, "sysmsg");
-              if (localObject1 == null)
-              {
-                y.e("MicroMsg.SysCmdMsgExtension", "XmlParser values is null, msgContent %s", new Object[] { localObject2 });
-                return null;
-              }
-              str = (String)((Map)localObject1).get(".sysmsg.$type");
-              break;
-            }
-            i = ((String)localObject2).indexOf("<appmsg");
-            if (i != -1)
-            {
-              y.i("MicroMsg.SysCmdMsgExtension", "msgContent start with <appmsg");
-              localObject1 = ((String)localObject2).substring(i);
-              y.d("MicroMsg.SysCmdMsgExtension", "oneliang, msg content:%s,sub content:%s", new Object[] { localObject2, localObject1 });
-              localObject1 = bn.s((String)localObject1, "appmsg");
-              if (localObject1 == null)
-              {
-                y.e("MicroMsg.SysCmdMsgExtension", "XmlParser values is null, msgContent %s", new Object[] { localObject2 });
-                return null;
-              }
-              str = (String)((Map)localObject1).get(".appmsg.title");
-              break;
-            }
-            y.e("MicroMsg.SysCmdMsgExtension", "msgContent not start with <sysmsg or <appmsg");
-            return null;
-          }
-        }
-        y.i("MicroMsg.SysCmdMsgExtension", "listener list size is %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
-        try
-        {
-          ??? = ((List)localObject2).iterator();
-          while (((Iterator)???).hasNext()) {
-            ((o)((Iterator)???).next()).onNewXmlReceived(str, (Map)localObject1, parama);
-          }
-        }
-        finally {}
+        ab.w("MicroMsg.SwitchAccountInfo", "remove avatar file error %s", new Object[] { localException.getMessage() });
       }
-      label555:
-      y.e("MicroMsg.SysCmdMsgExtension", "no NewXmlConsumer to consume cmd %s!!", new Object[] { str });
     }
-    return null;
   }
   
-  @Deprecated
-  public final void b(String paramString, a parama, boolean paramBoolean)
+  public final Set<String> abf()
   {
-    if ((bk.bl(paramString)) || (parama == null)) {
-      return;
+    AppMethodBeat.i(58127);
+    HashSet localHashSet = new HashSet();
+    Set localSet = this.fnP.getStringSet("first_switch_group", null);
+    if ((localSet != null) && (!localSet.isEmpty())) {
+      localHashSet.addAll(localSet);
     }
-    if (paramBoolean) {}
-    for (Map localMap = this.dXR;; localMap = this.dXQ)
+    AppMethodBeat.o(58127);
+    return localHashSet;
+  }
+  
+  public final String abg()
+  {
+    AppMethodBeat.i(58128);
+    Object localObject2 = abf();
+    Object localObject1 = new StringBuilder();
+    localObject2 = ((Set)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      paramString = (List)localMap.get(paramString);
-      if (paramString == null) {
-        break;
-      }
-      paramString.remove(parama);
-      return;
+      ((StringBuilder)localObject1).append((String)((Iterator)localObject2).next());
+      ((StringBuilder)localObject1).append(';');
     }
+    if (((StringBuilder)localObject1).length() > 0) {
+      ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
+    }
+    ab.i("MicroMsg.SwitchAccountInfo", "switch users %s", new Object[] { ((StringBuilder)localObject1).toString() });
+    localObject1 = ((StringBuilder)localObject1).toString();
+    AppMethodBeat.o(58128);
+    return localObject1;
   }
   
-  public final void b(String paramString, n arg2)
+  public final void ar(String paramString1, String paramString2)
   {
-    if ((bk.bl(paramString)) || (??? == null)) {
-      return;
-    }
-    synchronized (this.dXT)
+    AppMethodBeat.i(58123);
+    if ((bo.Q(new String[] { paramString1, paramString2 })) || (paramString1.equals(paramString2)))
     {
-      this.dXT.remove(paramString);
+      AppMethodBeat.o(58123);
       return;
     }
-  }
-  
-  public final void b(String paramString, o paramo)
-  {
-    if ((bk.bl(paramString)) || (paramo == null)) {}
+    Object localObject = this.fnP.getStringSet("first_switch_group", null);
+    if (localObject == null) {
+      localObject = new HashSet();
+    }
     for (;;)
     {
-      return;
-      synchronized (this.dXS)
+      if ((((Set)localObject).contains(paramString1)) && (((Set)localObject).size() < 2)) {
+        ((Set)localObject).add(paramString2);
+      }
+      for (;;)
       {
-        paramString = (List)this.dXS.get(paramString);
-        if (paramString == null) {
-          continue;
+        paramString1 = this.fnP.edit();
+        paramString1.remove("first_switch_group").apply();
+        paramString1.putStringSet("first_switch_group", (Set)localObject).commit();
+        AppMethodBeat.o(58123);
+        return;
+        Iterator localIterator = ((Set)localObject).iterator();
+        while (localIterator.hasNext()) {
+          pJ((String)localIterator.next());
         }
-        try
-        {
-          paramString.remove(paramo);
-          return;
-        }
-        finally {}
+        ((Set)localObject).clear();
+        ((Set)localObject).add(paramString1);
+        ((Set)localObject).add(paramString2);
       }
     }
   }
   
-  public static abstract interface a
+  public final void g(String paramString, Map<String, String> paramMap)
   {
-    public abstract void a(e.a parama);
+    AppMethodBeat.i(58120);
+    if (paramMap != null) {}
+    Object localObject;
+    for (;;)
+    {
+      try
+      {
+        if (paramMap.isEmpty())
+        {
+          ab.i("MicroMsg.SwitchAccountInfo", "kv map is null or empty!");
+          AppMethodBeat.o(58120);
+          return;
+        }
+        if (!this.fny.contains(paramString)) {
+          break label177;
+        }
+        localObject = this.fny.getString(paramString, "");
+        if (!bo.isNullOrNil((String)localObject))
+        {
+          localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
+          Iterator localIterator = paramMap.keySet().iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          String str = (String)localIterator.next();
+          ((JSONObject)localObject).put(str, paramMap.get(str));
+          continue;
+        }
+        localObject = new JSONObject();
+      }
+      catch (Exception paramMap)
+      {
+        ab.e("MicroMsg.SwitchAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
+        AppMethodBeat.o(58120);
+        return;
+      }
+      continue;
+      label177:
+      localObject = new JSONObject();
+    }
+    ab.i("MicroMsg.SwitchAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
+    this.fny.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
+    AppMethodBeat.o(58120);
+  }
+  
+  public final String getString(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(58121);
+    try
+    {
+      ab.i("MicroMsg.SwitchAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
+      if (this.fny.contains(paramString1))
+      {
+        Object localObject = new String(Base64.decode(this.fny.getString(paramString1, ""), 0));
+        if (!bo.isNullOrNil((String)localObject))
+        {
+          ab.i("MicroMsg.SwitchAccountInfo", "get json str %s", new Object[] { localObject });
+          localObject = new JSONObject((String)localObject);
+          if (((JSONObject)localObject).has(paramString2))
+          {
+            localObject = ((JSONObject)localObject).getString(paramString2);
+            AppMethodBeat.o(58121);
+            return localObject;
+          }
+        }
+      }
+      else
+      {
+        ab.w("MicroMsg.SwitchAccountInfo", "account info about %s is not found!", new Object[] { paramString1 });
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ab.e("MicroMsg.SwitchAccountInfo", "get account info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(58121);
+    return "";
+  }
+  
+  public final void n(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(58119);
+    for (;;)
+    {
+      try
+      {
+        if (this.fny.contains(paramString1))
+        {
+          localObject = this.fny.getString(paramString1, "");
+          if (!bo.isNullOrNil((String)localObject))
+          {
+            localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
+            if (!bo.Q(new String[] { paramString2, paramString3 }))
+            {
+              ((JSONObject)localObject).put(paramString2, paramString3);
+              ab.i("MicroMsg.SwitchAccountInfo", "put key %s, jsonStr %s", new Object[] { paramString2, ((JSONObject)localObject).toString() });
+              this.fny.edit().putString(paramString1, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
+            }
+            AppMethodBeat.o(58119);
+            return;
+          }
+          localObject = new JSONObject();
+          continue;
+        }
+        Object localObject = new JSONObject();
+      }
+      catch (Exception paramString3)
+      {
+        ab.e("MicroMsg.SwitchAccountInfo", "save account info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, paramString3.getMessage() });
+        AppMethodBeat.o(58119);
+        return;
+      }
+    }
+  }
+  
+  public final void pG(String paramString)
+  {
+    AppMethodBeat.i(58122);
+    if (pH(paramString))
+    {
+      Set localSet = this.fnP.getStringSet("first_switch_group", null);
+      if (localSet != null)
+      {
+        localSet.remove(paramString);
+        SharedPreferences.Editor localEditor = this.fnP.edit();
+        localEditor.remove("first_switch_group").apply();
+        localEditor.putStringSet("first_switch_group", localSet).commit();
+      }
+    }
+    if (pI(paramString)) {
+      pJ(paramString);
+    }
+    AppMethodBeat.o(58122);
+  }
+  
+  public final boolean pH(String paramString)
+  {
+    AppMethodBeat.i(58124);
+    Set localSet = this.fnP.getStringSet("first_switch_group", null);
+    if (localSet == null)
+    {
+      AppMethodBeat.o(58124);
+      return false;
+    }
+    boolean bool = localSet.contains(paramString);
+    AppMethodBeat.o(58124);
+    return bool;
+  }
+  
+  public final boolean pI(String paramString)
+  {
+    AppMethodBeat.i(58125);
+    boolean bool = this.fny.contains(paramString);
+    AppMethodBeat.o(58125);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.model.bx
  * JD-Core Version:    0.7.0.1
  */

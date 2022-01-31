@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.widget.Toast;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class OpenFileChooserUI$6$1
@@ -11,19 +11,22 @@ final class OpenFileChooserUI$6$1
   
   public final void run()
   {
-    if ((OpenFileChooserUI.b(this.rlF.rlE) == 7) && (OpenFileChooserUI.c(this.rlF.rlE) == 2))
+    AppMethodBeat.i(7448);
+    if ((OpenFileChooserUI.b(this.vbh.vbg) == 7) && (OpenFileChooserUI.c(this.vbh.vbg) == 2))
     {
-      h.a(this.rlF.rlE, this.rlF.rlE.getString(R.l.webview_jssdk_choose_video_exceed_20M), this.rlF.rlE.getString(R.l.app_tip), this.rlF.rlE.getString(R.l.app_i_known), false, new OpenFileChooserUI.6.1.1(this));
+      h.a(this.vbh.vbg, this.vbh.vbg.getString(2131305868), this.vbh.vbg.getString(2131297087), this.vbh.vbg.getString(2131296977), false, new OpenFileChooserUI.6.1.1(this));
+      AppMethodBeat.o(7448);
       return;
     }
-    Toast.makeText(this.rlF.rlE, this.rlF.rlE.getString(R.l.video_export_file_too_big), 0).show();
-    this.rlF.rlE.setResult(1);
-    this.rlF.rlE.finish();
+    Toast.makeText(this.vbh.vbg, this.vbh.vbg.getString(2131304514), 0).show();
+    this.vbh.vbg.setResult(1);
+    this.vbh.vbg.finish();
+    AppMethodBeat.o(7448);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.OpenFileChooserUI.6.1
  * JD-Core Version:    0.7.0.1
  */

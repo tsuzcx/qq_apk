@@ -4,15 +4,16 @@ import android.app.Activity;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.ap;
-import com.tencent.mm.plugin.sns.model.ap.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.aq;
+import com.tencent.mm.plugin.sns.model.aq.b;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
 import com.tencent.mm.plugin.sns.ui.l;
-import com.tencent.mm.protocal.c.btd;
+import com.tencent.mm.plugin.sns.ui.widget.d;
+import com.tencent.mm.protocal.protobuf.cds;
 
 final class b$19
   extends c
@@ -21,66 +22,76 @@ final class b$19
   
   public final void a(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
+    AppMethodBeat.i(40267);
     long l;
     int i;
     if ((paramView.getTag() instanceof l))
     {
       paramView = (l)paramView.getTag();
-      paramContextMenu.add(0, 11, 0, this.ppl.activity.getString(i.j.app_copy));
-      if ((paramView.hPY != null) && (paramView.hPY.equals(q.Gj()))) {
-        paramContextMenu.add(0, 7, 0, this.ppl.activity.getString(i.j.app_delete));
+      if (!d.fS(paramView.reJ.xOc, 16)) {
+        paramContextMenu.add(0, 11, 0, this.skd.activity.getString(2131296895));
       }
-      paramContextMenuInfo = paramView.oOn;
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (paramView.oqc.tJu == 0) {
-        break label193;
+      if ((paramView.jJA != null) && (paramView.jJA.equals(r.Zn()))) {
+        paramContextMenu.add(0, 7, 0, this.skd.activity.getString(2131296901));
       }
-      l = paramView.oqc.tJu;
-      paramContextMenuInfo = ap.eK(paramContextMenuInfo, l);
-      if (paramView.scene != 1) {
-        break label205;
+      if (!d.fS(paramView.reJ.xOc, 16))
+      {
+        paramContextMenuInfo = paramView.rFY;
+        StringBuilder localStringBuilder = new StringBuilder();
+        if (paramView.reJ.xNY != 0)
+        {
+          l = paramView.reJ.xNY;
+          paramContextMenuInfo = aq.gm(paramContextMenuInfo, l);
+          if (paramView.scene != 1) {
+            break label243;
+          }
+          i = 2;
+        }
       }
-      i = 2;
     }
     for (;;)
     {
-      label146:
-      paramView = ap.NJ(paramContextMenuInfo);
-      if ((paramView != null) && (paramView.dYj) && (!paramView.ebE) && ((i & paramView.cCu) != 0)) {}
+      label179:
+      paramView = aq.aaD(paramContextMenuInfo);
+      if ((paramView != null) && (paramView.fon) && (!paramView.frX) && ((i & paramView.dqG) != 0)) {}
       for (i = 1;; i = 0)
       {
         if (i != 0) {
-          break label225;
+          break label263;
         }
-        ap.a(paramContextMenu, false);
+        aq.a(paramContextMenu, false);
+        AppMethodBeat.o(40267);
         return;
-        label193:
-        l = paramView.oqc.tJx;
+        l = paramView.reJ.xOa;
         break;
-        label205:
+        label243:
         if (paramView.scene != 2) {
-          break label231;
+          break label274;
         }
         i = 4;
-        break label146;
+        break label179;
       }
-      label225:
-      ap.b(paramContextMenu, false);
+      label263:
+      aq.b(paramContextMenu, false);
+      AppMethodBeat.o(40267);
       return;
-      label231:
+      label274:
       i = -1;
     }
   }
   
-  public final boolean dd(View paramView)
+  public final boolean dU(View paramView)
   {
+    AppMethodBeat.i(40268);
     if ((paramView.getTag() instanceof l))
     {
       Object localObject = (l)paramView.getTag();
-      localObject = af.bDF().OA(((l)localObject).oOn);
-      this.ppl.poz.a(paramView, ((n)localObject).bGE(), ((n)localObject).bGe());
+      localObject = ag.cpf().abu(((l)localObject).rFY);
+      this.skd.sjr.a(paramView, ((n)localObject).csH(), ((n)localObject).csh());
+      AppMethodBeat.o(40268);
       return true;
     }
+    AppMethodBeat.o(40268);
     return false;
   }
 }

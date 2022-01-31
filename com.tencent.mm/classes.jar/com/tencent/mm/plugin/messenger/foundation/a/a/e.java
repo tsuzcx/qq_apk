@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.sdk.e.f;
+import com.tencent.mm.sdk.e.g;
 import com.tencent.mm.storage.ax;
 import java.util.List;
 
 public abstract interface e
-  extends f
+  extends g
 {
-  public abstract boolean Hr(String paramString);
+  public abstract boolean Td(String paramString);
   
-  public abstract List<ax> bhT();
+  public abstract List<ax> bPV();
 }
 
 

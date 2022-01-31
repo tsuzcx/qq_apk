@@ -2,6 +2,7 @@ package com.tencent.mm.ui.chatting;
 
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChattingAnimFrame$b$1
   implements View.OnLayoutChangeListener
@@ -10,7 +11,9 @@ final class ChattingAnimFrame$b$1
   
   public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.viR.awP();
+    AppMethodBeat.i(30506);
+    this.zxR.resolve();
+    AppMethodBeat.o(30506);
   }
 }
 

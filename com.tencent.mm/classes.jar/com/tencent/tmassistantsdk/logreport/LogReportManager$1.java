@@ -1,6 +1,7 @@
 package com.tencent.tmassistantsdk.logreport;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.tmassistantsdk.downloadservice.DownloadHelper;
 import com.tencent.tmassistantsdk.downloadservice.NetworkMonitorReceiver.INetworkChangedObserver;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -12,6 +13,7 @@ class LogReportManager$1
   
   public void onNetworkChanged()
   {
+    AppMethodBeat.i(75817);
     TMLog.i("LogReportManager", "onNetworkChanged,netState:" + DownloadHelper.getNetStatus());
     Class[] arrayOfClass = LogReportManager.access$000();
     int j = arrayOfClass.length;
@@ -31,7 +33,7 @@ class LogReportManager$1
         }
         catch (Exception localException)
         {
-          y.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
+          ab.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
         }
       }
       else
@@ -39,6 +41,7 @@ class LogReportManager$1
         if (DownloadHelper.isNetworkConncted()) {
           DownloadHelper.getNetStatus().equalsIgnoreCase("wifi");
         }
+        AppMethodBeat.o(75817);
         return;
       }
       i += 1;

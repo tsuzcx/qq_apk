@@ -1,50 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.appbrand.d;
 
-public enum a
+public abstract class a
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<d>
 {
-  public final int fJy;
-  
-  private a(int paramInt)
+  protected c aCU()
   {
-    this.fJy = paramInt;
-  }
-  
-  public static a a(String paramString, a parama)
-  {
-    if (bk.bl(paramString)) {}
-    for (;;)
-    {
-      return parama;
-      a[] arrayOfa = values();
-      int j = arrayOfa.length;
-      int i = 0;
-      while (i < j)
-      {
-        a locala = arrayOfa[i];
-        if (locala.name().toLowerCase().equals(paramString)) {
-          return locala;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public static a lx(int paramInt)
-  {
-    a[] arrayOfa = values();
-    int j = arrayOfa.length;
-    int i = 0;
-    while (i < j)
-    {
-      a locala = arrayOfa[i];
-      if (locala.fJy == paramInt) {
-        return locala;
-      }
-      i += 1;
-    }
-    return gwE;
+    return h.hTk;
   }
 }
 

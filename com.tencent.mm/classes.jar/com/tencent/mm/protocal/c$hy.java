@@ -5,12 +5,12 @@ public final class c$hy
 {
   public c$hy()
   {
-    super("setBounceBackground", "setBounceBackground", 218, false);
+    super("resumeDownloadTask", "resume_download_task", 240, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.c.hy
  * JD-Core Version:    0.7.0.1
  */

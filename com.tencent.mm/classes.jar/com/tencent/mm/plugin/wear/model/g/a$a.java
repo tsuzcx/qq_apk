@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.wear.model.g;
 final class a$a
 {
   String content;
-  String pyp;
+  String tac;
   
   public a$a(a parama, String paramString1, String paramString2)
   {
-    this.pyp = paramString1;
+    this.tac = paramString1;
     this.content = paramString2;
   }
 }

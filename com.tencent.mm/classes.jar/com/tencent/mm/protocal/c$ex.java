@@ -5,7 +5,7 @@ public final class c$ex
 {
   public c$ex()
   {
-    super("openEnterpriseContact", "openEnterpriseContact", 183, true);
+    super("nfcIsConnect", "nfcIsConnect", 139, true);
   }
 }
 

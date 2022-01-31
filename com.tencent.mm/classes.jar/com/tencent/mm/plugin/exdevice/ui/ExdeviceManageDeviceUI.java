@@ -1,234 +1,111 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.h.a.di;
-import com.tencent.mm.h.c.cc;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.dl;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.exdevice.h.c;
 import com.tencent.mm.plugin.exdevice.model.ad;
-import com.tencent.mm.plugin.exdevice.model.x;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.tools.j;
-import java.lang.ref.WeakReference;
-import java.util.LinkedList;
-import java.util.List;
 
 public class ExdeviceManageDeviceUI
   extends MMActivity
 {
-  private ListView Nn;
-  private a jDA;
+  private ExdeviceManageDeviceUI.a lMZ;
+  private ListView mListView;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.exdevice_manage_device_ui;
+    return 2130969459;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.Nn = ((ListView)findViewById(R.h.listview));
-    this.jDA = new a(this);
-    View.inflate(this, R.i.exdevice_bind_device_ui_footer, null);
-    this.Nn.setAdapter(this.jDA);
+    AppMethodBeat.i(19998);
+    this.mListView = ((ListView)findViewById(2131821736));
+    this.lMZ = new ExdeviceManageDeviceUI.a(this);
+    View.inflate(this, 2130969447, null);
+    this.mListView.setAdapter(this.lMZ);
+    AppMethodBeat.o(19998);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jDA.bc(ad.aLL().aMq());
-    this.jDA.notifyDataSetChanged();
+    AppMethodBeat.i(19999);
+    this.lMZ.bt(ad.bpY().bqD());
+    this.lMZ.notifyDataSetChanged();
+    AppMethodBeat.o(19999);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(19997);
     super.onCreate(paramBundle);
     setBackBtn(new ExdeviceManageDeviceUI.1(this));
-    setMMTitle(R.l.exdevice_manage_device_title);
-    paramBundle = new di();
-    paramBundle.bJE.bJF = true;
-    com.tencent.mm.sdk.b.a.udP.m(paramBundle);
+    setMMTitle(2131299423);
+    paramBundle = new dl();
+    paramBundle.cqY.cqZ = true;
+    a.ymk.l(paramBundle);
     initView();
-    au.Dk().a(537, this.jDA);
+    aw.Rc().a(537, this.lMZ);
+    AppMethodBeat.o(19997);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(20000);
     super.onDestroy();
-    au.Dk().b(537, this.jDA);
+    aw.Rc().b(537, this.lMZ);
+    AppMethodBeat.o(20000);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0) && (this.jDA.jDC))
+    AppMethodBeat.i(20001);
+    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0) && (this.lMZ.lNb))
     {
-      updateOptionMenuText(0, getString(R.l.app_edit));
-      paramKeyEvent = this.jDA;
-      if (paramKeyEvent.jDC)
+      updateOptionMenuText(0, getString(2131296914));
+      paramKeyEvent = this.lMZ;
+      if (paramKeyEvent.lNb)
       {
-        paramKeyEvent.jDC = false;
-        ai.d(new ExdeviceManageDeviceUI.a.5(paramKeyEvent));
+        paramKeyEvent.lNb = false;
+        al.d(new ExdeviceManageDeviceUI.a.5(paramKeyEvent));
       }
+      AppMethodBeat.o(20001);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(20001);
+    return bool;
   }
   
-  private static final class a
-    extends BaseAdapter
-    implements f
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    private n.d iew;
-    private com.tencent.mm.as.a.a.c jAJ;
-    private List<com.tencent.mm.plugin.exdevice.h.b> jAv;
-    boolean jDC;
-    private WeakReference<Context> jDD;
-    private View.OnClickListener jDE;
-    private j jDF;
-    private volatile int jDG = -1;
-    private com.tencent.mm.ui.base.p tipDialog = null;
-    
-    public a(Context paramContext)
-    {
-      this.jDD = new WeakReference(paramContext);
-      this.jAv = new LinkedList();
-      this.jDF = new j(paramContext);
-      paramContext = new c.a();
-      paramContext.eru = R.g.exdevice_my_device_default_icon;
-      this.jAJ = paramContext.OV();
-      this.iew = new ExdeviceManageDeviceUI.a.1(this);
-      this.jDE = new ExdeviceManageDeviceUI.a.2(this);
-      bc(ad.aLL().aMq());
-    }
-    
-    public final void bc(List<com.tencent.mm.plugin.exdevice.h.b> paramList)
-    {
-      this.jAv.clear();
-      if ((paramList == null) || (paramList.size() == 0)) {
-        return;
-      }
-      this.jAv.addAll(paramList);
-    }
-    
-    public final int getCount()
-    {
-      return this.jAv.size();
-    }
-    
-    public final long getItemId(int paramInt)
-    {
-      return paramInt;
-    }
-    
-    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-    {
-      com.tencent.mm.plugin.exdevice.h.b localb = qy(paramInt);
-      View localView;
-      if (paramView == null)
-      {
-        paramView = new ExdeviceManageDeviceUI.a.a((byte)0);
-        localView = View.inflate(paramViewGroup.getContext(), R.i.exdevice_manage_device_item, null);
-        paramView.jDJ = localView.findViewById(R.h.container);
-        paramView.fhD = ((TextView)localView.findViewById(R.h.nameTV));
-        paramView.jDK = localView.findViewById(R.h.deleteV);
-        paramView.gSx = ((ImageView)localView.findViewById(R.h.iconIV));
-        localView.setTag(paramView);
-        paramViewGroup = paramView;
-      }
-      while (localb == null)
-      {
-        paramView = "";
-        y.d("MicroMsg.ExdeviceManageDeviceUI", "position(%s), name(%s), mac(%s).", new Object[] { Integer.valueOf(paramInt), paramView, Long.valueOf(localb.field_mac) });
-        paramViewGroup.fhD.setText(paramView);
-        o.ON().a(localb.iconUrl, paramViewGroup.gSx, this.jAJ);
-        paramViewGroup.jDK.setTag(Integer.valueOf(paramInt));
-        if (!this.jDC) {
-          break label317;
-        }
-        paramViewGroup.jDK.setVisibility(0);
-        label191:
-        paramViewGroup.jDJ.setTag(Integer.valueOf(paramInt));
-        paramViewGroup.jDJ.setOnClickListener(this.jDE);
-        return localView;
-        paramViewGroup = (ExdeviceManageDeviceUI.a.a)paramView.getTag();
-        localView = paramView;
-      }
-      if (!bk.bl(localb.cMT)) {
-        paramView = localb.cMT;
-      }
-      for (;;)
-      {
-        paramView = bk.pm(paramView);
-        break;
-        if (!bk.bl(localb.cMU))
-        {
-          paramView = localb.cMU;
-        }
-        else if (localb.field_mac != 0L)
-        {
-          paramView = com.tencent.mm.plugin.exdevice.j.b.ee(localb.field_mac);
-        }
-        else
-        {
-          if (!bk.bl(localb.field_deviceID))
-          {
-            paramView = localb.field_deviceID;
-            continue;
-            label317:
-            paramViewGroup.jDK.setVisibility(8);
-            break label191;
-          }
-          paramView = null;
-        }
-      }
-    }
-    
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
-    {
-      if (paramm == null) {
-        y.e("MicroMsg.ExdeviceManageDeviceUI", "scene is null.");
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while (!(paramm instanceof x));
-        if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
-          this.tipDialog.dismiss();
-        }
-      } while ((paramInt1 != 0) || (paramInt2 != 0) || (this.jDG < 0) || (this.jDG >= this.jAv.size()));
-      ai.d(new ExdeviceManageDeviceUI.a.6(this));
-    }
-    
-    public final com.tencent.mm.plugin.exdevice.h.b qy(int paramInt)
-    {
-      return (com.tencent.mm.plugin.exdevice.h.b)this.jAv.get(paramInt);
-    }
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  static final class a$a
+  {
+    TextView gzk;
+    ImageView ivs;
+    View lNh;
+    View lNi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceManageDeviceUI
  * JD-Core Version:    0.7.0.1
  */

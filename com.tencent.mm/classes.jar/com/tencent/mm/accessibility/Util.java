@@ -4,25 +4,36 @@ import android.app.Activity;
 import android.content.ContextWrapper;
 import android.content.res.Resources;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class Util
 {
   public static Activity getActivityOfView(View paramView)
   {
-    if (paramView == null) {
+    AppMethodBeat.i(118645);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(118645);
       return null;
     }
     for (paramView = paramView.getContext(); (paramView instanceof ContextWrapper); paramView = ((ContextWrapper)paramView).getBaseContext()) {
-      if ((paramView instanceof Activity)) {
-        return (Activity)paramView;
+      if ((paramView instanceof Activity))
+      {
+        paramView = (Activity)paramView;
+        AppMethodBeat.o(118645);
+        return paramView;
       }
     }
+    AppMethodBeat.o(118645);
     return null;
   }
   
   public static String getViewIdName(View paramView)
   {
-    if (paramView == null) {
+    AppMethodBeat.i(118646);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(118646);
       return "NO_ID";
     }
     int i = paramView.getId();
@@ -55,7 +66,9 @@ public class Util
       {
         continue;
       }
-      return localStringBuilder.toString();
+      paramView = localStringBuilder.toString();
+      AppMethodBeat.o(118646);
+      return paramView;
       paramView = "app";
       continue;
       paramView = "android";

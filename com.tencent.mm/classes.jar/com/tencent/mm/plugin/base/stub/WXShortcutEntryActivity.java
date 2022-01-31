@@ -1,46 +1,60 @@
 package com.tencent.mm.plugin.base.stub;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseArray;
-import com.tencent.mm.plugin.af.b;
-import com.tencent.mm.plugin.af.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.w.b;
+import com.tencent.mm.plugin.w.c;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity.a;
-import com.tencent.mm.sdk.platformtools.t;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.w;
 
 public class WXShortcutEntryActivity
   extends AutoLoginActivity
 {
-  protected final void a(AutoLoginActivity.a parama, Intent paramIntent)
+  public final boolean O(Intent paramIntent)
   {
+    return true;
+  }
+  
+  public final void a(AutoLoginActivity.a parama, Intent paramIntent)
+  {
+    AppMethodBeat.i(18226);
     if (paramIntent == null)
     {
-      y.e("MicroMsg.WXShortcutEntryActivity", "intent is null");
+      ab.e("MicroMsg.WXShortcutEntryActivity", "intent is null");
       finish();
+      AppMethodBeat.o(18226);
       return;
     }
-    parama = c.odU;
-    int i = t.a(paramIntent, "type", 0);
+    Object localObject = c.qSb;
+    int i = w.a(paramIntent, "type", 0);
+    parama = getContext();
     if (paramIntent != null)
     {
-      parama = (b)parama.odV.get(i);
-      if (parama != null) {
-        parama.j(this, paramIntent);
+      localObject = (b)((c)localObject).qSc.get(i);
+      if (localObject != null) {
+        ((b)localObject).l(parama, paramIntent);
       }
     }
     finish();
+    AppMethodBeat.o(18226);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(18225);
     super.onCreate(paramBundle);
+    AppMethodBeat.o(18225);
   }
   
-  protected final boolean w(Intent paramIntent)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return true;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

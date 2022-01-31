@@ -2,9 +2,8 @@ package com.tencent.mm.ui.chatting;
 
 import android.content.res.Resources;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 
 final class ChattingSendDataToDeviceUI$a$1$1
@@ -14,14 +13,16 @@ final class ChattingSendDataToDeviceUI$a$1$1
   
   public final void run()
   {
-    this.vlH.vlz.vnu.setProgress(0);
-    this.vlH.vlz.vnu.setVisibility(4);
-    this.vlH.vlz.vlE.setText(this.vlH.vlG.vlx.getText(R.l.chatting_send_success));
-    this.vlH.vlz.vlE.setTextColor(this.vlH.vlG.vlx.getResources().getColor(R.e.send_data_sending));
-    this.vlH.vlA.bKT = "send_data_sucess";
-    this.vlH.vlA.progress = 0;
-    ChattingSendDataToDeviceUI.d(this.vlH.vlG.vlx).put(this.vlH.vlA.deviceID, this.vlH.vlA);
-    y.i("MicroMsg.ChattingSendDataToDeviceUI", " deviceId %s SEND_DATA_SUCCESS!", new Object[] { this.vlH.vlA.deviceID });
+    AppMethodBeat.i(30774);
+    this.zBg.zAY.zCQ.Px(0);
+    this.zBg.zAY.zCQ.setVisibility(4);
+    this.zBg.zAY.zBd.setText(this.zBg.zBf.zAW.getText(2131298321));
+    this.zBg.zAY.zBd.setTextColor(this.zBg.zBf.zAW.getResources().getColor(2131690440));
+    this.zBg.zAZ.csn = "send_data_sucess";
+    this.zBg.zAZ.progress = 0;
+    ChattingSendDataToDeviceUI.d(this.zBg.zBf.zAW).put(this.zBg.zAZ.deviceID, this.zBg.zAZ);
+    ab.i("MicroMsg.ChattingSendDataToDeviceUI", " deviceId %s SEND_DATA_SUCCESS!", new Object[] { this.zBg.zAZ.deviceID });
+    AppMethodBeat.o(30774);
   }
 }
 

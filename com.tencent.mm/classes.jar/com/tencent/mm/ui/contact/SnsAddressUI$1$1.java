@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.contact;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsAddressUI$1$1
   implements Runnable
@@ -9,9 +10,11 @@ final class SnsAddressUI$1$1
   
   public final void run()
   {
-    if (!this.vNO.vNN.getIntent().getBooleanExtra("stay_in_wechat", true)) {
-      this.vNO.vNN.moveTaskToBack(true);
+    AppMethodBeat.i(33922);
+    if (!this.Afw.Afv.getIntent().getBooleanExtra("stay_in_wechat", true)) {
+      this.Afw.Afv.moveTaskToBack(true);
     }
+    AppMethodBeat.o(33922);
   }
 }
 

@@ -1,23 +1,24 @@
 package com.tencent.mm.plugin.setting.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.cca;
-import com.tencent.mm.protocal.c.tk;
-import com.tencent.mm.protocal.c.tl;
+import com.tencent.mm.protocal.protobuf.cpg;
+import com.tencent.mm.protocal.protobuf.xl;
+import com.tencent.mm.protocal.protobuf.xm;
 
 public final class c
   extends m
   implements k
 {
   public final String appId;
-  private f dmL;
+  private f callback;
   private final int scene;
   
   public c(String paramString, int paramInt)
@@ -26,31 +27,36 @@ public final class c
     this.scene = paramInt;
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
+    AppMethodBeat.i(126842);
+    this.callback = paramf;
     paramf = new b.a();
-    tk localtk = new tk();
-    localtk.bOL = this.appId;
-    localtk.bZe = this.scene;
-    paramf.ecH = localtk;
+    xl localxl = new xl();
+    localxl.cwc = this.appId;
+    localxl.cHp = this.scene;
+    paramf.fsX = localxl;
     paramf.uri = "/cgi-bin/mmbiz-bin/deluserauth";
-    paramf.ecI = new tl();
-    paramf.ecG = 1127;
-    paramf.ecJ = 0;
-    paramf.ecK = 0;
-    return a(parame, paramf.Kt(), this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    paramString = (tl)((b)paramq).ecF.ecN;
-    this.dmL.onSceneEnd(paramInt2, paramString.sQB.bLB, paramString.sQB.bLC, this);
+    paramf.fsY = new xm();
+    paramf.funcId = getType();
+    paramf.reqCmdId = 0;
+    paramf.respCmdId = 0;
+    int i = dispatch(parame, paramf.ado(), this);
+    AppMethodBeat.o(126842);
+    return i;
   }
   
   public final int getType()
   {
     return 1127;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(126843);
+    paramString = (xm)((b)paramq).fsW.fta;
+    this.callback.onSceneEnd(paramInt2, paramString.wPc.csV, paramString.wPc.csW, this);
+    AppMethodBeat.o(126843);
   }
 }
 

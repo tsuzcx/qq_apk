@@ -22,19 +22,19 @@ import java.util.ArrayList;
 public class RecoveryHandleService
   extends IntentService
 {
-  private static volatile boolean bDX;
+  private static volatile boolean running;
   
   public RecoveryHandleService()
   {
     super(RecoveryHandleService.class.getName());
   }
   
-  public RecoveryHandleResult a(Context paramContext, RecoveryData paramRecoveryData, ArrayList<RecoveryHandleItem> paramArrayList, boolean paramBoolean)
+  protected RecoveryHandleResult a(Context paramContext, RecoveryData paramRecoveryData, ArrayList<RecoveryHandleItem> paramArrayList, boolean paramBoolean)
   {
     return new RecoveryHandleResult();
   }
   
-  public void a(RecoveryData paramRecoveryData, ArrayList<RecoveryHandleItem> paramArrayList, boolean paramBoolean) {}
+  protected void a(RecoveryData paramRecoveryData, ArrayList<RecoveryHandleItem> paramArrayList, boolean paramBoolean) {}
   
   public void onCreate()
   {
@@ -45,14 +45,14 @@ public class RecoveryHandleService
   public void onDestroy()
   {
     RecoveryLog.i("Recovery.RecoveryHandleService", "onDestroy", new Object[0]);
-    RecoveryLog.cOA();
+    RecoveryLog.dUp();
     super.onDestroy();
   }
   
   protected final void onHandleIntent(Intent paramIntent)
   {
     boolean bool = paramIntent.getBooleanExtra("KeyIsRetry", false);
-    int i = Util.hs(this);
+    int i = Util.iT(this);
     String str = paramIntent.getStringExtra("KeyReportUploadClassName");
     Object localObject2 = paramIntent.getStringExtra("KeyReportHandleClassName");
     RecoveryData localRecoveryData = (RecoveryData)paramIntent.getParcelableExtra("KeyRecoveryData");
@@ -68,7 +68,7 @@ public class RecoveryHandleService
     if (paramIntent != null) {
       paramIntent.cancel();
     }
-    if (bDX) {
+    if (running) {
       RecoveryLog.i("Recovery.RecoveryHandleService", "handle already running", new Object[0]);
     }
     for (;;)
@@ -77,7 +77,7 @@ public class RecoveryHandleService
       {
         a(localRecoveryData, localArrayList, bool);
         RecoveryLogic.a(this, localArrayList, str);
-        bDX = false;
+        running = false;
         stopSelf();
         return;
       }
@@ -86,7 +86,7 @@ public class RecoveryHandleService
         RecoveryLog.printErrStackTrace("Recovery.RecoveryHandleService", paramIntent, "alreadyRunning", new Object[0]);
         continue;
       }
-      bDX = true;
+      running = true;
       RecoveryLog.i("Recovery.RecoveryHandleService", "try to increase recovery process priority", new Object[0]);
       try
       {
@@ -96,7 +96,7 @@ public class RecoveryHandleService
         }
         for (;;)
         {
-          RecoveryLog.i("Recovery.RecoveryHandleService", "start to handle %s's exception uuid: %s threadId: %d", new Object[] { localRecoveryData.processName, localRecoveryData.dCX, Long.valueOf(Thread.currentThread().getId()) });
+          RecoveryLog.i("Recovery.RecoveryHandleService", "start to handle %s's exception uuid: %s threadId: %d", new Object[] { localRecoveryData.processName, localRecoveryData.eAx, Long.valueOf(Thread.currentThread().getId()) });
           paramIntent = new RecoveryHandleResult();
           try
           {
@@ -112,7 +112,7 @@ public class RecoveryHandleService
               RecoveryLog.printErrStackTrace("Recovery.RecoveryHandleService", localException, "handle", new Object[0]);
             }
           }
-          if ((paramIntent.wKX) && (!bool))
+          if ((paramIntent.retry) && (!bool))
           {
             localObject1 = new Intent();
             ((Intent)localObject1).setClassName(this, (String)localObject2);
@@ -124,11 +124,11 @@ public class RecoveryHandleService
             if (localObject2 != null) {
               ((PendingIntent)localObject2).cancel();
             }
-            localObject2 = OptionFactory.hq(this);
+            localObject2 = OptionFactory.iR(this);
             localObject1 = PendingIntent.getService(this, 1000002, (Intent)localObject1, 0);
-            l = System.currentTimeMillis() + ((CommonOptions)localObject2).wLc - 2000L;
+            l = System.currentTimeMillis() + ((CommonOptions)localObject2).BiB - 2000L;
             ((AlarmManager)getSystemService("alarm")).set(0, l, (PendingIntent)localObject1);
-            RecoveryLog.i("Recovery.RecoveryHandleService", "startAlarm pendingIntent success: %d will retry %s", new Object[] { Integer.valueOf(((PendingIntent)localObject1).hashCode()), Util.ik(l) });
+            RecoveryLog.i("Recovery.RecoveryHandleService", "startAlarm pendingIntent success: %d will retry %s", new Object[] { Integer.valueOf(((PendingIntent)localObject1).hashCode()), Util.oW(l) });
           }
           RecoveryLog.i("Recovery.RecoveryHandleService", "handle recoveryHandleResult %s", new Object[] { paramIntent });
           break;
@@ -140,7 +140,7 @@ public class RecoveryHandleService
       {
         for (;;)
         {
-          RecoveryLog.i("Recovery.RecoveryHandleService", "try to increase recovery process priority error:" + paramIntent, new Object[0]);
+          RecoveryLog.i("Recovery.RecoveryHandleService", "try to increase recovery process priority error:".concat(String.valueOf(paramIntent)), new Object[0]);
         }
       }
     }

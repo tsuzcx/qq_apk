@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.model;
 
 public abstract interface f
 {
-  public abstract boolean M(byte[] paramArrayOfByte);
+  public abstract boolean N(byte[] paramArrayOfByte);
 }
 
 

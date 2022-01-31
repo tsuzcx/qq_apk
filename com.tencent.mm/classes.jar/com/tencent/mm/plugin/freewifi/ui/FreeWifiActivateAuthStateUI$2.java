@@ -1,24 +1,27 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.d.a;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.d;
 import com.tencent.mm.plugin.freewifi.model.g.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class FreeWifiActivateAuthStateUI$2
   implements g.b
 {
   FreeWifiActivateAuthStateUI$2(FreeWifiActivateAuthStateUI paramFreeWifiActivateAuthStateUI) {}
   
-  public final void bE(String paramString, int paramInt)
+  public final void cm(String paramString, int paramInt)
   {
-    String str = d.aTV();
-    y.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "get ap auth data : %s, url : %s, mac : %s", new Object[] { paramString, this.kqB.kpt, str });
-    if (!bk.bl(paramString)) {
-      new a(this.kqB.kpt, this.kqB.ssid, str, this.kqB.kqK, paramString, "", paramInt, m.B(this.kqB.getIntent())).b(new FreeWifiActivateAuthStateUI.2.1(this));
+    AppMethodBeat.i(20891);
+    String str = d.bAy();
+    ab.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "get ap auth data : %s, url : %s, mac : %s", new Object[] { paramString, this.mMn.kdt, str });
+    if (!bo.isNullOrNil(paramString)) {
+      new a(this.mMn.kdt, this.mMn.ssid, str, this.mMn.mMw, paramString, "", paramInt, m.U(this.mMn.getIntent())).c(new FreeWifiActivateAuthStateUI.2.1(this));
     }
+    AppMethodBeat.o(20891);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.hardwareopt.a.a;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void gF(boolean paramBoolean);
+  public abstract void ip(boolean paramBoolean);
 }
 
 

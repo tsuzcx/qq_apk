@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MobileVerifyUI$6
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class MobileVerifyUI$6
   
   public final void onClick(View paramView)
   {
-    MobileVerifyUI.e(this.fpS);
+    AppMethodBeat.i(125271);
+    MobileVerifyUI.e(this.gHp);
+    AppMethodBeat.o(125271);
   }
 }
 

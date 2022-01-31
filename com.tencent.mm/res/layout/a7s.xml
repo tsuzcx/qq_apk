@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:id="@id/cge" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
-        <ProgressBar android:layout_gravity="center" android:id="@id/ae6" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/zh" />
-        <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/ps" />
-    </LinearLayout>
-    <ImageView android:layout_gravity="center" android:id="@id/ae7" android:paddingTop="5.0dip" android:paddingBottom="25.0dip" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/agz" />
-    <TextView android:textSize="14.0dip" android:gravity="center" android:layout_gravity="center" android:id="@id/cgf" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:text="@string/a9i" />
+    <TextView android:textSize="@dimen/a3x" android:textStyle="bold" android:textColor="@color/st" android:id="@id/ak9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f17" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/a3x" android:textColor="@color/a6h" android:id="@id/akd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bxn" />
 </LinearLayout>

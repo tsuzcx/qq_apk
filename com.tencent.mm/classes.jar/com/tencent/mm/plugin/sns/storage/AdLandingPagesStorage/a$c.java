@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
-public final class a$c
+public abstract interface a$c
 {
-  public static final a oBZ = new a((byte)0);
+  public abstract void ZX(String paramString);
+  
+  public abstract void ZY(String paramString);
 }
 
 

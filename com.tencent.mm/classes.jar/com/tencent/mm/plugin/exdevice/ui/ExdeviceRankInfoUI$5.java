@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceRankInfoUI$5
   implements AbsListView.OnScrollListener
@@ -10,12 +11,16 @@ final class ExdeviceRankInfoUI$5
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    ExdeviceRankInfoUI.r(this.jFV);
+    AppMethodBeat.i(20139);
+    ExdeviceRankInfoUI.r(this.lPt);
+    AppMethodBeat.o(20139);
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    ExdeviceRankInfoUI.r(this.jFV);
+    AppMethodBeat.i(20138);
+    ExdeviceRankInfoUI.r(this.lPt);
+    AppMethodBeat.o(20138);
   }
 }
 

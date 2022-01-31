@@ -1,13 +1,45 @@
 package com.tencent.mm.modelstat;
 
-import com.tencent.mm.network.ab;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bj;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.network.ac;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bn;
 
 public final class n
 {
-  static {}
+  static
+  {
+    AppMethodBeat.i(78767);
+    bn.reset();
+    AppMethodBeat.o(78767);
+  }
+  
+  public static void I(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(78764);
+    k localk = new k();
+    localk.fTD = paramInt1;
+    localk.fTP = paramInt2;
+    localk.bsY = 8390656;
+    c(localk);
+    a(localk, paramInt3);
+    q.akL().a(localk);
+    AppMethodBeat.o(78764);
+  }
+  
+  public static void J(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(78765);
+    k localk = new k();
+    localk.fTC = paramInt1;
+    localk.fTO = paramInt2;
+    localk.bsY = 4195328;
+    c(localk);
+    a(localk, paramInt3);
+    q.akL().a(localk);
+    AppMethodBeat.o(78765);
+  }
   
   private static void a(k paramk, int paramInt)
   {
@@ -16,86 +48,69 @@ public final class n
     default: 
       return;
     case 522: 
-      paramk.eDQ = (paramk.eDX + paramk.eDY);
-      paramk.bcw |= 0x8000;
+      paramk.fTH = (paramk.fTO + paramk.fTP);
+      paramk.bsY |= 0x8000;
       return;
     case 138: 
     case 139: 
-      paramk.eDE = (paramk.eDL + paramk.eDM);
-      paramk.bcw |= 0x8;
+      paramk.fTv = (paramk.fTC + paramk.fTD);
+      paramk.bsY |= 0x8;
       return;
     case 110: 
-      paramk.eDS = (paramk.eDX + paramk.eDY);
-      paramk.bcw |= 0x20000;
+      paramk.fTJ = (paramk.fTO + paramk.fTP);
+      paramk.bsY |= 0x20000;
       return;
     case 109: 
     case 123: 
-      paramk.eDG = (paramk.eDL + paramk.eDM);
-      paramk.bcw |= 0x20;
+      paramk.fTx = (paramk.fTC + paramk.fTD);
+      paramk.bsY |= 0x20;
       return;
     case 127: 
-      paramk.eDU = (paramk.eDX + paramk.eDY);
-      paramk.bcw |= 0x80000;
+      paramk.fTL = (paramk.fTO + paramk.fTP);
+      paramk.bsY |= 0x80000;
       return;
     case 128: 
-      paramk.eDI = (paramk.eDL + paramk.eDM);
-      paramk.bcw |= 0x80;
+      paramk.fTz = (paramk.fTC + paramk.fTD);
+      paramk.bsY |= 0x80;
       return;
     case 149: 
-      paramk.eDW = (paramk.eDX + paramk.eDY);
-      paramk.bcw |= 0x200000;
+      paramk.fTN = (paramk.fTO + paramk.fTP);
+      paramk.bsY |= 0x200000;
       return;
     }
-    paramk.eDK = (paramk.eDL + paramk.eDM);
-    paramk.bcw |= 0x200;
-  }
-  
-  public static void bg(int paramInt1, int paramInt2)
-  {
-    if (ab.bG(ae.getContext()))
-    {
-      y.i("MicroMsg.NetStatStorageLogic", "dknetflow wifi recv:%d send:%d type:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0) });
-      w(paramInt1, paramInt2, 0);
-      return;
-    }
-    y.i("MicroMsg.NetStatStorageLogic", "dknetflow mobile recv:%d send:%d type:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0) });
-    x(paramInt1, paramInt2, 0);
+    paramk.fTB = (paramk.fTC + paramk.fTD);
+    paramk.bsY |= 0x200;
   }
   
   private static void c(k paramk)
   {
-    bj.update();
-    paramk.eDN = ((int)bj.crO());
-    paramk.eDZ = ((int)bj.crN());
-    paramk.eDO = ((int)bj.crM());
-    paramk.eEa = ((int)bj.crL());
-    paramk.eEb = ((int)bj.crS());
-    paramk.eEd = ((int)bj.crR());
-    paramk.eEc = ((int)bj.crQ());
-    paramk.eEe = ((int)bj.crP());
-    paramk.bcw = (paramk.bcw | 0x2000 | 0x2000000 | 0x1000 | 0x1000000 | 0x8000000 | 0x20000000 | 0x4000000 | 0x10000000);
+    AppMethodBeat.i(78766);
+    bn.update();
+    paramk.fTE = ((int)bn.dtO());
+    paramk.fTQ = ((int)bn.dtN());
+    paramk.fTF = ((int)bn.dtM());
+    paramk.fTR = ((int)bn.dtL());
+    paramk.fTS = ((int)bn.nS(0L));
+    paramk.fTU = ((int)bn.nR(0L));
+    paramk.fTT = ((int)bn.dtP());
+    paramk.fTV = ((int)bn.nQ(0L));
+    paramk.bsY = (paramk.bsY | 0x2000 | 0x2000000 | 0x1000 | 0x1000000 | 0x8000000 | 0x20000000 | 0x4000000 | 0x10000000);
+    AppMethodBeat.o(78766);
   }
   
-  public static void w(int paramInt1, int paramInt2, int paramInt3)
+  public static void cq(int paramInt1, int paramInt2)
   {
-    k localk = new k();
-    localk.eDM = paramInt1;
-    localk.eDY = paramInt2;
-    localk.bcw = 8390656;
-    c(localk);
-    a(localk, paramInt3);
-    q.RC().a(localk);
-  }
-  
-  public static void x(int paramInt1, int paramInt2, int paramInt3)
-  {
-    k localk = new k();
-    localk.eDL = paramInt1;
-    localk.eDX = paramInt2;
-    localk.bcw = 4195328;
-    c(localk);
-    a(localk, paramInt3);
-    q.RC().a(localk);
+    AppMethodBeat.i(78763);
+    if (ac.cm(ah.getContext()))
+    {
+      ab.i("MicroMsg.NetStatStorageLogic", "dknetflow wifi recv:%d send:%d type:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0) });
+      I(paramInt1, paramInt2, 0);
+      AppMethodBeat.o(78763);
+      return;
+    }
+    ab.i("MicroMsg.NetStatStorageLogic", "dknetflow mobile recv:%d send:%d type:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0) });
+    J(paramInt1, paramInt2, 0);
+    AppMethodBeat.o(78763);
   }
 }
 

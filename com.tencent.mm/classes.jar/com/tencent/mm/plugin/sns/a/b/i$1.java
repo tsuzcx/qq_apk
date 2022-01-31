@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.sns.a.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.b;
-import com.tencent.mm.protocal.c.asw;
-import com.tencent.mm.protocal.c.btm;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ayx;
+import com.tencent.mm.protocal.protobuf.cec;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 final class i$1
@@ -13,22 +14,24 @@ final class i$1
   
   public final void run()
   {
-    asw localasw = new asw();
-    localasw.tou = this.olM;
-    localasw.toC = ((int)(System.currentTimeMillis() / 1000L));
-    localasw.hPS = 1;
-    String str = i.o(this.olN);
-    localasw.tov = new b(str.getBytes());
-    i.a(this.olO).sve.add(localasw);
-    y.i("MicroMsg.SnsLogMgr", "snsadlog " + this.olM + " " + str);
-    if (i.b(this.olO) == 0L) {
-      i.a(this.olO, System.currentTimeMillis());
+    AppMethodBeat.i(35750);
+    ayx localayx = new ayx();
+    localayx.xoo = this.qZY;
+    localayx.xov = ((int)(System.currentTimeMillis() / 1000L));
+    localayx.jJu = 1;
+    String str = i.t(this.qZZ);
+    localayx.xop = new b(str.getBytes());
+    i.a(this.raa).wok.add(localayx);
+    ab.i("MicroMsg.SnsLogMgr", "snsadlog " + this.qZY + " " + str);
+    if (i.b(this.raa) == 0L) {
+      i.a(this.raa, System.currentTimeMillis());
     }
+    AppMethodBeat.o(35750);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.b.i.1
  * JD-Core Version:    0.7.0.1
  */

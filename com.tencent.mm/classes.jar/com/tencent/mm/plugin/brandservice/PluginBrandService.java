@@ -1,13 +1,15 @@
 package com.tencent.mm.plugin.brandservice;
 
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.p;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.a;
+import com.tencent.mm.model.q;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.r;
@@ -17,71 +19,92 @@ import com.tencent.mm.storage.t;
 
 public class PluginBrandService
   extends f
-  implements com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.brandservice.a.d
+  implements com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.brandservice.a.c
 {
-  private g.a ibM = new PluginBrandService.3(this);
-  private r.c ibN = new PluginBrandService.4(this);
+  private h.a jSC;
+  private r.c jSD;
+  
+  public PluginBrandService()
+  {
+    AppMethodBeat.i(13807);
+    this.jSC = new PluginBrandService.3(this);
+    this.jSD = new PluginBrandService.4(this);
+    AppMethodBeat.o(13807);
+  }
   
   private void addBrandServiceEvent()
   {
-    com.tencent.mm.sdk.b.a.udP.c(new PluginBrandService.1(this));
+    AppMethodBeat.i(13813);
+    com.tencent.mm.sdk.b.a.ymk.c(new PluginBrandService.1(this));
+    AppMethodBeat.o(13813);
   }
   
   private void addPlaceTopChangeListener()
   {
-    com.tencent.mm.sdk.b.a.udP.b(new PluginBrandService.2(this));
+    AppMethodBeat.i(13814);
+    com.tencent.mm.sdk.b.a.ymk.b(new PluginBrandService.2(this));
+    AppMethodBeat.o(13814);
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
+    AppMethodBeat.i(13809);
     addBrandServiceEvent();
     addPlaceTopChangeListener();
-    if (paramg.Ex()) {
-      pin(new p(c.class));
+    if (paramg.SD()) {
+      pin(new q(d.class));
     }
+    AppMethodBeat.o(13809);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    com.tencent.mm.br.c.Xg("brandservice");
-    if (paramg.Ex()) {
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.brandservice.a.a.class, new com.tencent.mm.plugin.brandservice.ui.timeline.a.a.c());
+    AppMethodBeat.i(13810);
+    com.tencent.mm.bq.c.anb("brandservice");
+    if ((paramg.SD()) || (paramg.mI(":tools")) || (paramg.mI(":toolsmp"))) {
+      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.brandservice.a.b.class, new c());
     }
-    if ((paramg.Ex()) || (paramg.gn(":tools")) || (paramg.gn(":toolsmp"))) {
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.brandservice.a.b.class, new com.tencent.mm.plugin.brandservice.ui.timeline.a.b.b());
-    }
-    com.tencent.mm.plugin.brandservice.ui.timeline.a.c.init();
+    com.tencent.mm.plugin.brandservice.ui.timeline.preload.g.uD();
+    paramg = a.jSs;
+    com.tencent.mm.pluginsdk.cmd.b.a((com.tencent.mm.pluginsdk.cmd.a)new a(), new String[] { a.aWk() });
+    AppMethodBeat.o(13810);
   }
   
   public void installed()
   {
-    alias(com.tencent.mm.plugin.brandservice.a.d.class);
+    AppMethodBeat.i(13808);
+    alias(com.tencent.mm.plugin.brandservice.a.c.class);
+    AppMethodBeat.o(13808);
   }
   
   public void onAccountInitialized(e.c paramc)
   {
-    ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().a(this.ibM, Looper.getMainLooper());
-    com.tencent.mm.ai.z.ME().a(this.ibN, Looper.getMainLooper());
-    com.tencent.mm.ai.z.MF().a(this.ibN, Looper.getMainLooper());
-    if (s.ctL())
+    AppMethodBeat.i(13811);
+    ((j)com.tencent.mm.kernel.g.E(j.class)).bPQ().a(this.jSC, Looper.getMainLooper());
+    com.tencent.mm.aj.z.afo().a(this.jSD, Looper.getMainLooper());
+    com.tencent.mm.aj.z.afp().a(this.jSD, Looper.getMainLooper());
+    if (s.aWl())
     {
-      new com.tencent.mm.plugin.brandservice.ui.timeline.d();
-      y.i("MicroMsg.BizTimeLineMigrateImp", "migrateMainCell");
-      int i = ((Integer)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uzq, Integer.valueOf(0))).intValue();
+      new com.tencent.mm.plugin.brandservice.ui.timeline.c();
+      ab.i("MicroMsg.BizTimeLineMigrateImp", "migrateMainCell");
+      int i = ((Integer)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yKe, Integer.valueOf(0))).intValue();
       if ((i & 0x1) == 0)
       {
-        ((j)com.tencent.mm.kernel.g.r(j.class)).FB().abx("officialaccounts");
-        com.tencent.mm.ai.z.ME().ctE();
-        com.tencent.mm.kernel.g.DP().Dz().c(ac.a.uzq, Integer.valueOf(i | 0x1));
+        ((j)com.tencent.mm.kernel.g.E(j.class)).YF().arJ("officialaccounts");
+        com.tencent.mm.aj.z.afo().dwe();
+        com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yKe, Integer.valueOf(i | 0x1));
       }
     }
+    AppMethodBeat.o(13811);
   }
   
   public void onAccountRelease()
   {
-    ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().a(this.ibM);
-    com.tencent.mm.ai.z.ME().a(this.ibN);
-    com.tencent.mm.ai.z.MF().a(this.ibN);
+    AppMethodBeat.i(13812);
+    ((j)com.tencent.mm.kernel.g.E(j.class)).bPQ().a(this.jSC);
+    com.tencent.mm.aj.z.afo().a(this.jSD);
+    com.tencent.mm.aj.z.afp().a(this.jSD);
+    AppMethodBeat.o(13812);
   }
 }
 

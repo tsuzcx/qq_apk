@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/aum" android:background="@color/wb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" style="@style/gf">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:minHeight="@dimen/l4" android:layout_weight="1.0">
-            <com.tencent.mm.ui.MMImageView android:id="@id/auj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/li" android:src="@drawable/a9y" style="@style/gk" />
-            <TextView android:id="@id/auk" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" android:layout_marginBottom="@dimen/kl" android:text="message" android:maxLines="6" style="@style/gl" />
-        </LinearLayout>
-        <ImageView android:id="@id/aut" android:background="@color/x_" android:layout_width="fill_parent" android:layout_height="@dimen/fn" />
-        <Button android:textSize="@dimen/lj" android:textColor="@color/ta" android:id="@id/auc" android:background="@drawable/b_" android:layout_width="fill_parent" android:layout_height="@dimen/ld" android:text="@string/qk" />
-    </LinearLayout>
+    <TextView android:id="@id/ag" style="@style/go" />
 </LinearLayout>

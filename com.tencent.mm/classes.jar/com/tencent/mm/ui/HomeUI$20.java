@@ -1,22 +1,30 @@
 package com.tencent.mm.ui;
 
-import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.at;
 
 final class HomeUI$20
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  HomeUI$20(HomeUI paramHomeUI) {}
+  HomeUI$20(HomeUI paramHomeUI, int paramInt) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.d("MicroMsg.LauncherUI.HomeUI", "onMainTabCreate, send refresh broadcast");
-    HomeUI.d(this.uKu).sendBroadcast(new Intent("com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP"));
-  }
-  
-  public final String toString()
-  {
-    return super.toString() + "|sendBroadcast";
+    AppMethodBeat.i(29366);
+    try
+    {
+      at.startSettingItent(HomeUI.b(this.yYw), this.bHS);
+      AppMethodBeat.o(29366);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      ab.printErrStackTrace("MicroMsg.LauncherUI.HomeUI", paramDialogInterface, "", new Object[0]);
+      AppMethodBeat.o(29366);
+    }
   }
 }
 

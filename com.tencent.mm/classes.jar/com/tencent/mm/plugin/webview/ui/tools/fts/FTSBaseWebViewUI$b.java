@@ -4,14 +4,15 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView;
 import com.tencent.mm.plugin.fts.ui.widget.a;
-import com.tencent.mm.plugin.websearch.api.ao;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.websearch.api.an;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vfs.e;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.l;
-import com.tencent.xweb.m;
+import com.tencent.xweb.r;
+import com.tencent.xweb.s;
 
 final class FTSBaseWebViewUI$b
   extends PreLoadWebViewUI.a
@@ -21,18 +22,20 @@ final class FTSBaseWebViewUI$b
     super(paramFTSBaseWebViewUI);
   }
   
-  private static m TE(String paramString)
+  private static s aiH(String paramString)
   {
-    m localm = null;
-    y.i("MicroMsg.FTS.FTSBaseWebViewUI", "url=%s | thread=%d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
+    AppMethodBeat.i(8403);
+    ab.i("MicroMsg.WebSearch.FTSBaseWebViewUI", "url=%s | thread=%d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
     paramString = Uri.parse(paramString);
     try
     {
       paramString = e.openRead(paramString.getQueryParameter("path"));
-      if (paramString != null) {
-        localm = new m("image/*", "utf8", paramString);
+      if (paramString != null)
+      {
+        paramString = new s("image/*", "utf8", paramString);
+        AppMethodBeat.o(8403);
+        return paramString;
       }
-      return localm;
     }
     catch (Exception paramString)
     {
@@ -40,79 +43,100 @@ final class FTSBaseWebViewUI$b
       {
         paramString = null;
       }
+      AppMethodBeat.o(8403);
     }
+    return null;
   }
   
-  public final m a(WebView paramWebView, l paraml)
+  public final s a(WebView paramWebView, r paramr)
   {
-    if ((paraml != null) && (paraml.getUrl() != null) && (paraml.getUrl().toString().startsWith("weixin://fts")))
+    AppMethodBeat.i(8401);
+    if ((paramr != null) && (paramr.getUrl() != null) && (paramr.getUrl().toString().startsWith("weixin://fts")))
     {
-      m localm = TE(paraml.getUrl().toString());
-      if (localm != null) {
-        return localm;
+      s locals = aiH(paramr.getUrl().toString());
+      if (locals != null)
+      {
+        AppMethodBeat.o(8401);
+        return locals;
       }
     }
-    return super.a(paramWebView, paraml);
+    paramWebView = super.a(paramWebView, paramr);
+    AppMethodBeat.o(8401);
+    return paramWebView;
   }
   
-  public final m a(WebView paramWebView, l paraml, Bundle paramBundle)
+  public final s a(WebView paramWebView, r paramr, Bundle paramBundle)
   {
-    if ((paraml != null) && (paraml.getUrl() != null) && (paraml.getUrl().toString().startsWith("weixin://fts")))
+    AppMethodBeat.i(8400);
+    if ((paramr != null) && (paramr.getUrl() != null) && (paramr.getUrl().toString().startsWith("weixin://fts")))
     {
-      paramBundle = TE(paraml.getUrl().toString());
-      if (paramBundle != null) {
+      paramBundle = aiH(paramr.getUrl().toString());
+      if (paramBundle != null)
+      {
+        AppMethodBeat.o(8400);
         return paramBundle;
       }
     }
-    return super.a(paramWebView, paraml);
+    paramWebView = super.a(paramWebView, paramr);
+    AppMethodBeat.o(8400);
+    return paramWebView;
   }
   
   public final void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
+    AppMethodBeat.i(8404);
     super.a(paramWebView, paramInt, paramString1, paramString2);
-    if ((paramString2 != null) && (paramString2.equals(this.rtV.caS))) {
-      ao.reportIdKey649ForLook(FTSBaseWebViewUI.g(this.rtV), 16);
+    if ((paramString2 != null) && (paramString2.equals(this.vkg.cJr))) {
+      an.reportIdKey649ForLook(FTSBaseWebViewUI.a(this.vkg), 16);
     }
+    AppMethodBeat.o(8404);
   }
   
-  public final void a(WebView paramWebView, String paramString)
+  public final void b(WebView paramWebView, String paramString)
   {
-    super.a(paramWebView, paramString);
-    y.i("MicroMsg.FTS.FTSBaseWebViewUI", "onPageFinished %s", new Object[] { paramString });
-    this.rtV.showOptionMenu(false);
-    if ((FTSBaseWebViewUI.i(this.rtV) != null) && (!FTSBaseWebViewUI.j(this.rtV)))
+    AppMethodBeat.i(8398);
+    super.b(paramWebView, paramString);
+    ab.i("MicroMsg.WebSearch.FTSBaseWebViewUI", "onPageFinished %s", new Object[] { paramString });
+    this.vkg.showOptionMenu(false);
+    if ((FTSBaseWebViewUI.c(this.vkg) != null) && (!FTSBaseWebViewUI.d(this.vkg)))
     {
-      FTSBaseWebViewUI.cfs();
-      FTSBaseWebViewUI.i(this.rtV).getFtsEditText().kEp.clearFocus();
-      this.rtV.XM();
+      FTSBaseWebViewUI.c(this.vkg).getFtsEditText().naN.clearFocus();
+      this.vkg.hideVKB();
     }
+    AppMethodBeat.o(8398);
   }
   
   public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
+    AppMethodBeat.i(8399);
     super.b(paramWebView, paramString, paramBitmap);
-    y.i("MicroMsg.FTS.FTSBaseWebViewUI", "onPageStarted %s", new Object[] { paramString });
-    this.rtV.showOptionMenu(false);
-    if ((FTSBaseWebViewUI.i(this.rtV) != null) && (!FTSBaseWebViewUI.j(this.rtV)))
+    ab.i("MicroMsg.WebSearch.FTSBaseWebViewUI", "onPageStarted %s", new Object[] { paramString });
+    this.vkg.showOptionMenu(false);
+    if ((FTSBaseWebViewUI.c(this.vkg) != null) && (!FTSBaseWebViewUI.d(this.vkg)))
     {
-      FTSBaseWebViewUI.cft();
-      FTSBaseWebViewUI.i(this.rtV).getFtsEditText().kEp.clearFocus();
-      this.rtV.XM();
+      FTSBaseWebViewUI.c(this.vkg).getFtsEditText().naN.clearFocus();
+      this.vkg.hideVKB();
     }
-    ao.reportIdKey649ForLook(FTSBaseWebViewUI.g(this.rtV), 1);
-    ao.eB(FTSBaseWebViewUI.g(this.rtV), 1);
+    an.reportIdKey649ForLook(FTSBaseWebViewUI.a(this.vkg), 1);
+    an.gF(FTSBaseWebViewUI.a(this.vkg), 1);
+    AppMethodBeat.o(8399);
   }
   
-  public final m c(WebView paramWebView, String paramString)
+  public final s c(WebView paramWebView, String paramString)
   {
+    AppMethodBeat.i(8402);
     if (paramString.startsWith("weixin://fts"))
     {
-      m localm = TE(paramString);
-      if (localm != null) {
-        return localm;
+      s locals = aiH(paramString);
+      if (locals != null)
+      {
+        AppMethodBeat.o(8402);
+        return locals;
       }
     }
-    return super.c(paramWebView, paramString);
+    paramWebView = super.c(paramWebView, paramString);
+    AppMethodBeat.o(8402);
+    return paramWebView;
   }
 }
 

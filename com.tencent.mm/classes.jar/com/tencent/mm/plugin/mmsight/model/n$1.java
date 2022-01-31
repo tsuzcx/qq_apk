@@ -11,146 +11,153 @@ final class n$1
   public final void run()
   {
     // Byte code:
-    //   0: ldc 41
-    //   2: ldc 43
-    //   4: iconst_3
-    //   5: anewarray 4	java/lang/Object
-    //   8: dup
-    //   9: iconst_0
-    //   10: aload_0
-    //   11: getfield 26	com/tencent/mm/plugin/mmsight/model/n$1:mhH	J
-    //   14: invokestatic 49	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   17: aastore
-    //   18: dup
-    //   19: iconst_1
-    //   20: invokestatic 55	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   23: invokevirtual 59	java/lang/Thread:getId	()J
-    //   26: invokestatic 49	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   29: aastore
-    //   30: dup
-    //   31: iconst_2
-    //   32: invokestatic 64	com/tencent/mm/sdk/platformtools/bk:UY	()J
-    //   35: aload_0
-    //   36: getfield 28	com/tencent/mm/plugin/mmsight/model/n$1:dhV	J
-    //   39: lsub
-    //   40: invokestatic 49	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   43: aastore
-    //   44: invokestatic 70	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   47: aload_0
-    //   48: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:mhJ	Lcom/tencent/mm/plugin/mmsight/model/n;
-    //   51: getfield 74	com/tencent/mm/plugin/mmsight/model/n:lock	Ljava/lang/Object;
-    //   54: astore_1
-    //   55: aload_1
-    //   56: monitorenter
-    //   57: aload_0
-    //   58: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:mhJ	Lcom/tencent/mm/plugin/mmsight/model/n;
-    //   61: aload_0
-    //   62: getfield 30	com/tencent/mm/plugin/mmsight/model/n$1:val$context	Landroid/content/Context;
-    //   65: aload_0
-    //   66: getfield 32	com/tencent/mm/plugin/mmsight/model/n$1:mhI	I
-    //   69: invokestatic 77	com/tencent/mm/compatible/e/d:u	(Landroid/content/Context;I)Lcom/tencent/mm/compatible/e/d$a$a;
-    //   72: putfield 81	com/tencent/mm/plugin/mmsight/model/n:mhG	Lcom/tencent/mm/compatible/e/d$a$a;
-    //   75: aload_0
-    //   76: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:mhJ	Lcom/tencent/mm/plugin/mmsight/model/n;
-    //   79: getfield 85	com/tencent/mm/plugin/mmsight/model/n:mhF	Z
-    //   82: ifeq +70 -> 152
-    //   85: aload_0
-    //   86: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:mhJ	Lcom/tencent/mm/plugin/mmsight/model/n;
-    //   89: getfield 81	com/tencent/mm/plugin/mmsight/model/n:mhG	Lcom/tencent/mm/compatible/e/d$a$a;
-    //   92: ifnull +60 -> 152
-    //   95: ldc 41
-    //   97: ldc 87
-    //   99: iconst_1
-    //   100: anewarray 4	java/lang/Object
-    //   103: dup
-    //   104: iconst_0
-    //   105: invokestatic 64	com/tencent/mm/sdk/platformtools/bk:UY	()J
-    //   108: aload_0
-    //   109: getfield 28	com/tencent/mm/plugin/mmsight/model/n$1:dhV	J
-    //   112: lsub
-    //   113: invokestatic 49	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   116: aastore
-    //   117: invokestatic 90	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   120: aload_0
-    //   121: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:mhJ	Lcom/tencent/mm/plugin/mmsight/model/n;
-    //   124: getfield 81	com/tencent/mm/plugin/mmsight/model/n:mhG	Lcom/tencent/mm/compatible/e/d$a$a;
-    //   127: getfield 96	com/tencent/mm/compatible/e/d$a$a:dwJ	Landroid/hardware/Camera;
-    //   130: astore_2
-    //   131: aload_2
-    //   132: aconst_null
-    //   133: invokevirtual 102	android/hardware/Camera:setPreviewCallback	(Landroid/hardware/Camera$PreviewCallback;)V
-    //   136: aload_2
-    //   137: invokevirtual 105	android/hardware/Camera:stopPreview	()V
-    //   140: aload_2
-    //   141: invokevirtual 108	android/hardware/Camera:release	()V
-    //   144: aload_0
-    //   145: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:mhJ	Lcom/tencent/mm/plugin/mmsight/model/n;
-    //   148: aconst_null
-    //   149: putfield 81	com/tencent/mm/plugin/mmsight/model/n:mhG	Lcom/tencent/mm/compatible/e/d$a$a;
+    //   0: ldc 40
+    //   2: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 48
+    //   7: ldc 50
+    //   9: iconst_3
+    //   10: anewarray 4	java/lang/Object
+    //   13: dup
+    //   14: iconst_0
+    //   15: aload_0
+    //   16: getfield 26	com/tencent/mm/plugin/mmsight/model/n$1:oHO	J
+    //   19: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   22: aastore
+    //   23: dup
+    //   24: iconst_1
+    //   25: invokestatic 62	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   28: invokevirtual 66	java/lang/Thread:getId	()J
+    //   31: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   34: aastore
+    //   35: dup
+    //   36: iconst_2
+    //   37: invokestatic 71	com/tencent/mm/sdk/platformtools/bo:aoy	()J
+    //   40: aload_0
+    //   41: getfield 28	com/tencent/mm/plugin/mmsight/model/n$1:dZo	J
+    //   44: lsub
+    //   45: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   48: aastore
+    //   49: invokestatic 76	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   52: aload_0
+    //   53: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:oHQ	Lcom/tencent/mm/plugin/mmsight/model/n;
+    //   56: getfield 80	com/tencent/mm/plugin/mmsight/model/n:lock	Ljava/lang/Object;
+    //   59: astore_1
+    //   60: aload_1
+    //   61: monitorenter
+    //   62: aload_0
+    //   63: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:oHQ	Lcom/tencent/mm/plugin/mmsight/model/n;
+    //   66: aload_0
+    //   67: getfield 30	com/tencent/mm/plugin/mmsight/model/n$1:val$context	Landroid/content/Context;
+    //   70: aload_0
+    //   71: getfield 32	com/tencent/mm/plugin/mmsight/model/n$1:oHP	I
+    //   74: invokestatic 86	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   77: invokestatic 92	com/tencent/mm/compatible/e/d:a	(Landroid/content/Context;ILandroid/os/Looper;)Lcom/tencent/mm/compatible/e/d$a$a;
+    //   80: putfield 96	com/tencent/mm/plugin/mmsight/model/n:faL	Lcom/tencent/mm/compatible/e/d$a$a;
+    //   83: aload_0
+    //   84: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:oHQ	Lcom/tencent/mm/plugin/mmsight/model/n;
+    //   87: getfield 100	com/tencent/mm/plugin/mmsight/model/n:faK	Z
+    //   90: ifeq +70 -> 160
+    //   93: aload_0
+    //   94: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:oHQ	Lcom/tencent/mm/plugin/mmsight/model/n;
+    //   97: getfield 96	com/tencent/mm/plugin/mmsight/model/n:faL	Lcom/tencent/mm/compatible/e/d$a$a;
+    //   100: ifnull +60 -> 160
+    //   103: ldc 48
+    //   105: ldc 102
+    //   107: iconst_1
+    //   108: anewarray 4	java/lang/Object
+    //   111: dup
+    //   112: iconst_0
+    //   113: invokestatic 71	com/tencent/mm/sdk/platformtools/bo:aoy	()J
+    //   116: aload_0
+    //   117: getfield 28	com/tencent/mm/plugin/mmsight/model/n$1:dZo	J
+    //   120: lsub
+    //   121: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   124: aastore
+    //   125: invokestatic 105	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   128: aload_0
+    //   129: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:oHQ	Lcom/tencent/mm/plugin/mmsight/model/n;
+    //   132: getfield 96	com/tencent/mm/plugin/mmsight/model/n:faL	Lcom/tencent/mm/compatible/e/d$a$a;
+    //   135: getfield 111	com/tencent/mm/compatible/e/d$a$a:eoH	Lcom/tencent/mm/compatible/e/u;
+    //   138: astore_2
+    //   139: aload_2
+    //   140: aconst_null
+    //   141: invokevirtual 117	com/tencent/mm/compatible/e/u:setPreviewCallback	(Landroid/hardware/Camera$PreviewCallback;)V
+    //   144: aload_2
+    //   145: invokevirtual 120	com/tencent/mm/compatible/e/u:stopPreview	()V
+    //   148: aload_2
+    //   149: invokevirtual 123	com/tencent/mm/compatible/e/u:release	()V
     //   152: aload_0
-    //   153: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:mhJ	Lcom/tencent/mm/plugin/mmsight/model/n;
-    //   156: getfield 74	com/tencent/mm/plugin/mmsight/model/n:lock	Ljava/lang/Object;
-    //   159: invokevirtual 111	java/lang/Object:notify	()V
-    //   162: aload_1
-    //   163: monitorexit
-    //   164: return
-    //   165: astore_2
-    //   166: ldc 41
-    //   168: ldc 113
-    //   170: iconst_1
-    //   171: anewarray 4	java/lang/Object
-    //   174: dup
-    //   175: iconst_0
-    //   176: aload_2
-    //   177: invokevirtual 117	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   180: aastore
-    //   181: invokestatic 90	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   184: aload_0
-    //   185: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:mhJ	Lcom/tencent/mm/plugin/mmsight/model/n;
-    //   188: aconst_null
-    //   189: putfield 81	com/tencent/mm/plugin/mmsight/model/n:mhG	Lcom/tencent/mm/compatible/e/d$a$a;
-    //   192: goto -117 -> 75
-    //   195: astore_2
-    //   196: aload_1
-    //   197: monitorexit
-    //   198: aload_2
-    //   199: athrow
-    //   200: astore_2
-    //   201: ldc 41
-    //   203: ldc 119
-    //   205: iconst_1
-    //   206: anewarray 4	java/lang/Object
-    //   209: dup
-    //   210: iconst_0
-    //   211: aload_2
-    //   212: invokevirtual 117	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   215: aastore
-    //   216: invokestatic 90	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   219: goto -67 -> 152
+    //   153: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:oHQ	Lcom/tencent/mm/plugin/mmsight/model/n;
+    //   156: aconst_null
+    //   157: putfield 96	com/tencent/mm/plugin/mmsight/model/n:faL	Lcom/tencent/mm/compatible/e/d$a$a;
+    //   160: aload_0
+    //   161: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:oHQ	Lcom/tencent/mm/plugin/mmsight/model/n;
+    //   164: getfield 80	com/tencent/mm/plugin/mmsight/model/n:lock	Ljava/lang/Object;
+    //   167: invokevirtual 126	java/lang/Object:notify	()V
+    //   170: aload_1
+    //   171: monitorexit
+    //   172: ldc 40
+    //   174: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   177: return
+    //   178: astore_2
+    //   179: ldc 48
+    //   181: ldc 131
+    //   183: iconst_1
+    //   184: anewarray 4	java/lang/Object
+    //   187: dup
+    //   188: iconst_0
+    //   189: aload_2
+    //   190: invokevirtual 135	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   193: aastore
+    //   194: invokestatic 105	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   197: aload_0
+    //   198: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:oHQ	Lcom/tencent/mm/plugin/mmsight/model/n;
+    //   201: aconst_null
+    //   202: putfield 96	com/tencent/mm/plugin/mmsight/model/n:faL	Lcom/tencent/mm/compatible/e/d$a$a;
+    //   205: goto -122 -> 83
+    //   208: astore_2
+    //   209: aload_1
+    //   210: monitorexit
+    //   211: ldc 40
+    //   213: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   216: aload_2
+    //   217: athrow
+    //   218: astore_2
+    //   219: ldc 48
+    //   221: ldc 137
+    //   223: iconst_1
+    //   224: anewarray 4	java/lang/Object
+    //   227: dup
+    //   228: iconst_0
+    //   229: aload_2
+    //   230: invokevirtual 135	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   233: aastore
+    //   234: invokestatic 105	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   237: goto -77 -> 160
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	222	0	this	1
-    //   54	143	1	localObject1	Object
-    //   130	11	2	localCamera	android.hardware.Camera
-    //   165	12	2	localException1	java.lang.Exception
-    //   195	4	2	localObject2	Object
-    //   200	12	2	localException2	java.lang.Exception
+    //   0	240	0	this	1
+    //   59	151	1	localObject1	Object
+    //   138	11	2	localu	com.tencent.mm.compatible.e.u
+    //   178	12	2	localException1	java.lang.Exception
+    //   208	9	2	localObject2	Object
+    //   218	12	2	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   57	75	165	java/lang/Exception
-    //   57	75	195	finally
-    //   75	120	195	finally
-    //   120	152	195	finally
-    //   152	164	195	finally
-    //   166	192	195	finally
-    //   196	198	195	finally
-    //   201	219	195	finally
-    //   120	152	200	java/lang/Exception
+    //   62	83	178	java/lang/Exception
+    //   62	83	208	finally
+    //   83	128	208	finally
+    //   128	160	208	finally
+    //   160	172	208	finally
+    //   179	205	208	finally
+    //   209	211	208	finally
+    //   219	237	208	finally
+    //   128	160	218	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.n.1
  * JD-Core Version:    0.7.0.1
  */

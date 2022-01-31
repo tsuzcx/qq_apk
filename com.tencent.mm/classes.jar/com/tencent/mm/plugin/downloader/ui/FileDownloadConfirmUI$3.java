@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.downloader.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FileDownloadConfirmUI$3
   implements DialogInterface.OnDismissListener
@@ -10,7 +11,9 @@ final class FileDownloadConfirmUI$3
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.iRn.finish();
+    AppMethodBeat.i(2517);
+    this.kZK.finish();
+    AppMethodBeat.o(2517);
   }
 }
 

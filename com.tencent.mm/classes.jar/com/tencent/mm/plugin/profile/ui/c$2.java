@@ -2,16 +2,14 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Intent;
 import android.view.MenuItem;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.plugin.base.model.b;
-import com.tencent.mm.plugin.profile.a;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.d;
 
 final class c$2
@@ -21,36 +19,40 @@ final class c$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(23458);
     switch (paramMenuItem.getItemId())
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(23458);
       return;
-    case 1: 
-      paramMenuItem = this.mWY;
+      paramMenuItem = this.pzT;
       Intent localIntent = new Intent();
-      localIntent.putExtra("Select_Talker_Name", paramMenuItem.dnp.field_username);
-      localIntent.putExtra("Select_block_List", paramMenuItem.dnp.field_username);
+      localIntent.putExtra("Select_Talker_Name", paramMenuItem.contact.field_username);
+      localIntent.putExtra("Select_block_List", paramMenuItem.contact.field_username);
       localIntent.putExtra("Select_Send_Card", true);
       localIntent.putExtra("Select_Conv_Type", 3);
       localIntent.putExtra("mutil_select_is_ret", true);
-      a.eUR.a(localIntent, paramMenuItem.bER);
+      com.tencent.mm.plugin.profile.b.gmO.a(localIntent, paramMenuItem.cmc);
+      AppMethodBeat.o(23458);
       return;
-    case 2: 
-      this.mWY.bER.getString(R.l.fmt_delcontactmsg_confirm, new Object[] { this.mWY.dnp.Bq() });
-      h.a(this.mWY.bER, this.mWY.bER.getString(R.l.contact_info_biz_clear_msg_tips), "", this.mWY.bER.getString(R.l.contact_info_biz_clear_msg), this.mWY.bER.getString(R.l.app_cancel), new c.2.1(this), null);
+      this.pzT.cmc.getString(2131300036, new Object[] { this.pzT.contact.Of() });
+      com.tencent.mm.ui.base.h.d(this.pzT.cmc, this.pzT.cmc.getString(2131298539), "", this.pzT.cmc.getString(2131298538), this.pzT.cmc.getString(2131296888), new c.2.1(this), null);
+      AppMethodBeat.o(23458);
       return;
-    case 3: 
-      this.mWY.bsB();
+      this.pzT.cch();
+      AppMethodBeat.o(23458);
       return;
-    case 4: 
-      paramMenuItem = this.mWY;
-      ((com.tencent.mm.pluginsdk.g)com.tencent.mm.kernel.g.r(com.tencent.mm.pluginsdk.g.class)).a(paramMenuItem.mVy, paramMenuItem.bER, paramMenuItem.dnp, true, new c.3(paramMenuItem));
+      paramMenuItem = this.pzT;
+      ((com.tencent.mm.pluginsdk.h)g.E(com.tencent.mm.pluginsdk.h.class)).a(paramMenuItem.pyd, paramMenuItem.cmc, paramMenuItem.contact, true, new c.3(paramMenuItem));
+      AppMethodBeat.o(23458);
       return;
+      paramMenuItem = this.pzT;
+      ab.d("MicroMsg.ContactWidgetBizInfo", "dealAddShortcut, username = " + paramMenuItem.contact.field_username);
+      com.tencent.mm.plugin.base.model.b.Z(paramMenuItem.cmc, paramMenuItem.contact.field_username);
+      al.p(new c.8(paramMenuItem), 1000L);
     }
-    paramMenuItem = this.mWY;
-    y.d("MicroMsg.ContactWidgetBizInfo", "dealAddShortcut, username = " + paramMenuItem.dnp.field_username);
-    b.U(paramMenuItem.bER, paramMenuItem.dnp.field_username);
-    ai.l(new c.8(paramMenuItem), 1000L);
   }
 }
 

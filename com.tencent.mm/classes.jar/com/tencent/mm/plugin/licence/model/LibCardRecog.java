@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.licence.model;
 
-import com.tencent.mm.compatible.util.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class LibCardRecog
 {
   static
   {
-    k.b("IDCardRecog", LibCardRecog.class.getClassLoader());
+    AppMethodBeat.i(72866);
+    System.loadLibrary("IDCardRecog");
+    AppMethodBeat.o(72866);
   }
   
   public static native int recognizeBankCardGetVersion();
@@ -27,7 +29,7 @@ public final class LibCardRecog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.licence.model.LibCardRecog
  * JD-Core Version:    0.7.0.1
  */

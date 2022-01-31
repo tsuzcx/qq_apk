@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.masssend.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.masssend.a.a;
 import com.tencent.mm.plugin.masssend.a.b;
 import com.tencent.mm.plugin.masssend.a.h;
@@ -20,11 +21,13 @@ final class c$b
   
   public final void onClick(View paramView)
   {
-    paramView = h.bhd().GS(this.id);
-    Intent localIntent = new Intent(c.a(this.mbl), MassSendMsgUI.class);
-    localIntent.putExtra("mass_send_contact_list", paramView.bgY());
+    AppMethodBeat.i(22784);
+    paramView = h.bPc().SC(this.id);
+    Intent localIntent = new Intent(c.a(this.oBN), MassSendMsgUI.class);
+    localIntent.putExtra("mass_send_contact_list", paramView.bOW());
     localIntent.putExtra("mass_send_again", true);
-    c.a(this.mbl).startActivity(localIntent);
+    c.a(this.oBN).startActivity(localIntent);
+    AppMethodBeat.o(22784);
   }
 }
 

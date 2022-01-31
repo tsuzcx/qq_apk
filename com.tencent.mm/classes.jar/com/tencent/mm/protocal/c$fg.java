@@ -5,7 +5,7 @@ public final class c$fg
 {
   public c$fg()
   {
-    super("openMyDeviceProfile", "openMyDeviceProfile", 145, false);
+    super("openDesignerProfile", "openDesignerProfile", 193, true);
   }
 }
 

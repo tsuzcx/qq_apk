@@ -11,7 +11,7 @@ final class TabLayout$d$1
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = paramValueAnimator.getAnimatedFraction();
-    this.kW.i(a.a(this.kS, this.kT, f), a.a(this.kU, this.kV, f));
+    this.lT.i(a.b(this.lP, this.lQ, f), a.b(this.lR, this.lS, f));
   }
 }
 

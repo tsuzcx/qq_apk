@@ -2,25 +2,27 @@ package com.tencent.mm.plugin.sns.model;
 
 public abstract interface d
 {
-  public abstract boolean bCM();
+  public abstract boolean con();
   
-  public abstract boolean bCN();
+  public abstract boolean coo();
   
-  public abstract boolean bCO();
+  public abstract boolean cop();
   
-  public abstract boolean bCP();
+  public abstract boolean coq();
   
-  public abstract long bCQ();
+  public abstract long cor();
   
-  public abstract boolean bCR();
+  public abstract boolean cos();
   
-  public abstract long bCS();
+  public abstract long cot();
+  
+  public abstract String cou();
   
   public abstract String getUserName();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.h.c.cs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.dd;
 
 public final class ak
   extends com.tencent.mm.o.a
-  implements com.tencent.mm.cf.a.a<String>
+  implements com.tencent.mm.cg.a.a<String>
 {
-  public bi uAh;
+  public bi yMq;
   
   public ak() {}
   
@@ -15,118 +16,123 @@ public final class ak
     super(paramString);
   }
   
-  public final void V(int paramInt, long paramLong)
+  public final void ak(int paramInt, long paramLong)
   {
+    AppMethodBeat.i(60132);
     switch (paramInt)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 8: 
-    case 9: 
-    case 11: 
-    default: 
-      return;
-    case 0: 
-      fy((int)paramLong);
-      return;
-    case 1: 
-      setStatus((int)paramLong);
-      return;
-    case 2: 
-      fA((int)paramLong);
-      return;
-    case 3: 
-      ba(paramLong);
-      return;
-    case 7: 
-      bb(paramLong);
-      return;
-    case 10: 
-      fC((int)paramLong);
-      return;
-    case 12: 
-      fD((int)paramLong);
-      return;
-    case 13: 
-      fE((int)paramLong);
-      return;
     }
-    fG((int)paramLong);
+    for (;;)
+    {
+      AppMethodBeat.o(60132);
+      return;
+      hJ((int)paramLong);
+      AppMethodBeat.o(60132);
+      return;
+      setStatus((int)paramLong);
+      AppMethodBeat.o(60132);
+      return;
+      hL((int)paramLong);
+      AppMethodBeat.o(60132);
+      return;
+      fK(paramLong);
+      AppMethodBeat.o(60132);
+      return;
+      fL(paramLong);
+      AppMethodBeat.o(60132);
+      return;
+      hN((int)paramLong);
+      AppMethodBeat.o(60132);
+      return;
+      hO((int)paramLong);
+      AppMethodBeat.o(60132);
+      return;
+      hP((int)paramLong);
+      AppMethodBeat.o(60132);
+      return;
+      hR((int)paramLong);
+    }
   }
   
-  public final void ai(bi parambi)
+  public final void aq(bi parambi)
   {
+    AppMethodBeat.i(60130);
     setStatus(parambi.field_status);
-    fA(parambi.field_isSend);
-    if (parambi.aRR()) {}
-    label80:
+    hL(parambi.field_isSend);
+    if (parambi.byk()) {}
+    label95:
     for (;;)
     {
       long l = parambi.field_createTime;
       for (ak localak = this;; localak = this)
       {
-        localak.ba(l);
-        if (!parambi.cvm()) {
+        localak.fK(l);
+        if (!parambi.dxQ()) {
           break;
         }
-        setContent(parambi.cvK());
+        setContent(parambi.dyr());
+        AppMethodBeat.o(60130);
         return;
         if (parambi.field_status != 1) {
-          break label80;
+          break label95;
         }
         l = 9223372036854775807L;
       }
       setContent(parambi.field_content);
+      AppMethodBeat.o(60130);
       return;
     }
   }
   
-  public final void bc(int paramInt, String paramString)
+  public final void bJ(int paramInt, String paramString)
   {
+    AppMethodBeat.i(60133);
     switch (paramInt)
     {
-    case 7: 
-    case 10: 
-    default: 
-      return;
-    case 4: 
-      setUsername(paramString);
-      return;
-    case 5: 
-      setContent(paramString);
-      return;
-    case 6: 
-      dP(paramString);
-      return;
-    case 8: 
-      dQ(paramString);
-      return;
-    case 9: 
-      dR(paramString);
-      return;
     }
-    dT(paramString);
+    for (;;)
+    {
+      AppMethodBeat.o(60133);
+      return;
+      setUsername(paramString);
+      AppMethodBeat.o(60133);
+      return;
+      setContent(paramString);
+      AppMethodBeat.o(60133);
+      return;
+      jV(paramString);
+      AppMethodBeat.o(60133);
+      return;
+      jW(paramString);
+      AppMethodBeat.o(60133);
+      return;
+      jX(paramString);
+      AppMethodBeat.o(60133);
+      return;
+      jZ(paramString);
+    }
   }
   
-  public final void ctt() {}
+  public final void dvP() {}
   
-  public final void cuB()
+  public final void dxc()
   {
+    AppMethodBeat.i(60131);
     setStatus(0);
-    fA(0);
+    hL(0);
     setContent("");
-    dP("0");
-    fy(0);
-    fG(0);
-    bc(0L);
-    fF(0);
-    fF(0);
-    super.dQ("");
-    super.dR("");
+    jV("0");
+    hJ(0);
+    hR(0);
+    fM(0L);
+    hQ(0);
+    hQ(0);
+    super.jW("");
+    super.jX("");
+    AppMethodBeat.o(60131);
   }
   
-  public final void q(int paramInt, byte[] paramArrayOfByte) {}
+  public final void r(int paramInt, byte[] paramArrayOfByte) {}
 }
 
 

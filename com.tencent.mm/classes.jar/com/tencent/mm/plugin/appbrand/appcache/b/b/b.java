@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
-import com.tencent.mm.protocal.c.cmz;
+import com.tencent.mm.protocal.protobuf.dbh;
 
 public class b
-  extends a<Boolean, cmz>
+  extends a<Boolean, dbh>
 {
-  final String act()
+  final String awm()
   {
     return "CmdBlockCgiRequest";
   }

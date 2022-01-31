@@ -3,45 +3,54 @@ package com.tencent.mm.plugin.webview.ui.tools;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.protocal.c.azs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bgv;
 import java.util.LinkedList;
 
 final class SDKOAuthOtherUI$a
   extends BaseAdapter
 {
-  private LayoutInflater Lu;
   private Context mContext;
-  LinkedList<azs> rlY;
+  private LayoutInflater mInflater;
+  LinkedList<bgv> vbB;
   
-  public SDKOAuthOtherUI$a(Context paramContext, LinkedList<azs> paramLinkedList)
+  public SDKOAuthOtherUI$a(Context paramContext, LinkedList<bgv> paramLinkedList)
   {
-    this.Lu = LayoutInflater.from(paramContext);
-    this.rlY = paramLinkedList;
+    AppMethodBeat.i(7511);
+    this.mInflater = LayoutInflater.from(paramContext);
+    this.vbB = paramLinkedList;
     this.mContext = paramContext;
+    AppMethodBeat.o(7511);
   }
   
-  private azs Cz(int paramInt)
+  private bgv Ks(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.rlY.size())) {
-      return (azs)this.rlY.get(paramInt);
+    AppMethodBeat.i(7513);
+    if ((paramInt >= 0) && (paramInt < this.vbB.size()))
+    {
+      bgv localbgv = (bgv)this.vbB.get(paramInt);
+      AppMethodBeat.o(7513);
+      return localbgv;
     }
+    AppMethodBeat.o(7513);
     return null;
   }
   
   public final int getCount()
   {
-    if (this.rlY == null) {
+    AppMethodBeat.i(7512);
+    if (this.vbB == null)
+    {
+      AppMethodBeat.o(7512);
       return 0;
     }
-    return this.rlY.size();
+    int i = this.vbB.size();
+    AppMethodBeat.o(7512);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -51,56 +60,44 @@ final class SDKOAuthOtherUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if ((this.rlY == null) || (this.rlY.size() <= 0)) {
-      paramViewGroup = null;
-    }
-    final azs localazs;
-    do
+    AppMethodBeat.i(7514);
+    if ((this.vbB == null) || (this.vbB.size() <= 0))
     {
-      return paramViewGroup;
-      localazs = Cz(paramInt);
-      paramViewGroup = paramView;
-    } while (localazs == null);
+      AppMethodBeat.o(7514);
+      return null;
+    }
+    bgv localbgv = Ks(paramInt);
+    if (localbgv == null)
+    {
+      AppMethodBeat.o(7514);
+      return paramView;
+    }
     if (paramView == null)
     {
       paramViewGroup = new SDKOAuthOtherUI.a.a((byte)0);
-      paramView = this.Lu.inflate(R.i.sdk_authorize_scope_item_new, null, false);
-      paramViewGroup.fYe = ((ImageView)paramView.findViewById(R.h.app_auth_state));
-      paramViewGroup.fYf = ((TextView)paramView.findViewById(R.h.app_auth_desc));
+      paramView = this.mInflater.inflate(2130970619, null, false);
+      paramViewGroup.vbF = ((ImageView)paramView.findViewById(2131821584));
+      paramViewGroup.jjj = ((TextView)paramView.findViewById(2131821585));
       paramView.setTag(paramViewGroup);
-      if (localazs.tvP != 1) {
-        break label163;
+      if (localbgv.xwa != 1) {
+        break label181;
       }
-      paramViewGroup.fYe.setImageResource(R.k.login_auth_state_radar_not_selected);
+      paramViewGroup.vbF.setImageResource(2131231597);
     }
     for (;;)
     {
-      paramViewGroup.fYf.setText(localazs.desc);
-      final ImageView localImageView = paramViewGroup.fYe;
-      paramViewGroup.fYe.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          if (localazs.tvP == 2)
-          {
-            localImageView.setImageResource(R.k.login_auth_state_radar_not_selected);
-            localazs.tvP = 1;
-          }
-          while (localazs.tvP != 1) {
-            return;
-          }
-          localImageView.setImageResource(R.k.login_auth_state_radar_default_select);
-          localazs.tvP = 2;
-        }
-      });
+      paramViewGroup.jjj.setText(localbgv.desc);
+      ImageView localImageView = paramViewGroup.vbF;
+      paramViewGroup.vbF.setOnClickListener(new SDKOAuthOtherUI.a.1(this, localbgv, localImageView));
+      AppMethodBeat.o(7514);
       return paramView;
       paramViewGroup = (SDKOAuthOtherUI.a.a)paramView.getTag();
       break;
-      label163:
-      if (localazs.tvP == 3) {
-        paramViewGroup.fYe.setImageResource(R.k.login_auth_state_radar_must_select);
+      label181:
+      if (localbgv.xwa == 3) {
+        paramViewGroup.vbF.setImageResource(2131231596);
       } else {
-        paramViewGroup.fYe.setImageResource(R.k.login_auth_state_radar_default_select);
+        paramViewGroup.vbF.setImageResource(2131231595);
       }
     }
   }

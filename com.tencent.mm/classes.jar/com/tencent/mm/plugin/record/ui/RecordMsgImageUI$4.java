@@ -1,15 +1,17 @@
 package com.tencent.mm.plugin.record.ui;
 
-import com.tencent.mm.ui.tools.MMGestureGallery.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ny;
+import com.tencent.mm.sdk.b.c;
 
 final class RecordMsgImageUI$4
-  implements MMGestureGallery.f
+  extends c<ny>
 {
-  RecordMsgImageUI$4(RecordMsgImageUI paramRecordMsgImageUI) {}
-  
-  public final void aBS()
+  RecordMsgImageUI$4(RecordMsgImageUI paramRecordMsgImageUI)
   {
-    this.nuo.finish();
+    AppMethodBeat.i(153611);
+    this.__eventId = ny.class.getName().hashCode();
+    AppMethodBeat.o(153611);
   }
 }
 

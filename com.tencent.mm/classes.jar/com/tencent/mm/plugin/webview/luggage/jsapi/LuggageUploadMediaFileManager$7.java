@@ -1,30 +1,35 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.plugin.webview.model.ag;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.model.al;
 import com.tencent.mm.plugin.webview.model.d.b;
 import com.tencent.mm.plugin.webview.modeltools.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class LuggageUploadMediaFileManager$7
   implements d.b
 {
   LuggageUploadMediaFileManager$7(String paramString, LuggageUploadMediaFileManager.a parama) {}
   
-  public final void b(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  public final void b(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    y.i("MicroMsg.UploadMediaFileHelp", "on cdn finish,  is success : %s, mediaId : %s, local id is : %s, mediaUrl : %s", new Object[] { Boolean.valueOf(paramBoolean), paramString2, paramString1, paramString3 });
-    if ((bk.bl(paramString1)) || (!paramString1.equals(this.rec))) {
+    AppMethodBeat.i(153127);
+    ab.i("MicroMsg.UploadMediaFileHelp", "on cdn finish,  is success : %s, mediaId : %s, local id is : %s, mediaUrl : %s", new Object[] { Boolean.valueOf(paramBoolean), paramString2, paramString1, paramString3 });
+    if ((bo.isNullOrNil(paramString1)) || (!paramString1.equals(this.uUf)))
+    {
+      AppMethodBeat.o(153127);
       return;
     }
-    g.ccK().a(this);
-    if (LuggageUploadMediaFileManager.cbB() != null)
+    g.dcD().a(this);
+    if (LuggageUploadMediaFileManager.dbF() != null)
     {
-      LuggageUploadMediaFileManager.cbB().dismiss();
-      LuggageUploadMediaFileManager.cbC();
+      LuggageUploadMediaFileManager.dbF().dismiss();
+      LuggageUploadMediaFileManager.dbG();
     }
-    this.ree.c(paramBoolean, paramString2, paramString3);
+    this.uUg.d(paramBoolean, paramString2, paramString3);
+    AppMethodBeat.o(153127);
   }
 }
 

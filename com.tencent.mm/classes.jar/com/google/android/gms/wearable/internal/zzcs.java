@@ -1,29 +1,14 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
-import java.util.List;
+import com.google.android.gms.common.api.Result;
+import com.google.android.gms.common.internal.PendingResultUtil.ResultConverter;
 
-public class zzcs
-  extends zza
+final class zzcs
+  implements PendingResultUtil.ResultConverter
 {
-  public static final Parcelable.Creator<zzcs> CREATOR = new zzct();
-  public final int statusCode;
-  public final long zzbUT;
-  public final List<zzcg> zzbUV;
+  static final PendingResultUtil.ResultConverter zzbx;
   
-  public zzcs(int paramInt, long paramLong, List<zzcg> paramList)
-  {
-    this.statusCode = paramInt;
-    this.zzbUT = paramLong;
-    this.zzbUV = paramList;
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    zzct.zza(this, paramParcel, paramInt);
-  }
+  public final Object convert(Result arg1) {}
 }
 
 

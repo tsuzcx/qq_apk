@@ -1,65 +1,69 @@
 package com.tencent.mm.plugin.talkroom.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.talkroom.model.b;
 import com.tencent.mm.plugin.talkroom.model.g;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class TalkRoomUI$10
-  implements am.a
+  implements ap.a
 {
   TalkRoomUI$10(TalkRoomUI paramTalkRoomUI) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
     int j = 15;
     boolean bool = false;
+    AppMethodBeat.i(25914);
     int i;
-    if (TalkRoomUI.b(this.pCk) == 3)
+    if (TalkRoomUI.b(this.tdT) == 3)
     {
-      i = b.bMu().RH();
+      i = b.cHs().akQ();
       if (i > 15) {
-        break label154;
+        break label172;
       }
-      if (!TalkRoomUI.e(this.pCk)) {
-        break label149;
+      if (!TalkRoomUI.e(this.tdT)) {
+        break label167;
       }
       i = j;
-      label41:
-      TalkRoomUI.f(this.pCk);
+      label47:
+      TalkRoomUI.f(this.tdT);
       j = i;
-      if (TalkRoomUI.g(this.pCk) >= 5)
+      if (TalkRoomUI.g(this.tdT) >= 5)
       {
-        TalkRoomUI localTalkRoomUI = this.pCk;
-        if (!TalkRoomUI.e(this.pCk)) {
+        TalkRoomUI localTalkRoomUI = this.tdT;
+        if (!TalkRoomUI.e(this.tdT)) {
           bool = true;
         }
         TalkRoomUI.a(localTalkRoomUI, bool);
-        TalkRoomUI.h(this.pCk);
+        TalkRoomUI.h(this.tdT);
       }
     }
-    label149:
-    label154:
+    label167:
+    label172:
     for (j = i;; j = i)
     {
-      TalkRoomUI.d(this.pCk);
-      TalkRoomUI.i(this.pCk).setValue(j);
+      TalkRoomUI.d(this.tdT);
+      TalkRoomUI.i(this.tdT).setValue(j);
+      AppMethodBeat.o(25914);
       return true;
-      if (bk.bl(TalkRoomUI.c(this.pCk)))
+      if (bo.isNullOrNil(TalkRoomUI.c(this.tdT)))
       {
-        TalkRoomUI.d(this.pCk);
+        TalkRoomUI.d(this.tdT);
+        AppMethodBeat.o(25914);
         return false;
       }
-      i = b.bMu().RI();
+      i = b.cHs().akR();
       break;
       i = 0;
-      break label41;
+      break label47;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomUI.10
  * JD-Core Version:    0.7.0.1
  */

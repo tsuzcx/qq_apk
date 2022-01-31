@@ -4,7 +4,7 @@ public abstract interface ah$g
 {
   public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract void a(qf paramqf);
+  public abstract void a(dc paramdc);
 }
 
 

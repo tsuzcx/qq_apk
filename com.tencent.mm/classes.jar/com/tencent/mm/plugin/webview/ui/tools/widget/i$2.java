@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.webkit.GeolocationPermissions.Callback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$2
   implements DialogInterface.OnClickListener
@@ -11,7 +12,9 @@ final class i$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.rqH.invoke(this.rqI, false, false);
+    AppMethodBeat.i(9904);
+    this.vgL.invoke(this.vgM, false, false);
+    AppMethodBeat.o(9904);
   }
 }
 

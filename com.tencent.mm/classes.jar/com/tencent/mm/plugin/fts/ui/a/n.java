@@ -2,59 +2,44 @@ package com.tencent.mm.plugin.fts.ui.a;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.plugin.fts.ui.n.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class n
   extends a
 {
-  public String kDH;
-  private n.b kDI = new n.b(this);
-  private a kDJ = new a();
+  public String mZD;
+  private n.b mZE;
+  private n.a mZF;
   
   public n(int paramInt)
   {
     super(12, paramInt);
+    AppMethodBeat.i(62021);
+    this.mZE = new n.b(this);
+    this.mZF = new n.a(this);
+    AppMethodBeat.o(62021);
   }
   
-  public a.b BD()
+  public a.b Pr()
   {
-    return this.kDI;
+    return this.mZE;
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
-    parama = m.rF(this.kxU);
+    AppMethodBeat.i(62022);
+    parama = m.wA(this.lox);
     if (parama == null) {}
-    for (this.kDH = "";; this.kDH = paramContext.getResources().getString(n.g.search_contact_button_find_more, new Object[] { parama }))
+    for (this.mZD = "";; this.mZD = paramContext.getResources().getString(2131302976, new Object[] { parama }))
     {
-      y.i("MicroMsg.FTS.FTSMoreDataItem", "fillDataItem: tip=%s", new Object[] { this.kDH });
+      ab.i("MicroMsg.FTS.FTSMoreDataItem", "fillDataItem: tip=%s", new Object[] { this.mZD });
+      AppMethodBeat.o(62022);
       return;
-    }
-  }
-  
-  public a.a afK()
-  {
-    return this.kDJ;
-  }
-  
-  public final class a
-    extends a.a
-  {
-    public View contentView;
-    public ImageView gSx;
-    public TextView kCv;
-    
-    public a()
-    {
-      super();
     }
   }
 }

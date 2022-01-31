@@ -2,7 +2,8 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoSurfaceView$4
   implements MediaPlayer.OnErrorListener
@@ -11,10 +12,12 @@ final class VideoSurfaceView$4
   
   public final boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    y.d("MicroMsg.VideoSurfaceView", "Error: " + paramInt1 + "," + paramInt2);
-    if (VideoSurfaceView.e(this.snx) != null) {
-      VideoSurfaceView.e(this.snx).onError(paramInt1, paramInt2);
+    AppMethodBeat.i(70443);
+    ab.d("MicroMsg.VideoSurfaceView", "Error: " + paramInt1 + "," + paramInt2);
+    if (VideoSurfaceView.e(this.wfS) != null) {
+      VideoSurfaceView.e(this.wfS).onError(paramInt1, paramInt2);
     }
+    AppMethodBeat.o(70443);
     return true;
   }
 }

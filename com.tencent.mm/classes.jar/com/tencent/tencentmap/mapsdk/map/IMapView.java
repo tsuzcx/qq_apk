@@ -38,9 +38,13 @@ public abstract interface IMapView
   
   public abstract void onSaveInstanceState(Bundle paramBundle);
   
+  public abstract void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
   public abstract void onStart();
   
   public abstract void onStop();
+  
+  public abstract void onSurfaceChanged(Object paramObject, int paramInt1, int paramInt2);
   
   public abstract boolean onTouchEvent(MotionEvent paramMotionEvent);
   
@@ -48,7 +52,7 @@ public abstract interface IMapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.IMapView
  * JD-Core Version:    0.7.0.1
  */

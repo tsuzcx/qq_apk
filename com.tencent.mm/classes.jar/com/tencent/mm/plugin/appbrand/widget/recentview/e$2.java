@@ -3,45 +3,51 @@ package com.tencent.mm.plugin.appbrand.widget.recentview;
 import android.content.Context;
 import android.graphics.PointF;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.af;
+import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$2
-  extends af
+  extends ae
 {
   e$2(e parame, Context paramContext)
   {
     super(paramContext);
   }
   
-  protected final float a(DisplayMetrics paramDisplayMetrics)
+  public final PointF bI(int paramInt)
+  {
+    AppMethodBeat.i(134390);
+    PointF localPointF = ((LinearLayoutManager)this.jwd.jvQ.getLayoutManager()).bI(paramInt);
+    AppMethodBeat.o(134390);
+    return localPointF;
+  }
+  
+  public final float c(DisplayMetrics paramDisplayMetrics)
   {
     return 40.0F / paramDisplayMetrics.densityDpi;
   }
   
-  public final PointF bD(int paramInt)
-  {
-    return ((LinearLayoutManager)this.hDD.hDp.getLayoutManager()).bD(paramInt);
-  }
-  
-  protected final int he()
+  public final int iA()
   {
     return -1;
   }
   
-  protected final void onStop()
+  public final void onStop()
   {
+    AppMethodBeat.i(134391);
     super.onStop();
-    y.i("ViewPagerHelper", "alvinluo SmoothScrollerForFling onStop %d", new Object[] { Integer.valueOf(this.hDD.hDp.getScrollState()) });
-    if (this.hDD.hDp.getScrollState() == 0) {
-      this.hDD.ata();
+    ab.i("ViewPagerHelper", "alvinluo SmoothScrollerForFling onStop %d", new Object[] { Integer.valueOf(this.jwd.jvQ.getScrollState()) });
+    if (this.jwd.jvQ.getScrollState() == 0) {
+      this.jwd.aSk();
     }
+    AppMethodBeat.o(134391);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recentview.e.2
  * JD-Core Version:    0.7.0.1
  */

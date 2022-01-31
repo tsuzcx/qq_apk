@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.base;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMGridPaper$5$2
   implements Runnable
@@ -9,15 +10,17 @@ final class MMGridPaper$5$2
   
   public final void run()
   {
-    MMGridPaperGridView localMMGridPaperGridView = (MMGridPaperGridView)this.uVK.uVI.uVi.getChildAt(0);
-    int i = this.uVJ + (this.uVK.uVI.uVi.getChildCount() >> 1);
-    y.i("MicroMsg.MMGridPaper", "move down, old index[0], new index[%d]", new Object[] { Integer.valueOf(i) });
-    this.uVK.uVI.uVi.removeViewAt(0);
-    localMMGridPaperGridView.a(i, this.uVK.uVI.dtu, this.uVK.uVI.mNumColumns, this.uVK.uVI.uVj);
-    this.uVK.uVI.uVi.addView(localMMGridPaperGridView);
-    i = this.uVK.uVI.uVi.getChildCount();
-    this.uVK.uVI.uVi.Go(i >> 1);
-    MMGridPaper.a(this.uVK.uVI, 1);
+    AppMethodBeat.i(106621);
+    MMGridPaperGridView localMMGridPaperGridView = (MMGridPaperGridView)this.zkd.zkb.zjD.getChildAt(0);
+    int i = this.zkc + (this.zkd.zkb.zjD.getChildCount() >> 1);
+    ab.i("MicroMsg.MMGridPaper", "move down, old index[0], new index[%d]", new Object[] { Integer.valueOf(i) });
+    this.zkd.zkb.zjD.removeViewAt(0);
+    localMMGridPaperGridView.a(i, this.zkd.zkb.mNumRows, this.zkd.zkb.mNumColumns, this.zkd.zkb.zjE);
+    this.zkd.zkb.zjD.addView(localMMGridPaperGridView);
+    i = this.zkd.zkb.zjD.getChildCount();
+    this.zkd.zkb.zjD.OF(i >> 1);
+    MMGridPaper.a(this.zkd.zkb, 1);
+    AppMethodBeat.o(106621);
   }
 }
 

@@ -1,31 +1,36 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.protocal.c.ajs;
-import com.tencent.mm.protocal.c.ajt;
-import com.tencent.mm.protocal.c.mk;
-import com.tencent.mm.protocal.c.qn;
-import com.tencent.mm.sdk.platformtools.y;
+import a.f.a.a;
+import a.f.b.j;
+import a.l;
+import a.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s.m;
+import com.tencent.mm.sdk.platformtools.al;
 
-public class e
-  extends a<ajt>
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"runOnWorkThread", "", "action", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
+public final class e
 {
-  public e(int paramInt1, int paramInt2, mk parammk, long paramLong, qn paramqn)
+  public static final void f(a<y> parama)
   {
-    y.i("MicroMsg.CgiGetRecommendWxa", "pageNum:%d, filterType:%d, sessionId:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
-    b.a locala = new b.a();
-    ajs localajs = new ajs();
-    localajs.tgz = paramInt1;
-    localajs.bgZ = paramInt2;
-    localajs.tgA = parammk;
-    localajs.bah = paramLong;
-    localajs.tgB = paramqn;
-    locala.ecH = localajs;
-    locala.ecI = new ajt();
-    locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/getrecommendwxa";
-    locala.ecG = 2778;
-    this.dmK = locala.Kt();
+    AppMethodBeat.i(134594);
+    j.q(parama, "action");
+    m.aNS().ac((Runnable)new a(parama));
+    AppMethodBeat.o(134594);
+  }
+  
+  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
+  static final class a
+    implements Runnable
+  {
+    a(a parama) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(134593);
+      this.hdx.invoke();
+      AppMethodBeat.o(134593);
+    }
   }
 }
 

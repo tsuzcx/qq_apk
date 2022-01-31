@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="@drawable/pf" android:layout_width="280.0dip" android:layout_height="290.0dip">
-        <ImageView android:id="@id/cid" android:background="@drawable/b50" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/cie" android:background="@raw/sns_luckymoney_post_title" android:layout_width="210.0dip" android:layout_height="117.0dip" android:layout_marginTop="30.0dip" android:layout_centerHorizontal="true">
-            <TextView android:textSize="26.0dip" android:textColor="#ffebcd9b" android:id="@id/cif" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eei" />
-            <TextView android:textSize="8.0dip" android:textColor="#ffebcd9b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eek" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/lj" android:textColor="#ffffe2b1" android:gravity="center" android:id="@id/cig" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="30.0dip" android:text="@string/ee9" android:layout_below="@id/cie" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="@dimen/dq" android:textColor="#ffd84e43" android:gravity="center" android:id="@id/cih" android:background="@drawable/xt" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="30.0dip" android:text="@string/ck7" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</LinearLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="33.0dip" android:textColor="@color/a6q" android:gravity="left" android:id="@id/de" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" wallet:walletTypeFace="e2" />
+        <TextView android:id="@id/dc" style="@style/vm" />
+        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="33.0dip" android:textColor="@color/a6q" android:id="@id/d8" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="0.0dip" android:minWidth="2.0dip" android:text="" android:layout_weight="1.0" android:textCursorDrawable="@drawable/rh" />
+    </LinearLayout>
+</merge>

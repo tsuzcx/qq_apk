@@ -1,8 +1,10 @@
 package com.tencent.mm.pluginsdk.ui.d;
 
+import android.view.View;
+
 public abstract interface o$a
 {
-  public abstract void bC(Object paramObject);
+  public abstract void a(View paramView, Object paramObject);
 }
 
 

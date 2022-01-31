@@ -4,51 +4,60 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.stub.d;
 import com.tencent.mm.plugin.webview.stub.d.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.lang.ref.WeakReference;
 
 public class k$c
   implements ServiceConnection
 {
-  public k$c(k paramk) {}
+  protected k$c(k paramk) {}
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    y.i("MicroMsg.MMWebViewClient", "onServiceConnected");
-    if (this.rCv.dYF == null)
+    AppMethodBeat.i(9967);
+    ab.i("MicroMsg.MMWebViewClient", "onServiceConnected");
+    if (this.vsH.foJ == null)
     {
-      y.e("MicroMsg.MMWebViewClient", "onServiceConnected, activity destroyed");
+      ab.e("MicroMsg.MMWebViewClient", "onServiceConnected, activity destroyed");
+      AppMethodBeat.o(9967);
       return;
     }
     try
     {
-      this.rCv.rsT = d.a.H(paramIBinder);
-      this.rCv.rsT.a(this.rCv.rCu, this.rCv.dYF.hashCode());
-      if (this.rCv.rCd != null) {
-        this.rCv.rsT.a(this.rCv.rCd, this.rCv.dYF.hashCode());
+      this.vsH.viZ = d.a.F(paramIBinder);
+      this.vsH.viZ.a(new k.d(new WeakReference(this.vsH.vsG)), this.vsH.foJ.hashCode());
+      if (this.vsH.vsp != null) {
+        this.vsH.viZ.a(this.vsH.vsp, this.vsH.foJ.hashCode());
       }
-      this.rCv.a(this.rCv.rsT, this.rCv.rxH);
-      this.rCv.cgP();
-      this.rCv.cfO();
+      this.vsH.dgW();
+      this.vsH.dfX();
+      this.vsH.a(this.vsH.viZ, this.vsH.voA);
+      AppMethodBeat.o(9967);
       return;
     }
     catch (Exception paramComponentName)
     {
-      y.e("MicroMsg.MMWebViewClient", "addCallback fail, ex = %s", new Object[] { paramComponentName.getMessage() });
+      ab.e("MicroMsg.MMWebViewClient", "addCallback fail, ex = %s", new Object[] { paramComponentName.getMessage() });
+      AppMethodBeat.o(9967);
     }
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    y.i("MicroMsg.MMWebViewClient", "edw onServiceDisconnected");
-    if (!this.rCv.fyk.isFinishing())
+    AppMethodBeat.i(9968);
+    ab.i("MicroMsg.MMWebViewClient", "edw onServiceDisconnected");
+    if (!this.vsH.gQx.isFinishing())
     {
-      y.i("MicroMsg.MMWebViewClient", "maybe mm process crash, try rebind service");
-      k.a(this.rCv);
+      ab.i("MicroMsg.MMWebViewClient", "maybe mm process crash, try rebind service");
+      k.a(this.vsH);
+      AppMethodBeat.o(9968);
       return;
     }
-    this.rCv.rsT = null;
+    this.vsH.viZ = null;
+    AppMethodBeat.o(9968);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMEditText;
 
 final class ChatFooter$1
@@ -9,12 +10,14 @@ final class ChatFooter$1
   
   public final void clear()
   {
-    ChatFooter localChatFooter = this.sgd;
-    if (localChatFooter.lXN != null)
+    AppMethodBeat.i(27786);
+    ChatFooter localChatFooter = this.vXU;
+    if (localChatFooter.oxm != null)
     {
-      localChatFooter.lXN.setText("");
-      localChatFooter.cnb();
+      localChatFooter.oxm.setText("");
+      localChatFooter.dod();
     }
+    AppMethodBeat.o(27786);
   }
 }
 

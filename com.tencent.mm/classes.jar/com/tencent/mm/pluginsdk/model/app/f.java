@@ -1,138 +1,146 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import android.content.ContentValues;
-import com.tencent.mm.h.c.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.t;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class f
-  extends r
+  extends t
 {
-  protected static c.a buS;
-  public static String rUa = "wxce6f23b478a3a2a2";
-  public static String rUb = "wx7302cee7c7d6d7d6";
-  public static String rUc = "wx6fa7e3bab7e15415";
-  public static String rUd = "wx3cc22b542de028d4";
+  protected static c.a info;
+  public static String vKX;
+  public static String vKY;
+  public static String vKZ;
+  public static String vLa;
   
   static
   {
+    AppMethodBeat.i(79254);
+    vKX = "wxce6f23b478a3a2a2";
+    vKY = "wx7302cee7c7d6d7d6";
+    vKZ = "wx6fa7e3bab7e15415";
+    vLa = "wx3cc22b542de028d4";
     c.a locala = new c.a();
-    locala.ujL = new Field[26];
+    locala.yrK = new Field[26];
     locala.columns = new String[27];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appId";
-    locala.ujN.put("appId", "TEXT default ''  PRIMARY KEY ");
+    locala.yrM.put("appId", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" appId TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "appId";
+    locala.yrL = "appId";
     locala.columns[1] = "appName";
-    locala.ujN.put("appName", "TEXT");
+    locala.yrM.put("appName", "TEXT");
     localStringBuilder.append(" appName TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "appDiscription";
-    locala.ujN.put("appDiscription", "TEXT");
+    locala.yrM.put("appDiscription", "TEXT");
     localStringBuilder.append(" appDiscription TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "appIconUrl";
-    locala.ujN.put("appIconUrl", "TEXT");
+    locala.yrM.put("appIconUrl", "TEXT");
     localStringBuilder.append(" appIconUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "appStoreUrl";
-    locala.ujN.put("appStoreUrl", "TEXT");
+    locala.yrM.put("appStoreUrl", "TEXT");
     localStringBuilder.append(" appStoreUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "appVersion";
-    locala.ujN.put("appVersion", "INTEGER");
+    locala.yrM.put("appVersion", "INTEGER");
     localStringBuilder.append(" appVersion INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "appWatermarkUrl";
-    locala.ujN.put("appWatermarkUrl", "TEXT");
+    locala.yrM.put("appWatermarkUrl", "TEXT");
     localStringBuilder.append(" appWatermarkUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "packageName";
-    locala.ujN.put("packageName", "TEXT");
+    locala.yrM.put("packageName", "TEXT");
     localStringBuilder.append(" packageName TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "status";
-    locala.ujN.put("status", "INTEGER");
+    locala.yrM.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[9] = "signature";
-    locala.ujN.put("signature", "TEXT");
+    locala.yrM.put("signature", "TEXT");
     localStringBuilder.append(" signature TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "modifyTime";
-    locala.ujN.put("modifyTime", "LONG");
+    locala.yrM.put("modifyTime", "LONG");
     localStringBuilder.append(" modifyTime LONG");
     localStringBuilder.append(", ");
     locala.columns[11] = "appName_en";
-    locala.ujN.put("appName_en", "TEXT");
+    locala.yrM.put("appName_en", "TEXT");
     localStringBuilder.append(" appName_en TEXT");
     localStringBuilder.append(", ");
     locala.columns[12] = "appName_tw";
-    locala.ujN.put("appName_tw", "TEXT");
+    locala.yrM.put("appName_tw", "TEXT");
     localStringBuilder.append(" appName_tw TEXT");
     localStringBuilder.append(", ");
     locala.columns[13] = "appName_hk";
-    locala.ujN.put("appName_hk", "TEXT");
+    locala.yrM.put("appName_hk", "TEXT");
     localStringBuilder.append(" appName_hk TEXT");
     localStringBuilder.append(", ");
     locala.columns[14] = "appDiscription_en";
-    locala.ujN.put("appDiscription_en", "TEXT");
+    locala.yrM.put("appDiscription_en", "TEXT");
     localStringBuilder.append(" appDiscription_en TEXT");
     localStringBuilder.append(", ");
     locala.columns[15] = "appDiscription_tw";
-    locala.ujN.put("appDiscription_tw", "TEXT");
+    locala.yrM.put("appDiscription_tw", "TEXT");
     localStringBuilder.append(" appDiscription_tw TEXT");
     localStringBuilder.append(", ");
     locala.columns[16] = "appType";
-    locala.ujN.put("appType", "TEXT");
+    locala.yrM.put("appType", "TEXT");
     localStringBuilder.append(" appType TEXT");
     localStringBuilder.append(", ");
     locala.columns[17] = "openId";
-    locala.ujN.put("openId", "TEXT");
+    locala.yrM.put("openId", "TEXT");
     localStringBuilder.append(" openId TEXT");
     localStringBuilder.append(", ");
     locala.columns[18] = "authFlag";
-    locala.ujN.put("authFlag", "INTEGER");
+    locala.yrM.put("authFlag", "INTEGER");
     localStringBuilder.append(" authFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[19] = "appInfoFlag";
-    locala.ujN.put("appInfoFlag", "INTEGER default '-1' ");
+    locala.yrM.put("appInfoFlag", "INTEGER default '-1' ");
     localStringBuilder.append(" appInfoFlag INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[20] = "lvbuff";
-    locala.ujN.put("lvbuff", "BLOB");
+    locala.yrM.put("lvbuff", "BLOB");
     localStringBuilder.append(" lvbuff BLOB");
     localStringBuilder.append(", ");
     locala.columns[21] = "serviceAppType";
-    locala.ujN.put("serviceAppType", "INTEGER default '0' ");
+    locala.yrM.put("serviceAppType", "INTEGER default '0' ");
     localStringBuilder.append(" serviceAppType INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[22] = "serviceAppInfoFlag";
-    locala.ujN.put("serviceAppInfoFlag", "INTEGER default '0' ");
+    locala.yrM.put("serviceAppInfoFlag", "INTEGER default '0' ");
     localStringBuilder.append(" serviceAppInfoFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[23] = "serviceShowFlag";
-    locala.ujN.put("serviceShowFlag", "INTEGER default '0' ");
+    locala.yrM.put("serviceShowFlag", "INTEGER default '0' ");
     localStringBuilder.append(" serviceShowFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[24] = "appSupportContentType";
-    locala.ujN.put("appSupportContentType", "LONG default '0' ");
+    locala.yrM.put("appSupportContentType", "LONG default '0' ");
     localStringBuilder.append(" appSupportContentType LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[25] = "svrAppSupportContentType";
-    locala.ujN.put("svrAppSupportContentType", "LONG default '0' ");
+    locala.yrM.put("svrAppSupportContentType", "LONG default '0' ");
     localStringBuilder.append(" svrAppSupportContentType LONG default '0' ");
     locala.columns[26] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(79254);
   }
   
   public f()
   {
+    AppMethodBeat.i(79248);
     this.field_appId = "";
     this.field_appName = "";
     this.field_appDiscription = "";
@@ -154,83 +162,123 @@ public class f
     this.field_openId = "";
     this.field_authFlag = 0;
     this.field_appInfoFlag = 0;
-    cM("");
-    cL("");
-    cN("");
-    cR("");
-    cS("");
-    cT("");
+    iU("");
+    this.djH = "";
+    this.dje = true;
+    iV("");
+    iZ("");
+    ja("");
+    jb("");
+    AppMethodBeat.o(79248);
   }
   
-  public final boolean ZH()
+  public ContentValues convertTo()
   {
-    if (bk.bl(this.field_appType)) {}
-    for (;;)
-    {
-      return false;
-      String[] arrayOfString = this.field_appType.split(",");
-      if ((arrayOfString != null) && (arrayOfString.length != 0))
-      {
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          if (arrayOfString[i].equals("1")) {
-            return true;
-          }
-          i += 1;
-        }
-      }
+    AppMethodBeat.i(79251);
+    if ((!bo.isNullOrNil(this.field_appType)) && ((this.field_appType.startsWith("1")) || (this.field_appType.startsWith("6")))) {
+      this.field_appType = ("," + this.field_appType);
     }
+    ContentValues localContentValues = super.convertTo();
+    AppMethodBeat.o(79251);
+    return localContentValues;
   }
   
-  public final boolean ckN()
+  public final boolean dlw()
   {
     return this.field_serviceAppType != 0;
   }
   
-  public final boolean ckO()
+  public final boolean dlx()
   {
     return (this.field_serviceAppInfoFlag & 0x2) != 0;
   }
   
-  public final boolean ckP()
+  public final boolean dly()
   {
-    return rUb.equals(this.field_appId);
+    return (this.field_serviceAppInfoFlag & 0x1) != 0;
+  }
+  
+  public final boolean dlz()
+  {
+    AppMethodBeat.i(79250);
+    if (vKY.equals(this.field_appId))
+    {
+      AppMethodBeat.o(79250);
+      return true;
+    }
+    AppMethodBeat.o(79250);
+    return false;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    AppMethodBeat.i(79252);
+    if (paramObject == null)
     {
+      AppMethodBeat.o(79252);
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-    } while (!(paramObject instanceof f));
-    return ((f)paramObject).field_appId.equals(this.field_appId);
+    }
+    if (paramObject == this)
+    {
+      AppMethodBeat.o(79252);
+      return true;
+    }
+    if (!(paramObject instanceof f))
+    {
+      AppMethodBeat.o(79252);
+      return false;
+    }
+    boolean bool = ((f)paramObject).field_appId.equals(this.field_appId);
+    AppMethodBeat.o(79252);
+    return bool;
+  }
+  
+  public c.a getDBInfo()
+  {
+    return info;
   }
   
   public int hashCode()
   {
-    if (!bk.bl(this.field_appId)) {
-      return this.field_appId.hashCode();
+    AppMethodBeat.i(79253);
+    if (!bo.isNullOrNil(this.field_appId))
+    {
+      i = this.field_appId.hashCode();
+      AppMethodBeat.o(79253);
+      return i;
     }
-    return super.hashCode();
+    int i = super.hashCode();
+    AppMethodBeat.o(79253);
+    return i;
   }
   
-  protected final c.a rM()
+  public final boolean vY()
   {
-    return buS;
-  }
-  
-  public final ContentValues vf()
-  {
-    if ((!bk.bl(this.field_appType)) && ((this.field_appType.startsWith("1")) || (this.field_appType.startsWith("6")))) {
-      this.field_appType = ("," + this.field_appType);
+    AppMethodBeat.i(79249);
+    if (bo.isNullOrNil(this.field_appType))
+    {
+      AppMethodBeat.o(79249);
+      return false;
     }
-    return super.vf();
+    String[] arrayOfString = this.field_appType.split(",");
+    if ((arrayOfString == null) || (arrayOfString.length == 0))
+    {
+      AppMethodBeat.o(79249);
+      return false;
+    }
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (arrayOfString[i].equals("1"))
+      {
+        AppMethodBeat.o(79249);
+        return true;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(79249);
+    return false;
   }
 }
 

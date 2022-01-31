@@ -6,17 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ContactMobileInfoPreference
   extends Preference
 {
-  private String foD;
-  private TextView haW;
+  private String gFX;
+  private TextView iJG;
   private String mTitle;
-  private TextView mVT;
+  private TextView pyM;
   
   public ContactMobileInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,29 +25,35 @@ public class ContactMobileInfoPreference
   public ContactMobileInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.i(23395);
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(23395);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
-    this.haW = ((TextView)paramView.findViewById(R.h.title));
-    this.mVT = ((TextView)paramView.findViewById(R.h.mobile));
-    if (this.haW != null) {
-      this.haW.setText(this.mTitle);
+    AppMethodBeat.i(23397);
+    this.iJG = ((TextView)paramView.findViewById(2131820680));
+    this.pyM = ((TextView)paramView.findViewById(2131820794));
+    if (this.iJG != null) {
+      this.iJG.setText(this.mTitle);
     }
-    if (this.mVT != null) {
-      this.mVT.setText(this.foD);
+    if (this.pyM != null) {
+      this.pyM.setText(this.gFX);
     }
     super.onBindView(paramView);
+    AppMethodBeat.o(23397);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(23396);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.mm_preference_content_mobile_info, localViewGroup);
+    localLayoutInflater.inflate(2130970208, localViewGroup);
+    AppMethodBeat.o(23396);
     return paramViewGroup;
   }
 }

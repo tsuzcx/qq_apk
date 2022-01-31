@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.nearby.a;
 
-import com.tencent.mm.h.a.ja;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jj;
 import com.tencent.mm.sdk.b.c;
 
 final class f$2
-  extends c<ja>
+  extends c<jj>
 {
   f$2(f paramf)
   {
-    this.udX = ja.class.getName().hashCode();
+    AppMethodBeat.i(55377);
+    this.__eventId = jj.class.getName().hashCode();
+    AppMethodBeat.o(55377);
   }
 }
 

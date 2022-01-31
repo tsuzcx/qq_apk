@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/p1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <ListView android:id="@id/ayf" android:background="@color/sz" android:focusable="true" android:transcriptMode="disabled" android:overScrollMode="never" style="@style/ls" />
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/pf" android:gravity="center" android:id="@id/a1e" android:paddingTop="0.0dip" android:paddingBottom="60.0dip" android:visibility="gone" android:text="@string/cfe" android:layout_centerInParent="true" style="@style/kk" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/kk" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="120.0dip">
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/h6" android:id="@id/azs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:text="" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="20.0dip">
+            <TextView android:textSize="@dimen/du" android:textColor="@color/h6" android:layout_gravity="top" android:id="@id/azt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-5.5dip" android:text="¥" android:includeFontPadding="false" />
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/l7" android:textColor="@color/h6" android:id="@id/azu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:background="@drawable/kj" android:paddingLeft="25.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <TextView android:textSize="@dimen/nh" android:textColor="@color/w6" android:id="@id/azv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </LinearLayout>
+</LinearLayout>

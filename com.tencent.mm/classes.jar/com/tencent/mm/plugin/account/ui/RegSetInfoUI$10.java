@@ -3,10 +3,11 @@ package com.tencent.mm.plugin.account.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.EditText;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.s;
+import com.tencent.mm.modelsimple.u;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.base.h;
 
@@ -17,23 +18,27 @@ final class RegSetInfoUI$10
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = RegSetInfoUI.a(this.fso).getText().toString().trim();
-    Object localObject = RegSetInfoUI.b(this.fso).getText().toString().trim();
+    AppMethodBeat.i(125516);
+    paramDialogInterface = RegSetInfoUI.a(this.gJQ).getText().toString().trim();
+    Object localObject = RegSetInfoUI.b(this.gJQ).getText().toString().trim();
     if ((localObject == null) || (((String)localObject).length() <= 0))
     {
-      h.h(this.fso, q.j.verify_account_null_tip, q.j.regbymobile_reg_setpwd_alert_title);
+      h.h(this.gJQ, 2131304491, 2131302443);
+      AppMethodBeat.o(125516);
       return;
     }
-    paramInt = RegSetInfoUI.e(this.fso);
-    g.Dk().a(126, this.fso);
-    paramDialogInterface = new s("", RegSetInfoUI.y(this.fso), (String)localObject, RegSetInfoUI.z(this.fso), RegSetInfoUI.A(this.fso), RegSetInfoUI.B(this.fso), "", "", RegSetInfoUI.g(this.fso), paramInt, paramDialogInterface, ((s)this.bEe).Qz(), RegSetInfoUI.C(this.fso).getSecImgCode(), RegSetInfoUI.D(this.fso), RegSetInfoUI.j(this.fso));
-    paramDialogInterface.ne(RegSetInfoUI.E(this.fso));
-    paramDialogInterface.jc(RegSetInfoUI.F(this.fso));
-    g.Dk().a(paramDialogInterface, 0);
-    localObject = this.fso;
-    RegSetInfoUI localRegSetInfoUI = this.fso;
-    this.fso.getString(q.j.app_tip);
-    RegSetInfoUI.a((RegSetInfoUI)localObject, h.b(localRegSetInfoUI, this.fso.getString(q.j.regbyqq_reg_waiting), true, new RegSetInfoUI.10.1(this, paramDialogInterface)));
+    paramInt = RegSetInfoUI.e(this.gJQ);
+    g.Rc().a(126, this.gJQ);
+    paramDialogInterface = new u("", RegSetInfoUI.y(this.gJQ), (String)localObject, RegSetInfoUI.z(this.gJQ), RegSetInfoUI.A(this.gJQ), RegSetInfoUI.B(this.gJQ), "", "", RegSetInfoUI.g(this.gJQ), paramInt, paramDialogInterface, ((u)this.ckS).ajG(), RegSetInfoUI.C(this.gJQ).getSecImgCode(), RegSetInfoUI.D(this.gJQ), RegSetInfoUI.j(this.gJQ));
+    paramDialogInterface.uq(RegSetInfoUI.E(this.gJQ));
+    paramDialogInterface.ur(RegSetInfoUI.F(this.gJQ));
+    paramDialogInterface.lU(RegSetInfoUI.G(this.gJQ));
+    g.Rc().a(paramDialogInterface, 0);
+    localObject = this.gJQ;
+    RegSetInfoUI localRegSetInfoUI = this.gJQ;
+    this.gJQ.getString(2131297087);
+    RegSetInfoUI.a((RegSetInfoUI)localObject, h.b(localRegSetInfoUI, this.gJQ.getString(2131302482), true, new RegSetInfoUI.10.1(this, paramDialogInterface)));
+    AppMethodBeat.o(125516);
   }
 }
 

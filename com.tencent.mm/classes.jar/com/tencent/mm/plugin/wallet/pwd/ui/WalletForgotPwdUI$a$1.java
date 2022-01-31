@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.ui.widget.a.c;
-import com.tencent.mm.ui.widget.a.c.a;
+import com.tencent.mm.ui.widget.b.c;
+import com.tencent.mm.ui.widget.b.c.a;
 
 final class WalletForgotPwdUI$a$1
   implements View.OnClickListener
@@ -14,19 +14,22 @@ final class WalletForgotPwdUI$a$1
   
   public final void onClick(View paramView)
   {
-    if ((this.qge != null) && (this.qge.field_bankcardState == 1))
+    AppMethodBeat.i(46283);
+    if ((this.tNr != null) && (this.tNr.field_bankcardState == 1))
     {
-      paramView = new c.a(WalletForgotPwdUI.a.a(this.qoU));
-      paramView.Iq(a.i.wallet_forget_pwd_expired_desc);
-      paramView.Is(a.i.wallet_forget_pwd_expired_qa).a(new WalletForgotPwdUI.a.1.1(this));
-      paramView.It(a.i.app_i_known);
-      paramView.nW(false);
-      paramView.aoP().show();
+      paramView = new c.a(WalletForgotPwdUI.a.a(this.tZh));
+      paramView.Rf(2131305084);
+      paramView.Ri(2131305085).a(new WalletForgotPwdUI.a.1.1(this));
+      paramView.Rj(2131296977);
+      paramView.rG(false);
+      paramView.aLZ().show();
+      AppMethodBeat.o(46283);
       return;
     }
-    WalletForgotPwdUI.a(this.qoU.qoT, this.qge);
-    WalletForgotPwdUI.a(this.qoU.qoT, false);
-    WalletForgotPwdUI.a(this.qoU.qoT);
+    WalletForgotPwdUI.a(this.tZh.tZg, this.tNr);
+    WalletForgotPwdUI.a(this.tZh.tZg, false);
+    WalletForgotPwdUI.a(this.tZh.tZg);
+    AppMethodBeat.o(46283);
   }
 }
 

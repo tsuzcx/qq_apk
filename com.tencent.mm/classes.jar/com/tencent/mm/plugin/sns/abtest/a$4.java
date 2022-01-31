@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.abtest;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.n;
 
 final class a$4
@@ -7,17 +8,23 @@ final class a$4
 {
   public final void c(n paramn)
   {
-    a.a(a.bBW(), paramn);
+    AppMethodBeat.i(35647);
+    a.a(a.cnx(), paramn);
+    AppMethodBeat.o(35647);
   }
   
   public final void d(n paramn)
   {
-    a.b(a.bBW(), paramn);
+    AppMethodBeat.i(35648);
+    a.b(a.cnx(), paramn);
+    AppMethodBeat.o(35648);
   }
   
   public final void e(n paramn)
   {
-    a.c(a.bBW(), paramn);
+    AppMethodBeat.i(35649);
+    a.c(a.cnx(), paramn);
+    AppMethodBeat.o(35649);
   }
 }
 

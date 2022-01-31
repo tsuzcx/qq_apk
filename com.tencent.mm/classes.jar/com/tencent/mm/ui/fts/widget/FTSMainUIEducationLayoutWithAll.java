@@ -6,13 +6,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.ui.widget.FTSMainUIEducationLayout;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONArray;
@@ -31,47 +28,54 @@ public class FTSMainUIEducationLayoutWithAll
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void dK(String paramString, int paramInt)
+  private void eU(String paramString, int paramInt)
   {
-    LinearLayout localLinearLayout = (LinearLayout)inflate(getContext(), R.i.fts_main_ui_education_cell_layout_all, null);
-    localLinearLayout.findViewById(R.h.textview_all).setOnClickListener(this.kCk);
-    ((TextView)localLinearLayout.findViewById(R.h.textview_all)).setText(paramString);
-    this.kEJ.add(localLinearLayout);
-    this.kEK.put(Integer.valueOf(paramInt), (TextView)localLinearLayout.findViewById(R.h.textview_all));
+    AppMethodBeat.i(91588);
+    LinearLayout localLinearLayout = (LinearLayout)inflate(getContext(), 2130969668, null);
+    localLinearLayout.findViewById(2131824376).setOnClickListener(this.mYg);
+    ((TextView)localLinearLayout.findViewById(2131824376)).setText(paramString);
+    this.nbh.add(localLinearLayout);
+    this.nbi.put(Integer.valueOf(paramInt), (TextView)localLinearLayout.findViewById(2131824376));
     addView(localLinearLayout);
+    AppMethodBeat.o(91588);
   }
   
-  protected final boolean Q(JSONObject paramJSONObject)
+  public final boolean ab(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    JSONArray localJSONArray;
-    do
+    AppMethodBeat.i(91589);
+    if (paramJSONObject == null)
     {
+      AppMethodBeat.o(91589);
       return false;
-      localJSONArray = paramJSONObject.optJSONArray("items");
-    } while (localJSONArray == null);
+    }
+    JSONArray localJSONArray = paramJSONObject.optJSONArray("items");
+    if (localJSONArray == null)
+    {
+      AppMethodBeat.o(91589);
+      return false;
+    }
     int i;
     int j;
     Object localObject2;
     Object localObject1;
     String str2;
     String str1;
-    label58:
+    label74:
     JSONObject localJSONObject;
-    if (x.fB(ae.getContext()).equalsIgnoreCase("en"))
+    if (aa.gP(ah.getContext()).equalsIgnoreCase("en"))
     {
-      i = com.tencent.mm.cb.a.aa(getContext(), R.f.BigerMoreTextSize);
+      i = com.tencent.mm.cb.a.ao(getContext(), 2131427504);
       j = 0;
       localObject2 = null;
       localObject1 = null;
       str2 = null;
       str1 = null;
       if (j >= localJSONArray.length()) {
-        break label175;
+        break label190;
       }
       localJSONObject = localJSONArray.optJSONObject(j);
       if (j % 3 != 0) {
-        break label115;
+        break label130;
       }
       str1 = localJSONObject.optString("hotword");
       localObject1 = localJSONObject;
@@ -79,10 +83,10 @@ public class FTSMainUIEducationLayoutWithAll
     for (;;)
     {
       j += 1;
-      break label58;
-      i = com.tencent.mm.cb.a.aa(getContext(), R.f.NormalTextSize);
+      break label74;
+      i = com.tencent.mm.cb.a.ao(getContext(), 2131427809);
       break;
-      label115:
+      label130:
       if (j % 3 == 1)
       {
         str2 = localJSONObject.optString("hotword");
@@ -97,25 +101,28 @@ public class FTSMainUIEducationLayoutWithAll
         str1 = null;
       }
     }
-    label175:
+    label190:
     if ((str1 != null) && (localObject1 != null)) {
       a(str1, localObject1, str2, localObject2, null, null, i);
     }
     paramJSONObject = paramJSONObject.optJSONArray("all");
     if ((paramJSONObject == null) || (paramJSONObject.length() == 0)) {
-      aWG();
+      bDn();
     }
     for (;;)
     {
+      AppMethodBeat.o(91589);
       return true;
       paramJSONObject = paramJSONObject.optJSONObject(0);
-      dK(paramJSONObject.optString("hotword"), paramJSONObject.optInt("businessType"));
+      eU(paramJSONObject.optString("hotword"), paramJSONObject.optInt("businessType"));
     }
   }
   
-  protected final void aWG()
+  public final void bDn()
   {
-    dK(getContext().getResources().getString(R.l.search_option_all), com.tencent.mm.bc.a.a(null, getContext().getString(R.l.search_option_all), getContext()));
+    AppMethodBeat.i(91587);
+    eU(getContext().getResources().getString(2131303018), com.tencent.mm.bd.a.a(null, getContext().getString(2131303018), getContext()));
+    AppMethodBeat.o(91587);
   }
 }
 

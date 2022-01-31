@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.b.j;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.model.a;
@@ -14,19 +15,23 @@ final class CardListSelectedUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if ((!this.ivL.ivx) && (CardListSelectedUI.b(this.ivL).ily))
+    AppMethodBeat.i(88556);
+    if ((!this.kwP.kwB) && (CardListSelectedUI.b(this.kwP).kmw))
     {
-      this.ivL.ew(true);
-      am.aAE().I(CardListSelectedUI.b(this.ivL).ilt, l.yY(CardListSelectedUI.b(this.ivL).userName), 3);
-      return true;
+      this.kwP.fV(true);
+      am.bcp().W(CardListSelectedUI.b(this.kwP).kmr, l.IH(CardListSelectedUI.b(this.kwP).userName), 3);
     }
-    CardListSelectedUI.a(this.ivL);
-    return true;
+    for (;;)
+    {
+      AppMethodBeat.o(88556);
+      return true;
+      CardListSelectedUI.a(this.kwP);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardListSelectedUI.2
  * JD-Core Version:    0.7.0.1
  */

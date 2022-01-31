@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.music.ui;
 
-import com.tencent.mm.h.a.jy;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ki;
 import com.tencent.mm.sdk.b.c;
 
 final class a$2
-  extends c<jy>
+  extends c<ki>
 {
   a$2(a parama)
   {
-    this.udX = jy.class.getName().hashCode();
+    AppMethodBeat.i(105056);
+    this.__eventId = ki.class.getName().hashCode();
+    AppMethodBeat.o(105056);
   }
 }
 

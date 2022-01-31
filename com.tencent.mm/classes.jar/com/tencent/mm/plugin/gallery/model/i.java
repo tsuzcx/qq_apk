@@ -1,75 +1,25 @@
 package com.tencent.mm.plugin.gallery.model;
 
-import android.net.Uri;
-import android.provider.MediaStore.Images.Media;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
-public final class i
-  extends k
+public abstract interface i
 {
-  private String[] kHe = { "camera", "screenshot", "download" };
+  public abstract LinkedList<GalleryItem.MediaItem> a(String paramString, int paramInt, i.d paramd, long paramLong);
   
-  protected final String Eq(String paramString)
+  public abstract LinkedList<GalleryItem.AlbumItem> bDJ();
+  
+  public abstract void bDK();
+  
+  public abstract void bDM();
+  
+  public static abstract interface b
   {
-    if (bk.bl(paramString))
-    {
-      y.w("MicroMsg.ImageQuery", "get media item selection, but album name is null, do select all");
-      paramString = "_size>10240";
-      String[] arrayOfString = this.kHe;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = arrayOfString[i];
-        paramString = paramString + " or lower(_data) like '%" + str + "%'";
-        i += 1;
-      }
-      y.d("MicroMsg.ImageQuery", "where %s", new Object[] { paramString });
-      return paramString;
-    }
-    return "bucket_display_name=\"" + paramString + "\"";
+    public abstract void b(LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong);
   }
   
-  protected final String aXA()
+  public static abstract interface c
   {
-    return "bucket_display_name";
-  }
-  
-  public final ArrayList<GalleryItem.AlbumItem> aXv()
-  {
-    return super.aXv();
-  }
-  
-  public final Uri aXx()
-  {
-    return MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-  }
-  
-  protected final String[] aXy()
-  {
-    return new String[] { "_id", "_data", "COALESCE(" + k.kHi, k.kHh + ",0) AS " + kHj, k.kHi, k.kHh, "mime_type" };
-  }
-  
-  public final String aXz()
-  {
-    return k.kHj + " desc,_id desc";
-  }
-  
-  public final String[] getProjection()
-  {
-    return new String[] { "_id", "_data", "bucket_display_name", "count(*)", "COALESCE(" + k.kHi, k.kHh + ",0) AS " + kHj, k.kHi, k.kHh, "mime_type" };
-  }
-  
-  public final String getSelection()
-  {
-    return "0==0) GROUP BY (bucket_display_name";
-  }
-  
-  protected final int getType()
-  {
-    return 1;
+    public abstract void c(LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong);
   }
 }
 

@@ -1,19 +1,26 @@
 package com.tencent.mm.plugin.record.ui;
 
-import com.tencent.mm.h.a.nb;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RecordMsgImageUI$3
-  extends c<nb>
+  implements Runnable
 {
   RecordMsgImageUI$3(RecordMsgImageUI paramRecordMsgImageUI)
   {
-    this.udX = nb.class.getName().hashCode();
+    AppMethodBeat.i(24296);
+    AppMethodBeat.o(24296);
+  }
+  
+  public final void run()
+  {
+    AppMethodBeat.i(153610);
+    RecordMsgImageUI.a(this.pZV).notifyDataSetChanged();
+    AppMethodBeat.o(153610);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.RecordMsgImageUI.3
  * JD-Core Version:    0.7.0.1
  */

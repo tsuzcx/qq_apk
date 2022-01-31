@@ -1,50 +1,34 @@
 package com.tencent.mm.plugin.music.model.a.a;
 
-import android.content.ContentValues;
-import com.tencent.mm.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.i;
+import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest;
-import com.tencent.mm.plugin.music.model.e.c;
-import com.tencent.mm.plugin.music.model.e.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
 
 public final class a$j
-  implements i<IPCAudioParamRequest, IPCVoid>
+  implements i<IPCVoid, IPCBoolean>
 {
-  private static IPCVoid a(IPCAudioParamRequest paramIPCAudioParamRequest)
+  private static IPCBoolean bVS()
   {
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(104953);
+    try
     {
-      try
-      {
-        Object localObject = paramIPCAudioParamRequest.bSB;
-        if (paramIPCAudioParamRequest.euY == null) {
-          continue;
-        }
-        y.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileIndexBitCache Task, musicId:%s, bitset is valid:%b", new Object[] { localObject, Boolean.valueOf(bool) });
-        localObject = paramIPCAudioParamRequest.bSB;
-        paramIPCAudioParamRequest = paramIPCAudioParamRequest.euY;
-        d locald = com.tencent.mm.plugin.music.model.e.bns();
-        ContentValues localContentValues = new ContentValues();
-        localContentValues.put("indexBitData", paramIPCAudioParamRequest);
-        int i = locald.dXw.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { localObject });
-        if (i <= 0) {
-          y.i("MicroMsg.Music.PieceMusicInfoStorage", "updateMusicFileIndexBitCache raw=%d musicId=%s", new Object[] { Integer.valueOf(i), localObject });
-        }
-        localObject = (c)locald.mAr.get(localObject);
-        if (localObject != null) {
-          ((c)localObject).field_indexBitData = paramIPCAudioParamRequest;
-        }
-      }
-      catch (Exception paramIPCAudioParamRequest)
-      {
-        for (;;)
-        {
-          y.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc updateMusicFileIndexBitCache task", new Object[0]);
-        }
-      }
-      return new IPCVoid();
+      ab.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc showAudioToast");
+      IPCBoolean localIPCBoolean1 = new IPCBoolean(((Boolean)g.RL().Ru().get(ac.a.yFL, Boolean.FALSE)).booleanValue());
+      AppMethodBeat.o(104953);
+      return localIPCBoolean1;
+    }
+    catch (Exception localException)
+    {
+      ab.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc showAudioToast task", new Object[0]);
+      IPCBoolean localIPCBoolean2 = new IPCBoolean(false);
+      AppMethodBeat.o(104953);
+      return localIPCBoolean2;
     }
   }
 }

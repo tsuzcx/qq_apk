@@ -1,44 +1,49 @@
 package com.tencent.mm.plugin.freewifi.d;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.protocal.c.pa;
-import com.tencent.mm.protocal.c.pb;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.protocal.protobuf.sc;
+import com.tencent.mm.protocal.protobuf.sd;
 
 public final class d
   extends c
 {
   public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong, String paramString6, String paramString7)
   {
-    aUp();
-    pa localpa = (pa)this.dmK.ecE.ecN;
-    localpa.sMD = paramString1;
-    localpa.sME = paramString2;
-    localpa.sMF = paramString3;
-    localpa.sMG = paramString4;
-    localpa.sMH = paramString5;
-    localpa.sMI = paramLong;
-    localpa.sMJ = paramString6;
-    localpa.sMK = paramString7;
+    AppMethodBeat.i(20780);
+    bAR();
+    sc localsc = (sc)this.rr.fsV.fta;
+    localsc.wKq = paramString1;
+    localsc.wKr = paramString2;
+    localsc.wKs = paramString3;
+    localsc.wKt = paramString4;
+    localsc.wKu = paramString5;
+    localsc.wKv = paramLong;
+    localsc.wKw = paramString6;
+    localsc.wKx = paramString7;
+    AppMethodBeat.o(20780);
   }
   
-  protected final void aUp()
+  protected final void bAR()
   {
+    AppMethodBeat.i(20779);
     b.a locala = new b.a();
-    locala.ecH = new pa();
-    locala.ecI = new pb();
+    locala.fsX = new sc();
+    locala.fsY = new sd();
     locala.uri = "/cgi-bin/mmo2o-bin/checkifcallup";
-    locala.ecG = 1155;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
+    locala.funcId = getType();
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    AppMethodBeat.o(20779);
   }
   
-  public final pb aUx()
+  public final sd bAX()
   {
-    return (pb)this.dmK.ecF.ecN;
+    return (sd)this.rr.fsW.fta;
   }
   
   public final int getType()

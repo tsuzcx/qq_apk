@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.facedetectaction.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.facedetect.e.a;
 import com.tencent.mm.plugin.facedetect.e.a.4;
 import com.tencent.mm.plugin.facedetect.e.a.5;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class e$1
   implements Runnable
@@ -13,15 +14,17 @@ final class e$1
   
   public final void run()
   {
-    Object localObject = a.aPj();
-    int i = this.gAv;
-    ((a)localObject).jSL.O(new a.4((a)localObject, i));
-    localObject = a.aPj();
-    float f = this.jWv.fps;
-    ((a)localObject).jSL.O(new a.5((a)localObject, f));
-    localObject = this.jWx;
-    byte[][] arrayOfByte = this.jWw;
-    d.jWf.H(new e.2((e)localObject, arrayOfByte));
+    AppMethodBeat.i(701);
+    Object localObject = a.bvo();
+    int i = this.hXH;
+    ((a)localObject).mnh.ac(new a.4((a)localObject, i));
+    localObject = a.bvo();
+    float f = this.mqM.fps;
+    ((a)localObject).mnh.ac(new a.5((a)localObject, f));
+    localObject = this.mqO;
+    byte[][] arrayOfByte = this.mqN;
+    d.mqx.O(new e.2((e)localObject, arrayOfByte));
+    AppMethodBeat.o(701);
   }
 }
 

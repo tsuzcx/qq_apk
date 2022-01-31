@@ -1,6 +1,14 @@
 package com.tencent.mm.network;
 
-public abstract interface a$a {}
+import com.tencent.mm.protocal.protobuf.gj;
+
+final class a$a
+{
+  public gj gdj;
+  public byte[] gdk;
+  
+  a$a(a parama) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar

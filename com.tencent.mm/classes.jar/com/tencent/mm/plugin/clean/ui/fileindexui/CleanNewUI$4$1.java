@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.plugin.downloader.model.e.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.plugin.downloader.model.g.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.net.URL;
 import org.json.JSONObject;
 
@@ -16,26 +17,28 @@ final class CleanNewUI$4$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(18814);
     try
     {
-      paramDialogInterface = new URL(CleanNewUI.e(this.iDS.iDR).getString("url"));
-      String str = CleanNewUI.e(this.iDS.iDR).getString("md5");
-      y.i("MicroMsg.CleanNewUI", "download url:%s, md5:%s", new Object[] { paramDialogInterface, str });
-      e.a locala = new e.a();
-      locala.zP("wesecure.apk");
-      locala.zN(paramDialogInterface.toString());
-      locala.eO(true);
-      locala.zQ(str);
-      locala.pE(1);
-      d.aFP().a(locala.iPG);
-      h.nFQ.a(714L, 4L, 1L, false);
+      paramDialogInterface = new URL(CleanNewUI.e(this.kIZ.kIY).getString("url"));
+      String str = CleanNewUI.e(this.kIZ.kIY).getString("md5");
+      ab.i("MicroMsg.CleanNewUI", "download url:%s, md5:%s", new Object[] { paramDialogInterface, str });
+      g.a locala = new g.a();
+      locala.JL("wesecure.apk");
+      locala.JJ(paramDialogInterface.toString());
+      locala.gr(true);
+      locala.JM(str);
+      locala.tV(1);
+      f.bjl().a(locala.kYR);
+      h.qsU.idkeyStat(714L, 4L, 1L, false);
+      AppMethodBeat.o(18814);
       return;
     }
     catch (Exception paramDialogInterface)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.CleanNewUI", paramDialogInterface, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.CleanNewUI", paramDialogInterface, "", new Object[0]);
       }
     }
   }

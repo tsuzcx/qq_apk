@@ -3446,7 +3446,7 @@ CN_Chongqing_Aikawa|合川
 CN_Chongqing_Jiangbei|江北
 CN_Chongqing_Jiangjin|江津
 CN_Chongqing_Jiulongpo|九龙坡
-CN_Chongqing_Kaixian|开县
+CN_Chongqing_Kaizhou|开州
 CN_Chongqing_Two Rivers|两江新区
 CN_Chongqing_Liangping|梁平
 CN_Chongqing_South Bank|南岸

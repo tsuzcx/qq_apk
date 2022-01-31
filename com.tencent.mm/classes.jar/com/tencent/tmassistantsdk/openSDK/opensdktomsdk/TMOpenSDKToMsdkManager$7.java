@@ -3,8 +3,9 @@ package com.tencent.tmassistantsdk.openSDK.opensdktomsdk;
 import android.os.Message;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 import com.tencent.tmassistantsdk.logreport.TipsInfoReportManager;
@@ -19,11 +20,14 @@ class TMOpenSDKToMsdkManager$7
   
   public void run()
   {
+    AppMethodBeat.i(75926);
     if ((this.this$0.mContext != null) && (this.this$0.mOpenSDK != null) && (!TextUtils.isEmpty(this.val$jumpUrl))) {
       this.this$0.insertActionId = this.this$0.mOpenSDK.addDownloadTaskFromAuthorize(this.val$jumpUrl);
     }
     Object localObject1 = this.this$0.getClient();
-    if (localObject1 == null) {
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(75926);
       return;
     }
     for (;;)
@@ -45,12 +49,14 @@ class TMOpenSDKToMsdkManager$7
           localObject1 = TipsInfoReportManager.getInstance().createTipsInfoLog(this.this$0.mAuthorizedInfo);
           ((TipsInfoLog)localObject1).installBtnClickCount += 1;
           TipsInfoReportManager.getInstance().addLogData((JceStruct)localObject1);
+          AppMethodBeat.o(75926);
           return;
         }
       }
       catch (Exception localException)
       {
-        y.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+        ab.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+        AppMethodBeat.o(75926);
         return;
       }
       if (i == 0)
@@ -74,11 +80,12 @@ class TMOpenSDKToMsdkManager$7
     Object localObject2 = TipsInfoReportManager.getInstance().createTipsInfoLog(this.this$0.mAuthorizedInfo);
     ((TipsInfoLog)localObject2).downloadBtnClickCount += 1;
     TipsInfoReportManager.getInstance().addLogData((JceStruct)localObject2);
+    AppMethodBeat.o(75926);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.opensdktomsdk.TMOpenSDKToMsdkManager.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.game.menu.GameMenuImageButton.a;
 
 final class GameWebViewUI$6
@@ -7,9 +8,11 @@ final class GameWebViewUI$6
 {
   GameWebViewUI$6(GameWebViewUI paramGameWebViewUI) {}
   
-  public final void aYF()
+  public final void bFE()
   {
-    this.rwB.cej();
+    AppMethodBeat.i(8729);
+    this.vnt.aYo();
+    AppMethodBeat.o(8729);
   }
 }
 

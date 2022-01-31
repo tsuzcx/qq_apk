@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.freewifi.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.model.d;
 
 final class FreeWifiStateUI$9
@@ -11,7 +12,9 @@ final class FreeWifiStateUI$9
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    d.a(this.ksM.ssid, 4, this.ksM.getIntent());
+    AppMethodBeat.i(21079);
+    d.a(this.mOB.ssid, 4, this.mOB.getIntent());
+    AppMethodBeat.o(21079);
   }
 }
 

@@ -1,40 +1,29 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import com.tencent.mm.h.a.rc;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.openim.a.c.a;
-import com.tencent.mm.openim.a.c.b;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.base.preference.Preference.b;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 final class k$10
   implements Preference.b
 {
-  k$10(k paramk, c.b paramb, c.a parama) {}
+  k$10(k paramk, String paramString1, String paramString2) {}
   
-  public final boolean bsE()
+  public final boolean cbH()
   {
-    try
-    {
-      Object localObject = new JSONObject(this.mXH.ePO);
-      String str = ((JSONObject)localObject).optString("name");
-      localObject = ((JSONObject)localObject).optString("pagepath");
-      rc localrc = new rc();
-      localrc.caq.userName = str;
-      localrc.caq.cas = bk.aM((String)localObject, "");
-      a.udP.m(localrc);
-      h.nFQ.f(15319, new Object[] { this.mXC.dnp.field_openImAppid, Integer.valueOf(this.mXH.action), this.mXI.title });
-      return true;
-    }
-    catch (JSONException localJSONException)
-    {
-      y.printErrStackTrace("MicroMsg.ContactWidgetNormal", localJSONException, "loadProfile", new Object[0]);
-    }
+    AppMethodBeat.i(23574);
+    Intent localIntent = new Intent();
+    localIntent.setFlags(268435456);
+    localIntent.setClassName(ah.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
+    localIntent.putExtra("rawUrl", this.val$url);
+    localIntent.putExtra("geta8key_scene", 58);
+    ah.getContext().startActivity(localIntent);
+    h.qsU.e(15319, new Object[] { this.pAx.contact.field_openImAppid, Integer.valueOf(6), this.pxI });
+    AppMethodBeat.o(23574);
     return true;
   }
 }

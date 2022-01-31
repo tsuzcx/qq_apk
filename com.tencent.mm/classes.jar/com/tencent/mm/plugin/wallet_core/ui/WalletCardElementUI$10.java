@@ -1,30 +1,17 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.wallet_core.a;
-import com.tencent.mm.wallet_core.c;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.pv;
+import com.tencent.mm.sdk.b.c;
 
 final class WalletCardElementUI$10
-  implements View.OnClickListener
+  extends c<pv>
 {
-  WalletCardElementUI$10(WalletCardElementUI paramWalletCardElementUI) {}
-  
-  public final void onClick(View paramView)
+  WalletCardElementUI$10(WalletCardElementUI paramWalletCardElementUI)
   {
-    paramView = new Bundle();
-    paramView.putInt("key_support_bankcard", this.qCj.BX.getInt("key_support_bankcard", 3));
-    paramView.putInt("key_bind_scene", this.qCj.BX.getInt("key_bind_scene", -1));
-    bk.bl(WalletCardElementUI.c(this.qCj).getText());
-    this.qCj.VH();
-    c localc = a.aj(this.qCj);
-    if (localc != null) {
-      localc.a(this.qCj, WalletBankCardSelectUI.class, paramView, 1);
-    }
+    AppMethodBeat.i(47223);
+    this.__eventId = pv.class.getName().hashCode();
+    AppMethodBeat.o(47223);
   }
 }
 

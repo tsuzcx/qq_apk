@@ -2,9 +2,9 @@ package com.tencent.mm.wallet_core.ui.formview;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.c.ab;
+import com.tencent.mm.wallet_core.c.ae;
 
 final class a$5
   implements View.OnClickListener
@@ -13,10 +13,11 @@ final class a$5
   
   public final void onClick(View paramView)
   {
-    this.wCD.getContext();
-    int i = ab.cMO();
-    int j = a.i.cvv_tip_title;
-    b.a(this.jxM, i, j);
+    AppMethodBeat.i(49360);
+    this.AYP.getContext();
+    int i = ae.dSC();
+    b.a(this.lHl, i, 2131298903);
+    AppMethodBeat.o(49360);
   }
 }
 

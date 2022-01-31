@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.base.stub;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.game.a.a;
-import com.tencent.mm.plugin.game.a.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.game.api.b;
+import com.tencent.mm.plugin.game.api.b.a;
 
 final class d$1
   implements DialogInterface.OnClickListener
@@ -13,11 +14,13 @@ final class d$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = a.a.aYi();
+    AppMethodBeat.i(18122);
+    paramDialogInterface = b.a.bEX();
     if (paramDialogInterface != null) {
-      paramDialogInterface.k(this.hRV.openId, q.Gm(), this.hRV.appId);
+      paramDialogInterface.m(this.jLA.openId, r.Zq(), this.jLA.appId);
     }
-    this.hRV.hRU.em(true);
+    this.jLA.jLz.fH(false);
+    AppMethodBeat.o(18122);
   }
 }
 

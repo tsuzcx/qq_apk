@@ -2,13 +2,12 @@ package com.tencent.mm.ui;
 
 import android.support.v7.widget.RecyclerView;
 import android.widget.ProgressBar;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelsimple.n;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AllRemindMsgUI$a
   implements f, Runnable
@@ -17,24 +16,31 @@ final class AllRemindMsgUI$a
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(29117);
+    ab.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (paramm.getType() != 866) {
+      if (paramm.getType() != 866)
+      {
+        AppMethodBeat.o(29117);
         return;
       }
-      e.post(new AllRemindMsgUI.a.1(this, paramm), "MicroMsg.emoji.AllRemindMsgUI[onSceneEnd]");
+      d.post(new AllRemindMsgUI.a.1(this, paramm), "MicroMsg.emoji.AllRemindMsgUI[onSceneEnd]");
+      AppMethodBeat.o(29117);
       return;
     }
-    y.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    AllRemindMsgUI.c(this.uGB).setVisibility(0);
-    AllRemindMsgUI.e(this.uGB).setVisibility(8);
+    ab.e("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AllRemindMsgUI.c(this.yTD).setVisibility(0);
+    AllRemindMsgUI.e(this.yTD).setVisibility(8);
+    AppMethodBeat.o(29117);
   }
   
   public final void run()
   {
-    n localn = new n();
-    au.Dk().a(localn, 0);
+    AppMethodBeat.i(29116);
+    com.tencent.mm.modelsimple.p localp = new com.tencent.mm.modelsimple.p();
+    aw.Rc().a(localp, 0);
+    AppMethodBeat.o(29116);
   }
 }
 

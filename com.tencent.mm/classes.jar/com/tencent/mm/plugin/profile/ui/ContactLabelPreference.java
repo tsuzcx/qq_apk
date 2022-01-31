@@ -6,8 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMSingelLinePanel;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.ArrayList;
@@ -15,10 +14,10 @@ import java.util.ArrayList;
 public class ContactLabelPreference
   extends Preference
 {
-  private TextView eXr;
-  private MMSingelLinePanel mVR;
-  private ArrayList<String> mVS = new ArrayList();
+  private MMSingelLinePanel pyK;
+  private ArrayList<String> pyL;
   private String title;
+  private TextView titleTv;
   
   public ContactLabelPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,32 +27,39 @@ public class ContactLabelPreference
   public ContactLabelPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.i(23392);
+    this.pyL = new ArrayList();
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(23392);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
-    this.eXr = ((TextView)paramView.findViewById(R.h.title));
-    this.mVR = ((MMSingelLinePanel)paramView.findViewById(R.h.contact_label_panel));
-    this.mVR.setSingleLine(true);
-    this.mVR.uXW = false;
-    this.mVR.nc(false);
-    if (this.eXr != null) {
-      this.eXr.setText(this.title);
+    AppMethodBeat.i(23394);
+    this.titleTv = ((TextView)paramView.findViewById(2131820680));
+    this.pyK = ((MMSingelLinePanel)paramView.findViewById(2131820916));
+    this.pyK.setSingleLine(true);
+    this.pyK.zmn = false;
+    this.pyK.qF(false);
+    if (this.titleTv != null) {
+      this.titleTv.setText(this.title);
     }
-    if ((this.mVR != null) && (this.mVS != null) && (this.mVS.size() > 0)) {
-      this.mVR.a(this.mVS, this.mVS);
+    if ((this.pyK != null) && (this.pyL != null) && (this.pyL.size() > 0)) {
+      this.pyK.a(this.pyL, this.pyL);
     }
     super.onBindView(paramView);
+    AppMethodBeat.o(23394);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(23393);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.mm_preference_content_label_info, localViewGroup);
+    localLayoutInflater.inflate(2130970206, localViewGroup);
+    AppMethodBeat.o(23393);
     return paramViewGroup;
   }
 }

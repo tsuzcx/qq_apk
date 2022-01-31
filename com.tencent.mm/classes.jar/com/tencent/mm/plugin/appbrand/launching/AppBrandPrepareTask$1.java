@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class AppBrandPrepareTask$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class AppBrandPrepareTask$1
   
   public final void run()
   {
-    this.gJq.alD();
+    AppMethodBeat.i(131732);
+    this.ijW.aGK();
+    AppMethodBeat.o(131732);
   }
 }
 

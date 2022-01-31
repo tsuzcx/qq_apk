@@ -1,93 +1,52 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.content.Intent;
-import android.view.MenuItem;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.a.cd;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.modelstat.b;
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMViewPager;
-import com.tencent.mm.ui.base.n.d;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.ui.base.g;
+import com.tencent.mm.ui.tools.e;
 
 final class ImageGalleryUI$5
-  implements n.d
+  implements ViewTreeObserver.OnPreDrawListener
 {
   ImageGalleryUI$5(ImageGalleryUI paramImageGalleryUI) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final boolean onPreDraw()
   {
-    switch (paramMenuItem.getItemId())
-    {
+    AppMethodBeat.i(153859);
+    this.zME.nga.getViewTreeObserver().removeOnPreDrawListener(this);
+    ab.i("MicroMsg.ImageGalleryUI", "[handleAnimation] -> onPreDraw, isBackFromGrid:" + this.zME.zMd);
+    this.zME.rOa = this.zME.nga.getWidth();
+    this.zME.rOb = this.zME.nga.getHeight();
+    if (ImageGalleryUI.j(this.zME).dJX().byk()) {
+      this.zME.rOb = ((int)(this.zME.rOa / this.zME.kuI * this.zME.kuJ));
     }
-    do
+    if (ImageGalleryUI.j(this.zME).dJX().dvX())
     {
-      do
+      g localg = (g)ImageGalleryUI.a(this.zME, ImageGalleryUI.j(this.zME), this.zME.nga);
+      if (localg != null)
       {
-        return;
-        paramMenuItem = ImageGalleryUI.f(this.vww).cFU();
-        com.tencent.mm.modelvideo.s locals;
-        if ((paramMenuItem != null) && (paramMenuItem.aRQ()))
-        {
-          locals = u.oe(paramMenuItem.field_imgPath);
-          if ((locals.status != 199) && (locals.status != 199))
-          {
-            ImageGalleryUI.b(this.vww, u.d(paramMenuItem.field_msgId, 1));
-            ImageGalleryUI.f(this.vww).Hp(this.vww.kJC.getCurrentItem());
-            return;
-          }
-          ImageGalleryUI.f(this.vww).Hk(this.vww.kJC.getCurrentItem());
-          return;
+        ImageGalleryUI localImageGalleryUI = this.zME;
+        float f = this.zME.rOa / localg.getImageWidth();
+        localImageGalleryUI.rOb = ((int)(localg.getImageHeight() * f));
+        if (this.zME.rOb > this.zME.nga.getHeight()) {
+          this.zME.rOb = this.zME.nga.getHeight();
         }
-        ImageGalleryUI.f(this.vww).Hk(this.vww.kJC.getCurrentItem());
-        return;
-        paramMenuItem = ImageGalleryUI.f(this.vww).cFU();
-        if ((paramMenuItem != null) && (paramMenuItem.aRQ()))
-        {
-          locals = u.oe(paramMenuItem.field_imgPath);
-          if ((locals.status != 199) && (locals.status != 199))
-          {
-            ImageGalleryUI.b(this.vww, u.d(paramMenuItem.field_msgId, 2));
-            ImageGalleryUI.f(this.vww).Hp(this.vww.kJC.getCurrentItem());
-            return;
-          }
-          paramMenuItem = new ArrayList();
-          paramMenuItem.add(ImageGalleryUI.f(this.vww).cFU());
-          c.e(this.vww.mController.uMN, paramMenuItem);
-          return;
-        }
-        paramMenuItem = new ArrayList();
-        paramMenuItem.add(ImageGalleryUI.f(this.vww).cFU());
-        b.eBD.B((bi)paramMenuItem.get(0));
-        c.e(this.vww.mController.uMN, paramMenuItem);
-        return;
-        ImageGalleryUI.f(this.vww).Hl(this.vww.kJC.getCurrentItem());
-        return;
-      } while (!d.SP("favorite"));
-      ImageGalleryUI.f(this.vww).Hm(this.vww.kJC.getCurrentItem());
-      return;
-      y.i("MicroMsg.ImageGalleryUI", "request deal QBAR string");
-      paramMenuItem = new cd();
-      paramMenuItem.bIi.activity = this.vww;
-      paramMenuItem.bIi.bGE = ImageGalleryUI.c(this.vww);
-      paramMenuItem.bIi.bIj = ImageGalleryUI.x(this.vww);
-      paramMenuItem.bIi.bIk = ImageGalleryUI.y(this.vww);
-      paramMenuItem.bIi.scene = 37;
-      paramMenuItem.bIi.bIo = this.vww.getIntent().getBundleExtra("_stat_obj");
-      ImageGalleryUI.a(this.vww, paramMenuItem);
-      ImageGalleryUI.b(this.vww, paramMenuItem);
-      a.udP.m(paramMenuItem);
-      return;
-      ImageGalleryUI.z(this.vww);
-      return;
-    } while (!c.be(ImageGalleryUI.f(this.vww).cFU()));
-    ImageGalleryUI.A(this.vww);
+      }
+    }
+    this.zME.kip.hO(this.zME.rOa, this.zME.rOb);
+    if (!this.zME.zMd)
+    {
+      ImageGalleryUI.q(this.zME);
+      ImageGalleryUI.r(this.zME);
+      this.zME.kip.a(this.zME.nga, ImageGalleryUI.s(this.zME), new ImageGalleryUI.5.1(this));
+    }
+    ImageGalleryUI.u(this.zME);
+    AppMethodBeat.o(153859);
+    return true;
   }
 }
 

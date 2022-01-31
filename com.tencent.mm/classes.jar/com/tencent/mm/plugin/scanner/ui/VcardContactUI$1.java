@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import android.content.Intent;
 import android.net.Uri;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.c;
 
 final class VcardContactUI$1
@@ -9,17 +10,21 @@ final class VcardContactUI$1
 {
   VcardContactUI$1(VcardContactUI paramVcardContactUI, String paramString) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(81345);
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    Intent localIntent = new Intent("android.intent.action.DIAL");
-    localIntent.setFlags(268435456);
-    localIntent.setData(Uri.parse("tel:" + this.ixq));
-    this.nOb.startActivity(localIntent);
+    for (;;)
+    {
+      AppMethodBeat.o(81345);
+      return;
+      Intent localIntent = new Intent("android.intent.action.DIAL");
+      localIntent.setFlags(268435456);
+      localIntent.setData(Uri.parse("tel:" + this.kyt));
+      this.qBL.startActivity(localIntent);
+    }
   }
 }
 

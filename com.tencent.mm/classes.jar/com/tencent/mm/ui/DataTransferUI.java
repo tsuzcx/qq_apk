@@ -1,10 +1,11 @@
 package com.tencent.mm.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
@@ -13,48 +14,64 @@ import com.tencent.mm.ui.base.p;
 public class DataTransferUI
   extends MMBaseActivity
 {
-  private p hdi;
+  private p iMZ;
   private long startTime = 0L;
   
-  private void an(Intent paramIntent)
+  private void aO(Intent paramIntent)
   {
+    AppMethodBeat.i(29193);
     boolean bool = paramIntent.getBooleanExtra("finish_data_transfer", false);
-    y.d("MicroMsg.DataTransferUI", "tryFinish, timestamp = " + System.currentTimeMillis() + ", finish = " + bool);
+    ab.d("MicroMsg.DataTransferUI", "tryFinish, timestamp = " + System.currentTimeMillis() + ", finish = " + bool);
     if (bool) {
       finish();
     }
+    AppMethodBeat.o(29193);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(29191);
     super.onCreate(paramBundle);
-    y.d("MicroMsg.DataTransferUI", "onCreate, timestamp = " + System.currentTimeMillis());
+    ab.d("MicroMsg.DataTransferUI", "onCreate, timestamp = " + System.currentTimeMillis());
     this.startTime = System.currentTimeMillis();
-    getString(R.l.app_tip);
-    this.hdi = h.b(this, getString(R.l.app_data_transfering), false, null);
+    getString(2131297087);
+    this.iMZ = h.b(this, getString(2131296898), false, null);
     new DataTransferUI.1(this).sendEmptyMessageDelayed(0, 60000L);
-    an(getIntent());
+    aO(getIntent());
+    AppMethodBeat.o(29191);
   }
   
   protected void onDestroy()
   {
+    AppMethodBeat.i(29195);
     super.onDestroy();
-    y.d("MicroMsg.DataTransferUI", "onDestroy");
-    if ((this.hdi != null) && (this.hdi.isShowing())) {
-      this.hdi.dismiss();
+    ab.d("MicroMsg.DataTransferUI", "onDestroy");
+    if ((this.iMZ != null) && (this.iMZ.isShowing())) {
+      this.iMZ.dismiss();
     }
+    AppMethodBeat.o(29195);
   }
   
   protected void onNewIntent(Intent paramIntent)
   {
-    y.d("MicroMsg.DataTransferUI", "onNewIntent, timestamp = " + System.currentTimeMillis());
-    an(paramIntent);
+    AppMethodBeat.i(29192);
+    ab.d("MicroMsg.DataTransferUI", "onNewIntent, timestamp = " + System.currentTimeMillis());
+    aO(paramIntent);
+    AppMethodBeat.o(29192);
   }
   
   protected void onPause()
   {
-    y.d("MicroMsg.DataTransferUI", "edw DataTransferUI duration time = " + (System.currentTimeMillis() - this.startTime));
+    AppMethodBeat.i(29194);
+    ab.d("MicroMsg.DataTransferUI", "edw DataTransferUI duration time = " + (System.currentTimeMillis() - this.startTime));
     super.onPause();
+    AppMethodBeat.o(29194);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

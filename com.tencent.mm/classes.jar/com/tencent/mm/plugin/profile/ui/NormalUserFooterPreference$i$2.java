@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.profile.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
-import com.tencent.mm.plugin.profile.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.profile.b;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.ui.base.preference.Preference;
 
 final class NormalUserFooterPreference$i$2
@@ -14,15 +15,17 @@ final class NormalUserFooterPreference$i$2
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.mYV.onStop();
+    AppMethodBeat.i(23717);
+    this.pCp.onStop();
     paramDialogInterface = new Intent();
     paramDialogInterface.putExtra("Intro_Switch", true).addFlags(67108864);
-    a.eUR.q(paramDialogInterface, this.mYV.mYC.mContext);
+    b.gmO.p(paramDialogInterface, this.pCp.pCe.mContext);
+    AppMethodBeat.o(23717);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.NormalUserFooterPreference.i.2
  * JD-Core Version:    0.7.0.1
  */

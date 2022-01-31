@@ -35,7 +35,7 @@ public abstract class BaseLogTable
       localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
     }
     localStringBuffer.append(")");
-    getHelper().getWritableDatabase().delete(getTableName(), "_id in " + localStringBuffer, null);
+    getHelper().getWritableDatabase().delete(getTableName(), "_id in ".concat(String.valueOf(localStringBuffer)), null);
     return true;
   }
   
@@ -56,164 +56,161 @@ public abstract class BaseLogTable
     //   1: astore 8
     //   3: new 8	com/tencent/tmassistantsdk/storage/table/BaseLogTable$DataWrapper
     //   6: dup
-    //   7: invokespecial 114	com/tencent/tmassistantsdk/storage/table/BaseLogTable$DataWrapper:<init>	()V
+    //   7: invokespecial 115	com/tencent/tmassistantsdk/storage/table/BaseLogTable$DataWrapper:<init>	()V
     //   10: astore 7
     //   12: aload 7
-    //   14: new 116	java/util/ArrayList
+    //   14: new 117	java/util/ArrayList
     //   17: dup
-    //   18: invokespecial 117	java/util/ArrayList:<init>	()V
-    //   21: putfield 121	com/tencent/tmassistantsdk/storage/table/BaseLogTable$DataWrapper:idList	Ljava/util/List;
+    //   18: invokespecial 118	java/util/ArrayList:<init>	()V
+    //   21: putfield 122	com/tencent/tmassistantsdk/storage/table/BaseLogTable$DataWrapper:idList	Ljava/util/List;
     //   24: aload 7
-    //   26: new 116	java/util/ArrayList
+    //   26: new 117	java/util/ArrayList
     //   29: dup
-    //   30: invokespecial 117	java/util/ArrayList:<init>	()V
-    //   33: putfield 124	com/tencent/tmassistantsdk/storage/table/BaseLogTable$DataWrapper:dataList	Ljava/util/List;
+    //   30: invokespecial 118	java/util/ArrayList:<init>	()V
+    //   33: putfield 125	com/tencent/tmassistantsdk/storage/table/BaseLogTable$DataWrapper:dataList	Ljava/util/List;
     //   36: iload_1
-    //   37: ifle +255 -> 292
-    //   40: new 88	java/lang/StringBuilder
-    //   43: dup
-    //   44: ldc 126
-    //   46: invokespecial 91	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   49: iload_1
-    //   50: invokevirtual 129	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   53: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   56: astore 5
-    //   58: aload_0
-    //   59: invokevirtual 77	com/tencent/tmassistantsdk/storage/table/BaseLogTable:getHelper	()Lcom/tencent/tmassistantsdk/storage/helper/SqliteHelper;
-    //   62: invokevirtual 132	com/tencent/tmassistantsdk/storage/helper/SqliteHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   65: astore 6
-    //   67: aload 6
-    //   69: aload_0
-    //   70: invokevirtual 86	com/tencent/tmassistantsdk/storage/table/BaseLogTable:getTableName	()Ljava/lang/String;
-    //   73: aconst_null
-    //   74: aconst_null
-    //   75: aconst_null
-    //   76: aconst_null
-    //   77: aconst_null
-    //   78: ldc 134
-    //   80: aload 5
-    //   82: invokevirtual 138	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   85: astore 6
-    //   87: aload 6
-    //   89: ifnull +114 -> 203
-    //   92: aload 6
-    //   94: astore 5
-    //   96: aload 6
-    //   98: invokeinterface 143 1 0
-    //   103: ifeq +100 -> 203
-    //   106: aload 6
-    //   108: astore 5
-    //   110: aload 6
-    //   112: aload 6
-    //   114: ldc 145
-    //   116: invokeinterface 149 2 0
-    //   121: invokeinterface 153 2 0
-    //   126: lstore_2
-    //   127: aload 6
-    //   129: astore 5
-    //   131: aload 7
-    //   133: getfield 121	com/tencent/tmassistantsdk/storage/table/BaseLogTable$DataWrapper:idList	Ljava/util/List;
-    //   136: lload_2
-    //   137: invokestatic 157	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   140: invokeinterface 161 2 0
-    //   145: pop
-    //   146: aload 6
-    //   148: astore 5
-    //   150: aload 6
-    //   152: aload 6
-    //   154: ldc 163
-    //   156: invokeinterface 149 2 0
-    //   161: invokeinterface 167 2 0
-    //   166: astore 9
-    //   168: aload 6
-    //   170: astore 5
-    //   172: aload 7
-    //   174: getfield 124	com/tencent/tmassistantsdk/storage/table/BaseLogTable$DataWrapper:dataList	Ljava/util/List;
-    //   177: aload 9
-    //   179: invokeinterface 161 2 0
-    //   184: pop
-    //   185: aload 6
-    //   187: astore 5
-    //   189: aload 6
-    //   191: invokeinterface 170 1 0
-    //   196: istore 4
-    //   198: iload 4
-    //   200: ifne -94 -> 106
-    //   203: aload 6
-    //   205: ifnull +10 -> 215
-    //   208: aload 6
-    //   210: invokeinterface 173 1 0
-    //   215: aload 7
-    //   217: astore 5
-    //   219: aload 5
-    //   221: areturn
-    //   222: astore 7
-    //   224: aconst_null
-    //   225: astore 6
-    //   227: aload 6
-    //   229: astore 5
-    //   231: ldc 12
-    //   233: aload 7
-    //   235: ldc 175
-    //   237: iconst_0
-    //   238: anewarray 4	java/lang/Object
-    //   241: invokestatic 181	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   244: aload 8
-    //   246: astore 5
-    //   248: aload 6
-    //   250: ifnull -31 -> 219
-    //   253: aload 6
-    //   255: invokeinterface 173 1 0
-    //   260: aconst_null
-    //   261: areturn
-    //   262: astore 6
-    //   264: aconst_null
-    //   265: astore 5
-    //   267: aload 5
-    //   269: ifnull +10 -> 279
-    //   272: aload 5
-    //   274: invokeinterface 173 1 0
-    //   279: aload 6
-    //   281: athrow
-    //   282: astore 6
-    //   284: goto -17 -> 267
-    //   287: astore 7
-    //   289: goto -62 -> 227
-    //   292: aconst_null
-    //   293: astore 5
-    //   295: goto -237 -> 58
+    //   37: ifle +248 -> 285
+    //   40: ldc 127
+    //   42: iload_1
+    //   43: invokestatic 130	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   46: invokevirtual 98	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   49: astore 5
+    //   51: aload_0
+    //   52: invokevirtual 77	com/tencent/tmassistantsdk/storage/table/BaseLogTable:getHelper	()Lcom/tencent/tmassistantsdk/storage/helper/SqliteHelper;
+    //   55: invokevirtual 133	com/tencent/tmassistantsdk/storage/helper/SqliteHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   58: astore 6
+    //   60: aload 6
+    //   62: aload_0
+    //   63: invokevirtual 86	com/tencent/tmassistantsdk/storage/table/BaseLogTable:getTableName	()Ljava/lang/String;
+    //   66: aconst_null
+    //   67: aconst_null
+    //   68: aconst_null
+    //   69: aconst_null
+    //   70: aconst_null
+    //   71: ldc 135
+    //   73: aload 5
+    //   75: invokevirtual 139	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   78: astore 6
+    //   80: aload 6
+    //   82: ifnull +114 -> 196
+    //   85: aload 6
+    //   87: astore 5
+    //   89: aload 6
+    //   91: invokeinterface 144 1 0
+    //   96: ifeq +100 -> 196
+    //   99: aload 6
+    //   101: astore 5
+    //   103: aload 6
+    //   105: aload 6
+    //   107: ldc 146
+    //   109: invokeinterface 150 2 0
+    //   114: invokeinterface 154 2 0
+    //   119: lstore_2
+    //   120: aload 6
+    //   122: astore 5
+    //   124: aload 7
+    //   126: getfield 122	com/tencent/tmassistantsdk/storage/table/BaseLogTable$DataWrapper:idList	Ljava/util/List;
+    //   129: lload_2
+    //   130: invokestatic 157	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   133: invokeinterface 161 2 0
+    //   138: pop
+    //   139: aload 6
+    //   141: astore 5
+    //   143: aload 6
+    //   145: aload 6
+    //   147: ldc 163
+    //   149: invokeinterface 150 2 0
+    //   154: invokeinterface 167 2 0
+    //   159: astore 9
+    //   161: aload 6
+    //   163: astore 5
+    //   165: aload 7
+    //   167: getfield 125	com/tencent/tmassistantsdk/storage/table/BaseLogTable$DataWrapper:dataList	Ljava/util/List;
+    //   170: aload 9
+    //   172: invokeinterface 161 2 0
+    //   177: pop
+    //   178: aload 6
+    //   180: astore 5
+    //   182: aload 6
+    //   184: invokeinterface 170 1 0
+    //   189: istore 4
+    //   191: iload 4
+    //   193: ifne -94 -> 99
+    //   196: aload 6
+    //   198: ifnull +10 -> 208
+    //   201: aload 6
+    //   203: invokeinterface 173 1 0
+    //   208: aload 7
+    //   210: astore 5
+    //   212: aload 5
+    //   214: areturn
+    //   215: astore 7
+    //   217: aconst_null
+    //   218: astore 6
+    //   220: aload 6
+    //   222: astore 5
+    //   224: ldc 12
+    //   226: aload 7
+    //   228: ldc 175
+    //   230: iconst_0
+    //   231: anewarray 4	java/lang/Object
+    //   234: invokestatic 181	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   237: aload 8
+    //   239: astore 5
+    //   241: aload 6
+    //   243: ifnull -31 -> 212
+    //   246: aload 6
+    //   248: invokeinterface 173 1 0
+    //   253: aconst_null
+    //   254: areturn
+    //   255: astore 6
+    //   257: aconst_null
+    //   258: astore 5
+    //   260: aload 5
+    //   262: ifnull +10 -> 272
+    //   265: aload 5
+    //   267: invokeinterface 173 1 0
+    //   272: aload 6
+    //   274: athrow
+    //   275: astore 6
+    //   277: goto -17 -> 260
+    //   280: astore 7
+    //   282: goto -62 -> 220
+    //   285: aconst_null
+    //   286: astore 5
+    //   288: goto -237 -> 51
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	298	0	this	BaseLogTable
-    //   0	298	1	paramInt	int
-    //   126	11	2	l	long
-    //   196	3	4	bool	boolean
-    //   56	238	5	localObject1	Object
-    //   65	189	6	localObject2	Object
-    //   262	18	6	localObject3	Object
-    //   282	1	6	localObject4	Object
-    //   10	206	7	localDataWrapper	BaseLogTable.DataWrapper
-    //   222	12	7	localException1	java.lang.Exception
-    //   287	1	7	localException2	java.lang.Exception
-    //   1	244	8	localObject5	Object
-    //   166	12	9	arrayOfByte	byte[]
+    //   0	291	0	this	BaseLogTable
+    //   0	291	1	paramInt	int
+    //   119	11	2	l	long
+    //   189	3	4	bool	boolean
+    //   49	238	5	localObject1	Object
+    //   58	189	6	localObject2	Object
+    //   255	18	6	localObject3	Object
+    //   275	1	6	localObject4	Object
+    //   10	199	7	localDataWrapper	BaseLogTable.DataWrapper
+    //   215	12	7	localException1	java.lang.Exception
+    //   280	1	7	localException2	java.lang.Exception
+    //   1	237	8	localObject5	Object
+    //   159	12	9	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   67	87	222	java/lang/Exception
-    //   67	87	262	finally
-    //   96	106	282	finally
-    //   110	127	282	finally
-    //   131	146	282	finally
-    //   150	168	282	finally
-    //   172	185	282	finally
-    //   189	198	282	finally
-    //   231	244	282	finally
-    //   96	106	287	java/lang/Exception
-    //   110	127	287	java/lang/Exception
-    //   131	146	287	java/lang/Exception
-    //   150	168	287	java/lang/Exception
-    //   172	185	287	java/lang/Exception
-    //   189	198	287	java/lang/Exception
+    //   60	80	215	java/lang/Exception
+    //   60	80	255	finally
+    //   89	99	275	finally
+    //   103	120	275	finally
+    //   124	139	275	finally
+    //   143	161	275	finally
+    //   165	178	275	finally
+    //   182	191	275	finally
+    //   224	237	275	finally
+    //   89	99	280	java/lang/Exception
+    //   103	120	280	java/lang/Exception
+    //   124	139	280	java/lang/Exception
+    //   143	161	280	java/lang/Exception
+    //   165	178	280	java/lang/Exception
+    //   182	191	280	java/lang/Exception
   }
   
   public SqliteHelper getHelper()
@@ -262,7 +259,7 @@ public abstract class BaseLogTable
     //   63: ldc 175
     //   65: iconst_0
     //   66: anewarray 4	java/lang/Object
-    //   69: invokestatic 181	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   69: invokestatic 181	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   72: aload_2
     //   73: invokevirtual 212	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   76: iconst_0

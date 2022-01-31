@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/mp">
-        <TextView android:id="@id/bp" style="@style/on" />
-        <TextView android:id="@id/bn" style="@style/ol" />
-        <EditText android:id="@id/bl" style="@style/oj" />
-        <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:id="@id/bm" android:src="@drawable/uy" style="@style/ok" />
-    </LinearLayout>
-</merge>
+    <ScrollView android:scrollbars="none" style="@style/ni">
+        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="13.0dip" android:paddingRight="13.0dip" style="@style/l0">
+            <ImageView android:paddingBottom="33.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aj4" />
+            <TextView android:gravity="center" android:paddingBottom="20.0dip" android:text="@string/d7y" android:lineSpacingExtra="4.0dip" style="@style/l1" />
+            <Button android:textSize="20.0dip" android:id="@id/dln" android:text="@string/d7z" style="@style/nq" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

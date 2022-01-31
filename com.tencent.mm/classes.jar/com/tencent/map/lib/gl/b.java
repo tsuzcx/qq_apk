@@ -1,6 +1,7 @@
 package com.tencent.map.lib.gl;
 
-import com.tencent.tencentmap.mapsdk.a.kx;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.jg;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
@@ -12,26 +13,30 @@ import javax.microedition.khronos.opengles.GL10;
 public class b
 {
   private int a;
-  private kx<String> b;
+  private jg<String> b;
   private Hashtable<String, Integer> c;
   private IntBuffer d;
   
   public b(int paramInt)
   {
+    AppMethodBeat.i(98046);
     this.a = paramInt;
-    this.b = new kx(paramInt);
+    this.b = new jg(paramInt);
     this.c = new Hashtable();
     b();
+    AppMethodBeat.o(98046);
   }
   
   private void b()
   {
+    AppMethodBeat.i(98047);
     if (this.d == null)
     {
       ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(this.a * 4);
       localByteBuffer.order(ByteOrder.nativeOrder());
       this.d = localByteBuffer.asIntBuffer();
     }
+    AppMethodBeat.o(98047);
   }
   
   /* Error */
@@ -40,56 +45,61 @@ public class b
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 32	com/tencent/map/lib/gl/b:c	Ljava/util/Hashtable;
-    //   6: aload_1
-    //   7: invokevirtual 62	java/util/Hashtable:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   10: checkcast 64	java/lang/Integer
-    //   13: astore_1
-    //   14: aload_1
-    //   15: ifnull +12 -> 27
-    //   18: aload_1
-    //   19: invokevirtual 68	java/lang/Integer:intValue	()I
-    //   22: istore_2
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: iload_2
-    //   26: ireturn
-    //   27: iconst_0
-    //   28: istore_2
-    //   29: goto -6 -> 23
-    //   32: astore_1
+    //   2: ldc 69
+    //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 38	com/tencent/map/lib/gl/b:c	Ljava/util/Hashtable;
+    //   11: aload_1
+    //   12: invokevirtual 73	java/util/Hashtable:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   15: checkcast 75	java/lang/Integer
+    //   18: astore_1
+    //   19: aload_1
+    //   20: ifnull +17 -> 37
+    //   23: aload_1
+    //   24: invokevirtual 79	java/lang/Integer:intValue	()I
+    //   27: istore_2
+    //   28: ldc 69
+    //   30: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   33: aload_0
     //   34: monitorexit
-    //   35: aload_1
-    //   36: athrow
+    //   35: iload_2
+    //   36: ireturn
+    //   37: iconst_0
+    //   38: istore_2
+    //   39: ldc 69
+    //   41: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   44: goto -11 -> 33
+    //   47: astore_1
+    //   48: aload_0
+    //   49: monitorexit
+    //   50: aload_1
+    //   51: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	37	0	this	b
-    //   0	37	1	paramString	String
-    //   22	7	2	i	int
+    //   0	52	0	this	b
+    //   0	52	1	paramString	String
+    //   27	12	2	i	int
     // Exception table:
     //   from	to	target	type
-    //   2	14	32	finally
-    //   18	23	32	finally
+    //   2	19	47	finally
+    //   23	33	47	finally
+    //   39	44	47	finally
   }
   
   public void a()
   {
     try
     {
+      AppMethodBeat.i(98051);
       this.c.clear();
       this.b.b();
       if (this.d != null) {
         this.d.clear();
       }
+      AppMethodBeat.o(98051);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   /* Error */
@@ -98,74 +108,78 @@ public class b
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 32	com/tencent/map/lib/gl/b:c	Ljava/util/Hashtable;
-    //   6: invokevirtual 81	java/util/Hashtable:size	()I
-    //   9: aload_0
-    //   10: getfield 21	com/tencent/map/lib/gl/b:a	I
-    //   13: if_icmpne +68 -> 81
-    //   16: aload_0
-    //   17: invokespecial 34	com/tencent/map/lib/gl/b:b	()V
-    //   20: aload_0
-    //   21: getfield 37	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
-    //   24: astore_3
-    //   25: aload_3
-    //   26: ifnonnull +6 -> 32
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: return
-    //   32: aload_0
-    //   33: getfield 27	com/tencent/map/lib/gl/b:b	Lcom/tencent/tencentmap/mapsdk/a/kx;
-    //   36: invokevirtual 84	com/tencent/tencentmap/mapsdk/a/kx:a	()Ljava/lang/Object;
-    //   39: checkcast 86	java/lang/String
-    //   42: astore_3
-    //   43: aload_0
-    //   44: getfield 32	com/tencent/map/lib/gl/b:c	Ljava/util/Hashtable;
-    //   47: aload_3
-    //   48: invokevirtual 89	java/util/Hashtable:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   51: checkcast 64	java/lang/Integer
-    //   54: astore_3
-    //   55: aload_0
-    //   56: getfield 37	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
-    //   59: invokevirtual 92	java/nio/IntBuffer:position	()I
-    //   62: aload_0
-    //   63: getfield 21	com/tencent/map/lib/gl/b:a	I
-    //   66: if_icmpge +15 -> 81
-    //   69: aload_0
-    //   70: getfield 37	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
-    //   73: aload_3
-    //   74: invokevirtual 68	java/lang/Integer:intValue	()I
-    //   77: invokevirtual 96	java/nio/IntBuffer:put	(I)Ljava/nio/IntBuffer;
-    //   80: pop
-    //   81: aload_0
-    //   82: getfield 27	com/tencent/map/lib/gl/b:b	Lcom/tencent/tencentmap/mapsdk/a/kx;
-    //   85: aload_1
-    //   86: invokevirtual 99	com/tencent/tencentmap/mapsdk/a/kx:a	(Ljava/lang/Object;)Z
-    //   89: pop
-    //   90: aload_0
-    //   91: getfield 32	com/tencent/map/lib/gl/b:c	Ljava/util/Hashtable;
-    //   94: aload_1
-    //   95: iload_2
-    //   96: invokestatic 103	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   99: invokevirtual 106	java/util/Hashtable:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   102: pop
-    //   103: goto -74 -> 29
-    //   106: astore_1
-    //   107: aload_0
-    //   108: monitorexit
-    //   109: aload_1
-    //   110: athrow
+    //   2: ldc 91
+    //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 38	com/tencent/map/lib/gl/b:c	Ljava/util/Hashtable;
+    //   11: invokevirtual 94	java/util/Hashtable:size	()I
+    //   14: aload_0
+    //   15: getfield 27	com/tencent/map/lib/gl/b:a	I
+    //   18: if_icmpne +71 -> 89
+    //   21: aload_0
+    //   22: invokespecial 40	com/tencent/map/lib/gl/b:b	()V
+    //   25: aload_0
+    //   26: getfield 47	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
+    //   29: ifnonnull +11 -> 40
+    //   32: ldc 91
+    //   34: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: return
+    //   40: aload_0
+    //   41: getfield 33	com/tencent/map/lib/gl/b:b	Lcom/tencent/tencentmap/mapsdk/maps/a/jg;
+    //   44: invokevirtual 97	com/tencent/tencentmap/mapsdk/maps/a/jg:a	()Ljava/lang/Object;
+    //   47: checkcast 99	java/lang/String
+    //   50: astore_3
+    //   51: aload_0
+    //   52: getfield 38	com/tencent/map/lib/gl/b:c	Ljava/util/Hashtable;
+    //   55: aload_3
+    //   56: invokevirtual 102	java/util/Hashtable:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   59: checkcast 75	java/lang/Integer
+    //   62: astore_3
+    //   63: aload_0
+    //   64: getfield 47	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
+    //   67: invokevirtual 105	java/nio/IntBuffer:position	()I
+    //   70: aload_0
+    //   71: getfield 27	com/tencent/map/lib/gl/b:a	I
+    //   74: if_icmpge +15 -> 89
+    //   77: aload_0
+    //   78: getfield 47	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
+    //   81: aload_3
+    //   82: invokevirtual 79	java/lang/Integer:intValue	()I
+    //   85: invokevirtual 109	java/nio/IntBuffer:put	(I)Ljava/nio/IntBuffer;
+    //   88: pop
+    //   89: aload_0
+    //   90: getfield 33	com/tencent/map/lib/gl/b:b	Lcom/tencent/tencentmap/mapsdk/maps/a/jg;
+    //   93: aload_1
+    //   94: invokevirtual 112	com/tencent/tencentmap/mapsdk/maps/a/jg:a	(Ljava/lang/Object;)Z
+    //   97: pop
+    //   98: aload_0
+    //   99: getfield 38	com/tencent/map/lib/gl/b:c	Ljava/util/Hashtable;
+    //   102: aload_1
+    //   103: iload_2
+    //   104: invokestatic 116	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   107: invokevirtual 119	java/util/Hashtable:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   110: pop
+    //   111: ldc 91
+    //   113: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   116: goto -79 -> 37
+    //   119: astore_1
+    //   120: aload_0
+    //   121: monitorexit
+    //   122: aload_1
+    //   123: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	111	0	this	b
-    //   0	111	1	paramString	String
-    //   0	111	2	paramInt	int
-    //   24	50	3	localObject	Object
+    //   0	124	0	this	b
+    //   0	124	1	paramString	String
+    //   0	124	2	paramInt	int
+    //   50	32	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	25	106	finally
-    //   32	81	106	finally
-    //   81	103	106	finally
+    //   2	37	119	finally
+    //   40	89	119	finally
+    //   89	116	119	finally
   }
   
   /* Error */
@@ -174,56 +188,61 @@ public class b
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 37	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
-    //   6: astore_3
-    //   7: aload_3
-    //   8: ifnonnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 37	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
-    //   18: invokevirtual 92	java/nio/IntBuffer:position	()I
-    //   21: istore_2
-    //   22: iload_2
-    //   23: ifle -12 -> 11
-    //   26: aload_0
-    //   27: getfield 37	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
-    //   30: invokevirtual 110	java/nio/IntBuffer:rewind	()Ljava/nio/Buffer;
-    //   33: pop
-    //   34: aload_1
-    //   35: iload_2
-    //   36: aload_0
-    //   37: getfield 37	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
-    //   40: invokeinterface 116 3 0
-    //   45: aload_0
-    //   46: getfield 37	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
-    //   49: invokevirtual 77	java/nio/IntBuffer:clear	()Ljava/nio/Buffer;
-    //   52: pop
-    //   53: goto -42 -> 11
-    //   56: astore_1
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: aload_1
-    //   60: athrow
+    //   2: ldc 121
+    //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 47	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
+    //   11: ifnonnull +11 -> 22
+    //   14: ldc 121
+    //   16: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: aload_0
+    //   20: monitorexit
+    //   21: return
+    //   22: aload_0
+    //   23: getfield 47	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
+    //   26: invokevirtual 105	java/nio/IntBuffer:position	()I
+    //   29: istore_2
+    //   30: iload_2
+    //   31: ifle +30 -> 61
+    //   34: aload_0
+    //   35: getfield 47	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
+    //   38: invokevirtual 124	java/nio/IntBuffer:rewind	()Ljava/nio/Buffer;
+    //   41: pop
+    //   42: aload_1
+    //   43: iload_2
+    //   44: aload_0
+    //   45: getfield 47	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
+    //   48: invokeinterface 130 3 0
+    //   53: aload_0
+    //   54: getfield 47	com/tencent/map/lib/gl/b:d	Ljava/nio/IntBuffer;
+    //   57: invokevirtual 89	java/nio/IntBuffer:clear	()Ljava/nio/Buffer;
+    //   60: pop
+    //   61: ldc 121
+    //   63: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   66: goto -47 -> 19
+    //   69: astore_1
+    //   70: aload_0
+    //   71: monitorexit
+    //   72: aload_1
+    //   73: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	61	0	this	b
-    //   0	61	1	paramGL10	GL10
-    //   21	15	2	i	int
-    //   6	2	3	localIntBuffer	IntBuffer
+    //   0	74	0	this	b
+    //   0	74	1	paramGL10	GL10
+    //   29	15	2	i	int
     // Exception table:
     //   from	to	target	type
-    //   2	7	56	finally
-    //   14	22	56	finally
-    //   26	53	56	finally
+    //   2	19	69	finally
+    //   22	30	69	finally
+    //   34	61	69	finally
+    //   61	66	69	finally
   }
   
   public void b(GL10 paramGL10)
   {
     try
     {
+      AppMethodBeat.i(98052);
       if (this.d != null)
       {
         Iterator localIterator = this.c.keySet().iterator();
@@ -239,11 +258,12 @@ public class b
     finally {}
     this.c.clear();
     this.b.b();
+    AppMethodBeat.o(98052);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.map.lib.gl.b
  * JD-Core Version:    0.7.0.1
  */

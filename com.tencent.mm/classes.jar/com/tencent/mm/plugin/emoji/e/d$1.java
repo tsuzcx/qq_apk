@@ -1,37 +1,23 @@
 package com.tencent.mm.plugin.emoji.e;
 
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.at;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.z;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 final class d$1
   implements Runnable
 {
-  d$1(d paramd) {}
+  d$1(d paramd, EmojiInfo paramEmojiInfo) {}
   
   public final void run()
   {
-    Object localObject = i.getEmojiStorageMgr().uBb.cwT();
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    AppMethodBeat.i(52849);
+    if ((this.lfG != null) && (!this.lfG.dzn()))
     {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        EmojiInfo localEmojiInfo = (EmojiInfo)((Iterator)localObject).next();
-        if (d.a(this.iWF)) {
-          this.iWF.c(localEmojiInfo, false);
-        }
-      }
+      ab.i("MicroMsg.emoji.EmojiFileCheckerMgr", "chatting emoji broken. try to recover:%s", new Object[] { this.lfG.Al() });
+      d.a(this.lfG, true);
     }
-    if (d.a(this.iWF)) {
-      g.DP().Dz().c(ac.a.uoi, Long.valueOf(System.currentTimeMillis()));
-    }
+    AppMethodBeat.o(52849);
   }
 }
 

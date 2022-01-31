@@ -6,9 +6,9 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class e
 {
-  private static AtomicReference<byte[]> wZM = new AtomicReference();
+  private static AtomicReference<byte[]> Bws = new AtomicReference();
   
-  public static int J(InputStream paramInputStream)
+  public static int K(InputStream paramInputStream)
   {
     int i = -1;
     byte[] arrayOfByte = new byte[1];
@@ -30,7 +30,7 @@ public final class e
       if (paramArrayOfByte == null) {
         throw new NullPointerException("dst == null");
       }
-      a.au(paramArrayOfByte.length, 0, paramInt2);
+      a.aG(paramArrayOfByte.length, 0, paramInt2);
       while (paramInt2 > 0)
       {
         int i = paramInputStream.read(paramArrayOfByte, paramInt1, paramInt2);

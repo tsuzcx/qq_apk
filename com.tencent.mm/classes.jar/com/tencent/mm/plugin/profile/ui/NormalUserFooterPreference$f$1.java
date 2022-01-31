@@ -3,12 +3,11 @@ package com.tencent.mm.plugin.profile.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.plugin.normsg.a.b;
-import com.tencent.mm.plugin.profile.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.e.a;
+import com.tencent.mm.ui.e.b;
 
 final class NormalUserFooterPreference$f$1
   implements View.OnClickListener
@@ -17,12 +16,14 @@ final class NormalUserFooterPreference$f$1
   
   public final void onClick(View paramView)
   {
-    b.mGK.S(1, 1, 5);
+    AppMethodBeat.i(23711);
+    com.tencent.mm.plugin.normsg.a.b.pgQ.ad(1, 1, 5);
     paramView = new Intent();
-    paramView.putExtra("Contact_User", NormalUserFooterPreference.a(this.mYU.mYC).field_username);
-    paramView.putExtra("Contact_Scene", NormalUserFooterPreference.l(this.mYU.mYC));
-    paramView.putExtra(e.a.uHO, NormalUserFooterPreference.a(this.mYU.mYC).cCQ);
-    a.eUR.a(paramView, this.mYU.mYC.mContext);
+    paramView.putExtra("Contact_User", NormalUserFooterPreference.a(this.pCo.pCe).field_username);
+    paramView.putExtra("Contact_Scene", NormalUserFooterPreference.l(this.pCo.pCe));
+    paramView.putExtra(e.b.yUZ, NormalUserFooterPreference.a(this.pCo.pCe).dra);
+    com.tencent.mm.plugin.profile.b.gmO.a(paramView, this.pCo.pCe.mContext);
+    AppMethodBeat.o(23711);
   }
 }
 

@@ -19,15 +19,15 @@ import java.lang.reflect.Field;
 public class TinkerHackInstrumentation
   extends Instrumentation
 {
-  public final Instrumentation wYh;
-  public final Object wYi;
-  public final Field wYj;
+  public final Instrumentation BuL;
+  public final Object BuM;
+  public final Field BuN;
   
   private TinkerHackInstrumentation(Instrumentation paramInstrumentation, Object paramObject, Field paramField)
   {
-    this.wYh = paramInstrumentation;
-    this.wYi = paramObject;
-    this.wYj = paramField;
+    this.BuL = paramInstrumentation;
+    this.BuM = paramObject;
+    this.BuN = paramField;
     try
     {
       a(paramInstrumentation);
@@ -79,7 +79,7 @@ public class TinkerHackInstrumentation
       new StringBuilder("oldComponent was null, start ").append(paramIntent.getComponent()).append(" next.");
       return false;
     }
-    if (IncrementComponentManager.agh(paramClassLoader.getClassName()) == null) {
+    if (IncrementComponentManager.awY(paramClassLoader.getClassName()) == null) {
       return false;
     }
     paramIntent.setComponent(paramClassLoader);
@@ -87,11 +87,11 @@ public class TinkerHackInstrumentation
     return true;
   }
   
-  public static TinkerHackInstrumentation hW(Context paramContext)
+  public static TinkerHackInstrumentation jx(Context paramContext)
   {
     try
     {
-      paramContext = ShareReflectUtil.c(paramContext, null);
+      paramContext = ShareReflectUtil.d(paramContext, null);
       Field localField = ShareReflectUtil.b(paramContext, "mInstrumentation");
       Instrumentation localInstrumentation = (Instrumentation)localField.get(paramContext);
       if ((localInstrumentation instanceof TinkerHackInstrumentation)) {
@@ -106,18 +106,11 @@ public class TinkerHackInstrumentation
     }
   }
   
-  public final void cQN()
-  {
-    if (!(this.wYj.get(this.wYi) instanceof TinkerHackInstrumentation)) {
-      this.wYj.set(this.wYi, this);
-    }
-  }
-  
   public void callActivityOnCreate(Activity paramActivity, Bundle paramBundle)
   {
     if (paramActivity != null)
     {
-      ActivityInfo localActivityInfo = IncrementComponentManager.agh(paramActivity.getClass().getName());
+      ActivityInfo localActivityInfo = IncrementComponentManager.awY(paramActivity.getClass().getName());
       if (localActivityInfo != null) {
         a(paramActivity, localActivityInfo);
       }
@@ -129,7 +122,7 @@ public class TinkerHackInstrumentation
   {
     if (paramActivity != null)
     {
-      ActivityInfo localActivityInfo = IncrementComponentManager.agh(paramActivity.getClass().getName());
+      ActivityInfo localActivityInfo = IncrementComponentManager.awY(paramActivity.getClass().getName());
       if (localActivityInfo != null) {
         a(paramActivity, localActivityInfo);
       }
@@ -143,6 +136,13 @@ public class TinkerHackInstrumentation
       a(paramActivity.getClass().getClassLoader(), paramIntent);
     }
     super.callActivityOnNewIntent(paramActivity, paramIntent);
+  }
+  
+  public final void dWC()
+  {
+    if (!(this.BuN.get(this.BuM) instanceof TinkerHackInstrumentation)) {
+      this.BuN.set(this.BuM, this);
+    }
   }
   
   public Activity newActivity(Class<?> paramClass, Context paramContext, IBinder paramIBinder, Application paramApplication, Intent paramIntent, ActivityInfo paramActivityInfo, CharSequence paramCharSequence, Activity paramActivity, String paramString, Object paramObject)

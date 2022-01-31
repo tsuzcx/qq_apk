@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.shake.ui;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,130 +11,157 @@ import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.shake.b.f;
 import com.tencent.mm.plugin.shake.b.g;
 import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.mm.ui.tools.l;
 
 public class ShakeMsgListUI
   extends MMActivity
 {
   private int from;
-  private long hJW;
-  private n.d hZq = new ShakeMsgListUI.6(this);
-  private TextView iJY;
-  private int limit = 0;
-  private int mDK = 0;
-  private int mDL = 0;
+  private long jDz;
+  private n.d jSn;
+  private TextView kQD;
+  private int limit;
   private int mType;
-  private g obQ = null;
-  private d obR;
-  private ListView obS;
+  private int pdM;
+  private int pdN;
+  private g qPX;
+  private d qPY;
+  private ListView qPZ;
   
-  private void bAC()
+  public ShakeMsgListUI()
   {
-    this.iJY.setText(R.l.shake_msg_list_empty_tips);
-    this.iJY.setVisibility(0);
+    AppMethodBeat.i(24758);
+    this.qPX = null;
+    this.limit = 0;
+    this.pdM = 0;
+    this.pdN = 0;
+    this.jSn = new ShakeMsgListUI.6(this);
+    AppMethodBeat.o(24758);
+  }
+  
+  private void clW()
+  {
+    AppMethodBeat.i(24764);
+    this.kQD.setText(2131303609);
+    this.kQD.setVisibility(0);
     enableOptionMenu(false);
+    AppMethodBeat.o(24764);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.shake_msg_list;
+    return 2130970715;
   }
   
-  protected final void initView()
+  public void initView()
   {
+    AppMethodBeat.i(24762);
     setMMTitle(getIntent().getStringExtra("shake_msg_list_title"));
     setBackBtn(new ShakeMsgListUI.1(this));
-    addTextOptionMenu(0, getString(R.l.app_clear), new ShakeMsgListUI.2(this));
-    this.iJY = ((TextView)findViewById(R.h.empty_msg_tip_tv));
-    if (this.mDK == 0) {
-      bAC();
+    addTextOptionMenu(0, getString(2131296891), new ShakeMsgListUI.2(this));
+    this.kQD = ((TextView)findViewById(2131821852));
+    if (this.pdM == 0) {
+      clW();
     }
-    this.obS = ((ListView)findViewById(R.h.shake_msg_listview));
-    Object localObject = getLayoutInflater().inflate(R.i.say_hi_list_footer, null);
+    this.qPZ = ((ListView)findViewById(2131827710));
+    Object localObject = getLayoutInflater().inflate(2130970596, null);
     ((View)localObject).setOnClickListener(new ShakeMsgListUI.3(this, (View)localObject));
-    if ((this.mDK > 0) && (this.limit < this.mDK)) {
-      this.obS.addFooterView((View)localObject);
+    if ((this.pdM > 0) && (this.limit < this.pdM)) {
+      this.qPZ.addFooterView((View)localObject);
     }
-    this.obR = new d(this);
-    this.obR.obN = this.limit;
-    this.obS.setAdapter(this.obR);
-    this.obS.setOnItemClickListener(new ShakeMsgListUI.4(this));
-    localObject = new j(this);
-    this.obS.setOnItemLongClickListener(new ShakeMsgListUI.5(this, (j)localObject));
+    this.qPY = new d(this);
+    this.qPY.qPU = this.limit;
+    this.qPZ.setAdapter(this.qPY);
+    this.qPZ.setOnItemClickListener(new ShakeMsgListUI.4(this));
+    localObject = new l(this);
+    this.qPZ.setOnItemLongClickListener(new ShakeMsgListUI.5(this, (l)localObject));
+    AppMethodBeat.o(24762);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(24759);
     super.onCreate(paramBundle);
     this.mType = getIntent().getIntExtra("shake_msg_type", 0);
-    this.obQ = m.bzV();
-    this.mDL = this.obQ.aAo();
+    this.qPX = m.clo();
+    this.pdN = this.qPX.bbZ();
     int i;
-    if (this.mDL == 0)
+    if (this.pdN == 0)
     {
       i = 8;
       this.limit = i;
-      this.mDK = this.obQ.getCount();
+      this.pdM = this.qPX.getCount();
       this.from = getIntent().getIntExtra("shake_msg_from", 1);
       if (this.from != 1) {
-        break label179;
+        break label190;
       }
-      h.nFQ.f(11313, new Object[] { Integer.valueOf(this.mDL), e.bAS() });
+      h.qsU.e(11313, new Object[] { Integer.valueOf(this.pdN), e.cmo() });
     }
     for (;;)
     {
-      paramBundle = this.obQ;
+      paramBundle = this.qPX;
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("status", Integer.valueOf(1));
-      paramBundle.dXw.update(paramBundle.getTableName(), localContentValues, "status!=? ", new String[] { "1" });
+      paramBundle.db.update(paramBundle.getTableName(), localContentValues, "status!=? ", new String[] { "1" });
       initView();
+      AppMethodBeat.o(24759);
       return;
-      i = this.mDL;
+      i = this.pdN;
       break;
-      label179:
-      h.nFQ.f(11315, new Object[] { Integer.valueOf(this.mDL), e.bAS() });
+      label190:
+      h.qsU.e(11315, new Object[] { Integer.valueOf(this.pdN), e.cmo() });
     }
   }
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
+    AppMethodBeat.i(24763);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    this.hJW = ((f)this.obR.getItem(paramView.position)).field_svrid;
-    paramContextMenu.add(paramView.position, 0, 0, R.l.app_delete);
+    this.jDz = ((f)this.qPY.getItem(paramView.position)).field_svrid;
+    paramContextMenu.add(paramView.position, 0, 0, 2131296901);
+    AppMethodBeat.o(24763);
   }
   
   public void onDestroy()
   {
-    this.obR.bcS();
+    AppMethodBeat.i(24761);
+    this.qPY.bKb();
     super.onDestroy();
+    AppMethodBeat.o(24761);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(24760);
     super.onResume();
-    if (this.mDK != this.obQ.getCount())
+    if (this.pdM != this.qPX.getCount())
     {
-      this.mDK = this.obQ.getCount();
-      if (this.mDK == 0) {
-        bAC();
+      this.pdM = this.qPX.getCount();
+      if (this.pdM == 0) {
+        clW();
       }
-      this.obR.yc();
+      this.qPY.Ku();
     }
-    this.obR.notifyDataSetChanged();
+    this.qPY.notifyDataSetChanged();
+    AppMethodBeat.o(24760);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeMsgListUI
  * JD-Core Version:    0.7.0.1
  */

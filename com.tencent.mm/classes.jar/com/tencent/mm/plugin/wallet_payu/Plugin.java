@@ -1,22 +1,26 @@
 package com.tencent.mm.plugin.wallet_payu;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.plugin.wallet_payu.a.d;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
     return null;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new d();
+    AppMethodBeat.i(48319);
+    d locald = new d();
+    AppMethodBeat.o(48319);
+    return locald;
   }
   
   public b getContactWidgetFactory()

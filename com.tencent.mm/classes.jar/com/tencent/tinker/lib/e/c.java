@@ -5,9 +5,9 @@ import com.tencent.tinker.lib.b.b;
 
 public final class c
 {
-  public static void bR(Context paramContext, String paramString)
+  public static void ce(Context paramContext, String paramString)
   {
-    a.hN(paramContext).wWk.agc(paramString);
+    a.jo(paramContext).BsN.awR(paramString);
   }
 }
 

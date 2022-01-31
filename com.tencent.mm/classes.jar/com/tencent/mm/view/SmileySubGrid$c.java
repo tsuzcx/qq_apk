@@ -1,6 +1,7 @@
 package com.tencent.mm.view;
 
 import android.view.WindowManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.view.popview.AbstractPopView;
 
 final class SmileySubGrid$c
@@ -10,11 +11,13 @@ final class SmileySubGrid$c
   
   public final void run()
   {
-    if (!SmileySubGrid.c(this.wwJ))
+    AppMethodBeat.i(62957);
+    if (!SmileySubGrid.c(this.ARL))
     {
-      SmileySubGrid.e(this.wwJ).addView(SmileySubGrid.d(this.wwJ), SmileySubGrid.d(this.wwJ).getWindowLayoutParams());
-      SmileySubGrid.f(this.wwJ);
+      SmileySubGrid.e(this.ARL).addView(SmileySubGrid.d(this.ARL), SmileySubGrid.d(this.ARL).getWindowLayoutParams());
+      SmileySubGrid.f(this.ARL);
     }
+    AppMethodBeat.o(62957);
   }
 }
 

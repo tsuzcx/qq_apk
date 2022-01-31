@@ -2,7 +2,7 @@ package com.tencent.mm.model;
 
 public abstract interface c$a
 {
-  public abstract void bG(boolean paramBoolean);
+  public abstract void cI(boolean paramBoolean);
 }
 
 

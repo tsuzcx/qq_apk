@@ -1,13 +1,15 @@
 package com.tencent.mm.modelsimple;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.StringReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 final class a
 {
-  public static BindWordingContent nc(String paramString)
+  public static BindWordingContent un(String paramString)
   {
+    AppMethodBeat.i(123429);
     BindWordingContent localBindWordingContent = new BindWordingContent("", "");
     Object localObject = XmlPullParserFactory.newInstance();
     ((XmlPullParserFactory)localObject).setNamespaceAware(true);
@@ -54,12 +56,12 @@ final class a
               if (paramString.equalsIgnoreCase("type")) {
                 try
                 {
-                  localBindWordingContent.boJ = Integer.valueOf(str2);
+                  localBindWordingContent.bOw = Integer.valueOf(str2);
                   localObject = paramString;
                 }
                 catch (Exception localException)
                 {
-                  localBindWordingContent.boJ = Integer.valueOf(0);
+                  localBindWordingContent.bOw = Integer.valueOf(0);
                   String str1 = paramString;
                 }
               }
@@ -68,12 +70,13 @@ final class a
         }
       }
     }
+    AppMethodBeat.o(123429);
     return localBindWordingContent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.a
  * JD-Core Version:    0.7.0.1
  */

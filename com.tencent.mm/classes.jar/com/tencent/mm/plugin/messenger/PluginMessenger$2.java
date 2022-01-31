@@ -1,28 +1,58 @@
 package com.tencent.mm.plugin.messenger;
 
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.ui.e.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.o;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.bi;
+import java.util.Map;
 
 final class PluginMessenger$2
-  implements View.OnClickListener
+  implements o
 {
-  PluginMessenger$2(PluginMessenger paramPluginMessenger, String paramString1, String paramString2, Context paramContext) {}
+  PluginMessenger$2(PluginMessenger paramPluginMessenger) {}
   
-  public final void onClick(View paramView)
+  public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, e.a parama)
   {
-    paramView = new Intent();
-    paramView.putExtra("Contact_User", this.egy);
-    paramView.putExtra(e.a.uHO, this.mcj);
-    d.b(this.val$context, "profile", ".ui.ContactInfoUI", paramView, 0);
+    AppMethodBeat.i(136876);
+    if ("secmsg".equals(paramString))
+    {
+      Object localObject = bo.nullAsNil((String)paramMap.get(".sysmsg.secmsg.session"));
+      paramString = bo.nullAsNil((String)paramMap.get(".sysmsg.secmsg.newmsgid"));
+      int i = bo.apV((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.sfn"));
+      int j = bo.apV((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.fd"));
+      parama = bo.nullAsNil((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.show-h5"));
+      int k = bo.apV((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.clip-len"));
+      paramMap = bo.nullAsNil((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.share-tip-url"));
+      ab.i("MicroMsg.PluginMessenger", "%d,%d,%s,%d,%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), parama, Integer.valueOf(k), paramMap });
+      if (!bo.Q(new String[] { localObject, paramString }))
+      {
+        localObject = ((j)g.E(j.class)).bPQ().ag((String)localObject, bo.apW(paramString));
+        if ((!bo.isNullOrNil(((dd)localObject).field_talker)) && (((dd)localObject).field_msgSvrId > 0L))
+        {
+          if (((dd)localObject).field_isSend != 1)
+          {
+            bh.a((bi)localObject, i, j, parama, k, paramMap);
+            AppMethodBeat.o(136876);
+          }
+        }
+        else {
+          ab.i("MicroMsg.PluginMessenger", "msg %s not found!", new Object[] { paramString });
+        }
+      }
+    }
+    AppMethodBeat.o(136876);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.PluginMessenger.2
  * JD-Core Version:    0.7.0.1
  */

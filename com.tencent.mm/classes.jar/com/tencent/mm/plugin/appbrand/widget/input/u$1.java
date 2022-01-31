@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class u$1
-  implements View.OnClickListener
+  implements u.a
 {
-  u$1(u paramu) {}
+  u$1(u paramu, int paramInt) {}
   
-  public final void onClick(View paramView)
+  public final void c(u.c paramc)
   {
-    u.a(this.huI);
-    this.huI.setVisibility(8);
+    AppMethodBeat.i(77428);
+    if (paramc.getHeight() != this.jmM) {
+      paramc.fu(this.jmM);
+    }
+    AppMethodBeat.o(77428);
   }
 }
 

@@ -1,88 +1,84 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appcache.a.b;
-import com.tencent.mm.plugin.appbrand.appcache.a.b.a;
-import com.tencent.mm.plugin.appbrand.appcache.a.b.a.a;
-import com.tencent.mm.plugin.appbrand.u.j;
-import com.tencent.mm.pluginsdk.g.a.b.a;
-import com.tencent.mm.pluginsdk.g.a.c.k;
-import com.tencent.mm.pluginsdk.g.a.c.l;
-import com.tencent.mm.pluginsdk.g.a.c.m;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.p;
+import com.tencent.mm.aa.h;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.cm.f;
+import com.tencent.mm.plugin.appbrand.app.g;
+import com.tencent.mm.plugin.appbrand.launching.m;
+import com.tencent.mm.protocal.protobuf.aqp;
+import com.tencent.mm.protocal.protobuf.aqq;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONObject;
 
-public enum e
-  implements b<f, m, k>
+public final class e
+  extends a<aqq>
 {
-  public final j<String, b.a<m, k>> fBW = new j();
+  public final b rr;
   
-  private e() {}
-  
-  public final void a(f paramf, m paramm)
+  public e(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    Object localObject1;
-    if (paramm.status == 2)
+    AppMethodBeat.i(129323);
+    b.a locala = new b.a();
+    locala.funcId = 1718;
+    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/gettestcodedownloadinfo";
+    aqp localaqp = new aqp();
+    localaqp.cwc = paramString1;
+    if (paramInt2 != 12) {
+      localaqp.xfV = paramString2;
+    }
+    localaqp.xfW = paramString3;
+    localaqp.wDT = paramInt1;
+    localaqp.xfY = paramInt2;
+    if (paramInt1 == 1) {
+      paramString3 = ((m)g.w(m.class)).bm(paramString1, paramInt1);
+    }
+    try
     {
-      localObject1 = ((com.tencent.mm.plugin.appbrand.a.c)g.r(com.tencent.mm.plugin.appbrand.a.c.class)).aaH();
-      if (localObject1 == null)
+      localaqp.xfX = new p(h.mo(paramString3).optLong("dev_key")).intValue();
+      locala.fsX = localaqp;
+      locala.fsY = new aqq();
+      paramString3 = locala.ado();
+      this.rr = paramString3;
+      this.rr = paramString3;
+      ab.d("MicroMsg.AppBrand.CgiGetTestCodeDownloadInfo", "appid:%s,module_name:%s,code_type:%d,package type:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(129323);
+      return;
+    }
+    catch (Exception paramString3)
+    {
+      for (;;)
       {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.AppBrand.Predownload.EncryptPkgDownloader", "onDownloadResult complete, null storage");
-        localObject1 = b.a.a.fFa;
+        ab.e("MicroMsg.AppBrand.CgiGetTestCodeDownloadInfo", "opt devKey %s", new Object[] { paramString3 });
       }
     }
-    for (;;)
+  }
+  
+  public final f<a.a<aqq>> adl()
+  {
+    try
     {
-      Object localObject2 = this.fBW.aW(paramf.rVT);
-      if (localObject2 == null) {
-        break;
-      }
-      localObject2 = ((Set)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((b.a)((Iterator)localObject2).next()).a(paramf.appId, (b.a.a)localObject1, paramm);
-      }
-      localObject2 = ((z)localObject1).p(paramf.appId, paramf.fBY, paramf.version);
-      if (localObject2 == null)
-      {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.AppBrand.Predownload.EncryptPkgDownloader", "onDownloadResult complete, null record with %s", new Object[] { paramf.toShortString() });
-        localObject1 = b.a.a.fFa;
-      }
-      else
-      {
-        ((y)localObject2).field_pkgPath = paramf.bjl();
-        boolean bool = z.a((y)localObject2);
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.AppBrand.Predownload.EncryptPkgDownloader", "onDownloadResult complete, integrityOk %b, with %s", new Object[] { Boolean.valueOf(bool), paramf.toShortString() });
-        if (bool)
-        {
-          ((z)localObject1).c((com.tencent.mm.sdk.e.c)localObject2, new String[0]);
-          localObject1 = b.a.a.fET;
-        }
-        else
-        {
-          localObject1 = b.a.a.fEW;
-          continue;
-          com.tencent.mm.sdk.platformtools.y.e("MicroMsg.AppBrand.Predownload.EncryptPkgDownloader", "onDownloadResult %s", new Object[] { paramm });
-          if ((paramm.rXE instanceof a)) {
-            localObject1 = b.a.a.fEZ;
-          } else {
-            switch (paramm.httpStatusCode)
-            {
-            default: 
-              localObject1 = b.a.a.fEU;
-              break;
-            case 403: 
-            case 404: 
-              localObject1 = b.a.a.fEY;
-            }
-          }
-        }
-      }
+      AppMethodBeat.i(129324);
+      long l = bo.aoy();
+      f localf = super.adl().b(new e.1(this, l));
+      AppMethodBeat.o(129324);
+      return localf;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.e
  * JD-Core Version:    0.7.0.1
  */

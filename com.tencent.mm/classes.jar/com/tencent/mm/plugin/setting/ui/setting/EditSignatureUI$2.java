@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EditSignatureUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class EditSignatureUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.nRN.XM();
-    this.nRN.finish();
+    AppMethodBeat.i(126945);
+    this.qFL.hideVKB();
+    this.qFL.finish();
+    AppMethodBeat.o(126945);
     return true;
   }
 }

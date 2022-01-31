@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.seektable.flac;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.seektable.Parsable;
 
 class FlacSeekTable$StreamInfoHandler
@@ -9,12 +10,16 @@ class FlacSeekTable$StreamInfoHandler
   
   public boolean handle(Parsable paramParsable, int paramInt)
   {
-    if (paramInt != 0) {
+    AppMethodBeat.i(128520);
+    if (paramInt != 0)
+    {
+      AppMethodBeat.o(128520);
       return false;
     }
     paramParsable.skip(13L);
     paramParsable.readBytes(new byte[3], 0, 3);
     paramParsable.skip(21L);
+    AppMethodBeat.o(128520);
     return true;
   }
 }

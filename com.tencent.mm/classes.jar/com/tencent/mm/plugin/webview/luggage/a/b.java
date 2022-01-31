@@ -1,23 +1,10 @@
 package com.tencent.mm.plugin.webview.luggage.a;
 
-import com.tencent.luggage.e.c;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.downloader.b.a.b;
 
 public final class b
-  extends c
 {
-  public JSONObject bhk;
-  public String mName;
-  
-  public final String name()
-  {
-    return this.mName;
-  }
-  
-  public final JSONObject pV()
-  {
-    return this.bhk;
-  }
+  public static a.b uUp;
 }
 
 

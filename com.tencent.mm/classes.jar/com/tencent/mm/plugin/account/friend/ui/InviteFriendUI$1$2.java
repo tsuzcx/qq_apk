@@ -4,6 +4,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.view.MenuItem;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.n.b;
 import java.util.HashMap;
 
@@ -14,14 +15,17 @@ final class InviteFriendUI$1$2
   
   public final void a(TextView paramTextView, MenuItem paramMenuItem)
   {
+    AppMethodBeat.i(108572);
     paramMenuItem = paramMenuItem.getTitle();
-    paramMenuItem = ((ResolveInfo)this.fhU.get(paramMenuItem)).loadLabel(this.fhV);
+    paramMenuItem = ((ResolveInfo)this.gzB.get(paramMenuItem)).loadLabel(this.gzC);
     if (paramMenuItem != null)
     {
       paramTextView.setText(paramMenuItem.toString());
+      AppMethodBeat.o(108572);
       return;
     }
     paramTextView.setText("");
+    AppMethodBeat.o(108572);
   }
 }
 

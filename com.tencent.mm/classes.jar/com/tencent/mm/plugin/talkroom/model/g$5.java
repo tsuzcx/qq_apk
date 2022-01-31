@@ -1,33 +1,37 @@
 package com.tencent.mm.plugin.talkroom.model;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.talkroom.b.e;
-import com.tencent.mm.sdk.platformtools.ac.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.af.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class g$5
-  implements ac.a
+  implements af.a
 {
   g$5(g paramg) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if ((g.e(this.pBx) == 0) || (bk.bl(g.g(this.pBx))))
+    AppMethodBeat.i(25809);
+    if ((g.e(this.tdh) == 0) || (bo.isNullOrNil(g.g(this.tdh))))
     {
-      y.w("MicroMsg.TalkRoomServer", "talkNoopTimer error: roomId %d, talkUsername %s", new Object[] { Integer.valueOf(g.e(this.pBx)), g.g(this.pBx) });
-      g.h(this.pBx);
+      ab.w("MicroMsg.TalkRoomServer", "talkNoopTimer error: roomId %d, talkUsername %s", new Object[] { Integer.valueOf(g.e(this.tdh)), g.g(this.tdh) });
+      g.h(this.tdh);
+      AppMethodBeat.o(25809);
       return false;
     }
-    Object localObject = g.g(this.pBx);
-    int i = g.e(this.pBx);
-    long l = g.f(this.pBx);
-    g localg = this.pBx;
-    g.g(this.pBx);
-    localObject = new e((String)localObject, i, l, localg.bMC());
-    au.Dk().a((m)localObject, 0);
+    Object localObject = g.g(this.tdh);
+    int i = g.e(this.tdh);
+    long l = g.f(this.tdh);
+    g localg = this.tdh;
+    g.g(this.tdh);
+    localObject = new e((String)localObject, i, l, localg.cHE());
+    aw.Rc().a((m)localObject, 0);
+    AppMethodBeat.o(25809);
     return true;
   }
 }

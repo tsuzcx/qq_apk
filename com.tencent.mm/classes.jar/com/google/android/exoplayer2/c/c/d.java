@@ -1,240 +1,139 @@
 package com.google.android.exoplayer2.c.c;
 
-import android.util.Pair;
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.c.f;
-import com.google.android.exoplayer2.c.k;
-import com.google.android.exoplayer2.i.i;
-import com.google.android.exoplayer2.i.j;
-import java.util.Arrays;
-import java.util.Collections;
+import com.google.android.exoplayer2.i.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class d
-  implements h
+final class d
+  implements b.a
 {
-  private static final byte[] aDp = { 73, 68, 51 };
-  private k aCt;
-  private int aDk;
-  private long aDm;
-  private final boolean aDq;
-  private final i aDr = new i(new byte[7]);
-  private final j aDs = new j(Arrays.copyOf(aDp, 10));
-  private String aDt;
-  private k aDu;
-  private int aDv;
-  private boolean aDw;
-  private boolean aDx;
-  private k aDy;
-  private long aDz;
-  private final String auI;
-  long ayE;
-  private int sampleSize;
-  private int state;
+  private final long aEl;
+  private final long[] aEm;
+  private final long aEn;
+  private final int aEo;
+  private final long axh;
+  private final long firstFramePosition;
   
-  public d()
+  d(long paramLong1, long paramLong2, long paramLong3)
   {
-    this(true, null);
+    this(paramLong1, paramLong2, paramLong3, null, 0L, 0);
   }
   
-  public d(boolean paramBoolean, String paramString)
+  d(long paramLong1, long paramLong2, long paramLong3, long[] paramArrayOfLong, long paramLong4, int paramInt)
   {
-    ma();
-    this.aDq = paramBoolean;
-    this.auI = paramString;
+    this.firstFramePosition = paramLong1;
+    this.axh = paramLong2;
+    this.aEl = paramLong3;
+    this.aEm = paramArrayOfLong;
+    this.aEn = paramLong4;
+    this.aEo = paramInt;
   }
   
-  private void a(k paramk, long paramLong, int paramInt1, int paramInt2)
+  private long ds(int paramInt)
   {
-    this.state = 3;
-    this.aDk = paramInt1;
-    this.aDy = paramk;
-    this.aDz = paramLong;
-    this.sampleSize = paramInt2;
+    return this.axh * paramInt / 100L;
   }
   
-  private boolean a(j paramj, byte[] paramArrayOfByte, int paramInt)
+  public final long E(long paramLong)
   {
-    int i = Math.min(paramj.oe(), paramInt - this.aDk);
-    paramj.readBytes(paramArrayOfByte, this.aDk, i);
-    this.aDk = (i + this.aDk);
-    return this.aDk == paramInt;
-  }
-  
-  private void ma()
-  {
-    this.state = 0;
-    this.aDk = 0;
-    this.aDv = 256;
-  }
-  
-  public final void a(f paramf, u.d paramd)
-  {
-    paramd.mg();
-    this.aDt = paramd.mi();
-    this.aCt = paramf.cQ(paramd.mh());
-    if (this.aDq)
+    float f2 = 256.0F;
+    float f3 = 0.0F;
+    AppMethodBeat.i(94933);
+    if (!nV())
     {
-      paramd.mg();
-      this.aDu = paramf.cQ(paramd.mh());
-      this.aDu.f(Format.j(paramd.mi(), "application/id3"));
-      return;
+      paramLong = this.firstFramePosition;
+      AppMethodBeat.o(94933);
+      return paramLong;
     }
-    this.aDu = new com.google.android.exoplayer2.c.c();
-  }
-  
-  public final void b(j paramj)
-  {
-    label0:
-    Object localObject;
-    int i;
-    int j;
-    boolean bool;
-    for (;;)
+    float f4 = (float)paramLong * 100.0F / (float)this.axh;
+    float f1;
+    long l1;
+    long l2;
+    if (f4 <= 0.0F)
     {
-      if (paramj.oe() > 0) {
-        switch (this.state)
-        {
-        default: 
-          break;
-        case 0: 
-          localObject = paramj.data;
-          i = paramj.position;
-          int k = paramj.limit;
-          if (i >= k) {
-            break label704;
-          }
-          j = i + 1;
-          i = localObject[i] & 0xFF;
-          if ((this.aDv == 512) && (i >= 240) && (i != 255)) {
-            if ((i & 0x1) == 0)
-            {
-              bool = true;
-              label112:
-              this.aDw = bool;
-              this.state = 2;
-              this.aDk = 0;
-            }
-          }
-          break;
-        }
+      f1 = 0.0F;
+      l1 = Math.round(f1 * 0.00390625D * this.aEn);
+      l2 = this.firstFramePosition;
+      if (this.aEl == -1L) {
+        break label183;
       }
     }
-    for (;;)
+    label183:
+    for (paramLong = this.aEl - 1L;; paramLong = this.firstFramePosition - this.aEo + this.aEn - 1L)
     {
-      paramj.setPosition(j);
-      break;
-      bool = false;
-      break label112;
-      switch (i | this.aDv)
+      paramLong = Math.min(l2 + l1, paramLong);
+      AppMethodBeat.o(94933);
+      return paramLong;
+      f1 = f2;
+      if (f4 >= 100.0F) {
+        break;
+      }
+      int i = (int)f4;
+      if (i == 0) {}
+      for (f1 = f3;; f1 = (float)this.aEm[(i - 1)])
       {
-      default: 
-        if (this.aDv != 256)
-        {
-          this.aDv = 256;
-          i = j - 1;
+        if (i < 99) {
+          f2 = (float)this.aEm[i];
         }
+        f1 = (f2 - f1) * (f4 - i) + f1;
         break;
-      case 511: 
-        this.aDv = 512;
-        i = j;
-        break;
-      case 329: 
-        this.aDv = 768;
-        i = j;
-        break;
-      case 836: 
-        this.aDv = 1024;
-        i = j;
-        break;
-      case 1075: 
-        this.state = 1;
-        this.aDk = aDp.length;
-        this.sampleSize = 0;
-        this.aDs.setPosition(0);
-        continue;
-        if (!a(paramj, this.aDs.data, 10)) {
-          break label0;
-        }
-        this.aDu.a(this.aDs, 10);
-        this.aDs.setPosition(6);
-        a(this.aDu, 0L, 10, this.aDs.og() + 10);
-        break label0;
-        if (this.aDw)
-        {
-          i = 7;
-          label356:
-          if (!a(paramj, this.aDr.data, i)) {
-            break label0;
-          }
-          this.aDr.setPosition(0);
-          if (this.aDx) {
-            break label597;
-          }
-          j = this.aDr.dz(2) + 1;
-          i = j;
-          if (j != 2)
-          {
-            new StringBuilder("Detected audio object type: ").append(j).append(", but assuming AAC LC.");
-            i = 2;
-          }
-          j = this.aDr.dz(4);
-          this.aDr.dy(1);
-          localObject = com.google.android.exoplayer2.i.c.s(i, j, this.aDr.dz(3));
-          Pair localPair = com.google.android.exoplayer2.i.c.i((byte[])localObject);
-          localObject = Format.a(this.aDt, "audio/mp4a-latm", -1, -1, ((Integer)localPair.second).intValue(), ((Integer)localPair.first).intValue(), Collections.singletonList(localObject), null, this.auI);
-          this.aDm = (1024000000L / ((Format)localObject).sampleRate);
-          this.aCt.f((Format)localObject);
-          this.aDx = true;
-        }
-        for (;;)
-        {
-          this.aDr.dy(4);
-          j = this.aDr.dz(13) - 2 - 5;
-          i = j;
-          if (this.aDw) {
-            i = j - 2;
-          }
-          a(this.aCt, this.aDm, 0, i);
-          break;
-          i = 5;
-          break label356;
-          label597:
-          this.aDr.dy(10);
-        }
-        i = Math.min(paramj.oe(), this.sampleSize - this.aDk);
-        this.aDy.a(paramj, i);
-        this.aDk = (i + this.aDk);
-        if (this.aDk != this.sampleSize) {
-          break label0;
-        }
-        this.aDy.a(this.ayE, 1, this.sampleSize, 0, null);
-        this.ayE += this.aDz;
-        ma();
-        break label0;
-        return;
-        i = j;
-        break;
-        label704:
-        j = i;
       }
     }
   }
   
-  public final void d(long paramLong, boolean paramBoolean)
+  public final long G(long paramLong)
   {
-    this.ayE = paramLong;
+    AppMethodBeat.i(94934);
+    if ((!nV()) || (paramLong < this.firstFramePosition))
+    {
+      AppMethodBeat.o(94934);
+      return 0L;
+    }
+    double d1 = 256.0D * (paramLong - this.firstFramePosition) / this.aEn;
+    int i = x.a(this.aEm, d1, false) + 1;
+    long l2 = ds(i);
+    long l1;
+    label87:
+    long l3;
+    if (i == 0)
+    {
+      paramLong = 0L;
+      if (i != 99) {
+        break label129;
+      }
+      l1 = 256L;
+      l3 = ds(i + 1);
+      if (l1 != paramLong) {
+        break label141;
+      }
+    }
+    label129:
+    label141:
+    double d2;
+    for (paramLong = 0L;; paramLong = ((d1 - paramLong) * d2 / (l1 - paramLong)))
+    {
+      AppMethodBeat.o(94934);
+      return paramLong + l2;
+      paramLong = this.aEm[(i - 1)];
+      break;
+      l1 = this.aEm[i];
+      break label87;
+      d2 = l3 - l2;
+    }
   }
   
-  public final void lY()
+  public final long getDurationUs()
   {
-    ma();
+    return this.axh;
   }
   
-  public final void lZ() {}
+  public final boolean nV()
+  {
+    return this.aEm != null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.c.c.d
  * JD-Core Version:    0.7.0.1
  */

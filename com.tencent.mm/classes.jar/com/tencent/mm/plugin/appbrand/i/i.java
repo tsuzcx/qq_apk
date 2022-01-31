@@ -1,15 +1,24 @@
 package com.tencent.mm.plugin.appbrand.i;
 
 import android.webkit.ValueCallback;
+import java.net.URL;
 
 public abstract interface i
-  extends g
+  extends j
 {
-  public abstract void a(String paramString1, String paramString2, ValueCallback<String> paramValueCallback);
+  public abstract void a(URL paramURL, String paramString, ValueCallback<String> paramValueCallback);
   
-  public abstract void aP(Object paramObject);
+  public abstract void a(URL paramURL, String paramString1, String paramString2, String paramString3, ValueCallback<String> paramValueCallback);
   
-  public abstract void tp(String paramString);
+  public abstract void addJavascriptInterface(Object paramObject, String paramString);
+  
+  public abstract void destroy();
+  
+  public abstract void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback);
+  
+  public abstract void setJsExceptionHandler(h paramh);
+  
+  public abstract <T extends j> T v(Class<T> paramClass);
 }
 
 

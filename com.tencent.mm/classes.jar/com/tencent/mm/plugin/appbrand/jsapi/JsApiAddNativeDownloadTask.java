@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class JsApiAddNativeDownloadTask
-  extends a<o>
+  extends a<r>
 {
   private static final int CTRL_INDEX = 428;
   private static final String NAME = "addNativeDownloadTask";

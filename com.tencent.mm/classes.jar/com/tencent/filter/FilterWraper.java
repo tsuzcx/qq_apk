@@ -1,16 +1,18 @@
 package com.tencent.filter;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class FilterWraper
   extends BaseFilter
 {
-  protected long aVf = 0L;
-  private boolean aVg = false;
-  protected String bcA = "";
+  protected long blO = 0L;
+  private boolean blP = false;
+  protected String btc = "";
   
   public FilterWraper(String paramString)
   {
-    super(GLSLRender.bcE);
-    this.bcA = paramString;
+    super(GLSLRender.btg);
+    this.btc = paramString;
   }
   
   private static native void nativeDispose(long paramLong);
@@ -23,38 +25,50 @@ public class FilterWraper
   
   public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    if (this.aVg) {
-      nativeDispose(this.aVf);
+    AppMethodBeat.i(86358);
+    if (this.blP) {
+      nativeDispose(this.blO);
     }
-    this.aVf = nativeInitialWithString(this.bcA);
-    this.aVg = true;
+    this.blO = nativeInitialWithString(this.btc);
+    this.blP = true;
     super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.o(86358);
   }
   
   public void ClearGLSL()
   {
-    if (this.aVg)
+    AppMethodBeat.i(86361);
+    if (this.blP)
     {
-      nativeDispose(this.aVf);
-      this.aVg = false;
+      nativeDispose(this.blO);
+      this.blP = false;
     }
     super.ClearGLSL();
+    AppMethodBeat.o(86361);
   }
   
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.aVg) {
-      nativeRenderContext(this.aVf, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.i(86359);
+    if (this.blP) {
+      nativeRenderContext(this.blO, paramInt1, paramInt2, paramInt3);
     }
     super.beforeRender(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(86359);
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.aVg) {
-      return super.renderTexture(nativeGetOutputText(this.aVf), paramInt2, paramInt3);
+    AppMethodBeat.i(86360);
+    if (this.blP)
+    {
+      bool = super.renderTexture(nativeGetOutputText(this.blO), paramInt2, paramInt3);
+      AppMethodBeat.o(86360);
+      return bool;
     }
-    return super.renderTexture(paramInt1, paramInt2, paramInt3);
+    boolean bool = super.renderTexture(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(86360);
+    return bool;
   }
 }
 

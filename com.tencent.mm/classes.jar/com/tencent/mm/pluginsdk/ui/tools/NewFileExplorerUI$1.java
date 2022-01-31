@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NewFileExplorerUI$1
   implements View.OnClickListener
@@ -10,17 +11,19 @@ final class NewFileExplorerUI$1
   
   public final void onClick(View paramView)
   {
-    if (NewFileExplorerUI.a(this.smS) != null)
+    AppMethodBeat.i(28175);
+    if (NewFileExplorerUI.a(this.wfn) != null)
     {
-      paramView = NewFileExplorerUI.a(this.smS);
-      if (paramView.Yq) {
-        break label33;
+      paramView = NewFileExplorerUI.a(this.wfn);
+      if (paramView.Zb) {
+        break label45;
       }
     }
-    label33:
+    label45:
     for (boolean bool = true;; bool = false)
     {
-      paramView.gq(bool);
+      paramView.hV(bool);
+      AppMethodBeat.o(28175);
       return;
     }
   }

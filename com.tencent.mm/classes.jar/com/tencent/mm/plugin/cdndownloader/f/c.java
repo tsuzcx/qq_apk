@@ -1,34 +1,32 @@
 package com.tencent.mm.plugin.cdndownloader.f;
 
-import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.j;
 
 public final class c
-  extends i<a>
+  extends j<a>
 {
-  public static final String[] dXp = { i.a(a.buS, "CdnDownloadInfo") };
+  public static final String[] SQL_CREATE;
+  
+  static
+  {
+    AppMethodBeat.i(963);
+    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "CdnDownloadInfo") };
+    AppMethodBeat.o(963);
+  }
   
   public c(e parame)
   {
-    super(parame, a.buS, "CdnDownloadInfo", null);
+    super(parame, a.info, "CdnDownloadInfo", null);
   }
   
-  public final a zk(String paramString)
+  public final boolean IU(String paramString)
   {
-    Object localObject = null;
-    Cursor localCursor = rawQuery(String.format("select * from %s where %s=%s", new Object[] { "CdnDownloadInfo", "downloadUrlHashCode", Integer.valueOf(paramString.hashCode()) }), new String[0]);
-    paramString = localObject;
-    if (localCursor == null) {
-      return null;
-    }
-    while (localCursor.moveToNext())
-    {
-      paramString = new a();
-      paramString.d(localCursor);
-    }
-    localCursor.close();
-    return paramString;
+    AppMethodBeat.i(962);
+    boolean bool = execSQL("CdnDownloadInfo", String.format("delete from %s where %s=%s", new Object[] { "CdnDownloadInfo", "downloadUrlHashCode", Integer.valueOf(paramString.hashCode()) }));
+    AppMethodBeat.o(962);
+    return bool;
   }
 }
 

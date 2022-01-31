@@ -1,20 +1,37 @@
 package com.tencent.mm.plugin.sns.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.sns.storage.b;
+import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.plugin.sns.storage.o;
+
 final class AdLandingPagesProxy$3
-  implements b.b
+  implements Runnable
 {
-  AdLandingPagesProxy$3(AdLandingPagesProxy paramAdLandingPagesProxy) {}
+  AdLandingPagesProxy$3(AdLandingPagesProxy paramAdLandingPagesProxy, String paramString) {}
   
-  public final void Ni(String paramString) {}
-  
-  public final void bCt() {}
-  
-  public final void ba(String paramString, boolean paramBoolean)
+  public final void run()
   {
-    this.oow.CLIENT_CALL("onImgDownloadCallback", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.i(35918);
+    if (!g.RJ().QU())
+    {
+      AppMethodBeat.o(35918);
+      return;
+    }
+    Object localObject = ag.cpf().abu(this.fWS);
+    if (localObject != null)
+    {
+      localObject = ((n)localObject).csb();
+      if (localObject != null)
+      {
+        AdLandingPagesProxy.ZW(((b)localObject).cqt());
+        AdLandingPagesProxy.ZW(((b)localObject).cqu());
+      }
+    }
+    AppMethodBeat.o(35918);
   }
-  
-  public final void bb(String paramString, boolean paramBoolean) {}
 }
 
 

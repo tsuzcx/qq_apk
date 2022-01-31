@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.offline.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.offline.a.s.g;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
-import com.tencent.mm.plugin.wallet_core.ui.o.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet_core.ui.q.c;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 
 final class c$13
-  implements o.c
+  implements q.c
 {
   c$13(c paramc, s.g paramg) {}
   
   public final void a(String paramString, FavorPayInfo paramFavorPayInfo, boolean paramBoolean)
   {
-    if ((this.mMg.mActivity instanceof MMActivity)) {
-      ((MMActivity)this.mMg.mActivity).XM();
+    AppMethodBeat.i(43483);
+    if ((this.pmw.mActivity instanceof MMActivity)) {
+      ((MMActivity)this.pmw.mActivity).hideVKB();
     }
-    if (this.mMg.mMb != null) {
-      this.mMg.mMb.d(1, this.mMh.id, paramString, this.mMh.bOT);
+    if (this.pmw.pmr != null) {
+      this.pmw.pmr.e(1, this.pmx.id, paramString, this.pmx.cwk);
     }
-    y.i("MicroMsg.OfflineLogicMgr", "launchPwdDialog do pay");
+    ab.i("MicroMsg.OfflineLogicMgr", "launchPwdDialog do pay");
+    AppMethodBeat.o(43483);
   }
 }
 

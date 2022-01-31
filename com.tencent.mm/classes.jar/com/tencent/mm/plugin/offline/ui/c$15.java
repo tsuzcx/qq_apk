@@ -1,22 +1,25 @@
 package com.tencent.mm.plugin.offline.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.offline.a.s.g;
 import com.tencent.mm.plugin.offline.g;
-import com.tencent.mm.plugin.wallet_core.ui.o.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet_core.ui.q.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$15
-  implements o.a
+  implements q.a
 {
   c$15(c paramc, s.g paramg) {}
   
-  public final void bqo()
+  public final void bYU()
   {
-    if (this.mMg.mMb != null) {
-      this.mMg.mMb.d(0, this.mMh.id, "", this.mMh.bOT);
+    AppMethodBeat.i(43485);
+    if (this.pmw.pmr != null) {
+      this.pmw.pmr.e(0, this.pmx.id, "", this.pmx.cwk);
     }
-    g.ce(this.mMh.bOT, g.mJV);
-    y.i("MicroMsg.OfflineLogicMgr", "launchPwdDialog do cancel pay");
+    g.cW(this.pmx.cwk, g.pkk);
+    ab.i("MicroMsg.OfflineLogicMgr", "launchPwdDialog do cancel pay");
+    AppMethodBeat.o(43485);
   }
 }
 

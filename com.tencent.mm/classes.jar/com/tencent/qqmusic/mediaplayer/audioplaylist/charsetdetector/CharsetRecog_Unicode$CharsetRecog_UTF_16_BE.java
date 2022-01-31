@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class CharsetRecog_Unicode$CharsetRecog_UTF_16_BE
   extends CharsetRecog_Unicode
 {
@@ -10,6 +12,7 @@ class CharsetRecog_Unicode$CharsetRecog_UTF_16_BE
   
   CharsetMatch match(CharsetDetector paramCharsetDetector)
   {
+    AppMethodBeat.i(104738);
     byte[] arrayOfByte = paramCharsetDetector.fRawInput;
     int j = 10;
     int m = Math.min(arrayOfByte.length, 30);
@@ -21,11 +24,11 @@ class CharsetRecog_Unicode$CharsetRecog_UTF_16_BE
       {
         i = codeUnit16FromBytes(arrayOfByte[k], arrayOfByte[(k + 1)]);
         if ((k != 0) || (i != 65279)) {
-          break label96;
+          break label108;
         }
         i = 100;
       }
-      label96:
+      label108:
       do
       {
         do
@@ -41,7 +44,9 @@ class CharsetRecog_Unicode$CharsetRecog_UTF_16_BE
           if (j <= 0) {
             break;
           }
-          return new CharsetMatch(paramCharsetDetector, this, j);
+          paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, j);
+          AppMethodBeat.o(104738);
+          return paramCharsetDetector;
           j = adjustConfidence(i, j);
           i = j;
         } while (j == 0);
@@ -49,12 +54,13 @@ class CharsetRecog_Unicode$CharsetRecog_UTF_16_BE
       } while (j == 100);
       k += 2;
     }
+    AppMethodBeat.o(104738);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector.CharsetRecog_Unicode.CharsetRecog_UTF_16_BE
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.google.android.gms.wearable.internal;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.wearable.CapabilityApi.AddLocalCapabilityResult;
+
 final class zzr
+  extends zzn<CapabilityApi.AddLocalCapabilityResult>
 {
-  final int zzbTY;
-  final int zzbTZ;
-  
-  zzr(int paramInt1, int paramInt2)
+  zzr(zzo paramzzo, GoogleApiClient paramGoogleApiClient, String paramString)
   {
-    this.zzbTY = paramInt1;
-    this.zzbTZ = paramInt2;
+    super(paramGoogleApiClient);
   }
 }
 

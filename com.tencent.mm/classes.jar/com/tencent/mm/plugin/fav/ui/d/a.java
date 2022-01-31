@@ -7,30 +7,29 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.am.a;
-import com.tencent.mm.model.am.b;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.s;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.ao.a;
+import com.tencent.mm.model.ao.b;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.protocal.c.yl;
-import com.tencent.mm.protocal.c.yp;
-import com.tencent.mm.protocal.c.yw;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.acs;
+import com.tencent.mm.protocal.protobuf.acw;
+import com.tencent.mm.protocal.protobuf.add;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bd;
 import java.util.List;
 import java.util.Map;
 
 public abstract class a
 {
-  protected l kbg = null;
-  public final a.a kio = new a.a();
+  public final a.a mCS = new a.a();
+  protected l mvC = null;
   
   public a(l paraml)
   {
-    this.kbg = paraml;
+    this.mvC = paraml;
   }
   
   public abstract View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg);
@@ -40,71 +39,71 @@ public abstract class a
     if (paramView == null) {
       throw new NullPointerException("base item view is null");
     }
-    paramb.kir = paramView.findViewById(n.e.fav_type_layout);
-    if (paramb.kir == null) {
+    paramb.mCV = paramView.findViewById(2131824031);
+    if (paramb.mCV == null) {
       throw new IllegalArgumentException("base item view do not contain id named favTypeLayout");
     }
-    paramb.fhD = ((TextView)paramView.findViewById(n.e.fav_name));
-    if (paramb.fhD == null) {
+    paramb.gzk = ((TextView)paramView.findViewById(2131820611));
+    if (paramb.gzk == null) {
       throw new IllegalArgumentException("base item view do not contain id named fav_name");
     }
-    paramb.dsz = ((TextView)paramView.findViewById(n.e.fav_time));
-    if (paramb.dsz == null) {
+    paramb.ekh = ((TextView)paramView.findViewById(2131820618));
+    if (paramb.ekh == null) {
       throw new IllegalArgumentException("base item view do not contain id named fav_time");
     }
-    paramb.eXQ = ((CheckBox)paramView.findViewById(n.e.fav_checkbox));
-    if (paramb.eXQ == null) {
+    paramb.gpN = ((CheckBox)paramView.findViewById(2131820600));
+    if (paramb.gpN == null) {
       throw new IllegalArgumentException("base item view do not contain id named checkbox");
     }
-    paramb.kis = ((ImageView)paramView.findViewById(n.e.fav_tag_iv));
-    if (paramb.kis == null) {
+    paramb.mCW = ((ImageView)paramView.findViewById(2131824032));
+    if (paramb.mCW == null) {
       throw new IllegalArgumentException("base item view do not contain id named tagIV");
     }
-    paramb.eXQ.setOnCheckedChangeListener(new a.1(this));
-    paramb.jZN = paramg;
+    paramb.gpN.setOnCheckedChangeListener(new a.1(this));
+    paramb.muk = paramg;
     paramView.setTag(paramb);
-    paramb.kit = ((LinearLayout)paramView.findViewById(n.e.fav_sync_error_ll));
-    paramb.kiu = ((TextView)paramView.findViewById(n.e.fav_sync_error_btn));
-    paramb.kiu.setOnClickListener(new a.2(this));
+    paramb.mCX = ((LinearLayout)paramView.findViewById(2131824029));
+    paramb.mCY = ((TextView)paramView.findViewById(2131824030));
+    paramb.mCY.setOnClickListener(new a.2(this));
     return paramView;
   }
   
-  public abstract void a(View paramView, yl paramyl);
+  public abstract void a(View paramView, acs paramacs);
   
   protected final void a(a.b paramb, com.tencent.mm.plugin.fav.a.g paramg)
   {
-    paramb.jZN = paramg;
+    paramb.muk = paramg;
     label59:
     Context localContext;
     Object localObject;
     label184:
     boolean bool;
-    if (paramb.jZN.field_type == 18)
+    if (paramb.muk.field_type == 18)
     {
-      paramb.kir.setVisibility(0);
-      if (this.kio.keO) {
+      paramb.mCV.setVisibility(0);
+      if (this.mCS.mzx) {
         break label310;
       }
-      paramb.dsz.setText(com.tencent.mm.plugin.fav.ui.j.f(paramb.dsz.getContext(), paramb.jZN.field_updateTime));
-      localContext = paramb.fhD.getContext();
-      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abk(paramb.jZN.field_fromUser);
-      if ((localObject != null) && (((ao)localObject).field_username.equals(paramb.jZN.field_fromUser))) {
+      paramb.ekh.setText(com.tencent.mm.plugin.fav.ui.j.g(paramb.ekh.getContext(), paramb.muk.field_updateTime));
+      localContext = paramb.gzk.getContext();
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arv(paramb.muk.field_fromUser);
+      if ((localObject != null) && (((aq)localObject).field_username.equals(paramb.muk.field_fromUser))) {
         break label330;
       }
-      y.w("MicroMsg.FavBaseListItem", "render name, user is %s, but name is null", new Object[] { paramb.jZN.field_fromUser });
-      paramb.fhD.setText("");
-      am.a.dVy.a(paramb.jZN.field_fromUser, "", null);
-      if (!paramb.jZN.aQa()) {
+      ab.w("MicroMsg.FavBaseListItem", "render name, user is %s, but name is null", new Object[] { paramb.muk.field_fromUser });
+      paramb.gzk.setText("");
+      ao.a.flI.a(paramb.muk.field_fromUser, "", null);
+      if (!paramb.muk.bwp()) {
         break label440;
       }
-      paramb.kit.setVisibility(0);
-      paramb.eXQ.setTag(paramg);
-      if ((!this.kio.keG) && (!this.kio.keO)) {
+      paramb.mCX.setVisibility(0);
+      paramb.gpN.setTag(paramg);
+      if ((!this.mCS.mzp) && (!this.mCS.mzx)) {
         break label457;
       }
-      paramb.eXQ.setVisibility(0);
-      localObject = paramb.eXQ;
-      if (this.kio.keH.get(Long.valueOf(paramg.field_localId)) == null) {
+      paramb.gpN.setVisibility(0);
+      localObject = paramb.gpN;
+      if (this.mCS.mzq.get(Long.valueOf(paramg.field_localId)) == null) {
         break label452;
       }
       bool = true;
@@ -113,49 +112,49 @@ public abstract class a
     }
     for (;;)
     {
-      paramb.kiu.setTag(paramg);
-      if ((paramg.field_tagProto.sXq == null) || (paramg.field_tagProto.sXq.isEmpty())) {
+      paramb.mCY.setTag(paramg);
+      if ((paramg.field_tagProto.wVq == null) || (paramg.field_tagProto.wVq.isEmpty())) {
         break label469;
       }
-      paramb.kis.setVisibility(0);
+      paramb.mCW.setVisibility(0);
       return;
-      paramb.kir.setVisibility(8);
+      paramb.mCV.setVisibility(8);
       break;
       label310:
-      paramb.dsz.setText(com.tencent.mm.plugin.fav.a.b.ev(paramb.jZN.field_datatotalsize));
+      paramb.ekh.setText(com.tencent.mm.plugin.fav.a.b.jS(paramb.muk.field_datatotalsize));
       break label59;
       label330:
-      if (s.fn(paramb.jZN.field_fromUser))
+      if (t.lA(paramb.muk.field_fromUser))
       {
-        localObject = paramb.jZN.field_favProto.sXa;
-        if (q.Gj().equals(((yp)localObject).bRO)) {
-          localObject = com.tencent.mm.plugin.fav.a.b.Cy(((yp)localObject).toUser);
+        localObject = paramb.muk.field_favProto.wVa;
+        if (r.Zn().equals(((acw)localObject).czp)) {
+          localObject = com.tencent.mm.plugin.fav.a.b.NA(((acw)localObject).toUser);
         }
       }
       for (;;)
       {
-        paramb.fhD.setText(com.tencent.mm.pluginsdk.ui.d.j.a(localContext, (CharSequence)localObject, paramb.fhD.getTextSize()));
+        paramb.gzk.setText(com.tencent.mm.pluginsdk.ui.d.j.b(localContext, (CharSequence)localObject, paramb.gzk.getTextSize()));
         break;
-        localObject = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.a.b.class)).gU(((yp)localObject).bRO);
+        localObject = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.a.b.class)).nD(((acw)localObject).czp);
         continue;
-        localObject = com.tencent.mm.plugin.fav.a.b.Cy(((ao)localObject).field_username);
+        localObject = com.tencent.mm.plugin.fav.a.b.NA(((aq)localObject).field_username);
       }
       label440:
-      paramb.kit.setVisibility(8);
+      paramb.mCX.setVisibility(8);
       break label184;
       label452:
       bool = false;
       break label250;
       label457:
-      paramb.eXQ.setVisibility(8);
+      paramb.gpN.setVisibility(8);
     }
     label469:
-    paramb.kis.setVisibility(8);
+    paramb.mCW.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.d.a
  * JD-Core Version:    0.7.0.1
  */

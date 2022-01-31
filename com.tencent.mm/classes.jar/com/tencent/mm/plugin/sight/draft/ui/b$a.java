@@ -8,87 +8,90 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.ac.a.b;
-import com.tencent.mm.ac.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.modelvideo.j;
 import com.tencent.mm.modelvideo.k;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.tools.h;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$a
   implements View.OnClickListener
 {
   private b$a(b paramb) {}
   
-  public final boolean bBw()
+  public final boolean cmW()
   {
-    if (b.c(this.ogK) != null)
+    AppMethodBeat.i(24998);
+    if (b.c(this.qUZ) != null)
     {
-      b.c(this.ogK).gSy.setVisibility(8);
-      b.c(this.ogK).ogP.setCanPlay(false);
-      b.c(this.ogK).ogP.aW(null, false);
-      Bitmap localBitmap = b.e(this.ogK).r(b.c(this.ogK).ogR.field_fileName, k.nJ(b.c(this.ogK).ogR.field_fileName), true);
-      b.c(this.ogK).ogP.setThumbBmp(localBitmap);
-      b.c(this.ogK).kiB.setBackgroundResource(R.g.sight_draft_mask);
-      h.p(b.c(this.ogK).ogO, 1.0F);
-      b.a(this.ogK, null);
+      b.c(this.qUZ).ivt.setVisibility(8);
+      b.c(this.qUZ).qVe.setCanPlay(false);
+      b.c(this.qUZ).qVe.bl(null, false);
+      Bitmap localBitmap = b.e(this.qUZ).x(b.c(this.qUZ).qVg.field_fileName, k.uW(b.c(this.qUZ).qVg.field_fileName), true);
+      b.c(this.qUZ).qVe.setThumbBmp(localBitmap);
+      b.c(this.qUZ).mDg.setBackgroundResource(2130840324);
+      com.tencent.mm.ui.tools.j.s(b.c(this.qUZ).qVd, 1.0F);
+      b.a(this.qUZ, null);
+      AppMethodBeat.o(24998);
       return true;
     }
+    AppMethodBeat.o(24998);
     return false;
   }
   
   public final void onClick(View paramView)
   {
-    if (!(paramView.getTag() instanceof b.e)) {
+    AppMethodBeat.i(24997);
+    if (!(paramView.getTag() instanceof b.e))
+    {
+      AppMethodBeat.o(24997);
       return;
     }
     paramView = (b.e)paramView.getTag();
-    if (paramView.ogR == null)
+    if (paramView.qVg == null)
     {
-      y.i("MicroMsg.SightDraftContainerAdapter", "click draft, but info null, curType %s", new Object[] { b.b(this.ogK) });
-      bBw();
-      b.a(this.ogK, null);
+      ab.i("MicroMsg.SightDraftContainerAdapter", "click draft, but info null, curType %s", new Object[] { b.b(this.qUZ) });
+      cmW();
+      b.a(this.qUZ, null);
+      AppMethodBeat.o(24997);
       return;
     }
     Object localObject1;
-    if (b.c(this.ogK) != paramView)
+    if (b.c(this.qUZ) != paramView)
     {
-      bBw();
-      localObject1 = k.nI(paramView.ogR.field_fileName);
-      paramView.ogP.setCanPlay(true);
-      paramView.ogP.aW((String)localObject1, false);
-      paramView.kiB.setBackgroundResource(R.g.sight_draft_mask_selected);
-      localObject1 = paramView.ogO;
-      if ((localObject1 != null) && (!d.gG(11))) {
-        break label177;
+      cmW();
+      localObject1 = k.uV(paramView.qVg.field_fileName);
+      paramView.qVe.setCanPlay(true);
+      paramView.qVe.bl((String)localObject1, false);
+      paramView.mDg.setBackgroundResource(2130840325);
+      localObject1 = paramView.qVd;
+      if ((localObject1 != null) && (!d.fw(11))) {
+        break label200;
       }
     }
     for (;;)
     {
-      b.b(this.ogK, paramView);
-      b.a(this.ogK, paramView);
-      if (b.d(this.ogK) == null) {
-        break;
+      b.b(this.qUZ, paramView);
+      b.a(this.qUZ, paramView);
+      if (b.d(this.qUZ) != null) {
+        b.d(this.qUZ).cmU();
       }
-      b.d(this.ogK).bBu();
+      AppMethodBeat.o(24997);
       return;
-      label177:
-      Object localObject2 = (Animator)((View)localObject1).getTag(a.g.property_anim);
+      label200:
+      Object localObject2 = (Animator)((View)localObject1).getTag(2131820653);
       if (localObject2 != null) {
         ((Animator)localObject2).cancel();
       }
-      localObject2 = (AnimatorSet)AnimatorInflater.loadAnimator(((View)localObject1).getContext(), a.b.fast_zoom_in_property_anim);
+      localObject2 = (AnimatorSet)AnimatorInflater.loadAnimator(((View)localObject1).getContext(), 2131099652);
       ((AnimatorSet)localObject2).setTarget(localObject1);
       ((AnimatorSet)localObject2).start();
-      ((View)localObject1).setTag(a.g.property_anim, localObject2);
+      ((View)localObject1).setTag(2131820653, localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

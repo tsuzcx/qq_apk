@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class SnsStrangerCommentDetailUI$7$1
   implements Runnable
@@ -11,14 +12,16 @@ final class SnsStrangerCommentDetailUI$7$1
   
   public final void run()
   {
-    y.v("MicroMsg.SnsStrangerCommentDetailUI", "comment notify");
-    SnsStrangerCommentDetailUI.d(this.pdK.pdJ).a(null, null);
-    if (SnsStrangerCommentDetailUI.e(this.pdK.pdJ))
+    AppMethodBeat.i(39317);
+    ab.v("MicroMsg.SnsStrangerCommentDetailUI", "comment notify");
+    SnsStrangerCommentDetailUI.d(this.rWx.rWw).a(null, null);
+    if (SnsStrangerCommentDetailUI.e(this.rWx.rWw))
     {
-      SnsStrangerCommentDetailUI.a(this.pdK.pdJ, false);
-      SnsStrangerCommentDetailUI localSnsStrangerCommentDetailUI = this.pdK.pdJ;
-      af.aXq().postDelayed(new SnsStrangerCommentDetailUI.8(localSnsStrangerCommentDetailUI), 10L);
+      SnsStrangerCommentDetailUI.a(this.rWx.rWw, false);
+      SnsStrangerCommentDetailUI localSnsStrangerCommentDetailUI = this.rWx.rWw;
+      ag.bEf().postDelayed(new SnsStrangerCommentDetailUI.8(localSnsStrangerCommentDetailUI), 10L);
     }
+    AppMethodBeat.o(39317);
   }
 }
 

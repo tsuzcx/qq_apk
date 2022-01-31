@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.nearby.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 
 final class a$4$1
@@ -12,7 +13,9 @@ final class a$4$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.Dk().c(a.c(this.mCV.mCU));
+    AppMethodBeat.i(55413);
+    g.Rc().a(a.c(this.pcP.pcO));
+    AppMethodBeat.o(55413);
   }
 }
 

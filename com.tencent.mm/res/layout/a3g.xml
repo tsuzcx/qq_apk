@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <ListView android:id="@id/b48" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/ls" />
-    <ListView android:id="@id/c0l" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/ls" />
-    <RelativeLayout android:id="@id/agx" android:background="#f7ffffff" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/b49" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/yo" />
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/pf" android:gravity="center_horizontal" android:id="@id/a6j" android:background="#f7ffffff" android:paddingTop="@dimen/kr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/c2b" />
+<FrameLayout android:orientation="horizontal" android:id="@id/c40" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="right" android:id="@id/c41" android:layout_width="375.0dip" android:layout_height="104.0dip" android:scaleType="fitXY" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jr" android:layout_marginRight="140.0dip">
+        <TextView android:textSize="@dimen/kg" android:textStyle="bold" android:textColor="@color/qj" android:id="@id/c42" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/kg" android:textStyle="bold" android:textColor="@color/qj" android:ellipsize="end" android:id="@id/c43" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jw" android:singleLine="true" android:layout_toRightOf="@id/c42" />
+        <com.tencent.mm.plugin.game.widget.EllipsizingTextView android:textSize="@dimen/kg" android:textColor="@color/qh" android:id="@id/c44" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jw" android:layout_below="@id/c42" />
+    </RelativeLayout>
 </FrameLayout>

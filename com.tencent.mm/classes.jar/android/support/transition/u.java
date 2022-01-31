@@ -8,19 +8,19 @@ import android.util.Property;
 final class u<T>
   extends Property<T, Float>
 {
-  private final PathMeasure nC;
-  private final Property<T, PointF> ri;
-  private final float rj;
-  private final float[] rk = new float[2];
-  private final PointF rl = new PointF();
-  private float rm;
+  private final PathMeasure oA;
+  private final Property<T, PointF> sg;
+  private final float si;
+  private final float[] sj = new float[2];
+  private final PointF sk = new PointF();
+  private float sl;
   
   u(Property<T, PointF> paramProperty, Path paramPath)
   {
     super(Float.class, paramProperty.getName());
-    this.ri = paramProperty;
-    this.nC = new PathMeasure(paramPath, false);
-    this.rj = this.nC.getLength();
+    this.sg = paramProperty;
+    this.oA = new PathMeasure(paramPath, false);
+    this.si = this.oA.getLength();
   }
 }
 

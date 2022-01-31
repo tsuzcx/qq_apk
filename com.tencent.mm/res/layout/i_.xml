@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center" android:id="@id/acc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/default_avatar" android:scaleType="center" android:layout_centerInParent="true" />
-    <View android:background="#c0000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/yg" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/aav" android:background="@drawable/hv" android:padding="@dimen/m1" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="@dimen/m2" android:textColor="@color/a95" android:ellipsize="end" android:layout_gravity="center" android:id="@id/aaw" android:background="@drawable/gr" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" android:minWidth="168.0dip" android:text="@string/ae3" android:singleLine="true" />
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/w6" android:ellipsize="end" android:gravity="center" android:id="@id/ab4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="@dimen/m1" android:layout_marginRight="@dimen/l5" android:singleLine="true" />
+    </LinearLayout>
+    <View android:id="@id/ab5" android:background="@color/zm" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layerType="software" />
+    <CheckBox android:textSize="@dimen/ko" android:textColor="@color/w6" android:id="@id/ab6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ll" android:layout_marginBottom="@dimen/ll" android:checked="false" android:drawablePadding="5.0dip" style="@style/o1" />
+</LinearLayout>

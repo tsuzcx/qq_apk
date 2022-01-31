@@ -1,20 +1,24 @@
 package com.tencent.mm.plugin.talkroom.component;
 
-import com.tencent.mm.compatible.b.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.b.g;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public class v2engine
 {
-  private static f dVG;
+  private static g flQ;
   
-  public static f Hy()
+  public static g aaA()
   {
-    if (dVG == null) {
-      dVG = new f(ae.getContext());
+    AppMethodBeat.i(25749);
+    if (flQ == null) {
+      flQ = new g(ah.getContext());
     }
-    return dVG;
+    g localg = flQ;
+    AppMethodBeat.o(25749);
+    return localg;
   }
   
   public native int Close();

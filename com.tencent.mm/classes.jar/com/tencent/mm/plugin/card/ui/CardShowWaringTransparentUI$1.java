@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CardShowWaringTransparentUI$1
   implements DialogInterface.OnClickListener
@@ -10,13 +11,15 @@ final class CardShowWaringTransparentUI$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(88651);
     paramDialogInterface.dismiss();
-    this.iwW.finish();
+    this.kya.finish();
+    AppMethodBeat.o(88651);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardShowWaringTransparentUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.base;
 
 import android.view.View;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.al;
 import org.json.JSONObject;
 
 public abstract class c<CONTEXT extends e>
@@ -11,31 +11,31 @@ public abstract class c<CONTEXT extends e>
 {
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    e locale = ((f)paramc.i(f.class)).a(paramc);
+    e locale = ((f)paramc.q(f.class)).d(paramc);
     if (locale == null)
     {
-      paramc.C(paramInt, h("fail:ComponentView is null.", null));
+      paramc.h(paramInt, j("fail:ComponentView is null.", null));
       return;
     }
-    ai.d(new c.1(this, locale, paramc, paramInt, paramJSONObject));
+    al.d(new c.1(this, locale, paramc, paramInt, paramJSONObject));
   }
   
-  public boolean a(CONTEXT paramCONTEXT, int paramInt, View paramView, JSONObject paramJSONObject, g paramg)
+  protected boolean aCb()
+  {
+    return false;
+  }
+  
+  protected boolean aCc()
+  {
+    return false;
+  }
+  
+  protected boolean b(CONTEXT paramCONTEXT, int paramInt, View paramView, JSONObject paramJSONObject, g paramg)
   {
     return true;
   }
   
-  public boolean aii()
-  {
-    return false;
-  }
-  
-  public boolean aik()
-  {
-    return false;
-  }
-  
-  public boolean c(CONTEXT paramCONTEXT, int paramInt, View paramView, JSONObject paramJSONObject)
+  protected boolean c(CONTEXT paramCONTEXT, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     return true;
   }

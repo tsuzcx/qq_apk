@@ -1,26 +1,20 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import android.graphics.Bitmap;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mm.as.a.c.i;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EmojiStoreV2RewardUI$7
-  implements i
+  implements MenuItem.OnMenuItemClickListener
 {
-  EmojiStoreV2RewardUI$7(EmojiStoreV2RewardUI paramEmojiStoreV2RewardUI, String paramString1, String paramString2) {}
+  EmojiStoreV2RewardUI$7(EmojiStoreV2RewardUI paramEmojiStoreV2RewardUI) {}
   
-  public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if ((!bk.bl(paramString)) && (paramString.equalsIgnoreCase(this.jhL)))
-    {
-      paramString = new Message();
-      paramString.what = 1001;
-      paramString.obj = this.dlh;
-      EmojiStoreV2RewardUI.j(this.jhK).sendMessage(paramString);
-    }
+    AppMethodBeat.i(53701);
+    this.lqH.onBackPressed();
+    AppMethodBeat.o(53701);
+    return true;
   }
 }
 

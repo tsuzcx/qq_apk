@@ -1,27 +1,31 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
+import java.util.List;
+
 public final class u
-  extends s
+  extends t
 {
-  public static int oDA = 4;
-  public static int oDB = 0;
-  public static int oDC = 1;
-  public static int oDy = 1;
-  public static int oDz = 2;
-  public float dOB;
-  public int maxLines = 2147483647;
-  public String oDD;
-  public String oDE;
-  public boolean oDF;
-  public boolean oDG;
-  public boolean oDH;
-  public int oDI = 0;
-  public float oDJ;
-  public int textAlignment;
+  public LinkedList<t> rsS;
+  public int rsT;
+  
+  public u()
+  {
+    AppMethodBeat.i(36942);
+    this.rsS = new LinkedList();
+    this.rsT = 0;
+    AppMethodBeat.o(36942);
+  }
+  
+  public final List<t> cqF()
+  {
+    return this.rsS;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.u
  * JD-Core Version:    0.7.0.1
  */

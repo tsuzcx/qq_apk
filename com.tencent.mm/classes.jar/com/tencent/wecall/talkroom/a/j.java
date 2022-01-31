@@ -1,6 +1,7 @@
 package com.tencent.wecall.talkroom.a;
 
 import com.google.a.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.ai;
 import com.tencent.pb.common.b.d;
 import com.tencent.pb.common.c.c;
@@ -8,26 +9,31 @@ import com.tencent.pb.common.c.c;
 public final class j
   extends d
 {
-  public String kWU;
+  public String nuW;
   
-  protected final Object bK(byte[] paramArrayOfByte)
+  public final Object ck(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte != null) {
+    AppMethodBeat.i(128025);
+    if (paramArrayOfByte != null) {}
+    for (;;)
+    {
       try
       {
         paramArrayOfByte = (a.ai)e.a(new a.ai(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(128025);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
       {
-        c.x(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte });
-        return null;
+        c.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte });
+        paramArrayOfByte = null;
+        continue;
       }
+      paramArrayOfByte = null;
     }
-    return null;
   }
   
-  protected final String cNR()
+  public final String dTD()
   {
     return "CsCmd.Cmd_V_CSVoiceMemberWhisperReq";
   }

@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.backup.backupmoveui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.backup.d.b;
-import com.tencent.mm.plugin.backup.d.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class BackupMoveRecoverUI$5
   implements View.OnClickListener
@@ -13,8 +12,10 @@ final class BackupMoveRecoverUI$5
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.BackupMoveRecoverUI", "backupmove click pause button.");
-    b.atS().atV().aua();
+    AppMethodBeat.i(17389);
+    ab.i("MicroMsg.BackupMoveRecoverUI", "minimize BackupMoveRecoverUI");
+    BackupMoveRecoverUI.j(this.jDc);
+    AppMethodBeat.o(17389);
   }
 }
 

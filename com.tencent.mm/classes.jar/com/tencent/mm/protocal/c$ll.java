@@ -5,7 +5,7 @@ public final class c$ll
 {
   public c$ll()
   {
-    super("menu:share:weiboApp", "", 109, false);
+    super("videoProxySetPlayerState", "videoProxySetPlayerState", 160, false);
   }
 }
 

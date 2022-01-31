@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.p;
 
 final class ExdeviceDeviceProfileUI$4$1$1
@@ -9,7 +10,9 @@ final class ExdeviceDeviceProfileUI$4$1$1
   
   public final void run()
   {
-    this.jDh.iat.dismiss();
+    AppMethodBeat.i(19937);
+    this.lMG.lME.dismiss();
+    AppMethodBeat.o(19937);
   }
 }
 

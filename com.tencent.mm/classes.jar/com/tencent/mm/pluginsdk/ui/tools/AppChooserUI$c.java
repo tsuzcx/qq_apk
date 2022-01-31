@@ -5,28 +5,28 @@ import android.graphics.drawable.Drawable;
 
 final class AppChooserUI$c
 {
-  boolean lnq;
-  boolean pKW;
-  ResolveInfo sln;
-  CharSequence slo;
-  Drawable slp;
-  boolean slq;
-  boolean slr;
+  boolean nKJ;
+  boolean tqS;
+  ResolveInfo wdP;
+  CharSequence wdQ;
+  Drawable wdR;
+  boolean wdS;
+  boolean wdT;
   
   public AppChooserUI$c(AppChooserUI paramAppChooserUI) {}
   
   public AppChooserUI$c(AppChooserUI paramAppChooserUI, ResolveInfo paramResolveInfo, CharSequence paramCharSequence)
   {
-    this.sln = paramResolveInfo;
-    this.slo = paramCharSequence;
-    this.slq = false;
-    this.pKW = true;
-    this.slr = false;
+    this.wdP = paramResolveInfo;
+    this.wdQ = paramCharSequence;
+    this.wdS = false;
+    this.tqS = true;
+    this.wdT = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.AppChooserUI.c
  * JD-Core Version:    0.7.0.1
  */

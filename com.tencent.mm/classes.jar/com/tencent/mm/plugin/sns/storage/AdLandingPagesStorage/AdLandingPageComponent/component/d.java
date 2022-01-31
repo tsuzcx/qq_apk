@@ -3,91 +3,156 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public final class d
-  extends b
+  extends a
 {
-  LinearLayout kjd;
-  private ImageView oFo;
-  private ImageView oFp;
-  private TextView oFq;
-  LinearLayout oFr;
-  int oFs;
+  private List<h> aWy;
+  private s ruV;
+  private l ruW;
   
-  public d(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.d paramd, ViewGroup paramViewGroup)
+  public d(Context paramContext, s params, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramd, paramViewGroup);
+    super(paramContext, params, paramViewGroup);
+    AppMethodBeat.i(37038);
+    this.ruV = params;
+    this.aWy = new ArrayList();
+    AppMethodBeat.o(37038);
   }
   
-  public final boolean ah(JSONObject paramJSONObject)
+  public final void a(t paramt)
   {
-    if (!super.ah(paramJSONObject)) {
-      return false;
+    AppMethodBeat.i(37048);
+    if ((paramt instanceof s)) {
+      this.ruV = ((s)paramt);
     }
-    try
-    {
-      paramJSONObject.put("clickCount", this.oFs);
-      return true;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      y.printErrStackTrace("AdLandingBorderedComp", paramJSONObject, "", new Object[0]);
-    }
-    return false;
+    super.a(paramt);
+    AppMethodBeat.o(37048);
   }
   
-  public final View bFf()
+  public final void cqA()
   {
-    if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.d)this.oFE).oCu.isEmpty()) {
-      return null;
+    AppMethodBeat.i(37042);
+    Iterator localIterator = this.aWy.iterator();
+    while (localIterator.hasNext())
+    {
+      h localh = (h)localIterator.next();
+      if (localh.cqX()) {
+        localh.cqA();
+      }
     }
-    View localView = this.contentView;
-    this.oFo = ((ImageView)localView.findViewById(i.f.left_icon));
-    this.oFp = ((ImageView)localView.findViewById(i.f.right_arrow));
-    this.oFq = ((TextView)localView.findViewById(i.f.desc));
-    this.kjd = ((LinearLayout)localView.findViewById(i.f.container));
-    this.oFr = ((LinearLayout)localView.findViewById(i.f.innter_container));
-    return this.contentView;
+    super.cqA();
+    AppMethodBeat.o(37042);
   }
   
-  protected final void bFj()
+  public final void cqB()
   {
-    this.oFq.setText((CharSequence)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.d)this.oFE).oCu.get(0));
-    if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.d)this.oFE).oDo)
-    {
-      this.oFo.setImageDrawable(a.g(this.context, i.e.tel_w));
-      this.oFp.setImageDrawable(a.g(this.context, i.e.right_arrow_w));
-      this.oFq.setTextColor(-16777216);
-      this.oFr.setBackgroundResource(i.e.adlanding_comp_click_dark);
+    AppMethodBeat.i(37043);
+    Iterator localIterator = this.aWy.iterator();
+    while (localIterator.hasNext()) {
+      ((h)localIterator.next()).cqB();
     }
-    for (;;)
+    super.cqB();
+    AppMethodBeat.o(37043);
+  }
+  
+  public final void cqC()
+  {
+    AppMethodBeat.i(37044);
+    Iterator localIterator = this.aWy.iterator();
+    while (localIterator.hasNext())
     {
-      this.oFr.setPadding((int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.d)this.oFE).oDk, 0, (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.d)this.oFE).oDl, 0);
-      this.kjd.setPadding(0, (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.d)this.oFE).oDi, 0, (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.d)this.oFE).oDj);
-      a(this.oFr);
-      this.oFr.setOnClickListener(new d.1(this));
+      h localh = (h)localIterator.next();
+      if (localh.cqX()) {
+        localh.cqC();
+      }
+    }
+    super.cqC();
+    AppMethodBeat.o(37044);
+  }
+  
+  protected final void cqP()
+  {
+    AppMethodBeat.i(37039);
+    if (this.ruW == null)
+    {
+      this.ruW = new l(this.ruV.aWy, this.context, (FrameLayout)this.contentView);
+      this.ruW.layout();
+      this.aWy = cqT();
+      AppMethodBeat.o(37039);
       return;
-      this.oFo.setImageDrawable(a.g(this.context, i.e.tel));
-      this.oFp.setImageDrawable(a.g(this.context, i.e.right_arrow));
-      this.oFq.setTextColor(-1);
-      this.oFr.setBackgroundResource(i.e.adlanding_comp_click_light);
     }
+    this.ruW.dg(this.ruV.aWy);
+    AppMethodBeat.o(37039);
   }
   
-  protected final int getLayout()
+  protected final void cqQ()
   {
-    return i.g.sns_ad_native_landing_pages_item_lbs;
+    AppMethodBeat.i(37040);
+    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.rve.paddingLeft, (int)this.rve.paddingTop, (int)this.rve.paddingRight, (int)this.rve.paddingBottom);
+    }
+    this.contentView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(37040);
+  }
+  
+  protected final View cqR()
+  {
+    AppMethodBeat.i(37041);
+    FrameLayout localFrameLayout = new FrameLayout(this.context);
+    AppMethodBeat.o(37041);
+    return localFrameLayout;
+  }
+  
+  public final void cqS()
+  {
+    AppMethodBeat.i(37045);
+    Iterator localIterator = this.aWy.iterator();
+    while (localIterator.hasNext())
+    {
+      h localh = (h)localIterator.next();
+      if (localh.cqX())
+      {
+        localh.cqA();
+        localh.cqC();
+      }
+      else
+      {
+        localh.cqB();
+      }
+    }
+    AppMethodBeat.o(37045);
+  }
+  
+  public final List<h> cqT()
+  {
+    AppMethodBeat.i(37047);
+    ArrayList localArrayList = new ArrayList(this.ruW.crG());
+    AppMethodBeat.o(37047);
+    return localArrayList;
+  }
+  
+  public final void cqz()
+  {
+    AppMethodBeat.i(37046);
+    super.cqz();
+    Iterator localIterator = this.aWy.iterator();
+    while (localIterator.hasNext()) {
+      ((h)localIterator.next()).cqz();
+    }
+    AppMethodBeat.o(37046);
   }
 }
 

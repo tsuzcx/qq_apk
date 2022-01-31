@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.card.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class CardGiftVideoUI$9$1
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class CardGiftVideoUI$9$1
   
   public final void run()
   {
-    this.iuK.iuJ.finish();
-    this.iuK.iuJ.overridePendingTransition(0, 0);
+    AppMethodBeat.i(88456);
+    this.kvO.kvN.finish();
+    this.kvO.kvN.overridePendingTransition(0, 0);
+    AppMethodBeat.o(88456);
   }
 }
 

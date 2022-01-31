@@ -1,21 +1,28 @@
 package com.tencent.mm.plugin.luckymoney;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public final class Plugin
   implements c
 {
-  public final n createApplication()
+  public final o createApplication()
   {
-    return new a();
+    AppMethodBeat.i(41965);
+    a locala = new a();
+    AppMethodBeat.o(41965);
+    return locala;
   }
   
-  public final ar createSubCore()
+  public final at createSubCore()
   {
-    return new com.tencent.mm.plugin.luckymoney.a.a();
+    AppMethodBeat.i(41966);
+    com.tencent.mm.plugin.luckymoney.b.a locala = new com.tencent.mm.plugin.luckymoney.b.a();
+    AppMethodBeat.o(41966);
+    return locala;
   }
   
   public final b getContactWidgetFactory()

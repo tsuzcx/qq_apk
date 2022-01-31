@@ -1,201 +1,122 @@
 package android.support.v7.widget;
 
-import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.PorterDuff.Mode;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Paint;
+import android.graphics.Shader;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.RippleDrawable;
-import android.os.Build.VERSION;
-import android.support.v7.a.a.j;
-import android.support.v7.c.a.b;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
+import android.support.v4.graphics.drawable.f;
 import android.util.AttributeSet;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 
-public final class j
+class j
 {
-  private final ImageView ZS;
-  private av ZT;
-  private av ZU;
-  private av Zu;
+  private static final int[] VO = { 16843067, 16843068 };
+  private final ProgressBar aaH;
+  Bitmap aaI;
   
-  public j(ImageView paramImageView)
+  j(ProgressBar paramProgressBar)
   {
-    this.ZS = paramImageView;
+    this.aaH = paramProgressBar;
   }
   
-  public final void b(AttributeSet paramAttributeSet, int paramInt)
-  {
-    ax localax = ax.a(this.ZS.getContext(), paramAttributeSet, a.j.AppCompatImageView, paramInt, 0);
-    try
-    {
-      Drawable localDrawable = this.ZS.getDrawable();
-      paramAttributeSet = localDrawable;
-      if (localDrawable == null)
-      {
-        paramInt = localax.getResourceId(a.j.AppCompatImageView_srcCompat, -1);
-        paramAttributeSet = localDrawable;
-        if (paramInt != -1)
-        {
-          localDrawable = b.g(this.ZS.getContext(), paramInt);
-          paramAttributeSet = localDrawable;
-          if (localDrawable != null)
-          {
-            this.ZS.setImageDrawable(localDrawable);
-            paramAttributeSet = localDrawable;
-          }
-        }
-      }
-      if (paramAttributeSet != null) {
-        y.l(paramAttributeSet);
-      }
-      if (localax.hasValue(a.j.AppCompatImageView_tint)) {
-        android.support.v4.widget.j.a(this.ZS, localax.getColorStateList(a.j.AppCompatImageView_tint));
-      }
-      if (localax.hasValue(a.j.AppCompatImageView_tintMode)) {
-        android.support.v4.widget.j.a(this.ZS, y.c(localax.getInt(a.j.AppCompatImageView_tintMode, -1), null));
-      }
-      return;
-    }
-    finally
-    {
-      localax.alZ.recycle();
-    }
-  }
-  
-  final ColorStateList getSupportImageTintList()
-  {
-    if (this.ZU != null) {
-      return this.ZU.alV;
-    }
-    return null;
-  }
-  
-  final PorterDuff.Mode getSupportImageTintMode()
-  {
-    if (this.ZU != null) {
-      return this.ZU.nN;
-    }
-    return null;
-  }
-  
-  final void gj()
+  private Drawable b(Drawable paramDrawable, boolean paramBoolean)
   {
     int j = 0;
-    Drawable localDrawable = this.ZS.getDrawable();
-    if (localDrawable != null) {
-      y.l(localDrawable);
-    }
-    int i;
-    if (localDrawable != null)
+    if ((paramDrawable instanceof f))
     {
-      i = Build.VERSION.SDK_INT;
-      if (i <= 21) {
-        break label171;
-      }
-      if (this.ZT == null) {
-        break label166;
-      }
-      i = 1;
-      if (i == 0) {
-        break label187;
-      }
-      if (this.Zu == null) {
-        this.Zu = new av();
-      }
-      av localav = this.Zu;
-      localav.clear();
-      Object localObject = android.support.v4.widget.j.b(this.ZS);
-      if (localObject != null)
+      localObject1 = ((f)paramDrawable).cU();
+      if (localObject1 != null)
       {
-        localav.alX = true;
-        localav.alV = ((ColorStateList)localObject);
-      }
-      localObject = android.support.v4.widget.j.c(this.ZS);
-      if (localObject != null)
-      {
-        localav.alW = true;
-        localav.nN = ((PorterDuff.Mode)localObject);
-      }
-      if (!localav.alX)
-      {
-        i = j;
-        if (!localav.alW) {}
-      }
-      else
-      {
-        h.a(localDrawable, localav, this.ZS.getDrawableState());
-        i = 1;
-      }
-      if (i == 0) {
-        break label187;
+        localObject1 = b((Drawable)localObject1, paramBoolean);
+        ((f)paramDrawable).g((Drawable)localObject1);
       }
     }
-    label166:
-    label171:
-    label187:
     do
     {
-      return;
-      i = 0;
-      break;
-      if (i == 21)
+      return paramDrawable;
+      if ((paramDrawable instanceof LayerDrawable))
       {
-        i = 1;
-        break;
+        paramDrawable = (LayerDrawable)paramDrawable;
+        int k = paramDrawable.getNumberOfLayers();
+        localObject1 = new Drawable[k];
+        int i = 0;
+        if (i < k)
+        {
+          int m = paramDrawable.getId(i);
+          localObject2 = paramDrawable.getDrawable(i);
+          if ((m == 16908301) || (m == 16908303)) {}
+          for (paramBoolean = true;; paramBoolean = false)
+          {
+            localObject1[i] = b((Drawable)localObject2, paramBoolean);
+            i += 1;
+            break;
+          }
+        }
+        localObject1 = new LayerDrawable((Drawable[])localObject1);
+        i = j;
+        while (i < k)
+        {
+          ((LayerDrawable)localObject1).setId(i, paramDrawable.getId(i));
+          i += 1;
+        }
+        return localObject1;
       }
-      i = 0;
-      break;
-      if (this.ZU != null)
+    } while (!(paramDrawable instanceof BitmapDrawable));
+    paramDrawable = (BitmapDrawable)paramDrawable;
+    Object localObject2 = paramDrawable.getBitmap();
+    if (this.aaI == null) {
+      this.aaI = ((Bitmap)localObject2);
+    }
+    Object localObject1 = new ShapeDrawable(new RoundRectShape(new float[] { 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F }, null, null));
+    localObject2 = new BitmapShader((Bitmap)localObject2, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
+    ((ShapeDrawable)localObject1).getPaint().setShader((Shader)localObject2);
+    ((ShapeDrawable)localObject1).getPaint().setColorFilter(paramDrawable.getPaint().getColorFilter());
+    if (paramBoolean) {
+      return new ClipDrawable((Drawable)localObject1, 3, 1);
+    }
+    return localObject1;
+  }
+  
+  void a(AttributeSet paramAttributeSet, int paramInt)
+  {
+    az localaz = az.a(this.aaH.getContext(), paramAttributeSet, VO, paramInt, 0);
+    Object localObject = localaz.cH(0);
+    if (localObject != null)
+    {
+      ProgressBar localProgressBar = this.aaH;
+      paramAttributeSet = (AttributeSet)localObject;
+      if ((localObject instanceof AnimationDrawable))
       {
-        h.a(localDrawable, this.ZU, this.ZS.getDrawableState());
-        return;
+        localObject = (AnimationDrawable)localObject;
+        int i = ((AnimationDrawable)localObject).getNumberOfFrames();
+        paramAttributeSet = new AnimationDrawable();
+        paramAttributeSet.setOneShot(((AnimationDrawable)localObject).isOneShot());
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Drawable localDrawable = b(((AnimationDrawable)localObject).getFrame(paramInt), true);
+          localDrawable.setLevel(10000);
+          paramAttributeSet.addFrame(localDrawable, ((AnimationDrawable)localObject).getDuration(paramInt));
+          paramInt += 1;
+        }
+        paramAttributeSet.setLevel(10000);
       }
-    } while (this.ZT == null);
-    h.a(localDrawable, this.ZT, this.ZS.getDrawableState());
-  }
-  
-  final boolean hasOverlappingRendering()
-  {
-    Drawable localDrawable = this.ZS.getBackground();
-    return (Build.VERSION.SDK_INT < 21) || (!(localDrawable instanceof RippleDrawable));
-  }
-  
-  public final void setImageResource(int paramInt)
-  {
-    if (paramInt != 0)
-    {
-      Drawable localDrawable = b.g(this.ZS.getContext(), paramInt);
-      if (localDrawable != null) {
-        y.l(localDrawable);
-      }
-      this.ZS.setImageDrawable(localDrawable);
+      localProgressBar.setIndeterminateDrawable(paramAttributeSet);
     }
-    for (;;)
-    {
-      gj();
-      return;
-      this.ZS.setImageDrawable(null);
+    paramAttributeSet = localaz.cH(1);
+    if (paramAttributeSet != null) {
+      this.aaH.setProgressDrawable(b(paramAttributeSet, false));
     }
-  }
-  
-  final void setSupportImageTintList(ColorStateList paramColorStateList)
-  {
-    if (this.ZU == null) {
-      this.ZU = new av();
-    }
-    this.ZU.alV = paramColorStateList;
-    this.ZU.alX = true;
-    gj();
-  }
-  
-  final void setSupportImageTintMode(PorterDuff.Mode paramMode)
-  {
-    if (this.ZU == null) {
-      this.ZU = new av();
-    }
-    this.ZU.nN = paramMode;
-    this.ZU.alW = true;
-    gj();
+    localaz.aoo.recycle();
   }
 }
 

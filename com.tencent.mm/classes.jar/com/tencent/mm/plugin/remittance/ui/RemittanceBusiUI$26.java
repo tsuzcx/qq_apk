@@ -1,20 +1,17 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fw;
+import com.tencent.mm.sdk.b.c;
 
 final class RemittanceBusiUI$26
-  implements View.OnTouchListener
+  extends c<fw>
 {
-  RemittanceBusiUI$26(RemittanceBusiUI paramRemittanceBusiUI) {}
-  
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  RemittanceBusiUI$26(RemittanceBusiUI paramRemittanceBusiUI)
   {
-    if (RemittanceBusiUI.q(this.nCA)) {
-      this.nCA.VH();
-    }
-    return false;
+    AppMethodBeat.i(142198);
+    this.__eventId = fw.class.getName().hashCode();
+    AppMethodBeat.o(142198);
   }
 }
 

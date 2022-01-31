@@ -1,14 +1,11 @@
 package com.tencent.mm.plugin.aa.ui;
 
 final class LaunchAAUI$3
-  implements a.a
+  implements Runnable
 {
   LaunchAAUI$3(LaunchAAUI paramLaunchAAUI) {}
   
-  public final void Vx()
-  {
-    LaunchAAUI.e(this.eZt);
-  }
+  public final void run() {}
 }
 
 

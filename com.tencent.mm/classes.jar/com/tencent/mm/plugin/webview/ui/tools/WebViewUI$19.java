@@ -1,29 +1,23 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.plugin.webview.modeltools.h;
-import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WebViewUI$19
-  implements DialogInterface.OnCancelListener
+  implements MenuItem.OnMenuItemClickListener
 {
   WebViewUI$19(WebViewUI paramWebViewUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if ((this.rpH.gGt != null) && (this.rpH.gGn != null)) {}
-    try
-    {
-      this.rpH.gGn.SU(this.rpH.gGt.riI);
-      this.rpH.gGt.ccQ();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      y.e("MicroMsg.WebViewUI", "cancel capture failed");
-    }
+    AppMethodBeat.i(153233);
+    this.vgz.hideVKB();
+    this.vgz.deE();
+    ab.i("MicroMsg.WebViewUI", "on back btn press");
+    AppMethodBeat.o(153233);
+    return true;
   }
 }
 

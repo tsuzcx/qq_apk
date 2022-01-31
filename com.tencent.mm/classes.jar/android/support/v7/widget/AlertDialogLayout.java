@@ -3,8 +3,7 @@ package android.support.v7.widget;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.d;
-import android.support.v4.view.q;
-import android.support.v7.a.a.f;
+import android.support.v4.view.t;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -61,7 +60,7 @@ public class AlertDialogLayout
             if (i < 0) {
               paramInt2 = 0x800007 & i2;
             }
-            switch (d.getAbsoluteGravity(paramInt2, q.Q(this)) & 0x7)
+            switch (d.getAbsoluteGravity(paramInt2, t.T(this)) & 0x7)
             {
             default: 
               paramInt2 = localLayoutParams.leftMargin + j;
@@ -74,7 +73,7 @@ public class AlertDialogLayout
     for (;;)
     {
       i = paramInt1;
-      if (bB(paramInt4)) {
+      if (bG(paramInt4)) {
         i = paramInt1 + paramInt3;
       }
       paramInt1 = i + localLayoutParams.topMargin;
@@ -109,26 +108,26 @@ public class AlertDialogLayout
     {
       localObject3 = getChildAt(i);
       if (((View)localObject3).getVisibility() == 8) {
-        break label737;
+        break label733;
       }
       j = ((View)localObject3).getId();
-      if (j == a.f.topPanel) {
+      if (j == 2131820941) {
         localObject4 = localObject3;
       }
     }
-    label222:
-    label737:
+    label218:
+    label733:
     for (;;)
     {
       i += 1;
       break;
-      if (j == a.f.buttonPanel)
+      if (j == 2131820930)
       {
         localObject2 = localObject3;
       }
       else
       {
-        if ((j == a.f.contentPanel) || (j == a.f.customPanel)) {
+        if ((j == 2131820933) || (j == 2131820939)) {
           if (localObject1 == null) {}
         }
         for (i = 0;; i = 0)
@@ -160,7 +159,7 @@ public class AlertDialogLayout
           {
             ((View)localObject2).measure(paramInt1, 0);
             localObject3 = localObject2;
-            i = q.X((View)localObject3);
+            i = t.aa((View)localObject3);
             if (i > 0)
             {
               m = ((View)localObject2).getMeasuredHeight();
@@ -235,9 +234,9 @@ public class AlertDialogLayout
                         }
                       }
                       i = 0;
-                      break label222;
+                      break label218;
                       n = View.MeasureSpec.makeMeasureSpec(Math.max(0, i2 - k), i5);
-                      break label266;
+                      break label262;
                     }
                   }
                   setMeasuredDimension(View.resolveSizeAndState(m + (getPaddingLeft() + getPaddingRight()), paramInt1, j), View.resolveSizeAndState(i, paramInt2, 0));
@@ -282,7 +281,7 @@ public class AlertDialogLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.widget.AlertDialogLayout
  * JD-Core Version:    0.7.0.1
  */

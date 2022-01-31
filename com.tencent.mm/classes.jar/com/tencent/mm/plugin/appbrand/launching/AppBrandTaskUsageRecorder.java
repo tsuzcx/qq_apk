@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
+import android.os.Parcelable.Creator;
+
 public final class AppBrandTaskUsageRecorder {}
 
 

@@ -2,8 +2,8 @@ package com.tencent.map.lib.gl.model;
 
 import android.opengl.Matrix;
 import com.tencent.map.lib.gl.a;
-import com.tencent.tencentmap.mapsdk.a.kr;
-import com.tencent.tencentmap.mapsdk.a.ks;
+import com.tencent.tencentmap.mapsdk.maps.a.jb;
+import com.tencent.tencentmap.mapsdk.maps.a.jc;
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
 import javax.microedition.khronos.opengles.GL10;
@@ -81,12 +81,12 @@ public abstract class b
   
   protected boolean isVisibility(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    return ks.a(ks.a(paramArrayOfFloat1, paramArrayOfFloat2), this.mVertexList.a());
+    return jc.a(jc.a(paramArrayOfFloat1, paramArrayOfFloat2), this.mVertexList.a());
   }
   
   protected boolean isVisibility(float[][] paramArrayOfFloat)
   {
-    return ks.a(paramArrayOfFloat, this.mVertexList.a());
+    return jc.a(paramArrayOfFloat, this.mVertexList.a());
   }
   
   protected void loadIdentity(GL10 paramGL10)
@@ -227,7 +227,7 @@ public abstract class b
       {
         return false;
       }
-      if (kr.a(paramFloat1, paramFloat2, new c(locale1, locale2, locale3).a(), paramArrayOfFloat2, paramArrayOfInt)) {
+      if (jb.a(paramFloat1, paramFloat2, new c(locale1, locale2, locale3).a(), paramArrayOfFloat2, paramArrayOfInt)) {
         return true;
       }
       i += 1;
@@ -242,7 +242,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.lib.gl.model.b
  * JD-Core Version:    0.7.0.1
  */

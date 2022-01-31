@@ -2,15 +2,20 @@ package com.tencent.mm.plugin.wallet.pay.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletPayUI$13
   implements DialogInterface.OnClickListener
 {
-  WalletPayUI$13(WalletPayUI paramWalletPayUI, int paramInt) {}
+  WalletPayUI$13(WalletPayUI paramWalletPayUI) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.qnV.ac(this.qnW, false);
+    AppMethodBeat.i(46049);
+    if (this.tXq.isTransparent()) {
+      this.tXq.finish();
+    }
+    AppMethodBeat.o(46049);
   }
 }
 

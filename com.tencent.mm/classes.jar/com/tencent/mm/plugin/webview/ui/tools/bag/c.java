@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 public final class c
 {
-  g rrt;
-  f rru;
-  float rrv;
+  float vhA;
+  g vhy;
+  f vhz;
   
   public c(g paramg, f paramf)
   {
-    this.rrt = paramg;
-    this.rru = paramf;
+    this.vhy = paramg;
+    this.vhz = paramf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.bag.c
  * JD-Core Version:    0.7.0.1
  */

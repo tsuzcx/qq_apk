@@ -6,43 +6,43 @@ import com.google.a.a.e;
 public final class a$ac
   extends e
 {
+  public a.at BdI = null;
+  public int Bfn = 0;
   public String groupId = "";
-  public a.at wGh = null;
-  public int wHN = 0;
   
   public a$ac()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
     if (!this.groupId.equals("")) {
-      paramb.d(1, this.groupId);
+      paramb.e(1, this.groupId);
     }
-    if (this.wGh != null) {
-      paramb.a(2, this.wGh);
+    if (this.BdI != null) {
+      paramb.a(2, this.BdI);
     }
-    if (this.wHN != 0) {
-      paramb.aL(3, this.wHN);
+    if (this.Bfn != 0) {
+      paramb.bj(3, this.Bfn);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.e(1, this.groupId);
+      i = j + b.f(1, this.groupId);
     }
     j = i;
-    if (this.wGh != null) {
-      j = i + b.b(2, this.wGh);
+    if (this.BdI != null) {
+      j = i + b.b(2, this.BdI);
     }
     i = j;
-    if (this.wHN != 0) {
-      i = j + b.aN(3, this.wHN);
+    if (this.Bfn != 0) {
+      i = j + b.bl(3, this.Bfn);
     }
     return i;
   }

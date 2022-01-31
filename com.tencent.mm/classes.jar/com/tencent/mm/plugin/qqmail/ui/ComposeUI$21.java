@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.qqmail.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ComposeUI$21
   implements View.OnClickListener
@@ -13,12 +13,14 @@ final class ComposeUI$21
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.ngJ, MailAddrListUI.class);
-    paramView.putExtra("INIT_SELECTED_ADDRS_INTENT_EXTRA", ComposeUI.e(this.ngJ).a(false, null));
-    paramView.putExtra("MMActivity.OverrideExitAnimation", b.a.push_down_out);
-    paramView.putExtra("MMActivity.OverrideEnterAnimation", b.a.fast_faded_in);
-    this.ngJ.startActivityForResult(paramView, 1);
-    this.ngJ.overridePendingTransition(b.a.push_up_in, b.a.fast_faded_out);
+    AppMethodBeat.i(68204);
+    paramView = new Intent(this.pLX, MailAddrListUI.class);
+    paramView.putExtra("INIT_SELECTED_ADDRS_INTENT_EXTRA", ComposeUI.e(this.pLX).a(false, null));
+    paramView.putExtra("MMActivity.OverrideExitAnimation", 2131034228);
+    paramView.putExtra("MMActivity.OverrideEnterAnimation", 2131034181);
+    this.pLX.startActivityForResult(paramView, 1);
+    this.pLX.overridePendingTransition(2131034230, 2131034182);
+    AppMethodBeat.o(68204);
   }
 }
 

@@ -1,21 +1,24 @@
 package com.tencent.mm.ca;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.m.e;
 
 public final class a$c
   extends e
 {
-  public final void mT()
+  public final void ph()
   {
     try
     {
-      this.dAp = true;
-      a.cpp();
-      a.b localb = a.uaN;
-      n(a.b.bb(278529, null), false);
-      a.cpp();
-      localb = a.uaN;
-      n(a.b.bb(278530, null), false);
+      AppMethodBeat.i(62593);
+      this.etR = true;
+      a.dqM();
+      a.b localb = a.yiH;
+      q(a.b.bI(278529, null), false);
+      a.dqM();
+      localb = a.yiH;
+      q(a.b.bI(278530, null), false);
+      AppMethodBeat.o(62593);
       return;
     }
     finally

@@ -12,36 +12,36 @@ import java.util.ArrayList;
 public final class c$b
   extends RecyclerView.a<c.j>
 {
-  final ArrayList<c.d> dU = new ArrayList();
-  private j dV;
-  boolean dp;
+  private j eW;
+  boolean et;
+  final ArrayList<c.d> mItems = new ArrayList();
   
   public c$b(c paramc)
   {
-    W();
+    aH();
   }
   
   private void f(int paramInt1, int paramInt2)
   {
     while (paramInt1 < paramInt2)
     {
-      ((c.f)this.dU.get(paramInt1)).dZ = true;
+      ((c.f)this.mItems.get(paramInt1)).eY = true;
       paramInt1 += 1;
     }
   }
   
-  final void W()
+  final void aH()
   {
-    if (this.dp) {
+    if (this.et) {
       return;
     }
-    this.dp = true;
-    this.dU.clear();
-    this.dU.add(new c.c());
+    this.et = true;
+    this.mItems.clear();
+    this.mItems.add(new c.c());
     int j = -1;
     int i = 0;
     boolean bool1 = false;
-    int i2 = this.dT.dm.fl().size();
+    int i2 = this.eV.eq.gb().size();
     int n = 0;
     Object localObject;
     int k;
@@ -50,12 +50,12 @@ public final class c$b
     {
       if (n < i2)
       {
-        localObject = (j)this.dT.dm.fl().get(n);
+        localObject = (j)this.eV.eq.gb().get(n);
         if (((j)localObject).isChecked()) {
           d((j)localObject);
         }
         if (((j)localObject).isCheckable()) {
-          ((j)localObject).U(false);
+          ((j)localObject).W(false);
         }
         if (((j)localObject).hasSubMenu())
         {
@@ -63,11 +63,11 @@ public final class c$b
           if (localSubMenu.hasVisibleItems())
           {
             if (n != 0) {
-              this.dU.add(new c.e(this.dT.dS, 0));
+              this.mItems.add(new c.e(this.eV.eU, 0));
             }
-            this.dU.add(new c.f((j)localObject));
+            this.mItems.add(new c.f((j)localObject));
             k = 0;
-            int i3 = this.dU.size();
+            int i3 = this.mItems.size();
             int i4 = localSubMenu.size();
             int i1 = 0;
             while (i1 < i4)
@@ -85,18 +85,18 @@ public final class c$b
                   }
                 }
                 if (localj.isCheckable()) {
-                  localj.U(false);
+                  localj.W(false);
                 }
                 if (((j)localObject).isChecked()) {
                   d((j)localObject);
                 }
-                this.dU.add(new c.f(localj));
+                this.mItems.add(new c.f(localj));
               }
               i1 += 1;
               k = m;
             }
             if (k != 0) {
-              f(i3, this.dU.size());
+              f(i3, this.mItems.size());
             }
           }
           k = j;
@@ -112,7 +112,7 @@ public final class c$b
           k = ((j)localObject).getGroupId();
           if (k != j)
           {
-            j = this.dU.size();
+            j = this.mItems.size();
             if (((j)localObject).getIcon() != null)
             {
               bool2 = true;
@@ -122,7 +122,7 @@ public final class c$b
               if (n != 0)
               {
                 i = j + 1;
-                this.dU.add(new c.e(this.dT.dS, this.dT.dS));
+                this.mItems.add(new c.e(this.eV.eU, this.eV.eU));
                 bool1 = bool2;
               }
             }
@@ -133,8 +133,8 @@ public final class c$b
     for (;;)
     {
       localObject = new c.f((j)localObject);
-      ((c.f)localObject).dZ = bool1;
-      this.dU.add(localObject);
+      ((c.f)localObject).eY = bool1;
+      this.mItems.add(localObject);
       j = i;
       i = k;
       break;
@@ -143,35 +143,35 @@ public final class c$b
       if ((!bool1) && (((j)localObject).getIcon() != null))
       {
         bool1 = true;
-        f(i, this.dU.size());
+        f(i, this.mItems.size());
         continue;
-        this.dp = false;
+        this.et = false;
         return;
       }
     }
   }
   
-  public final Bundle X()
+  public final Bundle aI()
   {
     Bundle localBundle = new Bundle();
-    if (this.dV != null) {
-      localBundle.putInt("android:menu:checked", this.dV.getItemId());
+    if (this.eW != null) {
+      localBundle.putInt("android:menu:checked", this.eW.getItemId());
     }
     SparseArray localSparseArray = new SparseArray();
-    int j = this.dU.size();
+    int j = this.mItems.size();
     int i = 0;
     if (i < j)
     {
-      Object localObject = (c.d)this.dU.get(i);
+      Object localObject = (c.d)this.mItems.get(i);
       j localj;
       if ((localObject instanceof c.f))
       {
-        localj = ((c.f)localObject).dY;
+        localj = ((c.f)localObject).eX;
         if (localj == null) {
-          break label131;
+          break label132;
         }
       }
-      label131:
+      label132:
       for (localObject = localj.getActionView();; localObject = null)
       {
         if (localObject != null)
@@ -190,19 +190,19 @@ public final class c$b
   
   public final void d(j paramj)
   {
-    if ((this.dV == paramj) || (!paramj.isCheckable())) {
+    if ((this.eW == paramj) || (!paramj.isCheckable())) {
       return;
     }
-    if (this.dV != null) {
-      this.dV.setChecked(false);
+    if (this.eW != null) {
+      this.eW.setChecked(false);
     }
-    this.dV = paramj;
+    this.eW = paramj;
     paramj.setChecked(true);
   }
   
   public final int getItemCount()
   {
-    return this.dU.size();
+    return this.mItems.size();
   }
   
   public final long getItemId(int paramInt)
@@ -212,7 +212,7 @@ public final class c$b
   
   public final int getItemViewType(int paramInt)
   {
-    c.d locald = (c.d)this.dU.get(paramInt);
+    c.d locald = (c.d)this.mItems.get(paramInt);
     if ((locald instanceof c.e)) {
       return 2;
     }
@@ -221,7 +221,7 @@ public final class c$b
     }
     if ((locald instanceof c.f))
     {
-      if (((c.f)locald).dY.hasSubMenu()) {
+      if (((c.f)locald).eX.hasSubMenu()) {
         return 1;
       }
       return 0;

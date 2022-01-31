@@ -2,6 +2,7 @@ package com.tencent.tmassistantsdk.openSDK;
 
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tmassistantsdk.protocol.ProtocolPackage;
 import com.tencent.tmassistantsdk.util.Base64;
 import java.util.Iterator;
@@ -45,16 +46,23 @@ public class OpenSDKTool4Assistant
   
   public static String decryptUri(String paramString)
   {
-    return new String(ProtocolPackage.decrypt(Base64.decode(paramString, 0), "ji*9^&43U0X-~./(".getBytes()));
+    AppMethodBeat.i(75849);
+    paramString = new String(ProtocolPackage.decrypt(Base64.decode(paramString, 0), "ji*9^&43U0X-~./(".getBytes()));
+    AppMethodBeat.o(75849);
+    return paramString;
   }
   
   public static String encryptUri(String paramString)
   {
-    return Base64.encodeToString(ProtocolPackage.encrypt(paramString.getBytes(), "ji*9^&43U0X-~./(".getBytes()), 0);
+    AppMethodBeat.i(75848);
+    paramString = Base64.encodeToString(ProtocolPackage.encrypt(paramString.getBytes(), "ji*9^&43U0X-~./(".getBytes()), 0);
+    AppMethodBeat.o(75848);
+    return paramString;
   }
   
   public static void sendDownloadStateChanged(Context paramContext, Map<String, String> paramMap)
   {
+    AppMethodBeat.i(75847);
     Intent localIntent = new Intent("com.tencent.assistantOpenSDK.downloadStateChange.action");
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
@@ -63,6 +71,7 @@ public class OpenSDKTool4Assistant
       localIntent.putExtra((String)localEntry.getKey(), (String)localEntry.getValue());
     }
     paramContext.sendBroadcast(localIntent);
+    AppMethodBeat.o(75847);
   }
 }
 

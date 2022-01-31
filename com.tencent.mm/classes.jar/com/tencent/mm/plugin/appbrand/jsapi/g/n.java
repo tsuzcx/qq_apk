@@ -1,100 +1,81 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
-import com.tencent.mm.plugin.appbrand.jsapi.base.g;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.g.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.e;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.f;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.widget.d.a;
-import com.tencent.mm.plugin.appbrand.widget.d.a.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.s.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class n
   extends a
 {
-  public static final int CTRL_INDEX = 200;
-  public static final String NAME = "translateMapMarker";
-  private a.a gtu;
+  public static final int CTRL_INDEX = 136;
+  public static final String NAME = "includeMapPoints";
   
-  protected final boolean a(e parame, JSONObject paramJSONObject, a.a parama, g paramg)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    this.gtu = parama;
+    AppMethodBeat.i(93851);
+    super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      y.e("MicroMsg.JsApiTranslateMapMarker", "data is null");
-      return false;
+      ab.e("MicroMsg.JsApiIncludeMapPoints", "data is null");
+      paramc.h(paramInt, j("fail:invalid data", null));
+      AppMethodBeat.o(93851);
+      return;
     }
-    y.d("MicroMsg.JsApiTranslateMapMarker", "onUpdateView, data:%s", new Object[] { paramJSONObject.toString() });
-    parame = f.o(parame.getAppId(), parame.ahJ(), p(paramJSONObject));
-    if (parame == null)
+    ab.i("MicroMsg.JsApiIncludeMapPoints", "data:%s", new Object[] { paramJSONObject });
+    b localb = f(paramc, paramJSONObject);
+    if (localb == null)
     {
-      y.e("MicroMsg.JsApiTranslateMapMarker", "mapView is null, return");
-      return false;
+      ab.e("MicroMsg.JsApiIncludeMapPoints", "mapView is null, return");
+      paramc.h(paramInt, j("fail:mapview is null", null));
+      AppMethodBeat.o(93851);
+      return;
     }
-    parama = paramJSONObject.optString("markerId");
-    for (;;)
-    {
-      LinkedList localLinkedList;
-      int i;
-      try
-      {
-        paramJSONObject = new JSONArray(paramJSONObject.optString("keyFrames"));
-        localLinkedList = new LinkedList();
-        y.d("MicroMsg.JsApiTranslateMapMarker", "keyFramesArray size :%d", new Object[] { Integer.valueOf(paramJSONObject.length()) });
-        i = 0;
-        if (i < paramJSONObject.length())
-        {
-          JSONObject localJSONObject = (JSONObject)paramJSONObject.get(i);
-          b.e locale = new b.e();
-          locale.duration = localJSONObject.optInt("duration", 0);
-          if (locale.duration == 0)
-          {
-            y.e("MicroMsg.JsApiTranslateMapMarker", "keyFrame.duration is zero, err continue");
-          }
-          else
-          {
-            locale.rotate = ((float)localJSONObject.optDouble("rotate", 0.0D));
-            locale.latitude = bk.getFloat(localJSONObject.optString("latitude"), 0.0F);
-            locale.longitude = bk.getFloat(localJSONObject.optString("longitude"), 0.0F);
-            localLinkedList.add(locale);
-          }
-        }
-      }
-      catch (JSONException parame)
-      {
-        y.e("MicroMsg.JsApiTranslateMapMarker", "parse keyFrames error, exception : %s", new Object[] { parame });
-        paramg.tT(h("fail", null));
-        return false;
-      }
-      parame.a(parama, localLinkedList, new n.1(this, paramg));
-      return true;
-      i += 1;
-    }
-  }
-  
-  protected final boolean aik()
-  {
-    return true;
-  }
-  
-  protected final int p(JSONObject paramJSONObject)
-  {
     try
     {
-      int i = paramJSONObject.optInt("mapId");
-      return i;
+      if (paramJSONObject.has("points"))
+      {
+        ArrayList localArrayList = new ArrayList();
+        Object localObject = paramJSONObject.optString("points");
+        if (!bo.isNullOrNil((String)localObject))
+        {
+          localObject = new JSONArray((String)localObject);
+          i = 0;
+          while (i < ((JSONArray)localObject).length())
+          {
+            JSONObject localJSONObject = (JSONObject)((JSONArray)localObject).get(i);
+            float f1 = bo.getFloat(localJSONObject.optString("latitude"), 0.0F);
+            float f2 = bo.getFloat(localJSONObject.optString("longitude"), 0.0F);
+            localArrayList.add(new n.1(this, f1, f2));
+            i += 1;
+          }
+        }
+        int i = 0;
+        paramJSONObject = paramJSONObject.optString("padding");
+        if (!bo.isNullOrNil(paramJSONObject)) {
+          i = g.a(new JSONArray(paramJSONObject), 0);
+        }
+        if (localArrayList.size() > 0) {
+          localb.h(localArrayList, i);
+        }
+      }
+      a(paramc, paramInt, j("ok", null), true, localb.aDx());
+      AppMethodBeat.o(93851);
+      return;
     }
     catch (Exception paramJSONObject)
     {
-      y.e("MicroMsg.JsApiTranslateMapMarker", "get mapId error, exception : %s", new Object[] { paramJSONObject });
+      ab.e("MicroMsg.JsApiIncludeMapPoints", "parse points error, exception : %s", new Object[] { paramJSONObject });
+      paramc.h(paramInt, j("fail:internal error", null));
+      AppMethodBeat.o(93851);
     }
-    return -1;
   }
 }
 

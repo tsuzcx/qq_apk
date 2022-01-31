@@ -5,12 +5,12 @@ public final class c$jp
 {
   public c$jp()
   {
-    super("streamingVideoPlay", "playStreamingVideo", 209, false);
+    super("showKeyboard", "showKeyboard", 187, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.c.jp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.mm.modelvideo;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class i$1
   implements Runnable
 {
@@ -7,15 +9,17 @@ final class i$1
   
   public final void run()
   {
-    if (this.eGG.eGE != null) {
-      this.eGG.eGE.stop();
+    AppMethodBeat.i(50715);
+    if (this.fWw.fWu != null) {
+      this.fWw.fWu.stop();
     }
-    this.eGG.eGE = null;
+    this.fWw.fWu = null;
+    AppMethodBeat.o(50715);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelvideo.i.1
  * JD-Core Version:    0.7.0.1
  */

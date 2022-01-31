@@ -7,105 +7,117 @@ import android.text.Editable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import com.tencent.mm.ac.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class AutoHintSizeEditText
   extends EditText
 {
-  private float vbP;
-  private Paint vbQ;
-  private String vbR = "";
-  private int vbS = -2147483648;
-  private float vbT;
+  private float zql;
+  private Paint zqm;
+  private String zqn;
+  private int zqo;
+  private float zqp;
   
   public AutoHintSizeEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(107125);
+    this.zqn = "";
+    this.zqo = -2147483648;
     init();
+    AppMethodBeat.o(107125);
   }
   
   public AutoHintSizeEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(107124);
+    this.zqn = "";
+    this.zqo = -2147483648;
     init();
+    AppMethodBeat.o(107124);
   }
   
   private void a(Editable paramEditable, CharSequence paramCharSequence, int paramInt)
   {
-    if ((paramEditable != null) && (!bk.bl(paramEditable.toString()))) {
-      if (getTextSize() != this.vbP)
-      {
-        y.v("MicroMsg.AutoHintSizeEdittext", "content not null, reset text size %f", new Object[] { Float.valueOf(this.vbP) });
-        setTextSize(0, this.vbP);
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(107127);
+    if ((paramEditable != null) && (!bo.isNullOrNil(paramEditable.toString())))
     {
-      return;
-      if ((paramCharSequence == null) || (bk.bl(paramCharSequence.toString())))
+      if (getTextSize() != this.zql)
       {
-        if (getTextSize() != this.vbP)
-        {
-          y.v("MicroMsg.AutoHintSizeEdittext", "hint is null, reset text size %f", new Object[] { Float.valueOf(this.vbP) });
-          setTextSize(0, this.vbP);
-        }
+        ab.v("MicroMsg.AutoHintSizeEdittext", "content not null, reset text size %f", new Object[] { Float.valueOf(this.zql) });
+        setTextSize(0, this.zql);
       }
-      else
+      AppMethodBeat.o(107127);
+      return;
+    }
+    if ((paramCharSequence == null) || (bo.isNullOrNil(paramCharSequence.toString())))
+    {
+      if (getTextSize() != this.zql)
       {
-        paramEditable = paramCharSequence.toString();
-        if ((this.vbR.equals(paramEditable)) && (this.vbS == paramInt))
+        ab.v("MicroMsg.AutoHintSizeEdittext", "hint is null, reset text size %f", new Object[] { Float.valueOf(this.zql) });
+        setTextSize(0, this.zql);
+      }
+      AppMethodBeat.o(107127);
+      return;
+    }
+    paramEditable = paramCharSequence.toString();
+    if ((this.zqn.equals(paramEditable)) && (this.zqo == paramInt))
+    {
+      if (getTextSize() != this.zqp)
+      {
+        ab.v("MicroMsg.AutoHintSizeEdittext", "use last hint text size %f", new Object[] { Float.valueOf(this.zqp) });
+        setTextSize(0, this.zqp);
+      }
+      AppMethodBeat.o(107127);
+      return;
+    }
+    this.zqn = paramEditable;
+    this.zqo = paramInt;
+    if (getPaint().measureText(paramEditable) > paramInt)
+    {
+      int j = getResources().getDimensionPixelSize(2131427862);
+      int k = a.fromDPToPix(getContext(), 1);
+      int i = (int)this.zql - k;
+      while (i > j)
+      {
+        this.zqm.setTextSize(i);
+        if (this.zqm.measureText(paramEditable) < paramInt)
         {
-          if (getTextSize() != this.vbT)
-          {
-            y.v("MicroMsg.AutoHintSizeEdittext", "use last hint text size %f", new Object[] { Float.valueOf(this.vbT) });
-            setTextSize(0, this.vbT);
-          }
+          ab.v("MicroMsg.AutoHintSizeEdittext", "get new hint text size %d", new Object[] { Integer.valueOf(i) });
+          this.zqp = i;
+          setTextSize(0, i);
+          AppMethodBeat.o(107127);
+          return;
         }
-        else
-        {
-          this.vbR = paramEditable;
-          this.vbS = paramInt;
-          if (getPaint().measureText(paramEditable) > paramInt)
-          {
-            int j = getResources().getDimensionPixelSize(a.e.SmallestTextSize);
-            int k = a.fromDPToPix(getContext(), 1);
-            int i = (int)this.vbP - k;
-            while (i > j)
-            {
-              this.vbQ.setTextSize(i);
-              if (this.vbQ.measureText(paramEditable) < paramInt)
-              {
-                y.v("MicroMsg.AutoHintSizeEdittext", "get new hint text size %d", new Object[] { Integer.valueOf(i) });
-                this.vbT = i;
-                setTextSize(0, i);
-                return;
-              }
-              i -= k;
-            }
-          }
-        }
+        i -= k;
       }
     }
+    AppMethodBeat.o(107127);
   }
   
   private void init()
   {
-    this.vbP = getTextSize();
-    this.vbT = this.vbP;
-    this.vbQ = new Paint(getPaint());
+    AppMethodBeat.i(107126);
+    this.zql = getTextSize();
+    this.zqp = this.zql;
+    this.zqm = new Paint(getPaint());
     addTextChangedListener(new AutoHintSizeEditText.1(this));
+    AppMethodBeat.o(107126);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    y.d("MicroMsg.AutoHintSizeEdittext", "on layout, changed %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.i(107128);
+    ab.d("MicroMsg.AutoHintSizeEdittext", "on layout, changed %B", new Object[] { Boolean.valueOf(paramBoolean) });
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean) {
       a(getText(), getHint(), paramInt3 - paramInt1 - getPaddingLeft() - getPaddingRight());
     }
+    AppMethodBeat.o(107128);
   }
 }
 

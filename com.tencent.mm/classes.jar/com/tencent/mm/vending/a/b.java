@@ -8,50 +8,50 @@ import junit.framework.Assert;
 public abstract class b<_Struct, _Item>
   extends com.tencent.mm.vending.base.b<_Struct, Cursor>
 {
-  protected _Item Cy;
-  protected Map<Integer, _Item> ikn = null;
-  public int mCount;
-  public b.a wsM;
-  public Cursor wsN = null;
+  public b.a ANH;
+  protected Cursor ANI = null;
+  protected _Item Dh;
+  protected Map<Integer, _Item> kln = null;
+  protected int mCount;
   
   public b(_Item param_Item)
   {
-    this.Cy = param_Item;
+    this.Dh = param_Item;
     this.mCount = -1;
-    cKN();
+    dQd();
   }
   
   private Cursor getCursor()
   {
-    if ((this.wsN == null) || (this.wsN.isClosed())) {
-      Assert.assertNotNull(this.wsN);
+    if ((this.ANI == null) || (this.ANI.isClosed())) {
+      Assert.assertNotNull(this.ANI);
     }
-    return this.wsN;
+    return this.ANI;
   }
   
   public abstract _Item a(_Item param_Item, Cursor paramCursor);
   
-  public abstract Cursor bJN();
-  
-  public final void bcS()
+  public final void bKb()
   {
-    if (this.ikn != null) {
-      this.ikn.clear();
+    if (this.kln != null) {
+      this.kln.clear();
     }
-    if (this.wsN != null) {
-      this.wsN.close();
+    if (this.ANI != null) {
+      this.ANI.close();
     }
     this.mCount = -1;
   }
   
-  public final void cKN()
+  protected abstract Cursor cwQ();
+  
+  public final void dQd()
   {
-    if (this.ikn == null) {
-      this.ikn = new HashMap();
+    if (this.kln == null) {
+      this.kln = new HashMap();
     }
   }
   
-  public final int cKO()
+  public final int dQe()
   {
     if (this.mCount < 0) {
       this.mCount = getCursor().getCount();
@@ -61,14 +61,14 @@ public abstract class b<_Struct, _Item>
   
   public void destroyAsynchronous()
   {
-    bcS();
+    bKb();
   }
   
   public final _Item getItem(int paramInt)
   {
-    if (this.ikn != null)
+    if (this.kln != null)
     {
-      localObject = this.ikn.get(Integer.valueOf(paramInt));
+      localObject = this.kln.get(Integer.valueOf(paramInt));
       if (localObject != null) {
         return localObject;
       }
@@ -76,17 +76,17 @@ public abstract class b<_Struct, _Item>
     if ((paramInt < 0) || (!getCursor().moveToPosition(paramInt))) {
       return null;
     }
-    if (this.ikn == null) {
-      return a(this.Cy, getCursor());
+    if (this.kln == null) {
+      return a(this.Dh, getCursor());
     }
     Object localObject = a(null, getCursor());
-    this.ikn.put(Integer.valueOf(paramInt), localObject);
+    this.kln.put(Integer.valueOf(paramInt), localObject);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.vending.a.b
  * JD-Core Version:    0.7.0.1
  */

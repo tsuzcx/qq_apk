@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.s;
+import com.tencent.mm.modelsimple.u;
 import com.tencent.mm.ui.applet.SecurityImage.b;
 
 final class o$4
@@ -11,13 +12,16 @@ final class o$4
 {
   o$4(o paramo, String paramString1, String paramString2, m paramm, Boolean paramBoolean) {}
   
-  public final void Ws()
+  public final void apW()
   {
-    this.fpr.fpj.XM();
-    g.Dk().a(126, this.fpr);
-    s locals = new s("", this.fpb, this.fpc, 0, "", this.fpr.fpj.bSe, "", "", this.fpr.fpp, this.fpr.fpj.eAa, "", ((s)this.bEe).Qz(), "", true, this.fpd.booleanValue());
-    locals.ne(this.fpr.fpj.fog);
-    g.Dk().a(locals, 0);
+    AppMethodBeat.i(125253);
+    this.gGO.gGG.hideVKB();
+    g.Rc().a(126, this.gGO);
+    u localu = new u("", this.gGx, this.gGy, 0, "", this.gGO.gGG.czF, "", "", this.gGO.gGM, this.gGO.gGG.fPQ, "", ((u)this.ckS).ajG(), "", true, this.gGz.booleanValue());
+    localu.uq(this.gGO.gGG.gFA);
+    localu.ur(this.gGO.gGG.gHo);
+    g.Rc().a(localu, 0);
+    AppMethodBeat.o(125253);
   }
 }
 

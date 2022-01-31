@@ -2,29 +2,32 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-import com.tencent.mm.ag.b;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.b;
+import com.tencent.mm.ah.o;
+import com.tencent.mm.sdk.platformtools.az.a;
 
 final class d$4
-  implements av.a
+  implements az.a
 {
   d$4(d paramd, String paramString1, ImageView paramImageView, String paramString2) {}
   
-  public final boolean JS()
+  public final boolean acS()
   {
-    Bitmap localBitmap2 = b.a(this.dol, false, -1);
+    AppMethodBeat.i(22019);
+    Bitmap localBitmap2 = b.b(this.efI, false, -1);
     Bitmap localBitmap1 = localBitmap2;
     if (localBitmap2 == null)
     {
-      o.JQ();
-      localBitmap1 = com.tencent.mm.ag.d.kg(this.dol);
+      o.acQ();
+      localBitmap1 = com.tencent.mm.ah.d.ra(this.efI);
     }
-    d.a(this.lue, this.bid, this.doz, localBitmap1);
+    d.a(this.nRw, this.mPw, this.val$key, localBitmap1);
+    AppMethodBeat.o(22019);
     return true;
   }
   
-  public final boolean JT()
+  public final boolean acT()
   {
     return false;
   }

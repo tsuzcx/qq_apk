@@ -1,29 +1,20 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.pluginsdk.model.app.am;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.c.a;
+import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.p.a;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class d$d$5
-  implements am
+  implements p.a
 {
-  d$d$5(d.d paramd, f paramf, a parama, g.a parama1, String paramString, bi parambi) {}
+  d$d$5(d.d paramd, d.c paramc) {}
   
-  public final void cW(boolean paramBoolean)
+  public final void i(String paramString, Bitmap paramBitmap)
   {
-    if ((this.rzw != null) && (this.rzw.ZH()))
-    {
-      if (paramBoolean) {
-        d.d.a(this.vBl, this.gBQ, this.vhu, this.rzw, this.dUy.field_msgSvrId, 3);
-      }
-    }
-    else {
-      return;
-    }
-    d.d.a(this.vBl, this.gBQ, this.vhu, this.rzw, this.dUy.field_msgSvrId, 7);
+    AppMethodBeat.i(153917);
+    al.d(new d.d.5.1(this, paramBitmap));
+    AppMethodBeat.o(153917);
   }
 }
 

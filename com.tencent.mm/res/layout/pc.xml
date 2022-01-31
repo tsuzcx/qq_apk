@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/ey" style="@style/l2"
+<LinearLayout android:orientation="vertical" android:background="@color/au" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/me" android:background="@drawable/ih" android:layout_width="fill_parent" android:layout_height="@dimen/ey">
-        <com.tencent.mm.ui.AddressView android:id="@id/mc" android:layout_width="fill_parent" android:layout_height="@dimen/ey" />
-    </RelativeLayout>
+    <com.tencent.mm.plugin.collect.ui.CollectPullDownView android:id="@id/azo" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/azp" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/w6" android:cacheColorHint="#00000000" android:divider="@color/au" android:dividerHeight="@dimen/ll" android:headerDividersEnabled="false" android:footerDividersEnabled="true" android:overScrollMode="never" />
+        <LinearLayout android:gravity="center_horizontal" android:id="@id/azq" android:background="@color/a6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0dip" android:textColor="@color/w6" android:id="@id/azr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/at5" />
+        </LinearLayout>
+    </com.tencent.mm.plugin.collect.ui.CollectPullDownView>
 </LinearLayout>

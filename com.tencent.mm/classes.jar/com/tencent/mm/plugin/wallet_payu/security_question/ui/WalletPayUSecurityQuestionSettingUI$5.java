@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wallet_payu.security_question.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.a;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 final class WalletPayUSecurityQuestionSettingUI$5
@@ -14,14 +14,17 @@ final class WalletPayUSecurityQuestionSettingUI$5
   
   public final void onClick(View paramView)
   {
-    if (WalletPayUSecurityQuestionSettingUI.d(this.qOX).bXK())
+    AppMethodBeat.i(48586);
+    if (WalletPayUSecurityQuestionSettingUI.d(this.uEe).cXs())
     {
-      this.qOX.BX.putString("key_question_id", WalletPayUSecurityQuestionSettingUI.f(this.qOX));
-      this.qOX.BX.putString("key_question_answer", WalletPayUSecurityQuestionSettingUI.c(this.qOX).getText());
-      a.j(this.qOX, this.qOX.BX);
+      this.uEe.getInput().putString("key_question_id", WalletPayUSecurityQuestionSettingUI.f(this.uEe));
+      this.uEe.getInput().putString("key_question_answer", WalletPayUSecurityQuestionSettingUI.c(this.uEe).getText());
+      a.j(this.uEe, this.uEe.getInput());
+      AppMethodBeat.o(48586);
       return;
     }
-    WalletPayUSecurityQuestionSettingUI.a.a(WalletPayUSecurityQuestionSettingUI.d(this.qOX));
+    WalletPayUSecurityQuestionSettingUI.a.a(WalletPayUSecurityQuestionSettingUI.d(this.uEe));
+    AppMethodBeat.o(48586);
   }
 }
 

@@ -1,35 +1,50 @@
 package com.tencent.mm.plugin.wallet_payu.pay.ui;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.ui.g;
+import com.tencent.mm.plugin.wallet_core.ui.i;
 import java.util.ArrayList;
 
 public final class a
-  extends g
+  extends i
 {
   public a(Context paramContext, ArrayList<Bankcard> paramArrayList, int paramInt, Orders paramOrders)
   {
     super(paramContext, paramArrayList, paramInt, paramOrders);
   }
   
-  public final Bankcard AH(int paramInt)
+  public final Bankcard Il(int paramInt)
   {
-    if ((this.qgr != null) && (this.qgr.size() != 0)) {
-      return (Bankcard)this.qgr.get(paramInt);
+    AppMethodBeat.i(48459);
+    Bankcard localBankcard;
+    if ((this.tNG != null) && (this.tNG.size() != 0))
+    {
+      localBankcard = (Bankcard)this.tNG.get(paramInt);
+      AppMethodBeat.o(48459);
+      return localBankcard;
     }
-    if (paramInt != getCount() - 1) {
-      return (Bankcard)this.qgr.get(paramInt);
+    if (paramInt != getCount() - 1)
+    {
+      localBankcard = (Bankcard)this.tNG.get(paramInt);
+      AppMethodBeat.o(48459);
+      return localBankcard;
     }
+    AppMethodBeat.o(48459);
     return null;
   }
   
   public final int getCount()
   {
-    if ((this.qgr != null) && (this.qgr.size() != 0)) {
-      return this.qgr.size();
+    AppMethodBeat.i(48458);
+    if ((this.tNG != null) && (this.tNG.size() != 0))
+    {
+      int i = this.tNG.size();
+      AppMethodBeat.o(48458);
+      return i;
     }
+    AppMethodBeat.o(48458);
     return 1;
   }
 }

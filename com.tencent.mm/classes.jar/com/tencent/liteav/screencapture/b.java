@@ -10,8 +10,14 @@ import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjection.Callback;
 import android.media.projection.MediaProjectionManager;
 import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.view.Display;
 import android.view.Surface;
+import android.view.WindowManager;
 import com.tencent.liteav.basic.c.a;
+import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.video.TXScreenCapture.TXScreenCaptureAssistantActivity;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
@@ -22,29 +28,124 @@ import java.util.Iterator;
 @TargetApi(21)
 public class b
 {
-  private static final String b = b.class.getSimpleName();
-  private static b c = new b();
-  MediaProjection.Callback a = new MediaProjection.Callback()
+  private static final String b;
+  private static b c;
+  MediaProjection.Callback a;
+  private HashMap<Surface, VirtualDisplay> d;
+  private Context e;
+  private MediaProjectionManager f;
+  private MediaProjection g;
+  private HashSet<b.b> h;
+  private int i;
+  private Handler j;
+  private HashSet<Object> k;
+  private boolean l;
+  private WeakReference<a> m;
+  private HandlerThread n;
+  private Handler o;
+  private int p;
+  private HashSet<b.a> q;
+  private Runnable r;
+  private BroadcastReceiver s;
+  
+  static
   {
-    public void onStop()
+    AppMethodBeat.i(66789);
+    b = b.class.getSimpleName();
+    c = new b();
+    AppMethodBeat.o(66789);
+  }
+  
+  private b()
+  {
+    AppMethodBeat.i(66771);
+    this.d = new HashMap();
+    this.e = null;
+    this.f = null;
+    this.g = null;
+    this.h = new HashSet();
+    this.i = 1;
+    this.j = null;
+    this.k = new HashSet();
+    this.l = false;
+    this.m = null;
+    this.n = new HandlerThread("TXCScreenCaptureImplSingleton");
+    this.o = null;
+    this.p = 0;
+    this.q = new HashSet();
+    this.r = new Runnable()
     {
-      if (!b.a(b.this)) {
+      public void run()
+      {
+        AppMethodBeat.i(66800);
+        b.a(b.this);
+        b.a locala;
+        try
+        {
+          if (b.b(b.this) == null) {
+            return;
+          }
+          int i = ((WindowManager)b.b(b.this).getSystemService("window")).getDefaultDisplay().getRotation();
+          if ((i != 0) && (i != 2)) {
+            break label177;
+          }
+          if (b.c(b.this) != 0)
+          {
+            TXCLog.d(b.c(), "ORIENTATION_PORTRAIT, mDelegateSet size = " + b.d(b.this).size());
+            Iterator localIterator1 = b.d(b.this).iterator();
+            while (localIterator1.hasNext())
+            {
+              locala = (b.a)localIterator1.next();
+              if (locala != null) {
+                locala.a(0);
+              }
+            }
+          }
+          b.a(b.this, 0);
+        }
+        finally
+        {
+          AppMethodBeat.o(66800);
+        }
+        AppMethodBeat.o(66800);
         return;
+        label177:
+        if (b.c(b.this) != 90)
+        {
+          TXCLog.d(b.c(), "ORIENTATION_LANDSCAPE, mDelegateSet size = " + b.d(b.this).size());
+          Iterator localIterator2 = b.d(b.this).iterator();
+          while (localIterator2.hasNext())
+          {
+            locala = (b.a)localIterator2.next();
+            if (locala != null) {
+              locala.a(90);
+            }
+          }
+        }
+        b.a(b.this, 90);
+        AppMethodBeat.o(66800);
       }
-      b.a(b.this, false);
-    }
-  };
-  private HashMap<Surface, VirtualDisplay> d = new HashMap();
-  private Context e = null;
-  private MediaProjectionManager f = null;
-  private MediaProjection g = null;
-  private HashSet<b.a> h = new HashSet();
-  private int i = 1;
-  private Handler j = null;
-  private HashSet<Object> k = new HashSet();
-  private boolean l = false;
-  private WeakReference<a> m = null;
-  private BroadcastReceiver n = new b.3(this);
+    };
+    this.a = new MediaProjection.Callback()
+    {
+      public void onStop()
+      {
+        AppMethodBeat.i(66769);
+        if (!b.e(b.this))
+        {
+          AppMethodBeat.o(66769);
+          return;
+        }
+        b.a(b.this, false);
+        AppMethodBeat.o(66769);
+      }
+    };
+    this.s = new b.7(this);
+    this.j = new Handler(Looper.getMainLooper());
+    this.n.start();
+    this.o = new Handler(this.n.getLooper());
+    AppMethodBeat.o(66771);
+  }
   
   public static b a()
   {
@@ -56,193 +157,232 @@ public class b
   private void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 66	com/tencent/liteav/screencapture/b:e	Landroid/content/Context;
-    //   6: ifnull +14 -> 20
-    //   9: aload_0
-    //   10: getfield 66	com/tencent/liteav/screencapture/b:e	Landroid/content/Context;
-    //   13: aload_0
-    //   14: getfield 95	com/tencent/liteav/screencapture/b:n	Landroid/content/BroadcastReceiver;
-    //   17: invokevirtual 116	android/content/Context:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
-    //   20: iload_1
-    //   21: sipush 1001
-    //   24: if_icmpne +16 -> 40
-    //   27: iload_2
-    //   28: iconst_m1
-    //   29: if_icmpne +11 -> 40
-    //   32: aload_0
-    //   33: getfield 77	com/tencent/liteav/screencapture/b:i	I
-    //   36: iconst_2
-    //   37: if_icmpeq +23 -> 60
-    //   40: aload_0
-    //   41: iconst_1
-    //   42: putfield 77	com/tencent/liteav/screencapture/b:i	I
+    //   0: ldc 161
+    //   2: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: monitorenter
+    //   7: aload_0
+    //   8: getfield 91	com/tencent/liteav/screencapture/b:e	Landroid/content/Context;
+    //   11: ifnull +14 -> 25
+    //   14: aload_0
+    //   15: getfield 91	com/tencent/liteav/screencapture/b:e	Landroid/content/Context;
+    //   18: aload_0
+    //   19: getfield 138	com/tencent/liteav/screencapture/b:s	Landroid/content/BroadcastReceiver;
+    //   22: invokevirtual 167	android/content/Context:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
+    //   25: iload_1
+    //   26: sipush 1001
+    //   29: if_icmpne +16 -> 45
+    //   32: iload_2
+    //   33: iconst_m1
+    //   34: if_icmpne +11 -> 45
+    //   37: aload_0
+    //   38: getfield 102	com/tencent/liteav/screencapture/b:i	I
+    //   41: iconst_2
+    //   42: if_icmpeq +28 -> 70
     //   45: aload_0
-    //   46: getfield 85	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
-    //   49: sipush -1308
-    //   52: ldc 118
-    //   54: invokestatic 123	com/tencent/liteav/basic/util/a:a	(Ljava/lang/ref/WeakReference;ILjava/lang/String;)V
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: return
-    //   60: aload_0
-    //   61: aload_0
-    //   62: getfield 68	com/tencent/liteav/screencapture/b:f	Landroid/media/projection/MediaProjectionManager;
-    //   65: iload_2
-    //   66: aload_3
-    //   67: invokevirtual 129	android/media/projection/MediaProjectionManager:getMediaProjection	(ILandroid/content/Intent;)Landroid/media/projection/MediaProjection;
-    //   70: putfield 70	com/tencent/liteav/screencapture/b:g	Landroid/media/projection/MediaProjection;
-    //   73: aload_0
-    //   74: getfield 70	com/tencent/liteav/screencapture/b:g	Landroid/media/projection/MediaProjection;
-    //   77: aload_0
-    //   78: getfield 90	com/tencent/liteav/screencapture/b:a	Landroid/media/projection/MediaProjection$Callback;
-    //   81: aload_0
-    //   82: getfield 79	com/tencent/liteav/screencapture/b:j	Landroid/os/Handler;
-    //   85: invokevirtual 135	android/media/projection/MediaProjection:registerCallback	(Landroid/media/projection/MediaProjection$Callback;Landroid/os/Handler;)V
-    //   88: aload_0
-    //   89: iconst_1
-    //   90: putfield 83	com/tencent/liteav/screencapture/b:l	Z
-    //   93: aload_0
-    //   94: getfield 75	com/tencent/liteav/screencapture/b:h	Ljava/util/HashSet;
-    //   97: invokevirtual 139	java/util/HashSet:size	()I
-    //   100: ifne +47 -> 147
+    //   46: iconst_1
+    //   47: putfield 102	com/tencent/liteav/screencapture/b:i	I
+    //   50: aload_0
+    //   51: getfield 110	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
+    //   54: sipush -1308
+    //   57: ldc 169
+    //   59: invokestatic 174	com/tencent/liteav/basic/util/b:a	(Ljava/lang/ref/WeakReference;ILjava/lang/String;)V
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: ldc 161
+    //   66: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: return
+    //   70: aload_0
+    //   71: aload_0
+    //   72: getfield 93	com/tencent/liteav/screencapture/b:f	Landroid/media/projection/MediaProjectionManager;
+    //   75: iload_2
+    //   76: aload_3
+    //   77: invokevirtual 180	android/media/projection/MediaProjectionManager:getMediaProjection	(ILandroid/content/Intent;)Landroid/media/projection/MediaProjection;
+    //   80: putfield 95	com/tencent/liteav/screencapture/b:g	Landroid/media/projection/MediaProjection;
+    //   83: aload_0
+    //   84: getfield 95	com/tencent/liteav/screencapture/b:g	Landroid/media/projection/MediaProjection;
+    //   87: aload_0
+    //   88: getfield 133	com/tencent/liteav/screencapture/b:a	Landroid/media/projection/MediaProjection$Callback;
+    //   91: aload_0
+    //   92: getfield 104	com/tencent/liteav/screencapture/b:j	Landroid/os/Handler;
+    //   95: invokevirtual 186	android/media/projection/MediaProjection:registerCallback	(Landroid/media/projection/MediaProjection$Callback;Landroid/os/Handler;)V
+    //   98: aload_0
+    //   99: iconst_1
+    //   100: putfield 108	com/tencent/liteav/screencapture/b:l	Z
     //   103: aload_0
-    //   104: getfield 85	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
-    //   107: sipush -1308
-    //   110: ldc 118
-    //   112: invokestatic 123	com/tencent/liteav/basic/util/a:a	(Ljava/lang/ref/WeakReference;ILjava/lang/String;)V
-    //   115: aload_0
-    //   116: iconst_1
-    //   117: putfield 77	com/tencent/liteav/screencapture/b:i	I
-    //   120: aload_0
-    //   121: monitorexit
-    //   122: return
-    //   123: astore_3
-    //   124: aload_0
-    //   125: monitorexit
-    //   126: aload_3
-    //   127: athrow
-    //   128: astore_3
-    //   129: aload_0
-    //   130: iconst_1
-    //   131: putfield 77	com/tencent/liteav/screencapture/b:i	I
-    //   134: aload_0
-    //   135: getfield 85	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
-    //   138: sipush -1308
-    //   141: ldc 118
-    //   143: invokestatic 123	com/tencent/liteav/basic/util/a:a	(Ljava/lang/ref/WeakReference;ILjava/lang/String;)V
-    //   146: return
-    //   147: aload_0
-    //   148: getfield 75	com/tencent/liteav/screencapture/b:h	Ljava/util/HashSet;
-    //   151: invokevirtual 143	java/util/HashSet:iterator	()Ljava/util/Iterator;
-    //   154: astore_3
+    //   104: getfield 100	com/tencent/liteav/screencapture/b:h	Ljava/util/HashSet;
+    //   107: invokevirtual 190	java/util/HashSet:size	()I
+    //   110: ifne +28 -> 138
+    //   113: aload_0
+    //   114: getfield 110	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
+    //   117: sipush -1308
+    //   120: ldc 169
+    //   122: invokestatic 174	com/tencent/liteav/basic/util/b:a	(Ljava/lang/ref/WeakReference;ILjava/lang/String;)V
+    //   125: aload_0
+    //   126: iconst_1
+    //   127: putfield 102	com/tencent/liteav/screencapture/b:i	I
+    //   130: aload_0
+    //   131: monitorexit
+    //   132: ldc 161
+    //   134: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   137: return
+    //   138: aload_0
+    //   139: getfield 100	com/tencent/liteav/screencapture/b:h	Ljava/util/HashSet;
+    //   142: invokevirtual 194	java/util/HashSet:iterator	()Ljava/util/Iterator;
+    //   145: astore_3
+    //   146: aload_3
+    //   147: invokeinterface 200 1 0
+    //   152: ifeq +155 -> 307
     //   155: aload_3
-    //   156: invokeinterface 149 1 0
-    //   161: ifeq +116 -> 277
-    //   164: aload_3
-    //   165: invokeinterface 153 1 0
-    //   170: checkcast 8	com/tencent/liteav/screencapture/b$a
-    //   173: astore 4
-    //   175: aload 4
-    //   177: ifnull -22 -> 155
-    //   180: aload 4
-    //   182: getfield 156	com/tencent/liteav/screencapture/b$a:a	Landroid/view/Surface;
-    //   185: ifnull -30 -> 155
-    //   188: aload 4
-    //   190: getfield 158	com/tencent/liteav/screencapture/b$a:b	I
-    //   193: ifeq -38 -> 155
-    //   196: aload 4
-    //   198: getfield 160	com/tencent/liteav/screencapture/b$a:c	I
-    //   201: ifeq -46 -> 155
-    //   204: aload_0
-    //   205: getfield 70	com/tencent/liteav/screencapture/b:g	Landroid/media/projection/MediaProjection;
-    //   208: ldc 162
-    //   210: aload 4
-    //   212: getfield 158	com/tencent/liteav/screencapture/b$a:b	I
-    //   215: aload 4
-    //   217: getfield 160	com/tencent/liteav/screencapture/b$a:c	I
-    //   220: iconst_1
-    //   221: iconst_1
-    //   222: aload 4
-    //   224: getfield 156	com/tencent/liteav/screencapture/b$a:a	Landroid/view/Surface;
-    //   227: aconst_null
-    //   228: aconst_null
-    //   229: invokevirtual 166	android/media/projection/MediaProjection:createVirtualDisplay	(Ljava/lang/String;IIIILandroid/view/Surface;Landroid/hardware/display/VirtualDisplay$Callback;Landroid/os/Handler;)Landroid/hardware/display/VirtualDisplay;
-    //   232: astore 5
-    //   234: aload 5
-    //   236: ifnonnull +23 -> 259
-    //   239: aload_0
-    //   240: getfield 85	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
-    //   243: sipush -1308
-    //   246: ldc 118
-    //   248: invokestatic 123	com/tencent/liteav/basic/util/a:a	(Ljava/lang/ref/WeakReference;ILjava/lang/String;)V
-    //   251: aload_0
-    //   252: iconst_1
-    //   253: putfield 77	com/tencent/liteav/screencapture/b:i	I
-    //   256: aload_0
-    //   257: monitorexit
-    //   258: return
-    //   259: aload_0
-    //   260: getfield 64	com/tencent/liteav/screencapture/b:d	Ljava/util/HashMap;
-    //   263: aload 4
-    //   265: getfield 156	com/tencent/liteav/screencapture/b$a:a	Landroid/view/Surface;
-    //   268: aload 5
-    //   270: invokevirtual 170	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   273: pop
-    //   274: goto -119 -> 155
-    //   277: aload_0
-    //   278: getfield 75	com/tencent/liteav/screencapture/b:h	Ljava/util/HashSet;
-    //   281: invokevirtual 173	java/util/HashSet:clear	()V
+    //   156: invokeinterface 204 1 0
+    //   161: checkcast 16	com/tencent/liteav/screencapture/b$b
+    //   164: astore 4
+    //   166: aload 4
+    //   168: ifnull -22 -> 146
+    //   171: aload 4
+    //   173: getfield 207	com/tencent/liteav/screencapture/b$b:a	Landroid/view/Surface;
+    //   176: ifnull -30 -> 146
+    //   179: aload 4
+    //   181: getfield 209	com/tencent/liteav/screencapture/b$b:b	I
+    //   184: ifeq -38 -> 146
+    //   187: aload 4
+    //   189: getfield 211	com/tencent/liteav/screencapture/b$b:c	I
+    //   192: ifeq -46 -> 146
+    //   195: aload_0
+    //   196: getfield 95	com/tencent/liteav/screencapture/b:g	Landroid/media/projection/MediaProjection;
+    //   199: ldc 213
+    //   201: aload 4
+    //   203: getfield 209	com/tencent/liteav/screencapture/b$b:b	I
+    //   206: aload 4
+    //   208: getfield 211	com/tencent/liteav/screencapture/b$b:c	I
+    //   211: iconst_1
+    //   212: iconst_1
+    //   213: aload 4
+    //   215: getfield 207	com/tencent/liteav/screencapture/b$b:a	Landroid/view/Surface;
+    //   218: aconst_null
+    //   219: aconst_null
+    //   220: invokevirtual 217	android/media/projection/MediaProjection:createVirtualDisplay	(Ljava/lang/String;IIIILandroid/view/Surface;Landroid/hardware/display/VirtualDisplay$Callback;Landroid/os/Handler;)Landroid/hardware/display/VirtualDisplay;
+    //   223: astore 5
+    //   225: aload 5
+    //   227: ifnonnull +28 -> 255
+    //   230: aload_0
+    //   231: getfield 110	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
+    //   234: sipush -1308
+    //   237: ldc 169
+    //   239: invokestatic 174	com/tencent/liteav/basic/util/b:a	(Ljava/lang/ref/WeakReference;ILjava/lang/String;)V
+    //   242: aload_0
+    //   243: iconst_1
+    //   244: putfield 102	com/tencent/liteav/screencapture/b:i	I
+    //   247: aload_0
+    //   248: monitorexit
+    //   249: ldc 161
+    //   251: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   254: return
+    //   255: aload_0
+    //   256: getfield 89	com/tencent/liteav/screencapture/b:d	Ljava/util/HashMap;
+    //   259: aload 4
+    //   261: getfield 207	com/tencent/liteav/screencapture/b$b:a	Landroid/view/Surface;
+    //   264: aload 5
+    //   266: invokevirtual 221	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   269: pop
+    //   270: goto -124 -> 146
+    //   273: astore_3
+    //   274: aload_0
+    //   275: monitorexit
+    //   276: ldc 161
+    //   278: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   281: aload_3
+    //   282: athrow
+    //   283: astore_3
     //   284: aload_0
-    //   285: iconst_3
-    //   286: putfield 77	com/tencent/liteav/screencapture/b:i	I
+    //   285: iconst_1
+    //   286: putfield 102	com/tencent/liteav/screencapture/b:i	I
     //   289: aload_0
-    //   290: monitorexit
-    //   291: aload_0
-    //   292: getfield 85	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
-    //   295: sipush 1004
-    //   298: ldc 175
-    //   300: invokestatic 123	com/tencent/liteav/basic/util/a:a	(Ljava/lang/ref/WeakReference;ILjava/lang/String;)V
-    //   303: return
-    //   304: astore 4
-    //   306: goto -286 -> 20
+    //   290: getfield 110	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
+    //   293: sipush -1308
+    //   296: ldc 169
+    //   298: invokestatic 174	com/tencent/liteav/basic/util/b:a	(Ljava/lang/ref/WeakReference;ILjava/lang/String;)V
+    //   301: ldc 161
+    //   303: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   306: return
+    //   307: aload_0
+    //   308: getfield 100	com/tencent/liteav/screencapture/b:h	Ljava/util/HashSet;
+    //   311: invokevirtual 224	java/util/HashSet:clear	()V
+    //   314: aload_0
+    //   315: iconst_3
+    //   316: putfield 102	com/tencent/liteav/screencapture/b:i	I
+    //   319: aload_0
+    //   320: monitorexit
+    //   321: aload_0
+    //   322: getfield 110	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
+    //   325: ifnull +25 -> 350
+    //   328: new 140	android/os/Handler
+    //   331: dup
+    //   332: invokestatic 146	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   335: invokespecial 149	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   338: new 226	com/tencent/liteav/screencapture/b$6
+    //   341: dup
+    //   342: aload_0
+    //   343: invokespecial 227	com/tencent/liteav/screencapture/b$6:<init>	(Lcom/tencent/liteav/screencapture/b;)V
+    //   346: invokevirtual 231	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   349: pop
+    //   350: ldc 161
+    //   352: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   355: return
+    //   356: astore 4
+    //   358: goto -333 -> 25
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	309	0	this	b
-    //   0	309	1	paramInt1	int
-    //   0	309	2	paramInt2	int
-    //   0	309	3	paramIntent	Intent
-    //   173	91	4	locala	b.a
-    //   304	1	4	localException	Exception
-    //   232	37	5	localVirtualDisplay	VirtualDisplay
+    //   0	361	0	this	b
+    //   0	361	1	paramInt1	int
+    //   0	361	2	paramInt2	int
+    //   0	361	3	paramIntent	Intent
+    //   164	96	4	localb	b.b
+    //   356	1	4	localException	Exception
+    //   223	42	5	localVirtualDisplay	VirtualDisplay
     // Exception table:
     //   from	to	target	type
-    //   2	20	123	finally
-    //   32	40	123	finally
-    //   40	59	123	finally
-    //   60	122	123	finally
-    //   124	126	123	finally
-    //   147	155	123	finally
-    //   155	175	123	finally
-    //   180	234	123	finally
-    //   239	258	123	finally
-    //   259	274	123	finally
-    //   277	291	123	finally
-    //   0	2	128	java/lang/Exception
-    //   126	128	128	java/lang/Exception
-    //   2	20	304	java/lang/Exception
-  }
-  
-  private void c()
-  {
-    this.i = 4;
-    this.j.postDelayed(new b.2(this), 1000L);
+    //   7	25	273	finally
+    //   37	45	273	finally
+    //   45	64	273	finally
+    //   70	132	273	finally
+    //   138	146	273	finally
+    //   146	166	273	finally
+    //   171	225	273	finally
+    //   230	249	273	finally
+    //   255	270	273	finally
+    //   274	276	273	finally
+    //   307	321	273	finally
+    //   5	7	283	java/lang/Exception
+    //   276	283	283	java/lang/Exception
+    //   7	25	356	java/lang/Exception
   }
   
   private void d()
   {
+    AppMethodBeat.i(66777);
+    this.i = 4;
+    this.j.postDelayed(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(66761);
+        synchronized (b.this)
+        {
+          if (b.f(b.this).size() == 0) {
+            b.g(b.this);
+          }
+          AppMethodBeat.o(66761);
+          return;
+        }
+      }
+    }, 1000L);
+    AppMethodBeat.o(66777);
+  }
+  
+  private void e()
+  {
+    AppMethodBeat.i(66778);
     Iterator localIterator = this.d.values().iterator();
     while (localIterator.hasNext())
     {
@@ -253,33 +393,58 @@ public class b
     }
     this.d.clear();
     this.k.clear();
-    f();
+    i();
+    AppMethodBeat.o(66778);
+  }
+  
+  private void f()
+  {
+    AppMethodBeat.i(66779);
+    this.o.postDelayed(this.r, 50L);
+    AppMethodBeat.o(66779);
+  }
+  
+  private void g()
+  {
+    AppMethodBeat.i(66780);
+    this.o.removeCallbacks(this.r);
+    AppMethodBeat.o(66780);
   }
   
   @TargetApi(21)
-  private boolean e()
+  private boolean h()
   {
-    if (this.i != 1) {
+    AppMethodBeat.i(66783);
+    if (this.i != 1)
+    {
+      AppMethodBeat.o(66783);
       return true;
     }
-    if ((this.e == null) || (this.f == null)) {
+    if ((this.e == null) || (this.f == null))
+    {
+      AppMethodBeat.o(66783);
       return false;
     }
+    f();
     this.i = 2;
     Object localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("TXScreenCapture.OnAssistantActivityResult");
-    this.e.registerReceiver(this.n, (IntentFilter)localObject);
+    this.e.registerReceiver(this.s, (IntentFilter)localObject);
     localObject = new Intent(this.e, TXScreenCapture.TXScreenCaptureAssistantActivity.class);
     ((Intent)localObject).addFlags(268435456);
     ((Intent)localObject).putExtra("TXScreenCapture.ScreenCaptureIntent", this.f.createScreenCaptureIntent());
     this.e.startActivity((Intent)localObject);
+    AppMethodBeat.o(66783);
     return true;
   }
   
   @TargetApi(21)
-  private void f()
+  private void i()
   {
-    if (!this.k.isEmpty()) {
+    AppMethodBeat.i(66784);
+    if (!this.k.isEmpty())
+    {
+      AppMethodBeat.o(66784);
       return;
     }
     this.l = false;
@@ -291,21 +456,24 @@ public class b
     try
     {
       if (this.e != null) {
-        this.e.unregisterReceiver(this.n);
+        this.e.unregisterReceiver(this.s);
       }
-      label59:
+      label71:
       this.g = null;
       this.i = 1;
+      g();
+      AppMethodBeat.o(66784);
       return;
     }
     catch (Exception localException)
     {
-      break label59;
+      break label71;
     }
   }
   
   public void a(Context paramContext)
   {
+    AppMethodBeat.i(66773);
     try
     {
       if (this.e != paramContext)
@@ -322,19 +490,23 @@ public class b
       }
       return;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(66773);
+    }
   }
   
   public void a(Surface paramSurface)
   {
+    AppMethodBeat.i(66775);
     try
     {
       Iterator localIterator = this.h.iterator();
       while (localIterator.hasNext())
       {
-        b.a locala = (b.a)localIterator.next();
-        if ((locala != null) && (locala.a != null) && (locala.b != 0) && (locala.c != 0) && (locala.a == paramSurface)) {
-          this.h.remove(locala);
+        b.b localb = (b.b)localIterator.next();
+        if ((localb != null) && (localb.a != null) && (localb.b != 0) && (localb.c != 0) && (localb.a == paramSurface)) {
+          this.h.remove(localb);
         }
       }
       if (!this.d.containsKey(paramSurface)) {
@@ -342,20 +514,33 @@ public class b
       }
       ((VirtualDisplay)this.d.get(paramSurface)).release();
       this.d.remove(paramSurface);
-      c();
+      d();
       return;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(66775);
+    }
   }
   
   public void a(a parama)
   {
+    AppMethodBeat.i(146454);
     if (parama == null)
     {
       this.m = null;
+      AppMethodBeat.o(146454);
       return;
     }
     this.m = new WeakReference(parama);
+    AppMethodBeat.o(146454);
+  }
+  
+  public void a(b.a parama)
+  {
+    AppMethodBeat.i(66781);
+    this.j.post(new b.4(this, parama));
+    AppMethodBeat.o(66781);
   }
   
   /* Error */
@@ -364,135 +549,158 @@ public class b
   {
     // Byte code:
     //   0: iconst_0
-    //   1: istore 5
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: aload_0
-    //   6: getfield 77	com/tencent/liteav/screencapture/b:i	I
-    //   9: iconst_3
-    //   10: if_icmpeq +11 -> 21
-    //   13: aload_0
-    //   14: getfield 77	com/tencent/liteav/screencapture/b:i	I
-    //   17: iconst_4
-    //   18: if_icmpne +83 -> 101
-    //   21: iload 5
-    //   23: istore 4
-    //   25: aload_0
-    //   26: getfield 70	com/tencent/liteav/screencapture/b:g	Landroid/media/projection/MediaProjection;
-    //   29: ifnull +50 -> 79
-    //   32: aload_0
-    //   33: getfield 70	com/tencent/liteav/screencapture/b:g	Landroid/media/projection/MediaProjection;
-    //   36: ldc 162
-    //   38: iload_2
-    //   39: iload_3
-    //   40: iconst_1
-    //   41: iconst_1
-    //   42: aload_1
-    //   43: aconst_null
-    //   44: aconst_null
-    //   45: invokevirtual 166	android/media/projection/MediaProjection:createVirtualDisplay	(Ljava/lang/String;IIIILandroid/view/Surface;Landroid/hardware/display/VirtualDisplay$Callback;Landroid/os/Handler;)Landroid/hardware/display/VirtualDisplay;
-    //   48: astore 6
-    //   50: aload 6
-    //   52: ifnull +117 -> 169
-    //   55: aload_0
-    //   56: iconst_1
-    //   57: putfield 83	com/tencent/liteav/screencapture/b:l	Z
-    //   60: aload_0
-    //   61: iconst_3
-    //   62: putfield 77	com/tencent/liteav/screencapture/b:i	I
-    //   65: aload_0
-    //   66: getfield 64	com/tencent/liteav/screencapture/b:d	Ljava/util/HashMap;
-    //   69: aload_1
-    //   70: aload 6
-    //   72: invokevirtual 170	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   75: pop
-    //   76: iconst_1
-    //   77: istore 4
-    //   79: iload 4
-    //   81: ifne +15 -> 96
-    //   84: aload_0
-    //   85: getfield 85	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
-    //   88: sipush -1308
-    //   91: ldc 118
-    //   93: invokestatic 123	com/tencent/liteav/basic/util/a:a	(Ljava/lang/ref/WeakReference;ILjava/lang/String;)V
-    //   96: aload_0
-    //   97: monitorexit
-    //   98: iload 4
-    //   100: ireturn
-    //   101: new 8	com/tencent/liteav/screencapture/b$a
-    //   104: dup
-    //   105: aload_0
-    //   106: aconst_null
-    //   107: invokespecial 290	com/tencent/liteav/screencapture/b$a:<init>	(Lcom/tencent/liteav/screencapture/b;Lcom/tencent/liteav/screencapture/b$1;)V
-    //   110: astore 6
-    //   112: aload 6
-    //   114: iload_3
-    //   115: putfield 160	com/tencent/liteav/screencapture/b$a:c	I
-    //   118: aload 6
-    //   120: iload_2
-    //   121: putfield 158	com/tencent/liteav/screencapture/b$a:b	I
-    //   124: aload 6
-    //   126: aload_1
-    //   127: putfield 156	com/tencent/liteav/screencapture/b$a:a	Landroid/view/Surface;
-    //   130: aload_0
-    //   131: getfield 75	com/tencent/liteav/screencapture/b:h	Ljava/util/HashSet;
-    //   134: aload 6
-    //   136: invokevirtual 293	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   139: pop
-    //   140: aload_0
-    //   141: invokespecial 295	com/tencent/liteav/screencapture/b:e	()Z
-    //   144: istore 4
-    //   146: goto -67 -> 79
-    //   149: astore_1
-    //   150: aload_0
-    //   151: monitorexit
-    //   152: aload_1
-    //   153: athrow
-    //   154: astore_1
-    //   155: iload 5
-    //   157: istore 4
-    //   159: goto -80 -> 79
-    //   162: astore_1
-    //   163: iconst_1
-    //   164: istore 4
-    //   166: goto -87 -> 79
-    //   169: iconst_0
-    //   170: istore 4
-    //   172: goto -93 -> 79
+    //   1: istore 4
+    //   3: ldc_w 374
+    //   6: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: aload_0
+    //   10: monitorenter
+    //   11: aload_0
+    //   12: getfield 102	com/tencent/liteav/screencapture/b:i	I
+    //   15: iconst_3
+    //   16: if_icmpeq +11 -> 27
+    //   19: aload_0
+    //   20: getfield 102	com/tencent/liteav/screencapture/b:i	I
+    //   23: iconst_4
+    //   24: if_icmpne +95 -> 119
+    //   27: aload_0
+    //   28: getfield 95	com/tencent/liteav/screencapture/b:g	Landroid/media/projection/MediaProjection;
+    //   31: ifnonnull +3 -> 34
+    //   34: aload_0
+    //   35: getfield 95	com/tencent/liteav/screencapture/b:g	Landroid/media/projection/MediaProjection;
+    //   38: ifnull +148 -> 186
+    //   41: aload_0
+    //   42: iconst_1
+    //   43: putfield 108	com/tencent/liteav/screencapture/b:l	Z
+    //   46: aload_0
+    //   47: getfield 95	com/tencent/liteav/screencapture/b:g	Landroid/media/projection/MediaProjection;
+    //   50: ldc 213
+    //   52: iload_2
+    //   53: iload_3
+    //   54: iconst_1
+    //   55: iconst_1
+    //   56: aload_1
+    //   57: aconst_null
+    //   58: aconst_null
+    //   59: invokevirtual 217	android/media/projection/MediaProjection:createVirtualDisplay	(Ljava/lang/String;IIIILandroid/view/Surface;Landroid/hardware/display/VirtualDisplay$Callback;Landroid/os/Handler;)Landroid/hardware/display/VirtualDisplay;
+    //   62: astore 6
+    //   64: aload 6
+    //   66: ifnonnull +31 -> 97
+    //   69: iload 4
+    //   71: ifne +15 -> 86
+    //   74: aload_0
+    //   75: getfield 110	com/tencent/liteav/screencapture/b:m	Ljava/lang/ref/WeakReference;
+    //   78: sipush -1308
+    //   81: ldc 169
+    //   83: invokestatic 174	com/tencent/liteav/basic/util/b:a	(Ljava/lang/ref/WeakReference;ILjava/lang/String;)V
+    //   86: aload_0
+    //   87: monitorexit
+    //   88: ldc_w 374
+    //   91: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   94: iload 4
+    //   96: ireturn
+    //   97: aload_0
+    //   98: iconst_3
+    //   99: putfield 102	com/tencent/liteav/screencapture/b:i	I
+    //   102: aload_0
+    //   103: getfield 89	com/tencent/liteav/screencapture/b:d	Ljava/util/HashMap;
+    //   106: aload_1
+    //   107: aload 6
+    //   109: invokevirtual 221	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   112: pop
+    //   113: iconst_1
+    //   114: istore 4
+    //   116: goto -47 -> 69
+    //   119: new 16	com/tencent/liteav/screencapture/b$b
+    //   122: dup
+    //   123: aload_0
+    //   124: aconst_null
+    //   125: invokespecial 377	com/tencent/liteav/screencapture/b$b:<init>	(Lcom/tencent/liteav/screencapture/b;Lcom/tencent/liteav/screencapture/b$1;)V
+    //   128: astore 6
+    //   130: aload 6
+    //   132: iload_3
+    //   133: putfield 211	com/tencent/liteav/screencapture/b$b:c	I
+    //   136: aload 6
+    //   138: iload_2
+    //   139: putfield 209	com/tencent/liteav/screencapture/b$b:b	I
+    //   142: aload 6
+    //   144: aload_1
+    //   145: putfield 207	com/tencent/liteav/screencapture/b$b:a	Landroid/view/Surface;
+    //   148: aload_0
+    //   149: getfield 100	com/tencent/liteav/screencapture/b:h	Ljava/util/HashSet;
+    //   152: aload 6
+    //   154: invokevirtual 380	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   157: pop
+    //   158: aload_0
+    //   159: invokespecial 382	com/tencent/liteav/screencapture/b:h	()Z
+    //   162: istore 5
+    //   164: iload 5
+    //   166: istore 4
+    //   168: goto -99 -> 69
+    //   171: astore_1
+    //   172: aload_0
+    //   173: monitorexit
+    //   174: ldc_w 374
+    //   177: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   180: aload_1
+    //   181: athrow
+    //   182: astore_1
+    //   183: goto -114 -> 69
+    //   186: iconst_0
+    //   187: istore 4
+    //   189: goto -21 -> 168
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	175	0	this	b
-    //   0	175	1	paramSurface	Surface
-    //   0	175	2	paramInt1	int
-    //   0	175	3	paramInt2	int
-    //   23	148	4	bool1	boolean
-    //   1	155	5	bool2	boolean
-    //   48	87	6	localObject	Object
+    //   0	192	0	this	b
+    //   0	192	1	paramSurface	Surface
+    //   0	192	2	paramInt1	int
+    //   0	192	3	paramInt2	int
+    //   1	187	4	bool1	boolean
+    //   162	3	5	bool2	boolean
+    //   62	91	6	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   5	21	149	finally
-    //   25	50	149	finally
-    //   55	60	149	finally
-    //   60	76	149	finally
-    //   84	96	149	finally
-    //   96	98	149	finally
-    //   101	146	149	finally
-    //   150	152	149	finally
-    //   5	21	154	java/lang/Exception
-    //   25	50	154	java/lang/Exception
-    //   55	60	154	java/lang/Exception
-    //   101	146	154	java/lang/Exception
-    //   60	76	162	java/lang/Exception
+    //   11	27	171	finally
+    //   27	34	171	finally
+    //   34	64	171	finally
+    //   74	86	171	finally
+    //   86	88	171	finally
+    //   97	113	171	finally
+    //   119	164	171	finally
+    //   172	174	171	finally
+    //   11	27	182	java/lang/Exception
+    //   27	34	182	java/lang/Exception
+    //   34	64	182	java/lang/Exception
+    //   97	113	182	java/lang/Exception
+    //   119	164	182	java/lang/Exception
   }
   
   public void b()
   {
+    AppMethodBeat.i(66776);
     try
     {
-      d();
+      e();
       return;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(66776);
+    }
+  }
+  
+  public void b(final b.a parama)
+  {
+    AppMethodBeat.i(66782);
+    this.j.post(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(66763);
+        b.d(b.this).remove(parama);
+        AppMethodBeat.o(66763);
+      }
+    });
+    AppMethodBeat.o(66782);
   }
 }
 

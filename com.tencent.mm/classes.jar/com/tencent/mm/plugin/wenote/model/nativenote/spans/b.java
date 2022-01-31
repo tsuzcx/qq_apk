@@ -1,16 +1,24 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.spans;
 
 import android.text.style.StyleSpan;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
   extends e<Boolean, BoldSpan>
 {
-  public final boolean bH(Object paramObject)
+  public final boolean cl(Object paramObject)
   {
-    return ((paramObject instanceof BoldSpan)) || (((paramObject instanceof StyleSpan)) && (((StyleSpan)paramObject).getStyle() == 1));
+    AppMethodBeat.i(26931);
+    if (((paramObject instanceof BoldSpan)) || (((paramObject instanceof StyleSpan)) && (((StyleSpan)paramObject).getStyle() == 1)))
+    {
+      AppMethodBeat.o(26931);
+      return true;
+    }
+    AppMethodBeat.o(26931);
+    return false;
   }
   
-  public final int ciY()
+  public final int djz()
   {
     return 0;
   }

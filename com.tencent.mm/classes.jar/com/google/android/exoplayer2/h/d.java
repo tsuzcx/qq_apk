@@ -1,6 +1,9 @@
 package com.google.android.exoplayer2.h;
 
-public abstract interface d {}
+public abstract interface d
+{
+  public abstract long qm();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar

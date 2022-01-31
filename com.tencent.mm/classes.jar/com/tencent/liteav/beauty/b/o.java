@@ -1,51 +1,117 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.d;
+import com.tencent.liteav.basic.d.g;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.beauty.NativeLoad;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class o
-  extends d
+  extends g
 {
-  private static String v = "GPUSharpen";
-  private int r;
-  private float s;
-  private int t;
-  private int u;
+  private static float[] C = { 0.1826F, 0.6142F, 0.062F, -0.1006F, -0.3386F, 0.4392F, 0.4392F, -0.3989F, -0.0403F };
+  private static float[] D = { 0.256816F, 0.504154F, 0.0979137F, -0.148246F, -0.29102F, 0.439266F, 0.439271F, -0.367833F, -0.071438F };
+  private static float[] E = { 0.0625F, 0.5F, 0.5F };
+  private String A = "RGBA2I420Filter";
+  private int B = 1;
+  private int r = -1;
+  private int s = -1;
+  private int t = -1;
+  private int u = -1;
+  private int v = -1;
+  private int w = -1;
+  private int x = -1;
+  private int y = -1;
+  private int z = -1;
   
-  public o()
+  public o(int paramInt)
   {
-    this(0.0F);
+    super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}", "varying lowp vec2 textureCoordinate;\n \nuniform sampler2D inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}");
+    this.B = paramInt;
   }
   
-  public o(float paramFloat)
+  public o(int paramInt, boolean paramBoolean)
   {
-    super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n\nuniform float imageWidthFactor; \nuniform float imageHeightFactor; \n\nvarying vec2 textureCoordinate;\nvarying vec2 leftTextureCoordinate;\nvarying vec2 rightTextureCoordinate; \nvarying vec2 topTextureCoordinate;\nvarying vec2 bottomTextureCoordinate;\n\n\nvoid main()\n{\n    gl_Position = position;\n    \n    mediump vec2 widthStep = vec2(imageWidthFactor, 0.0);\n    mediump vec2 heightStep = vec2(0.0, imageHeightFactor);\n    \n    textureCoordinate = inputTextureCoordinate.xy;\n    leftTextureCoordinate = inputTextureCoordinate.xy - widthStep;\n    rightTextureCoordinate = inputTextureCoordinate.xy + widthStep;\n    topTextureCoordinate = inputTextureCoordinate.xy + heightStep;     \n    bottomTextureCoordinate = inputTextureCoordinate.xy - heightStep;\n}\n", "precision mediump float;\n\nuniform float sharpness;\nvarying mediump vec2 textureCoordinate;\nvarying mediump vec2 leftTextureCoordinate;\nvarying mediump vec2 rightTextureCoordinate; \nvarying mediump vec2 topTextureCoordinate;\nvarying mediump vec2 bottomTextureCoordinate;\n\nuniform sampler2D inputImageTexture;\nfloat centerMultiplier;\nfloat edgeMultiplier;\n\nvoid main()\n{\n    mediump vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);\n    mediump vec3 leftTextureColor = texture2D(inputImageTexture, leftTextureCoordinate).rgb;\n    mediump vec3 rightTextureColor = texture2D(inputImageTexture, rightTextureCoordinate).rgb;\n    mediump vec3 topTextureColor = texture2D(inputImageTexture, topTextureCoordinate).rgb;\n    mediump vec3 bottomTextureColor = texture2D(inputImageTexture, bottomTextureCoordinate).rgb;\n\n    centerMultiplier = 1.0 + 4.0 * sharpness * (1.0 - textureColor.a);\n    edgeMultiplier = sharpness * (1.0 - textureColor.a);\n    gl_FragColor = vec4((textureColor.rgb * centerMultiplier - (leftTextureColor * edgeMultiplier + rightTextureColor * edgeMultiplier + topTextureColor * edgeMultiplier + bottomTextureColor * edgeMultiplier)), textureColor.a);    \n}\n");
-    this.s = paramFloat;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.s = paramFloat;
-    TXCLog.i(v, "set Sharpness " + paramFloat);
-    a(this.r, this.s);
+    super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}", "varying lowp vec2 textureCoordinate;\n \nuniform sampler2D inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}", paramBoolean);
+    this.B = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(66920);
+    if ((paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      TXCLog.e(this.A, "width or height is error!");
+      AppMethodBeat.o(66920);
+      return;
+    }
+    if ((this.f == paramInt2) && (this.e == paramInt1))
+    {
+      AppMethodBeat.o(66920);
+      return;
+    }
     super.a(paramInt1, paramInt2);
-    a(this.t, 1.0F / paramInt1);
-    a(this.u, 1.0F / paramInt2);
+    TXCLog.i(this.A, "RGBA2I420Filter width " + paramInt1 + " height " + paramInt2);
+    a(this.r, paramInt1);
+    a(this.s, paramInt2);
+    AppMethodBeat.o(66920);
+  }
+  
+  public boolean a()
+  {
+    AppMethodBeat.i(146393);
+    if (1 == this.B)
+    {
+      NativeLoad.getInstance();
+      this.a = NativeLoad.nativeLoadGLProgram(8);
+      TXCLog.i(this.A, "RGB-->I420 init!");
+      if ((this.a == 0) || (!b())) {
+        break label179;
+      }
+    }
+    label179:
+    for (this.g = true;; this.g = false)
+    {
+      c();
+      boolean bool = this.g;
+      AppMethodBeat.o(146393);
+      return bool;
+      if (3 == this.B)
+      {
+        TXCLog.i(this.A, "RGB-->NV21 init!");
+        NativeLoad.getInstance();
+        this.a = NativeLoad.nativeLoadGLProgram(11);
+        break;
+      }
+      if (2 == this.B)
+      {
+        TXCLog.i(this.A, "RGBA Format init!");
+        bool = super.a();
+        AppMethodBeat.o(146393);
+        return bool;
+      }
+      TXCLog.i(this.A, "don't support format " + this.B + " use default I420");
+      NativeLoad.getInstance();
+      this.a = NativeLoad.nativeLoadGLProgram(8);
+      break;
+    }
   }
   
   public boolean b()
   {
-    boolean bool = super.b();
-    this.r = GLES20.glGetUniformLocation(p(), "sharpness");
-    this.t = GLES20.glGetUniformLocation(p(), "imageWidthFactor");
-    this.u = GLES20.glGetUniformLocation(p(), "imageHeightFactor");
-    a(this.s);
-    return bool;
+    AppMethodBeat.i(66919);
+    super.b();
+    this.r = GLES20.glGetUniformLocation(this.a, "width");
+    this.s = GLES20.glGetUniformLocation(this.a, "height");
+    AppMethodBeat.o(66919);
+    return true;
+  }
+  
+  public void c()
+  {
+    AppMethodBeat.i(146394);
+    super.c();
+    AppMethodBeat.o(146394);
   }
 }
 

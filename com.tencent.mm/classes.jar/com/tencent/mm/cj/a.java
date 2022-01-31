@@ -1,62 +1,21 @@
 package com.tencent.mm.cj;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.File;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/transvoice/TransVoiceTools;", "", "()V", "Companion", "plugin-audiologic_release"})
 public final class a
 {
-  public static int aR(float paramFloat)
-  {
-    return (int)(ae.getContext().getResources().getDisplayMetrics().density * paramFloat + 0.5F);
-  }
+  private static String tqh;
+  private static boolean yTa;
+  public static final a.a yTb;
   
-  public static void aeI(String paramString)
+  static
   {
-    int i = 0;
-    y.i("MicroMsg.MMPhotoEditUtil", "[deleteDirAllFile] dir:%s", new Object[] { paramString });
-    paramString = new File(paramString);
-    if (paramString.exists())
-    {
-      paramString = paramString.listFiles();
-      if (paramString != null)
-      {
-        int j = paramString.length;
-        while (i < j)
-        {
-          Object localObject = paramString[i];
-          if ((localObject.isFile()) && (!bk.bl(localObject.getName())) && (localObject.getName().startsWith("wx_photo_edit_"))) {
-            localObject.delete();
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public static int calculateInSampleSize(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
-  {
-    int k = paramOptions.outHeight;
-    int m = paramOptions.outWidth;
-    int i = 1;
-    int j;
-    for (;;)
-    {
-      j = i;
-      if (m / i <= paramInt1) {
-        break;
-      }
-      i += 1;
-    }
-    while (k / j > paramInt2) {
-      j += 1;
-    }
-    return j;
+    AppMethodBeat.i(156051);
+    yTb = new a.a((byte)0);
+    tqh = "";
+    AppMethodBeat.o(156051);
   }
 }
 

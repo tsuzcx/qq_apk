@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.Context;
 import com.tencent.mm.plugin.account.friend.a.a;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.p;
 
 public abstract class b
-  extends r<a>
+  extends p<a>
 {
   public b(Context paramContext, a parama)
   {
@@ -14,7 +14,7 @@ public abstract class b
   
   public void a(b.a parama) {}
   
-  public void pA(String paramString) {}
+  public void wQ(String paramString) {}
   
   public static abstract interface b
   {

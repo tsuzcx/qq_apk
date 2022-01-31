@@ -1,24 +1,36 @@
 package com.tencent.mm.plugin.game.ui;
 
 import android.support.v7.widget.RecyclerView.a;
-import com.tencent.mm.plugin.game.model.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.d;
 import java.util.LinkedList;
 
 public final class GameIndexListView$b
   extends RecyclerView.a<GameIndexListView.b.a>
 {
-  LinkedList<e> lbV = new LinkedList();
+  LinkedList<d> nzQ;
   
-  public GameIndexListView$b(GameIndexListView paramGameIndexListView) {}
+  public GameIndexListView$b(GameIndexListView paramGameIndexListView)
+  {
+    AppMethodBeat.i(111975);
+    this.nzQ = new LinkedList();
+    AppMethodBeat.o(111975);
+  }
   
   public final int getItemCount()
   {
-    return this.lbV.size();
+    AppMethodBeat.i(111977);
+    int i = this.nzQ.size();
+    AppMethodBeat.o(111977);
+    return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    return ((e)this.lbV.get(paramInt)).type;
+    AppMethodBeat.i(111976);
+    paramInt = ((d)this.nzQ.get(paramInt)).type;
+    AppMethodBeat.o(111976);
+    return paramInt;
   }
 }
 

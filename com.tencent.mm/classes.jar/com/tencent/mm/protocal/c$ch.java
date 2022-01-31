@@ -5,7 +5,7 @@ final class c$ch
 {
   c$ch()
   {
-    super("doGoToRecVideoList", "doGoToRecVideoList", 10000, false);
+    super("getLocalWePkgInfo", "getLocalWePkgInfo", -2, false);
   }
 }
 

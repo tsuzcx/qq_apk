@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/bm3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:paddingLeft="@dimen/li" android:paddingRight="@dimen/dk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/db" style="@style/lt" />
-    <LinearLayout android:background="@drawable/w3" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/dk" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bm4" android:background="@drawable/a58" android:layout_width="fill_parent" android:layout_height="@dimen/ey">
-            <com.tencent.mm.ui.base.MaskLayout android:id="@id/bm5" android:layout_width="@dimen/ew" android:layout_height="@dimen/ew">
-                <ImageView android:id="@id/kl" android:layout_width="@dimen/ev" android:layout_height="@dimen/ev" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-            </com.tencent.mm.ui.base.MaskLayout>
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
-                <TextView android:id="@id/bm_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick}" android:singleLine="true" style="@style/ks" />
-                <TextView android:id="@id/bma" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mv" android:text="{lastmsg}" android:singleLine="true" style="@style/kr" />
-            </LinearLayout>
-            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-            <TextView android:id="@id/bm6" android:visibility="visible" android:layout_marginRight="@dimen/mq" style="@style/u1" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:id="@id/bop" android:background="@color/o6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:gravity="center" android:id="@id/bot" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/bph" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/ok" android:id="@id/bpi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="13.0dip" android:text="@string/blf" />
+</FrameLayout>

@@ -1,13 +1,6 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-public class bq
-  extends br
-{
-  public bq(String paramString)
-  {
-    super(paramString);
-  }
-}
+public class bq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar

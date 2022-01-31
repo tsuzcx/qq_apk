@@ -1,139 +1,223 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.map.UiSettings;
 
-public final class ei
-  implements ee
+public class ei
+  implements UiSettings
 {
-  public String a;
-  public byte[] b;
-  public Map<String, String> c;
-  public boolean d = false;
-  public boolean e = true;
-  public int f = -1;
-  public String g = "";
-  public ec h;
-  public fc i;
-  public volatile boolean j = false;
-  public int k = 0;
-  public boolean l = true;
-  public volatile boolean m = false;
-  public long n;
-  public String o;
-  private Object p;
-  private int q = 0;
-  private fp r;
-  private CountDownLatch s = new CountDownLatch(1);
+  private ak a;
   
-  public ei(String paramString, byte[] paramArrayOfByte)
+  public ei(ak paramak)
   {
-    this.a = paramString;
-    this.b = paramArrayOfByte;
-    this.g = hq.d();
+    this.a = paramak;
   }
   
-  public final void a(int paramInt)
+  public boolean isAnimationEnabled()
   {
-    this.f = paramInt;
+    return false;
   }
   
-  public final void a(fp paramfp)
+  public boolean isCompassEnabled()
   {
-    try
+    AppMethodBeat.i(150348);
+    if (this.a == null)
     {
-      this.r = paramfp;
-      return;
+      AppMethodBeat.o(150348);
+      return false;
     }
-    finally
+    boolean bool = this.a.a();
+    AppMethodBeat.o(150348);
+    return bool;
+  }
+  
+  public boolean isIndoorLevelPickerEnabled()
+  {
+    AppMethodBeat.i(150346);
+    if (this.a == null)
     {
-      paramfp = finally;
-      throw paramfp;
+      AppMethodBeat.o(150346);
+      return false;
     }
+    boolean bool = this.a.d();
+    AppMethodBeat.o(150346);
+    return bool;
   }
   
-  public final void a(String paramString1, String paramString2)
+  public boolean isRotateGesturesEnabled()
   {
-    if (this.c == null) {
-      this.c = new HashMap();
-    }
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      this.c.put(paramString1, paramString2);
-    }
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.d = paramBoolean;
-  }
-  
-  public final boolean a()
-  {
-    try
+    AppMethodBeat.i(150343);
+    if (this.a == null)
     {
-      boolean bool = this.s.await(this.k, TimeUnit.MILLISECONDS);
+      AppMethodBeat.o(150343);
+      return false;
+    }
+    boolean bool = this.a.c();
+    AppMethodBeat.o(150343);
+    return bool;
+  }
+  
+  public boolean isScaleControlsEnabled()
+  {
+    AppMethodBeat.i(150338);
+    if (this.a != null)
+    {
+      boolean bool = this.a.e();
+      AppMethodBeat.o(150338);
       return bool;
     }
-    catch (InterruptedException localInterruptedException) {}
-    return true;
+    AppMethodBeat.o(150338);
+    return false;
   }
   
-  public final void b()
+  public boolean isTiltGesturesEnabled()
   {
-    this.s.countDown();
+    AppMethodBeat.i(150341);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(150341);
+      return false;
+    }
+    boolean bool = this.a.b();
+    AppMethodBeat.o(150341);
+    return bool;
   }
   
-  public final void b(int paramInt)
+  public void setAllGesturesEnabled(boolean paramBoolean)
   {
-    if (paramInt < 0) {
+    AppMethodBeat.i(150335);
+    if (this.a != null) {
+      this.a.g(paramBoolean);
+    }
+    AppMethodBeat.o(150335);
+  }
+  
+  public void setAnimationEnabled(boolean paramBoolean) {}
+  
+  public void setCompassEnabled(boolean paramBoolean)
+  {
+    AppMethodBeat.i(150347);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(150347);
       return;
     }
-    this.k = paramInt;
+    this.a.b(paramBoolean);
+    AppMethodBeat.o(150347);
   }
   
-  public final void b(boolean paramBoolean)
+  public void setIndoorLevelPickerEnabled(boolean paramBoolean)
   {
-    this.l = paramBoolean;
-  }
-  
-  public final fp c()
-  {
-    try
-    {
-      fp localfp = this.r;
-      return localfp;
+    AppMethodBeat.i(150345);
+    if (this.a != null) {
+      this.a.j(paramBoolean);
     }
-    finally
+    AppMethodBeat.o(150345);
+  }
+  
+  public void setLogoPosition(int paramInt)
+  {
+    AppMethodBeat.i(150336);
+    if (this.a != null) {
+      this.a.b(paramInt);
+    }
+    AppMethodBeat.o(150336);
+  }
+  
+  public void setLogoPosition(int paramInt, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(150344);
+    if (this.a != null) {
+      this.a.a(paramInt, paramArrayOfInt);
+    }
+    AppMethodBeat.o(150344);
+  }
+  
+  public void setLogoScale(float paramFloat)
+  {
+    AppMethodBeat.i(150342);
+    if (this.a == null)
     {
-      localObject = finally;
-      throw localObject;
+      AppMethodBeat.o(150342);
+      return;
+    }
+    this.a.a(paramFloat);
+    AppMethodBeat.o(150342);
+  }
+  
+  public void setRotateGesturesEnabled(boolean paramBoolean)
+  {
+    AppMethodBeat.i(150340);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(150340);
+      return;
+    }
+    this.a.f(paramBoolean);
+    AppMethodBeat.o(150340);
+  }
+  
+  public void setScaleControlsEnabled(boolean paramBoolean)
+  {
+    AppMethodBeat.i(150332);
+    if (this.a != null) {
+      this.a.h(paramBoolean);
+    }
+    AppMethodBeat.o(150332);
+  }
+  
+  public void setScaleViewPosition(int paramInt)
+  {
+    AppMethodBeat.i(150337);
+    if (this.a != null) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
+    {
+      this.a.a(paramInt);
+      AppMethodBeat.o(150337);
+      return;
+      paramInt = 4;
+      continue;
+      paramInt = 1;
     }
   }
   
-  public final String toString()
+  public void setScrollGesturesEnabled(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("url:" + this.a);
-    localStringBuilder.append(",body:" + hq.b(this.b));
-    localStringBuilder.append(",isGet:" + this.d);
-    localStringBuilder.append(",timeout:" + this.f);
-    localStringBuilder.append(",tag:" + this.p);
-    localStringBuilder.append(",httpCallback:" + this.h);
-    localStringBuilder.append(",testMode:" + this.q);
-    localStringBuilder.append(",httpCallback:" + this.h);
-    localStringBuilder.append(",testMode:" + this.q);
-    localStringBuilder.append(",followRedirects:" + this.e);
-    localStringBuilder.append(",isAbort:" + this.j);
-    localStringBuilder.append(",headers:" + this.c);
-    return localStringBuilder.toString();
+    AppMethodBeat.i(150333);
+    if (this.a != null) {
+      this.a.c(paramBoolean);
+    }
+    AppMethodBeat.o(150333);
+  }
+  
+  public void setTiltGesturesEnabled(boolean paramBoolean)
+  {
+    AppMethodBeat.i(150339);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(150339);
+      return;
+    }
+    this.a.e(paramBoolean);
+    AppMethodBeat.o(150339);
+  }
+  
+  public void setZoomGesturesEnabled(boolean paramBoolean)
+  {
+    AppMethodBeat.i(150334);
+    if (this.a != null) {
+      this.a.d(paramBoolean);
+    }
+    AppMethodBeat.o(150334);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.ei
  * JD-Core Version:    0.7.0.1
  */

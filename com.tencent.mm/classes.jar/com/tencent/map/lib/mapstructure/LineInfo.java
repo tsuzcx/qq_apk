@@ -1,6 +1,7 @@
 package com.tencent.map.lib.mapstructure;
 
-import com.tencent.tencentmap.mapsdk.a.la;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.jj;
 
 public class LineInfo
 {
@@ -13,13 +14,15 @@ public class LineInfo
   
   public byte[] fromBytes()
   {
+    AppMethodBeat.i(98162);
     byte[] arrayOfByte1 = new byte[80];
-    System.arraycopy(la.a(this.startNum), 0, arrayOfByte1, 0, 4);
-    System.arraycopy(la.a(this.endNum), 0, arrayOfByte1, 4, 4);
-    System.arraycopy(la.a(this.color), 0, arrayOfByte1, 8, 4);
-    System.arraycopy(la.a(this.speed), 0, arrayOfByte1, 12, 4);
-    byte[] arrayOfByte2 = la.a(this.roadName);
+    System.arraycopy(jj.a(this.startNum), 0, arrayOfByte1, 0, 4);
+    System.arraycopy(jj.a(this.endNum), 0, arrayOfByte1, 4, 4);
+    System.arraycopy(jj.a(this.color), 0, arrayOfByte1, 8, 4);
+    System.arraycopy(jj.a(this.speed), 0, arrayOfByte1, 12, 4);
+    byte[] arrayOfByte2 = jj.a(this.roadName);
     System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 16, arrayOfByte2.length);
+    AppMethodBeat.o(98162);
     return arrayOfByte1;
   }
 }

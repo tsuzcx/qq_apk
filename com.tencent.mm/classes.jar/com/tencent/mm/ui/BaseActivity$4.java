@@ -2,6 +2,7 @@ package com.tencent.mm.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseActivity$4
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class BaseActivity$4
   
   public final void onClick(View paramView)
   {
-    BaseActivity.a(BaseActivity.b(this.uGW), this.uGX);
+    AppMethodBeat.i(112448);
+    BaseActivity.a(BaseActivity.b(this.yUh), this.yUi);
+    AppMethodBeat.o(112448);
   }
 }
 

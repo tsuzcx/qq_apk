@@ -1,25 +1,34 @@
 package com.tencent.mm.ui.conversation;
 
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.header.a;
 
 final class ConversationListView$3
-  implements AdapterView.OnItemLongClickListener
+  implements a
 {
-  ConversationListView$3(ConversationListView paramConversationListView) {}
+  ConversationListView$3(ConversationListView paramConversationListView, a parama) {}
   
-  public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void a(float paramFloat, int paramInt1, int paramInt2)
   {
-    if ((ConversationListView.a(this.vQR) != null) && (!ConversationListView.b(this.vQR))) {
-      return ConversationListView.a(this.vQR).onItemLongClick(paramAdapterView, paramView, paramInt, paramLong);
+    AppMethodBeat.i(156149);
+    if (this.AiR != null) {
+      this.AiR.a(paramFloat, paramInt1, paramInt2);
     }
-    return false;
+    AppMethodBeat.o(156149);
+  }
+  
+  public final void b(float paramFloat, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(156150);
+    if (this.AiR != null) {
+      this.AiR.b(paramFloat, paramInt1, paramInt2);
+    }
+    AppMethodBeat.o(156150);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.ConversationListView.3
  * JD-Core Version:    0.7.0.1
  */

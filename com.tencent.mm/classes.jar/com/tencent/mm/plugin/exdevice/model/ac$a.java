@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice.model;
 
 public abstract interface ac$a
 {
-  public abstract void Bu(String paramString);
+  public abstract void Lw(String paramString);
 }
 
 

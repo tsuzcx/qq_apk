@@ -9,30 +9,32 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.as.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.model.o.b;
-import com.tencent.mm.plugin.game.model.o.d;
-import com.tencent.mm.plugin.game.model.p;
+import com.tencent.mm.plugin.game.api.d;
+import com.tencent.mm.plugin.game.api.e;
+import com.tencent.mm.plugin.game.model.n;
+import com.tencent.mm.plugin.game.model.n.c;
+import com.tencent.mm.plugin.game.model.n.e;
+import com.tencent.mm.plugin.game.model.q;
 import com.tencent.mm.plugin.game.model.r;
-import com.tencent.mm.plugin.game.model.s;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 
 public class GameMessageBubbleView
   extends LinearLayout
   implements View.OnClickListener
 {
-  View ldO;
-  private TextView ldP;
-  private ImageView ldQ;
-  private com.tencent.mm.plugin.game.model.o ldR;
-  private final long ldS = 500L;
-  private long ldT = 0L;
   private Context mContext;
   private boolean mHasInit = false;
+  View nBJ;
+  private TextView nBK;
+  private ImageView nBL;
+  private n nBM;
+  private final long nBN = 500L;
+  private long nBO = 0L;
   
   public GameMessageBubbleView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,92 +42,106 @@ public class GameMessageBubbleView
     this.mContext = paramContext;
   }
   
-  public final void bao()
+  public final void bHu()
   {
-    ((com.tencent.mm.plugin.game.a.b)g.r(com.tencent.mm.plugin.game.a.b.class)).aYe();
-    this.ldR = r.aZr();
-    if (this.ldR == null)
+    AppMethodBeat.i(112085);
+    ((d)g.E(d.class)).bER();
+    this.nBM = q.bGr();
+    if (this.nBM == null)
     {
-      this.ldO.setOnClickListener(null);
+      this.nBJ.setOnClickListener(null);
       setVisibility(8);
+      AppMethodBeat.o(112085);
       return;
     }
-    this.ldR.aZm();
-    if ((this.ldR.field_msgType == 100) && ((bk.bl(this.ldR.kPh.dkv)) || (bk.bl(this.ldR.kPh.kPS)) || (bk.bl(this.ldR.kPh.kPT)) || (!this.ldR.kPi.containsKey(this.ldR.kPh.kPT))))
+    this.nBM.bGm();
+    if ((this.nBM.field_msgType == 100) && ((bo.isNullOrNil(this.nBM.nnd.mDesc)) || (bo.isNullOrNil(this.nBM.nnd.nnT)) || (bo.isNullOrNil(this.nBM.nnd.nnU)) || (!this.nBM.nne.containsKey(this.nBM.nnd.nnU))))
     {
-      y.w("MicroMsg.GameMessageHeaderView", "bubble is invalid");
-      this.ldO.setOnClickListener(null);
+      ab.w("MicroMsg.GameMessageHeaderView", "bubble is invalid");
+      this.nBJ.setOnClickListener(null);
       setVisibility(8);
+      AppMethodBeat.o(112085);
       return;
     }
-    this.ldP.setText(this.ldR.kPh.dkv);
-    com.tencent.mm.as.o.ON().a(this.ldR.kPh.kPS, this.ldQ);
-    this.ldO.setOnClickListener(this);
+    this.nBK.setText(this.nBM.nnd.mDesc);
+    com.tencent.mm.at.o.ahG().a(this.nBM.nnd.nnT, this.nBL);
+    this.nBJ.setOnClickListener(this);
     setVisibility(0);
+    AppMethodBeat.o(112085);
   }
   
   public void onClick(View paramView)
   {
-    if (System.currentTimeMillis() - this.ldT <= 500L) {}
-    while (this.ldR == null) {
+    AppMethodBeat.i(112086);
+    if (System.currentTimeMillis() - this.nBO <= 500L)
+    {
+      AppMethodBeat.o(112086);
       return;
     }
-    ((com.tencent.mm.plugin.game.a.b)g.r(com.tencent.mm.plugin.game.a.b.class)).aYe();
-    r.aZs();
-    int i;
-    if (this.ldR.field_msgType == 100)
+    if (this.nBM == null)
     {
-      if (!bk.bl(this.ldR.kPh.kPT))
+      AppMethodBeat.o(112086);
+      return;
+    }
+    ((d)g.E(d.class)).bER();
+    q.bGs();
+    int i;
+    if (this.nBM.field_msgType == 100)
+    {
+      if (!bo.isNullOrNil(this.nBM.nnd.nnU))
       {
-        paramView = (o.d)this.ldR.kPi.get(this.ldR.kPh.kPT);
+        paramView = (n.e)this.nBM.nne.get(this.nBM.nnd.nnU);
         if (paramView != null)
         {
-          i = p.a(this.mContext, this.ldR, paramView, this.ldR.field_appId, 1007);
+          i = com.tencent.mm.plugin.game.model.o.a(this.mContext, this.nBM, paramView, this.nBM.field_appId, 1007);
           if (i != 0) {
-            com.tencent.mm.plugin.game.e.b.a(this.mContext, 10, 1007, 1, i, 0, this.ldR.field_appId, 0, this.ldR.kPM, this.ldR.field_gameMsgId, this.ldR.kPN, null);
+            com.tencent.mm.game.report.c.a(this.mContext, 10, 1007, 1, i, 0, this.nBM.field_appId, 0, this.nBM.nnL, this.nBM.field_gameMsgId, this.nBM.nnM, null);
           }
-          if (paramView.kPV != 4)
+          if (paramView.mJumpType != 4)
           {
-            this.ldR.field_isRead = true;
-            ((com.tencent.mm.plugin.game.a.c)g.r(com.tencent.mm.plugin.game.a.c.class)).aYf().c(this.ldR, new String[0]);
+            this.nBM.field_isRead = true;
+            ((e)g.E(e.class)).bES().update(this.nBM, new String[0]);
           }
         }
       }
-      this.ldT = System.currentTimeMillis();
+      this.nBO = System.currentTimeMillis();
+      AppMethodBeat.o(112086);
       return;
     }
-    if ((this.ldR != null) && (this.ldR.kPk != 3))
+    if ((this.nBM != null) && (this.nBM.nng != 3))
     {
-      this.ldR.field_isRead = true;
-      ((com.tencent.mm.plugin.game.a.c)g.r(com.tencent.mm.plugin.game.a.c.class)).aYf().c(this.ldR, new String[0]);
+      this.nBM.field_isRead = true;
+      ((e)g.E(e.class)).bES().update(this.nBM, new String[0]);
     }
-    switch (this.ldR.kPk)
+    switch (this.nBM.nng)
     {
     default: 
-      y.e("MicroMsg.GameMessageHeaderView", "unknown bubble_action = " + this.ldR.kPk);
+      ab.e("MicroMsg.GameMessageHeaderView", "unknown bubble_action = " + this.nBM.nng);
+      AppMethodBeat.o(112086);
       return;
     case 1: 
-      paramView = this.ldR.kOW;
-      if (!bk.bl(paramView)) {
-        i = com.tencent.mm.plugin.game.f.c.o(this.mContext, paramView, "game_center_bubble");
+      paramView = this.nBM.nmS;
+      if (!bo.isNullOrNil(paramView)) {
+        i = com.tencent.mm.plugin.game.f.c.t(this.mContext, paramView, "game_center_bubble");
       }
       break;
     }
     for (;;)
     {
-      com.tencent.mm.plugin.game.e.b.a(this.mContext, 10, 1007, 1, i, 0, this.ldR.field_appId, 0, this.ldR.field_msgType, this.ldR.field_gameMsgId, this.ldR.kPN, null);
-      this.ldT = System.currentTimeMillis();
+      com.tencent.mm.game.report.c.a(this.mContext, 10, 1007, 1, i, 0, this.nBM.field_appId, 0, this.nBM.field_msgType, this.nBM.field_gameMsgId, this.nBM.nnM, null);
+      this.nBO = System.currentTimeMillis();
+      AppMethodBeat.o(112086);
       return;
-      if (!bk.bl(this.ldR.field_appId))
+      if (!bo.isNullOrNil(this.nBM.field_appId))
       {
         paramView = new Bundle();
-        paramView.putCharSequence("game_app_id", this.ldR.field_appId);
+        paramView.putCharSequence("game_app_id", this.nBM.field_appId);
         paramView.putInt("game_report_from_scene", 1007);
-        i = com.tencent.mm.plugin.game.f.c.b(this.mContext, this.ldR.field_appId, null, paramView);
+        i = com.tencent.mm.plugin.game.f.c.b(this.mContext, this.nBM.field_appId, null, paramView);
       }
       else
       {
-        y.e("MicroMsg.GameMessageHeaderView", "message type : " + this.ldR.field_msgType + " ,message.field_appId is null.");
+        ab.e("MicroMsg.GameMessageHeaderView", "message type : " + this.nBM.field_msgType + " ,message.field_appId is null.");
         i = 0;
         continue;
         paramView = new Intent(this.mContext, GameMessageUI.class);
@@ -140,20 +156,22 @@ public class GameMessageBubbleView
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(112084);
     super.onFinishInflate();
     if (!this.mHasInit)
     {
-      this.ldQ = ((ImageView)findViewById(g.e.game_msg_bubble_icon));
-      this.ldP = ((TextView)findViewById(g.e.game_msg_bubble_desc));
-      this.ldO = findViewById(g.e.game_msg_bubble_layout);
+      this.nBL = ((ImageView)findViewById(2131824464));
+      this.nBK = ((TextView)findViewById(2131824465));
+      this.nBJ = findViewById(2131824463);
       setVisibility(8);
       this.mHasInit = true;
     }
+    AppMethodBeat.o(112084);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameMessageBubbleView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-final class c$cb
+public final class c$cb
   extends c.g
 {
-  c$cb()
+  public c$cb()
   {
-    super("getMatchContactList", "getMatchContactList", 10000, false);
+    super("getPoiInfo", "", 10000, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.c.cb
  * JD-Core Version:    0.7.0.1
  */

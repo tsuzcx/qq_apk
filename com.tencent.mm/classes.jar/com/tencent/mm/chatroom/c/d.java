@@ -1,28 +1,31 @@
 package com.tencent.mm.chatroom.c;
 
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.protocal.c.sn;
-import com.tencent.mm.protocal.c.so;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.protocal.protobuf.wn;
+import com.tencent.mm.protocal.protobuf.wo;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 
 public final class d
-  extends a<so>
+  extends a<wo>
 {
   public d(String paramString, LinkedList<String> paramLinkedList)
   {
-    y.d("MicroMsg.CgiAddChatRoomAdmin", "roomName:%s,username:%s", new Object[] { paramString, bk.c(paramLinkedList, ";") });
-    sn localsn = new sn();
-    localsn.svm = paramString;
-    localsn.svn = paramLinkedList;
+    AppMethodBeat.i(103909);
+    ab.d("MicroMsg.CgiAddChatRoomAdmin", "roomName:%s,username:%s", new Object[] { paramString, bo.d(paramLinkedList, ";") });
+    wn localwn = new wn();
+    localwn.wot = paramString;
+    localwn.wou = paramLinkedList;
     paramString = new b.a();
-    paramString.ecH = localsn;
-    paramString.ecI = new so();
+    paramString.fsX = localwn;
+    paramString.fsY = new wo();
     paramString.uri = "/cgi-bin/micromsg-bin/delchatroomadmin";
-    paramString.ecG = 259;
-    this.dmK = paramString.Kt();
+    paramString.funcId = 259;
+    this.rr = paramString.ado();
+    AppMethodBeat.o(103909);
   }
 }
 

@@ -1,196 +1,291 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.mm.plugin.appbrand.ReportStorageSizeTask;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.config.a;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.report.model.b;
-import com.tencent.mm.plugin.appbrand.task.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.res.Configuration;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.luggage.g.d;
+import com.tencent.luggage.g.f;
+import com.tencent.luggage.g.h;
+import com.tencent.mm.plugin.appbrand.config.a.d;
+import com.tencent.mm.plugin.appbrand.page.b.c;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import me.imid.swipebacklayout.lib.SwipeBackLayout.a;
+import me.imid.swipebacklayout.lib.a;
+import org.json.JSONObject;
 
-@SuppressLint({"ViewConstructor"})
-public class o
-  extends n
+public abstract class o
+  extends SwipeBackLayout
 {
-  private volatile b gTq;
-  private long gTr = 0L;
-  public boolean gTs = false;
+  private View Qz;
+  private r gPB;
+  private boolean ivV = true;
+  private boolean ivW = false;
+  private int ivX;
+  private int ivY;
+  final boolean[] ivZ = { false };
+  private final SwipeBackLayout.a iwa = new o.1(this);
+  public boolean mSwiping = false;
   
-  public o(Context paramContext, com.tencent.mm.plugin.appbrand.n paramn)
+  public o(Context paramContext, r paramr)
   {
-    super(paramContext, paramn);
-    this.gTq = new b(paramn);
+    super(paramContext);
+    this.gPB = paramr;
+    setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    setScrimColor(0);
+    this.Qz = vs();
+    addView(getContentView());
+    setContentView(getContentView());
+    a(this.iwa);
   }
   
-  protected final void a(al paramal, String paramString)
+  private void a(String paramString, bf parambf)
   {
-    boolean bool = false;
-    this.gTr = System.currentTimeMillis();
-    if (!getRuntime().ZH())
-    {
-      if ((paramal != al.gVQ) && (paramal != al.gVL)) {
-        break label58;
-      }
-      if (!paramString.startsWith(getRuntime().getAppConfig().adV())) {
-        bool = true;
-      }
-      this.gTs = bool;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("path", h.cg(getCurrentUrl()));
+    localHashMap.put("query", h.ch(getCurrentUrl()));
+    localHashMap.put("rawPath", getCurrentUrl());
+    if (parambf != null) {
+      localHashMap.put("openType", parambf.toString());
     }
-    label58:
-    while ((paramal != al.gVP) || (!paramString.startsWith(getRuntime().getAppConfig().adV()))) {
+    if ("onAppRoute".equals(paramString))
+    {
+      parambf = (c)getCurrentPageView().x(c.class);
+      if ((parambf == null) || (!parambf.vy())) {
+        break label153;
+      }
+    }
+    label153:
+    for (boolean bool = true;; bool = false)
+    {
+      localHashMap.put("resizing", Boolean.valueOf(bool));
+      com.tencent.luggage.g.i.d(localHashMap);
+      getCurrentPageView().b(paramString, new JSONObject(localHashMap).toString(), null);
       return;
     }
-    this.gTs = false;
   }
   
-  protected final void a(k paramk1, k paramk2)
+  protected static boolean f(int[] paramArrayOfInt, int paramInt)
   {
-    this.gTq.g(0L, 4);
-    this.gTq.a((s)paramk2.getCurrentPageView(), (s)paramk1.getCurrentPageView(), al.gVN);
-  }
-  
-  protected final void a(k paramk1, k paramk2, al paramal)
-  {
-    long l = System.currentTimeMillis() - this.gTr;
-    b localb = this.gTq;
-    int i;
-    switch (com.tencent.mm.plugin.appbrand.report.model.b.3.gYh[paramal.ordinal()])
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return true;
+    }
+    int j = paramArrayOfInt.length;
+    int i = 0;
+    for (;;)
     {
-    default: 
-      i = 2;
-      localb.g(l, i);
-      h.nFQ.a(390L, 0L, 1L, false);
-      switch ((int)l / 250)
-      {
-      default: 
-        i = 7;
-        label136:
-        h.nFQ.a(390L, i, 1L, false);
-        y.i("MicroMsg.AppBrandPageContainer", "onReady received, time: %d", new Object[] { Long.valueOf(l) });
-        localb = this.gTq;
-        paramk2 = (s)paramk2.getCurrentPageView();
-        if (paramk1 != null) {}
+      if (i >= j) {
+        break label35;
+      }
+      if (paramArrayOfInt[i] == paramInt) {
         break;
       }
-      break;
+      i += 1;
     }
-    for (paramk1 = null;; paramk1 = (s)paramk1.getCurrentPageView())
+    label35:
+    return false;
+  }
+  
+  private View getContentView()
+  {
+    return this.Qz;
+  }
+  
+  private void hide()
+  {
+    if (this.ivV) {
+      setVisibility(4);
+    }
+  }
+  
+  private static void m(View paramView, float paramFloat)
+  {
+    paramView.clearAnimation();
+    paramView.setTranslationX(paramFloat);
+  }
+  
+  private void onSwipe(float paramFloat)
+  {
+    if (this.ivV)
     {
-      localb.a(paramk2, paramk1, paramal);
+      if (paramFloat < 0.0F) {
+        break label45;
+      }
+      setVisibility(0);
+    }
+    for (;;)
+    {
+      float f = getContentView().getWidth() / 4;
+      m(getContentView(), f * (1.0F - paramFloat) * -1.0F);
       return;
-      i = 1;
-      break;
-      i = 3;
-      break;
-      i = 1;
-      break label136;
-      i = 2;
-      break label136;
-      i = 3;
-      break label136;
-      i = 4;
-      break label136;
-      i = 5;
-      break label136;
-      i = 6;
-      break label136;
+      label45:
+      hide();
     }
   }
   
-  public final q amZ()
+  public final void a(bf parambf)
   {
-    q localq = null;
-    if ((getRuntime().getAppConfig().fNG) || (!d.aoF())) {
-      localq = d.wk(getAppId());
-    }
-    if (localq != null) {
-      return localq;
-    }
-    return new s();
+    a("onAppRoute", parambf);
+    d.i("MicroMsg.AppBrandPage", "onAppRoute: %s, %s", new Object[] { parambf.toString(), getCurrentUrl() });
   }
   
-  protected final k b(String paramString, al paramal)
+  protected void a(v paramv, AppBrandPageFullScreenView paramAppBrandPageFullScreenView)
   {
-    paramString = super.b(paramString, paramal);
-    if ((paramString instanceof SwipeBackLayout))
+    if ((paramAppBrandPageFullScreenView != null) && (paramAppBrandPageFullScreenView.getParent() == null) && ((this.Qz instanceof ViewGroup))) {
+      ((ViewGroup)this.Qz).addView(paramAppBrandPageFullScreenView, new ViewGroup.LayoutParams(-1, -1));
+    }
+  }
+  
+  public abstract void a(String paramString1, String paramString2, int[] paramArrayOfInt);
+  
+  public final int aIT()
+  {
+    if (this.gPB == null) {
+      return -1;
+    }
+    return this.gPB.iwj.indexOf(this);
+  }
+  
+  final void aIU()
+  {
+    if (this.ivV)
     {
-      float f = getResources().getDisplayMetrics().density;
-      paramString.setMinVelocity(100.0F * f);
-      paramString.setMaxVelocity(300.0F * f);
-      paramString.setEdgeTrackingEnabled(1);
-      paramString.setEdgeSize((int)(f * 20.0F + 0.5F));
+      this.ivV = false;
+      this.ivW = false;
+      vu();
     }
-    return paramString;
   }
   
-  public b getReporter()
+  final void aIV()
   {
-    return this.gTq;
-  }
-  
-  public com.tencent.mm.plugin.appbrand.n getRuntime()
-  {
-    return (com.tencent.mm.plugin.appbrand.n)super.getRuntime();
-  }
-  
-  protected final void onDestroy()
-  {
-    super.onDestroy();
-    b localb;
-    s locals;
-    if (!getPageStack().isEmpty())
+    if (!this.ivV)
     {
-      localb = this.gTq;
-      locals = (s)getCurrentPage().getCurrentPageView();
-      if ((locals != null) && (!localb.gSK)) {}
+      this.ivV = true;
+      vv();
     }
-    else
+  }
+  
+  public final void aIW()
+  {
+    a("onAppRouteDone", null);
+    d.i("MicroMsg.AppBrandPage", "onAppRouteDone: %s", new Object[] { getCurrentUrl() });
+  }
+  
+  public abstract boolean bV(String paramString);
+  
+  protected void cleanup() {}
+  
+  public String getAppId()
+  {
+    return this.gPB.getAppId();
+  }
+  
+  protected r getContainer()
+  {
+    return this.gPB;
+  }
+  
+  public abstract v getCurrentPageView();
+  
+  public abstract String getCurrentUrl();
+  
+  public a.d getPageConfig()
+  {
+    return getCurrentPageView().getPageConfig();
+  }
+  
+  protected final void hideVKB()
+  {
+    f.av(getContext());
+  }
+  
+  protected final boolean isInBackground()
+  {
+    return this.ivV;
+  }
+  
+  public abstract void loadUrl(String paramString);
+  
+  public final void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    if (this.ivV) {
+      this.ivW = true;
+    }
+    v localv = getCurrentPageView();
+    if (localv != null) {
+      localv.onConfigurationChanged(paramConfiguration);
+    }
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    if ((this.ivV) && (!this.ivW) && (this.ivX > 0) && (this.ivY > 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
+      super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.ivX, 1073741824), View.MeasureSpec.makeMeasureSpec(this.ivY, 1073741824));
       return;
     }
-    localb.c(locals);
+    super.onMeasure(paramInt1, paramInt2);
+    this.ivX = getMeasuredWidth();
+    this.ivY = getMeasuredHeight();
   }
   
-  public final void onReady()
+  final void performDestroy()
   {
-    super.onReady();
-    ReportStorageSizeTask localReportStorageSizeTask = new ReportStorageSizeTask();
-    localReportStorageSizeTask.appId = getRuntime().mAppId;
-    AppBrandMainProcessService.a(localReportStorageSizeTask);
+    vt();
   }
   
-  public void pY()
+  protected abstract View vs();
+  
+  protected void vt()
   {
-    super.pY();
-    this.gTq.d((s)getCurrentPage().getCurrentPageView());
+    d.d("MicroMsg.AppBrandPage", "onPageDestroy: %s", new Object[] { getCurrentUrl() });
   }
   
-  public void qa()
+  protected void vu()
   {
-    super.qa();
-    this.gTq.c((s)getCurrentPage().getCurrentPageView());
-  }
-  
-  public void tA(String paramString)
-  {
-    super.tA(paramString);
-    if (getRuntime().aaa().fPN) {
-      ai.l(new o.1(this), 10000L);
+    d.d("MicroMsg.AppBrandPage", "onPageForeground: %s", new Object[] { getCurrentUrl() });
+    r localr = this.gPB;
+    if ((localr.iwj.size() > 1) || (localr.getRuntime().gPQ)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      setEnableGesture(bool);
+      setEdgeTrackingEnabled(1);
+      onSwipe(1.0F);
+      this.ivZ[0] = false;
+      this.mSwiping = false;
+      this.AET = 0.0F;
+      this.CKY.cancel();
+      this.CKY.aL(0);
+      if ((this.AEQ != 0) || (this.AER != 0))
+      {
+        this.AER = 0;
+        this.AEQ = 0;
+        requestLayout();
+      }
+      setVisibility(0);
+      return;
     }
+  }
+  
+  protected void vv()
+  {
+    d.d("MicroMsg.AppBrandPage", "onPageBackground: %s", new Object[] { getCurrentUrl() });
+  }
+  
+  final void wm()
+  {
+    cleanup();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.o
  * JD-Core Version:    0.7.0.1
  */

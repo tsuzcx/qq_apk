@@ -1,25 +1,35 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import com.tencent.mm.plugin.account.a.b.a;
-import com.tencent.mm.plugin.account.bind.a.i;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.ui.base.b;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.friend.ui.i.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.MMWizardActivity;
 
 final class BindMContactUI$7
-  implements Runnable
+  implements i.a
 {
-  BindMContactUI$7(BindMContactUI paramBindMContactUI) {}
+  BindMContactUI$7(BindMContactUI paramBindMContactUI, String paramString) {}
   
-  public final void run()
+  public final void g(int paramInt, Bundle paramBundle)
   {
-    String str = this.fcb.getString(a.i.gdpr_login_verifybirthday_url, new Object[] { x.cqJ() });
-    a.b(this.fcb, str, 30765, true);
-    b.gL(this.fcb);
+    AppMethodBeat.i(13467);
+    if (paramInt == 1)
+    {
+      ab.i("MicroMsg.BindMContactUI", "next to BindMContactVerifyUI for bind mobile");
+      paramBundle = new Intent(this.gtN, BindMContactVerifyUI.class);
+      paramBundle.putExtra("bindmcontact_mobile", this.gtC);
+      paramBundle.putExtra("KEnterFromBanner", BindMContactUI.i(this.gtN));
+      paramBundle.putExtra("bind_scene", BindMContactUI.j(this.gtN));
+      MMWizardActivity.J(this.gtN, paramBundle);
+    }
+    AppMethodBeat.o(13467);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactUI.7
  * JD-Core Version:    0.7.0.1
  */

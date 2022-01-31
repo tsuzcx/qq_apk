@@ -1,46 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.b;
-import com.tencent.mm.plugin.appbrand.g.c;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
 
 final class f$1
-  extends g.b
+  implements c.c
 {
-  f$1(String paramString1, String paramString2, String paramString3, long paramLong, AppBrandStatObject paramAppBrandStatObject) {}
+  f$1(f paramf, d paramd, int paramInt) {}
   
-  private void a(g.c paramc, String paramString1, String paramString2, String paramString3)
+  public final void i(boolean paramBoolean, String paramString)
   {
-    long l1 = bk.UY();
-    long l2 = this.eow;
-    int i = 0;
-    switch (f.2.fGn[paramc.ordinal()])
+    AppMethodBeat.i(140841);
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      f.a(i, paramString1, paramString2, paramString3, l1 - l2);
-      this.gxi.gxg = null;
-      g.b(paramString1, this);
+      paramString = "ok";
+      this.hLy.h(this.bAX, this.hTj.j(paramString, null));
+      AppMethodBeat.o(140841);
       return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
     }
-  }
-  
-  public final void a(g.c paramc)
-  {
-    a(paramc, this.val$appId, this.dlh, this.gxh);
-  }
-  
-  public final void onDestroy()
-  {
-    a(g.qB(this.val$appId), this.val$appId, this.dlh, this.gxh);
+    StringBuilder localStringBuilder = new StringBuilder("fail");
+    if (TextUtils.isEmpty(paramString)) {}
+    for (paramString = "";; paramString = " ".concat(String.valueOf(paramString)))
+    {
+      paramString = paramString;
+      break;
+    }
   }
 }
 

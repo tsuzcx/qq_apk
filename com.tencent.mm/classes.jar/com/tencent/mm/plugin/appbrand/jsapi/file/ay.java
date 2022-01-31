@@ -1,75 +1,40 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
-import com.tencent.luggage.j.a;
-import com.tencent.mm.plugin.appbrand.appstorage.h;
-import com.tencent.mm.plugin.appbrand.appstorage.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.j;
+import com.tencent.mm.plugin.appbrand.appstorage.o;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.v.n;
-import com.tencent.mm.plugin.appbrand.v.n.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.io.ByteArrayInputStream;
-import java.nio.ByteBuffer;
-import java.util.Map;
 import org.json.JSONObject;
 
-class ay
-  extends d
+final class ay
+  extends f
 {
-  f.a a(c paramc, String paramString, JSONObject paramJSONObject)
+  final h.a a(c paramc, String paramString, JSONObject paramJSONObject)
   {
-    boolean bool = paramJSONObject.optBoolean("append", false);
-    String str = paramJSONObject.optString("encoding");
-    n.a(paramc.ahK(), paramJSONObject, (n.a)paramc.D(n.a.class));
-    Object localObject = paramJSONObject.opt("data");
-    if ((localObject instanceof String)) {
-      if (bk.bl(str)) {
-        paramJSONObject = (e)e.a.gqH.get("utf8");
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(102838);
+    paramc = paramc.wX().zf(paramString);
+    switch (ay.1.hMg[paramc.ordinal()])
     {
-      try
-      {
-        paramJSONObject = paramJSONObject.ua((String)localObject);
-        paramJSONObject = new a(paramJSONObject);
-        paramc = paramc.Zl().a(paramString, paramJSONObject, bool);
-        switch (ay.1.gqS[paramc.ordinal()])
-        {
-        default: 
-          return new f.a("fail " + paramc.name(), new Object[0]);
-        }
-      }
-      catch (Exception paramc)
-      {
-        return new f.a("fail " + paramc.getMessage(), new Object[0]);
-      }
-      paramJSONObject = (e)e.a.gqH.get(str.toLowerCase());
-      if (paramJSONObject == null)
-      {
-        return new f.a("fail invalid encoding", new Object[0]);
-        if ((localObject instanceof ByteBuffer))
-        {
-          paramJSONObject = new a((ByteBuffer)localObject);
-        }
-        else if (localObject == null)
-        {
-          if (bool) {
-            return new f.a("ok", new Object[0]);
-          }
-          paramJSONObject = new ByteArrayInputStream(new byte[0]);
-        }
-        else
-        {
-          return new f.a("fail invalid data", new Object[0]);
-          return new f.a("fail no such file or directory, open \"%s\"", new Object[] { paramString });
-          return new f.a("fail illegal operation on a directory, open \"%s\"", new Object[] { paramString });
-          return new f.a("fail permission denied, open \"%s\"", new Object[] { paramString });
-          return new f.a("fail \"%s\" is not a regular file", new Object[] { paramString });
-          return new f.a("fail the maximum size of the file storage limit is exceeded", new Object[0]);
-          return new f.a("ok", new Object[0]);
-        }
-      }
+    default: 
+      paramc = new h.a("fail " + paramc.name(), new Object[0]);
+      AppMethodBeat.o(102838);
+      return paramc;
+    case 1: 
+      paramc = new h.a("fail permission denied, open \"%s\"", new Object[] { paramString });
+      AppMethodBeat.o(102838);
+      return paramc;
+    case 2: 
+      paramc = new h.a("fail no such file or directory \"%s\"", new Object[] { paramString });
+      AppMethodBeat.o(102838);
+      return paramc;
+    case 3: 
+      paramc = new h.a("fail operation not permitted, unlink \"%s\"", new Object[] { paramString });
+      AppMethodBeat.o(102838);
+      return paramc;
     }
+    paramc = new h.a("ok", new Object[0]);
+    AppMethodBeat.o(102838);
+    return paramc;
   }
 }
 

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
-import com.tencent.mm.aa.b.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.z.b.b.a;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,12 +15,14 @@ public final class j
     super("reportIDKey", paramInt);
   }
   
-  protected final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.z.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
+    AppMethodBeat.i(10851);
     parama = paramJSONObject.optJSONArray("dataArray");
     if (parama == null)
     {
-      parama1.ab(a(false, "dataArray is null", null));
+      parama1.aj(a(false, "dataArray is null", null));
+      AppMethodBeat.o(10851);
       return;
     }
     int i = 0;
@@ -32,19 +35,20 @@ public final class j
           int j = paramJSONObject.optInt("id");
           int k = paramJSONObject.optInt("key");
           int m = paramJSONObject.optInt("value");
-          h.nFQ.a(j, k, m, false);
+          h.qsU.idkeyStat(j, k, m, false);
           i += 1;
         }
         catch (Exception paramJSONObject)
         {
           for (;;)
           {
-            y.e("MicroMsg.JsApiFunc_ReportIDKey", "parse json failed : %s", new Object[] { paramJSONObject.getMessage() });
+            ab.e("MicroMsg.JsApiFunc_ReportIDKey", "parse json failed : %s", new Object[] { paramJSONObject.getMessage() });
           }
         }
       }
     }
-    parama1.ab(a(true, "", null));
+    parama1.aj(a(true, "", null));
+    AppMethodBeat.o(10851);
   }
 }
 

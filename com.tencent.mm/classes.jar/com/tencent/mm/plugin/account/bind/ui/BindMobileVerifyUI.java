@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -9,21 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.at.b;
-import com.tencent.mm.h.a.so;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.au.b;
+import com.tencent.mm.g.a.ug;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.r;
 import com.tencent.mm.modelsimple.BindWordingContent;
-import com.tencent.mm.plugin.account.bind.a.e;
-import com.tencent.mm.plugin.account.bind.a.f;
-import com.tencent.mm.plugin.account.bind.a.g;
-import com.tencent.mm.plugin.account.bind.a.i;
 import com.tencent.mm.plugin.account.friend.a.x;
-import com.tencent.mm.plugin.account.friend.ui.FindMContactAddUI;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.h;
@@ -34,60 +31,65 @@ public class BindMobileVerifyUI
   extends MMWizardActivity
   implements f
 {
-  private String bSe;
-  private boolean fbC = false;
-  private boolean fbY = false;
-  private boolean fcF = false;
-  private TextView fcI;
-  private TextView fcJ;
-  private boolean fcK = false;
-  private Integer fcL = Integer.valueOf(15);
-  private EditText fcd;
-  private Button fcf;
-  private BindWordingContent fcr;
-  private int fcs;
-  private boolean fct;
-  private boolean fcu;
+  private String czF;
+  private int fromScene;
+  private EditText gtO;
+  private Button gtQ;
+  private BindWordingContent gub;
+  private int guc;
+  private boolean gud;
+  private boolean gue;
+  private TextView gut;
+  private TextView guu;
+  private Integer guv;
   private Timer mTimer;
-  private com.tencent.mm.ui.base.p tipDialog = null;
+  private com.tencent.mm.ui.base.p tipDialog;
   
-  private void Wf()
+  public BindMobileVerifyUI()
   {
+    AppMethodBeat.i(13535);
+    this.tipDialog = null;
+    this.guv = Integer.valueOf(15);
+    AppMethodBeat.o(13535);
+  }
+  
+  private void apE()
+  {
+    AppMethodBeat.i(13541);
     if (this.mTimer != null)
     {
       this.mTimer.cancel();
       this.mTimer = null;
     }
+    AppMethodBeat.o(13541);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.f.bindmcontact_verify;
+    return 2130968850;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.bSe = ((String)g.DP().Dz().get(4097, null));
-    this.fcd = ((EditText)findViewById(a.e.bind_mcontact_verify_num));
-    this.fcI = ((TextView)findViewById(a.e.bind_mcontact_verify_mobile_num));
-    this.fcJ = ((TextView)findViewById(a.e.bind_mcontact_sms_time_hint));
-    this.fbC = getIntent().getBooleanExtra("is_bind_for_safe_device", false);
-    this.fcK = getIntent().getBooleanExtra("is_bind_for_contact_sync", false);
-    this.fbY = getIntent().getBooleanExtra("BIND_FOR_QQ_REG", false);
-    Object localObject = (Button)findViewById(a.e.bind_mcontact_verify_btn);
-    if ((this.bSe == null) || (this.bSe.equals(""))) {
-      this.bSe = ((String)g.DP().Dz().get(6, null));
+    AppMethodBeat.i(13540);
+    this.czF = ((String)g.RL().Ru().get(4097, null));
+    this.gtO = ((EditText)findViewById(2131821810));
+    this.gut = ((TextView)findViewById(2131821809));
+    this.guu = ((TextView)findViewById(2131821813));
+    Object localObject = (Button)findViewById(2131821811);
+    if ((this.czF == null) || (this.czF.equals(""))) {
+      this.czF = ((String)g.RL().Ru().get(6, null));
     }
-    if ((this.bSe != null) && (this.bSe.length() > 0))
+    if ((this.czF != null) && (this.czF.length() > 0))
     {
-      this.fcI.setVisibility(0);
-      this.fcI.setText(this.bSe);
+      this.gut.setVisibility(0);
+      this.gut.setText(this.czF);
     }
     BindMobileVerifyUI.1 local1 = new BindMobileVerifyUI.1(this);
-    this.fcd.setFilters(new InputFilter[] { local1 });
-    this.fcf = ((Button)findViewById(a.e.bind_mcontact_voice_code));
+    this.gtO.setFilters(new InputFilter[] { local1 });
+    this.gtQ = ((Button)findViewById(2131821774));
     ((Button)localObject).setVisibility(8);
-    this.fcJ.setText(getResources().getQuantityString(a.g.mobileverify_send_code_tip, this.fcL.intValue(), new Object[] { this.fcL }));
+    this.guu.setText(getResources().getQuantityString(2131361811, this.guv.intValue(), new Object[] { this.guv }));
     if (this.mTimer == null)
     {
       this.mTimer = new Timer();
@@ -96,179 +98,194 @@ public class BindMobileVerifyUI
         this.mTimer.schedule((TimerTask)localObject, 1000L, 1000L);
       }
     }
-    addTextOptionMenu(0, getString(a.i.app_nextstep), new BindMobileVerifyUI.2(this));
+    addTextOptionMenu(0, getString(2131297013), new BindMobileVerifyUI.2(this));
     setBackBtn(new BindMobileVerifyUI.3(this));
-    localObject = this.fcf;
-    if (b.mA(this.bSe)) {}
+    localObject = this.gtQ;
+    if (b.tK(this.czF)) {}
     for (int i = 0;; i = 8)
     {
       ((Button)localObject).setVisibility(i);
-      this.fcf.setOnClickListener(new BindMobileVerifyUI.4(this));
+      this.gtQ.setOnClickListener(new BindMobileVerifyUI.4(this));
+      AppMethodBeat.o(13540);
       return;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(13536);
     super.onCreate(paramBundle);
-    g.Dk().a(132, this);
-    setMMTitle(a.i.bind_mcontact_title_verify);
-    this.fcr = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
-    this.fcs = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
-    this.fct = getIntent().getBooleanExtra("Kfind_friend_by_mobile_flag", false);
-    this.fcu = getIntent().getBooleanExtra("Krecom_friends_by_mobile_flag", false);
-    this.fcF = getIntent().getBooleanExtra("is_bind_for_chatroom_upgrade", false);
+    g.Rc().a(132, this);
+    setMMTitle(2131297598);
+    this.gub = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
+    this.guc = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
+    this.gud = getIntent().getBooleanExtra("Kfind_friend_by_mobile_flag", false);
+    this.gue = getIntent().getBooleanExtra("Krecom_friends_by_mobile_flag", false);
+    this.fromScene = getIntent().getIntExtra("bind_scene", 0);
     initView();
+    AppMethodBeat.o(13536);
   }
   
   public void onDestroy()
   {
-    g.Dk().b(132, this);
+    AppMethodBeat.i(13537);
+    g.Rc().b(132, this);
     super.onDestroy();
+    AppMethodBeat.o(13537);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0)) {
+    AppMethodBeat.i(13542);
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
+    {
+      Oi(1);
+      AppMethodBeat.o(13542);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(13542);
+    return bool;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
     boolean bool2 = true;
-    y.i("MicroMsg.BindMobileVerifyUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (((x)paramm).rN() != 2) {}
-    for (;;)
+    AppMethodBeat.i(13543);
+    ab.i("MicroMsg.BindMobileVerifyUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (((x)paramm).Ac() != 2)
     {
+      AppMethodBeat.o(13543);
       return;
-      if (this.tipDialog != null)
+    }
+    if (this.tipDialog != null)
+    {
+      this.tipDialog.dismiss();
+      this.tipDialog = null;
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      if (((x)paramm).Ac() == 2) {}
+      switch (this.fromScene)
       {
-        this.tipDialog.dismiss();
-        this.tipDialog = null;
-      }
-      if ((paramInt1 == 0) && (paramInt2 == 0))
-      {
-        if (((x)paramm).rN() == 2)
+      default: 
+        if ((this.fromScene == 0) || (this.fromScene == 3)) {
+          ((com.tencent.mm.plugin.account.a.a.a)g.G(com.tencent.mm.plugin.account.a.a.a.class)).syncAddrBookAndUpload();
+        }
+        paramString = new Intent(this, BindMobileStatusUI.class);
+        paramString.putExtra("kstyle_bind_wording", this.gub);
+        paramString.putExtra("kstyle_bind_recommend_show", this.guc);
+        paramString.putExtra("Kfind_friend_by_mobile_flag", this.gud);
+        paramString.putExtra("Krecom_friends_by_mobile_flag", this.gue);
+        paramString.putExtra("bind_scene", this.fromScene);
+        J(this, paramString);
+        AppMethodBeat.o(13543);
+        return;
+      case 1: 
+        if (!r.Zv())
         {
-          if (this.fbC)
-          {
-            if (!q.Gr())
-            {
-              paramString = new so();
-              paramString.ccd.cce = true;
-              paramString.ccd.ccf = true;
-              com.tencent.mm.sdk.b.a.udP.m(paramString);
-            }
-            FW(1);
-            paramString = new Intent();
-            paramString.addFlags(67108864);
-            com.tencent.mm.plugin.account.a.a.eUR.c(this, paramString);
-            return;
-          }
-          if (this.fbY)
-          {
-            FW(1);
-            startActivity(new Intent(this, FindMContactAddUI.class));
-            return;
-          }
-          if (this.fcF)
-          {
-            boolean bool1;
-            if (!this.fct)
-            {
-              bool1 = true;
-              if (this.fcu) {
-                break label247;
-              }
-            }
-            for (;;)
-            {
-              BindMobileStatusUI.c(this, bool1, bool2);
-              exit(-1);
-              return;
-              bool1 = false;
-              break;
-              label247:
-              bool2 = false;
-            }
-          }
-          if (!this.fcK) {
-            ((com.tencent.mm.plugin.account.a.a.a)g.t(com.tencent.mm.plugin.account.a.a.a.class)).syncAddrBookAndUpload();
-          }
-          paramString = new Intent(this, BindMobileStatusUI.class);
-          paramString.putExtra("kstyle_bind_wording", this.fcr);
-          paramString.putExtra("kstyle_bind_recommend_show", this.fcs);
-          paramString.putExtra("Kfind_friend_by_mobile_flag", this.fct);
-          paramString.putExtra("Krecom_friends_by_mobile_flag", this.fcu);
-          C(this, paramString);
+          paramString = new ug();
+          paramString.cKJ.cKK = true;
+          paramString.cKJ.cKL = true;
+          com.tencent.mm.sdk.b.a.ymk.l(paramString);
+        }
+        Oi(1);
+        paramString = new Intent();
+        paramString.addFlags(67108864);
+        com.tencent.mm.plugin.account.a.a.gmO.e(this, paramString);
+        AppMethodBeat.o(13543);
+        return;
+      }
+      boolean bool1;
+      if (!this.gud)
+      {
+        bool1 = true;
+        if (this.gue) {
+          break label370;
         }
       }
-      else
+      for (;;)
       {
-        int i;
-        if (com.tencent.mm.plugin.account.a.a.eUS.a(this, paramInt1, paramInt2, paramString)) {
-          i = 1;
-        }
-        while (i == 0)
-        {
-          Toast.makeText(this, getString(a.i.bind_mcontact_verify_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-          return;
-          switch (paramInt2)
-          {
-          default: 
-            i = 0;
-            break;
-          case -34: 
-            Toast.makeText(this, a.i.bind_mcontact_err_freq_limit, 0).show();
-            i = 1;
-            break;
-          case -43: 
-            Toast.makeText(this, a.i.bind_mcontact_err_binded, 0).show();
-            i = 1;
-            break;
-          case -214: 
-            paramString = com.tencent.mm.i.a.eI(paramString);
-            if (paramString != null) {
-              paramString.a(this, null, null);
-            }
-            i = 1;
-            break;
-          case -41: 
-            Toast.makeText(this, a.i.bind_mcontact_err_format, 0).show();
-            i = 1;
-            break;
-          case -35: 
-            Toast.makeText(this, a.i.bind_mcontact_err_binded_by_other, 0).show();
-            i = 1;
-            break;
-          case -36: 
-            Toast.makeText(this, a.i.bind_mcontact_err_unbinded_notbinded, 0).show();
-            i = 1;
-            break;
-          case -32: 
-            h.a(this, a.i.bind_mcontact_verify_err_unmatch_content, a.i.bind_mcontact_verify_tip, null);
-            i = 1;
-            break;
-          case -33: 
-            h.a(this, a.i.bind_mcontact_verify_err_time_out_content, a.i.bind_mcontact_verify_tip, null);
-            i = 1;
-          }
-        }
+        BindMobileStatusUI.c(this, bool1, bool2);
+        exit(-1);
+        AppMethodBeat.o(13543);
+        return;
+        bool1 = false;
+        break;
+        label370:
+        bool2 = false;
       }
     }
+    int i;
+    if (com.tencent.mm.plugin.account.a.a.gmP.a(this, paramInt1, paramInt2, paramString)) {
+      i = 1;
+    }
+    while (i != 0)
+    {
+      AppMethodBeat.o(13543);
+      return;
+      switch (paramInt2)
+      {
+      default: 
+        i = 0;
+        break;
+      case -34: 
+        Toast.makeText(this, 2131297570, 0).show();
+        i = 1;
+        break;
+      case -43: 
+        Toast.makeText(this, 2131297567, 0).show();
+        i = 1;
+        break;
+      case -214: 
+        paramString = com.tencent.mm.h.a.kO(paramString);
+        if (paramString != null) {
+          paramString.a(this, null, null);
+        }
+        i = 1;
+        break;
+      case -41: 
+        Toast.makeText(this, 2131297569, 0).show();
+        i = 1;
+        break;
+      case -35: 
+        Toast.makeText(this, 2131297568, 0).show();
+        i = 1;
+        break;
+      case -36: 
+        Toast.makeText(this, 2131297572, 0).show();
+        i = 1;
+        break;
+      case -32: 
+        h.a(this, 2131297616, 2131297621, null);
+        i = 1;
+        break;
+      case -33: 
+        h.a(this, 2131297615, 2131297621, null);
+        i = 1;
+      }
+    }
+    Toast.makeText(this, getString(2131297614, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    AppMethodBeat.o(13543);
   }
   
-  protected void onStop()
+  public void onStop()
   {
-    Wf();
+    AppMethodBeat.i(13538);
+    apE();
     super.onStop();
+    AppMethodBeat.o(13538);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMobileVerifyUI
  * JD-Core Version:    0.7.0.1
  */

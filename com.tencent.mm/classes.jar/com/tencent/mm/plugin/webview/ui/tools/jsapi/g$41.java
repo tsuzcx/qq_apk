@@ -1,24 +1,14 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.h.a.cp;
-import com.tencent.mm.h.a.cp.b;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 final class g$41
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  g$41(g paramg, cp paramcp, i parami) {}
+  g$41(g paramg) {}
   
-  public final void run()
-  {
-    y.i("MicroMsg.MsgHandler", "run ecard jsapi check callback");
-    if (this.qJJ.bIJ.retCode == 0)
-    {
-      g.a(this.rzi, this.rzk, "openECard:ok", null);
-      return;
-    }
-    g.a(this.rzi, this.rzk, "openECard:fail", null);
-  }
+  public final void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

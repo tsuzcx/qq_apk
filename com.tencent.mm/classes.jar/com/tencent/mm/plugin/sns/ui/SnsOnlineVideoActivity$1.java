@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsOnlineVideoActivity$1
   implements View.OnClickListener
@@ -11,16 +12,18 @@ final class SnsOnlineVideoActivity$1
   public final void onClick(View paramView)
   {
     boolean bool = false;
-    paramView = this.pbr;
-    if (SnsOnlineVideoActivity.a(this.pbr)) {}
+    AppMethodBeat.i(39142);
+    paramView = this.rUf;
+    if (SnsOnlineVideoActivity.a(this.rUf)) {}
     for (int i = 8;; i = 0)
     {
       paramView.setTitleVisibility(i);
-      paramView = this.pbr;
-      if (!SnsOnlineVideoActivity.a(this.pbr)) {
+      paramView = this.rUf;
+      if (!SnsOnlineVideoActivity.a(this.rUf)) {
         bool = true;
       }
       SnsOnlineVideoActivity.a(paramView, bool);
+      AppMethodBeat.o(39142);
       return;
     }
   }

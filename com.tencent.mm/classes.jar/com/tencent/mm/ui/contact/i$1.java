@@ -2,12 +2,13 @@ package com.tencent.mm.ui.contact;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import com.tencent.mm.ai.e.a.b;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.e.a.b;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.n.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bd;
 import java.util.List;
 import java.util.Map;
@@ -19,58 +20,66 @@ final class i$1
   
   public final void run()
   {
-    au.Hx();
-    Object localObject = c.Fw().abl(this.voN.eeM);
-    if ((i.a(this.vLi) != null) && (i.a(this.vLi).size() > 0) && (i.a(this.vLi).contains(this.voN.eeM))) {
-      if ((localObject == null) || ((int)((a)localObject).dBe <= 0) || (!a.gR(((ao)localObject).field_type)))
+    AppMethodBeat.i(33703);
+    aw.aaz();
+    Object localObject = c.YA().arw(this.zEp.fuO);
+    if ((i.a(this.AcK) != null) && (i.a(this.AcK).size() > 0) && (i.a(this.AcK).contains(this.zEp.fuO)))
+    {
+      if ((localObject == null) || ((int)((a)localObject).euF <= 0) || (!a.je(((aq)localObject).field_type)))
       {
-        y.i("MicroMsg.EnterpriseBizView", "remove enterprise biz view item, %s", new Object[] { this.voN.eeM });
-        i.a(this.vLi).remove(this.voN.eeM);
-        if (i.a(this.vLi).size() <= 0) {
-          break label208;
+        ab.i("MicroMsg.EnterpriseBizView", "remove enterprise biz view item, %s", new Object[] { this.zEp.fuO });
+        i.a(this.AcK).remove(this.zEp.fuO);
+        if (i.a(this.AcK).size() > 0)
+        {
+          localObject = (View)i.b(this.AcK).get(this.zEp.fuO);
+          if ((localObject != null) && (i.c(this.AcK) != null))
+          {
+            i.c(this.AcK).removeView((View)localObject);
+            i.b(this.AcK).remove(localObject);
+          }
+          AppMethodBeat.o(33703);
+          return;
         }
-        localObject = (View)i.b(this.vLi).get(this.voN.eeM);
-        if ((localObject != null) && (i.c(this.vLi) != null)) {
-          i.c(this.vLi).removeView((View)localObject);
+        if (i.d(this.AcK) != null)
+        {
+          if (i.b(this.AcK) != null) {
+            i.b(this.AcK).clear();
+          }
+          if (i.c(this.AcK) != null) {
+            i.c(this.AcK).removeAllViews();
+          }
+          i.d(this.AcK).Qr(i.a(this.AcK).size());
+          AppMethodBeat.o(33703);
         }
       }
     }
-    label208:
-    do
+    else
     {
-      do
+      if ((localObject == null) || ((int)((a)localObject).euF <= 0) || (!a.je(((aq)localObject).field_type)))
       {
-        i.b(this.vLi).remove(localObject);
-        do
-        {
-          return;
-        } while (i.d(this.vLi) == null);
-        if (i.b(this.vLi) != null) {
-          i.b(this.vLi).clear();
-        }
-        if (i.c(this.vLi) != null) {
-          i.c(this.vLi).removeAllViews();
-        }
-        i.d(this.vLi).HJ(i.a(this.vLi).size());
+        AppMethodBeat.o(33703);
         return;
-      } while ((localObject == null) || ((int)((a)localObject).dBe <= 0) || (!a.gR(((ao)localObject).field_type)));
-      if (i.a(this.vLi) != null) {
-        i.a(this.vLi).clear();
       }
-      if (i.b(this.vLi) != null) {
-        i.b(this.vLi).clear();
+      if (i.a(this.AcK) != null) {
+        i.a(this.AcK).clear();
       }
-      if (i.c(this.vLi) != null) {
-        i.c(this.vLi).removeAllViews();
+      if (i.b(this.AcK) != null) {
+        i.b(this.AcK).clear();
       }
-      i.e(this.vLi);
-    } while (i.d(this.vLi) == null);
-    i.d(this.vLi).HJ(i.a(this.vLi).size());
+      if (i.c(this.AcK) != null) {
+        i.c(this.AcK).removeAllViews();
+      }
+      i.e(this.AcK);
+      if (i.d(this.AcK) != null) {
+        i.d(this.AcK).Qr(i.a(this.AcK).size());
+      }
+    }
+    AppMethodBeat.o(33703);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.contact.i.1
  * JD-Core Version:    0.7.0.1
  */

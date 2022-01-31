@@ -5,12 +5,12 @@ public final class c$gd
 {
   public c$gd()
   {
-    super("pauseVoice", "pauseVoice", 100, false);
+    super("openSpecificView", "specific_view", 48, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.c.gd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,17 @@
 package com.tencent.mm.ui.chatting;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import com.tencent.mm.ah.g;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppAttachDownloadUI$4
-  implements g
+  implements Runnable
 {
   AppAttachDownloadUI$4(AppAttachDownloadUI paramAppAttachDownloadUI) {}
   
-  public final void a(int paramInt1, int paramInt2, m paramm)
+  public final void run()
   {
-    if (paramInt2 == 0) {}
-    for (float f = 0.0F;; f = paramInt1 * 100.0F / paramInt2)
-    {
-      if ((paramInt1 < paramInt2) && (AppAttachDownloadUI.k(this.vgK).getVisibility() != 0))
-      {
-        AppAttachDownloadUI.k(this.vgK).setVisibility(0);
-        AppAttachDownloadUI.l(this.vgK).setVisibility(8);
-        AppAttachDownloadUI.m(this.vgK).setVisibility(0);
-      }
-      AppAttachDownloadUI.n(this.vgK).setProgress((int)f);
-      return;
-    }
+    AppMethodBeat.i(30267);
+    AppAttachDownloadUI.z(this.zvM);
+    AppMethodBeat.o(30267);
   }
 }
 

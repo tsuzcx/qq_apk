@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.appbrand;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -9,14 +10,17 @@ final class a$2
 {
   a$2(a parama) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    if (this.uRJ.uRH == null)
+    AppMethodBeat.i(29927);
+    if (this.zgk.zgi == null)
     {
-      y.e("MicroMsg.AppBrandSerivceActionSheet", "resetOnCreateMenuListener, state is null");
+      ab.e("MicroMsg.AppBrandServiceActionSheet", "resetOnCreateMenuListener, state is null");
+      AppMethodBeat.o(29927);
       return;
     }
-    this.uRJ.uRH.a(paraml);
+    this.zgk.zgi.onCreateMMMenu(paraml);
+    AppMethodBeat.o(29927);
   }
 }
 

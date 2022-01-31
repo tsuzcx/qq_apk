@@ -16,51 +16,21 @@ public final class b
     this.limit = (paramInt + 0);
   }
   
-  public static int aI(String paramString)
-  {
-    try
-    {
-      paramString = paramString.getBytes("UTF-8");
-      int i = dS(paramString.length);
-      int j = paramString.length;
-      return j + i;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      throw new RuntimeException("UTF-8 not supported.");
-    }
-  }
-  
-  public static int aN(int paramInt1, int paramInt2)
-  {
-    return dQ(paramInt1) + dO(paramInt2);
-  }
-  
-  public static int aO(int paramInt1, int paramInt2)
-  {
-    return dQ(paramInt1) + dS(paramInt2);
-  }
-  
-  private void aP(int paramInt1, int paramInt2)
-  {
-    dR(g.aQ(paramInt1, paramInt2));
-  }
-  
-  private void ab(long paramLong)
+  private void ao(long paramLong)
   {
     for (;;)
     {
       if ((0xFFFFFF80 & paramLong) == 0L)
       {
-        dP((int)paramLong);
+        eV((int)paramLong);
         return;
       }
-      dP((int)paramLong & 0x7F | 0x80);
+      eV((int)paramLong & 0x7F | 0x80);
       paramLong >>>= 7;
     }
   }
   
-  private static int ac(long paramLong)
+  private static int ap(long paramLong)
   {
     if ((0xFFFFFF80 & paramLong) == 0L) {
       return 1;
@@ -94,25 +64,55 @@ public final class b
   
   public static int b(int paramInt, e parame)
   {
-    paramInt = dQ(paramInt);
-    int i = parame.oP();
-    return paramInt + (i + dS(i));
+    paramInt = eW(paramInt);
+    int i = parame.sy();
+    return paramInt + (i + eY(i));
+  }
+  
+  public static int bf(String paramString)
+  {
+    try
+    {
+      paramString = paramString.getBytes("UTF-8");
+      int i = eY(paramString.length);
+      int j = paramString.length;
+      return j + i;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      throw new RuntimeException("UTF-8 not supported.");
+    }
+  }
+  
+  public static int bl(int paramInt1, int paramInt2)
+  {
+    return eW(paramInt1) + eU(paramInt2);
+  }
+  
+  public static int bm(int paramInt1, int paramInt2)
+  {
+    return eW(paramInt1) + eY(paramInt2);
+  }
+  
+  private void bn(int paramInt1, int paramInt2)
+  {
+    eX(g.bo(paramInt1, paramInt2));
   }
   
   public static int c(int paramInt, byte[] paramArrayOfByte)
   {
-    return dQ(paramInt) + (dS(paramArrayOfByte.length) + paramArrayOfByte.length);
+    return eW(paramInt) + (eY(paramArrayOfByte.length) + paramArrayOfByte.length);
   }
   
-  public static int dO(int paramInt)
+  public static int eU(int paramInt)
   {
     if (paramInt >= 0) {
-      return dS(paramInt);
+      return eY(paramInt);
     }
     return 10;
   }
   
-  private void dP(int paramInt)
+  private void eV(int paramInt)
   {
     int i = (byte)paramInt;
     if (this.position == this.limit) {
@@ -124,26 +124,26 @@ public final class b
     arrayOfByte[paramInt] = i;
   }
   
-  private static int dQ(int paramInt)
+  private static int eW(int paramInt)
   {
-    return dS(g.aQ(paramInt, 0));
+    return eY(g.bo(paramInt, 0));
   }
   
-  private void dR(int paramInt)
+  private void eX(int paramInt)
   {
     for (;;)
     {
       if ((paramInt & 0xFFFFFF80) == 0)
       {
-        dP(paramInt);
+        eV(paramInt);
         return;
       }
-      dP(paramInt & 0x7F | 0x80);
+      eV(paramInt & 0x7F | 0x80);
       paramInt >>>= 7;
     }
   }
   
-  public static int dS(int paramInt)
+  public static int eY(int paramInt)
   {
     if ((paramInt & 0xFFFFFF80) == 0) {
       return 1;
@@ -160,85 +160,81 @@ public final class b
     return 5;
   }
   
-  public static int e(int paramInt, String paramString)
+  public static int f(int paramInt, String paramString)
   {
-    return dQ(paramInt) + aI(paramString);
+    return eW(paramInt) + bf(paramString);
   }
   
-  public static int j(int paramInt, long paramLong)
+  private void n(byte[] paramArrayOfByte, int paramInt)
   {
-    return dQ(paramInt) + ac(paramLong);
-  }
-  
-  private void j(byte[] paramArrayOfByte)
-  {
-    int i = paramArrayOfByte.length;
-    if (this.limit - this.position >= i)
+    if (this.limit - this.position >= paramInt)
     {
-      System.arraycopy(paramArrayOfByte, 0, this.buffer, this.position, i);
-      this.position = (i + this.position);
+      System.arraycopy(paramArrayOfByte, 0, this.buffer, this.position, paramInt);
+      this.position += paramInt;
       return;
     }
     throw new a(this.position, this.limit);
   }
   
-  public static int k(int paramInt, long paramLong)
+  public static int o(int paramInt, long paramLong)
   {
-    return dQ(paramInt) + ac(paramLong);
+    return eW(paramInt) + ap(paramLong);
+  }
+  
+  public static int p(int paramInt, long paramLong)
+  {
+    return eW(paramInt) + ap(paramLong);
   }
   
   public final void a(int paramInt, e parame)
   {
-    aP(paramInt, 2);
-    if (parame.aUI < 0) {
-      parame.oP();
-    }
-    dR(parame.aUI);
+    bn(paramInt, 2);
+    eX(parame.sx());
     parame.a(this);
-  }
-  
-  public final void aL(int paramInt1, int paramInt2)
-  {
-    aP(paramInt1, 0);
-    if (paramInt2 >= 0)
-    {
-      dR(paramInt2);
-      return;
-    }
-    ab(paramInt2);
-  }
-  
-  public final void aM(int paramInt1, int paramInt2)
-  {
-    aP(paramInt1, 0);
-    dR(paramInt2);
   }
   
   public final void b(int paramInt, byte[] paramArrayOfByte)
   {
-    aP(paramInt, 2);
-    dR(paramArrayOfByte.length);
-    j(paramArrayOfByte);
+    bn(paramInt, 2);
+    eX(paramArrayOfByte.length);
+    n(paramArrayOfByte, paramArrayOfByte.length);
   }
   
-  public final void d(int paramInt, String paramString)
+  public final void bj(int paramInt1, int paramInt2)
   {
-    aP(paramInt, 2);
+    bn(paramInt1, 0);
+    if (paramInt2 >= 0)
+    {
+      eX(paramInt2);
+      return;
+    }
+    ao(paramInt2);
+  }
+  
+  public final void bk(int paramInt1, int paramInt2)
+  {
+    bn(paramInt1, 0);
+    eX(paramInt2);
+  }
+  
+  public final void e(int paramInt, String paramString)
+  {
+    bn(paramInt, 2);
     paramString = paramString.getBytes("UTF-8");
-    dR(paramString.length);
-    j(paramString);
+    eX(paramString.length);
+    n(paramString, paramString.length);
   }
   
-  public final void h(int paramInt, long paramLong)
+  public final void m(int paramInt, long paramLong)
   {
-    aP(paramInt, 0);
-    ab(paramLong);
+    bn(paramInt, 0);
+    ao(paramLong);
   }
   
-  public final void i(int paramInt, long paramLong)
+  public final void n(int paramInt, long paramLong)
   {
-    aP(paramInt, 0);
-    ab(paramLong);
+    bn(paramInt, 0);
+    ao(paramLong);
   }
   
   public static final class a
@@ -252,7 +248,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.a.a.b
  * JD-Core Version:    0.7.0.1
  */

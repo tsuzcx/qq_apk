@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet.a.p;
-import com.tencent.mm.plugin.wallet_core.model.ag;
+import com.tencent.mm.plugin.wallet.a.s;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletForgotPwdUI$3
@@ -14,10 +15,12 @@ final class WalletForgotPwdUI$3
   
   public final void onClick(View paramView)
   {
-    h.nFQ.f(11353, new Object[] { Integer.valueOf(2), Integer.valueOf(0) });
-    paramView = this.qoT;
-    p.bTK();
-    e.d(paramView, p.bTL().aEZ());
+    AppMethodBeat.i(46274);
+    h.qsU.e(11353, new Object[] { Integer.valueOf(2), Integer.valueOf(0) });
+    paramView = this.tZg;
+    s.cRG();
+    e.d(paramView, s.cRH().getTrueName());
+    AppMethodBeat.o(46274);
   }
 }
 

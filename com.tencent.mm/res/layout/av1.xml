@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@null" android:paddingTop="@dimen/ll" android:paddingBottom="@dimen/ll" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/eal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/jk" android:background="@drawable/am3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
-        <ProgressBar android:id="@id/eam" android:layout_width="30.0dip" android:layout_height="30.0dip" android:indeterminate="false" android:layout_centerInParent="true" android:layout_centerVertical="true" style="?android:attr/progressBarStyleSmall" />
-    </RelativeLayout>
-    <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@android:color/white" android:id="@id/akj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1" android:layout_toRightOf="@id/eal" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/ean" android:background="@drawable/u0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_toRightOf="@id/akj" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/rx" android:gravity="center|left" android:id="@id/bel" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="wrap_content" android:layout_height="@dimen/lz" android:text="@string/eu6" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:ellipsize="end" android:gravity="center|right" android:id="@id/dzq" android:paddingLeft="@dimen/ng" android:layout_width="wrap_content" android:layout_height="@dimen/lz" android:text="@string/eqd" android:singleLine="true" android:layout_toRightOf="@id/bel" />
 </RelativeLayout>

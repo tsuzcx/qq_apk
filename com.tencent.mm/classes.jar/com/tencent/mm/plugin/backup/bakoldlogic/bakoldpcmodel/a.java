@@ -2,66 +2,80 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.plugin.backup.b.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
-  extends d
+  extends com.tencent.mm.plugin.backup.b.d
 {
-  private static a hNt;
-  private e hNu;
-  private c hNv;
-  private b hNw;
+  private static a jGV;
+  private e jGW;
+  private c jGX;
+  private b jGY;
   
-  public static a avr()
+  public static a aUU()
   {
-    if (hNt == null)
+    AppMethodBeat.i(17802);
+    if (jGV == null)
     {
-      a locala = new a();
-      hNt = locala;
+      locala = new a();
+      jGV = locala;
       a(locala);
     }
-    return hNt;
+    a locala = jGV;
+    AppMethodBeat.o(17802);
+    return locala;
   }
   
-  public final void ati()
+  public final void aSG()
   {
-    hNt = null;
+    jGV = null;
   }
   
-  public final void ato() {}
+  public final void aSM() {}
   
-  public final void atp() {}
+  public final void aSN() {}
   
-  public final e avs()
+  public final e aUV()
   {
-    if (this.hNu == null) {
-      this.hNu = new e();
+    AppMethodBeat.i(17804);
+    if (this.jGW == null) {
+      this.jGW = new e();
     }
-    return this.hNu;
+    e locale = this.jGW;
+    AppMethodBeat.o(17804);
+    return locale;
   }
   
-  public final c avt()
+  public final c aUW()
   {
-    if (this.hNv == null) {
-      this.hNv = new c();
+    AppMethodBeat.i(17805);
+    if (this.jGX == null) {
+      this.jGX = new c();
     }
-    return this.hNv;
+    c localc = this.jGX;
+    AppMethodBeat.o(17805);
+    return localc;
   }
   
-  public final b avu()
+  public final b aUX()
   {
-    if (this.hNw == null) {
-      this.hNw = new b();
+    AppMethodBeat.i(17806);
+    if (this.jGY == null) {
+      this.jGY = new b();
     }
-    return this.hNw;
+    b localb = this.jGY;
+    AppMethodBeat.o(17806);
+    return localb;
   }
   
-  public final void l(Object... paramVarArgs)
+  public final void m(Object... paramVarArgs)
   {
+    AppMethodBeat.i(17803);
     paramVarArgs = (Context)paramVarArgs[0];
-    avr().avu().avv();
+    aUU().aUX().aUY();
     com.tencent.mm.plugin.backup.g.b.clear();
-    paramVarArgs.stopService(new Intent().setClassName(paramVarArgs, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService"));
+    com.tencent.mm.bq.d.aH(new Intent().setClassName(paramVarArgs, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService"));
+    AppMethodBeat.o(17803);
   }
 }
 

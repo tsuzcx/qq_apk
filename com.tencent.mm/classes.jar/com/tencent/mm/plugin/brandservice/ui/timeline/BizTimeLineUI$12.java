@@ -1,31 +1,28 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.q;
-import java.util.List;
+import android.app.ProgressDialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class BizTimeLineUI$12
   implements Runnable
 {
-  BizTimeLineUI$12(BizTimeLineUI paramBizTimeLineUI, int paramInt, List paramList) {}
+  BizTimeLineUI$12(BizTimeLineUI paramBizTimeLineUI, ProgressDialog paramProgressDialog) {}
   
   public final void run()
   {
-    if ((BizTimeLineUI.b(this.ihl)) && (this.ihm != 0))
+    AppMethodBeat.i(14195);
+    if ((this.efE != null) && (this.efE.isShowing())) {
+      this.efE.dismiss();
+    }
+    if (this.jXh.isFinishing())
     {
-      BizTimeLineUI.c(this.ihl);
-      this.ihl.aya();
+      ab.w("MicroMsg.BizTimeLineUI", "checkInitListView isFinishing, just return");
+      AppMethodBeat.o(14195);
+      return;
     }
-    if ((BizTimeLineUI.b(this.ihl)) && (this.ihm == 0)) {
-      BizTimeLineUI.a(this.ihl, BizTimeLineUI.d(this.ihl).oy(0));
-    }
-    if (!bk.dk(this.gFL))
-    {
-      long l = ((q)this.gFL.get(0)).field_orderFlag;
-      g localg = BizTimeLineUI.e(this.ihl);
-      com.tencent.mm.kernel.g.DS().O(new g.3(localg, l));
-    }
+    BizTimeLineUI.a(this.jXh);
+    AppMethodBeat.o(14195);
   }
 }
 

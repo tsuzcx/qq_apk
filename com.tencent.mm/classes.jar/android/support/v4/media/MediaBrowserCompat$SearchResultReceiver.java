@@ -8,7 +8,7 @@ import java.util.List;
 class MediaBrowserCompat$SearchResultReceiver
   extends ResultReceiver
 {
-  protected final void onReceiveResult(int paramInt, Bundle paramBundle)
+  public final void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     if (paramBundle != null) {
       paramBundle.setClassLoader(MediaBrowserCompat.class.getClassLoader());
@@ -34,7 +34,7 @@ class MediaBrowserCompat$SearchResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v4.media.MediaBrowserCompat.SearchResultReceiver
  * JD-Core Version:    0.7.0.1
  */

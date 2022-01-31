@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.a.b.a;
 
 final class k$1
   implements View.OnClickListener
@@ -11,12 +12,14 @@ final class k$1
   
   public final void onClick(View paramView)
   {
-    bk.I(this.fod, this.fod.getString(q.j.url_agreement));
+    AppMethodBeat.i(125114);
+    a.b(this.gFC, this.gFC.getString(2131304454), 0, false);
+    AppMethodBeat.o(125114);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.k.1
  * JD-Core Version:    0.7.0.1
  */

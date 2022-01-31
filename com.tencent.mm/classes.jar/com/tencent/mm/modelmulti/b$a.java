@@ -1,58 +1,68 @@
 package com.tencent.mm.modelmulti;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.k.e;
-import com.tencent.mm.protocal.s.a;
-import com.tencent.mm.protocal.s.b;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.t.a;
+import com.tencent.mm.protocal.t.b;
 
 public final class b$a
   implements com.tencent.mm.network.q
 {
-  private final s.a ess = new s.a();
-  private final s.b est;
-  private final boolean esu;
+  private final t.a fIf;
+  private final t.b fIg;
+  private final boolean fIh;
   int uin;
   
   public b$a()
   {
-    this.est = new s.b();
-    this.esu = false;
+    AppMethodBeat.i(58349);
+    this.fIf = new t.a();
+    this.fIg = new t.b();
+    this.fIh = false;
+    AppMethodBeat.o(58349);
   }
   
-  public b$a(s.b paramb)
+  public b$a(t.b paramb)
   {
-    this.est = paramb;
-    this.esu = true;
+    AppMethodBeat.i(58350);
+    this.fIf = new t.a();
+    this.fIg = paramb;
+    this.fIh = true;
+    AppMethodBeat.o(58350);
   }
   
-  public final k.e HF()
-  {
-    return this.est;
-  }
-  
-  public final int Kp()
-  {
-    return 0;
-  }
-  
-  public final int Kq()
-  {
-    return 0;
-  }
-  
-  public final k.d Kv()
-  {
-    this.ess.spH = com.tencent.mm.compatible.e.q.zg();
-    this.ess.spG = d.dOM;
-    this.ess.spF = d.spa;
-    this.ess.fn(this.uin);
-    return this.ess;
-  }
-  
-  public final boolean Kw()
+  public final boolean getIsUserCmd()
   {
     return false;
+  }
+  
+  public final int getOptions()
+  {
+    return 0;
+  }
+  
+  public final l.d getReqObj()
+  {
+    AppMethodBeat.i(58351);
+    this.fIf.setDeviceID(com.tencent.mm.compatible.e.q.LK());
+    this.fIf.setDeviceType(d.eQs);
+    this.fIf.setClientVersion(d.whH);
+    this.fIf.setUin(this.uin);
+    t.a locala = this.fIf;
+    AppMethodBeat.o(58351);
+    return locala;
+  }
+  
+  public final l.e getRespObj()
+  {
+    return this.fIg;
+  }
+  
+  public final int getTimeOut()
+  {
+    return 0;
   }
   
   public final int getType()
@@ -64,10 +74,17 @@ public final class b$a
   {
     return "/cgi-bin/micromsg-bin/newsync";
   }
+  
+  public final boolean isSingleSession()
+  {
+    return true;
+  }
+  
+  public final void setConnectionInfo(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.modelmulti.b.a
  * JD-Core Version:    0.7.0.1
  */

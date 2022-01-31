@@ -1,63 +1,73 @@
 package com.tencent.mm.plugin.location.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.h.a.cj;
-import com.tencent.mm.h.a.cj.a;
-import com.tencent.mm.plugin.map.a.e;
-import com.tencent.mm.plugin.map.a.f;
-import com.tencent.mm.plugin.map.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cm;
+import com.tencent.mm.g.a.cm.a;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.tools.MMTextInputUI;
 
 public class RemarkUI
   extends MMTextInputUI
 {
-  protected final int getLayoutId()
+  public final void G(CharSequence paramCharSequence)
   {
-    return a.f.remark_ui;
+    AppMethodBeat.i(113484);
+    long l = getIntent().getLongExtra("kFavInfoLocalId", -1L);
+    if (l > 0L) {
+      if (paramCharSequence != null) {
+        break label150;
+      }
+    }
+    label150:
+    for (paramCharSequence = "";; paramCharSequence = paramCharSequence.toString())
+    {
+      ab.i("MicroMsg.MMTextInputUI", "same remark[%s]", new Object[] { paramCharSequence });
+      if (!paramCharSequence.equals(getIntent().getStringExtra("kRemark")))
+      {
+        cm localcm = new cm();
+        localcm.cpR.type = -2;
+        localcm.cpR.cpH = Long.toString(l);
+        localcm.cpR.desc = paramCharSequence;
+        ab.d("MicroMsg.MMTextInputUI", "update location remark, favlocalid is %s, remark is %s", new Object[] { localcm.cpR.cpH, localcm.cpR.desc });
+        a.ymk.l(localcm);
+      }
+      AppMethodBeat.o(113484);
+      return;
+    }
+  }
+  
+  public int getLayoutId()
+  {
+    return 2130970562;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(113483);
     super.onCreate(paramBundle);
-    setMMTitle(a.h.location_remark_hint);
+    setMMTitle(2131301102);
     paramBundle = getIntent().getStringExtra("Kwebmap_locaion");
-    if (bk.bl(paramBundle))
+    if (bo.isNullOrNil(paramBundle))
     {
-      findViewById(a.e.location_info_ll).setVisibility(8);
+      findViewById(2131825431).setVisibility(8);
+      AppMethodBeat.o(113483);
       return;
     }
-    ((TextView)findViewById(a.e.location_text_tv)).setText(paramBundle);
+    ((TextView)findViewById(2131825432)).setText(paramBundle);
+    AppMethodBeat.o(113483);
   }
   
-  protected final void x(CharSequence paramCharSequence)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    long l = getIntent().getLongExtra("kFavInfoLocalId", -1L);
-    if (l > 0L) {
-      if (paramCharSequence != null) {
-        break label140;
-      }
-    }
-    label140:
-    for (paramCharSequence = "";; paramCharSequence = paramCharSequence.toString())
-    {
-      y.i("MicroMsg.MMTextInputUI", "same remark[%s]", new Object[] { paramCharSequence });
-      if (!paramCharSequence.equals(getIntent().getStringExtra("kRemark")))
-      {
-        cj localcj = new cj();
-        localcj.bIw.type = -2;
-        localcj.bIw.bIm = Long.toString(l);
-        localcj.bIw.desc = paramCharSequence;
-        y.d("MicroMsg.MMTextInputUI", "update location remark, favlocalid is %s, remark is %s", new Object[] { localcj.bIw.bIm, localcj.bIw.desc });
-        a.udP.m(localcj);
-      }
-      return;
-    }
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

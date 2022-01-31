@@ -1,19 +1,31 @@
 package com.tencent.mm.plugin.mmsight.model;
 
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class i
 {
-  private static ai mhx = new ai("MMSightHandler");
+  private static al oHC;
   
-  public static void H(Runnable paramRunnable)
+  static
   {
-    mhx.O(paramRunnable);
+    AppMethodBeat.i(76521);
+    oHC = new al("MMSightHandler");
+    AppMethodBeat.o(76521);
   }
   
-  public static void L(Runnable paramRunnable)
+  public static void O(Runnable paramRunnable)
   {
-    mhx.k(paramRunnable, 2000L);
+    AppMethodBeat.i(76519);
+    oHC.ac(paramRunnable);
+    AppMethodBeat.o(76519);
+  }
+  
+  public static void P(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(76520);
+    oHC.o(paramRunnable, 2000L);
+    AppMethodBeat.o(76520);
   }
 }
 

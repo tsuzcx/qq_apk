@@ -1,44 +1,10 @@
 package com.tencent.mm.model;
 
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.pointers.PInt;
 
-final class u$a<K, V>
-  extends ConcurrentHashMap<K, V>
+public abstract interface u$a
 {
-  public final boolean containsValue(Object paramObject)
-  {
-    if (paramObject == null) {
-      return false;
-    }
-    return super.containsValue(paramObject);
-  }
-  
-  public final V get(Object paramObject)
-  {
-    if (paramObject == null) {
-      return null;
-    }
-    return super.get(paramObject);
-  }
-  
-  public final V put(K paramK, V paramV)
-  {
-    if (paramK == null) {
-      return null;
-    }
-    if (paramV == null) {
-      return super.remove(paramK);
-    }
-    return super.put(paramK, paramV);
-  }
-  
-  public final V remove(Object paramObject)
-  {
-    if (paramObject == null) {
-      return null;
-    }
-    return super.remove(paramObject);
-  }
+  public abstract boolean a(String paramString1, String paramString2, PInt paramPInt);
 }
 
 

@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.ipcall.a;
 
-import com.tencent.mm.h.a.in;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.iu;
 import com.tencent.mm.sdk.b.c;
 
 final class b$1
-  extends c<in>
+  extends c<iu>
 {
   b$1()
   {
-    this.udX = in.class.getName().hashCode();
+    AppMethodBeat.i(21710);
+    this.__eventId = iu.class.getName().hashCode();
+    AppMethodBeat.o(21710);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.b.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,15 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.c;
 
-public enum j$a
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.b.b;
+import java.util.ArrayList;
+
+abstract interface j$a
 {
-  public final int blr;
-  
-  private j$a(int paramInt)
-  {
-    this.blr = paramInt;
-  }
+  public abstract void v(ArrayList<b> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.c.j.a
  * JD-Core Version:    0.7.0.1
  */

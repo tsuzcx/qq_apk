@@ -1,114 +1,38 @@
 package com.tencent.mm.ui.contact;
 
-import android.app.Activity;
-import android.content.res.Resources;
-import android.database.Cursor;
-import android.os.Looper;
-import com.tencent.mm.ai.a.c;
-import com.tencent.mm.ai.a.j;
-import com.tencent.mm.api.h;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.selectcontact.a.h;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
 import java.util.List;
 
-public final class p
-  extends q
+public abstract class p
+  extends o
 {
-  private String bVk;
-  private Cursor eYd;
-  private ah handler = new ah(Looper.getMainLooper());
-  private String idQ;
-  private m.a vLH;
-  private List<String> vMa = null;
+  protected boolean AdB;
+  protected List<String> ejc;
   
-  public p(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
+  public p(m paramm, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramMMBaseSelectContactUI, null, false, 0);
-    this.idQ = paramString;
-    y.i("MicroMsg.MMSearchContactAdapter", "Create!");
-    xK();
+    this(paramm, paramList, paramBoolean1, paramBoolean2, 0);
   }
   
-  private void xK()
+  public p(m paramm, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    y.i("MicroMsg.MMSearchContactAdapter", "initData!");
-    this.bVk = null;
-    clearCache();
+    this(paramm, paramList, paramBoolean1, paramBoolean2, paramInt, false);
   }
   
-  public final void a(m.a parama)
+  private p(m paramm, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
   {
-    this.vLH = parama;
+    super(paramm, paramBoolean2, paramInt, paramBoolean3);
+    this.ejc = paramList;
+    this.AdB = paramBoolean1;
   }
   
-  public final void bN(String paramString, boolean paramBoolean)
+  public p(m paramm, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (this.vLH != null) {
-      this.vLH.t(paramString, getCount(), paramBoolean);
-    }
+    this(paramm, paramList, paramBoolean1, paramBoolean2, 0, paramBoolean3);
   }
   
-  protected final boolean c(com.tencent.mm.ui.contact.a.a parama)
+  public int aux(String paramString)
   {
-    return true;
-  }
-  
-  public final void finish()
-  {
-    super.finish();
-    y.i("MicroMsg.MMSearchContactAdapter", "finish!");
-    xK();
-  }
-  
-  public final int getCount()
-  {
-    if (this.eYd == null) {
-      return 0;
-    }
-    return this.eYd.getCount();
-  }
-  
-  protected final com.tencent.mm.ui.contact.a.a jQ(int paramInt)
-  {
-    if ((paramInt >= 0) && (this.eYd.moveToPosition(paramInt)))
-    {
-      com.tencent.mm.ui.bizchat.a locala = new com.tencent.mm.ui.bizchat.a(paramInt);
-      c localc = new c();
-      localc.d(this.eYd);
-      if (locala.idK == -1L)
-      {
-        locala.idK = localc.field_bizChatLocalId;
-        if (!localc.isGroup()) {
-          break label144;
-        }
-        locala.eXK = localc.field_chatName;
-        locala.vev = localc.field_headImageUrl;
-        locala.username = localc.field_brandUserName;
-      }
-      for (;;)
-      {
-        if (bk.L(locala.eXK)) {
-          locala.eXK = this.vLI.getActivity().getResources().getString(a.h.select_contact_room_head_name);
-        }
-        if (bk.bl(locala.username)) {
-          locala.username = localc.field_brandUserName;
-        }
-        return locala;
-        label144:
-        j localj = ((h)g.r(h.class)).bY(localc.field_bizChatServId);
-        if (localj != null)
-        {
-          locala.eXK = localj.field_userName;
-          locala.vev = localj.field_headImageUrl;
-          locala.username = localj.field_brandUserName;
-        }
-      }
-    }
-    y.e("MicroMsg.MMSearchContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
-    return null;
+    return -1;
   }
 }
 

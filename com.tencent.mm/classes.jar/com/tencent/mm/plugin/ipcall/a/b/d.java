@@ -1,48 +1,69 @@
 package com.tencent.mm.plugin.ipcall.a.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.SensorController;
 import com.tencent.mm.sdk.platformtools.SensorController.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bb;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class d
   implements SensorController.a
 {
-  public SensorController iah = new SensorController(ae.getContext());
-  public bb ial = new bb(ae.getContext());
-  public long iam = -1L;
-  private boolean iar = false;
-  public d.a lqD = null;
+  long lastShakeTime;
+  private boolean mtX;
+  public bf mtY;
+  public SensorController mub;
+  public a nNZ;
   
-  public final void eq(boolean paramBoolean)
+  public d()
+  {
+    AppMethodBeat.i(21820);
+    this.lastShakeTime = -1L;
+    this.mtX = false;
+    this.nNZ = null;
+    this.mub = new SensorController(ah.getContext());
+    this.mtY = new bf(ah.getContext());
+    AppMethodBeat.o(21820);
+  }
+  
+  public final void hv(boolean paramBoolean)
   {
     boolean bool = true;
-    y.i("MicroMsg.IPCallSensorManager", "onSensorEvent, isON:" + paramBoolean + "  hasSkip:" + this.iar + " tick:" + bk.cp(this.iam) + "  lt:" + this.iam);
-    if (this.iar)
+    AppMethodBeat.i(21821);
+    ab.i("MicroMsg.IPCallSensorManager", "onSensorEvent, isON:" + paramBoolean + "  hasSkip:" + this.mtX + " tick:" + bo.av(this.lastShakeTime) + "  lt:" + this.lastShakeTime);
+    if (this.mtX)
     {
       if (!paramBoolean) {}
       for (paramBoolean = bool;; paramBoolean = false)
       {
-        this.iar = paramBoolean;
+        this.mtX = paramBoolean;
+        AppMethodBeat.o(21821);
         return;
       }
     }
-    if ((!paramBoolean) && (this.iam != -1L) && (bk.cp(this.iam) > 400L))
+    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (bo.av(this.lastShakeTime) > 400L))
     {
-      this.iar = true;
+      this.mtX = true;
+      AppMethodBeat.o(21821);
       return;
     }
-    this.iar = false;
-    y.i("MicroMsg.IPCallSensorManager", "onSensorEvent, isNeedOffScreen: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    new am(new d.2(this, paramBoolean), false).S(50L, 50L);
+    this.mtX = false;
+    ab.i("MicroMsg.IPCallSensorManager", "onSensorEvent, isNeedOffScreen: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    new ap(new d.2(this, paramBoolean), false).ag(50L, 50L);
+    AppMethodBeat.o(21821);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void iG(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.b.d
  * JD-Core Version:    0.7.0.1
  */

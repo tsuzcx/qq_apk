@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.media.a;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.audio.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,97 +12,130 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private static Map<String, c> gMU = new ConcurrentHashMap();
-  private static Map<String, com.tencent.mm.sdk.b.c> gMV = new HashMap();
-  private static ArrayList<String> gMW = new ArrayList();
-  private static Map<String, Boolean> gMX = new ConcurrentHashMap();
+  private static Map<String, c> ioO;
+  private static Map<String, com.tencent.mm.sdk.b.c> ioP;
+  private static ArrayList<String> ioQ;
+  private static Map<String, Boolean> ioR;
+  
+  static
+  {
+    AppMethodBeat.i(137803);
+    ioO = new ConcurrentHashMap();
+    ioP = new HashMap();
+    ioQ = new ArrayList();
+    ioR = new ConcurrentHashMap();
+    AppMethodBeat.o(137803);
+  }
+  
+  public static void BP(String paramString)
+  {
+    AppMethodBeat.i(137796);
+    ab.i("MicroMsg.Audio.AppBrandAudioClientService", "onDestroy");
+    b.BP(paramString);
+    ioO.clear();
+    Iterator localIterator = ioQ.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (com.tencent.mm.sdk.b.c)ioP.remove(localObject);
+      if (localObject != null) {
+        com.tencent.mm.sdk.b.a.ymk.d((com.tencent.mm.sdk.b.c)localObject);
+      }
+    }
+    ioP.clear();
+    ioQ.clear();
+    ioR.remove(paramString);
+    AppMethodBeat.o(137796);
+  }
+  
+  public static c Dv(String paramString)
+  {
+    AppMethodBeat.i(137798);
+    paramString = (c)ioO.get(paramString);
+    AppMethodBeat.o(137798);
+    return paramString;
+  }
+  
+  public static void Dw(String paramString)
+  {
+    AppMethodBeat.i(137800);
+    if (!ioP.containsKey(paramString))
+    {
+      ab.e("MicroMsg.Audio.AppBrandAudioClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
+      AppMethodBeat.o(137800);
+      return;
+    }
+    ab.d("MicroMsg.Audio.AppBrandAudioClientService", "removeAudioPlayerListener,appId:%s", new Object[] { paramString });
+    ioQ.remove(paramString);
+    paramString = (com.tencent.mm.sdk.b.c)ioP.remove(paramString);
+    if (paramString != null) {
+      com.tencent.mm.sdk.b.a.ymk.d(paramString);
+    }
+    AppMethodBeat.o(137800);
+  }
+  
+  public static boolean Dx(String paramString)
+  {
+    AppMethodBeat.i(137801);
+    if (!ioR.containsKey(paramString))
+    {
+      AppMethodBeat.o(137801);
+      return false;
+    }
+    boolean bool = ((Boolean)ioR.get(paramString)).booleanValue();
+    AppMethodBeat.o(137801);
+    return bool;
+  }
   
   public static void a(String paramString, c paramc)
   {
-    gMU.put(paramString, paramc);
+    AppMethodBeat.i(137797);
+    ioO.put(paramString, paramc);
+    AppMethodBeat.o(137797);
   }
   
   public static void a(String paramString, com.tencent.mm.sdk.b.c paramc)
   {
+    AppMethodBeat.i(137799);
     if (TextUtils.isEmpty(paramString))
     {
-      y.e("MicroMsg.Audio.AppBrandAudioClientService", "appId is empty");
+      ab.e("MicroMsg.Audio.AppBrandAudioClientService", "appId is empty");
+      AppMethodBeat.o(137799);
       return;
     }
     if (paramc == null)
     {
-      y.e("MicroMsg.Audio.AppBrandAudioClientService", "listener is null");
+      ab.e("MicroMsg.Audio.AppBrandAudioClientService", "listener is null");
+      AppMethodBeat.o(137799);
       return;
     }
-    if (gMV.containsKey(paramString)) {
-      va(paramString);
+    if (ioP.containsKey(paramString)) {
+      Dw(paramString);
     }
-    y.d("MicroMsg.Audio.AppBrandAudioClientService", "addAudioPlayerListener,appId:%s", new Object[] { paramString });
-    gMV.put(paramString, paramc);
-    if (!gMW.contains(paramString)) {
-      gMW.add(paramString);
+    ab.d("MicroMsg.Audio.AppBrandAudioClientService", "addAudioPlayerListener,appId:%s", new Object[] { paramString });
+    ioP.put(paramString, paramc);
+    if (!ioQ.contains(paramString)) {
+      ioQ.add(paramString);
     }
-    com.tencent.mm.sdk.b.a.udP.b(paramc);
+    com.tencent.mm.sdk.b.a.ymk.b(paramc);
+    AppMethodBeat.o(137799);
   }
   
-  public static void aj(String paramString, boolean paramBoolean)
+  public static void ap(String paramString, boolean paramBoolean)
   {
-    gMX.put(paramString, Boolean.valueOf(paramBoolean));
+    AppMethodBeat.i(137802);
+    ioR.put(paramString, Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(137802);
   }
   
   public static void onCreate(String paramString)
   {
-    y.i("MicroMsg.Audio.AppBrandAudioClientService", "onCreate");
-    gMU.clear();
+    AppMethodBeat.i(137795);
+    ab.i("MicroMsg.Audio.AppBrandAudioClientService", "onCreate");
+    ioO.clear();
     b.onCreate(paramString);
-    gMX.put(paramString, Boolean.valueOf(true));
-  }
-  
-  public static void tP(String paramString)
-  {
-    y.i("MicroMsg.Audio.AppBrandAudioClientService", "onDestroy");
-    b.tP(paramString);
-    gMU.clear();
-    Iterator localIterator = gMW.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (com.tencent.mm.sdk.b.c)gMV.remove(localObject);
-      if (localObject != null) {
-        com.tencent.mm.sdk.b.a.udP.d((com.tencent.mm.sdk.b.c)localObject);
-      }
-    }
-    gMV.clear();
-    gMW.clear();
-    gMX.remove(paramString);
-  }
-  
-  public static c uZ(String paramString)
-  {
-    return (c)gMU.get(paramString);
-  }
-  
-  public static void va(String paramString)
-  {
-    if (!gMV.containsKey(paramString)) {
-      y.e("MicroMsg.Audio.AppBrandAudioClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
-    }
-    do
-    {
-      return;
-      y.d("MicroMsg.Audio.AppBrandAudioClientService", "removeAudioPlayerListener,appId:%s", new Object[] { paramString });
-      gMW.remove(paramString);
-      paramString = (com.tencent.mm.sdk.b.c)gMV.remove(paramString);
-    } while (paramString == null);
-    com.tencent.mm.sdk.b.a.udP.d(paramString);
-  }
-  
-  public static boolean vb(String paramString)
-  {
-    if (!gMX.containsKey(paramString)) {
-      return false;
-    }
-    return ((Boolean)gMX.get(paramString)).booleanValue();
+    ioR.put(paramString, Boolean.TRUE);
+    AppMethodBeat.o(137795);
   }
 }
 

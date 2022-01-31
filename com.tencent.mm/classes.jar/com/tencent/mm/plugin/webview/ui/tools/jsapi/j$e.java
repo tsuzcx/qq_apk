@@ -4,13 +4,13 @@ final class j$e
 {
   double latitude;
   double longitude;
-  String rBb;
+  String vse;
   
   private j$e(double paramDouble1, double paramDouble2)
   {
     this.latitude = paramDouble1;
     this.longitude = paramDouble2;
-    this.rBb = null;
+    this.vse = null;
   }
 }
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="b8" parent="@style/ed">
+    <style name="ba" parent="@style/ej">
         <item name="android:windowIsFloating">false</item>
     </style>
-    <style name="b_" parent="@style/ef">
+    <style name="bc" parent="@style/el">
         <item name="android:windowIsFloating">false</item>
     </style>
-    <style name="ba" parent="@style/eg">
+    <style name="bd" parent="@style/em">
         <item name="android:windowIsFloating">false</item>
     </style>
 </resources>

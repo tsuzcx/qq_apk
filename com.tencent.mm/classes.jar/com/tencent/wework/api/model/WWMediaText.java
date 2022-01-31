@@ -1,6 +1,7 @@
 package com.tencent.wework.api.model;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WWMediaText
   extends WWMediaMessage.WWMediaObject
@@ -16,17 +17,27 @@ public class WWMediaText
   
   public final boolean checkArgs()
   {
-    if (!super.checkArgs()) {}
-    while ((this.text == null) || (this.text.length() == 0) || (this.text.length() > 10240)) {
+    AppMethodBeat.i(80513);
+    if (!super.checkArgs())
+    {
+      AppMethodBeat.o(80513);
       return false;
     }
-    return true;
+    if ((this.text != null) && (this.text.length() != 0) && (this.text.length() <= 10240))
+    {
+      AppMethodBeat.o(80513);
+      return true;
+    }
+    AppMethodBeat.o(80513);
+    return false;
   }
   
   public final void toBundle(Bundle paramBundle)
   {
+    AppMethodBeat.i(80514);
     paramBundle.putString("_wwtextobject_text", this.text);
     super.toBundle(paramBundle);
+    AppMethodBeat.o(80514);
   }
 }
 

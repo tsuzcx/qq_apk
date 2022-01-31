@@ -1,202 +1,180 @@
 package com.tencent.mm.plugin.game.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.kernel.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.game.report.a.b;
+import com.tencent.mm.kernel.i;
 import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.plugin.game.d.aj;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.a;
-import com.tencent.mm.plugin.game.model.b.a;
-import com.tencent.mm.plugin.game.model.f;
-import com.tencent.mm.plugin.game.model.m;
-import com.tencent.mm.plugin.game.model.o;
-import com.tencent.mm.plugin.game.model.o.a;
-import com.tencent.mm.plugin.game.model.o.c;
-import com.tencent.mm.plugin.game.model.r;
+import com.tencent.mm.plugin.game.api.d;
+import com.tencent.mm.plugin.game.d.ak;
+import com.tencent.mm.plugin.game.model.e;
+import com.tencent.mm.plugin.game.model.l;
+import com.tencent.mm.plugin.game.model.n;
+import com.tencent.mm.plugin.game.model.n.a;
+import com.tencent.mm.plugin.game.model.n.d;
+import com.tencent.mm.plugin.game.model.q;
 import com.tencent.mm.plugin.game.ui.tab.GameRouteUI;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.MMFragmentActivity.a;
 import java.util.HashMap;
 
-@j
+@i
 @com.tencent.mm.ui.base.a(19)
 public class GameCenterUI
   extends MMBaseActivity
 {
-  private void Fb(String paramString)
+  private void Qt(String paramString)
   {
+    AppMethodBeat.i(111783);
     getIntent().putExtra("rawUrl", paramString);
-    boolean bool;
-    int i;
-    o localo;
-    if (((com.tencent.mm.plugin.expt.a.a)g.r(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.jIa, false))
-    {
-      Q(7, true);
-      localIntent = getIntent();
-      if ((this == null) || (bk.bl(paramString)) || (localIntent == null)) {}
-      for (;;)
-      {
-        h.nFQ.a(848L, 3L, 1L, false);
-        h.nFQ.a(848L, 9L, 1L, false);
-        f.aZe();
-        return;
-        bool = localIntent.getBooleanExtra("from_find_more_friend", false);
-        i = localIntent.getIntExtra("game_report_from_scene", 0);
-        ((com.tencent.mm.plugin.game.a.b)g.r(com.tencent.mm.plugin.game.a.b.class)).aYe();
-        localo = r.aZp();
-        m.a(paramString, localo);
-        if (bool)
-        {
-          m.b(this, localIntent, "game_center_entrance", true, localo, i);
-          ((com.tencent.mm.plugin.game.a.b)g.r(com.tencent.mm.plugin.game.a.b.class)).aYe();
-          r.aZo();
-        }
-        else
-        {
-          m.b(this, localIntent, "game_center_entrance", false, localo, i);
-        }
-      }
+    if (((b)com.tencent.mm.kernel.g.E(b.class)).b(a.a.lRy)) {
+      Qu(paramString);
     }
-    Q(7, false);
-    Intent localIntent = getIntent();
-    if ((this == null) || (bk.bl(paramString)) || (localIntent == null)) {}
     for (;;)
     {
-      h.nFQ.a(848L, 3L, 1L, false);
-      break;
-      bool = localIntent.getBooleanExtra("from_find_more_friend", false);
-      i = localIntent.getIntExtra("game_report_from_scene", 0);
-      ((com.tencent.mm.plugin.game.a.b)g.r(com.tencent.mm.plugin.game.a.b.class)).aYe();
-      localo = r.aZp();
-      m.a(paramString, localo);
-      if (bool)
-      {
-        m.a(this, localIntent, "game_center_entrance", true, localo, i);
-        ((com.tencent.mm.plugin.game.a.b)g.r(com.tencent.mm.plugin.game.a.b.class)).aYe();
-        r.aZo();
-      }
-      else
-      {
-        m.a(this, localIntent, "game_center_entrance", false, localo, i);
-      }
+      e.bGd();
+      AppMethodBeat.o(111783);
+      return;
+      Y(7, false);
+      l.a(this, paramString, getIntent());
+      h.qsU.idkeyStat(848L, 3L, 1L, false);
     }
   }
   
-  private void Q(int paramInt, boolean paramBoolean)
+  private void Qu(String paramString)
   {
-    o localo;
-    HashMap localHashMap;
+    AppMethodBeat.i(111784);
+    Y(7, true);
+    l.b(this, paramString, getIntent());
+    h.qsU.idkeyStat(848L, 3L, 1L, false);
+    h.qsU.idkeyStat(848L, 9L, 1L, false);
+    AppMethodBeat.o(111784);
+  }
+  
+  private void Y(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(111786);
     if (getIntent().getBooleanExtra("from_find_more_friend", false))
     {
-      ((com.tencent.mm.plugin.game.a.b)g.r(com.tencent.mm.plugin.game.a.b.class)).aYe();
-      localo = r.aZn();
-      localHashMap = new HashMap();
+      ((d)com.tencent.mm.kernel.g.E(d.class)).bER();
+      n localn = q.bGn();
+      HashMap localHashMap = new HashMap();
       if (paramBoolean) {
         localHashMap.put("luggage", "1");
       }
-      if (localo == null)
+      if (localn == null)
       {
         localHashMap.put("function_type", "resource");
         localHashMap.put("function_value", "0");
-        com.tencent.mm.plugin.game.e.b.a(this, 9, 901, 1, paramInt, 0, com.tencent.mm.plugin.game.e.a.B(localHashMap));
+        com.tencent.mm.game.report.c.a(this, 9, 901, 1, paramInt, 0, com.tencent.mm.plugin.game.e.a.h(localHashMap));
+        AppMethodBeat.o(111786);
+        return;
       }
+      localn.bGm();
+      int i = localn.field_msgType;
+      if (localn.field_msgType == 100) {
+        i = localn.nnL;
+      }
+      localHashMap.put("function_type", "resource");
+      localHashMap.put("function_value", String.valueOf(localn.nnb.nnV));
+      com.tencent.mm.game.report.c.a(this, 9, 901, 1, paramInt, 0, localn.field_appId, 0, i, localn.field_gameMsgId, localn.nnM, com.tencent.mm.plugin.game.e.a.h(localHashMap));
+      ((d)com.tencent.mm.kernel.g.E(d.class)).bER();
+      q.bGo();
+      h.qsU.idkeyStat(858L, 3L, 1L, false);
     }
-    else
-    {
-      return;
-    }
-    localo.aZm();
-    int i = localo.field_msgType;
-    if (localo.field_msgType == 100) {
-      i = localo.kPM;
-    }
-    localHashMap.put("function_type", "resource");
-    localHashMap.put("function_value", String.valueOf(localo.kPf.kPU));
-    com.tencent.mm.plugin.game.e.b.a(this, 9, 901, 1, paramInt, 0, localo.field_appId, 0, i, localo.field_gameMsgId, localo.kPN, com.tencent.mm.plugin.game.e.a.B(localHashMap));
-    ((com.tencent.mm.plugin.game.a.b)g.r(com.tencent.mm.plugin.game.a.b.class)).aYe();
-    r.aZo();
-    h.nFQ.a(858L, 3L, 1L, false);
+    AppMethodBeat.o(111786);
   }
   
-  private void gB(boolean paramBoolean)
+  private void ik(boolean paramBoolean)
   {
-    Object localObject;
-    if (e.cqq())
+    AppMethodBeat.i(111782);
+    if (com.tencent.mm.sdk.platformtools.g.dsn())
     {
-      y.i("MicroMsg.GameCenterUI", "GP version");
-      localObject = new Intent(this, GameRouteUI.class);
-      Bundle localBundle = getIntent().getExtras();
-      if (localBundle != null) {
-        ((Intent)localObject).putExtras(localBundle);
-      }
-      startActivity((Intent)localObject);
-      if (!paramBoolean) {
-        break label124;
-      }
-      overridePendingTransition(g.a.in_no_slide, g.a.in_no_slide);
+      ab.i("MicroMsg.GameCenterUI", "GP version");
+      h.qsU.idkeyStat(848L, 13L, 1L, false);
+    }
+    String str;
+    do
+    {
+      il(paramBoolean);
+      AppMethodBeat.o(111782);
+      return;
+      str = com.tencent.mm.plugin.game.f.c.bHD();
+    } while (bo.isNullOrNil(str));
+    Qt(str);
+    AppMethodBeat.o(111782);
+  }
+  
+  private void il(boolean paramBoolean)
+  {
+    AppMethodBeat.i(111785);
+    Intent localIntent = new Intent(this, GameRouteUI.class);
+    Bundle localBundle = getIntent().getExtras();
+    if (localBundle != null) {
+      localIntent.putExtras(localBundle);
+    }
+    startActivity(localIntent);
+    if (paramBoolean) {
+      overridePendingTransition(2131034195, 2131034195);
     }
     for (;;)
     {
-      Q(6, false);
-      h.nFQ.a(848L, 4L, 1L, false);
+      Y(6, false);
+      h.qsU.idkeyStat(848L, 4L, 1L, false);
+      AppMethodBeat.o(111785);
       return;
-      localObject = com.tencent.mm.plugin.game.model.b.sd(getIntent().getIntExtra("game_report_from_scene", 0));
-      if ((((b.a)localObject).bcw != 2) || (bk.bl(((b.a)localObject).url))) {
-        break;
-      }
-      Fb(((b.a)localObject).url);
-      return;
-      label124:
-      overridePendingTransition(MMFragmentActivity.a.uOe, MMFragmentActivity.a.uOf);
+      overridePendingTransition(MMFragmentActivity.a.zbX, MMFragmentActivity.a.zbY);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(111781);
     super.onCreate(paramBundle);
     getIntent().putExtra("gamecenterui_createtime", System.currentTimeMillis());
-    y.d("MicroMsg.GameCenterUI", "onCreate");
+    ab.i("MicroMsg.GameCenterUI", "onCreate, time: " + System.currentTimeMillis());
     if (getIntent().getBooleanExtra("game_check_float", false))
     {
       int i = getIntent().getIntExtra("game_sourceScene", 0);
-      ((com.tencent.mm.plugin.game.a.b)g.r(com.tencent.mm.plugin.game.a.b.class)).aYe();
-      paramBundle = r.aZp();
+      ((d)com.tencent.mm.kernel.g.E(d.class)).bER();
+      paramBundle = q.bGp();
       if (paramBundle != null)
       {
-        paramBundle.aZm();
-        if (!bk.bl(paramBundle.kPu.url)) {
-          c.a(getBaseContext(), paramBundle, "game_center_h5_floatlayer");
+        paramBundle.bGm();
+        if (!bo.isNullOrNil(paramBundle.nnq.url)) {
+          com.tencent.mm.plugin.game.f.c.a(getBaseContext(), paramBundle, "game_center_h5_floatlayer");
         }
       }
-      m.a(paramBundle, i, 1);
+      l.a(paramBundle, i, 1);
       finish();
+      AppMethodBeat.o(111781);
       return;
     }
     boolean bool = getIntent().getBooleanExtra("switch_country_no_anim", false);
-    paramBundle = com.tencent.mm.plugin.game.commlib.a.aYl();
+    paramBundle = com.tencent.mm.plugin.game.commlib.a.bFa();
     if (paramBundle != null) {}
-    switch (paramBundle.kTh)
+    switch (paramBundle.nrh)
     {
     default: 
-      gB(bool);
+      ik(bool);
     case 0: 
     case 1: 
       for (;;)
       {
         finish();
+        AppMethodBeat.o(111781);
         return;
-        gB(bool);
+        ik(bool);
         continue;
-        if (!bk.bl(paramBundle.kRP)) {
-          Fb(paramBundle.kRP);
+        if (!bo.isNullOrNil(paramBundle.npR)) {
+          Qt(paramBundle.npR);
         } else {
-          gB(bool);
+          ik(bool);
         }
       }
     case 2: 
@@ -207,14 +185,14 @@ public class GameCenterUI
       }
       startActivity(paramBundle);
       if (bool) {
-        overridePendingTransition(g.a.in_no_slide, g.a.in_no_slide);
+        overridePendingTransition(2131034195, 2131034195);
       }
       for (;;)
       {
-        Q(6, false);
-        h.nFQ.a(848L, 5L, 1L, false);
+        Y(6, false);
+        h.qsU.idkeyStat(848L, 5L, 1L, false);
         break;
-        overridePendingTransition(MMFragmentActivity.a.uOe, MMFragmentActivity.a.uOf);
+        overridePendingTransition(MMFragmentActivity.a.zbX, MMFragmentActivity.a.zbY);
       }
     }
     paramBundle = new Intent(this, GameDownloadGuidanceUI.class);
@@ -224,15 +202,21 @@ public class GameCenterUI
     }
     startActivity(paramBundle);
     if (bool) {
-      overridePendingTransition(g.a.in_no_slide, g.a.in_no_slide);
+      overridePendingTransition(2131034195, 2131034195);
     }
     for (;;)
     {
-      Q(6, false);
-      h.nFQ.a(848L, 6L, 1L, false);
+      Y(6, false);
+      h.qsU.idkeyStat(848L, 6L, 1L, false);
       break;
-      overridePendingTransition(MMFragmentActivity.a.uOe, MMFragmentActivity.a.uOf);
+      overridePendingTransition(MMFragmentActivity.a.zbX, MMFragmentActivity.a.zbY);
     }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

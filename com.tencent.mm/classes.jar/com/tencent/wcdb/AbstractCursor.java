@@ -8,6 +8,7 @@ import android.database.DataSetObservable;
 import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wcdb.support.Log;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -27,14 +28,14 @@ public abstract class AbstractCursor
   private Uri mNotifyUri;
   public int mPos = -1;
   @Deprecated
-  public int mRowIdColumnIndex = -1;
+  protected int mRowIdColumnIndex = -1;
   private ContentObserver mSelfObserver;
   private final Object mSelfObserverLock = new Object();
   private boolean mSelfObserverRegistered;
   @Deprecated
   protected HashMap<Long, Map<String, Object>> mUpdatedRows = new HashMap();
   
-  public void checkPosition()
+  protected void checkPosition()
   {
     if ((-1 == this.mPos) || (getCount() == this.mPos)) {
       throw new CursorIndexOutOfBoundsException(this.mPos, getCount());
@@ -77,7 +78,7 @@ public abstract class AbstractCursor
     DatabaseUtils.cursorFillWindow(this, paramInt, paramCursorWindow);
   }
   
-  public void finalize()
+  protected void finalize()
   {
     if ((this.mSelfObserver != null) && (this.mSelfObserverRegistered == true)) {
       this.mContentResolver.unregisterContentObserver(this.mSelfObserver);
@@ -110,7 +111,7 @@ public abstract class AbstractCursor
     if (j != -1)
     {
       localObject = new Exception();
-      Log.e("Cursor", "requesting column name with table name -- " + paramString, new Object[] { localObject });
+      Log.e("Cursor", "requesting column name with table name -- ".concat(String.valueOf(paramString)), new Object[] { localObject });
       localObject = paramString.substring(j + 1);
     }
     paramString = getColumnNames();
@@ -302,7 +303,7 @@ public abstract class AbstractCursor
     }
   }
   
-  public void onDeactivateOrClose()
+  protected void onDeactivateOrClose()
   {
     if (this.mSelfObserver != null)
     {
@@ -388,7 +389,9 @@ public abstract class AbstractCursor
     public SelfContentObserver(AbstractCursor paramAbstractCursor)
     {
       super();
+      AppMethodBeat.i(11958);
       this.mCursor = new WeakReference(paramAbstractCursor);
+      AppMethodBeat.o(11958);
     }
     
     public boolean deliverSelfNotifications()
@@ -398,10 +401,12 @@ public abstract class AbstractCursor
     
     public void onChange(boolean paramBoolean)
     {
+      AppMethodBeat.i(11959);
       AbstractCursor localAbstractCursor = (AbstractCursor)this.mCursor.get();
       if (localAbstractCursor != null) {
         localAbstractCursor.onChange(false);
       }
+      AppMethodBeat.o(11959);
     }
   }
 }

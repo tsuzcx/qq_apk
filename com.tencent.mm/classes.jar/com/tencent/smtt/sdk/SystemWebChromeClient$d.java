@@ -1,5 +1,7 @@
 package com.tencent.smtt.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class SystemWebChromeClient$d
   implements com.tencent.smtt.export.external.interfaces.JsPromptResult
 {
@@ -12,17 +14,23 @@ class SystemWebChromeClient$d
   
   public void cancel()
   {
+    AppMethodBeat.i(64165);
     this.a.cancel();
+    AppMethodBeat.o(64165);
   }
   
   public void confirm()
   {
+    AppMethodBeat.i(64166);
     this.a.confirm();
+    AppMethodBeat.o(64166);
   }
   
   public void confirm(String paramString)
   {
+    AppMethodBeat.i(64167);
     this.a.confirm(paramString);
+    AppMethodBeat.o(64167);
   }
 }
 

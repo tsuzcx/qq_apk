@@ -1,59 +1,67 @@
 package com.tencent.mm.plugin.location.model.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.wc;
-import com.tencent.mm.protocal.c.wd;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aah;
+import com.tencent.mm.protocal.protobuf.aai;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
   extends m
   implements k
 {
-  public final b dmK;
-  private f dmL;
-  private Runnable eAk;
+  private f callback;
+  private Runnable fQa;
+  public final b rr;
   
   public a(String paramString)
   {
+    AppMethodBeat.i(113409);
     b.a locala = new b.a();
-    locala.ecH = new wc();
-    locala.ecI = new wd();
+    locala.fsX = new aah();
+    locala.fsY = new aai();
     locala.uri = "/cgi-bin/micromsg-bin/exittrackroom";
-    locala.ecG = 491;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    ((wc)this.dmK.ecE.ecN).sTd = paramString;
-    y.d("MicroMsg.NetSceneExitTrackRoom", "trackRoomId:" + paramString);
+    locala.funcId = 491;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ((aah)this.rr.fsV.fta).wQX = paramString;
+    ab.d("MicroMsg.NetSceneExitTrackRoom", "trackRoomId:".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(113409);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneExitTrackRoom", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    if (this.eAk != null) {
-      this.eAk.run();
-    }
+    AppMethodBeat.i(113410);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(113410);
+    return i;
   }
   
   public final int getType()
   {
     return 491;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(113411);
+    ab.d("MicroMsg.NetSceneExitTrackRoom", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    if (this.fQa != null) {
+      this.fQa.run();
+    }
+    AppMethodBeat.o(113411);
   }
 }
 

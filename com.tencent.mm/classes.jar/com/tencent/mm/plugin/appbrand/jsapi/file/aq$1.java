@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 final class aq$1 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.aq.1
  * JD-Core Version:    0.7.0.1
  */

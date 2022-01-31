@@ -9,394 +9,521 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
-import com.tencent.mm.modelappbrand.ab;
 import com.tencent.mm.modelappbrand.ad;
-import com.tencent.mm.modelappbrand.ae;
 import com.tencent.mm.modelappbrand.af;
 import com.tencent.mm.modelappbrand.ag;
+import com.tencent.mm.modelappbrand.ah;
+import com.tencent.mm.modelappbrand.ai;
+import com.tencent.mm.modelappbrand.aj;
 import com.tencent.mm.modelappbrand.n;
 import com.tencent.mm.modelappbrand.t;
-import com.tencent.mm.modelappbrand.x;
-import com.tencent.mm.modelappbrand.z;
-import com.tencent.mm.plugin.appbrand.canvas.d;
+import com.tencent.mm.modelappbrand.y;
 import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
 import com.tencent.mm.plugin.appbrand.canvas.widget.a.a;
+import com.tencent.mm.plugin.appbrand.dynamic.a.d;
 import com.tencent.mm.plugin.appbrand.dynamic.a.f;
 import com.tencent.mm.plugin.appbrand.dynamic.a.g;
-import com.tencent.mm.plugin.appbrand.dynamic.b;
-import com.tencent.mm.plugin.appbrand.dynamic.f.a;
 import com.tencent.mm.plugin.appbrand.dynamic.h;
 import com.tencent.mm.plugin.appbrand.dynamic.i;
-import com.tencent.mm.plugin.appbrand.widget.g;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
 import org.json.JSONArray;
 
 public class IPCDynamicPageView
   extends LinearLayout
   implements n, com.tencent.mm.plugin.appbrand.canvas.widget.a, h
 {
-  public static ah fTz;
-  private static LinearLayout.LayoutParams fXN = new LinearLayout.LayoutParams(-1, -1);
-  public String dIX;
-  private long fLf;
-  private g fTE;
-  private Bundle fXF;
-  private com.tencent.mm.plugin.appbrand.dynamic.a fXG;
-  public z fXH;
-  public volatile boolean fXI;
-  public long fXJ;
-  private com.tencent.mm.plugin.appbrand.canvas.widget.a fXK;
-  private Runnable fXL = new IPCDynamicPageView.1(this);
-  private Runnable fXM = new IPCDynamicPageView.2(this);
+  public static ak hna;
+  private static LinearLayout.LayoutParams hrn;
+  public String equ;
+  private long her;
+  private com.tencent.mm.plugin.appbrand.widget.f hnf;
+  private Bundle hrf;
+  private com.tencent.mm.plugin.appbrand.dynamic.a hrg;
+  public com.tencent.mm.modelappbrand.ab hrh;
+  public volatile boolean hri;
+  public long hrj;
+  private com.tencent.mm.plugin.appbrand.canvas.widget.a hrk;
+  private Runnable hrl;
+  private Runnable hrm;
   private volatile boolean mDetached;
   
   static
   {
-    HandlerThread localHandlerThread = e.aap("WxaWidget#UIActionThread");
+    AppMethodBeat.i(11084);
+    HandlerThread localHandlerThread = com.tencent.mm.sdk.g.d.aqu("WxaWidget#UIActionThread");
     localHandlerThread.start();
-    fTz = new ah(localHandlerThread.getLooper());
+    hna = new ak(localHandlerThread.getLooper());
+    hrn = new LinearLayout.LayoutParams(-1, -1);
+    AppMethodBeat.o(11084);
   }
   
   public IPCDynamicPageView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(11044);
+    this.hrl = new IPCDynamicPageView.1(this);
+    this.hrm = new IPCDynamicPageView.2(this);
     init(paramContext);
+    AppMethodBeat.o(11044);
   }
   
   public IPCDynamicPageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(11045);
+    this.hrl = new IPCDynamicPageView.1(this);
+    this.hrm = new IPCDynamicPageView.2(this);
     init(paramContext);
+    AppMethodBeat.o(11045);
   }
   
   public IPCDynamicPageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(11046);
+    this.hrl = new IPCDynamicPageView.1(this);
+    this.hrm = new IPCDynamicPageView.2(this);
     init(paramContext);
+    AppMethodBeat.o(11046);
   }
   
   private void init(Context paramContext)
   {
-    this.fXG = new com.tencent.mm.plugin.appbrand.dynamic.a(this);
-    paramContext = c.bt(paramContext);
-    addView(paramContext, fXN);
-    this.fXK = ((com.tencent.mm.plugin.appbrand.canvas.widget.a)paramContext);
-    this.fXK.setTraceId(this.dIX);
+    AppMethodBeat.i(11047);
+    this.hrg = new com.tencent.mm.plugin.appbrand.dynamic.a(this);
+    paramContext = b.bX(paramContext);
+    addView(paramContext, hrn);
+    this.hrk = ((com.tencent.mm.plugin.appbrand.canvas.widget.a)paramContext);
+    this.hrk.setTraceId(this.equ);
+    AppMethodBeat.o(11047);
   }
   
-  private void kL(int paramInt)
+  private void nJ(int paramInt)
   {
-    if (this.fXH == null)
+    AppMethodBeat.i(11079);
+    if (this.hrh == null)
     {
-      y.i("MicroMsg.IPCDynamicPageView", "publishOnWidgetStateChanged(id : %s, state : %d) failed, listener wrapper is null.", new Object[] { this.dIX, Integer.valueOf(paramInt) });
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.IPCDynamicPageView", "publishOnWidgetStateChanged(id : %s, state : %d) failed, listener wrapper is null.", new Object[] { this.equ, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(11079);
       return;
     }
-    com.tencent.mm.modelappbrand.f localf = this.fXH.JA();
+    com.tencent.mm.modelappbrand.f localf = this.hrh.acz();
     if (localf == null)
     {
-      y.i("MicroMsg.IPCDynamicPageView", "publishOnWidgetStateChanged(id : %s, state : %d) failed, listener is null.", new Object[] { this.dIX, Integer.valueOf(paramInt) });
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.IPCDynamicPageView", "publishOnWidgetStateChanged(id : %s, state : %d) failed, listener is null.", new Object[] { this.equ, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(11079);
       return;
     }
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      localf.y(this, paramInt);
+      localf.I(this, paramInt);
+      AppMethodBeat.o(11079);
       return;
     }
-    b.v(new IPCDynamicPageView.7(this, localf, paramInt));
+    com.tencent.mm.plugin.appbrand.dynamic.b.D(new IPCDynamicPageView.7(this, localf, paramInt));
+    AppMethodBeat.o(11079);
+  }
+  
+  public final void B(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(11066);
+    this.hrk.B(paramRunnable);
+    AppMethodBeat.o(11066);
   }
   
   public final void a(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
-    this.fXK.a(paramDrawCanvasArg, parama);
+    AppMethodBeat.i(11063);
+    this.hrk.a(paramDrawCanvasArg, parama);
+    AppMethodBeat.o(11063);
   }
   
   public final void a(String paramString, t paramt)
   {
-    if (this.fXH == null)
+    AppMethodBeat.i(11055);
+    if (this.hrh == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11055);
       return;
     }
-    ae localae = (ae)this.fXH.jC("openApp");
-    if (localae == null)
+    ah localah = (ah)this.hrh.qs("openApp");
+    if (localah == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11055);
       return;
     }
-    localae.jE(paramString);
-  }
-  
-  public final void a(String paramString1, String paramString2, Bundle paramBundle)
-  {
-    fTz.post(new IPCDynamicPageView.4(this, paramBundle, paramString1, paramString2));
+    localah.qu(paramString);
+    AppMethodBeat.o(11055);
   }
   
   public final void a(String paramString1, String paramString2, t paramt)
   {
-    if (this.fXH == null)
+    AppMethodBeat.i(11057);
+    if (this.hrh == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11057);
       return;
     }
-    x localx = (x)this.fXH.jC("showPicker");
-    if (localx == null)
+    y localy = (y)this.hrh.qs("showPicker");
+    if (localy == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11057);
       return;
     }
-    localx.a(paramString1, paramString2, paramt);
+    localy.a(paramString1, paramString2, paramt);
+    AppMethodBeat.o(11057);
   }
   
   public final void a(JSONArray paramJSONArray, a.a parama)
   {
-    this.fXK.a(paramJSONArray, parama);
+    AppMethodBeat.i(11061);
+    this.hrk.a(paramJSONArray, parama);
+    AppMethodBeat.o(11061);
   }
   
   public final void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, t paramt)
   {
-    if (this.fXH == null)
+    AppMethodBeat.i(11056);
+    if (this.hrh == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11056);
       return;
     }
-    ad localad = (ad)this.fXH.jC("OnTapCallback");
-    if (localad == null)
+    af localaf = (af)this.hrh.qs("OnTapCallback");
+    if (localaf == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11056);
       return;
     }
-    localad.b(paramBoolean1, paramString, paramBoolean2);
+    localaf.b(paramBoolean1, paramString, paramBoolean2);
+    AppMethodBeat.o(11056);
   }
   
-  public final boolean ad(String paramString1, String paramString2)
+  public final boolean at(String paramString1, String paramString2)
   {
-    Object localObject = this.fXG;
-    String str = this.dIX;
-    if ((((com.tencent.mm.plugin.appbrand.dynamic.a)localObject).dIX == null) || (((com.tencent.mm.plugin.appbrand.dynamic.a)localObject).dIX.length() == 0) || (paramString1 == null) || (paramString1.length() == 0)) {
+    AppMethodBeat.i(11080);
+    Object localObject = this.hrg;
+    String str = this.equ;
+    if ((((com.tencent.mm.plugin.appbrand.dynamic.a)localObject).equ == null) || (((com.tencent.mm.plugin.appbrand.dynamic.a)localObject).equ.length() == 0) || (paramString1 == null) || (paramString1.length() == 0))
+    {
+      AppMethodBeat.o(11080);
       return false;
     }
     localObject = new Bundle();
     ((Bundle)localObject).putString("id", str);
     ((Bundle)localObject).putString("event", paramString1);
     ((Bundle)localObject).putString("data", paramString2);
-    paramString1 = (IPCBoolean)com.tencent.mm.ipcinvoker.f.a(i.aeX().sX(str), (Parcelable)localObject, a.f.class);
-    if (paramString1 != null) {
-      return paramString1.value;
+    paramString1 = (IPCBoolean)com.tencent.mm.ipcinvoker.f.a(i.azB().AY(str), (Parcelable)localObject, a.f.class);
+    if (paramString1 != null)
+    {
+      boolean bool = paramString1.value;
+      AppMethodBeat.o(11080);
+      return bool;
     }
+    AppMethodBeat.o(11080);
     return false;
   }
   
-  public final void adB()
+  public final void axT()
   {
-    long l = System.currentTimeMillis() - this.fLf;
-    fTz.removeCallbacks(this.fXL);
+    AppMethodBeat.i(11060);
+    long l = System.currentTimeMillis() - this.her;
+    hna.removeCallbacks(this.hrl);
     if (l < 12L)
     {
-      fTz.postDelayed(this.fXL, l);
+      hna.postDelayed(this.hrl, l);
+      AppMethodBeat.o(11060);
       return;
     }
-    this.fXL.run();
+    this.hrl.run();
+    AppMethodBeat.o(11060);
   }
   
-  public final void adC()
+  public final void axU()
   {
-    this.fXK.adC();
+    AppMethodBeat.i(11065);
+    this.hrk.axU();
+    AppMethodBeat.o(11065);
   }
   
-  public final void adD()
+  public final void axV()
   {
-    this.fXK.adD();
+    AppMethodBeat.i(11077);
+    this.hrk.axV();
+    AppMethodBeat.o(11077);
+  }
+  
+  public final void azA()
+  {
+    AppMethodBeat.i(11052);
+    if (this.hrh == null)
+    {
+      AppMethodBeat.o(11052);
+      return;
+    }
+    ag localag = (ag)this.hrh.qs("onUiUpdate");
+    if (localag == null)
+    {
+      AppMethodBeat.o(11052);
+      return;
+    }
+    localag.acB();
+    AppMethodBeat.o(11052);
   }
   
   public final void b(int paramInt, t paramt)
   {
-    if (this.fXH == null)
+    AppMethodBeat.i(11058);
+    if (this.hrh == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11058);
       return;
     }
-    ag localag = (ag)this.fXH.jC("setWidgetSize");
-    if (localag == null)
+    aj localaj = (aj)this.hrh.qs("setWidgetSize");
+    if (localaj == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11058);
       return;
     }
-    localag.a(paramInt, paramt);
+    localaj.a(paramInt, paramt);
+    AppMethodBeat.o(11058);
   }
   
   public final void b(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
-    this.fXK.b(paramDrawCanvasArg, parama);
+    AppMethodBeat.i(11064);
+    this.hrk.b(paramDrawCanvasArg, parama);
+    AppMethodBeat.o(11064);
   }
   
   public final void b(String paramString, t paramt)
   {
-    if (this.fXH == null)
+    AppMethodBeat.i(11053);
+    if (this.hrh == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11053);
       return;
     }
-    ab localab = (ab)this.fXH.jC("makePhoneCall");
-    if (localab == null)
+    ad localad = (ad)this.hrh.qs("makePhoneCall");
+    if (localad == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11053);
       return;
     }
-    localab.jD(paramString);
+    localad.qt(paramString);
+    AppMethodBeat.o(11053);
   }
   
   public final void b(JSONArray paramJSONArray, a.a parama)
   {
-    this.fXK.b(paramJSONArray, parama);
+    AppMethodBeat.i(11062);
+    this.hrk.b(paramJSONArray, parama);
+    AppMethodBeat.o(11062);
   }
   
   public final void c(String paramString, t paramt)
   {
-    if (this.fXH == null)
+    AppMethodBeat.i(11054);
+    if (this.hrh == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11054);
       return;
     }
-    af localaf = (af)this.fXH.jC("onSearchWAWidgetReloadData");
-    if (localaf == null)
+    ai localai = (ai)this.hrh.qs("onSearchWAWidgetReloadData");
+    if (localai == null)
     {
       paramt.b(false, "listener is null", null);
+      AppMethodBeat.o(11054);
       return;
     }
-    localaf.jF(paramString);
+    localai.qv(paramString);
+    AppMethodBeat.o(11054);
   }
   
   public final void cleanup()
   {
-    if (this.fTE != null) {
-      y.i("MicroMsg.IPCDynamicPageView", "cleanup(id : %s, %s, %s, %s)", new Object[] { this.dIX, this.fTE.field_id, this.fTE.field_appId, this.fTE.field_cacheKey });
+    AppMethodBeat.i(11050);
+    if (this.hnf != null) {
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.IPCDynamicPageView", "cleanup(id : %s, %s, %s, %s)", new Object[] { this.equ, this.hnf.field_id, this.hnf.field_appId, this.hnf.field_cacheKey });
     }
     for (;;)
     {
-      adC();
+      axU();
+      AppMethodBeat.o(11050);
       return;
-      y.i("MicroMsg.IPCDynamicPageView", "cleanup(id : %s)", new Object[] { this.dIX });
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.IPCDynamicPageView", "cleanup(id : %s)", new Object[] { this.equ });
     }
+  }
+  
+  public final void d(String paramString1, String paramString2, Bundle paramBundle)
+  {
+    AppMethodBeat.i(11048);
+    hna.post(new IPCDynamicPageView.4(this, paramBundle, paramString1, paramString2));
+    AppMethodBeat.o(11048);
   }
   
   public final void detach()
   {
-    if (Looper.myLooper() == fTz.getLooper())
+    AppMethodBeat.i(11049);
+    if (Looper.myLooper() == hna.getLooper())
     {
-      this.fXM.run();
+      this.hrm.run();
+      AppMethodBeat.o(11049);
       return;
     }
-    fTz.post(this.fXM);
+    hna.post(this.hrm);
+    AppMethodBeat.o(11049);
   }
   
   public final boolean f(Canvas paramCanvas)
   {
-    return this.fXK.f(paramCanvas);
+    AppMethodBeat.i(11059);
+    boolean bool = this.hrk.f(paramCanvas);
+    AppMethodBeat.o(11059);
+    return bool;
   }
   
-  public d getDrawContext()
+  public com.tencent.mm.plugin.appbrand.canvas.d getDrawContext()
   {
-    return this.fXK.getDrawContext();
+    AppMethodBeat.i(11067);
+    com.tencent.mm.plugin.appbrand.canvas.d locald = this.hrk.getDrawContext();
+    AppMethodBeat.o(11067);
+    return locald;
   }
   
   public Bundle getExtData()
   {
-    return this.fXF;
+    return this.hrf;
   }
   
   public String getExtId()
   {
-    return this.dIX;
+    return this.equ;
   }
   
   public String getSessionId()
   {
-    return this.fXK.getSessionId();
+    AppMethodBeat.i(11074);
+    String str = this.hrk.getSessionId();
+    AppMethodBeat.o(11074);
+    return str;
   }
   
   public String getTraceId()
   {
-    return this.fXK.getTraceId();
+    AppMethodBeat.i(11070);
+    String str = this.hrk.getTraceId();
+    AppMethodBeat.o(11070);
+    return str;
   }
   
   public final boolean isPaused()
   {
-    return this.fXK.isPaused();
+    AppMethodBeat.i(11073);
+    boolean bool = this.hrk.isPaused();
+    AppMethodBeat.o(11073);
+    return bool;
   }
   
-  public final void kG(int paramInt)
+  public final void nE(int paramInt)
   {
-    kL(paramInt);
+    AppMethodBeat.i(11051);
+    nJ(paramInt);
     detach();
+    AppMethodBeat.o(11051);
   }
   
-  public final void kM(int paramInt)
+  public final void nK(int paramInt)
   {
-    Object localObject = this.fXG;
-    String str = this.dIX;
-    if ((((com.tencent.mm.plugin.appbrand.dynamic.a)localObject).dIX == null) || (((com.tencent.mm.plugin.appbrand.dynamic.a)localObject).dIX.length() == 0)) {
-      return;
-    }
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("id", str);
-    ((Bundle)localObject).putInt("widgetState", paramInt);
-    com.tencent.mm.ipcinvoker.f.a(i.aeX().sX(str), (Parcelable)localObject, f.a.class, null);
+    AppMethodBeat.i(11081);
+    this.hrg.aY(this.equ, paramInt);
+    AppMethodBeat.o(11081);
   }
   
   public final void onPause()
   {
-    y.i("MicroMsg.IPCDynamicPageView", "onPause(%s)", new Object[] { this.dIX });
-    this.fXK.onPause();
-    fTz.post(new IPCDynamicPageView.5(this));
+    AppMethodBeat.i(11071);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.IPCDynamicPageView", "onPause(%s)", new Object[] { this.equ });
+    hna.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(11041);
+        IPCDynamicPageView.f(IPCDynamicPageView.this);
+        String str = IPCDynamicPageView.e(IPCDynamicPageView.this);
+        Bundle localBundle = new Bundle();
+        localBundle.putString("id", str);
+        com.tencent.mm.ipcinvoker.f.a(i.azB().AY(str), localBundle, a.d.class, null);
+        AppMethodBeat.o(11041);
+      }
+    });
+    AppMethodBeat.o(11071);
   }
   
   public final void onResume()
   {
-    y.i("MicroMsg.IPCDynamicPageView", "onResume(%s)", new Object[] { this.dIX });
-    this.fXK.onResume();
-    fTz.post(new IPCDynamicPageView.6(this));
+    AppMethodBeat.i(11072);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.IPCDynamicPageView", "onResume(%s)", new Object[] { this.equ });
+    this.hrk.onResume();
+    hna.post(new IPCDynamicPageView.6(this));
+    AppMethodBeat.o(11072);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(11078);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    y.i("MicroMsg.IPCDynamicPageView", "onSizeChanged(w : %d, h : %d, oldw : %d, oldh : %d)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.IPCDynamicPageView", "onSizeChanged(w : %d, h : %d, oldw : %d, oldh : %d)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     Bundle localBundle1 = new Bundle();
     localBundle1.putInt("__page_view_width", paramInt1);
     localBundle1.putInt("__page_view_height", paramInt2);
-    String str = this.dIX;
+    String str = this.equ;
     Bundle localBundle2 = new Bundle();
     localBundle2.putString("id", str);
     localBundle2.putBundle("__env_args", localBundle1);
-    com.tencent.mm.ipcinvoker.f.a(i.aeX().sX(str), localBundle2, a.g.class, null);
+    com.tencent.mm.ipcinvoker.f.a(i.azB().AY(str), localBundle2, a.g.class, null);
+    AppMethodBeat.o(11078);
   }
   
   public void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
-    this.fXK.setDrawActionReportable(parama);
+    AppMethodBeat.i(11068);
+    this.hrk.setDrawActionReportable(parama);
+    AppMethodBeat.o(11068);
   }
   
   public void setSessionId(String paramString)
   {
-    this.fXK.setSessionId(paramString);
+    AppMethodBeat.i(11075);
+    this.hrk.setSessionId(paramString);
+    AppMethodBeat.o(11075);
   }
   
   public void setStartTime(long paramLong)
   {
-    this.fXK.setStartTime(paramLong);
+    AppMethodBeat.i(11076);
+    this.hrk.setStartTime(paramLong);
+    AppMethodBeat.o(11076);
   }
   
   public void setTraceId(String paramString)
   {
-    this.fXK.setTraceId(paramString);
-  }
-  
-  public final void t(Runnable paramRunnable)
-  {
-    this.fXK.t(paramRunnable);
+    AppMethodBeat.i(11069);
+    this.hrk.setTraceId(paramString);
+    AppMethodBeat.o(11069);
   }
 }
 

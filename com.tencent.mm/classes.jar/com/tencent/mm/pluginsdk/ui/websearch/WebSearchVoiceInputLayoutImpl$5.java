@@ -1,6 +1,7 @@
 package com.tencent.mm.pluginsdk.ui.websearch;
 
-import com.tencent.mm.pluginsdk.ui.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.k;
 
 final class WebSearchVoiceInputLayoutImpl$5
   implements Runnable
@@ -9,12 +10,14 @@ final class WebSearchVoiceInputLayoutImpl$5
   
   public final void run()
   {
-    WebSearchVoiceInputLayoutImpl.b(this.snR).cmy();
+    AppMethodBeat.i(28225);
+    WebSearchVoiceInputLayoutImpl.b(this.wgp).dno();
+    AppMethodBeat.o(28225);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.websearch.WebSearchVoiceInputLayoutImpl.5
  * JD-Core Version:    0.7.0.1
  */

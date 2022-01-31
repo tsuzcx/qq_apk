@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.qqmail.b.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class AttachDownloadPage$2
@@ -12,16 +12,18 @@ final class AttachDownloadPage$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = this.nfL;
-    String str = this.nfL.getString(b.j.plugin_favorite_opt);
+    AppMethodBeat.i(68132);
+    paramMenuItem = this.pLa;
+    String str = this.pLa.getString(2131302102);
     AttachDownloadPage.2.1 local1 = new AttachDownloadPage.2.1(this);
     h.a(paramMenuItem, "", new String[] { str }, "", false, local1);
+    AppMethodBeat.o(68132);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.AttachDownloadPage.2
  * JD-Core Version:    0.7.0.1
  */

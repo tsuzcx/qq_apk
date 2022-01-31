@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.model.aq;
-import com.tencent.mm.protocal.c.awd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ar;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class OnlineVideoView$2$1
   implements Runnable
@@ -12,15 +13,17 @@ final class OnlineVideoView$2$1
   
   public final void run()
   {
-    y.i("MicroMsg.OnlineVideoView", "%d weixin download finish[%b], go to prepare video", new Object[] { Integer.valueOf(this.oRN.oRM.hashCode()), Boolean.valueOf(this.elN) });
-    if ((OnlineVideoView.e(this.oRN.oRM) != null) && (this.elN) && (bk.isEqual(OnlineVideoView.e(this.oRN.oRM).lsK, this.BF)))
+    AppMethodBeat.i(38385);
+    ab.i("MicroMsg.OnlineVideoView", "%d weixin download finish[%b], go to prepare video", new Object[] { Integer.valueOf(this.rJE.rJD.hashCode()), Boolean.valueOf(this.fCf) });
+    if ((OnlineVideoView.c(this.rJE.rJD) != null) && (this.fCf) && (bo.isEqual(OnlineVideoView.c(this.rJE.rJD).Id, this.Cq)))
     {
-      aq.eL(OnlineVideoView.a(this.oRN.oRM), "");
-      String str = aq.a(OnlineVideoView.a(this.oRN.oRM), OnlineVideoView.e(this.oRN.oRM));
-      if (!bk.bl(str)) {
-        this.oRN.oRM.bg(str, false);
+      ar.gn(OnlineVideoView.a(this.rJE.rJD), "");
+      String str = ar.a(OnlineVideoView.a(this.rJE.rJD), OnlineVideoView.c(this.rJE.rJD));
+      if (!bo.isNullOrNil(str)) {
+        this.rJE.rJD.bw(str, false);
       }
     }
+    AppMethodBeat.o(38385);
   }
 }
 

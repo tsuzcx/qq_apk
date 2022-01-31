@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import com.tencent.mm.h.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.iz;
 import com.tencent.mm.sdk.b.c;
 
 final class g$7
-  extends c<b>
+  extends c<iz>
 {
   g$7(g paramg)
   {
-    this.udX = b.class.getName().hashCode();
+    AppMethodBeat.i(6972);
+    this.__eventId = iz.class.getName().hashCode();
+    AppMethodBeat.o(6972);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.g.7
  * JD-Core Version:    0.7.0.1
  */

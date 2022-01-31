@@ -1,40 +1,43 @@
 package com.tencent.mm.plugin.exdevice.f.b.a;
 
-import com.tencent.mm.h.c.ce;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.cj;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class b
-  extends ce
+  extends cj
 {
-  public static c.a buS;
+  public static c.a info;
   
   static
   {
+    AppMethodBeat.i(19484);
     c.a locala = new c.a();
-    locala.ujL = new Field[3];
+    locala.yrK = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appusername";
-    locala.ujN.put("appusername", "TEXT");
+    locala.yrM.put("appusername", "TEXT");
     localStringBuilder.append(" appusername TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "title";
-    locala.ujN.put("title", "TEXT");
+    locala.yrM.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "score";
-    locala.ujN.put("score", "INTEGER");
+    locala.yrM.put("score", "INTEGER");
     localStringBuilder.append(" score INTEGER");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(19484);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

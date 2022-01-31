@@ -5,7 +5,7 @@ public final class c$er
 {
   public c$er()
   {
-    super("openDesignerEmojiViewLocal", "openDesignerEmojiViewLocal", 20000, false);
+    super("openTimelineCheckInList", "open_timeline_checkin_list", 62, false);
   }
 }
 

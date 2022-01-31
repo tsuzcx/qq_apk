@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ExdeviceRankInfoUI$10
   implements Runnable
 {
@@ -7,13 +9,15 @@ final class ExdeviceRankInfoUI$10
   
   public final void run()
   {
-    ExdeviceRankInfoUI.s(this.jFV);
-    ExdeviceRankInfoUI.t(this.jFV);
+    AppMethodBeat.i(20144);
+    ExdeviceRankInfoUI.s(this.lPt);
+    ExdeviceRankInfoUI.t(this.lPt);
+    AppMethodBeat.o(20144);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceRankInfoUI.10
  * JD-Core Version:    0.7.0.1
  */

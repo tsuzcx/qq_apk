@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,26 +12,73 @@ public final class a
 {
   public String app_id;
   public String color;
-  public int end_time;
-  public String ics;
-  public String iln;
-  public int ilo;
-  public String ilp;
-  public String ilq;
-  public String ilr;
-  public String ils;
-  public String ilt;
-  public int ilu;
-  public String ilv;
-  public String ilw;
-  public String ilx;
-  public boolean ily;
+  public int iFL;
+  public String jTi;
+  public String kml;
+  public String kmm;
+  public String kmn;
+  public String kmo;
+  public String kmp;
+  public int kmq;
+  public String kmr;
+  public int kms;
+  public String kmt;
+  public String kmu;
+  public String kmv;
+  public boolean kmw;
   public String title;
   public String userName;
   
+  public static LinkedList<a> HH(String paramString)
+  {
+    AppMethodBeat.i(87772);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(87772);
+      return null;
+    }
+    try
+    {
+      paramString = a(new JSONObject(paramString).optJSONArray("available_cards"), false);
+      AppMethodBeat.o(87772);
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      ab.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
+      AppMethodBeat.o(87772);
+    }
+    return null;
+  }
+  
+  public static LinkedList<a> HI(String paramString)
+  {
+    AppMethodBeat.i(87773);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(87773);
+      return null;
+    }
+    try
+    {
+      paramString = a(new JSONObject(paramString).optJSONArray("available_share_cards"), true);
+      AppMethodBeat.o(87773);
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      ab.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
+      AppMethodBeat.o(87773);
+    }
+    return null;
+  }
+  
   private static LinkedList<a> a(JSONArray paramJSONArray, boolean paramBoolean)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
+    AppMethodBeat.i(87774);
+    if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
+    {
+      AppMethodBeat.o(87774);
       return null;
     }
     LinkedList localLinkedList = new LinkedList();
@@ -39,66 +87,33 @@ public final class a
     {
       JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
       a locala = new a();
-      locala.iln = localJSONObject.optString("card_tp_id");
-      locala.ilo = localJSONObject.optInt("card_type");
+      locala.kml = localJSONObject.optString("card_tp_id");
+      locala.iFL = localJSONObject.optInt("card_type");
       locala.color = localJSONObject.optString("color");
-      locala.ilp = localJSONObject.optString("logo_url");
+      locala.kmm = localJSONObject.optString("logo_url");
       locala.title = localJSONObject.optString("title");
-      locala.ilq = localJSONObject.optString("sub_title");
-      locala.ilr = localJSONObject.optString("aux_title");
-      locala.ils = localJSONObject.optString("encrypt_code");
+      locala.kmn = localJSONObject.optString("sub_title");
+      locala.kmo = localJSONObject.optString("aux_title");
+      locala.kmp = localJSONObject.optString("encrypt_code");
       locala.userName = localJSONObject.optString("from_user_name");
       locala.app_id = localJSONObject.optString("app_id");
-      locala.end_time = localJSONObject.optInt("end_time");
-      locala.ilt = localJSONObject.optString("card_user_id");
-      locala.ilu = localJSONObject.optInt("choose_optional");
-      locala.ilw = localJSONObject.optString("invoice_item");
-      locala.ilx = localJSONObject.optString("invoice_status");
-      locala.ilv = localJSONObject.optString("invoice_title");
-      locala.ily = paramBoolean;
+      locala.kmq = localJSONObject.optInt("end_time");
+      locala.kmr = localJSONObject.optString("card_user_id");
+      locala.kms = localJSONObject.optInt("choose_optional");
+      locala.kmu = localJSONObject.optString("invoice_item");
+      locala.kmv = localJSONObject.optString("invoice_status");
+      locala.kmt = localJSONObject.optString("invoice_title");
+      locala.kmw = paramBoolean;
       localLinkedList.add(locala);
       i += 1;
     }
+    AppMethodBeat.o(87774);
     return localLinkedList;
-  }
-  
-  public static LinkedList<a> yg(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = a(new JSONObject(paramString).optJSONArray("available_cards"), false);
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      y.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
-    }
-    return null;
-  }
-  
-  public static LinkedList<a> yh(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = a(new JSONObject(paramString).optJSONArray("available_share_cards"), true);
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      y.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.a
  * JD-Core Version:    0.7.0.1
  */

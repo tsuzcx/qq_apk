@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.appbrand.widget.recentview;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import com.tencent.mm.plugin.appbrand.r.d;
-import com.tencent.mm.plugin.appbrand.r.f;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.service.j;
+import com.tencent.mm.plugin.appbrand.service.l;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ConversationAppBrandRecentView$1
   implements AppBrandRecentView.b
@@ -15,34 +16,38 @@ final class ConversationAppBrandRecentView$1
   
   public final boolean a(View paramView, a parama, float paramFloat1, float paramFloat2)
   {
-    if (ConversationAppBrandRecentView.a(this.hDh) != null) {
-      ConversationAppBrandRecentView.a(this.hDh).a(paramView, parama, paramFloat1, paramFloat2);
+    AppMethodBeat.i(134358);
+    if (ConversationAppBrandRecentView.a(this.jvI) != null) {
+      ConversationAppBrandRecentView.a(this.jvI).a(paramView, parama, paramFloat1, paramFloat2);
     }
     if (parama.type == 0)
     {
-      ((f)g.r(f.class)).b(this.hDh.getContext(), 13, false);
+      ((l)g.E(l.class)).c(this.jvI.getContext(), 13, false);
+      AppMethodBeat.o(134358);
       return false;
     }
-    this.hDh.setLayoutFrozen(true);
+    this.jvI.setLayoutFrozen(true);
     paramView = new AppBrandStatObject();
-    if (this.hDh.hrp == AppBrandRecentView.f.hBY) {}
+    if (this.jvI.jhO == AppBrandRecentView.f.jur) {}
     for (int i = 1104;; i = 1089)
     {
       paramView.scene = i;
-      ((d)g.r(d.class)).a(this.hDh.getContext(), parama.hqw.username, null, parama.hqw.fJy, -1, null, paramView);
-      return false;
+      ((j)g.E(j.class)).a(this.jvI.getContext(), parama.jfk.username, null, parama.jfk.hcr, -1, null, paramView);
+      break;
     }
   }
   
   public final boolean b(View paramView, a parama, float paramFloat1, float paramFloat2)
   {
-    if (ConversationAppBrandRecentView.a(this.hDh) != null) {
-      ConversationAppBrandRecentView.a(this.hDh).b(paramView, parama, paramFloat1, paramFloat2);
+    AppMethodBeat.i(134359);
+    if (ConversationAppBrandRecentView.a(this.jvI) != null) {
+      ConversationAppBrandRecentView.a(this.jvI).b(paramView, parama, paramFloat1, paramFloat2);
     }
-    y.i("MicroMsg.ConversationAppBrandRecentView", "[onItemLongClick] x:%s", new Object[] { Float.valueOf(paramFloat1) });
+    ab.i("MicroMsg.ConversationAppBrandRecentView", "[onItemLongClick] x:%s", new Object[] { Float.valueOf(paramFloat1) });
     if (parama.type != 0) {
-      new com.tencent.mm.ui.widget.b.a(this.hDh.getContext()).a(paramView, new ConversationAppBrandRecentView.1.1(this), new ConversationAppBrandRecentView.1.2(this, parama), (int)paramFloat1, (int)paramFloat2);
+      new com.tencent.mm.ui.widget.c.a(this.jvI.getContext()).a(paramView, new ConversationAppBrandRecentView.1.1(this), new ConversationAppBrandRecentView.1.2(this, parama), (int)paramFloat1, (int)paramFloat2);
     }
+    AppMethodBeat.o(134359);
     return false;
   }
 }

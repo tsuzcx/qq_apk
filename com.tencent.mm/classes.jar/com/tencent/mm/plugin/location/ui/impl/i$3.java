@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.location.ui.impl;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class i$3
   implements View.OnClickListener
@@ -11,13 +12,15 @@ final class i$3
   
   public final void onClick(View paramView)
   {
-    this.lKF.bfc();
-    this.lKF.lKB.cfU();
+    AppMethodBeat.i(113741);
+    this.ohX.bMz();
+    this.ohX.ohT.crd();
+    AppMethodBeat.o(113741);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.i.3
  * JD-Core Version:    0.7.0.1
  */

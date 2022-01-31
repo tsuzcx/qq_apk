@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.c;
 
 final class CropImageNewUI$13
@@ -7,17 +8,21 @@ final class CropImageNewUI$13
 {
   CropImageNewUI$13(CropImageNewUI paramCropImageNewUI) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(34826);
     switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      CropImageNewUI.s(this.vYH);
-      return;
     }
-    CropImageNewUI.t(this.vYH);
+    for (;;)
+    {
+      AppMethodBeat.o(34826);
+      return;
+      CropImageNewUI.s(this.AqU);
+      AppMethodBeat.o(34826);
+      return;
+      CropImageNewUI.t(this.AqU);
+    }
   }
 }
 

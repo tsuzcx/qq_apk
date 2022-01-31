@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.sns;
 
-import com.tencent.mm.h.a.ia;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ie;
 import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.protocal.c.bxk;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
 import com.tencent.mm.sdk.b.c;
 
 public final class f
-  extends c<ia>
+  extends c<ie>
 {
-  private n oje;
-  private String ojh;
-  private bxk oji;
+  private n qXp;
+  private String qXs;
+  private TimeLineObject qXt;
   
   public f()
   {
-    this.udX = ia.class.getName().hashCode();
+    AppMethodBeat.i(35610);
+    this.__eventId = ie.class.getName().hashCode();
+    AppMethodBeat.o(35610);
   }
 }
 

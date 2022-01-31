@@ -39,7 +39,7 @@ public class RecoveryUploadService
     //   0: ldc 2
     //   2: monitorenter
     //   3: aload_1
-    //   4: invokestatic 56	com/tencent/recovery/util/Util:bl	(Ljava/lang/String;)Z
+    //   4: invokestatic 56	com/tencent/recovery/util/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   7: istore_2
     //   8: iload_2
     //   9: ifeq +7 -> 16
@@ -47,7 +47,7 @@ public class RecoveryUploadService
     //   14: monitorexit
     //   15: return
     //   16: aload_0
-    //   17: invokestatic 62	com/tencent/recovery/option/OptionFactory:hq	(Landroid/content/Context;)Lcom/tencent/recovery/option/CommonOptions;
+    //   17: invokestatic 62	com/tencent/recovery/option/OptionFactory:iR	(Landroid/content/Context;)Lcom/tencent/recovery/option/CommonOptions;
     //   20: astore 7
     //   22: aload_0
     //   23: ldc 64
@@ -72,7 +72,7 @@ public class RecoveryUploadService
     //   59: dup
     //   60: iconst_1
     //   61: lload_3
-    //   62: invokestatic 92	com/tencent/recovery/util/Util:ik	(J)Ljava/lang/String;
+    //   62: invokestatic 92	com/tencent/recovery/util/Util:oW	(J)Ljava/lang/String;
     //   65: aastore
     //   66: invokestatic 98	com/tencent/recovery/log/RecoveryLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   69: new 24	android/content/Intent
@@ -101,7 +101,7 @@ public class RecoveryUploadService
     //   112: lload_3
     //   113: lsub
     //   114: aload 7
-    //   116: getfield 104	com/tencent/recovery/option/CommonOptions:wLb	J
+    //   116: getfield 104	com/tencent/recovery/option/CommonOptions:BiA	J
     //   119: lcmp
     //   120: ifle +122 -> 242
     //   123: aload_1
@@ -127,7 +127,7 @@ public class RecoveryUploadService
     //   171: invokestatic 44	android/app/PendingIntent:getService	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
     //   174: astore_1
     //   175: aload 7
-    //   177: getfield 104	com/tencent/recovery/option/CommonOptions:wLb	J
+    //   177: getfield 104	com/tencent/recovery/option/CommonOptions:BiA	J
     //   180: lload 5
     //   182: ladd
     //   183: ldc2_w 122
@@ -156,7 +156,7 @@ public class RecoveryUploadService
     //   223: dup
     //   224: iconst_1
     //   225: lload_3
-    //   226: invokestatic 92	com/tencent/recovery/util/Util:ik	(J)Ljava/lang/String;
+    //   226: invokestatic 92	com/tencent/recovery/util/Util:oW	(J)Ljava/lang/String;
     //   229: aastore
     //   230: invokestatic 98	com/tencent/recovery/log/RecoveryLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   233: goto -221 -> 12
@@ -205,7 +205,7 @@ public class RecoveryUploadService
   
   public static void startAlarmAfter(Context paramContext, String paramString, long paramLong)
   {
-    if (Util.bl(paramString)) {
+    if (Util.isNullOrNil(paramString)) {
       return;
     }
     RecoveryLog.i("Recovery.RecoveryUploadService", "startAlarmAfter %s %d", new Object[] { paramString, Long.valueOf(paramLong) });
@@ -222,7 +222,7 @@ public class RecoveryUploadService
     try
     {
       paramContext.set(0, paramLong, paramString);
-      RecoveryLog.i("Recovery.RecoveryUploadService", "startAlarmAfter pendingIntent:%d %s", new Object[] { Integer.valueOf(paramString.hashCode()), Util.ik(paramLong) });
+      RecoveryLog.i("Recovery.RecoveryUploadService", "startAlarmAfter pendingIntent:%d %s", new Object[] { Integer.valueOf(paramString.hashCode()), Util.oW(paramLong) });
       return;
     }
     catch (Exception paramContext)
@@ -240,18 +240,18 @@ public class RecoveryUploadService
     boolean bool = tryToUploadData();
     String str = paramIntent.getStringExtra("KeyReportUploadClassName");
     paramIntent = str;
-    if (Util.bl(str)) {
+    if (Util.isNullOrNil(str)) {
       paramIntent = getClass().getName();
     }
     cancelAlarm(this, paramIntent);
     if (!bool) {
-      startAlarmAfter(this, paramIntent, OptionFactory.hq(this).wLb);
+      startAlarmAfter(this, paramIntent, OptionFactory.iR(this).BiA);
     }
     RecoveryLog.i("Recovery.RecoveryUploadService", "RecoveryUploadReceiver.uploadDataResult %b", new Object[] { Boolean.valueOf(bool) });
-    if ((RecoveryLog.cOB() instanceof RecoveryFileLog))
+    if ((RecoveryLog.dUq() instanceof RecoveryFileLog))
     {
       RecoveryLog.i("Recovery.RecoveryUploadService", "send broadcast action", new Object[0]);
-      RecoveryLog.cOA();
+      RecoveryLog.dUp();
       paramIntent = new Intent();
       paramIntent.setPackage(getPackageName());
       paramIntent.setAction("com.tecent.recovery.intent.action.LOG");
@@ -260,7 +260,7 @@ public class RecoveryUploadService
     stopSelf();
   }
   
-  public boolean tryToUploadData()
+  protected boolean tryToUploadData()
   {
     return true;
   }

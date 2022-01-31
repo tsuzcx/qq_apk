@@ -7,23 +7,30 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 
 final class RegByMobileWaitingSMSUI$a
   extends ArrayAdapter<String>
 {
-  private final LayoutInflater fhz;
-  private final ArrayList<String> frH;
+  private final LayoutInflater exe;
+  private final ArrayList<String> gJj;
   
-  private String ke(int paramInt)
+  private String getItem(int paramInt)
   {
-    return (String)this.frH.get(paramInt);
+    AppMethodBeat.i(125480);
+    String str = (String)this.gJj.get(paramInt);
+    AppMethodBeat.o(125480);
+    return str;
   }
   
   public final int getCount()
   {
-    return this.frH.size();
+    AppMethodBeat.i(125479);
+    int i = this.gJj.size();
+    AppMethodBeat.o(125479);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -33,30 +40,37 @@ final class RegByMobileWaitingSMSUI$a
   
   public final int getItemViewType(int paramInt)
   {
-    if (((Integer)RegByMobileWaitingSMSUI.h(this.frF).get(paramInt % RegByMobileWaitingSMSUI.h(this.frF).size())).intValue() % 4 == 0) {
+    AppMethodBeat.i(125481);
+    if (((Integer)RegByMobileWaitingSMSUI.h(this.gJh).get(paramInt % RegByMobileWaitingSMSUI.h(this.gJh).size())).intValue() % 4 == 0)
+    {
+      AppMethodBeat.o(125481);
       return 1;
     }
+    AppMethodBeat.o(125481);
     return 0;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(125478);
     int i = getItemViewType(paramInt);
-    label103:
+    label111:
     int j;
     if (paramView == null)
     {
-      paramViewGroup = new RegByMobileWaitingSMSUI.b(this.frF, (byte)0);
+      paramViewGroup = new RegByMobileWaitingSMSUI.b(this.gJh, (byte)0);
       switch (i)
       {
       default: 
-        throw new IllegalArgumentException("UNIMPLEMENT TYPE");
+        paramView = new IllegalArgumentException("UNIMPLEMENT TYPE");
+        AppMethodBeat.o(125478);
+        throw paramView;
       case 0: 
-        paramView = this.fhz.inflate(q.g.animation_chatting_item, null);
-        paramViewGroup.frI = ((TextView)paramView.findViewById(q.f.chatting_content_itv));
-        paramViewGroup.ffK = ((ImageView)paramView.findViewById(q.f.chatting_avatar_iv));
+        paramView = this.exe.inflate(2130968649, null);
+        paramViewGroup.gJk = ((TextView)paramView.findViewById(2131821123));
+        paramViewGroup.gxs = ((ImageView)paramView.findViewById(2131821121));
         paramView.setTag(paramViewGroup);
-        j = ((Integer)RegByMobileWaitingSMSUI.h(this.frF).get(paramInt % RegByMobileWaitingSMSUI.h(this.frF).size())).intValue();
+        j = ((Integer)RegByMobileWaitingSMSUI.h(this.gJh).get(paramInt % RegByMobileWaitingSMSUI.h(this.gJh).size())).intValue();
         switch (i)
         {
         }
@@ -65,15 +79,16 @@ final class RegByMobileWaitingSMSUI$a
     }
     for (;;)
     {
-      paramViewGroup.frI.setText(ke(paramInt));
+      paramViewGroup.gJk.setText(getItem(paramInt));
+      AppMethodBeat.o(125478);
       return paramView;
-      paramView = this.fhz.inflate(q.g.animation_chatting_item_to, null);
+      paramView = this.exe.inflate(2130968650, null);
       break;
       paramViewGroup = (RegByMobileWaitingSMSUI.b)paramView.getTag();
-      break label103;
-      paramViewGroup.ffK.setImageDrawable((Drawable)RegByMobileWaitingSMSUI.i(this.frF).get(j % RegByMobileWaitingSMSUI.i(this.frF).size()));
+      break label111;
+      paramViewGroup.gxs.setImageDrawable((Drawable)RegByMobileWaitingSMSUI.i(this.gJh).get(j % RegByMobileWaitingSMSUI.i(this.gJh).size()));
       continue;
-      paramViewGroup.ffK.setImageDrawable(RegByMobileWaitingSMSUI.j(this.frF));
+      paramViewGroup.gxs.setImageDrawable(RegByMobileWaitingSMSUI.j(this.gJh));
     }
   }
   
@@ -82,10 +97,12 @@ final class RegByMobileWaitingSMSUI$a
     return 2;
   }
   
-  public final void qh(String paramString)
+  public final void xB(String paramString)
   {
-    this.frH.add(paramString);
+    AppMethodBeat.i(125482);
+    this.gJj.add(paramString);
     notifyDataSetChanged();
+    AppMethodBeat.o(125482);
   }
 }
 

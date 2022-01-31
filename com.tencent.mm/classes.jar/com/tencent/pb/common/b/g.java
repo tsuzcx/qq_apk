@@ -10,11 +10,11 @@ import com.tencent.pb.common.c.d;
 
 public final class g
 {
-  private NetworkInfo dhI = null;
-  private WifiInfo dhJ = null;
-  private int wFT = 1;
+  private WifiInfo Bdt = null;
+  private int Bdu = 1;
+  private NetworkInfo dYZ = null;
   
-  public final boolean vW()
+  public final boolean Ik()
   {
     Object localObject1 = null;
     int i;
@@ -22,49 +22,49 @@ public final class g
     {
       try
       {
-        localObject3 = (ConnectivityManager)d.pZI.getSystemService("connectivity");
+        localObject3 = (ConnectivityManager)d.tFk.getSystemService("connectivity");
         if (localObject3 != null) {
           continue;
         }
-        c.x("NetworkChangeMgr", new Object[] { "can't get ConnectivityManager" });
-        this.wFT = 1;
-        this.dhJ = null;
-        this.dhI = null;
+        c.w("NetworkChangeMgr", new Object[] { "can't get ConnectivityManager" });
+        this.Bdu = 1;
+        this.Bdt = null;
+        this.dYZ = null;
         bool = true;
       }
       catch (Exception localException)
       {
         Object localObject3;
         label122:
-        c.x("NetworkChangeMgr", new Object[] { localException });
-        this.wFT = 1;
-        this.dhJ = null;
-        this.dhI = null;
+        c.w("NetworkChangeMgr", new Object[] { localException });
+        this.Bdu = 1;
+        this.Bdt = null;
+        this.dYZ = null;
         bool = true;
         continue;
         if (((NetworkInfo)localObject3).getType() != 1) {
           break label456;
         }
-        localWifiInfo = ((WifiManager)d.pZI.getSystemService("wifi")).getConnectionInfo();
+        localWifiInfo = ((WifiManager)d.tFk.getSystemService("wifi")).getConnectionInfo();
         i = 2;
         continue;
         if (i != 2) {
           continue;
         }
-        if ((localWifiInfo == null) || (this.dhJ == null) || (!this.dhJ.getBSSID().equals(localWifiInfo.getBSSID())) || (!this.dhJ.getSSID().equals(localWifiInfo.getSSID())) || (this.dhJ.getNetworkId() != localWifiInfo.getNetworkId())) {
+        if ((localWifiInfo == null) || (this.Bdt == null) || (!this.Bdt.getBSSID().equals(localWifiInfo.getBSSID())) || (!this.Bdt.getSSID().equals(localWifiInfo.getSSID())) || (this.Bdt.getNetworkId() != localWifiInfo.getNetworkId())) {
           break label461;
         }
         bool = false;
         continue;
-        if ((this.dhI == null) || (this.dhI.getExtraInfo() == null) || (((NetworkInfo)localObject3).getExtraInfo() == null) || (!this.dhI.getExtraInfo().equals(((NetworkInfo)localObject3).getExtraInfo())) || (this.dhI.getSubtype() != ((NetworkInfo)localObject3).getSubtype()) || (this.dhI.getType() != ((NetworkInfo)localObject3).getType())) {
+        if ((this.dYZ == null) || (this.dYZ.getExtraInfo() == null) || (((NetworkInfo)localObject3).getExtraInfo() == null) || (!this.dYZ.getExtraInfo().equals(((NetworkInfo)localObject3).getExtraInfo())) || (this.dYZ.getSubtype() != ((NetworkInfo)localObject3).getSubtype()) || (this.dYZ.getType() != ((NetworkInfo)localObject3).getType())) {
           continue;
         }
         bool = false;
         continue;
-        if ((this.dhI == null) || (this.dhI.getExtraInfo() != null) || (((NetworkInfo)localObject3).getExtraInfo() != null) || (this.dhI.getSubtype() != ((NetworkInfo)localObject3).getSubtype())) {
+        if ((this.dYZ == null) || (this.dYZ.getExtraInfo() != null) || (((NetworkInfo)localObject3).getExtraInfo() != null) || (this.dYZ.getSubtype() != ((NetworkInfo)localObject3).getSubtype())) {
           continue;
         }
-        j = this.dhI.getType();
+        j = this.dYZ.getType();
         k = ((NetworkInfo)localObject3).getType();
         if (j != k) {
           continue;
@@ -79,9 +79,9 @@ public final class g
       localObject3 = ((ConnectivityManager)localObject3).getActiveNetworkInfo();
       if (localObject3 == null)
       {
-        this.wFT = 1;
-        this.dhJ = null;
-        this.dhI = null;
+        this.Bdu = 1;
+        this.Bdt = null;
+        this.dYZ = null;
         bool = true;
       }
       else
@@ -90,7 +90,7 @@ public final class g
         if (!((NetworkInfo)localObject3).isConnected())
         {
           i = 1;
-          if (i != this.wFT) {
+          if (i != this.Bdu) {
             continue;
           }
           if (i != 1) {
@@ -103,9 +103,9 @@ public final class g
     label461:
     for (boolean bool = false;; bool = true)
     {
-      this.wFT = i;
-      this.dhJ = localObject1;
-      this.dhI = ((NetworkInfo)localObject3);
+      this.Bdu = i;
+      this.Bdt = localObject1;
+      this.dYZ = ((NetworkInfo)localObject3);
       break;
       WifiInfo localWifiInfo;
       int j;

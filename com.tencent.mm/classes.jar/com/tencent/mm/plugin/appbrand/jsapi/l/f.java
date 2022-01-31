@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.plugin.appbrand.jsapi.u;
+import com.tencent.mm.plugin.appbrand.page.v;
 
 public final class f
-  extends a<p>
+  extends u<v>
 {
-  public static final int CTRL_INDEX = 149;
-  public static final String NAME = "requestPaymentToBank";
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "initReady";
 }
 
 

@@ -4,13 +4,13 @@ import android.os.Looper;
 
 public abstract interface a
 {
-  public abstract void c(Runnable paramRunnable, long paramLong);
+  public abstract void d(Runnable paramRunnable, long paramLong);
   
-  public abstract void dD();
-  
-  public abstract void f(Runnable paramRunnable);
+  public abstract void dU();
   
   public abstract Looper getLooper();
+  
+  public abstract void post(Runnable paramRunnable);
 }
 
 

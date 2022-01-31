@@ -1,17 +1,21 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class LuckyMoneyDetailUI$14
-  implements MenuItem.OnMenuItemClickListener
+  implements DialogInterface.OnClickListener
 {
   LuckyMoneyDetailUI$14(LuckyMoneyDetailUI paramLuckyMoneyDetailUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.lVz.finish();
-    return true;
+    AppMethodBeat.i(42663);
+    ab.i("MicroMsg.LuckyMoneyDetailUI", "RealnameGuideHelper dialog click cancel");
+    LuckyMoneyDetailUI.E(this.otz);
+    AppMethodBeat.o(42663);
   }
 }
 

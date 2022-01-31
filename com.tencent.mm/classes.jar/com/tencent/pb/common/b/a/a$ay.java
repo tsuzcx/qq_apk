@@ -6,43 +6,43 @@ import com.google.a.a.e;
 public final class a$ay
   extends e
 {
-  public int pRI = 0;
-  public long pRJ = 0L;
-  public int wJq = 0;
+  public int BgQ = 0;
+  public int twP = 0;
+  public long twQ = 0L;
   
   public a$ay()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.pRI != 0) {
-      paramb.aL(1, this.pRI);
+    if (this.twP != 0) {
+      paramb.bj(1, this.twP);
     }
-    if (this.pRJ != 0L) {
-      paramb.i(2, this.pRJ);
+    if (this.twQ != 0L) {
+      paramb.n(2, this.twQ);
     }
-    if (this.wJq != 0) {
-      paramb.aM(3, this.wJq);
+    if (this.BgQ != 0) {
+      paramb.bk(3, this.BgQ);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
-    if (this.pRI != 0) {
-      i = j + b.aN(1, this.pRI);
+    if (this.twP != 0) {
+      i = j + b.bl(1, this.twP);
     }
     j = i;
-    if (this.pRJ != 0L) {
-      j = i + b.k(2, this.pRJ);
+    if (this.twQ != 0L) {
+      j = i + b.p(2, this.twQ);
     }
     i = j;
-    if (this.wJq != 0) {
-      i = j + b.aO(3, this.wJq);
+    if (this.BgQ != 0) {
+      i = j + b.bm(3, this.BgQ);
     }
     return i;
   }

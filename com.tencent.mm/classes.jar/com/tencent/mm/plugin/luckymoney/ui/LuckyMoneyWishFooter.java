@@ -8,22 +8,20 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.h;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.chat.d;
 import com.tencent.mm.pluginsdk.ui.chat.e;
 import com.tencent.mm.pluginsdk.ui.chat.e.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.BasePanelKeybordLayout;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMEditText;
@@ -34,200 +32,258 @@ import java.util.List;
 public class LuckyMoneyWishFooter
   extends BasePanelKeybordLayout
 {
-  private MMActivity bER;
-  private ChatFooterPanel jpC;
-  private ImageButton kEW;
-  private MMEditText lXN;
-  private Button lXO;
-  boolean lXP = false;
-  public boolean lXQ = false;
-  private boolean lXR = true;
-  boolean lXS = true;
-  private TextWatcher lXT = new LuckyMoneyWishFooter.1(this);
-  private LuckyMoneyWishFooter.a lXU;
-  private LuckyMoneyWishFooter.c lXV;
-  private int state = 0;
+  private MMActivity cmc;
+  private ChatFooterPanel eys;
+  private ImageButton kjv;
+  private MMEditText oxm;
+  private Button oxn;
+  boolean oxo;
+  public boolean oxp;
+  private boolean oxq;
+  boolean oxr;
+  private TextWatcher oxs;
+  private LuckyMoneyWishFooter.a oxt;
+  private LuckyMoneyWishFooter.c oxu;
+  private int state;
   
   public LuckyMoneyWishFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.bER = ((MMActivity)paramContext);
-    paramContext = (ViewGroup)inflate(this.bER, a.g.lucky_money_wish_footer, this);
-    this.lXO = ((Button)paramContext.findViewById(a.f.lucky_money_wish_send_btn));
-    ho(false);
-    this.kEW = ((ImageButton)paramContext.findViewById(a.f.lucky_money_wish_mode_iv));
-    this.kEW.setOnClickListener(new LuckyMoneyWishFooter.2(this));
-    this.lXN = ((MMEditText)paramContext.findViewById(a.f.lucky_money_wish_content_et));
-    this.lXN.setOnTouchListener(new LuckyMoneyWishFooter.3(this));
-    if (e.sgr == null)
+    AppMethodBeat.i(43055);
+    this.state = 0;
+    this.oxo = false;
+    this.oxp = false;
+    this.oxq = true;
+    this.oxr = true;
+    this.oxs = new LuckyMoneyWishFooter.3(this);
+    this.cmc = ((MMActivity)paramContext);
+    paramContext = (ViewGroup)inflate(this.cmc, 2130970048, this);
+    this.oxn = ((Button)paramContext.findViewById(2131825840));
+    jf(false);
+    this.kjv = ((ImageButton)paramContext.findViewById(2131825839));
+    this.kjv.setOnClickListener(new LuckyMoneyWishFooter.4(this));
+    this.oxm = ((MMEditText)paramContext.findViewById(2131825838));
+    this.oxm.setOnTouchListener(new LuckyMoneyWishFooter.5(this));
+    if (e.vYI == null)
     {
-      this.jpC = new d(this.bER);
+      this.eys = new d(this.cmc);
+      AppMethodBeat.o(43055);
       return;
     }
-    this.jpC = e.sgr.cX(getContext());
-    this.jpC.setEntranceScene(ChatFooterPanel.rZu);
-    this.jpC.setVisibility(8);
-    this.jpC.setBackgroundResource(a.e.bottombar_bg);
-    ((LinearLayout)findViewById(a.f.root)).addView(this.jpC, -1, 0);
-    this.jpC.sk();
-    this.jpC.aN(false);
-    this.jpC.setOnTextOperationListener(new LuckyMoneyWishFooter.4(this));
+    this.eys = e.vYI.dK(getContext());
+    this.eys.setEntranceScene(ChatFooterPanel.vQl);
+    this.eys.setVisibility(8);
+    this.eys.setBackgroundResource(2130838022);
+    ((LinearLayout)findViewById(2131821003)).addView(this.eys, -1, 0);
+    this.eys.Az();
+    this.eys.bo(false);
+    this.eys.onResume();
+    this.eys.setOnTextOperationListener(new LuckyMoneyWishFooter.6(this));
+    AppMethodBeat.o(43055);
   }
   
-  private void ash()
+  private void aRl()
   {
-    this.jpC.onResume();
-    this.jpC.setVisibility(0);
-    ViewGroup.LayoutParams localLayoutParams = this.jpC.getLayoutParams();
-    if (((localLayoutParams != null) && (localLayoutParams.height <= 0)) || ((localLayoutParams != null) && (j.fA(getContext())) && (this.lXR)))
+    AppMethodBeat.i(43058);
+    this.eys.onResume();
+    this.eys.postDelayed(new LuckyMoneyWishFooter.2(this), 200L);
+    ViewGroup.LayoutParams localLayoutParams = this.eys.getLayoutParams();
+    if (((localLayoutParams != null) && (localLayoutParams.height <= 0)) || ((localLayoutParams != null) && (j.gN(getContext())) && (this.oxq)))
     {
-      localLayoutParams.height = j.fy(getContext());
-      this.jpC.setLayoutParams(localLayoutParams);
-      this.lXR = false;
+      localLayoutParams.height = j.gL(getContext());
+      this.eys.setLayoutParams(localLayoutParams);
+      this.oxq = false;
     }
+    AppMethodBeat.o(43058);
   }
   
-  private void ho(boolean paramBoolean)
+  private void bOn()
   {
-    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), a.a.pop_in);
-    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), a.a.pop_out);
+    AppMethodBeat.i(43057);
+    if (this.state == 0)
+    {
+      this.oxm.requestFocus();
+      this.cmc.getWindow().setSoftInputMode(16);
+      this.cmc.showVKB();
+      this.eys.postDelayed(new LuckyMoneyWishFooter.1(this), 200L);
+      AppMethodBeat.o(43057);
+      return;
+    }
+    this.oxm.requestFocus();
+    this.cmc.getWindow().setSoftInputMode(32);
+    this.cmc.hideVKB();
+    aRl();
+    AppMethodBeat.o(43057);
+  }
+  
+  private void jf(boolean paramBoolean)
+  {
+    AppMethodBeat.i(43066);
+    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), 2131034217);
+    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), 2131034222);
     localAnimation1.setDuration(150L);
     localAnimation2.setDuration(150L);
-    if (this.lXO == null) {}
-    do
+    if (this.oxn == null)
     {
-      do
-      {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
-      } while ((this.lXO.getVisibility() == 8) || (this.lXO.getVisibility() == 4));
-      this.lXO.startAnimation(localAnimation2);
-      this.lXO.setVisibility(8);
+      AppMethodBeat.o(43066);
       return;
-    } while ((this.lXO.getVisibility() == 0) || (this.lXO.getVisibility() == 0));
-    this.lXO.startAnimation(localAnimation1);
-    this.lXO.setVisibility(0);
+    }
+    if (paramBoolean)
+    {
+      if ((this.oxn.getVisibility() == 8) || (this.oxn.getVisibility() == 4))
+      {
+        AppMethodBeat.o(43066);
+        return;
+      }
+      this.oxn.startAnimation(localAnimation2);
+      this.oxn.setVisibility(8);
+      AppMethodBeat.o(43066);
+      return;
+    }
+    if ((this.oxn.getVisibility() == 0) || (this.oxn.getVisibility() == 0))
+    {
+      AppMethodBeat.o(43066);
+      return;
+    }
+    this.oxn.startAnimation(localAnimation1);
+    this.oxn.setVisibility(0);
+    AppMethodBeat.o(43066);
   }
   
   public final boolean a(MMEditText.a parama)
   {
-    if (this.lXN != null)
+    AppMethodBeat.i(43060);
+    if (this.oxm != null)
     {
-      this.lXN.setBackListener(parama);
+      this.oxm.setBackListener(parama);
+      AppMethodBeat.o(43060);
       return true;
     }
+    AppMethodBeat.o(43060);
     return false;
   }
   
-  public final void bgu()
+  public final void bOo()
   {
-    if (this.jpC != null)
+    AppMethodBeat.i(43065);
+    if (this.eys != null)
     {
-      y.i("MicroMsg.SnsCommentFooter", "commentfooter release");
-      this.jpC.sj();
-      this.jpC.destroy();
+      ab.i("MicroMsg.SnsCommentFooter", "commentfooter release");
+      this.eys.Ay();
+      this.eys.destroy();
     }
+    AppMethodBeat.o(43065);
   }
   
-  protected List<View> getPanelView()
+  public List<View> getPanelView()
   {
+    AppMethodBeat.i(43067);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jpC);
+    localArrayList.add(this.eys);
+    AppMethodBeat.o(43067);
     return localArrayList;
   }
   
-  protected final void rD(int paramInt)
+  public final void sJ(int paramInt)
   {
-    super.rD(paramInt);
+    AppMethodBeat.i(43064);
+    super.sJ(paramInt);
     switch (paramInt)
     {
     default: 
-      this.lXQ = false;
+      this.oxp = false;
+      AppMethodBeat.o(43064);
       return;
     }
-    this.lXQ = true;
+    this.oxp = true;
+    AppMethodBeat.o(43064);
   }
   
   public void setHint(String paramString)
   {
-    this.lXN.setHint(paramString);
+    AppMethodBeat.i(43062);
+    this.oxm.setHint(paramString);
+    AppMethodBeat.o(43062);
   }
   
   public void setMaxLength(int paramInt)
   {
-    this.lXN.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
+    AppMethodBeat.i(43059);
+    this.oxm.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
+    AppMethodBeat.o(43059);
   }
   
   public void setModeClick(boolean paramBoolean)
   {
-    this.lXP = paramBoolean;
+    this.oxo = paramBoolean;
   }
   
   public void setOnEditTouchListener(LuckyMoneyWishFooter.a parama)
   {
-    this.lXU = parama;
+    this.oxt = parama;
   }
   
   public void setOnSmileyShowListener(LuckyMoneyWishFooter.c paramc)
   {
-    this.lXV = paramc;
+    this.oxu = paramc;
   }
   
   public void setOnWishSendImp(LuckyMoneyWishFooter.b paramb)
   {
-    this.lXO.setOnClickListener(new LuckyMoneyWishFooter.5(this, paramb));
+    AppMethodBeat.i(43063);
+    this.oxn.setOnClickListener(new LuckyMoneyWishFooter.7(this, paramb));
+    AppMethodBeat.o(43063);
   }
   
   public void setText(String paramString)
   {
-    if (this.lXN != null)
+    AppMethodBeat.i(43061);
+    if (this.oxm != null)
     {
-      this.lXN.setText("");
-      this.lXN.aex(paramString);
+      this.oxm.setText("");
+      this.oxm.avk(paramString);
     }
+    AppMethodBeat.o(43061);
   }
   
   public void setVisibility(int paramInt)
   {
+    AppMethodBeat.i(43056);
     this.state = 0;
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (paramInt == 0)
     {
-      if (this.jpC != null)
+      bool = true;
+      if (this.eys != null)
       {
-        y.i("MicroMsg.SnsCommentFooter", "showState " + bool);
+        ab.i("MicroMsg.SnsCommentFooter", "showState ".concat(String.valueOf(bool)));
         if (bool) {
-          break;
+          break label118;
         }
-        this.jpC.setVisibility(8);
-        this.kEW.setImageResource(a.h.textfield_icon_emoji_normal);
-        this.bER.XM();
+        ab.d("MicroMsg.SnsCommentFooter", bo.dtY());
+        this.eys.setVisibility(8);
+        this.kjv.setImageResource(2131231506);
+        this.cmc.hideVKB();
+        setModeClick(true);
         requestLayout();
       }
-      super.setVisibility(paramInt);
-      return;
-    }
-    if (this.state == 0)
-    {
-      this.bER.showVKB();
-      this.lXN.requestFocus();
-      this.jpC.setVisibility(8);
     }
     for (;;)
     {
-      this.lXR = false;
+      super.setVisibility(paramInt);
+      AppMethodBeat.o(43056);
+      return;
+      bool = false;
       break;
-      this.bER.XM();
-      this.lXN.requestFocus();
-      ash();
+      label118:
+      bOn();
+      this.oxq = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyWishFooter
  * JD-Core Version:    0.7.0.1
  */

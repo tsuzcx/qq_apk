@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class o$a$2$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class o$a$2$1
   
   public final void run()
   {
-    o.a.a(this.oGM.oGJ, this.oGM.oGI);
+    AppMethodBeat.i(37167);
+    o.a.a(this.rwB.rwy, this.rwB.rwx);
+    AppMethodBeat.o(37167);
   }
 }
 

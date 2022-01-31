@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget;
 
 public abstract interface DrawnCallBackLinearLayout$a
 {
-  public abstract void cVv();
+  public abstract void dJg();
 }
 
 

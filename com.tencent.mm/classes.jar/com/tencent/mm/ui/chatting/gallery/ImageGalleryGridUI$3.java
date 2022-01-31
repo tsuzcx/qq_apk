@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import android.widget.GridView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ImageGalleryGridUI$3
   implements Runnable
@@ -9,9 +10,11 @@ final class ImageGalleryGridUI$3
   
   public final void run()
   {
-    if ((ImageGalleryGridUI.a(this.vuT) != null) && (ImageGalleryGridUI.a(this.vuT).getVisibility() != 0)) {
-      ImageGalleryGridUI.a(this.vuT).setVisibility(0);
+    AppMethodBeat.i(32036);
+    if ((ImageGalleryGridUI.a(this.zKU) != null) && (ImageGalleryGridUI.a(this.zKU).getVisibility() != 0)) {
+      ImageGalleryGridUI.a(this.zKU).setVisibility(0);
     }
+    AppMethodBeat.o(32036);
   }
 }
 

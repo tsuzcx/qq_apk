@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Comparator;
 
 class DataRangeTracker$1
@@ -9,7 +10,10 @@ class DataRangeTracker$1
   
   public int compare(DataRangeTracker.Range paramRange1, DataRangeTracker.Range paramRange2)
   {
-    return (int)(DataRangeTracker.Range.access$200(paramRange1) - DataRangeTracker.Range.access$200(paramRange2));
+    AppMethodBeat.i(104779);
+    int i = (int)(DataRangeTracker.Range.access$200(paramRange1) - DataRangeTracker.Range.access$200(paramRange2));
+    AppMethodBeat.o(104779);
+    return i;
   }
 }
 

@@ -3,39 +3,38 @@ package com.google.android.gms.wearable;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.data.DataHolder;
-import com.google.android.gms.common.data.zzf;
-import com.google.android.gms.wearable.internal.zzaq;
+import com.google.android.gms.common.data.EntityBuffer;
+import com.google.android.gms.common.util.VisibleForTesting;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@VisibleForTesting
 public class DataItemBuffer
-  extends zzf<DataItem>
+  extends EntityBuffer<DataItem>
   implements Result
 {
-  private final Status zzair;
+  private final Status zzp;
   
   public DataItemBuffer(DataHolder paramDataHolder)
   {
     super(paramDataHolder);
-    this.zzair = new Status(paramDataHolder.getStatusCode());
+    AppMethodBeat.i(70801);
+    this.zzp = new Status(paramDataHolder.getStatusCode());
+    AppMethodBeat.o(70801);
+  }
+  
+  public String getPrimaryDataMarkerColumn()
+  {
+    return "path";
   }
   
   public Status getStatus()
   {
-    return this.zzair;
-  }
-  
-  protected DataItem zzD(int paramInt1, int paramInt2)
-  {
-    return new zzaq(this.zzaBi, paramInt1, paramInt2);
-  }
-  
-  protected String zzxn()
-  {
-    return "path";
+    return this.zzp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.gms.wearable.DataItemBuffer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,37 @@
 package com.tencent.mm.plugin.scanner;
 
-import com.tencent.mm.model.ar;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
+import com.tencent.mm.pluginsdk.b.b;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements com.tencent.mm.pluginsdk.b.c
 {
-  public n createApplication()
+  public o createApplication()
   {
-    return new b();
+    AppMethodBeat.i(80772);
+    c localc = new c();
+    AppMethodBeat.o(80772);
+    return localc;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new c();
+    AppMethodBeat.i(80773);
+    e locale = new e();
+    AppMethodBeat.o(80773);
+    return locale;
   }
   
-  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public b getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.Plugin
  * JD-Core Version:    0.7.0.1
  */

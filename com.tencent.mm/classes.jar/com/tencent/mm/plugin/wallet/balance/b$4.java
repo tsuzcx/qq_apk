@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.wallet.balance;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet.pay.a.d.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet.pay.a.d.f;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.p;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.c;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
-import com.tencent.mm.wallet_core.tenpay.model.k;
+import com.tencent.mm.wallet_core.tenpay.model.n;
 
 final class b$4
   extends g
@@ -21,52 +22,59 @@ final class b$4
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(45205);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramm instanceof e))
+      if ((paramm instanceof f))
       {
-        paramString = (e)paramm;
-        if (paramString.qno) {
-          b.r(this.qfj).putParcelable("key_orders", paramString.qmc);
+        paramString = (f)paramm;
+        if (paramString.isPaySuccess) {
+          b.s(this.tLW).putParcelable("key_orders", paramString.tVr);
         }
-        a.j(this.gfb, b.s(this.qfj));
+        a.j(this.hwZ, b.t(this.tLW));
+        AppMethodBeat.o(45205);
         return true;
       }
       if ((paramm instanceof com.tencent.mm.plugin.wallet.pay.a.a.b))
       {
         paramString = (com.tencent.mm.plugin.wallet.pay.a.a.b)paramm;
-        paramm = paramString.mKP;
+        paramm = paramString.plg;
         if (paramm != null) {
-          b.t(this.qfj).putParcelable("key_realname_guide_helper", paramm);
+          b.u(this.tLW).putParcelable("key_realname_guide_helper", paramm);
         }
-        b.u(this.qfj).putString("kreq_token", paramString.token);
+        b.v(this.tLW).putString("kreq_token", paramString.getToken());
+        AppMethodBeat.o(45205);
         return true;
       }
     }
+    AppMethodBeat.o(45205);
     return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
-    paramVarArgs = (p)paramVarArgs[1];
-    if ((paramVarArgs != null) && (paramVarArgs.nqa != null)) {
-      paramVarArgs.nqa.bUV = 21;
+    AppMethodBeat.i(45206);
+    paramVarArgs = (u)paramVarArgs[1];
+    if ((paramVarArgs != null) && (paramVarArgs.pVo != null)) {
+      paramVarArgs.pVo.cCD = 21;
     }
-    Orders localOrders = (Orders)b.v(this.qfj).getParcelable("key_orders");
-    switch (this.qfj.kke.getInt("key_pay_flag", 0))
+    Orders localOrders = (Orders)b.w(this.tLW).getParcelable("key_orders");
+    switch (this.tLW.mEJ.getInt("key_pay_flag", 0))
     {
     default: 
+      AppMethodBeat.o(45206);
       return false;
     case 1: 
       paramVarArgs.flag = "1";
     }
     for (;;)
     {
-      this.wBd.a(new e(paramVarArgs, localOrders), true, 1);
+      this.AXB.a(new f(paramVarArgs, localOrders), true, 1);
+      AppMethodBeat.o(45206);
       return true;
-      if (!this.qfj.bXd())
+      if (!this.tLW.cWe())
       {
         paramVarArgs.flag = "2";
       }
@@ -74,7 +82,7 @@ final class b$4
       {
         paramVarArgs.flag = "5";
         continue;
-        if (!this.qfj.bXd()) {
+        if (!this.tLW.cWe()) {
           paramVarArgs.flag = "3";
         } else {
           paramVarArgs.flag = "6";
@@ -83,11 +91,13 @@ final class b$4
     }
   }
   
-  public final boolean t(Object... paramVarArgs)
+  public final boolean y(Object... paramVarArgs)
   {
-    paramVarArgs = (Orders)b.w(this.qfj).getParcelable("key_orders");
-    Authen localAuthen = (Authen)b.x(this.qfj).getParcelable("key_authen");
-    this.wBd.a(new com.tencent.mm.plugin.wallet.pay.a.a.b(localAuthen, paramVarArgs), true, 1);
+    AppMethodBeat.i(45207);
+    paramVarArgs = (Orders)b.x(this.tLW).getParcelable("key_orders");
+    Authen localAuthen = (Authen)b.y(this.tLW).getParcelable("key_authen");
+    this.AXB.a(new com.tencent.mm.plugin.wallet.pay.a.a.b(localAuthen, paramVarArgs), true, 1);
+    AppMethodBeat.o(45207);
     return true;
   }
 }

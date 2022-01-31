@@ -2,6 +2,7 @@ package com.tencent.mm.ui.chatting.gallery;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MediaHistoryGalleryUI$5
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class MediaHistoryGalleryUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.vxK.aRP();
+    AppMethodBeat.i(32413);
+    this.zNW.byi();
+    AppMethodBeat.o(32413);
     return true;
   }
 }

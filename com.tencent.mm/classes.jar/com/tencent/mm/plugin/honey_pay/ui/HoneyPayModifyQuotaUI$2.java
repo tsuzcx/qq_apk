@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.honey_pay.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class HoneyPayModifyQuotaUI$2
   implements View.OnClickListener
@@ -10,11 +11,13 @@ final class HoneyPayModifyQuotaUI$2
   
   public final void onClick(View paramView)
   {
-    if (HoneyPayModifyQuotaUI.a(this.llR))
+    AppMethodBeat.i(41914);
+    if (HoneyPayModifyQuotaUI.a(this.nJn))
     {
-      HoneyPayModifyQuotaUI.b(this.llR);
-      this.llR.VH();
+      HoneyPayModifyQuotaUI.b(this.nJn);
+      this.nJn.hideTenpayKB();
     }
+    AppMethodBeat.o(41914);
   }
 }
 

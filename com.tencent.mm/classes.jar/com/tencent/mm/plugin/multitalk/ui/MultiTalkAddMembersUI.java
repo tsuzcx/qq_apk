@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.multitalk.ui;
 
-import com.tencent.mm.plugin.multitalk.a.b;
+import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multitalk.ui.widget.b;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
@@ -8,16 +9,26 @@ import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 public class MultiTalkAddMembersUI
   extends MultiTalkSelectContactUI
 {
-  protected final void initView()
+  public void initView()
   {
+    AppMethodBeat.i(54117);
     super.initView();
-    this.mbR.setBackgroundResource(a.b.default_bg_color);
-    this.mbR.setPadding(b.mvw, b.mvw, b.mvw, 0);
+    this.oCs.setBackgroundResource(2131689926);
+    MultiSelectContactView localMultiSelectContactView = this.oCs;
+    int i = b.oVo;
+    localMultiSelectContactView.setPadding(i, i, b.oVo, 0);
+    AppMethodBeat.o(54117);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.MultiTalkAddMembersUI
  * JD-Core Version:    0.7.0.1
  */

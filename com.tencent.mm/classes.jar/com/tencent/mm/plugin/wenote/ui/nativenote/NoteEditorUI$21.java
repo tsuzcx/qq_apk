@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.wenote.ui.nativenote;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NoteEditorUI$21
   implements Runnable
@@ -13,41 +12,46 @@ final class NoteEditorUI$21
   
   public final void run()
   {
-    ImageButton localImageButton = (ImageButton)NoteEditorUI.P(this.rLT).findViewById(R.h.wenote_h5_footer_words_style);
-    View localView = NoteEditorUI.P(this.rLT).findViewById(R.h.wenote_h5_footer_words_style_underline);
-    switch (this.Dj)
+    AppMethodBeat.i(27017);
+    ImageButton localImageButton = (ImageButton)NoteEditorUI.P(this.vCx).findViewById(2131826567);
+    View localView = NoteEditorUI.P(this.vCx).findViewById(2131826568);
+    switch (this.DS)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(27017);
       return;
-    case 0: 
-      NoteEditorUI.af(this.rLT).setVisibility(8);
-      if (!NoteEditorUI.f(this.rLT).rMu)
+      NoteEditorUI.af(this.vCx).setVisibility(8);
+      if (!NoteEditorUI.f(this.vCx).vCY)
       {
-        NoteEditorUI.P(this.rLT).setVisibility(8);
+        NoteEditorUI.P(this.vCx).setVisibility(8);
+        AppMethodBeat.o(27017);
         return;
       }
-      NoteEditorUI.P(this.rLT).setVisibility(0);
+      NoteEditorUI.P(this.vCx).setVisibility(0);
+      AppMethodBeat.o(27017);
       return;
-    case 1: 
-      localImageButton.setImageResource(R.k.note_style_unpress);
+      localImageButton.setImageResource(2131231782);
       localView.setVisibility(8);
-      NoteEditorUI.P(this.rLT).setVisibility(0);
-      NoteEditorUI.af(this.rLT).setVisibility(8);
+      NoteEditorUI.P(this.vCx).setVisibility(0);
+      NoteEditorUI.af(this.vCx).setVisibility(8);
+      AppMethodBeat.o(27017);
       return;
-    case 2: 
-      NoteEditorUI.P(this.rLT).setVisibility(0);
-      NoteEditorUI.af(this.rLT).setVisibility(8);
+      NoteEditorUI.P(this.vCx).setVisibility(0);
+      NoteEditorUI.af(this.vCx).setVisibility(8);
+      AppMethodBeat.o(27017);
       return;
+      localImageButton.setImageResource(2131231781);
+      localView.setVisibility(0);
+      NoteEditorUI.P(this.vCx).setVisibility(0);
+      NoteEditorUI.af(this.vCx).setVisibility(0);
     }
-    localImageButton.setImageResource(R.k.note_style_press);
-    localView.setVisibility(0);
-    NoteEditorUI.P(this.rLT).setVisibility(0);
-    NoteEditorUI.af(this.rLT).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI.21
  * JD-Core Version:    0.7.0.1
  */

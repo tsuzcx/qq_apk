@@ -1,5 +1,6 @@
 package com.google.android.exoplayer2.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
@@ -7,26 +8,27 @@ import java.util.Arrays;
 final class g
   implements d
 {
-  private int auC = -1;
-  private int axB = -1;
-  int[] axC;
-  private boolean axD;
-  private int[] axE;
-  private boolean axF;
-  private ByteBuffer axd = avY;
-  private ByteBuffer buffer = avY;
+  private boolean active;
+  private int awU = -1;
+  private int azR = -1;
+  int[] azS;
+  private int[] azT;
+  private boolean azU;
+  private ByteBuffer azt = ayo;
+  private ByteBuffer buffer = ayo;
   
   public final void c(ByteBuffer paramByteBuffer)
   {
+    AppMethodBeat.i(94692);
     int i = paramByteBuffer.position();
     int k = paramByteBuffer.limit();
-    int j = (k - i) / (this.auC * 2) * this.axE.length * 2;
+    int j = (k - i) / (this.awU * 2) * this.azT.length * 2;
     if (this.buffer.capacity() < j) {
       this.buffer = ByteBuffer.allocateDirect(j).order(ByteOrder.nativeOrder());
     }
     while (i < k)
     {
-      int[] arrayOfInt = this.axE;
+      int[] arrayOfInt = this.azT;
       int m = arrayOfInt.length;
       j = 0;
       for (;;)
@@ -41,109 +43,118 @@ final class g
           break;
         }
       }
-      i += this.auC * 2;
+      i += this.awU * 2;
     }
     paramByteBuffer.position(k);
     this.buffer.flip();
-    this.axd = this.buffer;
+    this.azt = this.buffer;
+    AppMethodBeat.o(94692);
   }
   
   public final void flush()
   {
-    this.axd = avY;
-    this.axF = false;
+    this.azt = ayo;
+    this.azU = false;
   }
   
   public final boolean isActive()
   {
-    return this.axD;
+    return this.active;
   }
   
-  public final boolean kU()
+  public final boolean nd()
   {
-    return (this.axF) && (this.axd == avY);
+    return (this.azU) && (this.azt == ayo);
   }
   
-  public final int kZ()
+  public final int ni()
   {
-    if (this.axE == null) {
-      return this.auC;
+    if (this.azT == null) {
+      return this.awU;
     }
-    return this.axE.length;
+    return this.azT.length;
   }
   
-  public final int la()
+  public final void nj()
   {
-    return 2;
+    this.azU = true;
   }
   
-  public final void lb()
+  public final ByteBuffer nk()
   {
-    this.axF = true;
-  }
-  
-  public final ByteBuffer lc()
-  {
-    ByteBuffer localByteBuffer = this.axd;
-    this.axd = avY;
+    ByteBuffer localByteBuffer = this.azt;
+    this.azt = ayo;
     return localByteBuffer;
   }
   
   public final boolean q(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!Arrays.equals(this.axC, this.axE)) {}
+    AppMethodBeat.i(94691);
+    if (!Arrays.equals(this.azS, this.azT)) {}
     for (int k = 1;; k = 0)
     {
-      this.axE = this.axC;
-      if (this.axE != null) {
+      this.azT = this.azS;
+      if (this.azT != null) {
         break;
       }
-      this.axD = false;
+      this.active = false;
+      AppMethodBeat.o(94691);
       return k;
     }
-    if (paramInt3 != 2) {
-      throw new d.a(paramInt1, paramInt2, paramInt3);
+    d.a locala;
+    if (paramInt3 != 2)
+    {
+      locala = new d.a(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(94691);
+      throw locala;
     }
-    if ((k == 0) && (this.axB == paramInt1) && (this.auC == paramInt2)) {
+    if ((k == 0) && (this.azR == paramInt1) && (this.awU == paramInt2))
+    {
+      AppMethodBeat.o(94691);
       return false;
     }
-    this.axB = paramInt1;
-    this.auC = paramInt2;
-    if (paramInt2 != this.axE.length) {}
+    this.azR = paramInt1;
+    this.awU = paramInt2;
+    if (paramInt2 != this.azT.length) {}
     int i;
     for (k = 1;; k = 0)
     {
-      this.axD = k;
+      this.active = k;
       i = 0;
-      if (i >= this.axE.length) {
-        break label198;
+      if (i >= this.azT.length) {
+        break label231;
       }
-      j = this.axE[i];
+      j = this.azT[i];
       if (j < paramInt2) {
         break;
       }
-      throw new d.a(paramInt1, paramInt2, paramInt3);
+      locala = new d.a(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(94691);
+      throw locala;
     }
-    k = this.axD;
+    k = this.active;
     if (j != i) {}
     for (int j = 1;; j = 0)
     {
-      this.axD = (j | k);
+      this.active = (j | k);
       i += 1;
       break;
     }
-    label198:
+    label231:
+    AppMethodBeat.o(94691);
     return true;
   }
   
   public final void reset()
   {
+    AppMethodBeat.i(94693);
     flush();
-    this.buffer = avY;
-    this.auC = -1;
-    this.axB = -1;
-    this.axE = null;
-    this.axD = false;
+    this.buffer = ayo;
+    this.awU = -1;
+    this.azR = -1;
+    this.azT = null;
+    this.active = false;
+    AppMethodBeat.o(94693);
   }
 }
 

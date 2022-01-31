@@ -17,7 +17,7 @@ public final class f
   private final int height = 96;
   private final int width = 96;
   
-  protected final int b(int paramInt, Object... paramVarArgs)
+  public final int a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
@@ -29,12 +29,12 @@ public final class f
       return 96;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject1 = c.f(paramVarArgs);
-      Object localObject3 = c.e(paramVarArgs);
-      Object localObject2 = c.i(paramVarArgs);
+      Object localObject1 = c.h(paramVarArgs);
+      Object localObject3 = c.g(paramVarArgs);
+      Object localObject2 = c.k(paramVarArgs);
       ((Paint)localObject2).setFlags(385);
       ((Paint)localObject2).setStyle(Paint.Style.FILL);
-      Paint localPaint = c.i(paramVarArgs);
+      Paint localPaint = c.k(paramVarArgs);
       localPaint.setFlags(385);
       localPaint.setStyle(Paint.Style.STROKE);
       ((Paint)localObject2).setColor(-16777216);
@@ -53,7 +53,7 @@ public final class f
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
       localObject1 = c.a((Paint)localObject2, paramVarArgs);
-      localObject3 = c.j(paramVarArgs);
+      localObject3 = c.l(paramVarArgs);
       ((Path)localObject3).moveTo(0.9975446F, 38.0F);
       ((Path)localObject3).cubicTo(0.446616F, 38.0F, 0.0F, 38.446312F, 0.0F, 38.997543F);
       ((Path)localObject3).lineTo(0.0F, 46.002457F);
@@ -125,7 +125,7 @@ public final class f
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a((Paint)localObject2, paramVarArgs);
-      localObject2 = c.j(paramVarArgs);
+      localObject2 = c.l(paramVarArgs);
       ((Path)localObject2).moveTo(0.9975446F, 38.0F);
       ((Path)localObject2).cubicTo(0.446616F, 38.0F, 0.0F, 38.446312F, 0.0F, 38.997543F);
       ((Path)localObject2).lineTo(0.0F, 46.002457F);
@@ -196,7 +196,7 @@ public final class f
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
       localCanvas.restore();
       localCanvas.restore();
-      c.h(paramVarArgs);
+      c.j(paramVarArgs);
     }
   }
 }

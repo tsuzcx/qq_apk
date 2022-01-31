@@ -1,58 +1,66 @@
 package com.tencent.mm.plugin.brandservice.b;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.avc;
-import com.tencent.mm.protocal.c.avf;
-import com.tencent.mm.protocal.c.avg;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bbm;
+import com.tencent.mm.protocal.protobuf.bbp;
+import com.tencent.mm.protocal.protobuf.bbq;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 public final class k
   extends m
   implements com.tencent.mm.network.k
 {
-  public b dmK;
-  private f dmL;
+  private f callback;
+  public b rr;
   
-  public k(String paramString, LinkedList<avc> paramLinkedList)
+  public k(String paramString, LinkedList<bbm> paramLinkedList)
   {
+    AppMethodBeat.i(13855);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new avf();
-    ((b.a)localObject).ecI = new avg();
+    ((b.a)localObject).fsX = new bbp();
+    ((b.a)localObject).fsY = new bbq();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/setrecvtmpmsgoption";
-    ((b.a)localObject).ecG = 1030;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (avf)this.dmK.ecE.ecN;
-    ((avf)localObject).tlP = paramString;
-    ((avf)localObject).tqK = paramLinkedList;
+    ((b.a)localObject).funcId = 1030;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (bbp)this.rr.fsV.fta;
+    ((bbp)localObject).xli = paramString;
+    ((bbp)localObject).xqK = paramLinkedList;
+    AppMethodBeat.o(13855);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    y.i("MicroMsg.brandservice.NetSceneSetRecvTmpMsgOption", "do scene");
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.brandservice.NetSceneSetRecvTmpMsgOption", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
+    AppMethodBeat.i(13857);
+    this.callback = paramf;
+    ab.i("MicroMsg.brandservice.NetSceneSetRecvTmpMsgOption", "do scene");
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(13857);
+    return i;
   }
   
   public final int getType()
   {
     return 1030;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(13856);
+    ab.d("MicroMsg.brandservice.NetSceneSetRecvTmpMsgOption", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(13856);
   }
 }
 

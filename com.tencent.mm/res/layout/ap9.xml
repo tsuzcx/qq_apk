@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/qm"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="@dimen/lc" android:layout_height="@dimen/lc" android:layout_marginTop="@dimen/kl" android:layout_marginBottom="@dimen/mq">
-        <ImageView android:id="@id/dxq" android:layout_width="@dimen/lc" android:layout_height="@dimen/lc" android:scaleType="fitXY" />
-        <ImageView android:id="@id/dxr" android:background="@color/p7" android:layout_width="@dimen/lc" android:layout_height="@dimen/lc" android:scaleType="fitXY" />
-        <ImageView android:id="@id/dxs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/atr" android:scaleType="fitXY" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <TextView android:textSize="@dimen/my" android:textColor="@color/ta" android:ellipsize="end" android:gravity="center" android:id="@id/bwm" android:layout_width="76.0dip" android:layout_height="wrap_content" android:singleLine="true" />
-    <TextView android:textSize="@dimen/my" android:textColor="@color/ta" android:ellipsize="end" android:gravity="center" android:id="@id/dxt" android:layout_width="76.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mq" android:layout_marginBottom="@dimen/mq" android:singleLine="true" />
+    <ImageView style="@style/qn" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/ap8" />
+        <ImageView android:id="@id/e2b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/fav_list_img_default" android:scaleType="centerInside" android:adjustViewBounds="true" android:maxWidth="260.0dip" style="@style/iv" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/qq" />
+    </LinearLayout>
+    <ProgressBar android:id="@id/e2c" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:attr/progressBarStyleHorizontal" />
 </LinearLayout>

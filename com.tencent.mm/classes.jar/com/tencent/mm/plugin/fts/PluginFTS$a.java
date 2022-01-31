@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.a;
 import com.tencent.mm.plugin.fts.a.b.b;
 import com.tencent.mm.plugin.fts.a.h;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.File;
 import java.util.HashMap;
 
@@ -13,32 +14,36 @@ final class PluginFTS$a
 {
   private PluginFTS$a(PluginFTS paramPluginFTS) {}
   
-  public final String afJ()
+  public final String aAn()
   {
-    return String.format("{T2S: %d PY: %d}", new Object[] { Integer.valueOf(com.tencent.mm.plugin.fts.a.g.eSa.size()), Integer.valueOf(com.tencent.mm.plugin.fts.a.g.kvX.size()) });
+    AppMethodBeat.i(136598);
+    String str = String.format("{T2S: %d PY: %d}", new Object[] { Integer.valueOf(com.tencent.mm.plugin.fts.a.g.gjV.size()), Integer.valueOf(com.tencent.mm.plugin.fts.a.g.mRL.size()) });
+    AppMethodBeat.o(136598);
+    return str;
   }
   
   public final boolean execute()
   {
-    DW("start");
+    AppMethodBeat.i(136597);
+    Pg("start");
     try
     {
-      String[] arrayOfString1 = new String(com.tencent.mm.vfs.e.c("assets:///fts_t2s.txt", 0, -1)).split("\n");
+      String[] arrayOfString1 = new String(com.tencent.mm.vfs.e.i("assets:///fts_t2s.txt", 0, -1)).split("\n");
       int j = arrayOfString1.length;
       int i = 0;
       String[] arrayOfString3;
       while (i < j)
       {
         arrayOfString3 = arrayOfString1[i].split(",");
-        com.tencent.mm.plugin.fts.a.g.eSa.put(arrayOfString3[0], arrayOfString3[1]);
+        com.tencent.mm.plugin.fts.a.g.gjV.put(arrayOfString3[0], arrayOfString3[1]);
         i += 1;
       }
       try
       {
-        arrayOfString2 = new String(com.tencent.mm.vfs.e.c("assets:///fts_py.txt", 0, -1)).split("\n");
+        arrayOfString2 = new String(com.tencent.mm.vfs.e.i("assets:///fts_py.txt", 0, -1)).split("\n");
         i = 0;
         if (i >= arrayOfString2.length) {
-          break label257;
+          break label262;
         }
         arrayOfString5 = arrayOfString2[i].split(",");
         arrayOfString3 = arrayOfString5[0];
@@ -49,25 +54,26 @@ final class PluginFTS$a
       {
         for (;;)
         {
-          y.printErrStackTrace("MicroMsg.FTS.PluginFTS", localException2, localException2.getMessage(), new Object[0]);
-          DW("py");
-          com.tencent.mm.plugin.fts.a.e.kvw.kvy = (d.aVq().length() / 1048576L);
-          com.tencent.mm.plugin.fts.a.e.kvw.kvz = PluginFTS.access$200(this.kuy).z(-301L, 0L);
-          com.tencent.mm.plugin.fts.a.e.kvw.kvA = PluginFTS.access$200(this.kuy).z(-302L, 0L);
-          com.tencent.mm.plugin.fts.a.e.kvw.kvC = PluginFTS.access$200(this.kuy).z(-303L, 0L);
-          com.tencent.mm.plugin.fts.a.e.kvw.kvB = PluginFTS.access$200(this.kuy).z(-304L, 0L);
-          long l1 = ((n)com.tencent.mm.kernel.g.t(n.class)).getFTSIndexDB().z(-300L, 0L);
+          ab.printErrStackTrace("MicroMsg.FTS.PluginFTS", localException2, localException2.getMessage(), new Object[0]);
+          Pg("py");
+          com.tencent.mm.plugin.fts.a.e.mRj.mRm = (d.bBP().length() / 1048576L);
+          com.tencent.mm.plugin.fts.a.e.mRj.mRn = PluginFTS.access$100(this.mQm).L(-301L, 0L);
+          com.tencent.mm.plugin.fts.a.e.mRj.mRo = PluginFTS.access$100(this.mQm).L(-302L, 0L);
+          com.tencent.mm.plugin.fts.a.e.mRj.mRq = PluginFTS.access$100(this.mQm).L(-303L, 0L);
+          com.tencent.mm.plugin.fts.a.e.mRj.mRp = PluginFTS.access$100(this.mQm).L(-304L, 0L);
+          long l1 = ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexDB().L(-300L, 0L);
           long l2 = System.currentTimeMillis();
-          if (!com.tencent.mm.plugin.fts.a.d.B(l1, l2))
+          if (!com.tencent.mm.plugin.fts.a.d.N(l1, l2))
           {
-            com.tencent.mm.plugin.fts.a.e.aVx();
-            ((n)com.tencent.mm.kernel.g.t(n.class)).getFTSIndexDB().A(-300L, l2);
+            com.tencent.mm.plugin.fts.a.e.bBV();
+            ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexDB().M(-300L, l2);
           }
           for (;;)
           {
-            DW("reportData");
+            Pg("reportData");
+            AppMethodBeat.o(136597);
             return true;
-            y.i("MicroMsg.FTS.PluginFTS", "not need to report fts data");
+            ab.i("MicroMsg.FTS.PluginFTS", "not need to report fts data");
           }
           j += 1;
         }
@@ -75,8 +81,8 @@ final class PluginFTS$a
     }
     catch (Exception localException1)
     {
-      y.printErrStackTrace("MicroMsg.FTS.PluginFTS", localException1, localException1.getMessage(), new Object[0]);
-      DW("t2s");
+      ab.printErrStackTrace("MicroMsg.FTS.PluginFTS", localException1, localException1.getMessage(), new Object[0]);
+      Pg("t2s");
     }
     for (;;)
     {
@@ -98,10 +104,10 @@ final class PluginFTS$a
         while (j < k)
         {
           arrayOfString5 = arrayOfString4[j];
-          com.tencent.mm.plugin.fts.a.g.kvW.DY(arrayOfString5);
+          com.tencent.mm.plugin.fts.a.g.mRK.Pi(arrayOfString5);
           j += 1;
         }
-        com.tencent.mm.plugin.fts.a.g.kvX.put(arrayOfString3, arrayOfString4);
+        com.tencent.mm.plugin.fts.a.g.mRL.put(arrayOfString3, arrayOfString4);
       }
       i += 1;
     }
@@ -114,7 +120,7 @@ final class PluginFTS$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.PluginFTS.a
  * JD-Core Version:    0.7.0.1
  */

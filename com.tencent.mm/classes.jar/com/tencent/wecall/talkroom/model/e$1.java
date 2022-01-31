@@ -1,6 +1,7 @@
 package com.tencent.wecall.talkroom.model;
 
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.am;
 import com.tencent.pb.common.c.d;
 import com.tencent.pb.common.c.g;
@@ -12,123 +13,173 @@ final class e$1
 {
   e$1(e parame) {}
   
-  public final void Kw(int paramInt)
+  public final void H(String paramString, byte[] paramArrayOfByte)
   {
+    int i = 0;
+    AppMethodBeat.i(127835);
+    if (paramArrayOfByte == null) {}
+    for (;;)
+    {
+      com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onRcvMultiTalkMsg groupId: ", paramString, " datas size: ", Integer.valueOf(i) });
+      if (e.a(this.BAl) != null) {
+        e.a(this.BAl);
+      }
+      AppMethodBeat.o(127835);
+      return;
+      i = paramArrayOfByte.length;
+    }
+  }
+  
+  public final void Tp(int paramInt)
+  {
+    AppMethodBeat.i(127820);
     com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onOpeningChannel", Integer.valueOf(paramInt) });
+    AppMethodBeat.o(127820);
   }
   
-  public final void Kx(int paramInt)
+  public final void Tq(int paramInt)
   {
+    AppMethodBeat.i(127836);
     com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onSwitchMultiTalkVideoSuss bitRate: ", Integer.valueOf(paramInt) });
-    if (e.a(this.xdD) != null) {
-      e.a(this.xdD).bln();
+    if (e.a(this.BAl) != null) {
+      e.a(this.BAl).bTm();
     }
-  }
-  
-  public final void RM()
-  {
-    com.tencent.pb.common.c.c.x("TalkRoomSdkApi", new Object[] { "onInitSeccess" });
-    if (com.tencent.pb.common.a.a.wEZ) {
-      Toast.makeText(d.pZI, "onInitSeccess ", 0).show();
-    }
-    if (e.a(this.xdD) != null) {
-      e.a(this.xdD).blm();
-    }
+    AppMethodBeat.o(127836);
   }
   
   public final void a(int paramInt, MultiTalkGroup paramMultiTalkGroup)
   {
-    com.tencent.pb.common.c.c.x("TalkRoomSdkApi", new Object[] { "onMisscMultiTalk", paramMultiTalkGroup, " time: ", Integer.valueOf(paramInt) });
-    if (e.a(this.xdD) != null)
+    AppMethodBeat.i(127832);
+    com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onMisscMultiTalk", paramMultiTalkGroup, " time: ", Integer.valueOf(paramInt) });
+    if (e.a(this.BAl) != null)
     {
-      e.a(this.xdD).d(paramMultiTalkGroup);
-      if (com.tencent.pb.common.a.a.wEZ) {
-        Toast.makeText(d.pZI, "onMisscMultiTalk " + paramMultiTalkGroup, 0).show();
+      e.a(this.BAl).d(paramMultiTalkGroup);
+      if (com.tencent.pb.common.a.a.BcA) {
+        Toast.makeText(d.tFk, "onMisscMultiTalk ".concat(String.valueOf(paramMultiTalkGroup)), 0).show();
       }
     }
+    AppMethodBeat.o(127832);
+  }
+  
+  public final void akV()
+  {
+    AppMethodBeat.i(127821);
+    com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onInitSeccess" });
+    if (com.tencent.pb.common.a.a.BcA) {
+      Toast.makeText(d.tFk, "onInitSeccess ", 0).show();
+    }
+    if (e.a(this.BAl) != null) {
+      e.a(this.BAl).bTl();
+    }
+    AppMethodBeat.o(127821);
   }
   
   public final void b(MultiTalkGroup paramMultiTalkGroup)
   {
-    com.tencent.pb.common.c.c.x("TalkRoomSdkApi", new Object[] { "onInviteMultiTalk", paramMultiTalkGroup });
-    if (e.a(this.xdD) != null)
+    AppMethodBeat.i(127831);
+    com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onInviteMultiTalk", paramMultiTalkGroup });
+    if (e.a(this.BAl) != null)
     {
-      e.a(this.xdD).b(paramMultiTalkGroup);
-      if (com.tencent.pb.common.a.a.wEZ) {
-        Toast.makeText(d.pZI, "onInviteMultiTalk " + paramMultiTalkGroup, 0).show();
+      e.a(this.BAl).b(paramMultiTalkGroup);
+      if (com.tencent.pb.common.a.a.BcA) {
+        Toast.makeText(d.tFk, "onInviteMultiTalk ".concat(String.valueOf(paramMultiTalkGroup)), 0).show();
       }
     }
+    AppMethodBeat.o(127831);
   }
   
-  public final void bR(List<a.am> paramList)
+  public final void bTn()
   {
-    com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onVideoGroupMemberChange videoUserNames: ", paramList });
-    if (e.a(this.xdD) != null) {
-      e.a(this.xdD).bR(paramList);
-    }
-  }
-  
-  public final void bT(String paramString, boolean paramBoolean)
-  {
-    com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onExitRoom", paramString, a.cRq().kWU, Boolean.valueOf(paramBoolean) });
-  }
-  
-  public final void blo()
-  {
+    AppMethodBeat.i(127837);
     com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onSubscribeLargeVideoSuss" });
-    if (e.a(this.xdD) != null) {
-      e.a(this.xdD).blo();
+    if (e.a(this.BAl) != null) {
+      e.a(this.BAl).bTn();
     }
+    AppMethodBeat.o(127837);
   }
   
-  public final void cRI()
+  public final void cp(List<a.am> paramList)
   {
+    AppMethodBeat.i(127838);
+    com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onVideoGroupMemberChange videoUserNames: ", paramList });
+    if (e.a(this.BAl) != null) {
+      e.a(this.BAl).cp(paramList);
+    }
+    AppMethodBeat.o(127838);
+  }
+  
+  public final void cx(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(127825);
+    com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onExitRoom", paramString, a.dXg().nuW, Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(127825);
+  }
+  
+  public final void dXA()
+  {
+    AppMethodBeat.i(127827);
     com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onSelfHoldOnBegin" });
+    AppMethodBeat.o(127827);
   }
   
-  public final void cRJ()
+  public final void dXB()
   {
+    AppMethodBeat.i(127828);
     com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onSelfHoldOnEnd" });
+    AppMethodBeat.o(127828);
   }
   
-  public final void cRK()
+  public final void dXC()
   {
-    com.tencent.pb.common.c.c.x("TalkRoomSdkApi", new Object[] { "onSendMsgSucc" });
+    AppMethodBeat.i(127834);
+    com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onSendMsgSucc" });
+    if (e.a(this.BAl) != null) {
+      e.a(this.BAl);
+    }
+    AppMethodBeat.o(127834);
   }
   
-  public final void dY(String paramString, int paramInt)
+  public final void fM(List<MultiTalkGroup> paramList)
   {
+    AppMethodBeat.i(127833);
+    com.tencent.pb.common.c.c.i("TalkRoomSdkApi", new Object[] { "onActiveMultiTalkList ", paramList });
+    if (e.a(this.BAl) != null) {
+      e.a(this.BAl);
+    }
+    AppMethodBeat.o(127833);
+  }
+  
+  public final void fh(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(127829);
     com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onModifyGroupInfo", paramString, Integer.valueOf(paramInt) });
-  }
-  
-  public final void eD(List<MultiTalkGroup> paramList)
-  {
-    com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onActiveMultiTalkList ", paramList });
+    AppMethodBeat.o(127829);
   }
   
   public final void g(MultiTalkGroup paramMultiTalkGroup)
   {
-    Object localObject = a.cRq().kWU;
+    AppMethodBeat.i(127822);
+    Object localObject = a.dXg().nuW;
     String str = null;
     if (paramMultiTalkGroup != null) {
-      str = paramMultiTalkGroup.wJL;
+      str = paramMultiTalkGroup.Bhl;
     }
-    com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onMemberChange mGroupId: ", localObject, " groupId: ", str, paramMultiTalkGroup });
-    if (com.tencent.pb.common.a.a.wEZ) {
-      Toast.makeText(d.pZI, "onMemberChange " + paramMultiTalkGroup, 0).show();
+    com.tencent.pb.common.c.c.i("TalkRoomSdkApi", new Object[] { "onMemberChange mGroupId: ", localObject, " groupId: ", str, paramMultiTalkGroup });
+    if (com.tencent.pb.common.a.a.BcA) {
+      Toast.makeText(d.tFk, "onMemberChange ".concat(String.valueOf(paramMultiTalkGroup)), 0).show();
     }
     int k;
     int j;
     int i;
-    if (g.gK(str, (String)localObject))
+    if (g.iN(str, (String)localObject))
     {
-      c.cRC();
-      if ((c.agz((String)localObject)) && (a.cRq().state != 3))
+      c.dXv();
+      if ((c.axu((String)localObject)) && (a.dXg().state != 3))
       {
-        c.cRC();
-        k = c.agA((String)localObject);
+        c.dXv();
+        k = c.axv((String)localObject);
         if (k != 104) {
-          break label276;
+          break label275;
         }
         j = -1602;
         i = 325;
@@ -136,19 +187,20 @@ final class e$1
     }
     for (;;)
     {
-      com.tencent.pb.common.c.c.x("TalkRoomSdkApi", new Object[] { "onMemberChange isMySelfExit finish ", "stopstatus", Integer.valueOf(j), Integer.valueOf(i), str, " reason: ", Integer.valueOf(k) });
-      h.KA(j);
-      a.cRq().xdZ.KE(i);
-      localObject = a.cRq();
-      i = a.cRq().lvU;
-      long l = a.cRq().xdR;
-      boolean bool = a.cRq().pSc;
+      com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onMemberChange isMySelfExit finish ", "stopstatus", Integer.valueOf(j), Integer.valueOf(i), str, " reason: ", Integer.valueOf(k) });
+      h.Tt(j);
+      a.dXg().BAG.Tx(i);
+      localObject = a.dXg();
+      i = a.dXg().nTj;
+      long l = a.dXg().tFh;
+      a.dXg();
       ((f)localObject).a(str, i, l, false, false, false);
-      if (e.a(this.xdD) != null) {
-        e.a(this.xdD).g(paramMultiTalkGroup);
+      if (e.a(this.BAl) != null) {
+        e.a(this.BAl).g(paramMultiTalkGroup);
       }
+      AppMethodBeat.o(127822);
       return;
-      label276:
+      label275:
       if (k == 2)
       {
         j = -1603;
@@ -162,68 +214,68 @@ final class e$1
     }
   }
   
-  public final void hE(boolean paramBoolean)
+  public final void jx(boolean paramBoolean)
   {
-    com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onMuteStateChange", Boolean.valueOf(paramBoolean) });
-    if (e.a(this.xdD) != null) {
-      e.a(this.xdD).hE(paramBoolean);
+    AppMethodBeat.i(127830);
+    com.tencent.pb.common.c.c.i("TalkRoomSdkApi", new Object[] { "onMuteStateChange", Boolean.valueOf(paramBoolean) });
+    if (e.a(this.BAl) != null) {
+      e.a(this.BAl).jx(paramBoolean);
     }
+    AppMethodBeat.o(127830);
   }
   
-  public final void i(int paramInt, Object paramObject)
+  public final void l(int paramInt, Object paramObject)
   {
-    com.tencent.pb.common.c.c.x("TalkRoomSdkApi", new Object[] { "onErr errCode: ", Integer.valueOf(paramInt), " data: ", paramObject });
-    if (e.a(this.xdD) != null) {
-      e.a(this.xdD).i(paramInt, paramObject);
+    AppMethodBeat.i(127823);
+    com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onErr errCode: ", Integer.valueOf(paramInt), " data: ", paramObject });
+    if (e.a(this.BAl) != null) {
+      e.a(this.BAl).l(paramInt, paramObject);
     }
+    AppMethodBeat.o(127823);
   }
   
   public final void onStateChanged(int paramInt)
   {
+    AppMethodBeat.i(127826);
     com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onStateChanged", Integer.valueOf(paramInt) });
+    AppMethodBeat.o(127826);
   }
   
   public final void p(MultiTalkGroup paramMultiTalkGroup)
   {
-    com.tencent.pb.common.c.c.x("TalkRoomSdkApi", new Object[] { "onCreateRoom", paramMultiTalkGroup });
-    if (com.tencent.pb.common.a.a.wEZ) {
-      Toast.makeText(d.pZI, "onCreateRoom " + paramMultiTalkGroup, 0).show();
+    AppMethodBeat.i(127819);
+    com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onCreateRoom", paramMultiTalkGroup });
+    if (com.tencent.pb.common.a.a.BcA) {
+      Toast.makeText(d.tFk, "onCreateRoom ".concat(String.valueOf(paramMultiTalkGroup)), 0).show();
     }
-    if (e.a(this.xdD) != null) {
-      e.a(this.xdD).e(paramMultiTalkGroup);
+    if (e.a(this.BAl) != null) {
+      e.a(this.BAl).e(paramMultiTalkGroup);
     }
+    AppMethodBeat.o(127819);
   }
   
   public final void q(MultiTalkGroup paramMultiTalkGroup)
   {
-    com.tencent.pb.common.c.c.x("TalkRoomSdkApi", new Object[] { "onEnterRoom", paramMultiTalkGroup });
-    if (e.a(this.xdD) != null)
+    AppMethodBeat.i(127824);
+    com.tencent.pb.common.c.c.w("TalkRoomSdkApi", new Object[] { "onEnterRoom", paramMultiTalkGroup });
+    if (e.a(this.BAl) != null)
     {
-      e.a(this.xdD).f(paramMultiTalkGroup);
-      if (com.tencent.pb.common.a.a.wEZ) {
-        Toast.makeText(d.pZI, "onEnterRoom " + paramMultiTalkGroup, 0).show();
+      e.a(this.BAl).f(paramMultiTalkGroup);
+      if (com.tencent.pb.common.a.a.BcA) {
+        Toast.makeText(d.tFk, "onEnterRoom ".concat(String.valueOf(paramMultiTalkGroup)), 0).show();
       }
     }
+    AppMethodBeat.o(127824);
   }
   
-  public final void uo(int paramInt)
+  public final void zE(int paramInt)
   {
+    AppMethodBeat.i(127839);
     com.tencent.pb.common.c.c.d("TalkRoomSdkApi", new Object[] { "onNotifyLargeVideoSubscribersChange largeVideoSubscribersCnt: ", Integer.valueOf(paramInt) });
-    if (e.a(this.xdD) != null) {
-      e.a(this.xdD).uo(paramInt);
+    if (e.a(this.BAl) != null) {
+      e.a(this.BAl).zE(paramInt);
     }
-  }
-  
-  public final void z(String paramString, byte[] paramArrayOfByte)
-  {
-    int i = 0;
-    if (paramArrayOfByte == null) {}
-    for (;;)
-    {
-      com.tencent.pb.common.c.c.x("TalkRoomSdkApi", new Object[] { "onRcvMultiTalkMsg groupId: ", paramString, " datas size: ", Integer.valueOf(i) });
-      return;
-      i = paramArrayOfByte.length;
-    }
+    AppMethodBeat.o(127839);
   }
 }
 

@@ -1,7 +1,8 @@
 package com.tencent.mm.chatroom.ui;
 
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class SelectMemberUI$b$1
   implements Runnable
@@ -10,17 +11,19 @@ final class SelectMemberUI$b$1
   
   public final void run()
   {
-    SelectMemberUI.b.a(this.dsg, true);
+    AppMethodBeat.i(104413);
+    SelectMemberUI.b.a(this.ejO, true);
     long l = System.currentTimeMillis();
-    this.dsg.G(this.dsg.dsb.xY());
-    SelectMemberUI.b.a(this.dsg);
-    y.i("MicroMsg.SelectMemberAdapter", "[load data] cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    ai.d(new SelectMemberUI.b.1.1(this));
+    this.ejO.N(this.ejO.ejJ.Kq());
+    SelectMemberUI.b.a(this.ejO);
+    ab.i("MicroMsg.SelectMemberAdapter", "[load data] cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    al.d(new SelectMemberUI.b.1.1(this));
+    AppMethodBeat.o(104413);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SelectMemberUI.b.1
  * JD-Core Version:    0.7.0.1
  */

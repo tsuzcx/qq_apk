@@ -1,14 +1,27 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader.model.o.a;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONObject;
 
 final class g$31
-  implements DialogInterface.OnClickListener
+  implements o.a
 {
-  g$31(g paramg) {}
+  g$31(g paramg, i parami) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public final void c(String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(154953);
+    if (!bo.isNullOrNil(paramString))
+    {
+      this.vqm.a(this.uZa, this.uZa.vrQ + ":fail_" + paramString, null);
+      AppMethodBeat.o(154953);
+      return;
+    }
+    this.vqm.a(this.uZa, this.uZa.vrQ + ":ok", g.aV(paramJSONObject));
+    AppMethodBeat.o(154953);
+  }
 }
 
 

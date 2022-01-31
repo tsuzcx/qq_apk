@@ -5,10 +5,10 @@ import android.widget.TextView;
 
 final class MallOrderDetailInfoUI$b
 {
-  View hNa;
-  TextView iwq;
-  TextView ixt;
-  TextView ixu;
+  View jIo;
+  TextView kxu;
+  TextView kyw;
+  TextView kyx;
   
   private MallOrderDetailInfoUI$b(MallOrderDetailInfoUI paramMallOrderDetailInfoUI) {}
 }

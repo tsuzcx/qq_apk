@@ -1,5 +1,9 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.ui.a.b.b;
+import com.tencent.mm.plugin.sns.ui.a.c;
+
 final class SnsTimeLineUI$1
   implements Runnable
 {
@@ -7,12 +11,14 @@ final class SnsTimeLineUI$1
   
   public final void run()
   {
-    aw localaw = SnsTimeLineUI.a(this.pfC);
-    if (localaw != null)
+    AppMethodBeat.i(39442);
+    c localc = SnsTimeLineUI.a(this.rYv);
+    if (localc != null)
     {
-      localaw.pgx.bJj();
-      localaw.pgx.notifyVendingDataChange();
+      localc.sds.cvL();
+      localc.sds.notifyVendingDataChange();
     }
+    AppMethodBeat.o(39442);
   }
 }
 

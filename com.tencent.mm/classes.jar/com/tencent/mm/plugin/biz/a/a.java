@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.biz.a;
 
-import com.tencent.mm.ae.l;
+import com.tencent.mm.af.p;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract String N(String paramString1, String paramString2);
+  public abstract String ac(String paramString1, String paramString2);
   
-  public abstract l d(long paramLong, String paramString);
+  public abstract p b(long paramLong, String paramString);
   
-  public abstract boolean gr(String paramString);
+  public abstract boolean na(String paramString);
   
-  public abstract String gs(String paramString);
+  public abstract String nb(String paramString);
   
-  public abstract String gt(String paramString);
+  public abstract String nc(String paramString);
 }
 
 

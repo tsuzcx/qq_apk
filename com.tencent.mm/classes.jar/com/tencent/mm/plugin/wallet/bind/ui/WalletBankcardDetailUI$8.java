@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet.bind.ui;
 
 import android.content.Intent;
 import android.net.Uri;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.c;
 
 final class WalletBankcardDetailUI$8
@@ -10,21 +10,25 @@ final class WalletBankcardDetailUI$8
 {
   WalletBankcardDetailUI$8(WalletBankcardDetailUI paramWalletBankcardDetailUI) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(45748);
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    Intent localIntent = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.qjV.getString(a.i.wallet_bankcard_detail_bankphone_number)));
-    localIntent.addFlags(268435456);
-    this.qjV.startActivity(localIntent);
+    for (;;)
+    {
+      AppMethodBeat.o(45748);
+      return;
+      Intent localIntent = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.tSV.getString(2131304853)));
+      localIntent.addFlags(268435456);
+      this.tSV.startActivity(localIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardDetailUI.8
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Field;
 
 public class ApiHelper
@@ -23,51 +24,52 @@ public class ApiHelper
   static
   {
     boolean bool2 = false;
+    AppMethodBeat.i(49581);
     if (Build.VERSION.SDK_INT >= 16)
     {
       bool1 = true;
       HAS_MEDIA_COLUMNS_WIDTH_AND_HEIGHT = bool1;
       if (Build.VERSION.SDK_INT < 16) {
-        break label223;
-      }
-      bool1 = true;
-      label26:
-      HAS_AUTO_FOCUS_MOVE_CALLBACK = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        break label228;
-      }
-      bool1 = true;
-      label40:
-      HAS_CAMERA_FOCUS_AREA = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
         break label233;
       }
       bool1 = true;
-      label54:
-      HAS_CAMERA_METERING_AREA = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
+      label31:
+      HAS_AUTO_FOCUS_MOVE_CALLBACK = bool1;
+      if (Build.VERSION.SDK_INT < 14) {
         break label238;
       }
       bool1 = true;
-      label68:
-      HAS_CAMERA_HDR = bool1;
-      if (Build.VERSION.SDK_INT < 19) {
+      label45:
+      HAS_CAMERA_FOCUS_AREA = bool1;
+      if (Build.VERSION.SDK_INT < 14) {
         break label243;
       }
       bool1 = true;
-      label82:
-      HAS_CAMERA_HDR_PLUS = bool1;
+      label59:
+      HAS_CAMERA_METERING_AREA = bool1;
       if (Build.VERSION.SDK_INT < 17) {
         break label248;
       }
       bool1 = true;
-      label96:
-      HAS_DISPLAY_LISTENER = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
+      label73:
+      HAS_CAMERA_HDR = bool1;
+      if (Build.VERSION.SDK_INT < 19) {
         break label253;
       }
       bool1 = true;
-      label110:
+      label87:
+      HAS_CAMERA_HDR_PLUS = bool1;
+      if (Build.VERSION.SDK_INT < 17) {
+        break label258;
+      }
+      bool1 = true;
+      label101:
+      HAS_DISPLAY_LISTENER = bool1;
+      if (Build.VERSION.SDK_INT < 14) {
+        break label263;
+      }
+      bool1 = true;
+      label115:
       CAN_START_PREVIEW_IN_JPEG_CALLBACK = bool1;
     }
     for (;;)
@@ -85,14 +87,14 @@ public class ApiHelper
       }
       catch (Throwable localThrowable)
       {
-        label223:
-        label228:
         label233:
         label238:
         label243:
         label248:
         label253:
         bool1 = false;
+        label258:
+        label263:
         continue;
       }
       HAS_FACE_DETECTION = bool1;
@@ -101,46 +103,57 @@ public class ApiHelper
         bool1 = hasMethod(DevicePolicyManager.class, "getCameraDisabled", new Class[] { ComponentName.class });
       }
       HAS_GET_CAMERA_DISABLED = bool1;
+      AppMethodBeat.o(49581);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label26;
+      break label31;
       bool1 = false;
-      break label40;
+      break label45;
       bool1 = false;
-      break label54;
+      break label59;
       bool1 = false;
-      break label68;
+      break label73;
       bool1 = false;
-      break label82;
+      break label87;
       bool1 = false;
-      break label96;
+      break label101;
       bool1 = false;
-      break label110;
+      break label115;
       bool1 = false;
     }
   }
   
   public static int getIntFieldIfExists(Class<?> paramClass1, String paramString, Class<?> paramClass2, int paramInt)
   {
+    AppMethodBeat.i(49577);
     try
     {
       int i = paramClass1.getDeclaredField(paramString).getInt(paramClass2);
+      AppMethodBeat.o(49577);
       return i;
     }
-    catch (Exception paramClass1) {}
+    catch (Exception paramClass1)
+    {
+      AppMethodBeat.o(49577);
+    }
     return paramInt;
   }
   
   private static boolean hasField(Class<?> paramClass, String paramString)
   {
+    AppMethodBeat.i(49578);
     try
     {
       paramClass.getDeclaredField(paramString);
+      AppMethodBeat.o(49578);
       return true;
     }
-    catch (NoSuchFieldException paramClass) {}
+    catch (NoSuchFieldException paramClass)
+    {
+      AppMethodBeat.o(49578);
+    }
     return false;
   }
   
@@ -191,23 +204,33 @@ public class ApiHelper
   
   private static boolean hasMethod(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
+    AppMethodBeat.i(49580);
     try
     {
       paramClass.getDeclaredMethod(paramString, paramVarArgs);
+      AppMethodBeat.o(49580);
       return true;
     }
-    catch (NoSuchMethodException paramClass) {}
+    catch (NoSuchMethodException paramClass)
+    {
+      AppMethodBeat.o(49580);
+    }
     return false;
   }
   
   private static boolean hasMethod(String paramString1, String paramString2, Class<?>... paramVarArgs)
   {
+    AppMethodBeat.i(49579);
     try
     {
       Class.forName(paramString1).getDeclaredMethod(paramString2, paramVarArgs);
+      AppMethodBeat.o(49579);
       return true;
     }
-    catch (Throwable paramString1) {}
+    catch (Throwable paramString1)
+    {
+      AppMethodBeat.o(49579);
+    }
     return false;
   }
   
@@ -228,7 +251,7 @@ public class ApiHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.ApiHelper
  * JD-Core Version:    0.7.0.1
  */

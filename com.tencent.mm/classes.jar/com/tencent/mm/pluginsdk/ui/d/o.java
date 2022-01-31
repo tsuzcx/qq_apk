@@ -1,40 +1,55 @@
 package com.tencent.mm.pluginsdk.ui.d;
 
+import android.text.TextPaint;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.af;
 
 public class o
   extends n
 {
-  private o.a skh;
   private Object tag;
+  private o.a wcK;
   
   public o() {}
   
   public o(Object paramObject, o.a parama)
   {
     super(2, null);
-    this.skh = parama;
+    this.wcK = parama;
     this.tag = paramObject;
   }
   
   public o(Object paramObject, o.a parama, int paramInt)
   {
     super(2, null);
-    this.skh = parama;
+    AppMethodBeat.i(40543);
+    this.wcK = parama;
     this.tag = paramObject;
-    AX(paramInt);
+    setColorConfig(paramInt);
+    AppMethodBeat.o(40543);
   }
   
   public void onClick(View paramView)
   {
-    if (this.skh != null) {
-      this.skh.bC(this.tag);
+    AppMethodBeat.i(40544);
+    if (this.wcK != null) {
+      this.wcK.a(paramView, this.tag);
     }
+    AppMethodBeat.o(40544);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    AppMethodBeat.i(40545);
+    super.updateDrawState(paramTextPaint);
+    af.a(paramTextPaint, 0.8F);
+    AppMethodBeat.o(40545);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.d.o
  * JD-Core Version:    0.7.0.1
  */

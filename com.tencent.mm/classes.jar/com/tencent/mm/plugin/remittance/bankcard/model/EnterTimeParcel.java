@@ -3,36 +3,46 @@ package com.tencent.mm.plugin.remittance.bankcard.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.protocal.c.vv;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.zz;
 
 public class EnterTimeParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator<EnterTimeParcel> CREATOR = new EnterTimeParcel.1();
+  public static final Parcelable.Creator<EnterTimeParcel> CREATOR;
   public String color;
-  public int nvl;
-  public String nvm;
-  public String nvn;
-  public int nvo;
+  public int qgh;
+  public String qgi;
+  public String qgj;
+  public int qgk;
+  
+  static
+  {
+    AppMethodBeat.i(44499);
+    CREATOR = new EnterTimeParcel.1();
+    AppMethodBeat.o(44499);
+  }
   
   public EnterTimeParcel() {}
   
   public EnterTimeParcel(Parcel paramParcel)
   {
-    this.nvl = paramParcel.readInt();
-    this.nvm = paramParcel.readString();
-    this.nvn = paramParcel.readString();
-    this.nvo = paramParcel.readInt();
+    AppMethodBeat.i(44497);
+    this.qgh = paramParcel.readInt();
+    this.qgi = paramParcel.readString();
+    this.qgj = paramParcel.readString();
+    this.qgk = paramParcel.readInt();
     this.color = paramParcel.readString();
+    AppMethodBeat.o(44497);
   }
   
-  public EnterTimeParcel(vv paramvv)
+  public EnterTimeParcel(zz paramzz)
   {
-    this.nvl = paramvv.nvl;
-    this.nvm = paramvv.nvm;
-    this.nvn = paramvv.nvn;
-    this.nvo = paramvv.nvo;
-    this.color = paramvv.color;
+    this.qgh = paramzz.qgh;
+    this.qgi = paramzz.qgi;
+    this.qgj = paramzz.qgj;
+    this.qgk = paramzz.qgk;
+    this.color = paramzz.color;
   }
   
   public int describeContents()
@@ -42,11 +52,13 @@ public class EnterTimeParcel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.nvl);
-    paramParcel.writeString(this.nvm);
-    paramParcel.writeString(this.nvn);
-    paramParcel.writeInt(this.nvo);
+    AppMethodBeat.i(44498);
+    paramParcel.writeInt(this.qgh);
+    paramParcel.writeString(this.qgi);
+    paramParcel.writeString(this.qgj);
+    paramParcel.writeInt(this.qgk);
     paramParcel.writeString(this.color);
+    AppMethodBeat.o(44498);
   }
 }
 

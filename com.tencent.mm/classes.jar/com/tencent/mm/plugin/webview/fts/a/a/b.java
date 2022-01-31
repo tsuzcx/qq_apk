@@ -1,26 +1,38 @@
 package com.tencent.mm.plugin.webview.fts.a.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.c;
 import java.util.Map;
 
 public final class b
 {
-  private static final b rad = new b();
-  private b.a rae;
+  private static final b uPL;
+  private b.a uPM;
+  
+  static
+  {
+    AppMethodBeat.i(5772);
+    uPL = new b();
+    AppMethodBeat.o(5772);
+  }
   
   public static boolean a(c paramc)
   {
-    if ("1".equals(paramc.ctr().get("canPreloadWidget"))) {
+    AppMethodBeat.i(5770);
+    if ("1".equals(paramc.dvN().get("canPreloadWidget")))
+    {
+      AppMethodBeat.o(5770);
       return true;
     }
-    y.i("WidgetPkgPreDownloadMgr", "abtest close preDownload");
+    ab.i("WidgetPkgPreDownloadMgr", "abtest close preDownload");
+    AppMethodBeat.o(5770);
     return false;
   }
   
-  public static b caF()
+  public static b daE()
   {
-    return rad;
+    return uPL;
   }
 }
 

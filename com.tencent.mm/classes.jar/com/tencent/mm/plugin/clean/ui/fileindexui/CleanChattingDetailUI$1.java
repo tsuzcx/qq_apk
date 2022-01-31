@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CleanChattingDetailUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class CleanChattingDetailUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.iCT.finish();
+    AppMethodBeat.i(18766);
+    this.kIa.finish();
+    AppMethodBeat.o(18766);
     return false;
   }
 }

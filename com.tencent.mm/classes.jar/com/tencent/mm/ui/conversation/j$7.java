@@ -1,23 +1,17 @@
 package com.tencent.mm.ui.conversation;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class j$7
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   j$7(j paramj) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    g.DS().O(new j.7.1(this));
-    j.e(this.vTn).dismiss();
-    h.a(j.a(this.vTn), R.l.data_recovery_canceled, R.l.app_tip, false, new j.7.2(this));
+    AppMethodBeat.i(34473);
+    j.d(this.Alf);
+    AppMethodBeat.o(34473);
   }
 }
 

@@ -12,8 +12,8 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.support.v4.view.q;
-import android.support.v4.widget.n;
+import android.support.v4.view.t;
+import android.support.v4.widget.p;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
@@ -26,142 +26,594 @@ import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.OverScroller;
-import com.tencent.luggage.c.a.a.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.luggage.b.a.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class YANumberPicker
   extends View
 {
-  private int adV = 2;
-  private int aqF;
-  private int aqG;
-  private int db;
-  private VelocityTracker fB;
-  private float fSz = 0.0F;
-  private int hAA = 0;
-  private int hAB = 0;
-  private int hAC = 0;
-  private int hAD = 0;
-  private int hAE = -695533;
-  private int hAF = 0;
-  private int hAG = 0;
-  private int hAH = 3;
-  private int hAI = 0;
-  private int hAJ = 0;
-  private int hAK = -1;
-  private int hAL = -1;
-  private int hAM = 0;
-  private int hAN = 0;
-  private int hAO = 0;
-  private int hAP = 0;
-  private int hAQ = 0;
-  private int hAR = 0;
-  private int hAS = 0;
-  private int hAT = 150;
-  private int hAU = 8;
-  private String hAV;
-  private String hAW;
-  private String hAX;
-  private String hAY;
-  private float hAZ = 1.0F;
-  private int hAs = -13421773;
-  private int hAt = -695533;
-  private int hAu = -695533;
-  private int hAv = 0;
-  private int hAw = 0;
-  private int hAx = 0;
-  private int hAy = 0;
-  private int hAz = 0;
-  private int hBA;
-  private float hBB = 0.0F;
-  private float hBC = 0.0F;
-  private boolean hBD = false;
-  private float hBE;
-  private float hBF;
-  private float hBG;
-  private int hBH = 0;
-  private int hBI = 0;
-  private int hBJ = 0;
-  private int hBK = 0;
-  private int hBL = 0;
-  private float hBa = 0.0F;
-  private float hBb = 0.0F;
-  private float hBc = 0.0F;
-  private boolean hBd = true;
-  private boolean hBe = true;
-  private boolean hBf = false;
-  private boolean hBg = true;
-  private boolean hBh = false;
-  private boolean hBi = false;
-  private boolean hBj = true;
-  private n hBk;
-  private Paint hBl = new Paint();
-  private TextPaint hBm = new TextPaint();
-  private Paint hBn = new Paint();
-  private String[] hBo;
-  private CharSequence[] hBp;
-  private CharSequence[] hBq;
-  private Handler hBr;
-  private Handler hBs;
-  private YANumberPicker.d hBt;
-  private YANumberPicker.b hBu;
-  private YANumberPicker.a hBv;
-  private YANumberPicker.c hBw;
-  private int hBx;
-  private int hBy;
-  private int hBz;
-  private int lf = 0;
+  private int agi;
+  private int asY;
+  private int asZ;
+  private float bTF;
+  private int ef;
+  private int jsH;
+  private int jsI;
+  private int jsJ;
+  private int jsK;
+  private int jsL;
+  private int jsM;
+  private int jsN;
+  private int jsO;
+  private int jsP;
+  private int jsQ;
+  private int jsR;
+  private int jsS;
+  private int jsT;
+  private int jsU;
+  private int jsV;
+  private int jsW;
+  private int jsX;
+  private int jsY;
+  private int jsZ;
+  private Paint jtA;
+  private TextPaint jtB;
+  private Paint jtC;
+  private String[] jtD;
+  private CharSequence[] jtE;
+  private CharSequence[] jtF;
+  private Handler jtG;
+  private Handler jtH;
+  private YANumberPicker.d jtI;
+  private YANumberPicker.b jtJ;
+  private YANumberPicker.a jtK;
+  private YANumberPicker.c jtL;
+  private int jtM;
+  private int jtN;
+  private int jtO;
+  private int jtP;
+  private float jtQ;
+  private float jtR;
+  private boolean jtS;
+  private float jtT;
+  private float jtU;
+  private float jtV;
+  private int jtW;
+  private int jtX;
+  private int jtY;
+  private int jtZ;
+  private int jta;
+  private int jtb;
+  private int jtc;
+  private int jtd;
+  private int jte;
+  private int jtf;
+  private int jtg;
+  private int jth;
+  private int jti;
+  private int jtj;
+  private String jtk;
+  private String jtl;
+  private String jtm;
+  private String jtn;
+  private float jto;
+  private float jtp;
+  private float jtq;
+  private float jtr;
+  private boolean jts;
+  private boolean jtt;
+  private boolean jtu;
+  private boolean jtv;
+  private boolean jtw;
+  private boolean jtx;
+  private boolean jty;
+  private p jtz;
+  private int jua;
   private HandlerThread mHandlerThread;
-  private boolean mHasInit = false;
+  private boolean mHasInit;
+  private int mScrollState;
+  private VelocityTracker mVelocityTracker;
   
   public YANumberPicker(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(126759);
+    this.jsH = -13421773;
+    this.jsI = -695533;
+    this.jsJ = -695533;
+    this.jsK = 0;
+    this.jsL = 0;
+    this.jsM = 0;
+    this.jsN = 0;
+    this.jsO = 0;
+    this.jsP = 0;
+    this.jsQ = 0;
+    this.jsR = 0;
+    this.jsS = 0;
+    this.jsT = -695533;
+    this.agi = 2;
+    this.jsU = 0;
+    this.jsV = 0;
+    this.jsW = 3;
+    this.jsX = 0;
+    this.jsY = 0;
+    this.jsZ = -1;
+    this.jta = -1;
+    this.jtb = 0;
+    this.jtc = 0;
+    this.jtd = 0;
+    this.jte = 0;
+    this.jtf = 0;
+    this.jtg = 0;
+    this.jth = 0;
+    this.jti = 150;
+    this.jtj = 8;
+    this.jto = 1.0F;
+    this.jtp = 0.0F;
+    this.jtq = 0.0F;
+    this.jtr = 0.0F;
+    this.jts = true;
+    this.jtt = true;
+    this.jtu = false;
+    this.mHasInit = false;
+    this.jtv = true;
+    this.jtw = false;
+    this.jtx = false;
+    this.jty = true;
+    this.jtA = new Paint();
+    this.jtB = new TextPaint();
+    this.jtC = new Paint();
+    this.mScrollState = 0;
+    this.jtQ = 0.0F;
+    this.bTF = 0.0F;
+    this.jtR = 0.0F;
+    this.jtS = false;
+    this.jtW = 0;
+    this.jtX = 0;
+    this.jtY = 0;
+    this.jtZ = 0;
+    this.jua = 0;
     init(paramContext);
+    AppMethodBeat.o(126759);
   }
   
   public YANumberPicker(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(126760);
+    this.jsH = -13421773;
+    this.jsI = -695533;
+    this.jsJ = -695533;
+    this.jsK = 0;
+    this.jsL = 0;
+    this.jsM = 0;
+    this.jsN = 0;
+    this.jsO = 0;
+    this.jsP = 0;
+    this.jsQ = 0;
+    this.jsR = 0;
+    this.jsS = 0;
+    this.jsT = -695533;
+    this.agi = 2;
+    this.jsU = 0;
+    this.jsV = 0;
+    this.jsW = 3;
+    this.jsX = 0;
+    this.jsY = 0;
+    this.jsZ = -1;
+    this.jta = -1;
+    this.jtb = 0;
+    this.jtc = 0;
+    this.jtd = 0;
+    this.jte = 0;
+    this.jtf = 0;
+    this.jtg = 0;
+    this.jth = 0;
+    this.jti = 150;
+    this.jtj = 8;
+    this.jto = 1.0F;
+    this.jtp = 0.0F;
+    this.jtq = 0.0F;
+    this.jtr = 0.0F;
+    this.jts = true;
+    this.jtt = true;
+    this.jtu = false;
+    this.mHasInit = false;
+    this.jtv = true;
+    this.jtw = false;
+    this.jtx = false;
+    this.jty = true;
+    this.jtA = new Paint();
+    this.jtB = new TextPaint();
+    this.jtC = new Paint();
+    this.mScrollState = 0;
+    this.jtQ = 0.0F;
+    this.bTF = 0.0F;
+    this.jtR = 0.0F;
+    this.jtS = false;
+    this.jtW = 0;
+    this.jtX = 0;
+    this.jtY = 0;
+    this.jtZ = 0;
+    this.jua = 0;
     b(paramContext, paramAttributeSet);
     init(paramContext);
+    AppMethodBeat.o(126760);
   }
   
   public YANumberPicker(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(126761);
+    this.jsH = -13421773;
+    this.jsI = -695533;
+    this.jsJ = -695533;
+    this.jsK = 0;
+    this.jsL = 0;
+    this.jsM = 0;
+    this.jsN = 0;
+    this.jsO = 0;
+    this.jsP = 0;
+    this.jsQ = 0;
+    this.jsR = 0;
+    this.jsS = 0;
+    this.jsT = -695533;
+    this.agi = 2;
+    this.jsU = 0;
+    this.jsV = 0;
+    this.jsW = 3;
+    this.jsX = 0;
+    this.jsY = 0;
+    this.jsZ = -1;
+    this.jta = -1;
+    this.jtb = 0;
+    this.jtc = 0;
+    this.jtd = 0;
+    this.jte = 0;
+    this.jtf = 0;
+    this.jtg = 0;
+    this.jth = 0;
+    this.jti = 150;
+    this.jtj = 8;
+    this.jto = 1.0F;
+    this.jtp = 0.0F;
+    this.jtq = 0.0F;
+    this.jtr = 0.0F;
+    this.jts = true;
+    this.jtt = true;
+    this.jtu = false;
+    this.mHasInit = false;
+    this.jtv = true;
+    this.jtw = false;
+    this.jtx = false;
+    this.jty = true;
+    this.jtA = new Paint();
+    this.jtB = new TextPaint();
+    this.jtC = new Paint();
+    this.mScrollState = 0;
+    this.jtQ = 0.0F;
+    this.bTF = 0.0F;
+    this.jtR = 0.0F;
+    this.jtS = false;
+    this.jtW = 0;
+    this.jtX = 0;
+    this.jtY = 0;
+    this.jtZ = 0;
+    this.jua = 0;
     b(paramContext, paramAttributeSet);
     init(paramContext);
+    AppMethodBeat.o(126761);
   }
   
-  private void H(int paramInt, boolean paramBoolean)
+  private void M(int paramInt, boolean paramBoolean)
   {
-    this.hBH = (paramInt - (this.hAH - 1) / 2);
-    this.hBH = h(this.hBH, getOneRecycleSize(), paramBoolean);
-    if (this.db == 0)
+    AppMethodBeat.i(126796);
+    this.jtW = (paramInt - (this.jsW - 1) / 2);
+    this.jtW = k(this.jtW, getOneRecycleSize(), paramBoolean);
+    if (this.ef == 0)
     {
-      this.hBf = true;
+      this.jtu = true;
+      AppMethodBeat.o(126796);
       return;
     }
-    this.hBJ = (this.hBH * this.db);
-    this.hBx = (this.hBH + this.hAH / 2);
-    this.hBx %= getOneRecycleSize();
-    if (this.hBx < 0) {
-      this.hBx += getOneRecycleSize();
+    this.jtY = (this.jtW * this.ef);
+    this.jtM = (this.jtW + this.jsW / 2);
+    this.jtM %= getOneRecycleSize();
+    if (this.jtM < 0) {
+      this.jtM += getOneRecycleSize();
     }
-    this.hBy = this.hBx;
-    asV();
+    this.jtN = this.jtM;
+    aRX();
+    AppMethodBeat.o(126796);
   }
   
   private static float a(Paint.FontMetrics paramFontMetrics)
   {
-    if (paramFontMetrics == null) {
+    AppMethodBeat.i(126795);
+    if (paramFontMetrics == null)
+    {
+      AppMethodBeat.o(126795);
       return 0.0F;
     }
-    return Math.abs(paramFontMetrics.top + paramFontMetrics.bottom) / 2.0F;
+    float f = Math.abs(paramFontMetrics.top + paramFontMetrics.bottom) / 2.0F;
+    AppMethodBeat.o(126795);
+    return f;
   }
   
-  private static int a(float paramFloat, int paramInt1, int paramInt2)
+  private static int a(CharSequence paramCharSequence, Paint paramPaint)
+  {
+    AppMethodBeat.i(126805);
+    if (!TextUtils.isEmpty(paramCharSequence))
+    {
+      int i = (int)(paramPaint.measureText(paramCharSequence.toString()) + 0.5F);
+      AppMethodBeat.o(126805);
+      return i;
+    }
+    AppMethodBeat.o(126805);
+    return 0;
+  }
+  
+  private static int a(CharSequence[] paramArrayOfCharSequence, Paint paramPaint)
+  {
+    AppMethodBeat.i(126804);
+    if (paramArrayOfCharSequence == null)
+    {
+      AppMethodBeat.o(126804);
+      return 0;
+    }
+    int m = paramArrayOfCharSequence.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
+    {
+      CharSequence localCharSequence = paramArrayOfCharSequence[i];
+      k = j;
+      if (localCharSequence != null) {
+        k = Math.max(a(localCharSequence, paramPaint), j);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(126804);
+    return j;
+  }
+  
+  private void aRU()
+  {
+    AppMethodBeat.i(126764);
+    this.mHandlerThread = new HandlerThread("HandlerThread-For-Refreshing");
+    this.mHandlerThread.start();
+    this.jtG = new YANumberPicker.1(this, this.mHandlerThread.getLooper());
+    this.jtH = new YANumberPicker.2(this);
+    AppMethodBeat.o(126764);
+  }
+  
+  private void aRV()
+  {
+    AppMethodBeat.i(126792);
+    M(getPickedIndexRelativeToRaw() - this.jsZ, false);
+    this.jtt = false;
+    postInvalidate();
+    AppMethodBeat.o(126792);
+  }
+  
+  private void aRW()
+  {
+    AppMethodBeat.i(126793);
+    this.jtO = 0;
+    this.jtP = (-this.jsW * this.ef);
+    if (this.jtD != null)
+    {
+      this.jtO = ((getOneRecycleSize() - this.jsW / 2 - 1) * this.ef);
+      this.jtP = (-(this.jsW / 2) * this.ef);
+    }
+    AppMethodBeat.o(126793);
+  }
+  
+  private void aRX()
+  {
+    AppMethodBeat.i(126798);
+    this.jtW = ((int)Math.floor(this.jtY / this.ef));
+    this.jtX = (-(this.jtY - this.jtW * this.ef));
+    if (this.jtL != null) {
+      if (-this.jtX <= this.ef / 2) {
+        break label131;
+      }
+    }
+    label131:
+    for (this.jtN = (this.jtW + 1 + this.jsW / 2);; this.jtN = (this.jtW + this.jsW / 2))
+    {
+      this.jtN %= getOneRecycleSize();
+      if (this.jtN < 0) {
+        this.jtN += getOneRecycleSize();
+      }
+      this.jtM = this.jtN;
+      AppMethodBeat.o(126798);
+      return;
+    }
+  }
+  
+  private void aRY()
+  {
+    AppMethodBeat.i(126803);
+    float f = this.jtB.getTextSize();
+    this.jtB.setTextSize(this.jsL);
+    this.jtd = a(this.jtD, this.jtB);
+    this.jtf = a(this.jtE, this.jtB);
+    this.jtg = a(this.jtF, this.jtB);
+    this.jtB.setTextSize(this.jsM);
+    this.jsO = a(this.jtn, this.jtB);
+    this.jtB.setTextSize(f);
+    AppMethodBeat.o(126803);
+  }
+  
+  private void aRZ()
+  {
+    AppMethodBeat.i(126806);
+    float f = this.jtB.getTextSize();
+    this.jtB.setTextSize(this.jsL);
+    this.jte = ((int)(this.jtB.getFontMetrics().bottom - this.jtB.getFontMetrics().top + 0.5D));
+    this.jtB.setTextSize(f);
+    AppMethodBeat.o(126806);
+  }
+  
+  private void aSa()
+  {
+    AppMethodBeat.i(126807);
+    aSb();
+    aSc();
+    if (this.jsZ == -1) {
+      this.jsZ = 0;
+    }
+    if (this.jta == -1) {
+      this.jta = (this.jtD.length - 1);
+    }
+    j(this.jsZ, this.jta, false);
+    AppMethodBeat.o(126807);
+  }
+  
+  private void aSb()
+  {
+    if (this.jtD == null)
+    {
+      this.jtD = new String[1];
+      this.jtD[0] = "0";
+    }
+  }
+  
+  private void aSc()
+  {
+    if (this.jtD.length <= this.jsW) {}
+    for (boolean bool = false;; bool = true)
+    {
+      this.jtv = bool;
+      return;
+    }
+  }
+  
+  private void aSd()
+  {
+    AppMethodBeat.i(126808);
+    if ((this.jtz != null) && (!this.jtz.jR.isFinished()))
+    {
+      this.jtz.startScroll(0, this.jtz.jR.getCurrY(), 0, 0, 1);
+      this.jtz.jR.abortAnimation();
+      postInvalidate();
+    }
+    AppMethodBeat.o(126808);
+  }
+  
+  private void b(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    AppMethodBeat.i(126762);
+    if (paramAttributeSet == null)
+    {
+      AppMethodBeat.o(126762);
+      return;
+    }
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.YANumberPicker);
+    int k = localTypedArray.getIndexCount();
+    int i = 0;
+    if (i < k)
+    {
+      int j = localTypedArray.getIndex(i);
+      if (j == 0) {
+        this.jsW = localTypedArray.getInt(j, 3);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (j == 2)
+        {
+          this.jsT = localTypedArray.getColor(j, -695533);
+        }
+        else if (j == 5)
+        {
+          this.agi = localTypedArray.getDimensionPixelSize(j, 2);
+        }
+        else if (j == 3)
+        {
+          this.jsU = localTypedArray.getDimensionPixelSize(j, 0);
+        }
+        else if (j == 4)
+        {
+          this.jsV = localTypedArray.getDimensionPixelSize(j, 0);
+        }
+        else
+        {
+          if (j == 12)
+          {
+            CharSequence[] arrayOfCharSequence = localTypedArray.getTextArray(j);
+            if (arrayOfCharSequence == null) {
+              paramAttributeSet = null;
+            }
+            for (;;)
+            {
+              this.jtD = paramAttributeSet;
+              break;
+              paramAttributeSet = new String[arrayOfCharSequence.length];
+              j = 0;
+              while (j < arrayOfCharSequence.length)
+              {
+                paramAttributeSet[j] = arrayOfCharSequence[j].toString();
+                j += 1;
+              }
+            }
+          }
+          if (j == 6) {
+            this.jsH = localTypedArray.getColor(j, -13421773);
+          } else if (j == 7) {
+            this.jsI = localTypedArray.getColor(j, -695533);
+          } else if (j == 8) {
+            this.jsJ = localTypedArray.getColor(j, -695533);
+          } else if (j == 9) {
+            this.jsK = localTypedArray.getDimensionPixelSize(j, e(paramContext, 13.0F));
+          } else if (j == 10) {
+            this.jsL = localTypedArray.getDimensionPixelSize(j, e(paramContext, 15.0F));
+          } else if (j == 11) {
+            this.jsM = localTypedArray.getDimensionPixelSize(j, e(paramContext, 14.0F));
+          } else if (j == 13) {
+            this.jsZ = localTypedArray.getInteger(j, 0);
+          } else if (j == 14) {
+            this.jta = localTypedArray.getInteger(j, 0);
+          } else if (j == 15) {
+            this.jtt = localTypedArray.getBoolean(j, true);
+          } else if (j == 1) {
+            this.jts = localTypedArray.getBoolean(j, true);
+          } else if (j == 17) {
+            this.jtk = localTypedArray.getString(j);
+          } else if (j == 27) {
+            this.jtn = localTypedArray.getString(j);
+          } else if (j == 18) {
+            this.jtm = localTypedArray.getString(j);
+          } else if (j == 19) {
+            this.jsP = localTypedArray.getDimensionPixelSize(j, f(paramContext, 8.0F));
+          } else if (j == 20) {
+            this.jsQ = localTypedArray.getDimensionPixelSize(j, f(paramContext, 8.0F));
+          } else if (j == 22) {
+            this.jsR = localTypedArray.getDimensionPixelSize(j, f(paramContext, 2.0F));
+          } else if (j == 21) {
+            this.jsS = localTypedArray.getDimensionPixelSize(j, f(paramContext, 5.0F));
+          } else if (j == 25) {
+            this.jtE = localTypedArray.getTextArray(j);
+          } else if (j == 26) {
+            this.jtF = localTypedArray.getTextArray(j);
+          } else if (j == 16) {
+            this.jtx = localTypedArray.getBoolean(j, false);
+          } else if (j == 23) {
+            this.jty = localTypedArray.getBoolean(j, true);
+          } else if (j == 24) {
+            this.jtl = localTypedArray.getString(j);
+          }
+        }
+      }
+    }
+    localTypedArray.recycle();
+    AppMethodBeat.o(126762);
+  }
+  
+  private static int c(float paramFloat, int paramInt1, int paramInt2)
   {
     int k = (paramInt1 & 0xFF000000) >>> 24;
     int j = (paramInt1 & 0xFF0000) >>> 16;
@@ -177,294 +629,51 @@ public class YANumberPicker
     return k << 24 | j << 16 | i << 8 | (int)((((paramInt2 & 0xFF) >>> 0) - paramInt1) * paramFloat + f);
   }
   
-  private static int a(CharSequence paramCharSequence, Paint paramPaint)
+  private static Message c(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    if (!TextUtils.isEmpty(paramCharSequence)) {
-      return (int)(paramPaint.measureText(paramCharSequence.toString()) + 0.5F);
-    }
-    return 0;
-  }
-  
-  private static int a(CharSequence[] paramArrayOfCharSequence, Paint paramPaint)
-  {
-    int k;
-    if (paramArrayOfCharSequence == null)
-    {
-      k = 0;
-      return k;
-    }
-    int m = paramArrayOfCharSequence.length;
-    int j = 0;
-    for (int i = 0;; i = k)
-    {
-      k = i;
-      if (j >= m) {
-        break;
-      }
-      CharSequence localCharSequence = paramArrayOfCharSequence[j];
-      k = i;
-      if (localCharSequence != null) {
-        k = Math.max(a(localCharSequence, paramPaint), i);
-      }
-      j += 1;
-    }
-  }
-  
-  private void asS()
-  {
-    this.mHandlerThread = new HandlerThread("HandlerThread-For-Refreshing");
-    this.mHandlerThread.start();
-    this.hBr = new YANumberPicker.1(this, this.mHandlerThread.getLooper());
-    this.hBs = new YANumberPicker.2(this);
-  }
-  
-  private void asT()
-  {
-    H(getPickedIndexRelativeToRaw() - this.hAK, false);
-    this.hBe = false;
-    postInvalidate();
-  }
-  
-  private void asU()
-  {
-    this.hBz = 0;
-    this.hBA = (-this.hAH * this.db);
-    if (this.hBo != null)
-    {
-      this.hBz = ((getOneRecycleSize() - this.hAH / 2 - 1) * this.db);
-      this.hBA = (-(this.hAH / 2) * this.db);
-    }
-  }
-  
-  private void asV()
-  {
-    this.hBH = ((int)Math.floor(this.hBJ / this.db));
-    this.hBI = (-(this.hBJ - this.hBH * this.db));
-    if (this.hBw != null) {
-      if (-this.hBI <= this.db / 2) {
-        break label119;
-      }
-    }
-    label119:
-    for (this.hBy = (this.hBH + 1 + this.hAH / 2);; this.hBy = (this.hBH + this.hAH / 2))
-    {
-      this.hBy %= getOneRecycleSize();
-      if (this.hBy < 0) {
-        this.hBy += getOneRecycleSize();
-      }
-      this.hBx = this.hBy;
-      return;
-    }
-  }
-  
-  private void asW()
-  {
-    if (this.hBo.length <= this.hAH) {}
-    for (boolean bool = false;; bool = true)
-    {
-      this.hBg = bool;
-      return;
-    }
-  }
-  
-  private void asX()
-  {
-    if ((this.hBk != null) && (!this.hBk.iY.isFinished()))
-    {
-      this.hBk.startScroll(0, this.hBk.iY.getCurrY(), 0, 0, 1);
-      this.hBk.iY.abortAnimation();
-      postInvalidate();
-    }
-  }
-  
-  private static Message b(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
-  {
+    AppMethodBeat.i(126810);
     Message localMessage = Message.obtain();
     localMessage.what = paramInt1;
     localMessage.arg1 = paramInt2;
     localMessage.arg2 = paramInt3;
     localMessage.obj = paramObject;
+    AppMethodBeat.o(126810);
     return localMessage;
-  }
-  
-  private void b(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    if (paramAttributeSet == null) {
-      return;
-    }
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.g.YANumberPicker);
-    int k = localTypedArray.getIndexCount();
-    int i = 0;
-    if (i < k)
-    {
-      int j = localTypedArray.getIndex(i);
-      if (j == a.g.YANumberPicker_npv_ShowCount) {
-        this.hAH = localTypedArray.getInt(j, 3);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (j == a.g.YANumberPicker_npv_DividerColor)
-        {
-          this.hAE = localTypedArray.getColor(j, -695533);
-        }
-        else if (j == a.g.YANumberPicker_npv_DividerHeight)
-        {
-          this.adV = localTypedArray.getDimensionPixelSize(j, 2);
-        }
-        else if (j == a.g.YANumberPicker_npv_DividerMarginLeft)
-        {
-          this.hAF = localTypedArray.getDimensionPixelSize(j, 0);
-        }
-        else if (j == a.g.YANumberPicker_npv_DividerMarginRight)
-        {
-          this.hAG = localTypedArray.getDimensionPixelSize(j, 0);
-        }
-        else
-        {
-          if (j == a.g.YANumberPicker_npv_TextArray)
-          {
-            CharSequence[] arrayOfCharSequence = localTypedArray.getTextArray(j);
-            if (arrayOfCharSequence == null) {
-              paramAttributeSet = null;
-            }
-            for (;;)
-            {
-              this.hBo = paramAttributeSet;
-              break;
-              paramAttributeSet = new String[arrayOfCharSequence.length];
-              j = 0;
-              while (j < arrayOfCharSequence.length)
-              {
-                paramAttributeSet[j] = arrayOfCharSequence[j].toString();
-                j += 1;
-              }
-            }
-          }
-          if (j == a.g.YANumberPicker_npv_TextColorNormal) {
-            this.hAs = localTypedArray.getColor(j, -13421773);
-          } else if (j == a.g.YANumberPicker_npv_TextColorSelected) {
-            this.hAt = localTypedArray.getColor(j, -695533);
-          } else if (j == a.g.YANumberPicker_npv_TextColorHint) {
-            this.hAu = localTypedArray.getColor(j, -695533);
-          } else if (j == a.g.YANumberPicker_npv_TextSizeNormal) {
-            this.hAv = localTypedArray.getDimensionPixelSize(j, d(paramContext, 13.0F));
-          } else if (j == a.g.YANumberPicker_npv_TextSizeSelected) {
-            this.hAw = localTypedArray.getDimensionPixelSize(j, d(paramContext, 15.0F));
-          } else if (j == a.g.YANumberPicker_npv_TextSizeHint) {
-            this.hAx = localTypedArray.getDimensionPixelSize(j, d(paramContext, 14.0F));
-          } else if (j == a.g.YANumberPicker_npv_MinValue) {
-            this.hAK = localTypedArray.getInteger(j, 0);
-          } else if (j == a.g.YANumberPicker_npv_MaxValue) {
-            this.hAL = localTypedArray.getInteger(j, 0);
-          } else if (j == a.g.YANumberPicker_npv_WrapSelectorWheel) {
-            this.hBe = localTypedArray.getBoolean(j, true);
-          } else if (j == a.g.YANumberPicker_npv_ShowDivider) {
-            this.hBd = localTypedArray.getBoolean(j, true);
-          } else if (j == a.g.YANumberPicker_npv_HintText) {
-            this.hAV = localTypedArray.getString(j);
-          } else if (j == a.g.YANumberPicker_npv_AlternativeHint) {
-            this.hAY = localTypedArray.getString(j);
-          } else if (j == a.g.YANumberPicker_npv_EmptyItemHint) {
-            this.hAX = localTypedArray.getString(j);
-          } else if (j == a.g.YANumberPicker_npv_MarginStartOfHint) {
-            this.hAA = localTypedArray.getDimensionPixelSize(j, e(paramContext, 8.0F));
-          } else if (j == a.g.YANumberPicker_npv_MarginEndOfHint) {
-            this.hAB = localTypedArray.getDimensionPixelSize(j, e(paramContext, 8.0F));
-          } else if (j == a.g.YANumberPicker_npv_ItemPaddingVertical) {
-            this.hAC = localTypedArray.getDimensionPixelSize(j, e(paramContext, 2.0F));
-          } else if (j == a.g.YANumberPicker_npv_ItemPaddingHorizontal) {
-            this.hAD = localTypedArray.getDimensionPixelSize(j, e(paramContext, 5.0F));
-          } else if (j == a.g.YANumberPicker_npv_AlternativeTextArrayWithMeasureHint) {
-            this.hBp = localTypedArray.getTextArray(j);
-          } else if (j == a.g.YANumberPicker_npv_AlternativeTextArrayWithoutMeasureHint) {
-            this.hBq = localTypedArray.getTextArray(j);
-          } else if (j == a.g.YANumberPicker_npv_RespondChangeOnDetached) {
-            this.hBi = localTypedArray.getBoolean(j, false);
-          } else if (j == a.g.YANumberPicker_npv_RespondChangeInMainThread) {
-            this.hBj = localTypedArray.getBoolean(j, true);
-          } else if (j == a.g.YANumberPicker_npv_TextEllipsize) {
-            this.hAW = localTypedArray.getString(j);
-          }
-        }
-      }
-    }
-    localTypedArray.recycle();
-  }
-  
-  private static int d(Context paramContext, float paramFloat)
-  {
-    return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
-  }
-  
-  private void dY(boolean paramBoolean)
-  {
-    float f = this.hBm.getTextSize();
-    this.hBm.setTextSize(this.hAw);
-    this.hAO = a(this.hBo, this.hBm);
-    this.hAQ = a(this.hBp, this.hBm);
-    this.hAR = a(this.hBq, this.hBm);
-    this.hBm.setTextSize(this.hAx);
-    this.hAz = a(this.hAY, this.hBm);
-    this.hBm.setTextSize(f);
-    f = this.hBm.getTextSize();
-    this.hBm.setTextSize(this.hAw);
-    this.hAP = ((int)(this.hBm.getFontMetrics().bottom - this.hBm.getFontMetrics().top + 0.5D));
-    this.hBm.setTextSize(f);
-    if ((paramBoolean) && ((this.hBK == -2147483648) || (this.hBL == -2147483648))) {
-      this.hBs.sendEmptyMessage(3);
-    }
   }
   
   private static int e(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    AppMethodBeat.i(126811);
+    int i = (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+    AppMethodBeat.o(126811);
+    return i;
   }
   
-  private void g(int paramInt1, int paramInt2, boolean paramBoolean)
+  private static int f(Context paramContext, float paramFloat)
   {
-    if (paramInt1 > paramInt2) {
-      throw new IllegalArgumentException("minShowIndex should be less than maxShowIndex, minShowIndex is " + paramInt1 + ", maxShowIndex is " + paramInt2 + ".");
+    AppMethodBeat.i(126812);
+    int i = (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    AppMethodBeat.o(126812);
+    return i;
+  }
+  
+  private void fu(boolean paramBoolean)
+  {
+    AppMethodBeat.i(126799);
+    aRY();
+    aRZ();
+    if ((paramBoolean) && ((this.jtZ == -2147483648) || (this.jua == -2147483648))) {
+      this.jtH.sendEmptyMessage(3);
     }
-    if (this.hBo == null) {
-      throw new IllegalArgumentException("mDisplayedValues should not be null, you need to set mDisplayedValues first.");
-    }
-    if (paramInt1 < 0) {
-      throw new IllegalArgumentException("minShowIndex should not be less than 0, now minShowIndex is " + paramInt1);
-    }
-    if (paramInt1 > this.hBo.length - 1) {
-      throw new IllegalArgumentException("minShowIndex should not be greater than (mDisplayedValues.length - 1), now (mDisplayedValues.length - 1) is " + (this.hBo.length - 1) + " minShowIndex is " + paramInt1);
-    }
-    if (paramInt2 < 0) {
-      throw new IllegalArgumentException("maxShowIndex should not be less than 0, now maxShowIndex is " + paramInt2);
-    }
-    if (paramInt2 > this.hBo.length - 1) {
-      throw new IllegalArgumentException("maxShowIndex should not be greater than (mDisplayedValues.length - 1), now (mDisplayedValues.length - 1) is " + (this.hBo.length - 1) + " maxShowIndex is " + paramInt2);
-    }
-    this.hAK = paramInt1;
-    this.hAL = paramInt2;
-    if (paramBoolean)
-    {
-      this.hAS = (this.hAK + 0);
-      if ((!this.hBe) || (!this.hBg)) {
-        break label277;
-      }
-    }
-    label277:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      H(0, paramBoolean);
-      postInvalidate();
-      return;
-    }
+    AppMethodBeat.o(126799);
   }
   
   private TextUtils.TruncateAt getEllipsizeType()
   {
-    String str = this.hAW;
+    AppMethodBeat.i(126802);
+    Object localObject = this.jtl;
     int i = -1;
-    switch (str.hashCode())
+    switch (((String)localObject).hashCode())
     {
     }
     for (;;)
@@ -472,16 +681,18 @@ public class YANumberPicker
       switch (i)
       {
       default: 
-        throw new IllegalArgumentException("Illegal text ellipsize type.");
-        if (str.equals("start"))
+        localObject = new IllegalArgumentException("Illegal text ellipsize type.");
+        AppMethodBeat.o(126802);
+        throw ((Throwable)localObject);
+        if (((String)localObject).equals("start"))
         {
           i = 0;
           continue;
-          if (str.equals("middle"))
+          if (((String)localObject).equals("middle"))
           {
             i = 1;
             continue;
-            if (str.equals("end")) {
+            if (((String)localObject).equals("end")) {
               i = 2;
             }
           }
@@ -489,12 +700,119 @@ public class YANumberPicker
         break;
       }
     }
-    return TextUtils.TruncateAt.START;
-    return TextUtils.TruncateAt.MIDDLE;
-    return TextUtils.TruncateAt.END;
+    localObject = TextUtils.TruncateAt.START;
+    AppMethodBeat.o(126802);
+    return localObject;
+    localObject = TextUtils.TruncateAt.MIDDLE;
+    AppMethodBeat.o(126802);
+    return localObject;
+    localObject = TextUtils.TruncateAt.END;
+    AppMethodBeat.o(126802);
+    return localObject;
   }
   
-  private static int h(int paramInt1, int paramInt2, boolean paramBoolean)
+  private void init(Context paramContext)
+  {
+    AppMethodBeat.i(126763);
+    this.jtz = p.a(paramContext, null);
+    this.jti = ViewConfiguration.get(getContext()).getScaledMinimumFlingVelocity();
+    this.jtj = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    if (this.jsK == 0) {
+      this.jsK = e(paramContext, 13.0F);
+    }
+    if (this.jsL == 0) {
+      this.jsL = e(paramContext, 15.0F);
+    }
+    if (this.jsM == 0) {
+      this.jsM = e(paramContext, 14.0F);
+    }
+    if (this.jsP == 0) {
+      this.jsP = f(paramContext, 8.0F);
+    }
+    if (this.jsQ == 0) {
+      this.jsQ = f(paramContext, 8.0F);
+    }
+    this.jtA.setColor(this.jsT);
+    this.jtA.setAntiAlias(true);
+    this.jtA.setStyle(Paint.Style.STROKE);
+    this.jtA.setStrokeWidth(this.agi);
+    this.jtB.setColor(this.jsH);
+    this.jtB.setAntiAlias(true);
+    this.jtB.setTextAlign(Paint.Align.CENTER);
+    this.jtC.setColor(this.jsJ);
+    this.jtC.setAntiAlias(true);
+    this.jtC.setTextAlign(Paint.Align.CENTER);
+    this.jtC.setTextSize(this.jsM);
+    if (this.jsW % 2 == 0) {
+      this.jsW += 1;
+    }
+    if ((this.jsZ == -1) || (this.jta == -1)) {
+      aSa();
+    }
+    aRU();
+    AppMethodBeat.o(126763);
+  }
+  
+  private void j(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(126787);
+    IllegalArgumentException localIllegalArgumentException;
+    if (paramInt1 > paramInt2)
+    {
+      localIllegalArgumentException = new IllegalArgumentException("minShowIndex should be less than maxShowIndex, minShowIndex is " + paramInt1 + ", maxShowIndex is " + paramInt2 + ".");
+      AppMethodBeat.o(126787);
+      throw localIllegalArgumentException;
+    }
+    if (this.jtD == null)
+    {
+      localIllegalArgumentException = new IllegalArgumentException("mDisplayedValues should not be null, you need to set mDisplayedValues first.");
+      AppMethodBeat.o(126787);
+      throw localIllegalArgumentException;
+    }
+    if (paramInt1 < 0)
+    {
+      localIllegalArgumentException = new IllegalArgumentException("minShowIndex should not be less than 0, now minShowIndex is ".concat(String.valueOf(paramInt1)));
+      AppMethodBeat.o(126787);
+      throw localIllegalArgumentException;
+    }
+    if (paramInt1 > this.jtD.length - 1)
+    {
+      localIllegalArgumentException = new IllegalArgumentException("minShowIndex should not be greater than (mDisplayedValues.length - 1), now (mDisplayedValues.length - 1) is " + (this.jtD.length - 1) + " minShowIndex is " + paramInt1);
+      AppMethodBeat.o(126787);
+      throw localIllegalArgumentException;
+    }
+    if (paramInt2 < 0)
+    {
+      localIllegalArgumentException = new IllegalArgumentException("maxShowIndex should not be less than 0, now maxShowIndex is ".concat(String.valueOf(paramInt2)));
+      AppMethodBeat.o(126787);
+      throw localIllegalArgumentException;
+    }
+    if (paramInt2 > this.jtD.length - 1)
+    {
+      localIllegalArgumentException = new IllegalArgumentException("maxShowIndex should not be greater than (mDisplayedValues.length - 1), now (mDisplayedValues.length - 1) is " + (this.jtD.length - 1) + " maxShowIndex is " + paramInt2);
+      AppMethodBeat.o(126787);
+      throw localIllegalArgumentException;
+    }
+    this.jsZ = paramInt1;
+    this.jta = paramInt2;
+    if (paramBoolean)
+    {
+      this.jth = (this.jsZ + 0);
+      if ((!this.jtt) || (!this.jtv)) {
+        break label335;
+      }
+    }
+    label335:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      M(0, paramBoolean);
+      postInvalidate();
+      AppMethodBeat.o(126787);
+      return;
+    }
+  }
+  
+  private static int k(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (paramInt2 <= 0) {
       paramInt1 = 0;
@@ -513,232 +831,215 @@ public class YANumberPicker
     return paramInt1;
   }
   
-  private void init(Context paramContext)
+  private void qM(int paramInt)
   {
-    this.hBk = n.a(paramContext, null);
-    this.hAT = ViewConfiguration.get(getContext()).getScaledMinimumFlingVelocity();
-    this.hAU = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    if (this.hAv == 0) {
-      this.hAv = d(paramContext, 13.0F);
-    }
-    if (this.hAw == 0) {
-      this.hAw = d(paramContext, 15.0F);
-    }
-    if (this.hAx == 0) {
-      this.hAx = d(paramContext, 14.0F);
-    }
-    if (this.hAA == 0) {
-      this.hAA = e(paramContext, 8.0F);
-    }
-    if (this.hAB == 0) {
-      this.hAB = e(paramContext, 8.0F);
-    }
-    this.hBl.setColor(this.hAE);
-    this.hBl.setAntiAlias(true);
-    this.hBl.setStyle(Paint.Style.STROKE);
-    this.hBl.setStrokeWidth(this.adV);
-    this.hBm.setColor(this.hAs);
-    this.hBm.setAntiAlias(true);
-    this.hBm.setTextAlign(Paint.Align.CENTER);
-    this.hBn.setColor(this.hAu);
-    this.hBn.setAntiAlias(true);
-    this.hBn.setTextAlign(Paint.Align.CENTER);
-    this.hBn.setTextSize(this.hAx);
-    if (this.hAH % 2 == 0) {
-      this.hAH += 1;
-    }
-    if ((this.hAK == -1) || (this.hAL == -1))
-    {
-      if (this.hBo == null)
-      {
-        this.hBo = new String[1];
-        this.hBo[0] = "0";
-      }
-      asW();
-      if (this.hAK == -1) {
-        this.hAK = 0;
-      }
-      if (this.hAL == -1) {
-        this.hAL = (this.hBo.length - 1);
-      }
-      g(this.hAK, this.hAL, false);
-    }
-    asS();
-  }
-  
-  private void nf(int paramInt)
-  {
-    if (this.lf == paramInt) {
+    if (this.mScrollState == paramInt) {
       return;
     }
-    this.lf = paramInt;
+    this.mScrollState = paramInt;
   }
   
-  private int ng(int paramInt)
+  private int qN(int paramInt)
   {
     boolean bool2 = false;
-    if (this.db == 0) {
+    AppMethodBeat.i(126791);
+    if (this.ef == 0)
+    {
+      AppMethodBeat.o(126791);
       return 0;
     }
-    paramInt /= this.db;
-    int i = this.hAH / 2;
+    paramInt /= this.ef;
+    int i = this.jsW / 2;
     int j = getOneRecycleSize();
     boolean bool1 = bool2;
-    if (this.hBe)
+    if (this.jtt)
     {
       bool1 = bool2;
-      if (this.hBg) {
+      if (this.jtv) {
         bool1 = true;
       }
     }
-    paramInt = h(paramInt + i, j, bool1);
-    if ((paramInt >= 0) && (paramInt < getOneRecycleSize())) {
-      return paramInt + this.hAK;
+    paramInt = k(paramInt + i, j, bool1);
+    if ((paramInt >= 0) && (paramInt < getOneRecycleSize()))
+    {
+      i = this.jsZ;
+      AppMethodBeat.o(126791);
+      return paramInt + i;
     }
-    throw new IllegalArgumentException("getWillPickIndexByGlobalY illegal index : " + paramInt + " getOneRecycleSize() : " + getOneRecycleSize() + " mWrapSelectorWheel : " + this.hBe);
+    IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("getWillPickIndexByGlobalY illegal index : " + paramInt + " getOneRecycleSize() : " + getOneRecycleSize() + " mWrapSelectorWheel : " + this.jtt);
+    AppMethodBeat.o(126791);
+    throw localIllegalArgumentException;
   }
   
-  private int nh(int paramInt)
+  private int qO(int paramInt)
   {
-    if ((this.hBe) && (this.hBg)) {}
+    if ((this.jtt) && (this.jtv)) {}
     do
     {
       return paramInt;
-      if (paramInt < this.hBA) {
-        return this.hBA;
+      if (paramInt < this.jtP) {
+        return this.jtP;
       }
-    } while (paramInt <= this.hBz);
-    return this.hBz;
+    } while (paramInt <= this.jtO);
+    return this.jtO;
   }
   
-  public final void asY()
+  public final void aSe()
   {
-    asX();
-    if (this.hBr != null) {
-      this.hBr.sendMessageDelayed(b(1, 0, 0, null), 0L);
+    AppMethodBeat.i(126809);
+    aSd();
+    if (this.jtG != null) {
+      this.jtG.sendMessageDelayed(c(1, 0, 0, null), 0L);
     }
+    AppMethodBeat.o(126809);
   }
   
   public void computeScroll()
   {
-    if (this.db == 0) {}
-    while (!this.hBk.iY.computeScrollOffset()) {
+    AppMethodBeat.i(126797);
+    if (this.ef == 0)
+    {
+      AppMethodBeat.o(126797);
       return;
     }
-    this.hBJ = this.hBk.iY.getCurrY();
-    asV();
-    postInvalidate();
+    if (this.jtz.jR.computeScrollOffset())
+    {
+      this.jtY = this.jtz.jR.getCurrY();
+      aRX();
+      postInvalidate();
+    }
+    AppMethodBeat.o(126797);
   }
   
   public String getContentByCurrValue()
   {
-    return this.hBo[(getValue() - this.hAM)];
+    AppMethodBeat.i(126776);
+    String str = this.jtD[(getValue() - this.jtb)];
+    AppMethodBeat.o(126776);
+    return str;
   }
   
   public String[] getDisplayedValues()
   {
-    return this.hBo;
+    return this.jtD;
   }
   
   public int getMaxValue()
   {
-    return this.hAN;
+    return this.jtc;
   }
   
   public int getMinValue()
   {
-    return this.hAM;
+    return this.jtb;
   }
   
   public int getOneRecycleSize()
   {
-    return this.hAL - this.hAK + 1;
+    return this.jta - this.jsZ + 1;
   }
   
   public int getPickedIndexRelativeToRaw()
   {
-    if (this.hBI != 0)
-    {
-      if (this.hBI < -this.db / 2) {
-        return ng(this.hBJ + this.db + this.hBI);
+    AppMethodBeat.i(126786);
+    int i;
+    if (this.jtX != 0) {
+      if (this.jtX < -this.ef / 2) {
+        i = qN(this.jtY + this.ef + this.jtX);
       }
-      return ng(this.hBJ + this.hBI);
     }
-    return ng(this.hBJ);
+    for (;;)
+    {
+      AppMethodBeat.o(126786);
+      return i;
+      i = qN(this.jtY + this.jtX);
+      continue;
+      i = qN(this.jtY);
+    }
   }
   
   public int getRawContentSize()
   {
-    if (this.hBo != null) {
-      return this.hBo.length;
+    if (this.jtD != null) {
+      return this.jtD.length;
     }
     return 0;
   }
   
   public int getValue()
   {
-    return getPickedIndexRelativeToRaw() + this.hAM;
+    AppMethodBeat.i(126775);
+    int i = getPickedIndexRelativeToRaw();
+    int j = this.jtb;
+    AppMethodBeat.o(126775);
+    return i + j;
   }
   
   public boolean getWrapSelectorWheel()
   {
-    return this.hBe;
+    return this.jtt;
   }
   
   public boolean getWrapSelectorWheelAbsolutely()
   {
-    return (this.hBe) && (this.hBg);
+    return (this.jtt) && (this.jtv);
   }
   
   protected void onAttachedToWindow()
   {
+    AppMethodBeat.i(126768);
     super.onAttachedToWindow();
     if ((this.mHandlerThread == null) || (!this.mHandlerThread.isAlive())) {
-      asS();
+      aRU();
     }
+    AppMethodBeat.o(126768);
   }
   
   protected void onDetachedFromWindow()
   {
+    AppMethodBeat.i(126769);
     super.onDetachedFromWindow();
     this.mHandlerThread.quit();
-    if (this.db == 0) {
+    if (this.ef == 0)
+    {
+      AppMethodBeat.o(126769);
       return;
     }
-    if (!this.hBk.iY.isFinished())
+    if (!this.jtz.jR.isFinished())
     {
-      this.hBk.iY.abortAnimation();
-      this.hBJ = this.hBk.iY.getCurrY();
-      asV();
-      if (this.hBI != 0)
+      this.jtz.jR.abortAnimation();
+      this.jtY = this.jtz.jR.getCurrY();
+      aRX();
+      if (this.jtX != 0)
       {
-        if (this.hBI >= -this.db / 2) {
-          break label162;
+        if (this.jtX >= -this.ef / 2) {
+          break label180;
         }
-        this.hBJ = (this.hBJ + this.db + this.hBI);
+        this.jtY = (this.jtY + this.ef + this.jtX);
       }
     }
     for (;;)
     {
-      asV();
-      nf(0);
-      int i = ng(this.hBJ);
-      if ((i != this.hAS) && (this.hBi)) {}
+      aRX();
+      qM(0);
+      int i = qN(this.jtY);
+      if ((i != this.jth) && (this.jtx)) {}
       try
       {
-        if (this.hBu != null) {
-          this.hBu.a(this, this.hAM + i);
+        if (this.jtJ != null) {
+          this.jtJ.a(this, this.jtb + i);
         }
-        this.hAS = i;
+        this.jth = i;
+        AppMethodBeat.o(126769);
         return;
-        label162:
-        this.hBJ += this.hBI;
+        label180:
+        this.jtY += this.jtX;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          y.printErrStackTrace("MicroMsg.YANumberPicker", localException, "", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.YANumberPicker", localException, "", new Object[0]);
         }
       }
     }
@@ -746,43 +1047,44 @@ public class YANumberPicker
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(126800);
     super.onDraw(paramCanvas);
     float f1 = 0.0F;
     int j = 0;
-    if (j < this.hAH + 1)
+    if (j < this.jsW + 1)
     {
-      float f5 = this.hBI + this.db * j;
-      int i = this.hBH;
+      float f5 = this.jtX + this.ef * j;
+      int i = this.jtW;
       int k = getOneRecycleSize();
       boolean bool;
-      label65:
+      label71:
       float f3;
       float f2;
-      if ((this.hBe) && (this.hBg))
+      if ((this.jtt) && (this.jtv))
       {
         bool = true;
-        k = h(i + j, k, bool);
-        if (j != this.hAH / 2) {
-          break label291;
+        k = k(i + j, k, bool);
+        if (j != this.jsW / 2) {
+          break label297;
         }
-        f3 = (this.db + this.hBI) / this.db;
-        i = a(f3, this.hAs, this.hAt);
-        f1 = this.hAv;
-        f2 = (this.hAw - f1) * f3 + f1;
-        f1 = this.hBa;
-        f1 += (this.hBb - f1) * f3;
-        label159:
-        this.hBm.setColor(i);
-        this.hBm.setTextSize(f2);
+        f3 = (this.ef + this.jtX) / this.ef;
+        i = c(f3, this.jsH, this.jsI);
+        f1 = this.jsK;
+        f1 += (this.jsL - f1) * f3;
+        f2 = this.jtp;
+        f2 += (this.jtq - f2) * f3;
+        label165:
+        this.jtB.setColor(i);
+        this.jtB.setTextSize(f1);
         if ((k < 0) || (k >= getOneRecycleSize())) {
-          break label398;
+          break label406;
         }
-        String str = this.hBo[(this.hAK + k)];
+        String str = this.jtD[(this.jsZ + k)];
         Object localObject = str;
-        if (this.hAW != null) {
-          localObject = TextUtils.ellipsize(str, this.hBm, getWidth() - this.hAD * 2, getEllipsizeType());
+        if (this.jtl != null) {
+          localObject = TextUtils.ellipsize(str, this.jtB, getWidth() - this.jsS * 2, getEllipsizeType());
         }
-        paramCanvas.drawText(((CharSequence)localObject).toString(), this.hBG, f1 + (f5 + this.db / 2), this.hBm);
+        paramCanvas.drawText(((CharSequence)localObject).toString(), this.jtV, f2 + (f5 + this.ef / 2), this.jtB);
       }
       for (;;)
       {
@@ -790,89 +1092,93 @@ public class YANumberPicker
         f1 = f3;
         break;
         bool = false;
-        break label65;
-        label291:
-        if (j == this.hAH / 2 + 1)
+        break label71;
+        label297:
+        if (j == this.jsW / 2 + 1)
         {
-          i = a(1.0F - f1, this.hAs, this.hAt);
-          f2 = this.hAv;
-          f2 += (1.0F - f1) * (this.hAw - f2);
-          f3 = this.hBa;
-          f4 = (1.0F - f1) * (this.hBb - f3) + f3;
+          i = c(1.0F - f1, this.jsH, this.jsI);
+          f2 = this.jsK;
+          f2 = (1.0F - f1) * (this.jsL - f2) + f2;
+          f3 = this.jtp;
+          f4 = (1.0F - f1) * (this.jtq - f3) + f3;
           f3 = f1;
-          f1 = f4;
-          break label159;
+          f1 = f2;
+          f2 = f4;
+          break label165;
         }
-        i = this.hAs;
-        f2 = this.hAv;
-        float f4 = this.hBa;
+        i = this.jsH;
+        float f4 = this.jsK;
+        f2 = this.jtp;
         f3 = f1;
         f1 = f4;
-        break label159;
-        label398:
-        if (!TextUtils.isEmpty(this.hAX)) {
-          paramCanvas.drawText(this.hAX, this.hBG, f1 + (f5 + this.db / 2), this.hBm);
+        break label165;
+        label406:
+        if (!TextUtils.isEmpty(this.jtm)) {
+          paramCanvas.drawText(this.jtm, this.jtV, f2 + (f5 + this.ef / 2), this.jtB);
         }
       }
     }
-    if (this.hBd)
+    if (this.jts)
     {
-      paramCanvas.drawLine(getPaddingLeft() + this.hAF, this.hBE, this.aqF - getPaddingRight() - this.hAG, this.hBE, this.hBl);
-      paramCanvas.drawLine(getPaddingLeft() + this.hAF, this.hBF, this.aqF - getPaddingRight() - this.hAG, this.hBF, this.hBl);
+      paramCanvas.drawLine(getPaddingLeft() + this.jsU, this.jtT, this.asY - getPaddingRight() - this.jsV, this.jtT, this.jtA);
+      paramCanvas.drawLine(getPaddingLeft() + this.jsU, this.jtU, this.asY - getPaddingRight() - this.jsV, this.jtU, this.jtA);
     }
-    if (!TextUtils.isEmpty(this.hAV)) {
-      paramCanvas.drawText(this.hAV, this.hBG + (this.hAO + this.hAy) / 2 + this.hAA, (this.hBE + this.hBF) / 2.0F + this.hBc, this.hBn);
+    if (!TextUtils.isEmpty(this.jtk)) {
+      paramCanvas.drawText(this.jtk, this.jtV + (this.jtd + this.jsN) / 2 + this.jsP, (this.jtT + this.jtU) / 2.0F + this.jtr, this.jtC);
     }
+    AppMethodBeat.o(126800);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = 0;
+    AppMethodBeat.i(126765);
     super.onMeasure(paramInt1, paramInt2);
-    dY(false);
+    fu(false);
     int k = View.MeasureSpec.getMode(paramInt1);
-    this.hBK = k;
+    this.jtZ = k;
     int j = View.MeasureSpec.getSize(paramInt1);
     if (k == 1073741824)
     {
       paramInt1 = j;
       j = View.MeasureSpec.getMode(paramInt2);
-      this.hBL = j;
+      this.jua = j;
       paramInt2 = View.MeasureSpec.getSize(paramInt2);
       if (j != 1073741824) {
-        break label202;
+        break label214;
       }
     }
     for (;;)
     {
       setMeasuredDimension(paramInt1, paramInt2);
+      AppMethodBeat.o(126765);
       return;
-      if (Math.max(this.hAy, this.hAz) == 0)
+      if (Math.max(this.jsN, this.jsO) == 0)
       {
         paramInt1 = 0;
-        label90:
-        if (Math.max(this.hAy, this.hAz) != 0) {
-          break label194;
+        label102:
+        if (Math.max(this.jsN, this.jsO) != 0) {
+          break label206;
         }
       }
       for (;;)
       {
-        int m = this.hAQ;
-        int n = Math.max(this.hAO, this.hAR);
-        i = Math.max(m, (paramInt1 + (i + Math.max(this.hAy, this.hAz)) + this.hAD * 2) * 2 + n) + (getPaddingLeft() + getPaddingRight());
+        int m = this.jtf;
+        int n = Math.max(this.jtd, this.jtg);
+        i = Math.max(m, (paramInt1 + (i + Math.max(this.jsN, this.jsO)) + this.jsS * 2) * 2 + n) + (getPaddingLeft() + getPaddingRight());
         paramInt1 = i;
         if (k != -2147483648) {
           break;
         }
         paramInt1 = Math.min(i, j);
         break;
-        paramInt1 = this.hAB;
-        break label90;
-        label194:
-        i = this.hAA;
+        paramInt1 = this.jsQ;
+        break label102;
+        label206:
+        i = this.jsP;
       }
-      label202:
-      i = this.hAH * (this.hAP + this.hAC * 2) + (getPaddingTop() + getPaddingBottom());
+      label214:
+      i = this.jsW * (this.jte + this.jsR * 2) + (getPaddingTop() + getPaddingBottom());
       if (j == -2147483648) {
         paramInt2 = Math.min(i, paramInt2);
       } else {
@@ -883,69 +1189,77 @@ public class YANumberPicker
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(126766);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.aqF = paramInt1;
-    this.aqG = paramInt2;
-    this.db = (this.aqG / this.hAH);
-    this.hBG = ((this.aqF + getPaddingLeft() - getPaddingRight()) / 2.0F);
+    this.asY = paramInt1;
+    this.asZ = paramInt2;
+    this.ef = (this.asZ / this.jsW);
+    this.jtV = ((this.asY + getPaddingLeft() - getPaddingRight()) / 2.0F);
     if (getOneRecycleSize() > 1) {
       if (this.mHasInit) {
-        paramInt1 = getValue() - this.hAM;
+        paramInt1 = getValue() - this.jtb;
       }
     }
     for (;;)
     {
-      if ((this.hBe) && (this.hBg)) {}
+      if ((this.jtt) && (this.jtv)) {}
+      IllegalArgumentException localIllegalArgumentException;
       for (boolean bool = true;; bool = false)
       {
-        H(paramInt1, bool);
-        if (this.hAv > this.db) {
-          this.hAv = this.db;
+        M(paramInt1, bool);
+        if (this.jsK > this.ef) {
+          this.jsK = this.ef;
         }
-        if (this.hAw > this.db) {
-          this.hAw = this.db;
+        if (this.jsL > this.ef) {
+          this.jsL = this.ef;
         }
-        if (this.hBn != null) {
-          break label193;
+        if (this.jtC != null) {
+          break label209;
         }
-        throw new IllegalArgumentException("mPaintHint should not be null.");
-        if (this.hBf)
+        localIllegalArgumentException = new IllegalArgumentException("mPaintHint should not be null.");
+        AppMethodBeat.o(126766);
+        throw localIllegalArgumentException;
+        if (this.jtu)
         {
-          paramInt1 = this.hBH + (this.hAH - 1) / 2;
+          paramInt1 = this.jtW + (this.jsW - 1) / 2;
           break;
         }
         paramInt1 = 0;
         break;
       }
-      label193:
-      this.hBn.setTextSize(this.hAx);
-      this.hBc = a(this.hBn.getFontMetrics());
-      this.hAy = a(this.hAV, this.hBn);
-      if (this.hBm == null) {
-        throw new IllegalArgumentException("mPaintText should not be null.");
-      }
-      this.hBm.setTextSize(this.hAw);
-      this.hBb = a(this.hBm.getFontMetrics());
-      this.hBm.setTextSize(this.hAv);
-      this.hBa = a(this.hBm.getFontMetrics());
-      asU();
-      this.hAI = (this.hAH / 2);
-      this.hAJ = (this.hAI + 1);
-      this.hBE = (this.hAI * this.aqG / this.hAH);
-      this.hBF = (this.hAJ * this.aqG / this.hAH);
-      if (this.hAF < 0) {
-        this.hAF = 0;
-      }
-      if (this.hAG < 0) {
-        this.hAG = 0;
-      }
-      if ((this.hAF + this.hAG != 0) && (getPaddingLeft() + this.hAF >= this.aqF - getPaddingRight() - this.hAG))
+      label209:
+      this.jtC.setTextSize(this.jsM);
+      this.jtr = a(this.jtC.getFontMetrics());
+      this.jsN = a(this.jtk, this.jtC);
+      if (this.jtB == null)
       {
-        paramInt1 = getPaddingLeft() + this.hAF + getPaddingRight() + this.hAG - this.aqF;
-        this.hAF = ((int)(this.hAF - paramInt1 * this.hAF / (this.hAF + this.hAG)));
-        this.hAG = ((int)(this.hAG - paramInt1 * this.hAG / (this.hAF + this.hAG)));
+        localIllegalArgumentException = new IllegalArgumentException("mPaintText should not be null.");
+        AppMethodBeat.o(126766);
+        throw localIllegalArgumentException;
+      }
+      this.jtB.setTextSize(this.jsL);
+      this.jtq = a(this.jtB.getFontMetrics());
+      this.jtB.setTextSize(this.jsK);
+      this.jtp = a(this.jtB.getFontMetrics());
+      aRW();
+      this.jsX = (this.jsW / 2);
+      this.jsY = (this.jsX + 1);
+      this.jtT = (this.jsX * this.asZ / this.jsW);
+      this.jtU = (this.jsY * this.asZ / this.jsW);
+      if (this.jsU < 0) {
+        this.jsU = 0;
+      }
+      if (this.jsV < 0) {
+        this.jsV = 0;
+      }
+      if ((this.jsU + this.jsV != 0) && (getPaddingLeft() + this.jsU >= this.asY - getPaddingRight() - this.jsV))
+      {
+        paramInt1 = getPaddingLeft() + this.jsU + getPaddingRight() + this.jsV - this.asY;
+        this.jsU = ((int)(this.jsU - paramInt1 * this.jsU / (this.jsU + this.jsV)));
+        this.jsV = ((int)(this.jsV - paramInt1 * this.jsV / (this.jsU + this.jsV)));
       }
       this.mHasInit = true;
+      AppMethodBeat.o(126766);
       return;
       paramInt1 = 0;
     }
@@ -953,185 +1267,206 @@ public class YANumberPicker
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.db == 0) {}
-    int i;
-    label212:
-    do
+    AppMethodBeat.i(126794);
+    if (this.ef == 0)
     {
-      float f;
+      AppMethodBeat.o(126794);
+      return true;
+    }
+    if (this.mVelocityTracker == null) {
+      this.mVelocityTracker = VelocityTracker.obtain();
+    }
+    this.mVelocityTracker.addMovement(paramMotionEvent);
+    this.jtR = paramMotionEvent.getY();
+    int i;
+    label232:
+    int j;
+    int k;
+    label330:
+    int n;
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 0: 
+    case 2: 
+    case 1: 
       do
       {
-        return true;
-        if (this.fB == null) {
-          this.fB = VelocityTracker.obtain();
-        }
-        this.fB.addMovement(paramMotionEvent);
-        this.hBC = paramMotionEvent.getY();
-        switch (paramMotionEvent.getAction())
+        float f;
+        do
         {
-        default: 
-          return true;
-        case 0: 
-          this.hBD = true;
-          this.hBr.removeMessages(1);
-          asX();
-          this.fSz = this.hBC;
-          this.hBB = this.hBJ;
-          nf(0);
-          getParent().requestDisallowInterceptTouchEvent(true);
-          return true;
-        case 2: 
-          f = this.fSz - this.hBC;
-          if ((!this.hBD) || (-this.hAU >= f) || (f >= this.hAU))
+          for (;;)
           {
-            this.hBD = false;
-            this.hBJ = nh((int)(f + this.hBB));
-            asV();
-            invalidate();
+            AppMethodBeat.o(126794);
+            return true;
+            this.jtS = true;
+            this.jtG.removeMessages(1);
+            aSd();
+            this.bTF = this.jtR;
+            this.jtQ = this.jtY;
+            qM(0);
+            getParent().requestDisallowInterceptTouchEvent(true);
+            continue;
+            f = this.bTF - this.jtR;
+            if ((!this.jtS) || (-this.jtj >= f) || (f >= this.jtj))
+            {
+              this.jtS = false;
+              this.jtY = qO((int)(f + this.jtQ));
+              aRX();
+              invalidate();
+            }
+            qM(1);
           }
-          nf(1);
-          return true;
-        case 1: 
-          if (!this.hBD) {
-            break label551;
+          if (!this.jtS) {
+            break;
           }
           f = paramMotionEvent.getY();
           i = 0;
+        } while (i >= this.jsW);
+        if ((this.ef * i > f) || (f >= this.ef * (i + 1))) {
+          break;
         }
-      } while (i >= this.hAH);
-      if ((this.db * i > f) || (f >= this.db * (i + 1))) {
-        break;
-      }
-    } while ((i < 0) || (i >= this.hAH));
-    i -= this.hAH / 2;
-    int j;
-    int k;
-    if (this.hBe)
-    {
-      j = i;
-      if (this.hBg) {}
-    }
-    else
-    {
-      k = getPickedIndexRelativeToRaw();
-      if (k + i <= this.hAL) {
-        break label453;
-      }
-      j = this.hAL - k;
-    }
-    label310:
-    label372:
-    int n;
-    if (this.hBI < -this.db / 2)
-    {
-      k = this.db + this.hBI;
-      i = (int)((this.db + this.hBI) * 300.0F / this.db);
-      if (j < 0)
+      } while ((i < 0) || (i >= this.jsW));
+      i -= this.jsW / 2;
+      if (this.jtt)
       {
-        i = -i - j * 300;
-        n = this.db;
-        if (i >= 300) {
-          break label726;
-        }
-        i = 300;
+        j = i;
+        if (this.jtv) {}
       }
+      else
+      {
+        k = getPickedIndexRelativeToRaw();
+        if (k + i <= this.jta) {
+          break;
+        }
+        j = this.jta - k;
+      }
+      if (this.jtX < -this.ef / 2)
+      {
+        k = this.ef + this.jtX;
+        i = (int)((this.ef + this.jtX) * 300.0F / this.ef);
+        if (j < 0)
+        {
+          i = -i - j * 300;
+          label392:
+          n = this.ef;
+          if (i >= 300) {
+            break label749;
+          }
+          i = 300;
+        }
+      }
+      break;
     }
-    label453:
-    label726:
+    label749:
     for (;;)
     {
       int m = i;
       if (i > 600) {
         m = 600;
       }
-      this.hBk.startScroll(0, this.hBJ, 0, k + j * n, m);
-      this.hBr.sendMessageDelayed(b(1, 0, 0, null), m / 4);
+      this.jtz.startScroll(0, this.jtY, 0, k + j * n, m);
+      this.jtG.sendMessageDelayed(c(1, 0, 0, null), m / 4);
       postInvalidate();
-      return true;
+      break;
       j = i;
-      if (k + i >= this.hAK) {
-        break label310;
+      if (k + i >= this.jsZ) {
+        break label330;
       }
-      j = this.hAK - k;
-      break label310;
+      j = this.jsZ - k;
+      break label330;
       i += j * 300;
-      break label372;
-      k = this.hBI;
-      i = (int)(-this.hBI * 300.0F / this.db);
+      break label392;
+      k = this.jtX;
+      i = (int)(-this.jtX * 300.0F / this.ef);
       if (j < 0)
       {
         i -= j * 300;
-        break label372;
+        break label392;
       }
       i += j * 300;
-      break label372;
+      break label392;
       i += 1;
-      break label212;
-      paramMotionEvent = this.fB;
+      break label232;
+      paramMotionEvent = this.mVelocityTracker;
       paramMotionEvent.computeCurrentVelocity(1000);
-      j = (int)(paramMotionEvent.getYVelocity() * this.hAZ);
-      if (Math.abs(j) > this.hAT)
+      j = (int)(paramMotionEvent.getYVelocity() * this.jto);
+      if (Math.abs(j) > this.jti)
       {
-        paramMotionEvent = this.hBk;
-        i = this.hBJ;
+        paramMotionEvent = this.jtz;
+        i = this.jtY;
         j = -j;
-        k = nh(-2147483648);
-        m = nh(2147483647);
-        paramMotionEvent.iY.fling(0, i, 0, j, -2147483648, 2147483647, k, m);
+        k = qO(-2147483648);
+        m = qO(2147483647);
+        paramMotionEvent.jR.fling(0, i, 0, j, -2147483648, 2147483647, k, m);
         invalidate();
-        nf(2);
+        qM(2);
       }
-      this.hBr.sendMessageDelayed(b(1, 0, 0, null), 0L);
-      if (this.fB == null) {
+      this.jtG.sendMessageDelayed(c(1, 0, 0, null), 0L);
+      if (this.mVelocityTracker == null) {
         break;
       }
-      this.fB.clear();
-      this.fB.recycle();
-      this.fB = null;
-      return true;
-      this.hBB = this.hBJ;
-      asX();
-      this.hBr.sendMessageDelayed(b(1, 0, 0, null), 0L);
-      return true;
+      this.mVelocityTracker.clear();
+      this.mVelocityTracker.recycle();
+      this.mVelocityTracker = null;
+      break;
+      this.jtQ = this.jtY;
+      aSd();
+      this.jtG.sendMessageDelayed(c(1, 0, 0, null), 0L);
+      break;
     }
   }
   
   public void postInvalidate()
   {
-    if (!q.ao(this)) {
+    AppMethodBeat.i(126767);
+    if (!t.aw(this))
+    {
+      AppMethodBeat.o(126767);
       return;
     }
     super.postInvalidate();
+    AppMethodBeat.o(126767);
   }
   
   public void setContentTextTypeface(Typeface paramTypeface)
   {
-    this.hBm.setTypeface(paramTypeface);
+    AppMethodBeat.i(126789);
+    this.jtB.setTypeface(paramTypeface);
+    AppMethodBeat.o(126789);
   }
   
   public void setDisplayedValues(String[] paramArrayOfString)
   {
     boolean bool = true;
-    if (this.hBr != null) {
-      this.hBr.removeMessages(1);
+    AppMethodBeat.i(126770);
+    if (this.jtG != null) {
+      this.jtG.removeMessages(1);
     }
-    asX();
-    if (paramArrayOfString == null) {
-      throw new IllegalArgumentException("newDisplayedValues should not be null.");
+    aSd();
+    if (paramArrayOfString == null)
+    {
+      paramArrayOfString = new IllegalArgumentException("newDisplayedValues should not be null.");
+      AppMethodBeat.o(126770);
+      throw paramArrayOfString;
     }
-    if (this.hAN - this.hAM + 1 > paramArrayOfString.length) {
-      throw new IllegalArgumentException("mMaxValue - mMinValue + 1 should not be greater than mDisplayedValues.length, now ((mMaxValue - mMinValue + 1) is " + (this.hAN - this.hAM + 1) + " newDisplayedValues.length is " + paramArrayOfString.length + ", you need to set MaxValue and MinValue before setDisplayedValues(String[])");
+    if (this.jtc - this.jtb + 1 > paramArrayOfString.length)
+    {
+      paramArrayOfString = new IllegalArgumentException("mMaxValue - mMinValue + 1 should not be greater than mDisplayedValues.length, now ((mMaxValue - mMinValue + 1) is " + (this.jtc - this.jtb + 1) + " newDisplayedValues.length is " + paramArrayOfString.length + ", you need to set MaxValue and MinValue before setDisplayedValues(String[])");
+      AppMethodBeat.o(126770);
+      throw paramArrayOfString;
     }
-    this.hBo = paramArrayOfString;
-    asW();
-    dY(true);
-    this.hAS = (this.hAK + 0);
-    if ((this.hBe) && (this.hBg)) {}
+    this.jtD = paramArrayOfString;
+    aSc();
+    fu(true);
+    this.jth = (this.jsZ + 0);
+    if ((this.jtt) && (this.jtv)) {}
     for (;;)
     {
-      H(0, bool);
+      M(0, bool);
       postInvalidate();
-      this.hBs.sendEmptyMessage(3);
+      this.jtH.sendEmptyMessage(3);
+      AppMethodBeat.o(126770);
       return;
       bool = false;
     }
@@ -1139,51 +1474,68 @@ public class YANumberPicker
   
   public void setDividerColor(int paramInt)
   {
-    if (this.hAE == paramInt) {
+    AppMethodBeat.i(126782);
+    if (this.jsT == paramInt)
+    {
+      AppMethodBeat.o(126782);
       return;
     }
-    this.hAE = paramInt;
-    this.hBl.setColor(this.hAE);
+    this.jsT = paramInt;
+    this.jtA.setColor(this.jsT);
     postInvalidate();
+    AppMethodBeat.o(126782);
   }
   
   public void setDividerHeight(int paramInt)
   {
-    if (paramInt == this.adV) {
+    AppMethodBeat.i(126783);
+    if (paramInt == this.agi)
+    {
+      AppMethodBeat.o(126783);
       return;
     }
-    this.adV = paramInt;
-    this.hBl.setStrokeWidth(this.adV);
+    this.agi = paramInt;
+    this.jtA.setStrokeWidth(this.agi);
     postInvalidate();
+    AppMethodBeat.o(126783);
   }
   
   public void setEllipsizeType(String paramString)
   {
     int i = 0;
+    AppMethodBeat.i(126801);
     while (i < 3)
     {
       if (new String[] { "end", "middle", "start" }[i].equals(paramString))
       {
-        this.hAW = paramString;
+        this.jtl = paramString;
+        AppMethodBeat.o(126801);
         return;
       }
       i += 1;
     }
-    this.hAW = "end";
+    this.jtl = "end";
+    AppMethodBeat.o(126801);
   }
   
   public void setFriction(float paramFloat)
   {
-    if (paramFloat <= 0.0F) {
-      throw new IllegalArgumentException("you should set a a positive float friction, now friction is " + paramFloat);
+    AppMethodBeat.i(126788);
+    if (paramFloat <= 0.0F)
+    {
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("you should set a a positive float friction, now friction is ".concat(String.valueOf(paramFloat)));
+      AppMethodBeat.o(126788);
+      throw localIllegalArgumentException;
     }
     ViewConfiguration.get(getContext());
-    this.hAZ = (ViewConfiguration.getScrollFriction() / paramFloat);
+    this.jto = (ViewConfiguration.getScrollFriction() / paramFloat);
+    AppMethodBeat.o(126788);
   }
   
   public void setHintText(String paramString)
   {
-    String str = this.hAV;
+    AppMethodBeat.i(126777);
+    String str = this.jtk;
     boolean bool;
     if (str == null) {
       if (paramString == null) {
@@ -1192,170 +1544,215 @@ public class YANumberPicker
     }
     while (bool)
     {
+      AppMethodBeat.o(126777);
       return;
       bool = false;
       continue;
       bool = str.equals(paramString);
     }
-    this.hAV = paramString;
-    this.hBc = a(this.hBn.getFontMetrics());
-    this.hAy = a(this.hAV, this.hBn);
-    this.hBs.sendEmptyMessage(3);
+    this.jtk = paramString;
+    this.jtr = a(this.jtC.getFontMetrics());
+    this.jsN = a(this.jtk, this.jtC);
+    this.jtH.sendEmptyMessage(3);
+    AppMethodBeat.o(126777);
   }
   
   public void setHintTextColor(int paramInt)
   {
-    if (this.hAu == paramInt) {
+    AppMethodBeat.i(126781);
+    if (this.jsJ == paramInt)
+    {
+      AppMethodBeat.o(126781);
       return;
     }
-    this.hAu = paramInt;
-    this.hBn.setColor(this.hAu);
+    this.jsJ = paramInt;
+    this.jtC.setColor(this.jsJ);
     postInvalidate();
+    AppMethodBeat.o(126781);
   }
   
   public void setHintTextTypeface(Typeface paramTypeface)
   {
-    this.hBn.setTypeface(paramTypeface);
+    AppMethodBeat.i(126790);
+    this.jtC.setTypeface(paramTypeface);
+    AppMethodBeat.o(126790);
   }
   
   public void setItemPaddingVertical(int paramInt)
   {
-    if (this.hAC == paramInt) {
+    AppMethodBeat.i(126784);
+    if (this.jsR == paramInt)
+    {
+      AppMethodBeat.o(126784);
       return;
     }
-    this.hAC = paramInt;
+    this.jsR = paramInt;
     postInvalidate();
+    AppMethodBeat.o(126784);
   }
   
   public void setMaxValue(int paramInt)
   {
-    if (this.hBo == null) {
-      throw new NullPointerException("mDisplayedValues should not be null");
+    AppMethodBeat.i(126773);
+    Object localObject;
+    if (this.jtD == null)
+    {
+      localObject = new NullPointerException("mDisplayedValues should not be null");
+      AppMethodBeat.o(126773);
+      throw ((Throwable)localObject);
     }
-    if (paramInt - this.hAM + 1 > this.hBo.length) {
-      throw new IllegalArgumentException("(maxValue - mMinValue + 1) should not be greater than mDisplayedValues.length now  (maxValue - mMinValue + 1) is " + (paramInt - this.hAM + 1) + " and mDisplayedValues.length is " + this.hBo.length);
+    if (paramInt - this.jtb + 1 > this.jtD.length)
+    {
+      localObject = new IllegalArgumentException("(maxValue - mMinValue + 1) should not be greater than mDisplayedValues.length now  (maxValue - mMinValue + 1) is " + (paramInt - this.jtb + 1) + " and mDisplayedValues.length is " + this.jtD.length);
+      AppMethodBeat.o(126773);
+      throw ((Throwable)localObject);
     }
-    this.hAN = paramInt;
-    this.hAL = (this.hAN - this.hAM + this.hAK);
-    g(this.hAK, this.hAL, true);
-    asU();
+    this.jtc = paramInt;
+    this.jta = (this.jtc - this.jtb + this.jsZ);
+    j(this.jsZ, this.jta, true);
+    aRW();
+    AppMethodBeat.o(126773);
   }
   
   public void setMinValue(int paramInt)
   {
-    this.hAM = paramInt;
-    this.hAK = 0;
-    asU();
+    AppMethodBeat.i(126772);
+    this.jtb = paramInt;
+    this.jsZ = 0;
+    aRW();
+    AppMethodBeat.o(126772);
   }
   
   public void setNormalTextColor(int paramInt)
   {
-    if (this.hAs == paramInt) {
+    AppMethodBeat.i(126779);
+    if (this.jsH == paramInt)
+    {
+      AppMethodBeat.o(126779);
       return;
     }
-    this.hAs = paramInt;
+    this.jsH = paramInt;
     postInvalidate();
+    AppMethodBeat.o(126779);
   }
   
   public void setOnScrollListener(YANumberPicker.a parama)
   {
-    this.hBv = parama;
+    this.jtK = parama;
   }
   
   public void setOnValueChangeListenerInScrolling(YANumberPicker.c paramc)
   {
-    this.hBw = paramc;
+    this.jtL = paramc;
   }
   
   public void setOnValueChangedListener(YANumberPicker.b paramb)
   {
-    this.hBu = paramb;
+    this.jtJ = paramb;
   }
   
   public void setOnValueChangedListenerRelativeToRaw(YANumberPicker.d paramd)
   {
-    this.hBt = paramd;
+    this.jtI = paramd;
   }
   
   public void setPickedIndexRelativeToMin(int paramInt)
   {
+    AppMethodBeat.i(126778);
     if ((paramInt >= 0) && (paramInt < getOneRecycleSize()))
     {
-      this.hAS = (this.hAK + paramInt);
-      if ((!this.hBe) || (!this.hBg)) {
-        break label49;
+      this.jth = (this.jsZ + paramInt);
+      if ((!this.jtt) || (!this.jtv)) {
+        break label61;
       }
     }
-    label49:
+    label61:
     for (boolean bool = true;; bool = false)
     {
-      H(paramInt, bool);
+      M(paramInt, bool);
       postInvalidate();
+      AppMethodBeat.o(126778);
       return;
     }
   }
   
   public void setPickedIndexRelativeToRaw(int paramInt)
   {
+    AppMethodBeat.i(126785);
     int i;
-    if ((this.hAK >= 0) && (this.hAK <= paramInt) && (paramInt <= this.hAL))
+    if ((this.jsZ >= 0) && (this.jsZ <= paramInt) && (paramInt <= this.jta))
     {
-      this.hAS = paramInt;
-      i = this.hAK;
-      if ((!this.hBe) || (!this.hBg)) {
-        break label62;
+      this.jth = paramInt;
+      i = this.jsZ;
+      if ((!this.jtt) || (!this.jtv)) {
+        break label74;
       }
     }
-    label62:
+    label74:
     for (boolean bool = true;; bool = false)
     {
-      H(paramInt - i, bool);
+      M(paramInt - i, bool);
       postInvalidate();
+      AppMethodBeat.o(126785);
       return;
     }
   }
   
   public void setSelectedTextColor(int paramInt)
   {
-    if (this.hAt == paramInt) {
+    AppMethodBeat.i(126780);
+    if (this.jsI == paramInt)
+    {
+      AppMethodBeat.o(126780);
       return;
     }
-    this.hAt = paramInt;
+    this.jsI = paramInt;
     postInvalidate();
+    AppMethodBeat.o(126780);
   }
   
   public void setValue(int paramInt)
   {
-    if (paramInt < this.hAM) {
-      throw new IllegalArgumentException("should not set a value less than mMinValue, value is " + paramInt);
+    AppMethodBeat.i(126774);
+    IllegalArgumentException localIllegalArgumentException;
+    if (paramInt < this.jtb)
+    {
+      localIllegalArgumentException = new IllegalArgumentException("should not set a value less than mMinValue, value is ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(126774);
+      throw localIllegalArgumentException;
     }
-    if (paramInt > this.hAN) {
-      throw new IllegalArgumentException("should not set a value greater than mMaxValue, value is " + paramInt);
+    if (paramInt > this.jtc)
+    {
+      localIllegalArgumentException = new IllegalArgumentException("should not set a value greater than mMaxValue, value is ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(126774);
+      throw localIllegalArgumentException;
     }
-    setPickedIndexRelativeToRaw(paramInt - this.hAM);
+    setPickedIndexRelativeToRaw(paramInt - this.jtb);
+    AppMethodBeat.o(126774);
   }
   
   public void setWrapSelectorWheel(boolean paramBoolean)
   {
-    if (this.hBe != paramBoolean)
+    AppMethodBeat.i(126771);
+    if (this.jtt != paramBoolean)
     {
-      if (paramBoolean) {
-        break label30;
+      if (!paramBoolean)
+      {
+        if (this.mScrollState == 0)
+        {
+          aRV();
+          AppMethodBeat.o(126771);
+          return;
+        }
+        this.jtw = true;
+        AppMethodBeat.o(126771);
+        return;
       }
-      if (this.lf == 0) {
-        asT();
-      }
+      this.jtt = paramBoolean;
+      aSc();
+      postInvalidate();
     }
-    else
-    {
-      return;
-    }
-    this.hBh = true;
-    return;
-    label30:
-    this.hBe = paramBoolean;
-    asW();
-    postInvalidate();
+    AppMethodBeat.o(126771);
   }
 }
 

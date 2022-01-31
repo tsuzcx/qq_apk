@@ -1,21 +1,27 @@
 package com.tencent.mm.modelvideo;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class y$a$1
-  implements am.a
+  implements ap.a
 {
   y$a$1(y.a parama) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    y.a.a(this.eIu);
+    AppMethodBeat.i(50866);
+    y.a.a(this.fYk);
+    AppMethodBeat.o(50866);
     return false;
   }
   
   public final String toString()
   {
-    return super.toString() + "|scenePusher";
+    AppMethodBeat.i(50867);
+    String str = super.toString() + "|scenePusher";
+    AppMethodBeat.o(50867);
+    return str;
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 
@@ -10,10 +11,12 @@ final class NoteEditorUI$18
   
   public final void run()
   {
-    WXRTEditText localWXRTEditText = NoteEditorUI.j(this.rLT).ciC();
+    AppMethodBeat.i(27014);
+    WXRTEditText localWXRTEditText = NoteEditorUI.j(this.vCx).diT();
     if (localWXRTEditText != null) {
       localWXRTEditText.clearFocus();
     }
+    AppMethodBeat.o(27014);
   }
 }
 

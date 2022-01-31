@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.walletlock.c;
 
-import com.tencent.mm.h.a.rg;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ss;
 
 public final class c
-  extends com.tencent.mm.sdk.b.c<rg>
+  extends com.tencent.mm.sdk.b.c<ss>
 {
   public c()
   {
-    this.udX = rg.class.getName().hashCode();
+    AppMethodBeat.i(51688);
+    this.__eventId = ss.class.getName().hashCode();
+    AppMethodBeat.o(51688);
   }
 }
 

@@ -1,134 +1,159 @@
 package com.tencent.matrix.d;
 
-import android.util.Log;
+import android.app.Application;
+import com.tencent.matrix.e.c.a;
+import com.tencent.matrix.g.d;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class b
+public abstract class b
+  implements com.tencent.matrix.b.a, c.a
 {
-  private static a bsS;
-  private static a bsT;
+  public static final int PLUGIN_CREATE = 0;
+  public static final int PLUGIN_DESTROYED = 8;
+  public static final int PLUGIN_INITED = 1;
+  public static final int PLUGIN_STARTED = 2;
+  public static final int PLUGIN_STOPPED = 4;
+  private static final String TAG = "Matrix.Plugin";
+  private Application application;
+  private boolean isSupported = true;
+  private c pluginListener;
+  private int status = 0;
   
-  static
+  public void destroy()
   {
-    a local1 = new a()
+    if (isPluginStarted()) {
+      stop();
+    }
+    if (isPluginDestroyed()) {
+      throw new RuntimeException("plugin destroy, but plugin has been already destroyed");
+    }
+    this.status = 8;
+    if (this.pluginListener == null) {
+      throw new RuntimeException("plugin destroy, plugin listener is null");
+    }
+    this.pluginListener.e(this);
+  }
+  
+  public Application getApplication()
+  {
+    return this.application;
+  }
+  
+  public JSONObject getJsonInfo()
+  {
+    return new JSONObject();
+  }
+  
+  public int getStatus()
+  {
+    return this.status;
+  }
+  
+  public String getTag()
+  {
+    return getClass().getName();
+  }
+  
+  public void init(Application paramApplication, c paramc)
+  {
+    if ((this.application != null) || (this.pluginListener != null)) {
+      throw new RuntimeException("plugin duplicate init, application or plugin listener is not null");
+    }
+    this.status = 1;
+    this.application = paramApplication;
+    this.pluginListener = paramc;
+    com.tencent.matrix.a.bLP.a(this);
+  }
+  
+  public boolean isForeground()
+  {
+    return com.tencent.matrix.a.bLP.bLR;
+  }
+  
+  public boolean isPluginDestroyed()
+  {
+    return this.status == 8;
+  }
+  
+  public boolean isPluginStarted()
+  {
+    return this.status == 2;
+  }
+  
+  public boolean isPluginStopped()
+  {
+    return this.status == 4;
+  }
+  
+  public boolean isSupported()
+  {
+    return this.isSupported;
+  }
+  
+  public void onDetectIssue(com.tencent.matrix.e.b paramb)
+  {
+    if (paramb.tag == null) {
+      paramb.tag = getTag();
+    }
+    paramb.bOy = this;
+    JSONObject localJSONObject = paramb.bOx;
+    try
     {
-      public final void d(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {
-          return;
-        }
-        String.format(paramAnonymousString2, paramAnonymousVarArgs);
+      if (paramb.tag != null) {
+        localJSONObject.put("tag", paramb.tag);
       }
-      
-      public final void e(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {
-          return;
-        }
-        String.format(paramAnonymousString2, paramAnonymousVarArgs);
+      if (paramb.bOw != null) {
+        localJSONObject.put("type", paramb.bOw);
       }
-      
-      public final void i(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      localJSONObject.put("process", d.aI(this.application));
+      localJSONObject.put("time", System.currentTimeMillis());
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {
-          return;
-        }
-        String.format(paramAnonymousString2, paramAnonymousVarArgs);
+        com.tencent.matrix.g.c.e("Matrix.Plugin", "json error", new Object[] { localJSONException });
       }
-      
-      public final void printErrStackTrace(String paramAnonymousString1, Throwable paramAnonymousThrowable, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {}
-        for (paramAnonymousString1 = paramAnonymousString2;; paramAnonymousString1 = String.format(paramAnonymousString2, paramAnonymousVarArgs))
-        {
-          paramAnonymousString2 = paramAnonymousString1;
-          if (paramAnonymousString1 == null) {
-            paramAnonymousString2 = "";
-          }
-          new StringBuilder().append(paramAnonymousString2).append("  ").append(Log.getStackTraceString(paramAnonymousThrowable));
-          return;
-        }
-      }
-      
-      public final void v(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {
-          return;
-        }
-        String.format(paramAnonymousString2, paramAnonymousVarArgs);
-      }
-      
-      public final void w(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {
-          return;
-        }
-        String.format(paramAnonymousString2, paramAnonymousVarArgs);
-      }
-    };
-    bsS = local1;
-    bsT = local1;
-  }
-  
-  public static void b(a parama)
-  {
-    bsT = parama;
-  }
-  
-  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (bsT != null) {
-      bsT.d(paramString1, paramString2, paramVarArgs);
     }
+    this.pluginListener.a(paramb);
   }
   
-  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
+  public void onForeground(boolean paramBoolean) {}
+  
+  public void start()
   {
-    if (bsT != null) {
-      bsT.e(paramString1, paramString2, paramVarArgs);
+    if (isPluginDestroyed()) {
+      throw new RuntimeException("plugin start, but plugin has been already destroyed");
     }
-  }
-  
-  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (bsT != null) {
-      bsT.i(paramString1, paramString2, paramVarArgs);
+    if (isPluginStarted()) {
+      throw new RuntimeException("plugin start, but plugin has been already started");
     }
-  }
-  
-  public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    if (bsT != null) {
-      bsT.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    this.status = 2;
+    if (this.pluginListener == null) {
+      throw new RuntimeException("plugin start, plugin listener is null");
     }
+    this.pluginListener.c(this);
   }
   
-  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
+  public void stop()
   {
-    if (bsT != null) {
-      bsT.v(paramString1, paramString2, paramVarArgs);
+    if (isPluginDestroyed()) {
+      throw new RuntimeException("plugin stop, but plugin has been already destroyed");
     }
-  }
-  
-  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (bsT != null) {
-      bsT.w(paramString1, paramString2, paramVarArgs);
+    if (!isPluginStarted()) {
+      throw new RuntimeException("plugin stop, but plugin is never started");
     }
+    this.status = 4;
+    if (this.pluginListener == null) {
+      throw new RuntimeException("plugin stop, plugin listener is null");
+    }
+    this.pluginListener.d(this);
   }
   
-  public static abstract interface a
+  public void unSupportPlugin()
   {
-    public abstract void d(String paramString1, String paramString2, Object... paramVarArgs);
-    
-    public abstract void e(String paramString1, String paramString2, Object... paramVarArgs);
-    
-    public abstract void i(String paramString1, String paramString2, Object... paramVarArgs);
-    
-    public abstract void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs);
-    
-    public abstract void v(String paramString1, String paramString2, Object... paramVarArgs);
-    
-    public abstract void w(String paramString1, String paramString2, Object... paramVarArgs);
+    this.isSupported = false;
   }
 }
 

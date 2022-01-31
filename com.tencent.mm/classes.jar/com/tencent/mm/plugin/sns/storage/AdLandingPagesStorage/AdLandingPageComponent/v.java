@@ -1,9 +1,13 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 public final class v
-  extends s
+  extends t
 {
-  public String lfj;
+  public float fontSize;
+  public String hhh;
+  public String label;
+  public String rsU;
+  public float value;
 }
 
 

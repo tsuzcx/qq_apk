@@ -14,8 +14,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
-import android.support.v4.f.c;
-import android.support.v4.f.n;
+import android.support.v4.e.c;
+import android.support.v4.e.n;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,19 +30,18 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class FragmentActivity
-  extends d
+  extends SupportActivity
   implements ViewModelStoreOwner, a.a, a.c
 {
   static final String ALLOCATED_REQUEST_INDICIES_TAG = "android:support:request_indicies";
   static final String FRAGMENTS_TAG = "android:support:fragments";
   static final int MAX_NUM_PENDING_FRAGMENT_ACTIVITY_RESULTS = 65534;
-  static final int MSG_REALLY_STOPPED = 1;
   static final int MSG_RESUME_PENDING = 2;
   static final String NEXT_CANDIDATE_REQUEST_INDEX_TAG = "android:support:next_request_index";
   static final String REQUEST_FRAGMENT_WHO_TAG = "android:support:request_fragment_who";
   private static final String TAG = "FragmentActivity";
   boolean mCreated;
-  final h mFragments = new h(new a());
+  final e mFragments = new e(new a());
   final Handler mHandler = new Handler()
   {
     public final void handleMessage(Message paramAnonymousMessage)
@@ -51,25 +50,18 @@ public class FragmentActivity
       {
       default: 
         super.handleMessage(paramAnonymousMessage);
-      case 1: 
-        do
-        {
-          return;
-        } while (!FragmentActivity.this.mStopped);
-        FragmentActivity.this.doReallyStop(false);
         return;
       }
       FragmentActivity.this.onResumeFragments();
       FragmentActivity.this.mFragments.execPendingActions();
     }
   };
-  t mLoaderManager;
   int mNextCandidateRequestIndex;
   n<String> mPendingFragmentActivityResults;
-  boolean mReallyStopped = true;
   boolean mRequestedPermissionsFromFragment;
   boolean mResumed;
-  boolean mRetaining;
+  boolean mStartedActivityFromFragment;
+  boolean mStartedIntentSenderFromFragment;
   boolean mStopped = true;
   private ViewModelStore mViewModelStore;
   
@@ -82,10 +74,10 @@ public class FragmentActivity
     {
       n localn = this.mPendingFragmentActivityResults;
       i = this.mNextCandidateRequestIndex;
-      if (localn.Ef) {
+      if (localn.EV) {
         localn.gc();
       }
-      if (c.a(localn.Ew, localn.mSize, i) < 0) {
+      if (c.b(localn.Fk, localn.mSize, i) < 0) {
         break;
       }
       this.mNextCandidateRequestIndex = ((this.mNextCandidateRequestIndex + 1) % 65534);
@@ -96,18 +88,25 @@ public class FragmentActivity
     return i;
   }
   
+  static void checkForValidRequestCode(int paramInt)
+  {
+    if ((0xFFFF0000 & paramInt) != 0) {
+      throw new IllegalArgumentException("Can only use lower 16 bits for requestCode");
+    }
+  }
+  
   private void markFragmentsCreated()
   {
     while (markState(getSupportFragmentManager(), Lifecycle.State.CREATED)) {}
   }
   
-  private static boolean markState(j paramj, Lifecycle.State paramState)
+  private static boolean markState(g paramg, Lifecycle.State paramState)
   {
-    paramj = paramj.getFragments().iterator();
+    paramg = paramg.getFragments().iterator();
     boolean bool = false;
-    while (paramj.hasNext())
+    while (paramg.hasNext())
     {
-      Object localObject = (Fragment)paramj.next();
+      Object localObject = (Fragment)paramg.next();
       if (localObject != null)
       {
         if (((Fragment)localObject).getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED))
@@ -119,7 +118,7 @@ public class FragmentActivity
         if (localObject == null) {
           break label83;
         }
-        bool = markState((j)localObject, paramState) | bool;
+        bool = markState((g)localObject, paramState) | bool;
       }
     }
     label83:
@@ -135,17 +134,6 @@ public class FragmentActivity
     return this.mFragments.mHost.mFragmentManager.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
   }
   
-  void doReallyStop(boolean paramBoolean)
-  {
-    if (!this.mReallyStopped)
-    {
-      this.mReallyStopped = true;
-      this.mRetaining = paramBoolean;
-      this.mHandler.removeMessages(1);
-      onReallyStop();
-    }
-  }
-  
   public void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
     super.dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
@@ -157,14 +145,12 @@ public class FragmentActivity
     paramPrintWriter.print(str);
     paramPrintWriter.print("mCreated=");
     paramPrintWriter.print(this.mCreated);
-    paramPrintWriter.print("mResumed=");
+    paramPrintWriter.print(" mResumed=");
     paramPrintWriter.print(this.mResumed);
     paramPrintWriter.print(" mStopped=");
     paramPrintWriter.print(this.mStopped);
-    paramPrintWriter.print(" mReallyStopped=");
-    paramPrintWriter.println(this.mReallyStopped);
-    if (this.mLoaderManager != null) {
-      this.mLoaderManager.dump(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+    if (getApplication() != null) {
+      p.d(this).dump(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
     this.mFragments.mHost.mFragmentManager.dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
   }
@@ -173,7 +159,7 @@ public class FragmentActivity
   {
     b localb = (b)getLastNonConfigurationInstance();
     if (localb != null) {
-      return localb.vj;
+      return localb.wg;
     }
     return null;
   }
@@ -183,18 +169,15 @@ public class FragmentActivity
     return super.getLifecycle();
   }
   
-  public j getSupportFragmentManager()
+  public g getSupportFragmentManager()
   {
     return this.mFragments.mHost.mFragmentManager;
   }
   
-  public t getSupportLoaderManager()
+  @Deprecated
+  public p getSupportLoaderManager()
   {
-    if (this.mLoaderManager != null) {
-      return this.mLoaderManager;
-    }
-    this.mLoaderManager = new u(this, getViewModelStore());
-    return this.mLoaderManager;
+    return p.d(this);
   }
   
   public ViewModelStore getViewModelStore()
@@ -202,13 +185,20 @@ public class FragmentActivity
     if (getApplication() == null) {
       throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
     }
-    if (this.mViewModelStore == null) {
-      this.mViewModelStore = new ViewModelStore();
+    if (this.mViewModelStore == null)
+    {
+      b localb = (b)getLastNonConfigurationInstance();
+      if (localb != null) {
+        this.mViewModelStore = localb.wh;
+      }
+      if (this.mViewModelStore == null) {
+        this.mViewModelStore = new ViewModelStore();
+      }
     }
     return this.mViewModelStore;
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     this.mFragments.noteStateNotSaved();
     int i = paramInt1 >> 16;
@@ -216,8 +206,8 @@ public class FragmentActivity
     if (i != 0)
     {
       i -= 1;
-      localObject = (String)this.mPendingFragmentActivityResults.get(i);
-      this.mPendingFragmentActivityResults.remove(i);
+      localObject = (String)this.mPendingFragmentActivityResults.get(i, null);
+      this.mPendingFragmentActivityResults.delete(i);
       if (localObject != null) {}
     }
     do
@@ -229,8 +219,8 @@ public class FragmentActivity
       } while (localObject == null);
       ((Fragment)localObject).onActivityResult(0xFFFF & paramInt1, paramInt2, paramIntent);
       return;
-      localObject = a.bF();
-    } while ((localObject != null) && (((a.b)localObject).bH()));
+      localObject = a.ct();
+    } while ((localObject != null) && (((a.b)localObject).cv()));
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
@@ -238,10 +228,10 @@ public class FragmentActivity
   
   public void onBackPressed()
   {
-    k localk = this.mFragments.mHost.mFragmentManager;
-    boolean bool = localk.isStateSaved();
+    FragmentManagerImpl localFragmentManagerImpl = this.mFragments.mHost.mFragmentManager;
+    boolean bool = localFragmentManagerImpl.isStateSaved();
     if ((bool) && (Build.VERSION.SDK_INT <= 25)) {}
-    while ((!bool) && (localk.popBackStackImmediate())) {
+    while ((!bool) && (localFragmentManagerImpl.popBackStackImmediate())) {
       return;
     }
     super.onBackPressed();
@@ -254,31 +244,31 @@ public class FragmentActivity
     this.mFragments.mHost.mFragmentManager.dispatchConfigurationChanged(paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     Object localObject = this.mFragments;
-    ((h)localObject).mHost.mFragmentManager.a(((h)localObject).mHost, ((h)localObject).mHost, null);
+    ((e)localObject).mHost.mFragmentManager.attachController(((e)localObject).mHost, ((e)localObject).mHost, null);
     super.onCreate(paramBundle);
     localObject = (b)getLastNonConfigurationInstance();
-    if (localObject != null) {
-      this.mViewModelStore = ((b)localObject).vk;
+    if ((localObject != null) && (((b)localObject).wh != null) && (this.mViewModelStore == null)) {
+      this.mViewModelStore = ((b)localObject).wh;
     }
     if (paramBundle != null)
     {
       Parcelable localParcelable = paramBundle.getParcelable("android:support:fragments");
-      h localh = this.mFragments;
+      e locale = this.mFragments;
       if (localObject == null) {
-        break label175;
+        break label189;
       }
-      localObject = ((b)localObject).vl;
-      localh.mHost.mFragmentManager.a(localParcelable, (l)localObject);
+      localObject = ((b)localObject).wi;
+      locale.mHost.mFragmentManager.restoreAllState(localParcelable, (h)localObject);
       if (paramBundle.containsKey("android:support:next_request_index"))
       {
         this.mNextCandidateRequestIndex = paramBundle.getInt("android:support:next_request_index");
         localObject = paramBundle.getIntArray("android:support:request_indicies");
         paramBundle = paramBundle.getStringArray("android:support:request_fragment_who");
         if ((localObject != null) && (paramBundle != null) && (localObject.length == paramBundle.length)) {
-          break label180;
+          break label194;
         }
       }
     }
@@ -291,10 +281,10 @@ public class FragmentActivity
       }
       this.mFragments.mHost.mFragmentManager.dispatchCreate();
       return;
-      label175:
+      label189:
       localObject = null;
       break;
-      label180:
+      label194:
       this.mPendingFragmentActivityResults = new n(localObject.length);
       int i = 0;
       while (i < localObject.length)
@@ -310,18 +300,37 @@ public class FragmentActivity
     if (paramInt == 0)
     {
       boolean bool = super.onCreatePanelMenu(paramInt, paramMenu);
-      h localh = this.mFragments;
+      e locale = this.mFragments;
       MenuInflater localMenuInflater = getMenuInflater();
-      return bool | localh.mHost.mFragmentManager.dispatchCreateOptionsMenu(paramMenu, localMenuInflater);
+      return bool | locale.mHost.mFragmentManager.dispatchCreateOptionsMenu(paramMenu, localMenuInflater);
     }
     return super.onCreatePanelMenu(paramInt, paramMenu);
   }
   
-  public void onDestroy()
+  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    View localView2 = dispatchFragmentsOnCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null) {
+      localView1 = super.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    }
+    return localView1;
+  }
+  
+  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    View localView2 = dispatchFragmentsOnCreateView(null, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null) {
+      localView1 = super.onCreateView(paramString, paramContext, paramAttributeSet);
+    }
+    return localView1;
+  }
+  
+  protected void onDestroy()
   {
     super.onDestroy();
-    doReallyStop(false);
-    if ((this.mViewModelStore != null) && (!this.mRetaining)) {
+    if ((this.mViewModelStore != null) && (!isChangingConfigurations())) {
       this.mViewModelStore.clear();
     }
     this.mFragments.mHost.mFragmentManager.dispatchDestroy();
@@ -353,7 +362,7 @@ public class FragmentActivity
     this.mFragments.mHost.mFragmentManager.dispatchMultiWindowModeChanged(paramBoolean);
   }
   
-  public void onNewIntent(Intent paramIntent)
+  protected void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
     this.mFragments.noteStateNotSaved();
@@ -372,7 +381,7 @@ public class FragmentActivity
     }
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
     this.mResumed = false;
@@ -381,7 +390,7 @@ public class FragmentActivity
       this.mHandler.removeMessages(2);
       onResumeFragments();
     }
-    this.mFragments.mHost.mFragmentManager.ac(4);
+    this.mFragments.mHost.mFragmentManager.dispatchPause();
   }
   
   public void onPictureInPictureModeChanged(boolean paramBoolean)
@@ -389,7 +398,7 @@ public class FragmentActivity
     this.mFragments.mHost.mFragmentManager.dispatchPictureInPictureModeChanged(paramBoolean);
   }
   
-  public void onPostResume()
+  protected void onPostResume()
   {
     super.onPostResume();
     this.mHandler.removeMessages(2);
@@ -410,11 +419,6 @@ public class FragmentActivity
     return super.onPreparePanel(paramInt, paramView, paramMenu);
   }
   
-  void onReallyStop()
-  {
-    this.mFragments.mHost.mFragmentManager.ac(2);
-  }
-  
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     this.mFragments.noteStateNotSaved();
@@ -423,13 +427,13 @@ public class FragmentActivity
     if (i != 0)
     {
       i -= 1;
-      localObject = (String)this.mPendingFragmentActivityResults.get(i);
-      this.mPendingFragmentActivityResults.remove(i);
+      localObject = (String)this.mPendingFragmentActivityResults.get(i, null);
+      this.mPendingFragmentActivityResults.delete(i);
       if (localObject != null) {
-        break label57;
+        break label58;
       }
     }
-    label57:
+    label58:
     do
     {
       return;
@@ -438,7 +442,7 @@ public class FragmentActivity
     ((Fragment)localObject).onRequestPermissionsResult(paramInt & 0xFFFF, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     this.mHandler.sendEmptyMessage(2);
@@ -458,24 +462,19 @@ public class FragmentActivity
   
   public final Object onRetainNonConfigurationInstance()
   {
-    if (this.mStopped) {
-      doReallyStop(true);
-    }
-    Object localObject1 = onRetainCustomNonConfigurationInstance();
-    Object localObject2 = this.mFragments.mHost.mFragmentManager;
-    k.a(((k)localObject2).vO);
-    localObject2 = ((k)localObject2).vO;
-    if ((localObject2 == null) && (this.mViewModelStore == null) && (localObject1 == null)) {
+    Object localObject = onRetainCustomNonConfigurationInstance();
+    h localh = this.mFragments.mHost.mFragmentManager.retainNonConfig();
+    if ((localh == null) && (this.mViewModelStore == null) && (localObject == null)) {
       return null;
     }
     b localb = new b();
-    localb.vj = localObject1;
-    localb.vk = this.mViewModelStore;
-    localb.vl = ((l)localObject2);
+    localb.wg = localObject;
+    localb.wh = this.mViewModelStore;
+    localb.wi = localh;
     return localb;
   }
   
-  public void onSaveInstanceState(Bundle paramBundle)
+  protected void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
     markFragmentsCreated();
@@ -500,12 +499,10 @@ public class FragmentActivity
     }
   }
   
-  public void onStart()
+  protected void onStart()
   {
     super.onStart();
     this.mStopped = false;
-    this.mReallyStopped = false;
-    this.mHandler.removeMessages(1);
     if (!this.mCreated)
     {
       this.mCreated = true;
@@ -521,12 +518,11 @@ public class FragmentActivity
     this.mFragments.noteStateNotSaved();
   }
   
-  public void onStop()
+  protected void onStop()
   {
     super.onStop();
     this.mStopped = true;
     markFragmentsCreated();
-    this.mHandler.sendEmptyMessage(1);
     this.mFragments.mHost.mFragmentManager.dispatchStop();
   }
   
@@ -550,14 +546,14 @@ public class FragmentActivity
     }
   }
   
-  public void setEnterSharedElementCallback(ad paramad)
+  public void setEnterSharedElementCallback(z paramz)
   {
-    a.a(this, paramad);
+    a.a(this, paramz);
   }
   
-  public void setExitSharedElementCallback(ad paramad)
+  public void setExitSharedElementCallback(z paramz)
   {
-    a.b(this, paramad);
+    a.b(this, paramz);
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt)
@@ -566,6 +562,14 @@ public class FragmentActivity
       checkForValidRequestCode(paramInt);
     }
     super.startActivityForResult(paramIntent, paramInt);
+  }
+  
+  public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
+  {
+    if ((!this.mStartedActivityFromFragment) && (paramInt != -1)) {
+      checkForValidRequestCode(paramInt);
+    }
+    super.startActivityForResult(paramIntent, paramInt, paramBundle);
   }
   
   public void startActivityFromFragment(Fragment paramFragment, Intent paramIntent, int paramInt)
@@ -591,6 +595,22 @@ public class FragmentActivity
     this.mStartedActivityFromFragment = false;
   }
   
+  public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((!this.mStartedIntentSenderFromFragment) && (paramInt1 != -1)) {
+      checkForValidRequestCode(paramInt1);
+    }
+    super.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
+  {
+    if ((!this.mStartedIntentSenderFromFragment) && (paramInt1 != -1)) {
+      checkForValidRequestCode(paramInt1);
+    }
+    super.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+  }
+  
   public void startIntentSenderFromFragment(Fragment paramFragment, IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
   {
     this.mStartedIntentSenderFromFragment = true;
@@ -611,7 +631,7 @@ public class FragmentActivity
   
   public void supportFinishAfterTransition()
   {
-    a.c(this);
+    a.e(this);
   }
   
   @Deprecated
@@ -622,12 +642,12 @@ public class FragmentActivity
   
   public void supportPostponeEnterTransition()
   {
-    a.d(this);
+    a.f(this);
   }
   
   public void supportStartPostponedEnterTransition()
   {
-    a.e(this);
+    a.g(this);
   }
   
   public final void validateRequestPermissionsRequestCode(int paramInt)
@@ -638,14 +658,14 @@ public class FragmentActivity
   }
   
   final class a
-    extends i<FragmentActivity>
+    extends f<FragmentActivity>
   {
     public a()
     {
       super();
     }
     
-    public final boolean F(String paramString)
+    public final boolean G(String paramString)
     {
       return a.a(FragmentActivity.this, paramString);
     }
@@ -670,12 +690,12 @@ public class FragmentActivity
       FragmentActivity.this.dump(paramString, null, paramPrintWriter, paramArrayOfString);
     }
     
-    public final boolean bN()
+    public final boolean cB()
     {
       return !FragmentActivity.this.isFinishing();
     }
     
-    public final void bO()
+    public final void cC()
     {
       FragmentActivity.this.supportInvalidateOptionsMenu();
     }
@@ -718,9 +738,9 @@ public class FragmentActivity
   
   static final class b
   {
-    Object vj;
-    ViewModelStore vk;
-    l vl;
+    Object wg;
+    ViewModelStore wh;
+    h wi;
   }
 }
 

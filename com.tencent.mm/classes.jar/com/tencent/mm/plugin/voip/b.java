@@ -1,188 +1,206 @@
 package com.tencent.mm.plugin.voip;
 
-import com.tencent.mm.ah.e.d;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.as;
-import com.tencent.mm.model.p;
+import a.f.b.j;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.d;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.model.an;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.au;
+import com.tencent.mm.model.q;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.voip.model.n;
-import com.tencent.mm.plugin.voip.model.r;
-import com.tencent.mm.plugin.voip.video.a.c;
-import com.tencent.mm.pluginsdk.g.a.a.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.voip.model.o;
+import com.tencent.mm.plugin.voip.model.t;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import com.tencent.ttpic.VideoModule;
+import com.tencent.ttpic.util.ResourcePathMapper;
+import com.tencent.ttpic.util.ResourcePathMapper.MODE;
 import com.tencent.view.raw.FilterRawGet;
 import com.tencent.ytcommon.util.YTCommonInterface;
+import java.io.File;
 import java.util.HashMap;
 
 public class b
-  implements ar
+  implements at
 {
-  private static int pNl = 0;
-  private r pNg = null;
-  private n pNh = new n();
-  private com.tencent.mm.plugin.voip.ui.g pNi;
-  private d pNj = new d();
-  private b.a pNk = new b.a(this);
+  private static int ttf;
+  private t tta;
+  private o ttb;
+  private com.tencent.mm.plugin.voip.ui.d ttc;
+  private d ttd;
+  private b.a tte;
   
-  static {}
-  
-  private static b bPw()
+  static
   {
-    return (b)p.B(b.class);
+    AppMethodBeat.i(4317);
+    com.tencent.mm.plugin.voip.video.a.d.checkLibraryInit();
+    ttf = 0;
+    AppMethodBeat.o(4317);
   }
   
-  public static r bPx()
+  public b()
   {
-    if (!com.tencent.mm.kernel.g.DK()) {
-      throw new com.tencent.mm.model.b();
-    }
-    if (bPw().pNg == null) {
-      bPw().pNg = new r();
-    }
-    return bPw().pNg;
+    AppMethodBeat.i(4311);
+    this.tta = null;
+    this.ttb = new o();
+    this.ttd = new d();
+    this.tte = new b.a(this);
+    AppMethodBeat.o(4311);
   }
   
-  public static com.tencent.mm.plugin.voip.ui.g bPy()
+  private static b cLB()
   {
-    if (!com.tencent.mm.kernel.g.DK()) {
-      throw new com.tencent.mm.model.b();
-    }
-    if (bPw().pNi == null) {
-      bPw().pNi = new com.tencent.mm.plugin.voip.ui.g();
-    }
-    return bPw().pNi;
+    AppMethodBeat.i(4312);
+    b localb = (b)q.S(b.class);
+    AppMethodBeat.o(4312);
+    return localb;
   }
   
-  public static int bPz()
+  public static t cLC()
   {
-    return pNl;
+    AppMethodBeat.i(4313);
+    if (!com.tencent.mm.kernel.g.RG())
+    {
+      localObject = new com.tencent.mm.model.b();
+      AppMethodBeat.o(4313);
+      throw ((Throwable)localObject);
+    }
+    if (cLB().tta == null) {
+      cLB().tta = new t();
+    }
+    Object localObject = cLB().tta;
+    AppMethodBeat.o(4313);
+    return localObject;
   }
   
-  public final void bh(boolean paramBoolean)
+  public static com.tencent.mm.plugin.voip.ui.d cLD()
   {
-    e.d.a(Integer.valueOf(50), this.pNh);
-    bPx();
-    r.bRk();
-    com.tencent.mm.sdk.b.a.udP.c(this.pNj);
-    com.tencent.mm.sdk.b.a.udP.c(this.pNk);
-    ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(40);
-    paramBoolean = ((Boolean)com.tencent.mm.kernel.g.DP().Dz().get(73217, Boolean.valueOf(true))).booleanValue();
-    boolean bool2 = ((Boolean)com.tencent.mm.kernel.g.DP().Dz().get(73218, Boolean.valueOf(true))).booleanValue();
-    boolean bool1 = com.tencent.mm.m.a.zT();
-    boolean bool3 = ((Boolean)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uzg, Boolean.valueOf(false))).booleanValue();
-    y.i("MicroMsg.SubCoreVoip", "voipSound: %s, voipAudioSound: %s, msgSound: %s, hasReport: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(bool3) });
-    label218:
-    com.tencent.mm.bw.a locala;
+    AppMethodBeat.i(4314);
+    if (!com.tencent.mm.kernel.g.RG())
+    {
+      localObject = new com.tencent.mm.model.b();
+      AppMethodBeat.o(4314);
+      throw ((Throwable)localObject);
+    }
+    if (cLB().ttc == null) {
+      cLB().ttc = new com.tencent.mm.plugin.voip.ui.d();
+    }
+    Object localObject = cLB().ttc;
+    AppMethodBeat.o(4314);
+    return localObject;
+  }
+  
+  public static int cLE()
+  {
+    return ttf;
+  }
+  
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
+  {
+    return null;
+  }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(4316);
+    e.d.a(Integer.valueOf(50), this.ttb);
+    cLC();
+    com.tencent.mm.sdk.b.a.ymk.c(this.ttd);
+    com.tencent.mm.sdk.b.a.ymk.c(this.tte);
+    ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(40);
+    paramBoolean = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(73217, Boolean.TRUE)).booleanValue();
+    boolean bool2 = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(73218, Boolean.TRUE)).booleanValue();
+    boolean bool1 = com.tencent.mm.m.a.MB();
+    boolean bool3 = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yJU, Boolean.FALSE)).booleanValue();
+    ab.i("MicroMsg.SubCoreVoip", "voipSound: %s, voipAudioSound: %s, msgSound: %s, hasReport: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(bool3) });
     if (!bool3)
     {
-      if ((paramBoolean) || (bool2))
+      if ((!paramBoolean) && (!bool2)) {
+        break label422;
+      }
+      paramBoolean = true;
+      if (paramBoolean != bool1)
       {
-        paramBoolean = true;
-        if (paramBoolean != bool1)
-        {
-          if ((!paramBoolean) || (bool1)) {
-            break label424;
-          }
-          h.nFQ.a(500L, 13L, 1L, false);
+        if ((!paramBoolean) || (bool1)) {
+          break label427;
         }
-        com.tencent.mm.kernel.g.DP().Dz().c(ac.a.uzg, Boolean.valueOf(true));
+        h.qsU.idkeyStat(500L, 13L, 1L, false);
       }
-    }
-    else
-    {
-      as.hO(1);
-      y.i("MicroMsg.SubCoreVoip", "start init beauty download");
-      locala = com.tencent.mm.bw.a.uav;
-      y.i("MicroMsg.BeautyDownloadLogic", "init, downloadSoPath: %s, downloadResPath: %s", new Object[] { com.tencent.mm.bw.a.uas, com.tencent.mm.bw.a.uat });
-      com.tencent.mm.sdk.b.a.udP.b(locala.ekJ);
-      b.c.clv();
-      com.tencent.mm.pluginsdk.g.a.a.b.DL(56);
-      if (!com.tencent.mm.bw.a.NF()) {
-        break label449;
-      }
-      y.i("MicroMsg.BeautyDownloadLogic", "init check local has resource");
-      com.tencent.mm.bw.a.uau = true;
-      h.nFQ.f(15861, new Object[] { Integer.valueOf(0), Integer.valueOf(1) });
-      h.nFQ.h(914L, 0L, 1L);
     }
     for (;;)
     {
+      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yJU, Boolean.TRUE);
+      au.kA(1);
       try
       {
-        VideoModule.init(ae.getContext());
-        int i = YTCommonInterface.initAuth(ae.getContext(), "rel_wechat.lic", 0, true);
-        pNl = i;
-        y.i("MicroMsg.SubCoreVoip", "init VideoModule initAuth: %s", new Object[] { Integer.valueOf(i) });
+        Context localContext = ah.getContext();
+        Object localObject1 = com.tencent.mm.plugin.voip.video.a.a.tHN;
+        localObject1 = ah.getContext();
+        j.p(localObject1, "MMApplicationContext.getContext()");
+        localObject1 = com.tencent.mm.plugin.voip.video.a.a.getExternalFilesDir((Context)localObject1, com.tencent.mm.plugin.voip.video.a.a.ltz).getPath();
+        j.p(localObject1, "getExternalFilesDir(MMAp… VIDEO_LUT_FILE_DIR).path");
+        Object localObject2 = com.tencent.mm.plugin.voip.video.a.a.tHN;
+        localObject2 = com.tencent.mm.plugin.voip.video.a.a.getYtDetectModelFileDir();
+        Object localObject3 = com.tencent.mm.plugin.voip.video.a.a.tHN;
+        localObject3 = ah.getContext();
+        j.p(localObject3, "MMApplicationContext.getContext()");
+        localObject3 = com.tencent.mm.plugin.voip.video.a.a.getExternalFilesDir((Context)localObject3, com.tencent.mm.plugin.voip.video.a.a.ltB).getPath();
+        j.p(localObject3, "getExternalFilesDir(MMAp…DEL_BACKUP_FILE_DIR).path");
+        VideoModule.init(localContext, (String)localObject1, (String)localObject2, (String)localObject3);
+        ResourcePathMapper.init(ResourcePathMapper.MODE.LOCAL);
+        com.tencent.mm.plugin.voip.video.a.d.checkLibraryInit();
+        int i = YTCommonInterface.initAuth(ah.getContext(), "rel_wechat.lic", 0, false);
+        com.tencent.view.g.sa(true);
+        ttf = i;
+        ab.i("MicroMsg.SubCoreVoip", "init VideoModule initAuth: %s", new Object[] { Integer.valueOf(i) });
         if (i != 0) {
-          h.nFQ.h(914L, 12L, 1L);
+          h.qsU.j(914L, 12L, 1L);
         }
       }
       catch (Throwable localThrowable)
       {
-        label424:
-        label449:
-        String str;
-        y.printErrStackTrace("MicroMsg.SubCoreVoip", localThrowable, "init youtu sdk failed: %s", new Object[] { localThrowable.getMessage() });
-        pNl = -1;
-        h.nFQ.h(914L, 12L, 1L);
-        continue;
+        for (;;)
+        {
+          ab.printErrStackTrace("MicroMsg.SubCoreVoip", localThrowable, "init youtu sdk failed: %s", new Object[] { localThrowable.getMessage() });
+          ttf = -1;
+          h.qsU.j(914L, 12L, 1L);
+        }
       }
       FilterRawGet.setGetInputStream(new b.2(this));
+      AppMethodBeat.o(4316);
       return;
+      label422:
       paramBoolean = false;
       break;
-      if ((paramBoolean) || (!bool1)) {
-        break label218;
-      }
-      h.nFQ.a(500L, 14L, 1L, false);
-      break label218;
-      h.nFQ.h(914L, 1L, 1L);
-      b.c.clv();
-      str = com.tencent.mm.pluginsdk.g.a.a.b.eV(56, 1);
-      if (com.tencent.mm.vfs.e.bK(str))
-      {
-        y.i("MicroMsg.BeautyDownloadLogic", "init, cache file %s exist, try unzip", new Object[] { str });
-        h.nFQ.h(914L, 2L, 1L);
-        locala.d(str, 56, 1, 1);
-      }
-      else
-      {
-        y.i("MicroMsg.BeautyDownloadLogic", "init cannot find beauty resource");
-        h.nFQ.f(15861, new Object[] { Integer.valueOf(0), Integer.valueOf(2) });
+      label427:
+      if ((!paramBoolean) && (bool1)) {
+        h.qsU.idkeyStat(500L, 14L, 1L, false);
       }
     }
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
+  public void onAccountRelease()
   {
-    if (this.pNi != null) {
-      ai.d(new b.1(this));
+    AppMethodBeat.i(4315);
+    if (this.ttc != null) {
+      al.d(new b.1(this));
     }
-    e.d.b(Integer.valueOf(50), this.pNh);
-    bPx();
-    r.bRl();
-    com.tencent.mm.sdk.b.a.udP.d(this.pNj);
-    com.tencent.mm.sdk.b.a.udP.d(this.pNk);
-    com.tencent.mm.bw.a locala = com.tencent.mm.bw.a.uav;
-    y.i("MicroMsg.BeautyDownloadLogic", "unInit");
-    com.tencent.mm.sdk.b.a.udP.d(locala.ekJ);
+    e.d.b(Integer.valueOf(50), this.ttb);
+    cLC();
+    com.tencent.mm.sdk.b.a.ymk.d(this.ttd);
+    com.tencent.mm.sdk.b.a.ymk.d(this.tte);
+    AppMethodBeat.o(4315);
   }
   
-  public final HashMap<Integer, h.d> xe()
-  {
-    return null;
-  }
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

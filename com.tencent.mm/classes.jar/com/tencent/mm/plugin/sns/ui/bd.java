@@ -1,150 +1,149 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Intent;
-import android.os.Bundle;
+import android.content.Context;
 import android.view.View;
-import com.tencent.mm.model.s;
-import com.tencent.mm.modelsns.b;
-import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.opensdk.modelmsg.WXTextObject;
-import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.plugin.sns.h.f;
-import com.tencent.mm.plugin.sns.h.h;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.e;
+import com.tencent.mm.aw.g;
+import com.tencent.mm.g.a.kh;
+import com.tencent.mm.g.a.kh.b;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.aw;
-import com.tencent.mm.plugin.sns.model.ax;
-import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.c.aui;
-import com.tencent.mm.protocal.c.buw;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.e.h;
-import java.util.Iterator;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.protocal.protobuf.du;
+import com.tencent.mm.protocal.protobuf.vi;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.p;
 import java.util.LinkedList;
-import java.util.List;
-import org.c.d.i;
 
 public final class bd
-  implements y
 {
-  private String appName = "";
-  private MMActivity bER;
-  private String bOL = "";
-  private int oOs;
-  private b oOy = null;
-  private boolean oPR = false;
-  private boolean oPS = false;
-  private WXMediaMessage oPT = null;
-  private String oRh = "";
+  Context context;
+  int cpt;
+  long jfp;
+  af rFN;
+  public View.OnClickListener rUE;
+  public View.OnClickListener scA;
+  public View.OnClickListener scB;
+  public View.OnClickListener scC;
+  public View.OnClickListener scD;
+  public View.OnClickListener scE;
+  public View.OnClickListener scF;
+  public View.OnClickListener scG;
+  public View.OnClickListener scH;
+  public View.OnClickListener scI;
+  public View.OnClickListener scJ;
+  bd.a scv;
+  public View.OnClickListener scw;
+  public View.OnClickListener scx;
+  public View.OnClickListener scy;
+  public View.OnClickListener scz;
+  p tipDialog;
   
-  public bd(MMActivity paramMMActivity)
+  public bd(Context paramContext, bd.a parama, int paramInt, af paramaf)
   {
-    this.bER = paramMMActivity;
-  }
-  
-  public final void E(Bundle paramBundle)
-  {
-    this.oOy = b.i(this.bER.getIntent());
-    this.oRh = this.bER.getIntent().getStringExtra(e.h.uHV);
-    this.bOL = bk.aM(this.bER.getIntent().getStringExtra("Ksnsupload_appid"), "");
-    this.appName = bk.aM(this.bER.getIntent().getStringExtra("Ksnsupload_appname"), "");
-    this.oPR = this.bER.getIntent().getBooleanExtra("KThrid_app", false);
-    this.oPS = this.bER.getIntent().getBooleanExtra("KSnsAction", false);
-    this.oOs = this.bER.getIntent().getIntExtra("Ksnsupload_source", 0);
-    this.oPT = new SendMessageToWX.Req(this.bER.getIntent().getBundleExtra("Ksnsupload_timeline")).message;
-  }
-  
-  public final void F(Bundle paramBundle) {}
-  
-  public final boolean a(int paramInt1, int paramInt2, i parami, String paramString1, List<String> paramList1, aui paramaui, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
-  {
-    if (this.oPT != null)
+    AppMethodBeat.i(39879);
+    this.cpt = 0;
+    this.jfp = 0L;
+    this.rUE = new bd.1(this);
+    this.scw = new bd.8(this);
+    this.scx = new bd.9(this);
+    this.scy = new bd.10(this);
+    this.scz = new bd.11(this);
+    this.scA = new bd.12(this);
+    this.scB = new bd.13(this);
+    this.scC = new bd.14(this);
+    this.scD = new bd.15(this);
+    this.scE = new View.OnClickListener()
     {
-      this.oPT.description = paramString1;
-      if ((this.oPT.mediaObject != null) && ((this.oPT.mediaObject instanceof WXTextObject))) {
-        ((WXTextObject)this.oPT.mediaObject).text = paramString1;
-      }
-    }
-    af.bDB();
-    paramString1 = aw.b(this.oPT, paramString1, this.bOL, this.appName);
-    if (paramString1 == null)
-    {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.TextWidget", "packHelper == null, %s, %s", new Object[] { this.bOL, this.appName });
-      return false;
-    }
-    paramPInt.value = paramString1.avS;
-    if (paramInt3 > a.omJ) {
-      paramString1.xS(4);
-    }
-    paramString1.xW(this.oOs);
-    if (this.oPR) {
-      paramString1.xW(5);
-    }
-    paramPInt = new LinkedList();
-    if (paramList1 != null)
-    {
-      new LinkedList();
-      paramString2 = s.Ha();
-      paramList1 = paramList1.iterator();
-      while (paramList1.hasNext())
+      public final void onClick(View paramAnonymousView)
       {
-        String str = (String)paramList1.next();
-        if (!paramString2.contains(str))
+        AppMethodBeat.i(39863);
+        boolean bool = paramAnonymousView.getTag() instanceof q;
+        ab.d("MicroMsg.TimeLineClickEvent", "musicRedirectListener click ".concat(String.valueOf(bool)));
+        if (!bool)
         {
-          buw localbuw = new buw();
-          localbuw.hPY = str;
-          paramPInt.add(localbuw);
+          AppMethodBeat.o(39863);
+          return;
+        }
+        q localq = (q)paramAnonymousView.getTag();
+        TimeLineObject localTimeLineObject = localq.rGk;
+        String str;
+        if (!bd.YC(localTimeLineObject.Id)) {
+          if ((!com.tencent.mm.r.a.bO(bd.this.context)) && (!com.tencent.mm.r.a.bM(bd.this.context)))
+          {
+            h.qsU.kvStat(10090, "1,0");
+            if (localTimeLineObject.xTS.wOa.size() > 0)
+            {
+              bcs localbcs = (bcs)localTimeLineObject.xTS.wOa.get(0);
+              if (bd.this.cpt != 0) {
+                break label261;
+              }
+              paramAnonymousView = com.tencent.mm.modelsns.b.lV(738);
+              com.tencent.mm.modelsns.b localb = paramAnonymousView.uv(localTimeLineObject.Id).uv(localTimeLineObject.jJA);
+              if (localTimeLineObject.xTR != null) {
+                break label271;
+              }
+              str = "";
+              label179:
+              localb.uv(str).uv(localbcs.Title).uv(localbcs.Desc).uv("");
+              paramAnonymousView.ake();
+            }
+            if (!localq.rGl) {
+              break label283;
+            }
+            com.tencent.mm.aw.a.a(g.a(ag.getAccPath(), localTimeLineObject, 9));
+          }
+        }
+        for (;;)
+        {
+          if (bd.this.scv != null) {
+            bd.this.scv.cva();
+          }
+          AppMethodBeat.o(39863);
+          return;
+          label261:
+          paramAnonymousView = com.tencent.mm.modelsns.b.lW(738);
+          break;
+          label271:
+          str = localTimeLineObject.xTR.Id;
+          break label179;
+          label283:
+          com.tencent.mm.aw.a.b(g.a(ag.getAccPath(), localTimeLineObject, 1));
+          continue;
+          h.qsU.kvStat(10231, "1");
+          com.tencent.mm.aw.a.aiu();
         }
       }
-    }
-    paramString1.am(paramPInt);
-    if (parami != null) {
-      paramString1.eM(parami.token, parami.tsv);
-    }
-    paramString1.a(paramaui);
-    if (paramBoolean) {
-      paramString1.xX(1);
-    }
-    for (;;)
+    };
+    this.scF = new bd.3(this);
+    this.scG = new bd.4(this);
+    this.scH = new bd.5(this);
+    this.scI = new bd.6(this);
+    this.scJ = new bd.7(this);
+    this.context = paramContext;
+    this.scv = parama;
+    this.cpt = paramInt;
+    this.rFN = paramaf;
+    AppMethodBeat.o(39879);
+  }
+  
+  protected static boolean YC(String paramString)
+  {
+    AppMethodBeat.i(39880);
+    Object localObject = new kh();
+    ((kh)localObject).czU.action = -2;
+    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
+    localObject = ((kh)localObject).czV.czW;
+    if ((localObject != null) && (com.tencent.mm.aw.a.d((e)localObject)) && (paramString.equals(((e)localObject).fKj)) && (com.tencent.mm.aw.a.aiw()))
     {
-      paramString1.cx(paramList2).xU(paramInt1);
-      paramString1.f(null, null, null, paramInt4, paramInt5);
-      if ((this.oPS) && (this.oPT != null))
-      {
-        paramString1.NS(this.oPT.mediaTagName);
-        paramString1.Y(this.bOL, this.oPT.messageExt, this.oPT.messageAction);
-      }
-      paramInt1 = paramString1.commit();
-      if (this.oOy != null)
-      {
-        this.oOy.jf(paramInt1);
-        f.ozP.c(this.oOy);
-      }
-      af.bDB().bCp();
-      this.bER.finish();
-      return false;
-      paramString1.xX(0);
+      AppMethodBeat.o(39880);
+      return true;
     }
-  }
-  
-  public final boolean bHq()
-  {
-    return true;
-  }
-  
-  public final View bHr()
-  {
-    return null;
-  }
-  
-  public final boolean bHs()
-  {
-    return false;
-  }
-  
-  public final boolean d(int paramInt, Intent paramIntent)
-  {
+    AppMethodBeat.o(39880);
     return false;
   }
 }

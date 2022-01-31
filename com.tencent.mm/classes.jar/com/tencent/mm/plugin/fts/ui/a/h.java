@@ -5,51 +5,52 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.g;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.ui.b.b;
-import com.tencent.mm.plugin.fts.ui.n.g;
 
 public final class h
   extends a
 {
-  CharSequence kDf;
-  private h.b kDg = new h.b(this, (byte)0);
-  h.a kDh = new h.a(this, (byte)0);
+  CharSequence mZb;
+  private h.b mZc;
+  h.a mZd;
   
   public h(int paramInt)
   {
     super(17, paramInt);
+    AppMethodBeat.i(61993);
+    this.mZc = new h.b(this, (byte)0);
+    this.mZd = new h.a(this, (byte)0);
+    AppMethodBeat.o(61993);
   }
   
-  public final a.b BD()
+  public final a.b Pr()
   {
-    return this.kDg;
+    return this.mZc;
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
+    AppMethodBeat.i(61994);
     parama = new SpannableStringBuilder();
-    paramVarArgs = this.kwi.kwI;
+    paramVarArgs = this.mRX.mSy;
     int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
     {
       Object localObject = paramVarArgs[i];
       SpannableString localSpannableString = new SpannableString(localObject);
-      localSpannableString.setSpan(new ForegroundColorSpan(b.b.kzY), 0, localObject.length(), 33);
+      localSpannableString.setSpan(new ForegroundColorSpan(b.b.mVQ), 0, localObject.length(), 33);
       parama.append(localSpannableString);
       parama.append("、");
       i += 1;
     }
-    this.kDf = TextUtils.concat(new CharSequence[] { paramContext.getString(n.g.select_create_desc_prefix), parama.subSequence(0, parama.length() - 1), paramContext.getString(n.g.select_create_desc_postfix) });
-  }
-  
-  protected final a.a afK()
-  {
-    return this.kDh;
+    this.mZb = TextUtils.concat(new CharSequence[] { paramContext.getString(2131303065), parama.subSequence(0, parama.length() - 1), paramContext.getString(2131303064) });
+    AppMethodBeat.o(61994);
   }
 }
 

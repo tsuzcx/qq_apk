@@ -1,7 +1,9 @@
 package com.tencent.mm.plugin.exdevice.service;
 
-import com.tencent.mm.plugin.f.a.b.e.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.d.a.b.e.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class y$1
   extends e.a
@@ -10,27 +12,29 @@ final class y$1
   
   public final void a(long paramLong1, boolean paramBoolean, long paramLong2)
   {
+    AppMethodBeat.i(19649);
     Object localObject;
     if (paramBoolean)
     {
       localObject = "true";
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onConnected. seesionId=%d, connected=%s, profileType=%d", new Object[] { Long.valueOf(paramLong1), localObject, Long.valueOf(paramLong2) });
+      ab.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onConnected. seesionId=%d, connected=%s, profileType=%d", new Object[] { Long.valueOf(paramLong1), localObject, Long.valueOf(paramLong2) });
       localObject = new y.c((byte)0);
-      ((y.c)localObject).hXu = paramLong1;
+      ((y.c)localObject).jRn = paramLong1;
       if (!paramBoolean) {
-        break label142;
+        break label154;
       }
     }
-    label142:
+    label154:
     for (int i = 2;; i = 4)
     {
-      ((y.c)localObject).jyF = i;
-      ((y.c)localObject).jyE = 1;
-      ((y.c)localObject).jsT = 0;
-      ((y.c)localObject).hUQ = paramLong2;
-      if (!y.a(this.jzD).sendMessage(y.a(this.jzD).obtainMessage(9, localObject))) {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(9) });
+      ((y.c)localObject).lIe = i;
+      ((y.c)localObject).lId = 1;
+      ((y.c)localObject).lCs = 0;
+      ((y.c)localObject).jOK = paramLong2;
+      if (!y.a(this.lJc).sendMessage(y.a(this.lJc).obtainMessage(9, localObject))) {
+        ab.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(9) });
       }
+      AppMethodBeat.o(19649);
       return;
       localObject = "false";
       break;
@@ -39,67 +43,75 @@ final class y$1
   
   public final void a(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte)
   {
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDiscover. deviceMac=%s, deviceName=%s", new Object[] { paramString1, paramString2 });
+    AppMethodBeat.i(19652);
+    ab.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDiscover. deviceMac=%s, deviceName=%s", new Object[] { paramString1, paramString2 });
     y.g localg = new y.g((byte)0);
-    localg.jzH = false;
-    localg.hXy = paramString1;
-    localg.gnO = paramString2;
-    localg.goh = paramInt;
-    localg.jzI = paramArrayOfByte;
-    if (!y.a(this.jzD).sendMessage(y.a(this.jzD).obtainMessage(13, localg))) {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(13) });
+    localg.lJg = false;
+    localg.jRr = paramString1;
+    localg.mDeviceName = paramString2;
+    localg.hIe = paramInt;
+    localg.lJh = paramArrayOfByte;
+    if (!y.a(this.lJc).sendMessage(y.a(this.lJc).obtainMessage(13, localg))) {
+      ab.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(13) });
     }
+    AppMethodBeat.o(19652);
   }
   
-  public final void awr()
+  public final void aVU()
   {
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDiscoverFinished");
+    AppMethodBeat.i(19653);
+    ab.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDiscoverFinished");
     y.g localg = new y.g((byte)0);
-    localg.jzH = true;
-    localg.hXy = null;
-    localg.gnO = null;
-    localg.goh = 0;
-    localg.jzI = null;
-    if (!y.a(this.jzD).sendMessage(y.a(this.jzD).obtainMessage(13, localg))) {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(13) });
+    localg.lJg = true;
+    localg.jRr = null;
+    localg.mDeviceName = null;
+    localg.hIe = 0;
+    localg.lJh = null;
+    if (!y.a(this.lJc).sendMessage(y.a(this.lJc).obtainMessage(13, localg))) {
+      ab.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(13) });
     }
+    AppMethodBeat.o(19653);
   }
   
   public final void b(long paramLong, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(19650);
     y.f localf = new y.f((byte)0);
-    localf.jvT = paramLong;
+    localf.lFs = paramLong;
     localf.mData = paramArrayOfByte;
-    if (!y.a(this.jzD).sendMessage(y.a(this.jzD).obtainMessage(12, localf))) {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(12) });
+    if (!y.a(this.lJc).sendMessage(y.a(this.lJc).obtainMessage(12, localf))) {
+      ab.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(12) });
     }
+    AppMethodBeat.o(19650);
   }
   
-  public final void j(long paramLong, boolean paramBoolean)
+  public final void m(long paramLong, boolean paramBoolean)
   {
+    AppMethodBeat.i(19651);
     Object localObject;
     if (paramBoolean)
     {
       localObject = "true";
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onSend. sessionId=%d, success=%s", new Object[] { Long.valueOf(paramLong), localObject });
+      ab.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onSend. sessionId=%d, success=%s", new Object[] { Long.valueOf(paramLong), localObject });
       localObject = new y.h((byte)0);
-      ((y.h)localObject).jvT = paramLong;
+      ((y.h)localObject).lFs = paramLong;
       if (!paramBoolean) {
-        break label124;
+        break label136;
       }
-      ((y.h)localObject).jtf = 0;
+      ((y.h)localObject).lCE = 0;
     }
-    for (((y.h)localObject).jsT = 0;; ((y.h)localObject).jsT = -1)
+    for (((y.h)localObject).lCs = 0;; ((y.h)localObject).lCs = -1)
     {
-      ((y.h)localObject).ghs = "";
-      if (!y.a(this.jzD).sendMessage(y.a(this.jzD).obtainMessage(11, localObject))) {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(11) });
+      ((y.h)localObject).hyJ = "";
+      if (!y.a(this.lJc).sendMessage(y.a(this.lJc).obtainMessage(11, localObject))) {
+        ab.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(11) });
       }
+      AppMethodBeat.o(19651);
       return;
       localObject = "false";
       break;
-      label124:
-      ((y.h)localObject).jtf = -1;
+      label136:
+      ((y.h)localObject).lCE = -1;
     }
   }
 }

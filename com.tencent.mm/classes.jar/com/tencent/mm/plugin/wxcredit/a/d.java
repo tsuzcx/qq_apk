@@ -1,33 +1,45 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class d
-  extends com.tencent.mm.wallet_core.tenpay.model.j
+  extends m
 {
-  public k rQJ;
+  public k vHA;
   
   public d(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(48659);
     HashMap localHashMap = new HashMap();
     localHashMap.put("bind_serialno", paramString1);
     localHashMap.put("bank_type", paramString2);
     localHashMap.put("query_method", "1");
-    D(localHashMap);
+    setRequestData(localHashMap);
     paramString1 = new HashMap();
     paramString1.put("banktype", paramString2);
-    aC(paramString1);
+    setWXRequestData(paramString1);
+    AppMethodBeat.o(48659);
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
+  public final int getTenpayCgicmd()
+  {
+    return 57;
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     boolean bool = true;
-    y.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0) {
+    AppMethodBeat.i(48660);
+    ab.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    if (paramInt != 0)
+    {
+      AppMethodBeat.o(48660);
       return;
     }
     for (;;)
@@ -36,81 +48,78 @@ public final class d
       String str;
       try
       {
-        this.rQJ = new k();
-        this.rQJ.rQN = paramJSONObject.optInt("credit_state");
-        this.rQJ.rQI = (paramJSONObject.optInt("credit_amount") / 100.0D);
-        this.rQJ.rQO = (paramJSONObject.optInt("credit_usable") / 100.0D);
-        this.rQJ.rQP = (paramJSONObject.optInt("bill_amount") / 100.0D);
-        this.rQJ.rQQ = paramJSONObject.optInt("bill_date");
-        this.rQJ.rQR = (paramJSONObject.optInt("repay_amount") / 100.0D);
-        this.rQJ.rQS = (paramJSONObject.optInt("repay_minimum") / 100.0D);
-        paramString = this.rQJ;
+        this.vHA = new k();
+        this.vHA.vHE = paramJSONObject.optInt("credit_state");
+        this.vHA.vHz = (paramJSONObject.optInt("credit_amount") / 100.0D);
+        this.vHA.vHF = (paramJSONObject.optInt("credit_usable") / 100.0D);
+        this.vHA.vHG = (paramJSONObject.optInt("bill_amount") / 100.0D);
+        this.vHA.vHH = paramJSONObject.optInt("bill_date");
+        this.vHA.vHI = (paramJSONObject.optInt("repay_amount") / 100.0D);
+        this.vHA.vHJ = (paramJSONObject.optInt("repay_minimum") / 100.0D);
+        paramString = this.vHA;
         if (paramJSONObject.optInt("upgrade_amount") != 1) {
-          break label505;
+          break label525;
         }
-        paramString.rQT = bool;
-        this.rQJ.rQU = paramJSONObject.optInt("bill_month");
-        this.rQJ.rQV = paramJSONObject.optString("repay_url");
-        this.rQJ.rQW = paramJSONObject.optString("repay_lasttime");
-        this.rQJ.rRa = paramJSONObject.optString("lasttime");
+        paramString.vHK = bool;
+        this.vHA.vHL = paramJSONObject.optInt("bill_month");
+        this.vHA.vHM = paramJSONObject.optString("repay_url");
+        this.vHA.vHN = paramJSONObject.optString("repay_lasttime");
+        this.vHA.vHQ = paramJSONObject.optString("lasttime");
         paramString = paramJSONObject.getJSONArray("jump_url_array");
         if ((paramString == null) || (paramString.length() <= 0)) {
-          break label408;
+          break label423;
         }
         int i = paramString.length();
         paramInt = 0;
         if (paramInt >= i) {
-          break label408;
+          break label423;
         }
         localJSONObject = paramString.getJSONObject(paramInt);
         str = localJSONObject.getString("jump_name");
         if ("account_rights_url".equals(str)) {
-          this.rQJ.rQY = localJSONObject.getString("jump_url");
+          this.vHA.vHP = localJSONObject.getString("jump_url");
         } else if ("bill_url".equals(str)) {
-          this.rQJ.rQZ = localJSONObject.getString("jump_url");
+          this.vHA.qkc = localJSONObject.getString("jump_url");
         }
       }
       catch (Exception paramString)
       {
-        y.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
+        ab.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
+        AppMethodBeat.o(48660);
         return;
       }
       if ("card_detail_url".equals(str))
       {
-        this.rQJ.rQX = localJSONObject.getString("jump_url");
+        this.vHA.vHO = localJSONObject.getString("jump_url");
       }
       else if ("know_more_url".equals(str))
       {
-        this.rQJ.rRb = localJSONObject.getString("jump_url");
-        break label498;
-        label408:
+        this.vHA.vHR = localJSONObject.getString("jump_url");
+        break label518;
+        label423:
         paramString = paramJSONObject.getJSONObject("appservice");
-        if (paramString == null) {
-          break;
+        if (paramString != null)
+        {
+          this.vHA.vHS = new j();
+          this.vHA.vHS.vHD = paramString.getString("app_telephone");
+          this.vHA.vHS.nickname = paramString.getString("nickname");
+          this.vHA.vHS.username = paramString.getString("username");
+          this.vHA.vHS.url = paramString.getString("jump_url");
         }
-        this.rQJ.rRc = new j();
-        this.rQJ.rRc.rQM = paramString.getString("app_telephone");
-        this.rQJ.rRc.nickname = paramString.getString("nickname");
-        this.rQJ.rRc.username = paramString.getString("username");
-        this.rQJ.rRc.url = paramString.getString("jump_url");
+        AppMethodBeat.o(48660);
         return;
       }
-      label498:
+      label518:
       paramInt += 1;
       continue;
-      label505:
+      label525:
       bool = false;
     }
-  }
-  
-  public final int aEC()
-  {
-    return 57;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.d
  * JD-Core Version:    0.7.0.1
  */

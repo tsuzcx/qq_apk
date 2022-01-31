@@ -1,81 +1,63 @@
 package com.tencent.mm.plugin.webview.model;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.c.a;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.c.b;
-import com.tencent.mm.protocal.c.arh;
-import com.tencent.mm.protocal.c.ari;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.axh;
+import com.tencent.mm.protocal.protobuf.axi;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class r
   extends m
-  implements k, c.b
+  implements k
 {
-  private f dIJ;
-  private final com.tencent.mm.ah.b dmK;
-  public c.a rft;
-  private final int rfv;
+  private f eGj;
+  public final b rr;
   
-  public r(c.a parama, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, byte[] paramArrayOfByte, int paramInt)
+  public r(String paramString1, String paramString2)
   {
-    y.i("MicroMsg.webview.NetSceneJSAPIRealtimeVerify", "NetSceneJSAPIRealtimeVerify doScene url[%s], appid[%s], jsapiName[%s], [%s], [%s], [%s], [%s]", new Object[] { paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7 });
-    this.rft = parama;
-    this.rfv = paramInt;
-    parama = new b.a();
-    parama.ecH = new arh();
-    parama.ecI = new ari();
-    parama.uri = "/cgi-bin/mmbiz-bin/jsapi-realtimeverify";
-    parama.ecG = 1094;
-    parama.ecJ = 0;
-    parama.ecK = 0;
-    this.dmK = parama.Kt();
-    parama = (arh)this.dmK.ecE.ecN;
-    parama.url = paramString1;
-    parama.bOL = paramString2;
-    parama.tmz = paramString3;
-    parama.bIK = paramString4;
-    parama.tmB = paramString5;
-    parama.signature = paramString6;
-    parama.tmC = paramString7;
-    parama.tmD = com.tencent.mm.bv.b.bk(paramArrayOfByte);
+    AppMethodBeat.i(6610);
+    Object localObject = new b.a();
+    ((b.a)localObject).fsX = new axh();
+    ((b.a)localObject).fsY = new axi();
+    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/payibggetuseropenid";
+    ((b.a)localObject).funcId = 1566;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (axh)this.rr.fsV.fta;
+    ((axh)localObject).jJA = paramString2;
+    ((axh)localObject).fKw = paramString1;
+    AppMethodBeat.o(6610);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    y.i("MicroMsg.webview.NetSceneJSAPIRealtimeVerify", "doScene");
-    this.dIJ = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.webview.NetSceneJSAPIRealtimeVerify", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.dIJ.onSceneEnd(paramInt2, paramInt3, paramString, this);
-  }
-  
-  public final int cbK()
-  {
-    return this.rfv;
-  }
-  
-  public final ari cbM()
-  {
-    if (this.dmK == null) {
-      return null;
-    }
-    return (ari)this.dmK.ecF.ecN;
+    AppMethodBeat.i(6612);
+    ab.i("MicroMsg.NetSceneGetUserOpenId", "doScene");
+    this.eGj = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(6612);
+    return i;
   }
   
   public final int getType()
   {
-    return 1094;
+    return 1566;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(6611);
+    ab.i("MicroMsg.NetSceneGetUserOpenId", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(6611);
   }
 }
 

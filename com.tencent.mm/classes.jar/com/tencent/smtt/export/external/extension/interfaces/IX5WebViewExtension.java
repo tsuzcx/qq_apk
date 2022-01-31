@@ -153,6 +153,8 @@ public abstract interface IX5WebViewExtension
   
   public abstract boolean isVerticalScrollBarEnabled();
   
+  public abstract boolean isX5CoreSandboxMode();
+  
   public abstract void leaveSelectionMode();
   
   public abstract void loadDataWithBaseURLWithHeaders(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Map<String, String> paramMap);
@@ -321,7 +323,7 @@ public abstract interface IX5WebViewExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension
  * JD-Core Version:    0.7.0.1
  */

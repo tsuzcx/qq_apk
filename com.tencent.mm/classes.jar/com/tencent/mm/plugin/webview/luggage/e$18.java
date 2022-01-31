@@ -1,39 +1,23 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import com.tencent.mm.plugin.webview.luggage.permission.LuggageGetA8Key.a;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.luggage.d.k;
+import com.tencent.luggage.d.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$18
-  extends LuggageGetA8Key.a
+  implements View.OnClickListener
 {
   e$18(e parame) {}
   
-  public final void EC(String paramString)
+  public final void onClick(View paramView)
   {
-    this.rca.EC(paramString);
-  }
-  
-  public final void b(final String paramString1, final String paramString2, final Map<String, String> paramMap)
-  {
-    e.a(this.rca, new Runnable()
-    {
-      public final void run()
-      {
-        e.18.this.rca.b(paramString1, paramString2, paramMap);
-      }
-    });
-  }
-  
-  public final void caY() {}
-  
-  public final void fu(String paramString1, String paramString2)
-  {
-    e.a(this.rca, new e.18.2(this, paramString1, paramString2));
-  }
-  
-  public final void i(String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    e.a(this.rca, new e.18.3(this, paramString1, paramInt1, paramInt2, paramString2));
+    AppMethodBeat.i(6041);
+    this.uRQ.bzs.loadUrl(this.uRQ.getUrl());
+    e.a(this.uRQ).setVisibility(8);
+    AppMethodBeat.o(6041);
   }
 }
 

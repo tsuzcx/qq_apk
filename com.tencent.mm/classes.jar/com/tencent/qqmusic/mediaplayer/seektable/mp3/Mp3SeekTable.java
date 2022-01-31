@@ -1,12 +1,20 @@
 package com.tencent.qqmusic.mediaplayer.seektable.mp3;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.seektable.SeekTable;
 import com.tencent.qqmusic.mediaplayer.upstream.IDataSource;
 
 public class Mp3SeekTable
   implements SeekTable
 {
-  private final Mp3FrameInfoParse.Mp3Info mInfo = new Mp3FrameInfoParse.Mp3Info();
+  private final Mp3FrameInfoParse.Mp3Info mInfo;
+  
+  public Mp3SeekTable()
+  {
+    AppMethodBeat.i(128489);
+    this.mInfo = new Mp3FrameInfoParse.Mp3Info();
+    AppMethodBeat.o(128489);
+  }
   
   private static long timeToBytePositionInCbr(Mp3FrameInfoParse.Mp3Info paramMp3Info, long paramLong)
   {
@@ -61,10 +69,11 @@ public class Mp3SeekTable
   
   private static long timeToBytePositionInXingVbr(Mp3FrameInfoParse.Mp3Info paramMp3Info, long paramLong)
   {
+    AppMethodBeat.i(128492);
     if ((paramMp3Info == null) || (paramMp3Info.toc_table == null) || (paramMp3Info.fileLengthInBytes <= 0L) || (paramMp3Info.firstFramePosition < 0L) || (paramMp3Info.duration < 0L) || (paramLong < 0L))
     {
-      l1 = -1L;
-      return l1;
+      AppMethodBeat.o(128492);
+      return -1L;
     }
     long l1 = paramMp3Info.fileLengthInBytes;
     long l3 = paramMp3Info.firstFramePosition;
@@ -80,57 +89,71 @@ public class Mp3SeekTable
       if (paramMp3Info.idv2Size > 0) {
         paramLong = l1 - paramMp3Info.idv2Size;
       }
-      l1 = l2;
-      if (l2 < paramLong) {
+      if (l2 >= paramLong) {
+        break label247;
+      }
+      AppMethodBeat.o(128492);
+      return l2;
+      if (d1 < 100.0D) {
         break;
       }
-      return paramLong;
-      if (d1 < 100.0D) {
-        break label168;
-      }
     }
-    label168:
     int i = (int)d1;
     float f1;
     if (i == 0)
     {
       f1 = 0.0F;
-      label180:
+      label188:
       if (i >= 99) {
-        break label232;
+        break label240;
       }
     }
-    label232:
+    label240:
     for (float f2 = (float)arrayOfLong[(i + 1)];; f2 = 256.0F)
     {
       double d2 = f1;
       d1 = (f2 - f1) * (d1 - i) + d2;
       break;
       f1 = (float)arrayOfLong[i];
-      break label180;
+      break label188;
     }
+    label247:
+    AppMethodBeat.o(128492);
+    return paramLong;
   }
   
   public void parse(IDataSource paramIDataSource)
   {
+    AppMethodBeat.i(128490);
     Mp3FrameInfoParse.parseFrameInfo(new TrackPositionDataSource(paramIDataSource), this.mInfo);
+    AppMethodBeat.o(128490);
   }
   
   public long seek(long paramLong)
   {
-    if (paramLong < 0L) {
+    AppMethodBeat.i(128491);
+    if (paramLong < 0L)
+    {
+      AppMethodBeat.o(128491);
       return -1L;
     }
     switch (this.mInfo.VBRType)
     {
     default: 
+      AppMethodBeat.o(128491);
       return -1L;
     case 0: 
-      return timeToBytePositionInCbr(this.mInfo, paramLong);
+      paramLong = timeToBytePositionInCbr(this.mInfo, paramLong);
+      AppMethodBeat.o(128491);
+      return paramLong;
     case 2: 
-      return timeToBytePositionInXingVbr(this.mInfo, paramLong);
+      paramLong = timeToBytePositionInXingVbr(this.mInfo, paramLong);
+      AppMethodBeat.o(128491);
+      return paramLong;
     }
-    return timeToBytePositionInVBRIVbr(this.mInfo, paramLong);
+    paramLong = timeToBytePositionInVBRIVbr(this.mInfo, paramLong);
+    AppMethodBeat.o(128491);
+    return paramLong;
   }
 }
 

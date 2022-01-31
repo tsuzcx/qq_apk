@@ -1,7 +1,9 @@
 package com.tencent.liteav.beauty.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class f$b
-  extends q
+  extends s
 {
   public f$b(String paramString)
   {
@@ -10,12 +12,19 @@ class f$b
   
   public boolean b()
   {
-    return super.b();
+    AppMethodBeat.i(67038);
+    if (super.b())
+    {
+      AppMethodBeat.o(67038);
+      return true;
+    }
+    AppMethodBeat.o(67038);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.f.b
  * JD-Core Version:    0.7.0.1
  */

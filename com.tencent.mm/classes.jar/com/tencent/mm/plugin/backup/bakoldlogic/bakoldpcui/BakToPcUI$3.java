@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.c;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e;
@@ -13,18 +14,20 @@ final class BakToPcUI$3
   
   public final void onClick(View paramView)
   {
-    if (BakToPcUI.b(this.hPh) == 0)
+    AppMethodBeat.i(17969);
+    if (BakToPcUI.b(this.jIJ) == 0)
     {
-      a.avr().avt().dVU = 2;
-      a.avr().avt().Ig();
-      a.avr().avs().nN(1);
-      BakToPcUI.c(this.hPh);
+      a.aUU().aUW().fme = 2;
+      a.aUU().aUW().abd();
+      a.aUU().aUV().rB(1);
+      BakToPcUI.c(this.jIJ);
     }
+    AppMethodBeat.o(17969);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.BakToPcUI.3
  * JD-Core Version:    0.7.0.1
  */

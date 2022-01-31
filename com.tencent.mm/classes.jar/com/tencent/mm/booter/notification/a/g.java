@@ -1,68 +1,79 @@
 package com.tencent.mm.booter.notification.a;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public b dkg;
-  public c dkh;
-  public d dki;
-  public h dkj;
-  private f dkk;
-  public a dkl;
-  public int dkm;
-  public int dkn;
-  public int dko;
-  public int dkp;
-  public boolean dkq;
-  private int dkr = -1;
-  private int dks = -1;
-  public boolean dkt;
-  public boolean dku;
+  public b ebB;
+  public c ebC;
+  public d ebD;
+  public h ebE;
+  private f ebF;
+  public a ebG;
+  public int ebH;
+  public int ebI;
+  public int ebJ;
+  public int ebK;
+  public boolean ebL;
+  private int ebM;
+  private int ebN;
+  public boolean ebO;
+  public boolean ebP;
   public Context mContext;
   
   public g(Context paramContext)
   {
+    AppMethodBeat.i(16035);
+    this.ebM = -1;
+    this.ebN = -1;
     this.mContext = paramContext;
-    this.dkg = new b();
-    this.dkh = new c();
-    this.dki = new d();
-    this.dkj = new h();
-    this.dkl = new a();
-    this.dkk = f.a.wJ();
+    this.ebB = new b();
+    this.ebC = new c();
+    this.ebD = new d();
+    this.ebE = new h();
+    this.ebG = new a();
+    this.ebF = f.a.IY();
+    AppMethodBeat.o(16035);
   }
   
-  public static String c(long[] paramArrayOfLong)
+  public static String b(long[] paramArrayOfLong)
   {
-    if (paramArrayOfLong == null) {
-      paramArrayOfLong = null;
-    }
-    String str;
-    do
+    AppMethodBeat.i(16037);
+    if (paramArrayOfLong == null)
     {
-      return paramArrayOfLong;
-      str = "";
-      int j = paramArrayOfLong.length;
-      int i = 0;
-      while (i < j)
-      {
-        long l = paramArrayOfLong[i];
-        str = str + String.valueOf(l) + ",";
-        i += 1;
-      }
-      paramArrayOfLong = str;
-    } while (str.isEmpty());
-    return str.substring(0, str.length() - 1);
+      AppMethodBeat.o(16037);
+      return null;
+    }
+    String str = "";
+    int j = paramArrayOfLong.length;
+    int i = 0;
+    while (i < j)
+    {
+      long l = paramArrayOfLong[i];
+      str = str + String.valueOf(l) + ",";
+      i += 1;
+    }
+    if (str.isEmpty())
+    {
+      AppMethodBeat.o(16037);
+      return str;
+    }
+    paramArrayOfLong = str.substring(0, str.length() - 1);
+    AppMethodBeat.o(16037);
+    return paramArrayOfLong;
   }
   
-  public final void eE(String paramString)
+  public final void kJ(String paramString)
   {
-    this.dkk.eD(paramString);
+    AppMethodBeat.i(16036);
+    this.ebF.kI(paramString);
+    AppMethodBeat.o(16036);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
-import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.f;
 
 final class SettingsAboutSystemUI$9
@@ -15,9 +15,11 @@ final class SettingsAboutSystemUI$9
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.nTp.dnD.edit().putBoolean("settings_voicerecorder_mode", true).commit();
-    ((CheckBoxPreference)SettingsAboutSystemUI.a(this.nTp).add("settings_voicerecorder_mode")).rHo = true;
-    SettingsAboutSystemUI.a(this.nTp).notifyDataSetChanged();
+    AppMethodBeat.i(127119);
+    this.qHp.getDefaultSharedPreferences().edit().putBoolean("settings_voicerecorder_mode", true).commit();
+    ((CheckBoxPreference)SettingsAboutSystemUI.a(this.qHp).atx("settings_voicerecorder_mode")).vxW = true;
+    SettingsAboutSystemUI.a(this.qHp).notifyDataSetChanged();
+    AppMethodBeat.o(127119);
   }
 }
 

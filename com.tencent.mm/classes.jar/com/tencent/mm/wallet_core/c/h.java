@@ -2,9 +2,7 @@ package com.tencent.mm.wallet_core.c;
 
 public abstract interface h
 {
-  public abstract void cMt();
-  
-  public abstract void onDestroy();
+  public abstract void register(j paramj);
 }
 
 

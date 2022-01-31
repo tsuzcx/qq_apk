@@ -1,27 +1,29 @@
 package com.tencent.mm.plugin.downloader_app.detail;
 
-import com.tencent.mm.plugin.game.luggage.h;
-import com.tencent.mm.plugin.game.luggage.i;
-import com.tencent.mm.plugin.game.luggage.i.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.luggage.c;
+import com.tencent.mm.plugin.game.luggage.d.a;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class d$1
-  implements i.a
+  implements d.a
 {
-  public final void pQ()
+  public final void tU()
   {
-    if (d.aGg() != null) {
+    AppMethodBeat.i(136054);
+    if (d.bjI() != null) {
       d.destroy();
     }
-    d.a(i.ah(ae.getContext(), d.access$100()));
-    if (d.aGg() != null) {
-      d.aGg().aG(d.access$100(), false);
+    d.a(com.tencent.mm.plugin.game.luggage.d.aq(ah.getContext(), d.access$100()));
+    if (d.bjI() != null) {
+      c.a(d.bjI(), d.access$100(), false);
     }
+    AppMethodBeat.o(136054);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.detail.d.1
  * JD-Core Version:    0.7.0.1
  */

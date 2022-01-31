@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.offline.ui;
 
 import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.ui.base.l;
 
 final class WalletOfflineCoinPurseUI$30$1
@@ -10,9 +11,11 @@ final class WalletOfflineCoinPurseUI$30$1
 {
   WalletOfflineCoinPurseUI$30$1(WalletOfflineCoinPurseUI.30 param30, String paramString, l paraml) {}
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void m(String paramString, Bitmap paramBitmap)
   {
-    ai.d(new WalletOfflineCoinPurseUI.30.1.1(this, paramString, paramBitmap));
+    AppMethodBeat.i(43538);
+    al.d(new WalletOfflineCoinPurseUI.30.1.1(this, paramString, paramBitmap));
+    AppMethodBeat.o(43538);
   }
 }
 

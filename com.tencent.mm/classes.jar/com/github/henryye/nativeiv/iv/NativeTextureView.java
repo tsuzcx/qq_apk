@@ -3,7 +3,8 @@ package com.github.henryye.nativeiv.iv;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.TextureView;
-import com.tencent.magicbrush.a.d.f;
+import com.tencent.magicbrush.a.c.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class NativeTextureView
   extends TextureView
@@ -23,14 +24,16 @@ public class NativeTextureView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static void kq()
+  public static void mw()
   {
-    d.f.i("Ni.NativeTextureView", "hy: clearing native surface", new Object[0]);
+    AppMethodBeat.i(115771);
+    c.c.i("Ni.NativeTextureView", "hy: clearing native surface", new Object[0]);
+    AppMethodBeat.o(115771);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.github.henryye.nativeiv.iv.NativeTextureView
  * JD-Core Version:    0.7.0.1
  */

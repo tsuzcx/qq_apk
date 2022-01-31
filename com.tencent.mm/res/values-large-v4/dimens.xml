@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="a4">440.0dip</dimen>
-    <item type="dimen" name="a5">60.000004%</item>
-    <item type="dimen" name="a6">90.0%</item>
+    <dimen name="a6">440.0dip</dimen>
     <item type="dimen" name="a7">60.000004%</item>
     <item type="dimen" name="a8">90.0%</item>
-    <item type="dimen" name="a9">55.000008%</item>
-    <item type="dimen" name="a_">79.99999%</item>
+    <item type="dimen" name="a9">60.000004%</item>
+    <item type="dimen" name="a_">90.0%</item>
+    <item type="dimen" name="aa">55.000008%</item>
+    <item type="dimen" name="ab">79.99999%</item>
 </resources>

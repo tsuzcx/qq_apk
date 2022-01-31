@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class BankRemitBankcardInputUI$12$2
@@ -16,27 +15,31 @@ final class BankRemitBankcardInputUI$12$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(44525);
     switch (paramMenuItem.getItemId())
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(44525);
       return;
-    case 0: 
-      if (!bk.bl(BankRemitBankcardInputUI.b(this.nwi.nwd))) {
-        e.l(this.nwi.nwd.mController.uMN, BankRemitBankcardInputUI.b(this.nwi.nwd), false);
+      if (!bo.isNullOrNil(BankRemitBankcardInputUI.b(this.qhj.qhe))) {
+        e.m(this.qhj.qhe.getContext(), BankRemitBankcardInputUI.b(this.qhj.qhe), false);
       }
       for (;;)
       {
-        h.nFQ.f(14673, new Object[] { Integer.valueOf(6) });
+        h.qsU.e(14673, new Object[] { Integer.valueOf(6) });
+        AppMethodBeat.o(44525);
         return;
-        y.w("MicroMsg.BankRemitBankcardInputUI", "paylist url is null");
+        ab.w("MicroMsg.BankRemitBankcardInputUI", "paylist url is null");
       }
+      e.m(this.qhj.qhe.getContext(), "https://kf.qq.com/touch/scene_product.html?scene_id=kf4568", true);
     }
-    e.l(this.nwi.nwd.mController.uMN, "https://kf.qq.com/touch/scene_product.html?scene_id=kf4568", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitBankcardInputUI.12.2
  * JD-Core Version:    0.7.0.1
  */

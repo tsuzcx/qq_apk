@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="oval">
-            <solid android:color="@android:color/white" />
-            <stroke android:width="3.0dip" android:color="@color/ok" />
-            <size android:height="120.0dip" android:width="120.0dip" />
-        </shape>
-    </item>
-    <item android:left="43.0dip" android:top="43.0dip" android:right="43.0dip" android:bottom="43.0dip">
-        <shape android:shape="oval">
-            <solid android:color="@color/oh" />
-            <size android:height="34.0dip" android:width="34.0dip" />
-        </shape>
-    </item>
-</layer-list>
+    <gradient android:startColor="@color/a3x" android:endColor="@color/oj" />
+</shape>

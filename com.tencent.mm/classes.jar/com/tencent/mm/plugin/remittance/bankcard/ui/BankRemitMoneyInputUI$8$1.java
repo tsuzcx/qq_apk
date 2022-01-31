@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h.b;
 
 final class BankRemitMoneyInputUI$8$1
@@ -8,18 +9,20 @@ final class BankRemitMoneyInputUI$8$1
 {
   BankRemitMoneyInputUI$8$1(BankRemitMoneyInputUI.8 param8) {}
   
-  public final boolean m(CharSequence paramCharSequence)
+  public final boolean onFinish(CharSequence paramCharSequence)
   {
-    if (!bk.bl(paramCharSequence.toString()))
+    AppMethodBeat.i(44637);
+    if (!bo.isNullOrNil(paramCharSequence.toString()))
     {
-      BankRemitMoneyInputUI.c(this.nxk.nxh, paramCharSequence.toString());
-      BankRemitMoneyInputUI.i(this.nxk.nxh);
+      BankRemitMoneyInputUI.c(this.qil.qij, paramCharSequence.toString());
+      BankRemitMoneyInputUI.k(this.qil.qij);
     }
     for (;;)
     {
+      AppMethodBeat.o(44637);
       return true;
-      BankRemitMoneyInputUI.c(this.nxk.nxh, null);
-      BankRemitMoneyInputUI.i(this.nxk.nxh);
+      BankRemitMoneyInputUI.c(this.qil.qij, null);
+      BankRemitMoneyInputUI.k(this.qil.qij);
     }
   }
 }

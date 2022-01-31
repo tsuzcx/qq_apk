@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$ez
+final class c$ez
   extends c.g
 {
-  public c$ez()
+  c$ez()
   {
-    super("openGameDetail", "openGameDetail", 131, true);
+    super("notifyPageInfo", "notifyPageInfo", -2, false);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.model.app.w.a;
 
 final class SimpleLoginUI$11$1
@@ -7,9 +8,11 @@ final class SimpleLoginUI$11$1
 {
   SimpleLoginUI$11$1(SimpleLoginUI.11 param11) {}
   
-  public final void Yw()
+  public final void asg()
   {
-    this.fsT.fsR.finish();
+    AppMethodBeat.i(125605);
+    this.gKv.gKt.finish();
+    AppMethodBeat.o(125605);
   }
 }
 

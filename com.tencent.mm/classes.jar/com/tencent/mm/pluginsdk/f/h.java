@@ -2,10 +2,10 @@ package com.tencent.mm.pluginsdk.f;
 
 import android.content.Context;
 import android.text.format.Time;
-import com.tencent.mm.plugin.comm.a.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -13,36 +13,72 @@ import java.util.Locale;
 
 public final class h
 {
-  private static long rVM;
-  private static boolean rVN = false;
+  private static long vMH;
+  private static boolean vMI = false;
   
-  public static String T(Context paramContext, int paramInt)
+  public static String aY(String paramString, long paramLong)
   {
+    AppMethodBeat.i(79458);
+    paramString = android.text.format.DateFormat.format(paramString, paramLong).toString();
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(79458);
+      return "";
+    }
+    String str = paramString.trim();
+    paramString = str;
+    if (str.startsWith("0")) {
+      paramString = str.substring(1);
+    }
+    AppMethodBeat.o(79458);
+    return paramString;
+  }
+  
+  public static String ah(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(79457);
     long l1 = 1000L * paramInt;
     Object localObject1 = new GregorianCalendar();
-    if (l1 < 3600000L) {
+    if (l1 < 3600000L)
+    {
+      AppMethodBeat.o(79457);
       return "";
     }
     Object localObject2 = new GregorianCalendar(((GregorianCalendar)localObject1).get(1), ((GregorianCalendar)localObject1).get(2), ((GregorianCalendar)localObject1).get(5));
     long l2 = l1 - ((GregorianCalendar)localObject2).getTimeInMillis();
-    if ((l2 >= 0L) && (l2 < 86400000L)) {
-      return p(paramContext, l2) + ";" + aq(paramContext.getString(a.h.fmt_normal_time), l1);
+    if ((l2 >= 0L) && (l2 < 86400000L))
+    {
+      paramContext = r(paramContext, l2) + ";" + aY(paramContext.getString(2131300061), l1);
+      AppMethodBeat.o(79457);
+      return paramContext;
     }
     l2 = l1 - (((GregorianCalendar)localObject2).getTimeInMillis() - 86400000L);
-    if ((l2 >= 0L) && (l2 < 86400000L)) {
-      return paramContext.getString(a.h.fmt_pre_yesterday) + " " + p(paramContext, l2) + ";" + aq(paramContext.getString(a.h.fmt_normal_time), l1);
+    if ((l2 >= 0L) && (l2 < 86400000L))
+    {
+      paramContext = paramContext.getString(2131300084) + " " + r(paramContext, l2) + ";" + aY(paramContext.getString(2131300061), l1);
+      AppMethodBeat.o(79457);
+      return paramContext;
     }
     l2 = l1 - (((GregorianCalendar)localObject2).getTimeInMillis() - 172800000L);
-    if ((l2 >= 0L) && (l2 < 86400000L)) {
-      return paramContext.getString(a.h.fmt_pre_daybeforyesterday) + " " + p(paramContext, l2) + ";" + aq(paramContext.getString(a.h.fmt_normal_time), l1);
+    if ((l2 >= 0L) && (l2 < 86400000L))
+    {
+      paramContext = paramContext.getString(2131300067) + " " + r(paramContext, l2) + ";" + aY(paramContext.getString(2131300061), l1);
+      AppMethodBeat.o(79457);
+      return paramContext;
     }
     l2 = l1 - (((GregorianCalendar)localObject2).getTimeInMillis() + 86400000L);
-    if ((l2 >= 0L) && (l2 < 86400000L)) {
-      return paramContext.getString(a.h.fmt_pre_tomorrow) + " " + p(paramContext, l2) + ";" + aq(paramContext.getString(a.h.fmt_normal_time), l1);
+    if ((l2 >= 0L) && (l2 < 86400000L))
+    {
+      paramContext = paramContext.getString(2131300076) + " " + r(paramContext, l2) + ";" + aY(paramContext.getString(2131300061), l1);
+      AppMethodBeat.o(79457);
+      return paramContext;
     }
     l2 = l1 - (((GregorianCalendar)localObject2).getTimeInMillis() + 172800000L);
-    if ((l2 >= 0L) && (l2 < 86400000L)) {
-      return paramContext.getString(a.h.fmt_pre_dayaftertomorrow) + " " + p(paramContext, l2) + ";" + aq(paramContext.getString(a.h.fmt_normal_time), l1);
+    if ((l2 >= 0L) && (l2 < 86400000L))
+    {
+      paramContext = paramContext.getString(2131300066) + " " + r(paramContext, l2) + ";" + aY(paramContext.getString(2131300061), l1);
+      AppMethodBeat.o(79457);
+      return paramContext;
     }
     localObject2 = new GregorianCalendar();
     ((GregorianCalendar)localObject2).setTimeInMillis(l1);
@@ -51,7 +87,9 @@ public final class h
     if ((((GregorianCalendar)localObject1).get(1) == ((GregorianCalendar)localObject2).get(1)) && (((GregorianCalendar)localObject1).get(3) == ((GregorianCalendar)localObject2).get(3)))
     {
       i = ((GregorianCalendar)localObject2).get(7);
-      return U(paramContext, i) + " " + V(paramContext, paramInt) + ";" + aq(paramContext.getString(a.h.fmt_normal_time), l1);
+      paramContext = ai(paramContext, i) + " " + aj(paramContext, paramInt) + ";" + aY(paramContext.getString(2131300061), l1);
+      AppMethodBeat.o(79457);
+      return paramContext;
     }
     if ((((GregorianCalendar)localObject1).get(1) == ((GregorianCalendar)localObject2).get(1)) && (((GregorianCalendar)localObject1).get(3) + 1 == ((GregorianCalendar)localObject2).get(3)))
     {
@@ -64,232 +102,330 @@ public final class h
       }
       for (;;)
       {
-        return (String)localObject1 + " " + V(paramContext, paramInt) + ";" + aq(paramContext.getString(a.h.fmt_normal_time), l1);
-        localObject1 = paramContext.getString(a.h.fmt_pre_next_week_sunday);
+        paramContext = (String)localObject1 + " " + aj(paramContext, paramInt) + ";" + aY(paramContext.getString(2131300061), l1);
+        AppMethodBeat.o(79457);
+        return paramContext;
+        localObject1 = paramContext.getString(2131300071);
         continue;
-        localObject1 = paramContext.getString(a.h.fmt_pre_next_week_monday);
+        localObject1 = paramContext.getString(2131300069);
         continue;
-        localObject1 = paramContext.getString(a.h.fmt_pre_next_week_tuesday);
+        localObject1 = paramContext.getString(2131300073);
         continue;
-        localObject1 = paramContext.getString(a.h.fmt_pre_next_week_wednesday);
+        localObject1 = paramContext.getString(2131300074);
         continue;
-        localObject1 = paramContext.getString(a.h.fmt_pre_next_week_thursday);
+        localObject1 = paramContext.getString(2131300072);
         continue;
-        localObject1 = paramContext.getString(a.h.fmt_pre_next_week_friday);
+        localObject1 = paramContext.getString(2131300068);
         continue;
-        localObject1 = paramContext.getString(a.h.fmt_pre_next_week_saturday);
+        localObject1 = paramContext.getString(2131300070);
       }
     }
-    if (((GregorianCalendar)localObject1).get(1) == ((GregorianCalendar)localObject2).get(1)) {
-      return android.text.format.DateFormat.format(paramContext.getString(a.h.fmt_date), l1) + " " + V(paramContext, paramInt) + ";" + aq(paramContext.getString(a.h.fmt_normal_time), l1);
+    if (((GregorianCalendar)localObject1).get(1) == ((GregorianCalendar)localObject2).get(1))
+    {
+      paramContext = android.text.format.DateFormat.format(paramContext.getString(2131300031), l1) + " " + aj(paramContext, paramInt) + ";" + aY(paramContext.getString(2131300061), l1);
+      AppMethodBeat.o(79457);
+      return paramContext;
     }
-    return android.text.format.DateFormat.format(paramContext.getString(a.h.fmt_longdate), l1) + " " + V(paramContext, paramInt) + ";" + aq(paramContext.getString(a.h.fmt_normal_time), l1);
+    paramContext = android.text.format.DateFormat.format(paramContext.getString(2131300050), l1) + " " + aj(paramContext, paramInt) + ";" + aY(paramContext.getString(2131300061), l1);
+    AppMethodBeat.o(79457);
+    return paramContext;
   }
   
-  public static String U(Context paramContext, int paramInt)
+  public static String ai(Context paramContext, int paramInt)
   {
+    AppMethodBeat.i(79459);
     switch (paramInt)
     {
     default: 
+      AppMethodBeat.o(79459);
       return "";
     case 1: 
-      return paramContext.getString(a.h.fmt_pre_week_sunday);
+      paramContext = paramContext.getString(2131300080);
+      AppMethodBeat.o(79459);
+      return paramContext;
     case 2: 
-      return paramContext.getString(a.h.fmt_pre_week_monday);
+      paramContext = paramContext.getString(2131300078);
+      AppMethodBeat.o(79459);
+      return paramContext;
     case 3: 
-      return paramContext.getString(a.h.fmt_pre_week_tuesday);
+      paramContext = paramContext.getString(2131300082);
+      AppMethodBeat.o(79459);
+      return paramContext;
     case 4: 
-      return paramContext.getString(a.h.fmt_pre_week_wednesday);
+      paramContext = paramContext.getString(2131300083);
+      AppMethodBeat.o(79459);
+      return paramContext;
     case 5: 
-      return paramContext.getString(a.h.fmt_pre_week_thursday);
+      paramContext = paramContext.getString(2131300081);
+      AppMethodBeat.o(79459);
+      return paramContext;
     case 6: 
-      return paramContext.getString(a.h.fmt_pre_week_friday);
+      paramContext = paramContext.getString(2131300077);
+      AppMethodBeat.o(79459);
+      return paramContext;
     }
-    return paramContext.getString(a.h.fmt_pre_week_saturday);
+    paramContext = paramContext.getString(2131300079);
+    AppMethodBeat.o(79459);
+    return paramContext;
   }
   
-  private static CharSequence V(Context paramContext, int paramInt)
+  private static CharSequence aj(Context paramContext, int paramInt)
   {
-    if (paramInt < 0) {
+    AppMethodBeat.i(79462);
+    if (paramInt < 0)
+    {
+      AppMethodBeat.o(79462);
       return "";
     }
-    if (paramInt < 6L) {
-      return paramContext.getString(a.h.fmt_dawn);
-    }
-    if (paramInt < 12L) {
-      return paramContext.getString(a.h.fmt_morning);
-    }
-    if (paramInt < 13L) {
-      return paramContext.getString(a.h.fmt_noon);
-    }
-    if (paramInt < 18L) {
-      return paramContext.getString(a.h.fmt_afternoon);
-    }
-    return paramContext.getString(a.h.fmt_evening);
-  }
-  
-  public static String aq(String paramString, long paramLong)
-  {
-    paramString = android.text.format.DateFormat.format(paramString, paramLong).toString();
-    if (bk.bl(paramString)) {
-      paramString = "";
-    }
-    String str;
-    do
+    if (paramInt < 6L)
     {
-      return paramString;
-      str = paramString.trim();
-      paramString = str;
-    } while (!str.startsWith("0"));
-    return str.substring(1);
+      paramContext = paramContext.getString(2131300035);
+      AppMethodBeat.o(79462);
+      return paramContext;
+    }
+    if (paramInt < 12L)
+    {
+      paramContext = paramContext.getString(2131300054);
+      AppMethodBeat.o(79462);
+      return paramContext;
+    }
+    if (paramInt < 13L)
+    {
+      paramContext = paramContext.getString(2131300060);
+      AppMethodBeat.o(79462);
+      return paramContext;
+    }
+    if (paramInt < 18L)
+    {
+      paramContext = paramContext.getString(2131300021);
+      AppMethodBeat.o(79462);
+      return paramContext;
+    }
+    paramContext = paramContext.getString(2131300042);
+    AppMethodBeat.o(79462);
+    return paramContext;
   }
   
   public static CharSequence c(Context paramContext, long paramLong, boolean paramBoolean)
   {
-    Object localObject2;
-    Object localObject1;
-    if (!x.cqG())
+    AppMethodBeat.i(79465);
+    if (!aa.dsD())
     {
-      localObject2 = x.Zi(x.cqJ());
-      localObject1 = new GregorianCalendar();
-      if (paramLong < 3600000L) {
-        localObject1 = "";
-      }
-    }
-    Object localObject3;
-    do
-    {
-      do
+      localObject1 = aa.apg(aa.dsG());
+      localObject2 = new GregorianCalendar();
+      if (paramLong < 3600000L)
       {
-        return localObject1;
-        localObject3 = new GregorianCalendar(((GregorianCalendar)localObject1).get(1), ((GregorianCalendar)localObject1).get(2), ((GregorianCalendar)localObject1).get(5));
-        long l = paramLong - ((GregorianCalendar)localObject3).getTimeInMillis();
-        if ((l > 0L) && (l <= 86400000L))
-        {
-          paramContext = java.text.DateFormat.getTimeInstance(3, (Locale)localObject2);
-          return paramContext.format(Long.valueOf(paramLong));
-        }
-        l = paramLong - ((GregorianCalendar)localObject3).getTimeInMillis() + 86400000L;
-        if ((l > 0L) && (l <= 86400000L))
-        {
-          if (paramBoolean) {
-            return paramContext.getString(a.h.fmt_pre_yesterday);
-          }
-          return paramContext.getString(a.h.fmt_pre_yesterday) + " " + java.text.DateFormat.getTimeInstance(3, (Locale)localObject2).format(Long.valueOf(paramLong));
-        }
-        paramContext = new GregorianCalendar();
-        paramContext.setTimeInMillis(paramLong);
-        if ((((GregorianCalendar)localObject1).get(1) != paramContext.get(1)) || (((GregorianCalendar)localObject1).get(3) != paramContext.get(3))) {
-          break;
-        }
-        paramContext = new SimpleDateFormat("E", (Locale)localObject2);
-        paramContext = paramContext.format(Long.valueOf(paramLong));
-        localObject1 = paramContext;
-      } while (paramBoolean);
-      return paramContext + " " + java.text.DateFormat.getTimeInstance(3, (Locale)localObject2).format(Long.valueOf(paramLong));
-      if (((GregorianCalendar)localObject1).get(1) == paramContext.get(1))
-      {
-        if (paramBoolean) {
-          return java.text.DateFormat.getDateInstance(3, (Locale)localObject2).format(Long.valueOf(paramLong));
-        }
-        return java.text.DateFormat.getDateTimeInstance(3, 3, (Locale)localObject2).format(Long.valueOf(paramLong));
-      }
-      if (paramBoolean) {
-        return java.text.DateFormat.getDateInstance(3, (Locale)localObject2).format(Long.valueOf(paramLong));
-      }
-      return java.text.DateFormat.getDateTimeInstance(3, 3, (Locale)localObject2).format(Long.valueOf(paramLong));
-      if (paramLong < 3600000L) {
+        AppMethodBeat.o(79465);
         return "";
       }
-      localObject3 = new Time();
-      localObject1 = new Time();
-      ((Time)localObject3).set(paramLong);
-      ((Time)localObject1).setToNow();
-      if ((((Time)localObject3).year == ((Time)localObject1).year) && (((Time)localObject3).yearDay == ((Time)localObject1).yearDay))
+      GregorianCalendar localGregorianCalendar = new GregorianCalendar(((GregorianCalendar)localObject2).get(1), ((GregorianCalendar)localObject2).get(2), ((GregorianCalendar)localObject2).get(5));
+      long l = paramLong - localGregorianCalendar.getTimeInMillis();
+      if ((l > 0L) && (l <= 86400000L))
       {
-        if (clh()) {
-          return g.a(paramContext.getString(a.h.fmt_normal_time_24), (Time)localObject3);
-        }
-        return V(paramContext, ((Time)localObject3).hour) + g.a(paramContext.getString(a.h.fmt_normal_time), (Time)localObject3);
+        paramContext = java.text.DateFormat.getTimeInstance(3, (Locale)localObject1);
+        paramContext = paramContext.format(Long.valueOf(paramLong));
+        AppMethodBeat.o(79465);
+        return paramContext;
       }
-      if ((((Time)localObject3).year == ((Time)localObject1).year) && (((Time)localObject1).yearDay - ((Time)localObject3).yearDay == 1))
+      l = paramLong - localGregorianCalendar.getTimeInMillis() + 86400000L;
+      if ((l > 0L) && (l <= 86400000L))
       {
-        boolean bool = clh();
-        if (paramBoolean) {
-          return paramContext.getString(a.h.fmt_pre_yesterday);
-        }
-        localObject1 = new StringBuilder().append(paramContext.getString(a.h.fmt_pre_yesterday)).append(" ");
-        if (bool) {}
-        for (paramContext = g.a(paramContext.getString(a.h.fmt_normal_time_24), (Time)localObject3);; paramContext = V(paramContext, ((Time)localObject3).hour) + g.a(paramContext.getString(a.h.fmt_normal_time), (Time)localObject3)) {
+        if (paramBoolean)
+        {
+          paramContext = paramContext.getString(2131300084);
+          AppMethodBeat.o(79465);
           return paramContext;
         }
+        paramContext = paramContext.getString(2131300084) + " " + java.text.DateFormat.getTimeInstance(3, (Locale)localObject1).format(Long.valueOf(paramLong));
+        AppMethodBeat.o(79465);
+        return paramContext;
       }
-      if ((((Time)localObject3).year != ((Time)localObject1).year) || (((Time)localObject3).getWeekNumber() != ((Time)localObject1).getWeekNumber())) {
-        break;
+      paramContext = new GregorianCalendar();
+      paramContext.setTimeInMillis(paramLong);
+      if ((((GregorianCalendar)localObject2).get(1) == paramContext.get(1)) && (((GregorianCalendar)localObject2).get(3) == paramContext.get(3)))
+      {
+        paramContext = new SimpleDateFormat("E", (Locale)localObject1);
+        paramContext = paramContext.format(Long.valueOf(paramLong));
+        if (paramBoolean)
+        {
+          AppMethodBeat.o(79465);
+          return paramContext;
+        }
+        paramContext = paramContext + " " + java.text.DateFormat.getTimeInstance(3, (Locale)localObject1).format(Long.valueOf(paramLong));
+        AppMethodBeat.o(79465);
+        return paramContext;
       }
-      localObject2 = g.a("E ", (Time)localObject3);
-      localObject1 = localObject2;
-    } while (paramBoolean);
-    return (String)localObject2 + g.a(paramContext.getString(a.h.fmt_patime), (Time)localObject3);
-    if (((Time)localObject3).year == ((Time)localObject1).year)
+      if (((GregorianCalendar)localObject2).get(1) == paramContext.get(1))
+      {
+        if (paramBoolean)
+        {
+          paramContext = java.text.DateFormat.getDateInstance(3, (Locale)localObject1).format(Long.valueOf(paramLong));
+          AppMethodBeat.o(79465);
+          return paramContext;
+        }
+        paramContext = java.text.DateFormat.getDateTimeInstance(3, 3, (Locale)localObject1).format(Long.valueOf(paramLong));
+        AppMethodBeat.o(79465);
+        return paramContext;
+      }
+      if (paramBoolean)
+      {
+        paramContext = java.text.DateFormat.getDateInstance(3, (Locale)localObject1).format(Long.valueOf(paramLong));
+        AppMethodBeat.o(79465);
+        return paramContext;
+      }
+      paramContext = java.text.DateFormat.getDateTimeInstance(3, 3, (Locale)localObject1).format(Long.valueOf(paramLong));
+      AppMethodBeat.o(79465);
+      return paramContext;
+    }
+    if (paramLong < 3600000L)
     {
-      if (paramBoolean) {
-        return g.a(paramContext.getString(a.h.fmt_date), (Time)localObject3);
+      AppMethodBeat.o(79465);
+      return "";
+    }
+    Object localObject2 = new Time();
+    Object localObject1 = new Time();
+    ((Time)localObject2).set(paramLong);
+    ((Time)localObject1).setToNow();
+    if ((((Time)localObject2).year == ((Time)localObject1).year) && (((Time)localObject2).yearDay == ((Time)localObject1).yearDay))
+    {
+      if (dlR())
+      {
+        paramContext = g.a(paramContext.getString(2131300062), (Time)localObject2);
+        AppMethodBeat.o(79465);
+        return paramContext;
       }
-      return g.a(paramContext.getString(a.h.fmt_datetime, new Object[] { p(paramContext, ((Time)localObject3).hour * 3600000L) }).toString(), (Time)localObject3);
+      paramContext = aj(paramContext, ((Time)localObject2).hour) + g.a(paramContext.getString(2131300061), (Time)localObject2);
+      AppMethodBeat.o(79465);
+      return paramContext;
     }
-    if (paramBoolean) {
-      return g.a(paramContext.getString(a.h.fmt_longdate), (Time)localObject3);
+    if ((((Time)localObject2).year == ((Time)localObject1).year) && (((Time)localObject1).yearDay - ((Time)localObject2).yearDay == 1))
+    {
+      boolean bool = dlR();
+      if (paramBoolean)
+      {
+        paramContext = paramContext.getString(2131300084);
+        AppMethodBeat.o(79465);
+        return paramContext;
+      }
+      localObject1 = new StringBuilder().append(paramContext.getString(2131300084)).append(" ");
+      if (bool) {}
+      for (paramContext = g.a(paramContext.getString(2131300062), (Time)localObject2);; paramContext = aj(paramContext, ((Time)localObject2).hour) + g.a(paramContext.getString(2131300061), (Time)localObject2))
+      {
+        paramContext = paramContext;
+        AppMethodBeat.o(79465);
+        return paramContext;
+      }
     }
-    return g.a(paramContext.getString(a.h.fmt_longtime, new Object[] { p(paramContext, ((Time)localObject3).hour * 3600000L) }).toString(), (Time)localObject3);
-  }
-  
-  public static boolean clh()
-  {
-    if (System.currentTimeMillis() - rVM > 30000L) {
-      rVN = android.text.format.DateFormat.is24HourFormat(ae.getContext());
+    if ((((Time)localObject2).year == ((Time)localObject1).year) && (((Time)localObject2).getWeekNumber() == ((Time)localObject1).getWeekNumber()))
+    {
+      localObject1 = g.a("E ", (Time)localObject2);
+      if (paramBoolean)
+      {
+        AppMethodBeat.o(79465);
+        return localObject1;
+      }
+      paramContext = (String)localObject1 + g.a(paramContext.getString(2131300063), (Time)localObject2);
+      AppMethodBeat.o(79465);
+      return paramContext;
     }
-    return rVN;
+    if (((Time)localObject2).year == ((Time)localObject1).year)
+    {
+      if (paramBoolean)
+      {
+        paramContext = g.a(paramContext.getString(2131300031), (Time)localObject2);
+        AppMethodBeat.o(79465);
+        return paramContext;
+      }
+      paramContext = g.a(paramContext.getString(2131300033, new Object[] { r(paramContext, ((Time)localObject2).hour * 3600000L) }).toString(), (Time)localObject2);
+      AppMethodBeat.o(79465);
+      return paramContext;
+    }
+    if (paramBoolean)
+    {
+      paramContext = g.a(paramContext.getString(2131300050), (Time)localObject2);
+      AppMethodBeat.o(79465);
+      return paramContext;
+    }
+    paramContext = g.a(paramContext.getString(2131300052, new Object[] { r(paramContext, ((Time)localObject2).hour * 3600000L) }).toString(), (Time)localObject2);
+    AppMethodBeat.o(79465);
+    return paramContext;
   }
   
-  public static String g(String paramString, long paramLong)
+  public static boolean dlR()
   {
-    return new SimpleDateFormat(paramString).format(new Date(1000L * paramLong));
+    AppMethodBeat.i(79464);
+    if (System.currentTimeMillis() - vMH > 30000L) {
+      vMI = android.text.format.DateFormat.is24HourFormat(ah.getContext());
+    }
+    boolean bool = vMI;
+    AppMethodBeat.o(79464);
+    return bool;
   }
   
-  public static CharSequence n(Context paramContext, long paramLong)
+  public static String formatTime(String paramString, long paramLong)
   {
-    return paramContext.getString(a.h.fmt_voip_longtime_prefix) + android.text.format.DateFormat.format(paramContext.getString(a.h.fmt_voip_longtime), paramLong);
-  }
-  
-  public static CharSequence o(Context paramContext, long paramLong)
-  {
-    return paramContext.getString(a.h.fmt_voip_voice_longtime_prefix) + android.text.format.DateFormat.format(paramContext.getString(a.h.fmt_voip_longtime), paramLong);
+    AppMethodBeat.i(79456);
+    paramString = new SimpleDateFormat(paramString).format(new Date(1000L * paramLong));
+    AppMethodBeat.o(79456);
+    return paramString;
   }
   
   public static CharSequence p(Context paramContext, long paramLong)
   {
-    if (paramLong < 0L) {
+    AppMethodBeat.i(79460);
+    paramContext = paramContext.getString(2131300109) + android.text.format.DateFormat.format(paramContext.getString(2131300108), paramLong);
+    AppMethodBeat.o(79460);
+    return paramContext;
+  }
+  
+  public static CharSequence q(Context paramContext, long paramLong)
+  {
+    AppMethodBeat.i(79461);
+    paramContext = paramContext.getString(2131300110) + android.text.format.DateFormat.format(paramContext.getString(2131300108), paramLong);
+    AppMethodBeat.o(79461);
+    return paramContext;
+  }
+  
+  public static CharSequence r(Context paramContext, long paramLong)
+  {
+    AppMethodBeat.i(79463);
+    if (paramLong < 0L)
+    {
+      AppMethodBeat.o(79463);
       return "";
     }
-    if (paramLong < 21600000L) {
-      return paramContext.getString(a.h.fmt_dawn);
+    if (paramLong < 21600000L)
+    {
+      paramContext = paramContext.getString(2131300035);
+      AppMethodBeat.o(79463);
+      return paramContext;
     }
-    if (paramLong < 43200000L) {
-      return paramContext.getString(a.h.fmt_morning);
+    if (paramLong < 43200000L)
+    {
+      paramContext = paramContext.getString(2131300054);
+      AppMethodBeat.o(79463);
+      return paramContext;
     }
-    if (paramLong < 46800000L) {
-      return paramContext.getString(a.h.fmt_noon);
+    if (paramLong < 46800000L)
+    {
+      paramContext = paramContext.getString(2131300060);
+      AppMethodBeat.o(79463);
+      return paramContext;
     }
-    if (paramLong < 64800000L) {
-      return paramContext.getString(a.h.fmt_afternoon);
+    if (paramLong < 64800000L)
+    {
+      paramContext = paramContext.getString(2131300021);
+      AppMethodBeat.o(79463);
+      return paramContext;
     }
-    return paramContext.getString(a.h.fmt_evening);
+    paramContext = paramContext.getString(2131300042);
+    AppMethodBeat.o(79463);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.f.h
  * JD-Core Version:    0.7.0.1
  */

@@ -3,26 +3,65 @@ package com.tencent.mm.plugin.appbrand.widget.desktop.a;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
+import android.view.ViewParent;
+import com.tencent.mm.sdk.platformtools.ab;
 
-public abstract interface b<VH extends RecyclerView.v>
+public abstract class b<T extends RecyclerView.v>
+  implements c<T>
 {
-  public abstract boolean J(VH paramVH);
+  public static float Q(RecyclerView.v paramv)
+  {
+    if ((paramv != null) && (paramv.aku != null))
+    {
+      paramv = paramv.aku;
+      int[] arrayOfInt = new int[2];
+      paramv.getLocationOnScreen(arrayOfInt);
+      return arrayOfInt[1];
+    }
+    return 0.0F;
+  }
   
-  public abstract boolean L(VH paramVH);
-  
-  public abstract boolean M(VH paramVH);
-  
-  public abstract void a(RecyclerView paramRecyclerView, VH paramVH, int paramInt, Runnable paramRunnable);
-  
-  public abstract void a(View paramView, float paramFloat1, float paramFloat2, RecyclerView.v paramv);
-  
-  public abstract boolean a(RecyclerView paramRecyclerView, VH paramVH1, VH paramVH2, int paramInt1, int paramInt2);
-  
-  public abstract View c(RecyclerView paramRecyclerView, VH paramVH);
-  
-  public abstract void d(RecyclerView paramRecyclerView, VH paramVH);
-  
-  public abstract void i(RecyclerView paramRecyclerView);
+  public static float c(RecyclerView paramRecyclerView, RecyclerView.v paramv)
+  {
+    if (paramv != null) {
+      try
+      {
+        if (paramv.aku != null)
+        {
+          float f2 = paramv.aku.getLeft();
+          paramv = paramv.aku;
+          ViewParent localViewParent2 = paramv.getParent();
+          ViewParent localViewParent1 = localViewParent2;
+          float f1 = f2;
+          if ((localViewParent2 instanceof View))
+          {
+            paramv = (View)localViewParent2;
+            f1 = f2 + paramv.getLeft();
+            localViewParent1 = localViewParent2;
+          }
+          while ((paramv != paramRecyclerView) && (localViewParent1 != null))
+          {
+            localViewParent2 = paramv.getParent();
+            localViewParent1 = localViewParent2;
+            if ((localViewParent2 instanceof View))
+            {
+              paramv = (View)localViewParent2;
+              int i = paramv.getLeft();
+              f1 += i;
+              localViewParent1 = localViewParent2;
+            }
+          }
+          return f1;
+        }
+      }
+      catch (Exception paramRecyclerView)
+      {
+        ab.printErrStackTrace("alvinluo", paramRecyclerView, "alvinluo getTransX exception", new Object[0]);
+        return 0.0F;
+      }
+    }
+    return 0.0F;
+  }
 }
 
 

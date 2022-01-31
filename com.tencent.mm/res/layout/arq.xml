@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/e3v" android:background="@color/wl" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.listview.AnimatedExpandableListView android:id="@id/e3w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/zm" android:cacheColorHint="@color/zm" android:groupIndicator="@null" android:divider="@null" />
+<LinearLayout android:orientation="horizontal" android:background="@color/z1" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/rg">
+        <ImageView android:id="@id/bl_" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/read_more_btn_icon" android:contentDescription="@string/ta" />
+        <TextView android:textColor="#ff7a93af" android:id="@id/blh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="{tip}" style="@style/ln" />
+    </LinearLayout>
 </LinearLayout>

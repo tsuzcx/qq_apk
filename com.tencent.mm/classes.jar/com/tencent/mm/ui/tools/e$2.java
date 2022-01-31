@@ -1,7 +1,8 @@
 package com.tencent.mm.ui.tools;
 
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$2
   implements Runnable
@@ -10,11 +11,13 @@ final class e$2
   
   public final void run()
   {
-    if (this.wcP.wcN == this.wcP.wcI)
+    AppMethodBeat.i(107642);
+    if (this.Avj.Avh == this.Avj.Avc)
     {
-      y.i("MicroMsg.ImagePreviewAnimation", "dancy enter Animation not Start!");
-      this.wcQ.requestLayout();
+      ab.i("MicroMsg.ImagePreviewAnimation", "dancy enter Animation not Start!");
+      this.Avk.requestLayout();
     }
+    AppMethodBeat.o(107642);
   }
 }
 

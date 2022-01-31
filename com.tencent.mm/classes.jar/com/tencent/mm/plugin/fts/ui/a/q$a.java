@@ -8,10 +8,10 @@ import com.tencent.mm.plugin.fts.a.d.a.a.a;
 public final class q$a
   extends a.a
 {
-  public View contentView;
-  public ImageView doU;
-  public TextView eXO;
-  public TextView eXP;
+  public ImageView egq;
+  public TextView gpL;
+  public TextView gpM;
+  public View hrR;
   
   public q$a(q paramq)
   {

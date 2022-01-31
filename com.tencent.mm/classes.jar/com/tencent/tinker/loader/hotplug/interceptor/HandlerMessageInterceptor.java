@@ -8,26 +8,26 @@ import java.lang.reflect.Field;
 public class HandlerMessageInterceptor
   extends Interceptor<Handler.Callback>
 {
-  private static Field wXV = null;
-  private final Handler wXT;
-  private final MessageHandler wXU;
+  private static Field Buz = null;
+  private final Handler Bux;
+  private final MessageHandler Buy;
   
   /* Error */
   static
   {
     // Byte code:
     //   0: aconst_null
-    //   1: putstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:wXV	Ljava/lang/reflect/Field;
+    //   1: putstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:Buz	Ljava/lang/reflect/Field;
     //   4: ldc 2
     //   6: monitorenter
-    //   7: getstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:wXV	Ljava/lang/reflect/Field;
+    //   7: getstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:Buz	Ljava/lang/reflect/Field;
     //   10: astore_0
     //   11: aload_0
     //   12: ifnonnull +13 -> 25
     //   15: ldc 25
     //   17: ldc 27
-    //   19: invokestatic 33	com/tencent/tinker/loader/shareutil/ShareReflectUtil:d	(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   22: putstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:wXV	Ljava/lang/reflect/Field;
+    //   19: invokestatic 33	com/tencent/tinker/loader/shareutil/ShareReflectUtil:g	(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   22: putstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:Buz	Ljava/lang/reflect/Field;
     //   25: ldc 2
     //   27: monitorexit
     //   28: return
@@ -54,35 +54,35 @@ public class HandlerMessageInterceptor
   
   public HandlerMessageInterceptor(Handler paramHandler, MessageHandler paramMessageHandler)
   {
-    this.wXT = paramHandler;
-    this.wXU = paramMessageHandler;
+    this.Bux = paramHandler;
+    this.Buy = paramMessageHandler;
   }
   
-  private static class CallbackWrapper
+  static class CallbackWrapper
     implements Handler.Callback, Interceptor.ITinkerHotplugProxy
   {
-    private final HandlerMessageInterceptor.MessageHandler wXU;
-    private final Handler.Callback wXW;
-    private volatile boolean wXX;
+    private final Handler.Callback BuA;
+    private volatile boolean BuB;
+    private final HandlerMessageInterceptor.MessageHandler Buy;
     
     CallbackWrapper(HandlerMessageInterceptor.MessageHandler paramMessageHandler, Handler.Callback paramCallback)
     {
-      this.wXU = paramMessageHandler;
-      this.wXW = paramCallback;
-      this.wXX = false;
+      this.Buy = paramMessageHandler;
+      this.BuA = paramCallback;
+      this.BuB = false;
     }
     
     public boolean handleMessage(Message paramMessage)
     {
-      if (this.wXX) {
+      if (this.BuB) {
         return false;
       }
-      this.wXX = true;
-      this.wXU.handleMessage(paramMessage);
-      if (this.wXW != null) {}
-      for (boolean bool = this.wXW.handleMessage(paramMessage);; bool = false)
+      this.BuB = true;
+      this.Buy.handleMessage(paramMessage);
+      if (this.BuA != null) {}
+      for (boolean bool = this.BuA.handleMessage(paramMessage);; bool = false)
       {
-        this.wXX = false;
+        this.BuB = false;
         return bool;
       }
     }

@@ -1,50 +1,53 @@
 package com.tencent.mm.plugin.collect.reward.ui;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.collect.reward.a.a.a;
 import com.tencent.mm.plugin.collect.reward.a.b;
-import com.tencent.mm.protocal.c.na;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.qc;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class QrRewardMainUI$16
   implements a.a
 {
   QrRewardMainUI$16(QrRewardMainUI paramQrRewardMainUI, b paramb) {}
   
-  public final void i(m paramm)
+  public final void h(m paramm)
   {
-    QrRewardMainUI.a(this.iJi, this.iJn.iIa.iet);
-    QrRewardMainUI.a(this.iJi, this.iJn.iIa.sKL);
-    QrRewardMainUI.b(this.iJi, this.iJn.iIa.sKH);
-    QrRewardMainUI.b(this.iJi, this.iJn.iIa.desc);
-    QrRewardMainUI.c(this.iJi, this.iJn.iIa.qsJ);
-    paramm = this.iJi;
+    AppMethodBeat.i(41100);
+    QrRewardMainUI.a(this.kPN, this.kPS.kOF.jVh);
+    QrRewardMainUI.a(this.kPN, this.kPS.kOF.wIB);
+    QrRewardMainUI.b(this.kPN, this.kPS.kOF.wIx);
+    QrRewardMainUI.b(this.kPN, this.kPS.kOF.desc);
+    QrRewardMainUI.c(this.kPN, this.kPS.kOF.ueu);
+    paramm = this.kPN;
     boolean bool;
-    if (!this.iJn.iIa.sKF)
+    if (!this.kPS.kOF.wIv)
     {
       bool = true;
-      QrRewardMainUI.b(paramm, bool);
-      QrRewardMainUI.d(this.iJi, this.iJn.iIa.imZ);
-      QrRewardMainUI.e(this.iJi, this.iJn.iIa.sKJ);
-      QrRewardMainUI.d(this.iJi);
-      QrRewardMainUI.e(this.iJi);
-      if (QrRewardMainUI.f(this.iJi)) {
-        break label232;
+      QrRewardMainUI.c(paramm, bool);
+      QrRewardMainUI.d(this.kPN, this.kPS.kOF.knU);
+      QrRewardMainUI.e(this.kPN, this.kPS.kOF.wIz);
+      QrRewardMainUI.h(this.kPN);
+      QrRewardMainUI.i(this.kPN);
+      if (QrRewardMainUI.j(this.kPN)) {
+        break label242;
       }
-      QrRewardMainUI.g(this.iJi);
+      QrRewardMainUI.k(this.kPN);
     }
     for (;;)
     {
-      QrRewardMainUI.f(this.iJi, this.iJn.iIa.nxM);
-      QrRewardMainUI.aEO();
-      y.d("MicroMsg.QrRewardMainUI", "url: %s", new Object[] { QrRewardMainUI.j(this.iJi) });
+      QrRewardMainUI.f(this.kPN, this.kPS.kOF.qiN);
+      QrRewardMainUI.bif();
+      ab.d("MicroMsg.QrRewardMainUI", "url: %s", new Object[] { QrRewardMainUI.n(this.kPN) });
+      AppMethodBeat.o(41100);
       return;
       bool = false;
       break;
-      label232:
-      QrRewardMainUI.a(this.iJi, this.iJn.iIa.nxM, this.iJn.iIa.sKG);
-      QrRewardMainUI.h(this.iJi);
-      QrRewardMainUI.i(this.iJi);
+      label242:
+      QrRewardMainUI.a(this.kPN, this.kPS.kOF.qiN, this.kPS.kOF.wIw);
+      QrRewardMainUI.l(this.kPN);
+      QrRewardMainUI.m(this.kPN);
     }
   }
 }

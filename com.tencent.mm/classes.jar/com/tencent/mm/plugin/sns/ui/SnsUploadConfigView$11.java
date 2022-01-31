@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 final class SnsUploadConfigView$11
   implements DialogInterface.OnClickListener
@@ -13,7 +14,9 @@ final class SnsUploadConfigView$11
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a.eUR.h(new Intent(), SnsUploadConfigView.k(this.piZ));
+    AppMethodBeat.i(39698);
+    a.gmO.g(new Intent(), SnsUploadConfigView.k(this.sbB));
+    AppMethodBeat.o(39698);
   }
 }
 

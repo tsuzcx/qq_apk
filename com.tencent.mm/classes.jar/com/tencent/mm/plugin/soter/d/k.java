@@ -1,16 +1,21 @@
 package com.tencent.mm.plugin.soter.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class k
 {
-  public String aox = "OK";
-  public String bYt = "";
+  public String cGu = "";
   public int errCode = 0;
-  public byte pso = 1;
-  public String psp = "";
+  public String errMsg = "OK";
+  public byte sop = 1;
+  public String soq = "";
   
   public final String toString()
   {
-    return "SoterMpRespModel{errCode=" + this.errCode + ", errMsg='" + this.aox + '\'' + ", resultMode=" + this.pso + ", resultJson='" + this.bYt + '\'' + ", resultJsonSignature='" + this.psp + '\'' + '}';
+    AppMethodBeat.i(73894);
+    String str = "SoterMpRespModel{errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + ", resultMode=" + this.sop + ", resultJson='" + this.cGu + '\'' + ", resultJsonSignature='" + this.soq + '\'' + '}';
+    AppMethodBeat.o(73894);
+    return str;
   }
 }
 

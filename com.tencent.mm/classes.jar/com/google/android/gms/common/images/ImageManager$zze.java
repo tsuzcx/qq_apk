@@ -4,7 +4,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.SystemClock;
-import com.google.android.gms.common.internal.zzc;
+import com.google.android.gms.common.internal.Asserts;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Map;
@@ -15,78 +16,77 @@ final class ImageManager$zze
 {
   private final Bitmap mBitmap;
   private final Uri mUri;
-  private boolean zzaEt;
-  private final CountDownLatch zztj;
+  private final CountDownLatch zzfd;
+  private boolean zzpj;
   
   public ImageManager$zze(ImageManager paramImageManager, Uri paramUri, Bitmap paramBitmap, boolean paramBoolean, CountDownLatch paramCountDownLatch)
   {
     this.mUri = paramUri;
     this.mBitmap = paramBitmap;
-    this.zzaEt = paramBoolean;
-    this.zztj = paramCountDownLatch;
-  }
-  
-  private void zza(ImageManager.ImageReceiver paramImageReceiver, boolean paramBoolean)
-  {
-    paramImageReceiver = ImageManager.ImageReceiver.zza(paramImageReceiver);
-    int j = paramImageReceiver.size();
-    int i = 0;
-    if (i < j)
-    {
-      zza localzza = (zza)paramImageReceiver.get(i);
-      if (paramBoolean) {
-        localzza.zza(ImageManager.zzb(this.zzaEq), this.mBitmap, false);
-      }
-      for (;;)
-      {
-        if (!(localzza instanceof zza.zzc)) {
-          ImageManager.zza(this.zzaEq).remove(localzza);
-        }
-        i += 1;
-        break;
-        ImageManager.zzd(this.zzaEq).put(this.mUri, Long.valueOf(SystemClock.elapsedRealtime()));
-        localzza.zza(ImageManager.zzb(this.zzaEq), ImageManager.zzc(this.zzaEq), false);
-      }
-    }
+    this.zzpj = paramBoolean;
+    this.zzfd = paramCountDownLatch;
   }
   
   public final void run()
   {
-    zzc.zzdj("OnBitmapLoadedRunnable must be executed in the main thread");
-    boolean bool;
+    AppMethodBeat.i(61215);
+    Asserts.checkMainThread("OnBitmapLoadedRunnable must be executed in the main thread");
+    int i;
     if (this.mBitmap != null) {
-      bool = true;
+      i = 1;
     }
-    while (ImageManager.zzh(this.zzaEq) != null) {
-      if (this.zzaEt)
+    while (ImageManager.zzh(this.zzpg) != null) {
+      if (this.zzpj)
       {
-        ImageManager.zzh(this.zzaEq).evictAll();
+        ImageManager.zzh(this.zzpg).evictAll();
         System.gc();
-        this.zzaEt = false;
-        ImageManager.zzg(this.zzaEq).post(this);
+        this.zzpj = false;
+        ImageManager.zzg(this.zzpg).post(this);
+        AppMethodBeat.o(61215);
         return;
-        bool = false;
+        i = 0;
       }
-      else if (bool)
+      else if (i != 0)
       {
-        ImageManager.zzh(this.zzaEq).put(new zza.zza(this.mUri), this.mBitmap);
+        ImageManager.zzh(this.zzpg).put(new ImageRequest.zza(this.mUri), this.mBitmap);
       }
     }
-    ??? = (ImageManager.ImageReceiver)ImageManager.zze(this.zzaEq).remove(this.mUri);
-    if (??? != null) {
-      zza((ImageManager.ImageReceiver)???, bool);
-    }
-    this.zztj.countDown();
-    synchronized (ImageManager.zzuH())
+    ??? = (ImageManager.ImageReceiver)ImageManager.zze(this.zzpg).remove(this.mUri);
+    if (??? != null)
     {
-      ImageManager.zzxq().remove(this.mUri);
+      ??? = ImageManager.ImageReceiver.zza((ImageManager.ImageReceiver)???);
+      int k = ((ArrayList)???).size();
+      int j = 0;
+      if (j < k)
+      {
+        ImageRequest localImageRequest = (ImageRequest)((ArrayList)???).get(j);
+        if (i != 0) {
+          localImageRequest.zza(ImageManager.zzb(this.zzpg), this.mBitmap, false);
+        }
+        for (;;)
+        {
+          if (!(localImageRequest instanceof ImageRequest.ListenerImageRequest)) {
+            ImageManager.zza(this.zzpg).remove(localImageRequest);
+          }
+          j += 1;
+          break;
+          ImageManager.zzd(this.zzpg).put(this.mUri, Long.valueOf(SystemClock.elapsedRealtime()));
+          localImageRequest.zza(ImageManager.zzb(this.zzpg), ImageManager.zzc(this.zzpg), false);
+        }
+      }
+    }
+    this.zzfd.countDown();
+    synchronized (ImageManager.zzcm())
+    {
+      ImageManager.zzcn().remove(this.mUri);
+      AppMethodBeat.o(61215);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.gms.common.images.ImageManager.zze
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,9 @@ package com.tencent.oscarcamera.particlesystem;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import com.tencent.util.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.LogUtils;
+import com.tencent.util.i;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -21,9 +23,9 @@ import org.json.JSONObject;
 
 public class ParticleSystemEx
 {
-  private static final String TAG = ParticleSystemEx.class.getSimpleName();
+  private static final String TAG;
   private AdvanceRes[] mAdvanceRes;
-  private List<ParticleTemplate> mClouds = new ArrayList();
+  private List<ParticleTemplate> mClouds;
   final Context mContext;
   private long mNativeCtx;
   private FloatBuffer mParticleCenterBuffer;
@@ -31,20 +33,54 @@ public class ParticleSystemEx
   private FloatBuffer mParticleSizeBuffer;
   private FloatBuffer mParticleTexCoord;
   private float[] mPositionIndex;
-  private Map<Sprite, ParticleTemplate> mSpriteMap = new HashMap();
+  private Map<Sprite, ParticleTemplate> mSpriteMap;
   
   static
   {
-    System.loadLibrary("ParticleSystem");
+    AppMethodBeat.i(81553);
+    try
+    {
+      System.loadLibrary("ParticleSystem");
+      TAG = ParticleSystemEx.class.getSimpleName();
+      AppMethodBeat.o(81553);
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        LogUtils.e(localUnsatisfiedLinkError);
+      }
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      for (;;)
+      {
+        LogUtils.e(localRuntimeException);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        LogUtils.e(localException);
+      }
+    }
   }
   
   public ParticleSystemEx(Context paramContext)
   {
+    AppMethodBeat.i(81542);
+    this.mClouds = new ArrayList();
+    this.mSpriteMap = new HashMap();
     this.mContext = paramContext;
+    this.mNativeCtx = nativeInit();
+    AppMethodBeat.o(81542);
   }
   
   private void createCache(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(81548);
     this.mPositionIndex = new float[paramInt2 * 6];
     paramInt2 = 0;
     while (paramInt2 < this.mPositionIndex.length)
@@ -56,10 +92,12 @@ public class ParticleSystemEx
     this.mParticleSizeBuffer = ByteBuffer.allocateDirect(paramInt1 * 6 * 2 * 32).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.mParticleTexCoord = ByteBuffer.allocateDirect(paramInt1 * 6 * 2 * 32).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.mParticleColorBuffer = ByteBuffer.allocateDirect(paramInt1 * 6 * 4 * 32).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    AppMethodBeat.o(81548);
   }
   
   private void loadFinish()
   {
+    AppMethodBeat.i(81546);
     this.mAdvanceRes = new AdvanceRes[this.mClouds.size()];
     int i = 0;
     int j = 0;
@@ -76,15 +114,18 @@ public class ParticleSystemEx
       i += 1;
       j = k;
     }
+    nativeRegisterTemplate(this.mNativeCtx, this.mClouds.toArray());
     createCache(k, j);
+    AppMethodBeat.o(81546);
   }
   
   private void loadParticle(String paramString)
   {
+    AppMethodBeat.i(81545);
+    Object localObject1;
+    Object localObject3;
     try
     {
-      Object localObject1;
-      Object localObject3;
       if (paramString.startsWith("/"))
       {
         localObject1 = new BufferedReader(new InputStreamReader(new FileInputStream(paramString)), 1024);
@@ -99,42 +140,60 @@ public class ParticleSystemEx
         }
         localObject1 = ((StringBuilder)localObject3).toString();
       }
-      try
-      {
-        for (;;)
-        {
-          localObject1 = new JSONObject((String)localObject1);
-          paramString = ParticleTemplate.fromJson((JSONObject)localObject1, paramString.substring(0, paramString.lastIndexOf('/')));
-          if (paramString == null) {
-            break;
-          }
-          this.mClouds.add(paramString);
-          this.mSpriteMap.put(paramString.mSprite, paramString);
-          return;
-          localObject1 = this.mContext.getAssets().open(paramString);
-          localObject3 = new byte[((InputStream)localObject1).available()];
-          ((InputStream)localObject1).read((byte[])localObject3);
-          localObject1 = new String((byte[])localObject3);
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          g.i(TAG, localJSONException.getMessage());
-          Object localObject2 = null;
-        }
-      }
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(81545);
       return;
     }
-    catch (Exception paramString) {}
+    try
+    {
+      for (;;)
+      {
+        localObject1 = new JSONObject((String)localObject1);
+        paramString = ParticleTemplate.fromJson(this, (JSONObject)localObject1, paramString.substring(0, paramString.lastIndexOf('/')));
+        if (paramString != null)
+        {
+          this.mClouds.add(paramString);
+          this.mSpriteMap.put(paramString.mSprite, paramString);
+        }
+        AppMethodBeat.o(81545);
+        return;
+        localObject1 = this.mContext.getAssets().open(paramString);
+        localObject3 = new byte[((InputStream)localObject1).available()];
+        ((InputStream)localObject1).read((byte[])localObject3);
+        localObject1 = new String((byte[])localObject3);
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        i.n(TAG, localJSONException.getMessage());
+        Object localObject2 = null;
+      }
+    }
   }
+  
+  public static native void nativeAdvance(long paramLong, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2, FloatBuffer paramFloatBuffer3, FloatBuffer paramFloatBuffer4, AdvanceRes[] paramArrayOfAdvanceRes);
+  
+  public static native void nativeEmitAt(long paramLong, double paramDouble1, double paramDouble2, double paramDouble3);
+  
+  public static native long nativeInit();
+  
+  public static native void nativeRegisterTemplate(long paramLong, Object[] paramArrayOfObject);
+  
+  public static native void nativeRelease(long paramLong);
   
   public List<FrameParticleData> advance()
   {
-    if (this.mClouds.isEmpty()) {
+    AppMethodBeat.i(81547);
+    if (this.mClouds.isEmpty())
+    {
+      AppMethodBeat.o(81547);
       return null;
     }
+    nativeAdvance(this.mNativeCtx, this.mParticleCenterBuffer, this.mParticleSizeBuffer, this.mParticleTexCoord, this.mParticleColorBuffer, this.mAdvanceRes);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < this.mAdvanceRes.length)
@@ -161,29 +220,42 @@ public class ParticleSystemEx
       localFrameParticleData.blendMode = ((ParticleTemplate)this.mClouds.get(i)).mSprite.blendMode;
       i += 1;
     }
+    AppMethodBeat.o(81547);
     return localArrayList;
   }
   
-  public void emitImmediately(float paramFloat1, float paramFloat2, float paramFloat3) {}
+  public void emitImmediately(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    AppMethodBeat.i(81552);
+    nativeEmitAt(this.mNativeCtx, paramFloat1, paramFloat2, paramFloat3);
+    AppMethodBeat.o(81552);
+  }
   
   protected void finalize()
   {
+    AppMethodBeat.i(81551);
     release();
+    AppMethodBeat.o(81551);
   }
   
   public List<Sprite> getSprites()
   {
+    AppMethodBeat.i(81549);
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.mClouds.iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((ParticleTemplate)localIterator.next()).mSprite);
     }
+    AppMethodBeat.o(81549);
     return localArrayList;
   }
   
   public void loadParticleData(List<String> paramList)
   {
-    if (paramList == null) {
+    AppMethodBeat.i(81544);
+    if (paramList == null)
+    {
+      AppMethodBeat.o(81544);
       return;
     }
     try
@@ -197,21 +269,28 @@ public class ParticleSystemEx
     catch (Exception paramList)
     {
       loadFinish();
+      AppMethodBeat.o(81544);
     }
   }
   
   public void loadTestData()
   {
+    AppMethodBeat.i(81543);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add("assets://flower1.json");
     loadParticleData(localArrayList);
+    AppMethodBeat.o(81543);
   }
   
   public void release()
   {
-    if (this.mNativeCtx != -1L) {
+    AppMethodBeat.i(81550);
+    if (this.mNativeCtx != -1L)
+    {
+      nativeRelease(this.mNativeCtx);
       this.mNativeCtx = -1L;
     }
+    AppMethodBeat.o(81550);
   }
 }
 

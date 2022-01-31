@@ -3,79 +3,63 @@ package com.tencent.mm.plugin.appbrand.launching.b;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.loader.a;
 import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
-import com.tencent.mm.plugin.appbrand.r.e;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.service.k;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 
 public final class g
-  implements e
+  implements k
 {
-  private static final int[] gMf = { 1025, 1031, 1032 };
-  private static final int[] gMg = { 1011, 1012, 1013, 1047, 1049, 1048, 1050 };
-  private final d gMh = new d();
-  private final f gMi = new f();
-  private final c gMj = new c();
+  private static final int[] inw = { 1025, 1031, 1032 };
+  private static final int[] inx = { 1011, 1012, 1013, 1047, 1049, 1048, 1050, 1124, 1125, 1126 };
+  private final c inA;
+  private final d iny;
+  private final f inz;
   
-  public final boolean b(Context paramContext, String paramString, int paramInt, Bundle paramBundle)
+  public g()
   {
-    if (a.d(gMf, paramInt)) {
-      if (a.a.gLW != this.gMh.a(paramContext, paramString, paramInt, paramBundle)) {}
-    }
-    do
-    {
-      do
-      {
-        return true;
-        return false;
-        if (!a.d(gMg, paramInt)) {
-          break;
-        }
-      } while (a.a.gLW == this.gMi.a(paramContext, paramString, paramInt, paramBundle));
-      return false;
-      if ((1064 != paramInt) && (1078 != paramInt)) {
-        break;
-      }
-    } while (a.a.gLW == this.gMj.a(paramContext, paramString, paramInt, paramBundle));
-    return false;
-    y.e("MicroMsg.WeAppLinkOpener", "handleScanCodeLink, unhandled case link[ %s ], scene[ %d ]", new Object[] { paramString, Integer.valueOf(paramInt) });
-    return false;
+    AppMethodBeat.i(132041);
+    this.iny = new d();
+    this.inz = new f();
+    this.inA = new c();
+    AppMethodBeat.o(132041);
   }
   
-  public final boolean uW(String paramString)
+  public final boolean Dp(String paramString)
   {
-    if (bk.bl(paramString)) {}
-    label36:
-    label69:
-    label223:
-    for (;;)
+    AppMethodBeat.i(132042);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(132042);
       return false;
-      y.i("MicroMsg.WeAppLinkOpener", "handle appLink = %s", new Object[] { paramString });
-      Object localObject2 = b.values();
-      int k = localObject2.length;
-      int i = 0;
-      Object localObject1;
-      int j;
-      if (i < k)
+    }
+    ab.i("MicroMsg.WeAppLinkOpener", "handle appLink = %s", new Object[] { paramString });
+    Object localObject2 = b.values();
+    int k = localObject2.length;
+    int i = 0;
+    Object localObject1;
+    int j;
+    if (i < k)
+    {
+      localObject1 = localObject2[i];
+      if ((!bo.isNullOrNil(paramString)) && (paramString.startsWith(localObject1.fOn)))
       {
-        localObject1 = localObject2[i];
-        if ((!bk.bl(paramString)) && (paramString.startsWith(localObject1.eyz)))
-        {
-          j = 1;
-          if (j == 0) {
-            break label185;
-          }
+        j = 1;
+        label79:
+        if (j == 0) {
+          break label113;
         }
       }
-      for (;;)
+    }
+    for (;;)
+    {
+      if (localObject1 != null)
       {
-        if (localObject1 == null) {
-          break label223;
-        }
         try
         {
           localObject2 = Uri.parse(paramString);
@@ -85,33 +69,79 @@ public final class g
         {
           for (;;)
           {
-            AppBrandStatObject localAppBrandStatObject;
-            y.e("MicroMsg.WeAppLinkOpener", "handle nativeLink = %s, exp = %s", new Object[] { paramString, localException });
+            label113:
+            ab.e("MicroMsg.WeAppLinkOpener", "handle nativeLink = %s, exp = %s", new Object[] { paramString, localException });
             paramString = null;
           }
+          String str = paramString.getQueryParameter("username");
+          paramString = paramString.getQueryParameter("path");
+          if ((!bo.isNullOrNil(str)) && (ad.na(str))) {
+            break label185;
+          }
+          AppMethodBeat.o(132042);
+          return false;
+          AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
+          localAppBrandStatObject.scene = localObject1.scene;
+          localAppBrandStatObject.cmF = b.aHq();
+          localAppBrandStatObject.cJb = 0;
+          localAppBrandStatObject.cJc = b.aHr();
+          AppBrandLaunchProxyUI.a(null, str, paramString, 0, -1, localAppBrandStatObject, null, null);
+          AppMethodBeat.o(132042);
+          return true;
         }
-        if (paramString == null) {
+        if (paramString == null)
+        {
+          AppMethodBeat.o(132042);
+          return false;
+          j = 0;
+          break label79;
+          i += 1;
           break;
         }
-        localObject2 = paramString.getQueryParameter("username");
-        paramString = paramString.getQueryParameter("path");
-        if ((bk.bl((String)localObject2)) || (!ad.gr((String)localObject2))) {
-          break;
-        }
-        localAppBrandStatObject = new AppBrandStatObject();
-        localAppBrandStatObject.scene = localObject1.scene;
-        localAppBrandStatObject.bFv = b.alW();
-        localAppBrandStatObject.caB = b.alX();
-        localAppBrandStatObject.caC = b.alY();
-        AppBrandLaunchProxyUI.a(null, (String)localObject2, paramString, 0, -1, localAppBrandStatObject, null, null);
-        return true;
-        j = 0;
-        break label69;
-        i += 1;
-        break label36;
-        localObject1 = null;
       }
+      label185:
+      AppMethodBeat.o(132042);
+      return false;
+      localObject1 = null;
     }
+  }
+  
+  public final boolean b(Context paramContext, String paramString, int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(132043);
+    if (a.contains(inw, paramInt))
+    {
+      if (a.a.inm == this.iny.a(paramContext, paramString, paramInt, paramBundle))
+      {
+        AppMethodBeat.o(132043);
+        return true;
+      }
+      AppMethodBeat.o(132043);
+      return false;
+    }
+    if (a.contains(inx, paramInt))
+    {
+      if (a.a.inm == this.inz.a(paramContext, paramString, paramInt, paramBundle))
+      {
+        AppMethodBeat.o(132043);
+        return true;
+      }
+      AppMethodBeat.o(132043);
+      return false;
+    }
+    if ((1064 == paramInt) || (1078 == paramInt))
+    {
+      if (a.a.inm == this.inA.a(paramContext, paramString, paramInt, paramBundle))
+      {
+        AppMethodBeat.o(132043);
+        return true;
+      }
+      AppMethodBeat.o(132043);
+      return false;
+    }
+    ab.e("MicroMsg.WeAppLinkOpener", "handleScanCodeLink, unhandled case link[ %s ], scene[ %d ]", new Object[] { paramString, Integer.valueOf(paramInt) });
+    AppMethodBeat.o(132043);
+    return false;
   }
 }
 

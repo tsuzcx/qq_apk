@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,18 +15,21 @@ final class l$2
   
   public final void a(j paramj)
   {
-    y.i("MicroMsg.JsApiNotifyBLECharacteristicValueChanged", "appId:%s notifyBLECharacteristicValueChanged result:%s", new Object[] { this.val$appId, paramj });
+    AppMethodBeat.i(94192);
+    ab.i("MicroMsg.JsApiNotifyBLECharacteristicValueChanged", "appId:%s notifyBLECharacteristicValueChanged result:%s", new Object[] { this.val$appId, paramj });
     switch (paramj.errCode)
     {
     default: 
       new HashMap().put("errCode", Integer.valueOf(paramj.errCode));
-      this.ggH.C(this.dIS, this.glD.h(paramj.aox, null));
-      c.jdMethod_if(43);
+      this.hxW.h(this.bAX, this.hFC.j(paramj.errMsg, null));
+      c.kS(43);
+      AppMethodBeat.o(94192);
       return;
     }
     new HashMap().put("errCode", Integer.valueOf(0));
-    this.ggH.C(this.dIS, this.glD.h("ok", null));
-    c.jdMethod_if(42);
+    this.hxW.h(this.bAX, this.hFC.j("ok", null));
+    c.kS(42);
+    AppMethodBeat.o(94192);
   }
 }
 

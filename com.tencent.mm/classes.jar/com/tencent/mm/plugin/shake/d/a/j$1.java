@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.shake.d.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.b;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.shake.b.d;
 import com.tencent.mm.plugin.shake.b.e;
 import com.tencent.mm.plugin.shake.b.l.a;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.protocal.c.bly;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.brc;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.protocal.protobuf.cbn;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,119 +21,127 @@ final class j$1
 {
   j$1(j paramj) {}
   
-  public final void b(bly parambly, long paramLong, boolean paramBoolean)
+  public final void b(bvk parambvk, long paramLong, boolean paramBoolean)
   {
-    if (j.a(this.oaY) == null)
+    AppMethodBeat.i(24638);
+    if (j.a(this.qPh) == null)
     {
-      y.w("Micromsg.ShakeMusicMgr", "shakeGetListener == null");
+      ab.w("Micromsg.ShakeMusicMgr", "shakeGetListener == null");
+      AppMethodBeat.o(24638);
       return;
     }
-    brc localbrc = (brc)parambly;
-    if (localbrc == null)
+    cbn localcbn = (cbn)parambvk;
+    if (localcbn == null)
     {
-      y.w("Micromsg.ShakeMusicMgr", "resp null & return");
-      j.a(this.oaY, new ArrayList());
+      ab.w("Micromsg.ShakeMusicMgr", "resp null & return");
+      j.a(this.qPh, new ArrayList());
+      AppMethodBeat.o(24638);
       return;
     }
     Object localObject;
-    if (localbrc.tHX == 1)
+    if (localcbn.xHS == 1)
     {
-      if (paramLong > j.b(this.oaY))
+      if (paramLong > j.b(this.qPh))
       {
         paramLong = System.currentTimeMillis() - paramLong;
-        if ((localbrc == null) || (bk.bl(localbrc.tHZ))) {
-          break label426;
+        if ((localcbn == null) || (bo.isNullOrNil(localcbn.xMq))) {
+          break label458;
         }
-        y.w("Micromsg.ShakeMusicMgr", "resCallback Type:%d, xml:%s", new Object[] { Integer.valueOf(localbrc.tHY), localbrc.tHZ });
-        localObject = localbrc.tHZ;
-        parambly = (bly)localObject;
+        ab.w("Micromsg.ShakeMusicMgr", "resCallback Type:%d, xml:%s", new Object[] { Integer.valueOf(localcbn.xMp), localcbn.xMq });
+        localObject = localcbn.xMq;
+        parambvk = (bvk)localObject;
         if (localObject != null) {
-          parambly = ((String)localObject).trim();
+          parambvk = ((String)localObject).trim();
         }
-        switch (localbrc.tHY)
+        switch (localcbn.xMp)
         {
         default: 
-          y.w("Micromsg.ShakeMusicMgr", "parse unknown type:" + localbrc.tHY);
-          j.a(this.oaY, new ArrayList());
+          ab.w("Micromsg.ShakeMusicMgr", "parse unknown type:" + localcbn.xMp);
+          j.a(this.qPh, new ArrayList());
           paramBoolean = false;
         }
       }
       for (;;)
       {
         if (!paramBoolean) {
-          break label373;
+          break label399;
         }
-        h.nFQ.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(1), Integer.valueOf((int)(System.currentTimeMillis() - j.b(this.oaY))) });
-        h.nFQ.h(835L, 0L, 1L);
+        h.qsU.e(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(1), Integer.valueOf((int)(System.currentTimeMillis() - j.b(this.qPh))) });
+        h.qsU.j(835L, 0L, 1L);
+        AppMethodBeat.o(24638);
         return;
-        paramLong = System.currentTimeMillis() - j.b(this.oaY);
+        paramLong = System.currentTimeMillis() - j.b(this.qPh);
         break;
-        paramBoolean = j.a(this.oaY, parambly);
+        paramBoolean = j.a(this.qPh, parambvk);
         continue;
-        paramBoolean = j.b(this.oaY, parambly);
+        paramBoolean = j.b(this.qPh, parambvk);
         continue;
-        paramBoolean = j.c(this.oaY, parambly);
+        paramBoolean = j.c(this.qPh, parambvk);
         continue;
-        paramBoolean = j.d(this.oaY, parambly);
+        paramBoolean = j.d(this.qPh, parambvk);
         continue;
-        paramBoolean = j.e(this.oaY, parambly);
+        paramBoolean = j.e(this.qPh, parambvk);
       }
-      label373:
-      h.nFQ.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(5), Long.valueOf(paramLong) });
-      h.nFQ.h(835L, 4L, 1L);
+      label399:
+      h.qsU.e(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(5), Long.valueOf(paramLong) });
+      h.qsU.j(835L, 4L, 1L);
+      AppMethodBeat.o(24638);
       return;
-      label426:
+      label458:
       if (paramBoolean)
       {
-        j.a(this.oaY, new ArrayList());
-        h.nFQ.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(4), Integer.valueOf((int)paramLong) });
-        h.nFQ.h(835L, 3L, 1L);
+        j.a(this.qPh, new ArrayList());
+        h.qsU.e(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(4), Integer.valueOf((int)paramLong) });
+        h.qsU.j(835L, 3L, 1L);
+        AppMethodBeat.o(24638);
         return;
       }
-      j.a(this.oaY, new ArrayList());
-      h.nFQ.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(3), Integer.valueOf((int)paramLong) });
-      h.nFQ.h(835L, 2L, 1L);
+      j.a(this.qPh, new ArrayList());
+      h.qsU.e(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(3), Integer.valueOf((int)paramLong) });
+      h.qsU.j(835L, 2L, 1L);
+      AppMethodBeat.o(24638);
       return;
     }
-    parambly = new ArrayList();
-    if (localbrc != null)
+    parambvk = new ArrayList();
+    if (localcbn != null)
     {
       localObject = new d();
-      if ((localbrc.tHT != null) && (localbrc.tHT.tFM != null)) {
-        ((d)localObject).field_username = localbrc.tHT.tFM.coM();
+      if ((localcbn.xMl != null) && (localcbn.xMl.getBuffer() != null)) {
+        ((d)localObject).field_username = localcbn.xMl.getBuffer().dqj();
       }
-      if ((localbrc.tHS != null) && (localbrc.tHS.tFM != null)) {
-        ((d)localObject).field_nickname = localbrc.tHS.tFM.coM();
+      if ((localcbn.xMk != null) && (localcbn.xMk.getBuffer() != null)) {
+        ((d)localObject).field_nickname = localcbn.xMk.getBuffer().dqj();
       }
-      if ((localbrc.tHT != null) && (localbrc.tHT.tFM != null)) {
-        ((d)localObject).field_distance = localbrc.tHT.tFM.coM();
+      if ((localcbn.xMl != null) && (localcbn.xMl.getBuffer() != null)) {
+        ((d)localObject).field_distance = localcbn.xMl.getBuffer().dqj();
       }
-      if ((localbrc.tfZ != null) && (localbrc.tfZ.tFM != null)) {
-        ((d)localObject).field_sns_bgurl = localbrc.tfZ.tFM.coM();
+      if ((localcbn.xey != null) && (localcbn.xey.getBuffer() != null)) {
+        ((d)localObject).field_sns_bgurl = localcbn.xey.getBuffer().dqj();
       }
       ((d)localObject).field_type = 4;
       ((d)localObject).field_insertBatch = 1;
     }
     try
     {
-      ((d)localObject).field_lvbuffer = localbrc.toByteArray();
-      m.bzU().a((d)localObject, true);
-      parambly.add(localObject);
-      j.c(this.oaY).a(parambly, paramLong);
+      ((d)localObject).field_lvbuffer = localcbn.toByteArray();
+      m.cln().a((d)localObject, true);
+      parambvk.add(localObject);
+      j.c(this.qPh).b(parambvk, paramLong);
+      AppMethodBeat.o(24638);
       return;
     }
     catch (IOException localIOException)
     {
       for (;;)
       {
-        y.w("Micromsg.ShakeMusicMgr", "insertItem, to lvbuf error [%s]", new Object[] { localIOException.getLocalizedMessage() });
+        ab.w("Micromsg.ShakeMusicMgr", "insertItem, to lvbuf error [%s]", new Object[] { localIOException.getLocalizedMessage() });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.j.1
  * JD-Core Version:    0.7.0.1
  */

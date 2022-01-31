@@ -1,19 +1,28 @@
 package com.tencent.mm.plugin.shake.e;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public final class a
 {
-  public LinkedList<a.a> eAm = new LinkedList();
+  public LinkedList<a.a> fQb;
+  
+  public a()
+  {
+    AppMethodBeat.i(24945);
+    this.fQb = new LinkedList();
+    AppMethodBeat.o(24945);
+  }
   
   private static a.a a(Map<String, String> paramMap, int paramInt, String paramString)
   {
+    AppMethodBeat.i(24947);
     a.a locala = new a.a(paramInt);
-    locala.title = bk.pm((String)paramMap.get(paramString + ".title"));
-    locala.summary = bk.pm((String)paramMap.get(paramString + ".summary"));
+    locala.title = bo.nullAsNil((String)paramMap.get(paramString + ".title"));
+    locala.summary = bo.nullAsNil((String)paramMap.get(paramString + ".summary"));
     String str = paramString + ".thumburl";
     int i = 0;
     if (i < 100)
@@ -23,38 +32,38 @@ public final class a
       for (Object localObject = Integer.valueOf(i);; localObject = "")
       {
         localObject = (String)paramMap.get(localObject);
-        if (bk.bl((String)localObject)) {
-          break label191;
+        if (bo.isNullOrNil((String)localObject)) {
+          break label197;
         }
-        locala.odQ.add(localObject);
+        locala.qRX.add(localObject);
         i += 1;
         break;
       }
     }
+    label197:
     switch (paramInt)
     {
-    default: 
-      return locala;
-    case 3: 
-      locala.odP = bk.pm((String)paramMap.get(paramString + ".h5url.link"));
-      locala.odR = bk.pm((String)paramMap.get(paramString + ".h5url.title"));
-      locala.odS = bk.pm((String)paramMap.get(paramString + ".h5url.username"));
-      return locala;
-    case 4: 
-      locala.odP = bk.pm((String)paramMap.get(paramString + ".bizprofile.username"));
-      locala.odR = bk.pm((String)paramMap.get(paramString + ".bizprofile.showchat"));
-      return locala;
-    case 5: 
-      label191:
-      locala.odP = bk.pm((String)paramMap.get(paramString + ".nativepay.wx_pay_url"));
-      return locala;
     }
-    locala.odP = bk.pm((String)paramMap.get(paramString + ".product.product_id"));
-    return locala;
+    for (;;)
+    {
+      AppMethodBeat.o(24947);
+      return locala;
+      locala.qRW = bo.nullAsNil((String)paramMap.get(paramString + ".h5url.link"));
+      locala.qRY = bo.nullAsNil((String)paramMap.get(paramString + ".h5url.title"));
+      locala.qRZ = bo.nullAsNil((String)paramMap.get(paramString + ".h5url.username"));
+      continue;
+      locala.qRW = bo.nullAsNil((String)paramMap.get(paramString + ".bizprofile.username"));
+      locala.qRY = bo.nullAsNil((String)paramMap.get(paramString + ".bizprofile.showchat"));
+      continue;
+      locala.qRW = bo.nullAsNil((String)paramMap.get(paramString + ".nativepay.wx_pay_url"));
+      continue;
+      locala.qRW = bo.nullAsNil((String)paramMap.get(paramString + ".product.product_id"));
+    }
   }
   
   public static LinkedList<a> l(Map<String, String> paramMap, String paramString)
   {
+    AppMethodBeat.i(24946);
     LinkedList localLinkedList = new LinkedList();
     int j = 0;
     int i = 0;
@@ -74,34 +83,35 @@ public final class a
         localObject2 = new LinkedList();
         k = 0;
         if (k >= 1000) {
-          break label486;
+          break label510;
         }
         localObject3 = new StringBuilder().append(str).append(".action");
         if (k <= 0) {
-          break label181;
+          break label193;
         }
       }
-      label181:
+      label193:
       for (localObject1 = Integer.valueOf(k);; localObject1 = "")
       {
         localObject3 = localObject1;
-        if (!bk.bl((String)paramMap.get((String)localObject3 + ".type"))) {
-          break label212;
+        if (!bo.isNullOrNil((String)paramMap.get((String)localObject3 + ".type"))) {
+          break label224;
         }
         if (i == 0) {
-          break label188;
+          break label200;
         }
+        AppMethodBeat.o(24946);
         return localLinkedList;
         localObject1 = "";
         break;
       }
-      label188:
-      locala1.eAm = ((LinkedList)localObject2);
+      label200:
+      locala1.fQb = ((LinkedList)localObject2);
       i = 1;
     }
-    label197:
-    label212:
-    label486:
+    label209:
+    label224:
+    label510:
     for (;;)
     {
       localLinkedList.add(locala1);
@@ -115,11 +125,11 @@ public final class a
           m = Integer.valueOf((String)paramMap.get((String)localObject3 + ".type")).intValue();
           localObject1 = null;
           if (m != 2) {
-            break label406;
+            break label424;
           }
           localObject1 = new a.a(m);
-          ((a.a)localObject1).odP = bk.pm((String)paramMap.get((String)localObject3 + ".comment.id"));
-          ((a.a)localObject1).title = bk.pm((String)paramMap.get((String)localObject3 + ".comment.title"));
+          ((a.a)localObject1).qRW = bo.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.id"));
+          ((a.a)localObject1).title = bo.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.title"));
           if (localObject1 != null) {
             ((LinkedList)localObject2).add(localObject1);
           }
@@ -129,13 +139,15 @@ public final class a
         catch (Exception localException)
         {
           new StringBuilder("Exception in parseActionList: ").append(localException.getMessage());
-          if (i != 0) {
+          if (i != 0)
+          {
+            AppMethodBeat.o(24946);
             return localLinkedList;
           }
-          locala1.eAm = ((LinkedList)localObject2);
+          locala1.fQb = ((LinkedList)localObject2);
           i = 1;
         }
-        break label197;
+        break label209;
         a.a locala;
         if (m == 3) {
           locala = a(paramMap, m, (String)localObject3);
@@ -147,6 +159,7 @@ public final class a
           locala = a(paramMap, m, (String)localObject3);
         }
       }
+      AppMethodBeat.o(24946);
       return localLinkedList;
     }
   }

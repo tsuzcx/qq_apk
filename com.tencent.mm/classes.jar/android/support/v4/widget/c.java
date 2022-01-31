@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build.VERSION;
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.util.DisplayMetrics;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
@@ -14,8 +14,8 @@ import android.widget.ImageView;
 final class c
   extends ImageView
 {
-  Animation.AnimationListener IZ;
-  int Ja;
+  Animation.AnimationListener IH;
+  int II;
   
   c(Context paramContext)
   {
@@ -23,26 +23,26 @@ final class c
     float f = getContext().getResources().getDisplayMetrics().density;
     int i = (int)(1.75F * f);
     int j = (int)(0.0F * f);
-    this.Ja = ((int)(3.5F * f));
-    if (dy())
+    this.II = ((int)(3.5F * f));
+    if (dP())
     {
       paramContext = new ShapeDrawable(new OvalShape());
-      q.h(this, f * 4.0F);
+      t.i(this, f * 4.0F);
     }
     for (;;)
     {
       paramContext.getPaint().setColor(-328966);
-      q.a(this, paramContext);
+      t.a(this, paramContext);
       return;
-      paramContext = new ShapeDrawable(new c.a(this, this.Ja));
+      paramContext = new ShapeDrawable(new c.a(this, this.II));
       setLayerType(1, paramContext.getPaint());
-      paramContext.getPaint().setShadowLayer(this.Ja, j, i, 503316480);
-      i = this.Ja;
+      paramContext.getPaint().setShadowLayer(this.II, j, i, 503316480);
+      i = this.II;
       setPadding(i, i, i, i);
     }
   }
   
-  private static boolean dy()
+  private static boolean dP()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
@@ -50,24 +50,24 @@ final class c
   public final void onAnimationEnd()
   {
     super.onAnimationEnd();
-    if (this.IZ != null) {
-      this.IZ.onAnimationEnd(getAnimation());
+    if (this.IH != null) {
+      this.IH.onAnimationEnd(getAnimation());
     }
   }
   
   public final void onAnimationStart()
   {
     super.onAnimationStart();
-    if (this.IZ != null) {
-      this.IZ.onAnimationStart(getAnimation());
+    if (this.IH != null) {
+      this.IH.onAnimationStart(getAnimation());
     }
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (!dy()) {
-      setMeasuredDimension(getMeasuredWidth() + this.Ja * 2, getMeasuredHeight() + this.Ja * 2);
+    if (!dP()) {
+      setMeasuredDimension(getMeasuredWidth() + this.II * 2, getMeasuredHeight() + this.II * 2);
     }
   }
   

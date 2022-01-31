@@ -3,40 +3,73 @@ package com.tencent.mm.plugin.location.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.location.ui.d;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class LocationInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<LocationInfo> CREATOR = new LocationInfo.1();
-  public String bVA;
-  public String lCI = "";
-  public double lCJ = -85.0D;
-  public double lCK = -1000.0D;
-  public int lCL;
-  public String lCM = "";
-  public String lCN = "zh-cn";
-  String lCO = "";
-  public int lCP = 0;
-  public String lCQ;
+  public static final Parcelable.Creator<LocationInfo> CREATOR;
+  public String cDl;
+  public String nZU;
+  public double nZV;
+  public double nZW;
+  public int nZX;
+  public String nZY;
+  public String nZZ;
+  String oaa;
+  public int oab;
+  public String oac;
   
-  public LocationInfo() {}
+  static
+  {
+    AppMethodBeat.i(113298);
+    CREATOR = new LocationInfo.1();
+    AppMethodBeat.o(113298);
+  }
+  
+  public LocationInfo()
+  {
+    this.nZU = "";
+    this.nZV = -85.0D;
+    this.nZW = -1000.0D;
+    this.nZY = "";
+    this.nZZ = "zh-cn";
+    this.oaa = "";
+    this.oab = 0;
+  }
   
   public LocationInfo(byte paramByte)
   {
-    this.lCI = (toString() + " " + System.nanoTime());
-    this.lCL = d.bem();
+    AppMethodBeat.i(113294);
+    this.nZU = "";
+    this.nZV = -85.0D;
+    this.nZW = -1000.0D;
+    this.nZY = "";
+    this.nZZ = "zh-cn";
+    this.oaa = "";
+    this.oab = 0;
+    this.nZU = (toString() + " " + System.nanoTime());
+    this.nZX = d.bLF();
+    AppMethodBeat.o(113294);
   }
   
-  public final boolean bdN()
+  public final boolean bLh()
   {
-    return (this.lCJ != -85.0D) && (this.lCK != -1000.0D);
+    return (this.nZV != -85.0D) && (this.nZW != -1000.0D);
   }
   
-  public final boolean bdO()
+  public final boolean bLi()
   {
-    return (!bk.bl(this.lCM)) || (!bk.bl(this.bVA));
+    AppMethodBeat.i(113296);
+    if ((bo.isNullOrNil(this.nZY)) && (bo.isNullOrNil(this.cDl)))
+    {
+      AppMethodBeat.o(113296);
+      return false;
+    }
+    AppMethodBeat.o(113296);
+    return true;
   }
   
   public int describeContents()
@@ -46,26 +79,31 @@ public class LocationInfo
   
   public String toString()
   {
-    return this.lCJ + " " + this.lCK + " " + this.lCM + " " + this.bVA + "  " + this.lCI;
+    AppMethodBeat.i(113297);
+    String str = this.nZV + " " + this.nZW + " " + this.nZY + " " + this.cDl + "  " + this.nZU;
+    AppMethodBeat.o(113297);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.lCI);
-    paramParcel.writeDouble(this.lCJ);
-    paramParcel.writeDouble(this.lCK);
-    paramParcel.writeInt(this.lCL);
-    paramParcel.writeString(this.lCM);
-    paramParcel.writeString(this.lCN);
-    paramParcel.writeString(this.bVA);
-    paramParcel.writeString(this.lCO);
-    paramParcel.writeInt(this.lCP);
-    paramParcel.writeString(this.lCQ);
+    AppMethodBeat.i(113295);
+    paramParcel.writeString(this.nZU);
+    paramParcel.writeDouble(this.nZV);
+    paramParcel.writeDouble(this.nZW);
+    paramParcel.writeInt(this.nZX);
+    paramParcel.writeString(this.nZY);
+    paramParcel.writeString(this.nZZ);
+    paramParcel.writeString(this.cDl);
+    paramParcel.writeString(this.oaa);
+    paramParcel.writeInt(this.oab);
+    paramParcel.writeString(this.oac);
+    AppMethodBeat.o(113295);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.LocationInfo
  * JD-Core Version:    0.7.0.1
  */

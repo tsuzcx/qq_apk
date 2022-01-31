@@ -1,11 +1,20 @@
 package com.tencent.mm.plugin.aa.ui;
 
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class LaunchAAUI$14
-  implements Runnable
+  implements View.OnClickListener
 {
   LaunchAAUI$14(LaunchAAUI paramLaunchAAUI) {}
   
-  public final void run() {}
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(40835);
+    LaunchAAUI.a(this.grm);
+    AppMethodBeat.o(40835);
+  }
 }
 
 

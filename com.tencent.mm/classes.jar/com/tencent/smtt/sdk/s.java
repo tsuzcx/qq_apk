@@ -1,15 +1,23 @@
 package com.tencent.smtt.sdk;
 
-import android.net.Uri;
+import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.WebViewTransport;
 
 class s
-  implements ValueCallback<Uri>
+  implements Runnable
 {
-  s(q paramq, android.webkit.ValueCallback paramValueCallback) {}
+  s(r paramr, WebView.WebViewTransport paramWebViewTransport, Message paramMessage) {}
   
-  public void a(Uri paramUri)
+  public void run()
   {
-    this.a.onReceiveValue(new Uri[] { paramUri });
+    AppMethodBeat.i(139058);
+    WebView localWebView = this.a.getWebView();
+    if (localWebView != null) {
+      ((IX5WebViewBase.WebViewTransport)this.b.obj).setWebView(localWebView.c());
+    }
+    this.b.sendToTarget();
+    AppMethodBeat.o(139058);
   }
 }
 

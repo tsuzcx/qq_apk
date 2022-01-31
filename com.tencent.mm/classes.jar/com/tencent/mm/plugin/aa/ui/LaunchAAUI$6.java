@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LaunchAAUI$6
   implements View.OnClickListener
 {
-  LaunchAAUI$6(LaunchAAUI paramLaunchAAUI, List paramList) {}
+  LaunchAAUI$6(LaunchAAUI paramLaunchAAUI) {}
   
   public final void onClick(View paramView)
   {
-    this.eZt.VH();
-    this.eZt.XM();
-    LaunchAAUI.a(this.eZt, this.eZu);
+    AppMethodBeat.i(40828);
+    LaunchAAUI.i(this.grm);
+    AppMethodBeat.o(40828);
   }
 }
 

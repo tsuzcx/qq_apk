@@ -1,13 +1,14 @@
 package com.tencent.mm.sdk.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 public class b$c
 {
   public String content;
-  public Map<String, String> ndM = null;
+  public Map<String, String> pJc = null;
   public int status = 0;
-  public b.a uee;
+  public b.a ymx;
   
   public b$c(String paramString)
   {
@@ -18,20 +19,23 @@ public class b$c
   
   public String toString()
   {
+    AppMethodBeat.i(51971);
     StringBuilder localStringBuilder = new StringBuilder("Response status:").append(this.status).append(", cookie:");
     Object localObject;
-    if (this.ndM != null)
+    if (this.pJc != null)
     {
-      localObject = this.ndM;
+      localObject = this.pJc;
       localObject = localStringBuilder.append(localObject).append(", content length :");
       if (this.content == null) {
-        break label75;
+        break label87;
       }
     }
-    label75:
+    label87:
     for (int i = this.content.length();; i = 0)
     {
-      return i;
+      localObject = i;
+      AppMethodBeat.o(51971);
+      return localObject;
       localObject = "";
       break;
     }

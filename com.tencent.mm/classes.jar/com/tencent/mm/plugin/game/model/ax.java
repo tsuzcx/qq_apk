@@ -1,317 +1,252 @@
 package com.tencent.mm.plugin.game.model;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Looper;
-import android.os.Parcelable;
-import com.tencent.luggage.e.k;
-import com.tencent.mm.a.g;
-import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
-import com.tencent.mm.h.a.kp;
-import com.tencent.mm.h.a.kp.a;
-import com.tencent.mm.ipcinvoker.l;
-import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
-import com.tencent.mm.plugin.game.luggage.i;
-import com.tencent.mm.plugin.game.luggage.i.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashSet;
-import java.util.Set;
+import android.content.pm.PackageInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
+import org.json.JSONObject;
 
 public class ax
-  extends com.tencent.mm.sdk.b.c<kp>
 {
-  private static volatile String caS;
-  private static volatile long kRk;
-  private static volatile long kRl;
-  private static Set<String> kRm = new HashSet();
-  private static Set<String> kRn = new HashSet();
-  private long kRo;
-  private ax.b wuz;
+  private static ax npD;
+  private static TMQQDownloaderOpenSDK npE;
   
-  public ax()
+  public static int a(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam)
   {
-    this.udX = kp.class.getName().hashCode();
-  }
-  
-  private static void a(final Bundle paramBundle, boolean paramBoolean, final com.tencent.mm.ipcinvoker.c paramc)
-  {
-    for (;;)
-    {
-      String str;
-      final GameWebPerformanceInfo localGameWebPerformanceInfo;
-      Object localObject;
-      try
-      {
-        y.d("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "preLoadWePkgAndWebCore, preload: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-        boolean bool = paramBundle.getBoolean("is_luggage", false);
-        str = paramBundle.getString("call_raw_url");
-        localGameWebPerformanceInfo = GameWebPerformanceInfo.fv(str);
-        if (!bool) {
-          break label268;
-        }
-        localObject = i.EI(str);
-        if (localObject != null)
-        {
-          if (paramBoolean)
-          {
-            y.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "has preloaded webcore, return");
-            paramBundle.putBoolean("has_preload_webcore", true);
-            a(paramc, paramBundle);
-            return;
-          }
-          l.m(new ax.6((com.tencent.mm.plugin.game.luggage.h)localObject));
-          ((com.tencent.mm.plugin.game.luggage.h)localObject).aG(str, true);
-          continue;
-        }
-        if (!paramBoolean) {
-          break label238;
-        }
-      }
-      finally {}
-      if (localGameWebPerformanceInfo.dCF != 0L)
-      {
-        paramc.U(paramBundle);
-      }
-      else
-      {
-        localGameWebPerformanceInfo.dCG = System.currentTimeMillis();
-        localObject = com.tencent.mm.plugin.wepkg.b.UM(str);
-        localGameWebPerformanceInfo.dCH = System.currentTimeMillis();
-        if (localObject == null)
-        {
-          y.d("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "wepkg is not exists, return");
-          GameWebPerformanceInfo.fw(str);
-          a(paramc, paramBundle);
-        }
-        else
-        {
-          localGameWebPerformanceInfo.dCC = 1;
-          localGameWebPerformanceInfo.dCI = System.currentTimeMillis();
-          com.tencent.mm.plugin.report.service.h.nFQ.h(939L, 0L, 1L);
-          i.a(com.tencent.mm.plugin.game.luggage.c.class, str, new i.a()
-          {
-            public final void pQ()
-            {
-              y.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "preLoadWePkgAndWebCore end, time = %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-              l.m(new Runnable()
-              {
-                public final void run()
-                {
-                  com.tencent.mm.plugin.game.luggage.h localh = i.EI(ax.7.this.kRu);
-                  if (localh != null)
-                  {
-                    ((com.tencent.mm.plugin.game.luggage.c)localh.qp()).setBlockNetworkImage(true);
-                    ((com.tencent.mm.plugin.game.luggage.c)localh.qp()).onPause();
-                  }
-                  ax.7.this.kMV.dCJ = System.currentTimeMillis();
-                  ax.b(ax.7.this.kRv, ax.7.this.byv);
-                }
-              });
-            }
-          });
-          continue;
-          label238:
-          localGameWebPerformanceInfo.dCG = System.currentTimeMillis();
-          com.tencent.mm.plugin.wepkg.b.UM(str);
-          localGameWebPerformanceInfo.dCH = System.currentTimeMillis();
-          a(paramc, paramBundle);
-          continue;
-          label268:
-          localGameWebPerformanceInfo.dCG = System.currentTimeMillis();
-          com.tencent.mm.plugin.wepkg.b.UM(str);
-          localGameWebPerformanceInfo.dCH = System.currentTimeMillis();
-          a(paramc, paramBundle);
-        }
-      }
-    }
-  }
-  
-  private void a(final kp paramkp, Bundle paramBundle)
-  {
-    boolean bool = false;
+    AppMethodBeat.i(111493);
     try
     {
-      y.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "turnPage");
-      ai.S(this.wuz);
-      ai.l(new ax.4(this), 1000L);
-      if (paramkp == null) {}
-      for (;;)
+      bGV();
+      paramTMQQDownloaderOpenSDKParam = bGW().getDownloadTaskState(paramTMQQDownloaderOpenSDKParam);
+      if (paramTMQQDownloaderOpenSDKParam != null)
       {
-        return;
-        if (bk.bl(paramkp.bTG.group)) {
-          break label110;
-        }
-        if (!kRm.contains(paramkp.bTG.group)) {
-          break;
-        }
-        kRm.remove(paramkp.bTG.group);
+        int i = paramTMQQDownloaderOpenSDKParam.mState;
+        AppMethodBeat.o(111493);
+        return i;
       }
-      kRm.add(paramkp.bTG.group);
     }
-    finally {}
-    label110:
-    final Context localContext;
-    label129:
-    String str;
-    if (paramkp.bTG.context != null)
+    catch (Exception paramTMQQDownloaderOpenSDKParam)
     {
-      localContext = paramkp.bTG.context;
-      if (paramkp.bTG.intent == null) {
-        paramkp.bTG.intent = new Intent();
+      ab.e("MicroMsg.QQDownloaderSDKWrapper", "queryQQDownloadTaskStatus failed : %s", new Object[] { paramTMQQDownloaderOpenSDKParam.getMessage() });
+      AppMethodBeat.o(111493);
+    }
+    return -1;
+  }
+  
+  public static void aw(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(111492);
+    if (bo.isNullOrNil(paramString))
+    {
+      ab.e("MicroMsg.QQDownloaderSDKWrapper", "add download task failed, params is null or nil");
+      AppMethodBeat.o(111492);
+      return;
+    }
+    if (paramContext == null)
+    {
+      ab.e("MicroMsg.QQDownloaderSDKWrapper", "add download task failed, context is null");
+      AppMethodBeat.o(111492);
+      return;
+    }
+    ab.i("MicroMsg.QQDownloaderSDKWrapper", "add download task to qqdownloader:[%s]", new Object[] { paramString });
+    paramString = new a((byte)0).Qf(paramString);
+    try
+    {
+      bGV();
+      bGW().startToDownloadTaskList(paramContext, paramString, true, true);
+      AppMethodBeat.o(111492);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      ab.printErrStackTrace("MicroMsg.QQDownloaderSDKWrapper", paramContext, "", new Object[0]);
+      AppMethodBeat.o(111492);
+    }
+  }
+  
+  public static ax bGV()
+  {
+    AppMethodBeat.i(111489);
+    if (npD == null) {}
+    try
+    {
+      if (npD == null) {
+        npD = new ax();
       }
-      str = paramkp.bTG.intent.getStringExtra("rawUrl");
-      switch (paramkp.bTG.type)
-      {
+      ax localax = npD;
+      AppMethodBeat.o(111489);
+      return localax;
+    }
+    finally
+    {
+      AppMethodBeat.o(111489);
+    }
+  }
+  
+  private static TMQQDownloaderOpenSDK bGW()
+  {
+    AppMethodBeat.i(111490);
+    if (npE == null)
+    {
+      localTMQQDownloaderOpenSDK = TMQQDownloaderOpenSDK.getInstance();
+      npE = localTMQQDownloaderOpenSDK;
+      localTMQQDownloaderOpenSDK.initQQDownloaderOpenSDK(ah.getContext());
+    }
+    TMQQDownloaderOpenSDK localTMQQDownloaderOpenSDK = npE;
+    AppMethodBeat.o(111490);
+    return localTMQQDownloaderOpenSDK;
+  }
+  
+  public static void bGX()
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(111491);
+    if (npE == null) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (npD == null) {
+        bool2 = true;
       }
+      ab.i("MicroMsg.QQDownloaderSDKWrapper", "destroyQQDownloader, sdk is null : [%b], instance is null : [%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      if (npE != null) {
+        npE.destroyQQDownloaderOpenSDK();
+      }
+      npE = null;
+      npD = null;
+      AppMethodBeat.o(111491);
+      return;
+    }
+  }
+  
+  public static int k(Context paramContext, String paramString, int paramInt)
+  {
+    i = -1;
+    AppMethodBeat.i(111494);
+    if (bo.isNullOrNil(paramString))
+    {
+      ab.e("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState fail, packageName is null");
+      AppMethodBeat.o(111494);
+      return -1;
     }
     for (;;)
     {
-      for (;;)
+      try
       {
-        long l = System.currentTimeMillis() - kRk;
-        y.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "turn to GameWebViewUI time:%d", new Object[] { Long.valueOf(l) });
-        try
-        {
-          paramkp.bTG.context = null;
-          label237:
-          com.tencent.mm.plugin.wepkg.utils.a.b("preloadWebTime", str, com.tencent.mm.plugin.wepkg.utils.d.Vq(str), null, -1L, l, null);
-          break;
-          localContext = ae.getContext();
-          break label129;
-          com.tencent.mm.br.d.b(localContext, "webview", ".ui.tools.game.GameWebViewUI", paramkp.bTG.intent);
+        paramContext = b.getPackageInfo(paramContext, paramString);
+        if (paramContext != null) {
           continue;
-          com.tencent.mm.br.d.b(localContext, "webview", ".ui.tools.TransparentWebViewUI", paramkp.bTG.intent);
-          continue;
-          paramkp.bTG.intent.putExtra("start_activity_time", System.currentTimeMillis());
-          if (paramBundle != null) {
-            bool = paramBundle.getBoolean("has_preload_webcore", false);
-          }
-          paramBundle = new Runnable()
-          {
-            public final void run()
-            {
-              com.tencent.mm.br.d.b(localContext, "game", ".luggage.LuggageGameWebViewUI", paramkp.bTG.intent);
-            }
-          };
-          if (bool) {}
-          for (l = 100L;; l = 0L)
-          {
-            l.postDelayed(paramBundle, l);
-            break;
-          }
         }
-        catch (Exception paramkp)
-        {
-          break label237;
-        }
+        paramInt = 1;
+      }
+      catch (Exception paramContext)
+      {
+        int j;
+        ab.e("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState fail, ex = %s", new Object[] { paramContext.getMessage() });
+        paramInt = i;
+        continue;
+      }
+      ab.d("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState, ret = %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(111494);
+      return paramInt;
+      ab.d("MicroMsg.QQDownloaderSDKWrapper", "getAppInstallState, installed versionCode = %d", new Object[] { Integer.valueOf(paramContext.versionCode) });
+      j = paramContext.versionCode;
+      if (j >= paramInt) {
+        paramInt = 0;
+      } else {
+        paramInt = 2;
       }
     }
   }
   
-  private static void a(com.tencent.mm.ipcinvoker.c paramc, Bundle paramBundle)
+  public static void startToAuthorized(Context paramContext, String paramString)
   {
-    if (paramc != null) {
-      paramc.U(paramBundle);
+    AppMethodBeat.i(111495);
+    if (bo.isNullOrNil(paramString))
+    {
+      ab.e("MicroMsg.QQDownloaderSDKWrapper", "queryQQDownloadTaskStatus, params is null or nil");
+      AppMethodBeat.o(111495);
+      return;
+    }
+    paramString = new a((byte)0).Qf(paramString);
+    try
+    {
+      bGV();
+      bGW().startToAuthorized(paramContext, paramString, "1");
+      AppMethodBeat.o(111495);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      ab.e("MicroMsg.QQDownloaderSDKWrapper", "startToAuthorized fail, ex = %s", new Object[] { paramContext.getMessage() });
+      AppMethodBeat.o(111495);
     }
   }
   
-  private boolean a(kp paramkp)
+  public static final class a
   {
-    y.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "callback, type = %d", new Object[] { Integer.valueOf(paramkp.bTG.type) });
-    if (paramkp.bTG.type == 3)
+    public String SNGAppId;
+    public String actionFlag;
+    public String npF;
+    public String taskApkId;
+    public String taskAppId;
+    public String taskPackageName;
+    public int taskVersion;
+    public String uin;
+    public String uinType;
+    public String via;
+    
+    private void Qe(String paramString)
     {
-      y.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "interval: %d, lastActionTime: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - this.kRo), Long.valueOf(this.kRo) });
-      if (System.currentTimeMillis() - this.kRo < 500L) {
-        y.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "interval smaller than 500 ms, return");
+      AppMethodBeat.i(111487);
+      ab.i("MicroMsg.QQDownloaderSDKWrapper", "params is : [%s]", new Object[] { paramString });
+      if (bo.isNullOrNil(paramString))
+      {
+        ab.e("MicroMsg.QQDownloaderSDKWrapper", "params is null or nil");
+        AppMethodBeat.o(111487);
+        return;
+      }
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.taskApkId = paramString.optString("taskApkId");
+        this.via = paramString.optString("via");
+        this.taskVersion = paramString.optInt("taskVersion");
+        this.npF = paramString.optString("channelID");
+        this.uin = paramString.optString("uin");
+        this.SNGAppId = paramString.optString("SNGAppId");
+        this.taskAppId = paramString.optString("taskAppId");
+        this.uinType = paramString.optString("uinType");
+        this.taskPackageName = paramString.optString("taskPackageName");
+        this.actionFlag = paramString.optString("actionFlag");
+        AppMethodBeat.o(111487);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        ab.e("MicroMsg.QQDownloaderSDKWrapper", "parse parms failed:[%s]", new Object[] { paramString.getMessage() });
+        AppMethodBeat.o(111487);
       }
     }
-    label258:
-    do
+    
+    public final TMQQDownloaderOpenSDKParam Qf(String paramString)
     {
-      return false;
-      this.kRo = System.currentTimeMillis();
-      switch (paramkp.bTG.type)
-      {
-      default: 
-        return false;
-      case 0: 
-      case 1: 
-      case 2: 
-        int i = paramkp.bTG.type;
-        int j = hashCode();
-        int k = paramkp.hashCode();
-        long l = Thread.currentThread().getId();
-        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {}
-        for (boolean bool = true;; bool = false)
-        {
-          y.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "on NotifyGameWebviewOperationListener operation listener, type:%d, hashcode:%s, event hashcode:%s, threadId:%s, isUIThead:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l), Boolean.valueOf(bool) });
-          localObject1 = "";
-          try
-          {
-            localObject2 = paramkp.bTG.intent.getStringExtra("rawUrl");
-            localObject1 = localObject2;
-          }
-          catch (Exception localException)
-          {
-            Object localObject2;
-            break label258;
-          }
-          try
-          {
-            if (!bk.pm(caS).equalsIgnoreCase((String)localObject1)) {
-              break;
-            }
-            y.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "forbid to open same page two times");
-            return false;
-          }
-          finally {}
-        }
-        caS = (String)localObject1;
-        kRk = System.currentTimeMillis();
-        kRl = System.currentTimeMillis();
-        if (ae.cqV()) {
-          com.tencent.mm.plugin.wepkg.utils.b.rQh = com.tencent.mm.plugin.game.commlib.a.aYo();
-        }
-        if (com.tencent.mm.plugin.wepkg.utils.d.Vt((String)localObject1))
-        {
-          y.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "exist pkgid:%s, to reload", new Object[] { com.tencent.mm.plugin.wepkg.utils.d.Vq((String)localObject1) });
-          localObject2 = g.o(bk.pm((String)localObject1).getBytes()) + "_" + System.currentTimeMillis();
-          paramkp.bTG.group = ((String)localObject2);
-          this.wuz = new ax.b(this, paramkp);
-          ai.l(this.wuz, 500L);
-          localObject2 = new Bundle();
-          ((Bundle)localObject2).putBoolean("is_wepkg_disable", com.tencent.mm.plugin.wepkg.utils.b.rQh);
-          ((Bundle)localObject2).putString("call_raw_url", (String)localObject1);
-          if (paramkp.bTG.type == 2) {
-            ((Bundle)localObject2).putBoolean("is_luggage", true);
-          }
-          ToolsProcessIPCService.a((Parcelable)localObject2, ax.a.class, new ax.1(this, paramkp));
-          return false;
-        }
-        y.i("MicroMsg.Wepkg.NotifyGameWebviewOperationListener", "dont have pkgid or disable wepkg, normal turn page. disableWepkg:" + com.tencent.mm.plugin.wepkg.utils.b.rQh);
-        a(paramkp, null);
-        return false;
-      case 3: 
-        paramkp = paramkp.bTG.intent.getStringExtra("rawUrl");
-      }
-    } while ((kRn.contains(paramkp)) || (!com.tencent.mm.plugin.wepkg.utils.d.Vt(paramkp)));
-    kRn.add(paramkp);
-    Object localObject1 = new Bundle();
-    ((Bundle)localObject1).putString("call_raw_url", paramkp);
-    ((Bundle)localObject1).putBoolean("preload_webcore", true);
-    ((Bundle)localObject1).putBoolean("is_luggage", true);
-    ToolsProcessIPCService.a((Parcelable)localObject1, ax.a.class, new ax.2(this, paramkp));
-    l.postDelayed(new ax.3(this, paramkp), 10000L);
-    return false;
+      AppMethodBeat.i(111488);
+      Qe(paramString);
+      paramString = new TMQQDownloaderOpenSDKParam(this.SNGAppId, this.taskAppId, this.taskApkId, this.taskVersion, this.via, this.taskPackageName, this.uin, this.uinType, this.npF, this.actionFlag);
+      AppMethodBeat.o(111488);
+      return paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ax
  * JD-Core Version:    0.7.0.1
  */

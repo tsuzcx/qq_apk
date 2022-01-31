@@ -1,36 +1,36 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.h.a.kg;
+import com.tencent.mm.g.a.kt;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
 import java.util.ArrayList;
 
 public abstract class b
-  extends c<kg>
+  extends c<kt>
 {
-  protected ArrayList<String> rSR = new ArrayList(3);
+  protected ArrayList<String> vJP = new ArrayList(3);
   
   public b()
   {
     super(0);
-    this.udX = kg.class.getName().hashCode();
+    this.__eventId = kt.class.getName().hashCode();
   }
   
   public static void a(String paramString, b paramb)
   {
-    if (!paramb.rSR.contains(paramString)) {
-      paramb.rSR.add(paramString);
+    if (!paramb.vJP.contains(paramString)) {
+      paramb.vJP.add(paramString);
     }
-    a.udP.c(paramb);
-    e.VF(paramString);
+    a.ymk.c(paramb);
+    e.alc(paramString);
   }
   
   public static void b(String paramString, b paramb)
   {
-    e.VG(paramString);
-    a.udP.d(paramb);
-    if (paramb.rSR.contains(paramString)) {
-      paramb.rSR.remove(paramString);
+    e.ald(paramString);
+    a.ymk.d(paramb);
+    if (paramb.vJP.contains(paramString)) {
+      paramb.vJP.remove(paramString);
     }
   }
   

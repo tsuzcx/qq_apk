@@ -4,87 +4,51 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.util.ArrayMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.BaseIPCService;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.b.a;
 
 public final class ToolsProfile$a
 {
-  private static final AtomicInteger bxl = new AtomicInteger(0);
-  private static Object bxm;
+  private static final AtomicInteger bZl;
+  private static Object bZm;
   
-  public static boolean isLocked()
+  static
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (bxl.get() <= 0)
-    {
-      Object localObject = (ActivityManager)ae.getContext().getSystemService("activity");
-      if (localObject == null) {
-        break label183;
-      }
-      localObject = ((ActivityManager)localObject).getRunningAppProcesses();
-      if (localObject == null) {
-        break label183;
-      }
-      localObject = ((List)localObject).iterator();
-      for (;;)
-      {
-        if (((Iterator)localObject).hasNext())
-        {
-          ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-          if (((h)com.tencent.mm.kernel.g.DM().Dr()).dIA.equals(localRunningAppProcessInfo.processName)) {
-            if ((localRunningAppProcessInfo.importance == 100) || ((localRunningAppProcessInfo.importance == 300) && (!td())) || (localRunningAppProcessInfo.importanceReasonCode == 1) || (localRunningAppProcessInfo.importanceReasonCode == 2))
-            {
-              bool1 = true;
-              y.i("MicroMsg.ToolsProcessLocker", "hasRunningServicesOrProviders:%b %d", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(localRunningAppProcessInfo.importance) });
-              if (!bool1) {
-                break label183;
-              }
-            }
-          }
-        }
-      }
-    }
-    label183:
-    for (int i = 1;; i = 0)
-    {
-      bool1 = bool2;
-      if (i != 0) {
-        bool1 = true;
-      }
-      return bool1;
-      bool1 = false;
-      break;
-    }
+    AppMethodBeat.i(15419);
+    bZl = new AtomicInteger(0);
+    AppMethodBeat.o(15419);
   }
   
-  private static boolean td()
+  private static boolean BH()
   {
+    AppMethodBeat.i(15415);
     try
     {
-      if (bxm == null)
+      if (bZm == null)
       {
-        Object localObject2 = ae.getContext();
+        Object localObject2 = ah.getContext();
         Object localObject1 = Class.forName("android.app.ActivityThread").getMethod("currentActivityThread", new Class[0]);
         ((Method)localObject1).setAccessible(true);
         localObject1 = ((Method)localObject1).invoke(null, new Object[0]);
         if (localObject1 != null) {}
         for (;;)
         {
-          bxm = localObject1;
-          localObject1 = (ArrayMap)a.cz(localObject1).ahx("mServices").object;
-          if (((ArrayMap)localObject1).size() > 0) {
+          bZm = localObject1;
+          localObject1 = (ArrayMap)org.a.a.ep(localObject1).azQ("mServices").object;
+          int i = ((ArrayMap)localObject1).size();
+          if (i > 0) {
             break;
           }
+          AppMethodBeat.o(15415);
           return true;
           localObject1 = localObject2.getClass().getField("mLoadedApk");
           ((Field)localObject1).setAccessible(true);
@@ -96,23 +60,79 @@ public final class ToolsProfile$a
         if (((ArrayMap)localObject1).size() == 1)
         {
           boolean bool = localObject1.values().toArray()[0] instanceof BaseIPCService;
-          if (bool) {
+          if (bool)
+          {
+            AppMethodBeat.o(15415);
             return true;
           }
         }
+        AppMethodBeat.o(15415);
         return false;
       }
     }
     catch (Throwable localThrowable)
     {
-      y.e("MicroMsg.ToolsProcessLocker", "skipServiceConditionIfOnlyIPCServiceAlive, hack ActivityThread_mServices e=%s", new Object[] { localThrowable });
+      ab.e("MicroMsg.ToolsProcessLocker", "skipServiceConditionIfOnlyIPCServiceAlive, hack ActivityThread_mServices e=%s", new Object[] { localThrowable });
+      AppMethodBeat.o(15415);
     }
     return false;
   }
   
-  static void te()
+  public static boolean isLocked()
   {
-    y.i("MicroMsg.ToolsProcessLocker", "clearLock, beforeReset %d", new Object[] { Integer.valueOf(bxl.getAndSet(0)) });
+    AppMethodBeat.i(15414);
+    boolean bool;
+    if (bZl.get() <= 0)
+    {
+      Object localObject = (ActivityManager)ah.getContext().getSystemService("activity");
+      if (localObject == null) {
+        break label226;
+      }
+      localObject = ((ActivityManager)localObject).getRunningAppProcesses();
+      if (localObject == null) {
+        break label226;
+      }
+      localObject = ((List)localObject).iterator();
+      for (;;)
+      {
+        if (((Iterator)localObject).hasNext())
+        {
+          ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+          if (((h)com.tencent.mm.kernel.g.RI().Rj()).mProcessName.equals(localRunningAppProcessInfo.processName))
+          {
+            i = localRunningAppProcessInfo.importance;
+            if (!com.tencent.mm.compatible.loader.a.contains(new int[] { 100 }, i))
+            {
+              i = localRunningAppProcessInfo.importance;
+              if ((!com.tencent.mm.compatible.loader.a.contains(new int[] { 300, 125 }, i)) || (BH()))
+              {
+                i = localRunningAppProcessInfo.importanceReasonCode;
+                if (!com.tencent.mm.compatible.loader.a.contains(new int[] { 1, 2 }, i)) {
+                  break;
+                }
+              }
+            }
+            bool = true;
+            ab.i("MicroMsg.ToolsProcessLocker", "hasRunningServicesOrProviders:%b %d %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(localRunningAppProcessInfo.importance), Integer.valueOf(localRunningAppProcessInfo.importanceReasonCode) });
+            if (!bool) {}
+          }
+        }
+      }
+    }
+    label226:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label231;
+      }
+      AppMethodBeat.o(15414);
+      return true;
+      bool = false;
+      break;
+    }
+    label231:
+    AppMethodBeat.o(15414);
+    return false;
   }
 }
 

@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.storage.z;
@@ -17,53 +18,55 @@ final class FileExplorerUI$2
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (File)FileExplorerUI.a(this.slK).getItem(paramInt);
-    if (1 == FileExplorerUI.b(this.slK)) {
+    AppMethodBeat.i(105841);
+    paramAdapterView = (File)FileExplorerUI.a(this.wem).getItem(paramInt);
+    if (1 == FileExplorerUI.b(this.wem)) {
       if (paramAdapterView.isFile())
       {
-        g.DP().Dz().o(131074, FileExplorerUI.a.b(FileExplorerUI.a(this.slK)).getAbsolutePath());
-        g.DP().Dz().o(131073, FileExplorerUI.e(this.slK).getAbsolutePath());
-        if (paramAdapterView != FileExplorerUI.a.a(FileExplorerUI.a(this.slK))) {
-          break label239;
+        g.RL().Ru().set(131074, FileExplorerUI.a.b(FileExplorerUI.a(this.wem)).getAbsolutePath());
+        g.RL().Ru().set(131073, FileExplorerUI.e(this.wem).getAbsolutePath());
+        if (paramAdapterView != FileExplorerUI.a.a(FileExplorerUI.a(this.wem))) {
+          break label249;
         }
-        FileExplorerUI.a(this.slK).g(FileExplorerUI.a.a(FileExplorerUI.a(this.slK)).getParentFile(), FileExplorerUI.a.a(FileExplorerUI.a(this.slK)));
+        FileExplorerUI.a(this.wem).g(FileExplorerUI.a.a(FileExplorerUI.a(this.wem)).getParentFile(), FileExplorerUI.a.a(FileExplorerUI.a(this.wem)));
       }
     }
     for (;;)
     {
-      FileExplorerUI.cog();
-      FileExplorerUI.a(this.slK).notifyDataSetChanged();
-      FileExplorerUI.c(this.slK).setSelection(0);
+      FileExplorerUI.dpv();
+      FileExplorerUI.a(this.wem).notifyDataSetChanged();
+      FileExplorerUI.c(this.wem).setSelection(0);
+      AppMethodBeat.o(105841);
       return;
-      FileExplorerUI.a(this.slK, paramAdapterView);
+      FileExplorerUI.a(this.wem, paramAdapterView);
       break;
-      if (FileExplorerUI.b(this.slK) != 0) {
+      if (FileExplorerUI.b(this.wem) != 0) {
         break;
       }
       if (paramAdapterView.isFile())
       {
-        g.DP().Dz().o(131073, FileExplorerUI.a.b(FileExplorerUI.a(this.slK)).getAbsolutePath());
-        g.DP().Dz().o(131074, FileExplorerUI.d(this.slK).getAbsolutePath());
+        g.RL().Ru().set(131073, FileExplorerUI.a.b(FileExplorerUI.a(this.wem)).getAbsolutePath());
+        g.RL().Ru().set(131074, FileExplorerUI.d(this.wem).getAbsolutePath());
         break;
       }
-      FileExplorerUI.b(this.slK, paramAdapterView);
+      FileExplorerUI.b(this.wem, paramAdapterView);
       break;
-      label239:
+      label249:
       if (paramAdapterView.isDirectory())
       {
-        FileExplorerUI.a(this.slK).g(FileExplorerUI.a.b(FileExplorerUI.a(this.slK)), paramAdapterView);
+        FileExplorerUI.a(this.wem).g(FileExplorerUI.a.b(FileExplorerUI.a(this.wem)), paramAdapterView);
       }
       else if (paramAdapterView.isFile())
       {
-        this.slK.setResult(-1, new Intent().putExtra("choosed_file_path", paramAdapterView.getAbsolutePath()));
-        this.slK.finish();
+        this.wem.setResult(-1, new Intent().putExtra("choosed_file_path", paramAdapterView.getAbsolutePath()));
+        this.wem.finish();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI.2
  * JD-Core Version:    0.7.0.1
  */

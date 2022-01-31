@@ -1,5 +1,9 @@
 package com.tencent.mm.plugin.gallery.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.LinkedList;
+
 final class l$2
   implements Runnable
 {
@@ -7,12 +11,28 @@ final class l$2
   
   public final void run()
   {
-    this.kHq.kHo.a(this.kHr, this.bns, new l.2.1(this), this.fIp);
+    AppMethodBeat.i(21321);
+    try
+    {
+      ab.i("MicroMsg.MediaQueryService", "queryMediaItemsInAlbum Begin...");
+      this.ndA.ndy.a(this.ndB, this.bHS, new l.2.1(this), this.hbh);
+      AppMethodBeat.o(21321);
+      return;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      ab.printErrStackTrace("MicroMsg.MediaQueryService", localSecurityException, "", new Object[0]);
+      l.a(this.ndA, new LinkedList(), this.hbh);
+      AppMethodBeat.o(21321);
+    }
   }
   
   public final String toString()
   {
-    return super.toString() + "|queryMediaInAlbums";
+    AppMethodBeat.i(21322);
+    String str = super.toString() + "|queryMediaInAlbums";
+    AppMethodBeat.o(21322);
+    return str;
   }
 }
 

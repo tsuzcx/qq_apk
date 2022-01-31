@@ -3,112 +3,150 @@ package com.tencent.mm.plugin.sandbox;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.plugin.w.b;
-import com.tencent.mm.sandbox.monitor.ExceptionMonitorService;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.model.at;
+import com.tencent.mm.plugin.p.b;
+import com.tencent.mm.sandbox.monitor.ExceptionMonitorBroadcastReceiver;
 import com.tencent.mm.sandbox.updater.AppUpdaterUI;
 import com.tencent.mm.sandbox.updater.Updater;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.HashMap;
 
 public class SubCoreSandBox
-  implements ar, com.tencent.mm.plugin.w.c
+  implements at, com.tencent.mm.plugin.p.c
 {
-  public static boolean nGl = false;
-  public static boolean nGm = false;
+  public static boolean qto = false;
+  public static boolean qtp = false;
   
   public SubCoreSandBox()
   {
-    y.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox constructor at: " + System.currentTimeMillis());
+    AppMethodBeat.i(24382);
+    ab.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox constructor at: " + System.currentTimeMillis());
+    AppMethodBeat.o(24382);
   }
   
-  public final String Iq(String paramString)
+  public final String Uc(String paramString)
   {
-    return com.tencent.mm.sandbox.monitor.c.Iq(paramString);
+    AppMethodBeat.i(24395);
+    paramString = com.tencent.mm.sandbox.monitor.c.Uc(paramString);
+    AppMethodBeat.o(24395);
+    return paramString;
   }
   
-  public final com.tencent.mm.plugin.w.a a(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
+  public final void bSs()
   {
-    return Updater.c(paramContext, paramOnCancelListener);
+    AppMethodBeat.i(24388);
+    Updater.MX(16);
+    AppMethodBeat.o(24388);
   }
   
-  public final com.tencent.mm.plugin.w.a b(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
+  public final b bSt()
   {
-    return Updater.d(paramContext, paramOnCancelListener);
+    AppMethodBeat.i(24394);
+    com.tencent.mm.sandbox.a.a locala = new com.tencent.mm.sandbox.a.a(2);
+    AppMethodBeat.o(24394);
+    return locala;
   }
   
-  public final void bh(boolean paramBoolean)
+  public final com.tencent.mm.plugin.p.a c(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    y.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox onAccountPostReset at: " + System.currentTimeMillis());
+    AppMethodBeat.i(24389);
+    paramContext = Updater.e(paramContext, paramOnCancelListener);
+    AppMethodBeat.o(24389);
+    return paramContext;
   }
   
-  public final void bi(boolean paramBoolean)
+  public void clearPluginData(int paramInt)
   {
-    y.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox onSdcardMount at: " + System.currentTimeMillis());
+    AppMethodBeat.i(24384);
+    ab.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox clearPluginData at: " + System.currentTimeMillis());
+    AppMethodBeat.o(24384);
   }
   
-  public final void bkr()
+  public final com.tencent.mm.plugin.p.a d(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    Updater.EW(16);
-  }
-  
-  public final b bks()
-  {
-    return new com.tencent.mm.sandbox.a.a(2);
-  }
-  
-  public final com.tencent.mm.plugin.w.a dP(Context paramContext)
-  {
-    return Updater.fn(paramContext);
-  }
-  
-  public final void dQ(Context paramContext)
-  {
-    Updater.dQ(paramContext);
+    AppMethodBeat.i(24390);
+    paramContext = Updater.f(paramContext, paramOnCancelListener);
+    AppMethodBeat.o(24390);
+    return paramContext;
   }
   
   public final void e(String paramString1, int paramInt, String paramString2, String paramString3)
   {
+    AppMethodBeat.i(24393);
     Updater.e(paramString1, paramInt, paramString2, paramString3);
+    AppMethodBeat.o(24393);
   }
   
-  public final void gf(int paramInt)
+  public final com.tencent.mm.plugin.p.a eB(Context paramContext)
   {
-    y.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox clearPluginData at: " + System.currentTimeMillis());
+    AppMethodBeat.i(24391);
+    paramContext = Updater.gA(paramContext);
+    AppMethodBeat.o(24391);
+    return paramContext;
   }
   
-  public final void hB(boolean paramBoolean)
+  public final void eC(Context paramContext)
   {
-    nGl = true;
-    nGm = paramBoolean;
+    AppMethodBeat.i(24392);
+    Updater.eC(paramContext);
+    AppMethodBeat.o(24392);
   }
   
-  public final void onAccountRelease()
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    y.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox onAccountRelease at: " + System.currentTimeMillis());
+    AppMethodBeat.i(24383);
+    ab.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox getBaseDBFactories at: " + System.currentTimeMillis());
+    AppMethodBeat.o(24383);
+    return null;
   }
   
-  public final void s(Context paramContext, Intent paramIntent)
+  public final void ju(boolean paramBoolean)
   {
+    qto = true;
+    qtp = paramBoolean;
+  }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(24385);
+    ab.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox onAccountPostReset at: " + System.currentTimeMillis());
+    AppMethodBeat.o(24385);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(24387);
+    ab.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox onAccountRelease at: " + System.currentTimeMillis());
+    AppMethodBeat.o(24387);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean)
+  {
+    AppMethodBeat.i(24386);
+    ab.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox onSdcardMount at: " + System.currentTimeMillis());
+    AppMethodBeat.o(24386);
+  }
+  
+  public final void v(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(24396);
     if (paramContext != null)
     {
-      paramIntent.setClass(paramContext, ExceptionMonitorService.class);
-      ae.getContext().startService(paramIntent);
+      paramIntent.setClass(paramContext, ExceptionMonitorBroadcastReceiver.class);
+      ah.getContext().sendBroadcast(paramIntent);
     }
+    AppMethodBeat.o(24396);
   }
   
-  public final void t(Context paramContext, Intent paramIntent)
+  public final void w(Context paramContext, Intent paramIntent)
   {
+    AppMethodBeat.i(24397);
     paramIntent.setClass(paramContext, AppUpdaterUI.class);
     paramContext.startActivity(paramIntent);
-  }
-  
-  public final HashMap<Integer, h.d> xe()
-  {
-    y.i("MicroMsg.SubCoreSandBox", "SubCoreSandBox getBaseDBFactories at: " + System.currentTimeMillis());
-    return null;
+    AppMethodBeat.o(24397);
   }
 }
 

@@ -1,26 +1,29 @@
 package com.tencent.mm.plugin.qmessage.ui;
 
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
 import com.tencent.mm.storage.ad;
-import com.tencent.mm.ui.r.a;
+import com.tencent.mm.ui.p.a;
 
 final class QConversationUI$1
-  implements r.a
+  implements p.a
 {
   QConversationUI$1(QConversationUI paramQConversationUI) {}
   
-  public final void Wp()
+  public final void apT()
   {
-    QConversationUI localQConversationUI = this.ncU;
-    String str = QConversationUI.a(this.ncU).Bp();
-    int i = t.ie(s.dUW);
+    AppMethodBeat.i(24126);
+    QConversationUI localQConversationUI = this.pIm;
+    String str = QConversationUI.a(this.pIm).Oe();
+    int i = u.oM(t.flf);
     if (i <= 0) {
       localQConversationUI.setMMTitle(str);
     }
     for (;;)
     {
-      QConversationUI.a(this.ncU, QConversationUI.b(this.ncU).getCount());
+      QConversationUI.a(this.pIm, QConversationUI.b(this.pIm).getCount());
+      AppMethodBeat.o(24126);
       return;
       localQConversationUI.setMMTitle(str + "(" + i + ")");
     }

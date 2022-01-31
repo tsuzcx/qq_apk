@@ -1,15 +1,21 @@
 package com.tencent.liteav;
 
-import com.tencent.liteav.videoencoder.TXSVideoEncoderParam;
+import android.graphics.Bitmap;
+import com.tencent.liteav.basic.d.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class c$3
-  implements Runnable
+  implements n
 {
-  c$3(c paramc) {}
+  c$3(c paramc, n paramn) {}
   
-  public void run()
+  public void onTakePhotoComplete(Bitmap paramBitmap)
   {
-    c.a(this.a, c.d(this.a).width, c.d(this.a).height);
+    AppMethodBeat.i(146408);
+    if (this.a != null) {
+      this.a.onTakePhotoComplete(paramBitmap);
+    }
+    AppMethodBeat.o(146408);
   }
 }
 

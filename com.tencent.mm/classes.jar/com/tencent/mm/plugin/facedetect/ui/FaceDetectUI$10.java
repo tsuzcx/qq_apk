@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.facedetect.ui;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FaceDetectUI$10
   implements Animation.AnimationListener
@@ -10,7 +11,9 @@ final class FaceDetectUI$10
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    FaceDetectUI.l(this.jRF);
+    AppMethodBeat.i(470);
+    FaceDetectUI.l(this.mmb);
+    AppMethodBeat.o(470);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

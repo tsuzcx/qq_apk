@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyBusiReceiveUI$8
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class LuckyMoneyBusiReceiveUI$8
   
   public final void onClick(View paramView)
   {
-    this.lUZ.finish();
+    AppMethodBeat.i(42625);
+    this.osi.finish();
+    AppMethodBeat.o(42625);
   }
 }
 

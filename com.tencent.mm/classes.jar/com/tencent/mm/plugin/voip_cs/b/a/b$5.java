@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.voip_cs.b.a;
 import android.graphics.Point;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.voip.video.OpenGlView;
 
 final class b$5
@@ -12,13 +13,15 @@ final class b$5
   
   public final void onClick(View paramView)
   {
-    paramView = this.qeI;
-    if (!b.h(this.qeI)) {}
+    AppMethodBeat.i(135322);
+    paramView = this.tLv;
+    if (!b.h(this.tLv)) {}
     for (boolean bool = true;; bool = false)
     {
       b.a(paramView, bool);
-      paramView = b.b(this.qeI, b.h(this.qeI));
-      b.i(this.qeI).eq(paramView.x, paramView.y);
+      paramView = b.b(this.tLv, b.h(this.tLv));
+      b.i(this.tLv).gp(paramView.x, paramView.y);
+      AppMethodBeat.o(135322);
       return;
     }
   }

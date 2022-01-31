@@ -1,109 +1,99 @@
 package android.support.v7.view;
 
-import android.support.v4.view.u;
-import android.support.v4.view.v;
-import android.support.v4.view.w;
+import android.support.v4.view.x;
+import android.support.v4.view.y;
+import android.support.v4.view.z;
 import android.view.View;
-import android.view.ViewPropertyAnimator;
 import android.view.animation.Interpolator;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class h
 {
-  boolean OU;
-  v TM;
-  private final w TN = new w()
+  y Uw;
+  boolean Ux;
+  private final z Uy = new z()
   {
-    private boolean TO = false;
-    private int TP = 0;
+    private int UA = 0;
+    private boolean Uz = false;
     
-    public final void au(View paramAnonymousView)
+    public final void aB(View paramAnonymousView)
     {
-      if (this.TO) {}
+      if (this.Uz) {}
       do
       {
         return;
-        this.TO = true;
-      } while (h.this.TM == null);
-      h.this.TM.au(null);
+        this.Uz = true;
+      } while (h.this.Uw == null);
+      h.this.Uw.aB(null);
     }
     
-    public final void av(View paramAnonymousView)
+    public final void aC(View paramAnonymousView)
     {
-      int i = this.TP + 1;
-      this.TP = i;
-      if (i == h.this.mG.size())
+      int i = this.UA + 1;
+      this.UA = i;
+      if (i == h.this.nD.size())
       {
-        if (h.this.TM != null) {
-          h.this.TM.av(null);
+        if (h.this.Uw != null) {
+          h.this.Uw.aC(null);
         }
-        this.TP = 0;
-        this.TO = false;
-        h.this.OU = false;
+        this.UA = 0;
+        this.Uz = false;
+        h.this.Ux = false;
       }
     }
   };
   private long mDuration = -1L;
-  final ArrayList<u> mG = new ArrayList();
   private Interpolator mInterpolator;
+  final ArrayList<x> nD = new ArrayList();
   
-  public final h a(u paramu)
+  public final h a(x paramx)
   {
-    if (!this.OU) {
-      this.mG.add(paramu);
+    if (!this.Ux) {
+      this.nD.add(paramx);
     }
     return this;
   }
   
-  public final h a(u paramu1, u paramu2)
+  public final h a(x paramx1, x paramx2)
   {
-    this.mG.add(paramu1);
-    paramu1 = (View)paramu1.Hz.get();
-    if (paramu1 != null) {}
-    for (long l = paramu1.animate().getDuration();; l = 0L)
-    {
-      paramu1 = (View)paramu2.Hz.get();
-      if (paramu1 != null) {
-        paramu1.animate().setStartDelay(l);
-      }
-      this.mG.add(paramu2);
-      return this;
-    }
+    this.nD.add(paramx1);
+    paramx2.i(paramx1.getDuration());
+    this.nD.add(paramx2);
+    return this;
   }
   
-  public final h b(v paramv)
+  public final h b(y paramy)
   {
-    if (!this.OU) {
-      this.TM = paramv;
+    if (!this.Ux) {
+      this.Uw = paramy;
     }
     return this;
   }
   
   public final void cancel()
   {
-    if (!this.OU) {
+    if (!this.Ux) {
       return;
     }
-    Iterator localIterator = this.mG.iterator();
+    Iterator localIterator = this.nD.iterator();
     while (localIterator.hasNext()) {
-      ((u)localIterator.next()).cancel();
+      ((x)localIterator.next()).cancel();
     }
-    this.OU = false;
+    this.Ux = false;
   }
   
   public final h d(Interpolator paramInterpolator)
   {
-    if (!this.OU) {
+    if (!this.Ux) {
       this.mInterpolator = paramInterpolator;
     }
     return this;
   }
   
-  public final h eR()
+  public final h fF()
   {
-    if (!this.OU) {
+    if (!this.Ux) {
       this.mDuration = 250L;
     }
     return this;
@@ -111,25 +101,25 @@ public final class h
   
   public final void start()
   {
-    if (this.OU) {
+    if (this.Ux) {
       return;
     }
-    Iterator localIterator = this.mG.iterator();
+    Iterator localIterator = this.nD.iterator();
     while (localIterator.hasNext())
     {
-      u localu = (u)localIterator.next();
+      x localx = (x)localIterator.next();
       if (this.mDuration >= 0L) {
-        localu.k(this.mDuration);
+        localx.h(this.mDuration);
       }
       if (this.mInterpolator != null) {
-        localu.c(this.mInterpolator);
+        localx.c(this.mInterpolator);
       }
-      if (this.TM != null) {
-        localu.a(this.TN);
+      if (this.Uw != null) {
+        localx.a(this.Uy);
       }
-      localu.start();
+      localx.start();
     }
-    this.OU = true;
+    this.Ux = true;
   }
 }
 

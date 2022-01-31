@@ -1,47 +1,54 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import com.tencent.mm.protocal.c.aop;
-import com.tencent.mm.protocal.c.aoq;
-import com.tencent.mm.protocal.c.axd;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.auh;
+import com.tencent.mm.protocal.protobuf.aui;
+import com.tencent.mm.protocal.protobuf.bdt;
 
 final class ExdeviceBindDeviceUI$f
 {
-  public String jAY;
-  public boolean jBP = false;
-  public ExdeviceBindDeviceUI.b jBQ = ExdeviceBindDeviceUI.b.jBH;
-  public ExdeviceBindDeviceUI.c jBR;
-  public ExdeviceBindDeviceUI.d jBS;
-  public aop jBT;
-  public aoq jBU;
-  public int jBV;
-  public axd jBW;
-  public String jBX;
+  public String lKx;
+  public boolean lLo = false;
+  public ExdeviceBindDeviceUI.b lLp = ExdeviceBindDeviceUI.b.lLg;
+  public ExdeviceBindDeviceUI.c lLq;
+  public ExdeviceBindDeviceUI.d lLr;
+  public auh lLs;
+  public aui lLt;
+  public int lLu;
+  public bdt lLv;
+  public String lLw;
   
   private ExdeviceBindDeviceUI$f(ExdeviceBindDeviceUI paramExdeviceBindDeviceUI) {}
   
-  public final String aMu()
+  public final String bqH()
   {
-    if (this.jBQ == ExdeviceBindDeviceUI.b.jBH)
+    if (this.lLp == ExdeviceBindDeviceUI.b.lLg)
     {
-      if (this.jBU == null) {
+      if (this.lLt == null) {
         return null;
       }
-      return this.jBU.sAE;
+      return this.lLt.wuT;
     }
-    return this.jBR.btt;
+    return this.lLq.bUD;
   }
   
   public final String getKey()
   {
-    if (this.jBQ == ExdeviceBindDeviceUI.b.jBH) {
-      return this.jBS.jAa + this.jBS.juM;
+    AppMethodBeat.i(19856);
+    if (this.lLp == ExdeviceBindDeviceUI.b.lLg)
+    {
+      str = this.lLr.lJz + this.lLr.lEl;
+      AppMethodBeat.o(19856);
+      return str;
     }
-    return this.jBR.btt;
+    String str = this.lLq.bUD;
+    AppMethodBeat.o(19856);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceBindDeviceUI.f
  * JD-Core Version:    0.7.0.1
  */

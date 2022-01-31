@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.ext.provider;
 
-import com.tencent.mm.h.a.fm;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fp;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.pluginsdk.d.a.b;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.storage.ad;
@@ -13,14 +14,16 @@ final class ExtControlProviderSNS$2
   
   public final void run()
   {
-    fm localfm = new fm();
-    localfm.bMm.type = 1;
-    localfm.bMm.username = this.doS.field_username;
-    localfm.bMm.bMn = ExtControlProviderSNS.a(this.jKM);
-    localfm.bMm.bMo = ExtControlProviderSNS.b(this.jKM);
-    localfm.bMm.bMp = ExtControlProviderSNS.c(this.jKM);
-    localfm.bMm.bMq = new ExtControlProviderSNS.2.1(this);
-    a.udP.m(localfm);
+    AppMethodBeat.i(20379);
+    fp localfp = new fp();
+    localfp.ctH.type = 1;
+    localfp.ctH.username = this.ego.field_username;
+    localfp.ctH.ctI = ExtControlProviderSNS.a(this.meQ);
+    localfp.ctH.ctJ = ExtControlProviderSNS.b(this.meQ);
+    localfp.ctH.ctK = ExtControlProviderSNS.c(this.meQ);
+    localfp.ctH.ctL = new ExtControlProviderSNS.2.1(this);
+    a.ymk.l(localfp);
+    AppMethodBeat.o(20379);
   }
 }
 

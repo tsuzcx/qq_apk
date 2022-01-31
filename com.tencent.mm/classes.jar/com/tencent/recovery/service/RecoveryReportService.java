@@ -15,7 +15,7 @@ public class RecoveryReportService
     super(RecoveryReportService.class.getName());
   }
   
-  private void aw(Intent paramIntent)
+  private void aY(Intent paramIntent)
   {
     int i = 0;
     for (;;)
@@ -24,7 +24,7 @@ public class RecoveryReportService
       try
       {
         String str1 = paramIntent.getStringExtra("KeyReportType");
-        boolean bool = Util.bl(str1);
+        boolean bool = Util.isNullOrNil(str1);
         if (bool) {
           return;
         }
@@ -67,13 +67,13 @@ public class RecoveryReportService
   
   public void onDestroy()
   {
-    RecoveryLog.cOA();
+    RecoveryLog.dUp();
     super.onDestroy();
   }
   
   protected void onHandleIntent(Intent paramIntent)
   {
-    aw(paramIntent);
+    aY(paramIntent);
   }
 }
 

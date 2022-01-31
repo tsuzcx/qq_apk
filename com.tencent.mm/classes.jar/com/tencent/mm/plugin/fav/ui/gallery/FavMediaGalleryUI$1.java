@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
 
 final class FavMediaGalleryUI$1
@@ -7,9 +8,11 @@ final class FavMediaGalleryUI$1
 {
   FavMediaGalleryUI$1(FavMediaGalleryUI paramFavMediaGalleryUI) {}
   
-  public final void aBS()
+  public final void bdW()
   {
-    this.khg.finish();
+    AppMethodBeat.i(74507);
+    this.mBV.finish();
+    AppMethodBeat.o(74507);
   }
 }
 

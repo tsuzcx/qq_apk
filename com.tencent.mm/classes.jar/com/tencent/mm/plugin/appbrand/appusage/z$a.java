@@ -1,37 +1,48 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import a.d.b.g;
-import com.tencent.mm.protocal.c.bvi;
-import com.tencent.mm.protocal.c.bvj;
-import com.tencent.mm.sdk.platformtools.d;
+import a.f.b.j;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.cgb;
+import com.tencent.mm.protocal.protobuf.cgc;
+import com.tencent.mm.sdk.platformtools.f;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appusage/CgiUpdateWxaStarRecord$Companion;", "", "()V", "UpdateWxaRecordReason_CloseStarList", "", "UpdateWxaRecordReason_CloseTask", "UpdateWxaRecordReason_FromHistory", "UpdateWxaRecordReason_Timeout", "legalReasons", "", "add", "Lcom/tencent/mm/protocal/protobuf/StarWxaSortOperation;", "self", "Lcom/tencent/mm/protocal/protobuf/StarWxaInfo;", "prev", "next", "checkParams", "", "delete", "move", "op", "plugin-appbrand-integration_release"})
 public final class z$a
 {
-  private static bvj a(int paramInt, bvi parambvi1, bvi parambvi2, bvi parambvi3)
+  private static cgc a(int paramInt, cgb paramcgb1, cgb paramcgb2, cgb paramcgb3)
   {
-    bvj localbvj = new bvj();
-    localbvj.tMc = parambvi1;
-    localbvj.tMf = paramInt;
-    localbvj.tMd = parambvi2;
-    localbvj.tMe = parambvi3;
-    return localbvj;
+    AppMethodBeat.i(134546);
+    cgc localcgc = new cgc();
+    localcgc.xQO = paramcgb1;
+    localcgc.xQR = paramInt;
+    localcgc.xQP = paramcgb2;
+    localcgc.xQQ = paramcgb3;
+    AppMethodBeat.o(134546);
+    return localcgc;
   }
   
-  public static bvj a(bvi parambvi1, bvi parambvi2, bvi parambvi3)
+  public static cgc a(cgb paramcgb1, cgb paramcgb2, cgb paramcgb3)
   {
-    g.k(parambvi1, "self");
-    return a(1, parambvi1, parambvi2, parambvi3);
+    AppMethodBeat.i(134544);
+    j.q(paramcgb1, "self");
+    paramcgb1 = a(1, paramcgb1, paramcgb2, paramcgb3);
+    AppMethodBeat.o(134544);
+    return paramcgb1;
   }
   
-  static boolean adx()
+  static boolean axE()
   {
-    return d.IS_FLAVOR_RED;
+    return f.IS_FLAVOR_RED;
   }
   
-  public static bvj b(bvi parambvi)
+  public static cgc b(cgb paramcgb)
   {
-    g.k(parambvi, "self");
-    return a(2, parambvi, null, null);
+    AppMethodBeat.i(134545);
+    j.q(paramcgb, "self");
+    paramcgb = a(2, paramcgb, null, null);
+    AppMethodBeat.o(134545);
+    return paramcgb;
   }
 }
 

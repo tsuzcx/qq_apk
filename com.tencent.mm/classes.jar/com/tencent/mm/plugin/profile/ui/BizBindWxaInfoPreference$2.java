@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ai.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.r.f;
+import com.tencent.mm.plugin.appbrand.service.l;
 import com.tencent.mm.ui.base.preference.Preference;
 
 final class BizBindWxaInfoPreference$2
@@ -14,7 +15,9 @@ final class BizBindWxaInfoPreference$2
   
   public final void onClick(View paramView)
   {
-    ((f)g.r(f.class)).a(this.mVo.mContext, BizBindWxaInfoPreference.a(this.mVo).field_username, BizBindWxaInfoPreference.a(this.mVo).field_appId, BizBindWxaInfoPreference.b(this.mVo));
+    AppMethodBeat.i(23295);
+    ((l)g.E(l.class)).a(this.pxT.mContext, BizBindWxaInfoPreference.a(this.pxT).field_username, BizBindWxaInfoPreference.a(this.pxT).field_appId, BizBindWxaInfoPreference.b(this.pxT));
+    AppMethodBeat.o(23295);
   }
 }
 

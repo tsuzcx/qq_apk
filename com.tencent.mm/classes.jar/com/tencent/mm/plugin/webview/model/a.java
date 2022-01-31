@@ -1,110 +1,33 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.RemoteException;
-import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.l;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.n;
 
 public final class a
 {
-  private static String[] rfe = null;
+  private static String[] uVd = null;
   
-  public static void a(MMWebView paramMMWebView, d paramd)
+  public static void c(MMWebView paramMMWebView)
   {
-    if (paramd == null) {
-      y.e("MicroMsg.AutoPlayLogic", "invoker null");
-    }
-    String str;
-    do
+    AppMethodBeat.i(6565);
+    if (paramMMWebView == null)
     {
-      return;
-      if (paramMMWebView == null)
-      {
-        y.e("MicroMsg.AutoPlayLogic", "webView null");
-        return;
-      }
-      str = paramMMWebView.getUrl();
-      y.i("MicroMsg.AutoPlayLogic", "currentUrl:%s", new Object[] { str });
-    } while (bk.bl(str));
-    if (a(str, paramd))
-    {
-      a(paramMMWebView, true);
-      y.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (true)");
+      ab.e("MicroMsg.AutoPlayLogic", "webView null");
+      AppMethodBeat.o(6565);
       return;
     }
-    a(paramMMWebView, false);
-    y.i("MicroMsg.AutoPlayLogic", "enableAutoPlay (false)");
-  }
-  
-  private static void a(MMWebView paramMMWebView, boolean paramBoolean)
-  {
-    if (paramMMWebView.getIsX5Kernel()) {
-      try
-      {
-        Bundle localBundle = new Bundle();
-        if (!paramBoolean) {}
-        for (paramBoolean = true;; paramBoolean = false)
-        {
-          localBundle.putBoolean("require", paramBoolean);
-          org.b.a.cz(paramMMWebView.getX5WebViewExtension()).y("invokeMiscMethod", new Object[] { "setVideoPlaybackRequiresUserGesture", localBundle });
-          return;
-        }
-        y.i("MicroMsg.AutoPlayLogic", "not x5 all enable");
-      }
-      catch (Exception paramMMWebView)
-      {
-        y.e("MicroMsg.AutoPlayLogic", "enableAutoPlay :%s", new Object[] { paramMMWebView });
-        return;
-      }
-    }
-    paramMMWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
-  }
-  
-  private static boolean a(String paramString, d paramd)
-  {
-    boolean bool2 = false;
-    if (rfe == null) {}
-    for (;;)
+    String str = paramMMWebView.getUrl();
+    ab.i("MicroMsg.AutoPlayLogic", "currentUrl:%s", new Object[] { str });
+    if (bo.isNullOrNil(str))
     {
-      int i;
-      try
-      {
-        Object localObject = paramd.f(100, new Bundle());
-        paramd = null;
-        if (localObject != null) {
-          paramd = ((Bundle)localObject).getString("enable_auto_play_host_paths");
-        }
-        y.i("MicroMsg.AutoPlayLogic", "autoPlayHostsStr config:%s", new Object[] { paramd });
-        localObject = paramd;
-        if (bk.bl(paramd)) {
-          localObject = "mp.weixin.qq.com/s;mp.weixin.qq.com/mp/appmsg/show";
-        }
-        rfe = ((String)localObject).split(";");
-        paramString = Uri.parse(paramString);
-        paramString = paramString.getAuthority() + paramString.getPath();
-        i = 0;
-        boolean bool1 = bool2;
-        if (i < rfe.length)
-        {
-          if (paramString.startsWith(rfe[i])) {
-            bool1 = true;
-          }
-        }
-        else {
-          return bool1;
-        }
-      }
-      catch (RemoteException paramString)
-      {
-        y.w("MicroMsg.AutoPlayLogic", "isOauthHost exp:%s", new Object[] { paramString.getLocalizedMessage() });
-        return false;
-      }
-      i += 1;
+      AppMethodBeat.o(6565);
+      return;
     }
+    l.post(new a.1(str, paramMMWebView));
+    AppMethodBeat.o(6565);
   }
 }
 

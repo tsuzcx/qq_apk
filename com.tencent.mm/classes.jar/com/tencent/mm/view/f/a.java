@@ -6,17 +6,22 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ca.a.b;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.l.a.c;
-import com.tencent.mm.protocal.c.bsl;
-import com.tencent.mm.protocal.c.bsm;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.t;
+import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
+import com.tencent.mm.protocal.protobuf.cda;
+import com.tencent.mm.protocal.protobuf.cdb;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.storage.emotion.s;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,445 +31,546 @@ import java.util.Set;
 
 public final class a
 {
-  private final String TAG = "MicroMsg.emoji.SmileyPanel.SmileyPanelStg";
-  public int adN = 0;
-  public int fzn;
-  public int hxU;
-  public int hxV;
-  public int jiT = this.ze.getResources().getDimensionPixelSize(a.c.emoji_panel_tab_width);
-  public int kih = 0;
-  public String seQ;
-  public int vWJ = 0;
-  private int wwc = com.tencent.mm.cb.a.aa(this.ze, a.c.smiley_panel_dot_height);
-  private int wzA = this.wzy;
-  private int wzB = com.tencent.mm.cb.a.fromDPToPix(this.ze, 8);
-  private int wzC = com.tencent.mm.cb.a.fromDPToPix(this.ze, 16);
-  public String wzD = "";
-  public int wzE = 0;
-  public boolean wzF;
-  public boolean wzG;
-  public boolean wzH;
-  public boolean wzI;
-  public boolean wzJ;
-  public boolean wzK;
-  public boolean wzL;
-  public boolean wzM = false;
-  public boolean wzN = false;
-  public int[] wzO;
-  public boolean wzP;
-  public boolean wzQ;
-  public ArrayList<com.tencent.mm.view.c.a> wzR = new ArrayList();
-  public HashMap<String, Integer> wzS = new HashMap();
-  public List<com.tencent.mm.storage.emotion.u> wzT = new ArrayList();
-  public c wzU;
-  public volatile boolean wzV = false;
-  public int wzm = this.ze.getResources().getDimensionPixelSize(a.c.emoji_panel_tab_height);
-  public int wzn = this.ze.getResources().getDimensionPixelSize(a.c.emoji_panel_tab_image_size);
-  public int wzo = com.tencent.mm.cb.a.aa(this.ze, a.c.BasicPaddingSize);
-  public int wzp = com.tencent.mm.cb.a.fromDPToPix(this.ze, 86);
-  public int wzq = com.tencent.mm.cb.a.fromDPToPix(this.ze, 80);
-  public int wzr = com.tencent.mm.cb.a.fromDPToPix(this.ze, 65);
-  public int wzs = com.tencent.mm.cb.a.fromDPToPix(this.ze, 48);
-  public int wzt = com.tencent.mm.cb.a.fromDPToPix(this.ze, 43);
-  private int wzu = com.tencent.mm.cb.a.aa(this.ze, a.c.BasicPaddingSize);
-  private int wzv = 0;
-  public int wzw;
-  private int wzx = com.tencent.mm.cb.a.fromDPToPix(this.ze, 6);
-  private int wzy = com.tencent.mm.cb.a.aa(this.ze, a.c.smiley_panel_top_space);
-  public int wzz = com.tencent.mm.cb.a.aa(this.ze, a.c.smiley_panel_top_space_min);
-  private Context ze = ae.getContext();
+  public boolean AHW;
+  private int ARe;
+  public int AUH;
+  public int AUI;
+  private int AUJ;
+  public int AUK;
+  public int AUL;
+  public int AUM;
+  public int AUN;
+  public int AUO;
+  private int AUP;
+  private int AUQ;
+  public int AUR;
+  private int AUS;
+  private int AUT;
+  public int AUU;
+  private int AUV;
+  private int AUW;
+  private int AUX;
+  private int AUY;
+  public String AUZ;
+  public int AVa;
+  public boolean AVb;
+  public boolean AVc;
+  public boolean AVd;
+  public boolean AVe;
+  public boolean AVf;
+  public boolean AVg;
+  public boolean AVh;
+  public boolean AVi;
+  public boolean AVj;
+  public int[] AVk;
+  public boolean AVl;
+  public boolean AVm;
+  public ArrayList<com.tencent.mm.view.c.a> AVn;
+  private HashMap<String, Integer> AVo;
+  public List<s> AVp;
+  public com.tencent.mm.sdk.b.c AVq;
+  public volatile boolean AVr;
+  private int AoR;
+  private final String TAG;
+  public int jqe;
+  public int jqf;
+  public int lrK;
+  private int mCN;
+  private int mOrientation;
+  public int mScene;
+  public String vVU;
+  public Context zF;
   
   public a()
   {
-    cMf();
-    cLW();
-    cMi();
+    AppMethodBeat.i(63078);
+    this.TAG = "MicroMsg.emoji.SmileyPanel.SmileyPanelStg";
+    this.AoR = 0;
+    this.AUQ = 0;
+    this.mOrientation = 0;
+    this.mCN = 0;
+    this.AUZ = "";
+    this.AVa = 0;
+    this.AVd = true;
+    this.AVi = false;
+    this.AVj = false;
+    this.AVn = new ArrayList();
+    this.AVo = new HashMap();
+    this.AVp = new ArrayList();
+    this.AVr = false;
+    this.zF = ah.getContext();
+    this.AUH = this.zF.getResources().getDimensionPixelSize(2131428385);
+    this.lrK = this.zF.getResources().getDimensionPixelSize(2131428389);
+    this.AUI = this.zF.getResources().getDimensionPixelSize(2131428388);
+    this.AUN = com.tencent.mm.cb.a.fromDPToPix(this.zF, 48);
+    this.AUO = com.tencent.mm.cb.a.fromDPToPix(this.zF, 43);
+    this.AUK = com.tencent.mm.cb.a.fromDPToPix(this.zF, 86);
+    this.AUL = com.tencent.mm.cb.a.fromDPToPix(this.zF, 90);
+    this.AUM = com.tencent.mm.cb.a.fromDPToPix(this.zF, 65);
+    this.AUJ = com.tencent.mm.cb.a.ao(this.zF, 2131427496);
+    this.AUS = com.tencent.mm.cb.a.fromDPToPix(this.zF, 6);
+    this.AUZ = "TAG_DEFAULT_TAB";
+    this.AVa = 0;
+    this.ARe = com.tencent.mm.cb.a.ao(this.zF, 2131428685);
+    this.AUP = com.tencent.mm.cb.a.ao(this.zF, 2131427496);
+    this.AUT = com.tencent.mm.cb.a.ao(this.zF, 2131428687);
+    this.AUU = com.tencent.mm.cb.a.ao(this.zF, 2131428688);
+    this.AUV = com.tencent.mm.cb.a.fromDPToPix(this.zF, 12);
+    this.AUW = this.AUT;
+    this.AUX = com.tencent.mm.cb.a.fromDPToPix(this.zF, 8);
+    this.AUY = com.tencent.mm.cb.a.fromDPToPix(this.zF, 16);
+    dRD();
+    dRu();
+    dRG();
+    AppMethodBeat.o(63078);
   }
   
-  private int[] api()
+  public static int RQ(int paramInt)
   {
+    if (paramInt == ChatFooterPanel.vQm) {}
+    do
+    {
+      return 2;
+      if (paramInt == ChatFooterPanel.vQr) {
+        return 3;
+      }
+      if (paramInt == ChatFooterPanel.vQs) {
+        return 4;
+      }
+    } while (paramInt != ChatFooterPanel.vQt);
+    return 5;
+  }
+  
+  public static boolean RR(int paramInt)
+  {
+    AppMethodBeat.i(63114);
+    if ((((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().OR()) && ((paramInt == ChatFooterPanel.vQm) || (paramInt == ChatFooterPanel.vQr) || (paramInt == ChatFooterPanel.vQs) || (paramInt == ChatFooterPanel.vQt)))
+    {
+      AppMethodBeat.o(63114);
+      return true;
+    }
+    AppMethodBeat.o(63114);
+    return false;
+  }
+  
+  public static boolean RS(int paramInt)
+  {
+    return paramInt == ChatFooterPanel.vQm;
+  }
+  
+  private com.tencent.mm.view.c.a a(EmojiGroupInfo paramEmojiGroupInfo, com.tencent.mm.view.e.a parama, boolean paramBoolean, com.tencent.mm.view.c.a parama1, int paramInt)
+  {
+    AppMethodBeat.i(63101);
+    if (parama1 == null) {}
+    for (int i = 0;; i = parama1.jpL + parama1.dRf())
+    {
+      paramEmojiGroupInfo = new com.tencent.mm.view.c.a(paramEmojiGroupInfo, i, paramInt, this, parama, paramBoolean);
+      AppMethodBeat.o(63101);
+      return paramEmojiGroupInfo;
+    }
+  }
+  
+  private int[] aMu()
+  {
+    AppMethodBeat.i(63106);
     int[] arrayOfInt = new int[2];
-    if ((this.ze instanceof Activity))
+    Object localObject;
+    if ((this.zF instanceof Activity))
     {
       localObject = new DisplayMetrics();
-      ((Activity)this.ze).getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
+      ((Activity)this.zF).getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
       arrayOfInt[0] = ((DisplayMetrics)localObject).widthPixels;
       arrayOfInt[1] = ((DisplayMetrics)localObject).heightPixels;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(63106);
       return arrayOfInt;
+      localObject = ((WindowManager)this.zF.getSystemService("window")).getDefaultDisplay();
+      arrayOfInt[0] = ((Display)localObject).getWidth();
+      arrayOfInt[1] = ((Display)localObject).getHeight();
     }
-    Object localObject = ((WindowManager)this.ze.getSystemService("window")).getDefaultDisplay();
-    arrayOfInt[0] = ((Display)localObject).getWidth();
-    arrayOfInt[1] = ((Display)localObject).getHeight();
-    return arrayOfInt;
   }
   
-  /* Error */
-  public static boolean cLS()
+  public static int avR(String paramString)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: invokestatic 255	com/tencent/mm/kernel/g:DM	()Lcom/tencent/mm/kernel/d;
-    //   5: invokevirtual 261	com/tencent/mm/kernel/d:Dr	()Lcom/tencent/mm/kernel/b/g;
-    //   8: checkcast 263	com/tencent/mm/kernel/b/h
-    //   11: invokevirtual 266	com/tencent/mm/kernel/b/h:Ex	()Z
-    //   14: ifeq +78 -> 92
-    //   17: invokestatic 272	com/tencent/mm/ca/a:cpp	()Lcom/tencent/mm/ca/a$a;
-    //   20: pop
-    //   21: getstatic 276	com/tencent/mm/ca/a:uaN	Lcom/tencent/mm/ca/a$b;
-    //   24: astore_3
-    //   25: ldc_w 277
-    //   28: invokestatic 283	com/tencent/mm/ca/a$b:EV	(I)Z
-    //   31: istore_0
-    //   32: invokestatic 272	com/tencent/mm/ca/a:cpp	()Lcom/tencent/mm/ca/a$a;
-    //   35: pop
-    //   36: getstatic 276	com/tencent/mm/ca/a:uaN	Lcom/tencent/mm/ca/a$b;
-    //   39: astore_3
-    //   40: ldc_w 284
-    //   43: invokestatic 283	com/tencent/mm/ca/a$b:EV	(I)Z
-    //   46: istore_1
-    //   47: iload_1
-    //   48: ifne +9 -> 57
-    //   51: iload_2
-    //   52: istore_1
-    //   53: iload_0
-    //   54: ifeq +5 -> 59
-    //   57: iconst_1
-    //   58: istore_1
-    //   59: iload_1
-    //   60: ireturn
-    //   61: astore_3
-    //   62: iconst_0
-    //   63: istore_0
-    //   64: ldc 71
-    //   66: ldc_w 286
-    //   69: iconst_1
-    //   70: anewarray 4	java/lang/Object
-    //   73: dup
-    //   74: iconst_0
-    //   75: aload_3
-    //   76: invokevirtual 290	java/lang/Exception:toString	()Ljava/lang/String;
-    //   79: aastore
-    //   80: invokestatic 296	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   83: iconst_0
-    //   84: istore_1
-    //   85: goto -38 -> 47
-    //   88: astore_3
-    //   89: goto -25 -> 64
-    //   92: iconst_0
-    //   93: istore_0
-    //   94: iconst_0
-    //   95: istore_1
-    //   96: goto -49 -> 47
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   31	63	0	bool1	boolean
-    //   46	50	1	bool2	boolean
-    //   1	51	2	bool3	boolean
-    //   24	16	3	localb	a.b
-    //   61	15	3	localException1	Exception
-    //   88	1	3	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   2	32	61	java/lang/Exception
-    //   32	47	88	java/lang/Exception
-  }
-  
-  /* Error */
-  public static boolean cLT()
-  {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: invokestatic 255	com/tencent/mm/kernel/g:DM	()Lcom/tencent/mm/kernel/d;
-    //   5: invokevirtual 261	com/tencent/mm/kernel/d:Dr	()Lcom/tencent/mm/kernel/b/g;
-    //   8: checkcast 263	com/tencent/mm/kernel/b/h
-    //   11: invokevirtual 266	com/tencent/mm/kernel/b/h:Ex	()Z
-    //   14: ifeq +83 -> 97
-    //   17: invokestatic 303	com/tencent/mm/y/c:BS	()Lcom/tencent/mm/y/a;
-    //   20: ldc_w 304
-    //   23: ldc_w 305
-    //   26: invokevirtual 311	com/tencent/mm/y/a:bb	(II)Z
-    //   29: istore_0
-    //   30: invokestatic 303	com/tencent/mm/y/c:BS	()Lcom/tencent/mm/y/a;
-    //   33: ldc_w 312
-    //   36: ldc_w 305
-    //   39: invokevirtual 311	com/tencent/mm/y/a:bb	(II)Z
-    //   42: istore_2
-    //   43: iload_0
-    //   44: istore_1
-    //   45: iload_2
-    //   46: istore_0
-    //   47: iload_1
-    //   48: ifne +9 -> 57
-    //   51: iload_3
-    //   52: istore_1
-    //   53: iload_0
-    //   54: ifeq +5 -> 59
-    //   57: iconst_1
-    //   58: istore_1
-    //   59: iload_1
-    //   60: ireturn
-    //   61: astore 4
-    //   63: iconst_0
-    //   64: istore_1
-    //   65: ldc 71
-    //   67: ldc_w 286
-    //   70: iconst_1
-    //   71: anewarray 4	java/lang/Object
-    //   74: dup
-    //   75: iconst_0
-    //   76: aload 4
-    //   78: invokevirtual 290	java/lang/Exception:toString	()Ljava/lang/String;
-    //   81: aastore
-    //   82: invokestatic 296	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   85: iconst_0
-    //   86: istore_0
-    //   87: goto -40 -> 47
-    //   90: astore 4
-    //   92: iload_0
-    //   93: istore_1
-    //   94: goto -29 -> 65
-    //   97: iconst_0
-    //   98: istore_0
-    //   99: iconst_0
-    //   100: istore_1
-    //   101: goto -54 -> 47
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   29	70	0	bool1	boolean
-    //   44	57	1	bool2	boolean
-    //   42	4	2	bool3	boolean
-    //   1	51	3	bool4	boolean
-    //   61	16	4	localException1	Exception
-    //   90	1	4	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   2	30	61	java/lang/Exception
-    //   30	43	90	java/lang/Exception
-  }
-  
-  public static EmojiGroupInfo cLX()
-  {
-    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
-    localEmojiGroupInfo.field_productID = "TAG_DEFAULT_TAB";
-    return localEmojiGroupInfo;
-  }
-  
-  public static EmojiGroupInfo cLY()
-  {
-    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
-    localEmojiGroupInfo.field_productID = String.valueOf(EmojiGroupInfo.uCR);
-    return localEmojiGroupInfo;
-  }
-  
-  public static boolean d(EmojiGroupInfo paramEmojiGroupInfo)
-  {
-    return (paramEmojiGroupInfo != null) && (paramEmojiGroupInfo.field_packStatus == 1);
-  }
-  
-  public static boolean isSDCardAvailable()
-  {
-    if (((h)g.DM().Dr()).Ex())
+    AppMethodBeat.i(63080);
+    if (paramString.equals("TAG_DEFAULT_TAB"))
     {
-      g.DQ();
-      return g.DP().isSDCardAvailable();
+      AppMethodBeat.o(63080);
+      return 20;
     }
-    return true;
-  }
-  
-  public final void IU(int paramInt)
-  {
-    this.hxU = paramInt;
-    y.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "set viewpager height px: %d mViewPagerHeightPx:%d ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.hxU) });
-  }
-  
-  public final com.tencent.mm.view.c.a IV(int paramInt)
-  {
-    if (this.wzR == null) {
-      return null;
-    }
-    return (com.tencent.mm.view.c.a)this.wzR.get(IW(paramInt));
-  }
-  
-  public final int IW(int paramInt)
-  {
-    if ((this.wzO == null) || (paramInt >= this.wzO.length) || (paramInt <= 0)) {
-      return 0;
-    }
-    return this.wzO[paramInt];
-  }
-  
-  public final void a(com.tencent.mm.view.c.a parama)
-  {
-    String str = parama.iZD;
-    int i = parama.qPB;
-    if (!str.equals("TAG_DEFAULT_TAB"))
+    if (paramString.equals(String.valueOf(EmojiGroupInfo.yPe)))
     {
-      i = (this.hxU - (this.wwc - this.wzu) - afb(str) * i) / (i + 1);
-      parama.wyD = i;
-      parama.wyC = i;
-      return;
+      AppMethodBeat.o(63080);
+      return 25;
     }
-    int j = this.hxU - this.wzy * 2 - afb(str) * i;
-    if (j >= this.wzC)
+    if (paramString.equals("capture"))
     {
-      parama.wyD = this.wzy;
-      parama.wyC = ((j - this.wzC) / (i - 1));
-      return;
+      AppMethodBeat.o(63080);
+      return 26;
     }
-    if (j >= this.wzB)
+    AppMethodBeat.o(63080);
+    return 23;
+  }
+  
+  private com.tencent.mm.view.c.a b(EmojiGroupInfo paramEmojiGroupInfo, com.tencent.mm.view.e.a parama, boolean paramBoolean)
+  {
+    AppMethodBeat.i(63100);
+    int i = this.AVn.size();
+    if (i <= 0) {}
+    for (com.tencent.mm.view.c.a locala = null;; locala = (com.tencent.mm.view.c.a)this.AVn.get(i - 1))
     {
-      parama.wyD = this.wzy;
-      parama.wyC = 0;
-      return;
-    }
-    if (com.tencent.mm.sdk.platformtools.u.fA(this.ze))
-    {
-      i = (j - this.wzB) / (i + 1);
-      j = this.wzy + i;
-      if (j >= this.wzz) {
-        break label193;
-      }
-    }
-    label193:
-    for (parama.wyD = this.wzz;; parama.wyD = j)
-    {
-      parama.wyC = i;
-      return;
-      i = j / (i + 1);
-      break;
+      paramEmojiGroupInfo = a(paramEmojiGroupInfo, parama, paramBoolean, locala, bo.a((Integer)this.AVo.get(paramEmojiGroupInfo.field_productID), 0));
+      AppMethodBeat.o(63100);
+      return paramEmojiGroupInfo;
     }
   }
   
-  public final int afb(String paramString)
+  public static boolean dRq()
   {
-    if ("TAG_DEFAULT_TAB".equals(paramString)) {
-      return this.wzs;
-    }
-    return this.wzp;
-  }
-  
-  public final com.tencent.mm.view.c.a afc(String paramString)
-  {
-    if ((this.wzR == null) || (paramString == null))
-    {
-      y.w("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "getTab failed.");
-      return null;
-    }
-    Iterator localIterator = this.wzR.iterator();
-    while (localIterator.hasNext())
-    {
-      com.tencent.mm.view.c.a locala = (com.tencent.mm.view.c.a)localIterator.next();
-      if (locala == null) {
-        y.e("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "get null tab");
-      } else if (locala.iZD == null) {
-        y.e("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "get null tab productId");
-      } else if (locala.iZD.equals(paramString)) {
-        return locala;
-      }
-    }
-    return null;
-  }
-  
-  public final int cLU()
-  {
-    if (this.hxV <= 1) {
-      this.hxV = api()[0];
-    }
-    return this.hxV;
-  }
-  
-  public final void cLV()
-  {
-    if (bk.bl(this.wzD)) {}
-    while (this.wzF) {
-      return;
-    }
-    y.i("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "save product Id:%s selected index:%d", new Object[] { this.wzD, Integer.valueOf(this.wzE) });
-    com.tencent.mm.ca.a.cpp();
-    a.b localb = com.tencent.mm.ca.a.uaN;
-    a.b.YJ(this.wzD);
-  }
-  
-  public final void cLW()
-  {
-    if (this.wzF)
-    {
-      if (!this.wzD.equals("TAG_DEFAULT_TAB"))
-      {
-        this.wzD = "TAG_DEFAULT_TAB";
-        this.wzE = bk.a((Integer)this.wzS.get(this.wzD), 0);
-      }
-      return;
-    }
-    com.tencent.mm.ca.a.cpp();
-    a.b localb = com.tencent.mm.ca.a.uaN;
-    this.wzD = a.b.bb(-29414086, "TAG_DEFAULT_TAB");
-    this.wzE = bk.a((Integer)this.wzS.get(this.wzD), 0);
-    y.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "restoreShowProductId product id: %s selected index:%d", new Object[] { this.wzD, Integer.valueOf(this.wzE) });
-  }
-  
-  public final boolean cLZ()
-  {
-    com.tencent.mm.ca.a.cpp();
-    a.b localb = com.tencent.mm.ca.a.uaN;
-    return (a.b.EV(66832)) && (!this.wzL);
-  }
-  
-  public final int cMa()
-  {
-    String str = this.wzD;
-    if (this.wzR != null)
-    {
-      int i = 0;
-      while (i < this.wzR.size())
-      {
-        com.tencent.mm.view.c.a locala = (com.tencent.mm.view.c.a)this.wzR.get(i);
-        if ((locala != null) && (locala.iZD.equals(str))) {
-          return i;
-        }
-        i += 1;
-      }
-    }
-    return 0;
-  }
-  
-  public final com.tencent.mm.view.c.a cMb()
-  {
-    return afc(this.wzD);
-  }
-  
-  public final void cMc()
-  {
-    this.kih = 0;
-    if (this.wzR == null) {
-      return;
-    }
-    Object localObject = this.wzR.iterator();
-    int i;
-    while (((Iterator)localObject).hasNext())
-    {
-      com.tencent.mm.view.c.a locala = (com.tencent.mm.view.c.a)((Iterator)localObject).next();
-      i = this.kih;
-      this.kih = (locala.cLI() + i);
-    }
-    if (this.wzR != null) {}
+    AppMethodBeat.i(63081);
     for (;;)
     {
       try
       {
-        this.wzO = new int[this.kih];
-        i = 0;
-        j = 0;
-        if (i < this.wzR.size())
+        a.b localb;
+        if (((h)g.RI().Rj()).SD())
         {
-          localObject = (com.tencent.mm.view.c.a)this.wzR.get(i);
-          k = 0;
-          if (k >= ((com.tencent.mm.view.c.a)localObject).cLI()) {
+          com.tencent.mm.ca.a.dqM();
+          localb = com.tencent.mm.ca.a.yiH;
+          bool1 = a.b.MV(208913);
+        }
+        boolean bool1 = false;
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          com.tencent.mm.ca.a.dqM();
+          localb = com.tencent.mm.ca.a.yiH;
+          bool2 = a.b.MV(208899);
+          if ((!bool2) && (!bool1)) {
             continue;
           }
-          int m = this.kih;
+          AppMethodBeat.o(63081);
+          return true;
+        }
+        catch (Exception localException2)
+        {
+          continue;
+        }
+        localException1 = localException1;
+        bool1 = false;
+        ab.e("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "[cpan] get new emoji flag faild.%s", new Object[] { localException1.toString() });
+        bool2 = false;
+        continue;
+        AppMethodBeat.o(63081);
+        return false;
+      }
+      boolean bool2 = false;
+    }
+  }
+  
+  public static boolean dRr()
+  {
+    AppMethodBeat.i(63082);
+    for (;;)
+    {
+      try
+      {
+        if (((h)g.RI().Rj()).SD()) {
+          bool1 = com.tencent.mm.x.c.PJ().cc(262147, 266244);
+        }
+        boolean bool3;
+        boolean bool1 = false;
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          bool3 = com.tencent.mm.x.c.PJ().cc(262149, 266244);
+          bool2 = bool1;
+          bool1 = bool3;
+          if ((!bool2) && (!bool1)) {
+            continue;
+          }
+          AppMethodBeat.o(63082);
+          return true;
+        }
+        catch (Exception localException2)
+        {
+          bool2 = bool1;
+          continue;
+        }
+        localException1 = localException1;
+        bool2 = false;
+        ab.e("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "[cpan] get new emoji flag faild.%s", new Object[] { localException1.toString() });
+        bool1 = false;
+        continue;
+        AppMethodBeat.o(63082);
+        return false;
+      }
+      boolean bool2 = false;
+    }
+  }
+  
+  public static EmojiGroupInfo dRw()
+  {
+    AppMethodBeat.i(63092);
+    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
+    localEmojiGroupInfo.field_productID = "TAG_DEFAULT_TAB";
+    AppMethodBeat.o(63092);
+    return localEmojiGroupInfo;
+  }
+  
+  public static EmojiGroupInfo dRx()
+  {
+    AppMethodBeat.i(63093);
+    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
+    localEmojiGroupInfo.field_productID = String.valueOf(EmojiGroupInfo.yPe);
+    AppMethodBeat.o(63093);
+    return localEmojiGroupInfo;
+  }
+  
+  public static boolean e(EmojiGroupInfo paramEmojiGroupInfo)
+  {
+    AppMethodBeat.i(63094);
+    if ((paramEmojiGroupInfo != null) && ((!com.tencent.mm.plugin.emoji.h.b.Lk(paramEmojiGroupInfo.field_productID)) || (paramEmojiGroupInfo.field_packStatus == 1)))
+    {
+      AppMethodBeat.o(63094);
+      return true;
+    }
+    AppMethodBeat.o(63094);
+    return false;
+  }
+  
+  public static boolean isSDCardAvailable()
+  {
+    AppMethodBeat.i(63105);
+    if (((h)g.RI().Rj()).SD())
+    {
+      g.RM();
+      boolean bool = g.RL().isSDCardAvailable();
+      AppMethodBeat.o(63105);
+      return bool;
+    }
+    AppMethodBeat.o(63105);
+    return true;
+  }
+  
+  public final void RN(int paramInt)
+  {
+    AppMethodBeat.i(63084);
+    this.jqe = paramInt;
+    ab.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "set viewpager height px: %d mViewPagerHeightPx:%d ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jqe) });
+    AppMethodBeat.o(63084);
+  }
+  
+  public final com.tencent.mm.view.c.a RO(int paramInt)
+  {
+    AppMethodBeat.i(63097);
+    if (this.AVn == null)
+    {
+      AppMethodBeat.o(63097);
+      return null;
+    }
+    com.tencent.mm.view.c.a locala = (com.tencent.mm.view.c.a)this.AVn.get(RP(paramInt));
+    AppMethodBeat.o(63097);
+    return locala;
+  }
+  
+  public final int RP(int paramInt)
+  {
+    if ((this.AVk == null) || (paramInt >= this.AVk.length) || (paramInt <= 0)) {
+      return 0;
+    }
+    return this.AVk[paramInt];
+  }
+  
+  public final void a(EmojiGroupInfo paramEmojiGroupInfo, com.tencent.mm.view.e.a parama, boolean paramBoolean)
+  {
+    AppMethodBeat.i(63099);
+    if (this.AVn == null) {
+      this.AVn = new ArrayList();
+    }
+    paramEmojiGroupInfo = b(paramEmojiGroupInfo, parama, paramBoolean);
+    this.AVn.add(paramEmojiGroupInfo);
+    AppMethodBeat.o(63099);
+  }
+  
+  public final void a(com.tencent.mm.view.c.a parama)
+  {
+    AppMethodBeat.i(63104);
+    String str = parama.liu;
+    int j;
+    if (str.equals("TAG_DEFAULT_TAB")) {
+      j = this.AUT;
+    }
+    int k;
+    int m;
+    for (int i = this.AUU;; i = this.AUV)
+    {
+      k = parama.uEJ;
+      m = this.jqe - j * 2 - avS(str) * k;
+      if (m < this.AUY) {
+        break label130;
+      }
+      i = (m - this.AUY) / (k + 1);
+      parama.ATV = (j + i);
+      if (k != 1) {
+        break;
+      }
+      parama.ATU = 0;
+      AppMethodBeat.o(63104);
+      return;
+      j = this.AUV;
+    }
+    parama.ATU = i;
+    AppMethodBeat.o(63104);
+    return;
+    label130:
+    if (m >= this.AUX)
+    {
+      parama.ATV = j;
+      parama.ATU = 0;
+      AppMethodBeat.o(63104);
+      return;
+    }
+    if (x.gN(this.zF))
+    {
+      k = (m - this.AUX) / (k + 1);
+      j += k;
+      if (j >= i) {
+        break label220;
+      }
+    }
+    label220:
+    for (parama.ATV = i;; parama.ATV = j)
+    {
+      parama.ATU = k;
+      AppMethodBeat.o(63104);
+      return;
+      k = m / (k + 1);
+      break;
+    }
+  }
+  
+  public final int aRI()
+  {
+    AppMethodBeat.i(63085);
+    if (this.jqf <= 1) {
+      this.jqf = aMu()[0];
+    }
+    int i = this.jqf;
+    AppMethodBeat.o(63085);
+    return i;
+  }
+  
+  public final int avS(String paramString)
+  {
+    AppMethodBeat.i(63083);
+    if ("TAG_DEFAULT_TAB".equals(paramString))
+    {
+      i = this.AUN;
+      AppMethodBeat.o(63083);
+      return i;
+    }
+    int i = this.AUK;
+    AppMethodBeat.o(63083);
+    return i;
+  }
+  
+  public final boolean avT(String paramString)
+  {
+    AppMethodBeat.i(63088);
+    if (this.AUZ.equals(paramString))
+    {
+      AppMethodBeat.o(63088);
+      return true;
+    }
+    AppMethodBeat.o(63088);
+    return false;
+  }
+  
+  public final com.tencent.mm.view.c.a avU(String paramString)
+  {
+    AppMethodBeat.i(63096);
+    if ((this.AVn == null) || (paramString == null))
+    {
+      ab.w("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "getTab failed.");
+      AppMethodBeat.o(63096);
+      return null;
+    }
+    Iterator localIterator = this.AVn.iterator();
+    while (localIterator.hasNext())
+    {
+      com.tencent.mm.view.c.a locala = (com.tencent.mm.view.c.a)localIterator.next();
+      if (locala == null)
+      {
+        ab.e("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "get null tab");
+      }
+      else if (locala.liu == null)
+      {
+        ab.e("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "get null tab productId");
+      }
+      else if (locala.liu.equals(paramString))
+      {
+        AppMethodBeat.o(63096);
+        return locala;
+      }
+    }
+    AppMethodBeat.o(63096);
+    return null;
+  }
+  
+  public final int dRA()
+  {
+    AppMethodBeat.i(63102);
+    if (this.AVb)
+    {
+      i = avU("TAG_DEFAULT_TAB").dRf();
+      AppMethodBeat.o(63102);
+      return i;
+    }
+    int i = this.mCN;
+    AppMethodBeat.o(63102);
+    return i;
+  }
+  
+  public final void dRB()
+  {
+    AppMethodBeat.i(63103);
+    this.mCN = 0;
+    if (this.AVn == null)
+    {
+      AppMethodBeat.o(63103);
+      return;
+    }
+    Object localObject = this.AVn.iterator();
+    int i;
+    while (((Iterator)localObject).hasNext())
+    {
+      com.tencent.mm.view.c.a locala = (com.tencent.mm.view.c.a)((Iterator)localObject).next();
+      i = this.mCN;
+      this.mCN = (locala.dRf() + i);
+    }
+    if (this.AVn != null) {}
+    for (;;)
+    {
+      try
+      {
+        this.AVk = new int[this.mCN];
+        i = 0;
+        j = 0;
+        if (i < this.AVn.size())
+        {
+          localObject = (com.tencent.mm.view.c.a)this.AVn.get(i);
+          k = 0;
+          if (k >= ((com.tencent.mm.view.c.a)localObject).dRf()) {
+            continue;
+          }
+          int m = this.mCN;
           if (j < m) {
             continue;
           }
@@ -474,12 +580,13 @@ public final class a
       {
         int j;
         int k;
-        y.printErrStackTrace("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", localException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", localException, "", new Object[0]);
         continue;
       }
-      y.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "refreshAllCount count: %d", new Object[] { Integer.valueOf(this.kih) });
+      ab.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "refreshAllCount count: %d", new Object[] { Integer.valueOf(this.mCN) });
+      AppMethodBeat.o(63103);
       return;
-      this.wzO[j] = i;
+      this.AVk[j] = i;
       k += 1;
       j += 1;
       continue;
@@ -487,126 +594,267 @@ public final class a
     }
   }
   
-  public final boolean cMd()
+  public final void dRC()
   {
-    if (this.adN == 0)
+    AppMethodBeat.i(63107);
+    if (this.AVq != null)
     {
-      int[] arrayOfInt = api();
-      if (arrayOfInt[0] >= arrayOfInt[1]) {
-        break label36;
-      }
+      ab.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "remove succeed send listener");
+      com.tencent.mm.sdk.b.a.ymk.d(this.AVq);
+      this.AVq = null;
     }
-    label36:
-    for (this.adN = 1; this.adN == 1; this.adN = 2) {
-      return true;
-    }
-    return false;
+    AppMethodBeat.o(63107);
   }
   
-  public final void cMe()
+  public final void dRD()
   {
-    if (this.wzU != null)
-    {
-      y.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "remove succeed send listener");
-      com.tencent.mm.sdk.b.a.udP.d(this.wzU);
-      this.wzU = null;
-    }
-  }
-  
-  public final void cMf()
-  {
+    AppMethodBeat.i(63109);
     long l = System.currentTimeMillis();
-    if (this.wzS == null) {
-      this.wzS = new HashMap();
+    if (this.AVo == null) {
+      this.AVo = new HashMap();
     }
-    this.wzS.clear();
-    Object localObject = ((com.tencent.mm.plugin.emoji.b.d)g.t(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().aHm();
-    if ((localObject != null) && (((bsl)localObject).tIZ != null) && (!((bsl)localObject).tIZ.isEmpty()))
+    this.AVo.clear();
+    Object localObject = ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().blb();
+    if ((localObject != null) && (((cda)localObject).xND != null) && (!((cda)localObject).xND.isEmpty()))
     {
-      localObject = ((bsl)localObject).tIZ.iterator();
+      localObject = ((cda)localObject).xND.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        bsm localbsm = (bsm)((Iterator)localObject).next();
-        this.wzS.put(localbsm.syc, Integer.valueOf(localbsm.sAr));
+        cdb localcdb = (cdb)((Iterator)localObject).next();
+        this.AVo.put(localcdb.ProductID, Integer.valueOf(localcdb.wux));
       }
     }
-    y.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "restore smiley tab map use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ab.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "restore smiley tab map use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(63109);
   }
   
-  public final void cMg()
+  public final void dRE()
   {
+    AppMethodBeat.i(63110);
     long l = System.currentTimeMillis();
-    bsl localbsl = new bsl();
-    if ((this.wzS != null) && (!this.wzS.isEmpty()))
+    cda localcda = new cda();
+    if ((this.AVo != null) && (!this.AVo.isEmpty()))
     {
-      Iterator localIterator = this.wzS.keySet().iterator();
+      Iterator localIterator = this.AVo.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        bsm localbsm = new bsm();
-        localbsm.syc = str;
-        localbsm.sAr = ((Integer)this.wzS.get(str)).intValue();
-        localbsl.tIZ.add(localbsm);
+        cdb localcdb = new cdb();
+        localcdb.ProductID = str;
+        localcdb.wux = ((Integer)this.AVo.get(str)).intValue();
+        localcda.xND.add(localcdb);
       }
-      ((com.tencent.mm.plugin.emoji.b.d)g.t(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().a(localbsl);
+      ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().a(localcda);
     }
-    y.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "save Smiley TabMap use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ab.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "save Smiley TabMap use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(63110);
   }
   
-  public final boolean cMh()
+  public final boolean dRF()
   {
-    return (this.wzT != null) && (this.wzT.size() >= 3);
+    AppMethodBeat.i(63111);
+    if ((this.AVp != null) && (this.AVp.size() >= 3))
+    {
+      AppMethodBeat.o(63111);
+      return true;
+    }
+    AppMethodBeat.o(63111);
+    return false;
   }
   
-  public final void cMi()
+  public final void dRG()
   {
-    this.wzT = ((com.tencent.mm.plugin.emoji.b.d)g.t(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().aHv();
+    AppMethodBeat.i(63112);
+    this.AVp = ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().blf();
+    com.tencent.mm.emoji.c.b.Pa().exo = dRF();
+    AppMethodBeat.o(63112);
   }
   
-  public final void dN(String paramString, int paramInt)
+  public final boolean dRH()
   {
-    this.wzS.put(paramString, Integer.valueOf(paramInt));
+    AppMethodBeat.i(156835);
+    boolean bool = RR(this.mScene);
+    AppMethodBeat.o(156835);
+    return bool;
+  }
+  
+  public final int dRs()
+  {
+    return this.AUK;
+  }
+  
+  public final void dRt()
+  {
+    AppMethodBeat.i(63089);
+    if (bo.isNullOrNil(this.AUZ))
+    {
+      AppMethodBeat.o(63089);
+      return;
+    }
+    if (this.AVb)
+    {
+      AppMethodBeat.o(63089);
+      return;
+    }
+    ab.i("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "save product Id:%s selected index:%d", new Object[] { this.AUZ, Integer.valueOf(this.AVa) });
+    com.tencent.mm.ca.a.dqM();
+    a.b localb = com.tencent.mm.ca.a.yiH;
+    a.b.aoG(this.AUZ);
+    AppMethodBeat.o(63089);
+  }
+  
+  public final void dRu()
+  {
+    AppMethodBeat.i(63090);
+    if (this.AVb)
+    {
+      if (!this.AUZ.equals("TAG_DEFAULT_TAB"))
+      {
+        this.AUZ = "TAG_DEFAULT_TAB";
+        this.AVa = bo.a((Integer)this.AVo.get(this.AUZ), 0);
+      }
+      AppMethodBeat.o(63090);
+      return;
+    }
+    com.tencent.mm.ca.a.dqM();
+    a.b localb = com.tencent.mm.ca.a.yiH;
+    this.AUZ = a.b.bI(-29414086, "TAG_DEFAULT_TAB");
+    this.AVa = bo.a((Integer)this.AVo.get(this.AUZ), 0);
+    ab.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "restoreShowProductId product id: %s selected index:%d", new Object[] { this.AUZ, Integer.valueOf(this.AVa) });
+    AppMethodBeat.o(63090);
+  }
+  
+  public final int dRv()
+  {
+    int j = 0;
+    AppMethodBeat.i(63091);
+    if (ChatFooterPanel.vQp == this.mScene) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Object localObject = com.tencent.mm.emoji.a.d.Oz().ch(bool);
+      if ((!bo.isNullOrNil(this.vVU)) && ((ad.arf(this.vVU)) || (t.nK(this.vVU))))
+      {
+        localObject = ((ArrayList)localObject).iterator();
+        for (;;)
+        {
+          i = j;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          EmojiInfo localEmojiInfo = (EmojiInfo)((Iterator)localObject).next();
+          if ((localEmojiInfo != null) && (localEmojiInfo.field_catalog == EmojiGroupInfo.yPf)) {
+            j += 1;
+          }
+        }
+      }
+      int i = ((ArrayList)localObject).size();
+      j = i;
+      if (RS(this.mScene)) {
+        j = i + 1;
+      }
+      AppMethodBeat.o(63091);
+      return j;
+    }
+  }
+  
+  public final boolean dRy()
+  {
+    AppMethodBeat.i(63095);
+    com.tencent.mm.ca.a.dqM();
+    a.b localb = com.tencent.mm.ca.a.yiH;
+    if ((a.b.MV(66832)) && (!this.AVh))
+    {
+      AppMethodBeat.o(63095);
+      return true;
+    }
+    AppMethodBeat.o(63095);
+    return false;
+  }
+  
+  public final com.tencent.mm.view.c.a dRz()
+  {
+    AppMethodBeat.i(63098);
+    com.tencent.mm.view.c.a locala = avU(this.AUZ);
+    AppMethodBeat.o(63098);
+    return locala;
+  }
+  
+  public final void eX(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(63087);
+    this.AVo.put(paramString, Integer.valueOf(paramInt));
+    AppMethodBeat.o(63087);
   }
   
   public final int getColumnWidth()
   {
     int j = 4;
+    AppMethodBeat.i(63108);
     int i;
-    if (this.vWJ == 0)
+    if (this.AoR == 0)
     {
-      i = cLU() / this.wzq;
-      if (!cMd()) {
-        break label51;
+      i = aRI() / this.AUL;
+      if (!x.gN(this.zF)) {
+        break label76;
       }
       if (i <= 4) {
-        break label48;
+        break label73;
       }
       i = j;
     }
-    label48:
-    label51:
+    label73:
+    label76:
     for (;;)
     {
-      this.vWJ = (cLU() / i);
-      return this.vWJ;
+      j = i;
+      if (i <= 0) {
+        j = 1;
+      }
+      this.AoR = (aRI() / j);
+      i = this.AoR;
+      AppMethodBeat.o(63108);
+      return i;
     }
   }
   
   public final void onPause()
   {
-    this.wzK = false;
-    cLV();
-    cMg();
-    cMe();
-    ((com.tencent.mm.plugin.emoji.b.d)g.t(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().aHw();
+    AppMethodBeat.i(63079);
+    this.AHW = false;
+    dRt();
+    dRE();
+    dRC();
+    ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().blg();
+    AppMethodBeat.o(63079);
   }
   
   public final void setShowProductId(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(63086);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(63086);
       return;
     }
-    this.wzD = paramString;
+    this.AUZ = paramString;
+    AppMethodBeat.o(63086);
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(63077);
+      AVt = new a("RECOMMEND", 0);
+      AVu = new a("DEFAULT", 1);
+      AVv = new a("CUSTOM", 2);
+      AVw = new a("CAPTURE", 3);
+      AVx = new a("STORE", 4);
+      AVy = new a[] { AVt, AVu, AVv, AVw, AVx };
+      AppMethodBeat.o(63077);
+    }
+    
+    private a() {}
   }
 }
 

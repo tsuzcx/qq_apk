@@ -2,8 +2,9 @@ package com.tencent.mm.ui.chatting.gallery;
 
 import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.mm.as.a.c.i;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.c.i;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class d$1
   implements i
@@ -12,7 +13,9 @@ final class d$1
   
   public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
   {
-    ai.d(new d.1.1(this));
+    AppMethodBeat.i(32021);
+    al.d(new d.1.1(this));
+    AppMethodBeat.o(32021);
   }
 }
 

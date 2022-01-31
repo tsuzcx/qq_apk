@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract interface m
 {
-  public abstract void i(View paramView, int paramInt1, int paramInt2);
+  public abstract void q(View paramView, int paramInt1, int paramInt2);
 }
 
 

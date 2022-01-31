@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:background="@color/a6r" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/a8e" android:paddingRight="@dimen/m1" android:paddingBottom="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.downloader_app.ui.TaskHeaderView android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:id="@id/b3u" android:background="@color/kj" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/a6x" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
-            <TextView android:textSize="@dimen/a0y" android:textStyle="bold" android:textColor="@color/q5" android:id="@id/aen" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="下载更新" android:layout_weight="1.0" />
-            <TextView android:textSize="@dimen/a0y" android:textColor="@color/a1x" android:id="@id/aes" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/b2d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2">
+        <ImageView android:layout_gravity="center" android:id="@id/z2" android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" android:src="@drawable/adb" android:scaleType="fitXY" android:layout_centerInParent="true" />
+        <View android:id="@id/b4y" android:background="@drawable/ec" android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" android:layout_centerInParent="true" android:contentDescription="@string/xq" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/b2d" android:layout_alignTop="@id/b2d">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/fu">
+            <TextView android:textSize="@dimen/kp" android:textColor="@color/h9" android:ellipsize="end" android:id="@id/z3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick_name}" style="@style/lg" />
         </LinearLayout>
-    </com.tencent.mm.plugin.downloader_app.ui.TaskHeaderView>
-</LinearLayout>
+        <TextView android:textColor="@color/ln" android:id="@id/b4z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{user_name}" style="@style/lg" />
+    </LinearLayout>
+    <ImageView android:id="@id/b50" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/star_mark" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

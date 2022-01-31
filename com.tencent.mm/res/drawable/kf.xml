@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<inset android:insetLeft="@dimen/mq" android:insetRight="@dimen/mq"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <shape>
-        <solid android:color="@color/qp" />
-    </shape>
-</inset>

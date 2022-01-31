@@ -5,78 +5,92 @@ import android.media.AudioManager;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mm.plugin.websearch.ui.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.websearch.ui.a;
 
 public final class k
 {
-  int Cv = 0;
-  float gCn = 0.0F;
-  View gES;
-  private GestureDetector gEU;
-  private float gEW = 0.0F;
-  int gEX = -1;
-  int gEY = 0;
-  Runnable gEZ = new k.1(this);
+  int De;
+  float iaW;
+  View idW;
+  private GestureDetector idY;
+  private float iea;
+  int ieb;
+  int iec;
+  Runnable ied;
   Context mContext;
-  k.a pFB = k.a.pFG;
-  c pFC;
-  boolean pFD;
-  boolean pFE;
+  k.a tja;
+  c tjb;
+  boolean tjc;
+  boolean tjd;
   
   public k(Context paramContext, View paramView, c paramc)
   {
+    AppMethodBeat.i(1739);
+    this.tja = k.a.tjf;
+    this.iaW = 0.0F;
+    this.De = 0;
+    this.iea = 0.0F;
+    this.ieb = -1;
+    this.iec = 0;
+    this.ied = new k.1(this);
     this.mContext = paramContext;
-    this.pFC = paramc;
-    this.gES = paramView;
-    this.gEU = new GestureDetector(this.mContext, new k.2(this));
-    this.gCn = b.cn(paramContext);
+    this.tjb = paramc;
+    this.idW = paramView;
+    this.idY = new GestureDetector(this.mContext, new k.2(this));
+    this.iaW = a.cP(paramContext);
+    AppMethodBeat.o(1739);
   }
   
-  public final void E(MotionEvent paramMotionEvent)
+  public final void aFG()
   {
-    if (!this.pFC.bNK()) {
-      this.pFB = k.a.pFG;
-    }
-    int i;
-    do
+    this.ieb = -1;
+    this.iec = 0;
+    this.iea = 0.0F;
+  }
+  
+  public final void z(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(1740);
+    if (!this.tjb.cJx())
     {
+      this.tja = k.a.tjf;
+      AppMethodBeat.o(1740);
       return;
-      i = paramMotionEvent.getActionMasked();
-      if (i == 0)
-      {
-        this.gEW = paramMotionEvent.getRawX();
-        this.Cv = ((AudioManager)this.mContext.getSystemService("audio")).getStreamVolume(3);
-        this.gCn = b.cn(this.mContext);
-      }
-      this.gEU.onTouchEvent(paramMotionEvent);
-    } while ((i != 1) && (i != 3));
-    if (this.pFB == k.a.pFJ)
+    }
+    int i = paramMotionEvent.getActionMasked();
+    if (i == 0)
     {
-      c localc = this.pFC;
-      i = this.gEY;
+      this.iea = paramMotionEvent.getRawX();
+      this.De = ((AudioManager)this.mContext.getSystemService("audio")).getStreamVolume(3);
+      this.iaW = a.cP(this.mContext);
+    }
+    this.idY.onTouchEvent(paramMotionEvent);
+    if ((i == 1) || (i == 3))
+    {
+      if (this.tja != k.a.tji) {
+        break label160;
+      }
+      c localc = this.tjb;
+      i = this.iec;
       paramMotionEvent.getRawX();
-      localc.zz(i);
-      this.gEX = -1;
-      this.gEY = 0;
-      this.gEW = 0.0F;
+      localc.GC(i);
+      this.ieb = -1;
+      this.iec = 0;
+      this.iea = 0.0F;
     }
     for (;;)
     {
-      this.pFB = k.a.pFG;
+      this.tja = k.a.tjf;
+      AppMethodBeat.o(1740);
       return;
-      if (this.pFB == k.a.pFH) {
+      label160:
+      if (this.tja == k.a.tjg) {
         ((AudioManager)this.mContext.getSystemService("audio")).getStreamMaxVolume(3);
       } else {
-        paramMotionEvent = k.a.pFI;
+        paramMotionEvent = k.a.tjh;
       }
     }
-  }
-  
-  public final void bOl()
-  {
-    this.gEX = -1;
-    this.gEY = 0;
-    this.gEW = 0.0F;
   }
 }
 

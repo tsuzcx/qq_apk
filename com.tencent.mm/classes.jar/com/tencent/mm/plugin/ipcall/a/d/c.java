@@ -1,59 +1,71 @@
 package com.tencent.mm.plugin.ipcall.a.d;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.amj;
-import com.tencent.mm.protocal.c.amk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ary;
+import com.tencent.mm.protocal.protobuf.arz;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c
   extends m
   implements k
 {
-  private b dmK = null;
-  private f dmL = null;
-  private amj lrs = null;
-  public amk lrt = null;
+  private f callback;
+  private ary nOO;
+  public arz nOP;
+  private b rr;
   
   public c()
   {
+    AppMethodBeat.i(21842);
+    this.rr = null;
+    this.nOO = null;
+    this.nOP = null;
+    this.callback = null;
     b.a locala = new b.a();
-    locala.ecH = new amj();
-    locala.ecI = new amk();
-    locala.ecG = 746;
+    locala.fsX = new ary();
+    locala.fsY = new arz();
+    locala.funcId = 746;
     locala.uri = "/cgi-bin/micromsg-bin/getwcocallinfo";
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    this.lrs = ((amj)this.dmK.ecE.ecN);
-    y.i("MicroMsg.NetSceneIPCallGetCallInfo", "NetSceneIPCallGetCallInfo");
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    this.nOO = ((ary)this.rr.fsV.fta);
+    ab.i("MicroMsg.NetSceneIPCallGetCallInfo", "NetSceneIPCallGetCallInfo");
+    AppMethodBeat.o(21842);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneIPCallGetCallInfo", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.lrt = ((amk)((b)paramq).ecF.ecN);
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
+    AppMethodBeat.i(21843);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(21843);
+    return i;
   }
   
   public final int getType()
   {
     return 746;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(21844);
+    ab.i("MicroMsg.NetSceneIPCallGetCallInfo", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.nOP = ((arz)((b)paramq).fsW.fta);
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(21844);
   }
 }
 

@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.h.a.so;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ug;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.account.friend.ui.i.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.ui.MMWizardActivity;
 
 final class BindMContactIntroUI$25
@@ -14,45 +15,49 @@ final class BindMContactIntroUI$25
 {
   BindMContactIntroUI$25(BindMContactIntroUI paramBindMContactIntroUI, String paramString) {}
   
-  public final void d(int paramInt, Bundle paramBundle)
+  public final void g(int paramInt, Bundle paramBundle)
   {
-    if (paramInt == 1) {
-      if (BindMContactIntroUI.f(this.fbF))
+    AppMethodBeat.i(13435);
+    if (paramInt == 2)
+    {
+      if (BindMContactIntroUI.f(this.gtw) == 1)
       {
-        if (!q.Gr())
+        if (!r.Zv())
         {
-          paramBundle = new so();
-          paramBundle.ccd.cce = true;
-          paramBundle.ccd.ccf = true;
-          com.tencent.mm.sdk.b.a.udP.m(paramBundle);
+          paramBundle = new ug();
+          paramBundle.cKJ.cKK = true;
+          paramBundle.cKJ.cKL = true;
+          com.tencent.mm.sdk.b.a.ymk.l(paramBundle);
         }
-        BindMContactIntroUI.g(this.fbF);
+        BindMContactIntroUI.g(this.gtw);
         paramBundle = new Intent();
         paramBundle.addFlags(67108864);
-        com.tencent.mm.plugin.account.a.a.eUR.c(this.fbF, paramBundle);
+        com.tencent.mm.plugin.account.a.a.gmO.e(this.gtw, paramBundle);
+        AppMethodBeat.o(13435);
+        return;
+      }
+      MMWizardActivity.J(this.gtw, new Intent(this.gtw, BindMContactStatusUI.class).putExtra("bind_scene", BindMContactIntroUI.f(this.gtw)));
+      if (BindMContactIntroUI.h(this.gtw))
+      {
+        if (BindMContactIntroUI.f(this.gtw) == 2)
+        {
+          h.qsU.e(11002, new Object[] { Integer.valueOf(3), Integer.valueOf(3) });
+          AppMethodBeat.o(13435);
+          return;
+        }
+        h.qsU.e(11002, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
+        AppMethodBeat.o(13435);
       }
     }
-    while (paramInt != 2)
+    else if (paramInt == 1)
     {
-      do
-      {
-        return;
-        MMWizardActivity.C(this.fbF, new Intent(this.fbF, BindMContactStatusUI.class).putExtra("is_bind_for_contact_sync", BindMContactIntroUI.h(this.fbF)));
-      } while (!BindMContactIntroUI.i(this.fbF));
-      if (BindMContactIntroUI.h(this.fbF))
-      {
-        h.nFQ.f(11002, new Object[] { Integer.valueOf(3), Integer.valueOf(3) });
-        return;
-      }
-      h.nFQ.f(11002, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
-      return;
+      paramBundle = new Intent(this.gtw, BindMContactVerifyUI.class);
+      paramBundle.putExtra("bindmcontact_mobile", this.gtC);
+      paramBundle.putExtra("bind_scene", BindMContactIntroUI.f(this.gtw));
+      paramBundle.putExtra("KEnterFromBanner", BindMContactIntroUI.h(this.gtw));
+      MMWizardActivity.J(this.gtw, paramBundle);
     }
-    paramBundle = new Intent(this.fbF, BindMContactVerifyUI.class);
-    paramBundle.putExtra("bindmcontact_mobile", this.fbL);
-    paramBundle.putExtra("is_bind_for_safe_device", BindMContactIntroUI.f(this.fbF));
-    paramBundle.putExtra("is_bind_for_contact_sync", BindMContactIntroUI.h(this.fbF));
-    paramBundle.putExtra("KEnterFromBanner", BindMContactIntroUI.i(this.fbF));
-    MMWizardActivity.C(this.fbF, paramBundle);
+    AppMethodBeat.o(13435);
   }
 }
 

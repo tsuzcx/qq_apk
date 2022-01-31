@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract interface h$a
 {
-  public abstract void x(ArrayList<n> paramArrayList);
+  public abstract void A(ArrayList<n> paramArrayList);
 }
 
 

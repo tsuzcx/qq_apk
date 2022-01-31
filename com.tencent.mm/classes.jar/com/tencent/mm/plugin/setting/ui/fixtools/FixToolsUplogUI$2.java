@@ -3,10 +3,9 @@ package com.tencent.mm.plugin.setting.ui.fixtools;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.s;
 
 final class FixToolsUplogUI$2
   implements View.OnClickListener
@@ -15,10 +14,12 @@ final class FixToolsUplogUI$2
   
   public final void onClick(View paramView)
   {
-    h.nFQ.a(873L, 16L, 1L, false);
-    paramView = new Intent(this.nRv.mController.uMN, FixToolsUpLogUploadingUI.class);
+    AppMethodBeat.i(126895);
+    h.qsU.idkeyStat(873L, 16L, 1L, false);
+    paramView = new Intent(this.qFt.getContext(), FixToolsUpLogUploadingUI.class);
     paramView.putExtra("date", FixToolsUplogUI.access$100());
-    MMWizardActivity.C(this.nRv, paramView);
+    MMWizardActivity.J(this.qFt, paramView);
+    AppMethodBeat.o(126895);
   }
 }
 

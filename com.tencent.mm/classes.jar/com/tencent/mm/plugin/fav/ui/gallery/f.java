@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -14,17 +13,14 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fav.ui.n.b;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.plugin.fav.ui.n.f;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yl;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acs;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -33,158 +29,198 @@ import java.util.List;
 public final class f
   extends RecyclerView.a
 {
-  private c drd = null;
-  List<f.c> heL = null;
-  g.b khF;
-  private boolean khG = true;
-  boolean khH;
-  b khI;
-  boolean khJ = false;
-  yl khf = new yl();
+  private c eiK;
+  List<c> jfV;
+  private boolean kFs;
+  boolean kFv;
+  acs mBU;
   Context mContext;
+  g.b mCp;
+  b mCq;
+  boolean mCr;
   
-  public f(Context paramContext, List<f.c> paramList, g.b paramb)
+  public f(Context paramContext, List<c> paramList, g.b paramb)
   {
-    this.heL = paramList;
-    this.khG = g.DP().isSDCardAvailable();
+    AppMethodBeat.i(74578);
+    this.jfV = null;
+    this.eiK = null;
+    this.kFs = true;
+    this.mBU = new acs();
+    this.mCr = false;
+    this.jfV = paramList;
+    this.kFs = com.tencent.mm.kernel.g.RL().isSDCardAvailable();
     this.mContext = paramContext;
-    this.khF = paramb;
+    this.mCp = paramb;
     paramList = new c.a();
-    paramList.erk = 1;
-    paramList.erF = true;
-    paramList.erm = (com.tencent.mm.cb.a.fj(paramContext) / 4);
-    paramList.erl = (com.tencent.mm.cb.a.fj(paramContext) / 4);
-    paramList.ery = n.b.pic_thum_bg_color;
-    this.drd = paramList.OV();
+    paramList.fHt = 1;
+    paramList.eOf = true;
+    paramList.eNT = (com.tencent.mm.cb.a.gw(paramContext) / 4);
+    paramList.eNS = (com.tencent.mm.cb.a.gw(paramContext) / 4);
+    paramList.eOa = 2131690341;
+    this.eiK = paramList.ahY();
+    AppMethodBeat.o(74578);
   }
   
-  private static long eM(long paramLong)
+  private static long io(long paramLong)
   {
+    AppMethodBeat.i(74584);
     Date localDate = new Date(paramLong);
-    return com.tencent.mm.ui.gridviewheaders.a.cIz().b(localDate);
+    paramLong = com.tencent.mm.ui.gridviewheaders.a.dNj().b(localDate);
+    AppMethodBeat.o(74584);
+    return paramLong;
   }
   
   public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramInt == 2147483647) {
-      return new f.a(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(n.f.fav_gallery_date_item, paramViewGroup, false));
+    AppMethodBeat.i(74580);
+    if (paramInt == 2147483647)
+    {
+      paramViewGroup = new f.a(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969534, paramViewGroup, false));
+      AppMethodBeat.o(74580);
+      return paramViewGroup;
     }
-    return new f.d(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(n.f.fav_image_gallary_grid_item, paramViewGroup, false));
+    paramViewGroup = new f.d(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969535, paramViewGroup, false));
+    AppMethodBeat.o(74580);
+    return paramViewGroup;
   }
   
   public final void a(RecyclerView.v paramv, int paramInt)
   {
-    if (!this.khG)
+    AppMethodBeat.i(74582);
+    if (!this.kFs)
     {
-      y.e("MicroMsg.MediaHistoryGalleryAdapter", "[onBindViewHolder] isSDCardAvailable:%s", new Object[] { Boolean.valueOf(this.khG) });
+      ab.e("MicroMsg.MediaHistoryGalleryAdapter", "[onBindViewHolder] isSDCardAvailable:%s", new Object[] { Boolean.valueOf(this.kFs) });
+      AppMethodBeat.o(74582);
       return;
     }
-    Object localObject2 = rf(paramInt);
-    if (paramv.aii == 2147483647)
+    Object localObject2 = wb(paramInt);
+    if (paramv.aky == 2147483647)
     {
-      if ((paramInt == getItemCount() - 1) || (eM(rf(paramInt + 1).timeStamp) != eM(((f.c)localObject2).timeStamp)))
+      if ((paramInt == getItemCount() - 1) || (io(wb(paramInt + 1).timeStamp) != io(((c)localObject2).timeStamp)))
       {
-        ((f.a)paramv).eXs.setVisibility(8);
+        ((f.a)paramv).gpp.setVisibility(8);
+        AppMethodBeat.o(74582);
         return;
       }
-      ((f.a)paramv).eXs.setVisibility(0);
-      ((f.a)paramv).eXs.setText(eL(((f.c)localObject2).timeStamp));
-      if (this.khH)
+      ((f.a)paramv).gpp.setVisibility(0);
+      ((f.a)paramv).gpp.setText(in(((c)localObject2).timeStamp));
+      if (this.kFv)
       {
-        ((f.a)paramv).frw.setVisibility(0);
+        ((f.a)paramv).progressBar.setVisibility(0);
+        AppMethodBeat.o(74582);
         return;
       }
-      ((f.a)paramv).frw.setVisibility(8);
+      ((f.a)paramv).progressBar.setVisibility(8);
+      AppMethodBeat.o(74582);
       return;
     }
-    ((f.d)paramv).khQ.setTag(n.e.fav_filter_data_pos, Integer.valueOf(paramInt));
-    ((f.d)paramv).khW.setTag(Integer.valueOf(paramInt));
-    o.ON().a(((f.c)localObject2).imagePath, ((f.d)paramv).khQ, this.drd);
-    if (((f.c)localObject2).khM)
+    ((f.d)paramv).mCy.setTag(2131820604, Integer.valueOf(paramInt));
+    ((f.d)paramv).mCD.setTag(Integer.valueOf(paramInt));
+    o.ahG().a(((c)localObject2).imagePath, ((f.d)paramv).mCy, this.eiK);
+    if (((c)localObject2).mCu)
     {
-      ((f.d)paramv).khR.setVisibility(0);
-      ((f.d)paramv).khS.setVisibility(0);
-      ((f.d)paramv).khS.setText(bk.aM(((f.c)localObject2).khN.khO, ""));
-      ((f.d)paramv).khQ.getViewTreeObserver().addOnGlobalLayoutListener(new f.1(this, paramv));
-      if (!this.khJ) {
+      ((f.d)paramv).mCz.setVisibility(0);
+      ((f.d)paramv).kFj.setVisibility(0);
+      ((f.d)paramv).kFj.setText(bo.bf(((c)localObject2).mCv.mCw, ""));
+      ((f.d)paramv).mCy.getViewTreeObserver().addOnGlobalLayoutListener(new f.1(this, paramv));
+      if (!this.mCr) {
+        break label494;
+      }
+      ((f.d)paramv).mCD.setVisibility(0);
+      ((f.d)paramv).mCC.setVisibility(0);
+      Object localObject1 = e.a.bym();
+      localObject2 = ((c)localObject2).mCt;
+      if (localObject2 == null) {
         break label460;
       }
-      ((f.d)paramv).khW.setVisibility(0);
-      ((f.d)paramv).khV.setVisibility(0);
-      Object localObject1 = e.a.aRT();
-      localObject2 = ((f.c)localObject2).khL;
-      if (localObject2 == null) {
-        break label431;
-      }
-      localObject1 = ((e)localObject1).khB.iterator();
+      localObject1 = ((e)localObject1).mCl.iterator();
       do
       {
         if (!((Iterator)localObject1).hasNext()) {
           break;
         }
-      } while (!((d)((Iterator)localObject1).next()).bNH.kgC.equals(((d)localObject2).bNH.kgC));
+      } while (!((d)((Iterator)localObject1).next()).cuZ.mBq.equals(((d)localObject2).cuZ.mBq));
     }
-    label431:
+    label460:
     for (paramInt = 1;; paramInt = 0)
     {
       if (paramInt == 0) {
-        break label436;
+        break label465;
       }
-      ((f.d)paramv).khT.setVisibility(0);
-      ((f.d)paramv).khV.setChecked(true);
+      ((f.d)paramv).mCA.setVisibility(0);
+      ((f.d)paramv).mCC.setChecked(true);
+      AppMethodBeat.o(74582);
       return;
-      ((f.d)paramv).khS.setVisibility(8);
-      ((f.d)paramv).khR.setVisibility(8);
+      ((f.d)paramv).kFj.setVisibility(8);
+      ((f.d)paramv).mCz.setVisibility(8);
       break;
     }
-    label436:
-    ((f.d)paramv).khT.setVisibility(8);
-    ((f.d)paramv).khV.setChecked(false);
+    label465:
+    ((f.d)paramv).mCA.setVisibility(8);
+    ((f.d)paramv).mCC.setChecked(false);
+    AppMethodBeat.o(74582);
     return;
-    label460:
-    ((f.d)paramv).khT.setVisibility(8);
-    ((f.d)paramv).khW.setVisibility(8);
-    ((f.d)paramv).khV.setVisibility(8);
+    label494:
+    ((f.d)paramv).mCA.setVisibility(8);
+    ((f.d)paramv).mCD.setVisibility(8);
+    ((f.d)paramv).mCC.setVisibility(8);
+    AppMethodBeat.o(74582);
   }
   
   public final void a(RecyclerView.v paramv, int paramInt, List paramList)
   {
+    AppMethodBeat.i(74581);
     if ((paramList != null) && (paramList.size() > 0) && ((paramv instanceof f.d)))
     {
       if (((Integer)paramList.get(0)).intValue() == 0)
       {
-        ((f.d)paramv).khV.setChecked(false);
-        ((f.d)paramv).khV.setVisibility(0);
-        ((f.d)paramv).khW.setVisibility(0);
+        ((f.d)paramv).mCC.setChecked(false);
+        ((f.d)paramv).mCC.setVisibility(0);
+        ((f.d)paramv).mCD.setVisibility(0);
+        AppMethodBeat.o(74581);
         return;
       }
-      ((f.d)paramv).khV.setChecked(false);
-      ((f.d)paramv).khV.setVisibility(8);
-      ((f.d)paramv).khW.setVisibility(8);
+      ((f.d)paramv).mCC.setChecked(false);
+      ((f.d)paramv).mCC.setVisibility(8);
+      ((f.d)paramv).mCD.setVisibility(8);
+      AppMethodBeat.o(74581);
       return;
     }
     super.a(paramv, paramInt, paramList);
-  }
-  
-  public final String eL(long paramLong)
-  {
-    Date localDate = new Date(paramLong);
-    return com.tencent.mm.ui.gridviewheaders.a.cIz().a(localDate, this.mContext);
+    AppMethodBeat.o(74581);
   }
   
   public final int getItemCount()
   {
-    return this.heL.size();
+    AppMethodBeat.i(74585);
+    int i = this.jfV.size();
+    AppMethodBeat.o(74585);
+    return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    return rf(paramInt).type;
+    AppMethodBeat.i(74579);
+    paramInt = wb(paramInt).type;
+    AppMethodBeat.o(74579);
+    return paramInt;
   }
   
-  public final f.c rf(int paramInt)
+  public final String in(long paramLong)
   {
-    return (f.c)this.heL.get(paramInt);
+    AppMethodBeat.i(74583);
+    Object localObject = new Date(paramLong);
+    localObject = com.tencent.mm.ui.gridviewheaders.a.dNj().a((Date)localObject, this.mContext);
+    AppMethodBeat.o(74583);
+    return localObject;
+  }
+  
+  public final c wb(int paramInt)
+  {
+    AppMethodBeat.i(74586);
+    c localc = (c)this.jfV.get(paramInt);
+    AppMethodBeat.o(74586);
+    return localc;
   }
   
   public static abstract interface b
@@ -192,11 +228,64 @@ public final class f
     public abstract void a(boolean paramBoolean, f.c paramc, int paramInt);
   }
   
-  final class c$a
+  public static final class c
   {
-    public String khO;
+    public String imagePath;
+    public d mCt;
+    boolean mCu;
+    public a mCv;
+    public long timeStamp;
+    public int type;
     
-    c$a() {}
+    public c(d paramd)
+    {
+      AppMethodBeat.i(74568);
+      this.type = 0;
+      this.mCv = new a();
+      this.mCt = paramd;
+      Object localObject;
+      if ((paramd.byj()) || (paramd.byk())) {
+        localObject = com.tencent.mm.plugin.fav.a.b.c(paramd.cuZ);
+      }
+      for (;;)
+      {
+        this.imagePath = ((String)localObject);
+        this.timeStamp = paramd.mCk.field_updateTime;
+        if ((paramd.byj()) || (paramd.byk()))
+        {
+          this.mCu = true;
+          this.mCv.mCw = bo.mH(paramd.cuZ.duration);
+        }
+        AppMethodBeat.o(74568);
+        return;
+        String str = com.tencent.mm.plugin.fav.a.b.b(paramd.cuZ);
+        localObject = str;
+        if (!new com.tencent.mm.vfs.b(str).exists()) {
+          localObject = com.tencent.mm.plugin.fav.a.b.c(paramd.cuZ);
+        }
+      }
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(74567);
+      if ((this.mCt != null) && ((paramObject instanceof d)) && (paramObject != null))
+      {
+        bool = this.mCt.cuZ.mBq.equals(((d)paramObject).cuZ.mBq);
+        AppMethodBeat.o(74567);
+        return bool;
+      }
+      boolean bool = super.equals(paramObject);
+      AppMethodBeat.o(74567);
+      return bool;
+    }
+    
+    final class a
+    {
+      public String mCw;
+      
+      a() {}
+    }
   }
 }
 

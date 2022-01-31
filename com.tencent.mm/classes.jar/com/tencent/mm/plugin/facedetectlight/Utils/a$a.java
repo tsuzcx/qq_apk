@@ -3,11 +3,12 @@ package com.tencent.mm.plugin.facedetectlight.Utils;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class a$a
+final class a$a
   implements SensorEventListener
 {
-  private float jXf;
+  private float mrw;
   
   private a$a(a parama) {}
   
@@ -15,9 +16,11 @@ public final class a$a
   
   public final void onSensorChanged(SensorEvent paramSensorEvent)
   {
+    AppMethodBeat.i(749);
     if (paramSensorEvent.sensor.getType() == 5) {
-      this.jXf = paramSensorEvent.values[0];
+      this.mrw = paramSensorEvent.values[0];
     }
+    AppMethodBeat.o(749);
   }
 }
 

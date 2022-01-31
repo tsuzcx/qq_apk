@@ -2,7 +2,8 @@ package com.tencent.mm.ui.conversation;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class NewBizConversationUI$11
   implements MenuItem.OnMenuItemClickListener
@@ -11,10 +12,12 @@ final class NewBizConversationUI$11
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = new d(this.vTG, 1, false);
-    paramMenuItem.phH = new NewBizConversationUI.11.1(this);
-    paramMenuItem.phI = new NewBizConversationUI.11.2(this);
-    paramMenuItem.cfU();
+    AppMethodBeat.i(34546);
+    paramMenuItem = new d(this.AlC, 1, false);
+    paramMenuItem.sao = new NewBizConversationUI.11.1(this);
+    paramMenuItem.sap = new NewBizConversationUI.11.2(this);
+    paramMenuItem.crd();
+    AppMethodBeat.o(34546);
     return true;
   }
 }

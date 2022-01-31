@@ -1,27 +1,27 @@
 package com.tencent.mm.modelmulti;
 
 import android.os.HandlerThread;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.m.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.m.b;
 import com.tencent.mm.compatible.util.g.a;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.ayx;
-import com.tencent.mm.protocal.c.ayy;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.r.a;
-import com.tencent.mm.protocal.r.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.bga;
+import com.tencent.mm.protocal.protobuf.bgb;
+import com.tencent.mm.protocal.s.a;
+import com.tencent.mm.protocal.s.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
+import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.Queue;
 import junit.framework.Assert;
@@ -30,173 +30,209 @@ public final class e
   extends m
   implements k
 {
-  f dmL;
-  private final am ebj = new am(com.tencent.mm.kernel.g.DS().mnU.getLooper(), new e.1(this), true);
-  final Queue<e.a> emr = new LinkedList();
-  com.tencent.mm.ah.g eoM = null;
-  int esA = 0;
-  int esB = 0;
-  boolean esC = false;
-  g.a esm;
-  private StringBuilder esn = new StringBuilder();
-  final ayx esx = new ayx();
-  int esy = 0;
-  boolean esz = false;
-  private int retryCount = 3;
+  f callback;
+  g.a eMo;
+  final Queue<e.a> fCO;
+  private StringBuilder fIa;
+  WeakReference<com.tencent.mm.ai.g> fIj;
+  final bga fIk;
+  int fIl;
+  boolean fIm;
+  int fIn;
+  int fIo;
+  boolean fIp;
+  private final ap frx;
+  private int retryCount;
   
-  public e(com.tencent.mm.ah.g paramg)
+  public e(com.tencent.mm.ai.g paramg)
   {
-    y.i("MicroMsg.NetSceneInit.dkInit", "NetSceneInit hash:%d stack:%s", new Object[] { Integer.valueOf(hashCode()), bk.csb() });
-    this.esn.append("stack:" + bk.csb() + " time:" + bk.UX());
-    this.eoM = paramg;
+    AppMethodBeat.i(58362);
+    this.fIj = null;
+    this.fIk = new bga();
+    this.fIa = new StringBuilder();
+    this.fIl = 0;
+    this.fIm = false;
+    this.fIn = 0;
+    this.fIo = 0;
+    this.retryCount = 3;
+    this.fIp = false;
+    this.fCO = new LinkedList();
+    this.frx = new ap(com.tencent.mm.kernel.g.RO().oNc.getLooper(), new e.1(this), true);
+    ab.i("MicroMsg.NetSceneInit.dkInit", "NetSceneInit hash:%d stack:%s", new Object[] { Integer.valueOf(hashCode()), bo.dtY() });
+    this.fIa.append("stack:" + bo.dtY() + " time:" + bo.aox());
+    this.fIj = new WeakReference(paramg);
+    AppMethodBeat.o(58362);
   }
   
-  private int a(com.tencent.mm.network.e parame, bmk parambmk1, bmk parambmk2)
+  private int a(com.tencent.mm.network.e parame, SKBuiltinBuffer_t paramSKBuiltinBuffer_t1, SKBuiltinBuffer_t paramSKBuiltinBuffer_t2)
   {
-    this.esn.append(" lastd:" + this.edd + " dotime:" + bk.UX() + " net:" + aq.getNetType(ae.getContext()));
+    AppMethodBeat.i(58364);
+    this.fIa.append(" lastd:" + this.lastdispatch + " dotime:" + bo.aox() + " net:" + at.getNetType(ah.getContext()));
     e.b localb = new e.b();
-    bmk localbmk = parambmk1;
-    if (parambmk1 == null)
+    SKBuiltinBuffer_t localSKBuiltinBuffer_t = paramSKBuiltinBuffer_t1;
+    if (paramSKBuiltinBuffer_t1 == null)
     {
-      com.tencent.mm.kernel.g.DQ();
-      localbmk = aa.I(bk.ZM(bk.pm((String)com.tencent.mm.kernel.g.DP().Dz().get(8197, null))));
+      com.tencent.mm.kernel.g.RM();
+      localSKBuiltinBuffer_t = com.tencent.mm.platformtools.aa.ac(bo.apQ(bo.nullAsNil((String)com.tencent.mm.kernel.g.RL().Ru().get(8197, null))));
     }
-    parambmk1 = parambmk2;
-    if (parambmk2 == null)
+    paramSKBuiltinBuffer_t1 = paramSKBuiltinBuffer_t2;
+    if (paramSKBuiltinBuffer_t2 == null)
     {
-      com.tencent.mm.kernel.g.DQ();
-      parambmk1 = aa.I(bk.ZM(bk.pm((String)com.tencent.mm.kernel.g.DP().Dz().get(8198, null))));
+      com.tencent.mm.kernel.g.RM();
+      paramSKBuiltinBuffer_t1 = com.tencent.mm.platformtools.aa.ac(bo.apQ(bo.nullAsNil((String)com.tencent.mm.kernel.g.RL().Ru().get(8198, null))));
     }
-    com.tencent.mm.kernel.g.DQ();
-    if ((bk.g((Integer)com.tencent.mm.kernel.g.DP().Dz().get(16, null)) != 0) && ((localbmk == null) || (localbmk.tFK <= 0))) {
-      localb.Kv().spI = 7;
+    com.tencent.mm.kernel.g.RM();
+    if ((bo.g((Integer)com.tencent.mm.kernel.g.RL().Ru().get(16, null)) != 0) && ((localSKBuiltinBuffer_t == null) || (localSKBuiltinBuffer_t.getILen() <= 0))) {
+      localb.getReqObj().setSceneStatus(7);
     }
     for (;;)
     {
-      this.esx.tuH = localbmk;
-      this.esx.tuI = parambmk1;
-      ((r.a)localb.Kv()).sqg = this.esx;
-      y.i("MicroMsg.NetSceneInit.dkInit", "doScene hash:%d time:%d count:%d user%s lan:%s status:%d cur[%s] max[%s]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.esm.zJ()), Integer.valueOf(this.esy), this.esx.hPY, this.esx.jxi, Integer.valueOf(localb.Kv().spI), bk.bG(aa.a(localbmk)), bk.bG(aa.a(parambmk1)) });
-      this.esy += 1;
-      return a(parame, localb, this);
-      com.tencent.mm.kernel.g.DQ();
-      if (bk.pm((String)com.tencent.mm.kernel.g.DP().Dz().get(8195, null)).length() <= 0) {
-        localb.Kv().spI = 3;
+      this.fIk.xuQ = localSKBuiltinBuffer_t;
+      this.fIk.xuR = paramSKBuiltinBuffer_t1;
+      ((s.a)localb.getReqObj()).wiK = this.fIk;
+      ab.i("MicroMsg.NetSceneInit.dkInit", "doScene hash:%d time:%d count:%d user%s lan:%s status:%d cur[%s] max[%s]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.eMo.Mm()), Integer.valueOf(this.fIl), this.fIk.jJA, this.fIk.lGH, Integer.valueOf(localb.getReqObj().getSceneStatus()), bo.cg(com.tencent.mm.platformtools.aa.a(localSKBuiltinBuffer_t)), bo.cg(com.tencent.mm.platformtools.aa.a(paramSKBuiltinBuffer_t1)) });
+      this.fIl += 1;
+      int i = dispatch(parame, localb, this);
+      AppMethodBeat.o(58364);
+      return i;
+      com.tencent.mm.kernel.g.RM();
+      if (bo.nullAsNil((String)com.tencent.mm.kernel.g.RL().Ru().get(8195, null)).length() <= 0) {
+        localb.getReqObj().setSceneStatus(3);
       } else {
-        localb.Kv().spI = 4;
+        localb.getReqObj().setSceneStatus(4);
       }
     }
   }
   
-  private void a(int paramInt1, int paramInt2, int paramInt3, String paramString, ayy paramayy)
+  private void a(int paramInt1, int paramInt2, int paramInt3, String paramString, bgb parambgb)
   {
+    AppMethodBeat.i(58367);
     e.a locala = new e.a(this);
-    locala.esH = paramInt1;
+    locala.fIu = paramInt1;
     locala.errCode = paramInt3;
     locala.errType = paramInt2;
-    locala.aox = paramString;
-    locala.esG = paramayy;
-    this.emr.add(locala);
-    if (this.ebj.crl()) {
-      this.ebj.S(50L, 50L);
+    locala.errMsg = paramString;
+    locala.fIt = parambgb;
+    this.fCO.add(locala);
+    if (this.frx.dtj()) {
+      this.frx.ag(50L, 50L);
     }
+    AppMethodBeat.o(58367);
   }
   
-  protected final int Ka()
+  public final void cancel()
   {
-    return 500;
+    AppMethodBeat.i(58366);
+    ab.w("MicroMsg.NetSceneInit.dkInit", "init cancel by :%s", new Object[] { bo.dtY() });
+    super.cancel();
+    this.fIp = true;
+    AppMethodBeat.o(58366);
   }
   
-  public final boolean Kx()
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    return true;
-  }
-  
-  public final boolean Ky()
-  {
-    return super.Ky();
-  }
-  
-  public final int a(com.tencent.mm.network.e parame, f paramf)
-  {
-    this.esm = new g.a();
-    this.dmL = paramf;
-    paramf = this.esx;
-    com.tencent.mm.kernel.g.DQ();
-    paramf.hPY = ((String)com.tencent.mm.kernel.g.DP().Dz().get(2, null));
-    if (!bk.bl(this.esx.hPY)) {}
+    AppMethodBeat.i(58363);
+    this.eMo = new g.a();
+    this.callback = paramf;
+    paramf = this.fIk;
+    com.tencent.mm.kernel.g.RM();
+    paramf.jJA = ((String)com.tencent.mm.kernel.g.RL().Ru().get(2, null));
+    if (!bo.isNullOrNil(this.fIk.jJA)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("by DK: req.UserName is null", bool);
-      this.esx.jxi = x.cqJ();
-      return a(parame, null, null);
+      this.fIk.lGH = com.tencent.mm.sdk.platformtools.aa.dsG();
+      int i = a(parame, null, null);
+      AppMethodBeat.o(58363);
+      return i;
     }
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    this.esn.append(" endtime:" + bk.UX());
-    y.i("MicroMsg.NetSceneInit.dkInit", "summerinit onGYNetEnd [%d, %d, %s], tid:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(paramInt1) });
-    if ((paramInt2 == 4) && (paramInt3 == -100))
-    {
-      y.e("MicroMsg.NetSceneInit.dkInit", "onGYNetEnd ERROR hash:%d [%d,%d] KICK OUT : %s", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-      this.esC = true;
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    label259:
-    do
-    {
-      do
-      {
-        return;
-        if (((paramInt2 == 0) && (paramInt3 == 0)) || ((paramInt2 == 4) && (paramInt3 == -17))) {
-          break label259;
-        }
-        y.e("MicroMsg.NetSceneInit.dkInit", "onGYNetEnd ERROR retry:%d hash:%d [%d,%d] %s", new Object[] { Integer.valueOf(this.retryCount), Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-        if (this.retryCount <= 0) {
-          break;
-        }
-        this.retryCount -= 1;
-      } while (a(this.edc, null, null) != -1);
-      this.esC = true;
-      this.dmL.onSceneEnd(3, -1, "", this);
-      return;
-      paramq = ((r.b)paramq.HF()).sqh;
-      this.esA += paramq.tuK;
-      y.i("MicroMsg.NetSceneInit.dkInit", "onGYNetEnd hash:%d [%d,%d] time:%d cmdSum:%d doscenecount:%d conFlag:%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(this.esm.zJ()), Integer.valueOf(this.esA), Integer.valueOf(this.esy), Integer.valueOf(paramq.sFD) });
-      a(this.esy - 1, paramInt2, paramInt3, paramString, paramq);
-      if (((paramq.sFD & 0x7) == 0) || (super.Ky())) {
-        break;
-      }
-    } while (a(this.edc, paramq.tuH, paramq.tuI) != -1);
-    y.e("MicroMsg.NetSceneInit.dkInit", "doScene Failed stop init");
-    a(2147483647, 3, -1, "", null);
-    return;
-    y.i("MicroMsg.NetSceneInit.dkInit", "NETWORK FINISH onGYNetEnd hash:%d time:%d netCnt:%d", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.esm.zJ()), Integer.valueOf(this.esy) });
-    this.esz = true;
-    a(2147483647, 0, 0, "", null);
-  }
-  
-  protected final m.b b(q paramq)
-  {
-    return m.b.edr;
-  }
-  
-  protected final void cancel()
-  {
-    y.w("MicroMsg.NetSceneInit.dkInit", "init cancel by :%s", new Object[] { bk.csb() });
-    super.cancel();
-    this.esC = true;
   }
   
   public final String getInfo()
   {
-    return this.esn.toString();
+    AppMethodBeat.i(58368);
+    String str = this.fIa.toString();
+    AppMethodBeat.o(58368);
+    return str;
   }
   
   public final int getType()
   {
     return 139;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(58365);
+    this.fIa.append(" endtime:" + bo.aox());
+    ab.i("MicroMsg.NetSceneInit.dkInit", "summerinit onGYNetEnd [%d, %d, %s], tid:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(paramInt1) });
+    if ((paramInt2 == 4) && (paramInt3 == -100))
+    {
+      ab.e("MicroMsg.NetSceneInit.dkInit", "onGYNetEnd ERROR hash:%d [%d,%d] KICK OUT : %s", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+      this.fIp = true;
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(58365);
+      return;
+    }
+    if (((paramInt2 != 0) || (paramInt3 != 0)) && ((paramInt2 != 4) || (paramInt3 != -17)))
+    {
+      ab.e("MicroMsg.NetSceneInit.dkInit", "onGYNetEnd ERROR retry:%d hash:%d [%d,%d] %s", new Object[] { Integer.valueOf(this.retryCount), Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+      if (this.retryCount > 0)
+      {
+        this.retryCount -= 1;
+        if (a(dispatcher(), null, null) != -1) {}
+      }
+      else
+      {
+        this.fIp = true;
+        this.callback.onSceneEnd(3, -1, "", this);
+      }
+      AppMethodBeat.o(58365);
+      return;
+    }
+    paramq = ((s.b)paramq.getRespObj()).wiL;
+    this.fIn += paramq.xuT;
+    ab.i("MicroMsg.NetSceneInit.dkInit", "onGYNetEnd hash:%d [%d,%d] time:%d cmdSum:%d doscenecount:%d conFlag:%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(this.eMo.Mm()), Integer.valueOf(this.fIn), Integer.valueOf(this.fIl), Integer.valueOf(paramq.wBX) });
+    a(this.fIl - 1, paramInt2, paramInt3, paramString, paramq);
+    if (((paramq.wBX & 0x7) != 0) && (!securityLimitCountReach()))
+    {
+      if (a(dispatcher(), paramq.xuQ, paramq.xuR) == -1)
+      {
+        ab.e("MicroMsg.NetSceneInit.dkInit", "doScene Failed stop init");
+        a(2147483647, 3, -1, "", null);
+        AppMethodBeat.o(58365);
+      }
+    }
+    else
+    {
+      ab.i("MicroMsg.NetSceneInit.dkInit", "NETWORK FINISH onGYNetEnd hash:%d time:%d netCnt:%d", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.eMo.Mm()), Integer.valueOf(this.fIl) });
+      this.fIm = true;
+      a(2147483647, 0, 0, "", null);
+    }
+    AppMethodBeat.o(58365);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 500;
+  }
+  
+  public final boolean securityLimitCountReach()
+  {
+    AppMethodBeat.i(138432);
+    boolean bool = super.securityLimitCountReach();
+    AppMethodBeat.o(138432);
+    return bool;
+  }
+  
+  public final m.b securityVerificationChecked(q paramq)
+  {
+    return m.b.ftu;
+  }
+  
+  public final boolean uniqueInNetsceneQueue()
+  {
+    return true;
   }
 }
 

@@ -1,28 +1,14 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
-import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.honey_pay.a.a;
-import com.tencent.mm.plugin.honey_pay.model.c;
-import com.tencent.mm.protocal.c.ox;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class HoneyPayMainUI$12
-  implements n.a
+  implements p.a
 {
-  HoneyPayMainUI$12(HoneyPayMainUI paramHoneyPayMainUI, a parama) {}
+  HoneyPayMainUI$12(HoneyPayMainUI paramHoneyPayMainUI) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    if (this.llO.ljF.sMv != null)
-    {
-      y.i(this.llJ.TAG, "do realname guide");
-      paramString = new Bundle();
-      paramString.putString("realname_verify_process_jump_activity", ".ui.HoneyPayMainUI");
-      c.a(this.llJ, paramString, this.llO.ljF.sMv, true);
-    }
-  }
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm) {}
 }
 
 

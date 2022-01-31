@@ -1,86 +1,134 @@
 package com.eclipsesource.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 
 public final class a
 {
-  public static final h aru = new c("null");
-  public static final h arv = new c("true");
-  public static final h arw = new c("false");
+  public static final h atM;
+  public static final h atN;
+  public static final h atO;
   
-  public static h T(float paramFloat)
+  static
   {
-    if ((Float.isInfinite(paramFloat)) || (Float.isNaN(paramFloat))) {
-      throw new IllegalArgumentException("Infinite and NaN values not permitted in JSON");
-    }
-    return new d(X(Float.toString(paramFloat)));
+    AppMethodBeat.i(70496);
+    atM = new c("null");
+    atN = new c("true");
+    atO = new c("false");
+    AppMethodBeat.o(70496);
   }
   
-  public static h V(String paramString)
+  public static h S(float paramFloat)
   {
-    if (paramString == null) {
-      return aru;
+    AppMethodBeat.i(70491);
+    if ((Float.isInfinite(paramFloat)) || (Float.isNaN(paramFloat)))
+    {
+      localObject = new IllegalArgumentException("Infinite and NaN values not permitted in JSON");
+      AppMethodBeat.o(70491);
+      throw ((Throwable)localObject);
     }
-    return new g(paramString);
+    Object localObject = new d(ab(Float.toString(paramFloat)));
+    AppMethodBeat.o(70491);
+    return localObject;
   }
   
-  public static h W(String paramString)
+  public static h Z(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("string is null");
+    AppMethodBeat.i(70493);
+    if (paramString == null)
+    {
+      paramString = atM;
+      AppMethodBeat.o(70493);
+      return paramString;
+    }
+    paramString = new g(paramString);
+    AppMethodBeat.o(70493);
+    return paramString;
+  }
+  
+  public static h aa(String paramString)
+  {
+    AppMethodBeat.i(70494);
+    if (paramString == null)
+    {
+      paramString = new NullPointerException("string is null");
+      AppMethodBeat.o(70494);
+      throw paramString;
     }
     h localh;
     try
     {
       paramString = new f(paramString);
-      paramString.jX();
-      paramString.jW();
-      localh = paramString.jT();
-      paramString.jW();
-      if (!paramString.ka()) {
-        throw paramString.aa("Unexpected character");
+      paramString.mc();
+      paramString.mb();
+      localh = paramString.lN();
+      paramString.mb();
+      if (!paramString.mj())
+      {
+        paramString = paramString.af("Unexpected character");
+        AppMethodBeat.o(70494);
+        throw paramString;
       }
     }
     catch (IOException paramString)
     {
-      throw new RuntimeException(paramString);
+      paramString = new RuntimeException(paramString);
+      AppMethodBeat.o(70494);
+      throw paramString;
     }
+    AppMethodBeat.o(70494);
     return localh;
   }
   
-  private static String X(String paramString)
+  private static String ab(String paramString)
   {
-    String str = paramString;
-    if (paramString.endsWith(".0")) {
-      str = paramString.substring(0, paramString.length() - 2);
+    AppMethodBeat.i(70495);
+    if (paramString.endsWith(".0"))
+    {
+      paramString = paramString.substring(0, paramString.length() - 2);
+      AppMethodBeat.o(70495);
+      return paramString;
     }
-    return str;
+    AppMethodBeat.o(70495);
+    return paramString;
   }
   
-  public static h aq(boolean paramBoolean)
+  public static h az(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return arv;
+      return atN;
     }
-    return arw;
+    return atO;
   }
   
-  public static h cy(int paramInt)
+  public static h cR(int paramInt)
   {
-    return new d(Integer.toString(paramInt, 10));
+    AppMethodBeat.i(70489);
+    d locald = new d(Integer.toString(paramInt, 10));
+    AppMethodBeat.o(70489);
+    return locald;
   }
   
   public static h l(double paramDouble)
   {
-    if ((Double.isInfinite(paramDouble)) || (Double.isNaN(paramDouble))) {
-      throw new IllegalArgumentException("Infinite and NaN values not permitted in JSON");
+    AppMethodBeat.i(70492);
+    if ((Double.isInfinite(paramDouble)) || (Double.isNaN(paramDouble)))
+    {
+      localObject = new IllegalArgumentException("Infinite and NaN values not permitted in JSON");
+      AppMethodBeat.o(70492);
+      throw ((Throwable)localObject);
     }
-    return new d(X(Double.toString(paramDouble)));
+    Object localObject = new d(ab(Double.toString(paramDouble)));
+    AppMethodBeat.o(70492);
+    return localObject;
   }
   
-  public static h n(long paramLong)
+  public static h l(long paramLong)
   {
-    return new d(Long.toString(paramLong, 10));
+    AppMethodBeat.i(70490);
+    d locald = new d(Long.toString(paramLong, 10));
+    AppMethodBeat.o(70490);
+    return locald;
   }
 }
 

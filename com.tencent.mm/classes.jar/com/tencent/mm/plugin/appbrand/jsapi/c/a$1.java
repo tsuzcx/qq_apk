@@ -4,7 +4,8 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,39 +16,43 @@ final class a$1
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
     boolean bool2 = false;
-    if (paramIntent == null) {
-      y.i("MicroMsg.BeaconManager", "Receive intent failed");
-    }
-    do
+    AppMethodBeat.i(94351);
+    if (paramIntent == null)
     {
+      ab.i("MicroMsg.BeaconManager", "Receive intent failed");
+      AppMethodBeat.o(94351);
       return;
-      paramContext = BluetoothAdapter.getDefaultAdapter();
-    } while (paramContext == null);
-    int i = paramContext.getState();
-    y.d("MicroMsg.BeaconManager", "state:%d", new Object[] { Integer.valueOf(i) });
-    boolean bool1;
-    if (i == 12) {
-      bool1 = true;
     }
-    while (((a.glv) && (!bool1)) || ((!a.glv) && (bool1)))
+    paramContext = BluetoothAdapter.getDefaultAdapter();
+    if (paramContext != null)
     {
-      paramContext = a.map.values().iterator();
-      while (paramContext.hasNext())
+      int i = paramContext.getState();
+      ab.d("MicroMsg.BeaconManager", "state:%d", new Object[] { Integer.valueOf(i) });
+      boolean bool1;
+      if (i == 12) {
+        bool1 = true;
+      }
+      while (((a.hFu) && (!bool1)) || ((!a.hFu) && (bool1)))
       {
-        paramIntent = (a.a)paramContext.next();
-        if ((paramIntent.aiS()) && (!bool1)) {
-          paramIntent.un();
+        paramContext = a.map.values().iterator();
+        while (paramContext.hasNext())
+        {
+          paramIntent = (a.a)paramContext.next();
+          if ((paramIntent.isStart()) && (!bool1)) {
+            paramIntent.Ez();
+          }
+          if (paramIntent.hMp != null) {
+            paramIntent.hMp.ed(bool1);
+          }
         }
-        if (paramIntent.gra != null) {
-          paramIntent.gra.cZ(bool1);
-        }
-      }
-      bool1 = bool2;
-      if (i == 10) {
         bool1 = bool2;
+        if (i == 10) {
+          bool1 = bool2;
+        }
       }
+      a.hFu = bool1;
     }
-    a.glv = bool1;
+    AppMethodBeat.o(94351);
   }
 }
 

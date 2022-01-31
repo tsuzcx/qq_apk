@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_index.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletOpenFingerprintPayRedirectUI$1
   implements DialogInterface.OnCancelListener
@@ -10,8 +11,10 @@ final class WalletOpenFingerprintPayRedirectUI$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    WalletOpenFingerprintPayRedirectUI.a(this.qMo);
-    WalletOpenFingerprintPayRedirectUI.a(this.qMo, "");
+    AppMethodBeat.i(48290);
+    WalletOpenFingerprintPayRedirectUI.a(this.uBv);
+    WalletOpenFingerprintPayRedirectUI.a(this.uBv, "");
+    AppMethodBeat.o(48290);
   }
 }
 

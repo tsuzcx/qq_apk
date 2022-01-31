@@ -7,8 +7,9 @@ import android.content.Context;
 import android.content.SyncResult;
 import android.os.Bundle;
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ContactsSyncService$a
   extends AbstractThreadedSyncAdapter
@@ -18,30 +19,36 @@ final class ContactsSyncService$a
   public ContactsSyncService$a(ContactsSyncService paramContactsSyncService, Context paramContext)
   {
     super(paramContext, true);
+    AppMethodBeat.i(124662);
     this.mContext = paramContext;
-    y.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl construction");
+    ab.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl construction");
+    AppMethodBeat.o(124662);
   }
   
   public final void onPerformSync(Account paramAccount, Bundle paramBundle, String paramString, ContentProviderClient paramContentProviderClient, SyncResult paramSyncResult)
   {
-    y.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl onPerformSync");
-    if (!g.DK())
+    AppMethodBeat.i(124663);
+    ab.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl onPerformSync");
+    if (!g.RG())
     {
-      y.e("MicroMsg.ContactsSyncService", "ContactsSyncService account not ready, ignore this sync");
+      ab.e("MicroMsg.ContactsSyncService", "ContactsSyncService account not ready, ignore this sync");
+      AppMethodBeat.o(124663);
       return;
     }
     try
     {
       Looper.prepare();
-      ContactsSyncService.a(this.fjq, Looper.myLooper());
-      ContactsSyncService.a(this.fjq, paramAccount);
+      ContactsSyncService.a(this.gAI, Looper.myLooper());
+      ContactsSyncService.a(this.gAI, paramAccount);
       Looper.loop();
+      AppMethodBeat.o(124663);
       return;
     }
     catch (Exception paramAccount)
     {
-      ContactsSyncService.a(this.fjq);
-      y.e("MicroMsg.ContactsSyncService", "ContactsSyncService.onPerformSync error: " + paramAccount.getMessage());
+      ContactsSyncService.a(this.gAI);
+      ab.e("MicroMsg.ContactsSyncService", "ContactsSyncService.onPerformSync error: " + paramAccount.getMessage());
+      AppMethodBeat.o(124663);
     }
   }
 }

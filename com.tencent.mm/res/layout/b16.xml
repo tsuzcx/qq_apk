@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/lr" android:background="@null" android:layout_width="@dimen/a7z" android:layout_height="@dimen/a7z"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/eu2" android:background="@drawable/a1q" android:layout_width="@dimen/a80" android:layout_height="@dimen/a80" android:layout_centerInParent="true" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/kl" android:paddingLeft="@dimen/a7y" android:paddingTop="@dimen/a7y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
-        <ImageView android:id="@id/hu" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@raw/webview_bag_indicator_icon_normal" />
-        <TextView android:textSize="12.0dip" android:textColor="#7fffffff" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/flt" />
-    </LinearLayout>
-</RelativeLayout>

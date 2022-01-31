@@ -1,6 +1,7 @@
 package com.tencent.xweb.extension.video;
 
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$3
   implements Runnable
@@ -9,16 +10,18 @@ final class d$3
   
   public final void run()
   {
-    if ((this.xiH) && (d.a(this.xiF) != 0.0D)) {
-      d.l(this.xiF).c((int)(100.0D * (this.xiI / d.a(this.xiF))), false);
+    AppMethodBeat.i(84577);
+    if ((this.BFT) && (d.a(this.BFR) != 0.0D)) {
+      d.l(this.BFR).c((int)(100.0D * (this.BFU / d.a(this.BFR))), false);
     }
-    d.m(this.xiF).setText(d.a(this.xiF, this.xiI));
-    d.o(this.xiF).setText(d.n(this.xiF));
+    d.m(this.BFR).setText(d.a(this.BFR, this.BFU));
+    d.o(this.BFR).setText(d.n(this.BFR));
+    AppMethodBeat.o(84577);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.xweb.extension.video.d.3
  * JD-Core Version:    0.7.0.1
  */

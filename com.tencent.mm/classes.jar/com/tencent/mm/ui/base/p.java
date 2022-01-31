@@ -9,92 +9,116 @@ import android.view.Window;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.ac.a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.w;
 
-public class p
+public final class p
   extends q
 {
-  private View QR;
-  public ProgressBar hox;
+  private View Qz;
+  public ProgressBar jba;
   private Context mContext;
   private int style;
-  private TextView uLZ;
+  private TextView zag;
   
-  public p(Context paramContext, int paramInt1, int paramInt2)
+  private p(Context paramContext, int paramInt1, int paramInt2)
   {
     super(paramContext, paramInt1);
+    AppMethodBeat.i(106711);
     this.mContext = paramContext;
     this.style = paramInt2;
+    paramInt1 = i;
     switch (this.style)
     {
-    default: 
-      paramInt1 = a.h.mm_progress_dialog;
     }
-    for (;;)
+    for (paramInt1 = i;; paramInt1 = 2130970267)
     {
-      this.QR = com.tencent.mm.ui.y.gt(this.mContext).inflate(paramInt1, null);
-      this.uLZ = ((TextView)this.QR.findViewById(a.g.mm_progress_dialog_msg));
-      this.hox = ((ProgressBar)this.QR.findViewById(a.g.mm_progress_dialog_icon));
+      this.Qz = w.hM(this.mContext).inflate(paramInt1, null);
+      this.zag = ((TextView)this.Qz.findViewById(2131821848));
+      this.jba = ((ProgressBar)this.Qz.findViewById(2131821847));
       setCanceledOnTouchOutside(true);
+      AppMethodBeat.o(106711);
       return;
-      paramInt1 = a.h.mm_progress_dialog;
-      continue;
-      paramInt1 = a.h.mm_progress_dialog_with_bg;
-      continue;
-      paramInt1 = a.h.mm_progress_dialog;
     }
   }
   
-  public static p a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, DialogInterface.OnCancelListener paramOnCancelListener)
+  private static p a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    int i;
-    switch (paramInt)
-    {
-    default: 
-      i = a.l.mmtipsdialog;
+    AppMethodBeat.i(106716);
+    int i = paramInt2;
+    if (paramInt2 <= 0) {
+      switch (paramInt1)
+      {
+      default: 
+        i = 2131493886;
+      }
     }
     for (;;)
     {
-      paramContext = new p(paramContext, i, paramInt);
+      paramContext = new p(paramContext, i, paramInt1);
       paramContext.setMessage(paramCharSequence);
       paramContext.setCancelable(paramBoolean);
       paramContext.setOnCancelListener(paramOnCancelListener);
       paramContext.setCanceledOnTouchOutside(false);
+      AppMethodBeat.o(106716);
       return paramContext;
-      i = a.l.mmalertdialog;
+      i = 2131493881;
       continue;
-      i = a.l.mmalertdialog;
+      i = 2131493881;
       continue;
-      i = a.l.mmalertdialog;
+      i = 2131493881;
+      continue;
+      i = 2131493886;
     }
   }
   
-  public static p b(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, DialogInterface.OnCancelListener paramOnCancelListener)
+  public static p b(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    paramContext = a(paramContext, paramCharSequence, paramBoolean, paramInt, paramOnCancelListener);
+    AppMethodBeat.i(106718);
+    paramContext = a(paramContext, paramCharSequence, paramBoolean, paramInt1, paramInt2, paramOnCancelListener);
     paramContext.show();
+    AppMethodBeat.o(106718);
     return paramContext;
   }
   
-  public void dismiss()
+  public static p b(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
+    AppMethodBeat.i(106717);
+    paramContext = b(paramContext, paramCharSequence, paramBoolean, 0, -1, paramOnCancelListener);
+    AppMethodBeat.o(106717);
+    return paramContext;
+  }
+  
+  public static p d(Context paramContext, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(106715);
+    paramContext = a(paramContext, paramCharSequence, true, 0, -1, null);
+    AppMethodBeat.o(106715);
+    return paramContext;
+  }
+  
+  public final void dismiss()
+  {
+    AppMethodBeat.i(106720);
     try
     {
       super.dismiss();
+      AppMethodBeat.o(106720);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMProgressDialog", "dismiss exception, e = " + localException.getMessage());
+      ab.e("MicroMsg.MMProgressDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(106720);
     }
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected final void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(106712);
     super.onCreate(paramBundle);
-    setContentView(this.QR, new LinearLayout.LayoutParams(-1, -1));
+    setContentView(this.Qz, new LinearLayout.LayoutParams(-1, -1));
     paramBundle = getWindow().getAttributes();
     paramBundle.width = -1;
     paramBundle.height = -2;
@@ -104,35 +128,43 @@ public class p
       paramBundle.dimAmount = 0.65F;
     }
     onWindowAttributesChanged(paramBundle);
+    AppMethodBeat.o(106712);
   }
   
-  public void setCancelable(boolean paramBoolean)
+  public final void setCancelable(boolean paramBoolean)
   {
+    AppMethodBeat.i(106713);
     super.setCancelable(paramBoolean);
     setCanceledOnTouchOutside(paramBoolean);
+    AppMethodBeat.o(106713);
   }
   
-  public void setMessage(CharSequence paramCharSequence)
+  public final void setMessage(CharSequence paramCharSequence)
   {
-    this.uLZ.setText(paramCharSequence);
+    AppMethodBeat.i(106714);
+    this.zag.setText(paramCharSequence);
+    AppMethodBeat.o(106714);
   }
   
-  public void show()
+  public final void show()
   {
+    AppMethodBeat.i(106719);
     try
     {
       super.show();
+      AppMethodBeat.o(106719);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.MMProgressDialog", localException, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.MMProgressDialog", localException, "", new Object[0]);
+      AppMethodBeat.o(106719);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.p
  * JD-Core Version:    0.7.0.1
  */

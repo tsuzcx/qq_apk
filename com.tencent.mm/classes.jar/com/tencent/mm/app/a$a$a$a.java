@@ -1,5 +1,7 @@
 package com.tencent.mm.app;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$a$a$a
   extends Throwable
 {
@@ -10,7 +12,9 @@ final class a$a$a$a
   
   public final Throwable fillInStackTrace()
   {
-    setStackTrace(this.bvU.bvT);
+    AppMethodBeat.i(15351);
+    setStackTrace(this.bXf.bXe);
+    AppMethodBeat.o(15351);
     return this;
   }
 }

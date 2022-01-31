@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/p1"
+<LinearLayout android:orientation="vertical" android:background="@drawable/a9o" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/csl" android:background="@color/sz" android:paddingLeft="@dimen/kl" android:paddingRight="@dimen/kl" android:focusable="true" android:transcriptMode="disabled" style="@style/ls" />
+    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/h9" android:gravity="center_horizontal" android:id="@id/uo" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="标题" />
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/crd" android:layout_width="272.0dip" android:layout_height="153.0dip" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/b2z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="24.0dip" android:text="弹窗内容" />
+    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="27.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="56.0dip">
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/h9" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bq9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="取消" android:layout_weight="1.0" />
+        <View android:background="#ffe5e5e5" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/hd" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bpb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="确定" android:layout_weight="1.0" />
+    </LinearLayout>
 </LinearLayout>

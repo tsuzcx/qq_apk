@@ -1,155 +1,100 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
-import android.view.View;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class g
-  extends com.tencent.mm.plugin.appbrand.jsapi.base.c
+  extends a
 {
-  private static final int CTRL_INDEX = 114;
-  public static final String NAME = "operateVideoPlayer";
+  public static final int CTRL_INDEX = 483;
+  public static final String NAME = "loadVideoResource";
   
-  protected final boolean c(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  static void a(c paramc, String paramString, int paramInt1, int paramInt2)
   {
-    int i = -1;
-    y.i("MicroMsg.JsApiOperateVideoPlayer", "onUpdateView : videoPlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
-    if (!(paramView instanceof CoverViewContainer))
+    AppMethodBeat.i(126562);
+    String str = "";
+    switch (paramInt1)
     {
-      y.w("MicroMsg.JsApiOperateVideoPlayer", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      return false;
-    }
-    parame = (AppBrandVideoView)((CoverViewContainer)paramView).K(AppBrandVideoView.class);
-    if (parame == null)
-    {
-      y.e("MicroMsg.JsApiOperateVideoPlayer", "view not AppBrandVideoView");
-      return false;
-    }
-    paramView = paramJSONObject.optString("type");
-    y.i("MicroMsg.JsApiOperateVideoPlayer", "onUpdateView operateType=%s", new Object[] { paramView });
-    switch (paramView.hashCode())
-    {
-    default: 
-      label176:
-      paramInt = -1;
     }
     for (;;)
     {
-      switch (paramInt)
-      {
-      default: 
-        y.w("MicroMsg.JsApiOperateVideoPlayer", "onUpdateView operateType not supported: %s", new Object[] { paramView });
-        return false;
-        if (!paramView.equals("play")) {
-          break label176;
-        }
-        paramInt = 0;
-        continue;
-        if (!paramView.equals("pause")) {
-          break label176;
-        }
-        paramInt = 1;
-        continue;
-        if (!paramView.equals("stop")) {
-          break label176;
-        }
-        paramInt = 2;
-        continue;
-        if (!paramView.equals("requestFullScreen")) {
-          break label176;
-        }
-        paramInt = 3;
-        continue;
-        if (!paramView.equals("exitFullScreen")) {
-          break label176;
-        }
-        paramInt = 4;
-        continue;
-        if (!paramView.equals("playbackRate")) {
-          break label176;
-        }
-        paramInt = 5;
-        continue;
-        if (!paramView.equals("seek")) {
-          break label176;
-        }
-        paramInt = 6;
-        continue;
-        if (!paramView.equals("sendDanmu")) {
-          break label176;
-        }
-        paramInt = 7;
-      }
-    }
-    parame.start();
-    for (;;)
-    {
-      return true;
-      parame.pause();
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("errMsg", str);
+      localHashMap.put("resource", paramString);
+      paramString = new JSONObject(localHashMap).toString();
+      new k.j().j(paramc).BN(paramString).aBz();
+      AppMethodBeat.o(126562);
+      return;
+      str = "args illegal";
       continue;
-      parame.stop();
+      str = "downloading";
       continue;
-      paramView = paramJSONObject.optJSONArray("data");
-      if ((paramView == null) || (paramView.length() == 0)) {
-        y.w("MicroMsg.JsApiOperateVideoPlayer", "onUpdateView directionArr nil");
-      }
-      for (paramInt = i;; paramInt = paramView.optInt(0, -1))
-      {
-        parame.g(true, paramInt);
-        break;
-      }
-      parame.g(false, -1);
+      str = "start download fail";
       continue;
-      paramView = paramJSONObject.optJSONArray("data");
-      if ((paramView == null) || (paramView.length() == 0))
-      {
-        y.w("MicroMsg.JsApiOperateVideoPlayer", "onUpdateView dataArr nil");
-        return false;
-      }
-      double d = paramView.optDouble(0, -1.0D);
-      if (d < 0.0D)
-      {
-        y.i("MicroMsg.JsApiOperateVideoPlayer", "rate invalid %f", new Object[] { Double.valueOf(d) });
-        return false;
-      }
-      float f = (float)d;
-      y.i("MicroMsg.AppBrandVideoView", "setPlaybackRate %s", new Object[] { Float.valueOf(f) });
-      parame.gDj.aj(f);
+      str = "create file fail";
       continue;
-      paramView = paramJSONObject.optJSONArray("data");
-      if ((paramView == null) || (paramView.length() == 0))
-      {
-        y.w("MicroMsg.JsApiOperateVideoPlayer", "onUpdateView dataArr nil");
-        return false;
-      }
-      paramInt = paramView.optInt(0, -1);
-      if (paramInt < 0)
-      {
-        y.i("MicroMsg.JsApiOperateVideoPlayer", "pos invalid %d", new Object[] { Integer.valueOf(paramInt) });
-        return false;
-      }
-      parame.D(paramInt, false);
-      continue;
-      paramView = paramJSONObject.optJSONArray("data");
-      if ((paramView == null) || (paramView.length() == 0))
-      {
-        y.w("MicroMsg.JsApiOperateVideoPlayer", "onUpdateView dataArr nil");
-        return false;
-      }
-      if (paramView.length() == 1) {
-        parame.bG(paramView.optString(0, ""), "");
-      } else {
-        parame.bG(paramView.optString(0, ""), paramView.optString(1, ""));
-      }
+      str = "cdn download fail errCode:".concat(String.valueOf(paramInt2));
     }
   }
   
-  protected final int p(JSONObject paramJSONObject)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    return paramJSONObject.optInt("videoPlayerId");
+    AppMethodBeat.i(126561);
+    if (paramJSONObject == null)
+    {
+      paramc.h(paramInt, j("fail:data nil", null));
+      ab.w("MicroMsg.JsApiLoadVideoResource", "data is null");
+      AppMethodBeat.o(126561);
+      return;
+    }
+    paramJSONObject = paramJSONObject.optJSONArray("resources");
+    if ((paramJSONObject == null) || (paramJSONObject.length() == 0))
+    {
+      ab.w("MicroMsg.JsApiLoadVideoResource", "dataArr nil");
+      paramc.h(paramInt, j("fail:dataArr nil", null));
+      AppMethodBeat.o(126561);
+      return;
+    }
+    int k = 0;
+    int j = 0;
+    if (j < paramJSONObject.length())
+    {
+      String str = paramJSONObject.optString(j, "");
+      ab.d("MicroMsg.JsApiLoadVideoResource", "preLoadVideo videoUrl:%s", new Object[] { str });
+      int i;
+      if (bo.isNullOrNil(str))
+      {
+        ab.w("MicroMsg.JsApiLoadVideoResource", "videoUrl i nil");
+        i = k + 1;
+      }
+      for (;;)
+      {
+        j += 1;
+        k = i;
+        break;
+        int m = ((e)com.tencent.luggage.a.e.q(e.class)).a(str, new g.1(this, paramc));
+        i = k;
+        if (m != 0)
+        {
+          ab.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo genPreLoad fail ret = %s, videoUrl = %s", new Object[] { Integer.valueOf(m), str });
+          a(paramc, str, m, 0);
+          i = k + 1;
+        }
+      }
+    }
+    if ((k != 0) && (k == paramJSONObject.length())) {
+      paramc.h(paramInt, j("fail", null));
+    }
+    AppMethodBeat.o(126561);
   }
 }
 

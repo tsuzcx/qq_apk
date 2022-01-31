@@ -4,6 +4,7 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.ListView;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$4
   extends Animation
@@ -12,12 +13,14 @@ final class b$4
   
   protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    paramTransformation = (RelativeLayout.LayoutParams)this.oMj.oMh.getLayoutParams();
+    AppMethodBeat.i(38067);
+    paramTransformation = (RelativeLayout.LayoutParams)this.rDU.rDS.getLayoutParams();
     if (paramFloat == 1.0F) {}
-    for (int i = 0;; i = (int)((this.oMk - this.oMl) * (1.0F - paramFloat)))
+    for (int i = 0;; i = (int)((this.rDV - this.rDW) * (1.0F - paramFloat)))
     {
       paramTransformation.bottomMargin = i;
-      this.oMj.oMh.requestLayout();
+      this.rDU.rDS.requestLayout();
+      AppMethodBeat.o(38067);
       return;
     }
   }
@@ -29,7 +32,7 @@ final class b$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.4
  * JD-Core Version:    0.7.0.1
  */

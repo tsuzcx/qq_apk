@@ -1,24 +1,28 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.pluginsdk.ui.tools.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.e.e;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class OnlineVideoView$6
-  implements f.e
+  implements e.e
 {
   OnlineVideoView$6(OnlineVideoView paramOnlineVideoView) {}
   
-  public final void bkk()
+  public final void bSk()
   {
-    y.i("MicroMsg.OnlineVideoView", "%d on texture update.", new Object[] { Integer.valueOf(this.oRM.hashCode()) });
+    AppMethodBeat.i(38395);
+    ab.i("MicroMsg.OnlineVideoView", "%d on texture update.", new Object[] { Integer.valueOf(this.rJD.hashCode()) });
     try
     {
-      OnlineVideoView.m(this.oRM);
+      OnlineVideoView.k(this.rJD);
+      AppMethodBeat.o(38395);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.OnlineVideoView", "texture view update. error " + localException.toString());
+      ab.e("MicroMsg.OnlineVideoView", "texture view update. error " + localException.toString());
+      AppMethodBeat.o(38395);
     }
   }
 }

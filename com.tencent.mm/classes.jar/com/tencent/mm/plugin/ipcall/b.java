@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.ipcall;
 
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public final class b
-  implements n
+  implements o
 {
-  public static m eUR;
+  public static n gmO;
   
-  public final void a(l paraml) {}
+  public final void a(m paramm) {}
   
-  public final void a(m paramm)
+  public final void a(n paramn)
   {
-    eUR = paramm;
+    gmO = paramn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SettingsAboutSystemUI$2
   implements View.OnClickListener
@@ -15,22 +14,26 @@ final class SettingsAboutSystemUI$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(127109);
     int i = 0;
-    while (i < this.nTq.getChildCount())
+    while (i < this.qHq.getChildCount())
     {
-      TextView localTextView = (TextView)this.nTq.getChildAt(i);
-      if (a.f.tips_tv != localTextView.getId()) {
-        localTextView.setCompoundDrawablesWithIntrinsicBounds(a.h.radio_off, 0, 0, 0);
+      TextView localTextView = (TextView)this.qHq.getChildAt(i);
+      if (2131823916 != localTextView.getId()) {
+        localTextView.setCompoundDrawablesWithIntrinsicBounds(2131231905, 0, 0, 0);
       }
       i += 1;
     }
-    ((TextView)paramView).setCompoundDrawablesWithIntrinsicBounds(a.h.radio_on, 0, 0, 0);
+    ((TextView)paramView).setCompoundDrawablesWithIntrinsicBounds(2131231906, 0, 0, 0);
     i = ((Integer)paramView.getTag()).intValue();
-    y.i("MicroMsg.SettingsAboutSystemUI", "choice: %d, %d", new Object[] { Integer.valueOf(this.nTr), Integer.valueOf(i) });
-    if (this.nTr == i) {
+    ab.i("MicroMsg.SettingsAboutSystemUI", "choice: %d, %d", new Object[] { Integer.valueOf(this.qHr), Integer.valueOf(i) });
+    if (this.qHr == i)
+    {
+      AppMethodBeat.o(127109);
       return;
     }
     paramView.post(new SettingsAboutSystemUI.2.1(this, i));
+    AppMethodBeat.o(127109);
   }
 }
 

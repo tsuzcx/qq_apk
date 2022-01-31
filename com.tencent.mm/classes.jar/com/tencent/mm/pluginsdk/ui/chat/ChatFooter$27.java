@@ -1,26 +1,20 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import android.content.Context;
-import com.tencent.mm.R.l;
-import com.tencent.mm.pluginsdk.ui.a.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChatFooter$27
-  implements a
+  implements Runnable
 {
-  ChatFooter$27(ChatFooter paramChatFooter) {}
+  ChatFooter$27(ChatFooter paramChatFooter, Runnable paramRunnable) {}
   
-  public final void Wz(String paramString)
+  public final void run()
   {
-    y.e("MicroMsg.ChatFooter", "hakon onImageReceived, %s", new Object[] { paramString });
-    if ((bk.bl(ChatFooter.d(this.sgd).getTalkerUserName())) || (bk.bl(paramString)))
-    {
-      y.e("MicroMsg.ChatFooter", "onImageReceived, error args");
-      return;
+    AppMethodBeat.i(153704);
+    this.vXU.setAppPanelVisible(4);
+    if (this.inP != null) {
+      this.inP.run();
     }
-    h.a(this.sgd.getContext(), this.sgd.getContext().getString(R.l.ext_accessories_send_spen_image), "", new ChatFooter.27.1(this, paramString), new ChatFooter.27.2(this));
+    AppMethodBeat.o(153704);
   }
 }
 

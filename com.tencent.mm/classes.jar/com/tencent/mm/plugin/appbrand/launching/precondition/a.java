@@ -1,100 +1,121 @@
 package com.tencent.mm.plugin.appbrand.launching.precondition;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.TypedArray;
-import com.tencent.mm.modelappbrand.LaunchParamsOptional;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
+import android.content.MutableContextWrapper;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
+import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.f;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.b;
+import com.tencent.mm.plugin.appbrand.s.m;
+import com.tencent.mm.plugin.appbrand.task.h;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import java.util.LinkedList;
+import java.util.Queue;
 
-abstract class a
-  implements g
+public abstract class a
+  extends MutableContextWrapper
 {
-  public final boolean a(Context paramContext, LaunchParcel paramLaunchParcel)
+  protected boolean inL = true;
+  final Queue<Runnable> inM = new LinkedList();
+  private al inN;
+  
+  public a()
   {
-    if ((bk.bl(paramLaunchParcel.username)) && (bk.bl(paramLaunchParcel.appId))) {
-      return false;
+    super(ah.getContext());
+  }
+  
+  private void H(Runnable paramRunnable)
+  {
+    if ((getBaseContext() instanceof AppBrandLaunchProxyUI))
+    {
+      m.runOnUiThread(paramRunnable);
+      return;
     }
-    paramLaunchParcel.gMo = bk.UY();
-    Object localObject2;
-    if (paramContext == null) {
-      localObject2 = ae.getContext();
+    this.inM.offer(paramRunnable);
+  }
+  
+  protected final void a(LaunchParcel paramLaunchParcel, String paramString)
+  {
+    al localal = new al("AppBrandLaunchProxyUI-PrepareThread");
+    this.inN = localal;
+    localal.ac(new a.3(this, paramLaunchParcel, paramString));
+  }
+  
+  protected abstract String aHs();
+  
+  protected final void aHt()
+  {
+    H(new a.1(this));
+  }
+  
+  protected Context aHu()
+  {
+    return null;
+  }
+  
+  protected final boolean aHv()
+  {
+    return ((getBaseContext() instanceof AppBrandLaunchProxyUI)) && (((AppBrandLaunchProxyUI)getBaseContext()).isDestroyed());
+  }
+  
+  protected void b(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
+  {
+    if (paramAppBrandInitConfigWC != null)
+    {
+      Context localContext2 = aHu();
+      Context localContext1 = localContext2;
+      if (localContext2 == null) {
+        localContext1 = getBaseContext();
+      }
+      j.b(localContext1, paramAppBrandInitConfigWC, paramAppBrandStatObject);
     }
     for (;;)
     {
-      return b((Context)localObject2, paramLaunchParcel);
-      localObject2 = paramContext;
-      if (!(paramContext instanceof Activity)) {
-        continue;
+      if (this.inL) {
+        aHt();
       }
-      localObject2 = null;
-      Object localObject1 = null;
-      try
-      {
-        TypedArray localTypedArray = paramContext.obtainStyledAttributes(new int[] { 16842840 });
-        localObject1 = localTypedArray;
-        localObject2 = localTypedArray;
-        if (!localTypedArray.getBoolean(0, false))
-        {
-          localObject1 = localTypedArray;
-          localObject2 = localTypedArray;
-          b.ab((Activity)paramContext);
-        }
-        localObject2 = paramContext;
-        if (localTypedArray == null) {
-          continue;
-        }
-        localTypedArray.recycle();
-        localObject2 = paramContext;
+      if (this.inN != null) {
+        this.inN.ac(new a.4(this));
       }
-      catch (Exception localException)
-      {
-        localObject2 = localObject1;
-        y.printErrStackTrace("MicroMsg.AppBrand.Precondition.AbstractLaunchEntry", localException, "convertActivityFromTranslucent %s", new Object[] { paramContext.getClass().getSimpleName() });
-        localObject2 = paramContext;
-        if (localObject1 == null) {
-          continue;
-        }
-        localObject1.recycle();
-        localObject2 = paramContext;
-      }
-      finally
-      {
-        if (localObject2 != null) {
-          ((TypedArray)localObject2).recycle();
-        }
-      }
+      return;
+      this.inL = true;
     }
   }
   
-  public final boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, AppBrandStatObject paramAppBrandStatObject, AppBrandLaunchReferrer paramAppBrandLaunchReferrer, LaunchParamsOptional paramLaunchParamsOptional)
+  protected boolean c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
-    LaunchParcel localLaunchParcel = new LaunchParcel();
-    localLaunchParcel.username = paramString1;
-    localLaunchParcel.appId = paramString2;
-    if (paramString3 == null) {}
-    for (paramString1 = null;; paramString1 = paramString3.trim())
-    {
-      localLaunchParcel.fPq = paramString1;
-      localLaunchParcel.fJy = paramInt1;
-      localLaunchParcel.version = paramInt2;
-      localLaunchParcel.gMm = paramAppBrandStatObject;
-      localLaunchParcel.fPr = paramAppBrandLaunchReferrer;
-      localLaunchParcel.gMn = paramLaunchParamsOptional;
-      return a(paramContext, localLaunchParcel);
+    if ((paramAppBrandInitConfigWC.hiC) || (h.EZ(paramAppBrandInitConfigWC.appId)) || (paramAppBrandInitConfigWC.vY()) || (paramAppBrandInitConfigWC.hiD)) {}
+    for (int i = 1; (i | f.d(paramAppBrandInitConfigWC, paramAppBrandStatObject)) == 0; i = 0) {
+      return true;
     }
+    return false;
   }
   
-  protected abstract boolean b(Context paramContext, LaunchParcel paramLaunchParcel);
+  protected final void finish()
+  {
+    b(null, null);
+  }
+  
+  protected final boolean isFinishing()
+  {
+    return ((getBaseContext() instanceof AppBrandLaunchProxyUI)) && (((AppBrandLaunchProxyUI)getBaseContext()).isFinishing());
+  }
+  
+  public final void setBaseContext(Context paramContext)
+  {
+    super.setBaseContext(paramContext);
+    if ((getBaseContext() instanceof AppBrandLaunchProxyUI)) {
+      while (!this.inM.isEmpty()) {
+        ((Runnable)this.inM.poll()).run();
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.precondition.a
  * JD-Core Version:    0.7.0.1
  */

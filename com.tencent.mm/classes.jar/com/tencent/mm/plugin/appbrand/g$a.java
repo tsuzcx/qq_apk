@@ -1,12 +1,23 @@
 package com.tencent.mm.plugin.appbrand;
 
-public enum g$a
+import a.f.a.a;
+import a.f.b.k;
+import a.l;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "invoke"})
+final class g$a
+  extends k
+  implements a<IPCVoid>
 {
-  private g$a() {}
+  g$a(o paramo)
+  {
+    super(0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,28 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
-import java.util.List;
+import android.content.IntentFilter;
+import com.google.android.gms.common.api.internal.ListenerHolder;
+import com.google.android.gms.common.api.internal.RegisterListenerMethod;
+import com.google.android.gms.wearable.ChannelApi.ChannelListener;
+import com.google.android.gms.wearable.ChannelClient.ChannelCallback;
+import javax.annotation.Nullable;
 
-public class zzat
-  extends zza
+final class zzat
+  extends RegisterListenerMethod<zzhg, ChannelClient.ChannelCallback>
 {
-  public static final Parcelable.Creator<zzat> CREATOR = new zzau();
-  public final int statusCode;
-  public final List<zzo> zzbUx;
+  private final IntentFilter[] zzba;
+  @Nullable
+  private final String zzce;
+  private final ChannelApi.ChannelListener zzcf;
+  private final ListenerHolder<ChannelApi.ChannelListener> zzci;
   
-  public zzat(int paramInt, List<zzo> paramList)
+  zzat(ChannelApi.ChannelListener paramChannelListener, @Nullable String paramString, IntentFilter[] paramArrayOfIntentFilter, ListenerHolder<ChannelClient.ChannelCallback> paramListenerHolder, ListenerHolder<ChannelApi.ChannelListener> paramListenerHolder1)
   {
-    this.statusCode = paramInt;
-    this.zzbUx = paramList;
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    zzau.zza(this, paramParcel, paramInt);
+    super(paramListenerHolder);
+    this.zzcf = paramChannelListener;
+    this.zzba = paramArrayOfIntentFilter;
+    this.zzce = paramString;
+    this.zzci = paramListenerHolder1;
   }
 }
 

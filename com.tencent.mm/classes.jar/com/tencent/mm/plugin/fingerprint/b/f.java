@@ -3,151 +3,169 @@ package com.tencent.mm.plugin.fingerprint.b;
 import android.os.Build;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.hb;
-import com.tencent.mm.h.a.hb.a;
-import com.tencent.mm.h.a.hb.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.he;
+import com.tencent.mm.g.a.he.a;
+import com.tencent.mm.g.a.he.b;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fingerprint.FingerPrintAuth;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.u;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.wallet_core.c.w;
 
 public final class f
-  extends c<hb>
-  implements com.tencent.mm.ah.f
+  extends c<he>
+  implements com.tencent.mm.ai.f
 {
-  private String bMX = "";
-  private boolean kkX = false;
-  private hb kld;
-  private int kle = 0;
-  ah klf = new ah(Looper.getMainLooper());
+  private String cnI;
+  private boolean mFK;
+  private he mFR;
+  private int mFS;
+  ak mFT;
   
   public f()
   {
-    this.udX = hb.class.getName().hashCode();
+    AppMethodBeat.i(41473);
+    this.mFS = 0;
+    this.cnI = "";
+    this.mFK = false;
+    this.mFT = new ak(Looper.getMainLooper());
+    this.__eventId = he.class.getName().hashCode();
+    AppMethodBeat.o(41473);
   }
   
-  private boolean a(hb paramhb)
+  private boolean a(he paramhe)
   {
-    if (!g.DK()) {
-      y.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "GenFingerPrintRsaKeyEventListener account is not ready");
-    }
-    do
+    AppMethodBeat.i(41474);
+    if (!g.RG())
     {
+      ab.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "GenFingerPrintRsaKeyEventListener account is not ready");
+      AppMethodBeat.o(41474);
       return false;
-      y.i("MicroMsg.GenFingerPrintRsaKeyEventListener", "GenFingerPrintRsaKeyEventListener callback");
-      this.kkX = false;
-    } while (!(paramhb instanceof hb));
-    if (!e.aSK())
-    {
-      y.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "device is not support FingerPrintAuth");
-      paramhb = new hb.b();
-      paramhb.bKQ = false;
-      this.kld.bOQ = paramhb;
-      this.kkX = true;
-      azJ();
-      return true;
     }
-    this.kld = paramhb;
-    g.DQ();
-    g.DO().dJT.a(385, this);
-    boolean bool = this.kld.bOP.bOR;
-    this.kle = this.kld.bOP.bOS;
-    this.bMX = this.kld.bOP.bOT;
-    int i;
-    if (!bool)
+    ab.i("MicroMsg.GenFingerPrintRsaKeyEventListener", "GenFingerPrintRsaKeyEventListener callback");
+    this.mFK = false;
+    if ((paramhe instanceof he))
     {
-      paramhb = e.getUserId();
-      String str = com.tencent.mm.compatible.e.q.zg();
-      paramhb = FingerPrintAuth.getRsaKey(e.dj(ae.getContext()), paramhb, str);
-      if (!TextUtils.isEmpty(paramhb))
+      if (!e.bzf())
       {
-        y.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth.getRsaKey() success!");
-        paramhb = new com.tencent.mm.plugin.fingerprint.c.e(paramhb);
-        g.DQ();
-        g.DO().dJT.a(paramhb, 0);
-        i = 0;
+        ab.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "device is not support FingerPrintAuth");
+        paramhe = new he.b();
+        paramhe.csk = false;
+        this.mFR.cwh = paramhe;
+        this.mFK = true;
+        bbp();
+        AppMethodBeat.o(41474);
+        return true;
+      }
+      this.mFR = paramhe;
+      g.RM();
+      g.RK().eHt.a(385, this);
+      boolean bool = this.mFR.cwg.cwi;
+      this.mFS = this.mFR.cwg.cwj;
+      this.cnI = this.mFR.cwg.cwk;
+      int i;
+      if (!bool)
+      {
+        paramhe = e.getUserId();
+        String str = com.tencent.mm.compatible.e.q.LK();
+        paramhe = FingerPrintAuth.getRsaKey(e.dU(ah.getContext()), paramhe, str);
+        if (!TextUtils.isEmpty(paramhe))
+        {
+          ab.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth.getRsaKey() success!");
+          paramhe = new com.tencent.mm.plugin.fingerprint.c.e(paramhe);
+          g.RM();
+          g.RK().eHt.a(paramhe, 0);
+          i = 0;
+        }
+      }
+      for (;;)
+      {
+        if (i != 0)
+        {
+          ab.i("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth begin asyc gen rsa key!");
+          new q(new f.a(this, (byte)0)).aBi();
+        }
+        AppMethodBeat.o(41474);
+        return true;
+        ab.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth.getRsaKey() return null");
+        i = 1;
+        continue;
+        ab.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth should gen rsa key!");
+        i = 1;
       }
     }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        y.i("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth begin asyc gen rsa key!");
-        new q(new f.a(this, (byte)0)).aTf();
-      }
-      return true;
-      y.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth.getRsaKey() return null");
-      i = 1;
-      continue;
-      y.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth should gen rsa key!");
-      i = 1;
-    }
+    AppMethodBeat.o(41474);
+    return false;
   }
   
-  private void azJ()
+  private void bbp()
   {
-    y.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "doCallback()");
-    if (this.kld.bFJ != null) {
-      this.kld.bFJ.run();
+    AppMethodBeat.i(41476);
+    ab.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "doCallback()");
+    if (this.mFR.callback != null) {
+      this.mFR.callback.run();
     }
-    if (this.kkX) {
-      this.kld = null;
+    if (this.mFK) {
+      this.mFR = null;
     }
+    AppMethodBeat.o(41476);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    hb.b localb;
+    AppMethodBeat.i(41475);
+    he.b localb;
     if ((paramm instanceof com.tencent.mm.plugin.fingerprint.c.e))
     {
-      localb = new hb.b();
-      localb.bKQ = false;
-      y.i("MicroMsg.GenFingerPrintRsaKeyEventListener", "NetSceneTenpayGetOpenTouchCert doscene return errcode " + paramInt2 + " errmsg" + paramString);
+      localb = new he.b();
+      localb.csk = false;
+      ab.i("MicroMsg.GenFingerPrintRsaKeyEventListener", "NetSceneTenpayGetOpenTouchCert doscene return errcode " + paramInt2 + " errmsg" + paramString);
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label261;
+        break label271;
       }
-      y.i("MicroMsg.GenFingerPrintRsaKeyEventListener", "NetSceneTenpayGetOpenTouchCert doscene is success");
+      ab.i("MicroMsg.GenFingerPrintRsaKeyEventListener", "NetSceneTenpayGetOpenTouchCert doscene is success");
       paramm = (com.tencent.mm.plugin.fingerprint.c.e)paramm;
-      paramString = paramm.klm;
-      paramm = paramm.bOV;
+      paramString = paramm.mGa;
+      paramm = paramm.cwm;
       String str1 = e.getUserId();
-      String str2 = com.tencent.mm.compatible.e.q.zg();
-      String str3 = u.cMz();
-      if (TextUtils.isEmpty(FingerPrintAuth.genOpenFPEncrypt(e.dj(ae.getContext()), str1, str2, String.valueOf(this.kle), str3, "", paramString, paramm, Build.MODEL))) {
-        break label250;
+      String str2 = com.tencent.mm.compatible.e.q.LK();
+      String str3 = w.dSo();
+      if (TextUtils.isEmpty(FingerPrintAuth.genOpenFPEncrypt(e.dU(ah.getContext()), str1, str2, String.valueOf(this.mFS), str3, "", paramString, paramm, Build.MODEL))) {
+        break label260;
       }
-      y.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth.genOpenFPEncrypt success!");
-      localb.bKQ = true;
-      paramString = FingerPrintAuth.genPayFPEncrypt(e.dj(ae.getContext()), str1, str2, String.valueOf(this.kle), str3, this.bMX, Build.MODEL);
-      paramm = FingerPrintAuth.genOpenFPSign(e.dj(ae.getContext()), e.getUserId(), com.tencent.mm.compatible.e.q.zg(), paramString);
-      localb.bOU = paramString;
-      localb.bOV = paramm;
+      ab.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth.genOpenFPEncrypt success!");
+      localb.csk = true;
+      paramString = FingerPrintAuth.genPayFPEncrypt(e.dU(ah.getContext()), str1, str2, String.valueOf(this.mFS), str3, this.cnI, Build.MODEL);
+      paramm = FingerPrintAuth.genOpenFPSign(e.dU(ah.getContext()), e.getUserId(), com.tencent.mm.compatible.e.q.LK(), paramString);
+      localb.cwl = paramString;
+      localb.cwm = paramm;
     }
     for (;;)
     {
-      g.DQ();
-      g.DO().dJT.b(385, this);
-      this.kld.bOQ = localb;
-      this.kkX = true;
-      azJ();
+      g.RM();
+      g.RK().eHt.b(385, this);
+      this.mFR.cwh = localb;
+      this.mFK = true;
+      bbp();
+      AppMethodBeat.o(41475);
       return;
-      label250:
-      y.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth.genOpenFPEncrypt failed!");
+      label260:
+      ab.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "FingerPrintAuth.genOpenFPEncrypt failed!");
       break;
-      label261:
-      y.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "NetSceneTenpayGetOpenTouchCert doscene is fail");
+      label271:
+      ab.e("MicroMsg.GenFingerPrintRsaKeyEventListener", "NetSceneTenpayGetOpenTouchCert doscene is fail");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.f
  * JD-Core Version:    0.7.0.1
  */

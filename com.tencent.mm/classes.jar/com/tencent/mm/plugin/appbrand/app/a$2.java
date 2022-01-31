@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.mm.plugin.appbrand.appcache.b.d.b;
+import com.tencent.mm.plugin.appbrand.appcache.b.e.b;
 
 final class a$2
   implements a.a<b>

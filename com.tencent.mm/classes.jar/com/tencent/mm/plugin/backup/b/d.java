@@ -2,87 +2,88 @@ package com.tencent.mm.plugin.backup.b;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.compatible.util.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public abstract class d
   extends a
 {
   private static String TAG = "MicroMsg.BackupModel";
-  private static boolean dJq = false;
-  private static int hFq = 0;
-  private static byte[] hFr = "key".getBytes();
-  private static SharedPreferences hFt;
-  public String hFm = "id";
-  public String hFn = "hello";
-  public String hFo = "ok";
-  public e hFp;
-  public byte[] hFs;
+  private static boolean eGO = false;
+  private static int jyJ = 0;
+  private static byte[] jyK = "key".getBytes();
+  private static SharedPreferences jyM;
+  public String jyF = "id";
+  public String jyG = "hello";
+  public String jyH = "ok";
+  public e jyI;
+  public byte[] jyL;
   
-  public static void T(byte[] paramArrayOfByte)
+  public static int aSO()
   {
-    hFr = paramArrayOfByte;
+    return jyJ;
   }
   
-  public static int atq()
+  public static byte[] aSP()
   {
-    return hFq;
+    return jyK;
   }
   
-  public static byte[] atr()
+  public static SharedPreferences aSQ()
   {
-    return hFr;
-  }
-  
-  public static SharedPreferences ats()
-  {
-    if (hFt == null) {
-      hFt = ae.getContext().getSharedPreferences("BACKUP_CONFIG", 4);
+    if (jyM == null) {
+      jyM = ah.getContext().getSharedPreferences("BACKUP_CONFIG", h.Mp());
     }
-    return hFt;
+    return jyM;
   }
   
-  public static void att()
+  public static void aSR()
   {
-    y.i(TAG, "holdReset");
-    dJq = true;
+    ab.i(TAG, "holdReset");
+    eGO = true;
   }
   
-  public static boolean atu()
+  public static boolean aSS()
   {
-    return dJq;
+    return eGO;
   }
   
-  public static void atv()
+  public static void aST()
   {
-    hFr = "key".getBytes();
-    hFq = 0;
-    hFt = null;
-    dJq = false;
+    jyK = "key".getBytes();
+    jyJ = 0;
+    jyM = null;
+    eGO = false;
   }
   
-  public static void nu(int paramInt)
+  public static void an(byte[] paramArrayOfByte)
   {
-    hFq = paramInt;
+    jyK = paramArrayOfByte;
   }
   
-  public final e atn()
+  public static void rg(int paramInt)
   {
-    if (this.hFp == null) {
-      this.hFp = new e();
+    jyJ = paramInt;
+  }
+  
+  public final e aSL()
+  {
+    if (this.jyI == null) {
+      this.jyI = new e();
     }
-    return this.hFp;
+    return this.jyI;
   }
   
-  public abstract void ato();
+  public abstract void aSM();
   
-  public abstract void atp();
+  public abstract void aSN();
   
-  public abstract void l(Object... paramVarArgs);
+  public abstract void m(Object... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.b.d
  * JD-Core Version:    0.7.0.1
  */

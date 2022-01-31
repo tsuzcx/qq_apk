@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
 import android.media.MediaCodec;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class g$1
   implements Runnable
@@ -10,20 +11,23 @@ final class g$1
   
   public final void run()
   {
+    AppMethodBeat.i(3642);
     try
     {
-      if (this.mlP.mlF != null)
+      if (this.oKW.oKN != null)
       {
-        y.i("MicroMsg.MediaCodecAACTranscoder", "delay to stop decoder");
-        this.mlP.mlF.stop();
-        this.mlP.mlF.release();
-        this.mlP.mlF = null;
+        ab.i("MicroMsg.MediaCodecAACTranscoder", "delay to stop decoder");
+        this.oKW.oKN.stop();
+        this.oKW.oKN.release();
+        this.oKW.oKN = null;
       }
+      AppMethodBeat.o(3642);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.MediaCodecAACTranscoder", "delayStopDecoder error: %s", new Object[] { localException.getMessage() });
+      ab.e("MicroMsg.MediaCodecAACTranscoder", "delayStopDecoder error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(3642);
     }
   }
 }

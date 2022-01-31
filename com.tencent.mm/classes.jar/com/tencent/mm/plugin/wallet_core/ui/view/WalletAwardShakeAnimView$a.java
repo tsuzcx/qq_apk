@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet_core.ui.view;
 
 public abstract interface WalletAwardShakeAnimView$a
 {
-  public abstract void kM(boolean paramBoolean);
+  public abstract void nV(boolean paramBoolean);
 }
 
 

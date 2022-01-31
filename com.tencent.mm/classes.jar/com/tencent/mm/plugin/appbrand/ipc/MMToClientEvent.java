@@ -3,10 +3,13 @@ package com.tencent.mm.plugin.appbrand.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.plugin.appbrand.jsapi.l;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.t.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -18,166 +21,222 @@ import java.util.Set;
 public class MMToClientEvent
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<MMToClientEvent> CREATOR = new MMToClientEvent.2();
-  private static final HashMap<String, MMToClientEvent> gex = new HashMap();
-  private static final HashMap<String, Set<MMToClientEvent.c>> gey = new HashMap();
+  public static final Parcelable.Creator<MMToClientEvent> CREATOR;
+  private static final HashMap<String, MMToClientEvent> hww;
+  private static final HashMap<String, Set<c>> hwx;
   public String appId;
-  int bFo;
-  String bMw;
-  public int get;
-  private com.tencent.mm.plugin.appbrand.jsapi.c geu;
-  String gev;
-  Object gew;
+  int cmy;
+  String ctQ;
+  private c hrA;
+  public int hwt;
+  String hwu;
+  Object hwv;
   public int type;
+  
+  static
+  {
+    AppMethodBeat.i(86947);
+    hww = new HashMap();
+    hwx = new HashMap();
+    CREATOR = new MMToClientEvent.2();
+    AppMethodBeat.o(86947);
+  }
   
   private MMToClientEvent() {}
   
   private MMToClientEvent(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(86938);
+    f(paramParcel);
+    AppMethodBeat.o(86938);
   }
   
-  public static void a(String paramString, MMToClientEvent.c paramc)
+  public static void a(String paramString, c paramc)
   {
+    AppMethodBeat.i(86942);
     if (paramc != null) {
-      synchronized (gey)
+      synchronized (hwx)
       {
-        if (!gey.containsKey(paramString)) {
-          gey.put(paramString, new HashSet());
+        if (!hwx.containsKey(paramString)) {
+          hwx.put(paramString, new HashSet());
         }
-        ((Set)gey.get(paramString)).add(paramc);
+        ((Set)hwx.get(paramString)).add(paramc);
+        AppMethodBeat.o(86942);
         return;
       }
     }
+    AppMethodBeat.o(86942);
   }
   
-  public static void b(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
+  public static void b(String paramString, c paramc)
   {
-    if (paramc == null) {
+    AppMethodBeat.i(86943);
+    if (paramc != null) {
+      synchronized (hwx)
+      {
+        if (hwx.containsKey(paramString)) {
+          ((Set)hwx.get(paramString)).remove(paramc);
+        }
+        AppMethodBeat.o(86943);
+        return;
+      }
+    }
+    AppMethodBeat.o(86943);
+  }
+  
+  public static void e(c paramc)
+  {
+    AppMethodBeat.i(86940);
+    if (paramc == null)
+    {
+      AppMethodBeat.o(86940);
       return;
     }
     MMToClientEvent localMMToClientEvent = new MMToClientEvent();
-    gex.put(paramc.getAppId(), localMMToClientEvent);
-    localMMToClientEvent.get = 1;
+    hww.put(paramc.getAppId(), localMMToClientEvent);
+    localMMToClientEvent.hwt = 1;
     localMMToClientEvent.appId = paramc.getAppId();
-    localMMToClientEvent.geu = paramc;
+    localMMToClientEvent.hrA = paramc;
     AppBrandMainProcessService.a(localMMToClientEvent);
+    AppMethodBeat.o(86940);
   }
   
-  public static void b(String paramString, MMToClientEvent.c paramc)
+  public static void f(c paramc)
   {
-    if (paramc != null) {
-      synchronized (gey)
-      {
-        if (gey.containsKey(paramString)) {
-          ((Set)gey.get(paramString)).remove(paramc);
-        }
-        return;
-      }
+    AppMethodBeat.i(86941);
+    if (paramc == null)
+    {
+      AppMethodBeat.o(86941);
+      return;
+    }
+    MMToClientEvent localMMToClientEvent = (MMToClientEvent)hww.remove(paramc.getAppId());
+    if (localMMToClientEvent == null)
+    {
+      AppMethodBeat.o(86941);
+      return;
+    }
+    synchronized (hwx)
+    {
+      hwx.remove(paramc.getAppId());
+      localMMToClientEvent.hwt = 2;
+      localMMToClientEvent.appId = paramc.getAppId();
+      localMMToClientEvent.hrA = null;
+      AppBrandMainProcessService.b(localMMToClientEvent);
+      AppMethodBeat.o(86941);
+      return;
     }
   }
   
-  public static void c(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
+  public final void ata()
   {
-    if (paramc == null) {}
-    MMToClientEvent localMMToClientEvent;
-    do
+    AppMethodBeat.i(86939);
+    switch (this.hwt)
     {
-      return;
-      localMMToClientEvent = (MMToClientEvent)gex.get(paramc.getAppId());
-    } while (localMMToClientEvent == null);
-    gex.remove(paramc.getAppId());
-    localMMToClientEvent.get = 2;
-    localMMToClientEvent.appId = paramc.getAppId();
-    localMMToClientEvent.geu = null;
-    AppBrandMainProcessService.b(localMMToClientEvent);
-  }
-  
-  public final void Zu()
-  {
-    switch (this.get)
+    }
+    for (;;)
     {
-    default: 
+      AppMethodBeat.o(86939);
       return;
-    case 1: 
       d.b(this);
+      AppMethodBeat.o(86939);
       return;
+      d.c(this);
     }
-    d.c(this);
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    switch (this.get)
+    AppMethodBeat.i(86944);
+    switch (this.hwt)
     {
     }
-    do
+    for (;;)
     {
+      AppMethodBeat.o(86944);
       return;
       ??? = new MMToClientEvent.a();
-      localObject2 = new HashMap();
+      Object localObject2 = new HashMap();
       ((HashMap)localObject2).put("type", Integer.valueOf(this.type));
-      ((HashMap)localObject2).put("data", this.bMw);
-      ((MMToClientEvent.a)???).d(this.geu).o((Map)localObject2).dispatch();
+      ((HashMap)localObject2).put("data", this.ctQ);
+      ((MMToClientEvent.a)???).i(this.hrA).w((Map)localObject2).aBz();
+      AppMethodBeat.o(86944);
       return;
       ??? = new MMToClientEvent.b();
       localObject2 = new HashMap();
-      ((HashMap)localObject2).put("count", Integer.valueOf(this.bFo));
-      ((HashMap)localObject2).put("data", this.bMw);
-      ((MMToClientEvent.b)???).d(this.geu).o((Map)localObject2).dispatch();
+      ((HashMap)localObject2).put("count", Integer.valueOf(this.cmy));
+      ((HashMap)localObject2).put("data", this.ctQ);
+      ((MMToClientEvent.b)???).i(this.hrA).w((Map)localObject2).aBz();
+      AppMethodBeat.o(86944);
       return;
-    } while ((this.appId == null) || (this.gew == null) || (gey.get(this.appId) == null));
-    Object localObject2 = new LinkedList();
-    synchronized (gey)
-    {
-      ((List)localObject2).addAll((Collection)gey.get(this.appId));
-      com.tencent.mm.plugin.appbrand.v.c.DS().O(new MMToClientEvent.1(this, (List)localObject2));
-      return;
+      if ((this.appId == null) || (this.hwv == null))
+      {
+        AppMethodBeat.o(86944);
+        return;
+      }
+      if (hwx.get(this.appId) == null) {
+        continue;
+      }
+      localObject2 = new LinkedList();
+      synchronized (hwx)
+      {
+        ((List)localObject2).addAll((Collection)hwx.get(this.appId));
+        e.aNS().ac(new MMToClientEvent.1(this, (List)localObject2));
+      }
     }
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
-    this.get = paramParcel.readInt();
+    AppMethodBeat.i(86945);
+    this.hwt = paramParcel.readInt();
     this.appId = paramParcel.readString();
     this.type = paramParcel.readInt();
-    this.bMw = paramParcel.readString();
-    this.bFo = paramParcel.readInt();
+    this.ctQ = paramParcel.readString();
+    this.cmy = paramParcel.readInt();
     try
     {
-      this.gev = paramParcel.readString();
-      if (!bk.bl(this.gev))
+      this.hwu = paramParcel.readString();
+      if (!bo.isNullOrNil(this.hwu))
       {
-        Class localClass = Class.forName(this.gev);
+        Class localClass = Class.forName(this.hwu);
         if (localClass != null) {
-          this.gew = paramParcel.readParcelable(localClass.getClassLoader());
+          this.hwv = paramParcel.readParcelable(localClass.getClassLoader());
         }
       }
+      AppMethodBeat.o(86945);
       return;
     }
     catch (Exception paramParcel)
     {
-      y.v("MicroMsg.MMToClientEvent", "unparcel custom data e %s", new Object[] { paramParcel });
+      ab.v("MicroMsg.MMToClientEvent", "unparcel custom data e %s", new Object[] { paramParcel });
+      AppMethodBeat.o(86945);
     }
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.get);
+    AppMethodBeat.i(86946);
+    paramParcel.writeInt(this.hwt);
     paramParcel.writeString(this.appId);
     paramParcel.writeInt(this.type);
-    paramParcel.writeString(this.bMw);
-    paramParcel.writeInt(this.bFo);
-    if ((!bk.bl(this.gev)) && (this.gew != null))
+    paramParcel.writeString(this.ctQ);
+    paramParcel.writeInt(this.cmy);
+    if ((!bo.isNullOrNil(this.hwu)) && (this.hwv != null))
     {
-      paramParcel.writeString(this.gev);
-      paramParcel.writeParcelable((Parcelable)this.gew, paramInt);
+      paramParcel.writeString(this.hwu);
+      paramParcel.writeParcelable((Parcelable)this.hwv, paramInt);
     }
+    AppMethodBeat.o(86946);
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void aZ(Object paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,36 @@
 package com.tencent.mm.plugin.luckymoney.sns.a;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.tenpay.model.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class a
-  extends j
+  extends m
 {
-  public int lTN = 0;
+  public int oqS;
   
   public a(int paramInt, String paramString1, String paramString2)
   {
+    AppMethodBeat.i(42549);
+    this.oqS = 0;
     HashMap localHashMap = new HashMap();
     localHashMap.put("flag", String.valueOf(paramInt));
     localHashMap.put("passwd", paramString1);
-    localHashMap.put("req_key", paramString2);
-    this.lTN = paramInt;
-    D(localHashMap);
+    localHashMap.put("req_key", String.valueOf(paramString2));
+    this.oqS = paramInt;
+    setRequestData(localHashMap);
+    AppMethodBeat.o(42549);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
     return 1697;
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    y.i("MicroMsg.NetSceneSnsPayManage", " errCode: " + paramInt + " errMsg :" + paramString);
-    if (paramInt == 0)
-    {
-      if (this.lTN == 1)
-      {
-        com.tencent.mm.plugin.luckymoney.sns.b.a.tp(1);
-        y.i("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() setIsOpenSnsPay with 1");
-        return;
-      }
-      com.tencent.mm.plugin.luckymoney.sns.b.a.tp(0);
-      y.i("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() setIsOpenSnsPay with 0");
-      return;
-    }
-    y.e("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() NetSceneSnsPayManage is false!");
-  }
-  
-  public final int aEC()
+  public final int getTenpayCgicmd()
   {
     return 1697;
   }
@@ -53,10 +39,32 @@ public final class a
   {
     return "/cgi-bin/mmpay-bin/tenpay/snspaymanage";
   }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(42550);
+    ab.i("MicroMsg.NetSceneSnsPayManage", " errCode: " + paramInt + " errMsg :" + paramString);
+    if (paramInt == 0)
+    {
+      if (this.oqS == 1)
+      {
+        com.tencent.mm.plugin.luckymoney.sns.b.a.yt(1);
+        ab.i("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() setIsOpenSnsPay with 1");
+        AppMethodBeat.o(42550);
+        return;
+      }
+      com.tencent.mm.plugin.luckymoney.sns.b.a.yt(0);
+      ab.i("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() setIsOpenSnsPay with 0");
+      AppMethodBeat.o(42550);
+      return;
+    }
+    ab.e("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() NetSceneSnsPayManage is false!");
+    AppMethodBeat.o(42550);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.sns.a.a
  * JD-Core Version:    0.7.0.1
  */

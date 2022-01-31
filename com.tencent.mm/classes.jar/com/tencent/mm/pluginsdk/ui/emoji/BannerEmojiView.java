@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 
 public class BannerEmojiView
@@ -22,6 +23,7 @@ public class BannerEmojiView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(62469);
     paramInt1 = getRight() - getLeft() - getPaddingRight() - getPaddingLeft();
     paramInt2 = paramInt1 / 2;
     if ((paramInt1 == 0) || (paramInt2 == 0)) {
@@ -42,11 +44,12 @@ public class BannerEmojiView
       }
     }
     setMeasuredDimension(paramInt1, (int)(f1 * paramInt1));
+    AppMethodBeat.o(62469);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.emoji.BannerEmojiView
  * JD-Core Version:    0.7.0.1
  */

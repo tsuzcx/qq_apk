@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -8,19 +9,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.remittance.bankcard.a.f;
+import com.tencent.mm.plugin.remittance.bankcard.a.j;
 import com.tencent.mm.plugin.remittance.bankcard.model.TransferRecordParcel;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.ui.view.a;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.wallet_core.c.n;
-import com.tencent.mm.wallet_core.c.n.a;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.ui.tools.l;
+import com.tencent.mm.wallet_core.c.p;
+import com.tencent.mm.wallet_core.c.p.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -30,122 +30,145 @@ public class BankRemitSelectPayeeUI
   extends BankRemitBaseUI
   implements n.d
 {
-  private com.tencent.mm.ui.tools.j gGp;
-  private int nxA = -1;
-  private Intent nxB;
-  private ListView nxu;
-  private BankRemitSelectPayeeUI.b nxv;
-  private List<TransferRecordParcel> nxw;
-  private ArrayList<TransferRecordParcel> nxx;
-  private ArrayList<String> nxy;
-  private int nxz = -1;
+  private l igW;
+  private int qiA = -1;
+  private int qiB = -1;
+  private Intent qiC;
+  private ListView qiv;
+  private BankRemitSelectPayeeUI.b qiw;
+  private List<TransferRecordParcel> qix;
+  private ArrayList<TransferRecordParcel> qiy;
+  private ArrayList<String> qiz;
   
-  public final boolean c(int paramInt1, int paramInt2, final String paramString, m paramm)
+  public int getLayoutId()
   {
-    if ((paramm instanceof com.tencent.mm.plugin.remittance.bankcard.a.j))
+    return 2130968833;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(44690);
+    this.qiv = ((ListView)findViewById(2131821731));
+    this.igW = new l(this);
+    this.qiw = new BankRemitSelectPayeeUI.b(this, (byte)0);
+    this.qiv.setAdapter(this.qiw);
+    this.qiv.setOnItemClickListener(new BankRemitSelectPayeeUI.1(this));
+    this.qiv.setOnItemLongClickListener(new BankRemitSelectPayeeUI.3(this));
+    AppMethodBeat.o(44690);
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(44689);
+    super.onCreate(paramBundle);
+    paramBundle = getIntent().getParcelableArrayListExtra("key_self_transfer_record_list");
+    Object localObject = getIntent().getParcelableArrayListExtra("key_freq_transfer_record_list");
+    this.qix = new ArrayList();
+    if ((paramBundle != null) && (!paramBundle.isEmpty()))
     {
-      paramString = (com.tencent.mm.plugin.remittance.bankcard.a.j)paramm;
+      this.qiA = 0;
+      this.qix.addAll(paramBundle);
+    }
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      this.qiB = (this.qix.size() + this.qiA + 1);
+      this.qix.addAll((Collection)localObject);
+    }
+    ab.i("MicroMsg.BankRemitSelectPayeeUI", "selfHeaderPos: %s, otherHeaderPos: %s", new Object[] { Integer.valueOf(this.qiA), Integer.valueOf(this.qiB) });
+    paramBundle = this.qix.iterator();
+    while (paramBundle.hasNext())
+    {
+      localObject = (TransferRecordParcel)paramBundle.next();
+      ab.d("MicroMsg.BankRemitSelectPayeeUI", "seqno: %s, tail: %s, bank_logo: %s, bank_name: %s, bank_type: %s, payee: %s, explain: %s", new Object[] { ((TransferRecordParcel)localObject).qgu, ((TransferRecordParcel)localObject).qgv, ((TransferRecordParcel)localObject).qfY, ((TransferRecordParcel)localObject).nLq, ((TransferRecordParcel)localObject).poq, ((TransferRecordParcel)localObject).qgw, ((TransferRecordParcel)localObject).qgx });
+    }
+    this.qiC = new Intent();
+    initView();
+    setMMTitle(2131297517);
+    addSceneEndListener(1590);
+    addSceneEndListener(1395);
+    AppMethodBeat.o(44689);
+  }
+  
+  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  {
+    AppMethodBeat.i(44691);
+    paramContextMenu.add(0, 1, 0, 2131297515);
+    paramContextMenu.add(0, 0, 0, 2131297512);
+    AppMethodBeat.o(44691);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(44693);
+    super.onDestroy();
+    removeSceneEndListener(1590);
+    removeSceneEndListener(1395);
+    AppMethodBeat.o(44693);
+  }
+  
+  public void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  {
+    AppMethodBeat.i(44692);
+    paramInt = paramMenuItem.getItemId();
+    paramMenuItem = (AdapterView.AdapterContextMenuInfo)paramMenuItem.getMenuInfo();
+    paramMenuItem = (TransferRecordParcel)this.qiv.getItemAtPosition(paramMenuItem.position);
+    if (paramMenuItem == null)
+    {
+      ab.i("MicroMsg.BankRemitSelectPayeeUI", "select record is null");
+      AppMethodBeat.o(44692);
+      return;
+    }
+    if (paramInt == 1)
+    {
+      a.a(this, getString(2131298441), paramMenuItem.qgx, "", 32, new BankRemitSelectPayeeUI.4(this, paramMenuItem), new BankRemitSelectPayeeUI.5(this));
+      AppMethodBeat.o(44692);
+      return;
+    }
+    if (paramInt == 0)
+    {
+      paramMenuItem = paramMenuItem.qgu;
+      ab.i("MicroMsg.BankRemitSelectPayeeUI", "do delete record");
+      doSceneProgress(new f(paramMenuItem), true);
+      h.qsU.e(14673, new Object[] { Integer.valueOf(7) });
+      AppMethodBeat.o(44692);
+      return;
+    }
+    ab.i("MicroMsg.BankRemitSelectPayeeUI", "unknown itemId: %s", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.o(44692);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, m paramm)
+  {
+    AppMethodBeat.i(44694);
+    if ((paramm instanceof j))
+    {
+      paramString = (j)paramm;
       paramString.a(new BankRemitSelectPayeeUI.8(this, paramString)).b(new BankRemitSelectPayeeUI.7(this, paramString)).c(new BankRemitSelectPayeeUI.6(this));
     }
     for (;;)
     {
+      AppMethodBeat.o(44694);
       return false;
       if ((paramm instanceof f))
       {
         paramString = (f)paramm;
-        paramString.a(new n.a()
+        paramString.a(new p.a()
         {
-          public final void f(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm)
+          public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm)
           {
-            BankRemitSelectPayeeUI.a(BankRemitSelectPayeeUI.this, paramString.nuR);
+            AppMethodBeat.i(44672);
+            BankRemitSelectPayeeUI.a(BankRemitSelectPayeeUI.this, paramString.qfK);
+            AppMethodBeat.o(44672);
           }
         }).b(new BankRemitSelectPayeeUI.10(this, paramString)).c(new BankRemitSelectPayeeUI.9(this));
       }
     }
   }
   
-  protected final int getLayoutId()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return a.g.bank_remit_select_payee_ui;
-  }
-  
-  public final void initView()
-  {
-    this.nxu = ((ListView)findViewById(a.f.brsp_lv));
-    this.gGp = new com.tencent.mm.ui.tools.j(this);
-    this.nxv = new BankRemitSelectPayeeUI.b(this, (byte)0);
-    this.nxu.setAdapter(this.nxv);
-    this.nxu.setOnItemClickListener(new BankRemitSelectPayeeUI.1(this));
-    this.nxu.setOnItemLongClickListener(new BankRemitSelectPayeeUI.3(this));
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = getIntent().getParcelableArrayListExtra("key_self_transfer_record_list");
-    Object localObject = getIntent().getParcelableArrayListExtra("key_freq_transfer_record_list");
-    this.nxw = new ArrayList();
-    if ((paramBundle != null) && (!paramBundle.isEmpty()))
-    {
-      this.nxz = 0;
-      this.nxw.addAll(paramBundle);
-    }
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      this.nxA = (this.nxw.size() + this.nxz + 1);
-      this.nxw.addAll((Collection)localObject);
-    }
-    y.i("MicroMsg.BankRemitSelectPayeeUI", "selfHeaderPos: %s, otherHeaderPos: %s", new Object[] { Integer.valueOf(this.nxz), Integer.valueOf(this.nxA) });
-    paramBundle = this.nxw.iterator();
-    while (paramBundle.hasNext())
-    {
-      localObject = (TransferRecordParcel)paramBundle.next();
-      y.d("MicroMsg.BankRemitSelectPayeeUI", "seqno: %s, tail: %s, bank_logo: %s, bank_name: %s, bank_type: %s, payee: %s, explain: %s", new Object[] { ((TransferRecordParcel)localObject).nvy, ((TransferRecordParcel)localObject).nvz, ((TransferRecordParcel)localObject).nve, ((TransferRecordParcel)localObject).lnT, ((TransferRecordParcel)localObject).mOb, ((TransferRecordParcel)localObject).nvA, ((TransferRecordParcel)localObject).nvB });
-    }
-    this.nxB = new Intent();
-    initView();
-    setMMTitle(a.i.bank_remit_select_payee_title);
-    kh(1590);
-    kh(1395);
-  }
-  
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
-  {
-    paramContextMenu.add(0, 1, 0, a.i.bank_remit_select_payee_remark_text);
-    paramContextMenu.add(0, 0, 0, a.i.bank_remit_select_payee_delete_text);
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    ki(1590);
-    ki(1395);
-  }
-  
-  public void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-  {
-    paramInt = paramMenuItem.getItemId();
-    paramMenuItem = (AdapterView.AdapterContextMenuInfo)paramMenuItem.getMenuInfo();
-    paramMenuItem = (TransferRecordParcel)this.nxu.getItemAtPosition(paramMenuItem.position);
-    if (paramMenuItem == null)
-    {
-      y.i("MicroMsg.BankRemitSelectPayeeUI", "select record is null");
-      return;
-    }
-    if (paramInt == 1)
-    {
-      a.a(this, getString(a.i.collect_main_add_desc_title), paramMenuItem.nvB, "", 32, new BankRemitSelectPayeeUI.4(this, paramMenuItem), new BankRemitSelectPayeeUI.5(this));
-      return;
-    }
-    if (paramInt == 0)
-    {
-      paramMenuItem = paramMenuItem.nvy;
-      y.i("MicroMsg.BankRemitSelectPayeeUI", "do delete record");
-      a(new f(paramMenuItem), true, false);
-      h.nFQ.f(14673, new Object[] { Integer.valueOf(7) });
-      return;
-    }
-    y.i("MicroMsg.BankRemitSelectPayeeUI", "unknown itemId: %s", new Object[] { Integer.valueOf(paramInt) });
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

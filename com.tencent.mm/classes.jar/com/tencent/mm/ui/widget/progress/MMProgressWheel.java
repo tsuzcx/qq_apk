@@ -16,59 +16,90 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.mm.ci.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ck.a.a;
 
 public class MMProgressWheel
   extends View
 {
-  private static final String TAG = MMProgressWheel.class.getSimpleName();
-  private float St = 0.0F;
-  private final int barLength = 16;
-  private boolean wpA;
-  private float wpB = 0.0F;
-  private boolean wpC = false;
-  private MMProgressWheel.a wpD;
-  private boolean wpE;
-  private final int wpi = 270;
-  private final long wpj = 200L;
-  private int wpk = 28;
-  private int wpl = 4;
-  private int wpm = 4;
-  private boolean wpn = false;
-  private double wpo = 0.0D;
-  private double wpp = 460.0D;
-  private float wpq = 0.0F;
-  private boolean wpr = true;
-  private long wps = 0L;
-  private int wpt = -1442840576;
-  private int wpu = 16777215;
-  private Paint wpv = new Paint();
-  private Paint wpw = new Paint();
-  private RectF wpx = new RectF();
-  private float wpy = 230.0F;
-  private long wpz = 0L;
+  private static final String TAG;
+  private final int AJI;
+  private final int AJJ;
+  private final long AJK;
+  private int AJL;
+  private int AJM;
+  private boolean AJN;
+  private double AJO;
+  private double AJP;
+  private float AJQ;
+  private boolean AJR;
+  private long AJS;
+  private int AJT;
+  private int AJU;
+  private Paint AJV;
+  private Paint AJW;
+  private RectF AJX;
+  private float AJY;
+  private long AJZ;
+  private boolean AKa;
+  private float AKb;
+  private boolean AKc;
+  private MMProgressWheel.a AKd;
+  private boolean AKe;
+  private float Tb;
+  private int circleRadius;
+  
+  static
+  {
+    AppMethodBeat.i(112958);
+    TAG = MMProgressWheel.class.getSimpleName();
+    AppMethodBeat.o(112958);
+  }
   
   public MMProgressWheel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.MMProgressWheel);
+    AppMethodBeat.i(112940);
+    this.AJI = 16;
+    this.AJJ = 270;
+    this.AJK = 200L;
+    this.circleRadius = 28;
+    this.AJL = 4;
+    this.AJM = 4;
+    this.AJN = false;
+    this.AJO = 0.0D;
+    this.AJP = 460.0D;
+    this.AJQ = 0.0F;
+    this.AJR = true;
+    this.AJS = 0L;
+    this.AJT = -1442840576;
+    this.AJU = 16777215;
+    this.AJV = new Paint();
+    this.AJW = new Paint();
+    this.AJX = new RectF();
+    this.AJY = 230.0F;
+    this.AJZ = 0L;
+    this.Tb = 0.0F;
+    this.AKb = 0.0F;
+    this.AKc = false;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMProgressWheel);
     paramAttributeSet = getContext().getResources().getDisplayMetrics();
-    this.wpl = ((int)TypedValue.applyDimension(1, this.wpl, paramAttributeSet));
-    this.wpm = ((int)TypedValue.applyDimension(1, this.wpm, paramAttributeSet));
-    this.wpk = ((int)TypedValue.applyDimension(1, this.wpk, paramAttributeSet));
-    this.wpk = ((int)paramContext.getDimension(a.k.MMProgressWheel_matProg_circleRadius, this.wpk));
-    this.wpn = paramContext.getBoolean(a.k.MMProgressWheel_matProg_fillRadius, false);
-    this.wpl = ((int)paramContext.getDimension(a.k.MMProgressWheel_matProg_barWidth, this.wpl));
-    this.wpm = ((int)paramContext.getDimension(a.k.MMProgressWheel_matProg_rimWidth, this.wpm));
-    this.wpy = (paramContext.getFloat(a.k.MMProgressWheel_matProg_spinSpeed, this.wpy / 360.0F) * 360.0F);
-    this.wpp = paramContext.getInt(a.k.MMProgressWheel_matProg_barSpinCycleTime, (int)this.wpp);
-    this.wpt = paramContext.getColor(a.k.MMProgressWheel_matProg_barColor, this.wpt);
-    this.wpu = paramContext.getColor(a.k.MMProgressWheel_matProg_rimColor, this.wpu);
-    this.wpA = paramContext.getBoolean(a.k.MMProgressWheel_matProg_linearProgress, false);
-    if (paramContext.getBoolean(a.k.MMProgressWheel_matProg_progressIndeterminate, false))
+    this.AJL = ((int)TypedValue.applyDimension(1, this.AJL, paramAttributeSet));
+    this.AJM = ((int)TypedValue.applyDimension(1, this.AJM, paramAttributeSet));
+    this.circleRadius = ((int)TypedValue.applyDimension(1, this.circleRadius, paramAttributeSet));
+    this.circleRadius = ((int)paramContext.getDimension(6, this.circleRadius));
+    this.AJN = paramContext.getBoolean(7, false);
+    this.AJL = ((int)paramContext.getDimension(8, this.AJL));
+    this.AJM = ((int)paramContext.getDimension(3, this.AJM));
+    this.AJY = (paramContext.getFloat(4, this.AJY / 360.0F) * 360.0F);
+    this.AJP = paramContext.getInt(5, (int)this.AJP);
+    this.AJT = paramContext.getColor(1, this.AJT);
+    this.AJU = paramContext.getColor(2, this.AJU);
+    this.AKa = paramContext.getBoolean(9, false);
+    if (paramContext.getBoolean(0, false))
     {
-      this.wpz = SystemClock.uptimeMillis();
-      this.wpC = true;
+      this.AJZ = SystemClock.uptimeMillis();
+      this.AKc = true;
       invalidate();
     }
     paramContext.recycle();
@@ -77,184 +108,188 @@ public class MMProgressWheel
     {
       f = Settings.Global.getFloat(getContext().getContentResolver(), "animator_duration_scale", 1.0F);
       if (f == 0.0F) {
-        break label439;
+        break label433;
       }
     }
     for (;;)
     {
-      this.wpE = bool;
+      this.AKe = bool;
+      AppMethodBeat.o(112940);
       return;
       f = Settings.System.getFloat(getContext().getContentResolver(), "animator_duration_scale", 1.0F);
       break;
-      label439:
+      label433:
       bool = false;
     }
   }
   
-  private void cKt()
+  private void dPy()
   {
-    this.wpv.setColor(this.wpt);
-    this.wpv.setAntiAlias(true);
-    this.wpv.setStyle(Paint.Style.STROKE);
-    this.wpv.setStrokeWidth(this.wpl);
-    this.wpw.setColor(this.wpu);
-    this.wpw.setAntiAlias(true);
-    this.wpw.setStyle(Paint.Style.STROKE);
-    this.wpw.setStrokeWidth(this.wpm);
+    AppMethodBeat.i(112943);
+    this.AJV.setColor(this.AJT);
+    this.AJV.setAntiAlias(true);
+    this.AJV.setStyle(Paint.Style.STROKE);
+    this.AJV.setStrokeWidth(this.AJL);
+    this.AJW.setColor(this.AJU);
+    this.AJW.setAntiAlias(true);
+    this.AJW.setStyle(Paint.Style.STROKE);
+    this.AJW.setStrokeWidth(this.AJM);
+    AppMethodBeat.o(112943);
   }
   
-  private void cKu()
+  private void dPz()
   {
-    if (this.wpD != null) {
-      Math.round(this.St * 100.0F / 360.0F);
+    AppMethodBeat.i(112947);
+    if (this.AKd != null) {
+      Math.round(this.Tb * 100.0F / 360.0F);
     }
+    AppMethodBeat.o(112947);
   }
   
   public int getBarColor()
   {
-    return this.wpt;
+    return this.AJT;
   }
   
   public int getBarWidth()
   {
-    return this.wpl;
+    return this.AJL;
   }
   
   public int getCircleRadius()
   {
-    return this.wpk;
+    return this.circleRadius;
   }
   
   public float getProgress()
   {
-    if (this.wpC) {
+    if (this.AKc) {
       return -1.0F;
     }
-    return this.St / 360.0F;
+    return this.Tb / 360.0F;
   }
   
   public int getRimColor()
   {
-    return this.wpu;
+    return this.AJU;
   }
   
   public int getRimWidth()
   {
-    return this.wpm;
+    return this.AJM;
   }
   
   public float getSpinSpeed()
   {
-    return this.wpy / 360.0F;
+    return this.AJY / 360.0F;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int j = 1;
     int i = 1;
+    AppMethodBeat.i(112945);
     super.onDraw(paramCanvas);
-    paramCanvas.drawArc(this.wpx, 360.0F, 360.0F, false, this.wpw);
-    if (!this.wpE) {
+    paramCanvas.drawArc(this.AJX, 360.0F, 360.0F, false, this.AJW);
+    if (!this.AKe)
+    {
+      AppMethodBeat.o(112945);
       return;
     }
     float f2;
-    if (this.wpC)
+    if (this.AKc)
     {
-      long l = SystemClock.uptimeMillis() - this.wpz;
-      f1 = (float)l * this.wpy / 1000.0F;
+      long l = SystemClock.uptimeMillis() - this.AJZ;
+      f1 = (float)l * this.AJY / 1000.0F;
       boolean bool;
-      if (this.wps >= 200L)
+      if (this.AJS >= 200L)
       {
-        double d = this.wpo;
-        this.wpo = (l + d);
-        if (this.wpo > this.wpp)
+        double d = this.AJO;
+        this.AJO = (l + d);
+        if (this.AJO > this.AJP)
         {
-          this.wpo -= this.wpp;
-          this.wps = 0L;
-          if (!this.wpr)
+          this.AJO -= this.AJP;
+          this.AJS = 0L;
+          if (!this.AJR)
           {
             bool = true;
-            this.wpr = bool;
+            this.AJR = bool;
           }
         }
         else
         {
-          f2 = (float)Math.cos((this.wpo / this.wpp + 1.0D) * 3.141592653589793D) / 2.0F + 0.5F;
-          if (!this.wpr) {
-            break label289;
+          f2 = (float)Math.cos((this.AJO / this.AJP + 1.0D) * 3.141592653589793D) / 2.0F + 0.5F;
+          if (!this.AJR) {
+            break label307;
           }
-          this.wpq = (f2 * 254.0F);
+          this.AJQ = (f2 * 254.0F);
         }
       }
       for (;;)
       {
-        this.St += f1;
-        if (this.St > 360.0F) {
-          this.St -= 360.0F;
+        this.Tb += f1;
+        if (this.Tb > 360.0F) {
+          this.Tb -= 360.0F;
         }
-        this.wpz = SystemClock.uptimeMillis();
-        f1 = this.St - 90.0F;
-        f2 = 16.0F + this.wpq;
+        this.AJZ = SystemClock.uptimeMillis();
+        f1 = this.Tb - 90.0F;
+        f2 = 16.0F + this.AJQ;
         if (isInEditMode())
         {
           f1 = 0.0F;
           f2 = 135.0F;
         }
-        paramCanvas.drawArc(this.wpx, f1, f2, false, this.wpv);
-        label273:
-        if (i == 0) {
-          break label513;
+        paramCanvas.drawArc(this.AJX, f1, f2, false, this.AJV);
+        if (i != 0) {
+          invalidate();
         }
-        invalidate();
+        AppMethodBeat.o(112945);
         return;
         bool = false;
         break;
-        label289:
+        label307:
         f2 = (1.0F - f2) * 254.0F;
-        this.St += this.wpq - f2;
-        this.wpq = f2;
+        this.Tb += this.AJQ - f2;
+        this.AJQ = f2;
         continue;
-        this.wps = (l + this.wps);
+        this.AJS = (l + this.AJS);
       }
     }
-    float f1 = this.St;
-    if (this.St != this.wpB)
+    float f1 = this.Tb;
+    if (this.Tb != this.AKb)
     {
-      this.St = Math.min((float)(SystemClock.uptimeMillis() - this.wpz) / 1000.0F * this.wpy + this.St, this.wpB);
-      this.wpz = SystemClock.uptimeMillis();
+      this.Tb = Math.min((float)(SystemClock.uptimeMillis() - this.AJZ) / 1000.0F * this.AJY + this.Tb, this.AKb);
+      this.AJZ = SystemClock.uptimeMillis();
     }
     for (i = j;; i = 0)
     {
-      if (f1 != this.St) {
-        cKu();
+      if (f1 != this.Tb) {
+        dPz();
       }
-      f1 = this.St;
-      if (!this.wpA)
+      f2 = 0.0F;
+      f1 = this.Tb;
+      if (!this.AKa)
       {
-        f2 = (float)(1.0D - Math.pow(1.0F - this.St / 360.0F, 4.0D));
-        f1 = (float)(1.0D - Math.pow(1.0F - this.St / 360.0F, 2.0D)) * 360.0F;
+        f2 = (float)(1.0D - Math.pow(1.0F - this.Tb / 360.0F, 4.0D)) * 360.0F;
+        f1 = (float)(1.0D - Math.pow(1.0F - this.Tb / 360.0F, 2.0D)) * 360.0F;
       }
-      for (f2 *= 360.0F;; f2 = 0.0F)
+      if (isInEditMode()) {
+        f1 = 360.0F;
+      }
+      for (;;)
       {
-        if (isInEditMode()) {
-          f1 = 360.0F;
-        }
-        for (;;)
-        {
-          paramCanvas.drawArc(this.wpx, f2 - 90.0F, f1, false, this.wpv);
-          break label273;
-          label513:
-          break;
-        }
+        paramCanvas.drawArc(this.AJX, f2 - 90.0F, f1, false, this.AJV);
+        break;
       }
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(112941);
     super.onMeasure(paramInt1, paramInt2);
-    int k = this.wpk + getPaddingLeft() + getPaddingRight();
-    int i = this.wpk + getPaddingTop() + getPaddingBottom();
+    int k = this.circleRadius + getPaddingLeft() + getPaddingRight();
+    int i = this.circleRadius + getPaddingTop() + getPaddingBottom();
     int n = View.MeasureSpec.getMode(paramInt1);
     int m = View.MeasureSpec.getSize(paramInt1);
     int i1 = View.MeasureSpec.getMode(paramInt2);
@@ -272,6 +307,7 @@ public class MMProgressWheel
       for (;;)
       {
         setMeasuredDimension(paramInt1, paramInt2);
+        AppMethodBeat.o(112941);
         return;
         paramInt2 = i;
         if (i1 == -2147483648) {
@@ -283,191 +319,220 @@ public class MMProgressWheel
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
   {
+    AppMethodBeat.i(112950);
     if (!(paramParcelable instanceof MMProgressWheel.WheelSavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
+      AppMethodBeat.o(112950);
       return;
     }
     paramParcelable = (MMProgressWheel.WheelSavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.St = paramParcelable.St;
-    this.wpB = paramParcelable.wpB;
-    this.wpC = paramParcelable.wpC;
-    this.wpy = paramParcelable.wpy;
-    this.wpl = paramParcelable.wpl;
-    this.wpt = paramParcelable.wpt;
-    this.wpm = paramParcelable.wpm;
-    this.wpu = paramParcelable.wpu;
-    this.wpk = paramParcelable.wpk;
-    this.wpA = paramParcelable.wpA;
-    this.wpn = paramParcelable.wpn;
-    this.wpz = SystemClock.uptimeMillis();
+    this.Tb = paramParcelable.Tb;
+    this.AKb = paramParcelable.AKb;
+    this.AKc = paramParcelable.AKc;
+    this.AJY = paramParcelable.AJY;
+    this.AJL = paramParcelable.AJL;
+    this.AJT = paramParcelable.AJT;
+    this.AJM = paramParcelable.AJM;
+    this.AJU = paramParcelable.AJU;
+    this.circleRadius = paramParcelable.circleRadius;
+    this.AKa = paramParcelable.AKa;
+    this.AJN = paramParcelable.AJN;
+    this.AJZ = SystemClock.uptimeMillis();
+    AppMethodBeat.o(112950);
   }
   
   public Parcelable onSaveInstanceState()
   {
+    AppMethodBeat.i(112949);
     MMProgressWheel.WheelSavedState localWheelSavedState = new MMProgressWheel.WheelSavedState(super.onSaveInstanceState());
-    localWheelSavedState.St = this.St;
-    localWheelSavedState.wpB = this.wpB;
-    localWheelSavedState.wpC = this.wpC;
-    localWheelSavedState.wpy = this.wpy;
-    localWheelSavedState.wpl = this.wpl;
-    localWheelSavedState.wpt = this.wpt;
-    localWheelSavedState.wpm = this.wpm;
-    localWheelSavedState.wpu = this.wpu;
-    localWheelSavedState.wpk = this.wpk;
-    localWheelSavedState.wpA = this.wpA;
-    localWheelSavedState.wpn = this.wpn;
+    localWheelSavedState.Tb = this.Tb;
+    localWheelSavedState.AKb = this.AKb;
+    localWheelSavedState.AKc = this.AKc;
+    localWheelSavedState.AJY = this.AJY;
+    localWheelSavedState.AJL = this.AJL;
+    localWheelSavedState.AJT = this.AJT;
+    localWheelSavedState.AJM = this.AJM;
+    localWheelSavedState.AJU = this.AJU;
+    localWheelSavedState.circleRadius = this.circleRadius;
+    localWheelSavedState.AKa = this.AKa;
+    localWheelSavedState.AJN = this.AJN;
+    AppMethodBeat.o(112949);
     return localWheelSavedState;
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(112942);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt4 = getPaddingTop();
     int i = getPaddingBottom();
     int j = getPaddingLeft();
     int k = getPaddingRight();
-    if (!this.wpn)
+    if (!this.AJN)
     {
-      paramInt3 = Math.min(Math.min(paramInt1 - j - k, paramInt2 - i - paramInt4), this.wpk * 2 - this.wpl * 2);
+      paramInt3 = Math.min(Math.min(paramInt1 - j - k, paramInt2 - i - paramInt4), this.circleRadius * 2 - this.AJL * 2);
       paramInt1 = j + (paramInt1 - j - k - paramInt3) / 2;
       paramInt2 = paramInt4 + (paramInt2 - paramInt4 - i - paramInt3) / 2;
     }
-    for (this.wpx = new RectF(this.wpl + paramInt1, this.wpl + paramInt2, paramInt1 + paramInt3 - this.wpl, paramInt2 + paramInt3 - this.wpl);; this.wpx = new RectF(j + this.wpl, paramInt4 + this.wpl, paramInt1 - k - this.wpl, paramInt2 - i - this.wpl))
+    for (this.AJX = new RectF(this.AJL + paramInt1, this.AJL + paramInt2, paramInt1 + paramInt3 - this.AJL, paramInt2 + paramInt3 - this.AJL);; this.AJX = new RectF(j + this.AJL, paramInt4 + this.AJL, paramInt1 - k - this.AJL, paramInt2 - i - this.AJL))
     {
-      cKt();
+      dPy();
       invalidate();
+      AppMethodBeat.o(112942);
       return;
     }
   }
   
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
+    AppMethodBeat.i(112946);
     super.onVisibilityChanged(paramView, paramInt);
     if (paramInt == 0) {
-      this.wpz = SystemClock.uptimeMillis();
+      this.AJZ = SystemClock.uptimeMillis();
     }
+    AppMethodBeat.o(112946);
   }
   
   public void setBarColor(int paramInt)
   {
-    this.wpt = paramInt;
-    cKt();
-    if (!this.wpC) {
+    AppMethodBeat.i(112955);
+    this.AJT = paramInt;
+    dPy();
+    if (!this.AKc) {
       invalidate();
     }
+    AppMethodBeat.o(112955);
   }
   
   public void setBarWidth(int paramInt)
   {
-    this.wpl = paramInt;
-    if (!this.wpC) {
+    AppMethodBeat.i(112954);
+    this.AJL = paramInt;
+    if (!this.AKc) {
       invalidate();
     }
+    AppMethodBeat.o(112954);
   }
   
   public void setCallback(MMProgressWheel.a parama)
   {
-    this.wpD = parama;
-    if (!this.wpC) {
-      cKu();
+    AppMethodBeat.i(112944);
+    this.AKd = parama;
+    if (!this.AKc) {
+      dPz();
     }
+    AppMethodBeat.o(112944);
   }
   
   public void setCircleRadius(int paramInt)
   {
-    this.wpk = paramInt;
-    if (!this.wpC) {
+    AppMethodBeat.i(112953);
+    this.circleRadius = paramInt;
+    if (!this.AKc) {
       invalidate();
     }
+    AppMethodBeat.o(112953);
   }
   
   public void setInstantProgress(float paramFloat)
   {
-    if (this.wpC)
+    AppMethodBeat.i(112948);
+    if (this.AKc)
     {
-      this.St = 0.0F;
-      this.wpC = false;
+      this.Tb = 0.0F;
+      this.AKc = false;
     }
     float f;
     if (paramFloat > 1.0F) {
       f = paramFloat - 1.0F;
     }
-    while (Math.abs(f - this.wpB) <= 0.0F)
+    while (Math.abs(f - this.AKb) <= 0.0F)
     {
+      AppMethodBeat.o(112948);
       return;
       f = paramFloat;
       if (paramFloat < 0.0F) {
         f = 0.0F;
       }
     }
-    this.wpB = Math.min(f * 360.0F, 360.0F);
-    this.St = this.wpB;
-    this.wpz = SystemClock.uptimeMillis();
+    this.AKb = Math.min(f * 360.0F, 360.0F);
+    this.Tb = this.AKb;
+    this.AJZ = SystemClock.uptimeMillis();
     invalidate();
+    AppMethodBeat.o(112948);
   }
   
   public void setLinearProgress(boolean paramBoolean)
   {
-    this.wpA = paramBoolean;
-    if (!this.wpC) {
+    AppMethodBeat.i(112952);
+    this.AKa = paramBoolean;
+    if (!this.AKc) {
       invalidate();
     }
+    AppMethodBeat.o(112952);
   }
   
   public void setProgress(float paramFloat)
   {
-    if (this.wpC)
+    AppMethodBeat.i(112951);
+    if (this.AKc)
     {
-      this.St = 0.0F;
-      this.wpC = false;
-      cKu();
+      this.Tb = 0.0F;
+      this.AKc = false;
+      dPz();
     }
     float f;
     if (paramFloat > 1.0F) {
       f = paramFloat - 1.0F;
     }
-    while (Math.abs(f - this.wpB) <= 0.0F)
+    while (Math.abs(f - this.AKb) <= 0.0F)
     {
+      AppMethodBeat.o(112951);
       return;
       f = paramFloat;
       if (paramFloat < 0.0F) {
         f = 0.0F;
       }
     }
-    if (this.St == this.wpB) {
-      this.wpz = SystemClock.uptimeMillis();
+    if (this.Tb == this.AKb) {
+      this.AJZ = SystemClock.uptimeMillis();
     }
-    this.wpB = Math.min(f * 360.0F, 360.0F);
+    this.AKb = Math.min(f * 360.0F, 360.0F);
     invalidate();
+    AppMethodBeat.o(112951);
   }
   
   public void setRimColor(int paramInt)
   {
-    this.wpu = paramInt;
-    cKt();
-    if (!this.wpC) {
+    AppMethodBeat.i(112956);
+    this.AJU = paramInt;
+    dPy();
+    if (!this.AKc) {
       invalidate();
     }
+    AppMethodBeat.o(112956);
   }
   
   public void setRimWidth(int paramInt)
   {
-    this.wpm = paramInt;
-    if (!this.wpC) {
+    AppMethodBeat.i(112957);
+    this.AJM = paramInt;
+    if (!this.AKc) {
       invalidate();
     }
+    AppMethodBeat.o(112957);
   }
   
   public void setSpinSpeed(float paramFloat)
   {
-    this.wpy = (360.0F * paramFloat);
+    this.AJY = (360.0F * paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.widget.progress.MMProgressWheel
  * JD-Core Version:    0.7.0.1
  */

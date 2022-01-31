@@ -1,21 +1,25 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginUI$9
-  implements View.OnKeyListener
+  implements TextView.OnEditorActionListener
 {
   LoginUI$9(LoginUI paramLoginUI) {}
   
-  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
+    AppMethodBeat.i(152556);
+    if ((paramInt == 6) || (paramInt == 5))
     {
-      LoginUI.f(this.fnM);
+      LoginUI.e(this.gFf);
+      AppMethodBeat.o(152556);
       return true;
     }
+    AppMethodBeat.o(152556);
     return false;
   }
 }

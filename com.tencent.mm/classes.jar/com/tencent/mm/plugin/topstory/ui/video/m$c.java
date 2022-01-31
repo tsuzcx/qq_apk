@@ -1,33 +1,36 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import com.tencent.mm.j.d;
-import com.tencent.mm.j.f.b;
-import com.tencent.mm.protocal.c.byh;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.i.d;
+import com.tencent.mm.i.g.b;
+import com.tencent.mm.protocal.protobuf.cky;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Map;
 
 final class m$c
-  implements f.b
+  implements g.b
 {
   private m$c(m paramm) {}
   
   public final void a(String paramString, d paramd)
   {
-    if (this.pFV.pFS.containsKey(paramString))
+    AppMethodBeat.i(1749);
+    if (this.tjs.tjq.containsKey(paramString))
     {
-      byh localbyh = (byh)this.pFV.pFS.get(paramString);
-      localbyh.tOL = paramd.field_recvedBytes;
-      localbyh.tOM = m.N(localbyh.tOL, paramd.field_fileLength);
-      localbyh.tOF = paramd.field_fileLength;
-      this.pFV.pFS.put(paramString, localbyh);
-      y.i("MicroMsg.TopStory.TopStoryPreloadMgr", "VideoPreloadCallback onFinish %s %d %s", new Object[] { paramString, Long.valueOf(localbyh.tOM), bk.a(localbyh.tOL, 100.0D) });
+      cky localcky = (cky)this.tjs.tjq.get(paramString);
+      localcky.xVt = paramd.field_recvedBytes;
+      localcky.xVu = m.ac(localcky.xVt, paramd.field_fileLength);
+      localcky.xVi = paramd.field_fileLength;
+      this.tjs.tjq.put(paramString, localcky);
+      ab.i("MicroMsg.TopStory.TopStoryPreloadMgr", "VideoPreloadCallback onFinish %s %d %s", new Object[] { paramString, Long.valueOf(localcky.xVu), bo.b(localcky.xVt, 100.0D) });
     }
+    AppMethodBeat.o(1749);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.m.c
  * JD-Core Version:    0.7.0.1
  */

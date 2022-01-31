@@ -1,40 +1,45 @@
 package com.tencent.mm.roomsdk.a.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.roomsdk.a.b.a;
 import com.tencent.mm.roomsdk.a.b.e;
 import com.tencent.mm.ui.base.p;
 
 final class c$2
-  implements h.a
+  implements i.a
 {
   c$2(c paramc) {}
   
-  public final void n(int paramInt, String paramString1, String paramString2)
+  public final void x(int paramInt, String paramString1, String paramString2)
   {
-    ((j)g.r(j.class)).Fv().b(this.ubA.ubx.getCmdId(), this.ubA.ubz);
-    if (this.ubA.uby) {}
-    do
+    AppMethodBeat.i(80265);
+    ((j)g.E(j.class)).Yz().b(this.yjP.yjM.getCmdId(), this.yjP.yjO);
+    if (this.yjP.yjN)
     {
+      AppMethodBeat.o(80265);
       return;
-      this.ubA.uby = true;
-      if (this.ubA.ubu != null)
+    }
+    this.yjP.yjN = true;
+    if (this.yjP.yjK != null)
+    {
+      if ((this.yjP.yjK instanceof e))
       {
-        if ((this.ubA.ubu instanceof e))
-        {
-          e locale = (e)this.ubA.ubu;
-          locale.ret = paramInt;
-          locale.title = paramString1;
-          locale.content = paramString2;
-        }
-        this.ubA.ubu.a(0, paramInt, "", this.ubA.ubu);
+        e locale = (e)this.yjP.yjK;
+        locale.ret = paramInt;
+        locale.title = paramString1;
+        locale.content = paramString2;
       }
-    } while (this.ubA.tipDialog == null);
-    this.ubA.tipDialog.dismiss();
+      this.yjP.yjK.a(0, paramInt, "", this.yjP.yjK);
+    }
+    if (this.yjP.tipDialog != null) {
+      this.yjP.tipDialog.dismiss();
+    }
+    AppMethodBeat.o(80265);
   }
 }
 

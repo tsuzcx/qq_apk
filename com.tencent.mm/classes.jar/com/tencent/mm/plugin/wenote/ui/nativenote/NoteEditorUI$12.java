@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.p;
 
 final class NoteEditorUI$12
@@ -11,11 +12,13 @@ final class NoteEditorUI$12
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (NoteEditorUI.c(this.rLT) != null)
+    AppMethodBeat.i(27007);
+    if (NoteEditorUI.c(this.vCx) != null)
     {
-      NoteEditorUI.c(this.rLT).dismiss();
-      NoteEditorUI.a(this.rLT, null);
+      NoteEditorUI.c(this.vCx).dismiss();
+      NoteEditorUI.a(this.vCx, null);
     }
+    AppMethodBeat.o(27007);
   }
 }
 

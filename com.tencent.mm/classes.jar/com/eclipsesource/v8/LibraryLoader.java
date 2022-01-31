@@ -1,5 +1,6 @@
 package com.eclipsesource.v8;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,38 +8,60 @@ import java.io.InputStream;
 
 class LibraryLoader
 {
-  static final String DELIMITER = System.getProperty("line.separator");
-  static final String SEPARATOR = System.getProperty("file.separator");
+  static final String DELIMITER;
+  static final String SEPARATOR;
   static final String SWT_LIB_DIR = ".j2v8";
+  
+  static
+  {
+    AppMethodBeat.i(74962);
+    DELIMITER = System.getProperty("line.separator");
+    SEPARATOR = System.getProperty("file.separator");
+    AppMethodBeat.o(74962);
+  }
   
   static void chmod(String paramString1, String paramString2)
   {
-    if (isWindows()) {
+    AppMethodBeat.i(74952);
+    if (isWindows())
+    {
+      AppMethodBeat.o(74952);
       return;
     }
     try
     {
       Runtime.getRuntime().exec(new String[] { "chmod", paramString1, paramString2 }).waitFor();
+      AppMethodBeat.o(74952);
       return;
     }
-    catch (Throwable paramString1) {}
+    catch (Throwable paramString1)
+    {
+      AppMethodBeat.o(74952);
+    }
   }
   
   private static String computeLibraryFullName()
   {
-    return "lib" + computeLibraryShortName() + "." + getOSFileExtension();
+    AppMethodBeat.i(74948);
+    String str = "lib" + computeLibraryShortName() + "." + getOSFileExtension();
+    AppMethodBeat.o(74948);
+    return str;
   }
   
   private static String computeLibraryShortName()
   {
+    AppMethodBeat.i(74947);
     String str1 = getOS();
     String str2 = getArchSuffix();
-    return "j2v8" + "_" + str1 + "_" + str2;
+    str1 = "j2v8" + "_" + str1 + "_" + str2;
+    AppMethodBeat.o(74947);
+    return str1;
   }
   
   static boolean extract(String paramString1, String paramString2, StringBuffer paramStringBuffer)
   {
     i = 1;
+    AppMethodBeat.i(74951);
     File localFile = new File(paramString1);
     for (;;)
     {
@@ -47,7 +70,7 @@ class LibraryLoader
         if (localFile.exists()) {
           localFile.delete();
         }
-        paramString2 = LibraryLoader.class.getResourceAsStream("/" + paramString2);
+        paramString2 = LibraryLoader.class.getResourceAsStream("/".concat(String.valueOf(paramString2)));
         if (paramString2 == null) {}
       }
       catch (Throwable paramString1)
@@ -97,6 +120,7 @@ class LibraryLoader
           if ((i != 0) && (localFile.exists())) {
             localFile.delete();
           }
+          AppMethodBeat.o(74951);
           return false;
           localFileOutputStream.close();
           paramString2.close();
@@ -105,6 +129,7 @@ class LibraryLoader
           if (!bool) {
             continue;
           }
+          AppMethodBeat.o(74951);
           return true;
           paramString1 = paramString1;
         }
@@ -115,98 +140,151 @@ class LibraryLoader
   
   static String getArchSuffix()
   {
-    String str2 = System.getProperty("os.arch");
-    String str1;
-    if (str2.equals("i686")) {
-      str1 = "x86";
-    }
-    do
+    AppMethodBeat.i(74959);
+    String str = System.getProperty("os.arch");
+    if (str.equals("i686"))
     {
-      return str1;
-      if (str2.equals("amd64")) {
-        return "x86_64";
-      }
-      if (str2.equals("nacl")) {
-        return "armv7l";
-      }
-      str1 = str2;
-    } while (!str2.equals("aarch64"));
-    return "armv7l";
+      AppMethodBeat.o(74959);
+      return "x86";
+    }
+    if (str.equals("amd64"))
+    {
+      AppMethodBeat.o(74959);
+      return "x86_64";
+    }
+    if (str.equals("nacl"))
+    {
+      AppMethodBeat.o(74959);
+      return "armv7l";
+    }
+    if (str.equals("aarch64"))
+    {
+      AppMethodBeat.o(74959);
+      return "armv7l";
+    }
+    AppMethodBeat.o(74959);
+    return str;
   }
   
   static String getOS()
   {
-    if (isWindows()) {
+    AppMethodBeat.i(74961);
+    if (isWindows())
+    {
+      AppMethodBeat.o(74961);
       return "win32";
     }
-    if (isMac()) {
+    if (isMac())
+    {
+      AppMethodBeat.o(74961);
       return "macosx";
     }
-    if ((isLinux()) && (!isAndroid())) {
+    if ((isLinux()) && (!isAndroid()))
+    {
+      AppMethodBeat.o(74961);
       return "linux";
     }
-    if (isAndroid()) {
+    if (isAndroid())
+    {
+      AppMethodBeat.o(74961);
       return "android";
     }
-    throw new UnsatisfiedLinkError("Unsupported platform: " + getOsName());
+    UnsatisfiedLinkError localUnsatisfiedLinkError = new UnsatisfiedLinkError("Unsupported platform: " + getOsName());
+    AppMethodBeat.o(74961);
+    throw localUnsatisfiedLinkError;
   }
   
   static String getOSFileExtension()
   {
-    if (isWindows()) {
+    AppMethodBeat.i(74960);
+    if (isWindows())
+    {
+      AppMethodBeat.o(74960);
       return "dll";
     }
-    if (isMac()) {
+    if (isMac())
+    {
+      AppMethodBeat.o(74960);
       return "dylib";
     }
-    if (isLinux()) {
+    if (isLinux())
+    {
+      AppMethodBeat.o(74960);
       return "so";
     }
-    if (isNativeClient()) {
+    if (isNativeClient())
+    {
+      AppMethodBeat.o(74960);
       return "so";
     }
-    throw new UnsatisfiedLinkError("Unsupported platform: " + getOsName());
+    UnsatisfiedLinkError localUnsatisfiedLinkError = new UnsatisfiedLinkError("Unsupported platform: " + getOsName());
+    AppMethodBeat.o(74960);
+    throw localUnsatisfiedLinkError;
   }
   
   static String getOsName()
   {
-    return System.getProperty("os.name") + System.getProperty("java.specification.vendor");
+    AppMethodBeat.i(74953);
+    String str = System.getProperty("os.name") + System.getProperty("java.specification.vendor");
+    AppMethodBeat.o(74953);
+    return str;
   }
   
   static boolean isAndroid()
   {
-    return getOsName().contains("Android");
+    AppMethodBeat.i(74958);
+    boolean bool = getOsName().contains("Android");
+    AppMethodBeat.o(74958);
+    return bool;
   }
   
   static boolean isLinux()
   {
-    return getOsName().startsWith("Linux");
+    AppMethodBeat.i(74956);
+    boolean bool = getOsName().startsWith("Linux");
+    AppMethodBeat.o(74956);
+    return bool;
   }
   
   static boolean isMac()
   {
-    return getOsName().startsWith("Mac");
+    AppMethodBeat.i(74955);
+    boolean bool = getOsName().startsWith("Mac");
+    AppMethodBeat.o(74955);
+    return bool;
   }
   
   static boolean isNativeClient()
   {
-    return getOsName().startsWith("nacl");
+    AppMethodBeat.i(74957);
+    boolean bool = getOsName().startsWith("nacl");
+    AppMethodBeat.o(74957);
+    return bool;
   }
   
   static boolean isWindows()
   {
-    return getOsName().startsWith("Windows");
+    AppMethodBeat.i(74954);
+    boolean bool = getOsName().startsWith("Windows");
+    AppMethodBeat.o(74954);
+    return bool;
   }
   
   static boolean load(String paramString, StringBuffer paramStringBuffer)
   {
+    AppMethodBeat.i(74950);
     try
     {
       if (paramString.indexOf(SEPARATOR) != -1) {
         System.load(paramString);
-      } else {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(74950);
+        return true;
         System.loadLibrary(paramString);
       }
+      return false;
     }
     catch (UnsatisfiedLinkError paramString)
     {
@@ -216,36 +294,50 @@ class LibraryLoader
       paramStringBuffer.append('\t');
       paramStringBuffer.append(paramString.getMessage());
       paramStringBuffer.append(DELIMITER);
-      return false;
+      AppMethodBeat.o(74950);
     }
-    return true;
   }
   
   static void loadLibrary(String paramString)
   {
-    if (isAndroid()) {
-      System.loadLibrary("j2v8");
-    }
-    StringBuffer localStringBuffer;
-    String str1;
-    String str2;
-    do
+    AppMethodBeat.i(74949);
+    if (isAndroid())
     {
-      String str3;
-      do
-      {
-        return;
-        localStringBuffer = new StringBuffer();
-        str1 = computeLibraryShortName();
-        str2 = computeLibraryFullName();
-        str3 = System.getProperty("user.dir") + SEPARATOR + "jni" + SEPARATOR + computeLibraryFullName();
-      } while ((load(str2, localStringBuffer)) || (load(str1, localStringBuffer)) || ((new File(str3).exists()) && (load(str3, localStringBuffer))));
-      str1 = paramString;
-      if (paramString == null) {
-        str1 = System.getProperty("java.io.tmpdir");
-      }
-    } while (extract(str1 + SEPARATOR + str2, str2, localStringBuffer));
-    throw new UnsatisfiedLinkError("Could not load J2V8 library. Reasons: " + localStringBuffer.toString());
+      System.loadLibrary("j2v8");
+      AppMethodBeat.o(74949);
+      return;
+    }
+    StringBuffer localStringBuffer = new StringBuffer();
+    String str1 = computeLibraryShortName();
+    String str2 = computeLibraryFullName();
+    String str3 = System.getProperty("user.dir") + SEPARATOR + "jni" + SEPARATOR + computeLibraryFullName();
+    if (load(str2, localStringBuffer))
+    {
+      AppMethodBeat.o(74949);
+      return;
+    }
+    if (load(str1, localStringBuffer))
+    {
+      AppMethodBeat.o(74949);
+      return;
+    }
+    if ((new File(str3).exists()) && (load(str3, localStringBuffer)))
+    {
+      AppMethodBeat.o(74949);
+      return;
+    }
+    str1 = paramString;
+    if (paramString == null) {
+      str1 = System.getProperty("java.io.tmpdir");
+    }
+    if (extract(str1 + SEPARATOR + str2, str2, localStringBuffer))
+    {
+      AppMethodBeat.o(74949);
+      return;
+    }
+    paramString = new UnsatisfiedLinkError("Could not load J2V8 library. Reasons: " + localStringBuffer.toString());
+    AppMethodBeat.o(74949);
+    throw paramString;
   }
 }
 

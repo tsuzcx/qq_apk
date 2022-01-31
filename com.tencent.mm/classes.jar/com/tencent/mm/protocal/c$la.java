@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$la
+public final class c$la
   extends c.g
 {
-  c$la()
+  public c$la()
   {
-    super("calRqt", "calRqt", 319, false);
+    super("uploadImage", "uploadImage", 105, true);
   }
 }
 

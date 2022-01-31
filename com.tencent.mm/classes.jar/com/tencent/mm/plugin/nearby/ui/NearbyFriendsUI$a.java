@@ -2,16 +2,19 @@ package com.tencent.mm.plugin.nearby.ui;
 
 final class NearbyFriendsUI$a
 {
-  public int accuracy;
-  public float elk;
-  public float ell;
-  
-  public NearbyFriendsUI$a(NearbyFriendsUI paramNearbyFriendsUI, float paramFloat1, float paramFloat2, int paramInt)
-  {
-    this.elk = paramFloat1;
-    this.ell = paramFloat2;
-    this.accuracy = paramInt;
-  }
+  String cDz;
+  String desc;
+  String id;
+  boolean iqO = false;
+  int kxm;
+  String name;
+  int pdr;
+  int pds;
+  int pdt;
+  String pdu;
+  int pdv;
+  int pdw = -1;
+  int pos;
 }
 
 

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
 public abstract interface b$m
 {
-  public abstract void df(boolean paramBoolean);
+  public abstract void Cf(String paramString);
 }
 
 

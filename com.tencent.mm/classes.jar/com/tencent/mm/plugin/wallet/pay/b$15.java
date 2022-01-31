@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.wallet.pay;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet.pay.a.e.a;
-import com.tencent.mm.plugin.wallet.pay.a.e.d;
-import com.tencent.mm.plugin.wallet.pay.a.e.e;
-import com.tencent.mm.plugin.wallet.pay.a.e.f;
-import com.tencent.mm.plugin.wallet.pay.a.e.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.wallet.a.s;
+import com.tencent.mm.plugin.wallet.pay.a.a;
+import com.tencent.mm.plugin.wallet.pay.a.d.f;
+import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.p;
-import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wallet_core.utils.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.c;
 import com.tencent.mm.wallet_core.d.i;
-import com.tencent.mm.wallet_core.tenpay.model.k;
+import com.tencent.mm.wallet_core.tenpay.model.n;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 final class b$15
@@ -24,84 +27,144 @@ final class b$15
     super(paramb, paramWalletBaseUI, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (!super.c(paramInt1, paramInt2, paramString, paramm))
+    AppMethodBeat.i(45883);
+    if (!super.onSceneEnd(paramInt1, paramInt2, paramString, paramm))
     {
-      if (((paramm instanceof g)) && (paramInt1 == 0) && (paramInt2 == 0))
+      if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (g)paramm;
-        if (paramString.qno) {
-          b.m(this.qlV).putParcelable("key_orders", paramString.qmc);
+        if (((paramm instanceof f)) || ((paramm instanceof com.tencent.mm.plugin.wallet.pay.a.d.b)))
+        {
+          paramString = (f)paramm;
+          if (paramString.isPaySuccess) {
+            b.k(this.tVh).putParcelable("key_orders", paramString.tVr);
+          }
+          paramString = paramString.plg;
+          if (paramString != null) {
+            b.l(this.tVh).putParcelable("key_realname_guide_helper", paramString);
+          }
+          h.qsU.e(10707, new Object[] { Integer.valueOf(1), Integer.valueOf(d.cWZ()) });
+          AppMethodBeat.o(45883);
+          return false;
         }
-        paramString = paramString.mKP;
-        if (paramString != null) {
-          b.n(this.qlV).putParcelable("key_realname_guide_helper", paramString);
+        if ((paramm instanceof com.tencent.mm.plugin.wallet.pay.a.a.b))
+        {
+          AppMethodBeat.o(45883);
+          return true;
         }
-        this.qlV.a(this.gfb, 0, b.o(this.qlV));
       }
+      AppMethodBeat.o(45883);
+      return false;
     }
-    else {
-      return true;
-    }
-    return false;
+    AppMethodBeat.o(45883);
+    return true;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
-    p localp = (p)paramVarArgs[0];
-    Orders localOrders = (Orders)b.p(this.qlV).getParcelable("key_orders");
-    if ((localp == null) || (localOrders == null))
+    AppMethodBeat.i(45884);
+    paramVarArgs = (u)paramVarArgs[1];
+    Orders localOrders = (Orders)b.m(this.tVh).getParcelable("key_orders");
+    ab.i("MicroMsg.PayProcess", "WalletVerifyCodeUI onNext pay_flag : " + this.tVh.mEJ.getInt("key_pay_flag", 0));
+    boolean bool = this.tVh.mEJ.getBoolean("key_is_changing_balance_phone_num");
+    String str;
+    switch (this.tVh.mEJ.getInt("key_pay_flag", 0))
     {
-      y.e("MicroMsg.CgiManager", "empty verify or orders");
-      paramVarArgs = null;
+    default: 
+      AppMethodBeat.o(45884);
+      return false;
+    case 1: 
+      paramVarArgs.flag = "1";
+      if (!bool)
+      {
+        if (!bo.isNullOrNil(paramVarArgs.poq))
+        {
+          s.cRG();
+          if (s.cRH().ulT != null)
+          {
+            str = paramVarArgs.poq;
+            s.cRG();
+            if (!str.equals(s.cRH().ulT.field_bankcardType)) {}
+          }
+        }
+      }
+      else {
+        this.AXB.a(new com.tencent.mm.plugin.wallet.pay.a.d.b(paramVarArgs, localOrders), true, 1);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(45884);
+        return true;
+        paramVarArgs = a.a(paramVarArgs, localOrders);
+        if (paramVarArgs != null) {
+          this.AXB.a(paramVarArgs, true, 1);
+        }
+      }
+    case 2: 
+      if (!this.tVh.cWe())
+      {
+        paramVarArgs.flag = "2";
+        if (!bool)
+        {
+          if (bo.isNullOrNil(paramVarArgs.poq)) {
+            break label331;
+          }
+          s.cRG();
+          if (s.cRH().ulT == null) {
+            break label331;
+          }
+          str = paramVarArgs.poq;
+          s.cRG();
+          if (!str.equals(s.cRH().ulT.field_bankcardType)) {
+            break label331;
+          }
+        }
+        this.AXB.a(new com.tencent.mm.plugin.wallet.pay.a.d.b(paramVarArgs, localOrders), true, 1);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(45884);
+        return true;
+        paramVarArgs.flag = "5";
+        break;
+        label331:
+        paramVarArgs = a.a(paramVarArgs, localOrders);
+        if (paramVarArgs != null) {
+          this.AXB.a(paramVarArgs, true, 1);
+        }
+      }
+    }
+    if (!this.tVh.cWe())
+    {
+      paramVarArgs.flag = "3";
+      if (!bool)
+      {
+        if (bo.isNullOrNil(paramVarArgs.poq)) {
+          break label458;
+        }
+        s.cRG();
+        if (s.cRH().ulT == null) {
+          break label458;
+        }
+        str = paramVarArgs.poq;
+        s.cRG();
+        if (!str.equals(s.cRH().ulT.field_bankcardType)) {
+          break label458;
+        }
+      }
+      this.AXB.a(new com.tencent.mm.plugin.wallet.pay.a.d.b(paramVarArgs, localOrders), true, 1);
     }
     for (;;)
     {
-      if (paramVarArgs != null) {
-        this.wBd.a(paramVarArgs, true, 1);
-      }
+      AppMethodBeat.o(45884);
       return true;
-      PayInfo localPayInfo = localp.nqa;
-      paramVarArgs = "";
-      if (localPayInfo != null)
-      {
-        y.i("MicroMsg.CgiManager", "get reqKey from payInfo");
-        paramVarArgs = localPayInfo.bMX;
-      }
-      Object localObject = paramVarArgs;
-      if (bk.bl(paramVarArgs))
-      {
-        y.i("MicroMsg.CgiManager", "get reqKey from orders");
-        localObject = localOrders.bMX;
-      }
-      if (bk.bl((String)localObject))
-      {
-        y.i("MicroMsg.CgiManager", "empty reqKey!");
-        paramVarArgs = new g(localp, localOrders);
-      }
-      else
-      {
-        if (localPayInfo != null) {
-          y.d("MicroMsg.CgiManager", "reqKey: %s, %s", new Object[] { localPayInfo.bMX, localOrders.bMX });
-        }
-        y.i("MicroMsg.CgiManager", "verifyreg reqKey: %s", new Object[] { localObject });
-        y.i("MicroMsg.CgiManager", "verifyreg go new split cgi");
-        if (((String)localObject).startsWith("sns_aa_")) {
-          paramVarArgs = new a(localp, localOrders);
-        } else if (((String)localObject).startsWith("sns_tf_")) {
-          paramVarArgs = new e(localp, localOrders);
-        } else if (((String)localObject).startsWith("sns_ff_")) {
-          paramVarArgs = new com.tencent.mm.plugin.wallet.pay.a.e.b(localp, localOrders);
-        } else if (((String)localObject).startsWith("ts_")) {
-          paramVarArgs = new com.tencent.mm.plugin.wallet.pay.a.e.c(localp, localOrders);
-        } else if (((String)localObject).startsWith("sns_")) {
-          paramVarArgs = new d(localp, localOrders);
-        } else if (((String)localObject).startsWith("up_")) {
-          paramVarArgs = new f(localp, localOrders);
-        } else {
-          paramVarArgs = new g(localp, localOrders);
-        }
+      paramVarArgs.flag = "6";
+      break;
+      label458:
+      paramVarArgs = a.a(paramVarArgs, localOrders);
+      if (paramVarArgs != null) {
+        this.AXB.a(paramVarArgs, true, 1);
       }
     }
   }

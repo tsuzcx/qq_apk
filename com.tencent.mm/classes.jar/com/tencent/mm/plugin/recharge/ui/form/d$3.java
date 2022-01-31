@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.recharge.ui.form;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$3
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class d$3
   
   public final void onClick(View paramView)
   {
-    d.a(this.nsF).dismissDropDown();
-    d.b(this.nsF).bvq();
+    AppMethodBeat.i(44405);
+    d.a(this.pXT).dismissDropDown();
+    d.b(this.pXT).cfJ();
+    AppMethodBeat.o(44405);
   }
 }
 

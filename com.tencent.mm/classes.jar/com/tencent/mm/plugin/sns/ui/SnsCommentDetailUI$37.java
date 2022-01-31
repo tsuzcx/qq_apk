@@ -1,42 +1,38 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.storage.h;
-import com.tencent.mm.protocal.c.btd;
-import com.tencent.mm.protocal.c.bto;
-import com.tencent.mm.ui.base.h.c;
-import java.util.LinkedList;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelsns.SnsAdClick;
+import com.tencent.mm.plugin.sns.c.a;
+import com.tencent.mm.plugin.sns.data.i;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SnsCommentDetailUI$37
-  implements h.c
+  implements View.OnClickListener
 {
-  SnsCommentDetailUI$37(SnsCommentDetailUI paramSnsCommentDetailUI, Object[] paramArrayOfObject) {}
+  SnsCommentDetailUI$37(SnsCommentDetailUI paramSnsCommentDetailUI) {}
   
-  public final void gl(int paramInt)
+  public final void onClick(View paramView)
   {
-    switch (paramInt)
+    AppMethodBeat.i(38822);
+    paramView = (String)paramView.getTag();
+    ab.d("MicroMsg.SnsCommentDetailUI", "onCommentClick:".concat(String.valueOf(paramView)));
+    Intent localIntent = new Intent();
+    com.tencent.mm.plugin.sns.storage.n localn = SnsCommentDetailUI.e(this.rPu);
+    if ((localn != null) && (localn.Ex(32)))
     {
-    default: 
+      i.a(new SnsAdClick(SnsCommentDetailUI.f(this.rPu), 2, localn.field_snsId, 1, 0));
+      localIntent.putExtra("Contact_User", paramView);
+      localIntent.putExtra("Contact_Scene", 37);
+      a.gmO.c(localIntent, this.rPu);
+      AppMethodBeat.o(38822);
       return;
     }
-    SnsCommentDetailUI.b(this.oWW).bIL();
-    SnsCommentDetailUI.b(this.oWW).setCommentHint(this.oWW.getString(i.j.sns_reply) + this.oXn[3]);
-    SnsCommentDetailUI.b(this.oWW).setCommentInfo((btd)this.oXn[1]);
-    SnsCommentDetailUI.b(this.oWW).jx(false);
-    SnsCommentDetailUI.b(this.oWW).jw(true);
-    int i = ((Integer)this.oXn[0]).intValue();
-    paramInt = i;
-    if (aj.q(h.OB(SnsCommentDetailUI.k(this.oWW))).tJY.size() > 0)
-    {
-      i += 1;
-      paramInt = i;
-      if (i > SnsCommentDetailUI.l(this.oWW).getCount()) {
-        paramInt = SnsCommentDetailUI.l(this.oWW).getCount() - 1;
-      }
-    }
-    SnsCommentDetailUI.m(this.oWW).Ln = paramInt;
-    SnsCommentDetailUI.m(this.oWW).run();
+    localIntent.putExtra("Contact_User", paramView);
+    a.gmO.c(localIntent, this.rPu);
+    AppMethodBeat.o(38822);
   }
 }
 

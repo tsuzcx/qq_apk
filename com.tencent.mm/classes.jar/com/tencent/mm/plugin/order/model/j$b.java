@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.order.model;
 
 public final class j$b
 {
-  String jumpUrl;
-  String name;
-  String value;
+  public String jumpUrl;
+  public String name;
+  public String value;
 }
 
 

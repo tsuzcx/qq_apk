@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget.picker;
 
 public abstract interface d$b
 {
-  public abstract void it(boolean paramBoolean);
+  public abstract void kx(boolean paramBoolean);
 }
 
 

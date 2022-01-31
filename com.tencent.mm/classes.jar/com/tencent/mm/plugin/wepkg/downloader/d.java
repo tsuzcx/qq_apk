@@ -1,86 +1,93 @@
 package com.tencent.mm.plugin.wepkg.downloader;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.concurrent.Future;
 
 public final class d
 {
-  private static Object lock = new Object();
-  private static volatile d rOp;
-  HashMap<String, c> rOq = new HashMap();
+  private static Object lock;
+  private static volatile d vFa;
+  HashMap<String, c> vFb;
   
-  private boolean a(c paramc)
+  static
   {
-    if (this.rOq.containsKey(paramc.rOg.rOD))
+    AppMethodBeat.i(63430);
+    lock = new Object();
+    AppMethodBeat.o(63430);
+  }
+  
+  private d()
+  {
+    AppMethodBeat.i(63427);
+    this.vFb = new HashMap();
+    AppMethodBeat.o(63427);
+  }
+  
+  public static d dkx()
+  {
+    AppMethodBeat.i(63426);
+    if (vFa == null) {}
+    synchronized (lock)
     {
-      paramc.rOm = true;
-      try
-      {
-        if (paramc.rOi != null) {
-          paramc.rOi.disconnect();
-        }
-        if (paramc.rOh != null) {
-          paramc.rOh.cancel(false);
-        }
+      if (vFa == null) {
+        vFa = new d();
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          y.i("MicroMsg.Wepkg.WePkgDownloadTask", "stop, " + localException.getMessage());
-        }
-      }
-      this.rOq.remove(paramc.rOg.rOD);
-      return true;
+      ??? = vFa;
+      AppMethodBeat.o(63426);
+      return ???;
     }
+  }
+  
+  final boolean a(c paramc)
+  {
+    AppMethodBeat.i(63429);
+    if (this.vFb.containsKey(paramc.vER.vFr))
+    {
+      paramc.vEX = true;
+      for (;;)
+      {
+        try
+        {
+          HttpURLConnection localHttpURLConnection = paramc.vET;
+          if (localHttpURLConnection == null) {}
+        }
+        catch (Exception localException2)
+        {
+          ab.i("MicroMsg.Wepkg.WePkgDownloadTask", "stop, " + localException2.getMessage());
+          continue;
+        }
+        try
+        {
+          paramc.vET.getInputStream().close();
+          paramc.vET.disconnect();
+          if (paramc.vES != null) {
+            paramc.vES.cancel(false);
+          }
+          this.vFb.remove(paramc.vER.vFr);
+          AppMethodBeat.o(63429);
+          return true;
+        }
+        catch (Exception localException1)
+        {
+          ab.e("MicroMsg.Wepkg.WePkgDownloadTask", localException1.getMessage());
+        }
+      }
+    }
+    AppMethodBeat.o(63429);
     return false;
   }
   
-  public static d cjS()
+  public final boolean akx(String paramString)
   {
-    if (rOp == null) {}
-    synchronized (lock)
-    {
-      if (rOp == null) {
-        rOp = new d();
-      }
-      return rOp;
+    AppMethodBeat.i(63428);
+    if (this.vFb.containsKey(paramString)) {
+      this.vFb.remove(paramString);
     }
-  }
-  
-  public final boolean Vc(String paramString)
-  {
-    if (this.rOq.containsKey(paramString)) {
-      this.rOq.remove(paramString);
-    }
-    return true;
-  }
-  
-  public final boolean cjT()
-  {
-    if ((this.rOq == null) || (this.rOq.size() == 0)) {
-      return false;
-    }
-    Object localObject = this.rOq.values();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((Collection)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localArrayList.add((c)((Iterator)localObject).next());
-    }
-    localObject = localArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      c localc = (c)((Iterator)localObject).next();
-      if (localc.rOg.rOI) {
-        a(localc);
-      }
-    }
-    localArrayList.clear();
+    AppMethodBeat.o(63428);
     return true;
   }
 }

@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera.a;
 
 import android.graphics.Rect;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 
 public abstract class c
 {
-  private boolean bNW = false;
-  public c.a gpx;
+  private boolean cvo = false;
+  public c.a hJB;
   
   public final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, Rect paramRect, int paramInt3)
   {
-    if (this.bNW) {}
+    if (this.cvo) {}
     b localb;
     do
     {
       return;
-      localb = aiQ();
+      localb = aCQ();
     } while (paramArrayOfByte == null);
-    localb.gpl.O(new b.1(localb, paramArrayOfByte, paramInt3, paramInt1, paramInt2, paramRect));
+    localb.hJp.ac(new b.1(localb, paramArrayOfByte, paramInt3, paramInt1, paramInt2, paramRect));
   }
   
-  protected abstract b aiQ();
+  protected abstract b aCQ();
   
   public final void init()
   {
-    aiQ().init();
+    aCQ().init();
   }
   
   public final void release()
   {
-    aiQ().release();
+    aCQ().release();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ final class SwipeRefreshLayout$5
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.MA.Mf) {
-      this.MA.a(null);
+    if (!this.Mk.LN) {
+      this.Mk.a(null);
     }
   }
   

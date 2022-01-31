@@ -5,193 +5,229 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import com.tencent.mm.R.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 
 public final class d
 {
-  private static final int rrx = b.rro / 2 * (b.rro / 2);
+  private static final int vhC = b.vht / 2 * (b.vht / 2);
   private int mScreenHeight;
   private int mScreenWidth;
-  private d.a rrA;
-  private FrameLayout.LayoutParams rrB;
-  private boolean rrC;
-  private boolean rrD;
-  private float rrE = 2.0F;
-  private float rrF = 0.15F;
-  private long rrG;
-  private boolean rrg;
-  g rrt;
-  private f rru;
-  private float rrv;
-  private int rry = b.rri - b.rro / 2;
-  private int rrz = -b.rro / 2;
+  private float vhA;
+  private int vhD;
+  private int vhE;
+  private d.a vhF;
+  private FrameLayout.LayoutParams vhG;
+  private boolean vhH;
+  private boolean vhI;
+  private float vhJ;
+  private float vhK;
+  private long vhL;
+  private boolean vhl;
+  g vhy;
+  private f vhz;
   
   public d(g paramg, f paramf)
   {
-    this.rrt = paramg;
-    this.rru = paramf;
-    this.rrA = new d.a(this.rrt.getActivity());
-    this.rrA.rrI = new a.a()
+    AppMethodBeat.i(8161);
+    this.vhD = (b.vhn - b.vht / 2);
+    this.vhE = (-b.vht / 2);
+    this.vhJ = 2.0F;
+    this.vhK = 0.15F;
+    this.vhy = paramg;
+    this.vhz = paramf;
+    this.vhF = new d.a(this.vhy.getActivity());
+    this.vhF.vhN = new a.a()
     {
       public final void onChange(boolean paramAnonymousBoolean)
       {
+        AppMethodBeat.i(8157);
         d.a(d.this, paramAnonymousBoolean);
-        d.e(d.this).bottomMargin = d.k(d.this);
-        d.e(d.this).rightMargin = d.j(d.this);
-        d.f(d.this).setLayoutParams(d.e(d.this));
+        d.g(d.this).bottomMargin = d.l(d.this);
+        d.g(d.this).rightMargin = d.k(d.this);
+        d.h(d.this).setLayoutParams(d.g(d.this));
+        AppMethodBeat.o(8157);
       }
     };
-    if (a.fj(ae.getContext()) > a.fk(ae.getContext())) {}
+    if (a.gw(ah.getContext()) > a.gx(ah.getContext())) {}
     for (boolean bool = true;; bool = false)
     {
-      ln(bool);
-      this.rrB = new FrameLayout.LayoutParams(-2, -2);
-      this.rrB.gravity = 85;
-      this.rrB.bottomMargin = this.rry;
-      this.rrB.rightMargin = this.rrz;
-      this.rrA.setLayoutParams(this.rrB);
+      ov(bool);
+      this.vhG = new FrameLayout.LayoutParams(-2, -2);
+      this.vhG.gravity = 85;
+      this.vhG.bottomMargin = this.vhD;
+      this.vhG.rightMargin = this.vhE;
+      this.vhF.setLayoutParams(this.vhG);
+      AppMethodBeat.o(8161);
       return;
     }
   }
   
-  private void ceV()
+  private void dfc()
   {
-    if (!this.rrC) {
-      return;
-    }
-    this.rrA.setVisibility(8);
-    this.rrC = false;
-  }
-  
-  private void ceW()
-  {
-    
-    if (this.rrg)
+    AppMethodBeat.i(8163);
+    if (!this.vhH)
     {
-      this.rry = (-b.rro / 2);
-      this.rrz = (b.rri - b.rro / 2);
+      AppMethodBeat.o(8163);
       return;
     }
-    this.rry = (b.rri - b.rro / 2);
-    this.rrz = (-b.rro / 2);
+    this.vhF.setVisibility(8);
+    this.vhH = false;
+    AppMethodBeat.o(8163);
   }
   
-  private void ln(boolean paramBoolean)
+  private void dfd()
   {
-    y.i("MicroMsg.BagIndicatorController", "updateOrientation isLandscape:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.rrg = paramBoolean;
-    this.mScreenWidth = a.fj(ae.getContext());
-    this.mScreenHeight = a.fk(ae.getContext());
-    ceW();
-    this.rrE = (1.0F / ((this.mScreenWidth - b.rrn / 2) / this.mScreenWidth - 0.2F));
-    y.d("MicroMsg.BagIndicatorController", "initIndicator mIndicatorScaleGainConstant:%f", new Object[] { Float.valueOf(this.rrE) });
+    AppMethodBeat.i(8164);
+    if (this.vhy != null) {
+      b.fy(this.vhy.getActivity());
+    }
+    if (this.vhl)
+    {
+      this.vhD = (-b.vht / 2);
+      this.vhE = (b.vhn - b.vht / 2);
+      AppMethodBeat.o(8164);
+      return;
+    }
+    this.vhD = (b.vhn - b.vht / 2);
+    this.vhE = (-b.vht / 2);
+    AppMethodBeat.o(8164);
+  }
+  
+  private void ov(boolean paramBoolean)
+  {
+    AppMethodBeat.i(8165);
+    ab.i("MicroMsg.BagIndicatorController", "updateOrientation isLandscape:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.vhl = paramBoolean;
+    this.mScreenWidth = a.gw(ah.getContext());
+    this.mScreenHeight = a.gx(ah.getContext());
+    dfd();
+    this.vhJ = (1.0F / ((this.mScreenWidth - b.vhs / 2) / this.mScreenWidth - 0.2F));
+    ab.d("MicroMsg.BagIndicatorController", "initIndicator mIndicatorScaleGainConstant:%f", new Object[] { Float.valueOf(this.vhJ) });
+    AppMethodBeat.o(8165);
   }
   
   public final void start()
   {
-    ceV();
-    this.rrG = -1L;
-    if (!this.rrt.cbo()) {
+    AppMethodBeat.i(8162);
+    dfc();
+    this.vhL = -1L;
+    if (!this.vhy.dbs())
+    {
+      AppMethodBeat.o(8162);
       return;
     }
-    this.rrt.a(new g.a()
+    this.vhy.a(new g.a()
     {
-      public final void aI(float paramAnonymousFloat)
+      public final boolean aZ(boolean paramAnonymousBoolean)
       {
+        AppMethodBeat.i(8155);
+        ab.i("MicroMsg.BagIndicatorController", "onViewReleased willSwipeBack:%b %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(d.d(d.this)) });
+        d.a(d.this, -1L);
+        if (!paramAnonymousBoolean)
+        {
+          d.j(d.this);
+          d.m(d.this);
+          AppMethodBeat.o(8155);
+          return false;
+        }
+        if (d.d(d.this))
+        {
+          ab.v("MicroMsg.BagIndicatorController", "onViewReleased showBag");
+          d.j(d.this);
+          d.m(d.this);
+          d.o(d.this).f(d.n(d.this), 14);
+          AppMethodBeat.o(8155);
+          return true;
+        }
+        AppMethodBeat.o(8155);
+        return false;
+      }
+      
+      public final void bl(float paramAnonymousFloat)
+      {
+        AppMethodBeat.i(8153);
         if (d.a(d.this) < 0L) {
-          d.a(d.this, bk.UY());
+          d.a(d.this, bo.aoy());
         }
         if (d.a(d.this, paramAnonymousFloat))
         {
-          if (!d.b(d.this))
+          if (!d.b(d.this)) {
+            d.c(d.this);
+          }
+          if (!d.d(d.this))
           {
-            float f = d.c(d.this) * paramAnonymousFloat;
+            float f = d.e(d.this) * paramAnonymousFloat;
             paramAnonymousFloat = f;
             if (f > 1.0F) {
               paramAnonymousFloat = 1.0F;
             }
-            if (!d.d(d.this)) {
-              break label145;
+            if (!d.f(d.this)) {
+              break label174;
             }
-            d.e(d.this).bottomMargin = ((int)((paramAnonymousFloat * 0.5F - 1.0F) * b.rro));
-            d.e(d.this).rightMargin = (d.e(d.this).bottomMargin + b.rri);
+            d.g(d.this).bottomMargin = ((int)((paramAnonymousFloat * 0.5F - 1.0F) * b.vht));
+            d.g(d.this).rightMargin = (d.g(d.this).bottomMargin + b.vhn);
           }
           for (;;)
           {
-            d.f(d.this).setLayoutParams(d.e(d.this));
-            d.g(d.this);
+            d.h(d.this).setLayoutParams(d.g(d.this));
+            d.i(d.this);
+            AppMethodBeat.o(8153);
             return;
-            label145:
-            d.e(d.this).rightMargin = ((int)((paramAnonymousFloat * 0.5F - 1.0F) * b.rro));
-            d.e(d.this).bottomMargin = (d.e(d.this).rightMargin + b.rri);
+            label174:
+            d.g(d.this).rightMargin = ((int)((paramAnonymousFloat * 0.5F - 1.0F) * b.vht));
+            d.g(d.this).bottomMargin = (d.g(d.this).rightMargin + b.vhn);
           }
         }
-        d.h(d.this);
-      }
-      
-      public final boolean aK(boolean paramAnonymousBoolean)
-      {
-        y.i("MicroMsg.BagIndicatorController", "onViewReleased willSwipeBack:%b %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(d.b(d.this)) });
-        d.a(d.this, -1L);
-        if (!paramAnonymousBoolean)
-        {
-          d.h(d.this);
-          d.l(d.this);
-        }
-        while (!d.b(d.this)) {
-          return false;
-        }
-        y.v("MicroMsg.BagIndicatorController", "onViewReleased showBag");
-        d.h(d.this);
-        d.l(d.this);
-        d.n(d.this).c(d.m(d.this), 14);
-        return true;
+        d.j(d.this);
+        AppMethodBeat.o(8153);
       }
       
       public final void l(MotionEvent paramAnonymousMotionEvent)
       {
-        boolean bool = d.b(d.this);
+        AppMethodBeat.i(8154);
+        boolean bool = d.d(d.this);
         d.a(d.this, paramAnonymousMotionEvent);
-        if ((d.i(d.this)) && (d.b(d.this) != bool))
+        if ((d.b(d.this)) && (d.d(d.this) != bool))
         {
-          if (d.b(d.this))
+          if (d.d(d.this))
           {
-            d.e(d.this).rightMargin = d.j(d.this);
-            d.e(d.this).bottomMargin = d.k(d.this);
-            d.f(d.this).setLayoutParams(d.e(d.this));
+            d.g(d.this).rightMargin = d.k(d.this);
+            d.g(d.this).bottomMargin = d.l(d.this);
+            d.h(d.this).setLayoutParams(d.g(d.this));
             d.b(d.this, paramAnonymousMotionEvent.getRawX());
           }
-          paramAnonymousMotionEvent = d.f(d.this);
-          bool = d.b(d.this);
-          y.v("MicroMsg.BagIndicatorController.BagIndicator", "onHitChange %b", new Object[] { Boolean.valueOf(bool) });
-          if (!bool) {
-            break label184;
+          paramAnonymousMotionEvent = d.h(d.this);
+          bool = d.d(d.this);
+          ab.v("MicroMsg.BagIndicatorController.BagIndicator", "onHitChange %b", new Object[] { Boolean.valueOf(bool) });
+          if (bool)
+          {
+            paramAnonymousMotionEvent.iCl.setImageResource(2131232228);
+            paramAnonymousMotionEvent.ak(1.0F, b.vhu);
+            if (paramAnonymousMotionEvent.jbU != null) {
+              paramAnonymousMotionEvent.jbU.vibrate(10L);
+            }
+            AppMethodBeat.o(8154);
+            return;
           }
-          paramAnonymousMotionEvent.hok.setImageResource(R.k.webview_bag_indicator_icon_press);
-          paramAnonymousMotionEvent.aa(1.0F, b.rrp);
-          if (paramAnonymousMotionEvent.hpm != null) {
-            paramAnonymousMotionEvent.hpm.vibrate(10L);
-          }
+          paramAnonymousMotionEvent.iCl.setImageResource(2131232227);
+          paramAnonymousMotionEvent.ak(b.vhu, 1.0F);
         }
-        return;
-        label184:
-        paramAnonymousMotionEvent.hok.setImageResource(R.k.webview_bag_indicator_icon_normal);
-        paramAnonymousMotionEvent.aa(b.rrp, 1.0F);
+        AppMethodBeat.o(8154);
       }
     });
-    this.rrA.setVisibility(8);
-    ViewGroup localViewGroup = this.rrt.cbn();
+    this.vhF.setVisibility(8);
+    ViewGroup localViewGroup = this.vhy.bTL();
     for (;;)
     {
       int i;
       try
       {
-        if (this.rrA.getParent() != null) {
+        if (this.vhF.getParent() != null) {
           break;
         }
         int k = localViewGroup.getChildCount();
@@ -202,23 +238,26 @@ public final class d
           if ((localViewGroup.getChildAt(i) instanceof SwipeBackLayout))
           {
             j = i + 1;
-            y.i("MicroMsg.BagIndicatorController", "start pos %d, count %d", new Object[] { Integer.valueOf(j), Integer.valueOf(localViewGroup.getChildCount()) });
+            ab.i("MicroMsg.BagIndicatorController", "start pos %d, count %d", new Object[] { Integer.valueOf(j), Integer.valueOf(localViewGroup.getChildCount()) });
           }
         }
         else
         {
-          localViewGroup.addView(this.rrA, j);
+          localViewGroup.addView(this.vhF, j);
+          AppMethodBeat.o(8162);
           return;
         }
       }
       catch (Exception localException)
       {
-        y.e("MicroMsg.BagIndicatorController", "start addView exp:%s", new Object[] { localException.getLocalizedMessage() });
+        ab.e("MicroMsg.BagIndicatorController", "start addView exp:%s", new Object[] { localException.getLocalizedMessage() });
+        AppMethodBeat.o(8162);
         return;
       }
       i += 1;
     }
-    y.i("MicroMsg.BagIndicatorController", "start already added");
+    ab.i("MicroMsg.BagIndicatorController", "start already added");
+    AppMethodBeat.o(8162);
   }
   
   static abstract interface a$a

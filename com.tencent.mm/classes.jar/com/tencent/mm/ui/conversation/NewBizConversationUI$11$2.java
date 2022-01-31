@@ -2,11 +2,10 @@ package com.tencent.mm.ui.conversation;
 
 import android.content.Intent;
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineNewMsgUI;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.s;
 
 final class NewBizConversationUI$11$2
   implements n.d
@@ -15,15 +14,18 @@ final class NewBizConversationUI$11$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(34545);
     switch (paramMenuItem.getItemId())
     {
     default: 
-      y.w("MicroMsg.NewBizConversationUI", "default onMMMenuItemSelected err");
+      ab.w("MicroMsg.NewBizConversationUI", "default onMMMenuItemSelected err");
+      AppMethodBeat.o(34545);
       return;
     }
-    paramMenuItem = new Intent(this.vTI.vTG.mController.uMN, BizTimeLineNewMsgUI.class);
+    paramMenuItem = new Intent(this.AlE.AlC.getContext(), BizTimeLineNewMsgUI.class);
     paramMenuItem.putExtra("biz_time_line_line_enter_scene", 2);
-    this.vTI.vTG.startActivity(paramMenuItem);
+    this.AlE.AlC.startActivity(paramMenuItem);
+    AppMethodBeat.o(34545);
   }
 }
 

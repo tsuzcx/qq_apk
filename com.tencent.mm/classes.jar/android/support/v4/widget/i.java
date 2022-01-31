@@ -7,77 +7,55 @@ import android.widget.EdgeEffect;
 
 public final class i
 {
-  private static final b KR = new b();
-  public EdgeEffect KQ;
-  
-  static
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      KR = new a();
-      return;
-    }
-  }
+  public EdgeEffect Ky;
   
   @Deprecated
   public i(Context paramContext)
   {
-    this.KQ = new EdgeEffect(paramContext);
+    this.Ky = new EdgeEffect(paramContext);
   }
   
   public static void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
   {
-    KR.a(paramEdgeEffect, paramFloat1, paramFloat2);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramEdgeEffect.onPull(paramFloat1, paramFloat2);
+      return;
+    }
+    paramEdgeEffect.onPull(paramFloat1);
   }
   
   @Deprecated
-  public final boolean D(float paramFloat)
+  public final boolean E(float paramFloat)
   {
-    this.KQ.onPull(paramFloat);
+    this.Ky.onPull(paramFloat);
     return true;
   }
   
   @Deprecated
-  public final boolean aI(int paramInt)
+  public final boolean aF(int paramInt)
   {
-    this.KQ.onAbsorb(paramInt);
+    this.Ky.onAbsorb(paramInt);
     return true;
-  }
-  
-  @Deprecated
-  public final boolean dL()
-  {
-    this.KQ.onRelease();
-    return this.KQ.isFinished();
   }
   
   @Deprecated
   public final boolean draw(Canvas paramCanvas)
   {
-    return this.KQ.draw(paramCanvas);
+    return this.Ky.draw(paramCanvas);
+  }
+  
+  @Deprecated
+  public final boolean ec()
+  {
+    this.Ky.onRelease();
+    return this.Ky.isFinished();
   }
   
   @Deprecated
   public final void setSize(int paramInt1, int paramInt2)
   {
-    this.KQ.setSize(paramInt1, paramInt2);
-  }
-  
-  static final class a
-    extends i.b
-  {
-    public final void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
-    {
-      paramEdgeEffect.onPull(paramFloat1, paramFloat2);
-    }
-  }
-  
-  static class b
-  {
-    public void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
-    {
-      paramEdgeEffect.onPull(paramFloat1);
-    }
+    this.Ky.setSize(paramInt1, paramInt2);
   }
 }
 

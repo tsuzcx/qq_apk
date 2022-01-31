@@ -1,7 +1,18 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public enum i$b
 {
+  static
+  {
+    AppMethodBeat.i(108660);
+    gAx = new b("BINDMOBILE", 0);
+    gAy = new b("CHANGEMOBILE", 1);
+    gAz = new b[] { gAx, gAy };
+    AppMethodBeat.o(108660);
+  }
+  
   private i$b() {}
 }
 

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 
 final class FindMContactIntroUI$10
@@ -12,11 +13,13 @@ final class FindMContactIntroUI$10
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (FindMContactIntroUI.i(this.fdm) != null)
+    AppMethodBeat.i(13606);
+    if (FindMContactIntroUI.i(this.guX) != null)
     {
-      g.Dk().b(431, FindMContactIntroUI.i(this.fdm));
-      FindMContactIntroUI.j(this.fdm);
+      g.Rc().b(431, FindMContactIntroUI.i(this.guX));
+      FindMContactIntroUI.j(this.guX);
     }
+    AppMethodBeat.o(13606);
   }
 }
 

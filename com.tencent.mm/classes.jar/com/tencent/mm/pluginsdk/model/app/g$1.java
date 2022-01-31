@@ -1,29 +1,27 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mm.opensdk.channel.MMessageActV2;
-import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
-import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.as;
 
 final class g$1
   implements Runnable
 {
-  g$1(ShowMessageFromWX.Req paramReq, String paramString, Context paramContext, am paramam) {}
+  g$1(g.a parama, String paramString1, String paramString2) {}
   
   public final void run()
   {
-    Bundle localBundle = new Bundle();
-    this.rUe.toBundle(localBundle);
-    p.ak(localBundle);
-    p.al(localBundle);
-    MMessageActV2.Args localArgs = new MMessageActV2.Args();
-    localArgs.targetPkgName = this.Bz;
-    localArgs.bundle = localBundle;
-    boolean bool = MMessageActV2.send(this.val$context, localArgs);
-    if (this.iRo != null) {
-      this.iRo.cW(bool);
+    AppMethodBeat.i(79255);
+    Object localObject = as.eu("key_open_sdk_pkg", 1);
+    if (localObject == null)
+    {
+      this.vLb.a(null);
+      AppMethodBeat.o(79255);
+      return;
     }
+    ((as)localObject).encode(this.val$appId, this.Cl);
+    localObject = g.bZ(this.val$appId, true);
+    this.vLb.a((f)localObject);
+    AppMethodBeat.o(79255);
   }
 }
 

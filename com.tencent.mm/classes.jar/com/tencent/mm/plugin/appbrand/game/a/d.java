@@ -1,30 +1,40 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
-import android.content.Context;
-import com.tencent.mm.plugin.fts.a.d.a;
-import com.tencent.mm.plugin.fts.a.d.e.b;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.expt.a.a.a;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigIsolateCtx;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
 public final class d
-  extends a
+  extends g<Boolean>
 {
-  public final com.tencent.mm.plugin.fts.a.d.e a(Context paramContext, e.b paramb, int paramInt)
+  public static final d hsn;
+  
+  static
   {
-    return new e(paramContext, paramb, paramInt);
+    AppMethodBeat.i(134618);
+    hsn = new d();
+    AppMethodBeat.o(134618);
   }
   
-  public final int getPriority()
+  protected final String aAs()
   {
-    return 2147483647;
+    return "isolatectx";
   }
   
-  public final int getType()
+  protected final a.a aAt()
   {
-    return 4240;
+    return null;
+  }
+  
+  protected final boolean aAu()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.d
  * JD-Core Version:    0.7.0.1
  */

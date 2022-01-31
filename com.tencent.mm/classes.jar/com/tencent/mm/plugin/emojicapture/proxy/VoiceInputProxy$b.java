@@ -1,8 +1,11 @@
 package com.tencent.mm.plugin.emojicapture.proxy;
 
+import a.l;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;", "", "onRecognizeFinish", "", "onRes", "voiceText", "", "plugin-emojicapture_release"})
 public abstract interface VoiceInputProxy$b
 {
-  public abstract void TC();
+  public abstract void amO();
   
   public abstract void onRes(String paramString);
 }

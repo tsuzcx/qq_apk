@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 public final class a$d
-  extends a.g
+  extends a.h
 {}
 
 

@@ -1,19 +1,11 @@
 package com.eclipsesource.a;
 
 import java.io.Writer;
-import java.util.Arrays;
 
 public abstract class l
 {
-  public static l asb = new l.1();
-  public static l asc;
-  
-  static
-  {
-    char[] arrayOfChar = new char[2];
-    Arrays.fill(arrayOfChar, ' ');
-    asc = new k(arrayOfChar);
-  }
+  public static l aus = new l.1();
+  public static l aut = k.cU(2);
   
   abstract i a(Writer paramWriter);
 }

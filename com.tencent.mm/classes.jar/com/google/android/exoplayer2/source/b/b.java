@@ -1,26 +1,30 @@
 package com.google.android.exoplayer2.source.b;
 
-import com.google.android.exoplayer2.h.f;
-import com.google.android.exoplayer2.h.f.a;
+import com.google.android.exoplayer2.h.g;
+import com.google.android.exoplayer2.h.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
   implements d
 {
-  private final f.a aJn;
+  private final g.a aPR;
   
-  public b(f.a parama)
+  public b(g.a parama)
   {
-    this.aJn = parama;
+    this.aPR = parama;
   }
   
-  public final f mU()
+  public final g pu()
   {
-    return this.aJn.nP();
+    AppMethodBeat.i(125898);
+    g localg = this.aPR.qn();
+    AppMethodBeat.o(125898);
+    return localg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.b
  * JD-Core Version:    0.7.0.1
  */

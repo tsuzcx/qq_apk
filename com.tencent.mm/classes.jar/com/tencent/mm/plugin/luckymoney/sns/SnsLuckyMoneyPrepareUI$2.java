@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.luckymoney.sns;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyIndexUI;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class SnsLuckyMoneyPrepareUI$2
   implements Runnable
@@ -13,11 +12,13 @@ final class SnsLuckyMoneyPrepareUI$2
   
   public final void run()
   {
+    AppMethodBeat.i(42509);
     Intent localIntent = new Intent();
-    localIntent.setClass(this.lTI.mController.uMN, LuckyMoneyIndexUI.class);
+    localIntent.setClass(this.oqN.getContext(), LuckyMoneyIndexUI.class);
     localIntent.addFlags(67108864);
-    this.lTI.mController.uMN.startActivity(localIntent);
-    this.lTI.finish();
+    this.oqN.getContext().startActivity(localIntent);
+    this.oqN.finish();
+    AppMethodBeat.o(42509);
   }
 }
 

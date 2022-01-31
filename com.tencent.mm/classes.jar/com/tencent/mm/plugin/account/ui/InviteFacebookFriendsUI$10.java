@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.account.ui;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.f.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.g.a.c;
 
 final class InviteFacebookFriendsUI$10
   implements MenuItem.OnMenuItemClickListener
@@ -12,10 +13,11 @@ final class InviteFacebookFriendsUI$10
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    c localc = new c("290293790992170");
+    AppMethodBeat.i(124887);
+    c localc = new c(this.gDx.getString(2131306163));
     Bundle localBundle = new Bundle();
-    localBundle.putString("message", this.fmd.getString(q.j.facebook_invite_message));
-    long[] arrayOfLong = InviteFacebookFriendsUI.a(this.fmd).XH();
+    localBundle.putString("message", this.gDx.getString(2131299633));
+    long[] arrayOfLong = InviteFacebookFriendsUI.a(this.gDx).arp();
     paramMenuItem = Long.toString(arrayOfLong[0]);
     int i = 1;
     while (i < arrayOfLong.length)
@@ -25,13 +27,14 @@ final class InviteFacebookFriendsUI$10
       i += 1;
     }
     localBundle.putString("to", paramMenuItem);
-    localc.a(this.fmd, "apprequests", localBundle, new InviteFacebookFriendsUI.10.1(this, arrayOfLong));
+    localc.a(this.gDx, "apprequests", localBundle, new InviteFacebookFriendsUI.10.1(this, arrayOfLong));
+    AppMethodBeat.o(124887);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.InviteFacebookFriendsUI.10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,19 @@
 package com.tencent.mm.plugin.sight.draft.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 import java.util.List;
 
 final class b$f
 {
-  List<b.e> ogS = new LinkedList();
+  List<b.e> qVh;
+  
+  private b$f()
+  {
+    AppMethodBeat.i(25004);
+    this.qVh = new LinkedList();
+    AppMethodBeat.o(25004);
+  }
 }
 
 

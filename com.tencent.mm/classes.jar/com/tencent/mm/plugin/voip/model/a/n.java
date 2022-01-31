@@ -1,73 +1,73 @@
 package com.tencent.mm.plugin.voip.model.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.voip.model.j;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.voip.model.l;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 public abstract class n<REQ, RESP>
   extends m
   implements com.tencent.mm.network.k
 {
-  protected b dmK;
-  f dmL;
-  private f kpj;
-  protected j pQA = com.tencent.mm.plugin.voip.model.k.bQj();
+  f callback;
+  private f mKW;
+  protected b rr;
+  protected com.tencent.mm.plugin.voip.model.k tvE = l.cMn();
   
-  public final int a(e parame, f paramf)
-  {
-    int i = bRz();
-    if (i != 0) {
-      return i;
-    }
-    this.kpj = paramf;
-    this.dmL = bRy();
-    return a(parame, this.dmK, this);
-  }
+  public abstract f cOp();
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    em(paramInt2, paramInt3);
-    if (this.kpj != null) {
-      this.kpj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    if (this.dmL != null) {
-      ai.d(new n.1(this, paramInt2, paramInt3, paramString));
-    }
-  }
-  
-  public final void bRB()
-  {
-    y.i("MicroMsg.VoipNetSceneBase", "netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
-    g.Dk().a(this, 0);
-  }
-  
-  public final <RESP> RESP bRC()
-  {
-    return this.dmK.ecF.ecN;
-  }
-  
-  public final <REQ> REQ bRD()
-  {
-    return this.dmK.ecE.ecN;
-  }
-  
-  public abstract f bRy();
-  
-  public int bRz()
+  public int cOq()
   {
     return 0;
   }
   
-  public void em(int paramInt1, int paramInt2) {}
+  public final void cOs()
+  {
+    ab.i("MicroMsg.VoipNetSceneBase", "netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
+    g.Rc().a(this, 0);
+  }
+  
+  public final <RESP> RESP cOt()
+  {
+    return this.rr.fsW.fta;
+  }
+  
+  public final <REQ> REQ cOu()
+  {
+    return this.rr.fsV.fta;
+  }
+  
+  public int doScene(e parame, f paramf)
+  {
+    int i = cOq();
+    if (i != 0) {
+      return i;
+    }
+    this.mKW = paramf;
+    this.callback = cOp();
+    return dispatch(parame, this.rr, this);
+  }
+  
+  public void gk(int paramInt1, int paramInt2) {}
+  
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    gk(paramInt2, paramInt3);
+    if (this.mKW != null) {
+      this.mKW.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    if (this.callback != null) {
+      al.d(new n.1(this, paramInt2, paramInt3, paramString));
+    }
+  }
 }
 
 

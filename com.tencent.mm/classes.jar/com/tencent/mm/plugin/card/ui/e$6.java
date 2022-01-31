@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.card.b.f;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.pluginsdk.ui.applet.q.a;
-import com.tencent.mm.protocal.c.mg;
+import com.tencent.mm.protocal.protobuf.pg;
 
 final class e$6
   implements q.a
@@ -17,41 +17,44 @@ final class e$6
   
   public final void a(boolean paramBoolean, String paramString, int paramInt)
   {
+    AppMethodBeat.i(88343);
     if (paramBoolean)
     {
-      this.isQ.isI = paramString;
-      if (this.val$requestCode != 0) {
-        break label160;
-      }
-      if (this.isQ.isM != null) {
-        this.isQ.isM.yD(this.dol);
-      }
-      com.tencent.mm.plugin.report.service.h.nFQ.f(11582, new Object[] { "OperGift", Integer.valueOf(1), Integer.valueOf(this.isQ.ikk.azx().ilo), this.isQ.ikk.azC(), this.isQ.ikk.azB(), this.isQ.isH });
-      com.tencent.mm.ui.base.h.bC(this.isQ.isl, this.isQ.isl.getResources().getString(a.g.card_has_gift_tips));
-    }
-    label160:
-    do
-    {
-      return;
-      if (this.val$requestCode == 1)
+      this.ktX.ktP = paramString;
+      if (this.val$requestCode == 0)
       {
-        paramString = this.isQ;
-        paramString.ikk.azz().tIn = (paramString.getString(a.g.card_share_to) + paramString.isG.getTitle());
-        l.a(paramString.ikk, paramString.isH, paramString.isN.irX, 2);
-        l.cC(paramString.isI, paramString.isH);
-        com.tencent.mm.ui.base.h.bC(this.isQ.isl, this.isQ.isl.getResources().getString(a.g.card_has_gift_tips));
+        if (this.ktX.ktT != null) {
+          this.ktX.ktT.Ie(this.efI);
+        }
+        com.tencent.mm.plugin.report.service.h.qsU.e(11582, new Object[] { "OperGift", Integer.valueOf(1), Integer.valueOf(this.ktX.klk.bbd().iFL), this.ktX.klk.bbi(), this.ktX.klk.bbh(), this.ktX.ktO });
+        com.tencent.mm.ui.base.h.bO(this.ktX.kts, this.ktX.kts.getResources().getString(2131297941));
+        AppMethodBeat.o(88343);
         return;
       }
-    } while (this.val$requestCode != 4);
-    paramString = this.isQ;
-    if (TextUtils.isEmpty(paramString.ikk.azD())) {
-      paramString.ikk.xW(q.Gj());
+      if (this.val$requestCode == 1)
+      {
+        paramString = this.ktX;
+        paramString.klk.bbf().xMB = (paramString.getString(2131298052) + paramString.ktN.getTitle());
+        l.a(paramString.klk, paramString.ktO, paramString.ktU.kte, 2);
+        l.dz(paramString.ktP, paramString.ktO);
+        com.tencent.mm.ui.base.h.bO(this.ktX.kts, this.ktX.kts.getResources().getString(2131297941));
+        AppMethodBeat.o(88343);
+        return;
+      }
+      if (this.val$requestCode == 4)
+      {
+        paramString = this.ktX;
+        if (TextUtils.isEmpty(paramString.klk.bbj())) {
+          paramString.klk.Hx(r.Zn());
+        }
+        paramString.klk.bbf().xMB = (paramString.getString(2131298013) + paramString.ktN.getTitle());
+        l.a(paramString.klk, paramString.ktO, paramString.ktU.kte, 23);
+        l.dz(paramString.ktP, paramString.ktO);
+        com.tencent.mm.plugin.report.service.h.qsU.e(11582, new Object[] { "OpeRecommendCard", Integer.valueOf(this.ktX.ktU.ejF), Integer.valueOf(this.ktX.klk.bbd().iFL), this.ktX.klk.bbi(), this.ktX.klk.bbh(), this.ktX.ktO });
+        com.tencent.mm.ui.base.h.bO(this.ktX.kts, this.ktX.kts.getResources().getString(2131297941));
+      }
     }
-    paramString.ikk.azz().tIn = (paramString.getString(a.g.card_recommend_to) + paramString.isG.getTitle());
-    l.a(paramString.ikk, paramString.isH, paramString.isN.irX, 23);
-    l.cC(paramString.isI, paramString.isH);
-    com.tencent.mm.plugin.report.service.h.nFQ.f(11582, new Object[] { "OpeRecommendCard", Integer.valueOf(this.isQ.isN.drX), Integer.valueOf(this.isQ.ikk.azx().ilo), this.isQ.ikk.azC(), this.isQ.ikk.azB(), this.isQ.isH });
-    com.tencent.mm.ui.base.h.bC(this.isQ.isl, this.isQ.isl.getResources().getString(a.g.card_has_gift_tips));
+    AppMethodBeat.o(88343);
   }
 }
 

@@ -4,16 +4,15 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.b.f;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.e.a;
 import com.tencent.mm.plugin.card.ui.n;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.c.bru;
-import com.tencent.mm.protocal.c.mg;
+import com.tencent.mm.protocal.protobuf.ccf;
+import com.tencent.mm.protocal.protobuf.pg;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.MMActivity;
@@ -21,52 +20,58 @@ import com.tencent.mm.ui.MMActivity;
 public final class o
   extends i
 {
-  private View iyr;
-  private ImageView iys;
-  private TextView iyt;
-  private TextView iyu;
+  private TextView kBA;
+  private TextView kBB;
+  private View kBy;
+  private ImageView kBz;
   
-  public final void aCU()
+  public final void bfq()
   {
-    this.iyr.setVisibility(8);
+    AppMethodBeat.i(88774);
+    this.kBy.setVisibility(8);
+    AppMethodBeat.o(88774);
   }
   
   public final void initView()
   {
-    this.iyr = findViewById(a.d.from_username_layout);
-    this.iys = ((ImageView)findViewById(a.d.from_username_avatar));
-    this.iyt = ((TextView)findViewById(a.d.from_username_tv));
-    this.iyu = ((TextView)findViewById(a.d.from_username_tips));
-    this.iyr.setVisibility(8);
+    AppMethodBeat.i(88772);
+    this.kBy = findViewById(2131822072);
+    this.kBz = ((ImageView)findViewById(2131824305));
+    this.kBA = ((TextView)findViewById(2131824306));
+    this.kBB = ((TextView)findViewById(2131824307));
+    this.kBy.setVisibility(8);
+    AppMethodBeat.o(88772);
   }
   
   public final void update()
   {
-    b localb = this.iya.aBE();
-    MMActivity localMMActivity = this.iya.aBH();
-    e.a locala = this.iya.aBL();
-    this.iyr.setVisibility(0);
-    this.iyt.setText(com.tencent.mm.pluginsdk.ui.d.j.a(localMMActivity, ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abl(locala.irV).Bp(), this.iyt.getTextSize()));
-    if ((localb.azz() != null) && (!TextUtils.isEmpty(localb.azz().tIn))) {
-      this.iyu.setText(com.tencent.mm.pluginsdk.ui.d.j.a(localMMActivity, localb.azz().tIn, this.iyu.getTextSize()));
+    AppMethodBeat.i(88773);
+    b localb = this.kBh.bdv();
+    MMActivity localMMActivity = this.kBh.bdy();
+    e.a locala = this.kBh.bdC();
+    this.kBy.setVisibility(0);
+    this.kBA.setText(com.tencent.mm.pluginsdk.ui.d.j.b(localMMActivity, ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(locala.ktc).Oe(), this.kBA.getTextSize()));
+    if ((localb.bbf() != null) && (!TextUtils.isEmpty(localb.bbf().xMB))) {
+      this.kBB.setText(com.tencent.mm.pluginsdk.ui.d.j.b(localMMActivity, localb.bbf().xMB, this.kBB.getTextSize()));
     }
     for (;;)
     {
-      a.b.a(this.iys, locala.irV);
-      this.iys.setOnClickListener(this.iya.aBI());
+      a.b.c(this.kBz, locala.ktc);
+      this.kBz.setOnClickListener(this.kBh.bdz());
+      AppMethodBeat.o(88773);
       return;
-      if (!TextUtils.isEmpty(localb.azx().imz))
+      if (!TextUtils.isEmpty(localb.bbd().knv))
       {
-        if (localb.azj()) {
-          this.iyu.setText(localMMActivity.getString(a.g.card_invoice_tips, new Object[] { localb.azx().imz }));
+        if (localb.baP()) {
+          this.kBB.setText(localMMActivity.getString(2131297965, new Object[] { localb.bbd().knv }));
         } else {
-          this.iyu.setText(localMMActivity.getString(a.g.card_gift_tips, new Object[] { localb.azx().imz }));
+          this.kBB.setText(localMMActivity.getString(2131297938, new Object[] { localb.bbd().knv }));
         }
       }
-      else if (localb.azj()) {
-        this.iyu.setText(localMMActivity.getString(a.g.card_invoice_tips, new Object[] { this.iya.aBM().getTitle() }));
+      else if (localb.baP()) {
+        this.kBB.setText(localMMActivity.getString(2131297965, new Object[] { this.kBh.bdD().getTitle() }));
       } else {
-        this.iyu.setText(localMMActivity.getString(a.g.card_gift_tips, new Object[] { this.iya.aBM().getTitle() }));
+        this.kBB.setText(localMMActivity.getString(2131297938, new Object[] { this.kBh.bdD().getTitle() }));
       }
     }
   }

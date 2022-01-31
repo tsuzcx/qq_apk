@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.openSDK.param.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class QueryDownloadTaskResponse
   extends JceStruct
@@ -30,6 +31,7 @@ public final class QueryDownloadTaskResponse
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(76007);
     this.url = paramJceInputStream.readString(0, true);
     this.savePath = paramJceInputStream.readString(1, false);
     this.state = paramJceInputStream.read(this.state, 2, false);
@@ -37,10 +39,12 @@ public final class QueryDownloadTaskResponse
     this.totalLen = paramJceInputStream.read(this.totalLen, 4, false);
     this.allTaskTotalProgress = paramJceInputStream.read(this.allTaskTotalProgress, 5, false);
     this.allTaskTotalLength = paramJceInputStream.read(this.allTaskTotalLength, 6, false);
+    AppMethodBeat.o(76007);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(76006);
     paramJceOutputStream.write(this.url, 0);
     if (this.savePath != null) {
       paramJceOutputStream.write(this.savePath, 1);
@@ -50,11 +54,12 @@ public final class QueryDownloadTaskResponse
     paramJceOutputStream.write(this.totalLen, 4);
     paramJceOutputStream.write(this.allTaskTotalProgress, 5);
     paramJceOutputStream.write(this.allTaskTotalLength, 6);
+    AppMethodBeat.o(76006);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.QueryDownloadTaskResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.kitchen.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class KvInfoUI$4
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class KvInfoUI$4
   
   public final void onClick(View paramView)
   {
-    paramView = KvInfoUI.a(this.lAA).getText().toString().trim();
-    KvInfoUI.a(this.lAA, paramView);
+    AppMethodBeat.i(114444);
+    paramView = KvInfoUI.a(this.nXL).getText().toString().trim();
+    KvInfoUI.a(this.nXL, paramView);
+    AppMethodBeat.o(114444);
   }
 }
 

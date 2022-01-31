@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.location.model;
 
 public abstract interface o$a
 {
-  public abstract void bei();
+  public abstract void ayM();
 }
 
 

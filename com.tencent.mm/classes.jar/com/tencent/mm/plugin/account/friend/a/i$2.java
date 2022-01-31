@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.protocal.c.auc;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bai;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.applet.b.b;
 
 final class i$2
@@ -9,23 +10,32 @@ final class i$2
 {
   i$2(i parami) {}
   
-  public final int WL()
+  public final int aqn()
   {
-    return this.ffI.getCount();
+    AppMethodBeat.i(108340);
+    int i = this.gxq.getCount();
+    AppMethodBeat.o(108340);
+    return i;
   }
   
-  public final String jX(int paramInt)
+  public final String mS(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.ffI.getCount())) {
-      y.e("MicroMsg.FriendAdapter", "pos is invalid");
-    }
-    auc localauc;
-    do
+    AppMethodBeat.i(108339);
+    if ((paramInt < 0) || (paramInt >= this.gxq.getCount()))
     {
+      ab.e("MicroMsg.FriendAdapter", "pos is invalid");
+      AppMethodBeat.o(108339);
       return null;
-      localauc = this.ffI.jW(paramInt);
-    } while (localauc == null);
-    return localauc.hPY;
+    }
+    Object localObject = this.gxq.mR(paramInt);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(108339);
+      return null;
+    }
+    localObject = ((bai)localObject).jJA;
+    AppMethodBeat.o(108339);
+    return localObject;
   }
 }
 

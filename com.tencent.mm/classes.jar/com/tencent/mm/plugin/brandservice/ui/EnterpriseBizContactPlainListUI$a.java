@@ -6,92 +6,129 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ai.d;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.d;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.aj.z;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.h.c.ao;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.b.c;
-import com.tencent.mm.plugin.brandservice.b.d;
-import com.tencent.mm.plugin.brandservice.b.e;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.protocal.c.jt;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.me;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.applet.b;
 import com.tencent.mm.ui.applet.b.b;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.p;
 
 final class EnterpriseBizContactPlainListUI$a
-  extends r<jt>
-  implements m.b
+  extends p<me>
+  implements n.b
 {
-  b ffG = new b(new EnterpriseBizContactPlainListUI.a.1(this));
-  private b.b ffH = null;
+  b gxo;
+  private b.b gxp;
   
   public EnterpriseBizContactPlainListUI$a(EnterpriseBizContactPlainListUI paramEnterpriseBizContactPlainListUI, Context paramContext)
   {
-    super(paramContext, new jt());
-    yc();
+    super(paramContext, new me());
+    AppMethodBeat.i(13990);
+    this.gxp = null;
+    this.gxo = new b(new EnterpriseBizContactPlainListUI.a.1(this));
+    Ku();
+    AppMethodBeat.o(13990);
   }
   
-  public final void a(String paramString, l paraml)
+  public final void Ku()
   {
-    y.i("MicroMsg.EnterpriseBizListAdapter", "onNotifyChange");
-    ai.d(new EnterpriseBizContactPlainListUI.a.2(this));
+    AppMethodBeat.i(13994);
+    if (!g.RG())
+    {
+      ab.e("MicroMsg.EnterpriseBizListAdapter", "accHasReady");
+      AppMethodBeat.o(13994);
+      return;
+    }
+    bKb();
+    Object localObject2 = null;
+    Object localObject1;
+    switch (EnterpriseBizContactPlainListUI.b(this.jUA))
+    {
+    default: 
+      z.afi();
+      localObject1 = e.G(EnterpriseBizContactPlainListUI.c(this.jUA), true);
+    }
+    for (;;)
+    {
+      setCursor((Cursor)localObject1);
+      AppMethodBeat.o(13994);
+      return;
+      z.afi();
+      localObject1 = e.V(EnterpriseBizContactPlainListUI.c(this.jUA), 25);
+      continue;
+      z.afi();
+      localObject1 = e.rM(EnterpriseBizContactPlainListUI.c(this.jUA));
+      continue;
+      z.afi();
+      localObject1 = e.V(EnterpriseBizContactPlainListUI.c(this.jUA), 128);
+      continue;
+      d locald = f.rS(EnterpriseBizContactPlainListUI.c(this.jUA));
+      localObject1 = localObject2;
+      if (locald != null)
+      {
+        localObject1 = localObject2;
+        if (locald.field_enterpriseFather != null) {
+          localObject1 = z.afi().rL(locald.field_enterpriseFather);
+        }
+      }
+    }
+  }
+  
+  public final void Kv()
+  {
+    AppMethodBeat.i(156910);
+    Ku();
+    AppMethodBeat.o(156910);
+  }
+  
+  public final void a(String paramString, m paramm)
+  {
+    AppMethodBeat.i(13991);
+    ab.i("MicroMsg.EnterpriseBizListAdapter", "onNotifyChange");
+    al.d(new EnterpriseBizContactPlainListUI.a.2(this));
+    AppMethodBeat.o(13991);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.ffH == null) {
-      this.ffH = new b.b()
-      {
-        public final int WL()
-        {
-          return EnterpriseBizContactPlainListUI.a.this.getCount();
-        }
-        
-        public final String jX(int paramAnonymousInt)
-        {
-          if ((paramAnonymousInt < 0) || (paramAnonymousInt >= EnterpriseBizContactPlainListUI.a.this.getCount()))
-          {
-            y.e("MicroMsg.EnterpriseBizListAdapter", "pos is invalid");
-            return null;
-          }
-          jt localjt = (jt)EnterpriseBizContactPlainListUI.a.this.getItem(paramAnonymousInt);
-          if (localjt == null) {
-            return null;
-          }
-          return localjt.userName;
-        }
-      };
+    AppMethodBeat.i(13992);
+    if (this.gxp == null) {
+      this.gxp = new EnterpriseBizContactPlainListUI.a.3(this);
     }
-    if (this.ffG != null) {
-      this.ffG.a(paramInt, this.ffH);
+    if (this.gxo != null) {
+      this.gxo.a(paramInt, this.gxp);
     }
     if (paramView == null)
     {
       paramViewGroup = new a();
-      paramView = View.inflate(this.context, b.e.enterprise_biz_list_item_normal, null);
-      paramViewGroup.ffK = ((ImageView)paramView.findViewById(b.d.nearby_friend_avatar_iv));
-      paramViewGroup.fdY = ((TextView)paramView.findViewById(b.d.nearby_friend_name));
+      paramView = View.inflate(this.context, 2130969427, null);
+      paramViewGroup.gxs = ((ImageView)paramView.findViewById(2131823731));
+      paramViewGroup.gvI = ((TextView)paramView.findViewById(2131823732));
       paramView.setTag(paramViewGroup);
     }
-    jt localjt;
+    me localme;
     for (;;)
     {
-      localjt = (jt)getItem(paramInt);
-      if (localjt != null) {
+      localme = (me)getItem(paramInt);
+      if (localme != null) {
         break;
       }
       paramViewGroup.clear();
+      AppMethodBeat.o(13992);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
     }
@@ -100,97 +137,44 @@ final class EnterpriseBizContactPlainListUI$a
     int i = paramView.getPaddingTop();
     int j = paramView.getPaddingRight();
     int k = paramView.getPaddingLeft();
-    paramView.setBackgroundDrawable(a.g(this.context, b.c.comm_list_item_selector));
+    paramView.setBackgroundDrawable(a.k(this.context, 2130838445));
     paramView.setPadding(k, i, j, paramInt);
-    String str = bk.pm(localjt.dnp.Bp());
-    paramViewGroup.fdY.setText(j.a(this.context, str, paramViewGroup.fdY.getTextSize()));
-    paramViewGroup.fdY.setVisibility(0);
-    paramViewGroup.ffK.setVisibility(0);
-    if (!bk.bl(localjt.dnp.field_username))
-    {
-      a.b.a(paramViewGroup.ffK, localjt.dnp.field_username);
-      return paramView;
-    }
-    paramViewGroup.ffK.setImageDrawable(null);
-    return paramView;
-  }
-  
-  public final void yc()
-  {
-    StringBuilder localStringBuilder = null;
-    if (!g.DK())
-    {
-      y.e("MicroMsg.EnterpriseBizListAdapter", "accHasReady");
-      return;
-    }
-    bcS();
-    Object localObject;
-    switch (EnterpriseBizContactPlainListUI.b(this.idM))
-    {
-    default: 
-      z.My();
-      localObject = com.tencent.mm.ai.e.C(EnterpriseBizContactPlainListUI.c(this.idM), true);
+    String str = bo.nullAsNil(localme.contact.Oe());
+    paramViewGroup.gvI.setText(j.b(this.context, str, paramViewGroup.gvI.getTextSize()));
+    paramViewGroup.gvI.setVisibility(0);
+    paramViewGroup.gxs.setVisibility(0);
+    if (!bo.isNullOrNil(localme.contact.field_username)) {
+      a.b.c(paramViewGroup.gxs, localme.contact.field_username);
     }
     for (;;)
     {
-      setCursor((Cursor)localObject);
-      return;
-      z.My();
-      localObject = com.tencent.mm.ai.e.N(EnterpriseBizContactPlainListUI.c(this.idM), 25);
-      continue;
-      z.My();
-      localObject = EnterpriseBizContactPlainListUI.c(this.idM);
-      localStringBuilder = new StringBuilder();
-      com.tencent.mm.ai.e.b(localStringBuilder);
-      com.tencent.mm.ai.e.c(localStringBuilder);
-      com.tencent.mm.ai.e.a(localStringBuilder, (String)localObject);
-      com.tencent.mm.ai.e.b(localStringBuilder, false);
-      com.tencent.mm.ai.e.a(localStringBuilder, false);
-      localStringBuilder.append(" order by ");
-      localStringBuilder.append(com.tencent.mm.ai.e.Me());
-      localObject = localStringBuilder.toString();
-      y.i("MicroMsg.BizInfoStorage", "getEnterpriseDisableChild sql %s", new Object[] { localObject });
-      localObject = g.DP().dKu.a((String)localObject, null, 0);
-      continue;
-      z.My();
-      localObject = com.tencent.mm.ai.e.N(EnterpriseBizContactPlainListUI.c(this.idM), 128);
-      continue;
-      d locald = f.kX(EnterpriseBizContactPlainListUI.c(this.idM));
-      localObject = localStringBuilder;
-      if (locald != null)
-      {
-        localObject = localStringBuilder;
-        if (locald.field_enterpriseFather != null) {
-          localObject = z.My().kR(locald.field_enterpriseFather);
-        }
-      }
+      AppMethodBeat.o(13992);
+      return paramView;
+      paramViewGroup.gxs.setImageDrawable(null);
     }
-  }
-  
-  protected final void yd()
-  {
-    yc();
   }
   
   final class a
   {
-    TextView fdY;
-    ImageView ffK;
+    TextView gvI;
+    ImageView gxs;
     
     a() {}
     
     public final void clear()
     {
-      if (this.ffK != null)
+      AppMethodBeat.i(13989);
+      if (this.gxs != null)
       {
-        this.ffK.setImageDrawable(null);
-        this.ffK.setVisibility(8);
+        this.gxs.setImageDrawable(null);
+        this.gxs.setVisibility(8);
       }
-      if (this.fdY != null)
+      if (this.gvI != null)
       {
-        this.fdY.setText("");
-        this.fdY.setVisibility(8);
+        this.gvI.setText("");
+        this.gvI.setVisibility(8);
       }
+      AppMethodBeat.o(13989);
     }
   }
 }

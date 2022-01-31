@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginIndepPass$10
   implements TextWatcher
@@ -10,7 +11,9 @@ final class LoginIndepPass$10
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    LoginIndepPass.b(this.fnl);
+    AppMethodBeat.i(124976);
+    LoginIndepPass.b(this.gEE);
+    AppMethodBeat.o(124976);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract interface h$a
 {
-  public abstract void bx(List<ScanResult> paramList);
+  public abstract void bR(List<ScanResult> paramList);
 }
 
 

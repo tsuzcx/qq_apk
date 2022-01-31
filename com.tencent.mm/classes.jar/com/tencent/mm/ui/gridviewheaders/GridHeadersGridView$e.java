@@ -1,12 +1,13 @@
 package com.tencent.mm.ui.gridviewheaders;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GridHeadersGridView$e
   extends GridHeadersGridView.f
   implements Runnable
 {
-  int vWZ;
+  int Aph;
   
   private GridHeadersGridView$e(GridHeadersGridView paramGridHeadersGridView)
   {
@@ -15,32 +16,35 @@ final class GridHeadersGridView$e
   
   public final void run()
   {
-    if (this.vWW.uTo) {}
-    View localView;
-    GridHeadersGridView localGridHeadersGridView;
-    do
+    AppMethodBeat.i(107365);
+    if (this.Ape.zhO)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((this.vWW.vWT == null) || (this.vWW.vWT.getCount() <= 0) || (this.vWZ == -1) || (this.vWZ >= this.vWW.vWT.getCount()) || (!cIE()));
-        localView = this.vWW.HY(this.vWZ);
-      } while (localView == null);
-      localGridHeadersGridView = this.vWW;
-      GridHeadersGridView.a(this.vWW, this.vWZ);
-    } while (localGridHeadersGridView.vWP == null);
-    localGridHeadersGridView.playSoundEffect(0);
-    if (localView != null) {
-      localView.sendAccessibilityEvent(1);
+      AppMethodBeat.o(107365);
+      return;
     }
-    localGridHeadersGridView.vWP.cE(localView);
+    if ((this.Ape.Apb != null) && (this.Ape.Apb.getCount() > 0) && (this.Aph != -1) && (this.Aph < this.Ape.Apb.getCount()) && (dNo()))
+    {
+      View localView = this.Ape.QK(this.Aph);
+      if (localView != null)
+      {
+        GridHeadersGridView localGridHeadersGridView = this.Ape;
+        GridHeadersGridView.a(this.Ape, this.Aph);
+        if (localGridHeadersGridView.AoX != null)
+        {
+          localGridHeadersGridView.playSoundEffect(0);
+          if (localView != null) {
+            localView.sendAccessibilityEvent(1);
+          }
+          localGridHeadersGridView.AoX.di(localView);
+        }
+      }
+    }
+    AppMethodBeat.o(107365);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.GridHeadersGridView.e
  * JD-Core Version:    0.7.0.1
  */

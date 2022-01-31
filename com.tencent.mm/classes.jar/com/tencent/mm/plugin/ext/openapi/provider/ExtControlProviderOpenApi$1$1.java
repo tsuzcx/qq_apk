@@ -1,22 +1,27 @@
 package com.tencent.mm.plugin.ext.openapi.provider;
 
-import com.tencent.mm.h.a.ff;
-import com.tencent.mm.h.a.ff.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fi;
+import com.tencent.mm.g.a.fi.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ExtControlProviderOpenApi$1$1
   implements Runnable
 {
-  ExtControlProviderOpenApi$1$1(ExtControlProviderOpenApi.1 param1, ff paramff) {}
+  ExtControlProviderOpenApi$1$1(ExtControlProviderOpenApi.1 param1, fi paramfi) {}
   
   public final void run()
   {
-    y.i("MicroMsg.ExtControlProviderOpenApi", "getWifiList run");
-    if ((this.jJX == null) || (this.jJX.bLU == null) || (this.jJX.bLU.bLA == 0)) {
+    AppMethodBeat.i(20309);
+    ab.i("MicroMsg.ExtControlProviderOpenApi", "getWifiList run");
+    if ((this.mec == null) || (this.mec.cto == null) || (this.mec.cto.csU == 0))
+    {
+      AppMethodBeat.o(20309);
       return;
     }
-    y.i("MicroMsg.ExtControlProviderOpenApi", "getWifiList return cursor");
-    this.jJY.bS(this.jJX.bLU.bLW);
+    ab.i("MicroMsg.ExtControlProviderOpenApi", "getWifiList return cursor");
+    this.med.cv(this.mec.cto.ctq);
+    AppMethodBeat.o(20309);
   }
 }
 

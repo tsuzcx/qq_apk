@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class CleanChattingDetailUI$3$1
@@ -11,8 +12,10 @@ final class CleanChattingDetailUI$3$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CleanChattingDetailUI.b(this.iCU.iCT);
-    h.nFQ.a(714L, 31L, 1L, false);
+    AppMethodBeat.i(18768);
+    CleanChattingDetailUI.b(this.kIb.kIa);
+    h.qsU.idkeyStat(714L, 31L, 1L, false);
+    AppMethodBeat.o(18768);
   }
 }
 

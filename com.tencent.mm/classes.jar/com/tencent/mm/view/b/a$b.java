@@ -2,9 +2,9 @@ package com.tencent.mm.view.b;
 
 public abstract interface a$b
 {
-  public abstract void onStart();
+  public abstract void CO();
   
-  public abstract void tW();
+  public abstract void onStart();
 }
 
 

@@ -1,16 +1,14 @@
 package com.google.android.exoplayer2.source;
 
-import com.google.android.exoplayer2.c.k.a;
+import java.io.IOException;
 
-public final class g$a
+public abstract interface g$a
 {
-  public k.a aCH;
-  public long pj;
-  public int size;
+  public abstract void onLoadError(IOException paramIOException);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.g.a
  * JD-Core Version:    0.7.0.1
  */

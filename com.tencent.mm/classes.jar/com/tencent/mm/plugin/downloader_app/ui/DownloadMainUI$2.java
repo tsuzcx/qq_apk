@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.downloader_app.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader_app.c.a;
 import com.tencent.mm.plugin.downloader_app.search.DownloadSearchUI;
 
 final class DownloadMainUI$2
@@ -12,7 +14,10 @@ final class DownloadMainUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.iTt.startActivity(new Intent(this.iTt, DownloadSearchUI.class));
+    AppMethodBeat.i(136225);
+    this.lci.startActivity(new Intent(this.lci, DownloadSearchUI.class));
+    a.a(10, 1001, 1, 2, "", "", "");
+    AppMethodBeat.o(136225);
     return true;
   }
 }

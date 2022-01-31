@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.e.a;
-import com.tencent.luggage.e.a.a;
+import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class f
-  extends ax<e>
+  extends bi<e>
 {
-  public final void a(Context paramContext, String paramString, aw.a parama) {}
-  
-  public final int aGj()
-  {
-    return 0;
-  }
+  public final void a(Context paramContext, String paramString, bh.a parama) {}
   
   public final void b(a<e>.a parama)
   {
-    y.i("MicroMsg.JsApiCheckJsApi", "invoke");
+    AppMethodBeat.i(6285);
+    ab.i("MicroMsg.JsApiCheckJsApi", "invoke");
     parama.a("fail", null);
+    AppMethodBeat.o(6285);
+  }
+  
+  public final int bjL()
+  {
+    return 0;
   }
   
   public final String name()

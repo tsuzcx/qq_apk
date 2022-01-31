@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.websearch.widget.b;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.n.d;
 
 public final class a$2
@@ -10,13 +11,17 @@ public final class a$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    if (paramInt == 0) {
-      this.qXq.cai();
-    }
-    while (paramInt != 1) {
+    AppMethodBeat.i(91460);
+    if (paramInt == 0)
+    {
+      this.uMF.dad();
+      AppMethodBeat.o(91460);
       return;
     }
-    this.qXq.bZl();
+    if (paramInt == 1) {
+      this.uMF.cZf();
+    }
+    AppMethodBeat.o(91460);
   }
 }
 

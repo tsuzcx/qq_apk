@@ -1,15 +1,17 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.d;
 
 import android.os.Looper;
-import com.tencent.mm.cf.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.e.q;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.pluginsdk.model.app.i;
 import com.tencent.mm.pointers.PLong;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bs;
 import com.tencent.mm.storage.o;
 import com.tencent.mm.vfs.e;
@@ -19,224 +21,256 @@ import junit.framework.Assert;
 public final class b
   extends com.tencent.mm.plugin.backup.b.a
 {
-  private static b hPl;
-  private static int hPo = 0;
-  private c hPm;
-  private a hPn;
-  private c hPp;
+  private static b jIN;
+  private static int jIQ = 0;
+  private c jIO;
+  private a jIP;
+  private c jIR;
   
   private boolean a(PLong paramPLong1, PLong paramPLong2, PLong paramPLong3, b.a parama, int paramInt)
   {
-    com.tencent.mm.model.au.Hx();
+    AppMethodBeat.i(18017);
+    aw.aaz();
     com.tencent.mm.model.c.closeDB();
-    y.d("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp after close db");
-    com.tencent.mm.model.au.Hx();
-    long l = e.aeQ(com.tencent.mm.model.c.Dw());
-    com.tencent.mm.model.au.Hx();
-    paramPLong3.value = (l + e.aeQ(com.tencent.mm.model.c.Dx()));
+    ab.d("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp after close db");
+    aw.aaz();
+    long l = e.avI(com.tencent.mm.model.c.Rr());
+    aw.aaz();
+    paramPLong3.value = (l + e.avI(com.tencent.mm.model.c.Rs()));
     l = paramPLong3.value;
-    com.tencent.mm.model.au.Hx();
-    if (!com.tencent.mm.plugin.backup.bakoldlogic.a.a.a(l, paramPLong1, paramPLong2, com.tencent.mm.model.c.FU()))
+    aw.aaz();
+    if (!com.tencent.mm.plugin.backup.bakoldlogic.a.a.a(l, paramPLong1, paramPLong2, com.tencent.mm.model.c.getAccPath()))
     {
-      y.e("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp data free error, len %d", new Object[] { Long.valueOf(paramPLong3.value) });
-      parama.hPx = false;
-      parama.hPy = paramPLong1.value;
-      parama.hPz = paramPLong2.value;
+      ab.e("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp data free error, len %d", new Object[] { Long.valueOf(paramPLong3.value) });
+      parama.jIZ = false;
+      parama.jJa = paramPLong1.value;
+      parama.jJb = paramPLong2.value;
       parama.dbSize = paramPLong3.value;
+      AppMethodBeat.o(18017);
       return false;
     }
-    com.tencent.mm.model.au.Hx();
-    Object localObject1 = com.tencent.mm.model.c.Dw();
+    aw.aaz();
+    Object localObject1 = com.tencent.mm.model.c.Rr();
     Object localObject2 = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    e.r((String)localObject1, com.tencent.mm.model.c.Dw() + ".tem");
-    com.tencent.mm.model.au.Hx();
-    localObject1 = com.tencent.mm.model.c.Dx();
+    aw.aaz();
+    e.C((String)localObject1, com.tencent.mm.model.c.Rr() + ".tem");
+    aw.aaz();
+    localObject1 = com.tencent.mm.model.c.Rs();
     localObject2 = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    e.r((String)localObject1, com.tencent.mm.model.c.Dx() + ".tem");
+    aw.aaz();
+    e.C((String)localObject1, com.tencent.mm.model.c.Rs() + ".tem");
     localObject1 = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    localObject1 = com.tencent.mm.model.c.Dx() + "-journal";
+    aw.aaz();
+    localObject1 = com.tencent.mm.model.c.Rs() + "-journal";
     localObject2 = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    e.r((String)localObject1, com.tencent.mm.model.c.Dx() + ".tem-journal");
+    aw.aaz();
+    e.C((String)localObject1, com.tencent.mm.model.c.Rs() + ".tem-journal");
     localObject1 = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    localObject1 = com.tencent.mm.model.c.Dx() + "-wal";
+    aw.aaz();
+    localObject1 = com.tencent.mm.model.c.Rs() + "-wal";
     localObject2 = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    e.r((String)localObject1, com.tencent.mm.model.c.Dx() + ".tem-wal");
-    y.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before reset account");
-    com.tencent.mm.kernel.g.DN().release();
-    com.tencent.mm.kernel.g.DN().initialize();
-    y.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before TemAccStg setAccInfo");
-    localObject1 = avS();
-    com.tencent.mm.model.au.Hx();
-    localObject2 = com.tencent.mm.model.c.FU();
-    com.tencent.mm.model.au.Hx();
-    int i = com.tencent.mm.model.c.CK();
-    y.i("MicroMsg.BakOldTempStorage", "accPath:%s, accUin:%d", new Object[] { localObject2, Integer.valueOf(i) });
+    aw.aaz();
+    e.C((String)localObject1, com.tencent.mm.model.c.Rs() + ".tem-wal");
+    ab.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before reset account");
+    com.tencent.mm.kernel.g.RJ().release();
+    com.tencent.mm.kernel.g.RJ().initialize();
+    ab.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before TemAccStg setAccInfo");
+    localObject1 = aVv();
+    aw.aaz();
+    localObject2 = com.tencent.mm.model.c.getAccPath();
+    aw.aaz();
+    int i = com.tencent.mm.model.c.getUin();
+    ab.i("MicroMsg.BakOldTempStorage", "accPath:%s, accUin:%d", new Object[] { localObject2, Integer.valueOf(i) });
     ((c)localObject1).uin = i;
-    ((c)localObject1).dKt = ((String)localObject2);
-    y.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before TemAccStg initDB");
-    localObject1 = avS();
+    ((c)localObject1).eHR = ((String)localObject2);
+    ab.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp before TemAccStg initDB");
+    localObject1 = aVv();
     localObject2 = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    localObject2 = com.tencent.mm.model.c.Dw() + ".tem";
-    com.tencent.mm.model.au.Hx();
-    i = com.tencent.mm.model.c.CK();
+    aw.aaz();
+    localObject2 = com.tencent.mm.model.c.Rr() + ".tem";
+    aw.aaz();
+    i = com.tencent.mm.model.c.getUin();
     Object localObject3 = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    localObject3 = com.tencent.mm.model.c.Dx() + ".tem";
-    y.i("MicroMsg.BakOldTempStorage", "bakoldInitDB isTempDB:%s  cache:%s uin:%s db:%s %s", new Object[] { ((c)localObject1).hPC, localObject2, Integer.valueOf(i), localObject3, bk.csb() });
-    if (((c)localObject1).dKu != null) {
-      y.e("MicroMsg.BakOldTempStorage", "bakoldInitDB dataDB is already init!!!");
+    aw.aaz();
+    localObject3 = com.tencent.mm.model.c.Rs() + ".tem";
+    ab.i("MicroMsg.BakOldTempStorage", "bakoldInitDB isTempDB:%s  cache:%s uin:%s db:%s %s", new Object[] { ((c)localObject1).jJe, localObject2, Integer.valueOf(i), localObject3, bo.dtY() });
+    if (((c)localObject1).eHS != null) {
+      ab.e("MicroMsg.BakOldTempStorage", "bakoldInitDB dataDB is already init!!!");
     }
-    String str;
+    Object localObject4;
     if (paramInt > 0)
     {
-      if ((((c)localObject1).hPC != null) && (!((c)localObject1).hPC.booleanValue()))
+      if ((((c)localObject1).jJe != null) && (!((c)localObject1).jJe.booleanValue()))
       {
-        y.e("MicroMsg.BakOldTempStorage", "bakoldInitDB isTempDB is false!!!");
-        ((c)localObject1).avV();
+        ab.e("MicroMsg.BakOldTempStorage", "bakoldInitDB isTempDB is false!!!");
+        ((c)localObject1).aVy();
       }
-      str = "bakoldInitDB here  isTempDb should null :" + ((c)localObject1).hPC;
-      if (((c)localObject1).hPC != null) {
-        break label718;
+      localObject4 = "bakoldInitDB here  isTempDb should null :" + ((c)localObject1).jJe;
+      if (((c)localObject1).jJe != null) {
+        break label747;
       }
     }
-    label718:
+    label747:
     for (boolean bool = true;; bool = false)
     {
-      Assert.assertTrue(str, bool);
-      ((c)localObject1).hPC = Boolean.valueOf(true);
-      ((c)localObject1).dKu = new h(new c.2((c)localObject1));
-      if (((c)localObject1).dKu.a((String)localObject2, (String)localObject3, "", i, q.zf(), new HashMap(), false)) {
+      Assert.assertTrue((String)localObject4, bool);
+      ((c)localObject1).jJe = Boolean.TRUE;
+      ((c)localObject1).eHS = new com.tencent.mm.cg.h(new c.2((c)localObject1));
+      localObject4 = ((c)localObject1).eHS;
+      l = i;
+      q.bP(true);
+      if (((com.tencent.mm.cg.h)localObject4).b((String)localObject2, (String)localObject3, "", l, new HashMap(), false)) {
         break;
       }
-      throw new com.tencent.mm.model.b((byte)0);
+      paramPLong1 = new com.tencent.mm.model.b((byte)0);
+      AppMethodBeat.o(18017);
+      throw paramPLong1;
     }
-    ((c)localObject1).hMK = new com.tencent.mm.storage.z(((c)localObject1).dKu);
-    localObject2 = (com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-    ((c)localObject1).hML = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject2).d(((c)localObject1).dKu);
-    ((c)localObject1).hMN = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject2).e(((c)localObject1).dKu);
-    ((c)localObject1).hMM = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject2).a(((c)localObject1).dKu, ((c)localObject1).hML, ((c)localObject1).hMN);
-    ((c)localObject1).hMM.a(new com.tencent.mm.storage.au(((c)localObject1).hMM));
-    ((c)localObject1).hMM.a(new o(((c)localObject1).hMM));
-    ((c)localObject1).hMQ = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject2).f(((c)localObject1).dKu);
-    ((c)localObject1).hMO = new com.tencent.mm.as.g(((c)localObject1).dKu);
-    if (com.tencent.mm.br.d.SP("emoji")) {
-      ((c)localObject1).hMP = new com.tencent.mm.storage.emotion.d(((c)localObject1).dKu);
+    ((c)localObject1).jGm = new com.tencent.mm.storage.z(((c)localObject1).eHS);
+    localObject2 = (com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.k.class);
+    ((c)localObject1).jGn = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject2).d(((c)localObject1).eHS);
+    ((c)localObject1).jGp = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject2).e(((c)localObject1).eHS);
+    ((c)localObject1).jGo = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject2).a(((c)localObject1).eHS, ((c)localObject1).jGn, ((c)localObject1).jGp);
+    ((c)localObject1).jGo.a(new au(((c)localObject1).jGo));
+    ((c)localObject1).jGo.a(new o(((c)localObject1).jGo));
+    ((c)localObject1).jGs = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject2).f(((c)localObject1).eHS);
+    ((c)localObject1).jGq = new com.tencent.mm.at.g(((c)localObject1).eHS);
+    if (com.tencent.mm.bq.d.ahR("emoji")) {
+      ((c)localObject1).jGr = new com.tencent.mm.storage.emotion.d(((c)localObject1).eHS);
     }
-    ((c)localObject1).hMS = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.chatroom.a.c.class)).c(((c)localObject1).dKu);
-    ((c)localObject1).hMR = new t(((c)localObject1).dKu);
-    ((c)localObject1).hMT = new com.tencent.mm.pluginsdk.model.app.k(((c)localObject1).dKu);
-    ((c)localObject1).hMU = new i(((c)localObject1).dKu);
-    ((c)localObject1).hMV = new com.tencent.mm.pluginsdk.model.app.c(((c)localObject1).dKu);
-    ((c)localObject1).hPA = new bs(((c)localObject1).hMK);
-    ((c)localObject1).hPA.c(new c.1((c)localObject1));
-    ((c)localObject1).hPA.cvZ();
-    y.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp after TemAccStg initDB");
-    avR();
-    parama.hPx = true;
-    parama.hPy = paramPLong1.value;
-    parama.hPz = paramPLong2.value;
+    ((c)localObject1).jGu = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.chatroom.a.c.class)).c(((c)localObject1).eHS);
+    ((c)localObject1).jGt = new t(((c)localObject1).eHS);
+    ((c)localObject1).jGv = new com.tencent.mm.pluginsdk.model.app.k(((c)localObject1).eHS);
+    ((c)localObject1).jGw = new i(((c)localObject1).eHS);
+    ((c)localObject1).jGx = new com.tencent.mm.pluginsdk.model.app.c(((c)localObject1).eHS);
+    ((c)localObject1).jJc = new bs(((c)localObject1).jGm);
+    ((c)localObject1).jJc.add(new c.1((c)localObject1));
+    ((c)localObject1).jJc.dyJ();
+    ab.i("MicroMsg.BakOldTempDbModel", "bakoldInitTempDBimp after TemAccStg initDB");
+    aVu();
+    parama.jIZ = true;
+    parama.jJa = paramPLong1.value;
+    parama.jJb = paramPLong2.value;
     parama.dbSize = paramPLong3.value;
-    com.tencent.mm.plugin.backup.bakoldlogic.a.a.xC(com.tencent.mm.plugin.backup.bakoldlogic.a.a.avo());
+    com.tencent.mm.plugin.backup.bakoldlogic.a.a.Gv(com.tencent.mm.plugin.backup.bakoldlogic.a.a.aUR());
+    AppMethodBeat.o(18017);
     return true;
   }
   
-  public static b avO()
+  public static b aVr()
   {
-    if (hPl == null)
+    AppMethodBeat.i(18011);
+    if (jIN == null)
     {
-      b localb = new b();
-      hPl = localb;
+      localb = new b();
+      jIN = localb;
       a(localb);
     }
-    return hPl;
+    b localb = jIN;
+    AppMethodBeat.o(18011);
+    return localb;
   }
   
-  private static void avR()
+  private static void aVu()
   {
-    com.tencent.mm.h.a.z localz = new com.tencent.mm.h.a.z();
-    com.tencent.mm.sdk.b.a.udP.m(localz);
+    AppMethodBeat.i(18014);
+    com.tencent.mm.g.a.z localz = new com.tencent.mm.g.a.z();
+    com.tencent.mm.sdk.b.a.ymk.l(localz);
+    AppMethodBeat.o(18014);
   }
   
-  private c avS()
+  private c aVv()
   {
-    if (this.hPp == null) {
-      this.hPp = new c();
+    AppMethodBeat.i(18015);
+    if (this.jIR == null) {
+      this.jIR = new c();
     }
-    return this.hPp;
+    c localc = this.jIR;
+    AppMethodBeat.o(18015);
+    return localc;
   }
   
-  public static void avT()
+  public static void aVw()
   {
+    AppMethodBeat.i(18018);
     StringBuilder localStringBuilder = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    e.deleteFile(com.tencent.mm.model.c.Dw() + ".tem");
+    aw.aaz();
+    e.deleteFile(com.tencent.mm.model.c.Rr() + ".tem");
     localStringBuilder = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    e.deleteFile(com.tencent.mm.model.c.Dw() + ".ini.tem");
+    aw.aaz();
+    e.deleteFile(com.tencent.mm.model.c.Rr() + ".ini.tem");
     localStringBuilder = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    e.deleteFile(com.tencent.mm.model.c.Dx() + ".tem");
+    aw.aaz();
+    e.deleteFile(com.tencent.mm.model.c.Rs() + ".tem");
     localStringBuilder = new StringBuilder();
-    com.tencent.mm.model.au.Hx();
-    e.deleteFile(com.tencent.mm.model.c.Dx() + ".ini.tem");
+    aw.aaz();
+    e.deleteFile(com.tencent.mm.model.c.Rs() + ".ini.tem");
+    AppMethodBeat.o(18018);
   }
   
   public final void a(b.a parama)
   {
-    long l = bk.UY();
-    y.i("MicroMsg.BakOldTempDbModel", "initTempDB needSyncPauser:%b %s", new Object[] { Boolean.valueOf(false), bk.csb() });
-    ai.l(new b.1(this, l, parama), 1000L);
+    AppMethodBeat.i(18016);
+    long l = bo.aoy();
+    ab.i("MicroMsg.BakOldTempDbModel", "initTempDB needSyncPauser:%b %s", new Object[] { Boolean.FALSE, bo.dtY() });
+    al.p(new b.1(this, l, parama), 1000L);
+    AppMethodBeat.o(18016);
   }
   
-  public final void a(Runnable paramRunnable, int paramInt)
+  public final void aSG()
   {
-    if ((paramInt < 0) || (hPo == 0))
+    jIN = null;
+  }
+  
+  public final c aVs()
+  {
+    AppMethodBeat.i(18012);
+    if (this.jIO == null) {
+      this.jIO = new c();
+    }
+    c localc = this.jIO;
+    AppMethodBeat.o(18012);
+    return localc;
+  }
+  
+  public final a aVt()
+  {
+    AppMethodBeat.i(18013);
+    if (this.jIP == null) {
+      this.jIP = new a();
+    }
+    a locala = this.jIP;
+    AppMethodBeat.o(18013);
+    return locala;
+  }
+  
+  public final void c(Runnable paramRunnable, int paramInt)
+  {
+    AppMethodBeat.i(18019);
+    if ((paramInt < 0) || (jIQ == 0))
     {
       if (paramInt < 0) {
-        y.e("MicroMsg.BakOldTempDbModel", "closeTempDB no left tryCount!!");
+        ab.e("MicroMsg.BakOldTempDbModel", "closeTempDB no left tryCount!!");
       }
-      y.i("MicroMsg.BakOldTempDbModel", "closeDB before");
-      avS().avV();
-      y.i("MicroMsg.BakOldTempDbModel", "closeDB after");
-      if (paramRunnable != null) {
+      ab.i("MicroMsg.BakOldTempDbModel", "closeDB before");
+      aVv().aVy();
+      ab.i("MicroMsg.BakOldTempDbModel", "closeDB after");
+      if (paramRunnable != null)
+      {
         paramRunnable.run();
+        AppMethodBeat.o(18019);
       }
-      return;
     }
-    new ah(Looper.getMainLooper()).postDelayed(new b.3(this, paramRunnable, paramInt), 500L);
-  }
-  
-  public final void ati()
-  {
-    hPl = null;
-  }
-  
-  public final c avP()
-  {
-    if (this.hPm == null) {
-      this.hPm = new c();
+    else
+    {
+      new ak(Looper.getMainLooper()).postDelayed(new b.3(this, paramRunnable, paramInt), 500L);
     }
-    return this.hPm;
-  }
-  
-  public final a avQ()
-  {
-    if (this.hPn == null) {
-      this.hPn = new a();
-    }
-    return this.hPn;
+    AppMethodBeat.o(18019);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.d.b
  * JD-Core Version:    0.7.0.1
  */

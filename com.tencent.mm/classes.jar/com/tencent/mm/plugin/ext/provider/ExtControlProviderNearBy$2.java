@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.ext.provider;
 
-import com.tencent.mm.modelgeo.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.d;
 
 final class ExtControlProviderNearBy$2
   implements Runnable
@@ -9,15 +10,17 @@ final class ExtControlProviderNearBy$2
   
   public final void run()
   {
-    if (ExtControlProviderNearBy.a(this.jKJ) == null) {
-      ExtControlProviderNearBy.a(this.jKJ, c.Ob());
+    AppMethodBeat.i(20363);
+    if (ExtControlProviderNearBy.a(this.meN) == null) {
+      ExtControlProviderNearBy.a(this.meN, d.agQ());
     }
-    ExtControlProviderNearBy.a(this.jKJ).a(ExtControlProviderNearBy.b(this.jKJ), true);
+    ExtControlProviderNearBy.a(this.meN).a(ExtControlProviderNearBy.b(this.meN), true);
+    AppMethodBeat.o(20363);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.provider.ExtControlProviderNearBy.2
  * JD-Core Version:    0.7.0.1
  */

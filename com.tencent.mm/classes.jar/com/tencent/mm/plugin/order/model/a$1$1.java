@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.order.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.d;
 
 final class a$1$1
@@ -7,9 +8,11 @@ final class a$1$1
 {
   a$1$1(a.1 param1) {}
   
-  public final void bF(int paramInt1, int paramInt2)
+  public final void ca(int paramInt1, int paramInt2)
   {
-    a.a(paramInt2, this.mOI.val$context, this.mOI.mOH);
+    AppMethodBeat.i(43746);
+    a.a(paramInt2, this.poY.val$context, this.poY.poX);
+    AppMethodBeat.o(43746);
   }
 }
 

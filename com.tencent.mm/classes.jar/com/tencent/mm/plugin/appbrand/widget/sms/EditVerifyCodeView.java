@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.widget.sms;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,105 +11,126 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class EditVerifyCodeView
   extends RelativeLayout
 {
-  private ImageView[] hDX = new ImageView[6];
-  private TextView[] hDY = new TextView[6];
-  View.OnKeyListener hDZ = new EditVerifyCodeView.3(this);
-  public EditVerifyCodeView.a hEa;
-  private EditText ln;
-  private StringBuilder mBuilder = new StringBuilder();
+  public EditVerifyCodeView.a jwA;
+  private ImageView[] jwx;
+  private TextView[] jwy;
+  View.OnKeyListener jwz;
+  private StringBuilder mBuilder;
   private Context mContext;
+  private EditText mEditText;
   
   public EditVerifyCodeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    init(paramContext);
+    AppMethodBeat.i(134404);
+    this.mBuilder = new StringBuilder();
+    this.jwx = new ImageView[6];
+    this.jwy = new TextView[6];
+    this.jwz = new EditVerifyCodeView.3(this);
+    dv(paramContext);
+    AppMethodBeat.o(134404);
   }
   
   public EditVerifyCodeView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    init(paramContext);
+    AppMethodBeat.i(134405);
+    this.mBuilder = new StringBuilder();
+    this.jwx = new ImageView[6];
+    this.jwy = new TextView[6];
+    this.jwz = new EditVerifyCodeView.3(this);
+    dv(paramContext);
+    AppMethodBeat.o(134405);
   }
   
-  private void init(Context paramContext)
+  @SuppressLint({"InflateParams"})
+  private void dv(Context paramContext)
   {
+    AppMethodBeat.i(134408);
     this.mContext = paramContext;
-    paramContext = LayoutInflater.from(this.mContext).inflate(y.h.edit_verify_code_layout, null);
-    Object localObject1 = (TextView)paramContext.findViewById(y.g.code_text_1);
-    Object localObject2 = (TextView)paramContext.findViewById(y.g.code_text_2);
-    Object localObject3 = (TextView)paramContext.findViewById(y.g.code_text_3);
-    Object localObject4 = (TextView)paramContext.findViewById(y.g.code_text_4);
-    Object localObject5 = (TextView)paramContext.findViewById(y.g.code_text_5);
-    Object localObject6 = (TextView)paramContext.findViewById(y.g.code_text_6);
-    this.hDY[0] = localObject1;
-    this.hDY[1] = localObject2;
-    this.hDY[2] = localObject3;
-    this.hDY[3] = localObject4;
-    this.hDY[4] = localObject5;
-    this.hDY[5] = localObject6;
-    localObject1 = (ImageView)paramContext.findViewById(y.g.code_img_1);
-    localObject2 = (ImageView)paramContext.findViewById(y.g.code_img_2);
-    localObject3 = (ImageView)paramContext.findViewById(y.g.code_img_3);
-    localObject4 = (ImageView)paramContext.findViewById(y.g.code_img_4);
-    localObject5 = (ImageView)paramContext.findViewById(y.g.code_img_5);
-    localObject6 = (ImageView)paramContext.findViewById(y.g.code_img_6);
-    this.hDX[0] = localObject1;
-    this.hDX[1] = localObject2;
-    this.hDX[2] = localObject3;
-    this.hDX[3] = localObject4;
-    this.hDX[4] = localObject5;
-    this.hDX[5] = localObject6;
-    this.ln = ((EditText)paramContext.findViewById(y.g.verify_code_edittext));
-    this.ln.addTextChangedListener(new EditVerifyCodeView.1(this));
-    this.ln.setKeyListener(new EditVerifyCodeView.2(this));
-    this.ln.setOnKeyListener(this.hDZ);
+    paramContext = LayoutInflater.from(this.mContext).inflate(2130969353, null);
+    Object localObject1 = (TextView)paramContext.findViewById(2131823501);
+    Object localObject2 = (TextView)paramContext.findViewById(2131823503);
+    Object localObject3 = (TextView)paramContext.findViewById(2131823505);
+    Object localObject4 = (TextView)paramContext.findViewById(2131823507);
+    Object localObject5 = (TextView)paramContext.findViewById(2131823509);
+    Object localObject6 = (TextView)paramContext.findViewById(2131823511);
+    this.jwy[0] = localObject1;
+    this.jwy[1] = localObject2;
+    this.jwy[2] = localObject3;
+    this.jwy[3] = localObject4;
+    this.jwy[4] = localObject5;
+    this.jwy[5] = localObject6;
+    localObject1 = (ImageView)paramContext.findViewById(2131823502);
+    localObject2 = (ImageView)paramContext.findViewById(2131823504);
+    localObject3 = (ImageView)paramContext.findViewById(2131823506);
+    localObject4 = (ImageView)paramContext.findViewById(2131823508);
+    localObject5 = (ImageView)paramContext.findViewById(2131823510);
+    localObject6 = (ImageView)paramContext.findViewById(2131823512);
+    this.jwx[0] = localObject1;
+    this.jwx[1] = localObject2;
+    this.jwx[2] = localObject3;
+    this.jwx[3] = localObject4;
+    this.jwx[4] = localObject5;
+    this.jwx[5] = localObject6;
+    this.mEditText = ((EditText)paramContext.findViewById(2131823513));
+    this.mEditText.addTextChangedListener(new EditVerifyCodeView.1(this));
+    this.mEditText.setKeyListener(new EditVerifyCodeView.2(this));
+    this.mEditText.setOnKeyListener(this.jwz);
     addView(paramContext, new RelativeLayout.LayoutParams(-1, -1));
+    AppMethodBeat.o(134408);
   }
   
   public String getText()
   {
-    return this.mBuilder.toString();
+    AppMethodBeat.i(134406);
+    String str = this.mBuilder.toString();
+    AppMethodBeat.o(134406);
+    return str;
   }
   
   public void setCodeEditCompleListener(EditVerifyCodeView.a parama)
   {
-    this.hEa = parama;
+    this.jwA = parama;
   }
   
   public void setText(String paramString)
   {
+    AppMethodBeat.i(134407);
     this.mBuilder.delete(0, this.mBuilder.length());
     this.mBuilder.append(paramString);
     paramString = this.mBuilder.toString();
     int j = paramString.length();
-    y.i("MicroMsg.EditVerifyCodeView", "mBuilder:" + this.mBuilder);
+    ab.i("MicroMsg.EditVerifyCodeView", "mBuilder:" + this.mBuilder);
     if (j > 0)
     {
       i = 0;
       while (i < j)
       {
-        this.hDY[i].setVisibility(0);
+        this.jwy[i].setVisibility(0);
         char c = paramString.charAt(i);
-        this.hDY[i].setText(String.valueOf(c));
-        this.hDX[i].setVisibility(4);
+        this.jwy[i].setText(String.valueOf(c));
+        this.jwx[i].setVisibility(4);
         i += 1;
       }
+      AppMethodBeat.o(134407);
+      return;
     }
     int i = 0;
     while (i < 6)
     {
-      this.hDY[i].setVisibility(4);
-      this.hDY[i].setText("");
-      this.hDX[i].setVisibility(0);
+      this.jwy[i].setVisibility(4);
+      this.jwy[i].setText("");
+      this.jwx[i].setVisibility(0);
       i += 1;
     }
+    AppMethodBeat.o(134407);
   }
 }
 

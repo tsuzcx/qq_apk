@@ -1,18 +1,23 @@
 package com.tencent.mm.plugin.appbrand.config;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class s$5$1
   implements s.a<WxaAttributes>
 {
   s$5$1(s.5 param5) {}
   
-  public final String getUsername()
+  public final l Az(String paramString)
   {
-    return this.fQS.dol;
+    AppMethodBeat.i(129914);
+    paramString = new l(paramString, null);
+    AppMethodBeat.o(129914);
+    return paramString;
   }
   
-  public final m sF(String paramString)
+  public final String getUsername()
   {
-    return new m(paramString, null);
+    return this.hjE.efI;
   }
 }
 

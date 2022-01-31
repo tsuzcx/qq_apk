@@ -13,27 +13,27 @@ final class c$1
   
   public final void onClick(View paramView)
   {
-    if ((this.fO.mCancelable) && (this.fO.isShowing()))
+    if ((this.gI.mCancelable) && (this.gI.isShowing()))
     {
-      paramView = this.fO;
-      if (!paramView.fM)
+      paramView = this.gI;
+      if (!paramView.gG)
       {
         if (Build.VERSION.SDK_INT >= 11) {
           break label65;
         }
-        paramView.fL = true;
+        paramView.gF = true;
       }
     }
     for (;;)
     {
-      paramView.fM = true;
-      if (paramView.fL) {
-        this.fO.cancel();
+      paramView.gG = true;
+      if (paramView.gF) {
+        this.gI.cancel();
       }
       return;
       label65:
       TypedArray localTypedArray = paramView.getContext().obtainStyledAttributes(new int[] { 16843611 });
-      paramView.fL = localTypedArray.getBoolean(0, true);
+      paramView.gF = localTypedArray.getBoolean(0, true);
       localTypedArray.recycle();
     }
   }

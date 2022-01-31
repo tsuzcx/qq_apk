@@ -3,76 +3,80 @@ package com.tencent.mm.ui.chatting;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.Map;
 
 final class ChattingSendDataToDeviceUI$9
   implements Runnable
 {
-  TextView vlE;
+  TextView zBd;
   
   ChattingSendDataToDeviceUI$9(ChattingSendDataToDeviceUI paramChattingSendDataToDeviceUI, String paramString1, String paramString2, int paramInt) {}
   
   public final void run()
   {
+    AppMethodBeat.i(30771);
     for (;;)
     {
       View localView;
       try
       {
-        ChattingSendDataToDeviceUI.c localc = (ChattingSendDataToDeviceUI.c)ChattingSendDataToDeviceUI.d(this.vlx).get(this.rpN);
-        localc.bKT = this.iRA;
-        if (this.fyT > localc.progress) {
-          localc.progress = this.fyT;
+        ChattingSendDataToDeviceUI.c localc = (ChattingSendDataToDeviceUI.c)ChattingSendDataToDeviceUI.d(this.zAW).get(this.vdy);
+        localc.csn = this.lai;
+        if (this.gQj > localc.progress) {
+          localc.progress = this.gQj;
         }
-        int i = ((Integer)ChattingSendDataToDeviceUI.k(this.vlx).get(this.rpN)).intValue();
-        localView = (View)ChattingSendDataToDeviceUI.c(this.vlx).get(Integer.valueOf(i));
-        as localas = (as)localView.getTag();
-        if (localas == null)
+        int i = ((Integer)ChattingSendDataToDeviceUI.k(this.zAW).get(this.vdy)).intValue();
+        localView = (View)ChattingSendDataToDeviceUI.c(this.zAW).get(Integer.valueOf(i));
+        ap localap = (ap)localView.getTag();
+        if (localap == null)
         {
-          y.w("MicroMsg.ChattingSendDataToDeviceUI", "get view holder is null");
+          ab.w("MicroMsg.ChattingSendDataToDeviceUI", "get view holder is null");
+          AppMethodBeat.o(30771);
           return;
         }
-        this.vlE = localas.vlE;
-        this.vlE.setVisibility(0);
-        if (this.iRA.equals("send_data_failed"))
+        this.zBd = localap.zBd;
+        this.zBd.setVisibility(0);
+        if (this.lai.equals("send_data_failed"))
         {
-          ChattingSendDataToDeviceUI.a(this.vlx, 5);
-          this.vlE.setText(this.vlx.getString(R.l.chatting_send_failed));
-          ChattingSendDataToDeviceUI.b(this.vlx).remove(this.rpN);
-          this.vlE.setTextColor(this.vlx.getResources().getColor(R.e.send_state_text_failed));
+          ChattingSendDataToDeviceUI.a(this.zAW, 5);
+          this.zBd.setText(this.zAW.getString(2131298318));
+          ChattingSendDataToDeviceUI.b(this.zAW).remove(this.vdy);
+          this.zBd.setTextColor(this.zAW.getResources().getColor(2131690443));
           ChattingSendDataToDeviceUI.a(false, 0, localView);
-          ChattingSendDataToDeviceUI.d(this.vlx).put(localc.deviceID, localc);
+          ChattingSendDataToDeviceUI.d(this.zAW).put(localc.deviceID, localc);
+          AppMethodBeat.o(30771);
           return;
+        }
+        if (this.lai.equals("send_data_sending"))
+        {
+          this.zBd.setText(this.zAW.getString(2131298323));
+          this.zBd.setTextColor(this.zAW.getResources().getColor(2131690440));
+          ChattingSendDataToDeviceUI.a(true, this.gQj, localView);
+          continue;
+        }
+        if (!this.lai.equals("send_data_cancel")) {
+          continue;
         }
       }
       catch (Exception localException)
       {
-        y.e("MicroMsg.ChattingSendDataToDeviceUI", "ap: send Data: %s", new Object[] { localException.getMessage() });
+        ab.e("MicroMsg.ChattingSendDataToDeviceUI", "ap: send Data: %s", new Object[] { localException.getMessage() });
+        AppMethodBeat.o(30771);
         return;
       }
-      if (this.iRA.equals("send_data_sending"))
-      {
-        this.vlE.setText(this.vlx.getString(R.l.chatting_sending));
-        this.vlE.setTextColor(this.vlx.getResources().getColor(R.e.send_data_sending));
-        ChattingSendDataToDeviceUI.a(true, this.fyT, localView);
-      }
-      else if (this.iRA.equals("send_data_cancel"))
-      {
-        ChattingSendDataToDeviceUI.a(this.vlx, 6);
-        this.vlE.setText(this.vlx.getString(R.l.chatting_send_cancel));
-        this.vlE.setTextColor(this.vlx.getResources().getColor(R.e.send_data_cancel));
-        ChattingSendDataToDeviceUI.a(true, 0, localView);
-      }
+      ChattingSendDataToDeviceUI.a(this.zAW, 6);
+      this.zBd.setText(this.zAW.getString(2131298314));
+      this.zBd.setTextColor(this.zAW.getResources().getColor(2131690438));
+      ChattingSendDataToDeviceUI.a(true, 0, localView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingSendDataToDeviceUI.9
  * JD-Core Version:    0.7.0.1
  */

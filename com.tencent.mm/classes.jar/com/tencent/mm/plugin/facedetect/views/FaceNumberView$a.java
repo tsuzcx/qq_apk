@@ -1,7 +1,18 @@
 package com.tencent.mm.plugin.facedetect.views;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public enum FaceNumberView$a
 {
+  static
+  {
+    AppMethodBeat.i(652);
+    mpx = new a("Normal", 0);
+    mpy = new a("Shine", 1);
+    mpz = new a[] { mpx, mpy };
+    AppMethodBeat.o(652);
+  }
+  
   private FaceNumberView$a() {}
 }
 

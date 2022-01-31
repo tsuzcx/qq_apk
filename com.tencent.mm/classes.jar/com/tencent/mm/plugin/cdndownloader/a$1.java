@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.cdndownloader;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.plugin.cdndownloader.f.c;
 
 final class a$1
@@ -8,9 +8,9 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return c.dXp;
+    return c.SQL_CREATE;
   }
 }
 

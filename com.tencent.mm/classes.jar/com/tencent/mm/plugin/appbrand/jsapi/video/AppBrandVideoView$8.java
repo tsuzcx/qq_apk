@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
 import android.media.ThumbnailUtils;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class AppBrandVideoView$8
   implements Runnable
@@ -10,7 +11,9 @@ final class AppBrandVideoView$8
   
   public final void run()
   {
-    ai.d(new AppBrandVideoView.8.1(this, ThumbnailUtils.createVideoThumbnail(this.gwa, 1)));
+    AppMethodBeat.i(126450);
+    al.d(new AppBrandVideoView.8.1(this, ThumbnailUtils.createVideoThumbnail(this.hRL, 1)));
+    AppMethodBeat.o(126450);
   }
 }
 

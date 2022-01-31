@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.recharge.model;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class a
 {
-  public static final int[] npt = { -1, -1 };
-  public static final int[] npu = { -2, -2 };
-  public int bIl;
+  public static final int[] pUH = { -1, -1 };
+  public static final int[] pUI = { -2, -2 };
+  public int cpG;
   public String name;
-  public String npv;
-  public String npw;
-  public int[] npx = npt;
+  public String pUJ;
+  public String pUK;
+  public int[] pUL = pUH;
   
   public a(String paramString1, String paramString2, int paramInt)
   {
@@ -22,36 +23,44 @@ public final class a
   
   public a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    this.npv = paramString1;
+    this.pUJ = paramString1;
     this.name = paramString2;
-    this.npw = paramString3;
-    this.bIl = paramInt;
+    this.pUK = paramString3;
+    this.cpG = paramInt;
   }
   
-  public static a ag(JSONObject paramJSONObject)
+  public static a ao(JSONObject paramJSONObject)
   {
+    AppMethodBeat.i(44182);
     String str1 = paramJSONObject.optString("name");
     String str2 = paramJSONObject.optString("record");
     paramJSONObject = paramJSONObject.optString("location");
-    if (!bk.bl(str2)) {
-      return new a(str2, str1, paramJSONObject, 2);
+    if (!bo.isNullOrNil(str2))
+    {
+      paramJSONObject = new a(str2, str1, paramJSONObject, 2);
+      AppMethodBeat.o(44182);
+      return paramJSONObject;
     }
+    AppMethodBeat.o(44182);
     return null;
   }
   
   public final JSONObject toJson()
   {
+    AppMethodBeat.i(44181);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("record", bk.aM(this.npv, ""));
-      localJSONObject.put("name", bk.aM(this.name, ""));
-      localJSONObject.put("location", bk.aM(this.npw, ""));
+      localJSONObject.put("record", bo.bf(this.pUJ, ""));
+      localJSONObject.put("name", bo.bf(this.name, ""));
+      localJSONObject.put("location", bo.bf(this.pUK, ""));
+      AppMethodBeat.o(44181);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      y.printErrStackTrace("MicroMsg.MallInputRecord", localJSONException, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.MallInputRecord", localJSONException, "", new Object[0]);
+      AppMethodBeat.o(44181);
     }
     return null;
   }

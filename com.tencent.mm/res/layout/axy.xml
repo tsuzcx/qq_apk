@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:id="@id/cvk" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/di" android:textColor="@color/fc" android:id="@id/ekt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mq" android:text="android-xiaomi" android:singleLine="true" android:layout_weight="1.0" style="@style/n6" />
-        <TextView android:textSize="@dimen/k9" android:textColor="#ff000000" android:id="@id/eku" android:layout_marginTop="6.0dip" android:layout_marginBottom="@dimen/mq" android:text="android-21" android:singleLine="true" android:alpha="0.42" style="@style/n6" />
+    <ImageView android:id="@id/eri" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="140.0dip" android:src="@drawable/be6" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="20.0dip" android:textColor="#ff000000" android:gravity="center" android:id="@id/erj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="48.0dip" android:text="@string/esz" android:layout_below="@id/eri" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="12.0dip" android:textColor="#ff888888" android:gravity="center" android:id="@id/erk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/esy" android:layout_below="@id/erj" android:layout_centerHorizontal="true" />
+    <LinearLayout android:id="@id/erl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="167.0dip" android:layout_below="@id/eri" android:layout_centerHorizontal="true">
+        <Button android:gravity="center" android:id="@id/dkt" android:background="@drawable/a2z" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="150.0dip" android:layout_height="43.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="40.0dip" android:text="@string/esw" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <Button android:gravity="center" android:id="@id/dao" android:background="@drawable/a2z" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="150.0dip" android:layout_height="43.0dip" android:layout_marginBottom="40.0dip" android:text="@string/esx" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
     </LinearLayout>
-    <TextView android:textColor="#ff576b95" android:id="@id/ekv" android:padding="@dimen/mq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fau" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/n6" />
 </RelativeLayout>

@@ -7,48 +7,56 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.wxpay.a.d;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class c
   extends Preference
 {
-  Bitmap ebo = null;
-  private TextView mMy;
+  Bitmap frG;
   View.OnClickListener mOnClickListener;
-  private ImageView mRn;
-  String mRo = "";
-  private View mView = null;
+  private View mView;
+  private TextView pmO;
+  private ImageView prA;
+  String prB;
   
   public c(Context paramContext)
   {
     super(paramContext);
-    setLayoutResource(a.g.mall_order_barcode_pref);
+    AppMethodBeat.i(43898);
+    this.mView = null;
+    this.prB = "";
+    this.frG = null;
+    setLayoutResource(2130970092);
+    AppMethodBeat.o(43898);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(43899);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
-    return this.mView;
+    paramView = this.mView;
+    AppMethodBeat.o(43899);
+    return paramView;
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(43900);
     super.onBindView(paramView);
-    this.mMy = ((TextView)paramView.findViewById(a.f.mall_order_barcode_num));
-    this.mRn = ((ImageView)paramView.findViewById(a.f.mall_order_barcode_iv));
-    this.mMy.setText(this.mRo);
-    this.mRn.setImageBitmap(this.ebo);
-    this.mRn.setOnClickListener(this.mOnClickListener);
-    if ((this.mRo != null) && (this.mRo.length() > 48)) {
-      this.mMy.setTextSize(0, a.aa(this.mContext, a.d.HintTextSize));
+    this.pmO = ((TextView)paramView.findViewById(2131825972));
+    this.prA = ((ImageView)paramView.findViewById(2131825971));
+    this.pmO.setText(this.prB);
+    this.prA.setImageBitmap(this.frG);
+    this.prA.setOnClickListener(this.mOnClickListener);
+    if ((this.prB != null) && (this.prB.length() > 48)) {
+      this.pmO.setTextSize(0, a.ao(this.mContext, 2131427758));
     }
+    AppMethodBeat.o(43900);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.facedetectaction.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetectaction.b.d;
 
 final class FaceActionUI$5
@@ -11,8 +12,10 @@ final class FaceActionUI$5
   
   public final void onClick(View paramView)
   {
-    d.jWf.onBackPressed();
-    this.jWU.finish();
+    AppMethodBeat.i(722);
+    d.mqx.onBackPressed();
+    this.mrl.finish();
+    AppMethodBeat.o(722);
   }
 }
 

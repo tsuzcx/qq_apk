@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingRedesign$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class SettingRedesign$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.nSU.finish();
-    SettingRedesign.a(this.nSU);
+    AppMethodBeat.i(127073);
+    this.qGP.finish();
+    SettingRedesign.a(this.qGP);
+    AppMethodBeat.o(127073);
     return true;
   }
 }

@@ -2,16 +2,16 @@ package com.tencent.matrix.iocanary.b;
 
 public final class c
 {
-  private static final c boB = new c();
-  private static volatile boolean boC = true;
-  private static volatile b boD = new a((byte)0);
+  private static final c bNJ = new c();
+  private static volatile boolean bNK = true;
+  private static volatile b bNL = new a((byte)0);
   
   public static void setEnabled(boolean paramBoolean)
   {
-    boC = paramBoolean;
+    bNK = paramBoolean;
   }
   
-  private static final class a
+  static final class a
     implements c.b
   {}
   

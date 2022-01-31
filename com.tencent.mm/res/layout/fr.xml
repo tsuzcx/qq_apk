@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/p1"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/mn">
-        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/dp" android:paddingTop="@dimen/kp" android:paddingRight="@dimen/dp" android:paddingBottom="@dimen/kp" style="@style/k5">
-            <ImageView android:id="@id/a13" android:paddingBottom="@dimen/kp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mobile_unbind_icon" />
-            <TextView android:textSize="@dimen/di" android:textColor="@color/ta" android:gravity="center" android:id="@id/a14" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kl" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/mc" />
-            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:gravity="center" android:id="@id/a1z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kp" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/mc" />
-            <Button android:id="@id/a16" android:layout_marginBottom="@dimen/kl" android:text="@string/a4s" style="@style/mu" />
-        </LinearLayout>
-    </ScrollView>
+    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/ku" android:layout_marginRight="@dimen/l2">
+        <ImageView android:layout_width="wrap_content" android:layout_height="@dimen/l4" android:src="@drawable/auk" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/l5" android:layout_marginRight="@dimen/l2">
+        <TextView android:textSize="18.0dip" android:textColor="@color/h6" android:id="@id/a35" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a3d" />
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:id="@id/a3a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/lb" android:text="@string/a3e" />
+    </LinearLayout>
+    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
 </LinearLayout>

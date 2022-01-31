@@ -3,6 +3,7 @@ package com.tencent.mm.chatroom.ui;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class ChatroomInfoUI$10$2
@@ -12,10 +13,12 @@ final class ChatroomInfoUI$10$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    h.nFQ.f(14553, new Object[] { Integer.valueOf(3), Integer.valueOf(3), ChatroomInfoUI.b(this.dog.dod) });
-    this.doh.show();
-    ChatroomInfoUI.a(this.dog.dod, false);
-    ChatroomInfoUI.a(this.dog.dod, this.doh);
+    AppMethodBeat.i(103972);
+    h.qsU.e(14553, new Object[] { Integer.valueOf(3), Integer.valueOf(3), ChatroomInfoUI.b(this.efD.efA) });
+    this.efE.show();
+    ChatroomInfoUI.a(this.efD.efA, false);
+    ChatroomInfoUI.a(this.efD.efA, this.efE);
+    AppMethodBeat.o(103972);
   }
 }
 

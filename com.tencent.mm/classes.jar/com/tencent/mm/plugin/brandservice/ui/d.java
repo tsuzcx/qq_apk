@@ -1,19 +1,16 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
 import android.content.Context;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mm.plugin.brandservice.b.d;
-import com.tencent.mm.plugin.brandservice.b.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.sortview.a;
 import com.tencent.mm.ui.base.sortview.a.a;
 import com.tencent.mm.ui.base.sortview.a.b;
 
 public final class d
-  extends com.tencent.mm.ui.base.sortview.a
+  extends a
 {
-  private static a.b icr;
-  String ics;
+  private static a.b jTh;
+  String jTi;
   
   public d(Object paramObject)
   {
@@ -23,70 +20,32 @@ public final class d
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     if ((this.data instanceof String)) {
-      this.ics = ((String)this.data);
+      this.jTi = ((String)this.data);
     }
   }
   
-  public final a.b axw()
+  public final a.b aWu()
   {
-    if (icr == null) {
-      icr = new a.b()
-      {
-        public final void a(Context paramAnonymousContext, a.a paramAnonymousa, com.tencent.mm.ui.base.sortview.a paramAnonymousVarArgs)
-        {
-          if ((paramAnonymousContext == null) || (paramAnonymousa == null) || (paramAnonymousVarArgs == null))
-          {
-            y.e("MicroMsg.CatalogDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
-            return;
-          }
-          if (!(paramAnonymousa instanceof d.a))
-          {
-            y.e("MicroMsg.CatalogDataItem", "The ViewHolder is not a instance of CatalogViewHolder.");
-            return;
-          }
-          if (!(paramAnonymousVarArgs instanceof d))
-          {
-            y.e("MicroMsg.CatalogDataItem", "The DataItem is not a instance of CatalogDataItem.");
-            return;
-          }
-          paramAnonymousContext = (d.a)paramAnonymousa;
-          paramAnonymousa = (d)paramAnonymousVarArgs;
-          com.tencent.mm.plugin.brandservice.b.a.b(paramAnonymousContext.icl, paramAnonymousa.ics);
-        }
-        
-        public final void a(View paramAnonymousView, a.a paramAnonymousa)
-        {
-          if ((paramAnonymousView != null) && (paramAnonymousa != null) && ((paramAnonymousa instanceof d.a))) {
-            ((d.a)paramAnonymousa).icl = ((TextView)paramAnonymousView.findViewById(b.d.catalogTV));
-          }
-        }
-        
-        public final boolean a(Context paramAnonymousContext, com.tencent.mm.ui.base.sortview.a paramAnonymousa, Object... paramAnonymousVarArgs)
-        {
-          return true;
-        }
-        
-        public final View b(Context paramAnonymousContext, View paramAnonymousView)
-        {
-          View localView = paramAnonymousView;
-          if (paramAnonymousView == null) {
-            localView = View.inflate(paramAnonymousContext, b.e.search_result_item_catalog, null);
-          }
-          return localView;
-        }
-      };
+    AppMethodBeat.i(13940);
+    if (jTh == null) {
+      jTh = new d.1(this);
     }
-    return icr;
+    a.b localb = jTh;
+    AppMethodBeat.o(13940);
+    return localb;
   }
   
-  public final a.a axx()
+  public final a.a aWv()
   {
-    return new d.a();
+    AppMethodBeat.i(13941);
+    d.a locala = new d.a();
+    AppMethodBeat.o(13941);
+    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.d
  * JD-Core Version:    0.7.0.1
  */

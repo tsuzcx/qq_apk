@@ -2,6 +2,7 @@ package com.tencent.wcdb.database;
 
 class WCDBInitializationProbe
 {
+  static volatile long apiEnv = 0L;
   static boolean libLoaded = false;
 }
 

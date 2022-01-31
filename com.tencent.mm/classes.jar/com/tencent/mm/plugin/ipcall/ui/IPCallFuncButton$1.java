@@ -4,6 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class IPCallFuncButton$1
   implements View.OnTouchListener
@@ -12,48 +13,50 @@ final class IPCallFuncButton$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!IPCallFuncButton.a(this.lwD)) {}
-    do
+    AppMethodBeat.i(22180);
+    if (!IPCallFuncButton.a(this.nTR))
     {
-      do
-      {
-        for (;;)
-        {
-          return false;
-          if (paramMotionEvent.getAction() != 0) {
-            break;
-          }
-          if (!IPCallFuncButton.b(this.lwD))
-          {
-            if (IPCallFuncButton.c(this.lwD) != null)
-            {
-              IPCallFuncButton.d(this.lwD).setImageDrawable(IPCallFuncButton.c(this.lwD));
-              return false;
-            }
-          }
-          else
-          {
-            if (IPCallFuncButton.e(this.lwD))
-            {
-              IPCallFuncButton.d(this.lwD).setImageDrawable(IPCallFuncButton.f(this.lwD));
-              IPCallFuncButton.a(this.lwD, false);
-            }
-            while (IPCallFuncButton.g(this.lwD) != null)
-            {
-              IPCallFuncButton.g(this.lwD).hb(IPCallFuncButton.e(this.lwD));
-              return false;
-              IPCallFuncButton.d(this.lwD).setImageDrawable(IPCallFuncButton.c(this.lwD));
-              IPCallFuncButton.a(this.lwD, true);
-            }
-          }
+      AppMethodBeat.o(22180);
+      return false;
+    }
+    if (paramMotionEvent.getAction() == 0) {
+      if (!IPCallFuncButton.b(this.nTR)) {
+        if (IPCallFuncButton.c(this.nTR) != null) {
+          IPCallFuncButton.d(this.nTR).setImageDrawable(IPCallFuncButton.c(this.nTR));
         }
-      } while (((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1)) || (IPCallFuncButton.b(this.lwD)));
-      if (IPCallFuncButton.f(this.lwD) != null) {
-        IPCallFuncButton.d(this.lwD).setImageDrawable(IPCallFuncButton.f(this.lwD));
       }
-    } while (IPCallFuncButton.g(this.lwD) == null);
-    IPCallFuncButton.g(this.lwD).hb(false);
-    return false;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(22180);
+      return false;
+      if (IPCallFuncButton.e(this.nTR))
+      {
+        IPCallFuncButton.d(this.nTR).setImageDrawable(IPCallFuncButton.f(this.nTR));
+        IPCallFuncButton.a(this.nTR, false);
+      }
+      for (;;)
+      {
+        if (IPCallFuncButton.g(this.nTR) == null) {
+          break label171;
+        }
+        IPCallFuncButton.g(this.nTR).iL(IPCallFuncButton.e(this.nTR));
+        break;
+        IPCallFuncButton.d(this.nTR).setImageDrawable(IPCallFuncButton.c(this.nTR));
+        IPCallFuncButton.a(this.nTR, true);
+      }
+      label171:
+      continue;
+      if (((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) && (!IPCallFuncButton.b(this.nTR)))
+      {
+        if (IPCallFuncButton.f(this.nTR) != null) {
+          IPCallFuncButton.d(this.nTR).setImageDrawable(IPCallFuncButton.f(this.nTR));
+        }
+        if (IPCallFuncButton.g(this.nTR) != null) {
+          IPCallFuncButton.g(this.nTR).iL(false);
+        }
+      }
+    }
   }
 }
 

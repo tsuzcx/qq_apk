@@ -12,28 +12,28 @@ import java.lang.ref.WeakReference;
 final class MediaBrowserCompat$a
   extends Handler
 {
-  private final WeakReference<MediaBrowserCompat.i> AD;
-  private WeakReference<Messenger> AE;
+  private final WeakReference<MediaBrowserCompat.i> Bp;
+  private WeakReference<Messenger> Bq;
   
   MediaBrowserCompat$a(MediaBrowserCompat.i parami)
   {
-    this.AD = new WeakReference(parami);
+    this.Bp = new WeakReference(parami);
   }
   
   final void a(Messenger paramMessenger)
   {
-    this.AE = new WeakReference(paramMessenger);
+    this.Bq = new WeakReference(paramMessenger);
   }
   
   public final void handleMessage(Message paramMessage)
   {
-    if ((this.AE == null) || (this.AE.get() == null) || (this.AD.get() == null)) {
+    if ((this.Bq == null) || (this.Bq.get() == null) || (this.Bp.get() == null)) {
       return;
     }
     Bundle localBundle = paramMessage.getData();
     localBundle.setClassLoader(MediaSessionCompat.class.getClassLoader());
-    MediaBrowserCompat.i locali = (MediaBrowserCompat.i)this.AD.get();
-    Messenger localMessenger = (Messenger)this.AE.get();
+    MediaBrowserCompat.i locali = (MediaBrowserCompat.i)this.Bp.get();
+    Messenger localMessenger = (Messenger)this.Bq.get();
     for (;;)
     {
       try
@@ -64,7 +64,7 @@ final class MediaBrowserCompat$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.media.MediaBrowserCompat.a
  * JD-Core Version:    0.7.0.1
  */

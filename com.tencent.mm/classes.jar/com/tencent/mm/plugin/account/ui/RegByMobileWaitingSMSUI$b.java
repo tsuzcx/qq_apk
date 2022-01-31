@@ -5,8 +5,8 @@ import android.widget.TextView;
 
 final class RegByMobileWaitingSMSUI$b
 {
-  public ImageView ffK;
-  public TextView frI;
+  public TextView gJk;
+  public ImageView gxs;
   
   private RegByMobileWaitingSMSUI$b(RegByMobileWaitingSMSUI paramRegByMobileWaitingSMSUI) {}
 }

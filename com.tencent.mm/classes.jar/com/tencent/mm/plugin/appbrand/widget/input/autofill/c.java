@@ -3,56 +3,57 @@ package com.tencent.mm.plugin.appbrand.widget.input.autofill;
 import android.view.ViewTreeObserver;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.widget.input.aa;
-import com.tencent.mm.plugin.appbrand.widget.input.j.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.widget.input.ab;
+import com.tencent.mm.plugin.appbrand.widget.input.k.a;
 
 public final class c
 {
-  final aa hwK;
-  final e hwL;
-  public final j.a hwX = new j.a()
-  {
-    public final void arP()
-    {
-      c.this.hwZ = -2147483648;
-      c.this.mZ(3);
-    }
-    
-    public final void arQ()
-    {
-      c.this.hwZ = -2147483648;
-      c.this.mZ(3);
-    }
-  };
-  public q hwY;
-  int hwZ = -2147483648;
-  boolean hxa = false;
+  final ab joU;
+  final e joV;
+  public final k.a jph;
+  public v jpi;
+  int jpj;
+  boolean jpk;
   
-  c(aa paramaa, e parame)
+  c(ab paramab, e parame)
   {
-    this.hwK = paramaa;
-    this.hwL = parame;
+    AppMethodBeat.i(123901);
+    this.jph = new c.1(this);
+    this.jpj = -2147483648;
+    this.jpk = false;
+    this.joU = paramab;
+    this.joV = parame;
+    AppMethodBeat.o(123901);
   }
   
-  final void mZ(int paramInt)
+  final void qD(int paramInt)
   {
-    AutoFillListPopupWindowBase.a locala = this.hwL.hxe;
-    if (locala == null) {}
-    while (!this.hwL.afe.isShowing()) {
+    AppMethodBeat.i(123902);
+    AutoFillListPopupWindowBase.a locala = this.joV.jpo;
+    if (locala == null)
+    {
+      AppMethodBeat.o(123902);
       return;
     }
-    if ((1 == paramInt) && (this.hxa))
+    if (!this.joV.aht.isShowing())
     {
-      this.hwZ = -2147483648;
-      this.hxa = false;
+      AppMethodBeat.o(123902);
+      return;
+    }
+    if ((1 == paramInt) && (this.jpk))
+    {
+      this.jpj = -2147483648;
+      this.jpk = false;
     }
     locala.getViewTreeObserver().addOnPreDrawListener(new c.3(this, locala, paramInt));
+    AppMethodBeat.o(123902);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.c
  * JD-Core Version:    0.7.0.1
  */

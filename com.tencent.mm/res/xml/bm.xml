@@ -1,21 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="@string/dyb" />
-    <CheckBoxPreference android:title="@string/e1q" android:key="settings_need_verify" android:layout="@layout/ab8" />
-    <CheckBoxPreference android:summary="@string/e39" android:title="@string/avq" android:key="settings_recommend_mobilefriends_to_me" />
-    <CheckBoxPreference android:summary="@string/e38" android:title="@string/dzq" android:key="settings_find_google_contact" />
-    <Preference android:title="@string/dy7" android:key="settings_add_me_way" android:layout="@layout/ab8" />
-    <Preference android:title="@string/e34" android:key="settings_about_blacklist" android:layout="@layout/ab8" />
-    <Preference android:title="@string/e5u" android:key="settings_unfamiliar_contact" android:layout="@layout/ab8" />
-    <PreferenceTitleCategory android:title="@string/dyc" android:key="settings_add_friends_timeline_tip" />
-    <Preference android:title="@string/ef9" android:key="timline_outside_permiss" />
-    <Preference android:title="@string/ebr" android:key="timeline_black_permiss" />
-    <Preference android:title="@string/e32" android:key="edit_timeline_group" />
-    <CheckBoxPreference android:title="@string/asu" android:key="timeline_stranger_show" android:layout="@layout/ab8" />
-    <IconPreference android:title="@string/asq" android:key="timeline_recent_show_select" />
-    <CheckBoxPreference android:summary="@string/e4b" android:title="@string/e4a" android:key="settings_sns_notify" android:dependency="settings_new_sns_notify" android:defaultValue="true" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/dy_" android:key="settings_auth_manage" />
-    <PreferenceCategory />
-    <Preference android:key="settings_privacy_agreements" android:layout="@layout/acs" />
+    <CheckBoxPreference android:title="Actionbar" android:key="redesign_actionbar" android:layout="@layout/afi" />
 </PreferenceScreen>

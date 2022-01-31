@@ -8,37 +8,39 @@ import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.widget.ImageView;
 import android.widget.ListView;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 public class LuckyMoneyAutoScrollItem
   extends ListView
 {
-  public static SparseArray<Integer> lTV;
-  private int SL = 0;
-  private LuckyMoneyAutoScrollItem.a lTP = null;
-  private long lTQ = 900L;
-  private int lTR = 0;
-  private CountDownTimer lTS;
-  private int lTT;
-  private LuckyMoneyAutoScrollItem.b lTU = null;
+  public static SparseArray<Integer> orc;
+  private int Tv;
   private Context mContext;
+  private LuckyMoneyAutoScrollItem.a oqW;
+  private long oqX;
+  private int oqY;
+  private CountDownTimer oqZ;
+  private int ora;
+  private LuckyMoneyAutoScrollItem.b orb;
   
   static
   {
+    AppMethodBeat.i(42567);
     SparseArray localSparseArray = new SparseArray();
-    lTV = localSparseArray;
-    localSparseArray.put(0, Integer.valueOf(a.e.newyearhonbao_number0));
-    lTV.put(1, Integer.valueOf(a.e.newyearhonbao_number1));
-    lTV.put(2, Integer.valueOf(a.e.newyearhonbao_number2));
-    lTV.put(3, Integer.valueOf(a.e.newyearhonbao_number3));
-    lTV.put(4, Integer.valueOf(a.e.newyearhonbao_number4));
-    lTV.put(5, Integer.valueOf(a.e.newyearhonbao_number5));
-    lTV.put(6, Integer.valueOf(a.e.newyearhonbao_number6));
-    lTV.put(7, Integer.valueOf(a.e.newyearhonbao_number7));
-    lTV.put(8, Integer.valueOf(a.e.newyearhonbao_number8));
-    lTV.put(9, Integer.valueOf(a.e.newyearhonbao_number9));
+    orc = localSparseArray;
+    localSparseArray.put(0, Integer.valueOf(2130839795));
+    orc.put(1, Integer.valueOf(2130839796));
+    orc.put(2, Integer.valueOf(2130839797));
+    orc.put(3, Integer.valueOf(2130839798));
+    orc.put(4, Integer.valueOf(2130839799));
+    orc.put(5, Integer.valueOf(2130839800));
+    orc.put(6, Integer.valueOf(2130839801));
+    orc.put(7, Integer.valueOf(2130839802));
+    orc.put(8, Integer.valueOf(2130839803));
+    orc.put(9, Integer.valueOf(2130839804));
+    AppMethodBeat.o(42567);
   }
   
   public LuckyMoneyAutoScrollItem(Context paramContext, AttributeSet paramAttributeSet)
@@ -49,51 +51,62 @@ public class LuckyMoneyAutoScrollItem
   public LuckyMoneyAutoScrollItem(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(42564);
+    this.oqW = null;
+    this.oqX = 900L;
+    this.oqY = 0;
+    this.Tv = 0;
+    this.orb = null;
     this.mContext = paramContext;
-    this.lTP = new LuckyMoneyAutoScrollItem.a(this, (byte)0);
-    setAdapter(this.lTP);
-    this.lTT = ((int)(this.mContext.getResources().getDisplayMetrics().density * 60.0F + 0.5F));
-    y.i("MicroMsg.LuckyMoneyAutoScrollView", "hy: scroll height is: %d", new Object[] { Integer.valueOf(this.lTT) });
+    this.oqW = new LuckyMoneyAutoScrollItem.a(this, (byte)0);
+    setAdapter(this.oqW);
+    this.ora = ((int)(this.mContext.getResources().getDisplayMetrics().density * 60.0F + 0.5F));
+    ab.i("MicroMsg.LuckyMoneyAutoScrollView", "hy: scroll height is: %d", new Object[] { Integer.valueOf(this.ora) });
+    AppMethodBeat.o(42564);
   }
   
   public static void setResouceMap(SparseArray<Integer> paramSparseArray)
   {
-    lTV.clear();
+    AppMethodBeat.i(42565);
+    orc.clear();
     int i = 0;
     while (i < paramSparseArray.size())
     {
       int j = paramSparseArray.keyAt(i);
-      lTV.put(j, paramSparseArray.get(j));
+      orc.put(j, paramSparseArray.get(j));
       i += 1;
     }
+    AppMethodBeat.o(42565);
   }
   
-  public final void bfZ()
+  public final void bNM()
   {
-    if (this.lTS != null) {
-      this.lTS.cancel();
+    AppMethodBeat.i(42566);
+    if (this.oqZ != null) {
+      this.oqZ.cancel();
     }
-    ai.d(new LuckyMoneyAutoScrollItem.1(this, this.lTR * 50 + this.lTQ));
+    al.d(new LuckyMoneyAutoScrollItem.1(this, this.oqY * 50 + this.oqX));
+    AppMethodBeat.o(42566);
   }
   
   public void setFinalNumber(int paramInt)
   {
-    this.lTR = paramInt;
+    this.oqY = paramInt;
   }
   
   void setOnScrollEndListener(LuckyMoneyAutoScrollItem.b paramb)
   {
-    this.lTU = paramb;
+    this.orb = paramb;
   }
   
   public void setScrollTime(long paramLong)
   {
-    this.lTQ = paramLong;
+    this.oqX = paramLong;
   }
   
   final class a$a
   {
-    ImageView lTZ;
+    ImageView org;
     
     a$a() {}
   }

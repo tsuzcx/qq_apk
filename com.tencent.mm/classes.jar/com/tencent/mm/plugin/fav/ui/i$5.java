@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.fav.ui;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.a.d;
 import com.tencent.mm.plugin.messenger.a.g;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.vfs.b;
 import com.tencent.mm.vfs.j;
 
@@ -15,25 +16,30 @@ public final class i$5
   
   public final void run()
   {
+    AppMethodBeat.i(74124);
     Context localContext = this.val$context;
-    String str1 = this.bxX;
-    Object localObject = this.kdk;
-    String str2 = this.eot;
-    int i = this.gAv;
-    String str3 = this.kdl;
+    String str1 = this.bZZ;
+    Object localObject = this.mxU;
+    String str2 = this.fEQ;
+    int i = this.hXH;
+    String str3 = this.mxV;
     localObject = new b((String)localObject);
     if (((b)localObject).exists())
     {
       b localb = new b(str2);
-      y.i("MicroMsg.FavSendLogic", "sendVideo::data path[%s] thumb path[%s]", new Object[] { j.n(((b)localObject).cLr()), j.n(localb.cLr()) });
-      g.bhI().a(localContext, str1, j.n(((b)localObject).cLr()), str2, 1, i, str3);
+      ab.i("MicroMsg.FavSendLogic", "sendVideo::data path[%s] thumb path[%s]", new Object[] { j.p(((b)localObject).dQJ()), j.p(localb.dQJ()) });
+      g.bPJ().a(localContext, str1, j.p(((b)localObject).dQJ()), str2, 1, i, str3);
     }
-    ai.d(this.bxs);
+    al.d(this.bZt);
+    AppMethodBeat.o(74124);
   }
   
   public final String toString()
   {
-    return super.toString() + "|sendFavVideo";
+    AppMethodBeat.i(74125);
+    String str = super.toString() + "|sendFavVideo";
+    AppMethodBeat.o(74125);
+    return str;
   }
 }
 

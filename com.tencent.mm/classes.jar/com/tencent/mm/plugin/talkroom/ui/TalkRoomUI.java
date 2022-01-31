@@ -1,8 +1,7 @@
 package com.tencent.mm.plugin.talkroom.ui;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -18,561 +17,657 @@ import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.bf.d;
-import com.tencent.mm.h.a.lt;
-import com.tencent.mm.model.am.b;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.bg.d;
+import com.tencent.mm.g.a.mj;
+import com.tencent.mm.model.ao.a;
+import com.tencent.mm.model.ao.b;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.n;
 import com.tencent.mm.model.r;
 import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.talkroom.model.c;
-import com.tencent.mm.plugin.talkroom.model.g;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.protocal.c.bxc;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.cjn;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMBaseActivity;
+import com.tencent.mm.ui.w;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class TalkRoomUI
   extends MMBaseActivity
-  implements com.tencent.mm.ah.f, d
+  implements f, d
 {
-  private List<String> bSN = new LinkedList();
-  private com.tencent.mm.ui.base.p dnV;
-  private TextView eXr;
-  private boolean lGE = true;
-  private String lGF;
-  private String lGG;
-  private boolean lGI = false;
-  private int lGJ = 0;
-  private long lGK = 500L;
-  private long lGL = 0L;
-  private am lGM = new am(new com.tencent.mm.sdk.platformtools.am.a()
-  {
-    public final boolean tC()
-    {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.TalkRoomUI", "onSeizeMicSuccess expired to execute");
-      TalkRoomUI.q(TalkRoomUI.this);
-      return false;
-    }
-  }, false);
-  private am lGN = new am(new TalkRoomUI.1(this), false);
-  private am lGO = new am(new TalkRoomUI.9(this), false);
-  private final am lGR = new am(new TalkRoomUI.10(this), true);
-  private boolean lGS = true;
-  private Chronometer lGX;
-  private int lGY = 0;
-  private TextView lxm;
-  private TextView pBV;
-  private ImageButton pBW;
-  private Button pBX;
-  private ImageView pBY;
-  private TalkRoomVolumeMeter pBZ;
-  private TalkRoomAvatarsFrame pCa;
-  private a pCb;
-  private boolean pCc = true;
-  private int pCd = 0;
-  private AlphaAnimation pCe;
-  private AlphaAnimation pCf;
-  private AlphaAnimation pCg;
-  private AlphaAnimation pCh;
-  private float pCi = -1.0F;
-  private float pCj = -1.0F;
-  private float radius = -1.0F;
+  private List<String> cAs;
+  private com.tencent.mm.ui.base.p efs;
+  private TextView nUz;
+  private boolean odR;
+  private String odS;
+  private String odT;
+  private boolean odV;
+  private int odW;
+  private long odX;
+  private long odY;
+  private ap odZ;
+  private ap oea;
+  private ap oeb;
+  private final ap oee;
+  private boolean oef;
+  private Chronometer oek;
+  private int oel;
+  private float radius;
+  private TextView tdE;
+  private ImageButton tdF;
+  private Button tdG;
+  private ImageView tdH;
+  private TalkRoomVolumeMeter tdI;
+  private TalkRoomAvatarsFrame tdJ;
+  private a tdK;
+  private boolean tdL;
+  private int tdM;
+  private AlphaAnimation tdN;
+  private AlphaAnimation tdO;
+  private AlphaAnimation tdP;
+  private AlphaAnimation tdQ;
+  private float tdR;
+  private float tdS;
+  private TextView titleTv;
   private PowerManager.WakeLock wakeLock;
   
-  private void PI(String paramString)
+  public TalkRoomUI()
   {
-    if (!this.lGS) {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.TalkRoomUI", "alertToFinish has exit, ignore ");
-    }
-    for (;;)
-    {
-      return;
-      this.lGS = false;
-      com.tencent.mm.plugin.talkroom.model.b.bMu().beA();
-      String str = paramString;
-      if (bk.bl(paramString)) {
-        if (aq.isConnected(getApplication())) {
-          break label77;
-        }
-      }
-      label77:
-      for (str = getString(R.l.talk_room_network_not_conn); !isFinishing(); str = getString(R.l.talk_room_network_failed))
-      {
-        com.tencent.mm.ui.base.h.a(this, str, "", new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            TalkRoomUI.this.finish();
-          }
-        });
-        return;
-      }
-    }
+    AppMethodBeat.i(25925);
+    this.oef = true;
+    this.cAs = new LinkedList();
+    this.odW = 0;
+    this.odR = true;
+    this.oea = new ap(new TalkRoomUI.1(this), false);
+    this.tdL = true;
+    this.tdM = 0;
+    this.oee = new ap(new TalkRoomUI.10(this), true);
+    this.radius = -1.0F;
+    this.tdR = -1.0F;
+    this.tdS = -1.0F;
+    this.odV = false;
+    this.odX = 500L;
+    this.odY = 0L;
+    this.odZ = new ap(new TalkRoomUI.5(this), false);
+    this.oeb = new ap(new TalkRoomUI.9(this), false);
+    this.oel = 0;
+    AppMethodBeat.o(25925);
   }
   
-  private void bMO()
+  private void Gt(int paramInt)
   {
-    if ((this.lGJ == 3) || (this.lGJ == 5))
+    AppMethodBeat.i(25952);
+    if ((paramInt != 0) && (this.oel == paramInt))
     {
-      this.pBZ.setShowFlame(true);
+      AppMethodBeat.o(25952);
       return;
     }
-    if (!bk.bl(this.lGG))
-    {
-      this.pBZ.setShowFlame(true);
-      return;
-    }
-    this.pBZ.setShowFlame(false);
+    this.oek.setVisibility(0);
+    this.oek.startAnimation(this.tdN);
+    this.oek.setBase(bo.yB());
+    this.oek.start();
+    this.oel = paramInt;
+    AppMethodBeat.o(25952);
   }
   
-  private void bMP()
+  private void aeb(String paramString)
   {
-    Object localObject = com.tencent.mm.plugin.talkroom.model.b.bMu().bee();
+    AppMethodBeat.i(25940);
+    if (!this.oef)
+    {
+      ab.i("MicroMsg.TalkRoomUI", "alertToFinish has exit, ignore ");
+      AppMethodBeat.o(25940);
+      return;
+    }
+    this.oef = false;
+    com.tencent.mm.plugin.talkroom.model.b.cHs().cHH();
+    String str = paramString;
+    if (bo.isNullOrNil(paramString)) {
+      if (at.isConnected(getApplication())) {
+        break label78;
+      }
+    }
+    label78:
+    for (str = getString(2131304241); isFinishing(); str = getString(2131304240))
+    {
+      AppMethodBeat.o(25940);
+      return;
+    }
+    com.tencent.mm.ui.base.h.a(this, str, "", new TalkRoomUI.7(this));
+    AppMethodBeat.o(25940);
+  }
+  
+  private void aec(String paramString)
+  {
+    AppMethodBeat.i(25950);
+    n(j.b(this, paramString, this.tdE.getTextSize()), 2131690566);
+    AppMethodBeat.o(25950);
+  }
+  
+  private void bLS()
+  {
+    AppMethodBeat.i(25937);
+    if (this.odW != 5)
+    {
+      AppMethodBeat.o(25937);
+      return;
+    }
+    this.odZ.stopTimer();
+    display();
+    cHR();
+    ay.a(ah.getContext(), 2131304253, new TalkRoomUI.6(this));
+    this.oea.ag(1000L, 1000L);
+    AppMethodBeat.o(25937);
+  }
+  
+  private void cHR()
+  {
+    AppMethodBeat.i(25926);
+    if ((this.odW == 3) || (this.odW == 5))
+    {
+      this.tdI.setShowFlame(true);
+      AppMethodBeat.o(25926);
+      return;
+    }
+    if (!bo.isNullOrNil(this.odT))
+    {
+      this.tdI.setShowFlame(true);
+      AppMethodBeat.o(25926);
+      return;
+    }
+    this.tdI.setShowFlame(false);
+    AppMethodBeat.o(25926);
+  }
+  
+  private void cHS()
+  {
+    AppMethodBeat.i(25946);
+    Object localObject = com.tencent.mm.plugin.talkroom.model.b.cHs().bLy();
     LinkedList localLinkedList = new LinkedList();
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      localLinkedList.add(((bxc)((Iterator)localObject).next()).hPY);
+      localLinkedList.add(((cjn)((Iterator)localObject).next()).jJA);
     }
-    this.pCa.setMembersList(localLinkedList);
+    this.tdJ.setMembersList(localLinkedList);
+    AppMethodBeat.o(25946);
   }
   
-  private void bMQ()
+  private void cHT()
   {
-    int i = com.tencent.mm.plugin.talkroom.model.b.bMu().bee().size();
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.TalkRoomUI", "displayCount %d", new Object[] { Integer.valueOf(i) });
-    this.lxm.setText(String.valueOf(i));
+    AppMethodBeat.i(25949);
+    int i = com.tencent.mm.plugin.talkroom.model.b.cHs().bLy().size();
+    ab.i("MicroMsg.TalkRoomUI", "displayCount %d", new Object[] { Integer.valueOf(i) });
+    this.nUz.setText(String.valueOf(i));
+    AppMethodBeat.o(25949);
   }
   
-  private void bMR()
+  private void cHU()
   {
-    if (this.lGY == 0) {
-      return;
-    }
-    this.lGX.stop();
-    this.lGY = 0;
-    this.lGX.startAnimation(this.pCf);
-  }
-  
-  private void bey()
-  {
-    if (this.lGJ != 5) {
-      return;
-    }
-    this.lGM.stopTimer();
-    bez();
-    bMO();
-    com.tencent.mm.sdk.platformtools.au.b(ae.getContext(), R.l.talkroom_begin, new au.a()
+    AppMethodBeat.i(25953);
+    if (this.oel == 0)
     {
-      public final void ug()
+      AppMethodBeat.o(25953);
+      return;
+    }
+    this.oek.stop();
+    this.oel = 0;
+    this.oek.startAnimation(this.tdO);
+    AppMethodBeat.o(25953);
+  }
+  
+  private void display()
+  {
+    AppMethodBeat.i(25948);
+    if (this.odR)
+    {
+      AppMethodBeat.o(25948);
+      return;
+    }
+    if (com.tencent.mm.plugin.talkroom.model.b.cHs().tdg)
+    {
+      n(getString(2131304242), 2131690567);
+      this.tdJ.setCurMemeber(null);
+      this.tdH.setImageResource(2130840524);
+      cHU();
+      AppMethodBeat.o(25948);
+      return;
+    }
+    switch (this.odW)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(25948);
+      return;
+      if (!bo.isNullOrNil(this.odT))
       {
-        TalkRoomUI.o(TalkRoomUI.this).stopTimer();
-        TalkRoomUI.a(TalkRoomUI.this);
-      }
-    });
-    this.lGN.S(1000L, 1000L);
-  }
-  
-  private void bez()
-  {
-    if (this.lGE) {
-      return;
-    }
-    if (com.tencent.mm.plugin.talkroom.model.b.bMu().pBw)
-    {
-      e(getString(R.l.talk_room_pausing), R.e.talk_room_tv_red);
-      this.pCa.setCurMemeber(null);
-      this.pBY.setImageResource(R.g.talk_room_led_black);
-      bMR();
-      return;
-    }
-    switch (this.lGJ)
-    {
-    default: 
-      return;
-    case 0: 
-      if (!bk.bl(this.lGG))
-      {
-        cA(r.gV(this.lGG), R.e.talk_room_tv_green);
-        this.pCa.setCurMemeber(this.lGG);
-        this.pBY.setImageResource(R.g.talk_room_led_black);
-        zt(1);
+        aec(s.nE(this.odT));
+        this.tdJ.setCurMemeber(this.odT);
+        this.tdH.setImageResource(2130840524);
+        Gt(1);
+        AppMethodBeat.o(25948);
         return;
       }
-      if (com.tencent.mm.plugin.talkroom.model.b.bMu().bee().size() == 1) {}
-      for (String str = getString(R.l.talk_room_waiting_for_others);; str = "")
+      if (com.tencent.mm.plugin.talkroom.model.b.cHs().bLy().size() == 1) {}
+      for (String str = getString(2131304251);; str = "")
       {
-        e(str, R.e.talk_room_tv_green);
-        this.pCa.setCurMemeber(null);
-        this.pBY.setImageResource(R.g.talk_room_led_black);
-        bMR();
+        n(str, 2131690566);
+        this.tdJ.setCurMemeber(null);
+        this.tdH.setImageResource(2130840524);
+        cHU();
+        AppMethodBeat.o(25948);
         return;
       }
-    case 1: 
-      e(getString(R.l.talk_room_connecting), R.e.talk_room_tv_green);
-      this.pBY.setImageResource(R.g.talk_room_led_yellow);
+      n(getString(2131304229), 2131690566);
+      this.tdH.setImageResource(2130840527);
+      AppMethodBeat.o(25948);
       return;
-    case 3: 
-    case 5: 
-      e(getString(R.l.talk_room_self_speaking), R.e.talk_room_tv_green);
-      this.pCa.setCurMemeber(q.Gj());
-      this.pBY.setImageResource(R.g.talk_room_led_green);
-      zt(2);
+      n(getString(2131304246), 2131690566);
+      this.tdJ.setCurMemeber(r.Zn());
+      this.tdH.setImageResource(2130840525);
+      Gt(2);
+      AppMethodBeat.o(25948);
       return;
-    case 2: 
-      e(getString(R.l.talk_room_seize_mic_failed), R.e.talk_room_tv_red);
-      this.pBY.setImageResource(R.g.talk_room_led_red);
+      n(getString(2131304245), 2131690567);
+      this.tdH.setImageResource(2130840526);
+      AppMethodBeat.o(25948);
       return;
+      n(getString(2131304248), 2131690567);
+      this.tdH.setImageResource(2130840526);
+      cHU();
     }
-    e(getString(R.l.talk_room_speak_too_long), R.e.talk_room_tv_red);
-    this.pBY.setImageResource(R.g.talk_room_led_red);
-    bMR();
   }
   
-  private void cA(String paramString, int paramInt)
+  private void n(CharSequence paramCharSequence, int paramInt)
   {
-    e(j.a(this, paramString, this.pBV.getTextSize()), paramInt);
-  }
-  
-  private void e(CharSequence paramCharSequence, int paramInt)
-  {
-    if (bk.bl(paramCharSequence.toString()))
+    AppMethodBeat.i(25951);
+    if (bo.isNullOrNil(paramCharSequence.toString()))
     {
-      this.pBV.startAnimation(this.pCh);
+      this.tdE.startAnimation(this.tdQ);
+      AppMethodBeat.o(25951);
       return;
     }
-    this.pBV.setTextColor(getResources().getColor(paramInt));
-    this.pBV.setText(paramCharSequence);
-    this.pBV.startAnimation(this.pCg);
+    this.tdE.setTextColor(getResources().getColor(paramInt));
+    this.tdE.setText(paramCharSequence);
+    this.tdE.startAnimation(this.tdP);
+    AppMethodBeat.o(25951);
   }
   
-  private void zt(int paramInt)
+  public final void aX(String paramString1, String paramString2)
   {
-    if ((paramInt != 0) && (this.lGY == paramInt)) {
-      return;
-    }
-    this.lGX.setVisibility(0);
-    this.lGX.startAnimation(this.pCe);
-    this.lGX.setBase(bk.UZ());
-    this.lGX.start();
-    this.lGY = paramInt;
-  }
-  
-  public final void RM()
-  {
-    this.lGE = false;
-    this.pBW.setEnabled(true);
-    this.pBW.setImageResource(R.g.talk_room_mic_btn_normal);
-    this.pBX.setVisibility(0);
-    bez();
-    bMQ();
-    bMP();
-  }
-  
-  public final void RN()
-  {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.TalkRoomUI", "onSeizeMicSuccess");
-    if (this.lGJ != 1) {
-      return;
-    }
-    this.lGJ = 5;
-    if (bk.cp(this.lGL) < this.lGK)
+    AppMethodBeat.i(25947);
+    ab.i("MicroMsg.TalkRoomUI", "add %s,  del %s", new Object[] { paramString1, paramString2 });
+    cHS();
+    if (this.odR)
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.TalkRoomUI", "onSeizeMicSuccess waiting to execute");
-      am localam = this.lGM;
-      long l = this.lGK - bk.cp(this.lGL);
-      localam.S(l, l);
+      AppMethodBeat.o(25947);
       return;
     }
-    bey();
+    cHT();
+    if (!bo.isNullOrNil(paramString1))
+    {
+      aec(getString(2131304230, new Object[] { s.nE(paramString1) }));
+      this.oeb.ag(3000L, 3000L);
+    }
+    if (!bo.isNullOrNil(paramString2))
+    {
+      aec(getString(2131304235, new Object[] { s.nE(paramString2) }));
+      this.oeb.ag(3000L, 3000L);
+    }
+    AppMethodBeat.o(25947);
   }
   
-  public final void RO()
+  public final void akV()
   {
-    if (!this.lGS)
+    AppMethodBeat.i(25933);
+    this.odR = false;
+    this.tdF.setEnabled(true);
+    this.tdF.setImageResource(2130840528);
+    this.tdG.setVisibility(0);
+    display();
+    cHT();
+    cHS();
+    AppMethodBeat.o(25933);
+  }
+  
+  public final void akW()
+  {
+    AppMethodBeat.i(25936);
+    ab.i("MicroMsg.TalkRoomUI", "onSeizeMicSuccess");
+    if (this.odW != 1)
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.TalkRoomUI", "alertToFinish has exit, ignore ");
+      AppMethodBeat.o(25936);
       return;
     }
-    this.lGS = false;
+    this.odW = 5;
+    if (bo.av(this.odY) < this.odX)
+    {
+      ab.i("MicroMsg.TalkRoomUI", "onSeizeMicSuccess waiting to execute");
+      ap localap = this.odZ;
+      long l = this.odX - bo.av(this.odY);
+      localap.ag(l, l);
+      AppMethodBeat.o(25936);
+      return;
+    }
+    bLS();
+    AppMethodBeat.o(25936);
+  }
+  
+  public final void akX()
+  {
+    AppMethodBeat.i(25942);
+    if (!this.oef)
+    {
+      ab.i("MicroMsg.TalkRoomUI", "alertToFinish has exit, ignore ");
+      AppMethodBeat.o(25942);
+      return;
+    }
+    this.oef = false;
     finish();
+    AppMethodBeat.o(25942);
   }
   
-  public final void RP()
+  public final void akY()
   {
-    bez();
+    AppMethodBeat.i(25943);
+    display();
+    AppMethodBeat.o(25943);
   }
   
-  public final void RQ()
+  public final void akZ()
   {
-    bez();
+    AppMethodBeat.i(25944);
+    display();
+    AppMethodBeat.o(25944);
   }
   
-  public final void RR()
+  public final void ala()
   {
-    e(getString(R.l.talk_room_reconnecting), R.e.talk_room_tv_red);
-  }
-  
-  public final void aE(String paramString1, String paramString2)
-  {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.TalkRoomUI", "add %s,  del %s", new Object[] { paramString1, paramString2 });
-    bMP();
-    if (this.lGE) {}
-    do
-    {
-      return;
-      bMQ();
-      if (!bk.bl(paramString1))
-      {
-        cA(getString(R.l.talk_room_enter_4short, new Object[] { r.gV(paramString1) }), R.e.talk_room_tv_green);
-        this.lGO.S(3000L, 3000L);
-      }
-    } while (bk.bl(paramString2));
-    cA(getString(R.l.talk_room_exit_4short, new Object[] { r.gV(paramString2) }), R.e.talk_room_tv_green);
-    this.lGO.S(3000L, 3000L);
-  }
-  
-  public final void e(int paramInt1, int paramInt2, String paramString)
-  {
-    com.tencent.mm.sdk.platformtools.y.f("MicroMsg.TalkRoomUI", "errType %d, errCode %d, errInfo %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    PI("");
+    AppMethodBeat.i(25945);
+    n(getString(2131304244), 2131690567);
+    AppMethodBeat.o(25945);
   }
   
   public void finish()
   {
+    AppMethodBeat.i(25931);
     super.finish();
+    AppMethodBeat.o(25931);
   }
   
-  public final void i(String paramString, int paramInt1, int paramInt2)
+  public final void i(int paramInt1, int paramInt2, String paramString)
   {
-    com.tencent.mm.sdk.platformtools.y.f("MicroMsg.TalkRoomUI", "onInitFailed %s", new Object[] { paramString });
+    AppMethodBeat.i(25938);
+    ab.f("MicroMsg.TalkRoomUI", "errType %d, errCode %d, errInfo %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    aeb("");
+    AppMethodBeat.o(25938);
+  }
+  
+  public final void mh(int paramInt)
+  {
+    AppMethodBeat.i(25935);
+    ab.i("MicroMsg.TalkRoomUI", "onSeizeMicFailed");
+    if (paramInt == 340) {
+      if (this.odW != 3)
+      {
+        AppMethodBeat.o(25935);
+        return;
+      }
+    }
+    for (this.odW = 4;; this.odW = 2)
+    {
+      cHR();
+      display();
+      ay.a(ah.getContext(), new TalkRoomUI.4(this));
+      AppMethodBeat.o(25935);
+      return;
+      if (this.odW != 1)
+      {
+        AppMethodBeat.o(25935);
+        return;
+      }
+    }
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(25927);
+    ab.d("MicroMsg.TalkRoomUI", "onCreate");
+    super.onCreate(paramBundle);
+    paramBundle = getIntent().getStringExtra("enter_room_username");
+    ab.i("MicroMsg.TalkRoomUI", "onCreate talkRoomName : %s", new Object[] { paramBundle });
+    ab.d("MicroMsg.TalkRoomUI", "talkRoomName %s ", new Object[] { paramBundle });
+    this.odS = paramBundle;
+    if (bo.isNullOrNil(this.odS))
+    {
+      aeb("");
+      ab.d("MicroMsg.TalkRoomUI", "onCreate before initView");
+      setContentView(w.hM(ah.getContext()).inflate(2130970984, null));
+      this.wakeLock = ((PowerManager)getSystemService("power")).newWakeLock(26, "TalkRoomUI Lock");
+      this.titleTv = ((TextView)findViewById(2131821212));
+      this.tdE = ((TextView)findViewById(2131828473));
+      this.nUz = ((TextView)findViewById(2131823263));
+      this.tdG = ((Button)findViewById(2131828469));
+      this.oek = ((Chronometer)findViewById(2131826636));
+      this.tdH = ((ImageView)findViewById(2131828474));
+      this.tdK = new a(this);
+      this.tdG.setOnClickListener(new TalkRoomUI.11(this));
+      findViewById(2131828470).setOnClickListener(new TalkRoomUI.12(this));
+      this.tdF = ((ImageButton)findViewById(2131828475));
+      this.tdF.setEnabled(false);
+      this.tdF.setImageResource(2130840530);
+      this.tdF.setOnTouchListener(new TalkRoomUI.13(this));
+      this.tdI = ((TalkRoomVolumeMeter)findViewById(2131824811));
+      paramBundle = new TalkRoomUI.14(this);
+      findViewById(2131828468).setOnTouchListener(new TalkRoomUI.15(this, paramBundle));
+      this.tdJ = ((TalkRoomAvatarsFrame)findViewById(2131828471));
+      this.titleTv.setOnClickListener(new TalkRoomUI.16(this));
+      this.tdN = new AlphaAnimation(0.0F, 1.0F);
+      this.tdN.setDuration(300L);
+      this.tdN.setFillAfter(true);
+      this.tdO = new AlphaAnimation(1.0F, 0.0F);
+      this.tdO.setDuration(300L);
+      this.tdO.setFillAfter(true);
+      this.tdP = new AlphaAnimation(0.0F, 1.0F);
+      this.tdP.setDuration(300L);
+      this.tdP.setFillAfter(true);
+      this.tdQ = new AlphaAnimation(1.0F, 0.0F);
+      this.tdQ.setDuration(300L);
+      this.tdQ.setFillAfter(true);
+      aw.Rc().a(364, this);
+      ab.d("MicroMsg.TalkRoomUI", "onCreate before getServer");
+      com.tencent.mm.plugin.talkroom.model.b.cHs().a(this);
+      ab.d("MicroMsg.TalkRoomUI", "onCreate end");
+      AppMethodBeat.o(25927);
+      return;
+    }
+    List localList;
+    if (t.lA(paramBundle))
+    {
+      localList = n.nt(paramBundle);
+      if (localList == null) {
+        ao.a.flI.am(paramBundle, "");
+      }
+    }
+    for (;;)
+    {
+      new ak(Looper.getMainLooper()).post(new TalkRoomUI.3(this, paramBundle));
+      break;
+      this.cAs = localList;
+      continue;
+      this.cAs.clear();
+      this.cAs.add(paramBundle);
+      this.cAs.add(r.Zn());
+    }
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(25930);
+    com.tencent.mm.plugin.talkroom.model.b.cHs().b(this);
+    aw.Rc().b(364, this);
+    if ((this.efs != null) && (this.efs.isShowing())) {
+      this.efs.cancel();
+    }
+    super.onDestroy();
+    AppMethodBeat.o(25930);
+  }
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(25932);
+    if (paramInt == 25)
+    {
+      aw.aaA().iG(3);
+      AppMethodBeat.o(25932);
+      return true;
+    }
+    if (paramInt == 24)
+    {
+      aw.aaA().iF(3);
+      AppMethodBeat.o(25932);
+      return true;
+    }
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(25932);
+    return bool;
+  }
+  
+  public void onPause()
+  {
+    AppMethodBeat.i(25929);
+    super.onPause();
+    sendBroadcast(new Intent("com.tencent.mm.ui.ACTION_DEACTIVE").putExtra("classname", getClass().getName()), "com.tencent.mm.permission.MM_MESSAGE");
+    this.wakeLock.release();
+    this.oee.stopTimer();
+    com.tencent.mm.plugin.talkroom.model.b.cHr().tbZ.tce = false;
+    com.tencent.mm.plugin.talkroom.model.b.cHr();
+    Object localObject = com.tencent.mm.plugin.talkroom.model.b.cHr().tbZ;
+    if (((c)localObject).odR) {
+      ((c)localObject).adZ(ah.getContext().getString(2131304243));
+    }
+    for (;;)
+    {
+      localObject = new mj();
+      ((mj)localObject).cCu.cCv = false;
+      com.tencent.mm.sdk.b.a.ymk.a((com.tencent.mm.sdk.b.b)localObject, getMainLooper());
+      ab.d("MicroMsg.TalkRoomUI", "TalkRoom cancel pause auto download logic");
+      AppMethodBeat.o(25929);
+      return;
+      if (!bo.isNullOrNil(((c)localObject).odp))
+      {
+        String str = ah.getContext().getString(2131304249, new Object[] { s.nE(((c)localObject).odp) });
+        c.cHz();
+        ((c)localObject).adZ(str);
+      }
+      else
+      {
+        ((c)localObject).adZ(com.tencent.mm.plugin.talkroom.model.h.aT(ah.getContext(), com.tencent.mm.plugin.talkroom.model.b.cHs().tcS));
+      }
+    }
+  }
+  
+  public void onResume()
+  {
+    AppMethodBeat.i(25928);
+    super.onResume();
+    sendBroadcast(new Intent("com.tencent.mm.ui.ACTION_ACTIVE").putExtra("isTalkroom", true).putExtra("classname", getClass().getName()), "com.tencent.mm.permission.MM_MESSAGE");
+    this.wakeLock.acquire();
+    Object localObject = j.b(this, com.tencent.mm.plugin.talkroom.model.h.aT(this, this.odS), this.titleTv.getTextSize());
+    this.titleTv.setText((CharSequence)localObject);
+    com.tencent.mm.plugin.talkroom.model.b.cHr().tbZ.tce = true;
+    com.tencent.mm.plugin.talkroom.model.b.cHr();
+    ab.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
+    com.tencent.mm.plugin.talkroom.model.b.cHr();
+    c.cHz();
+    localObject = new mj();
+    ((mj)localObject).cCu.cCv = true;
+    com.tencent.mm.sdk.b.a.ymk.a((com.tencent.mm.sdk.b.b)localObject, getMainLooper());
+    ab.d("MicroMsg.TalkRoomUI", "TalkRoom req pause auto download logic");
+    AppMethodBeat.o(25928);
+  }
+  
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(25939);
+    if ((paramm.getType() == 364) && (this.efs != null) && (this.efs.isShowing())) {
+      this.efs.cancel();
+    }
+    AppMethodBeat.o(25939);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public final void t(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(25934);
+    ab.f("MicroMsg.TalkRoomUI", "onInitFailed %s", new Object[] { paramString });
     paramString = "";
     if (paramInt1 == 4)
     {
       if (paramInt2 != -1)
       {
-        this.lGS = false;
+        this.oef = false;
         finish();
+        AppMethodBeat.o(25934);
         return;
       }
-      paramString = getString(R.l.talk_room_network_failed);
+      paramString = getString(2131304240);
     }
-    PI(paramString);
+    aeb(paramString);
+    AppMethodBeat.o(25934);
   }
   
-  public final void jp(int paramInt)
+  public final void uM(String paramString)
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.TalkRoomUI", "onSeizeMicFailed");
-    if (paramInt == 340) {
-      if (this.lGJ != 3) {
-        return;
-      }
-    }
-    for (this.lGJ = 4;; this.lGJ = 2)
+    AppMethodBeat.i(25941);
+    ab.d("MicroMsg.TalkRoomUI", "onCurMember %s", new Object[] { paramString });
+    this.odT = paramString;
+    cHR();
+    display();
+    if (!bo.isNullOrNil(paramString))
     {
-      bMO();
-      bez();
-      com.tencent.mm.sdk.platformtools.au.a(ae.getContext(), R.l.talkroom_sasasa, new TalkRoomUI.4(this));
-      return;
-      if (this.lGJ != 1) {
-        break;
-      }
-    }
-  }
-  
-  public final void ny(String paramString)
-  {
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.TalkRoomUI", "onCurMember %s", new Object[] { paramString });
-    this.lGG = paramString;
-    bMO();
-    bez();
-    if (!bk.bl(paramString))
-    {
-      com.tencent.mm.sdk.platformtools.au.b(ae.getContext(), R.l.talkroom_othersbegin, new TalkRoomUI.8(this));
-      this.lGR.S(100L, 100L);
+      ay.a(ah.getContext(), 2131304256, new TalkRoomUI.8(this));
+      this.oee.ag(100L, 100L);
+      AppMethodBeat.o(25941);
       return;
     }
-    this.lGR.stopTimer();
+    this.oee.stopTimer();
+    AppMethodBeat.o(25941);
   }
   
-  public void onCreate(Bundle paramBundle)
+  abstract class a
   {
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.TalkRoomUI", "onCreate");
-    super.onCreate(paramBundle);
-    paramBundle = getIntent().getStringExtra("enter_room_username");
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.TalkRoomUI", "onCreate talkRoomName : %s", new Object[] { paramBundle });
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.TalkRoomUI", "talkRoomName %s ", new Object[] { paramBundle });
-    this.lGF = paramBundle;
-    if (bk.bl(this.lGF))
-    {
-      PI("");
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.TalkRoomUI", "onCreate before initView");
-      setContentView(com.tencent.mm.ui.y.gt(ae.getContext()).inflate(R.i.talk_room, null));
-      this.wakeLock = ((PowerManager)getSystemService("power")).newWakeLock(26, "TalkRoomUI Lock");
-      this.eXr = ((TextView)findViewById(R.h.title_tv));
-      this.pBV = ((TextView)findViewById(R.h.mic_info));
-      this.lxm = ((TextView)findViewById(R.h.count_tv));
-      this.pBX = ((Button)findViewById(R.h.info_btn));
-      this.lGX = ((Chronometer)findViewById(R.h.chronometer));
-      this.pBY = ((ImageView)findViewById(R.h.led_iv));
-      this.pCb = new a(this);
-      this.pBX.setOnClickListener(new TalkRoomUI.11(this));
-      findViewById(R.h.up_btn).setOnClickListener(new TalkRoomUI.12(this));
-      this.pBW = ((ImageButton)findViewById(R.h.mic_btn));
-      this.pBW.setEnabled(false);
-      this.pBW.setImageResource(R.g.talk_room_mic_btn_unable);
-      this.pBW.setOnTouchListener(new TalkRoomUI.13(this));
-      this.pBZ = ((TalkRoomVolumeMeter)findViewById(R.h.volume_meter));
-      paramBundle = new TalkRoomUI.14(this);
-      findViewById(R.h.touch_view).setOnTouchListener(new TalkRoomUI.15(this, paramBundle));
-      this.pCa = ((TalkRoomAvatarsFrame)findViewById(R.h.avatar_frame));
-      this.eXr.setOnClickListener(new TalkRoomUI.16(this));
-      this.pCe = new AlphaAnimation(0.0F, 1.0F);
-      this.pCe.setDuration(300L);
-      this.pCe.setFillAfter(true);
-      this.pCf = new AlphaAnimation(1.0F, 0.0F);
-      this.pCf.setDuration(300L);
-      this.pCf.setFillAfter(true);
-      this.pCg = new AlphaAnimation(0.0F, 1.0F);
-      this.pCg.setDuration(300L);
-      this.pCg.setFillAfter(true);
-      this.pCh = new AlphaAnimation(1.0F, 0.0F);
-      this.pCh.setDuration(300L);
-      this.pCh.setFillAfter(true);
-      com.tencent.mm.model.au.Dk().a(364, this);
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.TalkRoomUI", "onCreate before getServer");
-      com.tencent.mm.plugin.talkroom.model.b.bMu().a(this);
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.TalkRoomUI", "onCreate end");
-      return;
-    }
-    List localList;
-    if (s.fn(paramBundle))
-    {
-      localList = com.tencent.mm.model.m.gK(paramBundle);
-      if (localList == null) {
-        com.tencent.mm.model.am.a.dVy.V(paramBundle, "");
-      }
-    }
-    for (;;)
-    {
-      new ah(Looper.getMainLooper()).post(new TalkRoomUI.3(this, paramBundle));
-      break;
-      this.bSN = localList;
-      continue;
-      this.bSN.clear();
-      this.bSN.add(paramBundle);
-      this.bSN.add(q.Gj());
-    }
-  }
-  
-  protected void onDestroy()
-  {
-    com.tencent.mm.plugin.talkroom.model.b.bMu().b(this);
-    com.tencent.mm.model.au.Dk().b(364, this);
-    if ((this.dnV != null) && (this.dnV.isShowing())) {
-      this.dnV.cancel();
-    }
-    super.onDestroy();
-  }
-  
-  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 25)
-    {
-      com.tencent.mm.model.au.Hy().gr(3);
-      return true;
-    }
-    if (paramInt == 24)
-    {
-      com.tencent.mm.model.au.Hy().gq(3);
-      return true;
-    }
-    return super.onKeyDown(paramInt, paramKeyEvent);
-  }
-  
-  protected void onPause()
-  {
-    super.onPause();
-    sendBroadcast(new Intent("com.tencent.mm.ui.ACTION_DEACTIVE").putExtra("classname", getClass().getName()), "com.tencent.mm.permission.MM_MESSAGE");
-    this.wakeLock.release();
-    this.lGR.stopTimer();
-    com.tencent.mm.plugin.talkroom.model.b.bMt().pAn.pAs = false;
-    com.tencent.mm.plugin.talkroom.model.b.bMt();
-    Object localObject = com.tencent.mm.plugin.talkroom.model.b.bMt().pAn;
-    if (((c)localObject).lGE) {
-      ((c)localObject).PG(ae.getContext().getString(R.l.talk_room_readying));
-    }
-    for (;;)
-    {
-      localObject = new lt();
-      ((lt)localObject).bUN.bUO = false;
-      com.tencent.mm.sdk.b.a.udP.a((com.tencent.mm.sdk.b.b)localObject, getMainLooper());
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.TalkRoomUI", "TalkRoom cancel pause auto download logic");
-      return;
-      if (!bk.bl(((c)localObject).lGc))
-      {
-        String str = ae.getContext().getString(R.l.talk_room_speaking, new Object[] { r.gV(((c)localObject).lGc) });
-        c.bMA();
-        ((c)localObject).PG(str);
-      }
-      else
-      {
-        ((c)localObject).PG(com.tencent.mm.plugin.talkroom.model.h.aJ(ae.getContext(), com.tencent.mm.plugin.talkroom.model.b.bMu().pBi));
-      }
-    }
-  }
-  
-  protected void onResume()
-  {
-    super.onResume();
-    sendBroadcast(new Intent("com.tencent.mm.ui.ACTION_ACTIVE").putExtra("isTalkroom", true).putExtra("classname", getClass().getName()), "com.tencent.mm.permission.MM_MESSAGE");
-    this.wakeLock.acquire();
-    Object localObject = j.a(this, com.tencent.mm.plugin.talkroom.model.h.aJ(this, this.lGF), this.eXr.getTextSize());
-    this.eXr.setText((CharSequence)localObject);
-    com.tencent.mm.plugin.talkroom.model.b.bMt().pAn.pAs = true;
-    com.tencent.mm.plugin.talkroom.model.b.bMt();
-    com.tencent.mm.sdk.platformtools.y.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
-    com.tencent.mm.plugin.talkroom.model.b.bMt();
-    c.bMA();
-    localObject = new lt();
-    ((lt)localObject).bUN.bUO = true;
-    com.tencent.mm.sdk.b.a.udP.a((com.tencent.mm.sdk.b.b)localObject, getMainLooper());
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.TalkRoomUI", "TalkRoom req pause auto download logic");
-  }
-  
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
-  {
-    if ((paramm.getType() == 364) && (this.dnV != null) && (this.dnV.isShowing())) {
-      this.dnV.cancel();
-    }
-  }
-  
-  private abstract class a
-  {
-    float fSy;
-    float fSz;
-    long pCo;
+    float bTE;
+    float bTF;
+    long tdY;
     
     private a() {}
     
-    public abstract void bMS();
+    public abstract void cHV();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomUI
  * JD-Core Version:    0.7.0.1
  */

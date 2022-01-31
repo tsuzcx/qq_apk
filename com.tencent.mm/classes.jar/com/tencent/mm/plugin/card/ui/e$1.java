@@ -5,19 +5,20 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.a.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.p;
 import com.tencent.mm.plugin.card.model.CardGiftInfo;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.model.ShareCardInfo;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.anr;
-import com.tencent.mm.protocal.c.lv;
-import com.tencent.mm.protocal.c.mb;
-import com.tencent.mm.protocal.c.mg;
-import com.tencent.mm.protocal.c.ra;
-import com.tencent.mm.protocal.c.tw;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.atg;
+import com.tencent.mm.protocal.protobuf.oj;
+import com.tencent.mm.protocal.protobuf.oz;
+import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.protocal.protobuf.uo;
+import com.tencent.mm.protocal.protobuf.ye;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,156 +29,172 @@ final class e$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (com.tencent.mm.plugin.card.model.b)this.isQ.iko.get(paramInt);
-    if ((paramAdapterView == null) || (TextUtils.isEmpty(paramAdapterView.url))) {}
-    label153:
-    label345:
-    label373:
-    label378:
-    do
+    AppMethodBeat.i(88335);
+    paramAdapterView = (com.tencent.mm.plugin.card.model.b)this.ktX.klo.get(paramInt);
+    if ((paramAdapterView == null) || (TextUtils.isEmpty(paramAdapterView.url)))
     {
+      AppMethodBeat.o(88335);
       return;
-      paramView = new Intent();
-      int i;
-      Object localObject;
-      int j;
-      String str;
-      if ((this.isQ.ikk instanceof CardInfo))
-      {
-        paramView.putExtra("key_card_info_data", (CardInfo)this.isQ.ikk);
-        if (!paramAdapterView.url.equals("card://jump_detail")) {
-          break label378;
-        }
-        if ((this.isQ.ikk.azx().sII == null) || (TextUtils.isEmpty(this.isQ.ikk.azx().sII.url))) {
-          break label345;
-        }
-        com.tencent.mm.plugin.card.d.b.a(this.isQ.isl, this.isQ.ikk.azx().sII.url, 1);
-        paramAdapterView = h.nFQ;
-        i = this.isQ.ikk.azx().ilo;
-        paramView = this.isQ.ikk.azC();
-        localObject = this.isQ.ikk.azB();
-        j = this.isQ.isN.ipv;
-        str = this.isQ.isN.irV;
-        if (!this.isQ.ikk.azv()) {
-          break label373;
-        }
+    }
+    paramView = new Intent();
+    label163:
+    int i;
+    Object localObject;
+    int j;
+    String str;
+    if ((this.ktX.klk instanceof CardInfo))
+    {
+      paramView.putExtra("key_card_info_data", (CardInfo)this.ktX.klk);
+      if (!paramAdapterView.url.equals("card://jump_detail")) {
+        break label393;
       }
+      if ((this.ktX.klk.bbd().wGr == null) || (TextUtils.isEmpty(this.ktX.klk.bbd().wGr.url))) {
+        break label360;
+      }
+      com.tencent.mm.plugin.card.d.b.a(this.ktX.kts, this.ktX.klk.bbd().wGr.url, 1);
+      paramAdapterView = h.qsU;
+      i = this.ktX.klk.bbd().iFL;
+      paramView = this.ktX.klk.bbi();
+      localObject = this.ktX.klk.bbh();
+      j = this.ktX.ktU.kqC;
+      str = this.ktX.ktU.ktc;
+      if (!this.ktX.klk.bbb()) {
+        break label388;
+      }
+    }
+    label388:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramAdapterView.e(11324, new Object[] { "CardLeftRightIntroduceView", Integer.valueOf(i), paramView, localObject, Integer.valueOf(0), Integer.valueOf(j), str, Integer.valueOf(paramInt), "" });
+      AppMethodBeat.o(88335);
+      return;
+      if (!(this.ktX.klk instanceof ShareCardInfo)) {
+        break;
+      }
+      paramView.putExtra("key_card_info_data", (ShareCardInfo)this.ktX.klk);
+      break;
+      label360:
+      paramView.setClass(this.ktX.kts, CardDetailPreference.class);
+      this.ktX.kts.startActivity(paramView);
+      break label163;
+    }
+    label393:
+    if ((paramAdapterView.url.equals("card://jump_shop_list")) && (this.ktX.klk.bbd().wGd > 0))
+    {
+      e.a(this.ktX);
+      AppMethodBeat.o(88335);
+      return;
+    }
+    if ((paramAdapterView.url.equals("card://jump_shop")) && (this.ktX.klk.bbd().wGd > 0))
+    {
+      if ((this.ktX.klq == null) || (this.ktX.klq.size() == 0))
+      {
+        ab.e("MicroMsg.CardDetailUIContoller", "mShopList == null || mShopList.size() == 0");
+        AppMethodBeat.o(88335);
+        return;
+      }
+      paramAdapterView = (oz)this.ktX.klq.get(0);
+      if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.knV)))
+      {
+        com.tencent.mm.plugin.card.d.b.a(this.ktX.kts, paramAdapterView.knV, 1);
+        h.qsU.e(11941, new Object[] { Integer.valueOf(4), this.ktX.klk.bbh(), this.ktX.klk.bbi(), "", paramAdapterView.name });
+      }
+      paramAdapterView = h.qsU;
+      i = this.ktX.klk.bbd().iFL;
+      paramView = this.ktX.klk.bbi();
+      localObject = this.ktX.klk.bbh();
+      j = this.ktX.ktU.kqC;
+      str = this.ktX.ktU.ktc;
+      if (this.ktX.klk.bbb()) {}
       for (paramInt = 1;; paramInt = 0)
       {
-        paramAdapterView.f(11324, new Object[] { "CardLeftRightIntroduceView", Integer.valueOf(i), paramView, localObject, Integer.valueOf(0), Integer.valueOf(j), str, Integer.valueOf(paramInt), "" });
-        return;
-        if (!(this.isQ.ikk instanceof ShareCardInfo)) {
-          break;
-        }
-        paramView.putExtra("key_card_info_data", (ShareCardInfo)this.isQ.ikk);
-        break;
-        paramView.setClass(this.isQ.isl, CardDetailPreference.class);
-        this.isQ.isl.startActivity(paramView);
-        break label153;
-      }
-      if ((paramAdapterView.url.equals("card://jump_shop_list")) && (this.isQ.ikk.azx().sIu > 0))
-      {
-        e.a(this.isQ);
+        paramAdapterView.e(11324, new Object[] { "UsedStoresView", Integer.valueOf(i), paramView, localObject, Integer.valueOf(0), Integer.valueOf(j), str, Integer.valueOf(paramInt), "" });
+        AppMethodBeat.o(88335);
         return;
       }
-      if ((paramAdapterView.url.equals("card://jump_shop")) && (this.isQ.ikk.azx().sIu > 0))
+    }
+    if (paramAdapterView.url.equals("card://jump_service"))
+    {
+      if (!TextUtils.isEmpty(this.ktX.klk.bbd().wFW))
       {
-        if ((this.isQ.ikq == null) || (this.isQ.ikq.size() == 0))
-        {
-          y.e("MicroMsg.CardDetailUIContoller", "mShopList == null || mShopList.size() == 0");
-          return;
-        }
-        paramAdapterView = (mb)this.isQ.ikq.get(0);
-        if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.ina)))
-        {
-          com.tencent.mm.plugin.card.d.b.a(this.isQ.isl, paramAdapterView.ina, 1);
-          h.nFQ.f(11941, new Object[] { Integer.valueOf(4), this.isQ.ikk.azB(), this.isQ.ikk.azC(), "", paramAdapterView.name });
-        }
-        paramAdapterView = h.nFQ;
-        i = this.isQ.ikk.azx().ilo;
-        paramView = this.isQ.ikk.azC();
-        localObject = this.isQ.ikk.azB();
-        j = this.isQ.isN.ipv;
-        str = this.isQ.isN.irV;
-        if (this.isQ.ikk.azv()) {}
-        for (paramInt = 1;; paramInt = 0)
-        {
-          paramAdapterView.f(11324, new Object[] { "UsedStoresView", Integer.valueOf(i), paramView, localObject, Integer.valueOf(0), Integer.valueOf(j), str, Integer.valueOf(paramInt), "" });
-          return;
-        }
+        com.tencent.mm.plugin.card.d.b.ae(this.ktX.kts, this.ktX.klk.bbd().wFW);
+        am.bcj().w(this.ktX.klk.bbh(), this.ktX.klk.bbi(), 1);
       }
-      if (paramAdapterView.url.equals("card://jump_service"))
+      h.qsU.e(11582, new Object[] { "OperService", Integer.valueOf(1), Integer.valueOf(this.ktX.klk.bbd().iFL), this.ktX.klk.bbi(), this.ktX.klk.bbh(), this.ktX.ktU.ktc });
+      AppMethodBeat.o(88335);
+      return;
+    }
+    if (paramAdapterView.url.equals("card://jump_gift"))
+    {
+      e.b(this.ktX);
+      paramAdapterView = this.ktX;
+      if (paramAdapterView.klk.bbe().wEf == null)
       {
-        if (!TextUtils.isEmpty(this.isQ.ikk.azx().sIn))
-        {
-          com.tencent.mm.plugin.card.d.b.ab(this.isQ.isl, this.isQ.ikk.azx().sIn);
-          am.aAy().r(this.isQ.ikk.azB(), this.isQ.ikk.azC(), 1);
-        }
-        h.nFQ.f(11582, new Object[] { "OperService", Integer.valueOf(1), Integer.valueOf(this.isQ.ikk.azx().ilo), this.isQ.ikk.azC(), this.isQ.ikk.azB(), this.isQ.isN.irV });
+        ab.i("MicroMsg.CardDetailUIContoller", "mCardInfo.getDataInfo().gifting_info_cell is null");
+        AppMethodBeat.o(88335);
         return;
       }
-      if (paramAdapterView.url.equals("card://jump_gift"))
+      if (paramAdapterView.klk.bbe().wEf.wML == null)
       {
-        e.b(this.isQ);
-        paramAdapterView = this.isQ;
-        if (paramAdapterView.ikk.azy().sHJ == null)
-        {
-          y.i("MicroMsg.CardDetailUIContoller", "mCardInfo.getDataInfo().gifting_info_cell is null");
-          return;
-        }
-        if (paramAdapterView.ikk.azy().sHJ.sOH == null)
-        {
-          y.e("MicroMsg.CardDetailUIContoller", "mCardInfo.getDataInfo().gifting_info_cell.gifting_info is null");
-          return;
-        }
-        h.nFQ.f(13866, new Object[] { Integer.valueOf(6), paramAdapterView.ikk.azy().sHJ.sOH.sti, o.getString(paramAdapterView.ikk.azy().sHJ.sOH.sth) });
+        ab.e("MicroMsg.CardDetailUIContoller", "mCardInfo.getDataInfo().gifting_info_cell.gifting_info is null");
+        AppMethodBeat.o(88335);
         return;
       }
-      if (paramAdapterView.url.equals("card://jump_card_gift"))
+      h.qsU.e(13866, new Object[] { Integer.valueOf(6), paramAdapterView.klk.bbe().wEf.wML.wlM, p.getString(paramAdapterView.klk.bbe().wEf.wML.wlL) });
+      AppMethodBeat.o(88335);
+      return;
+    }
+    if (paramAdapterView.url.equals("card://jump_card_gift"))
+    {
+      if (this.ktX.klk.bbe().wEf == null)
       {
-        if (this.isQ.ikk.azy().sHJ == null)
-        {
-          y.e("MicroMsg.CardDetailUIContoller", "jump_card_gift mCardInfo.getDataInfo().gifting_info_cell is null");
-          return;
-        }
-        if (this.isQ.ikk.azy().sHJ.sOH == null)
-        {
-          y.e("MicroMsg.CardDetailUIContoller", "jump_card_gift mCardInfo.getDataInfo().gifting_info_cell.gifting_info is null");
-          return;
-        }
-        paramAdapterView = this.isQ;
-        paramView = this.isQ.ikk.azy().sHJ.sOH.sti;
-        paramInt = this.isQ.ikk.azy().sHJ.sOH.sth;
-        y.d("MicroMsg.CardDetailUIContoller", "doJumpCardGift, order_id:%s, biz_uin:%d", new Object[] { paramView, Integer.valueOf(paramInt) });
-        localObject = new Intent(paramAdapterView.isl, CardGiftReceiveUI.class);
-        ((Intent)localObject).putExtra("key_biz_uin", paramInt);
-        ((Intent)localObject).putExtra("key_order_id", paramView);
-        ((Intent)localObject).putExtra("key_gift_into", (CardGiftInfo)paramAdapterView.isl.getIntent().getParcelableExtra("key_card_git_info"));
-        paramAdapterView.isl.startActivity((Intent)localObject);
-        h.nFQ.f(13866, new Object[] { Integer.valueOf(5), this.isQ.ikk.azy().sHJ.sOH.sti, o.getString(this.isQ.ikk.azy().sHJ.sOH.sth) });
+        ab.e("MicroMsg.CardDetailUIContoller", "jump_card_gift mCardInfo.getDataInfo().gifting_info_cell is null");
+        AppMethodBeat.o(88335);
         return;
       }
-      if ((paramAdapterView.sJq & 0x20) > 0L)
+      if (this.ktX.klk.bbe().wEf.wML == null)
       {
-        paramAdapterView = this.isQ;
-        com.tencent.mm.plugin.card.d.b.a(paramAdapterView.isl, 4, paramAdapterView);
-        paramAdapterView.isl.gJb = paramAdapterView;
+        ab.e("MicroMsg.CardDetailUIContoller", "jump_card_gift mCardInfo.getDataInfo().gifting_info_cell.gifting_info is null");
+        AppMethodBeat.o(88335);
         return;
       }
-      if (com.tencent.mm.plugin.card.d.b.d(this.isQ.ikk.azB(), paramAdapterView.sIf, paramAdapterView.sIg, this.isQ.isN.ipv, this.isQ.isN.isT))
-      {
-        h.nFQ.f(11941, new Object[] { Integer.valueOf(21), this.isQ.ikk.azB(), this.isQ.ikk.azC(), "", paramAdapterView.title });
-        return;
-      }
-      paramView = com.tencent.mm.plugin.card.d.l.y(paramAdapterView.url, paramAdapterView.sJq);
-      com.tencent.mm.plugin.card.d.b.a(this.isQ.isl, paramView, 1);
-      h.nFQ.f(11492, new Object[] { Integer.valueOf(this.isQ.isN.ipv), this.isQ.isN.irW, this.isQ.ikk.azB(), this.isQ.ikk.azC(), Integer.valueOf(this.isQ.ikk.azy().status), paramView, Integer.valueOf(this.isQ.ikk.azx().ilo), this.isQ.ikk.azx().sIn });
-      h.nFQ.f(11941, new Object[] { Integer.valueOf(6), this.isQ.ikk.azB(), this.isQ.ikk.azC(), "", paramAdapterView.title });
-    } while (!com.tencent.mm.plugin.card.d.l.a(paramAdapterView, this.isQ.ikk.azB()));
-    paramView = this.isQ.ikk.azB();
-    paramAdapterView = paramAdapterView.title;
-    com.tencent.mm.plugin.card.d.l.yX(paramView);
-    com.tencent.mm.plugin.card.d.b.a(this.isQ.isl, this.isQ.ikk.azx().imA);
+      paramAdapterView = this.ktX;
+      paramView = this.ktX.klk.bbe().wEf.wML.wlM;
+      paramInt = this.ktX.klk.bbe().wEf.wML.wlL;
+      ab.d("MicroMsg.CardDetailUIContoller", "doJumpCardGift, order_id:%s, biz_uin:%d", new Object[] { paramView, Integer.valueOf(paramInt) });
+      localObject = new Intent(paramAdapterView.kts, CardGiftReceiveUI.class);
+      ((Intent)localObject).putExtra("key_biz_uin", paramInt);
+      ((Intent)localObject).putExtra("key_order_id", paramView);
+      ((Intent)localObject).putExtra("key_gift_into", (CardGiftInfo)paramAdapterView.kts.getIntent().getParcelableExtra("key_card_git_info"));
+      paramAdapterView.kts.startActivity((Intent)localObject);
+      h.qsU.e(13866, new Object[] { Integer.valueOf(5), this.ktX.klk.bbe().wEf.wML.wlM, p.getString(this.ktX.klk.bbe().wEf.wML.wlL) });
+      AppMethodBeat.o(88335);
+      return;
+    }
+    if ((paramAdapterView.wGZ & 0x20) > 0L)
+    {
+      paramAdapterView = this.ktX;
+      com.tencent.mm.plugin.card.d.b.a(paramAdapterView.kts, 4, paramAdapterView);
+      paramAdapterView.kts.mmSetOnActivityResultCallback(paramAdapterView);
+      AppMethodBeat.o(88335);
+      return;
+    }
+    if (com.tencent.mm.plugin.card.d.b.d(this.ktX.klk.bbh(), paramAdapterView.wFL, paramAdapterView.wFM, this.ktX.ktU.kqC, this.ktX.ktU.kua))
+    {
+      h.qsU.e(11941, new Object[] { Integer.valueOf(21), this.ktX.klk.bbh(), this.ktX.klk.bbi(), "", paramAdapterView.title });
+      AppMethodBeat.o(88335);
+      return;
+    }
+    paramView = com.tencent.mm.plugin.card.d.l.H(paramAdapterView.url, paramAdapterView.wGZ);
+    com.tencent.mm.plugin.card.d.b.a(this.ktX.kts, paramView, 1);
+    h.qsU.e(11492, new Object[] { Integer.valueOf(this.ktX.ktU.kqC), this.ktX.ktU.ktd, this.ktX.klk.bbh(), this.ktX.klk.bbi(), Integer.valueOf(this.ktX.klk.bbe().status), paramView, Integer.valueOf(this.ktX.klk.bbd().iFL), this.ktX.klk.bbd().wFW });
+    h.qsU.e(11941, new Object[] { Integer.valueOf(6), this.ktX.klk.bbh(), this.ktX.klk.bbi(), "", paramAdapterView.title });
+    if (com.tencent.mm.plugin.card.d.l.a(paramAdapterView, this.ktX.klk.bbh()))
+    {
+      com.tencent.mm.plugin.card.d.l.IG(this.ktX.klk.bbh());
+      com.tencent.mm.plugin.card.d.b.b(this.ktX.kts, this.ktX.klk.bbd().knw);
+    }
+    AppMethodBeat.o(88335);
   }
 }
 

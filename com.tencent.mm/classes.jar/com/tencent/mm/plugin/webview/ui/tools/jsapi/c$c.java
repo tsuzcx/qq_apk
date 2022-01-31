@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 public abstract class c$c
   implements c.a
 {
-  public boolean rxy = true;
+  public boolean vor = true;
   
-  public void TM(String paramString) {}
+  public void aiR(String paramString) {}
   
-  public boolean cfV()
+  public boolean dgh()
   {
-    return this.rxy;
+    return this.vor;
   }
   
-  public final void ls(boolean paramBoolean)
+  public final void oB(boolean paramBoolean)
   {
-    this.rxy = paramBoolean;
+    this.vor = paramBoolean;
   }
 }
 

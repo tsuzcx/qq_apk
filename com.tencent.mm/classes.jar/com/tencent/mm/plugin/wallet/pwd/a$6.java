@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet.pwd;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 final class a$6
@@ -11,16 +12,18 @@ final class a$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.qoe.b(this.qlW, a.g(this.qoe));
-    if (this.qlW.aSk()) {
-      this.qlW.finish();
+    AppMethodBeat.i(46136);
+    this.tXB.b(this.tVi, a.g(this.tXB));
+    if (this.tVi.isTransparent()) {
+      this.tVi.finish();
     }
-    WalletBaseUI.cNh();
+    this.tVi.clearErr();
+    AppMethodBeat.o(46136);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.6
  * JD-Core Version:    0.7.0.1
  */

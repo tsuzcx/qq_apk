@@ -2,30 +2,39 @@ package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
 import android.app.Dialog;
 import android.widget.Toast;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vending.g.d.a;
 
 final class WalletLqtDetailUI$1
   implements d.a
 {
-  WalletLqtDetailUI$1(WalletLqtDetailUI paramWalletLqtDetailUI) {}
+  WalletLqtDetailUI$1(WalletLqtDetailUI paramWalletLqtDetailUI, int paramInt) {}
   
-  public final void aE(Object paramObject)
+  public final void aX(Object paramObject)
   {
-    if (WalletLqtDetailUI.a(this.qil) != null) {
-      WalletLqtDetailUI.a(this.qil).dismiss();
+    AppMethodBeat.i(45522);
+    if (WalletLqtDetailUI.a(this.tPQ) != null) {
+      WalletLqtDetailUI.a(this.tPQ).dismiss();
     }
-    y.i("MicroMsg.WalletLqtDetailUI", "fetch detail failed: %s", new Object[] { paramObject });
+    ab.i("MicroMsg.WalletLqtDetailUI", "fetch detail failed: %s", new Object[] { paramObject });
+    int i = this.oxU - 1;
+    if (i > 0)
+    {
+      WalletLqtDetailUI.a(this.tPQ, i);
+      AppMethodBeat.o(45522);
+      return;
+    }
     if (paramObject != null) {
       if (!(paramObject instanceof String)) {
-        break label64;
+        break label99;
       }
     }
-    label64:
-    for (paramObject = paramObject.toString();; paramObject = this.qil.getString(a.i.wallet_lqt_network_error))
+    label99:
+    for (paramObject = paramObject.toString();; paramObject = this.tPQ.getString(2131305218))
     {
-      Toast.makeText(this.qil, paramObject, 1).show();
+      Toast.makeText(this.tPQ, paramObject, 1).show();
+      AppMethodBeat.o(45522);
       return;
     }
   }

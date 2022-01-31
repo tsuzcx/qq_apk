@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ExdeviceConnectWifiUI$3$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class ExdeviceConnectWifiUI$3$1
   
   public final void run()
   {
-    this.jCC.jCy.showVKB();
+    AppMethodBeat.i(19873);
+    this.lLZ.lLW.showVKB();
+    AppMethodBeat.o(19873);
   }
 }
 

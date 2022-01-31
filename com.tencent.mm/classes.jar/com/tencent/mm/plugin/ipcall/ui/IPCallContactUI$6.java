@@ -5,9 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class IPCallContactUI$6
   implements AdapterView.OnItemClickListener
@@ -16,20 +15,25 @@ final class IPCallContactUI$6
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (IPCallContactUI.d(this.luU).sk(paramInt)) {}
-    do
+    AppMethodBeat.i(22080);
+    if (IPCallContactUI.d(this.nSm).xj(paramInt))
     {
+      AppMethodBeat.o(22080);
       return;
-      paramAdapterView = IPCallContactUI.d(this.luU).sK(paramInt);
-    } while (paramAdapterView == null);
-    if (!IPCallContactUI.e(this.luU)) {
-      h.nFQ.f(12767, new Object[] { Integer.valueOf(2) });
     }
-    paramView = new Intent(this.luU.mController.uMN, IPCallUserProfileUI.class);
-    paramView.putExtra("IPCallProfileUI_contactid", paramAdapterView.field_contactId);
-    paramView.putExtra("IPCallProfileUI_systemUsername", paramAdapterView.field_systemAddressBookUsername);
-    paramView.putExtra("IPCallProfileUI_wechatUsername", paramAdapterView.field_wechatUsername);
-    this.luU.mController.uMN.startActivity(paramView);
+    paramAdapterView = IPCallContactUI.d(this.nSm).xM(paramInt);
+    if (paramAdapterView != null)
+    {
+      if (!IPCallContactUI.e(this.nSm)) {
+        h.qsU.e(12767, new Object[] { Integer.valueOf(2) });
+      }
+      paramView = new Intent(this.nSm.getContext(), IPCallUserProfileUI.class);
+      paramView.putExtra("IPCallProfileUI_contactid", paramAdapterView.field_contactId);
+      paramView.putExtra("IPCallProfileUI_systemUsername", paramAdapterView.field_systemAddressBookUsername);
+      paramView.putExtra("IPCallProfileUI_wechatUsername", paramAdapterView.field_wechatUsername);
+      this.nSm.getContext().startActivity(paramView);
+    }
+    AppMethodBeat.o(22080);
   }
 }
 

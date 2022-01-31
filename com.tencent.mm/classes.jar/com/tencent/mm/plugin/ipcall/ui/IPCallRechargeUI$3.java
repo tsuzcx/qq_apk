@@ -2,24 +2,28 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.os.Message;
 import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class IPCallRechargeUI$3
-  extends ah
+  extends ak
 {
   IPCallRechargeUI$3(IPCallRechargeUI paramIPCallRechargeUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(22253);
     switch (paramMessage.what)
     {
     default: 
-      y.w("MicroMsg.IPCallRechargeUI", "unknow message, cannt handle.");
+      ab.w("MicroMsg.IPCallRechargeUI", "unknow message, cannt handle.");
+      AppMethodBeat.o(22253);
       return;
     }
-    this.lxJ.lxF.setVisibility(0);
-    IPCallRechargeUI.k(this.lxJ);
+    this.nUW.nUS.setVisibility(0);
+    IPCallRechargeUI.k(this.nUW);
+    AppMethodBeat.o(22253);
   }
 }
 

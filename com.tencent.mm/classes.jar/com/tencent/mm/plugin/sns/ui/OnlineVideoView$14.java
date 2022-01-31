@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.widget.ProgressBar;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 final class OnlineVideoView$14
@@ -11,16 +12,18 @@ final class OnlineVideoView$14
   
   public final void run()
   {
-    if ((OnlineVideoView.h(this.oRM) != null) && (OnlineVideoView.h(this.oRM).getVisibility() != 8))
+    AppMethodBeat.i(38403);
+    if ((OnlineVideoView.g(this.rJD) != null) && (OnlineVideoView.g(this.rJD).getVisibility() != 8))
     {
-      y.i("MicroMsg.OnlineVideoView", "%d hide loading.", new Object[] { Integer.valueOf(this.oRM.hashCode()) });
-      OnlineVideoView.h(this.oRM).setVisibility(8);
+      ab.i("MicroMsg.OnlineVideoView", "%d hide loading.", new Object[] { Integer.valueOf(this.rJD.hashCode()) });
+      OnlineVideoView.g(this.rJD).setVisibility(8);
     }
-    if ((OnlineVideoView.i(this.oRM) != null) && (OnlineVideoView.i(this.oRM).getVisibility() != 8))
+    if ((OnlineVideoView.h(this.rJD) != null) && (OnlineVideoView.h(this.rJD).getVisibility() != 8))
     {
-      y.i("MicroMsg.OnlineVideoView", "%d hide progress.", new Object[] { Integer.valueOf(this.oRM.hashCode()) });
-      OnlineVideoView.i(this.oRM).setVisibility(8);
+      ab.i("MicroMsg.OnlineVideoView", "%d hide progress.", new Object[] { Integer.valueOf(this.rJD.hashCode()) });
+      OnlineVideoView.h(this.rJD).setVisibility(8);
     }
+    AppMethodBeat.o(38403);
   }
 }
 

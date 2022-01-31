@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="bottom|center" android:id="@id/dxu" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/mv" android:layout_marginTop="@dimen/mx" android:src="@color/a1y" />
-    <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/a0_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</merge>

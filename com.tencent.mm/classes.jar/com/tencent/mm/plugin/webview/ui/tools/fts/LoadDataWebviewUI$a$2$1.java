@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class LoadDataWebviewUI$a$2$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class LoadDataWebviewUI$a$2$1
   
   public final void run()
   {
-    LoadDataWebviewUI.a.a(this.rvb.ruZ, this.rvb.ruX, this.rvb.val$url);
+    AppMethodBeat.i(8550);
+    LoadDataWebviewUI.a.a(this.vlq.vlo, this.vlq.vlm, this.vlq.val$url);
+    AppMethodBeat.o(8550);
   }
 }
 

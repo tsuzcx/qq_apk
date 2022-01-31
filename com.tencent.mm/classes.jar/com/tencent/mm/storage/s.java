@@ -3,173 +3,247 @@ package com.tencent.mm.storage;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
-import com.tencent.mm.ae.i;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.h.c.as;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.bd.b;
-import com.tencent.mm.n.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.l;
+import com.tencent.mm.af.p;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.bf.b;
+import com.tencent.mm.plugin.expt.a.a.a;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Map;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class s
 {
-  private static int igH = 0;
-  private static String unh = null;
-  private static long uni = 0L;
-  private static Boolean unj = null;
+  private static int cnU = 0;
+  private static String ywS = null;
+  private static long ywT = 0L;
+  private static boolean ywU = false;
+  private static Boolean ywV = null;
   
-  public static void Fj(int paramInt)
+  public static void Np(int paramInt)
   {
-    igH = paramInt;
+    cnU = paramInt;
   }
   
-  private static long U(long paramLong1, long paramLong2)
+  public static boolean aWl()
+  {
+    AppMethodBeat.i(11902);
+    if (ywV != null)
+    {
+      bool = ywV.booleanValue();
+      AppMethodBeat.o(11902);
+      return bool;
+    }
+    int i = as.eu("brandService", 1).decodeInt("BizTimeLineOpenStatus", -1);
+    if (i == 1) {
+      ywV = Boolean.TRUE;
+    }
+    while (ywV != null)
+    {
+      bool = ywV.booleanValue();
+      AppMethodBeat.o(11902);
+      return bool;
+      if (i == 0) {
+        ywV = Boolean.FALSE;
+      }
+    }
+    if ((((Integer)g.RL().Ru().get(ac.a.yKe, Integer.valueOf(0))).intValue() & 0x1) > 0)
+    {
+      ywV = Boolean.TRUE;
+      ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "BizTimeLineOpen migrated user");
+      bool = ywV.booleanValue();
+      AppMethodBeat.o(11902);
+      return bool;
+    }
+    i = com.tencent.mm.aj.z.afo().dwi();
+    if (i > 20000)
+    {
+      ywV = Boolean.FALSE;
+      ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "BizTimeLineOpen too match data totalCount %d", new Object[] { Integer.valueOf(i) });
+      bool = ywV.booleanValue();
+      AppMethodBeat.o(11902);
+      return bool;
+    }
+    if (((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lUv, 1) == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ywV = Boolean.valueOf(bool);
+      ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "isBizTimeLineOpen open %b", new Object[] { ywV });
+      bool = ywV.booleanValue();
+      AppMethodBeat.o(11902);
+      return bool;
+    }
+  }
+  
+  private static long ai(long paramLong1, long paramLong2)
   {
     long l2 = -1L;
-    String str = (String)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uzp, "");
+    AppMethodBeat.i(11899);
+    String str = (String)g.RL().Ru().get(ac.a.yKd, "");
     long l1 = l2;
-    if (!bk.bl(str))
+    if (!bo.isNullOrNil(str))
     {
       String[] arrayOfString = str.split(":");
       l1 = l2;
       if (arrayOfString.length == 2)
       {
         l1 = l2;
-        if (bk.getLong(arrayOfString[0], -1L) == paramLong1) {
-          l1 = paramLong2 - bk.getLong(arrayOfString[1], -1L);
+        if (bo.getLong(arrayOfString[0], -1L) == paramLong1) {
+          l1 = paramLong2 - bo.getLong(arrayOfString[1], -1L);
         }
       }
     }
     if (l1 < 0L)
     {
+      l1 = 604800L;
       str = paramLong1 + ":" + (paramLong2 - 604800L);
-      com.tencent.mm.kernel.g.DP().Dz().c(ac.a.uzp, str);
-      y.d("MicroMsg.BizTimeLineInfoStorageLogic", "getSerialNumber set groupStartTime %s,createTime %d", new Object[] { str, Long.valueOf(paramLong2) });
-      return 604800L;
+      g.RL().Ru().set(ac.a.yKd, str);
+      ab.d("MicroMsg.BizTimeLineInfoStorageLogic", "getSerialNumber set groupStartTime %s,createTime %d", new Object[] { str, Long.valueOf(paramLong2) });
     }
-    y.i("MicroMsg.BizTimeLineInfoStorageLogic", "getSerialNumber groupStartTime %s,createTime %d", new Object[] { str, Long.valueOf(paramLong2) });
-    return l1;
-  }
-  
-  private static boolean a(bi parambi, int paramInt1, int paramInt2)
-  {
-    return ((parambi.ctz()) || (parambi.getType() == 1) || (parambi.getType() == 34) || (parambi.getType() == 3)) && ((paramInt1 == 3) || (paramInt2 == 9) || (paramInt2 == 15) || (paramInt2 == 17));
-  }
-  
-  public static void aaK(String paramString)
-  {
-    unh = paramString;
-  }
-  
-  public static void ag(bi parambi)
-  {
-    if (parambi == null) {}
-    ad localad;
-    int k;
-    int j;
-    int i;
-    long l1;
-    boolean bool1;
-    do
+    for (paramLong1 = l1;; paramLong1 = l1)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((i.gr(parambi.field_talker)) || (com.tencent.mm.model.s.fn(parambi.field_talker)));
-        localad = ((j)com.tencent.mm.kernel.g.r(j.class)).Fw().abl(parambi.field_talker);
-      } while ((localad != null) && (a.gR(localad.field_type)) && (!localad.cua()));
-      k = 0;
-      j = -1;
-      i = 0;
-      l1 = 0L;
-      bool1 = false;
-      bool2 = false;
-      localObject1 = com.tencent.mm.model.bd.iM(parambi.czr);
-      if (localObject1 != null)
-      {
-        k = ((bd.b)localObject1).dWw;
-        j = ((bd.b)localObject1).dWx;
-        i = ((bd.b)localObject1).dWy;
-        l1 = ((bd.b)localObject1).dWB;
-        bool1 = bool2;
-        if ((((bd.b)localObject1).dWC & 0x8) != 0L) {
-          bool1 = true;
-        }
-        if ((((bd.b)localObject1).dWC & 0x4) != 0L)
-        {
-          y.i("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg not allow to insert,talker %s bizFlag = %d", new Object[] { parambi.field_talker, Long.valueOf(((bd.b)localObject1).dWC) });
-          return;
-        }
+      AppMethodBeat.o(11899);
+      return paramLong1;
+      ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "getSerialNumber groupStartTime %s,createTime %d", new Object[] { str, Long.valueOf(paramLong2) });
+    }
+  }
+  
+  public static void an(bi parambi)
+  {
+    AppMethodBeat.i(11894);
+    if (parambi == null)
+    {
+      AppMethodBeat.o(11894);
+      return;
+    }
+    if (l.na(parambi.field_talker))
+    {
+      AppMethodBeat.o(11894);
+      return;
+    }
+    if (com.tencent.mm.model.t.lA(parambi.field_talker))
+    {
+      AppMethodBeat.o(11894);
+      return;
+    }
+    ad localad = ((j)g.E(j.class)).YA().arw(parambi.field_talker);
+    if ((localad != null) && (com.tencent.mm.n.a.je(localad.field_type)) && (!localad.dwz()))
+    {
+      AppMethodBeat.o(11894);
+      return;
+    }
+    int m = 0;
+    int k = -1;
+    int j = 0;
+    long l1 = 0L;
+    boolean bool1 = false;
+    boolean bool2 = false;
+    int i = 0;
+    int n = 0;
+    Object localObject1 = bf.pA(parambi.dns);
+    if (localObject1 != null)
+    {
+      m = ((bf.b)localObject1).fmE;
+      k = ((bf.b)localObject1).fmF;
+      j = ((bf.b)localObject1).fmG;
+      l1 = ((bf.b)localObject1).fmJ;
+      bool1 = bool2;
+      if ((((bf.b)localObject1).fmK & 0x8) != 0L) {
+        bool1 = true;
       }
-    } while (j != 0);
-    boolean bool2 = a(parambi, k, i);
-    y.i("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg %s, isTimeLine %b", new Object[] { parambi.field_talker, Boolean.valueOf(bool2) });
-    if (!bool2)
-    {
-      if (bk.isEqual(parambi.field_talker, unh))
+      i = n;
+      if ((((bf.b)localObject1).fmK & 0x10) != 0L) {
+        i = 1;
+      }
+      if ((((bf.b)localObject1).fmK & 0x4) != 0L)
       {
-        y.v("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg is currentTalker %s, just return.", new Object[] { unh });
+        ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg not allow to insert,talker %s bizFlag = %d", new Object[] { parambi.field_talker, Long.valueOf(((bf.b)localObject1).fmK) });
+        AppMethodBeat.o(11894);
         return;
       }
-      localObject2 = com.tencent.mm.ai.z.MF();
-      l1 = parambi.field_msgSvrId;
-      localObject1 = new q();
-      localObject2 = ((t)localObject2).dXo.a("BizTimeLineSingleMsgInfo", null, "msgSvrId" + "=?", new String[] { String.valueOf(l1) }, null, null, null, 2);
-      if (((Cursor)localObject2).moveToFirst())
-      {
-        ((q)localObject1).d((Cursor)localObject2);
-        ((Cursor)localObject2).close();
-        if (localObject1 != null) {
-          break label501;
-        }
+    }
+    if (k != 0)
+    {
+      AppMethodBeat.o(11894);
+      return;
+    }
+    if ((parambi.getType() == 34) || (parambi.getType() == 3)) {
+      ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "alvinluo doInsertBizTimeLineMsg msg: %d not timeline", new Object[] { Integer.valueOf(parambi.getType()) });
+    }
+    for (bool2 = false;; bool2 = b(parambi, m, j))
+    {
+      ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg %s, isTimeLine %b", new Object[] { parambi.field_talker, Boolean.valueOf(bool2) });
+      if (bool2) {
+        break label660;
       }
-      label501:
-      for (localObject2 = new q();; localObject2 = localObject1)
-      {
-        ((q)localObject2).field_msgId = parambi.field_msgId;
-        ((q)localObject2).field_msgSvrId = parambi.field_msgSvrId;
-        ((q)localObject2).field_content = parambi.field_content;
-        ((q)localObject2).field_type = parambi.getType();
-        ((q)localObject2).field_talker = parambi.field_talker;
-        ((q)localObject2).field_talkerId = parambi.field_talkerId;
-        ((q)localObject2).field_createTime = parambi.field_createTime;
-        ((q)localObject2).field_imgPath = parambi.field_imgPath;
-        ((q)localObject2).ff(parambi.czq);
-        ((q)localObject2).cY(parambi.czr);
-        ((q)localObject2).field_status = parambi.field_status;
-        if (localObject1 != null) {
-          break label508;
-        }
-        com.tencent.mm.ai.z.MF().g((q)localObject2);
-        return;
-        ((Cursor)localObject2).close();
-        localObject1 = null;
+      if (!bo.isEqual(parambi.field_talker, ywS)) {
         break;
       }
-      label508:
-      com.tencent.mm.ai.z.MF().h((q)localObject2);
+      ab.v("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg is currentTalker %s, just return.", new Object[] { ywS });
+      AppMethodBeat.o(11894);
       return;
     }
-    if ((localObject1 != null) && ((((bd.b)localObject1).dWC & 0x2) != 0L))
+    Object localObject2 = com.tencent.mm.aj.z.afp();
+    l1 = parambi.field_msgSvrId;
+    localObject1 = new q();
+    localObject2 = ((t)localObject2).fnw.a("BizTimeLineSingleMsgInfo", null, "msgSvrId" + "=?", new String[] { String.valueOf(l1) }, null, null, null, 2);
+    if (((Cursor)localObject2).moveToFirst())
     {
-      y.i("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg not allow to insert,talker %s bizFlag = %d", new Object[] { parambi.field_talker, Long.valueOf(((bd.b)localObject1).dWC) });
+      ((q)localObject1).convertFrom((Cursor)localObject2);
+      ((Cursor)localObject2).close();
+      if (localObject1 != null) {
+        break label637;
+      }
+    }
+    label637:
+    for (localObject2 = new q();; localObject2 = localObject1)
+    {
+      ((q)localObject2).field_msgId = parambi.field_msgId;
+      ((q)localObject2).field_msgSvrId = parambi.field_msgSvrId;
+      ((q)localObject2).field_content = parambi.field_content;
+      ((q)localObject2).field_type = parambi.getType();
+      ((q)localObject2).field_talker = parambi.field_talker;
+      ((q)localObject2).field_talkerId = parambi.field_talkerId;
+      ((q)localObject2).field_createTime = parambi.field_createTime;
+      ((q)localObject2).field_imgPath = parambi.field_imgPath;
+      ((q)localObject2).hr(parambi.dnr);
+      ((q)localObject2).jl(parambi.dns);
+      ((q)localObject2).field_status = parambi.field_status;
+      if (localObject1 != null) {
+        break label644;
+      }
+      com.tencent.mm.aj.z.afp().h((q)localObject2);
+      AppMethodBeat.o(11894);
+      return;
+      ((Cursor)localObject2).close();
+      localObject1 = null;
+      break;
+    }
+    label644:
+    com.tencent.mm.aj.z.afp().i((q)localObject2);
+    AppMethodBeat.o(11894);
+    return;
+    label660:
+    if ((localObject1 != null) && ((((bf.b)localObject1).fmK & 0x2) != 0L))
+    {
+      ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg not allow to insert,talker %s bizFlag = %d", new Object[] { parambi.field_talker, Long.valueOf(((bf.b)localObject1).fmK) });
+      AppMethodBeat.o(11894);
       return;
     }
-    Object localObject2 = com.tencent.mm.ai.z.ME().D(parambi.field_msgSvrId, "msgSvrId");
-    if (localObject2 == null) {}
-    long l3;
-    long l2;
-    for (Object localObject1 = new q();; localObject1 = localObject2)
+    localObject2 = com.tencent.mm.aj.z.afo().C(parambi.field_msgSvrId, "msgSvrId");
+    if (localObject2 == null)
     {
+      localObject1 = new q();
       ((q)localObject1).field_msgId = parambi.field_msgId;
       ((q)localObject1).field_msgSvrId = parambi.field_msgSvrId;
       ((q)localObject1).field_content = parambi.field_content;
@@ -178,246 +252,307 @@ public final class s
       ((q)localObject1).field_talkerId = parambi.field_talkerId;
       ((q)localObject1).field_createTime = parambi.field_createTime;
       ((q)localObject1).field_imgPath = parambi.field_imgPath;
-      ((q)localObject1).ff(parambi.czq);
-      ((q)localObject1).cY(parambi.czr);
-      ((q)localObject1).field_status = parambi.field_status;
-      if (localObject2 != null) {
-        break label932;
+      ((q)localObject1).hr(parambi.dnr);
+      ((q)localObject1).jl(parambi.dns);
+      if (!aWl()) {
+        break label1020;
       }
-      ((q)localObject1).field_hasShow = 0;
+      ((q)localObject1).field_status = parambi.field_status;
+    }
+    long l3;
+    long l2;
+    for (((q)localObject1).field_hasShow = 0;; ((q)localObject1).field_hasShow = 1)
+    {
+      if (i != 0) {
+        ((q)localObject1).dwa();
+      }
+      if (localObject2 != null) {
+        break label1149;
+      }
       ((q)localObject1).field_isExpand = bool1;
-      l3 = com.tencent.mm.ai.z.ME().cty();
-      long l4 = U(l3, ((q)localObject1).field_createTime / 1000L);
+      l3 = com.tencent.mm.aj.z.afo().dvU();
+      long l4 = ai(l3, ((q)localObject1).field_createTime / 1000L);
       l2 = l4;
       if (l4 >= 4294967296L)
       {
-        y.w("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg serialNumber is too big %d", new Object[] { Long.valueOf(l4) });
-        l3 = com.tencent.mm.ai.z.ME().ctH();
-        l2 = U(l3, ((q)localObject1).field_createTime / 1000L);
+        ab.w("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg serialNumber is too big %d", new Object[] { Long.valueOf(l4) });
+        l3 = com.tencent.mm.aj.z.afo().dwg();
+        l2 = ai(l3, ((q)localObject1).field_createTime / 1000L);
       }
-      for (((q)localObject1).field_orderFlag = (l1 << 24 & 0xFF000000 | l3 << 32 | l2); com.tencent.mm.ai.z.ME().D(((q)localObject1).field_orderFlag, "orderFlag") != null; ((q)localObject1).field_orderFlag += 1L) {}
+      for (((q)localObject1).field_orderFlag = (l1 << 24 & 0xFF000000 | l3 << 32 | l2); com.tencent.mm.aj.z.afo().C(((q)localObject1).field_orderFlag, "orderFlag") != null; ((q)localObject1).field_orderFlag += 1L) {}
+      localObject1 = localObject2;
+      break;
+      label1020:
+      ((q)localObject1).field_status = 4;
     }
-    if ((localad != null) && (localad.Bl())) {}
+    if ((localad != null) && (localad.Oa())) {}
     for (((q)localObject1).field_placeTop = 1;; ((q)localObject1).field_placeTop = 0)
     {
-      com.tencent.mm.ai.z.ME().g((q)localObject1);
-      y.v("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg groupId %d, serialNumber %d,orderFlag %d", new Object[] { Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(((q)localObject1).field_orderFlag) });
+      com.tencent.mm.aj.z.afo().h((q)localObject1);
+      if (!ywU)
+      {
+        ywU = true;
+        d.ysm.b(new s.1(), "BizTimeLineInfoStorageThread", 1000L);
+      }
+      ab.v("MicroMsg.BizTimeLineInfoStorageLogic", "doInsertBizTimeLineMsg groupId %d, serialNumber %d,orderFlag %d", new Object[] { Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(((q)localObject1).field_orderFlag) });
+      AppMethodBeat.o(11894);
       return;
     }
-    label932:
-    com.tencent.mm.ai.z.ME().h((q)localObject1);
+    label1149:
+    com.tencent.mm.aj.z.afo().i((q)localObject1);
+    AppMethodBeat.o(11894);
   }
   
-  public static void ah(bi parambi)
+  public static void ao(bi parambi)
   {
-    if (parambi == null) {
+    AppMethodBeat.i(11898);
+    if (parambi == null)
+    {
+      AppMethodBeat.o(11898);
       return;
     }
-    com.tencent.mm.ai.z.ME().hz(parambi.field_msgId);
+    com.tencent.mm.aj.z.afo().og(parambi.field_msgId);
+    AppMethodBeat.o(11898);
   }
   
-  public static void ctK()
+  private static p ap(bi parambi)
   {
-    if (!ctL()) {
+    AppMethodBeat.i(151392);
+    if (parambi.dvV())
+    {
+      parambi = ((com.tencent.mm.plugin.biz.a.a)g.E(com.tencent.mm.plugin.biz.a.a.class)).b(parambi.field_msgId, parambi.field_content);
+      AppMethodBeat.o(151392);
+      return parambi;
+    }
+    AppMethodBeat.o(151392);
+    return null;
+  }
+  
+  public static void aqU(String paramString)
+  {
+    ywS = paramString;
+  }
+  
+  private static boolean b(bi parambi, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(11895);
+    if ((paramInt1 == 3) || (paramInt2 == 9) || (paramInt2 == 15) || (paramInt2 == 17))
+    {
+      if (parambi.getType() == 1)
+      {
+        AppMethodBeat.o(11895);
+        return true;
+      }
+      if (parambi.dvV())
+      {
+        parambi = ap(parambi);
+        if ((parambi != null) && (!bo.es(parambi.fjy)))
+        {
+          AppMethodBeat.o(11895);
+          return true;
+        }
+        AppMethodBeat.o(11895);
+        return false;
+      }
+    }
+    AppMethodBeat.o(11895);
+    return false;
+  }
+  
+  public static void dwk()
+  {
+    AppMethodBeat.i(11900);
+    if (!aWl())
+    {
+      AppMethodBeat.o(11900);
       return;
     }
-    be localbe = ((j)com.tencent.mm.kernel.g.r(j.class)).FB();
-    ak localak = localbe.abv("officialaccounts");
+    be localbe = ((j)g.E(j.class)).YF();
+    ak localak = localbe.arH("officialaccounts");
     if (localak == null) {
       localak = new ak("officialaccounts");
     }
     for (boolean bool = true;; bool = false)
     {
-      int i = com.tencent.mm.ai.z.ME().ctF();
-      Object localObject2 = com.tencent.mm.ai.z.MF().dXo.a("SELECT * FROM BizTimeLineSingleMsgInfo order by createTime DESC limit 1", null, 0);
+      Object localObject2 = com.tencent.mm.aj.z.afp().fnw.a("SELECT * FROM BizTimeLineSingleMsgInfo order by createTime DESC limit 1", null, 0);
       Object localObject1 = null;
       if (((Cursor)localObject2).moveToFirst())
       {
         localObject1 = new q();
-        ((q)localObject1).d((Cursor)localObject2);
+        ((q)localObject1).convertFrom((Cursor)localObject2);
       }
       ((Cursor)localObject2).close();
-      Object localObject3 = com.tencent.mm.ai.z.ME().ctD();
-      label131:
-      long l2;
-      label143:
-      int j;
+      Object localObject3 = com.tencent.mm.aj.z.afo().dwc();
+      long l1;
       if (localObject1 != null)
       {
         l1 = ((q)localObject1).field_createTime;
         if (localObject3 == null) {
-          break label242;
+          break label781;
         }
-        l2 = ((q)localObject3).field_createTime;
-        localak.gU(32);
-        j = com.tencent.mm.ai.z.MF().aAo();
-        if ((j <= 0) || (i <= 0)) {
-          break label268;
-        }
-        if (l1 <= l2) {
-          break label248;
-        }
-        localak.gU(16);
-        localak.fy(j);
-        localObject2 = localObject1;
       }
-      for (;;)
+      label781:
+      for (int i = com.tencent.mm.aj.z.afo().of(((q)localObject3).field_orderFlag);; i = 0)
       {
-        if ((localObject2 != null) && (((q)localObject2).field_msgId != 0L)) {
-          break label312;
-        }
-        y.w("MicroMsg.BizTimeLineInfoStorageLogic", "doUpdateBizMainCell BizTimeLineInfo is null");
-        localak.cuB();
-        if (bool) {
-          break;
-        }
-        localbe.a(localak, localak.field_username);
-        return;
-        l1 = 0L;
-        break label131;
-        label242:
-        l2 = 0L;
-        break label143;
-        label248:
-        localak.gT(16);
-        localak.fy(i);
-        localObject2 = localObject3;
-        continue;
-        label268:
-        if (j > 0)
+        long l2;
+        label165:
+        int j;
+        if (localObject3 != null)
         {
-          localak.gU(16);
-          localak.fy(j);
+          l2 = ((q)localObject3).field_createTime;
+          localak.jh(32);
+          j = com.tencent.mm.aj.z.afp().bbZ();
+          if ((j <= 0) || (i <= 0)) {
+            break label296;
+          }
+          if (l1 <= l2) {
+            break label276;
+          }
+          localak.jh(16);
+          localak.hJ(j);
           localObject2 = localObject1;
+        }
+        for (;;)
+        {
+          if ((localObject2 != null) && (((q)localObject2).field_msgId != 0L)) {
+            break label340;
+          }
+          ab.w("MicroMsg.BizTimeLineInfoStorageLogic", "doUpdateBizMainCell BizTimeLineInfo is null");
+          localak.dxc();
+          if (!bool) {
+            localbe.a(localak, localak.field_username);
+          }
+          AppMethodBeat.o(11900);
+          return;
+          l1 = 0L;
+          break;
+          l2 = 0L;
+          break label165;
+          label276:
+          localak.jg(16);
+          localak.hJ(i);
+          localObject2 = localObject3;
+          continue;
+          label296:
+          if (j > 0)
+          {
+            localak.jh(16);
+            localak.hJ(j);
+            localObject2 = localObject1;
+          }
+          else
+          {
+            localak.jg(16);
+            localak.hJ(i);
+            localObject2 = localObject3;
+          }
+        }
+        label340:
+        if ((localObject2 == localObject3) && (((q)localObject2).field_placeTop == 1)) {
+          localak.jg(32);
+        }
+        long l3;
+        if (localObject2 == localObject1)
+        {
+          l3 = ((q)localObject2).field_msgId;
+          if (ywT == 0L) {
+            ywT = ah.dsQ().getLong("biz_time_line_last_notify_msg_id", -1L);
+          }
+          if (l3 == ywT) {
+            localak.jh(64);
+          }
         }
         else
         {
-          localak.gT(16);
-          localak.fy(i);
-          localObject2 = localObject3;
+          localObject1 = ((j)g.E(j.class)).bPQ().kB(((q)localObject2).field_msgId);
+          if (((dd)localObject1).field_msgId <= 0L) {
+            break label734;
+          }
+          localak.aq((bi)localObject1);
+          localak.setContent(((dd)localObject1).field_talker + ":" + ((dd)localObject1).field_content);
+          localak.jV(Integer.toString(((bi)localObject1).getType()));
+          localObject2 = localbe.BX();
+          if (localObject2 != null)
+          {
+            localObject3 = new PString();
+            PString localPString = new PString();
+            PInt localPInt = new PInt();
+            ((bi)localObject1).kj("officialaccounts");
+            ((bi)localObject1).setContent(localak.field_content);
+            ((be.b)localObject2).a((bi)localObject1, (PString)localObject3, localPString, localPInt, true);
+            localak.jW(((PString)localObject3).value);
+            localak.jX(localPString.value);
+            localak.hM(localPInt.value);
+          }
+          label614:
+          l3 = l2;
+          if (l1 > l2) {
+            l3 = l1;
+          }
+          localak.fK(l3);
+          if (!bool) {
+            break label762;
+          }
         }
-      }
-      label312:
-      if ((localObject2 == localObject3) && (((q)localObject2).field_placeTop == 1)) {
-        localak.gT(32);
-      }
-      long l3;
-      if (localObject2 == localObject1)
-      {
-        l3 = ((q)localObject2).field_msgId;
-        if (uni == 0L) {
-          uni = ae.cqS().getLong("biz_time_line_last_notify_msg_id", -1L);
-        }
-        if (l3 == uni) {
-          localak.gU(64);
-        }
-      }
-      else
-      {
-        localObject1 = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().fd(((q)localObject2).field_msgId);
-        if (((cs)localObject1).field_msgId <= 0L) {
-          break label669;
-        }
-        localak.ai((bi)localObject1);
-        localak.setContent(((cs)localObject1).field_talker + ":" + ((cs)localObject1).field_content);
-        localak.dP(Integer.toString(((bi)localObject1).getType()));
-        localObject2 = localbe.tt();
-        if (localObject2 != null)
+        label734:
+        label762:
+        for (l1 = localbe.d(localak);; l1 = localbe.a(localak, localak.field_username))
         {
-          localObject3 = new PString();
-          PString localPString = new PString();
-          PInt localPInt = new PInt();
-          ((bi)localObject1).ec("officialaccounts");
-          ((bi)localObject1).setContent(localak.field_content);
-          ((be.b)localObject2).a((bi)localObject1, (PString)localObject3, localPString, localPInt, true);
-          localak.dQ(((PString)localObject3).value);
-          localak.dR(localPString.value);
-          localak.fB(localPInt.value);
-        }
-        label586:
-        l3 = l2;
-        if (l1 > l2) {
-          l3 = l1;
-        }
-        localak.ba(l3);
-        if (!bool) {
-          break label697;
+          l2 = ((dd)localObject1).field_msgId;
+          localObject1 = as.eu("brandService", 1);
+          if (localObject1 != null) {
+            ((as)localObject1).encode("LastMsgId", l2);
+          }
+          ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "doUpdateBizMainCell ret %d, shouldOfInsert %b, time %d", new Object[] { Long.valueOf(l1), Boolean.valueOf(bool), Long.valueOf(localak.field_conversationTime) });
+          AppMethodBeat.o(11900);
+          return;
+          localak.jg(64);
+          break;
+          localak.dxc();
+          ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "lastOfMsg is null or MsgId <= 0, lastTalker is %s", new Object[] { ((q)localObject2).field_talker });
+          break label614;
         }
       }
-      label669:
-      label697:
-      for (long l1 = localbe.d(localak);; l1 = localbe.a(localak, localak.field_username))
-      {
-        y.i("MicroMsg.BizTimeLineInfoStorageLogic", "doUpdateBizMainCell ret %d, shouldOfInsert %b, time %d", new Object[] { Long.valueOf(l1), Boolean.valueOf(bool), Long.valueOf(localak.field_conversationTime) });
-        return;
-        localak.gT(64);
-        break;
-        localak.cuB();
-        y.i("MicroMsg.BizTimeLineInfoStorageLogic", "lastOfMsg is null or MsgId <= 0, lastTalker is %s", new Object[] { ((q)localObject2).field_talker });
-        break label586;
-      }
-    }
-  }
-  
-  public static boolean ctL()
-  {
-    if (unj != null) {
-      return unj.booleanValue();
-    }
-    c localc = com.tencent.mm.model.c.c.IX().fJ("100391");
-    if ((localc.isValid()) && ("1".equals(localc.ctr().get("isOpenSubscribeListVersion1")))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      unj = Boolean.valueOf(bool);
-      y.i("MicroMsg.BizTimeLineInfoStorageLogic", "isBizTimeLineOpen open %b", new Object[] { unj });
-      if ((!unj.booleanValue()) && ((((Integer)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uzq, Integer.valueOf(0))).intValue() & 0x1) > 0))
-      {
-        unj = Boolean.valueOf(true);
-        y.i("MicroMsg.BizTimeLineInfoStorageLogic", "BizTimeLineOpen migrated user");
-      }
-      if ((!unj.booleanValue()) && (com.tencent.mm.m.g.AA().getInt("BizTimeLineOpen", 0) == 1))
-      {
-        unj = Boolean.valueOf(true);
-        y.i("MicroMsg.BizTimeLineInfoStorageLogic", "BizTimeLineOpen dynamicConfigOpen user");
-      }
-      return unj.booleanValue();
     }
   }
   
   public static int getSessionId()
   {
-    return igH;
+    return cnU;
   }
   
-  public static boolean hB(long paramLong)
+  public static boolean oi(long paramLong)
   {
-    if (com.tencent.mm.ai.z.ME().hy(paramLong) <= 0) {
+    AppMethodBeat.i(11897);
+    if (com.tencent.mm.aj.z.afo().od(paramLong) <= 0)
+    {
+      AppMethodBeat.o(11897);
       return false;
     }
-    r localr = com.tencent.mm.ai.z.ME();
-    localr.dXo.gk("BizTimeLineInfo", "update BizTimeLineInfo set status = 4 where status != 4");
-    r.a locala = new r.a();
-    locala.unb = r.b.unf;
-    localr.b(locala);
-    if (com.tencent.mm.ai.z.ME().cty() <= com.tencent.mm.ai.z.ME().ctG()) {
-      com.tencent.mm.ai.z.ME().ctH();
+    if (com.tencent.mm.aj.z.afo().dvU() <= com.tencent.mm.aj.z.afo().dwf()) {
+      com.tencent.mm.aj.z.afo().dwg();
     }
+    com.tencent.mm.aj.z.afo().oc(paramLong);
+    AppMethodBeat.o(11897);
     return true;
   }
   
-  public static void hC(long paramLong)
+  public static void oj(long paramLong)
   {
-    uni = paramLong;
-    ae.cqS().edit().putLong("biz_time_line_last_notify_msg_id", paramLong).apply();
+    AppMethodBeat.i(11901);
+    ywT = paramLong;
+    ah.dsQ().edit().putLong("biz_time_line_last_notify_msg_id", paramLong).apply();
+    AppMethodBeat.o(11901);
   }
   
-  public static void mA(boolean paramBoolean)
+  public static void pR(boolean paramBoolean)
   {
-    Cursor localCursor1 = ((j)com.tencent.mm.kernel.g.r(j.class)).FB().c(com.tencent.mm.model.s.dUT, null, "officialaccounts");
+    AppMethodBeat.i(11896);
+    Cursor localCursor1 = ((j)g.E(j.class)).YF().c(com.tencent.mm.model.t.flc, null, "officialaccounts");
     Object localObject1;
     if (paramBoolean)
     {
-      localObject1 = com.tencent.mm.ai.z.ME().ctD();
+      localObject1 = com.tencent.mm.aj.z.afo().dwc();
       if (localObject1 == null) {}
     }
     for (long l1 = ((q)localObject1).field_createTime;; l1 = 0L)
@@ -426,50 +561,59 @@ public final class s
       int n = 0;
       Cursor localCursor2;
       bi localbi;
-      int k;
       int j;
       int i;
-      boolean bool;
+      int k;
+      boolean bool2;
+      boolean bool1;
+      int i2;
       if ((m < 50) && (localCursor1.moveToNext()))
       {
         localObject1 = new ak();
-        ((ak)localObject1).d(localCursor1);
-        localCursor2 = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().g(((as)localObject1).field_username, 3, 0L);
+        ((ak)localObject1).convertFrom(localCursor1);
+        localCursor2 = ((j)g.E(j.class)).bPQ().k(((au)localObject1).field_username, 3, 0L);
         while (localCursor2.moveToNext())
         {
           localbi = new bi();
-          localbi.d(localCursor2);
+          localbi.convertFrom(localCursor2);
           if ((!paramBoolean) || (localbi.field_createTime >= l1))
           {
+            j = 0;
+            i = -1;
             k = 0;
-            j = -1;
-            i = 0;
-            localObject1 = com.tencent.mm.model.bd.iM(localbi.czr);
+            bool2 = false;
+            bool1 = false;
+            localObject1 = bf.pA(localbi.dns);
             if (localObject1 == null) {
-              break label659;
+              break label711;
             }
-            int i3 = ((bd.b)localObject1).dWw;
-            int i2 = ((bd.b)localObject1).dWx;
-            int i1 = ((bd.b)localObject1).dWy;
-            i = i1;
-            j = i2;
-            k = i3;
-            if ((((bd.b)localObject1).dWC & 0x8) == 0L) {
-              break label659;
+            int i3 = ((bf.b)localObject1).fmE;
+            i2 = ((bf.b)localObject1).fmF;
+            int i1 = ((bf.b)localObject1).fmG;
+            if ((((bf.b)localObject1).fmK & 0x8) != 0L) {
+              bool1 = true;
             }
-            bool = true;
-            k = i3;
-            j = i2;
-            i = i1;
+            bool2 = bool1;
+            k = i1;
+            i = i2;
+            j = i3;
+            if ((((bf.b)localObject1).fmK & 0x10) == 0L) {
+              break label711;
+            }
+            k = 1;
+            j = i3;
+            i = i2;
+            i2 = k;
+            k = i1;
           }
         }
       }
       for (;;)
       {
-        if ((j == 0) && (a(localbi, k, i)))
+        if ((i == 0) && (b(localbi, j, k)))
         {
-          y.i("MicroMsg.BizTimeLineInfoStorageLogic", "doMigrateBizTimeLineMsg %s", new Object[] { localbi.field_talker });
-          Object localObject2 = com.tencent.mm.ai.z.ME().D(localbi.field_msgSvrId, "msgSvrId");
+          ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "doMigrateBizTimeLineMsg %s", new Object[] { localbi.field_talker });
+          Object localObject2 = com.tencent.mm.aj.z.afo().C(localbi.field_msgSvrId, "msgSvrId");
           if (localObject2 == null) {}
           for (localObject1 = new q();; localObject1 = localObject2)
           {
@@ -481,42 +625,47 @@ public final class s
             ((q)localObject1).field_talkerId = localbi.field_talkerId;
             ((q)localObject1).field_createTime = localbi.field_createTime;
             ((q)localObject1).field_imgPath = localbi.field_imgPath;
-            ((q)localObject1).ff(localbi.czq);
-            ((q)localObject1).cY(localbi.czr);
+            ((q)localObject1).hr(localbi.dnr);
+            ((q)localObject1).jl(localbi.dns);
+            if (i2 != 0) {
+              ((q)localObject1).dwa();
+            }
             if (localObject2 != null) {
-              break label543;
+              break label589;
             }
             ((q)localObject1).field_status = 4;
-            ((q)localObject1).field_isExpand = bool;
+            ((q)localObject1).field_isExpand = bool1;
             long l2 = 1L;
             if (paramBoolean) {
-              l2 = com.tencent.mm.ai.z.ME().cty();
+              l2 = com.tencent.mm.aj.z.afo().dvU();
             }
-            for (((q)localObject1).field_orderFlag = (l2 << 32 | ((q)localObject1).field_createTime / 1000L); com.tencent.mm.ai.z.ME().D(((q)localObject1).field_orderFlag, "orderFlag") != null; ((q)localObject1).field_orderFlag += 1L) {}
+            for (((q)localObject1).field_orderFlag = (l2 << 32 | ((q)localObject1).field_createTime / 1000L); com.tencent.mm.aj.z.afo().C(((q)localObject1).field_orderFlag, "orderFlag") != null; ((q)localObject1).field_orderFlag += 1L) {}
           }
-          localObject2 = ((j)com.tencent.mm.kernel.g.r(j.class)).Fw().abl(localbi.field_talker);
-          if ((localObject2 == null) || (!((ad)localObject2).Bl())) {
-            break label552;
+          localObject2 = ((j)g.E(j.class)).YA().arw(localbi.field_talker);
+          if ((localObject2 == null) || (!((ad)localObject2).Oa())) {
+            break label598;
           }
         }
-        label543:
-        label552:
+        label589:
+        label598:
         for (((q)localObject1).field_placeTop = 1;; ((q)localObject1).field_placeTop = 0)
         {
-          com.tencent.mm.ai.z.ME().g((q)localObject1);
+          com.tencent.mm.aj.z.afo().h((q)localObject1);
           n += 1;
           break;
         }
         localCursor2.close();
         m += 1;
         break;
-        y.i("MicroMsg.BizTimeLineInfoStorageLogic", "doMigrate %d/%d", new Object[] { Integer.valueOf(localCursor1.getCount()), Integer.valueOf(n) });
+        ab.i("MicroMsg.BizTimeLineInfoStorageLogic", "doMigrate %d/%d", new Object[] { Integer.valueOf(localCursor1.getCount()), Integer.valueOf(n) });
         localCursor1.close();
-        i = ((Integer)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uzq, Integer.valueOf(0))).intValue();
-        com.tencent.mm.kernel.g.DP().Dz().c(ac.a.uzq, Integer.valueOf(i | 0x2));
+        i = ((Integer)g.RL().Ru().get(ac.a.yKe, Integer.valueOf(0))).intValue();
+        g.RL().Ru().set(ac.a.yKe, Integer.valueOf(i | 0x2));
+        AppMethodBeat.o(11896);
         return;
-        label659:
-        bool = false;
+        label711:
+        i2 = 0;
+        bool1 = bool2;
       }
     }
   }

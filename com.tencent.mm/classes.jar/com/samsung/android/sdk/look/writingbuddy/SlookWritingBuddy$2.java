@@ -2,6 +2,7 @@ package com.samsung.android.sdk.look.writingbuddy;
 
 import android.graphics.Bitmap;
 import com.samsung.android.writingbuddy.WritingBuddyImpl.OnImageWritingListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class SlookWritingBuddy$2
   implements WritingBuddyImpl.OnImageWritingListener
@@ -10,7 +11,9 @@ class SlookWritingBuddy$2
   
   public void onImageReceived(Bitmap paramBitmap)
   {
+    AppMethodBeat.i(117193);
     SlookWritingBuddy.access$100(this.this$0).onImageReceived(paramBitmap);
+    AppMethodBeat.o(117193);
   }
 }
 

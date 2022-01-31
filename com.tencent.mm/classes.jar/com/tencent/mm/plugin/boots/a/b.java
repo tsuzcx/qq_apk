@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.boots.a;
 
 public final class b
 {
-  public static int hXF = 268500992;
-  public static int hXG = 268500993;
-  public static int hXH = 268566528;
-  public static int hXI = 268566529;
-  public static int hXJ = hXH | 0x2;
-  private static int hXK = 268632064;
-  public static int hXL = 268632065;
-  private static int hXM = 268697600;
-  public static int hXN = 268697601;
-  private static int hXO = 268763136;
-  public static int hXP = 268763137;
-  public static int hXQ = hXO | 0x2;
-  public static final int[] hXR = { hXG, hXI, hXL, hXJ, hXN };
+  public static int jRA = 268500992;
+  public static int jRB = 268500993;
+  public static int jRC = 268566528;
+  public static int jRD = 268566529;
+  public static int jRE = jRC | 0x2;
+  private static int jRF = 268632064;
+  public static int jRG = 268632065;
+  private static int jRH = 268697600;
+  public static int jRI = 268697601;
+  private static int jRJ = 268763136;
+  public static int jRK = 268763137;
+  public static int jRL = jRJ | 0x2;
+  public static final int[] jRM = { jRB, jRD, jRG, jRE, jRI };
 }
 
 

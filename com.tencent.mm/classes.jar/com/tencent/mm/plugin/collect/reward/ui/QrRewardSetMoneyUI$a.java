@@ -4,6 +4,7 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class QrRewardSetMoneyUI$a
@@ -13,12 +14,18 @@ final class QrRewardSetMoneyUI$a
   
   public final int getCount()
   {
-    return QrRewardSetMoneyUI.e(this.iJO).size();
+    AppMethodBeat.i(41155);
+    int i = QrRewardSetMoneyUI.e(this.kQu).size();
+    AppMethodBeat.o(41155);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return QrRewardSetMoneyUI.e(this.iJO).get(paramInt);
+    AppMethodBeat.i(41156);
+    Object localObject = QrRewardSetMoneyUI.e(this.kQu).get(paramInt);
+    AppMethodBeat.o(41156);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -28,10 +35,15 @@ final class QrRewardSetMoneyUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(41157);
     if (paramView == null) {
-      return (View)QrRewardSetMoneyUI.f(this.iJO).get(paramInt);
+      paramView = (View)QrRewardSetMoneyUI.f(this.kQu).get(paramInt);
     }
-    return paramView;
+    for (;;)
+    {
+      AppMethodBeat.o(41157);
+      return paramView;
+    }
   }
 }
 

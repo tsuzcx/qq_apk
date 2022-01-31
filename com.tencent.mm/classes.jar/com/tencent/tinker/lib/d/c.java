@@ -4,8 +4,6 @@ import java.io.File;
 
 public abstract interface c
 {
-  public abstract void a(File paramFile, int paramInt);
-  
   public abstract void a(File paramFile, int paramInt, long paramLong);
   
   public abstract void a(File paramFile, int paramInt, boolean paramBoolean);
@@ -21,6 +19,8 @@ public abstract interface c
   public abstract void b(File paramFile, int paramInt);
   
   public abstract void c(File paramFile, int paramInt);
+  
+  public abstract void d(File paramFile, int paramInt);
 }
 
 

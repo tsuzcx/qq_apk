@@ -1,42 +1,92 @@
 package com.tencent.mm.plugin.welab.d;
 
-import android.app.Activity;
-import com.tencent.mm.h.a.rc;
-import com.tencent.mm.h.c.co;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.welab.a.a.b;
-import com.tencent.mm.plugin.welab.a.a.d;
-import com.tencent.mm.storage.z;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class a
-  implements b
+  extends j<com.tencent.mm.plugin.welab.d.a.a>
 {
-  public final String chj()
+  private e db;
+  
+  public a(e parame)
   {
-    return null;
+    super(parame, com.tencent.mm.plugin.welab.d.a.a.info, "LabAppInfo", null);
+    this.db = parame;
   }
   
-  public final String chk()
+  private boolean d(com.tencent.mm.plugin.welab.d.a.a parama)
   {
-    return null;
+    AppMethodBeat.i(80582);
+    com.tencent.mm.plugin.welab.d.a.a locala = new com.tencent.mm.plugin.welab.d.a.a();
+    locala.field_LabsAppId = parama.field_LabsAppId;
+    get(locala, new String[0]);
+    if ((parama.field_expId == locala.field_expId) && (parama.field_sequence < locala.field_sequence))
+    {
+      ab.i("LabAppInfoStorage", "sequence old origin.seq " + locala.field_sequence + " old.seq " + parama.field_sequence);
+      AppMethodBeat.o(80582);
+      return false;
+    }
+    boolean bool = super.replace(parama);
+    AppMethodBeat.o(80582);
+    return bool;
   }
   
-  public final void f(Activity paramActivity, String paramString)
+  public final void c(com.tencent.mm.plugin.welab.d.a.a parama)
   {
-    paramActivity = ((d)g.r(d.class)).Ug(paramString);
-    paramString = new rc();
-    paramString.caq.userName = paramActivity.field_WeAppUser;
-    paramString.caq.cas = paramActivity.field_WeAppPath;
-    paramString.caq.scene = 1051;
-    paramString.caq.cat = paramActivity.field_WeAppDebugMode;
-    paramString.caq.bFv = String.format("%s:%s:%s:%s", new Object[] { (String)g.DP().Dz().get(2, null), paramActivity.field_expId, paramActivity.field_LabsAppId, Long.valueOf(System.currentTimeMillis() / 1000L) });
-    com.tencent.mm.sdk.b.a.udP.m(paramString);
+    AppMethodBeat.i(80581);
+    if (!d(parama)) {
+      insert(parama);
+    }
+    AppMethodBeat.o(80581);
+  }
+  
+  public final List<com.tencent.mm.plugin.welab.d.a.a> dht()
+  {
+    AppMethodBeat.i(80579);
+    Cursor localCursor = getAll();
+    ArrayList localArrayList = new ArrayList();
+    while (localCursor.moveToNext())
+    {
+      com.tencent.mm.plugin.welab.d.a.a locala = new com.tencent.mm.plugin.welab.d.a.a();
+      locala.convertFrom(localCursor);
+      localArrayList.add(locala);
+    }
+    localCursor.close();
+    AppMethodBeat.o(80579);
+    return localArrayList;
+  }
+  
+  public final void ek(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
+  {
+    AppMethodBeat.i(80580);
+    h localh = null;
+    if ((this.db instanceof h)) {
+      localh = (h)this.db;
+    }
+    for (long l = localh.kr(-1L);; l = 0L)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        c((com.tencent.mm.plugin.welab.d.a.a)paramList.next());
+      }
+      if (localh != null) {
+        localh.nY(l);
+      }
+      AppMethodBeat.o(80580);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.d.a
  * JD-Core Version:    0.7.0.1
  */

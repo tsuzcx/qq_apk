@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.wallet_core.ui.view;
 
 public abstract interface WalletScratchShakeView$a
 {
-  public abstract void bXl();
+  public abstract void cWM();
   
-  public abstract void kN(boolean paramBoolean);
+  public abstract void nW(boolean paramBoolean);
 }
 
 

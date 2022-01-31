@@ -2,6 +2,7 @@ package com.tencent.mm.ui.base;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 final class h$15
@@ -11,11 +12,13 @@ final class h$15
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    DialogInterface.OnCancelListener localOnCancelListener = (DialogInterface.OnCancelListener)this.uUg.get();
+    AppMethodBeat.i(106419);
+    DialogInterface.OnCancelListener localOnCancelListener = (DialogInterface.OnCancelListener)this.ziH.get();
     if (localOnCancelListener != null) {
       localOnCancelListener.onCancel(paramDialogInterface);
     }
-    x.b(false, null);
+    y.activateBroadcast(false);
+    AppMethodBeat.o(106419);
   }
 }
 

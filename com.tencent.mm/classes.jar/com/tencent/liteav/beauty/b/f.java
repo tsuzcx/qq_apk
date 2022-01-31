@@ -1,9 +1,11 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
+import com.tencent.liteav.basic.d.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class f
-  extends com.tencent.liteav.basic.d.d
+  extends g
 {
   private int[] A;
   private float B = 4.0F;
@@ -11,7 +13,7 @@ public class f
   int s;
   boolean t;
   private d u;
-  private com.tencent.liteav.basic.d.d v;
+  private g v;
   private f.c w;
   private f.a x;
   private f.b y;
@@ -19,16 +21,18 @@ public class f
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((this.f == paramInt2) && (this.e == paramInt1)) {
+    AppMethodBeat.i(67040);
+    if ((this.f == paramInt2) && (this.e == paramInt1))
+    {
+      AppMethodBeat.o(67040);
       return;
     }
     super.a(paramInt1, paramInt2);
-    label47:
     int i;
     if (!this.t)
     {
       if (paramInt1 >= paramInt2) {
-        break label377;
+        break label387;
       }
       if (paramInt1 < 540) {
         this.B = 1.0F;
@@ -55,15 +59,15 @@ public class f
       GLES20.glGenFramebuffers(this.z.length, this.z, 0);
       GLES20.glGenTextures(this.z.length, this.A, 0);
       i = 0;
-      label230:
-      if (i < this.z.length)
-      {
-        GLES20.glBindTexture(3553, this.A[i]);
-        if (i < 5) {
-          break label401;
-        }
-        GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+      label240:
+      if (i >= this.z.length) {
+        break label440;
       }
+      GLES20.glBindTexture(3553, this.A[i]);
+      if (i < 5) {
+        break label411;
+      }
+      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
     }
     for (;;)
     {
@@ -76,25 +80,27 @@ public class f
       GLES20.glBindTexture(3553, 0);
       GLES20.glBindFramebuffer(36160, 0);
       i += 1;
-      break label230;
-      break;
+      break label240;
       this.B = 4.0F;
-      break label47;
-      label377:
+      break;
+      label387:
       if (paramInt2 < 540)
       {
         this.B = 1.0F;
-        break label47;
+        break;
       }
       this.B = 4.0F;
-      break label47;
-      label401:
+      break;
+      label411:
       GLES20.glTexImage2D(3553, 0, 6408, this.r, this.s, 0, 6408, 5121, null);
     }
+    label440:
+    AppMethodBeat.o(67040);
   }
   
   public int b(int paramInt)
   {
+    AppMethodBeat.i(67041);
     if (this.B != 1.0F) {
       GLES20.glViewport(0, 0, this.r, this.s);
     }
@@ -113,12 +119,15 @@ public class f
         j = this.v.a(k, this.z[5], this.A[5]);
         i = this.v.a(m, this.z[6], this.A[6]);
       }
-      return this.y.a(j, i, paramInt, this.z[7], this.A[7]);
+      paramInt = this.y.a(j, i, paramInt, this.z[7], this.A[7]);
+      AppMethodBeat.o(67041);
+      return paramInt;
     }
   }
   
   public boolean b()
   {
+    AppMethodBeat.i(67039);
     boolean bool2 = super.b();
     if (bool2)
     {
@@ -142,22 +151,26 @@ public class f
       if (bool1) {
         bool2 = this.y.a();
       }
-      this.v = new com.tencent.liteav.basic.d.d();
+      this.v = new g();
       this.v.a(true);
       bool1 = bool2;
       if (bool2) {
         bool1 = this.v.a();
       }
-      if (bool1) {
+      if (bool1)
+      {
+        AppMethodBeat.o(67039);
         return true;
       }
     }
     d();
+    AppMethodBeat.o(67039);
     return false;
   }
   
   public void e()
   {
+    AppMethodBeat.i(67042);
     if (this.g)
     {
       super.e();
@@ -174,6 +187,7 @@ public class f
       }
       this.A = null;
     }
+    AppMethodBeat.o(67042);
   }
 }
 

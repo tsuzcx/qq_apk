@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.card.sharecard.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.a;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.base.c;
@@ -8,44 +9,55 @@ import java.util.List;
 public final class h
   implements a
 {
-  private g iqp;
+  private g krx;
   
   public h(g paramg)
   {
-    this.iqp = paramg;
+    this.krx = paramg;
   }
   
-  public final void HL()
+  public final void aaK()
   {
-    if (this.iqp != null) {
-      this.iqp.notifyDataSetChanged();
+    AppMethodBeat.i(88164);
+    if (this.krx != null) {
+      this.krx.notifyDataSetChanged();
     }
-  }
-  
-  public final b oK(int paramInt)
-  {
-    if (this.iqp != null) {
-      return this.iqp.oK(paramInt);
-    }
-    return null;
+    AppMethodBeat.o(88164);
   }
   
   public final void onCreate()
   {
-    this.iqp.notifyDataSetChanged();
+    AppMethodBeat.i(88162);
+    this.krx.notifyDataSetChanged();
+    AppMethodBeat.o(88162);
   }
   
   public final void onDestroy()
   {
-    if (this.iqp != null)
+    AppMethodBeat.i(88163);
+    if (this.krx != null)
     {
-      g localg = this.iqp;
-      localg.iqd.release();
-      localg.iqd = null;
-      localg.iqo.clear();
+      g localg = this.krx;
+      localg.krl.release();
+      localg.krl = null;
+      localg.krw.clear();
       localg.mContext = null;
-      this.iqp = null;
+      this.krx = null;
     }
+    AppMethodBeat.o(88163);
+  }
+  
+  public final b sU(int paramInt)
+  {
+    AppMethodBeat.i(88165);
+    if (this.krx != null)
+    {
+      b localb = this.krx.sU(paramInt);
+      AppMethodBeat.o(88165);
+      return localb;
+    }
+    AppMethodBeat.o(88165);
+    return null;
   }
 }
 

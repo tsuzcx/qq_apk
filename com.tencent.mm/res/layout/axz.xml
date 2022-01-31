@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:background="@color/jx" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/beh" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="left" android:orientation="vertical" android:id="@id/c7r" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/kl" android:paddingRight="@dimen/li" android:paddingBottom="@dimen/li" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/dq" android:textColor="@color/a1y" android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:minHeight="25.0dip" android:text="@string/fh6" />
-            <TextView android:ellipsize="end" android:id="@id/egk" android:visibility="gone" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/mv" android:maxLines="2" style="@style/uv" />
-        </LinearLayout>
-        <ImageView android:layout_gravity="center" android:id="@id/adc" android:layout_width="fill_parent" android:layout_height="@dimen/fl" android:layout_marginLeft="@dimen/li" android:layout_marginRight="@dimen/li" android:src="@color/f_" />
-        <ListView android:id="@id/egv" android:background="@null" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_width="fill_parent" android:layout_height="0.0dip" android:divider="@color/x_" android:dividerHeight="@dimen/fn" android:choiceMode="singleChoice" android:layout_weight="1.0" />
-        <ImageView android:background="@color/x_" android:layout_width="fill_parent" android:layout_height="@dimen/fn" android:layout_marginLeft="@dimen/li" android:layout_marginRight="@dimen/li" />
-        <Button android:textSize="@dimen/lj" android:textColor="@color/a1y" android:id="@id/ekw" android:background="@drawable/b_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ld" android:text="@string/qk" />
-    </LinearLayout>
-</RelativeLayout>
+    <RelativeLayout android:id="@id/v7" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/aez" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/bv8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/w6" android:gravity="right" android:id="@id/erm" android:padding="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:layout_below="@id/bv8" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/ej8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <TextView android:textColor="@color/a6q" android:gravity="center" android:id="@id/bq1" android:padding="@dimen/l2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l6" android:text="@string/elo" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/bv9" android:background="@color/la" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/ej9" android:visibility="gone" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/ej_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/avn" android:scaleType="center" android:layout_centerInParent="true" />
+        <include layout="@layout/av0" />
+    </RelativeLayout>
+</LinearLayout>

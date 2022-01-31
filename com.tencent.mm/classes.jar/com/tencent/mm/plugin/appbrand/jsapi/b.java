@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.mm.compatible.loader.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import junit.framework.Assert;
 
 public abstract class b
 {
-  private String geG;
+  private String hwF;
   
   public b()
   {
@@ -17,26 +17,26 @@ public abstract class b
   public final String getName()
   {
     c localc;
-    if (bk.bl(this.geG)) {
+    if (bo.isNullOrNil(this.hwF)) {
       localc = new c(this, "NAME", null);
     }
     try
     {
-      this.geG = ((String)localc.get());
-      return this.geG;
+      this.hwF = ((String)localc.get());
+      return this.hwF;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.e("MicroMsg.AppBrand.BaseJsApi", "getName exp = %s", new Object[] { bk.j(localException) });
+        ab.e("MicroMsg.AppBrand.BaseJsApi", "getName exp = %s", new Object[] { bo.l(localException) });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.b
  * JD-Core Version:    0.7.0.1
  */

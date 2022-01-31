@@ -2,31 +2,33 @@ package com.tencent.mm.storage;
 
 public final class ar
 {
-  public String bJd;
-  public String jfG;
-  public int uAM;
-  private boolean uAN = false;
-  public int uAO;
-  public int uAP;
-  public String uAQ;
+  public String cqx;
+  public String loz;
+  public int yMV;
+  private boolean yMW = false;
+  public int yMX;
+  public int yMY;
+  public String yMZ;
+  public String yNa;
+  public String yNb;
   
   public ar()
   {
-    this.uAM = -1;
+    this.yMV = -1;
   }
   
   public ar(String paramString)
   {
-    this.bJd = paramString;
-    this.uAM = -1;
+    this.cqx = paramString;
+    this.yMV = -1;
   }
   
-  public final void Fo(int paramInt)
+  public final void Nu(int paramInt)
   {
-    if ((this.uAM != -1) && (this.uAM != paramInt) && (paramInt == 7)) {
-      this.uAN = true;
+    if ((this.yMV != -1) && (this.yMV != paramInt) && (paramInt == 7)) {
+      this.yMW = true;
     }
-    this.uAM = paramInt;
+    this.yMV = paramInt;
   }
 }
 

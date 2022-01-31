@@ -7,116 +7,142 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
-  extends r
+  extends q
 {
-  private final a.a rSY;
-  private final Intent rSZ;
-  private final w rTa = new w();
+  private final a.a vJW;
+  private final Intent vJX;
+  private final v vJY;
   
   public a(Bundle paramBundle)
   {
+    AppMethodBeat.i(125813);
+    this.vJY = new v();
     if ((paramBundle == null) || (paramBundle.getParcelable("key_target_intent") == null)) {
-      this.rSY = a.a.rTc;
+      this.vJW = a.a.vKa;
     }
-    while (this.rSY == a.a.rTc)
+    while (this.vJW == a.a.vKa)
     {
-      this.rSZ = null;
+      this.vJX = null;
+      AppMethodBeat.o(125813);
       return;
-      a.a locala = a.a.DB(paramBundle.getInt("key_map_app", a.a.rTc.code));
-      if (a(ae.getContext(), locala, null) == null) {
-        this.rSY = a.a.rTc;
+      a.a locala = a.a.Lt(paramBundle.getInt("key_map_app", a.a.vKa.code));
+      if (a(ah.getContext(), locala, null) == null) {
+        this.vJW = a.a.vKa;
       } else {
-        this.rSY = locala;
+        this.vJW = locala;
       }
     }
-    this.rSZ = ((Intent)paramBundle.getParcelable("key_target_intent"));
+    this.vJX = ((Intent)paramBundle.getParcelable("key_target_intent"));
+    AppMethodBeat.o(125813);
   }
   
   private static ResolveInfo a(Context paramContext, a.a parama, Intent paramIntent)
   {
+    AppMethodBeat.i(125814);
     Intent localIntent = paramIntent;
     if (paramIntent == null) {
       localIntent = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%f,%f", new Object[] { Float.valueOf(0.0F), Float.valueOf(0.0F) })));
     }
     paramContext = paramContext.getPackageManager().queryIntentActivities(localIntent, 0);
-    if (bk.dk(paramContext)) {
+    if (bo.es(paramContext))
+    {
+      AppMethodBeat.o(125814);
       return null;
     }
     paramContext = paramContext.iterator();
     while (paramContext.hasNext())
     {
       paramIntent = (ResolveInfo)paramContext.next();
-      if ((paramIntent != null) && (paramIntent.activityInfo != null) && (parama.getPackage().equals(paramIntent.activityInfo.packageName))) {
+      if ((paramIntent != null) && (paramIntent.activityInfo != null) && (parama.getPackage().equals(paramIntent.activityInfo.packageName)))
+      {
+        AppMethodBeat.o(125814);
         return paramIntent;
       }
     }
+    AppMethodBeat.o(125814);
     return null;
   }
   
-  public final String UP()
+  public final String a(Context paramContext, ResolveInfo paramResolveInfo)
   {
-    if (this.rSY == a.a.rTc) {
+    AppMethodBeat.i(125818);
+    paramContext = this.vJY.a(paramContext, paramResolveInfo);
+    AppMethodBeat.o(125818);
+    return paramContext;
+  }
+  
+  public final boolean alg(String paramString)
+  {
+    AppMethodBeat.i(125816);
+    boolean bool = this.vJW.getPackage().equals(paramString);
+    AppMethodBeat.o(125816);
+    return bool;
+  }
+  
+  public final String aoo()
+  {
+    if (this.vJW == a.a.vKa) {
       return "http://softroute.map.qq.com/downloadfile?cid=00008&referer=wx_client";
     }
     return null;
   }
   
-  public final boolean VJ(String paramString)
+  public final String dkX()
   {
-    return this.rSY.getPackage().equals(paramString);
-  }
-  
-  public final String a(Context paramContext, ResolveInfo paramResolveInfo)
-  {
-    return this.rTa.a(paramContext, paramResolveInfo);
-  }
-  
-  public final String cks()
-  {
-    if (this.rSY == a.a.rTc) {
+    if (this.vJW == a.a.vKa) {
       return "TencentMap.apk";
     }
     return null;
   }
   
-  public final s.a ckt()
+  public final r.a dkY()
   {
-    Object localObject;
-    if (this.rSY == a.a.rTc) {
-      localObject = this.rTa.ckt();
-    }
-    s.a locala;
-    ResolveInfo localResolveInfo;
-    do
+    AppMethodBeat.i(125817);
+    if (this.vJW == a.a.vKa)
     {
-      return localObject;
-      locala = new s.a();
-      locala.rTO = -1;
-      locala.rTL = -1;
-      localResolveInfo = a(ae.getContext(), this.rSY, this.rSZ);
-      localObject = locala;
-    } while (localResolveInfo == null);
-    locala.rTP = a(ae.getContext(), localResolveInfo);
+      locala = this.vJY.dkY();
+      AppMethodBeat.o(125817);
+      return locala;
+    }
+    r.a locala = new r.a();
+    locala.vKL = -1;
+    locala.vKI = -1;
+    ResolveInfo localResolveInfo = a(ah.getContext(), this.vJW, this.vJX);
+    if (localResolveInfo != null) {
+      locala.vKM = a(ah.getContext(), localResolveInfo);
+    }
+    AppMethodBeat.o(125817);
     return locala;
   }
   
-  public final boolean eL(Context paramContext)
+  public final boolean fL(Context paramContext)
   {
-    if (this.rSY == a.a.rTc) {
-      return this.rTa.eL(paramContext);
+    AppMethodBeat.i(125815);
+    if (this.vJW == a.a.vKa)
+    {
+      boolean bool = this.vJY.fL(paramContext);
+      AppMethodBeat.o(125815);
+      return bool;
     }
-    return a(paramContext, this.rSY, this.rSZ) != null;
+    if (a(paramContext, this.vJW, this.vJX) != null)
+    {
+      AppMethodBeat.o(125815);
+      return true;
+    }
+    AppMethodBeat.o(125815);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.a
  * JD-Core Version:    0.7.0.1
  */

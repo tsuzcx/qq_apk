@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge>
-    <RelativeLayout android:background="@color/lf" android:layout_width="fill_parent" android:layout_height="fill_parent"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView android:textSize="@dimen/zc" android:textColor="@color/a23" android:id="@id/bdy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" android:text="@string/beu" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
-        <Button android:textSize="@dimen/l1" android:textColor="@color/a39" android:id="@id/bdz" android:layout_height="wrap_content" android:layout_marginBottom="36.0dip" android:text="@string/bes" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/od" />
-    </RelativeLayout>
-</merge>
+<RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.pluginsdk.ui.emoji.BannerEmojiView android:id="@id/bj8" android:background="#ffcacaca" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
+    <ImageView android:id="@id/bj9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/afg" android:scaleType="centerInside" />
+</RelativeLayout>

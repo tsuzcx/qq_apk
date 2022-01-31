@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.freewifi.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.l;
 import com.tencent.mm.plugin.freewifi.model.d;
 
@@ -13,15 +14,18 @@ final class FreeWifiStateUI$5
   
   public final void onClick(View paramView)
   {
-    l.u(d.aTZ(), this.ksM.getIntent().getStringExtra("free_wifi_ap_key"), this.ksM.getIntent().getIntExtra("free_wifi_protocol_type", 0));
-    if (this.ksM.aUO() == 2)
+    AppMethodBeat.i(21075);
+    l.B(d.bAB(), this.mOB.getIntent().getStringExtra("free_wifi_ap_key"), this.mOB.getIntent().getIntExtra("free_wifi_protocol_type", 0));
+    if (this.mOB.bBm() == 2)
     {
-      this.ksM.finish();
+      this.mOB.finish();
+      AppMethodBeat.o(21075);
       return;
     }
-    d.a(this.ksM.ssid, 1, this.ksM.getIntent());
-    this.ksM.kqM = false;
-    this.ksM.aUU();
+    d.a(this.mOB.ssid, 1, this.mOB.getIntent());
+    this.mOB.mMy = false;
+    this.mOB.bBs();
+    AppMethodBeat.o(21075);
   }
 }
 

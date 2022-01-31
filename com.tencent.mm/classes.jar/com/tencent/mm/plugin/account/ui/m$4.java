@@ -9,7 +9,7 @@ final class m$4
   
   public final void a(ProgressDialog paramProgressDialog)
   {
-    this.fpl.fpj.dnm = paramProgressDialog;
+    this.gGI.gGG.eeN = paramProgressDialog;
   }
 }
 

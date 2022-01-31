@@ -7,103 +7,120 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.facedetect.a.e;
-import com.tencent.mm.plugin.facedetect.a.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class FaceHeaderPreference
   extends Preference
 {
-  private MMActivity bER;
-  private TextView eXr;
-  private ImageView heN;
-  private int jRP = 255;
-  private Button jRQ;
-  private View jRR;
-  private View.OnClickListener jRS = null;
-  private String jRT = "";
-  private String jRU = "";
-  private String mTitle = "";
+  private MMActivity cmc;
+  private ImageView iQd;
+  private String mTitle;
+  private int mml;
+  private Button mmm;
+  private View mmn;
+  private View.OnClickListener mmo;
+  private String mmp;
+  private String mmq;
+  private TextView titleTv;
   
   public FaceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    this.bER = ((MMActivity)paramContext);
+    AppMethodBeat.i(500);
+    this.cmc = ((MMActivity)paramContext);
+    AppMethodBeat.o(500);
   }
   
   public FaceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.bER = ((MMActivity)paramContext);
-    setLayoutResource(a.g.face_print_pref_header);
+    AppMethodBeat.i(501);
+    this.mTitle = "";
+    this.mml = 255;
+    this.mmo = null;
+    this.mmp = "";
+    this.mmq = "";
+    this.cmc = ((MMActivity)paramContext);
+    setLayoutResource(2130969505);
+    AppMethodBeat.o(501);
   }
   
-  public final void c(View.OnClickListener paramOnClickListener)
+  public final void a(View.OnClickListener paramOnClickListener)
   {
-    this.jRS = paramOnClickListener;
-    if ((this.jRQ == null) || (this.jRR == null)) {
-      return;
-    }
-    if ((this.jRQ != null) && (this.jRS != null))
+    AppMethodBeat.i(503);
+    this.mmo = paramOnClickListener;
+    if ((this.mmm == null) || (this.mmn == null))
     {
-      this.jRQ.setOnClickListener(paramOnClickListener);
-      this.jRQ.setVisibility(0);
-      this.jRR.setVisibility(0);
+      AppMethodBeat.o(503);
       return;
     }
-    this.jRQ.setVisibility(8);
-    this.jRR.setVisibility(8);
+    if ((this.mmm != null) && (this.mmo != null))
+    {
+      this.mmm.setOnClickListener(paramOnClickListener);
+      this.mmm.setVisibility(0);
+      this.mmn.setVisibility(0);
+      AppMethodBeat.o(503);
+      return;
+    }
+    this.mmm.setVisibility(8);
+    this.mmn.setVisibility(8);
+    AppMethodBeat.o(503);
   }
   
-  public final void cY(String paramString1, String paramString2)
+  public final void en(String paramString1, String paramString2)
   {
-    this.jRT = paramString1;
-    this.jRU = paramString2;
-    if (this.eXr != null)
+    AppMethodBeat.i(502);
+    this.mmp = paramString1;
+    this.mmq = paramString2;
+    if (this.titleTv != null)
     {
-      if (!bk.bl(this.jRT))
+      if (!bo.isNullOrNil(this.mmp))
       {
-        this.eXr.setText(this.jRT);
-        this.eXr.setVisibility(0);
+        this.titleTv.setText(this.mmp);
+        this.titleTv.setVisibility(0);
+        AppMethodBeat.o(502);
+        return;
       }
+      this.titleTv.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.eXr.setVisibility(8);
+    AppMethodBeat.o(502);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(504);
     super.onBindView(paramView);
-    this.heN = ((ImageView)paramView.findViewById(a.e.face_print_sucesss_icon));
-    this.eXr = ((TextView)paramView.findViewById(a.e.face_print_title));
-    this.jRQ = ((Button)paramView.findViewById(a.e.right_btn));
-    this.jRR = paramView.findViewById(a.e.button_ll);
-    if (!bk.bl(this.jRT))
+    this.iQd = ((ImageView)paramView.findViewById(2131823906));
+    this.titleTv = ((TextView)paramView.findViewById(2131823907));
+    this.mmm = ((Button)paramView.findViewById(2131823890));
+    this.mmn = paramView.findViewById(2131823908);
+    if (!bo.isNullOrNil(this.mmp))
     {
-      this.eXr.setText(this.jRT);
-      this.eXr.setVisibility(0);
+      this.titleTv.setText(this.mmp);
+      this.titleTv.setVisibility(0);
     }
-    while ((this.jRQ != null) && (this.jRS != null))
+    while ((this.mmm != null) && (this.mmo != null))
     {
-      this.jRQ.setOnClickListener(this.jRS);
-      this.jRQ.setVisibility(0);
-      this.jRR.setVisibility(0);
+      this.mmm.setOnClickListener(this.mmo);
+      this.mmm.setVisibility(0);
+      this.mmn.setVisibility(0);
+      AppMethodBeat.o(504);
       return;
-      this.eXr.setVisibility(8);
+      this.titleTv.setVisibility(8);
     }
-    if (this.jRQ != null) {
-      this.jRQ.setVisibility(8);
+    if (this.mmm != null) {
+      this.mmm.setVisibility(8);
     }
-    this.jRR.setVisibility(8);
+    this.mmn.setVisibility(8);
+    AppMethodBeat.o(504);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.FaceHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,105 +1,68 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.annotation.SuppressLint;
+import a.f.b.j;
+import a.l;
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mm.modelappbrand.a.f;
-import com.tencent.mm.plugin.appbrand.config.a.d;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.c;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.d;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.d.a;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
+import android.content.Intent;
+import android.os.RemoteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
-@SuppressLint({"ViewConstructor"})
-final class i
-  extends com.tencent.mm.ui.statusbar.b
-  implements n
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIAccountReleaseHandler;", "", "()V", "TAG", "", "processForegroundImportance", "", "", "[Ljava/lang/Integer;", "handleAccountRelease", "", "activity", "Landroid/app/Activity;", "finishHandler", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandTaskUIController$FinishAllHandler;", "plugin-appbrand-integration_release"})
+public final class i
 {
-  private ImageView cR;
-  private com.tencent.mm.plugin.appbrand.i fzT;
-  private ThreeDotsLoadingView haZ;
-  private TextView hcC;
-  private LinearLayout hcD;
-  private d hcE;
-  private View hes;
-  private View het;
+  private static final Integer[] iPj;
+  public static final i iPk;
   
-  public i(Context paramContext, com.tencent.mm.plugin.appbrand.i parami)
+  static
   {
-    super(paramContext);
-    this.fzT = parami;
-    setClickable(true);
-    setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    LayoutInflater.from(getContext()).inflate(y.h.app_brand_splash_ui, this);
-    this.cR = ((ImageView)findViewById(y.g.app_brand_loading_avatar));
-    this.cR.setImageDrawable(com.tencent.mm.modelappbrand.a.a.JC());
-    this.hcC = ((TextView)findViewById(y.g.app_brand_loading_name));
-    this.haZ = ((ThreeDotsLoadingView)findViewById(y.g.app_brand_loading_view));
-    this.hcD = ((LinearLayout)findViewById(y.g.app_brand_loading_fake_ab_container));
-    this.het = findViewById(y.g.app_brand_loading_top_area);
-    this.hes = findViewById(y.g.app_brand_loading_root);
-    this.hcE = d.a.c(getContext(), this.fzT);
-    this.hcD.addView(this.hcE.getActionView());
-    int i = com.tencent.mm.plugin.appbrand.widget.a.cD(getContext());
-    this.hcC.getLayoutParams().height = i;
-    av(-1, true);
-    this.hcE.setBackgroundColor(0);
-    this.hcE.setForegroundStyle("black");
-    this.hcE.setNavBackOrClose(false);
-    paramContext = new i.2(this);
-    this.hcE.setCloseButtonClickListener(paramContext);
-    this.hcE.setBackButtonClickListener(paramContext);
-    if ((this.hcE instanceof c)) {
-      ((c)this.hcE).arb();
+    AppMethodBeat.i(135001);
+    iPk = new i();
+    iPj = new Integer[] { Integer.valueOf(100), Integer.valueOf(200) };
+    AppMethodBeat.o(135001);
+  }
+  
+  public static void a(Activity paramActivity, com.tencent.mm.plugin.appbrand.task.i.a parama)
+  {
+    AppMethodBeat.i(135000);
+    j.q(paramActivity, "activity");
+    j.q(parama, "finishHandler");
+    try
+    {
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = new ActivityManager.RunningAppProcessInfo();
+      ActivityManager.getMyMemoryState(localRunningAppProcessInfo);
+      parama = new i.a(parama, paramActivity);
+      if ((localRunningAppProcessInfo == null) || (!org.apache.commons.b.a.contains(iPj, Integer.valueOf(localRunningAppProcessInfo.importance))))
+      {
+        paramActivity = new StringBuilder("finish directly importance[");
+        if (localRunningAppProcessInfo != null)
+        {
+          i = localRunningAppProcessInfo.importance;
+          ab.i("MicroMsg.AppBrandUIAccountReleaseHandler", i + ']');
+          parama.ate();
+          AppMethodBeat.o(135000);
+          return;
+        }
+      }
     }
-    this.haZ.cKb();
-  }
-  
-  public final void a(a.d paramd) {}
-  
-  public final void aoS()
-  {
-    post(new i.1(this));
-  }
-  
-  public final void aoT()
-  {
-    this.hcE.setNavHidden(true);
-  }
-  
-  public final void cd(String paramString1, String paramString2)
-  {
-    com.tencent.mm.modelappbrand.a.b.JD().a(this.cR, paramString1, null, f.eaL);
-    this.hcC.setText(paramString2);
-  }
-  
-  public final View getView()
-  {
-    return this;
-  }
-  
-  public final boolean hasOverlappingRendering()
-  {
-    return false;
-  }
-  
-  protected final void onAttachedToWindow()
-  {
-    super.onAttachedToWindow();
-    if ((getContext() instanceof Activity)) {
-      l.c(((Activity)getContext()).getWindow(), false);
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        Object localObject = null;
+        continue;
+        int i = -1;
+      }
+      parama = (AppBrandProxyUIProcessTask.b)new i.b(parama);
+      com.tencent.mm.plugin.appbrand.ipc.a.a((Context)paramActivity, (AppBrandProxyUIProcessTask.ProcessRequest)new AccountReleaseProxyUILaunchRequest(), parama, new Intent().addFlags(67108864));
+      AppMethodBeat.o(135000);
     }
   }
-  
-  public final void setProgress(int paramInt) {}
 }
 
 

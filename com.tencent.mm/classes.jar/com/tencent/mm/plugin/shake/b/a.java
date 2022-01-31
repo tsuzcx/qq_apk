@@ -1,164 +1,185 @@
 package com.tencent.mm.plugin.shake.b;
 
-import com.tencent.mm.ag.h;
-import com.tencent.mm.ag.i;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.h;
+import com.tencent.mm.ah.i;
+import com.tencent.mm.ah.o;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
+import com.tencent.mm.model.r;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.bqy;
-import com.tencent.mm.protocal.c.bqz;
-import com.tencent.mm.protocal.c.bra;
-import com.tencent.mm.protocal.c.sg;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.cbj;
+import com.tencent.mm.protocal.protobuf.cbk;
+import com.tencent.mm.protocal.protobuf.cbl;
+import com.tencent.mm.protocal.protobuf.cuv;
+import com.tencent.mm.protocal.protobuf.wc;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.g;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class a
-  extends com.tencent.mm.ah.m
+  extends com.tencent.mm.ai.m
   implements k
 {
-  private com.tencent.mm.ah.b dmK;
-  private f dmL;
-  private String ioU;
-  List<d> nYE;
-  private int nYF;
+  private f callback;
+  private String kqb;
+  List<d> qMO;
+  private int qMP;
   int ret;
+  private com.tencent.mm.ai.b rr;
   
   public a(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(24411);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bqz();
-    ((b.a)localObject).ecI = new bra();
+    ((b.a)localObject).fsX = new cbk();
+    ((b.a)localObject).fsY = new cbl();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/shakeget";
-    ((b.a)localObject).ecG = 162;
-    ((b.a)localObject).ecJ = 57;
-    ((b.a)localObject).ecK = 1000000057;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (bqz)this.dmK.ecE.ecN;
-    ((bqz)localObject).szp = new bmk().bs(paramArrayOfByte);
-    ((bqz)localObject).tHL = 1;
-    ((bqz)localObject).tpt = new bmk().bs(com.tencent.mm.plugin.normsg.a.b.mGK.boP());
+    ((b.a)localObject).funcId = 162;
+    ((b.a)localObject).reqCmdId = 57;
+    ((b.a)localObject).respCmdId = 1000000057;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (cbk)this.rr.fsV.fta;
+    ((cbk)localObject).wtq = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+    ((cbk)localObject).xMd = 1;
+    try
+    {
+      paramArrayOfByte = new cuv();
+      paramArrayOfByte.ydy = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.pgQ.bXq());
+      ((cbk)localObject).wss = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte.toByteArray());
+      AppMethodBeat.o(24411);
+      return;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      AppMethodBeat.o(24411);
+    }
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    y.d("MicroMsg.NetSceneShakeGet", "doScene");
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    AppMethodBeat.i(24412);
+    ab.d("MicroMsg.NetSceneShakeGet", "doScene");
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(24412);
+    return i;
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final int getType()
   {
-    y.d("MicroMsg.NetSceneShakeGet", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramq = (bra)this.dmK.ecF.ecN;
-    this.nYE = new LinkedList();
-    this.nYF = paramq.tHN;
-    this.ret = paramq.sze;
-    this.ioU = paramq.mSC;
-    int i = paramq.hPS;
-    y.d("MicroMsg.NetSceneShakeGet", "size:" + i);
-    au.Hx();
-    paramArrayOfByte = c.Fw();
+    return 162;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(24413);
+    ab.d("MicroMsg.NetSceneShakeGet", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    paramq = (cbl)this.rr.fsW.fta;
+    this.qMO = new LinkedList();
+    this.qMP = paramq.xMf;
+    this.ret = paramq.Ret;
+    this.kqb = paramq.puI;
+    int i = paramq.jJu;
+    ab.d("MicroMsg.NetSceneShakeGet", "size:".concat(String.valueOf(i)));
+    aw.aaz();
+    paramArrayOfByte = c.YA();
     if (i > 0)
     {
-      e locale = m.bzU();
-      locale.bzM();
-      y.i("MicroMsg.NewShakeItemStorage", "delOldRecord count:" + i);
+      e locale = m.cln();
+      locale.cld();
+      ab.i("MicroMsg.NewShakeItemStorage", "delOldRecord count:".concat(String.valueOf(i)));
       Object localObject1 = new StringBuilder("DELETE FROM shakeitem1 WHERE shakeItemID NOT IN ( SELECT shakeItemID FROM shakeitem1 ORDER BY shakeItemID DESC LIMIT ");
-      label247:
+      label232:
       Object localObject2;
       boolean bool;
       if (100 > i)
       {
         paramInt1 = 100 - i;
         localObject1 = paramInt1 + " )";
-        if (locale.dXw.gk("shakeitem1", (String)localObject1))
+        if (locale.db.execSQL("shakeitem1", (String)localObject1))
         {
-          y.i("MicroMsg.NewShakeItemStorage", "delOldRecord success count:" + i);
+          ab.i("MicroMsg.NewShakeItemStorage", "delOldRecord success count:".concat(String.valueOf(i)));
           locale.doNotify();
         }
         paramInt1 = i - 1;
         if (paramInt1 < 0) {
-          break label782;
+          break label767;
         }
-        if (!com.tencent.mm.model.q.Gj().equals(((bqy)paramq.tHM.get(paramInt1)).hPY))
+        if (!r.Zn().equals(((cbj)paramq.xMe.get(paramInt1)).jJA))
         {
-          localObject1 = z.My().kQ(((bqy)paramq.tHM.get(paramInt1)).hPY);
-          ((com.tencent.mm.ai.d)localObject1).field_username = ((bqy)paramq.tHM.get(paramInt1)).hPY;
-          ((com.tencent.mm.ai.d)localObject1).field_brandList = ((bqy)paramq.tHM.get(paramInt1)).ffr;
-          localObject2 = ((bqy)paramq.tHM.get(paramInt1)).tpn;
+          localObject1 = z.afi().rK(((cbj)paramq.xMe.get(paramInt1)).jJA);
+          ((com.tencent.mm.aj.d)localObject1).field_username = ((cbj)paramq.xMe.get(paramInt1)).jJA;
+          ((com.tencent.mm.aj.d)localObject1).field_brandList = ((cbj)paramq.xMe.get(paramInt1)).gwZ;
+          localObject2 = ((cbj)paramq.xMe.get(paramInt1)).xpl;
           if (localObject2 != null)
           {
-            ((com.tencent.mm.ai.d)localObject1).field_brandFlag = ((sg)localObject2).ffv;
-            ((com.tencent.mm.ai.d)localObject1).field_brandInfo = ((sg)localObject2).ffx;
-            ((com.tencent.mm.ai.d)localObject1).field_brandIconURL = ((sg)localObject2).ffy;
-            ((com.tencent.mm.ai.d)localObject1).field_extInfo = ((sg)localObject2).ffw;
+            ((com.tencent.mm.aj.d)localObject1).field_brandFlag = ((wc)localObject2).gxd;
+            ((com.tencent.mm.aj.d)localObject1).field_brandInfo = ((wc)localObject2).gxf;
+            ((com.tencent.mm.aj.d)localObject1).field_brandIconURL = ((wc)localObject2).gxg;
+            ((com.tencent.mm.aj.d)localObject1).field_extInfo = ((wc)localObject2).gxe;
           }
-          if (!z.My().e((com.tencent.mm.ai.d)localObject1)) {
-            z.My().d((com.tencent.mm.ai.d)localObject1);
+          if (!z.afi().e((com.tencent.mm.aj.d)localObject1)) {
+            z.afi().d((com.tencent.mm.aj.d)localObject1);
           }
         }
-        localObject1 = new d((bqy)paramq.tHM.get(paramInt1));
+        localObject1 = new d((cbj)paramq.xMe.get(paramInt1));
         localObject2 = new h();
         ((h)localObject2).username = ((d)localObject1).field_username;
         if (((d)localObject1).field_hasHDImg <= 0) {
-          break label770;
+          break label755;
         }
         bool = true;
-        label471:
-        ((h)localObject2).bK(bool);
-        ((h)localObject2).cCq = ((d)localObject1).field_imgstatus;
-        ((h)localObject2).ebT = ((bqy)paramq.tHM.get(paramInt1)).sLD;
-        ((h)localObject2).ebS = ((bqy)paramq.tHM.get(paramInt1)).sLE;
-        o.Kh().a((h)localObject2);
-        ((h)localObject2).bcw = -1;
-        y.d("MicroMsg.NetSceneShakeGet", "dkhurl search %s b[%s] s[%s]", new Object[] { ((h)localObject2).getUsername(), ((h)localObject2).JX(), ((h)localObject2).JY() });
-        if (!paramArrayOfByte.abg(((d)localObject1).field_username)) {
-          break label776;
+        label456:
+        ((h)localObject2).cM(bool);
+        ((h)localObject2).dqB = ((d)localObject1).field_imgstatus;
+        ((h)localObject2).fsl = ((cbj)paramq.xMe.get(paramInt1)).wJq;
+        ((h)localObject2).fsk = ((cbj)paramq.xMe.get(paramInt1)).wJr;
+        o.adg().b((h)localObject2);
+        ((h)localObject2).bsY = -1;
+        ab.d("MicroMsg.NetSceneShakeGet", "dkhurl search %s b[%s] s[%s]", new Object[] { ((h)localObject2).getUsername(), ((h)localObject2).acX(), ((h)localObject2).acY() });
+        if (!paramArrayOfByte.arr(((d)localObject1).field_username)) {
+          break label761;
         }
       }
-      label770:
-      label776:
+      label755:
+      label761:
       for (i = 1;; i = 0)
       {
         ((d)localObject1).field_reserved2 = i;
-        localObject2 = paramArrayOfByte.abl(((d)localObject1).field_username);
-        if ((localObject2 != null) && ((int)((com.tencent.mm.n.a)localObject2).dBe > 0))
+        localObject2 = paramArrayOfByte.arw(((d)localObject1).field_username);
+        if ((localObject2 != null) && ((int)((com.tencent.mm.n.a)localObject2).euF > 0))
         {
-          locale.Mu(((ao)localObject2).field_username);
-          locale.Mu(((ao)localObject2).field_encryptUsername);
+          locale.Za(((aq)localObject2).field_username);
+          locale.Za(((aq)localObject2).field_encryptUsername);
         }
         locale.a((d)localObject1, false);
-        au.Hx();
-        c.Ga().z(((d)localObject1).field_username, this.nYF, ((bqy)paramq.tHM.get(paramInt1)).tac);
-        ((d)localObject1).scene = this.nYF;
-        this.nYE.add(localObject1);
-        y.v("MicroMsg.NetSceneShakeGet", "item info: " + ((d)localObject1).field_username + " " + ((d)localObject1).field_nickname);
+        aw.aaz();
+        c.Zb().x(((d)localObject1).field_username, this.qMP, ((cbj)paramq.xMe.get(paramInt1)).wYu);
+        ((d)localObject1).scene = this.qMP;
+        this.qMO.add(localObject1);
+        ab.v("MicroMsg.NetSceneShakeGet", "item info: " + ((d)localObject1).field_username + " " + ((d)localObject1).field_nickname);
         paramInt1 -= 1;
-        break label247;
+        break label232;
         paramInt1 = 0;
         break;
         bool = false;
-        break label471;
+        break label456;
       }
     }
-    label782:
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-  }
-  
-  public final int getType()
-  {
-    return 162;
+    label767:
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(24413);
   }
 }
 

@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.a.g.c;
 import com.tencent.mm.plugin.ipcall.a.g.d;
 import com.tencent.mm.plugin.ipcall.a.g.k;
@@ -17,22 +18,29 @@ final class e$4
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.lup.lug.sk(paramInt)) {}
-    do
+    AppMethodBeat.i(22036);
+    if (this.nRH.nRy.xj(paramInt))
     {
-      do
-      {
-        return;
-      } while (!(paramAdapterView instanceof ListView));
-      paramView = this.lup.lug.sQ(paramInt - ((ListView)paramAdapterView).getHeaderViewsCount());
-    } while (paramView == null);
-    paramAdapterView = null;
-    if (paramView.field_addressId > 0L) {
-      paramAdapterView = i.bcm().eU(paramView.field_addressId);
+      AppMethodBeat.o(22036);
+      return;
     }
-    Intent localIntent = new Intent(this.lup.lui, IPCallUserProfileUI.class);
-    if (paramAdapterView != null)
+    Intent localIntent;
+    if ((paramAdapterView instanceof ListView))
     {
+      paramView = this.nRH.nRy.xS(paramInt - ((ListView)paramAdapterView).getHeaderViewsCount());
+      if (paramView == null)
+      {
+        AppMethodBeat.o(22036);
+        return;
+      }
+      paramAdapterView = null;
+      if (paramView.field_addressId > 0L) {
+        paramAdapterView = i.bJt().kq(paramView.field_addressId);
+      }
+      localIntent = new Intent(this.nRH.nRA, IPCallUserProfileUI.class);
+      if (paramAdapterView == null) {
+        break label173;
+      }
       localIntent.putExtra("IPCallProfileUI_contactid", paramAdapterView.field_contactId);
       localIntent.putExtra("IPCallProfileUI_systemUsername", paramAdapterView.field_systemAddressBookUsername);
       localIntent.putExtra("IPCallProfileUI_wechatUsername", paramAdapterView.field_wechatUsername);
@@ -40,15 +48,17 @@ final class e$4
     for (;;)
     {
       localIntent.putExtra("IPCallProfileUI_isNeedShowRecord", true);
-      this.lup.lui.startActivity(localIntent);
+      this.nRH.nRA.startActivity(localIntent);
+      AppMethodBeat.o(22036);
       return;
+      label173:
       localIntent.putExtra("IPCallProfileUI_phonenumber", paramView.field_phonenumber);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.e.4
  * JD-Core Version:    0.7.0.1
  */

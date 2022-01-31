@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.widget.picker;
 
-import com.tencent.luggage.c.a.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandMultiOptionsPicker$1
   implements YANumberPicker.b
@@ -9,14 +9,16 @@ final class AppBrandMultiOptionsPicker$1
   
   public final void a(YANumberPicker paramYANumberPicker, int paramInt)
   {
-    if (AppBrandMultiOptionsPicker.a(this.hzZ) != null)
+    AppMethodBeat.i(126702);
+    if (AppBrandMultiOptionsPicker.a(this.jsp) != null)
     {
-      int i = ((Integer)paramYANumberPicker.getTag(a.c.app_brand_multi_options_picker_view_index_tag)).intValue();
-      paramYANumberPicker = AppBrandMultiOptionsPicker.a(this.hzZ);
-      if (paramYANumberPicker.hAl != null) {
-        paramYANumberPicker.hAl.aR(new int[] { i, paramInt });
+      int i = ((Integer)paramYANumberPicker.getTag(2131820564)).intValue();
+      paramYANumberPicker = AppBrandMultiOptionsPicker.a(this.jsp);
+      if (paramYANumberPicker.jsA != null) {
+        paramYANumberPicker.jsA.bl(new int[] { i, paramInt });
       }
     }
+    AppMethodBeat.o(126702);
   }
 }
 

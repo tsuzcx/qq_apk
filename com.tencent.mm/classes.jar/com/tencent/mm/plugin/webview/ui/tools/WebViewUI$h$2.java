@@ -1,24 +1,46 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.pointers.PBool;
-import com.tencent.xweb.f;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
 
 final class WebViewUI$h$2
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  WebViewUI$h$2(WebViewUI.h paramh, PBool paramPBool, f paramf) {}
+  WebViewUI$h$2(WebViewUI.h paramh, String paramString, int paramInt) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    this.rqK.value = true;
-    this.rqL.confirm();
+    AppMethodBeat.i(153262);
+    h localh = h.qsU;
+    String str = this.vgR;
+    int i = this.gKf;
+    Object localObject = ah.getContext();
+    if (at.isWifi((Context)localObject)) {
+      localObject = "wifi";
+    }
+    for (;;)
+    {
+      localh.e(17082, new Object[] { str, Integer.valueOf(i), localObject, WebViewUI.h.aiA("mp.weixin.qq.com") });
+      AppMethodBeat.o(153262);
+      return;
+      if (at.is4G((Context)localObject)) {
+        localObject = "4g";
+      } else if (at.is3G((Context)localObject)) {
+        localObject = "3g";
+      } else if (at.is2G((Context)localObject)) {
+        localObject = "2g";
+      } else {
+        localObject = "none";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.WebViewUI.h.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import android.app.ProgressDialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceSettingUI$2
   implements Runnable
@@ -9,7 +10,9 @@ final class ExdeviceSettingUI$2
   
   public final void run()
   {
-    ExdeviceSettingUI.a(this.jGn).dismiss();
+    AppMethodBeat.i(20216);
+    ExdeviceSettingUI.a(this.lPL).dismiss();
+    AppMethodBeat.o(20216);
   }
 }
 

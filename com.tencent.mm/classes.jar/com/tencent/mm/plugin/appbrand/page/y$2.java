@@ -1,14 +1,22 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.view.View;
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.m;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.performance.c;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class y$2
-  extends bf<Boolean>
+  implements Runnable
 {
-  y$2(y paramy, Boolean paramBoolean, View paramView, int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3, boolean paramBoolean1)
+  y$2(y paramy) {}
+  
+  public final void run()
   {
-    super(1000L, paramBoolean, (byte)0);
+    AppMethodBeat.i(143483);
+    this.ixC.getRuntime().gRn.C(3, bo.av(y.a(this.ixC)));
+    c.a(this.ixC.getAppId(), "Native", "WebViewInit+PageFrameLoad", y.a(this.ixC), System.currentTimeMillis(), "");
+    AppMethodBeat.o(143483);
   }
 }
 

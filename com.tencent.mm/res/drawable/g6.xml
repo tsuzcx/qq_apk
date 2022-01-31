@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <corners android:radius="15.0px" />
-            <solid android:color="@color/qt" />
-        </shape>
-    </item>
-</selector>
+    <solid android:color="@color/ka" />
+    <corners android:radius="@dimen/x4" />
+</shape>

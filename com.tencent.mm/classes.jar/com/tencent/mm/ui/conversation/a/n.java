@@ -1,341 +1,309 @@
 package com.tencent.mm.ui.conversation.a;
 
-import android.app.ProgressDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
-import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.PowerManager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.ki;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.q;
-import com.tencent.mm.modelsimple.l;
-import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.an.a;
+import com.tencent.mm.an.a.a;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.bi;
+import com.tencent.mm.storage.z;
+import java.io.OutputStream;
 import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public final class n
-  extends b
+  extends com.tencent.mm.pluginsdk.ui.b.b
+  implements View.OnClickListener
 {
-  private ProgressDialog dnm = null;
-  TextView eXO;
-  private TextView eXP;
-  private boolean esC = false;
-  private TextView foy;
-  private ImageView gSx;
-  View hNa = null;
-  int pIS = 0;
-  private TextView vVd;
-  private TextView vVe;
-  private ImageView vVf;
-  private ImageView vVg;
-  private ImageView vVh;
-  private ProgressBar vVi;
-  String vVj;
-  private boolean vVk = false;
-  int vVl;
-  boolean vVm;
-  boolean vVn;
-  boolean vVo;
-  String vVp;
-  am vVq;
-  com.tencent.mm.sdk.b.c<ki> vVr;
-  boolean vVs = false;
-  
-  public n(Context paramContext)
+  private static int dNc()
   {
-    super(paramContext);
-    initialize();
-  }
-  
-  private void initialize()
-  {
-    if ((!this.vVk) && (this.view != null))
+    AppMethodBeat.i(34702);
+    if (Build.VERSION.SDK_INT < 23)
     {
-      this.hNa = this.view.findViewById(R.h.nwview);
-      this.eXO = ((TextView)this.view.findViewById(R.h.nw_detail));
-      this.eXP = ((TextView)this.view.findViewById(R.h.nw_detail_tip));
-      this.foy = ((TextView)this.view.findViewById(R.h.nw_hint_tip));
-      this.vVd = ((TextView)this.view.findViewById(R.h.nw_btn));
-      this.vVi = ((ProgressBar)this.view.findViewById(R.h.nw_prog));
-      this.gSx = ((ImageView)this.view.findViewById(R.h.nw_icon));
-      this.vVf = ((ImageView)this.view.findViewById(R.h.close_icon));
-      this.vVg = ((ImageView)this.view.findViewById(R.h.forward_icon));
-      this.vVh = ((ImageView)this.view.findViewById(R.h.silent_icon));
-      this.vVe = ((TextView)this.view.findViewById(R.h.empty_space));
-      this.vVf.setVisibility(8);
-      this.vVk = true;
+      AppMethodBeat.o(34702);
+      return 1;
+    }
+    PowerManager localPowerManager = (PowerManager)ah.getContext().getSystemService("power");
+    for (;;)
+    {
+      try
+      {
+        boolean bool = localPowerManager.isIgnoringBatteryOptimizations(ah.getContext().getPackageName());
+        ab.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]app is ignore:".concat(String.valueOf(bool)));
+        ab.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]is device idle mode:" + localPowerManager.isDeviceIdleMode());
+        if (bool) {
+          continue;
+        }
+        i = 2;
+      }
+      catch (Exception localException)
+      {
+        ab.e("MicroMsg.MsgDelayTipsBanner", "[oneliang]ignoring battery optimizations check failure.use another way.");
+        int i = 3;
+        continue;
+      }
+      AppMethodBeat.o(34702);
+      return i;
+      i = 3;
     }
   }
   
-  public final boolean apu()
+  private static int dNd()
   {
-    int j = 0;
-    int i = au.Dk().KG();
-    Object localObject = au.Dk().getNetworkServerIp();
-    this.vVj = String.format("http://w.mail.qq.com/cgi-bin/report_mm?failuretype=1&devicetype=2&clientversion=%s&os=%s&username=%s&iport=%s&t=weixin_bulletin&f=xhtml&lang=%s", new Object[] { "0x" + Integer.toHexString(com.tencent.mm.protocal.d.spa), com.tencent.mm.protocal.d.dOM, q.Gj(), localObject, x.cqJ() });
-    initialize();
-    y.i("MicroMsg.NetWarnView", "update st:%d", new Object[] { Integer.valueOf(i) });
-    boolean bool1;
-    boolean bool2;
-    switch (i)
+    AppMethodBeat.i(34703);
+    String str = Build.BRAND;
+    if (str == null)
     {
-    case 1: 
-    case 4: 
-    default: 
-      bool1 = false;
-      if (bool1)
-      {
-        this.foy.setVisibility(8);
-        this.eXO.setVisibility(0);
-        this.hNa.setBackgroundResource(R.g.tips_bar_red_selector);
-        localObject = new LinearLayout.LayoutParams(this.gSx.getLayoutParams());
-        ((LinearLayout.LayoutParams)localObject).setMargins(com.tencent.mm.cb.a.fromDPToPix((Context)this.sdy.get(), 10), 0, com.tencent.mm.cb.a.fromDPToPix((Context)this.sdy.get(), 4), 0);
-        this.gSx.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        this.gSx.setImageResource(R.k.tipsbar_icon_warning);
-        this.vVg.setVisibility(8);
-        this.vVh.setVisibility(8);
-        this.vVe.setVisibility(8);
-        bool2 = bool1;
-        label274:
-        bool1 = bool2;
-        if (!bool2)
-        {
-          this.vVf.setVisibility(8);
-          bool1 = bool2;
-          if (ae.eSj)
-          {
-            i = aq.getBackgroundLimitType((Context)this.sdy.get());
-            if ((!aq.isLimited(i)) || (this.vVs)) {
-              break label1293;
-            }
-            this.eXO.setText(((Context)this.sdy.get()).getString(R.l.process_limited_warn_title));
-            this.eXP.setText(((Context)this.sdy.get()).getString(R.l.process_limited_warn_message));
-            this.eXP.setVisibility(0);
-            this.vVd.setVisibility(8);
-            this.vVi.setVisibility(8);
-            this.gSx.setVisibility(0);
-            this.vVf.setVisibility(0);
-            this.hNa.setOnClickListener(new n.7(this, i));
-            this.vVf.setOnClickListener(new n.8(this, i));
-            bool1 = true;
-          }
-        }
-        label450:
-        this.vVh.setImageResource(R.k.chat_mute_notify_normal);
-        this.vVf.setImageResource(R.g.bottle_close_frame_state);
-        localObject = this.hNa;
-        if (!bool1) {
-          break label1308;
-        }
-      }
-      break;
+      AppMethodBeat.o(34703);
+      return 2131306194;
     }
-    label1025:
-    label1288:
-    label1293:
-    label1308:
-    for (i = j;; i = 8)
+    if (str.toLowerCase().startsWith("samsung"))
     {
-      ((View)localObject).setVisibility(i);
-      return bool1;
-      this.eXO.setText(R.l.net_warn_no_network);
-      this.eXP.setVisibility(8);
-      this.vVd.setVisibility(8);
-      this.vVi.setVisibility(8);
-      this.gSx.setVisibility(0);
-      this.hNa.setOnClickListener(new View.OnClickListener()
+      AppMethodBeat.o(34703);
+      return 2131306195;
+    }
+    if (str.toLowerCase().equalsIgnoreCase("huawei"))
+    {
+      if ((Build.VERSION.SDK_INT == 21) || (Build.VERSION.SDK_INT == 22) || (Build.VERSION.SDK_INT == 23))
       {
-        public final void onClick(View paramAnonymousView)
-        {
-          paramAnonymousView = new Intent();
-          paramAnonymousView.putExtra("title", ((Context)n.this.sdy.get()).getString(R.l.net_warn_no_network));
-          paramAnonymousView.putExtra("rawUrl", ((Context)n.this.sdy.get()).getString(R.l.net_warn_detail_doc));
-          paramAnonymousView.putExtra("showShare", false);
-          com.tencent.mm.br.d.b((Context)n.this.sdy.get(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
-        }
-      });
-      bool1 = true;
-      break;
-      this.eXO.setText(R.l.net_warn_connecting);
-      this.eXP.setVisibility(8);
-      this.vVd.setVisibility(8);
-      this.vVi.setVisibility(0);
-      this.gSx.setVisibility(0);
-      bool1 = true;
-      break;
-      if (this.pIS == 1) {
-        this.eXO.setText(((Context)this.sdy.get()).getResources().getString(R.l.net_warn_diagnose_doing, new Object[] { Integer.valueOf(this.vVl) }));
+        AppMethodBeat.o(34703);
+        return 2131306192;
       }
+      if (Build.VERSION.SDK_INT == 24)
+      {
+        AppMethodBeat.o(34703);
+        return 2131306193;
+      }
+    }
+    else
+    {
+      AppMethodBeat.o(34703);
+      return 2131306194;
+    }
+    AppMethodBeat.o(34703);
+    return 2131306194;
+  }
+  
+  public static void iv(Context paramContext)
+  {
+    AppMethodBeat.i(34704);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(34704);
+      return;
+    }
+    switch (dNc())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(34704);
+      return;
+      int i = dNd();
+      if (i > 0)
+      {
+        com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(i), "", new n.1());
+        AppMethodBeat.o(34704);
+        return;
+      }
+      ab.e("MicroMsg.MsgDelayTipsBanner", "[oneliang]impossible......");
+      AppMethodBeat.o(34704);
+      return;
+      ab.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]need to add ignore");
+      Intent localIntent = new Intent("android.settings.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS").setData(Uri.parse("package:" + ah.getContext().getPackageName()));
+      localIntent.setFlags(268435456);
+      paramContext.startActivity(localIntent);
+    }
+  }
+  
+  public static void iw(Context paramContext)
+  {
+    AppMethodBeat.i(34705);
+    paramContext.getString(2131297087);
+    localObject2 = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(2131297112), true, new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(34700);
+        if (paramAnonymousDialogInterface != null) {
+          paramAnonymousDialogInterface.dismiss();
+        }
+        AppMethodBeat.o(34700);
+      }
+    });
+    Object localObject3 = a.agj();
+    Object localObject1 = new StringBuilder();
+    if (localObject3 != null)
+    {
+      localObject3 = ((List)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (a.a)((Iterator)localObject3).next();
+        ((StringBuilder)localObject1).append(((a.a)localObject4).toString());
+        ab.i("MicroMsg.MsgDelayTipsBanner", ((a.a)localObject4).toString());
+      }
+    }
+    if (localObject2 != null) {
+      ((Dialog)localObject2).dismiss();
+    }
+    localObject2 = new StringBuilder();
+    aw.aaz();
+    localObject2 = c.Yv() + "/delayedMsg";
+    com.tencent.mm.vfs.e.um((String)localObject2);
+    Object localObject4 = new com.tencent.mm.vfs.b((String)localObject2, "data.txt");
+    String str = ((StringBuilder)localObject1).toString();
+    if (!((com.tencent.mm.vfs.b)localObject4).exists()) {}
+    try
+    {
+      ((com.tencent.mm.vfs.b)localObject4).createNewFile();
+      localObject2 = null;
+      localObject1 = null;
+    }
+    catch (Exception localException1)
+    {
       for (;;)
       {
-        this.eXP.setVisibility(8);
-        this.vVd.setVisibility(8);
-        this.vVi.setVisibility(8);
-        this.gSx.setVisibility(0);
-        this.hNa.setOnClickListener(new n.4(this));
-        bool1 = true;
-        break;
-        this.eXO.setText(R.l.net_warn_diagnose_begin);
-      }
-      this.eXO.setText(R.l.net_warn_server_down);
-      this.eXP.setText(((Context)this.sdy.get()).getString(R.l.net_warn_server_down_tip));
-      this.eXP.setVisibility(0);
-      this.vVd.setVisibility(8);
-      this.vVi.setVisibility(8);
-      this.gSx.setVisibility(0);
-      this.hNa.setOnClickListener(new n.5(this));
-      bool1 = true;
-      break;
-      au.Hx();
-      if (com.tencent.mm.model.c.Fs())
-      {
-        au.Hx();
-        if (l.jb(com.tencent.mm.model.c.Ft()))
+        try
         {
-          localObject = au.Dk();
-          au.Hx();
-          ((p)localObject).a(new l(com.tencent.mm.model.c.Ft()), 0);
-          bool2 = bool1;
-          break label274;
+          localObject3 = com.tencent.mm.vfs.e.s((com.tencent.mm.vfs.b)localObject4);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          ((OutputStream)localObject3).write((str + "\n").getBytes("UTF-8"));
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          ((OutputStream)localObject3).flush();
+          if (localObject3 == null) {}
         }
-      }
-      au.Hx();
-      bool2 = bool1;
-      if (!com.tencent.mm.model.c.Fs()) {
-        break label274;
-      }
-      bool2 = bool1;
-      if (ah.bl(l.ezp)) {
-        break label274;
-      }
-      bool2 = bool1;
-      if (l.Qs()) {
-        break label274;
-      }
-      this.hNa.setBackgroundResource(R.g.tips_bar_white_selector);
-      localObject = new LinearLayout.LayoutParams(this.gSx.getLayoutParams());
-      ((LinearLayout.LayoutParams)localObject).setMargins(com.tencent.mm.cb.a.fromDPToPix((Context)this.sdy.get(), 22), 0, com.tencent.mm.cb.a.fromDPToPix((Context)this.sdy.get(), 20), 0);
-      this.gSx.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.eXO.setVisibility(8);
-      this.eXP.setVisibility(8);
-      this.foy.setVisibility(0);
-      if (q.hH(q.Gp())) {
-        if ((!l.Qv()) && (l.Qt()))
+        catch (Exception localException5)
         {
-          this.foy.setText(l.ezw);
-          this.vVd.setVisibility(8);
-          this.vVi.setVisibility(8);
-          this.gSx.setPadding(0, 0, 0, 0);
-          if (l.Qr() != 1) {
-            break label1216;
+          localObject2 = localException2;
+          ab.i("MicroMsg.MsgDelayTipsBanner", "exception:" + localException5.getMessage());
+          if (localException2 == null) {
+            continue;
           }
-          this.gSx.setImageResource(R.k.connectkeyboad_banner_icon_pc);
-          label1071:
-          this.gSx.setVisibility(0);
-          this.vVg.setVisibility(8);
-          this.vVh.setVisibility(8);
-          localObject = this.vVe;
-          if (!q.hH(q.Gp())) {
-            break label1288;
-          }
-        }
-      }
-      for (i = 8;; i = 0)
-      {
-        ((TextView)localObject).setVisibility(i);
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("intent.key.online_version", l.Qu());
-        this.hNa.setOnClickListener(new n.6(this, (Intent)localObject));
-        bool2 = true;
-        break;
-        this.foy.setText(l.ezp);
-        break label1025;
-        if ((!l.Qv()) && (l.Qt()))
-        {
-          this.foy.setText(l.ezx);
-          break label1025;
-        }
-        this.foy.setText(l.ezs);
-        break label1025;
-        label1216:
-        if (l.Qr() == 2)
-        {
-          if (l.Qt())
+          try
           {
-            this.gSx.setImageResource(R.k.connectkeyboad_banner_icon_maclock);
-            break label1071;
+            localException2.close();
           }
-          this.gSx.setImageResource(R.k.connectkeyboad_banner_icon_mac);
-          break label1071;
+          catch (Exception localException3)
+          {
+            ab.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException3.getMessage());
+          }
+          continue;
         }
-        if (l.Qr() == 3)
+        finally
         {
-          this.gSx.setImageResource(R.k.connectkeyboad_banner_icon_ipad);
-          break label1071;
+          if (localObject2 == null) {
+            continue;
+          }
+          try
+          {
+            ((OutputStream)localObject2).close();
+            AppMethodBeat.o(34705);
+            throw paramContext;
+          }
+          catch (Exception localException4)
+          {
+            ab.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException4.getMessage());
+            continue;
+          }
+          localException4.setStatus(3);
+          continue;
         }
-        this.gSx.setImageResource(R.k.tipsbar_icon_default);
-        break label1071;
+        try
+        {
+          ((OutputStream)localObject3).close();
+          Toast.makeText(paramContext, com.tencent.mm.vfs.j.p(((com.tencent.mm.vfs.b)localObject4).dQJ()), 1).show();
+          paramContext = com.tencent.mm.vfs.j.p(((com.tencent.mm.vfs.b)localObject4).dQJ());
+          localObject1 = new bi();
+          ((bi)localObject1).kj("weixin");
+          ((bi)localObject1).setContent(paramContext);
+          ((bi)localObject1).setType(1);
+          ((bi)localObject1).hL(0);
+          if (((dd)localObject1).field_isSend == 1)
+          {
+            ((bi)localObject1).setStatus(4);
+            long l = System.currentTimeMillis();
+            ((bi)localObject1).fP(l);
+            ((bi)localObject1).fQ(l);
+            ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Z((bi)localObject1);
+            AppMethodBeat.o(34705);
+            return;
+            localException1 = localException1;
+            ab.i("MicroMsg.MsgDelayTipsBanner", "create new file exception:" + localException1.getMessage());
+          }
+        }
+        catch (Exception localException2)
+        {
+          ab.i("MicroMsg.MsgDelayTipsBanner", "close exception:" + localException2.getMessage());
+        }
       }
-      this.vVf.setVisibility(8);
-      bool1 = bool2;
-      break label450;
     }
   }
   
-  final void cIw()
+  public final boolean aMK()
   {
-    if (this.vVq != null)
+    AppMethodBeat.i(34706);
+    ab.i("MicroMsg.MsgDelayTipsBanner", "refresh banner.");
+    g.RM();
+    boolean bool = g.RL().Ru().getBoolean(ac.a.yIv, false);
+    ab.i("MicroMsg.MsgDelayTipsBanner", "[oneliang]need to show banner:%s", new Object[] { Boolean.valueOf(bool) });
+    if (bool) {
+      if (this.view != null) {
+        this.view.setVisibility(0);
+      }
+    }
+    for (;;)
     {
-      this.vVq.stopTimer();
-      this.vVq = null;
+      bool = super.aMK();
+      AppMethodBeat.o(34706);
+      return bool;
+      if (this.view != null) {
+        this.view.setVisibility(8);
+      }
     }
   }
   
-  public final void destroy()
-  {
-    cIw();
-    if (this.vVr != null) {
-      com.tencent.mm.sdk.b.a.udP.d(this.vVr);
-    }
-  }
+  public final void destroy() {}
   
   public final int getLayoutId()
   {
-    return R.i.net_warn_item;
+    return 2130970072;
   }
   
-  public final int getOrder()
+  public final void onClick(View paramView)
   {
-    return 2;
-  }
-  
-  public final void setVisibility(int paramInt)
-  {
-    if (this.hNa != null) {
-      this.hNa.setVisibility(paramInt);
+    AppMethodBeat.i(34701);
+    iv((Context)this.vUD.get());
+    g.RM();
+    g.RL().Ru().set(ac.a.yIv, Boolean.FALSE);
+    if (this.view != null) {
+      this.view.setVisibility(8);
     }
+    AppMethodBeat.o(34701);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.n
  * JD-Core Version:    0.7.0.1
  */

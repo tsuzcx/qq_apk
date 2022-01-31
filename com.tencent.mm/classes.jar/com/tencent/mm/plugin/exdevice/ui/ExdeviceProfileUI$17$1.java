@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.p;
 
 final class ExdeviceProfileUI$17$1
@@ -9,14 +10,16 @@ final class ExdeviceProfileUI$17$1
   
   public final void run()
   {
-    if (ExdeviceProfileUI.d(this.jER.jEM) != null) {
-      ExdeviceProfileUI.d(this.jER.jEM).dismiss();
+    AppMethodBeat.i(20040);
+    if (ExdeviceProfileUI.d(this.lOq.lOl) != null) {
+      ExdeviceProfileUI.d(this.lOq.lOl).dismiss();
     }
+    AppMethodBeat.o(20040);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI.17.1
  * JD-Core Version:    0.7.0.1
  */

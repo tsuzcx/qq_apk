@@ -6,128 +6,238 @@ import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
+import android.view.WindowManager;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mm.plugin.appbrand.widget.k.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.luggage.g.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Set;
 
 public final class e
-  extends FrameLayout
-  implements i
+  extends RelativeLayout
+  implements l
 {
-  private final g hsv = new g(this);
-  public final LinkedList<h> hsw = new LinkedList();
-  private final Runnable hsx = new e.2(this);
-  private h hsy;
-  private h hsz;
-  private final View.OnClickListener mOnClickListener = new e.1(this);
+  final Set<Object> jjk;
+  private final j jjl;
+  public final LinkedList<k> jjm;
+  private final Runnable jjn;
+  private k jjo;
+  private k jjp;
+  private final View.OnClickListener mOnClickListener;
+  private int mRotation;
   
   public e(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(77409);
+    this.mRotation = 0;
+    this.jjk = new HashSet();
+    this.jjl = new j(this);
+    this.jjm = new LinkedList();
+    this.mOnClickListener = new e.1(this);
+    this.jjn = new e.2(this);
     setVisibility(4);
     setBackgroundColor(0);
     setOnClickListener(this.mOnClickListener);
+    paramContext = (WindowManager)getContext().getSystemService("window");
+    if (paramContext != null) {
+      this.mRotation = paramContext.getDefaultDisplay().getRotation();
+    }
+    AppMethodBeat.o(77409);
   }
   
-  public final void b(h paramh)
+  private static Animator K(View paramView, int paramInt)
   {
-    if (!ai.isMainThread())
+    AppMethodBeat.i(143025);
+    if (paramInt == 2)
     {
-      ai.d(new e.3(this, paramh));
+      localObject = new AccelerateInterpolator();
+      localAnimatorSet = new AnimatorSet();
+      paramView = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { 0.0F, paramView.getHeight() }).setDuration(200L);
+      paramView.setInterpolator((TimeInterpolator)localObject);
+      localAnimatorSet.playTogether(new Animator[] { paramView });
+      AppMethodBeat.o(143025);
+      return localAnimatorSet;
+    }
+    Interpolator localInterpolator = AnimationUtils.loadInterpolator(paramView.getContext(), 2131034154);
+    Object localObject = AnimationUtils.loadInterpolator(paramView.getContext(), 2131034153);
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { 1.0F, 0.9F }).setDuration(220L);
+    localObjectAnimator1.setInterpolator(localInterpolator);
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { 1.0F, 0.9F }).setDuration(220L);
+    localObjectAnimator2.setInterpolator(localInterpolator);
+    paramView = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 1.0F, 0.0F }).setDuration(150L);
+    paramView.setInterpolator((TimeInterpolator)localObject);
+    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, paramView });
+    AppMethodBeat.o(143025);
+    return localAnimatorSet;
+  }
+  
+  public final void b(k paramk)
+  {
+    int i = 1;
+    AppMethodBeat.i(77410);
+    if (paramk == null)
+    {
+      AppMethodBeat.o(77410);
       return;
     }
-    com.tencent.luggage.j.e.af(getContext());
-    Object localObject = this.hsv;
-    int i;
-    if ((((g)localObject).hsF != null) && (((g)localObject).hsF.isRunning()))
+    ab.i("MicroMsg.AppBrandDialogContainerLayout", "showDialog dialog[%s] tid[%d]", new Object[] { paramk.getClass().getName(), Long.valueOf(Thread.currentThread().getId()) });
+    if (!al.isMainThread())
     {
-      i = 1;
+      al.d(new e.3(this, paramk));
+      AppMethodBeat.o(77410);
+      return;
+    }
+    f.av(getContext());
+    Object localObject = this.jjl;
+    View localView;
+    if ((((j)localObject).ggX != null) && (((j)localObject).ggX.isRunning()))
+    {
       if (i != 0)
       {
-        localObject = this.hsv;
-        if (((g)localObject).hsF != null) {
-          ((g)localObject).hsF.cancel();
+        localObject = this.jjl;
+        if (((j)localObject).ggX != null) {
+          ((j)localObject).ggX.cancel();
         }
       }
-      localObject = paramh.getContentView();
-      if (((View)localObject).getParent() != this) {
-        if ((localObject != null) && (((View)localObject).getParent() != null)) {
-          break label200;
+      localView = paramk.getContentView();
+      if (localView.getParent() != this)
+      {
+        if ((localView != null) && (localView.getParent() != null)) {
+          break label301;
+        }
+        label157:
+        if (paramk.getPosition() != 2) {
+          break label317;
+        }
+        localObject = new RelativeLayout.LayoutParams(-1, -2);
+        ((RelativeLayout.LayoutParams)localObject).addRule(12);
+        ((RelativeLayout.LayoutParams)localObject).addRule(14);
+        label190:
+        addView(localView, (ViewGroup.LayoutParams)localObject);
+        if (this.jjp != paramk)
+        {
+          localView.clearAnimation();
+          if (paramk.getPosition() != 2) {
+            break label338;
+          }
+          localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2131034190));
         }
       }
     }
     for (;;)
     {
-      addView((View)localObject, new FrameLayout.LayoutParams(-2, -2, 17));
-      if (this.hsz != paramh)
-      {
-        ((View)localObject).clearAnimation();
-        ((View)localObject).startAnimation(AnimationUtils.loadAnimation(getContext(), k.a.appbrand_dialog_enter));
-      }
-      this.hsz = paramh;
-      ((View)localObject).setOnClickListener(this.mOnClickListener);
-      this.hsw.add(paramh);
-      paramh.a(this);
+      this.jjp = paramk;
+      localView.setOnClickListener(this.mOnClickListener);
+      this.jjm.add(paramk);
+      paramk.a(this);
       setVisibility(0);
-      this.hsv.c(Color.argb(127, 0, 0, 0), null);
+      bringToFront();
+      this.jjl.c(Color.argb(127, 0, 0, 0), null);
+      AppMethodBeat.o(77410);
       return;
       i = 0;
       break;
-      label200:
-      ((ViewGroup)((View)localObject).getParent()).removeView((View)localObject);
+      label301:
+      ((ViewGroup)localView.getParent()).removeView(localView);
+      break label157;
+      label317:
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).addRule(13);
+      break label190;
+      label338:
+      localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2131034139));
     }
   }
   
-  public final void c(h paramh)
+  public final void c(k paramk)
   {
-    if (paramh.getContentView().getParent() != this) {}
-    do
+    AppMethodBeat.i(77411);
+    if (paramk.getContentView().getParent() != this)
     {
-      do
-      {
-        return;
-      } while (this.hsy == paramh);
-      this.hsy = paramh;
-      View localView = paramh.getContentView();
-      localView.animate().cancel();
-      localView.clearAnimation();
-      Object localObject = AnimationUtils.loadInterpolator(localView.getContext(), k.a.decelerate_quint_interpolator);
-      Interpolator localInterpolator = AnimationUtils.loadInterpolator(localView.getContext(), k.a.decelerate_cubic_interpolator);
-      AnimatorSet localAnimatorSet = new AnimatorSet();
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(localView, "scaleX", new float[] { 1.0F, 0.9F }).setDuration(220L);
-      localObjectAnimator1.setInterpolator((TimeInterpolator)localObject);
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(localView, "scaleY", new float[] { 1.0F, 0.9F }).setDuration(220L);
-      localObjectAnimator2.setInterpolator((TimeInterpolator)localObject);
-      localObject = ObjectAnimator.ofFloat(localView, "alpha", new float[] { 1.0F, 0.0F }).setDuration(150L);
-      ((Animator)localObject).setInterpolator(localInterpolator);
-      localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObject });
-      localAnimatorSet.addListener(new e.4(this, localView, paramh));
-      localAnimatorSet.start();
-    } while (this.hsw.size() > 1);
-    this.hsv.c(0, this.hsx);
+      AppMethodBeat.o(77411);
+      return;
+    }
+    if (this.jjo == paramk)
+    {
+      AppMethodBeat.o(77411);
+      return;
+    }
+    this.jjo = paramk;
+    View localView = paramk.getContentView();
+    localView.animate().cancel();
+    localView.clearAnimation();
+    Animator localAnimator = K(localView, paramk.getPosition());
+    localAnimator.addListener(new e.4(this, localView, paramk));
+    localAnimator.start();
+    if (this.jjm.size() <= 1) {
+      this.jjl.c(0, this.jjn);
+    }
+    AppMethodBeat.o(77411);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (getChildCount() == 0) {
+    AppMethodBeat.i(77413);
+    if (getChildCount() == 0)
+    {
+      AppMethodBeat.o(77413);
       return false;
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(77413);
+    return bool;
+  }
+  
+  public final k getCurrentDialog()
+  {
+    AppMethodBeat.i(77412);
+    k localk = (k)this.jjm.peekLast();
+    AppMethodBeat.o(77412);
+    return localk;
+  }
+  
+  protected final void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    AppMethodBeat.i(77415);
+    super.onConfigurationChanged(paramConfiguration);
+    paramConfiguration = (WindowManager)getContext().getSystemService("window");
+    if (paramConfiguration != null)
+    {
+      int i = paramConfiguration.getDefaultDisplay().getRotation();
+      if (this.mRotation != i)
+      {
+        this.mRotation = i;
+        paramConfiguration = this.jjm.iterator();
+        while (paramConfiguration.hasNext()) {
+          ((k)paramConfiguration.next()).pq(this.mRotation);
+        }
+      }
+    }
+    AppMethodBeat.o(77415);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.b.e
  * JD-Core Version:    0.7.0.1
  */

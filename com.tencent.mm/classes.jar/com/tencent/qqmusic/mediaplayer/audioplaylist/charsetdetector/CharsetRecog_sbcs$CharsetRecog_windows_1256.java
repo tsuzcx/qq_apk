@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class CharsetRecog_sbcs$CharsetRecog_windows_1256
   extends CharsetRecog_sbcs
 {
@@ -18,11 +20,16 @@ class CharsetRecog_sbcs$CharsetRecog_windows_1256
   
   public CharsetMatch match(CharsetDetector paramCharsetDetector)
   {
+    AppMethodBeat.i(104726);
     int i = match(paramCharsetDetector, ngrams, byteMap);
-    if (i == 0) {
+    if (i == 0)
+    {
+      AppMethodBeat.o(104726);
       return null;
     }
-    return new CharsetMatch(paramCharsetDetector, this, i);
+    paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i);
+    AppMethodBeat.o(104726);
+    return paramCharsetDetector;
   }
 }
 

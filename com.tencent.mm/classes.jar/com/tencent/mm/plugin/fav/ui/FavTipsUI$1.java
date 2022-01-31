@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fav.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavTipsUI$1
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class FavTipsUI$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.kdz.finish();
+    AppMethodBeat.i(74165);
+    this.myj.finish();
+    AppMethodBeat.o(74165);
   }
 }
 

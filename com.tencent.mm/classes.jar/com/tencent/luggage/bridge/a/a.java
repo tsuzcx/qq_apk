@@ -2,7 +2,7 @@ package com.tencent.luggage.bridge.a;
 
 public final class a
 {
-  public static a.b bhU;
+  public static a.b byu;
 }
 
 

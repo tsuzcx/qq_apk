@@ -1,20 +1,17 @@
 package com.tencent.mm.plugin.account.security.ui;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.plugin.account.security.a.a;
-import com.tencent.mm.plugin.account.security.a.b;
-import com.tencent.mm.plugin.account.security.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.plugin.account.security.a.e;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.MMEditText.c;
@@ -23,85 +20,108 @@ public class ModSafeDeviceNameUI
   extends MMActivity
   implements f
 {
-  private String bJp;
+  private String cqJ;
   private long createTime;
-  private ProgressDialog dnm = null;
-  private EditText fka;
-  private String fkb;
-  private String fkc;
-  private String fkd;
+  private ProgressDialog eeN = null;
+  private EditText gBr;
+  private String gBs;
+  private String gBt;
+  private String gBu;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.b.mod_safe_device_name;
+    return 2130970297;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.fkb = getIntent().getStringExtra("safe_device_name");
-    this.fkd = getIntent().getStringExtra("safe_device_uid");
-    this.bJp = getIntent().getStringExtra("safe_device_type");
-    setMMTitle(com.tencent.mm.cb.a.ac(this, a.d.safe_device_edit_title));
+    AppMethodBeat.i(69870);
+    this.gBs = getIntent().getStringExtra("safe_device_name");
+    this.gBu = getIntent().getStringExtra("safe_device_uid");
+    this.cqJ = getIntent().getStringExtra("safe_device_type");
+    setMMTitle(com.tencent.mm.cb.a.aq(this, 2131302847));
     setBackBtn(new ModSafeDeviceNameUI.1(this));
-    addTextOptionMenu(0, getString(a.d.app_save), new ModSafeDeviceNameUI.2(this));
+    addTextOptionMenu(0, getString(2131297063), new ModSafeDeviceNameUI.2(this));
     ModSafeDeviceNameUI.3 local3 = new ModSafeDeviceNameUI.3(this);
-    this.fka = ((EditText)findViewById(a.a.mod_safe_device_name));
-    MMEditText.c localc = new MMEditText.c(this.fka, null, 32);
-    localc.wjn = local3;
-    this.fka.addTextChangedListener(localc);
-    if (!bk.bl(this.fkb))
+    this.gBr = ((EditText)findViewById(2131826327));
+    MMEditText.c localc = new MMEditText.c(this.gBr, null, 32);
+    localc.ACU = local3;
+    this.gBr.addTextChangedListener(localc);
+    if (!bo.isNullOrNil(this.gBs))
     {
-      this.fka.setText(this.fkb);
+      this.gBr.setText(this.gBs);
+      AppMethodBeat.o(69870);
       return;
     }
     enableOptionMenu(false);
+    AppMethodBeat.o(69870);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(69867);
     super.onCreate(paramBundle);
     initView();
+    AppMethodBeat.o(69867);
   }
   
-  protected void onPause()
+  public void onPause()
   {
-    com.tencent.mm.kernel.g.Dk().b(361, this);
+    AppMethodBeat.i(69869);
+    com.tencent.mm.kernel.g.Rc().b(361, this);
     super.onPause();
+    AppMethodBeat.o(69869);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    com.tencent.mm.kernel.g.Dk().a(361, this);
+    AppMethodBeat.i(69868);
+    com.tencent.mm.kernel.g.Rc().a(361, this);
     super.onResume();
+    AppMethodBeat.o(69868);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    if ((this.dnm != null) && (this.dnm.isShowing()))
+    AppMethodBeat.i(69871);
+    if ((this.eeN != null) && (this.eeN.isShowing()))
     {
-      this.dnm.dismiss();
-      this.dnm = null;
+      this.eeN.dismiss();
+      this.eeN = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       paramString = new d();
-      paramString.field_devicetype = this.bJp;
-      paramString.field_name = this.fkc;
-      paramString.field_uid = this.fkd;
+      paramString.field_devicetype = this.cqJ;
+      paramString.field_name = this.gBt;
+      paramString.field_uid = this.gBu;
       paramString.field_createtime = this.createTime;
-      com.tencent.mm.plugin.account.security.a.g.XB().c(paramString, new String[0]);
-      h.bC(this, com.tencent.mm.cb.a.ac(this, a.d.safe_device_mod_name_ok));
-      new ah().postDelayed(new Runnable()
+      com.tencent.mm.plugin.account.security.a.g.ard().update(paramString, new String[0]);
+      h.bO(this, com.tencent.mm.cb.a.aq(this, 2131302851));
+      new ak().postDelayed(new Runnable()
       {
         public final void run()
         {
+          AppMethodBeat.i(69866);
           ModSafeDeviceNameUI.this.finish();
+          AppMethodBeat.o(69866);
         }
       }, 1000L);
-    }
-    while (!com.tencent.mm.plugin.account.a.a.eUS.a(this, paramInt1, paramInt2, paramString)) {
+      AppMethodBeat.o(69871);
       return;
     }
+    if (com.tencent.mm.plugin.account.a.a.gmP.a(this, paramInt1, paramInt2, paramString))
+    {
+      AppMethodBeat.o(69871);
+      return;
+    }
+    AppMethodBeat.o(69871);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

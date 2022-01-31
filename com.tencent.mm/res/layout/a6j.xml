@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/wl" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/c9" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:id="@id/cc6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c9">
-            <ImageView android:id="@id/ok" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginLeft="@dimen/c7" android:src="@drawable/b2f" android:scaleType="fitXY" />
-            <TextView android:textSize="@dimen/cm" android:textColor="@color/fc" android:id="@id/cc7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="5.0dip" android:layout_toRightOf="@id/ok" />
-            <TextView android:textSize="@dimen/cr" android:textColor="@color/u9" android:id="@id/cc8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cq" android:text="tsubasa_2011" android:layout_toRightOf="@id/ok" android:layout_below="@id/cc7" />
-        </RelativeLayout>
-        <TextView android:textSize="@dimen/ck" android:textColor="@color/u7" android:id="@id/cc9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c_" android:layout_marginTop="@dimen/cl" android:text="@string/cc4" />
-        <LinearLayout android:orientation="vertical" android:id="@id/cc_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ch" />
-        <LinearLayout android:orientation="vertical" android:id="@id/cca" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" />
-        <TextView android:textSize="@dimen/ca" android:textColor="@color/qm" android:gravity="center|left" android:id="@id/ccb" android:background="@drawable/tw" android:paddingLeft="@dimen/c_" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/mp" android:layout_marginTop="@dimen/cb" android:text="@string/cbn" />
-        <TextView android:textSize="@dimen/ca" android:textColor="@color/qm" android:gravity="center|left" android:id="@id/ccc" android:background="@drawable/tw" android:paddingLeft="@dimen/c_" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/mp" android:text="@string/cbo" />
-        <TextView android:textSize="@dimen/ca" android:textColor="@color/qm" android:gravity="center|left" android:id="@id/ccd" android:background="@drawable/tw" android:paddingLeft="@dimen/c_" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/mp" android:text="@string/cbs" />
-        <Button android:layout_gravity="center" android:id="@id/cce" android:layout_marginLeft="@dimen/cn" android:layout_marginTop="@dimen/co" android:layout_marginRight="@dimen/cn" android:text="@string/cbr" style="@style/mu" />
-        <TextView android:textSize="@dimen/ck" android:textColor="@color/u7" android:id="@id/ccf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c_" android:layout_marginTop="@dimen/cl" android:layout_marginRight="@dimen/c_" />
-    </LinearLayout>
-</ScrollView>
+    <TextView android:id="@id/cbf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/lg" />
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/lg" />
+    <CheckBox android:id="@id/cbg" android:background="@drawable/a0c" android:focusable="false" android:clickable="false" android:layout_height="20.0dip" android:singleLine="true" style="@style/lj" />
+</LinearLayout>

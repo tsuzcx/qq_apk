@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.ui;
 
 public abstract interface SelectScanModePanel$a
 {
-  public abstract void wQ(int paramInt);
+  public abstract void CH(int paramInt);
 }
 
 

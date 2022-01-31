@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.card.sharecard.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
-import com.tencent.mm.plugin.card.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
   implements View.OnClickListener
@@ -12,20 +12,21 @@ final class a$1
   
   public final void onClick(View paramView)
   {
-    if (paramView.getId() == a.d.notify_checkbox)
-    {
-      if (!this.ipt.ipm.isChecked()) {
-        break label47;
+    AppMethodBeat.i(88089);
+    if (paramView.getId() == 2131822047) {
+      if (this.kqA.kqt.isChecked())
+      {
+        if (this.kqA.kqx != null)
+        {
+          this.kqA.kqx.td(1);
+          AppMethodBeat.o(88089);
+        }
       }
-      if (this.ipt.ipq != null) {
-        this.ipt.ipq.oT(1);
+      else if (this.kqA.kqx != null) {
+        this.kqA.kqx.td(0);
       }
     }
-    label47:
-    while (this.ipt.ipq == null) {
-      return;
-    }
-    this.ipt.ipq.oT(0);
+    AppMethodBeat.o(88089);
   }
 }
 

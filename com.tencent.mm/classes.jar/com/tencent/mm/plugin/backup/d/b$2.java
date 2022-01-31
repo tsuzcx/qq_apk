@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.backup.d;
 import android.content.Context;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class b$2
   implements Runnable
@@ -12,19 +13,24 @@ final class b$2
   
   public final void run()
   {
+    AppMethodBeat.i(17236);
     try
     {
-      if (b.a(this.hHG) == null)
+      if (b.a(this.jBc) == null)
       {
-        PowerManager localPowerManager = (PowerManager)ae.getContext().getSystemService("power");
-        b.a(this.hHG, localPowerManager.newWakeLock(26, "BackupMove Lock"));
+        PowerManager localPowerManager = (PowerManager)ah.getContext().getSystemService("power");
+        b.a(this.jBc, localPowerManager.newWakeLock(26, "BackupMove Lock"));
       }
-      if (!b.a(this.hHG).isHeld()) {
-        b.a(this.hHG).acquire();
+      if (!b.a(this.jBc).isHeld()) {
+        b.a(this.jBc).acquire();
       }
+      AppMethodBeat.o(17236);
       return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(17236);
+    }
   }
 }
 

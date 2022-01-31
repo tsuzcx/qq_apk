@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
 import android.webkit.ValueCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -244,7 +245,10 @@ public abstract interface IX5WebViewBase
     
     public Point getHitTestPoint()
     {
-      return new Point(this.mPoint);
+      AppMethodBeat.i(63818);
+      Point localPoint = new Point(this.mPoint);
+      AppMethodBeat.o(63818);
+      return localPoint;
     }
     
     public int getType()
@@ -302,7 +306,10 @@ public abstract interface IX5WebViewBase
       
       public Bitmap getBitmap()
       {
-        return IX5WebViewBase.HitTestResult.this.getBitmapData();
+        AppMethodBeat.i(63817);
+        Bitmap localBitmap = IX5WebViewBase.HitTestResult.this.getBitmapData();
+        AppMethodBeat.o(63817);
+        return localBitmap;
       }
     }
   }
@@ -331,7 +338,7 @@ public abstract interface IX5WebViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.smtt.export.external.interfaces.IX5WebViewBase
  * JD-Core Version:    0.7.0.1
  */

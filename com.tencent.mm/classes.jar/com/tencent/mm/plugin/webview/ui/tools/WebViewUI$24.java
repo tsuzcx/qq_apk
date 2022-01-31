@@ -1,21 +1,26 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.xweb.w;
 
 final class WebViewUI$24
-  implements View.OnLongClickListener
+  implements Runnable
 {
   WebViewUI$24(WebViewUI paramWebViewUI) {}
   
-  public final boolean onLongClick(View paramView)
+  public final void run()
   {
-    return true;
+    AppMethodBeat.i(153237);
+    if (this.vgz.pOd != null) {
+      this.vgz.pOd.getCurWebviewClient().b(this.vgz.pOd, this.vgz.pOd.getUrl());
+    }
+    AppMethodBeat.o(153237);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.WebViewUI.24
  * JD-Core Version:    0.7.0.1
  */

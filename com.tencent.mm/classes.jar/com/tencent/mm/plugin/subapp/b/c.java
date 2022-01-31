@@ -1,33 +1,45 @@
 package com.tencent.mm.plugin.subapp.b;
 
-import com.tencent.mm.ah.e.d;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.d;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.model.at;
 import java.util.HashMap;
 
 public class c
-  implements ar
+  implements at
 {
-  private b pvw = new b();
+  private b sXb;
   
-  public final void bh(boolean paramBoolean)
+  public c()
   {
-    e.d.a(Integer.valueOf(38), this.pvw);
+    AppMethodBeat.i(25244);
+    this.sXb = new b();
+    AppMethodBeat.o(25244);
   }
   
-  public final void bi(boolean paramBoolean) {}
+  public void clearPluginData(int paramInt) {}
   
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
-  {
-    e.d.b(Integer.valueOf(38), this.pvw);
-  }
-  
-  public final HashMap<Integer, h.d> xe()
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
     return null;
   }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(25246);
+    e.d.a(Integer.valueOf(38), this.sXb);
+    AppMethodBeat.o(25246);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(25245);
+    e.d.b(Integer.valueOf(38), this.sXb);
+    AppMethodBeat.o(25245);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

@@ -9,12 +9,12 @@ class SearchView$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new SearchView.SavedState.1();
-  boolean ajX;
+  boolean amn;
   
   public SearchView$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
   {
     super(paramParcel, paramClassLoader);
-    this.ajX = ((Boolean)paramParcel.readValue(null)).booleanValue();
+    this.amn = ((Boolean)paramParcel.readValue(null)).booleanValue();
   }
   
   SearchView$SavedState(Parcelable paramParcelable)
@@ -24,13 +24,13 @@ class SearchView$SavedState
   
   public String toString()
   {
-    return "SearchView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " isIconified=" + this.ajX + "}";
+    return "SearchView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " isIconified=" + this.amn + "}";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeValue(Boolean.valueOf(this.ajX));
+    paramParcel.writeValue(Boolean.valueOf(this.amn));
   }
 }
 

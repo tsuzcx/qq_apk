@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.masssend.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.masssend.a.f;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MassSendMsgUI$11
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  MassSendMsgUI$11(MassSendMsgUI paramMassSendMsgUI, f paramf) {}
+  MassSendMsgUI$11(MassSendMsgUI paramMassSendMsgUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    au.Dk().c(this.mbc);
+    AppMethodBeat.i(22845);
+    this.oCj.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.o(22845);
   }
 }
 

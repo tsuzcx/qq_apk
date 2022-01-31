@@ -1,25 +1,30 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.mm.h.a.ca;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cd;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AppBrandPrepareTask$a$2$2
-  extends c<ca>
+  extends c<cd>
 {
   AppBrandPrepareTask$a$2$2(AppBrandPrepareTask.a.2 param2)
   {
-    this.udX = ca.class.getName().hashCode();
+    AppMethodBeat.i(131743);
+    this.__eventId = cd.class.getName().hashCode();
+    AppMethodBeat.o(131743);
   }
   
-  private boolean a(ca paramca)
+  private boolean a(cd paramcd)
   {
-    if (paramca != null)
+    AppMethodBeat.i(131744);
+    if (paramcd != null)
     {
       dead();
-      y.i("MicroMsg.AppBrandPrepareTask", "prepareCall account notifyAllDone, start real prepare");
+      ab.i("MicroMsg.AppBrandPrepareTask", "prepareCall account notifyAllDone, start real prepare");
     }
-    this.gJx.gJw.alD();
+    this.ikg.ike.aGK();
+    AppMethodBeat.o(131744);
     return false;
   }
 }

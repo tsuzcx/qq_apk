@@ -1,25 +1,17 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import android.graphics.Bitmap;
-import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ny;
+import com.tencent.mm.sdk.b.c;
 
 final class FavoriteImgDetailUI$4
-  implements Runnable
+  extends c<ny>
 {
-  FavoriteImgDetailUI$4(FavoriteImgDetailUI paramFavoriteImgDetailUI, FavoriteImgDetailUI.a parama) {}
-  
-  public final void run()
+  FavoriteImgDetailUI$4(FavoriteImgDetailUI paramFavoriteImgDetailUI)
   {
-    Bitmap localBitmap2 = l.a(this.kfR.bNt, FavoriteImgDetailUI.b(this.kfM), false);
-    Bitmap localBitmap1 = localBitmap2;
-    if (localBitmap2 == null)
-    {
-      y.d("MicroMsg.FavoriteImgDetailUI", "get big img fail");
-      localBitmap1 = FavoriteImgDetailUI.a(this.kfM, this.kfR.bNt);
-    }
-    ai.d(new FavoriteImgDetailUI.4.1(this, localBitmap1));
+    AppMethodBeat.i(151529);
+    this.__eventId = ny.class.getName().hashCode();
+    AppMethodBeat.o(151529);
   }
 }
 

@@ -3,10 +3,11 @@ package com.tencent.mm.app.plugin;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.br.d;
-import com.tencent.mm.pluginsdk.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.pluginsdk.ui.applet.m;
 import com.tencent.mm.pluginsdk.ui.d.g;
+import com.tencent.mm.pluginsdk.v;
 
 @URISpanHandlerSet.a
 class URISpanHandlerSet$PluginUriSpanHandler
@@ -17,41 +18,49 @@ class URISpanHandlerSet$PluginUriSpanHandler
     super(paramURISpanHandlerSet);
   }
   
+  final int[] Cf()
+  {
+    return new int[] { 26 };
+  }
+  
   final boolean a(m paramm, g paramg)
   {
     return false;
   }
   
-  final boolean a(String paramString, boolean paramBoolean, s params, Bundle paramBundle)
+  final boolean a(String paramString, boolean paramBoolean, v paramv, Bundle paramBundle)
   {
+    AppMethodBeat.i(15685);
     if (paramString.equals("weixin://plugin"))
     {
       paramString = new Intent();
-      if ((URISpanHandlerSet.a(this.byk) instanceof Service)) {
+      if ((URISpanHandlerSet.a(this.cam) instanceof Service)) {
         paramString.addFlags(268435456);
       }
-      d.b(URISpanHandlerSet.a(this.byk), "setting", ".ui.setting.SettingsPluginsUI", paramString);
+      d.b(URISpanHandlerSet.a(this.cam), "setting", ".ui.setting.SettingsPluginsUI", paramString);
+      AppMethodBeat.o(15685);
       return true;
     }
+    AppMethodBeat.o(15685);
     return false;
   }
   
-  final m cA(String paramString)
+  final m dN(String paramString)
   {
-    if (paramString.trim().startsWith("weixin://plugin")) {
-      return new m(paramString, 26, null);
+    AppMethodBeat.i(15684);
+    if (paramString.trim().startsWith("weixin://plugin"))
+    {
+      paramString = new m(paramString, 26, null);
+      AppMethodBeat.o(15684);
+      return paramString;
     }
+    AppMethodBeat.o(15684);
     return null;
-  }
-  
-  final int[] tA()
-  {
-    return new int[] { 26 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.app.plugin.URISpanHandlerSet.PluginUriSpanHandler
  * JD-Core Version:    0.7.0.1
  */

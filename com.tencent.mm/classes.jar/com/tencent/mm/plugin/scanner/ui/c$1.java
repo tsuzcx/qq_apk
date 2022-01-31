@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.protocal.c.jk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
+import com.tencent.mm.protocal.protobuf.lp;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$1
   implements w.a
@@ -14,11 +15,13 @@ final class c$1
   
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
-    y.i("MicroMsg.BaseScanModeLicence", "errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    paramString = this.nIg;
-    paramString.nIa += 1;
-    paramString = (jk)paramb.ecF.ecN;
-    c.a(this.nIg, paramInt2, this.nIf, paramString.sEb);
+    AppMethodBeat.i(80907);
+    ab.i("MicroMsg.BaseScanModeLicence", "errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    paramString = this.qvF;
+    paramString.qvA += 1;
+    paramString = (lp)paramb.fsW.fta;
+    c.a(this.qvF, paramInt2, this.iaF, paramString.wAa);
+    AppMethodBeat.o(80907);
     return 0;
   }
 }

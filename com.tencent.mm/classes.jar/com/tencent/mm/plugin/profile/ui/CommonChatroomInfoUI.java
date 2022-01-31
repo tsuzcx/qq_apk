@@ -1,94 +1,120 @@
 package com.tencent.mm.plugin.profile.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.a.e;
-import com.tencent.mm.ui.contact.m;
-import com.tencent.mm.ui.contact.o;
+import com.tencent.mm.ui.contact.a.f;
+import com.tencent.mm.ui.contact.p;
 
 public class CommonChatroomInfoUI
   extends MMBaseSelectContactUI
 {
-  private ad dnp;
-  private a mVD;
-  private b mVE;
+  private ad contact;
+  private a pyk;
+  private b pyl;
   
-  protected final boolean VC()
+  public final void Kc()
+  {
+    AppMethodBeat.i(23324);
+    super.Kc();
+    String str = getIntent().getStringExtra("Select_Talker_Name");
+    aw.aaz();
+    this.contact = c.YA().arw(str);
+    AppMethodBeat.o(23324);
+  }
+  
+  public final boolean apa()
   {
     return true;
   }
   
-  protected final boolean VD()
+  public final boolean apb()
   {
     return false;
   }
   
-  protected final String VE()
+  public final String apc()
   {
-    if (this.dnp.sex == 1) {
-      return getString(R.l.contact_info_common_chatroom_male);
+    AppMethodBeat.i(23326);
+    if (this.contact.dqC == 1)
+    {
+      str = getString(2131298575);
+      AppMethodBeat.o(23326);
+      return str;
     }
-    if (this.dnp.sex == 2) {
-      return getString(R.l.contact_info_common_chatroom_female);
+    if (this.contact.dqC == 2)
+    {
+      str = getString(2131298574);
+      AppMethodBeat.o(23326);
+      return str;
     }
-    return getString(R.l.contact_info_common_chatroom_unknow);
+    String str = getString(2131298579);
+    AppMethodBeat.o(23326);
+    return str;
   }
   
-  protected final o VF()
+  public final p apd()
   {
-    if (this.mVD == null) {
-      this.mVD = new a(this, this.scene, this.dnp);
+    AppMethodBeat.i(23327);
+    if (this.pyk == null) {
+      this.pyk = new a(this, this.scene, this.contact);
     }
-    return this.mVD;
+    a locala = this.pyk;
+    AppMethodBeat.o(23327);
+    return locala;
   }
   
-  protected final m VG()
+  public final com.tencent.mm.ui.contact.n ape()
   {
-    if (this.mVE == null) {
-      this.mVE = new b(this, this.scene, this.dnp);
+    AppMethodBeat.i(23328);
+    if (this.pyl == null) {
+      this.pyl = new b(this, this.scene, this.contact);
     }
-    return this.mVE;
+    b localb = this.pyl;
+    AppMethodBeat.o(23328);
+    return localb;
   }
   
-  protected final void initView()
+  public void initView()
   {
+    AppMethodBeat.i(23325);
     super.initView();
-    a locala = this.mVD;
+    a locala = this.pyk;
     i locali = new i();
-    locali.bVk = locala.dnp.field_username;
-    locali.kxf = locala;
+    locali.query = locala.contact.field_username;
+    locali.mSU = locala;
     locali.handler = locala.handler;
-    locali.kwX = 6;
-    locali.kxe = new a.a((byte)0);
-    ((n)g.t(n.class)).search(2, locali);
+    locali.hdl = 6;
+    locali.mST = new a.a((byte)0);
+    ((com.tencent.mm.plugin.fts.a.n)g.G(com.tencent.mm.plugin.fts.a.n.class)).search(2, locali);
+    AppMethodBeat.o(23325);
   }
   
-  public final void jP(int paramInt)
+  public final void mL(int paramInt)
   {
-    e locale = (e)getContentLV().getAdapter().getItem(paramInt);
-    if (locale != null) {
-      d.e(this, ".ui.chatting.ChattingUI", new Intent().putExtra("Chat_User", locale.dnp.field_username).putExtra("finish_direct", true));
+    AppMethodBeat.i(23329);
+    f localf = (f)getContentLV().getAdapter().getItem(paramInt);
+    if (localf != null) {
+      d.f(this, ".ui.chatting.ChattingUI", new Intent().putExtra("Chat_User", localf.contact.field_username).putExtra("finish_direct", true));
     }
+    AppMethodBeat.o(23329);
   }
   
-  protected final void xK()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    super.xK();
-    String str = getIntent().getStringExtra("Select_Talker_Name");
-    au.Hx();
-    this.dnp = c.Fw().abl(str);
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

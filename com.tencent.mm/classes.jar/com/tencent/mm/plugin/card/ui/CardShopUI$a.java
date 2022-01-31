@@ -5,12 +5,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.c.mb;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.protocal.protobuf.oz;
 import java.util.ArrayList;
 
 final class CardShopUI$a
@@ -18,14 +15,20 @@ final class CardShopUI$a
 {
   private CardShopUI$a(CardShopUI paramCardShopUI) {}
   
-  private mb pc(int paramInt)
+  private oz tm(int paramInt)
   {
-    return (mb)CardShopUI.a(this.iwP).get(paramInt);
+    AppMethodBeat.i(88636);
+    oz localoz = (oz)CardShopUI.a(this.kxT).get(paramInt);
+    AppMethodBeat.o(88636);
+    return localoz;
   }
   
   public final int getCount()
   {
-    return CardShopUI.a(this.iwP).size();
+    AppMethodBeat.i(88635);
+    int i = CardShopUI.a(this.kxT).size();
+    AppMethodBeat.o(88635);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -35,52 +38,55 @@ final class CardShopUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(88637);
     if (paramView == null)
     {
-      paramView = View.inflate(this.iwP.mController.uMN, a.e.card_shop_item, null);
+      paramView = View.inflate(this.kxT.getContext(), 2130968994, null);
       paramViewGroup = new a();
-      paramViewGroup.iwQ = ((TextView)paramView.findViewById(a.d.shop_name_tv));
-      paramViewGroup.iwR = ((TextView)paramView.findViewById(a.d.shop_distance_tv));
-      paramViewGroup.iwS = ((TextView)paramView.findViewById(a.d.shop_address_tv));
-      paramViewGroup.iwT = ((ImageView)paramView.findViewById(a.d.shop_poi));
-      paramViewGroup.iwU = paramView.findViewById(a.d.shop_poi_layout);
+      paramViewGroup.kxU = ((TextView)paramView.findViewById(2131822372));
+      paramViewGroup.kxV = ((TextView)paramView.findViewById(2131822373));
+      paramViewGroup.kxW = ((TextView)paramView.findViewById(2131822374));
+      paramViewGroup.kxX = ((ImageView)paramView.findViewById(2131822376));
+      paramViewGroup.kxY = paramView.findViewById(2131822375);
       paramView.setTag(paramViewGroup);
     }
-    mb localmb;
+    oz localoz;
     for (;;)
     {
-      localmb = pc(paramInt);
-      if (localmb != null) {
+      localoz = tm(paramInt);
+      if (localoz != null) {
         break;
       }
-      paramViewGroup.iwQ.setText("");
-      paramViewGroup.iwR.setText("");
-      paramViewGroup.iwS.setText("");
+      paramViewGroup.kxU.setText("");
+      paramViewGroup.kxV.setText("");
+      paramViewGroup.kxW.setText("");
+      AppMethodBeat.o(88637);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
     }
-    paramViewGroup.iwQ.setText(localmb.name);
-    if (localmb.sIe <= 0.0F) {
-      paramViewGroup.iwR.setVisibility(8);
+    paramViewGroup.kxU.setText(localoz.name);
+    if (localoz.rqZ <= 0.0F) {
+      paramViewGroup.kxV.setVisibility(8);
     }
     for (;;)
     {
-      paramViewGroup.iwS.setText(localmb.cCA + localmb.cCB + localmb.ekZ);
-      paramViewGroup.iwU.setOnClickListener(CardShopUI.f(this.iwP));
-      paramViewGroup.iwU.setTag(localmb);
+      paramViewGroup.kxW.setText(localoz.province + localoz.city + localoz.fBq);
+      paramViewGroup.kxY.setOnClickListener(CardShopUI.f(this.kxT));
+      paramViewGroup.kxY.setTag(localoz);
+      AppMethodBeat.o(88637);
       return paramView;
-      paramViewGroup.iwR.setText(l.f(this.iwP.getBaseContext(), localmb.sIe));
-      paramViewGroup.iwR.setVisibility(0);
+      paramViewGroup.kxV.setText(l.g(this.kxT.getBaseContext(), localoz.rqZ));
+      paramViewGroup.kxV.setVisibility(0);
     }
   }
   
   final class a
   {
-    public TextView iwQ;
-    public TextView iwR;
-    public TextView iwS;
-    public ImageView iwT;
-    public View iwU;
+    public TextView kxU;
+    public TextView kxV;
+    public TextView kxW;
+    public ImageView kxX;
+    public View kxY;
     
     a() {}
   }

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.subapp.c;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -8,7 +9,7 @@ import junit.framework.Assert;
 
 public final class c
 {
-  private RandomAccessFile aRL = null;
+  private RandomAccessFile aZl = null;
   private String fileName = "";
   
   public c(String paramString)
@@ -16,119 +17,131 @@ public final class c
     this.fileName = paramString;
   }
   
-  private boolean Pz(String paramString)
+  private boolean adP(String paramString)
   {
+    AppMethodBeat.i(25258);
     if (this.fileName.length() >= 0)
     {
       bool = true;
       Assert.assertTrue(bool);
-      if (this.aRL != null) {
-        break label109;
+      if (this.aZl != null) {
+        break label121;
       }
       bool = true;
-      label25:
+      label31:
       Assert.assertTrue(bool);
       if ((!paramString.equals("r")) && (!paramString.equals("rw"))) {
-        break label114;
+        break label126;
       }
     }
-    label109:
-    label114:
+    label121:
+    label126:
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      y.d("MicroMsg.SpxFileOperator", "Open file:" + this.aRL + " mode:" + paramString);
+      ab.d("MicroMsg.SpxFileOperator", "Open file:" + this.aZl + " mode:" + paramString);
       try
       {
-        this.aRL = new RandomAccessFile(this.fileName, paramString);
+        this.aZl = new RandomAccessFile(this.fileName, paramString);
+        AppMethodBeat.o(25258);
         return true;
       }
       catch (Exception paramString)
       {
-        y.e("MicroMsg.SpxFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + paramString.getMessage() + "]");
-        this.aRL = null;
+        ab.e("MicroMsg.SpxFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + paramString.getMessage() + "]");
+        this.aZl = null;
+        AppMethodBeat.o(25258);
       }
       bool = false;
       break;
       bool = false;
-      break label25;
+      break label31;
     }
     return false;
   }
   
-  public static int nU(String paramString)
+  public static int vh(String paramString)
   {
-    boolean bool;
-    if (paramString.length() >= 0)
+    AppMethodBeat.i(25256);
+    if (paramString.length() >= 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      bool = true;
       Assert.assertTrue(bool);
       paramString = new File(paramString);
       if (paramString.exists()) {
-        break label36;
+        break;
       }
-    }
-    label36:
-    int i;
-    do
-    {
+      AppMethodBeat.o(25256);
       return 0;
-      bool = false;
-      break;
-      i = (int)paramString.length();
-    } while (i <= 0);
+    }
+    int i = (int)paramString.length();
+    if (i <= 0)
+    {
+      AppMethodBeat.o(25256);
+      return 0;
+    }
+    AppMethodBeat.o(25256);
     return i;
   }
   
-  public final void SW()
+  public final c.a Gl(int paramInt)
   {
-    if (this.aRL != null) {}
-    try
-    {
-      this.aRL.close();
-      this.aRL = null;
-      y.d("MicroMsg.SpxFileOperator", "Close :" + this.fileName);
-      return;
-    }
-    catch (IOException localIOException) {}
-  }
-  
-  public final c.a zm(int paramInt)
-  {
+    AppMethodBeat.i(25259);
     c.a locala = new c.a();
     if (paramInt < 0)
     {
       locala.ret = -3;
+      AppMethodBeat.o(25259);
       return locala;
     }
-    if ((this.aRL == null) && (!Pz("r")))
+    if ((this.aZl == null) && (!adP("r")))
     {
       locala.ret = -2;
+      AppMethodBeat.o(25259);
       return locala;
     }
     locala.buf = new byte[6000];
     try
     {
-      long l = this.aRL.length();
-      this.aRL.seek(paramInt);
-      int j = this.aRL.read(locala.buf, 0, 6000);
-      y.d("MicroMsg.SpxFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt + " readRet:" + j + " fileNow:" + this.aRL.getFilePointer() + " fileSize:" + l);
+      long l = this.aZl.length();
+      this.aZl.seek(paramInt);
+      int j = this.aZl.read(locala.buf, 0, 6000);
+      ab.d("MicroMsg.SpxFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt + " readRet:" + j + " fileNow:" + this.aZl.getFilePointer() + " fileSize:" + l);
       int i = j;
       if (j < 0) {
         i = 0;
       }
-      locala.bDu = i;
-      locala.eIh = (i + paramInt);
+      locala.ckj = i;
+      locala.fXX = (i + paramInt);
       locala.ret = 0;
+      AppMethodBeat.o(25259);
       return locala;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.SpxFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt + "  failed:[" + localException.getMessage() + "] ");
-      SW();
+      ab.e("MicroMsg.SpxFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt + "  failed:[" + localException.getMessage() + "] ");
+      amh();
       locala.ret = -1;
+      AppMethodBeat.o(25259);
     }
     return locala;
+  }
+  
+  public final void amh()
+  {
+    AppMethodBeat.i(25257);
+    if (this.aZl != null) {
+      try
+      {
+        this.aZl.close();
+        this.aZl = null;
+        ab.d("MicroMsg.SpxFileOperator", "Close :" + this.fileName);
+        AppMethodBeat.o(25257);
+        return;
+      }
+      catch (IOException localIOException) {}
+    }
+    AppMethodBeat.o(25257);
   }
 }
 

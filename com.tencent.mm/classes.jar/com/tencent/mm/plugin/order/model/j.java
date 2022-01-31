@@ -4,23 +4,23 @@ import java.util.List;
 
 public final class j
 {
-  public String bVP;
-  public String bVV;
-  public String mPS;
-  public String mQc;
-  public String mQd;
-  public String mQe;
-  public String mQf;
-  public String mQg;
-  public String mQh;
-  public String mQi;
-  public String mQj;
-  public List<j.a> mQk;
-  public List<j.b> mQl;
+  public String cDC;
+  public String cDI;
+  public List<j.b> pqA;
+  public String pqh;
+  public String pqr;
+  public String pqs;
+  public String pqt;
+  public String pqu;
+  public String pqv;
+  public String pqw;
+  public String pqx;
+  public String pqy;
+  public List<j.a> pqz;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.j
  * JD-Core Version:    0.7.0.1
  */

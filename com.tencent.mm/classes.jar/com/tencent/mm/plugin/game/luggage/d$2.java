@@ -1,16 +1,33 @@
 package com.tencent.mm.plugin.game.luggage;
 
-import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.plugin.webview.ui.tools.game.menu.GameMenuImageButton.a;
+import android.text.TextUtils;
+import com.tencent.luggage.d.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 final class d$2
-  implements GameMenuImageButton.a
+  implements Runnable
 {
-  d$2(d paramd) {}
+  d$2(Class paramClass, String paramString, d.a parama) {}
   
-  public final void aYF()
+  public final void run()
   {
-    this.kMD.rbE.aYv();
+    AppMethodBeat.i(135832);
+    k localk = new k(ah.getContext(), this.njx);
+    d.bFm().put(this.val$url, localk);
+    d.bFn().remove(this.val$url);
+    if (!TextUtils.isEmpty(this.val$url))
+    {
+      ab.i("MicroMsg.PreloadGameWebCoreHelp", "loadUrl: %s", new Object[] { this.val$url });
+      localk.loadUrl(this.val$url);
+    }
+    if (this.njw != null) {
+      this.njw.tU();
+    }
+    AppMethodBeat.o(135832);
   }
 }
 

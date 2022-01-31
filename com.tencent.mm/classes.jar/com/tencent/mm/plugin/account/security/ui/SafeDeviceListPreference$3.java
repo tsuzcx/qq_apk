@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.security.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SafeDeviceListPreference$3
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class SafeDeviceListPreference$3
   
   public final void onClick(View paramView)
   {
-    SafeDeviceListPreference.d(this.fkv);
+    AppMethodBeat.i(69894);
+    SafeDeviceListPreference.d(this.gBM);
+    AppMethodBeat.o(69894);
   }
 }
 

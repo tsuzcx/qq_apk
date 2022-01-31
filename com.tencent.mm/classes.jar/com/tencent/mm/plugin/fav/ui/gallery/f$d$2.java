@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yl;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acs;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,40 +21,45 @@ final class f$d$2
   
   public final void onClick(View paramView)
   {
-    Object localObject = this.khY.khK.rf(((Integer)paramView.getTag(n.e.fav_filter_data_pos)).intValue());
-    if (localObject == null) {
+    AppMethodBeat.i(74570);
+    Object localObject = this.mCF.mCs.wb(((Integer)paramView.getTag(2131820604)).intValue());
+    if (localObject == null)
+    {
+      AppMethodBeat.o(74570);
       return;
     }
-    paramView = this.khY.khK;
+    paramView = this.mCF.mCs;
     Intent localIntent = new Intent();
     if (localObject == null)
     {
-      y.e("MicroMsg.MediaHistoryGalleryAdapter", "[enterGallery] item == null");
+      ab.e("MicroMsg.MediaHistoryGalleryAdapter", "[enterGallery] item == null");
+      AppMethodBeat.o(74570);
       return;
     }
-    d locald = ((f.c)localObject).khL;
+    d locald = ((f.c)localObject).mCt;
     if (locald == null)
     {
-      y.e("MicroMsg.MediaHistoryGalleryAdapter", "[enterGallery] msg == null");
+      ab.e("MicroMsg.MediaHistoryGalleryAdapter", "[enterGallery] msg == null");
+      AppMethodBeat.o(74570);
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramView.heL.iterator();
+    Iterator localIterator = paramView.jfV.iterator();
     int j = 0;
     if (localIterator.hasNext())
     {
-      long l = ((f.c)localIterator.next()).khL.khA.field_localId;
+      long l = ((f.c)localIterator.next()).mCt.mCk.field_localId;
       if (localArrayList.contains(Long.valueOf(l))) {
-        break label434;
+        break label458;
       }
       localArrayList.add(Long.valueOf(l));
-      if (l != ((f.c)localObject).khL.khA.field_localId) {
-        break label434;
+      if (l != ((f.c)localObject).mCt.mCk.field_localId) {
+        break label458;
       }
     }
-    label271:
-    label282:
-    label434:
+    label290:
+    label301:
+    label458:
     for (int i = localArrayList.size() - 1;; i = j)
     {
       j = i;
@@ -64,14 +69,14 @@ final class f$d$2
       {
         i = j - 20;
         if (j + 20 >= localArrayList.size()) {
-          break label271;
+          break label290;
         }
         j += 20;
       }
       for (;;)
       {
         if (i >= j) {
-          break label282;
+          break label301;
         }
         localObject[i] = ((Long)localArrayList.get(i)).longValue();
         i += 1;
@@ -81,15 +86,16 @@ final class f$d$2
         j = localArrayList.size();
       }
       localIntent.addFlags(536870912);
-      localIntent.putExtra("KEY_MEDIA_FAVID_LIST", (long[])localObject).putExtra("key_detail_info_id", locald.khA.field_localId).putExtra("key_detail_data_id", locald.bNH.kgC);
-      localIntent.putExtra("key_detail_fav_scene", paramView.khf.scene);
-      localIntent.putExtra("key_detail_fav_sub_scene", paramView.khf.jYS);
+      localIntent.putExtra("KEY_MEDIA_FAVID_LIST", (long[])localObject).putExtra("key_detail_info_id", locald.mCk.field_localId).putExtra("key_detail_data_id", locald.cuZ.mBq);
+      localIntent.putExtra("key_detail_fav_scene", paramView.mBU.scene);
+      localIntent.putExtra("key_detail_fav_sub_scene", paramView.mBU.kbN);
       localIntent.putExtra("key_detail_fav_index", 0);
-      localIntent.putExtra("key_detail_fav_query", paramView.khf.bVk);
-      localIntent.putExtra("key_detail_fav_sessionid", paramView.khf.bIB);
-      localIntent.putExtra("key_detail_fav_tags", paramView.khf.jYU);
-      b.a(paramView.mContext, ".ui.gallery.FavMediaGalleryUI", localIntent);
+      localIntent.putExtra("key_detail_fav_query", paramView.mBU.query);
+      localIntent.putExtra("key_detail_fav_sessionid", paramView.mBU.cpW);
+      localIntent.putExtra("key_detail_fav_tags", paramView.mBU.mtm);
+      b.b(paramView.mContext, ".ui.gallery.FavMediaGalleryUI", localIntent);
       ((Activity)paramView.mContext).overridePendingTransition(0, 0);
+      AppMethodBeat.o(74570);
       return;
     }
   }

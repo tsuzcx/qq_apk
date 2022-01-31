@@ -2,28 +2,34 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.os.Message;
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class EmojiStoreV2RewardDetailUI$1
-  extends ah
+  extends ak
 {
   EmojiStoreV2RewardDetailUI$1(EmojiStoreV2RewardDetailUI paramEmojiStoreV2RewardDetailUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(53669);
     switch (paramMessage.what)
     {
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-      } while (EmojiStoreV2RewardDetailUI.a(this.jhl) == null);
-      EmojiStoreV2RewardDetailUI.a(this.jhl).setVisibility(8);
+      AppMethodBeat.o(53669);
       return;
-    } while (EmojiStoreV2RewardDetailUI.a(this.jhl) == null);
-    EmojiStoreV2RewardDetailUI.a(this.jhl).setVisibility(0);
+      if (EmojiStoreV2RewardDetailUI.a(this.lqe) != null)
+      {
+        EmojiStoreV2RewardDetailUI.a(this.lqe).setVisibility(8);
+        AppMethodBeat.o(53669);
+        return;
+        if (EmojiStoreV2RewardDetailUI.a(this.lqe) != null) {
+          EmojiStoreV2RewardDetailUI.a(this.lqe).setVisibility(0);
+        }
+      }
+    }
   }
 }
 

@@ -1,54 +1,60 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.modelsimple.s;
+import com.tencent.mm.model.av;
+import com.tencent.mm.modelsimple.u;
 import com.tencent.mm.plugin.account.bind.ui.FindMContactAlertUI;
 import com.tencent.mm.plugin.account.bind.ui.FindMContactIntroUI;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.ui.MMWizardActivity;
 
 final class o$5
   implements Runnable
 {
-  o$5(o paramo, com.tencent.mm.ah.m paramm, String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, int paramInt) {}
+  o$5(o paramo, m paramm, String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, int paramInt) {}
   
   public final void run()
   {
-    this.fpr.dqS = ((s)this.bEe).QI();
-    at.dVC.Y("login_user_name", this.fpg);
-    com.tencent.mm.vfs.e.deleteFile(com.tencent.mm.compatible.util.e.dzK + "temp.avatar");
-    if ((this.fpu != null) && (this.fpu.contains("0")))
+    AppMethodBeat.i(125254);
+    this.gGO.eiu = ((u)this.ckS).ajQ();
+    av.flM.ao("login_user_name", this.gGC);
+    com.tencent.mm.vfs.e.deleteFile(com.tencent.mm.compatible.util.e.esy + "temp.avatar");
+    if ((this.gGQ != null) && (this.gGQ.contains("0")))
     {
-      com.tencent.mm.plugin.b.a.qj("R300_100_phone");
-      if (!this.fpv) {
-        localObject = new Intent(this.fpr.fpj, FindMContactIntroUI.class);
+      com.tencent.mm.plugin.b.a.xD("R300_100_phone");
+      if (!this.gGR) {
+        localObject = new Intent(this.gGO.gGG, FindMContactIntroUI.class);
       }
       for (;;)
       {
         ((Intent)localObject).addFlags(67108864);
-        ((Intent)localObject).putExtra("regsetinfo_ticket", this.fpr.dqS);
-        ((Intent)localObject).putExtra("regsetinfo_NextStep", this.fpu);
-        ((Intent)localObject).putExtra("regsetinfo_NextStyle", this.fpy);
-        Intent localIntent = com.tencent.mm.plugin.account.a.a.eUR.aN(this.fpr.fpj);
+        ((Intent)localObject).putExtra("regsetinfo_ticket", this.gGO.eiu);
+        ((Intent)localObject).putExtra("regsetinfo_NextStep", this.gGQ);
+        ((Intent)localObject).putExtra("regsetinfo_NextStyle", this.gGU);
+        Intent localIntent = com.tencent.mm.plugin.account.a.a.gmO.bm(this.gGO.gGG);
         localIntent.addFlags(67108864);
-        MMWizardActivity.b(this.fpr.fpj, (Intent)localObject, localIntent);
-        this.fpr.fpj.finish();
+        MMWizardActivity.b(this.gGO.gGG, (Intent)localObject, localIntent);
+        this.gGO.gGG.finish();
+        AppMethodBeat.o(125254);
         return;
-        localObject = new Intent(this.fpr.fpj, FindMContactAlertUI.class);
-        ((Intent)localObject).putExtra("alert_title", this.fpw);
-        ((Intent)localObject).putExtra("alert_message", this.fpx);
+        localObject = new Intent(this.gGO.gGG, FindMContactAlertUI.class);
+        ((Intent)localObject).putExtra("alert_title", this.gGS);
+        ((Intent)localObject).putExtra("alert_message", this.gGT);
       }
     }
-    Object localObject = com.tencent.mm.plugin.account.a.a.eUR.aN(this.fpr.fpj);
+    Object localObject = com.tencent.mm.plugin.account.a.a.gmO.bm(this.gGO.gGG);
     ((Intent)localObject).addFlags(67108864);
-    this.fpr.fpj.startActivity((Intent)localObject);
+    this.gGO.gGG.startActivity((Intent)localObject);
     localObject = new StringBuilder();
-    g.DN();
-    localObject = ((StringBuilder)localObject).append(com.tencent.mm.kernel.a.Df()).append(",").append(this.fpr.fpj.getClass().getName()).append(",R200_900_phone,");
-    g.DN();
-    com.tencent.mm.plugin.b.a.qk(com.tencent.mm.kernel.a.gd("R200_900_phone") + ",4");
-    this.fpr.fpj.finish();
+    g.RJ();
+    localObject = ((StringBuilder)localObject).append(com.tencent.mm.kernel.a.QX()).append(",").append(this.gGO.gGG.getClass().getName()).append(",R200_900_phone,");
+    g.RJ();
+    com.tencent.mm.plugin.b.a.xE(com.tencent.mm.kernel.a.mx("R200_900_phone") + ",4");
+    this.gGO.gGG.finish();
+    AppMethodBeat.o(125254);
   }
 }
 

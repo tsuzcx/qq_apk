@@ -1,24 +1,30 @@
 package com.tencent.mm.plugin.fav.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.c.xv;
+import com.tencent.mm.protocal.protobuf.aca;
 
 final class l$5
   implements Runnable
 {
-  l$5(String paramString, g paramg, xv paramxv) {}
+  l$5(String paramString, g paramg, aca paramaca) {}
   
   public final void run()
   {
-    if (l.co(this.eHU)) {
-      b.a(this.jYr, this.kdj);
+    AppMethodBeat.i(74195);
+    if (l.dA(this.fXK)) {
+      b.a(this.msL, this.mxT);
     }
+    AppMethodBeat.o(74195);
   }
   
   public final String toString()
   {
-    return super.toString() + "|getThumb";
+    AppMethodBeat.i(74196);
+    String str = super.toString() + "|getThumb";
+    AppMethodBeat.o(74196);
+    return str;
   }
 }
 

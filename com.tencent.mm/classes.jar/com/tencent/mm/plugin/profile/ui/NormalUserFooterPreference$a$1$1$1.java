@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.profile.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.ad;
 
 final class NormalUserFooterPreference$a$1$1$1
@@ -12,14 +13,16 @@ final class NormalUserFooterPreference$a$1$1$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NormalUserFooterPreference.a.b(this.mYH.mYF.mYE);
-    if (NormalUserFooterPreference.a(this.mYH.mYF.mYE.mYC).getSource() == 18)
+    AppMethodBeat.i(23672);
+    NormalUserFooterPreference.a.b(this.pCh.pCg.pCf);
+    if (NormalUserFooterPreference.a(this.pCh.pCg.pCf.pCe).getSource() == 18)
     {
-      NormalUserFooterPreference.a(this.mYH.mYF.mYE.mYC, 9);
-      if (this.mYG.isChecked()) {
-        NormalUserFooterPreference.a.c(this.mYH.mYF.mYE);
+      NormalUserFooterPreference.a(this.pCh.pCg.pCf.pCe, 9);
+      if (this.pxK.isChecked()) {
+        NormalUserFooterPreference.a.c(this.pCh.pCg.pCf);
       }
     }
+    AppMethodBeat.o(23672);
   }
 }
 

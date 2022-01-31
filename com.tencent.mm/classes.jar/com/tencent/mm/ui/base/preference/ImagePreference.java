@@ -6,15 +6,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.ac.a.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ad.a.a;
 
 public final class ImagePreference
   extends Preference
 {
-  private ImageView mXR = null;
-  private e vcL = new e();
+  private ImageView pAE;
+  private e zrl;
   
   public ImagePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,33 +23,41 @@ public final class ImagePreference
   public ImagePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(a.h.mm_preference_image);
-    setWidgetLayoutResource(a.h.mm_preference_submenu);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.ImagePreference);
-    paramInt = paramContext.getResourceId(a.m.ImagePreference_img, 0);
+    AppMethodBeat.i(107192);
+    this.pAE = null;
+    this.zrl = new e();
+    setLayoutResource(2130970234);
+    setWidgetLayoutResource(2130970254);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ImagePreference);
+    paramInt = paramContext.getResourceId(0, 0);
     if (paramInt > 0)
     {
-      paramAttributeSet = this.vcL;
-      paramAttributeSet.kCB = paramInt;
+      paramAttributeSet = this.zrl;
+      paramAttributeSet.resId = paramInt;
       paramAttributeSet.bitmap = null;
-      this.vcL.h(this.mXR);
+      this.zrl.m(this.pAE);
     }
     paramContext.recycle();
+    AppMethodBeat.o(107192);
   }
   
   protected final void onBindView(View paramView)
   {
+    AppMethodBeat.i(107194);
     super.onBindView(paramView);
-    this.mXR = ((ImageView)paramView.findViewById(a.g.image_iv));
-    this.vcL.h(this.mXR);
+    this.pAE = ((ImageView)paramView.findViewById(2131822243));
+    this.zrl.m(this.pAE);
+    AppMethodBeat.o(107194);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(107193);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content_ll);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131821888);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, a.h.mm_preference_image, localViewGroup);
+    View.inflate(this.mContext, 2130970234, localViewGroup);
+    AppMethodBeat.o(107193);
     return paramViewGroup;
   }
 }

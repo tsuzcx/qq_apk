@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.downloader_app.b;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$6
   implements DialogInterface.OnClickListener
 {
-  c$6(a parama, c.b paramb) {}
+  c$6(Context paramContext, i parami) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    c.a(this.iRW, true, this.iRX);
+    AppMethodBeat.i(136090);
+    c.a(this.val$context, this.laI);
+    AppMethodBeat.o(136090);
   }
 }
 

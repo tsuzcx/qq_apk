@@ -1,6 +1,7 @@
 package com.tencent.mm.pluginsdk.ui.d;
 
 import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.k;
 
 final class l$5
@@ -8,15 +9,17 @@ final class l$5
 {
   l$5(k paramk, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public final void hb(boolean paramBoolean)
+  public final void iL(boolean paramBoolean)
   {
+    AppMethodBeat.i(28135);
     if (paramBoolean)
     {
-      this.sjO.dismiss();
-      if (this.sjL != null) {
-        this.sjL.onDismiss(null);
+      this.wcv.dismiss();
+      if (this.wcs != null) {
+        this.wcs.onDismiss(null);
       }
     }
+    AppMethodBeat.o(28135);
   }
 }
 

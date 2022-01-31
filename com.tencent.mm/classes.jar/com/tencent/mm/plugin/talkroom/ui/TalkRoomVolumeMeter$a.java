@@ -9,94 +9,120 @@ import android.graphics.Rect;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class TalkRoomVolumeMeter$a
   extends SurfaceView
   implements SurfaceHolder.Callback
 {
-  Paint gaZ;
-  int max = 100;
-  Rect pCA;
-  int pCB;
-  int pCC;
-  am pCD;
-  private boolean pCE = false;
-  private float pCF = this.pCv;
-  float pCG = this.pCv;
-  PaintFlagsDrawFilter pCH;
-  boolean pCI = false;
-  float pCu = 0.0F;
-  float pCv = 0.0F;
-  SurfaceHolder pCw = getHolder();
-  Bitmap pCx;
-  Bitmap pCy;
-  private Bitmap pCz;
+  private boolean isRefreshing;
+  int max;
+  Paint paint;
   private float[] positions;
-  boolean started = false;
-  int value = 0;
+  boolean started;
+  float tee;
+  float tef;
+  SurfaceHolder teg;
+  Bitmap teh;
+  Bitmap tei;
+  private Bitmap tej;
+  Rect tek;
+  int tel;
+  int tem;
+  ap ten;
+  private float teo;
+  float tep;
+  PaintFlagsDrawFilter teq;
+  boolean ter;
+  int value;
   
   public TalkRoomVolumeMeter$a(TalkRoomVolumeMeter paramTalkRoomVolumeMeter, Context paramContext)
   {
     super(paramContext);
-    this.pCw.addCallback(this);
-    this.gaZ = new Paint();
-    this.gaZ.setAntiAlias(true);
-    this.pCH = new PaintFlagsDrawFilter(0, 3);
-    this.pCD = new am(new TalkRoomVolumeMeter.a.1(this), true);
+    AppMethodBeat.i(25960);
+    this.max = 100;
+    this.value = 0;
+    this.tee = 0.0F;
+    this.tef = 0.0F;
+    this.isRefreshing = false;
+    this.teo = this.tef;
+    this.tep = this.tef;
+    this.ter = false;
+    this.started = false;
+    this.teg = getHolder();
+    this.teg.addCallback(this);
+    this.paint = new Paint();
+    this.paint.setAntiAlias(true);
+    this.teq = new PaintFlagsDrawFilter(0, 3);
+    this.ten = new ap(new TalkRoomVolumeMeter.a.1(this), true);
+    AppMethodBeat.o(25960);
   }
   
-  private int bMT()
+  private int cHW()
   {
-    if (this.pCx == null) {
+    AppMethodBeat.i(25962);
+    if (this.teh == null)
+    {
+      AppMethodBeat.o(25962);
       return 190;
     }
-    return this.pCx.getHeight();
+    int i = this.teh.getHeight();
+    AppMethodBeat.o(25962);
+    return i;
   }
   
   public final void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    y.v("MicroMsg.TalkRoomVoiceMeter", "surfaceChanged, width = " + paramInt2 + " height = " + paramInt3);
-    this.pCv = 0.0F;
-    this.pCu = (paramInt3 - bMT());
-    this.pCF = this.pCv;
-    this.pCG = this.pCv;
-    this.pCC = paramInt2;
-    this.pCB = bMT();
-    this.pCA = new Rect(0, (int)this.pCF, this.pCC, (int)this.pCF + this.pCB);
-    this.pCE = true;
+    AppMethodBeat.i(25963);
+    ab.v("MicroMsg.TalkRoomVoiceMeter", "surfaceChanged, width = " + paramInt2 + " height = " + paramInt3);
+    this.tef = 0.0F;
+    this.tee = (paramInt3 - cHW());
+    this.teo = this.tef;
+    this.tep = this.tef;
+    this.tem = paramInt2;
+    this.tel = cHW();
+    this.tek = new Rect(0, (int)this.teo, this.tem, (int)this.teo + this.tel);
+    this.isRefreshing = true;
+    AppMethodBeat.o(25963);
   }
   
   public final void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    y.v("MicroMsg.TalkRoomVoiceMeter", "surfaceCreated");
-    this.pCx = BitmapFactory.decodeResource(getResources(), R.g.talk_room_volume_flame);
-    this.pCz = BitmapFactory.decodeResource(getResources(), R.g.talk_room_volume_err);
-    this.pCy = BitmapFactory.decodeResource(getResources(), R.g.talk_room_volume_flame_red);
+    AppMethodBeat.i(25961);
+    ab.v("MicroMsg.TalkRoomVoiceMeter", "surfaceCreated");
+    this.teh = BitmapFactory.decodeResource(getResources(), 2130840539);
+    this.tej = BitmapFactory.decodeResource(getResources(), 2130840538);
+    this.tei = BitmapFactory.decodeResource(getResources(), 2130840540);
+    AppMethodBeat.o(25961);
   }
   
   public final void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    y.v("MicroMsg.TalkRoomVoiceMeter", "surfaceDestroyed");
-    this.pCE = false;
-    this.pCD.stopTimer();
-    if (this.pCx != null)
+    AppMethodBeat.i(25964);
+    ab.v("MicroMsg.TalkRoomVoiceMeter", "surfaceDestroyed");
+    this.isRefreshing = false;
+    this.ten.stopTimer();
+    if (this.teh != null)
     {
-      this.pCx.recycle();
-      this.pCx = null;
+      ab.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.teh.toString() });
+      this.teh.recycle();
+      this.teh = null;
     }
-    if (this.pCz != null)
+    if (this.tej != null)
     {
-      this.pCz.recycle();
-      this.pCz = null;
+      ab.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.tej.toString() });
+      this.tej.recycle();
+      this.tej = null;
     }
-    if (this.pCy != null)
+    if (this.tei != null)
     {
-      this.pCy.recycle();
-      this.pCy = null;
+      ab.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.tei.toString() });
+      this.tei.recycle();
+      this.tei = null;
     }
+    AppMethodBeat.o(25964);
   }
 }
 

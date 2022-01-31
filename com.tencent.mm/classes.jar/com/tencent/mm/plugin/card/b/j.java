@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.card.b;
 
 import android.text.TextUtils;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.m.c;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,221 +16,260 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public final class j
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
-  private List<WeakReference<j.a>> fKm = new ArrayList();
-  public ArrayList<String> ikS = new ArrayList();
-  public ArrayList<String> ikT = new ArrayList();
-  public ah ikU = new ah();
-  public HashMap<String, Runnable> ikV = new LinkedHashMap();
+  private List<WeakReference<j.a>> kkV;
+  public ArrayList<String> klQ;
+  public ArrayList<String> klR;
+  public ak klS;
+  public HashMap<String, Runnable> klT;
   
   public j()
   {
-    com.tencent.mm.kernel.g.DO().dJT.a(907, this);
-    this.ikS.clear();
-    this.ikT.clear();
-    this.ikV.clear();
+    AppMethodBeat.i(87728);
+    this.kkV = new ArrayList();
+    this.klQ = new ArrayList();
+    this.klR = new ArrayList();
+    this.klS = new ak();
+    this.klT = new LinkedHashMap();
+    com.tencent.mm.kernel.g.RK().eHt.a(907, this);
+    this.klQ.clear();
+    this.klR.clear();
+    this.klT.clear();
+    AppMethodBeat.o(87728);
+  }
+  
+  private void HC(String paramString)
+  {
+    AppMethodBeat.i(87733);
+    ab.i("MicroMsg.CardMarkCodeMgr", "removeId()");
+    if ((this.klQ.contains(paramString)) && (!this.klR.contains(paramString)))
+    {
+      this.klQ.remove(paramString);
+      ab.i("MicroMsg.CardMarkCodeMgr", "remove mark card id in mMarkList. card is ".concat(String.valueOf(paramString)));
+    }
+    if ((!this.klQ.contains(paramString)) && (this.klR.contains(paramString)))
+    {
+      this.klR.remove(paramString);
+      Runnable localRunnable = (Runnable)this.klT.get(paramString);
+      this.klT.remove(paramString);
+      this.klS.removeCallbacks(localRunnable);
+      ab.i("MicroMsg.CardMarkCodeMgr", "remove unmark card id in mUnMarkList. card is ".concat(String.valueOf(paramString)));
+      ab.i("MicroMsg.CardMarkCodeMgr", "remove unmark card mask id in mId2Runner. card is ".concat(String.valueOf(paramString)));
+    }
+    AppMethodBeat.o(87733);
+  }
+  
+  private void HD(String paramString)
+  {
+    AppMethodBeat.i(87734);
+    ab.i("MicroMsg.CardMarkCodeMgr", "cancelUnmark()");
+    if (this.klR.contains(paramString))
+    {
+      this.klR.remove(paramString);
+      ab.i("MicroMsg.CardMarkCodeMgr", "remove unmark card id in mUnMarkList. card is ".concat(String.valueOf(paramString)));
+    }
+    if (this.klT.containsKey(paramString))
+    {
+      ab.i("MicroMsg.CardMarkCodeMgr", "remove unmark card mask id in mId2Runner. card is ".concat(String.valueOf(paramString)));
+      Runnable localRunnable = (Runnable)this.klT.get(paramString);
+      this.klT.remove(paramString);
+      this.klS.removeCallbacks(localRunnable);
+    }
+    AppMethodBeat.o(87734);
   }
   
   private void a(String paramString, j.b paramb)
   {
-    y.i("MicroMsg.CardMarkCodeMgr", "markSuccess()");
-    if (this.fKm == null) {
+    AppMethodBeat.i(87731);
+    ab.i("MicroMsg.CardMarkCodeMgr", "markSuccess()");
+    if (this.kkV == null)
+    {
+      AppMethodBeat.o(87731);
       return;
     }
-    if ((!this.ikS.contains(paramString)) && (!this.ikT.contains(paramString)))
+    if ((!this.klQ.contains(paramString)) && (!this.klR.contains(paramString)))
     {
-      y.i("MicroMsg.CardMarkCodeMgr", "markSuccess the card id is not in mark list and un mark list.");
+      ab.i("MicroMsg.CardMarkCodeMgr", "markSuccess the card id is not in mark list and un mark list.");
+      AppMethodBeat.o(87731);
       return;
     }
     int i = 0;
-    label47:
-    Object localObject;
-    if (i < this.fKm.size())
+    if (i < this.kkV.size())
     {
-      localObject = (WeakReference)this.fKm.get(i);
+      Object localObject = (WeakReference)this.kkV.get(i);
       if (localObject != null)
       {
         localObject = (j.a)((WeakReference)localObject).get();
         if (localObject != null)
         {
-          if (!this.ikS.contains(paramString)) {
-            break label122;
+          if (!this.klQ.contains(paramString)) {
+            break label137;
           }
           ((j.a)localObject).b(paramString, paramb);
         }
       }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label47;
-      break;
-      label122:
-      if (this.ikT.contains(paramString)) {
-        ((j.a)localObject).yd(paramString);
-      }
-    }
-  }
-  
-  private void cq(String paramString1, String paramString2)
-  {
-    y.i("MicroMsg.CardMarkCodeMgr", "onMarkFail()");
-    if (this.fKm == null) {}
-    for (;;)
-    {
-      return;
-      if ((!this.ikS.contains(paramString1)) || (this.ikT.contains(paramString1)))
+      for (;;)
       {
-        y.i("MicroMsg.CardMarkCodeMgr", "markSuccess the card is not in mark list");
-        return;
-      }
-      int i = 0;
-      while (i < this.fKm.size())
-      {
-        Object localObject = (WeakReference)this.fKm.get(i);
-        if (localObject != null)
-        {
-          localObject = (j.a)((WeakReference)localObject).get();
-          if (localObject != null) {
-            ((j.a)localObject).cr(paramString1, paramString2);
-          }
-        }
         i += 1;
+        break;
+        label137:
+        if (this.klR.contains(paramString)) {
+          ((j.a)localObject).HE(paramString);
+        }
       }
     }
+    AppMethodBeat.o(87731);
   }
   
-  static void g(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  private void dn(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(87732);
+    ab.i("MicroMsg.CardMarkCodeMgr", "onMarkFail()");
+    if (this.kkV == null)
+    {
+      AppMethodBeat.o(87732);
+      return;
+    }
+    if ((!this.klQ.contains(paramString1)) || (this.klR.contains(paramString1)))
+    {
+      ab.i("MicroMsg.CardMarkCodeMgr", "markSuccess the card is not in mark list");
+      AppMethodBeat.o(87732);
+      return;
+    }
+    int i = 0;
+    while (i < this.kkV.size())
+    {
+      Object localObject = (WeakReference)this.kkV.get(i);
+      if (localObject != null)
+      {
+        localObject = (j.a)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((j.a)localObject).jdMethod_do(paramString1, paramString2);
+        }
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(87732);
+  }
+  
+  static void i(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(87737);
     if (TextUtils.isEmpty(paramString))
     {
-      y.i("MicroMsg.CardMarkCodeMgr", "card_id is empty, don't call NetSceneMarkShareCard cgi");
+      ab.i("MicroMsg.CardMarkCodeMgr", "card_id is empty, don't call NetSceneMarkShareCard cgi");
+      AppMethodBeat.o(87737);
       return;
     }
-    y.i("MicroMsg.CardMarkCodeMgr", "doMarkNetscene()");
+    ab.i("MicroMsg.CardMarkCodeMgr", "doMarkNetscene()");
     paramString = new com.tencent.mm.plugin.card.sharecard.model.f(paramString, paramInt1, paramInt2, paramInt3);
-    com.tencent.mm.kernel.g.DO().dJT.a(paramString, 0);
+    com.tencent.mm.kernel.g.RK().eHt.a(paramString, 0);
+    AppMethodBeat.o(87737);
   }
   
-  private void yb(String paramString)
+  public final void W(String paramString, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.CardMarkCodeMgr", "removeId()");
-    if ((this.ikS.contains(paramString)) && (!this.ikT.contains(paramString)))
-    {
-      this.ikS.remove(paramString);
-      y.i("MicroMsg.CardMarkCodeMgr", "remove mark card id in mMarkList. card is " + paramString);
+    AppMethodBeat.i(87735);
+    ab.i("MicroMsg.CardMarkCodeMgr", "doMarkCode()");
+    HD(paramString);
+    if (!this.klQ.contains(paramString)) {
+      this.klQ.add(paramString);
     }
-    if ((!this.ikS.contains(paramString)) && (this.ikT.contains(paramString)))
-    {
-      this.ikT.remove(paramString);
-      Runnable localRunnable = (Runnable)this.ikV.get(paramString);
-      this.ikV.remove(paramString);
-      this.ikU.removeCallbacks(localRunnable);
-      y.i("MicroMsg.CardMarkCodeMgr", "remove unmark card id in mUnMarkList. card is " + paramString);
-      y.i("MicroMsg.CardMarkCodeMgr", "remove unmark card mask id in mId2Runner. card is " + paramString);
-    }
-  }
-  
-  private void yc(String paramString)
-  {
-    y.i("MicroMsg.CardMarkCodeMgr", "cancelUnmark()");
-    if (this.ikT.contains(paramString))
-    {
-      this.ikT.remove(paramString);
-      y.i("MicroMsg.CardMarkCodeMgr", "remove unmark card id in mUnMarkList. card is " + paramString);
-    }
-    if (this.ikV.containsKey(paramString))
-    {
-      y.i("MicroMsg.CardMarkCodeMgr", "remove unmark card mask id in mId2Runner. card is " + paramString);
-      Runnable localRunnable = (Runnable)this.ikV.get(paramString);
-      this.ikV.remove(paramString);
-      this.ikU.removeCallbacks(localRunnable);
-    }
-  }
-  
-  public final void I(String paramString, int paramInt1, int paramInt2)
-  {
-    y.i("MicroMsg.CardMarkCodeMgr", "doMarkCode()");
-    yc(paramString);
-    if (!this.ikS.contains(paramString)) {
-      this.ikS.add(paramString);
-    }
-    g(paramString, paramInt1, 1, paramInt2);
+    i(paramString, paramInt1, 1, paramInt2);
+    AppMethodBeat.o(87735);
   }
   
   public final void a(j.a parama)
   {
-    if (this.fKm == null) {
-      this.fKm = new ArrayList();
+    AppMethodBeat.i(87729);
+    if (this.kkV == null) {
+      this.kkV = new ArrayList();
     }
-    if (parama != null) {
-      this.fKm.add(new WeakReference(parama));
-    }
+    this.kkV.add(new WeakReference(parama));
+    AppMethodBeat.o(87729);
   }
   
   public final void b(j.a parama)
   {
-    if ((this.fKm == null) || (parama == null)) {}
-    for (;;)
+    AppMethodBeat.i(87730);
+    if (this.kkV == null)
     {
+      AppMethodBeat.o(87730);
       return;
-      int i = 0;
-      while (i < this.fKm.size())
-      {
-        WeakReference localWeakReference = (WeakReference)this.fKm.get(i);
-        if (localWeakReference != null)
-        {
-          j.a locala = (j.a)localWeakReference.get();
-          if ((locala != null) && (locala.equals(parama)))
-          {
-            this.fKm.remove(localWeakReference);
-            return;
-          }
-        }
-        i += 1;
-      }
     }
+    int i = 0;
+    while (i < this.kkV.size())
+    {
+      WeakReference localWeakReference = (WeakReference)this.kkV.get(i);
+      if (localWeakReference != null)
+      {
+        j.a locala = (j.a)localWeakReference.get();
+        if ((locala != null) && (locala.equals(parama)))
+        {
+          this.kkV.remove(localWeakReference);
+          AppMethodBeat.o(87730);
+          return;
+        }
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(87730);
   }
   
-  public final void bl(String paramString, int paramInt)
+  public final void bN(final String paramString, final int paramInt)
   {
-    y.i("MicroMsg.CardMarkCodeMgr", "doUnmarkCode()");
-    yc(paramString);
-    this.ikT.add(paramString);
-    j.1 local1 = new j.1(this, paramString, paramInt);
-    paramInt = bk.getInt(com.tencent.mm.m.g.AB().H("ShareCard", "UnMarkDelay"), 0);
-    this.ikU.postDelayed(local1, paramInt * 1000);
-    this.ikV.put(paramString, local1);
-    y.i("MicroMsg.CardMarkCodeMgr", "add unmark card mask id in mId2Runner. card is " + paramString + " system.time:" + System.currentTimeMillis());
+    AppMethodBeat.i(87736);
+    ab.i("MicroMsg.CardMarkCodeMgr", "doUnmarkCode()");
+    HD(paramString);
+    this.klR.add(paramString);
+    Runnable local1 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(87727);
+        j.i(paramString, this.klV, this.klW, paramInt);
+        ab.i("MicroMsg.CardMarkCodeMgr", "run the unmark task, the card is " + paramString + " system.time:" + System.currentTimeMillis());
+        AppMethodBeat.o(87727);
+      }
+    };
+    paramInt = bo.getInt(com.tencent.mm.m.g.Nr().R("ShareCard", "UnMarkDelay"), 0);
+    this.klS.postDelayed(local1, paramInt * 1000);
+    this.klT.put(paramString, local1);
+    ab.i("MicroMsg.CardMarkCodeMgr", "add unmark card mask id in mId2Runner. card is " + paramString + " system.time:" + System.currentTimeMillis());
+    AppMethodBeat.o(87736);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.CardMarkCodeMgr", "onSceneEnd, errType = " + paramInt1 + " errCode = " + paramInt2);
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+    AppMethodBeat.i(87738);
+    ab.i("MicroMsg.CardMarkCodeMgr", "onSceneEnd, errType = " + paramInt1 + " errCode = " + paramInt2);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
       if ((paramm instanceof com.tencent.mm.plugin.card.sharecard.model.f))
       {
         paramString = (com.tencent.mm.plugin.card.sharecard.model.f)paramm;
         paramm = new j.b();
-        paramm.ila = paramString.ila;
-        paramm.ilb = paramString.ilb;
-        paramm.ilc = paramString.ilc;
-        paramm.ild = paramString.ild;
-        paramm.ile = paramString.ile;
-        y.i("MicroMsg.CardMarkCodeMgr", "onSceneEnd, markSuccess original_card_id = " + paramString.ioJ);
-        y.i("MicroMsg.CardMarkCodeMgr", "mark_user:" + paramm.ila + " mark_succ:" + paramm.ilb + " mark_card_id:" + paramm.ilc + " expire_time:" + paramm.ild + " pay_qrcode_wording:" + paramm.ile);
-        a(paramString.ioJ, paramm);
-        yb(paramString.ioJ);
+        paramm.klY = paramString.klY;
+        paramm.klZ = paramString.klZ;
+        paramm.kma = paramString.kma;
+        paramm.kmb = paramString.kmb;
+        paramm.kmc = paramString.kmc;
+        ab.i("MicroMsg.CardMarkCodeMgr", "onSceneEnd, markSuccess original_card_id = " + paramString.kpQ);
+        ab.i("MicroMsg.CardMarkCodeMgr", "mark_user:" + paramm.klY + " mark_succ:" + paramm.klZ + " mark_card_id:" + paramm.kma + " expire_time:" + paramm.kmb + " pay_qrcode_wording:" + paramm.kmc);
+        a(paramString.kpQ, paramm);
+        HC(paramString.kpQ);
+        AppMethodBeat.o(87738);
       }
     }
-    while (!(paramm instanceof com.tencent.mm.plugin.card.sharecard.model.f)) {
-      return;
+    else if ((paramm instanceof com.tencent.mm.plugin.card.sharecard.model.f))
+    {
+      paramm = (com.tencent.mm.plugin.card.sharecard.model.f)paramm;
+      ab.i("MicroMsg.CardMarkCodeMgr", "onSceneEnd, markFail original_card_id = " + paramm.kpQ);
+      dn(paramm.kpQ, paramString);
+      HC(paramm.kpQ);
     }
-    paramm = (com.tencent.mm.plugin.card.sharecard.model.f)paramm;
-    y.i("MicroMsg.CardMarkCodeMgr", "onSceneEnd, markFail original_card_id = " + paramm.ioJ);
-    cq(paramm.ioJ, paramString);
-    yb(paramm.ioJ);
+    AppMethodBeat.o(87738);
   }
 }
 

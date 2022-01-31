@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RoomExptDebugUI$4
   implements View.OnClickListener
@@ -12,9 +13,11 @@ final class RoomExptDebugUI$4
   
   public final void onClick(View paramView)
   {
-    a.aNc().aNf();
-    RoomExptDebugUI.d(this.jIW).clear();
-    Toast.makeText(this.jIW, "del db finish", 0).show();
+    AppMethodBeat.i(73594);
+    a.bsU().bsX();
+    RoomExptDebugUI.d(this.mcY).clear();
+    Toast.makeText(this.mcY, "del db finish", 0).show();
+    AppMethodBeat.o(73594);
   }
 }
 

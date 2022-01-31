@@ -11,21 +11,21 @@ final class g$2
   public final void a(Transition paramTransition)
   {
     paramTransition.b(this);
-    this.qF.setVisibility(8);
-    int j = this.qG.size();
+    this.rC.setVisibility(8);
+    int j = this.rD.size();
     int i = 0;
     while (i < j)
     {
-      ((View)this.qG.get(i)).setVisibility(0);
+      ((View)this.rD.get(i)).setVisibility(0);
       i += 1;
     }
   }
   
-  public final void bq() {}
+  public final void ce() {}
   
-  public final void br() {}
+  public final void cf() {}
   
-  public final void bv() {}
+  public final void cj() {}
 }
 
 

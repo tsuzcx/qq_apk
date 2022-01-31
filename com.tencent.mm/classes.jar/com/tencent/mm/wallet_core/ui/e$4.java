@@ -1,14 +1,17 @@
 package com.tencent.mm.wallet_core.ui;
 
-import com.tencent.mm.model.bi.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bk.a;
 import com.tencent.mm.network.e;
 
 final class e$4
-  implements bi.a
+  implements bk.a
 {
   public final void a(e parame)
   {
-    parame.KT();
+    AppMethodBeat.i(49259);
+    parame.adK();
+    AppMethodBeat.o(49259);
   }
 }
 

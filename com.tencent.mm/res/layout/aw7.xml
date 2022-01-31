@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Button android:id="@id/ed1" android:background="@color/x4" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:id="@id/lp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/aez" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/em_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:id="@id/el5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.AdlandingDummyViewPager android:id="@id/ema" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/emb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/bg9" android:scaleType="centerInside" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <FrameLayout android:layout_gravity="top" android:id="@id/el6" android:background="@raw/sns_ad_native_landing_page_navigation" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip">
+        <ImageView android:id="@id/el7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/awl" />
+        <ImageView android:layout_gravity="right" android:id="@id/el8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/awx" />
+        <TextView android:textColor="#ff353535" android:layout_gravity="center|right" android:id="@id/emc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" />
+    </FrameLayout>
+</FrameLayout>

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.topstory.ui.video;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class TopStoryBaseVideoUI$3
   extends RecyclerView.m
@@ -10,28 +11,39 @@ final class TopStoryBaseVideoUI$3
   
   public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if ((!this.pFv.pFh) || (paramInt2 == 0)) {
+    AppMethodBeat.i(1720);
+    if ((!this.tiT.tiD) || (paramInt2 == 0))
+    {
+      AppMethodBeat.o(1720);
       return;
     }
-    this.pFv.bOf();
+    this.tiT.cJS();
+    AppMethodBeat.o(1720);
   }
   
   public final void c(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (!this.pFv.pFh) {
+    AppMethodBeat.i(1719);
+    if (!this.tiT.tiD)
+    {
+      AppMethodBeat.o(1719);
       return;
     }
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    if (this.pFv.pFu)
+    for (;;)
     {
-      this.pFv.pFg.b(this.pFv);
+      AppMethodBeat.o(1719);
       return;
+      if (this.tiT.tiR)
+      {
+        this.tiT.tiC.b(this.tiT);
+        AppMethodBeat.o(1719);
+        return;
+      }
+      this.tiT.tiy.b(this.tiT);
     }
-    this.pFv.pFc.b(this.pFv);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.os.CountDownTimer;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyAutoScrollItem$1$1
   extends CountDownTimer
@@ -12,14 +13,18 @@ final class LuckyMoneyAutoScrollItem$1$1
   
   public final void onFinish()
   {
-    if (LuckyMoneyAutoScrollItem.b(this.lTY.lTX) != null) {
-      LuckyMoneyAutoScrollItem.b(this.lTY.lTX).arA();
+    AppMethodBeat.i(42560);
+    if (LuckyMoneyAutoScrollItem.b(this.orf.ore) != null) {
+      LuckyMoneyAutoScrollItem.b(this.orf.ore).aQl();
     }
+    AppMethodBeat.o(42560);
   }
   
   public final void onTick(long paramLong)
   {
-    this.lTY.lTX.smoothScrollToPosition(LuckyMoneyAutoScrollItem.a(this.lTY.lTX));
+    AppMethodBeat.i(42559);
+    this.orf.ore.smoothScrollToPosition(LuckyMoneyAutoScrollItem.a(this.orf.ore));
+    AppMethodBeat.o(42559);
   }
 }
 

@@ -1,66 +1,72 @@
 package com.tencent.mm.plugin.ipcall.a;
 
-import com.tencent.mm.h.a.im;
-import com.tencent.mm.h.a.im.a;
-import com.tencent.mm.protocal.c.bgb;
-import com.tencent.mm.protocal.c.bgk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.it;
+import com.tencent.mm.g.a.it.a;
+import com.tencent.mm.protocal.protobuf.boh;
+import com.tencent.mm.protocal.protobuf.boq;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class h
-  extends c<im>
+  extends c<it>
 {
-  public h.a lpb;
+  public h.a nMx;
   
   public h()
   {
-    this.udX = im.class.getName().hashCode();
+    AppMethodBeat.i(21760);
+    this.__eventId = it.class.getName().hashCode();
+    AppMethodBeat.o(21760);
   }
   
-  private boolean a(im paramim)
+  private boolean a(it paramit)
   {
-    if ((paramim instanceof im))
+    AppMethodBeat.i(21761);
+    if ((paramit instanceof it))
     {
-      paramim = paramim.bQJ.bQK;
-      if ((paramim != null) && (paramim.length > 0)) {
-        break label26;
-      }
-    }
-    for (;;)
-    {
-      return false;
-      label26:
-      if (paramim[0] == 101)
+      paramit = paramit.cyj.cyk;
+      if ((paramit == null) || (paramit.length <= 0))
       {
-        Object localObject = new byte[paramim.length - 1];
-        System.arraycopy(paramim, 1, localObject, 0, localObject.length);
+        AppMethodBeat.o(21761);
+        return false;
+      }
+      if (paramit[0] == 101)
+      {
+        Object localObject = new byte[paramit.length - 1];
+        System.arraycopy(paramit, 1, localObject, 0, localObject.length);
         try
         {
-          paramim = (bgb)new bgb().aH((byte[])localObject);
-          y.d("MicroMsg.IPCallSvrNotifyListener", "roomId: %d, roomKey: %d, DtmfPayloadType: %d", new Object[] { Integer.valueOf(paramim.sST), Long.valueOf(paramim.sSU), Integer.valueOf(paramim.lpY) });
-          localObject = paramim.tAT;
+          paramit = (boh)new boh().parseFrom((byte[])localObject);
+          ab.d("MicroMsg.IPCallSvrNotifyListener", "roomId: %d, roomKey: %d, DtmfPayloadType: %d", new Object[] { Integer.valueOf(paramit.wQP), Long.valueOf(paramit.wQQ), Integer.valueOf(paramit.nNu) });
+          localObject = paramit.xCB;
           if (localObject != null)
           {
             localObject = ((LinkedList)localObject).iterator();
             while (((Iterator)localObject).hasNext())
             {
-              bgk localbgk = (bgk)((Iterator)localObject).next();
-              y.d("MicroMsg.IPCallSvrNotifyListener", "userstatus: %d, userstatusKey: %d, memberId: %d", new Object[] { Integer.valueOf(localbgk.tzB), Integer.valueOf(localbgk.tBd), Integer.valueOf(localbgk.tBc) });
+              boq localboq = (boq)((Iterator)localObject).next();
+              ab.d("MicroMsg.IPCallSvrNotifyListener", "userstatus: %d, userstatusKey: %d, memberId: %d", new Object[] { Integer.valueOf(localboq.xCL), Integer.valueOf(localboq.xCM), Integer.valueOf(localboq.xCK) });
+              continue;
+              AppMethodBeat.o(21761);
             }
           }
-          if (this.lpb == null) {}
         }
-        catch (Exception paramim)
+        catch (Exception paramit)
         {
-          y.e("MicroMsg.IPCallSvrNotifyListener", "parse PstnNotify error: %s", new Object[] { paramim.getMessage() });
-          return false;
+          ab.e("MicroMsg.IPCallSvrNotifyListener", "parse PstnNotify error: %s", new Object[] { paramit.getMessage() });
         }
       }
     }
-    this.lpb.a(paramim);
-    return false;
+    for (;;)
+    {
+      return false;
+      if (this.nMx != null) {
+        this.nMx.a(paramit);
+      }
+    }
   }
 }
 

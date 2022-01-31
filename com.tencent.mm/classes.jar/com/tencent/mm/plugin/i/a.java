@@ -1,49 +1,112 @@
 package com.tencent.mm.plugin.i;
 
-import com.tencent.mm.ak.f;
-import com.tencent.mm.model.p;
-import com.tencent.mm.protocal.c.azd;
-import com.tencent.mm.protocal.i.f;
-import com.tencent.mm.protocal.i.g;
-import com.tencent.mm.protocal.u.b;
-import com.tencent.mm.sdk.platformtools.ai;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.vfs.e;
+import java.io.UnsupportedEncodingException;
 
 public final class a
-  extends p
-  implements com.tencent.mm.plugin.auth.a.a
 {
-  private static a iAl;
+  public String cqq;
+  public String nLb;
+  public String nLc;
+  public int nLd;
+  public int nLe;
+  public int nLf;
+  public int nLg;
+  public int nLh;
+  public int nLi;
   
-  private a()
+  public static String QU(String paramString)
   {
-    super(f.class);
+    AppMethodBeat.i(79093);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(79093);
+      return "";
+    }
+    paramString = paramString.replace(",", ";");
+    AppMethodBeat.o(79093);
+    return paramString;
   }
   
-  public static a aDq()
+  public static String cP(String paramString)
   {
+    AppMethodBeat.i(79092);
+    paramString = e.i(paramString, 0, 6);
+    if ((paramString == null) || (paramString.length != 6))
+    {
+      AppMethodBeat.o(79092);
+      return "";
+    }
     try
     {
-      if (iAl == null) {
-        iAl = new a();
-      }
-      a locala = iAl;
-      return locala;
+      paramString = new String(paramString, "UTF-8");
+      AppMethodBeat.o(79092);
+      return paramString;
     }
-    finally {}
+    catch (UnsupportedEncodingException paramString)
+    {
+      for (;;)
+      {
+        ab.e("MicroMsg.ImgExtInfoReport", "getFileExt UnsupportedEncodingException:".concat(String.valueOf(paramString)));
+        paramString = "";
+      }
+    }
   }
   
-  public final void a(i.f paramf, i.g paramg, boolean paramBoolean) {}
-  
-  public final void a(u.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
+  public static int uD(String paramString)
   {
-    if (paramb.sqm.jwX != 0) {
-      ai.d(new a.1(paramb.sqm.sCd, paramb.sqm.sCe, paramb.sqm.sCf));
+    AppMethodBeat.i(79094);
+    try
+    {
+      paramString = d.aoT(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(79094);
+        return 0;
+      }
+      paramString = paramString.outMimeType;
+      if (paramString == null)
+      {
+        AppMethodBeat.o(79094);
+        return 0;
+      }
+      paramString = paramString.toLowerCase();
+      int i = paramString.indexOf("png");
+      if (i >= 0)
+      {
+        AppMethodBeat.o(79094);
+        return 1;
+      }
+      i = paramString.indexOf("jpg");
+      if (i >= 0)
+      {
+        AppMethodBeat.o(79094);
+        return 2;
+      }
+      i = paramString.indexOf("jpeg");
+      if (i >= 0)
+      {
+        AppMethodBeat.o(79094);
+        return 2;
+      }
+      AppMethodBeat.o(79094);
+      return 0;
     }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(79094);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.i.a
  * JD-Core Version:    0.7.0.1
  */

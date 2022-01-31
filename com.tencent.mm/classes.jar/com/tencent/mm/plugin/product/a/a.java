@@ -1,62 +1,85 @@
 package com.tencent.mm.plugin.product.a;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.p;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.q;
 import com.tencent.mm.plugin.product.b.c;
 import com.tencent.mm.plugin.product.b.d;
 import java.util.HashMap;
 
 public class a
-  implements ar
+  implements at
 {
-  private c mRL = null;
-  private d mRM = null;
-  private com.tencent.mm.plugin.product.b.a mRN = new com.tencent.mm.plugin.product.b.a();
+  private c ptQ;
+  private d ptR;
+  private com.tencent.mm.plugin.product.b.a ptS;
   
-  public static a brN()
+  public a()
   {
-    return (a)p.B(a.class);
+    AppMethodBeat.i(43940);
+    this.ptQ = null;
+    this.ptR = null;
+    this.ptS = new com.tencent.mm.plugin.product.b.a();
+    AppMethodBeat.o(43940);
   }
   
-  public static c brO()
+  public static a caT()
   {
-    g.DN().CX();
-    if (brN().mRL == null) {
-      brN().mRL = new c();
+    AppMethodBeat.i(43941);
+    a locala = (a)q.S(a.class);
+    AppMethodBeat.o(43941);
+    return locala;
+  }
+  
+  public static c caU()
+  {
+    AppMethodBeat.i(43944);
+    g.RJ().QQ();
+    if (caT().ptQ == null) {
+      caT().ptQ = new c();
     }
-    return brN().mRL;
+    c localc = caT().ptQ;
+    AppMethodBeat.o(43944);
+    return localc;
   }
   
-  public final void bh(boolean paramBoolean)
+  public final d caV()
   {
-    this.mRL = null;
-    com.tencent.mm.sdk.b.a.udP.c(this.mRN);
-  }
-  
-  public final void bi(boolean paramBoolean) {}
-  
-  public final d brP()
-  {
-    g.DN().CX();
-    if (this.mRM == null) {
-      this.mRM = new d();
+    AppMethodBeat.i(43945);
+    g.RJ().QQ();
+    if (this.ptR == null) {
+      this.ptR = new d();
     }
-    return this.mRM;
+    d locald = this.ptR;
+    AppMethodBeat.o(43945);
+    return locald;
   }
   
-  public final void gf(int paramInt) {}
+  public void clearPluginData(int paramInt) {}
   
-  public final void onAccountRelease()
-  {
-    com.tencent.mm.sdk.b.a.udP.d(this.mRN);
-  }
-  
-  public final HashMap<Integer, h.d> xe()
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
     return null;
   }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(43942);
+    this.ptQ = null;
+    com.tencent.mm.sdk.b.a.ymk.c(this.ptS);
+    AppMethodBeat.o(43942);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(43943);
+    com.tencent.mm.sdk.b.a.ymk.d(this.ptS);
+    AppMethodBeat.o(43943);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

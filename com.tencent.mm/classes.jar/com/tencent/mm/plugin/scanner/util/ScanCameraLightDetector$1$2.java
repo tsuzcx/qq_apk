@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import com.tencent.mm.h.a.ow;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.py;
 import com.tencent.mm.sdk.b.a;
 
 final class ScanCameraLightDetector$1$2
@@ -10,9 +11,11 @@ final class ScanCameraLightDetector$1$2
   
   public final void run()
   {
-    ow localow = new ow();
-    localow.bYv.bYw = false;
-    a.udP.m(localow);
+    AppMethodBeat.i(81445);
+    py localpy = new py();
+    localpy.cGw.cGx = false;
+    a.ymk.l(localpy);
+    AppMethodBeat.o(81445);
   }
 }
 

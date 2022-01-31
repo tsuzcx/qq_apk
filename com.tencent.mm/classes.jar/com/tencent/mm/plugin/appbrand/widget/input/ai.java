@@ -1,98 +1,43 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.content.Context;
 import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public enum ai
+final class ai
 {
-  static final Class hwh;
-  
-  static
+  static ai.a[] f(TextView paramTextView)
   {
-    Object localObject = null;
-    try
+    int i = 0;
+    AppMethodBeat.i(77441);
+    Spannable localSpannable = null;
+    Object localObject = localSpannable;
+    if (paramTextView != null)
     {
-      Class localClass = Class.forName("android.view.inputmethod.ComposingText");
-      localObject = localClass;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
+      localObject = localSpannable;
+      if ((paramTextView.getText() instanceof Spannable))
       {
-        y.e("MicroMsg.AppBrand.InputUtil", "class for ComposingText e = %s", new Object[] { localClassNotFoundException });
-      }
-    }
-    hwh = localObject;
-  }
-  
-  static boolean be(Object paramObject)
-  {
-    return hwh.isInstance(paramObject);
-  }
-  
-  static InputMethodManager cs(View paramView)
-  {
-    if (paramView != null)
-    {
-      Context localContext = paramView.getContext();
-      paramView = localContext;
-      if (localContext != null) {}
-    }
-    else
-    {
-      paramView = ae.getContext();
-    }
-    return (InputMethodManager)paramView.getSystemService("input_method");
-  }
-  
-  static boolean f(Boolean paramBoolean)
-  {
-    return (paramBoolean != null) && (paramBoolean.booleanValue());
-  }
-  
-  static Spannable r(CharSequence paramCharSequence)
-  {
-    if (paramCharSequence == null) {
-      paramCharSequence = "";
-    }
-    for (;;)
-    {
-      if ((paramCharSequence instanceof Spannable)) {
-        return (Spannable)paramCharSequence;
-      }
-      return new SpannableStringBuilder(paramCharSequence);
-    }
-  }
-  
-  public static boolean s(CharSequence paramCharSequence)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramCharSequence instanceof Spanned))
-    {
-      paramCharSequence = (Spanned)paramCharSequence;
-      paramCharSequence = paramCharSequence.getSpans(0, paramCharSequence.length(), hwh);
-      bool1 = bool2;
-      if (paramCharSequence != null)
-      {
-        bool1 = bool2;
-        if (paramCharSequence.length > 0) {
-          bool1 = true;
+        localSpannable = (Spannable)paramTextView.getText();
+        paramTextView = (ai.a[])localSpannable.getSpans(0, localSpannable.length(), ai.a.class);
+        int j = paramTextView.length;
+        for (;;)
+        {
+          localObject = paramTextView;
+          if (i >= j) {
+            break;
+          }
+          localSpannable.removeSpan(paramTextView[i]);
+          i += 1;
         }
       }
     }
-    return bool1;
+    AppMethodBeat.o(77441);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.ai
  * JD-Core Version:    0.7.0.1
  */

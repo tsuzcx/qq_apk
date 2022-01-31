@@ -1,30 +1,56 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import com.tencent.mm.kernel.g;
+import android.content.Intent;
+import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.appbrand.appusage.af;
-import com.tencent.mm.plugin.appbrand.config.WxaExposedParams;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.n.d;
 
 final class AppBrandProfileUI$3
-  implements n.c
+  implements n.d
 {
   AppBrandProfileUI$3(AppBrandProfileUI paramAppBrandProfileUI) {}
   
-  public final void a(l paraml)
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    paraml.clear();
-    if (((af)g.r(af.class)).ap(AppBrandProfileUI.b(this.hdE), 0)) {}
-    for (int i = y.j.app_brand_usage_remove_collection;; i = y.j.app_brand_usage_add_collection)
+    AppMethodBeat.i(133027);
+    switch (paramMenuItem.getItemId())
     {
-      paraml.fq(4, i);
-      paraml.fq(2, y.j.app_brand_authorize_settings);
-      if ((AppBrandProfileUI.c(this.hdE) != null) && (AppBrandProfileUI.c(this.hdE).from == 3) && (AppBrandProfileUI.d(this.hdE))) {
-        paraml.fq(3, y.j.app_brand_profile_action_sheet_feedback);
-      }
-      paraml.fq(1, y.j.app_brand_export);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(133027);
       return;
+      paramMenuItem = new Intent(this.iOj, AppBrandAuthorizeUI.class).putExtra("key_username", AppBrandProfileUI.d(this.iOj));
+      d.b(this.iOj, "appbrand", ".ui.AppBrandAuthorizeUI", paramMenuItem);
+      AppBrandProfileUI.a(this.iOj, 10, 1);
+      AppMethodBeat.o(133027);
+      return;
+      boolean bool1 = ((af)com.tencent.mm.kernel.g.E(af.class)).aC(AppBrandProfileUI.d(this.iOj), 0);
+      boolean bool2 = com.tencent.mm.plugin.appbrand.ui.collection.g.a(bool1, this.iOj, AppBrandProfileUI.d(this.iOj), 0);
+      if (bool1)
+      {
+        paramInt = 12;
+        if (!bool2) {
+          break label178;
+        }
+      }
+      label178:
+      for (int i = 1;; i = 2)
+      {
+        AppBrandProfileUI.a(this.iOj, paramInt, i);
+        AppMethodBeat.o(133027);
+        return;
+        paramInt = 11;
+        break;
+      }
+      if ((AppBrandProfileUI.e(this.iOj) != null) && (!bo.isNullOrNil(AppBrandProfileUI.e(this.iOj).appId)))
+      {
+        d.b(this.iOj, "webview", ".ui.tools.WebViewUI", new Intent().putExtra("rawUrl", com.tencent.mm.plugin.appbrand.v.yf(AppBrandProfileUI.e(this.iOj).appId)).putExtra("forceHideShare", true));
+        AppBrandProfileUI.a(this.iOj, 16, 1);
+      }
     }
   }
 }

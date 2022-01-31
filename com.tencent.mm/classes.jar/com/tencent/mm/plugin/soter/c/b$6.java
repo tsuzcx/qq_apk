@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.soter.c;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.soter.a.d.a;
 
 final class b$6
@@ -12,9 +13,11 @@ final class b$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.SoterControllerFingerprint", "hy: user cancelled auth by click button");
-    this.psa.klx.ol(true);
-    this.psa.bKL();
+    AppMethodBeat.i(73876);
+    ab.i("MicroMsg.SoterControllerFingerprint", "hy: user cancelled auth by click button");
+    this.soc.mGl.rX(true);
+    this.soc.cxX();
+    AppMethodBeat.o(73876);
   }
 }
 

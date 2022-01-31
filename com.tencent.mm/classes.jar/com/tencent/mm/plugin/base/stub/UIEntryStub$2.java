@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.base.stub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil.ReportArgs;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
 
 final class UIEntryStub$2
@@ -14,25 +15,27 @@ final class UIEntryStub$2
 {
   UIEntryStub$2(UIEntryStub paramUIEntryStub, Bundle paramBundle, SendMessageToWX.Req paramReq) {}
   
-  public final void em(boolean paramBoolean)
+  public final void fH(boolean paramBoolean)
   {
-    boolean bool = this.hRY.isFinishing();
-    y.d("MicroMsg.UIEntryStub", "onCheckEnd, isPass = " + paramBoolean + ", isFinishing = " + bool);
+    AppMethodBeat.i(18128);
+    boolean bool = this.jLD.isFinishing();
+    ab.d("MicroMsg.UIEntryStub", "onCheckEnd, isPass = " + paramBoolean + ", isFinishing = " + bool);
     Object localObject;
     if ((paramBoolean) && (!bool))
     {
-      localObject = new Intent(this.hRY, SendAppMessageWrapperUI.class);
-      ((Intent)localObject).putExtras(this.byv);
+      localObject = new Intent(this.jLD, SendAppMessageWrapperUI.class);
+      ((Intent)localObject).putExtras(this.cax);
       ((Intent)localObject).putExtra("Select_Conv_User", "weixinfile");
-      ((Intent)localObject).putExtra("SendAppMessageWrapper_Scene", this.hRZ.scene);
-      this.hRY.startActivity((Intent)localObject);
+      ((Intent)localObject).putExtra("SendAppMessageWrapper_Scene", this.jLE.scene);
+      this.jLD.startActivity((Intent)localObject);
     }
     for (;;)
     {
-      new ah().postDelayed(new UIEntryStub.2.1(this), 1000L);
+      new ak().postDelayed(new UIEntryStub.2.1(this), 1000L);
+      AppMethodBeat.o(18128);
       return;
-      localObject = ReportUtil.c(this.hRY.getIntent().getExtras(), -3);
-      ReportUtil.a(this.hRY, (ReportUtil.ReportArgs)localObject, false);
+      localObject = ReportUtil.c(this.jLD.getIntent().getExtras(), -3);
+      ReportUtil.a(this.jLD, (ReportUtil.ReportArgs)localObject, false);
     }
   }
 }

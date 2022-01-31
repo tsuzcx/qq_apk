@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.exdevice.service;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+
 final class y$4
   implements Runnable
 {
@@ -7,9 +10,11 @@ final class y$4
   
   public final void run()
   {
-    if (!y.b(this.jzD, this.jtO, this.jzE)) {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopScanImp failed!!!");
+    AppMethodBeat.i(19656);
+    if (!y.b(this.lJc, this.lDn, this.lJd)) {
+      ab.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopScanImp failed!!!");
     }
+    AppMethodBeat.o(19656);
   }
 }
 

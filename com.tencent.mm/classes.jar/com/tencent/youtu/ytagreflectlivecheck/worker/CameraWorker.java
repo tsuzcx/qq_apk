@@ -4,6 +4,7 @@ import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.Size;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytcommon.tools.YTException;
 import com.tencent.youtu.ytcommon.tools.YTLogger;
 
@@ -20,12 +21,14 @@ public class CameraWorker
   
   public void cleanup()
   {
+    AppMethodBeat.i(123200);
     if (this.mCamera != null) {}
     try
     {
       this.mCamera.setParameters(this.mCameraParameters);
       this.mCamera = null;
       this.mIsCameraOpened = false;
+      AppMethodBeat.o(123200);
       return;
     }
     catch (Exception localException)
@@ -49,28 +52,34 @@ public class CameraWorker
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
+    AppMethodBeat.i(123199);
     if ((this.mPreviewCallback != null) && (this.mIsCameraOpened)) {
       try
       {
         this.mPreviewCallback.onPreviewFrame(paramArrayOfByte, paramCamera);
+        AppMethodBeat.o(123199);
         return;
       }
       catch (Exception paramArrayOfByte)
       {
         YTException.report(paramArrayOfByte);
+        AppMethodBeat.o(123199);
         return;
       }
     }
     YTLogger.w("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.onPreviewFrame] ---callback is nil, or mIsCameraOpened: " + this.mIsCameraOpened);
+    AppMethodBeat.o(123199);
   }
   
   public void setCamera(Camera paramCamera)
   {
+    AppMethodBeat.i(123198);
     this.mCamera = paramCamera;
     this.mCameraParameters = paramCamera.getParameters();
     mDesiredPreviewHeight = this.mCameraParameters.getPreviewSize().height;
     mDesiredPreviewWidth = this.mCameraParameters.getPreviewSize().width;
     this.mIsCameraOpened = true;
+    AppMethodBeat.o(123198);
   }
   
   public void setCameraPreviewCallback(Camera.PreviewCallback paramPreviewCallback)

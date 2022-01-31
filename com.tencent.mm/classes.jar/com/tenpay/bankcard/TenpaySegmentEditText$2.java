@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 
 class TenpaySegmentEditText$2
@@ -13,7 +14,8 @@ class TenpaySegmentEditText$2
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    LogUtil.d("MyTag", new Object[] { "edit onFocusChange hasFocus=" + paramBoolean });
+    AppMethodBeat.i(49520);
+    LogUtil.d("MyTag", new Object[] { "edit onFocusChange hasFocus=".concat(String.valueOf(paramBoolean)) });
     if (paramBoolean)
     {
       if (TenpaySegmentEditText.access$000(this.this$0) != null) {
@@ -26,11 +28,12 @@ class TenpaySegmentEditText$2
         TenpaySegmentEditText.access$200(this.this$0).setInputEditText(this.val$edit);
       }
     }
+    AppMethodBeat.o(49520);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tenpay.bankcard.TenpaySegmentEditText.2
  * JD-Core Version:    0.7.0.1
  */

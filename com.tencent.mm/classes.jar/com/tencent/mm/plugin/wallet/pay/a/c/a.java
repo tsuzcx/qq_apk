@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.wallet.pay.a.c;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 
 public final class a
-  extends e
+  extends f
 {
   public a(PayInfo paramPayInfo, int paramInt)
   {
     super(paramPayInfo, paramInt);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
     return 1551;
   }

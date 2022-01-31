@@ -1,67 +1,162 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.text.Spannable;
-import android.util.Log;
+import android.text.TextPaint;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarChart;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.f.e;
-import java.util.concurrent.CountDownLatch;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.g;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.w;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class ab
-  extends a
+  extends h
 {
-  private static final int oIh = Color.parseColor("#26eae9e2");
-  private CountDownLatch countDownLatch;
-  private Bitmap maskBitmap;
-  private RadarChart oIi;
-  private Bitmap oIj;
+  TextView euY;
+  private Runnable gaj;
+  volatile boolean rxV = false;
   
-  public ab(Context paramContext, y paramy, ViewGroup paramViewGroup)
+  public ab(Context paramContext, w paramw, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramy, paramViewGroup);
+    super(paramContext, paramw, paramViewGroup);
   }
   
-  private static void a(Spannable paramSpannable, int paramInt1, int paramInt2, Object... paramVarArgs)
+  public final void cqA()
   {
-    int i = 0;
-    while (i < 2)
+    AppMethodBeat.i(37343);
+    super.cqA();
+    AppMethodBeat.o(37343);
+  }
+  
+  public final void cqB()
+  {
+    AppMethodBeat.i(37344);
+    super.cqB();
+    AppMethodBeat.o(37344);
+  }
+  
+  @TargetApi(17)
+  public final void cqK()
+  {
+    AppMethodBeat.i(37342);
+    View localView = this.contentView;
+    localView.setBackgroundColor(this.backgroundColor);
+    localView.findViewById(2131827873).setBackgroundColor(this.backgroundColor);
+    localView.findViewById(2131827874).setBackgroundColor(this.backgroundColor);
+    this.euY = ((TextView)localView.findViewById(2131827874));
+    AppMethodBeat.o(37342);
+  }
+  
+  protected final void cqP()
+  {
+    AppMethodBeat.i(37341);
+    if (((w)this.rve).textSize > 0.0F) {
+      this.euY.setTextSize(0, ((w)this.rve).textSize);
+    }
+    Object localObject;
+    if (((w)this.rve).subType == 1)
     {
-      paramSpannable.setSpan(paramVarArgs[i], paramInt1, paramInt2, 18);
-      i += 1;
+      if (!bo.isNullOrNil(((w)this.rve).rta))
+      {
+        localObject = ((w)this.rve).rta.trim().replace("<icon", "<img");
+        d.ysm.remove(this.gaj);
+        this.gaj = new ab.1(this, (String)localObject);
+        d.post(this.gaj, "");
+      }
+      if (((w)this.rve).textAlignment != 0) {
+        break label412;
+      }
+      this.euY.setGravity(3);
+      label145:
+      if ((((w)this.rve).oKE == null) || (((w)this.rve).oKE.length() <= 0)) {
+        break label497;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        i = Color.parseColor(((w)this.rve).oKE);
+        this.euY.setTextColor(i);
+        if (((w)this.rve).rte > 0.0F) {
+          this.euY.setLineSpacing(0.0F, ((w)this.rve).rte + 1.0F);
+        }
+        localObject = this.euY.getPaint();
+        if (((w)this.rve).rtb) {
+          ((TextPaint)localObject).setFakeBoldText(true);
+        }
+        if (((w)this.rve).rtc) {
+          ((TextPaint)localObject).setTextSkewX(-0.25F);
+        }
+        if (((w)this.rve).rtd) {
+          ((TextPaint)localObject).setUnderlineText(true);
+        }
+        if (((w)this.rve).maxLines > 0) {
+          this.euY.setMaxLines(((w)this.rve).maxLines);
+        }
+        if (((w)this.rve).rsi == w.rsZ) {
+          this.euY.setTypeface(ae.eW(this.context));
+        }
+        AppMethodBeat.o(37341);
+        return;
+        if (bo.isNullOrNil(((w)this.rve).rta)) {
+          break;
+        }
+        this.euY.setText(g.dvk().b(((w)this.rve).rta.trim(), this.euY.getTextSize()));
+        break;
+        label412:
+        if (((w)this.rve).textAlignment == 1)
+        {
+          this.euY.setGravity(17);
+          break label145;
+        }
+        if (((w)this.rve).textAlignment != 2) {
+          break label145;
+        }
+        this.euY.setGravity(5);
+      }
+      catch (Exception localException)
+      {
+        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.Sns.AdLandingPageTextComponent", "parse the color is error : " + ((w)this.rve).oKE);
+        continue;
+      }
+      label497:
+      int i = Color.parseColor("#FFFFFF");
+      this.euY.setTextColor(i);
     }
   }
   
-  public final View bFf()
+  protected final void cqQ()
   {
-    this.oIi = ((RadarChart)this.contentView.findViewById(i.f.chart));
-    return this.contentView;
+    AppMethodBeat.i(37340);
+    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.rve.paddingLeft, (int)this.rve.paddingTop, (int)this.rve.paddingRight, (int)this.rve.paddingBottom);
+    }
+    this.contentView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(37340);
   }
   
-  protected final void bFj()
+  public final void cqz()
   {
-    this.countDownLatch = new CountDownLatch(2);
-    e.b(new ab.1(this), "AdlandingRadarComp").start();
-    y localy = (y)bFe();
-    if (localy != null)
-    {
-      h.a(localy.oDM, localy.oDh, new ab.2(this));
-      h.a(localy.oDS, localy.oDh, new ab.3(this));
-      return;
-    }
-    Log.wtf("AdlandingRadarChartComp", "null info");
+    AppMethodBeat.i(37339);
+    super.cqz();
+    d.ysm.remove(this.gaj);
+    this.rxV = true;
+    AppMethodBeat.o(37339);
   }
   
   protected final int getLayout()
   {
-    return i.g.sns_ad_native_landing_comp_radarchart;
+    return 2130970790;
   }
 }
 

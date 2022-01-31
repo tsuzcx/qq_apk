@@ -5,17 +5,18 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.MaskLayout;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RoomContributePreference
   extends Preference
 {
-  private MaskLayout dpX;
-  private ImageView dpY;
-  private String dpZ;
+  private MaskLayout ehu;
+  private ImageView ehv;
+  private String ehw;
   
   public RoomContributePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,23 +26,29 @@ public class RoomContributePreference
   public RoomContributePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(a.f.mm_preference);
-    setWidgetLayoutResource(a.f.mm_preference_image_right);
+    AppMethodBeat.i(104179);
+    setLayoutResource(2130970179);
+    setWidgetLayoutResource(2130970235);
+    AppMethodBeat.o(104179);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(104181);
     super.onBindView(paramView);
-    if ((this.dpY != null) && (!bk.bl(this.dpZ))) {
-      a.b.a(this.dpY, this.dpZ);
+    if ((this.ehv != null) && (!bo.isNullOrNil(this.ehw))) {
+      a.b.c(this.ehv, this.ehw);
     }
+    AppMethodBeat.o(104181);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(104180);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    this.dpX = ((MaskLayout)paramViewGroup.findViewById(a.e.image_mask));
-    this.dpY = ((ImageView)paramViewGroup.findViewById(a.e.image));
+    this.ehu = ((MaskLayout)paramViewGroup.findViewById(2131826241));
+    this.ehv = ((ImageView)paramViewGroup.findViewById(2131820629));
+    AppMethodBeat.o(104180);
     return paramViewGroup;
   }
 }

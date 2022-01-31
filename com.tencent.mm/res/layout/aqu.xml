@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/e03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" android:layout_centerInParent="true" />
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/c_o" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" style="@style/yo" />
-</RelativeLayout>
+<TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:textColorLink="#ff718bc1" android:gravity="left" android:autoLink="phone" android:padding="@dimen/l2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e15"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

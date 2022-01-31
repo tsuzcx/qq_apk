@@ -1,6 +1,7 @@
 package com.tencent.mm.pluginsdk.ui.preference;
 
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.n.a;
 
 final class NormalUserHeaderPreference$6
@@ -10,21 +11,23 @@ final class NormalUserHeaderPreference$6
   
   public final void run()
   {
-    NormalUserHeaderPreference.f(this.siZ);
-    NormalUserHeaderPreference.g(this.siZ);
-    NormalUserHeaderPreference.h(this.siZ);
+    AppMethodBeat.i(28079);
+    NormalUserHeaderPreference.f(this.wbA);
+    NormalUserHeaderPreference.g(this.wbA);
+    NormalUserHeaderPreference.h(this.wbA);
     FMessageListView localFMessageListView;
-    if (NormalUserHeaderPreference.i(this.siZ) != null)
+    if (NormalUserHeaderPreference.i(this.wbA) != null)
     {
-      localFMessageListView = NormalUserHeaderPreference.i(this.siZ);
-      if (a.gR(NormalUserHeaderPreference.b(this.siZ).field_type)) {
-        break label63;
+      localFMessageListView = NormalUserHeaderPreference.i(this.wbA);
+      if (a.je(NormalUserHeaderPreference.a(this.wbA).field_type)) {
+        break label75;
       }
     }
-    label63:
+    label75:
     for (boolean bool = true;; bool = false)
     {
       localFMessageListView.setReplyBtnVisible(bool);
+      AppMethodBeat.o(28079);
       return;
     }
   }

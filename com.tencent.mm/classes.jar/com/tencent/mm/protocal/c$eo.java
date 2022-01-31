@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$eo
+public final class c$eo
   extends c.g
 {
-  c$eo()
+  public c$eo()
   {
-    super("openADCanvas", "openADCanvas", 283, true);
+    super("musicPlay", "playMusic", 69, false);
   }
 }
 

@@ -1,32 +1,32 @@
 package android.support.transition;
 
 final class TransitionSet$a
-  extends ae
+  extends ad
 {
-  TransitionSet sJ;
+  TransitionSet tL;
   
   TransitionSet$a(TransitionSet paramTransitionSet)
   {
-    this.sJ = paramTransitionSet;
+    this.tL = paramTransitionSet;
   }
   
   public final void a(Transition paramTransition)
   {
-    TransitionSet.b(this.sJ);
-    if (TransitionSet.c(this.sJ) == 0)
+    TransitionSet.b(this.tL);
+    if (TransitionSet.c(this.tL) == 0)
     {
-      TransitionSet.a(this.sJ, false);
-      this.sJ.end();
+      TransitionSet.a(this.tL, false);
+      this.tL.end();
     }
     paramTransition.b(this);
   }
   
-  public final void bv()
+  public final void cj()
   {
-    if (!TransitionSet.a(this.sJ))
+    if (!TransitionSet.a(this.tL))
     {
-      this.sJ.start();
-      TransitionSet.a(this.sJ, true);
+      this.tL.start();
+      TransitionSet.a(this.tL, true);
     }
   }
 }

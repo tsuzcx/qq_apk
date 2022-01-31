@@ -1,21 +1,67 @@
 package com.tencent.mm.cm;
 
-import java.lang.reflect.Field;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.vending.b.b;
+import com.tencent.mm.vending.h.d;
+import com.tencent.mm.vending.h.f;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public final class a
+public class a<_Callback>
+  extends com.tencent.mm.vending.b.a<_Callback>
 {
-  private static final class a
+  public a()
   {
-    public static Field field_mContext;
-    public static Field field_mFastgrabConfigReader;
-    public static Class<?> fzJ;
+    super(new e());
+    AppMethodBeat.i(123360);
+    AppMethodBeat.o(123360);
   }
   
-  private static final class b
+  public a(d paramd)
   {
-    public static Class aov;
-    public static Field pGl;
-    public static Field pGm;
+    super(paramd);
+  }
+  
+  public final void a(final a<_Callback> parama)
+  {
+    AppMethodBeat.i(123361);
+    Iterator localIterator = dQj().iterator();
+    while (localIterator.hasNext())
+    {
+      final b localb = (b)localIterator.next();
+      if (localb != null) {
+        if (localb.AOk != null)
+        {
+          this.AOi.c(localb.AOk);
+          this.AOi.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.AOo, true);
+        }
+        else
+        {
+          parama.am(localb.d);
+        }
+      }
+    }
+    AppMethodBeat.o(123361);
+  }
+  
+  public b<_Callback> at(_Callback param_Callback)
+  {
+    AppMethodBeat.i(123362);
+    param_Callback = super.a(new b(param_Callback, this));
+    AppMethodBeat.o(123362);
+    return param_Callback;
+  }
+  
+  public final void remove(_Callback param_Callback)
+  {
+    AppMethodBeat.i(123363);
+    super.b(new b(param_Callback, this));
+    AppMethodBeat.o(123363);
+  }
+  
+  public static abstract interface a<_Callback>
+  {
+    public abstract void am(_Callback param_Callback);
   }
 }
 

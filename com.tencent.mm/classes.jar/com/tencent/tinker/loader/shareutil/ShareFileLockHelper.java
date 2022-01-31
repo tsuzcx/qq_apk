@@ -10,8 +10,8 @@ import java.nio.channels.FileLock;
 public class ShareFileLockHelper
   implements Closeable
 {
+  private final FileLock BvK;
   private final FileOutputStream outputStream;
-  private final FileLock wZg;
   
   private ShareFileLockHelper(File paramFile)
   {
@@ -52,10 +52,10 @@ public class ShareFileLockHelper
       }
     }
     label133:
-    this.wZg = localObject2;
+    this.BvK = localObject2;
   }
   
-  public static ShareFileLockHelper ad(File paramFile)
+  public static ShareFileLockHelper am(File paramFile)
   {
     return new ShareFileLockHelper(paramFile);
   }
@@ -64,8 +64,8 @@ public class ShareFileLockHelper
   {
     try
     {
-      if (this.wZg != null) {
-        this.wZg.release();
+      if (this.BvK != null) {
+        this.BvK.release();
       }
       return;
     }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.compatible.util.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SightCaptureUI$2
   implements View.OnClickListener
@@ -11,11 +11,19 @@ final class SightCaptureUI$2
   
   public final void onClick(View paramView)
   {
-    if (SightCaptureUI.u(this.mqB) != null) {
-      SightCaptureUI.u(this.mqB).zE();
+    AppMethodBeat.i(55181);
+    if (SightCaptureUI.g(this.oQf) == 4)
+    {
+      SightCaptureUI.t(this.oQf);
+      AppMethodBeat.o(55181);
+      return;
     }
-    SightCaptureUI.q(this.mqB);
-    SightCaptureUI.a(this.mqB, true);
+    if (SightCaptureUI.g(this.oQf) == 3)
+    {
+      SightCaptureUI.u(this.oQf);
+      SightCaptureUI.a(this.oQf, false);
+    }
+    AppMethodBeat.o(55181);
   }
 }
 

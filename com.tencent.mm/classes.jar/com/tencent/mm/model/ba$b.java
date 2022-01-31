@@ -1,23 +1,33 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.protocal.c.bly;
-import com.tencent.mm.protocal.c.cdj;
-import com.tencent.mm.protocal.c.gd;
-import com.tencent.mm.protocal.k;
-import com.tencent.mm.protocal.k.c;
-import com.tencent.mm.protocal.k.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.l;
+import com.tencent.mm.protocal.l.c;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.art;
 
 public final class ba$b
-  extends k.e
-  implements k.c
+  extends l.e
+  implements l.c
 {
-  public cdj dWf = new cdj();
+  public art fml;
   
-  public final int A(byte[] paramArrayOfByte)
+  public ba$b()
   {
-    this.dWf = ((cdj)new cdj().aH(paramArrayOfByte));
-    k.a(this, this.dWf.tFx);
-    return this.dWf.tFx.sze;
+    AppMethodBeat.i(16317);
+    this.fml = new art();
+    AppMethodBeat.o(16317);
+  }
+  
+  public final int fromProtoBuf(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(16318);
+    this.fml = ((art)new art().parseFrom(paramArrayOfByte));
+    l.a(this, this.fml.getBaseResponse());
+    int i = this.fml.getBaseResponse().Ret;
+    AppMethodBeat.o(16318);
+    return i;
   }
   
   public final int getCmdId()
@@ -27,7 +37,7 @@ public final class ba$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.model.ba.b
  * JD-Core Version:    0.7.0.1
  */

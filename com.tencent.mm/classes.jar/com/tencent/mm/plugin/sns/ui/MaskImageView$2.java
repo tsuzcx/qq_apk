@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MaskImageView$2
   implements View.OnTouchListener
@@ -11,10 +12,15 @@ final class MaskImageView$2
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!MaskImageView.a(this.oQE)) {
+    AppMethodBeat.i(38308);
+    if (!MaskImageView.a(this.rIq))
+    {
+      AppMethodBeat.o(38308);
       return false;
     }
-    return this.oQE.d(paramView, paramMotionEvent);
+    boolean bool = this.rIq.d(paramView, paramMotionEvent);
+    AppMethodBeat.o(38308);
+    return bool;
   }
 }
 

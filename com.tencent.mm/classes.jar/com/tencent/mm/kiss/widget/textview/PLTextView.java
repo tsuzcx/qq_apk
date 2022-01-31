@@ -4,27 +4,23 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class PLTextView
   extends StaticTextView
 {
-  private static long dNG = 0L;
-  private static int dNH = 0;
-  private static long dNI = -2147483648L;
-  private static long dNJ = 0L;
-  private static int dNK = 0;
-  private static long dNL = -2147483648L;
-  private static long dNM = 0L;
-  private static int dNN = 0;
-  private static long dNO = -2147483648L;
-  private static boolean dNP = false;
-  
-  public PLTextView(Context paramContext)
-  {
-    super(paramContext);
-  }
+  private static long eLo = 0L;
+  private static int eLp = 0;
+  private static long eLq = -2147483648L;
+  private static long eLr = 0L;
+  private static int eLs = 0;
+  private static long eLt = -2147483648L;
+  private static long eLu = 0L;
+  private static int eLv = 0;
+  private static long eLw = -2147483648L;
+  private static boolean eLx = false;
   
   public PLTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,101 +32,114 @@ public class PLTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void o(CharSequence paramCharSequence)
-  {
-    super.setText(paramCharSequence, false);
-  }
-  
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
+    AppMethodBeat.i(105708);
     super.onConfigurationChanged(paramConfiguration);
     if (getLayoutWrapper() != null) {
-      getLayoutWrapper().dOg = false;
+      getLayoutWrapper().eLO = false;
     }
+    AppMethodBeat.o(105708);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(105706);
     long l = 0L;
-    if (dNP) {
+    if (eLx) {
       l = System.currentTimeMillis();
     }
     super.onDraw(paramCanvas);
-    if (dNP)
+    if (eLx)
     {
       l = System.currentTimeMillis() - l;
-      dNM += l;
-      dNN += 1;
-      if (l > dNO) {
-        dNO = l;
+      eLu += l;
+      eLv += 1;
+      if (l > eLw) {
+        eLw = l;
       }
     }
+    AppMethodBeat.o(105706);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(105705);
     long l = 0L;
-    if (dNP) {
+    if (eLx) {
       l = System.currentTimeMillis();
     }
     super.onMeasure(paramInt1, paramInt2);
-    if (dNP)
+    if (eLx)
     {
       l = System.currentTimeMillis() - l;
-      dNJ += l;
-      dNK += 1;
-      if (l > dNL) {
-        dNL = l;
+      eLr += l;
+      eLs += 1;
+      if (l > eLt) {
+        eLt = l;
       }
     }
+    AppMethodBeat.o(105705);
   }
-  
-  public void p(CharSequence paramCharSequence) {}
   
   public void setText(CharSequence paramCharSequence)
   {
-    long l2 = 0L;
-    if (bk.L(paramCharSequence))
+    AppMethodBeat.i(105704);
+    if (bo.aa(paramCharSequence))
     {
       if (h.DEBUG) {
-        y.d("MicroMsg.PLTextView", "set null text");
+        ab.d("MicroMsg.PLTextView", "set null text");
       }
+      AppMethodBeat.o(105704);
       return;
     }
-    if (h.DEBUG) {}
-    for (long l1 = System.currentTimeMillis();; l1 = 0L)
+    long l1 = 0L;
+    long l2 = 0L;
+    if (h.DEBUG) {
+      l1 = System.currentTimeMillis();
+    }
+    if ((getLayoutWrapper() != null) && (getLayoutWrapper().eLO)) {
+      c.eLm.a(getConfig(), getLayoutWrapper());
+    }
+    f localf = c.eLm.a(getConfig(), paramCharSequence);
+    boolean bool;
+    if (localf != null)
     {
-      if ((getLayoutWrapper() != null) && (getLayoutWrapper().dOg)) {
-        c.dNE.a(getConfig(), getLayoutWrapper());
-      }
-      f localf = c.dNE.a(getConfig(), paramCharSequence);
-      if (localf != null)
+      bool = true;
+      u(paramCharSequence);
+      setTextLayout(localf);
+    }
+    for (;;)
+    {
+      if (h.DEBUG)
       {
-        p(paramCharSequence);
-        setTextLayout(localf);
+        l2 = System.currentTimeMillis();
+        ab.d("MicroMsg.PLTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s hitCache %s", new Object[] { Double.valueOf((l2 - l1) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence, Boolean.valueOf(bool) });
       }
-      for (boolean bool = true;; bool = false)
+      if (eLx)
       {
-        if (h.DEBUG)
-        {
-          l2 = System.currentTimeMillis();
-          y.d("MicroMsg.PLTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s hitCache %s", new Object[] { Double.valueOf((l2 - l1) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence, Boolean.valueOf(bool) });
-        }
-        if (!dNP) {
-          break;
-        }
         l1 = l2 - l1;
-        dNG += l1;
-        dNH += 1;
-        if (l1 <= dNI) {
-          break;
+        eLo += l1;
+        eLp += 1;
+        if (l1 > eLq) {
+          eLq = l1;
         }
-        dNI = l1;
-        return;
-        o(paramCharSequence);
       }
+      AppMethodBeat.o(105704);
+      return;
+      bool = false;
+      t(paramCharSequence);
     }
   }
+  
+  protected void t(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(105707);
+    super.setText(paramCharSequence, false);
+    AppMethodBeat.o(105707);
+  }
+  
+  protected void u(CharSequence paramCharSequence) {}
 }
 
 

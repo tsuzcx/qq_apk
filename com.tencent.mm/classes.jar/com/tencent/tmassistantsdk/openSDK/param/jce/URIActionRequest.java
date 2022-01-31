@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.openSDK.param.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class URIActionRequest
   extends JceStruct
@@ -18,12 +19,16 @@ public final class URIActionRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(76013);
     this.uri = paramJceInputStream.readString(0, true);
+    AppMethodBeat.o(76013);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(76012);
     paramJceOutputStream.write(this.uri, 0);
+    AppMethodBeat.o(76012);
   }
 }
 

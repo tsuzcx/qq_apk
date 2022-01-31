@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fav.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView;
 import com.tencent.mm.plugin.fav.ui.widget.FavTagPanel;
 
@@ -10,14 +11,16 @@ final class FavSearchUI$4
   
   public final void run()
   {
-    if (FavSearchUI.a(this.kcM) <= 0)
+    AppMethodBeat.i(74068);
+    if (FavSearchUI.a(this.mxx) <= 0)
     {
-      FavSearchActionView localFavSearchActionView = FavSearchUI.b(this.kcM);
-      if (localFavSearchActionView.kdq != null) {
-        localFavSearchActionView.kdq.cBa();
+      FavSearchActionView localFavSearchActionView = FavSearchUI.b(this.mxx);
+      if (localFavSearchActionView.mya != null) {
+        localFavSearchActionView.mya.dEn();
       }
-      this.kcM.showVKB();
+      this.mxx.showVKB();
     }
+    AppMethodBeat.o(74068);
   }
 }
 

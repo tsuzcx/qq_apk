@@ -5,9 +5,9 @@ import android.os.Looper;
 
 public final class h
 {
-  public static Handler eP = new Handler(Looper.getMainLooper());
+  public static Handler sHandler = new Handler(Looper.getMainLooper());
   
-  public static void ak(Runnable paramRunnable)
+  public static void aA(Runnable paramRunnable)
   {
     if (Looper.getMainLooper().getThread() == Thread.currentThread()) {}
     for (int i = 1; i != 0; i = 0)
@@ -15,7 +15,7 @@ public final class h
       paramRunnable.run();
       return;
     }
-    eP.post(paramRunnable);
+    sHandler.post(paramRunnable);
   }
 }
 

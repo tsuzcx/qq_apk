@@ -1,47 +1,26 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
-import com.tencent.mm.plugin.wallet.pay.a.c.e;
-import com.tencent.mm.wallet_core.c.d;
-import com.tencent.mm.wallet_core.c.i;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletPayUI$15
-  implements d
+  implements DialogInterface.OnClickListener
 {
-  WalletPayUI$15(WalletPayUI paramWalletPayUI, i parami, e parame) {}
+  WalletPayUI$15(WalletPayUI paramWalletPayUI) {}
   
-  public final void bTn()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.qgR.cMu())
-    {
-      WalletPayUI.a(this.qnV, this.qnX);
-      return;
+    AppMethodBeat.i(46051);
+    if (this.tXq.isTransparent()) {
+      this.tXq.finish();
     }
-    this.qnV.bUf();
-  }
-  
-  public final void bTo()
-  {
-    if (this.qgR.cMu())
-    {
-      WalletPayUI.a(this.qnV, this.qnX);
-      return;
-    }
-    this.qnV.finish();
-  }
-  
-  public final void onCancel()
-  {
-    if (this.qgR.cMu())
-    {
-      WalletPayUI.a(this.qnV, this.qnX);
-      return;
-    }
-    this.qnV.finish();
+    AppMethodBeat.o(46051);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletPayUI.15
  * JD-Core Version:    0.7.0.1
  */

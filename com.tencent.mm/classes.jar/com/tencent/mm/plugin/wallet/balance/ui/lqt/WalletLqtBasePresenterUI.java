@@ -1,7 +1,9 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
+import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.vending.app.a;
 import com.tencent.mm.vending.app.c;
 import com.tencent.mm.vending.c.b;
@@ -10,24 +12,24 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public abstract class WalletLqtBasePresenterUI
   extends WalletBaseUI
 {
-  private c dNd = new c();
+  private c eKO = new c();
   
-  public final <T extends a> T C(Class<? extends a> paramClass)
+  public final <T extends b<? extends a>> T P(Class<? extends b<? extends a>> paramClass)
   {
-    return this.dNd.b(this, paramClass);
+    return this.eKO.a(this, paramClass);
   }
   
-  public boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final <T extends a> T T(Class<? extends a> paramClass)
   {
-    return false;
+    return this.eKO.b(this, paramClass);
   }
   
-  protected final int getForceOrientation()
+  public int getForceOrientation()
   {
     return 1;
   }
   
-  protected int getLayoutId()
+  public int getLayoutId()
   {
     return 0;
   }
@@ -35,36 +37,42 @@ public abstract class WalletLqtBasePresenterUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.dNd.B(getIntent(), this);
-    this.wCm = true;
+    this.eKO.A(getIntent(), this);
+    this.isVKBFirstTimeShown = true;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.dNd.onDestroy();
+    this.eKO.onDestroy();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.dNd.a(3);
+    this.eKO.a(3);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.dNd.a(2);
+    this.eKO.a(2);
   }
   
-  public final <T extends b<? extends a>> T z(Class<? extends b<? extends a>> paramClass)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    return this.dNd.a(this, paramClass);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtBasePresenterUI
  * JD-Core Version:    0.7.0.1
  */

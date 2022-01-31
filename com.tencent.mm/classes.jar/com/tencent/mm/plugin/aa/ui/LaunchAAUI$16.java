@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.content.Intent;
-import com.tencent.mm.plugin.aa.a.a;
-import com.tencent.mm.plugin.report.service.h;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LaunchAAUI$16
-  implements a.a
+  implements TextWatcher
 {
   LaunchAAUI$16(LaunchAAUI paramLaunchAAUI) {}
   
-  public final void Vx()
+  public final void afterTextChanged(Editable paramEditable)
   {
-    Intent localIntent = new Intent(this.eZt, AAQueryListUI.class);
-    this.eZt.startActivity(localIntent);
-    if (LaunchAAUI.b(this.eZt) == a.eVh)
-    {
-      h.nFQ.f(13721, new Object[] { Integer.valueOf(5), Integer.valueOf(1) });
-      return;
-    }
-    h.nFQ.f(13721, new Object[] { Integer.valueOf(5), Integer.valueOf(2) });
+    AppMethodBeat.i(40837);
+    LaunchAAUI.c(this.grm);
+    AppMethodBeat.o(40837);
   }
+  
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

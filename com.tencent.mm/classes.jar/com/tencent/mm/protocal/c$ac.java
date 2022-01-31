@@ -5,12 +5,12 @@ public final class c$ac
 {
   public c$ac()
   {
-    super("chooseVideo", "chooseVideo", 191, true);
+    super("chooseImage", "chooseImage", 104, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ac
  * JD-Core Version:    0.7.0.1
  */

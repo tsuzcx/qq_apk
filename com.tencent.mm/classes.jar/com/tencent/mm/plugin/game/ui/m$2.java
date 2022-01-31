@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.LinkedList;
 
 final class m$2
@@ -10,8 +11,10 @@ final class m$2
   
   public final void run()
   {
-    m.a(this.ldb, this.lda);
-    ai.d(new m.2.1(this));
+    AppMethodBeat.i(112059);
+    m.a(this.nAW, this.nAV);
+    al.d(new m.2.1(this));
+    AppMethodBeat.o(112059);
   }
 }
 

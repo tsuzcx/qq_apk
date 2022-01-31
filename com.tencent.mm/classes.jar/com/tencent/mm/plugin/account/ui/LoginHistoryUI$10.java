@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.r;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginHistoryUI$10
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  LoginHistoryUI$10(LoginHistoryUI paramLoginHistoryUI, r paramr) {}
+  LoginHistoryUI$10(LoginHistoryUI paramLoginHistoryUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    g.Dk().c(this.fne);
-    g.Dk().b(255, this.fnc);
+    AppMethodBeat.i(152543);
+    LoginHistoryUI.g(this.gEw);
+    AppMethodBeat.o(152543);
   }
 }
 

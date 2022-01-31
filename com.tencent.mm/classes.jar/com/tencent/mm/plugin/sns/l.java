@@ -1,81 +1,99 @@
 package com.tencent.mm.plugin.sns;
 
 import android.util.Base64;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.h.c.cs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.g.c.dd;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u.b;
+import com.tencent.mm.model.v.b;
 import com.tencent.mm.modelsns.d;
 import com.tencent.mm.modelstat.p;
 import com.tencent.mm.modelstat.p.a;
 import com.tencent.mm.plugin.sns.b.c;
 import com.tencent.mm.plugin.sns.b.i;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.c.bvo;
-import com.tencent.mm.protocal.c.bvp;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cgh;
+import com.tencent.mm.protocal.protobuf.cgi;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
 
 public final class l
   implements i
 {
-  public final String C(bi parambi)
+  public final String I(bi parambi)
   {
-    return p.C(parambi);
-  }
-  
-  public final void Z(bi parambi)
-  {
-    String str = p.C(parambi);
-    Object localObject;
-    bvo localbvo;
-    if (str != null)
-    {
-      localObject = Base64.decode(str, 0);
-      localbvo = new bvo();
-    }
-    try
-    {
-      localbvo.aH((byte[])localObject);
-      localObject = localbvo.tMm;
-      if (localObject == null) {
-        return;
-      }
-    }
-    catch (Exception parambi)
-    {
-      y.printErrStackTrace("MicroMsg.SnsStatExtUtil", parambi, "", new Object[0]);
-      return;
-    }
-    if (parambi.field_talker.endsWith("@chatroom")) {}
-    for (parambi = p.a.eEK.value;; parambi = p.a.eEJ.value)
-    {
-      y.i("MicroMsg.SnsStatExtUtil", "report adPageExposure(13235): scene(%s), statExtStr:%s(id=%s, uxinfo=%s)", new Object[] { parambi, str, localbvo.tMm.tMp, localbvo.tMm.tMq });
-      ((c)g.r(c.class)).f(13235, new Object[] { parambi, localbvo.tMm.tMp, localbvo.tMm.tMq });
-      return;
-    }
+    AppMethodBeat.i(35632);
+    parambi = p.I(parambi);
+    AppMethodBeat.o(35632);
+    return parambi;
   }
   
   public final String a(String paramString, PString paramPString)
   {
-    return p.a(paramString, paramPString);
+    AppMethodBeat.i(35629);
+    paramString = p.a(paramString, paramPString);
+    AppMethodBeat.o(35629);
+    return paramString;
   }
   
-  public final void a(String paramString, u.b paramb, bi parambi)
+  public final void a(String paramString, v.b paramb, bi parambi)
   {
-    if (parambi.aVK())
+    AppMethodBeat.i(35630);
+    if (parambi.bCn())
     {
-      parambi = g.a.gp(parambi.field_content);
-      if ((parambi != null) && (!bk.bl(parambi.bYN))) {
-        paramb.h(paramString, parambi.bYN);
+      parambi = j.b.mY(parambi.field_content);
+      if ((parambi != null) && (!bo.isNullOrNil(parambi.cGU))) {
+        paramb.i(paramString, parambi.cGU);
       }
+    }
+    AppMethodBeat.o(35630);
+  }
+  
+  public final void ai(bi parambi)
+  {
+    AppMethodBeat.i(35631);
+    String str = p.I(parambi);
+    cgh localcgh;
+    if (str != null)
+    {
+      Object localObject = Base64.decode(str, 0);
+      localcgh = new cgh();
+      try
+      {
+        localcgh.parseFrom((byte[])localObject);
+        localObject = localcgh.xQY;
+        if (localObject == null)
+        {
+          AppMethodBeat.o(35631);
+          return;
+        }
+      }
+      catch (Exception parambi)
+      {
+        ab.printErrStackTrace("MicroMsg.SnsStatExtUtil", parambi, "", new Object[0]);
+        AppMethodBeat.o(35631);
+        return;
+      }
+      if (!parambi.field_talker.endsWith("@chatroom")) {
+        break label193;
+      }
+    }
+    label193:
+    for (parambi = p.a.fUB.value;; parambi = p.a.fUA.value)
+    {
+      ab.i("MicroMsg.SnsStatExtUtil", "report adPageExposure(13235): scene(%s), statExtStr:%s(id=%s, uxinfo=%s)", new Object[] { parambi, str, localcgh.xQY.xRb, localcgh.xQY.xRc });
+      ((c)g.E(c.class)).e(13235, new Object[] { parambi, localcgh.xQY.xRb, localcgh.xQY.xRc });
+      AppMethodBeat.o(35631);
+      return;
     }
   }
   
   public final void b(String paramString, d paramd)
   {
+    AppMethodBeat.i(35628);
     p.b(paramString, paramd);
+    AppMethodBeat.o(35628);
   }
 }
 

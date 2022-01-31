@@ -1,66 +1,81 @@
 package com.tencent.mm.plugin.backup.c;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class e
 {
-  public static int hHh;
-  public static int hHi;
-  public static int hHj;
-  public static int hHk;
-  public static int hHl;
-  public static int hHm;
-  public static int hHn;
-  public static long hHo;
-  public static long hHp;
-  public static long hHq;
+  public static int jAD;
+  public static int jAE;
+  public static int jAF;
+  public static int jAG;
+  public static int jAH;
+  public static int jAI;
+  public static int jAJ;
+  public static long jAK;
+  public static long jAL;
+  public static long jAM;
   
-  public static void atM()
+  public static void aTk()
   {
-    y.d("MicroMsg.TestInfo", "total_count: " + hHn + "text_count: " + hHj + "normal_count : " + hHi + " image_count: " + hHh + " voice_count : " + hHl + " video_count " + hHk + " app_count : " + hHm + " time: " + (bk.UY() - hHo) + " net: " + hHq);
+    AppMethodBeat.i(17218);
+    ab.d("MicroMsg.TestInfo", getInfo());
+    AppMethodBeat.o(17218);
   }
   
-  public static void atN()
+  public static void aTl()
   {
-    y.d("MicroMsg.TestInfo", "netTime" + (bk.UY() - hHp));
+    AppMethodBeat.i(17219);
+    ab.d("MicroMsg.TestInfo", "netTime" + (bo.aoy() - jAL));
+    AppMethodBeat.o(17219);
   }
   
-  public static void nw(int paramInt)
+  private static String getInfo()
+  {
+    AppMethodBeat.i(17220);
+    String str = "total_count: " + jAJ + "text_count: " + jAF + "normal_count : " + jAE + " image_count: " + jAD + " voice_count : " + jAH + " video_count " + jAG + " app_count : " + jAI + " time: " + (bo.aoy() - jAK) + " net: " + jAM;
+    AppMethodBeat.o(17220);
+    return str;
+  }
+  
+  public static void reset()
+  {
+    AppMethodBeat.i(17217);
+    jAD = 0;
+    jAE = 0;
+    jAF = 0;
+    jAG = 0;
+    jAH = 0;
+    jAI = 0;
+    jAJ = 0;
+    long l = bo.aoy();
+    jAK = l;
+    jAM = l - jAL;
+    AppMethodBeat.o(17217);
+  }
+  
+  public static void ri(int paramInt)
   {
     switch (paramInt)
     {
     }
     for (;;)
     {
-      hHn += 1;
+      jAJ += 1;
       return;
-      hHj += 1;
+      jAF += 1;
       continue;
-      hHm += 1;
+      jAI += 1;
       continue;
-      hHl += 1;
+      jAH += 1;
       continue;
-      hHk += 1;
+      jAG += 1;
       continue;
-      hHh += 1;
+      jAD += 1;
       continue;
-      hHi += 1;
+      jAE += 1;
     }
-  }
-  
-  public static void reset()
-  {
-    hHh = 0;
-    hHi = 0;
-    hHj = 0;
-    hHk = 0;
-    hHl = 0;
-    hHm = 0;
-    hHn = 0;
-    long l = bk.UY();
-    hHo = l;
-    hHq = l - hHp;
   }
 }
 

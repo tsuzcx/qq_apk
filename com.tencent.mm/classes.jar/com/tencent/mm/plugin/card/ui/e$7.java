@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.card.ui;
 
-import com.tencent.mm.h.a.by;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cb;
 import com.tencent.mm.sdk.b.c;
 
 final class e$7
-  extends c<by>
+  extends c<cb>
 {
   e$7(e parame)
   {
-    this.udX = by.class.getName().hashCode();
+    AppMethodBeat.i(88344);
+    this.__eventId = cb.class.getName().hashCode();
+    AppMethodBeat.o(88344);
   }
 }
 

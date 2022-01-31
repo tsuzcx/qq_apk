@@ -1,6 +1,7 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMNewPhotoEditUI$1
   implements Runnable
@@ -9,9 +10,11 @@ final class MMNewPhotoEditUI$1
   
   public final void run()
   {
-    y.i("MicroMsg.MMNewPhotoEditUI", "connected!!!");
-    MMNewPhotoEditUI.a(this.uOz);
-    this.uOz.initView();
+    AppMethodBeat.i(11919);
+    ab.i("MicroMsg.MMNewPhotoEditUI", "connected!!!");
+    MMNewPhotoEditUI.a(this.zcs);
+    this.zcs.initView();
+    AppMethodBeat.o(11919);
   }
 }
 

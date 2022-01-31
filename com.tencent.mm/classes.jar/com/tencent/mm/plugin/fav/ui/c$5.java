@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.widget.snackbar.a.b;
 import com.tencent.mm.ui.widget.snackbar.a.c;
 import com.tencent.mm.ui.widget.snackbar.b;
@@ -16,16 +18,23 @@ final class c$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(73981);
     paramDialogInterface.dismiss();
-    if (this.kbN != null) {
-      this.kbN.onClick(paramDialogInterface, -2);
+    if (this.mwj != null) {
+      this.mwj.onClick(paramDialogInterface, -2);
     }
     if (this.val$fragment != null)
     {
-      b.a(this.val$fragment, this.val$fragment.getActivity().getString(n.i.favorite_ok), this.val$fragment.getActivity().getString(n.i.favorite_add_tag_tips), this.kbO, this.kbP);
+      paramDialogInterface = this.val$fragment.getView();
+      if ((this.val$fragment instanceof MMFragment)) {
+        paramDialogInterface = ((MMFragment)this.val$fragment).getContentView();
+      }
+      b.a(this.val$fragment.getContext(), paramDialogInterface, this.val$fragment.getActivity().getString(2131299764), this.val$fragment.getActivity().getString(2131299681), this.mwk, this.mwl);
+      AppMethodBeat.o(73981);
       return;
     }
-    b.a(this.val$activity, this.val$activity.getString(n.i.favorite_ok), this.val$activity.getString(n.i.favorite_add_tag_tips), this.kbO, this.kbP);
+    b.a(this.val$activity, this.val$activity.getString(2131299764), this.val$activity.getString(2131299681), this.mwk, this.mwl);
+    AppMethodBeat.o(73981);
   }
 }
 

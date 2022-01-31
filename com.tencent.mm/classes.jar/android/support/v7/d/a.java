@@ -1,7 +1,7 @@
 package android.support.v7.d;
 
 import android.graphics.Color;
-import android.support.v4.a.b;
+import android.support.v4.graphics.b;
 import android.util.TimingLogger;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,19 +12,19 @@ import java.util.PriorityQueue;
 
 public final class a
 {
-  private static final Comparator<a.a> Rz = new a.1();
-  final int[] Jq;
-  final int[] Ru;
-  public final List<b.c> Rv;
-  final TimingLogger Rw = null;
-  final b.b[] Rx;
-  private final float[] Ry = new float[3];
+  private static final Comparator<a.a> Rg = new a.1();
+  final int[] Aq;
+  public final List<b.c> Rc;
+  final TimingLogger Rd = null;
+  final b.b[] Re;
+  private final float[] Rf = new float[3];
+  final int[] mHistogram;
   
   public a(int[] paramArrayOfInt, int paramInt, b.b[] paramArrayOfb)
   {
-    this.Rx = paramArrayOfb;
+    this.Re = paramArrayOfb;
     paramArrayOfb = new int[32768];
-    this.Ru = paramArrayOfb;
+    this.mHistogram = paramArrayOfb;
     int i = 0;
     int n;
     while (i < paramArrayOfInt.length)
@@ -42,8 +42,8 @@ public final class a
     {
       if (paramArrayOfb[i] > 0)
       {
-        b.d(aZ(i), this.Ry);
-        if (c(this.Ry)) {
+        b.d(aV(i), this.Rf);
+        if (c(this.Rf)) {
           paramArrayOfb[i] = 0;
         }
       }
@@ -54,7 +54,7 @@ public final class a
       i += 1;
     }
     paramArrayOfInt = new int[j];
-    this.Jq = paramArrayOfInt;
+    this.Aq = paramArrayOfInt;
     int k = 0;
     i = 0;
     if (k < 32768)
@@ -73,20 +73,20 @@ public final class a
       break;
       if (j <= paramInt)
       {
-        this.Rv = new ArrayList();
+        this.Rc = new ArrayList();
         i = paramArrayOfInt.length;
         paramInt = m;
         while (paramInt < i)
         {
           j = paramArrayOfInt[paramInt];
-          this.Rv.add(new b.c(aZ(j), paramArrayOfb[j]));
+          this.Rc.add(new b.c(aV(j), paramArrayOfb[j]));
           paramInt += 1;
         }
       }
-      paramArrayOfInt = new PriorityQueue(paramInt, Rz);
-      paramArrayOfInt.offer(new a.a(this, 0, this.Jq.length - 1));
+      paramArrayOfInt = new PriorityQueue(paramInt, Rg);
+      paramArrayOfInt.offer(new a.a(this, 0, this.Aq.length - 1));
       a(paramArrayOfInt, paramInt);
-      this.Rv = b(paramArrayOfInt);
+      this.Rc = b(paramArrayOfInt);
       return;
     }
   }
@@ -96,16 +96,16 @@ public final class a
     while (paramPriorityQueue.size() < paramInt)
     {
       a.a locala1 = (a.a)paramPriorityQueue.poll();
-      if ((locala1 == null) || (!locala1.ez())) {
+      if ((locala1 == null) || (!locala1.fd())) {
         break;
       }
-      if (!locala1.ez()) {
+      if (!locala1.fd()) {
         throw new IllegalStateException("Can not split a box with only 1 color");
       }
-      int i = locala1.eB();
-      a.a locala2 = new a.a(locala1.RJ, i + 1, locala1.RB);
-      locala1.RB = i;
-      locala1.eA();
+      int i = locala1.fg();
+      a.a locala2 = new a.a(locala1.Rq, i + 1, locala1.Ri);
+      locala1.Ri = i;
+      locala1.ff();
       paramPriorityQueue.offer(locala2);
       paramPriorityQueue.offer(locala1);
     }
@@ -135,9 +135,24 @@ public final class a
     }
   }
   
-  private static int aZ(int paramInt)
+  private static int aV(int paramInt)
   {
     return i(paramInt >> 10 & 0x1F, paramInt >> 5 & 0x1F, paramInt & 0x1F);
+  }
+  
+  static int aW(int paramInt)
+  {
+    return paramInt >> 10 & 0x1F;
+  }
+  
+  static int aX(int paramInt)
+  {
+    return paramInt >> 5 & 0x1F;
+  }
+  
+  static int aY(int paramInt)
+  {
+    return paramInt & 0x1F;
   }
   
   private List<b.c> b(Collection<a.a> paramCollection)
@@ -146,27 +161,12 @@ public final class a
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext())
     {
-      b.c localc = ((a.a)paramCollection.next()).eC();
-      if (!c(localc.eE())) {
+      b.c localc = ((a.a)paramCollection.next()).fh();
+      if (!c(localc.fj())) {
         localArrayList.add(localc);
       }
     }
     return localArrayList;
-  }
-  
-  static int ba(int paramInt)
-  {
-    return paramInt >> 10 & 0x1F;
-  }
-  
-  static int bb(int paramInt)
-  {
-    return paramInt >> 5 & 0x1F;
-  }
-  
-  static int bc(int paramInt)
-  {
-    return paramInt & 0x1F;
   }
   
   private boolean c(float[] paramArrayOfFloat)
@@ -175,12 +175,12 @@ public final class a
     boolean bool1 = bool2;
     int j;
     int i;
-    if (this.Rx != null)
+    if (this.Re != null)
     {
       bool1 = bool2;
-      if (this.Rx.length > 0)
+      if (this.Re.length > 0)
       {
-        j = this.Rx.length;
+        j = this.Re.length;
         i = 0;
       }
     }
@@ -189,7 +189,7 @@ public final class a
       bool1 = bool2;
       if (i < j)
       {
-        if (!this.Rx[i].d(paramArrayOfFloat)) {
+        if (!this.Re[i].d(paramArrayOfFloat)) {
           bool1 = true;
         }
       }

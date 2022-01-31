@@ -1,81 +1,112 @@
 package com.tencent.mm.plugin.facedetect.model;
 
-import com.tencent.mm.model.at;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.av;
 
 public final class e
 {
-  private static long jNJ = -1L;
-  private static long jNK = -1L;
-  private static float jNL = -1.0F;
+  private static long mhV = -1L;
+  private static long mhW = -1L;
+  private static float mhX = -1.0F;
   
-  public static boolean aOi()
+  public static boolean bul()
   {
-    return Boolean.parseBoolean(at.dVC.L("last_login_face_use_debug_mode", "false"));
+    AppMethodBeat.i(188);
+    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_use_debug_mode", "false"));
+    AppMethodBeat.o(188);
+    return bool;
   }
   
-  public static boolean aOj()
+  public static boolean bum()
   {
-    return Boolean.parseBoolean(at.dVC.L("last_login_face_is_force_upload_face", "false"));
+    AppMethodBeat.i(189);
+    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_is_force_upload_face", "false"));
+    AppMethodBeat.o(189);
+    return bool;
   }
   
-  public static boolean aOk()
+  public static boolean bun()
   {
-    return Boolean.parseBoolean(at.dVC.L("last_login_face_save_correct_debug_mode", "false"));
+    AppMethodBeat.i(190);
+    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_save_correct_debug_mode", "false"));
+    AppMethodBeat.o(190);
+    return bool;
   }
   
-  public static boolean aOl()
+  public static boolean buo()
   {
-    return Boolean.parseBoolean(at.dVC.L("last_login_face_save_final_debug_mode", "false"));
+    AppMethodBeat.i(191);
+    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_save_final_debug_mode", "false"));
+    AppMethodBeat.o(191);
+    return bool;
   }
   
-  public static boolean aOm()
+  public static boolean bup()
   {
-    return Boolean.parseBoolean(at.dVC.L("last_login_face_save_lip_reading", "false"));
+    AppMethodBeat.i(192);
+    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_save_lip_reading", "false"));
+    AppMethodBeat.o(192);
+    return bool;
   }
   
-  public static boolean aOn()
+  public static boolean buq()
   {
-    return Boolean.parseBoolean(at.dVC.L("last_login_face_save_final_voice", "false"));
+    AppMethodBeat.i(193);
+    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_save_final_voice", "false"));
+    AppMethodBeat.o(193);
+    return bool;
   }
   
-  public static void el(long paramLong)
+  public static void hl(boolean paramBoolean)
   {
-    jNJ = paramLong;
+    AppMethodBeat.i(194);
+    av.flM.ao("last_login_face_use_debug_mode", String.valueOf(paramBoolean));
+    AppMethodBeat.o(194);
   }
   
-  public static void fI(boolean paramBoolean)
+  public static void hm(boolean paramBoolean)
   {
-    at.dVC.Y("last_login_face_use_debug_mode", String.valueOf(paramBoolean));
+    AppMethodBeat.i(195);
+    av.flM.ao("last_login_face_save_correct_debug_mode", String.valueOf(paramBoolean));
+    AppMethodBeat.o(195);
   }
   
-  public static void fJ(boolean paramBoolean)
+  public static void hn(boolean paramBoolean)
   {
-    at.dVC.Y("last_login_face_save_correct_debug_mode", String.valueOf(paramBoolean));
+    AppMethodBeat.i(196);
+    av.flM.ao("last_login_face_save_final_debug_mode", String.valueOf(paramBoolean));
+    AppMethodBeat.o(196);
   }
   
-  public static void fK(boolean paramBoolean)
+  public static void ho(boolean paramBoolean)
   {
-    at.dVC.Y("last_login_face_save_final_debug_mode", String.valueOf(paramBoolean));
+    AppMethodBeat.i(197);
+    av.flM.ao("last_login_face_save_lip_reading", String.valueOf(paramBoolean));
+    AppMethodBeat.o(197);
   }
   
-  public static void fL(boolean paramBoolean)
+  public static void hp(boolean paramBoolean)
   {
-    at.dVC.Y("last_login_face_save_lip_reading", String.valueOf(paramBoolean));
+    AppMethodBeat.i(198);
+    av.flM.ao("last_login_face_save_final_voice", String.valueOf(paramBoolean));
+    AppMethodBeat.o(198);
   }
   
-  public static void fM(boolean paramBoolean)
+  public static void hq(boolean paramBoolean)
   {
-    at.dVC.Y("last_login_face_save_final_voice", String.valueOf(paramBoolean));
+    AppMethodBeat.i(199);
+    av.flM.ao("last_login_face_is_force_upload_face", String.valueOf(paramBoolean));
+    AppMethodBeat.o(199);
   }
   
-  public static void fN(boolean paramBoolean)
+  public static void jI(long paramLong)
   {
-    at.dVC.Y("last_login_face_is_force_upload_face", String.valueOf(paramBoolean));
+    mhV = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.e
  * JD-Core Version:    0.7.0.1
  */

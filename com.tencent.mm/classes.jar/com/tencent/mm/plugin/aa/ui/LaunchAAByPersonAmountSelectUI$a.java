@@ -7,19 +7,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.a.b;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tenpay.android.wechat.TenpaySecureEditText;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -27,10 +24,13 @@ import java.util.Map;
 final class LaunchAAByPersonAmountSelectUI$a
   extends BaseAdapter
 {
-  List<LaunchAAByPersonAmountSelectUI.b> dataList = null;
+  List<LaunchAAByPersonAmountSelectUI.b> dataList;
   
   public LaunchAAByPersonAmountSelectUI$a(List<String> paramList, Map<String, Double> paramMap)
   {
+    AppMethodBeat.i(40799);
+    this.dataList = null;
+    this.dataList = new ArrayList();
     paramMap = paramMap.iterator();
     if (paramMap.hasNext())
     {
@@ -39,22 +39,29 @@ final class LaunchAAByPersonAmountSelectUI$a
       localb.username = str;
       Object localObject;
       if ((localObject != null) && (localObject.containsKey(str))) {}
-      for (localb.eYN = paramList.getString(a.i.aa_amount_format, new Object[] { localObject.get(str) });; localb.eYN = "")
+      for (localb.gqE = paramList.getString(2131296341, new Object[] { localObject.get(str) });; localb.gqE = "")
       {
         this.dataList.add(localb);
         break;
       }
     }
+    AppMethodBeat.o(40799);
   }
   
-  private LaunchAAByPersonAmountSelectUI.b jR(int paramInt)
+  private LaunchAAByPersonAmountSelectUI.b mN(int paramInt)
   {
-    return (LaunchAAByPersonAmountSelectUI.b)this.dataList.get(paramInt);
+    AppMethodBeat.i(40801);
+    LaunchAAByPersonAmountSelectUI.b localb = (LaunchAAByPersonAmountSelectUI.b)this.dataList.get(paramInt);
+    AppMethodBeat.o(40801);
+    return localb;
   }
   
   public final int getCount()
   {
-    return this.dataList.size();
+    AppMethodBeat.i(40800);
+    int i = this.dataList.size();
+    AppMethodBeat.o(40800);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -64,63 +71,65 @@ final class LaunchAAByPersonAmountSelectUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    LaunchAAByPersonAmountSelectUI.b localb = jR(paramInt);
+    AppMethodBeat.i(40802);
+    LaunchAAByPersonAmountSelectUI.b localb = mN(paramInt);
     Object localObject = paramView;
     if (localb != null)
     {
       localObject = paramView;
-      if (!bk.bl(localb.username))
+      if (!bo.isNullOrNil(localb.username))
       {
         View localView = paramView;
         if (paramView == null)
         {
-          localView = y.gt(this.eYG).inflate(a.g.launch_aa_by_person_amount_select_row, paramViewGroup, false);
+          localView = w.hM(this.gqx).inflate(2130969964, paramViewGroup, false);
           paramView = new LaunchAAByPersonAmountSelectUI.a.a(this, (byte)0);
-          paramView.dpY = ((ImageView)localView.findViewById(a.f.avatar));
-          paramView.eYn = ((TextView)localView.findViewById(a.f.username));
-          paramView.eYo = ((WalletFormView)localView.findViewById(a.f.money_edit));
-          paramView.eYM = new LaunchAAByPersonAmountSelectUI.c(this.eYG, localb.username);
-          paramView.eYo.a(paramView.eYM);
-          paramView.dpY.setOnTouchListener(new LaunchAAByPersonAmountSelectUI.a.1(this, paramView));
-          paramView.eYn.setOnTouchListener(new LaunchAAByPersonAmountSelectUI.a.2(this, paramView));
+          paramView.ehv = ((ImageView)localView.findViewById(2131823820));
+          paramView.gqe = ((TextView)localView.findViewById(2131821594));
+          paramView.gqf = ((WalletFormView)localView.findViewById(2131825366));
+          paramView.gqD = new LaunchAAByPersonAmountSelectUI.c(this.gqx, localb.username);
+          paramView.gqf.a(paramView.gqD);
+          paramView.ehv.setOnTouchListener(new LaunchAAByPersonAmountSelectUI.a.1(this, paramView));
+          paramView.gqe.setOnTouchListener(new LaunchAAByPersonAmountSelectUI.a.2(this, paramView));
           localView.setTag(paramView);
-          this.eYG.a(paramView.eYo, 2, false, true);
+          this.gqx.setEditFocusListener(paramView.gqf, 2, false, true);
         }
         paramView = (LaunchAAByPersonAmountSelectUI.a.a)localView.getTag();
-        if (!bk.bl(localb.username))
+        if (!bo.isNullOrNil(localb.username))
         {
-          paramView.eYM.username = localb.username;
-          a.b.a(paramView.dpY, localb.username);
-          paramView.eYn.setText(j.a(this.eYG.mController.uMN, ((b)g.r(b.class)).getDisplayName(localb.username, LaunchAAByPersonAmountSelectUI.n(this.eYG)), paramView.eYn.getTextSize()));
+          paramView.gqD.username = localb.username;
+          a.b.c(paramView.ehv, localb.username);
+          paramView.gqe.setText(j.b(this.gqx.getContext(), ((b)g.E(b.class)).getDisplayName(localb.username, LaunchAAByPersonAmountSelectUI.n(this.gqx)), paramView.gqe.getTextSize()));
         }
         localObject = localView;
-        if (localb.eYN != null)
+        if (localb.gqE != null)
         {
           localObject = localView;
-          if (paramView.eYo.getText() != null)
+          if (paramView.gqf.getText() != null)
           {
             localObject = localView;
-            if (!localb.eYN.equals(paramView.eYo.getText().toLowerCase()))
+            if (!localb.gqE.equals(paramView.gqf.getText().toLowerCase()))
             {
-              paramViewGroup = paramView.eYo;
-              localObject = paramView.eYM;
-              if (paramViewGroup.wCS != null) {
-                paramViewGroup.wCS.removeTextChangedListener((TextWatcher)localObject);
+              paramViewGroup = paramView.gqf;
+              localObject = paramView.gqD;
+              if (paramViewGroup.AZe != null) {
+                paramViewGroup.AZe.removeTextChangedListener((TextWatcher)localObject);
               }
-              paramView.eYo.setText(localb.eYN);
-              paramView.eYo.a(paramView.eYM);
+              paramView.gqf.setText(localb.gqE);
+              paramView.gqf.a(paramView.gqD);
               localObject = localView;
             }
           }
         }
       }
     }
+    AppMethodBeat.o(40802);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAByPersonAmountSelectUI.a
  * JD-Core Version:    0.7.0.1
  */

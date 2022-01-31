@@ -1,5 +1,7 @@
 package com.eclipsesource.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class d
   extends h
 {
@@ -7,40 +9,54 @@ final class d
   
   d(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("string is null");
+    AppMethodBeat.i(70523);
+    if (paramString == null)
+    {
+      paramString = new NullPointerException("string is null");
+      AppMethodBeat.o(70523);
+      throw paramString;
     }
     this.string = paramString;
+    AppMethodBeat.o(70523);
   }
   
   final void a(i parami)
   {
-    parami.ac(this.string);
+    AppMethodBeat.i(70524);
+    parami.ah(this.string);
+    AppMethodBeat.o(70524);
   }
   
   public final boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this == paramObject) {
-      bool1 = true;
-    }
-    do
+    AppMethodBeat.i(70529);
+    if (this == paramObject)
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramObject == null);
-      bool1 = bool2;
-    } while (getClass() != paramObject.getClass());
+      AppMethodBeat.o(70529);
+      return true;
+    }
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(70529);
+      return false;
+    }
+    if (getClass() != paramObject.getClass())
+    {
+      AppMethodBeat.o(70529);
+      return false;
+    }
     paramObject = (d)paramObject;
-    return this.string.equals(paramObject.string);
+    boolean bool = this.string.equals(paramObject.string);
+    AppMethodBeat.o(70529);
+    return bool;
   }
   
   public final int hashCode()
   {
-    return this.string.hashCode();
+    AppMethodBeat.i(70528);
+    int i = this.string.hashCode();
+    AppMethodBeat.o(70528);
+    return i;
   }
   
   public final boolean isNumber()
@@ -48,19 +64,28 @@ final class d
     return true;
   }
   
-  public final int jP()
+  public final int lJ()
   {
-    return Integer.parseInt(this.string, 10);
+    AppMethodBeat.i(70525);
+    int i = Integer.parseInt(this.string, 10);
+    AppMethodBeat.o(70525);
+    return i;
   }
   
-  public final long jQ()
+  public final long lK()
   {
-    return Long.parseLong(this.string, 10);
+    AppMethodBeat.i(70526);
+    long l = Long.parseLong(this.string, 10);
+    AppMethodBeat.o(70526);
+    return l;
   }
   
-  public final double jR()
+  public final double lL()
   {
-    return Double.parseDouble(this.string);
+    AppMethodBeat.i(70527);
+    double d = Double.parseDouble(this.string);
+    AppMethodBeat.o(70527);
+    return d;
   }
   
   public final String toString()

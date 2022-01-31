@@ -1,31 +1,96 @@
 package com.tencent.mm.plugin.appbrand.dynamic.c;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.e;
 import com.tencent.mm.modelappbrand.l;
-import com.tencent.mm.protocal.MMProtocalJni;
 
 public final class a
   implements com.tencent.mm.pluginsdk.cmd.a
 {
-  public final boolean a(Context paramContext, String[] paramArrayOfString)
+  public final boolean a(Context paramContext, final String[] paramArrayOfString, String paramString)
   {
-    if (!((e)g.r(e.class)).Jn().Jt()) {}
-    label88:
-    int i;
-    do
+    AppMethodBeat.i(10799);
+    if (!((e)g.E(e.class)).acl().acr())
     {
-      do
+      AppMethodBeat.o(10799);
+      return true;
+    }
+    if (!"//widget".equals(paramArrayOfString[0]))
+    {
+      AppMethodBeat.o(10799);
+      return true;
+    }
+    if (paramArrayOfString.length < 2)
+    {
+      AppMethodBeat.o(10799);
+      return true;
+    }
+    paramString = paramArrayOfString[1].toLowerCase();
+    int i;
+    switch (paramString.hashCode())
+    {
+    default: 
+      i = -1;
+      label115:
+      switch (i)
       {
+      }
+      break;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(10799);
+      return true;
+      if (!paramString.equals("assert")) {
+        break;
+      }
+      i = 0;
+      break label115;
+      if (!paramString.equals("jniassert")) {
+        break;
+      }
+      i = 1;
+      break label115;
+      if (!paramString.equals("debugger")) {
+        break;
+      }
+      i = 2;
+      break label115;
+      com.tencent.mm.ch.a.post(new a.1(this, paramArrayOfString));
+      continue;
+      com.tencent.mm.ch.a.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(10794);
+          String str2 = "com.tencent.mm";
+          String str1 = str2;
+          if (paramArrayOfString.length > 2)
+          {
+            str1 = str2;
+            if (!TextUtils.isEmpty(paramArrayOfString[2])) {
+              str1 = "com.tencent.mm" + ":" + paramArrayOfString[2];
+            }
+          }
+          f.a(str1, null, a.b.class, null);
+          AppMethodBeat.o(10794);
+        }
+      });
+      continue;
+      if ((paramArrayOfString.length <= 2) || (TextUtils.isEmpty(paramArrayOfString[2])))
+      {
+        AppMethodBeat.o(10799);
         return true;
-      } while ((!"//widget".equals(paramArrayOfString[0])) || (paramArrayOfString.length < 2));
-      String str = paramArrayOfString[1].toLowerCase();
-      switch (str.hashCode())
+      }
+      paramArrayOfString = paramArrayOfString[2];
+      switch (paramArrayOfString.hashCode())
       {
       default: 
+        label296:
         i = -1;
       }
       for (;;)
@@ -33,70 +98,31 @@ public final class a
         switch (i)
         {
         default: 
-          return true;
+          break;
         case 0: 
-          com.tencent.mm.cg.a.post(new a.1(this, paramArrayOfString));
-          return true;
-          if (!str.equals("assert")) {
-            break label88;
+          ((e)g.E(e.class)).acl().cL(true);
+          break;
+          if (!paramArrayOfString.equals("-or")) {
+            break label296;
           }
           i = 0;
           continue;
-          if (!str.equals("jniassert")) {
-            break label88;
+          if (!paramArrayOfString.equals("-cr")) {
+            break label296;
           }
           i = 1;
           continue;
-          if (!str.equals("debugger")) {
-            break label88;
+          if (!paramArrayOfString.equals("-ocb")) {
+            break label296;
           }
           i = 2;
         }
       }
-      com.tencent.mm.cg.a.post(new a.2(this, paramArrayOfString));
-      return true;
-    } while ((paramArrayOfString.length <= 2) || (TextUtils.isEmpty(paramArrayOfString[2])));
-    paramArrayOfString = paramArrayOfString[2];
-    switch (paramArrayOfString.hashCode())
-    {
-    default: 
-      label252:
-      i = -1;
+      ((e)g.E(e.class)).acl().cL(false);
+      continue;
+      ((e)g.E(e.class)).acl().bY(paramContext);
     }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return true;
-      case 0: 
-        ((e)g.r(e.class)).Jn().bJ(true);
-        return true;
-        if (!paramArrayOfString.equals("-or")) {
-          break label252;
-        }
-        i = 0;
-        continue;
-        if (!paramArrayOfString.equals("-cr")) {
-          break label252;
-        }
-        i = 1;
-        continue;
-        if (!paramArrayOfString.equals("-ocb")) {
-          break label252;
-        }
-        i = 2;
-      }
-    }
-    ((e)g.r(e.class)).Jn().bJ(false);
-    return true;
-    ((e)g.r(e.class)).Jn().bu(paramContext);
-    return true;
   }
-  
-  private static class b
-    implements com.tencent.mm.ipcinvoker.a<Bundle, Bundle>
-  {}
 }
 
 

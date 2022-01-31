@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a23" android:paddingTop="@dimen/li" android:paddingBottom="@dimen/li" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/e7h" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:src="@drawable/b7" android:scaleType="fitCenter" android:contentDescription="@string/egi" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/e7i" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:src="@raw/album_wesee_icon_normal" android:scaleType="fitCenter" android:contentDescription="@string/egj" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/e7j" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:src="@drawable/b1" android:scaleType="fitCenter" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/e7k" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:src="@drawable/b8" android:scaleType="fitCenter" />
+    <ScrollView style="@style/ni">
+        <LinearLayout style="@style/l0">
+            <LinearLayout android:orientation="vertical" android:id="@id/een" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:paddingBottom="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:layout_gravity="center_horizontal" android:id="@id/ra" android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" />
+                    <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:gravity="center|left|top" android:id="@id/b95" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/ra" />
+                    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:gravity="left" android:id="@id/e1h" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_toRightOf="@id/ra" android:layout_below="@id/b95" />
+                </RelativeLayout>
+                <View style="@style/nz" />
+                <EditText android:textColor="@color/w_" android:layout_gravity="bottom" android:id="@id/eeo" android:layout_marginTop="@dimen/n_" android:minHeight="@dimen/kw" style="@style/ml" />
+                <View style="@style/nz" />
+                <TextView android:gravity="center|left|top" android:id="@id/eep" android:text="@string/d47" android:height="70.0dip" style="@style/mm" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

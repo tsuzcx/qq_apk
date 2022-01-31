@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.sport.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.R.o;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.sport.b.d;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.sport.a.d;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -25,78 +25,104 @@ import java.util.List;
 public class SportBlackListUI
   extends MMPreference
 {
-  private ContactListExpandPreference dnv;
-  private List<String> ptP;
-  private ContactListExpandPreference.a ptQ = new SportBlackListUI.2(this);
+  private ContactListExpandPreference eeU;
+  private List<String> sqe;
+  private ContactListExpandPreference.a sqf;
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public SportBlackListUI()
   {
-    return false;
+    AppMethodBeat.i(25141);
+    this.sqf = new SportBlackListUI.2(this);
+    AppMethodBeat.o(25141);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public int getResourceId()
   {
+    return 2131165302;
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(25143);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 != 0) || (paramIntent == null)) {}
-    for (;;)
+    if (paramInt1 == 0)
     {
-      return;
-      paramIntent = paramIntent.getStringExtra("Select_Contact");
-      if (!bk.bl(paramIntent))
+      if (paramIntent == null)
       {
-        paramIntent = bk.G(paramIntent.split(","));
-        if (paramIntent != null)
-        {
-          this.ptP.addAll(paramIntent);
-          this.dnv.s(null, this.ptP);
-          this.dnv.refresh();
-          paramIntent = paramIntent.iterator();
-          while (paramIntent.hasNext())
-          {
-            String str = (String)paramIntent.next();
-            au.Hx();
-            s.g(c.Fw().abl(str));
-          }
-        }
+        AppMethodBeat.o(25143);
+        return;
+      }
+      paramIntent = paramIntent.getStringExtra("Select_Contact");
+      if (bo.isNullOrNil(paramIntent))
+      {
+        AppMethodBeat.o(25143);
+        return;
+      }
+      paramIntent = bo.P(paramIntent.split(","));
+      if (paramIntent == null)
+      {
+        AppMethodBeat.o(25143);
+        return;
+      }
+      this.sqe.addAll(paramIntent);
+      this.eeU.v(null, this.sqe);
+      this.eeU.refresh();
+      paramIntent = paramIntent.iterator();
+      while (paramIntent.hasNext())
+      {
+        String str = (String)paramIntent.next();
+        aw.aaz();
+        t.g(c.YA().arw(str));
       }
     }
+    AppMethodBeat.o(25143);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(25142);
     super.onCreate(paramBundle);
-    d.jdMethod_if(39);
-    if (this.ptP == null) {
-      this.ptP = new ArrayList();
+    d.kS(39);
+    if (this.sqe == null) {
+      this.sqe = new ArrayList();
     }
-    au.Hx();
-    paramBundle = c.Fw().d("@werun.black.android", "", null);
+    aw.aaz();
+    paramBundle = c.YA().e("@werun.black.android", "", null);
     while (paramBundle.moveToNext())
     {
       String str = paramBundle.getString(0);
-      this.ptP.add(str);
+      this.sqe.add(str);
     }
     paramBundle.close();
-    this.dnv = ((ContactListExpandPreference)this.vdd.add("black_contact_list_pref"));
-    this.dnv.a(this.vdd, this.dnv.mKey);
-    this.dnv.lS(true).lT(true);
-    this.dnv.s(null, this.ptP);
-    this.dnv.a(this.ptQ);
-    this.dnv.setSummary(R.l.exdevice_we_sport_black_list_intro);
-    setMMTitle(getString(R.l.exdevice_profile_add_black_list));
+    this.eeU = ((ContactListExpandPreference)getPreferenceScreen().atx("black_contact_list_pref"));
+    this.eeU.a(getPreferenceScreen(), this.eeU.mKey);
+    this.eeU.pf(true).pg(true);
+    this.eeU.v(null, this.sqe);
+    this.eeU.a(this.sqf);
+    this.eeU.setSummary(2131299489);
+    setMMTitle(getString(2131299440));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
+        AppMethodBeat.i(25136);
         SportBlackListUI.this.finish();
+        AppMethodBeat.o(25136);
         return false;
       }
     });
+    AppMethodBeat.o(25142);
   }
   
-  public final int xj()
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    return R.o.sportblacklist_pref;
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

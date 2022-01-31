@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.protocal.c.bek;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.protocal.protobuf.bme;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class HoneyPayCardManagerUI$16
-  implements n.a
+  implements p.a
 {
   HoneyPayCardManagerUI$16(HoneyPayCardManagerUI paramHoneyPayCardManagerUI) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    HoneyPayCardManagerUI.a(this.lla, HoneyPayCardManagerUI.b(this.lla));
-    if (HoneyPayCardManagerUI.c(this.lla) != null) {
-      HoneyPayCardManagerUI.a(this.lla, HoneyPayCardManagerUI.Fq(HoneyPayCardManagerUI.c(this.lla).tzu));
+    AppMethodBeat.i(41805);
+    HoneyPayCardManagerUI.a(this.nIw, HoneyPayCardManagerUI.b(this.nIw));
+    if (HoneyPayCardManagerUI.c(this.nIw) != null) {
+      HoneyPayCardManagerUI.a(this.nIw, HoneyPayCardManagerUI.QN(HoneyPayCardManagerUI.c(this.nIw).xAC));
     }
-    HoneyPayCardManagerUI.d(this.lla);
+    HoneyPayCardManagerUI.d(this.nIw);
+    AppMethodBeat.o(41805);
   }
 }
 

@@ -6,18 +6,16 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.platformtools.x.a;
 import com.tencent.mm.plugin.wallet_core.d.b;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.e;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.d;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet_core.model.g;
+import com.tencent.mm.plugin.wallet_core.ui.view.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 import java.util.HashMap;
@@ -26,56 +24,59 @@ import java.util.List;
 final class WalletBalanceSaveUI$4
   implements n.c
 {
-  WalletBalanceSaveUI$4(WalletBalanceSaveUI paramWalletBalanceSaveUI, List paramList, com.tencent.mm.ui.widget.c paramc) {}
+  WalletBalanceSaveUI$4(WalletBalanceSaveUI paramWalletBalanceSaveUI, List paramList, com.tencent.mm.ui.widget.d paramd) {}
   
-  public final void a(final l paraml)
+  public final void onCreateMMMenu(final l paraml)
   {
-    int j = this.llc.size();
+    AppMethodBeat.i(45474);
+    int j = this.nIy.size();
     int i = 0;
     Bankcard localBankcard;
     Object localObject1;
     if (i < j)
     {
-      localBankcard = (Bankcard)this.llc.get(i);
-      localObject1 = b.h(this.qhx, localBankcard.field_bankcardType, localBankcard.bUP());
+      localBankcard = (Bankcard)this.nIy.get(i);
+      localObject1 = b.h(this.tOS, localBankcard.field_bankcardType, localBankcard.cTe());
       if (localObject1 == null) {
-        break label567;
+        break label571;
       }
     }
-    label146:
-    label406:
-    label567:
-    for (final String str1 = ((e)localObject1).mEi;; str1 = "")
+    label151:
+    label409:
+    label571:
+    for (final String str1 = ((g)localObject1).pek;; str1 = "")
     {
-      Bitmap localBitmap = x.a(new com.tencent.mm.plugin.wallet_core.ui.view.c(str1));
+      Bitmap localBitmap = x.a(new c(str1));
       x.a(new x.a()
       {
-        public final void l(String paramAnonymousString, Bitmap paramAnonymousBitmap)
+        public final void m(String paramAnonymousString, Bitmap paramAnonymousBitmap)
         {
-          ai.d(new WalletBalanceSaveUI.4.1.1(this, paramAnonymousString, paramAnonymousBitmap));
+          AppMethodBeat.i(45473);
+          al.d(new WalletBalanceSaveUI.4.1.1(this, paramAnonymousString, paramAnonymousBitmap));
+          AppMethodBeat.o(45473);
         }
       });
       Object localObject4 = null;
       Object localObject3 = null;
       localObject1 = "";
-      if (!bk.bl(localBankcard.field_forbidWord)) {
+      if (!bo.isNullOrNil(localBankcard.field_forbidWord)) {
         localObject1 = localBankcard.field_forbidWord;
       }
       SpannableString localSpannableString;
       Object localObject2;
       String str2;
-      if (bk.bl(localBankcard.field_forbid_title))
+      if (bo.isNullOrNil(localBankcard.field_forbid_title))
       {
         localSpannableString = new SpannableString((CharSequence)localObject1);
         localObject2 = localObject1;
         str2 = localBankcard.field_desc;
-        if (!localBankcard.bUQ()) {
-          break label406;
+        if (!localBankcard.cTf()) {
+          break label409;
         }
-        y.i("MicroMsg.WalletBalanceSaveUI", "i %d fee %s %s", new Object[] { Integer.valueOf(i), str2, localSpannableString });
-        localObject1 = this.qhx.getResources().getDrawable(a.e.wallet_balance_manager_logo_small);
-        if (!bk.bl((String)localObject2)) {
-          break label400;
+        ab.i("MicroMsg.WalletBalanceSaveUI", "i %d fee %s %s", new Object[] { Integer.valueOf(i), str2, localSpannableString });
+        localObject1 = this.tOS.getResources().getDrawable(2130840794);
+        if (!bo.isNullOrNil((String)localObject2)) {
+          break label403;
         }
       }
       for (boolean bool = false;; bool = true)
@@ -83,30 +84,30 @@ final class WalletBalanceSaveUI$4
         paraml.a(i, str2, localSpannableString, (Drawable)localObject1, bool);
         localObject1 = localObject3;
         if (localObject1 == null) {
-          WalletBalanceSaveUI.d(this.qhx).put(str1, Integer.valueOf(i));
+          WalletBalanceSaveUI.d(this.tOS).put(str1, Integer.valueOf(i));
         }
         i += 1;
         break;
         localObject2 = (String)localObject1 + " ";
         localSpannableString = new SpannableString((String)localObject2 + localBankcard.field_forbid_title);
-        localObject1 = new WalletBalanceSaveUI.4.2(this, this.qhx);
+        localObject1 = new WalletBalanceSaveUI.4.2(this, this.tOS);
         int k = ((String)localObject2).length();
         int m = ((String)localObject2).length() + localBankcard.field_forbid_title.length();
-        localSpannableString.setSpan(new ForegroundColorSpan(this.qhx.getResources().getColor(a.c.wallet_offline_link_color)), k, m, 33);
+        localSpannableString.setSpan(new ForegroundColorSpan(this.tOS.getResources().getColor(2131690662)), k, m, 33);
         localSpannableString.setSpan(localObject1, k, m, 33);
-        break label146;
+        break label151;
       }
       localObject1 = localObject4;
       if (localBitmap != null) {
-        localObject1 = com.tencent.mm.sdk.platformtools.c.a(localBitmap, this.qhx.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), this.qhx.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), true, false);
+        localObject1 = com.tencent.mm.sdk.platformtools.d.a(localBitmap, this.tOS.getResources().getDimensionPixelOffset(2131428824), this.tOS.getResources().getDimensionPixelOffset(2131428824), true, false);
       }
-      y.i("MicroMsg.WalletBalanceSaveUI", "i %d fee %s %s", new Object[] { Integer.valueOf(i), str2, localSpannableString });
+      ab.i("MicroMsg.WalletBalanceSaveUI", "i %d fee %s %s", new Object[] { Integer.valueOf(i), str2, localSpannableString });
       if (localObject1 == null)
       {
         localObject3 = null;
-        label486:
-        if (!bk.bl((String)localObject2)) {
-          break label528;
+        label487:
+        if (!bo.isNullOrNil((String)localObject2)) {
+          break label529;
         }
       }
       for (bool = false;; bool = true)
@@ -114,9 +115,10 @@ final class WalletBalanceSaveUI$4
         paraml.a(i, str2, localSpannableString, (Drawable)localObject3, bool);
         break;
         localObject3 = new BitmapDrawable((Bitmap)localObject1);
-        break label486;
+        break label487;
       }
-      paraml.a(j, this.qhx.getString(a.i.wallet_balance_save_bind_new_card_to_save), "", this.qhx.getResources().getDrawable(a.e.wallet_add_bankcard_icon), false);
+      paraml.a(j, this.tOS.getString(2131304842), "", this.tOS.getResources().getDrawable(2130840786), false);
+      AppMethodBeat.o(45474);
       return;
     }
   }

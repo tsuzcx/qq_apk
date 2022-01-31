@@ -1,41 +1,28 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.tenpay.model.j;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.protocal.protobuf.bql;
+import com.tencent.mm.protocal.protobuf.bqm;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c
-  extends j
+  extends a<bqm>
 {
-  public c(String paramString1, String paramString2)
+  public c()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("passwd", paramString1);
-    localHashMap.put("new_passwd", paramString2);
-    localHashMap.put("new_rpasswd", paramString2);
-    D(localHashMap);
-  }
-  
-  public final int HH()
-  {
-    return 468;
-  }
-  
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    y.d("Micromsg.NetSceneTenpayChangePwd", "errCode " + paramInt + " errMsg: " + paramString);
-  }
-  
-  public final int aEC()
-  {
-    return 9;
-  }
-  
-  public final String getUri()
-  {
-    return "/cgi-bin/mmpay-bin/tenpay/changepwd";
+    AppMethodBeat.i(46168);
+    b.a locala = new b.a();
+    locala.fsX = new bql();
+    locala.fsY = new bqm();
+    locala.funcId = 2904;
+    locala.uri = "/cgi-bin/mmpay-bin/queryunipayorder";
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ab.i("MicroMsg.CgiQueryUniPayOrder", "query uni pay order");
+    AppMethodBeat.o(46168);
   }
 }
 

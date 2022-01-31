@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.appbrand.dynamic.j;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.plugin.appbrand.dynamic.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -12,23 +13,20 @@ public final class a$1
 {
   public final void run()
   {
-    Iterator localIterator = i.aeX().aeY().iterator();
-    for (;;)
+    AppMethodBeat.i(10980);
+    Iterator localIterator = i.azB().azC().iterator();
+    while (localIterator.hasNext())
     {
-      String str;
-      if (localIterator.hasNext())
+      String str = (String)localIterator.next();
+      if (!b.PK().lX(str))
       {
-        str = (String)localIterator.next();
-        if (!b.BT().fC(str)) {
-          y.i("MicroMsg.DynamicPkgUpdater", "has not Connected RemoteService, abort clearCache");
-        }
-      }
-      else
-      {
+        ab.i("MicroMsg.DynamicPkgUpdater", "has not Connected RemoteService, abort clearCache");
+        AppMethodBeat.o(10980);
         return;
       }
       f.a(str, null, a.b.class, null);
     }
+    AppMethodBeat.o(10980);
   }
 }
 

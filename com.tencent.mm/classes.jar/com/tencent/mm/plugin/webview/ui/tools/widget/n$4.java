@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class n$4
   implements DialogInterface.OnCancelListener
@@ -11,13 +12,15 @@ final class n$4
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    y.d("MicroMsg.AppBrandAuthorizeDialog", "stev dialog onCancel");
-    this.rCS.e(3, null);
+    AppMethodBeat.i(79177);
+    ab.d("MicroMsg.AppBrandAuthorizeDialog", "stev dialog onCancel");
+    this.vte.h(3, null);
+    AppMethodBeat.o(79177);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.n.4
  * JD-Core Version:    0.7.0.1
  */

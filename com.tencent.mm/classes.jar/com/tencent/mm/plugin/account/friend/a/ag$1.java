@@ -1,58 +1,64 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.ag.h;
-import com.tencent.mm.ag.i;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.protocal.c.auc;
-import com.tencent.mm.protocal.c.aue;
-import com.tencent.mm.sdk.platformtools.ai.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.h;
+import com.tencent.mm.ah.i;
+import com.tencent.mm.ah.o;
+import com.tencent.mm.protocal.protobuf.bai;
+import com.tencent.mm.protocal.protobuf.bak;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 final class ag$1
-  implements ai.a
+  implements al.a
 {
-  ag$1(ag paramag, aue paramaue) {}
+  ag$1(ag paramag, bak parambak) {}
   
-  public final boolean JS()
+  public final boolean acS()
   {
-    if ((this.fgH != null) && (this.fgH.tpF.size() > 0))
+    AppMethodBeat.i(108469);
+    if ((this.gyp != null) && (this.gyp.xpC.size() > 0))
     {
-      Iterator localIterator = this.fgH.tpF.iterator();
+      Iterator localIterator = this.gyp.xpC.iterator();
       while (localIterator.hasNext())
       {
-        auc localauc = (auc)localIterator.next();
-        if (localauc.hQq == 1)
+        bai localbai = (bai)localIterator.next();
+        if (localbai.jJS == 1)
         {
           h localh = new h();
-          localh.username = localauc.hPY;
-          localh.ebT = localauc.sLD;
-          localh.ebS = localauc.sLE;
-          localh.bcw = -1;
-          y.d("MicroMsg.NetSceneListMFriend", "getmlist  %s b[%s] s[%s]", new Object[] { localh.getUsername(), localh.JX(), localh.JY() });
-          localh.cCq = 3;
-          localh.bK(true);
-          o.Kh().a(localh);
+          localh.username = localbai.jJA;
+          localh.fsl = localbai.wJq;
+          localh.fsk = localbai.wJr;
+          localh.bsY = -1;
+          ab.d("MicroMsg.NetSceneListMFriend", "getmlist  %s b[%s] s[%s]", new Object[] { localh.getUsername(), localh.acX(), localh.acY() });
+          localh.dqB = 3;
+          localh.cM(true);
+          o.adg().b(localh);
         }
       }
     }
+    AppMethodBeat.o(108469);
     return true;
   }
   
-  public final boolean JT()
+  public final boolean acT()
   {
     return false;
   }
   
   public final String toString()
   {
-    return super.toString() + "|onGYNetEnd";
+    AppMethodBeat.i(108470);
+    String str = super.toString() + "|onGYNetEnd";
+    AppMethodBeat.o(108470);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.ag.1
  * JD-Core Version:    0.7.0.1
  */

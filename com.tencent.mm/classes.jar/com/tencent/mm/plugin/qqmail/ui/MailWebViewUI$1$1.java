@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MailWebViewUI$1$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class MailWebViewUI$1$1
   
   public final void run()
   {
-    MailWebViewUI.a(this.niU.niS, this.niT);
+    AppMethodBeat.i(68390);
+    MailWebViewUI.a(this.pOh.pOf, this.pOg);
+    AppMethodBeat.o(68390);
   }
 }
 

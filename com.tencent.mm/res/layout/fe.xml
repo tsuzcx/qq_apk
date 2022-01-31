@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/a01" android:background="@color/f6" android:scrollbars="none" android:overScrollMode="never" style="@style/ls" />
-        <com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitScrollBar android:layout_gravity="center|right" android:id="@id/a02" android:layout_width="@dimen/dk" android:layout_height="fill_parent" />
-        <TextView android:textSize="14.0dip" android:textColor="#ff888888" android:layout_gravity="center_horizontal" android:id="@id/a03" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/f0d" />
-    </FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/a24" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0dip" android:textColor="@color/a7z" android:layout_gravity="left" android:id="@id/a25" android:background="@drawable/a4w" android:padding="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView android:id="@id/a26" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="82.0dip" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/gl" android:gravity="center_horizontal" android:id="@id/a27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="22.0dip" android:layout_marginRight="25.0dip" android:includeFontPadding="false" />
+    <TextView android:textSize="@dimen/ko" android:textColor="@color/gk" android:gravity="center_horizontal" android:id="@id/a28" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="30.0dip" android:includeFontPadding="false" android:lineSpacingExtra="6.0dip" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginBottom="32.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/gh" android:gravity="center" android:id="@id/a29" android:background="@drawable/a4w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <Button android:gravity="center" android:id="@id/a2_" android:layout_marginBottom="50.0dip" android:layout_above="@id/a29" android:layout_centerHorizontal="true" style="@style/pc" />
+        <com.tencent.mm.ui.widget.progress.RoundProgressBtn android:gravity="center" android:id="@id/a2a" android:visibility="gone" android:layout_width="53.0dip" android:layout_height="53.0dip" android:layout_marginBottom="50.0dip" android:layout_above="@id/a29" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 </LinearLayout>

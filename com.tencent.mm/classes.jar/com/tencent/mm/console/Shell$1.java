@@ -1,21 +1,26 @@
 package com.tencent.mm.console;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class Shell$1
   implements Shell.a
 {
-  public final void g(Intent paramIntent)
+  public final void s(Intent paramIntent)
   {
+    AppMethodBeat.i(16107);
     int i = paramIntent.getIntExtra("type", 2147483647);
     int j = paramIntent.getIntExtra("error", 0);
-    if ((i == 2147483647) || (j == 0)) {
+    if ((i == 2147483647) || (j == 0))
+    {
+      AppMethodBeat.o(16107);
       return;
     }
-    y.w("MicroMsg.Shell", "kiro set Test.pushNextErrorRet(type=%d, err=%d)", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-    ae.bB(i, j);
+    ab.w("MicroMsg.Shell", "kiro set Test.pushNextErrorRet(type=%d, err=%d)", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    ae.cM(i, j);
+    AppMethodBeat.o(16107);
   }
 }
 

@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.exdevice;
 
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public final class a
-  implements n
+  implements o
 {
-  public static m jsN;
-  private static l jsO;
-  
-  public final void a(l paraml)
-  {
-    jsO = paraml;
-  }
+  public static n lCn;
+  private static m lCo;
   
   public final void a(m paramm)
   {
-    jsN = paramm;
+    lCo = paramm;
+  }
+  
+  public final void a(n paramn)
+  {
+    lCn = paramn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.a
  * JD-Core Version:    0.7.0.1
  */

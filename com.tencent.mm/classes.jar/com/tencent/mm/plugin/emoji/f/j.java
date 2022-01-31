@@ -1,104 +1,66 @@
 package com.tencent.mm.plugin.emoji.f;
 
-import android.content.ContentValues;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.emoji.b.d;
-import com.tencent.mm.protocal.c.aet;
-import com.tencent.mm.protocal.c.aeu;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.emotion.h;
-import com.tencent.mm.storage.emotion.h.a;
-import java.io.IOException;
+import com.tencent.mm.protocal.protobuf.ajw;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class j
   extends m
   implements k
 {
-  private f dIJ;
-  private final b dmK;
-  private String iZQ;
+  private f eGj;
+  public String liI;
+  private String liJ;
+  public final b rr;
   
-  public j(String paramString)
+  public j(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(53120);
     b.a locala = new b.a();
-    locala.ecH = new aet();
-    locala.ecI = new aeu();
-    locala.uri = "/cgi-bin/micromsg-bin/mmgetdesignersimpleinfo";
-    locala.ecG = 239;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    this.iZQ = paramString;
+    locala.fsX = new ajw();
+    locala.fsY = new ajx();
+    locala.uri = "/cgi-bin/micromsg-bin/getemotionactivity";
+    locala.funcId = 368;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    this.liI = paramString1;
+    this.liJ = paramString2;
+    AppMethodBeat.o(53120);
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dIJ = paramf;
-    ((aet)this.dmK.ecE.ecN).sRs = this.iZQ;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.emoji.NetSceneGetDesignerSimpleInfo", "onGYNetEnd ErrType:%d, errCode:%d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    Object localObject;
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      paramq = ((d)com.tencent.mm.kernel.g.t(d.class)).getEmojiStorageMgr().uBh;
-      paramArrayOfByte = this.iZQ;
-      localObject = aIe();
-      if ((!bk.bl(paramArrayOfByte)) && (localObject != null)) {
-        break label103;
-      }
-      y.w("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID failed. designerID or response is null.");
-    }
-    for (;;)
-    {
-      this.dIJ.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-      try
-      {
-        label103:
-        com.tencent.mm.storage.emotion.g localg = new com.tencent.mm.storage.emotion.g();
-        localg.field_designerIDAndType = (paramArrayOfByte + h.a.uDr.value);
-        localg.field_content = ((aeu)localObject).toByteArray();
-        localObject = localg.vf();
-        new StringBuilder().append(paramArrayOfByte).append(h.a.uDr.value).toString();
-        if (paramq.dXw.replace("EmotionDesignerInfo", "designerIDAndType", (ContentValues)localObject) <= 0L) {
-          break label247;
-        }
-        y.i("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID success. designerID:%s", new Object[] { paramArrayOfByte });
-      }
-      catch (IOException paramq)
-      {
-        y.e("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID exception:%s", new Object[] { bk.j(paramq) });
-      }
-      continue;
-      label247:
-      y.i("MicroMsg.emoji.EmotionDesignerInfo", "saveDesignerSimpleInfoResponseByID failed. designerID:%s", new Object[] { paramArrayOfByte });
-    }
-  }
-  
-  public final aeu aIe()
-  {
-    if (this.dmK == null) {
-      return null;
-    }
-    return (aeu)this.dmK.ecF.ecN;
+    AppMethodBeat.i(53121);
+    this.eGj = paramf;
+    paramf = (ajw)this.rr.fsV.fta;
+    paramf.xbi = this.liI;
+    paramf.Md5 = this.liJ;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(53121);
+    return i;
   }
   
   public final int getType()
   {
-    return 239;
+    return 368;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(53122);
+    ab.i("MicroMsg.emoji.NetSceneGetEmotionActivity", "onGYNetEnd ErrType:%d, errCode:%d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(53122);
   }
 }
 

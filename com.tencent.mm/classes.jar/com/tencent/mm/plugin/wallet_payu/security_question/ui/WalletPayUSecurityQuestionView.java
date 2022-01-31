@@ -9,21 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.d;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.tools.CustomFitTextView;
 
 public class WalletPayUSecurityQuestionView
   extends LinearLayout
 {
   private Context mContext;
-  private TextView qOY;
-  private CustomFitTextView qOZ;
-  String qPa;
+  private TextView uEf;
+  private CustomFitTextView uEg;
+  private String uEh;
   
   public WalletPayUSecurityQuestionView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,48 +30,51 @@ public class WalletPayUSecurityQuestionView
   public WalletPayUSecurityQuestionView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(48594);
     this.mContext = paramContext;
     paramContext = "";
     Object localObject = "";
     boolean bool;
     if (paramAttributeSet != null)
     {
-      TypedArray localTypedArray = this.mContext.obtainStyledAttributes(paramAttributeSet, a.k.EditHintView, -1, 0);
-      paramInt = localTypedArray.getResourceId(a.k.EditHintView_tipmsg, 0);
+      TypedArray localTypedArray = this.mContext.obtainStyledAttributes(paramAttributeSet, a.a.EditHintView, -1, 0);
+      paramInt = localTypedArray.getResourceId(7, 0);
       if (paramInt != 0) {
         paramContext = this.mContext.getString(paramInt);
       }
-      paramInt = localTypedArray.getResourceId(a.k.EditHintView_hint, 0);
+      paramInt = localTypedArray.getResourceId(6, 0);
       paramAttributeSet = (AttributeSet)localObject;
       if (paramInt != 0) {
         paramAttributeSet = this.mContext.getString(paramInt);
       }
-      bool = localTypedArray.getBoolean(a.k.EditHintView_android_clickable, false);
+      bool = localTypedArray.getBoolean(2, false);
       localTypedArray.recycle();
     }
     for (;;)
     {
-      localObject = LayoutInflater.from(this.mContext).inflate(a.g.payu_view_secret_question, this, true);
-      this.qOY = ((TextView)((View)localObject).findViewById(a.f.tip_tv));
-      this.qOZ = ((CustomFitTextView)((View)localObject).findViewById(a.f.pre_filled_tv));
-      this.qOY.setText(paramContext);
-      paramContext = this.qOZ;
-      paramContext.a(paramAttributeSet, paramContext.maxLines, paramContext.vZs, paramContext.vZq, paramContext.getResources().getColor(a.d.hint_text_color));
+      localObject = LayoutInflater.from(this.mContext).inflate(2130970415, this, true);
+      this.uEf = ((TextView)((View)localObject).findViewById(2131821071));
+      this.uEg = ((CustomFitTextView)((View)localObject).findViewById(2131823494));
+      this.uEf.setText(paramContext);
+      paramContext = this.uEg;
+      paramContext.a(paramAttributeSet, paramContext.maxLines, paramContext.ArF, paramContext.ArD, paramContext.getResources().getColor(2131690168));
       if (!bool)
       {
-        this.qOZ.setEnabled(false);
-        this.qOZ.setFocusable(false);
-        this.qOZ.setClickable(false);
-        this.qOZ.setBackgroundResource(a.e.transparent_background);
-        setBackgroundResource(a.e.list_item_normal);
+        this.uEg.setEnabled(false);
+        this.uEg.setFocusable(false);
+        this.uEg.setClickable(false);
+        this.uEg.setBackgroundResource(2130840999);
+        setBackgroundResource(2130839276);
+        AppMethodBeat.o(48594);
         return;
       }
-      this.qOZ.setEnabled(false);
-      this.qOZ.setTextColor(getResources().getColor(a.c.wallet_common_clickable_text_color));
-      this.qOZ.setFocusable(false);
-      this.qOZ.setClickable(false);
-      this.qOZ.setBackgroundResource(a.e.transparent_background);
-      setBackgroundResource(a.e.comm_list_item_selector);
+      this.uEg.setEnabled(false);
+      this.uEg.setTextColor(getResources().getColor(2131690796));
+      this.uEg.setFocusable(false);
+      this.uEg.setClickable(false);
+      this.uEg.setBackgroundResource(2130840999);
+      setBackgroundResource(2130838445);
+      AppMethodBeat.o(48594);
       return;
       bool = false;
       paramContext = "";
@@ -82,25 +82,41 @@ public class WalletPayUSecurityQuestionView
     }
   }
   
+  public final boolean asv()
+  {
+    AppMethodBeat.i(48597);
+    if (!bo.isNullOrNil(this.uEh))
+    {
+      AppMethodBeat.o(48597);
+      return true;
+    }
+    AppMethodBeat.o(48597);
+    return false;
+  }
+  
   public String getCurrentQuestion()
   {
-    return this.qPa;
+    return this.uEh;
   }
   
   public void setQuestionText(String paramString)
   {
-    this.qPa = paramString;
-    KeyListener localKeyListener = this.qOZ.getKeyListener();
-    this.qOZ.setInputType(1);
-    this.qOZ.setKeyListener(null);
+    AppMethodBeat.i(48595);
+    this.uEh = paramString;
+    KeyListener localKeyListener = this.uEg.getKeyListener();
+    this.uEg.setInputType(1);
+    this.uEg.setKeyListener(null);
     setValStr(paramString);
-    this.qOZ.setKeyListener(localKeyListener);
+    this.uEg.setKeyListener(localKeyListener);
+    AppMethodBeat.o(48595);
   }
   
   public void setValStr(String paramString)
   {
-    CustomFitTextView localCustomFitTextView = this.qOZ;
+    AppMethodBeat.i(48596);
+    CustomFitTextView localCustomFitTextView = this.uEg;
     localCustomFitTextView.a(paramString, 3, false, -1, localCustomFitTextView.getCurrentTextColor());
+    AppMethodBeat.o(48596);
   }
 }
 

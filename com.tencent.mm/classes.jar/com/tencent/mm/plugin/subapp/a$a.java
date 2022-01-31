@@ -1,167 +1,362 @@
 package com.tencent.mm.plugin.subapp;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.h.a.fo;
-import com.tencent.mm.h.a.fo.a;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.fr;
+import com.tencent.mm.g.a.fr.a;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.modelvoice.o;
-import com.tencent.mm.modelvoice.u;
+import com.tencent.mm.modelvoice.q;
+import com.tencent.mm.modelvoice.s;
+import com.tencent.mm.modelvoice.w;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.bhy;
-import com.tencent.mm.protocal.c.cbr;
-import com.tencent.mm.protocal.c.cdx;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cox;
+import com.tencent.mm.protocal.protobuf.cri;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.cc;
 import com.tencent.mm.storage.cd;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a$a
-  extends com.tencent.mm.sdk.b.c<fo>
+  extends com.tencent.mm.sdk.b.c<fr>
   implements f
 {
-  private int bMM;
-  private int bMN;
-  private String bRO;
-  private boolean dDQ = false;
-  private boolean fRV;
-  private fo puA;
-  private int puB;
-  private Map<String, String> puC = new HashMap();
-  private int puD;
-  private boolean puE = true;
-  private long puF = 0L;
-  private long puG;
-  private com.tencent.mm.plugin.subapp.ui.voicetranstext.a pus;
-  private com.tencent.mm.plugin.subapp.ui.voicetranstext.c put;
-  private com.tencent.mm.plugin.subapp.ui.voicetranstext.b puu;
-  private com.tencent.mm.modelvoice.b puv;
-  private com.tencent.mm.modelvoice.p puw;
-  private volatile boolean pux = false;
-  boolean puy = false;
-  private am puz;
+  private int cug;
+  private int cuh;
+  private String czp;
+  private boolean eBr;
+  private boolean hlw;
+  private com.tencent.mm.plugin.subapp.ui.voicetranstext.a sVT;
+  private com.tencent.mm.plugin.subapp.ui.voicetranstext.c sVU;
+  private com.tencent.mm.plugin.subapp.ui.voicetranstext.b sVV;
+  private com.tencent.mm.modelvoice.b sVW;
+  private com.tencent.mm.modelvoice.r sVX;
+  private volatile boolean sVY;
+  boolean sVZ;
+  private ap sWa;
+  private fr sWb;
+  private int sWc;
+  private Map<String, String> sWd;
+  private int sWe;
+  private boolean sWf;
+  private long sWg;
+  private long sWh;
   private String toUser;
   
   public a$a()
   {
-    this.udX = fo.class.getName().hashCode();
+    AppMethodBeat.i(25162);
+    this.sVY = false;
+    this.sVZ = false;
+    this.sWf = true;
+    this.sWg = 0L;
+    this.eBr = false;
+    this.sWd = new HashMap();
+    this.__eventId = fr.class.getName().hashCode();
+    AppMethodBeat.o(25162);
   }
   
   private void a(String paramString, a.a.a parama)
   {
-    y.i("MicroMsg.SubCoreSubapp", "finishWithResult mstate:%s", new Object[] { parama });
-    if (this.puz != null) {
-      this.puz.stopTimer();
+    AppMethodBeat.i(25166);
+    ab.i("MicroMsg.SubCoreSubapp", "finishWithResult mstate:%s", new Object[] { parama });
+    if (this.sWa != null) {
+      this.sWa.stopTimer();
     }
-    au.Dk().b(546, this);
-    au.Dk().b(547, this);
-    au.Dk().b(548, this);
-    if (this.puA != null)
+    aw.Rc().b(546, this);
+    aw.Rc().b(547, this);
+    aw.Rc().b(548, this);
+    if (this.sWb != null)
     {
-      if (bk.bl(paramString)) {
-        break label482;
+      if (bo.isNullOrNil(paramString)) {
+        break label289;
       }
-      this.puC.put(this.puA.bMz.fileName, paramString);
-      if (((a.pum == null) || (bk.bl(a.pum.field_content))) && (this.puA.bMz.from == 1))
+      this.sWd.put(this.sWb.ctT.fileName, paramString);
+      if (((a.sVM == null) || (bo.isNullOrNil(a.sVM.field_content))) && (this.sWb.ctT.from == 1)) {
+        o.amt().a(adO(paramString));
+      }
+      this.sWb.ctU.aLC = true;
+      this.sWb.ctU.content = paramString;
+      if (parama != a.a.a.sWq) {
+        break label334;
+      }
+    }
+    for (this.sWb.ctU.state = 1;; this.sWb.ctU.state = 2) {
+      label289:
+      label334:
+      do
       {
-        cd localcd = com.tencent.mm.modelvoice.m.Th();
-        y.i("MicroMsg.SubCoreSubapp", "createVoiceTT localId(%s) , fileName(%s).", new Object[] { this.puA.bMz.bMB, this.puA.bMz.fileName });
-        cc localcc = new cc();
-        localcc.field_msgId = Long.valueOf(this.puA.bMz.bMB).longValue();
-        localcc.acv(this.puA.bMz.fileName);
-        localcc.field_content = paramString;
-        localcd.a(localcc);
+        ab.d("MicroMsg.SubCoreSubapp", "finishWithResult result : %s", new Object[] { paramString });
+        if (this.sWb.ctT.ctX != null) {
+          this.sWb.ctT.ctX.run();
+        }
+        b(paramString, parama);
+        this.sVT = null;
+        this.sVU = null;
+        this.sVV = null;
+        this.sWb = null;
+        this.hlw = false;
+        this.sVZ = false;
+        this.sVY = false;
+        this.sWc = 20;
+        a.sVM = null;
+        cGz();
+        AppMethodBeat.o(25166);
+        return;
+        if (parama != a.a.a.sWo) {
+          break;
+        }
+        ab.i("MicroMsg.SubCoreSubapp", "finishWithResult State.FINISH id:%s", new Object[] { this.sWb.ctT.ctV });
+        this.sWb.ctU.state = 2;
+        break;
+      } while ((parama != a.a.a.sWs) && (parama != a.a.a.sWt));
+    }
+  }
+  
+  private boolean a(fr paramfr)
+  {
+    AppMethodBeat.i(25163);
+    if (!(paramfr instanceof fr))
+    {
+      ab.f("MicroMsg.SubCoreSubapp", "mismatched event");
+      AppMethodBeat.o(25163);
+      return false;
+    }
+    if (paramfr.ctT.ctW == 2)
+    {
+      a(a.a.a.sWq);
+      this.sWd.clear();
+      ab.i("MicroMsg.SubCoreSubapp", "Have clear the cache of the translate voice results.");
+      AppMethodBeat.o(25163);
+      return true;
+    }
+    if (paramfr.ctT.ctW == 1)
+    {
+      a(a.a.a.sWq);
+      ab.i("MicroMsg.SubCoreSubapp", "Have cancel translate voice action.");
+      AppMethodBeat.o(25163);
+      return true;
+    }
+    if (paramfr.ctT.ctW == 3)
+    {
+      a(a.a.a.sWr);
+      ab.i("MicroMsg.SubCoreSubapp", "alvinluo Have cancel translate voice action by user.");
+      AppMethodBeat.o(25163);
+      return true;
+    }
+    if (paramfr.ctT.ctW != 0)
+    {
+      ab.i("MicroMsg.SubCoreSubapp", "The opCode(%d) is out of range.", new Object[] { Integer.valueOf(this.sWb.ctT.ctW) });
+      AppMethodBeat.o(25163);
+      return false;
+    }
+    if (this.hlw)
+    {
+      ab.w("MicroMsg.SubCoreSubapp", "The Event handler is busy.");
+      AppMethodBeat.o(25163);
+      return false;
+    }
+    if (o.ams() == null)
+    {
+      ab.e("MicroMsg.SubCoreSubapp", "SubCoreVoice.getVoiceStg() == null" + bo.dtY());
+      AppMethodBeat.o(25163);
+      return false;
+    }
+    this.sWb = paramfr;
+    String str1 = this.sWb.ctT.ctV;
+    String str2 = this.sWb.ctT.fileName;
+    if ((bo.isNullOrNil(str1)) || (bo.isNullOrNil(str2)))
+    {
+      ab.e("MicroMsg.SubCoreSubapp", "The localId(%s) is null or fileName(%s) is null.", new Object[] { str1, str2 });
+      a(a.a.a.sWs);
+      AppMethodBeat.o(25163);
+      return false;
+    }
+    cGz();
+    Object localObject = (String)this.sWd.get(str2);
+    if (!bo.isNullOrNil((String)localObject))
+    {
+      ab.i("MicroMsg.SubCoreSubapp", "finish With Cache localId:%s,fileName:%s", new Object[] { str1, str2 });
+      a((String)localObject, a.a.a.sWo);
+      AppMethodBeat.o(25163);
+      return true;
+    }
+    localObject = o.amt().asI(str2);
+    a.sVM = (cc)localObject;
+    if ((localObject != null) && (!bo.isNullOrNil(a.sVM.field_content)))
+    {
+      ab.i("MicroMsg.SubCoreSubapp", "finish With DB localId:%s,fileName:%s", new Object[] { str1, str2 });
+      a(a.sVM.field_content, a.a.a.sWo);
+      AppMethodBeat.o(25163);
+      return true;
+    }
+    ab.i("MicroMsg.SubCoreSubapp", "alvinluo transform test voice scene: %d", new Object[] { Integer.valueOf(paramfr.ctT.scene) });
+    this.sVX = o.ams().vW(str2);
+    for (;;)
+    {
+      try
+      {
+        if (this.sVX == null)
+        {
+          ab.i("MicroMsg.SubCoreSubapp", "alvinluo the VoiceInfo do not exist. (localId : %s, fileName : %s)", new Object[] { str1, str2 });
+          this.sVX = new com.tencent.mm.modelvoice.r();
+          this.sVX.fileName = str2;
+          this.sVX.createTime = (System.currentTimeMillis() / 1000L);
+          this.sVX.clientId = str2;
+          this.sVX.fXv = (System.currentTimeMillis() / 1000L);
+          this.sVX.status = 1;
+          if (paramfr.ctT.scene == 8)
+          {
+            this.sVX.fXy = -1;
+            int i = q.vh(str2);
+            ab.i("MicroMsg.SubCoreSubapp", "size : %d", new Object[] { Integer.valueOf(i) });
+            this.sVX.fsd = i;
+          }
+        }
+        else
+        {
+          if (this.sVX.fXy >= 0) {
+            break label801;
+          }
+          ab.i("MicroMsg.SubCoreSubapp", "alvinluo voiceInfo msgLocalId < 0");
+          this.sWe = this.sWb.ctT.scene;
+          ab.d("MicroMsg.SubCoreSubapp", "alvinluo VoiceTransformText fromUser: %s, toUser: %s, scene: %d", new Object[] { this.czp, this.toUser, Integer.valueOf(this.sWe) });
+          this.sVW = s.vK(this.sVX.fileName);
+          this.hlw = true;
+          this.sWc = 20;
+          a(a.a.a.sWk);
+          AppMethodBeat.o(25163);
+          return true;
+        }
+        this.sVX.fXy = Integer.valueOf(str1).intValue();
+        continue;
+        paramfr = ((j)g.E(j.class)).bPQ().kB(this.sVX.fXy);
       }
-      this.puA.bMA.aES = true;
-      this.puA.bMA.content = paramString;
-      if (parama != a.a.a.puP) {
-        break label528;
+      catch (Exception paramfr)
+      {
+        ab.printErrStackTrace("MicroMsg.SubCoreSubapp", paramfr, "alvinluo set voiceInfo exception", new Object[0]);
+        a(a.a.a.sWs);
+        AppMethodBeat.o(25163);
+        return true;
       }
-      this.puA.bMA.state = 1;
-      label267:
-      y.d("MicroMsg.SubCoreSubapp", "finishWithResult result : %s", new Object[] { paramString });
-      if (this.puA.bMz.bMD != null) {
-        this.puA.bMz.bMD.run();
+      label801:
+      if (paramfr.field_isSend == 1)
+      {
+        this.czp = com.tencent.mm.model.r.Zn();
+        if ((this.sWb.ctT.scene == 4) || (this.sWb.ctT.scene == 5))
+        {
+          paramfr = ((com.tencent.mm.api.h)g.E(com.tencent.mm.api.h.class)).aG(paramfr.field_bizChatId);
+          if (paramfr != null) {
+            this.toUser = paramfr.field_bizChatServId;
+          } else {
+            this.toUser = "";
+          }
+        }
+        else
+        {
+          this.toUser = paramfr.field_talker;
+        }
       }
+      else if (paramfr.field_isSend == 0)
+      {
+        this.toUser = com.tencent.mm.model.r.Zn();
+        if ((this.sWb.ctT.scene == 4) || (this.sWb.ctT.scene == 5))
+        {
+          paramfr = ((com.tencent.mm.api.h)g.E(com.tencent.mm.api.h.class)).aG(paramfr.field_bizChatId);
+          if (paramfr != null) {
+            this.czp = paramfr.field_bizChatServId;
+          } else {
+            this.czp = "";
+          }
+        }
+        else
+        {
+          this.czp = paramfr.field_talker;
+        }
+      }
+    }
+  }
+  
+  private cc adO(String paramString)
+  {
+    AppMethodBeat.i(25168);
+    ab.i("MicroMsg.SubCoreSubapp", "createVoiceTT localId(%s) , fileName(%s).", new Object[] { this.sWb.ctT.ctV, this.sWb.ctT.fileName });
+    cc localcc = new cc();
+    localcc.field_msgId = Long.valueOf(this.sWb.ctT.ctV).longValue();
+    localcc.asH(this.sWb.ctT.fileName);
+    localcc.field_content = paramString;
+    AppMethodBeat.o(25168);
+    return localcc;
+  }
+  
+  private void b(String paramString, a.a.a parama)
+  {
+    AppMethodBeat.i(25167);
+    if (!this.eBr)
+    {
+      AppMethodBeat.o(25167);
+      return;
+    }
+    if (this.sVX == null)
+    {
+      AppMethodBeat.o(25167);
+      return;
     }
     int i;
-    label333:
     int j;
-    if ((this.dDQ) && (this.puw != null))
+    if (paramString != null)
     {
-      if (paramString == null) {
-        break label556;
-      }
       i = paramString.length();
-      if (parama != a.a.a.puN) {
-        break label579;
+      if (parama != a.a.a.sWo) {
+        break label173;
       }
-      if (bk.bl(paramString)) {
-        break label561;
+      if (bo.isNullOrNil(paramString)) {
+        break label155;
       }
       j = 1;
     }
     for (;;)
     {
-      y.i("MicroMsg.SubCoreSubapp", "alvinluo transformTextResult voiceId: %s, wordCount: %d, waitTime: %d, animationTime: %d, transformResult: %d", new Object[] { this.puw.clientId, Integer.valueOf(i), Integer.valueOf(this.bMM), Integer.valueOf(this.bMN), Integer.valueOf(j) });
+      ab.i("MicroMsg.SubCoreSubapp", "alvinluo transformTextResult voiceId: %s, wordCount: %d, waitTime: %d, animationTime: %d, transformResult: %d", new Object[] { this.sVX.clientId, Integer.valueOf(i), Integer.valueOf(this.cug), Integer.valueOf(this.cuh), Integer.valueOf(j) });
       if (j != 0) {
-        com.tencent.mm.plugin.subapp.d.b.b(this.puw.clientId, i, this.bMM, this.bMN, j);
+        com.tencent.mm.plugin.subapp.d.b.d(this.sVX.clientId, i, this.cug, this.cuh, j);
       }
-      this.pus = null;
-      this.put = null;
-      this.puu = null;
-      this.puA = null;
-      this.fRV = false;
-      this.puy = false;
-      this.pux = false;
-      this.puB = 20;
-      a.pum = null;
-      bLA();
+      AppMethodBeat.o(25167);
       return;
-      label482:
-      if (parama != a.a.a.puN) {
-        break;
-      }
-      y.i("MicroMsg.SubCoreSubapp", "finishWithResult State.FINISH id:%s", new Object[] { this.puA.bMz.bMB });
-      this.puA.bMA.state = 2;
-      break;
-      label528:
-      if ((parama != a.a.a.puR) && (parama != a.a.a.puS)) {
-        break label267;
-      }
-      this.puA.bMA.state = 2;
-      break label267;
-      label556:
       i = 0;
-      break label333;
-      label561:
-      this.bMM = 0;
-      this.bMN = 0;
+      break;
+      label155:
+      this.cug = 0;
+      this.cuh = 0;
       i = 0;
       j = 3;
       continue;
-      label579:
-      this.bMM = 0;
-      this.bMN = 0;
-      if (parama == a.a.a.puP)
+      label173:
+      this.cug = 0;
+      this.cuh = 0;
+      if (parama == a.a.a.sWq)
       {
         j = 5;
         i = 0;
       }
-      else if (parama == a.a.a.puS)
+      else if (parama == a.a.a.sWt)
       {
         i = 0;
         j = 3;
       }
-      else if (parama == a.a.a.puR)
+      else if (parama == a.a.a.sWs)
       {
         j = 4;
         i = 0;
       }
-      else if (parama == a.a.a.puT)
+      else if (parama == a.a.a.sWu)
       {
         i = 0;
         j = 2;
@@ -174,368 +369,241 @@ public final class a$a
     }
   }
   
-  private boolean a(fo paramfo)
+  private void cGA()
   {
-    if (!(paramfo instanceof fo))
+    AppMethodBeat.i(25165);
+    if (this.sWf)
     {
-      y.f("MicroMsg.SubCoreSubapp", "mismatched event");
-      return false;
+      this.sWf = false;
+      this.sWg = System.currentTimeMillis();
+      this.cug = ((int)(this.sWg - this.sWh));
     }
-    if (paramfo.bMz.bMC == 2)
-    {
-      a(a.a.a.puP);
-      this.puC.clear();
-      y.i("MicroMsg.SubCoreSubapp", "Have clear the cache of the translate voice results.");
-      return true;
-    }
-    if (paramfo.bMz.bMC == 1)
-    {
-      a(a.a.a.puP);
-      y.i("MicroMsg.SubCoreSubapp", "Have cancel translate voice action.");
-      return true;
-    }
-    if (paramfo.bMz.bMC == 3)
-    {
-      a(a.a.a.puQ);
-      y.i("MicroMsg.SubCoreSubapp", "alvinluo Have cancel translate voice action by user.");
-      return true;
-    }
-    if (paramfo.bMz.bMC != 0)
-    {
-      y.i("MicroMsg.SubCoreSubapp", "The opCode(%d) is out of range.", new Object[] { Integer.valueOf(this.puA.bMz.bMC) });
-      return false;
-    }
-    if (this.fRV)
-    {
-      y.w("MicroMsg.SubCoreSubapp", "The Event handler is busy.");
-      return false;
-    }
-    if (com.tencent.mm.modelvoice.m.Tg() == null)
-    {
-      y.e("MicroMsg.SubCoreSubapp", "SubCoreVoice.getVoiceStg() == null" + bk.csb());
-      return false;
-    }
-    this.puA = paramfo;
-    String str1 = this.puA.bMz.bMB;
-    String str2 = this.puA.bMz.fileName;
-    if ((bk.bl(str1)) || (bk.bl(str2)))
-    {
-      y.e("MicroMsg.SubCoreSubapp", "The localId(%s) is null or fileName(%s) is null.", new Object[] { str1, str2 });
-      a(a.a.a.puR);
-      return false;
-    }
-    bLA();
-    Object localObject = (String)this.puC.get(str2);
-    if (!bk.bl((String)localObject))
-    {
-      y.i("MicroMsg.SubCoreSubapp", "finish With Cache localId:%s,fileName:%s", new Object[] { str1, str2 });
-      a((String)localObject, a.a.a.puN);
-      return true;
-    }
-    localObject = com.tencent.mm.modelvoice.m.Th().acw(str2);
-    a.pum = (cc)localObject;
-    if ((localObject != null) && (!bk.bl(a.pum.field_content)))
-    {
-      y.i("MicroMsg.SubCoreSubapp", "finish With DB localId:%s,fileName:%s", new Object[] { str1, str2 });
-      a(a.pum.field_content, a.a.a.puN);
-      return true;
-    }
-    y.i("MicroMsg.SubCoreSubapp", "alvinluo transform test voice scene: %d", new Object[] { Integer.valueOf(paramfo.bMz.scene) });
-    this.puw = com.tencent.mm.modelvoice.m.Tg().oJ(str2);
-    for (;;)
-    {
-      try
-      {
-        if (this.puw == null)
-        {
-          y.i("MicroMsg.SubCoreSubapp", "alvinluo the VoiceInfo do not exist. (localId : %s, fileName : %s)", new Object[] { str1, str2 });
-          this.puw = new com.tencent.mm.modelvoice.p();
-          this.puw.fileName = str2;
-          this.puw.createTime = (System.currentTimeMillis() / 1000L);
-          this.puw.clientId = str2;
-          this.puw.eHF = (System.currentTimeMillis() / 1000L);
-          this.puw.status = 1;
-          if (paramfo.bMz.scene == 8)
-          {
-            this.puw.eHI = -1;
-            int i = o.nU(str2);
-            y.i("MicroMsg.SubCoreSubapp", "size : %d", new Object[] { Integer.valueOf(i) });
-            this.puw.ebK = i;
-          }
-        }
-        else
-        {
-          if (this.puw.eHI >= 0) {
-            break label725;
-          }
-          y.i("MicroMsg.SubCoreSubapp", "alvinluo voiceInfo msgLocalId < 0");
-          this.puD = this.puA.bMz.scene;
-          y.d("MicroMsg.SubCoreSubapp", "alvinluo VoiceTransformText fromUser: %s, toUser: %s, scene: %d", new Object[] { this.bRO, this.toUser, Integer.valueOf(this.puD) });
-          this.puv = com.tencent.mm.modelvoice.q.ox(this.puw.fileName);
-          this.fRV = true;
-          this.puB = 20;
-          a(a.a.a.puJ);
-          return true;
-        }
-        this.puw.eHI = Integer.valueOf(str1).intValue();
-        continue;
-        paramfo = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().fd(this.puw.eHI);
-      }
-      catch (Exception paramfo)
-      {
-        y.printErrStackTrace("MicroMsg.SubCoreSubapp", paramfo, "alvinluo set voiceInfo exception", new Object[0]);
-        a(a.a.a.puR);
-        return true;
-      }
-      label725:
-      if (paramfo.field_isSend == 1)
-      {
-        this.bRO = com.tencent.mm.model.q.Gj();
-        if ((this.puA.bMz.scene == 4) || (this.puA.bMz.scene == 5))
-        {
-          paramfo = ((com.tencent.mm.api.g)com.tencent.mm.kernel.g.r(com.tencent.mm.api.g.class)).aj(paramfo.field_bizChatId);
-          if (paramfo != null) {
-            this.toUser = paramfo.field_bizChatServId;
-          } else {
-            this.toUser = "";
-          }
-        }
-        else
-        {
-          this.toUser = paramfo.field_talker;
-        }
-      }
-      else if (paramfo.field_isSend == 0)
-      {
-        this.toUser = com.tencent.mm.model.q.Gj();
-        if ((this.puA.bMz.scene == 4) || (this.puA.bMz.scene == 5))
-        {
-          paramfo = ((com.tencent.mm.api.g)com.tencent.mm.kernel.g.r(com.tencent.mm.api.g.class)).aj(paramfo.field_bizChatId);
-          if (paramfo != null) {
-            this.bRO = paramfo.field_bizChatServId;
-          } else {
-            this.bRO = "";
-          }
-        }
-        else
-        {
-          this.bRO = paramfo.field_talker;
-        }
-      }
-    }
+    AppMethodBeat.o(25165);
   }
   
-  private void bLA()
+  private void cGz()
   {
-    this.puE = true;
-    this.puF = 0L;
-    this.puG = 0L;
-    this.bMM = 0;
-    this.bMN = 0;
-    this.dDQ = false;
-  }
-  
-  private void bLB()
-  {
-    if (this.puE)
-    {
-      this.puE = false;
-      this.puF = System.currentTimeMillis();
-      this.bMM = ((int)(this.puF - this.puG));
-    }
+    this.sWf = true;
+    this.sWg = 0L;
+    this.sWh = 0L;
+    this.cug = 0;
+    this.cuh = 0;
+    this.eBr = false;
   }
   
   final void a(a.a.a parama)
   {
-    switch (a.1.pur[parama.ordinal()])
+    AppMethodBeat.i(25164);
+    switch (a.2.sVS[parama.ordinal()])
     {
-    default: 
-      return;
-    case 1: 
-      y.i("MicroMsg.SubCoreSubapp", "net check");
-      if (this.puw.bXr > 0L) {
-        y.i("MicroMsg.SubCoreSubapp", "has msg svr id: %d", new Object[] { Long.valueOf(this.puw.bXr) });
-      }
-      for (this.pus = new com.tencent.mm.plugin.subapp.ui.voicetranstext.a(this.puw.clientId, this.puw.ebK, this.puv.getFormat(), this.puw.bXr, this.puw.fileName, this.puD, this.bRO, this.toUser);; this.pus = new com.tencent.mm.plugin.subapp.ui.voicetranstext.a(this.puw.clientId, this.puw.ebK, this.puw.fileName, this.puD, this.bRO, this.toUser))
-      {
-        au.Dk().a(this.pus, 0);
-        au.Dk().a(this.pus.getType(), this);
-        this.puG = System.currentTimeMillis();
-        return;
-        y.i("MicroMsg.SubCoreSubapp", "not existex msg svr id: %d", new Object[] { Long.valueOf(this.puw.bXr) });
-      }
-    case 2: 
-      y.i("MicroMsg.SubCoreSubapp", "net upload");
-      if (this.pus == null)
-      {
-        y.w("MicroMsg.SubCoreSubapp", "request upload must after check!");
-        return;
-      }
-      this.put = new com.tencent.mm.plugin.subapp.ui.voicetranstext.c(this.puw.clientId, this.pus.pyu, this.puv.getFormat(), this.puw.fileName, this.puD, this.bRO, this.toUser);
-      au.Dk().a(this.put, 0);
-      au.Dk().a(this.put.getType(), this);
-      return;
-    case 3: 
-      y.i("MicroMsg.SubCoreSubapp", "net upload more");
-      if (this.put == null)
-      {
-        y.w("MicroMsg.SubCoreSubapp", "upload more need has upload netScene!");
-        return;
-      }
-      this.put = new com.tencent.mm.plugin.subapp.ui.voicetranstext.c(this.put);
-      au.Dk().a(this.put, 0);
-      au.Dk().a(this.put.getType(), this);
-      return;
-    case 4: 
-      if (this.pux)
-      {
-        y.i("MicroMsg.SubCoreSubapp", "pulling so pass");
-        return;
-      }
-      y.i("MicroMsg.SubCoreSubapp", "net get");
-      if (this.pus == null)
-      {
-        y.w("MicroMsg.SubCoreSubapp", "request get must after check!");
-        return;
-      }
-      this.pux = true;
-      this.puu = new com.tencent.mm.plugin.subapp.ui.voicetranstext.b(this.puw.clientId);
-      au.Dk().a(this.puu, 0);
-      au.Dk().a(this.puu.getType(), this);
-      return;
-    case 5: 
-      this.puy = true;
-      return;
-    case 6: 
-      au.Dk().c(this.pus);
-      au.Dk().c(this.put);
-      au.Dk().c(this.puu);
-      this.dDQ = true;
-      a(null, a.a.a.puP);
-      return;
-    case 7: 
-    case 8: 
-      this.dDQ = true;
-      a(null, parama);
-      return;
     }
-    this.dDQ = true;
-    a(null, parama);
+    for (;;)
+    {
+      AppMethodBeat.o(25164);
+      return;
+      ab.i("MicroMsg.SubCoreSubapp", "net check");
+      if (this.sVX.cFn > 0L) {
+        ab.i("MicroMsg.SubCoreSubapp", "has msg svr id: %d", new Object[] { Long.valueOf(this.sVX.cFn) });
+      }
+      for (this.sVT = new com.tencent.mm.plugin.subapp.ui.voicetranstext.a(this.sVX.clientId, this.sVX.fsd, this.sVW.getFormat(), this.sVX.cFn, this.sVX.fileName, this.sWe, this.czp, this.toUser);; this.sVT = new com.tencent.mm.plugin.subapp.ui.voicetranstext.a(this.sVX.clientId, this.sVX.fsd, this.sVX.fileName, this.sWe, this.czp, this.toUser))
+      {
+        aw.Rc().a(this.sVT, 0);
+        aw.Rc().a(this.sVT.getType(), this);
+        this.sWh = System.currentTimeMillis();
+        AppMethodBeat.o(25164);
+        return;
+        ab.i("MicroMsg.SubCoreSubapp", "not existex msg svr id: %d", new Object[] { Long.valueOf(this.sVX.cFn) });
+      }
+      ab.i("MicroMsg.SubCoreSubapp", "net upload");
+      if (this.sVT == null)
+      {
+        ab.w("MicroMsg.SubCoreSubapp", "request upload must after check!");
+        AppMethodBeat.o(25164);
+        return;
+      }
+      this.sVU = new com.tencent.mm.plugin.subapp.ui.voicetranstext.c(this.sVX.clientId, this.sVT.tai, this.sVW.getFormat(), this.sVX.fileName, this.sWe, this.czp, this.toUser);
+      aw.Rc().a(this.sVU, 0);
+      aw.Rc().a(this.sVU.getType(), this);
+      AppMethodBeat.o(25164);
+      return;
+      ab.i("MicroMsg.SubCoreSubapp", "net upload more");
+      if (this.sVU == null)
+      {
+        ab.w("MicroMsg.SubCoreSubapp", "upload more need has upload netScene!");
+        AppMethodBeat.o(25164);
+        return;
+      }
+      this.sVU = new com.tencent.mm.plugin.subapp.ui.voicetranstext.c(this.sVU);
+      aw.Rc().a(this.sVU, 0);
+      aw.Rc().a(this.sVU.getType(), this);
+      AppMethodBeat.o(25164);
+      return;
+      if (this.sVY)
+      {
+        ab.i("MicroMsg.SubCoreSubapp", "pulling so pass");
+        AppMethodBeat.o(25164);
+        return;
+      }
+      ab.i("MicroMsg.SubCoreSubapp", "net get");
+      if (this.sVT == null)
+      {
+        ab.w("MicroMsg.SubCoreSubapp", "request get must after check!");
+        AppMethodBeat.o(25164);
+        return;
+      }
+      this.sVY = true;
+      this.sVV = new com.tencent.mm.plugin.subapp.ui.voicetranstext.b(this.sVX.clientId);
+      aw.Rc().a(this.sVV, 0);
+      aw.Rc().a(this.sVV.getType(), this);
+      AppMethodBeat.o(25164);
+      return;
+      this.sVZ = true;
+      AppMethodBeat.o(25164);
+      return;
+      aw.Rc().a(this.sVT);
+      aw.Rc().a(this.sVU);
+      aw.Rc().a(this.sVV);
+      this.eBr = true;
+      a(null, a.a.a.sWq);
+      AppMethodBeat.o(25164);
+      return;
+      this.eBr = true;
+      a(null, parama);
+      AppMethodBeat.o(25164);
+      return;
+      this.eBr = true;
+      a(null, parama);
+    }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     paramString = null;
     Object localObject = null;
-    y.i("MicroMsg.SubCoreSubapp", "onSceneEnd errType(%d) , errCode(%d).", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if ((paramInt1 == 0) && (paramInt2 == 0))
+    AppMethodBeat.i(25169);
+    ab.i("MicroMsg.SubCoreSubapp", "onSceneEnd errType(%d) , errCode(%d).", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {}
+    switch (paramm.getType())
     {
-      switch (paramm.getType())
-      {
-      }
-      do
-      {
-        do
-        {
-          return;
-          if (this.pus.mState == com.tencent.mm.plugin.subapp.ui.voicetranstext.a.pys)
-          {
-            y.i("MicroMsg.SubCoreSubapp", "check result: done");
-            a(a.a.a.puN);
-            bLB();
-            this.bMN = 0;
-            this.dDQ = true;
-            paramString = localObject;
-            if (this.pus.bMf()) {
-              paramString = this.pus.pyt.tSA;
-            }
-            a(paramString, a.a.a.puN);
-            return;
-          }
-          if (this.pus.mState == com.tencent.mm.plugin.subapp.ui.voicetranstext.a.pyr)
-          {
-            if (this.pus.pyt != null) {
-              bk.bl(this.pus.pyt.tSA);
-            }
-            y.i("MicroMsg.SubCoreSubapp", "check result: processing");
-            a(a.a.a.puM);
-            return;
-          }
-          if (this.pus.mState == com.tencent.mm.plugin.subapp.ui.voicetranstext.a.pyq)
-          {
-            y.i("MicroMsg.SubCoreSubapp", "check result: not exist");
-            a(a.a.a.puK);
-            return;
-          }
-        } while (this.pus.pyv == null);
-        paramInt1 = this.pus.pyv.tCw;
-        return;
-        if (this.put.bMh())
-        {
-          y.i("MicroMsg.SubCoreSubapp", "succeed upload");
-          a(a.a.a.puM);
-          return;
-        }
-        y.d("MicroMsg.SubCoreSubapp", "start upload more: start:%d, len:%d", new Object[] { Integer.valueOf(this.put.pyu.ndg), Integer.valueOf(this.put.pyu.ndh) });
-        a(a.a.a.puL);
-        return;
-        paramInt1 = this.puu.pyx;
-        y.i("MicroMsg.SubCoreSubapp", "get mIntervalSec:%ds", new Object[] { Integer.valueOf(paramInt1) });
-        this.pux = false;
-        bLB();
-        if ((!this.puu.isComplete()) && (this.puu.bMf()))
-        {
-          y.i("MicroMsg.SubCoreSubapp", "refreshResult result");
-          paramm = this.puu.pyt.tSA;
-          if (this.puA != null)
-          {
-            this.puA.bMA.aES = false;
-            this.puA.bMA.content = paramm;
-            y.i("MicroMsg.SubCoreSubapp", "refreshResult result is null ? : %s", new Object[] { Boolean.valueOf(bk.bl(paramm)) });
-            if (this.puA.bMz.bMD != null) {
-              this.puA.bMz.bMD.run();
-            }
-          }
-        }
-        while (this.puu.isComplete())
-        {
-          y.i("MicroMsg.SubCoreSubapp", "succeed get");
-          if (this.puu.bMf()) {
-            paramString = this.puu.pyt.tSA;
-          }
-          a(a.a.a.puN);
-          this.bMN = ((int)(System.currentTimeMillis() - this.puF));
-          this.dDQ = true;
-          a(paramString, a.a.a.puN);
-          return;
-          if (!this.puu.bMf()) {
-            y.d("MicroMsg.SubCoreSubapp", "result not valid");
-          }
-        }
-        y.i("MicroMsg.SubCoreSubapp", "do get again after:%ds", new Object[] { Integer.valueOf(paramInt1) });
-      } while (this.puy);
-      paramInt2 = this.puB - 1;
-      this.puB = paramInt2;
-      if (paramInt2 < 0)
-      {
-        y.e("MicroMsg.SubCoreSubapp", "Has try to translate delay for %d times.", new Object[] { Integer.valueOf(20) });
-        a(a.a.a.puS);
-        return;
-      }
-      if (this.puz == null) {
-        this.puz = new am(new a.a.1(this, paramInt1), false);
-      }
-      paramString = this.puz;
-      long l = paramInt1 * 1000;
-      paramString.S(l, l);
+    default: 
+      AppMethodBeat.o(25169);
       return;
-    }
-    if (paramInt1 == 2)
-    {
-      a(a.a.a.puT);
+    case 546: 
+      if (this.sVT.mState == com.tencent.mm.plugin.subapp.ui.voicetranstext.a.taf)
+      {
+        ab.i("MicroMsg.SubCoreSubapp", "check result: done");
+        a(a.a.a.sWo);
+        cGA();
+        this.cuh = 0;
+        this.eBr = true;
+        paramString = localObject;
+        if (this.sVT.cHd()) {
+          paramString = this.sVT.tah.xZS;
+        }
+        a(paramString, a.a.a.sWo);
+        AppMethodBeat.o(25169);
+        return;
+      }
+      if (this.sVT.mState == com.tencent.mm.plugin.subapp.ui.voicetranstext.a.tae)
+      {
+        if (this.sVT.tah != null) {
+          bo.isNullOrNil(this.sVT.tah.xZS);
+        }
+        ab.i("MicroMsg.SubCoreSubapp", "check result: processing");
+        a(a.a.a.sWn);
+        AppMethodBeat.o(25169);
+        return;
+      }
+      if (this.sVT.mState == com.tencent.mm.plugin.subapp.ui.voicetranstext.a.tad)
+      {
+        ab.i("MicroMsg.SubCoreSubapp", "check result: not exist");
+        a(a.a.a.sWl);
+        AppMethodBeat.o(25169);
+        return;
+      }
+      if (this.sVT.taj != null)
+      {
+        AppMethodBeat.o(25169);
+        return;
+      }
+      break;
+    case 547: 
+      if (this.sVU.cHf())
+      {
+        ab.i("MicroMsg.SubCoreSubapp", "succeed upload");
+        a(a.a.a.sWn);
+        AppMethodBeat.o(25169);
+        return;
+      }
+      ab.d("MicroMsg.SubCoreSubapp", "start upload more: start:%d, len:%d", new Object[] { Integer.valueOf(this.sVU.tai.pIy), Integer.valueOf(this.sVU.tai.pIz) });
+      a(a.a.a.sWm);
+      AppMethodBeat.o(25169);
       return;
+    case 548: 
+      paramInt1 = this.sVV.tal;
+      ab.i("MicroMsg.SubCoreSubapp", "get mIntervalSec:%ds", new Object[] { Integer.valueOf(paramInt1) });
+      this.sVY = false;
+      cGA();
+      if ((!this.sVV.isComplete()) && (this.sVV.cHd()))
+      {
+        ab.i("MicroMsg.SubCoreSubapp", "refreshResult result");
+        paramm = this.sVV.tah.xZS;
+        if (this.sWb != null)
+        {
+          this.sWb.ctU.aLC = false;
+          this.sWb.ctU.content = paramm;
+          ab.i("MicroMsg.SubCoreSubapp", "refreshResult result is null ? : %s", new Object[] { Boolean.valueOf(bo.isNullOrNil(paramm)) });
+          if (this.sWb.ctT.ctX != null) {
+            this.sWb.ctT.ctX.run();
+          }
+        }
+      }
+      while (this.sVV.isComplete())
+      {
+        ab.i("MicroMsg.SubCoreSubapp", "succeed get");
+        if (this.sVV.cHd()) {
+          paramString = this.sVV.tah.xZS;
+        }
+        a(a.a.a.sWo);
+        this.cuh = ((int)(System.currentTimeMillis() - this.sWg));
+        this.eBr = true;
+        a(paramString, a.a.a.sWo);
+        AppMethodBeat.o(25169);
+        return;
+        if (!this.sVV.cHd()) {
+          ab.d("MicroMsg.SubCoreSubapp", "result not valid");
+        }
+      }
+      ab.i("MicroMsg.SubCoreSubapp", "do get again after:%ds", new Object[] { Integer.valueOf(paramInt1) });
+      if (!this.sVZ)
+      {
+        paramInt2 = this.sWc - 1;
+        this.sWc = paramInt2;
+        if (paramInt2 < 0)
+        {
+          ab.e("MicroMsg.SubCoreSubapp", "Has try to translate delay for %d times.", new Object[] { Integer.valueOf(20) });
+          a(a.a.a.sWt);
+          AppMethodBeat.o(25169);
+          return;
+        }
+        if (this.sWa == null) {
+          this.sWa = new ap(new a.a.1(this, paramInt1), false);
+        }
+        paramString = this.sWa;
+        long l = paramInt1 * 1000;
+        paramString.ag(l, l);
+      }
+      AppMethodBeat.o(25169);
+      return;
+      if (paramInt1 == 2)
+      {
+        a(a.a.a.sWu);
+        AppMethodBeat.o(25169);
+        return;
+      }
+      a(a.a.a.sWt);
     }
-    a(a.a.a.puS);
+    AppMethodBeat.o(25169);
   }
 }
 

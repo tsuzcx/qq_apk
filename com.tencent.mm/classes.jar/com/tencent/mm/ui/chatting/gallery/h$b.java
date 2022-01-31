@@ -2,9 +2,9 @@ package com.tencent.mm.ui.chatting.gallery;
 
 public abstract interface h$b
 {
-  public abstract void cFZ();
-  
   public abstract void clear();
+  
+  public abstract void dKd();
 }
 
 

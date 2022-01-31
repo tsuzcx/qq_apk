@@ -1,14 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.o;
+import a.l;
 
-public final class am
-  extends a<o>
-{
-  public static final int CTRL_INDEX = 59;
-  public static final String NAME = "openCard";
-  int bhx;
-}
+@l(eaO={1, 1, 13})
+public final class am {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar

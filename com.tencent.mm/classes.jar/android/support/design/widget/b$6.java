@@ -7,11 +7,11 @@ final class b$6
 {
   b$6(b paramb) {}
   
-  public final void aq()
+  public final void aU()
   {
-    b localb = this.eX;
-    if (l.aT().c(localb.eW)) {
-      b.eP.post(new b.6.1(this));
+    b localb = this.fW;
+    if (l.bD().c(localb.fV)) {
+      b.sHandler.post(new b.6.1(this));
     }
   }
 }

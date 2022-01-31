@@ -2,99 +2,114 @@ package com.tencent.mm.view.a;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cd.e;
-import com.tencent.mm.plugin.l.a.d;
-import com.tencent.mm.plugin.l.a.e;
-import com.tencent.mm.plugin.l.a.f;
-import com.tencent.mm.plugin.l.a.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.y;
-import com.tencent.mm.view.f.a;
+import com.tencent.mm.emoji.a.i;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
-public final class d
-  extends b
+public class d
+  extends a
 {
-  public int wwS = 1;
-  private ImageView wwT;
-  private ImageView wwU;
-  
-  public d(Context paramContext, a parama)
+  public d(Context paramContext, com.tencent.mm.view.f.a parama)
   {
     super(paramContext, parama);
   }
   
-  public final boolean IP(int paramInt)
+  public final int RI(int paramInt)
   {
-    return (this.wwS == 0) && (paramInt == this.lcm * this.wwN - 5);
+    return (this.ARM - 1) * this.ARN + paramInt;
   }
   
-  public final void aS(float paramFloat)
+  public int getCount()
   {
-    if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F)) {
-      if (this.wwT != null)
-      {
-        if (paramFloat > 0.01F) {
-          break label57;
-        }
-        this.wwT.setVisibility(4);
+    return this.ARM;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    AppMethodBeat.i(62977);
+    i locali = new i();
+    if (paramInt == getCount() - 1) {}
+    for (locali.position = -1;; locali.position = RI(paramInt))
+    {
+      AppMethodBeat.o(62977);
+      return locali;
+    }
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(62979);
+    if ((paramView == null) || (paramView.getTag() == null))
+    {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970761, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+      paramViewGroup = new d.a(this, paramView);
+      paramView.setTag(paramViewGroup);
+      if (paramInt != getCount() - 1) {
+        break label111;
       }
+      paramViewGroup.ivs.setImageResource(2130838499);
+      paramViewGroup.ivs.setContentDescription(this.mContext.getString(2131298947));
     }
     for (;;)
     {
-      if (this.wwU != null)
+      AppMethodBeat.o(62979);
+      return paramView;
+      paramViewGroup = (d.a)paramView.getTag();
+      break;
+      label111:
+      paramInt = RI(paramInt);
+      if (paramInt > this.ejZ - 1)
       {
-        if (paramFloat < 0.99F) {
-          break;
+        paramViewGroup.ivs.setImageDrawable(null);
+        paramViewGroup.ivs.setContentDescription("");
+        ab.i("MicroMsg.emoji.DefaultSmileyAdapter", "real position is bigger real count.");
+      }
+      else
+      {
+        Drawable localDrawable = e.dve().qA(paramInt);
+        paramViewGroup.ivs.setImageDrawable(localDrawable);
+        String str2 = e.dve().getText(paramInt);
+        String str1 = str2;
+        if (bo.isNullOrNil(str2)) {
+          str1 = paramView.getResources().getString(2131299253);
         }
-        this.wwU.setVisibility(4);
+        paramViewGroup.ivs.setContentDescription(str1);
+        if (localDrawable == null) {
+          ab.i("MicroMsg.emoji.DefaultSmileyAdapter", "drawable is null. realPosition:%d description:%s", new Object[] { Integer.valueOf(paramInt), str1 });
+        }
       }
-      return;
-      label57:
-      this.wwT.setVisibility(0);
-      this.wwT.setImageAlpha((int)(255.0F * paramFloat));
     }
-    this.wwU.setVisibility(0);
-    this.wwU.setImageAlpha((int)((1.0F - paramFloat) * 255.0F));
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public boolean uu(int paramInt)
   {
-    if (paramInt == this.lcm * this.wwN - 5)
+    AppMethodBeat.i(62978);
+    if (paramInt != getCount() - 1)
     {
-      View localView = y.gt(this.mContext).inflate(a.f.smiley_grid_item_cross_fade, null);
-      localView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-      this.wwT = ((ImageView)localView.findViewById(a.e.art_emoji_icon_origin));
-      this.wwU = ((ImageView)localView.findViewById(a.e.art_emoji_icon_delete));
-      paramInt = IO(paramInt);
-      paramView = e.csH().mW(paramInt);
-      this.wwT.setImageDrawable(paramView);
-      paramViewGroup = e.csH().getText(paramInt);
-      paramView = paramViewGroup;
-      if (bk.bl(paramViewGroup)) {
-        paramView = localView.getResources().getString(a.h.emoji_store_title);
-      }
-      this.wwT.setContentDescription(paramView);
-      this.wwU.setImageResource(a.d.del_btn);
-      this.wwU.setContentDescription(this.mContext.getString(a.h.delete_btn));
-      aS(this.wwS);
-      return localView;
+      AppMethodBeat.o(62978);
+      return true;
     }
-    return super.getView(paramInt, paramView, paramViewGroup);
-  }
-  
-  public final boolean pY(int paramInt)
-  {
-    return (super.pY(paramInt)) && (!IP(paramInt));
+    AppMethodBeat.o(62978);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.view.a.d
  * JD-Core Version:    0.7.0.1
  */

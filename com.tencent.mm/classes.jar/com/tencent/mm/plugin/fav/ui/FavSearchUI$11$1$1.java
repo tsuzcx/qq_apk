@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.fav.ui;
 
 import android.app.Dialog;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.ui.widget.snackbar.b;
 
 final class FavSearchUI$11$1$1
@@ -11,11 +12,13 @@ final class FavSearchUI$11$1$1
   
   public final void run()
   {
-    if (this.kbH != null) {
-      this.kbH.dismiss();
+    AppMethodBeat.i(74080);
+    if (this.mwd != null) {
+      this.mwd.dismiss();
     }
-    b.h(this.kcT.kcS.kcM, this.kcT.kcS.kcM.getString(n.i.fav_finish_sent));
-    ai.l(new FavSearchUI.11.1.1.1(this), 1800L);
+    b.l(this.mxE.mxD.mxx, this.mxE.mxD.mxx.getString(2131299674));
+    al.p(new FavSearchUI.11.1.1.1(this), 1800L);
+    AppMethodBeat.o(74080);
   }
 }
 

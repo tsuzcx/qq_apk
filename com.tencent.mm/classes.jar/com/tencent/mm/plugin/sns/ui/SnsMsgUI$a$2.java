@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMSlideDelView.d;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 
@@ -13,11 +14,13 @@ final class SnsMsgUI$a$2
   
   public final void onClick(View paramView)
   {
-    y.v("MicroMsg.SnsMsgUI", "on delView clicked");
-    this.pav.hZg.bdc();
-    if (this.pav.pau != null) {
-      this.pav.pau.bg(paramView.getTag());
+    AppMethodBeat.i(39088);
+    ab.v("MicroMsg.SnsMsgUI", "on delView clicked");
+    this.rSZ.jSe.bKl();
+    if (this.rSZ.rSY != null) {
+      this.rSZ.rSY.bC(paramView.getTag());
     }
+    AppMethodBeat.o(39088);
   }
 }
 

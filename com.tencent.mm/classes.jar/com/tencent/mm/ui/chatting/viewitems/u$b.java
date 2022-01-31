@@ -1,38 +1,16 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.Map;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class u$b
+class u$b
 {
-  public String ceb;
-  public String dRD;
-  public String dTB;
-  public String dTC;
-  public String dTD;
-  public String dTE;
-  public String dTF;
-  public long time;
-  public String title;
-  public int type;
-  public String url;
+  TextView gui;
+  ImageView jXG;
+  View jXr;
   
-  public static b az(Map<String, String> paramMap)
-  {
-    b localb = new b();
-    localb.title = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.title"));
-    localb.url = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.url"));
-    localb.ceb = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.native_url"));
-    localb.dTB = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.shorturl"));
-    localb.dTC = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.longurl"));
-    localb.time = bk.getLong((String)paramMap.get(".msg.appmsg.mmreader.category.item.pub_time"), 0L);
-    localb.dTD = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.cover"));
-    localb.dTE = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.tweetid"));
-    localb.dTF = ((String)paramMap.get(".msg.appmsg.mmreader.category.item.digest"));
-    localb.type = bk.getInt((String)paramMap.get(".msg.appmsg.mmreader.category.item.itemshowtype"), 0);
-    localb.dRD = ((String)paramMap.get(".msg.appmsg.template_id"));
-    return localb;
-  }
+  public void fj(View paramView) {}
 }
 
 

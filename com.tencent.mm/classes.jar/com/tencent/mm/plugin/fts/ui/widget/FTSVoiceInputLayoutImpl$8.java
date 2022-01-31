@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FTSVoiceInputLayoutImpl$8
   implements Runnable
@@ -9,18 +10,14 @@ final class FTSVoiceInputLayoutImpl$8
   
   public final void run()
   {
-    boolean bool = true;
-    c localc = FTSVoiceInputLayoutImpl.a(this.kFs);
-    int i = this.kFu;
-    y.d("MicroMsg.VoiceInputDrawable", "recordingState() called with: maxAmplitudeRate = [%s]", new Object[] { Integer.valueOf(i) });
-    if (i < 28) {}
-    for (;;)
-    {
-      localc.kFQ = bool;
-      localc.invalidateSelf();
-      return;
-      bool = false;
-    }
+    AppMethodBeat.i(62188);
+    b localb = FTSVoiceInputLayoutImpl.b(this.ncg);
+    int i = this.nci;
+    ab.d("MicroMsg.FTSVoiceInputDrawable", "recordingState() called with: maxAmplitudeRate = [%s]", new Object[] { Integer.valueOf(i) });
+    localb.nbH = b.wD(i);
+    localb.invalidateSelf();
+    localb.nbJ = i;
+    AppMethodBeat.o(62188);
   }
 }
 

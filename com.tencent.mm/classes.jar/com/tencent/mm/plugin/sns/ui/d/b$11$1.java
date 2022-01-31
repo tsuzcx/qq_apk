@@ -3,22 +3,23 @@ package com.tencent.mm.plugin.sns.ui.d;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.np;
-import com.tencent.mm.plugin.sns.model.ad;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.aw;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.op;
+import com.tencent.mm.plugin.sns.model.ae;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ax;
 import com.tencent.mm.plugin.sns.model.r;
 import com.tencent.mm.plugin.sns.storage.k;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
 import com.tencent.mm.plugin.sns.storage.v;
-import com.tencent.mm.plugin.sns.ui.au.a;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.dk;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sns.ui.av.a;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.du;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class b$11$1
   implements DialogInterface.OnClickListener
@@ -27,47 +28,50 @@ final class b$11$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!(this.hdG.getTag() instanceof String)) {
+    AppMethodBeat.i(40257);
+    if (!(this.bTJ.getTag() instanceof String))
+    {
+      AppMethodBeat.o(40257);
       return;
     }
-    paramDialogInterface = (String)this.hdG.getTag();
-    y.d("MicroMsg.TimelineClickListener", "onItemDelClick:" + paramDialogInterface);
-    n localn = af.bDF().OB(paramDialogInterface);
+    paramDialogInterface = (String)this.bTJ.getTag();
+    ab.d("MicroMsg.TimelineClickListener", "onItemDelClick:".concat(String.valueOf(paramDialogInterface)));
+    n localn = ag.cpf().abv(paramDialogInterface);
     if (localn == null)
     {
-      y.d("MicroMsg.TimelineClickListener", "can not get snsinfo by localid %s then return it", new Object[] { paramDialogInterface });
+      ab.d("MicroMsg.TimelineClickListener", "can not get snsinfo by localid %s then return it", new Object[] { paramDialogInterface });
+      AppMethodBeat.o(40257);
       return;
     }
-    label152:
     Object localObject2;
-    if (localn.bGG())
+    if (localn.csJ())
     {
-      y.i("MicroMsg.TimelineClickListener", "dead item");
-      af.bDF().yu(localn.oLk);
-      if (this.ppp.ppl.ppg != null) {
-        this.ppp.ppl.ppg.bJw();
+      ab.i("MicroMsg.TimelineClickListener", "dead item");
+      ag.cpf().EA(localn.rCV);
+      if (this.skh.skd.sjY != null) {
+        this.skh.skd.sjY.cvZ();
       }
-      if (this.ppp.ppl.source == 0)
+      if (this.skh.skd.cpt == 0)
       {
-        localObject1 = com.tencent.mm.modelsns.b.jd(739);
-        localObject2 = ((com.tencent.mm.modelsns.b)localObject1).ni(com.tencent.mm.plugin.sns.data.i.j(localn)).jg(localn.field_type);
-        if (!localn.bGG()) {
-          break label221;
+        localObject1 = com.tencent.mm.modelsns.b.lV(739);
+        localObject2 = ((com.tencent.mm.modelsns.b)localObject1).uv(com.tencent.mm.plugin.sns.data.i.j(localn)).lY(localn.field_type);
+        if (!localn.csJ()) {
+          break label234;
         }
         paramDialogInterface = "2";
       }
       for (;;)
       {
-        ((com.tencent.mm.modelsns.b)localObject2).ni(paramDialogInterface);
-        ((com.tencent.mm.modelsns.b)localObject1).QX();
-        if (localn.field_type != 21) {
-          break;
+        ((com.tencent.mm.modelsns.b)localObject2).uv(paramDialogInterface);
+        ((com.tencent.mm.modelsns.b)localObject1).ake();
+        if (localn.field_type == 21) {
+          com.tencent.mm.plugin.sns.lucky.a.g.cnW().cnY();
         }
-        com.tencent.mm.plugin.sns.lucky.a.g.bCu().bCw();
+        AppMethodBeat.o(40257);
         return;
-        localObject1 = com.tencent.mm.modelsns.b.je(739);
-        break label152;
-        label221:
+        localObject1 = com.tencent.mm.modelsns.b.lW(739);
+        break;
+        label234:
         if (localn.field_snsId == 0L) {
           paramDialogInterface = "1";
         } else {
@@ -75,61 +79,63 @@ final class b$11$1
         }
       }
     }
-    if (localn.bDo())
+    if (localn.coN())
     {
-      y.i("MicroMsg.TimelineClickListener", "cancel item " + localn.bGE());
-      af.bDB().u(localn);
-      this.ppp.ppl.bHo();
+      ab.i("MicroMsg.TimelineClickListener", "cancel item " + localn.csH());
+      ag.cpb().u(localn);
+      this.skh.skd.cts();
+      AppMethodBeat.o(40257);
       return;
     }
-    y.i("MicroMsg.TimelineClickListener", "delete by server");
-    paramDialogInterface = localn.bGk();
-    af.bDE().gd(v.OU(paramDialogInterface));
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DO().dJT.a(new r(v.OU(paramDialogInterface), 1), 0);
-    af.bDF().delete(v.OU(paramDialogInterface));
-    af.bDK().go(v.OU(paramDialogInterface));
-    com.tencent.mm.plugin.sns.storage.i.gn(v.OU(paramDialogInterface));
-    this.ppp.ppl.bHo();
-    Object localObject1 = localn.bGe();
+    ab.i("MicroMsg.TimelineClickListener", "delete by server");
+    paramDialogInterface = localn.getSnsId();
+    ag.cpe().lI(v.abO(paramDialogInterface));
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.a(new r(v.abO(paramDialogInterface), 1), 0);
+    ag.cpf().delete(v.abO(paramDialogInterface));
+    ag.cpk().lU(v.abO(paramDialogInterface));
+    com.tencent.mm.plugin.sns.storage.i.lT(v.abO(paramDialogInterface));
+    this.skh.skd.cts();
+    Object localObject1 = localn.csh();
     if (localObject1 != null)
     {
-      if (((bxk)localObject1).tNq != null) {
-        break label557;
+      if (((TimeLineObject)localObject1).xTR != null) {
+        break label580;
       }
       paramDialogInterface = null;
-      if ((!bk.bl(paramDialogInterface)) && (com.tencent.mm.plugin.sns.c.a.eUS.cu(paramDialogInterface)))
+      if ((!bo.isNullOrNil(paramDialogInterface)) && (com.tencent.mm.plugin.sns.c.a.gmP.dG(paramDialogInterface)))
       {
-        localObject2 = com.tencent.mm.plugin.sns.c.a.eUS.cs(paramDialogInterface);
-        np localnp = new np();
-        localnp.bXk.appId = paramDialogInterface;
-        localnp.bXk.bXl = ((bxk)localObject1).hPY;
-        localnp.bXk.bwQ = ((String)localObject2);
-        localnp.bXk.mediaTagName = ((bxk)localObject1).tNv;
-        com.tencent.mm.sdk.b.a.udP.m(localnp);
+        localObject2 = com.tencent.mm.plugin.sns.c.a.gmP.dE(paramDialogInterface);
+        op localop = new op();
+        localop.cFg.appId = paramDialogInterface;
+        localop.cFg.cFh = ((TimeLineObject)localObject1).jJA;
+        localop.cFg.bYA = ((String)localObject2);
+        localop.cFg.mediaTagName = ((TimeLineObject)localObject1).xTW;
+        com.tencent.mm.sdk.b.a.ymk.l(localop);
       }
     }
-    if (this.ppp.ppl.source == 0)
+    if (this.skh.skd.cpt == 0)
     {
-      localObject1 = com.tencent.mm.modelsns.b.jd(739);
-      label514:
-      localObject2 = ((com.tencent.mm.modelsns.b)localObject1).ni(com.tencent.mm.plugin.sns.data.i.j(localn)).jg(localn.field_type);
-      if (!localn.bGG()) {
-        break label578;
+      localObject1 = com.tencent.mm.modelsns.b.lV(739);
+      label532:
+      localObject2 = ((com.tencent.mm.modelsns.b)localObject1).uv(com.tencent.mm.plugin.sns.data.i.j(localn)).lY(localn.field_type);
+      if (!localn.csJ()) {
+        break label601;
       }
       paramDialogInterface = "2";
     }
     for (;;)
     {
-      ((com.tencent.mm.modelsns.b)localObject2).ni(paramDialogInterface);
-      ((com.tencent.mm.modelsns.b)localObject1).QX();
+      ((com.tencent.mm.modelsns.b)localObject2).uv(paramDialogInterface);
+      ((com.tencent.mm.modelsns.b)localObject1).ake();
+      AppMethodBeat.o(40257);
       return;
-      label557:
-      paramDialogInterface = ((bxk)localObject1).tNq.lsK;
+      label580:
+      paramDialogInterface = ((TimeLineObject)localObject1).xTR.Id;
       break;
-      localObject1 = com.tencent.mm.modelsns.b.je(739);
-      break label514;
-      label578:
+      localObject1 = com.tencent.mm.modelsns.b.lW(739);
+      break label532;
+      label601:
       if (localn.field_snsId == 0L) {
         paramDialogInterface = "1";
       } else {

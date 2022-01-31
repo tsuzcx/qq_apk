@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.aa.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LaunchAAUI$12
   implements View.OnTouchListener
@@ -11,8 +12,10 @@ final class LaunchAAUI$12
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.eZt.VH();
-    this.eZt.XM();
+    AppMethodBeat.i(40834);
+    this.grm.hideTenpayKB();
+    this.grm.hideVKB();
+    AppMethodBeat.o(40834);
     return false;
   }
 }

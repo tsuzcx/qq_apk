@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fingerprint.FingerPrintAuth;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class q$1
   implements Runnable
@@ -11,19 +12,21 @@ final class q$1
   
   public final void run()
   {
+    AppMethodBeat.i(41559);
     String str = "";
-    if (e.aSK())
+    if (e.bzf())
     {
-      y.i("MicroMsg.SyncGenRsaKey", "device is support FingerPrintAuth");
-      str = FingerPrintAuth.genRsaKey(e.dj(ae.getContext()), e.getUserId(), com.tencent.mm.compatible.e.q.zg());
+      ab.i("MicroMsg.SyncGenRsaKey", "device is support FingerPrintAuth");
+      str = FingerPrintAuth.genRsaKey(e.dU(ah.getContext()), e.getUserId(), com.tencent.mm.compatible.e.q.LK());
     }
     for (;;)
     {
-      if (this.klI.klH != null) {
-        this.klI.klH.tT(str);
+      if (this.mGw.mGv != null) {
+        this.mGw.mGv.BS(str);
       }
+      AppMethodBeat.o(41559);
       return;
-      y.e("MicroMsg.SyncGenRsaKey", "device is not support FingerPrintAuth");
+      ab.e("MicroMsg.SyncGenRsaKey", "device is not support FingerPrintAuth");
     }
   }
 }

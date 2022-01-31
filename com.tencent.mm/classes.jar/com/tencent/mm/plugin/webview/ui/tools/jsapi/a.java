@@ -1,10 +1,18 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Set;
 
 public final class a
 {
-  public static final Set<String> rxn = new a.1();
+  public static final Set<String> vog;
+  
+  static
+  {
+    AppMethodBeat.i(8851);
+    vog = new a.1();
+    AppMethodBeat.o(8851);
+  }
 }
 
 

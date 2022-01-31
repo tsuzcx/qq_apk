@@ -4,7 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageButton;
-import com.tencent.mm.R.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebViewInputFooter$2
   implements View.OnTouchListener
@@ -13,10 +13,13 @@ final class WebViewInputFooter$2
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    WebViewInputFooter.g(this.rDo);
-    WebViewInputFooter.i(this.rDo).setVisibility(8);
-    WebViewInputFooter.f(this.rDo).setImageResource(R.g.chatting_setmode_biaoqing_btn);
-    WebViewInputFooter.a(this.rDo, 0);
+    AppMethodBeat.i(10076);
+    WebViewInputFooter.g(this.vtA);
+    WebViewInputFooter.i(this.vtA).setVisibility(8);
+    WebViewInputFooter.i(this.vtA);
+    WebViewInputFooter.f(this.vtA).setImageResource(2130838345);
+    WebViewInputFooter.a(this.vtA, 0);
+    AppMethodBeat.o(10076);
     return false;
   }
 }

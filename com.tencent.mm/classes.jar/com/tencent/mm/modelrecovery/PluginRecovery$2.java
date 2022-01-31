@@ -3,6 +3,7 @@ package com.tencent.mm.modelrecovery;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class PluginRecovery$2
   extends BroadcastReceiver
@@ -11,18 +12,20 @@ final class PluginRecovery$2
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
+    AppMethodBeat.i(16526);
     if (paramIntent != null)
     {
-      if (!"com.tecent.recovery.intent.action.LOG".equals(paramIntent.getAction())) {
-        break label24;
+      if ("com.tecent.recovery.intent.action.LOG".equals(paramIntent.getAction()))
+      {
+        PluginRecovery.access$000(this.fMX);
+        AppMethodBeat.o(16526);
+        return;
       }
-      PluginRecovery.access$000(this.exh);
+      if ("com.tecent.mm.intent.action.RECOVERY_STATUS_UPLOAD".equals(paramIntent.getAction())) {
+        PluginRecovery.access$100(this.fMX);
+      }
     }
-    label24:
-    while (!"com.tecent.mm.intent.action.RECOVERY_STATUS_UPLOAD".equals(paramIntent.getAction())) {
-      return;
-    }
-    PluginRecovery.access$100(this.exh);
+    AppMethodBeat.o(16526);
   }
 }
 

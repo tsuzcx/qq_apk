@@ -1,26 +1,34 @@
 package com.tencent.qqmusic.mediaplayer.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class Util4Phone
 {
   private static final String TAG = "Util4Phone";
   
   public static boolean isSupportNeon()
   {
+    AppMethodBeat.i(128386);
+    boolean bool1 = false;
     try
     {
-      boolean bool = Util4NativeCommon.isSupportNeon();
-      return bool;
+      boolean bool2 = Util4NativeCommon.isSupportNeon();
+      bool1 = bool2;
     }
     catch (Throwable localThrowable)
     {
-      Logger.e("Util4Phone", "isSupportNeon", localThrowable);
+      for (;;)
+      {
+        Logger.e("Util4Phone", "isSupportNeon", localThrowable);
+      }
     }
-    return false;
+    AppMethodBeat.o(128386);
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.util.Util4Phone
  * JD-Core Version:    0.7.0.1
  */

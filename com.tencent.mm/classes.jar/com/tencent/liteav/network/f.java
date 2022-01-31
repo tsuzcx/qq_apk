@@ -1,13 +1,13 @@
 package com.tencent.liteav.network;
 
-import com.tencent.liteav.basic.f.a;
-import com.tencent.liteav.basic.f.b;
+import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.structs.a;
 
 public abstract interface f
 {
   public abstract void onPullAudio(a parama);
   
-  public abstract void onPullNAL(b paramb);
+  public abstract void onPullNAL(TXSNALPacket paramTXSNALPacket);
 }
 
 

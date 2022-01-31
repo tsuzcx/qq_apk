@@ -8,7 +8,7 @@ public final class e
   public static final int CTRL_INDEX = 498;
   public static final String NAME = "getGlobalStorageInfo";
   
-  protected final String o(c paramc)
+  protected final String w(c paramc)
   {
     return "wxGlobal";
   }

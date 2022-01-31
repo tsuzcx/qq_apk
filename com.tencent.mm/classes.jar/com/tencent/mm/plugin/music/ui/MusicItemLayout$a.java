@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.music.ui;
 
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 
 final class MusicItemLayout$a
@@ -11,35 +12,39 @@ final class MusicItemLayout$a
   
   public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(105065);
     if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
     {
-      paramMotionEvent1 = (b.a)this.mBs.getTag();
+      paramMotionEvent1 = (b.a)this.pbx.getTag();
       if (paramFloat2 <= 0.0F) {
-        break label37;
+        break label47;
       }
-      paramMotionEvent1.bnT();
+      paramMotionEvent1.bWq();
     }
     for (;;)
     {
+      AppMethodBeat.o(105065);
       return false;
-      label37:
-      paramMotionEvent1.bnS();
+      label47:
+      paramMotionEvent1.bWp();
     }
   }
   
   public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    b.a locala = (b.a)this.mBs.getTag();
-    if (locala.bnR()) {
-      if ((paramMotionEvent.getY() <= locala.mBE.getMeasuredHeight()) && (paramMotionEvent.getY() > 100.0F)) {
-        locala.bnU();
+    AppMethodBeat.i(105066);
+    b.a locala = (b.a)this.pbx.getTag();
+    if (locala.bWo()) {
+      if ((paramMotionEvent.getY() <= locala.pbJ.getMeasuredHeight()) && (paramMotionEvent.getY() > 100.0F)) {
+        locala.bWr();
       }
     }
     for (;;)
     {
+      AppMethodBeat.o(105066);
       return false;
-      if ((paramMotionEvent.getY() >= locala.mBH.getY() - 100.0F) && (paramMotionEvent.getY() < locala.mBH.getMeasuredHeight() + locala.mBH.getY())) {
-        locala.bnU();
+      if ((paramMotionEvent.getY() >= locala.pbM.getY() - 100.0F) && (paramMotionEvent.getY() < locala.pbM.getMeasuredHeight() + locala.pbM.getY())) {
+        locala.bWr();
       }
     }
   }

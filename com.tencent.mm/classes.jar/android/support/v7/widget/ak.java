@@ -1,148 +1,215 @@
 package android.support.v7.widget;
 
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.support.v4.view.a.a.b;
+import android.graphics.PointF;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.view.accessibility.AccessibilityNodeInfo.CollectionInfo;
 
-public final class ak
-  extends android.support.v4.view.a
+public class ak
+  extends at
 {
-  final RecyclerView acI;
-  final android.support.v4.view.a aiv;
+  private aj agR;
+  private aj agS;
   
-  public ak(RecyclerView paramRecyclerView)
+  private static int a(RecyclerView.i parami, View paramView, aj paramaj)
   {
-    this.acI = paramRecyclerView;
-    this.aiv = new ak.a(this);
+    int j = paramaj.bh(paramView);
+    int k = paramaj.bl(paramView) / 2;
+    if (parami.getClipToPadding()) {}
+    for (int i = paramaj.iI() + paramaj.iK() / 2;; i = paramaj.getEnd() / 2) {
+      return k + j - i;
+    }
   }
   
-  public final void a(View paramView, android.support.v4.view.a.a parama)
+  private static View a(RecyclerView.i parami, aj paramaj)
   {
-    super.a(paramView, parama);
-    parama.setClassName(RecyclerView.class.getName());
-    int i;
+    Object localObject1 = null;
+    Object localObject2 = null;
+    int n = parami.getChildCount();
+    if (n == 0) {}
     int j;
-    if ((!this.acI.hM()) && (this.acI.getLayoutManager() != null))
+    int i;
+    int k;
+    label45:
+    do
     {
-      paramView = this.acI.getLayoutManager();
-      RecyclerView.o localo = paramView.acI.afy;
-      RecyclerView.s locals = paramView.acI.agu;
-      if ((paramView.acI.canScrollVertically(-1)) || (paramView.acI.canScrollHorizontally(-1)))
-      {
-        parama.addAction(8192);
-        parama.setScrollable(true);
+      return localObject2;
+      if (!parami.getClipToPadding()) {
+        break;
       }
-      if ((paramView.acI.canScrollVertically(1)) || (paramView.acI.canScrollHorizontally(1)))
-      {
-        parama.addAction(4096);
-        parama.setScrollable(true);
-      }
-      i = paramView.a(localo, locals);
-      j = paramView.b(localo, locals);
-      if (Build.VERSION.SDK_INT < 21) {
-        break label198;
-      }
-      paramView = new a.b(AccessibilityNodeInfo.CollectionInfo.obtain(i, j, false, 0));
+      j = paramaj.iI() + paramaj.iK() / 2;
+      i = 2147483647;
+      k = 0;
+      localObject2 = localObject1;
+    } while (k >= n);
+    localObject2 = parami.getChildAt(k);
+    int m = Math.abs(paramaj.bh((View)localObject2) + paramaj.bl((View)localObject2) / 2 - j);
+    if (m < i)
+    {
+      localObject1 = localObject2;
+      i = m;
     }
     for (;;)
     {
-      if (Build.VERSION.SDK_INT >= 19) {
-        parama.HJ.setCollectionInfo((AccessibilityNodeInfo.CollectionInfo)((a.b)paramView).Iq);
-      }
-      return;
-      label198:
-      if (Build.VERSION.SDK_INT >= 19) {
-        paramView = new a.b(AccessibilityNodeInfo.CollectionInfo.obtain(i, j, false));
-      } else {
-        paramView = new a.b(null);
-      }
+      k += 1;
+      break label45;
+      j = paramaj.getEnd() / 2;
+      break;
     }
   }
   
-  public final void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  private aj b(RecyclerView.i parami)
   {
-    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
-    paramAccessibilityEvent.setClassName(RecyclerView.class.getName());
-    if (((paramView instanceof RecyclerView)) && (!this.acI.hM()))
-    {
-      paramView = (RecyclerView)paramView;
-      if (paramView.getLayoutManager() != null) {
-        paramView.getLayoutManager().onInitializeAccessibilityEvent(paramAccessibilityEvent);
-      }
+    if ((this.agR == null) || (this.agR.ahB != parami)) {
+      this.agR = aj.e(parami);
     }
+    return this.agR;
   }
   
-  public final boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+  private aj c(RecyclerView.i parami)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
-      bool1 = true;
+    if ((this.agS == null) || (this.agS.ahB != parami)) {
+      this.agS = aj.d(parami);
     }
+    return this.agS;
+  }
+  
+  private static View c(RecyclerView.i parami, aj paramaj)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    int m = parami.getChildCount();
+    if (m == 0) {}
     int i;
+    int j;
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool2;
-          } while (this.acI.hM());
-          bool1 = bool2;
-        } while (this.acI.getLayoutManager() == null);
-        paramView = this.acI.getLayoutManager();
-        paramBundle = paramView.acI.afy;
-        paramBundle = paramView.acI.agu;
-        bool1 = bool2;
-      } while (paramView.acI == null);
-      switch (paramInt)
-      {
-      default: 
-        i = 0;
-        paramInt = 0;
-        if (paramInt != 0) {
-          break label126;
-        }
-        bool1 = bool2;
-      }
-    } while (i == 0);
-    label126:
-    paramView.acI.scrollBy(i, paramInt);
-    return true;
-    if (paramView.acI.canScrollVertically(-1)) {}
-    for (paramInt = -(paramView.mHeight - paramView.getPaddingTop() - paramView.getPaddingBottom());; paramInt = 0)
+      return localObject2;
+      i = 2147483647;
+      j = 0;
+      localObject2 = localObject1;
+    } while (j >= m);
+    localObject2 = parami.getChildAt(j);
+    int k = paramaj.bh((View)localObject2);
+    if (k < i)
     {
-      i = paramInt;
-      if (paramView.acI.canScrollHorizontally(-1))
-      {
-        i = -(paramView.mWidth - paramView.getPaddingLeft() - paramView.getPaddingRight());
+      localObject1 = localObject2;
+      i = k;
+    }
+    for (;;)
+    {
+      j += 1;
+      break;
+    }
+  }
+  
+  public int a(RecyclerView.i parami, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    int k = parami.getItemCount();
+    if (k == 0) {}
+    View localView;
+    label37:
+    int j;
+    do
+    {
+      return -1;
+      localView = null;
+      if (!parami.ik()) {
         break;
-        if (!paramView.acI.canScrollVertically(1)) {
-          break label271;
-        }
       }
-      label271:
-      for (paramInt = paramView.mHeight - paramView.getPaddingTop() - paramView.getPaddingBottom();; paramInt = 0)
-      {
-        i = paramInt;
-        if (paramView.acI.canScrollHorizontally(1))
-        {
-          i = paramView.mWidth - paramView.getPaddingLeft() - paramView.getPaddingRight();
-          break;
-        }
-        int j = 0;
-        paramInt = i;
-        i = j;
-        break;
+      localView = c(parami, b(parami));
+      if (localView == null) {
+        break label154;
+      }
+      j = RecyclerView.i.bv(localView);
+    } while (j == -1);
+    if (parami.ij()) {
+      if (paramInt1 > 0) {
+        paramInt1 = 1;
       }
     }
+    for (;;)
+    {
+      paramInt2 = i;
+      if ((parami instanceof RecyclerView.r.b))
+      {
+        parami = ((RecyclerView.r.b)parami).bI(k - 1);
+        paramInt2 = i;
+        if (parami != null) {
+          if (parami.x >= 0.0F)
+          {
+            paramInt2 = i;
+            if (parami.y >= 0.0F) {}
+          }
+          else
+          {
+            paramInt2 = 1;
+          }
+        }
+      }
+      if (paramInt2 == 0) {
+        break label178;
+      }
+      if (paramInt1 == 0) {
+        break label175;
+      }
+      return j - 1;
+      if (!parami.ij()) {
+        break label37;
+      }
+      localView = c(parami, c(parami));
+      break label37;
+      label154:
+      break;
+      paramInt1 = 0;
+      continue;
+      if (paramInt2 > 0) {
+        paramInt1 = 1;
+      } else {
+        paramInt1 = 0;
+      }
+    }
+    label175:
+    return j;
+    label178:
+    if (paramInt1 != 0) {
+      return j + 1;
+    }
+    return j;
+  }
+  
+  public View a(RecyclerView.i parami)
+  {
+    if (parami.ik()) {
+      return a(parami, b(parami));
+    }
+    if (parami.ij()) {
+      return a(parami, c(parami));
+    }
+    return null;
+  }
+  
+  public int[] a(RecyclerView.i parami, View paramView)
+  {
+    int[] arrayOfInt = new int[2];
+    if (parami.ij()) {
+      arrayOfInt[0] = a(parami, paramView, c(parami));
+    }
+    while (parami.ik())
+    {
+      arrayOfInt[1] = a(parami, paramView, b(parami));
+      return arrayOfInt;
+      arrayOfInt[0] = 0;
+    }
+    arrayOfInt[1] = 0;
+    return arrayOfInt;
+  }
+  
+  protected final ae f(RecyclerView.i parami)
+  {
+    if (!(parami instanceof RecyclerView.r.b)) {
+      return null;
+    }
+    return new ak.1(this, this.adt.getContext());
   }
 }
 

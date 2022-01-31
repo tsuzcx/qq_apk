@@ -1,6 +1,7 @@
 package com.tencent.ttpic.recorder;
 
-import com.tencent.util.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.util.i;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
@@ -10,7 +11,7 @@ import javax.microedition.khronos.egl.EGLSurface;
 public class VideoEncodeContext
 {
   static final boolean LIST_CONFIGS = false;
-  static final String TAG = VideoEncodeContext.class.getSimpleName();
+  static final String TAG;
   EGL10 mEGL;
   EGLConfig mEGLConfig;
   EGLConfig[] mEGLConfigs;
@@ -18,8 +19,16 @@ public class VideoEncodeContext
   EGLDisplay mEGLDisplay;
   EGLSurface mEGLSurface;
   
+  static
+  {
+    AppMethodBeat.i(83726);
+    TAG = VideoEncodeContext.class.getSimpleName();
+    AppMethodBeat.o(83726);
+  }
+  
   public VideoEncodeContext()
   {
+    AppMethodBeat.i(83720);
     int[] arrayOfInt = new int[2];
     this.mEGL = ((EGL10)EGLContext.getEGL());
     this.mEGLDisplay = this.mEGL.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
@@ -30,68 +39,77 @@ public class VideoEncodeContext
       this.mEGLContext = this.mEGL.eglCreateContext(this.mEGLDisplay, this.mEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
       this.mEGLSurface = this.mEGL.eglCreatePbufferSurface(this.mEGLDisplay, this.mEGLConfig, new int[] { 12375, 100, 12374, 100, 12344 });
     }
+    AppMethodBeat.o(83720);
   }
   
   private EGLConfig chooseConfig()
   {
-    EGLConfig localEGLConfig = null;
-    int[] arrayOfInt1 = new int[15];
-    int[] tmp8_7 = arrayOfInt1;
-    tmp8_7[0] = 12325;
-    int[] tmp14_8 = tmp8_7;
-    tmp14_8[1] = 0;
-    int[] tmp18_14 = tmp14_8;
-    tmp18_14[2] = 12326;
-    int[] tmp24_18 = tmp18_14;
-    tmp24_18[3] = 0;
-    int[] tmp28_24 = tmp24_18;
-    tmp28_24[4] = 12324;
-    int[] tmp34_28 = tmp28_24;
-    tmp34_28[5] = 8;
-    int[] tmp39_34 = tmp34_28;
-    tmp39_34[6] = 12323;
-    int[] tmp46_39 = tmp39_34;
-    tmp46_39[7] = 8;
-    int[] tmp52_46 = tmp46_39;
-    tmp52_46[8] = 12322;
-    int[] tmp59_52 = tmp52_46;
-    tmp59_52[9] = 8;
-    int[] tmp65_59 = tmp59_52;
-    tmp65_59[10] = 12321;
-    int[] tmp72_65 = tmp65_59;
-    tmp72_65[11] = 8;
-    int[] tmp78_72 = tmp72_65;
-    tmp78_72[12] = 12352;
-    int[] tmp85_78 = tmp78_72;
-    tmp85_78[13] = 4;
-    int[] tmp90_85 = tmp85_78;
-    tmp90_85[14] = 12344;
-    tmp90_85;
-    int[] arrayOfInt2 = new int[1];
-    this.mEGL.eglChooseConfig(this.mEGLDisplay, arrayOfInt1, null, 0, arrayOfInt2);
-    int i = arrayOfInt2[0];
+    AppMethodBeat.i(83722);
+    Object localObject = new int[15];
+    Object tmp11_10 = localObject;
+    tmp11_10[0] = 12325;
+    Object tmp17_11 = tmp11_10;
+    tmp17_11[1] = 0;
+    Object tmp21_17 = tmp17_11;
+    tmp21_17[2] = 12326;
+    Object tmp27_21 = tmp21_17;
+    tmp27_21[3] = 0;
+    Object tmp31_27 = tmp27_21;
+    tmp31_27[4] = 12324;
+    Object tmp37_31 = tmp31_27;
+    tmp37_31[5] = 8;
+    Object tmp42_37 = tmp37_31;
+    tmp42_37[6] = 12323;
+    Object tmp49_42 = tmp42_37;
+    tmp49_42[7] = 8;
+    Object tmp55_49 = tmp49_42;
+    tmp55_49[8] = 12322;
+    Object tmp62_55 = tmp55_49;
+    tmp62_55[9] = 8;
+    Object tmp68_62 = tmp62_55;
+    tmp68_62[10] = 12321;
+    Object tmp75_68 = tmp68_62;
+    tmp75_68[11] = 8;
+    Object tmp81_75 = tmp75_68;
+    tmp81_75[12] = 12352;
+    Object tmp88_81 = tmp81_75;
+    tmp88_81[13] = 4;
+    Object tmp93_88 = tmp88_81;
+    tmp93_88[14] = 12344;
+    tmp93_88;
+    int[] arrayOfInt = new int[1];
+    this.mEGL.eglChooseConfig(this.mEGLDisplay, (int[])localObject, null, 0, arrayOfInt);
+    int i = arrayOfInt[0];
     if (i > 0)
     {
       this.mEGLConfigs = new EGLConfig[i];
-      this.mEGL.eglChooseConfig(this.mEGLDisplay, arrayOfInt1, this.mEGLConfigs, i, arrayOfInt2);
-      localEGLConfig = this.mEGLConfigs[0];
+      this.mEGL.eglChooseConfig(this.mEGLDisplay, (int[])localObject, this.mEGLConfigs, i, arrayOfInt);
+      localObject = this.mEGLConfigs[0];
+      AppMethodBeat.o(83722);
+      return localObject;
     }
-    return localEGLConfig;
+    AppMethodBeat.o(83722);
+    return null;
   }
   
   private int getConfigAttrib(EGLConfig paramEGLConfig, int paramInt)
   {
-    int i = 0;
+    AppMethodBeat.i(83724);
     int[] arrayOfInt = new int[1];
-    if (this.mEGL.eglGetConfigAttrib(this.mEGLDisplay, paramEGLConfig, paramInt, arrayOfInt)) {
-      i = arrayOfInt[0];
+    if (this.mEGL.eglGetConfigAttrib(this.mEGLDisplay, paramEGLConfig, paramInt, arrayOfInt))
+    {
+      paramInt = arrayOfInt[0];
+      AppMethodBeat.o(83724);
+      return paramInt;
     }
-    return i;
+    AppMethodBeat.o(83724);
+    return 0;
   }
   
   private void listConfig()
   {
-    g.g(TAG, "Config List {");
+    AppMethodBeat.i(83723);
+    i.k(TAG, "Config List {");
     EGLConfig[] arrayOfEGLConfig = this.mEGLConfigs;
     int j = arrayOfEGLConfig.length;
     int i = 0;
@@ -104,34 +122,45 @@ public class VideoEncodeContext
       int i1 = getConfigAttrib(localEGLConfig, 12323);
       int i2 = getConfigAttrib(localEGLConfig, 12322);
       int i3 = getConfigAttrib(localEGLConfig, 12321);
-      g.g(TAG, "    <d,s,r,g,b,a> = <" + k + "," + m + "," + n + "," + i1 + "," + i2 + "," + i3 + ">");
+      i.k(TAG, "    <d,s,r,g,b,a> = <" + k + "," + m + "," + n + "," + i1 + "," + i2 + "," + i3 + ">");
       i += 1;
     }
-    g.g(TAG, "}");
+    i.k(TAG, "}");
+    AppMethodBeat.o(83723);
   }
   
   public void destroyEgl()
   {
-    this.mEGL.eglMakeCurrent(this.mEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+    AppMethodBeat.i(83721);
+    EGL10 localEGL10 = this.mEGL;
+    EGLDisplay localEGLDisplay = this.mEGLDisplay;
+    EGLSurface localEGLSurface = EGL10.EGL_NO_SURFACE;
+    localEGL10.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, EGL10.EGL_NO_CONTEXT);
     if (this.mEGLConfig != null)
     {
       this.mEGL.eglDestroySurface(this.mEGLDisplay, this.mEGLSurface);
       this.mEGL.eglDestroyContext(this.mEGLDisplay, this.mEGLContext);
     }
     this.mEGL.eglTerminate(this.mEGLDisplay);
+    AppMethodBeat.o(83721);
   }
   
   public boolean usecurruntContext()
   {
-    if (this.mEGLConfig == null) {
+    AppMethodBeat.i(83725);
+    if (this.mEGLConfig == null)
+    {
+      AppMethodBeat.o(83725);
       return false;
     }
-    return this.mEGL.eglMakeCurrent(this.mEGLDisplay, this.mEGLSurface, this.mEGLSurface, this.mEGLContext);
+    boolean bool = this.mEGL.eglMakeCurrent(this.mEGLDisplay, this.mEGLSurface, this.mEGLSurface, this.mEGLContext);
+    AppMethodBeat.o(83725);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.ttpic.recorder.VideoEncodeContext
  * JD-Core Version:    0.7.0.1
  */

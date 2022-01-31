@@ -1,25 +1,30 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.Intent;
-import com.tencent.mm.modelsimple.q;
-import com.tencent.mm.plugin.account.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bk.a;
+import com.tencent.mm.network.c;
+import com.tencent.mm.network.e;
 
 final class LoginUI$18
-  implements Runnable
+  implements bk.a
 {
-  LoginUI$18(LoginUI paramLoginUI, com.tencent.mm.ah.m paramm) {}
+  LoginUI$18(LoginUI paramLoginUI) {}
   
-  public final void run()
+  public final void a(e parame)
   {
-    y.d("MicroMsg.LoginUI", "onSceneEnd, in runnable");
-    Intent localIntent = a.eUR.aN(this.fnM);
-    localIntent.addFlags(67108864);
-    localIntent.putExtra("kstyle_show_bind_mobile_afterauth", ((q)this.bEe).QD());
-    localIntent.putExtra("kstyle_bind_wording", ((q)this.bEe).QE());
-    localIntent.putExtra("kstyle_bind_recommend_show", ((q)this.bEe).QG());
-    this.fnM.startActivity(localIntent);
-    this.fnM.finish();
+    AppMethodBeat.i(152564);
+    if (parame == null)
+    {
+      AppMethodBeat.o(152564);
+      return;
+    }
+    parame = parame.adI();
+    g.RJ();
+    int i = a.getUin();
+    parame.a(new byte[0], new byte[0], new byte[0], i);
+    AppMethodBeat.o(152564);
   }
 }
 

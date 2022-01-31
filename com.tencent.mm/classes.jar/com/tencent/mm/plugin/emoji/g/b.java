@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.emoji.g;
 
-import com.tencent.mm.protocal.c.ut;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.zg;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -16,105 +17,109 @@ import org.xml.sax.InputSource;
 
 public final class b
 {
-  public static ArrayList<ut> AS(String paramString)
+  public static ArrayList<zg> KU(String paramString)
   {
-    if (bk.bl(paramString)) {
-      y.w("MicroMsg.emoji.EmojiBackupXMLParser", "[backup emotion parser] parse xml faild. xml is null.");
-    }
-    for (;;)
+    AppMethodBeat.i(53158);
+    if (bo.isNullOrNil(paramString))
     {
+      ab.w("MicroMsg.emoji.EmojiBackupXMLParser", "[backup emotion parser] parse xml faild. xml is null.");
+      AppMethodBeat.o(53158);
       return null;
-      Object localObject1 = DocumentBuilderFactory.newInstance();
-      try
+    }
+    Object localObject1 = DocumentBuilderFactory.newInstance();
+    try
+    {
+      paramString = ((DocumentBuilderFactory)localObject1).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes())));
+      paramString.normalize();
+      paramString = paramString.getDocumentElement().getElementsByTagName("EmojiMd5");
+      if ((paramString != null) && (paramString.getLength() > 0))
       {
-        paramString = ((DocumentBuilderFactory)localObject1).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes())));
-        paramString.normalize();
-        paramString = paramString.getDocumentElement().getElementsByTagName("EmojiMd5");
-        if ((paramString != null) && (paramString.getLength() > 0))
+        localObject1 = new ArrayList();
+        int j = paramString.getLength();
+        int i = 0;
+        while (i < j)
         {
-          localObject1 = new ArrayList();
-          int j = paramString.getLength();
-          int i = 0;
-          while (i < j)
-          {
-            Object localObject2 = paramString.item(i);
-            ut localut = new ut();
-            String str = ((Node)localObject2).getTextContent().toLowerCase();
-            localObject2 = ((Node)localObject2).getAttributes();
-            Node localNode = ((NamedNodeMap)localObject2).getNamedItem("thumburl");
-            if (localNode != null) {
-              localut.mQp = localNode.getNodeValue();
-            }
-            localNode = ((NamedNodeMap)localObject2).getNamedItem("cdnurl");
-            if (localNode != null) {
-              localut.kSC = localNode.getNodeValue();
-            }
-            localNode = ((NamedNodeMap)localObject2).getNamedItem("productid");
-            if (localNode != null) {
-              localut.syc = localNode.getNodeValue();
-            }
-            localNode = ((NamedNodeMap)localObject2).getNamedItem("designerid");
-            if (localNode != null) {
-              localut.sRs = localNode.getNodeValue();
-            }
-            localNode = ((NamedNodeMap)localObject2).getNamedItem("aeskey");
-            if (localNode != null) {
-              localut.sRu = localNode.getNodeValue();
-            }
-            localNode = ((NamedNodeMap)localObject2).getNamedItem("encrypturl");
-            if (localNode != null) {
-              localut.sRt = localNode.getNodeValue();
-            }
-            localObject2 = ((NamedNodeMap)localObject2).getNamedItem("activityid");
-            if (localObject2 != null) {
-              localut.sRx = ((Node)localObject2).getNodeValue();
-            }
-            localut.jnU = str;
-            ((ArrayList)localObject1).add(localut);
-            i += 1;
+          Object localObject2 = paramString.item(i);
+          zg localzg = new zg();
+          String str = ((Node)localObject2).getTextContent().toLowerCase();
+          localObject2 = ((Node)localObject2).getAttributes();
+          Node localNode = ((NamedNodeMap)localObject2).getNamedItem("thumburl");
+          if (localNode != null) {
+            localzg.ThumbUrl = localNode.getNodeValue();
           }
-          return localObject1;
+          localNode = ((NamedNodeMap)localObject2).getNamedItem("cdnurl");
+          if (localNode != null) {
+            localzg.Url = localNode.getNodeValue();
+          }
+          localNode = ((NamedNodeMap)localObject2).getNamedItem("productid");
+          if (localNode != null) {
+            localzg.ProductID = localNode.getNodeValue();
+          }
+          localNode = ((NamedNodeMap)localObject2).getNamedItem("designerid");
+          if (localNode != null) {
+            localzg.wQg = localNode.getNodeValue();
+          }
+          localNode = ((NamedNodeMap)localObject2).getNamedItem("aeskey");
+          if (localNode != null) {
+            localzg.AesKey = localNode.getNodeValue();
+          }
+          localNode = ((NamedNodeMap)localObject2).getNamedItem("encrypturl");
+          if (localNode != null) {
+            localzg.EncryptUrl = localNode.getNodeValue();
+          }
+          localObject2 = ((NamedNodeMap)localObject2).getNamedItem("activityid");
+          if (localObject2 != null) {
+            localzg.ActivityID = ((Node)localObject2).getNodeValue();
+          }
+          localzg.Md5 = str;
+          ((ArrayList)localObject1).add(localzg);
+          i += 1;
         }
+        AppMethodBeat.o(53158);
+        return localObject1;
       }
-      catch (Exception paramString)
-      {
-        y.e("MicroMsg.emoji.EmojiBackupXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
-      }
+    }
+    catch (Exception paramString)
+    {
+      ab.e("MicroMsg.emoji.EmojiBackupXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
+      AppMethodBeat.o(53158);
     }
     return null;
   }
   
-  public static ArrayList<String> AT(String paramString)
+  public static ArrayList<String> KV(String paramString)
   {
-    if (bk.bl(paramString)) {
-      y.w("MicroMsg.emoji.EmojiBackupXMLParser", "[backup emotion parser] parse xml faild. xml is null.");
-    }
-    for (;;)
+    AppMethodBeat.i(53159);
+    if (bo.isNullOrNil(paramString))
     {
+      ab.w("MicroMsg.emoji.EmojiBackupXMLParser", "[backup emotion parser] parse xml faild. xml is null.");
+      AppMethodBeat.o(53159);
       return null;
-      Object localObject = DocumentBuilderFactory.newInstance();
-      try
+    }
+    Object localObject = DocumentBuilderFactory.newInstance();
+    try
+    {
+      paramString = ((DocumentBuilderFactory)localObject).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes())));
+      paramString.normalize();
+      paramString = paramString.getDocumentElement().getElementsByTagName("ProductID");
+      if ((paramString != null) && (paramString.getLength() > 0))
       {
-        paramString = ((DocumentBuilderFactory)localObject).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes())));
-        paramString.normalize();
-        paramString = paramString.getDocumentElement().getElementsByTagName("ProductID");
-        if ((paramString != null) && (paramString.getLength() > 0))
+        localObject = new ArrayList();
+        int j = paramString.getLength();
+        int i = 0;
+        while (i < j)
         {
-          localObject = new ArrayList();
-          int j = paramString.getLength();
-          int i = 0;
-          while (i < j)
-          {
-            ((ArrayList)localObject).add(paramString.item(i).getTextContent());
-            i += 1;
-          }
-          return localObject;
+          ((ArrayList)localObject).add(paramString.item(i).getTextContent());
+          i += 1;
         }
+        AppMethodBeat.o(53159);
+        return localObject;
       }
-      catch (Exception paramString)
-      {
-        y.e("MicroMsg.emoji.EmojiBackupXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
-      }
+    }
+    catch (Exception paramString)
+    {
+      ab.e("MicroMsg.emoji.EmojiBackupXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
+      AppMethodBeat.o(53159);
     }
     return null;
   }

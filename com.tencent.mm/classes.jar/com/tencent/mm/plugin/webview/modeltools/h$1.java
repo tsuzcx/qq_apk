@@ -1,31 +1,34 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
 import android.os.Message;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ah.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ak.a;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class h$1
-  implements ah.a
+  implements ak.a
 {
   h$1(h paramh) {}
   
   public final boolean handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(7007);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(7007);
       return false;
-      paramMessage = this.riL.riH.getBitmap();
+      paramMessage = this.uYl.uYh.getBitmap();
       if (paramMessage != null)
       {
-        e.post(new h.b(this.riL, paramMessage), "ViewCaptureHelper_SaveBitmap");
-        this.riL.riH = null;
+        d.post(new h.b(this.uYl, paramMessage), "ViewCaptureHelper_SaveBitmap");
+        this.uYl.uYh = null;
         continue;
-        if (this.riL.riJ != null) {
-          this.riL.riJ.uL(this.riL.riI);
+        if (this.uYl.uYj != null) {
+          this.uYl.uYj.Dd(this.uYl.uYi);
         }
       }
     }

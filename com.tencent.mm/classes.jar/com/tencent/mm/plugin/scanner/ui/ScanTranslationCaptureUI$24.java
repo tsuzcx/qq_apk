@@ -1,28 +1,27 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ScanTranslationCaptureUI$24
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AnimatorListenerAdapter
 {
   ScanTranslationCaptureUI$24(ScanTranslationCaptureUI paramScanTranslationCaptureUI) {}
   
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public final void onAnimationEnd(Animator paramAnimator)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f <= 0.1F) {
-      ScanTranslationCaptureUI.q(this.nNm).setAlpha(f * 10.0F);
-    }
-    for (;;)
-    {
-      ScanTranslationCaptureUI.q(this.nNm).setTranslationY(f * (ScanTranslationCaptureUI.r(this.nNm) - ScanTranslationCaptureUI.q(this.nNm).getHeight()));
-      return;
-      if (f >= 0.9F) {
-        ScanTranslationCaptureUI.q(this.nNm).setAlpha((1.0F - f) * 10.0F);
-      }
-    }
+    AppMethodBeat.i(81282);
+    ScanTranslationCaptureUI.r(this.qAW).setAlpha(0.0F);
+    AppMethodBeat.o(81282);
+  }
+  
+  public final void onAnimationStart(Animator paramAnimator)
+  {
+    AppMethodBeat.i(81281);
+    ScanTranslationCaptureUI.r(this.qAW).setAlpha(0.0F);
+    AppMethodBeat.o(81281);
   }
 }
 

@@ -9,9 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.f.h;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.d.j;
@@ -24,46 +22,57 @@ final class AllRemindMsgUI$b
   
   public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.remind_item, paramViewGroup, false);
-    return new AllRemindMsgUI.c(this.uGB, paramViewGroup);
+    AppMethodBeat.i(29118);
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970565, paramViewGroup, false);
+    paramViewGroup = new AllRemindMsgUI.c(this.yTD, paramViewGroup);
+    AppMethodBeat.o(29118);
+    return paramViewGroup;
   }
   
   public final void a(RecyclerView.v paramv, int paramInt)
   {
-    AllRemindMsgUI.d locald = (AllRemindMsgUI.d)AllRemindMsgUI.d(this.uGB).get(paramInt);
-    ((AllRemindMsgUI.c)paramv).aie.setTag(locald);
-    ((AllRemindMsgUI.c)paramv).nXe.setText(j.a(this.uGB.mController.uMN, locald.nickname, ((AllRemindMsgUI.c)paramv).nXe.getTextSize()));
-    ((AllRemindMsgUI.c)paramv).eXr.setText(j.a(this.uGB.mController.uMN, locald.title, ((AllRemindMsgUI.c)paramv).eXr.getTextSize()));
+    AppMethodBeat.i(29119);
+    AllRemindMsgUI.d locald = (AllRemindMsgUI.d)AllRemindMsgUI.d(this.yTD).get(paramInt);
+    ((AllRemindMsgUI.c)paramv).aku.setTag(locald);
+    ((AllRemindMsgUI.c)paramv).kgG.setText(j.b(this.yTD.getContext(), locald.nickname, ((AllRemindMsgUI.c)paramv).kgG.getTextSize()));
+    ((AllRemindMsgUI.c)paramv).titleTv.setText(j.b(this.yTD.getContext(), locald.title, ((AllRemindMsgUI.c)paramv).titleTv.getTextSize()));
     long l = System.currentTimeMillis();
     if (locald.timestamp - l < 60000L) {
-      ((AllRemindMsgUI.c)paramv).uGE.setText(this.uGB.mController.uMN.getString(R.l.fmt_in_some_min, new Object[] { Integer.valueOf(1) }));
+      ((AllRemindMsgUI.c)paramv).yTG.setText(this.yTD.getContext().getString(2131300047, new Object[] { Integer.valueOf(1) }));
     }
-    while (locald.brC == 2)
+    while (locald.subType == 2)
     {
-      ((AllRemindMsgUI.c)paramv).ffK.setImageDrawable(this.uGB.mController.uMN.getResources().getDrawable(R.g.app_add_to_favorite));
+      ((AllRemindMsgUI.c)paramv).gxs.setImageDrawable(this.yTD.getContext().getResources().getDrawable(2130837707));
+      AppMethodBeat.o(29119);
       return;
       if (locald.timestamp - l < 3600000L) {
-        ((AllRemindMsgUI.c)paramv).uGE.setText(this.uGB.mController.uMN.getString(R.l.fmt_in_some_min, new Object[] { Long.valueOf((locald.timestamp - l) / 60000L) }));
+        ((AllRemindMsgUI.c)paramv).yTG.setText(this.yTD.getContext().getString(2131300047, new Object[] { Long.valueOf((locald.timestamp - l) / 60000L) }));
       } else if (locald.timestamp - l < 10800000L) {
-        ((AllRemindMsgUI.c)paramv).uGE.setText(this.uGB.mController.uMN.getString(R.l.fmt_in_some_hour_min, new Object[] { Long.valueOf((locald.timestamp - l) / 3600000L), Long.valueOf((locald.timestamp - l - (locald.timestamp - l) / 3600000L * 3600000L) / 60000L) }));
+        ((AllRemindMsgUI.c)paramv).yTG.setText(this.yTD.getContext().getString(2131300046, new Object[] { Long.valueOf((locald.timestamp - l) / 3600000L), Long.valueOf((locald.timestamp - l - (locald.timestamp - l) / 3600000L * 3600000L) / 60000L) }));
       } else {
-        ((AllRemindMsgUI.c)paramv).uGE.setText(h.c(this.uGB.mController.uMN, locald.timestamp, true));
+        ((AllRemindMsgUI.c)paramv).yTG.setText(h.c(this.yTD.getContext(), locald.timestamp, true));
       }
     }
-    a.b.a(((AllRemindMsgUI.c)paramv).ffK, locald.username);
+    a.b.c(((AllRemindMsgUI.c)paramv).gxs, locald.username);
+    AppMethodBeat.o(29119);
   }
   
   public final int getItemCount()
   {
-    if (AllRemindMsgUI.d(this.uGB) == null) {
+    AppMethodBeat.i(29120);
+    if (AllRemindMsgUI.d(this.yTD) == null)
+    {
+      AppMethodBeat.o(29120);
       return 0;
     }
-    return AllRemindMsgUI.d(this.uGB).size();
+    int i = AllRemindMsgUI.d(this.yTD).size();
+    AppMethodBeat.o(29120);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.AllRemindMsgUI.b
  * JD-Core Version:    0.7.0.1
  */

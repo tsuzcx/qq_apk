@@ -2,6 +2,7 @@ package com.tencent.mm.ui.base.preference;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class KeyValuePreference$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class KeyValuePreference$1
   
   public final void onClick(View paramView)
   {
-    this.vdc.vdC.bsE();
+    AppMethodBeat.i(107199);
+    this.zrD.zsc.cbH();
+    AppMethodBeat.o(107199);
   }
 }
 

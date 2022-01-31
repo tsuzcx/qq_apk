@@ -3,44 +3,57 @@ package com.tencent.mm.plugin.base.stub;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.booter.NotifyReceiver;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bk;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.a;
 
 @a(7)
 public class UIEntryStub
   extends Activity
 {
-  private String Bo;
-  private Intent bRh;
-  private int hRW;
-  private boolean hRX;
+  private String Ca;
+  private Intent cyJ;
+  private int jLB;
+  private boolean jLC;
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(18131);
     super.onCreate(paramBundle);
-    NotifyReceiver.vY();
-    this.hRX = false;
+    NotifyReceiver.In();
+    this.jLC = false;
+    AppMethodBeat.o(18131);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
+    AppMethodBeat.i(18132);
     super.onNewIntent(paramIntent);
-    this.bRh = paramIntent;
-    y.i("MicroMsg.UIEntryStub", "onNewIntent mHasHandled: %b", new Object[] { Boolean.valueOf(this.hRX) });
-    this.hRX = false;
+    this.cyJ = paramIntent;
+    ab.i("MicroMsg.UIEntryStub", "onNewIntent mHasHandled: %b", new Object[] { Boolean.valueOf(this.jLC) });
+    this.jLC = false;
+    AppMethodBeat.o(18132);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(18133);
     super.onResume();
-    if (this.bRh == null) {
-      this.bRh = getIntent();
+    if (this.cyJ == null) {
+      this.cyJ = getIntent();
     }
-    au.Dk().a(new bi(new UIEntryStub.1(this)), 0);
+    aw.Rc().a(new bk(new UIEntryStub.1(this)), 0);
+    AppMethodBeat.o(18133);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

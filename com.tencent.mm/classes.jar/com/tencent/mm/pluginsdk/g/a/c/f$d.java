@@ -5,16 +5,16 @@ import android.os.Process;
 public abstract class f$d<Req extends f.b>
   implements Runnable
 {
-  private final Req rXr;
+  private final Req vOi;
   
-  public f$d(Req paramReq)
+  protected f$d(Req paramReq)
   {
-    this.rXr = paramReq;
+    this.vOi = paramReq;
   }
   
-  public Req aci()
+  protected Req avY()
   {
-    return this.rXr;
+    return this.vOi;
   }
   
   public void run()
@@ -26,7 +26,7 @@ public abstract class f$d<Req extends f.b>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.g.a.c.f.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,76 @@
 package com.google.android.gms.auth.api.signin.internal;
 
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
-import com.google.android.gms.common.internal.safeparcel.zzc;
+import android.content.Context;
+import android.support.v4.content.a;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.internal.SignInConnectionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
-public class zzf
-  implements Parcelable.Creator<zzg>
+public final class zzf
+  extends a<Void>
+  implements SignInConnectionListener
 {
-  static void zza(zzg paramzzg, Parcel paramParcel, int paramInt)
+  private Semaphore zzet;
+  private Set<GoogleApiClient> zzeu;
+  
+  public zzf(Context paramContext, Set<GoogleApiClient> paramSet)
   {
-    paramInt = zzc.zzaZ(paramParcel);
-    zzc.zzc(paramParcel, 1, paramzzg.versionCode);
-    zzc.zzc(paramParcel, 2, paramzzg.getType());
-    zzc.zza(paramParcel, 3, paramzzg.getBundle(), false);
-    zzc.zzJ(paramParcel, paramInt);
+    super(paramContext);
+    AppMethodBeat.i(50421);
+    this.zzet = new Semaphore(0);
+    this.zzeu = paramSet;
+    AppMethodBeat.o(50421);
   }
   
-  public zzg zzZ(Parcel paramParcel)
+  private final Void zzm()
   {
-    int k = zzb.zzaY(paramParcel);
-    Bundle localBundle = null;
-    int j = 0;
+    AppMethodBeat.i(50422);
+    Iterator localIterator = this.zzeu.iterator();
     int i = 0;
-    while (paramParcel.dataPosition() < k)
+    if (localIterator.hasNext())
     {
-      int m = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(m))
+      if (!((GoogleApiClient)localIterator.next()).maybeSignIn(this)) {
+        break label81;
+      }
+      i += 1;
+    }
+    label81:
+    for (;;)
+    {
+      break;
+      try
       {
-      default: 
-        zzb.zzb(paramParcel, m);
-        break;
-      case 1: 
-        i = zzb.zzg(paramParcel, m);
-        break;
-      case 2: 
-        j = zzb.zzg(paramParcel, m);
-        break;
-      case 3: 
-        localBundle = zzb.zzs(paramParcel, m);
+        this.zzet.tryAcquire(i, 5L, TimeUnit.SECONDS);
+        AppMethodBeat.o(50422);
+        return null;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          Thread.currentThread().interrupt();
+        }
       }
     }
-    if (paramParcel.dataPosition() != k) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + k, paramParcel);
-    }
-    return new zzg(i, j, localBundle);
   }
   
-  public zzg[] zzbo(int paramInt)
+  public final void onComplete()
   {
-    return new zzg[paramInt];
+    AppMethodBeat.i(50424);
+    this.zzet.release();
+    AppMethodBeat.o(50424);
+  }
+  
+  public final void onStartLoading()
+  {
+    AppMethodBeat.i(50423);
+    this.zzet.drainPermits();
+    forceLoad();
+    AppMethodBeat.o(50423);
   }
 }
 

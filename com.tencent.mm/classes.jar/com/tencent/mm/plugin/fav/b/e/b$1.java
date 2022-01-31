@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.fav.b.e;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.ai;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 final class b$1
@@ -14,26 +15,37 @@ final class b$1
   
   public final void run()
   {
-    if (this.bEe.getType() != 404) {}
-    while (!(this.bEe instanceof ai)) {
+    AppMethodBeat.i(5349);
+    if (this.ckS.getType() != 404)
+    {
+      AppMethodBeat.o(5349);
       return;
     }
-    b.a(this.kaK);
-    long l = ((ai)this.bEe).jZN.field_localId;
-    com.tencent.mm.plugin.fav.a.g localg = ((ai)this.bEe).jZN;
-    b.Qq().remove(Long.valueOf(l));
-    if (this.bEf != 0)
+    if (!(this.ckS instanceof ai))
     {
-      y.e("MicroMsg.Fav.FavCheckCdnService", "achieved retry limit, set error, localId:%d", new Object[] { Long.valueOf(l) });
-      com.tencent.mm.plugin.report.service.h.nFQ.f(10659, new Object[] { Integer.valueOf(0), Integer.valueOf(localg.field_type), Integer.valueOf(-2), Long.valueOf(com.tencent.mm.plugin.fav.a.b.b(localg)), Long.valueOf(com.tencent.mm.plugin.fav.a.h.ex(localg.field_localId)) });
-      ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().x(3, l);
+      AppMethodBeat.o(5349);
+      return;
     }
-    b.b(this.kaK);
+    b.a(this.mvg);
+    long l = ((ai)this.ckS).muk.field_localId;
+    com.tencent.mm.plugin.fav.a.g localg = ((ai)this.ckS).muk;
+    b.ajx().remove(Long.valueOf(l));
+    if (this.val$errType != 0)
+    {
+      ab.e("MicroMsg.Fav.FavCheckCdnService", "achieved retry limit, set error, localId:%d", new Object[] { Long.valueOf(l) });
+      com.tencent.mm.plugin.report.service.h.qsU.e(10659, new Object[] { Integer.valueOf(0), Integer.valueOf(localg.field_type), Integer.valueOf(-2), Long.valueOf(com.tencent.mm.plugin.fav.a.b.b(localg)), Long.valueOf(com.tencent.mm.plugin.fav.a.h.jU(localg.field_localId)) });
+      ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().O(3, l);
+    }
+    b.b(this.mvg);
+    AppMethodBeat.o(5349);
   }
   
   public final String toString()
   {
-    return super.toString() + "|onSceneEnd";
+    AppMethodBeat.i(5350);
+    String str = super.toString() + "|onSceneEnd";
+    AppMethodBeat.o(5350);
+    return str;
   }
 }
 

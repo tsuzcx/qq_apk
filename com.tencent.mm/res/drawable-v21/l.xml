@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset android:insetLeft="@dimen/os" android:insetRight="@dimen/os" android:insetTop="@dimen/ot" android:insetBottom="@dimen/ot"
+<inset android:insetLeft="@dimen/pb" android:insetRight="@dimen/pb" android:insetTop="@dimen/pc" android:insetBottom="@dimen/pc"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ripple android:color="?android:colorControlHighlight">
         <item>
             <selector>
                 <item android:state_enabled="false">
                     <shape android:shape="rectangle">
-                        <corners android:radius="@dimen/ox" />
+                        <corners android:radius="@dimen/pg" />
                         <solid android:color="?android:colorButtonNormal" />
-                        <padding android:left="@dimen/ou" android:top="@dimen/ov" android:right="@dimen/ou" android:bottom="@dimen/ov" />
+                        <padding android:left="@dimen/pd" android:top="@dimen/pe" android:right="@dimen/pd" android:bottom="@dimen/pe" />
                     </shape>
                 </item>
                 <item>
                     <shape android:shape="rectangle">
-                        <corners android:radius="@dimen/ox" />
+                        <corners android:radius="@dimen/pg" />
                         <solid android:color="?android:colorAccent" />
-                        <padding android:left="@dimen/ou" android:top="@dimen/ov" android:right="@dimen/ou" android:bottom="@dimen/ov" />
+                        <padding android:left="@dimen/pd" android:top="@dimen/pe" android:right="@dimen/pd" android:bottom="@dimen/pe" />
                     </shape>
                 </item>
             </selector>

@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.multitalk.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.multitalk.ui.widget.f;
 
 final class MultiTalkMainUI$4
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   MultiTalkMainUI$4(MultiTalkMainUI paramMultiTalkMainUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    this.mvm.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.i(54121);
+    MultiTalkMainUI.a(this.oVe).jK(false);
+    AppMethodBeat.o(54121);
   }
 }
 

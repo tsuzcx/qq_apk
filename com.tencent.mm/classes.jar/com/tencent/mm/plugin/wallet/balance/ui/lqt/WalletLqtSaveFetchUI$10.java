@@ -1,24 +1,43 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.view.View;
-import android.widget.ScrollView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.sdk.platformtools.y;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletLqtSaveFetchUI$10
-  implements Runnable
+  implements TextWatcher
 {
   WalletLqtSaveFetchUI$10(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI) {}
   
-  public final void run()
+  public final void afterTextChanged(Editable paramEditable)
   {
-    int[] arrayOfInt1 = new int[2];
-    int[] arrayOfInt2 = new int[2];
-    this.qiZ.findViewById(a.f.lqt_divider_line_1).getLocationInWindow(arrayOfInt1);
-    WalletLqtSaveFetchUI.q(this.qiZ).getLocationInWindow(arrayOfInt2);
-    y.d("MicroMsg.WalletLqtSaveFetchUI", "scroll y: %s", new Object[] { Integer.valueOf(arrayOfInt1[1] - arrayOfInt2[1]) });
-    WalletLqtSaveFetchUI.q(this.qiZ).scrollBy(0, arrayOfInt1[1] - arrayOfInt2[1]);
+    AppMethodBeat.i(155078);
+    if (paramEditable.toString().startsWith(".")) {
+      paramEditable.insert(0, "0");
+    }
+    String str = paramEditable.toString();
+    int i = str.indexOf(".");
+    int j = str.length();
+    if ((i >= 0) && (j - i > 3)) {
+      paramEditable.delete(i + 3, j);
+    }
+    for (;;)
+    {
+      paramEditable = paramEditable.toString();
+      WalletLqtSaveFetchUI.b(this.tRZ, paramEditable);
+      AppMethodBeat.o(155078);
+      return;
+      if (i > 12) {
+        paramEditable.delete(12, i);
+      } else if ((i == -1) && (j > 12)) {
+        paramEditable.delete(12, j);
+      }
+    }
   }
+  
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

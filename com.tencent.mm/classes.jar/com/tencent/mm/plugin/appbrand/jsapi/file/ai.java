@@ -1,14 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class ai
-  extends b<ax>
+  extends d<ay>
 {
-  private static final int CTRL_INDEX = 394;
-  private static final String NAME = "unzip";
+  private static final int CTRL_INDEX = 384;
+  private static final String NAME = "unlink";
   
   public ai()
   {
-    super(new ax());
+    super(new ay());
+    AppMethodBeat.i(102810);
+    AppMethodBeat.o(102810);
   }
 }
 

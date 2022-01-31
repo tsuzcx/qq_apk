@@ -1,23 +1,27 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMWebView;
 
-final class d$42
+public final class d$42
   implements Runnable
 {
-  d$42(d paramd, String paramString) {}
+  public d$42(d paramd, String paramString) {}
   
   public final void run()
   {
+    AppMethodBeat.i(8906);
     try
     {
-      d.d(this.rxV).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.fZS + ")", new d.42.1(this));
+      d.d(this.voP).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.uUq + ")", null);
+      AppMethodBeat.o(8906);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.JsApiHandler", "onSearchWAWidgetReloadDataFinish fail, ex = %s", new Object[] { localException.getMessage() });
+      ab.e("MicroMsg.JsApiHandler", "onSearchWAWidgetReloadData fail, ex = %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(8906);
     }
   }
 }

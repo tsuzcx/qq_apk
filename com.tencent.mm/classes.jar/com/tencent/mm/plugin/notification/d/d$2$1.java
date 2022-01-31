@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.notification.d;
 
-import com.tencent.mm.h.a.ph;
-import com.tencent.mm.h.a.ph.a;
-import com.tencent.mm.h.c.cs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.qm;
+import com.tencent.mm.g.a.qm.a;
+import com.tencent.mm.g.c.dd;
 import com.tencent.mm.storage.bi;
 
 final class d$2$1
   implements Runnable
 {
-  d$2$1(d.2 param2, ph paramph) {}
+  d$2$1(d.2 param2, qm paramqm) {}
   
   public final void run()
   {
-    bi localbi = this.mIR.bYU.bFH;
-    if (d.Ki(localbi.field_talker)) {
-      this.mIS.mIO.bw(localbi);
+    AppMethodBeat.i(23132);
+    bi localbi = this.pjg.cHb.cmQ;
+    if (d.Wh(localbi.field_talker)) {
+      this.pjh.pjd.ca(localbi);
     }
+    AppMethodBeat.o(23132);
   }
 }
 

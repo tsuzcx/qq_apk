@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 public abstract interface c$b
 {
-  public abstract int cbK();
+  public abstract int dbN();
 }
 
 

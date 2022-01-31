@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.backup.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
@@ -16,52 +17,54 @@ final class b$3
   public final void run()
   {
     int i = 0;
-    label285:
-    label309:
-    label356:
+    AppMethodBeat.i(17640);
+    label297:
+    label321:
+    label374:
     for (;;)
     {
       long l;
-      synchronized (b.auX())
+      synchronized (b.aUz())
       {
-        l = bk.UY();
-        Iterator localIterator = b.auX().entrySet().iterator();
+        l = bo.aoy();
+        Iterator localIterator = b.aUz().entrySet().iterator();
         if (!localIterator.hasNext()) {
-          break label309;
+          break label321;
         }
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         if (localEntry == null) {
-          break label356;
+          break label374;
         }
         try
         {
           localPByteArray = b.a((b)localEntry.getValue());
           if (localPByteArray == null) {
-            break label285;
+            break label297;
           }
-          if (b.auY() == null) {
+          if (b.aUA() == null) {
             continue;
           }
-          b.auY().k(((Integer)localEntry.getKey()).intValue(), localPByteArray.value);
-          y.i("MicroMsg.BackupBaseScene", "resendSceneMap sceneSeq[%d], type[%d], sceneBuf[%d]", new Object[] { localEntry.getKey(), Integer.valueOf(((b)localEntry.getValue()).getType()), Integer.valueOf(localPByteArray.value.length) });
+          b.aUA().k(((Integer)localEntry.getKey()).intValue(), localPByteArray.value);
+          ab.i("MicroMsg.BackupBaseScene", "resendSceneMap sceneSeq[%d], type[%d], sceneBuf[%d]", new Object[] { localEntry.getKey(), Integer.valueOf(((b)localEntry.getValue()).getType()), Integer.valueOf(localPByteArray.value.length) });
         }
         catch (Exception localException)
         {
           PByteArray localPByteArray;
-          y.printErrStackTrace("MicroMsg.BackupBaseScene", localException, "req to buf fail: " + localException.toString(), new Object[0]);
+          ab.printErrStackTrace("MicroMsg.BackupBaseScene", localException, "req to buf fail: " + localException.toString(), new Object[0]);
           continue;
         }
         i += 1;
         if ((i > 0) && (i % 5 == 0)) {
-          this.hLM.ef(false);
+          this.jFo.fC(false);
         }
         continue;
-        y.e("MicroMsg.BackupBaseScene", "resendSceneMap engineSender null, sceneSeq[%d], type[%d], sceneBuf[%d]", new Object[] { localEntry.getKey(), Integer.valueOf(((b)localEntry.getValue()).getType()), Integer.valueOf(localPByteArray.value.length) });
+        ab.e("MicroMsg.BackupBaseScene", "resendSceneMap engineSender null, sceneSeq[%d], type[%d], sceneBuf[%d]", new Object[] { localEntry.getKey(), Integer.valueOf(((b)localEntry.getValue()).getType()), Integer.valueOf(localPByteArray.value.length) });
       }
-      y.e("MicroMsg.BackupBaseScene", "resendSceneMap sceneBuf null, sceneSeq[%d]", new Object[] { localException.getKey() });
+      ab.e("MicroMsg.BackupBaseScene", "resendSceneMap sceneBuf null, sceneSeq[%d]", new Object[] { localException.getKey() });
       continue;
-      this.hLM.ef(true);
-      y.i("MicroMsg.BackupBaseScene", "resendSceneMap finish, sceneMap[%d], time[%d]", new Object[] { Integer.valueOf(b.auX().size()), Long.valueOf(bk.co(l)) });
+      this.jFo.fC(true);
+      ab.i("MicroMsg.BackupBaseScene", "resendSceneMap finish, sceneMap[%d], time[%d]", new Object[] { Integer.valueOf(b.aUz().size()), Long.valueOf(bo.hl(l)) });
+      AppMethodBeat.o(17640);
       return;
     }
   }

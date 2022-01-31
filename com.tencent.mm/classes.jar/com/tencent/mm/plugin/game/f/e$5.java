@@ -1,33 +1,36 @@
 package com.tencent.mm.plugin.game.f;
 
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
-import com.tencent.mm.plugin.z.a;
+import com.tencent.mm.plugin.s.a;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
 import java.lang.ref.WeakReference;
 
 final class e$5
-  implements j.a
+  implements k.a
 {
   e$5(e parame, String paramString, float paramFloat, WeakReference paramWeakReference) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
+    AppMethodBeat.i(112333);
     if (this.val$appId.equals(paramString))
     {
-      paramString = g.b(this.val$appId, 1, this.gco);
+      paramString = g.b(this.val$appId, 1, this.bBF);
       if (paramString != null)
       {
-        if ((this.lgy != null) && (this.lgy.get() != null)) {
-          ((ImageView)this.lgy.get()).setImageBitmap(paramString);
+        if ((this.nEt != null) && (this.nEt.get() != null)) {
+          ((ImageView)this.nEt.get()).setImageBitmap(paramString);
         }
-        e.a(this.lgp).put(this.val$appId, paramString);
-        a.brn().d(this);
+        e.a(this.nEk).put(this.val$appId, paramString);
+        a.cac().remove(this);
       }
     }
+    AppMethodBeat.o(112333);
   }
 }
 

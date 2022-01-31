@@ -17,73 +17,83 @@ public class V8Thread
   public void run()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 23	com/eclipsesource/v8/V8:createV8Runtime	()Lcom/eclipsesource/v8/V8;
-    //   4: putfield 25	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
-    //   7: aload_0
-    //   8: getfield 15	com/eclipsesource/v8/utils/V8Thread:target	Lcom/eclipsesource/v8/utils/V8Runnable;
-    //   11: aload_0
-    //   12: getfield 25	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
-    //   15: invokeinterface 30 2 0
-    //   20: aload_0
-    //   21: monitorenter
-    //   22: aload_0
-    //   23: getfield 25	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
-    //   26: invokevirtual 34	com/eclipsesource/v8/V8:getLocker	()Lcom/eclipsesource/v8/V8Locker;
-    //   29: invokevirtual 40	com/eclipsesource/v8/V8Locker:hasLock	()Z
-    //   32: ifeq +15 -> 47
-    //   35: aload_0
-    //   36: getfield 25	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
-    //   39: invokevirtual 43	com/eclipsesource/v8/V8:release	()V
-    //   42: aload_0
-    //   43: aconst_null
-    //   44: putfield 25	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
+    //   0: ldc 18
+    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: invokestatic 30	com/eclipsesource/v8/V8:createV8Runtime	()Lcom/eclipsesource/v8/V8;
+    //   9: putfield 32	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
+    //   12: aload_0
+    //   13: getfield 15	com/eclipsesource/v8/utils/V8Thread:target	Lcom/eclipsesource/v8/utils/V8Runnable;
+    //   16: aload_0
+    //   17: getfield 32	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
+    //   20: invokeinterface 37 2 0
+    //   25: aload_0
+    //   26: monitorenter
+    //   27: aload_0
+    //   28: getfield 32	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
+    //   31: invokevirtual 41	com/eclipsesource/v8/V8:getLocker	()Lcom/eclipsesource/v8/V8Locker;
+    //   34: invokevirtual 47	com/eclipsesource/v8/V8Locker:hasLock	()Z
+    //   37: ifeq +15 -> 52
+    //   40: aload_0
+    //   41: getfield 32	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
+    //   44: invokevirtual 50	com/eclipsesource/v8/V8:release	()V
     //   47: aload_0
-    //   48: monitorexit
-    //   49: return
-    //   50: astore_1
-    //   51: aload_0
-    //   52: monitorexit
-    //   53: aload_1
-    //   54: athrow
-    //   55: astore_1
-    //   56: aload_0
-    //   57: monitorenter
-    //   58: aload_0
-    //   59: getfield 25	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
-    //   62: invokevirtual 34	com/eclipsesource/v8/V8:getLocker	()Lcom/eclipsesource/v8/V8Locker;
-    //   65: invokevirtual 40	com/eclipsesource/v8/V8Locker:hasLock	()Z
-    //   68: ifeq +15 -> 83
+    //   48: aconst_null
+    //   49: putfield 32	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
+    //   52: aload_0
+    //   53: monitorexit
+    //   54: ldc 18
+    //   56: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   59: return
+    //   60: astore_1
+    //   61: aload_0
+    //   62: monitorexit
+    //   63: ldc 18
+    //   65: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   68: aload_1
+    //   69: athrow
+    //   70: astore_1
     //   71: aload_0
-    //   72: getfield 25	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
-    //   75: invokevirtual 43	com/eclipsesource/v8/V8:release	()V
-    //   78: aload_0
-    //   79: aconst_null
-    //   80: putfield 25	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
-    //   83: aload_0
-    //   84: monitorexit
-    //   85: aload_1
-    //   86: athrow
-    //   87: astore_1
-    //   88: aload_0
-    //   89: monitorexit
-    //   90: aload_1
-    //   91: athrow
+    //   72: monitorenter
+    //   73: aload_0
+    //   74: getfield 32	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
+    //   77: invokevirtual 41	com/eclipsesource/v8/V8:getLocker	()Lcom/eclipsesource/v8/V8Locker;
+    //   80: invokevirtual 47	com/eclipsesource/v8/V8Locker:hasLock	()Z
+    //   83: ifeq +15 -> 98
+    //   86: aload_0
+    //   87: getfield 32	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
+    //   90: invokevirtual 50	com/eclipsesource/v8/V8:release	()V
+    //   93: aload_0
+    //   94: aconst_null
+    //   95: putfield 32	com/eclipsesource/v8/utils/V8Thread:runtime	Lcom/eclipsesource/v8/V8;
+    //   98: aload_0
+    //   99: monitorexit
+    //   100: ldc 18
+    //   102: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   105: aload_1
+    //   106: athrow
+    //   107: astore_1
+    //   108: aload_0
+    //   109: monitorexit
+    //   110: ldc 18
+    //   112: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   115: aload_1
+    //   116: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	92	0	this	V8Thread
-    //   50	4	1	localObject1	java.lang.Object
-    //   55	31	1	localObject2	java.lang.Object
-    //   87	4	1	localObject3	java.lang.Object
+    //   0	117	0	this	V8Thread
+    //   60	9	1	localObject1	java.lang.Object
+    //   70	36	1	localObject2	java.lang.Object
+    //   107	9	1	localObject3	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   22	47	50	finally
-    //   47	49	50	finally
-    //   51	53	50	finally
-    //   7	20	55	finally
-    //   58	83	87	finally
-    //   83	85	87	finally
-    //   88	90	87	finally
+    //   27	52	60	finally
+    //   52	54	60	finally
+    //   61	63	60	finally
+    //   12	25	70	finally
+    //   73	98	107	finally
+    //   98	100	107	finally
+    //   108	110	107	finally
   }
 }
 

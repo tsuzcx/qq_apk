@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote.voiceview;
 
-import com.tencent.mm.ah.h;
-import com.tencent.mm.ah.h.a;
-import com.tencent.mm.ah.h.b;
-import com.tencent.mm.ah.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.h;
+import com.tencent.mm.ai.h.a;
+import com.tencent.mm.ai.h.b;
+import com.tencent.mm.ai.i;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.sdk.platformtools.SensorController;
 import com.tencent.mm.sdk.platformtools.SensorController.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.bb;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,222 +23,283 @@ import java.util.List;
 public class a
   implements h.a, h.b, SensorController.a
 {
-  public static volatile a rNG = null;
-  private int bNM;
-  public List<a.a> dhm = new LinkedList();
-  public SensorController iah;
-  private boolean iak = true;
-  public bb ial;
-  private long iam = -1L;
-  private boolean ian;
-  private boolean iar = false;
-  public h jZC = ((i)g.r(i.class)).tl();
+  public static volatile a vEk = null;
+  public List<a.a> callbacks;
+  private int cve;
+  private long lastShakeTime;
+  public h mtU;
+  private boolean mtV;
+  private boolean mtW;
+  private boolean mtX;
+  public bf mtY;
+  public SensorController mub;
   public String path;
   
   private a()
   {
-    au.Hx();
-    Boolean localBoolean = (Boolean)c.Dz().get(26, Boolean.valueOf(false));
-    this.ian = localBoolean.booleanValue();
+    AppMethodBeat.i(27198);
+    this.mtV = true;
+    this.mtX = false;
+    this.lastShakeTime = -1L;
+    this.callbacks = new LinkedList();
+    this.mtU = ((i)g.E(i.class)).BP();
+    aw.aaz();
+    Boolean localBoolean = (Boolean)c.Ru().get(26, Boolean.FALSE);
+    this.mtW = localBoolean.booleanValue();
     boolean bool;
     if (!localBoolean.booleanValue())
     {
       bool = true;
-      this.iak = bool;
-      if (this.jZC == null) {
-        break label179;
+      this.mtV = bool;
+      if (this.mtU == null) {
+        break label190;
       }
-      this.jZC.a(this);
-      this.jZC.a(this);
-      this.jZC.aV(this.iak);
+      this.mtU.a(this);
+      this.mtU.a(this);
+      this.mtU.bx(this.mtV);
     }
     for (;;)
     {
-      if (this.iah == null) {
-        this.iah = new SensorController(ae.getContext());
+      if (this.mub == null) {
+        this.mub = new SensorController(ah.getContext());
       }
-      if (this.ial == null) {
-        this.ial = new bb(ae.getContext());
+      if (this.mtY == null) {
+        this.mtY = new bf(ah.getContext());
       }
+      AppMethodBeat.o(27198);
       return;
       bool = false;
       break;
-      label179:
-      y.w("MicroMsg.RecordVoiceHelper", "get voice player fail, it is null");
+      label190:
+      ab.w("MicroMsg.RecordVoiceHelper", "get voice player fail, it is null");
     }
   }
   
-  public static a cjx()
+  private void bLl()
   {
-    if (rNG == null) {}
+    AppMethodBeat.i(27201);
+    if ((this.mub != null) && (!this.mub.yqq))
+    {
+      this.mub.a(this);
+      a.1 local1 = new a.1(this);
+      if (this.mtY.ai(local1))
+      {
+        this.lastShakeTime = 0L;
+        AppMethodBeat.o(27201);
+        return;
+      }
+      this.lastShakeTime = -1L;
+    }
+    AppMethodBeat.o(27201);
+  }
+  
+  private void bwC()
+  {
+    AppMethodBeat.i(27202);
+    if (this.mub != null) {
+      this.mub.dtJ();
+    }
+    if (this.mtY != null) {
+      this.mtY.dtK();
+    }
+    AppMethodBeat.o(27202);
+  }
+  
+  public static a djZ()
+  {
+    AppMethodBeat.i(27199);
+    if (vEk == null) {}
     try
     {
-      if (rNG == null) {
-        rNG = new a();
+      if (vEk == null) {
+        vEk = new a();
       }
-      return rNG;
+      a locala = vEk;
+      AppMethodBeat.o(27199);
+      return locala;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(27199);
+    }
+  }
+  
+  public final double Er()
+  {
+    AppMethodBeat.i(27206);
+    if (this.mtU == null)
+    {
+      ab.w("MicroMsg.RecordVoiceHelper", "get now progress error, player is null");
+      AppMethodBeat.o(27206);
+      return 0.0D;
+    }
+    double d = this.mtU.Er();
+    AppMethodBeat.o(27206);
+    return d;
+  }
+  
+  public final void Es()
+  {
+    AppMethodBeat.i(27208);
+    ab.d("MicroMsg.RecordVoiceHelper", "on completion, do stop play");
+    stopPlay();
+    AppMethodBeat.o(27208);
   }
   
   public final void a(a.a parama)
   {
-    if (parama == null) {
+    AppMethodBeat.i(27200);
+    if (parama == null)
+    {
+      AppMethodBeat.o(27200);
       return;
     }
-    Iterator localIterator = this.dhm.iterator();
+    Iterator localIterator = this.callbacks.iterator();
     while (localIterator.hasNext()) {
-      if (parama == (a.a)localIterator.next()) {
+      if (parama == (a.a)localIterator.next())
+      {
+        AppMethodBeat.o(27200);
         return;
       }
     }
-    this.dhm.add(parama);
+    this.callbacks.add(parama);
+    AppMethodBeat.o(27200);
   }
   
-  public final boolean aQk()
+  public final boolean bwz()
   {
-    if (this.jZC == null)
+    AppMethodBeat.i(27205);
+    if (this.mtU == null)
     {
-      y.w("MicroMsg.RecordVoiceHelper", "check is play, but player is null");
+      ab.w("MicroMsg.RecordVoiceHelper", "check is play, but player is null");
+      AppMethodBeat.o(27205);
       return false;
     }
-    return this.jZC.isPlaying();
+    boolean bool = this.mtU.isPlaying();
+    AppMethodBeat.o(27205);
+    return bool;
   }
   
-  public final void eq(boolean paramBoolean)
+  public final void hv(boolean paramBoolean)
   {
     boolean bool = true;
-    if (bk.bl(this.path)) {}
-    do
+    AppMethodBeat.i(27209);
+    if (bo.isNullOrNil(this.path))
     {
-      do
+      AppMethodBeat.o(27209);
+      return;
+    }
+    if (this.mtX)
+    {
+      if (!paramBoolean) {}
+      for (paramBoolean = bool;; paramBoolean = false)
       {
-        return;
-        if (this.iar)
-        {
-          if (!paramBoolean) {}
-          for (paramBoolean = bool;; paramBoolean = false)
-          {
-            this.iar = paramBoolean;
-            return;
-          }
-        }
-        if ((!paramBoolean) && (this.iam != -1L) && (bk.cp(this.iam) > 400L))
-        {
-          this.iar = true;
-          return;
-        }
-        this.iar = false;
-      } while ((this.jZC != null) && (this.jZC.uc()));
-      if (this.ian)
-      {
-        if (this.jZC != null) {
-          this.jZC.aV(false);
-        }
-        this.iak = false;
+        this.mtX = paramBoolean;
+        AppMethodBeat.o(27209);
         return;
       }
-      if ((this.jZC != null) && (!this.jZC.isPlaying()))
-      {
-        this.jZC.aV(true);
-        this.iak = true;
-        return;
+    }
+    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (bo.av(this.lastShakeTime) > 400L))
+    {
+      this.mtX = true;
+      AppMethodBeat.o(27209);
+      return;
+    }
+    this.mtX = false;
+    if ((this.mtU != null) && (this.mtU.Ep()))
+    {
+      AppMethodBeat.o(27209);
+      return;
+    }
+    if (this.mtW)
+    {
+      if (this.mtU != null) {
+        this.mtU.bx(false);
       }
-      if (this.jZC != null) {
-        this.jZC.aV(paramBoolean);
-      }
-      this.iak = paramBoolean;
-    } while (paramBoolean);
-    startPlay(this.path, this.bNM);
+      this.mtV = false;
+      AppMethodBeat.o(27209);
+      return;
+    }
+    if ((this.mtU != null) && (!this.mtU.isPlaying()))
+    {
+      this.mtU.bx(true);
+      this.mtV = true;
+      AppMethodBeat.o(27209);
+      return;
+    }
+    if (this.mtU != null) {
+      this.mtU.bx(paramBoolean);
+    }
+    this.mtV = paramBoolean;
+    if (!paramBoolean) {
+      startPlay(this.path, this.cve);
+    }
+    AppMethodBeat.o(27209);
   }
   
   public final void onError()
   {
-    y.d("MicroMsg.RecordVoiceHelper", "on error, do stop play");
+    AppMethodBeat.i(27207);
+    ab.d("MicroMsg.RecordVoiceHelper", "on error, do stop play");
     stopPlay();
+    AppMethodBeat.o(27207);
   }
   
   public final boolean startPlay(String paramString, int paramInt)
   {
-    if (this.jZC == null)
+    AppMethodBeat.i(27203);
+    if (this.mtU == null)
     {
-      y.w("MicroMsg.RecordVoiceHelper", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
+      ab.w("MicroMsg.RecordVoiceHelper", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(27203);
       return false;
     }
-    this.jZC.stop();
-    Object localObject;
-    if ((this.iah != null) && (!this.iah.uil))
+    this.mtU.stop();
+    bLl();
+    this.path = paramString;
+    this.cve = paramInt;
+    if ((!bo.isNullOrNil(paramString)) && (this.mtU.a(paramString, this.mtV, true, paramInt)))
     {
-      this.iah.a(this);
-      localObject = new a.1(this);
-      if (!this.ial.W((Runnable)localObject)) {
-        break label178;
-      }
-    }
-    label178:
-    for (this.iam = 0L;; this.iam = -1L)
-    {
-      this.path = paramString;
-      this.bNM = paramInt;
-      if ((bk.bl(paramString)) || (!this.jZC.a(paramString, this.iak, true, paramInt))) {
-        break;
-      }
-      ag.Zm("keep_app_silent");
-      localObject = this.dhm.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        a.a locala = (a.a)((Iterator)localObject).next();
-        if (locala != null) {
-          locala.UJ(paramString);
-        }
-      }
-    }
-    return true;
-  }
-  
-  public final void stopPlay()
-  {
-    y.i("MicroMsg.RecordVoiceHelper", "stop play");
-    ag.Zn("keep_app_silent");
-    if (this.jZC != null)
-    {
-      this.jZC.stop();
-      Iterator localIterator = this.dhm.iterator();
+      aj.apk("keep_app_silent");
+      Iterator localIterator = this.callbacks.iterator();
       while (localIterator.hasNext())
       {
         a.a locala = (a.a)localIterator.next();
         if (locala != null) {
-          locala.cjw();
+          locala.akb(paramString);
+        }
+      }
+      AppMethodBeat.o(27203);
+      return true;
+    }
+    AppMethodBeat.o(27203);
+    return false;
+  }
+  
+  public final void stopPlay()
+  {
+    AppMethodBeat.i(27204);
+    ab.i("MicroMsg.RecordVoiceHelper", "stop play");
+    aj.apl("keep_app_silent");
+    if (this.mtU != null)
+    {
+      this.mtU.stop();
+      Iterator localIterator = this.callbacks.iterator();
+      while (localIterator.hasNext())
+      {
+        a.a locala = (a.a)localIterator.next();
+        if (locala != null) {
+          locala.djY();
         }
       }
     }
-    if (this.iah != null) {
-      this.iah.crJ();
-    }
-    if (this.ial != null) {
-      this.ial.crK();
-    }
-  }
-  
-  public final double ue()
-  {
-    if (this.jZC == null)
-    {
-      y.w("MicroMsg.RecordVoiceHelper", "get now progress error, player is null");
-      return 0.0D;
-    }
-    return this.jZC.ue();
-  }
-  
-  public final void ug()
-  {
-    y.d("MicroMsg.RecordVoiceHelper", "on completion, do stop play");
-    stopPlay();
+    bwC();
+    AppMethodBeat.o(27204);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a
  * JD-Core Version:    0.7.0.1
  */

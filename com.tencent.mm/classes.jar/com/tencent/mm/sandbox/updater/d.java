@@ -5,155 +5,182 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mm.pluginsdk.ui.tools.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.t;
 import com.tencent.xweb.x5.sdk.f;
 
 public final class d
   implements a
 {
-  Intent intent = new Intent();
-  private Notification pAt = null;
-  private d.a ucG = null;
-  private int ucH = 999;
-  private boolean ucI = false;
-  private boolean ucJ = false;
-  private boolean ucK = false;
+  Intent intent;
+  private Notification oUV;
+  private d.a ykV;
+  private int ykW;
+  private boolean ykX;
+  private boolean ykY;
+  private boolean ykZ;
   
   static
   {
-    t.a(ae.getContext(), new d.1());
-    com.tencent.xweb.b.d.a(com.tencent.mm.plugin.cdndownloader.i.a.aDE());
+    AppMethodBeat.i(28893);
+    com.tencent.mm.cn.d.iO(ah.getContext());
+    com.tencent.xweb.b.d.a(com.tencent.mm.plugin.cdndownloader.i.a.bgb());
+    AppMethodBeat.o(28893);
   }
   
-  public static d cpO()
+  private d()
   {
-    return d.b.ucN;
+    AppMethodBeat.i(28884);
+    this.ykV = null;
+    this.intent = new Intent();
+    this.oUV = null;
+    this.ykW = 999;
+    this.ykX = false;
+    this.ykY = false;
+    this.ykZ = false;
+    AppMethodBeat.o(28884);
   }
   
-  private void cpP()
+  private void bIh()
   {
-    if (this.ucK)
+    AppMethodBeat.i(28885);
+    if (this.ykZ)
     {
-      y.i("MicroMsg.TBSDownloadMgr", "TBS already downloaded, ignore duplicated request");
+      ab.i("MicroMsg.TBSDownloadMgr", "TBS already downloaded, ignore duplicated request");
+      AppMethodBeat.o(28885);
       return;
     }
-    this.ucK = true;
-    if (this.ucG == null)
+    this.ykZ = true;
+    if (this.ykV == null)
     {
-      this.ucG = new d.a(this, (byte)0);
-      com.tencent.xweb.x5.sdk.d.a(this.ucG);
-      k.jdMethod_if(2);
+      this.ykV = new d.a(this, (byte)0);
+      com.tencent.xweb.x5.sdk.d.a(this.ykV);
+      m.kS(2);
     }
-    cpQ();
-    k.jdMethod_if(3);
+    drE();
+    m.kS(3);
+    AppMethodBeat.o(28885);
   }
   
-  private void cpQ()
+  public static d drD()
   {
-    f.startDownload(ae.getContext());
-    SharedPreferences localSharedPreferences = ae.getContext().getSharedPreferences("com.tencent.mm_webview_x5_preferences", 4);
+    return d.b.ylc;
+  }
+  
+  private void drE()
+  {
+    AppMethodBeat.i(28887);
+    f.startDownload(ah.getContext());
+    SharedPreferences localSharedPreferences = ah.getContext().getSharedPreferences("com.tencent.mm_webview_x5_preferences", 4);
     if (localSharedPreferences != null)
     {
-      y.i("MicroMsg.TBSDownloadMgr", "now start download,hasDownloadOverSea over sea = %b, is now oversea = %b", new Object[] { Boolean.valueOf(this.ucJ), Boolean.valueOf(this.ucI) });
-      if ((this.ucJ) || (this.ucI)) {
+      ab.i("MicroMsg.TBSDownloadMgr", "now start download,hasDownloadOverSea over sea = %b, is now oversea = %b", new Object[] { Boolean.valueOf(this.ykY), Boolean.valueOf(this.ykX) });
+      if ((this.ykY) || (this.ykX)) {
         localSharedPreferences.edit().putBoolean("tbs_download_oversea", true).commit();
       }
     }
+    AppMethodBeat.o(28887);
   }
   
-  public final boolean aj(Intent paramIntent)
+  public final boolean aI(Intent paramIntent)
   {
+    AppMethodBeat.i(28888);
     this.intent = paramIntent;
-    boolean bool1;
-    if (this.intent.getIntExtra("intent_extra_download_type", 1) == 2)
+    if (this.intent.getIntExtra("intent_extra_download_type", 1) == 2) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      bool1 = true;
-      this.ucI = bool1;
-      paramIntent = ae.getContext().getSharedPreferences("com.tencent.mm_webview_x5_preferences", 4);
+      this.ykX = bool1;
+      paramIntent = ah.getContext().getSharedPreferences("com.tencent.mm_webview_x5_preferences", 4);
       if (paramIntent != null) {
-        this.ucJ = paramIntent.getBoolean("tbs_download_oversea", false);
+        this.ykY = paramIntent.getBoolean("tbs_download_oversea", false);
       }
-      y.i("MicroMsg.TBSDownloadMgr", "isOverSea = %b, hasDownloadOverSea = %b", new Object[] { Boolean.valueOf(this.ucI), Boolean.valueOf(this.ucJ) });
+      ab.i("MicroMsg.TBSDownloadMgr", "isOverSea = %b, hasDownloadOverSea = %b", new Object[] { Boolean.valueOf(this.ykX), Boolean.valueOf(this.ykY) });
       bool1 = f.isDownloading();
-      com.tencent.xweb.x5.sdk.d.setUploadCode(ae.getContext(), 133);
+      com.tencent.xweb.x5.sdk.d.setUploadCode(ah.getContext(), 133);
       if (!bool1) {
-        break label126;
+        break;
       }
-      y.i("MicroMsg.TBSDownloadMgr", "TBS already downloading, ignore duplicated request");
-      com.tencent.xweb.x5.sdk.d.setUploadCode(ae.getContext(), 134);
-    }
-    label126:
-    boolean bool2;
-    boolean bool3;
-    do
-    {
+      ab.i("MicroMsg.TBSDownloadMgr", "TBS already downloading, ignore duplicated request");
+      com.tencent.xweb.x5.sdk.d.setUploadCode(ah.getContext(), 134);
+      AppMethodBeat.o(28888);
       return true;
-      bool1 = false;
-      break;
-      this.ucK = false;
-      paramIntent = ae.getContext();
-      int i = WebView.getInstalledTbsCoreVersion(paramIntent);
-      bool1 = f.a(paramIntent, this.ucI | this.ucJ, false, new d.2(this));
-      bool2 = aq.isWifi(paramIntent);
-      bool3 = this.intent.getBooleanExtra("intent_extra_download_ignore_network_type", false);
-      y.i("MicroMsg.TBSDownloadMgr", "TBS download, tbsCoreVersion = %d, needDownload = %b, isWifi = %b, ignoreNetworkType = %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-      if (((bool2) || (bool3)) && (bool1))
-      {
-        cpP();
-        return true;
-      }
-    } while ((bool2) || (bool3));
+    }
+    this.ykZ = false;
+    paramIntent = ah.getContext();
+    int i = WebView.getInstalledTbsCoreVersion(paramIntent);
+    bool1 = f.a(paramIntent, this.ykX | this.ykY, false, new d.1(this));
+    boolean bool2 = at.isWifi(paramIntent);
+    boolean bool3 = this.intent.getBooleanExtra("intent_extra_download_ignore_network_type", false);
+    ab.i("MicroMsg.TBSDownloadMgr", "TBS download, tbsCoreVersion = %d, needDownload = %b, isWifi = %b, ignoreNetworkType = %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+    if (((bool2) || (bool3)) && (bool1))
+    {
+      bIh();
+      AppMethodBeat.o(28888);
+      return true;
+    }
+    if ((bool2) || (bool3))
+    {
+      AppMethodBeat.o(28888);
+      return true;
+    }
+    AppMethodBeat.o(28888);
     return false;
   }
   
   public final boolean isBusy()
   {
-    boolean bool1 = false;
-    boolean bool3 = f.isDownloading();
+    AppMethodBeat.i(28889);
+    boolean bool1 = f.isDownloading();
     boolean bool2 = com.tencent.xweb.x5.sdk.d.getTBSInstalling();
-    y.i("MicroMsg.TBSDownloadMgr", "isBusy isDownloading = %b, isInstalling = %b", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool2) });
-    if ((bool3) || (bool2)) {
-      bool1 = true;
-    }
-    return bool1;
-  }
-  
-  public final void mo(boolean paramBoolean)
-  {
-    if (this.ucG == null) {
-      y.w("MicroMsg.TBSDownloadMgr", "TBS download not inited, ignore");
-    }
-    boolean bool1;
-    boolean bool3;
-    boolean bool4;
-    do
+    ab.i("MicroMsg.TBSDownloadMgr", "isBusy isDownloading = %b, isInstalling = %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+    if ((bool1) || (bool2))
     {
-      return;
-      Context localContext = ae.getContext();
-      bool1 = f.isDownloading();
-      boolean bool2 = f.needDownload(localContext, this.ucI | this.ucJ);
-      bool3 = this.intent.getBooleanExtra("intent_extra_download_ignore_network_type", false);
-      bool4 = f.isDownloadForeground();
-      y.i("MicroMsg.TBSDownloadMgr", "setNetStatChanged, isWifi = %b, downloading = %b, needDownload = %b, ignoreNetworkType = %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-      if (((paramBoolean) || (bool3)) && (!bool1) && (bool2))
-      {
-        cpQ();
-        k.jdMethod_if(3);
-        return;
-      }
-    } while ((paramBoolean) || (bool3) || (!bool1) || (bool4));
-    f.stopDownload();
-    k.jdMethod_if(4);
+      AppMethodBeat.o(28889);
+      return true;
+    }
+    AppMethodBeat.o(28889);
+    return false;
   }
   
   public final void onDestroy()
   {
-    y.i("MicroMsg.TBSDownloadMgr", "onDestroy");
+    AppMethodBeat.i(28890);
+    ab.i("MicroMsg.TBSDownloadMgr", "onDestroy");
+    AppMethodBeat.o(28890);
+  }
+  
+  public final void pD(boolean paramBoolean)
+  {
+    AppMethodBeat.i(28886);
+    if (this.ykV == null)
+    {
+      ab.w("MicroMsg.TBSDownloadMgr", "TBS download not inited, ignore");
+      AppMethodBeat.o(28886);
+      return;
+    }
+    Context localContext = ah.getContext();
+    boolean bool1 = f.isDownloading();
+    boolean bool2 = f.needDownload(localContext, this.ykX | this.ykY);
+    boolean bool3 = this.intent.getBooleanExtra("intent_extra_download_ignore_network_type", false);
+    boolean bool4 = f.isDownloadForeground();
+    ab.i("MicroMsg.TBSDownloadMgr", "setNetStatChanged, isWifi = %b, downloading = %b, needDownload = %b, ignoreNetworkType = %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+    if (((paramBoolean) || (bool3)) && (!bool1) && (bool2))
+    {
+      drE();
+      m.kS(3);
+      AppMethodBeat.o(28886);
+      return;
+    }
+    if ((!paramBoolean) && (!bool3) && (bool1) && (!bool4))
+    {
+      f.stopDownload();
+      m.kS(4);
+    }
+    AppMethodBeat.o(28886);
   }
 }
 

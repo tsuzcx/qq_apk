@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.nearlife.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseLifeUI$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class BaseLifeUI$1
   
   public final void onClick(View paramView)
   {
-    BaseLifeUI.a(this.mEV);
+    AppMethodBeat.i(22936);
+    BaseLifeUI.a(this.pfa);
+    AppMethodBeat.o(22936);
   }
 }
 

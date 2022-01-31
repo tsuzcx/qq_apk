@@ -2,6 +2,7 @@ package com.tencent.mm.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ServiceNotifySettingsUI$2
   implements DialogInterface.OnCancelListener
@@ -10,7 +11,9 @@ final class ServiceNotifySettingsUI$2
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.uQG.finish();
+    AppMethodBeat.i(29851);
+    this.zeQ.finish();
+    AppMethodBeat.o(29851);
   }
 }
 

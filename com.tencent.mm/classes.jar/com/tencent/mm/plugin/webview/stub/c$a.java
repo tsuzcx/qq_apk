@@ -36,19 +36,19 @@ public abstract class c$a
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-      paramInt1 = ccZ();
+      paramInt1 = dcV();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     case 3: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-      paramInt1 = cda();
+      paramInt1 = getErrCode();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-      paramParcel1 = Lg();
+      paramParcel1 = getErrMsg();
       paramParcel2.writeNoException();
       paramParcel2.writeString(paramParcel1);
       return true;
@@ -68,7 +68,7 @@ public abstract class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.stub.c.a
  * JD-Core Version:    0.7.0.1
  */

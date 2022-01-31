@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.dynamic.j;
 
 import com.tencent.mm.ipcinvoker.c;
-import com.tencent.mm.plugin.appbrand.appcache.at.a;
+import com.tencent.mm.plugin.appbrand.appcache.ba.a;
 
 final class a$d$1
-  implements at.a
+  implements ba.a
 {
   a$d$1(a.d paramd, String paramString, c paramc) {}
 }

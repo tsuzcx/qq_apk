@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.facedetect.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsFacePrintManagerUI$5
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class SettingsFacePrintManagerUI$5
   
   public final void onClick(View paramView)
   {
-    SettingsFacePrintManagerUI.a(this.jSJ);
+    AppMethodBeat.i(530);
+    SettingsFacePrintManagerUI.a(this.mnf);
+    AppMethodBeat.o(530);
   }
 }
 

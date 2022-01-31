@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fts.ui.widget;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSLocalPageRelevantView$2
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class FTSLocalPageRelevantView$2
   
   public final void onClick(View paramView)
   {
-    this.kEH.onClick(paramView);
+    AppMethodBeat.i(62137);
+    this.nbf.onClick(paramView);
+    AppMethodBeat.o(62137);
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.graphics.Canvas;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.a.g;
 import com.tencent.mm.plugin.appbrand.canvas.d;
 import java.util.Objects;
@@ -12,8 +13,15 @@ import org.json.JSONObject;
 public class SetFillStyleActionArg
   extends BaseDrawActionArg
 {
-  public static final Parcelable.Creator<SetFillStyleActionArg> CREATOR = new SetFillStyleActionArg.1();
-  public RealSetFillStyleActionArg fLR;
+  public static final Parcelable.Creator<SetFillStyleActionArg> CREATOR;
+  public RealSetFillStyleActionArg hfb;
+  
+  static
+  {
+    AppMethodBeat.i(103456);
+    CREATOR = new SetFillStyleActionArg.1();
+    AppMethodBeat.o(103456);
+  }
   
   public SetFillStyleActionArg() {}
   
@@ -24,10 +32,15 @@ public class SetFillStyleActionArg
   
   public final boolean a(d paramd, Canvas paramCanvas)
   {
-    if (this.fLR == null) {
+    AppMethodBeat.i(103450);
+    if (this.hfb == null)
+    {
+      AppMethodBeat.o(103450);
       return false;
     }
-    return this.fLR.a(paramd, paramCanvas);
+    boolean bool = this.hfb.a(paramd, paramCanvas);
+    AppMethodBeat.o(103450);
+    return bool;
   }
   
   public int describeContents()
@@ -37,58 +50,75 @@ public class SetFillStyleActionArg
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this == paramObject) {
-      bool1 = true;
-    }
-    do
+    AppMethodBeat.i(103454);
+    if (this == paramObject)
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!(paramObject instanceof SetFillStyleActionArg));
-      bool1 = bool2;
-    } while (!super.equals(paramObject));
+      AppMethodBeat.o(103454);
+      return true;
+    }
+    if (!(paramObject instanceof SetFillStyleActionArg))
+    {
+      AppMethodBeat.o(103454);
+      return false;
+    }
+    if (!super.equals(paramObject))
+    {
+      AppMethodBeat.o(103454);
+      return false;
+    }
     paramObject = (SetFillStyleActionArg)paramObject;
-    return Objects.equals(this.fLR, paramObject.fLR);
+    boolean bool = Objects.equals(this.hfb, paramObject.hfb);
+    AppMethodBeat.o(103454);
+    return bool;
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
-    super.f(paramParcel);
-    this.fLR = ((RealSetFillStyleActionArg)paramParcel.readParcelable(SetFillStyleActionArg.class.getClassLoader()));
+    AppMethodBeat.i(103451);
+    super.h(paramParcel);
+    this.hfb = ((RealSetFillStyleActionArg)paramParcel.readParcelable(SetFillStyleActionArg.class.getClassLoader()));
+    AppMethodBeat.o(103451);
   }
   
   public int hashCode()
   {
-    return Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.fLR });
+    AppMethodBeat.i(103455);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.hfb });
+    AppMethodBeat.o(103455);
+    return i;
   }
   
-  public final void j(JSONObject paramJSONObject)
+  public final void p(JSONObject paramJSONObject)
   {
-    super.j(paramJSONObject);
+    AppMethodBeat.i(103453);
+    super.p(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    if (paramJSONObject.length() < 2) {
+    if (paramJSONObject.length() < 2)
+    {
+      AppMethodBeat.o(103453);
       return;
     }
     String str = paramJSONObject.optString(0);
-    this.fLR = ((RealSetFillStyleActionArg)g.adM().rK(str));
-    this.fLR.e(paramJSONObject);
+    this.hfb = ((RealSetFillStyleActionArg)g.aye().zA(str));
+    this.hfb.f(paramJSONObject);
+    AppMethodBeat.o(103453);
   }
   
   public final void reset()
   {
+    AppMethodBeat.i(103449);
     super.reset();
-    g.adM().a(this.fLR);
-    this.fLR = null;
+    g.aye().a(this.hfb);
+    this.hfb = null;
+    AppMethodBeat.o(103449);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(103452);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeParcelable(this.fLR, paramInt);
+    paramParcel.writeParcelable(this.hfb, paramInt);
+    AppMethodBeat.o(103452);
   }
 }
 

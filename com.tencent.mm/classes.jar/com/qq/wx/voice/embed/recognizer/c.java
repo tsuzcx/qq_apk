@@ -4,7 +4,7 @@ public abstract interface c
 {
   public abstract void a(a parama);
   
-  public abstract void dX(int paramInt);
+  public abstract void fn(int paramInt);
 }
 
 

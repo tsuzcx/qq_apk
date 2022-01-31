@@ -2,6 +2,7 @@ package com.tencent.mm.ui.contact;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 final class SelectContactUI$8
@@ -11,7 +12,9 @@ final class SelectContactUI$8
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SelectContactUI.a(this.vNB, this.vNG);
+    AppMethodBeat.i(153969);
+    SelectContactUI.a(this.Afg, this.Afj);
+    AppMethodBeat.o(153969);
   }
 }
 

@@ -2,21 +2,24 @@ package com.tencent.tmassistantsdk.openSDK.opensdktomsdk;
 
 import android.os.Bundle;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak.a;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.AuthorizedResult;
 
 class TMOpenSDKToMsdkManager$1
-  implements ah.a
+  implements ak.a
 {
   TMOpenSDKToMsdkManager$1(TMOpenSDKToMsdkManager paramTMOpenSDKToMsdkManager) {}
   
   public boolean handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(75920);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(75920);
       return false;
       paramMessage = (AuthorizedResult)paramMessage.obj;
       if (paramMessage != null)

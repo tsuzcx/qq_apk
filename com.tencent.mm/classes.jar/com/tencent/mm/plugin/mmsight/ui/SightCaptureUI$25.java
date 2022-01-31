@@ -1,18 +1,29 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.mmsight.model.e;
 
 final class SightCaptureUI$25
-  implements View.OnClickListener
+  implements MMSightRecordButton.c
 {
   SightCaptureUI$25(SightCaptureUI paramSightCaptureUI) {}
   
-  public final void onClick(View paramView)
+  public final void uR(int paramInt)
   {
-    if (SightCaptureUI.h(this.mqB) != null) {
-      SightCaptureUI.r(this.mqB);
+    AppMethodBeat.i(55224);
+    if (SightCaptureUI.j(this.oQf) != null) {
+      SightCaptureUI.j(this.oQf).d(true, true, paramInt);
     }
+    AppMethodBeat.o(55224);
+  }
+  
+  public final void uS(int paramInt)
+  {
+    AppMethodBeat.i(55225);
+    if (SightCaptureUI.j(this.oQf) != null) {
+      SightCaptureUI.j(this.oQf).d(false, true, paramInt);
+    }
+    AppMethodBeat.o(55225);
   }
 }
 

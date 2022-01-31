@@ -5,9 +5,9 @@ import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 
 final class c$b
 {
-  CdnImageView nvv;
-  TextView nvw;
-  TextView nvx;
+  CdnImageView qgr;
+  TextView qgs;
+  TextView qgt;
   
   private c$b(c paramc) {}
 }

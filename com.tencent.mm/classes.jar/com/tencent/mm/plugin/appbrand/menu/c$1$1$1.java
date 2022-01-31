@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$1$1$1
   implements Runnable
@@ -9,7 +10,9 @@ final class c$1$1$1
   
   public final void run()
   {
-    ((ViewGroup)this.gOP.gOO.gOM).removeView(this.gOP.gOO.gOL);
+    AppMethodBeat.i(132196);
+    ((ViewGroup)this.iqx.iqw.val$rootView).removeView(this.iqx.iqw.iqu);
+    AppMethodBeat.o(132196);
   }
 }
 

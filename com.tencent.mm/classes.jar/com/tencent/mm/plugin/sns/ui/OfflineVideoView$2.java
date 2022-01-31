@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class OfflineVideoView$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class OfflineVideoView$2
   
   public final void run()
   {
-    this.oRp.Df(this.kjY);
+    AppMethodBeat.i(38361);
+    this.rJb.Oh(this.mED);
+    AppMethodBeat.o(38361);
   }
 }
 

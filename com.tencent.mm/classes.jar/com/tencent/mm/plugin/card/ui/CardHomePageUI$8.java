@@ -3,53 +3,60 @@ package com.tencent.mm.plugin.card.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.a.rc;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.so;
 import com.tencent.mm.plugin.card.d.b;
 import com.tencent.mm.plugin.card.sharecard.ui.ShareCardListUI;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.lx;
-import com.tencent.mm.protocal.c.lz;
+import com.tencent.mm.protocal.protobuf.ou;
+import com.tencent.mm.protocal.protobuf.ow;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class CardHomePageUI$8
   implements View.OnClickListener
 {
-  CardHomePageUI$8(CardHomePageUI paramCardHomePageUI, lz paramlz) {}
+  CardHomePageUI$8(CardHomePageUI paramCardHomePageUI, ow paramow) {}
   
   public final void onClick(View paramView)
   {
-    if (this.ivc.sHT == 1) {
-      b.a(this.ivb, this.ivc.sHU, 0);
-    }
-    do
+    AppMethodBeat.i(88490);
+    if (this.kwg.wFw == 1)
     {
-      do
-      {
-        return;
-        if (this.ivc.sHT != 2) {
-          break;
-        }
-      } while (this.ivc.sHV == null);
-      paramView = new rc();
-      paramView.caq.userName = this.ivc.sHV.qhq;
-      paramView.caq.cas = bk.aM(this.ivc.sHV.qhr, "");
-      paramView.caq.scene = 1028;
-      a.udP.m(paramView);
+      b.a(this.kwf, this.kwg.wFx, 0);
+      AppMethodBeat.o(88490);
       return;
-      if (this.ivc.sHT != 3) {
-        break;
+    }
+    if (this.kwg.wFw == 2)
+    {
+      if (this.kwg.wFy != null)
+      {
+        paramView = new so();
+        paramView.cIQ.userName = this.kwg.wFy.ugl;
+        paramView.cIQ.cIS = bo.bf(this.kwg.wFy.uaL, "");
+        paramView.cIQ.scene = 1028;
+        a.ymk.l(paramView);
+        AppMethodBeat.o(88490);
       }
-    } while (!"weixin://wccard/sharecarddetail".equals(this.ivc.sHW));
-    y.d("MicroMsg.CardHomePageUI", "go to share card ui");
-    paramView = new Intent(this.ivb, ShareCardListUI.class);
-    paramView.putExtra("key_layout_buff", CardHomePageUI.e(this.ivb));
-    CardHomePageUI.f(this.ivb);
-    this.ivb.startActivity(paramView);
-    h.nFQ.f(11324, new Object[] { "ClickShareCard", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) });
-    return;
-    y.w("MicroMsg.CardHomePageUI", "unknown op action: %s", new Object[] { Integer.valueOf(this.ivc.sHT) });
+    }
+    else if (this.kwg.wFw == 3)
+    {
+      if ("weixin://wccard/sharecarddetail".equals(this.kwg.wFz))
+      {
+        ab.d("MicroMsg.CardHomePageUI", "go to share card ui");
+        paramView = new Intent(this.kwf, ShareCardListUI.class);
+        paramView.putExtra("key_layout_buff", CardHomePageUI.e(this.kwf));
+        CardHomePageUI.f(this.kwf);
+        this.kwf.startActivity(paramView);
+        h.qsU.e(11324, new Object[] { "ClickShareCard", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) });
+        AppMethodBeat.o(88490);
+      }
+    }
+    else {
+      ab.w("MicroMsg.CardHomePageUI", "unknown op action: %s", new Object[] { Integer.valueOf(this.kwg.wFw) });
+    }
+    AppMethodBeat.o(88490);
   }
 }
 

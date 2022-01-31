@@ -1,24 +1,27 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
 import android.widget.Toast;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.remittance.bankcard.a.a;
-import com.tencent.mm.protocal.c.ei;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.protocal.protobuf.fj;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class BankRemitBankcardInputUI$2
-  implements n.a
+  implements p.a
 {
   BankRemitBankcardInputUI$2(BankRemitBankcardInputUI paramBankRemitBankcardInputUI, a parama) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.e("MicroMsg.BankRemitBankcardInputUI", "appoint reponse error: %s, msg: %s", new Object[] { Integer.valueOf(this.nwe.nuQ.iHq), this.nwe.nuQ.iHr });
-    if (!bk.bl(this.nwe.nuQ.iHr)) {
-      Toast.makeText(this.nwd, this.nwe.nuQ.iHr, 1).show();
+    AppMethodBeat.i(44514);
+    ab.e("MicroMsg.BankRemitBankcardInputUI", "appoint reponse error: %s, msg: %s", new Object[] { Integer.valueOf(this.qhf.qfJ.cnK), this.qhf.qfJ.kNv });
+    if (!bo.isNullOrNil(this.qhf.qfJ.kNv)) {
+      Toast.makeText(this.qhe, this.qhf.qfJ.kNv, 1).show();
     }
+    AppMethodBeat.o(44514);
   }
 }
 

@@ -1,22 +1,21 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyPrepareUI$5
-  implements TextWatcher
+  implements MenuItem.OnMenuItemClickListener
 {
-  LuckyMoneyPrepareUI$5(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI, EditText paramEditText) {}
+  LuckyMoneyPrepareUI$5(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final void afterTextChanged(Editable paramEditable)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.lMy.setContentDescription(paramEditable.toString());
+    AppMethodBeat.i(42945);
+    LuckyMoneyPrepareUI.u(this.owL);
+    AppMethodBeat.o(42945);
+    return true;
   }
-  
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

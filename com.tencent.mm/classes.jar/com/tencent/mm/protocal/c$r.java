@@ -5,7 +5,7 @@ public final class c$r
 {
   public c$r()
   {
-    super("cancelDownloadTask", "cancel_download_task", 39, false);
+    super("batchViewCard", "batchViewCard", 111, true);
   }
 }
 

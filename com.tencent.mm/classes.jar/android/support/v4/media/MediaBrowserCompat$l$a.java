@@ -12,15 +12,15 @@ class MediaBrowserCompat$l$a
   
   public final void k(List<?> paramList)
   {
-    if (this.Bd.Bc == null) {}
-    for (Object localObject1 = null; localObject1 == null; localObject1 = (MediaBrowserCompat.k)this.Bd.Bc.get())
+    if (this.BP.BO == null) {}
+    for (Object localObject1 = null; localObject1 == null; localObject1 = (MediaBrowserCompat.k)this.BP.BO.get())
     {
       MediaBrowserCompat.MediaItem.j(paramList);
       return;
     }
     paramList = MediaBrowserCompat.MediaItem.j(paramList);
-    List localList = ((MediaBrowserCompat.k)localObject1).eU;
-    localObject1 = ((MediaBrowserCompat.k)localObject1).Ba;
+    List localList = ((MediaBrowserCompat.k)localObject1).fT;
+    localObject1 = ((MediaBrowserCompat.k)localObject1).BM;
     int i = 0;
     label63:
     int j;

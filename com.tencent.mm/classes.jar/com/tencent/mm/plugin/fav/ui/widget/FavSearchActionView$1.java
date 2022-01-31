@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fav.ui.widget;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.List;
 
 final class FavSearchActionView$1
@@ -8,67 +9,85 @@ final class FavSearchActionView$1
 {
   FavSearchActionView$1(FavSearchActionView paramFavSearchActionView) {}
   
-  public final void Bc(String paramString)
+  public final void Le(String paramString)
   {
-    y.d("MicroMsg.FavSearchActionView", "unselected tag %s", new Object[] { paramString });
-    FavSearchActionView.a(this.kjG).removeTag(paramString);
-    Be(paramString);
+    AppMethodBeat.i(74682);
+    ab.d("MicroMsg.FavSearchActionView", "unselected tag %s", new Object[] { paramString });
+    FavSearchActionView.a(this.mEl).removeTag(paramString);
+    Lg(paramString);
+    AppMethodBeat.o(74682);
   }
   
-  public final void Bd(String paramString) {}
+  public final void Lf(String paramString) {}
   
-  public final void Be(String paramString)
+  public final void Lg(String paramString)
   {
-    FavSearchActionView.a(this.kjG, FavSearchActionView.a(this.kjG).getEditText());
-    FavSearchActionView.b(this.kjG).remove(paramString);
-    FavSearchActionView.c(this.kjG);
-    if (FavSearchActionView.d(this.kjG) == null) {
+    AppMethodBeat.i(74683);
+    FavSearchActionView.a(this.mEl, FavSearchActionView.a(this.mEl).getEditText());
+    FavSearchActionView.b(this.mEl).remove(paramString);
+    FavSearchActionView.c(this.mEl);
+    if (FavSearchActionView.d(this.mEl) == null)
+    {
+      AppMethodBeat.o(74683);
       return;
     }
-    FavSearchActionView.d(this.kjG).a(FavSearchActionView.e(this.kjG), FavSearchActionView.f(this.kjG), FavSearchActionView.b(this.kjG), true);
+    FavSearchActionView.d(this.mEl).a(FavSearchActionView.e(this.mEl), FavSearchActionView.f(this.mEl), FavSearchActionView.b(this.mEl), true);
+    AppMethodBeat.o(74683);
   }
   
-  public final void Bf(String paramString)
+  public final void Lh(String paramString)
   {
-    FavSearchActionView.a(this.kjG, FavSearchActionView.a(this.kjG).getEditText());
-    FavSearchActionView.c(this.kjG);
-    if (FavSearchActionView.d(this.kjG) == null) {
+    AppMethodBeat.i(74684);
+    FavSearchActionView.a(this.mEl, FavSearchActionView.a(this.mEl).getEditText());
+    FavSearchActionView.c(this.mEl);
+    if (FavSearchActionView.d(this.mEl) == null)
+    {
+      AppMethodBeat.o(74684);
       return;
     }
-    FavSearchActionView.d(this.kjG).a(paramString, FavSearchActionView.e(this.kjG), FavSearchActionView.f(this.kjG), FavSearchActionView.b(this.kjG));
+    FavSearchActionView.d(this.mEl).a(paramString, FavSearchActionView.e(this.mEl), FavSearchActionView.f(this.mEl), FavSearchActionView.b(this.mEl));
+    AppMethodBeat.o(74684);
   }
   
-  public final void Bg(String paramString)
+  public final void Li(String paramString)
   {
-    FavSearchActionView.a(this.kjG, paramString);
-    FavSearchActionView.d(this.kjG).a(FavSearchActionView.e(this.kjG), FavSearchActionView.f(this.kjG), FavSearchActionView.b(this.kjG), false);
+    AppMethodBeat.i(74685);
+    FavSearchActionView.a(this.mEl, paramString);
+    FavSearchActionView.d(this.mEl).a(FavSearchActionView.e(this.mEl), FavSearchActionView.f(this.mEl), FavSearchActionView.b(this.mEl), false);
+    AppMethodBeat.o(74685);
   }
   
-  public final void De(String paramString)
+  public final void Og(String paramString)
   {
-    y.d("MicroMsg.FavSearchActionView", "unselected type %s", new Object[] { paramString });
-    FavTagPanel.aSd();
-    FavSearchActionView.a(this.kjG, FavSearchActionView.a(this.kjG).getEditText());
-    FavSearchActionView.e(this.kjG).remove(FavSearchActionView.ag(this.kjG.getContext(), paramString));
-    FavSearchActionView.c(this.kjG);
-    if (FavSearchActionView.d(this.kjG) != null) {
-      FavSearchActionView.d(this.kjG).a(FavSearchActionView.e(this.kjG), FavSearchActionView.f(this.kjG), FavSearchActionView.b(this.kjG), true);
+    AppMethodBeat.i(74687);
+    ab.d("MicroMsg.FavSearchActionView", "unselected type %s", new Object[] { paramString });
+    FavSearchActionView.a(this.mEl);
+    FavSearchActionView.a(this.mEl, FavSearchActionView.a(this.mEl).getEditText());
+    FavSearchActionView.e(this.mEl).remove(FavSearchActionView.ao(this.mEl.getContext(), paramString));
+    FavSearchActionView.c(this.mEl);
+    if (FavSearchActionView.d(this.mEl) != null) {
+      FavSearchActionView.d(this.mEl).a(FavSearchActionView.e(this.mEl), FavSearchActionView.f(this.mEl), FavSearchActionView.b(this.mEl), true);
     }
+    AppMethodBeat.o(74687);
   }
   
-  public final void aJI()
+  public final void bnq()
   {
-    if (FavSearchActionView.d(this.kjG) == null) {
+    AppMethodBeat.i(74686);
+    if (FavSearchActionView.d(this.mEl) == null)
+    {
+      AppMethodBeat.o(74686);
       return;
     }
-    FavSearchActionView.d(this.kjG).Wm();
+    FavSearchActionView.d(this.mEl).apO();
+    AppMethodBeat.o(74686);
   }
   
-  public final void i(boolean paramBoolean, int paramInt) {}
+  public final void t(boolean paramBoolean, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView.1
  * JD-Core Version:    0.7.0.1
  */

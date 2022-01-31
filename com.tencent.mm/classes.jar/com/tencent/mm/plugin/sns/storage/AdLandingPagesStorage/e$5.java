@@ -1,28 +1,35 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class e$5
   implements c.a
 {
   e$5(c.a parama, String paramString) {}
   
-  public final void Oq(String paramString)
+  public final void CF(String paramString)
   {
-    y.i("MicroMsg.AdLandingPageDownloadFileHelper", " download success big file for %s", new Object[] { this.val$url });
-    ai.d(new e.5.3(this, paramString));
+    AppMethodBeat.i(37707);
+    ab.e("MicroMsg.AdLandingPageDownloadFileHelper", " download error for big file %s", new Object[] { this.val$url });
+    al.d(new e.5.2(this, paramString));
+    AppMethodBeat.o(37707);
   }
   
-  public final void cu(String paramString, int paramInt)
+  public final void dq(String paramString, int paramInt)
   {
-    ai.d(new e.5.1(this, paramString, paramInt));
+    AppMethodBeat.i(37706);
+    al.d(new e.5.1(this, paramString, paramInt));
+    AppMethodBeat.o(37706);
   }
   
-  public final void uv(String paramString)
+  public final void mP(String paramString)
   {
-    y.e("MicroMsg.AdLandingPageDownloadFileHelper", " download error for big file %s", new Object[] { this.val$url });
-    ai.d(new e.5.2(this, paramString));
+    AppMethodBeat.i(37708);
+    ab.i("MicroMsg.AdLandingPageDownloadFileHelper", " download success big file for %s", new Object[] { this.val$url });
+    al.d(new e.5.3(this, paramString));
+    AppMethodBeat.o(37708);
   }
 }
 

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/p1"
+<LinearLayout android:orientation="vertical" android:background="@drawable/vw" android:padding="@dimen/m1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/lf"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/b8j" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:gravity="center" android:id="@android:id/list" android:background="@color/zm" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
-    </com.tencent.mm.ui.base.MMPullDownView>
-    <include android:visibility="gone" layout="@layout/sb" />
-</FrameLayout>
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/t_" android:id="@id/b9l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d_g" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/t_" android:id="@id/b9m" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

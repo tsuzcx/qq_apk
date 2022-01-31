@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.aa.ui;
 
 final class LaunchAAByPersonAmountSelectUI$b
 {
-  String eYN = null;
+  String gqE = null;
   String username = null;
   
   private LaunchAAByPersonAmountSelectUI$b(LaunchAAByPersonAmountSelectUI paramLaunchAAByPersonAmountSelectUI) {}

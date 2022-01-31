@@ -1,16 +1,19 @@
 package com.tencent.mm.booter;
 
 import com.tencent.mars.comm.WakerLock;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class CoreService$4$1
-  implements am.a
+  implements ap.a
 {
   CoreService$4$1(CoreService.4 param4) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    CoreService.i(this.dhB.dhA).unLock();
+    AppMethodBeat.i(57728);
+    CoreService.i(this.dYO.dYN).unLock();
+    AppMethodBeat.o(57728);
     return false;
   }
 }

@@ -10,46 +10,51 @@ import java.util.Map;
 public abstract class FileSystemWrapper
   extends AbstractFileSystem
 {
-  protected final FileSystem wuw;
+  protected final FileSystem APv;
   
   protected FileSystemWrapper(FileSystem paramFileSystem)
   {
-    this.wuw = paramFileSystem;
+    this.APv = paramFileSystem;
   }
   
-  public OutputStream I(String paramString, boolean paramBoolean)
+  public final boolean A(String paramString, long paramLong)
   {
-    return this.wuw.I(paramString, paramBoolean);
+    return this.APv.A(paramString, paramLong);
   }
   
-  public final List<FileSystem.a> J(String paramString, boolean paramBoolean)
+  public OutputStream M(String paramString, boolean paramBoolean)
   {
-    return this.wuw.J(paramString, paramBoolean);
+    return this.APv.M(paramString, paramBoolean);
   }
   
-  public final boolean K(String paramString, boolean paramBoolean)
+  public final List<FileSystem.a> N(String paramString, boolean paramBoolean)
   {
-    return this.wuw.K(paramString, paramBoolean);
+    return this.APv.N(paramString, paramBoolean);
   }
   
-  public final String L(String paramString, boolean paramBoolean)
+  public final boolean O(String paramString, boolean paramBoolean)
   {
-    return this.wuw.L(paramString, paramBoolean);
+    return this.APv.O(paramString, paramBoolean);
   }
   
-  public final int Qd()
+  public final String P(String paramString, boolean paramBoolean)
   {
-    return this.wuw.Qd();
+    return this.APv.P(paramString, paramBoolean);
   }
   
   public void a(CancellationSignal paramCancellationSignal)
   {
-    this.wuw.a(paramCancellationSignal);
+    this.APv.a(paramCancellationSignal);
   }
   
-  public final boolean aC(String paramString1, String paramString2)
+  public final boolean aV(String paramString1, String paramString2)
   {
-    return this.wuw.aC(paramString1, paramString2);
+    return this.APv.aV(paramString1, paramString2);
+  }
+  
+  public final int ajj()
+  {
+    return this.APv.ajj();
   }
   
   public int describeContents()
@@ -59,47 +64,42 @@ public abstract class FileSystemWrapper
   
   public final boolean exists(String paramString)
   {
-    return this.wuw.exists(paramString);
-  }
-  
-  public final boolean jJ(String paramString)
-  {
-    return this.wuw.jJ(paramString);
-  }
-  
-  public final void m(Map<String, String> paramMap)
-  {
-    this.wuw.m(paramMap);
-  }
-  
-  public final FileSystem.b mZ(String paramString)
-  {
-    return this.wuw.mZ(paramString);
-  }
-  
-  public final FileSystem.a na(String paramString)
-  {
-    return this.wuw.na(paramString);
-  }
-  
-  public final boolean nb(String paramString)
-  {
-    return this.wuw.nb(paramString);
+    return this.APv.exists(paramString);
   }
   
   public InputStream openRead(String paramString)
   {
-    return this.wuw.openRead(paramString);
+    return this.APv.openRead(paramString);
   }
   
-  public final boolean r(String paramString, long paramLong)
+  public final void q(Map<String, String> paramMap)
   {
-    return this.wuw.r(paramString, paramLong);
+    this.APv.q(paramMap);
+  }
+  
+  public final boolean qD(String paramString)
+  {
+    return this.APv.qD(paramString);
+  }
+  
+  public final FileSystem.b uk(String paramString)
+  {
+    return this.APv.uk(paramString);
+  }
+  
+  public final FileSystem.a ul(String paramString)
+  {
+    return this.APv.ul(paramString);
+  }
+  
+  public final boolean um(String paramString)
+  {
+    return this.APv.um(paramString);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeParcelable(this.wuw, paramInt);
+    paramParcel.writeParcelable(this.APv, paramInt);
   }
 }
 

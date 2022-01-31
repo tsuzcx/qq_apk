@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.TimerTask;
 
 final class MobileVerifyUI$1
@@ -10,7 +11,9 @@ final class MobileVerifyUI$1
   
   public final void run()
   {
-    this.fpS.fpD.post(new MobileVerifyUI.1.1(this));
+    AppMethodBeat.i(125269);
+    this.gHp.gGZ.post(new MobileVerifyUI.1.1(this));
+    AppMethodBeat.o(125269);
   }
 }
 

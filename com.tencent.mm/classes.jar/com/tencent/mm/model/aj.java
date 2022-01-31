@@ -1,8 +1,10 @@
 package com.tencent.mm.model;
 
+import java.util.List;
+
 public abstract interface aj
 {
-  public abstract void hK(int paramInt);
+  public abstract List<ai> getDataTransferList();
 }
 
 

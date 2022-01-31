@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SimpleLoginUI$13
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class SimpleLoginUI$13
   
   public final void run()
   {
-    SimpleLoginUI.b(this.fsR);
+    AppMethodBeat.i(125609);
+    SimpleLoginUI.b(this.gKt);
+    AppMethodBeat.o(125609);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.SimpleLoginUI.13
  * JD-Core Version:    0.7.0.1
  */

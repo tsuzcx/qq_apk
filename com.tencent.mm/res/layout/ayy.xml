@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:background="#fff5f5f5" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="93.0dip" android:layout_height="93.0dip" android:layout_marginTop="50.0dip" android:src="@raw/lqt_succ_icon" android:scaleType="fitXY" />
-    <TextView android:textSize="20.0dip" android:textColor="@color/fc" android:id="@id/enc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/f9e" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
-        <TextView android:textSize="30.0dip" android:textColor="@color/fc" android:gravity="top" android:id="@id/end" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="¥" />
-        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="50.0dip" android:textColor="@color/fc" android:id="@id/ene" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <TextView android:textSize="13.0dip" android:textColor="#ff888888" android:id="@id/enf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
-    <Button android:id="@id/eng" android:layout_width="fill_parent" android:layout_height="47.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="20.0dip" android:text="@string/p8" style="@style/mu" />
-    <LinearLayout android:gravity="bottom|center" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <TextView android:textSize="13.0dip" android:textColor="#ff888888" android:id="@id/enh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" />
-    </LinearLayout>
-</LinearLayout>
+    <ListView android:id="@id/d05" android:background="@null" android:focusable="true" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:scrollingCache="false" android:transcriptMode="disabled" android:divider="@drawable/tp" android:dividerHeight="@dimen/fs" android:layout_weight="1.0" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+</com.tencent.mm.ui.KeyboardLinearLayout>

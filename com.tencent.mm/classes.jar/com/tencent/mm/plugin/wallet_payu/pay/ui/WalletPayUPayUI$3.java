@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_payu.pay.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletPayUPayUI$3
   implements DialogInterface.OnCancelListener
@@ -10,11 +11,13 @@ final class WalletPayUPayUI$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    WalletPayUPayUI.f(this.qOg);
-    WalletPayUPayUI.g(this.qOg);
-    if (this.qOg.aSk()) {
-      this.qOg.finish();
+    AppMethodBeat.i(48485);
+    WalletPayUPayUI.f(this.uDn);
+    WalletPayUPayUI.g(this.uDn);
+    if (this.uDn.isTransparent()) {
+      this.uDn.finish();
     }
+    AppMethodBeat.o(48485);
   }
 }
 

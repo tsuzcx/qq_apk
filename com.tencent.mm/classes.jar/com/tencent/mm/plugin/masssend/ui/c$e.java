@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.masssend.ui;
 
 abstract interface c$e
 {
-  public abstract String GW(String paramString);
+  public abstract String SH(String paramString);
 }
 
 

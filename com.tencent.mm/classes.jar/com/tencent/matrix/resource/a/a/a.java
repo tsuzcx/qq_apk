@@ -7,7 +7,7 @@ public final class a
 {
   private static final char[] HEX_DIGITS = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public static String n(byte[] paramArrayOfByte)
+  public static String v(byte[] paramArrayOfByte)
   {
     for (;;)
     {

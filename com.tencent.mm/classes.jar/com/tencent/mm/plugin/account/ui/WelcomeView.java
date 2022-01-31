@@ -22,9 +22,7 @@ public abstract class WelcomeView
     super(paramContext, paramAttributeSet);
   }
   
-  public abstract void Yz();
-  
-  public final void bP(View paramView)
+  public final void co(View paramView)
   {
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     localAlphaAnimation.setInterpolator(new LinearInterpolator());

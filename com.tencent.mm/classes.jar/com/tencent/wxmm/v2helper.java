@@ -1,5 +1,6 @@
 package com.tencent.wxmm;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.BufferedOutputStream;
 
 public class v2helper
@@ -161,79 +162,106 @@ public class v2helper
   
   public static void Logd(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(35419);
     new StringBuilder("[").append(Thread.currentThread().getId()).append("]").append(paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
+    AppMethodBeat.o(35419);
   }
   
   public static void Loge(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(35417);
     new StringBuilder("[").append(Thread.currentThread().getId()).append("]").append(paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
+    AppMethodBeat.o(35417);
   }
   
   public static void Logi(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(35418);
     new StringBuilder("[").append(Thread.currentThread().getId()).append("]").append(paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
+    AppMethodBeat.o(35418);
   }
   
   public static void Logw(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(35420);
     new StringBuilder("[").append(Thread.currentThread().getId()).append("]").append(paramString2);
     writeLogToFile(paramString1 + ":" + paramString2 + " \n");
+    AppMethodBeat.o(35420);
   }
   
   public static void closeLogFile()
   {
+    AppMethodBeat.i(35416);
     if (mOutputStream != null) {}
     try
     {
       mOutputStream.close();
-      label12:
+      label18:
       mOutputStream = null;
+      AppMethodBeat.o(35416);
       return;
     }
     catch (Exception localException)
     {
-      break label12;
+      break label18;
     }
   }
   
   public static void flushLogFile()
   {
-    if (mOutputStream == null) {
+    AppMethodBeat.i(35415);
+    if (mOutputStream == null)
+    {
+      AppMethodBeat.o(35415);
       return;
     }
     try
     {
       mOutputStream.flush();
+      AppMethodBeat.o(35415);
       return;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(35415);
+    }
   }
   
   public static void outputJniLog(byte[] paramArrayOfByte, String paramString, int paramInt)
   {
+    AppMethodBeat.i(35421);
     paramArrayOfByte = new String(paramArrayOfByte);
     if (!paramString.equals("MicroMsg.v2Core"))
     {
       writeLogToFile(paramString + ":" + paramArrayOfByte + " \n");
+      AppMethodBeat.o(35421);
       return;
     }
     writeLogToFile(paramString + ":" + paramArrayOfByte);
+    AppMethodBeat.o(35421);
   }
   
   public static void writeLogToFile(String paramString)
   {
-    if (mOutputStream == null) {
+    AppMethodBeat.i(35414);
+    if (mOutputStream == null)
+    {
+      AppMethodBeat.o(35414);
       return;
     }
     try
     {
       mOutputStream.write(paramString.getBytes());
+      AppMethodBeat.o(35414);
       return;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(35414);
+    }
   }
 }
 

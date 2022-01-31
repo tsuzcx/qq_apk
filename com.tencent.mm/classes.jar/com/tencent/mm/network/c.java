@@ -2,35 +2,55 @@ package com.tencent.mm.network;
 
 public abstract interface c
 {
-  public abstract int C(byte[] paramArrayOfByte);
+  public abstract int R(byte[] paramArrayOfByte);
   
-  public abstract int CK();
+  public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt);
   
-  public abstract byte[] Dj();
+  public abstract byte[] adB();
   
-  public abstract byte[] KM();
+  public abstract boolean adC();
   
-  public abstract boolean KN();
+  public abstract byte[] adD();
   
-  public abstract byte[] KO();
+  public abstract String adE();
   
-  public abstract boolean KP();
+  public abstract byte[] adF();
   
-  public abstract byte[] KQ();
+  public abstract void adG();
   
-  public abstract void bN(boolean paramBoolean);
+  public abstract void adH();
   
-  public abstract void fn(int paramInt);
+  public abstract void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
-  public abstract void i(String paramString, byte[] paramArrayOfByte);
+  public abstract void cP(boolean paramBoolean);
   
-  public abstract byte[] ks(String paramString);
+  public abstract void g(int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract int getUin();
+  
+  public abstract String getUsername();
+  
+  public abstract boolean isForeground();
+  
+  public abstract byte[] jN(int paramInt);
+  
+  public abstract void o(String paramString, byte[] paramArrayOfByte);
   
   public abstract void reset();
   
-  public abstract void setUsername(String paramString);
+  public abstract byte[] rm(String paramString);
   
-  public abstract void w(byte[] paramArrayOfByte, int paramInt);
+  public abstract byte[] rn(String paramString);
+  
+  public abstract byte[] ro(String paramString);
+  
+  public abstract byte[] rp(String paramString);
+  
+  public abstract boolean rq(String paramString);
+  
+  public abstract void setUin(int paramInt);
+  
+  public abstract void setUsername(String paramString);
 }
 
 

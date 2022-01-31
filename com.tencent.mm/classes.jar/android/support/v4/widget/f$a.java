@@ -18,7 +18,7 @@ final class f$a
   
   public final void onChange(boolean paramBoolean)
   {
-    this.JS.onContentChanged();
+    this.Jy.onContentChanged();
   }
 }
 

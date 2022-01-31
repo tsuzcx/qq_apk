@@ -1,41 +1,46 @@
 package com.tencent.mm.modelrecovery;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class b$a
 {
-  public int dsw;
-  public int exj;
-  public int exk;
-  public int exl;
-  public int exm;
-  public int exn;
+  public int eke;
+  public int fMZ;
+  public int fNa;
+  public int fNb;
+  public int fNc;
+  public int fNd;
   
   public final String toString()
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (this.dsw > 0) {
-      localStringBuffer.append("totalCount:" + this.dsw + " ");
+    AppMethodBeat.i(16547);
+    Object localObject = new StringBuffer();
+    if (this.eke > 0) {
+      ((StringBuffer)localObject).append("totalCount:" + this.eke + " ");
     }
-    if (this.exj > 0) {
-      localStringBuffer.append("enterRecoveryCount:" + this.exj + " ");
+    if (this.fMZ > 0) {
+      ((StringBuffer)localObject).append("enterRecoveryCount:" + this.fMZ + " ");
     }
-    if (this.exk > 0) {
-      localStringBuffer.append("existRecoveryProcessCount:" + this.exk + " ");
+    if (this.fNa > 0) {
+      ((StringBuffer)localObject).append("existRecoveryProcessCount:" + this.fNa + " ");
     }
-    if (this.exl > 0) {
-      localStringBuffer.append("foregroundExpCount:" + this.exl + " ");
+    if (this.fNb > 0) {
+      ((StringBuffer)localObject).append("foregroundExpCount:" + this.fNb + " ");
     }
-    if (this.exm > 0) {
-      localStringBuffer.append("backgroundExpCount:" + this.exm + " ");
+    if (this.fNc > 0) {
+      ((StringBuffer)localObject).append("backgroundExpCount:" + this.fNc + " ");
     }
-    if (this.exn > 0) {
-      localStringBuffer.append("normalCount:" + this.exn + " ");
+    if (this.fNd > 0) {
+      ((StringBuffer)localObject).append("normalCount:" + this.fNd + " ");
     }
-    return localStringBuffer.toString();
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(16547);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelrecovery.b.a
  * JD-Core Version:    0.7.0.1
  */

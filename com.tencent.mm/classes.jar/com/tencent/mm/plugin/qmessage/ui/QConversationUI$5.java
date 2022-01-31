@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.qmessage.ui;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.n.d;
 
 final class QConversationUI$5
@@ -10,7 +11,9 @@ final class QConversationUI$5
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    QConversationUI.a(this.ncU, QConversationUI.j(this.ncU));
+    AppMethodBeat.i(24131);
+    QConversationUI.a(this.pIm, QConversationUI.j(this.pIm));
+    AppMethodBeat.o(24131);
   }
 }
 

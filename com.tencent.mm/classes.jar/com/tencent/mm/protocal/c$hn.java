@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$hn
+final class c$hn
   extends c.g
 {
-  public c$hn()
+  c$hn()
   {
-    super("sendAppMessage", "send_app_msg", 6, true);
+    super("reportGamePageTime", "reportGamePageTime", 301, false);
   }
 }
 

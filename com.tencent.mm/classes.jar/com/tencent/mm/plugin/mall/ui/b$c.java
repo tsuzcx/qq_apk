@@ -4,8 +4,8 @@ import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
 
 final class b$c
 {
-  MallFunction lZq;
-  int lZr;
+  MallFunction oyZ;
+  int oza;
   
   b$c(b paramb) {}
 }

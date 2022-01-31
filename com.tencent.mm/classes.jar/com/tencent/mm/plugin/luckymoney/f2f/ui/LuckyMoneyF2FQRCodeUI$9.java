@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.f2f.ui;
 
 import android.view.MenuItem;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.d;
 
@@ -12,22 +12,27 @@ final class LuckyMoneyF2FQRCodeUI$9
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(42183);
     switch (paramMenuItem.getItemId())
     {
-    default: 
-      return;
     }
-    if (LuckyMoneyF2FQRCodeUI.g(this.lOE) > 0)
+    for (;;)
     {
-      LuckyMoneyF2FQRCodeUI.h(this.lOE);
+      AppMethodBeat.o(42183);
       return;
+      if (LuckyMoneyF2FQRCodeUI.g(this.olY) > 0)
+      {
+        LuckyMoneyF2FQRCodeUI.h(this.olY);
+        AppMethodBeat.o(42183);
+        return;
+      }
+      h.bO(this.olY, this.olY.getString(2131301218));
     }
-    h.bC(this.lOE, this.lOE.getString(a.i.lucky_money_f2f_clear_zero_packet_tips));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.ui.LuckyMoneyF2FQRCodeUI.9
  * JD-Core Version:    0.7.0.1
  */

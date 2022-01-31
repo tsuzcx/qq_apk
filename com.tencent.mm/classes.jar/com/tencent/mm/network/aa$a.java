@@ -1,8 +1,12 @@
 package com.tencent.mm.network;
 
-public abstract interface aa$a
+final class aa$a
 {
-  public abstract void ba(boolean paramBoolean);
+  r gex;
+  l gey;
+  c gez;
+  long startTime;
+  int taskId;
 }
 
 

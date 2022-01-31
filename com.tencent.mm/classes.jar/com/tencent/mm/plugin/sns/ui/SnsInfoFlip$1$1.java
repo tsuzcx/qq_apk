@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SnsInfoFlip$1$1
   implements Runnable
 {
@@ -7,14 +9,16 @@ final class SnsInfoFlip$1$1
   
   public final void run()
   {
-    if ((this.oZj.oZi.oOE != null) && (SnsInfoFlip.b(this.oZj.oZi))) {
-      this.oZj.oZi.oOE.awQ();
+    AppMethodBeat.i(38966);
+    if ((this.rRC.rRB.rGp != null) && (SnsInfoFlip.b(this.rRC.rRB))) {
+      this.rRC.rRB.rGp.ctA();
     }
+    AppMethodBeat.o(38966);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsInfoFlip.1.1
  * JD-Core Version:    0.7.0.1
  */

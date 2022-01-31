@@ -1,9 +1,17 @@
 package com.google.android.gms.common.api;
 
+import com.google.android.gms.common.annotation.KeepForSdk;
 import java.util.concurrent.TimeUnit;
 
+@KeepForSdk
 public abstract class PendingResult<R extends Result>
 {
+  @KeepForSdk
+  public void addStatusListener(StatusListener paramStatusListener)
+  {
+    throw new UnsupportedOperationException();
+  }
+  
   public abstract R await();
   
   public abstract R await(long paramLong, TimeUnit paramTimeUnit);
@@ -21,19 +29,21 @@ public abstract class PendingResult<R extends Result>
     throw new UnsupportedOperationException();
   }
   
-  public void zza(PendingResult.zza paramzza)
+  public Integer zzo()
   {
     throw new UnsupportedOperationException();
   }
   
-  public Integer zzvr()
+  @KeepForSdk
+  public static abstract interface StatusListener
   {
-    throw new UnsupportedOperationException();
+    @KeepForSdk
+    public abstract void onComplete(Status paramStatus);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.api.PendingResult
  * JD-Core Version:    0.7.0.1
  */

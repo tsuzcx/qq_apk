@@ -1,35 +1,39 @@
 package com.tencent.mm.model.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.auth.a.a;
-import com.tencent.mm.protocal.i.a;
-import com.tencent.mm.protocal.i.f;
-import com.tencent.mm.protocal.i.g;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.u.b;
+import com.tencent.mm.protocal.j.a;
+import com.tencent.mm.protocal.j.h;
+import com.tencent.mm.protocal.j.i;
+import com.tencent.mm.protocal.v.b;
 
 final class c$4
   implements a
 {
   c$4(c paramc) {}
   
-  public final void a(i.f paramf, i.g paramg, boolean paramBoolean)
+  public final void a(j.h paramh, j.i parami, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      if ((paramf != null) && ((paramf instanceof i.a)) && (paramf.spI == 12)) {
-        b.IS();
+    AppMethodBeat.i(118179);
+    if (paramBoolean)
+    {
+      if ((paramh != null) && ((paramh instanceof j.a)) && (paramh.getSceneStatus() == 12))
+      {
+        b.abP();
+        AppMethodBeat.o(118179);
       }
     }
-    while ((paramf == null) || (paramf.spI != 16)) {
-      return;
+    else if ((paramh != null) && (paramh.getSceneStatus() == 16)) {
+      b.abP();
     }
-    b.IS();
+    AppMethodBeat.o(118179);
   }
   
-  public final void a(u.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2) {}
+  public final void a(v.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.c.c.4
  * JD-Core Version:    0.7.0.1
  */

@@ -4,23 +4,23 @@ import android.graphics.Point;
 
 public abstract interface e
 {
-  public abstract Point SP();
-  
-  public abstract int SQ();
-  
   public abstract void a(e.a parama);
   
-  public abstract int i(String paramString, long paramLong1, long paramLong2);
+  public abstract Point amc();
   
-  public abstract void ju(int paramInt);
+  public abstract int amd();
   
-  public abstract void r(Runnable paramRunnable);
+  public abstract void mm(int paramInt);
+  
+  public abstract int p(String paramString, long paramLong1, long paramLong2);
   
   public abstract void stop();
+  
+  public abstract void y(Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.e
  * JD-Core Version:    0.7.0.1
  */

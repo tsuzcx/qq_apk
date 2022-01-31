@@ -1,27 +1,32 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.ResultReceiver;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandProcessProxyUI$3
-  implements DialogInterface.OnKeyListener
+  extends ResultReceiver
 {
-  AppBrandProcessProxyUI$3(AppBrandProcessProxyUI paramAppBrandProcessProxyUI, String paramString) {}
-  
-  public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  AppBrandProcessProxyUI$3(Handler paramHandler, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnClickListener paramOnClickListener3)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
-    {
-      if (!bk.bl(this.gef))
-      {
-        AppBrandProcessProxyUI.b(this.geg).onClick(AppBrandProcessProxyUI.a(this.geg), -3);
-        paramDialogInterface.dismiss();
-      }
-      this.geg.a(null);
+    super(paramHandler);
+  }
+  
+  protected final void onReceiveResult(int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(73126);
+    if ((-1 == paramInt) && (this.hwc != null)) {
+      this.hwc.onClick(null, paramInt);
     }
-    return false;
+    if ((-2 == paramInt) && (this.hwd != null)) {
+      this.hwd.onClick(null, paramInt);
+    }
+    if ((-3 == paramInt) && (this.hwe != null)) {
+      this.hwe.onClick(null, paramInt);
+    }
+    AppMethodBeat.o(73126);
   }
 }
 

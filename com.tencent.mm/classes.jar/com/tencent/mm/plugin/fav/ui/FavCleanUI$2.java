@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.fav.ui;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FavCleanUI$2
   implements AbsListView.OnScrollListener
@@ -13,11 +14,13 @@ final class FavCleanUI$2
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (FavCleanUI.a(this.kbE)))
+    AppMethodBeat.i(73950);
+    if ((paramInt == 0) && (FavCleanUI.a(this.mwa)))
     {
-      y.i("MicroMsg.FavCleanUI", "force bottom load data");
-      FavCleanUI.b(this.kbE);
+      ab.i("MicroMsg.FavCleanUI", "force bottom load data");
+      FavCleanUI.b(this.mwa);
     }
+    AppMethodBeat.o(73950);
   }
 }
 

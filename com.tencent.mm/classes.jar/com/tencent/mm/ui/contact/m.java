@@ -1,23 +1,18 @@
 package com.tencent.mm.ui.contact;
 
-public abstract class m
-  extends n
+import android.app.Activity;
+import android.widget.ListView;
+import com.tencent.mm.ui.contact.a.a;
+
+public abstract interface m
 {
-  public m.a vLH;
+  public abstract boolean a(a parama);
   
-  public m(l paraml, boolean paramBoolean, int paramInt)
-  {
-    super(paraml, paramBoolean, paramInt);
-  }
+  public abstract boolean b(a parama);
   
-  public void a(m.a parama)
-  {
-    this.vLH = parama;
-  }
+  public abstract Activity getActivity();
   
-  public abstract void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean);
-  
-  public abstract void adg();
+  public abstract ListView getContentLV();
 }
 
 

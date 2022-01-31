@@ -15,7 +15,7 @@ class CharsetRecog_Unicode$CharsetRecog_UTF_32_BE
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector.CharsetRecog_Unicode.CharsetRecog_UTF_32_BE
  * JD-Core Version:    0.7.0.1
  */

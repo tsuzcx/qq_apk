@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-final class c$ae
+public final class c$ae
   extends c.g
 {
-  c$ae()
+  public c$ae()
   {
-    super("clearGameData", "clearGameData", 300, false);
+    super("chooseInvoiceTitle", "chooseInvoiceTitle", 288, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ae
  * JD-Core Version:    0.7.0.1
  */

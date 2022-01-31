@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webwx.ui;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -7,280 +8,284 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.a;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.ju;
-import com.tencent.mm.h.a.ju.a;
-import com.tencent.mm.h.a.jv;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.kd;
+import com.tencent.mm.g.a.kd.a;
+import com.tencent.mm.g.a.ke;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.webwx.a.e;
-import com.tencent.mm.protocal.c.wt;
-import com.tencent.mm.protocal.c.zr;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aay;
+import com.tencent.mm.protocal.protobuf.aek;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 @com.tencent.mm.ui.base.a(3)
 public class ExtDeviceWXLoginUI
   extends MMActivity
   implements f
 {
-  private boolean bSo = false;
-  private String bYD = null;
-  private int ezA = 0;
-  private ProgressDialog lxZ = null;
-  private boolean rDF = false;
-  private String rDP = null;
-  private int rDQ;
-  private int rDR;
-  private boolean rDS = false;
-  private Button rDT;
-  private TextView rDU;
+  private String cGE = null;
+  private boolean czP = false;
+  private int fPp = 0;
+  private ProgressDialog nVm = null;
   private int type = 0;
+  private boolean vuh = false;
+  private String vur = null;
+  private int vus;
+  private int vut;
+  private boolean vuu = false;
+  private Button vuv;
+  private TextView vuw;
   
   public void finish()
   {
+    AppMethodBeat.i(26532);
     super.finish();
-    overridePendingTransition(R.a.anim_not_change, R.a.push_down_out);
+    overridePendingTransition(2131034130, 2131034228);
+    AppMethodBeat.o(26532);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.device_wx_login;
+    return 2130969318;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.bYD = getIntent().getStringExtra("intent.key.login.url");
+    AppMethodBeat.i(26530);
+    this.cGE = getIntent().getStringExtra("intent.key.login.url");
     this.type = getIntent().getIntExtra("intent.key.type", 0);
     Object localObject2 = getIntent().getStringExtra("intent.key.title.string");
-    this.ezA = getIntent().getIntExtra("intent.key.icon.type", 0);
+    this.fPp = getIntent().getIntExtra("intent.key.icon.type", 0);
     String str1 = getIntent().getStringExtra("intent.key.ok.string");
     String str2 = getIntent().getStringExtra("intent.key.cancel.string");
     Object localObject1 = getIntent().getStringExtra("intent.key.content.string");
-    this.rDP = getIntent().getStringExtra("intent.key.ok.session.list");
-    this.rDQ = getIntent().getIntExtra("intent.key.login.client.version", 0);
-    this.rDR = getIntent().getIntExtra("intent.key.function.control", 0);
-    y.i("MicroMsg.ExtDeviceWXLoginUI", "type:%s title:%s ok:%s content:%s", new Object[] { Integer.valueOf(this.type), localObject2, str1, localObject1 });
+    this.vur = getIntent().getStringExtra("intent.key.ok.session.list");
+    this.vus = getIntent().getIntExtra("intent.key.login.client.version", 0);
+    this.vut = getIntent().getIntExtra("intent.key.function.control", 0);
+    ab.i("MicroMsg.ExtDeviceWXLoginUI", "type:%s title:%s ok:%s content:%s", new Object[] { Integer.valueOf(this.type), localObject2, str1, localObject1 });
     setMMTitle("");
-    if (!bk.bl((String)localObject2)) {
-      ((TextView)findViewById(R.h.status_title)).setText((CharSequence)localObject2);
+    if (!bo.isNullOrNil((String)localObject2)) {
+      ((TextView)findViewById(2131823388)).setText((CharSequence)localObject2);
     }
-    localObject2 = new ju();
-    com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject2);
-    int i = ((ju)localObject2).bSh.bSi;
-    int j = ((ju)localObject2).bSh.bSj;
-    int k = ((ju)localObject2).bSh.bSk;
-    switch (this.ezA)
+    localObject2 = new kd();
+    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject2);
+    int i = ((kd)localObject2).czI.czJ;
+    int j = ((kd)localObject2).czI.czK;
+    int k = ((kd)localObject2).czI.czL;
+    switch (this.fPp)
     {
     default: 
-      au.Hx();
-      c.Dz().c(ac.a.uul, Integer.valueOf(0));
-      if (!bk.bl((String)localObject1))
+      aw.aaz();
+      c.Ru().set(ac.a.yEo, Integer.valueOf(0));
+      if (!bo.isNullOrNil((String)localObject1))
       {
-        ((CheckBox)findViewById(R.h.status_content_checkbox)).setVisibility(8);
-        ((TextView)findViewById(R.h.status_content)).setVisibility(0);
-        ((TextView)findViewById(R.h.status_content)).setText((CharSequence)localObject1);
-        label333:
-        localObject1 = (ImageView)findViewById(R.h.status_icon);
-        if (this.ezA == 1) {
-          break label826;
+        ((CheckBox)findViewById(2131823389)).setVisibility(8);
+        ((TextView)findViewById(2131823390)).setVisibility(0);
+        ((TextView)findViewById(2131823390)).setText((CharSequence)localObject1);
+        label337:
+        localObject1 = (ImageView)findViewById(2131823387);
+        if (this.fPp == 1) {
+          break label833;
         }
-        if (this.ezA != 2) {
-          break label788;
+        if (this.fPp != 2) {
+          break label795;
         }
-        ((ImageView)localObject1).setImageResource(R.k.connect_mac);
-        label369:
-        this.rDU = ((TextView)findViewById(R.h.webwx_logoutBt));
-        this.rDU.setText(str2);
-        this.rDU.setOnClickListener(new ExtDeviceWXLoginUI.2(this));
-        this.rDT = ((Button)findViewById(R.h.webwx_loginBt));
-        if (bk.bl(str1)) {
-          break label893;
+        ((ImageView)localObject1).setImageResource(2131231172);
+        label372:
+        this.vuw = ((TextView)findViewById(2131823392));
+        this.vuw.setText(str2);
+        this.vuw.setOnClickListener(new ExtDeviceWXLoginUI.2(this));
+        this.vuv = ((Button)findViewById(2131823391));
+        if (bo.isNullOrNil(str1)) {
+          break label900;
         }
-        this.rDT.setText(str1);
+        this.vuv.setText(str1);
         if (this.type != 0) {
-          break label837;
+          break label844;
         }
-        this.rDT.setEnabled(true);
+        this.vuv.setEnabled(true);
       }
       break;
     }
+    label900:
     for (;;)
     {
-      this.rDT.setOnClickListener(new ExtDeviceWXLoginUI.3(this));
-      this.mController.contentView.post(new Runnable()
-      {
-        public final void run()
-        {
-          ExtDeviceWXLoginUI.d(ExtDeviceWXLoginUI.this);
-        }
-      });
-      ((TextView)findViewById(R.h.webwx_login_closeBt)).setOnClickListener(new ExtDeviceWXLoginUI.5(this));
-      au.Dk().a(972, this);
-      au.Dk().a(973, this);
+      this.vuv.setOnClickListener(new ExtDeviceWXLoginUI.3(this));
+      getContentView().getViewTreeObserver().addOnGlobalLayoutListener(new ExtDeviceWXLoginUI.4(this));
+      ((TextView)findViewById(2131823385)).setOnClickListener(new ExtDeviceWXLoginUI.5(this));
+      aw.Rc().a(972, this);
+      aw.Rc().a(973, this);
+      AppMethodBeat.o(26530);
       return;
-      au.Hx();
-      c.Dz().c(ac.a.uul, Integer.valueOf(3));
+      aw.aaz();
+      c.Ru().set(ac.a.yEo, Integer.valueOf(3));
       break;
-      au.Hx();
-      c.Dz().c(ac.a.uul, Integer.valueOf(4));
+      aw.aaz();
+      c.Ru().set(ac.a.yEo, Integer.valueOf(4));
       break;
       if (i < 0) {
-        break label333;
+        break label337;
       }
-      if ((this.rDR & 0x1) > 0) {}
+      if ((this.vut & 0x1) > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        y.i("MicroMsg.ExtDeviceWXLoginUI", "msgsynchronize needCheckedSync[%b], iconType[%d]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.ezA) });
-        if (((this.ezA != 1) || (this.rDQ < j)) && ((this.ezA != 2) || (this.rDQ < k))) {
+        ab.i("MicroMsg.ExtDeviceWXLoginUI", "msgsynchronize needCheckedSync[%b], iconType[%d]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.fPp) });
+        if (((this.fPp != 1) || (this.vus < j)) && ((this.fPp != 2) || (this.vus < k))) {
           break;
         }
-        this.rDF = true;
-        ((TextView)findViewById(R.h.status_content)).setVisibility(8);
-        ((CheckBox)findViewById(R.h.status_content_checkbox)).setVisibility(0);
-        ((CheckBox)findViewById(R.h.status_content_checkbox)).setText(R.l.webwx_login_msg_synchronize);
+        this.vuh = true;
+        ((TextView)findViewById(2131823390)).setVisibility(8);
+        ((CheckBox)findViewById(2131823389)).setVisibility(0);
+        ((CheckBox)findViewById(2131823389)).setText(2131305917);
         if (bool)
         {
-          au.Hx();
-          if (((Boolean)c.Dz().get(ac.a.uuk, Boolean.valueOf(true))).booleanValue()) {}
+          aw.aaz();
+          if (((Boolean)c.Ru().get(ac.a.yEn, Boolean.TRUE)).booleanValue()) {}
         }
         else
         {
-          ((CheckBox)findViewById(R.h.status_content_checkbox)).setChecked(false);
+          ((CheckBox)findViewById(2131823389)).setChecked(false);
         }
-        ((ImageView)findViewById(R.h.webwx_help_icon)).setImageResource(R.k.connect_icon_help);
-        ((ImageView)findViewById(R.h.webwx_help_icon)).setOnClickListener(new ExtDeviceWXLoginUI.1(this));
+        ((ImageView)findViewById(2131823386)).setImageResource(2131231166);
+        ((ImageView)findViewById(2131823386)).setOnClickListener(new ExtDeviceWXLoginUI.1(this));
         break;
       }
-      label788:
-      if (this.ezA == 3)
+      label795:
+      if (this.fPp == 3)
       {
-        ((ImageView)localObject1).setImageResource(R.k.connect_ipad);
-        break label369;
+        ((ImageView)localObject1).setImageResource(2131231171);
+        break label372;
       }
-      if (this.ezA == 5)
+      if (this.fPp == 5)
       {
-        ((ImageView)localObject1).setImageResource(R.k.connect_wx_album);
-        break label369;
+        ((ImageView)localObject1).setImageResource(2131231181);
+        break label372;
       }
-      label826:
-      ((ImageView)localObject1).setImageResource(R.k.connect_pc);
-      break label369;
-      label837:
+      label833:
+      ((ImageView)localObject1).setImageResource(2131231177);
+      break label372;
+      label844:
       if (this.type == -1)
       {
-        this.rDT.setEnabled(false);
-        if (this.ezA == 5) {
-          this.rDU.setVisibility(8);
+        this.vuv.setEnabled(false);
+        if (this.fPp == 5) {
+          this.vuw.setVisibility(8);
         }
       }
       else if (this.type == -2)
       {
-        this.rDT.setEnabled(true);
+        this.vuv.setEnabled(true);
         continue;
-        label893:
-        this.rDT.setVisibility(4);
+        this.vuv.setVisibility(4);
       }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(26528);
     super.onCreate(paramBundle);
     getSupportActionBar().hide();
     initView();
-    overridePendingTransition(R.a.push_up_in, R.a.anim_not_change);
+    overridePendingTransition(2131034230, 2131034130);
+    AppMethodBeat.o(26528);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(26533);
     super.onDestroy();
-    au.Dk().b(972, this);
-    au.Dk().b(973, this);
+    aw.Rc().b(972, this);
+    aw.Rc().b(973, this);
+    AppMethodBeat.o(26533);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(26531);
     super.onPause();
-    zr localzr;
-    if ((this.rDS) && (au.DK()))
+    aek localaek;
+    if ((this.vuu) && (aw.RG()))
     {
-      localzr = new zr();
-      localzr.sYS = 27;
-      if (!q.hH(q.Gp())) {
-        break label75;
+      localaek = new aek();
+      localaek.wXn = 27;
+      if (!r.kt(r.Zt())) {
+        break label87;
       }
     }
-    label75:
+    label87:
     for (int i = 1;; i = 2)
     {
-      localzr.nfn = i;
-      au.Hx();
-      c.Fv().b(new i.a(23, localzr));
-      this.rDS = false;
+      localaek.pKC = i;
+      aw.aaz();
+      c.Yz().c(new j.a(23, localaek));
+      this.vuu = false;
+      AppMethodBeat.o(26531);
       return;
     }
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(26529);
     super.onResume();
+    AppMethodBeat.o(26529);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (this.lxZ != null)
+    AppMethodBeat.i(26534);
+    if (this.nVm != null)
     {
-      this.lxZ.dismiss();
-      this.lxZ = null;
+      this.nVm.dismiss();
+      this.nVm = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      y.i("MicroMsg.ExtDeviceWXLoginUI", "onSceneEnd type[%d], [%d, %d]", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-      au.Dk().b(972, this);
+      ab.i("MicroMsg.ExtDeviceWXLoginUI", "onSceneEnd type[%d], [%d, %d]", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+      aw.Rc().b(972, this);
       if (paramm.getType() == 972)
       {
         paramString = (e)paramm;
-        if ((paramString.rDF) || (this.bSo))
+        if ((paramString.vuh) || (this.czP))
         {
-          paramString = (wt)paramString.esv.ecF.ecN;
-          if ((paramString != null) && (paramString.sTB != null)) {
-            break label193;
+          paramString = (aay)paramString.fBd.fsW.fta;
+          if ((paramString != null) && (paramString.wRy != null)) {
+            break label205;
           }
           paramString = null;
-          paramm = new jv();
-          paramm.bSl.bSm = paramString;
-          paramm.bSl.bSn = this.ezA;
-          paramm.bSl.bSo = this.bSo;
-          com.tencent.mm.sdk.b.a.udP.m(paramm);
+          paramm = new ke();
+          paramm.czM.czN = paramString;
+          paramm.czM.czO = this.fPp;
+          paramm.czM.czP = this.czP;
+          com.tencent.mm.sdk.b.a.ymk.l(paramm);
         }
       }
       for (;;)
       {
         this.type = 0;
         finish();
+        AppMethodBeat.o(26534);
         return;
-        label193:
-        paramString = paramString.sTB.toByteArray();
+        label205:
+        paramString = paramString.wRy.toByteArray();
         break;
         paramm.getType();
       }
@@ -288,41 +293,48 @@ public class ExtDeviceWXLoginUI
     if (paramInt2 == -1)
     {
       this.type = -1;
-      if (!bk.bl(paramString))
+      if (!bo.isNullOrNil(paramString))
       {
-        ((CheckBox)findViewById(R.h.status_content_checkbox)).setVisibility(8);
-        ((TextView)findViewById(R.h.status_content)).setVisibility(0);
-        ((TextView)findViewById(R.h.status_content)).setText(paramString);
+        ((CheckBox)findViewById(2131823389)).setVisibility(8);
+        ((TextView)findViewById(2131823390)).setVisibility(0);
+        ((TextView)findViewById(2131823390)).setText(paramString);
       }
       if (this.type != -1) {
-        break label342;
+        break label360;
       }
-      if (this.rDT != null) {
-        this.rDT.setEnabled(false);
+      if (this.vuv != null) {
+        this.vuv.setEnabled(false);
       }
     }
     for (;;)
     {
-      y.i("MicroMsg.ExtDeviceWXLoginUI", "[oneliang][onSceneEnd]errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ab.i("MicroMsg.ExtDeviceWXLoginUI", "[oneliang][onSceneEnd]errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      AppMethodBeat.o(26534);
       return;
       if (paramInt2 != -2) {
         break;
       }
       this.type = -2;
       break;
-      label342:
+      label360:
       if (this.type == -2)
       {
-        if (this.rDT != null)
+        if (this.vuv != null)
         {
-          this.rDT.setEnabled(true);
-          this.rDT.setText(R.l.webwx_login_retry);
+          this.vuv.setEnabled(true);
+          this.vuv.setText(2131305921);
         }
-        if (this.rDU != null) {
-          this.rDU.setVisibility(4);
+        if (this.vuw != null) {
+          this.vuw.setVisibility(4);
         }
       }
     }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

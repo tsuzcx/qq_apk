@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/p1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:padding="10.0dip" style="@style/k5">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/ayd" style="@style/lr" />
-        <EditText android:id="@id/az9" style="@style/lq" />
-    </LinearLayout>
-</LinearLayout>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/ay" android:layout_width="fill_parent" android:layout_height="37.0dip" android:layout_marginBottom="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

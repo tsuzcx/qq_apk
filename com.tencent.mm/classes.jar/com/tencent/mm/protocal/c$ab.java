@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$ab
+public final class c$ab
   extends c.g
 {
-  c$ab()
+  public c$ab()
   {
-    super("chooseMedia", "chooseMedia", 254, true);
+    super("chooseIdCard", "chooseIdCard", 247, true);
   }
 }
 

@@ -1,55 +1,23 @@
 package com.google.android.gms.common;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
+import com.google.android.gms.common.util.VisibleForTesting;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class zzd
-  implements Parcelable.Creator<zzc>
+@VisibleForTesting
+final class zzd
 {
-  static void zza(zzc paramzzc, Parcel paramParcel, int paramInt)
-  {
-    paramInt = com.google.android.gms.common.internal.safeparcel.zzc.zzaZ(paramParcel);
-    com.google.android.gms.common.internal.safeparcel.zzc.zza(paramParcel, 1, paramzzc.name, false);
-    com.google.android.gms.common.internal.safeparcel.zzc.zzc(paramParcel, 2, paramzzc.version);
-    com.google.android.gms.common.internal.safeparcel.zzc.zzJ(paramParcel, paramInt);
-  }
+  static final GoogleCertificates.CertData[] zzbg;
   
-  public zzc zzaK(Parcel paramParcel)
+  static
   {
-    int j = zzb.zzaY(paramParcel);
-    String str = null;
-    int i = 0;
-    while (paramParcel.dataPosition() < j)
-    {
-      int k = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(k))
-      {
-      default: 
-        zzb.zzb(paramParcel, k);
-        break;
-      case 1: 
-        str = zzb.zzq(paramParcel, k);
-        break;
-      case 2: 
-        i = zzb.zzg(paramParcel, k);
-      }
-    }
-    if (paramParcel.dataPosition() != j) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + j, paramParcel);
-    }
-    return new zzc(str, i);
-  }
-  
-  public zzc[] zzcv(int paramInt)
-  {
-    return new zzc[paramInt];
+    AppMethodBeat.i(90332);
+    zzbg = new GoogleCertificates.CertData[] { new zze(GoogleCertificates.CertData.zzd("")), new zzf(GoogleCertificates.CertData.zzd("")) };
+    AppMethodBeat.o(90332);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.zzd
  * JD-Core Version:    0.7.0.1
  */

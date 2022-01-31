@@ -7,10 +7,10 @@ final class RecyclerView$2
   
   public final void run()
   {
-    if (this.agK.agf != null) {
-      this.agK.agf.gA();
+    if (this.aja.aiv != null) {
+      this.aja.aiv.hA();
     }
-    this.agK.agA = false;
+    this.aja.aiQ = false;
   }
 }
 

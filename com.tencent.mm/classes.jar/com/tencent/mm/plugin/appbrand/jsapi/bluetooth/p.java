@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth;
 
 import android.annotation.TargetApi;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -16,59 +17,64 @@ public final class p
   
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    c.jdMethod_if(101);
+    AppMethodBeat.i(94213);
+    c.kS(101);
     String str = paramc.getAppId();
     Object localObject = paramJSONObject;
     if (paramJSONObject == null) {
       localObject = "";
     }
-    y.i("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "appId:%s stopBluetoothDevicesDiscovery data:%s", new Object[] { str, localObject });
-    paramJSONObject = a.tV(str);
+    ab.i("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "appId:%s stopBluetoothDevicesDiscovery data:%s", new Object[] { str, localObject });
+    paramJSONObject = a.BU(str);
     if (paramJSONObject == null)
     {
-      y.e("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "bleWorker is null, may not open ble");
+      ab.e("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "bleWorker is null, may not open ble");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10000));
-      paramc.C(paramInt, h("fail:not init", paramJSONObject));
-      c.bU(103, 106);
+      paramc.h(paramInt, j("fail:not init", paramJSONObject));
+      c.df(103, 106);
+      AppMethodBeat.o(94213);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.aiB())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.aCw())
     {
-      y.e("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "adapter is null or not enabled!");
+      ab.e("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "adapter is null or not enabled!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10001));
-      paramc.C(paramInt, h("fail:not available", paramJSONObject));
-      c.bU(103, 108);
+      paramc.h(paramInt, j("fail:not available", paramJSONObject));
+      c.df(103, 108);
+      AppMethodBeat.o(94213);
       return;
     }
-    if (paramJSONObject.glx != null)
+    if (paramJSONObject.hFw != null)
     {
-      paramJSONObject = paramJSONObject.glx;
-      if (paramJSONObject.gmc != null) {
-        paramJSONObject = paramJSONObject.gmc.aiw();
+      paramJSONObject = paramJSONObject.hFw;
+      if (paramJSONObject.hGb != null) {
+        paramJSONObject = paramJSONObject.hGb.aCr();
       }
     }
     for (;;)
     {
-      y.i("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "stopBleScan result:%s", new Object[] { paramJSONObject });
+      ab.i("MicroMsg.JsApiStopBluetoothDevicesDiscovery", "stopBleScan result:%s", new Object[] { paramJSONObject });
       localObject = new HashMap();
       switch (paramJSONObject.errCode)
       {
       default: 
-        ((Map)localObject).put("isDiscovering", Boolean.valueOf(false));
-        paramc.C(paramInt, h("fail", (Map)localObject));
-        c.jdMethod_if(103);
+        ((Map)localObject).put("isDiscovering", Boolean.FALSE);
+        paramc.h(paramInt, j("fail", (Map)localObject));
+        c.kS(103);
+        AppMethodBeat.o(94213);
         return;
-        paramJSONObject = j.gmP;
+        paramJSONObject = j.hGO;
         continue;
-        paramJSONObject = j.gmP;
+        paramJSONObject = j.hGO;
       }
     }
-    ((Map)localObject).put("isDiscovering", Boolean.valueOf(false));
-    paramc.C(paramInt, h("ok", (Map)localObject));
-    c.jdMethod_if(102);
+    ((Map)localObject).put("isDiscovering", Boolean.FALSE);
+    paramc.h(paramInt, j("ok", (Map)localObject));
+    c.kS(102);
     m.c.a(paramc, true, false);
+    AppMethodBeat.o(94213);
   }
 }
 

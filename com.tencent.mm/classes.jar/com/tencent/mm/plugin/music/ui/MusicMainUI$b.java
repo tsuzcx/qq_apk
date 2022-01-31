@@ -1,34 +1,38 @@
 package com.tencent.mm.plugin.music.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.e.e;
 import com.tencent.mm.plugin.music.f.c.b;
-import com.tencent.mm.pluginsdk.i.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.i.d.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class MusicMainUI$b
-  extends c.a
+  extends d.a
 {
   private MusicMainUI$b(MusicMainUI paramMusicMainUI) {}
   
-  public final void bnY()
-  {
-    y.i("MicroMsg.Music.MusicMainUI", "shake %b", new Object[] { Boolean.valueOf(true) });
-    long l = bk.cp(MusicMainUI.e(this.mCa));
-    if (l < 1200L) {
-      y.i("MicroMsg.Music.MusicMainUI", "tryStartShake delay too short:" + l);
-    }
-    do
-    {
-      return;
-      y.w("MicroMsg.Music.MusicMainUI", "tryStartShake delay too enough:" + l);
-      MusicMainUI.a(this.mCa, bk.UZ());
-      MusicMainUI.f(this.mCa);
-    } while (MusicMainUI.g(this.mCa) % 2 != 0);
-    ((e)b.Q(e.class)).sP(MusicMainUI.h(this.mCa));
-  }
-  
   public final void onRelease() {}
+  
+  public final void onShake(boolean paramBoolean)
+  {
+    AppMethodBeat.i(151919);
+    ab.i("MicroMsg.Music.MusicMainUI", "shake %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    long l = bo.av(MusicMainUI.e(this.pcd));
+    if (l < 1200L)
+    {
+      ab.i("MicroMsg.Music.MusicMainUI", "tryStartShake delay too short:".concat(String.valueOf(l)));
+      AppMethodBeat.o(151919);
+      return;
+    }
+    ab.w("MicroMsg.Music.MusicMainUI", "tryStartShake delay too enough:".concat(String.valueOf(l)));
+    MusicMainUI.a(this.pcd, bo.yB());
+    MusicMainUI.f(this.pcd);
+    if (MusicMainUI.g(this.pcd) % 2 == 0) {
+      ((e)b.am(e.class)).xR(MusicMainUI.h(this.pcd));
+    }
+    AppMethodBeat.o(151919);
+  }
 }
 
 

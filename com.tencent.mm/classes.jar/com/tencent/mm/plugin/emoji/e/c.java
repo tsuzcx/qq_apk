@@ -1,87 +1,54 @@
 package com.tencent.mm.plugin.emoji.e;
 
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.File;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.j.a;
+import com.tencent.mm.plugin.emoji.c.a;
+import com.tencent.mm.plugin.emoji.c.b;
+import com.tencent.mm.plugin.emoji.c.d;
 
-public class c
+public final class c
 {
-  public static c iWA;
-  public boolean iWB = false;
-  private Pattern iWC = Pattern.compile("_\\d");
+  public static j.a appForegroundListener;
+  public final com.tencent.mm.sdk.b.c checkLanguageChangeIListener;
+  public com.tencent.mm.sdk.b.c lfA;
+  public a lfo;
+  public b lfp;
+  public d lfq;
+  public com.tencent.mm.plugin.emoji.c.c lfr;
+  public com.tencent.mm.sdk.b.c lfs;
+  public com.tencent.mm.sdk.b.c lft;
+  public com.tencent.mm.sdk.b.c lfu;
+  public com.tencent.mm.sdk.b.c lfv;
+  public com.tencent.mm.sdk.b.c lfw;
+  public com.tencent.mm.sdk.b.c lfx;
+  public com.tencent.mm.sdk.b.c lfy;
+  public com.tencent.mm.sdk.b.c lfz;
   
-  public static c aHb()
+  static
   {
-    if (iWA == null) {}
-    try
-    {
-      iWA = new c();
-      return iWA;
-    }
-    finally {}
+    AppMethodBeat.i(139669);
+    appForegroundListener = new c.6();
+    AppMethodBeat.o(139669);
   }
   
-  public final void Aq(String paramString)
+  public c()
   {
-    paramString = new File(paramString);
-    if ((paramString.exists()) && (paramString.isDirectory()))
-    {
-      paramString = paramString.listFiles();
-      if ((paramString != null) && (paramString.length > 0))
-      {
-        int j = paramString.length;
-        int i = 0;
-        if (i < j)
-        {
-          Object localObject = paramString[i];
-          if (this.iWB)
-          {
-            if (localObject.isDirectory()) {
-              Aq(localObject.getPath());
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              String str = localObject.getName();
-              if ((this.iWC.matcher(str).find()) || (str.startsWith("temp"))) {
-                localObject.delete();
-              }
-            }
-          }
-          y.i("MicroMsg.emoji.EmojiFileCleanTaskManager", "stop run");
-        }
-      }
-    }
-  }
-  
-  public final void Ar(String paramString)
-  {
-    paramString = new File(paramString);
-    if ((paramString.exists()) && (paramString.isDirectory()))
-    {
-      paramString = paramString.listFiles();
-      if ((paramString != null) && (paramString.length > 0))
-      {
-        int j = paramString.length;
-        int i = 0;
-        if (i < j)
-        {
-          Object localObject = paramString[i];
-          if (localObject.isDirectory()) {
-            Ar(localObject.getPath());
-          }
-          for (;;)
-          {
-            i += 1;
-            break;
-            localObject.getName();
-            localObject.delete();
-          }
-        }
-      }
-    }
+    AppMethodBeat.i(52848);
+    this.lfo = new a();
+    this.lfp = new b();
+    this.lfq = new d();
+    this.lfr = new com.tencent.mm.plugin.emoji.c.c();
+    this.lfs = new c.1(this);
+    this.lft = new c.4(this);
+    this.lfu = new c.5(this);
+    this.lfv = new c.7(this);
+    this.lfw = new c.8(this);
+    this.checkLanguageChangeIListener = new c.9(this);
+    this.lfx = new c.10(this);
+    this.lfy = new c.11(this);
+    this.lfz = new c.2(this);
+    this.lfA = new c.3(this);
+    AppMethodBeat.o(52848);
   }
 }
 

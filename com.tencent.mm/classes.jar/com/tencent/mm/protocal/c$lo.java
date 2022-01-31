@@ -1,10 +1,12 @@
 package com.tencent.mm.protocal;
 
-import java.util.Set;
-
 public final class c$lo
+  extends c.g
 {
-  public static Set<String> soT;
+  public c$lo()
+  {
+    super("publicCache", "publicCache", 149, false);
+  }
 }
 
 

@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/p1"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/b25" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginTop="@dimen/ko" android:layout_marginRight="@dimen/kl">
-        <EditText android:textColor="@color/ta" android:textColorHint="@color/pe" android:gravity="top" android:id="@id/kl" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="130.0dip" android:singleLine="false" android:layout_weight="1.0" style="@style/kg" />
-        <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:layout_gravity="bottom|center|right" android:id="@id/az2" android:padding="@dimen/mx" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:id="@id/o1" android:background="@color/a3x" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/dj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" style="@style/mo" />
+    <LinearLayout android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/dj" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx">
+        <RelativeLayout android:id="@id/o3" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="@dimen/f1">
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/o4" android:layout_width="@dimen/ez" android:layout_height="@dimen/ez" android:layout_centerVertical="true">
+                <ImageView android:id="@id/k6" android:layout_width="@dimen/ey" android:layout_height="@dimen/ey" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <RelativeLayout android:id="@id/o5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l5" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <TextView android:id="@id/o6" android:visibility="gone" android:text="@string/e0" style="@style/lm" />
+                <CheckBox android:id="@id/o8" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ne" android:layout_toLeftOf="@id/o5" android:layout_toRightOf="@id/o4" android:layout_centerHorizontal="true">
+                <com.tencent.mm.ui.tools.MMTruncTextView android:id="@id/oa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick}" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerHorizontal="true" style="@style/ln" />
+                <TextView android:id="@id/ob" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="{account}" android:singleLine="true" android:layout_below="@id/oa" android:layout_alignParentLeft="true" style="@style/lm" />
+            </RelativeLayout>
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

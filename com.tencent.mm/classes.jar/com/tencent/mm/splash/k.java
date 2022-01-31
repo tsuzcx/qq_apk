@@ -1,118 +1,76 @@
 package com.tencent.mm.splash;
 
-import android.content.Context;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mm.compatible.util.d;
+import android.app.Activity;
+import android.app.Instrumentation;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Set;
 
 final class k
-  implements Handler.Callback
+  extends Instrumentation
 {
-  public static int umg = 100;
-  public static int umh = 113;
-  public static int umi = 114;
-  public static int umj = 115;
-  public static int umk = 116;
-  public static int uml = 121;
-  public static int umm = 122;
-  public static int umn = 126;
-  public static int umo = 145;
-  private static boolean ump = false;
-  private static Runnable umq;
-  private static boolean ums = false;
-  private Context mContext;
-  Handler.Callback mHG;
-  private boolean umr = false;
+  public Instrumentation yvZ;
   
-  public k(Context paramContext, Handler.Callback paramCallback)
+  public k(Instrumentation paramInstrumentation)
   {
-    this.mContext = paramContext;
-    this.mHG = paramCallback;
+    AppMethodBeat.i(114885);
+    this.yvZ = paramInstrumentation;
+    brK();
+    AppMethodBeat.o(114885);
   }
   
-  public static void ag(Runnable paramRunnable)
+  private void brK()
   {
-    ump = true;
-    umq = paramRunnable;
+    AppMethodBeat.i(114887);
+    Field[] arrayOfField = Instrumentation.class.getDeclaredFields();
+    int i = 0;
+    while (i < arrayOfField.length)
+    {
+      arrayOfField[i].setAccessible(true);
+      Object localObject = arrayOfField[i].get(this.yvZ);
+      arrayOfField[i].set(this, localObject);
+      i += 1;
+    }
+    AppMethodBeat.o(114887);
   }
   
-  public static boolean ctl()
+  public final Activity newActivity(ClassLoader paramClassLoader, String paramString, Intent paramIntent)
   {
-    return ums;
-  }
-  
-  public final boolean handleMessage(Message paramMessage)
-  {
-    if (this.umr)
-    {
-      i.c("WxSplash.SplashHackHandlerCallback", "found a infinite call loop", new Object[0]);
-      return true;
+    AppMethodBeat.i(114886);
+    if (h.yvp != null) {
+      h.yvp.dD(paramString);
     }
-    ums = false;
-    i.c("WxSplash.SplashHackHandlerCallback", "before handleMessage %s, splash %s, pending early %s", new Object[] { Integer.valueOf(paramMessage.what), Boolean.valueOf(i.csW()), Boolean.valueOf(i.csX()) });
-    if ((ump) && (paramMessage.what == 987654321))
+    if ((h.dvu()) && (!h.dvA().getCanonicalName().equals(paramString)))
     {
-      if (umq != null)
+      paramClassLoader = new i();
+      paramClassLoader.yvL = paramString;
+      h.c("WxSplash.SplashHackInstrumentation", "new splash hack activity. replace activity %s", new Object[] { paramString });
+      h.yvj.add(paramClassLoader);
+      AppMethodBeat.o(114886);
+      return paramClassLoader;
+    }
+    paramClassLoader = super.newActivity(paramClassLoader, paramString, paramIntent);
+    Object localObject = h.bYM;
+    if (localObject != null)
+    {
+      localObject = ((d)localObject).l(paramClassLoader);
+      if (localObject != paramClassLoader)
       {
-        i.c("WxSplash.SplashHackHandlerCallback", "verify hack received.", new Object[0]);
-        umq.run();
+        h.c("WxSplash.SplashHackInstrumentation", "Activity %s is intercepted by %s.", new Object[] { paramString, localObject });
+        paramClassLoader = (ClassLoader)localObject;
       }
-      return true;
     }
-    Object localObject;
-    if ((i.csW()) && (!i.csX()))
+    for (;;)
     {
-      i.c("WxSplash.SplashHackHandlerCallback", "handleMessage %s, splash %s", new Object[] { Integer.valueOf(paramMessage.what), Boolean.valueOf(i.csW()) });
-      if ((paramMessage.what == umh) || (paramMessage.what == umi) || (paramMessage.what == umj) || (paramMessage.what == umk) || (paramMessage.what == uml) || (paramMessage.what == umm) || (paramMessage.what == umo))
+      if (j.dvI())
       {
-        localObject = Message.obtain();
-        ((Message)localObject).copyFrom(paramMessage);
-        i.ulF.add(localObject);
-        if (i.ulK != null) {
-          i.ulK.tg();
-        }
-        return true;
+        h.c("WxSplash.SplashHackInstrumentation", "processing relaunch activity.", new Object[0]);
+        paramIntent.putExtra("splash-hack-activity-recreate", true);
       }
+      AppMethodBeat.o(114886);
+      return paramClassLoader;
     }
-    if (paramMessage.what == umn)
-    {
-      if (i.ulL.size() > 0) {
-        ums = true;
-      }
-      i.c("WxSplash.SplashHackHandlerCallback", "received a RELAUNCH_ACTIVITY message, with %s splash activity", new Object[] { Integer.valueOf(i.ulL.size()) });
-      localObject = paramMessage.obj;
-      if (!d.gH(25)) {}
-    }
-    try
-    {
-      if (m.umB == null)
-      {
-        Field localField = Class.forName("android.app.ActivityThread$ActivityClientRecord").getDeclaredField("mPreserveWindow");
-        localField.setAccessible(true);
-        m.umB = localField;
-      }
-      i.c("WxSplash.SplashHackHandlerCallback", "preserveWindow is %s, will set false", new Object[] { Boolean.valueOf(((Boolean)m.umB.get(localObject)).booleanValue()) });
-      m.umB.set(localObject, Boolean.valueOf(false));
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        boolean bool;
-        i.a(localException, "");
-      }
-    }
-    if (this.mHG != null)
-    {
-      this.umr = true;
-      bool = this.mHG.handleMessage(paramMessage);
-      this.umr = false;
-      return bool;
-    }
-    return false;
   }
 }
 

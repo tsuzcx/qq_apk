@@ -2,16 +2,17 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 import android.annotation.TargetApi;
 import android.media.MediaCodec.BufferInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.nio.ByteBuffer;
 
 @TargetApi(16)
 public final class q
   extends r
 {
-  protected int eIz = -1;
+  protected int eRm = -1;
   
   public q(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, boolean paramBoolean)
   {
@@ -20,24 +21,31 @@ public final class q
   
   public final void clear()
   {
+    AppMethodBeat.i(76669);
     super.clear();
-    SightVideoJNI.releaseBigSightDataBufferLock(this.eIz);
+    SightVideoJNI.releaseBigSightDataBufferLock(this.eRm);
+    AppMethodBeat.o(76669);
   }
   
-  public final int dg(int paramInt1, int paramInt2)
+  public final int eF(int paramInt1, int paramInt2)
   {
-    this.eIz = paramInt1;
-    return super.dg(paramInt1, paramInt2);
+    AppMethodBeat.i(76667);
+    this.eRm = paramInt1;
+    paramInt1 = super.eF(paramInt1, paramInt2);
+    AppMethodBeat.o(76667);
+    return paramInt1;
   }
   
-  protected final void e(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
+  protected final void g(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
-    if ((this.eIz >= 0) && (paramByteBuffer != null) && (paramBufferInfo != null) && (paramBufferInfo.size == paramByteBuffer.limit() - paramByteBuffer.position()))
+    AppMethodBeat.i(76668);
+    if ((this.eRm >= 0) && (paramByteBuffer != null) && (paramBufferInfo != null) && (paramBufferInfo.size == paramByteBuffer.limit() - paramByteBuffer.position()))
     {
-      long l = bk.UZ();
-      SightVideoJNI.writeH264DataLock(this.eIz, paramByteBuffer, paramBufferInfo.size);
-      y.i("MicroMsg.MMSightYUVMediaCodecBufIdRecorder", "writeH264Data used %sms, size: %s %s", new Object[] { Long.valueOf(bk.cp(l)), Integer.valueOf(paramBufferInfo.size), Integer.valueOf(paramByteBuffer.capacity()) });
+      long l = bo.yB();
+      SightVideoJNI.writeH264DataLock(this.eRm, paramByteBuffer, paramBufferInfo.size);
+      ab.i("MicroMsg.MMSightYUVMediaCodecBufIdRecorder", "writeH264Data used %sms, size: %s %s", new Object[] { Long.valueOf(bo.av(l)), Integer.valueOf(paramBufferInfo.size), Integer.valueOf(paramByteBuffer.capacity()) });
     }
+    AppMethodBeat.o(76668);
   }
 }
 

@@ -1,35 +1,19 @@
 package com.tencent.mm.ui;
 
-import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.mm.as.a.c.g;
-import com.tencent.mm.as.a.d.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.base.preference.IconPreference;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ac$2
-  implements g
+  implements View.OnClickListener
 {
-  ac$2(ac paramac, IconPreference paramIconPreference) {}
+  ac$2(ac paramac) {}
   
-  public final Bitmap a(String paramString, View paramView, b paramb)
+  public final void onClick(View paramView)
   {
-    return null;
-  }
-  
-  public final void b(String paramString, View paramView, b paramb)
-  {
-    if (paramb.bitmap != null)
-    {
-      ai.d(new ac.2.2(this, paramb.bitmap));
-      return;
-    }
-    ai.d(new ac.2.3(this));
-  }
-  
-  public final void mv(String paramString)
-  {
-    ai.d(new ac.2.1(this));
+    AppMethodBeat.i(112460);
+    ac.b(this.zeO);
+    AppMethodBeat.o(112460);
   }
 }
 

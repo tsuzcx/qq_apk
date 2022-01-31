@@ -4,8 +4,6 @@ public abstract interface b
 {
   public abstract boolean isPaused();
   
-  public abstract void onPause();
-  
   public abstract void onResume();
 }
 

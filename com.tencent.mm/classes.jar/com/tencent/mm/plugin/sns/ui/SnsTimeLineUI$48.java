@@ -1,24 +1,17 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsTimeLineUI$48
-  implements View.OnClickListener
+  implements Runnable
 {
   SnsTimeLineUI$48(SnsTimeLineUI paramSnsTimeLineUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    if (SystemClock.elapsedRealtime() - SnsTimeLineUI.O(this.pfC) < 300L) {
-      SnsTimeLineUI.I(this.pfC);
-    }
-    SnsTimeLineUI.c(this.pfC, SystemClock.elapsedRealtime());
-    af.aXq().removeCallbacks(SnsTimeLineUI.P(this.pfC));
-    SnsTimeLineUI.P(this.pfC).run();
+    AppMethodBeat.i(155758);
+    SnsTimeLineUI.O(this.rYv);
+    AppMethodBeat.o(155758);
   }
 }
 

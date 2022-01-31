@@ -1,5 +1,6 @@
 package com.tencent.ttpic.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FilenameFilter;
 
@@ -10,7 +11,10 @@ class VideoMaterialDecoder$1
   
   public boolean accept(File paramFile, String paramString)
   {
-    return paramString.endsWith(".mp4");
+    AppMethodBeat.i(84044);
+    boolean bool = paramString.endsWith(".mp4");
+    AppMethodBeat.o(84044);
+    return bool;
   }
 }
 

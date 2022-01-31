@@ -6,11 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.mm.plugin.collect.b.e;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.collect.model.e;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,22 +19,31 @@ import java.util.List;
 public final class a
   extends BaseAdapter
 {
-  List<com.tencent.mm.plugin.collect.b.a> iJQ = new ArrayList();
+  List<com.tencent.mm.plugin.collect.model.a> kQw;
   private Context mContext;
   
   public a(Context paramContext)
   {
+    AppMethodBeat.i(41169);
+    this.kQw = new ArrayList();
     this.mContext = paramContext;
+    AppMethodBeat.o(41169);
   }
   
   public final int getCount()
   {
-    return this.iJQ.size();
+    AppMethodBeat.i(41170);
+    int i = this.kQw.size();
+    AppMethodBeat.o(41170);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.iJQ.get(paramInt);
+    AppMethodBeat.i(41171);
+    Object localObject = this.kQw.get(paramInt);
+    AppMethodBeat.o(41171);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -45,27 +53,31 @@ public final class a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(41172);
     View localView = paramView;
     if (paramView == null)
     {
-      localView = y.gt(this.mContext).inflate(a.g.collect_bill_item, paramViewGroup, false);
+      localView = w.hM(this.mContext).inflate(2130969171, paramViewGroup, false);
       localView.setTag(new a.a(localView));
     }
-    paramView = (com.tencent.mm.plugin.collect.b.a)this.iJQ.get(paramInt);
+    paramView = (com.tencent.mm.plugin.collect.model.a)this.kQw.get(paramInt);
     paramViewGroup = (a.a)localView.getTag();
-    TextView localTextView = paramViewGroup.iJR;
+    TextView localTextView = paramViewGroup.kGe;
     Context localContext = this.mContext;
     long l = paramView.timestamp;
-    localTextView.setText(new SimpleDateFormat(localContext.getString(a.i.collect_bill_item_date_day_format)).format(new Date(l * 1000L)));
-    paramViewGroup.iJS.setText(e.pw(paramView.fee));
-    if (!bk.bl(paramView.desc))
+    localTextView.setText(new SimpleDateFormat(localContext.getString(2131298424)).format(new Date(l * 1000L)));
+    paramViewGroup.kQx.setText(e.tN(paramView.cpo));
+    if (!bo.isNullOrNil(paramView.desc))
     {
-      paramViewGroup.iIV.setText(paramView.desc);
-      paramViewGroup.iIV.setVisibility(0);
-      return localView;
+      paramViewGroup.kPB.setText(paramView.desc);
+      paramViewGroup.kPB.setVisibility(0);
     }
-    paramViewGroup.iIV.setVisibility(8);
-    return localView;
+    for (;;)
+    {
+      AppMethodBeat.o(41172);
+      return localView;
+      paramViewGroup.kPB.setVisibility(8);
+    }
   }
 }
 

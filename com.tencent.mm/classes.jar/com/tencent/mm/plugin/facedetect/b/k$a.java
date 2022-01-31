@@ -1,42 +1,53 @@
 package com.tencent.mm.plugin.facedetect.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.b;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.cco;
-import com.tencent.mm.protocal.k;
-import com.tencent.mm.protocal.k.b;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.y;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.aa;
+import com.tencent.mm.protocal.l;
+import com.tencent.mm.protocal.l.b;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.cpv;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class k$a
-  extends k.d
-  implements k.b
+  extends l.d
+  implements l.b
 {
-  public cco jMK = new cco();
+  public cpv mgQ;
   
-  public final byte[] HG()
+  public k$a()
   {
-    this.spM = y.cph();
-    this.jMK.sBt = new bmk().bs(bk.crT());
-    this.jMK.tEX = k.a(this);
-    this.spL = this.jMK.sBt.tFM.toByteArray();
-    return this.jMK.toByteArray();
-  }
-  
-  public final int HH()
-  {
-    return 930;
+    AppMethodBeat.i(74);
+    this.mgQ = new cpv();
+    AppMethodBeat.o(74);
   }
   
   public final int getCmdId()
   {
     return 0;
   }
+  
+  public final int getFuncId()
+  {
+    return 930;
+  }
+  
+  public final byte[] toProtoBuf()
+  {
+    AppMethodBeat.i(75);
+    setRsaInfo(aa.dqE());
+    this.mgQ.wvN = new SKBuiltinBuffer_t().setBuffer(bo.dtR());
+    this.mgQ.setBaseRequest(l.a(this));
+    setPassKey(this.mgQ.wvN.getBuffer().toByteArray());
+    byte[] arrayOfByte = this.mgQ.toByteArray();
+    AppMethodBeat.o(75);
+    return arrayOfByte;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.k.a
  * JD-Core Version:    0.7.0.1
  */

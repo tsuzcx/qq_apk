@@ -1,39 +1,43 @@
 package com.tencent.mm.plugin.sight.encode.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.encode.a.a;
 import com.tencent.mm.plugin.sight.encode.a.a.a;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class SightCameraView$1
-  implements am.a
+  implements ap.a
 {
   SightCameraView$1(SightCameraView paramSightCameraView) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    float f = (float)this.oiM.oiz.bBA() / this.oiM.oiG;
-    if ((Float.compare(f, 0.0F) <= 0) && (System.currentTimeMillis() - SightCameraView.a(this.oiM) > 20000L))
+    AppMethodBeat.i(25108);
+    float f = (float)this.qWZ.qWM.cmZ() / this.qWZ.qWT;
+    if ((Float.compare(f, 0.0F) <= 0) && (System.currentTimeMillis() - SightCameraView.a(this.qWZ) > 20000L))
     {
-      y.e("MicroMsg.SightCameraView", "ERROR record duration, %dms !!!", new Object[] { Long.valueOf(20000L) });
-      this.oiM.aPl();
+      ab.e("MicroMsg.SightCameraView", "ERROR record duration, %dms !!!", new Object[] { Long.valueOf(20000L) });
+      this.qWZ.bvq();
+      AppMethodBeat.o(25108);
       return false;
     }
-    if ((Float.compare(f, 1.0F) > 0) && (this.oiM.oiz.bBB() == a.a.ohh)) {
-      if (!this.oiM.oiz.bBz()) {
-        SightCameraView.b(this.oiM);
+    if ((Float.compare(f, 1.0F) > 0) && (this.qWZ.qWM.cna() == a.a.qVw)) {
+      if (!this.qWZ.qWM.Cp()) {
+        SightCameraView.b(this.qWZ);
       }
     }
     for (;;)
     {
+      AppMethodBeat.o(25108);
       return true;
-      this.oiM.aB(f);
+      this.qWZ.aZ(f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.SightCameraView.1
  * JD-Core Version:    0.7.0.1
  */

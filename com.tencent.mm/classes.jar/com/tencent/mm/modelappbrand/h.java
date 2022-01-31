@@ -2,7 +2,7 @@ package com.tencent.mm.modelappbrand;
 
 public abstract interface h
 {
-  public abstract void a(boolean paramBoolean, long paramLong);
+  public abstract void b(boolean paramBoolean, long paramLong);
 }
 
 

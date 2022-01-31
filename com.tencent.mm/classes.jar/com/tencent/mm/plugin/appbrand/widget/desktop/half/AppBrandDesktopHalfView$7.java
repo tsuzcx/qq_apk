@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.half;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recentview.e.b;
 
 final class AppBrandDesktopHalfView$7
@@ -9,14 +10,16 @@ final class AppBrandDesktopHalfView$7
   
   public final void run()
   {
-    if (this.hrU != null) {
-      this.hrU.arA();
+    AppMethodBeat.i(134167);
+    if (this.jiq != null) {
+      this.jiq.aQl();
     }
+    AppMethodBeat.o(134167);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfView.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import com.tencent.mm.h.a.ow;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.py;
 import com.tencent.mm.sdk.b.a;
 
 final class ScanCameraLightDetector$1$1
@@ -10,14 +11,16 @@ final class ScanCameraLightDetector$1$1
   
   public final void run()
   {
-    ow localow = new ow();
-    localow.bYv.bYw = true;
-    a.udP.m(localow);
+    AppMethodBeat.i(81444);
+    py localpy = new py();
+    localpy.cGw.cGx = true;
+    a.ymk.l(localpy);
+    AppMethodBeat.o(81444);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.ScanCameraLightDetector.1.1
  * JD-Core Version:    0.7.0.1
  */

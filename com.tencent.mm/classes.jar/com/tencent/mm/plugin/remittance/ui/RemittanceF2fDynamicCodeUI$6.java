@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -9,10 +9,12 @@ final class RemittanceF2fDynamicCodeUI$6
 {
   RemittanceF2fDynamicCodeUI$6(RemittanceF2fDynamicCodeUI paramRemittanceF2fDynamicCodeUI) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
+    AppMethodBeat.i(45056);
     paraml.clear();
-    paraml.fq(0, a.i.remittance_scan_qrcode);
+    paraml.hx(0, 2131302621);
+    AppMethodBeat.o(45056);
   }
 }
 

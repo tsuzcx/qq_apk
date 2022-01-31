@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.openSDK.param.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class IPCDownloadParam
   extends JceStruct
@@ -27,6 +28,7 @@ public final class IPCDownloadParam
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(75993);
     if (cache_baseParam == null) {
       cache_baseParam = new IPCBaseParam();
     }
@@ -35,10 +37,12 @@ public final class IPCDownloadParam
     this.actionFlag = paramJceInputStream.readString(2, false);
     this.verifyType = paramJceInputStream.readString(3, false);
     this.reverse = paramJceInputStream.readString(4, false);
+    AppMethodBeat.o(75993);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(75992);
     paramJceOutputStream.write(this.baseParam, 0);
     if (this.opList != null) {
       paramJceOutputStream.write(this.opList, 1);
@@ -52,11 +56,12 @@ public final class IPCDownloadParam
     if (this.reverse != null) {
       paramJceOutputStream.write(this.reverse, 4);
     }
+    AppMethodBeat.o(75992);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.IPCDownloadParam
  * JD-Core Version:    0.7.0.1
  */

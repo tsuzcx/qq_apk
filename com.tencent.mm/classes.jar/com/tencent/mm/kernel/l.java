@@ -3,50 +3,66 @@ package com.tencent.mm.kernel;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.h;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class l
 {
-  public static boolean bm(Context paramContext)
+  public static boolean bQ(Context paramContext)
   {
+    AppMethodBeat.i(58021);
     if (paramContext == null)
     {
-      y.e("MicroMsg.WeChatAppStatus", "getFullExitStatus context == null");
+      ab.e("MicroMsg.WeChatAppStatus", "getFullExitStatus context == null");
+      AppMethodBeat.o(58021);
       return false;
     }
-    return paramContext.getSharedPreferences("system_config_prefs", 4).getBoolean("settings_fully_exit", true);
+    boolean bool = paramContext.getSharedPreferences("system_config_prefs", h.Mp()).getBoolean("settings_fully_exit", true);
+    AppMethodBeat.o(58021);
+    return bool;
   }
   
-  public static boolean bn(Context paramContext)
+  public static boolean bR(Context paramContext)
   {
+    AppMethodBeat.i(58023);
     if (paramContext == null)
     {
-      y.e("MicroMsg.WeChatAppStatus", "getShutDownWxStatus context == null");
+      ab.e("MicroMsg.WeChatAppStatus", "getShutDownWxStatus context == null");
+      AppMethodBeat.o(58023);
       return false;
     }
-    return paramContext.getSharedPreferences("system_config_prefs_showdown", 4).getBoolean("shut_down_weixin", false);
+    boolean bool = paramContext.getSharedPreferences("system_config_prefs_showdown", h.Mp()).getBoolean("shut_down_weixin", false);
+    AppMethodBeat.o(58023);
+    return bool;
   }
   
-  public static void k(Context paramContext, boolean paramBoolean)
+  public static void n(Context paramContext, boolean paramBoolean)
   {
+    AppMethodBeat.i(58020);
     if (paramContext == null)
     {
-      y.e("MicroMsg.WeChatAppStatus", "editFullExitStatus context == null");
+      ab.e("MicroMsg.WeChatAppStatus", "editFullExitStatus context == null");
+      AppMethodBeat.o(58020);
       return;
     }
-    paramContext.getSharedPreferences("system_config_prefs", 4).edit().putBoolean("settings_fully_exit", paramBoolean).commit();
-    y.i("MicroMsg.WeChatAppStatus", "editFullExitStatus to " + paramBoolean);
+    paramContext.getSharedPreferences("system_config_prefs", h.Mp()).edit().putBoolean("settings_fully_exit", paramBoolean).commit();
+    ab.i("MicroMsg.WeChatAppStatus", "editFullExitStatus to ".concat(String.valueOf(paramBoolean)));
+    AppMethodBeat.o(58020);
   }
   
-  public static void l(Context paramContext, boolean paramBoolean)
+  public static void o(Context paramContext, boolean paramBoolean)
   {
+    AppMethodBeat.i(58022);
     if (paramContext == null)
     {
-      y.e("MicroMsg.WeChatAppStatus", "editShutDownWxStatus context == null");
+      ab.e("MicroMsg.WeChatAppStatus", "editShutDownWxStatus context == null");
+      AppMethodBeat.o(58022);
       return;
     }
-    paramContext.getSharedPreferences("system_config_prefs_showdown", 4).edit().putBoolean("shut_down_weixin", paramBoolean).commit();
-    y.i("MicroMsg.WeChatAppStatus", "editShutDownWxStatus to " + paramBoolean);
+    paramContext.getSharedPreferences("system_config_prefs_showdown", h.Mp()).edit().putBoolean("shut_down_weixin", paramBoolean).commit();
+    ab.i("MicroMsg.WeChatAppStatus", "editShutDownWxStatus to ".concat(String.valueOf(paramBoolean)));
+    AppMethodBeat.o(58022);
   }
 }
 

@@ -6,43 +6,59 @@ import android.content.Context;
 import android.content.pm.ConfigurationInfo;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
-import com.tencent.liteav.basic.d.f;
+import com.tencent.liteav.basic.d.i;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class c
   extends com.tencent.liteav.basic.module.a
   implements d
 {
   protected Context a;
-  protected boolean b = true;
-  protected boolean c = false;
-  protected int d = 0;
-  protected int e = 0;
-  protected int f = 0;
-  protected com.tencent.liteav.basic.d.a g = null;
+  protected boolean b;
+  protected boolean c;
+  protected int d;
+  protected int e;
+  protected int f;
+  protected com.tencent.liteav.basic.d.a g;
   protected b h;
-  protected c.b i = new c.b();
-  protected c.c j = null;
+  protected b i;
+  protected c.c j;
   e k;
-  private boolean l = false;
-  private long m = 0L;
-  private long n = 0L;
-  private long o = 0L;
-  private c.a p = new c.a(this);
+  private boolean l;
+  private long m;
+  private long n;
+  private long o;
+  private Object p;
+  private c.a q;
   
   public c(Context paramContext, boolean paramBoolean)
   {
+    AppMethodBeat.i(67059);
+    this.b = true;
+    this.c = false;
+    this.d = 0;
+    this.e = 0;
+    this.f = 0;
+    this.g = null;
+    this.i = new b();
+    this.j = null;
+    this.l = true;
+    this.m = 0L;
+    this.n = 0L;
+    this.o = 0L;
+    this.q = new c.a(this);
     Object localObject = (ActivityManager)paramContext.getSystemService("activity");
     TXCLog.i("TXCVideoPreprocessor", "TXCVideoPreprocessor version: VideoPreprocessor-v1.1");
     localObject = ((ActivityManager)localObject).getDeviceConfigurationInfo();
     if (localObject != null)
     {
       TXCLog.i("TXCVideoPreprocessor", "opengl es version " + ((ConfigurationInfo)localObject).reqGlEsVersion);
-      TXCLog.i("TXCVideoPreprocessor", "set GLContext " + paramBoolean);
+      TXCLog.i("TXCVideoPreprocessor", "set GLContext ".concat(String.valueOf(paramBoolean)));
       if (((ConfigurationInfo)localObject).reqGlEsVersion > 131072)
       {
         TXCLog.i("TXCVideoPreprocessor", "This devices is OpenGlUtils.OPENGL_ES_3");
-        f.a(3);
+        i.a(3);
       }
     }
     for (;;)
@@ -51,9 +67,10 @@ public class c
       this.b = paramBoolean;
       this.h = new b(this.a, this.b);
       a.a().a(paramContext);
+      AppMethodBeat.o(67059);
       return;
       TXCLog.i("TXCVideoPreprocessor", "This devices is OpenGlUtils.OPENGL_ES_2");
-      f.a(2);
+      i.a(2);
       continue;
       TXCLog.e("TXCVideoPreprocessor", "getDeviceConfigurationInfo opengl Info failed!");
     }
@@ -61,13 +78,14 @@ public class c
   
   private boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
+    AppMethodBeat.i(67068);
     if (this.j == null)
     {
       this.j = new c.c(null);
       this.n = 0L;
       this.o = System.currentTimeMillis();
     }
-    if ((paramInt1 != this.j.b) || (paramInt2 != this.j.c) || (paramInt3 != this.j.f) || ((this.d > 0) && (this.d != this.j.h)) || ((this.e > 0) && (this.e != this.j.i)) || ((this.f > 0) && (this.f != this.j.j)) || ((this.g != null) && (((this.g.c > 0) && ((this.j.m == null) || (this.g.c != this.j.m.c))) || ((this.g.d > 0) && ((this.j.m == null) || (this.g.d != this.j.m.d))) || ((this.g.a >= 0) && ((this.j.m == null) || (this.g.a != this.j.m.a))) || ((this.g.b >= 0) && ((this.j.m == null) || (this.g.b != this.j.m.b))))) || (this.c != this.j.g))
+    if ((paramInt1 != this.j.b) || (paramInt2 != this.j.c) || (paramInt3 != this.j.f) || ((this.d > 0) && (this.d != this.j.h)) || ((this.e > 0) && (this.e != this.j.i)) || ((this.f > 0) && (this.f != this.j.j)) || ((this.g != null) && (((this.g.c > 0) && ((this.j.m == null) || (this.g.c != this.j.m.c))) || ((this.g.d > 0) && ((this.j.m == null) || (this.g.d != this.j.m.d))) || ((this.g.a >= 0) && ((this.j.m == null) || (this.g.a != this.j.m.a))) || ((this.g.b >= 0) && ((this.j.m == null) || (this.g.b != this.j.m.b))))) || (this.c != this.j.g) || (this.j.k != paramInt4))
     {
       TXCLog.i("TXCVideoPreprocessor", "Init sdk");
       TXCLog.i("TXCVideoPreprocessor", "Input widht " + paramInt1 + " height " + paramInt2);
@@ -95,24 +113,24 @@ public class c
               {
                 TXCLog.i("TXCVideoPreprocessor", "set Crop Rect; init ");
                 if (paramInt1 - this.g.a <= this.g.c) {
-                  break label880;
+                  break label902;
                 }
                 paramInt1 = this.g.c;
                 if (paramInt2 - this.g.b <= this.g.d) {
-                  break label893;
+                  break label915;
                 }
                 paramInt2 = this.g.d;
-                label499:
+                label516:
                 this.g.c = paramInt1;
                 this.g.d = paramInt2;
                 i2 = this.g.c;
                 i1 = this.g.d;
-                this.j.m = this.g;
               }
             }
           }
         }
       }
+      this.j.m = this.g;
       this.j.f = paramInt3;
       this.j.a = this.b;
       this.j.k = paramInt4;
@@ -121,7 +139,7 @@ public class c
       {
         this.j.h = this.d;
         this.j.i = this.e;
-        label611:
+        label628:
         this.j.j = this.f;
         if (this.j.j <= 0) {
           this.j.j = 0;
@@ -129,18 +147,18 @@ public class c
         if ((this.j.h <= 0) || (this.j.i <= 0))
         {
           if ((90 != this.j.j) && (270 != this.j.j)) {
-            break label925;
+            break label947;
           }
           this.j.h = i1;
           this.j.i = i2;
         }
-        label703:
+        label720:
         if ((90 != this.j.j) && (270 != this.j.j)) {
-          break label946;
+          break label968;
         }
         this.j.d = this.j.i;
         this.j.e = this.j.h;
-        label756:
+        label773:
         if (true != this.l)
         {
           this.j.h = this.d;
@@ -148,7 +166,7 @@ public class c
           if ((this.j.h <= 0) || (this.j.i <= 0))
           {
             if ((90 != this.j.j) && (270 != this.j.j)) {
-              break label977;
+              break label999;
             }
             this.j.h = i1;
           }
@@ -158,28 +176,29 @@ public class c
       {
         this.j.g = this.c;
         if (a(this.j)) {
-          break label1067;
+          break label1089;
         }
         TXCLog.e("TXCVideoPreprocessor", "init failed!");
+        AppMethodBeat.o(67068);
         return false;
-        label880:
+        label902:
         paramInt1 -= this.g.a;
         break;
-        label893:
+        label915:
         paramInt2 -= this.g.b;
-        break label499;
+        break label516;
         this.j.h = 0;
         this.j.i = 0;
-        break label611;
-        label925:
+        break label628;
+        label947:
         this.j.h = i2;
         this.j.i = i1;
-        break label703;
-        label946:
+        break label720;
+        label968:
         this.j.d = this.j.h;
         this.j.e = this.j.i;
-        break label756;
-        label977:
+        break label773;
+        label999:
         this.j.h = i2;
       }
     }
@@ -191,12 +210,14 @@ public class c
       this.i.l = paramInt5;
       this.h.a(paramInt5);
     }
-    label1067:
+    label1089:
+    AppMethodBeat.o(67068);
     return true;
   }
   
   private boolean a(c.c paramc)
   {
+    AppMethodBeat.i(67069);
     this.i.d = paramc.b;
     this.i.e = paramc.c;
     this.i.m = paramc.m;
@@ -213,11 +234,14 @@ public class c
     if (this.h == null) {
       this.h = new b(this.a, paramc.a);
     }
-    return this.h.a(this.i);
+    boolean bool = this.h.a(this.i);
+    AppMethodBeat.o(67069);
+    return bool;
   }
   
-  private void b()
+  private void c()
   {
+    AppMethodBeat.i(146335);
     if (this.m != 0L) {
       setStatusValue(3002, Long.valueOf(System.currentTimeMillis() - this.m));
     }
@@ -229,6 +253,7 @@ public class c
       this.n = 0L;
       this.o = l1;
     }
+    AppMethodBeat.o(146335);
   }
   
   private int m(int paramInt)
@@ -247,39 +272,40 @@ public class c
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i1 = 0;
     boolean bool = false;
-    com.tencent.liteav.basic.f.c localc;
+    AppMethodBeat.i(67055);
     if (this.k != null)
     {
-      localc = new com.tencent.liteav.basic.f.c();
-      localc.d = paramInt2;
-      localc.e = paramInt3;
-      if (this.j == null) {
-        break label100;
+      com.tencent.liteav.basic.structs.b localb = new com.tencent.liteav.basic.structs.b();
+      localb.e = paramInt2;
+      localb.f = paramInt3;
+      if (this.j != null) {}
+      for (paramInt2 = this.j.j;; paramInt2 = 0)
+      {
+        localb.j = paramInt2;
+        if (this.j != null) {
+          bool = this.j.g;
+        }
+        localb.i = bool;
+        localb.a = paramInt1;
+        paramInt1 = this.k.a(localb);
+        AppMethodBeat.o(67055);
+        return paramInt1;
       }
     }
-    label100:
-    for (paramInt2 = this.j.j;; paramInt2 = 0)
-    {
-      localc.i = paramInt2;
-      if (this.j != null) {
-        bool = this.j.g;
-      }
-      localc.h = bool;
-      localc.a = paramInt1;
-      i1 = this.k.a(localc);
-      return i1;
-    }
+    AppMethodBeat.o(67055);
+    return 0;
   }
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong)
   {
     try
     {
+      AppMethodBeat.i(146337);
       a(paramInt2, paramInt3, m(paramInt4), paramInt5, paramInt6);
       this.h.b(this.i);
-      paramInt1 = this.h.a(paramInt1, paramInt5);
+      paramInt1 = this.h.a(paramInt1, paramInt5, paramLong);
+      AppMethodBeat.o(146337);
       return paramInt1;
     }
     finally
@@ -289,33 +315,113 @@ public class c
     }
   }
   
-  public int a(com.tencent.liteav.basic.f.c paramc, int paramInt1, int paramInt2)
+  /* Error */
+  public int a(com.tencent.liteav.basic.structs.b paramb, int paramInt1, int paramInt2, long paramLong)
   {
-    try
-    {
-      this.m = System.currentTimeMillis();
-      a(paramc.j);
-      a(paramc.f, paramc.g);
-      a(paramc.h);
-      a(paramc.i);
-      a(paramc.c);
-      paramInt1 = a(paramc.a, paramc.d, paramc.e, paramc.i, paramInt1, paramInt2);
-      return paramInt1;
-    }
-    finally
-    {
-      paramc = finally;
-      throw paramc;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 302
+    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: invokestatic 185	java/lang/System:currentTimeMillis	()J
+    //   12: putfield 78	com/tencent/liteav/beauty/c:m	J
+    //   15: aload_0
+    //   16: aload_1
+    //   17: getfield 304	com/tencent/liteav/basic/structs/b:l	Lcom/tencent/liteav/basic/d/a;
+    //   20: invokevirtual 307	com/tencent/liteav/beauty/c:a	(Lcom/tencent/liteav/basic/d/a;)V
+    //   23: aload_0
+    //   24: aload_1
+    //   25: getfield 308	com/tencent/liteav/basic/structs/b:g	I
+    //   28: aload_1
+    //   29: getfield 309	com/tencent/liteav/basic/structs/b:h	I
+    //   32: invokevirtual 312	com/tencent/liteav/beauty/c:a	(II)V
+    //   35: aload_0
+    //   36: aload_1
+    //   37: getfield 283	com/tencent/liteav/basic/structs/b:i	Z
+    //   40: invokevirtual 315	com/tencent/liteav/beauty/c:b	(Z)V
+    //   43: aload_0
+    //   44: aload_1
+    //   45: getfield 282	com/tencent/liteav/basic/structs/b:j	I
+    //   48: invokevirtual 316	com/tencent/liteav/beauty/c:a	(I)V
+    //   51: aload_0
+    //   52: aload_1
+    //   53: getfield 319	com/tencent/liteav/basic/structs/b:c	[F
+    //   56: invokevirtual 322	com/tencent/liteav/beauty/c:a	([F)V
+    //   59: aload_0
+    //   60: aload_1
+    //   61: getfield 324	com/tencent/liteav/basic/structs/b:d	Z
+    //   64: invokevirtual 326	com/tencent/liteav/beauty/c:a	(Z)V
+    //   67: aload_1
+    //   68: getfield 329	com/tencent/liteav/basic/structs/b:m	[B
+    //   71: ifnull +44 -> 115
+    //   74: aload_1
+    //   75: getfield 284	com/tencent/liteav/basic/structs/b:a	I
+    //   78: iconst_m1
+    //   79: if_icmpne +36 -> 115
+    //   82: aload_0
+    //   83: aload_1
+    //   84: getfield 329	com/tencent/liteav/basic/structs/b:m	[B
+    //   87: aload_1
+    //   88: getfield 280	com/tencent/liteav/basic/structs/b:e	I
+    //   91: aload_1
+    //   92: getfield 281	com/tencent/liteav/basic/structs/b:f	I
+    //   95: aload_1
+    //   96: getfield 282	com/tencent/liteav/basic/structs/b:j	I
+    //   99: iload_2
+    //   100: iload_3
+    //   101: invokevirtual 332	com/tencent/liteav/beauty/c:a	([BIIIII)I
+    //   104: istore_2
+    //   105: ldc_w 302
+    //   108: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   111: aload_0
+    //   112: monitorexit
+    //   113: iload_2
+    //   114: ireturn
+    //   115: aload_0
+    //   116: aload_1
+    //   117: getfield 284	com/tencent/liteav/basic/structs/b:a	I
+    //   120: aload_1
+    //   121: getfield 280	com/tencent/liteav/basic/structs/b:e	I
+    //   124: aload_1
+    //   125: getfield 281	com/tencent/liteav/basic/structs/b:f	I
+    //   128: aload_1
+    //   129: getfield 282	com/tencent/liteav/basic/structs/b:j	I
+    //   132: iload_2
+    //   133: iload_3
+    //   134: lload 4
+    //   136: invokevirtual 334	com/tencent/liteav/beauty/c:a	(IIIIIIJ)I
+    //   139: istore_2
+    //   140: ldc_w 302
+    //   143: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   146: goto -35 -> 111
+    //   149: astore_1
+    //   150: aload_0
+    //   151: monitorexit
+    //   152: aload_1
+    //   153: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	154	0	this	c
+    //   0	154	1	paramb	com.tencent.liteav.basic.structs.b
+    //   0	154	2	paramInt1	int
+    //   0	154	3	paramInt2	int
+    //   0	154	4	paramLong	long
+    // Exception table:
+    //   from	to	target	type
+    //   2	111	149	finally
+    //   115	146	149	finally
   }
   
   public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     try
     {
+      AppMethodBeat.i(67061);
       a(paramInt1, paramInt2, m(paramInt3), paramInt4, paramInt5);
       this.h.b(this.i);
       paramInt1 = this.h.a(paramArrayOfByte, paramInt4);
+      AppMethodBeat.o(67061);
       return paramInt1;
     }
     finally
@@ -325,33 +431,32 @@ public class c
     }
   }
   
-  public void a()
+  public Object a()
   {
     try
     {
-      if (this.h != null) {
-        this.h.a();
-      }
-      this.j = null;
-      return;
+      Object localObject1 = this.p;
+      return localObject1;
     }
-    finally {}
+    finally
+    {
+      localObject2 = finally;
+      throw localObject2;
+    }
   }
   
   public void a(float paramFloat)
   {
     try
     {
+      AppMethodBeat.i(67085);
       if (this.h != null) {
         this.h.a(paramFloat);
       }
+      AppMethodBeat.o(67085);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public void a(int paramInt)
@@ -386,27 +491,29 @@ public class c
   public void a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     boolean bool = false;
-    b();
-    com.tencent.liteav.basic.f.c localc;
+    AppMethodBeat.i(67056);
+    c();
+    com.tencent.liteav.basic.structs.b localb;
     if (this.k != null)
     {
-      localc = new com.tencent.liteav.basic.f.c();
-      localc.d = paramInt2;
-      localc.e = paramInt3;
+      localb = new com.tencent.liteav.basic.structs.b();
+      localb.e = paramInt2;
+      localb.f = paramInt3;
       if (this.j == null) {
-        break label99;
+        break label111;
       }
     }
-    label99:
+    label111:
     for (paramInt2 = this.j.j;; paramInt2 = 0)
     {
-      localc.i = paramInt2;
+      localb.j = paramInt2;
       if (this.j != null) {
         bool = this.j.g;
       }
-      localc.h = bool;
-      localc.a = paramInt1;
-      this.k.a(localc, paramLong);
+      localb.i = bool;
+      localb.a = paramInt1;
+      this.k.a(localb, paramLong);
+      AppMethodBeat.o(67056);
       return;
     }
   }
@@ -415,33 +522,76 @@ public class c
   {
     try
     {
+      AppMethodBeat.i(67086);
       if (this.h != null) {
         this.h.a(paramBitmap);
       }
+      AppMethodBeat.o(67086);
       return;
     }
-    finally
-    {
-      paramBitmap = finally;
-      throw paramBitmap;
-    }
+    finally {}
   }
   
+  /* Error */
   public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((paramFloat1 < 0.0F) || (paramFloat2 < 0.0F) || (paramFloat3 < 0.0D)) {}
-    for (;;)
-    {
-      try
-      {
-        TXCLog.e("TXCVideoPreprocessor", "WaterMark param is Error!");
-        return;
-      }
-      finally {}
-      if (this.h != null) {
-        this.h.a(paramBitmap, paramFloat1, paramFloat2, paramFloat3);
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 358
+    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: fload_2
+    //   9: fconst_0
+    //   10: fcmpg
+    //   11: iflt +17 -> 28
+    //   14: fload_3
+    //   15: fconst_0
+    //   16: fcmpg
+    //   17: iflt +11 -> 28
+    //   20: fload 4
+    //   22: f2d
+    //   23: dconst_0
+    //   24: dcmpg
+    //   25: ifge +20 -> 45
+    //   28: ldc 99
+    //   30: ldc_w 360
+    //   33: invokestatic 173	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   36: ldc_w 358
+    //   39: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: aload_0
+    //   43: monitorexit
+    //   44: return
+    //   45: aload_0
+    //   46: getfield 157	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
+    //   49: ifnull +15 -> 64
+    //   52: aload_0
+    //   53: getfield 157	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
+    //   56: aload_1
+    //   57: fload_2
+    //   58: fload_3
+    //   59: fload 4
+    //   61: invokevirtual 362	com/tencent/liteav/beauty/b:a	(Landroid/graphics/Bitmap;FFF)V
+    //   64: ldc_w 358
+    //   67: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   70: goto -28 -> 42
+    //   73: astore_1
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: aload_1
+    //   77: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	78	0	this	c
+    //   0	78	1	paramBitmap	Bitmap
+    //   0	78	2	paramFloat1	float
+    //   0	78	3	paramFloat2	float
+    //   0	78	4	paramFloat3	float
+    // Exception table:
+    //   from	to	target	type
+    //   2	8	73	finally
+    //   28	42	73	finally
+    //   45	64	73	finally
+    //   64	70	73	finally
   }
   
   /* Error */
@@ -450,40 +600,48 @@ public class c
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 139	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
-    //   6: ifnonnull +14 -> 20
-    //   9: ldc 87
-    //   11: ldc_w 326
-    //   14: invokestatic 153	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: return
-    //   20: aload_0
-    //   21: getfield 139	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
-    //   24: aload_1
-    //   25: invokevirtual 328	com/tencent/liteav/beauty/b:a	(Lcom/tencent/liteav/basic/c/a;)V
-    //   28: goto -11 -> 17
-    //   31: astore_1
+    //   2: ldc_w 364
+    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 157	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
+    //   12: ifnonnull +20 -> 32
+    //   15: ldc 99
+    //   17: ldc_w 366
+    //   20: invokestatic 173	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: ldc_w 364
+    //   26: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   29: aload_0
+    //   30: monitorexit
+    //   31: return
     //   32: aload_0
-    //   33: monitorexit
-    //   34: aload_1
-    //   35: athrow
+    //   33: getfield 157	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
+    //   36: aload_1
+    //   37: invokevirtual 368	com/tencent/liteav/beauty/b:a	(Lcom/tencent/liteav/basic/c/a;)V
+    //   40: ldc_w 364
+    //   43: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: goto -17 -> 29
+    //   49: astore_1
+    //   50: aload_0
+    //   51: monitorexit
+    //   52: aload_1
+    //   53: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	36	0	this	c
-    //   0	36	1	parama	com.tencent.liteav.basic.c.a
+    //   0	54	0	this	c
+    //   0	54	1	parama	com.tencent.liteav.basic.c.a
     // Exception table:
     //   from	to	target	type
-    //   2	17	31	finally
-    //   20	28	31	finally
+    //   2	29	49	finally
+    //   32	46	49	finally
   }
   
   public void a(com.tencent.liteav.basic.d.a parama)
   {
     try
     {
+      AppMethodBeat.i(67067);
       this.g = parama;
+      AppMethodBeat.o(67067);
       return;
     }
     finally
@@ -493,60 +651,44 @@ public class c
     }
   }
   
-  /* Error */
-  public void a(d paramd)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 139	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
-    //   6: ifnonnull +14 -> 20
-    //   9: ldc 87
-    //   11: ldc_w 326
-    //   14: invokestatic 153	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: return
-    //   20: aload_0
-    //   21: getfield 139	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
-    //   24: aload_1
-    //   25: invokevirtual 331	com/tencent/liteav/beauty/b:a	(Lcom/tencent/liteav/beauty/d;)V
-    //   28: goto -11 -> 17
-    //   31: astore_1
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: aload_1
-    //   35: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	36	0	this	c
-    //   0	36	1	paramd	d
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	31	finally
-    //   20	28	31	finally
-  }
-  
   public void a(e parame)
   {
     for (;;)
     {
       try
       {
+        AppMethodBeat.i(67066);
         if (this.h == null)
         {
           TXCLog.e("TXCVideoPreprocessor", "setListener mDrawer is null!");
+          AppMethodBeat.o(67066);
           return;
         }
         this.k = parame;
-        if (parame == null) {
+        if (parame == null)
+        {
           this.h.a(null);
-        } else {
-          this.h.a(this);
+          AppMethodBeat.o(67066);
+          continue;
         }
+        this.h.a(this);
       }
       finally {}
+      AppMethodBeat.o(67066);
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    try
+    {
+      this.p = paramObject;
+      return;
+    }
+    finally
+    {
+      paramObject = finally;
+      throw paramObject;
     }
   }
   
@@ -554,23 +696,96 @@ public class c
   {
     try
     {
+      AppMethodBeat.i(67076);
       if (this.h != null) {
         this.h.a(paramString);
       }
+      AppMethodBeat.o(67076);
       return;
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    finally {}
   }
   
   public void a(boolean paramBoolean)
   {
+    AppMethodBeat.i(146336);
+    if (this.h != null) {
+      this.h.a(paramBoolean);
+    }
+    AppMethodBeat.o(146336);
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    AppMethodBeat.i(67057);
+    if (this.k != null) {
+      this.k.b(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
+    }
+    AppMethodBeat.o(67057);
+  }
+  
+  public void a(float[] paramArrayOfFloat)
+  {
+    AppMethodBeat.i(67060);
+    if (this.h != null) {
+      this.h.a(paramArrayOfFloat);
+    }
+    AppMethodBeat.o(67060);
+  }
+  
+  @TargetApi(18)
+  public boolean a(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(67078);
+    if (Build.VERSION.SDK_INT < 18)
+    {
+      AppMethodBeat.o(67078);
+      return false;
+    }
+    if (this.h != null) {
+      this.h.a(paramString, paramBoolean);
+    }
+    AppMethodBeat.o(67078);
+    return true;
+  }
+  
+  public void b()
+  {
     try
     {
+      AppMethodBeat.i(67058);
+      if (this.h != null) {
+        this.h.a();
+      }
+      this.j = null;
+      AppMethodBeat.o(67058);
+      return;
+    }
+    finally {}
+  }
+  
+  public void b(int paramInt)
+  {
+    try
+    {
+      AppMethodBeat.i(67071);
+      if (this.h != null) {
+        this.h.c(paramInt);
+      }
+      this.q.a("beautyStyle", paramInt);
+      AppMethodBeat.o(67071);
+      return;
+    }
+    finally {}
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    try
+    {
+      AppMethodBeat.i(67077);
       this.c = paramBoolean;
+      AppMethodBeat.o(67077);
       return;
     }
     finally
@@ -580,122 +795,212 @@ public class c
     }
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  /* Error */
+  public void c(int paramInt)
   {
-    if (this.k != null) {
-      this.k.a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 413
+    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: iload_1
+    //   9: bipush 9
+    //   11: if_icmple +49 -> 60
+    //   14: ldc 99
+    //   16: ldc_w 415
+    //   19: invokestatic 173	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: bipush 9
+    //   24: istore_2
+    //   25: aload_0
+    //   26: getfield 157	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
+    //   29: ifnull +11 -> 40
+    //   32: aload_0
+    //   33: getfield 157	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
+    //   36: iload_2
+    //   37: invokevirtual 417	com/tencent/liteav/beauty/b:b	(I)V
+    //   40: aload_0
+    //   41: getfield 87	com/tencent/liteav/beauty/c:q	Lcom/tencent/liteav/beauty/c$a;
+    //   44: ldc_w 419
+    //   47: iload_2
+    //   48: invokevirtual 411	com/tencent/liteav/beauty/c$a:a	(Ljava/lang/String;I)V
+    //   51: ldc_w 413
+    //   54: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: aload_0
+    //   58: monitorexit
+    //   59: return
+    //   60: iload_1
+    //   61: istore_2
+    //   62: iload_1
+    //   63: ifge -38 -> 25
+    //   66: ldc 99
+    //   68: ldc_w 421
+    //   71: invokestatic 173	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   74: iconst_0
+    //   75: istore_2
+    //   76: goto -51 -> 25
+    //   79: astore_3
+    //   80: aload_0
+    //   81: monitorexit
+    //   82: aload_3
+    //   83: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	84	0	this	c
+    //   0	84	1	paramInt	int
+    //   24	52	2	i1	int
+    //   79	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	8	79	finally
+    //   14	22	79	finally
+    //   25	40	79	finally
+    //   40	57	79	finally
+    //   66	74	79	finally
   }
   
-  public void a(float[] paramArrayOfFloat)
-  {
-    if (this.h != null) {
-      this.h.a(paramArrayOfFloat);
-    }
-  }
-  
-  @TargetApi(18)
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    if (Build.VERSION.SDK_INT < 18) {
-      return false;
-    }
-    if (this.h != null) {
-      this.h.a(paramString, paramBoolean);
-    }
-    return true;
-  }
-  
-  public void b(int paramInt)
+  public void c(boolean paramBoolean)
   {
     try
     {
+      AppMethodBeat.i(146340);
       if (this.h != null) {
-        this.h.c(paramInt);
+        this.h.b(paramBoolean);
       }
-      this.p.a("beautyStyle", paramInt);
+      AppMethodBeat.o(146340);
       return;
     }
     finally {}
   }
   
-  public void c(int paramInt)
-  {
-    if (paramInt > 9) {}
-    for (;;)
-    {
-      try
-      {
-        TXCLog.e("TXCVideoPreprocessor", "Beauty value too large! set max value 9");
-        i1 = 9;
-        if (this.h != null) {
-          this.h.b(i1);
-        }
-        this.p.a("beautyLevel", i1);
-        return;
-      }
-      finally {}
-      int i1 = paramInt;
-      if (paramInt < 0)
-      {
-        TXCLog.e("TXCVideoPreprocessor", "Beauty < 0; set 0");
-        i1 = 0;
-      }
-    }
-  }
-  
+  /* Error */
   public void d(int paramInt)
   {
-    if (paramInt > 9) {}
-    for (;;)
-    {
-      try
-      {
-        TXCLog.e("TXCVideoPreprocessor", "Brightness value too large! set max value 9");
-        i1 = 9;
-        if (this.h != null) {
-          this.h.d(i1);
-        }
-        this.p.a("whiteLevel", i1);
-        return;
-      }
-      finally {}
-      int i1 = paramInt;
-      if (paramInt < 0)
-      {
-        TXCLog.e("TXCVideoPreprocessor", "Brightness < 0; set 0");
-        i1 = 0;
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 424
+    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: iload_1
+    //   9: bipush 9
+    //   11: if_icmple +49 -> 60
+    //   14: ldc 99
+    //   16: ldc_w 426
+    //   19: invokestatic 173	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: bipush 9
+    //   24: istore_2
+    //   25: aload_0
+    //   26: getfield 157	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
+    //   29: ifnull +11 -> 40
+    //   32: aload_0
+    //   33: getfield 157	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
+    //   36: iload_2
+    //   37: invokevirtual 428	com/tencent/liteav/beauty/b:d	(I)V
+    //   40: aload_0
+    //   41: getfield 87	com/tencent/liteav/beauty/c:q	Lcom/tencent/liteav/beauty/c$a;
+    //   44: ldc_w 430
+    //   47: iload_2
+    //   48: invokevirtual 411	com/tencent/liteav/beauty/c$a:a	(Ljava/lang/String;I)V
+    //   51: ldc_w 424
+    //   54: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: aload_0
+    //   58: monitorexit
+    //   59: return
+    //   60: iload_1
+    //   61: istore_2
+    //   62: iload_1
+    //   63: ifge -38 -> 25
+    //   66: ldc 99
+    //   68: ldc_w 432
+    //   71: invokestatic 173	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   74: iconst_0
+    //   75: istore_2
+    //   76: goto -51 -> 25
+    //   79: astore_3
+    //   80: aload_0
+    //   81: monitorexit
+    //   82: aload_3
+    //   83: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	84	0	this	c
+    //   0	84	1	paramInt	int
+    //   24	52	2	i1	int
+    //   79	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	8	79	finally
+    //   14	22	79	finally
+    //   25	40	79	finally
+    //   40	57	79	finally
+    //   66	74	79	finally
   }
   
+  /* Error */
   public void e(int paramInt)
   {
-    if (paramInt > 9) {}
-    for (;;)
-    {
-      try
-      {
-        TXCLog.e("TXCVideoPreprocessor", "Ruddy value too large! set max value 9");
-        i1 = 9;
-        if (this.h != null) {
-          this.h.f(i1);
-        }
-        this.p.a("ruddyLevel", i1);
-        return;
-      }
-      finally {}
-      int i1 = paramInt;
-      if (paramInt < 0)
-      {
-        TXCLog.e("TXCVideoPreprocessor", "Ruddy < 0; set 0");
-        i1 = 0;
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 433
+    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: iload_1
+    //   9: bipush 9
+    //   11: if_icmple +49 -> 60
+    //   14: ldc 99
+    //   16: ldc_w 435
+    //   19: invokestatic 173	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: bipush 9
+    //   24: istore_2
+    //   25: aload_0
+    //   26: getfield 157	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
+    //   29: ifnull +11 -> 40
+    //   32: aload_0
+    //   33: getfield 157	com/tencent/liteav/beauty/c:h	Lcom/tencent/liteav/beauty/b;
+    //   36: iload_2
+    //   37: invokevirtual 437	com/tencent/liteav/beauty/b:f	(I)V
+    //   40: aload_0
+    //   41: getfield 87	com/tencent/liteav/beauty/c:q	Lcom/tencent/liteav/beauty/c$a;
+    //   44: ldc_w 439
+    //   47: iload_2
+    //   48: invokevirtual 411	com/tencent/liteav/beauty/c$a:a	(Ljava/lang/String;I)V
+    //   51: ldc_w 433
+    //   54: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: aload_0
+    //   58: monitorexit
+    //   59: return
+    //   60: iload_1
+    //   61: istore_2
+    //   62: iload_1
+    //   63: ifge -38 -> 25
+    //   66: ldc 99
+    //   68: ldc_w 441
+    //   71: invokestatic 173	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   74: iconst_0
+    //   75: istore_2
+    //   76: goto -51 -> 25
+    //   79: astore_3
+    //   80: aload_0
+    //   81: monitorexit
+    //   82: aload_3
+    //   83: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	84	0	this	c
+    //   0	84	1	paramInt	int
+    //   24	52	2	i1	int
+    //   79	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	8	79	finally
+    //   14	22	79	finally
+    //   25	40	79	finally
+    //   40	57	79	finally
+    //   66	74	79	finally
   }
   
   public void f(int paramInt)
   {
+    AppMethodBeat.i(67075);
     int i1;
     if (paramInt > 9)
     {
@@ -707,6 +1012,7 @@ public class c
       if (this.h != null) {
         this.h.e(i1);
       }
+      AppMethodBeat.o(67075);
       return;
       i1 = paramInt;
       if (paramInt < 0)
@@ -721,10 +1027,12 @@ public class c
   {
     try
     {
+      AppMethodBeat.i(67079);
       if (this.h != null) {
         this.h.g(paramInt);
       }
-      this.p.a("eyeBigScale", paramInt);
+      this.q.a("eyeBigScale", paramInt);
+      AppMethodBeat.o(67079);
       return;
     }
     finally {}
@@ -734,10 +1042,12 @@ public class c
   {
     try
     {
+      AppMethodBeat.i(67080);
       if (this.h != null) {
         this.h.h(paramInt);
       }
-      this.p.a("faceSlimLevel", paramInt);
+      this.q.a("faceSlimLevel", paramInt);
+      AppMethodBeat.o(67080);
       return;
     }
     finally {}
@@ -745,40 +1055,67 @@ public class c
   
   public void i(int paramInt)
   {
+    AppMethodBeat.i(67081);
     if (this.h != null) {
       this.h.i(paramInt);
     }
-    this.p.a("faceVLevel", paramInt);
+    this.q.a("faceVLevel", paramInt);
+    AppMethodBeat.o(67081);
   }
   
   public void j(int paramInt)
   {
+    AppMethodBeat.i(67082);
     if (this.h != null) {
       this.h.j(paramInt);
     }
-    this.p.a("faceShortLevel", paramInt);
+    this.q.a("faceShortLevel", paramInt);
+    AppMethodBeat.o(67082);
   }
   
   public void k(int paramInt)
   {
+    AppMethodBeat.i(67083);
     if (this.h != null) {
       this.h.k(paramInt);
     }
-    this.p.a("chinLevel", paramInt);
+    this.q.a("chinLevel", paramInt);
+    AppMethodBeat.o(67083);
   }
   
   public void l(int paramInt)
   {
+    AppMethodBeat.i(67084);
     if (this.h != null) {
       this.h.l(paramInt);
     }
-    this.p.a("noseSlimLevel", paramInt);
+    this.q.a("noseSlimLevel", paramInt);
+    AppMethodBeat.o(67084);
   }
   
   public void setID(String paramString)
   {
+    AppMethodBeat.i(67087);
     super.setID(paramString);
-    setStatusValue(3001, this.p.a());
+    setStatusValue(3001, this.q.a());
+    AppMethodBeat.o(67087);
+  }
+  
+  static class b
+  {
+    int a;
+    int b;
+    int c;
+    int d;
+    int e;
+    int f;
+    int g;
+    int h;
+    boolean i;
+    boolean j;
+    public int k = 5;
+    public int l = 0;
+    com.tencent.liteav.basic.d.a m = null;
   }
 }
 

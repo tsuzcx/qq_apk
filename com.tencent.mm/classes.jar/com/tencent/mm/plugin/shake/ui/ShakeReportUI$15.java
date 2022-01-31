@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.shake.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.shake.c.a.e;
 
 final class ShakeReportUI$15
@@ -9,7 +10,9 @@ final class ShakeReportUI$15
   
   public final void run()
   {
-    ShakeReportUI.a(this.odm, this.odp);
+    AppMethodBeat.i(24793);
+    ShakeReportUI.a(this.qRs, this.qRw);
+    AppMethodBeat.o(24793);
   }
 }
 

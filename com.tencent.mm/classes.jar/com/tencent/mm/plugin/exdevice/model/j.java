@@ -1,69 +1,90 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class j
 {
-  private static j jvO;
-  private SparseArray<List<j.a>> jvP = new SparseArray();
+  private static j lFn;
+  private SparseArray<List<j.a>> lFo;
   
-  public static j aLC()
+  private j()
   {
-    if (jvO == null) {
-      jvO = new j();
+    AppMethodBeat.i(19306);
+    this.lFo = new SparseArray();
+    AppMethodBeat.o(19306);
+  }
+  
+  public static j bpP()
+  {
+    AppMethodBeat.i(19307);
+    if (lFn == null) {
+      lFn = new j();
     }
-    return jvO;
+    j localj = lFn;
+    AppMethodBeat.o(19307);
+    return localj;
   }
   
   public final boolean a(int paramInt, j.a parama)
   {
-    if (parama == null) {
+    AppMethodBeat.i(19308);
+    if (parama == null)
+    {
+      AppMethodBeat.o(19308);
       return false;
     }
-    List localList = (List)this.jvP.get(paramInt);
+    List localList = (List)this.lFo.get(paramInt);
     Object localObject;
     if (localList == null)
     {
       localObject = new LinkedList();
-      this.jvP.put(paramInt, localObject);
+      this.lFo.put(paramInt, localObject);
     }
     do
     {
-      return ((List)localObject).add(parama);
+      boolean bool = ((List)localObject).add(parama);
+      AppMethodBeat.o(19308);
+      return bool;
       localObject = localList;
     } while (!localList.contains(parama));
+    AppMethodBeat.o(19308);
     return false;
   }
   
   public final boolean b(int paramInt, j.a parama)
   {
-    List localList = (List)this.jvP.get(paramInt);
+    AppMethodBeat.i(19309);
+    List localList = (List)this.lFo.get(paramInt);
     if (localList != null)
     {
       localList.remove(parama);
       if (localList.size() == 0) {
-        this.jvP.remove(paramInt);
+        this.lFo.remove(paramInt);
       }
     }
+    AppMethodBeat.o(19309);
     return false;
   }
   
   public final void h(int paramInt, Object... paramVarArgs)
   {
-    List localList = (List)this.jvP.get(paramInt);
-    if ((localList == null) || (localList.size() == 0)) {}
-    for (;;)
+    AppMethodBeat.i(19310);
+    List localList = (List)this.lFo.get(paramInt);
+    if ((localList == null) || (localList.size() == 0))
     {
+      AppMethodBeat.o(19310);
       return;
-      int i = 0;
-      while (i < localList.size())
-      {
-        ((j.a)localList.get(i)).g(paramInt, paramVarArgs);
-        i += 1;
-      }
     }
+    int i = 0;
+    while (i < localList.size())
+    {
+      ((j.a)localList.get(i)).g(paramInt, paramVarArgs);
+      i += 1;
+    }
+    AppMethodBeat.o(19310);
   }
 }
 

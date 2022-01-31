@@ -3,72 +3,60 @@ package com.tencent.mm.plugin.appbrand.ui;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.config.a;
-import com.tencent.mm.plugin.appbrand.config.a.b;
-import com.tencent.mm.plugin.appbrand.config.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.d;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.d.a;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.statusbar.b;
 
 @SuppressLint({"ViewConstructor"})
 final class f
-  extends b
-  implements n
+  extends com.tencent.mm.ui.statusbar.b
+  implements r
 {
-  private i fzT;
-  private d hdk;
-  private Runnable hdl;
+  private i gRG;
+  private Runnable iNb;
+  private com.tencent.mm.plugin.appbrand.widget.actionbar.b ixl;
   
   public f(Context paramContext, i parami)
   {
     super(paramContext);
-    this.fzT = parami;
-    this.hdk = d.a.c(getContext(), this.fzT);
-    addView(this.hdk.getActionView());
-    this.hdk.dO(false);
+    AppMethodBeat.i(102314);
+    this.gRG = parami;
+    this.ixl = new com.tencent.mm.plugin.appbrand.widget.actionbar.b(paramContext);
+    this.ixl.setFullscreenMode(false);
+    addView(this.ixl.getActionView());
+    this.ixl.fb(false);
     paramContext = new f.1(this);
-    this.hdk.setCloseButtonClickListener(paramContext);
-    this.hdk.setBackButtonClickListener(paramContext);
-    n(ae.getContext().getString(y.j.app_brand_action_plugin_splash_loading), -1, "black");
+    this.ixl.setCloseButtonClickListener(paramContext);
+    this.ixl.setBackButtonClickListener(paramContext);
+    paramContext = getContext().getString(2131296558);
+    this.ixl.setMainTitle(paramContext);
+    this.ixl.setBackgroundColor(-1);
+    this.ixl.setForegroundStyle("black");
+    this.ixl.setLoadingIconVisibility(true);
+    K(-1, "black".equals("black"));
     setBackgroundColor(-1);
+    AppMethodBeat.o(102314);
   }
   
-  private void n(String paramString1, int paramInt, String paramString2)
+  public final void aHA()
   {
-    this.hdk.setMainTitle(paramString1);
-    this.hdk.setBackgroundColor(paramInt);
-    this.hdk.setForegroundStyle(paramString2);
-    this.hdk.setNavBackOrClose(true);
-    this.hdk.setLoadingIconVisibility(true);
-    av(paramInt, "black".equals(paramString2));
-  }
-  
-  public final void a(a.d paramd)
-  {
-    if (this.fzT.getAppConfig().fNB.adW()) {
-      return;
-    }
-    n(paramd.fNU, l.bb(paramd.fNY, -1), paramd.fNV);
-    setBackgroundColor(l.bb(paramd.fNR, -1));
-  }
-  
-  public final void aoS()
-  {
-    removeCallbacks(this.hdl);
+    AppMethodBeat.i(102318);
+    removeCallbacks(this.iNb);
     post(new f.3(this));
+    AppMethodBeat.o(102318);
   }
   
-  public final void aoT()
+  public final void aHB()
   {
-    this.hdk.setNavHidden(true);
+    AppMethodBeat.i(102319);
+    this.ixl.setNavHidden(true);
+    AppMethodBeat.o(102319);
   }
   
-  public final void cd(String paramString1, String paramString2)
+  public final void cD(String paramString1, String paramString2)
   {
-    this.hdk.setMainTitle(ae.getContext().getString(y.j.app_brand_action_plugin_splash_loading));
+    AppMethodBeat.i(102315);
+    this.ixl.setMainTitle(getContext().getString(2131296558));
+    AppMethodBeat.o(102315);
   }
   
   public final View getView()
@@ -78,33 +66,29 @@ final class f
   
   protected final void onAttachedToWindow()
   {
+    AppMethodBeat.i(102316);
     super.onAttachedToWindow();
-    if (this.hdl == null)
+    if (this.iNb == null)
     {
-      this.hdl = new Runnable()
-      {
-        public final void run()
-        {
-          if (f.b(f.this) != null) {
-            f.b(f.this).setLoadingIconVisibility(true);
-          }
-        }
-      };
-      postDelayed(this.hdl, 1500L);
+      this.iNb = new f.2(this);
+      postDelayed(this.iNb, 1500L);
     }
+    AppMethodBeat.o(102316);
   }
   
   protected final void onDetachedFromWindow()
   {
+    AppMethodBeat.i(102317);
     super.onDetachedFromWindow();
-    removeCallbacks(this.hdl);
+    removeCallbacks(this.iNb);
+    AppMethodBeat.o(102317);
   }
   
   public final void setProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.f
  * JD-Core Version:    0.7.0.1
  */

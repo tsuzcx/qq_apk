@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.p;
 
 final class ExdeviceProfileUI$4
@@ -11,12 +12,14 @@ final class ExdeviceProfileUI$4
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (ExdeviceProfileUI.d(this.jEM) != null)
+    AppMethodBeat.i(20026);
+    if (ExdeviceProfileUI.d(this.lOl) != null)
     {
-      ExdeviceProfileUI.d(this.jEM).dismiss();
-      ExdeviceProfileUI.y(this.jEM);
+      ExdeviceProfileUI.d(this.lOl).dismiss();
+      ExdeviceProfileUI.y(this.lOl);
     }
-    this.jEM.finish();
+    this.lOl.finish();
+    AppMethodBeat.o(20026);
   }
 }
 

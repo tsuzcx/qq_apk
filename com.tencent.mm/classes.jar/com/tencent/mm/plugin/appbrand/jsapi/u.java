@@ -1,25 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-public class u
+import org.json.JSONObject;
+
+public abstract class u<CONTEXT extends c>
+  extends m
 {
-  public float gfu;
-  public StringBuilder gfv;
-  
-  public u(float paramFloat)
-  {
-    this.gfu = paramFloat;
-    this.gfv = new StringBuilder();
-  }
-  
-  public StringBuilder e(StringBuilder paramStringBuilder)
-  {
-    return paramStringBuilder;
-  }
-  
-  public StringBuilder f(StringBuilder paramStringBuilder)
-  {
-    return paramStringBuilder;
-  }
+  public abstract String a(CONTEXT paramCONTEXT, JSONObject paramJSONObject);
 }
 
 

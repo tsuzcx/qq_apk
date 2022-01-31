@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/b8z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip"
+<LinearLayout android:orientation="vertical" android:id="@id/d9q" android:layout_width="@dimen/a0" android:layout_height="wrap_content" android:layout_marginRight="10.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/cvh" android:layout_width="fill_parent" android:layout_height="0.0dip" android:minHeight="148.0dip" android:layout_weight="1.0">
-        <ProgressBar android:id="@id/a2r" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/yo" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/cvr" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/dq" android:textColor="@color/fc" android:gravity="center" android:id="@id/a2s" android:padding="@dimen/kl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
+    <ImageView android:id="@id/d9r" android:clickable="false" android:layout_width="@dimen/a0" android:layout_height="@dimen/a0" android:src="@raw/mall_order_trade_empty_icon" />
+    <TextView android:textSize="@dimen/nf" android:textColor="@color/uw" android:ellipsize="end" android:gravity="center" android:id="@id/d9s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:maxLines="2" />
 </LinearLayout>

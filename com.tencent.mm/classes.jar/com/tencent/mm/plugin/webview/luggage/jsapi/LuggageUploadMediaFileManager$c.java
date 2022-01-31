@@ -2,43 +2,54 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mm.j.a;
-import com.tencent.mm.plugin.webview.luggage.ipc.b;
-import com.tencent.mm.plugin.webview.luggage.ipc.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.ipc.c;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.plugin.webview.model.ah;
+import com.tencent.mm.plugin.webview.model.am;
 import com.tencent.mm.plugin.webview.modeltools.g;
 
 public class LuggageUploadMediaFileManager$c
-  implements d
+  implements c
 {
-  private LuggageUploadMediaFileManager.a reh = new LuggageUploadMediaFileManager.c.1(this);
-  private b rei;
+  private LuggageUploadMediaFileManager.a uUj;
+  private com.tencent.mm.plugin.webview.luggage.ipc.a uUk;
   
-  public final void a(Context paramContext, Bundle paramBundle, b paramb)
+  public LuggageUploadMediaFileManager$c()
   {
-    this.rei = paramb;
+    AppMethodBeat.i(6403);
+    this.uUj = new LuggageUploadMediaFileManager.c.1(this);
+    AppMethodBeat.o(6403);
+  }
+  
+  public final void a(Context paramContext, Bundle paramBundle, com.tencent.mm.plugin.webview.luggage.ipc.a parama)
+  {
+    AppMethodBeat.i(6404);
+    this.uUk = parama;
     String str1 = paramBundle.getString("local_id");
     String str2 = paramBundle.getString("app_id");
     boolean bool = paramBundle.getBoolean("show_progress_tips");
-    paramBundle = g.ccL().Sl(str1);
+    paramBundle = g.dcE().ahh(str1);
     if (paramBundle == null)
     {
-      paramb.g(null);
+      parama.o(null);
+      AppMethodBeat.o(6404);
       return;
     }
-    switch (paramBundle.bLN)
+    switch (paramBundle.cth)
     {
     case 2: 
     case 3: 
     default: 
-      LuggageUploadMediaFileManager.a(paramContext, str2, str1, a.dls, bool, this.reh);
+      LuggageUploadMediaFileManager.a(paramContext, str2, str1, com.tencent.mm.i.a.ecN, bool, this.uUj);
+      AppMethodBeat.o(6404);
       return;
     case 1: 
-      LuggageUploadMediaFileManager.a(paramContext, paramBundle, str2, str1, a.dlr, bool, this.reh);
+      LuggageUploadMediaFileManager.a(paramContext, paramBundle, str2, str1, com.tencent.mm.i.a.ecM, bool, this.uUj);
+      AppMethodBeat.o(6404);
       return;
     }
-    LuggageUploadMediaFileManager.a(paramContext, str2, str1, a.dls, bool, this.reh);
+    LuggageUploadMediaFileManager.a(paramContext, str2, str1, com.tencent.mm.i.a.ecN, bool, this.uUj);
+    AppMethodBeat.o(6404);
   }
 }
 

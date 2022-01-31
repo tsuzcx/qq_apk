@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.app.ProgressDialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class m$3$1
   implements Runnable
@@ -9,7 +10,9 @@ final class m$3$1
   
   public final void run()
   {
-    this.mXO.iMq.dismiss();
+    AppMethodBeat.i(23593);
+    this.pAB.kTo.dismiss();
+    AppMethodBeat.o(23593);
   }
 }
 

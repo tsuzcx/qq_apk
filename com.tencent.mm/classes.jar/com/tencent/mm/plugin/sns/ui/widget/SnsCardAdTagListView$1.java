@@ -5,7 +5,8 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 final class SnsCardAdTagListView$1
@@ -15,12 +16,14 @@ final class SnsCardAdTagListView$1
   
   public final boolean onPreDraw()
   {
-    if ((this.prh.getLayout() != null) && (!bk.L(this.prh.getLayout().getText())) && (this.prh.getLayout().getText().charAt(0) == '…'))
+    AppMethodBeat.i(40464);
+    if ((this.smR.getLayout() != null) && (!bo.aa(this.smR.getLayout().getText())) && (this.smR.getLayout().getText().charAt(0) == '…'))
     {
-      this.prj.removeView(this.pri);
-      SnsCardAdTagListView.a(this.prj).remove(this.pri);
+      this.smT.removeView(this.smS);
+      SnsCardAdTagListView.a(this.smT).remove(this.smS);
     }
-    this.prj.getViewTreeObserver().removeOnPreDrawListener(this);
+    this.smT.getViewTreeObserver().removeOnPreDrawListener(this);
+    AppMethodBeat.o(40464);
     return true;
   }
 }

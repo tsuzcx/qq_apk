@@ -6,7 +6,7 @@ import java.security.spec.AlgorithmParameterSpec;
 
 public abstract class a
 {
-  public static String[] P(String[] paramArrayOfString)
+  public static String[] Y(String[] paramArrayOfString)
   {
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
       return (String[])paramArrayOfString.clone();
@@ -14,9 +14,9 @@ public abstract class a
     return paramArrayOfString;
   }
   
-  public static a dU(String paramString, int paramInt)
+  public static a fe(String paramString, int paramInt)
   {
-    if (com.tencent.soter.core.a.cPh())
+    if (com.tencent.soter.core.a.dVc())
     {
       if (Build.VERSION.SDK_INT >= 23) {
         return new a.b(paramString, paramInt);
@@ -27,17 +27,17 @@ public abstract class a
     return new a.a();
   }
   
-  public abstract a N(String... paramVarArgs);
+  public abstract a W(String... paramVarArgs);
   
-  public abstract a O(String... paramVarArgs);
+  public abstract a X(String... paramVarArgs);
   
-  public abstract AlgorithmParameterSpec cPo();
+  public abstract AlgorithmParameterSpec dVj();
   
-  public abstract a cPp();
+  public abstract a dVk();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.soter.core.b.a
  * JD-Core Version:    0.7.0.1
  */

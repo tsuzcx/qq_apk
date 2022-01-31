@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.sns.b;
 
-import com.tencent.mm.protocal.c.but;
+import com.tencent.mm.protocal.protobuf.cfj;
 
 public abstract interface e
 {
-  public abstract but MN(String paramString);
+  public abstract cfj Zu(String paramString);
   
-  public abstract boolean a(String paramString, but parambut);
+  public abstract boolean a(String paramString, cfj paramcfj);
   
-  public abstract boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  public abstract boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
   
-  public abstract boolean aY(String paramString, boolean paramBoolean);
+  public abstract cfj b(String paramString, cfj paramcfj);
   
-  public abstract but aZ(String paramString, boolean paramBoolean);
+  public abstract cfj b(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
   
-  public abstract but b(String paramString, but parambut);
+  public abstract boolean bn(String paramString, boolean paramBoolean);
   
-  public abstract but b(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  public abstract cfj bo(String paramString, boolean paramBoolean);
   
-  public abstract void bCk();
+  public abstract void cnK();
   
-  public abstract void bCl();
+  public abstract void cnL();
 }
 
 

@@ -1,178 +1,41 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.webkit.URLUtil;
-import android.webkit.WebResourceResponse;
-import com.tencent.mm.plugin.appbrand.appstorage.IWxaFileSystemWithModularizing;
-import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.plugin.appbrand.u.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
+import android.annotation.SuppressLint;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appcache.a.a;
 
+@SuppressLint({"DefaultLocale"})
 public class aq
+  extends a
 {
-  private static final Map<com.tencent.mm.plugin.appbrand.i, aq> fEv = new HashMap();
-  private static final aq fEw = new aq.1();
-  private final o fEx;
-  private final LinkedList<i> fEy = new LinkedList();
-  private final String mAppId;
-  
-  private aq(com.tencent.mm.plugin.appbrand.i parami)
+  aq(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if (parami == null)
-    {
-      this.fEx = null;
-      this.mAppId = null;
-      return;
-    }
-    this.mAppId = parami.mAppId;
-    this.fEx = new o(parami.ZB().fPS);
-    this.fEx.abK();
-    com.tencent.mm.plugin.appbrand.g.a(this.mAppId, new aq.2(this, parami));
+    this(String.format("WxaPkg_%s_%d", new Object[] { paramString1, Integer.valueOf(paramInt2) }), ar(paramString1, paramInt2), paramString2, paramString1, paramInt2, paramInt1);
+    AppMethodBeat.i(59512);
+    AppMethodBeat.o(59512);
   }
   
-  public static String a(com.tencent.mm.plugin.appbrand.i parami, String paramString)
+  private aq(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
   {
-    return bk.pm((String)m(parami).f(paramString, String.class));
+    super(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2);
   }
   
-  public static void a(com.tencent.mm.plugin.appbrand.i arg0, i parami1)
+  public static String ar(String paramString, int paramInt)
   {
-    aq localaq = m(???);
-    synchronized (localaq.fEy)
-    {
-      parami1.init();
-      localaq.fEy.addFirst(parami1);
-      return;
-    }
+    AppMethodBeat.i(59510);
+    String str = ap.avQ();
+    paramString = str + String.format("_%d_%d.wxapkg", new Object[] { Integer.valueOf(paramString.hashCode()), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(59510);
+    return paramString;
   }
   
-  public static boolean b(com.tencent.mm.plugin.appbrand.i parami, String paramString)
+  static String yx(String paramString)
   {
-    parami = d(parami, paramString);
-    if (parami != null)
-    {
-      bk.b(parami);
-      return true;
-    }
-    return false;
-  }
-  
-  public static WebResourceResponse c(com.tencent.mm.plugin.appbrand.i parami, String paramString)
-  {
-    return (WebResourceResponse)m(parami).f(paramString, WebResourceResponse.class);
-  }
-  
-  public static InputStream d(com.tencent.mm.plugin.appbrand.i parami, String paramString)
-  {
-    return (InputStream)m(parami).f(paramString, InputStream.class);
-  }
-  
-  public static String e(com.tencent.mm.plugin.appbrand.i parami, String paramString)
-  {
-    if (rg(paramString)) {
-      return null;
-    }
-    parami = parami.Zl();
-    if ((parami instanceof m))
-    {
-      parami = ((IWxaFileSystemWithModularizing)((m)parami).H(IWxaFileSystemWithModularizing.class)).findAppropriateModuleInfo(paramString);
-      if (parami != null) {
-        return q.a(parami, paramString);
-      }
-    }
-    return null;
-  }
-  
-  public static void k(com.tencent.mm.plugin.appbrand.i parami)
-  {
-    parami = m(parami);
-    if ((parami != null) && (parami.fEx != null)) {
-      parami.fEx.abK();
-    }
-  }
-  
-  public static o l(com.tencent.mm.plugin.appbrand.i parami)
-  {
-    return m(parami).fEx;
-  }
-  
-  private static aq m(com.tencent.mm.plugin.appbrand.i parami)
-  {
-    if (parami == null) {
-      return fEw;
-    }
-    synchronized (fEv)
-    {
-      aq localaq2 = (aq)fEv.get(parami);
-      aq localaq1 = localaq2;
-      if (localaq2 == null)
-      {
-        localaq1 = new aq(parami);
-        fEv.put(parami, localaq1);
-      }
-      return localaq1;
-    }
-  }
-  
-  private static boolean rg(String paramString)
-  {
-    if (bk.bl(paramString)) {}
-    while ((com.tencent.luggage.j.g.n(paramString, "about:blank")) || (d.wD(paramString)) || (URLUtil.isFileUrl(paramString))) {
-      return true;
-    }
-    return false;
-  }
-  
-  private InputStream rh(String paramString)
-  {
-    synchronized (this.fEy)
-    {
-      Iterator localIterator = this.fEy.iterator();
-      while (localIterator.hasNext())
-      {
-        InputStream localInputStream = ((i)localIterator.next()).openRead(paramString);
-        if (localInputStream != null) {
-          return localInputStream;
-        }
-      }
-      ??? = this.fEx.findAppropriateModuleInfo(paramString);
-      if (??? == null) {
-        return null;
-      }
-    }
-    return ((ai)???).rb(paramString);
-  }
-  
-  protected <T> T f(String paramString, Class<T> paramClass)
-  {
-    if (rg(paramString)) {
-      return null;
-    }
-    paramString = com.tencent.mm.plugin.appbrand.appstorage.i.rA(paramString);
-    if (paramString.startsWith("/__APP__")) {
-      paramString = com.tencent.mm.plugin.appbrand.appstorage.i.rA(paramString.substring(8));
-    }
-    for (;;)
-    {
-      long l = System.currentTimeMillis();
-      Object localObject = rh(paramString);
-      if (localObject != null) {}
-      for (localObject = ((aq.b)aq.b.a.fEA.get(paramClass)).c(paramString, (InputStream)localObject);; localObject = null)
-      {
-        String str = this.mAppId;
-        if (localObject == null) {}
-        for (boolean bool = true;; bool = false)
-        {
-          y.i("MicroMsg.WxaPkgRuntimeReader", "openRead, appId = %s, reqURL = %s, null(%B), type = %s, cost = %dms", new Object[] { str, paramString, Boolean.valueOf(bool), paramClass.getName(), Long.valueOf(System.currentTimeMillis() - l) });
-          return localObject;
-        }
-      }
-    }
+    AppMethodBeat.i(59511);
+    String str = ap.avQ();
+    paramString = str + String.format("_%s.wxapkg", new Object[] { paramString });
+    AppMethodBeat.o(59511);
+    return paramString;
   }
 }
 

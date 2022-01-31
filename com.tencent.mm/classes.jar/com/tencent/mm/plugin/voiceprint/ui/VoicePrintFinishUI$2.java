@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.voiceprint.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoicePrintFinishUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class VoicePrintFinishUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.pMz.finish();
+    AppMethodBeat.i(26206);
+    this.tst.finish();
+    AppMethodBeat.o(26206);
     return true;
   }
 }

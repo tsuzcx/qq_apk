@@ -2,130 +2,159 @@ package com.tencent.mm.plugin.webview.luggage.permission;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.bv.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.h;
-import com.tencent.mm.plugin.webview.luggage.ipc.MainProcessTask;
-import com.tencent.mm.protocal.c.aao;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.modelsimple.j;
+import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
+import com.tencent.mm.protocal.protobuf.afg;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.IOException;
 
 final class LuggageGetA8Key$RunCgiTask
   extends MainProcessTask
   implements f
 {
-  public static final Parcelable.Creator<RunCgiTask> CREATOR = new LuggageGetA8Key.RunCgiTask.1();
-  int aQw;
-  String aox;
+  public static final Parcelable.Creator<RunCgiTask> CREATOR;
+  int aXG;
   String appId;
-  byte[] cbM;
+  byte[] cKp;
+  int cnU;
   int errCode;
+  String errMsg;
   int errType;
-  int igH;
-  aao kMO;
-  Runnable kMP;
-  h kMQ;
-  private byte[] kMR;
   int scene;
+  afg uUI;
+  Runnable uUJ;
+  j uUK;
+  private byte[] uUL;
   String url;
   String username;
+  
+  static
+  {
+    AppMethodBeat.i(6466);
+    CREATOR = new LuggageGetA8Key.RunCgiTask.1();
+    AppMethodBeat.o(6466);
+  }
   
   public LuggageGetA8Key$RunCgiTask() {}
   
   public LuggageGetA8Key$RunCgiTask(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(6460);
     this.url = paramString1;
     this.username = paramString2;
     this.scene = paramInt1;
-    this.aQw = paramInt2;
-    this.igH = paramInt3;
+    this.aXG = paramInt2;
+    this.cnU = paramInt3;
     this.appId = paramString3;
-    this.cbM = paramArrayOfByte;
-    ahC();
+    this.cKp = paramArrayOfByte;
+    aBj();
+    AppMethodBeat.o(6460);
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    this.kMQ = new h(this.url, this.username, this.scene, this.aQw, 0, LuggageGetA8Key.access$100(), this.igH, this.appId, "", 0, this.cbM);
-    g.DO().dJT.a(233, this);
-    g.DO().dJT.a(this.kMQ, 0);
+    AppMethodBeat.i(6461);
+    ab.i("MicroMsg.LuggageGetA8Key.RunCgiTask", "start, url: %s", new Object[] { this.url });
+    this.uUK = new j(this.url, this.username, this.scene, this.aXG, 0, LuggageGetA8Key.access$200(), this.cnU, this.appId, "", 0, this.cKp);
+    g.RK().eHt.a(233, this);
+    g.RK().eHt.a(this.uUK, 0);
+    AppMethodBeat.o(6461);
   }
   
-  public final void Zv()
+  public final void atb()
   {
+    AppMethodBeat.i(6463);
+    ab.i("MicroMsg.LuggageGetA8Key.RunCgiTask", "runInClientProcess: %s", new Object[] { this.url });
     try
     {
-      ahD();
-      this.kMO = new aao();
-      this.kMO.aH(this.kMR);
-      this.kMP.run();
+      aBk();
+      if (this.uUL != null)
+      {
+        this.uUI = new afg();
+        this.uUI.parseFrom(this.uUL);
+      }
+      this.uUJ.run();
+      AppMethodBeat.o(6463);
       return;
     }
     catch (IOException localIOException)
     {
-      y.printErrStackTrace("MicroMsg.LuggageGetA8Key", localIOException, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.LuggageGetA8Key.RunCgiTask", localIOException, "", new Object[0]);
+      AppMethodBeat.o(6463);
     }
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
+    AppMethodBeat.i(6464);
     this.url = paramParcel.readString();
     this.username = paramParcel.readString();
     this.scene = paramParcel.readInt();
-    this.aQw = paramParcel.readInt();
-    this.igH = paramParcel.readInt();
+    this.aXG = paramParcel.readInt();
+    this.cnU = paramParcel.readInt();
     this.appId = paramParcel.readString();
-    this.cbM = paramParcel.createByteArray();
-    this.kMR = paramParcel.createByteArray();
+    this.cKp = paramParcel.createByteArray();
+    this.uUL = paramParcel.createByteArray();
     this.errType = paramParcel.readInt();
     this.errCode = paramParcel.readInt();
-    this.aox = paramParcel.readString();
+    this.errMsg = paramParcel.readString();
+    AppMethodBeat.o(6464);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (paramm != this.kMQ) {
+    AppMethodBeat.i(6462);
+    if (paramm != this.uUK)
+    {
+      AppMethodBeat.o(6462);
       return;
     }
-    g.DO().dJT.b(233, this);
+    ab.i("MicroMsg.LuggageGetA8Key.RunCgiTask", "onSceneEnd, url: %s", new Object[] { this.url });
+    g.RK().eHt.b(233, this);
     this.errType = paramInt1;
     this.errCode = paramInt2;
-    this.aox = paramString;
+    this.errMsg = paramString;
     try
     {
-      this.kMR = ((h)paramm).dmK.ecF.ecN.toByteArray();
-      label59:
-      ahI();
+      this.uUL = ((j)paramm).rr.fsW.fta.toByteArray();
+      label89:
+      aBp();
+      AppMethodBeat.o(6462);
       return;
     }
     catch (Exception paramString)
     {
-      break label59;
+      break label89;
     }
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(6465);
     paramParcel.writeString(this.url);
     paramParcel.writeString(this.username);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeInt(this.aQw);
-    paramParcel.writeInt(this.igH);
+    paramParcel.writeInt(this.aXG);
+    paramParcel.writeInt(this.cnU);
     paramParcel.writeString(this.appId);
-    paramParcel.writeByteArray(this.cbM);
-    paramParcel.writeByteArray(this.kMR);
+    paramParcel.writeByteArray(this.cKp);
+    paramParcel.writeByteArray(this.uUL);
     paramParcel.writeInt(this.errType);
     paramParcel.writeInt(this.errCode);
-    paramParcel.writeString(this.aox);
+    paramParcel.writeString(this.errMsg);
+    AppMethodBeat.o(6465);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.permission.LuggageGetA8Key.RunCgiTask
  * JD-Core Version:    0.7.0.1
  */

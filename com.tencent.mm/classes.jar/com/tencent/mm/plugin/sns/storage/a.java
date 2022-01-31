@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import android.text.TextUtils;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -12,182 +13,242 @@ import java.util.regex.Pattern;
 
 public final class a
 {
-  public static int ozR = 0;
-  public static int ozS = 1;
-  public String bUr = "";
-  public String fVM;
-  public String oAa = "";
-  public int oAb = 0;
-  public String oAc = "";
-  public String oAd = "";
-  public String oAe = "";
-  public int oAf = ozR;
-  public String oAg = "";
-  public String oAh = "";
-  public LinkedList<String> oAi = new LinkedList();
-  boolean oAj;
-  public String oAk;
-  public String oAl;
-  public String oAm = "";
-  public HashMap<String, String> oAn;
-  public a.a oAo;
-  public a.b oAp = new a.b();
-  public String oAq = "";
-  public String oAr = "";
-  public String oAs = "";
-  public boolean oAt = false;
-  public String oAu = "";
-  public boolean oAv = false;
-  public String ovV = "";
-  public int ozT;
-  public long ozU;
-  public long ozV;
-  public int ozW = 0;
-  public String ozX = "";
-  public String ozY = "";
-  public String ozZ = "";
+  public static int rpb = 0;
+  public static int rpc = 1;
+  public String cBW;
+  public String cFe;
+  public String hpq;
+  public String rpA;
+  public String rpB;
+  public String rpC;
+  public boolean rpD;
+  public String rpE;
+  public boolean rpF;
+  public int rpd;
+  public long rpe;
+  public long rpf;
+  public int rpg;
+  public String rph;
+  public String rpi;
+  public String rpj;
+  public String rpk;
+  public int rpl;
+  public String rpm;
+  public String rpn;
+  public String rpo;
+  public int rpp;
+  public String rpq;
+  public String rpr;
+  public LinkedList<String> rps;
+  boolean rpt;
+  public String rpu;
+  public String rpv;
+  public String rpw;
+  public HashMap<String, String> rpx;
+  public a.a rpy;
+  public a.b rpz;
   
-  public a() {}
+  public a()
+  {
+    AppMethodBeat.i(36897);
+    this.cBW = "";
+    this.cFe = "";
+    this.rpg = 0;
+    this.rph = "";
+    this.rpi = "";
+    this.rpj = "";
+    this.rpk = "";
+    this.rpl = 0;
+    this.rpm = "";
+    this.rpn = "";
+    this.rpo = "";
+    this.rpp = rpb;
+    this.rpq = "";
+    this.rpr = "";
+    this.rps = new LinkedList();
+    this.rpw = "";
+    this.rpz = new a.b();
+    this.rpA = "";
+    this.rpB = "";
+    this.rpC = "";
+    this.rpD = false;
+    this.rpE = "";
+    this.rpF = false;
+    AppMethodBeat.o(36897);
+  }
   
   public a(String paramString)
   {
-    this.oAj = false;
-    Om(paramString);
+    AppMethodBeat.i(36898);
+    this.cBW = "";
+    this.cFe = "";
+    this.rpg = 0;
+    this.rph = "";
+    this.rpi = "";
+    this.rpj = "";
+    this.rpk = "";
+    this.rpl = 0;
+    this.rpm = "";
+    this.rpn = "";
+    this.rpo = "";
+    this.rpp = rpb;
+    this.rpq = "";
+    this.rpr = "";
+    this.rps = new LinkedList();
+    this.rpw = "";
+    this.rpz = new a.b();
+    this.rpA = "";
+    this.rpB = "";
+    this.rpC = "";
+    this.rpD = false;
+    this.rpE = "";
+    this.rpF = false;
+    this.rpt = false;
+    abg(paramString);
+    AppMethodBeat.o(36898);
   }
   
-  private void Om(String paramString)
+  private void abg(String paramString)
   {
     boolean bool2 = true;
-    if (bk.bl(paramString)) {}
-    Map localMap;
-    do
+    AppMethodBeat.i(36899);
+    if (bo.isNullOrNil(paramString))
     {
-      do
-      {
-        return;
-        y.i("MicroMsg.ADInfo", "feed xml %s", new Object[] { paramString });
-        localMap = bn.s(paramString, "ADInfo");
-      } while (localMap == null);
-      this.fVM = bk.aM((String)localMap.get(".ADInfo.viewid"), "");
-    } while (localMap.get(".ADInfo.ad_sns_pos") == null);
-    this.ozT = bk.ZR((String)localMap.get(".ADInfo.ad_sns_pos"));
-    this.ozU = bk.ZS((String)localMap.get(".ADInfo.noExposureExpireTime"));
-    this.ozV = bk.ZS((String)localMap.get(".ADInfo.exposureNoActionExpireTime"));
-    this.ovV = bk.aM((String)localMap.get(".ADInfo.uxInfo"), "");
-    this.ozW = bk.ZR((String)localMap.get(".ADInfo.adActionType"));
-    this.ozX = bk.aM((String)localMap.get(".ADInfo.adActionCardTitle"), "");
-    this.ozY = bk.aM((String)localMap.get(".ADInfo.adActionCardTpId"), "");
-    this.ozZ = bk.aM((String)localMap.get(".ADInfo.adActionCardExt"), "");
-    this.oAa = bk.aM((String)localMap.get(".ADInfo.adActionLink"), "");
-    this.oAb = bk.ZR((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIType"));
-    this.oAc = bk.aM((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIId"), "");
-    this.oAd = bk.aM((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIName"), "");
-    this.oAe = bk.aM((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POILink"), "");
-    String str2 = bk.aM((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.Wording"), "");
-    this.oAf = bk.ZR((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingType"));
-    this.oAh = bk.aM((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingLink"), "");
+      AppMethodBeat.o(36899);
+      return;
+    }
+    ab.i("MicroMsg.ADInfo", "feed xml %s", new Object[] { paramString });
+    Map localMap = br.F(paramString, "ADInfo");
+    if (localMap == null)
+    {
+      AppMethodBeat.o(36899);
+      return;
+    }
+    this.hpq = bo.bf((String)localMap.get(".ADInfo.viewid"), "");
+    if (localMap.get(".ADInfo.ad_sns_pos") == null)
+    {
+      AppMethodBeat.o(36899);
+      return;
+    }
+    this.rpd = bo.apV((String)localMap.get(".ADInfo.ad_sns_pos"));
+    this.rpe = bo.apW((String)localMap.get(".ADInfo.noExposureExpireTime"));
+    this.rpf = bo.apW((String)localMap.get(".ADInfo.exposureNoActionExpireTime"));
+    this.cFe = bo.bf((String)localMap.get(".ADInfo.uxInfo"), "");
+    this.rpg = bo.apV((String)localMap.get(".ADInfo.adActionType"));
+    this.rph = bo.bf((String)localMap.get(".ADInfo.adActionCardTitle"), "");
+    this.rpi = bo.bf((String)localMap.get(".ADInfo.adActionCardTpId"), "");
+    this.rpj = bo.bf((String)localMap.get(".ADInfo.adActionCardExt"), "");
+    this.rpk = bo.bf((String)localMap.get(".ADInfo.adActionLink"), "");
+    this.rpl = bo.apV((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIType"));
+    this.rpm = bo.bf((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIId"), "");
+    this.rpn = bo.bf((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POIName"), "");
+    this.rpo = bo.bf((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POILink"), "");
+    String str2 = bo.bf((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.Wording"), "");
+    this.rpp = bo.apV((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingType"));
+    this.rpr = bo.bf((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingLink"), "");
     int i;
-    if (this.oAf == ozS)
+    label654:
+    if (this.rpp == rpc)
     {
-      String str3 = bk.aM((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingRepAndroid"), "");
-      this.oAi.clear();
+      String str3 = bo.bf((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingRepAndroid"), "");
+      this.rps.clear();
       i = 0;
       if (i == 0) {}
-      for (str1 = bk.aM((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.UserNameList.UserName"), "");; str1 = bk.aM((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.UserNameList.UserName" + i), ""))
+      for (str1 = bo.bf((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.UserNameList.UserName"), "");; str1 = bo.bf((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.UserNameList.UserName" + i), ""))
       {
-        if (bk.bl(str1)) {
-          break label519;
+        if (bo.isNullOrNil(str1)) {
+          break label541;
         }
-        this.oAi.add(str1);
+        this.rps.add(str1);
         i += 1;
         break;
       }
-      label519:
+      label541:
       if (str3.indexOf("%s") >= 0)
       {
         i = 1;
         int j = str3.indexOf("%");
         int k = str3.lastIndexOf("%");
-        if ((bk.bl(str3)) || (i == 0) || (j != k)) {
-          break label737;
+        if ((bo.isNullOrNil(str3)) || (i == 0) || (j != k)) {
+          break label761;
         }
-        this.oAg = str3;
-        label572:
-        this.oAj = localMap.containsKey(".ADInfo.adCanvasInfo");
-        this.oAl = ((String)localMap.get(".ADInfo.session_data.aid"));
-        this.oAk = ((String)localMap.get(".ADInfo.session_data.trace_id"));
-        this.oAn = new HashMap();
+        this.rpq = str3;
+        label594:
+        this.rpt = localMap.containsKey(".ADInfo.adCanvasInfo");
+        this.rpv = ((String)localMap.get(".ADInfo.session_data.aid"));
+        this.rpu = ((String)localMap.get(".ADInfo.session_data.trace_id"));
+        this.rpx = new HashMap();
         i = 0;
-        label630:
         if (i != 0) {
-          break label769;
+          break label793;
         }
       }
     }
-    label769:
+    label793:
     for (String str1 = ".ADInfo.adCanvasExt.adCardItemList.cardItem";; str1 = ".ADInfo.adCanvasExt.adCardItemList.cardItem" + i)
     {
       str2 = (String)localMap.get(str1 + ".cardTpId");
       str1 = (String)localMap.get(str1 + ".cardExt");
-      if (bk.bl(str2)) {
-        break label794;
+      if (bo.isNullOrNil(str2)) {
+        break label818;
       }
-      this.oAn.put(str2, str1);
+      this.rpx.put(str2, str1);
       i += 1;
-      break label630;
+      break label654;
       i = 0;
       break;
-      label737:
-      this.oAg = str2;
-      this.oAf = ozR;
-      break label572;
-      this.oAg = str2;
-      this.oAf = ozR;
-      break label572;
+      label761:
+      this.rpq = str2;
+      this.rpp = rpb;
+      break label594;
+      this.rpq = str2;
+      this.rpp = rpb;
+      break label594;
     }
-    label794:
+    label818:
     paramString = Pattern.compile("<adCanvasExt>[\\s\\S]*</adCanvasExt>").matcher(paramString);
     if (paramString.find())
     {
       paramString = paramString.group();
-      if (!bk.bl(paramString)) {
-        this.oAm = paramString.replaceAll("</?adCanvasExt>", "");
+      if (!bo.isNullOrNil(paramString)) {
+        this.rpw = paramString.replaceAll("</?adCanvasExt>", "");
       }
     }
     paramString = (String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.appUserName");
     if (!TextUtils.isEmpty(paramString))
     {
-      this.oAo = new a.a();
-      this.oAo.bNZ = paramString;
-      this.oAo.bth = ((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.appVersion"));
-      this.oAo.bFw = ((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.relativePagePath"));
+      this.rpy = new a.a();
+      this.rpy.cvr = paramString;
+      this.rpy.appVersion = ((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.appVersion"));
+      this.rpy.cmG = ((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.relativePagePath"));
     }
-    this.oAp = new a.b(localMap, ".ADInfo");
-    this.oAq = bk.aM((String)localMap.get(".ADInfo.dislikeInfo.Title.zh"), "");
-    this.oAs = bk.aM((String)localMap.get(".ADInfo.dislikeInfo.Title.tw"), "");
-    this.oAr = bk.aM((String)localMap.get(".ADInfo.dislikeInfo.Title.en"), "");
-    if (bk.ZR((String)localMap.get(".ADInfo.dislikeInfo.forbidClick")) > 0)
+    this.rpz = new a.b(localMap, ".ADInfo");
+    this.rpA = bo.bf((String)localMap.get(".ADInfo.dislikeInfo.Title.zh"), "");
+    this.rpC = bo.bf((String)localMap.get(".ADInfo.dislikeInfo.Title.tw"), "");
+    this.rpB = bo.bf((String)localMap.get(".ADInfo.dislikeInfo.Title.en"), "");
+    if (bo.apV((String)localMap.get(".ADInfo.dislikeInfo.forbidClick")) > 0)
     {
       bool1 = true;
-      this.oAt = bool1;
-      this.oAu = bk.aM((String)localMap.get(".ADInfo.adInfoSyncBuffer"), "");
-      if (bk.ZR((String)localMap.get(".ADInfo.adInfoSyncBuffer.$imm")) != 1) {
-        break label1086;
+      this.rpD = bool1;
+      this.rpE = bo.bf((String)localMap.get(".ADInfo.adInfoSyncBuffer"), "");
+      if (bo.apV((String)localMap.get(".ADInfo.adInfoSyncBuffer.$imm")) != 1) {
+        break label1115;
       }
     }
-    label1086:
+    label1115:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.oAv = bool1;
+      this.rpF = bool1;
+      AppMethodBeat.o(36899);
       return;
       bool1 = false;
       break;
     }
   }
   
-  public final boolean bEC()
+  public final boolean cqi()
   {
-    return (this.ozW == 4) && (this.oAo != null);
+    return (this.rpg == 4) && (this.rpy != null);
   }
 }
 

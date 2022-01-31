@@ -1,36 +1,42 @@
 package com.tencent.mm.plugin.wear.model.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class c$1
-  implements am.a
+  implements ap.a
 {
   c$1(c paramc) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    long l1 = e.bJ(this.qSv.filename);
-    long l2 = l1 - this.qSv.qSs;
-    y.d("MicroMsg.Wear.NetSceneVoiceToText", "onTimerExpired: filename=%s | fileLength=%d | readOffset=%d | isRecordFinished=%b | canReadLength=%d", new Object[] { this.qSv.filename, Long.valueOf(l1), Integer.valueOf(this.qSv.qSs), Boolean.valueOf(this.qSv.eJS), Long.valueOf(l2) });
-    if ((l2 < 3300L) && (!this.qSv.eJS)) {
+    AppMethodBeat.i(26378);
+    long l1 = e.cM(this.uHC.filename);
+    long l2 = l1 - this.uHC.uHz;
+    ab.d("MicroMsg.Wear.NetSceneVoiceToText", "onTimerExpired: filename=%s | fileLength=%d | readOffset=%d | isRecordFinished=%b | canReadLength=%d", new Object[] { this.uHC.filename, Long.valueOf(l1), Integer.valueOf(this.uHC.uHz), Boolean.valueOf(this.uHC.fZu), Long.valueOf(l2) });
+    if ((l2 < 3300L) && (!this.uHC.fZu))
+    {
+      AppMethodBeat.o(26378);
       return true;
     }
-    if ((this.qSv.eJS) && (l2 <= 0L)) {
+    if ((this.uHC.fZu) && (l2 <= 0L))
+    {
+      AppMethodBeat.o(26378);
       return false;
     }
-    if (this.qSv.a(this.qSv.edc, this.qSv.dmL) == -1) {
-      this.qSv.dmL.onSceneEnd(3, -1, "doScene failed", this.qSv);
+    if (this.uHC.doScene(this.uHC.dispatcher(), this.uHC.callback) == -1) {
+      this.uHC.callback.onSceneEnd(3, -1, "doScene failed", this.uHC);
     }
+    AppMethodBeat.o(26378);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.d.c.1
  * JD-Core Version:    0.7.0.1
  */

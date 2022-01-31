@@ -5,17 +5,16 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 
 public class CheckBoxWithTipIconPreference
   extends CheckBoxPreference
 {
-  private TextView qqn;
-  private int qqo = -1;
-  private String qqp = "";
-  private int qqq = 8;
+  private TextView ubi;
+  private int ubj;
+  private String ubk;
+  private int ubl;
   
   public CheckBoxWithTipIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,43 +24,54 @@ public class CheckBoxWithTipIconPreference
   public CheckBoxWithTipIconPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(a.g.mm_preference_summary_icontip_checkbox);
+    AppMethodBeat.i(46448);
+    this.ubj = -1;
+    this.ubk = "";
+    this.ubl = 8;
+    setLayoutResource(2130970261);
+    AppMethodBeat.o(46448);
   }
   
-  public final void AL(int paramInt)
+  public final void Iu(int paramInt)
   {
-    this.qqq = paramInt;
-    if (this.qqn != null) {
-      this.qqn.setVisibility(paramInt);
+    AppMethodBeat.i(46451);
+    this.ubl = paramInt;
+    if (this.ubi != null) {
+      this.ubi.setVisibility(paramInt);
     }
+    AppMethodBeat.o(46451);
   }
   
-  public final void cF(String paramString, int paramInt)
+  public final void dE(String paramString, int paramInt)
   {
-    this.qqo = paramInt;
-    this.qqp = paramString;
-    if (this.qqn != null)
+    AppMethodBeat.i(46450);
+    this.ubj = paramInt;
+    this.ubk = paramString;
+    if (this.ubi != null)
     {
-      if (this.qqo > 0) {
-        this.qqn.setBackgroundResource(this.qqo);
+      if (this.ubj > 0) {
+        this.ubi.setBackgroundResource(this.ubj);
       }
-      if (!TextUtils.isEmpty(this.qqp)) {
-        this.qqn.setText(this.qqp);
+      if (!TextUtils.isEmpty(this.ubk)) {
+        this.ubi.setText(this.ubk);
       }
     }
+    AppMethodBeat.o(46450);
   }
   
   public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(46449);
     super.onBindView(paramView);
-    this.qqn = ((TextView)paramView.findViewById(a.f.tipicon));
-    cF(this.qqp, this.qqo);
-    AL(this.qqq);
+    this.ubi = ((TextView)paramView.findViewById(2131826257));
+    dE(this.ubk, this.ubj);
+    Iu(this.ubl);
+    AppMethodBeat.o(46449);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.ui.CheckBoxWithTipIconPreference
  * JD-Core Version:    0.7.0.1
  */

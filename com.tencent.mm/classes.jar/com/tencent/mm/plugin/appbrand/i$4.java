@@ -1,25 +1,17 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$4
-  extends AppBrandMainProcessService.a
+  implements Runnable
 {
-  private boolean fyO = false;
-  
   i$4(i parami) {}
   
-  public final void ZR()
+  public final void run()
   {
-    if (this.fyO) {
-      i.c(this.fyM);
-    }
-    this.fyO = false;
-  }
-  
-  public final void ZS()
-  {
-    this.fyO = true;
+    AppMethodBeat.i(141623);
+    this.gPY.atq();
+    AppMethodBeat.o(141623);
   }
 }
 

@@ -3,13 +3,15 @@ package com.tencent.tmassistantsdk.storage.table;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.tmassistantsdk.downloadservice.DownloadInfo;
 import com.tencent.tmassistantsdk.downloadservice.taskmanager.ServiceDownloadTask;
 import com.tencent.tmassistantsdk.storage.helper.AstSDKDBHelper_V2;
 import com.tencent.tmassistantsdk.storage.helper.SqliteHelper;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class DownloadInfoTable
   implements ITableBase
@@ -23,43 +25,52 @@ public class DownloadInfoTable
   
   public static void add(DownloadInfo paramDownloadInfo)
   {
-    if (paramDownloadInfo != null) {}
-    try
-    {
-      SQLiteDatabase localSQLiteDatabase = AstSDKDBHelper_V2.getInstance().getWritableDatabase();
-      if (update(paramDownloadInfo, localSQLiteDatabase) <= 0)
+    AppMethodBeat.i(76197);
+    if (paramDownloadInfo != null) {
+      try
       {
-        ContentValues localContentValues = new ContentValues();
-        DownloadInfo.writeToContentValues(localContentValues, paramDownloadInfo);
-        localSQLiteDatabase.insert("downloadInfo", null, localContentValues);
+        SQLiteDatabase localSQLiteDatabase = AstSDKDBHelper_V2.getInstance().getWritableDatabase();
+        if (update(paramDownloadInfo, localSQLiteDatabase) <= 0)
+        {
+          ContentValues localContentValues = new ContentValues();
+          DownloadInfo.writeToContentValues(localContentValues, paramDownloadInfo);
+          localSQLiteDatabase.insert("downloadInfo", null, localContentValues);
+        }
+        AppMethodBeat.o(76197);
+        return;
       }
-      return;
+      catch (Exception paramDownloadInfo)
+      {
+        ab.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
+      }
     }
-    catch (Exception paramDownloadInfo)
-    {
-      y.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
-    }
+    AppMethodBeat.o(76197);
   }
   
   public static void del(String paramString)
   {
-    if ((paramString != null) && (paramString.length() > 0)) {}
-    try
-    {
-      AstSDKDBHelper_V2.getInstance().getWritableDatabase().delete("downloadInfo", "taskUrl = ?", new String[] { paramString });
-      return;
+    AppMethodBeat.i(76198);
+    if ((paramString != null) && (paramString.length() > 0)) {
+      try
+      {
+        AstSDKDBHelper_V2.getInstance().getWritableDatabase().delete("downloadInfo", "taskUrl = ?", new String[] { paramString });
+        AppMethodBeat.o(76198);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        ab.printErrStackTrace("DownloadInfoTable", paramString, "", new Object[0]);
+      }
     }
-    catch (Exception paramString)
-    {
-      y.printErrStackTrace("DownloadInfoTable", paramString, "", new Object[0]);
-    }
+    AppMethodBeat.o(76198);
   }
   
   public static ArrayList<DownloadInfo> load()
   {
-    localObject3 = null;
-    localObject1 = null;
-    localArrayList = new ArrayList();
+    Object localObject3 = null;
+    Object localObject1 = null;
+    AppMethodBeat.i(76195);
+    ArrayList localArrayList = new ArrayList();
     Object localObject4 = AstSDKDBHelper_V2.getInstance().getReadableDatabase();
     try
     {
@@ -85,140 +96,131 @@ public class DownloadInfoTable
       if (localObject4 != null) {
         ((Cursor)localObject4).close();
       }
+      AppMethodBeat.o(76195);
+      return localArrayList;
     }
     catch (Exception localException)
     {
       localObject3 = localObject1;
-      y.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
+      ab.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
       return localArrayList;
     }
     finally
     {
-      if (localObject3 == null) {
-        break label126;
+      if (localObject3 != null) {
+        localObject3.close();
       }
-      localObject3.close();
+      AppMethodBeat.o(76195);
     }
-    return localArrayList;
   }
   
   /* Error */
   public static DownloadInfo query(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_3
-    //   3: astore_2
-    //   4: aload_0
-    //   5: ifnull +70 -> 75
-    //   8: aload_3
-    //   9: astore_2
-    //   10: aload_0
-    //   11: invokevirtual 81	java/lang/String:length	()I
-    //   14: ifle +61 -> 75
-    //   17: invokestatic 40	com/tencent/tmassistantsdk/storage/helper/AstSDKDBHelper_V2:getInstance	()Lcom/tencent/tmassistantsdk/storage/helper/SqliteHelper;
-    //   20: invokevirtual 95	com/tencent/tmassistantsdk/storage/helper/SqliteHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   23: ldc 16
-    //   25: iconst_1
-    //   26: anewarray 77	java/lang/String
-    //   29: dup
-    //   30: iconst_0
-    //   31: aload_0
-    //   32: aastore
-    //   33: invokevirtual 99	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   36: astore_1
-    //   37: aload_1
-    //   38: ifnull +39 -> 77
-    //   41: aload_1
-    //   42: astore_0
-    //   43: aload_1
-    //   44: invokeinterface 105 1 0
-    //   49: ifeq +28 -> 77
-    //   52: aload_1
-    //   53: astore_0
-    //   54: aload_1
-    //   55: invokestatic 109	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:readFromCursor	(Landroid/database/Cursor;)Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
-    //   58: astore_2
-    //   59: aload_2
-    //   60: astore_0
-    //   61: aload_0
-    //   62: astore_2
-    //   63: aload_1
-    //   64: ifnull +11 -> 75
-    //   67: aload_1
-    //   68: invokeinterface 118 1 0
-    //   73: aload_0
-    //   74: astore_2
-    //   75: aload_2
-    //   76: areturn
-    //   77: aload_3
-    //   78: astore_2
+    //   0: ldc 135
+    //   2: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: ifnull +79 -> 85
+    //   9: aload_0
+    //   10: invokevirtual 92	java/lang/String:length	()I
+    //   13: ifle +72 -> 85
+    //   16: invokestatic 47	com/tencent/tmassistantsdk/storage/helper/AstSDKDBHelper_V2:getInstance	()Lcom/tencent/tmassistantsdk/storage/helper/SqliteHelper;
+    //   19: invokevirtual 107	com/tencent/tmassistantsdk/storage/helper/SqliteHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   22: ldc 16
+    //   24: iconst_1
+    //   25: anewarray 88	java/lang/String
+    //   28: dup
+    //   29: iconst_0
+    //   30: aload_0
+    //   31: aastore
+    //   32: invokevirtual 111	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   35: astore_1
+    //   36: aload_1
+    //   37: ifnull +38 -> 75
+    //   40: aload_1
+    //   41: astore_0
+    //   42: aload_1
+    //   43: invokeinterface 117 1 0
+    //   48: ifeq +27 -> 75
+    //   51: aload_1
+    //   52: astore_0
+    //   53: aload_1
+    //   54: invokestatic 121	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:readFromCursor	(Landroid/database/Cursor;)Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
+    //   57: astore_2
+    //   58: aload_1
+    //   59: ifnull +9 -> 68
+    //   62: aload_1
+    //   63: invokeinterface 130 1 0
+    //   68: ldc 135
+    //   70: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: aload_2
+    //   74: areturn
+    //   75: aload_1
+    //   76: ifnull +9 -> 85
     //   79: aload_1
-    //   80: ifnull -5 -> 75
-    //   83: aload_1
-    //   84: invokeinterface 118 1 0
-    //   89: aconst_null
-    //   90: areturn
-    //   91: astore_2
-    //   92: aconst_null
-    //   93: astore_1
-    //   94: aload_1
-    //   95: astore_0
-    //   96: ldc 25
-    //   98: aload_2
-    //   99: ldc 67
-    //   101: iconst_0
-    //   102: anewarray 4	java/lang/Object
-    //   105: invokestatic 73	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   108: aload_3
-    //   109: astore_2
-    //   110: aload_1
-    //   111: ifnull -36 -> 75
-    //   114: aload_1
-    //   115: invokeinterface 118 1 0
-    //   120: aconst_null
-    //   121: areturn
+    //   80: invokeinterface 130 1 0
+    //   85: ldc 135
+    //   87: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   90: aconst_null
+    //   91: areturn
+    //   92: astore_2
+    //   93: aconst_null
+    //   94: astore_1
+    //   95: aload_1
+    //   96: astore_0
+    //   97: ldc 25
+    //   99: aload_2
+    //   100: ldc 77
+    //   102: iconst_0
+    //   103: anewarray 4	java/lang/Object
+    //   106: invokestatic 83	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   109: aload_1
+    //   110: ifnull -25 -> 85
+    //   113: aload_1
+    //   114: invokeinterface 130 1 0
+    //   119: goto -34 -> 85
     //   122: astore_1
     //   123: aconst_null
     //   124: astore_0
     //   125: aload_0
     //   126: ifnull +9 -> 135
     //   129: aload_0
-    //   130: invokeinterface 118 1 0
-    //   135: aload_1
-    //   136: athrow
-    //   137: astore_1
-    //   138: goto -13 -> 125
-    //   141: astore_2
-    //   142: goto -48 -> 94
+    //   130: invokeinterface 130 1 0
+    //   135: ldc 135
+    //   137: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   140: aload_1
+    //   141: athrow
+    //   142: astore_1
+    //   143: goto -18 -> 125
+    //   146: astore_2
+    //   147: goto -52 -> 95
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	145	0	paramString	String
-    //   36	79	1	localCursor	Cursor
-    //   122	14	1	localObject1	Object
-    //   137	1	1	localObject2	Object
-    //   3	76	2	localObject3	Object
-    //   91	8	2	localException1	Exception
-    //   109	1	2	localObject4	Object
-    //   141	1	2	localException2	Exception
-    //   1	108	3	localObject5	Object
+    //   0	150	0	paramString	String
+    //   35	79	1	localCursor	Cursor
+    //   122	19	1	localObject1	Object
+    //   142	1	1	localObject2	Object
+    //   57	17	2	localDownloadInfo	DownloadInfo
+    //   92	8	2	localException1	Exception
+    //   146	1	2	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   17	37	91	java/lang/Exception
-    //   17	37	122	finally
-    //   43	52	137	finally
-    //   54	59	137	finally
-    //   96	108	137	finally
-    //   43	52	141	java/lang/Exception
-    //   54	59	141	java/lang/Exception
+    //   16	36	92	java/lang/Exception
+    //   16	36	122	finally
+    //   42	51	142	finally
+    //   53	58	142	finally
+    //   97	109	142	finally
+    //   42	51	146	java/lang/Exception
+    //   53	58	146	java/lang/Exception
   }
   
   public static ArrayList<ServiceDownloadTask> query()
   {
-    localObject3 = null;
-    localObject1 = null;
-    localArrayList = new ArrayList();
+    Object localObject3 = null;
+    Object localObject1 = null;
+    AppMethodBeat.i(76201);
+    ArrayList localArrayList = new ArrayList();
     Object localObject4 = AstSDKDBHelper_V2.getInstance().getReadableDatabase();
     try
     {
@@ -259,122 +261,86 @@ public class DownloadInfoTable
       if (localObject4 != null) {
         ((Cursor)localObject4).close();
       }
+      AppMethodBeat.o(76201);
+      return localArrayList;
     }
     catch (Exception localException)
     {
       localObject3 = localObject1;
-      y.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
+      ab.printErrStackTrace("DownloadInfoTable", localException, "", new Object[0]);
       return localArrayList;
     }
     finally
     {
-      if (localObject3 == null) {
-        break label242;
+      if (localObject3 != null) {
+        localObject3.close();
       }
-      localObject3.close();
+      AppMethodBeat.o(76201);
     }
-    return localArrayList;
   }
   
-  /* Error */
   public static void save(ArrayList<DownloadInfo> paramArrayList)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnull +88 -> 89
-    //   4: invokestatic 40	com/tencent/tmassistantsdk/storage/helper/AstSDKDBHelper_V2:getInstance	()Lcom/tencent/tmassistantsdk/storage/helper/SqliteHelper;
-    //   7: invokevirtual 46	com/tencent/tmassistantsdk/storage/helper/SqliteHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   10: astore_1
-    //   11: aload_1
-    //   12: invokevirtual 155	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
-    //   15: aload_0
-    //   16: invokevirtual 159	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   19: astore_0
-    //   20: aload_0
-    //   21: invokeinterface 164 1 0
-    //   26: ifeq +64 -> 90
-    //   29: aload_0
-    //   30: invokeinterface 168 1 0
-    //   35: checkcast 55	com/tencent/tmassistantsdk/downloadservice/DownloadInfo
-    //   38: astore_2
-    //   39: aload_2
-    //   40: aload_1
-    //   41: invokestatic 50	com/tencent/tmassistantsdk/storage/table/DownloadInfoTable:update	(Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;Landroid/database/sqlite/SQLiteDatabase;)I
-    //   44: ifgt -24 -> 20
-    //   47: new 52	android/content/ContentValues
-    //   50: dup
-    //   51: invokespecial 53	android/content/ContentValues:<init>	()V
-    //   54: astore_3
-    //   55: aload_3
-    //   56: aload_2
-    //   57: invokestatic 59	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:writeToContentValues	(Landroid/content/ContentValues;Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;)V
-    //   60: aload_1
-    //   61: ldc 22
-    //   63: aconst_null
-    //   64: aload_3
-    //   65: invokevirtual 65	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
-    //   68: pop2
-    //   69: goto -49 -> 20
-    //   72: astore_0
-    //   73: ldc 25
-    //   75: aload_0
-    //   76: ldc 67
-    //   78: iconst_0
-    //   79: anewarray 4	java/lang/Object
-    //   82: invokestatic 73	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   85: aload_1
-    //   86: invokevirtual 171	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   89: return
-    //   90: aload_1
-    //   91: invokevirtual 174	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   94: aload_1
-    //   95: invokevirtual 171	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   98: return
-    //   99: astore_0
-    //   100: aload_1
-    //   101: invokevirtual 171	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   104: aload_0
-    //   105: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	106	0	paramArrayList	ArrayList<DownloadInfo>
-    //   10	91	1	localSQLiteDatabase	SQLiteDatabase
-    //   38	19	2	localDownloadInfo	DownloadInfo
-    //   54	11	3	localContentValues	ContentValues
-    // Exception table:
-    //   from	to	target	type
-    //   11	20	72	java/lang/Exception
-    //   20	69	72	java/lang/Exception
-    //   90	94	72	java/lang/Exception
-    //   11	20	99	finally
-    //   20	69	99	finally
-    //   73	85	99	finally
-    //   90	94	99	finally
+    AppMethodBeat.i(76196);
+    if (paramArrayList != null)
+    {
+      SQLiteDatabase localSQLiteDatabase = AstSDKDBHelper_V2.getInstance().getWritableDatabase();
+      try
+      {
+        localSQLiteDatabase.beginTransaction();
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext())
+        {
+          DownloadInfo localDownloadInfo = (DownloadInfo)paramArrayList.next();
+          if (update(localDownloadInfo, localSQLiteDatabase) <= 0)
+          {
+            ContentValues localContentValues = new ContentValues();
+            DownloadInfo.writeToContentValues(localContentValues, localDownloadInfo);
+            localSQLiteDatabase.insert("downloadInfo", null, localContentValues);
+          }
+        }
+        AppMethodBeat.o(76196);
+      }
+      catch (Exception paramArrayList)
+      {
+        ab.printErrStackTrace("DownloadInfoTable", paramArrayList, "", new Object[0]);
+        return;
+        localSQLiteDatabase.setTransactionSuccessful();
+        return;
+      }
+      finally
+      {
+        localSQLiteDatabase.endTransaction();
+        AppMethodBeat.o(76196);
+      }
+    }
   }
   
   private static int update(DownloadInfo paramDownloadInfo, SQLiteDatabase paramSQLiteDatabase)
   {
-    int i;
-    if (paramDownloadInfo == null) {
-      i = -1;
-    }
-    for (;;)
+    AppMethodBeat.i(76199);
+    if (paramDownloadInfo == null)
     {
-      return i;
-      try
+      AppMethodBeat.o(76199);
+      return -1;
+    }
+    try
+    {
+      ContentValues localContentValues = new ContentValues();
+      DownloadInfo.writeToContentValues(localContentValues, paramDownloadInfo);
+      int i = paramSQLiteDatabase.update("downloadInfo", localContentValues, "taskUrl = ?", new String[] { paramDownloadInfo.mURL });
+      if (i > 0)
       {
-        ContentValues localContentValues = new ContentValues();
-        DownloadInfo.writeToContentValues(localContentValues, paramDownloadInfo);
-        int j = paramSQLiteDatabase.update("downloadInfo", localContentValues, "taskUrl = ?", new String[] { paramDownloadInfo.mURL });
-        i = j;
-        if (j <= 0) {
-          return 0;
-        }
+        AppMethodBeat.o(76199);
+        return i;
       }
-      catch (Exception paramDownloadInfo)
-      {
-        y.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
-      }
+      AppMethodBeat.o(76199);
+      return 0;
+    }
+    catch (Exception paramDownloadInfo)
+    {
+      ab.printErrStackTrace("DownloadInfoTable", paramDownloadInfo, "", new Object[0]);
+      AppMethodBeat.o(76199);
     }
     return -2;
   }
@@ -388,6 +354,7 @@ public class DownloadInfoTable
   {
     localObject = null;
     localSQLiteDatabase = null;
+    AppMethodBeat.i(76202);
     if ((paramSQLiteDatabase2 != null) && (paramSQLiteDatabase1 != null)) {
       paramSQLiteDatabase2.beginTransaction();
     }
@@ -430,7 +397,7 @@ public class DownloadInfoTable
       for (;;)
       {
         localObject = localSQLiteDatabase;
-        y.printErrStackTrace("DownloadInfoTable", paramSQLiteDatabase1, "", new Object[0]);
+        ab.printErrStackTrace("DownloadInfoTable", paramSQLiteDatabase1, "", new Object[0]);
         localObject = localSQLiteDatabase;
         TMLog.i("downloadInfo", "move data exception!");
         if (localSQLiteDatabase != null) {
@@ -441,12 +408,14 @@ public class DownloadInfoTable
     finally
     {
       if (localObject == null) {
-        break label196;
+        break label206;
       }
       ((Cursor)localObject).close();
+      AppMethodBeat.o(76202);
     }
     paramSQLiteDatabase2.setTransactionSuccessful();
     paramSQLiteDatabase2.endTransaction();
+    AppMethodBeat.o(76202);
   }
   
   public String[] getAlterSQL(int paramInt1, int paramInt2)
@@ -459,7 +428,10 @@ public class DownloadInfoTable
   
   public SqliteHelper getHelper()
   {
-    return AstSDKDBHelper_V2.getInstance();
+    AppMethodBeat.i(76194);
+    SqliteHelper localSqliteHelper = AstSDKDBHelper_V2.getInstance();
+    AppMethodBeat.o(76194);
+    return localSqliteHelper;
   }
   
   public String tableName()

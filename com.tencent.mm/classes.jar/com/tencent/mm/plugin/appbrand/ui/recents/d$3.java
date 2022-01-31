@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.a;
 import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,33 +16,36 @@ final class d$3
   
   public final void run()
   {
-    if (!d.c(this.hgW)) {
+    AppMethodBeat.i(133327);
+    if (!d.c(this.iSy))
+    {
+      AppMethodBeat.o(133327);
       return;
     }
-    d.b(this.hgW, this.hgX);
-    int j = Math.min(4, this.hgX.size());
-    d.d(this.hgW).setIconLayerCount(j);
-    Iterator localIterator = this.hgX.iterator();
+    d.b(this.iSy, this.iSz);
+    int j = Math.min(4, this.iSz.size());
+    this.iSy.iSt.setIconLayerCount(j);
+    Iterator localIterator = this.iSz.iterator();
     int i = 0;
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break label125;
-      }
       LocalUsageInfo localLocalUsageInfo = (LocalUsageInfo)localIterator.next();
-      if (j == i) {
-        break;
+      if (j == i)
+      {
+        AppMethodBeat.o(133327);
+        return;
       }
-      b.JD().a(d.d(this.hgW).mB(i), localLocalUsageInfo.fJY, a.JC(), d.e(this.hgW));
+      b.acD().a(this.iSy.iSt.pU(i), localLocalUsageInfo.hcN, a.acC(), d.d(this.iSy));
       i += 1;
     }
-    label125:
-    if (bk.dk(this.hgX))
+    if (bo.es(this.iSz))
     {
-      d.d(this.hgW).dK(true);
+      this.iSy.iSt.fa(true);
+      AppMethodBeat.o(133327);
       return;
     }
-    d.d(this.hgW).aqT();
+    this.iSy.iSt.aOx();
+    AppMethodBeat.o(133327);
   }
 }
 

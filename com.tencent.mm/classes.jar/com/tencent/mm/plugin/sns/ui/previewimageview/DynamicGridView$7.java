@@ -8,7 +8,7 @@ final class DynamicGridView$7
 {
   DynamicGridView$7(DynamicGridView paramDynamicGridView) {}
   
-  private static int d(int paramInt1, int paramInt2, float paramFloat)
+  private static int e(int paramInt1, int paramInt2, float paramFloat)
   {
     return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
   }

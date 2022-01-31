@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.dynamic.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import java.lang.ref.SoftReference;
 import java.util.Map;
@@ -7,46 +8,72 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class e
 {
-  private static volatile e fUR;
-  private Map<String, SoftReference<WxaPkgWrappingInfo>> dHb = new ConcurrentHashMap();
+  private static volatile e hot;
+  private Map<String, SoftReference<WxaPkgWrappingInfo>> eEE;
+  
+  private e()
+  {
+    AppMethodBeat.i(10789);
+    this.eEE = new ConcurrentHashMap();
+    AppMethodBeat.o(10789);
+  }
+  
+  public static WxaPkgWrappingInfo Bf(String paramString)
+  {
+    AppMethodBeat.i(10791);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(10791);
+      return null;
+    }
+    paramString = (SoftReference)azO().eEE.get(paramString);
+    if (paramString != null)
+    {
+      paramString = (WxaPkgWrappingInfo)paramString.get();
+      AppMethodBeat.o(10791);
+      return paramString;
+    }
+    AppMethodBeat.o(10791);
+    return null;
+  }
   
   public static boolean a(String paramString, WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
   {
-    if ((paramString == null) || (paramString.length() == 0) || (paramWxaPkgWrappingInfo == null)) {
+    AppMethodBeat.i(10790);
+    if ((paramString == null) || (paramString.length() == 0) || (paramWxaPkgWrappingInfo == null))
+    {
+      AppMethodBeat.o(10790);
       return false;
     }
-    afk().dHb.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
+    azO().eEE.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
+    AppMethodBeat.o(10790);
     return true;
   }
   
-  private static e afk()
+  private static e azO()
   {
-    if (fUR == null) {}
+    AppMethodBeat.i(10788);
+    if (hot == null) {}
     try
     {
-      if (fUR == null) {
-        fUR = new e();
+      if (hot == null) {
+        hot = new e();
       }
-      return fUR;
+      e locale = hot;
+      AppMethodBeat.o(10788);
+      return locale;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(10788);
+    }
   }
   
   public static void removeAll()
   {
-    afk().dHb.clear();
-  }
-  
-  public static WxaPkgWrappingInfo td(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
-    }
-    paramString = (SoftReference)afk().dHb.get(paramString);
-    if (paramString != null) {
-      return (WxaPkgWrappingInfo)paramString.get();
-    }
-    return null;
+    AppMethodBeat.i(10792);
+    azO().eEE.clear();
+    AppMethodBeat.o(10792);
   }
 }
 

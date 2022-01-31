@@ -13,131 +13,159 @@ import android.view.Window;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.a;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.s;
 import com.tencent.mm.plugin.wear.model.d.b;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.lang.reflect.Array;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class WearYoUI
   extends Activity
 {
-  private ImageView doU;
-  private TextView doV;
-  private Vibrator ibr;
-  private c pWJ = new WearYoUI.5(this);
-  private ImageView qSR;
-  private ImageView qSS;
-  private ImageView qST;
-  private ObjectAnimator[][] qSU = (ObjectAnimator[][])Array.newInstance(ObjectAnimator.class, new int[] { 3, 3 });
-  private c qSV = new WearYoUI.2(this);
-  private boolean qSW;
-  private AtomicInteger qSX = new AtomicInteger();
-  private Runnable qSY = new WearYoUI.3(this);
-  private BroadcastReceiver qSZ = new WearYoUI.4(this);
+  private ImageView egq;
+  private TextView egr;
+  private Vibrator kqP;
+  private c tCo;
+  private ImageView uHY;
+  private ImageView uHZ;
+  private ImageView uIa;
+  private ObjectAnimator[][] uIb;
+  private c uIc;
+  private boolean uId;
+  private AtomicInteger uIe;
+  private Runnable uIf;
+  private BroadcastReceiver uIg;
   private String username;
+  
+  public WearYoUI()
+  {
+    AppMethodBeat.i(26471);
+    this.uIb = ((ObjectAnimator[][])Array.newInstance(ObjectAnimator.class, new int[] { 3, 3 }));
+    this.uIc = new WearYoUI.2(this);
+    this.uIe = new AtomicInteger();
+    this.uIf = new WearYoUI.3(this);
+    this.uIg = new WearYoUI.4(this);
+    this.tCo = new WearYoUI.5(this);
+    AppMethodBeat.o(26471);
+  }
   
   private void a(int paramInt, ImageView paramImageView, long paramLong)
   {
-    this.qSU[paramInt][0] = ObjectAnimator.ofFloat(paramImageView, "scaleX", new float[] { 1.0F, 2.5F });
-    this.qSU[paramInt][0].setRepeatCount(-1);
-    this.qSU[paramInt][0].setStartDelay(paramLong);
-    this.qSU[paramInt][0].setDuration(3900L);
-    this.qSU[paramInt][0].start();
-    this.qSU[paramInt][1] = ObjectAnimator.ofFloat(paramImageView, "scaleY", new float[] { 1.0F, 2.5F });
-    this.qSU[paramInt][1].setRepeatCount(-1);
-    this.qSU[paramInt][1].setStartDelay(paramLong);
-    this.qSU[paramInt][1].setDuration(3900L);
-    this.qSU[paramInt][1].start();
-    this.qSU[paramInt][2] = ObjectAnimator.ofFloat(paramImageView, "alpha", new float[] { 1.0F, 0.0F });
-    this.qSU[paramInt][2].setRepeatCount(-1);
-    this.qSU[paramInt][2].setInterpolator(new AccelerateInterpolator());
-    this.qSU[paramInt][2].setStartDelay(paramLong);
-    this.qSU[paramInt][2].setDuration(3900L);
-    this.qSU[paramInt][2].start();
+    AppMethodBeat.i(26473);
+    this.uIb[paramInt][0] = ObjectAnimator.ofFloat(paramImageView, "scaleX", new float[] { 1.0F, 2.5F });
+    this.uIb[paramInt][0].setRepeatCount(-1);
+    this.uIb[paramInt][0].setStartDelay(paramLong);
+    this.uIb[paramInt][0].setDuration(3900L);
+    this.uIb[paramInt][0].start();
+    this.uIb[paramInt][1] = ObjectAnimator.ofFloat(paramImageView, "scaleY", new float[] { 1.0F, 2.5F });
+    this.uIb[paramInt][1].setRepeatCount(-1);
+    this.uIb[paramInt][1].setStartDelay(paramLong);
+    this.uIb[paramInt][1].setDuration(3900L);
+    this.uIb[paramInt][1].start();
+    this.uIb[paramInt][2] = ObjectAnimator.ofFloat(paramImageView, "alpha", new float[] { 1.0F, 0.0F });
+    this.uIb[paramInt][2].setRepeatCount(-1);
+    this.uIb[paramInt][2].setInterpolator(new AccelerateInterpolator());
+    this.uIb[paramInt][2].setStartDelay(paramLong);
+    this.uIb[paramInt][2].setDuration(3900L);
+    this.uIb[paramInt][2].start();
+    AppMethodBeat.o(26473);
   }
   
   public void onClickCheck(View paramView)
   {
-    y.i("MicroMsg.Wear.WearYoUI", "onClickCheck %s", new Object[] { this.username });
+    AppMethodBeat.i(26474);
+    ab.i("MicroMsg.Wear.WearYoUI", "onClickCheck %s", new Object[] { this.username });
     paramView = new b(this.username);
-    au.Dk().a(paramView, 0);
+    aw.Rc().a(paramView, 0);
     finish();
+    AppMethodBeat.o(26474);
   }
   
   public void onClickNoCheck(View paramView)
   {
-    y.i("MicroMsg.Wear.WearYoUI", "onClickNoCheck %s", new Object[] { this.username });
+    AppMethodBeat.i(26475);
+    ab.i("MicroMsg.Wear.WearYoUI", "onClickNoCheck %s", new Object[] { this.username });
     finish();
+    AppMethodBeat.o(26475);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(26472);
     super.onCreate(paramBundle);
     getWindow().addFlags(4718592);
-    setContentView(R.i.wear_yo_ui);
-    this.ibr = ((Vibrator)getSystemService("vibrator"));
+    setContentView(2130971289);
+    this.kqP = ((Vibrator)getSystemService("vibrator"));
     this.username = getIntent().getStringExtra("key_talker");
-    this.doU = ((ImageView)findViewById(R.h.avatar_iv));
-    this.doV = ((TextView)findViewById(R.h.nickname_tv));
-    this.qSR = ((ImageView)findViewById(R.h.avatar_wave_1_iv));
-    this.qSS = ((ImageView)findViewById(R.h.avatar_wave_2_iv));
-    this.qST = ((ImageView)findViewById(R.h.avatar_wave_3_iv));
-    a.b.n(this.doU, this.username);
-    this.doV.setText(r.gV(this.username));
-    this.doU.setOnClickListener(new View.OnClickListener()
+    this.egq = ((ImageView)findViewById(2131821210));
+    this.egr = ((TextView)findViewById(2131823254));
+    this.uHY = ((ImageView)findViewById(2131829509));
+    this.uHZ = ((ImageView)findViewById(2131829510));
+    this.uIa = ((ImageView)findViewById(2131829511));
+    a.b.s(this.egq, this.username);
+    this.egr.setText(s.nE(this.username));
+    this.egq.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        com.tencent.mm.plugin.wear.model.a.bYL();
+        AppMethodBeat.i(26462);
+        com.tencent.mm.plugin.wear.model.a.cYy();
         paramAnonymousView = WearYoUI.a(WearYoUI.this);
-        y.i("MicroMsg.wear.WearYoLogic", "click avatarIV %s", new Object[] { paramAnonymousView });
+        ab.i("MicroMsg.wear.WearYoLogic", "click avatarIV %s", new Object[] { paramAnonymousView });
         Intent localIntent = new Intent();
         localIntent.putExtra("Main_User", paramAnonymousView);
         localIntent.putExtra("From_fail_notify", true);
         localIntent.addFlags(536870912);
         localIntent.addFlags(67108864);
-        d.e(ae.getContext(), "com.tencent.mm.ui.LauncherUI", localIntent);
+        d.f(ah.getContext(), "com.tencent.mm.ui.LauncherUI", localIntent);
         WearYoUI.this.finish();
+        AppMethodBeat.o(26462);
       }
     });
-    com.tencent.mm.sdk.b.a.udP.c(this.qSV);
-    com.tencent.mm.sdk.b.a.udP.c(this.pWJ);
-    a(0, this.qSR, 0L);
-    a(1, this.qSS, 1300L);
-    a(2, this.qST, 2600L);
-    this.ibr.vibrate(200L);
-    registerReceiver(this.qSZ, new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
-    overridePendingTransition(R.a.dialog_enter, R.a.dialog_exit);
+    com.tencent.mm.sdk.b.a.ymk.c(this.uIc);
+    com.tencent.mm.sdk.b.a.ymk.c(this.tCo);
+    a(0, this.uHY, 0L);
+    a(1, this.uHZ, 1300L);
+    a(2, this.uIa, 2600L);
+    this.kqP.vibrate(200L);
+    registerReceiver(this.uIg, new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
+    overridePendingTransition(2131034159, 2131034160);
+    AppMethodBeat.o(26472);
   }
   
   protected void onDestroy()
   {
+    AppMethodBeat.i(26476);
     int i = 0;
-    while (i < this.qSU.length)
+    while (i < this.uIb.length)
     {
       int j = 0;
-      while (j < this.qSU[i].length)
+      while (j < this.uIb[i].length)
       {
-        this.qSU[i][j].cancel();
+        this.uIb[i][j].cancel();
         j += 1;
       }
       i += 1;
     }
-    unregisterReceiver(this.qSZ);
-    com.tencent.mm.sdk.b.a.udP.d(this.pWJ);
-    com.tencent.mm.sdk.b.a.udP.d(this.qSV);
-    com.tencent.mm.plugin.wear.model.a.bYL().qRB.bZb();
+    unregisterReceiver(this.uIg);
+    com.tencent.mm.sdk.b.a.ymk.d(this.tCo);
+    com.tencent.mm.sdk.b.a.ymk.d(this.uIc);
+    com.tencent.mm.plugin.wear.model.a.cYy().uGJ.cYO();
     super.onDestroy();
+    AppMethodBeat.o(26476);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

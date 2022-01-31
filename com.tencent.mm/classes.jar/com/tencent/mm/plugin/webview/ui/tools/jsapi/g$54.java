@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class g$54
@@ -11,14 +12,16 @@ final class g$54
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    h.nFQ.f(14217, new Object[] { this.val$appId, Integer.valueOf(6), this.rmF, this.val$url, Integer.valueOf(3) });
+    AppMethodBeat.i(9114);
+    h.qsU.e(14217, new Object[] { this.val$appId, Integer.valueOf(6), this.uTj, this.val$url, Integer.valueOf(3) });
     paramDialogInterface.dismiss();
-    g.a(this.rzi, this.rzk, "doResumeDownloadTask:fail_network_not_wifi", null);
+    this.vqm.a(this.uZa, "add_download_task_straight:fail_network_not_wifi", null);
+    AppMethodBeat.o(9114);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.54
  * JD-Core Version:    0.7.0.1
  */

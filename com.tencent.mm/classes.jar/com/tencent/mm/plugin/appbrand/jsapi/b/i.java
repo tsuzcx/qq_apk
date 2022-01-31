@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.appbrand.jsapi.b;
 
-import com.tencent.mm.plugin.appbrand.jsapi.base.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.base.b;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import org.json.JSONObject;
 
 public final class i
-  extends c
+  extends b<e>
 {
-  public static final int CTRL_INDEX = 83;
-  public static final String NAME = "updateCanvas";
+  public static final int CTRL_INDEX = 68;
+  public static final String NAME = "removeCanvas";
   
-  protected final boolean aii()
+  public final int w(JSONObject paramJSONObject)
   {
-    return true;
-  }
-  
-  protected final int p(JSONObject paramJSONObject)
-  {
-    return paramJSONObject.optInt("canvasId");
+    AppMethodBeat.i(103856);
+    int i = paramJSONObject.optInt("canvasId");
+    AppMethodBeat.o(103856);
+    return i;
   }
 }
 

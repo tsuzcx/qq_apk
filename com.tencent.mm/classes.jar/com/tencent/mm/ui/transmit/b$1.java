@@ -1,8 +1,9 @@
 package com.tencent.mm.ui.transmit;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.ui.contact.m.a;
+import com.tencent.mm.ui.contact.n.a;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,23 +14,25 @@ final class b$1
   
   public final void b(j paramj)
   {
-    if (paramj.aYY == 0) {
-      b.a(this.wga, paramj);
+    AppMethodBeat.i(35034);
+    if (paramj.bpE == 0) {
+      b.a(this.AyR, paramj);
     }
     for (;;)
     {
-      if (paramj.kxh.size() == 0)
+      if (paramj.mSW.size() == 0)
       {
         com.tencent.mm.plugin.fts.a.a.l locall = new com.tencent.mm.plugin.fts.a.a.l();
-        locall.kwg = "no_result​";
-        paramj.kxh = new ArrayList();
-        paramj.kxh.add(locall);
+        locall.mRV = "no_result​";
+        paramj.mSW = new ArrayList();
+        paramj.mSW.add(locall);
       }
-      this.wga.clearCache();
-      this.wga.notifyDataSetChanged();
-      b.a(this.wga).t(paramj.ktu.bVk, paramj.kxh.size(), true);
+      this.AyR.clearCache();
+      this.AyR.notifyDataSetChanged();
+      b.a(this.AyR).w(paramj.mPi.query, paramj.mSW.size(), true);
+      AppMethodBeat.o(35034);
       return;
-      b.a(this.wga, null);
+      b.a(this.AyR, null);
     }
   }
 }

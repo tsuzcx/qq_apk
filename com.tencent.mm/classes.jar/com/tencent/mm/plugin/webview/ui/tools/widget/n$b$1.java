@@ -3,31 +3,35 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.mm.R.k;
-import com.tencent.mm.protocal.c.bna;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bwv;
 
 final class n$b$1
   implements View.OnClickListener
 {
-  n$b$1(n.b paramb, bna parambna, ImageView paramImageView) {}
+  n$b$1(n.b paramb, bwv parambwv, ImageView paramImageView) {}
   
   public final void onClick(View paramView)
   {
-    if (this.fYb.tGf == 2)
+    AppMethodBeat.i(79178);
+    if (this.iBz.xJY == 2)
     {
-      this.fYc.setImageResource(R.k.login_auth_state_not_selected);
-      this.fYb.tGf = 1;
-    }
-    while (this.fYb.tGf != 1) {
+      this.vbD.setImageResource(2131231594);
+      this.iBz.xJY = 1;
+      AppMethodBeat.o(79178);
       return;
     }
-    this.fYc.setImageResource(R.k.login_auth_state_default_select);
-    this.fYb.tGf = 2;
+    if (this.iBz.xJY == 1)
+    {
+      this.vbD.setImageResource(2131231592);
+      this.iBz.xJY = 2;
+    }
+    AppMethodBeat.o(79178);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.n.b.1
  * JD-Core Version:    0.7.0.1
  */

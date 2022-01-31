@@ -1,22 +1,29 @@
 package com.tencent.mm.plugin.exdevice;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.plugin.exdevice.model.ad;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
-    return new a();
+    AppMethodBeat.i(19033);
+    a locala = new a();
+    AppMethodBeat.o(19033);
+    return locala;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new ad();
+    AppMethodBeat.i(19034);
+    ad localad = new ad();
+    AppMethodBeat.o(19034);
+    return localad;
   }
   
   public b getContactWidgetFactory()

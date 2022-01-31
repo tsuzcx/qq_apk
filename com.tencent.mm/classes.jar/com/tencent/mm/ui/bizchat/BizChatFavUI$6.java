@@ -1,10 +1,11 @@
 package com.tencent.mm.ui.bizchat;
 
-import com.tencent.mm.ai.a.d;
-import com.tencent.mm.ai.a.d.a;
-import com.tencent.mm.ai.a.d.a.b;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.a.d;
+import com.tencent.mm.aj.a.d.a;
+import com.tencent.mm.aj.a.d.a.b;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class BizChatFavUI$6
   implements d.a
@@ -13,14 +14,16 @@ final class BizChatFavUI$6
   
   public final void a(d.a.b paramb)
   {
-    if ((paramb != null) && (paramb.ehx != null))
+    AppMethodBeat.i(30112);
+    if ((paramb != null) && (paramb.fxB != null))
     {
-      y.i("MicroMsg.BizChatFavUI", "bizChatExtension bizChat change");
-      y.d("MicroMsg.BizChatFavUI", "needToUpdate:%s", new Object[] { Boolean.valueOf(z.MA().aj(paramb.ehm).field_needToUpdate) });
-      if (BizChatFavUI.b(this.vfa)) {
-        BizChatFavUI.c(this.vfa).yc();
+      ab.i("MicroMsg.BizChatFavUI", "bizChatExtension bizChat change");
+      ab.d("MicroMsg.BizChatFavUI", "needToUpdate:%s", new Object[] { Boolean.valueOf(z.afk().aG(paramb.fxq).field_needToUpdate) });
+      if (BizChatFavUI.b(this.ztz)) {
+        BizChatFavUI.c(this.ztz).Ku();
       }
     }
+    AppMethodBeat.o(30112);
   }
 }
 

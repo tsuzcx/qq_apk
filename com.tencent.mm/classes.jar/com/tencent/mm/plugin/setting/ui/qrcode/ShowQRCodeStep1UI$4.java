@@ -8,144 +8,162 @@ final class ShowQRCodeStep1UI$4
   ShowQRCodeStep1UI$4(ShowQRCodeStep1UI paramShowQRCodeStep1UI) {}
   
   /* Error */
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
     // Byte code:
-    //   0: iload_1
-    //   1: tableswitch	default:+23 -> 24, 0:+24->25, 1:+32->33
-    //   25: aload_0
-    //   26: getfield 14	com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI$4:nRH	Lcom/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI;
-    //   29: invokevirtual 25	com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI:byI	()V
-    //   32: return
-    //   33: aload_0
-    //   34: getfield 14	com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI$4:nRH	Lcom/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI;
-    //   37: astore 4
-    //   39: aload 4
-    //   41: getfield 29	com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI:nRG	[B
-    //   44: astore 5
-    //   46: aload 5
-    //   48: ifnull -24 -> 24
-    //   51: aload 5
-    //   53: arraylength
-    //   54: ifle -30 -> 24
-    //   57: new 31	java/lang/StringBuilder
-    //   60: dup
-    //   61: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   64: invokestatic 38	com/tencent/mm/pluginsdk/ui/tools/l:qt	()Ljava/lang/String;
-    //   67: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: ldc 44
-    //   72: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: invokestatic 50	java/lang/System:currentTimeMillis	()J
-    //   78: invokevirtual 53	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   81: ldc 55
-    //   83: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   89: astore 6
-    //   91: new 60	java/io/FileOutputStream
-    //   94: dup
-    //   95: aload 6
-    //   97: invokespecial 63	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   100: astore_3
-    //   101: aload_3
-    //   102: astore_2
-    //   103: aload_3
-    //   104: aload 5
-    //   106: invokevirtual 67	java/io/FileOutputStream:write	([B)V
-    //   109: aload_3
-    //   110: astore_2
-    //   111: aload 4
-    //   113: aload 4
-    //   115: getstatic 73	com/tencent/mm/plugin/setting/a$i:cropimage_saved	I
-    //   118: iconst_1
-    //   119: anewarray 4	java/lang/Object
-    //   122: dup
-    //   123: iconst_0
-    //   124: aload 6
-    //   126: aastore
-    //   127: invokevirtual 77	com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
-    //   130: iconst_1
-    //   131: invokestatic 83	android/widget/Toast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
-    //   134: invokevirtual 86	android/widget/Toast:show	()V
-    //   137: aload_3
-    //   138: astore_2
-    //   139: aload 6
-    //   141: aload 4
-    //   143: invokestatic 90	com/tencent/mm/pluginsdk/ui/tools/l:a	(Ljava/lang/String;Landroid/content/Context;)V
-    //   146: aload_3
-    //   147: invokevirtual 93	java/io/FileOutputStream:close	()V
-    //   150: return
+    //   0: ldc 23
+    //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: iload_1
+    //   6: tableswitch	default:+22 -> 28, 0:+28->34, 1:+41->47
+    //   29: fload 184
+    //   31: nop
+    //   32: lload_1
+    //   33: return
+    //   34: aload_0
+    //   35: getfield 14	com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI$4:qFF	Lcom/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI;
+    //   38: invokevirtual 34	com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI:cjS	()V
+    //   41: ldc 23
+    //   43: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: return
+    //   47: aload_0
+    //   48: getfield 14	com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI$4:qFF	Lcom/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI;
+    //   51: astore 4
+    //   53: aload 4
+    //   55: getfield 38	com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI:qFE	[B
+    //   58: astore 5
+    //   60: aload 5
+    //   62: ifnull -34 -> 28
+    //   65: aload 5
+    //   67: arraylength
+    //   68: ifle -40 -> 28
+    //   71: new 40	java/lang/StringBuilder
+    //   74: dup
+    //   75: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   78: invokestatic 47	com/tencent/mm/pluginsdk/ui/tools/n:aok	()Ljava/lang/String;
+    //   81: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: ldc 53
+    //   86: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: invokestatic 59	java/lang/System:currentTimeMillis	()J
+    //   92: invokevirtual 62	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   95: ldc 64
+    //   97: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   103: astore 6
+    //   105: new 69	java/io/FileOutputStream
+    //   108: dup
+    //   109: aload 6
+    //   111: invokespecial 72	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   114: astore_3
+    //   115: aload_3
+    //   116: astore_2
+    //   117: aload_3
+    //   118: aload 5
+    //   120: invokevirtual 76	java/io/FileOutputStream:write	([B)V
+    //   123: aload_3
+    //   124: astore_2
+    //   125: aload 4
+    //   127: aload 4
+    //   129: ldc 77
+    //   131: iconst_1
+    //   132: anewarray 4	java/lang/Object
+    //   135: dup
+    //   136: iconst_0
+    //   137: aload 6
+    //   139: aastore
+    //   140: invokevirtual 81	com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+    //   143: iconst_1
+    //   144: invokestatic 87	android/widget/Toast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+    //   147: invokevirtual 90	android/widget/Toast:show	()V
+    //   150: aload_3
     //   151: astore_2
-    //   152: return
-    //   153: astore 4
-    //   155: aconst_null
-    //   156: astore_3
-    //   157: aload_3
-    //   158: astore_2
-    //   159: ldc 95
-    //   161: aload 4
-    //   163: ldc 97
-    //   165: iconst_0
-    //   166: anewarray 4	java/lang/Object
-    //   169: invokestatic 103	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   172: aload_3
-    //   173: ifnull -149 -> 24
-    //   176: aload_3
-    //   177: invokevirtual 93	java/io/FileOutputStream:close	()V
-    //   180: return
+    //   152: aload 6
+    //   154: aload 4
+    //   156: invokestatic 94	com/tencent/mm/pluginsdk/ui/tools/n:a	(Ljava/lang/String;Landroid/content/Context;)V
+    //   159: aload_3
+    //   160: invokevirtual 97	java/io/FileOutputStream:close	()V
+    //   163: ldc 23
+    //   165: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   168: return
+    //   169: astore_2
+    //   170: ldc 23
+    //   172: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   175: return
+    //   176: astore 4
+    //   178: aconst_null
+    //   179: astore_3
+    //   180: aload_3
     //   181: astore_2
-    //   182: return
-    //   183: astore_3
-    //   184: aconst_null
-    //   185: astore_2
-    //   186: aload_2
-    //   187: ifnull +7 -> 194
-    //   190: aload_2
-    //   191: invokevirtual 93	java/io/FileOutputStream:close	()V
-    //   194: aload_3
-    //   195: athrow
-    //   196: astore_2
-    //   197: goto -3 -> 194
-    //   200: astore_3
-    //   201: goto -15 -> 186
-    //   204: astore 4
-    //   206: goto -49 -> 157
+    //   182: ldc 99
+    //   184: aload 4
+    //   186: ldc 101
+    //   188: iconst_0
+    //   189: anewarray 4	java/lang/Object
+    //   192: invokestatic 107	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   195: aload_3
+    //   196: ifnull +7 -> 203
+    //   199: aload_3
+    //   200: invokevirtual 97	java/io/FileOutputStream:close	()V
+    //   203: ldc 23
+    //   205: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   208: return
+    //   209: astore_2
+    //   210: ldc 23
+    //   212: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   215: return
+    //   216: astore_3
+    //   217: aconst_null
+    //   218: astore_2
+    //   219: aload_2
+    //   220: ifnull +7 -> 227
+    //   223: aload_2
+    //   224: invokevirtual 97	java/io/FileOutputStream:close	()V
+    //   227: ldc 23
+    //   229: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   232: aload_3
+    //   233: athrow
+    //   234: astore_2
+    //   235: goto -8 -> 227
+    //   238: astore_3
+    //   239: goto -20 -> 219
+    //   242: astore 4
+    //   244: goto -64 -> 180
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	209	0	this	4
-    //   0	209	1	paramInt	int
-    //   102	37	2	localFileOutputStream1	java.io.FileOutputStream
-    //   151	1	2	localException1	java.lang.Exception
-    //   158	1	2	localFileOutputStream2	java.io.FileOutputStream
-    //   181	1	2	localException2	java.lang.Exception
-    //   185	6	2	localObject1	Object
-    //   196	1	2	localException3	java.lang.Exception
-    //   100	77	3	localFileOutputStream3	java.io.FileOutputStream
-    //   183	12	3	localObject2	Object
-    //   200	1	3	localObject3	Object
-    //   37	105	4	localShowQRCodeStep1UI	ShowQRCodeStep1UI
-    //   153	9	4	localException4	java.lang.Exception
-    //   204	1	4	localException5	java.lang.Exception
-    //   44	61	5	arrayOfByte	byte[]
-    //   89	51	6	str	java.lang.String
+    //   0	247	0	this	4
+    //   0	247	1	paramInt	int
+    //   116	36	2	localFileOutputStream1	java.io.FileOutputStream
+    //   169	1	2	localException1	java.lang.Exception
+    //   181	1	2	localFileOutputStream2	java.io.FileOutputStream
+    //   209	1	2	localException2	java.lang.Exception
+    //   218	6	2	localObject1	Object
+    //   234	1	2	localException3	java.lang.Exception
+    //   114	86	3	localFileOutputStream3	java.io.FileOutputStream
+    //   216	17	3	localObject2	Object
+    //   238	1	3	localObject3	Object
+    //   51	104	4	localShowQRCodeStep1UI	ShowQRCodeStep1UI
+    //   176	9	4	localException4	java.lang.Exception
+    //   242	1	4	localException5	java.lang.Exception
+    //   58	61	5	arrayOfByte	byte[]
+    //   103	50	6	str	java.lang.String
     // Exception table:
     //   from	to	target	type
-    //   146	150	151	java/lang/Exception
-    //   91	101	153	java/lang/Exception
-    //   176	180	181	java/lang/Exception
-    //   91	101	183	finally
-    //   190	194	196	java/lang/Exception
-    //   103	109	200	finally
-    //   111	137	200	finally
-    //   139	146	200	finally
-    //   159	172	200	finally
-    //   103	109	204	java/lang/Exception
-    //   111	137	204	java/lang/Exception
-    //   139	146	204	java/lang/Exception
+    //   159	163	169	java/lang/Exception
+    //   105	115	176	java/lang/Exception
+    //   199	203	209	java/lang/Exception
+    //   105	115	216	finally
+    //   223	227	234	java/lang/Exception
+    //   117	123	238	finally
+    //   125	150	238	finally
+    //   152	159	238	finally
+    //   182	195	238	finally
+    //   117	123	242	java/lang/Exception
+    //   125	150	242	java/lang/Exception
+    //   152	159	242	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.qrcode.ShowQRCodeStep1UI.4
  * JD-Core Version:    0.7.0.1
  */

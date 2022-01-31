@@ -1,171 +1,122 @@
 package com.tencent.mm.plugin.report.b;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import com.tencent.c.a.a.i;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w;
-import com.tencent.mm.ah.w.a;
+import com.tencent.c.a.a.i.1;
+import com.tencent.c.a.a.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.c.bhw;
-import com.tencent.mm.protocal.c.bhx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 
 public final class d
 {
-  private static i nET = i.an(ae.getContext());
-  private static int nEU = 2;
+  private static i qrV;
+  private static int qrW;
   
-  /* Error */
-  public static void LU(String paramString)
+  static
   {
-    // Byte code:
-    //   0: getstatic 28	com/tencent/mm/plugin/report/b/d:nET	Lcom/tencent/c/a/a/i;
-    //   3: astore_1
-    //   4: getstatic 39	com/tencent/c/a/a/i:mContext	Landroid/content/Context;
-    //   7: ifnull +68 -> 75
-    //   10: invokestatic 45	java/lang/System:currentTimeMillis	()J
-    //   13: putstatic 49	com/tencent/c/a/a/i:bty	J
-    //   16: ldc2_w 50
-    //   19: putstatic 56	com/tencent/c/a/a/n:btJ	J
-    //   22: getstatic 39	com/tencent/c/a/a/i:mContext	Landroid/content/Context;
-    //   25: invokestatic 62	android/preference/PreferenceManager:getDefaultSharedPreferences	(Landroid/content/Context;)Landroid/content/SharedPreferences;
-    //   28: invokeinterface 68 1 0
-    //   33: astore_2
-    //   34: aload_2
-    //   35: ldc 70
-    //   37: getstatic 49	com/tencent/c/a/a/i:bty	J
-    //   40: invokeinterface 76 4 0
-    //   45: pop
-    //   46: aload_2
-    //   47: invokeinterface 80 1 0
-    //   52: pop
-    //   53: getstatic 84	com/tencent/c/a/a/i:mHandler	Landroid/os/Handler;
-    //   56: ifnull +19 -> 75
-    //   59: getstatic 84	com/tencent/c/a/a/i:mHandler	Landroid/os/Handler;
-    //   62: new 86	com/tencent/c/a/a/i$1
-    //   65: dup
-    //   66: aload_1
-    //   67: aload_0
-    //   68: invokespecial 90	com/tencent/c/a/a/i$1:<init>	(Lcom/tencent/c/a/a/i;Ljava/lang/String;)V
-    //   71: invokevirtual 96	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   74: pop
-    //   75: ldc 98
-    //   77: ldc 100
-    //   79: iconst_1
-    //   80: anewarray 4	java/lang/Object
-    //   83: dup
-    //   84: iconst_0
-    //   85: getstatic 28	com/tencent/mm/plugin/report/b/d:nET	Lcom/tencent/c/a/a/i;
-    //   88: invokevirtual 104	com/tencent/c/a/a/i:rz	()Ljava/lang/String;
-    //   91: aastore
-    //   92: invokestatic 110	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   95: return
-    //   96: astore_0
-    //   97: ldc 98
-    //   99: ldc 112
-    //   101: iconst_1
-    //   102: anewarray 4	java/lang/Object
-    //   105: dup
-    //   106: iconst_0
-    //   107: aload_0
-    //   108: invokestatic 118	com/tencent/mm/sdk/platformtools/bk:j	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   111: aastore
-    //   112: invokestatic 121	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   115: return
-    //   116: astore_2
-    //   117: goto -64 -> 53
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	120	0	paramString	String
-    //   3	64	1	locali	i
-    //   33	14	2	localEditor	android.content.SharedPreferences.Editor
-    //   116	1	2	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   0	22	96	java/lang/Exception
-    //   53	75	96	java/lang/Exception
-    //   75	95	96	java/lang/Exception
-    //   22	53	116	java/lang/Exception
+    AppMethodBeat.i(123501);
+    qrV = i.aL(ah.getContext());
+    qrW = 2;
+    AppMethodBeat.o(123501);
   }
   
-  public static String bwO()
+  public static void Yr(String paramString)
   {
+    AppMethodBeat.i(123499);
     try
     {
-      i.a(new com.tencent.c.a.a.f()
+      i locali = qrV;
+      if (i.mContext != null)
       {
-        public final void bD(String paramAnonymousString)
-        {
-          y.i("MicroMsg.MidHelper", "QueryMid onDispatch2WXServer req:%s limit:%d", new Object[] { paramAnonymousString, Integer.valueOf(d.nEU) });
-          if (d.uD() <= 0)
-          {
-            y.e("MicroMsg.MidHelper", "THE FUCKING querymid do too much! :%d", new Object[] { Integer.valueOf(d.nEU) });
-            return;
-          }
-          Object localObject = new b.a();
-          ((b.a)localObject).ecH = new bhw();
-          ((b.a)localObject).ecI = new bhx();
-          ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/querymid";
-          ((b.a)localObject).ecG = 684;
-          localObject = ((b.a)localObject).Kt();
-          ((bhw)((b)localObject).ecE.ecN).gyF = paramAnonymousString;
-          ((bhw)((b)localObject).ecE.ecN).kTS = 1;
-          w.a((b)localObject, new w.a()
-          {
-            public final int a(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, b paramAnonymous2b, m paramAnonymous2m)
-            {
-              y.i("MicroMsg.MidHelper", "onGYNetEnd errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String });
-              return 0;
-            }
-          }, true);
+        i.bUI = System.currentTimeMillis();
+        com.tencent.c.a.a.n.bUT = -1L;
+      }
+      try
+      {
+        SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(i.mContext).edit();
+        localEditor.putLong("__MID_LAST_CHECK_TIME__", i.bUI);
+        localEditor.commit();
+        if (i.mHandler != null) {
+          i.mHandler.post(new i.1(locali, paramString));
         }
-      });
-      String str = nET.ry();
-      y.i("MicroMsg.MidHelper", "QueryMid try Get Now getMid:%s getLocalMid:%s", new Object[] { str, nET.rz() });
+        ab.i("MicroMsg.MidHelper", "QueryMid local:%s", new Object[] { qrV.zP() });
+        AppMethodBeat.o(123499);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          s.zW();
+        }
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      ab.e("MicroMsg.MidHelper", "procReturnData Error e:%s", new Object[] { bo.l(paramString) });
+      AppMethodBeat.o(123499);
+    }
+  }
+  
+  public static String chI()
+  {
+    AppMethodBeat.i(123498);
+    try
+    {
+      i.a(new d.1());
+      String str = qrV.zO();
+      ab.i("MicroMsg.MidHelper", "QueryMid try Get Now getMid:%s getLocalMid:%s", new Object[] { str, qrV.zP() });
+      AppMethodBeat.o(123498);
       return str;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.MidHelper", "QueryMid Error e:%s", new Object[] { bk.j(localException) });
+      ab.e("MicroMsg.MidHelper", "QueryMid Error e:%s", new Object[] { bo.l(localException) });
+      AppMethodBeat.o(123498);
     }
     return "";
   }
   
-  public static int r(int paramInt1, int paramInt2, String paramString)
+  public static int x(int paramInt1, int paramInt2, String paramString)
   {
-    int i = 0;
-    if (!g.DK())
+    AppMethodBeat.i(123500);
+    if (!g.RG())
     {
-      y.i("MicroMsg.MidHelper", "checkReportMid acc not ready");
-      i = -1;
+      ab.i("MicroMsg.MidHelper", "checkReportMid acc not ready");
+      AppMethodBeat.o(123500);
+      return -1;
     }
-    long l;
-    do
+    long l = bo.aox();
+    if ((paramInt1 == 3) && (bo.a((Long)g.RL().Ru().get(331778, null), 0L) >= l))
     {
-      return i;
-      l = bk.UX();
-    } while ((paramInt1 == 3) && (bk.a((Long)g.DP().Dz().get(331778, null), 0L) >= l));
-    if (aq.is2G(ae.getContext())) {
+      AppMethodBeat.o(123500);
+      return 0;
+    }
+    int i;
+    if (at.is2G(ah.getContext())) {
       i = 1;
     }
     for (;;)
     {
-      String str = bwO();
-      y.i("MicroMsg.MidHelper", "querymid checkReportMid moment:%d mid[%s]", new Object[] { Integer.valueOf(paramInt1), str });
-      com.tencent.mm.plugin.report.f.nEG.f(11402, new Object[] { str, Integer.valueOf(paramInt1), Integer.valueOf(i), q.zg(), Integer.valueOf(paramInt2), paramString, aq.getISPName(ae.getContext()), Integer.valueOf(0), q.getDeviceID(ae.getContext()) });
-      g.DP().Dz().o(331778, Long.valueOf(259200L + l));
+      String str = chI();
+      ab.i("MicroMsg.MidHelper", "querymid checkReportMid moment:%d mid[%s]", new Object[] { Integer.valueOf(paramInt1), str });
+      com.tencent.mm.plugin.report.e.qrI.e(11402, new Object[] { str, Integer.valueOf(paramInt1), Integer.valueOf(i), q.LK(), Integer.valueOf(paramInt2), paramString, at.getISPName(ah.getContext()), Integer.valueOf(0), q.bP(false) });
+      g.RL().Ru().set(331778, Long.valueOf(259200L + l));
+      AppMethodBeat.o(123500);
       return 0;
-      if (aq.isWifi(ae.getContext())) {
+      if (at.isWifi(ah.getContext())) {
         i = 3;
-      } else if (aq.is3G(ae.getContext())) {
+      } else if (at.is3G(ah.getContext())) {
         i = 2;
       } else {
         i = 0;

@@ -2,9 +2,10 @@ package com.tencent.mm.ui.bizchat;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.ai.a.n;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.aj.a.n;
+import com.tencent.mm.model.aw;
 
 final class BizChatSelectConversationUI$5
   implements DialogInterface.OnCancelListener
@@ -13,7 +14,9 @@ final class BizChatSelectConversationUI$5
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    au.Dk().c(this.vfQ);
+    AppMethodBeat.i(30178);
+    aw.Rc().a(this.zup);
+    AppMethodBeat.o(30178);
   }
 }
 

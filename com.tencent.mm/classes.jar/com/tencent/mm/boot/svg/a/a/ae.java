@@ -17,7 +17,7 @@ public final class ae
   private final int height = 96;
   private final int width = 96;
   
-  protected final int b(int paramInt, Object... paramVarArgs)
+  public final int a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
@@ -29,12 +29,12 @@ public final class ae
       return 96;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject1 = c.f(paramVarArgs);
-      Object localObject2 = c.e(paramVarArgs);
-      Paint localPaint1 = c.i(paramVarArgs);
+      Object localObject1 = c.h(paramVarArgs);
+      Object localObject2 = c.g(paramVarArgs);
+      Paint localPaint1 = c.k(paramVarArgs);
       localPaint1.setFlags(385);
       localPaint1.setStyle(Paint.Style.FILL);
-      Paint localPaint2 = c.i(paramVarArgs);
+      Paint localPaint2 = c.k(paramVarArgs);
       localPaint2.setFlags(385);
       localPaint2.setStyle(Paint.Style.STROKE);
       localPaint1.setColor(-16777216);
@@ -54,7 +54,7 @@ public final class ae
       localCanvas.saveLayerAlpha(null, 204, 4);
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      localObject2 = c.j(paramVarArgs);
+      localObject2 = c.l(paramVarArgs);
       ((Path)localObject2).moveTo(15.987003F, 13.975044F);
       ((Path)localObject2).cubicTo(22.005089F, 9.323351F, 28.003181F, 4.651693F, 34.021267F, 0.0F);
       ((Path)localObject2).lineTo(38.0F, 0.0F);
@@ -73,7 +73,7 @@ public final class ae
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a(localPaint1, paramVarArgs);
-      localObject2 = c.j(paramVarArgs);
+      localObject2 = c.l(paramVarArgs);
       ((Path)localObject2).moveTo(53.339943F, 7.684289F);
       ((Path)localObject2).cubicTo(50.137051F, 5.601287F, 53.269878F, 0.3937841F, 56.58287F, 2.486704F);
       ((Path)localObject2).cubicTo(68.533661F, 9.856561F, 73.358017F, 26.480894F, 67.532761F, 39.147526F);
@@ -88,7 +88,7 @@ public final class ae
       localCanvas.restore();
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
-      localObject1 = c.j(paramVarArgs);
+      localObject1 = c.l(paramVarArgs);
       ((Path)localObject1).moveTo(45.386761F, 13.448668F);
       ((Path)localObject1).cubicTo(48.041458F, 11.830107F, 49.881649F, 14.987299F, 51.440281F, 16.635832F);
       ((Path)localObject1).cubicTo(55.512833F, 20.991959F, 57.161964F, 27.55612F, 55.130718F, 33.21109F);
@@ -105,7 +105,7 @@ public final class ae
       localCanvas.restore();
       localCanvas.restore();
       localCanvas.restore();
-      c.h(paramVarArgs);
+      c.j(paramVarArgs);
     }
   }
 }

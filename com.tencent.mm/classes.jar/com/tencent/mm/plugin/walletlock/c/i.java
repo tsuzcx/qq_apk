@@ -1,87 +1,108 @@
 package com.tencent.mm.plugin.walletlock.c;
 
 import android.app.Activity;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Iterator;
 
 public enum i
 {
-  private boolean qRe = false;
-  private boolean qRf = false;
-  private Object qRg = new Object();
-  public HashSet<WeakReference<Activity>> qRh = new HashSet();
+  private boolean uGm;
+  private boolean uGn;
+  private Object uGo;
+  public HashSet<WeakReference<Activity>> uGp;
   
-  private i() {}
-  
-  public final void b(WeakReference<Activity> paramWeakReference)
+  static
   {
-    if (this.qRh != null)
+    AppMethodBeat.i(51743);
+    uGl = new i("INSTANCE");
+    uGq = new i[] { uGl };
+    AppMethodBeat.o(51743);
+  }
+  
+  private i()
+  {
+    AppMethodBeat.i(51740);
+    this.uGm = false;
+    this.uGn = false;
+    this.uGo = new Object();
+    this.uGp = new HashSet();
+    AppMethodBeat.o(51740);
+  }
+  
+  public final void c(WeakReference<Activity> paramWeakReference)
+  {
+    AppMethodBeat.i(51741);
+    if (this.uGp != null)
     {
       if (paramWeakReference.get() != null) {
-        y.v("MicroMsg.WalletLockStatusManager", "alvinluo addProtectActivity %s", new Object[] { ((Activity)paramWeakReference.get()).getClass().getName() });
+        ab.v("MicroMsg.WalletLockStatusManager", "alvinluo addProtectActivity %s", new Object[] { ((Activity)paramWeakReference.get()).getClass().getName() });
       }
-      this.qRh.add(paramWeakReference);
+      this.uGp.add(paramWeakReference);
     }
+    AppMethodBeat.o(51741);
   }
   
-  public final boolean bYE()
+  public final boolean cYo()
   {
-    synchronized (this.qRg)
+    synchronized (this.uGo)
     {
-      boolean bool = this.qRe;
+      boolean bool = this.uGm;
       return bool;
     }
   }
   
-  public final boolean bYF()
+  public final boolean cYp()
   {
-    synchronized (this.qRg)
+    synchronized (this.uGo)
     {
-      boolean bool = this.qRf;
+      boolean bool = this.uGn;
       return bool;
     }
   }
   
-  public final void bYG()
+  public final void cYq()
   {
-    synchronized (this.qRg)
+    synchronized (this.uGo)
     {
-      this.qRf = true;
+      this.uGn = true;
       return;
     }
   }
   
-  public final void bYH()
+  public final void cYr()
   {
-    Iterator localIterator = this.qRh.iterator();
+    AppMethodBeat.i(51742);
+    Iterator localIterator = this.uGp.iterator();
     while (localIterator.hasNext())
     {
       Activity localActivity = (Activity)((WeakReference)localIterator.next()).get();
       if ((localActivity != null) && (!localActivity.isFinishing()))
       {
-        y.v("MicroMsg.WalletLockStatusManager", "alvinluo finish %s", new Object[] { localActivity.getClass().getName() });
+        ab.v("MicroMsg.WalletLockStatusManager", "alvinluo finish %s", new Object[] { localActivity.getClass().getName() });
         localActivity.finish();
       }
       localIterator.remove();
     }
+    AppMethodBeat.o(51742);
   }
   
-  public final void kV(boolean paramBoolean)
+  public final void oe(boolean paramBoolean)
   {
-    synchronized (this.qRg)
+    synchronized (this.uGo)
     {
-      this.qRe = paramBoolean;
+      this.uGm = paramBoolean;
       return;
     }
   }
   
-  public final void kW(boolean paramBoolean)
+  public final void of(boolean paramBoolean)
   {
-    synchronized (this.qRg)
+    synchronized (this.uGo)
     {
-      this.qRf = paramBoolean;
+      this.uGn = paramBoolean;
       return;
     }
   }

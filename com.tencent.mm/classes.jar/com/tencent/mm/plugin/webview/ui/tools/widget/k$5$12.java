@@ -1,19 +1,21 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
-import com.tencent.mm.plugin.webview.ui.tools.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 
 final class k$5$12
   implements Runnable
 {
-  k$5$12(k.5 param5, String paramString, long paramLong, int paramInt) {}
+  k$5$12(k.5 param5, String paramString, long paramLong, int paramInt, float paramFloat) {}
   
   public final void run()
   {
-    if ((this.rCx.rCv.rvZ != null) && (this.rCx.rCv.rxH != null) && (this.rCx.rCv.rxH.cdI() != null) && (this.rCx.rCv.rxH.cdI().hi(42))) {
-      this.rCx.rCv.rvZ.j(this.val$appId, this.rdP, this.fyT);
+    AppMethodBeat.i(9936);
+    if ((this.vsJ.vsH.vmp != null) && (this.vsJ.vsH.voA != null) && (this.vsJ.vsH.voA.ddV() != null) && (this.vsJ.vsH.voA.ddV().jy(42))) {
+      this.vsJ.vsH.vmp.a(this.val$appId, this.kXZ, this.gQj, this.vdW);
     }
+    AppMethodBeat.o(9936);
   }
 }
 

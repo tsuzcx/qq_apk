@@ -1,12 +1,13 @@
 package com.google.android.gms.gcm;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class OneoffTask$Builder
   extends Task.Builder
 {
-  private long zzbgN = -1L;
-  private long zzbgO = -1L;
+  private long zzaj = -1L;
+  private long zzak = -1L;
   
   public OneoffTask$Builder()
   {
@@ -15,25 +16,37 @@ public class OneoffTask$Builder
   
   public OneoffTask build()
   {
+    AppMethodBeat.i(69979);
     checkConditions();
-    return new OneoffTask(this, null);
+    OneoffTask localOneoffTask = new OneoffTask(this, null);
+    AppMethodBeat.o(69979);
+    return localOneoffTask;
   }
   
   protected void checkConditions()
   {
+    AppMethodBeat.i(69978);
     super.checkConditions();
-    if ((this.zzbgN == -1L) || (this.zzbgO == -1L)) {
-      throw new IllegalArgumentException("Must specify an execution window using setExecutionWindow.");
+    IllegalArgumentException localIllegalArgumentException;
+    if ((this.zzaj == -1L) || (this.zzak == -1L))
+    {
+      localIllegalArgumentException = new IllegalArgumentException("Must specify an execution window using setExecutionWindow.");
+      AppMethodBeat.o(69978);
+      throw localIllegalArgumentException;
     }
-    if (this.zzbgN >= this.zzbgO) {
-      throw new IllegalArgumentException("Window start must be shorter than window end.");
+    if (this.zzaj >= this.zzak)
+    {
+      localIllegalArgumentException = new IllegalArgumentException("Window start must be shorter than window end.");
+      AppMethodBeat.o(69978);
+      throw localIllegalArgumentException;
     }
+    AppMethodBeat.o(69978);
   }
   
   public Builder setExecutionWindow(long paramLong1, long paramLong2)
   {
-    this.zzbgN = paramLong1;
-    this.zzbgO = paramLong2;
+    this.zzaj = paramLong1;
+    this.zzak = paramLong2;
     return this;
   }
   
@@ -63,7 +76,9 @@ public class OneoffTask$Builder
   
   public Builder setService(Class<? extends GcmTaskService> paramClass)
   {
+    AppMethodBeat.i(69977);
     this.gcmTaskService = paramClass.getName();
+    AppMethodBeat.o(69977);
     return this;
   }
   
@@ -81,7 +96,7 @@ public class OneoffTask$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.gcm.OneoffTask.Builder
  * JD-Core Version:    0.7.0.1
  */

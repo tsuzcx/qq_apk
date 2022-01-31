@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wallet.bind.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.c;
 
 final class WalletBankcardDetailUI$5$1
@@ -7,14 +8,18 @@ final class WalletBankcardDetailUI$5$1
 {
   WalletBankcardDetailUI$5$1(WalletBankcardDetailUI.5 param5) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(45744);
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    WalletBankcardDetailUI.a(this.qjW.qjV);
+    for (;;)
+    {
+      AppMethodBeat.o(45744);
+      return;
+      WalletBankcardDetailUI.a(this.tSW.tSV);
+    }
   }
 }
 

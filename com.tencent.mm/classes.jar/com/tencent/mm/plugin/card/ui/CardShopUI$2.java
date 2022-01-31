@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CardShopUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class CardShopUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.iwP.finish();
+    AppMethodBeat.i(88630);
+    this.kxT.finish();
+    AppMethodBeat.o(88630);
     return true;
   }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/voiceinput_cancel_pressed" />
-    <item android:state_selected="true" android:drawable="@raw/voiceinput_cancel_pressed" />
-    <item android:drawable="@raw/voiceinput_cancel" />
-</selector>
+    <corners android:radius="@dimen/e3" />
+    <solid android:color="@color/hz" />
+    <stroke android:width="@dimen/e5" android:color="@color/i2" />
+</shape>

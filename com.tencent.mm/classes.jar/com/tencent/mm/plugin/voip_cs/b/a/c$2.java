@@ -1,22 +1,28 @@
 package com.tencent.mm.plugin.voip_cs.b.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.voip.model.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$2
-  implements com.tencent.mm.plugin.voip.model.a
+  implements b
 {
   c$2(c paramc) {}
   
-  public final int L(byte[] paramArrayOfByte, int paramInt)
+  public final int M(byte[] paramArrayOfByte, int paramInt)
   {
-    y.d("MicroMsg.cs.VoipCsAudioManager", "PlayDevDataCallBack,pcm data len:" + paramArrayOfByte.length);
-    paramInt = com.tencent.mm.plugin.voip_cs.b.c.bSO().qeL.playCallback(paramArrayOfByte, paramInt);
+    AppMethodBeat.i(135362);
+    ab.d("MicroMsg.cs.VoipCsAudioManager", "PlayDevDataCallBack,pcm data len:" + paramArrayOfByte.length);
+    paramInt = com.tencent.mm.plugin.voip_cs.b.c.cQm().tLy.playCallback(paramArrayOfByte, paramInt);
     if (paramInt != 0) {
-      y.d("MicroMsg.cs.VoipCsAudioManager", "PlayDevDataCallBack is failure! pc data:" + paramArrayOfByte.length + ",ret:" + paramInt);
+      ab.d("MicroMsg.cs.VoipCsAudioManager", "PlayDevDataCallBack is failure! pc data:" + paramArrayOfByte.length + ",ret:" + paramInt);
     }
-    if (paramInt != 0) {
+    if (paramInt != 0)
+    {
+      AppMethodBeat.o(135362);
       return 1;
     }
+    AppMethodBeat.o(135362);
     return 0;
   }
 }

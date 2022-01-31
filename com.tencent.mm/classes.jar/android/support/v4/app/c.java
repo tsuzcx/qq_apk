@@ -1,56 +1,32 @@
 package android.support.v4.app;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentSender;
-import android.util.AttributeSet;
-import android.view.View;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.IBinder;
 
-abstract class c
-  extends SupportActivity
+public final class c
 {
-  boolean mStartedIntentSenderFromFragment;
-  
-  static void checkForValidRequestCode(int paramInt)
+  public static void a(Bundle paramBundle, String paramString, IBinder paramIBinder)
   {
-    if ((0xFFFF0000 & paramInt) != 0) {
-      throw new IllegalArgumentException("Can only use lower 16 bits for requestCode");
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      paramBundle.putBinder(paramString, paramIBinder);
+      return;
     }
+    c.a.a(paramBundle, paramString, paramIBinder);
   }
   
-  abstract View dispatchFragmentsOnCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet);
-  
-  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  public static IBinder c(Bundle paramBundle, String paramString)
   {
-    View localView2 = dispatchFragmentsOnCreateView(paramView, paramString, paramContext, paramAttributeSet);
-    View localView1 = localView2;
-    if (localView2 == null) {
-      localView1 = super.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    if (Build.VERSION.SDK_INT >= 18) {
+      return paramBundle.getBinder(paramString);
     }
-    return localView1;
-  }
-  
-  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    View localView2 = dispatchFragmentsOnCreateView(null, paramString, paramContext, paramAttributeSet);
-    View localView1 = localView2;
-    if (localView2 == null) {
-      localView1 = super.onCreateView(paramString, paramContext, paramAttributeSet);
-    }
-    return localView1;
-  }
-  
-  public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if ((!this.mStartedIntentSenderFromFragment) && (paramInt1 != -1)) {
-      checkForValidRequestCode(paramInt1);
-    }
-    super.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4);
+    return c.a.c(paramBundle, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.app.c
  * JD-Core Version:    0.7.0.1
  */

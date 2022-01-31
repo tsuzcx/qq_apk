@@ -4,9 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.address.e.e;
-import com.tencent.mm.plugin.o.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.j.a.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 final class InvoiceListUI$2
@@ -16,27 +17,29 @@ final class InvoiceListUI$2
   
   public final void onItemClick(AdapterView<?> arg1, View paramView, int paramInt, long paramLong)
   {
-    y.d("MicroMsg.InvoiceListUI", "select pos " + paramInt);
-    synchronized (InvoiceListUI.b(this.fuL))
+    AppMethodBeat.i(16858);
+    ab.d("MicroMsg.InvoiceListUI", "select pos ".concat(String.valueOf(paramInt)));
+    synchronized (InvoiceListUI.b(this.gMn))
     {
-      if (paramInt < InvoiceListUI.c(this.fuL).size())
+      if (paramInt < InvoiceListUI.c(this.gMn).size())
       {
-        InvoiceListUI.a(this.fuL, (b)InvoiceListUI.c(this.fuL).get(paramInt));
-        if ((InvoiceListUI.d(this.fuL)) || (InvoiceListUI.e(this.fuL) == null)) {
-          break label117;
+        InvoiceListUI.a(this.gMn, (b)InvoiceListUI.c(this.gMn).get(paramInt));
+        if ((InvoiceListUI.d(this.gMn)) || (InvoiceListUI.e(this.gMn) == null)) {
+          break label122;
         }
-        InvoiceListUI.a(this.fuL, InvoiceListUI.e(this.fuL).lnP);
+        InvoiceListUI.a(this.gMn, InvoiceListUI.e(this.gMn).nLm);
       }
-      label117:
-      while ((InvoiceListUI.e(this.fuL) == null) || (InvoiceListUI.e(this.fuL).lnP == 0))
+      label122:
+      while ((InvoiceListUI.e(this.gMn) == null) || (InvoiceListUI.e(this.gMn).nLm == 0))
       {
-        InvoiceListUI.f(this.fuL).notifyDataSetChanged();
+        InvoiceListUI.f(this.gMn).notifyDataSetChanged();
+        AppMethodBeat.o(16858);
         return;
       }
       paramView = new Intent();
-      paramView.putExtra("choose_invoice_title_info", e.a(InvoiceListUI.e(this.fuL)));
-      this.fuL.setResult(-1, paramView);
-      this.fuL.finish();
+      paramView.putExtra("choose_invoice_title_info", e.a(InvoiceListUI.e(this.gMn)));
+      this.gMn.setResult(-1, paramView);
+      this.gMn.finish();
     }
   }
 }

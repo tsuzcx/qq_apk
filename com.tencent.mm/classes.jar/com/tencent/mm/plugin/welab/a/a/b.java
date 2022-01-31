@@ -4,11 +4,11 @@ import android.app.Activity;
 
 public abstract interface b
 {
-  public abstract String chj();
+  public abstract String dhr();
   
-  public abstract String chk();
+  public abstract String dhs();
   
-  public abstract void f(Activity paramActivity, String paramString);
+  public abstract void h(Activity paramActivity, String paramString);
 }
 
 

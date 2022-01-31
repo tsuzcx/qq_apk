@@ -2,62 +2,73 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.graphics.Bitmap;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.mm.plugin.sns.i.a;
-import com.tencent.mm.pluginsdk.ui.tools.f.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.pluginsdk.ui.tools.e.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.lang.ref.WeakReference;
 
 final class AdlandingSightPlayImageView$a
-  extends a
+  extends b
 {
-  private WeakReference<AdlandingSightPlayImageView> ofE;
+  private WeakReference<AdlandingSightPlayImageView> qTS;
   
   public AdlandingSightPlayImageView$a(AdlandingSightPlayImageView paramAdlandingSightPlayImageView)
   {
     super(paramAdlandingSightPlayImageView);
-    this.ofE = new WeakReference(paramAdlandingSightPlayImageView);
+    AppMethodBeat.i(37436);
+    this.qTS = new WeakReference(paramAdlandingSightPlayImageView);
+    AppMethodBeat.o(37436);
   }
   
-  public final void G(Bitmap paramBitmap)
+  public final void S(Bitmap paramBitmap)
   {
-    AdlandingSightPlayImageView localAdlandingSightPlayImageView = (AdlandingSightPlayImageView)this.ofE.get();
+    AppMethodBeat.i(37438);
+    AdlandingSightPlayImageView localAdlandingSightPlayImageView = (AdlandingSightPlayImageView)this.qTS.get();
     if (localAdlandingSightPlayImageView == null)
     {
-      y.e("MicroMsg.SightPlayImageView", "onGetFrameBmp, imageView is null, do clear");
+      ab.e("MicroMsg.SightPlayImageView", "onGetFrameBmp, imageView is null, do clear");
       clear();
+      AppMethodBeat.o(37438);
       return;
     }
     localAdlandingSightPlayImageView.setImageBitmap(paramBitmap);
+    AppMethodBeat.o(37438);
   }
   
-  protected final int bAZ()
+  protected final int cmz()
   {
-    return i.a.sight_loop;
+    return 2131034258;
   }
   
-  public final void cw(int paramInt1, int paramInt2)
+  public final void dQ(int paramInt1, int paramInt2)
   {
-    AdlandingSightPlayImageView localAdlandingSightPlayImageView = (AdlandingSightPlayImageView)this.ofE.get();
+    AppMethodBeat.i(37437);
+    AdlandingSightPlayImageView localAdlandingSightPlayImageView = (AdlandingSightPlayImageView)this.qTS.get();
     if (localAdlandingSightPlayImageView == null)
     {
-      y.e("MicroMsg.SightPlayImageView", "onGetVideoSizeEnd, imageView is null, do clear");
+      ab.e("MicroMsg.SightPlayImageView", "onGetVideoSizeEnd, imageView is null, do clear");
       clear();
+      AppMethodBeat.o(37437);
+      return;
     }
-    while (AdlandingSightPlayImageView.a(localAdlandingSightPlayImageView)) {
+    if (AdlandingSightPlayImageView.a(localAdlandingSightPlayImageView))
+    {
+      AppMethodBeat.o(37437);
       return;
     }
     AdlandingSightPlayImageView.a(localAdlandingSightPlayImageView, paramInt1);
     AdlandingSightPlayImageView.b(localAdlandingSightPlayImageView, paramInt2);
-    if (localAdlandingSightPlayImageView.joM != null) {
-      localAdlandingSightPlayImageView.joM.cw(paramInt1, paramInt2);
+    if (localAdlandingSightPlayImageView.lxA != null) {
+      localAdlandingSightPlayImageView.lxA.dQ(paramInt1, paramInt2);
     }
     if (AdlandingSightPlayImageView.b(localAdlandingSightPlayImageView))
     {
       if (AdlandingSightPlayImageView.c(localAdlandingSightPlayImageView) < AdlandingSightPlayImageView.d(localAdlandingSightPlayImageView)) {
-        break label247;
+        break label268;
       }
-      AdlandingSightPlayImageView.c(localAdlandingSightPlayImageView, com.tencent.mm.cb.a.fromDPToPix(localAdlandingSightPlayImageView.getContext(), 150));
+      AdlandingSightPlayImageView.c(localAdlandingSightPlayImageView, a.fromDPToPix(localAdlandingSightPlayImageView.getContext(), 150));
     }
     for (;;)
     {
@@ -68,15 +79,16 @@ final class AdlandingSightPlayImageView$a
         {
           localLayoutParams.width = AdlandingSightPlayImageView.e(localAdlandingSightPlayImageView);
           localLayoutParams.height = (AdlandingSightPlayImageView.e(localAdlandingSightPlayImageView) * paramInt2 / paramInt1);
-          ai.d(new AdlandingSightPlayImageView.a.1(this, localAdlandingSightPlayImageView, localLayoutParams));
+          al.d(new AdlandingSightPlayImageView.a.1(this, localAdlandingSightPlayImageView, localLayoutParams));
           localAdlandingSightPlayImageView.postInvalidate();
         }
-        y.i("MicroMsg.SightPlayImageView", "onGetVideoSize::params width %d height %d", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
+        ab.i("MicroMsg.SightPlayImageView", "onGetVideoSize::params width %d height %d", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
       }
-      y.i("MicroMsg.SightPlayImageView", "onGetVideoSize::DrawWidth %d, video size %d*%d", new Object[] { Integer.valueOf(AdlandingSightPlayImageView.e(localAdlandingSightPlayImageView)), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ab.i("MicroMsg.SightPlayImageView", "onGetVideoSize::DrawWidth %d, video size %d*%d", new Object[] { Integer.valueOf(AdlandingSightPlayImageView.e(localAdlandingSightPlayImageView)), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(37437);
       return;
-      label247:
-      AdlandingSightPlayImageView.c(localAdlandingSightPlayImageView, com.tencent.mm.cb.a.fromDPToPix(localAdlandingSightPlayImageView.getContext(), 85));
+      label268:
+      AdlandingSightPlayImageView.c(localAdlandingSightPlayImageView, a.fromDPToPix(localAdlandingSightPlayImageView.getContext(), 85));
     }
   }
 }

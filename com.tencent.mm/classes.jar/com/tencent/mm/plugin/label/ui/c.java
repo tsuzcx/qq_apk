@@ -3,20 +3,22 @@ package com.tencent.mm.plugin.label.ui;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMTextView;
 
 public final class c
 {
-  MMTextView lCq;
-  TextView lCr;
-  LinearLayout lCs;
+  MMTextView nZC;
+  TextView nZD;
+  LinearLayout nZE;
   
   public c(View paramView)
   {
-    this.lCq = ((MMTextView)paramView.findViewById(R.h.label_item_title));
-    this.lCr = ((TextView)paramView.findViewById(R.h.label_item_count));
-    this.lCs = ((LinearLayout)paramView.findViewById(R.h.label_item_container));
+    AppMethodBeat.i(22701);
+    this.nZC = ((MMTextView)paramView.findViewById(2131823167));
+    this.nZD = ((TextView)paramView.findViewById(2131823168));
+    this.nZE = ((LinearLayout)paramView.findViewById(2131823166));
+    AppMethodBeat.o(22701);
   }
 }
 

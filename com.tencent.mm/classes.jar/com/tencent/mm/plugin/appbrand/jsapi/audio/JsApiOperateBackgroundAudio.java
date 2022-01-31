@@ -1,48 +1,55 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONObject;
 
-public class JsApiOperateBackgroundAudio
-  extends a
+public class JsApiOperateBackgroundAudio<CONTEXT extends c>
+  extends a<CONTEXT>
 {
   public static final int CTRL_INDEX = 161;
   public static final String NAME = "operateBackgroundAudio";
-  protected JsApiSetBackgroundAudioState.SetBackgroundAudioListenerTask giA;
+  protected JsApiSetBackgroundAudioState.SetBackgroundAudioListenerTask hBT;
   
-  protected JsApiSetBackgroundAudioState.SetBackgroundAudioListenerTask a(a parama, c paramc, int paramInt)
+  protected JsApiSetBackgroundAudioState.SetBackgroundAudioListenerTask a(a parama, CONTEXT paramCONTEXT, int paramInt)
   {
-    return new JsApiSetBackgroundAudioState.SetBackgroundAudioListenerTask(this, paramc, paramInt);
+    AppMethodBeat.i(137760);
+    parama = new JsApiSetBackgroundAudioState.SetBackgroundAudioListenerTask(this, paramCONTEXT, paramInt);
+    AppMethodBeat.o(137760);
+    return parama;
   }
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt)
   {
+    AppMethodBeat.i(137759);
     if (paramJSONObject == null)
     {
-      paramc.C(paramInt, h("fail:data is null", null));
-      y.e("MicroMsg.Music.JsApiOperateBackgroundAudio", "operateBackgroundAudio data is null");
+      paramCONTEXT.h(paramInt, j("fail:data is null", null));
+      ab.e("MicroMsg.Music.JsApiOperateBackgroundAudio", "operateBackgroundAudio data is null");
+      AppMethodBeat.o(137759);
       return;
     }
-    String str = paramc.getAppId();
-    y.i("MicroMsg.Music.JsApiOperateBackgroundAudio", "operateBackgroundAudio appId:%s", new Object[] { str });
-    if (this.giA == null) {
-      this.giA = a(this, paramc, paramInt);
+    String str = paramCONTEXT.getAppId();
+    ab.i("MicroMsg.Music.JsApiOperateBackgroundAudio", "operateBackgroundAudio appId:%s", new Object[] { str });
+    if (this.hBT == null) {
+      this.hBT = a(this, paramCONTEXT, paramInt);
     }
-    this.giA.gfg = paramInt;
-    this.giA.appId = str;
-    h(paramc);
-    paramc = new JsApiOperateBackgroundAudio.OperateBackgroundAudioTask(this, paramc, paramInt);
-    paramc.gfg = paramInt;
-    paramc.appId = str;
-    paramc.giD = paramJSONObject.toString();
-    AppBrandMainProcessService.a(paramc);
+    this.hBT.hry = paramInt;
+    this.hBT.appId = str;
+    n(paramCONTEXT);
+    paramCONTEXT = new JsApiOperateBackgroundAudio.OperateBackgroundAudioTask(this, paramCONTEXT, paramInt);
+    paramCONTEXT.hry = paramInt;
+    paramCONTEXT.appId = str;
+    paramCONTEXT.hBW = paramJSONObject.toString();
+    AppBrandMainProcessService.a(paramCONTEXT);
+    AppMethodBeat.o(137759);
   }
   
-  protected void h(c paramc) {}
+  protected void n(CONTEXT paramCONTEXT) {}
 }
 
 

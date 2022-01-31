@@ -1,15 +1,25 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import com.tencent.mm.ah.m;
+import com.tencent.mm.ai.m;
 
 public abstract class b
   extends m
 {
-  public String Db;
-  public int fzn;
-  public int qTt;
+  protected String DK;
+  protected int mScene;
+  protected int uIB;
   
-  public abstract String Jv();
+  public abstract String act();
+  
+  public final int cZa()
+  {
+    return this.uIB;
+  }
+  
+  public final String getQuery()
+  {
+    return this.DK;
+  }
 }
 
 

@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class a$3
-  implements j.a
+  implements k.a
 {
   a$3(a parama) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
-    a.a(this.kWJ).stopTimer();
-    paramString = a.a(this.kWJ);
+    AppMethodBeat.i(111697);
+    a.a(this.nuL).stopTimer();
+    paramString = a.a(this.nuL);
     long l = a.access$100();
-    paramString.S(l, l);
+    paramString.ag(l, l);
+    AppMethodBeat.o(111697);
   }
 }
 

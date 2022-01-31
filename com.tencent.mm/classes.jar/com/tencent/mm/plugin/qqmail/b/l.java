@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.qqmail.b;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.File;
 import java.security.InvalidParameterException;
 import java.util.Iterator;
@@ -19,44 +20,58 @@ import org.apache.http.util.EntityUtils;
 public final class l
   extends n
 {
-  private static final String BOUNDARY = "WEIXIN" + System.currentTimeMillis();
-  private HttpPost ndB;
+  private static final String BOUNDARY;
+  private HttpPost pIS;
+  
+  static
+  {
+    AppMethodBeat.i(67954);
+    BOUNDARY = "WEIXIN" + System.currentTimeMillis();
+    AppMethodBeat.o(67954);
+  }
   
   private static String a(n.b paramb)
   {
+    AppMethodBeat.i(67953);
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = paramb.ndL.keySet().iterator();
+    Object localObject = paramb.pJb.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
       localStringBuilder.append("------" + BOUNDARY + "\r\n");
       localStringBuilder.append("Content-Disposition: form-data; name=\"" + str + "\"\r\n");
       localStringBuilder.append("\r\n");
-      localStringBuilder.append((String)paramb.ndL.get(str));
+      localStringBuilder.append((String)paramb.pJb.get(str));
       localStringBuilder.append("\r\n");
     }
-    localObject = new File(paramb.ndN.filePath);
-    if (!((File)localObject).isFile()) {
-      throw new InvalidParameterException("The path to upload isnot a file.");
+    localObject = new File(paramb.pJd.filePath);
+    if (!((File)localObject).isFile())
+    {
+      paramb = new InvalidParameterException("The path to upload isnot a file.");
+      AppMethodBeat.o(67953);
+      throw paramb;
     }
     localObject = ((File)localObject).getName();
     localStringBuilder.append("------" + BOUNDARY + "\r\n");
-    localStringBuilder.append("Content-Disposition: form-data; name=\"" + paramb.ndN.bOx + "\"; filename=\"" + (String)localObject + "\"\r\n");
+    localStringBuilder.append("Content-Disposition: form-data; name=\"" + paramb.pJd.cvO + "\"; filename=\"" + (String)localObject + "\"\r\n");
     localStringBuilder.append("\r\n");
-    return localStringBuilder.toString();
+    paramb = localStringBuilder.toString();
+    AppMethodBeat.o(67953);
+    return paramb;
   }
   
   public final n.c a(String paramString1, String paramString2, n.b paramb, n.a parama)
   {
     int j = 0;
-    y.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + paramb);
+    AppMethodBeat.i(67951);
+    ab.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + paramb);
     parama = new DefaultHttpClient();
     int i = j;
     try
     {
       Object localObject = a(paramb);
       i = j;
-      String str = paramb.ndN.filePath;
+      String str = paramb.pJd.filePath;
       i = j;
       StringBuilder localStringBuilder = new StringBuilder();
       i = j;
@@ -66,21 +81,21 @@ public final class l
       i = j;
       localObject = new l.a(this, (String)localObject, str, localStringBuilder.toString());
       i = j;
-      this.ndB = new HttpPost(c(paramString1, paramString2, paramb.ndL));
+      this.pIS = new HttpPost(f(paramString1, paramString2, paramb.pJb));
       i = j;
-      this.ndB.setHeader("User-Agent", aRC);
+      this.pIS.setHeader("User-Agent", userAgent);
       i = j;
-      this.ndB.setHeader("Host", host);
+      this.pIS.setHeader("Host", host);
       i = j;
-      this.ndB.setHeader("Connection", "Keep-Alive");
+      this.pIS.setHeader("Connection", "Keep-Alive");
       i = j;
-      this.ndB.setHeader("Accept-Charset", "utf-8");
+      this.pIS.setHeader("Accept-Charset", "utf-8");
       i = j;
-      this.ndB.setHeader("Cookie", H(paramb.ndM));
+      this.pIS.setHeader("Cookie", W(paramb.pJc));
       i = j;
-      this.ndB.setEntity((HttpEntity)localObject);
+      this.pIS.setEntity((HttpEntity)localObject);
       i = j;
-      paramb = parama.execute(this.ndB);
+      paramb = parama.execute(this.pIS);
       i = j;
       j = paramb.getStatusLine().getStatusCode();
       i = j;
@@ -90,14 +105,14 @@ public final class l
       i = j;
       paramString1 = EntityUtils.toString(paramString1);
       i = j;
-      paramString1 = new n.c(j, Lh(paramb), paramString1);
+      paramString1 = new n.c(j, Xr(paramb), paramString1);
       i = j;
-      y.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + paramString1);
+      ab.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + paramString1);
       return paramString1;
     }
     catch (Exception paramString1)
     {
-      y.printErrStackTrace("MicroMsg.HttpClientUtil", paramString1, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.HttpClientUtil", paramString1, "", new Object[0]);
       j = i;
       if (i == 0) {
         j = 503;
@@ -108,20 +123,23 @@ public final class l
     finally
     {
       parama.getConnectionManager().shutdown();
+      AppMethodBeat.o(67951);
     }
   }
   
   public final void cancel()
   {
-    y.d("MicroMsg.HttpClientUtil", "cancel conection.");
-    if ((this.ndB != null) && (!this.ndB.isAborted())) {
-      this.ndB.abort();
+    AppMethodBeat.i(67952);
+    ab.d("MicroMsg.HttpClientUtil", "cancel conection.");
+    if ((this.pIS != null) && (!this.pIS.isAborted())) {
+      this.pIS.abort();
     }
+    AppMethodBeat.o(67952);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.l
  * JD-Core Version:    0.7.0.1
  */

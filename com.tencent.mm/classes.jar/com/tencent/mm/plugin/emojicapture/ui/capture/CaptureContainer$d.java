@@ -1,24 +1,23 @@
 package com.tencent.mm.plugin.emojicapture.ui.capture;
 
-import com.tencent.mm.plugin.emojicapture.c.a.a;
-import com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton.c;
+import a.f.a.b;
+import a.f.b.k;
+import a.l;
+import a.y;
 
-public final class CaptureContainer$d
-  implements MMSightRecordButton.c
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "", "invoke"})
+final class CaptureContainer$d
+  extends k
+  implements b<Boolean, y>
 {
-  public final void qm(int paramInt)
+  CaptureContainer$d(CaptureContainer paramCaptureContainer)
   {
-    this.jpm.getPresenter().b(true, true, paramInt);
-  }
-  
-  public final void qn(int paramInt)
-  {
-    this.jpm.getPresenter().b(false, true, paramInt);
+    super(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.capture.CaptureContainer.d
  * JD-Core Version:    0.7.0.1
  */

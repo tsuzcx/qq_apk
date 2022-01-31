@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/ahx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:minHeight="12.0dip" android:layout_centerHorizontal="true" android:alpha="0.6" />
-    <View android:background="#4dcdcdd1" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="24.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="24.0dip" android:layout_below="@id/ahx" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/nf" android:textColor="@color/a83" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/ajp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/la" android:layout_marginBottom="@dimen/la" android:text="@string/air" android:singleLine="true" />
+    <LinearLayout android:gravity="center" android:id="@id/ajq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <ImageView android:id="@id/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/z1" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/rz" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:id="@id/ajs" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginTop="@dimen/m1" android:layout_marginBottom="5.0dip">
+        <ImageView android:gravity="center" android:layout_gravity="center" android:background="@drawable/amr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

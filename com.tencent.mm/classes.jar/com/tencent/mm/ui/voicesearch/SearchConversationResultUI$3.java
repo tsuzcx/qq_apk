@@ -5,12 +5,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.as;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.t;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ak;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMAppMgr;
 import com.tencent.mm.ui.chatting.ChattingUI;
 
@@ -21,116 +22,139 @@ final class SearchConversationResultUI$3
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt < SearchConversationResultUI.a(this.wiJ).getHeaderViewsCount()) {
+    AppMethodBeat.i(35317);
+    if (paramInt < SearchConversationResultUI.a(this.ABB).getHeaderViewsCount())
+    {
+      AppMethodBeat.o(35317);
       return;
     }
-    paramInt -= SearchConversationResultUI.a(this.wiJ).getHeaderViewsCount();
-    paramAdapterView = (ak)SearchConversationResultUI.b(this.wiJ).getItem(paramInt);
+    paramInt -= SearchConversationResultUI.a(this.ABB).getHeaderViewsCount();
+    paramAdapterView = (ak)SearchConversationResultUI.b(this.ABB).getItem(paramInt);
     if (paramAdapterView == null)
     {
-      y.e("MicroMsg.VoiceSearchResultUI", "null user at position = " + paramInt);
+      ab.e("MicroMsg.VoiceSearchResultUI", "null user at position = ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(35317);
       return;
     }
-    y.d("MicroMsg.VoiceSearchResultUI", "username " + paramAdapterView.field_username);
-    if (com.tencent.mm.model.s.hq(paramAdapterView.field_username))
+    ab.d("MicroMsg.VoiceSearchResultUI", "username " + paramAdapterView.field_username);
+    if (t.nZ(paramAdapterView.field_username))
     {
-      if (q.GC())
+      if (r.ZH())
       {
         paramAdapterView = new Intent().putExtra("finish_direct", true);
-        d.b(this.wiJ.mController.uMN, "tmessage", ".ui.TConversationUI", paramAdapterView);
+        d.b(this.ABB.getContext(), "tmessage", ".ui.TConversationUI", paramAdapterView);
+        AppMethodBeat.o(35317);
         return;
       }
-      d.b(this.wiJ, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      d.b(this.ABB, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      AppMethodBeat.o(35317);
       return;
     }
-    if (com.tencent.mm.model.s.hs(paramAdapterView.field_username))
+    if (t.ob(paramAdapterView.field_username))
     {
-      if (q.Gz())
+      if (r.ZE())
       {
         paramAdapterView = new Intent().putExtra("finish_direct", true);
-        d.b(this.wiJ.mController.uMN, "qmessage", ".ui.QConversationUI", paramAdapterView);
+        d.b(this.ABB.getContext(), "qmessage", ".ui.QConversationUI", paramAdapterView);
+        AppMethodBeat.o(35317);
         return;
       }
-      d.b(this.wiJ, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      d.b(this.ABB, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      AppMethodBeat.o(35317);
       return;
     }
-    if (com.tencent.mm.model.s.hr(paramAdapterView.field_username))
+    if (t.oa(paramAdapterView.field_username))
     {
-      d.b(this.wiJ, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      d.b(this.ABB, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      AppMethodBeat.o(35317);
       return;
     }
-    if (com.tencent.mm.model.s.hw(paramAdapterView.field_username))
+    if (t.of(paramAdapterView.field_username))
     {
       MMAppMgr.cancelNotification(paramAdapterView.field_username);
-      d.b(this.wiJ, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      d.b(this.ABB, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      AppMethodBeat.o(35317);
       return;
     }
-    if (com.tencent.mm.model.s.ho(paramAdapterView.field_username))
+    if (t.nX(paramAdapterView.field_username))
     {
-      if (q.GM())
+      if (r.ZQ())
       {
-        SearchConversationResultUI.a(this.wiJ, ChattingUI.class, new Intent().putExtra("Chat_User", paramAdapterView.field_username).putExtra("finish_direct", true));
+        SearchConversationResultUI.a(this.ABB, ChattingUI.class, new Intent().putExtra("Chat_User", paramAdapterView.field_username).putExtra("finish_direct", true));
+        AppMethodBeat.o(35317);
         return;
       }
-      d.b(this.wiJ, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      d.b(this.ABB, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      AppMethodBeat.o(35317);
       return;
     }
-    if (com.tencent.mm.model.s.hB(paramAdapterView.field_username))
+    if (t.ok(paramAdapterView.field_username))
     {
-      if (q.GG())
+      if (r.ZK())
       {
         paramAdapterView = new Intent();
         paramAdapterView.putExtra("type", 20);
-        d.b(this.wiJ, "readerapp", ".ui.ReaderAppUI", paramAdapterView);
+        d.b(this.ABB, "readerapp", ".ui.ReaderAppUI", paramAdapterView);
+        AppMethodBeat.o(35317);
         return;
       }
-      d.b(this.wiJ, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      d.b(this.ABB, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      AppMethodBeat.o(35317);
       return;
     }
-    if (com.tencent.mm.model.s.hJ(paramAdapterView.field_username))
+    if (t.os(paramAdapterView.field_username))
     {
-      if (q.GH())
+      if (r.ZL())
       {
         paramAdapterView = new Intent();
         paramAdapterView.putExtra("type", 11);
-        d.b(this.wiJ, "readerapp", ".ui.ReaderAppUI", paramAdapterView);
+        d.b(this.ABB, "readerapp", ".ui.ReaderAppUI", paramAdapterView);
+        AppMethodBeat.o(35317);
         return;
       }
-      d.b(this.wiJ, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      d.b(this.ABB, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      AppMethodBeat.o(35317);
       return;
     }
-    if (com.tencent.mm.model.s.ht(paramAdapterView.field_username))
+    if (t.oc(paramAdapterView.field_username))
     {
-      d.b(this.wiJ, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      d.b(this.ABB, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      AppMethodBeat.o(35317);
       return;
     }
-    if (com.tencent.mm.model.s.hu(paramAdapterView.field_username))
+    if (t.od(paramAdapterView.field_username))
     {
-      if (q.GJ())
+      if (r.ZN())
       {
         paramAdapterView = new Intent().putExtra("finish_direct", true);
-        d.b(this.wiJ, "masssend", ".ui.MassSendHistoryUI", paramAdapterView);
+        d.b(this.ABB, "masssend", ".ui.MassSendHistoryUI", paramAdapterView);
+        AppMethodBeat.o(35317);
         return;
       }
-      d.b(this.wiJ, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      d.b(this.ABB, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      AppMethodBeat.o(35317);
       return;
     }
-    if (com.tencent.mm.model.s.hA(paramAdapterView.field_username))
+    if (t.oj(paramAdapterView.field_username))
     {
-      if (q.GD())
+      if (r.ZI())
       {
-        SearchConversationResultUI.b(this.wiJ, ChattingUI.class, new Intent().putExtra("Chat_User", paramAdapterView.field_username).putExtra("finish_direct", true));
+        SearchConversationResultUI.b(this.ABB, ChattingUI.class, new Intent().putExtra("Chat_User", paramAdapterView.field_username).putExtra("finish_direct", true));
+        AppMethodBeat.o(35317);
         return;
       }
-      d.b(this.wiJ, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      d.b(this.ABB, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      AppMethodBeat.o(35317);
       return;
     }
-    if ((com.tencent.mm.model.s.hy(SearchConversationResultUI.c(this.wiJ))) || (com.tencent.mm.model.s.hz(SearchConversationResultUI.c(this.wiJ))) || (com.tencent.mm.model.s.hv(SearchConversationResultUI.c(this.wiJ))) || (com.tencent.mm.model.s.hD(SearchConversationResultUI.c(this.wiJ))) || (com.tencent.mm.model.s.hE(SearchConversationResultUI.c(this.wiJ))) || (com.tencent.mm.model.s.hp(SearchConversationResultUI.c(this.wiJ))) || (com.tencent.mm.model.s.hM(SearchConversationResultUI.c(this.wiJ))))
+    if ((t.oh(SearchConversationResultUI.c(this.ABB))) || (t.oi(SearchConversationResultUI.c(this.ABB))) || (t.oe(SearchConversationResultUI.c(this.ABB))) || (t.om(SearchConversationResultUI.c(this.ABB))) || (t.on(SearchConversationResultUI.c(this.ABB))) || (t.nY(SearchConversationResultUI.c(this.ABB))) || (t.ov(SearchConversationResultUI.c(this.ABB))))
     {
-      d.b(this.wiJ, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      d.b(this.ABB, "profile", ".ui.ContactInfoUI", new Intent().putExtra("Contact_User", paramAdapterView.field_username));
+      AppMethodBeat.o(35317);
       return;
     }
-    SearchConversationResultUI.c(this.wiJ, ChattingUI.class, new Intent().putExtra("Chat_User", paramAdapterView.field_username).putExtra("finish_direct", true));
+    SearchConversationResultUI.c(this.ABB, ChattingUI.class, new Intent().putExtra("Chat_User", paramAdapterView.field_username).putExtra("finish_direct", true));
+    AppMethodBeat.o(35317);
   }
 }
 

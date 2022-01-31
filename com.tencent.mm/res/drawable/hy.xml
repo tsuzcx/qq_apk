@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:state_checked="true" android:drawable="@drawable/awu" />
-    <item android:state_enabled="false" android:state_checked="false" android:drawable="@drawable/aww" />
-    <item android:state_checked="true" android:drawable="@drawable/awt" />
-    <item android:drawable="@drawable/aww" />
-</selector>
+    <corners android:topLeftRadius="@dimen/w1" android:topRightRadius="@dimen/w1" android:bottomLeftRadius="@dimen/w1" android:bottomRightRadius="@dimen/w1" />
+    <solid android:color="#19000000" />
+</shape>

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.graphics.RectF;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class j$1
   implements ValueAnimator.AnimatorUpdateListener
@@ -11,18 +12,20 @@ final class j$1
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    j.a(this.rsc, ((Integer)paramValueAnimator.getAnimatedValue("canvasTranslationX")).intValue());
-    j.a(this.rsc).left = ((Integer)paramValueAnimator.getAnimatedValue("translationX")).intValue();
-    j.a(this.rsc).top = ((Integer)paramValueAnimator.getAnimatedValue("translationY")).intValue();
-    RectF localRectF = j.a(this.rsc);
-    float f1 = j.a(this.rsc).left;
-    float f2 = j.b(this.rsc);
+    AppMethodBeat.i(8179);
+    j.a(this.vih, ((Integer)paramValueAnimator.getAnimatedValue("canvasTranslationX")).intValue());
+    j.a(this.vih).left = ((Integer)paramValueAnimator.getAnimatedValue("translationX")).intValue();
+    j.a(this.vih).top = ((Integer)paramValueAnimator.getAnimatedValue("translationY")).intValue();
+    RectF localRectF = j.a(this.vih);
+    float f1 = j.a(this.vih).left;
+    float f2 = j.b(this.vih);
     localRectF.right = (((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue() * f2 + f1);
-    localRectF = j.a(this.rsc);
-    f1 = j.a(this.rsc).top;
-    f2 = j.c(this.rsc);
+    localRectF = j.a(this.vih);
+    f1 = j.a(this.vih).top;
+    f2 = j.c(this.vih);
     localRectF.bottom = (((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue() * f2 + f1);
-    this.rsc.postInvalidate();
+    this.vih.postInvalidate();
+    AppMethodBeat.o(8179);
   }
 }
 

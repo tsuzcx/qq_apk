@@ -1,70 +1,99 @@
 package com.tencent.mm.plugin.downloader.e;
 
-import java.util.LinkedList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
 
 public final class a
-  extends com.tencent.mm.bv.a
 {
-  public LinkedList<m> iPX = new LinkedList();
-  public long iPY;
+  private static BroadcastReceiver kZn = null;
+  private static int kZo = -1;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public static void bje()
   {
-    if (paramInt == 0)
-    {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.d(1, 8, this.iPX);
-      paramVarArgs.Y(2, this.iPY);
-      return 0;
+    AppMethodBeat.i(2479);
+    if (kZn == null) {
+      kZn = new a((byte)0);
     }
-    if (paramInt == 1) {
-      return d.a.a.a.c(1, 8, this.iPX) + 0 + d.a.a.a.X(2, this.iPY);
-    }
-    if (paramInt == 2)
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
+    localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
+    localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+    try
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.iPX.clear();
-      paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
-        }
-      }
-      return 0;
+      ah.getContext().registerReceiver(kZn, localIntentFilter);
+      AppMethodBeat.o(2479);
+      return;
     }
-    if (paramInt == 3)
+    catch (Exception localException)
     {
-      Object localObject1 = (d.a.a.a.a)paramVarArgs[0];
-      a locala = (a)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      ab.e("MicroMsg.Downloader.NetWorkManager", localException.getMessage());
+      AppMethodBeat.o(2479);
+    }
+  }
+  
+  public static void bjf()
+  {
+    AppMethodBeat.i(2480);
+    if (kZn != null) {}
+    try
+    {
+      ah.getContext().unregisterReceiver(kZn);
+      kZn = null;
+      AppMethodBeat.o(2480);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-      default: 
-        return -1;
-      case 1: 
-        paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new m();
-          localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((m)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-          locala.iPX.add(localObject1);
-          paramInt += 1;
-        }
-        return 0;
+        ab.e("MicroMsg.Downloader.NetWorkManager", localException.getMessage());
       }
-      locala.iPY = ((d.a.a.a.a)localObject1).xpH.oE();
-      return 0;
     }
-    return -1;
+  }
+  
+  static final class a
+    extends BroadcastReceiver
+  {
+    public final void onReceive(Context paramContext, Intent paramIntent)
+    {
+      AppMethodBeat.i(2478);
+      if ((!g.RG()) || (com.tencent.mm.kernel.a.QP()))
+      {
+        ab.e("MicroMsg.Downloader.NetWorkManager", "acc has not ready");
+        AppMethodBeat.o(2478);
+        return;
+      }
+      int i = at.getNetType(ah.getContext());
+      if (i == a.kZo)
+      {
+        AppMethodBeat.o(2478);
+        return;
+      }
+      a.ua(i);
+      ab.i("MicroMsg.Downloader.NetWorkManager", "onNetStateChange, netState = ".concat(String.valueOf(i)));
+      if (!at.isConnected(paramContext))
+      {
+        ab.w("MicroMsg.Downloader.NetWorkManager", "network is not connected");
+        AppMethodBeat.o(2478);
+        return;
+      }
+      d.ysm.execute(new a.a.1(this, i));
+      AppMethodBeat.o(2478);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.e.a
  * JD-Core Version:    0.7.0.1
  */

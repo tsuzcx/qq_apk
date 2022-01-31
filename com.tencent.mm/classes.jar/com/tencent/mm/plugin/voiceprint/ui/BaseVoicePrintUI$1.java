@@ -1,39 +1,42 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.b;
-import com.tencent.mm.modelvoice.k;
+import com.tencent.mm.modelvoice.m;
 import com.tencent.mm.plugin.voiceprint.model.p;
 import com.tencent.mm.plugin.voiceprint.model.p.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class BaseVoicePrintUI$1
   implements p.a
 {
   BaseVoicePrintUI$1(BaseVoicePrintUI paramBaseVoicePrintUI) {}
   
-  public final void bPd()
+  public final void cLj()
   {
-    p localp = BaseVoicePrintUI.a(this.pMb);
-    if (localp.byP != null)
+    AppMethodBeat.i(26130);
+    p localp = BaseVoicePrintUI.a(this.trX);
+    if (localp.caR != null)
     {
-      localp.byP.uh();
-      y.e("MicroMsg.VoicePrintRecoder", "Reset recorder.stopReocrd");
+      localp.caR.Et();
+      ab.e("MicroMsg.VoicePrintRecoder", "Reset recorder.stopReocrd");
     }
     localp.fileName = "";
-    localp.pLH = null;
-    localp.pvS = 0;
-    localp.jlU = 0L;
-    if (localp.eLi != null) {
-      localp.eLi.zE();
+    localp.trD = null;
+    localp.sXy = 0;
+    localp.lvI = 0L;
+    if (localp.gaP != null) {
+      localp.gaP.Mh();
     }
-    y.e("MicroMsg.BaseVoicePrintUI", "record stop on error");
-    BaseVoicePrintUI.a(this.pMb, null);
-    BaseVoicePrintUI.b(this.pMb);
+    ab.e("MicroMsg.BaseVoicePrintUI", "record stop on error");
+    BaseVoicePrintUI.a(this.trX, null);
+    BaseVoicePrintUI.b(this.trX);
+    AppMethodBeat.o(26130);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.BaseVoicePrintUI.1
  * JD-Core Version:    0.7.0.1
  */

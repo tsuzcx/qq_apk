@@ -1,18 +1,18 @@
 package com.google.android.gms.wearable.internal;
 
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.wearable.WearableStatusCodes;
+import com.google.android.gms.common.api.Result;
+import com.google.android.gms.common.internal.PendingResultUtil.ResultConverter;
 
-public final class zzcr
+final class zzcr
+  implements PendingResultUtil.ResultConverter
 {
-  public static Status zzik(int paramInt)
-  {
-    return new Status(paramInt, WearableStatusCodes.getStatusCodeString(paramInt));
-  }
+  static final PendingResultUtil.ResultConverter zzbx;
+  
+  public final Object convert(Result arg1) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzcr
  * JD-Core Version:    0.7.0.1
  */

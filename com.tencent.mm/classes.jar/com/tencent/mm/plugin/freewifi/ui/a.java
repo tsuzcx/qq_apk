@@ -4,67 +4,108 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.br.d;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 import java.lang.ref.WeakReference;
 import java.util.Date;
 
 public final class a
   extends b
 {
-  private static Date kqV = null;
-  private boolean hasInit = false;
-  private Runnable kqW = new a.2(this);
+  private static Date mMI = null;
+  private boolean hasInit;
+  private View jGC;
+  private View jGD;
+  private Runnable mMJ;
+  private TextView titleTv;
   
   public a(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(20928);
+    this.hasInit = false;
+    this.mMJ = new a.2(this);
     initialize();
+    AppMethodBeat.o(20928);
   }
   
   private void initialize()
   {
-    View localView;
+    AppMethodBeat.i(20929);
     if (this.view != null)
     {
-      localView = this.view.findViewById(R.h.free_wifi_tip_view);
-      if (!this.hasInit) {}
-    }
-    else
-    {
-      return;
-    }
-    this.hasInit = true;
-    localView.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+      if (this.hasInit)
       {
-        paramAnonymousView = new Date();
-        if ((a.aUV() != null) && (paramAnonymousView.getTime() - a.aUV().getTime() < 1000L)) {
-          return;
-        }
-        a.a(paramAnonymousView);
-        paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("free_wifi_source", 2);
-        paramAnonymousView.addFlags(67108864);
-        d.b((Context)a.a(a.this).get(), "freewifi", ".ui.FreeWifiEntryUI", paramAnonymousView);
+        AppMethodBeat.o(20929);
+        return;
       }
-    });
-    localView.setVisibility(8);
+      this.jGC = this.view.findViewById(2131824295);
+      this.jGD = this.view.findViewById(2131821667);
+      this.titleTv = ((TextView)this.view.findViewById(2131824296));
+      this.hasInit = true;
+      this.jGC.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(20920);
+          paramAnonymousView = new Date();
+          if ((a.bBu() != null) && (paramAnonymousView.getTime() - a.bBu().getTime() < 1000L))
+          {
+            AppMethodBeat.o(20920);
+            return;
+          }
+          a.a(paramAnonymousView);
+          paramAnonymousView = new Intent();
+          paramAnonymousView.putExtra("free_wifi_source", 2);
+          paramAnonymousView.addFlags(67108864);
+          d.b((Context)a.a(a.this).get(), "freewifi", ".ui.FreeWifiEntryUI", paramAnonymousView);
+          AppMethodBeat.o(20920);
+        }
+      });
+      this.jGC.setVisibility(8);
+    }
+    AppMethodBeat.o(20929);
   }
   
-  public final boolean apu()
+  public final boolean aMK()
   {
-    if (!this.hasInit)
+    AppMethodBeat.i(20930);
+    if ((this.nwf) && (this.eUx))
+    {
+      this.jGD.setBackgroundResource(2130840583);
+      this.jGC.setBackground(null);
+      this.titleTv.setBackground(null);
+    }
+    while (!this.hasInit)
     {
       initialize();
+      AppMethodBeat.o(20930);
       return false;
+      if (this.nwf)
+      {
+        this.jGD.setBackgroundResource(2130839279);
+        this.jGC.setBackgroundResource(2130839278);
+        this.titleTv.setBackgroundResource(2130839276);
+      }
+      else if (this.eUx)
+      {
+        this.jGD.setBackgroundResource(2130839279);
+        this.jGC.setBackgroundResource(2130839276);
+        this.titleTv.setBackground(null);
+      }
+      else
+      {
+        this.jGD.setBackgroundResource(2130839279);
+        this.jGC.setBackground(null);
+        this.titleTv.setBackgroundResource(2130839276);
+      }
     }
-    ai.S(this.kqW);
-    ai.l(this.kqW, 500L);
+    al.ae(this.mMJ);
+    al.p(this.mMJ, 500L);
+    AppMethodBeat.o(20930);
     return true;
   }
   
@@ -72,7 +113,7 @@ public final class a
   
   public final int getLayoutId()
   {
-    return R.i.free_wifi_tips;
+    return 2130969638;
   }
 }
 

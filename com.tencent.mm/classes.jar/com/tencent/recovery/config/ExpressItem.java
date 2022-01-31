@@ -2,16 +2,16 @@ package com.tencent.recovery.config;
 
 public class ExpressItem
 {
+  private int Bij;
+  private int Bil;
+  private int Bim;
   private int count;
-  private int wKI;
-  private int wKK;
-  private int wKL;
   
   public ExpressItem(int paramInt1, int paramInt2)
   {
-    this.wKI = paramInt1;
-    this.wKK = 17;
-    this.wKL = paramInt2;
+    this.Bij = paramInt1;
+    this.Bil = 17;
+    this.Bim = paramInt2;
     this.count = 3;
   }
 }

@@ -4,23 +4,25 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import com.tencent.mm.plugin.d.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppChooserUI$b
 {
-  ImageView leS;
-  TextView leT;
-  TextView leV;
-  TextView sll;
-  RadioButton slm;
+  ImageView nCN;
+  TextView nCO;
+  TextView nCQ;
+  TextView wdN;
+  RadioButton wdO;
   
   public AppChooserUI$b(AppChooserUI paramAppChooserUI, View paramView)
   {
-    this.leS = ((ImageView)paramView.findViewById(a.c.app_icon));
-    this.leT = ((TextView)paramView.findViewById(a.c.app_name));
-    this.leV = ((TextView)paramView.findViewById(a.c.app_desc));
-    this.sll = ((TextView)paramView.findViewById(a.c.app_status));
-    this.slm = ((RadioButton)paramView.findViewById(a.c.app_radio));
+    AppMethodBeat.i(125871);
+    this.nCN = ((ImageView)paramView.findViewById(2131821471));
+    this.nCO = ((TextView)paramView.findViewById(2131821472));
+    this.nCQ = ((TextView)paramView.findViewById(2131821473));
+    this.wdN = ((TextView)paramView.findViewById(2131821474));
+    this.wdO = ((RadioButton)paramView.findViewById(2131821475));
+    AppMethodBeat.o(125871);
   }
 }
 

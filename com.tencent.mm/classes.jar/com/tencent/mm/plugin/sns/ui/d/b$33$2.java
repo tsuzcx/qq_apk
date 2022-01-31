@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui.d;
 
-import com.tencent.mm.plugin.sns.ui.a.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.ui.b.a.a;
 
 final class b$33$2
   implements Runnable
@@ -9,8 +10,10 @@ final class b$33$2
   
   public final void run()
   {
-    this.ppx.ppl.poy.gA(this.lnn);
-    this.ppx.ppl.poy.a(new b.33.2.1(this));
+    AppMethodBeat.i(40293);
+    this.skp.skd.sjq.mi(this.nKE);
+    this.skp.skd.sjq.a(new b.33.2.1(this));
+    AppMethodBeat.o(40293);
   }
 }
 

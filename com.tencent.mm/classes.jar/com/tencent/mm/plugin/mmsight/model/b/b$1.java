@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.mmsight.model.b;
 
 import android.os.HandlerThread;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.a.j;
-import com.tencent.mm.sdk.f.e;
+import com.tencent.mm.sdk.g.d;
 
 final class b$1
   implements h
@@ -13,40 +14,42 @@ final class b$1
   public final void a(byte[] paramArrayOfByte, boolean paramBoolean, long paramLong)
   {
     int i = 1;
-    if (b.a(this.mkW) == null)
+    AppMethodBeat.i(76691);
+    if (b.a(this.oKb) == null)
     {
-      b.a(this.mkW, e.ds("remuxer_encode", -2));
-      b.a(this.mkW).start();
-      b.a(this.mkW, new b.a(this.mkW, b.a(this.mkW).getLooper()));
+      b.a(this.oKb, d.ey("remuxer_encode", -2));
+      b.a(this.oKb).start();
+      b.a(this.oKb, new b.a(this.oKb, b.a(this.oKb).getLooper()));
     }
     Message localMessage;
     byte[] arrayOfByte;
-    if (b.b(this.mkW) != null)
+    if (b.b(this.oKb) != null)
     {
       localMessage = Message.obtain();
       localMessage.what = 1;
       if (paramArrayOfByte == null) {
-        break label160;
+        break label170;
       }
-      arrayOfByte = j.mji.f(Integer.valueOf(paramArrayOfByte.length));
+      arrayOfByte = j.oJp.f(Integer.valueOf(paramArrayOfByte.length));
       if (arrayOfByte != null) {
         System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, arrayOfByte.length);
       }
       localMessage.obj = arrayOfByte;
       if (!paramBoolean) {
-        break label166;
+        break label176;
       }
     }
     for (;;)
     {
       localMessage.arg1 = i;
       localMessage.arg2 = ((int)paramLong);
-      b.b(this.mkW).sendMessage(localMessage);
+      b.b(this.oKb).sendMessage(localMessage);
+      AppMethodBeat.o(76691);
       return;
-      label160:
+      label170:
       arrayOfByte = null;
       break;
-      label166:
+      label176:
       i = 0;
     }
   }

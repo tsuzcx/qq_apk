@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="aa">6.0dip</dimen>
-    <dimen name="ab">5.0dip</dimen>
-    <dimen name="ac">24.0dip</dimen>
-    <dimen name="ad">180.0dip</dimen>
-    <dimen name="ae">45.0dip</dimen>
-    <dimen name="af">45.0dip</dimen>
-    <dimen name="a86">36.0dip</dimen>
-    <dimen name="a87">6.0dip</dimen>
-    <dimen name="a88">40.0dip</dimen>
-    <dimen name="a89">32.0dip</dimen>
-    <dimen name="a8_">30.0dip</dimen>
+    <dimen name="ac">6.0dip</dimen>
+    <dimen name="ad">5.0dip</dimen>
+    <dimen name="ae">24.0dip</dimen>
+    <dimen name="af">180.0dip</dimen>
+    <dimen name="ag">45.0dip</dimen>
+    <dimen name="ah">45.0dip</dimen>
+    <dimen name="acw">36.0dip</dimen>
+    <dimen name="acx">6.0dip</dimen>
+    <dimen name="acy">40.0dip</dimen>
+    <dimen name="acz">32.0dip</dimen>
+    <dimen name="ad0">30.0dip</dimen>
 </resources>

@@ -1,5 +1,6 @@
 package com.tencent.soter.a.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.a.b.c;
 import com.tencent.soter.a.f.e.a;
 import com.tencent.soter.core.c.d;
@@ -12,41 +13,47 @@ final class k$1
   
   public final void onError(int paramInt, String paramString)
   {
+    AppMethodBeat.i(10559);
     d.w("Soter.TaskPrepareAppSecureKey", "soter: app secure key generate failed. errcode: %d, errmsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    k.dV(com.tencent.soter.core.c.e.cPq().wOT, 0);
-    this.wQP.b(new c(paramInt, paramString));
+    k.ff(com.tencent.soter.core.c.e.dVl().Bmr, 0);
+    this.Bop.b(new c(paramInt, paramString));
+    AppMethodBeat.o(10559);
   }
   
   public final void onSuccess()
   {
+    AppMethodBeat.i(10560);
     d.i("Soter.TaskPrepareAppSecureKey", "soter: app secure key generate successfully. start upload ask", new Object[0]);
-    if (this.wQP.wQN != null) {
-      k.dV(com.tencent.soter.core.c.e.cPq().wOT, 2);
+    if (this.Bop.Bon != null) {
+      k.ff(com.tencent.soter.core.c.e.dVl().Bmr, 2);
     }
     k localk;
     i locali;
     for (;;)
     {
-      localk = this.wQP;
-      locali = com.tencent.soter.core.a.cPm();
+      localk = this.Bop;
+      locali = com.tencent.soter.core.a.dVh();
       if (locali != null) {
         break;
       }
       d.e("Soter.TaskPrepareAppSecureKey", "soter: ask model is null even after generation. fatal error", new Object[0]);
-      com.tencent.soter.core.a.cPj();
+      com.tencent.soter.core.a.dVe();
       localk.b(new c(3, "ask model is null even after generation."));
+      AppMethodBeat.o(10560);
       return;
-      k.dV(com.tencent.soter.core.c.e.cPq().wOT, 0);
+      k.ff(com.tencent.soter.core.c.e.dVl().Bmr, 0);
     }
-    if (localk.wQN != null)
+    if (localk.Bon != null)
     {
-      localk.wQN.bj(new e.a(locali.signature, locali.wOY));
-      localk.wQN.a(new k.2(localk, locali));
-      localk.wQN.execute();
+      localk.Bon.bK(new e.a(locali.signature, locali.Bmw));
+      localk.Bon.a(new k.2(localk, locali));
+      localk.Bon.execute();
+      AppMethodBeat.o(10560);
       return;
     }
     d.d("Soter.TaskPrepareAppSecureKey", "soter: not provide network wrapper instance. please check if it is what you want. we treat it as normal", new Object[0]);
     localk.b(new c("treat as normal because you do not provide the net wrapper", locali));
+    AppMethodBeat.o(10560);
   }
 }
 

@@ -6,9 +6,9 @@ import android.widget.TextView;
 public final class e$a
   extends a.b
 {
-  TextView eXO;
-  TextView eXP;
-  ImageView gSx;
+  TextView gpL;
+  TextView gpM;
+  ImageView ivs;
 }
 
 

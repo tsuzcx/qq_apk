@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.d.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.websearch.api.z;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.d.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class BaseSearchWebViewUI$1
-  implements d.a
+  implements d.b
 {
   BaseSearchWebViewUI$1(BaseSearchWebViewUI paramBaseSearchWebViewUI) {}
   
   public final void onReady()
   {
-    BaseSearchWebViewUI.a(this.rtT);
-    y.d("BaseSearchWebViewUI", "jsapi ready");
-    int i = this.rtT.scene;
-    String str = this.rtT.bIB;
-    str = this.rtT.bVp;
+    AppMethodBeat.i(8379);
+    BaseSearchWebViewUI.a(this.vkb);
+    ab.d("MicroMsg.WebSearch.BaseSearchWebViewUI", "jsapi ready");
+    z.cZj();
+    AppMethodBeat.o(8379);
   }
 }
 

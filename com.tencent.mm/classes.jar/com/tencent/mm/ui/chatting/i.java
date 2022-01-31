@@ -1,46 +1,35 @@
 package com.tencent.mm.ui.chatting;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.t;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.ui.chatting.c.j;
+import java.util.Set;
 
 public final class i
 {
-  private LinearLayout jiW;
-  private View.OnClickListener nuB = new i.1(this);
-  private ChatFooterCustom viW;
-  private FrameLayout viX;
-  
-  public i(ChatFooterCustom paramChatFooterCustom)
+  public static void a(Context paramContext, Set<Long> paramSet, t paramt)
   {
-    this.viW = paramChatFooterCustom;
-  }
-  
-  public final void cAN()
-  {
-    y.i("MicroMsg.ChattingDownloaderFooterHandler", "initFooter");
-    this.viW.setVisibility(8);
-    this.viW.findViewById(R.h.chatting_footer_switch2input).setVisibility(8);
-    this.viW.findViewById(R.h.chatting_footer_menu_arrow).setVisibility(8);
-    this.jiW = ((LinearLayout)this.viW.findViewById(R.h.chatting_footer_menu_container));
-    this.jiW.setWeightSum(1.0F);
-    this.viX = ((FrameLayout)this.jiW.getChildAt(0));
-    this.viX.setVisibility(0);
-    this.viX.setOnClickListener(this.nuB);
-    ((TextView)this.viX.getChildAt(0).findViewById(R.h.chatting_footer_menu_text)).setText(R.l.downloaderapp_manager);
-    this.viX.getChildAt(0).findViewById(R.h.chatting_footer_menu_icon).setVisibility(8);
-    this.viX.getChildAt(1).setVisibility(8);
-    int i = 1;
-    while (i < 6)
+    AppMethodBeat.i(153825);
+    if (paramContext == null)
     {
-      this.jiW.getChildAt(i).setVisibility(8);
-      i += 1;
+      ab.w("MicroMsg.ChattingEditModeDelMsg", "do delete msg fail, context is null");
+      AppMethodBeat.o(153825);
+      return;
     }
+    if ((paramSet == null) || (paramSet.isEmpty()))
+    {
+      ab.w("MicroMsg.ChattingEditModeDelMsg", "do delete msg fail, select ids is empty");
+      AppMethodBeat.o(153825);
+      return;
+    }
+    paramContext.getString(2131297087);
+    paramContext = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(2131298953), false, null);
+    j.zEQ.e(new i.a(paramSet, paramContext, paramt));
+    com.tencent.mm.plugin.report.service.h.qsU.e(10811, new Object[] { Integer.valueOf(4), Integer.valueOf(paramSet.size()) });
+    AppMethodBeat.o(153825);
   }
 }
 

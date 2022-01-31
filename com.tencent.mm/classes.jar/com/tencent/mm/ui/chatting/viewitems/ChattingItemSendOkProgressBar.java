@@ -12,34 +12,42 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.lang.ref.SoftReference;
 
 public class ChattingItemSendOkProgressBar
   extends ProgressBar
 {
-  private static int vFA = a.fromDPToPix(ae.getContext(), 6);
-  private static SoftReference<Bitmap> vFr = null;
-  private static SoftReference<Bitmap> vFs = null;
-  private static SoftReference<Bitmap> vFt = null;
-  private static int vFz = 0;
-  private boolean eku = false;
+  private static SoftReference<Bitmap> zWE;
+  private static SoftReference<Bitmap> zWF;
+  private static SoftReference<Bitmap> zWG;
+  private static int zWM;
+  private static int zWN;
+  private boolean fAK = false;
   private float rotation = 0.0F;
-  private int vFn = 0;
-  private int vFo = 0;
-  private boolean vFp = false;
-  private boolean vFq = false;
-  private Bitmap vFu = null;
-  private Bitmap vFv = null;
-  private Bitmap vFw = null;
-  private boolean vFx = false;
-  private a vFy = null;
+  private int zWA = 0;
+  private int zWB = 0;
+  private boolean zWC = false;
+  private boolean zWD = false;
+  private Bitmap zWH = null;
+  private Bitmap zWI = null;
+  private Bitmap zWJ = null;
+  private boolean zWK = false;
+  private a zWL = null;
   
   static
   {
-    vFA = 0;
-    vFz = a.fromDPToPix(ae.getContext(), 1);
+    AppMethodBeat.i(33278);
+    zWE = null;
+    zWF = null;
+    zWG = null;
+    zWM = 0;
+    zWN = 0;
+    zWM = a.fromDPToPix(ah.getContext(), 1);
+    zWN = a.fromDPToPix(ah.getContext(), 6);
+    AppMethodBeat.o(33278);
   }
   
   public ChattingItemSendOkProgressBar(Context paramContext, AttributeSet paramAttributeSet)
@@ -54,40 +62,44 @@ public class ChattingItemSendOkProgressBar
   
   public a getDrawListener()
   {
-    return this.vFy;
+    return this.zWL;
   }
   
   @SuppressLint({"DrawAllocation"})
   protected void onDraw(Canvas paramCanvas)
   {
-    if (!this.vFx)
+    AppMethodBeat.i(33277);
+    if (!this.zWK)
     {
       super.onDraw(paramCanvas);
+      AppMethodBeat.o(33277);
       return;
     }
-    paramCanvas.saveLayerAlpha(new RectF(0.0F, 0.0F, this.vFu.getWidth(), this.vFu.getHeight()), 255, 31);
-    if (this.eku)
+    paramCanvas.saveLayerAlpha(new RectF(0.0F, 0.0F, this.zWH.getWidth(), this.zWH.getHeight()), 255, 31);
+    if (this.fAK)
     {
-      if (!this.vFp)
+      if (!this.zWC)
       {
-        if (((int)(this.rotation - 270.0F) % 360 == 0) && (this.vFq))
+        if (((int)(this.rotation - 270.0F) % 360 == 0) && (this.zWD))
         {
-          this.vFp = true;
+          this.zWC = true;
           invalidate();
+          AppMethodBeat.o(33277);
           return;
         }
         localObject1 = new Matrix();
-        ((Matrix)localObject1).setRotate(this.rotation, this.vFu.getWidth() / 2, this.vFu.getHeight() / 2);
-        paramCanvas.drawBitmap(this.vFu, (Matrix)localObject1, null);
+        ((Matrix)localObject1).setRotate(this.rotation, this.zWH.getWidth() / 2, this.zWH.getHeight() / 2);
+        paramCanvas.drawBitmap(this.zWH, (Matrix)localObject1, null);
         this.rotation += 6.0F;
         invalidate();
+        AppMethodBeat.o(33277);
         return;
       }
-      if (this.vFn <= this.vFv.getWidth())
+      if (this.zWA <= this.zWI.getWidth())
       {
         localObject1 = new Matrix();
         this.rotation += 6.0F;
-        ((Matrix)localObject1).setRotate(this.rotation, this.vFu.getWidth() / 2, this.vFu.getHeight() / 2);
+        ((Matrix)localObject1).setRotate(this.rotation, this.zWH.getWidth() / 2, this.zWH.getHeight() / 2);
         int j = (int)this.rotation % 360;
         int i = j;
         if (j < 270) {
@@ -97,46 +109,50 @@ public class ChattingItemSendOkProgressBar
         {
           localObject2 = new Paint();
           ((Paint)localObject2).setColor(-16776961);
-          paramCanvas.drawBitmap(this.vFu, (Matrix)localObject1, (Paint)localObject2);
+          paramCanvas.drawBitmap(this.zWH, (Matrix)localObject1, (Paint)localObject2);
           ((Paint)localObject2).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-          paramCanvas.drawRect(0.0F, 0.0F, this.vFu.getWidth(), this.vFu.getHeight() / 2, (Paint)localObject2);
+          paramCanvas.drawRect(0.0F, 0.0F, this.zWH.getWidth(), this.zWH.getHeight() / 2, (Paint)localObject2);
         }
-        localObject1 = new Rect(0, 0, this.vFn, this.vFv.getHeight());
-        localObject2 = new Rect(vFz, vFA, this.vFn + vFz, this.vFv.getHeight() + vFA);
-        paramCanvas.drawBitmap(this.vFv, (Rect)localObject1, (Rect)localObject2, null);
-        this.vFn += 2;
+        localObject1 = new Rect(0, 0, this.zWA, this.zWI.getHeight());
+        localObject2 = new Rect(zWM, zWN, this.zWA + zWM, this.zWI.getHeight() + zWN);
+        paramCanvas.drawBitmap(this.zWI, (Rect)localObject1, (Rect)localObject2, null);
+        this.zWA += 2;
         invalidate();
+        AppMethodBeat.o(33277);
         return;
       }
-      localObject1 = new Rect(0, 0, this.vFv.getWidth(), this.vFv.getHeight());
-      localObject2 = new Rect(vFz, vFA, this.vFv.getWidth() + vFz, this.vFv.getHeight() + vFA);
-      paramCanvas.drawBitmap(this.vFv, (Rect)localObject1, (Rect)localObject2, null);
-      if (this.vFo < 255)
+      localObject1 = new Rect(0, 0, this.zWI.getWidth(), this.zWI.getHeight());
+      localObject2 = new Rect(zWM, zWN, this.zWI.getWidth() + zWM, this.zWI.getHeight() + zWN);
+      paramCanvas.drawBitmap(this.zWI, (Rect)localObject1, (Rect)localObject2, null);
+      if (this.zWB < 255)
       {
         Paint localPaint = new Paint();
-        localPaint.setAlpha(this.vFo);
-        paramCanvas.drawBitmap(this.vFw, (Rect)localObject1, (Rect)localObject2, localPaint);
-        this.vFo += 20;
+        localPaint.setAlpha(this.zWB);
+        paramCanvas.drawBitmap(this.zWJ, (Rect)localObject1, (Rect)localObject2, localPaint);
+        this.zWB += 20;
         invalidate();
+        AppMethodBeat.o(33277);
         return;
       }
-      paramCanvas.drawBitmap(this.vFw, (Rect)localObject1, (Rect)localObject2, null);
-      this.eku = false;
+      paramCanvas.drawBitmap(this.zWJ, (Rect)localObject1, (Rect)localObject2, null);
+      this.fAK = false;
       this.rotation = 0.0F;
-      this.vFn = 0;
-      this.vFo = 0;
-      this.vFq = false;
-      this.vFp = false;
+      this.zWA = 0;
+      this.zWB = 0;
+      this.zWD = false;
+      this.zWC = false;
+      AppMethodBeat.o(33277);
       return;
     }
-    Object localObject1 = new Rect(0, 0, this.vFw.getWidth(), this.vFw.getHeight());
-    Object localObject2 = new Rect(vFz, vFA, this.vFw.getWidth() + vFz, this.vFw.getHeight() + vFA);
-    paramCanvas.drawBitmap(this.vFw, (Rect)localObject1, (Rect)localObject2, null);
+    Object localObject1 = new Rect(0, 0, this.zWJ.getWidth(), this.zWJ.getHeight());
+    Object localObject2 = new Rect(zWM, zWN, this.zWJ.getWidth() + zWM, this.zWJ.getHeight() + zWN);
+    paramCanvas.drawBitmap(this.zWJ, (Rect)localObject1, (Rect)localObject2, null);
+    AppMethodBeat.o(33277);
   }
   
   public void setDrawListener(a parama)
   {
-    this.vFy = parama;
+    this.zWL = parama;
   }
   
   public static abstract interface a {}

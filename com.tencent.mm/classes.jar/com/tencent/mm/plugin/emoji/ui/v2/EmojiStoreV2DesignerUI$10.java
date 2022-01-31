@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EmojiStoreV2DesignerUI$10
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class EmojiStoreV2DesignerUI$10
   
   public final void onClick(View paramView)
   {
-    EmojiStoreV2DesignerUI.e(this.jgP);
+    AppMethodBeat.i(53588);
+    EmojiStoreV2DesignerUI.e(this.lpI);
+    AppMethodBeat.o(53588);
   }
 }
 

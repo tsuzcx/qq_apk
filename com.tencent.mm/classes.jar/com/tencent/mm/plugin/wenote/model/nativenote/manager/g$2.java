@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wenote.model.nativenote.manager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.PopupWindow;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$2
   implements View.OnClickListener
@@ -11,11 +12,13 @@ final class g$2
   
   public final void onClick(View paramView)
   {
-    this.rIa.rHY.dismiss();
-    this.rIa.mParentView.setVisibility(8);
-    if (this.rIa.rHZ != null) {
-      this.rIa.rHZ.cio();
+    AppMethodBeat.i(26776);
+    this.vyG.vyE.dismiss();
+    this.vyG.mParentView.setVisibility(8);
+    if (this.vyG.vyF != null) {
+      this.vyG.vyF.diF();
     }
+    AppMethodBeat.o(26776);
   }
 }
 

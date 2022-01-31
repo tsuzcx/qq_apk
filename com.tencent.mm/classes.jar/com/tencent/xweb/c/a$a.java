@@ -1,11 +1,20 @@
 package com.tencent.xweb.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a$a
 {
-  public a.b xiX = new a.b();
-  public String xiY;
-  public String xiZ;
-  public String xja;
+  public a.b BGj;
+  public String BGk;
+  public String BGl;
+  public String BGm;
+  
+  public a$a()
+  {
+    AppMethodBeat.i(3967);
+    this.BGj = new a.b();
+    AppMethodBeat.o(3967);
+  }
 }
 
 

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.scanner.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ProductUI$9$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class ProductUI$9$1
   
   public final void run()
   {
-    ProductUI.a(this.nKJ.nKF, ProductUI.a(this.nKJ.nKF));
+    AppMethodBeat.i(81089);
+    ProductUI.a(this.qym.qyh, ProductUI.a(this.qym.qyh));
+    AppMethodBeat.o(81089);
   }
 }
 

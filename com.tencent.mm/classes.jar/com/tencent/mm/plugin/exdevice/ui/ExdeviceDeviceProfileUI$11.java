@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import com.tencent.mm.ui.base.preference.MMPreference;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.f;
 
 final class ExdeviceDeviceProfileUI$11
@@ -10,9 +10,11 @@ final class ExdeviceDeviceProfileUI$11
   
   public final void run()
   {
-    ExdeviceDeviceProfileUI.a(this.jDf, true);
-    ExdeviceDeviceProfileUI.f(this.jDf);
-    this.jDf.vdd.notifyDataSetChanged();
+    AppMethodBeat.i(19948);
+    ExdeviceDeviceProfileUI.a(this.lMD, true);
+    ExdeviceDeviceProfileUI.f(this.lMD);
+    this.lMD.getPreferenceScreen().notifyDataSetChanged();
+    AppMethodBeat.o(19948);
   }
 }
 

@@ -14,7 +14,7 @@ final class b$b<T extends b.a>
   
   public final void onChildrenLoaded(String paramString, List<MediaBrowser.MediaItem> paramList, Bundle paramBundle)
   {
-    ((b.a)this.Bf).l(paramList);
+    ((b.a)this.BR).l(paramList);
   }
   
   public final void onError(String paramString, Bundle paramBundle) {}

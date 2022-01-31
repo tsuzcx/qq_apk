@@ -1,26 +1,31 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.plugin.webview.model.ag;
-import com.tencent.mm.plugin.webview.model.d.b;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class g$72
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  g$72(g paramg, d.b paramb, String paramString1, i parami, String paramString2) {}
+  g$72(g paramg, String paramString1, String paramString2, boolean paramBoolean, int paramInt) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void run()
   {
-    com.tencent.mm.plugin.webview.modeltools.g.ccK().a(this.rAc);
-    com.tencent.mm.plugin.webview.modeltools.g.ccK();
-    ag.rO(this.rec);
-    g.a(this.rzi, this.rzk, this.gQZ + ":fail", null);
+    AppMethodBeat.i(154993);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("free_wifi_ssid", this.mJG);
+    localIntent.putExtra("free_wifi_source", 3);
+    localIntent.putExtra("free_wifi_passowrd", this.vrc);
+    localIntent.putExtra("free_wifi_hide_ssid", this.vrd);
+    localIntent.putExtra("free_wifi_encrypt_type", this.vre);
+    localIntent.addFlags(67108864);
+    d.b(g.j(this.vqm), "freewifi", ".ui.FreeWifiEntryUI", localIntent);
+    AppMethodBeat.o(154993);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.72
  * JD-Core Version:    0.7.0.1
  */

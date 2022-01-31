@@ -1,32 +1,36 @@
 package com.google.android.gms.common.api;
 
-import com.google.android.gms.common.internal.zzac;
+import com.google.android.gms.common.internal.Preconditions;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.TimeUnit;
 
 public final class BatchResult
   implements Result
 {
-  private final Status zzair;
-  private final PendingResult<?>[] zzayP;
+  private final Status mStatus;
+  private final PendingResult<?>[] zzcg;
   
   BatchResult(Status paramStatus, PendingResult<?>[] paramArrayOfPendingResult)
   {
-    this.zzair = paramStatus;
-    this.zzayP = paramArrayOfPendingResult;
+    this.mStatus = paramStatus;
+    this.zzcg = paramArrayOfPendingResult;
   }
   
   public final Status getStatus()
   {
-    return this.zzair;
+    return this.mStatus;
   }
   
   public final <R extends Result> R take(BatchResultToken<R> paramBatchResultToken)
   {
-    if (paramBatchResultToken.mId < this.zzayP.length) {}
+    AppMethodBeat.i(60491);
+    if (paramBatchResultToken.mId < this.zzcg.length) {}
     for (boolean bool = true;; bool = false)
     {
-      zzac.zzb(bool, "The result token does not belong to this batch");
-      return this.zzayP[paramBatchResultToken.mId].await(0L, TimeUnit.MILLISECONDS);
+      Preconditions.checkArgument(bool, "The result token does not belong to this batch");
+      paramBatchResultToken = this.zzcg[paramBatchResultToken.mId].await(0L, TimeUnit.MILLISECONDS);
+      AppMethodBeat.o(60491);
+      return paramBatchResultToken;
     }
   }
 }

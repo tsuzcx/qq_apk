@@ -1,178 +1,195 @@
 package com.tencent.mm.plugin.music.f;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.c.a;
 import com.tencent.mm.plugin.music.e.k;
 import com.tencent.mm.plugin.music.f.a.d.a;
 import com.tencent.mm.plugin.music.f.a.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.at;
 
 final class d$1
   implements f
 {
-  long mAG;
+  long paK;
   
   d$1(d paramd) {}
   
-  public final void I(com.tencent.mm.av.e parame)
+  public final void I(com.tencent.mm.aw.e parame)
   {
-    com.tencent.mm.av.e locale = k.bnl().bmW();
-    if (locale == null) {}
+    AppMethodBeat.i(137579);
+    com.tencent.mm.aw.e locale = k.bVH().bVs();
+    if (locale == null)
+    {
+      AppMethodBeat.o(137579);
+      return;
+    }
     int j;
     int k;
-    do
-    {
-      do
-      {
-        return;
-      } while ((!locale.e(parame)) || (this.mAH.mAC == null) || (!this.mAH.mAC.isPlaying()));
-      j = this.mAH.mAC.bnF();
-      k = this.mAH.mAC.getDuration();
-    } while ((j <= 0) || (k <= 0));
-    float f2 = j / k;
+    float f2;
     float f1;
-    label168:
-    label225:
+    label235:
     int i;
-    if (this.mAH.mAi != null)
+    if ((locale.e(parame)) && (this.paL.paG != null) && (this.paL.paG.isPlaying()))
     {
-      parame = this.mAH.mAi;
-      parame.myw = f2;
-      boolean bool = aq.isNetworkConnected(ae.getContext());
-      if ((parame.isStop) && (bool))
+      j = this.paL.paG.bWc();
+      k = this.paL.paG.getDuration();
+      if ((j > 0) && (k > 0))
       {
-        if (!parame.kaC) {
-          break label348;
-        }
-        if (parame.myv.mys != 0L)
+        f2 = j / k;
+        if (this.paL.pao != null)
         {
-          f1 = (float)parame.myv.myq / (float)parame.myv.mys;
-          if ((f1 < 1.0F) && (f1 - f2 <= 0.15F) && (bool))
+          parame = this.paL.pao;
+          parame.oYD = f2;
+          boolean bool = at.isNetworkConnected(ah.getContext());
+          if ((parame.isStop) && (bool))
           {
-            y.v("MicroMsg.Music.MusicDownloadTask", "playPercent=%.2f downloadPercent=%.2f isConnectNetwork=%b", new Object[] { Float.valueOf(f2), Float.valueOf(f1), Boolean.valueOf(bool) });
-            parame.start();
+            if (!parame.muY) {
+              break label363;
+            }
+            if (parame.oYC.oYz != 0L)
+            {
+              f1 = (float)parame.oYC.oYx / (float)parame.oYC.oYz;
+              if ((f1 < 1.0F) && (f1 - f2 <= 0.15F) && (bool))
+              {
+                ab.v("MicroMsg.Music.MusicDownloadTask", "playPercent=%.2f downloadPercent=%.2f isConnectNetwork=%b", new Object[] { Float.valueOf(f2), Float.valueOf(f1), Boolean.valueOf(bool) });
+                parame.start();
+              }
+            }
+          }
+          if ((this.paL.pao != null) && (this.paL.pao.isStop))
+          {
+            parame = this.paL.pao;
+            if (!parame.muY) {
+              break label396;
+            }
+            if (parame.oYC.oYz == 0L) {
+              break label444;
+            }
+            f1 = (float)parame.oYC.oYx / (float)parame.oYC.oYz;
+            label303:
+            if (f1 < 1.0F) {
+              break label429;
+            }
+            i = 1;
           }
         }
-      }
-      if ((this.mAH.mAi != null) && (this.mAH.mAi.isStop))
-      {
-        parame = this.mAH.mAi;
-        if (!parame.kaC) {
-          break label381;
-        }
-        if (parame.myv.mys == 0L) {
-          break label429;
-        }
-        f1 = (float)parame.myv.myq / (float)parame.myv.mys;
-        label293:
-        if (f1 < 1.0F) {
-          break label414;
-        }
-        i = 1;
       }
     }
     for (;;)
     {
       if (i == 0)
       {
-        y.i("MicroMsg.Music.MusicPlayer", "download percent not enough can not play");
-        this.mAH.stopPlay();
+        ab.i("MicroMsg.Music.MusicPlayer", "download percent not enough can not play");
+        this.paL.stopPlay();
       }
-      if (this.mAH.mxn == null) {
-        break;
+      if (this.paL.oXk != null) {
+        this.paL.oXk.dW(j, k);
       }
-      this.mAH.mxn.cy(j, k);
+      AppMethodBeat.o(137579);
       return;
-      label348:
-      if (parame.myv.myp == 0L) {
-        break label225;
+      label363:
+      if (parame.oYC.oYw == 0L) {
+        break label235;
       }
-      f1 = (float)parame.myv.myo / (float)parame.myv.myp;
-      break label168;
-      label381:
-      if (parame.myv.myp != 0L)
+      f1 = (float)parame.oYC.oYv / (float)parame.oYC.oYw;
+      break;
+      label396:
+      if (parame.oYC.oYw != 0L)
       {
-        f1 = (float)parame.myv.myo / (float)parame.myv.myp;
-        break label293;
+        f1 = (float)parame.oYC.oYv / (float)parame.oYC.oYw;
+        break label303;
+        label429:
         if (f1 - f2 > 0.05F)
         {
           i = 1;
           continue;
         }
       }
-      label414:
-      label429:
+      label444:
       i = 0;
     }
   }
   
-  public final void b(com.tencent.mm.av.e parame, boolean paramBoolean)
+  public final void c(com.tencent.mm.aw.e parame, boolean paramBoolean)
   {
-    y.i("MicroMsg.Music.MusicPlayer", "setEvents, onStop");
-    com.tencent.mm.av.e locale = k.bnl().bmW();
-    if (locale == null) {}
-    do
+    AppMethodBeat.i(137580);
+    ab.i("MicroMsg.Music.MusicPlayer", "setEvents, onStop");
+    com.tencent.mm.aw.e locale = k.bVH().bVs();
+    if (locale == null)
     {
+      AppMethodBeat.o(137580);
       return;
-      if (locale.e(parame)) {
-        this.mAH.stopPlay();
-      }
-      this.mAH.D(this.mAH.myB);
-    } while (!paramBoolean);
-    this.mAH.G(this.mAH.myB);
+    }
+    if (locale.e(parame)) {
+      this.paL.stopPlay();
+    }
+    this.paL.D(this.paL.oYI);
+    if (paramBoolean) {
+      this.paL.G(this.paL.oYI);
+    }
+    AppMethodBeat.o(137580);
   }
   
-  public final void c(com.tencent.mm.av.e parame, boolean paramBoolean)
+  public final void d(com.tencent.mm.aw.e parame, boolean paramBoolean)
   {
-    com.tencent.mm.av.e locale = k.bnl().bmW();
-    if (locale == null) {
+    AppMethodBeat.i(137581);
+    com.tencent.mm.aw.e locale = k.bVH().bVs();
+    if (locale == null)
+    {
+      AppMethodBeat.o(137581);
       return;
     }
-    y.i("MicroMsg.Music.MusicPlayer", "onError, needRetry:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ab.i("MicroMsg.Music.MusicPlayer", "onError, needRetry:%b", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {
-      d.a(this.mAH, parame, 20);
+      d.a(this.paL, parame, 20);
     }
-    for (;;)
+    while (locale.e(parame))
     {
-      if (locale.e(parame))
+      ab.i("MicroMsg.Music.MusicPlayer", "stop");
+      this.paL.stopPlay();
+      if (paramBoolean)
       {
-        y.i("MicroMsg.Music.MusicPlayer", "stop");
-        this.mAH.stopPlay();
-        if (paramBoolean)
-        {
-          y.i("MicroMsg.Music.MusicPlayer", "retry system media player again");
-          this.mAH.a(locale, true);
-          this.mAH.mAi = new com.tencent.mm.plugin.music.c.b(parame, com.tencent.mm.plugin.music.cache.e.Jk(parame.eux));
-          this.mAH.mAi.myz = this.mAH.mAF;
-          this.mAH.mAi.start();
-          if (this.mAH.mAu == null) {
-            break;
-          }
-          this.mAH.mAu.a(this.mAH.mAi);
-          return;
-          d.a(this.mAH, parame, 21);
-          continue;
+        ab.i("MicroMsg.Music.MusicPlayer", "retry system media player again");
+        this.paL.b(locale, true);
+        this.paL.pao = new com.tencent.mm.plugin.music.c.b(parame, com.tencent.mm.plugin.music.cache.e.Vh(parame.fKj));
+        this.paL.pao.oYG = this.paL.paJ;
+        this.paL.pao.start();
+        if (this.paL.paA == null) {
+          break label245;
         }
-        ai.d(new d.1.1(this));
-        this.mAH.D(this.mAH.myB);
+        this.paL.paA.a(this.paL.pao);
+        AppMethodBeat.o(137581);
+        return;
+        d.a(this.paL, parame, 21);
+      }
+      else
+      {
+        al.d(new d.1.1(this));
+        this.paL.D(this.paL.oYI);
+        AppMethodBeat.o(137581);
         return;
       }
     }
-    y.i("MicroMsg.Music.MusicPlayer", "send stop event");
-    this.mAH.D(this.mAH.myB);
+    ab.i("MicroMsg.Music.MusicPlayer", "send stop event");
+    this.paL.D(this.paL.oYI);
+    label245:
+    AppMethodBeat.o(137581);
   }
   
-  public final void k(com.tencent.mm.av.e parame)
+  public final void k(com.tencent.mm.aw.e parame)
   {
-    y.i("MicroMsg.Music.MusicPlayer", "setEvents, onStart");
-    this.mAH.A(parame);
+    AppMethodBeat.i(137578);
+    ab.i("MicroMsg.Music.MusicPlayer", "setEvents, onStart");
+    this.paL.A(parame);
+    AppMethodBeat.o(137578);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.d.1
  * JD-Core Version:    0.7.0.1
  */

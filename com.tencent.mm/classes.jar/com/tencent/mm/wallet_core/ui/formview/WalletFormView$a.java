@@ -2,7 +2,7 @@ package com.tencent.mm.wallet_core.ui.formview;
 
 public abstract interface WalletFormView$a
 {
-  public abstract void gG(boolean paramBoolean);
+  public abstract void onInputValidChange(boolean paramBoolean);
 }
 
 

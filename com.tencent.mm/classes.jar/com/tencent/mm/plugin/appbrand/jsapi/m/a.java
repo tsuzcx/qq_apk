@@ -1,75 +1,66 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.x;
-import java.util.Calendar;
-import java.util.Date;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
+import com.tencent.mm.pluginsdk.wallet.h;
+import com.tencent.mm.pointers.PString;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.MMActivity.a;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
-final class a
-  extends d
+public enum a
+  implements b
 {
-  volatile int gzA = -1;
-  volatile a.a gzv;
-  volatile Long gzw = null;
-  volatile Long gzx = null;
-  volatile int gzy = -1;
-  volatile int gzz = -1;
-  
-  final void z(JSONObject paramJSONObject)
+  static
   {
-    this.gzv = a.a.uA(paramJSONObject.optString("fields"));
-    Object localObject2 = paramJSONObject.optJSONObject("range");
-    if (localObject2 != null)
+    AppMethodBeat.i(131410);
+    hWj = new a("INSTANCE");
+    hWk = new a[] { hWj };
+    AppMethodBeat.o(131410);
+  }
+  
+  private a() {}
+  
+  public final void a(MMActivity paramMMActivity, JSONObject paramJSONObject, b.b paramb)
+  {
+    AppMethodBeat.i(131409);
+    paramb = new a.5(this, paramb);
+    paramJSONObject = new WalletJsapiData(paramJSONObject);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("appId", paramJSONObject.appId);
+    localIntent.putExtra("timeStamp", paramJSONObject.timeStamp);
+    localIntent.putExtra("nonceStr", paramJSONObject.nonceStr);
+    localIntent.putExtra("packageExt", paramJSONObject.packageExt);
+    localIntent.putExtra("signtype", paramJSONObject.signType);
+    localIntent.putExtra("paySignature", paramJSONObject.cCB);
+    localIntent.putExtra("url", paramJSONObject.url);
+    localIntent.putExtra("scene", 1);
+    paramMMActivity.mmSetOnActivityResultCallback(paramb);
+    d.a(paramMMActivity, "wallet_core", ".ui.WalletCheckPwdUI", localIntent, 0xFFFF & hashCode(), false);
+    AppMethodBeat.o(131409);
+  }
+  
+  public final boolean a(MMActivity paramMMActivity, AppBrandStatObject paramAppBrandStatObject, JSONObject paramJSONObject, b.a parama, PString paramPString)
+  {
+    AppMethodBeat.i(131408);
+    paramJSONObject = new WalletJsapiData(paramJSONObject);
+    if (paramAppBrandStatObject != null)
     {
-      localObject1 = ((JSONObject)localObject2).optString("start", "");
-      localObject1 = this.gzv.parse((String)localObject1);
-      localObject2 = ((JSONObject)localObject2).optString("end", "");
-      localObject2 = this.gzv.parse((String)localObject2);
-      if (localObject1 != null) {
-        this.gzw = Long.valueOf(((Date)localObject1).getTime());
-      }
-      if (localObject2 != null) {
-        this.gzx = Long.valueOf(((Date)localObject2).getTime());
-      }
+      paramJSONObject.cqj = WalletJsapiData.hi(paramAppBrandStatObject.scene, paramAppBrandStatObject.cIZ);
+      paramJSONObject.wgH = WalletJsapiData.hh(paramAppBrandStatObject.scene, paramAppBrandStatObject.cIZ);
     }
-    if (this.gzw == null)
-    {
-      localObject1 = Calendar.getInstance(x.ueU);
-      ((Calendar)localObject1).set(1900, 0, 1);
-      this.gzw = Long.valueOf(((Calendar)localObject1).getTimeInMillis());
-    }
-    if (this.gzx == null)
-    {
-      localObject1 = Calendar.getInstance(x.ueU);
-      ((Calendar)localObject1).set(2100, 11, 31);
-      this.gzx = Long.valueOf(((Calendar)localObject1).getTimeInMillis());
-    }
-    paramJSONObject = paramJSONObject.optString("current", "");
-    Object localObject1 = this.gzv.parse(paramJSONObject);
-    paramJSONObject = (JSONObject)localObject1;
-    if (localObject1 == null)
-    {
-      paramJSONObject = new Date(System.currentTimeMillis());
-      localObject1 = new Date(this.gzx.longValue());
-      localObject2 = new Date(this.gzw.longValue());
-      if (!paramJSONObject.after((Date)localObject1)) {
-        break label277;
-      }
-      paramJSONObject = (JSONObject)localObject1;
-    }
-    for (;;)
-    {
-      this.gzy = (paramJSONObject.getYear() + 1900);
-      this.gzz = (paramJSONObject.getMonth() + 1);
-      this.gzA = paramJSONObject.getDate();
-      ai.d(new a.1(this));
-      return;
-      label277:
-      if (paramJSONObject.before((Date)localObject2)) {
-        paramJSONObject = (JSONObject)localObject2;
-      }
-    }
+    paramJSONObject.cCD = 46;
+    paramPString.value = paramJSONObject.packageExt;
+    paramAppBrandStatObject = new a.1(this, parama);
+    boolean bool = h.a(paramMMActivity, paramJSONObject, hashCode() & 0xFFFF, paramAppBrandStatObject);
+    AppMethodBeat.o(131408);
+    return bool;
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.honey_pay.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 final class HoneyPayGiveCardUI$3
@@ -12,14 +13,16 @@ final class HoneyPayGiveCardUI$3
   
   public final void onClick(View paramView)
   {
-    HoneyPayGiveCardUI.c(this.llB).setVisibility(8);
-    HoneyPayGiveCardUI.b(this.llB).setVisibility(0);
-    HoneyPayGiveCardUI.b(this.llB).d(this.llB);
+    AppMethodBeat.i(41861);
+    HoneyPayGiveCardUI.c(this.nIX).setVisibility(8);
+    HoneyPayGiveCardUI.b(this.nIX).setVisibility(0);
+    HoneyPayGiveCardUI.b(this.nIX).d(this.nIX);
+    AppMethodBeat.o(41861);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayGiveCardUI.3
  * JD-Core Version:    0.7.0.1
  */

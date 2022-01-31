@@ -1,69 +1,73 @@
 package com.tencent.xweb.xwalk;
 
-import android.graphics.Bitmap;
-import android.view.View;
-import android.webkit.WebChromeClient.CustomViewCallback;
-import com.tencent.xweb.e;
-import org.xwalk.core.XWalkView;
+import android.webkit.ValueCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.i;
+import com.tencent.xweb.m;
+import org.xwalk.core.XWalkJavascriptResult;
 
 public final class f
-  implements com.tencent.xweb.c.f
 {
-  j xlU;
-  k xlV;
-  XWalkView xlW;
-  
-  public f(XWalkView paramXWalkView)
+  public static final class e
+    extends i
   {
-    this.xlW = paramXWalkView;
-    this.xlU = new j(paramXWalkView);
-    this.xlV = new k(paramXWalkView);
-  }
-  
-  public final boolean a(String paramString1, String paramString2, com.tencent.xweb.f paramf)
-  {
-    if ((paramf instanceof e.c)) {
-      return this.xlU.b(this.xlW, paramString1, paramString2, ((e.c)paramf).xlS);
+    public XWalkJavascriptResult BJA;
+    
+    public e(XWalkJavascriptResult paramXWalkJavascriptResult)
+    {
+      this.BJA = paramXWalkJavascriptResult;
     }
-    return false;
-  }
-  
-  public final boolean a(String paramString1, String paramString2, String paramString3, e parame)
-  {
-    if ((parame instanceof e.d)) {
-      return this.xlU.a(this.xlW, paramString1, paramString2, paramString3, ((e.d)parame).xlS);
+    
+    public final void cancel()
+    {
+      AppMethodBeat.i(85224);
+      this.BJA.cancel();
+      AppMethodBeat.o(85224);
     }
-    return false;
-  }
-  
-  public final boolean b(String paramString1, String paramString2, com.tencent.xweb.f paramf)
-  {
-    if ((paramf instanceof e.c)) {
-      return this.xlU.a(this.xlW, paramString1, paramString2, ((e.c)paramf).xlS);
+    
+    public final void confirm()
+    {
+      AppMethodBeat.i(85223);
+      this.BJA.confirm();
+      AppMethodBeat.o(85223);
     }
-    return false;
-  }
-  
-  public final void onHideCustomView()
-  {
-    this.xlU.cTw();
-  }
-  
-  public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    if ((paramCustomViewCallback instanceof e.a)) {
-      this.xlU.a(paramView, ((e.a)paramCustomViewCallback).xlQ);
+    
+    public final void confirmWithResult(String paramString)
+    {
+      AppMethodBeat.i(85222);
+      this.BJA.confirmWithResult(paramString);
+      AppMethodBeat.o(85222);
     }
   }
   
-  public final void u(String paramString, Bitmap paramBitmap)
+  public static final class h
+    implements m
   {
-    this.xlU.a(this.xlW, paramString);
+    ValueCallback<Boolean> BJC;
+    
+    public h(ValueCallback<Boolean> paramValueCallback)
+    {
+      this.BJC = paramValueCallback;
+    }
+    
+    public final void cancel()
+    {
+      AppMethodBeat.i(85228);
+      this.BJC.onReceiveValue(Boolean.FALSE);
+      AppMethodBeat.o(85228);
+    }
+    
+    public final void proceed()
+    {
+      AppMethodBeat.i(85227);
+      this.BJC.onReceiveValue(Boolean.TRUE);
+      AppMethodBeat.o(85227);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.f
  * JD-Core Version:    0.7.0.1
  */

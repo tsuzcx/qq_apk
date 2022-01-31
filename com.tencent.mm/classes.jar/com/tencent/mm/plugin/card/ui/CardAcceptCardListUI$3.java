@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import java.util.LinkedList;
@@ -13,16 +14,19 @@ final class CardAcceptCardListUI$3
   
   public final void onClick(View paramView)
   {
-    if (CardAcceptCardListUI.a(this.irE))
+    AppMethodBeat.i(88217);
+    if (CardAcceptCardListUI.a(this.ksL))
     {
-      CardAcceptCardListUI.a(this.irE, CardAcceptCardListUI.b(this.irE));
+      CardAcceptCardListUI.a(this.ksL, CardAcceptCardListUI.b(this.ksL));
+      AppMethodBeat.o(88217);
       return;
     }
-    paramView = this.irE;
-    LinkedList localLinkedList = CardAcceptCardListUI.b(this.irE);
-    paramView.ew(true);
-    paramView = new com.tencent.mm.plugin.card.model.p(localLinkedList, paramView.bZe, paramView.irz, paramView.irA, paramView.iry);
-    g.DO().dJT.a(paramView, 0);
+    paramView = this.ksL;
+    LinkedList localLinkedList = CardAcceptCardListUI.b(this.ksL);
+    paramView.fV(true);
+    paramView = new com.tencent.mm.plugin.card.model.p(localLinkedList, paramView.cHp, paramView.ksG, paramView.ksH, paramView.ksF);
+    g.RK().eHt.a(paramView, 0);
+    AppMethodBeat.o(88217);
   }
 }
 

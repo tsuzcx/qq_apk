@@ -3,11 +3,10 @@ package com.tencent.mm.plugin.game.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.model.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.a;
+import com.tencent.mm.plugin.game.model.a.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class GameOverSeaCenterUI$4
   implements View.OnClickListener
@@ -16,26 +15,28 @@ final class GameOverSeaCenterUI$4
   
   public final void onClick(View paramView)
   {
-    b.a locala = com.tencent.mm.plugin.game.model.b.aYO();
+    AppMethodBeat.i(112131);
+    a.a locala = a.bFN();
     int i;
-    if (locala.bcw == 2) {
-      i = c.o(this.ler.mController.uMN, locala.url, "game_center_library");
+    if (locala.bsY == 2) {
+      i = com.tencent.mm.plugin.game.f.c.t(this.nCm.getContext(), locala.url, "game_center_library");
     }
     for (;;)
     {
-      com.tencent.mm.plugin.game.e.b.a(this.ler.mController.uMN, 10, 1005, 1, i, this.ler.kQh, null);
+      com.tencent.mm.game.report.c.a(this.nCm.getContext(), 10, 1005, 1, i, this.nCm.nok, null);
+      AppMethodBeat.o(112131);
       return;
       paramView = paramView.getTag();
-      if ((paramView != null) && ((paramView instanceof String)) && (!bk.bl((String)paramView)))
+      if ((paramView != null) && ((paramView instanceof String)) && (!bo.isNullOrNil((String)paramView)))
       {
         paramView = (String)paramView;
-        i = c.o(this.ler.mController.uMN, paramView, "game_center_library");
+        i = com.tencent.mm.plugin.game.f.c.t(this.nCm.getContext(), paramView, "game_center_library");
       }
       else
       {
-        paramView = new Intent(this.ler.mController.uMN, GameLibraryUI.class);
+        paramView = new Intent(this.nCm.getContext(), GameLibraryUI.class);
         paramView.putExtra("game_report_from_scene", 1005);
-        this.ler.startActivity(paramView);
+        this.nCm.startActivity(paramView);
         i = 6;
       }
     }

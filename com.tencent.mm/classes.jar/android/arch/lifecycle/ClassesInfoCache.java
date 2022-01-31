@@ -12,45 +12,19 @@ import java.util.Set;
 
 class ClassesInfoCache
 {
-  static ClassesInfoCache bU = new ClassesInfoCache();
-  private final Map<Class, CallbackInfo> bV = new HashMap();
-  final Map<Class, Boolean> bW = new HashMap();
+  static ClassesInfoCache bY = new ClassesInfoCache();
+  private final Map<Class, CallbackInfo> bZ = new HashMap();
+  private final Map<Class, Boolean> ca = new HashMap();
   
-  private static void a(Map<MethodReference, Lifecycle.Event> paramMap, MethodReference paramMethodReference, Lifecycle.Event paramEvent, Class paramClass)
-  {
-    Lifecycle.Event localEvent = (Lifecycle.Event)paramMap.get(paramMethodReference);
-    if ((localEvent != null) && (paramEvent != localEvent))
-    {
-      paramMap = paramMethodReference.mMethod;
-      throw new IllegalArgumentException("Method " + paramMap.getName() + " in " + paramClass.getName() + " already declared with different @OnLifecycleEvent value: previous value " + localEvent + ", new value " + paramEvent);
-    }
-    if (localEvent == null) {
-      paramMap.put(paramMethodReference, paramEvent);
-    }
-  }
-  
-  static Method[] d(Class paramClass)
-  {
-    try
-    {
-      paramClass = paramClass.getDeclaredMethods();
-      return paramClass;
-    }
-    catch (NoClassDefFoundError paramClass)
-    {
-      throw new IllegalArgumentException("The observer class has some methods that use newer APIs which are not available in the current OS version. Lifecycles cannot access even other methods so you should make sure that your observer classes only access framework classes that are available in your min API level OR use lifecycle:compiler annotation processor.", paramClass);
-    }
-  }
-  
-  final CallbackInfo a(Class paramClass, Method[] paramArrayOfMethod)
+  private CallbackInfo a(Class paramClass, Method[] paramArrayOfMethod)
   {
     Object localObject1 = paramClass.getSuperclass();
     HashMap localHashMap = new HashMap();
     if (localObject1 != null)
     {
-      localObject1 = e((Class)localObject1);
+      localObject1 = f((Class)localObject1);
       if (localObject1 != null) {
-        localHashMap.putAll(((CallbackInfo)localObject1).bY);
+        localHashMap.putAll(((CallbackInfo)localObject1).cc);
       }
     }
     localObject1 = paramClass.getInterfaces();
@@ -60,7 +34,7 @@ class ClassesInfoCache
     Object localObject3;
     while (i < j)
     {
-      localObject2 = e(localObject1[i]).bY.entrySet().iterator();
+      localObject2 = f(localObject1[i]).cc.entrySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (Map.Entry)((Iterator)localObject2).next();
@@ -91,7 +65,7 @@ class ClassesInfoCache
         break;
       }
       throw new IllegalArgumentException("invalid parameter type. Must be one and instanceof LifecycleOwner");
-      paramArrayOfMethod = d(paramClass);
+      paramArrayOfMethod = e(paramClass);
     }
     label339:
     label379:
@@ -119,16 +93,63 @@ class ClassesInfoCache
         j += 1;
         break;
         paramArrayOfMethod = new CallbackInfo(localHashMap);
-        this.bV.put(paramClass, paramArrayOfMethod);
-        this.bW.put(paramClass, Boolean.valueOf(bool));
+        this.bZ.put(paramClass, paramArrayOfMethod);
+        this.ca.put(paramClass, Boolean.valueOf(bool));
         return paramArrayOfMethod;
       }
     }
   }
   
-  final CallbackInfo e(Class paramClass)
+  private static void a(Map<MethodReference, Lifecycle.Event> paramMap, MethodReference paramMethodReference, Lifecycle.Event paramEvent, Class paramClass)
   {
-    CallbackInfo localCallbackInfo = (CallbackInfo)this.bV.get(paramClass);
+    Lifecycle.Event localEvent = (Lifecycle.Event)paramMap.get(paramMethodReference);
+    if ((localEvent != null) && (paramEvent != localEvent))
+    {
+      paramMap = paramMethodReference.mMethod;
+      throw new IllegalArgumentException("Method " + paramMap.getName() + " in " + paramClass.getName() + " already declared with different @OnLifecycleEvent value: previous value " + localEvent + ", new value " + paramEvent);
+    }
+    if (localEvent == null) {
+      paramMap.put(paramMethodReference, paramEvent);
+    }
+  }
+  
+  private static Method[] e(Class paramClass)
+  {
+    try
+    {
+      paramClass = paramClass.getDeclaredMethods();
+      return paramClass;
+    }
+    catch (NoClassDefFoundError paramClass)
+    {
+      throw new IllegalArgumentException("The observer class has some methods that use newer APIs which are not available in the current OS version. Lifecycles cannot access even other methods so you should make sure that your observer classes only access framework classes that are available in your min API level OR use lifecycle:compiler annotation processor.", paramClass);
+    }
+  }
+  
+  final boolean d(Class paramClass)
+  {
+    if (this.ca.containsKey(paramClass)) {
+      return ((Boolean)this.ca.get(paramClass)).booleanValue();
+    }
+    Method[] arrayOfMethod = e(paramClass);
+    int j = arrayOfMethod.length;
+    int i = 0;
+    while (i < j)
+    {
+      if ((OnLifecycleEvent)arrayOfMethod[i].getAnnotation(OnLifecycleEvent.class) != null)
+      {
+        a(paramClass, arrayOfMethod);
+        return true;
+      }
+      i += 1;
+    }
+    this.ca.put(paramClass, Boolean.FALSE);
+    return false;
+  }
+  
+  final CallbackInfo f(Class paramClass)
+  {
+    CallbackInfo localCallbackInfo = (CallbackInfo)this.bZ.get(paramClass);
     if (localCallbackInfo != null) {
       return localCallbackInfo;
     }
@@ -137,24 +158,24 @@ class ClassesInfoCache
   
   static class CallbackInfo
   {
-    final Map<Lifecycle.Event, List<ClassesInfoCache.MethodReference>> bX;
-    final Map<ClassesInfoCache.MethodReference, Lifecycle.Event> bY;
+    final Map<Lifecycle.Event, List<ClassesInfoCache.MethodReference>> cb;
+    final Map<ClassesInfoCache.MethodReference, Lifecycle.Event> cc;
     
     CallbackInfo(Map<ClassesInfoCache.MethodReference, Lifecycle.Event> paramMap)
     {
-      this.bY = paramMap;
-      this.bX = new HashMap();
+      this.cc = paramMap;
+      this.cb = new HashMap();
       Iterator localIterator = paramMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         Lifecycle.Event localEvent = (Lifecycle.Event)localEntry.getValue();
-        List localList = (List)this.bX.get(localEvent);
+        List localList = (List)this.cb.get(localEvent);
         paramMap = localList;
         if (localList == null)
         {
           paramMap = new ArrayList();
-          this.bX.put(localEvent, paramMap);
+          this.cb.put(localEvent, paramMap);
         }
         paramMap.add(localEntry.getKey());
       }
@@ -173,7 +194,7 @@ class ClassesInfoCache
           ClassesInfoCache.MethodReference localMethodReference = (ClassesInfoCache.MethodReference)paramList.get(i);
           try
           {
-            switch (localMethodReference.bZ)
+            switch (localMethodReference.cd)
             {
             case 0: 
               localMethodReference.mMethod.invoke(paramObject, new Object[0]);
@@ -201,12 +222,12 @@ class ClassesInfoCache
   
   static class MethodReference
   {
-    final int bZ;
+    final int cd;
     final Method mMethod;
     
     MethodReference(int paramInt, Method paramMethod)
     {
-      this.bZ = paramInt;
+      this.cd = paramInt;
       this.mMethod = paramMethod;
       this.mMethod.setAccessible(true);
     }
@@ -221,13 +242,13 @@ class ClassesInfoCache
           return false;
         }
         paramObject = (MethodReference)paramObject;
-      } while ((this.bZ == paramObject.bZ) && (this.mMethod.getName().equals(paramObject.mMethod.getName())));
+      } while ((this.cd == paramObject.cd) && (this.mMethod.getName().equals(paramObject.mMethod.getName())));
       return false;
     }
     
     public int hashCode()
     {
-      return this.bZ * 31 + this.mMethod.getName().hashCode();
+      return this.cd * 31 + this.mMethod.getName().hashCode();
     }
   }
 }

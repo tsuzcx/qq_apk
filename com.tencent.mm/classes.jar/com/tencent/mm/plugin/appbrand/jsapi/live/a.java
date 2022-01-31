@@ -1,203 +1,184 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.plugin.appbrand.appstorage.k;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.page.p;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.File;
-import java.io.IOException;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.content.b;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.af;
+import com.tencent.mm.plugin.appbrand.page.bc;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.rtmp.TXLiveBase;
+import com.tencent.rtmp.TXLivePlayer;
+import com.tencent.rtmp.ui.TXCloudVideoView;
+import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import org.json.JSONObject;
 
 public final class a
+  extends com.tencent.mm.plugin.appbrand.jsapi.base.a
 {
-  private static final String eak;
-  private static ConcurrentMap<String, Boolean> grR = new ConcurrentHashMap();
-  private static Map<String, List<a>> grS = new HashMap();
+  private static final int CTRL_INDEX = 364;
+  public static final String NAME = "insertLivePlayer";
   
-  static
+  public final View a(e parame, JSONObject paramJSONObject)
   {
-    String str2 = com.tencent.mm.compatible.util.e.bkH;
-    String str1 = str2;
-    if (!str2.endsWith("/")) {
-      str1 = str2 + "/";
-    }
-    str1 = str1 + "wxacache/";
-    eak = str1;
-    h.Vu(str1);
+    AppMethodBeat.i(96083);
+    paramJSONObject = new AppBrandLivePlayerView(parame.getContext());
+    parame = new CoverViewContainer(parame.getContext(), paramJSONObject);
+    parame.setBackgroundColor(-16777216);
+    AppMethodBeat.o(96083);
+    return parame;
   }
   
-  public static void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2, a parama)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    int i = 1;
-    if (bk.bl(paramString1)) {}
-    label119:
-    do
+    AppMethodBeat.i(96081);
+    j.xn();
+    if (paramJSONObject.optInt("mode", 0) == 2)
     {
-      for (;;)
+      if (!(paramc.getContext() instanceof Activity))
       {
+        ab.w("MicroMsg.JsApiInsertLivePlayer", "invokeAfterRequestPermission pageContext not activity");
+        paramc.h(paramInt, j("fail", null));
+        AppMethodBeat.o(96081);
         return;
-        if (!paramString1.startsWith("wxfile://")) {
-          break;
-        }
-        y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handleWxfile, url:%s", new Object[] { paramString1 });
-        if (paramc == null)
+      }
+      Activity localActivity = (Activity)paramc.getContext();
+      try
+      {
+        int i = b.checkSelfPermission(localActivity, "android.permission.RECORD_AUDIO");
+        if (i == 0)
         {
-          y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handleWxfile, component is null");
-          i = 0;
-        }
-        for (;;)
-        {
-          if (i != 0) {
-            break label119;
-          }
-          a(parama);
+          super.a(paramc, paramJSONObject, paramInt);
+          AppMethodBeat.o(96081);
           return;
-          paramc = paramc.Zl().rx(paramString1);
-          if ((paramc == null) || (!paramc.exists())) {
-            break;
-          }
-          paramc = paramc.getAbsolutePath();
-          y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handleWxfile, localPath:%s", new Object[] { paramc });
-          if (!bC(paramString2, paramc)) {
-            break;
-          }
-          parama.ud(paramc);
         }
       }
-      if ((paramString1.startsWith("http://")) || (paramString1.startsWith("https://")))
+      catch (Exception paramJSONObject)
       {
-        y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handleNetworkFile, url:%s", new Object[] { paramString1 });
-        paramc = jH(paramString1);
-        paramc = String.format("%s%s", new Object[] { eak, paramc });
-        y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handleNetworkFile, localPath:%s", new Object[] { paramc });
-        ai.d(new a.1(paramString1, parama));
-        com.tencent.mm.sdk.f.e.post(new a.2(paramString1, paramString2, paramc), "AppBrandLiveFileLoadHelperThread");
+        ab.e("MicroMsg.JsApiInsertLivePlayer", "check mpermission exception:%s.", new Object[] { paramJSONObject });
+        paramc.h(paramInt, j("fail", null));
+        AppMethodBeat.o(96081);
         return;
       }
-    } while (b(paramc, paramString1, paramString2, parama));
-    a(parama);
+      paramJSONObject = new HashMap();
+      paramJSONObject.put("errCode", Integer.valueOf(10001));
+      paramc.h(paramInt, j("fail:system permission denied", paramJSONObject));
+      AppMethodBeat.o(96081);
+      return;
+    }
+    super.a(paramc, paramJSONObject, paramInt);
+    AppMethodBeat.o(96081);
   }
   
-  private static void a(a parama)
+  public final void a(final e parame, final int paramInt, View paramView, JSONObject paramJSONObject)
   {
-    if (parama != null) {
-      parama.ud(null);
-    }
-  }
-  
-  private static boolean b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2, a parama)
-  {
-    y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handlePackageImage, url:%s", new Object[] { paramString1 });
-    if (paramc == null) {
-      y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handlePackageImage, component is null");
-    }
-    File localFile;
-    for (;;)
+    AppMethodBeat.i(96084);
+    ab.i("MicroMsg.JsApiInsertLivePlayer", "onInsertView livePlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
+    if (!(paramView instanceof CoverViewContainer))
     {
-      return false;
-      if (!(paramc instanceof f))
-      {
-        y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handlePackageImage, can not get runtime from component");
-        return false;
-      }
-      paramc = ((f)paramc).getRuntime();
-      if (paramc == null)
-      {
-        y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handlePackageImage, runtime is null");
-        return false;
-      }
-      String str = jH(paramString1);
-      str = String.format("%s%s", new Object[] { eak, str });
-      y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handlePackageImage, localPath:%s", new Object[] { str });
-      localFile = new File(str);
-      if (!localFile.exists())
-      {
-        paramc = p.i(paramc, paramString1);
-        if ((paramc == null) || (paramc.isRecycled())) {
-          break;
-        }
-      }
-      else
-      {
-        try
-        {
-          com.tencent.mm.sdk.platformtools.c.a(paramc, 100, Bitmap.CompressFormat.PNG, str, true);
-          if ((paramc != null) && (!paramc.isRecycled())) {
-            paramc.recycle();
-          }
-          if (!bC(paramString2, str)) {
-            break label264;
-          }
-          if (parama != null)
-          {
-            parama.ud(str);
-            return true;
-          }
-        }
-        catch (IOException paramString1)
-        {
-          y.e("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handlePackageImage, fail to compress bitmap to file", new Object[] { paramString1 });
-          return false;
-        }
-        finally
-        {
-          if ((paramc != null) && (!paramc.isRecycled())) {
-            paramc.recycle();
-          }
-        }
-      }
+      ab.w("MicroMsg.JsApiInsertLivePlayer", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(96084);
+      return;
     }
-    y.e("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handlePackageImage, no bitmap in the given url");
-    return false;
-    label264:
-    y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "handlePackageImage, file exists but md5 not valid, deleted:%b", new Object[] { Boolean.valueOf(localFile.delete()) });
-    return false;
-  }
-  
-  private static void bB(String paramString1, String paramString2)
-  {
-    ai.d(new a.3(paramString1, paramString2));
-  }
-  
-  private static boolean bC(String paramString1, String paramString2)
-  {
-    if (bk.bl(paramString1))
+    TXLiveBase.setAppVersion(String.format("weixin_%s", new Object[] { parame.getAppId() }));
+    AppBrandLivePlayerView localAppBrandLivePlayerView = (AppBrandLivePlayerView)((CoverViewContainer)paramView).aa(AppBrandLivePlayerView.class);
+    Object localObject = new a.1(this, localAppBrandLivePlayerView);
+    a.2 local2 = new a.2(this, localAppBrandLivePlayerView);
+    a.3 local3 = new a.3(this, parame, localAppBrandLivePlayerView);
+    a.4 local4 = new a.4(this, localAppBrandLivePlayerView, parame);
+    parame.a(local2);
+    parame.a(local3);
+    parame.a(local4);
+    localAppBrandLivePlayerView.setFullScreenDelegate(new AppBrandLivePlayerView.a()
     {
-      y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "isMd5Valid target nil, no check");
-      return true;
+      public final void aDh()
+      {
+        AppMethodBeat.i(96075);
+        parame.vC().pl(paramInt);
+        AppMethodBeat.o(96075);
+      }
+      
+      public final boolean isFullScreen()
+      {
+        AppMethodBeat.i(96076);
+        boolean bool = parame.vC().pk(paramInt);
+        AppMethodBeat.o(96076);
+        return bool;
+      }
+      
+      public final void oc(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(96074);
+        parame.vC().a(paramInt, this.hNE, paramAnonymousInt);
+        AppMethodBeat.o(96074);
+      }
+    });
+    localAppBrandLivePlayerView.setExitListener(new a.6(this, parame, local3, local2));
+    localAppBrandLivePlayerView.setNeedEvent(paramJSONObject.optBoolean("needEvent", false));
+    localAppBrandLivePlayerView.setOnFullScreenChangeListener(new a.7(this, paramInt, parame));
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("playUrl", paramJSONObject.optString("playUrl"));
+    ((Bundle)localObject).putInt("mode", paramJSONObject.optInt("mode", 0));
+    ((Bundle)localObject).putBoolean("autoplay", paramJSONObject.optBoolean("autoplay", false));
+    ((Bundle)localObject).putBoolean("muted", paramJSONObject.optBoolean("muted", false));
+    ((Bundle)localObject).putString("orientation", paramJSONObject.optString("orientation"));
+    ((Bundle)localObject).putString("objectFit", paramJSONObject.optString("objectFit"));
+    ((Bundle)localObject).putBoolean("backgroundMute", paramJSONObject.optBoolean("backgroundMute", true));
+    ((Bundle)localObject).putFloat("minCache", BigDecimal.valueOf(paramJSONObject.optDouble("minCache", 1.0D)).floatValue());
+    ((Bundle)localObject).putFloat("maxCache", BigDecimal.valueOf(paramJSONObject.optDouble("maxCache", 3.0D)).floatValue());
+    ((Bundle)localObject).putBoolean("needEvent", paramJSONObject.optBoolean("needEvent", false));
+    ((Bundle)localObject).putBoolean("debug", paramJSONObject.optBoolean("debug", false));
+    ((Bundle)localObject).putString("soundMode", paramJSONObject.optString("soundMode", "speaker"));
+    ((Bundle)localObject).putBoolean("autoPauseIfNavigate", paramJSONObject.optBoolean("autoPauseIfNavigate", true));
+    ((Bundle)localObject).putBoolean("autoPauseIfOpenNative", paramJSONObject.optBoolean("autoPauseIfOpenNative", true));
+    ab.i("MicroMsg.JsApiInsertLivePlayer", "convertParams playUrl:%s", new Object[] { paramJSONObject.optString("playUrl") });
+    paramJSONObject = localAppBrandLivePlayerView.hNq;
+    k.k("initLivePlayer", (Bundle)localObject);
+    paramJSONObject.bGi = localAppBrandLivePlayerView;
+    paramJSONObject.bGi.disableLog(false);
+    paramJSONObject.bGk.setPlayerView(localAppBrandLivePlayerView);
+    paramJSONObject.bGn = ((Bundle)localObject).getString("playUrl", paramJSONObject.bGn);
+    paramJSONObject.bGo = paramJSONObject.l((Bundle)localObject);
+    paramJSONObject.m((Bundle)localObject);
+    paramJSONObject.mAutoPlay = ((Bundle)localObject).getBoolean("autoplay", paramJSONObject.mAutoPlay);
+    if ((paramJSONObject.mAutoPlay) && (paramJSONObject.bGn != null) && (!paramJSONObject.bGn.isEmpty()))
+    {
+      ab.i("TXLivePlayerJSAdapter", "initLivePlayer: startPlay");
+      paramJSONObject.cm(paramJSONObject.bGn);
+      paramJSONObject.bGk.startPlay(paramJSONObject.bGn, paramJSONObject.bGo);
     }
-    paramString2 = g.bQ(paramString2);
-    y.i("MicroMsg.AppBrand.AppBrandLiveFileLoadHelper.javayhu", "isMd5Valid file:%s target:%s", new Object[] { paramString2, paramString1 });
-    return paramString1.equals(paramString2);
+    paramJSONObject.mInited = true;
+    paramJSONObject = new i();
+    ab.i("MicroMsg.AppBrandLivePlayerView", "onInsert code:%d info:%s", new Object[] { Integer.valueOf(paramJSONObject.errorCode), paramJSONObject.bFT });
+    localAppBrandLivePlayerView.setPlayEventListener(new a.8(this, paramInt, parame));
+    if (((Bundle)localObject).getInt("mode", 0) == 5) {}
+    for (parame = paramView.getContext().getString(2131296553);; parame = paramView.getContext().getString(2131296552))
+    {
+      localAppBrandLivePlayerView.setContentDescription(parame);
+      AppMethodBeat.o(96084);
+      return;
+    }
   }
   
-  private static String jH(String paramString)
+  public final int w(JSONObject paramJSONObject)
   {
-    String str = null;
-    if (!bk.bl(paramString)) {
-      str = g.o(paramString.getBytes());
-    }
-    return str;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void ud(String paramString);
+    AppMethodBeat.i(96082);
+    int i = paramJSONObject.getInt("livePlayerId");
+    AppMethodBeat.o(96082);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.a
  * JD-Core Version:    0.7.0.1
  */

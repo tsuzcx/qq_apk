@@ -1,29 +1,33 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class CompressPreviewUI$a
 {
-  boolean aoD;
+  boolean aqX;
   String id;
   String name;
-  String nhg;
+  String pMu;
   String size;
   int type;
   
   public CompressPreviewUI$a(CompressPreviewUI paramCompressPreviewUI, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, boolean paramBoolean)
   {
+    AppMethodBeat.i(68245);
     this.id = paramString1;
     this.name = paramString2;
     paramCompressPreviewUI = paramString3;
     if (paramString3 == null) {
       paramCompressPreviewUI = "";
     }
-    this.nhg = paramCompressPreviewUI;
+    this.pMu = paramCompressPreviewUI;
     this.type = paramInt;
     this.size = paramString4;
-    this.aoD = paramBoolean;
+    this.aqX = paramBoolean;
+    AppMethodBeat.o(68245);
   }
   
-  public final boolean btY()
+  public final boolean cek()
   {
     return this.type == 1;
   }

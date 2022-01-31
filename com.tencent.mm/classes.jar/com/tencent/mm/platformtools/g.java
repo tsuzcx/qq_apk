@@ -1,10 +1,15 @@
 package com.tencent.mm.platformtools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class g
 {
-  public static String oY(String paramString)
+  public static String wq(String paramString)
   {
-    if ((paramString == null) || ("".equals(paramString.trim()))) {
+    AppMethodBeat.i(58717);
+    if ((paramString == null) || ("".equals(paramString.trim())))
+    {
+      AppMethodBeat.o(58717);
       return paramString;
     }
     paramString = paramString.toCharArray();
@@ -13,18 +18,23 @@ public final class g
     int j = paramString.length;
     while (i < j)
     {
-      String str = SpellMap.e(paramString[i]);
+      String str = SpellMap.u(paramString[i]);
       if (str != null) {
         localStringBuffer.append(str);
       }
       i += 1;
     }
-    return localStringBuffer.toString();
+    paramString = localStringBuffer.toString();
+    AppMethodBeat.o(58717);
+    return paramString;
   }
   
-  public static String oZ(String paramString)
+  public static String wr(String paramString)
   {
-    if ((paramString == null) || ("".equals(paramString.trim()))) {
+    AppMethodBeat.i(58718);
+    if ((paramString == null) || ("".equals(paramString.trim())))
+    {
+      AppMethodBeat.o(58718);
       return paramString;
     }
     paramString = paramString.toCharArray();
@@ -35,14 +45,16 @@ public final class g
     {
       if (!Character.isSpace(paramString[i]))
       {
-        String str = SpellMap.e(paramString[i]);
+        String str = SpellMap.u(paramString[i]);
         if ((str != null) && (str.length() > 0)) {
           localStringBuffer.append(str.charAt(0));
         }
       }
       i += 1;
     }
-    return localStringBuffer.toString().toUpperCase();
+    paramString = localStringBuffer.toString().toUpperCase();
+    AppMethodBeat.o(58718);
+    return paramString;
   }
 }
 

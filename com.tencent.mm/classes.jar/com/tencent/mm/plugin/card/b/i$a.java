@@ -7,8 +7,9 @@ import android.bluetooth.BluetoothManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.os.Build.VERSION;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,134 +17,162 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class i$a
 {
-  public BroadcastReceiver glu;
-  private BluetoothAdapter gqX;
-  private volatile boolean ikK = false;
-  boolean ikL = false;
-  Map<String, i.b> ikM = new ConcurrentHashMap();
-  long ikN = 3000L;
-  Runnable ikO = new i.a.1(this);
-  private BluetoothAdapter.LeScanCallback ikP = new i.a.3(this);
+  public BroadcastReceiver hFt;
+  private BluetoothAdapter hMm;
+  private volatile boolean klI;
+  boolean klJ;
+  Map<String, i.b> klK;
+  long klL;
+  Runnable klM;
+  private BluetoothAdapter.LeScanCallback klN;
   
-  private i$a(i parami) {}
-  
-  public static byte[] ad(byte[] paramArrayOfByte)
+  private i$a(i parami)
   {
-    byte[] arrayOfByte1 = null;
-    byte[] arrayOfByte2 = null;
-    if (paramArrayOfByte == null) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        return arrayOfByte2;
-        i = 0;
-        arrayOfByte2 = arrayOfByte1;
-      } while (i >= paramArrayOfByte.length);
-      j = i + 1;
-      i = paramArrayOfByte[i] & 0xFF;
-      arrayOfByte2 = arrayOfByte1;
-    } while (i == 0);
-    i -= 1;
-    int k = j + 1;
-    switch (paramArrayOfByte[j] & 0xFF)
-    {
-    }
-    for (;;)
-    {
-      i += k;
-      break;
-      arrayOfByte1 = new byte[i];
-      System.arraycopy(paramArrayOfByte, k, arrayOfByte1, 0, i);
-    }
+    AppMethodBeat.i(87706);
+    this.klI = false;
+    this.klJ = false;
+    this.klK = new ConcurrentHashMap();
+    this.klL = 3000L;
+    this.klM = new i.a.1(this);
+    this.klN = new i.a.3(this);
+    AppMethodBeat.o(87706);
   }
   
-  public final i.b aAc()
+  public static byte[] av(byte[] paramArrayOfByte)
   {
+    byte[] arrayOfByte = null;
+    AppMethodBeat.i(87711);
+    if (paramArrayOfByte == null)
+    {
+      AppMethodBeat.o(87711);
+      return null;
+    }
+    int i = 0;
+    if (i < paramArrayOfByte.length)
+    {
+      int j = i + 1;
+      i = paramArrayOfByte[i] & 0xFF;
+      if (i != 0)
+      {
+        i -= 1;
+        int k = j + 1;
+        switch (paramArrayOfByte[j] & 0xFF)
+        {
+        }
+        for (;;)
+        {
+          i += k;
+          break;
+          arrayOfByte = new byte[i];
+          System.arraycopy(paramArrayOfByte, k, arrayOfByte, 0, i);
+        }
+      }
+    }
+    AppMethodBeat.o(87711);
+    return arrayOfByte;
+  }
+  
+  public final i.b bbO()
+  {
+    AppMethodBeat.i(87708);
     Object localObject = new i.b("", -100, "", null);
-    if (this.ikM.size() <= 0) {
+    if (this.klK.size() <= 0)
+    {
+      AppMethodBeat.o(87708);
       return localObject;
     }
-    Iterator localIterator = this.ikM.values().iterator();
+    Iterator localIterator = this.klK.values().iterator();
     if (localIterator.hasNext())
     {
       i.b localb = (i.b)localIterator.next();
-      if (((i.b)localObject).bLz >= localb.bLz) {
-        break label81;
+      if (((i.b)localObject).csT >= localb.csT) {
+        break label96;
       }
       localObject = localb;
     }
-    label81:
+    label96:
     for (;;)
     {
       break;
+      AppMethodBeat.o(87708);
       return localObject;
     }
   }
   
   @TargetApi(18)
-  public final void aAd()
+  public final void bbP()
   {
+    AppMethodBeat.i(87709);
     if (Build.VERSION.SDK_INT < 18)
     {
-      y.i("MicroMsg.CardLbsOrBluetooth", "not support bluetooth, return");
+      ab.i("MicroMsg.CardLbsOrBluetooth", "not support bluetooth, return");
+      AppMethodBeat.o(87709);
       return;
     }
-    if (this.ikK)
+    if (this.klI)
     {
-      y.i("MicroMsg.CardLbsOrBluetooth", "already start");
+      ab.i("MicroMsg.CardLbsOrBluetooth", "already start");
+      AppMethodBeat.o(87709);
       return;
     }
-    this.ikM.clear();
-    BluetoothManager localBluetoothManager = (BluetoothManager)ae.getContext().getSystemService("bluetooth");
+    this.klK.clear();
+    BluetoothManager localBluetoothManager = (BluetoothManager)ah.getContext().getSystemService("bluetooth");
     if (localBluetoothManager == null)
     {
-      this.ikL = false;
-      y.e("MicroMsg.CardLbsOrBluetooth", "bluetoothManager is null");
+      this.klJ = false;
+      ab.e("MicroMsg.CardLbsOrBluetooth", "bluetoothManager is null");
+      AppMethodBeat.o(87709);
       return;
     }
-    this.ikL = true;
-    this.gqX = localBluetoothManager.getAdapter();
-    if ((this.gqX == null) || (!this.gqX.isEnabled()))
+    this.klJ = true;
+    this.hMm = localBluetoothManager.getAdapter();
+    if ((this.hMm == null) || (!this.hMm.isEnabled()))
     {
-      this.ikL = false;
-      y.e("MicroMsg.CardLbsOrBluetooth", "bluetoothAdapter is null or bluetoothAdapter is disable");
+      this.klJ = false;
+      ab.e("MicroMsg.CardLbsOrBluetooth", "bluetoothAdapter is null or bluetoothAdapter is disable");
+      AppMethodBeat.o(87709);
       return;
     }
-    y.i("MicroMsg.CardLbsOrBluetooth", "startLeScan isOK:%b", new Object[] { Boolean.valueOf(this.gqX.startLeScan(this.ikP)) });
-    this.ikK = true;
+    ab.i("MicroMsg.CardLbsOrBluetooth", "startLeScan isOK:%b", new Object[] { Boolean.valueOf(this.hMm.startLeScan(this.klN)) });
+    this.klI = true;
+    AppMethodBeat.o(87709);
   }
   
   @TargetApi(18)
-  public final void aAe()
+  public final void bbQ()
   {
+    AppMethodBeat.i(87710);
     if (Build.VERSION.SDK_INT < 18)
     {
-      y.i("MicroMsg.CardLbsOrBluetooth", "not support bluetooth, return");
+      ab.i("MicroMsg.CardLbsOrBluetooth", "not support bluetooth, return");
+      AppMethodBeat.o(87710);
       return;
     }
-    if (!this.ikK)
+    if (!this.klI)
     {
-      y.i("MicroMsg.CardLbsOrBluetooth", "not start");
+      ab.i("MicroMsg.CardLbsOrBluetooth", "not start");
+      AppMethodBeat.o(87710);
       return;
     }
-    if ((this.gqX == null) || (!this.gqX.isEnabled()))
+    if ((this.hMm == null) || (!this.hMm.isEnabled()))
     {
-      this.ikL = false;
-      y.e("MicroMsg.CardLbsOrBluetooth", "bluetoothAdapter is null or bluetoothAdapter is disable");
+      this.klJ = false;
+      ab.e("MicroMsg.CardLbsOrBluetooth", "bluetoothAdapter is null or bluetoothAdapter is disable");
+      AppMethodBeat.o(87710);
       return;
     }
-    this.ikL = true;
-    this.gqX.stopLeScan(this.ikP);
-    y.i("MicroMsg.CardLbsOrBluetooth", "stopLeScan");
-    this.ikK = false;
+    this.klJ = true;
+    this.hMm.stopLeScan(this.klN);
+    ab.i("MicroMsg.CardLbsOrBluetooth", "stopLeScan");
+    this.klI = false;
+    AppMethodBeat.o(87710);
   }
   
   public final void reset()
   {
-    this.ikM.clear();
+    AppMethodBeat.i(87707);
+    this.klK.clear();
+    AppMethodBeat.o(87707);
   }
 }
 

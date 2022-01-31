@@ -1,12 +1,13 @@
 package com.google.android.gms.gcm;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PeriodicTask$Builder
   extends Task.Builder
 {
-  private long zzbgP = -1L;
-  private long zzbgQ = -1L;
+  private long zzam = -1L;
+  private long zzan = -1L;
   
   public PeriodicTask$Builder()
   {
@@ -15,28 +16,41 @@ public class PeriodicTask$Builder
   
   public PeriodicTask build()
   {
+    AppMethodBeat.i(69998);
     checkConditions();
-    return new PeriodicTask(this, null);
+    PeriodicTask localPeriodicTask = new PeriodicTask(this, null);
+    AppMethodBeat.o(69998);
+    return localPeriodicTask;
   }
   
   protected void checkConditions()
   {
+    AppMethodBeat.i(69999);
     super.checkConditions();
-    if (this.zzbgP == -1L) {
-      throw new IllegalArgumentException("Must call setPeriod(long) to establish an execution interval for this periodic task.");
-    }
-    if (this.zzbgP <= 0L)
+    IllegalArgumentException localIllegalArgumentException;
+    if (this.zzam == -1L)
     {
-      long l = this.zzbgP;
-      throw new IllegalArgumentException(66 + "Period set cannot be less than or equal to 0: " + l);
+      localIllegalArgumentException = new IllegalArgumentException("Must call setPeriod(long) to establish an execution interval for this periodic task.");
+      AppMethodBeat.o(69999);
+      throw localIllegalArgumentException;
     }
-    if (this.zzbgQ == -1L) {
-      this.zzbgQ = (((float)this.zzbgP * 0.1F));
+    if (this.zzam <= 0L)
+    {
+      long l = this.zzam;
+      localIllegalArgumentException = new IllegalArgumentException(66 + "Period set cannot be less than or equal to 0: " + l);
+      AppMethodBeat.o(69999);
+      throw localIllegalArgumentException;
     }
-    while (this.zzbgQ <= this.zzbgP) {
+    if (this.zzan == -1L)
+    {
+      this.zzan = (((float)this.zzam * 0.1F));
+      AppMethodBeat.o(69999);
       return;
     }
-    this.zzbgQ = this.zzbgP;
+    if (this.zzan > this.zzam) {
+      this.zzan = this.zzam;
+    }
+    AppMethodBeat.o(69999);
   }
   
   public Builder setExtras(Bundle paramBundle)
@@ -47,13 +61,13 @@ public class PeriodicTask$Builder
   
   public Builder setFlex(long paramLong)
   {
-    this.zzbgQ = paramLong;
+    this.zzan = paramLong;
     return this;
   }
   
   public Builder setPeriod(long paramLong)
   {
-    this.zzbgP = paramLong;
+    this.zzam = paramLong;
     return this;
   }
   
@@ -77,7 +91,9 @@ public class PeriodicTask$Builder
   
   public Builder setService(Class<? extends GcmTaskService> paramClass)
   {
+    AppMethodBeat.i(69997);
     this.gcmTaskService = paramClass.getName();
+    AppMethodBeat.o(69997);
     return this;
   }
   

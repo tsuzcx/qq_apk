@@ -2,7 +2,7 @@ package com.tencent.mm.vending.app;
 
 public abstract interface a$b<_Struct>
 {
-  public abstract void aF(_Struct param_Struct);
+  public abstract void aY(_Struct param_Struct);
 }
 
 

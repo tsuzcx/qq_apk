@@ -2,6 +2,7 @@ package com.tencent.mm.chatroom.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RoomUpgradeResultUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class RoomUpgradeResultUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    RoomUpgradeResultUI.a(this.dqw);
+    AppMethodBeat.i(104220);
+    RoomUpgradeResultUI.a(this.ehU);
+    AppMethodBeat.o(104220);
     return true;
   }
 }

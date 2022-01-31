@@ -6,34 +6,37 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import com.tencent.mm.plugin.readerapp.a.d;
-import com.tencent.mm.plugin.readerapp.a.e;
-import com.tencent.mm.plugin.readerapp.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ReaderAppSubscribeUI$a
   extends BaseAdapter
 {
   private final Context context;
-  final int[] noJ = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192 };
-  int noK;
-  private String[] noL = null;
-  int noM = 0;
+  final int[] pTX;
+  int pTY;
+  private String[] pTZ;
+  int pUa;
   
   public ReaderAppSubscribeUI$a(Context paramContext, int paramInt)
   {
+    AppMethodBeat.i(76805);
+    this.pTX = new int[] { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192 };
+    this.pTZ = null;
+    this.pUa = 0;
     this.context = paramContext;
-    this.noK = paramInt;
-    this.noL = paramContext.getString(a.g.readerapp_subscribe_category).split(";");
-    this.noM = wt(paramInt);
+    this.pTY = paramInt;
+    this.pTZ = paramContext.getString(2131302303).split(";");
+    this.pUa = Cf(paramInt);
+    AppMethodBeat.o(76805);
   }
   
-  private int wt(int paramInt)
+  private int Cf(int paramInt)
   {
     int j = 0;
     int i = 0;
-    if (j < this.noJ.length)
+    if (j < this.pTX.length)
     {
-      if ((this.noJ[j] & paramInt) == 0) {
+      if ((this.pTX[j] & paramInt) == 0) {
         break label37;
       }
       i += 1;
@@ -49,7 +52,7 @@ final class ReaderAppSubscribeUI$a
   
   public final int getCount()
   {
-    return this.noL.length;
+    return this.pTZ.length;
   }
   
   public final long getItemId(int paramInt)
@@ -59,23 +62,25 @@ final class ReaderAppSubscribeUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(76806);
     if (paramView == null)
     {
       paramViewGroup = new ReaderAppSubscribeUI.a.a();
-      paramView = View.inflate(this.context, a.e.readerapp_subscribe_item, null);
-      paramViewGroup.eXO = ((TextView)paramView.findViewById(a.d.readerapp_subscribe_item_title_tv));
-      paramViewGroup.eXQ = ((CheckBox)paramView.findViewById(a.d.readerapp_subscribe_item_select_cb));
+      paramView = View.inflate(this.context, 2130970519, null);
+      paramViewGroup.gpL = ((TextView)paramView.findViewById(2131827043));
+      paramViewGroup.gpN = ((CheckBox)paramView.findViewById(2131827044));
       paramView.setTag(paramViewGroup);
-      paramViewGroup.eXO.setText(this.noL[paramInt]);
-      paramViewGroup = paramViewGroup.eXQ;
-      if ((this.noK & this.noJ[paramInt]) == 0) {
-        break label111;
+      paramViewGroup.gpL.setText(this.pTZ[paramInt]);
+      paramViewGroup = paramViewGroup.gpN;
+      if ((this.pTY & this.pTX[paramInt]) == 0) {
+        break label118;
       }
     }
-    label111:
+    label118:
     for (boolean bool = true;; bool = false)
     {
       paramViewGroup.setChecked(bool);
+      AppMethodBeat.o(76806);
       return paramView;
       paramViewGroup = (ReaderAppSubscribeUI.a.a)paramView.getTag();
       break;
@@ -84,7 +89,7 @@ final class ReaderAppSubscribeUI$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.ui.ReaderAppSubscribeUI.a
  * JD-Core Version:    0.7.0.1
  */

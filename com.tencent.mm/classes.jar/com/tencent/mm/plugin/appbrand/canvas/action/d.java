@@ -11,7 +11,7 @@ public abstract interface d
   
   public abstract boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray);
   
-  public abstract BaseDrawActionArg adE();
+  public abstract BaseDrawActionArg axW();
   
   public abstract String getMethod();
 }

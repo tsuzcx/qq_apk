@@ -1,5 +1,7 @@
 package com.tencent.youtu.ytagreflectlivecheck;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class YTAGReflectLiveCheckInterface$2
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class YTAGReflectLiveCheckInterface$2
   
   public final void run()
   {
+    AppMethodBeat.i(123134);
     YTAGReflectLiveCheckInterface.access$000().onFailed(this.val$resultCode, this.val$message, this.val$tips);
     YTAGReflectLiveCheckInterface.access$002(null);
+    AppMethodBeat.o(123134);
   }
 }
 

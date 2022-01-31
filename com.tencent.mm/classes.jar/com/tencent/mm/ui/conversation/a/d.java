@@ -5,8 +5,8 @@ import android.widget.Button;
 
 public final class d
 {
-  View vUn;
-  Button vUo;
+  View Amj;
+  Button Amk;
 }
 
 

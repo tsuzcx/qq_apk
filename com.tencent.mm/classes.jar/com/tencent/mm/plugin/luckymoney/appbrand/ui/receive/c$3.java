@@ -1,29 +1,34 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.ui.receive;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.luckymoney.appbrand.ui.d.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$3
   implements d.a
 {
   c$3(c paramc) {}
   
-  public final void c(int paramInt, Intent paramIntent)
+  public final void f(int paramInt, Intent paramIntent)
   {
+    AppMethodBeat.i(42127);
     if (paramInt == -1)
     {
-      paramIntent = this.lMX;
-      if (paramIntent.lMT == null)
+      paramIntent = this.okq;
+      if (paramIntent.okm == null)
       {
-        y.e("MicroMsg.WxaReceiveLuckyMoneyLogic", "WxaGetLuckyMoneyLogic.succeed ui == null");
+        ab.e("MicroMsg.WxaReceiveLuckyMoneyLogic", "WxaGetLuckyMoneyLogic.succeed ui == null");
+        AppMethodBeat.o(42127);
         return;
       }
-      paramIntent.lMT.bfo();
-      paramIntent.lMT.b(-1, new Intent());
+      paramIntent.okm.bMO();
+      paramIntent.okm.e(-1, new Intent());
+      AppMethodBeat.o(42127);
       return;
     }
-    this.lMX.L(paramIntent);
+    this.okq.ae(paramIntent);
+    AppMethodBeat.o(42127);
   }
 }
 

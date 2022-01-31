@@ -1,16 +1,18 @@
 package com.tencent.mm.booter;
 
-import com.tencent.mm.app.f.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class g$1
-  implements f.a
+  implements f
 {
-  public final void er(int paramInt)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.PostTaskLightweightJob", "CrashStatus report: key %s ", new Object[] { Integer.valueOf(paramInt) });
-    h.nFQ.a(25L, paramInt, 1L, false);
+    AppMethodBeat.i(57807);
+    ab.i("MicroMsg.NotifySyncMgr", "onGYNetEnd: %d [%d,%d,%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.o(57807);
   }
 }
 

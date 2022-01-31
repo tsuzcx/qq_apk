@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.game.ui;
 
 import android.app.Dialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.f.c;
 
 final class GameDownloadGuidanceUI$2$1
@@ -10,16 +11,20 @@ final class GameDownloadGuidanceUI$2$1
   
   public final void run()
   {
-    if (this.laD.laC.isFinishing()) {
+    AppMethodBeat.i(111880);
+    if (this.nyz.nyy.isFinishing())
+    {
+      AppMethodBeat.o(111880);
       return;
     }
-    GameDownloadGuidanceUI.a(this.laD.laC, c.dA(this.laD.laC));
-    GameDownloadGuidanceUI.a(this.laD.laC).show();
+    GameDownloadGuidanceUI.a(this.nyz.nyy, c.en(this.nyz.nyy));
+    GameDownloadGuidanceUI.a(this.nyz.nyy).show();
+    AppMethodBeat.o(111880);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDownloadGuidanceUI.2.1
  * JD-Core Version:    0.7.0.1
  */

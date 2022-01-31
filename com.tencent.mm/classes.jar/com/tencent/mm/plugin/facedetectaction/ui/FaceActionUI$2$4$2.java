@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.facedetectaction.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FaceActionUI$2$4$2
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class FaceActionUI$2$4$2
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.FaceActionUI", "click finish");
-    this.jXc.jWX.jWU.u("fail", this.jXc.jXb, "");
+    AppMethodBeat.i(714);
+    ab.i("MicroMsg.FaceActionUI", "click finish");
+    this.mrt.mro.mrl.t("fail", this.mrt.mrs, "");
+    AppMethodBeat.o(714);
   }
 }
 

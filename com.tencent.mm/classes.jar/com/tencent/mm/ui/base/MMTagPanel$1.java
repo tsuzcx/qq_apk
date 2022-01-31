@@ -3,8 +3,9 @@ package com.tencent.mm.ui.base;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.MMEditText;
 import java.util.LinkedList;
 
@@ -15,49 +16,52 @@ final class MMTagPanel$1
   
   public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(106810);
     if ((paramKeyEvent.getAction() == 0) && (67 == paramInt))
     {
-      y.d("MicroMsg.MMTagPanel", "on del click, selection[%d, %d]", new Object[] { Integer.valueOf(MMTagPanel.a(this.uYn).getSelectionStart()), Integer.valueOf(MMTagPanel.a(this.uYn).getSelectionEnd()) });
-      if ((MMTagPanel.a(this.uYn).getSelectionStart() != 0) || (MMTagPanel.a(this.uYn).getSelectionStart() != MMTagPanel.a(this.uYn).getSelectionEnd())) {
-        break label100;
+      ab.d("MicroMsg.MMTagPanel", "on del click, selection[%d, %d]", new Object[] { Integer.valueOf(MMTagPanel.a(this.zmE).getSelectionStart()), Integer.valueOf(MMTagPanel.a(this.zmE).getSelectionEnd()) });
+      if ((MMTagPanel.a(this.zmE).getSelectionStart() == 0) && (MMTagPanel.a(this.zmE).getSelectionStart() == MMTagPanel.a(this.zmE).getSelectionEnd())) {}
+      for (paramInt = 1; paramInt == 0; paramInt = 0)
+      {
+        AppMethodBeat.o(106810);
+        return false;
       }
-      paramInt = 1;
-      if (paramInt != 0) {
-        break label105;
+      this.zmE.byt();
+      if ((MMTagPanel.b(this.zmE) == null) || (MMTagPanel.b(this.zmE).isEmpty()))
+      {
+        AppMethodBeat.o(106810);
+        return false;
+      }
+      if ((MMTagPanel.c(this.zmE)) || (MMTagPanel.d(this.zmE) != null)) {
+        break label230;
+      }
+      MMTagPanel.a(this.zmE, (MMTagPanel.d)MMTagPanel.b(this.zmE).getLast());
+      this.zmE.a(MMTagPanel.d(this.zmE).zmP, false, true);
+      MMTagPanel.a(this.zmE).setCursorVisible(false);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(106810);
+      return false;
+      label230:
+      if ((MMTagPanel.d(this.zmE) != null) && (MMTagPanel.b(this.zmE) != null) && (MMTagPanel.b(this.zmE).getLast() != null) && (!bo.isNullOrNil(MMTagPanel.d(this.zmE).zmO)) && (!bo.isNullOrNil(((MMTagPanel.d)MMTagPanel.b(this.zmE).getLast()).zmO)) && (!MMTagPanel.d(this.zmE).zmO.equals(((MMTagPanel.d)MMTagPanel.b(this.zmE).getLast()).zmO)))
+      {
+        ab.i("MicroMsg.MMTagPanel", "change hight");
+        this.zmE.dEq();
+        MMTagPanel.a(this.zmE, (MMTagPanel.d)MMTagPanel.b(this.zmE).getLast());
+        this.zmE.a(MMTagPanel.d(this.zmE).zmP, false, true);
+        MMTagPanel.a(this.zmE).setCursorVisible(false);
+      }
+      else
+      {
+        paramView = ((MMTagPanel.d)MMTagPanel.b(this.zmE).getLast()).zmO;
+        this.zmE.removeTag(paramView);
+        if (MMTagPanel.e(this.zmE) != null) {
+          MMTagPanel.e(this.zmE).Lg(paramView);
+        }
+        this.zmE.dEq();
       }
     }
-    label100:
-    label105:
-    do
-    {
-      return false;
-      paramInt = 0;
-      break;
-      this.uYn.aSc();
-    } while ((MMTagPanel.b(this.uYn) == null) || (MMTagPanel.b(this.uYn).isEmpty()));
-    if ((!MMTagPanel.c(this.uYn)) && (MMTagPanel.d(this.uYn) == null))
-    {
-      MMTagPanel.a(this.uYn, (MMTagPanel.d)MMTagPanel.b(this.uYn).getLast());
-      this.uYn.a(MMTagPanel.d(this.uYn).uYz, false, true);
-      MMTagPanel.a(this.uYn).setCursorVisible(false);
-      return false;
-    }
-    if ((MMTagPanel.d(this.uYn) != null) && (MMTagPanel.b(this.uYn) != null) && (MMTagPanel.b(this.uYn).getLast() != null) && (!bk.bl(MMTagPanel.d(this.uYn).uYy)) && (!bk.bl(((MMTagPanel.d)MMTagPanel.b(this.uYn).getLast()).uYy)) && (!MMTagPanel.d(this.uYn).uYy.equals(((MMTagPanel.d)MMTagPanel.b(this.uYn).getLast()).uYy)))
-    {
-      y.i("MicroMsg.MMTagPanel", "change hight");
-      this.uYn.cBd();
-      MMTagPanel.a(this.uYn, (MMTagPanel.d)MMTagPanel.b(this.uYn).getLast());
-      this.uYn.a(MMTagPanel.d(this.uYn).uYz, false, true);
-      MMTagPanel.a(this.uYn).setCursorVisible(false);
-      return false;
-    }
-    paramView = ((MMTagPanel.d)MMTagPanel.b(this.uYn).getLast()).uYy;
-    this.uYn.removeTag(paramView);
-    if (MMTagPanel.e(this.uYn) != null) {
-      MMTagPanel.e(this.uYn).Be(paramView);
-    }
-    this.uYn.cBd();
-    return false;
   }
 }
 

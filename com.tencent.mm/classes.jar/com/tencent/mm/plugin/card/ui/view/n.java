@@ -7,20 +7,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.a;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.c;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.k;
-import com.tencent.mm.protocal.c.lv;
-import com.tencent.mm.protocal.c.mg;
-import com.tencent.mm.protocal.c.ra;
-import com.tencent.mm.protocal.c.up;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.oj;
+import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.protocal.protobuf.uo;
+import com.tencent.mm.protocal.protobuf.zc;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 
 public final class n
@@ -33,158 +30,178 @@ public final class n
   
   private void a(Button paramButton, b paramb)
   {
-    paramb = paramb.azx().color;
-    if (!bk.bl(paramb))
+    AppMethodBeat.i(88771);
+    paramb = paramb.bbd().color;
+    if (!bo.isNullOrNil(paramb))
     {
-      int i = com.tencent.mm.plugin.card.d.l.yR(paramb);
-      paramButton.setText(this.hxN.getResources().getString(a.g.card_code_hint_agree));
+      int i = com.tencent.mm.plugin.card.d.l.IB(paramb);
+      paramButton.setText(this.jpX.getResources().getString(2131297881));
       paramButton.setTextColor(i);
       paramb = new GradientDrawable();
-      paramb.setColor(this.hxN.getResources().getColor(a.a.card_code_default_color));
+      paramb.setColor(this.jpX.getResources().getColor(2131689828));
       paramb.setStroke(2, i);
       paramb.setCornerRadius(8.0F);
       paramButton.setBackground(paramb);
     }
+    AppMethodBeat.o(88771);
   }
   
   public final void a(ViewGroup paramViewGroup, b paramb)
   {
-    am.aAI().azO();
-    paramViewGroup.findViewById(a.d.code_qr_disable_layout).setVisibility(0);
-    paramViewGroup.findViewById(a.d.code_qr_area).setVisibility(8);
-    ra localra = paramb.azy().sHL;
-    if (localra != null)
+    AppMethodBeat.i(88769);
+    am.bct().bbw();
+    paramViewGroup.findViewById(2131822019).setVisibility(0);
+    paramViewGroup.findViewById(2131822018).setVisibility(8);
+    uo localuo = paramb.bbe().wEh;
+    if (localuo != null)
     {
-      paramViewGroup.findViewById(a.d.code_shade_layout).setVisibility(0);
-      if (!bk.bl(localra.title))
+      paramViewGroup.findViewById(2131822020).setVisibility(0);
+      if (!bo.isNullOrNil(localuo.title))
       {
-        Button localButton = (Button)paramViewGroup.findViewById(a.d.code_button);
-        localButton.setText(localra.title);
+        Button localButton = (Button)paramViewGroup.findViewById(2131822023);
+        localButton.setText(localuo.title);
         localButton.setVisibility(0);
         a(localButton, paramb);
-        localButton.setOnClickListener(new n.2(this, localra, paramb));
-        if (!bk.bl(localra.ilq)) {
-          ((TextView)paramViewGroup.findViewById(a.d.code_first_title)).setText(localra.ilq);
+        localButton.setOnClickListener(new n.2(this, localuo, paramb));
+        if (!bo.isNullOrNil(localuo.kmn)) {
+          ((TextView)paramViewGroup.findViewById(2131822021)).setText(localuo.kmn);
         }
-        paramViewGroup = (TextView)paramViewGroup.findViewById(a.d.code_second_title);
-        if (bk.bl(localra.ilr)) {
-          break label175;
+        paramViewGroup = (TextView)paramViewGroup.findViewById(2131822022);
+        if (!bo.isNullOrNil(localuo.kmo))
+        {
+          paramViewGroup.setText(localuo.kmo);
+          paramViewGroup.setVisibility(0);
+          AppMethodBeat.o(88769);
+          return;
         }
-        paramViewGroup.setText(localra.ilr);
-        paramViewGroup.setVisibility(0);
+        paramViewGroup.setVisibility(8);
       }
     }
-    return;
-    label175:
-    paramViewGroup.setVisibility(8);
-  }
-  
-  public final boolean aCV()
-  {
-    return false;
-  }
-  
-  public final boolean aCW()
-  {
-    return true;
+    AppMethodBeat.o(88769);
   }
   
   public final void b(ViewGroup paramViewGroup, b paramb)
   {
-    y.i("MicroMsg.CardDynamicQrCodeController", "onScreenShot! ");
-    View localView1 = paramViewGroup.findViewById(a.d.code_qr_disable_layout);
+    AppMethodBeat.i(88770);
+    ab.i("MicroMsg.CardDynamicQrCodeController", "onScreenShot! ");
+    View localView1 = paramViewGroup.findViewById(2131822019);
     if (localView1.getVisibility() == 0)
     {
-      y.e("MicroMsg.CardDynamicQrCodeController", "code_qr_disable_layout is visible! do not show hint!");
+      ab.e("MicroMsg.CardDynamicQrCodeController", "code_qr_disable_layout is visible! do not show hint!");
+      AppMethodBeat.o(88770);
       return;
     }
     localView1.setVisibility(0);
-    Object localObject = paramViewGroup.findViewById(a.d.code_refresh_layout);
+    Object localObject = paramViewGroup.findViewById(2131822015);
     if (((View)localObject).getVisibility() == 0) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = (ImageView)paramViewGroup.findViewById(a.d.code_qr_area);
+    localObject = (ImageView)paramViewGroup.findViewById(2131822018);
     ((ImageView)localObject).setVisibility(8);
-    View localView2 = paramViewGroup.findViewById(a.d.code_shade_layout);
+    View localView2 = paramViewGroup.findViewById(2131822020);
     localView2.setVisibility(0);
-    ((TextView)paramViewGroup.findViewById(a.d.code_first_title)).setText(this.hxN.getResources().getString(a.g.card_code_hint));
-    Button localButton = (Button)paramViewGroup.findViewById(a.d.code_button);
+    ((TextView)paramViewGroup.findViewById(2131822021)).setText(this.jpX.getResources().getString(2131297880));
+    Button localButton = (Button)paramViewGroup.findViewById(2131822023);
     localButton.setVisibility(0);
     a(localButton, paramb);
-    com.tencent.mm.plugin.card.b.g localg = am.aAI();
+    com.tencent.mm.plugin.card.b.g localg = am.bct();
     if (paramb == null) {
-      y.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport do nothing return !cardInfo is null!");
+      ab.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport do nothing return !cardInfo is null!");
     }
     for (;;)
     {
       localButton.setOnClickListener(new n.3(this, localView1, localView2, (ImageView)localObject, localButton, paramViewGroup, paramb));
+      AppMethodBeat.o(88770);
       return;
-      localg.azO();
-      k localk = am.aAG().ym(paramb.azB());
+      localg.bbw();
+      k localk = am.bcr().HN(paramb.bbh());
       if (localk != null)
       {
-        y.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport currentCode cardId =%s,codeId=%s", new Object[] { localk.field_card_id, localk.field_code_id });
-        if (am.aAG().cs(paramb.azB(), localk.field_code_id)) {
-          localg.a(paramb.azB(), localk.field_code_id, c.iyT);
+        ab.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport currentCode cardId =%s,codeId=%s", new Object[] { localk.field_card_id, localk.field_code_id });
+        if (am.bcr().dp(paramb.bbh(), localk.field_code_id)) {
+          localg.a(paramb.bbh(), localk.field_code_id, c.kCa);
         } else {
-          y.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport delete failue! do not report! cardId =%s,codeId=%s", new Object[] { localk.field_card_id, localk.field_code_id });
+          ab.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport delete failue! do not report! cardId =%s,codeId=%s", new Object[] { localk.field_card_id, localk.field_code_id });
         }
       }
       else
       {
-        y.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport  failue! currentCode is null!");
+        ab.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport  failue! currentCode is null!");
       }
     }
+  }
+  
+  public final boolean bfr()
+  {
+    return false;
+  }
+  
+  public final boolean bfs()
+  {
+    return true;
   }
   
   public final void c(ViewGroup paramViewGroup, b paramb)
   {
+    AppMethodBeat.i(88767);
     super.c(paramViewGroup, paramb);
     d(paramViewGroup, paramb);
+    AppMethodBeat.o(88767);
   }
   
   final void d(ViewGroup paramViewGroup, b paramb)
   {
-    paramb = paramb.azx().sIV;
-    View localView = paramViewGroup.findViewById(a.d.code_refresh_layout);
-    if ((paramb != null) && (paramb.sRl))
+    AppMethodBeat.i(88768);
+    paramb = paramb.bbd().wGE;
+    View localView = paramViewGroup.findViewById(2131822015);
+    if ((paramb != null) && (paramb.wPZ))
     {
       localView.setVisibility(0);
-      if (!bk.bl(paramb.sRm))
+      if (!bo.isNullOrNil(paramb.wQa))
       {
-        ((TextView)paramViewGroup.findViewById(a.d.code_refresh_tv)).setText(paramb.sRm);
-        ((ImageView)paramViewGroup.findViewById(a.d.code_refresh_icon)).setOnClickListener(new n.1(this, paramViewGroup));
+        ((TextView)paramViewGroup.findViewById(2131822016)).setText(paramb.wQa);
+        ((ImageView)paramViewGroup.findViewById(2131822017)).setOnClickListener(new n.1(this, paramViewGroup));
+        AppMethodBeat.o(88768);
       }
-      return;
     }
-    localView.setVisibility(8);
+    else
+    {
+      localView.setVisibility(8);
+    }
+    AppMethodBeat.o(88768);
   }
   
   public final boolean g(b paramb)
   {
-    if (!paramb.azy().sHM)
+    AppMethodBeat.i(88765);
+    if (!paramb.bbe().wEi)
     {
-      y.e("MicroMsg.CardDynamicQrCodeController", "isCanGetAndShowCode false : is_commom_card false!ban card show!");
+      ab.e("MicroMsg.CardDynamicQrCodeController", "isCanGetAndShowCode false : is_commom_card false!ban card show!");
+      AppMethodBeat.o(88765);
       return false;
     }
-    paramb = paramb.azy().sHL;
-    if ((paramb != null) && (!bk.bl(paramb.title)))
+    paramb = paramb.bbe().wEh;
+    if ((paramb != null) && (!bo.isNullOrNil(paramb.title)))
     {
-      y.e("MicroMsg.CardDynamicQrCodeController", "isCanGetAndShowCode false : unavailable_qrcode_field is not null  !ban card show!");
+      ab.e("MicroMsg.CardDynamicQrCodeController", "isCanGetAndShowCode false : unavailable_qrcode_field is not null  !ban card show!");
+      AppMethodBeat.o(88765);
       return false;
     }
+    AppMethodBeat.o(88765);
     return true;
   }
   
   public final int getLayoutId()
   {
-    return a.e.card_code_dynamic_qrcode;
+    return 2130968916;
   }
   
-  public final void k(ViewGroup paramViewGroup)
+  public final void l(ViewGroup paramViewGroup)
   {
-    paramViewGroup.findViewById(a.d.code_qr_disable_layout).setVisibility(8);
-    paramViewGroup.findViewById(a.d.code_qr_area).setVisibility(0);
+    AppMethodBeat.i(88766);
+    paramViewGroup.findViewById(2131822019).setVisibility(8);
+    paramViewGroup.findViewById(2131822018).setVisibility(0);
+    AppMethodBeat.o(88766);
   }
 }
 

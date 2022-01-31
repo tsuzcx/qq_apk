@@ -6,12 +6,12 @@ import java.nio.MappedByteBuffer;
 
 public class MMappedFileStorage
 {
+  private int BiE;
+  private File BiF;
+  private File BiG;
+  private MappedByteBuffer BiH;
+  private RandomAccessFile BiI;
   private int currentIndex;
-  private int wLf;
-  private File wLg;
-  private File wLh;
-  private MappedByteBuffer wLi;
-  private RandomAccessFile wLj;
   
   /* Error */
   private static void h(File paramFile1, File paramFile2)
@@ -190,49 +190,49 @@ public class MMappedFileStorage
   }
   
   /* Error */
-  public final void e(byte[] paramArrayOfByte, boolean paramBoolean)
+  public final void f(byte[] paramArrayOfByte, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 68	com/tencent/recovery/storage/MMappedFileStorage:wLj	Ljava/io/RandomAccessFile;
+    //   3: getfield 68	com/tencent/recovery/storage/MMappedFileStorage:BiI	Ljava/io/RandomAccessFile;
     //   6: ifnonnull +38 -> 44
     //   9: aload_0
-    //   10: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:wLh	Ljava/io/File;
+    //   10: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:BiG	Ljava/io/File;
     //   13: invokevirtual 76	java/io/File:exists	()Z
     //   16: ifne +11 -> 27
     //   19: aload_0
-    //   20: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:wLh	Ljava/io/File;
+    //   20: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:BiG	Ljava/io/File;
     //   23: invokevirtual 79	java/io/File:createNewFile	()Z
     //   26: pop
     //   27: aload_0
     //   28: new 81	java/io/RandomAccessFile
     //   31: dup
     //   32: aload_0
-    //   33: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:wLh	Ljava/io/File;
+    //   33: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:BiG	Ljava/io/File;
     //   36: ldc 83
     //   38: invokespecial 86	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   41: putfield 68	com/tencent/recovery/storage/MMappedFileStorage:wLj	Ljava/io/RandomAccessFile;
+    //   41: putfield 68	com/tencent/recovery/storage/MMappedFileStorage:BiI	Ljava/io/RandomAccessFile;
     //   44: aload_0
-    //   45: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:wLi	Ljava/nio/MappedByteBuffer;
+    //   45: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:BiH	Ljava/nio/MappedByteBuffer;
     //   48: ifnonnull +26 -> 74
     //   51: aload_0
     //   52: aload_0
-    //   53: getfield 68	com/tencent/recovery/storage/MMappedFileStorage:wLj	Ljava/io/RandomAccessFile;
+    //   53: getfield 68	com/tencent/recovery/storage/MMappedFileStorage:BiI	Ljava/io/RandomAccessFile;
     //   56: invokevirtual 92	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
     //   59: getstatic 98	java/nio/channels/FileChannel$MapMode:READ_WRITE	Ljava/nio/channels/FileChannel$MapMode;
     //   62: lconst_0
     //   63: aload_0
-    //   64: getfield 100	com/tencent/recovery/storage/MMappedFileStorage:wLf	I
+    //   64: getfield 100	com/tencent/recovery/storage/MMappedFileStorage:BiE	I
     //   67: i2l
     //   68: invokevirtual 106	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
-    //   71: putfield 88	com/tencent/recovery/storage/MMappedFileStorage:wLi	Ljava/nio/MappedByteBuffer;
+    //   71: putfield 88	com/tencent/recovery/storage/MMappedFileStorage:BiH	Ljava/nio/MappedByteBuffer;
     //   74: aload_0
-    //   75: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:wLh	Ljava/io/File;
+    //   75: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:BiG	Ljava/io/File;
     //   78: ifnull +12 -> 90
     //   81: aload_0
-    //   82: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:wLi	Ljava/nio/MappedByteBuffer;
+    //   82: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:BiH	Ljava/nio/MappedByteBuffer;
     //   85: astore_3
     //   86: aload_3
     //   87: ifnonnull +6 -> 93
@@ -245,54 +245,54 @@ public class MMappedFileStorage
     //   98: arraylength
     //   99: iadd
     //   100: aload_0
-    //   101: getfield 100	com/tencent/recovery/storage/MMappedFileStorage:wLf	I
+    //   101: getfield 100	com/tencent/recovery/storage/MMappedFileStorage:BiE	I
     //   104: if_icmpgt +7 -> 111
     //   107: iload_2
     //   108: ifeq +104 -> 212
     //   111: aload_0
-    //   112: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:wLi	Ljava/nio/MappedByteBuffer;
+    //   112: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:BiH	Ljava/nio/MappedByteBuffer;
     //   115: invokevirtual 114	java/nio/MappedByteBuffer:force	()Ljava/nio/MappedByteBuffer;
     //   118: pop
     //   119: aload_0
-    //   120: getfield 68	com/tencent/recovery/storage/MMappedFileStorage:wLj	Ljava/io/RandomAccessFile;
+    //   120: getfield 68	com/tencent/recovery/storage/MMappedFileStorage:BiI	Ljava/io/RandomAccessFile;
     //   123: invokevirtual 115	java/io/RandomAccessFile:close	()V
     //   126: aload_0
-    //   127: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:wLh	Ljava/io/File;
+    //   127: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:BiG	Ljava/io/File;
     //   130: aload_0
-    //   131: getfield 117	com/tencent/recovery/storage/MMappedFileStorage:wLg	Ljava/io/File;
+    //   131: getfield 117	com/tencent/recovery/storage/MMappedFileStorage:BiF	Ljava/io/File;
     //   134: invokestatic 119	com/tencent/recovery/storage/MMappedFileStorage:h	(Ljava/io/File;Ljava/io/File;)V
     //   137: aload_0
     //   138: iconst_4
     //   139: putfield 108	com/tencent/recovery/storage/MMappedFileStorage:currentIndex	I
     //   142: aload_0
-    //   143: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:wLh	Ljava/io/File;
+    //   143: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:BiG	Ljava/io/File;
     //   146: invokevirtual 122	java/io/File:delete	()Z
     //   149: pop
     //   150: aload_0
-    //   151: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:wLh	Ljava/io/File;
+    //   151: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:BiG	Ljava/io/File;
     //   154: invokevirtual 79	java/io/File:createNewFile	()Z
     //   157: pop
     //   158: aload_0
     //   159: new 81	java/io/RandomAccessFile
     //   162: dup
     //   163: aload_0
-    //   164: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:wLh	Ljava/io/File;
+    //   164: getfield 70	com/tencent/recovery/storage/MMappedFileStorage:BiG	Ljava/io/File;
     //   167: ldc 83
     //   169: invokespecial 86	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   172: putfield 68	com/tencent/recovery/storage/MMappedFileStorage:wLj	Ljava/io/RandomAccessFile;
+    //   172: putfield 68	com/tencent/recovery/storage/MMappedFileStorage:BiI	Ljava/io/RandomAccessFile;
     //   175: aload_0
     //   176: aload_0
-    //   177: getfield 68	com/tencent/recovery/storage/MMappedFileStorage:wLj	Ljava/io/RandomAccessFile;
+    //   177: getfield 68	com/tencent/recovery/storage/MMappedFileStorage:BiI	Ljava/io/RandomAccessFile;
     //   180: invokevirtual 92	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
     //   183: getstatic 98	java/nio/channels/FileChannel$MapMode:READ_WRITE	Ljava/nio/channels/FileChannel$MapMode;
     //   186: lconst_0
     //   187: aload_0
-    //   188: getfield 100	com/tencent/recovery/storage/MMappedFileStorage:wLf	I
+    //   188: getfield 100	com/tencent/recovery/storage/MMappedFileStorage:BiE	I
     //   191: i2l
     //   192: invokevirtual 106	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
-    //   195: putfield 88	com/tencent/recovery/storage/MMappedFileStorage:wLi	Ljava/nio/MappedByteBuffer;
+    //   195: putfield 88	com/tencent/recovery/storage/MMappedFileStorage:BiH	Ljava/nio/MappedByteBuffer;
     //   198: aload_0
-    //   199: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:wLi	Ljava/nio/MappedByteBuffer;
+    //   199: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:BiH	Ljava/nio/MappedByteBuffer;
     //   202: aload_0
     //   203: getfield 108	com/tencent/recovery/storage/MMappedFileStorage:currentIndex	I
     //   206: iconst_4
@@ -303,18 +303,18 @@ public class MMappedFileStorage
     //   213: arraylength
     //   214: iflt -124 -> 90
     //   217: aload_0
-    //   218: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:wLi	Ljava/nio/MappedByteBuffer;
+    //   218: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:BiH	Ljava/nio/MappedByteBuffer;
     //   221: aload_0
     //   222: getfield 108	com/tencent/recovery/storage/MMappedFileStorage:currentIndex	I
     //   225: invokevirtual 130	java/nio/MappedByteBuffer:position	(I)Ljava/nio/Buffer;
     //   228: pop
     //   229: aload_0
-    //   230: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:wLi	Ljava/nio/MappedByteBuffer;
+    //   230: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:BiH	Ljava/nio/MappedByteBuffer;
     //   233: aload_1
     //   234: invokevirtual 134	java/nio/MappedByteBuffer:put	([B)Ljava/nio/ByteBuffer;
     //   237: pop
     //   238: aload_0
-    //   239: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:wLi	Ljava/nio/MappedByteBuffer;
+    //   239: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:BiH	Ljava/nio/MappedByteBuffer;
     //   242: iconst_0
     //   243: invokevirtual 130	java/nio/MappedByteBuffer:position	(I)Ljava/nio/Buffer;
     //   246: pop
@@ -326,7 +326,7 @@ public class MMappedFileStorage
     //   254: iadd
     //   255: putfield 108	com/tencent/recovery/storage/MMappedFileStorage:currentIndex	I
     //   258: aload_0
-    //   259: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:wLi	Ljava/nio/MappedByteBuffer;
+    //   259: getfield 88	com/tencent/recovery/storage/MMappedFileStorage:BiH	Ljava/nio/MappedByteBuffer;
     //   262: aload_0
     //   263: getfield 108	com/tencent/recovery/storage/MMappedFileStorage:currentIndex	I
     //   266: iconst_4

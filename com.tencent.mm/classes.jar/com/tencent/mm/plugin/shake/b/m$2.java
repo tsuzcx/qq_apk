@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.shake.b;
 
-import com.tencent.mm.h.c.as;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.t;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.be.a;
@@ -13,14 +14,16 @@ final class m$2
   
   public final void a(ak paramak, be parambe)
   {
-    if ((paramak != null) && (s.hO(paramak.field_username))) {
+    AppMethodBeat.i(24476);
+    if ((paramak != null) && (t.ox(paramak.field_username))) {
       paramak.setUsername("");
     }
+    AppMethodBeat.o(24476);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.m.2
  * JD-Core Version:    0.7.0.1
  */

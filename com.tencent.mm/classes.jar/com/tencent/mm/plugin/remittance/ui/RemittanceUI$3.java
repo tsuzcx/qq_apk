@@ -1,22 +1,28 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.remittance.model.e;
-import com.tencent.mm.protocal.c.nt;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.protocal.protobuf.qv;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class RemittanceUI$3
-  implements n.a
+  implements p.a
 {
   RemittanceUI$3(RemittanceUI paramRemittanceUI, e parame) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.d("MicroMsg.RemittanceUI", "mask_name: %s truename_extend %s", new Object[] { this.nEz.nxW.sLm, this.nEz.nxW.nEy });
-    this.nEA.nAo = this.nEz.nxW.sLm;
-    this.nEA.nEy = this.nEz.nxW.nEy;
-    this.nEA.bwv();
+    AppMethodBeat.i(45162);
+    ab.d("MicroMsg.RemittanceUI", "mask_name: %s truename_extend %s", new Object[] { this.qrz.qiX.wJa, this.qrz.qiX.qrx });
+    this.qrA.qlK = this.qrz.qiX.wJa;
+    this.qrA.qrx = this.qrz.qiX.qrx;
+    this.qrA.qlo = this.qrz.qiX.wJb;
+    RemittanceUI.a(this.qrA, this.qrz.qiX.qry);
+    this.qrA.qnV = this.qrz.qiX.qkr;
+    this.qrA.chl();
+    AppMethodBeat.o(45162);
   }
 }
 

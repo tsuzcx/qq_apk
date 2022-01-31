@@ -1,13 +1,22 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class m
-  extends s
+  extends t
 {
   public int backgroundColor;
-  public LinkedList<s> oCS = new LinkedList();
-  public boolean oCT = false;
+  public LinkedList<t> rsu;
+  public boolean rsv;
+  
+  public m()
+  {
+    AppMethodBeat.i(36939);
+    this.rsu = new LinkedList();
+    this.rsv = false;
+    AppMethodBeat.o(36939);
+  }
 }
 
 

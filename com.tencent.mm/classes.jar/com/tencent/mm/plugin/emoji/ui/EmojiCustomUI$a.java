@@ -1,7 +1,19 @@
 package com.tencent.mm.plugin.emoji.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
  enum EmojiCustomUI$a
 {
+  static
+  {
+    AppMethodBeat.i(53321);
+    llL = new a("START", 0);
+    llM = new a("PAUSE", 1);
+    llN = new a("EMPTY", 2);
+    llO = new a[] { llL, llM, llN };
+    AppMethodBeat.o(53321);
+  }
+  
   private EmojiCustomUI$a() {}
 }
 

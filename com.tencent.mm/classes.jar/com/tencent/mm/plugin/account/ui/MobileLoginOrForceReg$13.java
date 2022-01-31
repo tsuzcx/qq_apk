@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.b;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.d;
 
 final class MobileLoginOrForceReg$13
   implements Runnable
@@ -13,31 +14,36 @@ final class MobileLoginOrForceReg$13
   
   public final void run()
   {
+    AppMethodBeat.i(125213);
     Object localObject = null;
     try
     {
-      Bitmap localBitmap = c.decodeStream(b.n(this.val$url, 10000, 20000));
+      Bitmap localBitmap = d.decodeStream(b.x(this.val$url, 10000, 20000));
       localObject = localBitmap;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.e("MicorMsg.MobileLoginOrForceReg", "download avatar failed");
-        y.printErrStackTrace("MicorMsg.MobileLoginOrForceReg", localException, "", new Object[0]);
+        ab.e("MicorMsg.MobileLoginOrForceReg", "download avatar failed");
+        ab.printErrStackTrace("MicorMsg.MobileLoginOrForceReg", localException, "", new Object[0]);
       }
     }
-    MobileLoginOrForceReg.b(this.fpa).sendMessage(MobileLoginOrForceReg.b(this.fpa).obtainMessage(0, localObject));
+    MobileLoginOrForceReg.b(this.gGw).sendMessage(MobileLoginOrForceReg.b(this.gGw).obtainMessage(0, localObject));
+    AppMethodBeat.o(125213);
   }
   
   public final String toString()
   {
-    return super.toString() + "|loadBitmap";
+    AppMethodBeat.i(125214);
+    String str = super.toString() + "|loadBitmap";
+    AppMethodBeat.o(125214);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.MobileLoginOrForceReg.13
  * JD-Core Version:    0.7.0.1
  */

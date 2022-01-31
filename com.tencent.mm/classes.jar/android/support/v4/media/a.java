@@ -10,42 +10,42 @@ final class a
   static final class b<T extends a.a>
     extends MediaBrowser.ConnectionCallback
   {
-    protected final T Be;
+    protected final T BQ;
     
     public b(T paramT)
     {
-      this.Be = paramT;
+      this.BQ = paramT;
     }
     
     public final void onConnected()
     {
-      this.Be.onConnected();
+      this.BQ.onConnected();
     }
     
     public final void onConnectionFailed()
     {
-      this.Be.onConnectionFailed();
+      this.BQ.onConnectionFailed();
     }
     
     public final void onConnectionSuspended()
     {
-      this.Be.onConnectionSuspended();
+      this.BQ.onConnectionSuspended();
     }
   }
   
   static class d<T extends a.c>
     extends MediaBrowser.SubscriptionCallback
   {
-    protected final T Bf;
+    protected final T BR;
     
     public d(T paramT)
     {
-      this.Bf = paramT;
+      this.BR = paramT;
     }
     
     public void onChildrenLoaded(String paramString, List<MediaBrowser.MediaItem> paramList)
     {
-      this.Bf.k(paramList);
+      this.BR.k(paramList);
     }
     
     public void onError(String paramString) {}

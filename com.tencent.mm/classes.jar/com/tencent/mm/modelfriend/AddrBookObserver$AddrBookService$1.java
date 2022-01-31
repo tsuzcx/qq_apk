@@ -1,31 +1,36 @@
 package com.tencent.mm.modelfriend;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.a.a.b;
 import com.tencent.mm.plugin.account.friend.a.al;
 import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AddrBookObserver$AddrBookService$1
   implements b
 {
   AddrBookObserver$AddrBookService$1(AddrBookObserver.AddrBookService paramAddrBookService) {}
   
-  public final void bW(boolean paramBoolean)
+  public final void cY(boolean paramBoolean)
   {
+    AppMethodBeat.i(124498);
     if (!paramBoolean)
     {
-      y.v("MicroMsg.AddrBookObserver", "onSyncEnd not sync succ, do not upload");
-      this.ekS.stopSelf();
-      AddrBookObserver.AddrBookService.ekO = false;
+      ab.v("MicroMsg.AddrBookObserver", "onSyncEnd not sync succ, do not upload");
+      this.fBj.stopSelf();
+      AddrBookObserver.AddrBookService.fBf = false;
+      AppMethodBeat.o(124498);
       return;
     }
     System.currentTimeMillis();
-    al localal = new al(l.WW(), l.WV());
-    g.Dk().a(localal, 0);
-    this.ekS.stopSelf();
-    AddrBookObserver.AddrBookService.ekO = false;
+    l.aqv();
+    al localal = new al(l.aqz(), l.aqy());
+    g.Rc().a(localal, 0);
+    this.fBj.stopSelf();
+    AddrBookObserver.AddrBookService.fBf = false;
+    AppMethodBeat.o(124498);
   }
 }
 

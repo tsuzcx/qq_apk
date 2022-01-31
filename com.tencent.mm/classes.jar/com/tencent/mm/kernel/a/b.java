@@ -4,17 +4,17 @@ import com.tencent.mm.kernel.b.g;
 
 public abstract interface b
 {
-  public abstract void DW();
+  public abstract void Bc();
   
-  public abstract void DX();
+  public abstract void Bd();
+  
+  public abstract void RV();
+  
+  public abstract void RW();
   
   public abstract void a(g paramg);
   
   public abstract void b(g paramg);
-  
-  public abstract void sJ();
-  
-  public abstract void sK();
 }
 
 

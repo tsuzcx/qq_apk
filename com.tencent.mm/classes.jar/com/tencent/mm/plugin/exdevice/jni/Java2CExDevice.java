@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.exdevice.jni;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.k;
 
 public final class Java2CExDevice
 {
   static
   {
-    k.b("wechataccessory", Java2CExDevice.class.getClassLoader());
+    AppMethodBeat.i(19086);
+    k.a("wechataccessory", Java2CExDevice.class.getClassLoader());
     onCreate();
     initBluetoothAccessoryLib();
+    AppMethodBeat.o(19086);
   }
   
   public static native void cancelWCLanDeviceTask(int paramInt);

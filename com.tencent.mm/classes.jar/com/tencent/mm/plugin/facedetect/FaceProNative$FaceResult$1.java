@@ -2,13 +2,17 @@ package com.tencent.mm.plugin.facedetect;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FaceProNative$FaceResult$1
   implements Parcelable.Creator<FaceProNative.FaceResult>
 {
   public final FaceProNative.FaceResult createFromParcel(Parcel paramParcel)
   {
-    return new FaceProNative.FaceResult(paramParcel);
+    AppMethodBeat.i(30);
+    paramParcel = new FaceProNative.FaceResult(paramParcel);
+    AppMethodBeat.o(30);
+    return paramParcel;
   }
   
   public final FaceProNative.FaceResult[] newArray(int paramInt)

@@ -1,133 +1,172 @@
 package com.tencent.mm.bv;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.UnsupportedEncodingException;
 
 public final class b
 {
-  public byte[] oY;
+  public byte[] pW;
   
   private b() {}
   
   public b(byte[] paramArrayOfByte)
   {
     this(paramArrayOfByte, 0, paramArrayOfByte.length);
+    AppMethodBeat.i(51823);
+    AppMethodBeat.o(51823);
   }
   
   public b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.oY = new byte[paramInt2];
-    System.arraycopy(paramArrayOfByte, paramInt1, this.oY, 0, paramInt2);
+    AppMethodBeat.i(51824);
+    this.pW = new byte[paramInt2];
+    System.arraycopy(paramArrayOfByte, paramInt1, this.pW, 0, paramInt2);
+    AppMethodBeat.o(51824);
   }
   
-  public static b Xp(String paramString)
+  public static b ank(String paramString)
   {
+    AppMethodBeat.i(51827);
     try
     {
       b localb = new b();
-      localb.oY = paramString.getBytes("UTF-8");
+      localb.pW = paramString.getBytes("UTF-8");
+      AppMethodBeat.o(51827);
       return localb;
     }
     catch (UnsupportedEncodingException paramString)
     {
-      throw new RuntimeException("UTF-8 not supported?", paramString);
+      paramString = new RuntimeException("UTF-8 not supported?", paramString);
+      AppMethodBeat.o(51827);
+      throw paramString;
     }
   }
   
-  public static b bk(byte[] paramArrayOfByte)
+  public static b bL(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(51826);
     if (paramArrayOfByte != null) {}
     for (;;)
     {
-      return new b(paramArrayOfByte);
+      paramArrayOfByte = new b(paramArrayOfByte);
+      AppMethodBeat.o(51826);
+      return paramArrayOfByte;
       paramArrayOfByte = new byte[0];
     }
   }
   
-  public static b v(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static b z(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return new b(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.i(51825);
+    paramArrayOfByte = new b(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.o(51825);
+    return paramArrayOfByte;
   }
   
-  public final b EB(int paramInt)
+  public final b Mz(int paramInt)
   {
+    AppMethodBeat.i(51828);
     byte[] arrayOfByte = new byte[paramInt];
-    if (this.oY.length >= paramInt)
-    {
-      System.arraycopy(this.oY, 0, arrayOfByte, 0, paramInt - 1);
-      this.oY = arrayOfByte;
-      return this;
+    if (this.pW.length >= paramInt) {
+      System.arraycopy(this.pW, 0, arrayOfByte, 0, paramInt - 1);
     }
-    System.arraycopy(this.oY, 0, arrayOfByte, 0, this.oY.length);
-    this.oY = arrayOfByte;
-    return this;
+    for (this.pW = arrayOfByte;; this.pW = arrayOfByte)
+    {
+      AppMethodBeat.o(51828);
+      return this;
+      System.arraycopy(this.pW, 0, arrayOfByte, 0, this.pW.length);
+    }
   }
   
-  public final void bl(byte[] paramArrayOfByte)
+  public final void bM(byte[] paramArrayOfByte)
   {
-    System.arraycopy(this.oY, 0, paramArrayOfByte, 4, this.oY.length);
+    AppMethodBeat.i(51829);
+    System.arraycopy(this.pW, 0, paramArrayOfByte, 4, this.pW.length);
+    AppMethodBeat.o(51829);
   }
   
   /* Error */
-  public final String coM()
+  public final String dqj()
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore_1
-    //   2: iload_1
-    //   3: aload_0
-    //   4: getfield 17	com/tencent/mm/bv/b:oY	[B
-    //   7: arraylength
-    //   8: if_icmplt +19 -> 27
-    //   11: new 32	java/lang/String
-    //   14: dup
-    //   15: aload_0
-    //   16: getfield 17	com/tencent/mm/bv/b:oY	[B
-    //   19: iconst_0
-    //   20: iload_1
-    //   21: ldc 30
-    //   23: invokespecial 57	java/lang/String:<init>	([BIILjava/lang/String;)V
-    //   26: areturn
-    //   27: aload_0
-    //   28: getfield 17	com/tencent/mm/bv/b:oY	[B
-    //   31: iload_1
-    //   32: baload
-    //   33: istore_2
-    //   34: iload_2
-    //   35: ifeq -24 -> 11
-    //   38: iload_1
-    //   39: iconst_1
-    //   40: iadd
-    //   41: istore_1
-    //   42: goto -40 -> 2
-    //   45: astore_3
-    //   46: new 38	java/lang/RuntimeException
-    //   49: dup
-    //   50: ldc 40
-    //   52: invokespecial 60	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   55: athrow
+    //   2: ldc 71
+    //   4: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: iload_1
+    //   8: aload_0
+    //   9: getfield 28	com/tencent/mm/bv/b:pW	[B
+    //   12: arraylength
+    //   13: if_icmplt +26 -> 39
+    //   16: new 44	java/lang/String
+    //   19: dup
+    //   20: aload_0
+    //   21: getfield 28	com/tencent/mm/bv/b:pW	[B
+    //   24: iconst_0
+    //   25: iload_1
+    //   26: ldc 42
+    //   28: invokespecial 74	java/lang/String:<init>	([BIILjava/lang/String;)V
+    //   31: astore_3
+    //   32: ldc 71
+    //   34: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: aload_3
+    //   38: areturn
+    //   39: aload_0
+    //   40: getfield 28	com/tencent/mm/bv/b:pW	[B
+    //   43: iload_1
+    //   44: baload
+    //   45: istore_2
+    //   46: iload_2
+    //   47: ifeq -31 -> 16
+    //   50: iload_1
+    //   51: iconst_1
+    //   52: iadd
+    //   53: istore_1
+    //   54: goto -47 -> 7
+    //   57: astore_3
+    //   58: new 50	java/lang/RuntimeException
+    //   61: dup
+    //   62: ldc 52
+    //   64: invokespecial 77	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   67: astore_3
+    //   68: ldc 71
+    //   70: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: aload_3
+    //   74: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	56	0	this	b
-    //   1	41	1	i	int
-    //   33	2	2	j	int
-    //   45	1	3	localUnsupportedEncodingException	UnsupportedEncodingException
+    //   0	75	0	this	b
+    //   1	53	1	i	int
+    //   45	2	2	j	int
+    //   31	7	3	str	String
+    //   57	1	3	localUnsupportedEncodingException	UnsupportedEncodingException
+    //   67	7	3	localRuntimeException	RuntimeException
     // Exception table:
     //   from	to	target	type
-    //   2	11	45	java/io/UnsupportedEncodingException
-    //   11	27	45	java/io/UnsupportedEncodingException
-    //   27	34	45	java/io/UnsupportedEncodingException
+    //   7	16	57	java/io/UnsupportedEncodingException
+    //   16	32	57	java/io/UnsupportedEncodingException
+    //   39	46	57	java/io/UnsupportedEncodingException
   }
   
-  public final void f(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public final byte[] getBytes()
   {
-    System.arraycopy(this.oY, paramInt1, paramArrayOfByte, paramInt2, paramInt3);
+    return this.pW;
+  }
+  
+  public final void h(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(51830);
+    System.arraycopy(this.pW, paramInt1, paramArrayOfByte, paramInt2, paramInt3);
+    AppMethodBeat.o(51830);
   }
   
   public final byte[] toByteArray()
   {
-    int i = this.oY.length;
+    AppMethodBeat.i(51831);
+    int i = this.pW.length;
     byte[] arrayOfByte = new byte[i];
-    System.arraycopy(this.oY, 0, arrayOfByte, 0, i);
+    System.arraycopy(this.pW, 0, arrayOfByte, 0, i);
+    AppMethodBeat.o(51831);
     return arrayOfByte;
   }
 }

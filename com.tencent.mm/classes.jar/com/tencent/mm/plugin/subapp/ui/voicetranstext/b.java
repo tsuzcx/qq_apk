@@ -1,79 +1,76 @@
 package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.amf;
-import com.tencent.mm.protocal.c.amg;
-import com.tencent.mm.protocal.c.bhy;
-import com.tencent.mm.protocal.c.cdx;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aru;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.bqi;
+import com.tencent.mm.protocal.protobuf.cri;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import junit.framework.Assert;
 
 public final class b
   extends m
   implements k
 {
-  private final String TAG = "MicroMsg.NetSceneGetVoiceTransRes";
-  private com.tencent.mm.ah.b ecz;
-  private f mEe;
-  private String pyk;
-  public cdx pyt;
-  public int pyx = -1;
+  private final String TAG;
+  private com.tencent.mm.ai.b fsQ;
+  private f peg;
+  private String sZY;
+  public cri tah;
+  public int tal;
   
   public b(String paramString)
   {
-    if (!bk.bl(paramString)) {}
+    AppMethodBeat.i(25580);
+    this.TAG = "MicroMsg.NetSceneGetVoiceTransRes";
+    this.tal = -1;
+    if (!bo.isNullOrNil(paramString)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.pyk = paramString;
+      this.sZY = paramString;
       paramString = new b.a();
-      paramString.ecH = new amf();
-      paramString.ecI = new amg();
+      paramString.fsX = new aru();
+      paramString.fsY = new arv();
       paramString.uri = "/cgi-bin/micromsg-bin/getvoicetransres";
-      paramString.ecG = 548;
-      paramString.ecJ = 0;
-      paramString.ecK = 0;
-      this.ecz = paramString.Kt();
+      paramString.funcId = 548;
+      paramString.reqCmdId = 0;
+      paramString.respCmdId = 0;
+      this.fsQ = paramString.ado();
+      AppMethodBeat.o(25580);
       return;
     }
   }
   
-  public final int a(e parame, f paramf)
+  public final boolean cHd()
   {
-    this.mEe = paramf;
-    ((amf)this.ecz.ecE.ecN).sNM = this.pyk;
-    return a(parame, this.ecz, this);
+    AppMethodBeat.i(25583);
+    if ((this.tah != null) && (!bo.isNullOrNil(this.tah.xZS)))
+    {
+      AppMethodBeat.o(25583);
+      return true;
+    }
+    AppMethodBeat.o(25583);
+    return false;
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final int doScene(e parame, f paramf)
   {
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      paramq = (amg)this.ecz.ecF.ecN;
-      if (paramq.sNQ != null) {
-        this.pyx = paramq.sNQ.tCw;
-      }
-      this.pyt = paramq.sNO;
-    }
-    for (;;)
-    {
-      this.mEe.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-      y.i("MicroMsg.NetSceneGetVoiceTransRes", "error get: errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    }
-  }
-  
-  public final boolean bMf()
-  {
-    return (this.pyt != null) && (!bk.bl(this.pyt.tSA));
+    AppMethodBeat.i(25581);
+    this.peg = paramf;
+    ((aru)this.fsQ.fsV.fta).wAs = this.sZY;
+    int i = dispatch(parame, this.fsQ, this);
+    AppMethodBeat.o(25581);
+    return i;
   }
   
   public final int getType()
@@ -83,7 +80,27 @@ public final class b
   
   public final boolean isComplete()
   {
-    return (this.pyt != null) && (this.pyt.euw == 1);
+    return (this.tah != null) && (this.tah.fKi == 1);
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(25582);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      paramq = (arv)this.fsQ.fsW.fta;
+      if (paramq.wLK != null) {
+        this.tal = paramq.wLK.xEz;
+      }
+      this.tah = paramq.wLI;
+    }
+    for (;;)
+    {
+      this.peg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(25582);
+      return;
+      ab.i("MicroMsg.NetSceneGetVoiceTransRes", "error get: errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    }
   }
 }
 

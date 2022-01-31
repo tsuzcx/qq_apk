@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.backup.c;
 
-import com.tencent.mm.sdk.platformtools.af;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.concurrent.atomic.AtomicLong;
 
 final class c$b$1
@@ -9,32 +10,34 @@ final class c$b$1
 {
   c$b$1(c.b paramb) {}
   
-  public final void e(boolean paramBoolean, String paramString, int paramInt)
+  public final void g(boolean paramBoolean, String paramString, int paramInt)
   {
-    c.a locala = this.hGz.hGp;
+    AppMethodBeat.i(17176);
+    c.a locala = this.jzV.jzL;
     long l1 = paramInt;
-    locala.hGl.addAndGet(0L - l1);
-    if (locala.hGl.get() < 8388608L) {
-      locala.hGm.open();
+    locala.jzH.addAndGet(0L - l1);
+    if (locala.jzH.get() < 8388608L) {
+      locala.jzI.open();
     }
-    if (locala.hGl.get() < 16777216L) {
-      locala.hGn.open();
+    if (locala.jzH.get() < 16777216L) {
+      locala.jzJ.open();
     }
-    long l2 = locala.hGl.get();
+    long l2 = locala.jzH.get();
     boolean bool1;
-    if (locala.hGl.get() >= 8388608L)
+    if (locala.jzH.get() >= 8388608L)
     {
       bool1 = true;
-      if (locala.hGl.get() < 16777216L) {
-        break label254;
+      if (locala.jzH.get() < 16777216L) {
+        break label266;
       }
     }
-    label254:
+    label266:
     for (boolean bool2 = true;; bool2 = false)
     {
-      y.v("MicroMsg.BackupPackAndSend", "MemoryChecker.release size:%d sum:%d [%b,%b] [%b,%b]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(locala.hGm.ufm), Boolean.valueOf(locala.hGn.ufm) });
-      this.hGz.hGk.hGf += paramInt;
-      y.i(this.hGz.TAG, "OnfinishIdCallback size[%d], isIdFinish[%b], id[%s] ", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramString });
+      ab.v("MicroMsg.BackupPackAndSend", "MemoryChecker.release size:%d sum:%d [%b,%b] [%b,%b]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(locala.jzI.ynM), Boolean.valueOf(locala.jzJ.ynM) });
+      this.jzV.jzG.jzB += paramInt;
+      ab.i(this.jzV.TAG, "OnfinishIdCallback size[%d], isIdFinish[%b], id[%s] ", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramString });
+      AppMethodBeat.o(17176);
       return;
       bool1 = false;
       break;
@@ -43,7 +46,7 @@ final class c$b$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.c.c.b.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.h;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.i.b;
-import com.tencent.mm.plugin.appbrand.m.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.j.b;
+import com.tencent.mm.plugin.appbrand.k.a.b;
+import com.tencent.mm.plugin.appbrand.k.a.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import org.json.JSONObject;
 
 public final class a
@@ -13,70 +15,96 @@ public final class a
 {
   public static final int CTRL_INDEX = 467;
   public static final String NAME = "createLoadSubPackageTask";
-  String gep = "";
-  String gxj = "";
+  String hTE = "";
+  String hwp = "";
   long mTotalSize = -1L;
   
-  private void l(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
+  private void s(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
   {
-    a.a.a(paramc, this.gep, "fail", this.gxj);
+    AppMethodBeat.i(114381);
+    a.a.a(paramc, this.hwp, "fail", this.hTE);
+    AppMethodBeat.o(114381);
+  }
+  
+  public final String Ox()
+  {
+    return "loadTaskId";
   }
   
   public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, String paramString)
   {
-    paramc = (f)paramc;
-    this.gxj = paramJSONObject.optString("moduleName");
-    if (bk.bl(this.gxj))
+    AppMethodBeat.i(114380);
+    paramc = (h)paramc;
+    this.hTE = paramJSONObject.optString("moduleName");
+    if (bo.isNullOrNil(this.hTE))
     {
-      y.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: null or nil moduleName");
-      l(paramc);
+      ab.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: null or nil moduleName");
+      s(paramc);
+      AppMethodBeat.o(114380);
       return;
     }
     paramJSONObject = paramc.getRuntime();
     if ((paramJSONObject == null) || (paramJSONObject.mFinished))
     {
-      y.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: runtime is not in valid state!");
-      l(paramc);
+      ab.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: runtime is not in valid state!");
+      s(paramc);
+      AppMethodBeat.o(114380);
       return;
     }
-    paramJSONObject = paramJSONObject.fyz;
+    paramJSONObject = paramJSONObject.gPM;
     if (paramJSONObject == null)
     {
-      y.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: modularizingHelper null!");
-      l(paramc);
+      ab.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: modularizingHelper null!");
+      s(paramc);
+      AppMethodBeat.o(114380);
       return;
     }
-    if (!paramJSONObject.amA())
+    if (!paramJSONObject.aIe())
     {
-      y.w("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: not support modularizing but still called JsApiCreateLoadSubPackageTask");
-      a.a.b(paramc, this.gep, "fail", this.gxj, 0, -1L, -1L);
+      ab.w("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: not support modularizing but still called JsApiCreateLoadSubPackageTask");
+      s(paramc);
+      AppMethodBeat.o(114380);
       return;
     }
-    paramJSONObject.a(this.gxj, false, new a.1(this, paramc), new com.tencent.mm.plugin.appbrand.m.a.a()
+    paramJSONObject.a(this.hTE, false, new a.b()new a.2
     {
-      public final void a(d paramAnonymousd)
+      public final void a(a.d paramAnonymousd)
       {
-        y.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: module name: %s progress: %s", new Object[] { a.this.gxj, paramAnonymousd.toString() });
-        a.this.mTotalSize = paramAnonymousd.acm();
-        a.a.b(paramc, a.this.gep, "progressUpdate", a.this.gxj, paramAnonymousd.getProgress(), paramAnonymousd.acl(), paramAnonymousd.acm());
+        AppMethodBeat.i(114374);
+        ab.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: loadResult: %s", new Object[] { paramAnonymousd.toString() });
+        switch (a.3.hTG[paramAnonymousd.ordinal()])
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(114374);
+          return;
+          a.a.a(paramc, a.this.hwp, "success", a.this.hTE);
+          AppMethodBeat.o(114374);
+          return;
+          a.a.a(paramc, a.this.hwp, "fail", a.this.hTE);
+          AppMethodBeat.o(114374);
+          return;
+          ab.w("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: should not happen cancel!!");
+          a.a.a(paramc, a.this.hwp, "fail", a.this.hTE);
+        }
       }
-    });
+    }, new a.2(this, paramc));
+    AppMethodBeat.o(114380);
   }
   
-  protected final String ajy()
+  public final String aAR()
   {
-    if (bk.bl(this.gep))
+    AppMethodBeat.i(114379);
+    if (bo.isNullOrNil(this.hwp))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      com.tencent.mm.plugin.appbrand.o.c.amD();
-      this.gep = com.tencent.mm.plugin.appbrand.o.c.amC();
+      localObject = new StringBuilder();
+      com.tencent.mm.plugin.appbrand.m.c.aIh();
+      this.hwp = com.tencent.mm.plugin.appbrand.m.c.aIg();
     }
-    return this.gep;
-  }
-  
-  protected final String ajz()
-  {
-    return "loadTaskId";
+    Object localObject = this.hwp;
+    AppMethodBeat.o(114379);
+    return localObject;
   }
 }
 

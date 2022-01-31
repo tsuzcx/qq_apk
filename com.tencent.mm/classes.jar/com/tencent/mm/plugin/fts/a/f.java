@@ -8,14 +8,15 @@ import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.d.a;
 import com.tencent.mm.plugin.fts.a.a.d.b;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.plugin.fts.a.a.g.b;
 import com.tencent.mm.plugin.fts.a.a.g.c;
 import com.tencent.mm.plugin.fts.a.a.g.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,46 +27,57 @@ public final class f
   @Deprecated
   public static Spannable a(CharSequence paramCharSequence, String paramString)
   {
+    AppMethodBeat.i(114229);
     paramCharSequence = a(com.tencent.mm.plugin.fts.a.a.d.b(paramCharSequence, paramString));
-    if ((paramCharSequence.kwz instanceof Spannable)) {
-      return (Spannable)paramCharSequence.kwz;
+    if ((paramCharSequence.mSp instanceof Spannable))
+    {
+      paramCharSequence = (Spannable)paramCharSequence.mSp;
+      AppMethodBeat.o(114229);
+      return paramCharSequence;
     }
-    return new SpannableString(paramCharSequence.kwz);
+    paramCharSequence = new SpannableString(paramCharSequence.mSp);
+    AppMethodBeat.o(114229);
+    return paramCharSequence;
   }
   
-  private static e a(SpannableString paramSpannableString, d.b paramb, com.tencent.mm.plugin.fts.a.a.d paramd)
+  private static e a(Spannable paramSpannable, d.b paramb, com.tencent.mm.plugin.fts.a.a.d paramd)
   {
+    AppMethodBeat.i(114222);
     e locale = new e();
-    float f1 = paramd.kwn - paramd.dOi.getTextSize() * 2.0F;
-    float f2 = paramd.dOi.measureText("…");
-    float f3 = paramd.dOi.measureText(paramSpannableString, 0, paramb.kwx);
-    float f4 = paramd.dOi.measureText(paramSpannableString, paramb.kwx, paramb.kwy);
-    float f5 = paramd.dOi.measureText(paramSpannableString, paramb.kwy, paramSpannableString.length());
-    if (f3 + f4 + f5 < f1) {
-      return c(paramSpannableString, paramb, paramd);
-    }
-    Object localObject1;
-    Object localObject2;
-    if (paramd.kwl == d.a.kwu)
+    float f1 = paramd.mSc - paramd.eLQ.getTextSize() * 2.0F;
+    float f2 = paramd.eLQ.measureText("…");
+    float f3 = paramd.eLQ.measureText(paramSpannable, 0, paramb.mSm);
+    float f4 = paramd.eLQ.measureText(paramSpannable, paramb.mSm, paramb.mSn);
+    float f5 = paramd.eLQ.measureText(paramSpannable, paramb.mSn, paramSpannable.length());
+    if (f3 + f4 + f5 < f1)
     {
-      localObject1 = new SpannableString(TextUtils.concat(new CharSequence[] { paramd.kwq, paramSpannableString.subSequence(paramb.kwx, paramb.kwy), paramd.kwr }));
+      paramSpannable = c(paramSpannable, paramb, paramd);
+      AppMethodBeat.o(114222);
+      return paramSpannable;
+    }
+    Object localObject2 = paramSpannable.subSequence(paramb.mSm, paramb.mSn);
+    Object localObject1;
+    if (paramd.mSa == d.a.mSj)
+    {
+      localObject1 = new SpannableString(TextUtils.concat(new CharSequence[] { paramd.mSf, localObject2, paramd.mSg }));
       if (f3 + f4 + f2 >= f1) {
-        break label365;
+        break label389;
       }
-      localObject2 = new SpannableStringBuilder(paramSpannableString, 0, paramb.kwx);
+      localObject2 = new SpannableStringBuilder(paramSpannable, 0, paramb.mSm);
       ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1);
-      ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannableString.subSequence(paramb.kwy, paramSpannableString.length()), paramd.dOi, f1 - f3 - f4, TextUtils.TruncateAt.END));
-      locale.kwz = ((CharSequence)localObject2);
+      ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannable.subSequence(paramb.mSn, paramSpannable.length()), paramd.eLQ, f1 - f3 - f4, TextUtils.TruncateAt.END));
+      locale.mSp = ((CharSequence)localObject2);
     }
     for (;;)
     {
-      locale.aYY = 0;
+      locale.bpE = 0;
+      AppMethodBeat.o(114222);
       return locale;
-      if (paramd.kwl == d.a.kwt) {}
-      for (localObject1 = new BackgroundColorSpan(paramd.kwm);; localObject1 = new ForegroundColorSpan(paramd.kwm)) {
+      if (paramd.mSa == d.a.mSi) {}
+      for (localObject1 = new BackgroundColorSpan(paramd.mSb);; localObject1 = new ForegroundColorSpan(paramd.mSb)) {
         for (;;)
         {
-          localObject2 = new SpannableString(paramSpannableString.subSequence(paramb.kwx, paramb.kwy));
+          localObject2 = new SpannableString((CharSequence)localObject2);
           try
           {
             ((SpannableString)localObject2).setSpan(localObject1, 0, ((SpannableString)localObject2).length(), 33);
@@ -73,311 +85,345 @@ public final class f
           }
           catch (Exception paramd)
           {
-            y.printErrStackTrace("MicroMsg.FTS.FTSUIHLLogic", paramd, "setSpan %s", new Object[] { paramb.toString() });
-            locale.aYY = -1;
-            locale.kwz = paramSpannableString;
+            ab.printErrStackTrace("MicroMsg.FTS.FTSUIHLLogic", paramd, "setSpan %s", new Object[] { paramb.toString() });
+            locale.bpE = -1;
+            locale.mSp = paramSpannable;
+            AppMethodBeat.o(114222);
             return locale;
           }
         }
       }
-      label365:
+      label389:
       if (f2 + f4 + f5 < f1)
       {
         localObject2 = new SpannableStringBuilder();
-        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannableString.subSequence(0, paramb.kwx), paramd.dOi, f1 - f4 - f5, TextUtils.TruncateAt.START));
+        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannable.subSequence(0, paramb.mSm), paramd.eLQ, f1 - f4 - f5, TextUtils.TruncateAt.START));
         ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1);
-        ((SpannableStringBuilder)localObject2).append(paramSpannableString, paramb.kwy, paramSpannableString.length());
-        locale.kwz = ((CharSequence)localObject2);
+        ((SpannableStringBuilder)localObject2).append(paramSpannable, paramb.mSn, paramSpannable.length());
+        locale.mSp = ((CharSequence)localObject2);
       }
       else if (f2 + f4 + f2 >= f1)
       {
-        paramSpannableString = new SpannableStringBuilder();
-        paramSpannableString.append(TextUtils.ellipsize((CharSequence)localObject1, paramd.dOi, f1, TextUtils.TruncateAt.END));
-        locale.kwz = paramSpannableString;
+        paramSpannable = new SpannableStringBuilder();
+        paramSpannable.append(TextUtils.ellipsize((CharSequence)localObject1, paramd.eLQ, f1, TextUtils.TruncateAt.END));
+        locale.mSp = paramSpannable;
       }
       else
       {
         localObject2 = new SpannableStringBuilder();
         f1 = (f1 - f4) / 2.0F;
-        CharSequence localCharSequence = paramSpannableString.subSequence(0, paramb.kwx);
-        paramSpannableString = paramSpannableString.subSequence(paramb.kwy, paramSpannableString.length());
-        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(localCharSequence, paramd.dOi, f1, TextUtils.TruncateAt.START));
+        CharSequence localCharSequence = paramSpannable.subSequence(0, paramb.mSm);
+        paramSpannable = paramSpannable.subSequence(paramb.mSn, paramSpannable.length());
+        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(localCharSequence, paramd.eLQ, f1, TextUtils.TruncateAt.START));
         ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1);
-        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannableString, paramd.dOi, f1, TextUtils.TruncateAt.END));
-        locale.kwz = ((CharSequence)localObject2);
+        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannable, paramd.eLQ, f1, TextUtils.TruncateAt.END));
+        locale.mSp = ((CharSequence)localObject2);
       }
     }
   }
   
   public static final e a(com.tencent.mm.plugin.fts.a.a.d paramd)
   {
+    int j = 1;
+    AppMethodBeat.i(114220);
     Object localObject1 = new e();
-    SpannableString localSpannableString = new SpannableString(TextUtils.concat(new CharSequence[] { paramd.kwo, paramd.kwh, paramd.kwp }));
-    ((e)localObject1).aYY = -1;
-    ((e)localObject1).kwz = localSpannableString;
-    if ((!bk.L(paramd.kwh)) && (paramd.kwi != null)) {}
-    Object localObject3;
+    SpannableString localSpannableString = new SpannableString(TextUtils.concat(new CharSequence[] { paramd.mSd, paramd.mRW, paramd.mSe }));
+    ((e)localObject1).bpE = -1;
+    ((e)localObject1).mSp = localSpannableString;
+    if ((!bo.aa(paramd.mRW)) && (paramd.mRX != null)) {}
     for (int i = 1; i == 0; i = 0)
     {
-      localObject3 = localObject1;
-      return localObject3;
+      AppMethodBeat.o(114220);
+      return localObject1;
     }
-    Object localObject4 = d.DR(paramd.kwh.toString());
+    Object localObject4 = d.Pa(paramd.mRW.toString());
     Object localObject2 = new ArrayList();
-    if (paramd.kwj) {
-      localObject2 = aE((String)localObject4, paramd.kwk);
+    if (paramd.mRY) {
+      localObject2 = aS((String)localObject4, paramd.mRZ);
     }
     for (;;)
     {
       Object localObject6;
-      if ((paramd.kwi.kwK.size() == 1) || (a(localSpannableString, paramd)))
+      if ((paramd.mRX.mSA.size() == 1) || (a(localSpannableString, paramd)))
       {
-        localObject5 = new d.b();
-        if (paramd.kwi.kwK.size() == 1)
+        localObject6 = new d.b();
+        if (paramd.mRX.mSA.size() == 1)
         {
-          ((d.b)localObject5).kww = ((g.c)paramd.kwi.kwK.get(0));
-          if (paramd.kwj) {
-            a((List)localObject2, (d.b)localObject5, paramd);
+          ((d.b)localObject6).mSl = ((g.c)paramd.mRX.mSA.get(0));
+          if (paramd.mRY) {
+            a((List)localObject2, (d.b)localObject6, paramd);
           }
           for (;;)
           {
-            localObject3 = localObject1;
-            if (!((d.b)localObject5).isAvailable()) {
-              break;
+            if (!((d.b)localObject6).isAvailable()) {
+              break label850;
             }
             try
             {
-              paramd = b(localSpannableString, (d.b)localObject5, paramd);
+              paramd = b(localSpannableString, (d.b)localObject6, paramd);
+              AppMethodBeat.o(114220);
               return paramd;
-              a((String)localObject4, (d.b)localObject5, paramd);
+              a((String)localObject4, (d.b)localObject6, paramd);
             }
             catch (Exception paramd)
             {
               for (;;)
               {
-                ((e)localObject1).kwz = localSpannableString;
+                ((e)localObject1).mSp = localSpannableString;
                 paramd = (com.tencent.mm.plugin.fts.a.a.d)localObject1;
               }
             }
           }
         }
-        localObject6 = paramd.kwi.kwK.iterator();
+        ((d.b)localObject6).mSl = ((g.c)paramd.mRX.mSA.get(0));
+        if (paramd.mRY)
+        {
+          a((List)localObject2, (d.b)localObject6, paramd);
+          localObject2 = localObject1;
+          if (!((d.b)localObject6).isAvailable()) {}
+        }
+      }
+      for (;;)
+      {
+        Object localObject3;
+        try
+        {
+          localObject2 = b(localSpannableString, (d.b)localObject6, paramd);
+          localObject7 = ((e)localObject2).mSp.toString();
+          localObject1 = new ArrayList();
+          if (!paramd.mRY) {
+            break label857;
+          }
+          localObject1 = aS((String)localObject7, paramd.mRZ);
+          i = j;
+          if (i < paramd.mRX.mSA.size())
+          {
+            ((d.b)localObject6).mSl = ((g.c)paramd.mRX.mSA.get(i));
+            if (paramd.mRY)
+            {
+              a((List)localObject1, (d.b)localObject6, paramd);
+              localObject4 = localObject2;
+              if (!((d.b)localObject6).isAvailable()) {}
+            }
+          }
+        }
+        catch (Exception localException1)
+        {
+          try
+          {
+            localObject4 = b((Spannable)((e)localObject2).mSp, (d.b)localObject6, paramd);
+            i += 1;
+            localObject2 = localObject4;
+            continue;
+            a((String)localObject4, (d.b)localObject6, paramd);
+            break;
+            localException1 = localException1;
+            ((e)localObject1).mSp = localSpannableString;
+            localObject3 = localObject1;
+            continue;
+            a((String)localObject7, (d.b)localObject6, paramd);
+          }
+          catch (Exception localException2)
+          {
+            ((e)localObject3).mSp = localSpannableString;
+            localObject5 = localObject3;
+            continue;
+          }
+          AppMethodBeat.o(114220);
+          return localObject3;
+        }
+        localObject6 = new d.b();
+        ((d.b)localObject6).mSl = new g.c();
+        Object localObject7 = new g.b();
+        ((g.b)localObject7).mSC = g.d.mSH;
+        ((g.b)localObject7).content = paramd.mRX.mSx;
+        ((d.b)localObject6).mSl.mSE.add(localObject7);
+        if (paramd.mRY) {
+          a((List)localObject3, (d.b)localObject6, paramd);
+        }
         for (;;)
         {
-          localObject3 = localObject1;
-          if (!((Iterator)localObject6).hasNext()) {
-            break;
-          }
-          ((d.b)localObject5).kww = ((g.c)((Iterator)localObject6).next());
-          if (paramd.kwj) {
-            a((List)localObject2, (d.b)localObject5, paramd);
-          }
-          while (((d.b)localObject5).isAvailable())
-          {
+          if (((d.b)localObject6).isAvailable()) {
             try
             {
-              paramd = b(localSpannableString, (d.b)localObject5, paramd);
+              paramd = b(localSpannableString, (d.b)localObject6, paramd);
+              AppMethodBeat.o(114220);
               return paramd;
+              a((String)localObject5, (d.b)localObject6, paramd);
             }
             catch (Exception paramd)
             {
-              ((e)localObject1).kwz = localSpannableString;
-              return localObject1;
+              for (;;)
+              {
+                ((e)localObject1).mSp = localSpannableString;
+                paramd = (com.tencent.mm.plugin.fts.a.a.d)localObject1;
+              }
             }
-            a((String)localObject4, (d.b)localObject5, paramd);
           }
         }
-      }
-      localObject3 = new d.b();
-      ((d.b)localObject3).kww = new g.c();
-      Object localObject5 = new g.b();
-      ((g.b)localObject5).kwM = g.d.kwR;
-      ((g.b)localObject5).content = paramd.kwi.kwH;
-      ((d.b)localObject3).kww.kwO.add(localObject5);
-      if (paramd.kwj) {
-        a((List)localObject2, (d.b)localObject3, paramd);
-      }
-      while (((d.b)localObject3).isAvailable())
-      {
-        try
+        localObject6 = new ArrayList();
+        localObject7 = paramd.mRX.mSA.iterator();
+        Object localObject8;
+        while (((Iterator)localObject7).hasNext())
         {
-          paramd = b(localSpannableString, (d.b)localObject3, paramd);
-          return paramd;
+          localObject8 = (g.c)((Iterator)localObject7).next();
+          d.b localb = new d.b();
+          localb.mSl = ((g.c)localObject8);
+          ((List)localObject6).add(localb);
         }
-        catch (Exception paramd)
+        localObject7 = ((List)localObject6).iterator();
+        while (((Iterator)localObject7).hasNext())
         {
-          ((e)localObject1).kwz = localSpannableString;
-          return localObject1;
-        }
-        a((String)localObject4, (d.b)localObject3, paramd);
-      }
-      localObject3 = new ArrayList();
-      localObject5 = paramd.kwi.kwK.iterator();
-      while (((Iterator)localObject5).hasNext())
-      {
-        localObject6 = (g.c)((Iterator)localObject5).next();
-        d.b localb = new d.b();
-        localb.kww = ((g.c)localObject6);
-        ((List)localObject3).add(localb);
-      }
-      localObject5 = ((List)localObject3).iterator();
-      while (((Iterator)localObject5).hasNext())
-      {
-        localObject6 = (d.b)((Iterator)localObject5).next();
-        if (paramd.kwj) {
-          a((List)localObject2, (d.b)localObject6, paramd);
-        } else {
-          a((String)localObject4, (d.b)localObject6, paramd);
-        }
-      }
-      localObject4 = ((List)localObject3).iterator();
-      for (;;)
-      {
-        localObject3 = localObject1;
-        if (!((Iterator)localObject4).hasNext()) {
-          break;
-        }
-        localObject2 = (d.b)((Iterator)localObject4).next();
-        if (((d.b)localObject2).isAvailable())
-        {
-          localObject2 = b(localSpannableString, (d.b)localObject2, paramd);
-          if (((e)localObject2).aYY == 0) {
-            localObject1 = localObject2;
+          localObject8 = (d.b)((Iterator)localObject7).next();
+          if (paramd.mRY) {
+            a((List)localObject3, (d.b)localObject8, paramd);
+          } else {
+            a((String)localObject5, (d.b)localObject8, paramd);
           }
         }
+        Object localObject5 = ((List)localObject6).iterator();
+        while (((Iterator)localObject5).hasNext())
+        {
+          localObject3 = (d.b)((Iterator)localObject5).next();
+          if (((d.b)localObject3).isAvailable())
+          {
+            localObject3 = b(localSpannableString, (d.b)localObject3, paramd);
+            if (((e)localObject3).bpE == 0) {
+              localObject1 = localObject3;
+            }
+          }
+        }
+        AppMethodBeat.o(114220);
+        return localObject1;
+        label850:
+        AppMethodBeat.o(114220);
+        return localObject1;
+        label857:
+        i = j;
       }
     }
   }
   
   public static final e a(String paramString1, String paramString2, com.tencent.mm.plugin.fts.a.a.d paramd)
   {
+    AppMethodBeat.i(114218);
     paramd = a(paramd);
-    paramd.kwz = TextUtils.concat(new CharSequence[] { paramString1, paramd.kwz, paramString2 });
+    paramd.mSp = TextUtils.concat(new CharSequence[] { paramString1, paramd.mSp, paramString2 });
+    AppMethodBeat.o(114218);
     return paramd;
   }
   
   private static void a(String paramString, d.b paramb, com.tencent.mm.plugin.fts.a.a.d paramd)
   {
-    Object localObject;
-    if ((paramb.kww != null) && (paramb.kww.kwO.size() > 0))
+    AppMethodBeat.i(114225);
+    String str = paramb.bBW();
+    if (bo.isNullOrNil(str))
     {
-      localObject = paramb.kww.kwO.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        g.b localb = (g.b)((Iterator)localObject).next();
-        if (localb.kwM == g.d.kwR)
-        {
-          localObject = localb.content;
-          if (!bk.bl((String)localObject)) {
-            break label91;
-          }
-        }
-      }
-    }
-    label91:
-    do
-    {
+      AppMethodBeat.o(114225);
       return;
-      localObject = null;
-      break;
-      int i = paramString.indexOf((String)localObject);
-      if (i >= 0)
-      {
-        paramb.kwx = i;
-        paramb.kwy = (((String)localObject).length() + i);
-      }
-    } while ((!paramb.isAvailable()) || (paramd.kwo == null));
-    paramb.kwx += paramd.kwo.length();
-    paramb.kwy += paramd.kwo.length();
+    }
+    int i = paramString.indexOf(str);
+    if (i >= 0)
+    {
+      paramb.mSm = i;
+      paramb.mSn = (str.length() + i);
+    }
+    if ((paramb.isAvailable()) && (paramd.mSd != null))
+    {
+      paramb.mSm += paramd.mSd.length();
+      paramb.mSn += paramd.mSd.length();
+    }
+    AppMethodBeat.o(114225);
   }
   
   private static void a(List<List<String>> paramList, d.b paramb, com.tencent.mm.plugin.fts.a.a.d paramd)
   {
+    AppMethodBeat.i(114226);
     Object localObject2;
     Object localObject1;
-    if (paramd.kwk)
+    if (paramd.mRZ)
     {
-      localObject2 = paramb.kww.kwO.iterator();
+      localObject2 = paramb.mSl.mSE.iterator();
       do
       {
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
         localObject1 = (g.b)((Iterator)localObject2).next();
-      } while (((g.b)localObject1).kwM != g.d.kwQ);
+      } while (((g.b)localObject1).mSC != g.d.mSG);
     }
     for (;;)
     {
-      if (localObject1 == null) {}
-      label160:
-      label229:
+      if (localObject1 == null)
+      {
+        AppMethodBeat.o(114226);
+        return;
+      }
+      int i = i(paramList, ((g.b)localObject1).mSD);
+      if (i >= 0)
+      {
+        paramb.mSm = i;
+        paramb.mSn = (((g.b)localObject1).mSD.size() + i);
+        break label178;
+      }
       for (;;)
       {
-        return;
-        int i = g(paramList, ((g.b)localObject1).kwN);
-        if (i >= 0)
+        if ((paramb.isAvailable()) && (paramd.mSd != null))
         {
-          paramb.kwx = i;
-          paramb.kwy = (((g.b)localObject1).kwN.size() + i);
-          break label160;
+          paramb.mSm += paramd.mSd.length();
+          paramb.mSn += paramd.mSd.length();
         }
-        for (;;)
+        AppMethodBeat.o(114226);
+        return;
+        localObject1 = paramb.mSl.mSE.iterator();
+        label178:
+        if (((Iterator)localObject1).hasNext())
         {
-          if ((!paramb.isAvailable()) || (paramd.kwo == null)) {
-            break label229;
+          localObject2 = (g.b)((Iterator)localObject1).next();
+          if (((g.b)localObject2).mSC != g.d.mSF) {
+            break;
           }
-          paramb.kwx += paramd.kwo.length();
-          paramb.kwy += paramd.kwo.length();
-          return;
-          localObject1 = paramb.kww.kwO.iterator();
-          if (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (g.b)((Iterator)localObject1).next();
-            if (((g.b)localObject2).kwM != g.d.kwP) {
-              break;
-            }
-            i = g(paramList, ((g.b)localObject2).kwN);
-            if (i < 0) {
-              break;
-            }
-            paramb.kwx = i;
-            paramb.kwy = (((g.b)localObject2).kwN.size() + i);
+          i = i(paramList, ((g.b)localObject2).mSD);
+          if (i < 0) {
+            break;
           }
+          paramb.mSm = i;
+          paramb.mSn = (((g.b)localObject2).mSD.size() + i);
         }
       }
       localObject1 = null;
     }
   }
   
-  private static boolean a(SpannableString paramSpannableString, com.tencent.mm.plugin.fts.a.a.d paramd)
+  private static boolean a(Spannable paramSpannable, com.tencent.mm.plugin.fts.a.a.d paramd)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramd.kwn > 0.0F)
+    AppMethodBeat.i(114221);
+    if ((paramd.mSc > 0.0F) && (paramd.eLQ != null))
     {
-      bool1 = bool2;
-      if (paramd.dOi != null)
+      if (paramd.mSc - paramd.eLQ.getTextSize() * 2.0F < paramd.eLQ.measureText(paramSpannable.toString()))
       {
-        bool1 = bool2;
-        if (paramd.kwn - paramd.dOi.getTextSize() * 2.0F < paramd.dOi.measureText(paramSpannableString.toString())) {
-          bool1 = true;
-        }
+        AppMethodBeat.o(114221);
+        return true;
       }
+      AppMethodBeat.o(114221);
+      return false;
     }
-    return bool1;
+    AppMethodBeat.o(114221);
+    return false;
   }
   
-  private static List<List<String>> aE(String paramString, boolean paramBoolean)
+  private static List<List<String>> aS(String paramString, boolean paramBoolean)
   {
+    AppMethodBeat.i(114228);
     ArrayList localArrayList1 = new ArrayList();
     int i = 0;
     if (i < paramString.length())
     {
       char c = paramString.charAt(i);
       ArrayList localArrayList2 = new ArrayList(2);
-      if (g.g(c))
+      if (g.w(c))
       {
-        String[] arrayOfString = (String[])g.kvX.get(String.valueOf(c));
+        String[] arrayOfString = (String[])g.mRL.get(String.valueOf(c));
         if ((arrayOfString != null) && (arrayOfString.length > 0) && (arrayOfString[0].length() > 0))
         {
           int k = arrayOfString.length;
@@ -406,76 +452,75 @@ public final class f
         localArrayList1.add(localArrayList2);
       }
     }
+    AppMethodBeat.o(114228);
     return localArrayList1;
   }
   
-  private static e b(SpannableString paramSpannableString, d.b paramb, com.tencent.mm.plugin.fts.a.a.d paramd)
+  private static e b(Spannable paramSpannable, d.b paramb, com.tencent.mm.plugin.fts.a.a.d paramd)
   {
-    if (a(paramSpannableString, paramd)) {
-      return a(paramSpannableString, paramb, paramd);
+    AppMethodBeat.i(114223);
+    if (a(paramSpannable, paramd))
+    {
+      paramSpannable = a(paramSpannable, paramb, paramd);
+      AppMethodBeat.o(114223);
+      return paramSpannable;
     }
-    return c(paramSpannableString, paramb, paramd);
+    paramSpannable = c(paramSpannable, paramb, paramd);
+    AppMethodBeat.o(114223);
+    return paramSpannable;
   }
   
-  private static e c(SpannableString paramSpannableString, d.b paramb, com.tencent.mm.plugin.fts.a.a.d paramd)
+  private static e c(Spannable paramSpannable, d.b paramb, com.tencent.mm.plugin.fts.a.a.d paramd)
   {
+    AppMethodBeat.i(114224);
     e locale = new e();
-    if (paramd.kwl == d.a.kwu)
+    if (paramd.mSa == d.a.mSj)
     {
-      paramSpannableString = paramSpannableString.toString();
+      paramSpannable = paramSpannable.toString();
       StringBuffer localStringBuffer = new StringBuffer();
-      localStringBuffer.append(paramSpannableString.substring(0, paramb.kwx));
-      localStringBuffer.append(paramd.kwq);
-      localStringBuffer.append(paramSpannableString.substring(paramb.kwx, paramb.kwy));
-      localStringBuffer.append(paramd.kwr);
-      if (paramb.kwy < paramSpannableString.length()) {
-        localStringBuffer.append(paramSpannableString.substring(paramb.kwy, paramSpannableString.length()));
+      localStringBuffer.append(paramSpannable.substring(0, paramb.mSm));
+      localStringBuffer.append(paramd.mSf);
+      localStringBuffer.append(paramSpannable.substring(paramb.mSm, paramb.mSn));
+      localStringBuffer.append(paramd.mSg);
+      if (paramb.mSn < paramSpannable.length()) {
+        localStringBuffer.append(paramSpannable.substring(paramb.mSn, paramSpannable.length()));
       }
-      locale.kwz = localStringBuffer.toString();
-      locale.aYY = 0;
+      locale.mSp = localStringBuffer.toString();
+      locale.bpE = 0;
+      AppMethodBeat.o(114224);
       return locale;
     }
-    if (paramd.kwl == d.a.kwt) {}
-    for (paramd = new BackgroundColorSpan(paramd.kwm);; paramd = new ForegroundColorSpan(paramd.kwm)) {
+    if (paramd.mSa == d.a.mSi) {}
+    for (paramd = new BackgroundColorSpan(paramd.mSb);; paramd = new ForegroundColorSpan(paramd.mSb))
+    {
       try
       {
-        paramSpannableString.setSpan(paramd, paramb.kwx, paramb.kwy, 18);
-        locale.kwz = paramSpannableString;
-        locale.aYY = 0;
-        return locale;
+        paramSpannable.setSpan(paramd, paramb.mSm, paramb.mSn, 18);
+        locale.mSp = paramSpannable;
+        locale.bpE = 0;
       }
       catch (Exception paramd)
       {
-        y.printErrStackTrace("MicroMsg.FTS.FTSUIHLLogic", paramd, "setSpan %s", new Object[] { paramb.toString() });
-        locale.kwz = paramSpannableString;
-        locale.aYY = -1;
-        return locale;
+        ab.printErrStackTrace("MicroMsg.FTS.FTSUIHLLogic", paramd, "setSpan %s", new Object[] { paramb.toString() });
+        locale.mSp = paramSpannable;
+        locale.bpE = -1;
       }
+      break;
     }
   }
   
-  public static final SpannableString d(CharSequence paramCharSequence, int paramInt)
+  private static int i(List<List<String>> paramList, List<String> paramList1)
   {
-    paramCharSequence = new SpannableString(paramCharSequence);
-    d.b localb = new d.b();
-    localb.kwx = 0;
-    localb.kwy = paramInt;
-    b(paramCharSequence, localb, new com.tencent.mm.plugin.fts.a.a.d());
-    return paramCharSequence;
-  }
-  
-  private static int g(List<List<String>> paramList, List<String> paramList1)
-  {
-    int k = 0;
+    AppMethodBeat.i(114227);
+    int j = 0;
     int i = 0;
-    if (k < paramList.size() - paramList1.size() + 1)
-    {
-      int j;
+    int k;
+    if (j < paramList.size() - paramList1.size() + 1) {
       for (;;)
       {
         if (i < paramList1.size())
         {
-          Object localObject = (List)paramList.get(k + i);
+          Object localObject = (List)paramList.get(j + i);
           String str = (String)paramList1.get(i);
           if (((List)localObject).contains(str))
           {
@@ -489,40 +534,51 @@ public final class f
               if (((Iterator)localObject).hasNext()) {
                 if (((String)((Iterator)localObject).next()).startsWith(str))
                 {
-                  j = 1;
-                  label132:
-                  if (j != 0)
+                  k = 1;
+                  label136:
+                  if (k != 0)
                   {
                     i += 1;
                     break;
                   }
-                  j = 0;
+                  k = 0;
                   i = 0;
+                  label153:
+                  if (k == 0) {}
                 }
               }
             }
           }
         }
       }
-      for (;;)
-      {
-        if (j != 0)
-        {
-          return k;
-          j = 0;
-          i = 0;
-        }
-        else
-        {
-          k += 1;
-          break;
-          j = 0;
-          break label132;
-          j = 1;
-        }
-      }
     }
-    return -1;
+    for (;;)
+    {
+      AppMethodBeat.o(114227);
+      return j;
+      k = 0;
+      i = 0;
+      break label153;
+      j += 1;
+      break;
+      k = 0;
+      break label136;
+      k = 1;
+      break label153;
+      j = -1;
+    }
+  }
+  
+  public static final SpannableString j(CharSequence paramCharSequence, int paramInt)
+  {
+    AppMethodBeat.i(114219);
+    paramCharSequence = new SpannableString(paramCharSequence);
+    d.b localb = new d.b();
+    localb.mSm = 0;
+    localb.mSn = paramInt;
+    b(paramCharSequence, localb, new com.tencent.mm.plugin.fts.a.a.d());
+    AppMethodBeat.o(114219);
+    return paramCharSequence;
   }
 }
 

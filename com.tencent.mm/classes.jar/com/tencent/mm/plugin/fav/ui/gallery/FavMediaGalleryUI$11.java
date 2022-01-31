@@ -1,8 +1,7 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
 import android.app.Dialog;
-import com.tencent.mm.plugin.fav.ui.n.i;
-import com.tencent.mm.ui.widget.snackbar.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavMediaGalleryUI$11
   implements Runnable
@@ -11,13 +10,14 @@ final class FavMediaGalleryUI$11
   
   public final void run()
   {
-    this.kbH.dismiss();
-    b.h(this.khg, this.khg.getString(n.i.fav_finish_sent));
+    AppMethodBeat.i(74518);
+    this.mwd.dismiss();
+    AppMethodBeat.o(74518);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.FavMediaGalleryUI.11
  * JD-Core Version:    0.7.0.1
  */

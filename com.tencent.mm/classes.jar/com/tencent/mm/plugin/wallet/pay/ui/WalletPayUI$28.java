@@ -1,39 +1,27 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
-import com.tencent.mm.plugin.wallet.a.p;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.ui.u;
-import com.tencent.mm.wallet_core.c.aa;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletPayUI$28
-  extends u
+  implements View.OnClickListener
 {
   WalletPayUI$28(WalletPayUI paramWalletPayUI) {}
   
-  public final void aEI()
+  public final void onClick(View paramView)
   {
-    p.bTK();
-    int i;
-    if (!p.bTL().bVO())
-    {
-      if (this.qnV.nDu != null) {
-        break label55;
-      }
-      i = 0;
-      if (this.qnV.nDu != null) {
-        break label69;
-      }
+    AppMethodBeat.i(46066);
+    if (this.tXq.tWJ) {
+      this.tXq.tWS.setImageResource(2130839890);
     }
-    label55:
-    label69:
-    for (String str = "";; str = this.qnV.nDu.bMX)
+    for (this.tXq.tWJ = false;; this.tXq.tWJ = true)
     {
-      aa.d(i, str, 6, "");
-      this.qnV.bUl();
+      this.tXq.tWW.notifyDataSetChanged();
+      AppMethodBeat.o(46066);
       return;
-      i = this.qnV.nDu.bUV;
-      break;
+      this.tXq.tWS.setImageResource(2130839893);
     }
   }
 }

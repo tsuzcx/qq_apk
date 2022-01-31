@@ -9,7 +9,7 @@ public final class l$a
 {
   public l$a(l paraml) {}
   
-  public final String vP()
+  public final String HY()
   {
     return "Vending.LOGIC";
   }

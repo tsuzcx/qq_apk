@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class g
-  extends a<e>
+  extends a<r>
 {
-  private static final int CTRL_INDEX = 96;
-  private static final String NAME = "showPickerView";
+  public static final int CTRL_INDEX = 285;
+  public static final String NAME = "requestVirtualPayment";
+  boolean hWs = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.m.g
  * JD-Core Version:    0.7.0.1
  */

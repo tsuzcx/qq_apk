@@ -1,94 +1,89 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.jsapi.g.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.f;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.g;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.t;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.u;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.h;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class g
   extends a
 {
   public static final int CTRL_INDEX = -2;
-  public static final String NAME = "getMapRegion";
-  
-  private static int p(JSONObject paramJSONObject)
-  {
-    try
-    {
-      int i = paramJSONObject.optInt("mapId");
-      return i;
-    }
-    catch (Exception paramJSONObject)
-    {
-      y.e("MicroMsg.JsApiGetMapRegion", "get mapId error, exception : %s", new Object[] { paramJSONObject });
-    }
-    return -1;
-  }
+  public static final String NAME = "eraseMapLines";
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
+    AppMethodBeat.i(93844);
+    super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      y.e("MicroMsg.JsApiGetMapRegion", "JsApiGetMapRegion data is null");
-      paramc.C(paramInt, h("fail:data is null", null));
+      ab.e("MicroMsg.JsApiEraseMapLines", "data is null");
+      paramc.h(paramInt, j("fail:invalid data", null));
+      AppMethodBeat.o(93844);
       return;
     }
-    Object localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.base.f)paramc.i(com.tencent.mm.plugin.appbrand.jsapi.base.f.class)).a(paramc);
-    if (localObject1 == null)
+    ab.i("MicroMsg.JsApiEraseMapLines", "data:%s", new Object[] { paramJSONObject });
+    b localb = f(paramc, paramJSONObject);
+    if (localb == null)
     {
-      y.e("MicroMsg.JsApiGetMapRegion", "pageView is null");
-      paramc.C(paramInt, h("fail", null));
+      ab.e("MicroMsg.JsApiEraseMapLines", "mapView is null, return");
+      paramc.h(paramInt, j("fail:mapview is null", null));
+      AppMethodBeat.o(93844);
       return;
     }
-    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.g.a.f.o(paramc.getAppId(), ((e)localObject1).ahJ(), p(paramJSONObject));
-    if (paramJSONObject == null)
+    if (paramJSONObject.has("lines")) {}
+    for (;;)
     {
-      y.e("MicroMsg.JsApiGetMapRegion", "appBrandMapView is null, return");
-      paramc.C(paramInt, h("fail", null));
+      int i;
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramJSONObject.optString("lines"));
+        i = 0;
+        if (i < localJSONArray.length())
+        {
+          JSONObject localJSONObject1 = (JSONObject)localJSONArray.get(i);
+          String str = localJSONObject1.optString("id");
+          if (bo.isNullOrNil(str)) {
+            break label357;
+          }
+          paramJSONObject = null;
+          JSONObject localJSONObject2 = localJSONObject1.optJSONObject("point");
+          if (localJSONObject2 != null)
+          {
+            float f1 = bo.getFloat(localJSONObject2.optString("latitude"), 0.0F);
+            float f2 = bo.getFloat(localJSONObject2.optString("longitude"), 0.0F);
+            paramJSONObject = new b.h(f1, f2);
+          }
+          if (paramJSONObject == null) {
+            break label357;
+          }
+          localb.a(str, localJSONObject1.optInt("index", 0), paramJSONObject, localJSONObject1.optBoolean("clear", true));
+          break label357;
+        }
+        a(paramc, paramInt, j("ok", null), true, localb.aDx());
+        AppMethodBeat.o(93844);
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        ab.b("MicroMsg.JsApiEraseMapLines", "", new Object[] { paramJSONObject });
+        a(paramc, paramInt, j("fail:internal error", null), false, localb.aDx());
+        AppMethodBeat.o(93844);
+        return;
+      }
+      ab.e("MicroMsg.JsApiEraseMapLines", "data has not lines info");
+      a(paramc, paramInt, j("fail:invalid data", null), false, localb.aDx());
+      AppMethodBeat.o(93844);
       return;
+      label357:
+      i += 1;
     }
-    paramJSONObject = paramJSONObject.aji().guK;
-    if (paramJSONObject == null)
-    {
-      y.e("MicroMsg.JsApiGetMapRegion", "visibleRegion is  null");
-      paramc.C(paramInt, h("fail:visibleRegion is null", null));
-      return;
-    }
-    paramJSONObject = paramJSONObject.guL;
-    if (paramJSONObject == null)
-    {
-      y.e("MicroMsg.JsApiGetMapRegion", "latLngBounds is  null");
-      paramc.C(paramInt, h("fail:latLngBounds is null", null));
-      return;
-    }
-    localObject1 = paramJSONObject.guq;
-    Object localObject2 = paramJSONObject.gur;
-    paramJSONObject = new HashMap();
-    if (localObject1 != null)
-    {
-      paramJSONObject.put("latitude", Double.valueOf(((b.f)localObject1).latitude));
-      paramJSONObject.put("longitude", Double.valueOf(((b.f)localObject1).longitude));
-    }
-    localObject1 = new HashMap();
-    if (localObject2 != null)
-    {
-      ((Map)localObject1).put("latitude", Double.valueOf(((b.f)localObject2).latitude));
-      ((Map)localObject1).put("longitude", Double.valueOf(((b.f)localObject2).longitude));
-    }
-    localObject2 = new HashMap();
-    ((Map)localObject2).put("southwest", paramJSONObject);
-    ((Map)localObject2).put("northeast", localObject1);
-    y.i("MicroMsg.JsApiGetMapRegion", "getMapRegion ok, values:%s", new Object[] { localObject2.toString() });
-    paramc.C(paramInt, h("ok", (Map)localObject2));
   }
 }
 

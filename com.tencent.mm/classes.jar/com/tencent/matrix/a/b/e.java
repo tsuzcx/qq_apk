@@ -2,70 +2,103 @@ package com.tencent.matrix.a.b;
 
 import android.os.IBinder;
 import android.os.WorkSource;
+import com.tencent.matrix.a.c.b;
 import com.tencent.matrix.a.c.b.b;
+import com.tencent.matrix.g.c;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class e
 {
-  private static boolean bmY;
-  private static b.b bmZ = new b.b()
+  private static b bMA = new b("power", "android.os.IPowerManager", bMz);
+  private static List<b> bMB = new ArrayList();
+  private static boolean bMy;
+  private static b.b bMz = new b.b()
   {
     public final void b(Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
     {
-      com.tencent.matrix.d.b.v("Matrix.PowerManagerServiceHooker", "onServiceMethodInvoke: method name %s", new Object[] { paramAnonymousMethod.getName() });
+      c.v("Matrix.PowerManagerServiceHooker", "onServiceMethodInvoke: method name %s", new Object[] { paramAnonymousMethod.getName() });
       e.a(paramAnonymousMethod, paramAnonymousArrayOfObject);
     }
   };
-  private static com.tencent.matrix.a.c.b bna = new com.tencent.matrix.a.c.b("power", "android.os.IPowerManager", bmZ);
-  private static List<b> bnb = new ArrayList();
   
+  /* Error */
   public static void a(b paramb)
   {
-    if (paramb == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        if (bnb.contains(paramb)) {
-          continue;
-        }
-        bnb.add(paramb);
-        if ((bmY) || (bnb.isEmpty())) {
-          continue;
-        }
-        com.tencent.matrix.d.b.i("Matrix.PowerManagerServiceHooker", "checkHook hookRet:%b", new Object[] { Boolean.valueOf(bna.doHook()) });
-        bmY = true;
-      }
-      finally {}
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 33	com/tencent/matrix/a/b/e:bMB	Ljava/util/List;
+    //   6: aload_0
+    //   7: invokeinterface 56 2 0
+    //   12: istore_1
+    //   13: iload_1
+    //   14: ifeq +7 -> 21
+    //   17: ldc 2
+    //   19: monitorexit
+    //   20: return
+    //   21: getstatic 33	com/tencent/matrix/a/b/e:bMB	Ljava/util/List;
+    //   24: aload_0
+    //   25: invokeinterface 59 2 0
+    //   30: pop
+    //   31: getstatic 61	com/tencent/matrix/a/b/e:bMy	Z
+    //   34: ifne -17 -> 17
+    //   37: getstatic 33	com/tencent/matrix/a/b/e:bMB	Ljava/util/List;
+    //   40: invokeinterface 65 1 0
+    //   45: ifne -28 -> 17
+    //   48: ldc 67
+    //   50: ldc 69
+    //   52: iconst_1
+    //   53: anewarray 4	java/lang/Object
+    //   56: dup
+    //   57: iconst_0
+    //   58: getstatic 47	com/tencent/matrix/a/b/e:bMA	Lcom/tencent/matrix/a/c/b;
+    //   61: invokevirtual 72	com/tencent/matrix/a/c/b:doHook	()Z
+    //   64: invokestatic 78	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   67: aastore
+    //   68: invokestatic 84	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   71: iconst_1
+    //   72: putstatic 61	com/tencent/matrix/a/b/e:bMy	Z
+    //   75: goto -58 -> 17
+    //   78: astore_0
+    //   79: ldc 2
+    //   81: monitorexit
+    //   82: aload_0
+    //   83: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	84	0	paramb	b
+    //   12	2	1	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   3	13	78	finally
+    //   21	75	78	finally
   }
   
   public static void b(b paramb)
   {
-    if (paramb == null) {}
-    for (;;)
+    try
     {
-      return;
-      try
+      bMB.remove(paramb);
+      if ((bMy) && (bMB.isEmpty()))
       {
-        bnb.remove(paramb);
-        if ((!bmY) || (!bnb.isEmpty())) {
-          continue;
-        }
-        com.tencent.matrix.d.b.i("Matrix.PowerManagerServiceHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(bna.doUnHook()) });
-        bmY = false;
+        c.i("Matrix.PowerManagerServiceHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(bMA.doUnHook()) });
+        bMy = false;
       }
-      finally {}
+      return;
+    }
+    finally
+    {
+      paramb = finally;
+      throw paramb;
     }
   }
   
-  private static final class a
+  static final class a
   {
-    String bnA;
-    WorkSource bnz;
+    WorkSource bMW;
+    String bMX;
     int flags;
     String packageName;
     String tag;
@@ -79,7 +112,7 @@ public final class e
     public abstract void a(IBinder paramIBinder, int paramInt, String paramString1, String paramString2, WorkSource paramWorkSource, String paramString3);
   }
   
-  private static final class c
+  static final class c
   {
     int flags;
     IBinder token;

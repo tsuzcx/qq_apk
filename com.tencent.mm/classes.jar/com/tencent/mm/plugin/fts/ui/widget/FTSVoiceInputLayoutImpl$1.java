@@ -1,26 +1,18 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSVoiceInputLayoutImpl$1
-  implements View.OnLongClickListener
+  implements Runnable
 {
   FTSVoiceInputLayoutImpl$1(FTSVoiceInputLayoutImpl paramFTSVoiceInputLayoutImpl) {}
   
-  public final boolean onLongClick(View paramView)
+  public final void run()
   {
-    y.d("MicroMsg.VoiceInputLayoutImp", "btn onLongClickListener currentState %s", new Object[] { Integer.valueOf(this.kFs.kFU) });
-    FTSVoiceInputLayoutImpl.a(this.kFs, true);
-    paramView = FTSVoiceInputLayoutImpl.a(this.kFs);
-    y.d("MicroMsg.VoiceInputDrawable", "longClickState %s", new Object[] { Integer.valueOf(paramView.kFU) });
-    paramView.kFU = 7;
-    paramView.hsF.cancel();
-    paramView.kFN = 0.0F;
-    paramView.invalidateSelf();
-    return true;
+    AppMethodBeat.i(62181);
+    FTSVoiceInputLayoutImpl.a(this.ncg).setVisibility(0);
+    AppMethodBeat.o(62181);
   }
 }
 

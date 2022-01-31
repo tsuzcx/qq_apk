@@ -1,130 +1,65 @@
 package com.tencent.mm.bc;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.platformtools.SpellMap;
-import com.tencent.mm.plugin.appbrand.u.r;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.xp;
+import com.tencent.mm.protocal.protobuf.xq;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
+  extends m
+  implements k
 {
-  public static int a(JSONObject paramJSONObject, String paramString, Context paramContext)
+  private f callback;
+  private final b rr;
+  
+  public a(String paramString)
   {
-    if (paramJSONObject == null) {}
-    for (int i = 0;; i = paramJSONObject.optInt("businessType"))
-    {
-      int j = i;
-      if (i == 0)
-      {
-        if (!paramString.equals(paramContext.getString(R.l.search_education_article))) {
-          break;
-        }
-        j = 2;
-      }
-      return j;
-    }
-    if (paramString.equals(paramContext.getString(R.l.search_education_timeline))) {
-      return 8;
-    }
-    if (paramString.equals(paramContext.getString(R.l.search_education_biz_contact))) {
-      return 1;
-    }
-    y.i("MicroMsg.FTS.FTSExportLogic", "option " + paramString + " no type");
+    AppMethodBeat.i(136855);
+    b.a locala = new b.a();
+    locala.fsX = new xp();
+    locala.fsY = new xq();
+    locala.uri = "/cgi-bin/micromsg-bin/deletecardimg";
+    locala.funcId = 576;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ((xp)this.rr.fsV.fta).wPh = paramString;
+    AppMethodBeat.o(136855);
+  }
+  
+  public final int doScene(e parame, f paramf)
+  {
+    AppMethodBeat.i(136856);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(136856);
     return i;
   }
   
-  public static boolean ay(String paramString1, String paramString2)
+  public final int getType()
   {
-    int i = 0;
-    boolean bool = false;
-    if (paramString1 == paramString2) {
-      bool = true;
-    }
-    while (TextUtils.isEmpty(paramString1)) {
-      return bool;
-    }
-    if (paramString1.startsWith(paramString2)) {
-      return true;
-    }
-    if (TextUtils.isEmpty(paramString1)) {}
-    StringBuilder localStringBuilder;
-    for (paramString1 = "";; paramString1 = localStringBuilder.toString())
-    {
-      return paramString1.startsWith(paramString2);
-      localStringBuilder = new StringBuilder(paramString1.length());
-      while (i < paramString1.length())
-      {
-        localStringBuilder.append(SpellMap.e(paramString1.charAt(i)));
-        i += 1;
-      }
-    }
+    return 576;
   }
   
-  public static Drawable b(int paramInt, Context paramContext)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    int i = R.k.sos_search_icon;
-    switch (paramInt)
-    {
-    default: 
-      paramInt = i;
-    }
-    for (;;)
-    {
-      return paramContext.getResources().getDrawable(paramInt);
-      paramInt = R.k.sos_offical_icon;
-      continue;
-      paramInt = R.k.sos_moments_icon;
-      continue;
-      paramInt = R.k.sos_article_icon;
-      continue;
-      paramInt = R.k.sos_mini_program_icon;
-      continue;
-      paramInt = R.k.sos_emoji_icon;
-      continue;
-      paramInt = R.k.sos_music_icon;
-      continue;
-      paramInt = R.k.sos_novel_icon;
-      continue;
-      paramInt = R.k.sos_video_icon;
-      continue;
-      paramInt = R.k.sos_wiki_icon;
-      continue;
-      paramInt = R.k.sos_question_icon;
-    }
-  }
-  
-  public static String b(int paramInt, Map<String, String> paramMap)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return aa.v(paramMap);
-    case 201: 
-      return r.v(paramMap);
-    }
-    return aa.c(paramMap, 1);
-  }
-  
-  public static Map<String, String> bu(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return aa.b(paramInt1, false, paramInt2);
-    }
-    return r.b(paramInt1, false, paramInt2);
+    AppMethodBeat.i(136857);
+    ab.d("MicroMsg.NetSceneDeleteCardImg", "onGYNetEnd:%s, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(136857);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.bc.a
  * JD-Core Version:    0.7.0.1
  */

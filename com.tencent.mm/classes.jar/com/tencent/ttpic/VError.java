@@ -3,6 +3,7 @@ package com.tencent.ttpic;
 public class VError
 {
   public static final int ERROR_BEAUTY_FACE_ATTR_NULL = -1300;
+  public static final int ERROR_DETECTOR_INSTANCE_INIT = -1003;
   public static final int ERROR_FACE_MODEL_INIT = -1002;
   public static final int ERROR_FACE_TXT_COPY = -1000;
   public static final int ERROR_FACE_TXT_INIT = -1001;
@@ -19,7 +20,7 @@ public class VError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.ttpic.VError
  * JD-Core Version:    0.7.0.1
  */

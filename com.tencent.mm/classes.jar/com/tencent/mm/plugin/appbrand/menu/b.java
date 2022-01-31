@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.report.c;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.appbrand.page.s;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.report.e;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.l;
 
 public final class b
@@ -13,26 +14,29 @@ public final class b
 {
   b()
   {
-    super(o.gPj.ordinal());
+    super(r.iqR.ordinal());
+    AppMethodBeat.i(132193);
+    AppMethodBeat.o(132193);
   }
   
-  public final void a(Context paramContext, q paramq, l paraml, String paramString)
+  public final void a(Context paramContext, v paramv, l paraml, String paramString)
   {
-    if (paramq.getRuntime().ZH()) {}
-    do
-    {
-      return;
-      paramq = paramq.getRuntime().Zz();
-    } while ((!(paramq instanceof com.tencent.mm.plugin.appbrand.page.o)) || (!((com.tencent.mm.plugin.appbrand.page.o)paramq).gTs));
-    paraml.e(this.gPE, paramContext.getString(y.j.app_brand_back_to_home));
-  }
-  
-  public final void a(Context paramContext, q paramq, String paramString, n paramn)
-  {
-    paramq.getRuntime().Zz().aa(paramq.getRuntime().getAppConfig().adV(), true);
-    if (paramq.gTF != null) {
-      c.a(paramString, paramq.getURL(), 20, "", bk.UX(), 1, 0);
+    AppMethodBeat.i(132194);
+    paramv = paramv.getRuntime().atj();
+    if (((paramv instanceof s)) && (((s)paramv).iwS)) {
+      paraml.e(this.irp, paramContext.getString(2131296586));
     }
+    AppMethodBeat.o(132194);
+  }
+  
+  public final void a(Context paramContext, v paramv, String paramString, q paramq)
+  {
+    AppMethodBeat.i(132195);
+    paramv.getRuntime().atj().aq(paramv.getRuntime().getAppConfig().ayn(), true);
+    if (paramv.iuy != null) {
+      e.a(paramString, paramv.hzM, 20, "", bo.aox(), 1, 0);
+    }
+    AppMethodBeat.o(132195);
   }
 }
 

@@ -9,53 +9,25 @@ import java.util.Map;
 public abstract interface d
   extends IInterface
 {
-  public abstract void Ch(int paramInt);
+  public abstract void I(int paramInt, String paramString1, String paramString2);
   
-  public abstract Bundle Cm(int paramInt);
+  public abstract Bundle Kf(int paramInt);
   
-  public abstract boolean Cn(int paramInt);
+  public abstract boolean Kg(int paramInt);
   
-  public abstract void Co(int paramInt);
+  public abstract void Kh(int paramInt);
   
-  public abstract void Cp(int paramInt);
+  public abstract void Ki(int paramInt);
   
-  public abstract void Cq(int paramInt);
+  public abstract void Kj(int paramInt);
   
-  public abstract boolean GR();
+  public abstract void Kk(int paramInt);
   
-  public abstract void I(String paramString1, String paramString2, int paramInt);
+  public abstract boolean Mi();
   
-  public abstract List<String> Mm();
+  public abstract void Q(String paramString1, String paramString2, int paramInt);
   
-  public abstract boolean Mn();
-  
-  public abstract b Q(Bundle paramBundle);
-  
-  public abstract boolean R(Bundle paramBundle);
-  
-  public abstract String RR(String paramString);
-  
-  public abstract String SL(String paramString);
-  
-  public abstract String SM(String paramString);
-  
-  public abstract void SN(String paramString);
-  
-  public abstract String SO(String paramString);
-  
-  public abstract boolean SP(String paramString);
-  
-  public abstract String SQ(String paramString);
-  
-  public abstract void SR(String paramString);
-  
-  public abstract int SS(String paramString);
-  
-  public abstract void ST(String paramString);
-  
-  public abstract void SU(String paramString);
-  
-  public abstract String SV(String paramString);
+  public abstract boolean ZT();
   
   public abstract void a(int paramInt1, Bundle paramBundle, int paramInt2);
   
@@ -65,107 +37,135 @@ public abstract interface d
   
   public abstract void a(String paramString, Bundle paramBundle, int paramInt);
   
+  public abstract void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, Bundle paramBundle);
+  
   public abstract void a(String paramString, int[] paramArrayOfInt, int paramInt1, int paramInt2);
   
   public abstract boolean a(String paramString1, String paramString2, String paramString3, Bundle paramBundle1, Bundle paramBundle2, int paramInt);
   
   public abstract boolean a(String paramString, boolean paramBoolean, Bundle paramBundle);
   
-  public abstract String aY(int paramInt, String paramString);
+  public abstract void aA(Intent paramIntent);
   
-  public abstract void ab(int paramInt1, int paramInt2, int paramInt3);
+  public abstract List<String> aeT();
   
-  public abstract void ae(Intent paramIntent);
+  public abstract boolean aeU();
   
-  public abstract void bn(String paramString, boolean paramBoolean);
+  public abstract String agU(String paramString);
   
-  public abstract void cP(String paramString, int paramInt);
+  public abstract String ahN(String paramString);
   
-  public abstract String cQ(String paramString, int paramInt);
+  public abstract String ahO(String paramString);
   
-  public abstract void cR(String paramString, int paramInt);
+  public abstract void ahP(String paramString);
   
-  public abstract boolean cdg();
+  public abstract String ahQ(String paramString);
   
-  public abstract String[] cdh();
+  public abstract boolean ahR(String paramString);
   
-  public abstract String cdi();
+  public abstract String ahS(String paramString);
   
-  public abstract String cdj();
+  public abstract void ahT(String paramString);
   
-  public abstract String cdk();
+  public abstract int ahU(String paramString);
   
-  public abstract Map cdl();
+  public abstract void ahV(String paramString);
   
-  public abstract int cdm();
+  public abstract void ahW(String paramString);
   
-  public abstract int cdn();
+  public abstract String ahX(String paramString);
   
-  public abstract void cdo();
+  public abstract b ai(Bundle paramBundle);
   
-  public abstract void cdp();
+  public abstract boolean aj(Bundle paramBundle);
   
-  public abstract boolean cdq();
+  public abstract void an(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract boolean cdr();
+  public abstract String bF(int paramInt, String paramString);
   
-  public abstract boolean cds();
+  public abstract void bN(String paramString, boolean paramBoolean);
   
-  public abstract List<String> cdt();
+  public abstract boolean dM(String paramString);
   
-  public abstract int cdu();
+  public abstract void dO(String paramString, int paramInt);
   
-  public abstract boolean cdv();
+  public abstract String dP(String paramString, int paramInt);
   
-  public abstract String[] cdw();
+  public abstract void dQ(String paramString, int paramInt);
   
-  public abstract boolean cz(String paramString);
+  public abstract boolean ddb();
   
-  public abstract int eH(int paramInt1, int paramInt2);
+  public abstract String[] ddc();
   
-  public abstract void eI(int paramInt1, int paramInt2);
+  public abstract String ddd();
   
-  public abstract Bundle f(int paramInt, Bundle paramBundle);
+  public abstract String dde();
+  
+  public abstract String ddf();
+  
+  public abstract Map ddg();
+  
+  public abstract int ddh();
+  
+  public abstract int ddi();
+  
+  public abstract void ddj();
+  
+  public abstract void ddk();
+  
+  public abstract boolean ddl();
+  
+  public abstract boolean ddm();
+  
+  public abstract boolean ddn();
+  
+  public abstract List<String> ddo();
+  
+  public abstract int ddp();
+  
+  public abstract boolean ddq();
+  
+  public abstract String[] ddr();
   
   public abstract void favEditTag();
   
-  public abstract String fz(String paramString1, String paramString2);
+  public abstract int gM(int paramInt1, int paramInt2);
   
-  public abstract String gV(String paramString);
+  public abstract void gN(int paramInt1, int paramInt2);
   
   public abstract String getLanguage();
   
-  public abstract void h(int paramInt, List<String> paramList);
+  public abstract String hw(String paramString1, String paramString2);
   
-  public abstract void h(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
-  
-  public abstract void h(String paramString, boolean paramBoolean, int paramInt);
-  
-  public abstract boolean hU(String paramString);
-  
-  public abstract boolean hk(String paramString);
-  
-  public abstract boolean hl(String paramString);
-  
-  public abstract void i(int paramInt, Bundle paramBundle);
+  public abstract Bundle i(int paramInt, Bundle paramBundle);
   
   public abstract boolean isSDCardAvailable();
   
-  public abstract Bundle o(int paramInt, Bundle paramBundle);
+  public abstract void j(String paramString, boolean paramBoolean, int paramInt);
   
-  public abstract void q(int paramInt, Bundle paramBundle);
+  public abstract void k(int paramInt, List<String> paramList);
   
-  public abstract boolean r(int paramInt, Bundle paramBundle);
+  public abstract String nE(String paramString);
   
-  public abstract boolean x(long paramLong, String paramString);
+  public abstract boolean nT(String paramString);
   
-  public abstract void z(int paramInt, String paramString1, String paramString2);
+  public abstract boolean nU(String paramString);
   
-  public abstract boolean zF();
+  public abstract boolean oD(String paramString);
+  
+  public abstract Bundle r(int paramInt, Bundle paramBundle);
+  
+  public abstract Bundle s(int paramInt, Bundle paramBundle);
+  
+  public abstract void u(int paramInt, Bundle paramBundle);
+  
+  public abstract boolean v(int paramInt, Bundle paramBundle);
+  
+  public abstract boolean y(long paramLong, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.stub.d
  * JD-Core Version:    0.7.0.1
  */

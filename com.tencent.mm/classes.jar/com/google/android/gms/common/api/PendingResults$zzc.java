@@ -1,18 +1,22 @@
 package com.google.android.gms.common.api;
 
-import com.google.android.gms.internal.zzaaf;
+import com.google.android.gms.common.api.internal.BasePendingResult;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class PendingResults$zzc<R extends Result>
-  extends zzaaf<R>
+  extends BasePendingResult<R>
 {
   public PendingResults$zzc(GoogleApiClient paramGoogleApiClient)
   {
     super(paramGoogleApiClient);
   }
   
-  protected final R zzc(Status paramStatus)
+  public final R createFailedResult(Status paramStatus)
   {
-    throw new UnsupportedOperationException("Creating failed results is not supported");
+    AppMethodBeat.i(60555);
+    paramStatus = new UnsupportedOperationException("Creating failed results is not supported");
+    AppMethodBeat.o(60555);
+    throw paramStatus;
   }
 }
 

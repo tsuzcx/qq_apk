@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/at6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip"
+<RelativeLayout android:orientation="vertical" android:id="@id/qr" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.appbrand.game.widget.input.WAGamePanelInputEditText android:textColor="@color/fc" android:layout_gravity="bottom" android:id="@id/oo" android:layout_width="0.0dip" android:layout_marginTop="8.0dip" android:maxHeight="@dimen/ee" android:minHeight="@dimen/eg" android:hint="@null" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" style="@style/kg" />
-    <Button android:id="@id/op" android:layout_width="wrap_content" android:layout_height="@dimen/ej" android:layout_marginLeft="2.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="8.0dip" android:minWidth="@dimen/el" style="@style/mw" />
-</LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/qs" android:layout_width="fill_parent" android:layout_height="170.0dip">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/multitask_bar_miniprogram_logo" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/fi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" android:text="@string/ia" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/qt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="@dimen/m1">
+        <com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfItemView android:id="@id/qu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_" />
+        <com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfItemView android:id="@id/qv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_" />
+    </LinearLayout>
+</RelativeLayout>

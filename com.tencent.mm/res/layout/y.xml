@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RadioButton android:layout_gravity="center_vertical" android:id="@id/ic" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<android.support.v7.view.menu.ListMenuItemView android:layout_width="fill_parent" android:layout_height="?fd"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_vertical" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="?ff" android:layout_marginRight="?fg" android:layout_weight="1.0">
+        <TextView android:textAppearance="?fl" android:ellipsize="marquee" android:id="@id/cz" android:fadingEdge="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/k7" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/cz" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+</android.support.v7.view.menu.ListMenuItemView>

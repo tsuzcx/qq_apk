@@ -8,25 +8,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import com.tencent.mm.ac.a.f;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.ac.a.m;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ad.a.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.ui.widget.MMEditText.c;
 
 public class MMFormMobileInputView
   extends LinearLayout
 {
-  private Context mContext = null;
-  private int uUR = -1;
-  private int[] uUS;
-  private EditText uUU;
-  private EditText uUV;
-  private String uUW = "";
-  private String uUX = "";
-  private final int uUY = 13;
-  private MMFormMobileInputView.a uUZ = null;
+  private Context mContext;
+  private int zjm;
+  private int[] zjn;
+  private EditText zjp;
+  private EditText zjq;
+  private String zjr;
+  private String zjs;
+  private final int zjt;
+  private MMFormMobileInputView.a zju;
   
   public MMFormMobileInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,147 +37,182 @@ public class MMFormMobileInputView
   public MMFormMobileInputView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.FormItemView, paramInt, 0);
-    this.uUR = paramAttributeSet.getResourceId(a.m.FormItemView_form_hint, -1);
+    AppMethodBeat.i(106574);
+    this.mContext = null;
+    this.zjm = -1;
+    this.zjr = "";
+    this.zjs = "";
+    this.zjt = 13;
+    this.zju = null;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.FormItemView, paramInt, 0);
+    this.zjm = paramAttributeSet.getResourceId(2, -1);
     paramAttributeSet.recycle();
-    com.tencent.mm.ui.y.gt(paramContext).inflate(a.h.mm_form_mobile_input_view, this);
+    w.hM(paramContext).inflate(2130970170, this);
     this.mContext = paramContext;
+    AppMethodBeat.o(106574);
   }
   
-  private void dD(View paramView)
+  private void eM(View paramView)
   {
-    this.uUS = new int[] { paramView.getPaddingLeft(), paramView.getPaddingTop(), paramView.getPaddingRight(), paramView.getPaddingBottom() };
+    AppMethodBeat.i(106577);
+    this.zjn = new int[] { paramView.getPaddingLeft(), paramView.getPaddingTop(), paramView.getPaddingRight(), paramView.getPaddingBottom() };
+    AppMethodBeat.o(106577);
   }
   
-  private void dE(View paramView)
+  private void eN(View paramView)
   {
-    if (this.uUS != null) {
-      paramView.setPadding(this.uUS[0], this.uUS[1], this.uUS[2], this.uUS[3]);
+    AppMethodBeat.i(106578);
+    if (this.zjn != null) {
+      paramView.setPadding(this.zjn[0], this.zjn[1], this.zjn[2], this.zjn[3]);
     }
+    AppMethodBeat.o(106578);
   }
   
   public String getCountryCode()
   {
-    if (this.uUU != null) {
-      return this.uUU.getText().toString().trim();
+    AppMethodBeat.i(106583);
+    if (this.zjp != null)
+    {
+      String str = this.zjp.getText().toString().trim();
+      AppMethodBeat.o(106583);
+      return str;
     }
+    AppMethodBeat.o(106583);
     return "";
   }
   
   public EditText getCountryCodeEditText()
   {
-    return this.uUU;
+    return this.zjp;
   }
   
   public String getMobileNumber()
   {
-    if (this.uUV != null) {
-      return ar.Zt(this.uUV.getText().toString());
+    AppMethodBeat.i(106582);
+    if (this.zjq != null)
+    {
+      String str = av.apy(this.zjq.getText().toString());
+      AppMethodBeat.o(106582);
+      return str;
     }
+    AppMethodBeat.o(106582);
     return "";
   }
   
   public EditText getMobileNumberEditText()
   {
-    return this.uUV;
-  }
-  
-  public final void mZ(boolean paramBoolean)
-  {
-    dD(this.uUU);
-    if (paramBoolean)
-    {
-      this.uUU.setBackgroundResource(a.f.input_bar_bg_active);
-      dE(this.uUU);
-      dD(this.uUV);
-      if (!paramBoolean) {
-        break label74;
-      }
-      this.uUV.setBackgroundResource(a.f.input_bar_bg_active);
-    }
-    for (;;)
-    {
-      dE(this.uUV);
-      return;
-      this.uUU.setBackgroundResource(a.f.input_bar_bg_normal);
-      break;
-      label74:
-      this.uUV.setBackgroundResource(a.f.input_bar_bg_normal);
-    }
+    return this.zjq;
   }
   
   public void onFinishInflate()
   {
-    this.uUU = ((EditText)findViewById(a.g.country_code));
-    this.uUV = ((EditText)findViewById(a.g.mobile_number));
-    if ((this.uUU == null) || (this.uUV == null))
+    AppMethodBeat.i(106575);
+    this.zjp = ((EditText)findViewById(2131821766));
+    this.zjq = ((EditText)findViewById(2131826179));
+    if ((this.zjp == null) || (this.zjq == null))
     {
-      com.tencent.mm.sdk.platformtools.y.w("MicroMsg.MMFormMobileInputView", "countryCodeET : %s, mobileNumberET : %s", new Object[] { this.uUU, this.uUV });
-      if ((this.uUU != null) && (this.uUV != null))
+      ab.w("MicroMsg.MMFormMobileInputView", "countryCodeET : %s, mobileNumberET : %s", new Object[] { this.zjp, this.zjq });
+      if ((this.zjp != null) && (this.zjq != null))
       {
-        if ((!this.uUU.hasFocus()) && (!this.uUV.hasFocus())) {
-          break label205;
+        if ((!this.zjp.hasFocus()) && (!this.zjq.hasFocus())) {
+          break label213;
         }
-        mZ(true);
+        qC(true);
       }
     }
     for (;;)
     {
       MMFormMobileInputView.1 local1 = new MMFormMobileInputView.1(this);
-      this.uUU.setOnFocusChangeListener(local1);
-      this.uUV.setOnFocusChangeListener(local1);
-      this.uUV.addTextChangedListener(new MMEditText.c(this.uUV, null, 20));
-      this.uUV.addTextChangedListener(new MMFormMobileInputView.2(this));
-      this.uUU.addTextChangedListener(new MMFormMobileInputView.3(this));
+      this.zjp.setOnFocusChangeListener(local1);
+      this.zjq.setOnFocusChangeListener(local1);
+      this.zjq.addTextChangedListener(new MMEditText.c(this.zjq, null, 20));
+      this.zjq.addTextChangedListener(new MMFormMobileInputView.2(this));
+      this.zjp.addTextChangedListener(new MMFormMobileInputView.3(this));
+      AppMethodBeat.o(106575);
       return;
-      if (this.uUR == -1) {
+      if (this.zjm == -1) {
         break;
       }
-      this.uUV.setHint(this.uUR);
+      this.zjq.setHint(this.zjm);
       break;
-      label205:
-      mZ(false);
+      label213:
+      qC(false);
+    }
+  }
+  
+  public final void qC(boolean paramBoolean)
+  {
+    AppMethodBeat.i(106576);
+    eM(this.zjp);
+    if (paramBoolean)
+    {
+      this.zjp.setBackgroundResource(2130839162);
+      eN(this.zjp);
+      eM(this.zjq);
+      if (!paramBoolean) {
+        break label81;
+      }
+      this.zjq.setBackgroundResource(2130839162);
+    }
+    for (;;)
+    {
+      eN(this.zjq);
+      AppMethodBeat.o(106576);
+      return;
+      this.zjp.setBackgroundResource(2130839163);
+      break;
+      label81:
+      this.zjq.setBackgroundResource(2130839163);
     }
   }
   
   public void setCountryCode(String paramString)
   {
-    if (this.uUU != null)
+    AppMethodBeat.i(106579);
+    if (this.zjp != null)
     {
-      this.uUU.setText(paramString);
+      this.zjp.setText(paramString);
+      AppMethodBeat.o(106579);
       return;
     }
-    com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMFormMobileInputView", "countryCodeET is null!");
+    ab.e("MicroMsg.MMFormMobileInputView", "countryCodeET is null!");
+    AppMethodBeat.o(106579);
   }
   
   public void setHint(String paramString)
   {
-    if (this.uUV != null)
+    AppMethodBeat.i(106580);
+    if (this.zjq != null)
     {
-      this.uUV.setHint(paramString);
+      this.zjq.setHint(paramString);
+      AppMethodBeat.o(106580);
       return;
     }
-    com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMFormMobileInputView", "mobileNumberET is null!");
+    ab.e("MicroMsg.MMFormMobileInputView", "mobileNumberET is null!");
+    AppMethodBeat.o(106580);
   }
   
   public void setMobileNumber(String paramString)
   {
-    if (this.uUV != null)
+    AppMethodBeat.i(106581);
+    if (this.zjq != null)
     {
-      this.uUV.setText(paramString);
+      this.zjq.setText(paramString);
+      AppMethodBeat.o(106581);
       return;
     }
-    com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMFormMobileInputView", "mobileNumberET is null!");
+    ab.e("MicroMsg.MMFormMobileInputView", "mobileNumberET is null!");
+    AppMethodBeat.o(106581);
   }
   
   public void setOnCountryCodeChangedListener(MMFormMobileInputView.a parama)
   {
-    this.uUZ = parama;
+    this.zju = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFormMobileInputView
  * JD-Core Version:    0.7.0.1
  */

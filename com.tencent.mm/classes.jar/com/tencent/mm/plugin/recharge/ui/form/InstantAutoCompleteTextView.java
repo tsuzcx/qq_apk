@@ -3,12 +3,13 @@ package com.tencent.mm.plugin.recharge.ui.form;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.AutoCompleteTextView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class InstantAutoCompleteTextView
   extends AutoCompleteTextView
 {
-  private boolean nrO;
+  private boolean pXc;
   
   public InstantAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,18 +23,27 @@ public class InstantAutoCompleteTextView
   
   public void dismissDropDown()
   {
+    AppMethodBeat.i(44364);
     super.dismissDropDown();
-    y.d("TestAutoCompleteTextView", "dismiss");
+    ab.d("TestAutoCompleteTextView", "dismiss");
+    AppMethodBeat.o(44364);
   }
   
   public boolean enoughToFilter()
   {
-    return (this.nrO) || (super.enoughToFilter());
+    AppMethodBeat.i(44365);
+    if ((this.pXc) || (super.enoughToFilter()))
+    {
+      AppMethodBeat.o(44365);
+      return true;
+    }
+    AppMethodBeat.o(44365);
+    return false;
   }
   
   public void setShowAlways(boolean paramBoolean)
   {
-    this.nrO = paramBoolean;
+    this.pXc = paramBoolean;
   }
 }
 

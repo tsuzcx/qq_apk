@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.music.ui;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class MusicMainUI$9
-  extends ah
+  extends ak
 {
   MusicMainUI$9(MusicMainUI paramMusicMainUI, Looper paramLooper)
   {
@@ -14,9 +15,11 @@ final class MusicMainUI$9
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(105104);
     if (paramMessage.what == 1) {
-      MusicMainUI.p(this.mCa);
+      MusicMainUI.p(this.pcd);
     }
+    AppMethodBeat.o(105104);
   }
 }
 

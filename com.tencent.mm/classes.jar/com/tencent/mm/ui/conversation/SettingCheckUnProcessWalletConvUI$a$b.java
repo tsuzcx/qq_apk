@@ -7,16 +7,16 @@ import com.tencent.mm.ui.base.NoMeasuredTextView;
 
 final class SettingCheckUnProcessWalletConvUI$a$b
 {
-  public ImageView doU;
-  public TextView hZk;
-  public NoMeasuredTextView vQy;
-  public ImageView vQz;
-  public NoMeasuredTextView veJ;
-  public NoMeasuredTextView veK;
-  public NoMeasuredTextView veL;
-  public ImageView veM;
-  public ImageView veN;
-  public View veO;
+  public NoMeasuredTextView Aii;
+  public ImageView Aij;
+  public ImageView egq;
+  public TextView jSi;
+  public NoMeasuredTextView zti;
+  public NoMeasuredTextView ztj;
+  public NoMeasuredTextView ztk;
+  public ImageView ztl;
+  public ImageView ztm;
+  public View ztn;
   
   private SettingCheckUnProcessWalletConvUI$a$b(SettingCheckUnProcessWalletConvUI.a parama) {}
 }

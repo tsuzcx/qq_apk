@@ -1,26 +1,30 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.mm.sdk.platformtools.y;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class l$1
-  implements View.OnSystemUiVisibilityChangeListener
+public final class l$1
+  implements Animator.AnimatorListener
 {
-  l$1(Window paramWindow) {}
+  public l$1(l paraml) {}
   
-  public final void onSystemUiVisibilityChange(int paramInt)
+  public final void onAnimationCancel(Animator paramAnimator) {}
+  
+  public final void onAnimationEnd(Animator paramAnimator)
   {
-    y.d("MicroMsg.AppBrandUIUtil", "visibility = " + paramInt);
-    if ((paramInt & 0x4) == 0) {
-      this.heE.getDecorView().setSystemUiVisibility(l.d(this.heE));
-    }
+    AppMethodBeat.i(102333);
+    this.iPz.setVisibility(8);
+    AppMethodBeat.o(102333);
   }
+  
+  public final void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public final void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.l.1
  * JD-Core Version:    0.7.0.1
  */

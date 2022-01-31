@@ -1,113 +1,159 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.b.k;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class u
-  extends i<t>
+  extends j<t>
   implements k
 {
-  public static final String[] dXp = { i.a(t.buS, "snsTagInfo2") };
-  private e dXw;
+  public static final String[] SQL_CREATE;
+  private e db;
+  
+  static
+  {
+    AppMethodBeat.i(38016);
+    SQL_CREATE = new String[] { j.getCreateSQLs(t.info, "snsTagInfo2") };
+    AppMethodBeat.o(38016);
+  }
   
   public u(e parame)
   {
-    super(parame, t.buS, "snsTagInfo2", null);
-    this.dXw = parame;
+    super(parame, t.info, "snsTagInfo2", null);
+    this.db = parame;
   }
   
-  public final boolean MQ(String paramString)
+  public final boolean Xh(String paramString)
   {
-    t localt = gv(5L);
-    if (bk.bl(localt.field_memberList)) {
+    AppMethodBeat.i(38013);
+    t localt = mb(5L);
+    if (bo.isNullOrNil(localt.field_memberList))
+    {
+      AppMethodBeat.o(38013);
       return false;
     }
-    return bk.G(localt.field_memberList.split(",")).contains(paramString);
+    boolean bool = bo.P(localt.field_memberList.split(",")).contains(paramString);
+    AppMethodBeat.o(38013);
+    return bool;
   }
   
   public final boolean a(t paramt)
   {
-    if (paramt.field_tagId == 0L) {
+    AppMethodBeat.i(38009);
+    if (paramt.field_tagId == 0L)
+    {
+      AppMethodBeat.o(38009);
       return false;
     }
     long l = paramt.field_tagId;
-    Cursor localCursor = this.dXw.a("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(l) }, 2);
+    Cursor localCursor = this.db.a("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(l) }, 2);
     boolean bool = localCursor.moveToFirst();
     localCursor.close();
     if (!bool) {
-      super.b(paramt);
+      super.insert(paramt);
     }
     for (;;)
     {
+      doNotify(paramt.field_tagId, 0, paramt);
+      AppMethodBeat.o(38009);
       return true;
-      super.a(paramt);
+      super.replace(paramt);
     }
   }
   
-  public final boolean bCo()
+  public final boolean cnO()
   {
-    return bHe().size() != 0;
+    AppMethodBeat.i(38014);
+    if (cti().size() == 0)
+    {
+      AppMethodBeat.o(38014);
+      return false;
+    }
+    AppMethodBeat.o(38014);
+    return true;
   }
   
-  public final List<Long> bHe()
+  public final List<Long> cti()
   {
-    Cursor localCursor = this.dXw.a("snsTagInfo2", new String[] { "tagId" }, null, null, null, null, null, 2);
+    AppMethodBeat.i(38008);
+    Cursor localCursor = this.db.a("snsTagInfo2", new String[] { "tagId" }, null, null, null, null, null, 2);
     ArrayList localArrayList = new ArrayList();
     while (localCursor.moveToNext()) {
       localArrayList.add(Long.valueOf(localCursor.getLong(0)));
     }
     localCursor.close();
+    AppMethodBeat.o(38008);
     return localArrayList;
-  }
-  
-  public final List<String> fL(long paramLong)
-  {
-    t localt = gv(paramLong);
-    if ((localt.field_memberList != null) && (!localt.field_memberList.equals(""))) {
-      return bk.G(localt.field_memberList.split(","));
-    }
-    return new ArrayList();
-  }
-  
-  public final String fM(long paramLong)
-  {
-    return gv(paramLong).field_tagName;
   }
   
   public final Cursor getCursor()
   {
-    return this.dXw.rawQuery("select *, rowid from snsTagInfo2 where tagId > 5", null);
+    AppMethodBeat.i(38012);
+    Cursor localCursor = this.db.rawQuery("select *, rowid from snsTagInfo2 where tagId > 5", null);
+    AppMethodBeat.o(38012);
+    return localCursor;
   }
   
-  public final t gv(long paramLong)
+  public final List<String> lo(long paramLong)
   {
-    Cursor localCursor = this.dXw.a("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(paramLong) }, 2);
+    AppMethodBeat.i(38006);
+    Object localObject = mb(paramLong);
+    if ((((t)localObject).field_memberList != null) && (!((t)localObject).field_memberList.equals("")))
+    {
+      localObject = bo.P(((t)localObject).field_memberList.split(","));
+      AppMethodBeat.o(38006);
+      return localObject;
+    }
+    localObject = new ArrayList();
+    AppMethodBeat.o(38006);
+    return localObject;
+  }
+  
+  public final String lp(long paramLong)
+  {
+    AppMethodBeat.i(38007);
+    String str = mb(paramLong).field_tagName;
+    AppMethodBeat.o(38007);
+    return str;
+  }
+  
+  public final t mb(long paramLong)
+  {
+    AppMethodBeat.i(38005);
+    Cursor localCursor = this.db.a("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(paramLong) }, 2);
     t localt = new t();
     if (localCursor.moveToFirst()) {
-      localt.d(localCursor);
+      localt.convertFrom(localCursor);
     }
     localCursor.close();
+    AppMethodBeat.o(38005);
     return localt;
   }
   
-  public final int gw(long paramLong)
+  public final int mc(long paramLong)
   {
-    return this.dXw.delete("snsTagInfo2", " tagId = ? ", new String[] { String.valueOf(paramLong) });
+    AppMethodBeat.i(38010);
+    int i = this.db.delete("snsTagInfo2", " tagId = ? ", new String[] { String.valueOf(paramLong) });
+    AppMethodBeat.o(38010);
+    return i;
   }
   
-  public final boolean u(long paramLong, String paramString)
+  public final boolean v(long paramLong, String paramString)
   {
-    paramString = "select tagId, tagName, count, rowid from snsTagInfo2 where tagId > 5 AND  tagName  =\"" + bk.pl(paramString) + "\" AND  tagId != " + paramLong;
-    y.d("MicroMsg.SnsTagInfoStorage", "isTagNameExist " + paramString);
-    paramString = this.dXw.a(paramString, null, 2);
+    AppMethodBeat.i(38011);
+    paramString = "select tagId, tagName, count, rowid from snsTagInfo2 where tagId > 5 AND  tagName  =\"" + bo.wC(paramString) + "\" AND  tagId != " + paramLong;
+    ab.d("MicroMsg.SnsTagInfoStorage", "isTagNameExist ".concat(String.valueOf(paramString)));
+    paramString = this.db.a(paramString, null, 2);
     boolean bool = paramString.moveToFirst();
     paramString.close();
+    AppMethodBeat.o(38011);
     return bool;
   }
 }

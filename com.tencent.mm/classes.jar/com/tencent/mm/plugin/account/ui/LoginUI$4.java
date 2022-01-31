@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginUI$4
   implements MenuItem.OnMenuItemClickListener
@@ -10,13 +11,15 @@ final class LoginUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    LoginUI.e(this.fnM);
+    AppMethodBeat.i(152552);
+    LoginUI.d(this.gFf);
+    AppMethodBeat.o(152552);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginUI.4
  * JD-Core Version:    0.7.0.1
  */

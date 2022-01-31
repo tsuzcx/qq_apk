@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.card.d;
 
 public abstract interface a$a
 {
-  public abstract void bm(String paramString, int paramInt);
+  public abstract void Ig(String paramString);
   
-  public abstract void cx(String paramString1, String paramString2);
+  public abstract void bO(String paramString, int paramInt);
   
-  public abstract void fail(String paramString);
+  public abstract void du(String paramString1, String paramString2);
 }
 
 

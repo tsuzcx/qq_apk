@@ -4,13 +4,13 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public String dCX;
-  public boolean dVu;
-  public boolean gmE;
-  public boolean gmF;
-  public boolean gmG;
-  public boolean gmH;
-  public JSONObject gmI;
+  public String eAx;
+  public boolean flD;
+  public boolean hGE;
+  public boolean hGF;
+  public boolean hGG;
+  public boolean hGH;
+  public JSONObject jsonObject;
 }
 
 

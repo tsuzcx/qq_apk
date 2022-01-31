@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsStrangerCommentDetailUI$8
   implements Runnable
@@ -9,12 +10,14 @@ final class SnsStrangerCommentDetailUI$8
   
   public final void run()
   {
-    SnsStrangerCommentDetailUI.a(this.pdJ).setSelection(SnsStrangerCommentDetailUI.d(this.pdJ).getCount() - 1);
+    AppMethodBeat.i(39319);
+    SnsStrangerCommentDetailUI.a(this.rWw).setSelection(SnsStrangerCommentDetailUI.d(this.rWw).getCount() - 1);
+    AppMethodBeat.o(39319);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsStrangerCommentDetailUI.8
  * JD-Core Version:    0.7.0.1
  */

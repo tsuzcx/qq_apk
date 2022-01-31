@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.p;
 
 final class ExdeviceRankInfoUI$7
@@ -11,12 +12,14 @@ final class ExdeviceRankInfoUI$7
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (ExdeviceRankInfoUI.e(this.jFV) != null)
+    AppMethodBeat.i(20141);
+    if (ExdeviceRankInfoUI.e(this.lPt) != null)
     {
-      ExdeviceRankInfoUI.e(this.jFV).dismiss();
-      ExdeviceRankInfoUI.f(this.jFV);
+      ExdeviceRankInfoUI.e(this.lPt).dismiss();
+      ExdeviceRankInfoUI.f(this.lPt);
     }
-    this.jFV.finish();
+    this.lPt.finish();
+    AppMethodBeat.o(20141);
   }
 }
 

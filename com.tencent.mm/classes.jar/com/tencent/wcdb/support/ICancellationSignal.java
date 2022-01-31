@@ -4,6 +4,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface ICancellationSignal
   extends IInterface
@@ -54,7 +55,7 @@ public abstract interface ICancellationSignal
       return true;
     }
     
-    private static class Proxy
+    static class Proxy
       implements ICancellationSignal
     {
       private IBinder mRemote;
@@ -71,6 +72,7 @@ public abstract interface ICancellationSignal
       
       public void cancel()
       {
+        AppMethodBeat.i(12708);
         Parcel localParcel = Parcel.obtain();
         try
         {
@@ -81,6 +83,7 @@ public abstract interface ICancellationSignal
         finally
         {
           localParcel.recycle();
+          AppMethodBeat.o(12708);
         }
       }
       

@@ -1,17 +1,19 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
 import android.view.View;
-import com.tencent.mm.plugin.l.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.emoji.PreViewEmojiView;
 
 final class m$c
 {
-  PreViewEmojiView sgT;
+  PreViewEmojiView vZm;
   
   public m$c(m paramm, View paramView)
   {
-    this.sgT = ((PreViewEmojiView)paramView.findViewById(a.e.suggest_emoticon_iv));
-    this.sgT.setSize(paramm.sgF);
+    AppMethodBeat.i(62464);
+    this.vZm = ((PreViewEmojiView)paramView.findViewById(2131822469));
+    this.vZm.setSize(paramm.vYY);
+    AppMethodBeat.o(62464);
   }
 }
 

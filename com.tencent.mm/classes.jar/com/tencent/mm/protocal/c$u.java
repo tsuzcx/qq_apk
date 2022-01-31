@@ -5,7 +5,7 @@ final class c$u
 {
   c$u()
   {
-    super("checkIsSupportFaceDetect", "checkIsSupportFaceDetect", 265, false);
+    super("cancelHaowanPublish", "cancelHaowanPublish", 353, false);
   }
 }
 

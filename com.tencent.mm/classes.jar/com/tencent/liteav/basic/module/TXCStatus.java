@@ -1,171 +1,142 @@
 package com.tencent.liteav.basic.module;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class TXCStatus
 {
-  public static Object a(String paramString, int paramInt)
+  public static long a(String paramString, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1001: 
-    case 3003: 
-    case 4001: 
-    case 5001: 
-    case 6002: 
-      return Double.valueOf(nativeStatusGetDoubleValue(paramString, paramInt));
-    case 2001: 
-    case 2002: 
-    case 2003: 
-    case 2004: 
-    case 2005: 
-    case 2006: 
-    case 2007: 
-    case 2008: 
-    case 2010: 
-    case 2011: 
-    case 2012: 
-    case 2013: 
-    case 2014: 
-    case 2015: 
-    case 3002: 
-    case 4002: 
-    case 4003: 
-    case 4004: 
-    case 5002: 
-    case 6001: 
-    case 6003: 
-    case 6004: 
-    case 6005: 
-    case 6006: 
-    case 6007: 
-    case 6008: 
-    case 6009: 
-    case 7112: 
-      return Long.valueOf(nativeStatusGetIntValue(paramString, paramInt));
-    case 7001: 
-    case 7002: 
-    case 7003: 
-    case 7004: 
-    case 7005: 
-    case 7006: 
-    case 7007: 
-    case 7008: 
-    case 7009: 
-    case 7010: 
-    case 7011: 
-    case 7013: 
-    case 7016: 
-    case 7017: 
-    case 7018: 
-    case 7020: 
-    case 7101: 
-    case 7102: 
-    case 7103: 
-    case 7104: 
-    case 7105: 
-    case 7107: 
-    case 7108: 
-    case 7109: 
-    case 7111: 
-    case 7116: 
-    case 7117: 
-    case 7118: 
-      return Long.valueOf(nativeStatusGetIntValue(paramString, paramInt));
-    }
-    return nativeStatusGetStrValue(paramString, paramInt);
+    AppMethodBeat.i(146471);
+    long l = a(paramString, paramInt, 0);
+    AppMethodBeat.o(146471);
+    return l;
+  }
+  
+  public static long a(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(146475);
+    long l = nativeStatusGetIntValue(paramString, paramInt1, paramInt2);
+    AppMethodBeat.o(146475);
+    return l;
   }
   
   public static void a(String paramString)
   {
+    AppMethodBeat.i(66068);
     nativeStatusStartRecord(paramString);
+    AppMethodBeat.o(66068);
+  }
+  
+  public static boolean a(String paramString, int paramInt1, int paramInt2, Object paramObject)
+  {
+    AppMethodBeat.i(146470);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(146470);
+      return false;
+    }
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(146470);
+      return false;
+    }
+    if ((paramObject instanceof Double))
+    {
+      bool = nativeStatusSetDoubleValue(paramString, paramInt1, paramInt2, ((Double)paramObject).doubleValue());
+      AppMethodBeat.o(146470);
+      return bool;
+    }
+    if ((paramObject instanceof String))
+    {
+      bool = nativeStatusSetStrValue(paramString, paramInt1, paramInt2, (String)paramObject);
+      AppMethodBeat.o(146470);
+      return bool;
+    }
+    if ((paramObject instanceof Long))
+    {
+      bool = nativeStatusSetIntValue(paramString, paramInt1, paramInt2, ((Long)paramObject).longValue());
+      AppMethodBeat.o(146470);
+      return bool;
+    }
+    boolean bool = nativeStatusSetIntValue(paramString, paramInt1, paramInt2, ((Integer)paramObject).intValue());
+    AppMethodBeat.o(146470);
+    return bool;
   }
   
   public static boolean a(String paramString, int paramInt, Object paramObject)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-            } while (paramObject == null);
-            switch (paramInt)
-            {
-            default: 
-              return false;
-            }
-          } while (!(paramObject instanceof Double));
-          return nativeStatusSetDoubleValue(paramString, paramInt, ((Double)paramObject).doubleValue());
-        } while (!(paramObject instanceof Long));
-        return nativeStatusSetIntValue(paramString, paramInt, ((Long)paramObject).longValue());
-      } while (!(paramObject instanceof Long));
-      return nativeStatusSetIntValue(paramString, paramInt, ((Long)paramObject).longValue());
-    } while (!(paramObject instanceof String));
-    return nativeStatusSetStrValue(paramString, paramInt, (String)paramObject);
+    AppMethodBeat.i(66070);
+    boolean bool = a(paramString, paramInt, 0, paramObject);
+    AppMethodBeat.o(66070);
+    return bool;
   }
   
-  public static long b(String paramString, int paramInt)
+  public static String b(String paramString, int paramInt)
   {
-    paramString = a(paramString, paramInt);
-    if ((paramString != null) && ((paramString instanceof Long))) {
-      return ((Long)paramString).longValue();
-    }
-    return 0L;
+    AppMethodBeat.i(146472);
+    paramString = b(paramString, paramInt, 0);
+    AppMethodBeat.o(146472);
+    return paramString;
+  }
+  
+  public static String b(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(146476);
+    paramString = nativeStatusGetStrValue(paramString, paramInt1, paramInt2);
+    AppMethodBeat.o(146476);
+    return paramString;
   }
   
   public static void b(String paramString)
   {
+    AppMethodBeat.i(66069);
     nativeStatusStopRecord(paramString);
+    AppMethodBeat.o(66069);
   }
   
-  public static String c(String paramString, int paramInt)
+  public static int c(String paramString, int paramInt)
   {
-    paramString = a(paramString, paramInt);
-    if ((paramString != null) && ((paramString instanceof String))) {
-      return (String)paramString;
-    }
-    return "";
+    AppMethodBeat.i(146473);
+    paramInt = c(paramString, paramInt, 0);
+    AppMethodBeat.o(146473);
+    return paramInt;
   }
   
-  public static int d(String paramString, int paramInt)
+  public static int c(String paramString, int paramInt1, int paramInt2)
   {
-    paramString = a(paramString, paramInt);
-    if ((paramString != null) && ((paramString instanceof Long))) {
-      return ((Long)paramString).intValue();
-    }
-    return 0;
+    AppMethodBeat.i(146477);
+    paramInt1 = (int)nativeStatusGetIntValue(paramString, paramInt1, paramInt2);
+    AppMethodBeat.o(146477);
+    return paramInt1;
   }
   
-  public static double e(String paramString, int paramInt)
+  public static double d(String paramString, int paramInt)
   {
-    paramString = a(paramString, paramInt);
-    if ((paramString != null) && ((paramString instanceof Double))) {
-      return ((Double)paramString).doubleValue();
-    }
-    return 0.0D;
+    AppMethodBeat.i(146474);
+    double d = d(paramString, paramInt, 0);
+    AppMethodBeat.o(146474);
+    return d;
   }
   
-  private static native double nativeStatusGetDoubleValue(String paramString, int paramInt);
+  public static double d(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(146478);
+    double d = nativeStatusGetDoubleValue(paramString, paramInt1, paramInt2);
+    AppMethodBeat.o(146478);
+    return d;
+  }
   
-  private static native long nativeStatusGetIntValue(String paramString, int paramInt);
+  private static native double nativeStatusGetDoubleValue(String paramString, int paramInt1, int paramInt2);
   
-  private static native String nativeStatusGetStrValue(String paramString, int paramInt);
+  private static native long nativeStatusGetIntValue(String paramString, int paramInt1, int paramInt2);
   
-  private static native boolean nativeStatusSetDoubleValue(String paramString, int paramInt, double paramDouble);
+  private static native String nativeStatusGetStrValue(String paramString, int paramInt1, int paramInt2);
   
-  private static native boolean nativeStatusSetIntValue(String paramString, int paramInt, long paramLong);
+  private static native boolean nativeStatusSetDoubleValue(String paramString, int paramInt1, int paramInt2, double paramDouble);
   
-  private static native boolean nativeStatusSetStrValue(String paramString1, int paramInt, String paramString2);
+  private static native boolean nativeStatusSetIntValue(String paramString, int paramInt1, int paramInt2, long paramLong);
+  
+  private static native boolean nativeStatusSetStrValue(String paramString1, int paramInt1, int paramInt2, String paramString2);
   
   private static native void nativeStatusStartRecord(String paramString);
   

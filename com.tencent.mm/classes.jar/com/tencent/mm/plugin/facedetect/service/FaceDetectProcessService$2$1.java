@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.facedetect.service;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.FaceProNative.FaceResult;
-import com.tencent.mm.plugin.facedetect.model.p;
+import com.tencent.mm.plugin.facedetect.model.q;
 
 final class FaceDetectProcessService$2$1
   implements Runnable
@@ -10,7 +11,9 @@ final class FaceDetectProcessService$2$1
   
   public final void run()
   {
-    this.jPX.jPV.b(this.jPW);
+    AppMethodBeat.i(338);
+    this.mkn.mkl.b(this.mkm);
+    AppMethodBeat.o(338);
   }
 }
 

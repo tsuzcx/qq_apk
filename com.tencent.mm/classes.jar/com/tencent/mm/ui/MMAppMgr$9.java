@@ -1,35 +1,21 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.am.a;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.storage.z;
 
 final class MMAppMgr$9
-  implements am.a
+  implements CompoundButton.OnCheckedChangeListener
 {
-  MMAppMgr$9(MMAppMgr paramMMAppMgr) {}
-  
-  public final boolean tC()
+  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.uNR.uNO >= 30) {
-      return false;
-    }
-    if ((!com.tencent.mm.sdk.platformtools.l.ft(ae.getContext())) && (!this.uNR.uNK) && (g.DN().Dc()))
-    {
-      this.uNR.uNP = true;
-      com.tencent.mm.plugin.webview.ui.tools.bag.l.rss.cfc();
-      return false;
-    }
-    if ((this.uNR.uNK) && (this.uNR.uNP) && (g.DN().Dc()))
-    {
-      this.uNR.uNP = false;
-      com.tencent.mm.plugin.webview.ui.tools.bag.l.rss.lp(true);
-      return false;
-    }
-    MMAppMgr localMMAppMgr = this.uNR;
-    localMMAppMgr.uNO += 1;
-    return true;
+    AppMethodBeat.i(153816);
+    aw.aaz();
+    c.Ru().set(61, Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(153816);
   }
 }
 

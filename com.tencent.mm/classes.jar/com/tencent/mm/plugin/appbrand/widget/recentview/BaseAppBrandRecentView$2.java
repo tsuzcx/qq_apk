@@ -7,14 +7,14 @@ final class BaseAppBrandRecentView$2
 {
   BaseAppBrandRecentView$2(BaseAppBrandRecentView paramBaseAppBrandRecentView) {}
   
-  public final boolean gM()
+  public final boolean ih()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recentview.BaseAppBrandRecentView.2
  * JD-Core Version:    0.7.0.1
  */

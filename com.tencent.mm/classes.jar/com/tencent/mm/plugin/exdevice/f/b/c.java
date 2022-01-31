@@ -1,50 +1,56 @@
 package com.tencent.mm.plugin.exdevice.f.b;
 
 import android.database.Cursor;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.exdevice.f.a.j;
 import com.tencent.mm.plugin.exdevice.f.a.l;
 import com.tencent.mm.plugin.exdevice.model.ad;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import junit.framework.Assert;
 
 public final class c
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
-  public f jyx;
-  public com.tencent.mm.plugin.exdevice.f.a.f jyy;
+  public f lHW;
+  public com.tencent.mm.plugin.exdevice.f.a.f lHX;
   
   public c()
   {
-    y.d("MicroMsg.ExdeviceRankInfoManager", "hy: constructing manager....");
-    au.Dk().a(1042, this);
-    au.Dk().a(1041, this);
-    au.Dk().a(1043, this);
-    au.Dk().a(1040, this);
+    AppMethodBeat.i(19478);
+    ab.d("MicroMsg.ExdeviceRankInfoManager", "hy: constructing manager....");
+    aw.Rc().a(1042, this);
+    aw.Rc().a(1041, this);
+    aw.Rc().a(1043, this);
+    aw.Rc().a(1040, this);
+    AppMethodBeat.o(19478);
   }
   
-  public static ArrayList<com.tencent.mm.plugin.exdevice.f.b.a.d> By(String paramString)
+  public static ArrayList<com.tencent.mm.plugin.exdevice.f.b.a.d> LA(String paramString)
   {
     com.tencent.mm.plugin.exdevice.f.b.a.d locald = null;
-    y.d("MicroMsg.ExdeviceRankInfoManager", "hy: getting like info...");
-    if (!bk.bl(paramString))
+    AppMethodBeat.i(19480);
+    ab.d("MicroMsg.ExdeviceRankInfoManager", "hy: getting like info...");
+    if (!bo.isNullOrNil(paramString))
     {
-      Object localObject = ad.aLM();
-      if (bk.bl(paramString))
+      Object localObject = ad.bpZ();
+      if (bo.isNullOrNil(paramString))
       {
-        y.e("MicroMsg.ExdeviceRankInfoStg", "hy: param error");
+        ab.e("MicroMsg.ExdeviceRankInfoStg", "hy: param error");
+        AppMethodBeat.o(19480);
         return null;
       }
       String str = String.format("select *, rowid from %s where %s = ? order by %s desc", new Object[] { "HardDeviceRankInfo", "rankID", "score" });
-      localObject = ((com.tencent.mm.plugin.exdevice.f.b.b.d)localObject).dXw.a(str, new String[] { bk.aM(paramString, "") }, 2);
+      localObject = ((com.tencent.mm.plugin.exdevice.f.b.b.d)localObject).db.a(str, new String[] { bo.bf(paramString, "") }, 2);
       if (localObject == null)
       {
-        y.e("MicroMsg.ExdeviceRankInfoStg", "Get no rank in DB");
+        ab.e("MicroMsg.ExdeviceRankInfoStg", "Get no rank in DB");
+        AppMethodBeat.o(19480);
         return null;
       }
       if (((Cursor)localObject).moveToFirst())
@@ -53,46 +59,51 @@ public final class c
         do
         {
           locald = new com.tencent.mm.plugin.exdevice.f.b.a.d();
-          locald.d((Cursor)localObject);
+          locald.convertFrom((Cursor)localObject);
           paramString.add(locald);
         } while (((Cursor)localObject).moveToNext());
       }
       for (;;)
       {
         ((Cursor)localObject).close();
+        AppMethodBeat.o(19480);
         return paramString;
-        y.d("MicroMsg.ExdeviceRankInfoStg", "hy: no record");
+        ab.d("MicroMsg.ExdeviceRankInfoStg", "hy: no record");
         paramString = locald;
       }
     }
-    y.w("MicroMsg.ExdeviceRankInfoManager", "hy: param error");
+    ab.w("MicroMsg.ExdeviceRankInfoManager", "hy: param error");
+    AppMethodBeat.o(19480);
     return null;
   }
   
   public static void d(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    au.Dk().a(new l(paramString3, paramString2, paramInt, paramString1), 0);
+    AppMethodBeat.i(19479);
+    aw.Rc().a(new l(paramString3, paramString2, paramInt, paramString1), 0);
+    AppMethodBeat.o(19479);
   }
   
-  public static void d(String paramString, ArrayList<com.tencent.mm.plugin.exdevice.f.b.a.d> paramArrayList)
+  public static void f(String paramString, ArrayList<com.tencent.mm.plugin.exdevice.f.b.a.d> paramArrayList)
   {
-    com.tencent.mm.plugin.exdevice.f.b.b.d locald = ad.aLM();
-    if (!bk.bl(paramString)) {}
+    AppMethodBeat.i(19481);
+    com.tencent.mm.plugin.exdevice.f.b.b.d locald = ad.bpZ();
+    if (!bo.isNullOrNil(paramString)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
       if (paramArrayList == null) {
-        break label196;
+        break label216;
       }
       String str = String.format("select COUNT(*) from %s where %s = ?", new Object[] { "HardDeviceRankInfo", "rankID" });
-      paramString = locald.dXw.a(str, new String[] { bk.aM(paramString, "") }, 2);
+      paramString = locald.db.a(str, new String[] { bo.bf(paramString, "") }, 2);
       if (paramString != null) {
         break;
       }
-      y.e("MicroMsg.ExdeviceRankInfoStg", "Get no rank in DB");
+      ab.e("MicroMsg.ExdeviceRankInfoStg", "Get no rank in DB");
       i = 0;
       if (i != 0) {
-        break label163;
+        break label176;
       }
       paramString = paramArrayList.iterator();
       while (paramString.hasNext()) {
@@ -104,38 +115,46 @@ public final class c
     {
       paramString.close();
       break;
-      y.d("MicroMsg.ExdeviceRankInfoStg", "hy: no record");
+      ab.d("MicroMsg.ExdeviceRankInfoStg", "hy: no record");
     }
-    label163:
+    AppMethodBeat.o(19481);
+    return;
+    label176:
     paramString = paramArrayList.iterator();
     while (paramString.hasNext()) {
       locald.b((com.tencent.mm.plugin.exdevice.f.b.a.d)paramString.next(), false);
     }
-    label196:
-    y.w("MicroMsg.ExdeviceRankInfoStg", "hy: data is null. abort insert");
+    AppMethodBeat.o(19481);
+    return;
+    label216:
+    ab.w("MicroMsg.ExdeviceRankInfoStg", "hy: data is null. abort insert");
+    AppMethodBeat.o(19481);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    y.d("MicroMsg.ExdeviceRankInfoManager", "hy: netscene back.err type: %d, err code: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if ((paramm instanceof j)) {
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        y.w("MicroMsg.ExdeviceRankInfoManager", "hy: scene error.");
+    AppMethodBeat.i(19482);
+    ab.d("MicroMsg.ExdeviceRankInfoManager", "hy: netscene back.err type: %d, err code: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if ((paramm instanceof j))
+    {
+      if ((paramInt1 != 0) || (paramInt2 != 0))
+      {
+        ab.w("MicroMsg.ExdeviceRankInfoManager", "hy: scene error.");
+        AppMethodBeat.o(19482);
       }
     }
-    do
+    else if ((paramm instanceof l))
     {
-      do
+      if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        return;
-        if (!(paramm instanceof l)) {
-          break;
-        }
-      } while ((paramInt1 == 0) && (paramInt2 == 0));
-      y.w("MicroMsg.ExdeviceRankInfoManager", "hy: scene error");
-      return;
-    } while ((!(paramm instanceof com.tencent.mm.plugin.exdevice.f.a.m)) || ((paramInt1 == 0) && (paramInt2 == 0)));
-    y.w("MicroMsg.ExdeviceRankInfoManager", "hy: scene error");
+        ab.w("MicroMsg.ExdeviceRankInfoManager", "hy: scene error");
+        AppMethodBeat.o(19482);
+      }
+    }
+    else if (((paramm instanceof com.tencent.mm.plugin.exdevice.f.a.m)) && ((paramInt1 != 0) || (paramInt2 != 0))) {
+      ab.w("MicroMsg.ExdeviceRankInfoManager", "hy: scene error");
+    }
+    AppMethodBeat.o(19482);
   }
 }
 

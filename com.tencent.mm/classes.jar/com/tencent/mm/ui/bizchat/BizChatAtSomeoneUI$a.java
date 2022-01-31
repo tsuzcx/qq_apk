@@ -7,95 +7,52 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ai.a.k;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.a.k;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.sdk.platformtools.d;
 import com.tencent.mm.ui.base.MaskLayout;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.p;
 import java.util.List;
 
 final class BizChatAtSomeoneUI$a
-  extends r<com.tencent.mm.ai.a.j>
+  extends p<com.tencent.mm.aj.a.j>
 {
-  private com.tencent.mm.as.a.a.c drd = null;
-  private List<String> dru;
-  String drv;
-  private com.tencent.mm.ai.a.c veo;
-  private String[] ves;
-  private Bitmap vet;
+  private com.tencent.mm.at.a.a.c eiK;
+  private List<String> ejc;
+  String ejd;
+  private com.tencent.mm.aj.a.c zsO;
+  private String[] zsR;
+  private Bitmap zsS;
   
-  public BizChatAtSomeoneUI$a(Context paramContext, com.tencent.mm.ai.a.j paramj, com.tencent.mm.ai.a.c paramc, String[] paramArrayOfString, List<String> paramList)
+  public BizChatAtSomeoneUI$a(Context paramContext, com.tencent.mm.aj.a.j paramj, com.tencent.mm.aj.a.c paramc, String[] paramArrayOfString, List<String> paramList)
   {
     super(paramContext, paramj);
-    this.veo = paramc;
-    this.ves = paramArrayOfString;
-    this.dru = paramList;
+    AppMethodBeat.i(30031);
+    this.eiK = null;
+    this.zsO = paramc;
+    this.zsR = paramArrayOfString;
+    this.ejc = paramList;
     paramj = new c.a();
-    paramj.eri = com.tencent.mm.ai.a.e.ly(this.veo.field_brandUserName);
-    paramj.erf = true;
-    paramj.erC = true;
-    paramj.eru = R.k.default_avatar;
-    this.drd = paramj.OV();
-    this.vet = com.tencent.mm.sdk.platformtools.c.q(paramContext.getResources().getDrawable(R.k.at_all_avater));
+    paramj.eNP = com.tencent.mm.aj.a.e.su(this.zsO.field_brandUserName);
+    paramj.eNM = true;
+    paramj.eOe = true;
+    paramj.eNY = 2131231207;
+    this.eiK = paramj.ahY();
+    this.zsS = d.u(paramContext.getResources().getDrawable(2131230931));
+    AppMethodBeat.o(30031);
   }
   
-  protected final int bam()
+  public final void Ku()
   {
-    if (BizChatAtSomeoneUI.access$100()) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = View.inflate(this.context, R.i.at_someone_item, null);
-      paramViewGroup = new BizChatAtSomeoneUI.b((byte)0);
-      paramViewGroup.dsk = ((MaskLayout)paramView.findViewById(R.h.at_someone_item_avatar));
-      paramViewGroup.drB = ((TextView)paramView.findViewById(R.h.at_someone_item_nick));
-      paramView.setTag(paramViewGroup);
-    }
-    while ((paramInt == 0) && (BizChatAtSomeoneUI.access$100()))
-    {
-      paramViewGroup.veu.setImageBitmap(this.vet);
-      paramViewGroup.drB.setText(this.context.getResources().getString(R.l.at_all, new Object[] { "@" }));
-      return paramView;
-      paramViewGroup = (BizChatAtSomeoneUI.b)paramView.getTag();
-    }
-    if (BizChatAtSomeoneUI.access$100()) {}
-    for (int i = 1;; i = 0)
-    {
-      Object localObject = (com.tencent.mm.ai.a.j)getItem(paramInt - i);
-      paramViewGroup.drB.setTextColor(com.tencent.mm.cb.a.h(this.context, R.e.mm_list_textcolor_one));
-      ImageView localImageView = (ImageView)paramViewGroup.dsk.getContentView();
-      o.ON().a(((com.tencent.mm.ai.a.j)localObject).field_headImageUrl, localImageView, this.drd);
-      paramViewGroup.dsk.setMaskDrawable(null);
-      localObject = BizChatAtSomeoneUI.a(this.veo, ((com.tencent.mm.ai.a.j)localObject).field_userId);
-      paramViewGroup.drB.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.context, (CharSequence)localObject, paramViewGroup.drB.getTextSize()));
-      return paramView;
-    }
-  }
-  
-  public final boolean sk(int paramInt)
-  {
-    return false;
-  }
-  
-  public final void yc()
-  {
-    bcS();
-    k localk = z.MC();
-    Object localObject2 = this.ves;
-    Object localObject1 = this.drv;
-    List localList = this.dru;
+    AppMethodBeat.i(30034);
+    bKb();
+    k localk = z.afm();
+    Object localObject2 = this.zsR;
+    Object localObject1 = this.ejd;
+    List localList = this.ejc;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("select *  from BizChatUserInfo where ");
     localObject2 = localStringBuilder.append(k.a((String[])localObject2, localList));
@@ -110,15 +67,69 @@ final class BizChatAtSomeoneUI$a
       ((StringBuffer)localObject2).append(" upper(BizChatUserInfo.userNamePY) asc, ");
       ((StringBuffer)localObject2).append(" upper(BizChatUserInfo.userName) asc ");
       ((StringBuilder)localObject1).append(((StringBuffer)localObject2).toString());
-      setCursor(localk.dXw.rawQuery(localStringBuilder.toString(), null));
+      setCursor(localk.db.rawQuery(localStringBuilder.toString(), null));
       super.notifyDataSetChanged();
+      AppMethodBeat.o(30034);
       return;
     }
   }
   
-  protected final void yd()
+  public final void Kv()
   {
-    yc();
+    AppMethodBeat.i(30035);
+    Ku();
+    AppMethodBeat.o(30035);
+  }
+  
+  public final int bHs()
+  {
+    AppMethodBeat.i(30032);
+    if (BizChatAtSomeoneUI.access$100())
+    {
+      AppMethodBeat.o(30032);
+      return 1;
+    }
+    AppMethodBeat.o(30032);
+    return 0;
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(30033);
+    if (paramView == null)
+    {
+      paramView = View.inflate(this.context, 2130968786, null);
+      paramViewGroup = new BizChatAtSomeoneUI.b((byte)0);
+      paramViewGroup.ejS = ((MaskLayout)paramView.findViewById(2131821557));
+      paramViewGroup.ejj = ((TextView)paramView.findViewById(2131821558));
+      paramView.setTag(paramViewGroup);
+    }
+    while ((paramInt == 0) && (BizChatAtSomeoneUI.access$100()))
+    {
+      paramViewGroup.zsT.setImageBitmap(this.zsS);
+      paramViewGroup.ejj.setText(this.context.getResources().getString(2131297210, new Object[] { "@" }));
+      AppMethodBeat.o(30033);
+      return paramView;
+      paramViewGroup = (BizChatAtSomeoneUI.b)paramView.getTag();
+    }
+    if (BizChatAtSomeoneUI.access$100()) {}
+    for (int i = 1;; i = 0)
+    {
+      Object localObject = (com.tencent.mm.aj.a.j)getItem(paramInt - i);
+      paramViewGroup.ejj.setTextColor(com.tencent.mm.cb.a.l(this.context, 2131690768));
+      ImageView localImageView = (ImageView)paramViewGroup.ejS.getContentView();
+      o.ahG().a(((com.tencent.mm.aj.a.j)localObject).field_headImageUrl, localImageView, this.eiK);
+      paramViewGroup.ejS.setMaskDrawable(null);
+      localObject = BizChatAtSomeoneUI.a(this.zsO, ((com.tencent.mm.aj.a.j)localObject).field_userId);
+      paramViewGroup.ejj.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.context, (CharSequence)localObject, paramViewGroup.ejj.getTextSize()));
+      AppMethodBeat.o(30033);
+      return paramView;
+    }
+  }
+  
+  public final boolean xj(int paramInt)
+  {
+    return false;
   }
 }
 

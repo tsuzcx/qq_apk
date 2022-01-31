@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 
 final class JsApiChooseVideo$a$2
@@ -9,15 +10,18 @@ final class JsApiChooseVideo$a$2
   
   public final void run()
   {
-    if (new File(JsApiChooseVideo.a.b(this.gvZ)).exists())
+    AppMethodBeat.i(131283);
+    if (new File(JsApiChooseVideo.a.b(this.hRK)).exists())
     {
-      JsApiChooseVideo.a.a(this.gvZ).aYY = -1;
-      JsApiChooseVideo.a.a(this.gvZ).gvW = JsApiChooseVideo.a.a(this.gvZ, JsApiChooseVideo.a.b(this.gvZ), JsApiChooseVideo.a.c(this.gvZ).gvV);
-      JsApiChooseVideo.a.b(this.gvZ, JsApiChooseVideo.a.a(this.gvZ));
+      JsApiChooseVideo.a.a(this.hRK).bpE = -1;
+      JsApiChooseVideo.a.a(this.hRK).hRH = JsApiChooseVideo.a.a(this.hRK, JsApiChooseVideo.a.b(this.hRK), JsApiChooseVideo.a.c(this.hRK).hRG);
+      JsApiChooseVideo.a.b(this.hRK, JsApiChooseVideo.a.a(this.hRK));
+      AppMethodBeat.o(131283);
       return;
     }
-    JsApiChooseVideo.a.a(this.gvZ).aYY = -2;
-    JsApiChooseVideo.a.c(this.gvZ, JsApiChooseVideo.a.a(this.gvZ));
+    JsApiChooseVideo.a.a(this.hRK).bpE = -2;
+    JsApiChooseVideo.a.c(this.hRK, JsApiChooseVideo.a.a(this.hRK));
+    AppMethodBeat.o(131283);
   }
 }
 

@@ -1,64 +1,86 @@
 package com.tencent.c.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class a
 {
-  public static String bta = "ts";
-  public static String btb = "times";
-  public static String btc = "mfreq";
-  public static String btd = "mdays";
-  long bsW = 0L;
-  int bsX = 0;
-  int bsY = 100;
-  int bsZ = 3;
+  public static String bUm = "ts";
+  public static String bUn = "times";
+  public static String bUo = "mfreq";
+  public static String bUp = "mdays";
+  long bUi;
+  int bUj;
+  int bUk;
+  int bUl;
   
-  a() {}
+  a()
+  {
+    this.bUi = 0L;
+    this.bUj = 0;
+    this.bUk = 100;
+    this.bUl = 3;
+  }
   
   a(String paramString)
   {
-    if (!s.bF(paramString)) {}
-    for (;;)
+    AppMethodBeat.i(125740);
+    this.bUi = 0L;
+    this.bUj = 0;
+    this.bUk = 100;
+    this.bUl = 3;
+    if (!s.cI(paramString))
     {
+      AppMethodBeat.o(125740);
       return;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (!paramString.isNull(bta)) {
-          this.bsW = paramString.getLong(bta);
-        }
-        if (!paramString.isNull(btc)) {
-          this.bsY = paramString.getInt(btc);
-        }
-        if (!paramString.isNull(btb)) {
-          this.bsX = paramString.getInt(btb);
-        }
-        if (!paramString.isNull(btd))
-        {
-          this.bsZ = paramString.getInt(btd);
-          return;
-        }
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (!paramString.isNull(bUm)) {
+        this.bUi = paramString.getLong(bUm);
       }
-      catch (JSONException paramString) {}
+      if (!paramString.isNull(bUo)) {
+        this.bUk = paramString.getInt(bUo);
+      }
+      if (!paramString.isNull(bUn)) {
+        this.bUj = paramString.getInt(bUn);
+      }
+      if (!paramString.isNull(bUp))
+      {
+        this.bUl = paramString.getInt(bUp);
+        AppMethodBeat.o(125740);
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      s.zV();
+      AppMethodBeat.o(125740);
     }
   }
   
   public final String toString()
   {
-    JSONObject localJSONObject = new JSONObject();
+    AppMethodBeat.i(125741);
+    Object localObject = new JSONObject();
     try
     {
-      localJSONObject.put(bta, this.bsW);
-      localJSONObject.put(btb, this.bsX);
-      localJSONObject.put(btc, this.bsY);
-      localJSONObject.put(btd, this.bsZ);
-      label56:
-      return localJSONObject.toString();
+      ((JSONObject)localObject).put(bUm, this.bUi);
+      ((JSONObject)localObject).put(bUn, this.bUj);
+      ((JSONObject)localObject).put(bUo, this.bUk);
+      ((JSONObject)localObject).put(bUp, this.bUl);
+      localObject = ((JSONObject)localObject).toString();
+      AppMethodBeat.o(125741);
+      return localObject;
     }
     catch (JSONException localJSONException)
     {
-      break label56;
+      for (;;)
+      {
+        s.zV();
+      }
     }
   }
 }

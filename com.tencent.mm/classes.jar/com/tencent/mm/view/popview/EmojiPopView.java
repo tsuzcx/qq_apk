@@ -6,24 +6,19 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ProgressBar;
-import com.tencent.mm.plugin.l.a.c;
-import com.tencent.mm.plugin.l.a.d;
-import com.tencent.mm.plugin.l.a.e;
-import com.tencent.mm.plugin.l.a.f;
-import com.tencent.mm.pluginsdk.ui.emoji.MMEmojiView;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.view.EmojiStatusView;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public class EmojiPopView
   extends AbstractPopView
 {
-  private MMEmojiView jbW;
-  private ProgressBar mZJ;
+  private EmojiStatusView AUA;
+  private WindowManager.LayoutParams AUB;
+  private String AUC;
+  private ProgressBar nbP;
   private int offsetY;
-  private WindowManager.LayoutParams wzh;
-  private String wzi;
   
   public EmojiPopView(Context paramContext)
   {
@@ -38,65 +33,60 @@ public class EmojiPopView
   public EmojiPopView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, a.f.emoji_pop_emoji_view, this);
-    this.jbW = ((MMEmojiView)findViewById(a.e.image));
-    this.mZJ = ((ProgressBar)findViewById(a.e.progress));
-    setBackgroundResource(a.d.emo_relatedword_bg);
-    this.jbW.setMaxSize(paramContext.getResources().getDimensionPixelSize(a.c.emoji_pop_emoji_size));
-    this.jbW.setIsMaxSizeLimit(true);
-    this.wzh = new WindowManager.LayoutParams(2, 264, 1);
-    paramInt = paramContext.getResources().getDimensionPixelSize(a.c.emoji_pop_frame_size_emoji);
-    this.wzh.width = paramInt;
-    this.wzh.height = paramInt;
-    this.wzh.gravity = 8388659;
-    this.offsetY = paramContext.getResources().getDimensionPixelSize(a.c.emoji_pop_emoji_offset_y);
+    AppMethodBeat.i(63064);
+    inflate(paramContext, 2130969377, this);
+    this.AUA = ((EmojiStatusView)findViewById(2131820629));
+    this.nbP = ((ProgressBar)findViewById(2131821404));
+    setBackground(null);
+    this.AUB = new WindowManager.LayoutParams(2, 264, 1);
+    paramInt = paramContext.getResources().getDimensionPixelSize(2131428392);
+    this.AUB.width = paramInt;
+    this.AUB.height = paramInt;
+    this.AUB.gravity = 8388659;
+    this.offsetY = paramContext.getResources().getDimensionPixelSize(2131428390);
+    AppMethodBeat.o(63064);
   }
   
-  public final void ep(View paramView)
+  public final void fD(View paramView)
   {
+    AppMethodBeat.i(63066);
     int[] arrayOfInt = new int[2];
     paramView.getLocationInWindow(arrayOfInt);
-    this.wzh.x = (arrayOfInt[0] - (this.wzh.width - paramView.getMeasuredWidth()) / 2);
-    this.wzh.y = (arrayOfInt[1] - this.wzh.height + this.offsetY);
+    this.AUB.x = (arrayOfInt[0] - (this.AUB.width - paramView.getMeasuredWidth()) / 2);
+    this.AUB.y = (arrayOfInt[1] - this.AUB.height + this.offsetY);
+    AppMethodBeat.o(63066);
   }
   
   public WindowManager.LayoutParams getWindowLayoutParams()
   {
-    return this.wzh;
+    return this.AUB;
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    AppMethodBeat.i(63067);
+    super.onDetachedFromWindow();
+    AppMethodBeat.o(63067);
   }
   
   public void setEmojiInfo(EmojiInfo paramEmojiInfo)
   {
+    AppMethodBeat.i(63065);
     if (paramEmojiInfo == null)
     {
-      this.jbW.setVisibility(4);
-      this.mZJ.setVisibility(0);
-      y.i("MicroMsg.EmojiPopView", "emoji is null. set null");
-    }
-    while (paramEmojiInfo.Wv().equals(this.wzi)) {
+      this.AUA.setVisibility(4);
+      this.nbP.setVisibility(0);
+      ab.i("MicroMsg.EmojiPopView", "emoji is null. set null");
+      AppMethodBeat.o(63065);
       return;
     }
-    this.jbW.setVisibility(0);
-    this.mZJ.setVisibility(4);
-    this.wzi = paramEmojiInfo.Wv();
-    if ((paramEmojiInfo.field_catalog == EmojiGroupInfo.uCR) && ((paramEmojiInfo.field_content.equals(String.valueOf(EmojiInfo.uCY))) || (paramEmojiInfo.field_content.equals(String.valueOf(EmojiInfo.uCX))))) {}
-    for (int i = 1; i != 0; i = 0)
+    if (!paramEmojiInfo.Al().equals(this.AUC))
     {
-      paramEmojiInfo = paramEmojiInfo.getName().split("\\.")[0];
-      y.d("MicroMsg.EmojiPopView", "emoji drawable name is %s", new Object[] { paramEmojiInfo });
-      i = getResources().getIdentifier(paramEmojiInfo, "drawable", ae.getPackageName());
-      this.jbW.setImageResource(i);
-      return;
+      this.AUC = paramEmojiInfo.Al();
+      this.AUA.setStatusListener(new EmojiPopView.1(this));
+      this.AUA.setEmojiInfo(paramEmojiInfo);
     }
-    if (paramEmojiInfo.cwC()) {
-      this.jbW.b(EmojiInfo.bv(ae.getContext(), paramEmojiInfo.getName()), paramEmojiInfo.getName());
-    }
-    for (;;)
-    {
-      this.jbW.resume();
-      return;
-      this.jbW.a(paramEmojiInfo, "");
-    }
+    AppMethodBeat.o(63065);
   }
 }
 

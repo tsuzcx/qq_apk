@@ -1,68 +1,83 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.contact.a.e;
+import com.tencent.mm.ui.contact.a.d;
 import com.tencent.mm.ui.contact.m;
 import java.util.List;
 
 public final class b
-  extends m
+  extends com.tencent.mm.ui.contact.n
 {
-  private String bVk;
-  private ad dnp;
-  private ah handler = new ah();
-  private List<com.tencent.mm.plugin.fts.a.a.l> kxO;
-  private com.tencent.mm.plugin.fts.a.a.a kxg;
-  private com.tencent.mm.plugin.fts.a.l mVF = new b.1(this);
+  private ad contact;
+  private ak handler;
+  private com.tencent.mm.plugin.fts.a.a.a mSV;
+  private List<com.tencent.mm.plugin.fts.a.a.l> mTC;
+  private com.tencent.mm.plugin.fts.a.l pym;
+  private String query;
   
-  public b(com.tencent.mm.ui.contact.l paraml, int paramInt, ad paramad)
+  public b(m paramm, int paramInt, ad paramad)
   {
-    super(paraml, false, paramInt);
-    this.dnp = paramad;
+    super(paramm, false, paramInt);
+    AppMethodBeat.i(23335);
+    this.handler = new ak();
+    this.pym = new b.1(this);
+    this.contact = paramad;
+    AppMethodBeat.o(23335);
   }
   
   public final void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean)
   {
-    this.bVk = paramString;
+    AppMethodBeat.i(23338);
+    this.query = paramString;
     paramArrayOfInt = new i();
-    paramArrayOfInt.bVk = paramString;
+    paramArrayOfInt.query = paramString;
     paramArrayOfInt.handler = this.handler;
-    paramArrayOfInt.kxf = this.mVF;
-    paramArrayOfInt.kwY = this.dnp.field_username;
-    paramArrayOfInt.kwX = 7;
-    this.kxg = ((n)g.t(n.class)).search(2, paramArrayOfInt);
+    paramArrayOfInt.mSU = this.pym;
+    paramArrayOfInt.mSN = this.contact.field_username;
+    paramArrayOfInt.hdl = 7;
+    this.mSV = ((com.tencent.mm.plugin.fts.a.n)g.G(com.tencent.mm.plugin.fts.a.n.class)).search(2, paramArrayOfInt);
+    AppMethodBeat.o(23338);
   }
   
-  public final void adg()
+  public final void clearData()
   {
-    this.bVk = null;
-    if (this.kxg != null) {
-      ((n)g.t(n.class)).cancelSearchTask(this.kxg);
+    AppMethodBeat.i(23339);
+    this.query = null;
+    if (this.mSV != null) {
+      ((com.tencent.mm.plugin.fts.a.n)g.G(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.mSV);
     }
+    AppMethodBeat.o(23339);
   }
   
   public final int getCount()
   {
-    if (this.kxO == null) {
+    AppMethodBeat.i(23337);
+    if (this.mTC == null)
+    {
+      AppMethodBeat.o(23337);
       return 0;
     }
-    return this.kxO.size();
+    int i = this.mTC.size();
+    AppMethodBeat.o(23337);
+    return i;
   }
   
-  protected final com.tencent.mm.ui.contact.a.a jQ(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a mM(int paramInt)
   {
-    e locale = new e(paramInt);
-    au.Hx();
-    locale.dnp = c.Fw().abl(((com.tencent.mm.plugin.fts.a.a.l)this.kxO.get(paramInt)).kwg);
-    return locale;
+    AppMethodBeat.i(23336);
+    d locald = new d(paramInt, this.contact);
+    aw.aaz();
+    locald.contact = c.YA().arw(((com.tencent.mm.plugin.fts.a.a.l)this.mTC.get(paramInt)).mRV);
+    AppMethodBeat.o(23336);
+    return locald;
   }
 }
 

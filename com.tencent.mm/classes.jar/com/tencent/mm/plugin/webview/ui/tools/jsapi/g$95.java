@@ -1,25 +1,41 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ui.base.h;
+import android.app.ProgressDialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.model.al;
+import com.tencent.mm.plugin.webview.model.d.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.HashMap;
 
 final class g$95
-  implements Runnable
+  implements d.b
 {
-  g$95(g paramg, i parami) {}
+  g$95(g paramg, String paramString, i parami) {}
   
-  public final void run()
+  public final void b(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    h.a(g.i(this.rzi), g.i(this.rzi).getString(R.l.nfc_off_tips), "", g.i(this.rzi).getString(R.l.nfc_open_title), g.i(this.rzi).getString(R.l.app_cancel), new g.95.1(this), new DialogInterface.OnClickListener()
+    AppMethodBeat.i(155012);
+    ab.i("MicroMsg.MsgHandler", "doUploadVoice, on cdn finish,  is success : %s, mediaid : %s, local id is : %s", new Object[] { Boolean.valueOf(paramBoolean), paramString2, paramString1 });
+    if ((!bo.isNullOrNil(paramString1)) && (paramString1.equals(this.uUf)))
     {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      com.tencent.mm.plugin.webview.modeltools.g.dcD().a(this);
+      if (g.E(this.vqm) != null)
       {
-        g.a(g.95.this.rzi, g.95.this.rzk, "nfcCheckState:nfc_off", null);
+        g.E(this.vqm).dismiss();
+        g.a(this.vqm, null);
       }
-    });
+      if (!paramBoolean)
+      {
+        this.vqm.a(this.uZa, "uploadVoice:fail", null);
+        AppMethodBeat.o(155012);
+        return;
+      }
+      paramString1 = new HashMap();
+      paramString1.put("serverId", paramString2);
+      this.vqm.a(this.uZa, "uploadVoice:ok", paramString1);
+    }
+    AppMethodBeat.o(155012);
   }
 }
 

@@ -5,7 +5,7 @@ public final class c$cv
 {
   public c$cv()
   {
-    super("getTransferMoneyRequest", "get_transfer_money_request", 74, true);
+    super("getSearchHistory", "", 10000, false);
   }
 }
 

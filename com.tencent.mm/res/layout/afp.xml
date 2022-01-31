@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/d49" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="3.0" android:minHeight="@dimen/l1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/d4_" layout="@layout/awo" />
-    <ImageView android:id="@id/d4a" android:background="@drawable/aq1" android:layout_width="@dimen/v8" android:layout_height="@dimen/v8" android:layout_marginTop="@dimen/kp" android:layout_below="@id/d4_" android:layout_centerHorizontal="true" />
-    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kp" android:layout_below="@id/d4a" android:layout_centerHorizontal="true">
-        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/d4b" android:layout_width="30.0dip" android:layout_height="30.0dip" />
-        <TextView android:textSize="@dimen/dq" android:textColor="@color/fc" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/d4c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/esb" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/dt" android:textColor="@color/g2" android:id="@id/d4d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="80.0dip" android:text="@string/rp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <ToggleButton android:id="@id/ddm" android:textOn="@string/dxq" android:textOff="@string/dxq" android:drawableTop="@drawable/j9" style="@style/g1" />
+    <ToggleButton android:id="@id/ddn" android:textOn="@string/dx9" android:textOff="@string/dx9" android:drawableTop="@drawable/j9" style="@style/g1" />
+    <ToggleButton android:id="@id/ddo" android:textOn="@string/dyb" android:textOff="@string/dyb" android:drawableTop="@drawable/j9" style="@style/g1" />
+</LinearLayout>

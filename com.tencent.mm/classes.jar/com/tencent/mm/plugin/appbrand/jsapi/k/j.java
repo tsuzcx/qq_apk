@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.k;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 
 public final class j
-  extends a<q>
+  extends p
 {
-  private static final int CTRL_INDEX = 413;
-  public static final String NAME = "scrollWebviewTo";
+  public static final int CTRL_INDEX = 519;
+  public static final String NAME = "onVoIPChatSpeakersChanged";
 }
 
 

@@ -1,26 +1,13 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.MenuItem;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.widget.b.d.a;
 
 final class LoginUI$26
-  implements n.d
+  implements d.a
 {
   LoginUI$26(LoginUI paramLoginUI) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-  {
-    switch (paramMenuItem.getItemId())
-    {
-    default: 
-      return;
-    case 5001: 
-      LoginUI.d(this.fnM);
-      return;
-    }
-    LoginUI.O(this.fnM, this.fnM.getString(q.j.wechat_help_center_url) + x.cqJ());
-  }
+  public final void onDismiss() {}
 }
 
 

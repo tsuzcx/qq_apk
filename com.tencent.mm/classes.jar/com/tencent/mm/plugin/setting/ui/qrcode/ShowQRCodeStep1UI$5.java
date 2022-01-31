@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.setting.ui.qrcode;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.ba.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.bb.a;
 import com.tencent.mm.kernel.g;
 
 final class ShowQRCodeStep1UI$5
@@ -13,12 +14,14 @@ final class ShowQRCodeStep1UI$5
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.Dk().c(this.nRI);
+    AppMethodBeat.i(126935);
+    g.Rc().a(this.qFG);
+    AppMethodBeat.o(126935);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.qrcode.ShowQRCodeStep1UI.5
  * JD-Core Version:    0.7.0.1
  */

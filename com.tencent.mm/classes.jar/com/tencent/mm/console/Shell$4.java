@@ -1,21 +1,22 @@
 package com.tencent.mm.console;
 
-import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class Shell$4
-  implements Shell.a
+  implements Runnable
 {
-  public final void g(Intent paramIntent)
+  public final void run()
   {
-    int i = paramIntent.getIntExtra("level", 0);
-    y.w("MicroMsg.Shell", "kiro set Log.level=%d", new Object[] { Integer.valueOf(y.getLogLevel()) });
-    y.Fc(i);
+    AppMethodBeat.i(16112);
+    ab.d("MicroMsg.Shell", "dkcrash begin tid:%d [%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Thread.currentThread().getName() });
+    Object[] arrayOfObject = new Object[1];
+    throw new NullPointerException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.Shell.4
  * JD-Core Version:    0.7.0.1
  */

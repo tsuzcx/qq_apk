@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@raw/textfield_icon_emoji_pressed" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@raw/textfield_icon_emoji_pressed" />
-    <item android:drawable="@raw/textfield_icon_emoji_normal" />
-</selector>
+    <item android:top="4.0dip" android:right="6.0dip">
+        <shape>
+            <solid android:color="@android:color/darker_gray" />
+            <corners android:radius="4.0dip" />
+        </shape>
+    </item>
+    <item android:right="0.0dip" android:bottom="0.0dip">
+        <shape>
+            <solid android:color="#f5ffffff" />
+            <corners android:radius="4.0dip" />
+        </shape>
+    </item>
+</layer-list>

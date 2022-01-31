@@ -1,69 +1,81 @@
 package com.tencent.mm.plugin.emoji.e;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.emoji.sync.BKGLoaderManager;
 import com.tencent.mm.storage.at;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
-public class b
+public final class b
 {
-  public static b iWu;
-  public ArrayList<String> iWv = new ArrayList();
-  public boolean iWw = true;
-  public boolean iWx = false;
-  
-  public static void a(EmojiInfo paramEmojiInfo, boolean paramBoolean)
+  static void Ko(String paramString)
   {
-    if (paramEmojiInfo != null)
+    AppMethodBeat.i(52823);
+    paramString = paramString.replace("delete", "").trim().split(",");
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
     {
-      paramEmojiInfo.field_reserved4 = 0;
-      i.getEmojiStorageMgr().uBb.r(paramEmojiInfo);
-      i.aHO().i(paramEmojiInfo);
-      if (paramBoolean) {
-        com.tencent.mm.plugin.report.service.h.nFQ.a(231L, 0L, 1L, false);
+      String str = paramString[i];
+      ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Ku(str).dzo();
+      i += 1;
+    }
+    AppMethodBeat.o(52823);
+  }
+  
+  static void Kp(String paramString)
+  {
+    AppMethodBeat.i(52824);
+    paramString = paramString.split(" ");
+    if (paramString.length <= 1)
+    {
+      AppMethodBeat.o(52824);
+      return;
+    }
+    if (paramString[1].equals("custom"))
+    {
+      paramString = at.dxt().yNz.OA().iterator();
+      while (paramString.hasNext()) {
+        ((EmojiInfo)paramString.next()).dzo();
+      }
+      AppMethodBeat.o(52824);
+      return;
+    }
+    if (paramString[1].equals("customRandom"))
+    {
+      paramString = new Random();
+      Iterator localIterator = at.dxt().yNz.OA().iterator();
+      while (localIterator.hasNext())
+      {
+        EmojiInfo localEmojiInfo = (EmojiInfo)localIterator.next();
+        if (paramString.nextBoolean()) {
+          localEmojiInfo.dzo();
+        }
       }
     }
-    else
-    {
-      return;
-    }
-    com.tencent.mm.plugin.report.service.h.nFQ.a(231L, 1L, 1L, false);
+    AppMethodBeat.o(52824);
   }
   
-  public static b aGZ()
+  static void Kq(String paramString)
   {
-    if (iWu == null) {}
-    try
+    AppMethodBeat.i(52825);
+    paramString = paramString.replace("add", "").trim().split(",");
+    ArrayList localArrayList = new ArrayList();
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
     {
-      iWu = new b();
-      return iWu;
+      localArrayList.add(new com.tencent.mm.plugin.emoji.sync.a.a(paramString[i], "", "", "", "", "", "", "", "", ""));
+      i += 1;
     }
-    finally {}
-  }
-  
-  private static boolean aHa()
-  {
-    return (aq.is3G(ae.getContext())) || (aq.is4G(ae.getContext())) || (aq.is2G(ae.getContext()));
-  }
-  
-  private void b(EmojiInfo paramEmojiInfo, boolean paramBoolean)
-  {
-    if (this.iWv == null) {
-      this.iWv = new ArrayList();
-    }
-    this.iWv.add(paramEmojiInfo.field_groupId);
-    paramEmojiInfo = new com.tencent.mm.plugin.emoji.f.h(paramEmojiInfo.field_groupId);
-    g.DO().dJT.a(paramEmojiInfo, 0);
-    if (paramBoolean)
-    {
-      com.tencent.mm.plugin.report.service.h.nFQ.a(231L, 3L, 1L, false);
-      return;
-    }
-    com.tencent.mm.plugin.report.service.h.nFQ.a(231L, 2L, 1L, false);
+    i.blq().lje.bp(localArrayList);
+    i.blq().lje.blM();
+    AppMethodBeat.o(52825);
   }
 }
 

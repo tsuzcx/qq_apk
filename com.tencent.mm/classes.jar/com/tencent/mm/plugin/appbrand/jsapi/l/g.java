@@ -1,14 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
+import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.o;
 
 public final class g
-  extends a<o>
+  extends a<d>
 {
-  public static final int CTRL_INDEX = 285;
-  public static final String NAME = "requestVirtualPayment";
-  boolean gzr = false;
+  public static final int CTRL_INDEX = 15;
+  public static final String NAME = "navigateBack";
 }
 
 

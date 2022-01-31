@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.game.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameDropdownView$1
   implements View.OnClickListener
@@ -11,14 +12,17 @@ final class GameDropdownView$1
   
   public final void onClick(View paramView)
   {
-    if ((GameDropdownView.a(this.laT).getContentView() == null) || (!(GameDropdownView.a(this.laT).getContentView() instanceof ViewGroup)))
+    AppMethodBeat.i(111913);
+    if ((GameDropdownView.a(this.nyP).getContentView() == null) || (!(GameDropdownView.a(this.nyP).getContentView() instanceof ViewGroup)))
     {
-      GameDropdownView.a(this.laT).dismiss();
+      GameDropdownView.a(this.nyP).dismiss();
+      AppMethodBeat.o(111913);
       return;
     }
-    int i = ((ViewGroup)GameDropdownView.a(this.laT).getContentView()).indexOfChild(paramView);
-    GameDropdownView.a(this.laT, i);
-    GameDropdownView.a(this.laT).dismiss();
+    int i = ((ViewGroup)GameDropdownView.a(this.nyP).getContentView()).indexOfChild(paramView);
+    GameDropdownView.a(this.nyP, i);
+    GameDropdownView.a(this.nyP).dismiss();
+    AppMethodBeat.o(111913);
   }
 }
 

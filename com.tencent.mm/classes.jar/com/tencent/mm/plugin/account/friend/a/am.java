@@ -2,75 +2,95 @@ package com.tencent.mm.plugin.account.friend.a;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class am
 {
-  int bcw = -1;
-  int fgO = 0;
-  int fgP = 0;
-  int fgQ = 0;
-  int fgR = 0;
-  int fgS = 0;
-  int fgT = 0;
-  String fgU = "";
-  String fgV = "";
+  int bsY;
+  int gyA;
+  int gyB;
+  String gyC;
+  String gyD;
+  int gyw;
+  int gyx;
+  int gyy;
+  int gyz;
   
-  public final ContentValues Xe()
+  public am()
   {
+    AppMethodBeat.i(108493);
+    this.bsY = -1;
+    this.gyw = 0;
+    this.gyx = 0;
+    this.gyy = 0;
+    this.gyz = 0;
+    this.gyA = 0;
+    this.gyB = 0;
+    this.gyC = "";
+    this.gyD = "";
+    AppMethodBeat.o(108493);
+  }
+  
+  public final ContentValues aqI()
+  {
+    AppMethodBeat.i(108495);
     ContentValues localContentValues = new ContentValues();
-    if ((this.bcw & 0x1) != 0) {
-      localContentValues.put("grouopid", Integer.valueOf(this.fgO));
+    if ((this.bsY & 0x1) != 0) {
+      localContentValues.put("grouopid", Integer.valueOf(this.gyw));
     }
-    if ((this.bcw & 0x2) != 0) {
-      localContentValues.put("membernum", Integer.valueOf(this.fgP));
+    if ((this.bsY & 0x2) != 0) {
+      localContentValues.put("membernum", Integer.valueOf(this.gyx));
     }
-    if ((this.bcw & 0x4) != 0) {
-      localContentValues.put("weixinnum", Integer.valueOf(this.fgQ));
+    if ((this.bsY & 0x4) != 0) {
+      localContentValues.put("weixinnum", Integer.valueOf(this.gyy));
     }
-    if ((this.bcw & 0x8) != 0) {
-      localContentValues.put("insert_time", Integer.valueOf(this.fgR));
+    if ((this.bsY & 0x8) != 0) {
+      localContentValues.put("insert_time", Integer.valueOf(this.gyz));
     }
-    if ((this.bcw & 0x10) != 0) {
-      localContentValues.put("lastupdate_time", Integer.valueOf(this.fgS));
+    if ((this.bsY & 0x10) != 0) {
+      localContentValues.put("lastupdate_time", Integer.valueOf(this.gyA));
     }
-    if ((this.bcw & 0x20) != 0) {
-      localContentValues.put("needupdate", Integer.valueOf(this.fgT));
+    if ((this.bsY & 0x20) != 0) {
+      localContentValues.put("needupdate", Integer.valueOf(this.gyB));
     }
-    if ((this.bcw & 0x40) != 0) {
-      localContentValues.put("updatekey", Xf());
+    if ((this.bsY & 0x40) != 0) {
+      localContentValues.put("updatekey", aqJ());
     }
-    if ((this.bcw & 0x80) != 0) {
-      localContentValues.put("groupname", Xg());
+    if ((this.bsY & 0x80) != 0) {
+      localContentValues.put("groupname", aqK());
     }
+    AppMethodBeat.o(108495);
     return localContentValues;
   }
   
-  public final String Xf()
+  public final String aqJ()
   {
-    if (this.fgU == null) {
+    if (this.gyC == null) {
       return "";
     }
-    return this.fgU;
+    return this.gyC;
   }
   
-  public final String Xg()
+  public final String aqK()
   {
-    if (this.fgV == null) {
+    if (this.gyD == null) {
       return "";
     }
-    return this.fgV;
+    return this.gyD;
   }
   
-  public final void d(Cursor paramCursor)
+  public final void convertFrom(Cursor paramCursor)
   {
-    this.fgO = paramCursor.getInt(0);
-    this.fgP = paramCursor.getInt(1);
-    this.fgQ = paramCursor.getInt(2);
-    this.fgR = paramCursor.getInt(3);
-    this.fgS = paramCursor.getInt(4);
-    this.fgT = paramCursor.getInt(5);
-    this.fgU = paramCursor.getString(6);
-    this.fgV = paramCursor.getString(7);
+    AppMethodBeat.i(108494);
+    this.gyw = paramCursor.getInt(0);
+    this.gyx = paramCursor.getInt(1);
+    this.gyy = paramCursor.getInt(2);
+    this.gyz = paramCursor.getInt(3);
+    this.gyA = paramCursor.getInt(4);
+    this.gyB = paramCursor.getInt(5);
+    this.gyC = paramCursor.getString(6);
+    this.gyD = paramCursor.getString(7);
+    AppMethodBeat.o(108494);
   }
 }
 

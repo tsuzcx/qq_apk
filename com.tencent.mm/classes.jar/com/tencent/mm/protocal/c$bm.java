@@ -5,7 +5,7 @@ final class c$bm
 {
   c$bm()
   {
-    super("getBackgroundAudioState", "getBackgroundAudioState", 263, false);
+    super("faceVerifyForPay", "faceVerifyForPay", 328, true);
   }
 }
 

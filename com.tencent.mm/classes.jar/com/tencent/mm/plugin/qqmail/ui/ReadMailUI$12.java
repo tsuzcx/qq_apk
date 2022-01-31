@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.v.c;
 
 final class ReadMailUI$12
@@ -12,13 +13,15 @@ final class ReadMailUI$12
   
   public final void onClick(View paramView)
   {
-    ReadMailUI.j(this.njK).setVisibility(8);
-    ReadMailUI.a(this.njK, new v.c());
+    AppMethodBeat.i(68435);
+    ReadMailUI.j(this.pOX).setVisibility(8);
+    ReadMailUI.a(this.pOX, new v.c());
+    AppMethodBeat.o(68435);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ReadMailUI.12
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,102 @@
 package com.tencent.mm.plugin.backup.d;
 
 import android.os.PowerManager.WakeLock;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class b
   extends com.tencent.mm.plugin.backup.b.d
 {
-  private static b hHA;
-  private d hHB;
-  private c hHC;
-  private a hHD;
-  private com.tencent.mm.plugin.backup.c.a hHE;
-  String hHF = "tickit";
+  private static b jAW;
+  private d jAX;
+  private c jAY;
+  private a jAZ;
+  private com.tencent.mm.plugin.backup.c.a jBa;
+  String jBb = "tickit";
   private PowerManager.WakeLock wakeLock = null;
   
-  public static b atS()
+  public static b aTr()
   {
-    if (hHA == null)
+    AppMethodBeat.i(17238);
+    if (jAW == null)
     {
-      b localb = new b();
-      hHA = localb;
+      localb = new b();
+      jAW = localb;
       a(localb);
     }
-    return hHA;
+    b localb = jAW;
+    AppMethodBeat.o(17238);
+    return localb;
   }
   
-  public final com.tencent.mm.plugin.backup.c.a atT()
+  public final void aSG()
   {
-    if (this.hHE == null) {
-      this.hHE = new com.tencent.mm.plugin.backup.c.a();
+    jAW = null;
+  }
+  
+  public final void aSM()
+  {
+    AppMethodBeat.i(17244);
+    al.d(new b.2(this));
+    AppMethodBeat.o(17244);
+  }
+  
+  public final void aSN()
+  {
+    AppMethodBeat.i(17245);
+    al.d(new b.3(this));
+    AppMethodBeat.o(17245);
+  }
+  
+  public final com.tencent.mm.plugin.backup.c.a aTs()
+  {
+    AppMethodBeat.i(17240);
+    if (this.jBa == null) {
+      this.jBa = new com.tencent.mm.plugin.backup.c.a();
     }
-    return this.hHE;
+    com.tencent.mm.plugin.backup.c.a locala = this.jBa;
+    AppMethodBeat.o(17240);
+    return locala;
   }
   
-  public final d atU()
+  public final d aTt()
   {
-    if (this.hHB == null) {
-      this.hHB = new d();
+    AppMethodBeat.i(17241);
+    if (this.jAX == null) {
+      this.jAX = new d();
     }
-    return this.hHB;
+    d locald = this.jAX;
+    AppMethodBeat.o(17241);
+    return locald;
   }
   
-  public final c atV()
+  public final c aTu()
   {
-    if (this.hHC == null) {
-      this.hHC = new c();
+    AppMethodBeat.i(17242);
+    if (this.jAY == null) {
+      this.jAY = new c();
     }
-    return this.hHC;
+    c localc = this.jAY;
+    AppMethodBeat.o(17242);
+    return localc;
   }
   
-  public final a atW()
+  public final a aTv()
   {
-    if (this.hHD == null) {
-      this.hHD = new a();
+    AppMethodBeat.i(17243);
+    if (this.jAZ == null) {
+      this.jAZ = new a();
     }
-    return this.hHD;
+    a locala = this.jAZ;
+    AppMethodBeat.o(17243);
+    return locala;
   }
   
-  public final void ati()
+  public final void m(Object... paramVarArgs)
   {
-    hHA = null;
-  }
-  
-  public final void ato()
-  {
-    ai.d(new b.2(this));
-  }
-  
-  public final void atp()
-  {
-    ai.d(new b.3(this));
-  }
-  
-  public final void l(Object... paramVarArgs)
-  {
-    ai.d(new b.1(this, (String)paramVarArgs[0]));
+    AppMethodBeat.i(17239);
+    al.d(new b.1(this, (String)paramVarArgs[0]));
+    AppMethodBeat.o(17239);
   }
 }
 

@@ -4,7 +4,15 @@ import java.io.IOException;
 
 class d
   extends IOException
-{}
+{
+  static final class a
+    extends d
+  {}
+  
+  static final class c
+    extends d
+  {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar

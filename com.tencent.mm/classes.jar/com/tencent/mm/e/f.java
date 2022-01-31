@@ -6,119 +6,141 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
-import android.util.SparseArray;
 import android.view.MotionEvent;
-import com.tencent.mm.cache.g;
-import com.tencent.mm.cache.g.1;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.z.d;
-import com.tencent.mm.z.d.a;
-import com.tencent.mm.z.d.b;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.e;
+import com.tencent.mm.cache.c;
+import com.tencent.mm.cache.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.y.d;
+import com.tencent.mm.y.d.a;
+import com.tencent.mm.y.d.b;
 import java.util.LinkedList;
 
 public final class f
-  extends b<g>
+  extends b<h>
 {
-  private float alB;
-  private float alC;
-  private float bAA;
-  private float bAB;
-  private boolean bAX = true;
-  private boolean bAz = false;
-  private Bitmap bBl;
-  private LinkedList<d.b> bBm = new LinkedList();
-  public d.a bBn = d.a.dIe;
-  private Path nw = new Path();
+  private float anT;
+  private float anU;
+  private boolean cdU;
+  private boolean cdw;
+  private float cdx;
+  private float cdy;
+  private Bitmap cei;
+  private LinkedList<d.b> cej;
+  public d.a cek;
+  private Path ou;
   
-  public final void aS(boolean paramBoolean)
+  public f()
   {
-    super.aS(paramBoolean);
-    g localg = (g)tI();
-    Bitmap localBitmap = tN().copy(Bitmap.Config.ARGB_8888, true);
-    String str1 = a.bzQ.toString();
-    str1 = com.tencent.mm.compatible.util.e.dzC + String.format("%s%d.%s", new Object[] { "wx_photo_edit_", Long.valueOf(System.currentTimeMillis()), str1 });
-    y.i("MicroMsg.MosaicCache", "[saveCacheToLocal] path:%s size:%s", new Object[] { str1, Integer.valueOf(localg.bg(true)) });
-    String str2 = (String)localg.dle.get(localg.bg(true));
-    if (!bk.bl(str2))
-    {
-      com.tencent.mm.vfs.e.deleteFile(str2);
-      localg.dle.remove(localg.bg(true));
-    }
-    localg.dle.put(localg.bg(true), str1);
-    localg.dlf.put(str1, localBitmap);
-    com.tencent.mm.sdk.f.e.csu();
-    com.tencent.mm.sdk.f.e.a(new g.1(localg, localBitmap, str1), "[saveCacheToLocal] mosaic path:" + str1);
+    AppMethodBeat.i(116198);
+    this.cdU = true;
+    this.cdw = false;
+    this.ou = new Path();
+    this.cej = new LinkedList();
+    this.cek = d.a.eFI;
+    AppMethodBeat.o(116198);
   }
   
-  public final boolean m(MotionEvent paramMotionEvent)
+  public final void CA()
+  {
+    AppMethodBeat.i(116204);
+    if ((CF() != null) && (!CF().isRecycled())) {
+      CF().recycle();
+    }
+    l(((h)super.CB()).Jl());
+    AppMethodBeat.o(116204);
+  }
+  
+  public final a Cz()
+  {
+    return a.ccN;
+  }
+  
+  public final void bt(boolean paramBoolean)
+  {
+    AppMethodBeat.i(116203);
+    super.bt(paramBoolean);
+    ((h)super.CB()).m(CF());
+    AppMethodBeat.o(116203);
+  }
+  
+  public final boolean o(MotionEvent paramMotionEvent)
   {
     int j = 0;
-    if (!tO()) {
+    AppMethodBeat.i(116202);
+    if (!CG())
+    {
+      AppMethodBeat.o(116202);
       return false;
     }
-    Object localObject = A(paramMotionEvent.getX(), paramMotionEvent.getY());
+    if (this.cdb != null) {
+      this.cdb.o(paramMotionEvent);
+    }
+    Object localObject = B(paramMotionEvent.getX(), paramMotionEvent.getY());
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      return this.bAX;
+      boolean bool = this.cdU;
+      AppMethodBeat.o(116202);
+      return bool;
       float f1;
-      if (this.bzX.contains((int)localObject[0], (int)localObject[1]))
+      if (this.ccU.contains((int)localObject[0], (int)localObject[1]))
       {
         f1 = localObject[0];
-        this.bAA = f1;
-        this.alB = f1;
+        this.cdx = f1;
+        this.anT = f1;
         f1 = localObject[1];
-        this.bAB = f1;
-        this.alC = f1;
+        this.cdy = f1;
+        this.anU = f1;
       }
-      for (this.bAX = true;; this.bAX = false)
+      for (this.cdU = true;; this.cdU = false)
       {
-        this.bAz = false;
+        this.cdw = false;
         break;
       }
-      if ((this.bAX) && (this.bAz))
+      if ((this.cdU) && (this.cdw))
       {
-        if (this.bBn != d.a.dIe) {
-          break label252;
+        if (this.cek != d.a.eFI) {
+          break label298;
         }
-        ((g)tI()).a(new d(this.bBn, new Path(this.nw), 1.0F / getScale(), this.bBl));
-        aS(false);
+        ((h)super.CB()).a(new d(this.cek, new Path(this.ou), 1.0F / getScale(), this.cei));
+        bt(false);
       }
       for (;;)
       {
-        tR();
-        this.bBm.clear();
-        this.nw.reset();
-        this.bAz = false;
-        this.bAX = false;
+        c.Jg().b(e.bVZ);
+        CJ();
+        this.cej.clear();
+        this.ou.reset();
+        this.cdw = false;
+        this.cdU = false;
         break;
-        label252:
-        if (this.bBn == d.a.dIf)
+        label298:
+        if (this.cek == d.a.eFJ)
         {
-          ((g)tI()).a(new d(this.bBn, new LinkedList(this.bBm), 1.0F / getScale()));
-          aS(false);
+          ((h)super.CB()).a(new d(this.cek, new LinkedList(this.cej), 1.0F / getScale()));
+          bt(false);
         }
       }
-      if ((this.bAX) && (this.bAz))
+      if ((this.cdU) && (this.cdw))
       {
-        this.bAA = this.alB;
-        this.bAB = this.alC;
-        this.alB = localObject[0];
-        this.alC = localObject[1];
-        if (this.bBn == d.a.dIe) {
-          this.nw.quadTo(this.bAA, this.bAB, (this.alB + this.bAA) / 2.0F, (this.alC + this.bAB) / 2.0F);
+        this.cdx = this.anT;
+        this.cdy = this.anU;
+        this.anT = localObject[0];
+        this.anU = localObject[1];
+        if (this.cek == d.a.eFI) {
+          this.ou.quadTo(this.cdx, this.cdy, (this.anT + this.cdx) / 2.0F, (this.anU + this.cdy) / 2.0F);
         }
-        while (this.bBn != d.a.dIf)
+        while (this.cek != d.a.eFJ)
         {
-          tQ();
+          CI();
           break;
         }
-        double d = Math.toDegrees(Math.atan((this.alB - this.bAA) / (this.alC - this.bAB)));
-        label461:
+        double d = Math.toDegrees(Math.atan((this.anT - this.cdx) / (this.anU - this.cdy)));
+        label506:
         float f2;
         float f3;
         float f4;
@@ -126,92 +148,87 @@ public final class f
         {
           i = 180;
           f1 = (float)(i + d);
-          paramMotionEvent = this.bBm;
+          paramMotionEvent = this.cej;
           f2 = 1.0F / getScale();
-          f3 = this.alB;
-          f4 = this.alC;
-          localObject = this.bzV.coJ();
+          f3 = this.anT;
+          f4 = this.anU;
+          localObject = this.ccS.dqf();
           if ((localObject != null) && (f3 < ((Bitmap)localObject).getWidth()) && (f4 < ((Bitmap)localObject).getHeight()) && (f3 > 0.0F) && (f4 > 0.0F)) {
-            break label620;
+            break label663;
           }
-          y.w("MicroMsg.MosaicArtist", "[getPosColor] X:%s,Y:%s", new Object[] { Float.valueOf(f3), Float.valueOf(f4) });
+          ab.w("MicroMsg.MosaicArtist", "[getPosColor] X:%s,Y:%s", new Object[] { Float.valueOf(f3), Float.valueOf(f4) });
         }
-        label620:
+        label663:
         for (int i = j;; i = ((Bitmap)localObject).getPixel((int)f3, (int)f4))
         {
-          paramMotionEvent.add(new d.b(f2, i, f1 % 360.0F, this.alB, this.alC));
+          paramMotionEvent.add(new d.b(f2, i, f1 % 360.0F, this.anT, this.anU));
           break;
           i = 0;
-          break label461;
+          break label506;
         }
       }
-      if ((this.bAX) && (!this.bAz))
+      if ((this.cdU) && (!this.cdw))
       {
-        if (this.bBn == d.a.dIe) {
-          this.nw.moveTo(localObject[0], localObject[1]);
+        if (this.cek == d.a.eFI) {
+          this.ou.moveTo(localObject[0], localObject[1]);
         }
-        this.bAz = true;
+        this.cdw = true;
       }
     }
   }
   
   public final void onDestroy()
   {
+    AppMethodBeat.i(116200);
     super.onDestroy();
-    if ((this.bBl != null) && (!this.bBl.isRecycled())) {
-      this.bBl.recycle();
+    if ((this.cei != null) && (!this.cei.isRecycled())) {
+      this.cei.recycle();
     }
+    AppMethodBeat.o(116200);
   }
   
   public final void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(116201);
     paramCanvas.save();
-    paramCanvas.clipRect(this.bzX);
-    if (this.bBn == d.a.dIe)
+    paramCanvas.clipRect(this.ccU);
+    if (this.cek == d.a.eFI)
     {
       b(paramCanvas);
-      new d(this.bBn, this.nw, 1.0F / getScale(), this.bBl).draw(paramCanvas);
+      new d(this.cek, this.ou, 1.0F / getScale(), this.cei).draw(paramCanvas);
     }
     for (;;)
     {
       paramCanvas.restore();
+      AppMethodBeat.o(116201);
       return;
-      if (this.bBn == d.a.dIf)
+      if (this.cek == d.a.eFJ)
       {
-        new d(this.bBn, new LinkedList(this.bBm), 1.0F / getScale()).draw(new Canvas(tN()));
+        new d(this.cek, new LinkedList(this.cej), 1.0F / getScale()).draw(new Canvas(CF()));
         b(paramCanvas);
       }
     }
   }
   
-  public final a tG()
+  public final void zy()
   {
-    return a.bzQ;
-  }
-  
-  public final void tH()
-  {
-    if ((tN() != null) && (!tN().isRecycled())) {
-      tN().recycle();
+    AppMethodBeat.i(116199);
+    super.zy();
+    if ((h)super.CB() != null) {
+      l(((h)super.CB()).Jl());
     }
-    j(((g)tI()).wU());
-  }
-  
-  public final void tJ()
-  {
-    super.tJ();
-    j(((g)tI()).wU());
-    Bitmap localBitmap2 = this.bzV.coJ();
+    Bitmap localBitmap2 = this.ccS.dqf();
     if (localBitmap2 == null)
     {
-      y.e("MicroMsg.MosaicArtist", "[generateMosaicImage] bitmap is null");
+      ab.e("MicroMsg.MosaicArtist", "[generateMosaicImage] bitmap is null");
       localBitmap1 = null;
-      this.bBl = localBitmap1;
+      this.cei = localBitmap1;
+      AppMethodBeat.o(116199);
       return;
     }
     int n = localBitmap2.getWidth();
     int i1 = localBitmap2.getHeight();
-    int i3 = com.tencent.mm.cj.a.aR(6.0F);
+    int i3 = com.tencent.mm.cl.a.bC(6.0F);
     Bitmap localBitmap1 = Bitmap.createBitmap(n, i1, Bitmap.Config.RGB_565);
     Canvas localCanvas = new Canvas(localBitmap1);
     int i4 = (int)Math.ceil(n / i3);
@@ -219,9 +236,9 @@ public final class f
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
     int i = 0;
-    label143:
+    label164:
     int j;
-    label151:
+    label172:
     int i6;
     int i7;
     int k;
@@ -234,12 +251,12 @@ public final class f
         i7 = i3 * j;
         k = i6 + i3;
         if (k <= n) {
-          break label266;
+          break label287;
         }
         k = n;
       }
     }
-    label266:
+    label287:
     for (;;)
     {
       int i2 = i7 + i3;
@@ -252,9 +269,9 @@ public final class f
       localPaint.setColor(i2);
       localCanvas.drawRect(localRect, localPaint);
       j += 1;
-      break label151;
+      break label172;
       i += 1;
-      break label143;
+      break label164;
       break;
     }
   }

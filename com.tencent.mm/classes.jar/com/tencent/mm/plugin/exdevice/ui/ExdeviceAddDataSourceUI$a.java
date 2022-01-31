@@ -5,15 +5,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,44 +19,58 @@ import java.util.List;
 final class ExdeviceAddDataSourceUI$a
   extends BaseAdapter
 {
-  private c jAJ;
-  private List<ExdeviceAddDataSourceUI.b> jAv = new LinkedList();
+  private List<ExdeviceAddDataSourceUI.b> lJU;
+  private c lKi;
   
   public ExdeviceAddDataSourceUI$a()
   {
+    AppMethodBeat.i(19788);
+    this.lJU = new LinkedList();
     c.a locala = new c.a();
-    locala.eru = R.g.exdevice_wechat_sport_default_icon;
-    this.jAJ = locala.OV();
+    locala.eNY = 2130838674;
+    this.lKi = locala.ahY();
+    AppMethodBeat.o(19788);
   }
   
-  public final ExdeviceAddDataSourceUI.b BL(String paramString)
+  public final ExdeviceAddDataSourceUI.b LN(String paramString)
   {
-    if (!bk.bl(paramString))
+    AppMethodBeat.i(19790);
+    if (!bo.isNullOrNil(paramString))
     {
-      Iterator localIterator = this.jAv.iterator();
+      Iterator localIterator = this.lJU.iterator();
       while (localIterator.hasNext())
       {
         ExdeviceAddDataSourceUI.b localb = (ExdeviceAddDataSourceUI.b)localIterator.next();
-        if (paramString.equalsIgnoreCase(localb.mac)) {
+        if (paramString.equalsIgnoreCase(localb.mac))
+        {
+          AppMethodBeat.o(19790);
           return localb;
         }
       }
     }
+    AppMethodBeat.o(19790);
     return null;
   }
   
-  public final void bc(List<ExdeviceAddDataSourceUI.b> paramList)
+  public final void bt(List<ExdeviceAddDataSourceUI.b> paramList)
   {
-    this.jAv.clear();
-    if ((paramList == null) || (paramList.size() == 0)) {
+    AppMethodBeat.i(19789);
+    this.lJU.clear();
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      AppMethodBeat.o(19789);
       return;
     }
-    this.jAv.addAll(paramList);
+    this.lJU.addAll(paramList);
+    AppMethodBeat.o(19789);
   }
   
   public final int getCount()
   {
-    return this.jAv.size();
+    AppMethodBeat.i(19791);
+    int i = this.lJU.size();
+    AppMethodBeat.o(19791);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -68,36 +80,41 @@ final class ExdeviceAddDataSourceUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    ExdeviceAddDataSourceUI.b localb = qs(paramInt);
+    AppMethodBeat.i(19793);
+    ExdeviceAddDataSourceUI.b localb = uZ(paramInt);
     View localView;
     if (paramView == null)
     {
       paramView = new ExdeviceAddDataSourceUI.a.a((byte)0);
-      localView = View.inflate(paramViewGroup.getContext(), R.i.exdevice_add_data_source_item, null);
-      paramView.gSx = ((ImageView)localView.findViewById(R.h.iconIV));
-      paramView.fhD = ((TextView)localView.findViewById(R.h.nameTV));
+      localView = View.inflate(paramViewGroup.getContext(), 2130969439, null);
+      paramView.ivs = ((ImageView)localView.findViewById(2131823740));
+      paramView.gzk = ((TextView)localView.findViewById(2131823741));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      y.d("MicroMsg.ExdeviceAddDataSourceUI", "position(%s), name(%s), mac(%s).", new Object[] { Integer.valueOf(paramInt), localb.name, localb.mac });
-      paramViewGroup.fhD.setText(localb.name);
-      o.ON().a(localb.iconUrl, paramViewGroup.gSx, this.jAJ);
+      ab.d("MicroMsg.ExdeviceAddDataSourceUI", "position(%s), name(%s), mac(%s).", new Object[] { Integer.valueOf(paramInt), localb.name, localb.mac });
+      paramViewGroup.gzk.setText(localb.name);
+      o.ahG().a(localb.iconUrl, paramViewGroup.ivs, this.lKi);
+      AppMethodBeat.o(19793);
       return localView;
       paramViewGroup = (ExdeviceAddDataSourceUI.a.a)paramView.getTag();
       localView = paramView;
     }
   }
   
-  public final ExdeviceAddDataSourceUI.b qs(int paramInt)
+  public final ExdeviceAddDataSourceUI.b uZ(int paramInt)
   {
-    return (ExdeviceAddDataSourceUI.b)this.jAv.get(paramInt);
+    AppMethodBeat.i(19792);
+    ExdeviceAddDataSourceUI.b localb = (ExdeviceAddDataSourceUI.b)this.lJU.get(paramInt);
+    AppMethodBeat.o(19792);
+    return localb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceAddDataSourceUI.a
  * JD-Core Version:    0.7.0.1
  */

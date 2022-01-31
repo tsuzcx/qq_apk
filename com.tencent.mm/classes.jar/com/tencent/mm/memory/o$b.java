@@ -1,17 +1,21 @@
 package com.tencent.mm.memory;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class o$b
   implements Comparable
 {
-  private String dPs;
+  private String fdY;
   public int height;
   public int width;
   
   public o$b(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(115407);
     this.width = paramInt1;
     this.height = paramInt2;
-    this.dPs = String.format("SightBitmapSize: [%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.fdY = String.format("SightBitmapSize: [%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(115407);
   }
   
   public final int compareTo(Object paramObject)
@@ -35,7 +39,7 @@ public final class o$b
   
   public final String toString()
   {
-    return this.dPs;
+    return this.fdY;
   }
 }
 

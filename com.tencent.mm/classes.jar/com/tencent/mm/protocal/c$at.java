@@ -5,12 +5,12 @@ public final class c$at
 {
   public c$at()
   {
-    super("disableBounceScroll", "disableBounceScroll", 188, false);
+    super("connectWXDevice", "connectWXDevice", 123, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.c.at
  * JD-Core Version:    0.7.0.1
  */

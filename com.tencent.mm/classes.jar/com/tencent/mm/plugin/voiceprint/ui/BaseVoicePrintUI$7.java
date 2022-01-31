@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class BaseVoicePrintUI$7
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class BaseVoicePrintUI$7
   
   public final void run()
   {
-    if (!BaseVoicePrintUI.h(this.pMb)) {
-      BaseVoicePrintUI.i(this.pMb);
+    AppMethodBeat.i(26137);
+    if (!BaseVoicePrintUI.h(this.trX)) {
+      BaseVoicePrintUI.i(this.trX);
     }
+    AppMethodBeat.o(26137);
   }
 }
 

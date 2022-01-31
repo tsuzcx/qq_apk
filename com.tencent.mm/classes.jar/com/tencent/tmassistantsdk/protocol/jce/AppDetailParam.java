@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.protocol.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class AppDetailParam
   extends JceStruct
@@ -46,6 +47,7 @@ public final class AppDetailParam
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(76031);
     this.appId = paramJceInputStream.read(this.appId, 0, false);
     this.packageName = paramJceInputStream.readString(1, false);
     this.signatureMd5 = paramJceInputStream.readString(2, false);
@@ -61,10 +63,12 @@ public final class AppDetailParam
     this.verifyType = paramJceInputStream.read(this.verifyType, 12, false);
     this.authPlatform = paramJceInputStream.read(this.authPlatform, 13, false);
     this.verifyAppId = paramJceInputStream.readString(14, false);
+    AppMethodBeat.o(76031);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(76030);
     paramJceOutputStream.write(this.appId, 0);
     if (this.packageName != null) {
       paramJceOutputStream.write(this.packageName, 1);
@@ -92,6 +96,7 @@ public final class AppDetailParam
     if (this.verifyAppId != null) {
       paramJceOutputStream.write(this.verifyAppId, 14);
     }
+    AppMethodBeat.o(76030);
   }
 }
 

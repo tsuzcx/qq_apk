@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.ui.autofill;
 
 import android.content.Intent;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.b.a;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.protocal.c.bsa;
-import com.tencent.mm.protocal.c.et;
-import com.tencent.mm.protocal.c.eu;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ccl;
+import com.tencent.mm.protocal.protobuf.fx;
+import com.tencent.mm.protocal.protobuf.fy;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
@@ -19,57 +19,64 @@ final class AppBrandIDCardUI$1$1
   
   public final void a(int paramInt1, int paramInt2, String paramString, b paramb)
   {
-    if ((AppBrandIDCardUI.d(this.hfl.hfk) != null) && (AppBrandIDCardUI.d(this.hfl.hfk).isShowing())) {
-      AppBrandIDCardUI.d(this.hfl.hfk).dismiss();
+    AppMethodBeat.i(133215);
+    if ((AppBrandIDCardUI.d(this.iQA.iQz) != null) && (AppBrandIDCardUI.d(this.iQA.iQz).isShowing())) {
+      AppBrandIDCardUI.d(this.iQA.iQz).dismiss();
     }
-    if ((paramInt1 != 0) || (paramInt2 != 0) || (paramb.ecF.ecN == null))
+    if ((paramInt1 != 0) || (paramInt2 != 0) || (paramb.fsW.fta == null))
     {
-      y.e("MicroMsg.AppBrandIDCardUI", "getIDCardInfo cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramb.ecF.ecN });
+      ab.e("MicroMsg.AppBrandIDCardUI", "getIDCardInfo cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramb.fsW.fta });
       paramString = new Intent();
       paramString.putExtra("intent_err_code", 40000);
       paramString.putExtra("intent_err_msg", "network err");
-      this.hfl.hfk.setResult(1, paramString);
-      this.hfl.hfk.finish();
+      this.iQA.iQz.setResult(1, paramString);
+      this.iQA.iQz.finish();
+      AppMethodBeat.o(133215);
       return;
     }
-    paramString = (bsa)paramb.ecF.ecN;
-    if (paramString.tHq == null)
+    paramString = (ccl)paramb.fsW.fta;
+    if (paramString.xLn == null)
     {
-      y.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response is err");
+      ab.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response is err");
       paramString = new Intent();
       paramString.putExtra("intent_err_code", 40000);
       paramString.putExtra("intent_err_msg", "network err");
-      this.hfl.hfk.setResult(1, paramString);
-      this.hfl.hfk.finish();
+      this.iQA.iQz.setResult(1, paramString);
+      this.iQA.iQz.finish();
+      AppMethodBeat.o(133215);
       return;
     }
-    y.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response.err_code is %d", new Object[] { Integer.valueOf(paramString.tHq.bPH) });
-    y.i("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.show_status:%d", new Object[] { Integer.valueOf(paramString.tIC) });
-    switch (paramString.tIC)
+    ab.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response.err_code is %d", new Object[] { Integer.valueOf(paramString.xLn.cxa) });
+    ab.i("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.show_status:%d", new Object[] { Integer.valueOf(paramString.xMQ) });
+    switch (paramString.xMQ)
     {
     default: 
-      y.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.show_status error");
+      ab.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.show_status error");
+      AppMethodBeat.o(133215);
       return;
     case 0: 
-      if (paramString.tHq.bPH != 0)
+      if (paramString.xLn.cxa != 0)
       {
-        y.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response is not ok");
+        ab.e("MicroMsg.AppBrandIDCardUI", "ShowAuthorizeUserIDResp.auth_base_response is not ok");
         paramb = new Intent();
-        paramb.putExtra("intent_err_code", paramString.tHq.bPH);
-        paramb.putExtra("intent_err_msg", paramString.tHq.bPI);
-        this.hfl.hfk.setResult(1, paramb);
-        this.hfl.hfk.finish();
+        paramb.putExtra("intent_err_code", paramString.xLn.cxa);
+        paramb.putExtra("intent_err_msg", paramString.xLn.cxb);
+        this.iQA.iQz.setResult(1, paramb);
+        this.iQA.iQz.finish();
+        AppMethodBeat.o(133215);
         return;
       }
-      AppBrandIDCardUI.a(this.hfl.hfk, paramString);
-      AppBrandIDCardUI.e(this.hfl.hfk);
+      AppBrandIDCardUI.a(this.iQA.iQz, paramString);
+      AppBrandIDCardUI.e(this.iQA.iQz);
+      AppMethodBeat.o(133215);
       return;
     }
-    y.i("MicroMsg.AppBrandIDCardUI", "showAlert errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramString.tHq.bPH), paramString.tHq.bPI });
-    paramb = this.hfl;
-    paramInt1 = paramString.tHq.bPH;
-    String str = paramString.tHq.bPI;
-    h.a(paramb.hfk, false, paramString.tID.desc, paramString.tID.title, paramb.hfk.getString(y.j.app_brand_idcard_show_alert_ok), "", new AppBrandIDCardUI.1.2(paramb, paramInt1, str), new AppBrandIDCardUI.1.3(paramb));
+    ab.i("MicroMsg.AppBrandIDCardUI", "showAlert errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramString.xLn.cxa), paramString.xLn.cxb });
+    paramb = this.iQA;
+    paramInt1 = paramString.xLn.cxa;
+    String str = paramString.xLn.cxb;
+    h.a(paramb.iQz, false, paramString.xMR.desc, paramString.xMR.title, paramb.iQz.getString(2131296678), "", new AppBrandIDCardUI.1.2(paramb, paramInt1, str), new AppBrandIDCardUI.1.3(paramb));
+    AppMethodBeat.o(133215);
   }
 }
 

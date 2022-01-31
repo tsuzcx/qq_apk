@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.account.a.a;
 import android.app.Activity;
 import android.content.Context;
 import com.tencent.mm.kernel.b.d;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.e.n;
 import java.util.LinkedList;
 
 public abstract interface a
@@ -12,23 +12,23 @@ public abstract interface a
 {
   public abstract void clearFriendData();
   
-  public abstract m getAddrUploadStg();
+  public abstract n getAddrUploadStg();
   
-  public abstract j getFacebookFrdStg();
+  public abstract k getFacebookFrdStg();
   
-  public abstract j getFrdExtStg();
+  public abstract k getFrdExtStg();
   
   public abstract LinkedList getFriendData();
   
-  public abstract j getGoogleFriendStorage();
+  public abstract k getGoogleFriendStorage();
   
-  public abstract j getInviteFriendOpenStg();
+  public abstract k getInviteFriendOpenStg();
   
   public abstract String getPhoneNum(Context paramContext, String paramString);
   
-  public abstract j getQQGroupStg();
+  public abstract k getQQGroupStg();
   
-  public abstract m getQQListStg();
+  public abstract n getQQListStg();
   
   public abstract void removeSelfAccount(Context paramContext);
   
@@ -46,7 +46,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.a.a.a
  * JD-Core Version:    0.7.0.1
  */

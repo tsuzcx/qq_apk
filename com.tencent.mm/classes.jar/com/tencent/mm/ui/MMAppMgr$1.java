@@ -1,27 +1,23 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.cl.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.storage.z;
 
 final class MMAppMgr$1
-  implements am.a
+  implements DialogInterface.OnClickListener
 {
-  MMAppMgr$1(MMAppMgr paramMMAppMgr) {}
+  MMAppMgr$1(int paramInt) {}
   
-  public final boolean tC()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = bk.bC(ae.getContext());
-    if ((str != null) && (str.toLowerCase().startsWith(ae.getPackageName())))
-    {
-      y.i("MicroMsg.MMAppMgr", "onTimerExpired, top activity belongs to mm, skip kill tools");
-      return false;
-    }
-    y.i("MicroMsg.MMAppMgr", "onTimerExpired, kill tools process");
-    b.afs("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
-    return false;
+    AppMethodBeat.i(153808);
+    aw.aaz();
+    c.Ru().set(65, Integer.valueOf(this.fJV + 1));
+    AppMethodBeat.o(153808);
   }
 }
 

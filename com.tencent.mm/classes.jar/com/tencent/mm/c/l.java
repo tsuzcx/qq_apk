@@ -1,5 +1,7 @@
 package com.tencent.mm.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class l
   implements Cloneable
 {
@@ -17,8 +19,10 @@ public final class l
   
   private l(byte[] paramArrayOfByte, byte paramByte)
   {
+    AppMethodBeat.i(125698);
     this.value = (paramArrayOfByte[1] << 8 & 0xFF00);
     this.value += (paramArrayOfByte[0] & 0xFF);
+    AppMethodBeat.o(125698);
   }
   
   public final boolean equals(Object paramObject)

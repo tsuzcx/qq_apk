@@ -1,381 +1,163 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Process;
-import com.tencent.mm.sdk.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class ai
+public final class ai
 {
-  private static ah ufo = null;
-  private ah jWn = null;
-  public HandlerThread mnU = null;
-  private String threadName = null;
+  public volatile boolean ynM;
   
   public ai()
   {
-    y.i("MicroMsg.MMHandlerThread", "init stack:%s", new Object[] { bk.csb() });
-    tA(null);
+    this.ynM = false;
   }
   
-  public ai(String paramString)
+  public ai(boolean paramBoolean)
   {
-    tA(paramString);
+    this.ynM = paramBoolean;
   }
   
-  public static void Fd(int paramInt)
+  public final void block()
+  {
+    AppMethodBeat.i(52059);
+    try
+    {
+      for (;;)
+      {
+        boolean bool = this.ynM;
+        if (bool) {
+          break;
+        }
+        try
+        {
+          wait();
+        }
+        catch (InterruptedException localInterruptedException) {}
+      }
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(52059);
+    }
+  }
+  
+  public final void close()
   {
     try
     {
-      Process.setThreadPriority(paramInt);
-      y.i("MicroMsg.MMHandlerThread", "setCurrentPriority to %d ok", new Object[] { Integer.valueOf(paramInt) });
+      this.ynM = false;
       return;
     }
-    catch (Exception localException)
-    {
-      y.i("MicroMsg.MMHandlerThread", "setCurrentPriority to %d fail, %s", new Object[] { Integer.valueOf(paramInt), localException.getMessage() });
-      y.printErrStackTrace("MicroMsg.MMHandlerThread", localException, "", new Object[0]);
-    }
-  }
-  
-  public static void S(Runnable paramRunnable)
-  {
-    if (paramRunnable == null) {
-      return;
-    }
-    crh().removeCallbacks(paramRunnable);
-  }
-  
-  private static ah crh()
-  {
-    if (ufo == null) {
-      ufo = new ah(Looper.getMainLooper());
-    }
-    return ufo;
-  }
-  
-  public static void d(Runnable paramRunnable)
-  {
-    if (paramRunnable == null) {
-      return;
-    }
-    crh().post(paramRunnable);
-  }
-  
-  public static boolean isMainThread()
-  {
-    return Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId();
-  }
-  
-  public static void l(Runnable paramRunnable, long paramLong)
-  {
-    if (paramRunnable == null) {
-      return;
-    }
-    crh().postDelayed(paramRunnable, paramLong);
-  }
-  
-  private void tA(String paramString)
-  {
-    this.jWn = null;
-    String str = paramString;
-    if (bk.bl(paramString)) {
-      str = "MMHandlerThread";
-    }
-    this.threadName = str;
-    this.mnU = e.ds(this.threadName, 0);
-    this.mnU.start();
-  }
-  
-  public int O(Runnable paramRunnable)
-  {
-    if (paramRunnable == null) {
-      return -1;
-    }
-    crf().post(paramRunnable);
-    return 0;
-  }
-  
-  public final int R(Runnable paramRunnable)
-  {
-    crf().postAtFrontOfQueueV2(paramRunnable);
-    return 0;
-  }
-  
-  public final int a(final a parama)
-  {
-    if (new ah(this.mnU.getLooper()).postAtFrontOfQueueV2(new Runnable()
-    {
-      public final void run()
-      {
-        parama.JS();
-        ai.T(new Runnable()
-        {
-          public final void run()
-          {
-            ai.2.this.ufs.JT();
-          }
-        });
-      }
-      
-      public final String toString()
-      {
-        return super.toString() + "|" + parama.toString();
-      }
-    })) {
-      return 0;
-    }
-    return -2;
+    finally {}
   }
   
   /* Error */
-  public final int a(final b paramb)
+  public final boolean dta()
   {
     // Byte code:
-    //   0: ldc 39
-    //   2: ldc 171
-    //   4: iconst_2
-    //   5: anewarray 4	java/lang/Object
-    //   8: dup
-    //   9: iconst_0
-    //   10: invokestatic 125	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   13: invokevirtual 129	java/lang/Thread:getId	()J
-    //   16: invokestatic 176	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   19: aastore
-    //   20: dup
-    //   21: iconst_1
-    //   22: invokestatic 47	com/tencent/mm/sdk/platformtools/bk:csb	()Lcom/tencent/mm/sdk/platformtools/ak;
-    //   25: aastore
-    //   26: invokestatic 53	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   29: ldc 178
-    //   31: invokestatic 180	com/tencent/mm/sdk/platformtools/ai:isMainThread	()Z
-    //   34: invokestatic 186	junit/framework/Assert:assertTrue	(Ljava/lang/String;Z)V
-    //   37: aload_0
-    //   38: getfield 33	com/tencent/mm/sdk/platformtools/ai:mnU	Landroid/os/HandlerThread;
-    //   41: invokevirtual 187	android/os/HandlerThread:getId	()J
-    //   44: lstore_3
-    //   45: iconst_0
-    //   46: newarray byte
-    //   48: astore 7
-    //   50: new 6	com/tencent/mm/sdk/platformtools/ai$1
-    //   53: dup
-    //   54: aload_0
-    //   55: aload_1
+    //   0: ldc 34
+    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc2_w 35
+    //   8: lconst_0
+    //   9: lcmp
+    //   10: ifeq +74 -> 84
+    //   13: aload_0
+    //   14: monitorenter
+    //   15: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   18: lstore_1
+    //   19: ldc2_w 35
+    //   22: lload_1
+    //   23: ladd
+    //   24: lstore_3
+    //   25: aload_0
+    //   26: getfield 12	com/tencent/mm/sdk/platformtools/ai:ynM	Z
+    //   29: istore 5
+    //   31: iload 5
+    //   33: ifne +23 -> 56
+    //   36: lload_1
+    //   37: lload_3
+    //   38: lcmp
+    //   39: ifge +17 -> 56
+    //   42: aload_0
+    //   43: lload_3
+    //   44: lload_1
+    //   45: lsub
+    //   46: invokevirtual 45	java/lang/Object:wait	(J)V
+    //   49: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   52: lstore_1
+    //   53: goto -28 -> 25
     //   56: aload_0
-    //   57: getfield 37	com/tencent/mm/sdk/platformtools/ai:threadName	Ljava/lang/String;
-    //   60: aload 7
-    //   62: invokespecial 190	com/tencent/mm/sdk/platformtools/ai$1:<init>	(Lcom/tencent/mm/sdk/platformtools/ai;Lcom/tencent/mm/sdk/platformtools/ai$b;Ljava/lang/String;Ljava/lang/Object;)V
-    //   65: astore_1
-    //   66: aload 7
-    //   68: monitorenter
-    //   69: aload_0
-    //   70: aload_1
-    //   71: invokevirtual 192	com/tencent/mm/sdk/platformtools/ai:a	(Lcom/tencent/mm/sdk/platformtools/ai$a;)I
-    //   74: istore_2
-    //   75: aload_0
-    //   76: getfield 33	com/tencent/mm/sdk/platformtools/ai:mnU	Landroid/os/HandlerThread;
-    //   79: invokevirtual 187	android/os/HandlerThread:getId	()J
-    //   82: lstore 5
-    //   84: ldc 39
-    //   86: ldc 194
-    //   88: iconst_3
-    //   89: anewarray 4	java/lang/Object
-    //   92: dup
-    //   93: iconst_0
-    //   94: iload_2
-    //   95: invokestatic 74	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   98: aastore
-    //   99: dup
-    //   100: iconst_1
-    //   101: lload_3
-    //   102: invokestatic 176	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   105: aastore
-    //   106: dup
-    //   107: iconst_2
-    //   108: lload 5
-    //   110: invokestatic 176	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   113: aastore
-    //   114: invokestatic 53	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   117: iload_2
-    //   118: ifne +15 -> 133
-    //   121: lload_3
-    //   122: lload 5
-    //   124: lcmp
-    //   125: ifne +8 -> 133
-    //   128: aload 7
-    //   130: invokevirtual 197	java/lang/Object:wait	()V
-    //   133: aload 7
-    //   135: monitorexit
-    //   136: iload_2
-    //   137: ireturn
-    //   138: astore_1
-    //   139: ldc 39
-    //   141: ldc 199
-    //   143: iconst_1
-    //   144: anewarray 4	java/lang/Object
-    //   147: dup
-    //   148: iconst_0
-    //   149: aload_1
-    //   150: invokevirtual 80	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   153: aastore
-    //   154: invokestatic 201	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   157: goto -24 -> 133
-    //   160: astore_1
-    //   161: aload 7
-    //   163: monitorexit
-    //   164: aload_1
-    //   165: athrow
+    //   57: getfield 12	com/tencent/mm/sdk/platformtools/ai:ynM	Z
+    //   60: istore 5
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: ldc 34
+    //   66: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: iload 5
+    //   71: ireturn
+    //   72: astore 6
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: ldc 34
+    //   78: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: aload 6
+    //   83: athrow
+    //   84: aload_0
+    //   85: invokevirtual 47	com/tencent/mm/sdk/platformtools/ai:block	()V
+    //   88: ldc 34
+    //   90: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: iconst_1
+    //   94: ireturn
+    //   95: astore 6
+    //   97: goto -48 -> 49
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	166	0	this	ai
-    //   0	166	1	paramb	b
-    //   74	63	2	i	int
-    //   44	78	3	l1	long
-    //   82	41	5	l2	long
-    //   48	114	7	arrayOfByte	byte[]
+    //   0	100	0	this	ai
+    //   18	35	1	l1	long
+    //   24	20	3	l2	long
+    //   29	41	5	bool	boolean
+    //   72	10	6	localObject	Object
+    //   95	1	6	localInterruptedException	InterruptedException
     // Exception table:
     //   from	to	target	type
-    //   128	133	138	java/lang/Exception
-    //   69	117	160	finally
-    //   128	133	160	finally
-    //   133	136	160	finally
-    //   139	157	160	finally
-    //   161	164	160	finally
+    //   15	19	72	finally
+    //   25	31	72	finally
+    //   42	49	72	finally
+    //   49	53	72	finally
+    //   56	64	72	finally
+    //   74	76	72	finally
+    //   42	49	95	java/lang/InterruptedException
   }
   
-  public final void crc()
+  public final void open()
   {
-    if ((this.mnU == null) || (!this.mnU.isAlive()))
-    {
-      y.e("MicroMsg.MMHandlerThread", "setLowestPriority failed thread is dead");
-      return;
-    }
-    int i = this.mnU.getThreadId();
+    AppMethodBeat.i(52058);
     try
     {
-      if (19 == Process.getThreadPriority(i))
-      {
-        y.w("MicroMsg.MMHandlerThread", "setLowestPriority No Need.");
-        return;
+      boolean bool = this.ynM;
+      this.ynM = true;
+      if (!bool) {
+        notifyAll();
       }
-    }
-    catch (Exception localException)
-    {
-      y.w("MicroMsg.MMHandlerThread", "thread:%d setLowestPriority failed", new Object[] { Integer.valueOf(i) });
-      y.printErrStackTrace("MicroMsg.MMHandlerThread", localException, "", new Object[0]);
       return;
     }
-    Process.setThreadPriority(i, 19);
-    y.i("MicroMsg.MMHandlerThread", "thread:%d setLowestPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
-  }
-  
-  public final int crd()
-  {
-    if (this.mnU == null) {
-      return -1;
-    }
-    return this.mnU.getThreadId();
-  }
-  
-  public final void cre()
-  {
-    if ((this.mnU == null) || (!this.mnU.isAlive()))
+    finally
     {
-      y.e("MicroMsg.MMHandlerThread", "setLowPriority failed thread is dead");
-      return;
+      AppMethodBeat.o(52058);
     }
-    int i = this.mnU.getThreadId();
-    try
-    {
-      if (Process.getThreadPriority(i) == 0)
-      {
-        y.w("MicroMsg.MMHandlerThread", "setLowPriority No Need.");
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      y.w("MicroMsg.MMHandlerThread", "thread:%d setLowPriority failed", new Object[] { Integer.valueOf(i) });
-      y.printErrStackTrace("MicroMsg.MMHandlerThread", localException, "", new Object[0]);
-      return;
-    }
-    Process.setThreadPriority(i, 0);
-    y.i("MicroMsg.MMHandlerThread", "thread:%d setLowPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
   }
   
-  public final ah crf()
+  public final String toString()
   {
-    if (this.jWn == null) {
-      this.jWn = new ah(this.mnU.getLooper());
-    }
-    return this.jWn;
-  }
-  
-  public final boolean crg()
-  {
-    return Thread.currentThread().getId() == this.mnU.getId();
-  }
-  
-  public final Looper getLooper()
-  {
-    return this.mnU.getLooper();
-  }
-  
-  public final int k(Runnable paramRunnable, long paramLong)
-  {
-    if (paramRunnable == null) {
-      return -1;
-    }
-    crf().postDelayed(paramRunnable, paramLong);
-    return 0;
-  }
-  
-  public final boolean quit()
-  {
-    return this.mnU.quit();
-  }
-  
-  public final void sQ()
-  {
-    if ((this.mnU == null) || (!this.mnU.isAlive()))
-    {
-      y.e("MicroMsg.MMHandlerThread", "setHighPriority failed thread is dead");
-      return;
-    }
-    int i = this.mnU.getThreadId();
-    try
-    {
-      if (-8 == Process.getThreadPriority(i))
-      {
-        y.w("MicroMsg.MMHandlerThread", "setHighPriority No Need.");
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      y.w("MicroMsg.MMHandlerThread", "thread:%d setHighPriority failed", new Object[] { Integer.valueOf(i) });
-      y.printErrStackTrace("MicroMsg.MMHandlerThread", localException, "", new Object[0]);
-      return;
-    }
-    Process.setThreadPriority(i, -8);
-    y.i("MicroMsg.MMHandlerThread", "thread:%d setHighPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
-  }
-  
-  public static abstract interface a
-  {
-    public abstract boolean JS();
-    
-    public abstract boolean JT();
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void pQ();
+    AppMethodBeat.i(52061);
+    String str = "MMConditionVariable[" + hashCode() + "," + this.ynM + "]";
+    AppMethodBeat.o(52061);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ai
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,21 @@
 package com.tencent.mm.compatible.loader;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class b<E>
 {
-  static final Object Ee = new Object();
-  boolean Ef;
-  long[] Eg;
-  Object[] Eh;
+  static final Object EU;
+  boolean EV;
+  long[] EW;
+  Object[] EX;
   int mSize;
+  
+  static
+  {
+    AppMethodBeat.i(51925);
+    EU = new Object();
+    AppMethodBeat.o(51925);
+  }
   
   static int b(long[] paramArrayOfLong, int paramInt, long paramLong)
   {
@@ -34,75 +43,81 @@ public final class b<E>
   
   public final void put(long paramLong, E paramE)
   {
-    int i = b(this.Eg, this.mSize, paramLong);
+    AppMethodBeat.i(51924);
+    int i = b(this.EW, this.mSize, paramLong);
     if (i >= 0)
     {
-      this.Eh[i] = paramE;
+      this.EX[i] = paramE;
+      AppMethodBeat.o(51924);
       return;
     }
     int j = i ^ 0xFFFFFFFF;
-    if ((j < this.mSize) && (this.Eh[j] == Ee))
+    if ((j < this.mSize) && (this.EX[j] == EU))
     {
-      this.Eg[j] = paramLong;
-      this.Eh[j] = paramE;
+      this.EW[j] = paramLong;
+      this.EX[j] = paramE;
+      AppMethodBeat.o(51924);
       return;
     }
     i = j;
-    long[] arrayOfLong;
+    Object localObject1;
     Object[] arrayOfObject;
-    if (this.Ef)
+    if (this.EV)
     {
       i = j;
-      if (this.mSize >= this.Eg.length)
+      if (this.mSize >= this.EW.length)
       {
         int m = this.mSize;
-        arrayOfLong = this.Eg;
-        arrayOfObject = this.Eh;
+        localObject1 = this.EW;
+        arrayOfObject = this.EX;
         i = 0;
         int k;
         for (j = 0; i < m; j = k)
         {
-          Object localObject = arrayOfObject[i];
+          Object localObject2 = arrayOfObject[i];
           k = j;
-          if (localObject != Ee)
+          if (localObject2 != EU)
           {
             if (i != j)
             {
-              arrayOfLong[j] = arrayOfLong[i];
-              arrayOfObject[j] = localObject;
+              localObject1[j] = localObject1[i];
+              arrayOfObject[j] = localObject2;
             }
             k = j + 1;
           }
           i += 1;
         }
-        this.Ef = false;
+        this.EV = false;
         this.mSize = j;
-        i = b(this.Eg, this.mSize, paramLong) ^ 0xFFFFFFFF;
+        i = b(this.EW, this.mSize, paramLong) ^ 0xFFFFFFFF;
       }
     }
-    if (this.mSize >= this.Eg.length)
+    if (this.mSize >= this.EW.length)
     {
       j = a.idealIntArraySize(this.mSize + 1);
-      arrayOfLong = new long[j];
+      localObject1 = new long[j];
       arrayOfObject = new Object[j];
-      System.arraycopy(this.Eg, 0, arrayOfLong, 0, this.Eg.length);
-      System.arraycopy(this.Eh, 0, arrayOfObject, 0, this.Eh.length);
-      this.Eg = arrayOfLong;
-      this.Eh = arrayOfObject;
+      System.arraycopy(this.EW, 0, localObject1, 0, this.EW.length);
+      System.arraycopy(this.EX, 0, arrayOfObject, 0, this.EX.length);
+      this.EW = ((long[])localObject1);
+      this.EX = arrayOfObject;
     }
     if (this.mSize - i != 0)
     {
-      System.arraycopy(this.Eg, i, this.Eg, i + 1, this.mSize - i);
-      System.arraycopy(this.Eh, i, this.Eh, i + 1, this.mSize - i);
+      localObject1 = this.EW;
+      System.arraycopy(localObject1, i, localObject1, i + 1, this.mSize - i);
+      localObject1 = this.EX;
+      System.arraycopy(localObject1, i, localObject1, i + 1, this.mSize - i);
     }
-    this.Eg[i] = paramLong;
-    this.Eh[i] = paramE;
+    this.EW[i] = paramLong;
+    this.EX[i] = paramE;
     this.mSize += 1;
+    AppMethodBeat.o(51924);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.compatible.loader.b
  * JD-Core Version:    0.7.0.1
  */

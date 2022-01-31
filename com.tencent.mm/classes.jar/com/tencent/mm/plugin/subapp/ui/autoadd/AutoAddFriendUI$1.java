@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.subapp.ui.autoadd;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
 final class AutoAddFriendUI$1
@@ -7,9 +8,11 @@ final class AutoAddFriendUI$1
 {
   AutoAddFriendUI$1(AutoAddFriendUI paramAutoAddFriendUI) {}
   
-  public final void cr(boolean paramBoolean)
+  public final void onStatusChange(boolean paramBoolean)
   {
-    AutoAddFriendUI.a(this.pwd, paramBoolean, 2097152, 32);
+    AppMethodBeat.i(25329);
+    AutoAddFriendUI.a(this.sXJ, paramBoolean, 2097152, 32);
+    AppMethodBeat.o(25329);
   }
 }
 

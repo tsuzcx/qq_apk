@@ -1,15 +1,21 @@
 package com.tencent.mm.plugin.api.recordView;
 
-import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.h;
 
 final class f$4
   implements Runnable
 {
-  f$4(f paramf, MMSightRecordView.e parame, boolean paramBoolean) {}
+  f$4(f paramf, MMSightRecordView.h paramh) {}
   
   public final void run()
   {
-    this.fxk.b(this.fxm, this.fxn);
+    AppMethodBeat.i(76341);
+    this.gOo.gNX = false;
+    if (this.gOp != null) {
+      this.gOp.ef(false);
+    }
+    AppMethodBeat.o(76341);
   }
 }
 

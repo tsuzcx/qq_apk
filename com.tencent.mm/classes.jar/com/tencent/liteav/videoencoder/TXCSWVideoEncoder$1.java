@@ -1,20 +1,24 @@
 package com.tencent.liteav.videoencoder;
 
-import com.tencent.liteav.basic.d.d.a;
+import com.tencent.liteav.basic.d.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class TXCSWVideoEncoder$1
-  implements d.a
+  implements g.a
 {
   TXCSWVideoEncoder$1(TXCSWVideoEncoder paramTXCSWVideoEncoder, boolean paramBoolean, int paramInt) {}
   
   public void a(int paramInt)
   {
+    AppMethodBeat.i(67412);
     if (this.a)
     {
       TXCSWVideoEncoder.access$200(this.c, TXCSWVideoEncoder.access$000(this.c), this.b, this.c.mOutputWidth, this.c.mOutputHeight, TXCSWVideoEncoder.access$100(this.c));
+      AppMethodBeat.o(67412);
       return;
     }
     TXCSWVideoEncoder.access$300(this.c, TXCSWVideoEncoder.access$000(this.c), this.b, this.c.mOutputWidth, this.c.mOutputHeight, TXCSWVideoEncoder.access$100(this.c));
+    AppMethodBeat.o(67412);
   }
 }
 

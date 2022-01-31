@@ -4,7 +4,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 
 final class c$7
@@ -14,12 +15,14 @@ final class c$7
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(23463);
     paramDialogInterface = new Intent("android.intent.action.DIAL");
     paramDialogInterface.setFlags(268435456);
-    paramDialogInterface.setData(Uri.parse("tel:" + this.ixq));
-    if (bk.i(this.mWY.bER, paramDialogInterface)) {
-      this.mWY.bER.startActivity(paramDialogInterface);
+    paramDialogInterface.setData(Uri.parse("tel:" + this.kyt));
+    if (bo.k(this.pzT.cmc, paramDialogInterface)) {
+      this.pzT.cmc.startActivity(paramDialogInterface);
     }
+    AppMethodBeat.o(23463);
   }
 }
 

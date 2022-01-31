@@ -1,21 +1,46 @@
 package com.tencent.smtt.sdk;
 
-import com.tencent.smtt.utils.TbsLog;
-import com.tencent.smtt.utils.m.a;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class ay
-  implements m.a
+  extends Handler
 {
-  ay(TbsLogReport paramTbsLogReport) {}
-  
-  public void a(int paramInt)
+  ay(TbsLogReport paramTbsLogReport, Looper paramLooper)
   {
-    TbsLog.i("TbsDownload", "[TbsApkDownloadStat.reportTbsLog] httpResponseCode=" + paramInt);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    AppMethodBeat.i(139352);
+    if (paramMessage.what == 600)
+    {
+      if ((paramMessage.obj instanceof TbsLogReport.TbsLogInfo)) {
+        try
+        {
+          TbsLogReport.TbsLogInfo localTbsLogInfo = (TbsLogReport.TbsLogInfo)paramMessage.obj;
+          int i = paramMessage.arg1;
+          TbsLogReport.a(this.a, i, localTbsLogInfo);
+          AppMethodBeat.o(139352);
+          return;
+        }
+        catch (Exception paramMessage) {}
+      }
+      AppMethodBeat.o(139352);
+      return;
+    }
+    if (paramMessage.what == 601) {
+      TbsLogReport.a(this.a);
+    }
+    AppMethodBeat.o(139352);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.ay
  * JD-Core Version:    0.7.0.1
  */

@@ -1,377 +1,441 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseIntArray;
-import com.tencent.mm.a.o;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.a.jf;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.a.gk;
+import com.tencent.mm.g.a.jo;
+import com.tencent.mm.g.a.y;
+import com.tencent.mm.kernel.l;
+import com.tencent.mm.model.r;
 import com.tencent.mm.platformtools.w;
 import com.tencent.mm.plugin.account.ui.FacebookAuthUI;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.plugin.setting.a.k;
 import com.tencent.mm.plugin.setting.b;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.y.c;
+import com.tencent.mm.x.c;
 import junit.framework.Assert;
 
 public class SettingsMoreSafeUI
   extends MMPreference
-  implements com.tencent.mm.ah.f, m.b
+  implements com.tencent.mm.ai.f, n.b
 {
-  private ProgressDialog dnm;
-  private com.tencent.mm.ui.base.preference.f dnn;
-  private SparseIntArray nTG = new SparseIntArray();
-  private String nVe = null;
-  private String nVf;
+  private ProgressDialog eeN;
+  private SparseIntArray qHG;
+  private String qJj;
+  private String qJk;
+  private com.tencent.mm.ui.base.preference.f screen;
   
   public SettingsMoreSafeUI()
   {
-    this.nTG.put(0, a.i.settings_confirm_email_success_tip);
-    this.nTG.put(-82, a.i.setting_unbind_qq_err_one_left);
-    this.nTG.put(-83, a.i.setting_unbind_qq_err_has_unbind);
-    this.nTG.put(-84, a.i.setting_unbind_qq_err_hasbinded);
-    this.nTG.put(-85, a.i.setting_unbind_email_err_bindedbyother);
-    this.nTG.put(-86, a.i.setting_unbind_qq_err_qmail);
+    AppMethodBeat.i(127327);
+    this.qJj = null;
+    this.qHG = new SparseIntArray();
+    this.qHG.put(0, 2131303234);
+    this.qHG.put(-82, 2131303172);
+    this.qHG.put(-83, 2131303169);
+    this.qHG.put(-84, 2131303170);
+    this.qHG.put(-85, 2131303163);
+    this.qHG.put(-86, 2131303174);
+    AppMethodBeat.o(127327);
   }
   
-  private void bze()
+  private void cko()
   {
-    Preference localPreference = this.dnn.add("settings_email_addr");
+    AppMethodBeat.i(127334);
+    Preference localPreference = this.screen.atx("settings_email_addr");
     Assert.assertNotNull(localPreference);
-    String str = (String)com.tencent.mm.kernel.g.DP().Dz().get(5, null);
-    Integer localInteger = (Integer)com.tencent.mm.kernel.g.DP().Dz().get(7, null);
+    String str = (String)com.tencent.mm.kernel.g.RL().Ru().get(5, null);
+    Integer localInteger = (Integer)com.tencent.mm.kernel.g.RL().Ru().get(7, null);
     if ((localInteger != null) && ((localInteger.intValue() & 0x2) != 0))
     {
-      localPreference.setSummary(a.i.settings_email_addr_verified);
+      localPreference.setSummary(2131303242);
+      AppMethodBeat.o(127334);
       return;
     }
     if (str != null)
     {
-      localPreference.setSummary(a.i.settings_email_addr_not_verified);
+      localPreference.setSummary(2131303241);
+      AppMethodBeat.o(127334);
       return;
     }
-    localPreference.setSummary(a.i.setting_unbind);
+    localPreference.setSummary(2131303162);
+    AppMethodBeat.o(127334);
   }
   
-  private void bzf()
+  private void ckp()
   {
-    IconSwitchKeyValuePreference localIconSwitchKeyValuePreference = (IconSwitchKeyValuePreference)this.dnn.add("settings_phone_security");
+    AppMethodBeat.i(127336);
+    IconSwitchKeyValuePreference localIconSwitchKeyValuePreference = (IconSwitchKeyValuePreference)this.screen.atx("settings_phone_security");
     if (localIconSwitchKeyValuePreference == null)
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.SettingsMoreSafeUI", "phone_security preference is null");
+      ab.e("MicroMsg.SettingsMoreSafeUI", "phone_security preference is null");
+      AppMethodBeat.o(127336);
       return;
     }
-    if (com.tencent.mm.sdk.platformtools.e.cqq())
+    if (com.tencent.mm.sdk.platformtools.g.dsn())
     {
-      this.dnn.bJ("settings_phone_security", true);
+      this.screen.cl("settings_phone_security", true);
+      AppMethodBeat.o(127336);
       return;
     }
-    if (c.BS().a(ac.a.uyT))
+    if (c.PJ().a(ac.a.yJH))
     {
-      localIconSwitchKeyValuePreference.Gv(0);
+      localIconSwitchKeyValuePreference.ON(0);
+      AppMethodBeat.o(127336);
       return;
     }
-    localIconSwitchKeyValuePreference.Gv(8);
+    localIconSwitchKeyValuePreference.ON(8);
+    AppMethodBeat.o(127336);
   }
   
-  private void bzg()
+  private void ckq()
   {
-    Preference localPreference = this.dnn.add("settings_facebook");
+    AppMethodBeat.i(127337);
+    Preference localPreference = this.screen.atx("settings_facebook");
     if (localPreference == null)
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.SettingsMoreSafeUI", "updateFacebook Preference null");
+      ab.e("MicroMsg.SettingsMoreSafeUI", "updateFacebook Preference null");
+      AppMethodBeat.o(127337);
       return;
     }
-    if (!q.GI())
+    if (!r.ZM())
     {
-      this.dnn.c(localPreference);
+      this.screen.d(localPreference);
+      AppMethodBeat.o(127337);
       return;
     }
-    if (!q.GL())
+    if (!r.ZP())
     {
-      localPreference.setSummary(getString(a.i.settings_bind_qq_unbind));
+      localPreference.setSummary(getString(2131303219));
+      AppMethodBeat.o(127337);
       return;
     }
-    localPreference.setSummary((String)com.tencent.mm.kernel.g.DP().Dz().get(65826, null));
+    localPreference.setSummary((String)com.tencent.mm.kernel.g.RL().Ru().get(65826, null));
+    AppMethodBeat.o(127337);
   }
   
-  private void bzh()
+  private void ckr()
   {
-    Preference localPreference = this.dnn.add("settings_bind_qq");
+    AppMethodBeat.i(127338);
+    Preference localPreference = this.screen.atx("settings_bind_qq");
     if (localPreference == null)
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.SettingsMoreSafeUI", "updateUin Preference null");
+      ab.e("MicroMsg.SettingsMoreSafeUI", "updateUin Preference null");
+      AppMethodBeat.o(127338);
       return;
     }
-    int i = ((Integer)com.tencent.mm.kernel.g.DP().Dz().get(9, Integer.valueOf(0))).intValue();
+    int i = ((Integer)com.tencent.mm.kernel.g.RL().Ru().get(9, Integer.valueOf(0))).intValue();
     if (i == 0)
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.SettingsMoreSafeUI", "updateUin 0 Preference");
-      if (bk.getInt(com.tencent.mm.m.g.AA().getValue("BindQQSwitch"), 1) != 1)
+      ab.i("MicroMsg.SettingsMoreSafeUI", "updateUin 0 Preference");
+      if (bo.getInt(com.tencent.mm.m.g.Nq().getValue("BindQQSwitch"), 1) != 1)
       {
-        this.dnn.bJ("settings_uin", true);
+        this.screen.cl("settings_uin", true);
+        AppMethodBeat.o(127338);
         return;
       }
-      localPreference.setSummary(a.i.settings_bind_qq_unbind);
+      localPreference.setSummary(2131303219);
+      AppMethodBeat.o(127338);
       return;
     }
-    localPreference.setSummary(new o(i));
+    localPreference.setSummary(new com.tencent.mm.a.p(i));
+    AppMethodBeat.o(127338);
   }
   
-  public final void a(int paramInt, com.tencent.mm.sdk.e.m paramm, Object paramObject)
+  public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
   {
-    bzh();
-    bze();
-    bzg();
-    bzf();
+    AppMethodBeat.i(127335);
+    ckr();
+    cko();
+    ckq();
+    ckp();
+    AppMethodBeat.o(127335);
   }
   
-  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public int getResourceId()
   {
-    int j = 0;
-    paramf = paramPreference.mKey;
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.SettingsMoreSafeUI", paramf + " item has been clicked!");
-    if (bk.bl(paramf)) {}
-    label460:
-    do
-    {
-      do
+    return 2131165284;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(127330);
+    setMMTitle(2131303326);
+    this.screen = getPreferenceScreen();
+    if (((Integer)com.tencent.mm.kernel.g.RL().Ru().get(9, Integer.valueOf(0))).intValue() == 0) {
+      if (bo.getInt(com.tencent.mm.m.g.Nq().getValue("BindQQSwitch"), 1) != 1)
       {
-        do
-        {
-          return false;
-          if (paramf.equals("settings_facebook"))
-          {
-            Y(FacebookAuthUI.class);
-            return false;
-          }
-          int i;
-          if (paramf.equals("settings_email_addr"))
-          {
-            paramf = (Integer)com.tencent.mm.kernel.g.DP().Dz().get(7, null);
-            i = j;
-            if (paramf != null)
-            {
-              i = j;
-              if ((paramf.intValue() & 0x2) != 0) {
-                i = 1;
-              }
-            }
-            paramf = (String)com.tencent.mm.kernel.g.DP().Dz().get(5, null);
-            if ((i != 0) || (!bk.bl(paramf))) {
-              startActivity(new Intent(this.mController.uMN, SettingsModifyEmailAddrUI.class));
-            }
-            for (;;)
-            {
-              return true;
-              if (this.dnm != null)
-              {
-                com.tencent.mm.sdk.platformtools.y.w("MicroMsg.SettingsMoreSafeUI", "do get email input, but tips dialog has not dismissed");
-                this.dnm.dismiss();
-                this.dnm = null;
-              }
-              paramf = bk.aM(w.bS(this.mController.uMN), "");
-              com.tencent.mm.ui.base.h.a(this.mController.uMN, getString(a.i.settings_modify_email_addr), paramf, getString(a.i.settings_modify_email_addr_warning), 50, new SettingsMoreSafeUI.2(this));
-            }
-          }
-          if (paramf.equals("settings_bind_qq"))
-          {
-            b.eUR.h(new Intent(), this);
-            return true;
-          }
-          if (paramf.equals("settings_phone_security"))
-          {
-            Intent localIntent = new Intent();
-            if (c.BS().a(ac.a.uyT))
-            {
-              i = 1;
-              c.BS().b(ac.a.uyT, false);
-              ((IconPreference)paramPreference).Gv(8);
-              j = ((Integer)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uyV, Integer.valueOf(0))).intValue();
-              com.tencent.mm.plugin.report.service.h.nFQ.f(10939, new Object[] { Integer.valueOf(j) });
-              if (!bk.bt(this, "com.tencent.server.back.BackEngine")) {
-                break label460;
-              }
-            }
-            for (paramf = getString(a.i.qqpimsecure_jump_url, new Object[] { Integer.valueOf(j), Integer.valueOf(1), Integer.valueOf(i) });; paramf = getString(a.i.qqpimsecure_jump_url, new Object[] { Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(i) }))
-            {
-              localIntent.putExtra("rawUrl", paramf);
-              localIntent.putExtra("show_bottom", false);
-              localIntent.putExtra("showShare", false);
-              d.b(this.mController.uMN, "webview", ".ui.tools.WebViewUI", localIntent);
-              return false;
-              i = 0;
-              break;
-            }
-          }
-          if (!paramf.equals("settings_delete_account")) {
-            break;
-          }
-          paramf = new Intent();
-        } while (bk.bl(this.nVe));
-        paramf.putExtra("rawUrl", this.nVe + "&lang=" + x.fB(this.mController.uMN));
-        paramf.putExtra("showShare", true);
-        paramf.putExtra("hardcode_jspermission", JsapiPermissionWrapper.spm);
-        d.b(this.mController.uMN, "webview", ".ui.tools.WebViewUI", paramf, 2);
-        return false;
-      } while (!paramf.equals("settings_dump_personal_data"));
-      paramf = new Intent();
-    } while (bk.bl(this.nVf));
-    paramf.putExtra("rawUrl", this.nVf);
-    paramf.putExtra("showShare", false);
-    paramf.putExtra("needRedirect", false);
-    paramf.putExtra("neverGetA8Key", false);
-    paramf.putExtra("hardcode_jspermission", JsapiPermissionWrapper.spm);
-    d.b(this.mController.uMN, "webview", ".ui.tools.WebViewUI", paramf);
-    return false;
-  }
-  
-  protected final void initView()
-  {
-    setMMTitle(a.i.settings_more_safe);
-    this.dnn = this.vdd;
-    if (((Integer)com.tencent.mm.kernel.g.DP().Dz().get(9, Integer.valueOf(0))).intValue() == 0) {
-      if (bk.getInt(com.tencent.mm.m.g.AA().getValue("BindQQSwitch"), 1) != 1)
-      {
-        this.dnn.bJ("settings_uin", true);
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.SettingsMoreSafeUI", "summerqq BindQQSwitch off");
+        this.screen.cl("settings_uin", true);
+        ab.i("MicroMsg.SettingsMoreSafeUI", "summerqq BindQQSwitch off");
       }
     }
     for (;;)
     {
-      this.nVe = com.tencent.mm.m.g.AA().getValue("CloseAcctUrl");
+      this.qJj = com.tencent.mm.m.g.Nq().getValue("CloseAcctUrl");
       setBackBtn(new SettingsMoreSafeUI.1(this));
+      AppMethodBeat.o(127330);
       return;
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.SettingsMoreSafeUI", "summerqq BindQQSwitch bindqq");
+      ab.i("MicroMsg.SettingsMoreSafeUI", "summerqq BindQQSwitch bindqq");
     }
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(127340);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 2) {}
-    switch (paramInt2)
+    if (paramInt1 == 2) {
+      switch (paramInt2)
+      {
+      }
+    }
+    for (;;)
     {
-    default: 
+      AppMethodBeat.o(127340);
       return;
+      if ((com.tencent.mm.kernel.g.Rc() != null) && (com.tencent.mm.kernel.g.Rc().ftA != null)) {
+        com.tencent.mm.kernel.g.Rc().ftA.cR(false);
+      }
+      paramIntent = new gk();
+      com.tencent.mm.sdk.b.a.ymk.l(paramIntent);
+      b.gmP.BU();
+      com.tencent.mm.kernel.g.RL().Ru().b(this);
+      paramIntent = new jo();
+      paramIntent.cze.status = 0;
+      paramIntent.cze.aXG = 3;
+      com.tencent.mm.sdk.b.a.ymk.l(paramIntent);
+      paramIntent = new y();
+      paramIntent.cne.cnf = true;
+      com.tencent.mm.sdk.b.a.ymk.l(paramIntent);
+      aj.apl("show_whatsnew");
+      l.n(this, true);
+      paramIntent = new Intent();
+      paramIntent.addFlags(67108864);
+      paramIntent.putExtra("Intro_Switch", true);
+      b.gmO.p(paramIntent, getContext());
+      w.I(this, null);
+      finish();
     }
-    if ((com.tencent.mm.kernel.g.Dk() != null) && (com.tencent.mm.kernel.g.Dk().edx != null)) {
-      com.tencent.mm.kernel.g.Dk().edx.bP(false);
-    }
-    b.eUS.tq();
-    com.tencent.mm.kernel.g.DP().Dz().b(this);
-    paramIntent = new jf();
-    paramIntent.bRC.status = 0;
-    paramIntent.bRC.aQw = 3;
-    com.tencent.mm.sdk.b.a.udP.m(paramIntent);
-    paramIntent = new com.tencent.mm.h.a.y();
-    paramIntent.bFX.bFY = true;
-    com.tencent.mm.sdk.b.a.udP.m(paramIntent);
-    ag.Zn("show_whatsnew");
-    com.tencent.mm.kernel.l.k(this, true);
-    paramIntent = new Intent();
-    paramIntent.addFlags(67108864);
-    paramIntent.putExtra("Intro_Switch", true);
-    b.eUR.q(paramIntent, this.mController.uMN);
-    w.E(this, null);
-    finish();
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127328);
     super.onCreate(paramBundle);
     initView();
-    com.tencent.mm.kernel.g.Dk().a(256, this);
+    com.tencent.mm.kernel.g.Rc().a(256, this);
+    AppMethodBeat.o(127328);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(127329);
     super.onDestroy();
-    com.tencent.mm.kernel.g.Dk().b(256, this);
+    com.tencent.mm.kernel.g.Rc().b(256, this);
+    AppMethodBeat.o(127329);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(127332);
     super.onPause();
+    AppMethodBeat.o(127332);
   }
   
-  protected void onResume()
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
-    bzh();
-    bze();
-    bzg();
-    Object localObject = com.tencent.mm.m.g.AA().getValue("ShowExportUserDataEntry");
-    if (!bk.bl((String)localObject)) {
-      this.nVf = ((String)localObject);
+    int j = 0;
+    AppMethodBeat.i(127333);
+    paramf = paramPreference.mKey;
+    ab.i("MicroMsg.SettingsMoreSafeUI", paramf + " item has been clicked!");
+    if (bo.isNullOrNil(paramf))
+    {
+      AppMethodBeat.o(127333);
+      return false;
+    }
+    if (paramf.equals("settings_facebook")) {
+      startActivity(FacebookAuthUI.class);
     }
     for (;;)
     {
-      bzf();
-      localObject = this.dnn.add("settings_about_domainmail");
-      this.dnn.c((Preference)localObject);
-      if (bk.bl(this.nVe))
+      AppMethodBeat.o(127333);
+      return false;
+      int i;
+      if (paramf.equals("settings_email_addr"))
       {
-        localObject = this.dnn.add("settings_delete_account");
-        this.dnn.c((Preference)localObject);
+        paramf = (Integer)com.tencent.mm.kernel.g.RL().Ru().get(7, null);
+        i = j;
+        if (paramf != null)
+        {
+          i = j;
+          if ((paramf.intValue() & 0x2) != 0) {
+            i = 1;
+          }
+        }
+        paramf = (String)com.tencent.mm.kernel.g.RL().Ru().get(5, null);
+        if ((i != 0) || (!bo.isNullOrNil(paramf))) {
+          startActivity(new Intent(getContext(), SettingsModifyEmailAddrUI.class));
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(127333);
+          return true;
+          if (this.eeN != null)
+          {
+            ab.w("MicroMsg.SettingsMoreSafeUI", "do get email input, but tips dialog has not dismissed");
+            this.eeN.dismiss();
+            this.eeN = null;
+          }
+          paramf = bo.bf(w.cz(getContext()), "");
+          com.tencent.mm.ui.base.h.a(getContext(), getString(2131303312), paramf, getString(2131303313), 50, new SettingsMoreSafeUI.2(this));
+        }
       }
-      super.onResume();
-      return;
-      this.nVf = "";
-      this.dnn.bJ("settings_dump_personal_data", true);
+      if (paramf.equals("settings_bind_qq"))
+      {
+        b.gmO.g(new Intent(), this);
+        AppMethodBeat.o(127333);
+        return true;
+      }
+      if (paramf.equals("settings_phone_security"))
+      {
+        Intent localIntent = new Intent();
+        if (c.PJ().a(ac.a.yJH))
+        {
+          i = 1;
+          label318:
+          c.PJ().b(ac.a.yJH, false);
+          ((IconPreference)paramPreference).ON(8);
+          j = ((Integer)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yJJ, Integer.valueOf(0))).intValue();
+          com.tencent.mm.plugin.report.service.h.qsU.e(10939, new Object[] { Integer.valueOf(j) });
+          if (!bo.bG(this, "com.tencent.server.back.BackEngine")) {
+            break label479;
+          }
+        }
+        label479:
+        for (paramf = getString(2131306208, new Object[] { Integer.valueOf(j), Integer.valueOf(1), Integer.valueOf(i) });; paramf = getString(2131306208, new Object[] { Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(i) }))
+        {
+          localIntent.putExtra("rawUrl", paramf);
+          localIntent.putExtra("show_bottom", false);
+          localIntent.putExtra("showShare", false);
+          d.b(getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+          break;
+          i = 0;
+          break label318;
+        }
+      }
+      if (paramf.equals("settings_delete_account"))
+      {
+        paramf = new Intent();
+        if (!bo.isNullOrNil(this.qJj))
+        {
+          paramf.putExtra("rawUrl", this.qJj + "&lang=" + aa.gP(getContext()));
+          paramf.putExtra("showShare", true);
+          paramf.putExtra("hardcode_jspermission", JsapiPermissionWrapper.wib);
+          d.b(getContext(), "webview", ".ui.tools.WebViewUI", paramf, 2);
+        }
+      }
+      else if (paramf.equals("settings_dump_personal_data"))
+      {
+        paramf = new Intent();
+        if (!bo.isNullOrNil(this.qJk))
+        {
+          paramf.putExtra("rawUrl", this.qJk);
+          paramf.putExtra("showShare", false);
+          paramf.putExtra("needRedirect", false);
+          paramf.putExtra("neverGetA8Key", false);
+          paramf.putExtra("hardcode_jspermission", JsapiPermissionWrapper.wib);
+          d.b(getContext(), "webview", ".ui.tools.WebViewUI", paramf);
+        }
+      }
     }
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public void onResume()
   {
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.SettingsMoreSafeUI", "onSceneEnd " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString + "  " + paramm.getType());
-    if (this.dnm != null)
+    AppMethodBeat.i(127331);
+    ckr();
+    cko();
+    ckq();
+    Object localObject = com.tencent.mm.m.g.Nq().getValue("ShowExportUserDataEntry");
+    if (!bo.isNullOrNil((String)localObject)) {
+      this.qJk = ((String)localObject);
+    }
+    for (;;)
     {
-      this.dnm.dismiss();
-      this.dnm = null;
-    }
-    if ((paramm.getType() != 256) || (((paramInt1 != 0) || (paramInt2 != 0)) && (b.eUS.a(this, paramInt1, paramInt2, paramString)))) {
+      ckp();
+      localObject = this.screen.atx("settings_about_domainmail");
+      this.screen.d((Preference)localObject);
+      if (bo.isNullOrNil(this.qJj))
+      {
+        localObject = this.screen.atx("settings_delete_account");
+        this.screen.d((Preference)localObject);
+      }
+      super.onResume();
+      AppMethodBeat.o(127331);
       return;
+      this.qJk = "";
+      this.screen.cl("settings_dump_personal_data", true);
     }
-    int i = this.nTG.get(paramInt2);
-    paramm = getString(a.i.settings_confirm_email_fail_tip, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    paramString = paramm;
-    if (i != 0) {}
+  }
+  
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  {
+    AppMethodBeat.i(127339);
+    ab.d("MicroMsg.SettingsMoreSafeUI", "onSceneEnd " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString + "  " + paramm.getType());
+    if (this.eeN != null)
+    {
+      this.eeN.dismiss();
+      this.eeN = null;
+    }
+    int i;
+    if (paramm.getType() == 256)
+    {
+      if (((paramInt1 != 0) || (paramInt2 != 0)) && (b.gmP.a(this, paramInt1, paramInt2, paramString)))
+      {
+        AppMethodBeat.o(127339);
+        return;
+      }
+      i = this.qHG.get(paramInt2);
+      paramm = getString(2131303233, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      paramString = paramm;
+      if (i == 0) {}
+    }
     try
     {
       paramString = getString(i);
-      com.tencent.mm.ui.base.h.bC(this.mController.uMN, paramString);
+      com.tencent.mm.ui.base.h.bO(getContext(), paramString);
+      AppMethodBeat.o(127339);
       return;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.SettingsMoreSafeUI", "try get string by id %d, fail:%s", new Object[] { Integer.valueOf(i), paramString.getMessage() });
-        com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.SettingsMoreSafeUI", paramString, "", new Object[0]);
+        ab.e("MicroMsg.SettingsMoreSafeUI", "try get string by id %d, fail:%s", new Object[] { Integer.valueOf(i), paramString.getMessage() });
+        ab.printErrStackTrace("MicroMsg.SettingsMoreSafeUI", paramString, "", new Object[0]);
         paramString = paramm;
       }
     }
   }
   
-  public final int xj()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return a.k.settings_pref_more_safe;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

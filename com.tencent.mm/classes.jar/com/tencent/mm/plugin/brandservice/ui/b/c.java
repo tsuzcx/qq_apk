@@ -1,15 +1,13 @@
 package com.tencent.mm.plugin.brandservice.ui.b;
 
-import com.tencent.mm.ae.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.av.e;
-import com.tencent.mm.kernel.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.c.ik;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.q;
+import com.tencent.mm.plugin.brandservice.b.l;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -18,95 +16,163 @@ import java.util.Map;
 
 public final class c
 {
-  private static Map<Long, Integer> iiW = new HashMap();
+  private static Map<Long, Integer> kiW;
   
-  public static void aL(List<q> paramList)
+  static
   {
-    if (bk.dk(paramList)) {}
-    LinkedList localLinkedList;
-    do
+    AppMethodBeat.i(14458);
+    kiW = new HashMap();
+    AppMethodBeat.o(14458);
+  }
+  
+  public static String Hv(String paramString)
+  {
+    AppMethodBeat.i(152663);
+    if (paramString != null)
     {
+      paramString = paramString.replaceAll("(?m)^\\s*$(\\n|\\r\\n)", "");
+      AppMethodBeat.o(152663);
+      return paramString;
+    }
+    AppMethodBeat.o(152663);
+    return null;
+  }
+  
+  public static void aU(List<com.tencent.mm.storage.q> paramList)
+  {
+    AppMethodBeat.i(14456);
+    com.tencent.mm.plugin.brandservice.b.a("BrandServiceWorkerThread", new c.2(paramList), 0L);
+    AppMethodBeat.o(14456);
+  }
+  
+  public static void aZ(List<com.tencent.mm.storage.q> paramList)
+  {
+    AppMethodBeat.i(14455);
+    if (bo.es(paramList))
+    {
+      AppMethodBeat.o(14455);
       return;
-      localLinkedList = new LinkedList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+    }
+    LinkedList localLinkedList = new LinkedList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      com.tencent.mm.storage.q localq = (com.tencent.mm.storage.q)paramList.next();
+      if (((!kiW.containsKey(Long.valueOf(localq.field_msgId))) || (sN(((Integer)kiW.get(Long.valueOf(localq.field_msgId))).intValue()))) && (localq.dvV()))
       {
-        q localq = (q)paramList.next();
-        if (((!iiW.containsKey(Long.valueOf(localq.field_msgId))) || (oG(((Integer)iiW.get(Long.valueOf(localq.field_msgId))).intValue()))) && (localq.ctz()))
-        {
-          Object localObject = ((com.tencent.mm.plugin.biz.a.a)g.r(com.tencent.mm.plugin.biz.a.a.class)).d(localq.field_msgId, localq.field_content);
-          if ((localObject != null) && (!bk.dk(((com.tencent.mm.ae.l)localObject).dTx))) {
-            try
+        Object localObject = ((com.tencent.mm.plugin.biz.a.a)g.E(com.tencent.mm.plugin.biz.a.a.class)).b(localq.field_msgId, localq.field_content);
+        if ((localObject != null) && (!bo.es(((com.tencent.mm.af.p)localObject).fjy))) {
+          try
+          {
+            localObject = ((com.tencent.mm.af.p)localObject).fjy.iterator();
+            while (((Iterator)localObject).hasNext())
             {
-              localObject = ((com.tencent.mm.ae.l)localObject).dTx.iterator();
-              while (((Iterator)localObject).hasNext())
+              com.tencent.mm.af.q localq1 = (com.tencent.mm.af.q)((Iterator)localObject).next();
+              kd localkd = new kd();
+              localkd.wqR = localq.field_talker;
+              localkd.wqU = localq.field_msgId;
+              if (!bo.isNullOrNil(localq1.url))
               {
-                m localm = (m)((Iterator)localObject).next();
-                ik localik = new ik();
-                localik.sxi = localq.field_talker;
-                localik.sxm = localq.field_msgId;
-                if (!bk.bl(localm.url))
-                {
-                  localik.url = localm.url;
-                  localLinkedList.add(localik);
-                  iiW.put(Long.valueOf(localq.field_msgId), Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
-                }
+                localkd.url = localq1.url;
+                localLinkedList.add(localkd);
+                kiW.put(Long.valueOf(localq.field_msgId), Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
               }
             }
-            catch (UnsupportedOperationException localUnsupportedOperationException)
-            {
-              y.w("MicroMsg.ConversationAdapter", "postDoGetCommentReward exp %s", new Object[] { localUnsupportedOperationException.getMessage() });
-            }
-            catch (Exception localException)
-            {
-              y.w("MicroMsg.ConversationAdapter", "postDoGetCommentReward exp %s", new Object[] { localException.getMessage() });
-            }
+          }
+          catch (UnsupportedOperationException localUnsupportedOperationException)
+          {
+            ab.w("MicroMsg.ConversationAdapter", "postDoGetCommentReward exp %s", new Object[] { localUnsupportedOperationException.getMessage() });
+          }
+          catch (Exception localException)
+          {
+            ab.w("MicroMsg.ConversationAdapter", "postDoGetCommentReward exp %s", new Object[] { localException.getMessage() });
           }
         }
       }
-    } while (bk.dk(localLinkedList));
-    g.DO().dJT.a(new com.tencent.mm.plugin.brandservice.b.l(localLinkedList), 0);
+    }
+    if (bo.es(localLinkedList))
+    {
+      AppMethodBeat.o(14455);
+      return;
+    }
+    g.RK().eHt.a(new l(localLinkedList), 0);
+    AppMethodBeat.o(14455);
   }
   
-  public static void aM(List<q> paramList)
+  public static String aZX()
   {
-    g.DS().O(new c.2(paramList));
-  }
-  
-  public static String ayD()
-  {
+    AppMethodBeat.i(14452);
     Object localObject2 = null;
-    e locale = com.tencent.mm.av.a.Pw();
+    e locale = com.tencent.mm.aw.a.aiz();
     Object localObject1 = localObject2;
     if (locale != null)
     {
       localObject1 = localObject2;
-      if (locale.eux != null)
+      if (locale.fKj != null)
       {
         localObject1 = localObject2;
-        if (locale.euv == 0)
+        if (locale.fKh == 0)
         {
           localObject1 = localObject2;
-          if (com.tencent.mm.av.a.Pu()) {
-            localObject1 = locale.eux;
+          if (com.tencent.mm.aw.a.aiw()) {
+            localObject1 = locale.fKj;
           }
         }
       }
     }
+    AppMethodBeat.o(14452);
     return localObject1;
   }
   
-  public static void f(q paramq)
+  public static boolean b(com.tencent.mm.bv.a parama1, com.tencent.mm.bv.a parama2)
   {
-    if ((paramq == null) || (!paramq.ctz())) {
-      return;
+    AppMethodBeat.i(14457);
+    if ((parama1 == null) && (parama2 == null))
+    {
+      AppMethodBeat.o(14457);
+      return true;
     }
-    g.DS().O(new c.1(paramq));
+    if ((parama1 == null) || (parama2 == null))
+    {
+      AppMethodBeat.o(14457);
+      return false;
+    }
+    try
+    {
+      boolean bool = bo.isEqual(parama1.toByteArray(), parama2.toByteArray());
+      AppMethodBeat.o(14457);
+      return bool;
+    }
+    catch (IOException parama1)
+    {
+      ab.i("MicroMsg.ConversationAdapter", "isMsgStatInfoProtoEqual exp %s", new Object[] { parama1.getMessage() });
+      AppMethodBeat.o(14457);
+    }
+    return false;
   }
   
-  public static boolean oG(int paramInt)
+  public static void g(com.tencent.mm.storage.q paramq)
   {
-    return System.currentTimeMillis() / 1000L - paramInt > a.iiR;
+    AppMethodBeat.i(14454);
+    if ((paramq == null) || (!paramq.dvV()))
+    {
+      AppMethodBeat.o(14454);
+      return;
+    }
+    com.tencent.mm.plugin.brandservice.b.a("BrandServiceWorkerThread", new c.1(paramq), 0L);
+    AppMethodBeat.o(14454);
+  }
+  
+  public static boolean sN(int paramInt)
+  {
+    AppMethodBeat.i(14453);
+    if (System.currentTimeMillis() / 1000L - paramInt > a.kiQ)
+    {
+      AppMethodBeat.o(14453);
+      return true;
+    }
+    AppMethodBeat.o(14453);
+    return false;
   }
 }
 

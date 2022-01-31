@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.exdevice.f.a;
 
-import com.tencent.mm.ae.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
 import com.tencent.mm.plugin.exdevice.f.b.a.c;
 import com.tencent.mm.plugin.exdevice.f.b.a.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -13,16 +14,18 @@ public final class a
 {
   public static ArrayList<d> a(String paramString1, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap, List<c> paramList)
   {
-    y.d("MicroMsg.ExdeviceMsgXmlParser", paramString3);
-    if (bk.bl(paramString3))
+    AppMethodBeat.i(19430);
+    ab.d("MicroMsg.ExdeviceMsgXmlParser", paramString3);
+    if (bo.isNullOrNil(paramString3))
     {
-      y.e("MicroMsg.ExdeviceMsgXmlParser", "rank info is null or nil");
+      ab.e("MicroMsg.ExdeviceMsgXmlParser", "rank info is null or nil");
+      AppMethodBeat.o(19430);
       return null;
     }
-    paramString3 = g.a.M(paramString3, paramString4);
+    paramString3 = j.b.ab(paramString3, paramString4);
     if (paramString3 != null)
     {
-      paramString4 = paramString3.dQt;
+      paramString4 = paramString3.fgu;
       ArrayList localArrayList = new ArrayList();
       boolean bool;
       int i;
@@ -30,55 +33,54 @@ public final class a
       if (paramString4 == null)
       {
         bool = true;
-        y.d("MicroMsg.ExdeviceMsgXmlParser", "map is null :%s", new Object[] { Boolean.valueOf(bool) });
+        ab.d("MicroMsg.ExdeviceMsgXmlParser", "map is null :%s", new Object[] { Boolean.valueOf(bool) });
         if ((paramString4 == null) || (paramString4.isEmpty())) {
-          break label693;
+          break label711;
         }
-        y.d("MicroMsg.ExdeviceMsgXmlParser", "ap: map %s", new Object[] { paramString4.toString() });
+        ab.d("MicroMsg.ExdeviceMsgXmlParser", "ap: map %s", new Object[] { paramString4.toString() });
         i = 0;
         localObject1 = new StringBuilder(".msg.appmsg.hardwareinfo.follows.follow");
         if (i != 0) {
-          break label304;
+          break label322;
         }
         paramString3 = "";
-        label125:
+        label137:
         localObject1 = (String)paramString4.get(paramString3 + ".username");
-        if (!bk.bl((String)localObject1)) {
-          break label313;
+        if (!bo.isNullOrNil((String)localObject1)) {
+          break label331;
         }
-        y.i("MicroMsg.ExdeviceMsgXmlParser", "follow should break now : %d", new Object[] { Integer.valueOf(i) });
+        ab.i("MicroMsg.ExdeviceMsgXmlParser", "follow should break now : %d", new Object[] { Integer.valueOf(i) });
         i = 0;
         paramList = new StringBuilder(".msg.appmsg.hardwareinfo.rankview.rankinfolist.rankinfo");
         if (i != 0) {
-          break label487;
+          break label505;
         }
         paramString3 = "";
-        label199:
+        label211:
         paramList = (String)paramString4.get(paramString3 + ".username");
         localObject1 = new StringBuilder(".msg.appmsg.hardwareinfo.rankview.rankinfolist.rankinfo");
         if (i != 0) {
-          break label496;
+          break label514;
         }
       }
-      label304:
-      label313:
-      label332:
+      label322:
+      label331:
+      label350:
       Object localObject3;
-      label478:
-      label487:
-      label496:
+      label514:
       for (paramString3 = "";; paramString3 = Integer.valueOf(i))
       {
         localObject1 = (String)paramString4.get(paramString3 + ".nickname");
-        if (!bk.bl(paramList)) {
-          break label505;
+        if (!bo.isNullOrNil(paramList)) {
+          break label523;
         }
-        y.i("MicroMsg.ExdeviceMsgXmlParser", "should break now : %d", new Object[] { Integer.valueOf(i) });
+        ab.i("MicroMsg.ExdeviceMsgXmlParser", "should break now : %d", new Object[] { Integer.valueOf(i) });
+        AppMethodBeat.o(19430);
         return localArrayList;
         bool = false;
         break;
         paramString3 = Integer.valueOf(i);
-        break label125;
+        break label137;
         localObject2 = new StringBuilder(".msg.appmsg.hardwareinfo.follows.follow");
         if (i == 0)
         {
@@ -86,9 +88,10 @@ public final class a
           localObject2 = (String)paramString4.get(paramString3 + ".nickname");
           localObject3 = new StringBuilder(".msg.appmsg.hardwareinfo.follows.follow");
           if (i != 0) {
-            break label478;
+            break label496;
           }
         }
+        label496:
         for (paramString3 = "";; paramString3 = Integer.valueOf(i))
         {
           paramString3 = (String)paramString4.get(paramString3 + ".step");
@@ -96,38 +99,39 @@ public final class a
           ((c)localObject3).field_appusername = paramString2;
           ((c)localObject3).field_username = ((String)localObject1);
           ((c)localObject3).field_rankID = paramString1;
-          ((c)localObject3).field_step = bk.getInt(paramString3, 0);
+          ((c)localObject3).field_step = bo.getInt(paramString3, 0);
           paramList.add(localObject3);
           paramMap.put(localObject1, localObject2);
           i += 1;
           break;
           paramString3 = Integer.valueOf(i);
-          break label332;
+          break label350;
         }
+        label505:
         paramString3 = Integer.valueOf(i);
-        break label199;
+        break label211;
       }
-      label505:
+      label523:
       Object localObject2 = new StringBuilder(".msg.appmsg.hardwareinfo.rankview.rankinfolist.rankinfo");
       if (i == 0)
       {
         paramString3 = "";
-        label524:
+        label542:
         localObject2 = (String)paramString4.get(paramString3 + ".rank.rankdisplay");
         localObject3 = new StringBuilder(".msg.appmsg.hardwareinfo.rankview.rankinfolist.rankinfo");
         if (i != 0) {
-          break label684;
+          break label702;
         }
       }
-      label684:
+      label702:
       for (paramString3 = "";; paramString3 = Integer.valueOf(i))
       {
-        int j = bk.getInt((String)paramString4.get(paramString3 + ".score.scoredisplay"), 0);
+        int j = bo.getInt((String)paramString4.get(paramString3 + ".score.scoredisplay"), 0);
         paramString3 = new d();
         paramString3.field_appusername = paramString2;
         paramString3.field_rankID = paramString1;
         paramString3.field_username = paramList;
-        paramString3.field_ranknum = bk.getInt((String)localObject2, 0);
+        paramString3.field_ranknum = bo.getInt((String)localObject2, 0);
         paramString3.field_score = j;
         paramString3.field_selfLikeState = 2;
         paramString3.field_likecount = 0;
@@ -136,86 +140,92 @@ public final class a
         i += 1;
         break;
         paramString3 = Integer.valueOf(i);
-        break label524;
+        break label542;
       }
     }
-    label693:
+    label711:
+    AppMethodBeat.o(19430);
     return null;
   }
   
-  public static void a(String paramString1, String paramString2, Map<String, String> paramMap)
+  public static void d(String paramString1, String paramString2, Map<String, String> paramMap)
   {
     int k = 0;
-    y.d("MicroMsg.ExdeviceMsgXmlParser", "ap: only nickname: %s", new Object[] { paramString1 });
-    if (bk.bl(paramString1)) {
-      y.e("MicroMsg.ExdeviceMsgXmlParser", "rank info is null or nil");
-    }
-    do
+    AppMethodBeat.i(19431);
+    ab.d("MicroMsg.ExdeviceMsgXmlParser", "ap: only nickname: %s", new Object[] { paramString1 });
+    if (bo.isNullOrNil(paramString1))
     {
-      do
+      ab.e("MicroMsg.ExdeviceMsgXmlParser", "rank info is null or nil");
+      AppMethodBeat.o(19431);
+      return;
+    }
+    paramString1 = j.b.ab(paramString1, paramString2);
+    if (paramString1 != null)
+    {
+      paramString2 = paramString1.fgu;
+      if ((paramString2 != null) && (!paramString2.isEmpty()))
       {
-        return;
-        paramString1 = g.a.M(paramString1, paramString2);
-      } while (paramString1 == null);
-      paramString2 = paramString1.dQt;
-    } while ((paramString2 == null) || (paramString2.isEmpty()));
-    int i = 0;
-    Object localObject = new StringBuilder(".msg.appmsg.hardwareinfo.follows.follow");
-    label81:
-    int j;
-    StringBuilder localStringBuilder;
-    if (i == 0)
-    {
-      paramString1 = "";
-      localObject = (String)paramString2.get(paramString1 + ".username");
-      j = k;
-      if (bk.bl((String)localObject)) {
-        break label191;
-      }
-      localStringBuilder = new StringBuilder(".msg.appmsg.hardwareinfo.follows.follow");
-      if (i != 0) {
-        break label183;
+        int i = 0;
+        Object localObject = new StringBuilder(".msg.appmsg.hardwareinfo.follows.follow");
+        label93:
+        int j;
+        StringBuilder localStringBuilder;
+        if (i == 0)
+        {
+          paramString1 = "";
+          localObject = (String)paramString2.get(paramString1 + ".username");
+          j = k;
+          if (bo.isNullOrNil((String)localObject)) {
+            break label203;
+          }
+          localStringBuilder = new StringBuilder(".msg.appmsg.hardwareinfo.follows.follow");
+          if (i != 0) {
+            break label195;
+          }
+        }
+        label195:
+        for (paramString1 = "";; paramString1 = Integer.valueOf(i))
+        {
+          paramMap.put(localObject, (String)paramString2.get(paramString1 + ".nickname"));
+          i += 1;
+          break;
+          paramString1 = Integer.valueOf(i);
+          break label93;
+        }
+        label203:
+        localObject = new StringBuilder(".msg.appmsg.hardwareinfo.rankview.rankinfolist.rankinfo");
+        if (j == 0)
+        {
+          paramString1 = "";
+          label222:
+          localObject = (String)paramString2.get(paramString1 + ".username");
+          localStringBuilder = new StringBuilder(".msg.appmsg.hardwareinfo.rankview.rankinfolist.rankinfo");
+          if (j != 0) {
+            break label326;
+          }
+        }
+        label326:
+        for (paramString1 = "";; paramString1 = Integer.valueOf(j))
+        {
+          paramString1 = (String)paramString2.get(paramString1 + ".nickname");
+          if (bo.isNullOrNil((String)localObject)) {
+            break label335;
+          }
+          paramMap.put(localObject, paramString1);
+          j += 1;
+          break;
+          paramString1 = Integer.valueOf(j);
+          break label222;
+        }
       }
     }
-    label183:
-    for (paramString1 = "";; paramString1 = Integer.valueOf(i))
-    {
-      paramMap.put(localObject, (String)paramString2.get(paramString1 + ".nickname"));
-      i += 1;
-      break;
-      paramString1 = Integer.valueOf(i);
-      break label81;
-    }
-    label191:
-    localObject = new StringBuilder(".msg.appmsg.hardwareinfo.rankview.rankinfolist.rankinfo");
-    if (j == 0)
-    {
-      paramString1 = "";
-      label210:
-      localObject = (String)paramString2.get(paramString1 + ".username");
-      localStringBuilder = new StringBuilder(".msg.appmsg.hardwareinfo.rankview.rankinfolist.rankinfo");
-      if (j != 0) {
-        break label314;
-      }
-    }
-    label314:
-    for (paramString1 = "";; paramString1 = Integer.valueOf(j))
-    {
-      paramString1 = (String)paramString2.get(paramString1 + ".nickname");
-      if (bk.bl((String)localObject)) {
-        break;
-      }
-      paramMap.put(localObject, paramString1);
-      j += 1;
-      break label191;
-      paramString1 = Integer.valueOf(j);
-      break label210;
-    }
+    label335:
+    AppMethodBeat.o(19431);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.f.a.a
  * JD-Core Version:    0.7.0.1
  */

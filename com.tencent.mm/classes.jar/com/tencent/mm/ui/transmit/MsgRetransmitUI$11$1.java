@@ -1,10 +1,11 @@
 package com.tencent.mm.ui.transmit;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t.a;
 import com.tencent.mm.modelvideo.t.a.a;
 import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,25 +17,27 @@ final class MsgRetransmitUI$11$1
   
   public final void a(t.a.a parama)
   {
-    parama = u.oe(parama.fileName);
+    AppMethodBeat.i(35073);
+    parama = u.vr(parama.fileName);
     if ((parama != null) && (parama.status == 199))
     {
       parama = new MsgRetransmitUI.b((byte)0);
-      parama.wgX = new LinkedList();
-      parama.wgX.addAll(this.wgI.wgG.wgg);
-      Iterator localIterator = this.wgI.wgG.wgg.iterator();
+      parama.AzO = new LinkedList();
+      parama.AzO.addAll(this.Azz.Azx.AyX);
+      Iterator localIterator = this.Azz.Azx.AyX.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        y.i("MicroMsg.MsgRetransmitUI", "copy video after download %s", new Object[] { str });
-        MsgRetransmitUI.a(this.wgI.wgG, parama, str);
+        ab.i("MicroMsg.MsgRetransmitUI", "copy video after download %s", new Object[] { str });
+        MsgRetransmitUI.a(this.Azz.Azx, parama, str);
       }
     }
+    AppMethodBeat.o(35073);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.MsgRetransmitUI.11.1
  * JD-Core Version:    0.7.0.1
  */

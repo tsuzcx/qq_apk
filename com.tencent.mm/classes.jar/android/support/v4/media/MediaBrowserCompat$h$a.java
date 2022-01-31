@@ -12,21 +12,21 @@ final class MediaBrowserCompat$h$a
   
   private void e(Runnable paramRunnable)
   {
-    if (Thread.currentThread() == this.AV.AL.getLooper().getThread())
+    if (Thread.currentThread() == this.BH.Bx.getLooper().getThread())
     {
       paramRunnable.run();
       return;
     }
-    this.AV.AL.post(paramRunnable);
+    this.BH.Bx.post(paramRunnable);
   }
   
-  final boolean L(String paramString)
+  final boolean M(String paramString)
   {
     boolean bool = true;
-    if ((this.AV.AT != this) || (this.AV.mState == 0) || (this.AV.mState == 1))
+    if ((this.BH.BF != this) || (this.BH.mState == 0) || (this.BH.mState == 1))
     {
-      if ((this.AV.mState != 0) && (this.AV.mState != 1)) {
-        new StringBuilder().append(paramString).append(" for ").append(this.AV.AR).append(" with mServiceConnection=").append(this.AV.AT).append(" this=").append(this);
+      if ((this.BH.mState != 0) && (this.BH.mState != 1)) {
+        new StringBuilder().append(paramString).append(" for ").append(this.BH.BD).append(" with mServiceConnection=").append(this.BH.BF).append(" this=").append(this);
       }
       bool = false;
     }

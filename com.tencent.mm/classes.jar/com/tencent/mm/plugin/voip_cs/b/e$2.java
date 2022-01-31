@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.voip_cs.b;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.voip_cs.b.c.b;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class e$2
-  implements am.a
+  implements ap.a
 {
   e$2(e parame) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    y.v("MicroMsg.voipcs.VoipCSService", "voipcs heart beat");
-    Object localObject = this.qeh;
-    g.Dk().a(795, (f)localObject);
-    localObject = new b(c.bSO().qeL.pUA, c.bSO().qeL.lpE);
-    g.Dk().a((m)localObject, 0);
+    AppMethodBeat.i(135305);
+    ab.v("MicroMsg.voipcs.VoipCSService", "voipcs heart beat");
+    Object localObject = this.tKU;
+    g.Rc().a(795, (f)localObject);
+    localObject = new b(c.cQm().tLy.tAb, c.cQm().tLy.nNa);
+    g.Rc().a((m)localObject, 0);
+    AppMethodBeat.o(135305);
     return true;
   }
 }

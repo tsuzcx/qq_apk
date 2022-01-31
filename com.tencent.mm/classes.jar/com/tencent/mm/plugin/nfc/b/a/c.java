@@ -2,97 +2,113 @@ package com.tencent.mm.plugin.nfc.b.a;
 
 import android.nfc.Tag;
 import android.nfc.tech.NfcA;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.nfc.a.a;
 import com.tencent.mm.plugin.nfc.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c
   implements d
 {
-  private NfcA mGo;
+  private NfcA pgu;
   
   public c(Tag paramTag)
   {
-    this.mGo = NfcA.get(paramTag);
+    AppMethodBeat.i(23044);
+    this.pgu = NfcA.get(paramTag);
+    AppMethodBeat.o(23044);
   }
   
   public final com.tencent.mm.plugin.nfc.a.c a(a parama)
   {
-    if (this.mGo == null)
+    AppMethodBeat.i(23045);
+    if (this.pgu == null)
     {
-      y.e("MicroMsg.ApduEngineNfcA", "[NFC]NfcA is null");
-      throw new IllegalStateException("NfcA is null");
+      ab.e("MicroMsg.ApduEngineNfcA", "[NFC]NfcA is null");
+      parama = new IllegalStateException("NfcA is null");
+      AppMethodBeat.o(23045);
+      throw parama;
     }
     connect();
     Object localObject = null;
     a locala = parama;
     parama = (a)localObject;
-    com.tencent.mm.plugin.nfc.a.c localc;
+    com.tencent.mm.plugin.nfc.a.c localc = new com.tencent.mm.plugin.nfc.a.c(this.pgu.transceive(locala.getBytes()));
+    localObject = parama;
+    if (localc.pgd.length != 0)
+    {
+      if (localc.pgd.length - 2 >= 0) {
+        break label100;
+      }
+      localObject = localc;
+    }
     for (;;)
     {
-      localc = new com.tencent.mm.plugin.nfc.a.c(this.mGo.transceive(locala.getBytes()));
-      localObject = parama;
-      if (localc.mFX.length != 0)
+      label92:
+      AppMethodBeat.o(23045);
+      return localObject;
+      label100:
+      if (localc.bWV() == 108)
       {
-        if (localc.mFX.length - 2 < 0) {
-          localObject = localc;
-        }
-      }
-      else {
-        label78:
-        return localObject;
-      }
-      if (localc.bow() != 108) {
+        locala.AI(localc.bWW());
         break;
       }
-      locala.vk(localc.box());
-    }
-    if (parama == null) {
-      parama = localc;
-    }
-    for (;;)
-    {
+      if (parama == null) {
+        parama = localc;
+      }
+      for (;;)
+      {
+        localObject = parama;
+        if (localc.bWV() != 97) {
+          break label92;
+        }
+        if (localc.bWW() == 0) {
+          break label174;
+        }
+        locala = new a((byte[])b.pgl.clone());
+        break;
+        parama.a(localc);
+      }
+      label174:
+      parama.pgd[(parama.pgd.length - 1)] = -112;
       localObject = parama;
-      if (localc.bow() != 97) {
-        break label78;
-      }
-      if (localc.box() == 0) {
-        break label154;
-      }
-      locala = new a((byte[])b.mGf.clone());
-      break;
-      parama.a(localc);
     }
-    label154:
-    parama.mFX[(parama.mFX.length - 1)] = -112;
-    return parama;
   }
   
-  public final boolean boz()
+  public final boolean bWZ()
   {
+    AppMethodBeat.i(23049);
     close();
     connect();
+    AppMethodBeat.o(23049);
     return true;
   }
   
   public final void close()
   {
-    if (this.mGo.isConnected()) {
-      this.mGo.close();
+    AppMethodBeat.i(23047);
+    if (this.pgu.isConnected()) {
+      this.pgu.close();
     }
+    AppMethodBeat.o(23047);
   }
   
   public final boolean connect()
   {
-    if (!this.mGo.isConnected()) {
-      this.mGo.connect();
+    AppMethodBeat.i(23046);
+    if (!this.pgu.isConnected()) {
+      this.pgu.connect();
     }
+    AppMethodBeat.o(23046);
     return true;
   }
   
   public final boolean isConnected()
   {
-    return this.mGo.isConnected();
+    AppMethodBeat.i(23048);
+    boolean bool = this.pgu.isConnected();
+    AppMethodBeat.o(23048);
+    return bool;
   }
 }
 

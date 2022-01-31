@@ -9,7 +9,8 @@ import android.os.Looper;
 import android.os.ParcelFileDescriptor;
 import android.os.ResultReceiver;
 import com.google.android.gms.common.annotation.KeepName;
-import com.google.android.gms.common.internal.zzc;
+import com.google.android.gms.common.internal.Asserts;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 
@@ -18,40 +19,50 @@ final class ImageManager$ImageReceiver
   extends ResultReceiver
 {
   private final Uri mUri;
-  private final ArrayList<zza> zzaEp;
+  private final ArrayList<ImageRequest> zzpf;
   
   ImageManager$ImageReceiver(ImageManager paramImageManager, Uri paramUri)
   {
     super(new Handler(Looper.getMainLooper()));
+    AppMethodBeat.i(61203);
     this.mUri = paramUri;
-    this.zzaEp = new ArrayList();
+    this.zzpf = new ArrayList();
+    AppMethodBeat.o(61203);
   }
   
   public final void onReceiveResult(int paramInt, Bundle paramBundle)
   {
+    AppMethodBeat.i(61207);
     paramBundle = (ParcelFileDescriptor)paramBundle.getParcelable("com.google.android.gms.extra.fileDescriptor");
-    ImageManager.zzf(this.zzaEq).execute(new ImageManager.zzb(this.zzaEq, this.mUri, paramBundle));
+    ImageManager.zzf(this.zzpg).execute(new ImageManager.zzb(this.zzpg, this.mUri, paramBundle));
+    AppMethodBeat.o(61207);
   }
   
-  public final void zzb(zza paramzza)
+  public final void zza(ImageRequest paramImageRequest)
   {
-    zzc.zzdj("ImageReceiver.addImageRequest() must be called in the main thread");
-    this.zzaEp.add(paramzza);
+    AppMethodBeat.i(61204);
+    Asserts.checkMainThread("ImageReceiver.addImageRequest() must be called in the main thread");
+    this.zzpf.add(paramImageRequest);
+    AppMethodBeat.o(61204);
   }
   
-  public final void zzc(zza paramzza)
+  public final void zzb(ImageRequest paramImageRequest)
   {
-    zzc.zzdj("ImageReceiver.removeImageRequest() must be called in the main thread");
-    this.zzaEp.remove(paramzza);
+    AppMethodBeat.i(61205);
+    Asserts.checkMainThread("ImageReceiver.removeImageRequest() must be called in the main thread");
+    this.zzpf.remove(paramImageRequest);
+    AppMethodBeat.o(61205);
   }
   
-  public final void zzxr()
+  public final void zzco()
   {
+    AppMethodBeat.i(61206);
     Intent localIntent = new Intent("com.google.android.gms.common.images.LOAD_IMAGE");
     localIntent.putExtra("com.google.android.gms.extras.uri", this.mUri);
     localIntent.putExtra("com.google.android.gms.extras.resultReceiver", this);
     localIntent.putExtra("com.google.android.gms.extras.priority", 3);
-    ImageManager.zzb(this.zzaEq).sendBroadcast(localIntent);
+    ImageManager.zzb(this.zzpg).sendBroadcast(localIntent);
+    AppMethodBeat.o(61206);
   }
 }
 

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class g$4
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class g$4
   
   public final void run()
   {
-    g.a(this.pBx, this.hPw - 1);
+    AppMethodBeat.i(25808);
+    g.a(this.tdh, this.jIY - 1);
+    AppMethodBeat.o(25808);
   }
 }
 

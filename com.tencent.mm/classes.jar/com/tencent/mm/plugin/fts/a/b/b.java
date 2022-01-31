@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fts.a.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,32 +10,45 @@ import java.util.Queue;
 
 public final class b
 {
-  public c kxA = new c(' ');
-  private HashSet<String> kxz = new HashSet();
+  private HashSet<String> mTo;
+  public c mTp;
   
-  public final void DY(String paramString)
+  public b()
   {
-    if (!this.kxz.add(paramString)) {
+    AppMethodBeat.i(114284);
+    this.mTp = new c(' ');
+    this.mTo = new HashSet();
+    AppMethodBeat.o(114284);
+  }
+  
+  public final void Pi(String paramString)
+  {
+    AppMethodBeat.i(114285);
+    if (!this.mTo.add(paramString))
+    {
+      AppMethodBeat.o(114285);
       return;
     }
-    c localc = this.kxA;
+    c localc = this.mTp;
     char[] arrayOfChar = paramString.toLowerCase().toCharArray();
     int i = 0;
     paramString = localc;
     while (i < arrayOfChar.length)
     {
       int j = arrayOfChar[i] - 'a';
-      if (paramString.kxB[j] == null) {
-        paramString.kxB[j] = new c(arrayOfChar[i]);
+      if (paramString.mTq[j] == null) {
+        paramString.mTq[j] = new c(arrayOfChar[i]);
       }
-      paramString = paramString.kxB[j];
+      paramString = paramString.mTq[j];
       i += 1;
     }
-    paramString.kxy = true;
+    paramString.mTn = true;
+    AppMethodBeat.o(114285);
   }
   
-  public final List<List<String>> DZ(String paramString)
+  public final List<List<String>> Pj(String paramString)
   {
+    AppMethodBeat.i(114286);
     ArrayDeque localArrayDeque = new ArrayDeque();
     localArrayDeque.offer(new a(0, 0, null));
     char[] arrayOfChar = paramString.toLowerCase().toCharArray();
@@ -46,33 +60,33 @@ public final class b
         break;
       }
       int i = locala.end;
-      Object localObject1 = this.kxA;
+      Object localObject1 = this.mTp;
       Object localObject2;
       while (i < arrayOfChar.length)
       {
         int j = arrayOfChar[i] - 'a';
-        if (localObject1.kxB[j] == null) {
+        if (localObject1.mTq[j] == null) {
           break;
         }
-        localObject1 = localObject1.kxB[j];
-        if ((((c)localObject1).kxy) || (i == arrayOfChar.length - 1))
+        localObject1 = localObject1.mTq[j];
+        if ((((c)localObject1).mTn) || (i == arrayOfChar.length - 1))
         {
-          if (locala.aPf == null) {
-            locala.aPf = new ArrayList();
+          if (locala.aWy == null) {
+            locala.aWy = new ArrayList();
           }
           localObject2 = new a(locala.end, i + 1, locala);
-          locala.aPf.add(localObject2);
+          locala.aWy.add(localObject2);
           if (((a)localObject2).end == arrayOfChar.length) {
-            ((a)localObject2).kxy = true;
+            ((a)localObject2).mTn = true;
           }
           localArrayDeque.offer(localObject2);
         }
         i += 1;
       }
-      if (locala.kxy)
+      if (locala.mTn)
       {
         localObject2 = new ArrayList();
-        for (localObject1 = locala; localObject1 != null; localObject1 = ((a)localObject1).kxx) {
+        for (localObject1 = locala; localObject1 != null; localObject1 = ((a)localObject1).mTm) {
           if (((a)localObject1).end > ((a)localObject1).start) {
             ((List)localObject2).add(paramString.substring(((a)localObject1).start, ((a)localObject1).end));
           }
@@ -81,12 +95,13 @@ public final class b
         localArrayList.add(localObject2);
       }
     }
+    AppMethodBeat.o(114286);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.b.b
  * JD-Core Version:    0.7.0.1
  */

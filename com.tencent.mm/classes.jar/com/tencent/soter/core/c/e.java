@@ -1,24 +1,32 @@
 package com.tencent.soter.core.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class e
 {
-  private static volatile e wOS = null;
-  public String wOT = b.wOQ;
+  private static volatile e Bmq = null;
+  public String Bmr = b.Bmo;
   
-  public static e cPq()
+  public static e dVl()
   {
-    if (wOS == null) {
+    AppMethodBeat.i(73032);
+    if (Bmq == null) {
       try
       {
-        if (wOS == null) {
-          wOS = new e();
+        if (Bmq == null) {
+          Bmq = new e();
         }
-        e locale = wOS;
-        return locale;
+        e locale1 = Bmq;
+        return locale1;
       }
-      finally {}
+      finally
+      {
+        AppMethodBeat.o(73032);
+      }
     }
-    return wOS;
+    e locale2 = Bmq;
+    AppMethodBeat.o(73032);
+    return locale2;
   }
 }
 

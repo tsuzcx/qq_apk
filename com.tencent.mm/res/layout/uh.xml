@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/bbq" android:layout_width="0.0dip" android:layout_height="0.0dip" />
-    <View android:id="@id/bbr" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="43.0dip" />
-    <RelativeLayout android:id="@id/bbs" android:background="@color/kw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/bbr">
-        <com.tencent.mm.plugin.sport.ui.SportChartView android:id="@id/bbt" android:background="@drawable/kj" android:layout_width="fill_parent" android:layout_height="210.0dip" android:layout_marginLeft="@dimen/mq" android:layout_marginTop="60.5dip" android:layout_marginRight="@dimen/mq" />
-        <View android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_below="@id/bbt" />
-        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/bbu" android:visibility="gone" android:layout_width="@dimen/n5" android:layout_height="@dimen/n2" android:layout_marginLeft="16.0dip" android:layout_marginTop="68.5dip" app:on_color="#ff089f71" app:off_color="#ff089f71" app:slide_color="#ff76fef3" app:on_text="月" app:off_text="周" />
-    </RelativeLayout>
-    <ImageView android:id="@id/bbv" android:layout_width="@dimen/gl" android:layout_height="@dimen/gl" android:src="@drawable/ke" android:layout_below="@id/bbq" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/bbw" android:layout_width="@dimen/gn" android:layout_height="@dimen/gn" android:src="@drawable/a_2" android:layout_alignBottom="@id/bbv" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:gravity="center" android:id="@id/bbx" android:visibility="gone" android:layout_marginTop="@dimen/mq" android:layout_below="@id/bbw" android:layout_alignLeft="@id/bbs" android:layout_alignRight="@id/bbs" style="@style/lo" />
+<RelativeLayout android:layout_width="@dimen/a0o" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/emoji_capture_sticker_bg" android:layout_width="@dimen/a0o" android:layout_height="@dimen/a0o" />
+    <ImageView android:id="@id/bga" android:padding="16.0dip" android:layout_width="@dimen/a0o" android:layout_height="@dimen/a0o" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/na" android:textColor="?fs" android:gravity="center_horizontal" android:id="@id/bgb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bah" android:maxLines="2" android:layout_below="@id/bga" android:layout_centerHorizontal="true" />
 </RelativeLayout>

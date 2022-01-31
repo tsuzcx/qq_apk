@@ -1,64 +1,44 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.network.k;
-import com.tencent.mm.wallet_core.tenpay.model.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class e
-  extends j
-  implements k
+  extends m
 {
-  public JSONObject qop;
-  
-  public e(boolean paramBoolean, String paramString1, String paramString2)
+  public e(String paramString)
   {
+    AppMethodBeat.i(46170);
     HashMap localHashMap = new HashMap();
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.NetSceneTenpayQueryBasicSecurityInfo", "cpuId: %s, uid: %s", new Object[] { paramString1, paramString2 });
-    localHashMap.put("is_root", "0");
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("is_device_open_touch", str);
-      localHashMap.put("cpu_id", paramString1);
-      localHashMap.put("app_uid", paramString2);
-      D(localHashMap);
-      return;
-    }
+    localHashMap.put("passwd", paramString);
+    setRequestData(localHashMap);
+    AppMethodBeat.o(46170);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
-    return 1669;
+    return 1321;
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
-  {
-    this.dmL = paramf;
-    return super.a(parame, paramf);
-  }
-  
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.NetSceneTenpayQueryBasicSecurityInfo", "alvinluo errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    if ((paramInt == 0) && (paramJSONObject != null))
-    {
-      com.tencent.mm.sdk.platformtools.y.v("MicroMsg.NetSceneTenpayQueryBasicSecurityInfo", "alvinluo json: %s", new Object[] { paramJSONObject.toString() });
-      this.qop = paramJSONObject;
-      com.tencent.mm.wallet_core.c.y.cMH().aC(this.qop);
-    }
-  }
-  
-  public final int aEC()
+  public final int getTenpayCgicmd()
   {
     return 0;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/paysecurity";
+    return "/cgi-bin/mmpay-bin/tenpay/closewalletlock";
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(46171);
+    ab.i("MicroMsg.NetSceneCloseWalletLock", "alvinluo close wallet lock errCode: %d, errMsg: %s, json: %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
+    AppMethodBeat.o(46171);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.eclipsesource.v8.utils.typedarrays;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ShortBuffer;
 
@@ -9,6 +10,8 @@ public class Int16Array
   public Int16Array(ArrayBuffer paramArrayBuffer)
   {
     this(paramArrayBuffer.getByteBuffer());
+    AppMethodBeat.i(75056);
+    AppMethodBeat.o(75056);
   }
   
   public Int16Array(ByteBuffer paramByteBuffer)
@@ -18,7 +21,10 @@ public class Int16Array
   
   public short get(int paramInt)
   {
-    return this.buffer.asShortBuffer().get(paramInt);
+    AppMethodBeat.i(75057);
+    short s = this.buffer.asShortBuffer().get(paramInt);
+    AppMethodBeat.o(75057);
+    return s;
   }
   
   public int getType()
@@ -28,17 +34,22 @@ public class Int16Array
   
   public int length()
   {
-    return this.buffer.asShortBuffer().limit();
+    AppMethodBeat.i(75058);
+    int i = this.buffer.asShortBuffer().limit();
+    AppMethodBeat.o(75058);
+    return i;
   }
   
   public void put(int paramInt, short paramShort)
   {
+    AppMethodBeat.i(75059);
     this.buffer.asShortBuffer().put(paramInt, paramShort);
+    AppMethodBeat.o(75059);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.eclipsesource.v8.utils.typedarrays.Int16Array
  * JD-Core Version:    0.7.0.1
  */

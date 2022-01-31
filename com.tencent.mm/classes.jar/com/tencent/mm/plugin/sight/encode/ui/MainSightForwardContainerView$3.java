@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sight.encode.ui;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class MainSightForwardContainerView$3
   implements Runnable
@@ -11,19 +12,21 @@ public final class MainSightForwardContainerView$3
   
   public final void run()
   {
-    MainSightSelectContactView localMainSightSelectContactView = MainSightForwardContainerView.a(this.ohP);
-    localMainSightSelectContactView.ohF = false;
-    localMainSightSelectContactView.Nn.clearAnimation();
-    localMainSightSelectContactView.Nn.clearFocus();
-    localMainSightSelectContactView.Nn.setAdapter(localMainSightSelectContactView.oim);
-    localMainSightSelectContactView.E(false, true);
+    AppMethodBeat.i(25036);
+    MainSightSelectContactView localMainSightSelectContactView = MainSightForwardContainerView.a(this.qWc);
+    localMainSightSelectContactView.qVT = false;
+    localMainSightSelectContactView.mListView.clearAnimation();
+    localMainSightSelectContactView.mListView.clearFocus();
+    localMainSightSelectContactView.mListView.setAdapter(localMainSightSelectContactView.qWz);
+    localMainSightSelectContactView.I(false, true);
     localMainSightSelectContactView.setVisibility(0);
-    if (localMainSightSelectContactView.oil == null)
+    if (localMainSightSelectContactView.qWy == null)
     {
-      localMainSightSelectContactView.oil = new TranslateAnimation(0.0F, 0.0F, localMainSightSelectContactView.oij, 0.0F);
-      localMainSightSelectContactView.oil.setDuration(300L);
+      localMainSightSelectContactView.qWy = new TranslateAnimation(0.0F, 0.0F, localMainSightSelectContactView.qWw, 0.0F);
+      localMainSightSelectContactView.qWy.setDuration(300L);
     }
-    localMainSightSelectContactView.Nn.startAnimation(localMainSightSelectContactView.oil);
+    localMainSightSelectContactView.mListView.startAnimation(localMainSightSelectContactView.qWy);
+    AppMethodBeat.o(25036);
   }
 }
 

@@ -1,82 +1,60 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class ae
 {
-  public int qza = 0;
-  
-  public ae()
+  public static List<Bankcard> cTX()
   {
-    g.DQ();
-    this.qza = ((Integer)g.DP().Dz().get(196660, Integer.valueOf(0))).intValue();
-    y.i("MicroMsg.WalletSwitchConfig", "WalletSwitchConfig2 " + this.qza);
+    AppMethodBeat.i(156739);
+    ArrayList localArrayList = nG(false);
+    AppMethodBeat.o(156739);
+    return localArrayList;
   }
   
-  public ae(int paramInt)
+  public static ArrayList<Bankcard> nG(boolean paramBoolean)
   {
-    g.DQ();
-    g.DP().Dz().o(196660, Integer.valueOf(paramInt));
-    this.qza = paramInt;
-    y.i("MicroMsg.WalletSwitchConfig", "WalletSwitchConfig1 " + paramInt);
-  }
-  
-  public final boolean bVF()
-  {
-    if ((this.qza & 0x2) > 0) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(46914);
+    ab.i("MicroMsg.WalletPayOrderMgr", "sort bankcard isPos: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {}
+    for (ArrayList localArrayList1 = t.cTN().cUI();; localArrayList1 = t.cTN().nH(true))
     {
-      y.i("MicroMsg.WalletSwitchConfig", "isMicroPayOn, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.qza) });
-      return bool;
+      localObject1 = t.cTN().cUG();
+      if (localObject1 != null) {
+        break;
+      }
+      ab.w("MicroMsg.WalletPayOrderMgr", "empty bankinfo list");
+      AppMethodBeat.o(46914);
+      return localArrayList1;
     }
-  }
-  
-  public final boolean bVG()
-  {
-    if ((this.qza & 0x80) > 0) {}
-    for (boolean bool = true;; bool = false)
+    ArrayList localArrayList2 = new ArrayList();
+    Object localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      y.i("MicroMsg.WalletSwitchConfig", "isSupportScanBankCard, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.qza) });
-      return bool;
+      Object localObject2 = (e)((Iterator)localObject1).next();
+      localObject2 = t.cTN().i(((e)localObject2).por, true, true);
+      if (localObject2 != null)
+      {
+        localArrayList2.add(localObject2);
+        localArrayList1.remove(localObject2);
+      }
     }
-  }
-  
-  public final boolean bVH()
-  {
-    if ((this.qza & 0x100) > 0) {}
-    for (boolean bool = true;; bool = false)
+    if (!localArrayList1.isEmpty())
     {
-      y.i("MicroMsg.WalletSwitchConfig", "isSupportTouchPay, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.qza) });
-      return bool;
+      ab.w("MicroMsg.WalletPayOrderMgr", "has unsort bankcard");
+      localArrayList2.addAll(localArrayList1);
     }
-  }
-  
-  public final boolean bVI()
-  {
-    if ((this.qza & 0x800) > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      y.i("MicroMsg.WalletSwitchConfig", "isSupporSwitchWalletCurrency, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.qza) });
-      return bool;
-    }
-  }
-  
-  public final boolean bVJ()
-  {
-    if ((this.qza & 0x200000) > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      y.i("MicroMsg.WalletSwitchConfig", "isShowProtocol, ret = %s switchBit %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.qza) });
-      return bool;
-    }
+    AppMethodBeat.o(46914);
+    return localArrayList2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ae
  * JD-Core Version:    0.7.0.1
  */

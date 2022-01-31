@@ -1,13 +1,18 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.au.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.account.friend.ui.RecommendFriendUI;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -17,15 +22,53 @@ import com.tencent.mm.ui.base.preference.f;
 public class InviteRecommendChoiceUI
   extends MMPreference
 {
-  private f dnn;
+  private f screen;
   
-  protected final boolean XI()
+  public boolean autoRefresh()
   {
     return false;
   }
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
   {
+    return 2131165245;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(124904);
+    setMMTitle(2131303107);
+    this.screen = getPreferenceScreen();
+    IconPreference localIconPreference = (IconPreference)this.screen.atx("settings_invite_facebook_friends");
+    b.aif();
+    this.screen.d(localIconPreference);
+    localIconPreference = (IconPreference)this.screen.atx("settings_invite_qq_friends");
+    if (r.Zm() == 0) {
+      this.screen.d(localIconPreference);
+    }
+    localIconPreference = (IconPreference)this.screen.atx("settings_recommend_by_mail");
+    if (r.Zm() == 0) {
+      this.screen.d(localIconPreference);
+    }
+    localIconPreference = (IconPreference)this.screen.atx("settings_recommend_by_mb");
+    if (((j)g.E(j.class)).YI().TL("@t.qq.com") == null) {
+      this.screen.d(localIconPreference);
+    }
+    setBackBtn(new InviteRecommendChoiceUI.1(this));
+    AppMethodBeat.o(124904);
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(124902);
+    super.onCreate(paramBundle);
+    initView();
+    AppMethodBeat.o(124902);
+  }
+  
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  {
+    AppMethodBeat.i(124903);
     paramf = paramPreference.mKey;
     if (paramf.equals("settings_invite_qq_friends"))
     {
@@ -33,71 +76,44 @@ public class InviteRecommendChoiceUI
       paramf.putExtra("recommend_type", Integer.toString(0));
       startActivity(paramf);
     }
-    do
+    for (;;)
     {
+      AppMethodBeat.o(124903);
       return false;
       if (paramf.equals("settings_recommend_by_mail"))
       {
         paramf = new Intent(this, RecommendFriendUI.class);
         paramf.putExtra("recommend_type", Integer.toString(2));
         startActivity(paramf);
-        return false;
       }
-      if (paramf.equals("settings_recommend_by_mb"))
+      else if (paramf.equals("settings_recommend_by_mb"))
       {
         paramf = new Intent(this, RecommendFriendUI.class);
         paramf.putExtra("recommend_type", Integer.toString(1));
         startActivity(paramf);
-        return false;
       }
-      if (paramf.equals("settings_invite_mobile_friends"))
+      else if (paramf.equals("settings_invite_mobile_friends"))
       {
         paramf = new Intent("android.intent.action.VIEW");
-        paramf.putExtra("sms_body", getString(q.j.invite_sms, new Object[] { g.DP().Dz().get(2, null) }));
+        paramf.putExtra("sms_body", getString(2131300772, new Object[] { g.RL().Ru().get(2, null) }));
         paramf.setType("vnd.android-dir/mms-sms");
-        if (bk.i(this, paramf))
-        {
+        if (bo.k(this, paramf)) {
           startActivity(paramf);
-          return false;
+        } else {
+          Toast.makeText(this, 2131303076, 1).show();
         }
-        Toast.makeText(this, q.j.selectsmsapp_none, 1).show();
-        return false;
       }
-    } while (!paramf.equals("settings_invite_facebook_friends"));
-    startActivity(new Intent(this, InviteFacebookFriendsUI.class));
-    return false;
+      else if (paramf.equals("settings_invite_facebook_friends"))
+      {
+        startActivity(new Intent(this, InviteFacebookFriendsUI.class));
+      }
+    }
   }
   
-  protected final void initView()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    setMMTitle(q.j.send_card_to_microblog);
-    this.dnn = this.vdd;
-    IconPreference localIconPreference = (IconPreference)this.dnn.add("settings_invite_facebook_friends");
-    this.dnn.c(localIconPreference);
-    localIconPreference = (IconPreference)this.dnn.add("settings_invite_qq_friends");
-    if (q.Gi() == 0) {
-      this.dnn.c(localIconPreference);
-    }
-    localIconPreference = (IconPreference)this.dnn.add("settings_recommend_by_mail");
-    if (q.Gi() == 0) {
-      this.dnn.c(localIconPreference);
-    }
-    localIconPreference = (IconPreference)this.dnn.add("settings_recommend_by_mb");
-    if (((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).FE().Ic("@t.qq.com") == null) {
-      this.dnn.c(localIconPreference);
-    }
-    setBackBtn(new InviteRecommendChoiceUI.1(this));
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    initView();
-  }
-  
-  public final int xj()
-  {
-    return q.k.invite_recommend_friend;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

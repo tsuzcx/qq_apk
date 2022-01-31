@@ -1,24 +1,32 @@
 package com.tencent.mm.model;
 
+import com.tencent.mm.sdk.e.d;
+import com.tencent.mm.sdk.e.g;
+import com.tencent.mm.storage.u;
+import java.util.List;
+
 public abstract interface ag
+  extends d<u>, g
 {
-  public abstract void U(String paramString1, String paramString2);
+  public abstract String nE(String paramString);
   
-  public abstract void iA(String paramString);
+  public abstract u oU(String paramString);
   
-  public abstract void iB(String paramString);
+  public abstract u oV(String paramString);
   
-  public abstract void iu(String paramString);
+  public abstract String oW(String paramString);
   
-  public abstract void iv(String paramString);
+  public abstract String oX(String paramString);
   
-  public abstract void iw(String paramString);
+  public abstract List<String> oY(String paramString);
   
-  public abstract void ix(String paramString);
+  public abstract boolean oZ(String paramString);
   
-  public abstract void iy(String paramString);
+  public abstract boolean pa(String paramString);
   
-  public abstract void iz(String paramString);
+  public abstract int pb(String paramString);
+  
+  public abstract void u(String paramString, long paramLong);
 }
 
 

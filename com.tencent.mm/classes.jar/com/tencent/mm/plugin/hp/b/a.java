@@ -1,78 +1,98 @@
 package com.tencent.mm.plugin.hp.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 public final class a
 {
-  public static void cZ(int paramInt1, int paramInt2)
+  public static void ew(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(90548);
     switch (paramInt1)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(90548);
       return;
-    case 5: 
       switch (paramInt2)
       {
       default: 
+        AppMethodBeat.o(90548);
         return;
       case 0: 
-        h.nFQ.a(614L, 10L, 1L, false);
+        h.qsU.idkeyStat(614L, 10L, 1L, false);
+        AppMethodBeat.o(90548);
         return;
       case 1: 
-        h.nFQ.a(614L, 11L, 1L, false);
+        h.qsU.idkeyStat(614L, 11L, 1L, false);
+        AppMethodBeat.o(90548);
         return;
       case 2: 
-        h.nFQ.a(614L, 12L, 1L, false);
+        h.qsU.idkeyStat(614L, 12L, 1L, false);
+        AppMethodBeat.o(90548);
         return;
       case 3: 
-        h.nFQ.a(614L, 13L, 1L, false);
+        h.qsU.idkeyStat(614L, 13L, 1L, false);
+        AppMethodBeat.o(90548);
         return;
       case 4: 
-        h.nFQ.a(614L, 14L, 1L, false);
+        h.qsU.idkeyStat(614L, 14L, 1L, false);
+        AppMethodBeat.o(90548);
         return;
       case 5: 
-        h.nFQ.a(614L, 15L, 1L, false);
+        h.qsU.idkeyStat(614L, 15L, 1L, false);
+        AppMethodBeat.o(90548);
         return;
       case 6: 
-        h.nFQ.a(614L, 16L, 1L, false);
+        h.qsU.idkeyStat(614L, 16L, 1L, false);
+        AppMethodBeat.o(90548);
         return;
       case 7: 
-        h.nFQ.a(614L, 17L, 1L, false);
+        h.qsU.idkeyStat(614L, 17L, 1L, false);
+        AppMethodBeat.o(90548);
         return;
       }
-      h.nFQ.a(614L, 18L, 1L, false);
+      h.qsU.idkeyStat(614L, 18L, 1L, false);
+      AppMethodBeat.o(90548);
       return;
-    case 4: 
-      h.nFQ.a(614L, 20L, 1L, false);
+      h.qsU.idkeyStat(614L, 20L, 1L, false);
+      AppMethodBeat.o(90548);
       return;
-    case 1: 
-      h.nFQ.a(614L, 21L, 1L, false);
+      h.qsU.idkeyStat(614L, 21L, 1L, false);
+      AppMethodBeat.o(90548);
       return;
-    case 3: 
-      h.nFQ.a(614L, 22L, 1L, false);
+      h.qsU.idkeyStat(614L, 22L, 1L, false);
+      AppMethodBeat.o(90548);
       return;
+      h.qsU.idkeyStat(614L, 23L, 1L, false);
+      AppMethodBeat.o(90548);
+      return;
+      h.qsU.idkeyStat(614L, 28L, 1L, false);
     }
-    h.nFQ.a(614L, 23L, 1L, false);
   }
   
-  public static void su(int paramInt)
+  public static void xt(int paramInt)
   {
+    AppMethodBeat.i(90547);
     switch (paramInt)
     {
-    case 3: 
-    default: 
-      return;
-    case 1: 
-      h.nFQ.a(614L, 41L, 1L, false);
-      return;
-    case 4: 
-      h.nFQ.a(614L, 40L, 1L, false);
-      return;
-    case 2: 
-      h.nFQ.a(614L, 42L, 1L, false);
-      return;
     }
-    h.nFQ.a(614L, 43L, 1L, false);
+    for (;;)
+    {
+      AppMethodBeat.o(90547);
+      return;
+      h.qsU.idkeyStat(614L, 41L, 1L, false);
+      AppMethodBeat.o(90547);
+      return;
+      h.qsU.idkeyStat(614L, 40L, 1L, false);
+      AppMethodBeat.o(90547);
+      return;
+      h.qsU.idkeyStat(614L, 42L, 1L, false);
+      AppMethodBeat.o(90547);
+      return;
+      h.qsU.idkeyStat(614L, 43L, 1L, false);
+    }
   }
 }
 

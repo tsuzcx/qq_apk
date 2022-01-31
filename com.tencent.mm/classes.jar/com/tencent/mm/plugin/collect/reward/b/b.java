@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.collect.reward.b;
 
 public abstract interface b
 {
-  public static final Integer[] iIm = { Integer.valueOf(100), Integer.valueOf(500), Integer.valueOf(1000), Integer.valueOf(2000), Integer.valueOf(5000), Integer.valueOf(10000) };
+  public static final Integer[] kOR = { Integer.valueOf(100), Integer.valueOf(500), Integer.valueOf(1000), Integer.valueOf(2000), Integer.valueOf(5000), Integer.valueOf(10000) };
 }
 
 

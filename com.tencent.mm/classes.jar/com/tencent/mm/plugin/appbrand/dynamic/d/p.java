@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class p
 {
-  private static volatile com.tencent.mm.aa.c.d fVB;
-  private static volatile com.tencent.mm.aa.c.d fVC;
+  private static volatile com.tencent.mm.z.c.d hpd;
+  private static volatile com.tencent.mm.z.c.d hpe;
   
-  private static com.tencent.mm.aa.c.d afm()
+  private static com.tencent.mm.z.c.d azQ()
   {
-    if (fVB == null) {}
+    AppMethodBeat.i(10866);
+    if (hpd == null) {}
     try
     {
-      if (fVB == null)
+      if (hpd == null)
       {
-        com.tencent.mm.aa.c.d locald = new com.tencent.mm.aa.c.d();
+        locald = new com.tencent.mm.z.c.d();
         locald.a(new l(312));
         locald.a(new d(306));
         locald.a(new e(306));
@@ -22,21 +25,27 @@ public class p
         locald.a(new j(310));
         locald.a(new f(311));
         locald.a(new o());
-        fVB = locald;
+        hpd = locald;
       }
-      return fVB;
+      com.tencent.mm.z.c.d locald = hpd;
+      AppMethodBeat.o(10866);
+      return locald;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(10866);
+    }
   }
   
-  private static com.tencent.mm.aa.c.d afn()
+  private static com.tencent.mm.z.c.d azR()
   {
-    if (fVC == null) {}
+    AppMethodBeat.i(10867);
+    if (hpe == null) {}
     try
     {
-      if (fVC == null)
+      if (hpe == null)
       {
-        com.tencent.mm.aa.c.d locald = new com.tencent.mm.aa.c.d();
+        locald = new com.tencent.mm.z.c.d();
         locald.a(new l(289));
         locald.a(new d(266));
         locald.a(new e(266));
@@ -53,19 +62,30 @@ public class p
         locald.a(new h());
         locald.a(new g());
         locald.a(new a());
-        fVC = locald;
+        hpe = locald;
       }
-      return fVC;
+      com.tencent.mm.z.c.d locald = hpe;
+      AppMethodBeat.o(10867);
+      return locald;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(10867);
+    }
   }
   
-  public static com.tencent.mm.aa.c.d kI(int paramInt)
+  public static com.tencent.mm.z.c.d nG(int paramInt)
   {
-    if (paramInt == 1) {
-      return afn();
+    AppMethodBeat.i(10865);
+    if (paramInt == 1)
+    {
+      locald = azR();
+      AppMethodBeat.o(10865);
+      return locald;
     }
-    return afm();
+    com.tencent.mm.z.c.d locald = azQ();
+    AppMethodBeat.o(10865);
+    return locald;
   }
 }
 

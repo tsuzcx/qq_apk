@@ -5,19 +5,19 @@ import java.util.List;
 public abstract interface g$b
   extends b<g.a>
 {
-  public abstract void aRP();
+  public abstract void bP(List<d> paramList);
   
-  public abstract void bv(List<d> paramList);
+  public abstract void byi();
   
-  public abstract void ga(boolean paramBoolean);
+  public abstract void gf(boolean paramBoolean);
   
-  public abstract void k(boolean paramBoolean, int paramInt);
+  public abstract void s(boolean paramBoolean, int paramInt);
   
-  public abstract void re(int paramInt);
+  public abstract void wa(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.g.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ReadMailUI$8$1
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class ReadMailUI$8$1
   
   public final void run()
   {
-    ReadMailUI.c(this.njO.njK).buk();
-    ReadMailUI.d(this.njO.njK).buk();
+    AppMethodBeat.i(68427);
+    ReadMailUI.c(this.pPb.pOX).cew();
+    ReadMailUI.d(this.pPb.pOX).cew();
+    AppMethodBeat.o(68427);
   }
 }
 

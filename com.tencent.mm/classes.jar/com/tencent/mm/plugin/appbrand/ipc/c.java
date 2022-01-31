@@ -7,11 +7,11 @@ import android.os.IInterface;
 public abstract interface c
   extends IInterface
 {
+  public abstract void B(Bundle paramBundle);
+  
+  public abstract void C(Bundle paramBundle);
+  
   public abstract void a(IBinder paramIBinder, String paramString);
-  
-  public abstract void s(Bundle paramBundle);
-  
-  public abstract void t(Bundle paramBundle);
 }
 
 

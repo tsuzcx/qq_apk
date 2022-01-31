@@ -2,10 +2,8 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class SnsMsgUI$11
   implements MenuItem.OnMenuItemClickListener
@@ -14,7 +12,9 @@ final class SnsMsgUI$11
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    h.a(this.paq.mController.uMN, this.paq.getString(i.j.sns_msg_clear_mgslist), "", new SnsMsgUI.11.1(this), null);
+    AppMethodBeat.i(39077);
+    h.a(this.rSU.getContext(), this.rSU.getString(2131303901), "", new SnsMsgUI.11.1(this), null);
+    AppMethodBeat.o(39077);
     return true;
   }
 }

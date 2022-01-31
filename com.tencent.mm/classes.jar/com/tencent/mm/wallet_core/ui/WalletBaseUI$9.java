@@ -1,16 +1,29 @@
 package com.tencent.mm.wallet_core.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletBaseUI$9
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   WalletBaseUI$9(WalletBaseUI paramWalletBaseUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.wCn.VH();
+    AppMethodBeat.i(142668);
+    this.AYz.mPayResultType = 4;
+    if (this.AYz.needConfirmFinish())
+    {
+      this.AYz.hideVKB();
+      this.AYz.showDialog(1000);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(142668);
+      return true;
+      this.AYz.finish();
+    }
   }
 }
 

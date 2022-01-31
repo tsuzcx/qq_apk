@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wenote.model.nativenote.b.a;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.t;
@@ -15,23 +16,25 @@ final class c$11
   public final void onClick(View paramView)
   {
     boolean bool2 = true;
-    h.nFQ.f(14547, new Object[] { Integer.valueOf(7) });
-    Object localObject = u.rKY;
-    if (!this.rMB.rMw)
+    AppMethodBeat.i(27125);
+    h.qsU.e(14547, new Object[] { Integer.valueOf(7) });
+    Object localObject = u.vBC;
+    if (!this.vDf.vDa)
     {
       bool1 = true;
       c.c((t)localObject, Boolean.valueOf(bool1));
-      localObject = this.rMB;
-      if (this.rMB.rMw) {
-        break label101;
+      localObject = this.vDf;
+      if (this.vDf.vDa) {
+        break label113;
       }
     }
-    label101:
+    label113:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ((c)localObject).rMw = bool1;
-      c.a(this.rMB, paramView, this.rMB.rMw);
-      c.b(this.rMA);
+      ((c)localObject).vDa = bool1;
+      c.a(this.vDf, paramView, this.vDf.vDa);
+      c.b(this.vDe);
+      AppMethodBeat.o(27125);
       return;
       bool1 = false;
       break;
@@ -40,7 +43,7 @@ final class c$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.c.11
  * JD-Core Version:    0.7.0.1
  */

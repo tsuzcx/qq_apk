@@ -45,7 +45,7 @@ public abstract interface s
       }
     }
     
-    private static final class a
+    static final class a
       implements s
     {
       private IBinder mRemote;
@@ -66,55 +66,61 @@ public abstract interface s
         // Byte code:
         //   0: iconst_1
         //   1: istore_2
-        //   2: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   5: astore_3
-        //   6: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   9: astore 4
-        //   11: aload_3
-        //   12: ldc 31
-        //   14: invokevirtual 35	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   17: aload_0
-        //   18: getfield 18	com/tencent/mm/network/s$a$a:mRemote	Landroid/os/IBinder;
-        //   21: iconst_1
-        //   22: aload_3
-        //   23: aload 4
-        //   25: iconst_0
-        //   26: invokeinterface 41 5 0
-        //   31: pop
-        //   32: aload 4
-        //   34: invokevirtual 44	android/os/Parcel:readException	()V
+        //   2: ldc 24
+        //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   7: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   10: astore_3
+        //   11: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   14: astore 4
+        //   16: aload_3
+        //   17: ldc 38
+        //   19: invokevirtual 42	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   22: aload_0
+        //   23: getfield 18	com/tencent/mm/network/s$a$a:mRemote	Landroid/os/IBinder;
+        //   26: iconst_1
+        //   27: aload_3
+        //   28: aload 4
+        //   30: iconst_0
+        //   31: invokeinterface 48 5 0
+        //   36: pop
         //   37: aload 4
-        //   39: invokevirtual 48	android/os/Parcel:readInt	()I
-        //   42: istore_1
-        //   43: iload_1
-        //   44: ifeq +14 -> 58
-        //   47: aload 4
-        //   49: invokevirtual 51	android/os/Parcel:recycle	()V
-        //   52: aload_3
-        //   53: invokevirtual 51	android/os/Parcel:recycle	()V
-        //   56: iload_2
-        //   57: ireturn
-        //   58: iconst_0
-        //   59: istore_2
-        //   60: goto -13 -> 47
-        //   63: astore 5
-        //   65: aload 4
-        //   67: invokevirtual 51	android/os/Parcel:recycle	()V
-        //   70: aload_3
-        //   71: invokevirtual 51	android/os/Parcel:recycle	()V
-        //   74: aload 5
-        //   76: athrow
+        //   39: invokevirtual 51	android/os/Parcel:readException	()V
+        //   42: aload 4
+        //   44: invokevirtual 55	android/os/Parcel:readInt	()I
+        //   47: istore_1
+        //   48: iload_1
+        //   49: ifeq +19 -> 68
+        //   52: aload 4
+        //   54: invokevirtual 58	android/os/Parcel:recycle	()V
+        //   57: aload_3
+        //   58: invokevirtual 58	android/os/Parcel:recycle	()V
+        //   61: ldc 24
+        //   63: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   66: iload_2
+        //   67: ireturn
+        //   68: iconst_0
+        //   69: istore_2
+        //   70: goto -18 -> 52
+        //   73: astore 5
+        //   75: aload 4
+        //   77: invokevirtual 58	android/os/Parcel:recycle	()V
+        //   80: aload_3
+        //   81: invokevirtual 58	android/os/Parcel:recycle	()V
+        //   84: ldc 24
+        //   86: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   89: aload 5
+        //   91: athrow
         // Local variable table:
         //   start	length	slot	name	signature
-        //   0	77	0	this	a
-        //   42	2	1	i	int
-        //   1	59	2	bool	boolean
-        //   5	66	3	localParcel1	Parcel
-        //   9	57	4	localParcel2	Parcel
-        //   63	12	5	localObject	Object
+        //   0	92	0	this	a
+        //   47	2	1	i	int
+        //   1	69	2	bool	boolean
+        //   10	71	3	localParcel1	Parcel
+        //   14	62	4	localParcel2	Parcel
+        //   73	17	5	localObject	Object
         // Exception table:
         //   from	to	target	type
-        //   11	43	63	finally
+        //   16	48	73	finally
       }
     }
   }

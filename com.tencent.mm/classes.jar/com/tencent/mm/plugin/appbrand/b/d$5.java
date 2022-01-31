@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.b;
 
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bj;
 
 final class d$5
-  extends bf<Boolean>
+  extends bj<Boolean>
 {
   d$5(d paramd) {}
 }

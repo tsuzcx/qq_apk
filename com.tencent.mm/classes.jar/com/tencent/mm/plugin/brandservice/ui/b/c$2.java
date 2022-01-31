@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.brandservice.ui.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.biz.a.a;
 import com.tencent.mm.storage.q;
@@ -13,12 +14,16 @@ final class c$2
   
   public final void run()
   {
-    Iterator localIterator = this.gFL.iterator();
+    AppMethodBeat.i(14451);
+    Iterator localIterator = this.ieO.iterator();
     while (localIterator.hasNext())
     {
       q localq = (q)localIterator.next();
-      ((a)g.r(a.class)).d(localq.field_msgId, localq.field_content);
+      if (localq.dvV()) {
+        ((a)g.E(a.class)).b(localq.field_msgId, localq.field_content);
+      }
     }
+    AppMethodBeat.o(14451);
   }
 }
 

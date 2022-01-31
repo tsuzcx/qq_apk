@@ -1,7 +1,19 @@
 package com.tencent.mm.ui;
 
-public enum MultiTalkRoomPopupNav$b
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+ enum MultiTalkRoomPopupNav$b
 {
+  static
+  {
+    AppMethodBeat.i(29776);
+    zdR = new b("Inviting", 0);
+    zdS = new b("Talking", 1);
+    zdT = new b("NotInTalking", 2);
+    zdU = new b[] { zdR, zdS, zdT };
+    AppMethodBeat.o(29776);
+  }
+  
   private MultiTalkRoomPopupNav$b() {}
 }
 

@@ -6,43 +6,43 @@ import com.google.a.a.e;
 public final class a$an
   extends e
 {
-  public int eAK = 0;
-  public long exG = 0L;
-  public int wIa = 0;
+  public int BfA = 0;
+  public long fNv = 0L;
+  public int fQD = 0;
   
   public a$an()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.exG != 0L) {
-      paramb.h(1, this.exG);
+    if (this.fNv != 0L) {
+      paramb.m(1, this.fNv);
     }
-    if (this.eAK != 0) {
-      paramb.aM(2, this.eAK);
+    if (this.fQD != 0) {
+      paramb.bk(2, this.fQD);
     }
-    if (this.wIa != 0) {
-      paramb.aM(3, this.wIa);
+    if (this.BfA != 0) {
+      paramb.bk(3, this.BfA);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
-    if (this.exG != 0L) {
-      i = j + b.j(1, this.exG);
+    if (this.fNv != 0L) {
+      i = j + b.o(1, this.fNv);
     }
     j = i;
-    if (this.eAK != 0) {
-      j = i + b.aO(2, this.eAK);
+    if (this.fQD != 0) {
+      j = i + b.bm(2, this.fQD);
     }
     i = j;
-    if (this.wIa != 0) {
-      i = j + b.aO(3, this.wIa);
+    if (this.BfA != 0) {
+      i = j + b.bm(3, this.BfA);
     }
     return i;
   }

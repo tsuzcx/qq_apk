@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.exdevice.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.h.c;
 import com.tencent.mm.plugin.exdevice.j.b;
 import com.tencent.mm.plugin.exdevice.service.j.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class h$1
   extends j.a
@@ -12,20 +13,22 @@ final class h$1
   
   public final void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, int paramInt3, byte[] paramArrayOfByte)
   {
-    y.d(h.TAG, "onScanCallback. messageType=%d, errCode=%d, errMsg=%s, deviceMac=%s, deviceName=%s, rssi=%d, advertisment=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramString3, Integer.valueOf(paramInt3), b.aq(paramArrayOfByte) });
+    AppMethodBeat.i(19274);
+    ab.d(h.TAG, "onScanCallback. messageType=%d, errCode=%d, errMsg=%s, deviceMac=%s, deviceName=%s, rssi=%d, advertisment=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramString3, Integer.valueOf(paramInt3), b.aO(paramArrayOfByte) });
     if (1 == paramInt1) {
-      ad.aLW().m(paramString3, paramString2, false);
+      ad.bqj().o(paramString3, paramString2, false);
     }
     for (;;)
     {
-      if (ad.aLL().ed(b.BU(paramString2)) != null) {
-        y.d(h.TAG, "the founded device hasn't been binded");
+      if (ad.bpY().jv(b.LX(paramString2)) != null) {
+        ab.d(h.TAG, "the founded device hasn't been binded");
       }
+      AppMethodBeat.o(19274);
       return;
       if (2 == paramInt1) {
-        ad.aLW().m(paramString3, paramString2, true);
+        ad.bqj().o(paramString3, paramString2, true);
       } else {
-        y.e(h.TAG, "unknown message type %d", new Object[] { Integer.valueOf(paramInt1) });
+        ab.e(h.TAG, "unknown message type %d", new Object[] { Integer.valueOf(paramInt1) });
       }
     }
   }

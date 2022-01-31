@@ -3,9 +3,9 @@ package com.tencent.mm.protocal;
 final class c$aq
   extends c.g
 {
-  public c$aq()
+  c$aq()
   {
-    super("currentMpInfo", "currentMpInfo", 324, false);
+    super("confirmDialog", "confirmDialog", 343, true);
   }
 }
 

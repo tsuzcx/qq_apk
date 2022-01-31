@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.protocal.c.qv;
+import com.tencent.mm.protocal.protobuf.ud;
 
 public abstract interface r
 {
-  public abstract void a(qv paramqv, byte[] paramArrayOfByte, boolean paramBoolean, t paramt);
+  public abstract void a(ud paramud, byte[] paramArrayOfByte, boolean paramBoolean, u paramu);
 }
 
 

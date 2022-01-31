@@ -1,34 +1,40 @@
 package com.tencent.mm.ca;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$b
 {
-  public static boolean EV(int paramInt)
+  public static boolean MV(int paramInt)
   {
+    AppMethodBeat.i(62590);
     Bundle localBundle = new Bundle();
     localBundle.putInt("key", paramInt);
-    return ae.getContext().getContentResolver().call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/userinfo/"), "ConfigStorage.getBoolean", null, localBundle).getBoolean("key", false);
+    boolean bool = a.call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/userinfo/"), "ConfigStorage.getBoolean", null, localBundle).getBoolean("key", false);
+    AppMethodBeat.o(62590);
+    return bool;
   }
   
-  public static void YJ(String paramString)
+  public static void aoG(String paramString)
   {
+    AppMethodBeat.i(62592);
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("type", Integer.valueOf(-29414086));
     localContentValues.put("value", paramString);
-    ae.getContext().getContentResolver().update(Uri.parse("content://com.tencent.mm.storage.provider.emotion/userinfo/"), localContentValues, null, null);
+    a.a(Uri.parse("content://com.tencent.mm.storage.provider.emotion/userinfo/"), localContentValues);
+    AppMethodBeat.o(62592);
   }
   
-  public static String bb(int paramInt, String paramString)
+  public static String bI(int paramInt, String paramString)
   {
+    AppMethodBeat.i(62591);
     Bundle localBundle = new Bundle();
     localBundle.putInt("key", paramInt);
-    return ae.getContext().getContentResolver().call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/userinfo/"), "ConfigStorage.getString", null, localBundle).getString("key", paramString);
+    paramString = a.call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/userinfo/"), "ConfigStorage.getString", null, localBundle).getString("key", paramString);
+    AppMethodBeat.o(62591);
+    return paramString;
   }
 }
 

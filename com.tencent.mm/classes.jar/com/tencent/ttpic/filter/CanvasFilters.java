@@ -4,19 +4,28 @@ import android.graphics.PointF;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.GLSLRender;
 import com.tencent.filter.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.baseutils.BitUtils;
+import com.tencent.ttpic.fabby.FabbyUtil.TRANSFORM_TYPE;
 import com.tencent.ttpic.model.GridModel;
 import com.tencent.ttpic.model.Rect;
 import com.tencent.ttpic.model.RenderParam;
 import com.tencent.ttpic.util.AlgoUtils;
-import com.tencent.ttpic.util.FabbyUtil.TRANSFORM_TYPE;
 
 public class CanvasFilters
 {
-  private BaseFilter mDrawFilter = new BaseFilter(GLSLRender.bcE);
+  private BaseFilter mDrawFilter;
+  
+  public CanvasFilters()
+  {
+    AppMethodBeat.i(82068);
+    this.mDrawFilter = new BaseFilter(GLSLRender.btg);
+    AppMethodBeat.o(82068);
+  }
   
   private float[] calculateTexPosTriangles(GridModel paramGridModel, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
+    AppMethodBeat.i(82071);
     int j = paramInt3;
     int i = paramInt4;
     if (paramGridModel.positionMode == 0)
@@ -24,7 +33,9 @@ public class CanvasFilters
       j = paramInt3 * paramInt5 / paramInt1;
       i = paramInt4 * paramInt6 / paramInt2;
     }
-    if (paramGridModel.aspectMode == 1) {
+    if (paramGridModel.aspectMode == 1)
+    {
+      AppMethodBeat.o(82071);
       return new float[] { 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F };
     }
     float f1 = j / i;
@@ -36,18 +47,45 @@ public class CanvasFilters
       localPointF1 = new PointF(0.0F, 0.5F - 0.5F * i / f1);
       localPointF2 = new PointF(1.0F, 0.5F - 0.5F * i / f1);
       localPointF3 = new PointF(1.0F, 0.5F * i / f1 + 0.5F);
-      return new float[] { localPointF1.x, localPointF1.y, paramGridModel.x, paramGridModel.y, localPointF3.x, localPointF3.y, localPointF1.x, localPointF1.y, localPointF3.x, localPointF3.y, localPointF2.x, localPointF2.y };
+      f1 = localPointF1.x;
+      f2 = localPointF1.y;
+      f3 = paramGridModel.x;
+      f4 = paramGridModel.y;
+      f5 = localPointF3.x;
+      f6 = localPointF3.y;
+      f7 = localPointF1.x;
+      f8 = localPointF1.y;
+      f9 = localPointF3.x;
+      f10 = localPointF3.y;
+      f11 = localPointF2.x;
+      f12 = localPointF2.y;
+      AppMethodBeat.o(82071);
+      return new float[] { f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12 };
     }
     f1 = i * f2;
     paramGridModel = new PointF(0.5F - 0.5F * j / f1, 1.0F);
     PointF localPointF1 = new PointF(0.5F - 0.5F * j / f1, 0.0F);
     PointF localPointF2 = new PointF(0.5F + 0.5F * j / f1, 0.0F);
     PointF localPointF3 = new PointF(0.5F * j / f1 + 0.5F, 1.0F);
-    return new float[] { localPointF1.x, localPointF1.y, paramGridModel.x, paramGridModel.y, localPointF3.x, localPointF3.y, localPointF1.x, localPointF1.y, localPointF3.x, localPointF3.y, localPointF2.x, localPointF2.y };
+    f1 = localPointF1.x;
+    f2 = localPointF1.y;
+    float f3 = paramGridModel.x;
+    float f4 = paramGridModel.y;
+    float f5 = localPointF3.x;
+    float f6 = localPointF3.y;
+    float f7 = localPointF1.x;
+    float f8 = localPointF1.y;
+    float f9 = localPointF3.x;
+    float f10 = localPointF3.y;
+    float f11 = localPointF2.x;
+    float f12 = localPointF2.y;
+    AppMethodBeat.o(82071);
+    return new float[] { f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12 };
   }
   
   private float[] calculateVerPosTriangles(GridModel paramGridModel, int paramInt1, int paramInt2, float paramFloat)
   {
+    AppMethodBeat.i(82070);
     float f1 = paramInt1 / paramInt2;
     Object localObject1;
     if ((Math.abs(f1 - paramFloat) < 0.0001D) || (paramGridModel.positionMode == 0)) {
@@ -99,6 +137,7 @@ public class CanvasFilters
         localObject1[10] = paramFloat;
         localObject1[11] = f1;
       }
+      AppMethodBeat.o(82070);
       return localObject1;
       if (f1 > paramFloat)
       {
@@ -121,16 +160,21 @@ public class CanvasFilters
   
   public void ApplyGLSLFilter()
   {
+    AppMethodBeat.i(82074);
     this.mDrawFilter.ApplyGLSLFilter();
+    AppMethodBeat.o(82074);
   }
   
   public void clearGLSLSelf()
   {
+    AppMethodBeat.i(82072);
     this.mDrawFilter.clearGLSLSelf();
+    AppMethodBeat.o(82072);
   }
   
   public RenderParam drawOnFrame(GridModel paramGridModel, h paramh, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(82069);
     if ((paramGridModel != null) && (paramGridModel.canvasRect != null))
     {
       RenderParam localRenderParam = new RenderParam();
@@ -138,19 +182,23 @@ public class CanvasFilters
       localRenderParam.texCords = calculateTexPosTriangles(paramGridModel, paramInt1, paramInt2, paramGridModel.canvasRect.width, paramGridModel.canvasRect.height, paramh.width, paramh.height);
       localRenderParam.position = calculateVerPosTriangles(paramGridModel, paramInt1, paramInt2, paramh.width / paramh.height);
       localRenderParam.texScale = 1.0F;
+      AppMethodBeat.o(82069);
       return localRenderParam;
     }
+    AppMethodBeat.o(82069);
     return null;
   }
   
   public void setRenderMode(int paramInt)
   {
+    AppMethodBeat.i(82073);
     this.mDrawFilter.setRenderMode(paramInt);
+    AppMethodBeat.o(82073);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.ttpic.filter.CanvasFilters
  * JD-Core Version:    0.7.0.1
  */

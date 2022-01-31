@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class IPCallUserProfileUI$3
   implements View.OnClickListener
@@ -12,17 +13,19 @@ final class IPCallUserProfileUI$3
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.lzF, IPCallAllRecordUI.class);
-    if (!bk.bl(IPCallUserProfileUI.e(this.lzF))) {
-      paramView.putExtra("IPCallAllRecordUI_contactId", IPCallUserProfileUI.e(this.lzF));
+    AppMethodBeat.i(22373);
+    paramView = new Intent(this.nWR, IPCallAllRecordUI.class);
+    if (!bo.isNullOrNil(IPCallUserProfileUI.e(this.nWR))) {
+      paramView.putExtra("IPCallAllRecordUI_contactId", IPCallUserProfileUI.e(this.nWR));
     }
     for (;;)
     {
-      paramView.putExtra("IPCallAllRecordUI_isSinglePhoneNumber", IPCallUserProfileUI.g(this.lzF));
-      this.lzF.startActivity(paramView);
+      paramView.putExtra("IPCallAllRecordUI_isSinglePhoneNumber", IPCallUserProfileUI.g(this.nWR));
+      this.nWR.startActivity(paramView);
+      AppMethodBeat.o(22373);
       return;
-      if (!bk.bl(IPCallUserProfileUI.f(this.lzF))) {
-        paramView.putExtra("IPCallAllRecordUI_phoneNumber", IPCallUserProfileUI.f(this.lzF));
+      if (!bo.isNullOrNil(IPCallUserProfileUI.f(this.nWR))) {
+        paramView.putExtra("IPCallAllRecordUI_phoneNumber", IPCallUserProfileUI.f(this.nWR));
       }
     }
   }

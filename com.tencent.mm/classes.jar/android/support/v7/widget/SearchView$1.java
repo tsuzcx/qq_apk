@@ -7,7 +7,7 @@ final class SearchView$1
   
   public final void run()
   {
-    this.ajT.iw();
+    this.amj.ki();
   }
 }
 

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/y5" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskTextView android:textColor="@color/xh" android:gravity="center_vertical" android:id="@id/e9q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{{comment_content}}" />
-    <com.tencent.mm.plugin.sns.ui.SnsTranslateResultView android:id="@id/e20" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:layout_width="@dimen/lv" android:layout_height="@dimen/lv" android:layout_marginTop="@dimen/l2" android:layout_marginBottom="@dimen/n_">
+        <ImageView android:id="@id/ej1" android:layout_width="@dimen/lv" android:layout_height="@dimen/lv" android:scaleType="fitXY" />
+        <ImageView android:id="@id/ej2" android:background="@color/rv" android:layout_width="@dimen/lv" android:layout_height="@dimen/lv" android:scaleType="fitXY" />
+        <ImageView android:id="@id/ej3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b0p" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/nh" android:textColor="@color/w_" android:ellipsize="end" android:gravity="center" android:id="@id/c8n" android:layout_width="76.0dip" android:layout_height="wrap_content" android:singleLine="true" />
+    <TextView android:textSize="@dimen/nh" android:textColor="@color/w_" android:ellipsize="end" android:gravity="center" android:id="@id/ej4" android:layout_width="76.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_" android:singleLine="true" />
 </LinearLayout>

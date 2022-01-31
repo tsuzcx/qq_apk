@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppChooserUI$5
   implements DialogInterface.OnDismissListener
@@ -10,7 +11,9 @@ final class AppChooserUI$5
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.slj.finish();
+    AppMethodBeat.i(125858);
+    this.wdL.finish();
+    AppMethodBeat.o(125858);
   }
 }
 

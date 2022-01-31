@@ -1,120 +1,143 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
-import com.tencent.mm.ck.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cm.c;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelmulti.o.c;
-import com.tencent.mm.modelmulti.p;
-import com.tencent.mm.plugin.messenger.foundation.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.r;
 import com.tencent.mm.plugin.messenger.foundation.a.r.a;
 import com.tencent.mm.plugin.messenger.foundation.a.t;
 import com.tencent.mm.plugin.messenger.foundation.a.u;
-import com.tencent.mm.protocal.c.azg;
-import com.tencent.mm.protocal.c.qv;
-import com.tencent.mm.protocal.c.qw;
-import com.tencent.mm.protocal.s.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.protocal.protobuf.ud;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.IOException;
 
 public final class f
   implements com.tencent.mm.plugin.zero.a.f
 {
-  private t mcY;
+  private static final f.b oDB;
+  private u oDC;
   
-  public final void a(qv paramqv, byte[] paramArrayOfByte, boolean paramBoolean)
+  static
   {
-    r localr = r.a.tD(paramqv.sOA);
+    AppMethodBeat.i(139743);
+    oDB = new f.b((byte)0);
+    AppMethodBeat.o(139743);
+  }
+  
+  public static void a(t paramt)
+  {
+    AppMethodBeat.i(139741);
+    oDB.at(paramt);
+    AppMethodBeat.o(139741);
+  }
+  
+  public static void b(t paramt)
+  {
+    AppMethodBeat.i(139742);
+    oDB.remove(paramt);
+    AppMethodBeat.o(139742);
+  }
+  
+  public final void a(ud paramud, byte[] paramArrayOfByte, boolean paramBoolean)
+  {
+    AppMethodBeat.i(1062);
+    r localr = r.a.yT(paramud.wMC);
     if (localr != null) {
       try
       {
-        localr.a(paramqv, paramArrayOfByte, paramBoolean, this.mcY);
+        localr.a(paramud, paramArrayOfByte, paramBoolean, this.oDC);
+        AppMethodBeat.o(1062);
         return;
       }
-      catch (IOException paramqv)
+      catch (IOException paramud)
       {
-        y.e("MicroMsg.SyncDoCmdExtensions", "docmd: parse protobuf error, " + paramqv.getMessage());
-        throw new RuntimeException("docmd: parse protobuf error");
+        ab.e("MicroMsg.SyncDoCmdExtensions", "docmd: parse protobuf error, " + paramud.getMessage());
+        paramud = new RuntimeException("docmd: parse protobuf error");
+        AppMethodBeat.o(1062);
+        throw paramud;
       }
     }
-    y.w("MicroMsg.SyncDoCmdExtensions", "SyncDoCmdExtension for cmd id [%s] is null.", new Object[] { Integer.valueOf(paramqv.sOA) });
+    ab.w("MicroMsg.SyncDoCmdExtensions", "SyncDoCmdExtension for cmd id [%s] is null.", new Object[] { Integer.valueOf(paramud.wMC) });
+    AppMethodBeat.o(1062);
   }
   
-  public final void bp(Object paramObject)
+  public final void bT(Object paramObject)
   {
-    c localc = u.bhQ();
+    AppMethodBeat.i(1061);
+    c localc = v.bPS();
     if (localc != null) {
-      this.mcY = ((t)localc.get());
+      this.oDC = ((u)localc.get());
     }
-    if (this.mcY == null) {
-      this.mcY = new f.a((byte)0);
+    if (this.oDC == null) {
+      this.oDC = new f.a((byte)0);
     }
     if ((paramObject instanceof com.tencent.mm.modelmulti.j))
     {
-      ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().Hv(((com.tencent.mm.modelmulti.j)paramObject).TAG);
-      ((h)com.tencent.mm.kernel.g.r(h.class)).Bw();
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!(paramObject instanceof String)) {
-          break;
-        }
-      } while (!paramObject.equals("NetSceneInit"));
-      ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().Hv((String)paramObject);
-      ((h)com.tencent.mm.kernel.g.r(h.class)).Bw();
+      ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Th(((com.tencent.mm.modelmulti.j)paramObject).TAG);
+      oDB.W(paramObject);
+      AppMethodBeat.o(1061);
       return;
-    } while (!(paramObject instanceof o.c));
-    ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().Hv(paramObject.toString());
-    ((h)com.tencent.mm.kernel.g.r(h.class)).Bw();
+    }
+    if ((paramObject instanceof String))
+    {
+      if (paramObject.equals("NetSceneInit"))
+      {
+        ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Th((String)paramObject);
+        oDB.W(paramObject);
+        AppMethodBeat.o(1061);
+      }
+    }
+    else if ((paramObject instanceof o.c))
+    {
+      ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Th(paramObject.toString());
+      oDB.W(paramObject);
+    }
+    AppMethodBeat.o(1061);
   }
   
-  public final void bq(Object paramObject)
+  public final void bU(Object paramObject)
   {
+    AppMethodBeat.i(1063);
     if ((paramObject instanceof com.tencent.mm.modelmulti.j))
     {
-      this.mcY.bhP();
-      ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().Hw(((com.tencent.mm.modelmulti.j)paramObject).TAG);
-      ai localai = com.tencent.mm.kernel.g.DS();
-      String str = ((com.tencent.mm.modelmulti.j)paramObject).TAG;
-      p localp = ((com.tencent.mm.modelmulti.j)paramObject).esZ;
-      paramObject = (com.tencent.mm.modelmulti.j)paramObject;
-      if ((paramObject.eth == null) || (paramObject.eth.sqj.sIl == null))
-      {
-        paramObject = null;
-        localai.O(new f.b(str, localp, paramObject));
-        ((h)com.tencent.mm.kernel.g.r(h.class)).Bx();
-      }
-    }
-    do
-    {
+      this.oDC.bPR();
+      ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Ti(((com.tencent.mm.modelmulti.j)paramObject).TAG);
+      oDB.X(paramObject);
+      AppMethodBeat.o(1063);
       return;
-      paramObject = paramObject.eth.sqj.sIl.hPT;
-      break;
-      if (((paramObject instanceof String)) && (paramObject.equals("NetSceneInit")))
-      {
-        this.mcY.bhP();
-        ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().Hw((String)paramObject);
-        ((h)com.tencent.mm.kernel.g.r(h.class)).Bx();
-        return;
-      }
-    } while (!(paramObject instanceof o.c));
-    this.mcY.bhP();
-    ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().Hw(paramObject.toString());
-    ((h)com.tencent.mm.kernel.g.r(h.class)).Bx();
+    }
+    if (((paramObject instanceof String)) && (paramObject.equals("NetSceneInit")))
+    {
+      this.oDC.bPR();
+      ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Ti((String)paramObject);
+      oDB.X(paramObject);
+      AppMethodBeat.o(1063);
+      return;
+    }
+    if ((paramObject instanceof o.c))
+    {
+      this.oDC.bPR();
+      ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Ti(paramObject.toString());
+      oDB.X(paramObject);
+    }
+    AppMethodBeat.o(1063);
   }
   
-  public final void br(Object paramObject)
+  public final void bV(Object paramObject)
   {
+    AppMethodBeat.i(1064);
     if ((paramObject instanceof com.tencent.mm.modelmulti.j)) {
-      ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().Hw(((com.tencent.mm.modelmulti.j)paramObject).TAG);
+      ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Ti(((com.tencent.mm.modelmulti.j)paramObject).TAG);
     }
+    AppMethodBeat.o(1064);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.f
  * JD-Core Version:    0.7.0.1
  */

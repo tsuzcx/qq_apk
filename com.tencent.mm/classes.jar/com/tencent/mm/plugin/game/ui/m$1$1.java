@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 final class m$1$1
@@ -10,8 +11,10 @@ final class m$1$1
   
   public final void run()
   {
-    m.b(this.ldc.ldb, this.ldc.lda);
-    y.i("MicroMsg.GameListAdapter", "add size: %d", new Object[] { Integer.valueOf(this.ldc.lda.size()) });
+    AppMethodBeat.i(112056);
+    m.b(this.nAX.nAW, this.nAX.nAV);
+    ab.i("MicroMsg.GameListAdapter", "add size: %d", new Object[] { Integer.valueOf(this.nAX.nAV.size()) });
+    AppMethodBeat.o(112056);
   }
 }
 

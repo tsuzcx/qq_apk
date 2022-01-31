@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/kl" android:layout_width="255.0dip" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:layout_width="200.0dip" android:layout_height="118.0dip" android:src="@drawable/b8k" />
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" android:text="@string/b01" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/l2" android:layout_weight="1.0">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/b25" style="@style/h6" />
+            <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/m2" android:ellipsize="end" android:id="@id/b26" android:layout_marginTop="0.0dip" android:text="message" android:maxLines="3" style="@style/h4" />
+            </ScrollView>
+        </LinearLayout>
+        <TextView android:id="@id/b27" android:layout_marginLeft="0.0dip" android:text="source" style="@style/h5" />
+        <com.tencent.mm.ui.widget.edittext.PasterEditText android:id="@id/b24" style="@style/h2" />
+    </LinearLayout>
 </LinearLayout>

@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.aa.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 import java.util.Map;
 
@@ -13,13 +15,23 @@ final class LaunchAAByPersonAmountSelectUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if ((LaunchAAByPersonAmountSelectUI.c(this.eYG) != null) && (LaunchAAByPersonAmountSelectUI.c(this.eYG).size() > 0)) {
-      h.a(this.eYG, this.eYG.getString(a.i.aa_select_contact_back_confirm), null, this.eYG.getString(a.i.aa_select_contact_save), this.eYG.getString(a.i.aa_select_contact_not_save), false, new LaunchAAByPersonAmountSelectUI.2.1(this), new LaunchAAByPersonAmountSelectUI.2.2(this));
+    AppMethodBeat.i(40789);
+    if ((LaunchAAByPersonAmountSelectUI.c(this.gqx) != null) && (LaunchAAByPersonAmountSelectUI.c(this.gqx).size() > 0)) {
+      h.a(this.gqx, this.gqx.getString(2131296384), null, this.gqx.getString(2131296388), this.gqx.getString(2131296387), false, new LaunchAAByPersonAmountSelectUI.2.1(this), new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(40788);
+          LaunchAAByPersonAmountSelectUI.2.this.gqx.finish();
+          AppMethodBeat.o(40788);
+        }
+      });
     }
     for (;;)
     {
+      AppMethodBeat.o(40789);
       return true;
-      this.eYG.finish();
+      this.gqx.finish();
     }
   }
 }

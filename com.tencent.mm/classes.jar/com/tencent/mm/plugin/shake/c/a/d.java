@@ -1,29 +1,42 @@
 package com.tencent.mm.plugin.shake.c.a;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class d
 {
-  public float dia = -85.0F;
-  public float dib = -1000.0F;
-  Map<String, Object> ikn = new HashMap();
-  int nZo = 0;
-  long nZp = 0L;
-  String nZq = "";
+  public float dZu;
+  public float dZv;
+  Map<String, Object> kln;
+  String qNA;
+  int qNy;
+  long qNz;
   
   public d()
   {
-    this.ikn.clear();
+    AppMethodBeat.i(24517);
+    this.kln = new HashMap();
+    this.qNy = 0;
+    this.qNz = 0L;
+    this.dZu = -85.0F;
+    this.dZv = -1000.0F;
+    this.qNA = "";
+    this.kln.clear();
+    AppMethodBeat.o(24517);
   }
   
   public final void putValue(String paramString, Object paramObject)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    AppMethodBeat.i(24518);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(24518);
       return;
     }
-    this.ikn.put(paramString, paramObject);
+    this.kln.put(paramString, paramObject);
+    AppMethodBeat.o(24518);
   }
 }
 

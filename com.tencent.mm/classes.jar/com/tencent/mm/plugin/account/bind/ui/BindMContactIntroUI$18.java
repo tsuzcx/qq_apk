@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
 import android.widget.Button;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.bind.a.i;
 import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.friend.a.l.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 
 final class BindMContactIntroUI$18
@@ -17,16 +17,18 @@ final class BindMContactIntroUI$18
   
   public final void run()
   {
-    if (l.WN())
+    AppMethodBeat.i(13427);
+    if (l.aqo())
     {
-      BindMContactIntroUI.Wd();
-      BindMContactIntroUI.j(this.fbF).setText(this.fbF.getString(a.i.bind_mcontact_friend_btn_text));
-      BindMContactIntroUI.a(this.fbF, l.a.ffT);
-      boolean bool = bk.a((Boolean)g.DP().Dz().get(12322, Boolean.valueOf(false)), false);
-      if ((BindMContactIntroUI.i(this.fbF)) && (bool)) {
-        h.nFQ.f(11002, new Object[] { Integer.valueOf(3), Integer.valueOf(3) });
+      BindMContactIntroUI.apC();
+      BindMContactIntroUI.i(this.gtw).setText(this.gtw.getString(2131297578));
+      BindMContactIntroUI.a(this.gtw, l.a.gxB);
+      boolean bool = bo.a((Boolean)g.RL().Ru().get(12322, Boolean.FALSE), false);
+      if ((BindMContactIntroUI.h(this.gtw)) && (bool)) {
+        h.qsU.e(11002, new Object[] { Integer.valueOf(3), Integer.valueOf(3) });
       }
     }
+    AppMethodBeat.o(13427);
   }
 }
 

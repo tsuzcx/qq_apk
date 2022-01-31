@@ -1,7 +1,10 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import org.json.JSONObject;
 
 final class d$21
   implements Runnable
@@ -10,15 +13,17 @@ final class d$21
   
   public final void run()
   {
-    try
-    {
-      d.d(this.rxV).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.fZS + ")", null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      y.e("MicroMsg.JsApiHandler", "onGetKeyboardHeight fail, ex = %s", new Object[] { localException.getMessage() });
-    }
+    AppMethodBeat.i(8884);
+    i locali = new i();
+    locali.pJb = new HashMap();
+    locali.pJb.put("username", this.efI);
+    locali.vrO = new JSONObject();
+    locali.type = "call";
+    locali.vrN = "";
+    locali.vrQ = "profile";
+    d.e(this.voP).add(locali);
+    d.f(this.voP);
+    AppMethodBeat.o(8884);
   }
 }
 

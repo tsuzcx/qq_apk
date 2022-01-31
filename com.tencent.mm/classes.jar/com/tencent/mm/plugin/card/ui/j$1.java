@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.card.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.ui.base.o;
 
@@ -13,20 +13,22 @@ final class j$1
   
   public final void onClick(View paramView)
   {
-    if ((paramView.getId() == a.d.popupwd_qrcode_iv) || (paramView.getId() == a.d.popupwd_barcode_iv))
+    AppMethodBeat.i(88621);
+    if ((paramView.getId() == 2131822318) || (paramView.getId() == 2131822324))
     {
-      if ((this.iwJ.fvf != null) && (this.iwJ.fvf.isShowing())) {
-        this.iwJ.fvf.dismiss();
+      if ((this.kxN.gMK != null) && (this.kxN.gMK.isShowing())) {
+        this.kxN.gMK.dismiss();
       }
-      if (!this.iwJ.ikk.azh()) {
-        this.iwJ.aCf();
+      if (!this.kxN.klk.baN()) {
+        this.kxN.bep();
       }
     }
+    AppMethodBeat.o(88621);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.j.1
  * JD-Core Version:    0.7.0.1
  */

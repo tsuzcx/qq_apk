@@ -2,116 +2,150 @@ package com.tencent.mm.storage;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.c;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class ao
-  extends j
-  implements c
+  extends k
+  implements com.tencent.mm.plugin.messenger.foundation.a.a.c
 {
-  public static final String[] dXp = { "CREATE TABLE IF NOT EXISTS DeletedConversationInfo ( userName TEXT  PRIMARY KEY , lastSeq LONG  , reserved1 INT  , reserved2 LONG  , reserved3 TEXT  ) ", "CREATE INDEX IF NOT EXISTS createTimeIndex  ON DeletedConversationInfo ( reserved2 )" };
-  private h dXo;
-  private final f<String, Long> dss = new f(50);
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS DeletedConversationInfo ( userName TEXT  PRIMARY KEY , lastSeq LONG  , reserved1 INT  , reserved2 LONG  , reserved3 TEXT  ) ", "CREATE INDEX IF NOT EXISTS createTimeIndex  ON DeletedConversationInfo ( reserved2 )" };
+  private final f<String, Long> eka;
+  private h fnw;
   
   public ao(h paramh)
   {
-    this.dXo = paramh;
+    AppMethodBeat.i(1273);
+    this.eka = new com.tencent.mm.memory.a.c(50);
+    this.fnw = paramh;
+    AppMethodBeat.o(1273);
   }
   
-  public final long Ho(String paramString)
+  public final long Ta(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(1275);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(1275);
       return 0L;
     }
-    Object localObject = "select lastSeq from DeletedConversationInfo where userName = \"" + bk.pl(paramString) + "\"";
-    localObject = this.dXo.a((String)localObject, null, 2);
+    Object localObject = "select lastSeq from DeletedConversationInfo where userName = \"" + bo.wC(String.valueOf(paramString)) + "\"";
+    localObject = this.fnw.a((String)localObject, null, 2);
     if (localObject == null)
     {
-      y.i("MicroMsg.DeletedConversationInfoStorage", "getLastPushSeq failed " + paramString);
+      ab.i("MicroMsg.DeletedConversationInfoStorage", "getLastPushSeq failed ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(1275);
       return 0L;
     }
     if (((Cursor)localObject).moveToFirst())
     {
       long l = ((Cursor)localObject).getLong(0);
       ((Cursor)localObject).close();
+      AppMethodBeat.o(1275);
       return l;
     }
     ((Cursor)localObject).close();
+    AppMethodBeat.o(1275);
     return 0L;
   }
   
-  public final long Hp(String paramString)
+  public final long Tb(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(1278);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(1278);
       return 0L;
     }
-    Object localObject = (Long)this.dss.get(paramString);
-    if (localObject != null) {
-      return ((Long)localObject).longValue();
+    Object localObject = (Long)this.eka.get(paramString);
+    long l;
+    if (localObject != null)
+    {
+      l = ((Long)localObject).longValue();
+      AppMethodBeat.o(1278);
+      return l;
     }
-    localObject = "select reserved2 from DeletedConversationInfo where userName = \"" + bk.pl(paramString) + "\"";
-    localObject = this.dXo.a((String)localObject, null, 2);
+    localObject = "select reserved2 from DeletedConversationInfo where userName = \"" + bo.wC(String.valueOf(paramString)) + "\"";
+    localObject = this.fnw.a((String)localObject, null, 2);
     if (localObject == null)
     {
-      y.i("MicroMsg.DeletedConversationInfoStorage", "getCreateTime failed " + paramString);
-      this.dss.f(paramString, Long.valueOf(0L));
+      ab.i("MicroMsg.DeletedConversationInfoStorage", "getCreateTime failed ".concat(String.valueOf(paramString)));
+      this.eka.f(paramString, Long.valueOf(0L));
+      AppMethodBeat.o(1278);
       return 0L;
     }
     if (((Cursor)localObject).moveToFirst())
     {
-      long l = ((Cursor)localObject).getLong(0);
-      this.dss.f(paramString, Long.valueOf(l));
+      l = ((Cursor)localObject).getLong(0);
+      this.eka.f(paramString, Long.valueOf(l));
       ((Cursor)localObject).close();
+      AppMethodBeat.o(1278);
       return l;
     }
     ((Cursor)localObject).close();
+    AppMethodBeat.o(1278);
     return 0L;
   }
   
-  public final boolean L(String paramString, long paramLong)
+  public final boolean ad(String paramString, long paramLong)
   {
-    if (bk.bl(paramString)) {}
-    ContentValues localContentValues;
-    do
+    AppMethodBeat.i(1274);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(1274);
       return false;
-      localContentValues = new ContentValues();
-      localContentValues.put("userName", paramString);
-      localContentValues.put("lastSeq", Long.valueOf(paramLong));
-      localContentValues.put("reserved2", Long.valueOf(Hp(paramString)));
-    } while ((int)this.dXo.replace("DeletedConversationInfo", "userName", localContentValues) == -1);
-    aam(paramString);
-    return true;
+    }
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("userName", paramString);
+    localContentValues.put("lastSeq", Long.valueOf(paramLong));
+    localContentValues.put("reserved2", Long.valueOf(Tb(paramString)));
+    if ((int)this.fnw.replace("DeletedConversationInfo", "userName", localContentValues) != -1)
+    {
+      doNotify(paramString);
+      AppMethodBeat.o(1274);
+      return true;
+    }
+    AppMethodBeat.o(1274);
+    return false;
   }
   
-  public final boolean M(String paramString, long paramLong)
+  public final boolean ae(String paramString, long paramLong)
   {
-    if (bk.bl(paramString)) {}
-    ContentValues localContentValues;
-    do
+    AppMethodBeat.i(1276);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(1276);
       return false;
-      this.dss.f(paramString, Long.valueOf(paramLong));
-      localContentValues = new ContentValues();
-      localContentValues.put("userName", paramString);
-      localContentValues.put("lastSeq", Long.valueOf(Ho(paramString)));
-      localContentValues.put("reserved2", Long.valueOf(paramLong));
-    } while ((int)this.dXo.replace("DeletedConversationInfo", "userName", localContentValues) == -1);
-    aam(paramString);
-    return true;
+    }
+    this.eka.f(paramString, Long.valueOf(paramLong));
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("userName", paramString);
+    localContentValues.put("lastSeq", Long.valueOf(Ta(paramString)));
+    localContentValues.put("reserved2", Long.valueOf(paramLong));
+    if ((int)this.fnw.replace("DeletedConversationInfo", "userName", localContentValues) != -1)
+    {
+      doNotify(paramString);
+      AppMethodBeat.o(1276);
+      return true;
+    }
+    AppMethodBeat.o(1276);
+    return false;
   }
   
-  public final List<String> bhS()
+  public final List<String> bPU()
   {
+    AppMethodBeat.i(1277);
     ArrayList localArrayList = new ArrayList();
-    Cursor localCursor = this.dXo.a("select userName,reserved2 from DeletedConversationInfo where reserved2 > 0", null, 2);
-    if (localCursor == null) {
+    Cursor localCursor = this.fnw.a("select userName,reserved2 from DeletedConversationInfo where reserved2 > 0", null, 2);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(1277);
       return localArrayList;
     }
     if (localCursor.moveToFirst()) {
@@ -119,11 +153,12 @@ public final class ao
       {
         String str = localCursor.getString(0);
         long l = localCursor.getLong(1);
-        this.dss.f(str, Long.valueOf(l));
+        this.eka.f(str, Long.valueOf(l));
         localArrayList.add(str);
       } while (localCursor.moveToNext());
     }
     localCursor.close();
+    AppMethodBeat.o(1277);
     return localArrayList;
   }
 }

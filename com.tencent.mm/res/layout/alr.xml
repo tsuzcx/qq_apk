@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/do9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
-        <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/do_" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" />
-        <ImageView android:id="@id/doa" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/vh" android:contentDescription="@string/dq0" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/vf"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textColor="@color/s4" android:id="@id/drd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fws" />
+    <LinearLayout style="@style/w8">
+        <com.tencent.mm.plugin.wallet_payu.security_question.ui.WalletPayUSecurityQuestionView android:id="@id/dre" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" app:hint="@string/fwq" app:tipmsg="@string/fwr" />
+        <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/drf" android:singleLine="false" android:imeOptions="actionNext" app:titleText="@string/fwp" app:contentHint="@string/fwo" style="@style/wa" />
     </LinearLayout>
-    <com.tencent.mm.plugin.scanner.ui.HighlightRectSideView android:id="@id/dob" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/k9" android:textColor="#ffa5a5a5" android:id="@id/doc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/dq4" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <Button android:id="@id/drg" android:layout_marginTop="@dimen/l2" android:text="@string/fwk" style="@style/w5" />
+</LinearLayout>

@@ -1,21 +1,28 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mm.storage.q;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$7
-  implements View.OnLongClickListener
+  implements View.OnTouchListener
 {
-  a$7(a parama, q paramq, int paramInt) {}
+  a$7(a parama) {}
   
-  public final boolean onLongClick(View paramView)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    a.a(this.ifl, this.hSM);
-    a.b(this.ifl, this.hSP);
-    a.a(this.ifl, 1);
-    a.k(this.ifl).a(paramView, this.ifl, a.h(this.ifl), a.i(this.ifl), a.j(this.ifl));
-    return true;
+    AppMethodBeat.i(14104);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(14104);
+      return false;
+      a.a(this.jVZ, (int)paramMotionEvent.getRawX());
+      a.b(this.jVZ, (int)paramMotionEvent.getRawY());
+    }
   }
 }
 

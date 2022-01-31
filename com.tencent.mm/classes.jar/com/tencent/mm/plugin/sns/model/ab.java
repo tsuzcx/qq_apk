@@ -1,37 +1,48 @@
 package com.tencent.mm.plugin.sns.model;
 
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class ab
 {
-  public static boolean lER;
-  public static char[] orc;
-  private ah handler = new ab.1(this, Looper.getMainLooper());
-  public boolean oqZ = false;
-  public long ora = 0L;
-  private int orb = 0;
+  public static boolean ocf;
+  public static char[] rfO;
+  private ak handler;
+  public boolean rfL;
+  public long rfM;
+  private int rfN;
   
   static
   {
     int i = 0;
-    lER = false;
-    orc = new char[36];
+    ocf = false;
+    rfO = new char[36];
     int j = 48;
     while (j <= 57)
     {
-      orc[i] = ((char)j);
+      rfO[i] = ((char)j);
       j += 1;
       i += 1;
     }
     j = 97;
     while (j <= 122)
     {
-      orc[i] = ((char)j);
+      rfO[i] = ((char)j);
       j += 1;
       i += 1;
     }
+  }
+  
+  public ab()
+  {
+    AppMethodBeat.i(36369);
+    this.rfL = false;
+    this.rfM = 0L;
+    this.rfN = 0;
+    this.handler = new ab.1(this, Looper.getMainLooper());
+    AppMethodBeat.o(36369);
   }
   
   public static void b(PInt paramPInt1, PInt paramPInt2)
@@ -47,7 +58,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ab
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class OpenFileChooserUI$6$5
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class OpenFileChooserUI$6$5
   
   public final void run()
   {
-    this.rlF.rlE.setResult(1);
-    this.rlF.rlE.finish();
+    AppMethodBeat.i(7453);
+    this.vbh.vbg.setResult(1);
+    this.vbh.vbg.finish();
+    AppMethodBeat.o(7453);
   }
 }
 

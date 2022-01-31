@@ -1,43 +1,39 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.widget.input.m;
+import android.app.Activity;
+import android.app.Application;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s.a;
 
 final class k$1
-  implements Runnable
+  extends a
 {
-  k$1(k paramk, i parami, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject) {}
+  k$1(k paramk) {}
   
-  public final void run()
+  public final void onActivityDestroyed(Activity paramActivity)
   {
-    m.u(this.fzi.fyk);
-    if (this.fza == null) {
-      this.fzi.ZX();
+    AppMethodBeat.i(86710);
+    if (this.gQD.gQx == paramActivity) {
+      this.gQD.gQx.getApplication().unregisterActivityLifecycleCallbacks(this);
     }
-    n localn = (n)this.fzi.qD(this.fzg.appId);
-    this.fzg.fPE = this.fzh;
-    if (localn == null)
+    AppMethodBeat.o(86710);
+  }
+  
+  public final void onActivityPaused(Activity paramActivity)
+  {
+    if (this.gQD.gQx == paramActivity)
     {
-      localn = (n)this.fzi.ZU();
-      this.fzi.a(this.fza, localn, this.fzg);
-      localn.Zw();
+      this.gQD.bFa = false;
+      this.gQD.bFb = true;
     }
-    for (;;)
+  }
+  
+  public final void onActivityResumed(Activity paramActivity)
+  {
+    if (this.gQD.gQx == paramActivity)
     {
-      if (localn.Zx() != null) {
-        localn.fyD = true;
-      }
-      return;
-      if (this.fza == localn)
-      {
-        this.fzi.b(null, localn, this.fzg);
-        this.fzi.onResume();
-      }
-      else
-      {
-        this.fzi.b(this.fza, localn, this.fzg);
-      }
+      this.gQD.bFa = true;
+      this.gQD.bFb = false;
     }
   }
 }

@@ -7,14 +7,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.ak.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.al.f;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.f.r;
-import com.tencent.mm.plugin.emoji.h.a;
+import com.tencent.mm.plugin.emoji.a.a.e;
+import com.tencent.mm.plugin.emoji.f.q;
+import com.tencent.mm.plugin.emoji.model.d;
 import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.protocal.c.vj;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.EmotionDetail;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class EmojiStoreDetailUI$8
   implements DialogInterface.OnClickListener
@@ -23,42 +25,44 @@ final class EmojiStoreDetailUI$8
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (a.Bh(EmojiStoreDetailUI.a(this.jeK)))
+    AppMethodBeat.i(53427);
+    if (com.tencent.mm.plugin.emoji.h.a.Lj(EmojiStoreDetailUI.a(this.lnA)))
     {
-      y.d("MicroMsg.emoji.EmojiStoreDetailUI", "jacks stop tuzi downloading");
-      com.tencent.mm.plugin.emoji.f.b.aHY().aIa();
-      if (!TextUtils.isEmpty(EmojiStoreDetailUI.t(this.jeK)))
+      ab.d("MicroMsg.emoji.EmojiStoreDetailUI", "jacks stop tuzi downloading");
+      com.tencent.mm.plugin.emoji.f.a.blw().bly();
+      if (!TextUtils.isEmpty(EmojiStoreDetailUI.t(this.lnA)))
       {
-        f.Nd().lM(EmojiStoreDetailUI.t(this.jeK));
-        y.i("MicroMsg.emoji.EmojiStoreDetailUI", "[onClickClose] cancel RecvTask. CdnClientId:%s", new Object[] { EmojiStoreDetailUI.t(this.jeK) });
+        f.afO().sJ(EmojiStoreDetailUI.t(this.lnA));
+        ab.i("MicroMsg.emoji.EmojiStoreDetailUI", "[onClickClose] cancel RecvTask. CdnClientId:%s", new Object[] { EmojiStoreDetailUI.t(this.lnA) });
       }
-      if ((!com.tencent.mm.plugin.emoji.a.a.e.cC(EmojiStoreDetailUI.b(this.jeK).sSh, 1)) && (!com.tencent.mm.plugin.emoji.a.a.e.pU(EmojiStoreDetailUI.b(this.jeK).sSg))) {
-        break label252;
+      if ((!e.ea(EmojiStoreDetailUI.b(this.lnA).PackFlag, 1)) && (!e.uo(EmojiStoreDetailUI.b(this.lnA).PackType))) {
+        break label262;
       }
-      EmojiStoreDetailUI.a(this.jeK, 3);
+      EmojiStoreDetailUI.a(this.lnA, 3);
     }
     for (;;)
     {
-      i.aHU().g(EmojiStoreDetailUI.a(this.jeK), EmojiStoreDetailUI.u(this.jeK), 0, EmojiStoreDetailUI.t(this.jeK));
-      EmojiStoreDetailUI.i(this.jeK).setVisibility(8);
-      EmojiStoreDetailUI.l(this.jeK).setProgress(0);
-      EmojiStoreDetailUI.j(this.jeK).setVisibility(4);
-      EmojiStoreDetailUI.h(this.jeK).setVisibility(0);
-      EmojiStoreDetailUI.v(this.jeK);
-      EmojiStoreDetailUI.g(this.jeK);
-      paramDialogInterface = new r(EmojiStoreDetailUI.a(this.jeK), 2);
-      g.DO().dJT.a(paramDialogInterface, 0);
+      i.blu().g(EmojiStoreDetailUI.a(this.lnA), EmojiStoreDetailUI.u(this.lnA), 0, EmojiStoreDetailUI.t(this.lnA));
+      EmojiStoreDetailUI.i(this.lnA).setVisibility(8);
+      EmojiStoreDetailUI.l(this.lnA).setProgress(0);
+      EmojiStoreDetailUI.j(this.lnA).setVisibility(4);
+      EmojiStoreDetailUI.h(this.lnA).setVisibility(0);
+      EmojiStoreDetailUI.v(this.lnA);
+      EmojiStoreDetailUI.g(this.lnA);
+      paramDialogInterface = new q(EmojiStoreDetailUI.a(this.lnA), 2);
+      g.RK().eHt.a(paramDialogInterface, 0);
+      AppMethodBeat.o(53427);
       return;
-      g.DO().dJT.c(EmojiStoreDetailUI.s(this.jeK));
+      g.RK().eHt.a(EmojiStoreDetailUI.s(this.lnA));
       break;
-      label252:
-      EmojiStoreDetailUI.a(this.jeK, -1);
+      label262:
+      EmojiStoreDetailUI.a(this.lnA, -1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.EmojiStoreDetailUI.8
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mm.ui.contact;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMBaseSelectContactUI$1
   implements View.OnTouchListener
@@ -11,9 +12,11 @@ final class MMBaseSelectContactUI$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    MMBaseSelectContactUI.a(this.vLX);
-    this.vLX.cHK();
-    this.vLX.cHL();
+    AppMethodBeat.i(105214);
+    MMBaseSelectContactUI.a(this.Adz);
+    this.Adz.dMc();
+    this.Adz.dMd();
+    AppMethodBeat.o(105214);
     return false;
   }
 }

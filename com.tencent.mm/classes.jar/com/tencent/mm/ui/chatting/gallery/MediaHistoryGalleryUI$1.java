@@ -1,21 +1,22 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import com.tencent.matrix.trace.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.matrix.trace.e.b;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class MediaHistoryGalleryUI$1
-  extends a
+  extends b
 {
   MediaHistoryGalleryUI$1(MediaHistoryGalleryUI paramMediaHistoryGalleryUI) {}
   
-  public final void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public final void a(String paramString, long paramLong, int paramInt)
   {
-    super.a(paramLong1, paramLong2, paramString, paramInt);
-    y.d("MicroMsg.MediaHistoryGalleryUI", "summerhardcoder sync fps scene:%s vs %s, droppedFrames:%s, lastFrameNanos:%d, frameNanos:%d", new Object[] { paramString, this.vxK.getClass().getSimpleName(), Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if ((paramInt > 0) && (!bk.bl(paramString)) && (paramString.endsWith(this.vxK.getClass().getSimpleName()))) {
-      MediaHistoryGalleryUI.a(this.vxK, MediaHistoryGalleryUI.a(this.vxK) + paramInt);
+    AppMethodBeat.i(32405);
+    super.a(paramString, paramLong, paramInt);
+    if ((paramInt > 0) && (!bo.isNullOrNil(paramString)) && (paramString.endsWith(this.zNW.getClass().getSimpleName()))) {
+      MediaHistoryGalleryUI.a(this.zNW, MediaHistoryGalleryUI.a(this.zNW) + paramInt);
     }
+    AppMethodBeat.o(32405);
   }
 }
 

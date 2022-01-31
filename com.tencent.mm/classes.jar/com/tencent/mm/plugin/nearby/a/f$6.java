@@ -1,27 +1,35 @@
 package com.tencent.mm.plugin.nearby.a;
 
-import com.tencent.mm.h.a.iv;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.je;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.e.k;
 
 final class f$6
   extends d
 {
   f$6(f paramf) {}
   
-  public final b Ew(String paramString)
+  public final b PL(String paramString)
   {
-    iv localiv = new iv();
-    localiv.bRa.bGt = paramString;
-    return localiv;
+    AppMethodBeat.i(55387);
+    je localje = new je();
+    localje.cyC.cnC = paramString;
+    AppMethodBeat.o(55387);
+    return localje;
   }
   
-  public final com.tencent.mm.sdk.e.j aYb()
+  public final k bEO()
   {
-    g.DN().CX();
-    return (com.tencent.mm.sdk.e.j)((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhL();
+    AppMethodBeat.i(55388);
+    g.RJ().QQ();
+    k localk = (k)((j)g.E(j.class)).bPN();
+    AppMethodBeat.o(55388);
+    return localk;
   }
 }
 

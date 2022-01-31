@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 
 public final class j$2
@@ -9,13 +10,21 @@ public final class j$2
   
   public final void run()
   {
-    if (!g.DK()) {}
-    while (i.acT()) {
+    AppMethodBeat.i(129548);
+    if (!g.RG())
+    {
+      AppMethodBeat.o(129548);
       return;
     }
-    j localj = this.fIm;
-    t.adq();
+    if (i.awZ())
+    {
+      AppMethodBeat.o(129548);
+      return;
+    }
+    j localj = this.hbe;
+    t.axy();
     j.a(localj, 2, 0, 7, 0L, true, null);
+    AppMethodBeat.o(129548);
   }
 }
 

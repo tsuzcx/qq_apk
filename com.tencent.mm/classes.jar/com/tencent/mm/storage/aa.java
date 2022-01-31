@@ -1,15 +1,19 @@
 package com.tencent.mm.storage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 
 public final class aa
 {
-  public static String FK()
+  public static String YO()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    g.DQ();
-    return g.DP().dKt + "favorite/";
+    AppMethodBeat.i(114739);
+    Object localObject = new StringBuilder();
+    g.RM();
+    localObject = g.RL().eHR + "favorite/";
+    AppMethodBeat.o(114739);
+    return localObject;
   }
 }
 

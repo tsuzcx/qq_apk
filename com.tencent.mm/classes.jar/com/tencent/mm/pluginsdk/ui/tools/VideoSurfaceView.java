@@ -11,28 +11,29 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import com.tencent.mm.compatible.b.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.b.k;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class VideoSurfaceView
   extends SurfaceView
-  implements f
+  implements e
 {
-  private boolean dnJ = false;
-  private boolean gHF;
-  private MediaPlayer gHZ = null;
-  MediaPlayer.OnPreparedListener gIa = new VideoSurfaceView.2(this);
-  MediaPlayer.OnVideoSizeChangedListener gIb = new VideoSurfaceView.1(this);
-  private MediaPlayer.OnCompletionListener gIc = new VideoSurfaceView.3(this);
-  private MediaPlayer.OnErrorListener gIf = new VideoSurfaceView.4(this);
-  private f.a joM;
+  private boolean bHF;
+  private MediaPlayer bIo;
+  MediaPlayer.OnPreparedListener bIp;
+  MediaPlayer.OnVideoSizeChangedListener bIq;
+  private MediaPlayer.OnCompletionListener bIr;
+  private MediaPlayer.OnErrorListener bIu;
+  private boolean efg;
+  private e.a lxA;
   private int mDuration;
-  private int mVideoHeight = 0;
-  private int mVideoWidth = 0;
-  private SurfaceHolder pzi = null;
-  private String snu;
-  private boolean snv;
-  SurfaceHolder.Callback snw = new VideoSurfaceView.5(this);
+  private int mVideoHeight;
+  private int mVideoWidth;
+  private SurfaceHolder taW;
+  private String wfP;
+  private boolean wfQ;
+  SurfaceHolder.Callback wfR;
   
   public VideoSurfaceView(Context paramContext)
   {
@@ -47,78 +48,122 @@ public class VideoSurfaceView
   public VideoSurfaceView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    getHolder().addCallback(this.snw);
+    AppMethodBeat.i(70447);
+    this.taW = null;
+    this.bIo = null;
+    this.bIq = new VideoSurfaceView.1(this);
+    this.bIp = new VideoSurfaceView.2(this);
+    this.bIr = new VideoSurfaceView.3(this);
+    this.bIu = new VideoSurfaceView.4(this);
+    this.wfR = new VideoSurfaceView.5(this);
+    this.efg = false;
+    this.mVideoWidth = 0;
+    this.mVideoHeight = 0;
+    getHolder().addCallback(this.wfR);
     getHolder().setType(3);
     setFocusable(true);
     setFocusableInTouchMode(true);
     requestFocus();
+    AppMethodBeat.o(70447);
   }
   
-  private void aKM()
+  private void boV()
   {
-    if ((this.snu == null) || (this.pzi == null)) {}
-    do
+    AppMethodBeat.i(70450);
+    if ((this.wfP == null) || (this.taW == null))
     {
+      AppMethodBeat.o(70450);
       return;
-      if (this.gHZ != null)
-      {
-        this.gHZ.stop();
-        this.gHZ.release();
-        this.gHZ = null;
+    }
+    if (this.bIo != null)
+    {
+      this.bIo.stop();
+      this.bIo.release();
+      this.bIo = null;
+    }
+    try
+    {
+      this.bIo = new k();
+      this.bIo.setOnPreparedListener(this.bIp);
+      this.bIo.setOnVideoSizeChangedListener(this.bIq);
+      this.wfQ = false;
+      ab.v("MicroMsg.VideoSurfaceView", "reset duration to -1 in openVideo");
+      this.mDuration = -1;
+      this.bIo.setOnCompletionListener(this.bIr);
+      this.bIo.setOnErrorListener(this.bIu);
+      this.bIo.setDataSource(this.wfP);
+      this.bIo.setDisplay(this.taW);
+      this.bIo.setAudioStreamType(3);
+      this.bIo.setScreenOnWhilePlaying(true);
+      this.bIo.prepareAsync();
+      this.mVideoHeight = this.bIo.getVideoHeight();
+      this.mVideoWidth = this.bIo.getVideoWidth();
+      setMute(this.efg);
+      AppMethodBeat.o(70450);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ab.printErrStackTrace("MicroMsg.VideoSurfaceView", localException, "prepare async error %s", new Object[] { localException.getMessage() });
+      if (this.lxA != null) {
+        this.lxA.onError(-1, -1);
       }
-      try
-      {
-        this.gHZ = new j();
-        this.gHZ.setOnPreparedListener(this.gIa);
-        this.gHZ.setOnVideoSizeChangedListener(this.gIb);
-        this.snv = false;
-        y.v("MicroMsg.VideoSurfaceView", "reset duration to -1 in openVideo");
-        this.mDuration = -1;
-        this.gHZ.setOnCompletionListener(this.gIc);
-        this.gHZ.setOnErrorListener(this.gIf);
-        this.gHZ.setDataSource(this.snu);
-        this.gHZ.setDisplay(this.pzi);
-        this.gHZ.setAudioStreamType(3);
-        this.gHZ.setScreenOnWhilePlaying(true);
-        this.gHZ.prepareAsync();
-        this.mVideoHeight = this.gHZ.getVideoHeight();
-        this.mVideoWidth = this.gHZ.getVideoWidth();
-        setMute(this.dnJ);
-        return;
-      }
-      catch (Exception localException)
-      {
-        y.printErrStackTrace("MicroMsg.VideoSurfaceView", localException, "prepare async error %s", new Object[] { localException.getMessage() });
-      }
-    } while (this.joM == null);
-    this.joM.onError(-1, -1);
+      AppMethodBeat.o(70450);
+    }
   }
   
-  public final void d(double paramDouble, boolean paramBoolean)
+  public final void A(double paramDouble)
   {
-    x(paramDouble);
+    AppMethodBeat.i(70458);
+    if (this.bIo != null)
+    {
+      ab.d("MicroMsg.VideoSurfaceView", "seek to time: ".concat(String.valueOf(paramDouble)));
+      this.bIo.seekTo((int)paramDouble);
+      start();
+    }
+    AppMethodBeat.o(70458);
+  }
+  
+  public final void e(double paramDouble, boolean paramBoolean)
+  {
+    AppMethodBeat.i(70460);
+    A(paramDouble);
+    AppMethodBeat.o(70460);
   }
   
   public int getCurrentPosition()
   {
-    if ((this.gHZ != null) && (this.snv)) {
-      return this.gHZ.getCurrentPosition();
+    AppMethodBeat.i(70453);
+    if ((this.bIo != null) && (this.wfQ))
+    {
+      int i = this.bIo.getCurrentPosition();
+      AppMethodBeat.o(70453);
+      return i;
     }
+    AppMethodBeat.o(70453);
     return 0;
   }
   
   public int getDuration()
   {
-    if ((this.gHZ != null) && (this.snv))
+    AppMethodBeat.i(70452);
+    if ((this.bIo != null) && (this.wfQ))
     {
-      if (this.mDuration > 0) {
-        return this.mDuration;
+      if (this.mDuration > 0)
+      {
+        i = this.mDuration;
+        AppMethodBeat.o(70452);
+        return i;
       }
-      this.mDuration = this.gHZ.getDuration();
-      return this.mDuration;
+      this.mDuration = this.bIo.getDuration();
+      i = this.mDuration;
+      AppMethodBeat.o(70452);
+      return i;
     }
     this.mDuration = -1;
-    return this.mDuration;
+    int i = this.mDuration;
+    AppMethodBeat.o(70452);
+    return i;
   }
   
   public double getLastProgresstime()
@@ -133,14 +178,19 @@ public class VideoSurfaceView
   
   public String getVideoPath()
   {
-    return this.snu;
+    return this.wfP;
   }
   
   public final boolean isPlaying()
   {
-    if ((this.gHZ != null) && (this.snv)) {
-      return this.gHZ.isPlaying();
+    AppMethodBeat.i(70454);
+    if ((this.bIo != null) && (this.wfQ))
+    {
+      boolean bool = this.bIo.isPlaying();
+      AppMethodBeat.o(70454);
+      return bool;
     }
+    AppMethodBeat.o(70454);
     return false;
   }
   
@@ -148,96 +198,100 @@ public class VideoSurfaceView
   
   public final void pause()
   {
-    if ((this.gHZ != null) && (this.snv) && (this.gHZ.isPlaying())) {
-      this.gHZ.pause();
+    AppMethodBeat.i(70451);
+    if ((this.bIo != null) && (this.wfQ) && (this.bIo.isPlaying())) {
+      this.bIo.pause();
     }
-    this.gHF = false;
-  }
-  
-  public final boolean s(Context paramContext, boolean paramBoolean)
-  {
-    return start();
+    this.bHF = false;
+    AppMethodBeat.o(70451);
   }
   
   public void setForceScaleFullScreen(boolean paramBoolean) {}
   
   public void setLoop(boolean paramBoolean)
   {
-    if (this.gHZ != null) {
-      this.gHZ.setLooping(paramBoolean);
+    AppMethodBeat.i(70455);
+    if (this.bIo != null) {
+      this.bIo.setLooping(paramBoolean);
     }
+    AppMethodBeat.o(70455);
   }
   
   public void setMute(boolean paramBoolean)
   {
-    this.dnJ = paramBoolean;
-    if (this.gHZ != null)
+    AppMethodBeat.i(70459);
+    this.efg = paramBoolean;
+    if (this.bIo != null)
     {
-      if (this.dnJ) {
-        this.gHZ.setVolume(0.0F, 0.0F);
+      if (this.efg)
+      {
+        this.bIo.setVolume(0.0F, 0.0F);
+        AppMethodBeat.o(70459);
+        return;
       }
+      this.bIo.setVolume(0.5F, 0.5F);
     }
-    else {
-      return;
-    }
-    this.gHZ.setVolume(0.5F, 0.5F);
+    AppMethodBeat.o(70459);
   }
   
-  public void setOnInfoCallback(f.b paramb) {}
+  public void setOnInfoCallback(e.b paramb) {}
   
-  public void setOnSeekCompleteCallback(f.c paramc) {}
+  public void setOnSeekCompleteCallback(e.c paramc) {}
   
-  public void setOnSurfaceCallback(f.d paramd) {}
+  public void setOnSurfaceCallback(e.d paramd) {}
   
-  public void setOneTimeVideoTextureUpdateCallback(f.e parame) {}
+  public void setOneTimeVideoTextureUpdateCallback(e.e parame) {}
   
   public void setPlayProgressCallback(boolean paramBoolean) {}
   
   public void setThumb(Bitmap paramBitmap) {}
   
-  public void setVideoCallback(f.a parama)
+  public void setVideoCallback(e.a parama)
   {
-    this.joM = parama;
+    this.lxA = parama;
   }
   
   public void setVideoPath(String paramString)
   {
-    this.snu = paramString;
-    this.gHF = false;
-    aKM();
+    AppMethodBeat.i(70448);
+    this.wfP = paramString;
+    this.bHF = false;
+    boV();
     requestLayout();
+    AppMethodBeat.o(70448);
   }
   
   public final boolean start()
   {
-    if ((this.gHZ != null) && (this.snv))
+    AppMethodBeat.i(70456);
+    if ((this.bIo != null) && (this.wfQ)) {
+      this.bIo.start();
+    }
+    for (this.bHF = false;; this.bHF = true)
     {
-      this.gHZ.start();
-      this.gHF = false;
+      AppMethodBeat.o(70456);
       return true;
     }
-    this.gHF = true;
-    return true;
   }
   
   public final void stop()
   {
-    if (this.gHZ != null)
+    AppMethodBeat.i(70449);
+    if (this.bIo != null)
     {
-      this.gHZ.stop();
-      this.gHZ.release();
-      this.gHZ = null;
+      this.bIo.stop();
+      this.bIo.release();
+      this.bIo = null;
     }
+    AppMethodBeat.o(70449);
   }
   
-  public final void x(double paramDouble)
+  public final boolean w(Context paramContext, boolean paramBoolean)
   {
-    if (this.gHZ != null)
-    {
-      y.d("MicroMsg.VideoSurfaceView", "seek to time: " + paramDouble);
-      this.gHZ.seekTo((int)paramDouble);
-      start();
-    }
+    AppMethodBeat.i(70457);
+    paramBoolean = start();
+    AppMethodBeat.o(70457);
+    return paramBoolean;
   }
 }
 

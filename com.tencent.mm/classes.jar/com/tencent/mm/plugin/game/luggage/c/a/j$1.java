@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.game.luggage.c.a;
 
-import com.tencent.luggage.e.c;
+import com.tencent.luggage.d.c;
 import org.json.JSONObject;
 
 final class j$1
@@ -13,14 +13,14 @@ final class j$1
     return "menu:share:appmessage";
   }
   
-  public final JSONObject pV()
+  public final JSONObject tY()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.c.a.j.1
  * JD-Core Version:    0.7.0.1
  */

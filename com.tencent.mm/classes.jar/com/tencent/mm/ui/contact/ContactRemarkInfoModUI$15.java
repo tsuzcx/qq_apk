@@ -1,22 +1,24 @@
 package com.tencent.mm.ui.contact;
 
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mm.R.g;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.platformtools.ah;
 
 final class ContactRemarkInfoModUI$15
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
   ContactRemarkInfoModUI$15(ContactRemarkInfoModUI paramContactRemarkInfoModUI) {}
   
-  public final void onFocusChange(View paramView, boolean paramBoolean)
+  public final void onClick(View paramView)
   {
-    if (!paramBoolean)
+    AppMethodBeat.i(33644);
+    if ((ah.isNullOrNil(ContactRemarkInfoModUI.l(this.Acv))) || (ContactRemarkInfoModUI.o(this.Acv)))
     {
-      ContactRemarkInfoModUI.i(this.vKT).setBackgroundResource(R.g.input_bar_bg_normal);
-      return;
+      ContactRemarkInfoModUI.a(this.Acv, false);
+      ContactRemarkInfoModUI.j(this.Acv);
     }
-    ContactRemarkInfoModUI.i(this.vKT).setBackgroundResource(R.g.input_bar_bg_active);
+    AppMethodBeat.o(33644);
   }
 }
 

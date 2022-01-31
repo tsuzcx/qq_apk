@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.offline.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class WalletOfflineCoinPurseUI$29
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class WalletOfflineCoinPurseUI$29
   
   public final void run()
   {
-    WalletOfflineCoinPurseUI.t(this.mNj);
+    AppMethodBeat.i(43536);
+    WalletOfflineCoinPurseUI.s(this.pny);
+    AppMethodBeat.o(43536);
   }
 }
 

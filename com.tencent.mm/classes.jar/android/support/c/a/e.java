@@ -13,7 +13,9 @@ import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
-import android.support.v4.a.c.b;
+import android.support.v4.content.a.g;
+import android.support.v4.graphics.c;
+import android.support.v4.graphics.c.b;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.util.Xml;
@@ -24,7 +26,7 @@ import org.xmlpull.v1.XmlPullParser;
 
 public final class e
 {
-  private static boolean U(int paramInt)
+  private static boolean S(int paramInt)
   {
     return (paramInt >= 28) && (paramInt <= 31);
   }
@@ -156,7 +158,7 @@ public final class e
     int j = paramXmlPullParser.getDepth();
     int i;
     Object localObject1;
-    label95:
+    label85:
     do
     {
       do
@@ -172,8 +174,7 @@ public final class e
         if (!((String)localObject1).equals("objectAnimator")) {
           break;
         }
-        localObject1 = new ObjectAnimator();
-        a(paramContext, paramResources, paramTheme, paramAttributeSet, (ValueAnimator)localObject1, paramFloat, paramXmlPullParser);
+        localObject1 = a(paramContext, paramResources, paramTheme, paramAttributeSet, paramFloat, paramXmlPullParser);
         i = 0;
         localObject2 = localObject1;
       } while (paramAnimatorSet == null);
@@ -191,17 +192,17 @@ public final class e
       {
         localObject1 = a(paramContext, paramResources, paramTheme, paramAttributeSet, null, paramFloat, paramXmlPullParser);
         i = 0;
-        break label95;
+        break label85;
       }
       if (((String)localObject1).equals("set"))
       {
         localObject1 = new AnimatorSet();
-        localObject2 = android.support.v4.content.a.c.a(paramResources, paramTheme, paramAttributeSet, a.mt);
-        i = android.support.v4.content.a.c.a((TypedArray)localObject2, paramXmlPullParser, "ordering", 0, 0);
+        localObject2 = g.a(paramResources, paramTheme, paramAttributeSet, a.nq);
+        i = g.a((TypedArray)localObject2, paramXmlPullParser, "ordering", 0, 0);
         a(paramContext, paramResources, paramTheme, paramXmlPullParser, paramAttributeSet, (AnimatorSet)localObject1, i, paramFloat);
         ((TypedArray)localObject2).recycle();
         i = 0;
-        break label95;
+        break label85;
       }
       if (((String)localObject1).equals("propertyValuesHolder"))
       {
@@ -211,7 +212,7 @@ public final class e
         }
         i = 1;
         localObject1 = localObject2;
-        break label95;
+        break label85;
       }
       throw new RuntimeException("Unknown animator name: " + paramXmlPullParser.getName());
       if ((paramAnimatorSet != null) && (localArrayList != null))
@@ -248,6 +249,13 @@ public final class e
     return Keyframe.ofObject(paramFloat);
   }
   
+  private static ObjectAnimator a(Context paramContext, Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, float paramFloat, XmlPullParser paramXmlPullParser)
+  {
+    ObjectAnimator localObjectAnimator = new ObjectAnimator();
+    a(paramContext, paramResources, paramTheme, paramAttributeSet, localObjectAnimator, paramFloat, paramXmlPullParser);
+    return localObjectAnimator;
+  }
+  
   private static PropertyValuesHolder a(TypedArray paramTypedArray, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     Object localObject = paramTypedArray.peekValue(paramInt2);
@@ -263,29 +271,29 @@ public final class e
     {
       j = 1;
       if (j == 0) {
-        break label210;
+        break label209;
       }
       m = ((TypedValue)localObject).type;
       localObject = paramTypedArray.peekValue(paramInt3);
       if (localObject == null) {
-        break label216;
+        break label215;
       }
       k = 1;
       if (k == 0) {
-        break label222;
+        break label221;
       }
       n = ((TypedValue)localObject).type;
       i = paramInt1;
       if (paramInt1 == 4)
       {
-        if (((j == 0) || (!U(m))) && ((k == 0) || (!U(n)))) {
-          break label228;
+        if (((j == 0) || (!S(m))) && ((k == 0) || (!S(n)))) {
+          break label227;
         }
         i = 3;
       }
       label91:
       if (i != 0) {
-        break label234;
+        break label233;
       }
       paramInt1 = 1;
     }
@@ -295,34 +303,34 @@ public final class e
       {
         localObject = paramTypedArray.getString(paramInt2);
         paramTypedArray = paramTypedArray.getString(paramInt3);
-        c.b[] arrayOfb1 = android.support.v4.a.c.J((String)localObject);
-        c.b[] arrayOfb2 = android.support.v4.a.c.J(paramTypedArray);
+        c.b[] arrayOfb1 = c.K((String)localObject);
+        c.b[] arrayOfb2 = c.K(paramTypedArray);
         if ((arrayOfb1 == null) && (arrayOfb2 == null)) {
-          break label687;
+          break label685;
         }
         if (arrayOfb1 != null)
         {
-          a locala = new a((byte)0);
+          a locala = new a();
           if (arrayOfb2 != null)
           {
-            if (!android.support.v4.a.c.a(arrayOfb1, arrayOfb2))
+            if (!c.a(arrayOfb1, arrayOfb2))
             {
               throw new InflateException(" Can't morph from " + (String)localObject + " to " + paramTypedArray);
               j = 0;
               break;
-              label210:
+              label209:
               m = 0;
               break label27;
-              label216:
+              label215:
               k = 0;
               break label42;
-              label222:
+              label221:
               n = 0;
               break label54;
-              label228:
+              label227:
               i = 0;
               break label91;
-              label234:
+              label233:
               paramInt1 = 0;
               continue;
             }
@@ -332,17 +340,17 @@ public final class e
           return PropertyValuesHolder.ofObject(paramString, locala, new Object[] { arrayOfb1 });
         }
         if (arrayOfb2 == null) {
-          break label687;
+          break label685;
         }
-        return PropertyValuesHolder.ofObject(paramString, new a((byte)0), new Object[] { arrayOfb2 });
+        return PropertyValuesHolder.ofObject(paramString, new a(), new Object[] { arrayOfb2 });
       }
     }
     localObject = null;
     if (i == 3) {
-      localObject = f.bj();
+      localObject = f.bU();
     }
     float f1;
-    label347:
+    label345:
     float f2;
     if (paramInt1 != 0) {
       if (j != 0) {
@@ -350,13 +358,13 @@ public final class e
         {
           f1 = paramTypedArray.getDimension(paramInt2, 0.0F);
           if (k == 0) {
-            break label430;
+            break label428;
           }
           if (n != 5) {
-            break label419;
+            break label417;
           }
           f2 = paramTypedArray.getDimension(paramInt3, 0.0F);
-          label366:
+          label364:
           paramTypedArray = PropertyValuesHolder.ofFloat(paramString, new float[] { f1, f2 });
         }
       }
@@ -374,11 +382,11 @@ public final class e
       paramTypedArray.setEvaluator((TypeEvaluator)localObject);
       return paramTypedArray;
       f1 = paramTypedArray.getFloat(paramInt2, 0.0F);
-      break label347;
-      label419:
+      break label345;
+      label417:
       f2 = paramTypedArray.getFloat(paramInt3, 0.0F);
-      break label366;
-      label430:
+      break label364;
+      label428:
       paramTypedArray = PropertyValuesHolder.ofFloat(paramString, new float[] { f1 });
       continue;
       if (n == 5) {}
@@ -392,12 +400,12 @@ public final class e
         if (m == 5)
         {
           paramInt1 = (int)paramTypedArray.getDimension(paramInt2, 0.0F);
-          label508:
+          label506:
           if (k == 0) {
-            break label603;
+            break label601;
           }
           if (n != 5) {
-            break label575;
+            break label573;
           }
           paramInt2 = (int)paramTypedArray.getDimension(paramInt3, 0.0F);
         }
@@ -405,21 +413,21 @@ public final class e
         {
           paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1, paramInt2 });
           break;
-          if (U(m))
+          if (S(m))
           {
             paramInt1 = paramTypedArray.getColor(paramInt2, 0);
-            break label508;
+            break label506;
           }
           paramInt1 = paramTypedArray.getInt(paramInt2, 0);
-          break label508;
-          label575:
-          if (U(n)) {
+          break label506;
+          label573:
+          if (S(n)) {
             paramInt2 = paramTypedArray.getColor(paramInt3, 0);
           } else {
             paramInt2 = paramTypedArray.getInt(paramInt3, 0);
           }
         }
-        label603:
+        label601:
         paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1 });
       }
       else
@@ -433,7 +441,7 @@ public final class e
           {
             paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1 });
             break;
-            if (U(n)) {
+            if (S(n)) {
               paramInt1 = paramTypedArray.getColor(paramInt3, 0);
             } else {
               paramInt1 = paramTypedArray.getInt(paramInt3, 0);
@@ -443,20 +451,20 @@ public final class e
         paramTypedArray = null;
       }
     }
-    label687:
+    label685:
     return null;
   }
   
   private static ValueAnimator a(Context paramContext, Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, ValueAnimator paramValueAnimator, float paramFloat, XmlPullParser paramXmlPullParser)
   {
-    TypedArray localTypedArray = android.support.v4.content.a.c.a(paramResources, paramTheme, paramAttributeSet, a.ms);
-    paramTheme = android.support.v4.content.a.c.a(paramResources, paramTheme, paramAttributeSet, a.mw);
+    TypedArray localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.np);
+    paramTheme = g.a(paramResources, paramTheme, paramAttributeSet, a.nt);
     paramResources = paramValueAnimator;
     if (paramValueAnimator == null) {
       paramResources = new ValueAnimator();
     }
     a(paramResources, localTypedArray, paramTheme, paramFloat, paramXmlPullParser);
-    int i = android.support.v4.content.a.c.a(localTypedArray, paramXmlPullParser, "interpolator", 0);
+    int i = g.b(localTypedArray, paramXmlPullParser, "interpolator", 0);
     if (i > 0) {
       paramResources.setInterpolator(d.loadInterpolator(paramContext, i));
     }
@@ -469,15 +477,15 @@ public final class e
   
   private static void a(ValueAnimator paramValueAnimator, TypedArray paramTypedArray1, TypedArray paramTypedArray2, float paramFloat, XmlPullParser paramXmlPullParser)
   {
-    long l1 = android.support.v4.content.a.c.a(paramTypedArray1, paramXmlPullParser, "duration", 1, 300);
-    long l2 = android.support.v4.content.a.c.a(paramTypedArray1, paramXmlPullParser, "startOffset", 2, 0);
-    int j = android.support.v4.content.a.c.a(paramTypedArray1, paramXmlPullParser, "valueType", 7, 4);
+    long l1 = g.a(paramTypedArray1, paramXmlPullParser, "duration", 1, 300);
+    long l2 = g.a(paramTypedArray1, paramXmlPullParser, "startOffset", 2, 0);
+    int j = g.a(paramTypedArray1, paramXmlPullParser, "valueType", 7, 4);
     Object localObject;
     label103:
     int k;
     label119:
     int m;
-    if ((android.support.v4.content.a.c.a(paramXmlPullParser, "valueFrom")) && (android.support.v4.content.a.c.a(paramXmlPullParser, "valueTo")))
+    if ((g.a(paramXmlPullParser, "valueFrom")) && (g.a(paramXmlPullParser, "valueTo")))
     {
       i = j;
       if (j == 4)
@@ -501,7 +509,7 @@ public final class e
         }
         m = ((TypedValue)localObject).type;
         label131:
-        if (((i == 0) || (!U(j))) && ((k == 0) || (!U(m)))) {
+        if (((i == 0) || (!S(j))) && ((k == 0) || (!S(m)))) {
           break label348;
         }
       }
@@ -519,18 +527,18 @@ public final class e
       }
       paramValueAnimator.setDuration(l1);
       paramValueAnimator.setStartDelay(l2);
-      paramValueAnimator.setRepeatCount(android.support.v4.content.a.c.a(paramTypedArray1, paramXmlPullParser, "repeatCount", 3, 0));
-      paramValueAnimator.setRepeatMode(android.support.v4.content.a.c.a(paramTypedArray1, paramXmlPullParser, "repeatMode", 4, 1));
+      paramValueAnimator.setRepeatCount(g.a(paramTypedArray1, paramXmlPullParser, "repeatCount", 3, 0));
+      paramValueAnimator.setRepeatMode(g.a(paramTypedArray1, paramXmlPullParser, "repeatMode", 4, 1));
       if (paramTypedArray2 == null) {
         break label371;
       }
       paramValueAnimator = (ObjectAnimator)paramValueAnimator;
-      paramTypedArray1 = android.support.v4.content.a.c.b(paramTypedArray2, paramXmlPullParser, "pathData", 1);
+      paramTypedArray1 = g.c(paramTypedArray2, paramXmlPullParser, "pathData", 1);
       if (paramTypedArray1 == null) {
         break label372;
       }
-      localObject = android.support.v4.content.a.c.b(paramTypedArray2, paramXmlPullParser, "propertyXName", 2);
-      paramXmlPullParser = android.support.v4.content.a.c.b(paramTypedArray2, paramXmlPullParser, "propertyYName", 3);
+      localObject = g.c(paramTypedArray2, paramXmlPullParser, "propertyXName", 2);
+      paramXmlPullParser = g.c(paramTypedArray2, paramXmlPullParser, "propertyYName", 3);
       if ((localObject != null) || (paramXmlPullParser != null)) {
         break label354;
       }
@@ -545,11 +553,11 @@ public final class e
       break label131;
     }
     label354:
-    a(android.support.v4.a.c.I(paramTypedArray1), paramValueAnimator, 0.5F * paramFloat, (String)localObject, paramXmlPullParser);
+    a(c.J(paramTypedArray1), paramValueAnimator, 0.5F * paramFloat, (String)localObject, paramXmlPullParser);
     label371:
     return;
     label372:
-    paramValueAnimator.setPropertyName(android.support.v4.content.a.c.b(paramTypedArray2, paramXmlPullParser, "propertyName", 0));
+    paramValueAnimator.setPropertyName(g.c(paramTypedArray2, paramXmlPullParser, "propertyName", 0));
   }
   
   private static void a(Path paramPath, ObjectAnimator paramObjectAnimator, float paramFloat, String paramString1, String paramString2)
@@ -570,27 +578,26 @@ public final class e
     float[] arrayOfFloat1 = new float[k];
     localObject = new float[k];
     float[] arrayOfFloat2 = new float[2];
-    int j = 0;
-    f1 = f2 / (k - 1);
     int i = 0;
+    f1 = f2 / (k - 1);
     paramFloat = 0.0F;
-    if (i < k)
+    int j = 0;
+    if (j < k)
     {
-      paramPath.getPosTan(paramFloat, arrayOfFloat2, null);
-      arrayOfFloat1[i] = arrayOfFloat2[0];
-      localObject[i] = arrayOfFloat2[1];
+      paramPath.getPosTan(paramFloat - ((Float)localArrayList.get(i)).floatValue(), arrayOfFloat2, null);
+      arrayOfFloat1[j] = arrayOfFloat2[0];
+      localObject[j] = arrayOfFloat2[1];
       paramFloat += f1;
-      if ((j + 1 >= localArrayList.size()) || (paramFloat <= ((Float)localArrayList.get(j + 1)).floatValue())) {
-        break label317;
+      if ((i + 1 >= localArrayList.size()) || (paramFloat <= ((Float)localArrayList.get(i + 1)).floatValue())) {
+        break label313;
       }
-      paramFloat -= ((Float)localArrayList.get(j + 1)).floatValue();
+      i += 1;
       paramPath.nextContour();
-      j += 1;
     }
-    label317:
+    label313:
     for (;;)
     {
-      i += 1;
+      j += 1;
       break;
       paramPath = null;
       localArrayList = null;
@@ -645,9 +652,9 @@ public final class e
     int j;
     if (paramXmlPullParser.getName().equals("propertyValuesHolder"))
     {
-      TypedArray localTypedArray1 = android.support.v4.content.a.c.a(paramResources, paramTheme, paramAttributeSet, a.mu);
-      String str = android.support.v4.content.a.c.b(localTypedArray1, paramXmlPullParser, "propertyName", 3);
-      int i1 = android.support.v4.content.a.c.a(localTypedArray1, paramXmlPullParser, "valueType", 2, 4);
+      TypedArray localTypedArray1 = g.a(paramResources, paramTheme, paramAttributeSet, a.nr);
+      String str = g.c(localTypedArray1, paramXmlPullParser, "propertyName", 3);
+      int i1 = g.a(localTypedArray1, paramXmlPullParser, "valueType", 2, 4);
       localObject1 = null;
       i = i1;
       j = paramXmlPullParser.next();
@@ -667,23 +674,23 @@ public final class e
           j = i;
           if (i == 4)
           {
-            localObject2 = android.support.v4.content.a.c.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.mv);
-            localObject3 = android.support.v4.content.a.c.a((TypedArray)localObject2, paramXmlPullParser, "value");
+            localObject2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.ns);
+            localObject3 = g.a((TypedArray)localObject2, paramXmlPullParser, "value");
             if (localObject3 == null) {
               break label418;
             }
             i = 1;
-            if ((i == 0) || (!U(((TypedValue)localObject3).type))) {
+            if ((i == 0) || (!S(((TypedValue)localObject3).type))) {
               break label424;
             }
             i = 3;
             ((TypedArray)localObject2).recycle();
             j = i;
           }
-          localTypedArray2 = android.support.v4.content.a.c.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.mv);
+          localTypedArray2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.ns);
           localObject3 = null;
-          f = android.support.v4.content.a.c.a(localTypedArray2, paramXmlPullParser, "fraction", 3, -1.0F);
-          localObject2 = android.support.v4.content.a.c.a(localTypedArray2, paramXmlPullParser, "value");
+          f = g.a(localTypedArray2, paramXmlPullParser, "fraction", 3, -1.0F);
+          localObject2 = g.a(localTypedArray2, paramXmlPullParser, "value");
           if (localObject2 == null) {
             break label430;
           }
@@ -692,7 +699,7 @@ public final class e
           if (j != 4) {
             break label981;
           }
-          if ((k == 0) || (!U(((TypedValue)localObject2).type))) {
+          if ((k == 0) || (!S(((TypedValue)localObject2).type))) {
             break label436;
           }
           i = 3;
@@ -709,7 +716,7 @@ public final class e
         }
         for (;;)
         {
-          i = android.support.v4.content.a.c.a(localTypedArray2, paramXmlPullParser, "interpolator", 1);
+          i = g.b(localTypedArray2, paramXmlPullParser, "interpolator", 1);
           if (i > 0) {
             ((Keyframe)localObject2).setInterpolator(d.loadInterpolator(paramContext, i));
           }
@@ -739,9 +746,9 @@ public final class e
           label436:
           i = 0;
           break label287;
-          localObject2 = Keyframe.ofFloat(f, android.support.v4.content.a.c.a(localTypedArray2, paramXmlPullParser, "value", 0, 0.0F));
+          localObject2 = Keyframe.ofFloat(f, g.a(localTypedArray2, paramXmlPullParser, "value", 0, 0.0F));
           continue;
-          localObject2 = Keyframe.ofInt(f, android.support.v4.content.a.c.a(localTypedArray2, paramXmlPullParser, "value", 0, 0));
+          localObject2 = Keyframe.ofInt(f, g.a(localTypedArray2, paramXmlPullParser, "value", 0, 0));
           continue;
           label484:
           if (i == 0) {
@@ -826,7 +833,7 @@ public final class e
             localObject1 = localObject2;
             if (i == 3)
             {
-              ((PropertyValuesHolder)localObject2).setEvaluator(f.bj());
+              ((PropertyValuesHolder)localObject2).setEvaluator(f.bU());
               localObject1 = localObject2;
             }
             label848:
@@ -879,10 +886,10 @@ public final class e
     }
   }
   
-  private static final class a
+  static final class a
     implements TypeEvaluator<c.b[]>
   {
-    private c.b[] mJ;
+    private c.b[] nG;
   }
 }
 

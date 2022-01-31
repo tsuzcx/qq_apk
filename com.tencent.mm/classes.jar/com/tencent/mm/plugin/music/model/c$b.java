@@ -1,48 +1,52 @@
 package com.tencent.mm.plugin.music.model;
 
 import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.model.e.a;
 import com.tencent.mm.plugin.music.model.e.b;
 import com.tencent.mm.plugin.sns.b.f;
 import com.tencent.mm.plugin.sns.b.n;
-import com.tencent.mm.protocal.c.awd;
-import com.tencent.mm.ui.ak;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.ui.af;
 
-public final class c$b
+final class c$b
   implements Runnable
 {
-  a mzx;
+  a oZD;
   
-  public c$b(c paramc, a parama)
+  c$b(c paramc, a parama)
   {
-    this.mzx = parama;
+    this.oZD = parama;
   }
   
   public final void run()
   {
-    Object localObject = new awd();
-    ((awd)localObject).lsK = this.mzx.field_songMediaId;
-    ((awd)localObject).trP = this.mzx.field_songAlbumUrl;
-    ((awd)localObject).trQ = this.mzx.field_songAlbumType;
-    ((awd)localObject).kSC = ((awd)localObject).trP;
-    localObject = n.omC.b((awd)localObject);
+    AppMethodBeat.i(104878);
+    Object localObject = new bcs();
+    ((bcs)localObject).Id = this.oZD.field_songMediaId;
+    ((bcs)localObject).xrS = this.oZD.field_songAlbumUrl;
+    ((bcs)localObject).xrT = this.oZD.field_songAlbumType;
+    ((bcs)localObject).Url = ((bcs)localObject).xrS;
+    localObject = n.raQ.b((bcs)localObject);
     if (localObject != null)
     {
-      localObject = com.tencent.mm.sdk.platformtools.c.f((Bitmap)localObject, 10);
-      this.mzu.a(this.mzx, (Bitmap)localObject);
-      localObject = ak.Y((Bitmap)localObject);
-      if (!this.mzx.o((int[])localObject)) {
-        this.mzx = e.bnq().Y(this.mzx.field_musicId, localObject[0], localObject[1]);
+      localObject = d.g((Bitmap)localObject, 10);
+      this.oZA.a(this.oZD, (Bitmap)localObject);
+      localObject = af.ao((Bitmap)localObject);
+      if (!this.oZD.y((int[])localObject)) {
+        this.oZD = e.bVM().ap(this.oZD.field_musicId, localObject[0], localObject[1]);
       }
-      if ((this.mzu.mzr != null) && (this.mzx != null)) {
-        this.mzu.mzr.a(this.mzx, (int[])localObject);
+      if ((this.oZA.oZx != null) && (this.oZD != null)) {
+        this.oZA.oZx.a(this.oZD, (int[])localObject);
       }
     }
+    AppMethodBeat.o(104878);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.c.b
  * JD-Core Version:    0.7.0.1
  */

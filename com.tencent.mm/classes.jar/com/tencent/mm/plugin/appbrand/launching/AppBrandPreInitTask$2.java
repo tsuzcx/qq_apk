@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandPreInitTask$2
   implements Runnable
@@ -9,8 +10,10 @@ final class AppBrandPreInitTask$2
   
   public final void run()
   {
-    this.gJh.run();
+    AppMethodBeat.i(131719);
+    this.ijN.run();
     Looper.myLooper().quit();
+    AppMethodBeat.o(131719);
   }
 }
 

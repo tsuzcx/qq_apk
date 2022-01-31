@@ -1,73 +1,59 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.mm.plugin.game.luggage.g;
-import com.tencent.mm.plugin.webview.b.b;
-import com.tencent.mm.plugin.webview.luggage.jsapi.aw.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.ax;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONException;
+import com.tencent.luggage.d.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.game.api.c;
+import com.tencent.mm.plugin.game.luggage.d.f;
+import com.tencent.mm.plugin.webview.luggage.c.b;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bi;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class d
-  extends ax<com.tencent.mm.plugin.game.luggage.d>
+  extends bi<f>
 {
-  public final void a(Context paramContext, String paramString, aw.a parama)
+  public final void a(Context paramContext, String paramString, bh.a parama)
   {
-    y.i("MicroMsg.JsApiGetGameData", "invokeInMM");
-    paramString = g.EH(paramString);
-    if (paramString == null)
+    AppMethodBeat.i(154139);
+    paramContext = b.BJ(paramString);
+    if (paramContext == null)
     {
-      y.e("MicroMsg.JsApiGetGameData", "data is null");
-      parama.e("null_data", null);
+      parama.c("empty_postId", null);
+      AppMethodBeat.o(154139);
       return;
     }
-    paramContext = paramString.optString("preVerifyAppId");
-    if (bk.bl(paramContext))
-    {
-      y.i("MicroMsg.JsApiGetGameData", "appId is null");
-      parama.e("appid_null", null);
-      return;
+    if (paramContext.optBoolean("cancelAll")) {
+      ((c)g.E(c.class)).c(null, true);
     }
-    paramString = paramString.optString("key");
-    if (bk.bl(paramString))
+    for (;;)
     {
-      y.i("MicroMsg.JsApiGetGameData", "key is null");
-      parama.e("null_key", null);
+      parama.c(null, null);
+      AppMethodBeat.o(154139);
       return;
-    }
-    paramString = b.cav().fr(paramContext, paramString);
-    if (!bk.bl(paramString.field_value)) {
-      paramContext = new JSONObject();
-    }
-    try
-    {
-      paramContext.put("value", paramString.field_value);
-      paramContext.put("weight", paramString.field_weight);
-      paramContext.put("expireTime", paramString.field_expireTime - System.currentTimeMillis() / 1000L);
-      label157:
-      parama.e(null, paramContext);
-      return;
-      parama.e(null, null);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      break label157;
+      paramContext = paramContext.optJSONArray("postIdList");
+      if ((paramContext == null) || (paramContext.length() == 0))
+      {
+        parama.c("empty_postId", null);
+        AppMethodBeat.o(154139);
+        return;
+      }
+      ((c)g.E(c.class)).c(paramContext, false);
     }
   }
   
-  public final int aGj()
+  public final void b(a<f>.a parama) {}
+  
+  public final int bjL()
   {
     return 1;
   }
   
-  public final void b(com.tencent.luggage.e.a<com.tencent.mm.plugin.game.luggage.d>.a parama) {}
-  
   public final String name()
   {
-    return "getGameData";
+    return "cancelHaowanPublish";
   }
 }
 

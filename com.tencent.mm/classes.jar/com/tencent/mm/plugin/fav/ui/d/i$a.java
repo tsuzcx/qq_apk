@@ -6,14 +6,14 @@ import android.widget.TextView;
 public final class i$a
   extends a.b
 {
-  TextView eXO;
-  TextView eXP;
-  ImageView gSx;
-  TextView kiv;
+  TextView gpL;
+  TextView gpM;
+  ImageView ivs;
+  TextView mCZ;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.d.i.a
  * JD-Core Version:    0.7.0.1
  */

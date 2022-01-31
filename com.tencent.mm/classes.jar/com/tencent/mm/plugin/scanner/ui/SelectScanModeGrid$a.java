@@ -6,9 +6,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.List;
 
 public final class SelectScanModeGrid$a
@@ -16,28 +15,38 @@ public final class SelectScanModeGrid$a
 {
   private Context context;
   private List<SelectScanModeGrid.b> itemList;
-  int nNu = -1;
+  int qBf;
   
   public SelectScanModeGrid$a(Context paramContext, List<SelectScanModeGrid.b> paramList)
   {
+    AppMethodBeat.i(81327);
+    this.qBf = -1;
     this.context = paramContext;
     this.itemList = paramList;
-    y.d("MicroMsg.scanner.SelectScanModeGroupAdapter", "<init> list size = " + this.itemList.size());
+    ab.d("MicroMsg.scanner.SelectScanModeGroupAdapter", "<init> list size = " + this.itemList.size());
+    AppMethodBeat.o(81327);
   }
   
   public final int getCount()
   {
-    return this.itemList.size();
+    AppMethodBeat.i(81328);
+    int i = this.itemList.size();
+    AppMethodBeat.o(81328);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
+    AppMethodBeat.i(81329);
     if ((paramInt < 0) || (paramInt >= this.itemList.size()))
     {
-      y.e("MicroMsg.scanner.SelectScanModeGroupAdapter", "getItem fail, invalid position = " + paramInt);
+      ab.e("MicroMsg.scanner.SelectScanModeGroupAdapter", "getItem fail, invalid position = ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(81329);
       return null;
     }
-    return this.itemList.get(paramInt);
+    Object localObject = this.itemList.get(paramInt);
+    AppMethodBeat.o(81329);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -47,45 +56,51 @@ public final class SelectScanModeGrid$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(81330);
     SelectScanModeGrid.a.a locala;
     if (paramView == null)
     {
-      paramView = View.inflate(this.context, R.i.select_scan_mode_grid_item, null);
+      paramView = View.inflate(this.context, 2130970662, null);
       locala = new SelectScanModeGrid.a.a();
-      locala.nNv = ((TextView)paramView.findViewById(R.h.select_scan_mode_img));
-      locala.mTE = ((TextView)paramView.findViewById(R.h.select_scan_mode_tv));
-      locala.nNw = ((ImageView)paramView.findViewById(R.h.select_scan_mode_red_dot));
+      locala.qBg = ((TextView)paramView.findViewById(2131827551));
+      locala.pvK = ((TextView)paramView.findViewById(2131827552));
+      locala.qBh = ((ImageView)paramView.findViewById(2131827553));
       paramView.setTag(locala);
     }
-    for (;;)
+    while (paramInt == paramViewGroup.getChildCount())
     {
-      if (paramInt == paramViewGroup.getChildCount())
+      paramViewGroup = (SelectScanModeGrid.b)getItem(paramInt);
+      if (paramViewGroup == null)
       {
-        paramViewGroup = (SelectScanModeGrid.b)getItem(paramInt);
-        if (paramViewGroup != null) {
-          break;
-        }
-        y.e("MicroMsg.scanner.SelectScanModeGroupAdapter", "getView fail, item is null");
+        ab.e("MicroMsg.scanner.SelectScanModeGroupAdapter", "getView fail, item is null");
+        AppMethodBeat.o(81330);
+        return paramView;
+        locala = (SelectScanModeGrid.a.a)paramView.getTag();
       }
-      return paramView;
-      locala = (SelectScanModeGrid.a.a)paramView.getTag();
-    }
-    locala.mTE.setText(paramViewGroup.title);
-    if (paramInt == this.nNu) {
-      locala.nNv.setBackgroundResource(paramViewGroup.nNy);
+      else
+      {
+        locala.pvK.setText(paramViewGroup.title);
+        if (paramInt != this.qBf) {
+          break label188;
+        }
+        locala.qBg.setBackgroundResource(paramViewGroup.qBj);
+        paramViewGroup.qBl = locala.qBg;
+        if (!paramViewGroup.qBm) {
+          break label203;
+        }
+        locala.qBh.setVisibility(0);
+      }
     }
     for (;;)
     {
-      paramViewGroup.nNA = locala.nNv;
-      if (!paramViewGroup.nNB) {
-        break;
-      }
-      locala.nNw.setVisibility(0);
+      AppMethodBeat.o(81330);
       return paramView;
-      locala.nNv.setBackgroundResource(paramViewGroup.nNx);
+      label188:
+      locala.qBg.setBackgroundResource(paramViewGroup.qBi);
+      break;
+      label203:
+      locala.qBh.setVisibility(4);
     }
-    locala.nNw.setVisibility(4);
-    return paramView;
   }
 }
 

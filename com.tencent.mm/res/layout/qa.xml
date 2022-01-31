@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/rn" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/b24" android:background="@drawable/rn" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bfd" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <Button android:textSize="@dimen/m2" android:textColor="@color/hk" android:id="@id/b2g" android:background="@drawable/b_" android:paddingLeft="@dimen/dv" android:paddingRight="@dimen/dv" android:visibility="gone" android:layout_width="wrap_content" style="@style/ny" />
+    <Button android:textSize="@dimen/m2" android:textColor="@color/hk" android:id="@id/b2h" android:background="@drawable/b_" android:paddingLeft="@dimen/dv" android:paddingRight="@dimen/dv" android:visibility="gone" android:layout_width="wrap_content" style="@style/ny" />
+    <Button android:textSize="@dimen/m2" android:textColor="@color/hk" android:id="@id/b2i" android:background="@drawable/b_" android:paddingLeft="@dimen/dv" android:paddingRight="@dimen/dv" android:visibility="gone" android:layout_width="wrap_content" style="@style/ny" />
+</LinearLayout>

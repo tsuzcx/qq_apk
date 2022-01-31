@@ -1,16 +1,32 @@
 package com.tencent.mm.be;
 
-import android.os.Looper;
-import android.os.MessageQueue;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
-public final class c$1
-  implements Runnable
+final class c$1
+  implements ap.a
 {
-  public c$1(c paramc) {}
+  c$1(c paramc) {}
   
-  public final void run()
+  public final boolean onTimerExpired()
   {
-    Looper.myQueue().addIdleHandler(new c.1.1(this));
+    AppMethodBeat.i(78555);
+    ab.w("MicroMsg.SenseWhereHttpUtil", "it is time up, has no sense where response.");
+    if (c.a(this.fOa) != null) {
+      g.RK().eHt.a(c.a(this.fOa));
+    }
+    c.b(this.fOa);
+    c.c(this.fOa);
+    synchronized (c.d(this.fOa))
+    {
+      c.d(this.fOa).notifyAll();
+      AppMethodBeat.o(78555);
+      return false;
+    }
   }
 }
 

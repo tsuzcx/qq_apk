@@ -1,124 +1,130 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.base.a;
+import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.c;
 import com.tencent.mm.plugin.appbrand.jsapi.g.a.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import org.json.JSONObject;
 
 public final class o
-  extends c
+  extends a
 {
-  public static final int CTRL_INDEX = 4;
-  public static final String NAME = "updateMap";
+  public static final int CTRL_INDEX = 2;
+  public static final String NAME = "insertMap";
   
-  protected final boolean c(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final View a(com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null)
+    AppMethodBeat.i(93863);
+    float f1 = bo.getFloat(paramJSONObject.optString("centerLatitude"), 0.0F);
+    float f2 = bo.getFloat(paramJSONObject.optString("centerLongitude"), 0.0F);
+    int i = paramJSONObject.optInt("scale", 16);
+    int j = paramJSONObject.optInt("rotate", 0);
+    int k = paramJSONObject.optInt("skew", 0);
+    if ((Math.abs(f1) > 90.0F) || (Math.abs(f2) > 180.0F))
     {
-      y.e("MicroMsg.JsApiUpdateMap", "data is null");
-      return false;
+      ab.d("MicroMsg.JsApiInsertMap", "centerLatitude or centerLongitude value is error!");
+      AppMethodBeat.o(93863);
+      return null;
     }
-    paramView = parame.getAppId();
-    y.i("MicroMsg.JsApiUpdateMap", "updateView appId:%s viewId:%d data:%s", new Object[] { paramView, Integer.valueOf(paramInt), paramJSONObject });
-    paramView = f.o(paramView, parame.ahJ(), p(paramJSONObject));
-    if (paramView == null)
+    com.tencent.mm.plugin.appbrand.jsapi.g.a.e.oe(0);
+    String str = parame.getAppId();
+    ab.i("MicroMsg.JsApiInsertMap", "insertMap appId:%s viewId:%d data:%s", new Object[] { str, Integer.valueOf(w(paramJSONObject)), paramJSONObject });
+    b localb = ((c)com.tencent.luggage.a.e.q(c.class)).b(parame, paramJSONObject);
+    if (localb == null)
     {
-      y.e("MicroMsg.JsApiUpdateMap", "mapView is null, return");
-      return false;
+      ab.e("MicroMsg.JsApiInsertMap", "mapView is null, return");
+      AppMethodBeat.o(93863);
+      return null;
     }
-    if (paramJSONObject.has("scale")) {
-      paramView.lv(paramJSONObject.optInt("scale", 16));
-    }
-    float f1;
-    float f2;
-    if ((paramJSONObject.has("centerLatitude")) && (paramJSONObject.has("centerLongitude")))
+    if (!g.a(str, f.g(parame, paramJSONObject), localb))
     {
-      f1 = bk.getFloat(paramJSONObject.optString("centerLatitude"), 0.0F);
-      f2 = bk.getFloat(paramJSONObject.optString("centerLongitude"), 0.0F);
-      if ((Math.abs(f1) <= 90.0F) && (Math.abs(f2) <= 180.0F)) {
-        paramView.F(f1, f2);
-      }
+      ab.e("MicroMsg.JsApiInsertMap", "initMapView is false, return");
+      com.tencent.mm.plugin.appbrand.jsapi.g.a.e.oe(1);
+      AppMethodBeat.o(93863);
+      return null;
     }
-    if (paramJSONObject.has("enableZoom")) {
-      paramView.dg(paramJSONObject.optBoolean("enableZoom", true));
-    }
-    if (paramJSONObject.has("enableScroll")) {
-      paramView.dh(paramJSONObject.optBoolean("enableScroll", true));
-    }
-    if (paramJSONObject.has("enableRotate")) {
-      paramView.di(paramJSONObject.optBoolean("enableRotate", true));
-    }
-    if (paramJSONObject.has("showCompass")) {
-      paramView.dj(paramJSONObject.optBoolean("showCompass", false));
-    }
-    if (paramJSONObject.has("enable3D")) {
-      paramView.dk(paramJSONObject.optBoolean("enable3D", false));
-    }
-    if (paramJSONObject.has("enableOverlooking")) {
-      paramView.dl(paramJSONObject.optBoolean("enableOverlooking", false));
-    }
-    if (paramJSONObject.has("enableSatellite")) {
-      paramView.dm(paramJSONObject.optBoolean("enableSatellite", false));
-    }
-    if (paramJSONObject.has("enableTraffic")) {
-      paramView.dn(paramJSONObject.optBoolean("enableTraffic", false));
-    }
-    try
-    {
-      if (paramJSONObject.has("covers"))
-      {
-        paramView.ajp();
-        paramJSONObject = new JSONArray(paramJSONObject.optString("covers"));
-        paramInt = 0;
-        while (paramInt < paramJSONObject.length())
-        {
-          Object localObject = (JSONObject)paramJSONObject.get(paramInt);
-          f1 = bk.getFloat(((JSONObject)localObject).optString("latitude"), 0.0F);
-          f2 = bk.getFloat(((JSONObject)localObject).optString("longitude"), 0.0F);
-          String str = ((com.tencent.mm.plugin.appbrand.d.b)parame.i(com.tencent.mm.plugin.appbrand.d.b.class)).b(parame, ((JSONObject)localObject).optString("iconPath"));
-          float f3 = (float)((JSONObject)localObject).optDouble("rotate", 0.0D);
-          localObject = new b.d();
-          double d1 = f1;
-          double d2 = f2;
-          ((b.d)localObject).latitude = d1;
-          ((b.d)localObject).longitude = d2;
-          ((b.d)localObject).gum = str;
-          ((b.d)localObject).rotate = f3;
-          paramView.a((b.d)localObject);
-          paramInt += 1;
-        }
-      }
-      return true;
-    }
-    catch (Exception parame)
-    {
-      y.e("MicroMsg.JsApiUpdateMap", "parse covers error, exception : %s", new Object[] { parame });
-      return false;
-    }
+    com.tencent.mm.plugin.appbrand.jsapi.g.a.e.oe(2);
+    localb.ej(paramJSONObject.optBoolean("enableZoom", true));
+    localb.ek(paramJSONObject.optBoolean("enableScroll", true));
+    localb.el(paramJSONObject.optBoolean("enableRotate", false));
+    localb.em(paramJSONObject.optBoolean("showCompass", false));
+    localb.en(paramJSONObject.optBoolean("enable3D", false));
+    localb.eo(paramJSONObject.optBoolean("enableOverlooking", false));
+    localb.ep(paramJSONObject.optBoolean("enableSatellite", false));
+    localb.er(paramJSONObject.optBoolean("enableIndoor", true));
+    localb.es(paramJSONObject.optBoolean("enableIndoorLevelPick", false));
+    localb.et(paramJSONObject.optBoolean("showScale", true));
+    localb.a(f1, f2, i, j, k);
+    parame.a(new o.1(this, localb));
+    parame.a(new o.2(this, localb));
+    parame.a(new o.3(this, parame, str, paramJSONObject));
+    localb.getView().setVisibility(0);
+    parame = new CoverViewContainer(parame.getContext(), localb.getView());
+    AppMethodBeat.o(93863);
+    return parame;
   }
   
-  protected final int p(JSONObject paramJSONObject)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
+    AppMethodBeat.i(93865);
+    paramView = g.cl(parame.getAppId(), f.g(parame, paramJSONObject));
+    if (paramView == null)
+    {
+      ab.e("MicroMsg.JsApiInsertMap", "mapView is null, error, return");
+      AppMethodBeat.o(93865);
+      return;
+    }
+    paramView.a(new o.4(this, paramInt, parame));
+    paramView.a(new o.5(this, paramInt, parame));
+    paramView.a(new o.6(this, paramInt, parame));
+    paramView.a(new o.7(this, paramInt, parame));
+    paramView.eu(paramJSONObject.optBoolean("showLocation"));
+    paramView.a(new o.8(this, paramInt, parame));
+    paramView.a(new o.9(this, paramInt, parame));
+    AppMethodBeat.o(93865);
+  }
+  
+  public final int w(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(93864);
     try
     {
       int i = paramJSONObject.optInt("mapId");
+      AppMethodBeat.o(93864);
       return i;
     }
     catch (Exception paramJSONObject)
     {
-      y.e("MicroMsg.JsApiUpdateMap", "get mapId error, exception : %s", new Object[] { paramJSONObject });
+      ab.e("MicroMsg.JsApiInsertMap", "get mapId error, exception : %s", new Object[] { paramJSONObject });
+      AppMethodBeat.o(93864);
     }
     return -1;
+  }
+  
+  public static final class e
+    extends ai
+  {
+    private static final int CTRL_INDEX = 511;
+    private static final String NAME = "onMapPoiClick";
+  }
+  
+  public static final class f
+    extends ai
+  {
+    private static final int CTRL_INDEX = 147;
+    private static final String NAME = "onMapRegionChange";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.o
  * JD-Core Version:    0.7.0.1
  */

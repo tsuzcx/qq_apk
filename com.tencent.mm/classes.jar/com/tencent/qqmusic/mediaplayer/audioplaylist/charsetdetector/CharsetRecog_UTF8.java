@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class CharsetRecog_UTF8
   extends CharsetRecognizer
 {
@@ -11,6 +13,7 @@ class CharsetRecog_UTF8
   CharsetMatch match(CharsetDetector paramCharsetDetector)
   {
     int i4 = 0;
+    AppMethodBeat.i(104765);
     byte[] arrayOfByte = paramCharsetDetector.fRawInput;
     if ((paramCharsetDetector.fRawLength >= 3) && ((arrayOfByte[0] & 0xFF) == 239) && ((arrayOfByte[1] & 0xFF) == 187) && ((arrayOfByte[2] & 0xFF) == 191)) {}
     for (int m = 1;; m = 0)
@@ -20,14 +23,14 @@ class CharsetRecog_UTF8
       int n = 0;
       int j;
       int k;
-      label110:
+      label115:
       int i3;
       int i2;
       if (i < paramCharsetDetector.fRawLength)
       {
         j = arrayOfByte[i];
         if ((j & 0x80) == 0) {
-          break label386;
+          break label403;
         }
         if ((j & 0xE0) == 192)
         {
@@ -41,7 +44,7 @@ class CharsetRecog_UTF8
           if (i3 < paramCharsetDetector.fRawLength)
           {
             if ((arrayOfByte[i3] & 0xC0) == 128) {
-              break label237;
+              break label242;
             }
             j = i1 + 1;
             k = i3;
@@ -60,20 +63,20 @@ class CharsetRecog_UTF8
           k = 2;
           j = i;
           i = k;
-          break label110;
+          break label115;
         }
         if ((j & 0xF8) == 240)
         {
           k = 3;
           j = i;
           i = k;
-          break label110;
+          break label115;
         }
         j = i1 + 1;
         i2 = n;
         k = i;
         continue;
-        label237:
+        label242:
         i -= 1;
         if (i == 0)
         {
@@ -86,6 +89,7 @@ class CharsetRecog_UTF8
           }
           while (i == 0)
           {
+            AppMethodBeat.o(104765);
             return null;
             if ((m != 0) && (n > i1 * 10))
             {
@@ -111,13 +115,15 @@ class CharsetRecog_UTF8
               }
             }
           }
-          return new CharsetMatch(paramCharsetDetector, this, i);
+          paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i);
+          AppMethodBeat.o(104765);
+          return paramCharsetDetector;
         }
         else
         {
           j = i3;
-          break label110;
-          label386:
+          break label115;
+          label403:
           j = i1;
           i2 = n;
           k = i;

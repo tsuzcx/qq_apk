@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.webview.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,15 +14,17 @@ final class b$4
   
   public final void b(j paramj)
   {
-    if (paramj.aYY == 0)
+    AppMethodBeat.i(5679);
+    if (paramj.bpE == 0)
     {
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = paramj.kxh.iterator();
+      Iterator localIterator = paramj.mSW.iterator();
       while (localIterator.hasNext()) {
         localArrayList.add(((com.tencent.mm.plugin.fts.a.a.l)localIterator.next()).content);
       }
-      ai.d(new b.4.1(this, paramj, localArrayList));
+      al.d(new b.4.1(this, paramj, localArrayList));
     }
+    AppMethodBeat.o(5679);
   }
 }
 

@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.clean.ui.newui;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.c.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import org.json.JSONException;
@@ -20,24 +21,27 @@ final class CleanNewUI$5
   
   public final void onComplete()
   {
-    y.d("MicroMsg.CleanNewUI", "request onComplete:%s", new Object[] { this.content });
+    AppMethodBeat.i(18916);
+    ab.d("MicroMsg.CleanNewUI", "request onComplete:%s", new Object[] { this.content });
     try
     {
       new JSONObject(this.content);
-      au.Hx();
-      c.Dz().c(ac.a.urx, this.content);
+      aw.aaz();
+      c.Ru().set(ac.a.yBw, this.content);
+      AppMethodBeat.o(18916);
       return;
     }
     catch (JSONException localJSONException)
     {
-      y.printErrStackTrace("MicroMsg.CleanNewUI", localJSONException, "", new Object[0]);
-      h.nFQ.a(282L, 8L, 1L, false);
+      ab.printErrStackTrace("MicroMsg.CleanNewUI", localJSONException, "", new Object[0]);
+      h.qsU.idkeyStat(282L, 8L, 1L, false);
+      AppMethodBeat.o(18916);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.newui.CleanNewUI.5
  * JD-Core Version:    0.7.0.1
  */

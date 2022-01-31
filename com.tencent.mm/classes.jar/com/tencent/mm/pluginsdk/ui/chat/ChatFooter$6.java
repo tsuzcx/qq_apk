@@ -2,7 +2,8 @@ package com.tencent.mm.pluginsdk.ui.chat;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
 
 final class ChatFooter$6
   implements View.OnClickListener
@@ -11,18 +12,15 @@ final class ChatFooter$6
   
   public final void onClick(View paramView)
   {
-    if (ChatFooter.j(this.sgd) != null) {
-      ChatFooter.j(this.sgd).bhj();
-    }
-    if ((!ChatFooter.n(this.sgd).cbz) && (ChatFooter.o(this.sgd) != null) && (ChatFooter.o(this.sgd).getVisibility() == 0))
+    AppMethodBeat.i(27790);
+    this.vXU.dof();
+    if ((r.ZU().booleanValue()) && (this.vXU.vWJ != null))
     {
-      this.sgd.showVKB();
-      return;
+      paramView = this.vXU.vWJ;
+      Boolean localBoolean = Boolean.TRUE;
+      paramView.a(localBoolean, localBoolean);
     }
-    if (ChatFooter.p(this.sgd)) {
-      this.sgd.sk();
-    }
-    this.sgd.cng();
+    AppMethodBeat.o(27790);
   }
 }
 

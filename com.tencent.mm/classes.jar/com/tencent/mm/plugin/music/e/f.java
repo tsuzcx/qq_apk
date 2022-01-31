@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.music.e;
 
-import com.tencent.mm.h.a.jx;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.kh;
 import com.tencent.mm.sdk.b.c;
 
 public final class f
-  extends c<jx>
+  extends c<kh>
 {
   public f()
   {
-    this.udX = jx.class.getName().hashCode();
+    AppMethodBeat.i(137529);
+    this.__eventId = kh.class.getName().hashCode();
+    AppMethodBeat.o(137529);
   }
 }
 

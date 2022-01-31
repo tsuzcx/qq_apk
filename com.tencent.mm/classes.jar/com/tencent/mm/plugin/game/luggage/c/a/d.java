@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.game.luggage.c.a;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.luggage.e.n;
+import com.tencent.luggage.d.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.game.luggage.ipc.AddShortcutTask;
 import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.plugin.webview.luggage.ipc.LuggageMainProcessService;
 import com.tencent.mm.plugin.webview.luggage.r;
-import com.tencent.mm.protocal.c.awk;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.bcz;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.l;
 
 public final class d
@@ -19,30 +20,36 @@ public final class d
     super(8);
   }
   
-  public final void a(Context paramContext, e parame, awk paramawk)
+  public final void a(Context paramContext, e parame, bcz parambcz)
   {
-    paramawk = parame.biV.getString("shortcut_user_name");
-    String str = parame.rbS.getAppId();
-    if ((bk.bl(paramawk)) || (bk.bl(str))) {
+    AppMethodBeat.i(135901);
+    parambcz = parame.bzu.getString("shortcut_user_name");
+    String str = parame.uRD.getAppId();
+    if ((bo.isNullOrNil(parambcz)) || (bo.isNullOrNil(str)))
+    {
+      AppMethodBeat.o(135901);
       return;
     }
     AddShortcutTask localAddShortcutTask = new AddShortcutTask();
-    localAddShortcutTask.username = paramawk;
+    localAddShortcutTask.username = parambcz;
     localAddShortcutTask.appId = str;
-    localAddShortcutTask.gfD = new d.1(this, localAddShortcutTask, parame, paramContext);
-    localAddShortcutTask.ahC();
-    LuggageMainProcessService.a(localAddShortcutTask);
+    localAddShortcutTask.hxp = new d.1(this, localAddShortcutTask, parame, paramContext);
+    localAddShortcutTask.aBj();
+    AppBrandMainProcessService.a(localAddShortcutTask);
+    AppMethodBeat.o(135901);
   }
   
-  public final void a(e parame, l paraml, awk paramawk)
+  public final void a(e parame, l paraml, bcz parambcz)
   {
-    String str1 = parame.rbS.getAppId();
-    String str2 = parame.biV.getString("shortcut_user_name");
-    if ((!parame.biV.getBoolean("from_shortcut", false)) && (!bk.bl(str1)) && (!bk.bl(str2)))
+    AppMethodBeat.i(135900);
+    String str1 = parame.uRD.getAppId();
+    String str2 = parame.bzu.getString("shortcut_user_name");
+    if ((!parame.bzu.getBoolean("from_shortcut", false)) && (!bo.isNullOrNil(str1)) && (!bo.isNullOrNil(str2)))
     {
-      parame = paramawk.bGw + "__" + paramawk.mQp;
-      paraml.e(paramawk.sYX, parame);
+      parame = parambcz.Title + "__" + parambcz.ThumbUrl;
+      paraml.e(parambcz.wzE, parame);
     }
+    AppMethodBeat.o(135900);
   }
 }
 

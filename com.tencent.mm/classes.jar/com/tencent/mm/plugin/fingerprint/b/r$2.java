@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.fingerprint.b;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.storage.ac.a;
@@ -15,9 +16,11 @@ final class r$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.klL.isChecked()) {
-      g.DP().Dz().c(ac.a.upE, Boolean.TRUE);
+    AppMethodBeat.i(41562);
+    if (this.mGz.isChecked()) {
+      g.RL().Ru().set(ac.a.yzA, Boolean.TRUE);
     }
+    AppMethodBeat.o(41562);
   }
 }
 

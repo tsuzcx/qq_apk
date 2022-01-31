@@ -1,28 +1,31 @@
 package com.tencent.soter.a.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.a.g.g;
 
 public final class b
 {
-  int wPC = 0;
-  String wPD = "";
-  boolean wPE = false;
-  boolean wPF = false;
-  private a wPG = null;
-  private boolean wPH = false;
+  int Bnc = 0;
+  String Bnd = "";
+  boolean Bne = false;
+  boolean Bnf = false;
+  private a Bng = null;
+  private boolean Bnh = false;
   
   private b(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, a parama)
   {
-    this.wPC = paramInt;
-    this.wPD = paramString;
-    this.wPE = paramBoolean1;
-    this.wPF = paramBoolean2;
-    this.wPG = parama;
+    this.Bnc = paramInt;
+    this.Bnd = paramString;
+    this.Bne = paramBoolean1;
+    this.Bnf = paramBoolean2;
+    this.Bng = parama;
   }
   
-  public final void cPC()
+  public final void dVy()
   {
-    g.cPK().H(new b.1(this));
+    AppMethodBeat.i(10475);
+    g.dVG().O(new b.1(this));
+    AppMethodBeat.o(10475);
   }
 }
 

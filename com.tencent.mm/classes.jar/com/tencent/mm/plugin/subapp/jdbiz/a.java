@@ -1,105 +1,123 @@
 package com.tencent.mm.plugin.subapp.jdbiz;
 
 import android.os.Looper;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bx.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bz.a;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import java.util.Map;
 
 public final class a
-  implements bx.a
+  implements bz.a
 {
-  com.tencent.mm.sdk.b.c puW = new a.1(this);
+  com.tencent.mm.sdk.b.c sWx;
+  
+  public a()
+  {
+    AppMethodBeat.i(25190);
+    this.sWx = new a.1(this);
+    AppMethodBeat.o(25190);
+  }
   
   public final void a(e.a parama)
   {
-    y.i("MicroMsg.JDSysMsgNotifyLsn", "receivemsg jd");
-    Object localObject = parama.dBs;
+    boolean bool = false;
+    AppMethodBeat.i(25191);
+    ab.i("MicroMsg.JDSysMsgNotifyLsn", "receivemsg jd");
+    Object localObject = parama.eyJ;
     if (localObject == null)
     {
-      y.e("MicroMsg.JDSysMsgNotifyLsn", "onPreAddMessage cmdAM is null");
+      ab.e("MicroMsg.JDSysMsgNotifyLsn", "onPreAddMessage cmdAM is null");
+      AppMethodBeat.o(25191);
       return;
     }
-    parama = new b();
-    parama.Om(aa.a(((cd)localObject).svH));
-    y.i("MicroMsg.JDSysMsgNotifyLsn", "bizType " + bk.aM(parama.puZ, ""));
-    if (bk.bl(parama.puZ)) {
-      y.e("MicroMsg.JDSysMsgNotifyLsn", "bizTye is null or nil");
+    parama = new c();
+    parama.abg(aa.a(((cm)localObject).woR));
+    ab.i("MicroMsg.JDSysMsgNotifyLsn", "bizType " + bo.bf(parama.sWA, ""));
+    if (bo.isNullOrNil(parama.sWA)) {
+      ab.e("MicroMsg.JDSysMsgNotifyLsn", "bizTye is null or nil");
     }
     for (;;)
     {
-      au.Hx();
-      com.tencent.mm.model.c.Dz().mC(true);
+      aw.aaz();
+      com.tencent.mm.model.c.Ru().dww();
+      AppMethodBeat.o(25191);
       return;
-      if (bk.bl(parama.pva))
+      if (bo.isNullOrNil(parama.sWB))
       {
-        y.e("MicroMsg.JDSysMsgNotifyLsn", "activity id is null");
+        ab.e("MicroMsg.JDSysMsgNotifyLsn", "activity id is null");
       }
-      else if (!parama.a(c.bLK().bLP()))
+      else if (!parama.a(d.cGE().cGJ()))
       {
-        y.i("MicroMsg.JDSysMsgNotifyLsn", "fo zu baoyou! the activityid is same");
+        ab.i("MicroMsg.JDSysMsgNotifyLsn", "fo zu baoyou! the activityid is same");
       }
-      else if (!c.bLS())
+      else if (!d.cGE().cGM())
       {
-        y.e("MicroMsg.JDSysMsgNotifyLsn", "no entrance, ignore msg");
+        ab.e("MicroMsg.JDSysMsgNotifyLsn", "no config entrance, ignore msg");
       }
       else
       {
-        if (parama.puZ.equals("3"))
+        if (parama.sWA.equals("3"))
         {
-          ((cd)localObject).svL = null;
-          if ((bk.bl(parama.pvk)) || (bk.bl(parama.jumpUrl)) || (bk.bl(parama.pvl)) || (bk.bl(parama.pvm)) || (bk.bl(parama.pvj))) {
-            y.e("MicroMsg.JDSysMsgNotifyLsn", "invalid params");
+          ((cm)localObject).woV = null;
+          if ((bo.isNullOrNil(parama.sWL)) || (bo.isNullOrNil(parama.jumpUrl)) || (bo.isNullOrNil(parama.sWM)) || (bo.isNullOrNil(parama.sWN)) || (bo.isNullOrNil(parama.sWK))) {
+            ab.e("MicroMsg.JDSysMsgNotifyLsn", "invalid params");
           }
           for (;;)
           {
-            c.b(parama);
+            d.b(parama);
             break;
-            if (parama.bLD())
+            if (parama.bzK())
             {
-              y.i("MicroMsg.JDSysMsgNotifyLsn", "ingore msg due to msg is expired");
+              ab.i("MicroMsg.JDSysMsgNotifyLsn", "ingore msg due to msg is expired");
             }
             else
             {
-              localObject = c.bLK();
-              String str = parama.pva;
-              if (bk.bl(str)) {}
-              for (boolean bool = false;; bool = ((c)localObject).pvp.containsKey(str))
+              localObject = d.cGE();
+              String str = parama.sWB;
+              if (bo.isNullOrNil(str)) {}
+              for (;;)
               {
                 if (!bool) {
-                  break label324;
+                  break label344;
                 }
-                y.i("MicroMsg.JDSysMsgNotifyLsn", "activity id already show, " + parama.pva);
+                ab.i("MicroMsg.JDSysMsgNotifyLsn", "activity id already show, " + parama.sWB);
                 break;
+                bool = ((d)localObject).sWT.containsKey(str);
               }
-              label324:
-              if (!parama.a(c.bLK().bLP()))
+              label344:
+              if (!parama.a(d.cGE().cGJ()))
               {
-                y.i("MicroMsg.JDSysMsgNotifyLsn", "the remind activitid is same");
+                ab.i("MicroMsg.JDSysMsgNotifyLsn", "the remind activitid is same");
               }
               else
               {
-                localObject = c.bLK();
-                str = parama.pva;
-                if (!bk.bl(str)) {
-                  ((c)localObject).pvp.put(str, Integer.valueOf(1));
+                localObject = d.cGE();
+                str = parama.sWB;
+                if (!bo.isNullOrNil(str)) {
+                  ((d)localObject).sWT.put(str, Integer.valueOf(1));
                 }
-                y.i("MicroMsg.JDSysMsgNotifyLsn", "add activity id" + parama.pva);
-                new ah(Looper.getMainLooper()).post(new a.2(this, parama));
+                ab.i("MicroMsg.JDSysMsgNotifyLsn", "add activity id" + parama.sWB);
+                new ak(Looper.getMainLooper()).post(new a.2(this, parama));
               }
             }
           }
         }
-        if (parama.puZ.equals("1")) {
-          c.b(parama);
-        } else if (parama.puZ.equals("2")) {
-          c.b(parama);
+        if (parama.sWA.equals("1"))
+        {
+          d.b(parama);
+        }
+        else if (parama.sWA.equals("2"))
+        {
+          d.b(parama);
+          h.qsU.e(11178, new Object[] { parama.jumpUrl, parama.sWB, Integer.valueOf(3) });
         }
       }
     }

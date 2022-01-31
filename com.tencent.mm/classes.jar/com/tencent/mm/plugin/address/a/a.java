@@ -1,81 +1,104 @@
 package com.tencent.mm.plugin.address.a;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bu;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.address.model.j;
 import com.tencent.mm.plugin.address.model.k;
 import com.tencent.mm.plugin.address.model.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 
 public final class a
-  implements ar
+  implements at
 {
-  private l ftd = null;
-  private com.tencent.mm.plugin.address.b.a.a fte = null;
-  private j ftf = new j();
-  private k ftg = new k();
+  private l gKF;
+  private com.tencent.mm.plugin.address.b.a.a gKG;
+  private j gKH;
+  private k gKI;
   
-  public static a YB()
+  public a()
   {
-    au.Hq();
-    a locala2 = (a)bu.iR("plugin.address");
+    AppMethodBeat.i(16713);
+    this.gKF = null;
+    this.gKG = null;
+    this.gKH = new j();
+    this.gKI = new k();
+    AppMethodBeat.o(16713);
+  }
+  
+  public static a asl()
+  {
+    AppMethodBeat.i(16714);
+    aw.aat();
+    a locala2 = (a)bw.pF("plugin.address");
     a locala1 = locala2;
     if (locala2 == null)
     {
-      y.w("MicroMsg.SubCoreAddress", "not found in MMCore, new one");
+      ab.w("MicroMsg.SubCoreAddress", "not found in MMCore, new one");
       locala1 = new a();
-      au.Hq().a("plugin.address", locala1);
+      aw.aat().a("plugin.address", locala1);
     }
+    AppMethodBeat.o(16714);
     return locala1;
   }
   
-  public static com.tencent.mm.plugin.address.b.a.a YC()
+  public static com.tencent.mm.plugin.address.b.a.a asm()
   {
-    g.DN().CX();
-    if (YB().fte == null) {
-      YB().fte = new com.tencent.mm.plugin.address.b.a.a();
+    AppMethodBeat.i(16715);
+    g.RJ().QQ();
+    if (asl().gKG == null) {
+      asl().gKG = new com.tencent.mm.plugin.address.b.a.a();
     }
-    return YB().fte;
+    com.tencent.mm.plugin.address.b.a.a locala = asl().gKG;
+    AppMethodBeat.o(16715);
+    return locala;
   }
   
-  public static l YD()
+  public static l asn()
   {
-    g.DN().CX();
-    if (YB().ftd == null) {
-      YB().ftd = new l();
+    AppMethodBeat.i(16716);
+    g.RJ().QQ();
+    if (asl().gKF == null) {
+      asl().gKF = new l();
     }
-    return YB().ftd;
+    l locall = asl().gKF;
+    AppMethodBeat.o(16716);
+    return locall;
   }
   
-  public final void bh(boolean paramBoolean)
-  {
-    com.tencent.mm.sdk.b.a.udP.c(this.ftf);
-    com.tencent.mm.sdk.b.a.udP.c(this.ftg);
-    l locall = YD();
-    au.Hx();
-    String str = c.FU();
-    locall.path = (str + "addrmgr");
-  }
+  public final void clearPluginData(int paramInt) {}
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
-  {
-    com.tencent.mm.sdk.b.a.udP.d(this.ftf);
-    com.tencent.mm.sdk.b.a.udP.d(this.ftg);
-  }
-  
-  public final HashMap<Integer, h.d> xe()
+  public final HashMap<Integer, h.d> getBaseDBFactories()
   {
     return null;
   }
+  
+  public final void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16717);
+    com.tencent.mm.sdk.b.a.ymk.c(this.gKH);
+    com.tencent.mm.sdk.b.a.ymk.c(this.gKI);
+    l locall = asn();
+    aw.aaz();
+    String str = c.getAccPath();
+    locall.path = (str + "addrmgr");
+    AppMethodBeat.o(16717);
+  }
+  
+  public final void onAccountRelease()
+  {
+    AppMethodBeat.i(16718);
+    com.tencent.mm.sdk.b.a.ymk.d(this.gKH);
+    com.tencent.mm.sdk.b.a.ymk.d(this.gKI);
+    AppMethodBeat.o(16718);
+  }
+  
+  public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 

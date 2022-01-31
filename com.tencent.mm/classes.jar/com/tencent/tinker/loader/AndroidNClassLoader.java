@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Build.VERSION;
 import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
+import dalvik.system.BaseDexClassLoader;
 import dalvik.system.DexFile;
 import dalvik.system.PathClassLoader;
 import java.io.File;
@@ -17,30 +18,32 @@ import java.util.List;
 class AndroidNClassLoader
   extends PathClassLoader
 {
-  private static Object wWT = null;
-  private final PathClassLoader wWU;
-  private String wWV;
+  private static Object Btw = null;
+  private static String Btx = null;
+  private final BaseDexClassLoader Bty;
+  private String Btz;
   
-  private AndroidNClassLoader(String paramString, PathClassLoader paramPathClassLoader, Application paramApplication)
+  private AndroidNClassLoader(String paramString, BaseDexClassLoader paramBaseDexClassLoader, Application paramApplication)
   {
-    super(paramString, paramPathClassLoader.getParent());
-    this.wWU = paramPathClassLoader;
+    super(paramString, paramBaseDexClassLoader.getParent());
+    this.Bty = paramBaseDexClassLoader;
     paramString = paramApplication.getClass().getName();
     if ((paramString != null) && (!paramString.equals("android.app.Application"))) {
-      this.wWV = paramString;
+      this.Btz = paramString;
     }
+    Btx = paramApplication.getPackageCodePath();
   }
   
-  public static AndroidNClassLoader a(PathClassLoader paramPathClassLoader, Application paramApplication)
+  public static AndroidNClassLoader a(BaseDexClassLoader paramBaseDexClassLoader, Application paramApplication)
   {
-    AndroidNClassLoader localAndroidNClassLoader = new AndroidNClassLoader("", paramPathClassLoader, paramApplication);
-    Field localField = ShareReflectUtil.b(paramPathClassLoader, "pathList");
-    paramPathClassLoader = localField.get(paramPathClassLoader);
-    Constructor localConstructor = ShareReflectUtil.a(paramPathClassLoader, new Class[] { ClassLoader.class, String.class, String.class, File.class });
-    Object localObject2 = (Object[])ShareReflectUtil.b(paramPathClassLoader, "dexElements").get(paramPathClassLoader);
-    Object localObject1 = (List)ShareReflectUtil.b(paramPathClassLoader, "nativeLibraryDirectories").get(paramPathClassLoader);
+    AndroidNClassLoader localAndroidNClassLoader = new AndroidNClassLoader("", paramBaseDexClassLoader, paramApplication);
+    Field localField = ShareReflectUtil.b(paramBaseDexClassLoader, "pathList");
+    paramBaseDexClassLoader = localField.get(paramBaseDexClassLoader);
+    Constructor localConstructor = ShareReflectUtil.a(paramBaseDexClassLoader, new Class[] { ClassLoader.class, String.class, String.class, File.class });
+    Object localObject2 = (Object[])ShareReflectUtil.b(paramBaseDexClassLoader, "dexElements").get(paramBaseDexClassLoader);
+    Object localObject1 = (List)ShareReflectUtil.b(paramBaseDexClassLoader, "nativeLibraryDirectories").get(paramBaseDexClassLoader);
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject3 = ShareReflectUtil.d(localObject2.getClass().getComponentType(), "dexFile");
+    Object localObject3 = ShareReflectUtil.g(localObject2.getClass().getComponentType(), "dexFile");
     int i = 1;
     int m = localObject2.length;
     int j = 0;
@@ -50,10 +53,18 @@ class AndroidNClassLoader
       int k = i;
       if (localDexFile != null)
       {
-        if (i == 0) {
-          break label182;
+        k = i;
+        if (localDexFile.getName() != null)
+        {
+          k = i;
+          if (localDexFile.getName().equals(Btx))
+          {
+            if (i == 0) {
+              break label210;
+            }
+            i = 0;
+          }
         }
-        i = 0;
       }
       for (;;)
       {
@@ -62,7 +73,7 @@ class AndroidNClassLoader
         j += 1;
         i = k;
         break;
-        label182:
+        label210:
         localStringBuilder.append(File.pathSeparator);
       }
     }
@@ -87,18 +98,18 @@ class AndroidNClassLoader
       }
     }
     localField.set(localAndroidNClassLoader, localConstructor.newInstance(new Object[] { localAndroidNClassLoader, localObject2, localStringBuilder.toString(), null }));
-    ShareReflectUtil.b(paramPathClassLoader, "definingContext").set(paramPathClassLoader, localAndroidNClassLoader);
-    wWT = paramPathClassLoader;
-    paramPathClassLoader = (Context)ShareReflectUtil.b(paramApplication, "mBase").get(paramApplication);
-    paramPathClassLoader = ShareReflectUtil.b(paramPathClassLoader, "mPackageInfo").get(paramPathClassLoader);
-    ShareReflectUtil.b(paramPathClassLoader, "mClassLoader").set(paramPathClassLoader, localAndroidNClassLoader);
+    ShareReflectUtil.b(paramBaseDexClassLoader, "definingContext").set(paramBaseDexClassLoader, localAndroidNClassLoader);
+    Btw = paramBaseDexClassLoader;
+    paramBaseDexClassLoader = (Context)ShareReflectUtil.b(paramApplication, "mBase").get(paramApplication);
+    paramBaseDexClassLoader = ShareReflectUtil.b(paramBaseDexClassLoader, "mPackageInfo").get(paramBaseDexClassLoader);
+    ShareReflectUtil.b(paramBaseDexClassLoader, "mClassLoader").set(paramBaseDexClassLoader, localAndroidNClassLoader);
     if (Build.VERSION.SDK_INT < 27)
     {
-      paramPathClassLoader = paramApplication.getResources();
-      ShareReflectUtil.b(paramPathClassLoader, "mClassLoader").set(paramPathClassLoader, localAndroidNClassLoader);
-      paramPathClassLoader = ShareReflectUtil.b(paramPathClassLoader, "mDrawableInflater").get(paramPathClassLoader);
-      if (paramPathClassLoader != null) {
-        ShareReflectUtil.b(paramPathClassLoader, "mClassLoader").set(paramPathClassLoader, localAndroidNClassLoader);
+      paramBaseDexClassLoader = paramApplication.getResources();
+      ShareReflectUtil.b(paramBaseDexClassLoader, "mClassLoader").set(paramBaseDexClassLoader, localAndroidNClassLoader);
+      paramBaseDexClassLoader = ShareReflectUtil.b(paramBaseDexClassLoader, "mDrawableInflater").get(paramBaseDexClassLoader);
+      if (paramBaseDexClassLoader != null) {
+        ShareReflectUtil.b(paramBaseDexClassLoader, "mClassLoader").set(paramBaseDexClassLoader, localAndroidNClassLoader);
       }
     }
     Thread.currentThread().setContextClassLoader(localAndroidNClassLoader);
@@ -107,10 +118,22 @@ class AndroidNClassLoader
   
   public Class<?> findClass(String paramString)
   {
-    if (((paramString != null) && (paramString.startsWith("com.tencent.tinker.loader.")) && (!paramString.equals("com.tencent.tinker.loader.TinkerTestDexLoad"))) || ((this.wWV != null) && (this.wWV.equals(paramString)))) {
-      return this.wWU.loadClass(paramString);
+    if ((this.Btz != null) && (this.Btz.equals(paramString))) {
+      return this.Bty.loadClass(paramString);
     }
-    return super.findClass(paramString);
+    if ((paramString != null) && (paramString.startsWith("com.tencent.tinker.loader.")) && (!paramString.equals("com.tencent.tinker.loader.TinkerTestDexLoad"))) {
+      return this.Bty.loadClass(paramString);
+    }
+    if ((paramString != null) && ((paramString.startsWith("org.apache.commons.codec.")) || (paramString.startsWith("org.apache.commons.logging.")) || (paramString.startsWith("org.apache.http.")))) {
+      return this.Bty.loadClass(paramString);
+    }
+    try
+    {
+      Class localClass = super.findClass(paramString);
+      return localClass;
+    }
+    catch (ClassNotFoundException localClassNotFoundException) {}
+    return this.Bty.loadClass(paramString);
   }
   
   public String findLibrary(String paramString)

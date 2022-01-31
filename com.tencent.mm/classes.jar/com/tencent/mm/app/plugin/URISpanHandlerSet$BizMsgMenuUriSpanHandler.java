@@ -2,12 +2,15 @@ package com.tencent.mm.app.plugin;
 
 import android.net.Uri;
 import android.os.Bundle;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.t;
 import com.tencent.mm.pluginsdk.ui.applet.m;
 import com.tencent.mm.pluginsdk.ui.d.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.v;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -21,23 +24,31 @@ class URISpanHandlerSet$BizMsgMenuUriSpanHandler
     super(paramURISpanHandlerSet);
   }
   
+  final int[] Cf()
+  {
+    return new int[] { 43 };
+  }
+  
   final boolean a(m paramm, g paramg)
   {
+    AppMethodBeat.i(15640);
     if (43 == paramm.type)
     {
-      if (bk.bl(paramm.username))
+      if (bo.isNullOrNil(paramm.username))
       {
-        y.w("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler Username is null.");
+        ab.w("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler Username is null.");
+        AppMethodBeat.o(15640);
         return true;
       }
-      y.d("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler, url:%s", new Object[] { paramm.url });
+      ab.d("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler, url:%s", new Object[] { paramm.url });
       Object localObject = Uri.parse(paramm.url.trim());
       paramg = ((Uri)localObject).getQueryParameter("msgmenuid");
       localObject = ((Uri)localObject).getQueryParameter("msgmenucontent");
-      com.tencent.mm.plugin.report.service.h.nFQ.f(14522, new Object[] { bk.pm(paramg), paramm.username });
-      if ((bk.bl(paramg)) || (bk.bl((String)localObject)))
+      com.tencent.mm.plugin.report.service.h.qsU.e(14522, new Object[] { bo.nullAsNil(paramg), paramm.username });
+      if ((bo.isNullOrNil(paramg)) || (bo.isNullOrNil((String)localObject)))
       {
-        y.w("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler id or msgContent is null.");
+        ab.w("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler id or msgContent is null.");
+        AppMethodBeat.o(15640);
         return true;
       }
       try
@@ -45,37 +56,39 @@ class URISpanHandlerSet$BizMsgMenuUriSpanHandler
         localObject = URLDecoder.decode((String)localObject, "UTF-8");
         HashMap localHashMap = new HashMap();
         localHashMap.put("bizmsgmenuid", paramg);
-        paramm = new com.tencent.mm.modelmulti.h(paramm.username, (String)localObject, com.tencent.mm.model.s.hW(paramm.username), 291, localHashMap);
-        au.Dk().a(paramm, 0);
+        paramm = new com.tencent.mm.modelmulti.h(paramm.username, (String)localObject, t.oF(paramm.username), 291, localHashMap);
+        aw.Rc().a(paramm, 0);
+        AppMethodBeat.o(15640);
         return true;
       }
       catch (UnsupportedEncodingException paramm)
       {
         for (;;)
         {
-          y.w("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler exp, msg = %s", new Object[] { paramm.getMessage() });
+          ab.w("MicroMsg.URISpanHandlerSet", "BizMsgMenuUriSpanHandler exp, msg = %s", new Object[] { paramm.getMessage() });
         }
       }
     }
+    AppMethodBeat.o(15640);
     return false;
   }
   
-  final boolean a(String paramString, boolean paramBoolean, com.tencent.mm.pluginsdk.s params, Bundle paramBundle)
+  final boolean a(String paramString, boolean paramBoolean, v paramv, Bundle paramBundle)
   {
     return false;
   }
   
-  final m cA(String paramString)
+  final m dN(String paramString)
   {
-    if (paramString.trim().startsWith("weixin://bizmsgmenu")) {
-      return new m(paramString, 43, null);
+    AppMethodBeat.i(15639);
+    if (paramString.trim().startsWith("weixin://bizmsgmenu"))
+    {
+      paramString = new m(paramString, 43, null);
+      AppMethodBeat.o(15639);
+      return paramString;
     }
+    AppMethodBeat.o(15639);
     return null;
-  }
-  
-  final int[] tA()
-  {
-    return new int[] { 43 };
   }
 }
 

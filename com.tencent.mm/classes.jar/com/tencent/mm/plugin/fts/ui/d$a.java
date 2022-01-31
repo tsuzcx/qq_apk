@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fts.ui;
 
 public abstract interface d$a
 {
-  public abstract void O(int paramInt, boolean paramBoolean);
+  public abstract void W(int paramInt, boolean paramBoolean);
 }
 
 

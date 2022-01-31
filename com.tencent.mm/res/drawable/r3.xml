@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval" android:useLevel="false" android:innerRadius="5.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:drawable="@drawable/ael" />
-    <item android:state_pressed="true" android:drawable="@drawable/ael" />
-    <item android:state_selected="true" android:drawable="@drawable/ael" />
-    <item android:drawable="@drawable/aek" />
-</selector>
+    <solid android:color="@color/a6i" />
+    <size android:height="10.0dip" android:width="10.0dip" />
+</shape>

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMEditText;
 
 final class WalletForgotPwdVerifyIdUI$4
@@ -16,21 +17,23 @@ final class WalletForgotPwdVerifyIdUI$4
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    y.i("MicroMsg.WalletForgotPwdVerifyIdUI", " haveNameext：" + WalletForgotPwdVerifyIdUI.f(this.qpj).getText());
-    if ((WalletForgotPwdVerifyIdUI.f(this.qpj).getText() == null) || ("".equals(WalletForgotPwdVerifyIdUI.f(this.qpj).getText().toString()))) {
-      WalletForgotPwdVerifyIdUI.a(this.qpj, false);
+    AppMethodBeat.i(46309);
+    ab.i("MicroMsg.WalletForgotPwdVerifyIdUI", " haveNameext：" + WalletForgotPwdVerifyIdUI.b(this.tZw).getText());
+    if ((WalletForgotPwdVerifyIdUI.b(this.tZw).getText() == null) || ("".equals(WalletForgotPwdVerifyIdUI.b(this.tZw).getText().toString()))) {
+      WalletForgotPwdVerifyIdUI.a(this.tZw, false);
     }
     for (;;)
     {
-      WalletForgotPwdVerifyIdUI.g(this.qpj);
+      WalletForgotPwdVerifyIdUI.g(this.tZw);
+      AppMethodBeat.o(46309);
       return;
-      WalletForgotPwdVerifyIdUI.a(this.qpj, true);
+      WalletForgotPwdVerifyIdUI.a(this.tZw, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletForgotPwdVerifyIdUI.4
  * JD-Core Version:    0.7.0.1
  */

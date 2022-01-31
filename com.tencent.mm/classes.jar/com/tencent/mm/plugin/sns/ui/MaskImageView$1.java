@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MaskImageView$1
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class MaskImageView$1
   
   public final void run()
   {
-    this.oQE.setPressed(false);
-    this.oQE.invalidate();
+    AppMethodBeat.i(38307);
+    this.rIq.setPressed(false);
+    this.rIq.invalidate();
+    AppMethodBeat.o(38307);
   }
 }
 

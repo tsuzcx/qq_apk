@@ -1,33 +1,45 @@
 package com.tencent.mm.plugin.record.ui;
 
-import com.tencent.mm.plugin.messenger.a.d;
-import com.tencent.mm.plugin.messenger.a.g;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cg;
+import com.tencent.mm.g.a.ny;
+import com.tencent.mm.g.a.ny.a;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.b.d;
 
 final class RecordMsgImageUI$11
-  implements Runnable
+  implements View.OnClickListener
 {
-  RecordMsgImageUI$11(RecordMsgImageUI paramRecordMsgImageUI, List paramList, String paramString, Runnable paramRunnable) {}
+  RecordMsgImageUI$11(RecordMsgImageUI paramRecordMsgImageUI, ny paramny) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    Iterator localIterator = this.nuf.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      g.bhI().a(this.nuo.mController.uMN, str, RecordMsgImageUI.j(this.nuo), 0, "", "");
-      g.bhI().dO(this.kdi, str);
+    AppMethodBeat.i(153615);
+    ab.i("MicroMsg.ShowImageUI", "request deal QBAR string");
+    if (RecordMsgImageUI.f(this.pZV).isShowing()) {
+      RecordMsgImageUI.f(this.pZV).cre();
     }
-    ai.d(this.bxs);
-  }
-  
-  public final String toString()
-  {
-    return super.toString() + "|onActivityResult";
+    if (this.mww == null)
+    {
+      AppMethodBeat.o(153615);
+      return;
+    }
+    paramView = new cg();
+    paramView.cpD.activity = this.pZV;
+    paramView.cpD.cnR = this.mww.cEy.result;
+    paramView.cpD.cpE = this.mww.cEy.cpE;
+    paramView.cpD.cpG = 8;
+    RecordMsgImageUI.a(this.pZV, paramView);
+    paramView.cpD.cpF = this.mww.cEy.cpF;
+    if (this.pZV.getIntent() != null) {
+      paramView.cpD.cpJ = this.pZV.getIntent().getBundleExtra("_stat_obj");
+    }
+    a.ymk.l(paramView);
+    AppMethodBeat.o(153615);
   }
 }
 

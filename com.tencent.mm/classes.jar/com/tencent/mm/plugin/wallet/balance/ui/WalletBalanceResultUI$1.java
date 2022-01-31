@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet.balance.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletBalanceResultUI$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class WalletBalanceResultUI$1
   
   public final void onClick(View paramView)
   {
-    WalletBalanceResultUI.a(this.qhw);
+    AppMethodBeat.i(45457);
+    WalletBalanceResultUI.a(this.tOR);
+    AppMethodBeat.o(45457);
   }
 }
 

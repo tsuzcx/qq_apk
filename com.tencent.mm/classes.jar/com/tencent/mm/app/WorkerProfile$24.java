@@ -1,32 +1,30 @@
 package com.tencent.mm.app;
 
-import android.content.Context;
-import com.tencent.mm.n.a.a;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Process;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.td;
+import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.MMAppMgr;
 
 final class WorkerProfile$24
-  implements a.a
+  extends c<td>
 {
-  final Map<String, Integer> bxS = new HashMap();
-  final Map<String, Integer> map = new HashMap();
-  
-  WorkerProfile$24(Context paramContext) {}
-  
-  public final String cx(String paramString)
+  WorkerProfile$24(WorkerProfile paramWorkerProfile)
   {
-    if (this.map.containsKey(paramString)) {
-      return this.val$context.getString(((Integer)this.map.get(paramString)).intValue());
-    }
-    return null;
+    AppMethodBeat.i(15514);
+    this.__eventId = td.class.getName().hashCode();
+    AppMethodBeat.o(15514);
   }
   
-  public final String cy(String paramString)
+  private static boolean Ca()
   {
-    if (this.bxS.containsKey(paramString)) {
-      return this.val$context.getString(((Integer)this.bxS.get(paramString)).intValue());
-    }
-    return null;
+    AppMethodBeat.i(153479);
+    ab.i("MicroMsg.WorkerProfile", "try to kill mm pid %d", new Object[] { Integer.valueOf(Process.myPid()) });
+    MMAppMgr.dCy();
+    Process.killProcess(Process.myPid());
+    AppMethodBeat.o(153479);
+    return true;
   }
 }
 

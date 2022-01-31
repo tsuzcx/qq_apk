@@ -2,7 +2,8 @@ package com.tencent.mm.ui.video;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoView$4
   implements MediaPlayer.OnErrorListener
@@ -11,11 +12,15 @@ final class VideoView$4
   
   public final boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    y.d("MicroMsg.VideoView", "Error: " + paramInt1 + "," + paramInt2);
-    if ((VideoView.m(this.wiD) != null) && (VideoView.m(this.wiD).onError(VideoView.e(this.wiD), paramInt1, paramInt2))) {
+    AppMethodBeat.i(35286);
+    ab.d("MicroMsg.VideoView", "Error: " + paramInt1 + "," + paramInt2);
+    if ((VideoView.o(this.ABv) != null) && (VideoView.o(this.ABv).onError(VideoView.e(this.ABv), paramInt1, paramInt2)))
+    {
+      AppMethodBeat.o(35286);
       return true;
     }
-    this.wiD.getWindowToken();
+    this.ABv.getWindowToken();
+    AppMethodBeat.o(35286);
     return true;
   }
 }

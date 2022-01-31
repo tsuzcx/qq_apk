@@ -1,64 +1,68 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.c;
 
 import android.support.v7.widget.RecyclerView;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class e$9
-  implements am.a
+  implements ap.a
 {
   e$9(e parame) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    y.d("NoteSelectManager", "onTimerExpired: ");
-    RecyclerView localRecyclerView = e.a(this.rKn);
+    AppMethodBeat.i(26866);
+    ab.d("NoteSelectManager", "onTimerExpired: ");
+    RecyclerView localRecyclerView = e.a(this.vAR);
     int i;
     int j;
-    if ((e.c(this.rKn) != null) && (e.c(this.rKn).rJu < e.a(this.rKn, localRecyclerView)))
+    if ((e.c(this.vAR) != null) && (e.c(this.vAR).vzY < e.a(this.vAR, localRecyclerView)))
     {
       i = 1;
-      if ((e.c(this.rKn) == null) || (e.c(this.rKn).rJu <= e.d(this.rKn))) {
-        break label195;
+      if ((e.c(this.vAR) == null) || (e.c(this.vAR).vzY <= e.d(this.vAR))) {
+        break label208;
       }
       j = 1;
-      label84:
-      if ((!e.ciX()) || (localRecyclerView == null) || (e.c(this.rKn) == null) || (e.c(this.rKn).getType() != 1) || ((i == 0) && (j == 0))) {
-        break label243;
+      label90:
+      if ((!e.djy()) || (localRecyclerView == null) || (e.c(this.vAR) == null) || (e.c(this.vAR).getType() != 1) || ((i == 0) && (j == 0))) {
+        break label258;
       }
       if ((i == 0) || (!localRecyclerView.canScrollVertically(-1))) {
-        break label200;
+        break label213;
       }
-      if (e.c(this.rKn).ivk == 3) {
-        e.e(this.rKn);
+      if (e.c(this.vAR).kwo == 3) {
+        e.e(this.vAR);
       }
-      e.f(this.rKn);
-      this.rKn.ciR();
-      this.rKn.ciP();
-      localRecyclerView.smoothScrollBy(0, -300);
+      e.f(this.vAR);
+      this.vAR.djk();
+      this.vAR.dji();
+      localRecyclerView.a(0, -300, null);
     }
-    label195:
-    label200:
-    label243:
-    while (e.g(this.rKn) == null)
+    label258:
+    for (;;)
     {
-      do
-      {
-        return true;
-        i = 0;
-        break;
-        j = 0;
-        break label84;
-      } while ((j == 0) || (!localRecyclerView.canScrollVertically(1)));
-      e.f(this.rKn);
-      this.rKn.ciR();
-      this.rKn.ciP();
-      localRecyclerView.smoothScrollBy(0, 300);
+      AppMethodBeat.o(26866);
       return true;
+      i = 0;
+      break;
+      label208:
+      j = 0;
+      break label90;
+      label213:
+      if ((j != 0) && (localRecyclerView.canScrollVertically(1)))
+      {
+        e.f(this.vAR);
+        this.vAR.djk();
+        this.vAR.dji();
+        localRecyclerView.a(0, 300, null);
+        continue;
+        if (e.g(this.vAR) != null) {
+          e.g(this.vAR).stopTimer();
+        }
+      }
     }
-    e.g(this.rKn).stopTimer();
-    return true;
   }
 }
 

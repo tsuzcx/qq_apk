@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 
 public class NetUtil
 {
-  public static String hv(Context paramContext)
+  public static String iX(Context paramContext)
   {
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     if (paramContext == null) {
@@ -33,7 +33,7 @@ public class NetUtil
   
   public static boolean isConnected(Context paramContext)
   {
-    return !hv(paramContext).equals("NOT_NETWORK");
+    return !iX(paramContext).equals("NOT_NETWORK");
   }
 }
 

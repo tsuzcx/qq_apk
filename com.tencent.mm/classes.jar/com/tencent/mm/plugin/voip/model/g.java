@@ -1,212 +1,423 @@
 package com.tencent.mm.plugin.voip.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.m.b;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.o;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.awn;
-import com.tencent.mm.protocal.c.awo;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.bpc;
-import com.tencent.mm.protocal.c.bpd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.bi;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import junit.framework.Assert;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public final class g
-  extends m
-  implements k
 {
-  private static final List<Object> esN = new ArrayList();
-  private static final Set<Long> pPr = new HashSet();
-  private long bIt;
-  private b dmK;
-  private f dmL;
-  private final List<bi> esO = new LinkedList();
+  public int tuv = 0;
   
-  public g()
+  public static byte[] B(InputStream paramInputStream)
   {
-    y.d("MicroMsg.NetSceneSendMsg", "dktext :" + bk.csb());
-    y.i("MicroMsg.NetSceneSendMsg", "empty msg sender created");
-  }
-  
-  public g(String paramString1, String paramString2, int paramInt)
-  {
-    y.d("MicroMsg.NetSceneSendMsg", "dktext :" + bk.csb());
-    if (!bk.bl(paramString1))
+    int j = 0;
+    AppMethodBeat.i(4355);
+    Object localObject = new ByteArrayOutputStream();
+    paramInputStream = new j(paramInputStream, (OutputStream)localObject);
+    paramInputStream.Hb(8);
+    paramInputStream.Hb(8);
+    paramInputStream.Hb(8);
+    paramInputStream.Hb(8);
+    paramInputStream.Hb(8);
+    int i = (int)paramInputStream.cLO();
+    paramInputStream.Hb(8);
+    paramInputStream.cLO();
+    paramInputStream.cLS();
+    if ((i == 100) || (i == 110) || (i == 122) || (i == 144))
     {
-      bi localbi = new bi();
-      localbi.setStatus(1);
-      localbi.ec(paramString1);
-      localbi.bg(bd.iK(paramString1));
-      localbi.fA(1);
-      localbi.setContent(paramString2);
-      localbi.setType(paramInt);
-      this.bIt = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().T(localbi);
-      if (this.bIt == -1L) {
-        break label161;
+      if (paramInputStream.cLR() == 3) {
+        paramInputStream.Hb(1);
+      }
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      paramInputStream.Hb(1);
+      if (paramInputStream.mL(true))
+      {
+        i = 0;
+        if (i < 8)
+        {
+          if (paramInputStream.mL(true))
+          {
+            if (i >= 6) {
+              break label173;
+            }
+            paramInputStream.Hc(16);
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            label173:
+            paramInputStream.Hc(64);
+          }
+        }
       }
     }
-    label161:
-    for (boolean bool = true;; bool = false)
+    paramInputStream.cLS();
+    i = paramInputStream.cLR();
+    if (i == 0)
     {
-      Assert.assertTrue(bool);
-      y.i("MicroMsg.NetSceneSendMsg", "new msg inserted to db , local id = " + this.bIt);
-      return;
-    }
-  }
-  
-  private void Pg()
-  {
-    int i = 0;
-    while (i < this.esO.size())
-    {
-      iS(i);
-      i += 1;
-    }
-  }
-  
-  private void iS(int paramInt)
-  {
-    bi localbi = (bi)this.esO.get(paramInt);
-    localbi.setStatus(5);
-    ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().a(localbi.field_msgId, localbi);
-    Iterator localIterator = esN.iterator();
-    while (localIterator.hasNext())
-    {
-      localIterator.next();
-      String str = localbi.field_talker;
-      str = localbi.field_content;
-    }
-  }
-  
-  protected final int Ka()
-  {
-    return 10;
-  }
-  
-  public final int a(e parame, f paramf)
-  {
-    this.dmL = paramf;
-    paramf = new b.a();
-    paramf.ecH = new bpc();
-    paramf.ecI = new bpd();
-    paramf.uri = "/cgi-bin/micromsg-bin/newsendmsg";
-    paramf.ecG = 522;
-    paramf.ecJ = 237;
-    paramf.ecK = 1000000237;
-    this.dmK = paramf.Kt();
-    paramf = (bpc)this.dmK.ecE.ecN;
-    List localList = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().bia();
-    int i;
-    if (localList.size() == 0)
-    {
-      y.i("MicroMsg.NetSceneSendMsg", "no sending message");
-      i = -2;
-    }
-    int j;
-    do
-    {
-      return i;
-      this.esO.clear();
-      i = 0;
-      while (i < localList.size())
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      paramInputStream.Hb(1);
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      if (!paramInputStream.mL(true)) {
+        paramInputStream.Hb(1);
+      }
+      paramInputStream.Hb(1);
+      if (paramInputStream.mL(true))
       {
-        bi localbi = (bi)localList.get(i);
-        if (localbi.field_isSend == 1)
+        paramInputStream.cLS();
+        paramInputStream.cLS();
+        paramInputStream.cLS();
+        paramInputStream.cLS();
+      }
+      if (!paramInputStream.mL(false)) {
+        break label732;
+      }
+      ab.d("[H264SPSModifier]", "vui_parameters_present_flag exist!! modify max_dec_frame_buffering");
+      paramInputStream.mN(true);
+      if ((paramInputStream.mL(true)) && ((int)paramInputStream.cLO() == 255))
+      {
+        paramInputStream.Hb(16);
+        paramInputStream.Hb(16);
+      }
+      if (paramInputStream.mL(true)) {
+        paramInputStream.Hb(1);
+      }
+      if (paramInputStream.mL(true))
+      {
+        paramInputStream.Hb(3);
+        paramInputStream.Hb(1);
+        if (paramInputStream.mL(true))
         {
-          awn localawn = new awn();
-          localawn.svG = new bml().YI(localbi.field_talker);
-          localawn.mPL = ((int)(localbi.field_createTime / 1000L));
-          localawn.hQR = localbi.getType();
-          localawn.kVs = localbi.field_content;
-          localawn.ttf = o.l(com.tencent.mm.model.q.Gj(), localbi.field_createTime).hashCode();
-          localawn.svK = bf.HS();
-          paramf.hPT.add(localawn);
-          paramf.hPS = paramf.hPT.size();
-          this.esO.add(localbi);
+          paramInputStream.Hb(8);
+          paramInputStream.Hb(8);
+          paramInputStream.Hb(8);
         }
+      }
+      if (paramInputStream.mL(true))
+      {
+        paramInputStream.cLS();
+        paramInputStream.cLS();
+      }
+      if (paramInputStream.mL(true))
+      {
+        paramInputStream.Hb(32);
+        paramInputStream.Hb(32);
+        paramInputStream.Hb(1);
+      }
+      boolean bool1 = paramInputStream.mL(true);
+      if (bool1) {
+        a(paramInputStream);
+      }
+      boolean bool2 = paramInputStream.mL(true);
+      if (bool2) {
+        a(paramInputStream);
+      }
+      if ((bool1) || (bool2)) {
+        paramInputStream.Hb(1);
+      }
+      paramInputStream.Hb(1);
+      if (!paramInputStream.mL(false)) {
+        break label680;
+      }
+      ab.d("TAG", "steve:VUI has bs restriction!!");
+      paramInputStream.mN(true);
+      paramInputStream.mL(true);
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      paramInputStream.Hf(1);
+    }
+    byte[] arrayOfByte;
+    for (;;)
+    {
+      paramInputStream.Hd(1);
+      paramInputStream.I(0L, 8 - paramInputStream.tuE);
+      paramInputStream.flush();
+      arrayOfByte = ((ByteArrayOutputStream)localObject).toByteArray();
+      paramInputStream = "";
+      i = j;
+      while (i < arrayOfByte.length)
+      {
+        String str = Integer.toHexString(arrayOfByte[i] & 0xFF);
+        localObject = str;
+        if (str.length() == 1) {
+          localObject = "0".concat(String.valueOf(str));
+        }
+        paramInputStream = paramInputStream + " " + (String)localObject;
         i += 1;
       }
-      j = a(parame, this.dmK, this);
-      i = j;
-    } while (j >= 0);
-    Pg();
-    return j;
+      if (i != 1) {
+        break;
+      }
+      paramInputStream.Hb(1);
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      int k = paramInputStream.cLR();
+      i = 0;
+      while (i < k)
+      {
+        new StringBuilder("SPS: offsetForRefFrame [").append(i).append("]");
+        paramInputStream.cLS();
+        i += 1;
+      }
+      break;
+      label680:
+      ab.d("TAG", "steve:VUI has NO bs restriction!!");
+      paramInputStream.mN(true);
+      paramInputStream.mN(true);
+      paramInputStream.Hf(0);
+      paramInputStream.Hf(0);
+      paramInputStream.Hf(10);
+      paramInputStream.Hf(10);
+      paramInputStream.Hf(0);
+      paramInputStream.Hf(1);
+      continue;
+      label732:
+      ab.d("[H264SPSModifier]", "vui_parameters_present_flag NOT exist!! add max_dec_frame_buffering");
+      paramInputStream.mN(true);
+      paramInputStream.mN(false);
+      paramInputStream.mN(false);
+      paramInputStream.mN(false);
+      paramInputStream.mN(false);
+      paramInputStream.mN(false);
+      paramInputStream.mN(false);
+      paramInputStream.mN(false);
+      paramInputStream.mN(false);
+      paramInputStream.mN(true);
+      paramInputStream.mN(true);
+      paramInputStream.Hf(0);
+      paramInputStream.Hf(0);
+      paramInputStream.Hf(10);
+      paramInputStream.Hf(10);
+      paramInputStream.Hf(0);
+      paramInputStream.Hf(1);
+    }
+    ab.d("TAG", "new SPS:".concat(String.valueOf(paramInputStream)));
+    AppMethodBeat.o(4355);
+    return arrayOfByte;
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  private boolean C(InputStream paramInputStream)
   {
-    if ((paramInt2 != 0) || (paramInt3 != 0))
+    AppMethodBeat.i(4356);
+    paramInputStream = new j(paramInputStream);
+    paramInputStream.Ha(8);
+    paramInputStream.Ha(8);
+    paramInputStream.Ha(8);
+    paramInputStream.Ha(8);
+    paramInputStream.Ha(8);
+    int i = (int)paramInputStream.cLO();
+    if (i == 66)
     {
-      Pg();
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      this.tuv |= 0x1;
+      AppMethodBeat.o(4356);
+      return false;
     }
-    do
+    paramInputStream.Ha(8);
+    paramInputStream.cLO();
+    paramInputStream.cLQ();
+    if ((i == 100) || (i == 110) || (i == 122) || (i == 144))
     {
-      return;
-      paramq = ((bpd)this.dmK.ecF.ecN).hPT;
-      if (this.esO.size() == paramq.size())
+      if (paramInputStream.cLR() == 3) {
+        paramInputStream.Ha(1);
+      }
+      paramInputStream.cLQ();
+      paramInputStream.cLQ();
+      paramInputStream.Ha(1);
+      if (paramInputStream.mL(true))
       {
-        paramInt1 = 0;
-        while (paramInt1 < paramq.size())
+        i = 0;
+        if (i < 8)
         {
-          paramArrayOfByte = (awo)paramq.get(paramInt1);
-          if (paramArrayOfByte.sze != 0)
+          if (paramInputStream.mL(true))
           {
-            y.e("MicroMsg.NetSceneSendMsg", "send msg failed: item ret code=" + paramArrayOfByte.sze);
-            iS(paramInt1);
-            this.dmL.onSceneEnd(4, paramArrayOfByte.sze, paramString, this);
-            return;
+            if (i >= 6) {
+              break label184;
+            }
+            paramInputStream.Hc(16);
           }
-          long l = ((bi)this.esO.get(paramInt1)).field_msgId;
-          y.i("MicroMsg.NetSceneSendMsg", "msg local id = " + l + ", SvrId = " + paramArrayOfByte.ndp + " sent successfully!");
-          bi localbi = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().fd(l);
-          localbi.bf(paramArrayOfByte.ndp);
-          localbi.setStatus(2);
-          ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().a(l, localbi);
-          paramInt1 += 1;
+          for (;;)
+          {
+            i += 1;
+            break;
+            label184:
+            paramInputStream.Hc(64);
+          }
         }
-        y.i("MicroMsg.NetSceneSendMsg", "total " + paramInt1 + " msgs sent successfully");
       }
-      paramInt1 = a(this.edc, this.dmL);
-      if (paramInt1 == -2)
-      {
-        this.dmL.onSceneEnd(0, 0, paramString, this);
-        return;
-      }
-    } while (paramInt1 >= 0);
-    this.dmL.onSceneEnd(3, -1, paramString, this);
-  }
-  
-  protected final m.b b(com.tencent.mm.network.q paramq)
-  {
-    if (this.esO.size() > 0) {
-      return m.b.edr;
     }
-    return m.b.eds;
+    paramInputStream.cLQ();
+    i = paramInputStream.cLR();
+    if (i == 0) {
+      paramInputStream.cLQ();
+    }
+    for (;;)
+    {
+      if (paramInputStream.cLR() >= 2) {
+        this.tuv |= 0x2;
+      }
+      paramInputStream.Hb(1);
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      if (!paramInputStream.mL(true)) {
+        paramInputStream.Hb(1);
+      }
+      paramInputStream.Hb(1);
+      if (paramInputStream.mL(true))
+      {
+        paramInputStream.cLS();
+        paramInputStream.cLS();
+        paramInputStream.cLS();
+        paramInputStream.cLS();
+      }
+      if (!paramInputStream.mL(true)) {
+        break;
+      }
+      ab.d("[H264SPSModifier]", "vui_parameters_present_flag exist!! read num_reorder_frames");
+      if ((paramInputStream.mL(true)) && ((int)paramInputStream.cLO() == 255))
+      {
+        paramInputStream.Hb(16);
+        paramInputStream.Hb(16);
+      }
+      if (paramInputStream.mL(true)) {
+        paramInputStream.Hb(1);
+      }
+      if (paramInputStream.mL(true))
+      {
+        paramInputStream.Hb(3);
+        paramInputStream.Hb(1);
+        if (paramInputStream.mL(true))
+        {
+          paramInputStream.Hb(8);
+          paramInputStream.Hb(8);
+          paramInputStream.Hb(8);
+        }
+      }
+      if (paramInputStream.mL(true))
+      {
+        paramInputStream.cLS();
+        paramInputStream.cLS();
+      }
+      if (paramInputStream.mL(true))
+      {
+        paramInputStream.Hb(32);
+        paramInputStream.Hb(32);
+        paramInputStream.Hb(1);
+      }
+      boolean bool1 = paramInputStream.mL(true);
+      if (bool1) {
+        a(paramInputStream);
+      }
+      boolean bool2 = paramInputStream.mL(true);
+      if (bool2) {
+        a(paramInputStream);
+      }
+      if ((bool1) || (bool2)) {
+        paramInputStream.Hb(1);
+      }
+      paramInputStream.Hb(1);
+      if (!paramInputStream.mL(true)) {
+        break;
+      }
+      paramInputStream.mL(true);
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      paramInputStream.cLS();
+      i = paramInputStream.cLR();
+      int j = paramInputStream.cLR();
+      if (i == 0) {
+        break;
+      }
+      ab.d("[H264SPSModifier]", "steve: reorder_frame =" + i + ", mac_dec_buffering=" + j);
+      this.tuv |= 0x4;
+      AppMethodBeat.o(4356);
+      return true;
+      if (i == 1)
+      {
+        paramInputStream.Ha(1);
+        paramInputStream.cLQ();
+        paramInputStream.cLQ();
+        j = paramInputStream.cLR();
+        i = 0;
+        while (i < j)
+        {
+          new StringBuilder("SPS: offsetForRefFrame [").append(i).append("]");
+          paramInputStream.cLS();
+          i += 1;
+        }
+      }
+    }
+    AppMethodBeat.o(4356);
+    return false;
   }
   
-  public final int getType()
+  private boolean D(InputStream paramInputStream)
   {
-    return 522;
+    AppMethodBeat.i(140142);
+    paramInputStream = new j(paramInputStream);
+    paramInputStream.Ha(8);
+    paramInputStream.Ha(8);
+    paramInputStream.Ha(8);
+    paramInputStream.Ha(8);
+    paramInputStream.Ha(8);
+    paramInputStream.cLQ();
+    int i = paramInputStream.cLR();
+    ab.d("TAG", "steve:slice_type:".concat(String.valueOf(i)));
+    if ((i == 1) || (i == 6))
+    {
+      this.tuv |= 0x8;
+      AppMethodBeat.o(140142);
+      return true;
+    }
+    AppMethodBeat.o(140142);
+    return false;
+  }
+  
+  private static void a(j paramj)
+  {
+    AppMethodBeat.i(4357);
+    int j = paramj.cLR();
+    paramj.Ha(4);
+    paramj.Ha(4);
+    int i = 0;
+    while (i <= j)
+    {
+      paramj.cLQ();
+      paramj.cLQ();
+      paramj.Ha(1);
+      i += 1;
+    }
+    paramj.Ha(5);
+    paramj.Ha(5);
+    paramj.Ha(5);
+    paramj.Ha(5);
+    AppMethodBeat.o(4357);
+  }
+  
+  public final boolean bp(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(140140);
+    boolean bool = C(new ByteArrayInputStream(paramArrayOfByte));
+    AppMethodBeat.o(140140);
+    return bool;
+  }
+  
+  public final boolean bq(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(140141);
+    boolean bool = D(new ByteArrayInputStream(paramArrayOfByte));
+    AppMethodBeat.o(140141);
+    return bool;
   }
 }
 

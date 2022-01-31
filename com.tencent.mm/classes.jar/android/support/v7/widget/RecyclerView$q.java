@@ -1,6 +1,6 @@
 package android.support.v7.widget;
 
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import java.util.ArrayList;
 
 final class RecyclerView$q
@@ -8,92 +8,92 @@ final class RecyclerView$q
 {
   RecyclerView$q(RecyclerView paramRecyclerView) {}
   
-  private void hY()
+  private void jH()
   {
-    if ((RecyclerView.afs) && (this.agK.afM) && (this.agK.afL))
+    if ((RecyclerView.ahI) && (this.aja.aic) && (this.aja.aib))
     {
-      q.b(this.agK, this.agK.afE);
+      t.b(this.aja, this.aja.ahU);
       return;
     }
-    this.agK.afU = true;
-    this.agK.requestLayout();
+    this.aja.aik = true;
+    this.aja.requestLayout();
   }
   
-  public final void am(int paramInt1, int paramInt2)
+  public final void as(int paramInt1, int paramInt2)
   {
     int i = 1;
-    this.agK.Q(null);
-    e locale = this.agK.afA;
+    this.aja.S(null);
+    d locald = this.aja.ahQ;
     if (paramInt2 > 0)
     {
-      locale.Ze.add(locale.a(1, paramInt1, paramInt2, null));
-      locale.Zk |= 0x1;
-      if (locale.Ze.size() != 1) {}
+      locald.ZP.add(locald.b(1, paramInt1, paramInt2, null));
+      locald.ZV |= 0x1;
+      if (locald.ZP.size() != 1) {}
     }
     for (paramInt1 = i;; paramInt1 = 0)
     {
       if (paramInt1 != 0) {
-        hY();
+        jH();
       }
       return;
     }
   }
   
-  public final void an(int paramInt1, int paramInt2)
+  public final void at(int paramInt1, int paramInt2)
   {
     int i = 1;
-    this.agK.Q(null);
-    e locale = this.agK.afA;
+    this.aja.S(null);
+    d locald = this.aja.ahQ;
     if (paramInt2 > 0)
     {
-      locale.Ze.add(locale.a(2, paramInt1, paramInt2, null));
-      locale.Zk |= 0x2;
-      if (locale.Ze.size() != 1) {}
+      locald.ZP.add(locald.b(2, paramInt1, paramInt2, null));
+      locald.ZV |= 0x2;
+      if (locald.ZP.size() != 1) {}
     }
     for (paramInt1 = i;; paramInt1 = 0)
     {
       if (paramInt1 != 0) {
-        hY();
+        jH();
       }
       return;
     }
   }
   
-  public final void ao(int paramInt1, int paramInt2)
+  public final void au(int paramInt1, int paramInt2)
   {
     int i = 1;
-    this.agK.Q(null);
-    e locale = this.agK.afA;
+    this.aja.S(null);
+    d locald = this.aja.ahQ;
     if (paramInt1 != paramInt2)
     {
-      locale.Ze.add(locale.a(8, paramInt1, paramInt2, null));
-      locale.Zk |= 0x8;
-      if (locale.Ze.size() != 1) {}
+      locald.ZP.add(locald.b(8, paramInt1, paramInt2, null));
+      locald.ZV |= 0x8;
+      if (locald.ZP.size() != 1) {}
     }
     for (paramInt1 = i;; paramInt1 = 0)
     {
       if (paramInt1 != 0) {
-        hY();
+        jH();
       }
       return;
     }
   }
   
-  public final void d(int paramInt1, int paramInt2, Object paramObject)
+  public final void f(int paramInt1, int paramInt2, Object paramObject)
   {
     int i = 1;
-    this.agK.Q(null);
-    e locale = this.agK.afA;
+    this.aja.S(null);
+    d locald = this.aja.ahQ;
     if (paramInt2 > 0)
     {
-      locale.Ze.add(locale.a(4, paramInt1, paramInt2, paramObject));
-      locale.Zk |= 0x4;
-      if (locale.Ze.size() != 1) {}
+      locald.ZP.add(locald.b(4, paramInt1, paramInt2, paramObject));
+      locald.ZV |= 0x4;
+      if (locald.ZP.size() != 1) {}
     }
     for (paramInt1 = i;; paramInt1 = 0)
     {
       if (paramInt1 != 0) {
-        hY();
+        jH();
       }
       return;
     }
@@ -101,11 +101,11 @@ final class RecyclerView$q
   
   public final void onChanged()
   {
-    this.agK.Q(null);
-    this.agK.agu.ahP = true;
-    this.agK.ae(true);
-    if (!this.agK.afA.gb()) {
-      this.agK.requestLayout();
+    this.aja.S(null);
+    this.aja.aiK.akf = true;
+    this.aja.an(true);
+    if (!this.aja.ahQ.gY()) {
+      this.aja.requestLayout();
     }
   }
 }

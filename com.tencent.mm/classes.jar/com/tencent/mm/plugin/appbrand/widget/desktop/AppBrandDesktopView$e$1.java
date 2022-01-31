@@ -1,24 +1,29 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import android.support.v7.widget.RecyclerView.v;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandDesktopView$e$1
-  implements View.OnClickListener
+  implements RecentAppBrandView.b
 {
-  AppBrandDesktopView$e$1(AppBrandDesktopView.e parame, AppBrandDesktopView paramAppBrandDesktopView) {}
+  AppBrandDesktopView$e$1(AppBrandDesktopView.e parame) {}
   
-  public final void onClick(View paramView)
+  public final void a(RecyclerView.v paramv, AppBrandDesktopView.c paramc)
   {
-    y.i("MicroMsg.MyAppBrandHeader", "alvinluo AppbrandDesktop search jump to AppBrandSearchUI %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-    AppBrandDesktopView.d(this.hqA.hqv).startActivity(((com.tencent.mm.plugin.appbrand.r.g)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.appbrand.r.g.class)).cd(AppBrandDesktopView.d(this.hqA.hqv)));
+    AppMethodBeat.i(154872);
+    AppBrandDesktopView.w(this.jfl.jfg);
+    AppBrandDesktopView.x(this.jfl.jfg);
+    AppBrandDesktopView.y(this.jfl.jfg);
+    this.jfl.jfg.setLayoutFrozen(true);
+    if (paramc != null) {
+      AppBrandDesktopView.a(this.jfl.jfg, 1089, 2, paramc.jfk, paramv.jN());
+    }
+    AppMethodBeat.o(154872);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopView.e.1
  * JD-Core Version:    0.7.0.1
  */

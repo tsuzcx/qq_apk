@@ -4,7 +4,7 @@ public class b
 {
   public void OnLog(int paramInt, String paramString1, String paramString2) {}
   
-  public void p(int paramInt, String paramString) {}
+  public void w(int paramInt, String paramString) {}
 }
 
 

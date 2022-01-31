@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -9,9 +9,11 @@ final class IPCallUserProfileUI$6
 {
   IPCallUserProfileUI$6(IPCallUserProfileUI paramIPCallUserProfileUI) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.add(R.l.app_copy);
+    AppMethodBeat.i(22376);
+    paraml.add(2131296895);
+    AppMethodBeat.o(22376);
   }
 }
 

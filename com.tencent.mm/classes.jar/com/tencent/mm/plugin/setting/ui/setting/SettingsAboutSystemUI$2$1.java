@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.app.Dialog;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.storage.z;
@@ -13,10 +14,12 @@ final class SettingsAboutSystemUI$2$1
   
   public final void run()
   {
-    ((Dialog)this.nTt.nTq.getTag()).dismiss();
-    g.DP().Dz().o(327686, Integer.valueOf(this.nTs));
-    g.DP().Dz().mC(true);
-    SettingsAboutSystemUI.f(this.nTt.nTp);
+    AppMethodBeat.i(127108);
+    ((Dialog)this.qHt.qHq.getTag()).dismiss();
+    g.RL().Ru().set(327686, Integer.valueOf(this.qHs));
+    g.RL().Ru().dww();
+    SettingsAboutSystemUI.f(this.qHt.qHp);
+    AppMethodBeat.o(127108);
   }
 }
 

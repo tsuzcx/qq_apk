@@ -1,132 +1,177 @@
 package com.google.android.exoplayer2;
 
-import com.google.android.exoplayer2.source.f.b;
+import com.google.android.exoplayer2.source.i.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class n
 {
-  final w.b atk = new w.b();
-  final w.a atl = new w.a();
-  w atr;
+  final w.b avC;
+  final w.a avD;
+  w avJ;
   int repeatMode;
   
-  private boolean a(f.b paramb, boolean paramBoolean)
+  public n()
   {
-    int i = this.atr.a(paramb.aIm, this.atl, false).auk;
-    if (!this.atr.a(i, this.atk, 0L).avF)
+    AppMethodBeat.i(95258);
+    this.avD = new w.a();
+    this.avC = new w.b();
+    AppMethodBeat.o(95258);
+  }
+  
+  private boolean a(i.b paramb, boolean paramBoolean)
+  {
+    AppMethodBeat.i(95266);
+    int i = this.avJ.a(paramb.aPX, this.avD, false).awC;
+    if ((!this.avJ.a(i, this.avC).axV) && (this.avJ.b(paramb.aPX, this.avD, this.avC, this.repeatMode)) && (paramBoolean))
     {
-      if (this.atr.a(paramb.aIm, this.atl, this.atk, this.repeatMode) == -1) {}
-      for (i = 1; (i != 0) && (paramBoolean); i = 0) {
-        return true;
-      }
+      AppMethodBeat.o(95266);
+      return true;
     }
+    AppMethodBeat.o(95266);
     return false;
   }
   
-  private boolean b(f.b paramb, long paramLong)
+  private boolean b(i.b paramb, long paramLong)
   {
-    int i = this.atr.a(paramb.aIm, this.atl, false).kX();
-    if (i == 0) {}
-    for (;;)
+    AppMethodBeat.i(95265);
+    int i = this.avJ.a(paramb.aPX, this.avD, false).ng();
+    if (i == 0)
     {
+      AppMethodBeat.o(95265);
       return true;
-      int j = i - 1;
-      boolean bool = paramb.mG();
-      if (this.atl.avw[j] != -9223372036854775808L)
-      {
-        if ((bool) || (paramLong != -9223372036854775808L)) {
-          return false;
-        }
-      }
-      else
-      {
-        int k = this.atl.avx[j];
-        if (k == -1) {
-          return false;
-        }
-        if ((bool) && (paramb.aIn == j) && (paramb.aIo == k - 1)) {}
-        for (i = 1; (i == 0) && ((bool) || (this.atl.avz[j] != k)); i = 0) {
-          return false;
-        }
-      }
     }
+    int j = i - 1;
+    boolean bool = paramb.pi();
+    if (this.avD.axM[j] != -9223372036854775808L)
+    {
+      if ((!bool) && (paramLong == -9223372036854775808L))
+      {
+        AppMethodBeat.o(95265);
+        return true;
+      }
+      AppMethodBeat.o(95265);
+      return false;
+    }
+    int k = this.avD.axN[j];
+    if (k == -1)
+    {
+      AppMethodBeat.o(95265);
+      return false;
+    }
+    if ((bool) && (paramb.aPY == j) && (paramb.aPZ == k - 1)) {}
+    for (i = 1; (i != 0) || ((!bool) && (this.avD.axP[j] == k)); i = 0)
+    {
+      AppMethodBeat.o(95265);
+      return true;
+    }
+    AppMethodBeat.o(95265);
+    return false;
   }
   
   public final n.a a(n.a parama, int paramInt)
   {
-    return a(parama, parama.auN.dg(paramInt));
+    AppMethodBeat.i(95260);
+    parama = a(parama, parama.axf.dM(paramInt));
+    AppMethodBeat.o(95260);
+    return parama;
   }
   
-  final n.a a(n.a parama, f.b paramb)
+  final n.a a(n.a parama, i.b paramb)
   {
-    long l3 = parama.aug;
-    long l2 = parama.auO;
+    AppMethodBeat.i(95261);
+    long l3 = parama.awy;
+    long l2 = parama.axg;
     boolean bool1 = b(paramb, l2);
     boolean bool2 = a(paramb, bool1);
-    this.atr.a(paramb.aIm, this.atl, false);
+    this.avJ.a(paramb.aPX, this.avD, false);
     long l1;
-    if (paramb.mG()) {
-      l1 = this.atl.aE(paramb.aIn, paramb.aIo);
+    if (paramb.pi()) {
+      l1 = this.avD.aU(paramb.aPY, paramb.aPZ);
     }
     for (;;)
     {
-      return new n.a(paramb, l3, l2, parama.auh, l1, bool1, bool2, (byte)0);
+      parama = new n.a(paramb, l3, l2, parama.awz, l1, bool1, bool2, (byte)0);
+      AppMethodBeat.o(95261);
+      return parama;
       if (l2 == -9223372036854775808L) {
-        l1 = this.atl.auP;
+        l1 = this.avD.axh;
       } else {
         l1 = l2;
       }
     }
   }
   
-  final n.a a(f.b paramb, long paramLong1, long paramLong2)
+  final n.a a(i.b paramb, long paramLong1, long paramLong2)
   {
-    this.atr.a(paramb.aIm, this.atl, false);
-    if (paramb.mG())
+    AppMethodBeat.i(95262);
+    this.avJ.a(paramb.aPX, this.avD, false);
+    if (paramb.pi())
     {
-      if (!this.atl.aD(paramb.aIn, paramb.aIo)) {
+      if (!this.avD.aT(paramb.aPY, paramb.aPZ))
+      {
+        AppMethodBeat.o(95262);
         return null;
       }
-      return b(paramb.aIm, paramb.aIn, paramb.aIo, paramLong1);
+      paramb = b(paramb.aPX, paramb.aPY, paramb.aPZ, paramLong1);
+      AppMethodBeat.o(95262);
+      return paramb;
     }
-    int i = this.atl.z(paramLong2);
+    int i = this.avD.y(paramLong2);
     if (i == -1) {}
-    for (paramLong1 = -9223372036854775808L;; paramLong1 = this.atl.avw[i]) {
-      return b(paramb.aIm, paramLong2, paramLong1);
+    for (paramLong1 = -9223372036854775808L;; paramLong1 = this.avD.axM[i])
+    {
+      paramb = b(paramb.aPX, paramLong2, paramLong1);
+      AppMethodBeat.o(95262);
+      return paramb;
     }
   }
   
   final n.a b(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    f.b localb = new f.b(paramInt1, paramInt2, paramInt3);
-    boolean bool1 = b(localb, -9223372036854775808L);
-    boolean bool2 = a(localb, bool1);
-    long l2 = this.atr.a(localb.aIm, this.atl, false).aE(localb.aIn, localb.aIo);
-    if (paramInt3 == this.atl.avz[paramInt2]) {}
-    for (long l1 = this.atl.avB;; l1 = 0L) {
-      return new n.a(localb, l1, -9223372036854775808L, paramLong, l2, bool1, bool2, (byte)0);
+    AppMethodBeat.i(95263);
+    Object localObject = new i.b(paramInt1, paramInt2, paramInt3);
+    boolean bool1 = b((i.b)localObject, -9223372036854775808L);
+    boolean bool2 = a((i.b)localObject, bool1);
+    long l2 = this.avJ.a(((i.b)localObject).aPX, this.avD, false).aU(((i.b)localObject).aPY, ((i.b)localObject).aPZ);
+    if (paramInt3 == this.avD.axP[paramInt2]) {}
+    for (long l1 = this.avD.axR;; l1 = 0L)
+    {
+      localObject = new n.a((i.b)localObject, l1, -9223372036854775808L, paramLong, l2, bool1, bool2, (byte)0);
+      AppMethodBeat.o(95263);
+      return localObject;
     }
   }
   
   final n.a b(int paramInt, long paramLong1, long paramLong2)
   {
-    f.b localb = new f.b(paramInt);
-    boolean bool1 = b(localb, paramLong2);
-    boolean bool2 = a(localb, bool1);
-    this.atr.a(localb.aIm, this.atl, false);
+    AppMethodBeat.i(95264);
+    Object localObject = new i.b(paramInt);
+    boolean bool1 = b((i.b)localObject, paramLong2);
+    boolean bool2 = a((i.b)localObject, bool1);
+    this.avJ.a(((i.b)localObject).aPX, this.avD, false);
     if (paramLong2 == -9223372036854775808L) {}
-    for (long l = this.atl.auP;; l = paramLong2) {
-      return new n.a(localb, paramLong1, paramLong2, -9223372036854775807L, l, bool1, bool2, (byte)0);
+    for (long l = this.avD.axh;; l = paramLong2)
+    {
+      localObject = new n.a((i.b)localObject, paramLong1, paramLong2, -9223372036854775807L, l, bool1, bool2, (byte)0);
+      AppMethodBeat.o(95264);
+      return localObject;
     }
   }
   
-  public final f.b e(int paramInt, long paramLong)
+  public final i.b g(int paramInt, long paramLong)
   {
-    this.atr.a(paramInt, this.atl, false);
-    int i = this.atl.y(paramLong);
-    if (i == -1) {
-      return new f.b(paramInt);
+    AppMethodBeat.i(95259);
+    this.avJ.a(paramInt, this.avD, false);
+    int i = this.avD.x(paramLong);
+    if (i == -1)
+    {
+      localb = new i.b(paramInt);
+      AppMethodBeat.o(95259);
+      return localb;
     }
-    return new f.b(paramInt, i, this.atl.avz[i]);
+    i.b localb = new i.b(paramInt, i, this.avD.axP[i]);
+    AppMethodBeat.o(95259);
+    return localb;
   }
 }
 

@@ -1,23 +1,25 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import com.tencent.mm.bb.a;
+
 final class SelfQRCodeUI$2
   implements SelfQRCodeUI.a
 {
-  SelfQRCodeUI$2(SelfQRCodeUI paramSelfQRCodeUI, byte[] paramArrayOfByte, String paramString) {}
+  SelfQRCodeUI$2(SelfQRCodeUI paramSelfQRCodeUI, a parama) {}
   
-  public final byte[] byM()
+  public final byte[] cjX()
   {
-    return this.nSC;
+    return this.qGA.fMU;
   }
   
-  public final String byN()
+  public final String cjY()
   {
-    return this.gkP;
+    return this.qGA.fMS;
   }
   
-  public final String byO()
+  public final String cjZ()
   {
-    return this.gkP;
+    return this.qGA.fMT;
   }
 }
 

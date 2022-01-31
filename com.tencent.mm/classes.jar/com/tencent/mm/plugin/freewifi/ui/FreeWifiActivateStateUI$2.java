@@ -1,23 +1,27 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
 import android.net.NetworkInfo.State;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.model.d;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class FreeWifiActivateStateUI$2
-  implements am.a
+  implements ap.a
 {
   FreeWifiActivateStateUI$2(FreeWifiActivateStateUI paramFreeWifiActivateStateUI) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (d.Du(this.kqR.ssid))
+    AppMethodBeat.i(20900);
+    if (d.OC(this.mMD.ssid))
     {
-      this.kqR.a(NetworkInfo.State.CONNECTED);
-      FreeWifiActivateStateUI.b(this.kqR).stopTimer();
+      this.mMD.a(NetworkInfo.State.CONNECTED);
+      FreeWifiActivateStateUI.b(this.mMD).stopTimer();
+      AppMethodBeat.o(20900);
       return false;
     }
+    AppMethodBeat.o(20900);
     return true;
   }
 }

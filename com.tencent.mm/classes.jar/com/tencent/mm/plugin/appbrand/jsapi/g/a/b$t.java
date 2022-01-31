@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
-public final class b$t
+public abstract interface b$t
 {
-  public b.u guK;
+  public abstract void a(b.e parame);
 }
 
 

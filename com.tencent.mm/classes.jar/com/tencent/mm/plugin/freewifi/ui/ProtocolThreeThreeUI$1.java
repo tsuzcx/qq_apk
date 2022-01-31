@@ -1,27 +1,30 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.d;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class ProtocolThreeThreeUI$1
-  implements am.a
+  implements ap.a
 {
   ProtocolThreeThreeUI$1(ProtocolThreeThreeUI paramProtocolThreeThreeUI) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (!bk.bl(this.ktl.ssid))
+    AppMethodBeat.i(21148);
+    if (!bo.isNullOrNil(this.mOZ.ssid))
     {
-      ProtocolThreeThreeUI.a(this.ktl, this.ktl.aUO());
-      if (ProtocolThreeThreeUI.a(this.ktl) != 2)
+      ProtocolThreeThreeUI.a(this.mOZ, this.mOZ.bBm());
+      if (ProtocolThreeThreeUI.a(this.mOZ) != 2)
       {
-        y.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.connectTimeoutHandler, desc=wifi connecttimeout. state=%s", new Object[] { m.B(this.ktl.getIntent()), Integer.valueOf(m.C(this.ktl.getIntent())), d.rr(ProtocolThreeThreeUI.a(this.ktl)) });
-        d.a(this.ktl.ssid, 3, this.ktl.getIntent());
+        ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.connectTimeoutHandler, desc=wifi connecttimeout. state=%s", new Object[] { m.U(this.mOZ.getIntent()), Integer.valueOf(m.V(this.mOZ.getIntent())), d.wl(ProtocolThreeThreeUI.a(this.mOZ)) });
+        d.a(this.mOZ.ssid, 3, this.mOZ.getIntent());
       }
     }
+    AppMethodBeat.o(21148);
     return false;
   }
 }

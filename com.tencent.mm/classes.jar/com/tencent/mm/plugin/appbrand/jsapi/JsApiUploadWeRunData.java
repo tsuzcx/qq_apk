@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONObject;
 
 public class JsApiUploadWeRunData
@@ -9,30 +10,36 @@ public class JsApiUploadWeRunData
 {
   public static final int CTRL_INDEX = 323;
   public static final String NAME = "uploadWeRunData";
-  private JsApiUploadWeRunData.UploadMiniAppStepTask ghD;
+  private JsApiUploadWeRunData.UploadMiniAppStepTask hAt;
   
   public void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    y.d("MicroMsg.JsApiUploadWeRunData", "JsApiUploadWeRunData!");
+    AppMethodBeat.i(130631);
+    ab.d("MicroMsg.JsApiUploadWeRunData", "JsApiUploadWeRunData!");
     if (paramJSONObject == null)
     {
-      paramc.C(paramInt, h("fail:data is null", null));
-      y.e("MicroMsg.JsApiUploadWeRunData", "data is null");
+      paramc.h(paramInt, j("fail:data is null", null));
+      ab.e("MicroMsg.JsApiUploadWeRunData", "data is null");
+      AppMethodBeat.o(130631);
       return;
     }
     a(this, paramc, paramInt, paramJSONObject.optInt("step"), false);
+    AppMethodBeat.o(130631);
   }
   
-  public final void a(i parami, c paramc, int paramInt1, int paramInt2, boolean paramBoolean)
+  public final void a(m paramm, c paramc, int paramInt1, int paramInt2, boolean paramBoolean)
   {
+    AppMethodBeat.i(130632);
     if (paramInt2 <= 0)
     {
-      paramc.C(paramInt1, parami.h("fail:step invalid", null));
+      paramc.h(paramInt1, paramm.j("fail:step invalid", null));
+      AppMethodBeat.o(130632);
       return;
     }
-    this.ghD = new JsApiUploadWeRunData.UploadMiniAppStepTask(parami, paramc, paramInt1, paramInt2, paramBoolean);
-    this.ghD.ahC();
-    AppBrandMainProcessService.a(this.ghD);
+    this.hAt = new JsApiUploadWeRunData.UploadMiniAppStepTask(paramm, paramc, paramInt1, paramInt2, paramBoolean);
+    this.hAt.aBj();
+    AppBrandMainProcessService.a(this.hAt);
+    AppMethodBeat.o(130632);
   }
 }
 

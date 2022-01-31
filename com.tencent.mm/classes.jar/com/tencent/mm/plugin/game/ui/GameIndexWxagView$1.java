@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.game.report.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.r.d;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.game.d.do;
-import com.tencent.mm.plugin.game.e.b;
+import com.tencent.mm.plugin.appbrand.service.j;
+import com.tencent.mm.plugin.game.d.dr;
 
 final class GameIndexWxagView$1
   implements View.OnClickListener
@@ -15,14 +16,18 @@ final class GameIndexWxagView$1
   
   public final void onClick(View paramView)
   {
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof do))) {
+    AppMethodBeat.i(111988);
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof dr)))
+    {
+      AppMethodBeat.o(111988);
       return;
     }
-    paramView = (do)paramView.getTag();
+    paramView = (dr)paramView.getTag();
     AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
     localAppBrandStatObject.scene = 1079;
-    ((d)g.r(d.class)).a(this.lbY.getContext(), paramView.hPY, paramView.euK, paramView.kWu, 0, paramView.kWt, localAppBrandStatObject);
-    b.a(this.lbY.getContext(), 10, 1025, 999, 30, paramView.euK, this.kXE, null);
+    ((j)g.E(j.class)).a(this.nzT.getContext(), paramView.jJA, paramView.fKw, paramView.nuw, 0, paramView.nuv, localAppBrandStatObject);
+    c.a(this.nzT.getContext(), 10, 1025, 999, 30, paramView.fKw, this.nvG, null);
+    AppMethodBeat.o(111988);
   }
 }
 

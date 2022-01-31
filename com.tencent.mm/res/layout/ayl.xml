@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/a3d" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:background="@drawable/beh" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include android:layout_gravity="center_horizontal" layout="@layout/azy" />
-            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/cvs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <Button android:textSize="@dimen/lj" android:textColor="@color/a1y" android:id="@id/au9" android:background="@drawable/b_" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/ld" android:text="@string/n7" android:layout_weight="1.0" />
-                <ImageView android:id="@id/aut" android:background="@color/sf" android:layout_width="@dimen/fl" android:layout_height="fill_parent" />
-                <Button android:textSize="@dimen/lj" android:textColor="@color/a1y" android:id="@id/au_" android:background="@drawable/b_" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/ld" android:text="@string/fea" android:layout_weight="1.0" />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/au7" />
-</LinearLayout>
+<com.tencent.mm.plugin.sns.ui.PhotosContent android:id="@id/esy" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/ep_" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_margin="1.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/et7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:scaleType="centerCrop" />
+</com.tencent.mm.plugin.sns.ui.PhotosContent>

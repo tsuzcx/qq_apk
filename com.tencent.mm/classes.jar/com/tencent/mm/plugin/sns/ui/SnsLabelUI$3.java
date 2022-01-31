@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.widget.listview.AnimatedExpandableListView;
 import java.util.ArrayList;
@@ -14,40 +15,43 @@ final class SnsLabelUI$3
   
   public final void run()
   {
-    SnsLabelUI.a(this.oZN).oZT = SnsLabelUI.l(this.oZN);
-    if (SnsLabelUI.j(this.oZN) == null) {
-      SnsLabelUI.a(this.oZN, SnsLabelUI.b(this.oZN));
-    }
-    while (SnsLabelUI.b(this.oZN) != null)
+    AppMethodBeat.i(39013);
+    SnsLabelUI.a(this.rSh).rSq = SnsLabelUI.m(this.rSh);
+    if (SnsLabelUI.b(this.rSh) != null)
     {
-      localObject = SnsLabelUI.b(this.oZN).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        SnsLabelUI.a(this.oZN);
-        ap.Pm((String)((Iterator)localObject).next());
+      if (SnsLabelUI.k(this.rSh) == null) {
+        SnsLabelUI.a(this.rSh, SnsLabelUI.b(this.rSh));
       }
-      SnsLabelUI.j(this.oZN).addAll(SnsLabelUI.b(this.oZN));
+      for (;;)
+      {
+        localObject = SnsLabelUI.b(this.rSh).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          SnsLabelUI.a(this.rSh);
+          ap.acg((String)((Iterator)localObject).next());
+        }
+        SnsLabelUI.k(this.rSh).addAll(SnsLabelUI.b(this.rSh));
+      }
+      Object localObject = new HashSet(SnsLabelUI.k(this.rSh));
+      SnsLabelUI.k(this.rSh).clear();
+      SnsLabelUI.k(this.rSh).addAll((Collection)localObject);
+      SnsLabelUI.b(this.rSh).clear();
+      SnsLabelUI.s(this.rSh);
+      ((HashSet)localObject).clear();
     }
-    Object localObject = new HashSet(SnsLabelUI.j(this.oZN));
-    SnsLabelUI.j(this.oZN).clear();
-    SnsLabelUI.j(this.oZN).addAll((Collection)localObject);
-    SnsLabelUI.a(this.oZN).Q(SnsLabelUI.j(this.oZN));
-    SnsLabelUI.k(this.oZN);
-    SnsLabelUI.a(this.oZN).notifyDataSetChanged();
-    SnsLabelUI.g(this.oZN).Iw(SnsLabelUI.a(this.oZN).oZT);
-    if (SnsLabelUI.b(this.oZN) != null) {
-      SnsLabelUI.b(this.oZN).clear();
+    SnsLabelUI.a(this.rSh).S(SnsLabelUI.k(this.rSh));
+    SnsLabelUI.l(this.rSh);
+    SnsLabelUI.a(this.rSh).notifyDataSetChanged();
+    SnsLabelUI.g(this.rSh).Ro(SnsLabelUI.a(this.rSh).rSq);
+    if ((SnsLabelUI.t(this.rSh) != null) && (SnsLabelUI.t(this.rSh).isShowing())) {
+      SnsLabelUI.t(this.rSh).dismiss();
     }
-    SnsLabelUI.q(this.oZN);
-    ((HashSet)localObject).clear();
-    if ((SnsLabelUI.r(this.oZN) != null) && (SnsLabelUI.r(this.oZN).isShowing())) {
-      SnsLabelUI.r(this.oZN).dismiss();
-    }
+    AppMethodBeat.o(39013);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsLabelUI.3
  * JD-Core Version:    0.7.0.1
  */

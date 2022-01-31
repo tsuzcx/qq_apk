@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.wallet_payu.security_question.model;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
@@ -9,46 +10,60 @@ import com.tencent.mm.wallet_core.d.i;
 public final class a
   extends g
 {
-  private Bundle kke;
+  private Bundle mEJ;
   
   public a(MMActivity paramMMActivity, i parami, Bundle paramBundle)
   {
     super(paramMMActivity, parami);
-    this.kke = paramBundle;
+    this.mEJ = paramBundle;
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(48566);
     if (((paramm instanceof c)) && (paramInt1 == 0) && (paramInt2 == 0))
     {
       paramString = (c)paramm;
-      this.kke.putParcelable("key_security_question", new PayUSecurityQuestion(paramString.id, paramString.qON));
+      this.mEJ.putParcelable("key_security_question", new PayUSecurityQuestion(paramString.id, paramString.uDU));
+      AppMethodBeat.o(48566);
+      return false;
     }
-    do
+    if ((paramm instanceof b))
     {
-      do
-      {
-        return false;
-      } while (!(paramm instanceof b));
       paramString = (b)paramm;
-    } while ((paramInt1 != 0) || (paramInt2 != 0) || (!paramString.jMT));
-    this.kke.putString("payu_reference", paramString.qOM);
-    com.tencent.mm.wallet_core.a.j(this.gfb, this.kke);
-    return true;
-  }
-  
-  public final boolean m(Object... paramVarArgs)
-  {
-    paramVarArgs = (PayUSecurityQuestion)this.kke.getParcelable("key_security_question");
-    String str1 = this.kke.getString("key_question_answer");
-    String str2 = this.kke.getString("payu_reference");
-    this.wBd.a(new b(str2, paramVarArgs.id, str1), true);
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        if (paramString.mhc)
+        {
+          this.mEJ.putString("payu_reference", paramString.uDT);
+          com.tencent.mm.wallet_core.a.j(this.hwZ, this.mEJ);
+          AppMethodBeat.o(48566);
+          return true;
+        }
+        AppMethodBeat.o(48566);
+        return false;
+      }
+    }
+    AppMethodBeat.o(48566);
     return false;
   }
   
-  public final boolean s(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
-    this.wBd.a(new c(this.kke.getString("payu_reference")), true);
+    AppMethodBeat.i(48567);
+    paramVarArgs = (PayUSecurityQuestion)this.mEJ.getParcelable("key_security_question");
+    String str1 = this.mEJ.getString("key_question_answer");
+    String str2 = this.mEJ.getString("payu_reference");
+    this.AXB.a(new b(str2, paramVarArgs.id, str1), true);
+    AppMethodBeat.o(48567);
+    return false;
+  }
+  
+  public final boolean x(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(48565);
+    this.AXB.a(new c(this.mEJ.getString("payu_reference")), true);
+    AppMethodBeat.o(48565);
     return true;
   }
 }

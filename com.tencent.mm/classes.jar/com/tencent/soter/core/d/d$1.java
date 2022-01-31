@@ -2,6 +2,7 @@ package com.tencent.soter.core.d;
 
 import android.os.IBinder;
 import android.os.IBinder.DeathRecipient;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.soterserver.a;
 
 final class d$1
@@ -11,12 +12,26 @@ final class d$1
   
   public final void binderDied()
   {
-    if (this.wPo.wPk == null) {
+    AppMethodBeat.i(73068);
+    com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: binder died", new Object[0]);
+    if (this.BmN.BmI == null)
+    {
+      AppMethodBeat.o(73068);
       return;
     }
-    this.wPo.wPk.asBinder().unlinkToDeath(d.a(this.wPo), 0);
-    this.wPo.wPk = null;
-    this.wPo.aDx();
+    synchronized (d.a(this.BmN))
+    {
+      d.a(this.BmN, false);
+      d.a(this.BmN).notifyAll();
+      if (d.b(this.BmN) != null) {
+        d.b(this.BmN).cyo();
+      }
+      this.BmN.BmI.asBinder().unlinkToDeath(d.c(this.BmN), 0);
+      this.BmN.BmI = null;
+      this.BmN.bfU();
+      AppMethodBeat.o(73068);
+      return;
+    }
   }
 }
 

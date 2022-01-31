@@ -3,7 +3,8 @@ package com.tencent.mm.booter.notification.a;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class f$4
   implements MediaPlayer.OnErrorListener
@@ -12,14 +13,16 @@ final class f$4
   
   public final boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.Notification.Tool.Sound", "WiredHeadset play sound error, player: %s", new Object[] { this.dkb.djY });
-    this.dke.setMode(0);
+    AppMethodBeat.i(16027);
+    ab.i("MicroMsg.Notification.Tool.Sound", "WiredHeadset play sound error, player: %s", new Object[] { this.ebw.ebt });
+    this.ebz.setMode(0);
     if (paramMediaPlayer != null) {
       paramMediaPlayer.release();
     }
-    if (this.dkb.djY != null) {
-      this.dkb.djY.release();
+    if (this.ebw.ebt != null) {
+      this.ebw.ebt.release();
     }
+    AppMethodBeat.o(16027);
     return false;
   }
 }

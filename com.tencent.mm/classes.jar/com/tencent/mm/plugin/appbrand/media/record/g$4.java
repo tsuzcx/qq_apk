@@ -1,43 +1,17 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
-import android.os.Looper;
-import com.tencent.mm.h.a.lq;
-import com.tencent.mm.plugin.appbrand.media.record.record_imp.RecordParam;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$4
-  implements e
+  implements Runnable
 {
   g$4(g paramg) {}
   
-  public final void amh()
+  public final void run()
   {
-    if (!g.l(this.gNX))
-    {
-      this.gNX.amt();
-      return;
-    }
-    y.i("MicroMsg.Record.AudioRecordMgr", "is interrupting");
-  }
-  
-  public final void ami()
-  {
-    if (g.l(this.gNX))
-    {
-      g localg = this.gNX;
-      localg.gNS = false;
-      y.i("MicroMsg.Record.AudioRecordMgr", "onInterruptionEnd");
-      lq locallq = new lq();
-      locallq.bUI.action = 7;
-      locallq.bUI.state = "interruptionEnd";
-      if (localg.gNJ != null) {
-        locallq.bUI.appId = localg.gNJ.appId;
-      }
-      a.udP.a(locallq, Looper.getMainLooper());
-      return;
-    }
-    y.i("MicroMsg.Record.AudioRecordMgr", "not call onInterruptionEnd");
+    AppMethodBeat.i(141591);
+    g.k(this.ipI);
+    AppMethodBeat.o(141591);
   }
 }
 

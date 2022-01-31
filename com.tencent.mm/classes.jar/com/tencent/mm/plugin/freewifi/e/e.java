@@ -1,36 +1,39 @@
 package com.tencent.mm.plugin.freewifi.e;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class e
 {
   protected String appId;
-  protected String bHI;
-  protected int bvj;
+  protected int bWu;
+  protected String coX;
+  protected int cpt;
   protected final Intent intent;
-  protected FreeWifiFrontPageUI kps;
-  protected String kpt;
-  protected int kpu;
-  protected String kpv;
-  protected int source;
+  protected String kdt;
+  protected FreeWifiFrontPageUI mLf;
+  protected int mLg;
+  protected String mLh;
   protected String ssid;
   
   public e(FreeWifiFrontPageUI paramFreeWifiFrontPageUI)
   {
-    this.kps = paramFreeWifiFrontPageUI;
+    AppMethodBeat.i(20806);
+    this.mLf = paramFreeWifiFrontPageUI;
     this.intent = paramFreeWifiFrontPageUI.getIntent();
     this.ssid = this.intent.getStringExtra("free_wifi_ssid");
-    this.kpt = this.intent.getStringExtra("free_wifi_url");
-    this.bHI = this.intent.getStringExtra("free_wifi_ap_key");
-    this.source = this.intent.getIntExtra("free_wifi_source", 1);
-    this.bvj = this.intent.getIntExtra("free_wifi_channel_id", 0);
+    this.kdt = this.intent.getStringExtra("free_wifi_url");
+    this.coX = this.intent.getStringExtra("free_wifi_ap_key");
+    this.cpt = this.intent.getIntExtra("free_wifi_source", 1);
+    this.bWu = this.intent.getIntExtra("free_wifi_channel_id", 0);
     this.appId = this.intent.getStringExtra("free_wifi_appid");
-    this.kpv = this.intent.getStringExtra("free_wifi_app_nickname");
-    this.kpu = this.intent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 0);
-    y.i("MicroMsg.FreeWifi.ProtocolBase", "sessionKey=%s, step=%d, desc=Data retrieved. ssid=%s, fullUrl=%s, apKey=%s, source=%s, channelId=%d, appid=%s, appNickName=%s, protocolNumber=%d", new Object[] { m.B(this.intent), Integer.valueOf(m.C(this.intent)), this.ssid, this.kpt, this.bHI, Integer.valueOf(this.source), Integer.valueOf(this.bvj), this.appId, this.kpv, Integer.valueOf(this.kpu) });
+    this.mLh = this.intent.getStringExtra("free_wifi_app_nickname");
+    this.mLg = this.intent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 0);
+    ab.i("MicroMsg.FreeWifi.ProtocolBase", "sessionKey=%s, step=%d, desc=Data retrieved. ssid=%s, fullUrl=%s, apKey=%s, source=%s, channelId=%d, appid=%s, appNickName=%s, protocolNumber=%d", new Object[] { m.U(this.intent), Integer.valueOf(m.V(this.intent)), this.ssid, this.kdt, this.coX, Integer.valueOf(this.cpt), Integer.valueOf(this.bWu), this.appId, this.mLh, Integer.valueOf(this.mLg) });
+    AppMethodBeat.o(20806);
   }
 }
 

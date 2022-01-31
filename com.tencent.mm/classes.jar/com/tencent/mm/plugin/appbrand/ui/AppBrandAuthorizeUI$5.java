@@ -1,49 +1,39 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.protocal.c.ccf;
-import com.tencent.mm.protocal.c.clu;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.config.v;
+import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.preference.f;
 
 final class AppBrandAuthorizeUI$5
-  implements w.a
+  implements Runnable
 {
-  AppBrandAuthorizeUI$5(AppBrandAuthorizeUI paramAppBrandAuthorizeUI) {}
+  AppBrandAuthorizeUI$5(AppBrandAuthorizeUI paramAppBrandAuthorizeUI, boolean paramBoolean) {}
   
-  public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
+  public final void run()
   {
-    y.d("MicroMsg.AppBrandAuthorizeUI", "WxaAppGetAuthInfoReq errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((paramInt1 != 0) || (paramInt2 != 0))
+    AppMethodBeat.i(132896);
+    Preference localPreference = new Preference(this.iLF);
+    localPreference.zsk = false;
+    if (this.ixx)
     {
-      AppBrandAuthorizeUI.b(this.hcu);
-      return 0;
+      localPreference.setLayoutResource(2130968663);
+      localPreference.setTitle(this.iLF.getString(2131296576, new Object[] { AppBrandAuthorizeUI.i(this.iLF).nickname }));
     }
-    paramString = (clu)paramb.ecF.ecN;
-    if (paramString == null)
+    for (;;)
     {
-      AppBrandAuthorizeUI.b(this.hcu);
-      y.e("MicroMsg.AppBrandAuthorizeUI", "WxaAppGetAuthInfoReq failed, response is null!");
-      return 0;
+      this.iLF.iLA.b(localPreference);
+      this.iLF.iLA.notifyDataSetChanged();
+      AppMethodBeat.o(132896);
+      return;
+      localPreference.setLayoutResource(2130968664);
+      localPreference.setTitle(this.iLF.getString(2131296577, new Object[] { AppBrandAuthorizeUI.i(this.iLF).nickname }));
     }
-    paramInt1 = paramString.tYN.errCode;
-    paramb = paramString.tYN.aox;
-    if (paramInt1 == 0)
-    {
-      this.hcu.hcn = paramString.tYO;
-      AppBrandAuthorizeUI.a(this.hcu, this.hcu.hcn);
-      return 0;
-    }
-    AppBrandAuthorizeUI.b(this.hcu);
-    y.e("MicroMsg.AppBrandAuthorizeUI", "WxaAppGetAuthInfoReq error %s", new Object[] { paramb });
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandAuthorizeUI.5
  * JD-Core Version:    0.7.0.1
  */

@@ -2,20 +2,20 @@ package com.tencent.mm.ui.tools;
 
 abstract class MMGestureGallery$a
 {
-  protected boolean bur = false;
+  protected boolean bVC = false;
   
   public MMGestureGallery$a(MMGestureGallery paramMMGestureGallery) {}
   
-  public final boolean aXY()
+  public final boolean bEL()
   {
-    return this.bur;
+    return this.bVC;
   }
   
   public abstract void play();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MMGestureGallery.a
  * JD-Core Version:    0.7.0.1
  */

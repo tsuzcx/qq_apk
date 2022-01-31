@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.webview.model.an;
-import com.tencent.mm.plugin.webview.model.an.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WebViewUI$9
   implements View.OnClickListener
@@ -12,15 +12,20 @@ final class WebViewUI$9
   
   public final void onClick(View paramView)
   {
-    this.rpH.bo(WebViewUI.F(this.rpH), true);
-    paramView = this.rpH.rfg.ccl();
-    paramView.rgD = new Object[] { this.rpH.caS, Integer.valueOf(4) };
-    paramView.c(this.rpH.gGn);
+    AppMethodBeat.i(7817);
+    WebViewUI localWebViewUI = this.vgz;
+    if (bo.isNullOrNil(WebViewUI.d(this.vgz))) {}
+    for (paramView = this.vgz.cJr;; paramView = WebViewUI.d(this.vgz))
+    {
+      localWebViewUI.Hr(paramView);
+      AppMethodBeat.o(7817);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.WebViewUI.9
  * JD-Core Version:    0.7.0.1
  */

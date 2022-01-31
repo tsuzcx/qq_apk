@@ -1,163 +1,117 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import com.tencent.mm.h.c.er;
-import com.tencent.mm.plugin.wallet_core.d.d;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.lang.reflect.Field;
+import com.tencent.mm.plugin.wallet_core.ui.b;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Vector;
 
-public final class r
-  extends er
+public abstract class r<K>
 {
-  public static c.a buS;
+  List<String> uiA = new LinkedList();
+  Map<String, Integer> uix = new HashMap();
+  List<K> uiy = new LinkedList();
+  public Vector<r<K>.b> uiz = new Vector();
   
-  static
+  private void cTH()
   {
-    c.a locala = new c.a();
-    locala.ujL = new Field[3];
-    locala.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "bulletin_scene";
-    locala.ujN.put("bulletin_scene", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" bulletin_scene TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.ujM = "bulletin_scene";
-    locala.columns[1] = "bulletin_content";
-    locala.ujN.put("bulletin_content", "TEXT");
-    localStringBuilder.append(" bulletin_content TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "bulletin_url";
-    locala.ujN.put("bulletin_url", "TEXT");
-    localStringBuilder.append(" bulletin_url TEXT");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    buS = locala;
+    int i = 0;
+    int j;
+    if (i < this.uiz.size()) {
+      if (((r.b)this.uiz.get(i)).uiH != r.a.uiD)
+      {
+        Object localObject = a(this.uiz, i);
+        if (this.uix.containsKey(localObject)) {
+          break label158;
+        }
+        localObject = b.afE((String)localObject);
+        j = 0;
+        label67:
+        if (j >= this.uiA.size()) {
+          break label153;
+        }
+        k = 0;
+        label82:
+        if (k >= localObject.length) {
+          break label170;
+        }
+        if (((String)this.uiA.get(j)).contains(localObject[k])) {
+          break label139;
+        }
+      }
+    }
+    label139:
+    label153:
+    label158:
+    label170:
+    for (int k = 0;; k = 1)
+    {
+      if (k != 0)
+      {
+        j = 1;
+        label120:
+        if (j != 0) {
+          break label158;
+        }
+        a(i, r.a.uiC);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        k += 1;
+        break label82;
+        j += 1;
+        break label67;
+        j = 0;
+        break label120;
+        a(i, r.a.uiE);
+      }
+      return;
+    }
   }
   
-  public static void at(JSONObject paramJSONObject)
+  public abstract String a(Vector<r<K>.b> paramVector, int paramInt);
+  
+  public final void a(int paramInt, r.a parama)
   {
-    boolean bool3 = true;
-    boolean bool2 = true;
-    int j = 0;
-    Object localObject1 = o.bVw();
-    if ((paramJSONObject != null) && (localObject1 != null))
+    ((r.b)this.uiz.get(paramInt)).uiH = parama;
+  }
+  
+  public final void d(List<K> paramList1, List<K> paramList2, List<String> paramList)
+  {
+    this.uiA = paramList;
+    this.uiy = paramList2;
+    this.uiz.clear();
+    this.uiz = new Vector(paramList1.size());
+    int i = 0;
+    if (i < paramList1.size())
     {
-      Object localObject3 = paramJSONObject.optJSONArray("banner_map");
-      paramJSONObject = paramJSONObject.optJSONArray("banner_content_array");
-      localObject2 = new HashMap();
-      HashMap localHashMap = new HashMap();
-      Object localObject4;
-      String str;
-      if ((localObject3 != null) && (paramJSONObject != null))
+      paramList2 = new r.b(this);
+      Object localObject = paramList1.get(i);
+      paramList2.uiG = localObject;
+      if (this.uiy.contains(localObject)) {}
+      for (paramList2.uiH = r.a.uiD;; paramList2.uiH = r.a.uiC)
       {
-        int k = ((JSONArray)localObject3).length();
-        int i = 0;
-        while (i < k)
-        {
-          localObject4 = ((JSONArray)localObject3).optJSONObject(i);
-          if (localObject4 != null)
-          {
-            str = ((JSONObject)localObject4).optString("banner_type");
-            localObject4 = ((JSONObject)localObject4).optString("banner_template_id");
-            y.i("MicroMsg.WalletBulletin", "sceneid=" + str + "; contentid=" + (String)localObject4);
-            if ((!bk.bl(str)) && (!bk.bl((String)localObject4)))
-            {
-              ((Map)localObject2).put(str, localObject4);
-              y.i("MicroMsg.WalletBulletin", "sceneid:" + str + " map contentid:" + (String)localObject4);
-            }
-          }
-          i += 1;
-        }
-        k = paramJSONObject.length();
-        i = j;
-        while (i < k)
-        {
-          localObject3 = paramJSONObject.optJSONObject(i);
-          if (localObject3 != null) {
-            localHashMap.put(((JSONObject)localObject3).optString("banner_template_id"), Integer.valueOf(i));
-          }
-          i += 1;
-        }
-        if (((Map)localObject2).size() > 0) {
-          localObject3 = ((Map)localObject2).keySet().iterator();
-        }
-      }
-      else
-      {
-        while (((Iterator)localObject3).hasNext())
-        {
-          str = (String)((Iterator)localObject3).next();
-          localObject4 = (String)((Map)localObject2).get(str);
-          if (localHashMap.containsKey(localObject4))
-          {
-            y.i("MicroMsg.WalletBulletin", "find contentid:" + (String)localObject4 + "in contentMap");
-            localObject4 = paramJSONObject.optJSONObject(((Integer)localHashMap.get(localObject4)).intValue());
-            r localr = new r();
-            localr.field_bulletin_scene = str;
-            localr.field_bulletin_content = ((JSONObject)localObject4).optString("content");
-            localr.field_bulletin_url = ((JSONObject)localObject4).optString("url");
-            ((d)localObject1).b(localr);
-          }
-          else
-          {
-            y.e("MicroMsg.WalletBulletin", "can not find contentid:" + (String)localObject4 + "in contentMap");
-            continue;
-            localObject1 = new StringBuilder("scenes==null?");
-            if (localObject3 != null) {
-              break label515;
-            }
-            bool1 = true;
-            localObject1 = ((StringBuilder)localObject1).append(bool1).append("  contents==null?");
-            if (paramJSONObject != null) {
-              break label521;
-            }
-          }
-        }
-      }
-      label515:
-      label521:
-      for (bool1 = bool2;; bool1 = false)
-      {
-        y.e("MicroMsg.WalletBulletin", bool1);
-        return;
-        bool1 = false;
+        this.uiz.add(paramList2);
+        i += 1;
         break;
       }
     }
-    Object localObject2 = new StringBuilder("json==null?");
-    if (paramJSONObject == null)
+    this.uix.clear();
+    i = 0;
+    while (i < paramList.size())
     {
-      bool1 = true;
-      paramJSONObject = ((StringBuilder)localObject2).append(bool1).append("  stg==null?");
-      if (localObject1 != null) {
-        break label588;
-      }
+      this.uix.put(paramList.get(i), Integer.valueOf(0));
+      i += 1;
     }
-    label588:
-    for (boolean bool1 = bool3;; bool1 = false)
-    {
-      y.e("MicroMsg.WalletBulletin", bool1);
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  protected final c.a rM()
-  {
-    return buS;
+    cTH();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.r
  * JD-Core Version:    0.7.0.1
  */

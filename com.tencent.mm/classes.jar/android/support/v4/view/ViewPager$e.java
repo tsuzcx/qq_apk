@@ -1,12 +1,21 @@
 package android.support.v4.view;
 
-public abstract interface ViewPager$e
+import android.database.DataSetObserver;
+
+final class ViewPager$e
+  extends DataSetObserver
 {
-  public abstract void Q(int paramInt);
+  ViewPager$e(ViewPager paramViewPager) {}
   
-  public abstract void R(int paramInt);
+  public final void onChanged()
+  {
+    this.Ha.dataSetChanged();
+  }
   
-  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
+  public final void onInvalidated()
+  {
+    this.Ha.dataSetChanged();
+  }
 }
 
 

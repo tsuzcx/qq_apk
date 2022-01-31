@@ -1,162 +1,208 @@
 package com.google.android.exoplayer2.c.b;
 
-import com.google.android.exoplayer2.i.t;
+import com.google.android.exoplayer2.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Stack;
 
-abstract class a
+final class a
+  implements b
 {
-  public static final int aAA = t.aG("elst");
-  public static final int aAB = t.aG("mdhd");
-  public static final int aAC = t.aG("hdlr");
-  public static final int aAD = t.aG("stsd");
-  public static final int aAE = t.aG("pssh");
-  public static final int aAF = t.aG("sinf");
-  public static final int aAG = t.aG("schm");
-  public static final int aAH = t.aG("schi");
-  public static final int aAI = t.aG("tenc");
-  public static final int aAJ = t.aG("encv");
-  public static final int aAK = t.aG("enca");
-  public static final int aAL = t.aG("frma");
-  public static final int aAM = t.aG("saiz");
-  public static final int aAN = t.aG("saio");
-  public static final int aAO = t.aG("sbgp");
-  public static final int aAP = t.aG("sgpd");
-  public static final int aAQ = t.aG("uuid");
-  public static final int aAR = t.aG("senc");
-  public static final int aAS = t.aG("pasp");
-  public static final int aAT = t.aG("TTML");
-  public static final int aAU = t.aG("vmhd");
-  public static final int aAV = t.aG("mp4v");
-  public static final int aAW = t.aG("stts");
-  public static final int aAX = t.aG("stss");
-  public static final int aAY = t.aG("ctts");
-  public static final int aAZ = t.aG("stsc");
-  public static final int aAa;
-  public static final int aAb;
-  public static final int aAc;
-  public static final int aAd;
-  public static final int aAe;
-  public static final int aAf;
-  public static final int aAg;
-  public static final int aAh;
-  public static final int aAi;
-  public static final int aAj;
-  public static final int aAk;
-  public static final int aAl;
-  public static final int aAm;
-  public static final int aAn;
-  public static final int aAo;
-  public static final int aAp;
-  public static final int aAq;
-  public static final int aAr;
-  public static final int aAs;
-  public static final int aAt;
-  public static final int aAu;
-  public static final int aAv;
-  public static final int aAw;
-  public static final int aAx;
-  public static final int aAy;
-  public static final int aAz;
-  public static final int aBa = t.aG("stsz");
-  public static final int aBb = t.aG("stz2");
-  public static final int aBc = t.aG("stco");
-  public static final int aBd = t.aG("co64");
-  public static final int aBe = t.aG("tx3g");
-  public static final int aBf = t.aG("wvtt");
-  public static final int aBg = t.aG("stpp");
-  public static final int aBh = t.aG("c608");
-  public static final int aBi = t.aG("samr");
-  public static final int aBj = t.aG("sawb");
-  public static final int aBk = t.aG("udta");
-  public static final int aBl = t.aG("meta");
-  public static final int aBm = t.aG("ilst");
-  public static final int aBn = t.aG("mean");
-  public static final int aBo = t.aG("name");
-  public static final int aBp = t.aG("data");
-  public static final int aBq = t.aG("emsg");
-  public static final int aBr = t.aG("st3d");
-  public static final int aBs = t.aG("sv3d");
-  public static final int aBt = t.aG("proj");
-  public static final int aBu = t.aG("vp08");
-  public static final int aBv = t.aG("vp09");
-  public static final int aBw = t.aG("vpcC");
-  public static final int aBx = t.aG("camm");
-  public static final int aBy = t.aG("alac");
-  public static final int azK = t.aG("ftyp");
-  public static final int azL = t.aG("avc1");
-  public static final int azM = t.aG("avc3");
-  public static final int azN = t.aG("hvc1");
-  public static final int azO = t.aG("hev1");
-  public static final int azP = t.aG("s263");
-  public static final int azQ = t.aG("d263");
-  public static final int azR = t.aG("mdat");
-  public static final int azS = t.aG("mp4a");
-  public static final int azT = t.aG(".mp3");
-  public static final int azU = t.aG("wave");
-  public static final int azV = t.aG("lpcm");
-  public static final int azW = t.aG("sowt");
-  public static final int azX = t.aG("ac-3");
-  public static final int azY = t.aG("dac3");
-  public static final int azZ = t.aG("ec-3");
-  public final int type;
+  private final byte[] aCi;
+  private final Stack<a> aCj;
+  private final f aCk;
+  private c aCl;
+  private int aCm;
+  private int aCn;
+  private long aCo;
   
-  static
+  a()
   {
-    aAa = t.aG("dec3");
-    aAb = t.aG("dtsc");
-    aAc = t.aG("dtsh");
-    aAd = t.aG("dtsl");
-    aAe = t.aG("dtse");
-    aAf = t.aG("ddts");
-    aAg = t.aG("tfdt");
-    aAh = t.aG("tfhd");
-    aAi = t.aG("trex");
-    aAj = t.aG("trun");
-    aAk = t.aG("sidx");
-    aAl = t.aG("moov");
-    aAm = t.aG("mvhd");
-    aAn = t.aG("trak");
-    aAo = t.aG("mdia");
-    aAp = t.aG("minf");
-    aAq = t.aG("stbl");
-    aAr = t.aG("avcC");
-    aAs = t.aG("hvcC");
-    aAt = t.aG("esds");
-    aAu = t.aG("moof");
-    aAv = t.aG("traf");
-    aAw = t.aG("mvex");
-    aAx = t.aG("mehd");
-    aAy = t.aG("tkhd");
-    aAz = t.aG("edts");
+    AppMethodBeat.i(94884);
+    this.aCi = new byte[8];
+    this.aCj = new Stack();
+    this.aCk = new f();
+    AppMethodBeat.o(94884);
   }
   
-  public a(int paramInt)
+  private long a(com.google.android.exoplayer2.c.f paramf, int paramInt)
   {
-    this.type = paramInt;
+    int i = 0;
+    AppMethodBeat.i(94887);
+    paramf.readFully(this.aCi, 0, paramInt);
+    long l = 0L;
+    while (i < paramInt)
+    {
+      l = l << 8 | this.aCi[i] & 0xFF;
+      i += 1;
+    }
+    AppMethodBeat.o(94887);
+    return l;
   }
   
-  public static int cT(int paramInt)
+  public final void a(c paramc)
   {
-    return paramInt >> 24 & 0xFF;
+    this.aCl = paramc;
   }
   
-  public static int cU(int paramInt)
+  public final boolean c(com.google.android.exoplayer2.c.f paramf)
   {
-    return 0xFFFFFF & paramInt;
+    AppMethodBeat.i(94886);
+    boolean bool;
+    if (this.aCl != null)
+    {
+      bool = true;
+      com.google.android.exoplayer2.i.a.checkState(bool);
+    }
+    for (;;)
+    {
+      if ((!this.aCj.isEmpty()) && (paramf.getPosition() >= ((a)this.aCj.peek()).aCp))
+      {
+        this.aCl.dq(((a)this.aCj.pop()).aCn);
+        AppMethodBeat.o(94886);
+        return true;
+        bool = false;
+        break;
+      }
+      long l2;
+      long l1;
+      int j;
+      if (this.aCm == 0)
+      {
+        l2 = this.aCk.a(paramf, true, false, 4);
+        l1 = l2;
+        if (l2 == -2L) {
+          paramf.nW();
+        }
+        for (;;)
+        {
+          paramf.b(this.aCi, 0, 4);
+          i = f.dr(this.aCi[0]);
+          if ((i != -1) && (i <= 4))
+          {
+            j = (int)f.b(this.aCi, i, false);
+            if (this.aCl.dp(j))
+            {
+              paramf.dg(i);
+              l1 = j;
+              if (l1 != -1L) {
+                break;
+              }
+              AppMethodBeat.o(94886);
+              return false;
+            }
+          }
+          paramf.dg(1);
+        }
+        this.aCn = ((int)l1);
+        this.aCm = 1;
+      }
+      if (this.aCm == 1)
+      {
+        this.aCo = this.aCk.a(paramf, false, true, 8);
+        this.aCm = 2;
+      }
+      int i = this.aCl.jdMethod_do(this.aCn);
+      c localc;
+      switch (i)
+      {
+      default: 
+        paramf = new o("Invalid element type ".concat(String.valueOf(i)));
+        AppMethodBeat.o(94886);
+        throw paramf;
+      case 1: 
+        l1 = paramf.getPosition();
+        l2 = this.aCo;
+        this.aCj.add(new a(this.aCn, l2 + l1, (byte)0));
+        this.aCl.e(this.aCn, l1, this.aCo);
+        this.aCm = 0;
+        AppMethodBeat.o(94886);
+        return true;
+      case 2: 
+        if (this.aCo > 8L)
+        {
+          paramf = new o("Invalid integer size: " + this.aCo);
+          AppMethodBeat.o(94886);
+          throw paramf;
+        }
+        this.aCl.i(this.aCn, a(paramf, (int)this.aCo));
+        this.aCm = 0;
+        AppMethodBeat.o(94886);
+        return true;
+      case 5: 
+        if ((this.aCo != 4L) && (this.aCo != 8L))
+        {
+          paramf = new o("Invalid float size: " + this.aCo);
+          AppMethodBeat.o(94886);
+          throw paramf;
+        }
+        localc = this.aCl;
+        i = this.aCn;
+        j = (int)this.aCo;
+        l1 = a(paramf, j);
+        if (j == 4) {}
+        for (double d = Float.intBitsToFloat((int)l1);; d = Double.longBitsToDouble(l1))
+        {
+          localc.c(i, d);
+          this.aCm = 0;
+          AppMethodBeat.o(94886);
+          return true;
+        }
+      case 3: 
+        if (this.aCo > 2147483647L)
+        {
+          paramf = new o("String element size: " + this.aCo);
+          AppMethodBeat.o(94886);
+          throw paramf;
+        }
+        localc = this.aCl;
+        i = this.aCn;
+        j = (int)this.aCo;
+        if (j == 0) {}
+        byte[] arrayOfByte;
+        for (paramf = "";; paramf = new String(arrayOfByte))
+        {
+          localc.d(i, paramf);
+          this.aCm = 0;
+          AppMethodBeat.o(94886);
+          return true;
+          arrayOfByte = new byte[j];
+          paramf.readFully(arrayOfByte, 0, j);
+        }
+      case 4: 
+        this.aCl.a(this.aCn, (int)this.aCo, paramf);
+        this.aCm = 0;
+        AppMethodBeat.o(94886);
+        return true;
+      }
+      paramf.dg((int)this.aCo);
+      this.aCm = 0;
+    }
   }
   
-  public static String cV(int paramInt)
+  public final void reset()
   {
-    return (char)(paramInt >> 24 & 0xFF) + (char)(paramInt >> 16 & 0xFF) + (char)(paramInt >> 8 & 0xFF) + (char)(paramInt & 0xFF);
+    AppMethodBeat.i(94885);
+    this.aCm = 0;
+    this.aCj.clear();
+    this.aCk.reset();
+    AppMethodBeat.o(94885);
   }
   
-  public String toString()
+  static final class a
   {
-    return cV(this.type);
+    final int aCn;
+    final long aCp;
+    
+    private a(int paramInt, long paramLong)
+    {
+      this.aCn = paramInt;
+      this.aCp = paramLong;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.exoplayer2.c.b.a
  * JD-Core Version:    0.7.0.1
  */

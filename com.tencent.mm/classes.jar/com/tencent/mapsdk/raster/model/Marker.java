@@ -10,7 +10,11 @@ public abstract interface Marker
   
   public abstract float getAlpha();
   
+  public abstract String getContentDescription();
+  
   public abstract String getId();
+  
+  public abstract int getLevel();
   
   public abstract View getMarkerView();
   
@@ -44,6 +48,8 @@ public abstract interface Marker
   
   public abstract void setAnchor(float paramFloat1, float paramFloat2);
   
+  public abstract void setContentDescription(String paramString);
+  
   public abstract void setDraggable(boolean paramBoolean);
   
   public abstract void setIcon(BitmapDescriptor paramBitmapDescriptor);
@@ -51,6 +57,8 @@ public abstract interface Marker
   public abstract void setInfoWindowHideAnimation(Animation paramAnimation);
   
   public abstract void setInfoWindowShowAnimation(Animation paramAnimation);
+  
+  public abstract void setLevel(int paramInt);
   
   public abstract void setMarkerView(View paramView);
   

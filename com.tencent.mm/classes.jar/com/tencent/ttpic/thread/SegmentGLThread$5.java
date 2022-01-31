@@ -1,6 +1,7 @@
 package com.tencent.ttpic.thread;
 
-import com.tencent.ttpic.util.FabbyManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.fabby.FabbyManager;
 
 class SegmentGLThread$5
   implements Runnable
@@ -9,7 +10,9 @@ class SegmentGLThread$5
   
   public void run()
   {
+    AppMethodBeat.i(83777);
     FabbyManager.getInstance().compileKernel();
+    AppMethodBeat.o(83777);
   }
 }
 

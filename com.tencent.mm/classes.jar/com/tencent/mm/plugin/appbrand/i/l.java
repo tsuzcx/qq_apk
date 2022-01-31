@@ -1,15 +1,13 @@
 package com.tencent.mm.plugin.appbrand.i;
 
+import android.webkit.ValueCallback;
+
 public abstract interface l
-  extends g
+  extends j
 {
-  public abstract d ago();
+  public abstract void Di(String paramString);
   
-  public abstract d agp();
-  
-  public abstract d kQ(int paramInt);
-  
-  public abstract void kR(int paramInt);
+  public abstract void a(String paramString1, String paramString2, ValueCallback<String> paramValueCallback);
 }
 
 

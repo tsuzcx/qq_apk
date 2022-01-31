@@ -5,7 +5,7 @@ public final class c$ik
 {
   public c$ik()
   {
-    super("setSearchInputWord", "", 10000, false);
+    super("sendDataToWXDevice", "sendDataToWXDevice", 120, true);
   }
 }
 

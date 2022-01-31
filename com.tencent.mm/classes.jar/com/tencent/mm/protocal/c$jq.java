@@ -5,12 +5,12 @@ public final class c$jq
 {
   public c$jq()
   {
-    super("selectWalletCurrency", "selectWalletCurrency", 201, true);
+    super("showMenuItems", "showMenuItems", 86, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.c.jq
  * JD-Core Version:    0.7.0.1
  */

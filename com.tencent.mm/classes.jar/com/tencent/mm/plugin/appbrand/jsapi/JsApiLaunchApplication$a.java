@@ -1,37 +1,42 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.pluginsdk.model.app.am;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.model.app.ai;
 
 final class JsApiLaunchApplication$a
-  implements am
+  implements ai
 {
-  volatile boolean bRf;
-  volatile boolean edU;
-  volatile boolean ggq;
-  volatile boolean ggr;
-  JsApiLaunchApplication.a.a ggs;
+  volatile boolean cyH;
+  volatile boolean ftW;
+  volatile boolean hyp;
+  volatile boolean hyq;
+  JsApiLaunchApplication.a.a hyr;
   
   JsApiLaunchApplication$a(JsApiLaunchApplication.a.a parama)
   {
-    this.ggs = parama;
+    this.hyr = parama;
   }
   
-  public final void cW(boolean paramBoolean)
+  public final void dZ(boolean paramBoolean)
   {
-    this.edU = true;
-    this.ggq = paramBoolean;
-    if ((this.ggr) && (this.ggs != null)) {
-      this.ggs.q(this.bRf, paramBoolean);
+    AppMethodBeat.i(130448);
+    this.ftW = true;
+    this.hyp = paramBoolean;
+    if ((this.hyq) && (this.hyr != null)) {
+      this.hyr.r(this.cyH, paramBoolean);
     }
+    AppMethodBeat.o(130448);
   }
   
-  final void cX(boolean paramBoolean)
+  final void ea(boolean paramBoolean)
   {
-    this.bRf = paramBoolean;
-    this.ggr = true;
-    if ((this.edU) && (this.ggs != null)) {
-      this.ggs.q(paramBoolean, this.ggq);
+    AppMethodBeat.i(130449);
+    this.cyH = paramBoolean;
+    this.hyq = true;
+    if ((this.ftW) && (this.hyr != null)) {
+      this.hyr.r(paramBoolean, this.hyp);
     }
+    AppMethodBeat.o(130449);
   }
 }
 

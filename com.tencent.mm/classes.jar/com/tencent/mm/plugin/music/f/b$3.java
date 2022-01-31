@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.music.f;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$3
   implements MediaPlayer.OnPreparedListener
@@ -12,35 +13,37 @@ final class b$3
   
   public final void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (this.mAy.eLh != null) {
-      y.i("MicroMsg.Music.MMMediaPlayer", "onPrepared");
+    AppMethodBeat.i(137550);
+    if (this.paE.gaO != null) {
+      ab.i("MicroMsg.Music.MMMediaPlayer", "onPrepared");
     }
     try
     {
-      this.mAy.eLh.start();
-      this.mAy.stop = false;
-      this.mAy.onStart();
-      if (this.mAy.mAx != null) {
-        this.mAy.mAx.isStop = true;
+      this.paE.gaO.start();
+      this.paE.oIr = false;
+      this.paE.onStart();
+      if (this.paE.paD != null) {
+        this.paE.paD.isStop = true;
       }
-      this.mAy.mAx = new b.a(this.mAy, (byte)0);
-      paramMediaPlayer = this.mAy.mAx;
+      this.paE.paD = new b.a(this.paE, (byte)0);
+      paramMediaPlayer = this.paE.paD;
       paramMediaPlayer.isStop = false;
-      e.post(paramMediaPlayer, "music_play_progress_runnable");
+      d.post(paramMediaPlayer, "music_play_progress_runnable");
+      AppMethodBeat.o(137550);
       return;
     }
     catch (Exception paramMediaPlayer)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", paramMediaPlayer, "start", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", paramMediaPlayer, "start", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.b.3
  * JD-Core Version:    0.7.0.1
  */

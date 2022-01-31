@@ -1,29 +1,34 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.stub.d;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.b;
-import com.tencent.mm.pluginsdk.ui.tools.s;
+import com.tencent.mm.pluginsdk.ui.tools.u;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WebViewUI$b
   implements b
 {
-  public final String rqE = "weixin://addfriend/";
+  public final String vgI = "weixin://addfriend/";
   
   private WebViewUI$b(WebViewUI paramWebViewUI) {}
   
-  public final boolean Tq(String paramString)
+  public final boolean ait(String paramString)
   {
-    if (!this.rpH.gGo.cdI().hi(5))
+    AppMethodBeat.i(7888);
+    if (!this.vgz.igV.ddV().jy(5))
     {
-      y.e("MicroMsg.WebViewUI", "AddFriendHandler, permission fail");
+      ab.e("MicroMsg.WebViewUI", "AddFriendHandler, permission fail");
+      AppMethodBeat.o(7888);
       return true;
     }
     paramString = paramString.substring(19);
-    if (bk.bl(paramString)) {
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(7888);
       return false;
     }
     Bundle localBundle = new Bundle();
@@ -31,22 +36,30 @@ final class WebViewUI$b
     localBundle.putString("userName", paramString);
     try
     {
-      this.rpH.gGn.a(8, localBundle, this.rpH.hashCode());
+      this.vgz.igU.a(8, localBundle, this.vgz.hashCode());
+      AppMethodBeat.o(7888);
       return true;
     }
     catch (Exception paramString)
     {
-      y.w("MicroMsg.WebViewUI", "AddFriendHandler, ex = " + paramString.getMessage());
+      for (;;)
+      {
+        ab.w("MicroMsg.WebViewUI", "AddFriendHandler, ex = " + paramString.getMessage());
+      }
     }
-    return true;
   }
   
-  public final boolean Ty(String paramString)
+  public final boolean aiz(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(7887);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(7887);
       return false;
     }
-    return s.n(paramString, "weixin://addfriend/");
+    boolean bool = u.x(paramString, "weixin://addfriend/");
+    AppMethodBeat.o(7887);
+    return bool;
   }
 }
 

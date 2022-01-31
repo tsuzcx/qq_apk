@@ -1,25 +1,75 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
-import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.plugin.topstory.ui.video.c;
 import com.tencent.mm.plugin.topstory.ui.video.r;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
-final class e$a
+public class e$a
   implements c
 {
-  private float pGY;
+  private float tks;
   
   e$a(e parame)
   {
-    this.pGY = com.tencent.mm.cb.a.fk(parame.getContext());
+    AppMethodBeat.i(1901);
+    this.tks = com.tencent.mm.cb.a.gx(parame.getContext());
+    AppMethodBeat.o(1901);
   }
   
-  public final int aG(float paramFloat)
+  public void GC(int paramInt)
   {
-    paramFloat /= this.pGY;
-    int j = this.pGX.getFSVideoUIComponent().bNx().getVideoDurationSec();
+    AppMethodBeat.i(1906);
+    this.tkq.tkg.cKp();
+    e.T(this.tkq).setVisibility(8);
+    this.tkq.seekTo(paramInt);
+    AppMethodBeat.o(1906);
+  }
+  
+  public final void aEX()
+  {
+    AppMethodBeat.i(1902);
+    ab.d("MicroMsg.TopStory.TopStoryFSVideoContainer", "onSingleTap");
+    if (e.Q(this.tkq))
+    {
+      if (this.tkq.tkg.Pk())
+      {
+        this.tkq.tkg.setVisibility(8);
+        AppMethodBeat.o(1902);
+        return;
+      }
+      this.tkq.tkg.show();
+      if (this.tkq.getFSItemUIComponent() != null)
+      {
+        this.tkq.getFSItemUIComponent().cJa();
+        this.tkq.getFSItemUIComponent().cIZ();
+      }
+    }
+    AppMethodBeat.o(1902);
+  }
+  
+  public final void aEY()
+  {
+    AppMethodBeat.i(1903);
+    ab.d("MicroMsg.TopStory.TopStoryFSVideoContainer", "onDoubleTap");
+    AppMethodBeat.o(1903);
+  }
+  
+  public void aEZ()
+  {
+    AppMethodBeat.i(1904);
+    e.R(this.tkq).setVisibility(0);
+    this.tkq.tkg.cKo();
+    AppMethodBeat.o(1904);
+  }
+  
+  public int bj(float paramFloat)
+  {
+    AppMethodBeat.i(1905);
+    paramFloat /= this.tks;
+    int j = this.tkq.getFSVideoUIComponent().cJh().getVideoDurationSec();
     int i = getCurrentPosition();
     int k = (int)(paramFloat * j) + i;
     if (k < 0) {
@@ -27,8 +77,9 @@ final class e$a
     }
     for (;;)
     {
-      String str = com.tencent.mm.plugin.websearch.ui.b.ce(j * 1000L);
-      e.N(this.pGX).setText(com.tencent.mm.plugin.websearch.ui.b.ce(i * 1000L) + "/" + str);
+      String str = com.tencent.mm.plugin.websearch.ui.a.ha(j * 1000L);
+      e.S(this.tkq).setText(com.tencent.mm.plugin.websearch.ui.a.ha(i * 1000L) + "/" + str);
+      AppMethodBeat.o(1905);
       return i;
       i = k;
       if (k > j) {
@@ -37,65 +88,29 @@ final class e$a
     }
   }
   
-  public final void akl()
+  public final boolean cJx()
   {
-    y.d("MicroMsg.TopStory.TopStoryListVideoContainer", "onSingleTap");
-    int i;
-    if (e.L(this.pGX))
+    AppMethodBeat.i(1907);
+    if (e.U(this.tkq))
     {
-      if (e.l(this.pGX).getVisibility() != 0) {
-        break label49;
-      }
-      i = 1;
-      if (i == 0) {
-        break label54;
-      }
-      e.l(this.pGX).setVisibility(8);
+      AppMethodBeat.o(1907);
+      return false;
     }
-    label49:
-    label54:
-    do
-    {
-      return;
-      i = 0;
-      break;
-      e.l(this.pGX).show();
-    } while (this.pGX.getFSItemUIComponent() == null);
-    this.pGX.getFSItemUIComponent().bNq();
-    this.pGX.getFSItemUIComponent().bNp();
-  }
-  
-  public final void akm()
-  {
-    y.d("MicroMsg.TopStory.TopStoryListVideoContainer", "onDoubleTap");
-  }
-  
-  public final void akn()
-  {
-    e.M(this.pGX).setVisibility(0);
-    e.l(this.pGX).ofr.setVisibility(8);
-  }
-  
-  public final boolean bNK()
-  {
-    return !e.P(this.pGX);
+    AppMethodBeat.o(1907);
+    return true;
   }
   
   public final int getCurrentPosition()
   {
-    return this.pGX.getFSVideoUIComponent().bNx().getCurrPosSec();
-  }
-  
-  public final void zz(int paramInt)
-  {
-    e.l(this.pGX).bOz();
-    e.O(this.pGX).setVisibility(8);
-    this.pGX.seekTo(paramInt);
+    AppMethodBeat.i(1908);
+    int i = this.tkq.getFSVideoUIComponent().cJh().getCurrPosSec();
+    AppMethodBeat.o(1908);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.e.a
  * JD-Core Version:    0.7.0.1
  */

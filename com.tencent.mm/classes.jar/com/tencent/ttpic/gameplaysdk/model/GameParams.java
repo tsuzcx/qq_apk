@@ -12,6 +12,7 @@ public class GameParams
   public String mRunningAnimDefaultRotate = "";
   public String mRunningAnimName = "";
   public String nodeInitialTransform = "";
+  public String[] textureImages;
   public boolean usePreload;
 }
 

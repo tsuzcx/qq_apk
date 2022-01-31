@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webwx.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class WebWXLogoutUI$7
   implements Runnable
 {
@@ -7,13 +9,15 @@ final class WebWXLogoutUI$7
   
   public final void run()
   {
-    WebWXLogoutUI.a(this.rEh, WebWXLogoutUI.g(this.rEh));
-    WebWXLogoutUI.h(this.rEh);
+    AppMethodBeat.i(26544);
+    WebWXLogoutUI.a(this.vuJ, WebWXLogoutUI.g(this.vuJ));
+    WebWXLogoutUI.h(this.vuJ);
+    AppMethodBeat.o(26544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.ui.WebWXLogoutUI.7
  * JD-Core Version:    0.7.0.1
  */

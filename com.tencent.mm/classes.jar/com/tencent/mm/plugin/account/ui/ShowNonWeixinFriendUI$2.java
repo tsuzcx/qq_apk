@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.account.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.f.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.g.a.c;
 
 final class ShowNonWeixinFriendUI$2
   implements View.OnClickListener
@@ -12,11 +13,13 @@ final class ShowNonWeixinFriendUI$2
   
   public final void onClick(View paramView)
   {
-    paramView = new c("290293790992170");
+    AppMethodBeat.i(125590);
+    paramView = new c(this.gKq.getString(2131306163));
     Bundle localBundle = new Bundle();
-    localBundle.putString("message", this.fsO.getString(q.j.facebook_invite_message));
-    localBundle.putString("to", Long.toString(ShowNonWeixinFriendUI.a(this.fsO)));
-    paramView.a(this.fsO, "apprequests", localBundle, new ShowNonWeixinFriendUI.2.1(this));
+    localBundle.putString("message", this.gKq.getString(2131299633));
+    localBundle.putString("to", Long.toString(ShowNonWeixinFriendUI.a(this.gKq)));
+    paramView.a(this.gKq, "apprequests", localBundle, new ShowNonWeixinFriendUI.2.1(this));
+    AppMethodBeat.o(125590);
   }
 }
 

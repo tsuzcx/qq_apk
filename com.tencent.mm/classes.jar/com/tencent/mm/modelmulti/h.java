@@ -1,28 +1,31 @@
 package com.tencent.mm.modelmulti;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m.b;
-import com.tencent.mm.h.a.pf;
-import com.tencent.mm.h.a.ph;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.o;
-import com.tencent.mm.network.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m.b;
+import com.tencent.mm.g.a.qk;
+import com.tencent.mm.g.a.qm;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.p;
+import com.tencent.mm.model.r;
 import com.tencent.mm.network.k;
 import com.tencent.mm.platformtools.ae;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.awn;
-import com.tencent.mm.protocal.c.awo;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.bpc;
-import com.tencent.mm.protocal.c.bpd;
+import com.tencent.mm.protocal.protobuf.bdc;
+import com.tencent.mm.protocal.protobuf.bdd;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.byz;
+import com.tencent.mm.protocal.protobuf.bza;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
 import com.tencent.wcdb.database.SQLiteException;
 import java.util.ArrayList;
@@ -35,460 +38,534 @@ import java.util.Set;
 import junit.framework.Assert;
 
 public final class h
-  extends com.tencent.mm.ah.m
+  extends com.tencent.mm.ai.m
   implements k
 {
-  private static final List<Object> esN = new ArrayList();
-  public long bIt;
-  private b dmK;
-  private com.tencent.mm.ah.f dmL;
-  private final List<bi> esO = new LinkedList();
-  private int esP = 3;
-  private boolean esQ = false;
-  private final List<bi> esR = new ArrayList();
-  private bi esS = null;
-  public com.tencent.mm.plugin.messenger.foundation.a.m esT = null;
+  private static final List<Object> fIA;
+  private f callback;
+  public long cpO;
+  private final List<bi> fIB;
+  private int fIC;
+  private boolean fID;
+  private final List<bi> fIE;
+  private bi fIF;
+  public com.tencent.mm.plugin.messenger.foundation.a.m fIG;
+  private b rr;
+  
+  static
+  {
+    AppMethodBeat.i(59985);
+    fIA = new ArrayList();
+    AppMethodBeat.o(59985);
+  }
   
   public h()
   {
-    y.d("MicroMsg.NetSceneSendMsg", "dktext :%s", new Object[] { bk.csb() });
-    y.i("MicroMsg.NetSceneSendMsg", "empty msg sender created");
+    AppMethodBeat.i(59970);
+    this.fIB = new LinkedList();
+    this.fIC = 3;
+    this.fID = false;
+    this.fIE = new ArrayList();
+    this.fIF = null;
+    this.fIG = null;
+    ab.d("MicroMsg.NetSceneSendMsg", "dktext :%s", new Object[] { bo.dtY() });
+    ab.i("MicroMsg.NetSceneSendMsg", "empty msg sender created");
+    AppMethodBeat.o(59970);
   }
   
   public h(long paramLong)
   {
-    y.i("MicroMsg.NetSceneSendMsg", "resend msg , local id = " + paramLong);
-    this.bIt = paramLong;
-    this.esS = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().fd(paramLong);
-    if (this.esS == null) {
-      y.e("MicroMsg.NetSceneSendMsg", "resend msg , msg is null localid:%d", new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.i(59969);
+    this.fIB = new LinkedList();
+    this.fIC = 3;
+    this.fID = false;
+    this.fIE = new ArrayList();
+    this.fIF = null;
+    this.fIG = null;
+    ab.i("MicroMsg.NetSceneSendMsg", "resend msg , local id = ".concat(String.valueOf(paramLong)));
+    this.cpO = paramLong;
+    this.fIF = ((j)g.E(j.class)).bPQ().kB(paramLong);
+    if (this.fIF == null) {
+      ab.e("MicroMsg.NetSceneSendMsg", "resend msg , msg is null localid:%d", new Object[] { Long.valueOf(paramLong) });
     }
+    AppMethodBeat.o(59969);
   }
   
   public h(String paramString1, String paramString2, int paramInt)
   {
-    y.d("MicroMsg.NetSceneSendMsg", "dktext :%s", new Object[] { bk.csb() });
+    AppMethodBeat.i(59968);
+    this.fIB = new LinkedList();
+    this.fIC = 3;
+    this.fID = false;
+    this.fIE = new ArrayList();
+    this.fIF = null;
+    this.fIG = null;
+    ab.d("MicroMsg.NetSceneSendMsg", "dktext :%s", new Object[] { bo.dtY() });
     bi localbi;
-    if (!bk.bl(paramString1))
+    if (!bo.isNullOrNil(paramString1))
     {
       localbi = new bi();
       localbi.setStatus(1);
-      localbi.ec(paramString1);
-      localbi.bg(bd.iK(paramString1));
-      localbi.fA(1);
+      localbi.kj(paramString1);
+      localbi.fQ(bf.py(paramString1));
+      localbi.hL(1);
       localbi.setContent(paramString2);
       localbi.setType(paramInt);
-      paramString1 = ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.q.class)).v(localbi);
-      if (!bk.bl(paramString1))
+      paramString1 = ((com.tencent.mm.plugin.messenger.foundation.a.q)g.E(com.tencent.mm.plugin.messenger.foundation.a.q.class)).B(localbi);
+      if (!bo.isNullOrNil(paramString1))
       {
-        localbi.cY(paramString1);
-        y.d("MicroMsg.NetSceneSendMsg", "NetSceneSendMsg:MsgSource:%s", new Object[] { localbi.czr });
-      }
-    }
-    try
-    {
-      this.bIt = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().b(localbi, true);
-      if (this.bIt == -1L) {
-        com.tencent.mm.plugin.report.f.nEG.a(111L, 255L, 1L, false);
-      }
-      if (this.bIt != -1L) {
-        bool = true;
-      }
-      Assert.assertTrue(bool);
-      y.i("MicroMsg.NetSceneSendMsg", "new msg inserted to db , local id = " + this.bIt);
-      return;
-    }
-    catch (SQLiteException paramString1)
-    {
-      com.tencent.mm.plugin.report.f.nEG.a(111L, 255L, 1L, false);
-      throw paramString1;
-    }
-  }
-  
-  public h(String paramString1, String paramString2, int paramInt1, int paramInt2, Object paramObject)
-  {
-    y.d("MicroMsg.NetSceneSendMsg", "dktext :%s", new Object[] { bk.csb() });
-    bi localbi;
-    if (!bk.bl(paramString1))
-    {
-      localbi = new bi();
-      localbi.setStatus(1);
-      localbi.ec(paramString1);
-      localbi.bg(bd.iK(paramString1));
-      localbi.fA(1);
-      localbi.setContent(paramString2);
-      localbi.setType(paramInt1);
-      paramString1 = a(((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.q.class)).v(localbi), paramObject, paramInt2);
-      if (!bk.bl(paramString1))
-      {
-        localbi.cY(paramString1);
-        y.d("MicroMsg.NetSceneSendMsg", "NetSceneSendMsg:MsgSource:%s", new Object[] { localbi.czr });
+        localbi.jl(paramString1);
+        ab.i("MicroMsg.NetSceneSendMsg", "NetSceneSendMsg:MsgSource:%s", new Object[] { localbi.dns });
       }
     }
     for (;;)
     {
       try
       {
-        this.bIt = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().b(localbi, true);
-        if (this.bIt == -1L) {
-          com.tencent.mm.plugin.report.f.nEG.a(111L, 255L, 1L, false);
+        this.cpO = ((j)g.E(j.class)).bPQ().c(localbi, true);
+        if (this.cpO == -1L) {
+          com.tencent.mm.plugin.report.e.qrI.idkeyStat(111L, 255L, 1L, false);
         }
-        if (this.bIt != -1L)
+        if (this.cpO != -1L)
         {
           bool = true;
           Assert.assertTrue(bool);
-          y.i("MicroMsg.NetSceneSendMsg", "new msg inserted to db , local id = " + this.bIt);
+          ab.i("MicroMsg.NetSceneSendMsg", "new msg inserted to db , local id = " + this.cpO);
+          AppMethodBeat.o(59968);
           return;
         }
       }
       catch (SQLiteException paramString1)
       {
-        com.tencent.mm.plugin.report.f.nEG.a(111L, 255L, 1L, false);
+        com.tencent.mm.plugin.report.e.qrI.idkeyStat(111L, 255L, 1L, false);
+        AppMethodBeat.o(59968);
         throw paramString1;
       }
       boolean bool = false;
     }
   }
   
-  private void Pg()
+  public h(String paramString1, String paramString2, int paramInt1, int paramInt2, Object paramObject)
   {
-    int i = 0;
-    while (i < this.esO.size())
+    AppMethodBeat.i(59967);
+    this.fIB = new LinkedList();
+    this.fIC = 3;
+    this.fID = false;
+    this.fIE = new ArrayList();
+    this.fIF = null;
+    this.fIG = null;
+    ab.d("MicroMsg.NetSceneSendMsg", "dktext :%s", new Object[] { bo.dtY() });
+    bi localbi;
+    if (!bo.isNullOrNil(paramString1))
     {
-      iS(i);
-      i += 1;
+      localbi = new bi();
+      localbi.setStatus(1);
+      localbi.kj(paramString1);
+      localbi.fQ(bf.py(paramString1));
+      localbi.hL(1);
+      localbi.setContent(paramString2);
+      localbi.setType(paramInt1);
+      paramString1 = a(((com.tencent.mm.plugin.messenger.foundation.a.q)g.E(com.tencent.mm.plugin.messenger.foundation.a.q.class)).B(localbi), paramObject, paramInt2);
+      if (!bo.isNullOrNil(paramString1))
+      {
+        localbi.jl(paramString1);
+        ab.i("MicroMsg.NetSceneSendMsg", "NetSceneSendMsg:MsgSource:%s", new Object[] { localbi.dns });
+      }
     }
+    for (;;)
+    {
+      try
+      {
+        this.cpO = ((j)g.E(j.class)).bPQ().c(localbi, true);
+        if (this.cpO == -1L) {
+          com.tencent.mm.plugin.report.e.qrI.idkeyStat(111L, 255L, 1L, false);
+        }
+        if (this.cpO != -1L)
+        {
+          bool = true;
+          Assert.assertTrue(bool);
+          ab.i("MicroMsg.NetSceneSendMsg", "new msg inserted to db , local id = " + this.cpO);
+          AppMethodBeat.o(59967);
+          return;
+        }
+      }
+      catch (SQLiteException paramString1)
+      {
+        com.tencent.mm.plugin.report.e.qrI.idkeyStat(111L, 255L, 1L, false);
+        AppMethodBeat.o(59967);
+        throw paramString1;
+      }
+      boolean bool = false;
+    }
+  }
+  
+  private static void A(bi parambi)
+  {
+    AppMethodBeat.i(59981);
+    parambi.setStatus(5);
+    com.tencent.mm.plugin.report.e.qrI.idkeyStat(111L, 30L, 1L, true);
+    ((j)g.E(j.class)).bPQ().a(parambi.field_msgId, parambi);
+    parambi = fIA.iterator();
+    while (parambi.hasNext()) {
+      parambi.next();
+    }
+    AppMethodBeat.o(59981);
   }
   
   private static String a(String paramString, Object paramObject, int paramInt)
   {
-    boolean bool;
-    if (paramObject == null)
+    AppMethodBeat.i(59973);
+    if (paramObject == null) {}
+    for (boolean bool = true;; bool = false)
     {
-      bool = true;
-      y.i("MicroMsg.NetSceneSendMsg", "[mergeMsgSource] rawSource:%s args is null:%s flag:%s", new Object[] { paramString, Boolean.valueOf(bool), Integer.valueOf(paramInt) });
-      if ((bk.bl(paramString)) || (paramString.startsWith("<msgsource>"))) {
-        break label74;
+      ab.i("MicroMsg.NetSceneSendMsg", "[mergeMsgSource] rawSource:%s args is null:%s flag:%s", new Object[] { paramString, Boolean.valueOf(bool), Integer.valueOf(paramInt) });
+      if ((bo.isNullOrNil(paramString)) || (paramString.startsWith("<msgsource>"))) {
+        break;
       }
-      y.w("MicroMsg.NetSceneSendMsg", "[mergeMsgSource] WTF the msgsource is right? %s", new Object[] { paramString });
-    }
-    label74:
-    while ((paramInt != 291) || (!(paramObject instanceof HashMap)))
-    {
+      ab.w("MicroMsg.NetSceneSendMsg", "[mergeMsgSource] WTF the msgsource is right? %s", new Object[] { paramString });
+      AppMethodBeat.o(59973);
       return paramString;
-      bool = false;
-      break;
     }
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (bk.bl(paramString)) {
-      localStringBuffer.append("<msgsource>");
-    }
-    paramObject = ((HashMap)paramObject).entrySet().iterator();
-    while (paramObject.hasNext())
+    if ((paramInt == 291) && ((paramObject instanceof HashMap)))
     {
-      Object localObject = (Map.Entry)paramObject.next();
-      String str = (String)((Map.Entry)localObject).getValue();
-      localObject = (String)((Map.Entry)localObject).getKey();
-      if ((bk.bl(str)) || (bk.bl((String)localObject)))
-      {
-        y.w("MicroMsg.NetSceneSendMsg", "%s %s", new Object[] { localObject, str });
+      StringBuffer localStringBuffer = new StringBuffer();
+      if (bo.isNullOrNil(paramString)) {
+        localStringBuffer.append("<msgsource>");
       }
-      else
+      paramObject = ((HashMap)paramObject).entrySet().iterator();
+      while (paramObject.hasNext())
       {
-        localStringBuffer.append("<").append((String)localObject).append(">");
-        localStringBuffer.append(str);
-        localStringBuffer.append("</").append((String)localObject).append(">");
+        Object localObject = (Map.Entry)paramObject.next();
+        String str = (String)((Map.Entry)localObject).getValue();
+        localObject = (String)((Map.Entry)localObject).getKey();
+        if ((bo.isNullOrNil(str)) || (bo.isNullOrNil((String)localObject)))
+        {
+          ab.w("MicroMsg.NetSceneSendMsg", "%s %s", new Object[] { localObject, str });
+        }
+        else
+        {
+          localStringBuffer.append("<").append((String)localObject).append(">");
+          localStringBuffer.append(str);
+          localStringBuffer.append("</").append((String)localObject).append(">");
+        }
       }
+      if (bo.isNullOrNil(paramString))
+      {
+        localStringBuffer.append("</msgsource>");
+        paramString = localStringBuffer.toString();
+        AppMethodBeat.o(59973);
+        return paramString;
+      }
+      paramString = paramString.replace("<msgsource>", "<msgsource>" + localStringBuffer.toString());
+      AppMethodBeat.o(59973);
+      return paramString;
     }
-    if (bk.bl(paramString))
-    {
-      localStringBuffer.append("</msgsource>");
-      return localStringBuffer.toString();
-    }
-    return paramString.replace("<msgsource>", "<msgsource>" + localStringBuffer.toString());
+    AppMethodBeat.o(59973);
+    return paramString;
   }
   
-  private void iR(int paramInt)
+  private void aii()
   {
-    if (this.esO == null)
+    AppMethodBeat.i(59979);
+    int i = 0;
+    while (i < this.fIB.size())
     {
-      y.e("MicroMsg.NetSceneSendMsg", "publishMsgSendFailEvent, sendingList is null");
+      lK(i);
+      i += 1;
+    }
+    AppMethodBeat.o(59979);
+  }
+  
+  private void lJ(int paramInt)
+  {
+    AppMethodBeat.i(59975);
+    if (this.fIB == null)
+    {
+      ab.e("MicroMsg.NetSceneSendMsg", "publishMsgSendFailEvent, sendingList is null");
+      AppMethodBeat.o(59975);
       return;
     }
-    if ((paramInt >= this.esO.size()) || (paramInt < 0))
+    if ((paramInt >= this.fIB.size()) || (paramInt < 0))
     {
-      y.e("MicroMsg.NetSceneSendMsg", "publishMsgSendFailEvent, index:%d, sendingList.size:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.esO.size()) });
+      ab.e("MicroMsg.NetSceneSendMsg", "publishMsgSendFailEvent, index:%d, sendingList.size:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.fIB.size()) });
+      AppMethodBeat.o(59975);
       return;
     }
-    t((bi)this.esO.get(paramInt));
+    z((bi)this.fIB.get(paramInt));
+    AppMethodBeat.o(59975);
   }
   
-  private void iS(int paramInt)
+  private void lK(int paramInt)
   {
-    bi localbi = (bi)this.esO.get(paramInt);
-    y.d("MicroMsg.NetSceneSendMsg", "markMsgFailed for id:%d", new Object[] { Long.valueOf(localbi.field_msgId) });
-    u(localbi);
+    AppMethodBeat.i(59980);
+    bi localbi = (bi)this.fIB.get(paramInt);
+    ab.d("MicroMsg.NetSceneSendMsg", "markMsgFailed for id:%d", new Object[] { Long.valueOf(localbi.field_msgId) });
+    A(localbi);
+    AppMethodBeat.o(59980);
   }
   
-  private void mE(String paramString)
+  private void tO(String paramString)
   {
-    y.d("MicroMsg.NetSceneSendMsg", "continue send msg in list");
-    int i = a(this.edc, this.dmL);
-    if (i == -2) {
-      this.dmL.onSceneEnd(0, 0, paramString, this);
-    }
-    while (i >= 0) {
+    AppMethodBeat.i(59978);
+    ab.d("MicroMsg.NetSceneSendMsg", "continue send msg in list");
+    int i = doScene(dispatcher(), this.callback);
+    if (i == -2)
+    {
+      this.callback.onSceneEnd(0, 0, paramString, this);
+      AppMethodBeat.o(59978);
       return;
     }
-    this.dmL.onSceneEnd(3, -1, paramString, this);
-  }
-  
-  private static void t(bi parambi)
-  {
-    pf localpf = new pf();
-    localpf.bYS.bFH = parambi;
-    a.udP.m(localpf);
-    y.d("MicroMsg.NetSceneSendMsg", "publishMsgSendFailEvent for msgId:%d", new Object[] { Long.valueOf(parambi.field_msgId) });
-  }
-  
-  private static void u(bi parambi)
-  {
-    parambi.setStatus(5);
-    com.tencent.mm.plugin.report.f.nEG.a(111L, 30L, 1L, true);
-    ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().a(parambi.field_msgId, parambi);
-    Iterator localIterator = esN.iterator();
-    while (localIterator.hasNext())
-    {
-      localIterator.next();
-      String str = parambi.field_talker;
-      str = parambi.field_content;
+    if (i < 0) {
+      this.callback.onSceneEnd(3, -1, paramString, this);
     }
+    AppMethodBeat.o(59978);
   }
   
-  protected final int Ka()
+  private static void z(bi parambi)
   {
-    return 10;
+    AppMethodBeat.i(59976);
+    qk localqk = new qk();
+    localqk.cGZ.cmQ = parambi;
+    a.ymk.l(localqk);
+    ab.d("MicroMsg.NetSceneSendMsg", "publishMsgSendFailEvent for msgId:%d", new Object[] { Long.valueOf(parambi.field_msgId) });
+    AppMethodBeat.o(59976);
   }
   
-  public final boolean Kx()
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    return true;
-  }
-  
-  public final boolean Ky()
-  {
-    boolean bool = super.Ky();
-    if (bool) {
-      com.tencent.mm.plugin.report.f.nEG.a(111L, 254L, 1L, false);
-    }
-    return bool;
-  }
-  
-  public final int a(e parame, com.tencent.mm.ah.f paramf)
-  {
-    this.dmL = paramf;
+    AppMethodBeat.i(59974);
+    this.callback = paramf;
     paramf = new b.a();
-    paramf.ecH = new bpc();
-    paramf.ecI = new bpd();
+    paramf.fsX = new byz();
+    paramf.fsY = new bza();
     paramf.uri = "/cgi-bin/micromsg-bin/newsendmsg";
-    paramf.ecG = 522;
-    paramf.ecJ = 237;
-    paramf.ecK = 1000000237;
-    this.dmK = paramf.Kt();
-    bpc localbpc = (bpc)this.dmK.ecE.ecN;
-    int i;
-    if (this.esS == null)
-    {
-      paramf = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().bia();
-      if (paramf.size() != 0) {
-        break label244;
-      }
-      y.w("MicroMsg.NetSceneSendMsg", "no sending message");
-      i = -2;
+    paramf.funcId = 522;
+    paramf.reqCmdId = 237;
+    paramf.respCmdId = 1000000237;
+    this.rr = paramf.ado();
+    byz localbyz = (byz)this.rr.fsV.fta;
+    if (this.fIF == null) {
+      paramf = ((j)g.E(j.class)).bPQ().bQc();
     }
-    label244:
-    int j;
-    do
+    while (paramf.size() == 0)
     {
-      return i;
-      if (this.esS.field_status != 5) {
-        y.w("MicroMsg.NetSceneSendMsg", "msg:%d status:%d should not be resend !", new Object[] { Long.valueOf(this.esS.field_msgId), Integer.valueOf(this.esS.field_status) });
+      ab.w("MicroMsg.NetSceneSendMsg", "no sending message");
+      AppMethodBeat.o(59974);
+      return -2;
+      if (this.fIF.field_status != 5) {
+        ab.w("MicroMsg.NetSceneSendMsg", "msg:%d status:%d should not be resend !", new Object[] { Long.valueOf(this.fIF.field_msgId), Integer.valueOf(this.fIF.field_status) });
       }
-      this.esS.setStatus(1);
-      ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().a(this.bIt, this.esS);
+      this.fIF.setStatus(1);
+      ((j)g.E(j.class)).bPQ().a(this.cpO, this.fIF);
       paramf = new ArrayList();
-      paramf.add(this.esS);
-      this.esS = null;
-      break;
-      this.esO.clear();
-      i = 0;
-      while (i < paramf.size())
-      {
-        bi localbi = (bi)paramf.get(i);
-        if (localbi.field_isSend == 1)
-        {
-          awn localawn = new awn();
-          localawn.svG = new bml().YI(localbi.field_talker);
-          localawn.mPL = ((int)(localbi.field_createTime / 1000L));
-          localawn.hQR = localbi.getType();
-          localawn.kVs = localbi.field_content;
-          localawn.ttf = o.l(com.tencent.mm.model.q.Gj(), localbi.field_createTime).hashCode();
-          if (this.esT == null) {
-            this.esT = ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.q.class)).Pk();
-          }
-          y.i("MicroMsg.NetSceneSendMsg", "using message source assembler %s", new Object[] { this.esT });
-          this.esT.a(localawn, localbi);
-          y.i("MicroMsg.NetSceneSendMsg", "reqCmd.MsgSource:%s", new Object[] { localawn.svK });
-          localbpc.hPT.add(localawn);
-          localbpc.hPS = localbpc.hPT.size();
-          this.esO.add(localbi);
-        }
-        i += 1;
-      }
-      j = a(parame, this.dmK, this);
-      i = j;
-    } while (j >= 0);
-    y.i("MicroMsg.NetSceneSendMsg", "mark all failed. do scene %d", new Object[] { Integer.valueOf(j) });
-    Pg();
-    return j;
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    if ((paramInt2 != 0) || (paramInt3 != 0))
+      paramf.add(this.fIF);
+      this.fIF = null;
+    }
+    this.fIB.clear();
+    int i = 0;
+    while (i < paramf.size())
     {
-      y.i("MicroMsg.NetSceneSendMsg", "mark all failed. onGYNetEnd. errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      com.tencent.mm.plugin.report.f.nEG.a(111L, paramInt2 + 40, 1L, true);
-      com.tencent.mm.plugin.report.f.nEG.a(111L, 253L, 1L, false);
-      if ((paramInt2 == 3) || (paramInt2 == 9) || (paramInt2 == 7) || (paramInt2 == 8) || (paramInt2 == 1))
+      bi localbi = (bi)paramf.get(i);
+      if (localbi.field_isSend == 1)
       {
-        this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        y.e("MicroMsg.NetSceneSendMsg", "Message delivery failed due to network reasons.");
-        return;
+        bdc localbdc = new bdc();
+        localbdc.woQ = new bwc().aoF(localbi.field_talker);
+        localbdc.CreateTime = ((int)(localbi.field_createTime / 1000L));
+        localbdc.jKs = localbi.getType();
+        localbdc.ntu = localbi.field_content;
+        localbdc.xtf = p.t(r.Zn(), localbi.field_createTime).hashCode();
+        if (this.fIG == null) {
+          this.fIG = ((com.tencent.mm.plugin.messenger.foundation.a.q)g.E(com.tencent.mm.plugin.messenger.foundation.a.q.class)).aim();
+        }
+        ab.i("MicroMsg.NetSceneSendMsg", "using message source assembler %s", new Object[] { this.fIG });
+        this.fIG.a(localbdc, localbi);
+        ab.i("MicroMsg.NetSceneSendMsg", "reqCmd.MsgSource:%s", new Object[] { localbdc.woU });
+        localbyz.jJv.add(localbdc);
+        localbyz.jJu = localbyz.jJv.size();
+        this.fIB.add(localbi);
       }
-      Pg();
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      paramInt1 = 0;
-      while (paramInt1 < this.esO.size())
-      {
-        iR(paramInt1);
-        paramInt1 += 1;
-      }
-      y.d("MicroMsg.NetSceneSendMsg", "send fail, continue send SENDING msg");
-      mE(paramString);
-      return;
+      i += 1;
     }
-    paramq = ((bpd)this.dmK.ecF.ecN).hPT;
-    paramArrayOfByte = new ArrayList();
-    if (this.esO.size() == paramq.size())
+    i = dispatch(parame, this.rr, this);
+    if (i < 0)
     {
-      paramInt1 = 0;
-      if (paramInt1 < paramq.size())
-      {
-        Object localObject = (awo)paramq.get(paramInt1);
-        if ((((awo)localObject).sze != 0) || (ae.eTw))
-        {
-          com.tencent.mm.plugin.report.f.nEG.a(111L, 252L, 1L, false);
-          if ((((awo)localObject).sze == -49) || (ae.eTw))
-          {
-            y.i("MicroMsg.NetSceneSendMsg", "summerdktext send msg failed: item ret code[%d], index[%d], testVerifyPsw[%b], retryVerifyCount[%d]", new Object[] { Integer.valueOf(((awo)localObject).sze), Integer.valueOf(paramInt1), Boolean.valueOf(ae.eTw), Integer.valueOf(this.esP) });
-            if (this.esQ)
-            {
-              localObject = (bi)this.esO.get(paramInt1);
-              this.esR.add(localObject);
-            }
-            for (;;)
-            {
-              paramInt1 += 1;
-              break;
-              if (this.esP < 0)
-              {
-                iS(paramInt1);
-                this.dmL.onSceneEnd(4, ((awo)localObject).sze, paramString, this);
-                iR(paramInt1);
-                return;
-              }
-              this.esQ = true;
-              this.esP -= 1;
-              localObject = (bi)this.esO.get(paramInt1);
-              this.esR.add(localObject);
-              com.tencent.mm.kernel.g.DS().O(new h.1(this, paramString));
-            }
-          }
-          iS(paramInt1);
-          this.dmL.onSceneEnd(4, ((awo)localObject).sze, paramString, this);
-          iR(paramInt1);
-          return;
-        }
-        long l = ((bi)this.esO.get(paramInt1)).field_msgId;
-        y.i("MicroMsg.NetSceneSendMsg", "msg local id = " + l + ", SvrId = " + ((awo)localObject).ndp + " sent successfully!");
-        bi localbi = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().fd(l);
-        localbi.bf(((awo)localObject).ndp);
-        y.d("MicroMsg.NetSceneSendMsg", "dkmsgid  set svrmsgid %d -> %d", new Object[] { Long.valueOf(((awo)localObject).ndp), Integer.valueOf(ae.eSQ) });
-        if ((10007 == ae.eSP) && (ae.eSQ != 0))
-        {
-          localbi.bf(ae.eSQ);
-          ae.eSQ = 0;
-        }
-        localbi.setStatus(2);
-        ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().a(l, localbi);
-        if (this.esO == null) {
-          y.e("MicroMsg.NetSceneSendMsg", "publishMsgSendSuccessEvent, sendingList is null");
-        }
-        for (;;)
-        {
-          paramArrayOfByte.add(Integer.valueOf(paramInt1));
-          if (1 != ((awo)localObject).hQR) {
-            break;
-          }
-          com.tencent.mm.plugin.report.f.nEG.a(11942, true, false, new Object[] { Long.valueOf(((awo)localObject).ndp) });
-          com.tencent.mm.plugin.report.f.nEG.a(11945, false, true, new Object[] { Long.valueOf(((awo)localObject).ndp) });
-          com.tencent.mm.plugin.report.f.nEG.a(11946, false, false, new Object[] { Long.valueOf(((awo)localObject).ndp) });
-          com.tencent.mm.plugin.report.f.nEG.a(90L, 0L, 1L, false);
-          com.tencent.mm.plugin.report.f.nEG.a(90L, 1L, 1L, true);
-          break;
-          if ((paramInt1 >= this.esO.size()) || (paramInt1 < 0))
-          {
-            y.e("MicroMsg.NetSceneSendMsg", "publishMsgSendSuccessEvent, index:%d, sendingList.size:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.esO.size()) });
-          }
-          else
-          {
-            l = ((bi)this.esO.get(paramInt1)).field_msgId;
-            y.d("MicroMsg.NetSceneSendMsg", "publishMsgSendSuccessEvent for msgId:%d", new Object[] { Long.valueOf(l) });
-            localbi = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().fd(l);
-            ph localph = new ph();
-            localph.bYU.bFH = localbi;
-            a.udP.m(localph);
-          }
-        }
-      }
-      y.i("MicroMsg.NetSceneSendMsg", "summerdktext total  [%d]msgs sent successfully, [%d]msgs need verifypsw", new Object[] { Integer.valueOf(paramInt1 - this.esR.size()), Integer.valueOf(this.esR.size()) });
+      ab.i("MicroMsg.NetSceneSendMsg", "mark all failed. do scene %d", new Object[] { Integer.valueOf(i) });
+      aii();
     }
-    y.d("MicroMsg.NetSceneSendMsg", "summerdktext send finish, continue send SENDING msg verifyingPsw[%b]", new Object[] { Boolean.valueOf(this.esQ) });
-    if (this.esQ)
-    {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    mE(paramString);
-  }
-  
-  protected final m.b b(com.tencent.mm.network.q paramq)
-  {
-    if (this.esO.size() > 0) {
-      return m.b.edr;
-    }
-    return m.b.eds;
+    AppMethodBeat.o(59974);
+    return i;
   }
   
   public final int getType()
   {
     return 522;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(59977);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      ab.i("MicroMsg.NetSceneSendMsg", "mark all failed. onGYNetEnd. errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      com.tencent.mm.plugin.report.e.qrI.idkeyStat(111L, paramInt2 + 40, 1L, true);
+      com.tencent.mm.plugin.report.e.qrI.idkeyStat(111L, 253L, 1L, false);
+      if ((paramInt2 == 3) || (paramInt2 == 9) || (paramInt2 == 7) || (paramInt2 == 8) || (paramInt2 == 1))
+      {
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        ab.e("MicroMsg.NetSceneSendMsg", "Message delivery failed due to network reasons.");
+        AppMethodBeat.o(59977);
+        return;
+      }
+      aii();
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      paramInt1 = 0;
+      while (paramInt1 < this.fIB.size())
+      {
+        lJ(paramInt1);
+        paramInt1 += 1;
+      }
+      ab.d("MicroMsg.NetSceneSendMsg", "send fail, continue send SENDING msg");
+      tO(paramString);
+      AppMethodBeat.o(59977);
+      return;
+    }
+    paramq = ((bza)this.rr.fsW.fta).jJv;
+    paramArrayOfByte = new ArrayList();
+    if (this.fIB.size() == paramq.size())
+    {
+      paramInt1 = 0;
+      if (paramInt1 < paramq.size())
+      {
+        Object localObject = (bdd)paramq.get(paramInt1);
+        if ((((bdd)localObject).Ret != 0) || (ae.glr))
+        {
+          com.tencent.mm.plugin.report.e.qrI.idkeyStat(111L, 252L, 1L, false);
+          if ((((bdd)localObject).Ret == -49) || (ae.glr))
+          {
+            ab.i("MicroMsg.NetSceneSendMsg", "summerdktext send msg failed: item ret code[%d], index[%d], testVerifyPsw[%b], retryVerifyCount[%d]", new Object[] { Integer.valueOf(((bdd)localObject).Ret), Integer.valueOf(paramInt1), Boolean.valueOf(ae.glr), Integer.valueOf(this.fIC) });
+            if (this.fID)
+            {
+              localObject = (bi)this.fIB.get(paramInt1);
+              this.fIE.add(localObject);
+            }
+            for (;;)
+            {
+              paramInt1 += 1;
+              break;
+              if (this.fIC < 0)
+              {
+                lK(paramInt1);
+                this.callback.onSceneEnd(4, ((bdd)localObject).Ret, paramString, this);
+                lJ(paramInt1);
+                AppMethodBeat.o(59977);
+                return;
+              }
+              this.fID = true;
+              this.fIC -= 1;
+              localObject = (bi)this.fIB.get(paramInt1);
+              this.fIE.add(localObject);
+              g.RO().ac(new h.1(this, paramString));
+            }
+          }
+          lK(paramInt1);
+          this.callback.onSceneEnd(4, ((bdd)localObject).Ret, paramString, this);
+          lJ(paramInt1);
+          AppMethodBeat.o(59977);
+          return;
+        }
+        long l = ((bi)this.fIB.get(paramInt1)).field_msgId;
+        ab.i("MicroMsg.NetSceneSendMsg", "msg local id = " + l + ", SvrId = " + ((bdd)localObject).pIG + " sent successfully!");
+        bi localbi = ((j)g.E(j.class)).bPQ().kB(l);
+        localbi.fP(((bdd)localObject).pIG);
+        ab.d("MicroMsg.NetSceneSendMsg", "dkmsgid  set svrmsgid %d -> %d", new Object[] { Long.valueOf(((bdd)localObject).pIG), Integer.valueOf(ae.gkL) });
+        if ((10007 == ae.gkK) && (ae.gkL != 0))
+        {
+          localbi.fP(ae.gkL);
+          ae.gkL = 0;
+        }
+        localbi.setStatus(2);
+        ((j)g.E(j.class)).bPQ().a(l, localbi);
+        if (this.fIB == null) {
+          ab.e("MicroMsg.NetSceneSendMsg", "publishMsgSendSuccessEvent, sendingList is null");
+        }
+        for (;;)
+        {
+          paramArrayOfByte.add(Integer.valueOf(paramInt1));
+          if (1 != ((bdd)localObject).jKs) {
+            break;
+          }
+          com.tencent.mm.plugin.report.e.qrI.a(11942, true, false, new Object[] { Long.valueOf(((bdd)localObject).pIG) });
+          com.tencent.mm.plugin.report.e.qrI.a(11945, false, true, new Object[] { Long.valueOf(((bdd)localObject).pIG) });
+          com.tencent.mm.plugin.report.e.qrI.a(11946, false, false, new Object[] { Long.valueOf(((bdd)localObject).pIG) });
+          com.tencent.mm.plugin.report.e.qrI.idkeyStat(90L, 0L, 1L, false);
+          com.tencent.mm.plugin.report.e.qrI.idkeyStat(90L, 1L, 1L, true);
+          break;
+          if ((paramInt1 >= this.fIB.size()) || (paramInt1 < 0))
+          {
+            ab.e("MicroMsg.NetSceneSendMsg", "publishMsgSendSuccessEvent, index:%d, sendingList.size:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.fIB.size()) });
+          }
+          else
+          {
+            l = ((bi)this.fIB.get(paramInt1)).field_msgId;
+            ab.d("MicroMsg.NetSceneSendMsg", "publishMsgSendSuccessEvent for msgId:%d", new Object[] { Long.valueOf(l) });
+            localbi = ((j)g.E(j.class)).bPQ().kB(l);
+            qm localqm = new qm();
+            localqm.cHb.cmQ = localbi;
+            a.ymk.l(localqm);
+          }
+        }
+      }
+      ab.i("MicroMsg.NetSceneSendMsg", "summerdktext total  [%d]msgs sent successfully, [%d]msgs need verifypsw", new Object[] { Integer.valueOf(paramInt1 - this.fIE.size()), Integer.valueOf(this.fIE.size()) });
+    }
+    ab.d("MicroMsg.NetSceneSendMsg", "summerdktext send finish, continue send SENDING msg verifyingPsw[%b]", new Object[] { Boolean.valueOf(this.fID) });
+    if (this.fID)
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(59977);
+      return;
+    }
+    tO(paramString);
+    AppMethodBeat.o(59977);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 10;
+  }
+  
+  public final boolean securityLimitCountReach()
+  {
+    AppMethodBeat.i(59971);
+    boolean bool = super.securityLimitCountReach();
+    if (bool) {
+      com.tencent.mm.plugin.report.e.qrI.idkeyStat(111L, 254L, 1L, false);
+    }
+    AppMethodBeat.o(59971);
+    return bool;
+  }
+  
+  public final m.b securityVerificationChecked(com.tencent.mm.network.q paramq)
+  {
+    AppMethodBeat.i(59972);
+    if (this.fIB.size() > 0)
+    {
+      paramq = m.b.ftu;
+      AppMethodBeat.o(59972);
+      return paramq;
+    }
+    paramq = m.b.ftv;
+    AppMethodBeat.o(59972);
+    return paramq;
+  }
+  
+  public final boolean uniqueInNetsceneQueue()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelmulti.h
  * JD-Core Version:    0.7.0.1
  */

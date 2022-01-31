@@ -5,7 +5,7 @@ import java.io.File;
 
 public class WXConstantsRecovery
 {
-  public static final String wLk = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MicroMsg/recovery/";
+  public static final String BiJ = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MicroMsg/recovery/";
   
   public static final class HandleReportKeys {}
   

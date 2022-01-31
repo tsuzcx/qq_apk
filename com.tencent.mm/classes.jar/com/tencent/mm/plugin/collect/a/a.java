@@ -1,121 +1,177 @@
 package com.tencent.mm.plugin.collect.a;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.h.a.k;
-import com.tencent.mm.kernel.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.g.a.k;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.bx;
-import com.tencent.mm.model.bx.a;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.bz;
+import com.tencent.mm.model.bz.a;
 import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.collect.b.d;
-import com.tencent.mm.plugin.collect.b.o;
-import com.tencent.mm.plugin.collect.b.u;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.collect.model.o;
+import com.tencent.mm.plugin.collect.model.u;
+import com.tencent.mm.plugin.collect.model.voice.a.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.axo;
+import com.tencent.mm.protocal.protobuf.beg;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class a
-  implements ar
+  implements at
 {
-  private bx.a iGD = new a.1(this);
-  private com.tencent.mm.plugin.collect.b.g iGE = new com.tencent.mm.plugin.collect.b.g();
-  private u iGF = new u();
-  public boolean iGG = false;
-  private c<k> iGH = new a.3(this);
+  private bz.a kMG;
+  private com.tencent.mm.plugin.collect.model.g kMH;
+  private u kMI;
+  public boolean kMJ;
+  private c<k> kMK;
   
-  public static a aEp()
+  public a()
   {
-    return (a)com.tencent.mm.model.p.B(a.class);
+    AppMethodBeat.i(40910);
+    this.kMG = new a.1(this);
+    this.kMH = new com.tencent.mm.plugin.collect.model.g();
+    this.kMI = new u();
+    this.kMJ = false;
+    this.kMK = new a.3(this);
+    AppMethodBeat.o(40910);
   }
   
-  public static d aEq()
+  private void Jo(String paramString)
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    return d.iGN;
+    AppMethodBeat.i(40918);
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.a(304, new a.2(this));
+    paramString = new o(bo.bf(paramString, ""));
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.a(paramString, 0);
+    AppMethodBeat.o(40918);
   }
   
-  public static boolean aEr()
+  public static a bhw()
   {
-    Object localObject = (String)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uuM, "");
-    long l = q.Go();
-    if ((!bk.bl((String)localObject)) && (!((String)localObject).equals("in.caf")))
+    AppMethodBeat.i(40911);
+    a locala = (a)q.S(a.class);
+    AppMethodBeat.o(40911);
+    return locala;
+  }
+  
+  public static com.tencent.mm.plugin.collect.model.d bhx()
+  {
+    AppMethodBeat.i(40914);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    com.tencent.mm.plugin.collect.model.d locald = com.tencent.mm.plugin.collect.model.d.kMQ;
+    AppMethodBeat.o(40914);
+    return locald;
+  }
+  
+  public static boolean bhy()
+  {
+    AppMethodBeat.i(40915);
+    Object localObject = (String)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yET, "");
+    long l = r.Zs();
+    if ((!bo.isNullOrNil((String)localObject)) && (!((String)localObject).equals("in.caf")))
     {
-      y.i("MicroMsg.SubCoreCollect", "old version switch is open, sync to new version");
-      com.tencent.mm.kernel.g.DP().Dz().o(147457, Long.valueOf(l | 0x8000));
-      localObject = new axo();
-      ((axo)localObject).nFj = 1;
-      ((j)com.tencent.mm.kernel.g.r(j.class)).Fv().b(new i.a(209, (com.tencent.mm.bv.a)localObject));
+      ab.i("MicroMsg.SubCoreCollect", "old version switch is open, sync to new version");
+      com.tencent.mm.kernel.g.RL().Ru().set(147457, Long.valueOf(l | 0x8000));
+      localObject = new beg();
+      ((beg)localObject).qsl = 1;
+      ((j)com.tencent.mm.kernel.g.E(j.class)).Yz().c(new j.a(209, (com.tencent.mm.bv.a)localObject));
+      AppMethodBeat.o(40915);
       return true;
     }
-    return (l & 0x8000) != 0L;
+    if ((l & 0x8000) != 0L)
+    {
+      AppMethodBeat.o(40915);
+      return true;
+    }
+    AppMethodBeat.o(40915);
+    return false;
   }
   
-  private void zw(String paramString)
+  public final void bhA()
   {
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DO().dJT.a(304, new a.2(this));
-    paramString = new o(bk.aM(paramString, ""));
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DO().dJT.a(paramString, 0);
+    AppMethodBeat.i(40917);
+    Jo("in.caf");
+    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yET, "in.caf");
+    AppMethodBeat.o(40917);
   }
   
-  public final void aEs()
+  public final void bhz()
   {
-    zw("cash.caf");
-    com.tencent.mm.kernel.g.DP().Dz().c(ac.a.uuM, "cash.caf");
+    AppMethodBeat.i(40916);
+    Jo("cash.caf");
+    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yET, "cash.caf");
+    AppMethodBeat.o(40916);
   }
   
-  public final void aEt()
-  {
-    zw("in.caf");
-    com.tencent.mm.kernel.g.DP().Dz().c(ac.a.uuM, "in.caf");
-  }
+  public void clearPluginData(int paramInt) {}
   
-  public final void bh(boolean paramBoolean)
-  {
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().a("paymsg", this.iGD, true);
-    this.iGH.cqo();
-    com.tencent.mm.plugin.collect.b.g localg = this.iGE;
-    localg.cqo();
-    localg.iGU = new ConcurrentLinkedQueue();
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DO().dJT.a(1384, localg);
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DO().dJT.a(1317, localg);
-    this.iGF.cqo();
-  }
-  
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
-  {
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().b("paymsg", this.iGD, true);
-    com.tencent.mm.plugin.collect.b.g localg = this.iGE;
-    localg.dead();
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DO().dJT.b(1384, localg);
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DO().dJT.b(1317, localg);
-    com.tencent.mm.plugin.collect.b.g.aEv();
-    this.iGF.dead();
-    this.iGH.dead();
-  }
-  
-  public final HashMap<Integer, h.d> xe()
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
     return null;
   }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(40912);
+    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().a("paymsg", this.kMG, true);
+    this.kMK.alive();
+    com.tencent.mm.plugin.collect.model.g localg = this.kMH;
+    localg.alive();
+    localg.kMX = new ConcurrentLinkedQueue();
+    com.tencent.mm.plugin.collect.model.voice.a locala = com.tencent.mm.plugin.collect.model.voice.a.bhJ();
+    locala.kOh = localg;
+    locala.kOi = new a.b(locala, locala.kOh);
+    com.tencent.mm.kernel.g.RL().Ru().a(locala);
+    com.tencent.mm.plugin.collect.model.voice.a.bhJ().bhK();
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.a(1384, localg);
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.a(1317, localg);
+    this.kMI.alive();
+    AppMethodBeat.o(40912);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(40913);
+    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().b("paymsg", this.kMG, true);
+    Object localObject = this.kMH;
+    ((com.tencent.mm.plugin.collect.model.g)localObject).dead();
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.b(1384, (f)localObject);
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.b(1317, (f)localObject);
+    com.tencent.mm.plugin.collect.model.g.bhC();
+    localObject = com.tencent.mm.plugin.collect.model.voice.a.bhJ();
+    ab.i("MicroMsg.OfflineVoice.F2fRcvVoiceOffLineLogic", "destroy()");
+    if (((com.tencent.mm.plugin.collect.model.voice.a)localObject).kOg != null) {
+      ((com.tencent.mm.plugin.collect.model.voice.a)localObject).kOg.kOA.destroy();
+    }
+    if (((com.tencent.mm.plugin.collect.model.voice.a)localObject).kOm != null) {
+      ((com.tencent.mm.plugin.collect.model.voice.a)localObject).kOm.dead();
+    }
+    if (((com.tencent.mm.plugin.collect.model.voice.a)localObject).kOn != null) {
+      ((com.tencent.mm.plugin.collect.model.voice.a)localObject).kOn.dead();
+    }
+    com.tencent.mm.kernel.g.RL().Ru().b((n.b)localObject);
+    com.tencent.mm.plugin.collect.model.voice.a.kOb = false;
+    this.kMI.dead();
+    this.kMK.dead();
+    AppMethodBeat.o(40913);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

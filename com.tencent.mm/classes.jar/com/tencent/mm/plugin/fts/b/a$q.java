@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.b;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.g;
 import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.j;
@@ -20,68 +21,72 @@ final class a$q
     super(parami);
   }
   
-  protected final void a(j paramj)
+  public final void a(j paramj)
   {
-    paramj.kwi = g.aF(this.kwT.bVk, true);
-    Object localObject2 = a.a(this.kyt);
-    Object localObject3 = paramj.kwi;
-    Object localObject1 = this.kwT.kxa;
-    Object localObject4 = ((g)localObject3).aVy();
+    AppMethodBeat.i(136689);
+    paramj.mRX = g.aU(this.mSJ.query, true);
+    Object localObject2 = a.a(this.mUg);
+    Object localObject3 = paramj.mRX;
+    Object localObject1 = this.mSJ.mSP;
+    Object localObject4 = ((g)localObject3).bBX();
     int i;
     if ((localObject1 != null) && (localObject1.length > 0))
     {
-      localObject1 = " AND type IN " + d.l((int[])localObject1);
-      long l = ((g)localObject3).kwK.size();
-      localObject1 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp, content, MMHighlight(%s, %d, type, subtype) FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s'" + (String)localObject1 + " AND status >= 0 ORDER BY subtype;", new Object[] { ((com.tencent.mm.plugin.fts.c.a)localObject2).aVs(), ((com.tencent.mm.plugin.fts.c.a)localObject2).aVt(), Long.valueOf(l), ((com.tencent.mm.plugin.fts.c.a)localObject2).aVs(), ((com.tencent.mm.plugin.fts.c.a)localObject2).aVt(), ((com.tencent.mm.plugin.fts.c.a)localObject2).aVs(), ((com.tencent.mm.plugin.fts.c.a)localObject2).aVt(), ((com.tencent.mm.plugin.fts.c.a)localObject2).aVt(), localObject4 });
-      localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject2).kuE.rawQuery((String)localObject1, null);
+      localObject1 = " AND type IN " + d.v((int[])localObject1);
+      long l = ((g)localObject3).mSA.size();
+      localObject1 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp, content, MMHighlight(%s, %d, type, subtype) FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s'" + (String)localObject1 + " AND status >= 0 ORDER BY subtype;", new Object[] { ((com.tencent.mm.plugin.fts.c.a)localObject2).bBR(), ((com.tencent.mm.plugin.fts.c.a)localObject2).bBS(), Long.valueOf(l), ((com.tencent.mm.plugin.fts.c.a)localObject2).bBR(), ((com.tencent.mm.plugin.fts.c.a)localObject2).bBS(), ((com.tencent.mm.plugin.fts.c.a)localObject2).bBR(), ((com.tencent.mm.plugin.fts.c.a)localObject2).bBS(), ((com.tencent.mm.plugin.fts.c.a)localObject2).bBS(), localObject4 });
+      localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject2).mQr.rawQuery((String)localObject1, null);
       localObject2 = new ArrayList();
       localObject3 = new HashSet();
-      ((HashSet)localObject3).addAll(this.kwT.kxd);
+      ((HashSet)localObject3).addAll(this.mSJ.mSS);
       i = 0;
     }
-    label385:
+    label397:
     for (;;)
     {
       if (!((Cursor)localObject1).moveToNext()) {
-        break label387;
+        break label399;
       }
       if (((HashSet)localObject3).add(((Cursor)localObject1).getString(3)))
       {
-        localObject4 = new m().j((Cursor)localObject1);
-        if (i >= ((m)localObject4).kwf) {
+        localObject4 = new m().i((Cursor)localObject1);
+        if (i >= ((m)localObject4).mRU) {
           ((List)localObject2).add(localObject4);
         }
         for (;;)
         {
           if (!Thread.interrupted()) {
-            break label385;
+            break label397;
           }
           ((Cursor)localObject1).close();
-          throw new InterruptedException("Task is Cancel: " + this.kwT.bVk);
+          paramj = new InterruptedException("Task is Cancel: " + this.mSJ.query);
+          AppMethodBeat.o(136689);
+          throw paramj;
           localObject1 = "";
           break;
-          if (((List)localObject2).size() > this.kwT.kxc) {
-            break label387;
+          if (((List)localObject2).size() > this.mSJ.mSR) {
+            break label399;
           }
-          i = ((m)localObject4).kwf;
+          i = ((m)localObject4).mRU;
           ((List)localObject2).add(localObject4);
         }
       }
     }
-    label387:
+    label399:
     ((Cursor)localObject1).close();
-    paramj.kxh = new ArrayList();
+    paramj.mSW = new ArrayList();
     localObject1 = ((List)localObject2).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (m)((Iterator)localObject1).next();
-      ((m)localObject2).aVA();
-      ((m)localObject2).a(paramj.kwi);
-      paramj.kxh.add(localObject2);
+      ((m)localObject2).bCa();
+      ((m)localObject2).a(paramj.mRX);
+      paramj.mSW.add(localObject2);
     }
-    if (this.kwT.kxe != null) {
-      Collections.sort(paramj.kxh, this.kwT.kxe);
+    if (this.mSJ.mST != null) {
+      Collections.sort(paramj.mSW, this.mSJ.mST);
     }
+    AppMethodBeat.o(136689);
   }
   
   public final int getId()
@@ -96,7 +101,7 @@ final class a$q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.a.q
  * JD-Core Version:    0.7.0.1
  */

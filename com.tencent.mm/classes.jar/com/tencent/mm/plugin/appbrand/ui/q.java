@@ -1,8 +1,29 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-public abstract interface q
+import android.support.v7.app.ActionBar;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.MMActivity;
+
+final class q
 {
-  public abstract boolean aoO();
+  static void b(MMActivity paramMMActivity)
+  {
+    AppMethodBeat.i(93755);
+    if (paramMMActivity.getSupportActionBar() == null)
+    {
+      AppMethodBeat.o(93755);
+      return;
+    }
+    paramMMActivity = paramMMActivity.getSupportActionBar().getCustomView().findViewById(2131820988);
+    if ((paramMMActivity != null) && (paramMMActivity.getLayoutParams() != null) && ((paramMMActivity.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
+    {
+      ((ViewGroup.MarginLayoutParams)paramMMActivity.getLayoutParams()).rightMargin = 0;
+      paramMMActivity.requestLayout();
+    }
+    AppMethodBeat.o(93755);
+  }
 }
 
 

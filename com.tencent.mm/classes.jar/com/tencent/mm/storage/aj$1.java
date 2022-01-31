@@ -1,9 +1,9 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.e.l;
 
 final class aj$1
-  extends k<bd.a, ad>
+  extends l<bd.a, ad>
 {
   aj$1(aj paramaj) {}
 }

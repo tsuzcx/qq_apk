@@ -1,39 +1,46 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import com.tencent.mm.h.a.nb;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ny;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.k;
+import com.tencent.mm.plugin.fav.a.p;
 import com.tencent.mm.plugin.fav.a.q;
 import com.tencent.mm.plugin.fav.a.x;
+import com.tencent.mm.plugin.fav.ui.f;
 import com.tencent.mm.plugin.fav.ui.i;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.plugin.fav.ui.n.f;
-import com.tencent.mm.plugin.fav.ui.n.i;
 import com.tencent.mm.plugin.fav.ui.widget.FavVideoView;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.protocal.c.yl;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.webview.ui.tools.widget.o;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.acs;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.r;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.tools.MMGestureGallery;
-import com.tencent.mm.ui.tools.MMGestureGallery.c;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.mm.ui.tools.l;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -44,29 +51,45 @@ import java.util.Map;
 @com.tencent.mm.ui.base.a(3)
 public class FavMediaGalleryUI
   extends MMActivity
-  implements AdapterView.OnItemSelectedListener, com.tencent.mm.plugin.fav.a.p
+  implements AdapterView.OnItemSelectedListener, p
 {
-  private boolean bTT = true;
-  private j gGp;
-  private ArrayList<com.tencent.mm.plugin.fav.ui.f> hgv;
-  private int hkH = 0;
-  private MMGestureGallery itv;
-  private n.d jfN = new FavMediaGalleryUI.8(this);
-  private Map<String, nb> kbT = new HashMap();
-  private long kbU;
-  private com.tencent.mm.sdk.b.c kbV = new com.tencent.mm.sdk.b.c() {};
-  private int khb = -1;
-  private FavVideoView khc = null;
-  private FavMediaGalleryUI.a khd;
-  private List<FavVideoView> khe = new ArrayList();
-  yl khf = new yl();
+  private boolean cBz;
+  private ArrayList<f> iRT;
+  private l igW;
+  private MMGestureGallery kuC;
+  private n.d loG;
+  private int mBQ;
+  private FavVideoView mBR;
+  private FavMediaGalleryUI.a mBS;
+  private List<FavVideoView> mBT;
+  acs mBU;
+  private int mwo;
+  private Map<String, ny> mwr;
+  private long mws;
+  private com.tencent.mm.sdk.b.c mwt;
   
-  private void xO()
+  public FavMediaGalleryUI()
   {
+    AppMethodBeat.i(74528);
+    this.mwo = 0;
+    this.mBQ = -1;
+    this.mBR = null;
+    this.cBz = true;
+    this.mBT = new ArrayList();
+    this.mBU = new acs();
+    this.mwr = new HashMap();
+    this.loG = new FavMediaGalleryUI.8(this);
+    this.mwt = new FavMediaGalleryUI.3(this);
+    AppMethodBeat.o(74528);
+  }
+  
+  private void Kg()
+  {
+    AppMethodBeat.i(74530);
     Object localObject1 = getIntent().getLongArrayExtra("KEY_MEDIA_FAVID_LIST");
     ArrayList localArrayList = new ArrayList();
     String str = getIntent().getStringExtra("key_detail_data_id");
-    this.kbU = getIntent().getLongExtra("key_detail_info_id", -1L);
+    this.mws = getIntent().getLongExtra("key_detail_info_id", -1L);
     Object localObject2;
     long l;
     boolean bool1;
@@ -74,16 +97,16 @@ public class FavMediaGalleryUI
     {
       boolean bool2 = getIntent().getBooleanExtra("fav_open_from_wnnote", false);
       localObject2 = getIntent().getStringExtra("fav_note_xml");
-      localObject1 = ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().eE(this.kbU);
-      l = this.kbU;
+      localObject1 = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kb(this.mws);
+      l = this.mws;
       if (localObject1 != null)
       {
         bool1 = true;
-        y.i("MicroMsg.FavMediaGalleryUI", "show one fav info, local id is %d, get from db ok ? %B", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
-        if ((!bool2) || (bk.bl((String)localObject2))) {
+        ab.i("MicroMsg.FavMediaGalleryUI", "show one fav info, local id is %d, get from db ok ? %B", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
+        if ((!bool2) || (bo.isNullOrNil((String)localObject2))) {
           break label558;
         }
-        localObject1 = b.CB((String)localObject2);
+        localObject1 = b.ND((String)localObject2);
       }
     }
     label555:
@@ -93,37 +116,37 @@ public class FavMediaGalleryUI
       if (localObject1 != null) {
         localArrayList.add(localObject1);
       }
-      label182:
-      this.hgv.clear();
+      label180:
+      this.iRT.clear();
       int i = -1;
       int m = localArrayList.size();
       int k = 0;
-      label202:
+      label200:
       int j;
       if (k < m)
       {
         localObject1 = (com.tencent.mm.plugin.fav.a.g)localArrayList.get(k);
-        int n = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.sXc.size();
+        int n = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.wVc.size();
         j = 0;
-        label236:
+        label234:
         if (j < n)
         {
-          localObject2 = (xv)((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.sXc.get(j);
-          if (((((xv)localObject2).aYU == 8) && (!com.tencent.mm.sdk.platformtools.o.Za(b.b((xv)localObject2)))) || ((((xv)localObject2).aYU != 2) && (((xv)localObject2).aYU != 4) && (((xv)localObject2).aYU != 15) && (((xv)localObject2).aYU != 8))) {
+          localObject2 = (aca)((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.wVc.get(j);
+          if (((((aca)localObject2).dataType == 8) && (!r.aoY(b.b((aca)localObject2)))) || ((((aca)localObject2).dataType != 2) && (((aca)localObject2).dataType != 4) && (((aca)localObject2).dataType != 15) && (((aca)localObject2).dataType != 8))) {
             break label555;
           }
-          com.tencent.mm.plugin.fav.ui.f localf = new com.tencent.mm.plugin.fav.ui.f((com.tencent.mm.plugin.fav.a.g)localObject1, (xv)localObject2);
-          this.hgv.add(localf);
-          if ((str == null) || (!str.equals(((xv)localObject2).kgC)) || (((com.tencent.mm.plugin.fav.a.g)localObject1).field_localId != this.kbU)) {
+          f localf = new f((com.tencent.mm.plugin.fav.a.g)localObject1, (aca)localObject2);
+          this.iRT.add(localf);
+          if ((str == null) || (!str.equals(((aca)localObject2).mBq)) || (((com.tencent.mm.plugin.fav.a.g)localObject1).field_localId != this.mws)) {
             break label555;
           }
-          i = this.hgv.size() - 1;
+          i = this.iRT.size() - 1;
         }
       }
       for (;;)
       {
         j += 1;
-        break label236;
+        break label234;
         bool1 = false;
         break;
         j = localObject1.length;
@@ -131,28 +154,29 @@ public class FavMediaGalleryUI
         while (i < j)
         {
           l = localObject1[i];
-          localObject2 = ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().eE(l);
+          localObject2 = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kb(l);
           if ((localObject2 != null) && (!localArrayList.contains(localObject2))) {
             localArrayList.add(localObject2);
           }
           i += 1;
         }
-        break label182;
+        break label180;
         j = i;
         if (str == null)
         {
           j = i;
-          if (((com.tencent.mm.plugin.fav.a.g)localObject1).field_localId == this.kbU) {
-            j = this.hgv.size() - 1;
+          if (((com.tencent.mm.plugin.fav.a.g)localObject1).field_localId == this.mws) {
+            j = this.iRT.size() - 1;
           }
         }
         k += 1;
         i = j;
-        break label202;
+        break label200;
         getIntent().removeExtra("key_detail_info_id");
         getIntent().removeExtra("key_detail_data_id");
-        this.khd.notifyDataSetChanged();
-        this.itv.post(new FavMediaGalleryUI.9(this, i));
+        this.mBS.notifyDataSetChanged();
+        this.kuC.post(new FavMediaGalleryUI.9(this, i));
+        AppMethodBeat.o(74530);
         return;
       }
     }
@@ -160,141 +184,137 @@ public class FavMediaGalleryUI
   
   public final void d(com.tencent.mm.plugin.fav.a.c paramc)
   {
+    AppMethodBeat.i(74535);
     if (paramc != null)
     {
-      com.tencent.mm.plugin.fav.ui.f localf = this.khd.rb(this.hkH);
-      if ((localf != null) && (bk.aM(paramc.field_dataId, "").equals(localf.bNt.kgC)) && (localf.bNt.aYU == 2)) {
-        ai.d(new FavMediaGalleryUI.10(this, paramc));
+      f localf = this.mBS.vX(this.mwo);
+      if ((localf != null) && (bo.bf(paramc.field_dataId, "").equals(localf.cuL.mBq)) && (localf.cuL.dataType == 2)) {
+        al.d(new FavMediaGalleryUI.10(this, paramc));
       }
     }
+    AppMethodBeat.o(74535);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return n.f.fav_img_gallery_ui;
+    return 2130969537;
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    com.tencent.mm.plugin.fav.ui.f localf;
-    Object localObject;
-    String str;
-    com.tencent.mm.ui.base.p localp;
+    AppMethodBeat.i(74536);
     if (1 == paramInt1)
     {
-      if (-1 != paramInt2) {
+      if (-1 != paramInt2)
+      {
+        AppMethodBeat.o(74536);
         return;
       }
-      localf = this.khd.rb(this.hkH);
+      f localf = this.mBS.vX(this.mwo);
       if (localf == null)
       {
-        y.i("MicroMsg.FavMediaGalleryUI", "dataItem is null.");
+        ab.i("MicroMsg.FavMediaGalleryUI", "dataItem is null.");
+        AppMethodBeat.o(74536);
         return;
       }
-      localObject = b.b(localf.bNt);
+      String str = b.b(localf.cuL);
       new k();
-      if (k.u(localf.kbR))
+      if (k.u(localf.mwn))
       {
-        h.bC(this.mController.uMN, getString(n.i.Fav_NotDownload_CannotForward));
+        h.bO(getContext(), getString(2131296330));
+        AppMethodBeat.o(74536);
         return;
       }
-      str = paramIntent.getStringExtra("Select_Conv_User");
-      y.d("MicroMsg.FavMediaGalleryUI", "select %s for sending", new Object[] { str });
-      localp = h.b(this.mController.uMN, getString(n.i.favorite_forward_tips), false, null);
-      if (!com.tencent.mm.sdk.platformtools.o.Za((String)localObject)) {
-        break label181;
+      Object localObject2 = paramIntent.getStringExtra("Select_Conv_User");
+      Object localObject1 = bo.P(((String)localObject2).split(","));
+      ab.d("MicroMsg.FavMediaGalleryUI", "select %s for sending", new Object[] { localObject2 });
+      localObject2 = h.b(getContext(), getString(2131299734), false, null);
+      if (r.aoY(str))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          str = (String)((Iterator)localObject1).next();
+          i.a(getContext(), str, localf.mwn, localf.cuL, new FavMediaGalleryUI.11(this, (Dialog)localObject2));
+        }
       }
-      i.a(this.mController.uMN, str, localf.kbR, localf.bNt, new FavMediaGalleryUI.11(this, localp));
+      localObject2 = new FavMediaGalleryUI.2(this, (Dialog)localObject2);
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        i.a(this, (String)((Iterator)localObject1).next(), localf.cuL, (Runnable)localObject2);
+      }
     }
-    for (;;)
-    {
-      super.onActivityResult(paramInt1, paramInt2, paramIntent);
-      return;
-      label181:
-      localObject = new FavMediaGalleryUI.2(this, localp);
-      i.a(this, str, localf.bNt, (Runnable)localObject);
-    }
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(74536);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(74529);
     super.onCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setFlags(1024, 1024);
     }
-    this.bTT = getIntent().getBooleanExtra("show_share", true);
-    this.itv = ((MMGestureGallery)findViewById(n.e.gallery));
-    this.itv.setVerticalFadingEdgeEnabled(false);
-    this.itv.setHorizontalFadingEdgeEnabled(false);
-    this.itv.setOnItemSelectedListener(this);
-    this.itv.setSingleClickOverListener(new FavMediaGalleryUI.1(this));
-    if (this.bTT) {
-      this.itv.setLongClickOverListener(new MMGestureGallery.c()
-      {
-        public final void aRg()
-        {
-          if ((!FavMediaGalleryUI.this.isFinishing()) && (!FavMediaGalleryUI.this.uMr)) {
-            FavMediaGalleryUI.a(FavMediaGalleryUI.this);
-          }
-        }
-      });
+    this.cBz = getIntent().getBooleanExtra("show_share", true);
+    this.kuC = ((MMGestureGallery)findViewById(2131822137));
+    this.kuC.setVerticalFadingEdgeEnabled(false);
+    this.kuC.setHorizontalFadingEdgeEnabled(false);
+    this.kuC.setOnItemSelectedListener(this);
+    this.kuC.setSingleClickOverListener(new FavMediaGalleryUI.1(this));
+    if (this.cBz) {
+      this.kuC.setLongClickOverListener(new FavMediaGalleryUI.4(this));
     }
     fullScreenNoTitleBar(true);
-    this.hgv = new ArrayList();
-    this.khd = new FavMediaGalleryUI.a(this, (byte)0);
-    this.itv.setAdapter(this.khd);
-    xO();
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        FavMediaGalleryUI.this.finish();
-        return true;
-      }
-    });
-    com.tencent.mm.sdk.b.a.udP.c(this.kbV);
+    this.iRT = new ArrayList();
+    this.mBS = new FavMediaGalleryUI.a(this, (byte)0);
+    this.kuC.setAdapter(this.mBS);
+    Kg();
+    setBackBtn(new FavMediaGalleryUI.5(this));
+    com.tencent.mm.sdk.b.a.ymk.c(this.mwt);
     setResult(0, getIntent());
-    this.khf.scene = getIntent().getIntExtra("key_detail_fav_scene", 0);
-    this.khf.jYS = getIntent().getIntExtra("key_detail_fav_sub_scene", 0);
-    this.khf.index = getIntent().getIntExtra("key_detail_fav_index", 0);
-    this.khf.bVk = getIntent().getStringExtra("key_detail_fav_query");
-    this.khf.bIB = getIntent().getStringExtra("key_detail_fav_sessionid");
-    this.khf.jYU = getIntent().getStringExtra("key_detail_fav_tags");
-    yl localyl = this.khf;
-    if (this.khf.bVk == null)
+    this.mBU.scene = getIntent().getIntExtra("key_detail_fav_scene", 0);
+    this.mBU.kbN = getIntent().getIntExtra("key_detail_fav_sub_scene", 0);
+    this.mBU.index = getIntent().getIntExtra("key_detail_fav_index", 0);
+    this.mBU.query = getIntent().getStringExtra("key_detail_fav_query");
+    this.mBU.cpW = getIntent().getStringExtra("key_detail_fav_sessionid");
+    this.mBU.mtm = getIntent().getStringExtra("key_detail_fav_tags");
+    acs localacs = this.mBU;
+    if (this.mBU.query == null)
     {
       paramBundle = "";
-      localyl.bVk = paramBundle;
-      localyl = this.khf;
-      if (this.khf.bIB != null) {
-        break label381;
+      localacs.query = paramBundle;
+      localacs = this.mBU;
+      if (this.mBU.cpW != null) {
+        break label393;
       }
       paramBundle = "";
-      label340:
-      localyl.bIB = paramBundle;
-      localyl = this.khf;
-      if (this.khf.jYU != null) {
-        break label392;
+      label346:
+      localacs.cpW = paramBundle;
+      localacs = this.mBU;
+      if (this.mBU.mtm != null) {
+        break label404;
       }
     }
-    label392:
-    for (paramBundle = "";; paramBundle = this.khf.jYU)
+    label393:
+    label404:
+    for (paramBundle = "";; paramBundle = this.mBU.mtm)
     {
-      localyl.jYU = paramBundle;
+      localacs.mtm = paramBundle;
+      AppMethodBeat.o(74529);
       return;
-      paramBundle = this.khf.bVk;
+      paramBundle = this.mBU.query;
       break;
-      label381:
-      paramBundle = this.khf.bIB;
-      break label340;
+      paramBundle = this.mBU.cpW;
+      break label346;
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    getIntent().putExtra("key_activity_browse_time", czu());
-    com.tencent.mm.sdk.b.a.udP.d(this.kbV);
-    Iterator localIterator = this.khe.iterator();
+    AppMethodBeat.i(74531);
+    getIntent().putExtra("key_activity_browse_time", getActivityBrowseTimeMs());
+    com.tencent.mm.sdk.b.a.ymk.d(this.mwt);
+    Iterator localIterator = this.mBT.iterator();
     while (localIterator.hasNext())
     {
       FavVideoView localFavVideoView = (FavVideoView)localIterator.next();
@@ -303,59 +323,85 @@ public class FavMediaGalleryUI
       }
     }
     super.onDestroy();
+    AppMethodBeat.o(74531);
   }
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.hkH = paramInt;
-    y.d("MicroMsg.FavMediaGalleryUI", "pos:" + paramInt);
+    AppMethodBeat.i(74534);
+    this.mwo = paramInt;
+    ab.d("MicroMsg.FavMediaGalleryUI", "pos:".concat(String.valueOf(paramInt)));
     if ((paramView instanceof MultiTouchImageView)) {
-      ((MultiTouchImageView)paramView).cAy();
+      ((MultiTouchImageView)paramView).dDJ();
     }
-    if (this.khc != null) {
-      this.khc.onDestroy();
+    if (this.mBR != null) {
+      this.mBR.onDestroy();
     }
     if ((paramView instanceof FavVideoView))
     {
       paramAdapterView = (FavVideoView)paramView;
-      if (((this.khd.getItemViewType(paramInt) == 15) || (this.khd.getItemViewType(paramInt) == 4)) && (paramAdapterView != null)) {
-        if (paramAdapterView.iuC != null) {
-          break label126;
+      if (((this.mBS.getItemViewType(paramInt) == 15) || (this.mBS.getItemViewType(paramInt) == 4)) && (paramAdapterView != null)) {
+        if (paramAdapterView.kvG != null) {
+          break label131;
         }
       }
     }
-    label126:
-    for (boolean bool = false;; bool = paramAdapterView.iuC.isPlaying())
+    label131:
+    for (boolean bool = false;; bool = paramAdapterView.kvG.isPlaying())
     {
       if (!bool)
       {
         paramAdapterView.onResume();
-        this.khc = paramAdapterView;
-        this.khb = paramInt;
+        this.mBR = paramAdapterView;
+        this.mBQ = paramInt;
       }
+      AppMethodBeat.o(74534);
       return;
     }
   }
   
   public void onNothingSelected(AdapterView<?> paramAdapterView) {}
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(74533);
     super.onPause();
-    ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavCdnStorage().b(this);
-    com.tencent.mm.plugin.webview.ui.tools.widget.o.Dh(2);
+    ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavCdnStorage().b(this);
+    o.La(2);
+    AppMethodBeat.o(74533);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(74532);
     super.onResume();
-    ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavCdnStorage().a(this);
-    com.tencent.mm.plugin.webview.ui.tools.widget.o.Dh(1);
+    ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavCdnStorage().a(this);
+    o.La(1);
+    AppMethodBeat.o(74532);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  final class b
+  {
+    View mwD;
+    MultiTouchImageView mwE;
+    ImageView mwF;
+    TextView mwG;
+    LinearLayout mwH;
+    TextView mwI;
+    ProgressBar progressBar;
+    
+    private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.FavMediaGalleryUI
  * JD-Core Version:    0.7.0.1
  */

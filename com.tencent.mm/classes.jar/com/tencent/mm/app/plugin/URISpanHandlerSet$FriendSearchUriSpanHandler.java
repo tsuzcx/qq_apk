@@ -3,10 +3,11 @@ package com.tencent.mm.app.plugin;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.br.d;
-import com.tencent.mm.pluginsdk.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.pluginsdk.ui.applet.m;
 import com.tencent.mm.pluginsdk.ui.d.g;
+import com.tencent.mm.pluginsdk.v;
 
 @URISpanHandlerSet.a
 class URISpanHandlerSet$FriendSearchUriSpanHandler
@@ -17,47 +18,58 @@ class URISpanHandlerSet$FriendSearchUriSpanHandler
     super(paramURISpanHandlerSet);
   }
   
+  final int[] Cf()
+  {
+    return new int[] { 17 };
+  }
+  
   final boolean a(m paramm, g paramg)
   {
+    AppMethodBeat.i(15666);
     if (paramm.type == 17)
     {
       if (paramg != null) {
         paramg.a(paramm);
       }
-      d.x(URISpanHandlerSet.a(this.byk), "subapp", ".ui.pluginapp.ContactSearchUI");
+      d.H(URISpanHandlerSet.a(this.cam), "subapp", ".ui.pluginapp.ContactSearchUI");
       if (paramg != null) {
         paramg.b(paramm);
       }
+      AppMethodBeat.o(15666);
       return true;
     }
+    AppMethodBeat.o(15666);
     return false;
   }
   
-  final boolean a(String paramString, boolean paramBoolean, s params, Bundle paramBundle)
+  final boolean a(String paramString, boolean paramBoolean, v paramv, Bundle paramBundle)
   {
+    AppMethodBeat.i(15667);
     if (paramString.equals("weixin://findfriend/search"))
     {
       paramString = new Intent();
-      if ((URISpanHandlerSet.a(this.byk) instanceof Service)) {
+      if ((URISpanHandlerSet.a(this.cam) instanceof Service)) {
         paramString.addFlags(268435456);
       }
-      d.b(URISpanHandlerSet.a(this.byk), "subapp", ".ui.pluginapp.ContactSearchUI", paramString);
+      d.b(URISpanHandlerSet.a(this.cam), "subapp", ".ui.pluginapp.ContactSearchUI", paramString);
+      AppMethodBeat.o(15667);
       return true;
     }
+    AppMethodBeat.o(15667);
     return false;
   }
   
-  final m cA(String paramString)
+  final m dN(String paramString)
   {
-    if (paramString.trim().startsWith("weixin://findfriend/search")) {
-      return new m(paramString, 17, null);
+    AppMethodBeat.i(15665);
+    if (paramString.trim().startsWith("weixin://findfriend/search"))
+    {
+      paramString = new m(paramString, 17, null);
+      AppMethodBeat.o(15665);
+      return paramString;
     }
+    AppMethodBeat.o(15665);
     return null;
-  }
-  
-  final int[] tA()
-  {
-    return new int[] { 17 };
   }
 }
 

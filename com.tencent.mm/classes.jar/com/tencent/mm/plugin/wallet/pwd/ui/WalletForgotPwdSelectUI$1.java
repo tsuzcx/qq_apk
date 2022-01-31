@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletForgotPwdSelectUI$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class WalletForgotPwdSelectUI$1
   
   public final void onClick(View paramView)
   {
-    WalletForgotPwdSelectUI.a(this.qoJ);
+    AppMethodBeat.i(46265);
+    WalletForgotPwdSelectUI.a(this.tYW);
+    AppMethodBeat.o(46265);
   }
 }
 

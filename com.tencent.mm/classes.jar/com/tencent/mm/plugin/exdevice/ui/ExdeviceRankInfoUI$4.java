@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.View;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMPullDownView.d;
 
 final class ExdeviceRankInfoUI$4
@@ -9,16 +10,20 @@ final class ExdeviceRankInfoUI$4
 {
   ExdeviceRankInfoUI$4(ExdeviceRankInfoUI paramExdeviceRankInfoUI) {}
   
-  public final boolean aEV()
+  public final boolean bil()
   {
-    int i = ExdeviceRankInfoUI.q(this.jFV).getFirstVisiblePosition();
+    AppMethodBeat.i(20137);
+    int i = ExdeviceRankInfoUI.q(this.lPt).getFirstVisiblePosition();
     if (i == 0)
     {
-      View localView = ExdeviceRankInfoUI.q(this.jFV).getChildAt(i);
-      if ((localView != null) && (localView.getTop() >= 0)) {
+      View localView = ExdeviceRankInfoUI.q(this.lPt).getChildAt(i);
+      if ((localView != null) && (localView.getTop() >= 0))
+      {
+        AppMethodBeat.o(20137);
         return true;
       }
     }
+    AppMethodBeat.o(20137);
     return false;
   }
 }

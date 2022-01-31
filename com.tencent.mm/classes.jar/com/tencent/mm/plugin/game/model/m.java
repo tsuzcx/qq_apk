@@ -1,154 +1,76 @@
 package com.tencent.mm.plugin.game.model;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.os.HandlerThread;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import java.util.LinkedList;
 
 public final class m
+  implements f
 {
-  public static String a(String paramString, o paramo)
+  private static boolean isRunning;
+  private static int nmL;
+  private static LinkedList<h> nmM;
+  private static al nmN;
+  private int offset = 0;
+  
+  static
   {
-    if (paramo != null)
-    {
-      paramo.aZm();
-      if (bk.bl(paramo.kPu.url)) {}
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      y.i("MicroMsg.GameFloatUtil", "hasFloatLayer = " + bool);
-      paramo = paramString;
-      Uri localUri;
-      if (bool)
-      {
-        localUri = Uri.parse(paramString);
-        paramo = localUri.getQuery();
-        if (paramo == null) {
-          break label129;
-        }
-        paramo = paramo + "&h5FloatLayer=1";
-      }
-      try
-      {
-        for (;;)
-        {
-          paramo = new URI(localUri.getScheme(), localUri.getAuthority(), localUri.getPath(), paramo, localUri.getFragment()).toString();
-          y.i("MicroMsg.GameFloatUtil", "abtest, url = %s", new Object[] { paramo });
-          return paramo;
-          label129:
-          paramo = "h5FloatLayer=1";
-        }
-      }
-      catch (URISyntaxException paramo)
-      {
-        for (;;)
-        {
-          y.printErrStackTrace("MicroMsg.GameFloatUtil", paramo, "", new Object[0]);
-          paramo = paramString;
-        }
-      }
-    }
+    AppMethodBeat.i(111286);
+    nmL = 20;
+    isRunning = false;
+    nmM = new LinkedList();
+    AppMethodBeat.o(111286);
   }
   
-  public static void a(Context paramContext, Intent paramIntent, String paramString, boolean paramBoolean, o paramo, int paramInt)
+  private void bGl()
   {
-    paramIntent.putExtra("geta8key_scene", 32);
-    paramIntent.putExtra("KPublisherId", paramString);
-    paramIntent.putExtra("game_check_float", paramBoolean);
-    if ((paramBoolean) && (paramo != null))
-    {
-      paramo.aZm();
-      if (paramo.kPu.kPR) {
-        paramIntent.putExtra("game_transparent_float_url", paramo.kPu.url);
-      }
-      paramIntent.putExtra("game_sourceScene", paramInt);
-    }
-    paramString = new Intent();
-    paramString.putExtras(paramIntent.getExtras());
-    com.tencent.mm.plugin.game.f.c.x(paramString, paramContext);
+    AppMethodBeat.i(111284);
+    isRunning = false;
+    nmN.oNc.quit();
+    g.Rc().b(1215, this);
+    AppMethodBeat.o(111284);
   }
   
-  public static void a(o paramo, int paramInt1, int paramInt2)
+  public static void update()
   {
-    o localo = paramo;
-    if (paramo == null)
+    AppMethodBeat.i(111282);
+    if (!e.bFZ())
     {
-      ((com.tencent.mm.plugin.game.a.b)g.r(com.tencent.mm.plugin.game.a.b.class)).aYe();
-      paramo = r.aZp();
-      localo = paramo;
-      if (paramo == null) {
-        return;
-      }
-    }
-    localo.aZm();
-    y.i("MicroMsg.GameFloatUtil", "float layer report");
-    if (!bk.bl(localo.kPu.url))
-    {
-      int i = localo.field_msgType;
-      if (localo.field_msgType == 100) {
-        i = localo.kPM;
-      }
-      com.tencent.mm.plugin.game.e.b.a(ae.getContext(), 10, 1006, 1, 1, 0, localo.field_appId, paramInt1, i, localo.field_gameMsgId, localo.kPN, null);
-      if (paramInt2 != 1) {
-        break label179;
-      }
-      h.nFQ.a(858L, 16L, 1L, false);
-    }
-    for (;;)
-    {
-      localo.field_isRead = true;
-      ((com.tencent.mm.plugin.game.a.c)g.r(com.tencent.mm.plugin.game.a.c.class)).aYf().c(localo, new String[0]);
-      ((com.tencent.mm.plugin.game.a.b)g.r(com.tencent.mm.plugin.game.a.b.class)).aYe();
-      r.aZq();
+      ab.i("MicroMsg.GameListUpdater", "No need to update");
+      AppMethodBeat.o(111282);
       return;
-      label179:
-      if (paramInt2 == 2) {
-        h.nFQ.a(858L, 17L, 1L, false);
-      }
     }
+    if (isRunning)
+    {
+      ab.e("MicroMsg.GameListUpdater", "Already running");
+      AppMethodBeat.o(111282);
+      return;
+    }
+    nmN = new al("GameListUpdate");
+    nmM.clear();
+    m localm = new m();
+    g.Rc().a(1215, localm);
+    g.Rc().a(new au(localm.offset, nmL), 0);
+    isRunning = true;
+    AppMethodBeat.o(111282);
   }
   
-  public static void b(Context paramContext, Intent paramIntent, String paramString, boolean paramBoolean, o paramo, int paramInt)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    paramIntent.putExtra("geta8key_scene", 32);
-    paramIntent.putExtra("KPublisherId", paramString);
-    paramIntent.putExtra("game_check_float", paramBoolean);
-    int i;
-    if ((paramBoolean) && (paramo != null))
+    AppMethodBeat.i(111283);
+    if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      paramo.aZm();
-      if ((paramo.kPu != null) && (!bk.bl(paramo.kPu.url)))
-      {
-        paramString = new GameFloatLayerInfo();
-        paramString.url = paramo.kPu.url;
-        paramString.kOO = paramo.kPu.kOO;
-        i = -1;
-        switch (paramo.kPu.orientation)
-        {
-        }
-      }
-    }
-    for (;;)
-    {
-      paramString.orientation = i;
-      GameWebViewLaunchParams localGameWebViewLaunchParams = new GameWebViewLaunchParams();
-      localGameWebViewLaunchParams.kRd = paramString;
-      paramIntent.putExtra("launchParams", localGameWebViewLaunchParams);
-      paramString = new Intent();
-      paramString.putExtras(paramIntent.getExtras());
-      com.tencent.mm.plugin.game.f.c.y(paramString, paramContext);
-      a(paramo, paramInt, 1);
+      bGl();
+      AppMethodBeat.o(111283);
       return;
-      i = 0;
-      continue;
-      i = 1;
     }
+    nmN.ac(new m.1(this, paramm));
+    AppMethodBeat.o(111283);
   }
 }
 

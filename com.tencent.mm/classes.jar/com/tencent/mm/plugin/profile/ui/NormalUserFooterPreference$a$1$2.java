@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.content.res.Resources;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.plugin.profile.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.plugin.profile.c;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.MMActivity;
@@ -16,41 +15,43 @@ final class NormalUserFooterPreference$a$1$2
 {
   NormalUserFooterPreference$a$1$2(NormalUserFooterPreference.a.1 param1) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    h.nFQ.f(16055, new Object[] { Integer.valueOf(7), Integer.valueOf(b.S(NormalUserFooterPreference.b(this.mYF.mYE.mYC).getIntent())) });
-    if (ad.aaU(NormalUserFooterPreference.a(this.mYF.mYE.mYC).field_username))
+    AppMethodBeat.i(23675);
+    h.qsU.e(16055, new Object[] { Integer.valueOf(c.al(NormalUserFooterPreference.b(this.pCg.pCf.pCe).getIntent())), Integer.valueOf(7), Integer.valueOf(1), NormalUserFooterPreference.a(this.pCg.pCf.pCe).field_username });
+    if (ad.arf(NormalUserFooterPreference.a(this.pCg.pCf.pCe).field_username))
     {
-      paraml.ak(1, R.l.contact_set_des_only, R.k.bottomsheet_icon_remarks);
-      if (!NormalUserFooterPreference.a(this.mYF.mYE.mYC).Bi()) {
-        break label298;
+      paraml.aw(1, 2131298849, 2131231033);
+      if (!NormalUserFooterPreference.a(this.pCg.pCf.pCe).NY()) {
+        break label318;
       }
-      str = NormalUserFooterPreference.b(this.mYF.mYE.mYC).getResources().getString(R.l.contact_info_unset_favour_start_biz);
-      label122:
-      paraml.a(2, str, R.k.bottomsheet_icon_star);
-      if (!ad.aaU(NormalUserFooterPreference.a(this.mYF.mYE.mYC).field_username)) {
-        paraml.ak(3, R.l.contact_info_op_sns_permission, R.k.bottomsheet_icon_moment);
+      str = NormalUserFooterPreference.b(this.pCg.pCf.pCe).getResources().getString(2131298822);
+      label151:
+      paraml.a(2, str, 2131231036);
+      if (!ad.arf(NormalUserFooterPreference.a(this.pCg.pCf.pCe).field_username)) {
+        paraml.aw(3, 2131298685, 2131231024);
       }
-      paraml.ak(4, R.l.contact_info_send_card_normal, R.k.bottomsheet_icon_transmit);
-      paraml.ak(9, R.l.biz_report_text, R.k.bottomsheet_icon_complain);
-      if (!NormalUserFooterPreference.a(this.mYF.mYE.mYC).Bg()) {
-        break label324;
+      paraml.aw(4, 2131298745, 2131231038);
+      paraml.aw(9, 2131297684, 2131231006);
+      if (!NormalUserFooterPreference.a(this.pCg.pCf.pCe).NW()) {
+        break label343;
       }
     }
-    label298:
-    label324:
-    for (String str = NormalUserFooterPreference.b(this.mYF.mYE.mYC).getString(R.l.contact_info_moveout_blacklist);; str = NormalUserFooterPreference.b(this.mYF.mYE.mYC).getString(R.l.contact_info_movein_blacklist))
+    label318:
+    label343:
+    for (String str = NormalUserFooterPreference.b(this.pCg.pCf.pCe).getString(2131298680);; str = NormalUserFooterPreference.b(this.pCg.pCf.pCe).getString(2131298675))
     {
-      paraml.a(5, str, R.k.bottomsheet_icon_blacklist);
-      if (!NormalUserFooterPreference.c(this.mYF.mYE.mYC)) {
-        paraml.ak(6, R.l.bind_mcontact_del_btn_text, R.k.bottomsheet_icon_del);
+      paraml.a(5, str, 2131231002);
+      if (!NormalUserFooterPreference.c(this.pCg.pCf.pCe)) {
+        paraml.aw(6, 2131297565, 2131231009);
       }
-      paraml.ak(7, R.l.contact_info_add_shortcut, R.k.bottomsheet_icon_desktop);
+      paraml.aw(7, 2131298519, 2131231010);
+      AppMethodBeat.o(23675);
       return;
-      paraml.ak(1, R.l.contact_info_mod_remark_labelinfo, R.k.bottomsheet_icon_remarks);
+      paraml.aw(1, 2131298670, 2131231033);
       break;
-      str = NormalUserFooterPreference.b(this.mYF.mYE.mYC).getResources().getString(R.l.contact_info_favour_start_biz);
-      break label122;
+      str = NormalUserFooterPreference.b(this.pCg.pCf.pCe).getResources().getString(2131298604);
+      break label151;
     }
   }
 }

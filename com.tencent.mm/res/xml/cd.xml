@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<whilte-list>
-    <checker name="ExplainQueryPlanChecker">
-        <element>sqlite_master</element>
-        <element>select *,rowid from snsinfo where snsinfo.snsid = ?</element>
-        <element>select *,rowid from snsinfo where snsinfo.snsid = ? limit ?</element>
-    </checker>
-    <checker name="AvoidAutoIncrementChecker" />
-    <checker name="AvoidSelectAllChecker" />
-    <checker name="WithoutRowIdBetterChecker">
-        <element>AppBrandStarApp</element>
-    </checker>
-    <checker name="PreparedStatementBetterChecker" />
-    <checker name="RedundantIndexChecker" />
-</whilte-list>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <IconPreference android:title="@string/e6v" android:key="share_micromsg_qzone" />
+    <IconPreference android:title="@string/e6w" android:key="share_micromsg_to_sina" />
+    <IconPreference android:title="@string/e6u" android:key="share_micromsg_to_fuckbook" />
+</PreferenceScreen>

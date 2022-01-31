@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.appbrand.config;
 
 public abstract interface AppBrandGlobalSystemConfig$a
 {
-  public static final int[] fOZ = new int[0];
-  public static final String[] fPa = { "https://wx.qlogo.cn/" };
+  public static final int[] hid = new int[0];
+  public static final String[] hie = { "https://wx.qlogo.cn/" };
+  public static final String[] hif = new String[0];
 }
 
 

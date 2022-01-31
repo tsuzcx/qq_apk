@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.facedetect.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.a.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vfs.e;
 
 final class a$8$1
@@ -11,14 +12,16 @@ final class a$8$1
   
   public final void run()
   {
-    synchronized (a.a(this.jTx.jTm))
+    AppMethodBeat.i(552);
+    synchronized (a.a(this.mnR.mnI))
     {
-      y.i("MicroMsg.FaceVideoRecorder", "carson: begin to stop" + a.g(this.jTx.jTm).bjl());
-      a.a(this.jTx.jTm, a.a.jTC);
-      e.deleteFile(a.h(this.jTx.jTm));
-      if (a.r(this.jTx.jTm) != null) {
-        a.r(this.jTx.jTm).Cr(a.g(this.jTx.jTm).bjl());
+      ab.i("MicroMsg.FaceVideoRecorder", "carson: begin to stop" + a.g(this.mnR.mnI).getFilePath());
+      a.a(this.mnR.mnI, a.a.mnW);
+      e.deleteFile(a.h(this.mnR.mnI));
+      if (a.r(this.mnR.mnI) != null) {
+        a.r(this.mnR.mnI).Ns(a.g(this.mnR.mnI).getFilePath());
       }
+      AppMethodBeat.o(552);
       return;
     }
   }

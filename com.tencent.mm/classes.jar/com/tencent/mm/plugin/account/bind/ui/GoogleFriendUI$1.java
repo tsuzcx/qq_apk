@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GoogleFriendUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class GoogleFriendUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.fdH.finish();
+    AppMethodBeat.i(13650);
+    this.gvr.finish();
+    AppMethodBeat.o(13650);
     return true;
   }
 }

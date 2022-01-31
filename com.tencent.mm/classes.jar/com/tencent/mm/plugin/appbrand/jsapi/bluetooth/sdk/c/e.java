@@ -4,9 +4,9 @@ import org.json.JSONObject;
 
 public final class e
 {
-  public String dCX;
-  public JSONObject gmI;
-  public boolean gmN;
+  public String eAx;
+  public boolean hGM;
+  public JSONObject jsonObject;
 }
 
 

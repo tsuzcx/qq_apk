@@ -1,68 +1,53 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.l;
-import com.tencent.mm.plugin.ipcall.b.c;
-import com.tencent.mm.protocal.c.ams;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.ipcall.a.e.i;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
 
 public final class e
 {
-  ListView luf;
-  h lug;
-  View luh;
-  IPCallAddressUI lui;
-  boolean luj = false;
-  TextView luk = null;
-  TextView lul = null;
-  LinearLayout lum = null;
-  TextView lun = null;
-  ImageView luo = null;
+  IPCallAddressUI nRA;
+  boolean nRB = false;
+  TextView nRC = null;
+  TextView nRD = null;
+  LinearLayout nRE = null;
+  TextView nRF = null;
+  ImageView nRG = null;
+  ListView nRx;
+  h nRy;
+  View nRz;
   
   public e(IPCallAddressUI paramIPCallAddressUI, ListView paramListView, View paramView)
   {
-    this.luf = paramListView;
-    this.lui = paramIPCallAddressUI;
-    this.luh = paramView;
+    this.nRx = paramListView;
+    this.nRA = paramIPCallAddressUI;
+    this.nRz = paramView;
   }
   
-  public final void bcT()
+  public final void bKd()
   {
-    ai.d(new e.6(this));
+    AppMethodBeat.i(22042);
+    al.d(new e.6(this));
+    AppMethodBeat.o(22042);
   }
   
-  public final void bcU()
+  public final void bKe()
   {
-    ai.d(new Runnable()
-    {
-      public final void run()
-      {
-        ams localams = c.bdt();
-        if (localams != null)
-        {
-          e.this.luk.setText(localams.tiG);
-          if (!bk.bl(localams.tiO))
-          {
-            e.this.lul.setText(localams.tiO);
-            e.this.lul.setVisibility(0);
-            return;
-          }
-          e.this.lul.setText("");
-          e.this.lul.setVisibility(8);
-          return;
-        }
-        e.this.luk.setText("");
-        e.this.lul.setText("");
-        e.this.lul.setVisibility(8);
-      }
-    });
+    AppMethodBeat.i(22043);
+    al.d(new e.7(this));
+    AppMethodBeat.o(22043);
   }
 }
 

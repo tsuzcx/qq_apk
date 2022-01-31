@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.os.Bundle;
-import com.tencent.mm.plugin.webview.ui.tools.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class k$5$4
   implements Runnable
@@ -13,28 +13,30 @@ final class k$5$4
   public final void run()
   {
     boolean bool2 = false;
-    byte[] arrayOfByte = this.byv.getByteArray("jsapi_control_bytes");
+    AppMethodBeat.i(9928);
+    byte[] arrayOfByte = this.cax.getByteArray("jsapi_control_bytes");
     boolean bool1;
-    if ((arrayOfByte == null) || (this.rCx.rCv.rxH == null) || (this.rCx.rCv.rxH.cdI() == null)) {
+    if ((arrayOfByte == null) || (this.vsJ.vsH.voA == null) || (this.vsJ.vsH.voA.ddV() == null)) {
       if (arrayOfByte != null)
       {
         bool1 = true;
-        if (this.rCx.rCv.rxH != null) {
+        if (this.vsJ.vsH.voA != null) {
           bool2 = true;
         }
-        y.e("MicroMsg.MMWebViewClient", "has JSAPI_CONTROL_BYTES %b, has wvPerm %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        ab.e("MicroMsg.MMWebViewClient", "has JSAPI_CONTROL_BYTES %b, has wvPerm %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       }
     }
     for (;;)
     {
-      if (this.rCx.rCv.rvZ != null) {
-        this.rCx.rCv.rvZ.cfZ();
+      if (this.vsJ.vsH.vmp != null) {
+        this.vsJ.vsH.vmp.dgk();
       }
+      AppMethodBeat.o(9928);
       return;
       bool1 = false;
       break;
-      y.i("MicroMsg.MMWebViewClient", "update control bytes by preverify, %d", new Object[] { Integer.valueOf(arrayOfByte.length) });
-      this.rCx.rCv.rxH.cdI().spq = arrayOfByte;
+      ab.i("MicroMsg.MMWebViewClient", "update control bytes by preverify, %d", new Object[] { Integer.valueOf(arrayOfByte.length) });
+      this.vsJ.vsH.voA.ddV().wif = arrayOfByte;
     }
   }
 }

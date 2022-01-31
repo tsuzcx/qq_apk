@@ -9,13 +9,14 @@ import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.m;
-import com.tencent.mm.plugin.messenger.foundation.a.a.l;
+import com.tencent.mm.model.n;
+import com.tencent.mm.plugin.messenger.foundation.a.a.m;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.bv;
@@ -28,121 +29,133 @@ import java.util.List;
 final class SeeRoomMemberUI$b
   extends BaseAdapter
 {
-  private List<SeeRoomMemberUI.a> bSN = new ArrayList();
-  private String dmT;
-  private u dnL;
-  private List<String> dru;
-  public String drv;
-  private boolean drw = false;
-  private String drx = null;
-  private List<SeeRoomMemberUI.a> dry;
-  private com.tencent.mm.plugin.messenger.foundation.a.j drz;
+  private List<SeeRoomMemberUI.a> cAs;
+  private String eeu;
+  private u efi;
+  private List<String> ejc;
+  public String ejd;
+  private boolean eje;
+  private String ejf;
+  private List<SeeRoomMemberUI.a> ejg;
+  private com.tencent.mm.plugin.messenger.foundation.a.j ejh;
   private Context mContext;
   
   public SeeRoomMemberUI$b(Context paramContext, u paramu, String paramString1, List<String> paramList, String paramString2)
   {
-    this.dnL = paramString1;
-    this.dmT = paramList;
-    this.dru = paramString2;
+    AppMethodBeat.i(104326);
+    this.eje = false;
+    this.ejf = null;
+    this.cAs = new ArrayList();
+    this.efi = paramString1;
+    this.eeu = paramList;
+    this.ejc = paramString2;
     Object localObject;
-    this.drx = localObject;
+    this.ejf = localObject;
     this.mContext = paramu;
-    this.drz = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class));
-    G(m.gK(paramList));
+    this.ejh = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class));
+    N(n.nt(paramList));
+    AppMethodBeat.o(104326);
   }
   
-  public final void G(List<String> paramList)
+  private void ld(String paramString)
   {
-    if (paramList == null) {
-      return;
-    }
-    this.bSN.clear();
-    int i = 0;
-    if (i < paramList.size())
-    {
-      ad localad = this.drz.Fw().abl((String)paramList.get(i));
-      if (this.dnL.aaP(localad.field_username)) {
-        this.bSN.add(new SeeRoomMemberUI.a(localad, 3));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (this.dnL.aaM(localad.field_username)) {
-          this.bSN.add(new SeeRoomMemberUI.a(localad, 2));
-        } else {
-          this.bSN.add(new SeeRoomMemberUI.a(localad, 1));
-        }
-      }
-    }
-    Collections.sort(this.bSN, new SeeRoomMemberUI.b.1(this));
-    this.bSN.add(new SeeRoomMemberUI.a(2));
-    if (this.dnL.xw()) {
-      this.bSN.add(new SeeRoomMemberUI.a(3));
-    }
-    this.dry = this.bSN;
-    notifyDataSetChanged();
-  }
-  
-  public final void eT(String paramString)
-  {
-    this.drw = true;
-    this.drv = paramString;
+    AppMethodBeat.i(104328);
     ArrayList localArrayList = new ArrayList();
-    if (!bk.bl(paramString))
+    if (!bo.isNullOrNil(paramString))
     {
-      Iterator localIterator = this.dry.iterator();
+      Iterator localIterator = this.ejg.iterator();
       while (localIterator.hasNext())
       {
         SeeRoomMemberUI.a locala = (SeeRoomMemberUI.a)localIterator.next();
-        if ((locala != null) && (locala.dnp != null) && (locala.type == 1))
+        if ((locala != null) && (locala.contact != null) && (locala.type == 1))
         {
-          Object localObject = locala.dnp;
-          if ((((ao)localObject).field_conRemark != null) && (((ao)localObject).field_conRemark.toUpperCase().contains(paramString.toUpperCase())))
+          Object localObject = locala.contact;
+          if ((((aq)localObject).field_conRemark != null) && (((aq)localObject).field_conRemark.toUpperCase().contains(paramString.toUpperCase())))
           {
             localArrayList.add(locala);
           }
-          else if ((!bk.bl(SeeRoomMemberUI.a(this.dnL, ((ao)localObject).field_username))) && (SeeRoomMemberUI.a(this.dnL, ((ao)localObject).field_username).contains(paramString)))
+          else if ((!bo.isNullOrNil(SeeRoomMemberUI.a(this.efi, ((aq)localObject).field_username))) && (SeeRoomMemberUI.a(this.efi, ((aq)localObject).field_username).contains(paramString)))
           {
             localArrayList.add(locala);
           }
-          else if ((((ad)localObject).Bp() != null) && (((ad)localObject).Bp().toUpperCase().contains(paramString.toUpperCase())))
+          else if ((((ad)localObject).Oe() != null) && (((ad)localObject).Oe().toUpperCase().contains(paramString.toUpperCase())))
           {
             localArrayList.add(locala);
           }
-          else if ((((ad)localObject).vn() != null) && (((ad)localObject).vn().toUpperCase().contains(paramString.toUpperCase())))
+          else if ((((ad)localObject).Ht() != null) && (((ad)localObject).Ht().toUpperCase().contains(paramString.toUpperCase())))
           {
             localArrayList.add(locala);
           }
-          else if ((((ad)localObject).vk() != null) && (((ad)localObject).vk().contains(paramString)))
+          else if ((((ad)localObject).Hq() != null) && (((ad)localObject).Hq().contains(paramString)))
           {
             localArrayList.add(locala);
           }
-          else if ((((ao)localObject).field_username != null) && (((ao)localObject).field_username.contains(paramString)))
+          else if ((((aq)localObject).field_username != null) && (((aq)localObject).field_username.contains(paramString)))
           {
             localArrayList.add(locala);
           }
-          else if (!com.tencent.mm.n.a.gR(((ao)localObject).field_type))
+          else if (!com.tencent.mm.n.a.je(((aq)localObject).field_type))
           {
-            localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fx().Id(((ao)localObject).field_username);
+            localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YB().TM(((aq)localObject).field_username);
             if ((localObject != null) && (((bv)localObject).field_conRemark != null) && (((bv)localObject).field_conRemark.toUpperCase().contains(paramString.toUpperCase()))) {
               localArrayList.add(locala);
             }
           }
         }
       }
-      y.i("MicroMsg.SeeRoomMemberUI", "[setMemberListBySearch]");
+      ab.i("MicroMsg.SeeRoomMemberUI", "[setMemberListBySearch]");
     }
-    for (this.bSN = localArrayList;; this.bSN = this.dry)
+    for (this.cAs = localArrayList;; this.cAs = this.ejg)
     {
       notifyDataSetChanged();
+      AppMethodBeat.o(104328);
       return;
     }
   }
   
+  public final void N(List<String> paramList)
+  {
+    AppMethodBeat.i(104327);
+    if (paramList == null)
+    {
+      AppMethodBeat.o(104327);
+      return;
+    }
+    this.cAs.clear();
+    int i = 0;
+    if (i < paramList.size())
+    {
+      ad localad = this.ejh.YA().arw((String)paramList.get(i));
+      if (this.efi.ara(localad.field_username)) {
+        this.cAs.add(new SeeRoomMemberUI.a(localad, 3));
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (this.efi.aqW(localad.field_username)) {
+          this.cAs.add(new SeeRoomMemberUI.a(localad, 2));
+        } else {
+          this.cAs.add(new SeeRoomMemberUI.a(localad, 1));
+        }
+      }
+    }
+    Collections.sort(this.cAs, new SeeRoomMemberUI.b.1(this));
+    this.cAs.add(new SeeRoomMemberUI.a(2));
+    if (this.efi.JP()) {
+      this.cAs.add(new SeeRoomMemberUI.a(3));
+    }
+    this.ejg = this.cAs;
+    notifyDataSetChanged();
+    AppMethodBeat.o(104327);
+  }
+  
   public final int getCount()
   {
-    return this.bSN.size();
+    AppMethodBeat.i(104332);
+    int i = this.cAs.size();
+    AppMethodBeat.o(104332);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -152,37 +165,38 @@ final class SeeRoomMemberUI$b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(104330);
     View localView;
     SeeRoomMemberUI.c localc;
     String str;
     if (paramView == null)
     {
-      localView = View.inflate(this.mContext, a.f.see_roommember_item, null);
+      localView = View.inflate(this.mContext, 2130970641, null);
       localc = new SeeRoomMemberUI.c((byte)0);
-      localc.doU = ((ImageView)localView.findViewById(a.e.see_roommember_avatar));
-      localc.drB = ((TextView)localView.findViewById(a.e.see_roommember_name));
+      localc.egq = ((ImageView)localView.findViewById(2131822799));
+      localc.ejj = ((TextView)localView.findViewById(2131822801));
       paramView = (WindowManager)this.mContext.getSystemService("window");
-      localc.drB.setMaxWidth(paramView.getDefaultDisplay().getWidth() * 2 / 3);
-      localc.drC = ((TextView)localView.findViewById(a.e.see_roommember_name_sub_detail));
+      localc.ejj.setMaxWidth(paramView.getDefaultDisplay().getWidth() * 2 / 3);
+      localc.ejk = ((TextView)localView.findViewById(2131827527));
       localView.setTag(localc);
-      if (localc.drC != null) {
-        localc.drC.setVisibility(8);
+      if (localc.ejk != null) {
+        localc.ejk.setVisibility(8);
       }
-      paramView = (SeeRoomMemberUI.a)this.bSN.get(paramInt);
+      paramView = (SeeRoomMemberUI.a)this.cAs.get(paramInt);
       if ((paramView == null) || (paramView.type != 1)) {
-        break label398;
+        break label408;
       }
-      ad localad = paramView.dnp;
-      a.b.a(localc.doU, localad.field_username);
-      str = SeeRoomMemberUI.a(this.dnL, localad.field_username);
-      if (bk.bl(localad.field_conRemark)) {
-        break label371;
+      ad localad = paramView.contact;
+      a.b.c(localc.egq, localad.field_username);
+      str = SeeRoomMemberUI.a(this.efi, localad.field_username);
+      if (bo.isNullOrNil(localad.field_conRemark)) {
+        break label381;
       }
       paramViewGroup = localad.field_conRemark;
-      label211:
+      label216:
       paramView = paramViewGroup;
-      if (bk.bl(paramViewGroup)) {
-        paramView = localad.Bp();
+      if (bo.isNullOrNil(paramViewGroup)) {
+        paramView = localad.Oe();
       }
       paramViewGroup = paramView;
       if (str != null)
@@ -196,51 +210,65 @@ final class SeeRoomMemberUI$b
           }
         }
       }
-      localc.drB.setVisibility(0);
-      localc.drB.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.mContext, paramViewGroup, localc.drB.getTextSize()));
-      if (localc.drC != null)
+      localc.ejj.setVisibility(0);
+      localc.ejj.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.mContext, paramViewGroup, localc.ejj.getTextSize()));
+      if (localc.ejk != null)
       {
-        paramView = com.tencent.mm.openim.room.a.a.z(localad);
+        paramView = com.tencent.mm.openim.room.a.a.A(localad);
         if (!TextUtils.isEmpty(paramView)) {
-          break label377;
+          break label387;
         }
-        localc.drC.setVisibility(8);
+        localc.ejk.setVisibility(8);
       }
     }
-    label371:
-    label377:
-    do
+    for (;;)
     {
+      AppMethodBeat.o(104330);
       return localView;
       localc = (SeeRoomMemberUI.c)paramView.getTag();
       localView = paramView;
       break;
+      label381:
       paramViewGroup = str;
-      break label211;
-      localc.drC.setVisibility(0);
-      localc.drC.setText(paramView);
-      return localView;
+      break label216;
+      label387:
+      localc.ejk.setVisibility(0);
+      localc.ejk.setText(paramView);
+      continue;
+      label408:
       if ((paramView != null) && (paramView.type == 2))
       {
-        localc.drB.setVisibility(4);
-        localc.doU.setImageResource(a.d.big_add_selector);
-        return localView;
+        localc.ejj.setVisibility(4);
+        localc.egq.setImageResource(2130837890);
       }
-    } while ((paramView == null) || (paramView.type != 3));
-    label398:
-    localc.drB.setVisibility(4);
-    localc.doU.setImageResource(a.d.big_del_selector);
-    return localView;
+      else if ((paramView != null) && (paramView.type == 3))
+      {
+        localc.ejj.setVisibility(4);
+        localc.egq.setImageResource(2130837891);
+      }
+    }
   }
   
-  public final SeeRoomMemberUI.a gn(int paramInt)
+  public final SeeRoomMemberUI.a iC(int paramInt)
   {
-    return (SeeRoomMemberUI.a)this.bSN.get(paramInt);
+    AppMethodBeat.i(104329);
+    SeeRoomMemberUI.a locala = (SeeRoomMemberUI.a)this.cAs.get(paramInt);
+    AppMethodBeat.o(104329);
+    return locala;
+  }
+  
+  public final void le(String paramString)
+  {
+    AppMethodBeat.i(104331);
+    this.eje = true;
+    this.ejd = paramString;
+    ld(paramString);
+    AppMethodBeat.o(104331);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SeeRoomMemberUI.b
  * JD-Core Version:    0.7.0.1
  */

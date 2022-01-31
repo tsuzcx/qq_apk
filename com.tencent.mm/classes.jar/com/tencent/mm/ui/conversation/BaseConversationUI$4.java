@@ -1,8 +1,9 @@
 package com.tencent.mm.ui.conversation;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelstat.d;
 import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.ui.chatting.y;
+import com.tencent.mm.ui.chatting.ChattingUIFragment;
 
 final class BaseConversationUI$4
   implements Runnable
@@ -11,24 +12,31 @@ final class BaseConversationUI$4
   
   public final void run()
   {
+    AppMethodBeat.i(34048);
+    int i = 0;
+    if (BaseConversationUI.access$100(this.AgT) != null) {
+      i = BaseConversationUI.access$100(this.AgT).hashCode();
+    }
     String str;
-    if (this.vPh)
+    if (this.AgS)
     {
-      str = "ChattingUI" + BaseConversationUI.access$000(this.vPi);
-      if (!this.vPh) {
-        break label108;
+      str = "ChattingUI" + BaseConversationUI.access$000(this.AgT);
+      if (!this.AgS) {
+        break label130;
       }
     }
-    label108:
-    for (int i = BaseConversationUI.access$100(this.vPi).hashCode();; i = this.vPi.hashCode())
+    for (;;)
     {
       d.b(4, str, i);
-      if (this.vPh) {
-        d.h("ChattingUI" + BaseConversationUI.access$000(this.vPi), BaseConversationUI.access$400(this.vPi), ah.UX());
+      if (this.AgS) {
+        d.o("ChattingUI" + BaseConversationUI.access$000(this.AgT), BaseConversationUI.access$400(this.AgT), ah.aox());
       }
+      AppMethodBeat.o(34048);
       return;
-      str = this.vPi.getLocalClassName();
+      str = this.AgT.getLocalClassName();
       break;
+      label130:
+      i = this.AgT.hashCode();
     }
   }
 }

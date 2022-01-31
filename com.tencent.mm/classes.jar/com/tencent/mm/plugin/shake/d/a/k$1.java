@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.shake.b.d;
 
-public final class k$1
+final class k$1
   implements Runnable
 {
-  public k$1(d paramd, Context paramContext) {}
+  k$1(d paramd, Context paramContext) {}
   
   public final void run()
   {
-    k.a(this.oaZ, this.val$context, false);
+    AppMethodBeat.i(24651);
+    k.a(this.qPi, this.val$context, false);
+    AppMethodBeat.o(24651);
   }
 }
 

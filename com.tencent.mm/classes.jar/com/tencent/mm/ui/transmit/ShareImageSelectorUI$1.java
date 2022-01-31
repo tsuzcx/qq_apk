@@ -2,6 +2,7 @@ package com.tencent.mm.ui.transmit;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShareImageSelectorUI$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class ShareImageSelectorUI$1
   
   public final void onClick(View paramView)
   {
-    ShareImageSelectorUI.a(this.whT);
+    AppMethodBeat.i(35247);
+    ShareImageSelectorUI.a(this.AAQ);
+    AppMethodBeat.o(35247);
   }
 }
 

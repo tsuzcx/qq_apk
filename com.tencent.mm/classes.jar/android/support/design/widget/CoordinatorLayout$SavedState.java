@@ -10,7 +10,7 @@ public class CoordinatorLayout$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new CoordinatorLayout.SavedState.1();
-  SparseArray<Parcelable> ig;
+  SparseArray<Parcelable> jc;
   
   public CoordinatorLayout$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
   {
@@ -19,11 +19,11 @@ public class CoordinatorLayout$SavedState
     int[] arrayOfInt = new int[j];
     paramParcel.readIntArray(arrayOfInt);
     paramParcel = paramParcel.readParcelableArray(paramClassLoader);
-    this.ig = new SparseArray(j);
+    this.jc = new SparseArray(j);
     int i = 0;
     while (i < j)
     {
-      this.ig.append(arrayOfInt[i], paramParcel[i]);
+      this.jc.append(arrayOfInt[i], paramParcel[i]);
       i += 1;
     }
   }
@@ -37,18 +37,18 @@ public class CoordinatorLayout$SavedState
   {
     int j = 0;
     super.writeToParcel(paramParcel, paramInt);
-    if (this.ig != null) {}
+    if (this.jc != null) {}
     int[] arrayOfInt;
     Parcelable[] arrayOfParcelable;
-    for (int i = this.ig.size();; i = 0)
+    for (int i = this.jc.size();; i = 0)
     {
       paramParcel.writeInt(i);
       arrayOfInt = new int[i];
       arrayOfParcelable = new Parcelable[i];
       while (j < i)
       {
-        arrayOfInt[j] = this.ig.keyAt(j);
-        arrayOfParcelable[j] = ((Parcelable)this.ig.valueAt(j));
+        arrayOfInt[j] = this.jc.keyAt(j);
+        arrayOfParcelable[j] = ((Parcelable)this.jc.valueAt(j));
         j += 1;
       }
     }
@@ -58,7 +58,7 @@ public class CoordinatorLayout$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.design.widget.CoordinatorLayout.SavedState
  * JD-Core Version:    0.7.0.1
  */

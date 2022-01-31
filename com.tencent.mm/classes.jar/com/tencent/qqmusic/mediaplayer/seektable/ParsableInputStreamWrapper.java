@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.seektable;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.upstream.IDataSource;
 import java.io.Closeable;
 import java.nio.charset.Charset;
@@ -14,40 +15,59 @@ public class ParsableInputStreamWrapper
   
   public ParsableInputStreamWrapper(IDataSource paramIDataSource)
   {
+    AppMethodBeat.i(128508);
     this.dataSource = paramIDataSource;
     this.intBuffer = new byte[4];
     this.longBuffer = new byte[8];
     this.position = 0L;
+    AppMethodBeat.o(128508);
   }
   
   public long available()
   {
-    return this.dataSource.getSize() - this.position;
+    AppMethodBeat.i(128517);
+    long l1 = this.dataSource.getSize();
+    long l2 = this.position;
+    AppMethodBeat.o(128517);
+    return l1 - l2;
   }
   
   public void close()
   {
+    AppMethodBeat.i(128519);
     this.dataSource.close();
+    AppMethodBeat.o(128519);
   }
   
   public void readBytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(128515);
     long l = this.position;
     this.position = (this.dataSource.readAt(this.position, paramArrayOfByte, paramInt1, paramInt2) + l);
+    AppMethodBeat.o(128515);
   }
   
   public int readInt()
   {
+    AppMethodBeat.i(128509);
     int i = this.dataSource.readAt(this.position, this.intBuffer, 0, this.intBuffer.length);
     this.position += i;
-    if (i != this.intBuffer.length) {
+    if (i != this.intBuffer.length)
+    {
+      AppMethodBeat.o(128509);
       return -1;
     }
-    return (this.intBuffer[0] & 0xFF) << 24 | (this.intBuffer[1] & 0xFF) << 16 | (this.intBuffer[2] & 0xFF) << 8 | this.intBuffer[3] & 0xFF;
+    i = this.intBuffer[0];
+    int j = this.intBuffer[1];
+    int k = this.intBuffer[2];
+    int m = this.intBuffer[3];
+    AppMethodBeat.o(128509);
+    return (i & 0xFF) << 24 | (j & 0xFF) << 16 | (k & 0xFF) << 8 | m & 0xFF;
   }
   
   public int[] readIntArray(int paramInt)
   {
+    AppMethodBeat.i(128511);
     int[] arrayOfInt = new int[paramInt];
     int i = 0;
     while (i < paramInt)
@@ -55,11 +75,13 @@ public class ParsableInputStreamWrapper
       arrayOfInt[i] = readInt();
       i += 1;
     }
+    AppMethodBeat.o(128511);
     return arrayOfInt;
   }
   
   public void readIntArrayInterleaved(int paramInt, int[]... paramVarArgs)
   {
+    AppMethodBeat.i(128513);
     int i = 0;
     while (i < paramInt)
     {
@@ -72,20 +94,34 @@ public class ParsableInputStreamWrapper
       }
       i += 1;
     }
+    AppMethodBeat.o(128513);
   }
   
   public long readLong()
   {
+    AppMethodBeat.i(128510);
     int i = this.dataSource.readAt(this.position, this.longBuffer, 0, this.longBuffer.length);
     this.position += i;
-    if (i != this.longBuffer.length) {
+    if (i != this.longBuffer.length)
+    {
+      AppMethodBeat.o(128510);
       return -1L;
     }
-    return (this.longBuffer[0] & 0xFF) << 56 | (this.longBuffer[1] & 0xFF) << 48 | (this.longBuffer[2] & 0xFF) << 40 | (this.longBuffer[3] & 0xFF) << 32 | (this.longBuffer[4] & 0xFF) << 24 | (this.longBuffer[5] & 0xFF) << 16 | (this.longBuffer[6] & 0xFF) << 8 | this.longBuffer[7] & 0xFF;
+    long l1 = this.longBuffer[0];
+    long l2 = this.longBuffer[1];
+    long l3 = this.longBuffer[2];
+    long l4 = this.longBuffer[3];
+    long l5 = this.longBuffer[4];
+    long l6 = this.longBuffer[5];
+    long l7 = this.longBuffer[6];
+    long l8 = this.longBuffer[7];
+    AppMethodBeat.o(128510);
+    return (l1 & 0xFF) << 56 | (l2 & 0xFF) << 48 | (l3 & 0xFF) << 40 | (l4 & 0xFF) << 32 | (l5 & 0xFF) << 24 | (l6 & 0xFF) << 16 | (l7 & 0xFF) << 8 | l8 & 0xFF;
   }
   
   public long[] readLongArray(int paramInt)
   {
+    AppMethodBeat.i(128512);
     long[] arrayOfLong = new long[paramInt];
     int i = 0;
     while (i < paramInt)
@@ -93,11 +129,13 @@ public class ParsableInputStreamWrapper
       arrayOfLong[i] = readLong();
       i += 1;
     }
+    AppMethodBeat.o(128512);
     return arrayOfLong;
   }
   
   public void readLongArrayInterleaved(int paramInt, long[]... paramVarArgs)
   {
+    AppMethodBeat.i(128514);
     int i = 0;
     while (i < paramInt)
     {
@@ -110,25 +148,33 @@ public class ParsableInputStreamWrapper
       }
       i += 1;
     }
+    AppMethodBeat.o(128514);
   }
   
   public String readString(int paramInt)
   {
-    byte[] arrayOfByte = new byte[paramInt];
-    readBytes(arrayOfByte, 0, paramInt);
-    return new String(arrayOfByte, Charset.defaultCharset());
+    AppMethodBeat.i(128516);
+    Object localObject = new byte[paramInt];
+    readBytes((byte[])localObject, 0, paramInt);
+    localObject = new String((byte[])localObject, Charset.defaultCharset());
+    AppMethodBeat.o(128516);
+    return localObject;
   }
   
   public long skip(long paramLong)
   {
+    AppMethodBeat.i(128518);
     long l = available();
-    if (l > paramLong)
-    {
+    if (l > paramLong) {
       this.position += paramLong;
-      return paramLong;
     }
-    this.position += l;
-    return l;
+    for (;;)
+    {
+      AppMethodBeat.o(128518);
+      return paramLong;
+      this.position += l;
+      paramLong = l;
+    }
   }
   
   public long tell()

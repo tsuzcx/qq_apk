@@ -6,50 +6,52 @@ import android.text.Selection;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.v;
 import com.tencent.mm.plugin.appbrand.widget.input.d.h;
-import com.tencent.mm.ui.tools.a.c.a;
+import com.tencent.mm.ui.tools.b.c.a;
 import com.tencent.mm.ui.tools.f.a;
-import com.tencent.mm.ui.widget.f;
 import java.lang.ref.WeakReference;
 
-public abstract class c<Input extends EditText,  extends aa>
-  extends f
-  implements z
+public abstract class c<Input extends EditText,  extends ab>
+  extends com.tencent.mm.ui.widget.g
+  implements aa
 {
-  public ae hsV;
-  public ad hsW;
-  public final int hsX;
-  final String hsY;
-  public final WeakReference<q> hsZ;
-  public final View.OnFocusChangeListener hta = new View.OnFocusChangeListener()
+  public ae jkA;
+  public final int jkB;
+  final String jkC;
+  public final WeakReference<v> jkD;
+  public final View.OnFocusChangeListener jkE = new View.OnFocusChangeListener()
   {
     public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
     {
-      c.this.dT(paramAnonymousBoolean);
+      AppMethodBeat.i(123577);
+      c.this.fo(paramAnonymousBoolean);
       if (paramAnonymousBoolean)
       {
-        n.a((q)c.this.hsZ.get(), (aa)c.this.arH());
-        ((aa)c.this.arH()).setInputId(c.this.hsX);
-        n.b((q)c.this.hsZ.get(), c.this);
+        o.a((v)c.this.jkD.get(), (ab)c.this.aQt());
+        ((ab)c.this.aQt()).setInputId(c.this.jkB);
+        o.b((v)c.this.jkD.get(), c.this);
       }
+      AppMethodBeat.o(123577);
     }
   };
-  private final c.a inputExceedMaxLengthCallback = new c.2(this);
+  private final c.a jkF = new c.2(this);
+  public af jkz;
   
-  c(String paramString, q paramq, int paramInt)
+  c(String paramString, v paramv, int paramInt)
   {
-    this.hsY = paramString;
-    this.hsZ = new WeakReference(paramq);
-    this.hsX = paramInt;
+    this.jkC = paramString;
+    this.jkD = new WeakReference(paramv);
+    this.jkB = paramInt;
   }
   
   private void b(Editable paramEditable)
   {
-    ae localae;
-    if (this.hsV != null)
+    af localaf;
+    if (this.jkz != null)
     {
-      localae = this.hsV;
+      localaf = this.jkz;
       if (paramEditable != null) {
         break label34;
       }
@@ -57,17 +59,19 @@ public abstract class c<Input extends EditText,  extends aa>
     label34:
     for (String str = "";; str = paramEditable.toString())
     {
-      localae.a(str, Selection.getSelectionEnd(paramEditable), ae.a.hvK);
+      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.jnX);
       return;
     }
   }
   
+  public abstract boolean FN(String paramString);
+  
   final void a(Editable paramEditable)
   {
-    ae localae;
-    if (this.hsV != null)
+    af localaf;
+    if (this.jkz != null)
     {
-      localae = this.hsV;
+      localaf = this.jkz;
       if (paramEditable != null) {
         break label34;
       }
@@ -75,7 +79,19 @@ public abstract class c<Input extends EditText,  extends aa>
     label34:
     for (String str = "";; str = paramEditable.toString())
     {
-      localae.a(str, Selection.getSelectionEnd(paramEditable), ae.a.hvI);
+      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.jnV);
+      return;
+    }
+  }
+  
+  public final void a(String paramString, Integer paramInteger)
+  {
+    FN(paramString);
+    if (paramInteger == null) {}
+    for (int i = -1;; i = paramInteger.intValue())
+    {
+      paramString = Integer.valueOf(i);
+      dv(paramString.intValue(), paramString.intValue());
       return;
     }
   }
@@ -87,21 +103,64 @@ public abstract class c<Input extends EditText,  extends aa>
     for (;;)
     {
       return false;
-      if (paramh.hyH == null) {
-        paramh.hyH = Integer.valueOf(140);
+      if (paramh.jqR == null) {
+        paramh.jqR = Integer.valueOf(140);
       }
-      while (arH() != null)
+      while (aQt() != null)
       {
-        paramh = o.a(arH()).Ig(paramh.hyH.intValue());
-        paramh.wfM = false;
-        paramh.huj = f.a.wcS;
-        paramh.a(this.inputExceedMaxLengthCallback);
+        paramh = p.a(aQt()).QS(paramh.jqR.intValue());
+        paramh.AyD = false;
+        paramh.jmp = f.a.Avm;
+        paramh.a(this.jkF);
         return true;
-        if (paramh.hyH.intValue() <= 0) {
-          paramh.hyH = Integer.valueOf(2147483647);
+        if (paramh.jqR.intValue() <= 0) {
+          paramh.jqR = Integer.valueOf(2147483647);
         }
       }
     }
+  }
+  
+  public final Editable aQH()
+  {
+    if (aQt() == null) {
+      return null;
+    }
+    return aQt().getEditableText();
+  }
+  
+  public abstract Input aQt();
+  
+  public abstract Rect aQu();
+  
+  public final boolean aQv()
+  {
+    return aQx();
+  }
+  
+  public final Input aQw()
+  {
+    return aQt();
+  }
+  
+  public final boolean aQx()
+  {
+    EditText localEditText = aQt();
+    if (localEditText == null) {
+      return false;
+    }
+    ((ab)localEditText).b(this.jkE);
+    localEditText.removeTextChangedListener(this);
+    ((ab)localEditText).destroy();
+    Object localObject = (v)this.jkD.get();
+    if (localObject == null) {
+      return false;
+    }
+    localObject = (g)((v)localObject).aJk();
+    if (localObject == null) {
+      return false;
+    }
+    ((g)localObject).cI(localEditText);
+    return true;
   }
   
   public final void afterTextChanged(Editable paramEditable)
@@ -109,87 +168,35 @@ public abstract class c<Input extends EditText,  extends aa>
     b(paramEditable);
   }
   
-  public abstract Input arH();
-  
-  public abstract Rect arI();
-  
-  public final boolean arJ()
-  {
-    EditText localEditText = arH();
-    if (localEditText == null) {
-      return false;
-    }
-    ((aa)localEditText).b(this.hta);
-    localEditText.removeTextChangedListener(this);
-    ((aa)localEditText).destroy();
-    Object localObject = (q)this.hsZ.get();
-    if (localObject == null) {
-      return false;
-    }
-    localObject = (g)((q)localObject).agO();
-    if (localObject == null) {
-      return false;
-    }
-    ((g)localObject).cg(localEditText);
-    return true;
-  }
-  
-  public final Editable arK()
-  {
-    if (arH() == null) {
-      return null;
-    }
-    return arH().getEditableText();
-  }
-  
   protected abstract h b(h paramh);
   
-  protected abstract boolean dT(boolean paramBoolean);
-  
-  public Input getWidget()
+  protected final void dv(int paramInt1, int paramInt2)
   {
-    return arH();
+    b.a(aQt(), paramInt1, paramInt2);
   }
   
-  public boolean isAttachedTo(q paramq)
+  protected abstract boolean fo(boolean paramBoolean);
+  
+  public final int getInputId()
   {
-    return (paramq != null) && (paramq == this.hsZ.get());
+    return this.jkB;
   }
   
-  public final void lt(int paramInt)
+  public final boolean n(v paramv)
   {
-    if (this.hsW != null) {
-      this.hsW.mL(paramInt);
+    return (paramv != null) && (paramv == this.jkD.get());
+  }
+  
+  public final void qo(int paramInt)
+  {
+    if (this.jkA != null) {
+      this.jkA.qq(paramInt);
     }
   }
-  
-  public boolean removeSelf()
-  {
-    return arJ();
-  }
-  
-  protected final void setInputSelection(int paramInt1, int paramInt2)
-  {
-    b.a(arH(), paramInt1, paramInt2);
-  }
-  
-  public final void updateValue(String paramString, Integer paramInteger)
-  {
-    xa(paramString);
-    if (paramInteger == null) {}
-    for (int i = -1;; i = paramInteger.intValue())
-    {
-      paramString = Integer.valueOf(i);
-      setInputSelection(paramString.intValue(), paramString.intValue());
-      return;
-    }
-  }
-  
-  public abstract boolean xa(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.account.bind.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.mm.ui.widget.b.c;
 
 final class StartUnbindQQ$2
   implements View.OnClickListener
@@ -13,12 +13,15 @@ final class StartUnbindQQ$2
   
   public final void onClick(View paramView)
   {
-    if (StartUnbindQQ.a(this.feJ) == null)
+    AppMethodBeat.i(13763);
+    if (StartUnbindQQ.a(this.gws) == null)
     {
-      StartUnbindQQ.a(this.feJ, h.a(this.feJ, this.feJ.getString(a.i.setting_unbinding_confirm), null, new StartUnbindQQ.2.1(this), new StartUnbindQQ.2.2(this)));
+      StartUnbindQQ.a(this.gws, h.a(this.gws, this.gws.getString(2131303175), null, new StartUnbindQQ.2.1(this), new StartUnbindQQ.2.2(this)));
+      AppMethodBeat.o(13763);
       return;
     }
-    StartUnbindQQ.a(this.feJ).show();
+    StartUnbindQQ.a(this.gws).show();
+    AppMethodBeat.o(13763);
   }
 }
 

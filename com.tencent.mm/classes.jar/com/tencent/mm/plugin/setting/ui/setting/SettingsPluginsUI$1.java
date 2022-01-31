@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 
 final class SettingsPluginsUI$1
@@ -7,6 +8,7 @@ final class SettingsPluginsUI$1
 {
   SettingsPluginsUI$1()
   {
+    AppMethodBeat.i(127398);
     put("qqmail", Integer.valueOf(3));
     put("newsapp", Integer.valueOf(8));
     put("masssendapp", Integer.valueOf(9));
@@ -15,6 +17,7 @@ final class SettingsPluginsUI$1
     put("facebookapp", Integer.valueOf(16));
     put("gh_43f2581f6fd6", Integer.valueOf(18));
     put("downloaderapp", Integer.valueOf(19));
+    AppMethodBeat.o(127398);
   }
 }
 

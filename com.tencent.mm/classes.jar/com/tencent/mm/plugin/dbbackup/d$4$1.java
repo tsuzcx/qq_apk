@@ -9,14 +9,14 @@ final class d$4$1
   
   public final String preExecute(String paramString)
   {
-    paramString = this.iNt;
+    paramString = this.kUt;
     paramString[0] += 1;
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.dbbackup.d.4.1
  * JD-Core Version:    0.7.0.1
  */

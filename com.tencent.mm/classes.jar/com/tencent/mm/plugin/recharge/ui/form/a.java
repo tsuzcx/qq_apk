@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.recharge.ui.form;
 
 public abstract interface a
 {
-  public abstract boolean bvm();
+  public abstract boolean cfF();
   
-  public abstract boolean bvn();
+  public abstract boolean cfG();
 }
 
 

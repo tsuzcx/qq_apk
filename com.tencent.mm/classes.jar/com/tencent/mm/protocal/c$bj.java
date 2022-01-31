@@ -5,7 +5,7 @@ public final class c$bj
 {
   public c$bj()
   {
-    super("openEmotionPage", "", 10000, false);
+    super("enterEnterpriseChat", "enterEnterpriseChat", 223, false);
   }
 }
 

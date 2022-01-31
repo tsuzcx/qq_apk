@@ -1,62 +1,76 @@
 package com.tencent.mm.plugin.wallet_core.ui.ibg;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.h.a.is;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.iz;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoNewUI;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.c.r;
 import java.util.Iterator;
 import java.util.Set;
 
 public class WalletIbgOrderInfoNewUI
   extends WalletOrderInfoNewUI
 {
-  private Orders qmc;
+  private Orders tVr;
   
-  protected final Orders bWG()
+  public final Orders cVH()
   {
-    return this.qmc;
+    return this.tVr;
   }
   
-  protected final void bWx() {}
+  public final void cVu() {}
   
   public final void done()
   {
-    y.i("MicroMsg.WalletIbgOrderInfoNewUI", "hy: result is not set manly. set to OK");
-    Iterator localIterator = this.qDU.iterator();
+    AppMethodBeat.i(47845);
+    ab.i("MicroMsg.WalletIbgOrderInfoNewUI", "hy: result is not set manly. set to OK");
+    Iterator localIterator = this.uqP.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (!bk.bl(str))
+      if (!bo.isNullOrNil(str))
       {
-        y.d("MicroMsg.WalletIbgOrderInfoNewUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str });
-        g.DQ();
-        g.DO().dJT.a(new com.tencent.mm.wallet_core.c.p(str), 0);
+        ab.d("MicroMsg.WalletIbgOrderInfoNewUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str });
+        g.RM();
+        g.RK().eHt.a(new r(str), 0);
       }
     }
     setResult(-1);
     finish();
+    AppMethodBeat.o(47845);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    this.qmc = WalletIbgOrderInfoUI.qmc;
+    AppMethodBeat.i(47844);
+    this.tVr = WalletIbgOrderInfoUI.tVr;
     super.onCreate(paramBundle);
-    paramBundle = new is();
-    paramBundle.bQT.bQU = 25;
-    paramBundle.bQT.aYY = -1;
-    paramBundle.bQT.bQV = new Intent();
-    a.udP.m(paramBundle);
+    paramBundle = new iz();
+    paramBundle.cyt.requestCode = 25;
+    paramBundle.cyt.bpE = -1;
+    paramBundle.cyt.cyu = new Intent();
+    a.ymk.l(paramBundle);
+    AppMethodBeat.o(47844);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.ibg.WalletIbgOrderInfoNewUI
  * JD-Core Version:    0.7.0.1
  */

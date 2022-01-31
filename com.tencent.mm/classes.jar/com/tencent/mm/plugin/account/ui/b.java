@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.b;
@@ -9,15 +9,15 @@ import com.tencent.mm.ui.applet.SecurityImage.b;
 public abstract class b
   extends SecurityImage.b
 {
-  SecurityImage fex = null;
-  m fkS = null;
-  
-  public final void Ws()
-  {
-    g.Dk().a(a(this.fkS, ""), 0);
-  }
+  m gCj = null;
+  SecurityImage gwg = null;
   
   public abstract m a(m paramm, String paramString);
+  
+  public final void apW()
+  {
+    g.Rc().a(a(this.gCj, ""), 0);
+  }
 }
 
 

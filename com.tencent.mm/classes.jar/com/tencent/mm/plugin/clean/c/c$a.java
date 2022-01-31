@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.clean.c;
 
 import android.database.Cursor;
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.pluginsdk.model.app.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bi;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,10 +24,12 @@ public final class c$a
   private int a(Cursor paramCursor, b paramb)
   {
     int i = 0;
+    AppMethodBeat.i(18671);
     if (!paramCursor.moveToFirst())
     {
-      y.d("MicroMsg.CleanController", "Message count of user:%s is empty", new Object[] { this.username });
+      ab.d("MicroMsg.CleanController", "Message count of user:%s is empty", new Object[] { this.username });
       paramCursor.close();
+      AppMethodBeat.o(18671);
       return 0;
     }
     Object localObject1 = null;
@@ -37,8 +40,8 @@ public final class c$a
     {
       j = i + 1;
       localObject2 = new bi();
-      ((bi)localObject2).d(paramCursor);
-      switch (l.DK(((bi)localObject2).getType()))
+      ((bi)localObject2).convertFrom(paramCursor);
+      switch (l.LD(((bi)localObject2).getType()))
       {
       }
     }
@@ -47,8 +50,8 @@ public final class c$a
       localObject2 = localObject1;
       if (localObject1 != null)
       {
-        paramb.iBu.add(localObject1);
-        paramb.hFz += ((a)localObject1).size;
+        paramb.kGB.add(localObject1);
+        paramb.jyU += ((a)localObject1).size;
         localObject2 = null;
       }
       k = j;
@@ -56,12 +59,13 @@ public final class c$a
       {
         localObject1 = localObject2;
         i = j;
-        if (!c.i(this.iBI)) {
+        if (!c.i(this.kGP)) {
           break;
         }
         k = j;
       }
       paramCursor.close();
+      AppMethodBeat.o(18671);
       return k;
       localObject1 = c.a((bi)localObject2, this.username);
       continue;
@@ -71,24 +75,29 @@ public final class c$a
     }
   }
   
-  public final String Sj()
+  public final String alu()
   {
-    return "username[" + this.username + "]" + super.Sj();
+    AppMethodBeat.i(18669);
+    String str = "username[" + this.username + "]" + super.alu();
+    AppMethodBeat.o(18669);
+    return str;
   }
   
   public final void execute()
   {
-    au.Hx();
-    int m = com.tencent.mm.model.c.Fy().HS(this.username);
+    AppMethodBeat.i(18670);
+    aw.aaz();
+    int m = com.tencent.mm.model.c.YC().TB(this.username);
     if (m <= 0)
     {
-      y.i("MicroMsg.CleanController", "Finish user:%s allMsgCount[%d]", new Object[] { this.username, Integer.valueOf(m) });
+      ab.i("MicroMsg.CleanController", "Finish user:%s allMsgCount[%d]", new Object[] { this.username, Integer.valueOf(m) });
+      AppMethodBeat.o(18670);
       return;
     }
     b localb = new b();
     localb.username = this.username;
-    localb.iBu = new ArrayList();
-    localb.hFz = 0L;
+    localb.kGB = new ArrayList();
+    localb.jyU = 0L;
     Object localObject1 = null;
     i = 0;
     for (;;)
@@ -104,11 +113,11 @@ public final class c$a
       }
       try
       {
-        au.Hx();
+        aw.aaz();
         j = i;
         localObject4 = localObject1;
         localObject3 = localObject1;
-        Cursor localCursor = com.tencent.mm.model.c.Fy().X(this.username, i, 50);
+        Cursor localCursor = com.tencent.mm.model.c.YC().an(this.username, i, 50);
         j = i;
         localObject3 = localCursor;
         if (localCursor != null)
@@ -138,7 +147,7 @@ public final class c$a
             j = k;
             localObject4 = localCursor;
             localObject3 = localCursor;
-            boolean bool = c.i(this.iBI);
+            boolean bool = c.i(this.kGP);
             i = k;
             localObject1 = localCursor;
             if (!bool) {
@@ -160,7 +169,7 @@ public final class c$a
         for (;;)
         {
           localObject3 = localObject4;
-          y.printErrStackTrace("MicroMsg.CleanController", localException, "execute analyse Task error.", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.CleanController", localException, "execute analyse Task error.", new Object[0]);
           i = j;
           if (localObject4 != null)
           {
@@ -172,15 +181,17 @@ public final class c$a
       finally
       {
         if (localObject3 == null) {
-          break label409;
+          break label427;
         }
         localObject3.close();
+        AppMethodBeat.o(18670);
       }
     }
-    if (localb.iBu.size() > 0) {
-      c.j(this.iBI).put(this.username, localb);
+    if (localb.kGB.size() > 0) {
+      c.j(this.kGP).put(this.username, localb);
     }
-    y.i("MicroMsg.CleanController", "Finish user:%s allMsgCount[%d] alreadyHandleCount[%d] isStop[%b] ", new Object[] { this.username, Integer.valueOf(m), Integer.valueOf(i), Boolean.valueOf(c.i(this.iBI)) });
+    ab.i("MicroMsg.CleanController", "Finish user:%s allMsgCount[%d] alreadyHandleCount[%d] isStop[%b] ", new Object[] { this.username, Integer.valueOf(m), Integer.valueOf(i), Boolean.valueOf(c.i(this.kGP)) });
+    AppMethodBeat.o(18670);
   }
 }
 

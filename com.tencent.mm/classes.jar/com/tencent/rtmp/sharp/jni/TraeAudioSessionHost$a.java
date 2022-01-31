@@ -3,6 +3,7 @@ package com.tencent.rtmp.sharp.jni;
 public class TraeAudioSessionHost$a
 {
   public long a;
+  public TraeAudioSession b;
   
   public TraeAudioSessionHost$a(TraeAudioSessionHost paramTraeAudioSessionHost) {}
 }

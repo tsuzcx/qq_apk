@@ -1,5 +1,6 @@
 package com.tencent.map.lib.thread;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadFactory;
@@ -10,13 +11,24 @@ import java.util.concurrent.TimeUnit;
 public class HighThreadExecutor
   implements Executor
 {
-  private final ThreadFactory a = new HighThreadExecutor.1(this);
-  private final BlockingQueue<Runnable> b = new HighThreadExecutor.a(this, 5);
-  private final Executor c = new ThreadPoolExecutor(5, 128, 1L, TimeUnit.SECONDS, this.b, this.a, new ThreadPoolExecutor.DiscardOldestPolicy());
+  private final ThreadFactory a;
+  private final BlockingQueue<Runnable> b;
+  private final Executor c;
+  
+  public HighThreadExecutor()
+  {
+    AppMethodBeat.i(98201);
+    this.a = new HighThreadExecutor.1(this);
+    this.b = new HighThreadExecutor.a(this, 5);
+    this.c = new ThreadPoolExecutor(5, 128, 1L, TimeUnit.SECONDS, this.b, this.a, new ThreadPoolExecutor.DiscardOldestPolicy());
+    AppMethodBeat.o(98201);
+  }
   
   public void execute(Runnable paramRunnable)
   {
+    AppMethodBeat.i(98202);
     this.c.execute(paramRunnable);
+    AppMethodBeat.o(98202);
   }
 }
 

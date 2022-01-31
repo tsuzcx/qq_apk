@@ -1,104 +1,120 @@
 package com.tencent.tencentmap.mapsdk.a;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.widget.FrameLayout;
+import com.tencent.tencentmap.mapsdk.maps.a.ie;
+import com.tencent.tencentmap.mapsdk.maps.a.kx;
 
-public class aa
+public abstract class aa
+  extends FrameLayout
 {
-  private static volatile aa a;
-  private SharedPreferences b;
+  private ah a = null;
+  private ie b;
   
-  private aa(Context paramContext)
+  public aa(Context paramContext, ai paramai)
   {
-    this.b = paramContext.getSharedPreferences("com.tencent.tencentmap.vector.dynamic", 0);
+    super(paramContext);
+    setClickable(true);
+    if (isInEditMode()) {
+      return;
+    }
+    a(paramContext, paramai);
   }
   
-  public static aa a(Context paramContext)
+  private void a(Context paramContext, ai paramai)
   {
-    if (a == null) {}
-    try
+    setBackgroundColor(Color.rgb(222, 215, 214));
+    setEnabled(true);
+    this.a = new ah(this, paramContext, paramai);
+    this.b = this.a.b().b();
+  }
+  
+  public void a()
+  {
+    if (this.a != null) {
+      this.a.p();
+    }
+  }
+  
+  public void a(Object paramObject, int paramInt1, int paramInt2)
+  {
+    if (this.b != null) {
+      this.b.a(paramObject, paramInt1, paramInt2);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.a != null) {
+      this.a.q();
+    }
+  }
+  
+  public void c()
+  {
+    if (this.a != null)
     {
-      if (a == null) {
-        a = new aa(paramContext);
-      }
-      return a;
+      this.a.s();
+      this.a = null;
     }
-    finally {}
   }
   
-  public boolean a(String paramString)
+  public void d()
   {
-    if (paramString == null) {}
-    do
-    {
-      return false;
-      if (this.b.getString("supportVectorOtaVersions", null) == null) {
-        return this.b.edit().putString("supportVectorOtaVersions", paramString).commit();
-      }
-      localObject = a();
-    } while (localObject == null);
-    Object localObject = new LinkedHashSet(Arrays.asList((Object[])localObject));
-    ((Set)localObject).add(paramString);
-    return a((String[])((Set)localObject).toArray(new String[((Set)localObject).size()]));
-  }
-  
-  public boolean a(String[] paramArrayOfString)
-  {
-    int i = 0;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
-      return false;
+    if (this.a != null) {
+      this.a.o();
     }
-    StringBuffer localStringBuffer = new StringBuffer();
-    while (i < paramArrayOfString.length - 1)
-    {
-      localStringBuffer.append(paramArrayOfString[i] + ";");
-      i += 1;
+  }
+  
+  public void e()
+  {
+    if (this.a != null) {
+      this.a.r();
     }
-    localStringBuffer.append(paramArrayOfString[(paramArrayOfString.length - 1)]);
-    return this.b.edit().putString("supportVectorOtaVersions", localStringBuffer.toString()).commit();
   }
   
-  public String[] a()
+  public void f()
   {
-    String str = this.b.getString("supportVectorOtaVersions", null);
-    if (str == null) {
-      return null;
+    if (this.a != null) {
+      this.a.n();
     }
-    return str.split(";");
   }
   
-  public String b()
+  public final ah getMap()
   {
-    return this.b.getString("vectorMapConfigMd5", null);
+    return this.a;
   }
   
-  public boolean b(String paramString)
+  public int[] getMapPadding()
   {
-    return this.b.edit().putString("vectorMapConfigMd5", paramString).commit();
+    return new int[] { getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom() };
   }
   
-  public String c()
+  public abstract int getMapViewType();
+  
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return this.b.getString("vectorMapPoiIconMd5", null);
+    super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.b != null) {
+      this.b.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
   }
   
-  public boolean c(String paramString)
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.b.edit().putString("vectorMapPoiIconMd5", paramString).commit();
+    if ((this.a != null) && (this.a.c() != null) && (this.a.c().k() != null)) {
+      return this.a.c().k().a(paramMotionEvent);
+    }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
-  public String d()
+  public void setOnTop(boolean paramBoolean)
   {
-    return this.b.getString("dynamicMapSdkVectorVersion", "");
-  }
-  
-  public boolean d(String paramString)
-  {
-    return this.b.edit().putString("dynamicMapSdkVectorVersion", paramString).commit();
+    if (this.a != null) {
+      this.a.d(paramBoolean);
+    }
   }
 }
 

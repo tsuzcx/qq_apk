@@ -5,7 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.s;
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
   extends RecyclerView.h
@@ -19,7 +20,8 @@ public final class a
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    int j = RecyclerView.bh(paramView);
+    AppMethodBeat.i(134209);
+    int j = RecyclerView.br(paramView);
     paramRect.top = 0;
     paramRect.bottom = 0;
     if (j == 0) {}
@@ -27,14 +29,15 @@ public final class a
     {
       paramRect.left = i;
       paramRect.right = 0;
-      y.d("MicroMsg.AppBrandRecentViewHalfItemDecoration", "alvinluo getItemOffsets pos: %d, rect: %s", new Object[] { Integer.valueOf(j), String.format("%d, %d, %d, %d", new Object[] { Integer.valueOf(paramRect.left), Integer.valueOf(paramRect.top), Integer.valueOf(paramRect.right), Integer.valueOf(paramRect.bottom) }) });
+      ab.d("MicroMsg.AppBrandRecentViewHalfItemDecoration", "alvinluo getItemOffsets pos: %d, rect: %s", new Object[] { Integer.valueOf(j), String.format("%d, %d, %d, %d", new Object[] { Integer.valueOf(paramRect.left), Integer.valueOf(paramRect.top), Integer.valueOf(paramRect.right), Integer.valueOf(paramRect.bottom) }) });
+      AppMethodBeat.o(134209);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.half.a
  * JD-Core Version:    0.7.0.1
  */

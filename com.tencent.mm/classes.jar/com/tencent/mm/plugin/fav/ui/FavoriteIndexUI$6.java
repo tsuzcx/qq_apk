@@ -1,17 +1,22 @@
 package com.tencent.mm.plugin.fav.ui;
 
 import android.app.Dialog;
-import com.tencent.mm.ui.widget.snackbar.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fav.a.b;
+import com.tencent.mm.sdk.platformtools.al;
+import java.util.List;
 
 final class FavoriteIndexUI$6
   implements Runnable
 {
-  FavoriteIndexUI$6(FavoriteIndexUI paramFavoriteIndexUI, Dialog paramDialog) {}
+  FavoriteIndexUI$6(FavoriteIndexUI paramFavoriteIndexUI, List paramList, Dialog paramDialog) {}
   
   public final void run()
   {
-    this.kbH.dismiss();
-    b.h(this.kee, this.kee.getString(n.i.fav_finish_sent));
+    AppMethodBeat.i(74230);
+    b.bG(this.mwc);
+    al.d(new FavoriteIndexUI.6.1(this));
+    AppMethodBeat.o(74230);
   }
 }
 

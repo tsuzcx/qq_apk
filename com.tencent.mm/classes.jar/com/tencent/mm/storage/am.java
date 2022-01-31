@@ -1,82 +1,116 @@
 package com.tencent.mm.storage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class am
   extends com.tencent.mm.bv.a
 {
-  public int uAs;
-  public LinkedList<Integer> uAt = new LinkedList();
-  public LinkedList<Integer> uAu = new LinkedList();
-  public LinkedList<Integer> uAv = new LinkedList();
-  public LinkedList<Long> uAw = new LinkedList();
-  public LinkedList<Long> uAx = new LinkedList();
-  public LinkedList<Long> uAy = new LinkedList();
+  public int yMB;
+  public LinkedList<Integer> yMC;
+  public LinkedList<Integer> yMD;
+  public LinkedList<Integer> yME;
+  public LinkedList<Long> yMF;
+  public LinkedList<Long> yMG;
+  public LinkedList<Long> yMH;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public am()
   {
+    AppMethodBeat.i(60134);
+    this.yMC = new LinkedList();
+    this.yMD = new LinkedList();
+    this.yME = new LinkedList();
+    this.yMF = new LinkedList();
+    this.yMG = new LinkedList();
+    this.yMH = new LinkedList();
+    AppMethodBeat.o(60134);
+  }
+  
+  public final int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(60135);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.gB(1, this.uAs);
-      paramVarArgs.d(2, 2, this.uAt);
-      paramVarArgs.d(3, 2, this.uAu);
-      paramVarArgs.d(4, 2, this.uAv);
-      paramVarArgs.d(5, 3, this.uAw);
-      paramVarArgs.d(6, 3, this.uAx);
-      paramVarArgs.d(7, 3, this.uAy);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aO(1, this.yMB);
+      paramVarArgs.e(2, 2, this.yMC);
+      paramVarArgs.e(3, 2, this.yMD);
+      paramVarArgs.e(4, 2, this.yME);
+      paramVarArgs.e(5, 3, this.yMF);
+      paramVarArgs.e(6, 3, this.yMG);
+      paramVarArgs.e(7, 3, this.yMH);
+      AppMethodBeat.o(60135);
       return 0;
     }
-    if (paramInt == 1) {
-      return d.a.a.a.gy(1, this.uAs) + 0 + d.a.a.a.c(2, 2, this.uAt) + d.a.a.a.c(3, 2, this.uAu) + d.a.a.a.c(4, 2, this.uAv) + d.a.a.a.c(5, 3, this.uAw) + d.a.a.a.c(6, 3, this.uAx) + d.a.a.a.c(7, 3, this.uAy);
+    if (paramInt == 1)
+    {
+      paramInt = e.a.a.b.b.a.bl(1, this.yMB);
+      int i = e.a.a.a.c(2, 2, this.yMC);
+      int j = e.a.a.a.c(3, 2, this.yMD);
+      int k = e.a.a.a.c(4, 2, this.yME);
+      int m = e.a.a.a.c(5, 3, this.yMF);
+      int n = e.a.a.a.c(6, 3, this.yMG);
+      int i1 = e.a.a.a.c(7, 3, this.yMH);
+      AppMethodBeat.o(60135);
+      return paramInt + 0 + i + j + k + m + n + i1;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.uAt.clear();
-      this.uAu.clear();
-      this.uAv.clear();
-      this.uAw.clear();
-      this.uAx.clear();
-      this.uAy.clear();
-      paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
+      this.yMC.clear();
+      this.yMD.clear();
+      this.yME.clear();
+      this.yMF.clear();
+      this.yMG.clear();
+      this.yMH.clear();
+      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.eqQ();
         }
       }
+      AppMethodBeat.o(60135);
       return 0;
     }
     if (paramInt == 3)
     {
-      d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
       am localam = (am)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
+        AppMethodBeat.o(60135);
         return -1;
       case 1: 
-        localam.uAs = locala.xpH.oD();
+        localam.yMB = locala.CLY.sl();
+        AppMethodBeat.o(60135);
         return 0;
       case 2: 
-        localam.uAt.add(Integer.valueOf(locala.xpH.oD()));
+        localam.yMC.add(Integer.valueOf(locala.CLY.sl()));
+        AppMethodBeat.o(60135);
         return 0;
       case 3: 
-        localam.uAu.add(Integer.valueOf(locala.xpH.oD()));
+        localam.yMD.add(Integer.valueOf(locala.CLY.sl()));
+        AppMethodBeat.o(60135);
         return 0;
       case 4: 
-        localam.uAv.add(Integer.valueOf(locala.xpH.oD()));
+        localam.yME.add(Integer.valueOf(locala.CLY.sl()));
+        AppMethodBeat.o(60135);
         return 0;
       case 5: 
-        localam.uAw.add(Long.valueOf(locala.xpH.oE()));
+        localam.yMF.add(Long.valueOf(locala.CLY.sm()));
+        AppMethodBeat.o(60135);
         return 0;
       case 6: 
-        localam.uAx.add(Long.valueOf(locala.xpH.oE()));
+        localam.yMG.add(Long.valueOf(locala.CLY.sm()));
+        AppMethodBeat.o(60135);
         return 0;
       }
-      localam.uAy.add(Long.valueOf(locala.xpH.oE()));
+      localam.yMH.add(Long.valueOf(locala.CLY.sm()));
+      AppMethodBeat.o(60135);
       return 0;
     }
+    AppMethodBeat.o(60135);
     return -1;
   }
 }

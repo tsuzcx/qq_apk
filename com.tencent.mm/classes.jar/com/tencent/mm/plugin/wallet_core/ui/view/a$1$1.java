@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wallet_core.ui.view;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
 final class a$1$1
@@ -9,7 +10,9 @@ final class a$1$1
   
   public final void run()
   {
-    ((MMActivity)this.qHA.val$context).XM();
+    AppMethodBeat.i(47852);
+    ((MMActivity)this.uwd.val$context).hideVKB();
+    AppMethodBeat.o(47852);
   }
 }
 

@@ -13,9 +13,9 @@ public abstract interface a
   
   public abstract e a(c paramc);
   
-  public abstract int bMo();
+  public abstract int cHn();
   
-  public abstract d bMp();
+  public abstract d cHo();
   
   public abstract byte[] e(int[] paramArrayOfInt, String paramString);
   

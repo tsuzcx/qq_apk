@@ -3,6 +3,7 @@ package com.tencent.ttpic.filter;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.m.f;
 import com.tencent.filter.m.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FabbyFeatherFilter
   extends BaseFilter
@@ -20,11 +21,13 @@ public class FabbyFeatherFilter
   
   public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(82249);
     addParam(new m.n("inputImageTexture2", this.mMaskTex, 33986));
     addParam(new m.f("stepX", this.stepX));
     addParam(new m.f("stepY", this.stepY));
     addParam(new m.f("featherWidthInPixel", this.featherWidthInPixel));
     super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.o(82249);
   }
   
   public void setFeatherWidthInPixel(float paramFloat)
@@ -49,7 +52,7 @@ public class FabbyFeatherFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.ttpic.filter.FabbyFeatherFilter
  * JD-Core Version:    0.7.0.1
  */

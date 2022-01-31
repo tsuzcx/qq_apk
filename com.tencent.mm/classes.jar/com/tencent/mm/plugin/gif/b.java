@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.gif;
 
 import android.graphics.drawable.Drawable;
-import com.tencent.mm.ui.e.b.a;
+import com.tencent.mm.ui.f.b.a;
 
 public abstract class b
   extends Drawable

@@ -1,7 +1,9 @@
 package com.tencent.mm.plugin.monitor;
 
-import com.tencent.mm.hardcoder.WXHardCoderJNI;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.f;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$7
   implements Runnable
@@ -10,41 +12,32 @@ final class b$7
   
   public final void run()
   {
-    long l = Thread.currentThread().getId();
-    String str = Thread.currentThread().getName();
-    boolean bool;
-    if ((WXHardCoderJNI.getCheckEnv()) && (WXHardCoderJNI.isRunning() > 0))
+    AppMethodBeat.i(84523);
+    ab.i("MicroMsg.SubCoreBaseMonitor", "reportECDHAuth USE_ECDH[%s] USE_ML[%b]", new Object[] { Boolean.valueOf(f.whQ), Boolean.valueOf(f.whR) });
+    h localh = h.qsU;
+    if (f.whQ)
     {
-      bool = true;
-      y.i("MicroMsg.SubCoreBaseMonitor", "reportHardCoder tid[%d, %s] running[%b]", new Object[] { Long.valueOf(l), str, Boolean.valueOf(bool) });
-      WXHardCoderJNI.reportIDKey(true, 0, 1, false);
-      WXHardCoderJNI.readServerAddr(true);
-      if ((!WXHardCoderJNI.getCheckEnv()) || (WXHardCoderJNI.isRunning() <= 0)) {
-        break label117;
-      }
-      i = 4;
-      label87:
-      WXHardCoderJNI.reportIDKey(true, i, 1, false);
-      if (!WXHardCoderJNI.isHCEnable()) {
-        break label122;
+      l = 100L;
+      localh.idkeyStat(148L, l, 1L, true);
+      localh = h.qsU;
+      if (!f.whR) {
+        break label95;
       }
     }
-    label117:
-    label122:
-    for (int i = 6;; i = 7)
+    label95:
+    for (long l = 102L;; l = 103L)
     {
-      WXHardCoderJNI.reportIDKey(true, i, 1, false);
+      localh.idkeyStat(148L, l, 1L, true);
+      AppMethodBeat.o(84523);
       return;
-      bool = false;
+      l = 101L;
       break;
-      i = 5;
-      break label87;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.monitor.b.7
  * JD-Core Version:    0.7.0.1
  */

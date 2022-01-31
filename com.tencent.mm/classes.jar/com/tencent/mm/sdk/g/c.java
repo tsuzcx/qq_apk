@@ -1,27 +1,70 @@
 package com.tencent.mm.sdk.g;
 
-import android.os.Build;
-import java.lang.reflect.Method;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.a.c.a;
+import com.tencent.mm.sdk.g.a.e;
 
 public final class c
+  implements com.tencent.mm.sdk.g.a.c
 {
-  public static boolean csB()
+  private e ysf;
+  private c.a ysg;
+  
+  public c(e parame)
   {
-    try
+    this.ysf = parame;
+  }
+  
+  public final void a(c.a parama)
+  {
+    this.ysg = parama;
+  }
+  
+  public final void a(Runnable paramRunnable, String paramString)
+  {
+    AppMethodBeat.i(52532);
+    a(paramRunnable, paramString, 0L);
+    AppMethodBeat.o(52532);
+  }
+  
+  public final void a(Runnable paramRunnable, String paramString, long paramLong)
+  {
+    AppMethodBeat.i(52533);
+    if (0L >= paramLong)
     {
-      boolean bool = ((Boolean)Class.forName("android.os.Build").getMethod("hasSmartBar", new Class[0]).invoke(null, new Object[0])).booleanValue();
-      return bool;
+      this.ysf.b(paramRunnable, paramString);
+      AppMethodBeat.o(52533);
+      return;
     }
-    catch (Exception localException)
+    this.ysf.b(paramRunnable, paramString, paramLong);
+    AppMethodBeat.o(52533);
+  }
+  
+  public final void aj(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(52530);
+    q(paramRunnable, 0L);
+    AppMethodBeat.o(52530);
+  }
+  
+  public final void ak(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(52534);
+    this.ysf.remove(paramRunnable);
+    AppMethodBeat.o(52534);
+  }
+  
+  public final void q(Runnable paramRunnable, long paramLong)
+  {
+    AppMethodBeat.i(52531);
+    if (0L >= paramLong)
     {
-      if (Build.DEVICE.equals("mx2")) {
-        return true;
-      }
-      if ((Build.DEVICE.equals("mx")) || (Build.DEVICE.equals("m9"))) {
-        return false;
-      }
+      this.ysf.execute(paramRunnable);
+      AppMethodBeat.o(52531);
+      return;
     }
-    return false;
+    this.ysf.r(paramRunnable, paramLong);
+    AppMethodBeat.o(52531);
   }
 }
 

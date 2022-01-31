@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.at.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.au.b;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -9,15 +10,17 @@ final class MobileVerifyUI$8$1
 {
   MobileVerifyUI$8$1(MobileVerifyUI.8 param8) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.e(0, this.fpX.fpS.getString(q.j.mobileverify_resend));
-    if (b.mA(this.fpX.fpS.bSe)) {
-      paraml.e(1, this.fpX.fpS.getString(q.j.bind_mcontact_voice_verify_entrance));
+    AppMethodBeat.i(125273);
+    paraml.e(0, this.gHu.gHp.getString(2131301601));
+    if (b.tK(this.gHu.gHp.czF)) {
+      paraml.e(1, this.gHu.gHp.getString(2131297625));
     }
-    if ((MobileVerifyUI.f(this.fpX.fpS) == 2) && (this.fpX.fpS.fpO)) {
-      paraml.e(2, this.fpX.fpS.getString(q.j.regbymobile_reg_qq_reg));
+    if ((MobileVerifyUI.f(this.gHu.gHp) == 2) && (this.gHu.gHp.gHk)) {
+      paraml.e(2, this.gHu.gHp.getString(2131302428));
     }
+    AppMethodBeat.o(125273);
   }
 }
 

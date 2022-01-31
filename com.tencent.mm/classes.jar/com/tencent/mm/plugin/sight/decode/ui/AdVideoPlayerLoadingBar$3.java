@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sight.decode.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class AdVideoPlayerLoadingBar$3
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class AdVideoPlayerLoadingBar$3
   
   public final void run()
   {
-    this.ofC.bBl();
+    AppMethodBeat.i(117917);
+    this.qTQ.cmL();
+    AppMethodBeat.o(117917);
   }
 }
 

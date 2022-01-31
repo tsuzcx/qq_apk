@@ -1,207 +1,314 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import android.os.Environment;
-import com.tencent.luggage.j.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.text.TextUtils;
+import com.tencent.luggage.g.c;
+import com.tencent.luggage.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.vfs.b;
 import java.io.File;
-import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class l
-  implements k
+  extends g
 {
-  public final LinkedList<k> fHm = new LinkedList();
-  private final k fHn = new e();
+  public final String gZQ;
+  private final String gZR;
+  private final String gZS;
+  public final LuggageLocalFileObjectManager gZT;
+  public volatile long gZU;
   
-  public l(String paramString)
+  public l(String paramString1, String paramString2, String paramString3)
   {
-    Object localObject1 = new File(Environment.getExternalStorageDirectory(), "luggage/" + paramString);
-    paramString = this.fHm;
-    Object localObject2 = ((File)localObject1).getAbsolutePath();
-    localObject1 = new j(new File((String)localObject2, "objects/").getAbsolutePath(), "default_obfuscation_key", "wxfile://");
-    localObject2 = new q(new File((String)localObject2, "files/").getAbsolutePath());
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(localObject1);
-    localLinkedList.add(localObject2);
-    paramString.addAll(localLinkedList);
+    AppMethodBeat.i(105374);
+    this.gZU = -1L;
+    this.gZQ = new File(paramString1).getAbsolutePath();
+    this.gZR = paramString2;
+    this.gZS = paramString3;
+    this.gZT = new LuggageLocalFileObjectManager(this.gZQ, this.gZR, this.gZS);
+    AppMethodBeat.o(105374);
   }
   
-  private k rB(String paramString)
+  public final j a(com.tencent.mm.plugin.appbrand.s.j<String> paramj)
   {
-    if (bk.bl(paramString)) {
-      return this.fHn;
-    }
-    Iterator localIterator = this.fHm.iterator();
-    while (localIterator.hasNext())
+    paramj.value = this.gZQ;
+    return j.gZA;
+  }
+  
+  public final j a(File paramFile, String paramString, com.tencent.mm.plugin.appbrand.s.j<String> paramj)
+  {
+    long l1 = 0L;
+    AppMethodBeat.i(105386);
+    if ((paramFile == null) || (!paramFile.exists()))
     {
-      k localk = (k)localIterator.next();
-      if (localk.bs(paramString)) {
-        return localk;
+      paramFile = j.gZB;
+      AppMethodBeat.o(105386);
+      return paramFile;
+    }
+    if ((!TextUtils.isEmpty(paramString)) || (paramj == null))
+    {
+      paramFile = j.gZO;
+      AppMethodBeat.o(105386);
+      return paramFile;
+    }
+    if (this.gZU > 0L)
+    {
+      paramString = this.gZT.awL();
+      long l2 = l1;
+      if (paramString != null)
+      {
+        if (paramString.length <= 0) {
+          l2 = l1;
+        }
+      }
+      else
+      {
+        if (l2 + paramFile.length() <= this.gZU) {
+          break label151;
+        }
+        paramFile = j.gZN;
+        AppMethodBeat.o(105386);
+        return paramFile;
+      }
+      int j = paramString.length;
+      int i = 0;
+      for (;;)
+      {
+        l2 = l1;
+        if (i >= j) {
+          break;
+        }
+        l1 += paramString[i].length();
+        i += 1;
       }
     }
-    return this.fHn;
-  }
-  
-  public final <T extends k> T H(Class<T> paramClass)
-  {
-    Iterator localIterator = this.fHm.iterator();
-    while (localIterator.hasNext())
+    label151:
+    paramString = this.gZT.zo(paramFile.getName());
+    if (paramString != null)
     {
-      k localk = (k)localIterator.next();
-      if (paramClass.isInstance(localk)) {
-        return localk;
+      if (paramString.gZm)
+      {
+        paramj.value = paramString.ctV;
+        paramFile = j.gZA;
+        AppMethodBeat.o(105386);
+        return paramFile;
       }
+      paramj.value = this.gZT.a(paramString).ctV;
+      paramFile = j.gZA;
+      AppMethodBeat.o(105386);
+      return paramFile;
     }
-    return null;
+    paramFile = this.gZT.k(paramFile.getAbsolutePath(), null, false);
+    paramj.value = this.gZT.a(paramFile).ctV;
+    paramFile = j.gZA;
+    AppMethodBeat.o(105386);
+    return paramFile;
   }
   
-  public final h U(String paramString, boolean paramBoolean)
+  public final j a(File paramFile, String paramString, boolean paramBoolean, com.tencent.mm.plugin.appbrand.s.j<String> paramj)
   {
-    return rB(paramString).U(paramString, paramBoolean);
-  }
-  
-  public final h V(String paramString, boolean paramBoolean)
-  {
-    return rB(paramString).V(paramString, paramBoolean);
-  }
-  
-  public final h a(com.tencent.mm.plugin.appbrand.u.k<String> paramk)
-  {
-    Iterator localIterator = this.fHm.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(105385);
+    paramFile = this.gZT.k(paramFile.getAbsolutePath(), paramString, paramBoolean);
+    if (paramFile == null)
     {
-      h localh = ((k)localIterator.next()).a(paramk);
-      if (localh != h.fHi) {
-        return localh;
-      }
+      paramFile = j.gZB;
+      AppMethodBeat.o(105385);
+      return paramFile;
     }
-    return h.fHi;
+    paramj.value = paramFile.ctV;
+    paramFile = j.gZA;
+    AppMethodBeat.o(105385);
+    return paramFile;
   }
   
-  public final h a(File paramFile, String paramString, com.tencent.mm.plugin.appbrand.u.k<String> paramk)
+  public final j a(String paramString, FileStructStat paramFileStructStat)
   {
-    Iterator localIterator = this.fHm.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(105378);
+    paramString = this.gZT.zp(paramString);
+    if ((paramString == null) || (!com.tencent.mm.a.e.cN(paramString.fod)))
     {
-      h localh = ((k)localIterator.next()).a(paramFile, paramString, paramk);
-      if (localh != h.fHi) {
-        return localh;
-      }
+      paramString = j.gZG;
+      AppMethodBeat.o(105378);
+      return paramString;
     }
-    return h.fHi;
-  }
-  
-  public h a(File paramFile, String paramString, boolean paramBoolean, com.tencent.mm.plugin.appbrand.u.k<String> paramk)
-  {
-    Iterator localIterator = this.fHm.iterator();
-    while (localIterator.hasNext())
+    if (paramFileStructStat == null)
     {
-      h localh = ((k)localIterator.next()).a(paramFile, paramString, paramBoolean, paramk);
-      if (localh != h.fHi) {
-        return localh;
-      }
+      paramString = j.gZB;
+      AppMethodBeat.o(105378);
+      return paramString;
     }
-    return h.fHi;
-  }
-  
-  public final h a(String paramString, FileStructStat paramFileStructStat)
-  {
-    return rB(paramString).a(paramString, paramFileStructStat);
-  }
-  
-  public h a(String paramString, com.tencent.mm.plugin.appbrand.u.k<List<f>> paramk)
-  {
-    return rB(paramString).a(paramString, paramk);
-  }
-  
-  public final h a(String paramString, File paramFile, boolean paramBoolean)
-  {
-    return rB(paramString).a(paramString, paramFile, paramBoolean);
-  }
-  
-  public final h a(String paramString, InputStream paramInputStream, boolean paramBoolean)
-  {
-    return rB(paramString).a(paramString, paramInputStream, paramBoolean);
-  }
-  
-  public List<? extends k.a> acI()
-  {
-    return ((j)H(j.class)).fHk.listStoredFiles();
-  }
-  
-  public final h b(String paramString, com.tencent.mm.plugin.appbrand.u.k<ByteBuffer> paramk)
-  {
-    return rB(paramString).b(paramString, paramk);
-  }
-  
-  public final h b(String paramString, File paramFile)
-  {
-    return rB(paramString).b(paramString, paramFile);
-  }
-  
-  public final boolean bs(String paramString)
-  {
-    int i = 0;
-    while (i < 3)
+    if (FileStat.stat(paramString.fod, paramFileStructStat) == 0)
     {
-      if (g.n(paramString, new String[] { "file://", "http://", "https://" }[i])) {
-        return false;
-      }
-      i += 1;
+      paramString = j.gZA;
+      AppMethodBeat.o(105378);
+      return paramString;
     }
-    return true;
+    paramString = j.gZB;
+    AppMethodBeat.o(105378);
+    return paramString;
   }
   
-  public final h g(String paramString, List<n> paramList)
+  public final j a(String paramString, com.tencent.mm.plugin.appbrand.s.j<List<h>> paramj)
   {
-    return rB(paramString).g(paramString, paramList);
+    AppMethodBeat.i(105379);
+    Object localObject = new LinkedList();
+    c.c((List)localObject, this.gZT.awK());
+    c.c((List)localObject, this.gZT.awM());
+    paramString = new LinkedList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      v localv = (v)((Iterator)localObject).next();
+      h localh = new h();
+      localh.fileName = localv.ctV;
+      paramString.add(localh);
+    }
+    paramj.value = paramString;
+    paramString = j.gZA;
+    AppMethodBeat.o(105379);
+    return paramString;
+  }
+  
+  public final File aa(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(105380);
+    paramString = zg(paramString);
+    AppMethodBeat.o(105380);
+    return paramString;
+  }
+  
+  public final List<v> awJ()
+  {
+    AppMethodBeat.i(105387);
+    List localList = this.gZT.awK();
+    AppMethodBeat.o(105387);
+    return localList;
+  }
+  
+  public final j b(String paramString, com.tencent.mm.plugin.appbrand.s.j<ByteBuffer> paramj)
+  {
+    AppMethodBeat.i(105377);
+    paramString = this.gZT.zp(paramString);
+    if ((paramString == null) || (!com.tencent.mm.a.e.cN(paramString.fod)))
+    {
+      paramString = j.gZG;
+      AppMethodBeat.o(105377);
+      return paramString;
+    }
+    paramj.value = k.A(new File(paramString.fod));
+    paramString = j.gZA;
+    AppMethodBeat.o(105377);
+    return paramString;
+  }
+  
+  public final boolean bL(String paramString)
+  {
+    AppMethodBeat.i(105375);
+    boolean bool = bo.nullAsNil(paramString).startsWith(this.gZS);
+    AppMethodBeat.o(105375);
+    return bool;
+  }
+  
+  public final String getRootPath()
+  {
+    return this.gZQ;
   }
   
   public final void initialize()
   {
-    Iterator localIterator = this.fHm.iterator();
-    while (localIterator.hasNext()) {
-      ((k)localIterator.next()).initialize();
+    AppMethodBeat.i(105383);
+    if (!com.tencent.mm.vfs.e.um(this.gZQ)) {
+      d.e("MicroMsg.Luggage.FlattenFileSystem", "Initialization Failed");
     }
-    this.fHn.initialize();
+    AppMethodBeat.o(105383);
   }
   
-  public final void release()
+  public final j zd(String paramString)
   {
-    Iterator localIterator = this.fHm.iterator();
-    while (localIterator.hasNext()) {
-      ((k)localIterator.next()).release();
+    AppMethodBeat.i(105376);
+    paramString = this.gZT.zp(paramString);
+    if ((paramString == null) || (!com.tencent.mm.a.e.cN(paramString.fod)))
+    {
+      paramString = j.gZG;
+      AppMethodBeat.o(105376);
+      return paramString;
     }
-    this.fHn.release();
+    paramString = j.gZA;
+    AppMethodBeat.o(105376);
+    return paramString;
   }
   
-  public final h ru(String paramString)
+  public final j zf(String paramString)
   {
-    return rB(paramString).ru(paramString);
+    AppMethodBeat.i(105389);
+    v localv = this.gZT.zp(paramString);
+    if (localv != null)
+    {
+      com.tencent.mm.vfs.e.deleteFile(localv.fod);
+      if (com.tencent.mm.vfs.e.cN(localv.fod))
+      {
+        d.e("MicroMsg.Luggage.FlattenFileSystem", "delete file failed, id %s, path %s", new Object[] { paramString, localv.fod });
+        paramString = j.gZB;
+        AppMethodBeat.o(105389);
+        return paramString;
+      }
+    }
+    paramString = j.gZA;
+    AppMethodBeat.o(105389);
+    return paramString;
   }
   
-  public final h rv(String paramString)
+  public final File zg(String paramString)
   {
-    return rB(paramString).rv(paramString);
+    AppMethodBeat.i(105381);
+    paramString = this.gZT.zp(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(105381);
+      return null;
+    }
+    paramString = new File(paramString.fod);
+    AppMethodBeat.o(105381);
+    return paramString;
   }
   
-  public final h rw(String paramString)
+  public final b zh(String paramString)
   {
-    return rB(paramString).rw(paramString);
+    AppMethodBeat.i(105384);
+    com.tencent.mm.vfs.e.um(this.gZQ);
+    paramString = new b(this.gZQ + "/" + paramString);
+    AppMethodBeat.o(105384);
+    return paramString;
   }
   
-  public final File rx(String paramString)
+  public final boolean zi(String paramString)
   {
-    return rB(paramString).rx(paramString);
+    AppMethodBeat.i(105388);
+    paramString = this.gZT.zp(paramString);
+    if ((paramString != null) && (paramString.gZm))
+    {
+      AppMethodBeat.o(105388);
+      return true;
+    }
+    AppMethodBeat.o(105388);
+    return false;
   }
   
-  public b ry(String paramString)
+  public final String zm(String paramString)
   {
-    return ((j)H(j.class)).ry(paramString);
+    AppMethodBeat.i(105382);
+    paramString = this.gZT.zp(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(105382);
+      return null;
+    }
+    paramString = paramString.fod;
+    AppMethodBeat.o(105382);
+    return paramString;
   }
 }
 

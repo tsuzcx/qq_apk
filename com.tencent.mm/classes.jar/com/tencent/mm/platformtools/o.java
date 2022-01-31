@@ -2,8 +2,9 @@ package com.tencent.mm.platformtools;
 
 import android.app.Activity;
 import android.widget.Toast;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class o
   extends d
@@ -15,35 +16,45 @@ public final class o
   
   public final boolean b(ag paramag)
   {
-    y.d("MicroMsg.ErrorTextStripleProcessor", "handleOpenUrl");
+    AppMethodBeat.i(124556);
+    ab.d("MicroMsg.ErrorTextStripleProcessor", "handleOpenUrl");
     Toast.makeText(this.activity, paramag.content, 0).show();
+    AppMethodBeat.o(124556);
     return true;
   }
   
   public final boolean c(ag paramag)
   {
-    y.d("MicroMsg.ErrorTextStripleProcessor", "handleIgnore");
+    AppMethodBeat.i(124557);
+    ab.d("MicroMsg.ErrorTextStripleProcessor", "handleIgnore");
     Toast.makeText(this.activity, paramag.content, 0).show();
+    AppMethodBeat.o(124557);
     return true;
   }
   
   public final boolean d(ag paramag)
   {
-    y.d("MicroMsg.ErrorTextStripleProcessor", "handleFalseLast");
+    AppMethodBeat.i(124558);
+    ab.d("MicroMsg.ErrorTextStripleProcessor", "handleFalseLast");
     Toast.makeText(this.activity, paramag.content, 0).show();
+    AppMethodBeat.o(124558);
     return true;
   }
   
   public final boolean e(ag paramag)
   {
-    y.d("MicroMsg.ErrorTextStripleProcessor", "handleFalseCancel");
+    AppMethodBeat.i(124559);
+    ab.d("MicroMsg.ErrorTextStripleProcessor", "handleFalseCancel");
     Toast.makeText(this.activity, paramag.content, 0).show();
+    AppMethodBeat.o(124559);
     return true;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.ErrorTextStripleProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.i(124555);
+    ab.i("MicroMsg.ErrorTextStripleProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.o(124555);
   }
 }
 

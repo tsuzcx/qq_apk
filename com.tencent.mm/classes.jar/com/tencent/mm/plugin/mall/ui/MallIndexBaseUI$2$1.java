@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.mall.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
@@ -17,23 +18,25 @@ final class MallIndexBaseUI$2$1
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     int j = 0;
-    String str1 = this.lZF.npy;
+    AppMethodBeat.i(43166);
+    String str1 = this.ozD.pUM;
     String str2;
-    if (!bk.bl(str1))
+    if (!bo.isNullOrNil(str1))
     {
-      g.DQ();
-      str2 = (String)g.DP().Dz().get(ac.a.urq, null);
-      if (!bk.bl(str2)) {
-        break label89;
+      g.RM();
+      str2 = (String)g.RL().Ru().get(ac.a.yBp, null);
+      if (!bo.isNullOrNil(str2)) {
+        break label99;
       }
     }
     for (paramDialogInterface = str1;; paramDialogInterface = str1)
     {
-      g.DQ();
-      g.DP().Dz().c(ac.a.urq, paramDialogInterface);
-      this.lZH.lZE.a(this.lZF, this.lZG);
+      g.RM();
+      g.RL().Ru().set(ac.a.yBp, paramDialogInterface);
+      this.ozF.ozC.a(this.ozD, this.ozE);
+      AppMethodBeat.o(43166);
       return;
-      label89:
+      label99:
       paramDialogInterface = str2.split(",");
       if ((paramDialogInterface != null) && (paramDialogInterface.length != 0)) {
         break;
@@ -64,7 +67,7 @@ final class MallIndexBaseUI$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.MallIndexBaseUI.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.location.ui;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class k$3
-  implements am.a
+  implements ap.a
 {
   k$3(k paramk) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    this.lGT.bez();
+    AppMethodBeat.i(113532);
+    this.oeg.display();
+    AppMethodBeat.o(113532);
     return false;
   }
 }

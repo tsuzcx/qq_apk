@@ -1,120 +1,87 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.webkit.MimeTypeMap;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.File;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.xweb.WebView;
 
 public final class m
 {
-  public Context context;
-  public String filePath;
-  public int fileType = 0;
-  public Uri uri;
+  private static String wfx = null;
+  private static final String[] wfy = { "", "dynamic_config_recv", "trigger_download", "start_download", "stop_download", "download_finish", "install_finish", "use" };
   
-  public m(Context paramContext, Uri paramUri)
+  private static String fZ(Context paramContext)
   {
-    this.context = paramContext;
-    this.uri = paramUri;
-    if (paramUri == null)
+    AppMethodBeat.i(114678);
+    if (wfx != null)
     {
-      y.e("MicroMsg.UriFileHelper", "initFileTypeAndPath uri == null");
+      paramContext = wfx;
+      AppMethodBeat.o(114678);
+      return paramContext;
+    }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getApplicationInfo(ah.getPackageName(), 128);
+      if ((paramContext != null) && (paramContext.metaData != null))
+      {
+        paramContext = paramContext.metaData.getString("com.tencent.mtt.TBS_CODE");
+        if (!bo.isNullOrNil(paramContext))
+        {
+          wfx = paramContext;
+          AppMethodBeat.o(114678);
+          return paramContext;
+        }
+      }
+    }
+    catch (Exception paramContext)
+    {
+      ab.e("MicroMsg.TBSReporter", "getMetaTbsCode, ex = %s", new Object[] { paramContext.getMessage() });
+      AppMethodBeat.o(114678);
+    }
+    return null;
+  }
+  
+  public static void gK(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(114677);
+    if ((paramInt1 <= 0) || (paramInt1 > 7))
+    {
+      ab.e("MicroMsg.TBSReporter", "report invalid scene = %d", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(114677);
       return;
     }
-    if (this.context == null)
-    {
-      y.e("MicroMsg.UriFileHelper", "initFileTypeAndPath context == null");
-      return;
-    }
-    Object localObject2 = MimeTypeMap.getSingleton();
-    paramContext = this.context.getContentResolver().getType(paramUri);
-    int i;
-    if ((paramContext == null) || (paramContext.length() <= 0))
-    {
-      if (paramUri.getPath() != null)
-      {
-        localObject1 = new File(paramUri.getPath());
-        if (!((File)localObject1).exists())
-        {
-          y.e("MicroMsg.UriFileHelper", "File is null");
-          this.fileType = 0;
-          return;
-        }
-        this.filePath = ((File)localObject1).getAbsolutePath();
-        i = this.filePath.lastIndexOf(".");
-        if ((i == -1) || (i >= this.filePath.length() - 1)) {
-          this.fileType = 1;
-        }
-        while ((paramContext == null) || (this.filePath == null))
-        {
-          this.fileType = 0;
-          return;
-          paramContext = ((MimeTypeMap)localObject2).getMimeTypeFromExtension(this.filePath.substring(i + 1));
-        }
-      }
-    }
-    else
-    {
-      if (this.context != null) {
-        break label219;
-      }
-      y.e("MicroMsg.UriFileHelper", "getFilePath context == null");
-    }
-    for (;;)
-    {
-      this.filePath = ((String)localObject1);
-      break;
-      label219:
-      localObject2 = this.context.getContentResolver().query(paramUri, null, null, null, null);
-      if (localObject2 == null)
-      {
-        y.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor is null");
-      }
-      else if ((((Cursor)localObject2).getCount() <= 0) || (!((Cursor)localObject2).moveToFirst()))
-      {
-        ((Cursor)localObject2).close();
-        y.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor getCount is 0 or moveToFirst fail");
-      }
-      else
-      {
-        i = ((Cursor)localObject2).getColumnIndex("_data");
-        if (i == -1)
-        {
-          ((Cursor)localObject2).close();
-          y.e("MicroMsg.UriFileHelper", "getFilePath : columnIdx is -1, column with columnName = _data does not exist");
-        }
-        else
-        {
-          localObject1 = ((Cursor)localObject2).getString(i);
-          ((Cursor)localObject2).close();
-        }
-      }
-    }
-    if (paramContext.contains("image")) {
-      this.fileType = 3;
-    }
-    for (;;)
-    {
-      y.d("MicroMsg.UriFileHelper", "MimeType[%s], filePath = [%s], fileType = [%s], type = [%s], Uri[%s]", new Object[] { paramContext, this.filePath, Integer.valueOf(this.fileType), paramContext, paramUri.toString() });
-      return;
-      if (paramContext.contains("video")) {
-        this.fileType = 4;
-      } else if (paramContext.contains("audio")) {
-        this.fileType = 5;
-      } else if (paramContext.contains("mm_item")) {
-        this.fileType = 2;
-      } else {
-        this.fileType = 1;
-      }
-    }
+    hf(paramInt1, paramInt2);
+    Object localObject = ah.getContext();
+    int i = WebView.getInstalledTbsCoreVersion((Context)localObject);
+    int j = WebView.getTbsSDKVersion((Context)localObject);
+    localObject = fZ((Context)localObject);
+    h.qsU.a(11633, false, true, new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(i), Integer.valueOf(j), localObject, Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(114677);
+  }
+  
+  private static void hf(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(114679);
+    ab.i("MicroMsg.TBSReporter", "logSceneDetail, scene = %d_%s, errcode = %d", new Object[] { Integer.valueOf(paramInt1), wfy[paramInt1], Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(114679);
+  }
+  
+  public static void kS(int paramInt)
+  {
+    AppMethodBeat.i(114676);
+    gK(paramInt, 0);
+    AppMethodBeat.o(114676);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.m
  * JD-Core Version:    0.7.0.1
  */

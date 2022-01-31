@@ -10,13 +10,13 @@ final class Transition$3
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.su.end();
+    this.tv.end();
     paramAnimator.removeListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.transition.Transition.3
  * JD-Core Version:    0.7.0.1
  */

@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.wallet.pay.a.c;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 
 public final class b
-  extends e
+  extends f
 {
   public b(PayInfo paramPayInfo, int paramInt)
   {
     super(paramPayInfo, paramInt);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
-    return 1543;
+    return 1891;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/sns_ff_qrcodeusebindquery";
+    return "/cgi-bin/mmpay-bin/tenpay/dc_qrcodeusebindquery";
   }
 }
 

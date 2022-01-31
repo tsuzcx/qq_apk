@@ -2,10 +2,18 @@ package com.tencent.mm.plugin.game.model;
 
 public final class o$a
 {
-  public boolean kOO;
-  public boolean kPR;
-  public int orientation;
-  public String url;
+  public int cFj;
+  public String nof;
+  public n nol;
+  public int position;
+  
+  public o$a(n paramn, String paramString, int paramInt)
+  {
+    this.nol = paramn;
+    this.nof = paramString;
+    this.cFj = 1301;
+    this.position = paramInt;
+  }
 }
 
 

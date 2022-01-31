@@ -9,56 +9,56 @@ import java.util.Arrays;
 public final class a$n
   extends e
 {
-  private static volatile n[] wGE;
-  public byte[] bQK = g.aUP;
-  public int wGF = 0;
-  public int wGG = 0;
+  private static volatile n[] Bef;
+  public int Beg = 0;
+  public int Beh = 0;
+  public byte[] cyk = g.bhf;
   
   public a$n()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
-  public static n[] cNY()
+  public static n[] dTK()
   {
-    if (wGE == null) {}
-    synchronized (c.aUH)
+    if (Bef == null) {}
+    synchronized (c.bgX)
     {
-      if (wGE == null) {
-        wGE = new n[0];
+      if (Bef == null) {
+        Bef = new n[0];
       }
-      return wGE;
+      return Bef;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.wGF != 0) {
-      paramb.aL(1, this.wGF);
+    if (this.Beg != 0) {
+      paramb.bj(1, this.Beg);
     }
-    if (!Arrays.equals(this.bQK, g.aUP)) {
-      paramb.b(2, this.bQK);
+    if (!Arrays.equals(this.cyk, g.bhf)) {
+      paramb.b(2, this.cyk);
     }
-    if (this.wGG != 0) {
-      paramb.aM(3, this.wGG);
+    if (this.Beh != 0) {
+      paramb.bk(3, this.Beh);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
-    if (this.wGF != 0) {
-      i = j + b.aN(1, this.wGF);
+    if (this.Beg != 0) {
+      i = j + b.bl(1, this.Beg);
     }
     j = i;
-    if (!Arrays.equals(this.bQK, g.aUP)) {
-      j = i + b.c(2, this.bQK);
+    if (!Arrays.equals(this.cyk, g.bhf)) {
+      j = i + b.c(2, this.cyk);
     }
     i = j;
-    if (this.wGG != 0) {
-      i = j + b.aO(3, this.wGG);
+    if (this.Beh != 0) {
+      i = j + b.bm(3, this.Beh);
     }
     return i;
   }

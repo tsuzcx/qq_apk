@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:weightSum="1.0"
+<LinearLayout android:id="@id/a0b" android:paddingLeft="@dimen/g2" style="@style/mp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/t7" android:gravity="left" android:id="@id/yg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="0.2" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/ta" android:gravity="right" android:layout_gravity="right" android:id="@id/yh" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="0.8" />
+    <com.tencent.mm.ui.base.MaskLayout android:id="@id/a0c" android:layout_width="@dimen/lv" android:layout_height="@dimen/lv">
+        <ImageView android:id="@id/k6" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+    </com.tencent.mm.ui.base.MaskLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/abk" android:paddingRight="@dimen/g2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/m0" android:layout_weight="1.0">
+        <com.tencent.mm.ui.base.EllipsizeTextView android:ellipsize="end" android:gravity="center|left" android:id="@id/a0d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ne" android:text="{nick}" android:singleLine="true" style="@style/ln" />
+    </LinearLayout>
 </LinearLayout>

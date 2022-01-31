@@ -2,9 +2,6 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.content.pm.ResolveInfo;
-import android.support.v7.a.a.f;
-import android.support.v7.a.a.g;
-import android.support.v7.a.a.h;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -16,37 +13,37 @@ import android.widget.TextView;
 final class ActivityChooserView$a
   extends BaseAdapter
 {
-  d YY;
-  private int YZ = 4;
-  boolean Za;
-  private boolean Zb;
-  private boolean Zc;
+  c ZJ;
+  private int ZK = 4;
+  boolean ZL;
+  private boolean ZM;
+  private boolean ZN;
   
   ActivityChooserView$a(ActivityChooserView paramActivityChooserView) {}
   
-  public final void bk(int paramInt)
+  public final void bi(int paramInt)
   {
-    if (this.YZ != paramInt)
+    if (this.ZK != paramInt)
     {
-      this.YZ = paramInt;
+      this.ZK = paramInt;
       notifyDataSetChanged();
     }
   }
   
-  public final void f(boolean paramBoolean1, boolean paramBoolean2)
+  public final void g(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.Za != paramBoolean1) || (this.Zb != paramBoolean2))
+    if ((this.ZL != paramBoolean1) || (this.ZM != paramBoolean2))
     {
-      this.Za = paramBoolean1;
-      this.Zb = paramBoolean2;
+      this.ZL = paramBoolean1;
+      this.ZM = paramBoolean2;
       notifyDataSetChanged();
     }
   }
   
-  public final int fY()
+  public final int gV()
   {
-    int k = this.YZ;
-    this.YZ = 2147483647;
+    int k = this.ZK;
+    this.ZK = 2147483647;
     int m = View.MeasureSpec.makeMeasureSpec(0, 0);
     int n = View.MeasureSpec.makeMeasureSpec(0, 0);
     int i1 = getCount();
@@ -60,24 +57,24 @@ final class ActivityChooserView$a
       j = Math.max(j, localView.getMeasuredWidth());
       i += 1;
     }
-    this.YZ = k;
+    this.ZK = k;
     return j;
   }
   
   public final int getCount()
   {
-    int j = this.YY.fO();
+    int j = this.ZJ.gI();
     int i = j;
-    if (!this.Za)
+    if (!this.ZL)
     {
       i = j;
-      if (this.YY.fP() != null) {
+      if (this.ZJ.gJ() != null) {
         i = j - 1;
       }
     }
-    j = Math.min(i, this.YZ);
+    j = Math.min(i, this.ZK);
     i = j;
-    if (this.Zc) {
+    if (this.ZN) {
       i = j + 1;
     }
     return i;
@@ -93,14 +90,14 @@ final class ActivityChooserView$a
       return null;
     }
     int i = paramInt;
-    if (!this.Za)
+    if (!this.ZL)
     {
       i = paramInt;
-      if (this.YY.fP() != null) {
+      if (this.ZJ.gJ() != null) {
         i = paramInt + 1;
       }
     }
-    return this.YY.bh(i);
+    return this.ZJ.be(i);
   }
   
   public final long getItemId(int paramInt)
@@ -110,7 +107,7 @@ final class ActivityChooserView$a
   
   public final int getItemViewType(int paramInt)
   {
-    if ((this.Zc) && (paramInt == getCount() - 1)) {
+    if ((this.ZN) && (paramInt == getCount() - 1)) {
       return 1;
     }
     return 0;
@@ -131,27 +128,27 @@ final class ActivityChooserView$a
       }
       else
       {
-        localView = LayoutInflater.from(this.YX.getContext()).inflate(a.g.abc_activity_chooser_view_list_item, paramViewGroup, false);
+        localView = LayoutInflater.from(this.ZI.getContext()).inflate(2130968591, paramViewGroup, false);
         localView.setId(1);
-        ((TextView)localView.findViewById(a.f.title)).setText(this.YX.getContext().getString(a.h.abc_activity_chooser_view_see_all));
+        ((TextView)localView.findViewById(2131820680)).setText(this.ZI.getContext().getString(2131296260));
       }
       return localView;
     }
     if (paramView != null)
     {
       localView = paramView;
-      if (paramView.getId() == a.f.list_item) {}
+      if (paramView.getId() == 2131820928) {}
     }
     else
     {
-      localView = LayoutInflater.from(this.YX.getContext()).inflate(a.g.abc_activity_chooser_view_list_item, paramViewGroup, false);
+      localView = LayoutInflater.from(this.ZI.getContext()).inflate(2130968591, paramViewGroup, false);
     }
-    paramView = this.YX.getContext().getPackageManager();
-    paramViewGroup = (ImageView)localView.findViewById(a.f.icon);
+    paramView = this.ZI.getContext().getPackageManager();
+    paramViewGroup = (ImageView)localView.findViewById(2131820929);
     ResolveInfo localResolveInfo = (ResolveInfo)getItem(paramInt);
     paramViewGroup.setImageDrawable(localResolveInfo.loadIcon(paramView));
-    ((TextView)localView.findViewById(a.f.title)).setText(localResolveInfo.loadLabel(paramView));
-    if ((this.Za) && (paramInt == 0) && (this.Zb))
+    ((TextView)localView.findViewById(2131820680)).setText(localResolveInfo.loadLabel(paramView));
+    if ((this.ZL) && (paramInt == 0) && (this.ZM))
     {
       localView.setActivated(true);
       return localView;
@@ -167,9 +164,9 @@ final class ActivityChooserView$a
   
   public final void setShowFooterView(boolean paramBoolean)
   {
-    if (this.Zc != paramBoolean)
+    if (this.ZN != paramBoolean)
     {
-      this.Zc = paramBoolean;
+      this.ZN = paramBoolean;
       notifyDataSetChanged();
     }
   }

@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.modelbiz;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import java.net.URLEncoder;
 
@@ -12,10 +13,18 @@ public class HandleScanResult$Req
   
   public boolean checkArgs()
   {
-    if ((this.scanResult == null) || (this.scanResult.length() < 0)) {}
-    while (this.scanResult.length() > 10240) {
+    AppMethodBeat.i(128236);
+    if ((this.scanResult == null) || (this.scanResult.length() < 0))
+    {
+      AppMethodBeat.o(128236);
       return false;
     }
+    if (this.scanResult.length() > 10240)
+    {
+      AppMethodBeat.o(128236);
+      return false;
+    }
+    AppMethodBeat.o(128236);
     return true;
   }
   
@@ -26,8 +35,10 @@ public class HandleScanResult$Req
   
   public void toBundle(Bundle paramBundle)
   {
+    AppMethodBeat.i(128237);
     super.toBundle(paramBundle);
     paramBundle.putString("_wxapi_scan_qrcode_result", URLEncoder.encode(this.scanResult));
+    AppMethodBeat.o(128237);
   }
 }
 

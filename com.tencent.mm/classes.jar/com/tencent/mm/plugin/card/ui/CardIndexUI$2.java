@@ -2,37 +2,39 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.a.rc;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.so;
 import com.tencent.mm.plugin.card.d.b;
-import com.tencent.mm.protocal.c.lx;
-import com.tencent.mm.protocal.c.ma;
+import com.tencent.mm.protocal.protobuf.ou;
+import com.tencent.mm.protocal.protobuf.oy;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class CardIndexUI$2
   implements View.OnClickListener
 {
-  CardIndexUI$2(CardIndexUI paramCardIndexUI, ma paramma) {}
+  CardIndexUI$2(CardIndexUI paramCardIndexUI, oy paramoy) {}
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.CardIndexUI", "click header view: %s", new Object[] { Integer.valueOf(this.ivm.sIa) });
-    if (this.ivm.sIa == 1)
+    AppMethodBeat.i(88522);
+    ab.i("MicroMsg.CardIndexUI", "click header view: %s", new Object[] { Integer.valueOf(this.kwq.wFH) });
+    if (this.kwq.wFH == 1)
     {
-      b.a(this.ivl, this.ivm.sIb, 0);
+      b.a(this.kwp, this.kwq.wFI, 0);
+      AppMethodBeat.o(88522);
       return;
     }
-    if (this.ivm.sIa == 2)
+    if (this.kwq.wFH == 2)
     {
-      paramView = new rc();
-      paramView.caq.userName = this.ivm.sIc.qhq;
-      paramView.caq.cas = bk.aM(this.ivm.sIc.qhr, "");
-      paramView.caq.scene = 1028;
-      a.udP.m(paramView);
-      return;
+      paramView = new so();
+      paramView.cIQ.userName = this.kwq.wFJ.ugl;
+      paramView.cIQ.cIS = bo.bf(this.kwq.wFJ.uaL, "");
+      paramView.cIQ.scene = 1028;
+      a.ymk.l(paramView);
     }
-    int i = this.ivm.sIa;
+    AppMethodBeat.o(88522);
   }
 }
 

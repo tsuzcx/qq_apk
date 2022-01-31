@@ -2,22 +2,22 @@ package com.tencent.recovery.wx.util;
 
 class MyByteArray
 {
-  public byte[] buc;
-  public int bud = 0;
+  public byte[] bVo;
+  public int bVp = 0;
   
   public MyByteArray()
   {
-    this.buc = new byte[256];
+    this.bVo = new byte[256];
   }
   
   public MyByteArray(byte paramByte)
   {
-    this.buc = new byte[] { paramByte };
+    this.bVo = new byte[] { paramByte };
   }
   
   public MyByteArray(byte[] paramArrayOfByte)
   {
-    this.buc = paramArrayOfByte;
+    this.bVo = paramArrayOfByte;
   }
 }
 

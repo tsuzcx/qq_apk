@@ -1,13 +1,18 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class i$1
-  implements e.a
+  implements Runnable
 {
-  public i$1(i parami, int paramInt) {}
+  public i$1(i parami) {}
   
-  public final boolean a(z paramz)
+  public final void run()
   {
-    return (paramz.getWidget() != null) && (((aa)paramz.getWidget()).getInputId() == this.grq);
+    AppMethodBeat.i(141601);
+    this.jlw.aQI();
+    i.b(this.jlw);
+    AppMethodBeat.o(141601);
   }
 }
 

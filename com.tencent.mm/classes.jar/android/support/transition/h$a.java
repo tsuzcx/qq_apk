@@ -8,9 +8,28 @@ import android.widget.FrameLayout;
 final class h$a
   implements j.a
 {
+  public final void A(View paramView)
+  {
+    paramView = h.z(paramView);
+    if (paramView != null)
+    {
+      paramView.rL -= 1;
+      if (paramView.rL <= 0)
+      {
+        Object localObject = paramView.getParent();
+        if ((localObject instanceof ViewGroup))
+        {
+          localObject = (ViewGroup)localObject;
+          ((ViewGroup)localObject).endViewTransition(paramView);
+          ((ViewGroup)localObject).removeView(paramView);
+        }
+      }
+    }
+  }
+  
   public final j a(View paramView, ViewGroup paramViewGroup, Matrix paramMatrix)
   {
-    h localh = h.w(paramView);
+    h localh = h.z(paramView);
     paramMatrix = localh;
     if (localh == null)
     {
@@ -32,32 +51,13 @@ final class h$a
       paramMatrix = new h(paramView);
       paramViewGroup.addView(paramMatrix);
     }
-    paramMatrix.qO += 1;
+    paramMatrix.rL += 1;
     return paramMatrix;
-  }
-  
-  public final void x(View paramView)
-  {
-    paramView = h.w(paramView);
-    if (paramView != null)
-    {
-      paramView.qO -= 1;
-      if (paramView.qO <= 0)
-      {
-        Object localObject = paramView.getParent();
-        if ((localObject instanceof ViewGroup))
-        {
-          localObject = (ViewGroup)localObject;
-          ((ViewGroup)localObject).endViewTransition(paramView);
-          ((ViewGroup)localObject).removeView(paramView);
-        }
-      }
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.transition.h.a
  * JD-Core Version:    0.7.0.1
  */

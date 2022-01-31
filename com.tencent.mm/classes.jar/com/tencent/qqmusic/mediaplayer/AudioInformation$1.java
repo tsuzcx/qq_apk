@@ -2,13 +2,17 @@ package com.tencent.qqmusic.mediaplayer;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AudioInformation$1
   implements Parcelable.Creator<AudioInformation>
 {
   public final AudioInformation createFromParcel(Parcel paramParcel)
   {
-    return new AudioInformation(paramParcel);
+    AppMethodBeat.i(105571);
+    paramParcel = new AudioInformation(paramParcel);
+    AppMethodBeat.o(105571);
+    return paramParcel;
   }
   
   public final AudioInformation[] newArray(int paramInt)

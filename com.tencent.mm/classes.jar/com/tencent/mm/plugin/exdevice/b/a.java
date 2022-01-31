@@ -1,114 +1,65 @@
 package com.tencent.mm.plugin.exdevice.b;
 
-import android.os.Message;
-import com.tencent.mm.plugin.exdevice.i.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.j.b;
-import com.tencent.mm.plugin.exdevice.model.ae;
-import com.tencent.mm.plugin.exdevice.model.c;
 import com.tencent.mm.plugin.exdevice.service.i.a;
-import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
   extends i.a
 {
-  private static a jsQ = null;
+  private static a lCq = null;
   
-  public static a aLf()
+  public static a bps()
   {
-    if (jsQ == null)
+    AppMethodBeat.i(19037);
+    if (lCq == null)
     {
-      a locala = new a();
-      jsQ = locala;
+      locala = new a();
+      lCq = locala;
+      AppMethodBeat.o(19037);
       return locala;
     }
-    return jsQ;
+    a locala = lCq;
+    AppMethodBeat.o(19037);
+    return locala;
   }
   
   public final void a(int paramInt1, long paramLong, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(19038);
     if (paramArrayOfByte == null)
     {
       i = -1;
-      y.i("MicroMsg.exdevice.DeviceRequestManager", "------onDeviceRequest------ errorCode = %d, deviceId = %d, seq = %d, cmdId = %d, datalength = %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(i) });
+      ab.i("MicroMsg.exdevice.DeviceRequestManager", "------onDeviceRequest------ errorCode = %d, deviceId = %d, seq = %d, cmdId = %d, datalength = %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(i) });
       if (paramInt1 != 0) {
-        break label98;
+        break label110;
       }
     }
     String str;
-    label98:
+    label110:
     for (int i = 1;; i = 0)
     {
-      com.tencent.mm.plugin.exdevice.g.a.k(paramLong, i);
-      str = b.aq(paramArrayOfByte);
+      com.tencent.mm.plugin.exdevice.g.a.p(paramLong, i);
+      str = b.aO(paramArrayOfByte);
       if (str != null) {
-        break label104;
+        break label116;
       }
-      y.e("MicroMsg.exdevice.DeviceRequestManager", "dataIn is null!!! Just leave without process data");
+      ab.e("MicroMsg.exdevice.DeviceRequestManager", "dataIn is null!!! Just leave without process data");
+      AppMethodBeat.o(19038);
       return;
       i = paramArrayOfByte.length;
       break;
     }
-    label104:
-    y.d("MicroMsg.exdevice.DeviceRequestManager", "data dump = %s", new Object[] { str });
-    new a(paramInt1, paramLong, paramInt2, paramInt3, paramArrayOfByte).aLg();
-  }
-  
-  private static final class a
-    implements Runnable
-  {
-    private long hXu = -1L;
-    private int jsR = -1;
-    private int jsS = -1;
-    private int jsT;
-    private byte[] jsU = null;
-    
-    public a(int paramInt1, long paramLong, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
-    {
-      this.hXu = paramLong;
-      this.jsR = paramInt2;
-      this.jsS = paramInt3;
-      this.jsU = paramArrayOfByte;
-      this.jsT = paramInt1;
-    }
-    
-    public final void aLg()
-    {
-      if ((this.hXu == -1L) || (this.jsR == -1) || (this.jsS == -1))
-      {
-        y.e("MicroMsg.RequestProcessThread", "invalid arguments, do nothing");
-        return;
-      }
-      switch (this.jsS)
-      {
-      default: 
-        y.e("MicroMsg.RequestProcessThread", "unknown cmdId = %d, do nothing", new Object[] { Integer.valueOf(this.jsS) });
-        return;
-      case 10001: 
-        localObject = new e(this.jsT, this.hXu, this.jsR, this.jsS, this.jsU);
-        u.aMn().a((ae)localObject);
-        return;
-      case 10002: 
-        localObject = k.aLm();
-        int i = this.jsT;
-        f localf = new f(this.hXu, this.jsR, this.jsS, this.jsU);
-        ((k)localObject).mHandler.obtainMessage(1, i, 0, localf).sendToTarget();
-        return;
-      }
-      Object localObject = new com.tencent.mm.plugin.exdevice.i.f(this.jsT, this.hXu, this.jsR, this.jsS, this.jsU);
-      u.aMn().a((ae)localObject);
-    }
-    
-    public final void run()
-    {
-      aLg();
-    }
+    label116:
+    ab.d("MicroMsg.exdevice.DeviceRequestManager", "data dump = %s", new Object[] { str });
+    new a.a(paramInt1, paramLong, paramInt2, paramInt3, paramArrayOfByte).bpt();
+    AppMethodBeat.o(19038);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,11 @@ package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.profile.ui.newbizinfo.c.c;
+import com.tencent.mm.pluginsdk.h;
 
 final class NewBizInfoFollowPreference$2
   implements View.OnClickListener
@@ -12,12 +15,14 @@ final class NewBizInfoFollowPreference$2
   
   public final void onClick(View paramView)
   {
-    if ((NewBizInfoFollowPreference.a(this.mZG) != null) && ((NewBizInfoFollowPreference.a(this.mZG) instanceof b)))
+    AppMethodBeat.i(23850);
+    if ((NewBizInfoFollowPreference.a(this.pDx) != null) && ((NewBizInfoFollowPreference.a(this.pDx) instanceof b)))
     {
-      paramView = (b)NewBizInfoFollowPreference.a(this.mZG);
-      ((com.tencent.mm.pluginsdk.g)com.tencent.mm.kernel.g.r(com.tencent.mm.pluginsdk.g.class)).a(paramView.mVy, paramView.mZy, paramView.dnp, true, new b.3(paramView));
-      c.cg(paramView.dnp.field_username, 1000);
+      paramView = (b)NewBizInfoFollowPreference.a(this.pDx);
+      ((h)g.E(h.class)).a(paramView.pyd, paramView.pDe, paramView.contact, true, new b.7(paramView));
+      c.cZ(paramView.contact.field_username, 1000);
     }
+    AppMethodBeat.o(23850);
   }
 }
 

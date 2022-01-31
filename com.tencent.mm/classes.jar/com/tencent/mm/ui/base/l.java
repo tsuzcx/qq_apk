@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,104 +19,126 @@ import java.util.List;
 public final class l
   implements ContextMenu
 {
-  public CharSequence VF;
+  public CharSequence Wu;
   private Context mContext;
-  public List<MenuItem> uWD;
+  public List<MenuItem> zkW;
   
   public l(Context paramContext)
   {
+    AppMethodBeat.i(112533);
     this.mContext = paramContext;
-    this.uWD = new ArrayList();
+    this.zkW = new ArrayList();
+    AppMethodBeat.o(112533);
   }
   
   public final MenuItem a(int paramInt1, int paramInt2, CharSequence paramCharSequence)
   {
+    AppMethodBeat.i(112547);
     m localm = new m(this.mContext, paramInt1, 0);
     paramCharSequence = new SpannableString(paramCharSequence);
     paramCharSequence.setSpan(new ForegroundColorSpan(paramInt2), 0, paramCharSequence.length(), 0);
     localm.setTitle(paramCharSequence);
-    this.uWD.add(localm);
+    this.zkW.add(localm);
+    AppMethodBeat.o(112547);
     return localm;
   }
   
   public final MenuItem a(int paramInt1, CharSequence paramCharSequence, int paramInt2)
   {
+    AppMethodBeat.i(112546);
     m localm = new m(this.mContext, paramInt1, 0);
     localm.setTitle(paramCharSequence);
     localm.setIcon(paramInt2);
-    this.uWD.add(localm);
+    this.zkW.add(localm);
+    AppMethodBeat.o(112546);
     return localm;
   }
   
   public final MenuItem a(int paramInt1, CharSequence paramCharSequence, int paramInt2, boolean paramBoolean)
   {
+    AppMethodBeat.i(112542);
     m localm = new m(this.mContext, paramInt1, 0);
     localm.setTitle(paramCharSequence);
     localm.setIcon(paramInt2);
-    localm.tMS = paramBoolean;
-    this.uWD.add(localm);
+    localm.xTc = paramBoolean;
+    this.zkW.add(localm);
+    AppMethodBeat.o(112542);
     return localm;
   }
   
   public final MenuItem a(int paramInt, CharSequence paramCharSequence, Drawable paramDrawable)
   {
+    AppMethodBeat.i(112540);
     m localm = new m(this.mContext, paramInt, 0);
     localm.setTitle(paramCharSequence);
     localm.setIcon(paramDrawable);
-    this.uWD.add(localm);
+    this.zkW.add(localm);
+    AppMethodBeat.o(112540);
     return localm;
   }
   
   public final MenuItem a(int paramInt, CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
+    AppMethodBeat.i(112543);
     m localm = new m(this.mContext, paramInt, 0);
     localm.setTitle(paramCharSequence1);
-    localm.kDf = paramCharSequence2;
+    localm.mZb = paramCharSequence2;
     localm.setIcon(0);
-    this.uWD.add(localm);
+    this.zkW.add(localm);
+    AppMethodBeat.o(112543);
     return localm;
   }
   
   public final MenuItem a(int paramInt, CharSequence paramCharSequence1, CharSequence paramCharSequence2, Drawable paramDrawable, boolean paramBoolean)
   {
+    AppMethodBeat.i(112541);
     m localm = new m(this.mContext, paramInt, 0);
     localm.setTitle(paramCharSequence1);
-    localm.kDf = paramCharSequence2;
+    localm.mZb = paramCharSequence2;
     localm.setIcon(paramDrawable);
-    localm.tMS = paramBoolean;
-    this.uWD.add(localm);
+    localm.xTc = paramBoolean;
+    this.zkW.add(localm);
+    AppMethodBeat.o(112541);
     return localm;
   }
   
   public final MenuItem add(int paramInt)
   {
+    AppMethodBeat.i(112537);
     m localm = new m(this.mContext, 0, 0);
     localm.setTitle(paramInt);
-    this.uWD.add(localm);
+    this.zkW.add(localm);
+    AppMethodBeat.o(112537);
     return localm;
   }
   
   public final MenuItem add(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(112535);
     m localm = new m(this.mContext, paramInt2, paramInt1);
     localm.setTitle(paramInt4);
-    this.uWD.add(localm);
+    this.zkW.add(localm);
+    AppMethodBeat.o(112535);
     return localm;
   }
   
   public final MenuItem add(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
   {
+    AppMethodBeat.i(112536);
     m localm = new m(this.mContext, paramInt2, paramInt1);
     localm.setTitle(paramCharSequence);
-    this.uWD.add(localm);
+    this.zkW.add(localm);
+    AppMethodBeat.o(112536);
     return localm;
   }
   
   public final MenuItem add(CharSequence paramCharSequence)
   {
+    AppMethodBeat.i(112538);
     m localm = new m(this.mContext, 0, 0);
     localm.setTitle(paramCharSequence);
-    this.uWD.add(localm);
+    this.zkW.add(localm);
+    AppMethodBeat.o(112538);
     return localm;
   }
   
@@ -144,69 +167,91 @@ public final class l
     return null;
   }
   
-  public final MenuItem ak(int paramInt1, int paramInt2, int paramInt3)
+  public final MenuItem aw(int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(112539);
     m localm = new m(this.mContext, paramInt1, 0);
     localm.setTitle(paramInt2);
     localm.setIcon(paramInt3);
-    this.uWD.add(localm);
+    this.zkW.add(localm);
+    AppMethodBeat.o(112539);
     return localm;
-  }
-  
-  public final boolean cAR()
-  {
-    return this.uWD.size() == 0;
   }
   
   public final void clear()
   {
-    Iterator localIterator = this.uWD.iterator();
+    AppMethodBeat.i(112550);
+    Iterator localIterator = this.zkW.iterator();
     while (localIterator.hasNext())
     {
       MenuItem localMenuItem = (MenuItem)localIterator.next();
-      ((m)localMenuItem).uWG = null;
+      ((m)localMenuItem).zkZ = null;
       ((m)localMenuItem).setOnMenuItemClickListener(null);
     }
-    this.uWD.clear();
-    this.VF = null;
+    this.zkW.clear();
+    this.Wu = null;
+    AppMethodBeat.o(112550);
   }
   
   public final void clearHeader() {}
   
   public final void close() {}
   
+  public final boolean dEc()
+  {
+    AppMethodBeat.i(112534);
+    if (this.zkW.size() == 0)
+    {
+      AppMethodBeat.o(112534);
+      return true;
+    }
+    AppMethodBeat.o(112534);
+    return false;
+  }
+  
   public final MenuItem e(int paramInt, CharSequence paramCharSequence)
   {
+    AppMethodBeat.i(112545);
     m localm = new m(this.mContext, paramInt, 0);
     localm.setTitle(paramCharSequence);
-    this.uWD.add(localm);
+    this.zkW.add(localm);
+    AppMethodBeat.o(112545);
     return localm;
+  }
+  
+  public final MenuItem f(MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(112548);
+    if (paramMenuItem != null) {
+      this.zkW.add(paramMenuItem);
+    }
+    AppMethodBeat.o(112548);
+    return null;
   }
   
   public final MenuItem findItem(int paramInt)
   {
-    Iterator localIterator = this.uWD.iterator();
+    AppMethodBeat.i(112551);
+    Iterator localIterator = this.zkW.iterator();
     while (localIterator.hasNext())
     {
       MenuItem localMenuItem = (MenuItem)localIterator.next();
-      if (localMenuItem.getItemId() == paramInt) {
+      if (localMenuItem.getItemId() == paramInt)
+      {
+        AppMethodBeat.o(112551);
         return localMenuItem;
       }
     }
+    AppMethodBeat.o(112551);
     return null;
-  }
-  
-  public final MenuItem fq(int paramInt1, int paramInt2)
-  {
-    m localm = new m(this.mContext, paramInt1, 0);
-    localm.setTitle(paramInt2);
-    this.uWD.add(localm);
-    return localm;
   }
   
   public final MenuItem getItem(int paramInt)
   {
-    return (MenuItem)this.uWD.get(paramInt);
+    AppMethodBeat.i(112553);
+    MenuItem localMenuItem = (MenuItem)this.zkW.get(paramInt);
+    AppMethodBeat.o(112553);
+    return localMenuItem;
   }
   
   public final boolean hasVisibleItems()
@@ -214,12 +259,14 @@ public final class l
     return false;
   }
   
-  public final MenuItem i(MenuItem paramMenuItem)
+  public final MenuItem hx(int paramInt1, int paramInt2)
   {
-    if (paramMenuItem != null) {
-      this.uWD.add(paramMenuItem);
-    }
-    return null;
+    AppMethodBeat.i(112544);
+    m localm = new m(this.mContext, paramInt1, 0);
+    localm.setTitle(paramInt2);
+    this.zkW.add(localm);
+    AppMethodBeat.o(112544);
+    return localm;
   }
   
   public final boolean isShortcutKey(int paramInt, KeyEvent paramKeyEvent)
@@ -241,8 +288,9 @@ public final class l
   
   public final void removeItem(int paramInt)
   {
+    AppMethodBeat.i(112549);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.uWD.iterator();
+    Iterator localIterator = this.zkW.iterator();
     while (localIterator.hasNext())
     {
       MenuItem localMenuItem = (MenuItem)localIterator.next();
@@ -250,7 +298,8 @@ public final class l
         localArrayList.add(localMenuItem);
       }
     }
-    this.uWD.removeAll(localArrayList);
+    this.zkW.removeAll(localArrayList);
+    AppMethodBeat.o(112549);
   }
   
   public final void setGroupCheckable(int paramInt, boolean paramBoolean1, boolean paramBoolean2) {}
@@ -271,11 +320,15 @@ public final class l
   
   public final ContextMenu setHeaderTitle(int paramInt)
   {
-    Object localObject = this;
-    if (paramInt > 0) {
-      localObject = setHeaderTitle(this.mContext.getString(paramInt));
+    AppMethodBeat.i(112554);
+    if (paramInt > 0)
+    {
+      ContextMenu localContextMenu = setHeaderTitle(this.mContext.getString(paramInt));
+      AppMethodBeat.o(112554);
+      return localContextMenu;
     }
-    return localObject;
+    AppMethodBeat.o(112554);
+    return this;
   }
   
   public final ContextMenu setHeaderTitle(CharSequence paramCharSequence)
@@ -283,7 +336,7 @@ public final class l
     if (paramCharSequence == null) {
       return this;
     }
-    this.VF = paramCharSequence;
+    this.Wu = paramCharSequence;
     return this;
   }
   
@@ -296,10 +349,15 @@ public final class l
   
   public final int size()
   {
-    if (this.uWD == null) {
+    AppMethodBeat.i(112552);
+    if (this.zkW == null)
+    {
+      AppMethodBeat.o(112552);
       return 0;
     }
-    return this.uWD.size();
+    int i = this.zkW.size();
+    AppMethodBeat.o(112552);
+    return i;
   }
 }
 

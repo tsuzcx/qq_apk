@@ -1,58 +1,72 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.os.Looper;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.contact.a.e;
-import com.tencent.mm.ui.contact.o;
+import com.tencent.mm.ui.contact.a.d;
+import com.tencent.mm.ui.contact.m;
+import com.tencent.mm.ui.contact.p;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class a
-  extends o
+  extends p
   implements com.tencent.mm.plugin.fts.a.l
 {
-  ad dnp;
-  ah handler = new ah(Looper.getMainLooper());
-  private List<com.tencent.mm.plugin.fts.a.a.l> kxO;
+  ad contact;
+  ak handler;
+  private List<com.tencent.mm.plugin.fts.a.a.l> mTC;
   
-  public a(com.tencent.mm.ui.contact.l paraml, int paramInt, ad paramad)
+  public a(m paramm, int paramInt, ad paramad)
   {
-    super(paraml, new ArrayList(), true, false, paramInt);
-    this.dnp = paramad;
+    super(paramm, new ArrayList(), true, false, paramInt);
+    AppMethodBeat.i(23330);
+    this.handler = new ak(Looper.getMainLooper());
+    this.contact = paramad;
+    AppMethodBeat.o(23330);
   }
   
   public final void b(j paramj)
   {
-    if (paramj.aYY == 0) {
-      this.kxO = paramj.kxh;
+    AppMethodBeat.i(23333);
+    if (paramj.bpE == 0) {
+      this.mTC = paramj.mSW;
     }
     notifyDataSetChanged();
+    AppMethodBeat.o(23333);
   }
   
   public final int getCount()
   {
-    if (this.kxO == null) {
+    AppMethodBeat.i(23332);
+    if (this.mTC == null)
+    {
+      AppMethodBeat.o(23332);
       return 0;
     }
-    return this.kxO.size();
+    int i = this.mTC.size();
+    AppMethodBeat.o(23332);
+    return i;
   }
   
-  protected final com.tencent.mm.ui.contact.a.a jQ(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a mM(int paramInt)
   {
-    e locale = new e(paramInt);
-    au.Hx();
-    locale.dnp = c.Fw().abl(((com.tencent.mm.plugin.fts.a.a.l)this.kxO.get(paramInt)).kwg);
-    return locale;
+    AppMethodBeat.i(23331);
+    d locald = new d(paramInt, this.contact);
+    aw.aaz();
+    locald.contact = c.YA().arw(((com.tencent.mm.plugin.fts.a.a.l)this.mTC.get(paramInt)).mRV);
+    AppMethodBeat.o(23331);
+    return locald;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.a
  * JD-Core Version:    0.7.0.1
  */

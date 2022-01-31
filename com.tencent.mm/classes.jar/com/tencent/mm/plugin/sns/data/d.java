@@ -1,15 +1,25 @@
 package com.tencent.mm.plugin.sns.data;
 
-import com.tencent.mm.protocal.c.btd;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.cds;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  public ConcurrentHashMap<String, CharSequence> omT = new ConcurrentHashMap();
+  public ConcurrentHashMap<String, CharSequence> rbi;
   
-  public final void a(btd parambtd, CharSequence paramCharSequence)
+  public d()
   {
-    this.omT.put(parambtd.tJu + "-" + parambtd.tJx + "-" + parambtd.kVs, paramCharSequence);
+    AppMethodBeat.i(35794);
+    this.rbi = new ConcurrentHashMap();
+    AppMethodBeat.o(35794);
+  }
+  
+  public final void a(cds paramcds, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(35795);
+    this.rbi.put(paramcds.xNY + "-" + paramcds.xOa + "-" + paramcds.ntu, paramCharSequence);
+    AppMethodBeat.o(35795);
   }
 }
 

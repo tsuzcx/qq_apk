@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MobileLoginOrForceReg$16
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class MobileLoginOrForceReg$16
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    MobileLoginOrForceReg.n(this.fpa);
+    AppMethodBeat.i(125217);
+    MobileLoginOrForceReg.p(this.gGw);
+    AppMethodBeat.o(125217);
     return false;
   }
 }

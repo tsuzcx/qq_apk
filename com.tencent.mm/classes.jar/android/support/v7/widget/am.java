@@ -1,157 +1,257 @@
 package android.support.v7.widget;
 
+import android.content.res.AssetFileDescriptor;
 import android.content.res.ColorStateList;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Outline;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.Rect;
-import android.graphics.RectF;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
+import android.content.res.XmlResourceParser;
+import android.graphics.Movie;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
+import java.io.InputStream;
 
-final class am
-  extends Drawable
+class am
+  extends Resources
 {
-  float aiA;
-  boolean aiB = false;
-  boolean aiC = true;
-  ColorStateList aiD;
-  float aix;
-  private final RectF aiy;
-  private final Rect aiz;
-  private final Paint mPaint;
-  private PorterDuffColorFilter mQ;
-  private ColorStateList nM;
-  private PorterDuff.Mode nN = PorterDuff.Mode.SRC_IN;
+  private final Resources mResources;
   
-  am(ColorStateList paramColorStateList, float paramFloat)
+  public am(Resources paramResources)
   {
-    this.aix = paramFloat;
-    this.mPaint = new Paint(5);
-    e(paramColorStateList);
-    this.aiy = new RectF();
-    this.aiz = new Rect();
+    super(paramResources.getAssets(), paramResources.getDisplayMetrics(), paramResources.getConfiguration());
+    this.mResources = paramResources;
   }
   
-  private PorterDuffColorFilter b(ColorStateList paramColorStateList, PorterDuff.Mode paramMode)
+  public XmlResourceParser getAnimation(int paramInt)
   {
-    if ((paramColorStateList == null) || (paramMode == null)) {
-      return null;
+    return this.mResources.getAnimation(paramInt);
+  }
+  
+  public boolean getBoolean(int paramInt)
+  {
+    return this.mResources.getBoolean(paramInt);
+  }
+  
+  public int getColor(int paramInt)
+  {
+    return this.mResources.getColor(paramInt);
+  }
+  
+  public ColorStateList getColorStateList(int paramInt)
+  {
+    return this.mResources.getColorStateList(paramInt);
+  }
+  
+  public Configuration getConfiguration()
+  {
+    return this.mResources.getConfiguration();
+  }
+  
+  public float getDimension(int paramInt)
+  {
+    return this.mResources.getDimension(paramInt);
+  }
+  
+  public int getDimensionPixelOffset(int paramInt)
+  {
+    return this.mResources.getDimensionPixelOffset(paramInt);
+  }
+  
+  public int getDimensionPixelSize(int paramInt)
+  {
+    return this.mResources.getDimensionPixelSize(paramInt);
+  }
+  
+  public DisplayMetrics getDisplayMetrics()
+  {
+    return this.mResources.getDisplayMetrics();
+  }
+  
+  public Drawable getDrawable(int paramInt)
+  {
+    return this.mResources.getDrawable(paramInt);
+  }
+  
+  public Drawable getDrawable(int paramInt, Resources.Theme paramTheme)
+  {
+    return this.mResources.getDrawable(paramInt, paramTheme);
+  }
+  
+  public Drawable getDrawableForDensity(int paramInt1, int paramInt2)
+  {
+    return this.mResources.getDrawableForDensity(paramInt1, paramInt2);
+  }
+  
+  public Drawable getDrawableForDensity(int paramInt1, int paramInt2, Resources.Theme paramTheme)
+  {
+    return this.mResources.getDrawableForDensity(paramInt1, paramInt2, paramTheme);
+  }
+  
+  public float getFraction(int paramInt1, int paramInt2, int paramInt3)
+  {
+    return this.mResources.getFraction(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public int getIdentifier(String paramString1, String paramString2, String paramString3)
+  {
+    return this.mResources.getIdentifier(paramString1, paramString2, paramString3);
+  }
+  
+  public int[] getIntArray(int paramInt)
+  {
+    return this.mResources.getIntArray(paramInt);
+  }
+  
+  public int getInteger(int paramInt)
+  {
+    return this.mResources.getInteger(paramInt);
+  }
+  
+  public XmlResourceParser getLayout(int paramInt)
+  {
+    return this.mResources.getLayout(paramInt);
+  }
+  
+  public Movie getMovie(int paramInt)
+  {
+    return this.mResources.getMovie(paramInt);
+  }
+  
+  public String getQuantityString(int paramInt1, int paramInt2)
+  {
+    return this.mResources.getQuantityString(paramInt1, paramInt2);
+  }
+  
+  public String getQuantityString(int paramInt1, int paramInt2, Object... paramVarArgs)
+  {
+    return this.mResources.getQuantityString(paramInt1, paramInt2, paramVarArgs);
+  }
+  
+  public CharSequence getQuantityText(int paramInt1, int paramInt2)
+  {
+    return this.mResources.getQuantityText(paramInt1, paramInt2);
+  }
+  
+  public String getResourceEntryName(int paramInt)
+  {
+    return this.mResources.getResourceEntryName(paramInt);
+  }
+  
+  public String getResourceName(int paramInt)
+  {
+    return this.mResources.getResourceName(paramInt);
+  }
+  
+  public String getResourcePackageName(int paramInt)
+  {
+    return this.mResources.getResourcePackageName(paramInt);
+  }
+  
+  public String getResourceTypeName(int paramInt)
+  {
+    return this.mResources.getResourceTypeName(paramInt);
+  }
+  
+  public String getString(int paramInt)
+  {
+    return this.mResources.getString(paramInt);
+  }
+  
+  public String getString(int paramInt, Object... paramVarArgs)
+  {
+    return this.mResources.getString(paramInt, paramVarArgs);
+  }
+  
+  public String[] getStringArray(int paramInt)
+  {
+    return this.mResources.getStringArray(paramInt);
+  }
+  
+  public CharSequence getText(int paramInt)
+  {
+    return this.mResources.getText(paramInt);
+  }
+  
+  public CharSequence getText(int paramInt, CharSequence paramCharSequence)
+  {
+    return this.mResources.getText(paramInt, paramCharSequence);
+  }
+  
+  public CharSequence[] getTextArray(int paramInt)
+  {
+    return this.mResources.getTextArray(paramInt);
+  }
+  
+  public void getValue(int paramInt, TypedValue paramTypedValue, boolean paramBoolean)
+  {
+    this.mResources.getValue(paramInt, paramTypedValue, paramBoolean);
+  }
+  
+  public void getValue(String paramString, TypedValue paramTypedValue, boolean paramBoolean)
+  {
+    this.mResources.getValue(paramString, paramTypedValue, paramBoolean);
+  }
+  
+  public void getValueForDensity(int paramInt1, int paramInt2, TypedValue paramTypedValue, boolean paramBoolean)
+  {
+    this.mResources.getValueForDensity(paramInt1, paramInt2, paramTypedValue, paramBoolean);
+  }
+  
+  public XmlResourceParser getXml(int paramInt)
+  {
+    return this.mResources.getXml(paramInt);
+  }
+  
+  public TypedArray obtainAttributes(AttributeSet paramAttributeSet, int[] paramArrayOfInt)
+  {
+    return this.mResources.obtainAttributes(paramAttributeSet, paramArrayOfInt);
+  }
+  
+  public TypedArray obtainTypedArray(int paramInt)
+  {
+    return this.mResources.obtainTypedArray(paramInt);
+  }
+  
+  public InputStream openRawResource(int paramInt)
+  {
+    return this.mResources.openRawResource(paramInt);
+  }
+  
+  public InputStream openRawResource(int paramInt, TypedValue paramTypedValue)
+  {
+    return this.mResources.openRawResource(paramInt, paramTypedValue);
+  }
+  
+  public AssetFileDescriptor openRawResourceFd(int paramInt)
+  {
+    return this.mResources.openRawResourceFd(paramInt);
+  }
+  
+  public void parseBundleExtra(String paramString, AttributeSet paramAttributeSet, Bundle paramBundle)
+  {
+    this.mResources.parseBundleExtra(paramString, paramAttributeSet, paramBundle);
+  }
+  
+  public void parseBundleExtras(XmlResourceParser paramXmlResourceParser, Bundle paramBundle)
+  {
+    this.mResources.parseBundleExtras(paramXmlResourceParser, paramBundle);
+  }
+  
+  public void updateConfiguration(Configuration paramConfiguration, DisplayMetrics paramDisplayMetrics)
+  {
+    super.updateConfiguration(paramConfiguration, paramDisplayMetrics);
+    if (this.mResources != null) {
+      this.mResources.updateConfiguration(paramConfiguration, paramDisplayMetrics);
     }
-    return new PorterDuffColorFilter(paramColorStateList.getColorForState(getState(), 0), paramMode);
-  }
-  
-  public final void draw(Canvas paramCanvas)
-  {
-    Paint localPaint = this.mPaint;
-    if ((this.mQ != null) && (localPaint.getColorFilter() == null)) {
-      localPaint.setColorFilter(this.mQ);
-    }
-    for (int i = 1;; i = 0)
-    {
-      paramCanvas.drawRoundRect(this.aiy, this.aix, this.aix, localPaint);
-      if (i != 0) {
-        localPaint.setColorFilter(null);
-      }
-      return;
-    }
-  }
-  
-  final void e(ColorStateList paramColorStateList)
-  {
-    ColorStateList localColorStateList = paramColorStateList;
-    if (paramColorStateList == null) {
-      localColorStateList = ColorStateList.valueOf(0);
-    }
-    this.aiD = localColorStateList;
-    this.mPaint.setColor(this.aiD.getColorForState(getState(), this.aiD.getDefaultColor()));
-  }
-  
-  public final int getOpacity()
-  {
-    return -3;
-  }
-  
-  public final void getOutline(Outline paramOutline)
-  {
-    paramOutline.setRoundRect(this.aiz, this.aix);
-  }
-  
-  final void h(Rect paramRect)
-  {
-    Rect localRect = paramRect;
-    if (paramRect == null) {
-      localRect = getBounds();
-    }
-    this.aiy.set(localRect.left, localRect.top, localRect.right, localRect.bottom);
-    this.aiz.set(localRect);
-    if (this.aiB)
-    {
-      float f1 = an.c(this.aiA, this.aix, this.aiC);
-      float f2 = an.d(this.aiA, this.aix, this.aiC);
-      this.aiz.inset((int)Math.ceil(f2), (int)Math.ceil(f1));
-      this.aiy.set(this.aiz);
-    }
-  }
-  
-  public final boolean isStateful()
-  {
-    return ((this.nM != null) && (this.nM.isStateful())) || ((this.aiD != null) && (this.aiD.isStateful())) || (super.isStateful());
-  }
-  
-  protected final void onBoundsChange(Rect paramRect)
-  {
-    super.onBoundsChange(paramRect);
-    h(paramRect);
-  }
-  
-  protected final boolean onStateChange(int[] paramArrayOfInt)
-  {
-    int i = this.aiD.getColorForState(paramArrayOfInt, this.aiD.getDefaultColor());
-    if (i != this.mPaint.getColor()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool) {
-        this.mPaint.setColor(i);
-      }
-      if ((this.nM == null) || (this.nN == null)) {
-        break;
-      }
-      this.mQ = b(this.nM, this.nN);
-      return true;
-    }
-    return bool;
-  }
-  
-  public final void setAlpha(int paramInt)
-  {
-    this.mPaint.setAlpha(paramInt);
-  }
-  
-  public final void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.mPaint.setColorFilter(paramColorFilter);
-  }
-  
-  public final void setTintList(ColorStateList paramColorStateList)
-  {
-    this.nM = paramColorStateList;
-    this.mQ = b(this.nM, this.nN);
-    invalidateSelf();
-  }
-  
-  public final void setTintMode(PorterDuff.Mode paramMode)
-  {
-    this.nN = paramMode;
-    this.mQ = b(this.nM, this.nN);
-    invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v7.widget.am
  * JD-Core Version:    0.7.0.1
  */

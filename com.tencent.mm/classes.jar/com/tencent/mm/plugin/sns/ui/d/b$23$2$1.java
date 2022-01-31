@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.sns.ui.d;
 
-import com.tencent.mm.plugin.sns.ui.a.b.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.ui.b.b.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$23$2$1
   implements b.a
@@ -10,8 +11,10 @@ final class b$23$2$1
   
   public final void onAnimationEnd()
   {
-    y.i("MicroMsg.TimelineClickListener", "detail click animation end");
-    this.pps.ppq.ppl.pox = null;
+    AppMethodBeat.i(40274);
+    ab.i("MicroMsg.TimelineClickListener", "detail click animation end");
+    this.skk.ski.skd.sjp = null;
+    AppMethodBeat.o(40274);
   }
 }
 

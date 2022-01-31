@@ -2,9 +2,7 @@ package com.tencent.mm.plugin.walletlock.fingerprint.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.walletlock.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FingerprintWalletLockUI$13
   implements DialogInterface.OnClickListener
@@ -13,8 +11,10 @@ final class FingerprintWalletLockUI$13
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.FingerprintWalletLockUI", "alvinluo user click set gesture");
-    ((b)g.r(b.class)).b(this.qPy, 1, 4);
+    AppMethodBeat.i(51510);
+    this.uEG.finish();
+    FingerprintWalletLockUI.cXH();
+    AppMethodBeat.o(51510);
   }
 }
 

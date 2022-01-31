@@ -3,6 +3,7 @@ package com.tencent.ttpic.model;
 import android.graphics.PointF;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 public class CameraActItem
@@ -36,10 +37,12 @@ public class CameraActItem
   
   public void reset() {}
   
-  public void update(h paramh, long paramLong, List<List<PointF>> paramList, List<float[]> paramList1, double paramDouble, int paramInt)
+  public void update(h paramh, long paramLong, List<List<PointF>> paramList, List<float[]> paramList1, int paramInt)
   {
-    super.update(paramh, paramLong, paramList, paramList1, paramDouble, paramInt);
+    AppMethodBeat.i(83453);
+    super.update(paramh, paramLong, paramList, paramList1, paramInt);
     this.cameraFrame = paramh;
+    AppMethodBeat.o(83453);
   }
 }
 

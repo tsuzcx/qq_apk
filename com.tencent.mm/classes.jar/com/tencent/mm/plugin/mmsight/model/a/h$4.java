@@ -1,8 +1,7 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
-import android.media.MediaCodec;
-import com.tencent.mm.f.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class h$4
   implements Runnable
@@ -11,25 +10,18 @@ final class h$4
   
   public final void run()
   {
+    AppMethodBeat.i(76577);
     try
     {
-      if (this.mje.eIF != null)
-      {
-        y.i("MicroMsg.MMSightAACMediaCodecRecorder", "delay to stop encoder");
-        this.mje.eIF.stop();
-        this.mje.eIF.release();
-        this.mje.eIF = null;
-      }
-      if ((this.mje.bCc != null) && (!this.mje.miS))
-      {
-        this.mje.bCc.uh();
-        this.mje.bCc = null;
-      }
+      h.a(this.oJl);
+      this.oJl.bRo();
+      AppMethodBeat.o(76577);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.MMSightAACMediaCodecRecorder", "delay to stop encoder error: %s", new Object[] { localException.getMessage() });
+      ab.e("MicroMsg.MMSightAACMediaCodecRecorder", "delay to stop encoder error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(76577);
     }
   }
 }

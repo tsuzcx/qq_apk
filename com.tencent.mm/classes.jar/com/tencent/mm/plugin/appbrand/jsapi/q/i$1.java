@@ -1,39 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.q;
 
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.b;
-import com.tencent.mm.plugin.appbrand.g.c;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.y;
 
 final class i$1
-  extends g.b
+  implements a
 {
-  i$1(i parami, c paramc) {}
+  i$1(i parami) {}
   
-  public final void a(g.c paramc)
+  public final boolean a(c paramc, ai paramai)
   {
-    y.i("MicroMsg.JsApiSetKeepScreenOn", "onPause");
-    if (i.a(this.gCl)) {
-      i.b(this.gCl);
-    }
+    return true;
   }
   
-  public final void onDestroy()
+  public final int aEB()
   {
-    y.i("MicroMsg.JsApiSetKeepScreenOn", "onDestroy");
-    if (i.a(this.gCl)) {
-      i.b(this.gCl);
-    }
-    g.b(this.ggH.getAppId(), this);
+    return 20;
   }
   
-  public final void onResume()
+  public final int aEC()
   {
-    y.i("MicroMsg.JsApiSetKeepScreenOn", "onResume");
-    if (i.access$200()) {
-      i.c(this.gCl);
-    }
+    return 200;
   }
 }
 

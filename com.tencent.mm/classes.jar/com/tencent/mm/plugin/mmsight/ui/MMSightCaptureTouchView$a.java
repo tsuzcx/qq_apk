@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 public abstract interface MMSightCaptureTouchView$a
 {
-  public abstract void O(float paramFloat1, float paramFloat2);
+  public abstract void T(float paramFloat1, float paramFloat2);
   
-  public abstract void Zh();
+  public abstract void asQ();
   
-  public abstract void Zi();
+  public abstract void asR();
   
-  public abstract void aKT();
+  public abstract void bpb();
 }
 
 

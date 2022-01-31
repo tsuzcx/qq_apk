@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <size android:width="1.0dip" />
-    <solid android:color="@color/tc" />
-</shape>
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/ajj" />
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/ajj" />
+    <item android:state_enabled="false" android:drawable="@drawable/aji" />
+    <item android:state_focused="false" android:drawable="@drawable/aji" />
+</selector>

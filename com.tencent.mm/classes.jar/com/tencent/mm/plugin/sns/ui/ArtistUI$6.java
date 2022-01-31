@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.model.b;
 import com.tencent.mm.plugin.sns.model.g;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class ArtistUI$6
   implements AbsListView.OnScrollListener
@@ -15,20 +16,29 @@ final class ArtistUI$6
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramInt == 2) {
-      if ((this.oNf.oNb.ooI) || (this.oNf.oNc.ooI))
+    AppMethodBeat.i(38120);
+    if (paramInt == 2)
+    {
+      if ((this.rEQ.rEM.rdd) || (this.rEQ.rEN.rdd))
       {
-        this.oNf.jge.removeCallbacks(ArtistUI.g(this.oNf));
-        this.oNf.jge.removeCallbacks(ArtistUI.h(this.oNf));
-        this.oNf.jge.postDelayed(ArtistUI.g(this.oNf), 0L);
+        this.rEQ.loX.removeCallbacks(ArtistUI.g(this.rEQ));
+        this.rEQ.loX.removeCallbacks(ArtistUI.h(this.rEQ));
+        this.rEQ.loX.postDelayed(ArtistUI.g(this.rEQ), 0L);
+        AppMethodBeat.o(38120);
       }
     }
-    while ((this.oNf.oNb.ooI) && (this.oNf.oNc.ooI)) {
-      return;
+    else
+    {
+      if ((this.rEQ.rEM.rdd) && (this.rEQ.rEN.rdd))
+      {
+        AppMethodBeat.o(38120);
+        return;
+      }
+      this.rEQ.loX.removeCallbacks(ArtistUI.g(this.rEQ));
+      this.rEQ.loX.removeCallbacks(ArtistUI.h(this.rEQ));
+      this.rEQ.loX.postDelayed(ArtistUI.h(this.rEQ), 0L);
     }
-    this.oNf.jge.removeCallbacks(ArtistUI.g(this.oNf));
-    this.oNf.jge.removeCallbacks(ArtistUI.h(this.oNf));
-    this.oNf.jge.postDelayed(ArtistUI.h(this.oNf), 0L);
+    AppMethodBeat.o(38120);
   }
 }
 

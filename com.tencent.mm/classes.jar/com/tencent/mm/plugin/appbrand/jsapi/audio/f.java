@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONObject;
 
 public class f
@@ -15,28 +16,32 @@ public class f
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
+    AppMethodBeat.i(137728);
     if (paramJSONObject == null)
     {
-      y.e("MicroMsg.Audio.JsApiGetAudioState", "getAudioState data is null");
-      paramc.C(paramInt, h("fail:data is null", null));
+      ab.e("MicroMsg.Audio.JsApiGetAudioState", "getAudioState data is null");
+      paramc.h(paramInt, j("fail:data is null", null));
+      AppMethodBeat.o(137728);
       return;
     }
     paramJSONObject = paramJSONObject.optString("audioId");
     if (TextUtils.isEmpty(paramJSONObject))
     {
-      y.e("MicroMsg.Audio.JsApiGetAudioState", "getAudioState audioId is empty");
-      paramc.C(paramInt, h("fail:audioId is empty", null));
+      ab.e("MicroMsg.Audio.JsApiGetAudioState", "getAudioState audioId is empty");
+      paramc.h(paramInt, j("fail:audioId is empty", null));
+      AppMethodBeat.o(137728);
       return;
     }
     f.a locala = new f.a(this, paramc, paramInt);
     locala.appId = paramc.getAppId();
-    locala.bFM = paramJSONObject;
-    locala.ahU();
+    locala.ceu = paramJSONObject;
+    locala.aBL();
+    AppMethodBeat.o(137728);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.f
  * JD-Core Version:    0.7.0.1
  */

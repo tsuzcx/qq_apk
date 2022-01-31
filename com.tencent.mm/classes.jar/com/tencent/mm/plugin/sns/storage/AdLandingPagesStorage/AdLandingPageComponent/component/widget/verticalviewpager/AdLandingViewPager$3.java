@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class AdLandingViewPager$3
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class AdLandingViewPager$3
   
   public final void run()
   {
-    AdLandingViewPager.a(this.oIY);
-    this.oIY.dm();
+    AppMethodBeat.i(37504);
+    AdLandingViewPager.a(this.ryT);
+    this.ryT.populate();
+    AppMethodBeat.o(37504);
   }
 }
 

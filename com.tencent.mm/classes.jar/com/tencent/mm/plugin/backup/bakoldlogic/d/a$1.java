@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 final class a$1
@@ -9,7 +10,9 @@ final class a$1
   
   public final void run()
   {
-    this.hPk.hMI.add(new a.a(this.hPk, this.bns, this.bjR));
+    AppMethodBeat.i(17998);
+    this.jIM.jGk.add(new a.a(this.jIM, this.bHS, this.bFJ));
+    AppMethodBeat.o(17998);
   }
 }
 

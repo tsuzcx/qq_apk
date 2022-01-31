@@ -2,7 +2,7 @@ package com.tencent.mm.modelappbrand.a;
 
 public abstract interface c
 {
-  public abstract String pU();
+  public abstract String tX();
 }
 
 

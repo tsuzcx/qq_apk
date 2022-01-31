@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.webview.stub;
 
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bj;
 
 final class WebViewStubService$1$4
-  extends bf<String>
+  extends bj<String>
 {
   WebViewStubService$1$4(WebViewStubService.1 param1, String paramString)
   {

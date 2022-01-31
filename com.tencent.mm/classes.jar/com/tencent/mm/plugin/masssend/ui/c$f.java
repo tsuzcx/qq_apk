@@ -7,16 +7,16 @@ import com.tencent.mm.ui.base.AnimImageView;
 
 final class c$f
 {
-  TextView kZl;
-  ImageView kcc;
-  TextView mbm;
-  TextView mbn;
-  TextView mbo;
-  TextView mbq;
-  TextView mbr;
-  AnimImageView mbs;
-  View mbt;
-  short mbu;
+  ImageView mwF;
+  TextView nxi;
+  TextView oBO;
+  TextView oBP;
+  TextView oBQ;
+  TextView oBR;
+  TextView oBS;
+  AnimImageView oBT;
+  View oBU;
+  short oBV;
 }
 
 

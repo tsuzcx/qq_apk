@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMWizardActivity;
 
 final class BindQQUI$5
@@ -12,7 +13,9 @@ final class BindQQUI$5
   
   public final void onClick(View paramView)
   {
-    MMWizardActivity.C(this.fcO, new Intent(this.fcO, VerifyQQUI.class));
+    AppMethodBeat.i(13548);
+    MMWizardActivity.J(this.guz, new Intent(this.guz, VerifyQQUI.class));
+    AppMethodBeat.o(13548);
   }
 }
 

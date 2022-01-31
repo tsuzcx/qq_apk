@@ -2,7 +2,7 @@ package com.tencent.mm.sdk.a;
 
 public abstract interface a
 {
-  public abstract void ge(String paramString);
+  public abstract void my(String paramString);
 }
 
 

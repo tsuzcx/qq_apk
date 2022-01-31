@@ -1,69 +1,35 @@
 package com.tencent.mm.ui.widget.a;
 
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
+  extends LinearLayout
 {
-  public DialogInterface.OnCancelListener Oi;
-  public DialogInterface.OnDismissListener Oj;
-  boolean fsA = true;
-  public int rYa = 0;
-  View rod;
-  String thumbPath;
-  CharSequence title;
-  CharSequence wlB;
-  public CharSequence wlC;
-  CharSequence wlD;
-  public CharSequence wlE;
-  boolean wlF;
-  String wlG;
-  CharSequence wlH;
-  boolean wlI;
-  public boolean wlJ = false;
-  c.a.c wlK;
-  c.a.a wlL;
-  public c.a.b wlM;
-  c.a.d wlN;
-  Drawable wlO;
-  Bitmap wlP;
-  Bitmap wlQ;
-  CharSequence wlR;
-  CharSequence wlS;
-  CharSequence wlT;
-  CharSequence wlU;
-  CharSequence wlV;
-  CharSequence wlW;
-  CharSequence wlX;
-  CharSequence wlY;
-  boolean wlZ = false;
-  boolean wma = false;
-  boolean wmb = false;
-  DialogInterface.OnClickListener wmc;
-  DialogInterface.OnClickListener wmd;
-  DialogInterface.OnClickListener wme;
-  DialogInterface.OnClickListener wmf;
-  DialogInterface.OnClickListener wmg;
-  public View wmh;
-  public View wmi;
-  public int wmj = 0;
-  public int wmk = 0;
-  int wml = 3;
-  int wmm = 0;
-  public int wmn = 0;
-  int wmo = 0;
-  int wmp = 0;
-  boolean wmq = true;
-  boolean wmr = false;
-  boolean wms = false;
+  private TextView iJG;
+  
+  public a(Context paramContext)
+  {
+    super(paramContext);
+    AppMethodBeat.i(142776);
+    LayoutInflater.from(paramContext).inflate(2130968896, this);
+    this.iJG = ((TextView)findViewById(2131820680));
+    AppMethodBeat.o(142776);
+  }
+  
+  public final void setTitle(String paramString)
+  {
+    AppMethodBeat.i(142777);
+    this.iJG.setText(paramString);
+    AppMethodBeat.o(142777);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.a.a
  * JD-Core Version:    0.7.0.1
  */

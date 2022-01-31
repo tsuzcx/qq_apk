@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.ext.b;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.api.i;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.a.hi;
-import com.tencent.mm.h.a.hi.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.a.hm;
+import com.tencent.mm.g.a.hm.b;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.bnk;
-import com.tencent.mm.protocal.c.bnm;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.protocal.protobuf.bxf;
+import com.tencent.mm.protocal.protobuf.bxh;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bd;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,173 +23,210 @@ import java.util.Map;
 public final class c
 {
   private static Map<String, c.a> mCache = null;
-  final com.tencent.mm.ah.f dmL = new c.1(this);
-  private String jJJ = "";
-  private boolean jJK = false;
-  private Context mContext = null;
+  final com.tencent.mm.ai.f callback;
+  private Context mContext;
+  private String mdN;
+  private boolean mdO;
   
   public c(Context paramContext, String paramString)
   {
+    AppMethodBeat.i(20299);
+    this.mdN = "";
+    this.mdO = false;
+    this.mContext = null;
+    this.callback = new c.1(this);
     this.mContext = paramContext;
-    this.jJJ = paramString;
-    this.jJK = true;
+    this.mdN = paramString;
+    this.mdO = true;
+    AppMethodBeat.o(20299);
   }
   
-  private void Cc(String paramString)
+  private void Nd(String paramString)
   {
+    AppMethodBeat.i(20303);
     Intent localIntent = new Intent();
     localIntent.putExtra("Chat_User", paramString);
     localIntent.putExtra("finish_direct", false);
-    d.e(this.mContext, ".ui.chatting.ChattingUI", localIntent);
+    d.f(this.mContext, ".ui.chatting.ChattingUI", localIntent);
+    AppMethodBeat.o(20303);
   }
   
-  private int a(String paramString, bnm parambnm, bnk parambnk)
+  private int a(String paramString, bxh parambxh, bxf parambxf)
   {
+    AppMethodBeat.i(20302);
     if (this.mContext == null)
     {
-      y.w("MicroMsg.RedirectToChattingByPhoneHelper", "hy: error param. start redirect param error: context is null");
+      ab.w("MicroMsg.RedirectToChattingByPhoneHelper", "hy: error param. start redirect param error: context is null");
+      AppMethodBeat.o(20302);
       return -1;
     }
-    if (!bk.bl(paramString))
+    if (!bo.isNullOrNil(paramString))
     {
-      au.Hx();
-      if (com.tencent.mm.model.c.Fw().abg(paramString))
+      aw.aaz();
+      if (com.tencent.mm.model.c.YA().arr(paramString))
       {
-        y.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: is friend. direct to chatting");
-        Cc(paramString);
+        ab.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: is friend. direct to chatting");
+        Nd(paramString);
+        AppMethodBeat.o(20302);
         return 0;
       }
     }
-    if (parambnm != null)
+    if (parambxh != null)
     {
-      y.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: direct via searchResp");
-      a(parambnm);
+      ab.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: direct via searchResp");
+      a(parambxh);
+      AppMethodBeat.o(20302);
       return 1;
     }
-    if (parambnk != null)
+    if (parambxf != null)
     {
-      y.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: direct via SearchContactItem");
-      a(parambnk);
+      ab.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: direct via SearchContactItem");
+      a(parambxf);
+      AppMethodBeat.o(20302);
       return 1;
     }
-    y.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: no matching for starting redirect");
+    ab.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: no matching for starting redirect");
+    AppMethodBeat.o(20302);
     return -1;
   }
   
-  private void a(bnk parambnk)
+  private void a(bxf parambxf)
   {
-    if (parambnk == null)
+    AppMethodBeat.i(20305);
+    if (parambxf == null)
     {
-      y.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: start to profile failed: item or context is null");
+      ab.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: start to profile failed: item or context is null");
+      AppMethodBeat.o(20305);
       return;
     }
-    Object localObject = aa.a(parambnk.sQs);
-    if (!bk.bl((String)localObject))
+    Object localObject = aa.a(parambxf.wOT);
+    if (!bo.isNullOrNil((String)localObject))
     {
-      a(this.jJJ, new c.a(this, aa.a(parambnk.sQs), null, parambnk));
-      au.Hx();
-      if (com.tencent.mm.model.c.Fw().abg((String)localObject))
+      a(this.mdN, new c.a(this, aa.a(parambxf.wOT), null, parambxf));
+      aw.aaz();
+      if (com.tencent.mm.model.c.YA().arr((String)localObject))
       {
-        y.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: search item is friend. start to chatting");
-        Cc((String)localObject);
+        ab.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: search item is friend. start to chatting");
+        Nd((String)localObject);
+        AppMethodBeat.o(20305);
         return;
       }
       localObject = new Intent();
-      ((i)g.r(i.class)).a((Intent)localObject, parambnk, 15);
+      com.tencent.mm.api.b.a((Intent)localObject, parambxf);
       ((Intent)localObject).putExtra("add_more_friend_search_scene", 2);
-      com.tencent.mm.plugin.ext.a.eUR.d((Intent)localObject, this.mContext);
+      com.tencent.mm.plugin.ext.a.gmO.c((Intent)localObject, this.mContext);
+      AppMethodBeat.o(20305);
       return;
     }
-    y.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: start failed: no user name");
+    ab.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: start failed: no user name");
+    AppMethodBeat.o(20305);
   }
   
-  private void a(bnm parambnm)
+  private void a(bxh parambxh)
   {
-    if (parambnm == null)
+    AppMethodBeat.i(20304);
+    if (parambxh == null)
     {
-      y.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: start to profile failed: resp or context is null");
+      ab.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: start to profile failed: resp or context is null");
+      AppMethodBeat.o(20304);
       return;
     }
-    Object localObject = aa.a(parambnm.sQs);
-    if (!bk.bl((String)localObject))
+    Object localObject = aa.a(parambxh.wOT);
+    if (!bo.isNullOrNil((String)localObject))
     {
-      a(this.jJJ, new c.a(this, aa.a(parambnm.sQs), parambnm, null));
-      au.Hx();
-      if (com.tencent.mm.model.c.Fw().abg((String)localObject))
+      a(this.mdN, new c.a(this, aa.a(parambxh.wOT), parambxh, null));
+      aw.aaz();
+      if (com.tencent.mm.model.c.YA().arr((String)localObject))
       {
-        y.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: search response is friend. start to chatting");
-        Cc((String)localObject);
+        ab.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: search response is friend. start to chatting");
+        Nd((String)localObject);
+        AppMethodBeat.o(20304);
         return;
       }
       localObject = new Intent();
-      com.tencent.mm.pluginsdk.ui.tools.c.a((Intent)localObject, parambnm, 15);
+      com.tencent.mm.api.b.a((Intent)localObject, parambxh, 15);
       ((Intent)localObject).putExtra("add_more_friend_search_scene", 2);
-      com.tencent.mm.plugin.ext.a.eUR.d((Intent)localObject, this.mContext);
+      com.tencent.mm.plugin.ext.a.gmO.c((Intent)localObject, this.mContext);
+      AppMethodBeat.o(20304);
       return;
     }
-    y.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: start failed: no user name");
+    ab.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: start failed: no user name");
+    AppMethodBeat.o(20304);
   }
   
   private static void a(String paramString, c.a parama)
   {
-    if (bk.bl(paramString))
+    AppMethodBeat.i(20301);
+    if (bo.isNullOrNil(paramString))
     {
-      y.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: username is null when put to cache");
+      ab.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: username is null when put to cache");
+      AppMethodBeat.o(20301);
       return;
     }
     if (mCache == null) {
       mCache = new HashMap();
     }
     mCache.put(paramString, parama);
+    AppMethodBeat.o(20301);
   }
   
-  public final int aNw()
+  public final int btz()
   {
+    AppMethodBeat.i(20300);
     if (this.mContext == null)
     {
-      y.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: context is null");
+      ab.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: context is null");
+      AppMethodBeat.o(20300);
       return -1;
     }
-    if (bk.bl(this.jJJ))
+    if (bo.isNullOrNil(this.mdN))
     {
-      y.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: phone is null");
+      ab.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: phone is null");
+      AppMethodBeat.o(20300);
       return -1;
     }
-    String str = ar.Zt(this.jJJ);
-    if (bk.bl(str))
+    String str = av.apy(this.mdN);
+    if (bo.isNullOrNil(str))
     {
-      y.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: pure num is null");
+      ab.e("MicroMsg.RedirectToChattingByPhoneHelper", "hy: pure num is null");
+      AppMethodBeat.o(20300);
       return -1;
     }
-    Object localObject = this.jJJ;
-    if (bk.bl((String)localObject)) {
-      y.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: username is null when get from cache");
+    Object localObject = this.mdN;
+    if (bo.isNullOrNil((String)localObject)) {
+      ab.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: username is null when get from cache");
     }
+    int i;
     for (localObject = null; localObject != null; localObject = (c.a)mCache.get(localObject))
     {
-      y.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: got from cache");
-      return a(((c.a)localObject).userName, ((c.a)localObject).jJM, ((c.a)localObject).jJN);
+      ab.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: got from cache");
+      i = a(((c.a)localObject).userName, ((c.a)localObject).mdQ, ((c.a)localObject).mdR);
+      AppMethodBeat.o(20300);
+      return i;
       if (mCache == null) {
         mCache = new HashMap();
       }
     }
-    localObject = new hi();
-    ((hi)localObject).bPj.bPl = str;
-    com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-    localObject = ((hi)localObject).bPk.userName;
-    if (!bk.bl((String)localObject))
+    localObject = new hm();
+    ((hm)localObject).cwC.cwE = str;
+    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
+    localObject = ((hm)localObject).cwD.userName;
+    if (!bo.isNullOrNil((String)localObject))
     {
-      y.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: has found username: %s", new Object[] { localObject });
-      return a((String)localObject, null, null);
+      ab.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: has found username: %s", new Object[] { localObject });
+      i = a((String)localObject, null, null);
+      AppMethodBeat.o(20300);
+      return i;
     }
-    y.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: not found from local storage. Try to find from search");
-    au.Dk().a(106, this.dmL);
+    ab.i("MicroMsg.RedirectToChattingByPhoneHelper", "hy: not found from local storage. Try to find from search");
+    aw.Rc().a(106, this.callback);
     localObject = new com.tencent.mm.plugin.messenger.a.f(str, 3);
-    au.Dk().a((com.tencent.mm.ah.m)localObject, 0);
+    aw.Rc().a((m)localObject, 0);
     localObject = new Intent();
     ((Intent)localObject).setClassName(this.mContext, "com.tencent.mm.plugin.ext.ui.RedirectToChattingByPhoneStubUI");
     ((Intent)localObject).setFlags(268435456);
     this.mContext.startActivity((Intent)localObject);
+    AppMethodBeat.o(20300);
     return 2;
   }
 }

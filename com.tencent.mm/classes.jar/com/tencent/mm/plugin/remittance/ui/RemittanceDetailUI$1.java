@@ -2,15 +2,18 @@ package com.tencent.mm.plugin.remittance.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.h.a.nl;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ok;
 import com.tencent.mm.sdk.b.c;
 
 final class RemittanceDetailUI$1
-  extends c<nl>
+  extends c<ok>
 {
   RemittanceDetailUI$1(RemittanceDetailUI paramRemittanceDetailUI)
   {
-    this.udX = nl.class.getName().hashCode();
+    AppMethodBeat.i(44993);
+    this.__eventId = ok.class.getName().hashCode();
+    AppMethodBeat.o(44993);
   }
 }
 

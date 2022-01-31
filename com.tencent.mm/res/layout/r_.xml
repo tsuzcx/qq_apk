@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/j8" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/b4_" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.MMImageView android:id="@id/vb" android:layout_width="@dimen/kn" android:layout_height="@dimen/kn" android:layout_marginTop="@dimen/ke" />
-        <TextView android:ellipsize="end" android:id="@id/b4a" android:layout_marginLeft="@dimen/dl" android:layout_marginTop="@dimen/mg" android:layout_marginRight="@dimen/dl" android:text="{name}" android:maxLines="2" style="@style/n6" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/vc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginTop="@dimen/kp" android:layout_marginRight="@dimen/dl" android:layout_marginBottom="@dimen/dp">
-            <ProgressBar android:id="@id/vd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="?android:attr/progressBarStyleHorizontal" />
-            <ImageView android:id="@id/ve" android:background="@drawable/u0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a4c" />
-        </LinearLayout>
-        <Button android:id="@id/b4b" android:visibility="gone" android:layout_marginTop="@dimen/kp" android:layout_marginBottom="@dimen/dp" android:minWidth="220.0dip" android:text="@string/b2k" style="@style/mu" />
-        <Button android:id="@id/b4c" android:visibility="gone" android:layout_marginTop="@dimen/kp" android:layout_marginBottom="@dimen/dp" android:minWidth="220.0dip" android:text="@string/b2s" style="@style/mu" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/b4d" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:layout_width="wrap_content" android:text="@string/b2p" style="@style/k6" />
-            <TextView android:id="@id/b4e" android:layout_width="wrap_content" style="@style/k6" />
-        </LinearLayout>
-        <TextView android:id="@id/b4f" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/dp" android:text="@string/b2p" style="@style/k6" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/b4g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/b4h" android:layout_width="@dimen/kn" android:layout_height="@dimen/kn" android:layout_marginTop="@dimen/ke" android:src="@raw/image_download_fail_icon" />
-        <TextView android:textSize="@dimen/lj" android:id="@id/b4i" android:layout_width="wrap_content" android:layout_marginLeft="@dimen/mg" android:layout_marginTop="@dimen/dp" android:layout_marginRight="@dimen/mg" android:text="@string/bo3" style="@style/k6" />
-    </LinearLayout>
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:id="@id/b55" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="140.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/b56" android:layout_width="68.0dip" android:layout_height="68.0dip" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/a8_" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintTop_toTopOf="dn" />
+    <TextView android:textSize="@dimen/nk" android:textStyle="bold" android:textColor="@color/h9" android:id="@id/b57" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/la" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/l2" android:maxLines="2" android:drawablePadding="@dimen/dl" android:lineSpacingExtra="1.0dip" app:layout_constraintLeft_toRightOf="@id/b56" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="dn" />
+    <com.tencent.mm.ui.widget.MMCollapsibleTextView android:textSize="@dimen/na" android:textColor="@color/o" android:textColorLink="#ff4f729c" android:id="@id/b52" android:paddingRight="@dimen/l2" android:paddingBottom="@dimen/n_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:maxLines="2" android:lineSpacingExtra="2.0dip" app:layout_constraintLeft_toLeftOf="@id/b57" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toBottomOf="@id/b57" app:collapseButtonPosition="h0" app:collapseButtonStyle="h1" />
+    <com.google.android.flexbox.FlexboxLayout android:id="@id/b51" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2" app:layout_constraintLeft_toLeftOf="@id/b57" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toBottomOf="@id/b52" app:layout_goneMarginTop="@dimen/n_" app:flexDirection="g_" app:flexWrap="dq" app:justifyContent="ge" app:alignItems="ge" />
+</android.support.constraint.ConstraintLayout>

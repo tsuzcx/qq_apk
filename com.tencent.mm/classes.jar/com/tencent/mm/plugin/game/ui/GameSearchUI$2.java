@@ -4,6 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameSearchUI$2
   implements View.OnTouchListener
@@ -12,8 +13,10 @@ final class GameSearchUI$2
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    GameSearchUI.a(this.lfG).clearFocus();
-    this.lfG.XM();
+    AppMethodBeat.i(112189);
+    GameSearchUI.a(this.nDB).clearFocus();
+    this.nDB.hideVKB();
+    AppMethodBeat.o(112189);
     return false;
   }
 }

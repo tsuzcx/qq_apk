@@ -7,50 +7,54 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class NoiseDetectMaskView
   extends RelativeLayout
 {
-  ProgressBar fsc = null;
-  TextView kFl;
-  private Context mContext = null;
-  TextView pMe;
-  private b pMf;
-  private a pMg;
+  ProgressBar gJE;
+  private Context mContext;
+  TextView nca;
+  TextView tsa;
+  private NoiseDetectMaskView.b tsb;
+  private NoiseDetectMaskView.a tsc;
   
   public NoiseDetectMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(26143);
+    this.gJE = null;
+    this.mContext = null;
     this.mContext = paramContext;
     this.mContext.getSystemService("layout_inflater");
-    LayoutInflater.from(this.mContext).inflate(R.i.noise_mask_view, this);
-    this.fsc = ((ProgressBar)findViewById(R.h.noise_detect_progress));
-    this.kFl = ((TextView)findViewById(R.h.noise_detect_hint));
-    this.pMe = ((TextView)findViewById(R.h.noise_detect_retry));
-    this.pMe.setOnClickListener(new NoiseDetectMaskView.1(this));
-    findViewById(R.h.left_btn).setOnClickListener(new NoiseDetectMaskView.2(this));
+    LayoutInflater.from(this.mContext).inflate(2130970364, this);
+    this.gJE = ((ProgressBar)findViewById(2131826555));
+    this.nca = ((TextView)findViewById(2131826556));
+    this.tsa = ((TextView)findViewById(2131826557));
+    this.tsa.setOnClickListener(new NoiseDetectMaskView.1(this));
+    findViewById(2131823924).setOnClickListener(new NoiseDetectMaskView.2(this));
+    AppMethodBeat.o(26143);
   }
   
-  public void setOnCancelDetectCallback(a parama)
+  public final void reset()
   {
-    this.pMg = parama;
+    AppMethodBeat.i(26144);
+    if (this.gJE != null) {
+      this.gJE.setVisibility(0);
+    }
+    this.nca.setText(2131304570);
+    this.tsa.setVisibility(8);
+    AppMethodBeat.o(26144);
   }
   
-  public void setOnClickRetryCallback(b paramb)
+  public void setOnCancelDetectCallback(NoiseDetectMaskView.a parama)
   {
-    this.pMf = paramb;
+    this.tsc = parama;
   }
   
-  public static abstract interface a
+  public void setOnClickRetryCallback(NoiseDetectMaskView.b paramb)
   {
-    public abstract void bPk();
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void bPl();
+    this.tsb = paramb;
   }
 }
 

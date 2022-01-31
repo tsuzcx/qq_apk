@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteOrder;
 
 public class DataConversionUtil
@@ -10,20 +11,26 @@ public class DataConversionUtil
   
   static
   {
+    AppMethodBeat.i(105541);
     if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {}
     for (boolean bool = true;; bool = false)
     {
       IS_LITTLE_ENDIAN = bool;
+      AppMethodBeat.o(105541);
       return;
     }
   }
   
   public static int byteArray16BitToShortArray(byte[] paramArrayOfByte, int paramInt, short[] paramArrayOfShort)
   {
+    AppMethodBeat.i(105530);
     checkByteArrayLength(paramArrayOfByte, paramInt);
     checkShortArrayLength(paramArrayOfShort, paramInt / 2);
-    if (paramInt % 2 != 0) {
-      throw new IllegalArgumentException("length of byteArray must be multiple of 2");
+    if (paramInt % 2 != 0)
+    {
+      paramArrayOfByte = new IllegalArgumentException("length of byteArray must be multiple of 2");
+      AppMethodBeat.o(105530);
+      throw paramArrayOfByte;
     }
     int j = 0;
     int k = 0;
@@ -38,15 +45,20 @@ public class DataConversionUtil
         break;
       }
     }
+    AppMethodBeat.o(105530);
     return k;
   }
   
   public static int byteArray24BitToIntArray(byte[] paramArrayOfByte, int paramInt, int[] paramArrayOfInt)
   {
+    AppMethodBeat.i(105531);
     checkByteArrayLength(paramArrayOfByte, paramInt);
     checkIntArrayLength(paramArrayOfInt, paramInt / 3);
-    if (paramInt % 3 != 0) {
-      throw new IllegalArgumentException("length of byteArray must be multiple of 3");
+    if (paramInt % 3 != 0)
+    {
+      paramArrayOfByte = new IllegalArgumentException("length of byteArray must be multiple of 3");
+      AppMethodBeat.o(105531);
+      throw paramArrayOfByte;
     }
     int i = 0;
     int j = 0;
@@ -61,15 +73,20 @@ public class DataConversionUtil
         break;
       }
     }
+    AppMethodBeat.o(105531);
     return j;
   }
   
   public static int byteArray32BitToIntArray(byte[] paramArrayOfByte, int paramInt, int[] paramArrayOfInt)
   {
+    AppMethodBeat.i(105532);
     checkByteArrayLength(paramArrayOfByte, paramInt);
     checkIntArrayLength(paramArrayOfInt, paramInt / 4);
-    if (paramInt % 4 != 0) {
-      throw new IllegalArgumentException("length of byteArray must be multiple of 4");
+    if (paramInt % 4 != 0)
+    {
+      paramArrayOfByte = new IllegalArgumentException("length of byteArray must be multiple of 4");
+      AppMethodBeat.o(105532);
+      throw paramArrayOfByte;
     }
     int i = 0;
     int j = 0;
@@ -84,11 +101,13 @@ public class DataConversionUtil
         break;
       }
     }
+    AppMethodBeat.o(105532);
     return j;
   }
   
   public static int byteArrayToFloatArray(byte[] paramArrayOfByte, int paramInt1, int paramInt2, float[] paramArrayOfFloat)
   {
+    AppMethodBeat.i(105529);
     checkByteArrayLength(paramArrayOfByte, paramInt1);
     checkFloatArrayLength(paramArrayOfFloat, paramInt1 / paramInt2);
     checkByteArrayProperty(paramInt1, paramInt2);
@@ -106,43 +125,68 @@ public class DataConversionUtil
         break;
       }
     }
+    AppMethodBeat.o(105529);
     return j;
   }
   
   public static float bytesToFloat24bit(byte[] paramArrayOfByte, int paramInt)
   {
-    if (IS_LITTLE_ENDIAN) {
-      return bytesToFloat24bitInLittleEndian(paramArrayOfByte, paramInt);
+    AppMethodBeat.i(105522);
+    if (IS_LITTLE_ENDIAN)
+    {
+      f = bytesToFloat24bitInLittleEndian(paramArrayOfByte, paramInt);
+      AppMethodBeat.o(105522);
+      return f;
     }
-    return bytesToFloat24bitInBigEndian(paramArrayOfByte, paramInt);
+    float f = bytesToFloat24bitInBigEndian(paramArrayOfByte, paramInt);
+    AppMethodBeat.o(105522);
+    return f;
   }
   
   public static float bytesToFloat24bitInBigEndian(byte[] paramArrayOfByte, int paramInt)
   {
-    return bytesToInt24bitInBigEndian(paramArrayOfByte, paramInt) / 2.147484E+009F;
+    AppMethodBeat.i(105525);
+    float f = bytesToInt24bitInBigEndian(paramArrayOfByte, paramInt) / 2.147484E+009F;
+    AppMethodBeat.o(105525);
+    return f;
   }
   
   public static float bytesToFloat24bitInLittleEndian(byte[] paramArrayOfByte, int paramInt)
   {
-    return bytesToInt24bitInLittleEndian(paramArrayOfByte, paramInt) / 2.147484E+009F;
+    AppMethodBeat.i(105524);
+    float f = bytesToInt24bitInLittleEndian(paramArrayOfByte, paramInt) / 2.147484E+009F;
+    AppMethodBeat.o(105524);
+    return f;
   }
   
   public static float bytesToFloat32bit(byte[] paramArrayOfByte, int paramInt)
   {
-    if (IS_LITTLE_ENDIAN) {
-      return bytesToFloat32bitInLittleEndian(paramArrayOfByte, paramInt);
+    AppMethodBeat.i(105523);
+    if (IS_LITTLE_ENDIAN)
+    {
+      f = bytesToFloat32bitInLittleEndian(paramArrayOfByte, paramInt);
+      AppMethodBeat.o(105523);
+      return f;
     }
-    return bytesToFloat32bitInBigEndian(paramArrayOfByte, paramInt);
+    float f = bytesToFloat32bitInBigEndian(paramArrayOfByte, paramInt);
+    AppMethodBeat.o(105523);
+    return f;
   }
   
   public static float bytesToFloat32bitInBigEndian(byte[] paramArrayOfByte, int paramInt)
   {
-    return bytesToInt32bitInBigEndian(paramArrayOfByte, paramInt) / 2.147484E+009F;
+    AppMethodBeat.i(105527);
+    float f = bytesToInt32bitInBigEndian(paramArrayOfByte, paramInt) / 2.147484E+009F;
+    AppMethodBeat.o(105527);
+    return f;
   }
   
   public static float bytesToFloat32bitInLittleEndian(byte[] paramArrayOfByte, int paramInt)
   {
-    return bytesToInt32bitInLittleEndian(paramArrayOfByte, paramInt) / 2.147484E+009F;
+    AppMethodBeat.i(105526);
+    float f = bytesToInt32bitInLittleEndian(paramArrayOfByte, paramInt) / 2.147484E+009F;
+    AppMethodBeat.o(105526);
+    return f;
   }
   
   public static int bytesToInt24bitInBigEndian(byte[] paramArrayOfByte, int paramInt)
@@ -177,58 +221,100 @@ public class DataConversionUtil
   
   private static void checkByteArrayLength(byte[] paramArrayOfByte, int paramInt)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      throw new IllegalArgumentException("byte Array must not be null or zero length");
+    AppMethodBeat.i(105537);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      paramArrayOfByte = new IllegalArgumentException("byte Array must not be null or zero length");
+      AppMethodBeat.o(105537);
+      throw paramArrayOfByte;
     }
-    if (paramInt > paramArrayOfByte.length) {
-      throw new IllegalArgumentException("the length param can not larger than byte Array length. param:" + paramInt + ", byte array length:" + paramArrayOfByte.length);
+    if (paramInt > paramArrayOfByte.length)
+    {
+      paramArrayOfByte = new IllegalArgumentException("the length param can not larger than byte Array length. param:" + paramInt + ", byte array length:" + paramArrayOfByte.length);
+      AppMethodBeat.o(105537);
+      throw paramArrayOfByte;
     }
+    AppMethodBeat.o(105537);
   }
   
   private static void checkByteArrayProperty(int paramInt1, int paramInt2)
   {
-    if ((paramInt2 > 4) || (paramInt2 < 3)) {
-      throw new IllegalArgumentException("bytesPerSample of " + paramInt2 + " is not supported");
+    AppMethodBeat.i(105536);
+    IllegalArgumentException localIllegalArgumentException;
+    if ((paramInt2 > 4) || (paramInt2 < 3))
+    {
+      localIllegalArgumentException = new IllegalArgumentException("bytesPerSample of " + paramInt2 + " is not supported");
+      AppMethodBeat.o(105536);
+      throw localIllegalArgumentException;
     }
-    if (paramInt1 % paramInt2 != 0) {
-      throw new IllegalArgumentException("length of byteArray must be multiple of bytesPerSample");
+    if (paramInt1 % paramInt2 != 0)
+    {
+      localIllegalArgumentException = new IllegalArgumentException("length of byteArray must be multiple of bytesPerSample");
+      AppMethodBeat.o(105536);
+      throw localIllegalArgumentException;
     }
+    AppMethodBeat.o(105536);
   }
   
   private static void checkFloatArrayLength(float[] paramArrayOfFloat, int paramInt)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length == 0)) {
-      throw new IllegalArgumentException("float Array must not be null or zero length");
+    AppMethodBeat.i(105540);
+    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length == 0))
+    {
+      paramArrayOfFloat = new IllegalArgumentException("float Array must not be null or zero length");
+      AppMethodBeat.o(105540);
+      throw paramArrayOfFloat;
     }
-    if (paramInt > paramArrayOfFloat.length) {
-      throw new IllegalArgumentException("the length param can not larger than float Array length. param:" + paramInt + ", float array length:" + paramArrayOfFloat.length);
+    if (paramInt > paramArrayOfFloat.length)
+    {
+      paramArrayOfFloat = new IllegalArgumentException("the length param can not larger than float Array length. param:" + paramInt + ", float array length:" + paramArrayOfFloat.length);
+      AppMethodBeat.o(105540);
+      throw paramArrayOfFloat;
     }
+    AppMethodBeat.o(105540);
   }
   
   private static void checkIntArrayLength(int[] paramArrayOfInt, int paramInt)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      throw new IllegalArgumentException("int Array must not be null or zero length");
+    AppMethodBeat.i(105539);
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
+    {
+      paramArrayOfInt = new IllegalArgumentException("int Array must not be null or zero length");
+      AppMethodBeat.o(105539);
+      throw paramArrayOfInt;
     }
-    if (paramInt > paramArrayOfInt.length) {
-      throw new IllegalArgumentException("the length param can not larger than int Array length. param:" + paramInt + ", int array length:" + paramArrayOfInt.length);
+    if (paramInt > paramArrayOfInt.length)
+    {
+      paramArrayOfInt = new IllegalArgumentException("the length param can not larger than int Array length. param:" + paramInt + ", int array length:" + paramArrayOfInt.length);
+      AppMethodBeat.o(105539);
+      throw paramArrayOfInt;
     }
+    AppMethodBeat.o(105539);
   }
   
   private static void checkShortArrayLength(short[] paramArrayOfShort, int paramInt)
   {
-    if ((paramArrayOfShort == null) || (paramArrayOfShort.length == 0)) {
-      throw new IllegalArgumentException("short Array must not be null or zero length");
+    AppMethodBeat.i(105538);
+    if ((paramArrayOfShort == null) || (paramArrayOfShort.length == 0))
+    {
+      paramArrayOfShort = new IllegalArgumentException("short Array must not be null or zero length");
+      AppMethodBeat.o(105538);
+      throw paramArrayOfShort;
     }
-    if (paramInt > paramArrayOfShort.length) {
-      throw new IllegalArgumentException("the length param can not larger than short Array length. param:" + paramInt + ", short array length:" + paramArrayOfShort.length);
+    if (paramInt > paramArrayOfShort.length)
+    {
+      paramArrayOfShort = new IllegalArgumentException("the length param can not larger than short Array length. param:" + paramInt + ", short array length:" + paramArrayOfShort.length);
+      AppMethodBeat.o(105538);
+      throw paramArrayOfShort;
     }
+    AppMethodBeat.o(105538);
   }
   
   public static void floatTo2Bytes(float paramFloat, byte[] paramArrayOfByte, int paramInt)
   {
     float f2 = 1.0F;
     float f1 = -1.0F;
+    AppMethodBeat.i(105528);
     if (paramFloat > 1.0F) {
       paramFloat = f2;
     }
@@ -240,6 +326,7 @@ public class DataConversionUtil
       for (;;)
       {
         shortTo2Bytes((short)(int)(paramFloat * 32768.0F), paramArrayOfByte, paramInt);
+        AppMethodBeat.o(105528);
         return;
       }
     }
@@ -247,6 +334,7 @@ public class DataConversionUtil
   
   public static int intArrayToByteArray24Bit(int[] paramArrayOfInt, int paramInt, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(105534);
     checkIntArrayLength(paramArrayOfInt, paramInt);
     checkByteArrayLength(paramArrayOfByte, paramInt * 3);
     int j = 0;
@@ -257,11 +345,13 @@ public class DataConversionUtil
       j += 1;
       i += 3;
     }
+    AppMethodBeat.o(105534);
     return i;
   }
   
   public static int intArrayToByteArray32Bit(int[] paramArrayOfInt, int paramInt, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(105535);
     checkIntArrayLength(paramArrayOfInt, paramInt);
     checkByteArrayLength(paramArrayOfByte, paramInt * 4);
     int j = 0;
@@ -272,6 +362,7 @@ public class DataConversionUtil
       j += 1;
       i += 4;
     }
+    AppMethodBeat.o(105535);
     return i;
   }
   
@@ -307,6 +398,7 @@ public class DataConversionUtil
   
   public static int shortArrayToByteArray16Bit(short[] paramArrayOfShort, int paramInt, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(105533);
     checkShortArrayLength(paramArrayOfShort, paramInt);
     checkByteArrayLength(paramArrayOfByte, paramInt * 2);
     int j = 0;
@@ -317,6 +409,7 @@ public class DataConversionUtil
       j += 1;
       i += 2;
     }
+    AppMethodBeat.o(105533);
     return i;
   }
   
@@ -334,7 +427,7 @@ public class DataConversionUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.util.DataConversionUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.ui.widget.FavVideoView;
 import com.tencent.mm.ui.tools.e.b;
 
@@ -12,9 +13,11 @@ final class FavoriteVideoPlayUI$4$1
   
   public final void onAnimationStart()
   {
-    if (FavoriteVideoPlayUI.e(this.kgF.kgD) != null) {
-      FavoriteVideoPlayUI.e(this.kgF.kgD).onResume();
+    AppMethodBeat.i(74462);
+    if (FavoriteVideoPlayUI.e(this.mBt.mBr) != null) {
+      FavoriteVideoPlayUI.e(this.mBt.mBr).onResume();
     }
+    AppMethodBeat.o(74462);
   }
 }
 

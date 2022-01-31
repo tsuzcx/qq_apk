@@ -18,63 +18,69 @@ final class b$a$a
   }
   
   /* Error */
-  public final void g(android.os.Bundle paramBundle)
+  public final void o(android.os.Bundle paramBundle)
   {
     // Byte code:
-    //   0: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 31
-    //   11: invokevirtual 35	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_1
-    //   15: ifnull +41 -> 56
-    //   18: aload_2
-    //   19: iconst_1
-    //   20: invokevirtual 39	android/os/Parcel:writeInt	(I)V
-    //   23: aload_1
-    //   24: aload_2
-    //   25: iconst_0
-    //   26: invokevirtual 45	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-    //   29: aload_0
-    //   30: getfield 18	com/tencent/mm/ipcinvoker/b/b$a$a:mRemote	Landroid/os/IBinder;
-    //   33: iconst_1
-    //   34: aload_2
-    //   35: aload_3
-    //   36: iconst_0
-    //   37: invokeinterface 51 5 0
-    //   42: pop
-    //   43: aload_3
-    //   44: invokevirtual 54	android/os/Parcel:readException	()V
-    //   47: aload_3
-    //   48: invokevirtual 57	android/os/Parcel:recycle	()V
-    //   51: aload_2
-    //   52: invokevirtual 57	android/os/Parcel:recycle	()V
-    //   55: return
+    //   0: ldc 24
+    //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   8: astore_2
+    //   9: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   12: astore_3
+    //   13: aload_2
+    //   14: ldc 38
+    //   16: invokevirtual 42	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   19: aload_1
+    //   20: ifnull +46 -> 66
+    //   23: aload_2
+    //   24: iconst_1
+    //   25: invokevirtual 45	android/os/Parcel:writeInt	(I)V
+    //   28: aload_1
+    //   29: aload_2
+    //   30: iconst_0
+    //   31: invokevirtual 51	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
+    //   34: aload_0
+    //   35: getfield 18	com/tencent/mm/ipcinvoker/b/b$a$a:mRemote	Landroid/os/IBinder;
+    //   38: iconst_1
+    //   39: aload_2
+    //   40: aload_3
+    //   41: iconst_0
+    //   42: invokeinterface 57 5 0
+    //   47: pop
+    //   48: aload_3
+    //   49: invokevirtual 60	android/os/Parcel:readException	()V
+    //   52: aload_3
+    //   53: invokevirtual 63	android/os/Parcel:recycle	()V
     //   56: aload_2
-    //   57: iconst_0
-    //   58: invokevirtual 39	android/os/Parcel:writeInt	(I)V
-    //   61: goto -32 -> 29
-    //   64: astore_1
-    //   65: aload_3
-    //   66: invokevirtual 57	android/os/Parcel:recycle	()V
-    //   69: aload_2
-    //   70: invokevirtual 57	android/os/Parcel:recycle	()V
-    //   73: aload_1
-    //   74: athrow
+    //   57: invokevirtual 63	android/os/Parcel:recycle	()V
+    //   60: ldc 24
+    //   62: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: return
+    //   66: aload_2
+    //   67: iconst_0
+    //   68: invokevirtual 45	android/os/Parcel:writeInt	(I)V
+    //   71: goto -37 -> 34
+    //   74: astore_1
+    //   75: aload_3
+    //   76: invokevirtual 63	android/os/Parcel:recycle	()V
+    //   79: aload_2
+    //   80: invokevirtual 63	android/os/Parcel:recycle	()V
+    //   83: ldc 24
+    //   85: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   88: aload_1
+    //   89: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	75	0	this	a
-    //   0	75	1	paramBundle	android.os.Bundle
-    //   3	67	2	localParcel1	android.os.Parcel
-    //   7	59	3	localParcel2	android.os.Parcel
+    //   0	90	0	this	a
+    //   0	90	1	paramBundle	android.os.Bundle
+    //   8	72	2	localParcel1	android.os.Parcel
+    //   12	64	3	localParcel2	android.os.Parcel
     // Exception table:
     //   from	to	target	type
-    //   8	14	64	finally
-    //   18	29	64	finally
-    //   29	47	64	finally
-    //   56	61	64	finally
+    //   13	19	74	finally
+    //   23	34	74	finally
+    //   34	52	74	finally
+    //   66	71	74	finally
   }
 }
 

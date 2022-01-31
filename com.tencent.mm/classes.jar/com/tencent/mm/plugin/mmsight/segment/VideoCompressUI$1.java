@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.e.ac;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoCompressUI$1
   implements Runnable
@@ -11,20 +13,24 @@ final class VideoCompressUI$1
   
   public final void run()
   {
-    VideoCompressUI.a(this.mni, CaptureMMProxy.getInstance().getSnsAlbumVideoTransPara());
-    if (VideoCompressUI.a(this.mni) == null)
+    AppMethodBeat.i(3695);
+    VideoCompressUI.a(this.oMq, CaptureMMProxy.getInstance().getSnsAlbumVideoTransPara());
+    if (VideoCompressUI.a(this.oMq) == null)
     {
-      y.e("VideoCompressUI", "VideoSendPreprocessTask para is null");
-      this.mni.setResult(0);
-      this.mni.finish();
+      ab.e("MicroMsg.VideoCompressUI", "VideoSendPreprocessTask para is null");
+      this.oMq.setResult(0);
+      this.oMq.finish();
+      AppMethodBeat.o(3695);
       return;
     }
-    e.post(VideoCompressUI.b(this.mni), "video_remuxing_if_needed");
+    ac.ll(CaptureMMProxy.getInstance().getDeviceInfoConfig());
+    d.post(VideoCompressUI.b(this.oMq), "video_remuxing_if_needed");
+    AppMethodBeat.o(3695);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.VideoCompressUI.1
  * JD-Core Version:    0.7.0.1
  */

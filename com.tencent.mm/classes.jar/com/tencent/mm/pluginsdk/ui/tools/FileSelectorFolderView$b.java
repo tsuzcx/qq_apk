@@ -6,8 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class FileSelectorFolderView$b
   extends BaseAdapter
@@ -26,6 +25,8 @@ public final class FileSelectorFolderView$b
   
   public final Object getItem(int paramInt)
   {
+    AppMethodBeat.i(28161);
+    AppMethodBeat.o(28161);
     return Integer.valueOf(paramInt);
   }
   
@@ -36,26 +37,28 @@ public final class FileSelectorFolderView$b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(28162);
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(R.i.fm_folder_item, null);
+      paramView = LayoutInflater.from(this.mContext).inflate(2130969605, null);
       paramViewGroup = new FileSelectorFolderView.c(paramView);
       paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
       switch (paramInt)
       {
       default: 
-        paramViewGroup.eXr.setText(R.l.app_empty_string);
-        return paramView;
-        paramViewGroup = (FileSelectorFolderView.c)paramView.getTag();
+        paramViewGroup.titleTv.setText(2131296919);
       }
     }
-    paramViewGroup.eXr.setText(R.l.file_explorer_mm_download_title);
-    return paramView;
-    paramViewGroup.eXr.setText(R.l.file_explorer_mobile_dir_title);
-    return paramView;
+    for (;;)
+    {
+      AppMethodBeat.o(28162);
+      return paramView;
+      paramViewGroup = (FileSelectorFolderView.c)paramView.getTag();
+      break;
+      paramViewGroup.titleTv.setText(2131299878);
+      continue;
+      paramViewGroup.titleTv.setText(2131299879);
+    }
   }
 }
 

@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.model.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.a;
+import com.tencent.mm.plugin.game.model.a.a;
 
 final class GameIndexSearchView$1
   implements View.OnClickListener
@@ -14,26 +15,28 @@ final class GameIndexSearchView$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(111986);
     int i;
     if ((paramView.getTag() != null) && ((paramView.getTag() instanceof String)))
     {
       paramView = (String)paramView.getTag();
-      i = c.o(GameIndexSearchView.a(this.lbX), paramView, "game_center_msgcenter");
+      i = com.tencent.mm.plugin.game.f.c.t(GameIndexSearchView.a(this.nzS), paramView, "game_center_msgcenter");
     }
     for (;;)
     {
-      com.tencent.mm.plugin.game.e.b.a(GameIndexSearchView.a(this.lbX), 14, 1401, 1, i, 0, null, this.kXE, 0, null, null, null);
+      com.tencent.mm.game.report.c.a(GameIndexSearchView.a(this.nzS), 14, 1401, 1, i, 0, null, this.nvG, 0, null, null, null);
+      AppMethodBeat.o(111986);
       return;
-      paramView = com.tencent.mm.plugin.game.model.b.aYP();
-      if (paramView.bcw == 2)
+      paramView = a.bFO();
+      if (paramView.bsY == 2)
       {
-        i = c.o(GameIndexSearchView.a(this.lbX), paramView.url, "game_center_msgcenter");
+        i = com.tencent.mm.plugin.game.f.c.t(GameIndexSearchView.a(this.nzS), paramView.url, "game_center_msgcenter");
       }
       else
       {
-        paramView = new Intent(GameIndexSearchView.a(this.lbX), GameSearchUI.class);
+        paramView = new Intent(GameIndexSearchView.a(this.nzS), GameSearchUI.class);
         paramView.putExtra("game_report_from_scene", 1001);
-        GameIndexSearchView.a(this.lbX).startActivity(paramView);
+        GameIndexSearchView.a(this.nzS).startActivity(paramView);
         i = 6;
       }
     }

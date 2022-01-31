@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.dynamic.k;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.g;
 import java.util.concurrent.CountDownLatch;
 
@@ -8,19 +9,23 @@ final class a$1
 {
   a$1(CountDownLatch paramCountDownLatch) {}
   
-  public final void aP(boolean paramBoolean)
+  public final void BN()
   {
-    this.eez.countDown();
+    AppMethodBeat.i(11034);
+    this.val$latch.countDown();
+    AppMethodBeat.o(11034);
   }
   
-  public final void tj()
+  public final void br(boolean paramBoolean)
   {
-    this.eez.countDown();
+    AppMethodBeat.i(11035);
+    this.val$latch.countDown();
+    AppMethodBeat.o(11035);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.k.a.1
  * JD-Core Version:    0.7.0.1
  */

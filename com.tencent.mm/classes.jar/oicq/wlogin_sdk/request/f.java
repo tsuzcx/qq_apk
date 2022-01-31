@@ -5,9 +5,9 @@ public final class f
 {
   public f(i parami)
   {
-    this.xqq = 2064;
-    this.xqr = 10;
-    this.xqt = parami;
+    this.CMD = 2064;
+    this.CME = 10;
+    this.CMG = parami;
   }
 }
 

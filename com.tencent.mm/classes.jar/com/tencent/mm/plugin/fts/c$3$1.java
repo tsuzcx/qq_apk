@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.fts;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.c.a;
 
 final class c$3$1
@@ -12,9 +13,11 @@ final class c$3$1
   
   public final void run()
   {
-    if (this.eal.equals(this.ktJ.bid.getTag())) {
-      c.a.a(this.ktJ.val$context.getResources(), this.ara, this.ktJ.bid);
+    AppMethodBeat.i(136523);
+    if (this.cbQ.equals(this.mPx.mPw.getTag())) {
+      c.a.a(this.mPx.val$context.getResources(), this.val$bitmap, this.mPx.mPw);
     }
+    AppMethodBeat.o(136523);
   }
 }
 

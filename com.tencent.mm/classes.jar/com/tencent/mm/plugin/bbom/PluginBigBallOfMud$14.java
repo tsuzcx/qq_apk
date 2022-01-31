@@ -1,12 +1,29 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.ck.c;
-import com.tencent.mm.plugin.messenger.foundation.a.t;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelfriend.a.a;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.g;
 
 final class PluginBigBallOfMud$14
-  implements c<t>
+  implements a.a
 {
   PluginBigBallOfMud$14(PluginBigBallOfMud paramPluginBigBallOfMud) {}
+  
+  public final String agL()
+  {
+    AppMethodBeat.i(18293);
+    if (g.ymO)
+    {
+      str = ah.getContext().getString(2131302837);
+      AppMethodBeat.o(18293);
+      return str;
+    }
+    String str = ah.getContext().getString(2131302836);
+    AppMethodBeat.o(18293);
+    return str;
+  }
 }
 
 

@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.b;
-import com.tencent.mm.plugin.topstory.ui.video.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.topstory.ui.video.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 final class d$1
@@ -13,20 +14,25 @@ final class d$1
   
   public final void run()
   {
-    com.tencent.mm.plugin.topstory.ui.video.n localn = this.pGN.pEp.bNJ();
-    int i = localn.cVn();
-    y.i("MicroMsg.TopStory.TopStoryFSVideoAdapter", "callbackToSuccess originSize: %d insertSize %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.pFy.size()) });
-    List localList = this.pFy;
+    AppMethodBeat.i(1873);
+    Object localObject1 = this.tkf.thM.cJs();
+    int i = ((n)localObject1).cKc();
+    ab.i("MicroMsg.TopStory.TopStoryFSVideoAdapter", "callbackToSuccess originSize: %d insertSize %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.tiV.size()) });
+    List localList = this.tiV;
     try
     {
-      if (!bk.dk(localList)) {
-        localn.cnS().addAll(localList);
+      if (!bo.es(localList)) {
+        ((n)localObject1).cKb().addAll(localList);
       }
-      this.pGN.bL(this.pGN.pEn.size() + i);
-      this.pGN.aj(i + this.pGN.pEn.size(), this.pFy.size());
+      localObject1 = this.tkf;
+      ((d)localObject1).bR(i + ((d)localObject1).getHeadersCount());
+      AppMethodBeat.o(1873);
       return;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(1873);
+    }
   }
 }
 

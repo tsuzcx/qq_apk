@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.perf;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -9,12 +10,20 @@ import java.util.Set;
 public class UploadVisitor
   implements Collectable, PerformanceTracer.Visitor
 {
-  private HashMap<String, Long> prefInfos = new HashMap();
+  private HashMap<String, Long> prefInfos;
+  
+  public UploadVisitor()
+  {
+    AppMethodBeat.i(128428);
+    this.prefInfos = new HashMap();
+    AppMethodBeat.o(128428);
+  }
   
   public void accept(ErrorUploadCollector paramErrorUploadCollector) {}
   
   public void accept(PlayerInfoCollector paramPlayerInfoCollector)
   {
+    AppMethodBeat.i(128430);
     if (!this.prefInfos.entrySet().isEmpty())
     {
       Iterator localIterator = this.prefInfos.entrySet().iterator();
@@ -24,10 +33,12 @@ public class UploadVisitor
         paramPlayerInfoCollector.putLong((String)localEntry.getKey(), ((Long)localEntry.getValue()).longValue());
       }
     }
+    AppMethodBeat.o(128430);
   }
   
   public void visitSpeedCheck(List<PerformanceTracer.SpeedCheck> paramList, PerformanceTracer.OverallInfo paramOverallInfo)
   {
+    AppMethodBeat.i(128429);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -35,6 +46,7 @@ public class UploadVisitor
       this.prefInfos.put(paramOverallInfo.getName() + ".ms", Long.valueOf(paramOverallInfo.getTotalTimeMs()));
       this.prefInfos.put(paramOverallInfo.getName() + ".bytes", Long.valueOf(paramOverallInfo.getTotalBufferLength()));
     }
+    AppMethodBeat.o(128429);
   }
 }
 

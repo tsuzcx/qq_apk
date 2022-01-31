@@ -1,13 +1,29 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Intent;
+import com.tencent.mm.plugin.appbrand.page.bf;
+import com.tencent.mm.plugin.appbrand.page.z;
 
-public enum f
+public abstract interface f
+  extends g
 {
-  public Map<String, f.a> gYv = new HashMap();
+  public abstract void G(Intent paramIntent);
   
-  private f() {}
+  public abstract void a(long paramLong, bf parambf);
+  
+  public abstract void a(z paramz);
+  
+  public abstract void aHD();
+  
+  public abstract h aHE();
+  
+  public abstract Intent aHF();
+  
+  public abstract o aHG();
+  
+  public abstract void aHH();
+  
+  public abstract void resetSession();
 }
 
 

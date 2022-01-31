@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.fav.b.e;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,60 +18,73 @@ final class e$1
   
   public final void run()
   {
-    if (this.bEe.getType() != 401) {}
-    do
+    AppMethodBeat.i(5388);
+    if (this.ckS.getType() != 401)
     {
-      do
+      AppMethodBeat.o(5388);
+      return;
+    }
+    if (!(this.ckS instanceof af))
+    {
+      AppMethodBeat.o(5388);
+      return;
+    }
+    e.a(this.mvn);
+    com.tencent.mm.plugin.fav.a.g localg = ((af)this.ckS).mud;
+    long l = localg.field_localId;
+    e.ajx().remove(Long.valueOf(l));
+    if (((this.val$errType == 0) && (this.val$errCode == 0)) || (this.val$errCode == -400)) {
+      e.aBJ().add(Long.valueOf(l));
+    }
+    if ((this.val$errType != 0) && (this.val$errCode != -400)) {
+      e.b(this.mvn);
+    }
+    Integer localInteger2 = Integer.valueOf(bo.a((Integer)e.access$400().get(Long.valueOf(l)), 0));
+    Integer localInteger1 = localInteger2;
+    if (this.val$errType != 1)
+    {
+      localInteger1 = localInteger2;
+      if (this.val$errType != 0)
       {
-        return;
-      } while (!(this.bEe instanceof af));
-      e.a(this.kaR);
-      com.tencent.mm.plugin.fav.a.g localg = ((af)this.bEe).jZG;
-      long l = localg.field_localId;
-      e.Qq().remove(Long.valueOf(l));
-      if (((this.bEf == 0) && (this.bEg == 0)) || (this.bEg == -400)) {
-        e.aon().add(Long.valueOf(l));
+        localInteger1 = Integer.valueOf(localInteger2.intValue() - 1);
+        e.access$400().put(Long.valueOf(localg.field_localId), localInteger1);
       }
-      if ((this.bEf != 0) && (this.bEg != -400)) {
-        e.b(this.kaR);
+    }
+    if (localInteger1.intValue() <= 0)
+    {
+      int i = com.tencent.mm.plugin.fav.a.h.en(this.val$errType, this.val$errCode);
+      com.tencent.mm.plugin.report.service.h.qsU.e(10659, new Object[] { Integer.valueOf(0), Integer.valueOf(localg.field_type), Integer.valueOf(i), Long.valueOf(b.b(localg)), Long.valueOf(com.tencent.mm.plugin.fav.a.h.jU(localg.field_localId)) });
+      e.access$400().remove(Long.valueOf(l));
+      ab.e("MicroMsg.Fav.FavSendService", "achieved retry limit, set error, localId:%d", new Object[] { Long.valueOf(l) });
+      if (localg.field_itemStatus == 12) {
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().O(14, localg.field_localId);
       }
-      Integer localInteger2 = Integer.valueOf(bk.a((Integer)e.aQV().get(Long.valueOf(l)), 0));
-      Integer localInteger1 = localInteger2;
-      if (this.bEf != 1)
+      if (localg.field_itemStatus == 9) {
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().O(11, localg.field_localId);
+      }
+    }
+    if (e.c(this.mvn) > 0)
+    {
+      if (!e.d(this.mvn))
       {
-        localInteger1 = localInteger2;
-        if (this.bEf != 0)
-        {
-          localInteger1 = Integer.valueOf(localInteger2.intValue() - 1);
-          e.aQV().put(Long.valueOf(localg.field_localId), localInteger1);
-        }
+        e.startSync();
+        AppMethodBeat.o(5388);
       }
-      if (localInteger1.intValue() <= 0)
-      {
-        int i = com.tencent.mm.plugin.fav.a.h.cP(this.bEf, this.bEg);
-        com.tencent.mm.plugin.report.service.h.nFQ.f(10659, new Object[] { Integer.valueOf(0), Integer.valueOf(localg.field_type), Integer.valueOf(i), Long.valueOf(b.b(localg)), Long.valueOf(com.tencent.mm.plugin.fav.a.h.ex(localg.field_localId)) });
-        e.aQV().remove(Long.valueOf(l));
-        y.e("MicroMsg.Fav.FavSendService", "achieved retry limit, set error, localId:%d", new Object[] { Long.valueOf(l) });
-        if (localg.field_itemStatus == 12) {
-          ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().x(14, localg.field_localId);
-        }
-        if (localg.field_itemStatus == 9) {
-          ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().x(11, localg.field_localId);
-        }
-      }
-      if (e.c(this.kaR) <= 0) {
-        break;
-      }
-    } while (e.d(this.kaR));
-    e.startSync();
-    return;
-    y.i("MicroMsg.Fav.FavSendService", "klem stopFlag <= 0 , Stop Service");
-    e.e(this.kaR);
+    }
+    else
+    {
+      ab.i("MicroMsg.Fav.FavSendService", "klem stopFlag <= 0 , Stop Service");
+      e.e(this.mvn);
+    }
+    AppMethodBeat.o(5388);
   }
   
   public final String toString()
   {
-    return super.toString() + "|onSceneEnd";
+    AppMethodBeat.i(5389);
+    String str = super.toString() + "|onSceneEnd";
+    AppMethodBeat.o(5389);
+    return str;
   }
 }
 

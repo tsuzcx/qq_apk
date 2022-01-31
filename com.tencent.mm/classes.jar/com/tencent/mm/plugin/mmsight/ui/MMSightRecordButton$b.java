@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 public abstract interface MMSightRecordButton$b
 {
-  public abstract void aKO();
+  public abstract void boX();
   
-  public abstract void aKP();
+  public abstract void boY();
   
-  public abstract void aKQ();
+  public abstract void hH();
 }
 
 

@@ -2,20 +2,18 @@ package com.tencent.mm.plugin.backup.backupmoveui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BackupMoveRecoverUI$2
   implements View.OnClickListener
 {
-  BackupMoveRecoverUI$2(BackupMoveRecoverUI paramBackupMoveRecoverUI, int paramInt) {}
+  BackupMoveRecoverUI$2(BackupMoveRecoverUI paramBackupMoveRecoverUI) {}
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.BackupMoveRecoverUI", "backupmove click stop merge button.");
-    h.a(this.hJA, R.l.backup_move_error_alert_stop_merge_tip, R.l.backup_move_error_alert_stop_merge, R.l.backup_move_recover_stop_merge, R.l.backup_cancel, false, new BackupMoveRecoverUI.2.1(this), null, R.e.backup_red);
+    AppMethodBeat.i(17386);
+    BackupMoveRecoverUI.i(this.jDc);
+    AppMethodBeat.o(17386);
   }
 }
 

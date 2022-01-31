@@ -1,16 +1,25 @@
 package com.tencent.mm.plugin.sns.storage;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public final class b$a
 {
-  public List<b.b> list = new LinkedList();
+  public List<b.b> list;
+  
+  public b$a()
+  {
+    AppMethodBeat.i(36900);
+    this.list = new LinkedList();
+    AppMethodBeat.o(36900);
+  }
   
   public final a q(Map<String, String> paramMap, String paramString)
   {
+    AppMethodBeat.i(36901);
     String str1 = paramString + ".adxml.feedbackInfo.feedbackList.item";
     int i = 0;
     if (i > 0) {}
@@ -20,16 +29,17 @@ public final class b$a
       if ((paramMap.get(str2) != null) && (((String)paramMap.get(str2)).length() > 0))
       {
         b.b localb = new b.b();
-        localb.url = bk.aM((String)paramMap.get(str2), "");
-        localb.oBI = bk.aM((String)paramMap.get(paramString + ".Wording.zh"), "");
-        localb.ovu = bk.aM((String)paramMap.get(paramString + ".Wording.en"), "");
-        localb.oBJ = bk.aM((String)paramMap.get(paramString + ".Wording.tw"), "");
-        if (localb.oBI.length() + localb.ovu.length() + localb.oBJ.length() > 0) {
+        localb.url = bo.bf((String)paramMap.get(str2), "");
+        localb.rqT = bo.bf((String)paramMap.get(paramString + ".Wording.zh"), "");
+        localb.rkp = bo.bf((String)paramMap.get(paramString + ".Wording.en"), "");
+        localb.rqU = bo.bf((String)paramMap.get(paramString + ".Wording.tw"), "");
+        if (localb.rqT.length() + localb.rkp.length() + localb.rqU.length() > 0) {
           this.list.add(localb);
         }
         i += 1;
         break;
       }
+      AppMethodBeat.o(36901);
       return this;
     }
   }

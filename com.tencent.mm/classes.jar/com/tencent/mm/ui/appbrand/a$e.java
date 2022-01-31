@@ -2,7 +2,7 @@ package com.tencent.mm.ui.appbrand;
 
 import android.content.Context;
 import android.view.MenuItem;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 
 public final class a$e
@@ -13,17 +13,21 @@ public final class a$e
     super(parama);
   }
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    super.a(paraml);
-    paraml.e(3, this.uRJ.context.getString(R.l.app_brand_service_menu_refuse_msg));
-    paraml.e(8, this.uRJ.context.getString(R.l.app_brand_service_menu_expose));
-    paraml.e(7, a.a(this.uRJ));
+    AppMethodBeat.i(29937);
+    super.onCreateMMMenu(paraml);
+    paraml.e(3, this.zgk.context.getString(2131296853));
+    paraml.e(8, this.zgk.context.getString(2131296849));
+    paraml.e(7, a.a(this.zgk));
+    AppMethodBeat.o(29937);
   }
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(29938);
     super.onMMMenuItemSelected(paramMenuItem, paramInt);
+    AppMethodBeat.o(29938);
   }
 }
 

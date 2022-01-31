@@ -5,12 +5,12 @@ import java.util.concurrent.FutureTask;
 public final class e<V>
   extends FutureTask<V>
 {
-  c rOC;
+  c vFq;
   
   public e(Runnable paramRunnable, V paramV, c paramc)
   {
     super(paramRunnable, paramV);
-    this.rOC = paramc;
+    this.vFq = paramc;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
-import com.tencent.mm.aa.b.b.a;
+import com.tencent.mm.z.b.b.a;
 import org.json.JSONObject;
 
 public final class o
@@ -11,7 +11,7 @@ public final class o
     super("triggerGettingWidgetData", -2);
   }
   
-  protected final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1) {}
+  public final void a(com.tencent.mm.z.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1) {}
 }
 
 

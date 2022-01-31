@@ -1,21 +1,55 @@
 package com.tencent.mm.pluginsdk.f;
 
 import android.content.ClipData;
+import android.content.ClipData.Item;
 import android.content.Context;
 import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class a
 {
-  public static void a(Context paramContext, CharSequence paramCharSequence1, CharSequence paramCharSequence2)
+  public static void b(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
+    AppMethodBeat.i(79446);
     if (Build.VERSION.SDK_INT >= 11)
     {
       new b();
-      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(paramCharSequence1, paramCharSequence2));
+      b.b(paramCharSequence1, paramCharSequence2);
+      AppMethodBeat.o(79446);
       return;
     }
     new c();
-    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramCharSequence2);
+    c.L(paramCharSequence2);
+    AppMethodBeat.o(79446);
+  }
+  
+  public static CharSequence dlQ()
+  {
+    AppMethodBeat.i(79447);
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      new b();
+      localObject = ((android.content.ClipboardManager)ah.getContext().getSystemService("clipboard")).getPrimaryClip();
+      if ((localObject == null) || (((ClipData)localObject).getItemCount() <= 0))
+      {
+        AppMethodBeat.o(79447);
+        return null;
+      }
+      localObject = ((ClipData)localObject).getItemAt(0);
+      if (localObject == null)
+      {
+        AppMethodBeat.o(79447);
+        return null;
+      }
+      localObject = ((ClipData.Item)localObject).getText();
+      AppMethodBeat.o(79447);
+      return localObject;
+    }
+    new c();
+    Object localObject = ((android.text.ClipboardManager)ah.getContext().getSystemService("clipboard")).getText();
+    AppMethodBeat.o(79447);
+    return localObject;
   }
 }
 

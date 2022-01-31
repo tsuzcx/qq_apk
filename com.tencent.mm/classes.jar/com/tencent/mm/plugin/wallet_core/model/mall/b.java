@@ -3,15 +3,16 @@ package com.tencent.mm.plugin.wallet_core.model.mall;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.r;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.y.c;
+import com.tencent.mm.x.c;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -20,102 +21,103 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public static int qzA = -256;
-  public static int qzB = 621019136;
-  public static int qzC = 637534720;
+  public static int umk = -256;
+  public static int uml = 621019136;
+  public static int umm = 637534720;
   
-  public static ArrayList<a> A(JSONArray paramJSONArray)
+  public static ArrayList<MallNews> F(JSONArray paramJSONArray)
   {
+    AppMethodBeat.i(47007);
     try
     {
       ArrayList localArrayList = new ArrayList();
       int j = paramJSONArray.length();
       int i = 0;
-      Object localObject;
-      for (;;)
+      while (i < j)
       {
-        localObject = localArrayList;
-        if (i >= j) {
-          break;
-        }
-        localObject = paramJSONArray.getJSONObject(i);
+        JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+        MallNews localMallNews = new MallNews(localJSONObject.optString("activity_jump_funcid"));
+        localMallNews.umr = localJSONObject.optString("activity_icon_link");
+        localMallNews.ump = localJSONObject.optString("activity_msg_content");
+        localMallNews.umt = localJSONObject.optString("activity_tips");
+        localArrayList.add(localMallNews);
+        i += 1;
+      }
+      AppMethodBeat.o(47007);
+      return localArrayList;
+    }
+    catch (JSONException paramJSONArray)
+    {
+      ab.printErrStackTrace("MicroMsg.MallLogic", paramJSONArray, "", new Object[0]);
+      AppMethodBeat.o(47007);
+    }
+    return null;
+  }
+  
+  public static ArrayList<a> G(JSONArray paramJSONArray)
+  {
+    AppMethodBeat.i(47008);
+    try
+    {
+      ArrayList localArrayList = new ArrayList();
+      int j = paramJSONArray.length();
+      int i = 0;
+      while (i < j)
+      {
+        JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
         a locala = new a();
-        locala.qzs = ((JSONObject)localObject).optInt("banner_id");
-        locala.qzt = ((JSONObject)localObject).optString("banner_title");
-        locala.qzu = ((JSONObject)localObject).optString("banner_link");
+        locala.umc = localJSONObject.optInt("banner_id");
+        locala.umd = localJSONObject.optString("banner_title");
+        locala.ume = localJSONObject.optString("banner_link");
         localArrayList.add(locala);
         i += 1;
       }
-      return localObject;
+      AppMethodBeat.o(47008);
+      return localArrayList;
     }
     catch (JSONException paramJSONArray)
     {
-      y.w("MicroMsg.MallLogic", "func[parseBannerActList], exp:" + paramJSONArray.getMessage());
-      localObject = null;
+      ab.w("MicroMsg.MallLogic", "func[parseBannerActList], exp:" + paramJSONArray.getMessage());
+      AppMethodBeat.o(47008);
     }
+    return null;
   }
   
-  public static void AQ(int paramInt)
-  {
-    if ((d.spa & qzA) == paramInt)
-    {
-      g.DQ();
-      i = ((Integer)g.DP().Dz().get(270343, Integer.valueOf(0))).intValue();
-      if (paramInt != i) {
-        y.d("MicroMsg.MallLogic", "Mall reddot show, targetV=" + paramInt + ", clickedV=" + i);
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (q.Gs()))
-      {
-        y.d("MicroMsg.MallLogic", "Show mall entry redot");
-        c.BS().v(262156, true);
-        g.DQ();
-        g.DP().Dz().o(270343, Integer.valueOf(paramInt));
-        g.DQ();
-        g.DP().Dz().c(ac.a.uwW, Long.valueOf(System.currentTimeMillis()));
-      }
-      return;
-    }
-  }
-  
-  public static SparseArray<String> B(JSONArray paramJSONArray)
+  public static SparseArray<String> H(JSONArray paramJSONArray)
   {
     int i = 0;
+    AppMethodBeat.i(47009);
     try
     {
       SparseArray localSparseArray = new SparseArray();
-      Object localObject;
-      for (;;)
+      while (i < paramJSONArray.length())
       {
-        localObject = localSparseArray;
-        if (i >= paramJSONArray.length()) {
-          break;
-        }
-        localObject = paramJSONArray.getJSONObject(i);
-        int j = ((JSONObject)localObject).optInt("type_id", 0);
+        JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+        int j = localJSONObject.optInt("type_id", 0);
         if (j != 0) {
-          localSparseArray.put(j, ((JSONObject)localObject).optString("type_name"));
+          localSparseArray.put(j, localJSONObject.optString("type_name"));
         }
         i += 1;
       }
-      return localObject;
+      AppMethodBeat.o(47009);
+      return localSparseArray;
     }
     catch (JSONException paramJSONArray)
     {
-      y.w("MicroMsg.MallLogic", "func[parseBannerActList], exp:" + paramJSONArray.getMessage());
-      localObject = null;
+      ab.w("MicroMsg.MallLogic", "func[parseBannerActList], exp:" + paramJSONArray.getMessage());
+      AppMethodBeat.o(47009);
     }
+    return null;
   }
   
-  public static ArrayList<MallFunction> C(JSONArray paramJSONArray)
+  public static ArrayList<MallFunction> I(JSONArray paramJSONArray)
   {
+    AppMethodBeat.i(47012);
     try
     {
       ArrayList localArrayList = new ArrayList();
       int k = paramJSONArray.length();
-      y.d("MicroMsg.MallLogic", "functions.jsonArray.length : " + k);
+      ab.d("MicroMsg.MallLogic", "functions.jsonArray.length : ".concat(String.valueOf(k)));
       int i = 0;
       Object localObject1;
       for (;;)
@@ -126,45 +128,45 @@ public final class b
         }
         Object localObject2 = paramJSONArray.getJSONObject(i);
         localObject1 = new MallFunction();
-        ((MallFunction)localObject1).npy = ((JSONObject)localObject2).getString("func_id");
-        ((MallFunction)localObject1).caU = ((JSONObject)localObject2).getString("func_name");
-        ((MallFunction)localObject1).qzv = ((JSONObject)localObject2).optString("func_icon_url");
-        ((MallFunction)localObject1).lZc = ((JSONObject)localObject2).optString("hd_icon_url");
-        ((MallFunction)localObject1).lZd = ((JSONObject)localObject2).optString("func_foregroud_icon_url");
-        ((MallFunction)localObject1).ceb = ((JSONObject)localObject2).optString("native_url");
-        ((MallFunction)localObject1).lfj = ((JSONObject)localObject2).optString("h5_url");
+        ((MallFunction)localObject1).pUM = ((JSONObject)localObject2).getString("func_id");
+        ((MallFunction)localObject1).cJt = ((JSONObject)localObject2).getString("func_name");
+        ((MallFunction)localObject1).umf = ((JSONObject)localObject2).optString("func_icon_url");
+        ((MallFunction)localObject1).oyK = ((JSONObject)localObject2).optString("hd_icon_url");
+        ((MallFunction)localObject1).oyL = ((JSONObject)localObject2).optString("func_foregroud_icon_url");
+        ((MallFunction)localObject1).cMO = ((JSONObject)localObject2).optString("native_url");
+        ((MallFunction)localObject1).nDe = ((JSONObject)localObject2).optString("h5_url");
         ((MallFunction)localObject1).type = ((JSONObject)localObject2).optInt("property_type", 0);
-        ((MallFunction)localObject1).qzy = ((JSONObject)localObject2).optString("third_party_disclaimer");
-        ((MallFunction)localObject1).qzz = ((JSONObject)localObject2).optInt("download_restrict", 0);
+        ((MallFunction)localObject1).umi = ((JSONObject)localObject2).optString("third_party_disclaimer");
+        ((MallFunction)localObject1).umj = ((JSONObject)localObject2).optInt("download_restrict", 0);
         Object localObject3 = ((JSONObject)localObject2).optJSONArray("remark_name_list");
         if (localObject3 != null)
         {
-          ((MallFunction)localObject1).qzw = new ArrayList();
+          ((MallFunction)localObject1).umg = new ArrayList();
           int m = ((JSONArray)localObject3).length();
           int j = 0;
           while (j < m)
           {
-            ((MallFunction)localObject1).qzw.add(((JSONArray)localObject3).getString(j));
+            ((MallFunction)localObject1).umg.add(((JSONArray)localObject3).getString(j));
             j += 1;
           }
         }
         localObject3 = ((JSONObject)localObject2).optJSONArray("activity_info_list");
         if ((localObject3 != null) && (((JSONArray)localObject3).length() != 0))
         {
-          localObject2 = ((MallFunction)localObject1).npy;
+          localObject2 = ((MallFunction)localObject1).pUM;
           localObject3 = ((JSONArray)localObject3).getJSONObject(0);
           localObject2 = new MallNews((String)localObject2);
-          ((MallNews)localObject2).pva = ((JSONObject)localObject3).optString("activity_id");
-          ((MallNews)localObject2).bJY = ((JSONObject)localObject3).optString("activity_ticket");
-          ((MallNews)localObject2).qzF = ((JSONObject)localObject3).optString("activity_msg_content");
-          ((MallNews)localObject2).qzG = ((JSONObject)localObject3).optString("activity_link");
-          ((MallNews)localObject2).qzH = ((JSONObject)localObject3).optString("activity_icon_link");
-          ((MallNews)localObject2).qzI = ((JSONObject)localObject3).optInt("activity_expired_time");
-          ((MallNews)localObject2).qzJ = ((JSONObject)localObject3).optString("activity_tips");
-          ((MallNews)localObject2).qxA = ((JSONObject)localObject3).optInt("activity_type");
-          ((MallNews)localObject2).qzM = ((JSONObject)localObject3).optString("activity_url");
-          ((MallNews)localObject2).qzK = ((JSONObject)localObject3).optInt("is_msg_reserved");
-          ((MallFunction)localObject1).qzx = ((MallNews)localObject2);
+          ((MallNews)localObject2).sWB = ((JSONObject)localObject3).optString("activity_id");
+          ((MallNews)localObject2).crs = ((JSONObject)localObject3).optString("activity_ticket");
+          ((MallNews)localObject2).ump = ((JSONObject)localObject3).optString("activity_msg_content");
+          ((MallNews)localObject2).umq = ((JSONObject)localObject3).optString("activity_link");
+          ((MallNews)localObject2).umr = ((JSONObject)localObject3).optString("activity_icon_link");
+          ((MallNews)localObject2).ums = ((JSONObject)localObject3).optInt("activity_expired_time");
+          ((MallNews)localObject2).umt = ((JSONObject)localObject3).optString("activity_tips");
+          ((MallNews)localObject2).uki = ((JSONObject)localObject3).optInt("activity_type");
+          ((MallNews)localObject2).umw = ((JSONObject)localObject3).optString("activity_url");
+          ((MallNews)localObject2).umu = ((JSONObject)localObject3).optInt("is_msg_reserved");
+          ((MallFunction)localObject1).umh = ((MallNews)localObject2);
         }
         localArrayList.add(localObject1);
         i += 1;
@@ -173,88 +175,95 @@ public final class b
     }
     catch (JSONException paramJSONArray)
     {
-      y.printErrStackTrace("MicroMsg.MallLogic", paramJSONArray, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.MallLogic", paramJSONArray, "", new Object[0]);
       localObject1 = null;
+      AppMethodBeat.o(47012);
     }
   }
   
-  public static String bWf()
+  public static void IB(int paramInt)
   {
-    TelephonyManager localTelephonyManager = (TelephonyManager)ae.getContext().getSystemService("phone");
-    if (localTelephonyManager != null) {
-      return localTelephonyManager.getNetworkCountryIso();
+    AppMethodBeat.i(47014);
+    if ((d.whH & umk) == paramInt)
+    {
+      g.RM();
+      i = ((Integer)g.RL().Ru().get(270343, Integer.valueOf(0))).intValue();
+      if (paramInt != i) {
+        ab.d("MicroMsg.MallLogic", "Mall reddot show, targetV=" + paramInt + ", clickedV=" + i);
+      }
     }
-    return "";
+    for (int i = 1;; i = 0)
+    {
+      if ((i != 0) && (r.Zw()))
+      {
+        ab.d("MicroMsg.MallLogic", "Show mall entry redot");
+        c.PJ().x(262156, true);
+        g.RM();
+        g.RL().Ru().set(270343, Integer.valueOf(paramInt));
+        g.RM();
+        g.RL().Ru().set(ac.a.yHf, Long.valueOf(System.currentTimeMillis()));
+      }
+      AppMethodBeat.o(47014);
+      return;
+    }
   }
   
-  public static boolean cT(List<a> paramList)
+  public static String cUW()
   {
-    g.DQ();
-    int j = ((Integer)g.DP().Dz().get(270342, Integer.valueOf(0))).intValue();
+    AppMethodBeat.i(47013);
+    Object localObject = (TelephonyManager)ah.getContext().getSystemService("phone");
+    if (localObject != null) {}
+    for (localObject = ((TelephonyManager)localObject).getNetworkCountryIso();; localObject = "")
+    {
+      AppMethodBeat.o(47013);
+      return localObject;
+    }
+  }
+  
+  public static boolean dW(List<a> paramList)
+  {
+    AppMethodBeat.i(47010);
+    g.RM();
+    int j = ((Integer)g.RL().Ru().get(270342, Integer.valueOf(0))).intValue();
     if (paramList != null)
     {
       int i = paramList.size() - 1;
       while (i >= 0)
       {
-        y.d("MicroMsg.MallLogic", "i:" + i + ", lastClickedListMaxId:" + j + ", actId:" + ((a)paramList.get(i)).qzs);
-        if (((a)paramList.get(i)).qzs > j) {
+        ab.d("MicroMsg.MallLogic", "i:" + i + ", lastClickedListMaxId:" + j + ", actId:" + ((a)paramList.get(i)).umc);
+        if (((a)paramList.get(i)).umc > j)
+        {
+          AppMethodBeat.o(47010);
           return true;
         }
         i -= 1;
       }
     }
+    AppMethodBeat.o(47010);
     return false;
   }
   
-  public static void cU(List<a> paramList)
+  public static void dX(List<a> paramList)
   {
+    AppMethodBeat.i(47011);
     if ((paramList == null) || (paramList.size() <= 0))
     {
-      y.w("MicroMsg.MallLogic", "func[setBannerRedDotClick] actList null or empty");
+      ab.w("MicroMsg.MallLogic", "func[setBannerRedDotClick] actList null or empty");
+      AppMethodBeat.o(47011);
       return;
     }
-    int i = ((a)paramList.get(0)).qzs;
-    y.d("MicroMsg.MallLogic", "func[setBannerRedDotClick], lastClickedListMaxId" + i);
-    g.DQ();
-    g.DP().Dz().o(270342, Integer.valueOf(i));
-    g.DQ();
-    g.DP().Dz().mC(true);
-  }
-  
-  public static ArrayList<MallNews> z(JSONArray paramJSONArray)
-  {
-    try
-    {
-      ArrayList localArrayList = new ArrayList();
-      int j = paramJSONArray.length();
-      int i = 0;
-      Object localObject;
-      for (;;)
-      {
-        localObject = localArrayList;
-        if (i >= j) {
-          break;
-        }
-        localObject = paramJSONArray.getJSONObject(i);
-        MallNews localMallNews = new MallNews(((JSONObject)localObject).optString("activity_jump_funcid"));
-        localMallNews.qzH = ((JSONObject)localObject).optString("activity_icon_link");
-        localMallNews.qzF = ((JSONObject)localObject).optString("activity_msg_content");
-        localMallNews.qzJ = ((JSONObject)localObject).optString("activity_tips");
-        localArrayList.add(localMallNews);
-        i += 1;
-      }
-      return localObject;
-    }
-    catch (JSONException paramJSONArray)
-    {
-      y.printErrStackTrace("MicroMsg.MallLogic", paramJSONArray, "", new Object[0]);
-      localObject = null;
-    }
+    int i = ((a)paramList.get(0)).umc;
+    ab.d("MicroMsg.MallLogic", "func[setBannerRedDotClick], lastClickedListMaxId".concat(String.valueOf(i)));
+    g.RM();
+    g.RL().Ru().set(270342, Integer.valueOf(i));
+    g.RM();
+    g.RL().Ru().dww();
+    AppMethodBeat.o(47011);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.mall.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.model;
 
 public abstract interface d$b
 {
-  public abstract void b(boolean paramBoolean, String paramString1, String paramString2, String paramString3);
+  public abstract void b(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4);
 }
 
 

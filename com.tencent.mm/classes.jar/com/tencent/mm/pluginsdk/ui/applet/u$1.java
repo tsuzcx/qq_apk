@@ -1,21 +1,23 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.content.Context;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import com.tencent.mm.ui.base.h;
 
 final class u$1
-  implements am.a
+  implements ap.a
 {
   u$1(u paramu) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    u localu = this.sdw;
-    Context localContext = this.sdw.context;
-    this.sdw.context.getString(R.l.app_tip);
-    localu.ksE = h.b(localContext, this.sdw.context.getString(R.l.app_waiting), true, new u.1.1(this));
+    AppMethodBeat.i(27722);
+    u localu = this.vUB;
+    Context localContext = this.vUB.context;
+    this.vUB.context.getString(2131297087);
+    localu.mOt = h.b(localContext, this.vUB.context.getString(2131297112), true, new u.1.1(this));
+    AppMethodBeat.o(27722);
     return false;
   }
 }

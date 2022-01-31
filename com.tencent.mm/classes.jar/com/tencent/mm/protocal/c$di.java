@@ -5,7 +5,7 @@ public final class c$di
 {
   public c$di()
   {
-    super("insertSearchWAWidgetView", "", 10000, false);
+    super("getWXDeviceTicket", "getWXDeviceTicket", 125, true);
   }
 }
 

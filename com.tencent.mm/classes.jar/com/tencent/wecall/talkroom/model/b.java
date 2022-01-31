@@ -1,5 +1,6 @@
 package com.tencent.wecall.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multi.talk;
 import com.tencent.pb.common.a.a;
 import com.tencent.pb.common.c.c;
@@ -7,29 +8,39 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class b
 {
-  talk xdr = new talk();
+  talk BzZ;
   
   public b()
   {
-    c.d("simon:TalkRoomContext", new Object[] { "construct" });
+    AppMethodBeat.i(127789);
+    this.BzZ = new talk();
+    c.i("simon:TalkRoomContext", new Object[] { "construct engine:", this.BzZ });
+    AppMethodBeat.o(127789);
   }
   
   public final int Close()
   {
-    if (!a.wFa) {
+    AppMethodBeat.i(127791);
+    if (!a.BcB)
+    {
+      AppMethodBeat.o(127791);
       return 0;
     }
     try
     {
-      i = this.xdr.close();
-      c.d("simon:TalkRoomContext", new Object[] { "Close ret: ", Integer.valueOf(i) });
-      return i;
+      if (this.BzZ != null)
+      {
+        i = this.BzZ.close();
+        c.i("simon:TalkRoomContext", new Object[] { "Close ret: ", Integer.valueOf(i) });
+        AppMethodBeat.o(127791);
+        return i;
+      }
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        c.x("simon:TalkRoomContext", new Object[] { "Close ", localThrowable });
+        c.w("simon:TalkRoomContext", new Object[] { "Close ", localThrowable });
         int i = 0;
       }
     }
@@ -37,56 +48,85 @@ public final class b
   
   public final void OnMembersChanged(int[] paramArrayOfInt)
   {
-    if (!a.wFa) {
+    AppMethodBeat.i(127792);
+    if ((!a.BcB) || (this.BzZ == null))
+    {
+      AppMethodBeat.o(127792);
       return;
     }
-    this.xdr.OnMembersChanged(paramArrayOfInt);
+    this.BzZ.OnMembersChanged(paramArrayOfInt);
+    AppMethodBeat.o(127792);
   }
   
-  public final byte[] cRA()
+  public final byte[] dXs()
   {
-    if (!a.wFa) {
+    if ((!a.BcB) || (this.BzZ == null)) {
       return new byte[0];
     }
-    return this.xdr.field_capInfo;
+    return this.BzZ.field_capInfo;
   }
   
-  public final int cRB()
+  public final void dXt()
   {
+    if ((!a.BcB) || (this.BzZ == null)) {
+      return;
+    }
+    this.BzZ.field_capInfo = null;
+  }
+  
+  public final int dXu()
+  {
+    AppMethodBeat.i(127793);
     try
     {
-      if (!a.wFa) {
+      if (a.BcB)
+      {
+        localObject = this.BzZ;
+        if (localObject != null) {}
+      }
+      else
+      {
+        AppMethodBeat.o(127793);
         return 0;
       }
-      AtomicInteger localAtomicInteger1 = new AtomicInteger();
-      AtomicInteger localAtomicInteger2 = new AtomicInteger();
-      this.xdr.getChannelBytes(localAtomicInteger1, localAtomicInteger2);
-      int i = localAtomicInteger2.get();
+      Object localObject = new AtomicInteger();
+      AtomicInteger localAtomicInteger = new AtomicInteger();
+      this.BzZ.getChannelBytes((AtomicInteger)localObject, localAtomicInteger);
+      int i = localAtomicInteger.get();
+      AppMethodBeat.o(127793);
       return i;
     }
     catch (Throwable localThrowable)
     {
-      c.x("simon:TalkRoomContext", new Object[] { "getTotalWWANBytes: ", localThrowable });
+      c.w("simon:TalkRoomContext", new Object[] { "getTotalWWANBytes: ", localThrowable });
+      AppMethodBeat.o(127793);
     }
     return 0;
   }
   
   public final int uninitLive()
   {
-    if (!a.wFa) {
+    AppMethodBeat.i(127790);
+    if (!a.BcB)
+    {
+      AppMethodBeat.o(127790);
       return 0;
     }
     try
     {
-      i = this.xdr.uninit();
-      c.d("simon:TalkRoomContext", new Object[] { "uninitLive ret: ", Integer.valueOf(i) });
-      return i;
+      if (this.BzZ != null)
+      {
+        i = this.BzZ.uninit();
+        c.i("simon:TalkRoomContext", new Object[] { "uninitLive ret: ", Integer.valueOf(i) });
+        AppMethodBeat.o(127790);
+        return i;
+      }
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        c.x("simon:TalkRoomContext", new Object[] { "uninitLive ", localThrowable });
+        c.w("simon:TalkRoomContext", new Object[] { "uninitLive ", localThrowable });
         int i = 0;
       }
     }

@@ -1,40 +1,47 @@
 package com.tencent.mm.plugin.card.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.a;
 import com.tencent.mm.plugin.card.model.am;
 
 public final class d
   implements a
 {
-  private c irL;
+  private c ksS;
   
   public d(c paramc)
   {
-    this.irL = paramc;
+    this.ksS = paramc;
   }
   
-  public final void HL()
+  public final void aaK()
   {
-    if (this.irL != null) {
-      this.irL.a(null, null);
+    AppMethodBeat.i(88253);
+    if (this.ksS != null) {
+      this.ksS.a(null, null);
     }
+    AppMethodBeat.o(88253);
   }
   
   public final void onCreate()
   {
-    if (this.irL != null) {
-      am.aAs().c(this.irL);
+    AppMethodBeat.i(88251);
+    if (this.ksS != null) {
+      am.bcd().add(this.ksS);
     }
+    AppMethodBeat.o(88251);
   }
   
   public final void onDestroy()
   {
-    if (this.irL != null)
+    AppMethodBeat.i(88252);
+    if (this.ksS != null)
     {
-      am.aAs().d(this.irL);
-      this.irL.release();
-      this.irL = null;
+      am.bcd().remove(this.ksS);
+      this.ksS.release();
+      this.ksS = null;
     }
+    AppMethodBeat.o(88252);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.mmsight.ui.progressbar;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.wcdb.support.Log;
 import java.util.List;
 
@@ -11,28 +12,32 @@ final class MMSightProgressBar$1$1
   
   public final void a(a parama)
   {
-    MMSightProgressBar.b(this.mrm.mrl).add(parama);
-    MMSightProgressBar.a(this.mrm.mrl, null);
-    if (MMSightProgressBar.b(this.mrm.mrl).size() >= 5)
+    AppMethodBeat.i(55333);
+    MMSightProgressBar.b(this.oRa.oQZ).add(parama);
+    MMSightProgressBar.a(this.oRa.oQZ, null);
+    if (MMSightProgressBar.b(this.oRa.oQZ).size() >= 5)
     {
       Log.i("MicroMsg.MMSightProgressBar", "progress finish!");
-      if (MMSightProgressBar.e(this.mrm.mrl) != null) {
-        MMSightProgressBar.e(this.mrm.mrl);
+      if (MMSightProgressBar.e(this.oRa.oQZ) != null) {
+        MMSightProgressBar.e(this.oRa.oQZ);
       }
     }
     for (;;)
     {
-      this.mrm.mrl.invalidate();
+      this.oRa.oQZ.invalidate();
+      AppMethodBeat.o(55333);
       return;
-      if (MMSightProgressBar.a(this.mrm.mrl)) {
-        MMSightProgressBar.f(this.mrm.mrl).sendEmptyMessage(233);
+      if (MMSightProgressBar.a(this.oRa.oQZ)) {
+        MMSightProgressBar.f(this.oRa.oQZ).sendEmptyMessage(233);
       }
     }
   }
   
-  public final void bkm()
+  public final void bSn()
   {
-    this.mrm.mrl.invalidate();
+    AppMethodBeat.i(55334);
+    this.oRa.oQZ.invalidate();
+    AppMethodBeat.o(55334);
   }
 }
 

@@ -1,464 +1,237 @@
 package com.google.android.exoplayer2.c.a;
 
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.c.e;
 import com.google.android.exoplayer2.c.f;
 import com.google.android.exoplayer2.c.g;
 import com.google.android.exoplayer2.c.h;
-import com.google.android.exoplayer2.c.i;
 import com.google.android.exoplayer2.c.k;
-import com.google.android.exoplayer2.i.j;
-import com.google.android.exoplayer2.i.t;
-import com.google.android.exoplayer2.metadata.Metadata;
-import com.google.android.exoplayer2.metadata.id3.CommentFrame;
-import com.google.android.exoplayer2.metadata.id3.a.a;
-import com.google.android.exoplayer2.o;
-import java.io.EOFException;
+import com.google.android.exoplayer2.c.l;
+import com.google.android.exoplayer2.i.m;
+import com.google.android.exoplayer2.i.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  implements com.google.android.exoplayer2.c.d
+  implements com.google.android.exoplayer2.c.e, l
 {
-  public static final g azq = new g() {};
-  private static final int azr = t.aG("Xing");
-  private static final int azs = t.aG("Info");
-  private static final int azt = t.aG("VBRI");
-  private Metadata auq;
-  private int azA;
-  private b.a azB;
-  private long azC;
-  private long azD;
-  private int azE;
-  private final long azu;
-  private final j azv;
-  private final i azw;
-  private final h azx;
-  private f azy;
-  private k azz;
-  private final int flags = 0;
+  public static final h aBP;
+  private static final int aBQ;
+  private final m aBR;
+  private final m aBS;
+  private final m aBT;
+  private final m aBU;
+  private g aBV;
+  private int aBW;
+  private int aBX;
+  public int aBY;
+  public int aBZ;
+  public long aCa;
+  private a aCb;
+  private e aCc;
+  private c aCd;
+  
+  static
+  {
+    AppMethodBeat.i(94868);
+    aBP = new b.1();
+    aBQ = x.aS("FLV");
+    AppMethodBeat.o(94868);
+  }
   
   public b()
   {
-    this((byte)0);
+    AppMethodBeat.i(94864);
+    this.aBR = new m(4);
+    this.aBS = new m(9);
+    this.aBT = new m(11);
+    this.aBU = new m();
+    this.aBW = 1;
+    AppMethodBeat.o(94864);
   }
   
-  private b(byte paramByte)
+  private m b(f paramf)
   {
-    this(-9223372036854775807L);
-  }
-  
-  public b(long paramLong)
-  {
-    this.azu = paramLong;
-    this.azv = new j(10);
-    this.azw = new i();
-    this.azx = new h();
-    this.azC = -9223372036854775807L;
-  }
-  
-  private b.a b(e parame)
-  {
-    parame.b(this.azv.data, 0, 4);
-    this.azv.setPosition(0);
-    i.a(this.azv.readInt(), this.azw);
-    return new a(parame.getPosition(), this.azw.bitrate, parame.getLength());
-  }
-  
-  private static boolean f(int paramInt, long paramLong)
-  {
-    return (0xFFFE0C00 & paramInt) == (0xFFFE0C00 & paramLong);
-  }
-  
-  public final int a(e parame)
-  {
-    int m;
-    int n;
-    int i1;
-    if (this.azA == 0)
-    {
-      m = 0;
-      n = 0;
-      i1 = 0;
+    AppMethodBeat.i(94867);
+    if (this.aBZ > this.aBU.capacity()) {
+      this.aBU.l(new byte[Math.max(this.aBU.capacity() * 2, this.aBZ)], 0);
     }
     for (;;)
     {
-      int j;
-      try
+      this.aBU.em(this.aBZ);
+      paramf.readFully(this.aBU.data, 0, this.aBZ);
+      paramf = this.aBU;
+      AppMethodBeat.o(94867);
+      return paramf;
+      this.aBU.setPosition(0);
+    }
+  }
+  
+  public final long E(long paramLong)
+  {
+    return 0L;
+  }
+  
+  public final int a(f paramf, k paramk)
+  {
+    AppMethodBeat.i(94866);
+    for (;;)
+    {
+      switch (this.aBW)
       {
-        parame.lT();
-        int i = n;
-        int k = i1;
-        j = m;
-        Object localObject2;
-        Object localObject3;
-        if (parame.getPosition() == 0L)
+      default: 
+        break;
+      case 1: 
+        if (!paramf.a(this.aBS.data, 0, 9, true))
         {
           i = 0;
-          parame.b(this.azv.data, 0, 10);
-          this.azv.setPosition(0);
-          if (this.azv.of() == com.google.android.exoplayer2.metadata.id3.a.aDc)
+          if (i == 0)
           {
-            this.azv.dB(3);
-            j = this.azv.og();
-            k = j + 10;
-            if (this.auq == null)
-            {
-              localObject2 = new byte[k];
-              System.arraycopy(this.azv.data, 0, localObject2, 0, 10);
-              parame.b((byte[])localObject2, 10, j);
-              if ((this.flags & 0x2) == 0) {
-                continue;
-              }
-              localObject1 = h.aze;
-              this.auq = new com.google.android.exoplayer2.metadata.id3.a((a.a)localObject1).c((byte[])localObject2, k);
-              if (this.auq == null) {
-                continue;
-              }
-              localObject1 = this.azx;
-              localObject2 = this.auq;
-              j = 0;
-              if (j >= ((Metadata)localObject2).aGI.length) {
-                continue;
-              }
-              localObject3 = localObject2.aGI[j];
-              if ((localObject3 instanceof CommentFrame))
-              {
-                localObject3 = (CommentFrame)localObject3;
-                if (((h)localObject1).k(((CommentFrame)localObject3).description, ((CommentFrame)localObject3).text)) {
-                  continue;
-                }
-              }
-            }
-            else
-            {
-              parame.cM(j);
-              continue;
-            }
-          }
-          else
-          {
-            parame.lT();
-            parame.cM(i);
-            parame.cL((int)parame.lU());
-            j = m;
-            k = i1;
-            i = n;
+            AppMethodBeat.o(94866);
+            return -1;
           }
         }
         else
         {
-          localObject1 = this.azv.data;
-          if (j <= 0) {
-            break label1836;
-          }
-          bool = true;
-          if (parame.b((byte[])localObject1, 0, 4, bool))
+          this.aBS.setPosition(0);
+          this.aBS.en(4);
+          int j = this.aBS.readUnsignedByte();
+          if ((j & 0x4) != 0)
           {
-            this.azv.setPosition(0);
-            m = this.azv.readInt();
-            if ((i == 0) || (f(m, i)))
-            {
-              n = i.cR(m);
-              if (n != -1) {}
+            i = 1;
+            if ((j & 0x1) == 0) {
+              break label255;
             }
-            else
-            {
-              if (k == 131072) {
-                throw new o("Searched too many bytes.");
-              }
-              j = 0;
-              i = 0;
-              parame.cL(1);
-              k += 1;
-              continue;
-            }
-            j += 1;
-            if (j != 1) {
-              break label1842;
-            }
-            i.a(m, this.azw);
-            i = m;
-            parame.cM(n - 4);
-            continue;
           }
-          parame.lT();
-          this.azA = i;
-          if (this.azB == null)
+          for (j = 1;; j = 0)
           {
-            localObject1 = new j(this.azw.avQ);
-            parame.b(((j)localObject1).data, 0, this.azw.avQ);
-            if ((this.azw.version & 0x1) == 0) {
-              continue;
+            if ((i != 0) && (this.aCb == null)) {
+              this.aCb = new a(this.aBV.dm(8));
             }
-            if (this.azw.channels != 1)
-            {
-              i = 36;
-              if (((j)localObject1).limit < i + 4) {
-                continue;
-              }
-              ((j)localObject1).setPosition(i);
-              j = ((j)localObject1).readInt();
-              if ((j != azr) && (j != azs)) {
-                continue;
-              }
-              if ((j != azr) && (j != azs)) {
-                continue;
-              }
-              localObject2 = this.azw;
-              l2 = parame.getPosition();
-              l1 = parame.getLength();
-              k = ((i)localObject2).azn;
-              m = ((i)localObject2).sampleRate;
-              l2 += ((i)localObject2).avQ;
-              n = ((j)localObject1).readInt();
-              if ((n & 0x1) == 1)
-              {
-                i1 = ((j)localObject1).oh();
-                if (i1 != 0) {
-                  continue;
-                }
-              }
-              localObject1 = null;
-              if (localObject1 != null)
-              {
-                localObject2 = this.azx;
-                if ((((h)localObject2).auE == -1) || (((h)localObject2).auF == -1)) {
-                  continue;
-                }
-                k = 1;
-                if (k == 0)
-                {
-                  parame.lT();
-                  parame.cM(i + 141);
-                  parame.b(this.azv.data, 0, 3);
-                  this.azv.setPosition(0);
-                  localObject2 = this.azx;
-                  k = this.azv.of();
-                  i = k >> 12;
-                  k &= 0xFFF;
-                  if ((i > 0) || (k > 0))
-                  {
-                    ((h)localObject2).auE = i;
-                    ((h)localObject2).auF = k;
-                  }
-                }
-              }
-              parame.cL(this.azw.avQ);
-              localObject2 = localObject1;
-              if (localObject1 != null)
-              {
-                localObject2 = localObject1;
-                if (!((b.a)localObject1).lS())
-                {
-                  localObject2 = localObject1;
-                  if (j == azs) {
-                    localObject2 = b(parame);
-                  }
-                }
-              }
-              this.azB = ((b.a)localObject2);
-              if ((this.azB == null) || ((!this.azB.lS()) && ((this.flags & 0x1) != 0))) {
-                this.azB = b(parame);
-              }
-              localObject2 = this.azz;
-              localObject3 = this.azw.mimeType;
-              i = this.azw.channels;
-              j = this.azw.sampleRate;
-              k = this.azx.auE;
-              m = this.azx.auF;
-              if ((this.flags & 0x2) == 0) {
-                continue;
-              }
-              localObject1 = null;
-              ((k)localObject2).f(Format.a(null, (String)localObject3, -1, 4096, i, j, -1, k, m, null, null, null, (Metadata)localObject1));
+            if ((j != 0) && (this.aCc == null)) {
+              this.aCc = new e(this.aBV.dm(9));
             }
-          }
-          else
-          {
-            if (this.azE != 0) {
-              continue;
+            if (this.aCd == null) {
+              this.aCd = new c();
             }
-            parame.lT();
-            if (parame.b(this.azv.data, 0, 4, true)) {
-              continue;
-            }
-            return -1;
+            this.aBV.nZ();
+            this.aBV.a(this);
+            this.aBX = (this.aBS.readInt() - 9 + 4);
+            this.aBW = 2;
+            i = 1;
+            break;
+            i = 0;
+            break label110;
           }
-          i = 21;
-          continue;
-          if (this.azw.channels != 1)
-          {
-            i = 21;
-            continue;
-          }
-          i = 13;
-          continue;
-          if (((j)localObject1).limit >= 40)
-          {
-            ((j)localObject1).setPosition(36);
-            if (((j)localObject1).readInt() == azt)
-            {
-              j = azt;
-              continue;
-            }
-          }
-          j = 0;
-          continue;
-          long l3 = t.b(i1, k * 1000000L, m);
-          if ((n & 0x6) != 6)
-          {
-            localObject1 = new d(l2, l3, l1);
-            continue;
-          }
-          long l4 = ((j)localObject1).oh();
-          ((j)localObject1).dB(1);
-          localObject3 = new long[99];
-          k = 0;
-          if (k < 99)
-          {
-            localObject3[k] = ((j)localObject1).readUnsignedByte();
-            k += 1;
-            continue;
-          }
-          localObject1 = new d(l2, l3, l1, (long[])localObject3, l4, ((i)localObject2).avQ);
-          continue;
-          k = 0;
-          continue;
-          if (j == azt)
-          {
-            localObject2 = this.azw;
-            l1 = parame.getPosition();
-            l3 = parame.getLength();
-            ((j)localObject1).dB(10);
-            i = ((j)localObject1).readInt();
-            if (i <= 0)
-            {
-              localObject2 = null;
-              parame.cL(this.azw.avQ);
-              continue;
-            }
-            j = ((i)localObject2).sampleRate;
-            l2 = i;
-            if (j >= 32000)
-            {
-              i = 1152;
-              l4 = t.b(l2, i * 1000000L, j);
-              k = ((j)localObject1).readUnsignedShort();
-              m = ((j)localObject1).readUnsignedShort();
-              n = ((j)localObject1).readUnsignedShort();
-              ((j)localObject1).dB(2);
-              l1 += ((i)localObject2).avQ;
-              localObject2 = new long[k + 1];
-              localObject3 = new long[k + 1];
-              localObject2[0] = 0L;
-              localObject3[0] = l1;
-              j = 1;
-              if (j >= localObject2.length) {}
-            }
-            else
-            {
-              switch (n)
-              {
-              default: 
-                localObject2 = null;
-                continue;
-                i = 576;
-                break;
-              case 1: 
-                i = ((j)localObject1).readUnsignedByte();
-                l1 += i * m;
-                localObject2[j] = (j * l4 / k);
-                if (l3 == -1L)
-                {
-                  l2 = l1;
-                  localObject3[j] = l2;
-                  j += 1;
-                }
-                break;
-              case 2: 
-                i = ((j)localObject1).readUnsignedShort();
-                break;
-              case 3: 
-                i = ((j)localObject1).of();
-                break;
-              case 4: 
-                i = ((j)localObject1).oh();
-                continue;
-                l2 = Math.min(l3, l1);
-                break;
-              }
-            }
-            localObject2 = new c((long[])localObject2, (long[])localObject3, l4);
-            continue;
-          }
-          localObject2 = null;
-          parame.lT();
-          continue;
-          localObject1 = this.auq;
-          continue;
-          this.azv.setPosition(0);
-          i = this.azv.readInt();
-          if ((!f(i, this.azA)) || (i.cR(i) == -1))
-          {
-            parame.cL(1);
-            this.azA = 0;
-            return 0;
-          }
-          i.a(i, this.azw);
-          if (this.azC == -9223372036854775807L)
-          {
-            this.azC = this.azB.F(parame.getPosition());
-            if (this.azu != -9223372036854775807L)
-            {
-              l1 = this.azB.F(0L);
-              l2 = this.azC;
-              this.azC = (this.azu - l1 + l2);
-            }
-          }
-          this.azE = this.azw.avQ;
-          i = this.azz.a(parame, this.azE, true);
-          if (i == -1) {
-            return -1;
-          }
-          this.azE -= i;
-          if (this.azE > 0) {
-            return 0;
-          }
-          long l1 = this.azC;
-          long l2 = this.azD * 1000000L / this.azw.sampleRate;
-          this.azz.a(l2 + l1, 1, this.azw.avQ, 0, null);
-          this.azD += this.azw.azn;
-          this.azE = 0;
-          return 0;
         }
-        j += 1;
-        continue;
-        Object localObject1 = null;
-        continue;
-        i += k;
-        continue;
-        boolean bool = false;
+        break;
+      case 2: 
+        label110:
+        label255:
+        paramf.dg(this.aBX);
+        this.aBX = 0;
+        this.aBW = 3;
       }
-      catch (EOFException parame)
+    }
+    if (!paramf.a(this.aBT.data, 0, 11, true)) {}
+    for (int i = 0; i == 0; i = 1)
+    {
+      AppMethodBeat.o(94866);
+      return -1;
+      this.aBT.setPosition(0);
+      this.aBY = this.aBT.readUnsignedByte();
+      this.aBZ = this.aBT.qO();
+      this.aCa = this.aBT.qO();
+      this.aCa = ((this.aBT.readUnsignedByte() << 24 | this.aCa) * 1000L);
+      this.aBT.en(3);
+      this.aBW = 4;
+    }
+    if ((this.aBY == 8) && (this.aCb != null))
+    {
+      this.aCb.b(b(paramf), this.aCa);
+      i = 1;
+    }
+    for (;;)
+    {
+      this.aBX = 4;
+      this.aBW = 2;
+      if (i == 0) {
+        break;
+      }
+      AppMethodBeat.o(94866);
+      return 0;
+      if ((this.aBY == 9) && (this.aCc != null))
       {
-        return -1;
+        this.aCc.b(b(paramf), this.aCa);
+        i = 1;
       }
-      label1836:
-      continue;
-      label1842:
-      if (j == 4) {}
+      else if ((this.aBY == 18) && (this.aCd != null))
+      {
+        this.aCd.b(b(paramf), this.aCa);
+        i = 1;
+      }
+      else
+      {
+        paramf.dg(this.aBZ);
+        i = 0;
+      }
     }
   }
   
-  public final void a(f paramf)
+  public final void a(g paramg)
   {
-    this.azy = paramf;
-    this.azz = this.azy.cQ(0);
-    this.azy.lV();
+    this.aBV = paramg;
+  }
+  
+  public final boolean a(f paramf)
+  {
+    AppMethodBeat.i(94865);
+    paramf.b(this.aBR.data, 0, 3);
+    this.aBR.setPosition(0);
+    if (this.aBR.qO() != aBQ)
+    {
+      AppMethodBeat.o(94865);
+      return false;
+    }
+    paramf.b(this.aBR.data, 0, 2);
+    this.aBR.setPosition(0);
+    if ((this.aBR.readUnsignedShort() & 0xFA) != 0)
+    {
+      AppMethodBeat.o(94865);
+      return false;
+    }
+    paramf.b(this.aBR.data, 0, 4);
+    this.aBR.setPosition(0);
+    int i = this.aBR.readInt();
+    paramf.nW();
+    paramf.dh(i);
+    paramf.b(this.aBR.data, 0, 4);
+    this.aBR.setPosition(0);
+    if (this.aBR.readInt() == 0)
+    {
+      AppMethodBeat.o(94865);
+      return true;
+    }
+    AppMethodBeat.o(94865);
+    return false;
+  }
+  
+  public final void g(long paramLong1, long paramLong2)
+  {
+    this.aBW = 1;
+    this.aBX = 0;
+  }
+  
+  public final long getDurationUs()
+  {
+    return this.aCd.axh;
+  }
+  
+  public final boolean nV()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.exoplayer2.c.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -8,23 +8,20 @@ import android.view.View;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cd.b;
 import com.tencent.mm.cd.e;
-import com.tencent.mm.plugin.l.a.c;
-import com.tencent.mm.plugin.l.a.e;
-import com.tencent.mm.plugin.l.a.f;
-import com.tencent.mm.plugin.l.a.g;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.u.a.a;
+import com.tencent.mm.emoji.a.i;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class SmileyPopView
   extends AbstractPopView
 {
-  private TextView leV;
-  private WindowManager.LayoutParams wzh;
-  private View wzj;
-  private ImageView wzk;
-  private int wzl;
+  private WindowManager.LayoutParams AUB;
+  private View AUE;
+  private ImageView AUF;
+  private int AUG;
+  private TextView nCQ;
   
   public SmileyPopView(Context paramContext)
   {
@@ -39,53 +36,60 @@ public class SmileyPopView
   public SmileyPopView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, a.f.emoji_pop_smiley_view, this);
-    this.wzj = findViewById(a.e.smiley_pop_frame);
-    this.wzk = ((ImageView)findViewById(a.e.emoji_pop_image));
-    this.leV = ((TextView)findViewById(a.e.emoji_pop_desc));
-    this.wzh = new WindowManager.LayoutParams(2, 264, 1);
-    this.wzl = getResources().getDimensionPixelOffset(a.c.smiley_pop_frame_width_bottom);
-    this.wzh.width = paramContext.getResources().getDimensionPixelSize(a.c.smiley_pop_frame_width);
-    this.wzh.height = paramContext.getResources().getDimensionPixelSize(a.c.smiley_pop_frame_height);
-    this.wzh.gravity = 49;
+    AppMethodBeat.i(63070);
+    inflate(paramContext, 2130969378, this);
+    this.AUE = findViewById(2131823616);
+    this.AUF = ((ImageView)findViewById(2131823617));
+    this.nCQ = ((TextView)findViewById(2131823618));
+    this.AUB = new WindowManager.LayoutParams(2, 264, 1);
+    this.AUG = getResources().getDimensionPixelOffset(2131428697);
+    this.AUB.width = paramContext.getResources().getDimensionPixelSize(2131428696);
+    this.AUB.height = paramContext.getResources().getDimensionPixelSize(2131428694);
+    this.AUB.gravity = 49;
+    AppMethodBeat.o(63070);
   }
   
-  public final void ep(View paramView)
+  public final void fD(View paramView)
   {
+    AppMethodBeat.i(63072);
     paramView.setPressed(false);
     paramView.setSelected(false);
     int[] arrayOfInt = new int[2];
     paramView.getLocationInWindow(arrayOfInt);
     int i = getResources().getDisplayMetrics().widthPixels;
     int j = arrayOfInt[0] + paramView.getMeasuredWidth() / 2;
-    int k = (this.wzh.width - this.wzl) / 2;
-    this.wzh.y = (arrayOfInt[1] - this.wzh.height + paramView.getMeasuredHeight());
-    if (j < this.wzh.width / 2)
+    int k = (this.AUB.width - this.AUG) / 2;
+    this.AUB.y = (arrayOfInt[1] - this.AUB.height + paramView.getMeasuredHeight());
+    if (j < this.AUB.width / 2)
     {
-      this.wzj.setBackgroundResource(a.g.emoji_pop_bg_smiley_left);
-      this.wzh.x = (j + k - i / 2);
+      this.AUE.setBackgroundResource(2131231266);
+      this.AUB.x = (j + k - i / 2);
+      AppMethodBeat.o(63072);
       return;
     }
-    if (this.wzh.width / 2 + j > i)
+    if (this.AUB.width / 2 + j > i)
     {
-      this.wzj.setBackgroundResource(a.g.emoji_pop_bg_smiley_right);
-      this.wzh.x = (j - k - i / 2);
+      this.AUE.setBackgroundResource(2131231267);
+      this.AUB.x = (j - k - i / 2);
+      AppMethodBeat.o(63072);
       return;
     }
-    this.wzj.setBackgroundResource(a.g.emoji_pop_bg_smiley);
-    this.wzh.x = (j - i / 2);
+    this.AUE.setBackgroundResource(2131231265);
+    this.AUB.x = (j - i / 2);
+    AppMethodBeat.o(63072);
   }
   
   public WindowManager.LayoutParams getWindowLayoutParams()
   {
-    return this.wzh;
+    return this.AUB;
   }
   
-  public void setSmileyItem(a parama)
+  public void setSmileyItem(i parami)
   {
-    String str1 = e.csH().getText(parama.position);
-    String str2 = b.csC().aat(str1);
-    y.i("MicroMsg.SmileyPopView", "pop smiley %s, %s, %s", new Object[] { Integer.valueOf(parama.position), str1, str2 });
+    AppMethodBeat.i(63071);
+    String str1 = e.dve().getText(parami.position);
+    String str2 = b.duW().aqC(str1);
+    ab.i("MicroMsg.SmileyPopView", "pop smiley %s, %s, %s", new Object[] { Integer.valueOf(parami.position), str1, str2 });
     int k = str2.indexOf("[");
     int j = str2.indexOf("]");
     int i = j;
@@ -93,8 +97,9 @@ public class SmileyPopView
       i = str2.length();
     }
     str1 = str2.substring(k + 1, i);
-    this.leV.setText(str1);
-    this.wzk.setImageDrawable(e.csH().mW(parama.position));
+    this.nCQ.setText(str1);
+    this.AUF.setImageDrawable(e.dve().qA(parami.position));
+    AppMethodBeat.o(63071);
   }
 }
 

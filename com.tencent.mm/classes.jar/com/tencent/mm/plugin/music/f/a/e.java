@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.music.f.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class e
 {
-  public static int uV(int paramInt)
+  public static int Aw(int paramInt)
   {
-    int i = 10001;
-    y.i("MicroMsg.PlayerErrorHandler", "getErrCodeType, errorCode: %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(137653);
+    ab.i("MicroMsg.PlayerErrorHandler", "getErrCodeType, errorCode: %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
-      i = -1;
+      AppMethodBeat.o(137653);
+      return -1;
     case 62: 
     case 66: 
     case 67: 
@@ -19,106 +21,111 @@ public final class e
     case 70: 
     case 74: 
     case 102: 
-    case 500: 
-    case 501: 
-    case 502: 
-    case 503: 
-    case 504: 
-    case 600: 
-    case 601: 
-    case 602: 
-    case 603: 
-    case 604: 
-    case 605: 
     case 702: 
     case 704: 
     case 706: 
     case 707: 
-      return i;
+      AppMethodBeat.o(137653);
+      return 10001;
     case 80: 
+      AppMethodBeat.o(137653);
       return 10002;
     case 53: 
     case 54: 
+      AppMethodBeat.o(137653);
       return 10003;
+    case 55: 
+    case 63: 
+    case 64: 
+    case 101: 
+    case 701: 
+    case 703: 
+    case 705: 
+      AppMethodBeat.o(137653);
+      return 10004;
     }
-    return 10004;
+    AppMethodBeat.o(137653);
+    return 10001;
   }
   
-  public static String uW(int paramInt)
+  public static String oP(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("errCode:" + paramInt + ", err:");
+    AppMethodBeat.i(137654);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("errCode:" + paramInt + ", err:");
     switch (paramInt)
     {
     default: 
-      localStringBuilder.append("unknow exception");
+      ((StringBuilder)localObject).append("unknow exception");
     }
     for (;;)
     {
-      return localStringBuilder.toString();
-      localStringBuilder.append("file not found");
+      localObject = ((StringBuilder)localObject).toString();
+      AppMethodBeat.o(137654);
+      return localObject;
+      ((StringBuilder)localObject).append("file not found");
       continue;
-      localStringBuilder.append("file can not read");
+      ((StringBuilder)localObject).append("file can not read");
       continue;
-      localStringBuilder.append("unknow format");
+      ((StringBuilder)localObject).append("unknow format");
       continue;
-      localStringBuilder.append("load or init native decode so fail");
+      ((StringBuilder)localObject).append("load or init native decode so fail");
       continue;
-      localStringBuilder.append("get audio info fail");
+      ((StringBuilder)localObject).append("get audio info fail");
       continue;
-      localStringBuilder.append("invalid audio info");
+      ((StringBuilder)localObject).append("invalid audio info");
       continue;
-      localStringBuilder.append("create AudioTrack fail");
+      ((StringBuilder)localObject).append("create AudioTrack fail");
       continue;
-      localStringBuilder.append("decode audio fail");
+      ((StringBuilder)localObject).append("decode audio fail");
       continue;
-      localStringBuilder.append("so file not found");
+      ((StringBuilder)localObject).append("so file not found");
       continue;
-      localStringBuilder.append("create temp file fail");
+      ((StringBuilder)localObject).append("create temp file fail");
       continue;
-      localStringBuilder.append("invalid seek or seek fail");
+      ((StringBuilder)localObject).append("invalid seek or seek fail");
       continue;
-      localStringBuilder.append("connect network fail");
+      ((StringBuilder)localObject).append("connect network fail");
       continue;
-      localStringBuilder.append("recognition audio format error");
+      ((StringBuilder)localObject).append("recognition audio format error");
       continue;
-      localStringBuilder.append("write AudioTrack data fail");
+      ((StringBuilder)localObject).append("write AudioTrack data fail");
       continue;
-      localStringBuilder.append("error URL format");
+      ((StringBuilder)localObject).append("error URL format");
       continue;
-      localStringBuilder.append("error player to prepare");
+      ((StringBuilder)localObject).append("error player to prepare");
       continue;
-      localStringBuilder.append("error player to start");
+      ((StringBuilder)localObject).append("error player to start");
       continue;
-      localStringBuilder.append("error player to pause");
+      ((StringBuilder)localObject).append("error player to pause");
       continue;
-      localStringBuilder.append("error player to stop");
+      ((StringBuilder)localObject).append("error player to stop");
       continue;
-      localStringBuilder.append("error create player fail, exceed max count audio players");
+      ((StringBuilder)localObject).append("error create player fail, exceed max count audio players");
       continue;
-      localStringBuilder.append("error, not found audioId");
+      ((StringBuilder)localObject).append("error, not found audioId");
       continue;
-      localStringBuilder.append("error, not found param");
+      ((StringBuilder)localObject).append("error, not found param");
       continue;
-      localStringBuilder.append("error, ready exist audioId");
+      ((StringBuilder)localObject).append("error, ready exist audioId");
       continue;
-      localStringBuilder.append("error, invalid audioID");
+      ((StringBuilder)localObject).append("error, invalid audioID");
       continue;
-      localStringBuilder.append("error, invalid param");
+      ((StringBuilder)localObject).append("error, invalid param");
       continue;
-      localStringBuilder.append("error, invalid param");
+      ((StringBuilder)localObject).append("error, invalid param");
       continue;
-      localStringBuilder.append("error, mmplayer set source occur error");
+      ((StringBuilder)localObject).append("error, mmplayer set source occur error");
       continue;
-      localStringBuilder.append("error, mmplayer media format error");
+      ((StringBuilder)localObject).append("error, mmplayer media format error");
       continue;
-      localStringBuilder.append("error, mmplayer create MediaCode error");
+      ((StringBuilder)localObject).append("error, mmplayer create MediaCode error");
       continue;
-      localStringBuilder.append("error, mmplayer get audio info error");
+      ((StringBuilder)localObject).append("error, mmplayer get audio info error");
       continue;
-      localStringBuilder.append("error, mmplayer decode error");
+      ((StringBuilder)localObject).append("error, mmplayer decode error");
       continue;
-      localStringBuilder.append("error, mmplayer create audio track orror");
+      ((StringBuilder)localObject).append("error, mmplayer create audio track orror");
     }
   }
 }

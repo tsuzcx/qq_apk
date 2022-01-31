@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import com.tencent.mm.modelgeo.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$2
   implements Runnable
@@ -10,16 +11,19 @@ final class c$2
   
   public final void run()
   {
-    c.d(this.ksc);
-    if (c.a(this.ksc) != null) {
-      c.a(this.ksc).c(c.b(this.ksc));
+    AppMethodBeat.i(20994);
+    c.d(this.mNQ);
+    if (c.a(this.mNQ) != null) {
+      c.a(this.mNQ).c(c.b(this.mNQ));
     }
-    if (c.b(this.ksc) == null)
+    if (c.b(this.mNQ) == null)
     {
-      y.w(c.BG(), "already callback");
+      ab.w(c.access$200(), "already callback");
+      AppMethodBeat.o(20994);
       return;
     }
-    c.c(this.ksc);
+    c.c(this.mNQ);
+    AppMethodBeat.o(20994);
   }
 }
 

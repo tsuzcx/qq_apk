@@ -1,36 +1,41 @@
 package com.tencent.mm.plugin.ipcall.a.e;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class h
   extends a
 {
-  private long lrT;
-  public long lrU;
-  private long lsq = 0L;
-  public long lsr = 0L;
-  public long lss = 0L;
-  public long lst = 0L;
+  private long nPL = 0L;
+  public long nPM = 0L;
+  public long nPN = 0L;
+  public long nPO = 0L;
+  private long nPp;
+  public long nPq;
   
-  protected final void bcI()
+  protected final void bJP()
   {
-    com.tencent.mm.plugin.report.service.h.nFQ.f(12931, new Object[] { Long.valueOf(this.lrT), Long.valueOf(this.lrU), Long.valueOf(this.lsq), Long.valueOf(this.lsr), Long.valueOf(this.lss), Long.valueOf(this.lst) });
+    AppMethodBeat.i(21893);
+    com.tencent.mm.plugin.report.service.h.qsU.e(12931, new Object[] { Long.valueOf(this.nPp), Long.valueOf(this.nPq), Long.valueOf(this.nPL), Long.valueOf(this.nPM), Long.valueOf(this.nPN), Long.valueOf(this.nPO) });
+    AppMethodBeat.o(21893);
   }
   
   public final void reset()
   {
-    this.lrT = 0L;
-    this.lrU = 0L;
-    this.lsq = 0L;
-    this.lsr = 0L;
-    this.lss = 0L;
-    this.lst = 0L;
+    this.nPp = 0L;
+    this.nPq = 0L;
+    this.nPL = 0L;
+    this.nPM = 0L;
+    this.nPN = 0L;
+    this.nPO = 0L;
   }
   
   public final void start()
   {
+    AppMethodBeat.i(21892);
     super.start();
-    this.lrT = bk.UY();
+    this.nPp = bo.aoy();
+    AppMethodBeat.o(21892);
   }
 }
 

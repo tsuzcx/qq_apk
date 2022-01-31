@@ -2,30 +2,19 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.protocal.c.cdd;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$3
   implements DialogInterface.OnClickListener
 {
-  a$3(a parama, com.tencent.mm.ah.m paramm) {}
+  a$3(a parama) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.d("MicroMsg.AddContact", "dealwith verify relation out of date");
-    paramDialogInterface = (com.tencent.mm.pluginsdk.model.m)this.bEe;
-    if ((paramDialogInterface.dmK != null) && (paramDialogInterface.dmK.Kv() != null)) {}
-    for (paramDialogInterface = ((cdd)paramDialogInterface.dmK.ecE.ecN).tSb;; paramDialogInterface = null)
-    {
-      List localList = ((com.tencent.mm.pluginsdk.model.m)this.bEe).rTv;
-      if ((localList != null) && (localList.size() > 0)) {
-        this.sbP.e((String)localList.get(0), paramDialogInterface);
-      }
-      return;
-    }
+    AppMethodBeat.i(79702);
+    this.vSX.vSU = false;
+    this.vSX.dnv();
+    AppMethodBeat.o(79702);
   }
 }
 

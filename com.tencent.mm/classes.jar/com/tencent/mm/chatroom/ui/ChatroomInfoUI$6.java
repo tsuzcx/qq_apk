@@ -7,7 +7,7 @@ final class ChatroomInfoUI$6
 {
   ChatroomInfoUI$6(ChatroomInfoUI paramChatroomInfoUI) {}
   
-  public final boolean gk(int paramInt)
+  public final boolean iz(int paramInt)
   {
     return true;
   }

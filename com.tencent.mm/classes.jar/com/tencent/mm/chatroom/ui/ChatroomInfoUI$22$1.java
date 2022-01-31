@@ -1,7 +1,8 @@
 package com.tencent.mm.chatroom.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.af;
+import com.tencent.mm.model.ag;
 import com.tencent.mm.plugin.chatroom.a.c;
 
 final class ChatroomInfoUI$22$1
@@ -11,12 +12,17 @@ final class ChatroomInfoUI$22$1
   
   public final void run()
   {
-    ((c)g.r(c.class)).FF().m(this.dol, System.currentTimeMillis());
+    AppMethodBeat.i(103986);
+    ((c)g.E(c.class)).YJ().u(this.efI, System.currentTimeMillis());
+    AppMethodBeat.o(103986);
   }
   
   public final String toString()
   {
-    return super.toString() + "|getContactCallBack";
+    AppMethodBeat.i(103987);
+    String str = super.toString() + "|getContactCallBack";
+    AppMethodBeat.o(103987);
+    return str;
   }
 }
 

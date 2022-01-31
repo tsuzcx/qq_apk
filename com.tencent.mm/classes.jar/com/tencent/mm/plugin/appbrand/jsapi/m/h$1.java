@@ -1,48 +1,43 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
-import com.tencent.mm.plugin.appbrand.widget.picker.AppBrandMultiOptionsPicker.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Map;
 
 final class h$1
-  extends d
+  implements b.a
 {
-  h$1(h paramh) {}
+  h$1(h paramh, c paramc, int paramInt) {}
   
-  final void z(JSONObject paramJSONObject)
+  public final void a(int paramInt, String paramString, Map<String, Object> paramMap)
   {
-    int j = paramJSONObject.optInt("column", -1);
-    JSONArray localJSONArray = paramJSONObject.optJSONArray("array");
-    if ((j < 0) || (localJSONArray == null) || (localJSONArray.length() < 0))
+    AppMethodBeat.i(131421);
+    switch (paramInt)
     {
-      j("fail:invalid data", null);
+    default: 
+      this.hxC.h(this.bAX, this.hWu.j("cancel", null));
+      AppMethodBeat.o(131421);
+      return;
+    case 1: 
+      this.hxC.h(this.bAX, this.hWu.j("ok", null));
+      AppMethodBeat.o(131421);
       return;
     }
-    try
+    if (bo.isNullOrNil(paramString))
     {
-      String[] arrayOfString = new String[localJSONArray.length()];
-      int i = 0;
-      while (i < arrayOfString.length)
-      {
-        arrayOfString[i] = localJSONArray.getString(i);
-        i += 1;
-      }
-      paramJSONObject = new AppBrandMultiOptionsPicker.a(arrayOfString, paramJSONObject.optInt("current", 0));
-      ai.d(new h.1.1(this, j, paramJSONObject));
+      this.hxC.h(this.bAX, this.hWu.j("fail", null));
+      AppMethodBeat.o(131421);
       return;
     }
-    catch (Exception paramJSONObject)
-    {
-      y.printErrStackTrace("MicroMsg.AppBrand.JsApiUpdateMultiPickerView", paramJSONObject, "opt params", new Object[0]);
-      j("fail:invalid data", null);
-    }
+    this.hxC.h(this.bAX, this.hWu.j(String.format("fail %s", new Object[] { paramString }), null));
+    AppMethodBeat.o(131421);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.m.h.1
  * JD-Core Version:    0.7.0.1
  */

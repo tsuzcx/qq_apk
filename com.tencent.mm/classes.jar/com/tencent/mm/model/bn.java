@@ -1,160 +1,123 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.bv.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.c.axx;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.z;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONObject;
 
 public final class bn
 {
-  public String cCE = "";
-  public int cCz = 0;
-  public String countryCode = "";
-  private String dXs = "";
-  private String dXt = "";
-  public String dXu = "";
-  public String dXv = "";
-  public int sex = 0;
-  public String signature = "";
+  public static bn fnx;
+  private SharedPreferences fny;
   
-  public static bn Id()
+  static
   {
-    bn localbn = new bn();
-    localbn.cCz = 1;
-    localbn.sex = bk.a((Integer)g.DP().Dz().get(12290, null), 0);
-    localbn.dXs = ((String)g.DP().Dz().get(12293, null));
-    localbn.dXt = ((String)g.DP().Dz().get(12292, null));
-    localbn.signature = ((String)g.DP().Dz().get(12291, null));
-    localbn.cCE = ((String)g.DP().Dz().get(12307, null));
-    localbn.countryCode = ((String)g.DP().Dz().get(12324, null));
-    localbn.dXv = ((String)g.DP().Dz().get(12325, null));
-    localbn.dXu = ((String)g.DP().Dz().get(12326, null));
-    return localbn;
+    AppMethodBeat.i(58117);
+    fnx = new bn();
+    AppMethodBeat.o(58117);
   }
   
-  public static bn Ie()
+  private bn()
   {
-    if (bk.a((Integer)g.DP().Dz().get(12289, null), 0) == 0) {
-      return null;
-    }
-    return Id();
+    AppMethodBeat.i(58114);
+    this.fny = ah.getContext().getSharedPreferences(ah.dsP() + "_register_history", 0);
+    AppMethodBeat.o(58114);
   }
   
-  public static axx a(bn parambn)
+  public final void g(String paramString, Map<String, String> paramMap)
   {
-    g.DP().Dz().o(12289, Integer.valueOf(parambn.cCz));
-    g.DP().Dz().o(12290, Integer.valueOf(parambn.sex));
-    if (bn.a.aa((String)g.DP().Dz().get(12293, null), parambn.getProvince())) {
-      g.DP().Dz().o(12293, parambn.getProvince());
-    }
-    if (bn.a.aa((String)g.DP().Dz().get(12292, null), parambn.getCity())) {
-      g.DP().Dz().o(12292, parambn.getCity());
-    }
-    if (bn.a.aa((String)g.DP().Dz().get(12291, null), parambn.signature)) {
-      g.DP().Dz().o(12291, parambn.signature);
-    }
-    if (bn.a.aa((String)g.DP().Dz().get(12307, null), parambn.cCE)) {
-      g.DP().Dz().o(12307, parambn.cCE);
-    }
-    if (bn.a.aa((String)g.DP().Dz().get(12324, null), parambn.countryCode)) {
-      g.DP().Dz().o(12324, parambn.countryCode);
-    }
-    if (bn.a.aa((String)g.DP().Dz().get(12325, null), parambn.dXv)) {
-      g.DP().Dz().o(12325, parambn.dXv);
-    }
-    if (bn.a.aa((String)g.DP().Dz().get(12326, null), parambn.dXu)) {
-      g.DP().Dz().o(12326, parambn.dXu);
-    }
-    axx localaxx = new axx();
-    localaxx.tue = 128;
-    localaxx.sQs = new bml().YI("");
-    localaxx.tmw = new bml().YI("");
-    localaxx.stM = 0;
-    localaxx.tuf = new bml().YI("");
-    localaxx.tug = new bml().YI("");
-    localaxx.hQq = 0;
-    byte[] arrayOfByte2 = com.tencent.mm.vfs.e.c("", 0, -1);
-    byte[] arrayOfByte1;
-    if (arrayOfByte2 == null)
+    AppMethodBeat.i(58115);
+    Object localObject;
+    for (;;)
     {
-      arrayOfByte1 = new byte[0];
-      localaxx.tuc = new b(arrayOfByte1);
-      if (arrayOfByte2 != null) {
-        break label588;
+      try
+      {
+        if (paramMap.isEmpty())
+        {
+          ab.i("MicroMsg.RegisterAccountInfo", "kv map is null or empty!");
+          AppMethodBeat.o(58115);
+          return;
+        }
+        if (!this.fny.contains(paramString)) {
+          break label173;
+        }
+        localObject = this.fny.getString(paramString, "");
+        if (!bo.isNullOrNil((String)localObject))
+        {
+          localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
+          Iterator localIterator = paramMap.keySet().iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          String str = (String)localIterator.next();
+          ((JSONObject)localObject).put(str, paramMap.get(str));
+          continue;
+        }
+        localObject = new JSONObject();
       }
-    }
-    label588:
-    for (int i = 0;; i = arrayOfByte2.length)
-    {
-      localaxx.tub = i;
-      localaxx.ffh = parambn.sex;
-      localaxx.ffl = parambn.cCz;
-      localaxx.ffk = bk.pm(parambn.signature);
-      localaxx.ffj = bk.pm(parambn.dXu);
-      localaxx.ffi = bk.pm(parambn.dXv);
-      localaxx.stP = 0;
-      localaxx.tpi = bk.pm(parambn.cCE);
-      localaxx.tul = 0;
-      localaxx.ffm = "";
-      localaxx.tpk = 0;
-      localaxx.tpj = "";
-      localaxx.ffq = bk.pm(parambn.countryCode);
-      return localaxx;
-      arrayOfByte1 = arrayOfByte2;
-      break;
-    }
-  }
-  
-  public final String getCity()
-  {
-    if (!bk.bl(this.countryCode))
-    {
-      if (bk.bl(this.dXv)) {
-        break label93;
+      catch (Exception paramMap)
+      {
+        ab.e("MicroMsg.RegisterAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
+        AppMethodBeat.o(58115);
+        return;
       }
-      if (!bk.bl(this.dXu)) {
-        break label67;
-      }
-      RegionCodeDecoder.cvV();
-      this.dXt = RegionCodeDecoder.gp(this.countryCode, this.dXv);
-    }
-    while (bk.bl(this.dXt))
-    {
-      return bk.pm(this.dXu);
-      label67:
-      RegionCodeDecoder.cvV();
-      this.dXt = RegionCodeDecoder.ap(this.countryCode, this.dXv, this.dXu);
       continue;
-      label93:
-      this.dXt = "";
+      label173:
+      localObject = new JSONObject();
     }
-    return this.dXt;
+    ab.i("MicroMsg.RegisterAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
+    this.fny.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
+    AppMethodBeat.o(58115);
   }
   
-  public final String getProvince()
+  public final String getString(String paramString1, String paramString2)
   {
-    if (!bk.bl(this.countryCode))
+    AppMethodBeat.i(58116);
+    try
     {
-      if ((bk.bl(this.dXv)) || (bk.bl(this.dXu)) || (!RegionCodeDecoder.acl(this.countryCode))) {
-        break label77;
+      ab.i("MicroMsg.RegisterAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
+      if (this.fny.contains(paramString1))
+      {
+        Object localObject = new String(Base64.decode(this.fny.getString(paramString1, ""), 0));
+        if (!bo.isNullOrNil((String)localObject))
+        {
+          ab.i("MicroMsg.RegisterAccountInfo", "get json str %s", new Object[] { localObject });
+          localObject = new JSONObject((String)localObject);
+          if (((JSONObject)localObject).has(paramString2))
+          {
+            localObject = ((JSONObject)localObject).getString(paramString2);
+            AppMethodBeat.o(58116);
+            return localObject;
+          }
+        }
       }
-      RegionCodeDecoder.cvV();
+      else
+      {
+        ab.w("MicroMsg.RegisterAccountInfo", "register info about %s is not found!", new Object[] { paramString1 });
+      }
     }
-    for (this.dXs = RegionCodeDecoder.gp(this.countryCode, this.dXv); bk.bl(this.dXs); this.dXs = RegionCodeDecoder.acm(this.countryCode))
+    catch (Exception localException)
     {
-      return bk.pm(this.dXv);
-      label77:
-      RegionCodeDecoder.cvV();
+      for (;;)
+      {
+        ab.e("MicroMsg.RegisterAccountInfo", "get register info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
+      }
     }
-    return this.dXs;
+    AppMethodBeat.o(58116);
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.model.bn
  * JD-Core Version:    0.7.0.1
  */

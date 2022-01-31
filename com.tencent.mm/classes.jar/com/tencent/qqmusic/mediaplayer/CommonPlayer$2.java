@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.qqmusic.mediaplayer.upstream.CacheDataSource;
 import com.tencent.qqmusic.mediaplayer.upstream.CacheDataSource.Factory;
 import com.tencent.qqmusic.mediaplayer.upstream.IDataSource;
 import com.tencent.qqmusic.mediaplayer.upstream.IDataSourceFactory;
@@ -13,7 +15,10 @@ class CommonPlayer$2
   
   public IDataSource createDataSource()
   {
-    return CacheDataSource.Factory.createFromUriLoader(this.val$uriLoader);
+    AppMethodBeat.i(104712);
+    CacheDataSource localCacheDataSource = CacheDataSource.Factory.createFromUriLoader(this.val$uriLoader);
+    AppMethodBeat.o(104712);
+    return localCacheDataSource;
   }
   
   public INativeDataSource createNativeDataSource()

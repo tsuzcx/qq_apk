@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d.a;
 
 final class h$4
   implements d.a
@@ -9,12 +10,14 @@ final class h$4
   
   public final void onDismiss()
   {
-    if (h.a(this.pER))
+    AppMethodBeat.i(1716);
+    if (h.a(this.tio))
     {
-      this.pER.pEP.bNx().bMs();
-      h.b(this.pER);
+      this.tio.tim.cJh().ctY();
+      h.b(this.tio);
     }
-    this.pER.pEP.bNF();
+    this.tio.tim.cJo();
+    AppMethodBeat.o(1716);
   }
 }
 

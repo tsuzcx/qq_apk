@@ -1,71 +1,88 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.opensdk.modelpay.PayReq;
-import com.tencent.mm.plugin.wallet_core.model.i;
-import com.tencent.mm.protocal.c.bcw;
-import com.tencent.mm.protocal.c.bcx;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.g;
-import com.tencent.mm.wallet_core.c.s;
+import com.tencent.mm.protocal.protobuf.afr;
+import com.tencent.mm.protocal.protobuf.afs;
+import com.tencent.mm.protocal.protobuf.awd;
+import com.tencent.mm.protocal.protobuf.awe;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.u;
 
-public class f
-  extends s
-  implements g
+public final class f
+  extends u
 {
-  public b dmK;
-  private com.tencent.mm.ah.f dmL;
+  private com.tencent.mm.ai.f callback;
+  public int errCode;
+  private b rr;
+  public awd uAh;
+  public awe uAi;
   
-  public f(PayReq paramPayReq, String paramString1, String paramString2, String paramString3, String paramString4)
+  public f(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)
   {
+    AppMethodBeat.i(48184);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bcw();
-    ((b.a)localObject).ecI = new bcx();
-    ((b.a)localObject).uri = getUri();
-    ((b.a)localObject).ecG = getType();
-    ((b.a)localObject).ecJ = 188;
-    ((b.a)localObject).ecK = 1000000188;
-    ((b.a)localObject).ecM = com.tencent.mm.wallet_core.ui.e.afr(paramPayReq.prepayId);
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (bcw)this.dmK.ecE.ecN;
-    ((bcw)localObject).euK = paramPayReq.appId;
-    ((bcw)localObject).tyj = paramPayReq.partnerId;
-    ((bcw)localObject).sZx = paramPayReq.prepayId;
-    ((bcw)localObject).sNf = paramPayReq.nonceStr;
-    ((bcw)localObject).tyk = paramPayReq.timeStamp;
-    ((bcw)localObject).sNg = paramPayReq.packageValue;
-    ((bcw)localObject).sNh = paramPayReq.sign;
-    ((bcw)localObject).sNi = paramPayReq.signType;
-    ((bcw)localObject).tyl = paramString1;
-    ((bcw)localObject).kSb = paramString2;
-    ((bcw)localObject).kVn = paramString3;
-    ((bcw)localObject).sHl = i.bVj();
-    ((bcw)localObject).tyn = paramString4;
+    ((b.a)localObject).fsX = new afr();
+    ((b.a)localObject).fsY = new afs();
+    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/boss/getandroidiappackage";
+    ((b.a)localObject).funcId = 1130;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (afr)this.rr.fsV.fta;
+    ((afr)localObject).cwc = paramString1;
+    ((afr)localObject).wYN = paramInt1;
+    ((afr)localObject).wYO = Integer.parseInt(paramString2);
+    ((afr)localObject).desc = paramString3;
+    ((afr)localObject).count = paramInt2;
+    ((afr)localObject).scene = 13;
+    ((afr)localObject).wYP = paramString4;
+    ((afr)localObject).wYQ = paramString5;
+    ((afr)localObject).sign = paramString6;
+    ((afr)localObject).wYR = paramString7;
+    AppMethodBeat.o(48184);
   }
   
-  public final int a(com.tencent.mm.network.e parame, com.tencent.mm.ah.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    AppMethodBeat.i(48186);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(48186);
+    return i;
   }
   
-  public final void e(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final int getType()
   {
-    y.d("MicroMsg.NetScenePayAuthApp", "errType:" + paramInt1 + ",errCode:" + paramInt2 + ",errMsg" + paramString);
-    this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    return 1130;
   }
   
-  public int getType()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
-    return 397;
-  }
-  
-  public String getUri()
-  {
-    return "/cgi-bin/mmpay-bin/payauthapp";
+    AppMethodBeat.i(142580);
+    ab.e("MicroMsg.NetSceneGetAndroidIapPackage", "ErrType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg:" + paramString);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(142580);
+      return;
+    }
+    paramString = (afs)this.rr.fsW.fta;
+    ab.e("MicroMsg.NetSceneGetAndroidIapPackage", "business: errCode:" + paramString.cxa + ",errMsg:" + paramString.cxb);
+    paramInt1 = paramString.cxa;
+    paramq = paramString.cxb;
+    if (paramInt1 == 0)
+    {
+      this.uAh = paramString.wYS;
+      this.uAi = paramString.wYT;
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
+    AppMethodBeat.o(142580);
   }
 }
 

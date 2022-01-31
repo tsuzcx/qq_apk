@@ -3,12 +3,12 @@ package com.tencent.mm.ui.transmit;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.Toast;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.as.l;
-import com.tencent.mm.as.o;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.at.g;
+import com.tencent.mm.at.l;
+import com.tencent.mm.at.o;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 
 final class MsgRetransmitUI$4$1
@@ -18,43 +18,47 @@ final class MsgRetransmitUI$4$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.mm.as.g localg;
-    com.tencent.mm.as.e locale;
-    if (MsgRetransmitUI.e(this.wgH.wgG) != null)
+    AppMethodBeat.i(35064);
+    g localg;
+    com.tencent.mm.at.e locale;
+    if (MsgRetransmitUI.e(this.Azy.Azx) != null)
     {
-      au.Dk().c(MsgRetransmitUI.e(this.wgH.wgG));
-      paramInt = (int)MsgRetransmitUI.e(this.wgH.wgG).eoN;
-      paramDialogInterface = o.OJ().iH(paramInt);
+      aw.Rc().a(MsgRetransmitUI.e(this.Azy.Azx));
+      paramInt = (int)MsgRetransmitUI.e(this.Azy.Azx).fFk;
+      paramDialogInterface = o.ahC().lv(paramInt);
       if (paramDialogInterface != null)
       {
-        localg = o.OJ();
-        locale = localg.iH(paramInt);
-        if ((locale != null) && (locale.enp == paramInt)) {
-          break label128;
+        localg = o.ahC();
+        locale = localg.lv(paramInt);
+        if ((locale != null) && (locale.fDL == paramInt)) {
+          break label137;
         }
       }
     }
     for (;;)
     {
-      au.Hx();
-      c.Fy().fe(paramDialogInterface.enx);
-      Toast.makeText(this.wgH.wgG, R.l.msgretr_share_cancel, 1).show();
-      this.wgH.wgG.finish();
+      aw.aaz();
+      c.YC().kC(paramDialogInterface.fDU);
+      Toast.makeText(this.Azy.Azx, 2131301641, 1).show();
+      this.Azy.Azx.finish();
+      AppMethodBeat.o(35064);
       return;
-      label128:
-      com.tencent.mm.vfs.e.deleteFile(localg.o(locale.enq, "", ""));
-      com.tencent.mm.vfs.e.deleteFile(localg.o(locale.ens, "", ""));
-      com.tencent.mm.vfs.e.deleteFile(localg.o(locale.ens, "", "") + "hd");
-      localg.dXo.delete("ImgInfo2", "id=?", new String[] { String.valueOf(paramInt) });
-      if (locale.Or())
+      label137:
+      com.tencent.mm.vfs.e.deleteFile(localg.q(locale.fDM, "", ""));
+      com.tencent.mm.vfs.e.deleteFile(localg.q(locale.fDR, "", ""));
+      com.tencent.mm.vfs.e.deleteFile(localg.q(locale.fDO, "", ""));
+      com.tencent.mm.vfs.e.deleteFile(localg.q(locale.fDO, "", "") + "hd");
+      localg.fnw.delete("ImgInfo2", "id=?", new String[] { String.valueOf(paramInt) });
+      if (locale.ahh())
       {
-        locale = localg.iH(locale.enz);
+        locale = localg.lv(locale.fDW);
         if (locale != null)
         {
-          com.tencent.mm.vfs.e.deleteFile(localg.o(locale.enq, "", ""));
-          com.tencent.mm.vfs.e.deleteFile(localg.o(locale.ens, "", ""));
-          com.tencent.mm.vfs.e.deleteFile(localg.o(locale.ens, "", "") + "hd");
-          localg.dXo.delete("ImgInfo2", "id=?", new String[] { locale.enp });
+          com.tencent.mm.vfs.e.deleteFile(localg.q(locale.fDM, "", ""));
+          com.tencent.mm.vfs.e.deleteFile(localg.q(locale.fDR, "", ""));
+          com.tencent.mm.vfs.e.deleteFile(localg.q(locale.fDO, "", ""));
+          com.tencent.mm.vfs.e.deleteFile(localg.q(locale.fDO, "", "") + "hd");
+          localg.fnw.delete("ImgInfo2", "id=?", new String[] { locale.fDL });
         }
       }
     }
@@ -62,7 +66,7 @@ final class MsgRetransmitUI$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.MsgRetransmitUI.4.1
  * JD-Core Version:    0.7.0.1
  */

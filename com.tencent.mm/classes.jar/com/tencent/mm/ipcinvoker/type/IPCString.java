@@ -3,12 +3,20 @@ package com.tencent.mm.ipcinvoker.type;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class IPCString
   implements Parcelable
 {
-  public static final Parcelable.Creator<IPCString> CREATOR = new IPCString.1();
+  public static final Parcelable.Creator<IPCString> CREATOR;
   public String value;
+  
+  static
+  {
+    AppMethodBeat.i(114163);
+    CREATOR = new IPCString.1();
+    AppMethodBeat.o(114163);
+  }
   
   public IPCString() {}
   
@@ -24,19 +32,30 @@ public class IPCString
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
+    AppMethodBeat.i(114162);
+    if (paramObject == this)
     {
+      AppMethodBeat.o(114162);
       return true;
-      if (!(paramObject instanceof IPCString)) {
-        break;
-      }
-      paramObject = (IPCString)paramObject;
-    } while ((this.value == paramObject.value) || ((this.value != null) && (this.value.equals(paramObject.value))));
-    return false;
-    if ((paramObject instanceof String)) {
-      return paramObject.equals(this.value);
     }
+    if ((paramObject instanceof IPCString))
+    {
+      paramObject = (IPCString)paramObject;
+      if ((this.value == paramObject.value) || ((this.value != null) && (this.value.equals(paramObject.value))))
+      {
+        AppMethodBeat.o(114162);
+        return true;
+      }
+      AppMethodBeat.o(114162);
+      return false;
+    }
+    if ((paramObject instanceof String))
+    {
+      boolean bool = paramObject.equals(this.value);
+      AppMethodBeat.o(114162);
+      return bool;
+    }
+    AppMethodBeat.o(114162);
     return false;
   }
   
@@ -47,7 +66,9 @@ public class IPCString
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(114161);
     paramParcel.writeString(this.value);
+    AppMethodBeat.o(114161);
   }
 }
 

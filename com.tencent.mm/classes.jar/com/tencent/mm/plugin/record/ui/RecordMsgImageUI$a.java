@@ -6,14 +6,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.plugin.record.b.f;
-import com.tencent.mm.plugin.record.b.h;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.sdk.platformtools.k;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.record.b.l;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,13 +17,32 @@ import java.util.List;
 final class RecordMsgImageUI$a
   extends BaseAdapter
 {
-  long bIt = -1L;
-  List<xv> drc = new LinkedList();
-  f nud;
+  long cpO;
+  List<aca> eiJ;
+  l pZM;
+  
+  private RecordMsgImageUI$a()
+  {
+    AppMethodBeat.i(24307);
+    this.eiJ = new LinkedList();
+    this.cpO = -1L;
+    AppMethodBeat.o(24307);
+  }
+  
+  public final aca Cn(int paramInt)
+  {
+    AppMethodBeat.i(24309);
+    aca localaca = (aca)this.eiJ.get(paramInt);
+    AppMethodBeat.o(24309);
+    return localaca;
+  }
   
   public final int getCount()
   {
-    return this.drc.size();
+    AppMethodBeat.i(24308);
+    int i = this.eiJ.size();
+    AppMethodBeat.o(24308);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -37,19 +52,20 @@ final class RecordMsgImageUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    f localf = this.nud;
-    xv localxv = wC(paramInt);
-    long l = this.bIt;
-    Object localObject = localf.a(localxv, l, false);
+    AppMethodBeat.i(24310);
+    l locall = this.pZM;
+    aca localaca = Cn(paramInt);
+    long l = this.cpO;
+    Object localObject = locall.a(localaca, l, false);
     if (localObject == null)
     {
-      boolean bool = localf.a(localxv, l);
-      y.d("MicroMsg.RecordMsgImgService", "get image fail, try download, can retry:%B", new Object[] { Boolean.valueOf(bool) });
-      h.b(localxv, l, bool);
+      boolean bool = locall.a(localaca, l);
+      ab.d("MicroMsg.RecordMsgImgService", "get image fail, try download, can retry:%B", new Object[] { Boolean.valueOf(bool) });
+      com.tencent.mm.plugin.record.b.n.b(localaca, l, bool);
     }
     if (localObject == null)
     {
-      y.w("MicroMsg.ShowImageUI", "get image fail");
+      ab.w("MicroMsg.ShowImageUI", "get image fail");
       if (paramView != null)
       {
         localObject = paramView;
@@ -57,10 +73,11 @@ final class RecordMsgImageUI$a
       }
       else
       {
-        localObject = View.inflate(paramViewGroup.getContext(), R.i.show_image_ui_item, null);
+        localObject = View.inflate(paramViewGroup.getContext(), 2130970737, null);
       }
-      ((ImageView)((View)localObject).findViewById(R.h.image_iv)).setImageResource(R.k.download_image_icon);
+      ((ImageView)((View)localObject).findViewById(2131822243)).setImageResource(2131231253);
       ((View)localObject).setLayoutParams(new Gallery.LayoutParams(-1, -1));
+      AppMethodBeat.o(24310);
       return localObject;
     }
     paramViewGroup = paramViewGroup.getContext();
@@ -69,19 +86,15 @@ final class RecordMsgImageUI$a
     }
     for (;;)
     {
-      k.o(paramView, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      com.tencent.mm.sdk.platformtools.n.x(paramView, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
       paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
       paramView.setImageBitmap((Bitmap)localObject);
       paramView.setMaxZoomDoubleTab(true);
+      AppMethodBeat.o(24310);
       return paramView;
       paramView = (MultiTouchImageView)paramView;
-      paramView.fs(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      paramView.cb(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
     }
-  }
-  
-  public final xv wC(int paramInt)
-  {
-    return (xv)this.drc.get(paramInt);
   }
 }
 

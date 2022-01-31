@@ -1,36 +1,39 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.mm.plugin.appbrand.appcache.an;
-import com.tencent.mm.plugin.appbrand.appcache.ar;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.cw;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-final class ac
+public final class ac
+  extends cw
 {
-  static String aW(String paramString, int paramInt)
+  public static final c.a gUb;
+  
+  static
   {
-    Object localObject = null;
-    an localan = com.tencent.mm.plugin.appbrand.app.e.abb().a(paramString, paramInt, new String[] { "versionMd5", "pkgPath" });
-    paramString = localObject;
-    if (localan != null)
-    {
-      paramString = localObject;
-      if (!bk.bl(localan.field_pkgPath))
-      {
-        paramString = localObject;
-        if (com.tencent.mm.vfs.e.bK(localan.field_pkgPath))
-        {
-          paramString = localObject;
-          if (!bk.bl(localan.field_versionMd5))
-          {
-            paramString = localObject;
-            if (localan.field_pkgPath.equals(com.tencent.mm.vfs.e.aeY(localan.field_pkgPath))) {
-              paramString = localan.field_versionMd5;
-            }
-          }
-        }
-      }
-    }
-    return paramString;
+    AppMethodBeat.i(94157);
+    c.a locala = new c.a();
+    locala.yrK = new Field[2];
+    locala.columns = new String[3];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "appId";
+    locala.yrM.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "launchPB";
+    locala.yrM.put("launchPB", "BLOB");
+    localStringBuilder.append(" launchPB BLOB");
+    locala.columns[2] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    gUb = locala;
+    AppMethodBeat.o(94157);
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return gUb;
   }
 }
 

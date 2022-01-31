@@ -1,8 +1,17 @@
 package com.tencent.mm.plugin.normsg.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$b
 {
-  static final a mGW = new a((byte)0);
+  static final a phc;
+  
+  static
+  {
+    AppMethodBeat.i(10366);
+    phc = new a((byte)0);
+    AppMethodBeat.o(10366);
+  }
 }
 
 

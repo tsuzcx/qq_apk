@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.freewifi.model;
 
-import com.tencent.mm.h.a.gl;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gq;
 import com.tencent.mm.sdk.b.c;
 
 final class j$2
-  extends c<gl>
+  extends c<gq>
 {
   j$2(j paramj)
   {
-    this.udX = gl.class.getName().hashCode();
+    AppMethodBeat.i(20738);
+    this.__eventId = gq.class.getName().hashCode();
+    AppMethodBeat.o(20738);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.model.j.2
  * JD-Core Version:    0.7.0.1
  */

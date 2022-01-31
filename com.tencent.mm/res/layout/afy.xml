@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/d5r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d16" style="@style/z9" />
-    <TextView android:id="@id/d5s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d1n" style="@style/z9" />
-    <TextView android:id="@id/d5t" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d1j" style="@style/z9" />
-    <TextView android:id="@id/d5u" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d1k" style="@style/z9" />
-    <TextView android:id="@id/d5v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d18" style="@style/z9" />
-    <TextView android:id="@id/d5w" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d17" style="@style/z9" />
-    <TextView android:id="@id/d5x" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d1f" style="@style/z9" />
-    <TextView android:id="@id/d5y" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d19" style="@style/z9" />
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/ft" android:paddingTop="@dimen/m1" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textColorHint="@color/s3" android:layout_gravity="center_vertical" android:id="@id/lh" android:paddingLeft="0.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/n7" android:singleLine="true" android:drawableLeft="@raw/searchbar_icon" android:imeOptions="actionSearch" />
+            <TextView android:textColor="@color/s3" android:gravity="center_vertical" android:id="@id/ddt" android:paddingLeft="46.0dip" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <Button android:layout_gravity="center_vertical" android:id="@id/i9" android:visibility="gone" android:layout_marginLeft="@dimen/n_" android:text="@string/u3" style="@style/ns" />
+    </LinearLayout>
 </LinearLayout>

@@ -2,14 +2,15 @@ package com.tencent.mm.plugin.offline;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.offline.c.a;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoUI;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.wallet_core.c;
@@ -20,23 +21,25 @@ public class j
 {
   public final c a(Activity paramActivity, Bundle paramBundle)
   {
+    AppMethodBeat.i(43349);
     Object localObject;
     if (paramBundle != null) {
-      if (!bk.bl(paramBundle.getString("key_trans_id"))) {
+      if (!bo.isNullOrNil(paramBundle.getString("key_trans_id"))) {
         localObject = "key_trans_id";
       }
     }
     for (;;)
     {
-      com.tencent.mm.kernel.g.DQ();
-      com.tencent.mm.kernel.g.DO().dJT.a(new com.tencent.mm.plugin.offline.a.g("offlineshowpage", "push", (String)localObject), 0);
+      com.tencent.mm.kernel.g.RM();
+      com.tencent.mm.kernel.g.RK().eHt.a(new com.tencent.mm.plugin.offline.a.g("offlineshowpage", "push", (String)localObject), 0);
       b(paramActivity, WalletOrderInfoUI.class, paramBundle);
-      com.tencent.mm.kernel.g.DQ();
-      com.tencent.mm.kernel.g.DP().Dz().c(ac.a.utD, Boolean.valueOf(true));
+      com.tencent.mm.kernel.g.RM();
+      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yDG, Boolean.TRUE);
+      AppMethodBeat.o(43349);
       return this;
       localObject = (Orders)paramBundle.getParcelable("key_orders");
-      if ((localObject != null) && (((Orders)localObject).qwN != null) && (((Orders)localObject).qwN.size() > 0)) {
-        localObject = ((Orders.Commodity)((Orders)localObject).qwN.get(0)).bMY;
+      if ((localObject != null) && (((Orders)localObject).ujl != null) && (((Orders)localObject).ujl.size() > 0)) {
+        localObject = ((Orders.Commodity)((Orders)localObject).ujl.get(0)).cnJ;
       } else {
         localObject = "";
       }
@@ -45,34 +48,40 @@ public class j
   
   public final void a(Activity paramActivity, int paramInt, Bundle paramBundle)
   {
+    AppMethodBeat.i(43350);
     if ((paramActivity instanceof WalletOrderInfoUI))
     {
-      E(paramActivity);
+      B(paramActivity);
       b(paramActivity, null);
     }
-  }
-  
-  public final String aTh()
-  {
-    return "ShowOrderSuccessProcess";
-  }
-  
-  public final void b(Activity paramActivity, int paramInt)
-  {
-    E(paramActivity);
+    AppMethodBeat.o(43350);
   }
   
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
-    ak(paramActivity);
-    if (this.kke.getInt("key_from_scene") == 8) {
-      a.KA(this.kke.getString("key_appid"));
+    AppMethodBeat.i(43352);
+    aO(paramActivity);
+    if (this.mEJ.getInt("key_from_scene") == 8) {
+      a.WC(this.mEJ.getString("key_appid"));
     }
+    AppMethodBeat.o(43352);
+  }
+  
+  public final String bzC()
+  {
+    return "ShowOrderSuccessProcess";
   }
   
   public final boolean c(Activity paramActivity, Bundle paramBundle)
   {
     return false;
+  }
+  
+  public final void e(Activity paramActivity, int paramInt)
+  {
+    AppMethodBeat.i(43351);
+    B(paramActivity);
+    AppMethodBeat.o(43351);
   }
 }
 

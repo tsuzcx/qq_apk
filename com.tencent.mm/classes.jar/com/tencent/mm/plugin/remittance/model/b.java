@@ -1,86 +1,91 @@
 package com.tencent.mm.plugin.remittance.model;
 
-import com.tencent.mm.protocal.c.yz;
-import com.tencent.mm.protocal.c.za;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.adg;
+import com.tencent.mm.protocal.protobuf.adh;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class b
 {
-  public static LinkedList<yz> t(JSONArray paramJSONArray)
+  public static LinkedList<adg> y(JSONArray paramJSONArray)
   {
+    AppMethodBeat.i(44719);
     localLinkedList = new LinkedList();
-    if (paramJSONArray == null) {}
-    for (;;)
+    if (paramJSONArray == null)
     {
+      AppMethodBeat.o(44719);
       return localLinkedList;
-      int i = 0;
-      try
+    }
+    int i = 0;
+    try
+    {
+      while (i < paramJSONArray.length())
       {
-        while (i < paramJSONArray.length())
-        {
-          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-          yz localyz = new yz();
-          localyz.sXL = localJSONObject.optString("favor_compose_id");
-          localyz.sXM = localJSONObject.optLong("show_favor_amount");
-          localyz.sXN = localJSONObject.optLong("show_pay_amount");
-          localyz.sXO = localJSONObject.optString("total_favor_amount");
-          localyz.nxN = localJSONObject.optString("favor_desc");
-          localyz.sXP = localJSONObject.optLong("compose_sort_flag");
-          localyz.sKU = localJSONObject.optString("extend_str");
-          localyz.sEJ = u(localJSONObject.optJSONArray("favor_info_list"));
-          localLinkedList.add(localyz);
-          i += 1;
-        }
-        return localLinkedList;
+        JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+        adg localadg = new adg();
+        localadg.wVK = localJSONObject.optString("favor_compose_id");
+        localadg.wVL = localJSONObject.optLong("show_favor_amount");
+        localadg.wVM = localJSONObject.optLong("show_pay_amount");
+        localadg.wVN = localJSONObject.optString("total_favor_amount");
+        localadg.qiO = localJSONObject.optString("favor_desc");
+        localadg.wVO = localJSONObject.optLong("compose_sort_flag");
+        localadg.wIJ = localJSONObject.optString("extend_str");
+        localadg.wAS = z(localJSONObject.optJSONArray("favor_info_list"));
+        localLinkedList.add(localadg);
+        i += 1;
       }
-      catch (Exception paramJSONArray)
-      {
-        y.printErrStackTrace("MicroMsg.BusiFavorInfoParser", paramJSONArray, "", new Object[0]);
-      }
+      return localLinkedList;
+    }
+    catch (Exception paramJSONArray)
+    {
+      ab.printErrStackTrace("MicroMsg.BusiFavorInfoParser", paramJSONArray, "", new Object[0]);
+      AppMethodBeat.o(44719);
     }
   }
   
-  public static LinkedList<za> u(JSONArray paramJSONArray)
+  public static LinkedList<adh> z(JSONArray paramJSONArray)
   {
+    AppMethodBeat.i(44720);
     localLinkedList = new LinkedList();
-    if (paramJSONArray == null) {}
-    for (;;)
+    if (paramJSONArray == null)
     {
+      AppMethodBeat.o(44720);
       return localLinkedList;
-      int i = 0;
-      try
+    }
+    int i = 0;
+    try
+    {
+      while (i < paramJSONArray.length())
       {
-        while (i < paramJSONArray.length())
-        {
-          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-          za localza = new za();
-          localza.sYc = localJSONObject.optString("business_receipt_no");
-          localza.sKU = localJSONObject.optString("extend_str");
-          localza.sXW = localJSONObject.optString("fav_desc");
-          localza.sXU = localJSONObject.optLong("fav_id", 0L);
-          localza.sXV = localJSONObject.optString("fav_name");
-          localza.sXZ = localJSONObject.optString("fav_price");
-          localza.sXS = localJSONObject.optLong("fav_property", 0L);
-          localza.sYb = localJSONObject.optInt("fav_scope_type", 0);
-          localza.sXR = localJSONObject.optLong("fav_sub_type", 0L);
-          localza.sXQ = localJSONObject.optLong("fav_type", 0L);
-          localza.sXY = localJSONObject.optString("favor_remarks");
-          localza.sXT = localJSONObject.optString("favor_type_desc");
-          localza.sXX = localJSONObject.optString("favor_use_manual");
-          localza.sYa = localJSONObject.optString("real_fav_fee");
-          localza.sYd = localJSONObject.optInt("unavailable");
-          localLinkedList.add(localza);
-          i += 1;
-        }
-        return localLinkedList;
+        JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+        adh localadh = new adh();
+        localadh.wWb = localJSONObject.optString("business_receipt_no");
+        localadh.wIJ = localJSONObject.optString("extend_str");
+        localadh.wVV = localJSONObject.optString("fav_desc");
+        localadh.wVT = localJSONObject.optLong("fav_id", 0L);
+        localadh.wVU = localJSONObject.optString("fav_name");
+        localadh.wVY = localJSONObject.optString("fav_price");
+        localadh.wVR = localJSONObject.optLong("fav_property", 0L);
+        localadh.wWa = localJSONObject.optInt("fav_scope_type", 0);
+        localadh.wVQ = localJSONObject.optLong("fav_sub_type", 0L);
+        localadh.wVP = localJSONObject.optLong("fav_type", 0L);
+        localadh.wVX = localJSONObject.optString("favor_remarks");
+        localadh.wVS = localJSONObject.optString("favor_type_desc");
+        localadh.wVW = localJSONObject.optString("favor_use_manual");
+        localadh.wVZ = localJSONObject.optString("real_fav_fee");
+        localadh.wWc = localJSONObject.optInt("unavailable");
+        localLinkedList.add(localadh);
+        i += 1;
       }
-      catch (Exception paramJSONArray)
-      {
-        y.printErrStackTrace("MicroMsg.BusiFavorInfoParser", paramJSONArray, "", new Object[0]);
-      }
+      return localLinkedList;
+    }
+    catch (Exception paramJSONArray)
+    {
+      ab.printErrStackTrace("MicroMsg.BusiFavorInfoParser", paramJSONArray, "", new Object[0]);
+      AppMethodBeat.o(44720);
     }
   }
 }

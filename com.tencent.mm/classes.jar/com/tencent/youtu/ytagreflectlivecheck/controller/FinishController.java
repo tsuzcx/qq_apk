@@ -1,5 +1,6 @@
 package com.tencent.youtu.ytagreflectlivecheck.controller;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.LightLiveCheckResult;
 import com.tencent.youtu.ytagreflectlivecheck.jni.JNIUtils;
 import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
@@ -26,6 +27,7 @@ public class FinishController
   
   public void start(UploadVideoRequester paramUploadVideoRequester, YTAGReflectLiveCheckInterface.LightLiveCheckResult paramLightLiveCheckResult)
   {
+    AppMethodBeat.i(123146);
     YTLogger.i("mCountDownTimer", "current thread3: " + Thread.currentThread());
     long l1 = System.currentTimeMillis();
     int i = CameraSetting.getRotateTag(ProcessManager.dataWorker().mCameraRotate);
@@ -46,9 +48,11 @@ public class FinishController
       YTLogger.i("mCountDownTimer", "[FinishController.start] finish t5: " + (l5 - l4));
       YTLogger.i("mCountDownTimer", "[FinishController.start] finish t6: " + (l6 - l5));
       paramUploadVideoRequester.request((String)localObject, new FinishController.1(this, paramLightLiveCheckResult));
+      AppMethodBeat.o(123146);
       return;
     }
-    paramLightLiveCheckResult.onFailed(ERRCODE_JNI_DETECT_FAILED, "JNI return failed.[" + i + "]", "Check log for more information. code: " + i);
+    paramLightLiveCheckResult.onFailed(ERRCODE_JNI_DETECT_FAILED, "JNI return failed.[" + i + "]", "Check log for more information. code: ".concat(String.valueOf(i)));
+    AppMethodBeat.o(123146);
   }
 }
 

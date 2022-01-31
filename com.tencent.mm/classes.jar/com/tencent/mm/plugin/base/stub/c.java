@@ -3,49 +3,54 @@ package com.tencent.mm.plugin.base.stub;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
-import android.net.Uri;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class c
   extends MMPluginProvider.a
 {
-  private static final Map<String, Object> hRT;
+  private static final Map<String, Object> jLy;
   
   static
   {
+    AppMethodBeat.i(18121);
     HashMap localHashMap = new HashMap();
-    hRT = localHashMap;
-    localHashMap.put("_build_info_sdk_int_", Integer.valueOf(620824064));
-    hRT.put("_build_info_sdk_name_", "android 5.1.6");
-    hRT.put("_wxapp_pay_entry_classname_", "com.tencent.mm.plugin.base.stub.WXPayEntryActivity");
+    jLy = localHashMap;
+    localHashMap.put("_build_info_sdk_int_", Integer.valueOf(620954624));
+    jLy.put("_build_info_sdk_name_", "android 5.3.4");
+    jLy.put("_wxapp_pay_entry_classname_", "com.tencent.mm.plugin.base.stub.WXPayEntryActivity");
+    AppMethodBeat.o(18121);
   }
   
   public static Cursor a(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
+    AppMethodBeat.i(18120);
     paramArrayOfString2 = paramArrayOfString2[0];
-    Object localObject = hRT.get(paramArrayOfString2);
+    Object localObject = jLy.get(paramArrayOfString2);
     if (localObject == null)
     {
-      y.w("MicroMsg.MMPluginProviderSharedPrefImpl", "not found value for key: " + paramArrayOfString2);
+      ab.w("MicroMsg.MMPluginProviderSharedPrefImpl", "not found value for key: ".concat(String.valueOf(paramArrayOfString2)));
+      AppMethodBeat.o(18120);
       return null;
     }
     int i;
     MatrixCursor localMatrixCursor;
     if (localObject == null)
     {
-      y.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, null value");
+      ab.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, null value");
       i = 0;
       localMatrixCursor = new MatrixCursor(paramArrayOfString1);
       if (localObject != null) {
-        break label217;
+        break label228;
       }
     }
-    label217:
+    label228:
     for (paramArrayOfString1 = null;; paramArrayOfString1 = localObject.toString())
     {
       localMatrixCursor.addRow(new Object[] { Integer.valueOf(0), paramArrayOfString2, Integer.valueOf(i), paramArrayOfString1 });
+      AppMethodBeat.o(18120);
       return localMatrixCursor;
       if ((localObject instanceof Integer))
       {
@@ -77,30 +82,17 @@ public final class c
         i = 6;
         break;
       }
-      y.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, unknown type=" + localObject.getClass().toString());
+      ab.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, unknown type=" + localObject.getClass().toString());
       i = 0;
       break;
     }
   }
   
-  public static Uri avX()
+  public final boolean dy(Context paramContext)
   {
-    return null;
-  }
-  
-  public static int avY()
-  {
-    return 0;
-  }
-  
-  public static int avZ()
-  {
-    return 0;
-  }
-  
-  public final boolean cN(Context paramContext)
-  {
-    super.cN(paramContext);
+    AppMethodBeat.i(18119);
+    super.dy(paramContext);
+    AppMethodBeat.o(18119);
     return true;
   }
 }

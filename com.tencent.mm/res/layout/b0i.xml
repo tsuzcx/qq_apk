@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:orientation="vertical" android:background="@color/sz" android:paddingTop="0.0dip" android:layout_height="fill_parent" style="@style/k5"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:paddingTop="45.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="18.0dip" android:textColor="@color/fc" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/et1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/feu" />
-        <TextView android:textSize="13.0dip" android:textColor="#ff868686" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/d86" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="20.0dip" android:text="@string/fi8" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/lj" android:layout_gravity="center_vertical" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fif" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/a22" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="0.0dip" android:layout_height="32.0dip" android:layout_marginBottom="0.0dip" android:layout_weight="1.0" android:inputType="phone" wallet:layoutRes="@layout/b0j" wallet:contentHint="@string/fin" wallet:contentGravity="e2" style="@style/v9" />
-            <Button android:textColor="@color/a39" android:id="@id/d87" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/fim" android:singleLine="true" style="@style/mw" />
-        </LinearLayout>
-        <View android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/a46" android:gravity="center_vertical" android:id="@id/d88" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:text="@string/fii" />
-        <Button android:id="@id/a23" android:layout_marginTop="@dimen/kp" android:text="@string/qf" style="@style/mu" />
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/f0i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/aa5" android:src="@drawable/avt" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="@dimen/kz" android:textColor="@color/a2f" android:id="@id/f0j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/aa_" android:text="@string/eyn" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/f0k" android:background="@drawable/a44" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/aa4" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:paddingStart="@dimen/l2" android:paddingEnd="@dimen/l2">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/f0l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" android:contentDescription="@string/eyk" />
+        <TextView android:textSize="@dimen/lj" android:textColor="@color/a2h" android:id="@id/f0m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eyk" />
     </LinearLayout>
-</ScrollView>
+</merge>

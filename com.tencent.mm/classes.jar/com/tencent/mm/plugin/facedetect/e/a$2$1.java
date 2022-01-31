@@ -9,83 +9,91 @@ final class a$2$1
   public final void run()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:jTq	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-    //   4: getfield 31	com/tencent/mm/plugin/facedetect/e/a$2:jTm	Lcom/tencent/mm/plugin/facedetect/e/a;
-    //   7: invokestatic 37	com/tencent/mm/plugin/facedetect/e/a:g	(Lcom/tencent/mm/plugin/facedetect/e/a;)Lcom/tencent/mm/plugin/mmsight/model/a/d;
-    //   10: ifnull +18 -> 28
-    //   13: aload_0
-    //   14: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:jTq	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-    //   17: getfield 31	com/tencent/mm/plugin/facedetect/e/a$2:jTm	Lcom/tencent/mm/plugin/facedetect/e/a;
-    //   20: invokestatic 37	com/tencent/mm/plugin/facedetect/e/a:g	(Lcom/tencent/mm/plugin/facedetect/e/a;)Lcom/tencent/mm/plugin/mmsight/model/a/d;
-    //   23: invokeinterface 42 1 0
-    //   28: aload_0
-    //   29: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:jTq	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-    //   32: getfield 31	com/tencent/mm/plugin/facedetect/e/a$2:jTm	Lcom/tencent/mm/plugin/facedetect/e/a;
-    //   35: invokestatic 46	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
-    //   38: aload_0
-    //   39: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:jTq	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-    //   42: getfield 31	com/tencent/mm/plugin/facedetect/e/a$2:jTm	Lcom/tencent/mm/plugin/facedetect/e/a;
-    //   45: invokestatic 50	com/tencent/mm/plugin/facedetect/e/a:a	(Lcom/tencent/mm/plugin/facedetect/e/a;)Ljava/lang/Object;
-    //   48: astore_1
-    //   49: aload_1
-    //   50: monitorenter
-    //   51: aload_0
-    //   52: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:jTq	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-    //   55: getfield 31	com/tencent/mm/plugin/facedetect/e/a$2:jTm	Lcom/tencent/mm/plugin/facedetect/e/a;
-    //   58: getstatic 56	com/tencent/mm/plugin/facedetect/e/a$a:jTz	Lcom/tencent/mm/plugin/facedetect/e/a$a;
-    //   61: invokestatic 59	com/tencent/mm/plugin/facedetect/e/a:a	(Lcom/tencent/mm/plugin/facedetect/e/a;Lcom/tencent/mm/plugin/facedetect/e/a$a;)Lcom/tencent/mm/plugin/facedetect/e/a$a;
-    //   64: pop
-    //   65: aload_1
-    //   66: monitorexit
-    //   67: invokestatic 65	com/tencent/mm/plugin/facedetect/model/FaceContextData:aOh	()Lcom/tencent/mm/plugin/facedetect/model/FaceContextData;
-    //   70: getfield 69	com/tencent/mm/plugin/facedetect/model/FaceContextData:jNI	J
-    //   73: iconst_2
-    //   74: aload_0
-    //   75: getfield 21	com/tencent/mm/plugin/facedetect/e/a$2$1:fsD	I
-    //   78: invokestatic 75	com/tencent/mm/plugin/facedetect/model/FaceDetectReporter:e	(JII)V
-    //   81: return
-    //   82: astore_1
-    //   83: ldc 77
-    //   85: ldc 79
-    //   87: iconst_1
-    //   88: anewarray 4	java/lang/Object
-    //   91: dup
-    //   92: iconst_0
-    //   93: aload_1
-    //   94: invokevirtual 83	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   97: aastore
-    //   98: invokestatic 88	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   101: aload_0
-    //   102: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:jTq	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-    //   105: getfield 31	com/tencent/mm/plugin/facedetect/e/a$2:jTm	Lcom/tencent/mm/plugin/facedetect/e/a;
-    //   108: invokestatic 46	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
-    //   111: goto -73 -> 38
-    //   114: astore_1
-    //   115: aload_0
-    //   116: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:jTq	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-    //   119: getfield 31	com/tencent/mm/plugin/facedetect/e/a$2:jTm	Lcom/tencent/mm/plugin/facedetect/e/a;
-    //   122: invokestatic 46	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
-    //   125: aload_1
-    //   126: athrow
-    //   127: astore_2
-    //   128: aload_1
-    //   129: monitorexit
-    //   130: aload_2
-    //   131: athrow
+    //   0: sipush 543
+    //   3: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:mnL	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+    //   10: getfield 37	com/tencent/mm/plugin/facedetect/e/a$2:mnI	Lcom/tencent/mm/plugin/facedetect/e/a;
+    //   13: invokestatic 43	com/tencent/mm/plugin/facedetect/e/a:g	(Lcom/tencent/mm/plugin/facedetect/e/a;)Lcom/tencent/mm/plugin/mmsight/model/a/d;
+    //   16: ifnull +18 -> 34
+    //   19: aload_0
+    //   20: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:mnL	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+    //   23: getfield 37	com/tencent/mm/plugin/facedetect/e/a$2:mnI	Lcom/tencent/mm/plugin/facedetect/e/a;
+    //   26: invokestatic 43	com/tencent/mm/plugin/facedetect/e/a:g	(Lcom/tencent/mm/plugin/facedetect/e/a;)Lcom/tencent/mm/plugin/mmsight/model/a/d;
+    //   29: invokeinterface 48 1 0
+    //   34: aload_0
+    //   35: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:mnL	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+    //   38: getfield 37	com/tencent/mm/plugin/facedetect/e/a$2:mnI	Lcom/tencent/mm/plugin/facedetect/e/a;
+    //   41: invokestatic 52	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
+    //   44: aload_0
+    //   45: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:mnL	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+    //   48: getfield 37	com/tencent/mm/plugin/facedetect/e/a$2:mnI	Lcom/tencent/mm/plugin/facedetect/e/a;
+    //   51: invokestatic 56	com/tencent/mm/plugin/facedetect/e/a:a	(Lcom/tencent/mm/plugin/facedetect/e/a;)Ljava/lang/Object;
+    //   54: astore_1
+    //   55: aload_1
+    //   56: monitorenter
+    //   57: aload_0
+    //   58: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:mnL	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+    //   61: getfield 37	com/tencent/mm/plugin/facedetect/e/a$2:mnI	Lcom/tencent/mm/plugin/facedetect/e/a;
+    //   64: getstatic 62	com/tencent/mm/plugin/facedetect/e/a$a:mnT	Lcom/tencent/mm/plugin/facedetect/e/a$a;
+    //   67: invokestatic 65	com/tencent/mm/plugin/facedetect/e/a:a	(Lcom/tencent/mm/plugin/facedetect/e/a;Lcom/tencent/mm/plugin/facedetect/e/a$a;)Lcom/tencent/mm/plugin/facedetect/e/a$a;
+    //   70: pop
+    //   71: aload_1
+    //   72: monitorexit
+    //   73: invokestatic 71	com/tencent/mm/plugin/facedetect/model/FaceContextData:buk	()Lcom/tencent/mm/plugin/facedetect/model/FaceContextData;
+    //   76: getfield 75	com/tencent/mm/plugin/facedetect/model/FaceContextData:mhU	J
+    //   79: iconst_2
+    //   80: aload_0
+    //   81: getfield 21	com/tencent/mm/plugin/facedetect/e/a$2$1:gKf	I
+    //   84: invokestatic 81	com/tencent/mm/plugin/facedetect/model/FaceDetectReporter:h	(JII)V
+    //   87: sipush 543
+    //   90: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: return
+    //   94: astore_1
+    //   95: ldc 86
+    //   97: ldc 88
+    //   99: iconst_1
+    //   100: anewarray 4	java/lang/Object
+    //   103: dup
+    //   104: iconst_0
+    //   105: aload_1
+    //   106: invokevirtual 92	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   109: aastore
+    //   110: invokestatic 98	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   113: aload_0
+    //   114: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:mnL	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+    //   117: getfield 37	com/tencent/mm/plugin/facedetect/e/a$2:mnI	Lcom/tencent/mm/plugin/facedetect/e/a;
+    //   120: invokestatic 52	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
+    //   123: goto -79 -> 44
+    //   126: astore_1
+    //   127: aload_0
+    //   128: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:mnL	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+    //   131: getfield 37	com/tencent/mm/plugin/facedetect/e/a$2:mnI	Lcom/tencent/mm/plugin/facedetect/e/a;
+    //   134: invokestatic 52	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
+    //   137: sipush 543
+    //   140: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   143: aload_1
+    //   144: athrow
+    //   145: astore_2
+    //   146: aload_1
+    //   147: monitorexit
+    //   148: sipush 543
+    //   151: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   154: aload_2
+    //   155: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	132	0	this	1
-    //   82	12	1	localException	java.lang.Exception
-    //   114	15	1	localObject2	Object
-    //   127	4	2	localObject3	Object
+    //   0	156	0	this	1
+    //   94	12	1	localException	java.lang.Exception
+    //   126	21	1	localObject2	Object
+    //   145	10	2	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   0	28	82	java/lang/Exception
-    //   0	28	114	finally
-    //   83	101	114	finally
-    //   51	67	127	finally
-    //   128	130	127	finally
+    //   6	34	94	java/lang/Exception
+    //   6	34	126	finally
+    //   95	113	126	finally
+    //   57	73	145	finally
+    //   146	148	145	finally
   }
 }
 

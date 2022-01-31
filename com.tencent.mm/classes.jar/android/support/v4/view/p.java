@@ -1,17 +1,10 @@
 package android.support.v4.view;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
+import android.view.View;
 
 public abstract interface p
 {
-  public abstract ColorStateList getSupportBackgroundTintList();
-  
-  public abstract PorterDuff.Mode getSupportBackgroundTintMode();
-  
-  public abstract void setSupportBackgroundTintList(ColorStateList paramColorStateList);
-  
-  public abstract void setSupportBackgroundTintMode(PorterDuff.Mode paramMode);
+  public abstract ab a(View paramView, ab paramab);
 }
 
 

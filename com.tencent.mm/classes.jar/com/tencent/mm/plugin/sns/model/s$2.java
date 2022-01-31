@@ -1,41 +1,47 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.h.a.nb;
-import com.tencent.mm.h.a.nb.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ny;
+import com.tencent.mm.g.a.ny.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.awd;
+import com.tencent.mm.protocal.protobuf.bcs;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
 final class s$2
-  extends c<nb>
+  extends c<ny>
 {
   s$2(s params)
   {
-    this.udX = nb.class.getName().hashCode();
+    AppMethodBeat.i(36283);
+    this.__eventId = ny.class.getName().hashCode();
+    AppMethodBeat.o(36283);
   }
   
-  private boolean a(nb paramnb)
+  private boolean a(ny paramny)
   {
-    if (!this.oqp.oqn.containsKey(paramnb.bWI.filePath)) {
+    AppMethodBeat.i(36284);
+    if (!this.reY.reW.containsKey(paramny.cEy.filePath))
+    {
+      AppMethodBeat.o(36284);
       return false;
     }
-    int i = ((Integer)this.oqp.oqn.remove(paramnb.bWI.filePath)).intValue();
+    int i = ((Integer)this.reY.reW.remove(paramny.cEy.filePath)).intValue();
     try
     {
-      str1 = URLEncoder.encode(paramnb.bWI.result, "UTF-8");
-      if (this.oqp.dFZ != 0)
+      str1 = URLEncoder.encode(paramny.cEy.result, "UTF-8");
+      if (this.reY.eDB != 0)
       {
-        awd localawd = (awd)this.oqp.oqm.get(paramnb.bWI.filePath);
-        this.oqp.oql += String.format("position=%d&qrUrl=%s&md5=%s&imgUrl=%s&codeType=%d|", new Object[] { Integer.valueOf(i), str1, localawd.tsd, localawd.kSC, Integer.valueOf(paramnb.bWI.bIj) });
+        bcs localbcs = (bcs)this.reY.reV.get(paramny.cEy.filePath);
+        this.reY.reU += String.format("position=%d&qrUrl=%s&md5=%s&imgUrl=%s&codeType=%d|", new Object[] { Integer.valueOf(i), str1, localbcs.xsg, localbcs.Url, Integer.valueOf(paramny.cEy.cpE) });
       }
-      if (this.oqp.oqk == 12)
+      if (this.reY.reS == 12)
       {
-        str1 = "2,3,," + str1;
-        paramnb = str1;
+        str1 = "2,3,,".concat(String.valueOf(str1));
+        paramny = str1;
         if (i != 0) {}
       }
     }
@@ -44,22 +50,23 @@ final class s$2
       try
       {
         String str1;
-        paramnb = str1 + "," + URLEncoder.encode(this.oqp.oqo, "UTF-8");
-        y.i("MicroMsg.NetSceneSnsPost", "androidSystemShareFixed(13717) fileToIndex:%d,  %s", new Object[] { Integer.valueOf(i), paramnb });
-        h.nFQ.aC(13717, paramnb);
-        s.a(this.oqp);
+        paramny = str1 + "," + URLEncoder.encode(this.reY.reX, "UTF-8");
+        ab.i("MicroMsg.NetSceneSnsPost", "androidSystemShareFixed(13717) fileToIndex:%d,  %s", new Object[] { Integer.valueOf(i), paramny });
+        h.qsU.kvStat(13717, paramny);
+        s.a(this.reY);
+        AppMethodBeat.o(36284);
         return false;
         localUnsupportedEncodingException = localUnsupportedEncodingException;
-        y.printErrStackTrace("MicroMsg.NetSceneSnsPost", localUnsupportedEncodingException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.NetSceneSnsPost", localUnsupportedEncodingException, "", new Object[0]);
         str2 = "";
       }
-      catch (UnsupportedEncodingException paramnb)
+      catch (UnsupportedEncodingException paramny)
       {
         for (;;)
         {
           String str2;
-          y.e("MicroMsg.NetSceneSnsPost", "", new Object[] { paramnb.getMessage() });
-          paramnb = str2;
+          ab.e("MicroMsg.NetSceneSnsPost", "", new Object[] { paramny.getMessage() });
+          paramny = str2;
         }
       }
     }

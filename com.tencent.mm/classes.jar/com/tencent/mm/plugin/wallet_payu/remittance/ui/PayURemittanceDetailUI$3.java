@@ -1,10 +1,8 @@
 package com.tencent.mm.plugin.wallet_payu.remittance.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.c.a.a;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.ui.base.h;
 
 final class PayURemittanceDetailUI$3
@@ -14,10 +12,9 @@ final class PayURemittanceDetailUI$3
   
   public final void onClick(View paramView)
   {
-    h.a(this.qOI, this.qOI.getString(a.i.remittance_detail_refund_tips, new Object[] { PayURemittanceDetailUI.QX(PayURemittanceDetailUI.e(this.qOI)) }), this.qOI.getString(a.i.app_remind), this.qOI.getString(a.i.remittance_detail_refuse_btn_text), this.qOI.getString(a.i.app_cancel), new PayURemittanceDetailUI.3.1(this), new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-    });
+    AppMethodBeat.i(48546);
+    h.d(this.uDP, this.uDP.getString(2131302555, new Object[] { PayURemittanceDetailUI.afV(PayURemittanceDetailUI.e(this.uDP)) }), this.uDP.getString(2131297056), this.uDP.getString(2131302560), this.uDP.getString(2131296888), new PayURemittanceDetailUI.3.1(this), new PayURemittanceDetailUI.3.2(this));
+    AppMethodBeat.o(48546);
   }
 }
 

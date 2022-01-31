@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.backup.g.b;
 import com.tencent.mm.plugin.backup.i.ac;
 import com.tencent.mm.plugin.backup.i.r;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$2
   implements f
@@ -16,39 +17,36 @@ final class e$2
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(17841);
     paramString = (b)paramm;
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      y.e("MicroMsg.BakPcProcessMgr", "onSceneEnd:%d  err  [%d,%d]", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ab.e("MicroMsg.BakPcProcessMgr", "onSceneEnd:%d  err  [%d,%d]", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(17841);
       return;
     }
     if (paramm.getType() == 3)
     {
-      paramString = (ac)paramString.auJ();
-      if (paramString.hPE == 2)
+      paramString = (ac)paramString.aUl();
+      if (paramString.jJg == 2)
       {
-        Object localObject = paramString.hRl;
-        paramm = new Runnable()
-        {
-          public final void run()
-          {
-            e.2.this.hOl.a(this.hOm);
-          }
-        };
+        Object localObject = paramString.jKM;
+        paramm = new e.2.1(this, (r)localObject);
         e.2.2 local2 = new e.2.2(this);
-        paramString = this.hOl;
+        paramString = this.jHN;
         localObject = ((r)localObject).ID;
-        y.i("MicroMsg.BakPcProcessMgr", "doGetBakchatKey id: %s", new Object[] { localObject });
+        ab.i("MicroMsg.BakPcProcessMgr", "doGetBakchatKey id: %s", new Object[] { localObject });
         paramm = new e.3(paramString, paramm, local2);
-        au.Dk().a(596, paramm);
-        if (paramString.hOd != null) {
-          paramString.hOd.cancel();
+        aw.Rc().a(596, paramm);
+        if (paramString.jHF != null) {
+          paramString.jHF.cancel();
         }
-        paramString.hOd = new com.tencent.mm.plugin.backup.bakoldlogic.c.e((String)localObject);
-        au.Dk().a(paramString.hOd, 0);
+        paramString.jHF = new com.tencent.mm.plugin.backup.bakoldlogic.c.e((String)localObject);
+        aw.Rc().a(paramString.jHF, 0);
       }
     }
     b.b(3, this);
+    AppMethodBeat.o(17841);
   }
 }
 

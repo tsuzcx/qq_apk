@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI;
-import com.tencent.mm.plugin.setting.a.i;
 
 final class SettingsModifyEmailAddrUI$28
   implements DialogInterface.OnClickListener
@@ -13,10 +13,12 @@ final class SettingsModifyEmailAddrUI$28
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(this.nUU, RegByMobileSetPwdUI.class);
-    paramDialogInterface.putExtra("kintent_hint", this.nUU.getString(a.i.settings_unbind_set_password_tip));
+    AppMethodBeat.i(127291);
+    paramDialogInterface = new Intent(this.qIZ, RegByMobileSetPwdUI.class);
+    paramDialogInterface.putExtra("kintent_hint", this.qIZ.getString(2131303496));
     paramDialogInterface.putExtra("from_unbind", true);
-    this.nUU.startActivityForResult(paramDialogInterface, 1);
+    this.qIZ.startActivityForResult(paramDialogInterface, 1);
+    AppMethodBeat.o(127291);
   }
 }
 

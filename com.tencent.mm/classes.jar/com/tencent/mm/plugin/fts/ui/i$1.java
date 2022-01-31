@@ -2,14 +2,15 @@ package com.tencent.mm.plugin.fts.ui;
 
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.c;
 import com.tencent.mm.plugin.sns.b.f;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class i$1
-  extends ah
+  extends ak
 {
   i$1(i parami, Looper paramLooper)
   {
@@ -18,17 +19,22 @@ final class i$1
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(61835);
     switch (paramMessage.what)
     {
     }
-    do
+    for (;;)
     {
+      AppMethodBeat.o(61835);
       return;
-      y.d("MicroMsg.FTS.FTSDetailAdapter", "ImageEngine attach is true");
-    } while ((i.a(this.kBt)) || (this.kBt.getCount() <= 0));
-    ((com.tencent.mm.plugin.fts.a.n)g.t(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().aVm();
-    com.tencent.mm.plugin.sns.b.n.omC.start();
-    this.kBt.notifyDataSetChanged();
+      ab.d("MicroMsg.FTS.FTSDetailAdapter", "ImageEngine attach is true");
+      if ((!i.a(this.mXl)) && (this.mXl.getCount() > 0))
+      {
+        ((com.tencent.mm.plugin.fts.a.n)g.G(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().bBL();
+        com.tencent.mm.plugin.sns.b.n.raQ.start();
+        this.mXl.notifyDataSetChanged();
+      }
+    }
   }
 }
 

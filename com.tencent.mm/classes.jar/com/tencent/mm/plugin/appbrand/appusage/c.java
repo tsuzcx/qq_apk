@@ -1,137 +1,176 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import a.d.b.g;
-import a.n;
+import a.f.b.j;
+import a.l;
+import a.y;
 import android.os.Looper;
-import android.support.v7.g.d;
-import com.tencent.mm.ck.f;
+import android.support.v7.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cm.f;
+import com.tencent.mm.kernel.b.e;
+import com.tencent.mm.kernel.c.b;
+import com.tencent.mm.plugin.appbrand.app.g;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.c.bvj;
-import com.tencent.mm.protocal.c.db;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cgc;
+import com.tencent.mm.protocal.protobuf.dk;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-@com.tencent.mm.kernel.b.e(com.tencent.mm.plugin.appbrand.a.b.class)
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionModifyQueue;", "Lcom/tencent/mm/kernel/service/IService;", "Lcom/tencent/mm/kernel/service/IServiceLifeCycle;", "()V", "memoryQueue", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/StarWxaSortOperation;", "timeoutOpTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "applyDiff", "", "diff", "Landroid/support/v7/util/DiffUtil$DiffResult;", "oldList", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "newList", "callback", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionModifyQueue$OnModifiedCallback;", "applyDiff$plugin_appbrand_integration_release", "deserializeFromDisk", "", "modelClient2Server", "Lcom/tencent/mm/protocal/protobuf/StarWxaInfo;", "clientUse", "onRegister", "onUnregister", "push", "op", "reason", "Lcom/tencent/mm/plugin/appbrand/appusage/CgiUpdateWxaStarRecord$UpdateReason;", "serializeToDisk", "triggerRequest", "writeBackQueue", "queue", "Companion", "OnModifiedCallback", "plugin-appbrand-integration_release"})
+@e(com.tencent.mm.plugin.appbrand.a.c.class)
 public final class c
-  implements com.tencent.mm.kernel.c.a, com.tencent.mm.kernel.c.b
+  implements com.tencent.mm.kernel.c.a, b
 {
-  public static final c.a fHR = new c.a((byte)0);
-  private final LinkedList<bvj> fHP = new LinkedList();
-  private final am fHQ = new am(Looper.getMainLooper(), (am.a)new c.d(this), false);
+  public static final c.a haK;
+  private final LinkedList<cgc> haI;
+  private final ap haJ;
   
-  public final void Ey()
+  static
   {
-    ??? = com.tencent.mm.plugin.appbrand.app.e.abf().wh("AppBrandCollectionModifyQueue");
-    if (??? != null) {
-      if (???.length != 0) {
-        break label99;
-      }
-    }
-    label99:
-    for (int i = 1;; i = 0) {
-      if (i == 0)
-      {
-        com.tencent.mm.plugin.appbrand.app.e.abf().clear("AppBrandCollectionModifyQueue");
-        try
-        {
-          db localdb = new db();
-          localdb.aH((byte[])???);
-          synchronized (this.fHP)
-          {
-            this.fHP.addAll((Collection)localdb.dtH);
-            return;
-          }
-          return;
-        }
-        catch (Exception localException)
-        {
-          y.e("MicroMsg.AppBrandCollectionModifyQueue[collection]", "deserializeFromDisk, read kv failed, e = " + localException);
-        }
-      }
-    }
+    AppMethodBeat.i(134503);
+    haK = new c.a((byte)0);
+    AppMethodBeat.o(134503);
   }
   
-  public final void Ez()
+  public c()
   {
-    db localdb = new db();
-    synchronized (this.fHP)
-    {
-      localdb.dtH.addAll((Collection)this.fHP);
-      if (localdb.dtH.isEmpty()) {}
-    }
+    AppMethodBeat.i(134502);
+    this.haI = new LinkedList();
+    this.haJ = new ap(Looper.getMainLooper(), (ap.a)new c.d(this), false);
+    AppMethodBeat.o(134502);
   }
   
   public final void a(z.b paramb)
   {
-    g.k(paramb, "reason");
-    y.i("MicroMsg.AppBrandCollectionModifyQueue[collection]", "triggerRequest reason = " + paramb.name());
-    this.fHQ.stopTimer();
+    AppMethodBeat.i(134501);
+    j.q(paramb, "reason");
+    ab.i("MicroMsg.AppBrandCollectionModifyQueue[collection]", "triggerRequest reason = " + paramb.name());
+    this.haJ.stopTimer();
     LinkedList localLinkedList2 = new LinkedList();
-    synchronized (this.fHP)
+    synchronized (this.haI)
     {
-      localLinkedList2.addAll((Collection)this.fHP);
-      this.fHP.clear();
-      n localn = n.xoh;
+      localLinkedList2.addAll((Collection)this.haI);
+      this.haI.clear();
+      y localy = y.BMg;
       if (localLinkedList2.isEmpty())
       {
-        y.i("MicroMsg.AppBrandCollectionModifyQueue[collection]", "triggerRequest reason=[" + paramb.fJL + "], queue empty");
-        if ((g.e(paramb, z.b.fJH)) || (g.e(paramb, z.b.fJI)))
+        ab.i("MicroMsg.AppBrandCollectionModifyQueue[collection]", "triggerRequest reason=[" + paramb.intValue + "], queue empty");
+        if ((paramb == z.b.hcA) || (paramb == z.b.hcB))
         {
-          paramb = ae.fJQ;
-          ae.a.bK(2, 2);
+          paramb = ae.hcG;
+          ae.a.cV(2, 2);
         }
+        AppMethodBeat.o(134501);
         return;
       }
     }
-    y.i("MicroMsg.AppBrandCollectionModifyQueue[collection]", "run cgi reason=[" + paramb.fJL + "], queue_size=" + localLinkedList2.size());
-    new z((List)localLinkedList2, paramb.fJL).Km().j((com.tencent.mm.vending.c.a)new c.e(this, paramb, localLinkedList2));
+    ab.i("MicroMsg.AppBrandCollectionModifyQueue[collection]", "run cgi reason=[" + paramb.intValue + "], queue_size=" + localLinkedList2.size());
+    new z((List)localLinkedList2, paramb.intValue).adl().j((com.tencent.mm.vending.c.a)new c.e(this, paramb, localLinkedList2));
+    AppMethodBeat.o(134501);
   }
   
-  public final void a(bvj parambvj, z.b paramb)
+  public final void a(cgc paramcgc, z.b paramb)
   {
-    g.k(parambvj, "op");
-    g.k(paramb, "reason");
-    synchronized (this.fHP)
+    AppMethodBeat.i(134499);
+    j.q(paramcgc, "op");
+    j.q(paramb, "reason");
+    synchronized (this.haI)
     {
-      this.fHP.addLast(parambvj);
-      parambvj = n.xoh;
-      switch (d.fHS[paramb.ordinal()])
+      this.haI.addLast(paramcgc);
+      paramcgc = y.BMg;
+      switch (d.bLo[paramb.ordinal()])
       {
       default: 
         a(paramb);
+        AppMethodBeat.o(134499);
         return;
       }
     }
-    this.fHQ.hq(30000L);
+    this.haJ.nP(30000L);
+    AppMethodBeat.o(134499);
   }
   
-  public final boolean a(android.support.v7.g.c.b paramb, List<? extends LocalUsageInfo> arg2, List<? extends LocalUsageInfo> paramList2, c.b paramb1)
+  public final boolean a(android.support.v7.h.c.b paramb, List<? extends LocalUsageInfo> arg2, List<? extends LocalUsageInfo> paramList2, c.b paramb1)
   {
-    g.k(paramb, "diff");
-    g.k(???, "oldList");
-    g.k(paramList2, "newList");
+    AppMethodBeat.i(134498);
+    j.q(paramb, "diff");
+    j.q(???, "oldList");
+    j.q(paramList2, "newList");
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll((Collection)???);
     PInt localPInt = new PInt(0);
-    synchronized (this.fHP)
+    synchronized (this.haI)
     {
       paramb.a((d)new c.c(this, paramb, localPInt, paramList2, paramb1, localArrayList));
-      paramb = n.xoh;
-      if (localPInt.value > 0) {
+      paramb = y.BMg;
+      if (localPInt.value > 0)
+      {
+        AppMethodBeat.o(134498);
         return true;
       }
     }
+    AppMethodBeat.o(134498);
     return false;
+  }
+  
+  public final void xM()
+  {
+    AppMethodBeat.i(134496);
+    ??? = g.auQ().get("AppBrandCollectionModifyQueue");
+    if (??? != null) {
+      if (???.length != 0) {
+        break label126;
+      }
+    }
+    label126:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        g.auQ().clear("AppBrandCollectionModifyQueue");
+        try
+        {
+          dk localdk = new dk();
+          localdk.parseFrom((byte[])???);
+          synchronized (this.haI)
+          {
+            this.haI.addAll((Collection)localdk.elu);
+            AppMethodBeat.o(134496);
+            return;
+          }
+          AppMethodBeat.o(134496);
+        }
+        catch (Exception localException)
+        {
+          ab.e("MicroMsg.AppBrandCollectionModifyQueue[collection]", "deserializeFromDisk, read kv failed, e = ".concat(String.valueOf(localException)));
+        }
+      }
+      return;
+      AppMethodBeat.o(134496);
+      return;
+    }
+  }
+  
+  public final void xN()
+  {
+    AppMethodBeat.i(134497);
+    dk localdk = new dk();
+    synchronized (this.haI)
+    {
+      localdk.elu.addAll((Collection)this.haI);
+      if (localdk.elu.isEmpty()) {}
+    }
+    AppMethodBeat.o(134497);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.c
  * JD-Core Version:    0.7.0.1
  */

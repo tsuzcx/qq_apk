@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.music.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class a$2
   
   public final void run()
   {
-    a.a(this.myP);
+    AppMethodBeat.i(137476);
+    a.a(this.oYW);
+    AppMethodBeat.o(137476);
   }
 }
 

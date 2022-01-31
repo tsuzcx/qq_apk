@@ -6,91 +6,150 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MMLoadMoreListView
   extends ListView
 {
-  public View jcy = null;
-  private TextView uWA;
-  private boolean uWB = false;
-  private MMLoadMoreListView.a uWy = null;
-  private boolean uWz = false;
+  private View llk;
+  private a zkR;
+  private boolean zkS;
+  private TextView zkT;
+  private boolean zkU;
   
   public MMLoadMoreListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(106688);
+    this.llk = null;
+    this.zkR = null;
+    this.zkS = false;
+    this.zkU = false;
     init();
+    AppMethodBeat.o(106688);
   }
   
   public MMLoadMoreListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(106689);
+    this.llk = null;
+    this.zkR = null;
+    this.zkS = false;
+    this.zkU = false;
     init();
+    AppMethodBeat.o(106689);
+  }
+  
+  private void dDW()
+  {
+    AppMethodBeat.i(106690);
+    this.llk = View.inflate(getContext(), 2130970164, null);
+    this.zkT = ((TextView)this.llk.findViewById(2131826176));
+    this.llk.setVisibility(8);
+    AppMethodBeat.o(106690);
   }
   
   private void init()
   {
-    if (this.jcy == null)
+    AppMethodBeat.i(106691);
+    if (this.llk == null)
     {
-      cAN();
-      addFooterView(this.jcy);
-      this.jcy.setVisibility(8);
+      dDW();
+      addFooterView(this.llk);
+      this.llk.setVisibility(8);
+    }
+    AppMethodBeat.o(106691);
+  }
+  
+  public final void dDX()
+  {
+    AppMethodBeat.i(106692);
+    if (this.llk == null) {
+      dDW();
+    }
+    try
+    {
+      removeFooterView(this.llk);
+      addFooterView(this.llk);
+      AppMethodBeat.o(106692);
+      return;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(106692);
     }
   }
   
-  public final void cAN()
+  public final void dDY()
   {
-    this.jcy = View.inflate(getContext(), a.h.mm_footerview, null);
-    this.uWA = ((TextView)this.jcy.findViewById(a.g.footer_tips));
-    this.jcy.setVisibility(8);
-  }
-  
-  public final void cAO()
-  {
-    this.uWz = true;
+    AppMethodBeat.i(106693);
+    this.zkS = true;
     setOnScrollListener(new MMLoadMoreListView.1(this));
+    AppMethodBeat.o(106693);
   }
   
-  public final void cAP()
+  public final void dDZ()
   {
-    if (this.jcy != null)
+    AppMethodBeat.i(106696);
+    if (this.llk != null)
     {
-      this.uWA.setVisibility(8);
-      this.jcy.setVisibility(8);
+      this.zkT.setVisibility(8);
+      this.llk.setVisibility(8);
     }
+    AppMethodBeat.o(106696);
   }
   
-  public final void cAQ()
+  public final void dEa()
   {
-    this.uWA.setVisibility(0);
-    this.jcy.setVisibility(0);
+    AppMethodBeat.i(106697);
+    if (this.llk.getParent() == null) {
+      dDX();
+    }
+    this.zkT.setVisibility(0);
+    this.llk.setVisibility(0);
+    AppMethodBeat.o(106697);
+  }
+  
+  public final void dEb()
+  {
+    AppMethodBeat.i(106698);
+    removeFooterView(this.llk);
+    AppMethodBeat.o(106698);
   }
   
   public boolean getScroll2Top()
   {
-    return this.uWB;
+    return this.zkU;
   }
   
   public void setFooterTips(String paramString)
   {
-    this.uWA.setText(paramString);
+    AppMethodBeat.i(106695);
+    this.zkT.setText(paramString);
+    AppMethodBeat.o(106695);
   }
   
   public void setOnFootrClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.uWA.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.i(106694);
+    this.zkT.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(106694);
   }
   
-  public void setOnLoadMoreListener(MMLoadMoreListView.a parama)
+  public void setOnLoadMoreListener(a parama)
   {
-    this.uWy = parama;
+    this.zkR = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void Kt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMLoadMoreListView
  * JD-Core Version:    0.7.0.1
  */

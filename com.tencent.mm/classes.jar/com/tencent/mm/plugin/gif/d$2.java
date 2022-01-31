@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.gif;
 
 import android.os.SystemClock;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$2
   implements Runnable
@@ -9,20 +10,22 @@ final class d$2
   
   public final void run()
   {
-    if (((this.lil.isRunning()) || (d.b(this.lil) == 0)) && (SystemClock.uptimeMillis() >= d.c(this.lil)))
+    AppMethodBeat.i(62381);
+    if (((this.nFG.isRunning()) || (d.b(this.nFG) == 0)) && (SystemClock.uptimeMillis() >= d.c(this.nFG)))
     {
-      d.a(this.lil, System.currentTimeMillis());
-      d.d(this.lil);
-      this.lil.invalidateSelf();
-      if (d.a(this.lil) != null) {
-        d.a(this.lil).invalidate();
+      d.a(this.nFG, System.currentTimeMillis());
+      d.d(this.nFG);
+      this.nFG.invalidateSelf();
+      if (d.a(this.nFG) != null) {
+        d.a(this.nFG).invalidate();
       }
     }
+    AppMethodBeat.o(62381);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.d.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.transmit;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.p;
 
 final class e$1
@@ -9,10 +10,12 @@ final class e$1
   
   public final void run()
   {
-    if (this.wif.tipDialog != null) {
-      this.wif.tipDialog.dismiss();
+    AppMethodBeat.i(35280);
+    if (this.AAZ.tipDialog != null) {
+      this.AAZ.tipDialog.dismiss();
     }
-    this.wif.cJI();
+    this.AAZ.aMj();
+    AppMethodBeat.o(35280);
   }
 }
 

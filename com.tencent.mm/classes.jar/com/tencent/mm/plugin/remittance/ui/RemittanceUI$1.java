@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.remittance.model.e;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class RemittanceUI$1
-  implements n.a
+  implements p.a
 {
   RemittanceUI$1(RemittanceUI paramRemittanceUI, e parame) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.e("MicroMsg.RemittanceUI", "net error: %s", new Object[] { this.nEz });
+    AppMethodBeat.i(45160);
+    ab.e("MicroMsg.RemittanceUI", "net error: %s", new Object[] { this.qrz });
+    AppMethodBeat.o(45160);
   }
 }
 

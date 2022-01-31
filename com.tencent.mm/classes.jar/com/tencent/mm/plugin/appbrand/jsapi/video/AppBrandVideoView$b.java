@@ -4,7 +4,7 @@ import android.content.Context;
 
 public abstract interface AppBrandVideoView$b
 {
-  public abstract AppBrandVideoView cm(Context paramContext);
+  public abstract AppBrandVideoView cO(Context paramContext);
 }
 
 

@@ -4,8 +4,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class b$9
   implements TextWatcher
@@ -18,28 +19,30 @@ final class b$9
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    String str = bk.Gi(paramCharSequence.toString());
+    AppMethodBeat.i(21979);
+    String str = bo.RK(paramCharSequence.toString());
     if (str.contains(" "))
     {
       paramCharSequence = str.replace(" ", "");
-      this.ltx.ltf.setText(bk.M(paramCharSequence));
-      if (!a.Gc(paramCharSequence)) {
-        break label204;
+      this.nQQ.nQy.setText(bo.ab(paramCharSequence));
+      if (!a.RE(paramCharSequence)) {
+        break label209;
       }
-      str = a.Ga(paramCharSequence);
-      if (!bk.bl(str))
+      str = a.RC(paramCharSequence);
+      if (!bo.isNullOrNil(str))
       {
-        this.ltx.lte.setText("+" + str);
-        this.ltx.ltf.setText(a.Gf(paramCharSequence));
+        this.nQQ.nQx.setText("+".concat(String.valueOf(str)));
+        this.nQQ.nQy.setText(a.RH(paramCharSequence));
       }
     }
     for (;;)
     {
-      if (this.ltx.ltc != null) {
-        this.ltx.ltc.FJ(this.ltx.ltf.getText().toString());
+      if (this.nQQ.nQv != null) {
+        this.nQQ.nQv.Rl(this.nQQ.nQy.getText().toString());
       }
+      AppMethodBeat.o(21979);
       return;
-      if (this.ltx.ltw.equals(str))
+      if (this.nQQ.nQP.equals(str))
       {
         paramCharSequence = str;
         if (paramInt3 <= 0) {
@@ -47,20 +50,20 @@ final class b$9
         }
       }
       paramCharSequence = str;
-      if (!bk.bl(str)) {
+      if (!bo.isNullOrNil(str)) {
         break;
       }
-      this.ltx.ltw = str;
-      this.ltx.ltf.setText("");
+      this.nQQ.nQP = str;
+      this.nQQ.nQy.setText("");
       paramCharSequence = str;
       break;
-      label204:
-      if (!paramCharSequence.equals(this.ltx.ltw))
+      label209:
+      if (!paramCharSequence.equals(this.nQQ.nQP))
       {
-        this.ltx.ltw = paramCharSequence;
-        this.ltx.ltf.setText(paramCharSequence);
-        if (bk.bl(this.ltx.lte.getText().toString())) {
-          this.ltx.lte.setText("+" + a.bdo());
+        this.nQQ.nQP = paramCharSequence;
+        this.nQQ.nQy.setText(paramCharSequence);
+        if (bo.isNullOrNil(this.nQQ.nQx.getText().toString())) {
+          this.nQQ.nQx.setText("+" + a.bKI());
         }
       }
     }
@@ -68,7 +71,7 @@ final class b$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.b.9
  * JD-Core Version:    0.7.0.1
  */

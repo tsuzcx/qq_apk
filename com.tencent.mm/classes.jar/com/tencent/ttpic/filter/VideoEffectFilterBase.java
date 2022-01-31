@@ -1,19 +1,22 @@
 package com.tencent.ttpic.filter;
 
-import android.graphics.PointF;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.face.Face;
-import com.tencent.ttpic.model.FaceActionCounter;
-import com.tencent.ttpic.model.HandActionCounter;
 import com.tencent.ttpic.model.VideoFilterEffect;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class VideoEffectFilterBase
   extends VideoFilterBase
 {
-  private static final String TAG = VideoEffectFilterBase.class.getSimpleName();
+  private static final String TAG;
   protected VideoFilterEffect mVideoFilterEffect;
+  
+  static
+  {
+    AppMethodBeat.i(83074);
+    TAG = VideoEffectFilterBase.class.getSimpleName();
+    AppMethodBeat.o(83074);
+  }
   
   public VideoEffectFilterBase(String paramString1, String paramString2, VideoFilterEffect paramVideoFilterEffect)
   {
@@ -23,31 +26,49 @@ public class VideoEffectFilterBase
   
   public void initAttribParams()
   {
+    AppMethodBeat.i(83072);
     super.initAttribParams();
     setTexCords(new float[] { 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F });
+    AppMethodBeat.o(83072);
   }
   
   public void initParams() {}
   
   public boolean shouldRender(int paramInt1, int paramInt2, List<Face> paramList)
   {
-    if ((paramInt1 == -1) || (paramInt2 == 0) || (paramList == null) || (paramList.isEmpty())) {
+    AppMethodBeat.i(83073);
+    if ((paramInt1 == -1) || (paramInt2 == 0) || (paramList == null) || (paramList.isEmpty()))
+    {
+      AppMethodBeat.o(83073);
       return true;
     }
-    if (this.mVideoFilterEffect == null) {
+    if (this.mVideoFilterEffect == null)
+    {
+      AppMethodBeat.o(83073);
       return false;
     }
     switch (this.mVideoFilterEffect.order)
     {
     default: 
+      AppMethodBeat.o(83073);
       return false;
     case 1: 
-      return paramInt1 == ((Face)paramList.get(0)).faceIndex;
+      if (paramInt1 == ((Face)paramList.get(0)).faceIndex)
+      {
+        AppMethodBeat.o(83073);
+        return true;
+      }
+      AppMethodBeat.o(83073);
+      return false;
     }
-    return paramInt1 == ((Face)paramList.get(paramList.size() - 1)).faceIndex;
+    if (paramInt1 == ((Face)paramList.get(paramList.size() - 1)).faceIndex)
+    {
+      AppMethodBeat.o(83073);
+      return true;
+    }
+    AppMethodBeat.o(83073);
+    return false;
   }
-  
-  public void updatePreview(List<PointF> paramList1, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap, List<PointF> paramList2, Map<Integer, HandActionCounter> paramMap1, Set<Integer> paramSet, float paramFloat, long paramLong) {}
 }
 
 

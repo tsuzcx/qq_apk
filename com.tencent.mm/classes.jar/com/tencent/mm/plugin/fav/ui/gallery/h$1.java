@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
 import android.support.v7.widget.GridLayoutManager.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 final class h$1
@@ -8,11 +9,15 @@ final class h$1
 {
   h$1(h paramh) {}
   
-  public final int bA(int paramInt)
+  public final int bF(int paramInt)
   {
-    if (((f.c)this.kij.hka.get(paramInt)).type == 2147483647) {
+    AppMethodBeat.i(74590);
+    if (((f.c)this.mCP.iVH.get(paramInt)).type == 2147483647)
+    {
+      AppMethodBeat.o(74590);
       return 4;
     }
+    AppMethodBeat.o(74590);
     return 1;
   }
 }

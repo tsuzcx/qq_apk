@@ -1,5 +1,7 @@
 package com.tencent.wxmm;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class v2render
 {
   public final int FLAG_Angle270 = 12;
@@ -22,7 +24,9 @@ public class v2render
   
   static
   {
+    AppMethodBeat.i(35422);
     System.loadLibrary("voipGLRender");
+    AppMethodBeat.o(35422);
   }
   
   public static int getGLVersion()
@@ -44,7 +48,7 @@ public class v2render
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wxmm.v2render
  * JD-Core Version:    0.7.0.1
  */

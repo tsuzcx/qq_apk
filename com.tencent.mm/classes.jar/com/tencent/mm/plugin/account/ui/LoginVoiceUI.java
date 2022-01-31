@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -7,69 +8,82 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.q;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.modelsimple.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 
 public class LoginVoiceUI
   extends LoginHistoryUI
 {
-  protected final void XJ()
+  protected final void arq()
   {
     int j = -1;
-    super.XJ();
-    XK();
-    q localq = new q(this.fmI, this.fmR, "", 0);
-    localq.nd(this.fmR);
+    AppMethodBeat.i(125076);
+    super.arq();
+    arr();
+    s locals = new s(this.gEc, this.gEl, "", 0);
+    locals.up(this.gEl);
     int i;
     String str;
-    if (this.fmR == null)
+    if (this.gEl == null)
     {
       i = -1;
-      str = bk.aac(this.fmR);
-      if (this.fmA.fey != null) {
-        break label162;
+      str = bo.aqg(this.gEl);
+      if (this.gDU.gwh != null) {
+        break label170;
       }
     }
     for (;;)
     {
-      y.d("MicroMsg.LoginVoiceUI", "summerauth mAuthPwd len:%d content[%s] logindata.rawPsw len:%d content[%s]", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), bk.aac(this.fmA.fey) });
-      getString(q.j.app_tip);
-      this.dnm = h.b(this, getString(q.j.login_logining), true, new LoginVoiceUI.2(this, localq));
-      g.Dk().a(localq, 0);
+      ab.d("MicroMsg.LoginVoiceUI", "summerauth mAuthPwd len:%d content[%s] logindata.rawPsw len:%d content[%s]", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), bo.aqg(this.gDU.gwh) });
+      getString(2131297087);
+      this.eeN = h.b(this, getString(2131301149), true, new LoginVoiceUI.2(this, locals));
+      g.Rc().a(locals, 0);
+      AppMethodBeat.o(125076);
       return;
-      i = this.fmR.length();
+      i = this.gEl.length();
       break;
-      label162:
-      j = this.fmA.fey.length();
+      label170:
+      j = this.gDU.gwh.length();
     }
   }
   
-  public final boolean XN()
+  public final boolean art()
   {
     return false;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(125075);
     super.onCreate(paramBundle);
-    if (this.fmS) {
+    if (this.gEm)
+    {
+      AppMethodBeat.o(125075);
       return;
     }
-    this.fhr = 1;
-    this.fmL.setVisibility(0);
-    this.fmt.setVisibility(0);
-    paramBundle = (LinearLayout.LayoutParams)this.fms.getLayoutParams();
+    this.gyZ = 1;
+    this.gEf.setVisibility(0);
+    this.gDN.setVisibility(0);
+    paramBundle = (LinearLayout.LayoutParams)this.gDM.getLayoutParams();
     paramBundle.gravity = 1;
     paramBundle.leftMargin = 0;
-    this.fms.setLayoutParams(paramBundle);
-    findViewById(q.f.voice_btn_icon).setEnabled(false);
-    ((TextView)findViewById(q.f.voice_login_btn)).setTextColor(getResources().getColorStateList(q.c.white_text_color_selector));
-    ((TextView)findViewById(q.f.voice_login_btn)).setBackgroundResource(getResources().getColor(q.c.transparent));
-    this.fmt.setOnClickListener(new LoginVoiceUI.1(this));
+    this.gDM.setLayoutParams(paramBundle);
+    findViewById(2131825467).setEnabled(false);
+    ((TextView)findViewById(2131825468)).setTextColor(getResources().getColorStateList(2131690799));
+    ((TextView)findViewById(2131825468)).setBackgroundResource(getResources().getColor(2131690605));
+    this.gDN.setOnClickListener(new LoginVoiceUI.1(this));
+    AppMethodBeat.o(125075);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

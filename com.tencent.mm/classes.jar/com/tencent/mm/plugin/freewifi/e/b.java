@@ -1,100 +1,110 @@
 package com.tencent.mm.plugin.freewifi.e;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.k;
 import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.k.b;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiNetCheckUI;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class b
 {
   private static String TAG = "MicroMsg.FreeWifi.Protocol31Entry";
   
-  public static void G(Intent paramIntent)
+  public static void Z(Intent paramIntent)
   {
     boolean bool1 = true;
-    if (paramIntent == null) {}
-    Object localObject;
-    do
+    AppMethodBeat.i(20802);
+    if (paramIntent == null)
     {
+      AppMethodBeat.o(20802);
       return;
-      localObject = paramIntent.getStringExtra("free_wifi_ap_key");
-    } while (m.isEmpty((String)localObject));
-    int i = paramIntent.getIntExtra("free_wifi_threeone_startup_type", 0);
-    if (2 == i) {
+    }
+    Object localObject = paramIntent.getStringExtra("free_wifi_ap_key");
+    int i;
+    if (!m.isEmpty((String)localObject))
+    {
+      i = paramIntent.getIntExtra("free_wifi_threeone_startup_type", 0);
+      if (2 != i) {
+        break label380;
+      }
       i = 11;
     }
     for (;;)
     {
-      label39:
       paramIntent.putExtra("free_wifi_channel_id", i);
       paramIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 31);
       m.d(paramIntent, paramIntent.getStringExtra("free_wifi_schema_ticket"));
-      paramIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_REPORT_WIFI_SERVER_ID", m.B(paramIntent) + "_" + m.D(paramIntent) + "_" + m.E(paramIntent) + "_" + System.currentTimeMillis());
-      boolean bool2 = d.a.aUG().l(paramIntent.getIntExtra("free_wifi_threeone_startup_type", 0), paramIntent.getStringExtra("free_wifi_ap_key"), paramIntent.getStringExtra("free_wifi_schema_ticket"));
-      k.a locala = k.aTx();
-      locala.ssid = m.Do(TAG);
-      locala.bssid = m.Dp(TAG);
-      locala.bHI = ((String)localObject);
-      locala.iGw = paramIntent.getStringExtra("free_wifi_schema_ticket");
-      locala.kmR = m.D(paramIntent);
-      locala.kmS = k.b.knl.knD;
-      locala.kmT = k.b.knl.name;
-      locala.bUR = m.E(paramIntent);
+      paramIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_REPORT_WIFI_SERVER_ID", m.U(paramIntent) + "_" + m.W(paramIntent) + "_" + m.X(paramIntent) + "_" + System.currentTimeMillis());
+      boolean bool2 = d.a.bBg().v(paramIntent.getIntExtra("free_wifi_threeone_startup_type", 0), paramIntent.getStringExtra("free_wifi_ap_key"), paramIntent.getStringExtra("free_wifi_schema_ticket"));
+      k.a locala = k.bAc();
+      locala.ssid = m.Ow(TAG);
+      locala.bssid = m.Ox(TAG);
+      locala.coX = ((String)localObject);
+      locala.kMp = paramIntent.getStringExtra("free_wifi_schema_ticket");
+      locala.mIE = m.W(paramIntent);
+      locala.mIF = k.b.mIY.mJq;
+      locala.mIG = k.b.mIY.name;
+      locala.cCy = m.X(paramIntent);
       if (bool2)
       {
         i = 0;
-        label242:
+        label254:
         locala.result = i;
-        localObject = locala.aTz();
+        localObject = locala.bAe();
         if (bool2) {
-          break label396;
+          break label407;
         }
       }
       for (;;)
       {
-        ((k)localObject).b(paramIntent, bool1).aTy();
-        y.i(TAG, "getLock = " + bool2);
-        m.Dr("type=" + paramIntent.getIntExtra("free_wifi_threeone_startup_type", 0) + ";getLock=" + bool2);
-        if (!bool2) {
-          break;
+        ((k)localObject).c(paramIntent, bool1).bAd();
+        ab.i(TAG, "getLock = ".concat(String.valueOf(bool2)));
+        m.Oz("type=" + paramIntent.getIntExtra("free_wifi_threeone_startup_type", 0) + ";getLock=" + bool2);
+        if (bool2)
+        {
+          m.d(paramIntent, paramIntent.getStringExtra("free_wifi_schema_ticket"));
+          paramIntent.setClass(ah.getContext(), FreeWifiNetCheckUI.class);
+          paramIntent.addFlags(67108864);
+          com.tencent.mm.bq.d.b(ah.getContext(), "freewifi", ".ui.FreeWifiEntryUI", paramIntent);
         }
-        m.d(paramIntent, paramIntent.getStringExtra("free_wifi_schema_ticket"));
-        paramIntent.setClass(ae.getContext(), FreeWifiNetCheckUI.class);
-        paramIntent.addFlags(67108864);
-        com.tencent.mm.br.d.b(ae.getContext(), "freewifi", ".ui.FreeWifiEntryUI", paramIntent);
+        AppMethodBeat.o(20802);
         return;
+        label380:
         if (3 == i)
         {
           i = 12;
-          break label39;
+          break;
         }
         if (4 != i) {
-          break label401;
+          break label412;
         }
         i = 13;
-        break label39;
+        break;
         i = -1;
-        break label242;
-        label396:
+        break label254;
+        label407:
         bool1 = false;
       }
-      label401:
+      label412:
       i = 1;
     }
   }
   
-  public static b aUE()
+  public static b bBe()
   {
-    return b.a.aUF();
+    AppMethodBeat.i(20801);
+    b localb = b.a.bBf();
+    AppMethodBeat.o(20801);
+    return localb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.e.b
  * JD-Core Version:    0.7.0.1
  */

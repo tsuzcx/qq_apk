@@ -2,39 +2,43 @@ package com.tencent.mm.model.d;
 
 import android.os.HandlerThread;
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.e.m;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.al.b;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ao.b;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a$2
-  implements al.b
+  implements ao.b
 {
   public a$2(a parama) {}
   
-  public final String Jf()
+  public final String acc()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("worker thread id = " + au.DS().mnU.getLooper().getThread().getId() + "[" + au.DS().crd() + "]\n");
-    localStringBuilder.append("#cpu freq(KHz)[max=" + m.yS() + ", min=" + m.yT() + ", cur=" + m.yU() + "]\n");
-    Object localObject = new LinkedList(a.d(this.dZq));
-    Iterator localIterator = ((LinkedList)localObject).iterator();
-    localStringBuilder.append("#done tasks size = " + ((LinkedList)localObject).size() + '\n');
+    AppMethodBeat.i(16373);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("worker thread id = " + aw.RO().oNc.getLooper().getThread().getId() + "[" + aw.RO().dtc() + "]\n");
+    ((StringBuilder)localObject1).append("#cpu freq(KHz)[max=" + m.Lp() + ", min=" + m.Lq() + ", cur=" + m.Lr() + "]\n");
+    Object localObject2 = new LinkedList(a.e(this.fpv));
+    Iterator localIterator = ((LinkedList)localObject2).iterator();
+    ((StringBuilder)localObject1).append("#done tasks size = " + ((LinkedList)localObject2).size() + '\n');
     if (localIterator != null)
     {
       int i = 0;
-      while ((localIterator.hasNext()) && (i < a.j(this.dZq)))
+      while ((localIterator.hasNext()) && (i < a.k(this.fpv)))
       {
-        localObject = (a.a)localIterator.next();
-        localStringBuilder.append("[index = " + i + " | taskinfo:" + ((a.a)localObject).info + "]\n");
+        localObject2 = (a.a)localIterator.next();
+        ((StringBuilder)localObject1).append("[index = " + i + " | taskinfo:" + ((a.a)localObject2).info + "]\n");
         i += 1;
       }
     }
-    localStringBuilder.append("\n#waiting" + au.DS().crf().dump(false));
-    return localStringBuilder.toString();
+    ((StringBuilder)localObject1).append("\n#waiting" + aw.RO().caB().dump(false));
+    localObject1 = ((StringBuilder)localObject1).toString();
+    AppMethodBeat.o(16373);
+    return localObject1;
   }
 }
 

@@ -1,90 +1,105 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
 import android.graphics.Point;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class b
   implements e
 {
-  private long aRW;
-  private long eIR;
-  private int eIV;
-  private String eJC;
-  private boolean eku = false;
+  private long aZw;
+  private long eRN;
+  private int eRW;
+  private boolean fAK = false;
+  private String fZg;
   private int frameCount = 0;
-  private byte[] mla = null;
-  private e.a mlq;
+  private byte[] oKh = null;
+  private e.a oKw;
   
-  public final Point SP()
+  public final void a(e.a parama)
   {
-    return new Point(MP4MuxerJNI.ffmpegGetVideoWidth(), MP4MuxerJNI.ffmpegGetVideoHeight());
+    this.oKw = parama;
   }
   
-  public final int SQ()
+  public final Point amc()
+  {
+    AppMethodBeat.i(3606);
+    Point localPoint = new Point(MP4MuxerJNI.ffmpegGetVideoWidth(), MP4MuxerJNI.ffmpegGetVideoHeight());
+    AppMethodBeat.o(3606);
+    return localPoint;
+  }
+  
+  public final int amd()
   {
     return 2;
   }
   
-  public final void a(e.a parama)
+  public final void mm(int paramInt)
   {
-    this.mlq = parama;
+    AppMethodBeat.i(3608);
+    ab.i("MicroMsg.FFMpegTranscodeDecoder", "setFrameDropInterval: %s", new Object[] { Integer.valueOf(paramInt) });
+    this.eRW = paramInt;
+    AppMethodBeat.o(3608);
   }
   
-  public final int i(String paramString, long paramLong1, long paramLong2)
+  public final int p(String paramString, long paramLong1, long paramLong2)
   {
-    y.i("MicroMsg.FFMpegTranscodeDecoder", "initDecoder, srcFilePath: %s, start: %s, end: %s", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    this.eJC = paramString;
-    this.aRW = paramLong1;
-    this.eIR = paramLong2;
-    if (!bk.bl(paramString))
+    AppMethodBeat.i(3604);
+    ab.i("MicroMsg.FFMpegTranscodeDecoder", "initDecoder, srcFilePath: %s, start: %s, end: %s", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    this.fZg = paramString;
+    this.aZw = paramLong1;
+    this.eRN = paramLong2;
+    if (!bo.isNullOrNil(paramString))
     {
-      long l = bk.UZ();
+      long l = bo.yB();
       int i = MP4MuxerJNI.ffmpegOpenAndSeekFile(paramString, paramLong1 * 1000.0D, paramLong2 * 1000.0D);
-      y.i("MicroMsg.FFMpegTranscodeDecoder", "ffmpegOpenAndSeekFile used %sms", new Object[] { Long.valueOf(bk.cp(l)) });
+      ab.i("MicroMsg.FFMpegTranscodeDecoder", "ffmpegOpenAndSeekFile used %sms", new Object[] { Long.valueOf(bo.av(l)) });
+      AppMethodBeat.o(3604);
       return i;
     }
+    AppMethodBeat.o(3604);
     return -1;
-  }
-  
-  public final void ju(int paramInt)
-  {
-    y.i("MicroMsg.FFMpegTranscodeDecoder", "setFrameDropInterval: %s", new Object[] { Integer.valueOf(paramInt) });
-    this.eIV = paramInt;
-  }
-  
-  public final void r(Runnable paramRunnable)
-  {
-    y.i("MicroMsg.FFMpegTranscodeDecoder", "startDecodeBlockLoop");
-    this.eku = true;
-    this.frameCount = 0;
-    for (;;)
-    {
-      if (!this.eku) {
-        return;
-      }
-      long l = bk.UZ();
-      this.mla = MP4MuxerJNI.ffmpegGetNextVideoFrameData(this.mla);
-      y.d("MicroMsg.FFMpegTranscodeDecoder", "ffmpegGetNextVideoFrameData used %sms", new Object[] { Long.valueOf(bk.cp(l)) });
-      boolean bool = MP4MuxerJNI.ffmpegCheckIfReachEndTimestamp();
-      if ((this.mla == null) || (bool))
-      {
-        y.e("MicroMsg.FFMpegTranscodeDecoder", "ret buffer is null or reachEnd? %s", new Object[] { Boolean.valueOf(bool) });
-        this.eku = false;
-        paramRunnable.run();
-        return;
-      }
-      this.frameCount += 1;
-      if (((this.eIV <= 1) || (this.frameCount % this.eIV != 0)) && (this.mlq != null)) {
-        this.mlq.aD(this.mla);
-      }
-    }
   }
   
   public final void stop()
   {
-    y.i("MicroMsg.FFMpegTranscodeDecoder", "stop, start: %s", new Object[] { Boolean.valueOf(this.eku) });
-    this.eku = false;
+    AppMethodBeat.i(3607);
+    ab.i("MicroMsg.FFMpegTranscodeDecoder", "stop, start: %s", new Object[] { Boolean.valueOf(this.fAK) });
+    this.fAK = false;
+    AppMethodBeat.o(3607);
+  }
+  
+  public final void y(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(3605);
+    ab.i("MicroMsg.FFMpegTranscodeDecoder", "startDecodeBlockLoop");
+    this.fAK = true;
+    this.frameCount = 0;
+    for (;;)
+    {
+      if (!this.fAK)
+      {
+        AppMethodBeat.o(3605);
+        return;
+      }
+      long l = bo.yB();
+      this.oKh = MP4MuxerJNI.ffmpegGetNextVideoFrameData(this.oKh);
+      ab.d("MicroMsg.FFMpegTranscodeDecoder", "ffmpegGetNextVideoFrameData used %sms", new Object[] { Long.valueOf(bo.av(l)) });
+      boolean bool = MP4MuxerJNI.ffmpegCheckIfReachEndTimestamp();
+      if ((this.oKh == null) || (bool))
+      {
+        ab.e("MicroMsg.FFMpegTranscodeDecoder", "ret buffer is null or reachEnd? %s", new Object[] { Boolean.valueOf(bool) });
+        this.fAK = false;
+        paramRunnable.run();
+        AppMethodBeat.o(3605);
+        return;
+      }
+      this.frameCount += 1;
+      if (((this.eRW <= 1) || (this.frameCount % this.eRW != 0)) && (this.oKw != null)) {
+        this.oKw.bb(this.oKh);
+      }
+    }
   }
 }
 

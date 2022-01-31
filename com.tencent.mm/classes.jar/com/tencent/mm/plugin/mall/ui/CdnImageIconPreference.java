@@ -4,10 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 
@@ -15,7 +14,7 @@ public class CdnImageIconPreference
   extends IconPreference
 {
   String iconUrl;
-  private CdnImageView lYC;
+  private CdnImageView oyh;
   
   public CdnImageIconPreference(Context paramContext)
   {
@@ -32,30 +31,34 @@ public class CdnImageIconPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(43132);
     super.onBindView(paramView);
-    this.lYC = ((CdnImageView)paramView.findViewById(a.f.image_iv));
-    if (!bk.bl(this.iconUrl))
+    this.oyh = ((CdnImageView)paramView.findViewById(2131822243));
+    if (!bo.isNullOrNil(this.iconUrl))
     {
-      this.lYC.setUseSdcardCache(true);
-      this.lYC.setUrl(this.iconUrl);
-      this.lYC.setVisibility(0);
+      this.oyh.setUseSdcardCache(true);
+      this.oyh.setUrl(this.iconUrl);
+      this.oyh.setVisibility(0);
     }
+    AppMethodBeat.o(43132);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(43131);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.f.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, a.g.cdn_preference_content_icon, localViewGroup);
+    View.inflate(this.mContext, 2130969016, localViewGroup);
+    AppMethodBeat.o(43131);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.CdnImageIconPreference
  * JD-Core Version:    0.7.0.1
  */

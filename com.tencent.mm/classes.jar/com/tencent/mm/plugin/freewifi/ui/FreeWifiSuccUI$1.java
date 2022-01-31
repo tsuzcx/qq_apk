@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.freewifi.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FreeWifiSuccUI$1
   implements View.OnClickListener
@@ -10,8 +11,10 @@ final class FreeWifiSuccUI$1
   
   public final void onClick(View paramView)
   {
-    this.ksY.finish();
-    FreeWifiSuccUI.a(this.ksY);
+    AppMethodBeat.i(21085);
+    this.mOM.finish();
+    FreeWifiSuccUI.a(this.mOM);
+    AppMethodBeat.o(21085);
   }
 }
 

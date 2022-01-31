@@ -2,8 +2,7 @@ package com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.inputmethod.InputMethodManager;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WxaLuckyMoneyPrepareUI$6$2
   implements Runnable
@@ -12,8 +11,10 @@ final class WxaLuckyMoneyPrepareUI$6$2
   
   public final void run()
   {
-    this.lMz.lMx.VH();
-    ((InputMethodManager)this.lMz.lMx.mController.uMN.getSystemService("input_method")).showSoftInput(this.lMz.eYi, 0);
+    AppMethodBeat.i(42059);
+    this.ojS.ojQ.hideTenpayKB();
+    ((InputMethodManager)this.ojS.ojQ.getContext().getSystemService("input_method")).showSoftInput(this.ojS.val$hintTv, 0);
+    AppMethodBeat.o(42059);
   }
 }
 

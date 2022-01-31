@@ -1,15 +1,18 @@
 package com.tencent.mm.ui.tools;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class AddFavoriteUI$8
   implements AddFavoriteUI.b
 {
   AddFavoriteUI$8(AddFavoriteUI paramAddFavoriteUI) {}
   
-  public final void cIP()
+  public final void dND()
   {
-    AddFavoriteUI.b(this.vYd).sendEmptyMessage(0);
+    AppMethodBeat.i(34750);
+    AddFavoriteUI.b(this.Aqp).sendEmptyMessage(0);
+    AppMethodBeat.o(34750);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.ui.base;
 
 import android.view.View;
 import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMViewPager$3
   implements View.OnLongClickListener
@@ -10,9 +11,11 @@ final class MMViewPager$3
   
   public final boolean onLongClick(View paramView)
   {
-    if (MMViewPager.p(this.uZn) != null) {
-      MMViewPager.p(this.uZn).aRg();
+    AppMethodBeat.i(106899);
+    if (MMViewPager.p(this.znE) != null) {
+      MMViewPager.p(this.znE).bxv();
     }
+    AppMethodBeat.o(106899);
     return true;
   }
 }

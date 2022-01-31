@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui;
 
 public abstract interface h$a
 {
-  public abstract void ai(String paramString, boolean paramBoolean);
+  public abstract void an(String paramString, boolean paramBoolean);
 }
 
 

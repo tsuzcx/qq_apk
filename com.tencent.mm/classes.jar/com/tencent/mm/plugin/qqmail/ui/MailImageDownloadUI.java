@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
@@ -9,168 +10,204 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.as.k;
-import com.tencent.mm.as.o;
-import com.tencent.mm.h.c.cs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.at.k;
+import com.tencent.mm.at.o;
+import com.tencent.mm.g.c.dd;
 import com.tencent.mm.kernel.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.qqmail.b.f;
-import com.tencent.mm.plugin.qqmail.b.g;
-import com.tencent.mm.plugin.qqmail.b.j;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.d;
 import com.tencent.mm.ui.MMActivity;
 
 public class MailImageDownloadUI
   extends MMActivity
-  implements com.tencent.mm.ah.f, com.tencent.mm.ah.g
+  implements com.tencent.mm.ai.f, com.tencent.mm.ai.g
 {
-  private long bIt = 0L;
-  private long bXr = 0L;
-  private int ent;
-  private ah handler = new ah(Looper.getMainLooper());
-  private TextView iSJ;
-  private ProgressBar niG;
-  private TextView niH;
-  private TextView niI;
-  private TextView niJ;
-  private RelativeLayout niK;
-  private com.tencent.mm.as.e niL;
-  private k niM;
-  private ImageView niN;
-  private LinearLayout niO;
+  private long cFn;
+  private long cpO;
+  private int fDP;
+  private ak handler;
+  private TextView lbt;
+  private ProgressBar pNT;
+  private TextView pNU;
+  private TextView pNV;
+  private TextView pNW;
+  private RelativeLayout pNX;
+  private com.tencent.mm.at.e pNY;
+  private k pNZ;
+  private ImageView pOa;
+  private LinearLayout pOb;
   private String username;
   
-  private void wp(int paramInt)
+  public MailImageDownloadUI()
   {
-    this.niH.setText(getString(b.j.fmt_percent, new Object[] { Integer.valueOf(paramInt) }));
-    if (paramInt < this.niG.getMax()) {
+    AppMethodBeat.i(68382);
+    this.handler = new ak(Looper.getMainLooper());
+    this.cpO = 0L;
+    this.cFn = 0L;
+    AppMethodBeat.o(68382);
+  }
+  
+  private void Cb(int paramInt)
+  {
+    AppMethodBeat.i(68387);
+    this.pNU.setText(getString(2131300064, new Object[] { Integer.valueOf(paramInt) }));
+    if (paramInt < this.pNT.getMax())
+    {
+      AppMethodBeat.o(68387);
       return;
     }
-    com.tencent.mm.as.e locale = o.OJ().b(Long.valueOf(this.niM.eoN));
-    if (this.ent == 1) {
-      com.tencent.mm.as.f.c(locale);
+    com.tencent.mm.at.e locale = o.ahC().b(Long.valueOf(this.pNZ.fFk));
+    if (this.fDP == 1) {
+      com.tencent.mm.at.f.c(locale);
     }
     finish();
     startActivity(getIntent());
+    AppMethodBeat.o(68387);
   }
   
   public final void a(int paramInt1, int paramInt2, m paramm)
   {
-    y.d("MicroMsg.MailImageDownloadUI", "offset " + paramInt1 + "totaolLen  " + paramInt2);
+    AppMethodBeat.i(68388);
+    ab.d("MicroMsg.MailImageDownloadUI", "offset " + paramInt1 + "totaolLen  " + paramInt2);
     if (paramm.getType() == 109) {
       if (paramInt2 == 0) {
-        break label62;
+        break label72;
       }
     }
-    label62:
+    label72:
     for (paramInt1 = paramInt1 * 100 / paramInt2 - 1;; paramInt1 = 0)
     {
-      wp(Math.max(0, paramInt1));
+      Cb(Math.max(0, paramInt1));
+      AppMethodBeat.o(68388);
       return;
     }
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return b.g.mail_image_download;
+    return 2130970065;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.niH = ((TextView)findViewById(b.f.image_download_percent_tv));
-    this.niI = ((TextView)findViewById(b.f.image_download_percent_tv));
-    this.iSJ = ((TextView)findViewById(b.f.image_download_size_tv));
-    this.niJ = ((TextView)findViewById(b.f.image_download_length_tv));
-    this.niN = ((ImageView)findViewById(b.f.mail_image));
-    this.niH.setVisibility(0);
-    this.niO = ((LinearLayout)findViewById(b.f.image_bottom_info_layout));
-    this.niK = ((RelativeLayout)findViewById(b.f.mail_img_download_layout));
-    this.niI.setVisibility(8);
-    this.iSJ.setVisibility(8);
-    this.niJ.setVisibility(8);
+    AppMethodBeat.i(68386);
+    this.pNU = ((TextView)findViewById(2131825880));
+    this.pNV = ((TextView)findViewById(2131825880));
+    this.lbt = ((TextView)findViewById(2131825881));
+    this.pNW = ((TextView)findViewById(2131825882));
+    this.pOa = ((ImageView)findViewById(2131825878));
+    this.pNU.setVisibility(0);
+    this.pOb = ((LinearLayout)findViewById(2131825879));
+    this.pNX = ((RelativeLayout)findViewById(2131825876));
+    this.pNV.setVisibility(8);
+    this.lbt.setVisibility(8);
+    this.pNW.setVisibility(8);
     setTitleVisibility(8);
     setBackBtn(new MailImageDownloadUI.1(this));
-    this.niG = ((ProgressBar)findViewById(b.f.image_download_pb));
+    this.pNT = ((ProgressBar)findViewById(2131825877));
+    AppMethodBeat.o(68386);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(68383);
     super.onCreate(paramBundle);
-    this.bIt = getIntent().getLongExtra("img_msg_id", 0L);
-    this.bXr = getIntent().getLongExtra("img_server_id", 0L);
-    this.ent = getIntent().getIntExtra("img_download_compress_type", 0);
+    this.cpO = getIntent().getLongExtra("img_msg_id", 0L);
+    this.cFn = getIntent().getLongExtra("img_server_id", 0L);
+    this.fDP = getIntent().getIntExtra("img_download_compress_type", 0);
     this.username = getIntent().getStringExtra("img_download_username");
     initView();
-    if (this.bIt > 0L) {
-      this.niL = o.OJ().bY(this.bIt);
+    if (this.cpO > 0L) {
+      this.pNY = o.ahC().gT(this.cpO);
     }
-    if (((this.niL == null) || (this.niL.enp <= 0L)) && (this.bXr > 0L)) {
-      this.niL = o.OJ().bX(this.bXr);
+    if (((this.pNY == null) || (this.pNY.fDL <= 0L)) && (this.cFn > 0L)) {
+      this.pNY = o.ahC().gS(this.cFn);
     }
-    if ((this.niL == null) || (this.niL.enp <= 0L))
+    if ((this.pNY == null) || (this.pNY.fDL <= 0L))
     {
-      y.e("MicroMsg.MailImageDownloadUI", "onCreate : on such imginfo, with msgLocalId = " + this.bIt + ", or msgSvrId = " + this.bXr);
+      ab.e("MicroMsg.MailImageDownloadUI", "onCreate : on such imginfo, with msgLocalId = " + this.cpO + ", or msgSvrId = " + this.cFn);
+      AppMethodBeat.o(68383);
       return;
     }
-    if ((this.bIt <= 0L) && (this.bXr > 0L)) {
-      this.bIt = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().O(this.username, this.bXr).field_msgId;
+    if ((this.cpO <= 0L) && (this.cFn > 0L)) {
+      this.cpO = ((j)com.tencent.mm.kernel.g.E(j.class)).bPQ().ag(this.username, this.cFn).field_msgId;
     }
-    paramBundle = this.niL.enq;
-    String str = o.OJ().o(paramBundle, null, null);
-    if ((!bk.bl(paramBundle)) && (com.tencent.mm.vfs.e.bK(str)))
+    paramBundle = this.pNY.fDM;
+    String str = o.ahC().q(paramBundle, null, null);
+    if ((!bo.isNullOrNil(paramBundle)) && (com.tencent.mm.vfs.e.cN(str)))
     {
-      y.i("MicroMsg.MailImageDownloadUI", "has big image, bigImgPath = %s, hasHDImg = %b, fullPath = %s", new Object[] { paramBundle, Boolean.valueOf(this.niL.Or()), str });
-      if ((str == null) || (str.equals("")) || (!com.tencent.mm.vfs.e.bK(str)))
+      ab.i("MicroMsg.MailImageDownloadUI", "has big image, bigImgPath = %s, hasHDImg = %b, fullPath = %s", new Object[] { paramBundle, Boolean.valueOf(this.pNY.ahh()), str });
+      if ((str == null) || (str.equals("")) || (!com.tencent.mm.vfs.e.cN(str)))
       {
-        y.d("MicroMsg.MailImageDownloadUI", "showImg : imgPath is null");
+        ab.d("MicroMsg.MailImageDownloadUI", "showImg : imgPath is null");
+        AppMethodBeat.o(68383);
         return;
       }
-      this.niO.setVisibility(8);
-      this.niG.setVisibility(8);
-      this.niN.setVisibility(0);
-      paramBundle = c.YW(str);
-      this.niN.setImageBitmap(paramBundle);
-      this.niK.invalidate();
+      this.pOb.setVisibility(8);
+      this.pNT.setVisibility(8);
+      this.pOa.setVisibility(0);
+      paramBundle = d.aoV(str);
+      this.pOa.setImageBitmap(paramBundle);
+      this.pNX.invalidate();
+      AppMethodBeat.o(68383);
       return;
     }
-    this.niM = new k(this.niL.enp, this.bIt, this.ent, this);
-    com.tencent.mm.kernel.g.DO().dJT.a(this.niM, 0);
+    this.pNZ = new k(this.pNY.fDL, this.cpO, this.fDP, this);
+    com.tencent.mm.kernel.g.RK().eHt.a(this.pNZ, 0);
+    AppMethodBeat.o(68383);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(68384);
     super.onPause();
-    com.tencent.mm.kernel.g.DO().dJT.b(109, this);
+    com.tencent.mm.kernel.g.RK().eHt.b(109, this);
+    AppMethodBeat.o(68384);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(68385);
     super.onResume();
-    com.tencent.mm.kernel.g.DO().dJT.a(109, this);
+    com.tencent.mm.kernel.g.RK().eHt.a(109, this);
+    AppMethodBeat.o(68385);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (paramm.getType() != 109) {
+    AppMethodBeat.i(68389);
+    if (paramm.getType() != 109)
+    {
+      AppMethodBeat.o(68389);
       return;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      wp(this.niG.getMax());
+      Cb(this.pNT.getMax());
+      AppMethodBeat.o(68389);
       return;
     }
-    y.e("MicroMsg.MailImageDownloadUI", "onSceneEnd : fail, errType = " + paramInt1 + ", errCode = " + paramInt2);
-    Toast.makeText(this, b.j.imgdownload_fail, 1).show();
+    ab.e("MicroMsg.MailImageDownloadUI", "onSceneEnd : fail, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    Toast.makeText(this, 2131300726, 1).show();
+    AppMethodBeat.o(68389);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailImageDownloadUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FTSVoiceInputLayoutImpl$5
   implements Runnable
@@ -9,19 +10,22 @@ final class FTSVoiceInputLayoutImpl$5
   
   public final void run()
   {
-    c localc = FTSVoiceInputLayoutImpl.a(this.kFs);
-    boolean bool = this.kFt;
-    y.d("MicroMsg.VoiceInputDrawable", "recordingStartState() called with: maxAmplitudeRate = [%s] fromLongCkick = %s", new Object[] { Integer.valueOf(0), Boolean.valueOf(bool) });
+    AppMethodBeat.i(62185);
+    b localb = FTSVoiceInputLayoutImpl.b(this.ncg);
+    boolean bool = this.nch;
+    ab.d("MicroMsg.FTSVoiceInputDrawable", "recordingStartState() called with: maxAmplitudeRate = [%s] fromLongCkick = %s", new Object[] { Integer.valueOf(0), Boolean.valueOf(bool) });
     if (!bool) {
-      localc.kFU = 3;
+      localb.currentState = 3;
     }
-    localc.kFQ = true;
-    localc.invalidateSelf();
+    localb.nbH = b.wD(0);
+    localb.invalidateSelf();
+    localb.nbJ = 0;
+    AppMethodBeat.o(62185);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.FTSVoiceInputLayoutImpl.5
  * JD-Core Version:    0.7.0.1
  */

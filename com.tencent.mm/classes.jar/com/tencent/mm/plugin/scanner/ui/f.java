@@ -6,76 +6,85 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.platformtools.x.a;
-import com.tencent.mm.plugin.scanner.util.q;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.scanner.util.s;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class f
   extends Preference
   implements x.a
 {
-  com.tencent.mm.ui.base.preference.f dnn;
-  String jaX;
+  String ljG;
   private Context mContext;
-  private View mView = null;
-  private ImageView nHY = null;
+  private View mView;
+  private ImageView qvy;
+  com.tencent.mm.ui.base.preference.f screen;
   
   public f(Context paramContext)
   {
     super(paramContext);
-    setLayoutResource(R.i.product_media_preference);
+    AppMethodBeat.i(81031);
+    this.mView = null;
+    this.qvy = null;
+    setLayoutResource(2130970449);
     x.a(this);
     this.mContext = paramContext;
+    AppMethodBeat.o(81031);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(81032);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
-    return this.mView;
+    paramView = this.mView;
+    AppMethodBeat.o(81032);
+    return paramView;
   }
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void m(String paramString, Bitmap paramBitmap)
   {
-    if ((!bk.bl(paramString)) && (paramString.equals(this.jaX)) && (paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      ai.d(new f.1(this, paramBitmap));
+    AppMethodBeat.i(81034);
+    if ((!bo.isNullOrNil(paramString)) && (paramString.equals(this.ljG)) && (paramBitmap != null) && (!paramBitmap.isRecycled())) {
+      al.d(new f.1(this, paramBitmap));
     }
+    AppMethodBeat.o(81034);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(81033);
     super.onBindView(paramView);
-    this.nHY = ((ImageView)paramView.findViewById(R.h.media_thumb));
-    if (!bk.bl(this.jaX))
+    this.qvy = ((ImageView)paramView.findViewById(2131822416));
+    if (!bo.isNullOrNil(this.ljG))
     {
-      Bitmap localBitmap = x.a(new q(this.jaX));
+      Bitmap localBitmap = x.a(new s(this.ljG));
       if ((localBitmap == null) || (localBitmap.isRecycled())) {
-        break label86;
+        break label94;
       }
-      this.nHY.setImageBitmap(localBitmap);
-      this.nHY.setBackgroundColor(0);
+      this.qvy.setImageBitmap(localBitmap);
+      this.qvy.setBackgroundColor(0);
     }
     for (;;)
     {
-      ((ImageView)paramView.findViewById(R.h.media_play_btn)).setVisibility(0);
+      ((ImageView)paramView.findViewById(2131826797)).setVisibility(0);
+      AppMethodBeat.o(81033);
       return;
-      label86:
-      this.nHY.setBackgroundColor(this.mContext.getResources().getColor(R.e.grid_preference_thumb_bg_color));
-      this.nHY.setImageBitmap(null);
+      label94:
+      this.qvy.setBackgroundColor(this.mContext.getResources().getColor(2131690158));
+      this.qvy.setImageBitmap(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.f
  * JD-Core Version:    0.7.0.1
  */

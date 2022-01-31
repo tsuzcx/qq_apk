@@ -1,60 +1,80 @@
 package com.tencent.mm.plugin.mmsight.model;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class b
 {
-  long ePv = 0L;
-  long iHm = bk.UZ();
-  long mgo = bk.UZ();
-  private String tag = "default";
-  long value = 0L;
+  long gfi;
+  long kNr;
+  long oGN;
+  private String tag;
+  long value;
   
   public b(String paramString)
   {
+    AppMethodBeat.i(76460);
+    this.tag = "default";
+    this.kNr = bo.yB();
+    this.oGN = bo.yB();
+    this.value = 0L;
+    this.gfi = 0L;
     this.tag = paramString;
+    AppMethodBeat.o(76460);
   }
   
-  public final String biG()
+  public final String bQI()
   {
-    if (this.ePv == 0L) {
+    AppMethodBeat.i(76463);
+    if (this.gfi == 0L)
+    {
+      AppMethodBeat.o(76463);
       return "";
     }
-    double d2 = (this.mgo - this.iHm) / 1000.0D;
+    double d2 = (this.oGN - this.kNr) / 1000.0D;
     double d1 = d2;
     if (d2 == 0.0D) {
       d1 = 1.0D;
     }
-    return 1.0D * this.ePv / d1;
-  }
-  
-  public final void fj(long paramLong)
-  {
-    if (this.ePv == 0L) {
-      this.iHm = bk.UZ();
-    }
-    this.value += paramLong;
-    this.ePv += 1L;
-    this.mgo = bk.UZ();
+    String str = 1.0D * this.gfi / d1;
+    AppMethodBeat.o(76463);
+    return str;
   }
   
   public final String getValue()
   {
-    if (this.ePv == 0L) {
+    AppMethodBeat.i(76462);
+    if (this.gfi == 0L)
+    {
+      AppMethodBeat.o(76462);
       return "";
     }
-    double d2 = (this.mgo - this.iHm) / 1000.0D;
+    double d2 = (this.oGN - this.kNr) / 1000.0D;
     double d1 = d2;
     if (d2 == 0.0D) {
       d1 = 1.0D;
     }
-    return String.format("CounterUtil %s tag %s count %s passed %.3f perValue %.3f/count counttime %.3f/s valuetime %.3f/s st:%s ed:%s diff%s", new Object[] { "", this.tag, Long.valueOf(this.ePv), Double.valueOf(d1), Double.valueOf(this.value * 1.0D / this.ePv), Double.valueOf(this.ePv * 1.0D / d1), Double.valueOf(1.0D * this.value / d1), Long.valueOf(this.iHm), Long.valueOf(this.mgo), Long.valueOf(this.mgo - this.iHm) });
+    String str = String.format("CounterUtil %s tag %s count %s passed %.3f perValue %.3f/count counttime %.3f/s valuetime %.3f/s st:%s ed:%s diff%s", new Object[] { "", this.tag, Long.valueOf(this.gfi), Double.valueOf(d1), Double.valueOf(this.value * 1.0D / this.gfi), Double.valueOf(this.gfi * 1.0D / d1), Double.valueOf(1.0D * this.value / d1), Long.valueOf(this.kNr), Long.valueOf(this.oGN), Long.valueOf(this.oGN - this.kNr) });
+    AppMethodBeat.o(76462);
+    return str;
+  }
+  
+  public final void kH(long paramLong)
+  {
+    AppMethodBeat.i(76461);
+    if (this.gfi == 0L) {
+      this.kNr = bo.yB();
+    }
+    this.value += paramLong;
+    this.gfi += 1L;
+    this.oGN = bo.yB();
+    AppMethodBeat.o(76461);
   }
   
   public final void reset()
   {
     this.value = 0L;
-    this.ePv = 0L;
+    this.gfi = 0L;
   }
 }
 

@@ -1,96 +1,80 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
-import android.view.View;
-import com.tencent.mm.plugin.appbrand.jsapi.base.a;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.e.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.g.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.h;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.i;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.x;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class j
   extends a
 {
-  public static final int CTRL_INDEX = 2;
-  public static final String NAME = "insertMap";
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "getMapRegion";
   
-  protected final View a(e parame, JSONObject paramJSONObject)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    float f1 = bk.getFloat(paramJSONObject.optString("centerLatitude"), 0.0F);
-    float f2 = bk.getFloat(paramJSONObject.optString("centerLongitude"), 0.0F);
-    int i = paramJSONObject.optInt("scale", 16);
-    if ((Math.abs(f1) > 90.0F) || (Math.abs(f2) > 180.0F))
+    AppMethodBeat.i(93847);
+    super.a(paramc, paramJSONObject, paramInt);
+    if (paramJSONObject == null)
     {
-      y.d("MicroMsg.JsApiInsertMap", "centerLatitude or centerLongitude value is error!");
-      return null;
-    }
-    String str = parame.getAppId();
-    int j = p(paramJSONObject);
-    y.i("MicroMsg.JsApiInsertMap", "insertMap appId:%s viewId:%d data:%s", new Object[] { str, Integer.valueOf(j), paramJSONObject });
-    final b localb = f.a(parame.getContext(), str, parame.ahJ(), j, paramJSONObject);
-    if (localb == null)
-    {
-      y.e("MicroMsg.JsApiInsertMap", "mapView is null, return");
-      return null;
-    }
-    localb.dg(paramJSONObject.optBoolean("enableZoom", true));
-    localb.dh(paramJSONObject.optBoolean("enableScroll", true));
-    localb.di(paramJSONObject.optBoolean("enableRotate", false));
-    localb.dj(paramJSONObject.optBoolean("showCompass", false));
-    localb.dk(paramJSONObject.optBoolean("enable3D", false));
-    localb.dl(paramJSONObject.optBoolean("enableOverlooking", false));
-    localb.dm(paramJSONObject.optBoolean("enableSatellite", false));
-    localb.dn(paramJSONObject.optBoolean("enableTraffic", false));
-    localb.c(f1, f2, i);
-    parame.a(new e.b()
-    {
-      public final void qa()
-      {
-        y.i("MicroMsg.JsApiInsertMap", "onBackground");
-        if (localb != null)
-        {
-          localb.onPause();
-          localb.jdMethod_do(false);
-        }
-      }
-    });
-    parame.a(new j.2(this, localb, paramJSONObject));
-    parame.a(new j.3(this, parame, str, j));
-    localb.getView().setVisibility(0);
-    return new CoverViewContainer(parame.getContext(), localb.getView());
-  }
-  
-  protected final void a(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
-  {
-    paramView = f.o(parame.getAppId(), parame.ahJ(), p(paramJSONObject));
-    if (paramView == null)
-    {
-      y.e("MicroMsg.JsApiInsertMap", "mapView is null, error, return");
+      ab.e("MicroMsg.JsApiGetMapRegion", "data is null");
+      paramc.h(paramInt, j("fail:invalid data", null));
+      AppMethodBeat.o(93847);
       return;
     }
-    paramView.a(new j.4(this, paramInt, parame));
-    paramView.a(new j.5(this, paramInt, parame));
-    paramView.a(new j.6(this, paramInt, parame));
-    paramView.a(new j.7(this, paramInt, parame));
-    paramView.jdMethod_do(paramJSONObject.optBoolean("showLocation"));
-    paramView.a(new j.8(this, paramInt, parame));
-  }
-  
-  protected final int p(JSONObject paramJSONObject)
-  {
-    try
+    ab.i("MicroMsg.JsApiGetMapRegion", "data:%s", new Object[] { paramJSONObject });
+    paramJSONObject = f(paramc, paramJSONObject);
+    if (paramJSONObject == null)
     {
-      int i = paramJSONObject.optInt("mapId");
-      return i;
+      ab.e("MicroMsg.JsApiGetMapRegion", "mapView is null, return");
+      paramc.h(paramInt, j("fail:mapview is null", null));
+      AppMethodBeat.o(93847);
+      return;
     }
-    catch (Exception paramJSONObject)
+    Object localObject1 = paramJSONObject.aDt().hPF;
+    if (localObject1 == null)
     {
-      y.e("MicroMsg.JsApiInsertMap", "get mapId error, exception : %s", new Object[] { paramJSONObject });
+      ab.e("MicroMsg.JsApiGetMapRegion", "visibleRegion is  null");
+      paramc.h(paramInt, j("fail:visibleRegion is null", null));
+      AppMethodBeat.o(93847);
+      return;
     }
-    return -1;
+    localObject1 = ((b.y)localObject1).hPG;
+    if (localObject1 == null)
+    {
+      ab.e("MicroMsg.JsApiGetMapRegion", "latLngBounds is  null");
+      paramc.h(paramInt, j("fail:latLngBounds is null", null));
+      AppMethodBeat.o(93847);
+      return;
+    }
+    Object localObject2 = ((b.i)localObject1).hPk;
+    Object localObject3 = ((b.i)localObject1).hPl;
+    localObject1 = new HashMap();
+    if (localObject2 != null)
+    {
+      ((Map)localObject1).put("latitude", Double.valueOf(((b.h)localObject2).latitude));
+      ((Map)localObject1).put("longitude", Double.valueOf(((b.h)localObject2).longitude));
+    }
+    localObject2 = new HashMap();
+    if (localObject3 != null)
+    {
+      ((Map)localObject2).put("latitude", Double.valueOf(((b.h)localObject3).latitude));
+      ((Map)localObject2).put("longitude", Double.valueOf(((b.h)localObject3).longitude));
+    }
+    localObject3 = new HashMap();
+    ((Map)localObject3).put("southwest", localObject1);
+    ((Map)localObject3).put("northeast", localObject2);
+    ab.i("MicroMsg.JsApiGetMapRegion", "getMapRegion ok, values:%s", new Object[] { localObject3.toString() });
+    a(paramc, paramInt, j("ok", (Map)localObject3), true, paramJSONObject.aDx());
+    AppMethodBeat.o(93847);
   }
 }
 

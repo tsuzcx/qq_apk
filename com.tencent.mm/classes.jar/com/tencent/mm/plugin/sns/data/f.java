@@ -1,27 +1,47 @@
 package com.tencent.mm.plugin.sns.data;
 
-import com.tencent.mm.protocal.c.awd;
+import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bcs;
 import com.tencent.mm.storage.az;
 
 public final class f
 {
-  public awd bZK;
+  public bcs cIc;
+  public String czw;
   public String key;
-  public String omV;
-  public String omW;
-  public az omX;
+  public String rbk;
+  public String rbl;
+  public az rbm;
+  public SparseArray<bcs> rbn;
   public int requestType;
+  public int size;
   
-  public f() {}
-  
-  public f(awd paramawd, int paramInt, String paramString1, az paramaz, String paramString2, String paramString3)
+  public f()
   {
-    this.bZK = paramawd;
+    AppMethodBeat.i(35799);
+    this.rbn = new SparseArray();
+    AppMethodBeat.o(35799);
+  }
+  
+  public f(bcs parambcs, int paramInt, String paramString1, az paramaz, String paramString2, String paramString3)
+  {
+    this.cIc = parambcs;
     this.requestType = paramInt;
-    this.omX = paramaz;
+    this.rbm = paramaz;
     this.key = paramString1;
-    this.omV = paramString2;
-    this.omW = paramString3;
+    this.rbk = paramString2;
+    this.rbl = paramString3;
+  }
+  
+  public f(String paramString1, SparseArray<bcs> paramSparseArray, String paramString2, az paramaz, int paramInt)
+  {
+    this.czw = paramString1;
+    this.rbn = paramSparseArray;
+    this.requestType = 9;
+    this.key = paramString2;
+    this.rbm = paramaz;
+    this.size = paramInt;
   }
 }
 

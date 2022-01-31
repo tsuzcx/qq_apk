@@ -1,19 +1,23 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import com.tencent.mm.h.a.ni;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChatFooter$17
-  extends c<ni>
+  implements Runnable
 {
-  ChatFooter$17(ChatFooter paramChatFooter)
+  ChatFooter$17(ChatFooter paramChatFooter) {}
+  
+  public final void run()
   {
-    this.udX = ni.class.getName().hashCode();
+    AppMethodBeat.i(155428);
+    ChatFooter.ai(this.vXU).destroy();
+    ChatFooter.ai(this.vXU).setVisibility(8);
+    AppMethodBeat.o(155428);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.ChatFooter.17
  * JD-Core Version:    0.7.0.1
  */

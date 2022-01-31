@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.DataOutputStream;
 
 final class b$4
@@ -10,21 +11,24 @@ final class b$4
   
   public final void run()
   {
+    AppMethodBeat.i(17810);
     try
     {
-      synchronized (b.a(this.hNG))
+      synchronized (b.a(this.jHi))
       {
-        b.b(this.hNG).write(this.bxU);
-        b.b(this.hNG).flush();
+        b.b(this.jHi).write(this.bZW);
+        b.b(this.jHi).flush();
+        AppMethodBeat.o(17810);
         return;
       }
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.BakOldJavaEngine", "send_error %s", new Object[] { localException });
-      b.c(this.hNG);
-      b.a(this.hNG, 10008, ("send_error " + localException).getBytes());
+      ab.e("MicroMsg.BakOldJavaEngine", "send_error %s", new Object[] { localException });
+      b.c(this.jHi);
+      b.a(this.jHi, 10008, "send_error ".concat(String.valueOf(localException)).getBytes());
+      AppMethodBeat.o(17810);
     }
   }
 }

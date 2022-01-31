@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.wallet_payu.security_question.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.tools.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.tools.m;
 
 final class WalletPayUSecurityQuestionSettingUI$3
   implements View.OnClickListener
@@ -11,7 +12,9 @@ final class WalletPayUSecurityQuestionSettingUI$3
   
   public final void onClick(View paramView)
   {
-    WalletPayUSecurityQuestionSettingUI.e(this.qOX).fy();
+    AppMethodBeat.i(48584);
+    WalletPayUSecurityQuestionSettingUI.e(this.uEe).gr();
+    AppMethodBeat.o(48584);
   }
 }
 

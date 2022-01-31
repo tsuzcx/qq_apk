@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi.e;
 
 import com.tencent.mm.plugin.appbrand.b.c.a;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.r;
 
 public class f
-  extends d<o>
+  extends d<r>
 {
   private static final int CTRL_INDEX = 340;
   private static final String NAME = "enableLocationUpdate";
-  private volatile c.a grD;
-  k grE;
+  private volatile c.a hNa;
+  k hNb;
 }
 
 

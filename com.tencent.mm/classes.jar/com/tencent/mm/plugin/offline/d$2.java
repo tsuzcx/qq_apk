@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.offline;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.offline.a.k;
 import com.tencent.mm.plugin.wallet_core.b.a.b;
-import com.tencent.mm.plugin.wallet_core.c.y;
-import com.tencent.mm.plugin.wallet_core.model.p;
+import com.tencent.mm.plugin.wallet_core.c.ab;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
@@ -19,33 +20,39 @@ final class d$2
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(43297);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramm instanceof y))
+      if ((paramm instanceof ab))
       {
-        if ((((WalletBaseUI)this.gfb).BX != null) && (((WalletBaseUI)this.gfb).BX.getInt("key_bind_scene", -1) == 5) && (!com.tencent.mm.plugin.offline.c.a.bqH())) {
-          d.h(this.gfb);
+        if ((((WalletBaseUI)this.hwZ).getInput() != null) && (((WalletBaseUI)this.hwZ).getInput().getInt("key_bind_scene", -1) == 5) && (!com.tencent.mm.plugin.offline.c.a.bZw())) {
+          d.i(this.hwZ);
         }
+        AppMethodBeat.o(43297);
         return true;
       }
       if ((paramm instanceof k))
       {
-        paramString = ((WalletBaseUI)this.gfb).BX;
+        paramString = ((WalletBaseUI)this.hwZ).getInput();
         paramString.putBoolean("intent_bind_end", true);
-        com.tencent.mm.wallet_core.a.j(this.gfb, paramString);
-        com.tencent.mm.plugin.offline.c.a.H(this.gfb);
+        com.tencent.mm.wallet_core.a.j(this.hwZ, paramString);
+        com.tencent.mm.plugin.offline.c.a.ac(this.hwZ);
+        AppMethodBeat.o(43297);
         return true;
       }
     }
+    AppMethodBeat.o(43297);
     return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
-    paramVarArgs = (p)paramVarArgs[0];
-    this.wBd.a(new b(paramVarArgs), true, 1);
+    AppMethodBeat.i(43296);
+    paramVarArgs = (u)paramVarArgs[0];
+    this.AXB.a(new b(paramVarArgs), true, 1);
+    AppMethodBeat.o(43296);
     return true;
   }
 }

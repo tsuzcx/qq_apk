@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.e.b;
-import com.tencent.mm.plugin.appbrand.jsapi.e.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.e.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f.c;
 
 final class b$6
-  implements AppBrandLivePlayerView.b
+  implements f.c
 {
-  b$6(b paramb, e parame, e.b paramb1, e.d paramd) {}
+  b$6(b paramb, AppBrandLivePusherView paramAppBrandLivePusherView, com.tencent.mm.plugin.appbrand.jsapi.e parame, e.c paramc) {}
   
-  public final void aja()
+  public final void onDestroy()
   {
-    this.gkV.b(this.gsj);
-    this.gkV.b(this.gsk);
+    AppMethodBeat.i(96094);
+    this.hNI.onExit();
+    this.hEL.b(this);
+    com.tencent.mm.plugin.appbrand.e.b(this.hEL.getAppId(), this.hNL);
+    AppMethodBeat.o(96094);
   }
 }
 

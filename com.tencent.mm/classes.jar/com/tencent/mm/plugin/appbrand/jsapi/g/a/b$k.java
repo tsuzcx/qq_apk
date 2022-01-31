@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
 public abstract interface b$k
 {
-  public abstract void uf(String paramString);
+  public abstract void a(b.q paramq);
 }
 
 

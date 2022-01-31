@@ -4,61 +4,61 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.map.a.h;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.mm.ui.widget.b.c;
 
 public final class l
 {
-  private c fTk = null;
-  l.a lGZ;
+  private c hmL;
   public Context mContext;
   public Resources mResources;
+  l.a oem;
   
   public l(Context paramContext, l.a parama)
   {
+    AppMethodBeat.i(113558);
+    this.hmL = null;
     this.mContext = paramContext;
-    this.lGZ = parama;
+    this.oem = parama;
     this.mResources = this.mContext.getResources();
+    AppMethodBeat.o(113558);
   }
   
-  public final void beB()
+  public final void bLU()
   {
-    Object localObject = g.DP().Dz().get(67590, null);
-    boolean bool;
-    if (localObject == null)
+    AppMethodBeat.i(113559);
+    Object localObject = g.RL().Ru().get(67590, null);
+    if (localObject == null) {}
+    for (boolean bool = false; !bool; bool = ((Boolean)localObject).booleanValue())
     {
-      bool = false;
-      if (bool) {
-        break label87;
-      }
-      h.a(this.mContext, this.mResources.getString(a.h.location_sharing_go_on_tips), "", false, new DialogInterface.OnClickListener()new l.2
+      h.a(this.mContext, this.mResources.getString(2131301112), "", false, new DialogInterface.OnClickListener()new l.2
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          if (l.this.lGZ != null) {
-            l.this.lGZ.beC();
+          AppMethodBeat.i(113554);
+          if (l.this.oem != null) {
+            l.this.oem.bLV();
           }
+          AppMethodBeat.o(113554);
         }
       }, new l.2(this));
-      g.DP().Dz().o(67590, Boolean.valueOf(true));
-    }
-    label87:
-    while (this.lGZ == null)
-    {
+      g.RL().Ru().set(67590, Boolean.TRUE);
+      AppMethodBeat.o(113559);
       return;
-      bool = ((Boolean)localObject).booleanValue();
-      break;
     }
-    this.lGZ.beC();
+    if (this.oem != null) {
+      this.oem.bLV();
+    }
+    AppMethodBeat.o(113559);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.l
  * JD-Core Version:    0.7.0.1
  */

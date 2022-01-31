@@ -1,11 +1,20 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
-import java.util.Comparator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader_app.a.a.c;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
 
 final class m$1
-  implements Comparator<Integer>
+  implements a.c
 {
-  m$1(m paramm) {}
+  m$1(m paramm, bh.a parama) {}
+  
+  public final void aBK()
+  {
+    AppMethodBeat.i(135877);
+    this.lax.c(null, null);
+    AppMethodBeat.o(135877);
+  }
 }
 
 

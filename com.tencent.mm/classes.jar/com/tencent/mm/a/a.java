@@ -1,12 +1,30 @@
 package com.tencent.mm.a;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
 public final class a
 {
+  @Deprecated
+  public static String B(String paramString1, String paramString2)
+  {
+    if (bo.isNullOrNil(paramString1)) {
+      return "";
+    }
+    try
+    {
+      paramString2 = new String(c(cK(paramString1), paramString2));
+      return paramString2;
+    }
+    catch (Exception paramString2)
+    {
+      ab.e("MicroMsg.AESUtils", bo.l(paramString2));
+    }
+    return paramString1;
+  }
+  
   /* Error */
   private static boolean a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
@@ -14,84 +32,84 @@ public final class a
     //   0: iconst_0
     //   1: istore 6
     //   3: aload_1
-    //   4: invokestatic 14	com/tencent/mm/sdk/platformtools/bk:bl	(Ljava/lang/String;)Z
+    //   4: invokestatic 15	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
     //   7: ifeq +13 -> 20
-    //   10: new 16	java/security/InvalidParameterException
+    //   10: new 49	java/security/InvalidParameterException
     //   13: dup
-    //   14: ldc 18
-    //   16: invokespecial 22	java/security/InvalidParameterException:<init>	(Ljava/lang/String;)V
+    //   14: ldc 51
+    //   16: invokespecial 54	java/security/InvalidParameterException:<init>	(Ljava/lang/String;)V
     //   19: athrow
-    //   20: new 24	java/io/File
+    //   20: new 56	java/io/File
     //   23: dup
     //   24: aload_2
-    //   25: invokespecial 25	java/io/File:<init>	(Ljava/lang/String;)V
+    //   25: invokespecial 57	java/io/File:<init>	(Ljava/lang/String;)V
     //   28: astore_2
-    //   29: new 24	java/io/File
+    //   29: new 56	java/io/File
     //   32: dup
     //   33: aload_3
-    //   34: invokespecial 25	java/io/File:<init>	(Ljava/lang/String;)V
+    //   34: invokespecial 57	java/io/File:<init>	(Ljava/lang/String;)V
     //   37: astore 7
     //   39: iload 6
     //   41: istore 5
     //   43: aload_2
-    //   44: invokevirtual 29	java/io/File:exists	()Z
+    //   44: invokevirtual 61	java/io/File:exists	()Z
     //   47: ifeq +253 -> 300
     //   50: iload 6
     //   52: istore 5
     //   54: aload_2
-    //   55: invokevirtual 32	java/io/File:isFile	()Z
+    //   55: invokevirtual 64	java/io/File:isFile	()Z
     //   58: ifeq +242 -> 300
     //   61: aload 7
-    //   63: invokevirtual 36	java/io/File:getParentFile	()Ljava/io/File;
-    //   66: invokevirtual 29	java/io/File:exists	()Z
+    //   63: invokevirtual 68	java/io/File:getParentFile	()Ljava/io/File;
+    //   66: invokevirtual 61	java/io/File:exists	()Z
     //   69: ifne +12 -> 81
     //   72: aload 7
-    //   74: invokevirtual 36	java/io/File:getParentFile	()Ljava/io/File;
-    //   77: invokevirtual 39	java/io/File:mkdirs	()Z
+    //   74: invokevirtual 68	java/io/File:getParentFile	()Ljava/io/File;
+    //   77: invokevirtual 71	java/io/File:mkdirs	()Z
     //   80: pop
     //   81: aload 7
-    //   83: invokevirtual 42	java/io/File:createNewFile	()Z
+    //   83: invokevirtual 74	java/io/File:createNewFile	()Z
     //   86: pop
-    //   87: new 44	java/io/FileInputStream
+    //   87: new 76	java/io/FileInputStream
     //   90: dup
     //   91: aload_2
-    //   92: invokespecial 47	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   92: invokespecial 79	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   95: astore_3
-    //   96: new 49	java/io/FileOutputStream
+    //   96: new 81	java/io/FileOutputStream
     //   99: dup
     //   100: aload 7
-    //   102: invokespecial 50	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   102: invokespecial 82	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   105: astore_2
     //   106: aload_0
-    //   107: invokevirtual 56	java/lang/String:getBytes	()[B
+    //   107: invokevirtual 86	java/lang/String:getBytes	()[B
     //   110: iconst_0
-    //   111: invokestatic 62	android/util/Base64:decode	([BI)[B
+    //   111: invokestatic 92	android/util/Base64:decode	([BI)[B
     //   114: astore_0
-    //   115: new 64	javax/crypto/spec/SecretKeySpec
+    //   115: new 94	javax/crypto/spec/SecretKeySpec
     //   118: dup
     //   119: aload_0
-    //   120: ldc 66
-    //   122: invokespecial 69	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   120: ldc 96
+    //   122: invokespecial 99	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   125: astore 7
     //   127: aload_1
-    //   128: invokestatic 75	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   128: invokestatic 105	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
     //   131: astore_1
     //   132: aload_1
     //   133: iconst_2
     //   134: aload 7
-    //   136: new 77	javax/crypto/spec/IvParameterSpec
+    //   136: new 107	javax/crypto/spec/IvParameterSpec
     //   139: dup
     //   140: aload_0
     //   141: aload_0
     //   142: arraylength
-    //   143: invokestatic 82	java/util/Arrays:copyOf	([BI)[B
-    //   146: invokespecial 85	javax/crypto/spec/IvParameterSpec:<init>	([B)V
-    //   149: invokevirtual 89	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
-    //   152: new 91	javax/crypto/CipherOutputStream
+    //   143: invokestatic 112	java/util/Arrays:copyOf	([BI)[B
+    //   146: invokespecial 113	javax/crypto/spec/IvParameterSpec:<init>	([B)V
+    //   149: invokevirtual 117	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
+    //   152: new 119	javax/crypto/CipherOutputStream
     //   155: dup
     //   156: aload_2
     //   157: aload_1
-    //   158: invokespecial 94	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
+    //   158: invokespecial 122	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
     //   161: astore_1
     //   162: aload_1
     //   163: astore_0
@@ -110,7 +128,7 @@ public final class a
     //   183: astore 8
     //   185: aload_3
     //   186: aload 9
-    //   188: invokevirtual 98	java/io/FileInputStream:read	([B)I
+    //   188: invokevirtual 126	java/io/FileInputStream:read	([B)I
     //   191: istore 4
     //   193: iload 4
     //   195: iconst_m1
@@ -125,7 +143,7 @@ public final class a
     //   208: aload 9
     //   210: iconst_0
     //   211: iload 4
-    //   213: invokevirtual 102	javax/crypto/CipherOutputStream:write	([BII)V
+    //   213: invokevirtual 130	javax/crypto/CipherOutputStream:write	([BII)V
     //   216: aload_1
     //   217: astore_0
     //   218: aload_2
@@ -133,7 +151,7 @@ public final class a
     //   221: aload_3
     //   222: astore 8
     //   224: aload_1
-    //   225: invokevirtual 106	javax/crypto/CipherOutputStream:flush	()V
+    //   225: invokevirtual 134	javax/crypto/CipherOutputStream:flush	()V
     //   228: goto -51 -> 177
     //   231: astore 7
     //   233: aload_1
@@ -158,23 +176,23 @@ public final class a
     //   259: aload_1
     //   260: ifnull +7 -> 267
     //   263: aload_1
-    //   264: invokevirtual 109	javax/crypto/CipherOutputStream:close	()V
+    //   264: invokevirtual 137	javax/crypto/CipherOutputStream:close	()V
     //   267: aload_2
     //   268: ifnull +7 -> 275
     //   271: aload_2
-    //   272: invokevirtual 110	java/io/FileOutputStream:close	()V
+    //   272: invokevirtual 138	java/io/FileOutputStream:close	()V
     //   275: aload_3
     //   276: ifnull +7 -> 283
     //   279: aload_3
-    //   280: invokevirtual 111	java/io/FileInputStream:close	()V
+    //   280: invokevirtual 139	java/io/FileInputStream:close	()V
     //   283: aload_0
     //   284: athrow
     //   285: aload_1
-    //   286: invokevirtual 109	javax/crypto/CipherOutputStream:close	()V
+    //   286: invokevirtual 137	javax/crypto/CipherOutputStream:close	()V
     //   289: aload_2
-    //   290: invokevirtual 110	java/io/FileOutputStream:close	()V
+    //   290: invokevirtual 138	java/io/FileOutputStream:close	()V
     //   293: aload_3
-    //   294: invokevirtual 111	java/io/FileInputStream:close	()V
+    //   294: invokevirtual 139	java/io/FileInputStream:close	()V
     //   297: iconst_1
     //   298: istore 5
     //   300: iload 5
@@ -249,7 +267,25 @@ public final class a
     //   106	162	345	java/lang/Exception
   }
   
-  private static byte[] bH(String paramString)
+  @Deprecated
+  private static byte[] c(byte[] paramArrayOfByte, String paramString)
+  {
+    try
+    {
+      paramString = new SecretKeySpec(paramString.getBytes(), "AES");
+      Cipher localCipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+      localCipher.init(2, paramString);
+      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      ab.e("MicroMsg.AESUtils", bo.l(paramArrayOfByte));
+    }
+    return null;
+  }
+  
+  private static byte[] cK(String paramString)
   {
     if (paramString.length() <= 0) {
       return null;
@@ -264,43 +300,9 @@ public final class a
     return arrayOfByte;
   }
   
-  public static boolean e(String paramString1, String paramString2, String paramString3)
+  public static boolean g(String paramString1, String paramString2, String paramString3)
   {
     return a(paramString1, "AES/CBC/PKCS7Padding", paramString2, paramString3);
-  }
-  
-  private static byte[] e(byte[] paramArrayOfByte, String paramString)
-  {
-    try
-    {
-      paramString = new SecretKeySpec(paramString.getBytes(), "AES");
-      Cipher localCipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-      localCipher.init(2, paramString);
-      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      y.e("MicroMsg.AESUtils", bk.j(paramArrayOfByte));
-    }
-    return null;
-  }
-  
-  public static String q(String paramString1, String paramString2)
-  {
-    if (bk.bl(paramString1)) {
-      return "";
-    }
-    try
-    {
-      paramString2 = new String(e(bH(paramString1), paramString2));
-      return paramString2;
-    }
-    catch (Exception paramString2)
-    {
-      y.e("MicroMsg.AESUtils", bk.j(paramString2));
-    }
-    return paramString1;
   }
 }
 

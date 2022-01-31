@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.e;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
 import org.json.JSONObject;
 
 public class d<CONTEXT extends c>
@@ -10,43 +11,53 @@ public class d<CONTEXT extends c>
 {
   private static final int CTRL_INDEX = 340;
   private static final String NAME = "enableLocationUpdate";
-  protected volatile l grC;
+  protected volatile l hMZ;
   
-  public void a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt)
+  public void c(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt)
   {
+    AppMethodBeat.i(93822);
+    com.tencent.luggage.g.d.i("MicroMsg.AppBrand.JsApiEnableLocationUpdate", "enableLocationUpdate:%s", new Object[] { paramJSONObject });
     boolean bool;
     try
     {
-      if (this.grC == null)
+      if (this.hMZ == null)
       {
-        this.grC = new l(paramCONTEXT);
-        this.grC.start();
+        this.hMZ = new l(paramCONTEXT);
+        this.hMZ.start();
       }
       bool = paramJSONObject.optBoolean("enable");
-      if ((!bool) && (!i(paramCONTEXT)))
+      if ((!bool) && (!q(paramCONTEXT)))
       {
-        paramCONTEXT.C(paramInt, h("ok", null));
+        paramCONTEXT.h(paramInt, j("ok", null));
+        AppMethodBeat.o(93822);
         return;
       }
     }
-    finally {}
-    this.grC.ezQ = d(paramCONTEXT, paramJSONObject);
-    if (bool) {
-      if (!i(paramCONTEXT)) {
-        paramCONTEXT.C(paramInt, h("fail:system permission denied", null));
+    finally
+    {
+      AppMethodBeat.o(93822);
+    }
+    this.hMZ.fPG = e(paramCONTEXT, paramJSONObject);
+    if (bool)
+    {
+      if (!q(paramCONTEXT))
+      {
+        paramCONTEXT.h(paramInt, j("fail:system permission denied", null));
+        AppMethodBeat.o(93822);
+        return;
       }
+      this.hMZ.sendMessage(1);
     }
     for (;;)
     {
-      paramCONTEXT.C(paramInt, h("ok", null));
+      paramCONTEXT.h(paramInt, j("ok", null));
+      AppMethodBeat.o(93822);
       return;
-      this.grC.Ff(1);
-      continue;
-      this.grC.Ff(2);
+      this.hMZ.sendMessage(2);
     }
   }
   
-  protected Bundle d(CONTEXT paramCONTEXT, JSONObject paramJSONObject)
+  protected Bundle e(CONTEXT paramCONTEXT, JSONObject paramJSONObject)
   {
     return null;
   }

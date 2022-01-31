@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.chatting;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SendDataToDeviceProgressBar$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class SendDataToDeviceProgressBar$1
   
   public final void run()
   {
-    this.vmP.invalidate();
+    AppMethodBeat.i(30998);
+    this.zCl.invalidate();
+    AppMethodBeat.o(30998);
   }
 }
 

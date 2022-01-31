@@ -1,34 +1,20 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
-import android.widget.FrameLayout;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.widget.input.m.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.picker.a;
+import com.tencent.mm.plugin.appbrand.widget.picker.b;
+import com.tencent.mm.plugin.appbrand.widget.picker.d.a;
 
 final class d$1
-  implements m.a
+  implements d.a
 {
-  d$1(d paramd, o paramo) {}
+  d$1(d paramd) {}
   
-  public final void ajU()
+  public final void b(boolean paramBoolean, Object paramObject)
   {
-    if (this.gAt.gAr == null) {
-      return;
-    }
-    Object localObject = this.gcp.E(q.class);
-    if (localObject == null)
-    {
-      y.w("MicroMsg.JsApiShowToast", "current page view is null.");
-      return;
-    }
-    localObject = ((q)localObject).aha();
-    if (localObject == null)
-    {
-      y.w("MicroMsg.JsApiShowToast", "pageArea is null, err");
-      return;
-    }
-    d.a(this.gAt, (FrameLayout)localObject);
+    AppMethodBeat.i(126344);
+    this.hWL.jrY.hide();
+    AppMethodBeat.o(126344);
   }
 }
 

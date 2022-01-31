@@ -2,11 +2,12 @@ package com.tencent.mm.ui.tools;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelsimple.q;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.modelsimple.s;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.base.h;
 
@@ -17,18 +18,21 @@ final class NewTaskUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.NewTaskUI", "dkwt dlg imgSid:" + NewTaskUI.a(this.wea).feA + " img len" + NewTaskUI.a(this.wea).fez.length + " " + com.tencent.mm.compatible.util.g.zI());
-    if (NewTaskUI.b(this.wea) == null)
+    AppMethodBeat.i(34919);
+    ab.i("MicroMsg.NewTaskUI", "dkwt dlg imgSid:" + NewTaskUI.a(this.AwK).gwj + " img len" + NewTaskUI.a(this.AwK).gwi.length + " " + g.Ml());
+    if (NewTaskUI.b(this.AwK) == null)
     {
-      y.d("MicroMsg.NewTaskUI", "[arthurdan.SecurityImageCrash] fatal error!!! secimg is null!");
+      ab.d("MicroMsg.NewTaskUI", "[arthurdan.SecurityImageCrash] fatal error!!! secimg is null!");
+      AppMethodBeat.o(34919);
       return;
     }
-    paramDialogInterface = new q(NewTaskUI.a(this.wea).fns, NewTaskUI.b(this.wea).getSecImgCode(), NewTaskUI.b(this.wea).getSecImgSid(), NewTaskUI.b(this.wea).getSecImgEncryptKey());
-    au.Dk().a(paramDialogInterface, 0);
-    NewTaskUI localNewTaskUI1 = this.wea;
-    NewTaskUI localNewTaskUI2 = this.wea;
-    this.wea.getString(R.l.app_tip);
-    NewTaskUI.a(localNewTaskUI1, h.b(localNewTaskUI2, this.wea.getString(R.l.login_logining), true, new NewTaskUI.3.1(this, paramDialogInterface)));
+    paramDialogInterface = new s(NewTaskUI.a(this.AwK).gEL, NewTaskUI.b(this.AwK).getSecImgCode(), NewTaskUI.b(this.AwK).getSecImgSid(), NewTaskUI.b(this.AwK).getSecImgEncryptKey());
+    aw.Rc().a(paramDialogInterface, 0);
+    NewTaskUI localNewTaskUI1 = this.AwK;
+    NewTaskUI localNewTaskUI2 = this.AwK;
+    this.AwK.getString(2131297087);
+    NewTaskUI.a(localNewTaskUI1, h.b(localNewTaskUI2, this.AwK.getString(2131301149), true, new NewTaskUI.3.1(this, paramDialogInterface)));
+    AppMethodBeat.o(34919);
   }
 }
 

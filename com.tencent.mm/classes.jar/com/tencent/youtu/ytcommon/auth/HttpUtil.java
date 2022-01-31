@@ -1,6 +1,7 @@
 package com.tencent.youtu.ytcommon.auth;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.BufferedWriter;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -15,54 +16,60 @@ public class HttpUtil
   
   private static HttpURLConnection buildConnection(String paramString, int paramInt)
   {
+    AppMethodBeat.i(118055);
     paramString = (HttpURLConnection)new URL(paramString).openConnection();
     paramString.setConnectTimeout(paramInt);
     paramString.setReadTimeout(paramInt);
+    AppMethodBeat.o(118055);
     return paramString;
   }
   
   private static String getResponse(HttpURLConnection paramHttpURLConnection, HttpUtil.HttpResponseListener paramHttpResponseListener)
   {
-    Object localObject = null;
+    AppMethodBeat.i(118056);
+    int i;
+    StringBuilder localStringBuilder;
     try
     {
-      int i = paramHttpURLConnection.getResponseCode();
-      if (i == 200)
-      {
-        paramHttpURLConnection = paramHttpURLConnection.getInputStream();
-        localObject = new StringBuilder();
-        byte[] arrayOfByte = new byte[1024];
-        for (;;)
-        {
-          i = paramHttpURLConnection.read(arrayOfByte);
-          if (i == -1) {
-            break;
-          }
-          ((StringBuilder)localObject).append(new String(arrayOfByte, 0, i));
-        }
-        paramHttpURLConnection.close();
-        localObject = ((StringBuilder)localObject).toString();
-        paramHttpURLConnection = (HttpURLConnection)localObject;
-        if (paramHttpResponseListener != null)
-        {
-          paramHttpResponseListener.onSuccess((String)localObject);
-          paramHttpURLConnection = (HttpURLConnection)localObject;
-        }
+      i = paramHttpURLConnection.getResponseCode();
+      if (i != 200) {
+        break label103;
       }
-      do
+      paramHttpURLConnection = paramHttpURLConnection.getInputStream();
+      localStringBuilder = new StringBuilder();
+      byte[] arrayOfByte = new byte[1024];
+      for (;;)
       {
-        return paramHttpURLConnection;
-        paramHttpURLConnection = (HttpURLConnection)localObject;
-      } while (paramHttpResponseListener == null);
-      paramHttpResponseListener.onFail(i);
+        i = paramHttpURLConnection.read(arrayOfByte);
+        if (i == -1) {
+          break;
+        }
+        localStringBuilder.append(new String(arrayOfByte, 0, i));
+      }
+      paramHttpURLConnection.close();
+    }
+    catch (Exception paramHttpURLConnection)
+    {
+      AppMethodBeat.o(118056);
       return null;
     }
-    catch (Exception paramHttpURLConnection) {}
+    paramHttpURLConnection = localStringBuilder.toString();
+    if (paramHttpResponseListener != null) {
+      paramHttpResponseListener.onSuccess(paramHttpURLConnection);
+    }
+    AppMethodBeat.o(118056);
+    return paramHttpURLConnection;
+    label103:
+    if (paramHttpResponseListener != null) {
+      paramHttpResponseListener.onFail(i);
+    }
+    AppMethodBeat.o(118056);
     return null;
   }
   
   public static String post(String paramString1, String paramString2, HttpUtil.HttpResponseListener paramHttpResponseListener)
   {
+    AppMethodBeat.i(118054);
     paramString1 = buildConnection(paramString1, 10000);
     paramString1.setRequestProperty("Content-Type", "application/json");
     paramString1.setRequestMethod("POST");
@@ -75,7 +82,9 @@ public class HttpUtil
       localBufferedWriter.close();
       localOutputStream.close();
     }
-    return getResponse(paramString1, paramHttpResponseListener);
+    paramString1 = getResponse(paramString1, paramHttpResponseListener);
+    AppMethodBeat.o(118054);
+    return paramString1;
   }
 }
 

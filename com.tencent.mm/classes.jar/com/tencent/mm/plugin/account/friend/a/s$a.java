@@ -1,30 +1,41 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.protocal.c.aju;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.k;
-import com.tencent.mm.protocal.k.b;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.y;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.aa;
+import com.tencent.mm.protocal.l;
+import com.tencent.mm.protocal.l.b;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.apf;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class s$a
-  extends k.d
-  implements k.b
+  extends l.d
+  implements l.b
 {
-  public aju fgb = new aju();
+  public apf gxJ;
   
-  public final byte[] HG()
+  public s$a()
   {
-    this.spM = y.cpj();
-    this.fgb.sBt = new bmk().bs(bk.crT());
-    this.fgb.tEX = k.a(this);
-    return this.fgb.toByteArray();
+    AppMethodBeat.i(108410);
+    this.gxJ = new apf();
+    AppMethodBeat.o(108410);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
     return 572;
+  }
+  
+  public final byte[] toProtoBuf()
+  {
+    AppMethodBeat.i(108411);
+    setRsaInfo(aa.dqG());
+    this.gxJ.wvN = new SKBuiltinBuffer_t().setBuffer(bo.dtR());
+    this.gxJ.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.gxJ.toByteArray();
+    AppMethodBeat.o(108411);
+    return arrayOfByte;
   }
 }
 

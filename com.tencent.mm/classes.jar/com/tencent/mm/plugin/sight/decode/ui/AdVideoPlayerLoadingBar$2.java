@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sight.decode.ui;
 
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AdVideoPlayerLoadingBar$2
   implements Runnable
@@ -10,17 +11,19 @@ final class AdVideoPlayerLoadingBar$2
   
   public final void run()
   {
-    int i = (this.ofC.getBarPointWidth() - this.ofC.ofq.getPaddingLeft() - this.ofC.ofq.getPaddingRight()) / 2;
-    int j = ((FrameLayout.LayoutParams)this.ofC.ofp.getLayoutParams()).leftMargin;
-    int k = this.ofC.ofq.getPaddingLeft();
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.ofC.ofq.getLayoutParams();
+    AppMethodBeat.i(117916);
+    int i = (this.qTQ.getBarPointWidth() - this.qTQ.qTE.getPaddingLeft() - this.qTQ.qTE.getPaddingRight()) / 2;
+    int j = ((FrameLayout.LayoutParams)this.qTQ.qTD.getLayoutParams()).leftMargin;
+    int k = this.qTQ.qTE.getPaddingLeft();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.qTQ.qTE.getLayoutParams();
     localLayoutParams.leftMargin = (j - k - i);
-    this.ofC.ofq.setLayoutParams(localLayoutParams);
+    this.qTQ.qTE.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(117916);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.AdVideoPlayerLoadingBar.2
  * JD-Core Version:    0.7.0.1
  */

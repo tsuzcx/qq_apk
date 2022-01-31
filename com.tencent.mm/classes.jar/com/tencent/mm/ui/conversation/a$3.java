@@ -1,33 +1,43 @@
 package com.tencent.mm.ui.conversation;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.n.a;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class a$3
   extends n.a
 {
-  private final am vPf = new am(new am.a()
+  private final ap AgQ;
+  
+  a$3(a parama)
   {
-    public final boolean tC()
+    AppMethodBeat.i(34030);
+    this.AgQ = new ap(new ap.a()
     {
-      a.3.this.vPe.cHT();
-      return false;
-    }
-  }, false);
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(34029);
+        a.3.this.AgP.dMn();
+        AppMethodBeat.o(34029);
+        return false;
+      }
+    }, false);
+    AppMethodBeat.o(34030);
+  }
   
-  a$3(a parama) {}
-  
-  public final void et(int paramInt)
+  public final void onNetworkChange(int paramInt)
   {
-    if (this.vPf != null) {
-      this.vPf.S(10L, 10L);
+    AppMethodBeat.i(34031);
+    if (this.AgQ != null) {
+      this.AgQ.ag(10L, 10L);
     }
+    AppMethodBeat.o(34031);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.3
  * JD-Core Version:    0.7.0.1
  */

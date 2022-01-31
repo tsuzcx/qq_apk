@@ -1,35 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/a4v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.plugin.bottle.ui.BallonImageView android:id="@id/a4w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a72" />
-        <ImageView android:id="@id/a4x" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a87" />
-        <com.tencent.mm.plugin.bottle.ui.MoonImageView android:layout_gravity="center|left|top" android:id="@id/a4y" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <com.tencent.mm.plugin.bottle.ui.LightHouseImageView android:layout_gravity="center|right|top" android:id="@id/a4z" android:background="@anim/a9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </FrameLayout>
-    <FrameLayout android:id="@id/a50" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="bottom" android:background="@drawable/a73" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:weightSum="3.0">
-            <TextView android:text="@string/a8u" style="@style/y8" />
-            <TextView android:text="@string/a8t" style="@style/y8" />
-            <TextView android:text="@string/a8s" style="@style/y8" />
+    <ScrollView android:scrollbars="none" style="@style/ni">
+        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/dp" android:paddingTop="@dimen/l6" android:paddingRight="@dimen/dp" android:paddingBottom="@dimen/l6" style="@style/l0">
+            <ImageView android:id="@id/a7d" android:paddingBottom="@dimen/l6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ad6" />
+            <TextView android:textSize="@dimen/di" android:textColor="@color/w_" android:gravity="center" android:id="@id/a7e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l2" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/n8" />
+            <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:gravity="center" android:id="@id/a7f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l6" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/n8" />
+            <Button android:id="@id/a7g" android:visibility="gone" android:layout_marginBottom="@dimen/l2" android:text="@string/a8x" style="@style/nq" />
         </LinearLayout>
-        <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:weightSum="3.0">
-            <ImageView android:id="@id/a51" android:src="@drawable/a79" android:contentDescription="@string/a8f" style="@style/y7" />
-            <ImageView android:id="@id/a52" android:src="@drawable/a75" android:contentDescription="@string/a8e" style="@style/y7" />
-            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <ImageView android:id="@id/a53" android:src="@drawable/a77" android:contentDescription="@string/a8d" style="@style/y7" />
-                <TextView android:layout_gravity="bottom|center" android:id="@id/a54" android:visibility="gone" android:layout_marginLeft="20.0dip" android:layout_marginBottom="10.0dip" android:text="@null" style="@style/u1" />
-            </FrameLayout>
-        </LinearLayout>
-    </FrameLayout>
-    <FrameLayout android:id="@id/a55" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.bottle.ui.ThrowBottleAnimUI android:id="@id/a56" android:background="#aa000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.bottle.ui.ThrowBottleAnimUI android:id="@id/a57" android:background="#aa000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:layout_gravity="center|right|top" android:id="@id/a58" android:padding="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/e0" android:contentDescription="@string/anp" />
-    <com.tencent.mm.plugin.bottle.ui.SprayLayout android:layout_gravity="bottom|center" android:id="@id/a59" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/a5_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a86" />
-        <ImageView android:id="@id/a5a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a85" />
-        <ImageView android:id="@id/a5b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a84" />
-    </com.tencent.mm.plugin.bottle.ui.SprayLayout>
-</FrameLayout>
+    </ScrollView>
+</LinearLayout>

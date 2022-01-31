@@ -1,16 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.v.g.a;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.jsapi.b;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 
 public final class c
-  extends a<f>
 {
-  public static final int CTRL_INDEX = 491;
-  public static final String NAME = "enableDeviceMotionChangeListening";
+  String data;
+  h hXS;
+  b hXT;
+  String path;
+  long startTime;
+  
+  public c(h paramh, b paramb, String paramString1, long paramLong, String paramString2)
+  {
+    this.hXS = paramh;
+    this.hXT = paramb;
+    this.data = paramString1;
+    this.startTime = paramLong;
+    this.path = paramString2;
+  }
 }
 
 

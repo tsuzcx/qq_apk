@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.location.ui;
 
 public abstract interface l$a
 {
-  public abstract void beC();
+  public abstract void bLV();
   
-  public abstract void beD();
+  public abstract void bLW();
   
-  public abstract void sZ(int paramInt);
+  public abstract void yc(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.l.a
  * JD-Core Version:    0.7.0.1
  */

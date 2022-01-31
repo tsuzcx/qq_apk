@@ -1,5 +1,6 @@
 package com.google.android.exoplayer2.a;
 
+import android.annotation.TargetApi;
 import android.media.AudioAttributes;
 import android.media.AudioAttributes.Builder;
 import android.media.AudioFormat;
@@ -8,137 +9,197 @@ import android.media.AudioTrack;
 import android.os.ConditionVariable;
 import android.os.SystemClock;
 import com.google.android.exoplayer2.i.a;
-import com.google.android.exoplayer2.i.t;
+import com.google.android.exoplayer2.i.x;
 import com.google.android.exoplayer2.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public final class f
 {
-  public static boolean awl = false;
-  public static boolean awm = false;
-  p atv;
-  int avp;
-  b avq;
-  boolean awA;
-  long awB;
-  p awC;
-  private long awD;
-  private long awE;
-  private ByteBuffer awF;
-  int awG;
-  private int awH;
-  private int awI;
-  private long awJ;
-  private long awK;
-  private boolean awL;
-  private long awM;
-  private Method awN;
-  int awO;
-  long awP;
-  long awQ;
-  int awR;
-  private long awS;
-  private long awT;
-  int awU;
-  int awV;
-  long awW;
-  private long awX;
-  private long awY;
-  float awZ;
-  final c awn;
-  final g awo;
-  private final l awp;
-  final d[] awq;
-  final f.f awr;
-  final ConditionVariable aws;
-  private final long[] awt;
-  final f.a awu;
-  final LinkedList<f.g> awv;
-  AudioTrack aww;
-  AudioTrack awx;
-  int awy;
-  int awz;
-  private d[] axa;
-  private ByteBuffer[] axb;
-  ByteBuffer axc;
-  private ByteBuffer axd;
-  private byte[] axe;
-  private int axf;
-  private int axg;
-  boolean axh;
-  boolean axi;
-  boolean axj;
-  boolean axk;
-  long axl;
+  public static boolean ayB = false;
+  public static boolean ayC = false;
+  p avN;
+  int axF;
+  b axG;
+  private final c ayD;
+  final g ayE;
+  private final l ayF;
+  final d[] ayG;
+  final f.f ayH;
+  final ConditionVariable ayI;
+  private final long[] ayJ;
+  final f.a ayK;
+  final LinkedList<f.g> ayL;
+  AudioTrack ayM;
+  AudioTrack ayN;
+  int ayO;
+  int ayP;
+  boolean ayQ;
+  long ayR;
+  p ayS;
+  private long ayT;
+  private long ayU;
+  private ByteBuffer ayV;
+  int ayW;
+  private int ayX;
+  private int ayY;
+  private long ayZ;
+  boolean azA;
+  long azB;
+  private long aza;
+  private boolean azb;
+  private long azc;
+  private Method azd;
+  int aze;
+  long azf;
+  long azg;
+  int azh;
+  private long azi;
+  private long azj;
+  int azk;
+  int azl;
+  long azm;
+  private long azn;
+  private long azo;
+  float azp;
+  private d[] azq;
+  private ByteBuffer[] azr;
+  ByteBuffer azs;
+  private ByteBuffer azt;
+  private byte[] azu;
+  private int azv;
+  private int azw;
+  boolean azx;
+  boolean azy;
+  boolean azz;
   int bufferSize;
   int encoding;
   int sampleRate;
   
   public f(c paramc, d[] paramArrayOfd, f.f paramf)
   {
-    this.awn = paramc;
-    this.awr = paramf;
-    this.aws = new ConditionVariable(true);
-    if (t.SDK_INT >= 18) {}
+    AppMethodBeat.i(94674);
+    this.ayD = paramc;
+    this.ayH = paramf;
+    this.ayI = new ConditionVariable(true);
+    if (x.SDK_INT >= 18) {}
     try
     {
-      this.awN = AudioTrack.class.getMethod("getLatency", null);
-      label46:
-      if (t.SDK_INT >= 19) {}
-      for (this.awu = new f.b();; this.awu = new f.a((byte)0))
+      this.azd = AudioTrack.class.getMethod("getLatency", null);
+      label51:
+      if (x.SDK_INT >= 19) {}
+      for (this.ayK = new f.b();; this.ayK = new f.a((byte)0))
       {
-        this.awo = new g();
-        this.awp = new l();
-        this.awq = new d[paramArrayOfd.length + 3];
-        this.awq[0] = new j();
-        this.awq[1] = this.awo;
-        System.arraycopy(paramArrayOfd, 0, this.awq, 2, paramArrayOfd.length);
-        this.awq[(paramArrayOfd.length + 2)] = this.awp;
-        this.awt = new long[10];
-        this.awZ = 1.0F;
-        this.awV = 0;
-        this.avq = b.avR;
-        this.avp = 0;
-        this.atv = p.auS;
-        this.axg = -1;
-        this.axa = new d[0];
-        this.axb = new ByteBuffer[0];
-        this.awv = new LinkedList();
+        this.ayE = new g();
+        this.ayF = new l();
+        this.ayG = new d[paramArrayOfd.length + 3];
+        this.ayG[0] = new j();
+        this.ayG[1] = this.ayE;
+        System.arraycopy(paramArrayOfd, 0, this.ayG, 2, paramArrayOfd.length);
+        this.ayG[(paramArrayOfd.length + 2)] = this.ayF;
+        this.ayJ = new long[10];
+        this.azp = 1.0F;
+        this.azl = 0;
+        this.axG = b.ayh;
+        this.axF = 0;
+        this.avN = p.axk;
+        this.azw = -1;
+        this.azq = new d[0];
+        this.azr = new ByteBuffer[0];
+        this.ayL = new LinkedList();
+        AppMethodBeat.o(94674);
         return;
       }
     }
     catch (NoSuchMethodException paramc)
     {
-      break label46;
+      break label51;
     }
   }
   
-  private long B(long paramLong)
+  private long A(long paramLong)
   {
-    while ((!this.awv.isEmpty()) && (paramLong >= ((f.g)this.awv.getFirst()).aui))
+    AppMethodBeat.i(94687);
+    while ((!this.ayL.isEmpty()) && (paramLong >= ((f.g)this.ayL.getFirst()).awA))
     {
-      f.g localg = (f.g)this.awv.remove();
-      this.atv = localg.atv;
-      this.awE = localg.aui;
-      this.awD = (localg.axA - this.awW);
+      f.g localg = (f.g)this.ayL.remove();
+      this.avN = localg.avN;
+      this.ayU = localg.awA;
+      this.ayT = (localg.azQ - this.azm);
     }
-    if (this.atv.auT == 1.0F) {
-      return this.awD + paramLong - this.awE;
-    }
-    if ((this.awv.isEmpty()) && (this.awp.ayp >= 1024L))
+    if (this.avN.speed == 1.0F)
     {
-      long l = this.awD;
-      return t.b(paramLong - this.awE, this.awp.ayo, this.awp.ayp) + l;
+      l1 = this.ayT;
+      long l2 = this.ayU;
+      AppMethodBeat.o(94687);
+      return l1 + paramLong - l2;
     }
-    return this.awD + (this.atv.auT * (paramLong - this.awE));
+    if ((this.ayL.isEmpty()) && (this.ayF.aAE >= 1024L))
+    {
+      l1 = this.ayT;
+      paramLong = x.b(paramLong - this.ayU, this.ayF.aAD, this.ayF.aAE);
+      AppMethodBeat.o(94687);
+      return paramLong + l1;
+    }
+    long l1 = this.ayT;
+    paramLong = (this.avN.speed * (paramLong - this.ayU));
+    AppMethodBeat.o(94687);
+    return l1 + paramLong;
   }
   
-  static int ai(String paramString)
+  @TargetApi(21)
+  private int a(AudioTrack paramAudioTrack, ByteBuffer paramByteBuffer, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(94690);
+    if (this.ayV == null)
+    {
+      this.ayV = ByteBuffer.allocate(16);
+      this.ayV.order(ByteOrder.BIG_ENDIAN);
+      this.ayV.putInt(1431633921);
+    }
+    if (this.ayW == 0)
+    {
+      this.ayV.putInt(4, paramInt);
+      this.ayV.putLong(8, 1000L * paramLong);
+      this.ayV.position(0);
+      this.ayW = paramInt;
+    }
+    int i = this.ayV.remaining();
+    if (i > 0)
+    {
+      int j = paramAudioTrack.write(this.ayV, i, 1);
+      if (j < 0)
+      {
+        this.ayW = 0;
+        AppMethodBeat.o(94690);
+        return j;
+      }
+      if (j < i)
+      {
+        AppMethodBeat.o(94690);
+        return 0;
+      }
+    }
+    paramInt = paramAudioTrack.write(paramByteBuffer, paramInt, 1);
+    if (paramInt < 0)
+    {
+      this.ayW = 0;
+      AppMethodBeat.o(94690);
+      return paramInt;
+    }
+    this.ayW -= paramInt;
+    AppMethodBeat.o(94690);
+    return paramInt;
+  }
+  
+  static int an(String paramString)
+  {
+    AppMethodBeat.i(94689);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -148,6 +209,7 @@ public final class f
       switch (i)
       {
       default: 
+        AppMethodBeat.o(94689);
         return 0;
         if (paramString.equals("audio/ac3"))
         {
@@ -170,100 +232,59 @@ public final class f
         break;
       }
     }
+    AppMethodBeat.o(94689);
     return 5;
+    AppMethodBeat.o(94689);
     return 6;
+    AppMethodBeat.o(94689);
     return 7;
+    AppMethodBeat.o(94689);
     return 8;
   }
   
-  final void A(long paramLong)
-  {
-    int j = this.axa.length;
-    int i = j;
-    for (;;)
-    {
-      ByteBuffer localByteBuffer;
-      if (i >= 0)
-      {
-        if (i <= 0) {
-          break label51;
-        }
-        localByteBuffer = this.axb[(i - 1)];
-        label28:
-        if (i != j) {
-          break label75;
-        }
-        a(localByteBuffer, paramLong);
-      }
-      for (;;)
-      {
-        if (localByteBuffer.hasRemaining())
-        {
-          return;
-          label51:
-          if (this.axc != null)
-          {
-            localByteBuffer = this.axc;
-            break label28;
-          }
-          localByteBuffer = d.avY;
-          break label28;
-          label75:
-          Object localObject = this.axa[i];
-          ((d)localObject).c(localByteBuffer);
-          localObject = ((d)localObject).lc();
-          this.axb[i] = localObject;
-          if (((ByteBuffer)localObject).hasRemaining())
-          {
-            i += 1;
-            break;
-          }
-        }
-      }
-      i -= 1;
-    }
-  }
-  
-  final long C(long paramLong)
+  final long B(long paramLong)
   {
     return 1000000L * paramLong / this.sampleRate;
   }
   
-  final long D(long paramLong)
+  final long C(long paramLong)
   {
     return this.sampleRate * paramLong / 1000000L;
   }
   
   final boolean a(ByteBuffer paramByteBuffer, long paramLong)
   {
-    if (!paramByteBuffer.hasRemaining()) {
+    AppMethodBeat.i(94680);
+    if (!paramByteBuffer.hasRemaining())
+    {
+      AppMethodBeat.o(94680);
       return true;
     }
     boolean bool;
-    label32:
+    label44:
     int k;
     int i;
     int j;
-    if (this.axd != null) {
-      if (this.axd == paramByteBuffer)
+    if (this.azt != null) {
+      if (this.azt == paramByteBuffer)
       {
         bool = true;
-        a.aB(bool);
+        a.checkArgument(bool);
         k = paramByteBuffer.remaining();
-        if (t.SDK_INT >= 21) {
-          break label250;
+        if (x.SDK_INT >= 21) {
+          break label270;
         }
-        i = (int)(this.awS - this.awu.ln() * this.awR);
+        i = (int)(this.azi - this.ayK.nv() * this.azh);
         i = this.bufferSize - i;
         if (i <= 0) {
-          break label535;
+          break label400;
         }
         i = Math.min(k, i);
-        j = this.awx.write(this.axe, this.axf, i);
+        j = this.ayN.write(this.azu, this.azv, i);
         i = j;
         if (j > 0)
         {
-          this.axf += j;
+          this.azv += j;
           paramByteBuffer.position(paramByteBuffer.position() + j);
           i = j;
         }
@@ -271,248 +292,249 @@ public final class f
     }
     for (;;)
     {
-      this.axl = SystemClock.elapsedRealtime();
+      this.azB = SystemClock.elapsedRealtime();
       if (i < 0)
       {
-        throw new f.h(i);
+        paramByteBuffer = new f.h(i);
+        AppMethodBeat.o(94680);
+        throw paramByteBuffer;
         bool = false;
         break;
-        this.axd = paramByteBuffer;
-        if (t.SDK_INT >= 21) {
-          break label32;
+        this.azt = paramByteBuffer;
+        if (x.SDK_INT >= 21) {
+          break label44;
         }
         i = paramByteBuffer.remaining();
-        if ((this.axe == null) || (this.axe.length < i)) {
-          this.axe = new byte[i];
+        if ((this.azu == null) || (this.azu.length < i)) {
+          this.azu = new byte[i];
         }
         j = paramByteBuffer.position();
-        paramByteBuffer.get(this.axe, 0, i);
+        paramByteBuffer.get(this.azu, 0, i);
         paramByteBuffer.position(j);
-        this.axf = 0;
-        break label32;
-        label250:
-        if (this.axj)
+        this.azv = 0;
+        break label44;
+        label270:
+        if (this.azz)
         {
           if (paramLong != -9223372036854775807L) {}
-          AudioTrack localAudioTrack;
           for (bool = true;; bool = false)
           {
-            a.aC(bool);
-            localAudioTrack = this.awx;
-            if (this.awF == null)
-            {
-              this.awF = ByteBuffer.allocate(16);
-              this.awF.order(ByteOrder.BIG_ENDIAN);
-              this.awF.putInt(1431633921);
-            }
-            if (this.awG == 0)
-            {
-              this.awF.putInt(4, k);
-              this.awF.putLong(8, 1000L * paramLong);
-              this.awF.position(0);
-              this.awG = k;
-            }
-            j = this.awF.remaining();
-            if (j <= 0) {
-              break label425;
-            }
-            i = localAudioTrack.write(this.awF, j, 1);
-            if (i >= 0) {
-              break label412;
-            }
-            this.awG = 0;
+            a.checkState(bool);
+            i = a(this.ayN, paramByteBuffer, k, paramLong);
             break;
           }
-          if (i < j)
-          {
-            i = 0;
-            continue;
-          }
-          i = localAudioTrack.write(paramByteBuffer, k, 1);
-          if (i < 0)
-          {
-            this.awG = 0;
-            continue;
-          }
-          this.awG -= i;
-          continue;
         }
-        label412:
-        label425:
-        i = this.awx.write(paramByteBuffer, k, 1);
+        i = this.ayN.write(paramByteBuffer, k, 1);
         continue;
       }
-      if (!this.awA) {
-        this.awS += i;
+      if (!this.ayQ) {
+        this.azi += i;
       }
       if (i == k)
       {
-        if (this.awA) {
-          this.awT += this.awU;
+        if (this.ayQ) {
+          this.azj += this.azk;
         }
-        this.axd = null;
+        this.azt = null;
+        AppMethodBeat.o(94680);
         return true;
       }
+      AppMethodBeat.o(94680);
       return false;
-      label535:
+      label400:
       i = 0;
     }
   }
   
-  public final long ax(boolean paramBoolean)
+  public final long aG(boolean paramBoolean)
   {
-    if ((isInitialized()) && (this.awV != 0)) {}
-    for (int i = 1; i == 0; i = 0) {
+    AppMethodBeat.i(94676);
+    if ((isInitialized()) && (this.azl != 0)) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      AppMethodBeat.o(94676);
       return -9223372036854775808L;
     }
     long l1;
     long l3;
     long l4;
-    String str;
-    if (this.awx.getPlayState() == 3)
+    Object localObject;
+    if (this.ayN.getPlayState() == 3)
     {
-      l1 = this.awu.lo();
+      l1 = this.ayK.nw();
       if (l1 != 0L)
       {
         l2 = System.nanoTime() / 1000L;
-        if (l2 - this.awK >= 30000L)
+        if (l2 - this.aza >= 30000L)
         {
-          this.awt[this.awH] = (l1 - l2);
-          this.awH = ((this.awH + 1) % 10);
-          if (this.awI < 10) {
-            this.awI += 1;
+          this.ayJ[this.ayX] = (l1 - l2);
+          this.ayX = ((this.ayX + 1) % 10);
+          if (this.ayY < 10) {
+            this.ayY += 1;
           }
-          this.awK = l2;
-          this.awJ = 0L;
+          this.aza = l2;
+          this.ayZ = 0L;
           i = 0;
-          while (i < this.awI)
+          while (i < this.ayY)
           {
-            this.awJ += this.awt[i] / this.awI;
+            this.ayZ += this.ayJ[i] / this.ayY;
             i += 1;
           }
         }
-        if ((!ll()) && (l2 - this.awM >= 500000L))
+        if ((!nt()) && (l2 - this.azc >= 500000L))
         {
-          this.awL = this.awu.lp();
-          if (this.awL)
+          this.azb = this.ayK.nx();
+          if (this.azb)
           {
-            l3 = this.awu.lq() / 1000L;
-            l4 = this.awu.lr();
-            if (l3 < this.awX) {
-              break label626;
+            l3 = this.ayK.ny() / 1000L;
+            l4 = this.ayK.nz();
+            if (l3 < this.azn) {
+              break label666;
             }
             if (Math.abs(l3 - l2) <= 5000000L) {
-              break label514;
+              break label544;
             }
-            str = "Spurious audio timestamp (system clock mismatch): " + l4 + ", " + l3 + ", " + l2 + ", " + l1 + ", " + li() + ", " + lj();
-            if (awm) {
-              throw new f.e(str);
+            localObject = "Spurious audio timestamp (system clock mismatch): " + l4 + ", " + l3 + ", " + l2 + ", " + l1 + ", " + nq() + ", " + nr();
+            if (ayC)
+            {
+              localObject = new f.e((String)localObject);
+              AppMethodBeat.o(94676);
+              throw ((Throwable)localObject);
             }
-            this.awL = false;
+            this.azb = false;
           }
         }
       }
     }
     for (;;)
     {
-      if ((this.awN != null) && (!this.awA)) {}
+      if ((this.azd != null) && (!this.ayQ)) {}
       try
       {
-        this.awY = (((Integer)this.awN.invoke(this.awx, null)).intValue() * 1000L - this.awB);
-        this.awY = Math.max(this.awY, 0L);
-        if (this.awY > 5000000L)
+        this.azo = (((Integer)this.azd.invoke(this.ayN, null)).intValue() * 1000L - this.ayR);
+        this.azo = Math.max(this.azo, 0L);
+        if (this.azo > 5000000L)
         {
-          new StringBuilder("Ignoring impossibly large audio latency: ").append(this.awY);
-          this.awY = 0L;
+          new StringBuilder("Ignoring impossibly large audio latency: ").append(this.azo);
+          this.azo = 0L;
         }
-        this.awM = l2;
+        this.azc = l2;
         l1 = System.nanoTime() / 1000L;
-        if (this.awL)
+        if (this.azb)
         {
-          l1 = C(D(l1 - this.awu.lq() / 1000L) + this.awu.lr());
-          l2 = this.awW;
-          return B(l1) + l2;
-          label514:
-          if (Math.abs(C(l4) - l1) <= 5000000L) {
+          l1 = B(C(l1 - this.ayK.ny() / 1000L) + this.ayK.nz());
+          l2 = this.azm;
+          l1 = A(l1);
+          AppMethodBeat.o(94676);
+          return l1 + l2;
+          label544:
+          if (Math.abs(B(l4) - l1) <= 5000000L) {
             continue;
           }
-          str = "Spurious audio timestamp (frame position mismatch): " + l4 + ", " + l3 + ", " + l2 + ", " + l1 + ", " + li() + ", " + lj();
-          if (awm) {
-            throw new f.e(str);
+          localObject = "Spurious audio timestamp (frame position mismatch): " + l4 + ", " + l3 + ", " + l2 + ", " + l1 + ", " + nq() + ", " + nr();
+          if (ayC)
+          {
+            localObject = new f.e((String)localObject);
+            AppMethodBeat.o(94676);
+            throw ((Throwable)localObject);
           }
-          label626:
-          this.awL = false;
+          label666:
+          this.azb = false;
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          this.awN = null;
+          this.azd = null;
         }
       }
     }
-    if (this.awI == 0) {}
-    for (long l2 = this.awu.lo();; l2 = l1 + this.awJ)
+    if (this.ayY == 0) {}
+    for (long l2 = this.ayK.nw();; l2 = l1 + this.ayZ)
     {
       l1 = l2;
       if (paramBoolean) {
         break;
       }
-      l1 = l2 - this.awY;
+      l1 = l2 - this.azo;
       break;
     }
   }
   
-  public final p b(p paramp)
+  public final boolean am(String paramString)
   {
-    if (this.awA)
+    AppMethodBeat.i(94675);
+    if (this.ayD != null)
     {
-      this.atv = p.auS;
-      return this.atv;
+      c localc = this.ayD;
+      int i = an(paramString);
+      if (Arrays.binarySearch(localc.aym, i) >= 0) {}
+      for (i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(94675);
+        return true;
+      }
     }
-    Object localObject = this.awp;
-    ((l)localObject).auT = t.h(paramp.auT, 0.1F, 8.0F);
-    float f1 = ((l)localObject).auT;
-    localObject = this.awp;
-    float f2 = paramp.pitch;
-    ((l)localObject).pitch = t.h(f2, 0.1F, 8.0F);
-    localObject = new p(f1, f2);
-    if (this.awC != null)
+    AppMethodBeat.o(94675);
+    return false;
+  }
+  
+  public final p c(p paramp)
+  {
+    AppMethodBeat.i(94683);
+    if (this.ayQ)
     {
-      paramp = this.awC;
+      this.avN = p.axk;
+      paramp = this.avN;
+      AppMethodBeat.o(94683);
+      return paramp;
+    }
+    Object localObject = this.ayF;
+    ((l)localObject).speed = x.h(paramp.speed, 0.1F, 8.0F);
+    float f1 = ((l)localObject).speed;
+    localObject = this.ayF;
+    float f2 = paramp.pitch;
+    ((l)localObject).pitch = x.h(f2, 0.1F, 8.0F);
+    localObject = new p(f1, f2);
+    if (this.ayS != null)
+    {
+      paramp = this.ayS;
       if (!((p)localObject).equals(paramp))
       {
         if (!isInitialized()) {
-          break label160;
+          break label182;
         }
-        this.awC = ((p)localObject);
+        this.ayS = ((p)localObject);
       }
     }
     for (;;)
     {
-      return this.atv;
-      if (!this.awv.isEmpty())
+      paramp = this.avN;
+      AppMethodBeat.o(94683);
+      return paramp;
+      if (!this.ayL.isEmpty())
       {
-        paramp = ((f.g)this.awv.getLast()).atv;
+        paramp = ((f.g)this.ayL.getLast()).avN;
         break;
       }
-      paramp = this.atv;
+      paramp = this.avN;
       break;
-      label160:
-      this.atv = ((p)localObject);
+      label182:
+      this.avN = ((p)localObject);
     }
   }
   
   final boolean isInitialized()
   {
-    return this.awx != null;
+    return this.ayN != null;
   }
   
-  final void ld()
+  final void nl()
   {
+    AppMethodBeat.i(94677);
     Object localObject = new ArrayList();
-    d[] arrayOfd = this.awq;
+    d[] arrayOfd = this.ayG;
     int j = arrayOfd.length;
     int i = 0;
     if (i < j)
@@ -529,270 +551,324 @@ public final class f
       }
     }
     j = ((ArrayList)localObject).size();
-    this.axa = ((d[])((ArrayList)localObject).toArray(new d[j]));
-    this.axb = new ByteBuffer[j];
+    this.azq = ((d[])((ArrayList)localObject).toArray(new d[j]));
+    this.azr = new ByteBuffer[j];
     i = 0;
     while (i < j)
     {
-      localObject = this.axa[i];
+      localObject = this.azq[i];
       ((d)localObject).flush();
-      this.axb[i] = ((d)localObject).lc();
+      this.azr[i] = ((d)localObject).nk();
       i += 1;
     }
+    AppMethodBeat.o(94677);
   }
   
-  final boolean le()
+  final boolean nm()
   {
+    AppMethodBeat.i(94681);
     int i;
-    if (this.axg == -1) {
-      if (this.awA)
+    if (this.azw == -1) {
+      if (this.ayQ)
       {
-        i = this.axa.length;
-        this.axg = i;
+        i = this.azq.length;
+        this.azw = i;
         i = 1;
       }
     }
     for (;;)
     {
-      label28:
-      if (this.axg < this.axa.length)
+      if (this.azw < this.azq.length)
       {
-        d locald = this.axa[this.axg];
+        d locald = this.azq[this.azw];
         if (i != 0) {
-          locald.lb();
+          locald.nj();
         }
-        A(-9223372036854775807L);
-        if (locald.kU()) {}
-      }
-      do
-      {
-        return false;
-        i = 0;
-        break;
-        this.axg += 1;
+        z(-9223372036854775807L);
+        if (!locald.nd())
+        {
+          AppMethodBeat.o(94681);
+          return false;
+          i = 0;
+          break;
+        }
+        this.azw += 1;
         i = 1;
-        break label28;
-        if (this.axd == null) {
-          break label124;
+        continue;
+      }
+      if (this.azt != null)
+      {
+        a(this.azt, -9223372036854775807L);
+        if (this.azt != null)
+        {
+          AppMethodBeat.o(94681);
+          return false;
         }
-        a(this.axd, -9223372036854775807L);
-      } while (this.axd != null);
-      label124:
-      this.axg = -1;
+      }
+      this.azw = -1;
+      AppMethodBeat.o(94681);
       return true;
       i = 0;
     }
   }
   
-  public final boolean lf()
+  public final boolean nn()
   {
+    AppMethodBeat.i(94682);
     if (isInitialized())
     {
-      if (lj() <= this.awu.ln()) {
-        if ((!ll()) || (this.awx.getPlayState() != 2) || (this.awx.getPlaybackHeadPosition() != 0)) {
-          break label58;
+      if (nr() <= this.ayK.nv()) {
+        if ((!nt()) || (this.ayN.getPlayState() != 2) || (this.ayN.getPlaybackHeadPosition() != 0)) {
+          break label70;
         }
       }
-      label58:
-      for (int i = 1; i != 0; i = 0) {
+      label70:
+      for (int i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(94682);
         return true;
       }
     }
+    AppMethodBeat.o(94682);
     return false;
   }
   
-  final void lg()
+  final void no()
   {
+    AppMethodBeat.i(94684);
     if (isInitialized())
     {
-      if (t.SDK_INT >= 21) {
-        this.awx.setVolume(this.awZ);
-      }
-    }
-    else {
-      return;
-    }
-    AudioTrack localAudioTrack = this.awx;
-    float f = this.awZ;
-    localAudioTrack.setStereoVolume(f, f);
-  }
-  
-  final void lh()
-  {
-    if (this.aww == null) {
-      return;
-    }
-    final AudioTrack localAudioTrack = this.aww;
-    this.aww = null;
-    new Thread()
-    {
-      public final void run()
+      if (x.SDK_INT >= 21)
       {
-        localAudioTrack.release();
+        this.ayN.setVolume(this.azp);
+        AppMethodBeat.o(94684);
+        return;
       }
-    }.start();
-  }
-  
-  final long li()
-  {
-    if (this.awA) {
-      return this.awQ;
+      AudioTrack localAudioTrack = this.ayN;
+      float f = this.azp;
+      localAudioTrack.setStereoVolume(f, f);
     }
-    return this.awP / this.awO;
+    AppMethodBeat.o(94684);
   }
   
-  final long lj()
+  final void np()
   {
-    if (this.awA) {
-      return this.awT;
+    AppMethodBeat.i(94686);
+    if (this.ayM == null)
+    {
+      AppMethodBeat.o(94686);
+      return;
     }
-    return this.awS / this.awR;
+    AudioTrack localAudioTrack = this.ayM;
+    this.ayM = null;
+    new f.2(this, localAudioTrack).start();
+    AppMethodBeat.o(94686);
   }
   
-  final void lk()
+  final long nq()
   {
-    this.awJ = 0L;
-    this.awI = 0;
-    this.awH = 0;
-    this.awK = 0L;
-    this.awL = false;
-    this.awM = 0L;
+    if (this.ayQ) {
+      return this.azg;
+    }
+    return this.azf / this.aze;
   }
   
-  final boolean ll()
+  final long nr()
   {
-    return (t.SDK_INT < 23) && ((this.awz == 5) || (this.awz == 6));
+    if (this.ayQ) {
+      return this.azj;
+    }
+    return this.azi / this.azh;
   }
   
-  final AudioTrack lm()
+  final void ns()
   {
+    this.ayZ = 0L;
+    this.ayY = 0;
+    this.ayX = 0;
+    this.aza = 0L;
+    this.azb = false;
+    this.azc = 0L;
+  }
+  
+  final boolean nt()
+  {
+    return (x.SDK_INT < 23) && ((this.ayP == 5) || (this.ayP == 6));
+  }
+  
+  final AudioTrack nu()
+  {
+    AppMethodBeat.i(94688);
     Object localObject;
-    if (t.SDK_INT >= 21) {
-      if (this.axj) {
+    if (x.SDK_INT >= 21) {
+      if (this.azz) {
         localObject = new AudioAttributes.Builder().setContentType(3).setFlags(16).setUsage(1).build();
       }
     }
     for (;;)
     {
-      AudioFormat localAudioFormat = new AudioFormat.Builder().setChannelMask(this.awy).setEncoding(this.awz).setSampleRate(this.sampleRate).build();
+      AudioFormat localAudioFormat = new AudioFormat.Builder().setChannelMask(this.ayO).setEncoding(this.ayP).setSampleRate(this.sampleRate).build();
       int i;
-      if (this.avp != 0)
+      if (this.axF != 0)
       {
-        i = this.avp;
-        label83:
+        i = this.axF;
+        label89:
         localObject = new AudioTrack((AudioAttributes)localObject, localAudioFormat, this.bufferSize, 1, i);
-        label99:
+        label105:
         i = ((AudioTrack)localObject).getState();
-        if (i == 1) {}
+        if (i == 1) {
+          break label288;
+        }
       }
-      else
+      try
       {
-        try
-        {
-          ((AudioTrack)localObject).release();
-          label113:
-          throw new d(i, this.sampleRate, this.awy, this.bufferSize);
-          localObject = this.avq;
-          if (((b)localObject).avU == null) {
-            ((b)localObject).avU = new AudioAttributes.Builder().setContentType(((b)localObject).avS).setFlags(((b)localObject).flags).setUsage(((b)localObject).avT).build();
-          }
-          localObject = ((b)localObject).avU;
-          continue;
-          i = 0;
-          break label83;
-          i = t.dF(this.avq.avT);
-          if (this.avp == 0)
-          {
-            localObject = new AudioTrack(i, this.sampleRate, this.awy, this.awz, this.bufferSize, 1);
-            break label99;
-          }
-          localObject = new AudioTrack(i, this.sampleRate, this.awy, this.awz, this.bufferSize, 1, this.avp);
+        ((AudioTrack)localObject).release();
+        label119:
+        localObject = new f.d(i, this.sampleRate, this.ayO, this.bufferSize);
+        AppMethodBeat.o(94688);
+        throw ((Throwable)localObject);
+        localObject = this.axG;
+        if (((b)localObject).ayk == null) {
+          ((b)localObject).ayk = new AudioAttributes.Builder().setContentType(((b)localObject).ayi).setFlags(((b)localObject).flags).setUsage(((b)localObject).ayj).build();
         }
-        catch (Exception localException)
+        localObject = ((b)localObject).ayk;
+        continue;
+        i = 0;
+        break label89;
+        i = x.et(this.axG.ayj);
+        if (this.axF == 0)
         {
-          break label113;
+          localObject = new AudioTrack(i, this.sampleRate, this.ayO, this.ayP, this.bufferSize, 1);
+          break label105;
         }
+        localObject = new AudioTrack(i, this.sampleRate, this.ayO, this.ayP, this.bufferSize, 1, this.axF);
+        break label105;
+        label288:
+        AppMethodBeat.o(94688);
+        return localObject;
+      }
+      catch (Exception localException)
+      {
+        break label119;
       }
     }
-    return localException;
   }
   
   public final void play()
   {
-    this.axi = true;
+    AppMethodBeat.i(94678);
+    this.azy = true;
     if (isInitialized())
     {
-      this.awX = (System.nanoTime() / 1000L);
-      this.awx.play();
+      this.azn = (System.nanoTime() / 1000L);
+      this.ayN.play();
     }
+    AppMethodBeat.o(94678);
   }
   
   public final void reset()
   {
+    AppMethodBeat.i(94685);
     if (isInitialized())
     {
-      this.awP = 0L;
-      this.awQ = 0L;
-      this.awS = 0L;
-      this.awT = 0L;
-      this.awU = 0;
-      if (this.awC != null)
+      this.azf = 0L;
+      this.azg = 0L;
+      this.azi = 0L;
+      this.azj = 0L;
+      this.azk = 0;
+      if (this.ayS != null)
       {
-        this.atv = this.awC;
-        this.awC = null;
+        this.avN = this.ayS;
+        this.ayS = null;
       }
       for (;;)
       {
-        this.awv.clear();
-        this.awD = 0L;
-        this.awE = 0L;
-        this.axc = null;
-        this.axd = null;
+        this.ayL.clear();
+        this.ayT = 0L;
+        this.ayU = 0L;
+        this.azs = null;
+        this.azt = null;
         int i = 0;
-        while (i < this.axa.length)
+        while (i < this.azq.length)
         {
-          localObject = this.axa[i];
+          localObject = this.azq[i];
           ((d)localObject).flush();
-          this.axb[i] = ((d)localObject).lc();
+          this.azr[i] = ((d)localObject).nk();
           i += 1;
         }
-        if (!this.awv.isEmpty()) {
-          this.atv = ((f.g)this.awv.getLast()).atv;
+        if (!this.ayL.isEmpty()) {
+          this.avN = ((f.g)this.ayL.getLast()).avN;
         }
       }
-      this.axh = false;
-      this.axg = -1;
-      this.awF = null;
-      this.awG = 0;
-      this.awV = 0;
-      this.awY = 0L;
-      lk();
-      if (this.awx.getPlayState() == 3) {
-        this.awx.pause();
+      this.azx = false;
+      this.azw = -1;
+      this.ayV = null;
+      this.ayW = 0;
+      this.azl = 0;
+      this.azo = 0L;
+      ns();
+      if (this.ayN.getPlayState() == 3) {
+        this.ayN.pause();
       }
-      Object localObject = this.awx;
-      this.awx = null;
-      this.awu.a(null, false);
-      this.aws.close();
+      Object localObject = this.ayN;
+      this.ayN = null;
+      this.ayK.a(null, false);
+      this.ayI.close();
       new f.1(this, (AudioTrack)localObject).start();
     }
+    AppMethodBeat.o(94685);
   }
   
-  public static final class d
-    extends Exception
+  final void z(long paramLong)
   {
-    public final int axz;
-    
-    public d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    AppMethodBeat.i(94679);
+    int j = this.azq.length;
+    int i = j;
+    while (i >= 0)
     {
-      super();
-      this.axz = paramInt1;
+      ByteBuffer localByteBuffer;
+      if (i > 0)
+      {
+        localByteBuffer = this.azr[(i - 1)];
+        label34:
+        if (i != j) {
+          break label87;
+        }
+        a(localByteBuffer, paramLong);
+      }
+      for (;;)
+      {
+        if (localByteBuffer.hasRemaining())
+        {
+          AppMethodBeat.o(94679);
+          return;
+          if (this.azs != null)
+          {
+            localByteBuffer = this.azs;
+            break label34;
+          }
+          localByteBuffer = d.ayo;
+          break label34;
+          label87:
+          Object localObject = this.azq[i];
+          ((d)localObject).c(localByteBuffer);
+          localObject = ((d)localObject).nk();
+          this.azr[i] = localObject;
+          if (((ByteBuffer)localObject).hasRemaining())
+          {
+            i += 1;
+            break;
+          }
+        }
+      }
+      i -= 1;
     }
+    AppMethodBeat.o(94679);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.a.f
  * JD-Core Version:    0.7.0.1
  */

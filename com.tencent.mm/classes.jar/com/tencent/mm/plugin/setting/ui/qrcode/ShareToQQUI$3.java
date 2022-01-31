@@ -4,9 +4,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.ui.FacebookAuthUI;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class ShareToQQUI$3
   implements DialogInterface.OnClickListener
@@ -15,16 +14,18 @@ final class ShareToQQUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(this.nRC.mController.uMN, FacebookAuthUI.class);
+    AppMethodBeat.i(126921);
+    paramDialogInterface = new Intent(this.qFA.getContext(), FacebookAuthUI.class);
     paramDialogInterface.putExtra("is_force_unbind", true);
-    this.nRC.mController.uMN.startActivity(paramDialogInterface);
-    this.nRC.XM();
-    this.nRC.finish();
+    this.qFA.getContext().startActivity(paramDialogInterface);
+    this.qFA.hideVKB();
+    this.qFA.finish();
+    AppMethodBeat.o(126921);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.qrcode.ShareToQQUI.3
  * JD-Core Version:    0.7.0.1
  */

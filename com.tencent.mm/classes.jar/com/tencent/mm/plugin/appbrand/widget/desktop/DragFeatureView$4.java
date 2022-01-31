@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.desktop;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DragFeatureView$4
   implements Animator.AnimatorListener
@@ -12,8 +13,16 @@ final class DragFeatureView$4
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    DragFeatureView.e(this.hqW);
-    this.hqW.requestLayout();
+    AppMethodBeat.i(133900);
+    DragFeatureView.e(this.jfO);
+    this.jfO.requestLayout();
+    if ((DragFeatureView.h(this.jfO)) && ((DragFeatureView.i(this.jfO) instanceof DragRecyclerView)))
+    {
+      ((DragRecyclerView)DragFeatureView.i(this.jfO)).setLongPress(false);
+      DragFeatureView.j(this.jfO);
+      DragFeatureView.k(this.jfO);
+    }
+    AppMethodBeat.o(133900);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}

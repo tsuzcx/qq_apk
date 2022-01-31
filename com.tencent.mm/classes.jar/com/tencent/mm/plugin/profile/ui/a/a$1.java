@@ -1,24 +1,26 @@
 package com.tencent.mm.plugin.profile.ui.a;
 
 import android.app.Activity;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import com.tencent.mm.ui.base.h;
 
 final class a$1
-  implements am.a
+  implements ap.a
 {
   a$1(a parama) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (!this.mZv.bMV.isFinishing())
+    AppMethodBeat.i(23796);
+    if (!this.pDb.cup.isFinishing())
     {
-      a locala = this.mZv;
-      Activity localActivity = this.mZv.bMV;
-      this.mZv.bMV.getString(R.l.app_tip);
-      locala.ksE = h.b(localActivity, this.mZv.bMV.getString(R.l.app_waiting), true, new a.1.1(this));
+      a locala = this.pDb;
+      Activity localActivity = this.pDb.cup;
+      this.pDb.cup.getString(2131297087);
+      locala.mOt = h.b(localActivity, this.pDb.cup.getString(2131297112), true, new a.1.1(this));
     }
+    AppMethodBeat.o(23796);
     return false;
   }
 }

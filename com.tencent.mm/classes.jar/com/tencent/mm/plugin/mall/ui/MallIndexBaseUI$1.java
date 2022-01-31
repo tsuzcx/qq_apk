@@ -3,10 +3,11 @@ package com.tencent.mm.plugin.mall.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.wallet.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.wallet.g;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MallIndexBaseUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -15,24 +16,26 @@ final class MallIndexBaseUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
+    AppMethodBeat.i(43165);
     paramMenuItem = new Intent();
     paramMenuItem.addFlags(67108864);
     paramMenuItem.putExtra("preferred_tab", 3);
-    d.e(this.lZE, "com.tencent.mm.ui.LauncherUI", paramMenuItem);
-    this.lZE.finish();
-    if (!f.cow())
+    d.f(this.ozC, "com.tencent.mm.ui.LauncherUI", paramMenuItem);
+    this.ozC.finish();
+    if (!g.dpN())
     {
-      h.nFQ.f(14954, new Object[] { f.cox(), "open_wcpay_specific_view:ok" });
-      f.coy();
+      h.qsU.e(14954, new Object[] { g.dpO(), "open_wcpay_specific_view:ok" });
+      g.dpP();
     }
-    h.nFQ.f(14419, new Object[] { this.lZE.dCX, Integer.valueOf(6) });
-    y.i("MicroMsg.MallIndexBaseUI", "set BackBtn");
+    h.qsU.e(14419, new Object[] { this.ozC.eAx, Integer.valueOf(6) });
+    ab.i("MicroMsg.MallIndexBaseUI", "set BackBtn");
+    AppMethodBeat.o(43165);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.MallIndexBaseUI.1
  * JD-Core Version:    0.7.0.1
  */

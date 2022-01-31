@@ -9,82 +9,95 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.plugin.websearch.a.b;
-import com.tencent.mm.ui.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.ui.w;
 
 public class DownArrowSwitchFooter
   extends LinearLayout
   implements a
 {
   private Context context;
-  private c qXu;
-  private ImageView qYc;
-  private TextView qYd;
-  private View qYe;
-  private a.a qYg;
+  private ImageView iWb;
+  private c uMJ;
+  private TextView uNq;
+  private View uNr;
+  private a.a uNt;
   
   public DownArrowSwitchFooter(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(91578);
     c.a locala = new c.a();
-    locala.erf = true;
-    locala.ere = true;
-    this.qXu = locala.OV();
+    locala.eNM = true;
+    locala.eNL = true;
+    this.uMJ = locala.ahY();
     this.context = paramContext;
     init();
+    AppMethodBeat.o(91578);
   }
   
   public DownArrowSwitchFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(91579);
     paramAttributeSet = new c.a();
-    paramAttributeSet.erf = true;
-    paramAttributeSet.ere = true;
-    this.qXu = paramAttributeSet.OV();
+    paramAttributeSet.eNM = true;
+    paramAttributeSet.eNL = true;
+    this.uMJ = paramAttributeSet.ahY();
     this.context = paramContext;
     init();
+    AppMethodBeat.o(91579);
   }
   
   private void init()
   {
-    ViewGroup localViewGroup = (ViewGroup)y.gt(this.context).inflate(a.b.widget_footer_switch_downarrow, this);
-    this.qYe = localViewGroup.findViewById(com.tencent.mm.plugin.websearch.a.a.down_arrow);
-    this.qYd = ((TextView)localViewGroup.findViewById(com.tencent.mm.plugin.websearch.a.a.footer_title));
-    this.qYc = ((ImageView)localViewGroup.findViewById(com.tencent.mm.plugin.websearch.a.a.footer_icon));
+    AppMethodBeat.i(91580);
+    ViewGroup localViewGroup = (ViewGroup)w.hM(this.context).inflate(2130971328, this);
+    this.uNr = localViewGroup.findViewById(2131829599);
+    this.uNq = ((TextView)localViewGroup.findViewById(2131829593));
+    this.iWb = ((ImageView)localViewGroup.findViewById(2131829592));
     localViewGroup.setOnClickListener(new DownArrowSwitchFooter.1(this));
+    AppMethodBeat.o(91580);
   }
   
   public void setCallback(a.a parama)
   {
-    this.qYg = parama;
+    AppMethodBeat.i(91583);
+    this.uNt = parama;
     if (parama != null)
     {
-      if (parama.getItemCount() > 1) {
-        this.qYe.setVisibility(0);
+      if (parama.getItemCount() > 1)
+      {
+        this.uNr.setVisibility(0);
+        AppMethodBeat.o(91583);
+        return;
       }
+      this.uNr.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.qYe.setVisibility(8);
+    AppMethodBeat.o(91583);
   }
   
   public void setIcon(String paramString)
   {
+    AppMethodBeat.i(91582);
     if (TextUtils.isEmpty(paramString))
     {
-      this.qYc.setVisibility(8);
+      this.iWb.setVisibility(8);
+      AppMethodBeat.o(91582);
       return;
     }
-    this.qYc.setVisibility(0);
-    com.tencent.mm.as.a.a.OT().a(paramString, this.qYc, this.qXu);
+    this.iWb.setVisibility(0);
+    com.tencent.mm.at.a.a.ahM().a(paramString, this.iWb, this.uMJ);
+    AppMethodBeat.o(91582);
   }
   
   public void setTitle(String paramString)
   {
-    this.qYd.setText(paramString);
+    AppMethodBeat.i(91581);
+    this.uNq.setText(paramString);
+    AppMethodBeat.o(91581);
   }
 }
 

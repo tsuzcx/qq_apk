@@ -1,20 +1,37 @@
 package com.tencent.mm.d.a;
 
-import com.eclipsesource.v8.JavaVoidCallback;
-import com.eclipsesource.v8.V8Array;
-import com.eclipsesource.v8.V8Object;
+import com.eclipsesource.v8.MultiContextNodeJS;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$2
-  implements JavaVoidCallback
+  implements j.a
 {
-  i$2(i parami, int paramInt) {}
+  i$2(i parami) {}
   
-  public final void invoke(V8Object paramV8Object, V8Array paramV8Array)
+  public final boolean Cp()
   {
-    if ((paramV8Array.length() <= 0) || (paramV8Array.getType(0) != 4)) {
-      return;
+    AppMethodBeat.i(113813);
+    boolean bool = i.a(this.cbs).handleMessage();
+    AppMethodBeat.o(113813);
+    return bool;
+  }
+  
+  public final void closeUVLoop()
+  {
+    AppMethodBeat.i(113815);
+    if (i.a(this.cbs) != null) {
+      i.a(this.cbs).closeUVLoop();
     }
-    this.bzL.bzH.i(this.val$id, paramV8Array.getString(0));
+    AppMethodBeat.o(113815);
+  }
+  
+  public final void wakeUpUVLoop()
+  {
+    AppMethodBeat.i(113814);
+    if (i.a(this.cbs) != null) {
+      i.a(this.cbs).wakeUpUVLoop();
+    }
+    AppMethodBeat.o(113814);
   }
 }
 

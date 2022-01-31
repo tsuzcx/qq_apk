@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetLineDashActionArg;
-import com.tencent.mm.plugin.appbrand.u.h;
+import com.tencent.mm.plugin.appbrand.s.g;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -15,51 +16,69 @@ public final class y
 {
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float[] paramArrayOfFloat, float paramFloat)
   {
+    AppMethodBeat.i(103264);
     if ((paramArrayOfFloat != null) && (paramFloat != 1.4E-45F)) {
-      paramd.fLp.setPathEffect(new DashPathEffect(paramArrayOfFloat, paramFloat));
+      paramd.heB.setPathEffect(new DashPathEffect(paramArrayOfFloat, paramFloat));
     }
+    AppMethodBeat.o(103264);
     return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
+    AppMethodBeat.i(103265);
     paramCanvas = (SetLineDashActionArg)paramDrawActionArg;
-    if (paramCanvas == null) {
+    if (paramCanvas == null)
+    {
+      AppMethodBeat.o(103265);
       return false;
     }
-    return a(paramd, paramCanvas.fLV, paramCanvas.fLW);
+    boolean bool = a(paramd, paramCanvas.hff, paramCanvas.hfg);
+    AppMethodBeat.o(103265);
+    return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    if (paramJSONArray.length() < 2) {}
-    for (;;)
+    AppMethodBeat.i(103263);
+    if (paramJSONArray.length() < 2)
     {
+      AppMethodBeat.o(103263);
       return false;
-      try
+    }
+    try
+    {
+      paramCanvas = paramJSONArray.getJSONArray(0);
+      if (paramCanvas == null)
       {
-        paramCanvas = paramJSONArray.getJSONArray(0);
-        if (paramCanvas != null)
-        {
-          float[] arrayOfFloat = new float[paramCanvas.length()];
-          int i = 0;
-          while (i < arrayOfFloat.length)
-          {
-            arrayOfFloat[i] = h.d(paramCanvas, i);
-            i += 1;
-          }
-          float f = h.d(paramJSONArray, 1);
-          return a(paramd, arrayOfFloat, f);
-        }
+        AppMethodBeat.o(103263);
+        return false;
       }
-      catch (JSONException paramd) {}
+      float[] arrayOfFloat = new float[paramCanvas.length()];
+      int i = 0;
+      while (i < arrayOfFloat.length)
+      {
+        arrayOfFloat[i] = g.d(paramCanvas, i);
+        i += 1;
+      }
+      float f = g.d(paramJSONArray, 1);
+      boolean bool = a(paramd, arrayOfFloat, f);
+      AppMethodBeat.o(103263);
+      return bool;
+    }
+    catch (JSONException paramd)
+    {
+      AppMethodBeat.o(103263);
     }
     return false;
   }
   
-  public final BaseDrawActionArg adE()
+  public final BaseDrawActionArg axW()
   {
-    return new SetLineDashActionArg();
+    AppMethodBeat.i(103262);
+    SetLineDashActionArg localSetLineDashActionArg = new SetLineDashActionArg();
+    AppMethodBeat.o(103262);
+    return localSetLineDashActionArg;
   }
   
   public final String getMethod()
@@ -69,7 +88,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.y
  * JD-Core Version:    0.7.0.1
  */

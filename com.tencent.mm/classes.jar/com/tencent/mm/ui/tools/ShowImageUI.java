@@ -1,133 +1,52 @@
 package com.tencent.mm.ui.tools;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Gallery.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.platformtools.x;
-import com.tencent.mm.plugin.gif.MMAnimateView;
-import com.tencent.mm.plugin.gif.b;
-import com.tencent.mm.plugin.gif.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.MultiTouchImageView;
 
 public class ShowImageUI
   extends MMActivity
 {
-  private MMGestureGallery itv;
-  private boolean weU;
-  private a weV;
-  private boolean weW;
+  private boolean AxK;
+  private ShowImageUI.a AxL;
+  private boolean AxM;
+  private MMGestureGallery kuC;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.show_image_ui;
+    return 2130970736;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(34996);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("key_title");
-    if (!bk.bl(paramBundle)) {
+    if (!bo.isNullOrNil(paramBundle)) {
       setMMTitle(paramBundle);
     }
-    this.weU = getIntent().getBooleanExtra("key_favorite", false);
-    this.weW = getIntent().getBooleanExtra("show_menu", true);
-    this.itv = ((MMGestureGallery)findViewById(R.h.gallery));
-    this.itv.setVerticalFadingEdgeEnabled(false);
-    this.itv.setHorizontalFadingEdgeEnabled(false);
-    this.weV = new a((byte)0);
-    this.weV.imagePath = getIntent().getStringExtra("key_image_path");
-    this.itv.setAdapter(this.weV);
+    this.AxK = getIntent().getBooleanExtra("key_favorite", false);
+    this.AxM = getIntent().getBooleanExtra("show_menu", true);
+    this.kuC = ((MMGestureGallery)findViewById(2131822137));
+    this.kuC.setVerticalFadingEdgeEnabled(false);
+    this.kuC.setHorizontalFadingEdgeEnabled(false);
+    this.AxL = new ShowImageUI.a(this, (byte)0);
+    this.AxL.imagePath = getIntent().getStringExtra("key_image_path");
+    this.kuC.setAdapter(this.AxL);
     setBackBtn(new ShowImageUI.1(this));
-    if (this.weW) {
-      addIconOptionMenu(0, R.k.ofm_send_icon, new ShowImageUI.2(this));
+    if (this.AxM) {
+      addIconOptionMenu(0, 2131231823, new ShowImageUI.2(this));
     }
+    AppMethodBeat.o(34996);
   }
   
-  private final class a
-    extends BaseAdapter
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    String imagePath;
-    
-    private a() {}
-    
-    public final int getCount()
-    {
-      return 1;
-    }
-    
-    public final Object getItem(int paramInt)
-    {
-      return null;
-    }
-    
-    public final long getItemId(int paramInt)
-    {
-      return paramInt;
-    }
-    
-    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-    {
-      if (o.Za(this.imagePath))
-      {
-        localObject = paramViewGroup.getContext();
-        paramViewGroup = this.imagePath;
-        new f(paramViewGroup);
-        if ((paramView == null) || (!(paramView instanceof MMAnimateView))) {}
-        for (paramView = new MMAnimateView((Context)localObject);; paramView = (MMAnimateView)paramView)
-        {
-          paramView.du(paramViewGroup, paramViewGroup);
-          paramView.a(paramViewGroup, new ShowImageUI.a.1(this, paramView));
-          if ((paramView.getDrawable() != null) && ((paramView.getDrawable() instanceof b))) {
-            ((b)paramView.getDrawable()).stop();
-          }
-          paramView.start();
-          return paramView;
-        }
-      }
-      Object localObject = x.pg(this.imagePath);
-      if (localObject == null)
-      {
-        y.w("MicroMsg.ShowImageUI", "get image fail");
-        if (paramView != null)
-        {
-          localObject = paramView;
-          if (!(paramView instanceof MultiTouchImageView)) {}
-        }
-        else
-        {
-          localObject = View.inflate(paramViewGroup.getContext(), R.i.show_image_ui_item, null);
-        }
-        ((ImageView)((View)localObject).findViewById(R.h.image_iv)).setImageResource(R.k.download_image_icon);
-        ((View)localObject).setLayoutParams(new Gallery.LayoutParams(-1, -1));
-        return localObject;
-      }
-      paramViewGroup = paramViewGroup.getContext();
-      if ((paramView == null) || (!(paramView instanceof MultiTouchImageView))) {
-        paramView = new MultiTouchImageView(paramViewGroup, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-      }
-      for (;;)
-      {
-        paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
-        paramView.setImageBitmap((Bitmap)localObject);
-        paramView.setMaxZoomDoubleTab(true);
-        return paramView;
-        paramView = (MultiTouchImageView)paramView;
-        paramView.fs(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-      }
-    }
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

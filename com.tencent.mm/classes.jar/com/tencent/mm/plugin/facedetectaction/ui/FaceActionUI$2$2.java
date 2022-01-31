@@ -6,7 +6,8 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import com.tencent.mm.plugin.facedetectlight.ui.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.facedetectlight.ui.b;
 
 final class FaceActionUI$2$2
   implements Runnable
@@ -15,13 +16,14 @@ final class FaceActionUI$2$2
   
   public final void run()
   {
-    FaceActionUI localFaceActionUI = this.jWX.jWU;
-    if (localFaceActionUI.jWP != null) {
-      localFaceActionUI.jWP.stopPreview();
+    AppMethodBeat.i(711);
+    FaceActionUI localFaceActionUI = this.mro.mrl;
+    if (localFaceActionUI.mrg != null) {
+      localFaceActionUI.mrg.stopPreview();
     }
-    localFaceActionUI.jWD.setVisibility(8);
-    localFaceActionUI.jRX.setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, localFaceActionUI.jSa.getHeight());
+    localFaceActionUI.mqU.setVisibility(8);
+    localFaceActionUI.mmt.setVisibility(0);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, localFaceActionUI.mmw.getHeight());
     localTranslateAnimation.setDuration(2000L);
     localTranslateAnimation.setRepeatMode(2);
     localTranslateAnimation.setRepeatCount(-1);
@@ -34,12 +36,13 @@ final class FaceActionUI$2$2
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setAnimationListener(new FaceActionUI.7(localFaceActionUI));
     localAnimationSet.setRepeatCount(-1);
-    localFaceActionUI.jSb.startAnimation(localAnimationSet);
+    localFaceActionUI.mmx.startAnimation(localAnimationSet);
+    AppMethodBeat.o(711);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.ui.FaceActionUI.2.2
  * JD-Core Version:    0.7.0.1
  */

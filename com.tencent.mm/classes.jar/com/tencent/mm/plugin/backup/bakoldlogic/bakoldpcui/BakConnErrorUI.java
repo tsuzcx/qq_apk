@@ -1,57 +1,86 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BakConnErrorUI
   extends MMWizardActivity
 {
-  private int hOQ;
+  private int jIs;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.bak_topc_error;
+    return 2130968812;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(R.l.bak_chat_to_pc_title);
-    setBackBtn(new BakConnErrorUI.1(this));
+    AppMethodBeat.i(17917);
+    setMMTitle(2131297432);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(17915);
+        BakConnErrorUI.a(BakConnErrorUI.this);
+        AppMethodBeat.o(17915);
+        return true;
+      }
+    });
+    AppMethodBeat.o(17917);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(17916);
     super.onCreate(paramBundle);
-    if (getIntent().getExtras().getBoolean("WizardRootKillSelf", false)) {
+    if (getIntent().getExtras().getBoolean("WizardRootKillSelf", false))
+    {
+      AppMethodBeat.o(17916);
       return;
     }
-    this.hOQ = getIntent().getIntExtra("cmd", -1);
-    y.i("MicroMsg.BakFinishUI", "BakConnErrorUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.hOQ) });
+    this.jIs = getIntent().getIntExtra("cmd", -1);
+    ab.i("MicroMsg.BakFinishUI", "BakConnErrorUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.jIs) });
     initView();
-    a.avr().avs().hOi = -1;
+    a.aUU().aUV().jHK = -1;
+    AppMethodBeat.o(17916);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(17918);
     super.onDestroy();
-    a.avr().avs().hOa = null;
-    y.i("MicroMsg.BakFinishUI", "BakConnErrorUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.hOQ) });
+    a.aUU().aUV().jHC = null;
+    ab.i("MicroMsg.BakFinishUI", "BakConnErrorUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.jIs) });
+    AppMethodBeat.o(17918);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(17919);
     if (paramInt == 4)
     {
-      FW(1);
+      Oi(1);
+      AppMethodBeat.o(17919);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(17919);
+    return bool;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

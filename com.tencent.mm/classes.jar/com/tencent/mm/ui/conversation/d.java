@@ -2,20 +2,20 @@ package com.tencent.mm.ui.conversation;
 
 import android.app.Activity;
 import android.widget.ListView;
-import com.tencent.mm.h.a.jm;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.h.c.as;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.s;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.t;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.HomeUI;
 import com.tencent.mm.ui.LauncherUI;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.al;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.ui.MainTabUI;
+import com.tencent.mm.ui.ag;
+import com.tencent.mm.ui.x;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,99 +24,120 @@ import java.util.Set;
 
 public final class d
 {
+  ListView AgN;
+  HashMap<String, Integer> Aho;
+  int Ahp;
+  int Ahq;
+  h Ahr;
+  com.tencent.mm.sdk.b.c Ahs;
+  com.tencent.mm.sdk.b.c Aht;
+  com.tencent.mm.sdk.b.c Ahu;
   Activity activity;
-  HashMap<String, Integer> vPD = new HashMap();
-  int vPE = -1;
-  public int vPF = -1;
-  h vPG;
-  com.tencent.mm.sdk.b.c vPH = new d.1(this);
-  com.tencent.mm.sdk.b.c vPI = new d.2(this);
-  com.tencent.mm.sdk.b.c vPJ = new com.tencent.mm.sdk.b.c()
-  {
-    private final long INTERVAL = 3000L;
-    long vPM = 0L;
-    int vPN = -1;
-  };
-  ListView vPc;
   
-  public final void ad(Activity paramActivity)
+  public d()
   {
-    this.vPF = ((LauncherUI)paramActivity).uKP.uKi.czP();
+    AppMethodBeat.i(34181);
+    this.Aho = new HashMap();
+    this.Ahp = -1;
+    this.Ahq = -1;
+    this.Ahs = new d.1(this);
+    this.Aht = new d.2(this);
+    this.Ahu = new d.3(this);
+    AppMethodBeat.o(34181);
   }
   
-  final ak adX(String paramString)
+  public final void aF(Activity paramActivity)
   {
-    if (this.vPG != null) {
-      return (ak)this.vPG.bZ(paramString);
+    AppMethodBeat.i(34182);
+    this.Ahq = ((LauncherUI)paramActivity).yYT.getMainTabUI().dCJ();
+    AppMethodBeat.o(34182);
+  }
+  
+  final ak auF(String paramString)
+  {
+    AppMethodBeat.i(34184);
+    if (this.Ahr != null)
+    {
+      paramString = (ak)this.Ahr.cE(paramString);
+      AppMethodBeat.o(34184);
+      return paramString;
     }
+    AppMethodBeat.o(34184);
     return null;
   }
   
-  public final void cHV()
+  public final void dMp()
   {
-    if (this.activity == null) {
+    AppMethodBeat.i(34183);
+    if (this.activity == null)
+    {
+      AppMethodBeat.o(34183);
       return;
     }
     long l = System.currentTimeMillis();
     Object localObject1 = (LauncherUI)this.activity;
-    y.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  resetStatus %d", new Object[] { Integer.valueOf(this.vPE) });
-    switch (this.vPE)
+    ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  resetStatus %d", new Object[] { Integer.valueOf(this.Ahp) });
+    switch (this.Ahp)
     {
-    case 1: 
     default: 
-      this.vPF = ((LauncherUI)localObject1).uKP.uKi.czP();
-      y.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount UNREAD_RESET_ALL totalUnReadCount %d, usetime %d,", new Object[] { Integer.valueOf(this.vPF), Long.valueOf(System.currentTimeMillis() - l) });
+      this.Ahq = ((LauncherUI)localObject1).yYT.getMainTabUI().dCJ();
+      ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount UNREAD_RESET_ALL totalUnReadCount %d, usetime %d,", new Object[] { Integer.valueOf(this.Ahq), Long.valueOf(System.currentTimeMillis() - l) });
+      AppMethodBeat.o(34183);
+      return;
+    case 2: 
+      Iterator localIterator = this.Aho.entrySet().iterator();
+      int i = 0;
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (Map.Entry)localIterator.next();
+        String str = (String)((Map.Entry)localObject2).getKey();
+        j = ((Integer)((Map.Entry)localObject2).getValue()).intValue();
+        ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  username %s, preunread %d", new Object[] { str, Integer.valueOf(j) });
+        localObject2 = auF(str);
+        if ((localObject2 == null) || (ag.Nn().contains(str)))
+        {
+          j = 0 - j;
+          ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  cov == null username %s, change %d", new Object[] { str, Integer.valueOf(j) });
+          label273:
+          if ((j != 0) && (this.Ahr.auG(str)))
+          {
+            ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  username %s isWithoutItemCache", new Object[] { str });
+            aw.aaz();
+            localObject2 = com.tencent.mm.model.c.YA().arw(str);
+            if (localObject2 == null) {
+              continue;
+            }
+            if (!t.lA(str)) {
+              break label415;
+            }
+            if (((aq)localObject2).dqK == 0) {
+              continue;
+            }
+          }
+        }
+        for (;;)
+        {
+          i += j;
+          ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  real change usename %s, change %d, totalchange %d", new Object[] { str, Integer.valueOf(j), Integer.valueOf(i) });
+          break;
+          j = ((au)localObject2).field_unReadCount - j + 0;
+          ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  cov != null username %s, change %d", new Object[] { str, Integer.valueOf(j) });
+          break label273;
+          label415:
+          if (((ad)localObject2).DP()) {
+            break;
+          }
+        }
+      }
+      this.Ahq += i;
+      localObject1 = ((LauncherUI)localObject1).yYT.getMainTabUI();
+      int j = this.Ahq;
+      ((MainTabUI)localObject1).zcx.Oo(j);
+      ab.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount UNREAD_RESET_PART totalUnReadCount %d, change %d, usetime %d,", new Object[] { Integer.valueOf(this.Ahq), Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
+      AppMethodBeat.o(34183);
       return;
     }
-    Iterator localIterator = this.vPD.entrySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      Object localObject2 = (Map.Entry)localIterator.next();
-      String str = (String)((Map.Entry)localObject2).getKey();
-      j = ((Integer)((Map.Entry)localObject2).getValue()).intValue();
-      y.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  username %s, preunread %d", new Object[] { str, Integer.valueOf(j) });
-      localObject2 = adX(str);
-      if ((localObject2 == null) || (al.cAh().contains(str)))
-      {
-        j = 0 - j;
-        y.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  cov == null username %s, change %d", new Object[] { str, Integer.valueOf(j) });
-        label256:
-        if ((j != 0) && (this.vPG.adY(str)))
-        {
-          y.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  username %s isWithoutItemCache", new Object[] { str });
-          au.Hx();
-          localObject2 = com.tencent.mm.model.c.Fw().abl(str);
-          if (localObject2 == null) {
-            continue;
-          }
-          if (!s.fn(str)) {
-            break label398;
-          }
-          if (((ao)localObject2).cCy == 0) {
-            continue;
-          }
-        }
-      }
-      for (;;)
-      {
-        i += j;
-        y.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  real change usename %s, change %d, totalchange %d", new Object[] { str, Integer.valueOf(j), Integer.valueOf(i) });
-        break;
-        j = ((as)localObject2).field_unReadCount - j + 0;
-        y.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount  cov != null username %s, change %d", new Object[] { str, Integer.valueOf(j) });
-        break label256;
-        label398:
-        if (((ad)localObject2).Bj()) {
-          break;
-        }
-      }
-    }
-    this.vPF += i;
-    localObject1 = ((LauncherUI)localObject1).uKP.uKi;
-    int j = this.vPF;
-    ((z)localObject1).uOE.Ga(j);
-    y.i("MicroMsg.ConvUnreadHelper", "unreadcheck postSetLauncherUIUnReadCount UNREAD_RESET_PART totalUnReadCount %d, change %d, usetime %d,", new Object[] { Integer.valueOf(this.vPF), Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(34183);
   }
 }
 

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.qmessage.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class b$4
   implements DialogInterface.OnClickListener
@@ -11,7 +12,9 @@ final class b$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    d.a(this.ncK.context, "account", "com.tencent.mm.plugin.account.bind.ui.BindQQUI", null);
+    AppMethodBeat.i(24106);
+    d.a(this.pIc.context, "account", "com.tencent.mm.plugin.account.bind.ui.BindQQUI", null);
+    AppMethodBeat.o(24106);
   }
 }
 

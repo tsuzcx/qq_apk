@@ -5,24 +5,24 @@ import java.io.Serializable;
 public final class a
   implements Serializable
 {
-  public boolean bKQ;
-  public long gYL;
-  public Throwable wKQ;
-  public String wWa;
-  public String wWb;
+  public Throwable Biq;
+  public String BsF;
+  public String BsG;
+  public boolean csk;
+  public long iHc;
   
   public final String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("\nPatchResult: \n");
-    localStringBuffer.append("isSuccess:" + this.bKQ + "\n");
-    localStringBuffer.append("rawPatchFilePath:" + this.wWa + "\n");
-    localStringBuffer.append("costTime:" + this.gYL + "\n");
-    if (this.wWb != null) {
-      localStringBuffer.append("patchVersion:" + this.wWb + "\n");
+    localStringBuffer.append("isSuccess:" + this.csk + "\n");
+    localStringBuffer.append("rawPatchFilePath:" + this.BsF + "\n");
+    localStringBuffer.append("costTime:" + this.iHc + "\n");
+    if (this.BsG != null) {
+      localStringBuffer.append("patchVersion:" + this.BsG + "\n");
     }
-    if (this.wKQ != null) {
-      localStringBuffer.append("Throwable:" + this.wKQ.getMessage() + "\n");
+    if (this.Biq != null) {
+      localStringBuffer.append("Throwable:" + this.Biq.getMessage() + "\n");
     }
     return localStringBuffer.toString();
   }

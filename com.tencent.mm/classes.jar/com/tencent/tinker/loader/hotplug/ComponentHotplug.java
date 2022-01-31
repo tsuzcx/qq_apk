@@ -10,11 +10,11 @@ import java.lang.reflect.Field;
 
 public final class ComponentHotplug
 {
-  private static volatile boolean wWi = false;
-  private static ServiceBinderInterceptor wXK;
-  private static ServiceBinderInterceptor wXL;
-  private static HandlerMessageInterceptor wXM;
-  private static TinkerHackInstrumentation wXN;
+  private static volatile boolean BsL = false;
+  private static ServiceBinderInterceptor Buo;
+  private static ServiceBinderInterceptor Bup;
+  private static HandlerMessageInterceptor Buq;
+  private static TinkerHackInstrumentation Bur;
   
   private ComponentHotplug()
   {
@@ -27,7 +27,7 @@ public final class ComponentHotplug
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 17	com/tencent/tinker/loader/hotplug/ComponentHotplug:wWi	Z
+    //   3: getstatic 17	com/tencent/tinker/loader/hotplug/ComponentHotplug:BsL	Z
     //   6: istore_2
     //   7: iload_2
     //   8: ifne +104 -> 112
@@ -44,7 +44,7 @@ public final class ComponentHotplug
     //   30: aload_0
     //   31: invokespecial 42	com/tencent/tinker/loader/hotplug/handler/AMSInterceptHandler:<init>	(Landroid/content/Context;)V
     //   34: invokespecial 45	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:<init>	(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor$BinderInvocationHandler;)V
-    //   37: putstatic 47	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXK	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
+    //   37: putstatic 47	com/tencent/tinker/loader/hotplug/ComponentHotplug:Buo	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
     //   40: new 35	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor
     //   43: dup
     //   44: aload_0
@@ -53,18 +53,18 @@ public final class ComponentHotplug
     //   50: dup
     //   51: invokespecial 52	com/tencent/tinker/loader/hotplug/handler/PMSInterceptHandler:<init>	()V
     //   54: invokespecial 45	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:<init>	(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor$BinderInvocationHandler;)V
-    //   57: putstatic 54	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXL	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
-    //   60: getstatic 47	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXK	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
-    //   63: invokevirtual 57	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:cQN	()V
-    //   66: getstatic 54	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXL	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
-    //   69: invokevirtual 57	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:cQN	()V
+    //   57: putstatic 54	com/tencent/tinker/loader/hotplug/ComponentHotplug:Bup	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
+    //   60: getstatic 47	com/tencent/tinker/loader/hotplug/ComponentHotplug:Buo	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
+    //   63: invokevirtual 57	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:dWC	()V
+    //   66: getstatic 54	com/tencent/tinker/loader/hotplug/ComponentHotplug:Bup	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
+    //   69: invokevirtual 57	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:dWC	()V
     //   72: getstatic 63	android/os/Build$VERSION:SDK_INT	I
     //   75: bipush 27
     //   77: if_icmpge +39 -> 116
     //   80: new 65	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor
     //   83: dup
     //   84: aload_0
-    //   85: invokestatic 69	com/tencent/tinker/loader/hotplug/ComponentHotplug:hV	(Landroid/content/Context;)Landroid/os/Handler;
+    //   85: invokestatic 69	com/tencent/tinker/loader/hotplug/ComponentHotplug:jw	(Landroid/content/Context;)Landroid/os/Handler;
     //   88: new 71	com/tencent/tinker/loader/hotplug/handler/MHMessageHandler
     //   91: dup
     //   92: aload_0
@@ -72,24 +72,24 @@ public final class ComponentHotplug
     //   96: invokespecial 75	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:<init>	(Landroid/os/Handler;Lcom/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor$MessageHandler;)V
     //   99: astore_0
     //   100: aload_0
-    //   101: putstatic 77	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXM	Lcom/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor;
+    //   101: putstatic 77	com/tencent/tinker/loader/hotplug/ComponentHotplug:Buq	Lcom/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor;
     //   104: aload_0
-    //   105: invokevirtual 78	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:cQN	()V
+    //   105: invokevirtual 78	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:dWC	()V
     //   108: iconst_1
-    //   109: putstatic 17	com/tencent/tinker/loader/hotplug/ComponentHotplug:wWi	Z
+    //   109: putstatic 17	com/tencent/tinker/loader/hotplug/ComponentHotplug:BsL	Z
     //   112: ldc 2
     //   114: monitorexit
     //   115: return
     //   116: aload_0
-    //   117: invokestatic 84	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:hW	(Landroid/content/Context;)Lcom/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation;
+    //   117: invokestatic 84	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:jx	(Landroid/content/Context;)Lcom/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation;
     //   120: astore_0
     //   121: aload_0
-    //   122: putstatic 86	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXN	Lcom/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation;
+    //   122: putstatic 86	com/tencent/tinker/loader/hotplug/ComponentHotplug:Bur	Lcom/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation;
     //   125: aload_0
-    //   126: invokevirtual 87	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:cQN	()V
+    //   126: invokevirtual 87	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:dWC	()V
     //   129: goto -21 -> 108
     //   132: astore_0
-    //   133: invokestatic 90	com/tencent/tinker/loader/hotplug/ComponentHotplug:ra	()V
+    //   133: invokestatic 90	com/tencent/tinker/loader/hotplug/ComponentHotplug:uninstall	()V
     //   136: new 92	com/tencent/tinker/loader/hotplug/UnsupportedEnvironmentException
     //   139: dup
     //   140: aload_0
@@ -118,32 +118,32 @@ public final class ComponentHotplug
   }
   
   /* Error */
-  public static void cQL()
+  public static void dWA()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 17	com/tencent/tinker/loader/hotplug/ComponentHotplug:wWi	Z
+    //   3: getstatic 17	com/tencent/tinker/loader/hotplug/ComponentHotplug:BsL	Z
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +29 -> 37
-    //   11: getstatic 47	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXK	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
-    //   14: invokevirtual 57	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:cQN	()V
-    //   17: getstatic 54	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXL	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
-    //   20: invokevirtual 57	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:cQN	()V
+    //   11: getstatic 47	com/tencent/tinker/loader/hotplug/ComponentHotplug:Buo	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
+    //   14: invokevirtual 57	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:dWC	()V
+    //   17: getstatic 54	com/tencent/tinker/loader/hotplug/ComponentHotplug:Bup	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
+    //   20: invokevirtual 57	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:dWC	()V
     //   23: getstatic 63	android/os/Build$VERSION:SDK_INT	I
     //   26: bipush 27
     //   28: if_icmpge +13 -> 41
-    //   31: getstatic 77	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXM	Lcom/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor;
-    //   34: invokevirtual 78	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:cQN	()V
+    //   31: getstatic 77	com/tencent/tinker/loader/hotplug/ComponentHotplug:Buq	Lcom/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor;
+    //   34: invokevirtual 78	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:dWC	()V
     //   37: ldc 2
     //   39: monitorexit
     //   40: return
-    //   41: getstatic 86	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXN	Lcom/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation;
-    //   44: invokevirtual 87	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:cQN	()V
+    //   41: getstatic 86	com/tencent/tinker/loader/hotplug/ComponentHotplug:Bur	Lcom/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation;
+    //   44: invokevirtual 87	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:dWC	()V
     //   47: goto -10 -> 37
     //   50: astore_1
-    //   51: invokestatic 90	com/tencent/tinker/loader/hotplug/ComponentHotplug:ra	()V
+    //   51: invokestatic 90	com/tencent/tinker/loader/hotplug/ComponentHotplug:uninstall	()V
     //   54: new 92	com/tencent/tinker/loader/hotplug/UnsupportedEnvironmentException
     //   57: dup
     //   58: aload_1
@@ -169,9 +169,9 @@ public final class ComponentHotplug
     //   51	63	63	finally
   }
   
-  private static Handler hV(Context paramContext)
+  private static Handler jw(Context paramContext)
   {
-    paramContext = ShareReflectUtil.c(paramContext, null);
+    paramContext = ShareReflectUtil.d(paramContext, null);
     if (paramContext == null) {
       throw new IllegalStateException("failed to fetch instance of ActivityThread.");
     }
@@ -187,37 +187,37 @@ public final class ComponentHotplug
   }
   
   /* Error */
-  private static void ra()
+  private static void uninstall()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 17	com/tencent/tinker/loader/hotplug/ComponentHotplug:wWi	Z
+    //   3: getstatic 17	com/tencent/tinker/loader/hotplug/ComponentHotplug:BsL	Z
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +33 -> 41
-    //   11: getstatic 47	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXK	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
-    //   14: invokevirtual 125	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:ra	()V
-    //   17: getstatic 54	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXL	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
-    //   20: invokevirtual 125	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:ra	()V
+    //   11: getstatic 47	com/tencent/tinker/loader/hotplug/ComponentHotplug:Buo	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
+    //   14: invokevirtual 125	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:uninstall	()V
+    //   17: getstatic 54	com/tencent/tinker/loader/hotplug/ComponentHotplug:Bup	Lcom/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor;
+    //   20: invokevirtual 125	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:uninstall	()V
     //   23: getstatic 63	android/os/Build$VERSION:SDK_INT	I
     //   26: bipush 27
     //   28: if_icmpge +17 -> 45
-    //   31: getstatic 77	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXM	Lcom/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor;
-    //   34: invokevirtual 126	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:ra	()V
+    //   31: getstatic 77	com/tencent/tinker/loader/hotplug/ComponentHotplug:Buq	Lcom/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor;
+    //   34: invokevirtual 126	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:uninstall	()V
     //   37: iconst_0
-    //   38: putstatic 17	com/tencent/tinker/loader/hotplug/ComponentHotplug:wWi	Z
+    //   38: putstatic 17	com/tencent/tinker/loader/hotplug/ComponentHotplug:BsL	Z
     //   41: ldc 2
     //   43: monitorexit
     //   44: return
-    //   45: getstatic 86	com/tencent/tinker/loader/hotplug/ComponentHotplug:wXN	Lcom/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation;
+    //   45: getstatic 86	com/tencent/tinker/loader/hotplug/ComponentHotplug:Bur	Lcom/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation;
     //   48: astore_1
     //   49: aload_1
-    //   50: getfield 130	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:wYj	Ljava/lang/reflect/Field;
+    //   50: getfield 130	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:BuN	Ljava/lang/reflect/Field;
     //   53: aload_1
-    //   54: getfield 134	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:wYi	Ljava/lang/Object;
+    //   54: getfield 134	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:BuM	Ljava/lang/Object;
     //   57: aload_1
-    //   58: getfield 138	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:wYh	Landroid/app/Instrumentation;
+    //   58: getfield 138	com/tencent/tinker/loader/hotplug/interceptor/TinkerHackInstrumentation:BuL	Landroid/app/Instrumentation;
     //   61: invokevirtual 142	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   64: goto -27 -> 37
     //   67: astore_1

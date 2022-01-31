@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.luckymoney.f2f.ui;
 
 abstract interface ShuffleView$b
 {
-  public abstract void dc(int paramInt1, int paramInt2);
+  public abstract void eA(int paramInt1, int paramInt2);
   
-  public abstract void dd(int paramInt1, int paramInt2);
+  public abstract void eB(int paramInt1, int paramInt2);
   
-  public abstract void th(int paramInt);
+  public abstract void yj(int paramInt);
 }
 
 

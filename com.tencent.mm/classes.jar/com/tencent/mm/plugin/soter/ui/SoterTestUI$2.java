@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.soter.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.core.a;
 import com.tencent.soter.core.c.f;
 
@@ -13,12 +14,14 @@ final class SoterTestUI$2
   
   public final void onClick(View paramView)
   {
-    paramView = a.cPi();
-    TextView localTextView = SoterTestUI.a(this.psO);
+    AppMethodBeat.i(59380);
+    paramView = a.dVd();
+    TextView localTextView = SoterTestUI.a(this.soU);
     if (paramView.isSuccess()) {}
     for (paramView = "passed";; paramView = "not support")
     {
       localTextView.setText(paramView);
+      AppMethodBeat.o(59380);
       return;
     }
   }

@@ -13,174 +13,196 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
-import com.tencent.mm.R.a;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.AlbumItem;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
-import com.tencent.mm.plugin.gallery.model.c;
 import com.tencent.mm.plugin.gallery.model.e;
-import com.tencent.mm.plugin.gallery.model.g.a;
+import com.tencent.mm.plugin.gallery.model.g;
+import com.tencent.mm.plugin.gallery.model.i.a;
 import com.tencent.mm.plugin.gallery.model.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 public class ImageFolderMgrView
   extends LinearLayout
-  implements AdapterView.OnItemClickListener, g.a
+  implements AdapterView.OnItemClickListener, i.a
 {
-  boolean Yq = false;
-  private ImageFolderMgrView.a kJi = null;
-  FrameLayout kJj;
-  private View kJk;
-  private ListView kJl;
-  private b kJm;
-  boolean kJn = false;
+  boolean Zb;
+  private a nfG;
+  FrameLayout nfH;
+  private View nfI;
+  private ListView nfJ;
+  private b nfK;
+  boolean nfL;
   
   public ImageFolderMgrView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(21477);
+    this.nfG = null;
+    this.Zb = false;
+    this.nfL = false;
     setOrientation(1);
-    this.kJj = new FrameLayout(getContext());
+    this.nfH = new FrameLayout(getContext());
     paramContext = new LinearLayout.LayoutParams(-1, -1);
-    this.kJj.setVisibility(8);
-    addView(this.kJj, paramContext);
-    this.kJk = new View(getContext());
-    this.kJk.setBackgroundColor(-872415232);
-    this.kJk.setOnClickListener(new ImageFolderMgrView.3(this));
+    this.nfH.setVisibility(8);
+    addView(this.nfH, paramContext);
+    this.nfI = new View(getContext());
+    this.nfI.setBackgroundColor(-872415232);
+    this.nfI.setOnClickListener(new ImageFolderMgrView.3(this));
     paramContext = new FrameLayout.LayoutParams(-1, -1);
-    this.kJj.addView(this.kJk, paramContext);
-    this.kJl = new ListView(getContext());
-    this.kJl.setCacheColorHint(0);
-    this.kJl.setBackgroundResource(R.e.navpage);
-    this.kJl.setSelector(R.g.mm_trans);
-    this.kJl.setOnItemClickListener(this);
-    int i = getResources().getDimensionPixelSize(R.f.NormalPadding);
-    this.kJl.setPadding(i, i / 3, i, i * 2 / 3);
+    this.nfH.addView(this.nfI, paramContext);
+    this.nfJ = new ListView(getContext());
+    this.nfJ.setCacheColorHint(0);
+    this.nfJ.setBackgroundResource(2131690310);
+    this.nfJ.setSelector(2130839676);
+    this.nfJ.setOnItemClickListener(this);
+    int i = getResources().getDimensionPixelSize(2131427808);
+    this.nfJ.setPadding(i, i / 3, i, i * 2 / 3);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
-    paramContext.topMargin = getResources().getDimensionPixelSize(R.f.DefaultActionbarHeightPort);
+    paramContext.topMargin = getResources().getDimensionPixelSize(2131427559);
     paramContext.gravity = 80;
-    this.kJj.addView(this.kJl, paramContext);
-    this.kJm = new b(getContext(), c.aXb().aXF());
-    this.kJl.setAdapter(this.kJm);
+    this.nfH.addView(this.nfJ, paramContext);
+    this.nfK = new b(getContext(), e.bDQ().ndz);
+    this.nfJ.setAdapter(this.nfK);
+    AppMethodBeat.o(21477);
   }
   
-  private void gq(boolean paramBoolean)
+  private void bEw()
   {
-    if (this.Yq == paramBoolean)
-    {
-      y.d("MicroMsg.ImageFolderMgrView", "want to expand, but same status, expanded %B", new Object[] { Boolean.valueOf(this.Yq) });
-      return;
-    }
-    if (this.kJn)
-    {
-      y.d("MicroMsg.ImageFolderMgrView", "want to expand[%B], but now in animation", new Object[] { Boolean.valueOf(paramBoolean) });
-      return;
-    }
-    if (this.Yq)
-    {
-      this.kJn = true;
-      localAnimation = AnimationUtils.loadAnimation(getContext(), R.a.push_down_out);
-      localAnimation.setAnimationListener(new ImageFolderMgrView.1(this));
-      this.kJl.startAnimation(localAnimation);
-      localAnimation = AnimationUtils.loadAnimation(getContext(), R.a.fast_faded_out);
-      this.kJk.startAnimation(localAnimation);
-      return;
-    }
-    this.kJn = true;
-    this.kJj.setVisibility(0);
-    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), R.a.fast_faded_in);
-    this.kJk.startAnimation(localAnimation);
-    localAnimation = AnimationUtils.loadAnimation(getContext(), R.a.push_up_in);
+    AppMethodBeat.i(21480);
+    this.nfL = true;
+    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2131034228);
+    localAnimation.setAnimationListener(new ImageFolderMgrView.1(this));
+    this.nfJ.startAnimation(localAnimation);
+    localAnimation = AnimationUtils.loadAnimation(getContext(), 2131034182);
+    this.nfI.startAnimation(localAnimation);
+    AppMethodBeat.o(21480);
+  }
+  
+  private void bEx()
+  {
+    AppMethodBeat.i(21481);
+    this.nfL = true;
+    this.nfH.setVisibility(0);
+    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2131034181);
+    this.nfI.startAnimation(localAnimation);
+    localAnimation = AnimationUtils.loadAnimation(getContext(), 2131034230);
     localAnimation.setAnimationListener(new ImageFolderMgrView.2(this));
-    this.kJl.startAnimation(localAnimation);
+    this.nfJ.startAnimation(localAnimation);
+    AppMethodBeat.o(21481);
   }
   
-  public final void aXP()
+  private void hV(boolean paramBoolean)
   {
-    if (!this.Yq) {}
+    AppMethodBeat.i(21479);
+    if (this.Zb == paramBoolean)
+    {
+      ab.d("MicroMsg.ImageFolderMgrView", "want to expand, but same status, expanded %B", new Object[] { Boolean.valueOf(this.Zb) });
+      AppMethodBeat.o(21479);
+      return;
+    }
+    if (this.nfL)
+    {
+      ab.d("MicroMsg.ImageFolderMgrView", "want to expand[%B], but now in animation", new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(21479);
+      return;
+    }
+    if (this.Zb)
+    {
+      bEw();
+      AppMethodBeat.o(21479);
+      return;
+    }
+    bEx();
+    AppMethodBeat.o(21479);
+  }
+  
+  public final void V(LinkedList<GalleryItem.AlbumItem> paramLinkedList)
+  {
+    AppMethodBeat.i(21482);
+    b localb = this.nfK;
+    localb.nfl = paramLinkedList;
+    if ((localb.nfl != null) && (!localb.nfl.isEmpty()) && (((GalleryItem.AlbumItem)localb.nfl.get(0)).ndm != null))
+    {
+      Iterator localIterator = localb.nfl.iterator();
+      paramLinkedList = null;
+      while (localIterator.hasNext())
+      {
+        GalleryItem.AlbumItem localAlbumItem = (GalleryItem.AlbumItem)localIterator.next();
+        if (paramLinkedList == null)
+        {
+          paramLinkedList = localAlbumItem;
+        }
+        else
+        {
+          if (paramLinkedList.ndm.ndq >= localAlbumItem.ndm.ndq) {
+            break label150;
+          }
+          paramLinkedList = localAlbumItem;
+        }
+      }
+    }
+    label150:
+    for (;;)
+    {
+      break;
+      if (paramLinkedList != null) {
+        localb.nfm.ndm = paramLinkedList.ndm;
+      }
+      e.bDR().d(new ImageFolderMgrView.4(this));
+      AppMethodBeat.o(21482);
+      return;
+    }
+  }
+  
+  public final void bEv()
+  {
+    AppMethodBeat.i(21478);
+    if (!this.Zb) {}
     for (boolean bool = true;; bool = false)
     {
-      gq(bool);
+      hV(bool);
+      AppMethodBeat.o(21478);
       return;
     }
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = this.kJm.rW(paramInt);
+    AppMethodBeat.i(21483);
+    paramAdapterView = this.nfK.wS(paramInt);
     if (paramAdapterView == null)
     {
-      y.d("MicroMsg.ImageFolderMgrView", "get folder failed:" + paramInt);
+      ab.d("MicroMsg.ImageFolderMgrView", "get folder failed:".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(21483);
       return;
     }
-    if (this.kJi != null) {
-      this.kJi.b(paramAdapterView);
+    if (this.nfG != null) {
+      this.nfG.b(paramAdapterView);
     }
-    this.kJm.kIQ = bk.aM(paramAdapterView.kGT, "");
-    this.kJl.setSelection(0);
-    this.kJm.notifyDataSetChanged();
-    this.kJk.performClick();
+    this.nfK.nfn = bo.bf(paramAdapterView.ndl, "");
+    this.nfJ.setSelection(0);
+    this.nfK.notifyDataSetChanged();
+    this.nfI.performClick();
+    AppMethodBeat.o(21483);
   }
   
-  public void setListener(ImageFolderMgrView.a parama)
+  public void setListener(a parama)
   {
-    this.kJi = parama;
+    this.nfG = parama;
   }
   
-  public final void z(ArrayList<GalleryItem.AlbumItem> paramArrayList)
+  public static abstract interface a
   {
-    b localb = this.kJm;
-    localb.kIO = paramArrayList;
-    if ((localb.kIO != null) && (!localb.kIO.isEmpty()) && (((GalleryItem.AlbumItem)localb.kIO.get(0)).kGU != null))
-    {
-      Iterator localIterator = localb.kIO.iterator();
-      paramArrayList = null;
-      while (localIterator.hasNext())
-      {
-        GalleryItem.AlbumItem localAlbumItem = (GalleryItem.AlbumItem)localIterator.next();
-        if (paramArrayList == null)
-        {
-          paramArrayList = localAlbumItem;
-        }
-        else
-        {
-          if (paramArrayList.kGU.kGY >= localAlbumItem.kGU.kGY) {
-            break label138;
-          }
-          paramArrayList = localAlbumItem;
-        }
-      }
-    }
-    label138:
-    for (;;)
-    {
-      break;
-      if (paramArrayList != null) {
-        localb.kIP.kGU = paramArrayList.kGU;
-      }
-      c.aXc().d(new Runnable()
-      {
-        public final void run()
-        {
-          ImageFolderMgrView.d(ImageFolderMgrView.this).notifyDataSetChanged();
-        }
-        
-        public final String toString()
-        {
-          return super.toString() + "|onQueryAlbumFinished";
-        }
-      });
-      return;
-    }
+    public abstract void b(GalleryItem.AlbumItem paramAlbumItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.ImageFolderMgrView
  * JD-Core Version:    0.7.0.1
  */

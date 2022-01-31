@@ -14,232 +14,243 @@ class CpuInfoUtil$OutputCpuThread
   public void run()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: invokespecial 24	java/lang/Thread:run	()V
-    //   4: new 26	java/lang/StringBuilder
-    //   7: dup
-    //   8: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   11: astore 5
-    //   13: invokestatic 34	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   16: ldc 36
-    //   18: invokevirtual 40	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   21: astore_2
-    //   22: new 42	java/io/BufferedReader
-    //   25: dup
-    //   26: new 44	java/io/InputStreamReader
-    //   29: dup
-    //   30: aload_2
-    //   31: invokevirtual 50	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   34: invokespecial 53	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   37: invokespecial 56	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   40: astore 7
-    //   42: iconst_0
-    //   43: istore_1
-    //   44: aload_2
-    //   45: astore 4
-    //   47: aload 7
-    //   49: astore_3
-    //   50: aload 7
-    //   52: invokevirtual 60	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   55: astore 6
-    //   57: aload 6
-    //   59: ifnull +116 -> 175
-    //   62: aload_2
-    //   63: astore 4
-    //   65: aload 7
-    //   67: astore_3
-    //   68: aload_0
-    //   69: getfield 15	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil$OutputCpuThread:isStop	Z
-    //   72: ifne +103 -> 175
-    //   75: iload_1
-    //   76: iconst_1
-    //   77: iadd
-    //   78: istore_1
-    //   79: aload_2
-    //   80: astore 4
-    //   82: aload 7
-    //   84: astore_3
-    //   85: aload 5
-    //   87: aload 6
-    //   89: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: ldc 66
-    //   94: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: pop
-    //   98: iload_1
-    //   99: bipush 15
-    //   101: if_icmple +220 -> 321
-    //   104: aload_2
-    //   105: astore 4
-    //   107: aload 7
-    //   109: astore_3
-    //   110: ldc 68
-    //   112: aload 5
-    //   114: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   117: invokestatic 77	com/tencent/qqmusic/mediaplayer/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   120: aload_2
-    //   121: astore 4
-    //   123: aload 7
-    //   125: astore_3
-    //   126: aload 5
-    //   128: iconst_0
-    //   129: aload 5
-    //   131: invokevirtual 81	java/lang/StringBuilder:length	()I
-    //   134: iconst_1
-    //   135: isub
-    //   136: invokevirtual 85	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
-    //   139: pop
-    //   140: aload_2
-    //   141: astore 4
-    //   143: aload 7
-    //   145: astore_3
-    //   146: ldc2_w 86
-    //   149: invokestatic 91	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil$OutputCpuThread:sleep	(J)V
-    //   152: iconst_0
-    //   153: istore_1
-    //   154: goto -110 -> 44
-    //   157: astore 6
-    //   159: aload_2
-    //   160: astore 4
-    //   162: aload 7
-    //   164: astore_3
-    //   165: ldc 68
-    //   167: aload 6
-    //   169: invokestatic 95	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   172: goto -128 -> 44
-    //   175: aload 7
-    //   177: invokevirtual 98	java/io/BufferedReader:close	()V
-    //   180: aload_2
-    //   181: ifnull +7 -> 188
-    //   184: aload_2
-    //   185: invokevirtual 101	java/lang/Process:destroy	()V
-    //   188: return
-    //   189: astore_3
-    //   190: ldc 68
-    //   192: aload_3
-    //   193: invokestatic 95	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   196: goto -16 -> 180
-    //   199: astore 6
-    //   201: aconst_null
-    //   202: astore 5
-    //   204: aconst_null
-    //   205: astore_2
-    //   206: aload 5
-    //   208: astore 4
-    //   210: aload_2
-    //   211: astore_3
-    //   212: ldc 68
-    //   214: aload 6
-    //   216: invokestatic 95	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   219: aload_2
-    //   220: ifnull +7 -> 227
-    //   223: aload_2
-    //   224: invokevirtual 98	java/io/BufferedReader:close	()V
-    //   227: aload 5
-    //   229: ifnull -41 -> 188
-    //   232: aload 5
-    //   234: invokevirtual 101	java/lang/Process:destroy	()V
-    //   237: return
-    //   238: astore_2
-    //   239: ldc 68
-    //   241: aload_2
-    //   242: invokestatic 95	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   245: goto -18 -> 227
-    //   248: astore 5
-    //   250: aconst_null
-    //   251: astore_2
-    //   252: aconst_null
-    //   253: astore_3
-    //   254: aload_3
-    //   255: ifnull +7 -> 262
-    //   258: aload_3
-    //   259: invokevirtual 98	java/io/BufferedReader:close	()V
-    //   262: aload_2
-    //   263: ifnull +7 -> 270
-    //   266: aload_2
-    //   267: invokevirtual 101	java/lang/Process:destroy	()V
-    //   270: aload 5
-    //   272: athrow
-    //   273: astore_3
-    //   274: ldc 68
-    //   276: aload_3
-    //   277: invokestatic 95	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   280: goto -18 -> 262
-    //   283: astore 5
-    //   285: aconst_null
-    //   286: astore_3
-    //   287: goto -33 -> 254
-    //   290: astore 5
-    //   292: aload 4
-    //   294: astore_2
-    //   295: goto -41 -> 254
-    //   298: astore 6
-    //   300: aconst_null
-    //   301: astore_3
-    //   302: aload_2
-    //   303: astore 5
-    //   305: aload_3
-    //   306: astore_2
-    //   307: goto -101 -> 206
-    //   310: astore 6
-    //   312: aload_2
-    //   313: astore 5
-    //   315: aload 7
-    //   317: astore_2
-    //   318: goto -112 -> 206
-    //   321: goto -277 -> 44
+    //   0: ldc 23
+    //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: invokespecial 31	java/lang/Thread:run	()V
+    //   9: new 33	java/lang/StringBuilder
+    //   12: dup
+    //   13: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   16: astore 5
+    //   18: invokestatic 41	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   21: ldc 43
+    //   23: invokevirtual 47	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   26: astore_2
+    //   27: new 49	java/io/BufferedReader
+    //   30: dup
+    //   31: new 51	java/io/InputStreamReader
+    //   34: dup
+    //   35: aload_2
+    //   36: invokevirtual 57	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   39: invokespecial 60	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   42: invokespecial 63	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   45: astore 7
+    //   47: iconst_0
+    //   48: istore_1
+    //   49: aload_2
+    //   50: astore 4
+    //   52: aload 7
+    //   54: astore_3
+    //   55: aload 7
+    //   57: invokevirtual 67	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   60: astore 6
+    //   62: aload 6
+    //   64: ifnull +116 -> 180
+    //   67: aload_2
+    //   68: astore 4
+    //   70: aload 7
+    //   72: astore_3
+    //   73: aload_0
+    //   74: getfield 15	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil$OutputCpuThread:isStop	Z
+    //   77: ifne +103 -> 180
+    //   80: iload_1
+    //   81: iconst_1
+    //   82: iadd
+    //   83: istore_1
+    //   84: aload_2
+    //   85: astore 4
+    //   87: aload 7
+    //   89: astore_3
+    //   90: aload 5
+    //   92: aload 6
+    //   94: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: ldc 73
+    //   99: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: pop
+    //   103: iload_1
+    //   104: bipush 15
+    //   106: if_icmple +241 -> 347
+    //   109: aload_2
+    //   110: astore 4
+    //   112: aload 7
+    //   114: astore_3
+    //   115: ldc 75
+    //   117: aload 5
+    //   119: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   122: invokestatic 84	com/tencent/qqmusic/mediaplayer/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   125: aload_2
+    //   126: astore 4
+    //   128: aload 7
+    //   130: astore_3
+    //   131: aload 5
+    //   133: iconst_0
+    //   134: aload 5
+    //   136: invokevirtual 88	java/lang/StringBuilder:length	()I
+    //   139: iconst_1
+    //   140: isub
+    //   141: invokevirtual 92	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   144: pop
+    //   145: aload_2
+    //   146: astore 4
+    //   148: aload 7
+    //   150: astore_3
+    //   151: ldc2_w 93
+    //   154: invokestatic 98	com/tencent/qqmusic/mediaplayer/util/CpuInfoUtil$OutputCpuThread:sleep	(J)V
+    //   157: iconst_0
+    //   158: istore_1
+    //   159: goto -110 -> 49
+    //   162: astore 6
+    //   164: aload_2
+    //   165: astore 4
+    //   167: aload 7
+    //   169: astore_3
+    //   170: ldc 75
+    //   172: aload 6
+    //   174: invokestatic 102	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   177: goto -128 -> 49
+    //   180: aload 7
+    //   182: invokevirtual 105	java/io/BufferedReader:close	()V
+    //   185: aload_2
+    //   186: ifnull +117 -> 303
+    //   189: aload_2
+    //   190: invokevirtual 108	java/lang/Process:destroy	()V
+    //   193: ldc 23
+    //   195: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   198: return
+    //   199: astore_3
+    //   200: ldc 75
+    //   202: aload_3
+    //   203: invokestatic 102	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   206: goto -21 -> 185
+    //   209: astore 6
+    //   211: aconst_null
+    //   212: astore 5
+    //   214: aconst_null
+    //   215: astore_2
+    //   216: aload 5
+    //   218: astore 4
+    //   220: aload_2
+    //   221: astore_3
+    //   222: ldc 75
+    //   224: aload 6
+    //   226: invokestatic 102	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   229: aload_2
+    //   230: ifnull +7 -> 237
+    //   233: aload_2
+    //   234: invokevirtual 105	java/io/BufferedReader:close	()V
+    //   237: aload 5
+    //   239: ifnull +64 -> 303
+    //   242: aload 5
+    //   244: invokevirtual 108	java/lang/Process:destroy	()V
+    //   247: ldc 23
+    //   249: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   252: return
+    //   253: astore_2
+    //   254: ldc 75
+    //   256: aload_2
+    //   257: invokestatic 102	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   260: goto -23 -> 237
+    //   263: astore 5
+    //   265: aconst_null
+    //   266: astore_2
+    //   267: aconst_null
+    //   268: astore_3
+    //   269: aload_3
+    //   270: ifnull +7 -> 277
+    //   273: aload_3
+    //   274: invokevirtual 105	java/io/BufferedReader:close	()V
+    //   277: aload_2
+    //   278: ifnull +7 -> 285
+    //   281: aload_2
+    //   282: invokevirtual 108	java/lang/Process:destroy	()V
+    //   285: ldc 23
+    //   287: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   290: aload 5
+    //   292: athrow
+    //   293: astore_3
+    //   294: ldc 75
+    //   296: aload_3
+    //   297: invokestatic 102	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   300: goto -23 -> 277
+    //   303: ldc 23
+    //   305: invokestatic 111	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   308: return
+    //   309: astore 5
+    //   311: aconst_null
+    //   312: astore_3
+    //   313: goto -44 -> 269
+    //   316: astore 5
+    //   318: aload 4
+    //   320: astore_2
+    //   321: goto -52 -> 269
+    //   324: astore 6
+    //   326: aconst_null
+    //   327: astore_3
+    //   328: aload_2
+    //   329: astore 5
+    //   331: aload_3
+    //   332: astore_2
+    //   333: goto -117 -> 216
+    //   336: astore 6
+    //   338: aload_2
+    //   339: astore 5
+    //   341: aload 7
+    //   343: astore_2
+    //   344: goto -128 -> 216
+    //   347: goto -298 -> 49
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	324	0	this	OutputCpuThread
-    //   43	111	1	i	int
-    //   21	203	2	localProcess1	java.lang.Process
-    //   238	4	2	localIOException1	java.io.IOException
-    //   251	67	2	localObject1	java.lang.Object
-    //   49	116	3	localBufferedReader1	java.io.BufferedReader
-    //   189	4	3	localIOException2	java.io.IOException
-    //   211	48	3	localProcess2	java.lang.Process
-    //   273	4	3	localIOException3	java.io.IOException
-    //   286	20	3	localObject2	java.lang.Object
-    //   45	248	4	localObject3	java.lang.Object
-    //   11	222	5	localStringBuilder	java.lang.StringBuilder
-    //   248	23	5	localObject4	java.lang.Object
-    //   283	1	5	localObject5	java.lang.Object
-    //   290	1	5	localObject6	java.lang.Object
-    //   303	11	5	localObject7	java.lang.Object
-    //   55	33	6	str	String
-    //   157	11	6	localException1	java.lang.Exception
-    //   199	16	6	localException2	java.lang.Exception
-    //   298	1	6	localException3	java.lang.Exception
-    //   310	1	6	localException4	java.lang.Exception
-    //   40	276	7	localBufferedReader2	java.io.BufferedReader
+    //   0	350	0	this	OutputCpuThread
+    //   48	111	1	i	int
+    //   26	208	2	localProcess1	java.lang.Process
+    //   253	4	2	localIOException1	java.io.IOException
+    //   266	78	2	localObject1	java.lang.Object
+    //   54	116	3	localBufferedReader1	java.io.BufferedReader
+    //   199	4	3	localIOException2	java.io.IOException
+    //   221	53	3	localProcess2	java.lang.Process
+    //   293	4	3	localIOException3	java.io.IOException
+    //   312	20	3	localObject2	java.lang.Object
+    //   50	269	4	localObject3	java.lang.Object
+    //   16	227	5	localStringBuilder	java.lang.StringBuilder
+    //   263	28	5	localObject4	java.lang.Object
+    //   309	1	5	localObject5	java.lang.Object
+    //   316	1	5	localObject6	java.lang.Object
+    //   329	11	5	localObject7	java.lang.Object
+    //   60	33	6	str	String
+    //   162	11	6	localException1	java.lang.Exception
+    //   209	16	6	localException2	java.lang.Exception
+    //   324	1	6	localException3	java.lang.Exception
+    //   336	1	6	localException4	java.lang.Exception
+    //   45	297	7	localBufferedReader2	java.io.BufferedReader
     // Exception table:
     //   from	to	target	type
-    //   110	120	157	java/lang/Exception
-    //   126	140	157	java/lang/Exception
-    //   146	152	157	java/lang/Exception
-    //   175	180	189	java/io/IOException
-    //   13	22	199	java/lang/Exception
-    //   223	227	238	java/io/IOException
-    //   13	22	248	finally
-    //   258	262	273	java/io/IOException
-    //   22	42	283	finally
-    //   50	57	290	finally
-    //   68	75	290	finally
-    //   85	98	290	finally
-    //   110	120	290	finally
-    //   126	140	290	finally
-    //   146	152	290	finally
-    //   165	172	290	finally
-    //   212	219	290	finally
-    //   22	42	298	java/lang/Exception
-    //   50	57	310	java/lang/Exception
-    //   68	75	310	java/lang/Exception
-    //   85	98	310	java/lang/Exception
-    //   165	172	310	java/lang/Exception
+    //   115	125	162	java/lang/Exception
+    //   131	145	162	java/lang/Exception
+    //   151	157	162	java/lang/Exception
+    //   180	185	199	java/io/IOException
+    //   18	27	209	java/lang/Exception
+    //   233	237	253	java/io/IOException
+    //   18	27	263	finally
+    //   273	277	293	java/io/IOException
+    //   27	47	309	finally
+    //   55	62	316	finally
+    //   73	80	316	finally
+    //   90	103	316	finally
+    //   115	125	316	finally
+    //   131	145	316	finally
+    //   151	157	316	finally
+    //   170	177	316	finally
+    //   222	229	316	finally
+    //   27	47	324	java/lang/Exception
+    //   55	62	336	java/lang/Exception
+    //   73	80	336	java/lang/Exception
+    //   90	103	336	java/lang/Exception
+    //   170	177	336	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.util.CpuInfoUtil.OutputCpuThread
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,11 @@
 package com.tencent.liteav.beauty;
 
+import com.tencent.liteav.basic.d.i.a;
+
 class b$11
-  implements Runnable
+  implements i.a
 {
-  b$11(b paramb, int paramInt) {}
-  
-  public void run()
-  {
-    b.a(this.b, b.f(this.b), b.g(this.b), this.a);
-  }
+  b$11(b paramb) {}
 }
 
 

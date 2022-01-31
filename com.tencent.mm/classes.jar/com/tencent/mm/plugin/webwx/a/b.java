@@ -1,57 +1,65 @@
 package com.tencent.mm.plugin.webwx.a;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.wk;
-import com.tencent.mm.protocal.c.wl;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aap;
+import com.tencent.mm.protocal.protobuf.aaq;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class b
   extends m
   implements k
 {
-  public int bMC;
-  private f dmL;
-  private final com.tencent.mm.ah.b esv;
+  private f callback;
+  public int ctW;
+  private final com.tencent.mm.ai.b fBd;
   
   public b(int paramInt)
   {
-    this.bMC = paramInt;
+    AppMethodBeat.i(26494);
+    this.ctW = paramInt;
     b.a locala = new b.a();
-    wk localwk = new wk();
-    wl localwl = new wl();
-    locala.ecH = localwk;
-    locala.ecI = localwl;
+    aap localaap = new aap();
+    aaq localaaq = new aaq();
+    locala.fsX = localaap;
+    locala.fsY = localaaq;
     locala.uri = "/cgi-bin/micromsg-bin/extdevicecontrol";
-    locala.ecG = 792;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    localwk.kTS = paramInt;
-    localwk.sTm = 1;
-    this.esv = locala.Kt();
+    locala.funcId = 792;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    localaap.nrS = paramInt;
+    localaap.wRj = 1;
+    this.fBd = locala.ado();
+    AppMethodBeat.o(26494);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.esv, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneExtDeviceControl", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " errMsg:" + paramString);
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
+    AppMethodBeat.i(26496);
+    this.callback = paramf;
+    int i = dispatch(parame, this.fBd, this);
+    AppMethodBeat.o(26496);
+    return i;
   }
   
   public final int getType()
   {
     return 792;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(26495);
+    ab.d("MicroMsg.NetSceneExtDeviceControl", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " errMsg:" + paramString);
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(26495);
   }
 }
 

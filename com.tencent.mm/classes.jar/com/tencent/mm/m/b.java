@@ -1,80 +1,105 @@
 package com.tencent.mm.m;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class b
 {
-  public static int Ab()
+  public static int MR()
   {
-    return bk.getInt(g.AA().getValue("InputLimitSessionTextMsg"), 8192) * 2;
+    AppMethodBeat.i(77655);
+    int i = bo.getInt(g.Nq().getValue("InputLimitSNSObjectText"), 2000);
+    AppMethodBeat.o(77655);
+    return i * 2;
   }
   
-  public static int Ac()
+  public static int MS()
   {
-    return bk.getInt(g.AA().getValue("InputLimitSNSObjectText"), 2000) * 2;
+    AppMethodBeat.i(77656);
+    int i = bo.getInt(g.Nq().getValue("SnsCommentMaxSize"), 1000);
+    AppMethodBeat.o(77656);
+    return i * 2;
   }
   
-  public static int Ad()
+  public static int MT()
   {
-    return bk.getInt(g.AA().getValue("SnsCommentMaxSize"), 1000) * 2;
+    AppMethodBeat.i(77657);
+    int i = bo.getInt(g.Nq().getValue("InputLimitFavText"), 100000);
+    AppMethodBeat.o(77657);
+    return i * 2;
   }
   
-  public static int Ae()
+  public static int MU()
   {
-    return bk.getInt(g.AA().getValue("InputLimitFavText"), 100000) * 2;
+    AppMethodBeat.i(77658);
+    int i = bo.getInt(g.Nq().getValue("InputLimitSendEmotionBufSize"), 10485760);
+    AppMethodBeat.o(77658);
+    return i;
   }
   
-  public static int Af()
+  public static int MV()
   {
-    return bk.getInt(g.AA().getValue("InputLimitSendEmotionBufSize"), 5242880);
-  }
-  
-  public static int Ag()
-  {
+    AppMethodBeat.i(77659);
     try
     {
-      int i = bk.getInt(g.AA().getValue("InputLimitSendEmotionWidth"), 1024);
+      int i = bo.getInt(g.Nq().getValue("InputLimitSendEmotionWidth"), 1024);
+      AppMethodBeat.o(77659);
       return i;
     }
     catch (Exception localException)
     {
-      y.b("MicroMsg.BoundaryConfig", "getCustomEmojiMaxWidthAndHeight:%s", new Object[] { localException });
+      ab.a("MicroMsg.BoundaryConfig", "getCustomEmojiMaxWidthAndHeight:%s", new Object[] { localException });
+      AppMethodBeat.o(77659);
     }
     return 1024;
   }
   
-  public static int Ah()
+  public static int MW()
   {
+    AppMethodBeat.i(77660);
     try
     {
-      int i = bk.getInt(g.AA().getValue("InputLimitSendAppMsgEmotionBufSize"), 5242880);
+      int i = bo.getInt(g.Nq().getValue("InputLimitSendAppMsgEmotionBufSize"), 5242880);
+      AppMethodBeat.o(77660);
       return i;
     }
     catch (Exception localException)
     {
-      y.b("MicroMsg.BoundaryConfig", "getAppEmojiMsgMaxSize:%s", new Object[] { localException });
+      ab.a("MicroMsg.BoundaryConfig", "getAppEmojiMsgMaxSize:%s", new Object[] { localException });
+      AppMethodBeat.o(77660);
     }
     return 5242880;
   }
   
-  public static int Ai()
+  public static int MX()
   {
-    if (!com.tencent.mm.kernel.g.DN().Dc()) {
+    AppMethodBeat.i(77661);
+    if (!com.tencent.mm.kernel.g.RJ().QU())
+    {
+      AppMethodBeat.o(77661);
       return 26214400;
     }
-    return bk.getInt(g.AA().getValue("InputLimitFavImageSize"), 26214400);
+    int i = bo.getInt(g.Nq().getValue("InputLimitFavImageSize"), 26214400);
+    AppMethodBeat.o(77661);
+    return i;
   }
   
-  public static int Aj()
+  public static int MY()
   {
-    return bk.getInt(g.AA().getValue("InputLimitVideoSize"), 26214400);
+    AppMethodBeat.i(77662);
+    int i = bo.getInt(g.Nq().getValue("InputLimitVideoSize"), 26214400);
+    AppMethodBeat.o(77662);
+    return i;
   }
   
-  public static String Ak()
+  public static String MZ()
   {
-    return g.AA().getValue("InputLimitForbiddenChar");
+    AppMethodBeat.i(77663);
+    String str = g.Nq().getValue("InputLimitForbiddenChar");
+    AppMethodBeat.o(77663);
+    return str;
   }
 }
 

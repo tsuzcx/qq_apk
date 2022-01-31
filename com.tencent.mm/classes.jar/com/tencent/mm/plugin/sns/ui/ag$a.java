@@ -1,33 +1,38 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.ax;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ay;
+import com.tencent.mm.sdk.g.b.a;
 import com.tencent.mm.ui.MMActivity;
 import java.util.List;
 
 final class ag$a
   extends com.tencent.mm.plugin.sns.model.h<String, Integer, Boolean>
 {
-  private ProgressDialog dnm = null;
-  private ax oRa;
-  private List<com.tencent.mm.plugin.sns.data.h> oSl;
+  private ProgressDialog eeN;
+  private ay rIM;
+  private List<com.tencent.mm.plugin.sns.data.h> rKe;
   
-  public ag$a(ax paramax, List<com.tencent.mm.plugin.sns.data.h> paramList)
+  public ag$a(ay paramay, List<com.tencent.mm.plugin.sns.data.h> paramList)
   {
-    this.oRa = paramList;
+    AppMethodBeat.i(38484);
+    this.eeN = null;
+    this.rIM = paramList;
     Object localObject;
-    this.oSl = localObject;
-    paramList = paramax.bER;
-    paramax.bER.getString(i.j.app_tip);
-    this.dnm = com.tencent.mm.ui.base.h.b(paramList, paramax.bER.getString(i.j.app_loading_data), false, new ag.a.1(this, paramax));
+    this.rKe = localObject;
+    paramList = paramay.cmc;
+    paramay.cmc.getString(2131297087);
+    this.eeN = com.tencent.mm.ui.base.h.b(paramList, paramay.cmc.getString(2131296988), false, new ag.a.1(this, paramay));
+    AppMethodBeat.o(38484);
   }
   
-  public final ah byB()
+  public final a cjN()
   {
-    return af.bDs();
+    AppMethodBeat.i(38485);
+    a locala = com.tencent.mm.plugin.sns.model.ag.coS();
+    AppMethodBeat.o(38485);
+    return locala;
   }
 }
 

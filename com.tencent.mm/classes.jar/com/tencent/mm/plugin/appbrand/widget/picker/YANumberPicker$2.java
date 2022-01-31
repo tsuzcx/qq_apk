@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class YANumberPicker$2
   extends Handler
@@ -10,16 +11,20 @@ final class YANumberPicker$2
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(126758);
     super.handleMessage(paramMessage);
     switch (paramMessage.what)
     {
-    default: 
-      return;
-    case 3: 
-      this.hBM.requestLayout();
-      return;
     }
-    YANumberPicker.a(this.hBM, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+    for (;;)
+    {
+      AppMethodBeat.o(126758);
+      return;
+      this.jub.requestLayout();
+      AppMethodBeat.o(126758);
+      return;
+      YANumberPicker.a(this.jub, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
+    }
   }
 }
 

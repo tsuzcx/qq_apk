@@ -2,6 +2,7 @@ package com.tencent.tmassistantsdk.storage.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tmassistantsdk.storage.table.ClientInfoTable;
 import com.tencent.tmassistantsdk.storage.table.DownloadInfoTable;
 import com.tencent.tmassistantsdk.storage.table.DownloadLogTable;
@@ -27,6 +28,7 @@ public class AstSDKDBHelper_V2
   {
     try
     {
+      AppMethodBeat.i(76183);
       if (mInstance == null)
       {
         localObject1 = GlobalUtil.getInstance().getContext();
@@ -35,6 +37,7 @@ public class AstSDKDBHelper_V2
         }
       }
       Object localObject1 = mInstance;
+      AppMethodBeat.o(76183);
       return localObject1;
     }
     finally {}
@@ -52,7 +55,7 @@ public class AstSDKDBHelper_V2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.helper.AstSDKDBHelper_V2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,91 +6,122 @@ import android.os.IBinder.DeathRecipient;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.RemoteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileDescriptor;
 
 class b$d
   extends Binder
 {
-  protected final IBinder mHM;
+  protected final IBinder phS;
   
   b$d(b paramb, IBinder paramIBinder)
   {
-    this.mHM = paramIBinder;
+    this.phS = paramIBinder;
   }
   
   public void dump(FileDescriptor paramFileDescriptor, String[] paramArrayOfString)
   {
+    AppMethodBeat.i(10405);
     try
     {
-      this.mHM.dump(paramFileDescriptor, paramArrayOfString);
+      this.phS.dump(paramFileDescriptor, paramArrayOfString);
+      AppMethodBeat.o(10405);
       return;
     }
-    catch (RemoteException paramFileDescriptor) {}
+    catch (RemoteException paramFileDescriptor)
+    {
+      AppMethodBeat.o(10405);
+    }
   }
   
   public void dumpAsync(FileDescriptor paramFileDescriptor, String[] paramArrayOfString)
   {
+    AppMethodBeat.i(10406);
     try
     {
-      this.mHM.dumpAsync(paramFileDescriptor, paramArrayOfString);
+      this.phS.dumpAsync(paramFileDescriptor, paramArrayOfString);
+      AppMethodBeat.o(10406);
       return;
     }
-    catch (RemoteException paramFileDescriptor) {}
+    catch (RemoteException paramFileDescriptor)
+    {
+      AppMethodBeat.o(10406);
+    }
   }
   
   public String getInterfaceDescriptor()
   {
+    AppMethodBeat.i(10402);
     try
     {
-      String str = this.mHM.getInterfaceDescriptor();
+      String str = this.phS.getInterfaceDescriptor();
+      AppMethodBeat.o(10402);
       return str;
     }
-    catch (RemoteException localRemoteException) {}
+    catch (RemoteException localRemoteException)
+    {
+      AppMethodBeat.o(10402);
+    }
     return "<failure>";
   }
   
   public boolean isBinderAlive()
   {
-    return this.mHM.isBinderAlive();
+    AppMethodBeat.i(10404);
+    boolean bool = this.phS.isBinderAlive();
+    AppMethodBeat.o(10404);
+    return bool;
   }
   
   public void linkToDeath(IBinder.DeathRecipient paramDeathRecipient, int paramInt)
   {
+    AppMethodBeat.i(10408);
     try
     {
-      this.mHM.linkToDeath(paramDeathRecipient, paramInt);
+      this.phS.linkToDeath(paramDeathRecipient, paramInt);
+      AppMethodBeat.o(10408);
       return;
     }
     catch (RemoteException localRemoteException)
     {
       paramDeathRecipient.binderDied();
+      AppMethodBeat.o(10408);
     }
   }
   
   protected boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    boolean bool = false;
+    AppMethodBeat.i(10407);
     try
     {
-      if (this.mHM.isBinderAlive()) {
-        bool = this.mHM.transact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      if (this.phS.isBinderAlive())
+      {
+        boolean bool = this.phS.transact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+        AppMethodBeat.o(10407);
+        return bool;
       }
-      return bool;
+      AppMethodBeat.o(10407);
+      return false;
     }
     catch (RemoteException paramParcel1)
     {
+      AppMethodBeat.o(10407);
       throw paramParcel1;
     }
     catch (Throwable paramParcel1)
     {
-      b.a(this.mHC, paramParcel1);
+      b.a(this.phI, paramParcel1);
+      AppMethodBeat.o(10407);
     }
     return false;
   }
   
   public boolean pingBinder()
   {
-    return this.mHM.pingBinder();
+    AppMethodBeat.i(10403);
+    boolean bool = this.phS.pingBinder();
+    AppMethodBeat.o(10403);
+    return bool;
   }
   
   public IInterface queryLocalInterface(String paramString)
@@ -100,7 +131,10 @@ class b$d
   
   public boolean unlinkToDeath(IBinder.DeathRecipient paramDeathRecipient, int paramInt)
   {
-    return this.mHM.unlinkToDeath(paramDeathRecipient, paramInt);
+    AppMethodBeat.i(10409);
+    boolean bool = this.phS.unlinkToDeath(paramDeathRecipient, paramInt);
+    AppMethodBeat.o(10409);
+    return bool;
   }
 }
 

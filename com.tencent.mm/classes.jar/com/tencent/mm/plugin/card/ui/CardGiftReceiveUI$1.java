@@ -5,10 +5,9 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CardGiftReceiveUI$1
   implements ViewTreeObserver.OnGlobalLayoutListener
@@ -17,19 +16,21 @@ final class CardGiftReceiveUI$1
   
   public final void onGlobalLayout()
   {
-    int i = a.fromDPToPix(this.iuv.mController.uMN, 67);
-    int j = CardGiftReceiveUI.a(this.iuv).getChildAt(0).getHeight() + i;
-    int k = this.iuv.getWindow().findViewById(16908290).getHeight();
-    y.i("MicroMsg.CardGiftReceiveUI", "bottomHeight: %d  totalViewHeight:%d  screenHeight:%d ", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-    CardGiftReceiveUI.a(this.iuv).setFillViewport(true);
+    AppMethodBeat.i(88415);
+    int i = a.fromDPToPix(this.kvA.getContext(), 67);
+    int j = CardGiftReceiveUI.a(this.kvA).getChildAt(0).getHeight() + i;
+    int k = this.kvA.getWindow().findViewById(16908290).getHeight();
+    ab.i("MicroMsg.CardGiftReceiveUI", "bottomHeight: %d  totalViewHeight:%d  screenHeight:%d ", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+    CardGiftReceiveUI.a(this.kvA).setFillViewport(true);
     if (j > k) {
-      CardGiftReceiveUI.a(this.iuv, true);
+      CardGiftReceiveUI.a(this.kvA, true);
     }
     for (;;)
     {
-      CardGiftReceiveUI.a(this.iuv).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      CardGiftReceiveUI.a(this.kvA).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      AppMethodBeat.o(88415);
       return;
-      CardGiftReceiveUI.a(this.iuv, false);
+      CardGiftReceiveUI.a(this.kvA, false);
     }
   }
 }

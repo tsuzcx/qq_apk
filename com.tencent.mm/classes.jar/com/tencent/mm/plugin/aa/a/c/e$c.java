@@ -8,14 +8,14 @@ public final class e$c
 {
   public e$c(e parame) {}
   
-  public final String vP()
+  public final String HY()
   {
     return "Vending.LOGIC";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.a.c.e.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.abtest;
 
 public abstract interface NotInterestMenu$b
 {
-  public abstract void bBY();
+  public abstract void cnz();
 }
 
 

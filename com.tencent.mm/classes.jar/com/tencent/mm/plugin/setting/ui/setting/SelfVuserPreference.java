@@ -7,17 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class SelfVuserPreference
   extends Preference
 {
   Drawable drawable;
-  private String nSG;
+  private String qGE;
   String text;
   
   public SelfVuserPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -28,35 +27,41 @@ public class SelfVuserPreference
   public SelfVuserPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(a.g.mm_preference);
+    AppMethodBeat.i(127040);
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(127040);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(127042);
     super.onBindView(paramView);
-    ImageView localImageView = (ImageView)paramView.findViewById(a.f.image_iv);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131822243);
     if (localImageView != null)
     {
       localImageView.setImageDrawable(this.drawable);
-      y.d("MicroMsg.SelfVuserPreference", "onBindView set icon=" + this.drawable);
-      if (!bk.bl(this.nSG)) {
-        localImageView.setContentDescription(this.nSG);
+      ab.d("MicroMsg.SelfVuserPreference", "onBindView set icon=" + this.drawable);
+      if (!bo.isNullOrNil(this.qGE)) {
+        localImageView.setContentDescription(this.qGE);
       }
     }
-    paramView = (TextView)paramView.findViewById(a.f.text_tv);
+    paramView = (TextView)paramView.findViewById(2131821551);
     if (paramView != null)
     {
       paramView.setVisibility(0);
       paramView.setText(this.text);
     }
+    AppMethodBeat.o(127042);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(127041);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.f.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, a.g.mm_preference_self_vuser, localViewGroup);
+    View.inflate(this.mContext, 2130970253, localViewGroup);
+    AppMethodBeat.o(127041);
     return paramViewGroup;
   }
 }

@@ -2,24 +2,25 @@ package com.tencent.mm.plugin.emoji.ui.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class ScaleRelativeLayout
   extends RelativeLayout
 {
-  public float apq = 3.0F;
-  private float apr = 0.5F;
-  private float jjG = 1.0F;
-  private float jjH = 1.0F;
-  private float jjI = 0.0F;
-  private float jjJ = 0.0F;
-  public float jjK = 6.0F;
-  private float jjL = 0.3F;
-  private boolean jjM = false;
-  private ValueAnimator jjN;
+  public float arJ = 3.0F;
+  private float arK = 0.5F;
+  private float lsA = 0.0F;
+  private float lsB = 0.0F;
+  public float lsC = 6.0F;
+  private float lsD = 0.3F;
+  private boolean lsE = false;
+  private ValueAnimator lsF;
+  private float lsy = 1.0F;
+  private float lsz = 1.0F;
   
   public ScaleRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,31 +32,27 @@ public class ScaleRelativeLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void dispatchDraw(Canvas paramCanvas)
-  {
-    int i = paramCanvas.getWidth();
-    int j = paramCanvas.getHeight();
-    paramCanvas.save();
-    paramCanvas.scale(this.jjG, this.jjG, i / 2, j / 2);
-    super.dispatchDraw(paramCanvas);
-    paramCanvas.restore();
-  }
-  
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getPointerCount() > 1) {
+    AppMethodBeat.i(53860);
+    if (paramMotionEvent.getPointerCount() > 1)
+    {
+      AppMethodBeat.o(53860);
       return true;
     }
-    return super.onInterceptTouchEvent(paramMotionEvent);
+    boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(53860);
+    return bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!this.jjM) && (paramMotionEvent.getPointerCount() == 2))
+    AppMethodBeat.i(53861);
+    if ((!this.lsE) && (paramMotionEvent.getPointerCount() == 2))
     {
-      this.jjM = true;
-      this.jjI = ((float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1)));
-      this.jjH = this.jjG;
+      this.lsE = true;
+      this.lsA = ((float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1)));
+      this.lsz = this.lsy;
     }
     switch (paramMotionEvent.getActionMasked())
     {
@@ -67,65 +64,73 @@ public class ScaleRelativeLayout
     case 6: 
       for (;;)
       {
-        if (this.jjI <= 0.0F) {
-          this.jjI = 0.1F;
+        if (this.lsA <= 0.0F) {
+          this.lsA = 0.1F;
         }
-        postInvalidate();
-        return true;
+        int i = 0;
+        while (i < getChildCount())
+        {
+          paramMotionEvent = getChildAt(i);
+          paramMotionEvent.setScaleX(this.lsy);
+          paramMotionEvent.setScaleY(this.lsy);
+          i += 1;
+        }
         if (paramMotionEvent.getPointerCount() == 2)
         {
           f2 = (float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
-          f1 = this.jjH * f2 / this.jjI;
-          if (f1 > this.jjK)
+          f1 = this.lsz * f2 / this.lsA;
+          if (f1 > this.lsC)
           {
-            f1 = this.jjK;
-            this.jjJ = (this.jjI * f1);
+            f1 = this.lsC;
+            this.lsB = (this.lsA * f1);
           }
           for (;;)
           {
-            this.jjG = f1;
-            if (this.jjN == null) {
+            this.lsy = f1;
+            if (this.lsF == null) {
               break;
             }
-            this.jjN.cancel();
+            this.lsF.cancel();
             break;
-            if (f1 < this.jjL)
+            if (f1 < this.lsD)
             {
-              f1 = this.jjL;
-              this.jjJ = (this.jjI * f1);
+              f1 = this.lsD;
+              this.lsB = (this.lsA * f1);
             }
             else
             {
-              this.jjJ = f2;
+              this.lsB = f2;
             }
           }
           if (paramMotionEvent.getPointerCount() == 2)
           {
-            this.jjI = this.jjJ;
-            this.jjH = this.jjG;
-            this.jjM = false;
+            this.lsA = this.lsB;
+            this.lsz = this.lsy;
+            this.lsE = false;
           }
         }
       }
     }
-    float f2 = this.jjG;
-    float f1 = this.jjG;
-    if (this.jjG < this.apr) {
-      f1 = this.apr;
+    float f2 = this.lsy;
+    float f1 = this.lsy;
+    if (this.lsy < this.arK) {
+      f1 = this.arK;
     }
     for (;;)
     {
-      if (this.jjN != null) {
-        this.jjN.cancel();
+      if (this.lsF != null) {
+        this.lsF.cancel();
       }
-      this.jjN = ValueAnimator.ofFloat(new float[] { f2, f1 });
-      this.jjN.addUpdateListener(new ScaleRelativeLayout.1(this));
-      this.jjN.start();
+      this.lsF = ValueAnimator.ofFloat(new float[] { f2, f1 });
+      this.lsF.addUpdateListener(new ScaleRelativeLayout.1(this));
+      this.lsF.start();
       break;
-      if (this.jjG > this.apq) {
-        f1 = this.apq;
+      if (this.lsy > this.arJ) {
+        f1 = this.arJ;
       }
     }
+    AppMethodBeat.o(53861);
+    return true;
   }
 }
 

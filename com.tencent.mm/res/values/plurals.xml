@@ -61,10 +61,6 @@
         <item quantity="other">你最多只能选择%s个视频</item>
         <item quantity="one">你最多只能选择%s个视频</item>
     </plurals>
-    <plurals name="p">
-        <item quantity="other">%s条新消息</item>
-        <item quantity="one">%s条新消息</item>
-    </plurals>
     <plurals name="q">
         <item quantity="other">邀请你%d个朋友加入微信</item>
         <item quantity="one">邀请你%d个朋友加入微信</item>
@@ -121,10 +117,6 @@
         <item quantity="other">%d条新消息</item>
         <item quantity="one">%d条新消息</item>
     </plurals>
-    <plurals name="a4">
-        <item quantity="other">共%d张</item>
-        <item quantity="one">共%d张</item>
-    </plurals>
     <plurals name="a5">
         <item quantity="other">%d条未读</item>
         <item quantity="one">%d条未读</item>
@@ -143,4 +135,14 @@
         <item quantity="other">还可以拍摄%s秒</item>
         <item quantity="one">还可以拍摄%s秒</item>
     </plurals>
+    <plurals name="p">
+        <item quantity="other">%s条新消息</item>
+        <item quantity="one">%s条新消息</item>
+    </plurals>
+    <plurals name="a4">
+        <item quantity="other">共%d张</item>
+        <item quantity="one">共%d张</item>
+    </plurals>
+    <item type="plurals" name="APKTOOL_DUMMY_f" />
+    <item type="plurals" name="APKTOOL_DUMMY_1e" />
 </resources>

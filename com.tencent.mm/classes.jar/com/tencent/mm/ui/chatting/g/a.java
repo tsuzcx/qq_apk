@@ -1,75 +1,57 @@
 package com.tencent.mm.ui.chatting.g;
 
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.bi;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.chatting.c.v;
+import com.tencent.mm.ui.chatting.c.w;
+import java.util.HashMap;
 
 public final class a
-  extends com.tencent.mm.ax.a
 {
-  public String vyw;
-  public long vyx = 0L;
+  private com.tencent.mm.ui.chatting.d.a caz;
+  public HashMap<Class<?>, v> zOP;
   
-  public a(Map<String, String> paramMap, bi parambi)
+  public a(com.tencent.mm.ui.chatting.d.a parama)
   {
-    super(paramMap, parambi);
+    AppMethodBeat.i(32492);
+    this.zOP = new HashMap();
+    this.caz = parama;
+    AppMethodBeat.o(32492);
   }
   
-  protected final boolean Ib()
+  public final void a(Class<? extends v> paramClass, v paramv)
   {
-    if (this.values == null)
+    AppMethodBeat.i(32494);
+    if (this.zOP.put(paramClass, paramv) != null) {
+      ab.w("MicroMsg.ChattingComponentManager", "[register] %s has register", new Object[] { paramClass });
+    }
+    if ((paramv instanceof w))
     {
-      y.e("MicroMsg.InvokeMessageNewXmlMsg", "[parseXml] values == null ");
-      return false;
+      long l1 = System.currentTimeMillis();
+      ((w)paramv).a(this.caz);
+      long l2 = System.currentTimeMillis();
+      ab.i("MicroMsg.ChattingComponentManager", "[install] listener:%s cost:%sms", new Object[] { paramv.getClass().getName(), Long.valueOf(l2 - l1) });
     }
-    if (this.values.containsKey(".sysmsg.invokeMessage.preContent")) {
-      this.vyw = ((String)this.values.get(".sysmsg.invokeMessage.preContent"));
-    }
-    if (this.values.containsKey(".sysmsg.invokeMessage.timestamp")) {
-      this.vyx = bk.ZS((String)this.values.get(".sysmsg.invokeMessage.timestamp"));
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.values.keySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
+    AppMethodBeat.o(32494);
+  }
+  
+  public final <T extends v, V extends Class<T>> T ay(V paramV)
+  {
+    AppMethodBeat.i(32493);
+    if (!paramV.isInterface())
     {
-      String str = (String)localIterator.next();
-      if (str.startsWith(".sysmsg.invokeMessage.text"))
-      {
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.insert(0, (String)this.values.get(str));
-        } else {
-          localStringBuilder.append((String)this.values.get(str));
-        }
-      }
-      else
-      {
-        if ((!str.startsWith(".sysmsg.invokeMessage.link.text")) || (bk.bl((String)this.values.get(str)))) {
-          break label341;
-        }
-        str = (String)this.values.get(str);
-        localStringBuilder.append(str);
-        this.evA.add(str);
-        i = str.length();
-      }
+      paramV = new RuntimeException("[get] " + paramV + " is not a interface!");
+      AppMethodBeat.o(32493);
+      throw paramV;
     }
-    label341:
-    for (;;)
+    if (this.zOP.containsKey(paramV))
     {
-      break;
-      this.evB.addFirst(Integer.valueOf(localStringBuilder.length() - i));
-      this.evC.add(Integer.valueOf(localStringBuilder.length()));
-      this.evy = localStringBuilder.toString();
-      if ((System.currentTimeMillis() - this.vyx >= 300000L) && (!bk.bl(this.vyw))) {
-        e.post(new a.1(this), "[checkExpired]");
-      }
-      return true;
+      paramV = (v)this.zOP.get(paramV);
+      AppMethodBeat.o(32493);
+      return paramV;
     }
+    AppMethodBeat.o(32493);
+    return null;
   }
 }
 

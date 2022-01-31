@@ -1,19 +1,25 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MobileInputUI$8
-  implements TextView.OnEditorActionListener
+  implements View.OnKeyListener
 {
   MobileInputUI$8(MobileInputUI paramMobileInputUI) {}
   
-  public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 6) || (paramInt == 5)) {
-      return MobileInputUI.f(this.foH);
+    AppMethodBeat.i(125168);
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
+    {
+      boolean bool = this.gGb.arB();
+      AppMethodBeat.o(125168);
+      return bool;
     }
+    AppMethodBeat.o(125168);
     return false;
   }
 }

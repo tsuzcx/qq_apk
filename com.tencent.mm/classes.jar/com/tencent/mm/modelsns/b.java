@@ -2,151 +2,200 @@ package com.tencent.mm.modelsns;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.protocal.c.bvl;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.cge;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class b
 {
-  private static AtomicInteger eAR = new AtomicInteger(0);
-  private static boolean eyq = false;
-  public Object eAI = null;
-  public int eAJ = 1;
-  public int eAK;
-  public int eAL;
-  public int eAM;
-  public StringBuffer eAN = new StringBuffer();
-  public StringBuffer eAO = new StringBuffer();
-  public StringBuffer eAP = new StringBuffer();
-  public StringBuffer eAQ = new StringBuffer();
-  public int opType = 0;
+  private static boolean fOd;
+  private static AtomicInteger fQK;
+  public Object fQB;
+  public int fQC;
+  public int fQD;
+  public int fQE;
+  public int fQF;
+  public StringBuffer fQG;
+  public StringBuffer fQH;
+  public StringBuffer fQI;
+  public StringBuffer fQJ;
+  public int opType;
   public long timeStamp;
+  
+  static
+  {
+    AppMethodBeat.i(94480);
+    fOd = false;
+    fQK = new AtomicInteger(0);
+    AppMethodBeat.o(94480);
+  }
   
   public b(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(94460);
+    this.fQB = null;
+    this.fQC = 1;
+    this.opType = 0;
+    this.fQG = new StringBuffer();
+    this.fQH = new StringBuffer();
+    this.fQI = new StringBuffer();
+    this.fQJ = new StringBuffer();
     this.opType = paramInt1;
-    this.eAM = paramInt2;
-    if (!QT()) {
+    this.fQF = paramInt2;
+    if (!aka())
+    {
+      AppMethodBeat.o(94460);
       return;
     }
     this.timeStamp = System.currentTimeMillis();
-    if (aq.isWifi(ae.getContext())) {
-      this.eAL = 4;
+    if (at.isWifi(ah.getContext())) {
+      this.fQE = 4;
     }
     for (;;)
     {
-      this.eAK = eAR.incrementAndGet();
+      this.fQD = fQK.incrementAndGet();
+      AppMethodBeat.o(94460);
       return;
-      if (aq.is4G(ae.getContext())) {
-        this.eAL = 3;
-      } else if (aq.is3G(ae.getContext())) {
-        this.eAL = 2;
-      } else if (aq.is2G(ae.getContext())) {
-        this.eAL = 1;
+      if (at.is4G(ah.getContext())) {
+        this.fQE = 3;
+      } else if (at.is3G(ah.getContext())) {
+        this.fQE = 2;
+      } else if (at.is2G(ah.getContext())) {
+        this.fQE = 1;
       } else {
-        this.eAL = 0;
+        this.fQE = 0;
       }
     }
   }
   
-  private static b F(byte[] paramArrayOfByte)
+  private static b V(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {
+    AppMethodBeat.i(94478);
+    if (paramArrayOfByte == null)
+    {
+      AppMethodBeat.o(94478);
       return null;
     }
-    bvl localbvl = new bvl();
+    cge localcge = new cge();
     try
     {
-      localbvl.aH(paramArrayOfByte);
-      paramArrayOfByte = new b(localbvl.opType, localbvl.eAM);
-      paramArrayOfByte.eAJ = localbvl.eAJ;
-      paramArrayOfByte.timeStamp = localbvl.timeStamp;
-      paramArrayOfByte.eAK = localbvl.eAK;
-      paramArrayOfByte.eAL = localbvl.eAL;
-      paramArrayOfByte.eAN = new StringBuffer(localbvl.tMh);
-      paramArrayOfByte.eAQ = new StringBuffer(localbvl.tMi);
-      paramArrayOfByte.eAO = new StringBuffer(localbvl.tMj);
-      paramArrayOfByte.eAP = new StringBuffer(localbvl.tMk);
+      localcge.parseFrom(paramArrayOfByte);
+      paramArrayOfByte = new b(localcge.opType, localcge.fQF);
+      paramArrayOfByte.fQC = localcge.fQC;
+      paramArrayOfByte.timeStamp = localcge.timeStamp;
+      paramArrayOfByte.fQD = localcge.fQD;
+      paramArrayOfByte.fQE = localcge.fQE;
+      paramArrayOfByte.fQG = new StringBuffer(localcge.xQT);
+      paramArrayOfByte.fQJ = new StringBuffer(localcge.xQU);
+      paramArrayOfByte.fQH = new StringBuffer(localcge.xQV);
+      paramArrayOfByte.fQI = new StringBuffer(localcge.xQW);
+      AppMethodBeat.o(94478);
       return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      y.e("MicroMsg.StatisticsOplog", "putIntent " + paramArrayOfByte.getMessage());
+      ab.e("MicroMsg.StatisticsOplog", "putIntent " + paramArrayOfByte.getMessage());
+      AppMethodBeat.o(94478);
     }
     return null;
   }
   
-  public static void QW()
+  public static void akd()
   {
-    y.i("MicroMsg.StatisticsOplog", "wait op");
+    AppMethodBeat.i(94471);
+    ab.i("MicroMsg.StatisticsOplog", "wait op");
+    AppMethodBeat.o(94471);
   }
   
   public static b c(Intent paramIntent, String paramString)
   {
+    AppMethodBeat.i(94477);
     paramIntent = paramIntent.getByteArrayExtra(paramString);
-    if (paramIntent == null) {
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(94477);
       return null;
     }
-    return F(paramIntent);
+    paramIntent = V(paramIntent);
+    AppMethodBeat.o(94477);
+    return paramIntent;
   }
   
-  public static b i(Intent paramIntent)
+  public static b lV(int paramInt)
   {
-    return c(paramIntent, "intent_key_StatisticsOplog");
+    AppMethodBeat.i(94458);
+    b localb = new b(paramInt, 1);
+    AppMethodBeat.o(94458);
+    return localb;
   }
   
-  public static b i(Bundle paramBundle)
+  public static b lW(int paramInt)
   {
+    AppMethodBeat.i(94459);
+    b localb = new b(paramInt, 4);
+    AppMethodBeat.o(94459);
+    return localb;
+  }
+  
+  public static b s(Bundle paramBundle)
+  {
+    AppMethodBeat.i(94475);
     paramBundle = paramBundle.getByteArray("intent_key_StatisticsOplog");
-    if (paramBundle == null) {
+    if (paramBundle == null)
+    {
+      AppMethodBeat.o(94475);
       return null;
     }
-    return F(paramBundle);
+    paramBundle = V(paramBundle);
+    AppMethodBeat.o(94475);
+    return paramBundle;
   }
   
-  public static b jd(int paramInt)
+  public static b w(Intent paramIntent)
   {
-    return new b(paramInt, 1);
+    AppMethodBeat.i(94476);
+    paramIntent = c(paramIntent, "intent_key_StatisticsOplog");
+    AppMethodBeat.o(94476);
+    return paramIntent;
   }
   
-  public static b je(int paramInt)
+  public final byte[] adM()
   {
-    return new b(paramInt, 4);
-  }
-  
-  public final byte[] KV()
-  {
-    Object localObject = new bvl();
-    ((bvl)localObject).opType = this.opType;
-    ((bvl)localObject).eAM = this.eAM;
-    ((bvl)localObject).eAJ = this.eAJ;
-    ((bvl)localObject).timeStamp = this.timeStamp;
-    ((bvl)localObject).eAK = this.eAK;
-    ((bvl)localObject).eAL = this.eAL;
-    ((bvl)localObject).tMh = this.eAN.toString();
-    ((bvl)localObject).tMi = this.eAQ.toString();
-    ((bvl)localObject).tMj = this.eAO.toString();
-    ((bvl)localObject).tMk = this.eAP.toString();
+    AppMethodBeat.i(94473);
+    Object localObject = new cge();
+    ((cge)localObject).opType = this.opType;
+    ((cge)localObject).fQF = this.fQF;
+    ((cge)localObject).fQC = this.fQC;
+    ((cge)localObject).timeStamp = this.timeStamp;
+    ((cge)localObject).fQD = this.fQD;
+    ((cge)localObject).fQE = this.fQE;
+    ((cge)localObject).xQT = this.fQG.toString();
+    ((cge)localObject).xQU = this.fQJ.toString();
+    ((cge)localObject).xQV = this.fQH.toString();
+    ((cge)localObject).xQW = this.fQI.toString();
     try
     {
-      localObject = ((bvl)localObject).toByteArray();
+      localObject = ((cge)localObject).toByteArray();
+      AppMethodBeat.o(94473);
       return localObject;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.StatisticsOplog", "putIntent " + localException.getMessage());
+      ab.e("MicroMsg.StatisticsOplog", "putIntent " + localException.getMessage());
+      AppMethodBeat.o(94473);
     }
     return null;
   }
   
-  public final boolean QT()
+  public final boolean aka()
   {
     boolean bool2 = true;
-    int i = c.eAT;
+    int i = c.fQM;
     boolean bool1;
     if (i == 0) {
       bool1 = false;
@@ -205,123 +254,167 @@ public final class b
     return false;
   }
   
-  public final b QU()
+  public final b akb()
   {
-    this.eAO = new StringBuffer();
+    AppMethodBeat.i(94466);
+    this.fQH = new StringBuffer();
+    AppMethodBeat.o(94466);
     return this;
   }
   
-  public final b QV()
+  public final b akc()
   {
-    this.eAN = new StringBuffer();
+    AppMethodBeat.i(94467);
+    this.fQG = new StringBuffer();
+    AppMethodBeat.o(94467);
     return this;
   }
   
-  public final boolean QX()
+  public final boolean ake()
   {
-    if (!QT()) {
+    AppMethodBeat.i(94472);
+    if (!aka())
+    {
+      AppMethodBeat.o(94472);
       return false;
     }
-    e.post(new b.1(this), "StatisticsOplog");
+    d.post(new b.1(this), "StatisticsOplog");
+    AppMethodBeat.o(94472);
     return true;
   }
   
   public final void b(Intent paramIntent, String paramString)
   {
-    byte[] arrayOfByte = KV();
-    if (arrayOfByte == null) {
+    AppMethodBeat.i(94474);
+    byte[] arrayOfByte = adM();
+    if (arrayOfByte == null)
+    {
+      AppMethodBeat.o(94474);
       return;
     }
     paramIntent.putExtra(paramString, arrayOfByte);
+    AppMethodBeat.o(94474);
   }
   
-  public final b cb(boolean paramBoolean)
+  public final b de(boolean paramBoolean)
   {
+    AppMethodBeat.i(94469);
     if (paramBoolean) {}
-    for (String str = "1";; str = "0") {
-      return ni(str);
+    for (Object localObject = "1";; localObject = "0")
+    {
+      localObject = uv((String)localObject);
+      AppMethodBeat.o(94469);
+      return localObject;
     }
   }
   
-  public final boolean jf(int paramInt)
+  public final boolean lX(int paramInt)
   {
-    this.eAI = Integer.valueOf(paramInt);
+    AppMethodBeat.i(94461);
+    this.fQB = Integer.valueOf(paramInt);
+    AppMethodBeat.o(94461);
     return true;
   }
   
-  public final b jg(int paramInt)
+  public final b lY(int paramInt)
   {
-    return ni(String.valueOf(paramInt));
+    AppMethodBeat.i(94464);
+    b localb = uv(String.valueOf(paramInt));
+    AppMethodBeat.o(94464);
+    return localb;
   }
   
-  public final b jh(int paramInt)
+  public final b lZ(int paramInt)
   {
-    if (!QT()) {
-      return this;
-    }
-    if (this.eAO.length() == 0)
+    AppMethodBeat.i(94470);
+    if (!aka())
     {
-      this.eAO.append(paramInt);
+      AppMethodBeat.o(94470);
       return this;
     }
-    this.eAO.append("||" + paramInt);
-    return this;
-  }
-  
-  public final b ni(String paramString)
-  {
-    if (!QT()) {
-      return this;
+    if (this.fQH.length() == 0) {
+      this.fQH.append(paramInt);
     }
-    if (this.eAN.length() == 0)
+    for (;;)
     {
-      if (bk.bl(paramString))
-      {
-        this.eAN.append(" ");
-        return this;
-      }
-      this.eAN.append(paramString);
+      AppMethodBeat.o(94470);
       return this;
+      this.fQH.append("||".concat(String.valueOf(paramInt)));
     }
-    this.eAN.append("||" + paramString);
-    return this;
-  }
-  
-  public final b nj(String paramString)
-  {
-    if (!QT()) {
-      return this;
-    }
-    if (this.eAO.length() == 0)
-    {
-      this.eAO.append(paramString);
-      return this;
-    }
-    this.eAO.append("||" + paramString);
-    return this;
-  }
-  
-  public final b nk(String paramString)
-  {
-    if (!QT()) {
-      return this;
-    }
-    if (this.eAP.length() == 0)
-    {
-      this.eAP.append(paramString);
-      return this;
-    }
-    this.eAP.append("||" + paramString);
-    return this;
   }
   
   public final void update()
   {
-    if (!QT()) {
+    AppMethodBeat.i(94462);
+    if (!aka())
+    {
+      AppMethodBeat.o(94462);
       return;
     }
     this.timeStamp = System.currentTimeMillis();
-    this.eAK = eAR.incrementAndGet();
+    this.fQD = fQK.incrementAndGet();
+    AppMethodBeat.o(94462);
+  }
+  
+  public final b uv(String paramString)
+  {
+    AppMethodBeat.i(94463);
+    if (!aka())
+    {
+      AppMethodBeat.o(94463);
+      return this;
+    }
+    if (this.fQG.length() == 0) {
+      if (bo.isNullOrNil(paramString)) {
+        this.fQG.append(" ");
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(94463);
+      return this;
+      this.fQG.append(paramString);
+      continue;
+      this.fQG.append("||".concat(String.valueOf(paramString)));
+    }
+  }
+  
+  public final b uw(String paramString)
+  {
+    AppMethodBeat.i(94465);
+    if (!aka())
+    {
+      AppMethodBeat.o(94465);
+      return this;
+    }
+    if (this.fQH.length() == 0) {
+      this.fQH.append(paramString);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(94465);
+      return this;
+      this.fQH.append("||".concat(String.valueOf(paramString)));
+    }
+  }
+  
+  public final b ux(String paramString)
+  {
+    AppMethodBeat.i(94468);
+    if (!aka())
+    {
+      AppMethodBeat.o(94468);
+      return this;
+    }
+    if (this.fQI.length() == 0) {
+      this.fQI.append(paramString);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(94468);
+      return this;
+      this.fQI.append("||".concat(String.valueOf(paramString)));
+    }
   }
 }
 

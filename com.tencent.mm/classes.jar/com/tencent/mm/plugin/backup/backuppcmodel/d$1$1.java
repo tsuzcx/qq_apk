@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.backup.backuppcmodel;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class d$1$1
   implements Runnable
 {
@@ -7,34 +9,44 @@ final class d$1$1
   
   public final void run()
   {
-    if (this.bns == 3) {
-      d.a(this.hKP.hKO, this.hFT, this.hFQ);
-    }
-    do
+    AppMethodBeat.i(17520);
+    if (this.bHS == 3)
     {
+      d.a(this.jEs.jEr, this.ePW, this.jzn);
+      AppMethodBeat.o(17520);
       return;
-      if (this.bns == 11)
-      {
-        d.b(this.hKP.hKO, this.hFT, this.hFQ);
-        return;
-      }
-      if (this.bns == 6)
-      {
-        d.c(this.hKP.hKO, this.hFT, this.hFQ);
-        return;
-      }
-      if (this.bns == 13)
-      {
-        d.H(this.hFT, this.hFQ);
-        return;
-      }
-      if (this.bns == 15)
-      {
-        d.d(this.hKP.hKO, this.hFT, this.hFQ);
-        return;
-      }
-    } while (this.bns != 8);
-    d.a(this.hKP.hKO, this.hFT);
+    }
+    if (this.bHS == 11)
+    {
+      d.b(this.jEs.jEr, this.ePW, this.jzn);
+      AppMethodBeat.o(17520);
+      return;
+    }
+    if (this.bHS == 6)
+    {
+      d.c(this.jEs.jEr, this.ePW, this.jzn);
+      AppMethodBeat.o(17520);
+      return;
+    }
+    if (this.bHS == 13)
+    {
+      d.I(this.ePW, this.jzn);
+      AppMethodBeat.o(17520);
+      return;
+    }
+    if (this.bHS == 15)
+    {
+      d.d(this.jEs.jEr, this.ePW, this.jzn);
+      AppMethodBeat.o(17520);
+      return;
+    }
+    if (this.bHS == 8)
+    {
+      d.a(this.jEs.jEr, this.ePW);
+      AppMethodBeat.o(17520);
+      return;
+    }
+    AppMethodBeat.o(17520);
   }
 }
 

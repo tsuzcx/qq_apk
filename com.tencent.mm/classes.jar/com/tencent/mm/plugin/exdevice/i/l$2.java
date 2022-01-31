@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.exdevice.i;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.service.p;
 
 final class l$2
@@ -9,12 +10,17 @@ final class l$2
   
   public final void run()
   {
-    l.c(this.jAf).a(this.jAg, this.bEf, this.bEg, this.edL, this.jAh);
+    AppMethodBeat.i(19747);
+    l.c(this.lJE).a(this.lJF, this.val$errType, this.val$errCode, this.ftO, this.lJG);
+    AppMethodBeat.o(19747);
   }
   
   public final String toString()
   {
-    return super.toString() + "|onTaskEnd";
+    AppMethodBeat.i(19748);
+    String str = super.toString() + "|onTaskEnd";
+    AppMethodBeat.o(19748);
+    return str;
   }
 }
 

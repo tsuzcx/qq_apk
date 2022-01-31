@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class WalletVerifyIdCardUI$2$1
   implements Runnable
 {
@@ -7,15 +9,22 @@ final class WalletVerifyIdCardUI$2$1
   
   public final void run()
   {
-    if ((!this.qHn) || (WalletVerifyIdCardUI.a(this.qHo.qHm, WalletVerifyIdCardUI.a(this.qHo.qHm)))) {
-      return;
+    AppMethodBeat.i(47719);
+    if (this.uus)
+    {
+      if (WalletVerifyIdCardUI.a(this.uut.uur, WalletVerifyIdCardUI.a(this.uut.uur)))
+      {
+        AppMethodBeat.o(47719);
+        return;
+      }
+      WalletVerifyIdCardUI.b(this.uut.uur);
     }
-    WalletVerifyIdCardUI.b(this.qHo.qHm);
+    AppMethodBeat.o(47719);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletVerifyIdCardUI.2.1
  * JD-Core Version:    0.7.0.1
  */

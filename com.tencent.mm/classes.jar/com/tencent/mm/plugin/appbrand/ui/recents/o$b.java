@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.ui.recents;
 final class o$b
   extends o.g
 {
-  o$b(e.d paramd, int paramInt1, int paramInt2)
+  o$b(AppBrandLauncherRecentsList.e parame, int paramInt1, int paramInt2)
   {
-    super(paramd, paramInt1, paramInt2);
+    super(parame, paramInt1, paramInt2);
   }
 }
 

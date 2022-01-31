@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class k
   extends q
@@ -15,53 +16,73 @@ final class k
   
   protected final void a(a parama)
   {
+    AppMethodBeat.i(125750);
     try
     {
       new StringBuilder("write CheckEntity to sharedPreferences:").append(parama.toString());
+      s.zU();
       SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.context).edit();
       localEditor.putString(s.decode("4kU71lN96TJUomD1vOU9lgj9U+kKmxDPLVM+zzjst5U="), parama.toString());
       localEditor.commit();
       return;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(125750);
+    }
   }
   
   protected final String read()
   {
+    AppMethodBeat.i(125747);
     try
     {
+      s.zU();
       String str = PreferenceManager.getDefaultSharedPreferences(this.context).getString(s.decode("4kU71lN96TJUomD1vOU9lgj9Tw=="), null);
       return str;
     }
-    finally {}
-  }
-  
-  protected final boolean rv()
-  {
-    return true;
-  }
-  
-  protected final a rw()
-  {
-    try
+    finally
     {
-      a locala = new a(PreferenceManager.getDefaultSharedPreferences(this.context).getString(s.decode("4kU71lN96TJUomD1vOU9lgj9U+kKmxDPLVM+zzjst5U="), null));
-      new StringBuilder("read CheckEntity from sharedPreferences:").append(locala.toString());
-      return locala;
+      AppMethodBeat.o(125747);
     }
-    finally {}
   }
   
   protected final void write(String paramString)
   {
+    AppMethodBeat.i(125748);
     try
     {
+      s.zU();
       SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.context).edit();
       localEditor.putString(s.decode("4kU71lN96TJUomD1vOU9lgj9Tw=="), paramString);
       localEditor.commit();
       return;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(125748);
+    }
+  }
+  
+  protected final boolean zL()
+  {
+    return true;
+  }
+  
+  protected final a zM()
+  {
+    AppMethodBeat.i(125749);
+    try
+    {
+      a locala = new a(PreferenceManager.getDefaultSharedPreferences(this.context).getString(s.decode("4kU71lN96TJUomD1vOU9lgj9U+kKmxDPLVM+zzjst5U="), null));
+      new StringBuilder("read CheckEntity from sharedPreferences:").append(locala.toString());
+      s.zU();
+      return locala;
+    }
+    finally
+    {
+      AppMethodBeat.o(125749);
+    }
   }
 }
 

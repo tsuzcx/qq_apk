@@ -1,57 +1,58 @@
 package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
-import com.tencent.mm.modelvoice.MediaRecorder;
-import com.tencent.mm.modelvoice.g;
-import com.tencent.mm.modelvoice.h;
-import com.tencent.mm.modelvoice.q;
-import com.tencent.mm.protocal.c.cds;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelvoice.j;
+import com.tencent.mm.modelvoice.s;
+import com.tencent.mm.protocal.protobuf.crd;
 
 public final class d
 {
-  public static cds aK(int paramInt, String paramString)
+  public static crd bm(int paramInt, String paramString)
   {
-    cds localcds = new cds();
+    AppMethodBeat.i(25590);
+    crd localcrd = new crd();
     switch (paramInt)
     {
     case 2: 
     case 3: 
     default: 
-      localcds.sxR = 0;
-      localcds.sxS = 0;
-      localcds.sxP = 0;
-      localcds.sxQ = 0;
-      return localcds;
-    case 0: 
-      localcds.sxR = 8000;
-      localcds.sxS = 16;
-      localcds.sxP = 5;
-      localcds.sxQ = 5;
-      return localcds;
-    case 1: 
-      localcds.sxR = 16000;
-      localcds.sxS = 16;
-      localcds.sxP = 4;
-      localcds.sxQ = 4;
-      return localcds;
+      localcrd.wru = 0;
+      localcrd.wrv = 0;
+      localcrd.wrs = 0;
+      localcrd.wrt = 0;
     }
-    localcds.sxR = 16000;
-    paramString = q.ox(paramString);
-    if (paramString != null)
+    for (;;)
     {
-      paramInt = MediaRecorder.SilkGetEncSampleRate(((h)paramString).bz(0, 1).buf);
-      if (paramInt >= 8000) {
-        localcds.sxR = paramInt;
+      AppMethodBeat.o(25590);
+      return localcrd;
+      localcrd.wru = 8000;
+      localcrd.wrv = 16;
+      localcrd.wrs = 5;
+      localcrd.wrt = 5;
+      continue;
+      localcrd.wru = 16000;
+      localcrd.wrv = 16;
+      localcrd.wrs = 4;
+      localcrd.wrt = 4;
+      continue;
+      localcrd.wru = 16000;
+      paramString = s.vK(paramString);
+      if ((paramString != null) && ((paramString instanceof j)))
+      {
+        paramInt = ((j)paramString).getSampleRate();
+        if (paramInt >= 8000) {
+          localcrd.wru = paramInt;
+        }
       }
+      localcrd.wrv = 16;
+      localcrd.wrs = 6;
+      localcrd.wrt = 6;
     }
-    localcds.sxS = 16;
-    localcds.sxP = 6;
-    localcds.sxQ = 6;
-    return localcds;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.d
  * JD-Core Version:    0.7.0.1
  */

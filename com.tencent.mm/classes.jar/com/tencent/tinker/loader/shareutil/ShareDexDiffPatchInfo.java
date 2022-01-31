@@ -5,45 +5,45 @@ import java.util.ArrayList;
 
 public class ShareDexDiffPatchInfo
 {
-  public final String dBS;
+  public final String BuQ;
+  public final String BuR;
+  public final String BuS;
+  public final String BuT;
+  public final String BuU;
+  public final String BuV;
+  public final String BuW;
+  public final boolean BuX;
+  public final String ezj;
   public final String path;
-  public final String wYm;
-  public final String wYn;
-  public final String wYo;
-  public final String wYp;
-  public final String wYq;
-  public final String wYr;
-  public final String wYs;
-  public final boolean wYt;
   
   public ShareDexDiffPatchInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    this.wYm = paramString1;
+    this.BuQ = paramString1;
     this.path = paramString2;
-    this.wYn = paramString3;
-    this.wYo = paramString4;
-    this.wYr = paramString5;
-    this.wYp = paramString6;
-    this.wYq = paramString7;
-    this.wYs = paramString8;
+    this.BuR = paramString3;
+    this.BuS = paramString4;
+    this.BuV = paramString5;
+    this.BuT = paramString6;
+    this.BuU = paramString7;
+    this.BuW = paramString8;
     if (paramString8.equals("jar"))
     {
-      this.wYt = true;
-      if (SharePatchFileUtil.agn(paramString1))
+      this.BuX = true;
+      if (SharePatchFileUtil.axe(paramString1))
       {
-        this.dBS = (paramString1 + ".jar");
+        this.ezj = (paramString1 + ".jar");
         return;
       }
-      this.dBS = paramString1;
+      this.ezj = paramString1;
       return;
     }
     if (paramString8.equals("raw"))
     {
-      this.wYt = false;
-      this.dBS = paramString1;
+      this.BuX = false;
+      this.ezj = paramString1;
       return;
     }
-    throw new TinkerRuntimeException("can't recognize dex mode:" + paramString8);
+    throw new TinkerRuntimeException("can't recognize dex mode:".concat(String.valueOf(paramString8)));
   }
   
   public static boolean c(ShareDexDiffPatchInfo paramShareDexDiffPatchInfo)
@@ -52,15 +52,15 @@ public class ShareDexDiffPatchInfo
     for (;;)
     {
       return false;
-      String str = paramShareDexDiffPatchInfo.wYm;
-      if (ShareTinkerInternals.cQP()) {}
-      for (paramShareDexDiffPatchInfo = paramShareDexDiffPatchInfo.wYo; (str != null) && (str.length() > 0) && (paramShareDexDiffPatchInfo != null) && (paramShareDexDiffPatchInfo.length() == 32); paramShareDexDiffPatchInfo = paramShareDexDiffPatchInfo.wYn) {
+      String str = paramShareDexDiffPatchInfo.BuQ;
+      if (ShareTinkerInternals.dWE()) {}
+      for (paramShareDexDiffPatchInfo = paramShareDexDiffPatchInfo.BuS; (str != null) && (str.length() > 0) && (paramShareDexDiffPatchInfo != null) && (paramShareDexDiffPatchInfo.length() == 32); paramShareDexDiffPatchInfo = paramShareDexDiffPatchInfo.BuR) {
         return true;
       }
     }
   }
   
-  public static void m(String paramString, ArrayList<ShareDexDiffPatchInfo> paramArrayList)
+  public static void o(String paramString, ArrayList<ShareDexDiffPatchInfo> paramArrayList)
   {
     if ((paramString == null) || (paramString.length() == 0)) {}
     for (;;)
@@ -87,21 +87,21 @@ public class ShareDexDiffPatchInfo
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(this.wYm);
+    localStringBuffer.append(this.BuQ);
     localStringBuffer.append(",");
     localStringBuffer.append(this.path);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.wYn);
+    localStringBuffer.append(this.BuR);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.wYo);
+    localStringBuffer.append(this.BuS);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.wYp);
+    localStringBuffer.append(this.BuT);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.wYq);
+    localStringBuffer.append(this.BuU);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.wYr);
+    localStringBuffer.append(this.BuV);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.wYs);
+    localStringBuffer.append(this.BuW);
     return localStringBuffer.toString();
   }
 }

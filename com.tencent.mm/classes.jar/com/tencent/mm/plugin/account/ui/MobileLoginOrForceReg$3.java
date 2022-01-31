@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MobileLoginOrForceReg$3
   implements DialogInterface.OnDismissListener
@@ -10,7 +11,9 @@ final class MobileLoginOrForceReg$3
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    MobileLoginOrForceReg.q(this.fpa);
+    AppMethodBeat.i(125206);
+    MobileLoginOrForceReg.s(this.gGw);
+    AppMethodBeat.o(125206);
   }
 }
 

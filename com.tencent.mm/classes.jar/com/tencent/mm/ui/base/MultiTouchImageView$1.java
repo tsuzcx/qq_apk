@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.base;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class MultiTouchImageView$1
   implements Runnable
@@ -9,14 +10,16 @@ final class MultiTouchImageView$1
   
   public final void run()
   {
+    AppMethodBeat.i(106973);
     long l = System.currentTimeMillis();
-    float f1 = Math.min(this.vad, (float)(l - this.eow));
-    float f2 = this.vae;
-    float f3 = this.vaf;
-    this.vag.k(f2 + f3 * f1, this.bAT, this.bAU);
-    if (f1 < this.vad) {
-      this.vag.mHandler.post(this);
+    float f1 = Math.min(this.zot, (float)(l - this.fET));
+    float f2 = this.zou;
+    float f3 = this.zov;
+    this.zow.k(f2 + f3 * f1, this.cdQ, this.cdR);
+    if (f1 < this.zot) {
+      this.zow.mHandler.post(this);
     }
+    AppMethodBeat.o(106973);
   }
 }
 

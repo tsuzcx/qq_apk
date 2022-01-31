@@ -1,14 +1,14 @@
 package com.tencent.mm.chatroom;
 
-import com.tencent.mm.h.a.kc;
+import com.tencent.mm.g.a.kp;
 import com.tencent.mm.pluginsdk.c.c;
 
 final class b$3
-  extends c<kc>
+  extends c<kp>
 {
   b$3(b paramb) {}
   
-  public final int xf()
+  public final int Jx()
   {
     return 179;
   }

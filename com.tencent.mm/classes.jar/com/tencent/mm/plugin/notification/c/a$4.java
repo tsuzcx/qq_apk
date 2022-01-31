@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.notification.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.notification.ui.c;
 
 final class a$4
@@ -9,7 +10,9 @@ final class a$4
   
   public final void onDismiss()
   {
-    a.b(this.mIE);
+    AppMethodBeat.i(23106);
+    a.b(this.piT);
+    AppMethodBeat.o(23106);
   }
 }
 

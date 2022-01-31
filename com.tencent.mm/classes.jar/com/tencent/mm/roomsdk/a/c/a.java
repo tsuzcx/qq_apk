@@ -7,17 +7,17 @@ import com.tencent.mm.ui.base.p;
 public abstract class a
 {
   protected p tipDialog;
-  protected boolean ubr = true;
-  protected com.tencent.mm.roomsdk.a.b.a ubs;
-  protected com.tencent.mm.roomsdk.a.b.a ubt;
-  protected com.tencent.mm.roomsdk.a.b.a ubu;
+  protected boolean yjH = true;
+  protected com.tencent.mm.roomsdk.a.b.a yjI;
+  protected com.tencent.mm.roomsdk.a.b.a yjJ;
+  protected com.tencent.mm.roomsdk.a.b.a yjK;
   
-  public static b mm(boolean paramBoolean)
+  public static b pB(boolean paramBoolean)
   {
     return new b(paramBoolean);
   }
   
-  public static c mn(boolean paramBoolean)
+  public static c pC(boolean paramBoolean)
   {
     return new c(paramBoolean);
   }
@@ -26,34 +26,34 @@ public abstract class a
   
   public final a b(com.tencent.mm.roomsdk.a.b.a parama)
   {
-    this.ubs = parama;
+    this.yjI = parama;
     return this;
   }
   
   public final a c(com.tencent.mm.roomsdk.a.b.a parama)
   {
-    this.ubt = parama;
+    this.yjJ = parama;
     return this;
   }
   
   public abstract void cancel();
   
-  public final boolean cpy()
-  {
-    return this.ubr;
-  }
-  
-  public abstract void cpz();
-  
   public final a d(com.tencent.mm.roomsdk.a.b.a parama)
   {
-    this.ubu = parama;
+    this.yjK = parama;
     return this;
   }
+  
+  public final boolean drm()
+  {
+    return this.yjH;
+  }
+  
+  public abstract void drn();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.roomsdk.a.c.a
  * JD-Core Version:    0.7.0.1
  */

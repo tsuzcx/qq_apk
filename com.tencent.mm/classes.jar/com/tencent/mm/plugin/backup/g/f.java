@@ -1,80 +1,92 @@
 package com.tencent.mm.plugin.backup.g;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.backup.i.e;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.IOException;
 import junit.framework.Assert;
 
 public final class f
 {
-  public static int hLX = 10000;
-  public static int hLY = 5000;
-  private int hLZ = 0;
-  private long hMa = 0L;
-  private long hMb = 0L;
-  private boolean hMc = false;
-  private Boolean hMd = null;
+  public static int jFA = 5000;
+  public static int jFz = 10000;
+  private int jFB = 0;
+  private long jFC = 0L;
+  private long jFD = 0L;
+  private boolean jFE = false;
+  private Boolean jFF = null;
   
-  public final void avc()
+  public final void aUE()
   {
-    this.hMa = bk.UY();
-    y.d("MicroMsg.BackupHeartBeatHandler", "updateHeartBeatTimeStamp[%d]", new Object[] { Long.valueOf(this.hMa) });
-    this.hMc = false;
-    if (this.hLZ != 0)
+    AppMethodBeat.i(17662);
+    this.jFC = bo.aoy();
+    ab.d("MicroMsg.BackupHeartBeatHandler", "updateHeartBeatTimeStamp[%d]", new Object[] { Long.valueOf(this.jFC) });
+    this.jFE = false;
+    if (this.jFB != 0)
     {
-      this.hLZ = 0;
-      eg(false);
+      this.jFB = 0;
+      start(false);
     }
+    AppMethodBeat.o(17662);
   }
   
-  public final void avd()
+  public final void aUF()
   {
-    if (this.hMb == 9223372036854775807L) {}
-    for (long l = 0L;; l = this.hMb + 1L)
+    AppMethodBeat.i(17663);
+    if (this.jFD == 9223372036854775807L) {}
+    for (long l = 0L;; l = this.jFD + 1L)
     {
-      this.hMb = l;
-      com.tencent.mm.plugin.backup.i.e locale = new com.tencent.mm.plugin.backup.i.e();
-      locale.hMb = this.hMb;
+      this.jFD = l;
+      e locale = new e();
+      locale.jFD = this.jFD;
       try
       {
-        y.i("MicroMsg.BackupHeartBeatHandler", "sendBackupHeartBeatRequest send heartbeat req, ack:%d", new Object[] { Long.valueOf(locale.hMb) });
-        b.I(locale.toByteArray(), 9);
+        ab.i("MicroMsg.BackupHeartBeatHandler", "sendBackupHeartBeatRequest send heartbeat req, ack:%d", new Object[] { Long.valueOf(locale.jFD) });
+        b.J(locale.toByteArray(), 9);
+        AppMethodBeat.o(17663);
         return;
       }
       catch (IOException localIOException)
       {
-        y.printErrStackTrace("MicroMsg.BackupHeartBeatHandler", localIOException, "buf to BackupHeartBeatRequest err.", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.BackupHeartBeatHandler", localIOException, "buf to BackupHeartBeatRequest err.", new Object[0]);
+        AppMethodBeat.o(17663);
       }
     }
   }
   
-  public final void eg(boolean paramBoolean)
+  public final void start(boolean paramBoolean)
   {
+    AppMethodBeat.i(17665);
     if (paramBoolean) {
-      if (this.hMd != null) {
-        break label59;
+      if (this.jFF != null) {
+        break label70;
       }
     }
-    label59:
+    label70:
     for (paramBoolean = true;; paramBoolean = false)
     {
       Assert.assertTrue("New BackupHeartBeatHandler EveryTime !", paramBoolean);
-      y.i("MicroMsg.BackupHeartBeatHandler", "start backup heart beat handler.");
-      avc();
-      this.hMd = Boolean.valueOf(false);
-      com.tencent.mm.sdk.f.e.b(new f.1(this), "BackupSendBackupHeartBeat").start();
-      avd();
+      ab.i("MicroMsg.BackupHeartBeatHandler", "start backup heart beat handler.");
+      aUE();
+      this.jFF = Boolean.FALSE;
+      d.h(new f.1(this), "BackupSendBackupHeartBeat").start();
+      aUF();
+      AppMethodBeat.o(17665);
       return;
     }
   }
   
   public final void stop()
   {
-    if (this.hMd != null)
+    AppMethodBeat.i(17664);
+    if (this.jFF != null)
     {
-      y.i("MicroMsg.BackupHeartBeatHandler", "stop");
-      this.hMd = Boolean.valueOf(true);
+      ab.i("MicroMsg.BackupHeartBeatHandler", "stop");
+      this.jFF = Boolean.TRUE;
     }
+    AppMethodBeat.o(17664);
   }
 }
 

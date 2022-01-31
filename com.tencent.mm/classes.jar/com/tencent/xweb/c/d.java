@@ -1,49 +1,33 @@
 package com.tencent.xweb.c;
 
-import android.webkit.ValueCallback;
-import java.net.URL;
-import java.nio.ByteBuffer;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.a;
+import org.xwalk.core.XWalkEnvironment;
 
 public final class d
-  implements g
 {
-  public final void a(com.tencent.xweb.d paramd) {}
-  
-  public final void addJavascriptInterface(Object paramObject, String paramString) {}
-  
-  public final boolean cSJ()
+  public static boolean bj(String paramString, long paramLong)
   {
-    return false;
+    AppMethodBeat.i(151441);
+    if ("true".equals(a.axN("dis_".concat(String.valueOf(paramString)))))
+    {
+      AppMethodBeat.o(151441);
+      return false;
+    }
+    SharedPreferences localSharedPreferences = XWalkEnvironment.getMMKVSharedPreferences("FREQUENT_LIMITER");
+    long l1 = localSharedPreferences.getLong(paramString, 0L);
+    long l2 = System.currentTimeMillis();
+    if (Math.abs(l2 - l1) < paramLong)
+    {
+      AppMethodBeat.o(151441);
+      return false;
+    }
+    localSharedPreferences.edit().putLong(paramString, l2).commit();
+    AppMethodBeat.o(151441);
+    return true;
   }
-  
-  public final boolean cSj()
-  {
-    return false;
-  }
-  
-  public final void cleanup() {}
-  
-  public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback) {}
-  
-  public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback, URL paramURL) {}
-  
-  public final ByteBuffer getNativeBuffer(int paramInt)
-  {
-    return null;
-  }
-  
-  public final int getNativeBufferId()
-  {
-    return 0;
-  }
-  
-  public final void init(int paramInt) {}
-  
-  public final void pause() {}
-  
-  public final void resume() {}
-  
-  public final void setNativeBuffer(int paramInt, ByteBuffer paramByteBuffer) {}
 }
 
 

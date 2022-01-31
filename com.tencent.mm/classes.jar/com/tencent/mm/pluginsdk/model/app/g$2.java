@@ -1,21 +1,32 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.report.service.h;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.opensdk.channel.MMessageActV2;
+import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
+import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req;
 
 final class g$2
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  g$2(String paramString1, String paramString2, String paramString3, String paramString4, Runnable paramRunnable) {}
+  g$2(ShowMessageFromWX.Req paramReq, String paramString, Context paramContext, ai paramai) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    h.nFQ.f(14102, new Object[] { Integer.valueOf(0), Integer.valueOf(1), "", Integer.valueOf(1), this.Bz, this.rUf, this.rUg });
-    if ("wx073f4a4daff0abe8".equalsIgnoreCase(this.rUh)) {
-      h.nFQ.f(15413, new Object[] { Integer.valueOf(2), "", "" });
+    AppMethodBeat.i(151612);
+    Bundle localBundle = new Bundle();
+    this.vLc.toBundle(localBundle);
+    p.aC(localBundle);
+    p.aD(localBundle);
+    MMessageActV2.Args localArgs = new MMessageActV2.Args();
+    localArgs.targetPkgName = this.Cl;
+    localArgs.bundle = localBundle;
+    boolean bool = MMessageActV2.send(this.val$context, localArgs);
+    if (this.kZN != null) {
+      this.kZN.dZ(bool);
     }
-    this.jtH.run();
+    AppMethodBeat.o(151612);
   }
 }
 

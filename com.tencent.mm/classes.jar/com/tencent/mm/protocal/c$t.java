@@ -5,7 +5,7 @@ public final class c$t
 {
   public c$t()
   {
-    super("changePayActivityView", "change_pay_activity_view", 207, true);
+    super("cancelDownloadTask", "cancel_download_task", 39, false);
   }
 }
 

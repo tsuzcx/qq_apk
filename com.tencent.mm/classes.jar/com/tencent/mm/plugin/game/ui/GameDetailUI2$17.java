@@ -3,12 +3,9 @@ package com.tencent.mm.plugin.game.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.v.b;
 
 final class GameDetailUI2$17
   implements View.OnClickListener
@@ -17,27 +14,30 @@ final class GameDetailUI2$17
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(111858);
     if ((paramView.getTag() instanceof String))
     {
-      c.a(paramView, this.laq);
-      b.a(this.laq.mController.uMN, 12, 1203, 999, 7, GameDetailUI2.f(this.laq), GameDetailUI2.g(this.laq), null);
+      com.tencent.mm.plugin.game.f.c.a(paramView, this.nyn);
+      com.tencent.mm.game.report.c.a(this.nyn.getContext(), 12, 1203, 999, 7, GameDetailUI2.f(this.nyn), GameDetailUI2.g(this.nyn), null);
+      AppMethodBeat.o(111858);
       return;
     }
     Object localObject = new GameDetailRankUI.a();
-    ((GameDetailRankUI.a)localObject).kZr = GameDetailUI2.n(this.laq);
-    ((GameDetailRankUI.a)localObject).kZs = GameDetailUI2.o(this.laq);
-    ((GameDetailRankUI.a)localObject).kZt = GameDetailUI2.l(this.laq);
-    paramView = u.ij("rankData");
-    u.Hc().v(paramView, true).h(GameDetailRankUI.kZp, localObject);
-    localObject = new Intent(this.laq.mController.uMN, GameDetailRankUI.class);
+    ((GameDetailRankUI.a)localObject).nxo = GameDetailUI2.n(this.nyn);
+    ((GameDetailRankUI.a)localObject).nxp = GameDetailUI2.o(this.nyn);
+    ((GameDetailRankUI.a)localObject).nxq = GameDetailUI2.l(this.nyn);
+    paramView = v.oQ("rankData");
+    v.aae().z(paramView, true).i(GameDetailRankUI.nxm, localObject);
+    localObject = new Intent(this.nyn.getContext(), GameDetailRankUI.class);
     ((Intent)localObject).putExtra(GameDetailRankUI.EXTRA_SESSION_ID, paramView);
-    this.laq.startActivity((Intent)localObject);
-    b.a(this.laq.mController.uMN, 12, 1203, 999, 6, GameDetailUI2.f(this.laq), GameDetailUI2.g(this.laq), null);
+    this.nyn.startActivity((Intent)localObject);
+    com.tencent.mm.game.report.c.a(this.nyn.getContext(), 12, 1203, 999, 6, GameDetailUI2.f(this.nyn), GameDetailUI2.g(this.nyn), null);
+    AppMethodBeat.o(111858);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDetailUI2.17
  * JD-Core Version:    0.7.0.1
  */

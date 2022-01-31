@@ -1,35 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 final class a$4
-  implements View.OnTouchListener
+  implements Runnable
 {
-  a$4(a parama, boolean paramBoolean, ImageView paramImageView) {}
+  a$4(a parama) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final void run()
   {
-    int i;
-    if (this.gtY)
+    AppMethodBeat.i(51152);
+    ViewGroup localViewGroup = (ViewGroup)this.hOM.hOh;
+    synchronized (this.hOM.hOA)
     {
-      i = paramMotionEvent.getAction();
-      if (i != 0) {
-        break label30;
-      }
-      this.gtZ.setColorFilter(Color.parseColor("#88888888"));
-    }
-    for (;;)
-    {
-      return false;
-      label30:
-      if ((i == 3) || (i == 1)) {
-        this.gtZ.clearColorFilter();
+      Iterator localIterator = this.hOM.hOA.iterator();
+      if (localIterator.hasNext()) {
+        localViewGroup.removeView(((a.b)localIterator.next()).hPa);
       }
     }
+    this.hOM.hOA.clear();
+    AppMethodBeat.o(51152);
   }
 }
 

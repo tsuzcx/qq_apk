@@ -1,57 +1,59 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.LinkedList;
 
 final class SearchOrRecommendBizUI$1
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
   SearchOrRecommendBizUI$1(SearchOrRecommendBizUI paramSearchOrRecommendBizUI) {}
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (paramm == null) {
-      y.e("MicroMsg.BrandService.SearchOrRecommendBizUI", "NetScene is null.");
-    }
-    do
+    AppMethodBeat.i(14041);
+    if (paramm == null)
     {
+      ab.e("MicroMsg.BrandService.SearchOrRecommendBizUI", "NetScene is null.");
+      AppMethodBeat.o(14041);
       return;
-      if (paramm.getType() != 456)
-      {
-        y.e("MicroMsg.BrandService.SearchOrRecommendBizUI", "The NetScene is not a RecommendGroupNetScene.");
-        return;
-      }
-      g.Dk().b(456, this);
-      y.i("MicroMsg.BrandService.SearchOrRecommendBizUI", "errType(%d) , errCode(%d) , errMsg(%s)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    } while ((paramInt1 != 0) || (paramInt2 != 0));
-    paramm = com.tencent.mm.plugin.brandservice.b.f.axu();
-    if (SearchOrRecommendBizUI.a(this.ief) == null)
+    }
+    if (paramm.getType() != 456)
     {
-      paramString = null;
-      label96:
-      if ((paramString == null) || (paramm == null) || (paramm.size() <= 0)) {
-        break label163;
+      ab.e("MicroMsg.BrandService.SearchOrRecommendBizUI", "The NetScene is not a RecommendGroupNetScene.");
+      AppMethodBeat.o(14041);
+      return;
+    }
+    g.Rc().b(456, this);
+    ab.i("MicroMsg.BrandService.SearchOrRecommendBizUI", "errType(%d) , errCode(%d) , errMsg(%s)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      paramm = com.tencent.mm.plugin.brandservice.b.f.aWs();
+      if (SearchOrRecommendBizUI.a(this.jUT) != null) {
+        break label169;
       }
-      if (paramString.getCount() != 0) {
-        break label165;
+      paramString = null;
+      if ((paramString != null) && (paramm != null) && (paramm.size() > 0)) {
+        if (paramString.getCount() != 0) {
+          break label189;
+        }
       }
     }
-    label163:
-    label165:
+    label169:
+    label189:
     for (paramInt1 = 1;; paramInt1 = 0)
     {
-      paramString.idY = paramm;
-      if (paramInt1 == 0) {
-        break;
+      paramString.jUM = paramm;
+      if (paramInt1 != 0) {
+        al.d(new SearchOrRecommendBizUI.1.1(this, paramString));
       }
-      ai.d(new SearchOrRecommendBizUI.1.1(this, paramString));
+      AppMethodBeat.o(14041);
       return;
-      paramString = (f)SearchOrRecommendBizUI.a(this.ief).getAdapter();
-      break label96;
+      paramString = (f)SearchOrRecommendBizUI.a(this.jUT).getAdapter();
       break;
     }
   }

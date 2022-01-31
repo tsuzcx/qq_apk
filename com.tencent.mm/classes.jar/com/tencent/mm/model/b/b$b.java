@@ -1,7 +1,18 @@
 package com.tencent.mm.model.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public enum b$b
 {
+  static
+  {
+    AppMethodBeat.i(16354);
+    fou = new b("Main", 0);
+    fow = new b("Chatting", 1);
+    fox = new b[] { fou, fow };
+    AppMethodBeat.o(16354);
+  }
+  
   private b$b() {}
 }
 

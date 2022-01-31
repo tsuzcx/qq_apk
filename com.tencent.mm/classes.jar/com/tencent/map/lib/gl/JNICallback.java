@@ -9,61 +9,78 @@ import android.graphics.Paint.Style;
 import android.graphics.PointF;
 import android.graphics.Typeface;
 import com.tencent.map.lib.d;
-import com.tencent.tencentmap.mapsdk.a.ih;
-import com.tencent.tencentmap.mapsdk.a.jr;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.hi;
+import com.tencent.tencentmap.mapsdk.maps.a.it;
 import java.util.Arrays;
 import java.util.Hashtable;
 
 public class JNICallback
 {
-  public JNICallback.i a = null;
-  private jr b;
+  public JNICallback.j a;
+  private it b;
   private JNICallback.a c;
   private JNICallback.h d;
-  private JNICallback.e e;
-  private JNICallback.d f;
-  private JNICallback.j g;
-  private JNICallback.b h;
-  private JNICallback.c i;
-  private JNICallback.k j;
-  private JNICallback.g k;
-  private JNICallback.f l;
-  private Hashtable<Long, Paint> m = new Hashtable();
-  private Hashtable<Long, PointF> n = new Hashtable();
-  private Bitmap o = null;
+  private JNICallback.i e;
+  private JNICallback.e f;
+  private JNICallback.d g;
+  private JNICallback.k h;
+  private JNICallback.b i;
+  private JNICallback.c j;
+  private JNICallback.l k;
+  private JNICallback.g l;
+  private JNICallback.f m;
+  private hi n;
+  private Hashtable<Long, Paint> o;
+  private Hashtable<Long, PointF> p;
+  private Bitmap q;
   
-  public JNICallback(jr paramjr, JNICallback.a parama, JNICallback.h paramh, JNICallback.e parame, JNICallback.g paramg)
+  public JNICallback(it paramit, JNICallback.a parama, JNICallback.h paramh, JNICallback.e parame, JNICallback.g paramg, hi paramhi, JNICallback.i parami)
   {
-    this.b = paramjr;
+    AppMethodBeat.i(147030);
+    this.o = new Hashtable();
+    this.p = new Hashtable();
+    this.q = null;
+    this.a = null;
+    this.b = paramit;
     this.c = parama;
     this.d = paramh;
-    this.e = parame;
-    this.k = paramg;
-    this.o = Bitmap.createBitmap(800, 400, Bitmap.Config.ALPHA_8);
-    this.a = new JNICallback.i(null);
+    this.e = parami;
+    this.f = parame;
+    this.l = paramg;
+    this.n = paramhi;
+    this.q = Bitmap.createBitmap(800, 400, Bitmap.Config.ALPHA_8);
+    this.a = new JNICallback.j(null);
+    AppMethodBeat.o(147030);
   }
   
   private Bitmap a(int paramInt, String paramString, byte[] paramArrayOfByte)
   {
-    if (this.o == null) {
-      this.o = Bitmap.createBitmap(800, 400, Bitmap.Config.ALPHA_8);
+    AppMethodBeat.i(98036);
+    if (this.q == null) {
+      this.q = Bitmap.createBitmap(800, 400, Bitmap.Config.ALPHA_8);
     }
-    if (this.o == null) {
+    if (this.q == null)
+    {
+      AppMethodBeat.o(98036);
       return null;
     }
     this.a.a(paramArrayOfByte);
     paramArrayOfByte = a(paramInt);
-    this.o.eraseColor(0);
-    Canvas localCanvas = new Canvas(this.o);
+    this.q.eraseColor(0);
+    Canvas localCanvas = new Canvas(this.q);
     float f1 = (paramArrayOfByte.descent() + paramArrayOfByte.ascent()) / 2.0F;
     paramArrayOfByte.setFakeBoldText(this.a.e);
     localCanvas.drawText(paramString, 400.0F, 200.0F - f1, paramArrayOfByte);
-    return this.o;
+    paramString = this.q;
+    AppMethodBeat.o(98036);
+    return paramString;
   }
   
   private Paint a(int paramInt)
   {
-    Paint localPaint2 = c();
+    AppMethodBeat.i(98035);
+    Paint localPaint2 = d();
     Paint localPaint1 = localPaint2;
     if (localPaint2 == null)
     {
@@ -77,13 +94,15 @@ public class JNICallback
     }
     localPaint1.setTextAlign(Paint.Align.CENTER);
     localPaint1.setTextSize(paramInt);
+    AppMethodBeat.o(98035);
     return localPaint1;
   }
   
   private PointF a(String paramString, int paramInt)
   {
+    AppMethodBeat.i(98037);
     float f1 = a(paramInt).measureText(paramString);
-    PointF localPointF = d();
+    PointF localPointF = e();
     paramString = localPointF;
     if (localPointF == null)
     {
@@ -92,203 +111,283 @@ public class JNICallback
     }
     paramString.x = (1.0F + f1);
     paramString.y = (paramInt + 2);
+    AppMethodBeat.o(98037);
     return paramString;
   }
   
-  private JNICallback.IconImageInfo a(int paramInt, byte[] paramArrayOfByte)
+  private IconImageInfo a(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+    AppMethodBeat.i(98038);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      AppMethodBeat.o(98038);
       return null;
     }
     try
     {
       paramArrayOfByte = new String(paramArrayOfByte);
-      if (paramInt == 1) {
-        return this.b.a(paramArrayOfByte);
+      if (paramInt == 1)
+      {
+        paramArrayOfByte = this.b.a(paramArrayOfByte);
+        AppMethodBeat.o(98038);
+        return paramArrayOfByte;
       }
       paramArrayOfByte = this.b.b(paramArrayOfByte);
+      AppMethodBeat.o(98038);
       return paramArrayOfByte;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      AppMethodBeat.o(98038);
+    }
     return null;
   }
   
   private void a(Paint paramPaint)
   {
-    if (this.m != null) {
-      this.m.put(Long.valueOf(Thread.currentThread().getId()), paramPaint);
+    AppMethodBeat.i(98032);
+    if (this.o != null) {
+      this.o.put(Long.valueOf(Thread.currentThread().getId()), paramPaint);
     }
+    AppMethodBeat.o(98032);
   }
   
   private void a(PointF paramPointF)
   {
-    if (this.n != null) {
-      this.n.put(Long.valueOf(Thread.currentThread().getId()), paramPointF);
+    AppMethodBeat.i(98034);
+    if (this.p != null) {
+      this.p.put(Long.valueOf(Thread.currentThread().getId()), paramPointF);
     }
+    AppMethodBeat.o(98034);
   }
   
   private void a(String paramString)
   {
+    AppMethodBeat.i(98039);
     if (this.c != null)
     {
-      d.a("Engine callback download:" + paramString);
-      this.c.c(paramString);
+      d.a("Engine callback download:".concat(String.valueOf(paramString)));
+      this.c.d(paramString);
     }
+    AppMethodBeat.o(98039);
   }
   
   private void a(String paramString, byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {
+    AppMethodBeat.i(98040);
+    if (paramArrayOfByte == null)
+    {
+      AppMethodBeat.o(98040);
       return;
     }
     new JNICallback.1(this, paramString, paramArrayOfByte).execute(new Void[0]);
+    AppMethodBeat.o(98040);
   }
   
-  private Paint c()
+  private Paint d()
   {
-    if (this.m == null) {
+    AppMethodBeat.i(147033);
+    if (this.o == null)
+    {
+      AppMethodBeat.o(147033);
       return null;
     }
-    return (Paint)this.m.get(Long.valueOf(Thread.currentThread().getId()));
+    Paint localPaint = (Paint)this.o.get(Long.valueOf(Thread.currentThread().getId()));
+    AppMethodBeat.o(147033);
+    return localPaint;
   }
   
-  private PointF d()
+  private PointF e()
   {
-    if (this.n == null) {
+    AppMethodBeat.i(147034);
+    if (this.p == null)
+    {
+      AppMethodBeat.o(147034);
       return null;
     }
-    return (PointF)this.n.get(Long.valueOf(Thread.currentThread().getId()));
+    PointF localPointF = (PointF)this.p.get(Long.valueOf(Thread.currentThread().getId()));
+    AppMethodBeat.o(147034);
+    return localPointF;
   }
   
   public Object a(int paramInt1, int paramInt2, String paramString, byte[] paramArrayOfByte)
   {
     boolean bool = false;
+    AppMethodBeat.i(98029);
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      return null;
-      return a(paramInt2, paramString, paramArrayOfByte);
-      return a(paramString, paramInt2);
-      a(paramString);
-      return null;
-      return a(paramInt2, paramArrayOfByte);
-      a(paramString, paramArrayOfByte);
-      return null;
-      if (this.d != null)
+      paramString = null;
+      byte[] arrayOfByte;
+      for (;;)
       {
-        this.d.g(paramInt2);
-        return null;
-        ih.a().a(paramString);
-        return null;
-        if (this.e != null)
-        {
-          this.e.B();
-          return null;
-          if (this.f != null)
-          {
-            return this.f.a(paramArrayOfByte);
-            if (this.k != null)
-            {
-              paramString = this.k;
-              if (paramInt2 > 0) {
-                bool = true;
-              }
-              paramString.b(bool);
-              return null;
-              if (this.g != null)
-              {
-                return this.g.a(paramArrayOfByte);
-                if (this.h != null)
-                {
-                  return this.h.a(paramArrayOfByte);
-                  if (this.i != null)
-                  {
-                    byte[] arrayOfByte = Arrays.copyOfRange(paramArrayOfByte, 0, 12);
-                    paramArrayOfByte = Arrays.copyOfRange(paramArrayOfByte, 12, paramArrayOfByte.length);
-                    this.i.a(paramString, arrayOfByte, paramArrayOfByte);
-                    return null;
-                    if (this.j != null)
-                    {
-                      arrayOfByte = Arrays.copyOfRange(paramArrayOfByte, 0, 12);
-                      paramArrayOfByte = Arrays.copyOfRange(paramArrayOfByte, 12, paramArrayOfByte.length);
-                      this.j.a(paramString, arrayOfByte, paramArrayOfByte);
-                    }
-                  }
-                }
-              }
-            }
-          }
+        AppMethodBeat.o(98029);
+        return paramString;
+        paramString = a(paramInt2, paramString, paramArrayOfByte);
+        continue;
+        paramString = a(paramString, paramInt2);
+        continue;
+        a(paramString);
+        paramString = null;
+        continue;
+        paramString = a(paramInt2, paramArrayOfByte);
+        continue;
+        a(paramString, paramArrayOfByte);
+        paramString = null;
+        continue;
+        if (this.e == null) {
+          break;
         }
+        this.e.h(paramInt2);
+        paramString = null;
+        continue;
+        if (this.n == null) {
+          break;
+        }
+        this.n.a(paramString);
+        paramString = null;
+        continue;
+        if (this.f == null) {
+          break;
+        }
+        this.f.y();
+        paramString = null;
+        continue;
+        if (this.g == null) {
+          break;
+        }
+        paramString = this.g.a(paramArrayOfByte);
+        AppMethodBeat.o(98029);
+        return paramString;
+        if (this.l == null) {
+          break;
+        }
+        paramString = this.l;
+        if (paramInt2 > 0) {
+          bool = true;
+        }
+        paramString.b(bool);
+        paramString = null;
+        continue;
+        if (this.h == null) {
+          break;
+        }
+        paramString = this.h.a(paramArrayOfByte);
+        AppMethodBeat.o(98029);
+        return paramString;
+        if (this.i == null) {
+          break;
+        }
+        paramString = this.i.a(paramArrayOfByte);
+        AppMethodBeat.o(98029);
+        return paramString;
+        if (this.j == null) {
+          break;
+        }
+        arrayOfByte = Arrays.copyOfRange(paramArrayOfByte, 0, 12);
+        paramArrayOfByte = Arrays.copyOfRange(paramArrayOfByte, 12, paramArrayOfByte.length);
+        this.j.a(paramString, arrayOfByte, paramArrayOfByte);
+        paramString = null;
+      }
+      if (this.k != null)
+      {
+        arrayOfByte = Arrays.copyOfRange(paramArrayOfByte, 0, 12);
+        paramArrayOfByte = Arrays.copyOfRange(paramArrayOfByte, 12, paramArrayOfByte.length);
+        this.k.a(paramString, arrayOfByte, paramArrayOfByte);
       }
     }
   }
   
   public void a()
   {
-    this.o = null;
+    AppMethodBeat.i(98028);
+    this.q = null;
     this.a = null;
-    if (this.m != null)
+    if (this.o != null)
     {
-      this.m.clear();
-      this.m = null;
+      this.o.clear();
+      this.o = null;
     }
-    if (this.n != null)
+    if (this.p != null)
     {
-      this.n.clear();
-      this.n = null;
+      this.p.clear();
+      this.p = null;
     }
     this.b = null;
     this.c = null;
-    this.d = null;
     this.e = null;
     this.f = null;
     this.g = null;
-    this.j = null;
+    this.h = null;
+    this.k = null;
+    AppMethodBeat.o(98028);
   }
   
   public void a(JNICallback.b paramb)
   {
-    this.h = paramb;
+    this.i = paramb;
   }
   
   public void a(JNICallback.c paramc)
   {
-    this.i = paramc;
+    this.j = paramc;
   }
   
   public void a(JNICallback.d paramd)
   {
-    this.f = paramd;
+    this.g = paramd;
   }
   
   public void a(JNICallback.f paramf)
   {
-    this.l = paramf;
-  }
-  
-  public void a(JNICallback.j paramj)
-  {
-    this.g = paramj;
+    this.m = paramf;
   }
   
   public void a(JNICallback.k paramk)
   {
-    this.j = paramk;
+    this.h = paramk;
   }
   
-  public int b()
+  public void a(JNICallback.l paraml)
   {
-    if (this.l != null) {
-      return this.l.getGLContext();
+    this.k = paraml;
+  }
+  
+  public void b()
+  {
+    AppMethodBeat.i(147031);
+    if (this.d != null) {
+      this.d.q();
     }
+    AppMethodBeat.o(147031);
+  }
+  
+  public int c()
+  {
+    AppMethodBeat.i(147032);
+    if (this.m != null)
+    {
+      int i1 = this.m.getEGLContextHash();
+      AppMethodBeat.o(147032);
+      return i1;
+    }
+    AppMethodBeat.o(147032);
     return 0;
+  }
+  
+  public static class IconImageInfo
+  {
+    public float anchorPointX1;
+    public float anchorPointY1;
+    public Bitmap bitmap;
+    public float scale;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.lib.gl.JNICallback
  * JD-Core Version:    0.7.0.1
  */

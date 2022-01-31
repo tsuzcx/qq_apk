@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsManageAuthUI$6
   implements MenuItem.OnMenuItemClickListener
@@ -10,12 +11,14 @@ final class SettingsManageAuthUI$6
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
+    AppMethodBeat.i(127251);
     if (paramMenuItem.getItemId() == 700)
     {
-      SettingsManageAuthUI.a(this.nUA, true);
-      SettingsManageAuthUI.d(this.nUA).notifyDataSetChanged();
-      SettingsManageAuthUI.e(this.nUA);
+      SettingsManageAuthUI.a(this.qIF, true);
+      SettingsManageAuthUI.d(this.qIF).notifyDataSetChanged();
+      SettingsManageAuthUI.e(this.qIF);
     }
+    AppMethodBeat.o(127251);
     return true;
   }
 }

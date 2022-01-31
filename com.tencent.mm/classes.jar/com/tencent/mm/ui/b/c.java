@@ -5,6 +5,7 @@ import android.support.v7.view.i;
 import android.view.ActionMode;
 import android.view.ActionMode.Callback;
 import android.view.Window.Callback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
   extends i
@@ -19,7 +20,10 @@ public final class c
   
   public final ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
   {
-    return this.mActivity.onWindowStartingActionMode(paramCallback);
+    AppMethodBeat.i(106157);
+    paramCallback = this.mActivity.onWindowStartingActionMode(paramCallback);
+    AppMethodBeat.o(106157);
+    return paramCallback;
   }
 }
 

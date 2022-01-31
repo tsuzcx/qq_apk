@@ -1,22 +1,21 @@
 package com.tencent.mm.compatible.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 
 public final class a
 {
-  public static boolean a(int paramInt, a parama)
+  public static boolean a(int paramInt, a.a parama)
   {
-    if (d.gF(paramInt))
+    AppMethodBeat.i(51922);
+    if (d.fv(paramInt))
     {
       parama.run();
+      AppMethodBeat.o(51922);
       return true;
     }
+    AppMethodBeat.o(51922);
     return false;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void run();
   }
 }
 

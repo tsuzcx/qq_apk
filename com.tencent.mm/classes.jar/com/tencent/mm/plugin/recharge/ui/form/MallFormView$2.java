@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.recharge.ui.form;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallFormView$2
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class MallFormView$2
   
   public final void onClick(View paramView)
   {
-    this.nsB.bvr();
+    AppMethodBeat.i(44376);
+    this.pXP.cfK();
+    AppMethodBeat.o(44376);
   }
 }
 

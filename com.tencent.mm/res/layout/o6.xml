@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="@dimen/fc" android:minHeight="@dimen/fd"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/gf"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/aud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:maxWidth="@dimen/fc" android:maxHeight="@dimen/fc" android:minWidth="@dimen/fd" android:minHeight="@dimen/fd" />
-    <ImageView android:layout_gravity="bottom|center|left" android:id="@id/aug" android:paddingLeft="5.0dip" android:paddingBottom="3.0dip" android:layout_width="20.0dip" android:layout_height="20.0dip" />
-</FrameLayout>
+    <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gh">
+        <TextView android:id="@id/ox" android:visibility="gone" style="@style/gl" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/au4" android:layout_marginRight="6.0dip" style="@style/gp" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/ave" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" style="@style/a0t" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip">
+                <FrameLayout android:id="@id/ar0" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:layout_gravity="center" android:id="@id/aso" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <ImageView android:id="@id/ass" android:background="@drawable/im" android:layout_width="@dimen/e9" android:layout_height="@dimen/e9" />
+                    <ImageView android:layout_gravity="center" android:id="@id/asr" android:background="@null" android:layout_width="@dimen/ee" android:layout_height="@dimen/ee" />
+                </FrameLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:ellipsize="end" android:id="@id/arq" android:layout_marginLeft="0.0dip" android:singleLine="true" style="@style/g8" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.mm.ui.chatting.view.AvatarImageView android:id="@id/ow" android:focusable="false" android:visibility="gone" style="@style/ge" />
+</LinearLayout>

@@ -1,7 +1,7 @@
 package com.tencent.xweb.extension.video;
 
 import android.widget.ImageView;
-import org.xwalk.core.R.drawable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$2
   implements Runnable
@@ -10,12 +10,15 @@ final class d$2
   
   public final void run()
   {
-    if (this.xiG)
+    AppMethodBeat.i(84576);
+    if (this.BFS)
     {
-      d.k(this.xiF).setImageResource(R.drawable.xweb_video_play_btn);
+      d.k(this.BFR).setImageResource(2130840985);
+      AppMethodBeat.o(84576);
       return;
     }
-    d.k(this.xiF).setImageResource(R.drawable.xweb_video_stop_btn);
+    d.k(this.BFR).setImageResource(2130840987);
+    AppMethodBeat.o(84576);
   }
 }
 

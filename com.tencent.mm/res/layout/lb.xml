@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="left" android:layout_width="fill_parent" style="@style/fx"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/ki" style="@style/fu" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:id="@id/mp" android:visibility="gone" style="@style/g1" />
-        <FrameLayout android:id="@id/aku" android:layout_width="@dimen/uw" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="vertical" android:background="@drawable/gp" android:layout_width="fill_parent" style="@style/g_">
-                <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/uu" android:paddingTop="@dimen/l3" android:paddingRight="@dimen/l3" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <ImageView android:layout_gravity="center_horizontal" android:id="@id/amh" android:background="@drawable/a_2" android:layout_width="@dimen/e_" android:layout_height="@dimen/e_" android:layout_centerInParent="true" />
-                    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l3" android:layout_weight="1.0">
-                        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:ellipsize="end" android:id="@id/ami" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-                        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/my" android:textColor="@color/pf" android:ellipsize="end" android:id="@id/amj" android:paddingTop="@dimen/ll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-                    </LinearLayout>
-                </LinearLayout>
-                <ImageView android:layout_gravity="center_vertical" android:background="@color/hy" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/l3" />
-                <com.tencent.mm.ui.widget.MMTextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/amk" android:background="@drawable/h_" android:paddingLeft="@dimen/l3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="0.0dip" android:minHeight="20.0dip" android:singleLine="true" style="@style/fs" />
-            </LinearLayout>
-            <ImageView android:id="@id/alo" android:background="@drawable/g9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </FrameLayout>
+    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:id="@id/o1" android:paddingLeft="@dimen/ft" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" style="@style/mo" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/o3" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="@dimen/f1">
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/o4" android:layout_width="@dimen/ez" android:layout_height="@dimen/ez">
+                <ImageView android:id="@id/k6" android:layout_width="@dimen/ey" android:layout_height="@dimen/ey" android:src="@raw/default_avatar" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <com.tencent.mm.ui.base.EllipsizeTextView android:id="@id/oa" android:background="@drawable/abk" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/g2" android:text="{nick}" android:singleLine="true" android:layout_weight="1.0" style="@style/ln" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

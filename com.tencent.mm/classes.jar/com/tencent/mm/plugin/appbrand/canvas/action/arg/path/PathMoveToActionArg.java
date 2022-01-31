@@ -2,15 +2,23 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg.path;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.plugin.appbrand.u.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s.g;
 import org.json.JSONObject;
 
 public class PathMoveToActionArg
   extends BasePathActionArg
 {
-  public static final Parcelable.Creator<PathMoveToActionArg> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<PathMoveToActionArg> CREATOR;
   public float x;
   public float y;
+  
+  static
+  {
+    AppMethodBeat.i(103621);
+    CREATOR = new PathMoveToActionArg.1();
+    AppMethodBeat.o(103621);
+  }
   
   public PathMoveToActionArg() {}
   
@@ -26,43 +34,58 @@ public class PathMoveToActionArg
   
   public boolean equals(Object paramObject)
   {
-    if (!super.equals(paramObject)) {}
-    do
+    AppMethodBeat.i(103620);
+    if (!super.equals(paramObject))
     {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof PathMoveToActionArg));
+      AppMethodBeat.o(103620);
+      return false;
+    }
+    if ((paramObject instanceof PathMoveToActionArg))
+    {
       paramObject = (PathMoveToActionArg)paramObject;
-    } while ((paramObject.x != this.x) || (paramObject.y != this.y));
-    return true;
+      if ((paramObject.x == this.x) && (paramObject.y == this.y))
+      {
+        AppMethodBeat.o(103620);
+        return true;
+      }
+      AppMethodBeat.o(103620);
+      return false;
+    }
+    AppMethodBeat.o(103620);
+    return false;
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
-    super.f(paramParcel);
+    AppMethodBeat.i(103619);
+    super.h(paramParcel);
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
+    AppMethodBeat.o(103619);
   }
   
-  public final void j(JSONObject paramJSONObject)
+  public final void p(JSONObject paramJSONObject)
   {
-    super.j(paramJSONObject);
+    AppMethodBeat.i(103617);
+    super.p(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    this.x = h.d(paramJSONObject, 0);
-    this.y = h.d(paramJSONObject, 1);
+    this.x = g.d(paramJSONObject, 0);
+    this.y = g.d(paramJSONObject, 1);
+    AppMethodBeat.o(103617);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(103618);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeFloat(this.x);
     paramParcel.writeFloat(this.y);
+    AppMethodBeat.o(103618);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathMoveToActionArg
  * JD-Core Version:    0.7.0.1
  */

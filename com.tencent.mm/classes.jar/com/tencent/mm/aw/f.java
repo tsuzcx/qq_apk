@@ -1,28 +1,36 @@
 package com.tencent.mm.aw;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.ar;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class f
-  implements ar
 {
-  public final void bh(boolean paramBoolean) {}
-  
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease() {}
-  
-  public final HashMap<Integer, h.d> xe()
+  public static e a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
   {
-    return null;
+    AppMethodBeat.i(137259);
+    e locale = new e();
+    locale.fKh = paramInt;
+    locale.fKo = paramString1;
+    locale.fKl = paramString2;
+    locale.fKm = paramString3;
+    locale.fKr = paramString4;
+    locale.fKq = paramString5;
+    locale.fKp = paramString6;
+    locale.fKu = paramString8;
+    locale.fKw = paramString11;
+    locale.fKt = paramString9;
+    locale.fKj = paramString7;
+    locale.fKk = 0.0F;
+    locale.fKn = paramString10;
+    locale.fKi = 1;
+    locale.fKs = null;
+    locale.fKz = paramString7;
+    AppMethodBeat.o(137259);
+    return locale;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.aw.f
  * JD-Core Version:    0.7.0.1
  */

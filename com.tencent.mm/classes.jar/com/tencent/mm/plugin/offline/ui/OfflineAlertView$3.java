@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import com.tencent.mm.ui.u;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.t;
 
 final class OfflineAlertView$3
-  extends u
+  extends t
 {
   OfflineAlertView$3(OfflineAlertView paramOfflineAlertView) {}
   
-  public final void aEI()
+  public final void bhX()
   {
-    this.mLZ.dismiss();
+    AppMethodBeat.i(43445);
+    this.pmp.dismiss();
+    AppMethodBeat.o(43445);
   }
 }
 

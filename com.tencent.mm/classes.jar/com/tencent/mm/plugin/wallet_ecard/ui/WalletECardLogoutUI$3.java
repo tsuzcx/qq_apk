@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.wallet_ecard.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class WalletECardLogoutUI$3
-  implements n.a
+  implements p.a
 {
   WalletECardLogoutUI$3(WalletECardLogoutUI paramWalletECardLogoutUI) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm) {}
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm) {}
 }
 
 

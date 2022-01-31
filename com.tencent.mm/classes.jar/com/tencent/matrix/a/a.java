@@ -1,37 +1,19 @@
 package com.tencent.matrix.a;
 
 import android.app.Application;
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.matrix.a.b.c.3;
-import com.tencent.matrix.a.b.c.4;
-import com.tencent.matrix.a.b.d;
-import com.tencent.matrix.a.b.e;
-import com.tencent.matrix.a.b.f;
+import com.tencent.matrix.d.b;
+import com.tencent.matrix.g.d;
 
 public final class a
-  extends com.tencent.matrix.b.b
+  extends b
 {
-  public final com.tencent.matrix.a.a.a bmq;
-  private com.tencent.matrix.a.b.c bmr;
-  private boolean bms = false;
+  public final com.tencent.matrix.a.a.a bLZ;
+  private com.tencent.matrix.a.b.c bMa;
+  private boolean bMb;
   
-  public a()
+  public final void destroy()
   {
-    this.bmq = com.tencent.matrix.a.a.a.bmt;
-  }
-  
-  public a(com.tencent.matrix.a.a.a parama)
-  {
-    this.bmq = parama;
-  }
-  
-  public final void a(Application paramApplication, com.tencent.matrix.b.c paramc)
-  {
-    super.a(paramApplication, paramc);
-    com.tencent.matrix.a.c.a.ag(paramApplication);
-    com.tencent.matrix.a.c.a.bw(com.tencent.matrix.d.c.ak(paramApplication));
-    this.bmr = new com.tencent.matrix.a.b.c(this);
+    super.destroy();
   }
   
   public final String getTag()
@@ -39,119 +21,113 @@ public final class a
     return "battery";
   }
   
-  public final void start()
+  public final void init(Application paramApplication, com.tencent.matrix.d.c paramc)
   {
-    Object localObject1;
-    try
-    {
-      if ((re()) || (this.bms)) {
-        break label168;
-      }
-      super.start();
-      com.tencent.matrix.a.b.c localc1 = this.bmr;
-      localObject1 = localc1.bnf;
-      if (!((d)localObject1).started)
-      {
-        ((d)localObject1).bny = new Handler(com.tencent.matrix.d.a.rt().getLooper());
-        ((d)localObject1).started = true;
-      }
-      localObject1 = localc1.bmq;
-      if (localObject1 == null) {
-        throw new RuntimeException("batteryConfig is null");
-      }
-    }
-    finally {}
-    if (((com.tencent.matrix.a.a.a)localObject1).ed(1))
-    {
-      localc2.bni = new f(localc2, (com.tencent.matrix.a.a.a)localObject1, new c.3(localc2));
-      e.a(localc2);
-    }
-    if (((com.tencent.matrix.a.a.a)localObject1).ed(4))
-    {
-      localc2.bnj = new com.tencent.matrix.a.b.a(localc2, localc2.bmq);
-      localc2.bnf.h(new c.4(localc2));
-      com.tencent.matrix.a.b.b.a(localc2);
-    }
-    try
-    {
-      localc2.bnh = true;
-      label168:
-      return;
-    }
-    finally {}
+    super.init(paramApplication, paramc);
+    com.tencent.matrix.a.c.a.setPackageName(paramApplication);
+    com.tencent.matrix.a.c.a.setProcessName(d.aI(paramApplication));
+    this.bMa = new com.tencent.matrix.a.b.c(this);
   }
   
   /* Error */
-  public final void stop()
+  public final void onForeground(boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: iconst_0
-    //   4: putfield 16	com/tencent/matrix/a/a:bms	Z
-    //   7: aload_0
-    //   8: invokevirtual 61	com/tencent/matrix/a/a:re	()Z
-    //   11: ifeq +59 -> 70
-    //   14: aload_0
-    //   15: invokespecial 150	com/tencent/matrix/b/b:stop	()V
-    //   18: aload_0
-    //   19: getfield 52	com/tencent/matrix/a/a:bmr	Lcom/tencent/matrix/a/b/c;
-    //   22: astore_1
-    //   23: aload_1
-    //   24: monitorenter
-    //   25: aload_1
-    //   26: iconst_0
-    //   27: putfield 147	com/tencent/matrix/a/b/c:bnh	Z
-    //   30: aload_1
-    //   31: monitorexit
-    //   32: aload_1
-    //   33: invokestatic 153	com/tencent/matrix/a/b/e:b	(Lcom/tencent/matrix/a/b/e$b;)V
-    //   36: aload_1
-    //   37: invokestatic 155	com/tencent/matrix/a/b/b:b	(Lcom/tencent/matrix/a/b/b$c;)V
-    //   40: aload_1
-    //   41: getfield 67	com/tencent/matrix/a/b/c:bnf	Lcom/tencent/matrix/a/b/d;
-    //   44: astore_2
-    //   45: aload_2
-    //   46: getfield 72	com/tencent/matrix/a/b/d:started	Z
-    //   49: ifeq +16 -> 65
-    //   52: aload_2
-    //   53: getfield 93	com/tencent/matrix/a/b/d:bny	Landroid/os/Handler;
-    //   56: aconst_null
-    //   57: invokevirtual 159	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
-    //   60: aload_2
-    //   61: iconst_0
-    //   62: putfield 72	com/tencent/matrix/a/b/d:started	Z
-    //   65: aload_1
-    //   66: aconst_null
-    //   67: putfield 118	com/tencent/matrix/a/b/c:bni	Lcom/tencent/matrix/a/b/f;
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: return
-    //   73: astore_2
-    //   74: aload_1
-    //   75: monitorexit
-    //   76: aload_2
-    //   77: athrow
-    //   78: astore_1
-    //   79: aload_0
-    //   80: monitorexit
-    //   81: aload_1
-    //   82: athrow
+    //   2: ldc 51
+    //   4: ldc 53
+    //   6: iload_1
+    //   7: invokestatic 59	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   10: invokevirtual 63	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   13: iconst_0
+    //   14: anewarray 65	java/lang/Object
+    //   17: invokestatic 71	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   20: aload_0
+    //   21: iload_1
+    //   22: invokespecial 73	com/tencent/matrix/d/b:onForeground	(Z)V
+    //   25: iload_1
+    //   26: ifeq +29 -> 55
+    //   29: aload_0
+    //   30: invokevirtual 77	com/tencent/matrix/a/a:isPluginStarted	()Z
+    //   33: ifeq +22 -> 55
+    //   36: aload_0
+    //   37: iconst_1
+    //   38: putfield 79	com/tencent/matrix/a/a:bMb	Z
+    //   41: aload_0
+    //   42: invokespecial 82	com/tencent/matrix/d/b:stop	()V
+    //   45: aload_0
+    //   46: getfield 47	com/tencent/matrix/a/a:bMa	Lcom/tencent/matrix/a/b/c;
+    //   49: invokevirtual 83	com/tencent/matrix/a/b/c:stop	()V
+    //   52: aload_0
+    //   53: monitorexit
+    //   54: return
+    //   55: iload_1
+    //   56: ifne -4 -> 52
+    //   59: aload_0
+    //   60: invokevirtual 86	com/tencent/matrix/a/a:isPluginStopped	()Z
+    //   63: ifeq -11 -> 52
+    //   66: aload_0
+    //   67: getfield 79	com/tencent/matrix/a/a:bMb	Z
+    //   70: ifeq -18 -> 52
+    //   73: aload_0
+    //   74: invokespecial 89	com/tencent/matrix/d/b:start	()V
+    //   77: aload_0
+    //   78: getfield 47	com/tencent/matrix/a/a:bMa	Lcom/tencent/matrix/a/b/c;
+    //   81: invokevirtual 90	com/tencent/matrix/a/b/c:start	()V
+    //   84: goto -32 -> 52
+    //   87: astore_2
+    //   88: aload_0
+    //   89: monitorexit
+    //   90: aload_2
+    //   91: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	83	0	this	a
-    //   78	4	1	localObject1	Object
-    //   44	17	2	locald	d
-    //   73	4	2	localObject2	Object
+    //   0	92	0	this	a
+    //   0	92	1	paramBoolean	boolean
+    //   87	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   25	32	73	finally
-    //   74	76	73	finally
-    //   2	25	78	finally
-    //   32	65	78	finally
-    //   65	70	78	finally
-    //   76	78	78	finally
+    //   2	25	87	finally
+    //   29	52	87	finally
+    //   59	84	87	finally
+  }
+  
+  public final void start()
+  {
+    try
+    {
+      if ((!isPluginStarted()) && (!this.bMb))
+      {
+        super.start();
+        this.bMa.start();
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void stop()
+  {
+    try
+    {
+      this.bMb = false;
+      if (isPluginStarted())
+      {
+        super.stop();
+        this.bMa.stop();
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.appbrand.canvas.b;
 
 import android.graphics.Path;
 import android.graphics.RectF;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.BasePathActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathArcActionArg;
-import com.tencent.mm.plugin.appbrand.u.h;
+import com.tencent.mm.plugin.appbrand.s.g;
 import org.json.JSONArray;
 
 public final class b
@@ -12,6 +13,7 @@ public final class b
 {
   private static boolean a(Path paramPath, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
   {
+    AppMethodBeat.i(103667);
     float f1 = paramFloat1 - paramFloat3;
     float f2 = paramFloat2 - paramFloat3;
     float f3 = paramFloat1 + paramFloat3;
@@ -25,7 +27,7 @@ public final class b
         paramFloat1 = -360.0F;
         paramFloat2 = paramFloat1 % 360.0F;
         if ((paramFloat2 > paramFloat5) || (paramFloat2 < -paramFloat5)) {
-          break label271;
+          break label281;
         }
         paramPath.arcTo(new RectF(f1, f2, f3, f4), paramFloat4, paramFloat1, false);
         paramPath.addArc(new RectF(f1, f2, f3, f4), paramFloat4, paramFloat1);
@@ -33,6 +35,7 @@ public final class b
     }
     for (;;)
     {
+      AppMethodBeat.o(103667);
       return true;
       paramFloat2 = paramFloat4 % 360.0F;
       paramFloat3 = paramFloat1 % 360.0F;
@@ -73,31 +76,44 @@ public final class b
       }
       paramFloat1 = paramFloat2 + 360.0F - paramFloat1;
       break;
-      label271:
+      label281:
       paramPath.arcTo(new RectF(f1, f2, f3, f4), paramFloat4, paramFloat1, false);
     }
   }
   
   public final boolean a(Path paramPath, BasePathActionArg paramBasePathActionArg)
   {
-    if ((paramBasePathActionArg == null) || (!(paramBasePathActionArg instanceof PathArcActionArg))) {
+    AppMethodBeat.i(103665);
+    if ((paramBasePathActionArg == null) || (!(paramBasePathActionArg instanceof PathArcActionArg)))
+    {
+      AppMethodBeat.o(103665);
       return false;
     }
     paramBasePathActionArg = (PathArcActionArg)paramBasePathActionArg;
-    return a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.fLC, paramBasePathActionArg.fMe, paramBasePathActionArg.fMf);
+    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.heN, paramBasePathActionArg.hfo, paramBasePathActionArg.hfp);
+    AppMethodBeat.o(103665);
+    return bool;
   }
   
   public final boolean a(Path paramPath, JSONArray paramJSONArray)
   {
-    if (paramJSONArray.length() < 5) {
+    AppMethodBeat.i(103664);
+    if (paramJSONArray.length() < 5)
+    {
+      AppMethodBeat.o(103664);
       return false;
     }
-    return a(paramPath, h.d(paramJSONArray, 0), h.d(paramJSONArray, 1), h.d(paramJSONArray, 2), (float)paramJSONArray.optDouble(3), (float)paramJSONArray.optDouble(4), paramJSONArray.optBoolean(5));
+    boolean bool = a(paramPath, g.d(paramJSONArray, 0), g.d(paramJSONArray, 1), g.d(paramJSONArray, 2), (float)paramJSONArray.optDouble(3), (float)paramJSONArray.optDouble(4), paramJSONArray.optBoolean(5));
+    AppMethodBeat.o(103664);
+    return bool;
   }
   
-  public final BasePathActionArg adQ()
+  public final BasePathActionArg ayi()
   {
-    return new PathArcActionArg();
+    AppMethodBeat.i(103666);
+    PathArcActionArg localPathArcActionArg = new PathArcActionArg();
+    AppMethodBeat.o(103666);
+    return localPathArcActionArg;
   }
   
   public final String getMethod()

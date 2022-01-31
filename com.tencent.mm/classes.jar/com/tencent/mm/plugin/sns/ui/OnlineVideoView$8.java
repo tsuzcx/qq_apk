@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.k;
+import com.tencent.mm.ui.widget.b.e.a;
 import com.tencent.mm.vfs.e;
 
 final class OnlineVideoView$8
@@ -14,18 +15,32 @@ final class OnlineVideoView$8
   
   public final void run()
   {
+    AppMethodBeat.i(38397);
     Intent localIntent = new Intent();
     localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setDataAndType(e.aeP(this.kjY), "video/*");
+    k.a(this.rJD.getContext(), localIntent, e.avH(this.mED), "video/*");
     try
     {
-      this.oRM.getContext().startActivity(localIntent);
+      this.rJD.getContext().startActivity(localIntent);
+      AppMethodBeat.o(38397);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.OnlineVideoView", "startActivity fail, activity not found");
-      h.h(this.oRM.getContext(), i.j.favorite_no_match_msg, i.j.favorite_no_match_title);
+      ab.e("MicroMsg.OnlineVideoView", "startActivity fail, activity not found");
+      try
+      {
+        e.a locala = new e.a(this.rJD.getContext());
+        locala.avu(this.rJD.getContext().getString(2131299759));
+        locala.aj(this.rJD.getContext().getString(2131299760)).c(new OnlineVideoView.8.1(this)).show();
+        AppMethodBeat.o(38397);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        ab.e("MicroMsg.OnlineVideoView", "showAlert fail");
+        AppMethodBeat.o(38397);
+      }
     }
   }
 }

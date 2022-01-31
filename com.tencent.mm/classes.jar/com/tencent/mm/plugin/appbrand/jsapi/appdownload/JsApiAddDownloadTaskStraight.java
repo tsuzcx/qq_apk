@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.appdownload;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class JsApiAddDownloadTaskStraight
-  extends a<o>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 440;
   public static final String NAME = "addDownloadTaskStraight";

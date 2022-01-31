@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.bt;
-import com.tencent.mm.plugin.ad.a.b.a;
-import com.tencent.mm.plugin.scanner.a.m;
-import com.tencent.mm.plugin.scanner.util.d;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bv;
+import com.tencent.mm.plugin.scanner.model.n;
+import com.tencent.mm.plugin.scanner.util.e;
+import com.tencent.mm.plugin.u.a.b.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -16,65 +16,72 @@ final class p$7
 {
   p$7(p paramp, Activity paramActivity) {}
   
-  public final void Lv(String paramString)
+  public final void XF(String paramString)
   {
-    m.nHb.wO(m.nGZ);
-    if (this.nMw.nMk != null) {
-      this.nMw.nMk.byg();
+    AppMethodBeat.i(81210);
+    n.qux.CE(n.quv);
+    if (this.qAf.qzR != null) {
+      this.qAf.qzR.restartDecoder();
     }
-    if ((this.nMw.dnm == null) || (!this.nMw.dnm.isShowing()))
+    if ((this.qAf.eeN == null) || (!this.qAf.eeN.isShowing()))
     {
-      this.nMw.nMm = false;
-      this.nMw.nMl.set(false);
-      this.nMw.nMn = false;
+      this.qAf.qzT = false;
+      this.qAf.qzS.set(false);
+      this.qAf.qzU = false;
+      AppMethodBeat.o(81210);
       return;
     }
-    if (this.nMw.nLB != null) {
-      this.nMw.nLB.ix(true);
+    if (this.qAf.qzg != null) {
+      this.qAf.qzg.kA(true);
     }
-    this.nMw.dnm.dismiss();
-    m.nHb.bcI();
-    h.a(this.val$activity, R.l.qrcode_read_file_failed, R.l.app_tip, new p.7.2(this));
-    this.nMw.nMl.set(false);
+    this.qAf.eeN.dismiss();
+    n.qux.bJP();
+    h.a(this.val$activity, 2131302248, 2131297087, new p.7.2(this));
+    this.qAf.qzS.set(false);
+    AppMethodBeat.o(81210);
   }
   
-  public final void a(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void a(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt1, int paramInt2, String paramString3)
   {
     int j = 1;
-    m.nHb.wO(m.nGZ);
-    if (this.nMw.nMk != null) {
-      this.nMw.nMk.byg();
+    AppMethodBeat.i(151681);
+    n.qux.CE(n.quv);
+    if (this.qAf.qzR != null) {
+      this.qAf.qzR.restartDecoder();
     }
-    if ((this.nMw.dnm == null) || (!this.nMw.dnm.isShowing()))
+    if ((this.qAf.eeN == null) || (!this.qAf.eeN.isShowing()))
     {
-      this.nMw.nMm = false;
-      this.nMw.nMn = false;
+      this.qAf.qzT = false;
+      this.qAf.qzU = false;
+      AppMethodBeat.o(151681);
       return;
     }
-    if (this.nMw.nLB != null) {
-      this.nMw.nLB.ix(true);
+    if (this.qAf.qzg != null) {
+      this.qAf.qzg.kA(true);
     }
-    this.nMw.dnm.dismiss();
-    if (bk.bl(paramString2))
+    this.qAf.eeN.dismiss();
+    if (bo.isNullOrNil(paramString2))
     {
-      m.nHb.bcI();
-      h.a(this.val$activity, R.l.qrcode_read_file_failed, R.l.app_tip, new p.7.1(this));
+      n.qux.bJP();
+      h.a(this.val$activity, 2131302248, 2131297087, new p.7.1(this));
+      AppMethodBeat.o(151681);
       return;
     }
-    bt.If().d(10237, new Object[] { Integer.valueOf(1) });
-    this.nMw.nLB.bxy();
+    bv.abc().c(10237, new Object[] { Integer.valueOf(1) });
+    this.qAf.qzg.ciy();
     int i = j;
     if (paramInt1 != 19) {
       if (paramInt1 != 22) {
-        break label230;
+        break label250;
       }
     }
-    label230:
+    label250:
     for (i = j;; i = 2)
     {
-      p.a(this.nMw, i, paramString2, paramArrayOfByte, paramInt1, paramInt2);
-      this.nMw.nMn = false;
-      this.nMw.nMl.set(false);
+      p.a(this.qAf, i, paramString2, paramArrayOfByte, paramInt1, paramInt2, paramString3);
+      this.qAf.qzU = false;
+      this.qAf.qzS.set(false);
+      AppMethodBeat.o(151681);
       return;
     }
   }

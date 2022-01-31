@@ -3,8 +3,8 @@ package com.tencent.pb.common.system;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.g.a.a;
-import com.tencent.g.f;
+import com.tencent.h.a.a;
+import com.tencent.h.f;
 import com.tencent.pb.common.b.g;
 import com.tencent.pb.common.b.h;
 import com.tencent.pb.common.c.c;
@@ -12,7 +12,7 @@ import com.tencent.pb.common.c.c;
 public class ConnectReceiver
   extends BroadcastReceiver
 {
-  private static g wJB = null;
+  private static g Bhb = null;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -26,27 +26,27 @@ public class ConnectReceiver
         if (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction())) {
           return;
         }
-        if (wJB == null) {
-          wJB = new g();
+        if (Bhb == null) {
+          Bhb = new g();
         }
         boolean bool1 = h.isNetworkConnected();
-        boolean bool2 = wJB.vW();
-        paramContext = (a)f.agr("EventCenter");
+        boolean bool2 = Bhb.Ik();
+        paramContext = (a)f.axi("EventCenter");
         if ((!bool2) || (paramContext == null)) {
           return;
         }
         if (bool1)
         {
-          paramContext.c("GLOBAL_TOPIC_NETWORK_CHANGE", 21, null);
+          paramContext.b("GLOBAL_TOPIC_NETWORK_CHANGE", 21, null);
           return;
         }
       }
       catch (Throwable paramContext)
       {
-        c.x("ConnectReceiver", new Object[] { "onReceive", paramContext });
+        c.w("ConnectReceiver", new Object[] { "onReceive", paramContext });
         return;
       }
-      paramContext.c("GLOBAL_TOPIC_NETWORK_CHANGE", 33, null);
+      paramContext.b("GLOBAL_TOPIC_NETWORK_CHANGE", 33, null);
     }
   }
 }

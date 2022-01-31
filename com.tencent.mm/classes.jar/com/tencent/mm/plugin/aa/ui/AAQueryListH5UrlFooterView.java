@@ -6,41 +6,48 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.ui.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.w;
 
 public class AAQueryListH5UrlFooterView
   extends LinearLayout
 {
-  private TextView eXw;
+  private TextView gpt;
   
   public AAQueryListH5UrlFooterView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(40720);
     init(paramContext);
+    AppMethodBeat.o(40720);
   }
   
   public AAQueryListH5UrlFooterView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(40721);
     init(paramContext);
+    AppMethodBeat.o(40721);
   }
   
   public AAQueryListH5UrlFooterView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(40722);
     init(paramContext);
+    AppMethodBeat.o(40722);
   }
   
   private void init(Context paramContext)
   {
-    this.eXw = ((TextView)y.gt(paramContext).inflate(a.g.aa_record_list_h5url_footer, this, true).findViewById(a.f.aa_record_bottom_link_tv));
+    AppMethodBeat.i(40723);
+    this.gpt = ((TextView)w.hM(paramContext).inflate(2130968580, this, true).findViewById(2131820909));
+    AppMethodBeat.o(40723);
   }
   
   public TextView getBottomLinkTv()
   {
-    return this.eXw;
+    return this.gpt;
   }
 }
 

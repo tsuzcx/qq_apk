@@ -2,11 +2,11 @@ package com.tencent.mm.model.a;
 
 public final class e
 {
-  public String dYh;
-  public long dYi;
-  public boolean dYj = false;
-  public long dYk = 0L;
   public long endTime;
+  public String fol;
+  public long fom;
+  public boolean fon = false;
+  public long foo = 0L;
   public String id;
   public String result;
   public long startTime;

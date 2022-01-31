@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class SettingsUI$20
   implements f
@@ -12,8 +13,10 @@ final class SettingsUI$20
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.d("MicroMsg.SettingsUI", "onSceneEnd " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString + "  " + paramm.getType());
-    ai.d(new SettingsUI.20.1(this, paramm, paramInt2, paramInt1));
+    AppMethodBeat.i(127583);
+    ab.d("MicroMsg.SettingsUI", "onSceneEnd " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString + "  " + paramm.getType());
+    al.d(new SettingsUI.20.1(this, paramm, paramInt2, paramInt1));
+    AppMethodBeat.o(127583);
   }
 }
 

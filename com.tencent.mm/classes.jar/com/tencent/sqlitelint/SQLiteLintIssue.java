@@ -4,11 +4,12 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SQLiteLintIssue
   implements Parcelable
 {
-  public static final Parcelable.Creator<SQLiteLintIssue> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<SQLiteLintIssue> CREATOR;
   public static final int ERROR = 4;
   public static final int PASS = 0;
   public static final int SUGGESTION = 2;
@@ -29,10 +30,32 @@ public class SQLiteLintIssue
   public String table;
   public int type;
   
+  static
+  {
+    AppMethodBeat.i(94018);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final SQLiteLintIssue createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(94010);
+        paramAnonymousParcel = new SQLiteLintIssue(paramAnonymousParcel);
+        AppMethodBeat.o(94010);
+        return paramAnonymousParcel;
+      }
+      
+      public final SQLiteLintIssue[] newArray(int paramAnonymousInt)
+      {
+        return new SQLiteLintIssue[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(94018);
+  }
+  
   public SQLiteLintIssue() {}
   
   protected SQLiteLintIssue(Parcel paramParcel)
   {
+    AppMethodBeat.i(94016);
     this.id = paramParcel.readString();
     this.dbPath = paramParcel.readString();
     this.level = paramParcel.readInt();
@@ -49,6 +72,7 @@ public class SQLiteLintIssue
     for (;;)
     {
       this.isInMainThread = bool;
+      AppMethodBeat.o(94016);
       return;
       bool = false;
     }
@@ -73,18 +97,24 @@ public class SQLiteLintIssue
   
   public static String getLevelText(int paramInt, Context paramContext)
   {
+    AppMethodBeat.i(94013);
     switch (paramInt)
     {
     default: 
-      return paramContext.getString(d.d.diagnosis_level_suggestion);
-    case 1: 
-      return paramContext.getString(d.d.diagnosis_level_tips);
-    case 2: 
-      return paramContext.getString(d.d.diagnosis_level_suggestion);
-    case 3: 
-      return paramContext.getString(d.d.diagnosis_level_warning);
+      paramContext = paramContext.getString(2131306150);
     }
-    return paramContext.getString(d.d.diagnosis_level_error);
+    for (;;)
+    {
+      AppMethodBeat.o(94013);
+      return paramContext;
+      paramContext = paramContext.getString(2131306151);
+      continue;
+      paramContext = paramContext.getString(2131306150);
+      continue;
+      paramContext = paramContext.getString(2131306152);
+      continue;
+      paramContext = paramContext.getString(2131306149);
+    }
   }
   
   public int describeContents()
@@ -94,19 +124,28 @@ public class SQLiteLintIssue
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof SQLiteLintIssue)) {
+    AppMethodBeat.i(94014);
+    if (!(paramObject instanceof SQLiteLintIssue))
+    {
+      AppMethodBeat.o(94014);
       return false;
     }
-    return ((SQLiteLintIssue)paramObject).id.equals(((SQLiteLintIssue)paramObject).id);
+    boolean bool = ((SQLiteLintIssue)paramObject).id.equals(this.id);
+    AppMethodBeat.o(94014);
+    return bool;
   }
   
   public int hashCode()
   {
-    return this.id.hashCode();
+    AppMethodBeat.i(94015);
+    int i = this.id.hashCode();
+    AppMethodBeat.o(94015);
+    return i;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(94017);
     paramParcel.writeString(this.id);
     paramParcel.writeString(this.dbPath);
     paramParcel.writeInt(this.level);
@@ -123,6 +162,7 @@ public class SQLiteLintIssue
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
+      AppMethodBeat.o(94017);
       return;
     }
   }

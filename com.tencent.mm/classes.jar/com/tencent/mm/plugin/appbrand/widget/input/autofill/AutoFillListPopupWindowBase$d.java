@@ -5,7 +5,8 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class AutoFillListPopupWindowBase$d
   implements AbsListView.OnScrollListener
@@ -14,25 +15,29 @@ final class AutoFillListPopupWindowBase$d
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((AutoFillListPopupWindowBase.a(this.hxk) != null) && (AutoFillListPopupWindowBase.e(this.hxk) != null) && (AutoFillListPopupWindowBase.f(this.hxk) != null) && (AutoFillListPopupWindowBase.a(this.hxk) != null))
+    AppMethodBeat.i(123918);
+    if ((AutoFillListPopupWindowBase.a(this.jpu) != null) && (AutoFillListPopupWindowBase.e(this.jpu) != null) && (AutoFillListPopupWindowBase.f(this.jpu) != null) && (AutoFillListPopupWindowBase.a(this.jpu) != null))
     {
-      if ((AutoFillListPopupWindowBase.a(this.hxk).getLastVisiblePosition() == AutoFillListPopupWindowBase.f(this.hxk).getCount() - 1) && (AutoFillListPopupWindowBase.a(this.hxk).getChildAt(AutoFillListPopupWindowBase.a(this.hxk).getChildCount() - 1) != null) && (AutoFillListPopupWindowBase.a(this.hxk).getChildAt(AutoFillListPopupWindowBase.a(this.hxk).getChildCount() - 1).getBottom() <= AutoFillListPopupWindowBase.a(this.hxk).getHeight())) {
-        AutoFillListPopupWindowBase.e(this.hxk).setVisibility(8);
+      if ((AutoFillListPopupWindowBase.a(this.jpu).getLastVisiblePosition() == AutoFillListPopupWindowBase.f(this.jpu).getCount() - 1) && (AutoFillListPopupWindowBase.a(this.jpu).getChildAt(AutoFillListPopupWindowBase.a(this.jpu).getChildCount() - 1) != null) && (AutoFillListPopupWindowBase.a(this.jpu).getChildAt(AutoFillListPopupWindowBase.a(this.jpu).getChildCount() - 1).getBottom() <= AutoFillListPopupWindowBase.a(this.jpu).getHeight()))
+      {
+        AutoFillListPopupWindowBase.e(this.jpu).setVisibility(8);
+        AppMethodBeat.o(123918);
+        return;
       }
+      AutoFillListPopupWindowBase.e(this.jpu).setVisibility(0);
     }
-    else {
-      return;
-    }
-    AutoFillListPopupWindowBase.e(this.hxk).setVisibility(0);
+    AppMethodBeat.o(123918);
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 1) && (!this.hxk.isInputMethodNotNeeded()) && (AutoFillListPopupWindowBase.b(this.hxk).getContentView() != null))
+    AppMethodBeat.i(123919);
+    if ((paramInt == 1) && (!this.jpu.isInputMethodNotNeeded()) && (AutoFillListPopupWindowBase.b(this.jpu).getContentView() != null))
     {
-      AutoFillListPopupWindowBase.d(this.hxk).removeCallbacks(AutoFillListPopupWindowBase.c(this.hxk));
-      AutoFillListPopupWindowBase.c(this.hxk).run();
+      AutoFillListPopupWindowBase.d(this.jpu).removeCallbacks(AutoFillListPopupWindowBase.c(this.jpu));
+      AutoFillListPopupWindowBase.c(this.jpu).run();
     }
+    AppMethodBeat.o(123919);
   }
 }
 

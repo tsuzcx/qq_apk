@@ -1,14 +1,21 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import com.tencent.mm.h.a.k;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.bizui.widget.StoryListView;
 
 final class BizTimeLineUI$8
-  extends c<k>
+  implements Runnable
 {
-  BizTimeLineUI$8(BizTimeLineUI paramBizTimeLineUI)
+  BizTimeLineUI$8(BizTimeLineUI paramBizTimeLineUI) {}
+  
+  public final void run()
   {
-    this.udX = k.class.getName().hashCode();
+    AppMethodBeat.i(14190);
+    BizTimeLineUI.p(this.jXh);
+    if ((!this.jXh.isFinishing()) && (BizTimeLineUI.b(this.jXh) != null)) {
+      BizTimeLineUI.b(this.jXh, BizTimeLineUI.b(this.jXh).getFirstVisiblePosition(), BizTimeLineUI.b(this.jXh).getLastVisiblePosition());
+    }
+    AppMethodBeat.o(14190);
   }
 }
 

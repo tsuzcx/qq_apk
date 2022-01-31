@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
 
 final class SnsMsgUI$13
@@ -9,9 +10,11 @@ final class SnsMsgUI$13
 {
   SnsMsgUI$13(SnsMsgUI paramSnsMsgUI) {}
   
-  public final void D(View paramView, int paramInt)
+  public final void r(View paramView, int paramInt1, int paramInt2)
   {
-    SnsMsgUI.c(this.paq).performItemClick(paramView, paramInt, 0L);
+    AppMethodBeat.i(39079);
+    SnsMsgUI.c(this.rSU).performItemClick(paramView, paramInt1, paramInt2);
+    AppMethodBeat.o(39079);
   }
 }
 

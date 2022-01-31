@@ -1,51 +1,60 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.tenpay.model.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class b
-  extends j
+  extends m
 {
   public String name;
-  public String rQG;
-  public boolean rQH = true;
   public String token;
+  public String vHx;
+  public boolean vHy;
   
   public b(String paramString1, int paramInt, String paramString2)
   {
+    AppMethodBeat.i(48655);
+    this.vHy = true;
     HashMap localHashMap = new HashMap();
     localHashMap.put("passwd", paramString1);
     localHashMap.put("bank_type", paramString2);
     localHashMap.put("check_pwd_scene", String.valueOf(paramInt));
-    D(localHashMap);
+    setRequestData(localHashMap);
     paramString1 = new HashMap();
     paramString1.put("check_pwd_scene", String.valueOf(paramInt));
-    aC(paramString1);
+    setWXRequestData(paramString1);
+    AppMethodBeat.o(48655);
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
+  public final int getTenpayCgicmd()
   {
-    y.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0) {
+    return 63;
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(48656);
+    ab.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    if (paramInt != 0)
+    {
+      AppMethodBeat.o(48656);
       return;
     }
     this.token = paramJSONObject.optString("session_key");
     if ("1".equals(paramJSONObject.optString("all_info")))
     {
-      this.rQH = false;
+      this.vHy = false;
+      AppMethodBeat.o(48656);
       return;
     }
-    this.rQH = true;
+    this.vHy = true;
     this.name = paramJSONObject.optString("name");
-    this.rQG = paramJSONObject.optString("cre_id");
-  }
-  
-  public final int aEC()
-  {
-    return 63;
+    this.vHx = paramJSONObject.optString("cre_id");
+    AppMethodBeat.o(48656);
   }
 }
 

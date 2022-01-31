@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Process;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
@@ -16,59 +16,63 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class AppBrandProxyTransparentUIProcessTask
   implements Parcelable
 {
-  public static Map<String, WeakReference<AppBrandProxyTransparentUIProcessTask>> gdL = new ConcurrentHashMap();
-  private static final Set<Object> gem = new HashSet();
-  public int gen = -1;
-  public MMActivity.a geo = new MMActivity.a()
-  {
-    public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-    {
-      if ((paramAnonymousInt1 != (AppBrandProxyTransparentUIProcessTask.this.hashCode() & 0xFFFF)) || (paramAnonymousIntent == null)) {
-        return;
-      }
-      AppBrandProxyTransparentUIProcessTask localAppBrandProxyTransparentUIProcessTask = (AppBrandProxyTransparentUIProcessTask)paramAnonymousIntent.getParcelableExtra("task_object");
-      paramAnonymousIntent = AppBrandProxyTransparentUIProcessTask.tH(paramAnonymousIntent.getStringExtra("task_id"));
-      if (paramAnonymousIntent == null)
-      {
-        y.e("MicroMsg.AppBrandProxyTransparentUIProcessTask", "task is null");
-        return;
-      }
-      AppBrandProxyTransparentUIProcessTask.a(localAppBrandProxyTransparentUIProcessTask, paramAnonymousIntent);
-      paramAnonymousIntent.ahD();
-      paramAnonymousIntent.Zv();
-      AppBrandProxyTransparentUIProcessTask.this.mContext = null;
-    }
-  };
-  public String gep = Process.myPid() + hashCode();
-  public Context mContext;
+  private static Map<String, WeakReference<AppBrandProxyTransparentUIProcessTask>> hvI = new ConcurrentHashMap();
+  private static final Set<Object> hwm = new HashSet();
+  private int hwn = -1;
+  private MMActivity.a hwo = new AppBrandProxyTransparentUIProcessTask.1(this);
+  private String hwp = Process.myPid() + hashCode();
+  Context mContext;
   
-  public AppBrandProxyTransparentUIProcessTask() {}
+  protected AppBrandProxyTransparentUIProcessTask() {}
   
   public AppBrandProxyTransparentUIProcessTask(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  public void Zv() {}
-  
   public abstract void a(Context paramContext, AppBrandProxyTransparentUIProcessTask.a parama);
   
-  public final void ahC()
+  public final void aBi()
   {
-    gem.add(this);
+    if (this.mContext == null) {
+      return;
+    }
+    hvI.put(this.hwp, new WeakReference(this));
+    Intent localIntent = new Intent();
+    localIntent.setClass(this.mContext, AppBrandProxyTransparentUI.class);
+    localIntent.putExtra("task_object", this);
+    localIntent.putExtra("task_class_name", getClass().getName());
+    localIntent.putExtra("task_id", this.hwp);
+    localIntent.putExtra("orientation", this.hwn);
+    if ((this.mContext instanceof MMActivity))
+    {
+      aBj();
+      ((MMActivity)this.mContext).mmSetOnActivityResultCallback(this.hwo);
+      ((MMActivity)this.mContext).startActivityForResult(localIntent, hashCode() & 0xFFFF);
+      return;
+    }
+    localIntent.addFlags(268435456);
+    this.mContext.startActivity(localIntent);
   }
   
-  public final void ahD()
+  public final void aBj()
   {
-    gem.remove(this);
+    hwm.add(this);
   }
+  
+  public final void aBk()
+  {
+    hwm.remove(this);
+  }
+  
+  public void atb() {}
   
   public int describeContents()
   {
     return 0;
   }
   
-  public void e(Parcel paramParcel) {}
+  public void f(Parcel paramParcel) {}
   
   public void writeToParcel(Parcel paramParcel, int paramInt) {}
 }

@@ -1,57 +1,70 @@
 package com.tencent.mm.plugin.mmsight.segment.a;
 
-import com.tencent.mm.plugin.s.c;
-import com.tencent.mm.plugin.s.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.n.c;
+import com.tencent.mm.plugin.n.i;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$1
   implements c
 {
   b$1(b paramb) {}
   
-  public final void F(int paramInt1, int paramInt2, int paramInt3)
+  public final void Es()
   {
-    this.mnS.mnL = paramInt3;
-    if (this.mnS.mnP != null) {
-      this.mnS.mnP.O(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.i(3709);
+    if (this.oNa.fqY) {
+      this.oNa.oMS.zi(this.oNa.oMU);
     }
+    AppMethodBeat.o(3709);
   }
   
-  public final void aKN()
+  public final void R(int paramInt1, int paramInt2, int paramInt3)
   {
-    y.i("MicroMsg.MMSegmentVideoPlayer", "onSeekComplete, onSeekCompleteListener: %s", new Object[] { this.mnS.mnR });
-    if (this.mnS.mnR != null) {
-      this.mnS.mnR.bt(this.mnS.mnK);
+    AppMethodBeat.i(3712);
+    this.oNa.oMT = paramInt3;
+    if (this.oNa.oMX != null) {
+      this.oNa.oMX.Z(paramInt1, paramInt2, paramInt3);
     }
-    while (!this.mnS.bSr) {
+    AppMethodBeat.o(3712);
+  }
+  
+  public final void boW()
+  {
+    AppMethodBeat.i(3711);
+    ab.i("MicroMsg.MMSegmentVideoPlayer", "onSeekComplete, onSeekCompleteListener: %s", new Object[] { this.oNa.oMZ });
+    if (this.oNa.oMZ != null)
+    {
+      this.oNa.oMZ.bX(this.oNa.oMS);
+      AppMethodBeat.o(3711);
       return;
     }
-    this.mnS.mnK.start();
+    if (this.oNa.isStart) {
+      this.oNa.oMS.start();
+    }
+    AppMethodBeat.o(3711);
   }
   
-  public final void kA()
+  public final void mG()
   {
-    if (this.mnS.mnQ != null) {
-      this.mnS.mnQ.bs(this.mnS.mnK);
+    AppMethodBeat.i(3708);
+    if (this.oNa.oMY != null) {
+      this.oNa.oMY.bW(this.oNa.oMS);
     }
-    if (this.mnS.bSr) {
-      this.mnS.mnK.start();
+    if (this.oNa.isStart) {
+      this.oNa.oMS.start();
     }
-    this.mnS.PT = true;
+    this.oNa.Pz = true;
+    AppMethodBeat.o(3708);
   }
   
   public final void onError(int paramInt1, int paramInt2)
   {
-    if (this.mnS.mnO != null) {
-      this.mnS.mnO.di(paramInt1, paramInt2);
+    AppMethodBeat.i(3710);
+    if (this.oNa.oMW != null) {
+      this.oNa.oMW.eH(paramInt1, paramInt2);
     }
-  }
-  
-  public final void ug()
-  {
-    if (this.mnS.eaP) {
-      this.mnS.mnK.tP(this.mnS.mnM);
-    }
+    AppMethodBeat.o(3710);
   }
 }
 

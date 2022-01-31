@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.game.model.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.k;
 
 final class GameDetailUI2$15
   implements DialogInterface.OnClickListener
@@ -11,8 +12,10 @@ final class GameDetailUI2$15
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GameDetailUI2.i(this.laq).aGu();
-    GameDetailUI2.m(this.laq).a(GameDetailUI2.j(this.laq), GameDetailUI2.k(this.laq), GameDetailUI2.l(this.laq), GameDetailUI2.i(this.laq));
+    AppMethodBeat.i(111856);
+    GameDetailUI2.i(this.nyn).bjZ();
+    GameDetailUI2.m(this.nyn).a(GameDetailUI2.j(this.nyn), GameDetailUI2.k(this.nyn), GameDetailUI2.l(this.nyn), GameDetailUI2.i(this.nyn));
+    AppMethodBeat.o(111856);
   }
 }
 

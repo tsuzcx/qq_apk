@@ -6,24 +6,26 @@ import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.am.d;
-import com.tencent.mm.model.am.f;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bu;
-import com.tencent.mm.model.s;
-import com.tencent.mm.platformtools.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.j.a;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.m.f;
+import com.tencent.mm.model.an;
+import com.tencent.mm.model.ao.d;
+import com.tencent.mm.model.ao.f;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bw;
 import com.tencent.mm.platformtools.t.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.subapp.ui.voicereminder.RemindDialog;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.e.f;
+import com.tencent.mm.ui.e.h;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,191 +36,207 @@ import java.util.Set;
 
 @SuppressLint({"UseSparseArrays"})
 public class d
-  implements am.f, ar
+  implements ao.f, at
 {
-  private static HashMap<Integer, h.d> iiX;
-  private static d pvz;
-  private String dKt;
-  private final Set<am.d> dup = new HashSet();
-  private t.a iiZ;
-  private j pvA;
-  private List<Long> pvB = new ArrayList();
-  private com.tencent.mm.sdk.b.c pvC = new d.3(this);
-  private com.tencent.mm.sdk.b.c pvD = new d.4(this);
-  private com.tencent.mm.sdk.b.c pvE = new d.5(this);
-  private k pvy;
+  private static HashMap<Integer, h.d> kjX;
+  private static d sXe;
+  private j.a appForegroundListener;
+  private final Set<ao.d> bLQ;
+  private String eHR;
+  private t.a kjZ;
+  private k sXd;
+  private j sXf;
+  private List<Long> sXg;
+  private com.tencent.mm.sdk.b.c sXh;
+  private com.tencent.mm.sdk.b.c sXi;
+  private com.tencent.mm.sdk.b.c sXj;
   
   static
   {
+    AppMethodBeat.i(25280);
     HashMap localHashMap = new HashMap();
-    iiX = localHashMap;
+    kjX = localHashMap;
     localHashMap.put(Integer.valueOf("VOICEREMIND_TABLE".hashCode()), new d.2());
+    AppMethodBeat.o(25280);
   }
   
-  public static d bLW()
+  public d()
   {
-    au.Hq();
-    com.tencent.mm.plugin.subapp.a locala = (com.tencent.mm.plugin.subapp.a)bu.iR("plugin.subapp");
+    AppMethodBeat.i(25267);
+    this.sXg = new ArrayList();
+    this.bLQ = new HashSet();
+    this.sXh = new d.3(this);
+    this.appForegroundListener = new d.4(this);
+    this.sXi = new d.5(this);
+    this.sXj = new d.6(this);
+    AppMethodBeat.o(25267);
+  }
+  
+  public static d cGS()
+  {
+    AppMethodBeat.i(25274);
+    aw.aat();
+    com.tencent.mm.plugin.subapp.a locala = (com.tencent.mm.plugin.subapp.a)bw.pF("plugin.subapp");
     if (locala == null) {}
-    for (d locald = null;; locald = (d)locala.Py(d.class.getName()))
+    for (d locald = null;; locald = (d)locala.adN(d.class.getName()))
     {
-      pvz = locald;
-      y.i("MicroMsg.SubCoreVoiceRemind", "summervoice SubCoreVoiceRemind getCore subCoreSubapp[%s], theCore[%s], stack[%s]", new Object[] { locala, pvz, bk.csb() });
-      if (pvz == null)
+      sXe = locald;
+      ab.i("MicroMsg.SubCoreVoiceRemind", "summervoice SubCoreVoiceRemind getCore subCoreSubapp[%s], theCore[%s], stack[%s]", new Object[] { locala, sXe, bo.dtY() });
+      if (sXe == null)
       {
         locald = new d();
-        pvz = locald;
-        com.tencent.mm.model.am.a.dVB = locald;
-        locala.b(d.class.getName(), pvz);
+        sXe = locald;
+        com.tencent.mm.model.ao.a.flL = locald;
+        locala.b(d.class.getName(), sXe);
       }
-      return pvz;
+      locald = sXe;
+      AppMethodBeat.o(25274);
+      return locald;
     }
   }
   
-  public static k bLX()
+  public static k cGT()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (bLW().pvy == null)
+    AppMethodBeat.i(25275);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    if (cGS().sXd == null)
     {
-      d locald = bLW();
-      bLW();
-      if (bLW().iiZ == null)
+      localObject1 = cGS();
+      cGS();
+      if (cGS().kjZ == null)
       {
-        Object localObject = new StringBuilder();
-        au.Hx();
-        localObject = com.tencent.mm.model.c.FT() + "CommonOneMicroMsg.db";
-        bLW().iiZ = t.a(d.class.hashCode(), (String)localObject, iiX, false);
+        Object localObject2 = new StringBuilder();
+        aw.aaz();
+        localObject2 = com.tencent.mm.model.c.Rp() + "CommonOneMicroMsg.db";
+        cGS().kjZ = com.tencent.mm.platformtools.t.a(d.class.hashCode(), (String)localObject2, kjX, false);
       }
-      locald.pvy = new k(bLW().iiZ);
+      ((d)localObject1).sXd = new k(cGS().kjZ);
     }
-    return bLW().pvy;
+    Object localObject1 = cGS().sXd;
+    AppMethodBeat.o(25275);
+    return localObject1;
   }
   
-  public static j bLY()
+  public static j cGU()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (bLW().pvA == null) {
-      bLW().pvA = new j();
+    AppMethodBeat.i(25279);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    if (cGS().sXf == null) {
+      cGS().sXf = new j();
     }
-    return bLW().pvA;
+    j localj = cGS().sXf;
+    AppMethodBeat.o(25279);
+    return localj;
   }
   
-  public final void Hj()
+  public final void a(ao.d paramd)
   {
-    bLY().run();
-  }
-  
-  public final void a(am.d paramd)
-  {
-    y.d("MicroMsg.SubCoreVoiceRemind", "addVoiceRemind ");
+    AppMethodBeat.i(25268);
+    ab.d("MicroMsg.SubCoreVoiceRemind", "addVoiceRemind ");
     if (paramd != null) {
-      this.dup.add(paramd);
+      this.bLQ.add(paramd);
     }
+    AppMethodBeat.o(25268);
   }
   
-  public final void b(am.d paramd)
+  public final void aal()
   {
-    y.d("MicroMsg.SubCoreVoiceRemind", "removeVoiceRemind ");
+    AppMethodBeat.i(25272);
+    cGU().run();
+    AppMethodBeat.o(25272);
+  }
+  
+  public final void b(ao.d paramd)
+  {
+    AppMethodBeat.i(25269);
+    ab.d("MicroMsg.SubCoreVoiceRemind", "removeVoiceRemind ");
     if (paramd != null) {
-      this.dup.remove(paramd);
+      this.bLQ.remove(paramd);
     }
+    AppMethodBeat.o(25269);
   }
   
-  public final boolean bB(long paramLong)
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    boolean bool = this.pvB.contains(Long.valueOf(paramLong));
-    y.d("MicroMsg.SubCoreVoiceRemind", "silent " + bool + "  mid " + paramLong);
+    return null;
+  }
+  
+  public final boolean gv(long paramLong)
+  {
+    AppMethodBeat.i(25273);
+    boolean bool = this.sXg.contains(Long.valueOf(paramLong));
+    ab.d("MicroMsg.SubCoreVoiceRemind", "silent " + bool + "  mid " + paramLong);
+    AppMethodBeat.o(25273);
     return bool;
   }
   
-  public final void bh(boolean paramBoolean)
+  public final void n(String paramString1, String paramString2, long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    au.Hx();
-    localStringBuilder.append(com.tencent.mm.model.c.FT()).append("CommonOneMicroMsg.db");
-    bLX();
-    com.tencent.mm.sdk.b.a.udP.c(this.pvC);
-    com.tencent.mm.sdk.b.a.udP.c(this.pvD);
-    com.tencent.mm.sdk.b.a.udP.c(this.pvE);
-    y.d("MicroMsg.SubCoreVoiceRemind", "summervoiceremind onAccountPostReset hash[%d]", new Object[] { Integer.valueOf(hashCode()) });
-  }
-  
-  public final void bi(boolean paramBoolean)
-  {
-    au.Hx();
-    Object localObject = com.tencent.mm.model.c.FU();
-    if ((bk.bl((String)localObject)) || (bk.bl(this.dKt)) || (!((String)localObject).equals(this.dKt)))
-    {
-      y.d("MicroMsg.SubCoreVoiceRemind", "setVoiceRemindPath core on accPath : " + (String)localObject);
-      this.dKt = ((String)localObject);
-      localObject = new File((String)localObject);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
-      }
-      au.Hx();
-      localObject = new File(com.tencent.mm.model.c.FR());
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
-      }
-    }
-  }
-  
-  public final void f(String paramString1, String paramString2, long paramLong)
-  {
-    Context localContext = ae.getContext();
+    AppMethodBeat.i(25270);
+    Context localContext = ah.getContext();
     if (localContext == null)
     {
-      y.d("MicroMsg.SubCoreVoiceRemind", "notifyVoiceRemind context null");
+      ab.d("MicroMsg.SubCoreVoiceRemind", "notifyVoiceRemind context null");
+      AppMethodBeat.o(25270);
       return;
     }
     for (;;)
     {
       try
       {
-        bool1 = com.tencent.mm.m.f.zV();
-        bool2 = com.tencent.mm.m.f.zT();
-        y.d("MicroMsg.SubCoreVoiceRemind", "shake " + bool1 + "sound " + bool2);
-        if (!s.hI(au.getNotification().wo())) {
+        bool1 = f.MD();
+        bool2 = f.MB();
+        ab.d("MicroMsg.SubCoreVoiceRemind", "shake " + bool1 + "sound " + bool2);
+        if (!com.tencent.mm.model.t.or(aw.getNotification().IF())) {
           continue;
         }
         if (bool1) {
-          bk.v(localContext, true);
+          bo.z(localContext, true);
         }
       }
       catch (Exception localException2)
       {
         boolean bool1;
         boolean bool2;
-        label88:
         Object localObject;
-        com.tencent.mm.compatible.b.j localj;
-        y.printErrStackTrace("MicroMsg.SubCoreVoiceRemind", localException2, "", new Object[0]);
+        com.tencent.mm.compatible.b.k localk;
+        ab.printErrStackTrace("MicroMsg.SubCoreVoiceRemind", localException2, "", new Object[0]);
         continue;
         localUri = Uri.parse(localException2);
         continue;
-        localj.setAudioStreamType(5);
-        localj.setLooping(true);
-        localj.prepare();
-        localj.setLooping(false);
-        localj.start();
+        localk.setAudioStreamType(5);
+        localk.setLooping(true);
+        localk.prepare();
+        localk.setLooping(false);
+        localk.start();
         continue;
-        paramString1 = this.dup.iterator();
+        paramString1 = this.bLQ.iterator();
+        if (!paramString1.hasNext()) {
+          continue;
+        }
+        ((ao.d)paramString1.next()).w(paramString2, paramLong);
+        continue;
+        AppMethodBeat.o(25270);
+        return;
       }
-      if ((this.dup == null) || (this.dup.size() == 0))
+      if ((this.bLQ == null) || (this.bLQ.size() == 0))
       {
-        RemindDialog.t(localContext, paramString1, paramString2);
+        RemindDialog.y(localContext, paramString1, paramString2);
+        AppMethodBeat.o(25270);
         return;
         if (bool1) {
-          bk.v(localContext, true);
+          bo.z(localContext, true);
         }
         if (!bool2) {
           continue;
         }
-        localObject = com.tencent.mm.m.f.zU();
-        if (localObject == e.f.dAe)
+        localObject = f.MF();
+        if (localObject == e.h.etD)
         {
           localObject = RingtoneManager.getDefaultUri(2);
-          localj = new com.tencent.mm.compatible.b.j();
+          localk = new com.tencent.mm.compatible.b.k();
         }
       }
     }
@@ -227,105 +245,136 @@ public class d
       int j;
       try
       {
-        localj.setDataSource(localContext, (Uri)localObject);
-        localj.setOnCompletionListener(new d.1(this));
-        if (au.Hy().getStreamVolume(5) == 0) {
-          break label88;
+        localk.setDataSource(localContext, (Uri)localObject);
+        localk.setOnCompletionListener(new d.1(this));
+        if (aw.aaA().getStreamVolume(5) == 0) {
+          break;
         }
-        if (!au.Hy().yt()) {
-          break label388;
+        if (!aw.aaA().KN()) {
+          break label406;
         }
-        int k = au.Hy().getStreamVolume(8);
-        i = au.Hy().getStreamMaxVolume(8);
-        j = au.Hy().getStreamVolume(5);
+        int k = aw.aaA().getStreamVolume(8);
+        i = aw.aaA().getStreamMaxVolume(8);
+        j = aw.aaA().getStreamVolume(5);
         if (j <= i) {
-          break label457;
+          break label482;
         }
-        au.Hy().aX(8, i);
-        localj.setAudioStreamType(8);
-        localj.setLooping(true);
-        localj.prepare();
-        localj.setLooping(false);
-        localj.start();
-        au.Hy().aX(8, k);
-        y.d("MicroMsg.SubCoreVoiceRemind", "oldVolume is %d, toneVolume is %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+        aw.aaA().bW(8, i);
+        localk.setAudioStreamType(8);
+        localk.setLooping(true);
+        localk.prepare();
+        localk.setLooping(false);
+        localk.start();
+        aw.aaA().bW(8, k);
+        ab.d("MicroMsg.SubCoreVoiceRemind", "oldVolume is %d, toneVolume is %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
       }
       catch (Exception localException1)
       {
         for (;;)
         {
-          y.printErrStackTrace("MicroMsg.SubCoreVoiceRemind", localException1, "", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.SubCoreVoiceRemind", localException1, "", new Object[0]);
           try
           {
-            localj.release();
+            localk.release();
           }
           catch (Throwable localThrowable)
           {
-            y.printErrStackTrace("MicroMsg.SubCoreVoiceRemind", localThrowable, "relese error", new Object[0]);
+            ab.printErrStackTrace("MicroMsg.SubCoreVoiceRemind", localThrowable, "relese error", new Object[0]);
           }
         }
       }
-      break label88;
-      Uri localUri;
-      label388:
-      while (paramString1.hasNext()) {
-        ((am.d)paramString1.next()).n(paramString2, paramLong);
-      }
       break;
-      label457:
+      Uri localUri;
+      label406:
+      label482:
       int i = j;
     }
   }
   
-  public final void gf(int paramInt) {}
-  
-  public final void iE(String paramString)
+  public void onAccountPostReset(boolean paramBoolean)
   {
-    au.Hx();
-    com.tencent.mm.model.c.FB().abx(paramString);
-    this.pvB.clear();
-    au.Hx();
-    Cursor localCursor = com.tencent.mm.model.c.Fy().HK(paramString);
+    AppMethodBeat.i(25276);
+    StringBuilder localStringBuilder = new StringBuilder();
+    aw.aaz();
+    localStringBuilder.append(com.tencent.mm.model.c.Rp()).append("CommonOneMicroMsg.db");
+    cGT();
+    com.tencent.mm.sdk.b.a.ymk.c(this.sXh);
+    com.tencent.mm.sdk.b.a.ymk.c(this.sXi);
+    com.tencent.mm.sdk.b.a.ymk.c(this.sXj);
+    this.appForegroundListener.alive();
+    ab.d("MicroMsg.SubCoreVoiceRemind", "summervoiceremind onAccountPostReset hash[%d]", new Object[] { Integer.valueOf(hashCode()) });
+    AppMethodBeat.o(25276);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(25278);
+    if (this.sXf != null) {
+      this.sXf.ckM = 0;
+    }
+    this.appForegroundListener.dead();
+    if (sXe != null)
+    {
+      ab.d("MicroMsg.SubCoreVoiceRemind", "SubCoreVoiceRemind close db");
+      d locald = sXe;
+      if (locald.kjZ != null)
+      {
+        locald.kjZ.mG(locald.hashCode());
+        locald.kjZ = null;
+      }
+      locald.eHR = "";
+    }
+    com.tencent.mm.sdk.b.a.ymk.d(this.sXh);
+    com.tencent.mm.sdk.b.a.ymk.d(this.sXi);
+    com.tencent.mm.sdk.b.a.ymk.d(this.sXj);
+    AppMethodBeat.o(25278);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean)
+  {
+    AppMethodBeat.i(25277);
+    aw.aaz();
+    Object localObject = com.tencent.mm.model.c.getAccPath();
+    if ((bo.isNullOrNil((String)localObject)) || (bo.isNullOrNil(this.eHR)) || (!((String)localObject).equals(this.eHR)))
+    {
+      ab.d("MicroMsg.SubCoreVoiceRemind", "setVoiceRemindPath core on accPath : ".concat(String.valueOf(localObject)));
+      this.eHR = ((String)localObject);
+      localObject = new File((String)localObject);
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      aw.aaz();
+      localObject = new File(com.tencent.mm.model.c.YV());
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+    }
+    AppMethodBeat.o(25277);
+  }
+  
+  public final void pn(String paramString)
+  {
+    AppMethodBeat.i(25271);
+    aw.aaz();
+    com.tencent.mm.model.c.YF().arJ(paramString);
+    this.sXg.clear();
+    aw.aaz();
+    Cursor localCursor = com.tencent.mm.model.c.YC().Tv(paramString);
     localCursor.moveToFirst();
-    y.d("MicroMsg.SubCoreVoiceRemind", "resetSilentQuene");
+    ab.d("MicroMsg.SubCoreVoiceRemind", "resetSilentQuene");
     while (!localCursor.isAfterLast())
     {
       bi localbi = new bi();
-      localbi.d(localCursor);
+      localbi.convertFrom(localCursor);
       long l = localbi.field_msgId;
-      y.d("MicroMsg.SubCoreVoiceRemind", "resetSilentQuene: msgId = " + l + " status = " + localbi.field_status);
+      ab.d("MicroMsg.SubCoreVoiceRemind", "resetSilentQuene: msgId = " + l + " status = " + localbi.field_status);
       localCursor.moveToNext();
-      this.pvB.add(Long.valueOf(l));
+      this.sXg.add(Long.valueOf(l));
     }
     localCursor.close();
-    au.Hx();
-    com.tencent.mm.model.c.Fy().HI(paramString);
-  }
-  
-  public final void onAccountRelease()
-  {
-    if (this.pvA != null) {
-      this.pvA.bDY = 0;
-    }
-    if (pvz != null)
-    {
-      y.d("MicroMsg.SubCoreVoiceRemind", "SubCoreVoiceRemind close db");
-      d locald = pvz;
-      if (locald.iiZ != null)
-      {
-        locald.iiZ.jK(locald.hashCode());
-        locald.iiZ = null;
-      }
-      locald.dKt = "";
-    }
-    com.tencent.mm.sdk.b.a.udP.d(this.pvC);
-    com.tencent.mm.sdk.b.a.udP.d(this.pvD);
-    com.tencent.mm.sdk.b.a.udP.d(this.pvE);
-  }
-  
-  public final HashMap<Integer, h.d> xe()
-  {
-    return null;
+    aw.aaz();
+    com.tencent.mm.model.c.YC().Tt(paramString);
+    AppMethodBeat.o(25271);
   }
 }
 

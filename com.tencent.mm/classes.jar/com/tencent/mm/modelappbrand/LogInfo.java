@@ -3,14 +3,22 @@ package com.tencent.mm.modelappbrand;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class LogInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<LogInfo> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<LogInfo> CREATOR;
   public int level;
   public String message;
   public long ts;
+  
+  static
+  {
+    AppMethodBeat.i(70629);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(70629);
+  }
   
   public int describeContents()
   {
@@ -19,9 +27,11 @@ public class LogInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(70628);
     paramParcel.writeLong(this.ts);
     paramParcel.writeInt(this.level);
     paramParcel.writeString(this.message);
+    AppMethodBeat.o(70628);
   }
 }
 

@@ -10,30 +10,30 @@ public final class a$ai
   
   public a$ai()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
     if (this.ret != 0) {
-      paramb.aL(1, this.ret);
+      paramb.bj(1, this.ret);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
     if (this.ret != 0) {
-      i = j + b.aN(1, this.ret);
+      i = j + b.bl(1, this.ret);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.ai
  * JD-Core Version:    0.7.0.1
  */

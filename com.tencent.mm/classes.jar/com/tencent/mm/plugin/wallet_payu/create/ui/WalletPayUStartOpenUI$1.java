@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_payu.create.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletPayUStartOpenUI$1
   implements TextWatcher
@@ -10,7 +11,9 @@ final class WalletPayUStartOpenUI$1
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    WalletPayUStartOpenUI.a(this.qNy);
+    AppMethodBeat.i(48395);
+    WalletPayUStartOpenUI.a(this.uCF);
+    AppMethodBeat.o(48395);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

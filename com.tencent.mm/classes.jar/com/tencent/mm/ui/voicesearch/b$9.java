@@ -1,10 +1,11 @@
 package com.tencent.mm.ui.voicesearch;
 
 import android.database.Cursor;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.storage.bd;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,82 +18,88 @@ final class b$9
   public final void run()
   {
     int i = 0;
+    AppMethodBeat.i(35336);
     Object localObject2;
     Object localObject3;
-    if ((b.g(this.wiQ) != null) && (b.g(this.wiQ).length != 0))
+    if ((b.g(this.ABH) != null) && (b.g(this.ABH).length != 0))
     {
       localObject1 = new ArrayList();
-      localObject2 = b.g(this.wiQ);
+      localObject2 = b.g(this.ABH);
       int j = localObject2.length;
       while (i < j)
       {
         localObject3 = localObject2[i];
-        if (this.wiQ.aev((String)localObject3)) {
+        if (this.ABH.avi((String)localObject3)) {
           ((List)localObject1).add(localObject3);
         }
         i += 1;
       }
       if (((List)localObject1).size() > 0)
       {
-        localObject2 = this.wiQ;
-        au.Hx();
-        b.a((b)localObject2, c.Fw().a((String[])((List)localObject1).toArray(new String[((List)localObject1).size()]), b.h(this.wiQ), b.a(this.wiQ)));
+        localObject2 = this.ABH;
+        aw.aaz();
+        b.a((b)localObject2, c.YA().a((String[])((List)localObject1).toArray(new String[((List)localObject1).size()]), b.h(this.ABH), b.a(this.ABH)));
+        AppMethodBeat.o(35336);
         return;
       }
-      localObject1 = this.wiQ;
-      au.Hx();
-      b.b((b)localObject1, c.Fw().cuz());
+      localObject1 = this.ABH;
+      aw.aaz();
+      b.b((b)localObject1, c.YA().dwZ());
+      AppMethodBeat.o(35336);
       return;
     }
-    if (b.i(this.wiQ) != null)
+    if (b.i(this.ABH) != null)
     {
-      if (!b.h(this.wiQ).equals("@all.chatroom.contact"))
+      if (!b.h(this.ABH).equals("@all.chatroom.contact"))
       {
-        localObject1 = au.Hx().dUi.a(b.i(this.wiQ), b.h(this.wiQ), b.a(this.wiQ), true);
-        b.c(this.wiQ, (Cursor)localObject1);
+        localObject1 = aw.aaz().fkr.a(b.i(this.ABH), b.h(this.ABH), b.a(this.ABH), true);
+        b.c(this.ABH, (Cursor)localObject1);
+        AppMethodBeat.o(35336);
         return;
       }
-      if (this.wuD)
+      if (this.ABJ)
       {
-        localObject1 = au.Hx().dUi.a(b.i(this.wiQ), "@micromsg.with.all.biz.qq.com.openim", b.a(this.wiQ), false);
+        localObject1 = aw.aaz().fkr.a(b.i(this.ABH), "@micromsg.with.all.biz.qq.com.openim", b.a(this.ABH), false);
         localObject2 = new ArrayList();
         localObject3 = new ArrayList();
       }
       for (;;)
       {
         if (!((Cursor)localObject1).moveToNext()) {
-          break label373;
+          break label393;
         }
         String str = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("username"));
-        if (!s.gZ(str))
+        if (!t.nI(str))
         {
           ((ArrayList)localObject2).add(str);
           continue;
-          localObject1 = au.Hx().dUi.a(b.i(this.wiQ), "@micromsg.with.all.biz.qq.com", b.a(this.wiQ), false);
+          localObject1 = aw.aaz().fkr.a(b.i(this.ABH), "@micromsg.with.all.biz.qq.com", b.a(this.ABH), false);
           break;
         }
         ((ArrayList)localObject3).add(str);
       }
-      label373:
+      label393:
       if (!((Cursor)localObject1).isClosed()) {
         ((Cursor)localObject1).close();
       }
       if ((((ArrayList)localObject2).size() != 0) || (((ArrayList)localObject3).size() != 0)) {}
-      for (localObject1 = au.Hx().dUi.a(b.i(this.wiQ), (ArrayList)localObject2, null, (ArrayList)localObject3, b.a(this.wiQ));; localObject1 = c.Fw().cuz())
+      for (localObject1 = aw.aaz().fkr.a(b.i(this.ABH), (ArrayList)localObject2, null, (ArrayList)localObject3, b.a(this.ABH));; localObject1 = c.YA().dwZ())
       {
-        b.d(this.wiQ, (Cursor)localObject1);
+        b.d(this.ABH, (Cursor)localObject1);
+        AppMethodBeat.o(35336);
         return;
-        au.Hx();
+        aw.aaz();
       }
     }
-    Object localObject1 = this.wiQ;
-    au.Hx();
-    b.e((b)localObject1, c.Fw().cuz());
+    Object localObject1 = this.ABH;
+    aw.aaz();
+    b.e((b)localObject1, c.YA().dwZ());
+    AppMethodBeat.o(35336);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.voicesearch.b.9
  * JD-Core Version:    0.7.0.1
  */

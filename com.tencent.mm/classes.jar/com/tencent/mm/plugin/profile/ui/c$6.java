@@ -1,21 +1,20 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Intent;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ag.b;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.h.a.nn;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.am.a;
-import com.tencent.mm.model.am.b;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.g.a.om;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.ao.a;
+import com.tencent.mm.model.ao.b;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.s;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.model.t;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.pluginsdk.ui.applet.a.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.MMActivity;
@@ -28,121 +27,123 @@ final class c$6
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
+    AppMethodBeat.i(23462);
     ad localad;
     if (paramBoolean1)
     {
-      h.bC(this.mWY.bER, this.mWY.bER.getString(R.l.contact_info_biz_add_ok));
-      this.mWY.dnn.bJ("contact_info_time_expired", true);
-      localad = this.mWY.dnp;
-      if ((localad == null) || (bk.bl(paramString1)))
+      h.bO(this.pzT.cmc, this.pzT.cmc.getString(2131298531));
+      this.pzT.screen.cl("contact_info_time_expired", true);
+      localad = this.pzT.contact;
+      if ((localad == null) || (bo.isNullOrNil(paramString1)))
       {
-        y.e("MicroMsg.ContactWidgetBizInfo", "respUsername == " + paramString1 + ", contact = " + localad);
-        this.mWY.mWQ = true;
-        if (this.mWY.mWW != null)
+        ab.e("MicroMsg.ContactWidgetBizInfo", "respUsername == " + paramString1 + ", contact = " + localad);
+        this.pzT.pzL = true;
+        if (this.pzT.pzR != null)
         {
-          paramString1 = new nn();
-          this.mWY.mWW.eAB = 4;
-          paramString1.bXh.bXi = this.mWY.mWW;
-          com.tencent.mm.sdk.b.a.udP.m(paramString1);
+          paramString1 = new om();
+          this.pzT.pzR.fQt = 4;
+          paramString1.cFa.cFb = this.pzT.pzR;
+          com.tencent.mm.sdk.b.a.ymk.l(paramString1);
         }
-        paramString1 = z.My().kQ(this.mWY.dnp.field_username);
+        paramString1 = z.afi().rK(this.pzT.contact.field_username);
         paramString1.field_status = 1;
-        if ((!bk.bl(paramString1.field_extInfo)) || (bk.bl(paramString1.field_username)) || (this.mWY.mVy == null) || (!paramString1.field_username.equals(bk.pm(this.mWY.mVy.field_username)))) {
-          break label663;
-        }
-        z.My().e(this.mWY.mVy);
-        label243:
-        paramBoolean1 = this.mWY.bER.getIntent().getBooleanExtra("key_biz_profile_stay_after_follow_op", false);
-        paramBoolean2 = this.mWY.bER.getIntent().getBooleanExtra("key_start_biz_profile_from_app_brand_profile", false);
-        if (!paramString1.Ly()) {
+        if ((!bo.isNullOrNil(paramString1.field_extInfo)) || (bo.isNullOrNil(paramString1.field_username)) || (this.pzT.pyd == null) || (!paramString1.field_username.equals(bo.nullAsNil(this.pzT.pyd.field_username)))) {
           break label674;
         }
+        z.afi().e(this.pzT.pyd);
+        label248:
+        paramBoolean1 = this.pzT.cmc.getIntent().getBooleanExtra("key_biz_profile_stay_after_follow_op", false);
+        paramBoolean2 = this.pzT.cmc.getIntent().getBooleanExtra("key_start_biz_profile_from_app_brand_profile", false);
+        if (!paramString1.aeg()) {
+          break label685;
+        }
         paramString1 = new Intent();
-        paramString1.putExtra("enterprise_biz_name", this.mWY.dnp.field_username);
-        paramString1.putExtra("enterprise_biz_display_name", r.gV(this.mWY.dnp.field_username));
+        paramString1.putExtra("enterprise_biz_name", this.pzT.contact.field_username);
+        paramString1.putExtra("enterprise_biz_display_name", s.nE(this.pzT.contact.field_username));
         paramString1.putExtra("enterprise_from_scene", 7);
         paramString1.addFlags(67108864);
-        com.tencent.mm.br.d.e(this.mWY.bER, ".ui.conversation.EnterpriseConversationUI", paramString1);
-        label358:
-        this.mWY.bER.finish();
-        label368:
-        this.mWY.az(3, null);
+        com.tencent.mm.bq.d.f(this.pzT.cmc, ".ui.conversation.EnterpriseConversationUI", paramString1);
+        label363:
+        this.pzT.cmc.finish();
+        label373:
+        this.pzT.aV(3, null);
       }
     }
     else
     {
+      AppMethodBeat.o(23462);
       return;
     }
-    if (s.hj(localad.field_username))
+    if (t.nS(localad.field_username))
     {
-      String str = bk.pm(localad.field_username);
-      paramString2 = com.tencent.mm.ai.f.kX(str);
+      String str = bo.nullAsNil(localad.field_username);
+      paramString2 = com.tencent.mm.aj.f.rS(str);
       if (paramString2 != null) {
         paramString2.field_username = paramString1;
       }
-      z.My().delete(str);
-      localad.dq(str);
+      z.afi().delete(str);
+      localad.jv(str);
     }
     for (;;)
     {
       localad.setUsername(paramString1);
-      if ((int)localad.dBe == 0)
+      if ((int)localad.euF == 0)
       {
-        au.Hx();
-        com.tencent.mm.model.c.Fw().W(localad);
+        aw.aaz();
+        com.tencent.mm.model.c.YA().Z(localad);
       }
-      if ((int)localad.dBe <= 0)
+      if ((int)localad.euF <= 0)
       {
-        y.e("MicroMsg.ContactWidgetBizInfo", "addContact : insert contact failed");
+        ab.e("MicroMsg.ContactWidgetBizInfo", "addContact : insert contact failed");
         break;
       }
-      s.q(localad);
-      au.Hx();
-      paramString1 = com.tencent.mm.model.c.Fw().abl(localad.field_username);
+      t.q(localad);
+      aw.aaz();
+      paramString1 = com.tencent.mm.model.c.YA().arw(localad.field_username);
       if (paramString2 != null)
       {
-        z.My().d(paramString2);
+        z.afi().d(paramString2);
         break;
       }
-      paramString2 = com.tencent.mm.ai.f.kX(paramString1.field_username);
-      if ((paramString1.cua()) && (com.tencent.mm.ai.a.Lp())) {}
+      paramString2 = com.tencent.mm.aj.f.rS(paramString1.field_username);
+      if ((paramString1.dwz()) && (com.tencent.mm.aj.a.adX())) {}
       for (int i = 1;; i = 0)
       {
-        if ((paramString2 != null) && ((!paramString2.Ls()) || (i != 0))) {
-          break label604;
+        if ((paramString2 != null) && ((!paramString2.aea()) || (i != 0))) {
+          break label615;
         }
-        y.d("MicroMsg.ContactWidgetBizInfo", "shouldUpdate");
-        am.a.dVy.V(paramString1.field_username, "");
-        b.ka(paramString1.field_username);
+        ab.d("MicroMsg.ContactWidgetBizInfo", "shouldUpdate");
+        ao.a.flI.am(paramString1.field_username, "");
+        com.tencent.mm.ah.b.qT(paramString1.field_username);
         break;
       }
-      label604:
-      if ((!paramString1.cud()) || (i != 0)) {
+      label615:
+      if ((!paramString1.dwC()) || (i != 0)) {
         break;
       }
-      y.d("MicroMsg.ContactWidgetBizInfo", "update contact, last check time=%d", new Object[] { Integer.valueOf(paramString1.cCH) });
-      am.a.dVy.V(paramString1.field_username, "");
-      b.ka(paramString1.field_username);
+      ab.d("MicroMsg.ContactWidgetBizInfo", "update contact, last check time=%d", new Object[] { Integer.valueOf(paramString1.dqR) });
+      ao.a.flI.am(paramString1.field_username, "");
+      com.tencent.mm.ah.b.qT(paramString1.field_username);
       break;
-      label663:
-      z.My().e(paramString1);
-      break label243;
       label674:
+      z.afi().e(paramString1);
+      break label248;
+      label685:
       paramString1 = new Intent();
-      paramString1.putExtra("Chat_User", this.mWY.dnp.field_username);
+      paramString1.putExtra("Chat_User", this.pzT.contact.field_username);
       paramString1.putExtra("key_has_add_contact", true);
       paramString1.putExtra("finish_direct", true);
       if (paramBoolean2) {
         paramString1.addFlags(268435456);
       }
-      com.tencent.mm.plugin.profile.a.eUR.e(paramString1, this.mWY.bER);
+      com.tencent.mm.plugin.profile.b.gmO.d(paramString1, this.pzT.cmc);
       if (paramBoolean1) {
-        break label358;
+        break label363;
       }
       if (!paramBoolean2) {
-        break label368;
+        break label373;
       }
-      break label358;
+      break label363;
       paramString2 = null;
     }
   }

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceAddDataSourceUI$9
   implements Runnable
@@ -9,8 +10,10 @@ final class ExdeviceAddDataSourceUI$9
   
   public final void run()
   {
-    ExdeviceAddDataSourceUI.e(this.jAD).setVisibility(8);
-    ExdeviceAddDataSourceUI.c(this.jAD).notifyDataSetChanged();
+    AppMethodBeat.i(19783);
+    ExdeviceAddDataSourceUI.e(this.lKc).setVisibility(8);
+    ExdeviceAddDataSourceUI.c(this.lKc).notifyDataSetChanged();
+    AppMethodBeat.o(19783);
   }
 }
 

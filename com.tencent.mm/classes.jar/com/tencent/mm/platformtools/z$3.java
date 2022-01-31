@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.a.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 
@@ -16,15 +17,17 @@ final class z$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(124584);
     paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("rawUrl", this.eRY);
+    paramDialogInterface.putExtra("rawUrl", this.gjT);
     paramDialogInterface.putExtra("showShare", false);
     paramDialogInterface.putExtra("show_bottom", false);
     paramDialogInterface.putExtra("needRedirect", false);
     paramDialogInterface.putExtra("neverGetA8Key", true);
-    paramDialogInterface.putExtra("hardcode_jspermission", JsapiPermissionWrapper.spm);
-    paramDialogInterface.putExtra("hardcode_general_ctrl", GeneralControlWrapper.spj);
-    a.eUR.j(paramDialogInterface, this.val$context);
+    paramDialogInterface.putExtra("hardcode_jspermission", JsapiPermissionWrapper.wib);
+    paramDialogInterface.putExtra("hardcode_general_ctrl", GeneralControlWrapper.whX);
+    a.gmO.i(paramDialogInterface, this.val$context);
+    AppMethodBeat.o(124584);
   }
 }
 

@@ -1,83 +1,103 @@
 package com.davemorrissey.labs.subscaleview.view;
 
 import android.graphics.PointF;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class SubsamplingScaleImageView$b
 {
-  boolean arm = true;
-  int arn = 2;
-  private int aro = 1;
-  private SubsamplingScaleImageView.d arp;
-  private final float arq;
-  private final PointF arr;
-  private final PointF ars;
-  boolean art = true;
-  long duration = 500L;
+  boolean atE;
+  int atF;
+  int atG;
+  private SubsamplingScaleImageView.d atH;
+  private final float atI;
+  private final PointF atJ;
+  private final PointF atK;
+  boolean atL;
+  long duration;
   
   private SubsamplingScaleImageView$b(SubsamplingScaleImageView paramSubsamplingScaleImageView, float paramFloat, PointF paramPointF)
   {
-    this.arq = paramFloat;
-    this.arr = paramPointF;
-    this.ars = null;
+    this.duration = 500L;
+    this.atF = 2;
+    this.atG = 1;
+    this.atE = true;
+    this.atL = true;
+    this.atI = paramFloat;
+    this.atJ = paramPointF;
+    this.atK = null;
   }
   
   private SubsamplingScaleImageView$b(SubsamplingScaleImageView paramSubsamplingScaleImageView, float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    this.arq = paramFloat;
-    this.arr = paramPointF1;
-    this.ars = paramPointF2;
+    this.duration = 500L;
+    this.atF = 2;
+    this.atG = 1;
+    this.atE = true;
+    this.atL = true;
+    this.atI = paramFloat;
+    this.atJ = paramPointF1;
+    this.atK = paramPointF2;
   }
   
   private SubsamplingScaleImageView$b(SubsamplingScaleImageView paramSubsamplingScaleImageView, PointF paramPointF)
   {
-    this.arq = SubsamplingScaleImageView.i(paramSubsamplingScaleImageView);
-    this.arr = paramPointF;
-    this.ars = null;
+    AppMethodBeat.i(115651);
+    this.duration = 500L;
+    this.atF = 2;
+    this.atG = 1;
+    this.atE = true;
+    this.atL = true;
+    this.atI = SubsamplingScaleImageView.i(paramSubsamplingScaleImageView);
+    this.atJ = paramPointF;
+    this.atK = null;
+    AppMethodBeat.o(115651);
   }
   
   public final void start()
   {
-    if ((SubsamplingScaleImageView.w(this.aqZ) != null) && (SubsamplingScaleImageView.w(this.aqZ).arp != null)) {}
+    AppMethodBeat.i(115652);
+    if ((SubsamplingScaleImageView.w(this.ats) != null) && (SubsamplingScaleImageView.w(this.ats).atH != null)) {}
     try
     {
-      SubsamplingScaleImageView.w(this.aqZ);
-      int i = this.aqZ.getPaddingLeft();
-      int j = (this.aqZ.getWidth() - this.aqZ.getPaddingRight() - this.aqZ.getPaddingLeft()) / 2;
-      int k = this.aqZ.getPaddingTop();
-      int m = (this.aqZ.getHeight() - this.aqZ.getPaddingBottom() - this.aqZ.getPaddingTop()) / 2;
-      float f3 = SubsamplingScaleImageView.b(this.aqZ, this.arq);
-      if (this.art)
+      SubsamplingScaleImageView.w(this.ats);
+      int i = this.ats.getPaddingLeft();
+      int j = (this.ats.getWidth() - this.ats.getPaddingRight() - this.ats.getPaddingLeft()) / 2;
+      int k = this.ats.getPaddingTop();
+      int m = (this.ats.getHeight() - this.ats.getPaddingBottom() - this.ats.getPaddingTop()) / 2;
+      float f3 = SubsamplingScaleImageView.b(this.ats, this.atI);
+      if (this.atL)
       {
-        Object localObject = SubsamplingScaleImageView.a(this.aqZ, this.arr.x, this.arr.y, f3, new PointF());
-        SubsamplingScaleImageView.a(this.aqZ, new SubsamplingScaleImageView.a((byte)0));
-        SubsamplingScaleImageView.w(this.aqZ).apG = SubsamplingScaleImageView.i(this.aqZ);
-        SubsamplingScaleImageView.w(this.aqZ).arg = f3;
-        SubsamplingScaleImageView.w(this.aqZ).time = System.currentTimeMillis();
-        SubsamplingScaleImageView.w(this.aqZ).arj = ((PointF)localObject);
-        SubsamplingScaleImageView.w(this.aqZ).arh = this.aqZ.getCenter();
-        SubsamplingScaleImageView.w(this.aqZ).ari = ((PointF)localObject);
-        SubsamplingScaleImageView.w(this.aqZ).ark = this.aqZ.c((PointF)localObject);
-        SubsamplingScaleImageView.w(this.aqZ).arl = new PointF(j + i, m + k);
-        SubsamplingScaleImageView.w(this.aqZ).duration = this.duration;
-        SubsamplingScaleImageView.w(this.aqZ).arm = this.arm;
-        SubsamplingScaleImageView.w(this.aqZ).arn = this.arn;
-        SubsamplingScaleImageView.w(this.aqZ).aro = this.aro;
-        SubsamplingScaleImageView.w(this.aqZ).time = System.currentTimeMillis();
-        SubsamplingScaleImageView.w(this.aqZ).arp = this.arp;
-        if (this.ars != null)
+        Object localObject = SubsamplingScaleImageView.a(this.ats, this.atJ.x, this.atJ.y, f3, new PointF());
+        SubsamplingScaleImageView.a(this.ats, new SubsamplingScaleImageView.a((byte)0));
+        SubsamplingScaleImageView.w(this.ats).arZ = SubsamplingScaleImageView.i(this.ats);
+        SubsamplingScaleImageView.w(this.ats).aty = f3;
+        SubsamplingScaleImageView.w(this.ats).time = System.currentTimeMillis();
+        SubsamplingScaleImageView.w(this.ats).atB = ((PointF)localObject);
+        SubsamplingScaleImageView.w(this.ats).atz = this.ats.getCenter();
+        SubsamplingScaleImageView.w(this.ats).atA = ((PointF)localObject);
+        SubsamplingScaleImageView.w(this.ats).atC = this.ats.c((PointF)localObject);
+        SubsamplingScaleImageView.w(this.ats).atD = new PointF(j + i, m + k);
+        SubsamplingScaleImageView.w(this.ats).duration = this.duration;
+        SubsamplingScaleImageView.w(this.ats).atE = this.atE;
+        SubsamplingScaleImageView.w(this.ats).atF = this.atF;
+        SubsamplingScaleImageView.w(this.ats).atG = this.atG;
+        SubsamplingScaleImageView.w(this.ats).time = System.currentTimeMillis();
+        SubsamplingScaleImageView.w(this.ats).atH = this.atH;
+        if (this.atK != null)
         {
-          float f1 = this.ars.x - SubsamplingScaleImageView.w(this.aqZ).arh.x * f3;
-          float f2 = this.ars.y - SubsamplingScaleImageView.w(this.aqZ).arh.y * f3;
+          float f1 = this.atK.x - SubsamplingScaleImageView.w(this.ats).atz.x * f3;
+          float f2 = this.atK.y - SubsamplingScaleImageView.w(this.ats).atz.y * f3;
           localObject = new SubsamplingScaleImageView.g(f3, new PointF(f1, f2), (byte)0);
-          SubsamplingScaleImageView.a(this.aqZ, (SubsamplingScaleImageView.g)localObject);
-          SubsamplingScaleImageView.a locala = SubsamplingScaleImageView.w(this.aqZ);
-          f3 = this.ars.x;
-          float f4 = ((SubsamplingScaleImageView.g)localObject).apH.x;
-          float f5 = this.ars.y;
-          locala.arl = new PointF(f4 - f1 + f3, ((SubsamplingScaleImageView.g)localObject).apH.y - f2 + f5);
+          SubsamplingScaleImageView.a(this.ats, (SubsamplingScaleImageView.g)localObject);
+          SubsamplingScaleImageView.a locala = SubsamplingScaleImageView.w(this.ats);
+          f3 = this.atK.x;
+          float f4 = ((SubsamplingScaleImageView.g)localObject).asa.x;
+          float f5 = this.atK.y;
+          locala.atD = new PointF(f4 - f1 + f3, ((SubsamplingScaleImageView.g)localObject).asa.y - f2 + f5);
         }
-        this.aqZ.invalidate();
+        this.ats.invalidate();
+        AppMethodBeat.o(115652);
         return;
       }
     }
@@ -85,9 +105,9 @@ public final class SubsamplingScaleImageView$b
     {
       for (;;)
       {
-        y.w(SubsamplingScaleImageView.l(this.aqZ), "Error thrown by animation listener", new Object[] { localException });
+        ab.w(SubsamplingScaleImageView.l(this.ats), "Error thrown by animation listener", new Object[] { localException });
         continue;
-        PointF localPointF = this.arr;
+        PointF localPointF = this.atJ;
       }
     }
   }

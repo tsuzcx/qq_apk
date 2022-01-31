@@ -1,27 +1,23 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.n.c;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.j;
 
 final class SnsTimeLineUI$42
-  implements n.c
+  implements Runnable
 {
-  SnsTimeLineUI$42(SnsTimeLineUI paramSnsTimeLineUI, List paramList) {}
+  SnsTimeLineUI$42(SnsTimeLineUI paramSnsTimeLineUI) {}
   
-  public final void a(l paraml)
+  public final void run()
   {
-    Iterator localIterator = this.fng.iterator();
-    while (localIterator.hasNext()) {
-      paraml.i((m)localIterator.next());
-    }
+    AppMethodBeat.i(39516);
+    j.q(this.rYv);
+    AppMethodBeat.o(39516);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTimeLineUI.42
  * JD-Core Version:    0.7.0.1
  */

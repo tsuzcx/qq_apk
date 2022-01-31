@@ -3,34 +3,44 @@ package com.tencent.mm.plugin.wallet_core.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class Orders$ShowInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ShowInfo> CREATOR = new Orders.ShowInfo.1();
-  public String kOn;
+  public static final Parcelable.Creator<ShowInfo> CREATOR;
   public String name;
-  public String qxS;
-  public int qxT;
-  public String qxU;
-  public String qxV;
-  public String qxW;
-  public int qxX;
+  public String nmk;
+  public String ukA;
+  public int ukB;
+  public String ukC;
+  public String ukD;
+  public String ukE;
+  public int ukF;
   public String value;
+  
+  static
+  {
+    AppMethodBeat.i(46828);
+    CREATOR = new Orders.ShowInfo.1();
+    AppMethodBeat.o(46828);
+  }
   
   public Orders$ShowInfo() {}
   
   protected Orders$ShowInfo(Parcel paramParcel)
   {
+    AppMethodBeat.i(46825);
     this.name = paramParcel.readString();
     this.value = paramParcel.readString();
-    this.kOn = paramParcel.readString();
-    this.qxS = paramParcel.readString();
-    this.qxT = paramParcel.readInt();
-    this.qxU = paramParcel.readString();
-    this.qxV = paramParcel.readString();
-    this.qxW = paramParcel.readString();
-    this.qxX = paramParcel.readInt();
+    this.nmk = paramParcel.readString();
+    this.ukA = paramParcel.readString();
+    this.ukB = paramParcel.readInt();
+    this.ukC = paramParcel.readString();
+    this.ukD = paramParcel.readString();
+    this.ukE = paramParcel.readString();
+    this.ukF = paramParcel.readInt();
+    AppMethodBeat.o(46825);
   }
   
   public int describeContents()
@@ -40,20 +50,25 @@ public class Orders$ShowInfo
   
   public String toString()
   {
-    return String.format("ShowInfo name:%s, value:%s, nameColor:%s, valueColor:%s, linkType:%s, linkWeApp:%s, linkAddr:%s, linkUrl:%s, textAttr:%s", new Object[] { this.name, this.value, this.kOn, this.qxS, Integer.valueOf(this.qxT), this.qxU, this.qxV, this.qxW, Integer.valueOf(this.qxX) });
+    AppMethodBeat.i(46826);
+    String str = String.format("ShowInfo name:%s, value:%s, nameColor:%s, valueColor:%s, linkType:%s, linkWeApp:%s, linkAddr:%s, linkUrl:%s, textAttr:%s", new Object[] { this.name, this.value, this.nmk, this.ukA, Integer.valueOf(this.ukB), this.ukC, this.ukD, this.ukE, Integer.valueOf(this.ukF) });
+    AppMethodBeat.o(46826);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(46827);
     paramParcel.writeString(this.name);
     paramParcel.writeString(this.value);
-    paramParcel.writeString(this.kOn);
-    paramParcel.writeString(this.qxS);
-    paramParcel.writeInt(this.qxT);
-    paramParcel.writeString(this.qxU);
-    paramParcel.writeString(this.qxV);
-    paramParcel.writeString(this.qxW);
-    paramParcel.writeInt(this.qxX);
+    paramParcel.writeString(this.nmk);
+    paramParcel.writeString(this.ukA);
+    paramParcel.writeInt(this.ukB);
+    paramParcel.writeString(this.ukC);
+    paramParcel.writeString(this.ukD);
+    paramParcel.writeString(this.ukE);
+    paramParcel.writeInt(this.ukF);
+    AppMethodBeat.o(46827);
   }
 }
 

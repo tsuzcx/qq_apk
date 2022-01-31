@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.share;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.plugin.appbrand.service.c;
 
 public final class d
-  extends a<p>
+  extends a<c>
 {
   public static final int CTRL_INDEX = 240;
   public static final String NAME = "shareAppMessageDirectly";

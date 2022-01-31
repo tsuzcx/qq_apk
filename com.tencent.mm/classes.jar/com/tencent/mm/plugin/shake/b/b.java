@@ -1,90 +1,110 @@
 package com.tencent.mm.plugin.shake.b;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelstat.o;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.brd;
-import com.tencent.mm.protocal.c.bre;
-import com.tencent.mm.protocal.k.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.cbo;
+import com.tencent.mm.protocal.protobuf.cbp;
+import com.tencent.mm.protocal.protobuf.cuv;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 
 public final class b
   extends m
   implements k
 {
-  byte[] ccD;
-  private final com.tencent.mm.ah.b dmK;
-  private f dmL;
+  byte[] cLl;
+  private f callback;
   int ret;
+  private final com.tencent.mm.ai.b rr;
   
   public b(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
+    AppMethodBeat.i(24414);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new brd();
-    ((b.a)localObject).ecI = new bre();
+    ((b.a)localObject).fsX = new cbo();
+    ((b.a)localObject).fsY = new cbp();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/shakereport";
-    ((b.a)localObject).ecG = 161;
-    ((b.a)localObject).ecJ = 56;
-    ((b.a)localObject).ecK = 1000000056;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (brd)this.dmK.ecE.ecN;
-    y.i("MicroMsg.NetSceneShakeReport", "share reprot %f %f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1) });
-    ((brd)localObject).ssq = 0;
-    ((brd)localObject).sGJ = paramFloat1;
-    ((brd)localObject).sGK = paramFloat2;
-    ((brd)localObject).sUn = paramInt1;
-    ((brd)localObject).sUo = paramString1;
-    ((brd)localObject).sUp = paramString2;
-    ((brd)localObject).sUq = paramInt2;
-    au.Hx();
-    ((brd)localObject).tIa = bk.a((Integer)c.Dz().get(4107, null), 0);
-    au.Hx();
-    paramInt2 = bk.g((Integer)c.Dz().get(4106, null));
-    ((brd)localObject).tIb = paramInt2;
-    au.Hx();
-    c.Dz().o(4106, Integer.valueOf(paramInt2 + 1));
-    ((brd)localObject).tpt = new bmk().bs(com.tencent.mm.plugin.normsg.a.b.mGK.boP());
-    o.a(2002, paramFloat1, paramFloat2, paramInt1);
-  }
-  
-  public final int a(e parame, f paramf)
-  {
-    y.d("MicroMsg.NetSceneShakeReport", "doScene");
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneShakeReport", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramArrayOfByte = (bre)this.dmK.ecF.ecN;
-    this.ret = paramq.HF().spN;
-    if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.ccD = aa.a(paramArrayOfByte.szp);
+    ((b.a)localObject).funcId = 161;
+    ((b.a)localObject).reqCmdId = 56;
+    ((b.a)localObject).respCmdId = 1000000056;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (cbo)this.rr.fsV.fta;
+    ab.i("MicroMsg.NetSceneShakeReport", "share reprot %f %f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1) });
+    ((cbo)localObject).OpCode = 0;
+    ((cbo)localObject).wDh = paramFloat1;
+    ((cbo)localObject).wDi = paramFloat2;
+    ((cbo)localObject).wSk = paramInt1;
+    ((cbo)localObject).wSl = paramString1;
+    ((cbo)localObject).wSm = paramString2;
+    ((cbo)localObject).wSn = paramInt2;
+    aw.aaz();
+    ((cbo)localObject).xMr = bo.a((Integer)c.Ru().get(4107, null), 0);
+    aw.aaz();
+    paramInt2 = bo.g((Integer)c.Ru().get(4106, null));
+    ((cbo)localObject).xMs = paramInt2;
+    aw.aaz();
+    c.Ru().set(4106, Integer.valueOf(paramInt2 + 1));
+    try
+    {
+      paramString1 = new cuv();
+      paramString1.ydy = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.pgQ.bXq());
+      ((cbo)localObject).wss = new SKBuiltinBuffer_t().setBuffer(paramString1.toByteArray());
+      label291:
+      o.a(2002, paramFloat1, paramFloat2, paramInt1);
+      AppMethodBeat.o(24414);
+      return;
     }
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    catch (Throwable paramString1)
+    {
+      break label291;
+    }
   }
   
-  public final int bzF()
+  public final int ckP()
   {
-    return ((brd)this.dmK.ecE.ecN).sUq;
+    return ((cbo)this.rr.fsV.fta).wSn;
+  }
+  
+  public final int doScene(e parame, f paramf)
+  {
+    AppMethodBeat.i(24415);
+    ab.d("MicroMsg.NetSceneShakeReport", "doScene");
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(24415);
+    return i;
   }
   
   public final int getType()
   {
     return 161;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(24416);
+    ab.d("MicroMsg.NetSceneShakeReport", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    paramArrayOfByte = (cbp)this.rr.fsW.fta;
+    this.ret = paramq.getRespObj().getRetCode();
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.cLl = aa.a(paramArrayOfByte.wtq);
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(24416);
   }
 }
 

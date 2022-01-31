@@ -1,36 +1,89 @@
 package com.tencent.mm.plugin.appbrand.game.b;
 
-import com.tencent.magicbrush.handler.image.a.a;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.BufferedInputStream;
-import java.io.InputStream;
-import java.net.URL;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.a.a.g;
+import com.tencent.mm.plugin.fts.a.a.h;
+import com.tencent.mm.plugin.fts.a.a.i;
+import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.c;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
-public final class b$c
-  extends a.a
+final class b$c
+  extends h
 {
-  public final boolean bs(String paramString)
+  b$c(b paramb, i parami)
   {
-    return (paramString != null) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://")));
+    super(parami);
   }
   
-  public final InputStream bt(String paramString)
+  public final void a(j paramj)
   {
+    AppMethodBeat.i(130070);
+    paramj.mRX = g.aU(this.mSJ.query, true);
+    paramj.mSW = new ArrayList();
+    HashSet localHashSet = new HashSet();
+    Cursor localCursor = this.hsB.hsz.a(paramj.mRX, c.mQF, this.mSJ.mSQ, true, true);
     try
     {
-      BufferedInputStream localBufferedInputStream = new BufferedInputStream(new URL(paramString).openStream());
-      return localBufferedInputStream;
+      while (localCursor.moveToNext())
+      {
+        m localm = new m();
+        localm.i(localCursor);
+        if ((!localHashSet.contains(Long.valueOf(localm.mSZ))) && (!this.mSJ.mSS.contains(localm.mRV)))
+        {
+          localm.bCa();
+          paramj.mSW.add(localm);
+          localHashSet.add(Long.valueOf(localm.mSZ));
+        }
+      }
+      if (localCursor == null) {
+        break label193;
+      }
     }
-    catch (Exception localException)
+    catch (Throwable paramj)
     {
-      y.e("HttpDecoder", "fetch error failed. path = [%s], error = [%s]", new Object[] { paramString, localException.toString() });
+      AppMethodBeat.o(130070);
+      throw paramj;
     }
-    return null;
+    finally
+    {
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      AppMethodBeat.o(130070);
+    }
+    localCursor.close();
+    label193:
+    if (Thread.interrupted())
+    {
+      paramj = new InterruptedException();
+      AppMethodBeat.o(130070);
+      throw paramj;
+    }
+    if (this.mSJ.mST != null) {
+      Collections.sort(paramj.mSW, this.mSJ.mST);
+    }
+    AppMethodBeat.o(130070);
+  }
+  
+  public final int getId()
+  {
+    return 30;
+  }
+  
+  public final String getName()
+  {
+    return "SearchMiniGameTask";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.b.b.c
  * JD-Core Version:    0.7.0.1
  */

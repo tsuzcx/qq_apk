@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.biz;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.storage.r;
 
 final class PluginBiz$2
@@ -8,9 +8,9 @@ final class PluginBiz$2
 {
   PluginBiz$2(PluginBiz paramPluginBiz) {}
   
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return r.dXp;
+    return r.SQL_CREATE;
   }
 }
 

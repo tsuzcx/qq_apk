@@ -2,71 +2,88 @@ package com.tencent.mm.ui.widget.sortlist;
 
 import android.graphics.Point;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DragSortListView$g
   extends DragSortListView.m
 {
-  private int wrQ;
-  private int wrR;
-  private float wrS;
-  private float wrT;
+  private int AMu;
+  private int AMv;
+  private float AMw;
+  private float AMx;
   
   private DragSortListView$g(DragSortListView paramDragSortListView, int paramInt)
   {
     super(paramDragSortListView, paramInt, (byte)0);
   }
   
-  private int cKH()
+  private int dPO()
   {
-    int i = this.wrD.getFirstVisiblePosition();
-    int j = (DragSortListView.i(this.wrD) + this.wrD.getDividerHeight()) / 2;
-    View localView = this.wrD.getChildAt(this.wrQ - i);
-    if (localView != null)
-    {
-      if (this.wrQ == this.wrR) {
-        return localView.getTop();
+    AppMethodBeat.i(113048);
+    int i = this.AMh.getFirstVisiblePosition();
+    int j = (DragSortListView.i(this.AMh) + this.AMh.getDividerHeight()) / 2;
+    View localView = this.AMh.getChildAt(this.AMu - i);
+    i = -1;
+    if (localView != null) {
+      if (this.AMu == this.AMv) {
+        i = localView.getTop();
       }
-      if (this.wrQ < this.wrR) {
-        return localView.getTop() - j;
-      }
-      return localView.getBottom() + j - DragSortListView.j(this.wrD);
     }
-    this.pP = true;
-    return -1;
+    for (;;)
+    {
+      AppMethodBeat.o(113048);
+      return i;
+      if (this.AMu < this.AMv)
+      {
+        i = localView.getTop() - j;
+      }
+      else
+      {
+        i = localView.getBottom() + j - DragSortListView.j(this.AMh);
+        continue;
+        this.qM = true;
+      }
+    }
   }
   
-  public final void aQ(float paramFloat)
+  public final void bB(float paramFloat)
   {
-    int i = cKH();
-    int j = this.wrD.getPaddingLeft();
-    float f1 = DragSortListView.d(this.wrD).y - i;
-    float f2 = DragSortListView.d(this.wrD).x - j;
+    AppMethodBeat.i(113049);
+    int i = dPO();
+    int j = this.AMh.getPaddingLeft();
+    float f1 = DragSortListView.d(this.AMh).y - i;
+    float f2 = DragSortListView.d(this.AMh).x - j;
     paramFloat = 1.0F - paramFloat;
-    if ((paramFloat < Math.abs(f1 / this.wrS)) || (paramFloat < Math.abs(f2 / this.wrT)))
+    if ((paramFloat < Math.abs(f1 / this.AMw)) || (paramFloat < Math.abs(f2 / this.AMx)))
     {
-      DragSortListView.d(this.wrD).y = (i + (int)(this.wrS * paramFloat));
-      DragSortListView.d(this.wrD).x = (this.wrD.getPaddingLeft() + (int)(this.wrT * paramFloat));
-      DragSortListView.f(this.wrD);
+      DragSortListView.d(this.AMh).y = (i + (int)(this.AMw * paramFloat));
+      DragSortListView.d(this.AMh).x = (this.AMh.getPaddingLeft() + (int)(this.AMx * paramFloat));
+      DragSortListView.f(this.AMh);
     }
+    AppMethodBeat.o(113049);
   }
   
   public final void onStart()
   {
-    this.wrQ = DragSortListView.g(this.wrD);
-    this.wrR = DragSortListView.h(this.wrD);
-    DragSortListView.a(this.wrD, 2);
-    this.wrS = (DragSortListView.d(this.wrD).y - cKH());
-    this.wrT = (DragSortListView.d(this.wrD).x - this.wrD.getPaddingLeft());
+    AppMethodBeat.i(113047);
+    this.AMu = DragSortListView.g(this.AMh);
+    this.AMv = DragSortListView.h(this.AMh);
+    DragSortListView.a(this.AMh, 2);
+    this.AMw = (DragSortListView.d(this.AMh).y - dPO());
+    this.AMx = (DragSortListView.d(this.AMh).x - this.AMh.getPaddingLeft());
+    AppMethodBeat.o(113047);
   }
   
   public final void onStop()
   {
-    DragSortListView.k(this.wrD);
+    AppMethodBeat.i(113050);
+    DragSortListView.k(this.AMh);
+    AppMethodBeat.o(113050);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.widget.sortlist.DragSortListView.g
  * JD-Core Version:    0.7.0.1
  */

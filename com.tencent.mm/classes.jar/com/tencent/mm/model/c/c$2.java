@@ -1,6 +1,7 @@
 package com.tencent.mm.model.c;
 
-import com.tencent.mm.h.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.d;
 
 final class c$2
   extends com.tencent.mm.sdk.b.c<d>
@@ -8,7 +9,9 @@ final class c$2
   c$2(c paramc)
   {
     super(0);
-    this.udX = d.class.getName().hashCode();
+    AppMethodBeat.i(118176);
+    this.__eventId = d.class.getName().hashCode();
+    AppMethodBeat.o(118176);
   }
 }
 

@@ -2,12 +2,13 @@ package com.tencent.mm.ui.chatting;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.chatting.b.aq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ui.chatting.c.as;
 
 final class d$2
-  extends ah
+  extends ak
 {
   d$2(d paramd, Looper paramLooper)
   {
@@ -16,25 +17,26 @@ final class d$2
   
   public final void handleMessage(Message paramMessage)
   {
-    boolean bool = true;
+    AppMethodBeat.i(30406);
     super.handleMessage(paramMessage);
     try
     {
-      y.i("MicroMsg.AutoPlay", "reset speaker");
-      this.vhN.setScreenEnable(true);
-      paramMessage = this.vhN;
-      if (!this.vhN.vhB.ian) {}
-      for (;;)
+      ab.i("MicroMsg.AutoPlay", "reset speaker");
+      d.a(this.zwH);
+      paramMessage = this.zwH;
+      if (!this.zwH.zwv.mtW) {}
+      for (boolean bool = true;; bool = false)
       {
-        paramMessage.iak = bool;
+        paramMessage.mtV = bool;
+        AppMethodBeat.o(30406);
         return;
-        bool = false;
       }
       return;
     }
     catch (Exception paramMessage)
     {
-      y.printErrStackTrace("MicroMsg.AutoPlay", paramMessage, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.AutoPlay", paramMessage, "", new Object[0]);
+      AppMethodBeat.o(30406);
     }
   }
 }

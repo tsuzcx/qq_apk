@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$3
   implements Runnable
@@ -12,36 +13,48 @@ final class a$3
   
   public final void run()
   {
-    if (this.oaF.oax)
+    AppMethodBeat.i(24591);
+    if (this.qOO.qOG)
     {
-      y.e("MicroMsg.MusicFingerPrintRecorder", "tryStartNetscene clientid: %d but netscene is running.", new Object[] { Integer.valueOf(this.oaF.oaz) });
+      ab.e("MicroMsg.MusicFingerPrintRecorder", "tryStartNetscene clientid: %d but netscene is running.", new Object[] { Integer.valueOf(this.qOO.qOI) });
+      AppMethodBeat.o(24591);
       return;
-    }
-    synchronized (this.oaF.oap)
-    {
-      if (this.oaF.oaq <= 0) {
-        return;
-      }
-    }
-    byte[] arrayOfByte = new byte[this.oaF.oaq];
-    System.arraycopy(this.oaF.oap, 0, arrayOfByte, 0, this.oaF.oaq);
-    this.oaF.oaq = 0;
-    long l = this.oaF.oas;
-    this.oaF.oax = true;
-    int i = this.oaF.oat;
-    int j = this.oaF.oar;
-    int k = this.oaF.oaz;
-    boolean bool = this.oaF.oay;
-    int m = this.oaF.oaA;
-    if (i == 367) {
-      ??? = new f(arrayOfByte, j, l, k, bool, m);
     }
     for (;;)
     {
-      au.Dk().a((m)???, 0);
-      return;
+      long l;
+      int i;
+      int j;
+      int k;
+      boolean bool;
+      int m;
+      synchronized (this.qOO.qOy)
+      {
+        if (this.qOO.qOz <= 0)
+        {
+          AppMethodBeat.o(24591);
+          return;
+        }
+        byte[] arrayOfByte1 = new byte[this.qOO.qOz];
+        System.arraycopy(this.qOO.qOy, 0, arrayOfByte1, 0, this.qOO.qOz);
+        this.qOO.qOz = 0;
+        l = this.qOO.qOB;
+        this.qOO.qOG = true;
+        i = this.qOO.qOC;
+        j = this.qOO.qOA;
+        k = this.qOO.qOI;
+        bool = this.qOO.qOH;
+        m = this.qOO.qOJ;
+        if (i == 367)
+        {
+          ??? = new f(arrayOfByte1, j, l, k, bool, m);
+          aw.Rc().a((m)???, 0);
+          AppMethodBeat.o(24591);
+          return;
+        }
+      }
       if (i == 408) {
-        ??? = new g(arrayOfByte, j, l, k, bool, m);
+        ??? = new g(arrayOfByte2, j, l, k, bool, m);
       } else {
         ??? = null;
       }
@@ -50,7 +63,10 @@ final class a$3
   
   public final String toString()
   {
-    return super.toString() + "|tryStartNetscene";
+    AppMethodBeat.i(24592);
+    String str = super.toString() + "|tryStartNetscene";
+    AppMethodBeat.o(24592);
+    return str;
   }
 }
 

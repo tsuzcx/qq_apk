@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.c;
 import com.tencent.mm.plugin.wenote.model.a.g;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
@@ -15,29 +15,33 @@ public final class h
   public h(View paramView, k paramk)
   {
     super(paramView, paramk);
-    this.rNa.setVisibility(0);
-    this.bNu.setVisibility(8);
-    this.fmL.setVisibility(8);
-    this.rNa.setTag(this);
-    this.rNa.setOnClickListener(this.laS);
+    AppMethodBeat.i(27163);
+    this.vDE.setVisibility(0);
+    this.cuM.setVisibility(8);
+    this.gEf.setVisibility(8);
+    this.vDE.setTag(this);
+    this.vDE.setOnClickListener(this.nyO);
+    AppMethodBeat.o(27163);
   }
   
   public final void a(c paramc, int paramInt1, int paramInt2)
   {
-    this.rNd.setImageResource(R.k.app_attach_file_icon_location);
-    this.rNb.setText(((g)paramc).lFn);
-    this.rNc.setText(((g)paramc).ekZ);
+    AppMethodBeat.i(27164);
+    this.vDH.setImageResource(2131230807);
+    this.vDF.setText(((g)paramc).eSM);
+    this.vDG.setText(((g)paramc).fBq);
     super.a(paramc, paramInt1, paramInt2);
+    AppMethodBeat.o(27164);
   }
   
-  public final int cjv()
+  public final int djX()
   {
     return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.b.h
  * JD-Core Version:    0.7.0.1
  */

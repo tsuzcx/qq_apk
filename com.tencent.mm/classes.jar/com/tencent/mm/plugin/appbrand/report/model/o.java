@@ -1,179 +1,244 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.luggage.sdk.d.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.q;
 import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.jsapi.t.a;
-import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.page.s;
+import com.tencent.mm.plugin.appbrand.config.h;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.jsapi.u.a;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.page.z;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.d;
+import com.tencent.mm.plugin.appbrand.report.f;
 import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.util.LinkedList;
 
 public final class o
 {
-  private static final o gZL = new o(true);
+  private static final o iId;
   public String appId;
   public int apptype;
-  public int bFu;
-  public String bFv;
-  public String bFw;
-  public String bIB;
-  public int caB;
-  public String caC;
-  public int cau;
-  public n fzW;
-  public int gXG;
-  private final boolean gYN;
-  boolean gYQ = false;
-  public String gYR;
-  public String gYT;
-  public int gYU;
-  public String gYV;
-  public long gYW;
-  public int gYX;
-  public int gYY;
-  public String gYZ;
-  String gZM = "";
-  public final LinkedList<String> gZN = new LinkedList();
-  public String gZO;
-  public boolean gZP = true;
+  public int bDc;
+  public int cJb;
+  public String cJc;
+  public int cmE;
+  public String cmF;
+  public String cmG;
+  public String cpW;
+  public com.tencent.mm.plugin.appbrand.o gQn;
+  public int iFX;
+  private final boolean iHd;
+  boolean iHf;
+  public String iHg;
+  public String iHi;
+  public int iHj;
+  public String iHk;
+  public long iHl;
+  public int iHm;
+  public int iHn;
+  public String iHo;
+  private String iIe;
+  public final LinkedList<String> iIf;
+  public String iIg;
+  public boolean iIh;
   public int scene;
+  
+  static
+  {
+    AppMethodBeat.i(132674);
+    iId = new o(true);
+    AppMethodBeat.o(132674);
+  }
   
   private o(boolean paramBoolean)
   {
-    this.gYN = paramBoolean;
+    AppMethodBeat.i(132666);
+    this.iIe = "";
+    this.iIf = new LinkedList();
+    this.iHf = false;
+    this.iIh = true;
+    this.iHd = paramBoolean;
+    AppMethodBeat.o(132666);
   }
   
-  public static o a(n paramn, String paramString, LinkedList<String> paramLinkedList)
+  private void IE()
   {
-    o localo = new o(false);
-    localo.bIB = paramString;
-    paramString = paramn.aab();
-    localo.scene = paramString.scene;
-    localo.bFv = paramString.bFv;
-    localo.appId = paramn.mAppId;
-    localo.fzW = paramn;
-    localo.bFu = (paramn.aaa().fPS.fEM + 1);
-    localo.cau = paramn.aaa().fPS.fEN;
-    localo.gXG = paramString.gXG;
-    localo.caB = paramString.caB;
-    localo.caC = paramString.caC;
-    localo.gZN.addAll(paramLinkedList);
-    return localo;
-  }
-  
-  public static o aou()
-  {
-    return gZL;
-  }
-  
-  public final void a(s params, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 7)
+    AppMethodBeat.i(132673);
+    if (this.iHd)
     {
-      this.gYU = i;
-      String str = (String)this.gZN.pollFirst();
-      this.gYV = str;
-      this.gYT = str;
-      if (!paramBoolean) {
-        this.gYV = this.gZM;
+      AppMethodBeat.o(132673);
+      return;
+    }
+    ab.i("MicroMsg.AppBrand.Report.kv_14992", "report " + toString());
+    o.1 local1 = new o.1(this, new Object[] { Integer.valueOf(this.scene), this.cmF, this.cpW, this.appId, Integer.valueOf(this.bDc), Integer.valueOf(this.cmE), Integer.valueOf(this.iFX), this.cmG, this.iIg, this.iHg, this.iHi, Integer.valueOf(this.iHj), this.iHk, Long.valueOf(this.iHl), Integer.valueOf(this.iHm), Integer.valueOf(this.cJb), this.cJc, Integer.valueOf(this.iHn), this.iHo, Integer.valueOf(this.apptype) });
+    if (this.iHf)
+    {
+      local1.run();
+      try
+      {
+        KVCommCrossProcessReceiver.chN();
+        AppMethodBeat.o(132673);
+        return;
       }
-      k(params);
-      return;
+      catch (Exception localException)
+      {
+        ab.printErrStackTrace("MicroMsg.AppBrand.Report.kv_14992", localException, "sendKV", new Object[0]);
+        AppMethodBeat.o(132673);
+        return;
+      }
+    }
+    com.tencent.mm.plugin.appbrand.t.e.aNS().ac(localException);
+    AppMethodBeat.o(132673);
+  }
+  
+  public static o a(com.tencent.mm.plugin.appbrand.o paramo, String paramString, LinkedList<String> paramLinkedList)
+  {
+    AppMethodBeat.i(132667);
+    o localo = new o(false);
+    localo.cpW = paramString;
+    paramString = paramo.wS().bDh;
+    localo.scene = paramString.scene;
+    localo.cmF = paramString.cmF;
+    localo.appId = paramo.mAppId;
+    localo.gQn = paramo;
+    if (paramo.atR() == null) {
+      localo.cmE = (paramo.gPz.gXd + 1);
+    }
+    for (localo.bDc = paramo.atS().bDc;; localo.bDc = paramo.atR().hiX.gXf)
+    {
+      localo.iFX = paramString.iFX;
+      localo.cJb = paramString.cJb;
+      localo.cJc = paramString.cJc;
+      localo.iIf.addAll(paramLinkedList);
+      AppMethodBeat.o(132667);
+      return localo;
+      localo.cmE = (paramo.atR().hiX.gXe + 1);
     }
   }
   
-  public final void k(s params)
+  private void a(z paramz, a parama)
   {
-    Object localObject1 = params.ans();
-    if (localObject1 == null) {
-      return;
-    }
-    Object localObject2 = params.getRuntime().ZB();
-    if (localObject2 != null)
+    AppMethodBeat.i(132671);
+    Object localObject = paramz.getRuntime().atR();
+    if (localObject != null)
     {
-      this.cau = ((com.tencent.mm.plugin.appbrand.config.i)localObject2).fPS.fEN;
-      this.gYX = WxaCommLibRuntimeReader.abQ().fEN;
+      this.bDc = ((h)localObject).hiX.gXf;
+      this.iHm = WxaCommLibRuntimeReader.avI().gXf;
     }
-    this.gYW = System.currentTimeMillis();
-    localObject2 = ((a)localObject1).getWebView().getUrl();
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = "";
+    this.iHl = System.currentTimeMillis();
+    localObject = parama.getWebView().getUrl();
+    parama = (a)localObject;
+    if (localObject == null) {
+      parama = "";
     }
-    this.gZO = com.tencent.mm.compatible.util.q.encode((String)localObject1);
-    this.bFw = params.getURL();
-    this.gYZ = params.ahc();
-    this.gYR = com.tencent.mm.plugin.appbrand.report.c.cv(ae.getContext());
+    this.iIg = q.encode(parama);
+    this.cmG = paramz.hzM;
+    this.iHo = paramz.iuB;
+    this.iHg = com.tencent.mm.plugin.appbrand.report.e.cZ(ah.getContext());
     int i;
-    if (this.gZP)
+    if (this.iIh)
     {
       i = 1;
-      label116:
-      this.gYY = i;
-      this.gZP = false;
-      params = params.getRuntime();
-      if (params != null) {
-        break label427;
+      this.iHn = i;
+      this.iIh = false;
+      paramz = paramz.getRuntime();
+      if (paramz != null) {
+        break label169;
       }
-      params = null;
-      label137:
-      if (params == null) {
-        break label435;
+      paramz = null;
+      label133:
+      if (paramz == null) {
+        break label177;
       }
-      this.apptype = params.bFB;
+      this.apptype = paramz.bCV;
     }
     for (;;)
     {
       this.apptype += 1000;
-      if (this.gYN) {
-        break;
-      }
-      y.i("MicroMsg.AppBrand.Report.kv_14992", "report " + toString());
-      params = new o.1(this, new Object[] { Integer.valueOf(this.scene), this.bFv, this.bIB, this.appId, Integer.valueOf(this.cau), Integer.valueOf(this.bFu), Integer.valueOf(this.gXG), this.bFw, this.gZO, this.gYR, this.gYT, Integer.valueOf(this.gYU), this.gYV, Long.valueOf(this.gYW), Integer.valueOf(this.gYX), Integer.valueOf(this.caB), this.caC, Integer.valueOf(this.gYY), this.gYZ, Integer.valueOf(this.apptype) });
-      if (!this.gYQ) {
-        break label471;
-      }
-      params.run();
-      try
-      {
-        KVCommCrossProcessReceiver.bwU();
-        return;
-      }
-      catch (Exception params)
-      {
-        y.printErrStackTrace("MicroMsg.AppBrand.Report.kv_14992", params, "sendKV", new Object[0]);
-        return;
-      }
+      AppMethodBeat.o(132671);
+      return;
       i = 0;
-      break label116;
-      label427:
-      params = params.ZA();
-      break label137;
-      label435:
-      this.apptype = d.vZ(this.appId);
-      y.i("MicroMsg.AppBrand.Report.kv_14992", "prepareCommonFields null = initConfig! apptype:%s", new Object[] { Integer.valueOf(this.apptype) });
+      break;
+      label169:
+      paramz = paramz.atS();
+      break label133;
+      label177:
+      this.apptype = f.EE(this.appId);
+      ab.i("MicroMsg.AppBrand.Report.kv_14992", "prepareCommonFields null = initConfig! apptype:%s", new Object[] { Integer.valueOf(this.apptype) });
     }
-    label471:
-    com.tencent.mm.plugin.appbrand.v.c.DS().O(params);
+  }
+  
+  public static o aLs()
+  {
+    return iId;
+  }
+  
+  public final void a(z paramz, String paramString)
+  {
+    AppMethodBeat.i(132668);
+    this.iHi = ((String)this.iIf.peekFirst());
+    this.iHj = 2;
+    this.iHk = paramString;
+    this.iIf.push(paramz.hzM);
+    this.iIe = paramz.hzM;
+    n(paramz);
+    AppMethodBeat.o(132668);
+  }
+  
+  public final void a(z paramz, boolean paramBoolean)
+  {
+    AppMethodBeat.i(132669);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 7)
+    {
+      this.iHj = i;
+      String str = (String)this.iIf.pollFirst();
+      this.iHk = str;
+      this.iHi = str;
+      if (!paramBoolean) {
+        this.iHk = this.iIe;
+      }
+      n(paramz);
+      AppMethodBeat.o(132669);
+      return;
+    }
+  }
+  
+  public final void n(z paramz)
+  {
+    AppMethodBeat.i(132670);
+    a locala = paramz.aJz();
+    if (locala == null)
+    {
+      AppMethodBeat.o(132670);
+      return;
+    }
+    a(paramz, locala);
+    IE();
+    AppMethodBeat.o(132670);
   }
   
   public final String toString()
   {
-    return "kv_4992{scene=" + this.scene + ", sceneNote='" + this.bFv + '\'' + ", sessionId='" + this.bIB + '\'' + ", appId='" + this.appId + '\'' + ", appVersion=" + this.cau + ", appState=" + this.bFu + ", usedState=" + this.gXG + ", pagePath='" + this.bFw + '\'' + ", currentUrl='" + this.gZO + '\'' + ", networkType='" + this.gYR + '\'' + ", referPagePath='" + this.gYT + '\'' + ", targetAction=" + this.gYU + ", targetPagePath='" + this.gYV + '\'' + ", clickTimestamp=" + this.gYW + ", publicLibVersion=" + this.gYX + ", preScene=" + this.caB + ", preSceneNote='" + this.caC + '\'' + ", isEntrance=" + this.gYY + ", apptype=" + this.apptype + '}';
+    AppMethodBeat.i(132672);
+    String str = "kv_4992{scene=" + this.scene + ", sceneNote='" + this.cmF + '\'' + ", sessionId='" + this.cpW + '\'' + ", appId='" + this.appId + '\'' + ", appVersion=" + this.bDc + ", appState=" + this.cmE + ", usedState=" + this.iFX + ", pagePath='" + this.cmG + '\'' + ", currentUrl='" + this.iIg + '\'' + ", networkType='" + this.iHg + '\'' + ", referPagePath='" + this.iHi + '\'' + ", targetAction=" + this.iHj + ", targetPagePath='" + this.iHk + '\'' + ", clickTimestamp=" + this.iHl + ", publicLibVersion=" + this.iHm + ", preScene=" + this.cJb + ", preSceneNote='" + this.cJc + '\'' + ", isEntrance=" + this.iHn + ", apptype=" + this.apptype + '}';
+    AppMethodBeat.o(132672);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.o
  * JD-Core Version:    0.7.0.1
  */

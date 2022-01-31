@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsStrangerCommentDetailUI$9
   implements View.OnClickListener
@@ -10,9 +11,11 @@ final class SnsStrangerCommentDetailUI$9
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(39320);
     if ((paramView.getTag() instanceof ao)) {
-      SnsStrangerCommentDetailUI.f(this.pdJ).l(paramView, 2, 1);
+      SnsStrangerCommentDetailUI.f(this.rWw).u(paramView, 2, 1);
     }
+    AppMethodBeat.o(39320);
   }
 }
 

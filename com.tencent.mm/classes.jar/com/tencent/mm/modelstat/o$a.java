@@ -3,85 +3,95 @@ package com.tencent.mm.modelstat;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.h.a.jg;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jp;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class o$a
   extends BroadcastReceiver
 {
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    for (;;)
+    AppMethodBeat.i(78772);
+    try
     {
-      try
+      if (g.RJ().QU())
       {
-        if (g.DN().Dc())
-        {
-          g.DN();
-          if (!com.tencent.mm.kernel.a.CW()) {}
-        }
-        else
-        {
-          boolean bool = g.DN().Dc();
-          g.DN();
-          y.e("MicroMsg.NetTypeReporter", "onReceive acc not ready .%b %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(com.tencent.mm.kernel.a.CW()) });
-          return;
-        }
-        if ((paramIntent != null) && (!bk.bl(paramIntent.getAction()))) {
-          break;
-        }
-        if (paramIntent == null)
-        {
-          paramContext = "intent is null";
-          y.e("MicroMsg.NetTypeReporter", "onReceive %s  ", new Object[] { paramContext });
-          return;
-        }
+        g.RJ();
+        if (!com.tencent.mm.kernel.a.QP()) {}
       }
-      catch (Throwable paramContext)
+      else
       {
-        y.e("MicroMsg.NetTypeReporter", "onReceive : %s", new Object[] { bk.j(paramContext) });
+        bool = g.RJ().QU();
+        g.RJ();
+        ab.e("MicroMsg.NetTypeReporter", "onReceive acc not ready .%b %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(com.tencent.mm.kernel.a.QP()) });
+        AppMethodBeat.o(78772);
         return;
       }
-      paramContext = "action is null";
-    }
-    paramContext = paramIntent.getAction();
-    y.i("MicroMsg.NetTypeReporter", "onReceive action:%s foreground:%b", new Object[] { paramContext, Boolean.valueOf(b.foreground) });
-    if (b.foreground)
-    {
+      if ((paramIntent == null) || (bo.isNullOrNil(paramIntent.getAction())))
+      {
+        if (paramIntent == null) {}
+        for (paramContext = "intent is null";; paramContext = "action is null")
+        {
+          ab.e("MicroMsg.NetTypeReporter", "onReceive %s  ", new Object[] { paramContext });
+          AppMethodBeat.o(78772);
+          return;
+        }
+      }
+      paramContext = paramIntent.getAction();
+      ab.i("MicroMsg.NetTypeReporter", "onReceive action:%s foreground:%b", new Object[] { paramContext, Boolean.valueOf(b.foreground) });
+      boolean bool = b.foreground;
+      if (!bool)
+      {
+        AppMethodBeat.o(78772);
+        return;
+      }
       if (paramContext.equals("android.net.wifi.supplicant.CONNECTION_CHANGE"))
       {
-        o.jl(1001);
+        o.run(1001);
+        AppMethodBeat.o(78772);
         return;
-      }
-      if (paramContext.equals("android.net.wifi.supplicant.STATE_CHANGE"))
-      {
-        o.jl(1002);
-        return;
-      }
-      if (paramContext.equals("android.net.wifi.STATE_CHANGE"))
-      {
-        o.jl(1003);
-        return;
-      }
-      if (paramContext.equals("android.net.wifi.WIFI_STATE_CHANGED"))
-      {
-        o.jl(1004);
-        return;
-      }
-      if (paramContext.equals("android.net.wifi.SCAN_RESULTS"))
-      {
-        o.jl(1005);
-        return;
-      }
-      if (paramContext.equals("android.net.conn.CONNECTIVITY_CHANGE"))
-      {
-        o.jl(1006);
-        com.tencent.mm.sdk.b.a.udP.m(new jg());
       }
     }
+    catch (Throwable paramContext)
+    {
+      ab.e("MicroMsg.NetTypeReporter", "onReceive : %s", new Object[] { bo.l(paramContext) });
+      AppMethodBeat.o(78772);
+      return;
+    }
+    if (paramContext.equals("android.net.wifi.supplicant.STATE_CHANGE"))
+    {
+      o.run(1002);
+      AppMethodBeat.o(78772);
+      return;
+    }
+    if (paramContext.equals("android.net.wifi.STATE_CHANGE"))
+    {
+      o.run(1003);
+      AppMethodBeat.o(78772);
+      return;
+    }
+    if (paramContext.equals("android.net.wifi.WIFI_STATE_CHANGED"))
+    {
+      o.run(1004);
+      AppMethodBeat.o(78772);
+      return;
+    }
+    if (paramContext.equals("android.net.wifi.SCAN_RESULTS"))
+    {
+      o.run(1005);
+      AppMethodBeat.o(78772);
+      return;
+    }
+    if (paramContext.equals("android.net.conn.CONNECTIVITY_CHANGE"))
+    {
+      o.run(1006);
+      com.tencent.mm.sdk.b.a.ymk.l(new jp());
+    }
+    AppMethodBeat.o(78772);
   }
 }
 

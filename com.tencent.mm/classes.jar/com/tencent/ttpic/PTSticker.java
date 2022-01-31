@@ -2,29 +2,22 @@ package com.tencent.ttpic;
 
 import android.graphics.PointF;
 import android.opengl.GLES20;
-import android.text.TextUtils;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.GLSLRender;
 import com.tencent.filter.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.cache.VideoMemoryManager;
-import com.tencent.ttpic.facedetect.FaceStatus;
+import com.tencent.ttpic.filter.SplitFilter;
 import com.tencent.ttpic.filter.VideoFilterList;
-import com.tencent.ttpic.gles.GlUtil;
-import com.tencent.ttpic.gles.SegmentDataPipe;
+import com.tencent.ttpic.logic.watermark.LogicDataManager;
 import com.tencent.ttpic.model.VideoMaterial;
-import com.tencent.ttpic.thread.SegmentGLThread;
 import com.tencent.ttpic.util.BenchUtil;
-import com.tencent.ttpic.util.FabbyUtil;
-import com.tencent.ttpic.util.OnSegmentReadyListener;
-import com.tencent.ttpic.util.PTFaceUtil;
-import com.tencent.ttpic.util.RetrieveDataManager;
-import com.tencent.ttpic.util.RetrieveDataManager.DATA_TYPE;
 import com.tencent.ttpic.util.VideoFilterUtil;
+import com.tencent.ttpic.util.VideoFilterUtil.RATIO_MODE;
 import com.tencent.ttpic.util.VideoMaterialUtil;
-import com.tencent.ttpic.util.VideoTemplateParser;
+import com.tencent.ttpic.util.VideoSDKMaterialParser;
+import com.tencent.ttpic.util.youtu.GestureDetector;
 import com.tencent.ttpic.util.youtu.VideoPreviewFaceOutlineDetector;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,557 +25,380 @@ import java.util.Set;
 
 public class PTSticker
 {
-  private static final boolean HAS_COS = true;
-  private static final boolean HAS_STICK = true;
-  private static final VideoPreviewFaceOutlineDetector mFaceDetector = ;
-  private boolean firstSeg;
-  private int frameIndex;
-  List<FaceStatus> fs3DList = new ArrayList();
-  float[] handAngle = { 0.0F, 0.0F, 0.0F };
-  private BaseFilter mCopyFilter = new BaseFilter(GLSLRender.bcE);
-  private h mCopyFrame = new h();
-  private volatile SegmentDataPipe mDataPipe;
-  private PTFaceAttr[] mFaceAttr = new PTFaceAttr[2];
-  private h[] mInputFrame = new h[2];
-  private int[] mInputTex = new int[1];
-  private boolean mIsPause;
-  VideoMaterial mMaterial;
-  private boolean mNeedFaceTip = true;
-  private h[] mOrigFrame = new h[2];
-  private h mSegFrame = new h();
-  private OnSegmentReadyListener mSegListener;
-  private final Object mSegmentLock = new Object();
+  public static final String PERF_LOG = "[showPreview]";
+  private VideoPreviewFaceOutlineDetector faceDetector;
+  private BaseFilter mCopyFilter;
+  private h mCopyFrame;
+  private h[] mInputFrame;
+  private int[] mInputTex;
+  private long mLastTimeStamp;
+  private boolean mPause;
+  private long mPauseTimeDiff;
+  private SplitFilter mSplitFilter;
   private VideoFilterList mVideoFilters;
+  private float splitScreen;
   
-  public PTSticker(String paramString)
+  public PTSticker(VideoMaterial paramVideoMaterial, VideoPreviewFaceOutlineDetector paramVideoPreviewFaceOutlineDetector)
   {
-    this.mMaterial = VideoTemplateParser.parseVideoMaterial(paramString);
-    if ((this.mMaterial.getGameParams() != null) && (paramString.startsWith("assets:")))
-    {
-      this.mMaterial = null;
-      return;
-    }
-    VideoMaterialUtil.needOpenRefine(this.mMaterial);
-    VideoMemoryManager.getInstance().loadAllImages(this.mMaterial);
-    if (this.mMaterial == null) {}
-    for (paramString = localObject;; paramString = VideoFilterUtil.createFilters(this.mMaterial))
-    {
-      this.mVideoFilters = paramString;
-      mFaceDetector.setRefine(VideoMaterialUtil.needOpenRefine(this.mMaterial));
-      this.mNeedFaceTip = VideoMaterialUtil.needFaceTips(this.mMaterial);
-      return;
-    }
+    AppMethodBeat.i(81611);
+    this.mCopyFilter = new BaseFilter(GLSLRender.btg);
+    this.mSplitFilter = new SplitFilter();
+    this.mInputFrame = new h[2];
+    this.mCopyFrame = new h();
+    this.mInputTex = new int[1];
+    construct(paramVideoMaterial, paramVideoPreviewFaceOutlineDetector);
+    AppMethodBeat.o(81611);
   }
   
-  private int checkBufferTexValid(byte[] paramArrayOfByte, int paramInt1, int paramInt2, PTFaceAttr paramPTFaceAttr, int paramInt3)
+  public PTSticker(String paramString, VideoPreviewFaceOutlineDetector paramVideoPreviewFaceOutlineDetector)
   {
-    int i = 0;
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length != paramInt1 * paramInt2 * 4)) {
-      paramInt1 = -1202;
-    }
-    do
-    {
-      return paramInt1;
-      if (paramInt3 <= 0) {
-        return -1204;
-      }
-      if (this.mVideoFilters == null) {
-        return -1200;
-      }
-      if (paramPTFaceAttr == null) {
-        return -1203;
-      }
-      paramInt1 = i;
-    } while (this.mInputTex[0] > 0);
-    return -1206;
+    AppMethodBeat.i(81610);
+    this.mCopyFilter = new BaseFilter(GLSLRender.btg);
+    this.mSplitFilter = new SplitFilter();
+    this.mInputFrame = new h[2];
+    this.mCopyFrame = new h();
+    this.mInputTex = new int[1];
+    construct(VideoSDKMaterialParser.parseVideoMaterial(paramString, "params"), paramVideoPreviewFaceOutlineDetector);
+    AppMethodBeat.o(81610);
   }
   
-  private int checkBufferValid(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, PTFaceAttr paramPTFaceAttr, byte[] paramArrayOfByte2)
+  private void construct(VideoMaterial paramVideoMaterial, VideoPreviewFaceOutlineDetector paramVideoPreviewFaceOutlineDetector)
   {
-    int i = 0;
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length != paramInt1 * paramInt2 * 4)) {
-      paramInt1 = -1201;
-    }
-    do
+    AppMethodBeat.i(81612);
+    if (paramVideoMaterial == null)
     {
-      return paramInt1;
-      if ((paramArrayOfByte2 == null) || (paramArrayOfByte2.length != paramInt1 * paramInt2 * 4)) {
-        return -1202;
-      }
-      if (this.mVideoFilters == null) {
-        return -1200;
-      }
-      if (paramPTFaceAttr == null) {
-        return -1203;
-      }
-      paramInt1 = i;
-    } while (this.mInputTex[0] > 0);
-    return -1206;
+      paramVideoMaterial = new RuntimeException("PTSticker init fail!");
+      AppMethodBeat.o(81612);
+      throw paramVideoMaterial;
+    }
+    VideoMemoryManager.getInstance().loadAllImages(paramVideoMaterial);
+    this.mVideoFilters = VideoFilterUtil.createFilters(paramVideoMaterial);
+    paramVideoPreviewFaceOutlineDetector.setRefine(VideoMaterialUtil.needOpenRefine(paramVideoMaterial));
+    paramVideoPreviewFaceOutlineDetector.setFaceValueDetectType(paramVideoMaterial.getFaceValueDetectType());
+    paramVideoPreviewFaceOutlineDetector.clearActionCounter();
+    GestureDetector.getInstance().clearActionCounter();
+    GestureDetector.getInstance().setConfig(paramVideoMaterial.getHandBoostEnable());
+    this.splitScreen = paramVideoMaterial.getSplitScreen();
+    this.faceDetector = paramVideoPreviewFaceOutlineDetector;
+    AppMethodBeat.o(81612);
   }
   
-  private int checkTexBufferValid(int paramInt1, int paramInt2, int paramInt3, PTFaceAttr paramPTFaceAttr, byte[] paramArrayOfByte)
+  private long getUpdateTimeStamp(long paramLong)
   {
-    int i = 0;
-    if (paramInt1 <= 0) {
-      paramInt1 = -1204;
+    if (this.mPause) {
+      this.mPauseTimeDiff = (paramLong - this.mLastTimeStamp);
     }
-    do
+    for (paramLong = this.mLastTimeStamp;; paramLong -= this.mPauseTimeDiff)
     {
-      return paramInt1;
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.length != paramInt2 * paramInt3 * 4)) {
-        return -1202;
-      }
-      if (this.mVideoFilters == null) {
-        return -1200;
-      }
-      if (paramPTFaceAttr == null) {
-        return -1203;
-      }
-      paramInt1 = i;
-    } while (this.mInputTex[0] > 0);
-    return -1206;
-  }
-  
-  private int checkTexValid(int paramInt1, PTFaceAttr paramPTFaceAttr, int paramInt2)
-  {
-    int i = 0;
-    if (paramInt1 <= 0) {
-      paramInt1 = -1204;
-    }
-    do
-    {
-      return paramInt1;
-      if (paramInt2 <= 0) {
-        return -1205;
-      }
-      if (this.mVideoFilters == null) {
-        return -1200;
-      }
-      if (paramPTFaceAttr == null) {
-        return -1203;
-      }
-      paramInt1 = i;
-    } while (this.mInputTex[0] > 0);
-    return -1206;
-  }
-  
-  private SegFaceInfo getSegFaceInfo(int paramInt1, PTFaceAttr paramPTFaceAttr, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    int i = this.frameIndex % 2;
-    int j = (this.frameIndex + 1) % 2;
-    this.frameIndex += 1;
-    int k = VideoFilterUtil.get4DirectionAngle(mFaceDetector.getPhotoAngle());
-    this.mCopyFilter.nativeSetRotationAndFlip(k, 0, 0);
-    h localh2;
-    h localh1;
-    if (FabbyUtil.isHorizon(k))
-    {
-      this.mCopyFilter.RenderProcess(paramInt1, paramInt3, paramInt2, -1, 0.0D, this.mInputFrame[i]);
-      this.mCopyFilter.nativeSetRotationAndFlip(0, 0, 0);
-      this.mCopyFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, this.mOrigFrame[i]);
-      localh2 = this.mInputFrame[i];
-      localh1 = this.mOrigFrame[i];
-      this.mFaceAttr[i] = paramPTFaceAttr;
-      if ((!this.mVideoFilters.isSegmentRequired()) || (this.mSegListener == null)) {
-        break label558;
-      }
-      GLES20.glFinish();
-      Object localObject1 = null;
-      if (!paramBoolean) {
-        break label419;
-      }
-      BenchUtil.benchStart("[showPreview][FABBY] wait");
-      this.mSegListener.needWait();
-      if (this.firstSeg) {}
-    }
-    for (;;)
-    {
-      synchronized (this.mSegmentLock)
-      {
-        try
-        {
-          if (this.mDataPipe == null)
-          {
-            this.mSegmentLock.wait();
-            continue;
-          }
-          BenchUtil.benchEnd("[showPreview][FABBY] wait");
-        }
-        catch (InterruptedException localInterruptedException1)
-        {
-          ??? = this.mDataPipe;
-          this.mDataPipe = null;
-        }
-        this.mSegListener.onTextureReady(localh2, FabbyUtil.isHorizon(k));
-        this.firstSeg = false;
-        if ((??? == null) || (((SegmentDataPipe)???).mTexFrame.width != localh2.width)) {
-          break label569;
-        }
-        localh2 = this.mOrigFrame[j];
-        paramPTFaceAttr = this.mFaceAttr[j];
-        localh1 = this.mVideoFilters.doFabbyStroke(((SegmentDataPipe)???).mTexFrame, ((SegmentDataPipe)???).mMaskFrame);
-        ??? = localh2;
-        if (k == 0) {
-          break label555;
-        }
-        this.mCopyFilter.nativeSetRotationAndFlip(-k, 0, 0);
-        this.mCopyFilter.RenderProcess(localh1.texture[0], paramInt2, paramInt3, -1, 0.0D, this.mSegFrame);
-        this.mCopyFilter.nativeSetRotationAndFlip(0, 0, 0);
-        localh1 = this.mSegFrame;
-        return new SegFaceInfo((h)???, localh1, paramPTFaceAttr, k);
-        this.mCopyFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, this.mInputFrame[i]);
-      }
-      label419:
-      this.mSegListener.onTextureReady(localh2, FabbyUtil.isHorizon(k));
-      BenchUtil.benchStart("[showPreview][FABBY] wait");
-      this.mSegListener.needWait();
-      synchronized (this.mSegmentLock)
-      {
-        SegmentDataPipe localSegmentDataPipe;
-        try
-        {
-          while (this.mDataPipe == null) {
-            this.mSegmentLock.wait();
-          }
-          if (localSegmentDataPipe.mTexFrame.width != localh2.width) {
-            break label558;
-          }
-        }
-        catch (InterruptedException localInterruptedException2)
-        {
-          localSegmentDataPipe = this.mDataPipe;
-          this.mDataPipe = null;
-          BenchUtil.benchEnd("[showPreview][FABBY] wait");
-          if (localSegmentDataPipe == null) {
-            break label558;
-          }
-        }
-        localh2 = this.mVideoFilters.doFabbyStroke(localSegmentDataPipe.mTexFrame, localSegmentDataPipe.mMaskFrame);
-        ??? = localh1;
-        localh1 = localh2;
-      }
-      label555:
-      continue;
-      label558:
-      ??? = localh1;
-      localh1 = localh2;
-      continue;
-      label569:
-      ??? = localh1;
-      localh1 = localh2;
-    }
-  }
-  
-  private h process(h paramh1, h paramh2, PTFaceAttr paramPTFaceAttr, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.mIsPause) {
-      return paramh1;
-    }
-    long l = System.currentTimeMillis();
-    float f = paramPTFaceAttr.getFaceScale();
-    this.mVideoFilters.updateVideoSize(paramInt1, paramInt2, f);
-    Set localSet = PTFaceUtil.getTriggeredExpression(paramPTFaceAttr.getFaceExpression());
-    List localList1 = PTFaceUtil.getAllFaces(paramPTFaceAttr.getFaceInfos());
-    List localList2 = PTFaceUtil.getAllFaceAngles(paramPTFaceAttr.getFaceInfos());
-    List localList3 = paramPTFaceAttr.getHandPoints();
-    Object localObject = paramPTFaceAttr.getHandAngles();
-    if ((localObject != null) && (((List)localObject).size() > 0)) {
-      this.handAngle = ((float[])((List)localObject).get(0));
-    }
-    this.mVideoFilters.updateTextureParam(mFaceDetector.getFaceActionCounter(), localSet, l);
-    this.mVideoFilters.renderARFilterIfNeeded(paramh2);
-    localObject = this.mVideoFilters.updateAndRenderHeadCropItemFilters(paramh2, localList1, localList2, mFaceDetector.getFaceActionCounter(), localList3, null, localSet, f, paramInt3, l);
-    paramh2 = (h)localObject;
-    if (this.mVideoFilters.isSegmentRequired()) {
-      paramh2 = this.mVideoFilters.updateAndRenderBgFilters((h)localObject, localList1, localList2, mFaceDetector.getFaceActionCounter(), localList3, null, localSet, f, l);
-    }
-    if ((this.mVideoFilters != null) && (this.mVideoFilters.render3DFirst()) && ((paramInt3 == 0) || (paramInt3 == 180)))
-    {
-      BenchUtil.benchStart("[showPreview]updateAndRender3DFilter");
-      this.fs3DList = mFaceDetector.getFaceStatus3Ds();
-      BenchUtil.benchEnd("[showPreview]updateAndRender3DFilter");
-    }
-    if ((paramInt3 == 90) || (paramInt3 == 270)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramh2 = this.mVideoFilters.process(paramh2, this.fs3DList, localList1, localList2, mFaceDetector.getFaceActionCounter(), localList3, this.handAngle, null, localSet, f, paramPTFaceAttr.getData(), l, bool);
-      paramh2 = this.mVideoFilters.updateAndRenderActMaterial(paramh2, localList1, localList2, f, paramInt3);
-      localObject = new HashMap();
-      if ((this.mVideoFilters != null) && (!VideoFilterList.needMultiViewerMaterial())) {
-        this.mVideoFilters.updateAndRenderMultiViewerMaterial((Map)localObject, paramh2, localList1, localList2, mFaceDetector.getFaceActionCounter(), localList3, this.handAngle, null, localSet, f, paramPTFaceAttr.getData(), paramInt3, l, false);
-      }
-      paramPTFaceAttr = this.mVideoFilters.updateAndRenderStaticStickers(paramh2, localList1, localList2, mFaceDetector.getFaceActionCounter(), localList3, null, localSet, f, paramInt3, l);
-      paramh2 = paramPTFaceAttr;
-      if (this.mVideoFilters != null)
-      {
-        if (((Map)localObject).isEmpty()) {
-          ((Map)localObject).put(Integer.valueOf(0), paramPTFaceAttr);
-        }
-        paramh2 = this.mVideoFilters.updateAndRenderFabbyMV(paramh1, (Map)localObject, mFaceDetector.getFaceActionCounter(), localSet, l);
-      }
-      return paramh2;
+      this.mLastTimeStamp = paramLong;
+      return this.mLastTimeStamp;
     }
   }
   
   public void addTouchPoint(PointF paramPointF)
   {
+    AppMethodBeat.i(81637);
     this.mVideoFilters.addTouchPoint(paramPointF);
+    AppMethodBeat.o(81637);
   }
   
   public void destroy()
   {
+    AppMethodBeat.i(81614);
+    destroy(true);
+    AppMethodBeat.o(81614);
+  }
+  
+  public void destroy(boolean paramBoolean)
+  {
+    AppMethodBeat.i(81615);
     this.mCopyFilter.ClearGLSL();
+    this.mSplitFilter.ClearGLSL();
     if (this.mVideoFilters != null) {
       this.mVideoFilters.destroy();
     }
     h[] arrayOfh = this.mInputFrame;
     int j = arrayOfh.length;
     int i = 0;
-    h localh;
     while (i < j)
     {
-      localh = arrayOfh[i];
-      if (localh != null) {
-        localh.clear();
-      }
-      i += 1;
-    }
-    arrayOfh = this.mOrigFrame;
-    j = arrayOfh.length;
-    i = 0;
-    while (i < j)
-    {
-      localh = arrayOfh[i];
+      h localh = arrayOfh[i];
       if (localh != null) {
         localh.clear();
       }
       i += 1;
     }
     this.mCopyFrame.clear();
-    this.mSegFrame.clear();
     GLES20.glDeleteTextures(this.mInputTex.length, this.mInputTex, 0);
-    if (this.mSegListener != null) {
-      this.mSegListener.reset();
+    this.faceDetector.setRefine(false);
+    if (paramBoolean) {
+      VideoMemoryManager.getInstance().clear();
     }
-    mFaceDetector.clearActionCounter();
-    VideoMemoryManager.getInstance().clear();
-    mFaceDetector.setRefine(false);
+    LogicDataManager.getInstance().destroy();
+    AppMethodBeat.o(81615);
   }
   
-  public String getTips()
+  public boolean hasParticleFilter()
   {
-    Object localObject;
-    if (this.mMaterial == null) {
-      localObject = "";
-    }
-    String str;
-    do
+    AppMethodBeat.i(81626);
+    if ((this.mVideoFilters != null) && (this.mVideoFilters.hasParticleFilter()))
     {
-      do
-      {
-        return localObject;
-        str = this.mMaterial.getTipsText();
-        localObject = str;
-      } while (!TextUtils.isEmpty(str));
-      str = VideoMaterialUtil.getActionTipString(this.mMaterial.getTriggerType());
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    return "";
-  }
-  
-  public String getTipsIcon()
-  {
-    if (this.mMaterial == null) {
-      return null;
+      AppMethodBeat.o(81626);
+      return true;
     }
-    return this.mMaterial.getTipsIcon();
+    AppMethodBeat.o(81626);
+    return false;
   }
   
-  public VideoFilterList getVideoFilters()
+  public boolean hasVoiceTextFilter()
   {
-    return this.mVideoFilters;
+    AppMethodBeat.i(81625);
+    if ((this.mVideoFilters != null) && (this.mVideoFilters.hasVoiceTextFilter()))
+    {
+      AppMethodBeat.o(81625);
+      return true;
+    }
+    AppMethodBeat.o(81625);
+    return false;
   }
   
-  public int init()
+  public void init()
   {
+    AppMethodBeat.i(81613);
     this.mCopyFilter.ApplyGLSLFilter();
-    if (this.mVideoFilters == null) {
-      return -1200;
-    }
-    this.firstSeg = true;
     this.mVideoFilters.ApplyGLSLFilter();
-    SegmentGLThread localSegmentGLThread = PTModule.getInstance().getSegGLThread();
-    if (localSegmentGLThread != null)
-    {
-      localSegmentGLThread.setOnDataReadyListener(new PTSticker.1(this));
-      setOnSegmentReadyListener(new PTSticker.2(this, localSegmentGLThread));
-    }
+    this.mSplitFilter.ApplyGLSLFilter();
     int i = 0;
     while (i < this.mInputFrame.length)
     {
       this.mInputFrame[i] = new h();
       i += 1;
     }
-    i = 0;
-    while (i < this.mOrigFrame.length)
-    {
-      this.mOrigFrame[i] = new h();
-      i += 1;
-    }
     GLES20.glGenTextures(this.mInputTex.length, this.mInputTex, 0);
-    GlUtil.debugCheckGlError(this);
-    return 0;
+    AppMethodBeat.o(81613);
   }
   
-  public boolean isStickerOrderBack()
+  public boolean is3DMaterial()
   {
-    if (this.mMaterial == null) {}
-    while (this.mMaterial.getOrderMode() != 2) {
-      return false;
-    }
-    return true;
+    AppMethodBeat.i(81633);
+    boolean bool = VideoMaterialUtil.is3DMaterial(this.mVideoFilters.getMaterial());
+    AppMethodBeat.o(81633);
+    return bool;
   }
   
-  public boolean isUseMesh()
+  public boolean isParticleMaterial()
   {
-    if (this.mMaterial == null) {
-      return false;
-    }
-    return this.mMaterial.isUseMesh();
+    AppMethodBeat.i(81634);
+    boolean bool = VideoMaterialUtil.is3DMaterial(this.mVideoFilters.getMaterial());
+    AppMethodBeat.o(81634);
+    return bool;
+  }
+  
+  public boolean isSegmentRequired()
+  {
+    AppMethodBeat.i(81623);
+    boolean bool = this.mVideoFilters.isSegmentRequired();
+    AppMethodBeat.o(81623);
+    return bool;
+  }
+  
+  public boolean isSupportPause()
+  {
+    AppMethodBeat.i(81624);
+    boolean bool = this.mVideoFilters.isSupportPause();
+    AppMethodBeat.o(81624);
+    return bool;
+  }
+  
+  public boolean needDetectBody()
+  {
+    AppMethodBeat.i(81635);
+    boolean bool = VideoMaterialUtil.isBodyDetectMaterial(this.mVideoFilters.getMaterial());
+    AppMethodBeat.o(81635);
+    return bool;
+  }
+  
+  public boolean needDetectFace(int paramInt)
+  {
+    AppMethodBeat.i(81627);
+    boolean bool = this.mVideoFilters.needFaceInfo(paramInt);
+    AppMethodBeat.o(81627);
+    return bool;
   }
   
   public boolean needDetectGesture()
   {
-    return (this.mVideoFilters != null) && (this.mVideoFilters.needDetectGesture());
-  }
-  
-  public boolean needFaceTip()
-  {
-    return this.mNeedFaceTip;
+    AppMethodBeat.i(81628);
+    boolean bool = this.mVideoFilters.needDetectGesture();
+    AppMethodBeat.o(81628);
+    return bool;
   }
   
   public boolean needRecordTouchPoint()
   {
-    return VideoFilterUtil.needRecordTouchPoint(this.mVideoFilters);
+    AppMethodBeat.i(81636);
+    boolean bool = VideoFilterUtil.needRecordTouchPoint(this.mVideoFilters);
+    AppMethodBeat.o(81636);
+    return bool;
   }
   
   public void onPause()
   {
-    this.mIsPause = true;
-    if (this.mVideoFilters != null) {
-      this.mVideoFilters.onPause();
-    }
+    AppMethodBeat.i(81620);
+    this.mVideoFilters.onPause();
+    AppMethodBeat.o(81620);
   }
   
   public void onResume()
   {
-    this.mIsPause = false;
-    if (this.mVideoFilters != null) {
-      this.mVideoFilters.onResume();
-    }
+    AppMethodBeat.i(81619);
+    this.mVideoFilters.onResume();
+    AppMethodBeat.o(81619);
   }
   
-  public int processBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2, PTFaceAttr paramPTFaceAttr, int paramInt3, boolean paramBoolean)
+  public void onStickerPause()
   {
-    int i = checkBufferTexValid(paramArrayOfByte, paramInt1, paramInt2, paramPTFaceAttr, paramInt3);
-    if (i != 0) {
-      return i;
-    }
-    GlUtil.loadTexture(this.mInputTex[0], ByteBuffer.wrap(paramArrayOfByte), paramInt1, paramInt2, 6408);
-    paramArrayOfByte = getSegFaceInfo(this.mInputTex[0], paramPTFaceAttr, paramInt1, paramInt2, paramBoolean);
-    paramArrayOfByte = process(paramArrayOfByte.origFrame, paramArrayOfByte.maskFrame, paramPTFaceAttr, paramInt1, paramInt2, paramArrayOfByte.rotation);
-    this.mCopyFilter.RenderProcess(paramArrayOfByte.texture[0], paramArrayOfByte.width, paramArrayOfByte.height, paramInt3, 0.0D, this.mCopyFrame);
-    return 0;
-  }
-  
-  public int processBuffer(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, PTFaceAttr paramPTFaceAttr, byte[] paramArrayOfByte2, boolean paramBoolean)
-  {
-    int i = checkBufferValid(paramArrayOfByte1, paramInt1, paramInt2, paramPTFaceAttr, paramArrayOfByte2);
-    if (i != 0) {
-      return i;
-    }
-    GlUtil.loadTexture(this.mInputTex[0], ByteBuffer.wrap(paramArrayOfByte1), paramInt1, paramInt2, 6408);
-    paramArrayOfByte1 = getSegFaceInfo(this.mInputTex[0], paramPTFaceAttr, paramInt1, paramInt2, paramBoolean);
-    paramArrayOfByte1 = process(paramArrayOfByte1.origFrame, paramArrayOfByte1.maskFrame, paramPTFaceAttr, paramInt1, paramInt2, paramArrayOfByte1.rotation);
-    System.arraycopy(RetrieveDataManager.getInstance().retrieveData(RetrieveDataManager.DATA_TYPE.RGBA.value, paramArrayOfByte1.texture[0], paramInt1, paramInt2), 0, paramArrayOfByte2, 0, paramInt1 * paramInt2 << 2);
-    return 0;
-  }
-  
-  public int processTexture(int paramInt1, int paramInt2, int paramInt3, PTFaceAttr paramPTFaceAttr, int paramInt4, boolean paramBoolean)
-  {
-    int i;
-    if (this.mMaterial == null)
+    AppMethodBeat.i(81621);
+    if (isSupportPause())
     {
-      this.mCopyFilter.RenderProcess(paramInt1, paramInt2, paramInt3, paramInt4, 0.0D, this.mCopyFrame);
-      i = 0;
+      this.mPause = true;
+      this.mVideoFilters.setAudioPause(this.mPause);
     }
-    int j;
-    do
+    AppMethodBeat.o(81621);
+  }
+  
+  public void onStickerResume()
+  {
+    AppMethodBeat.i(81622);
+    if (isSupportPause())
     {
-      return i;
-      j = checkTexValid(paramInt1, paramPTFaceAttr, paramInt4);
-      i = j;
-    } while (j != 0);
-    SegFaceInfo localSegFaceInfo = getSegFaceInfo(paramInt1, paramPTFaceAttr, paramInt2, paramInt3, paramBoolean);
-    paramPTFaceAttr = process(localSegFaceInfo.origFrame, localSegFaceInfo.maskFrame, paramPTFaceAttr, paramInt2, paramInt3, localSegFaceInfo.rotation);
-    this.mCopyFilter.RenderProcess(paramPTFaceAttr.texture[0], paramPTFaceAttr.width, paramPTFaceAttr.height, paramInt4, 0.0D, this.mCopyFrame);
-    GlUtil.debugCheckGlError(this);
-    return 0;
-  }
-  
-  public int processTexture(int paramInt1, int paramInt2, int paramInt3, PTFaceAttr paramPTFaceAttr, byte[] paramArrayOfByte, boolean paramBoolean)
-  {
-    int i = checkTexBufferValid(paramInt1, paramInt2, paramInt3, paramPTFaceAttr, paramArrayOfByte);
-    if (i != 0) {
-      return i;
+      this.mPause = false;
+      this.mVideoFilters.setAudioPause(this.mPause);
     }
-    SegFaceInfo localSegFaceInfo = getSegFaceInfo(paramInt1, paramPTFaceAttr, paramInt2, paramInt3, paramBoolean);
-    paramPTFaceAttr = process(localSegFaceInfo.origFrame, localSegFaceInfo.maskFrame, paramPTFaceAttr, paramInt2, paramInt3, localSegFaceInfo.rotation);
-    System.arraycopy(RetrieveDataManager.getInstance().retrieveData(RetrieveDataManager.DATA_TYPE.RGBA.value, paramPTFaceAttr.texture[0], paramInt2, paramInt3), 0, paramArrayOfByte, 0, paramInt2 * paramInt3 << 2);
-    return 0;
+    AppMethodBeat.o(81622);
   }
   
-  public void segmentDataPipe(SegmentDataPipe paramSegmentDataPipe)
+  public h processSplitFilters(h paramh1, h paramh2)
   {
-    synchronized (this.mSegmentLock)
+    AppMethodBeat.i(81638);
+    if (this.splitScreen <= 0.0F)
     {
-      this.mDataPipe = paramSegmentDataPipe;
-      this.mSegmentLock.notifyAll();
-      return;
+      AppMethodBeat.o(81638);
+      return paramh2;
     }
+    h localh = this.mCopyFrame;
+    this.mCopyFilter.RenderProcess(paramh1.texture[0], paramh1.width, paramh1.height, paramh2.width, paramh2.height, -1, 0.0D, localh);
+    this.mSplitFilter.setxPos(this.splitScreen);
+    this.mSplitFilter.RenderProcess(paramh2.texture[0], paramh2.width, paramh2.height, -1, 0.0D, localh);
+    AppMethodBeat.o(81638);
+    return localh;
   }
   
-  public void setMaterialMute()
+  public h processStickerFilters(h paramh, PTFaceAttr paramPTFaceAttr, PTSegAttr paramPTSegAttr)
   {
-    if (this.mVideoFilters != null) {
-      this.mVideoFilters.setMaterialMute();
-    }
-  }
-  
-  public void setOnSegmentReadyListener(OnSegmentReadyListener paramOnSegmentReadyListener)
-  {
-    this.mSegListener = paramOnSegmentReadyListener;
-  }
-  
-  private static class SegFaceInfo
-  {
-    public PTFaceAttr faceAttr;
-    public h maskFrame;
-    public h origFrame;
-    public int rotation;
-    
-    public SegFaceInfo(h paramh1, h paramh2, PTFaceAttr paramPTFaceAttr, int paramInt)
+    AppMethodBeat.i(81617);
+    List localList1 = paramPTFaceAttr.getAllFacePoints();
+    List localList2 = paramPTFaceAttr.getAllFaceAngles();
+    Set localSet = paramPTFaceAttr.getTriggeredExpression();
+    long l = this.mLastTimeStamp;
+    int i = paramPTFaceAttr.getRotation();
+    Object localObject = paramPTSegAttr.getMaskFrame();
+    if ((paramPTSegAttr.getMaskFrame() != null) && (paramPTFaceAttr.getFaceCount() > 0)) {}
+    for (paramPTSegAttr = this.mVideoFilters.doFabbyStroke(paramh, (h)localObject);; paramPTSegAttr = paramh)
     {
-      this.origFrame = paramh1;
-      this.maskFrame = paramh2;
-      this.faceAttr = paramPTFaceAttr;
-      this.rotation = paramInt;
+      this.mVideoFilters.renderARFilterIfNeeded(paramPTSegAttr);
+      localObject = this.mVideoFilters.updateAndRenderHeadCropItemFilters(paramPTSegAttr, paramPTFaceAttr);
+      paramPTSegAttr = (PTSegAttr)localObject;
+      if (this.mVideoFilters.isSegmentRequired()) {
+        paramPTSegAttr = this.mVideoFilters.updateAndRenderBgFilters((h)localObject, paramPTFaceAttr);
+      }
+      localObject = paramPTSegAttr;
+      if (this.mVideoFilters.render3DFirst())
+      {
+        BenchUtil.benchStart("[showPreview]updateAndRender3DFilter");
+        localObject = this.mVideoFilters.updateAndRender3DFilter(paramPTSegAttr, paramPTFaceAttr, i);
+        BenchUtil.benchEnd("[showPreview]updateAndRender3DFilter");
+      }
+      BenchUtil.benchStart("[showPreview]updateAndRender - DO_NOT_RENDER_FACE_OFF_FILTER");
+      paramPTSegAttr = this.mVideoFilters.updateAndRenderDynamicStickers((h)localObject, paramPTFaceAttr);
+      BenchUtil.benchEnd("[showPreview]updateAndRender - DO_NOT_RENDER_FACE_OFF_FILTER");
+      HashMap localHashMap = new HashMap();
+      this.mVideoFilters.updateAndRenderMultiViewerMaterial(localHashMap, paramPTSegAttr, paramPTFaceAttr);
+      localObject = this.mVideoFilters.updateAndRenderStaticStickers(paramPTSegAttr, paramPTFaceAttr);
+      paramPTSegAttr = (PTSegAttr)localObject;
+      if (!this.mVideoFilters.render3DFirst())
+      {
+        BenchUtil.benchStart("[showPreview]updateAndRender");
+        paramPTSegAttr = this.mVideoFilters.updateAndRender3DFilter((h)localObject, paramPTFaceAttr, i);
+        BenchUtil.benchEnd("[showPreview]updateAndRender");
+      }
+      BenchUtil.benchStart("updateAndRenderActMaterial");
+      paramPTFaceAttr = this.mVideoFilters.updateAndRenderActMaterial(paramPTSegAttr, localList1, localList2, i, l);
+      BenchUtil.benchEnd("updateAndRenderActMaterial");
+      if (localHashMap.isEmpty()) {
+        localHashMap.put(Integer.valueOf(0), paramPTFaceAttr);
+      }
+      paramh = this.mVideoFilters.updateAndRenderFabbyMV(paramh, localHashMap, this.faceDetector.getFaceActionCounter(), localSet, l);
+      AppMethodBeat.o(81617);
+      return paramh;
     }
+  }
+  
+  public h processTransformRelatedFilters(h paramh, PTFaceAttr paramPTFaceAttr, PTSegAttr paramPTSegAttr)
+  {
+    AppMethodBeat.i(81616);
+    paramPTSegAttr = paramPTFaceAttr.getAllFacePoints();
+    List localList1 = paramPTFaceAttr.getAllFaceAngles();
+    List localList2 = paramPTFaceAttr.getHandPoints();
+    Set localSet = paramPTFaceAttr.getTriggeredExpression();
+    long l = getUpdateTimeStamp(paramPTFaceAttr.getTimeStamp());
+    this.mVideoFilters.updateFaceParams(paramPTSegAttr, localList1, localList2, paramh.width);
+    BenchUtil.benchStart("updateTextureParam2");
+    this.mVideoFilters.updateTextureParam(this.faceDetector.getFaceActionCounter(), localSet, l);
+    BenchUtil.benchEnd("updateTextureParam2");
+    paramh = this.mVideoFilters.processTransformRelatedFilters(paramh, paramPTFaceAttr);
+    AppMethodBeat.o(81616);
+    return paramh;
+  }
+  
+  public void reset()
+  {
+    AppMethodBeat.i(81618);
+    this.mVideoFilters.reset();
+    AppMethodBeat.o(81618);
+  }
+  
+  public void setRatioMode(VideoFilterUtil.RATIO_MODE paramRATIO_MODE)
+  {
+    AppMethodBeat.i(81631);
+    this.mVideoFilters.setRatioMode(paramRATIO_MODE);
+    AppMethodBeat.o(81631);
+  }
+  
+  public void setRenderMode(int paramInt)
+  {
+    AppMethodBeat.i(81632);
+    this.mVideoFilters.setRenderMode(paramInt);
+    AppMethodBeat.o(81632);
+  }
+  
+  public void updateCosAlpha(int paramInt)
+  {
+    AppMethodBeat.i(81629);
+    this.mVideoFilters.updateCosAlpha(paramInt);
+    AppMethodBeat.o(81629);
+  }
+  
+  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble, int paramInt3)
+  {
+    AppMethodBeat.i(81630);
+    this.mVideoFilters.updateVideoSize(paramInt1, paramInt2, paramDouble, paramInt3);
+    AppMethodBeat.o(81630);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.ttpic.PTSticker
  * JD-Core Version:    0.7.0.1
  */

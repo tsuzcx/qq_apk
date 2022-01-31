@@ -1,13 +1,11 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.location.ui.l;
-import com.tencent.mm.plugin.location.ui.l.3;
-import com.tencent.mm.plugin.location.ui.l.4;
-import com.tencent.mm.plugin.map.a.h;
-import com.tencent.mm.ui.base.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.location.ui.MyLocationButton;
+import com.tencent.mm.plugin.location.ui.m;
+import com.tencent.mm.plugin.report.service.h;
 
 final class g$7
   implements View.OnClickListener
@@ -16,8 +14,13 @@ final class g$7
   
   public final void onClick(View paramView)
   {
-    paramView = this.lKi.lJX;
-    h.a(paramView.mContext, paramView.mResources.getString(a.h.location_sharing_end_tips), "", paramView.mResources.getString(a.h.app_endshare), paramView.mResources.getString(a.h.app_cancel), new l.3(paramView), new l.4(paramView));
+    AppMethodBeat.i(155626);
+    this.ohw.ohh.bLG();
+    this.ohw.ohj.oez = true;
+    this.ohw.ohj.a(this.ohw.ofo.ocA);
+    this.ohw.ohj.iT(false);
+    h.qsU.e(10997, new Object[] { "6", "", Integer.valueOf(0), Integer.valueOf(0) });
+    AppMethodBeat.o(155626);
   }
 }
 

@@ -1,23 +1,28 @@
 package com.tencent.mm.ui.contact;
 
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.y;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactRemarkInfoModUI$1
-  implements m.b
+  implements TextWatcher
 {
   ContactRemarkInfoModUI$1(ContactRemarkInfoModUI paramContactRemarkInfoModUI) {}
   
-  public final void a(int paramInt, m paramm, Object paramObject)
+  public final void afterTextChanged(Editable paramEditable)
   {
-    y.d("MiroMsg.ContactRemarkInfoModUI", "cpan onNotifyChange");
-    ContactRemarkInfoModUI.d(this.vKT);
+    AppMethodBeat.i(33628);
+    ContactRemarkInfoModUI.a(this.Acv);
+    AppMethodBeat.o(33628);
   }
+  
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ContactRemarkInfoModUI.1
  * JD-Core Version:    0.7.0.1
  */

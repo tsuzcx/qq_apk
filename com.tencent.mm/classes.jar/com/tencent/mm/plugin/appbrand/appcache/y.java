@@ -1,83 +1,81 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.h.c.dk;
-import com.tencent.mm.plugin.appbrand.t.b;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Locale;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.loader.a;
+import com.tencent.mm.plugin.appbrand.appstorage.k;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class y
-  extends dk
-  implements b
 {
-  static final c.a dUa;
-  static final String[] fCT;
+  private static String[] gVj = { "__APP__", "__WITHOUT_CODELIB__", "__CODELIB__" };
+  private String appId;
+  private String gVh;
+  private volatile String gVi;
   
-  static
+  public y(String paramString)
   {
-    int i = 0;
-    fCT = new String[] { "appId", "type", "version" };
-    Object localObject1 = new c.a();
-    ((c.a)localObject1).ujL = new Field[5];
-    ((c.a)localObject1).columns = new String[6];
-    Object localObject2 = new StringBuilder();
-    ((c.a)localObject1).columns[0] = "appId";
-    ((c.a)localObject1).ujN.put("appId", "TEXT");
-    ((StringBuilder)localObject2).append(" appId TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[1] = "version";
-    ((c.a)localObject1).ujN.put("version", "INTEGER");
-    ((StringBuilder)localObject2).append(" version INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[2] = "type";
-    ((c.a)localObject1).ujN.put("type", "INTEGER");
-    ((StringBuilder)localObject2).append(" type INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[3] = "pkgMd5";
-    ((c.a)localObject1).ujN.put("pkgMd5", "TEXT");
-    ((StringBuilder)localObject2).append(" pkgMd5 TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[4] = "pkgPath";
-    ((c.a)localObject1).ujN.put("pkgPath", "TEXT");
-    ((StringBuilder)localObject2).append(" pkgPath TEXT");
-    ((c.a)localObject1).columns[5] = "rowid";
-    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    dUa = (c.a)localObject1;
-    localObject1 = " PRIMARY KEY ( ";
-    localObject2 = fCT;
-    int j = localObject2.length;
-    while (i < j)
+    this.appId = paramString;
+    this.gVh = null;
+  }
+  
+  public y(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(101719);
+    this.appId = paramString1;
+    this.gVh = ys(paramString2);
+    AppMethodBeat.o(101719);
+  }
+  
+  public y(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(101721);
+    if (paramInt == 13) {}
+    for (paramString2 = ys(paramString2) + '$' + "__WITHOUT_CODELIB__";; paramString2 = ys(paramString2))
     {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
-      i += 1;
+      this.gVh = paramString2;
+      this.appId = paramString1;
+      AppMethodBeat.o(101721);
+      return;
     }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = dUa;
-    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
   }
   
-  public final String[] getKeys()
+  private static String ys(String paramString)
   {
-    return fCT;
+    AppMethodBeat.i(101720);
+    if ((bo.isNullOrNil(paramString)) || (a.contains(gVj, paramString)))
+    {
+      AppMethodBeat.o(101720);
+      return paramString;
+    }
+    paramString = k.zl(paramString);
+    AppMethodBeat.o(101720);
+    return paramString;
   }
   
-  protected final c.a rM()
+  public final String toString()
   {
-    return dUa;
-  }
-  
-  public final String toShortString()
-  {
-    return String.format(Locale.US, "EncryptPkgInfo[%s %d %d]", new Object[] { this.field_appId, Integer.valueOf(this.field_type), Integer.valueOf(this.field_version) });
+    AppMethodBeat.i(101722);
+    StringBuilder localStringBuilder;
+    if (bo.isNullOrNil(this.gVi))
+    {
+      localStringBuilder = new StringBuilder().append(this.appId);
+      if (!bo.isNullOrNil(this.gVh)) {
+        break label67;
+      }
+    }
+    label67:
+    for (String str = "";; str = "$" + this.gVh)
+    {
+      this.gVi = str;
+      str = this.gVi;
+      AppMethodBeat.o(101722);
+      return str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.y
  * JD-Core Version:    0.7.0.1
  */

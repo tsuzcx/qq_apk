@@ -7,19 +7,19 @@ import android.widget.TextView;
 
 final class c$b
 {
-  ImageView dpY;
-  TextView feh;
-  TextView ltQ;
-  LinearLayout ltR;
-  TextView ltS;
-  TextView ltT;
-  TextView ltU;
-  TextView ltV;
-  ImageView ltW;
-  View ltX;
-  View ltY;
-  View ltZ;
-  ImageView lua;
+  ImageView ehv;
+  TextView gvQ;
+  TextView nRj;
+  LinearLayout nRk;
+  TextView nRl;
+  TextView nRm;
+  TextView nRn;
+  TextView nRo;
+  ImageView nRp;
+  View nRq;
+  View nRr;
+  View nRs;
+  ImageView nRt;
   
   private c$b(c paramc) {}
 }

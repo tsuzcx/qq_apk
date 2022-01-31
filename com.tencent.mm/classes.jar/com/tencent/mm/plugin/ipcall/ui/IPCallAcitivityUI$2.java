@@ -3,10 +3,9 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.a.g.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class IPCallAcitivityUI$2
   implements View.OnClickListener
@@ -15,18 +14,20 @@ final class IPCallAcitivityUI$2
   
   public final void onClick(View paramView)
   {
-    if (IPCallAcitivityUI.a(this.ltH).hQR == 1)
+    AppMethodBeat.i(21987);
+    if (IPCallAcitivityUI.a(this.nRa).jKs == 1)
     {
-      y.i("MicroMsg.IPCallAcitivityUI", "click activity, go to IPCallPackageUI");
+      ab.i("MicroMsg.IPCallAcitivityUI", "click activity, go to IPCallPackageUI");
       paramView = new Intent();
-      paramView.setClass(this.ltH.mController.uMN, IPCallShareCouponUI.class);
-      this.ltH.startActivity(paramView);
+      paramView.setClass(this.nRa.getContext(), IPCallShareCouponUI.class);
+      this.nRa.startActivity(paramView);
       paramView = new Intent();
-      paramView.setClass(this.ltH.mController.uMN, IPCallPackageUI.class);
-      this.ltH.startActivity(paramView);
+      paramView.setClass(this.nRa.getContext(), IPCallPackageUI.class);
+      this.nRa.startActivity(paramView);
     }
-    IPCallAcitivityUI.b(this.ltH);
-    this.ltH.finish();
+    IPCallAcitivityUI.b(this.nRa);
+    this.nRa.finish();
+    AppMethodBeat.o(21987);
   }
 }
 

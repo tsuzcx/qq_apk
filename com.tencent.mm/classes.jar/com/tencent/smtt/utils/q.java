@@ -1,108 +1,70 @@
 package com.tencent.smtt.utils;
 
-import android.os.Build.VERSION;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
 
 public class q
 {
-  public static Object a(Class<?> paramClass, String paramString, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
+  private static Class a;
+  private static Method b;
+  
+  static
   {
+    AppMethodBeat.i(65285);
     try
     {
-      paramClass = paramClass.getMethod(paramString, paramArrayOfClass);
-      paramClass.setAccessible(true);
-      paramClass = paramClass.invoke(null, paramVarArgs);
-      return paramClass;
+      Class localClass = Class.forName("android.os.SystemProperties");
+      a = localClass;
+      b = localClass.getDeclaredMethod("get", new Class[] { String.class, String.class });
+      AppMethodBeat.o(65285);
+      return;
     }
-    catch (Throwable paramClass)
+    catch (Throwable localThrowable)
     {
-      TbsLog.addLog(997, String.valueOf(paramClass), new Object[0]);
+      AppMethodBeat.o(65285);
     }
-    return null;
   }
   
-  public static Object a(Object paramObject, String paramString)
+  public static String a(String paramString1, String paramString2)
   {
-    return a(paramObject, paramString, null, new Object[0]);
-  }
-  
-  public static Object a(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
-  {
-    if (paramObject == null) {}
-    do
+    AppMethodBeat.i(65283);
+    if (TextUtils.isEmpty(paramString1))
     {
-      return null;
-      try
-      {
-        Object localObject = paramObject.getClass();
-        if (Build.VERSION.SDK_INT > 10) {}
-        for (paramArrayOfClass = ((Class)localObject).getMethod(paramString, paramArrayOfClass);; paramArrayOfClass = ((Class)localObject).getDeclaredMethod(paramString, paramArrayOfClass))
-        {
-          paramArrayOfClass.setAccessible(true);
-          localObject = paramVarArgs;
-          if (paramVarArgs.length == 0) {
-            localObject = null;
-          }
-          return paramArrayOfClass.invoke(paramObject, (Object[])localObject);
-        }
-        if (paramString == null) {
-          break;
-        }
-      }
-      catch (Throwable paramObject)
-      {
-        TbsLog.addLog(997, String.valueOf(paramObject), new Object[0]);
-        if ((paramObject.getCause() != null) && (paramObject.getCause().toString().contains("AuthenticationFail"))) {
-          return new String("AuthenticationFail");
-        }
-      }
-    } while ((paramString.equalsIgnoreCase("canLoadX5Core")) || (paramString.equalsIgnoreCase("initTesRuntimeEnvironment")));
-    paramString = new StringWriter();
-    paramObject.printStackTrace(new PrintWriter(paramString));
-    new StringBuilder("invokeInstance -- exceptions:").append(paramString.toString());
-    return null;
+      AppMethodBeat.o(65283);
+      return paramString2;
+    }
+    paramString1 = b(paramString1, paramString2);
+    AppMethodBeat.o(65283);
+    return paramString1;
   }
   
-  public static Object a(String paramString1, String paramString2)
+  private static String b(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(65284);
+    if ((a == null) || (b == null))
+    {
+      AppMethodBeat.o(65284);
+      return paramString2;
+    }
     try
     {
-      paramString1 = Class.forName(paramString1).getMethod(paramString2, new Class[0]).invoke(null, new Object[0]);
+      paramString1 = (String)b.invoke(a, new Object[] { paramString1, paramString2 });
+      AppMethodBeat.o(65284);
       return paramString1;
     }
     catch (Throwable paramString1)
     {
-      TbsLog.addLog(997, String.valueOf(paramString1), new Object[0]);
-    }
-    return null;
-  }
-  
-  public static Method a(Object paramObject, String paramString, Class<?>... paramVarArgs)
-  {
-    paramObject = paramObject.getClass();
-    while (paramObject != Object.class)
-    {
-      if (paramObject == null) {
-        return null;
-      }
-      try
+      for (;;)
       {
-        Method localMethod = paramObject.getDeclaredMethod(paramString, paramVarArgs);
-        return localMethod;
-      }
-      catch (Exception localException)
-      {
-        paramObject = paramObject.getSuperclass();
+        paramString1 = paramString2;
       }
     }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.smtt.utils.q
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.scanner.ui;
 
 public abstract interface e$a
 {
-  public abstract Boolean LY(String paramString);
+  public abstract Boolean YA(String paramString);
   
   public abstract void a(String paramString, Boolean paramBoolean);
   
-  public abstract void bxI();
+  public abstract void ciJ();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.e.a
  * JD-Core Version:    0.7.0.1
  */

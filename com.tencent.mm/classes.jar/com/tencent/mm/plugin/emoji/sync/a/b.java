@@ -1,131 +1,144 @@
 package com.tencent.mm.plugin.emoji.sync.a;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.h.a.cv;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.f.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.al.f;
+import com.tencent.mm.g.a.cy;
+import com.tencent.mm.plugin.emoji.f.l;
+import com.tencent.mm.plugin.emoji.sync.c;
 import com.tencent.mm.plugin.emoji.sync.d;
-import com.tencent.mm.plugin.emoji.sync.e;
-import com.tencent.mm.protocal.c.afe;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.at;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.j;
 import java.io.IOException;
 
 public final class b
-  extends d
+  extends c
 {
-  private String iZD;
-  private boolean iZZ = false;
-  private e jaU;
-  private h jbe;
+  private boolean liQ;
+  private String liu;
+  private d ljD;
+  private com.tencent.mm.plugin.emoji.f.g ljN;
   
   public b(String paramString)
   {
-    if (bk.bl(paramString)) {
-      y.e("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "[cpan]");
+    AppMethodBeat.i(53202);
+    this.liQ = false;
+    if (bo.isNullOrNil(paramString)) {
+      ab.e("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "[cpan]");
     }
-    this.iZD = paramString;
+    this.liu = paramString;
+    AppMethodBeat.o(53202);
   }
   
   public b(String paramString, byte paramByte)
   {
-    if (bk.bl(paramString)) {
-      y.e("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "[cpan]");
+    AppMethodBeat.i(53203);
+    this.liQ = false;
+    if (bo.isNullOrNil(paramString)) {
+      ab.e("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "[cpan]");
     }
-    this.iZD = paramString;
-    this.iZZ = true;
+    this.liu = paramString;
+    this.liQ = true;
+    AppMethodBeat.o(53203);
   }
   
-  public final void a(e parame)
+  public final void a(d paramd)
   {
-    this.jaU = parame;
+    this.ljD = paramd;
   }
   
   public final void cancel()
   {
-    if ((this.jbe != null) && (!bk.bl(this.jbe.eoQ)))
+    AppMethodBeat.i(53206);
+    if ((this.ljN != null) && (!bo.isNullOrNil(this.ljN.fFo)))
     {
-      f.Nd().lM(this.jbe.eoQ);
-      y.i("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "success cancel exchange emotion pack clientid:%s", new Object[] { this.jbe.eoQ });
+      f.afO().sJ(this.ljN.fFo);
+      ab.i("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "success cancel exchange emotion pack clientid:%s", new Object[] { this.ljN.fFo });
+      AppMethodBeat.o(53206);
       return;
     }
-    y.i("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "failed cancel exchange emotion pack.");
+    ab.i("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "failed cancel exchange emotion pack.");
+    AppMethodBeat.o(53206);
   }
   
   public final boolean equals(Object paramObject)
   {
+    AppMethodBeat.i(53205);
     if ((paramObject != null) && ((paramObject instanceof b)))
     {
       paramObject = (b)paramObject;
-      if ((!bk.bl(this.iZD)) && (!bk.bl(paramObject.getKey())) && (this.iZD.equals(paramObject.getKey()))) {
+      if ((!bo.isNullOrNil(this.liu)) && (!bo.isNullOrNil(paramObject.getKey())) && (this.liu.equals(paramObject.getKey())))
+      {
+        AppMethodBeat.o(53205);
         return true;
       }
     }
+    AppMethodBeat.o(53205);
     return false;
   }
   
   public final String getKey()
   {
-    if (this.iZD == null) {
+    if (this.liu == null) {
       return "";
     }
-    return this.iZD;
+    return this.liu;
   }
   
   public final void run()
   {
-    Object localObject;
-    if (this.jaU != null)
-    {
-      this.jaU.AV(getKey());
-      localObject = com.tencent.mm.plugin.emoji.model.i.getEmojiStorageMgr().uBc.bE(getKey(), true);
-      if ((this.iZZ) || (localObject == null) || (((EmojiGroupInfo)localObject).field_sync != 2) || (((EmojiGroupInfo)localObject).field_status != 7)) {
-        break label117;
-      }
-      localObject = new cv();
-      ((cv)localObject).bIV.bIW = getKey();
-      ((cv)localObject).bIV.bHz = 2;
-      ((cv)localObject).bIV.success = true;
-      com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject);
+    AppMethodBeat.i(53204);
+    if (this.ljD != null) {
+      this.ljD.KX(getKey());
     }
     for (;;)
     {
-      return;
-      y.w("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "call back is null");
-      break;
-      label117:
-      this.jbe = new h(this.iZD);
-      g.DO().dJT.a(this.jbe, 0);
-      localObject = new afe();
-      com.tencent.mm.storage.emotion.i locali = com.tencent.mm.plugin.emoji.model.i.getEmojiStorageMgr().uBf.acI(this.iZD);
-      if ((locali != null) && (locali.field_content != null)) {}
-      try
-      {
-        ((afe)localObject).aH(locali.field_content);
-        if (((afe)localObject).tcV != null) {
-          continue;
-        }
-        localObject = new com.tencent.mm.plugin.emoji.f.m(this.iZD, 15);
-        g.DO().dJT.a((com.tencent.mm.ah.m)localObject, 0);
-        return;
+      localObject = com.tencent.mm.plugin.emoji.model.i.getEmojiStorageMgr().yNo.cg(getKey(), true);
+      if ((this.liQ) || (localObject == null) || (((EmojiGroupInfo)localObject).field_sync != 2) || (((EmojiGroupInfo)localObject).field_status != 7)) {
+        break;
       }
-      catch (IOException localIOException)
+      localObject = new cy();
+      ((cy)localObject).cqp.cqq = getKey();
+      ((cy)localObject).cqp.coO = 2;
+      ((cy)localObject).cqp.success = true;
+      com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
+      AppMethodBeat.o(53204);
+      return;
+      ab.w("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "call back is null");
+    }
+    this.ljN = new com.tencent.mm.plugin.emoji.f.g(this.liu);
+    com.tencent.mm.kernel.g.RK().eHt.a(this.ljN, 0);
+    Object localObject = new GetEmotionDetailResponse();
+    com.tencent.mm.storage.emotion.i locali = com.tencent.mm.plugin.emoji.model.i.getEmojiStorageMgr().yNr.asW(this.liu);
+    if ((locali != null) && (locali.field_content != null)) {}
+    try
+    {
+      ((GetEmotionDetailResponse)localObject).parseFrom(locali.field_content);
+      if (((GetEmotionDetailResponse)localObject).EmotionDetail == null)
       {
-        for (;;)
-        {
-          y.e("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "exception:%s", new Object[] { bk.j(localIOException) });
-        }
+        localObject = new l(this.liu, 15);
+        com.tencent.mm.kernel.g.RK().eHt.a((m)localObject, 0);
+      }
+      AppMethodBeat.o(53204);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ab.e("MicroMsg.BKGLoader.EmojiStoreEmojiSyncTask", "exception:%s", new Object[] { bo.l(localIOException) });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.sync.a.b
  * JD-Core Version:    0.7.0.1
  */

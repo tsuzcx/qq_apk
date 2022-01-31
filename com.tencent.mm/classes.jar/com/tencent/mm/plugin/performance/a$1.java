@@ -1,16 +1,11 @@
 package com.tencent.mm.plugin.performance;
 
-import com.tencent.mm.ch.a;
-import com.tencent.mm.model.q;
-import com.tencent.mm.platformtools.ad;
+import java.util.Comparator;
 
 final class a$1
-  implements a
+  implements Comparator<a.c>
 {
-  public final boolean KO(String paramString)
-  {
-    return ad.a(paramString, q.Gj(), true, false);
-  }
+  a$1(a parama) {}
 }
 
 

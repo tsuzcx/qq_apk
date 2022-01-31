@@ -10,117 +10,136 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.o;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.vfs.e;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class u
-  extends i
+  extends h
   implements SensorEventListener
 {
-  private SensorManager aVT;
-  Sensor aZD;
   Sensor accelerometer;
-  ImageView bNu;
-  ProgressBar frw;
-  float[] oHA;
-  float[] oHB;
-  private int oHC = 0;
-  boolean oHD = true;
-  int oHw;
-  final float oHx = 10.0F;
-  final int oHy = 1;
-  HorizontalScrollView oHz;
+  private SensorManager bmB;
+  Sensor bqj;
+  ImageView cuM;
+  ProgressBar progressBar;
+  int rxm;
+  final float rxn = 10.0F;
+  final int rxo = 1;
+  HorizontalScrollView rxp;
+  float[] rxq;
+  float[] rxr;
+  private int rxs = 0;
+  boolean rxt = true;
   
-  public u(Context paramContext, o paramo, ViewGroup paramViewGroup)
+  public u(Context paramContext, n paramn, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramo, paramViewGroup);
+    super(paramContext, paramn, paramViewGroup);
   }
   
-  public final boolean ah(JSONObject paramJSONObject)
+  public final boolean aq(JSONObject paramJSONObject)
   {
-    if (!super.ah(paramJSONObject)) {
+    AppMethodBeat.i(37256);
+    if (!super.aq(paramJSONObject))
+    {
+      AppMethodBeat.o(37256);
       return false;
     }
     try
     {
-      paramJSONObject.put("swipeCount", this.oHC);
-      if (!this.oHD)
+      paramJSONObject.put("swipeCount", this.rxs);
+      if (!this.rxt)
       {
-        String str = ad.bB(((o)this.oFE).oCV);
+        String str = ag.cE(((n)this.rve).rsw);
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("urlMd5", str);
         localJSONObject.put("needDownload", 1);
         paramJSONObject.put("imgUrlInfo", localJSONObject);
       }
+      AppMethodBeat.o(37256);
       return true;
     }
     catch (JSONException paramJSONObject)
     {
-      y.printErrStackTrace("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", paramJSONObject, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", paramJSONObject, "", new Object[0]);
+      AppMethodBeat.o(37256);
     }
     return false;
   }
   
-  public final void bET()
+  public final void cqA()
   {
-    super.bET();
-    this.aVT.registerListener(this, this.accelerometer, 1);
-    this.aVT.registerListener(this, this.aZD, 1);
+    AppMethodBeat.i(37254);
+    super.cqA();
+    this.bmB.registerListener(this, this.accelerometer, 1);
+    this.bmB.registerListener(this, this.bqj, 1);
+    AppMethodBeat.o(37254);
   }
   
-  public final void bEU()
+  public final void cqB()
   {
-    super.bEU();
-    this.aVT.unregisterListener(this);
+    AppMethodBeat.i(37255);
+    super.cqB();
+    this.bmB.unregisterListener(this);
+    AppMethodBeat.o(37255);
   }
   
-  public final View bFf()
+  public final void cqK()
   {
+    AppMethodBeat.i(37248);
     View localView = this.contentView;
-    this.aVT = ((SensorManager)this.context.getSystemService("sensor"));
-    this.accelerometer = this.aVT.getDefaultSensor(1);
-    this.aZD = this.aVT.getDefaultSensor(2);
-    this.oHz = ((HorizontalScrollView)localView.findViewById(i.f.activity_gyroscope_horizontalscrollview));
-    this.bNu = ((ImageView)localView.findViewById(i.f.activity_gyroscope_img));
-    this.frw = ((ProgressBar)localView.findViewById(i.f.progressbar));
-    this.frw.setVisibility(8);
-    return localView;
+    this.bmB = ((SensorManager)ah.getContext().getSystemService("sensor"));
+    this.accelerometer = this.bmB.getDefaultSensor(1);
+    this.bqj = this.bmB.getDefaultSensor(2);
+    this.rxp = ((HorizontalScrollView)localView.findViewById(2131827845));
+    this.cuM = ((ImageView)localView.findViewById(2131827846));
+    this.progressBar = ((ProgressBar)localView.findViewById(2131821246));
+    this.progressBar.setVisibility(8);
+    AppMethodBeat.o(37248);
   }
   
-  protected final void bFj()
+  protected final void cqP()
   {
-    if (!e.bK(h.eS("adId", ((o)this.oFE).oCV))) {
-      this.oHD = false;
+    AppMethodBeat.i(37249);
+    if (!e.cN(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.gy("adId", ((n)this.rve).rsw))) {
+      this.rxt = false;
     }
-    this.oHz.setLayoutParams(new RelativeLayout.LayoutParams(this.gHR, this.gHS));
-    this.bNu.setLayoutParams(new RelativeLayout.LayoutParams(this.gHR, this.gHS));
-    this.contentView.setLayoutParams(new LinearLayout.LayoutParams(this.gHR, this.gHS));
-    this.contentView.setPadding(this.contentView.getPaddingLeft(), (int)((o)this.oFE).oDi, this.contentView.getPaddingRight(), (int)((o)this.oFE).oDj);
-    String str = ((o)this.oFE).oCV;
-    Bitmap localBitmap = h.eV("adId", str);
+    String str = ((n)this.rve).rsw;
+    Bitmap localBitmap = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.gB("adId", str);
     if (localBitmap != null)
     {
-      y.i("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "loaded cached image with  " + str);
+      ab.i("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "loaded cached image with  ".concat(String.valueOf(str)));
       setImage(localBitmap);
+      AppMethodBeat.o(37249);
       return;
     }
     startLoading();
-    h.a(str, ((o)this.oFE).oDh, new u.1(this));
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(str, ((n)this.rve).rsJ, new u.1(this));
+    AppMethodBeat.o(37249);
+  }
+  
+  public final boolean cqX()
+  {
+    AppMethodBeat.i(37253);
+    if (cqW() >= (int)(getView().getHeight() * 0.1F))
+    {
+      AppMethodBeat.o(37253);
+      return true;
+    }
+    AppMethodBeat.o(37253);
+    return false;
   }
   
   protected final int getLayout()
   {
-    return i.g.sns_ad_native_landing_pages_gyroscope_image_view;
+    return 2130970776;
   }
   
   public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
@@ -128,77 +147,97 @@ public final class u
   public final void onSensorChanged(SensorEvent paramSensorEvent)
   {
     float f2 = -10.0F;
+    AppMethodBeat.i(37252);
     if (paramSensorEvent.sensor.getType() == 1) {
-      this.oHA = paramSensorEvent.values;
+      this.rxq = paramSensorEvent.values;
     }
     if (paramSensorEvent.sensor.getType() == 2) {
-      this.oHB = paramSensorEvent.values;
+      this.rxr = paramSensorEvent.values;
     }
     float f1;
-    if ((this.oHA != null) && (this.oHB != null))
+    if ((this.rxq != null) && (this.rxr != null))
     {
       paramSensorEvent = new float[9];
-      if (SensorManager.getRotationMatrix(paramSensorEvent, new float[9], this.oHA, this.oHB))
+      if (SensorManager.getRotationMatrix(paramSensorEvent, new float[9], this.rxq, this.rxr))
       {
         float[] arrayOfFloat = new float[3];
         SensorManager.getOrientation(paramSensorEvent, arrayOfFloat);
         float f3 = arrayOfFloat[2];
-        if (this.oHw != 0)
+        if (this.rxm != 0)
         {
           f1 = f3;
           if (f3 > 10.0F) {
             f1 = 10.0F;
           }
           if (f1 >= -10.0F) {
-            break label151;
+            break label159;
           }
           f1 = f2;
         }
       }
     }
-    label151:
+    label159:
     for (;;)
     {
-      f1 = f1 * this.oHw / 10.0F;
-      this.oHz.scrollBy((int)f1, 0);
+      f1 = f1 * this.rxm / 10.0F;
+      this.rxp.scrollBy((int)f1, 0);
+      AppMethodBeat.o(37252);
       return;
     }
   }
   
   public final void setImage(Bitmap paramBitmap)
   {
-    if (paramBitmap == null) {
-      y.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp is null!");
-    }
-    do
+    AppMethodBeat.i(37251);
+    if (paramBitmap == null)
     {
+      ab.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp is null!");
+      AppMethodBeat.o(37251);
       return;
-      if (this.bNu == null)
-      {
-        y.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the imageView is null!");
-        return;
+    }
+    if (this.cuM == null)
+    {
+      ab.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the imageView is null!");
+      AppMethodBeat.o(37251);
+      return;
+    }
+    if (paramBitmap.getHeight() == 0)
+    {
+      ab.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp.getHeight is 0!");
+      AppMethodBeat.o(37251);
+      return;
+    }
+    this.progressBar.setVisibility(8);
+    this.cuM.setImageBitmap(paramBitmap);
+    this.cuM.post(new u.2(this));
+    int i;
+    if (paramBitmap.getHeight() != 0)
+    {
+      i = this.iiX;
+      if (((n)this.rve).rsL == 2.147484E+009F) {
+        break label176;
       }
-      if (paramBitmap.getHeight() == 0)
-      {
-        y.e("MicroMsg.Sns.AdLandingPagePanoramaImageComponent", "when set image the bmp.getHeight is 0!");
-        return;
-      }
-      this.frw.setVisibility(8);
-      this.bNu.setImageBitmap(paramBitmap);
-      this.bNu.setLayoutParams(new RelativeLayout.LayoutParams(paramBitmap.getWidth() * this.gHS / paramBitmap.getHeight(), this.gHS));
-      this.bNu.post(new u.2(this));
-    } while (paramBitmap.getHeight() == 0);
-    this.contentView.setLayoutParams(new LinearLayout.LayoutParams(paramBitmap.getWidth() * this.gHS / paramBitmap.getHeight(), this.gHS));
+      i = (int)((n)this.rve).rsL;
+    }
+    label176:
+    for (;;)
+    {
+      this.cuM.setLayoutParams(new RelativeLayout.LayoutParams(paramBitmap.getWidth() * i / paramBitmap.getHeight(), i));
+      AppMethodBeat.o(37251);
+      return;
+    }
   }
   
   public final void startLoading()
   {
-    this.frw.setVisibility(0);
+    AppMethodBeat.i(37250);
+    this.progressBar.setVisibility(0);
+    AppMethodBeat.o(37250);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.u
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,25 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
-import com.tencent.mm.plugin.appbrand.media.record.record_imp.RecordParam;
-import com.tencent.mm.plugin.appbrand.media.record.record_imp.a;
-import com.tencent.mm.plugin.appbrand.media.record.record_imp.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mars.smc.IDKey;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import java.util.ArrayList;
 
 final class g$1
-  implements a.a
+  implements j.b
 {
-  g$1(g paramg) {}
-  
-  public final void aU(int paramInt1, int paramInt2)
+  public final void hB(long paramLong)
   {
-    y.i("MicroMsg.Record.AudioRecordMgr", "onRecError state:%d, detailState:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.gNX.onError(1);
+    AppMethodBeat.i(141589);
+    h.qsU.idkeyStat(689L, paramLong, 1L, true);
+    AppMethodBeat.o(141589);
   }
   
-  public final void r(byte[] paramArrayOfByte, int paramInt)
+  public final void n(ArrayList<IDKey> paramArrayList)
   {
-    g localg;
-    int j;
-    int i;
-    if ((g.a(this.gNX) != null) && (g.b(this.gNX) != null))
-    {
-      localg = this.gNX;
-      j = g.c(this.gNX);
-      a locala = g.b(this.gNX);
-      if (locala.bCc == null) {
-        break label103;
-      }
-      i = locala.bCc.bCz;
-    }
-    for (;;)
-    {
-      g.a(localg, i + j);
-      try
-      {
-        if (!g.a(this.gNX).a(g.d(this.gNX), paramArrayOfByte, paramInt)) {
-          y.e("MicroMsg.Record.AudioRecordMgr", "encode pcm fail!");
-        }
-        return;
-        label103:
-        i = 20;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        do
-        {
-          y.printErrStackTrace("MicroMsg.Record.AudioRecordMgr", paramArrayOfByte, "onRecPcmDataReady", new Object[0]);
-          if ((g.e(this.gNX) != null) && ("mp3".equalsIgnoreCase(g.e(this.gNX).gja)))
-          {
-            j.lU(19);
-            return;
-          }
-        } while ((g.e(this.gNX) == null) || (!"aac".equalsIgnoreCase(g.e(this.gNX).gja)));
-        j.lU(23);
-      }
-    }
+    AppMethodBeat.i(141590);
+    h.qsU.b(paramArrayList, true);
+    AppMethodBeat.o(141590);
   }
 }
 

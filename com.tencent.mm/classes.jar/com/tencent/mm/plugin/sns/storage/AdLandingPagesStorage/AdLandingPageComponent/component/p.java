@@ -1,55 +1,57 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
-import com.tencent.xweb.n;
+import com.tencent.xweb.t;
 
 public final class p
-  extends i
+  extends h
 {
-  MMWebView dYF;
-  FrameLayout oGO;
+  MMWebView foJ;
+  FrameLayout rwD;
   
-  public p(Context paramContext, v paramv, ViewGroup paramViewGroup)
+  public p(Context paramContext, aa paramaa, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramv, paramViewGroup);
+    super(paramContext, paramaa, paramViewGroup);
   }
   
-  public final View bFf()
+  public final void cqK()
   {
-    this.oGO = ((FrameLayout)this.contentView);
-    this.dYF = MMWebView.a.cO(this.context);
-    this.oGO.addView(this.dYF);
-    return this.oGO;
+    AppMethodBeat.i(37193);
+    this.rwD = ((FrameLayout)this.contentView);
+    this.foJ = MMWebView.a.iI(this.context);
+    this.rwD.addView(this.foJ);
+    AppMethodBeat.o(37193);
   }
   
-  protected final void bFj()
+  protected final void cqP()
   {
-    WindowManager localWindowManager = (WindowManager)this.context.getSystemService("window");
-    int i = localWindowManager.getDefaultDisplay().getWidth();
-    int j = localWindowManager.getDefaultDisplay().getHeight();
-    this.dYF.setVerticalScrollBarEnabled(false);
-    this.dYF.setHorizontalScrollBarEnabled(false);
-    this.dYF.getSettings().setJavaScriptEnabled(true);
-    this.dYF.loadUrl(((v)this.oFE).lfj);
-    this.dYF.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    this.dYF.setVisibility(0);
-    this.oGO.setPadding(this.oGO.getPaddingLeft(), (int)((v)this.oFE).oDi, this.oGO.getPaddingRight(), (int)((v)this.oFE).oDj);
-    this.oGO.setLayoutParams(new LinearLayout.LayoutParams(i, j));
+    AppMethodBeat.i(37192);
+    this.foJ.setVerticalScrollBarEnabled(false);
+    this.foJ.setHorizontalScrollBarEnabled(false);
+    this.foJ.getSettings().setJavaScriptEnabled(true);
+    this.foJ.loadUrl(((aa)this.rve).nDe);
+    this.foJ.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    this.foJ.setVisibility(0);
+    this.rwD.setPadding(this.rwD.getPaddingLeft(), (int)((aa)this.rve).paddingTop, this.rwD.getPaddingRight(), (int)((aa)this.rve).paddingBottom);
+    this.rwD.setLayoutParams(new LinearLayout.LayoutParams(this.iiW, this.iiX));
+    AppMethodBeat.o(37192);
   }
   
-  protected final View bFk()
+  protected final View cqR()
   {
-    return new FrameLayout(this.context);
+    AppMethodBeat.i(37194);
+    FrameLayout localFrameLayout = new FrameLayout(this.context);
+    AppMethodBeat.o(37194);
+    return localFrameLayout;
   }
   
   protected final int getLayout()
@@ -59,7 +61,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.p
  * JD-Core Version:    0.7.0.1
  */

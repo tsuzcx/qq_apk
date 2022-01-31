@@ -1,6 +1,6 @@
 package com.tencent.map.swlocation.api;
 
-import com.d.a.a.t.b;
+import com.b.a.a.t.b;
 
 public abstract interface LocationUpdateListener
   extends t.b

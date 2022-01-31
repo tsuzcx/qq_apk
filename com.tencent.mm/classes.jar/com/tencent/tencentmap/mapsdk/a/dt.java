@@ -1,22 +1,18 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-
-final class dt
+public class dt
+  extends du
 {
-  HttpResponse a = null;
-  HttpPost b = null;
+  public dt() {}
   
-  public dt(HttpResponse paramHttpResponse, HttpPost paramHttpPost)
+  public dt(String paramString)
   {
-    this.a = paramHttpResponse;
-    this.b = paramHttpPost;
+    super(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.dt
  * JD-Core Version:    0.7.0.1
  */

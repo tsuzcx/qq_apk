@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BioHelperUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class BioHelperUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.rZi.finish();
+    AppMethodBeat.i(125667);
+    this.vPZ.finish();
+    AppMethodBeat.o(125667);
     return true;
   }
 }

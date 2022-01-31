@@ -5,81 +5,102 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Window;
-import com.tencent.mm.R.i;
-import com.tencent.mm.h.a.al;
-import com.tencent.mm.h.a.cd;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.an;
+import com.tencent.mm.g.a.cg;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 @com.tencent.mm.ui.base.a(7)
 public class WebviewScanImageActivity
   extends Activity
 {
-  private int bIj;
-  private int bIk;
-  private String exD;
-  private String oOO = null;
-  private c oOV = new WebviewScanImageActivity.1(this);
-  private boolean rkw = false;
-  private String rkx;
+  private int cpE;
+  private int cpF;
+  private String ffp;
+  private c rGI;
+  private String rGz;
+  private boolean uZR;
+  private String uZS;
   private String url;
+  
+  public WebviewScanImageActivity()
+  {
+    AppMethodBeat.i(7336);
+    this.uZR = false;
+    this.rGz = null;
+    this.rGI = new WebviewScanImageActivity.1(this);
+    AppMethodBeat.o(7336);
+  }
   
   protected void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(7337);
     super.onCreate(paramBundle);
-    y.i("MicroMsg.WebviewScanImageActivity", "hy: on create");
+    ab.i("MicroMsg.WebviewScanImageActivity", "hy: on create");
     if (Build.VERSION.SDK_INT >= 21)
     {
       getWindow().addFlags(-2147483648);
       getWindow().setStatusBarColor(0);
     }
-    setContentView(R.i.layout_empty_activity);
+    setContentView(2130969973);
+    AppMethodBeat.o(7337);
   }
   
   protected void onPause()
   {
+    AppMethodBeat.i(7339);
     super.onPause();
-    y.i("MicroMsg.WebviewScanImageActivity", "hy: on pause");
-    al localal = new al();
-    localal.bGD.activity = this;
-    localal.bGD.bGE = this.oOO;
-    com.tencent.mm.sdk.b.a.udP.m(localal);
-    com.tencent.mm.sdk.b.a.udP.d(this.oOV);
+    ab.i("MicroMsg.WebviewScanImageActivity", "hy: on pause");
+    an localan = new an();
+    localan.cnQ.activity = this;
+    localan.cnQ.cnR = this.rGz;
+    com.tencent.mm.sdk.b.a.ymk.l(localan);
+    com.tencent.mm.sdk.b.a.ymk.d(this.rGI);
     finish();
+    AppMethodBeat.o(7339);
   }
   
   protected void onStart()
   {
+    AppMethodBeat.i(7338);
     super.onStart();
-    y.i("MicroMsg.WebviewScanImageActivity", "hy: on start");
-    if ((!this.rkw) && (getIntent() != null))
+    ab.i("MicroMsg.WebviewScanImageActivity", "hy: on start");
+    if ((!this.uZR) && (getIntent() != null))
     {
-      this.oOO = getIntent().getStringExtra("key_string_for_scan");
-      this.bIj = getIntent().getIntExtra("key_codetype_for_scan", 0);
-      this.bIk = getIntent().getIntExtra("key_codeversion_for_scan", 0);
+      this.rGz = getIntent().getStringExtra("key_string_for_scan");
+      this.cpE = getIntent().getIntExtra("key_codetype_for_scan", 0);
+      this.cpF = getIntent().getIntExtra("key_codeversion_for_scan", 0);
       this.url = getIntent().getStringExtra("key_string_for_url");
-      this.exD = getIntent().getStringExtra("key_string_for_image_url");
-      this.rkx = getIntent().getStringExtra("key_string_for_wxapp_id");
-      if (this.oOO != null)
+      this.ffp = getIntent().getStringExtra("key_string_for_image_url");
+      this.uZS = getIntent().getStringExtra("key_string_for_wxapp_id");
+      if (this.rGz != null)
       {
-        cd localcd = new cd();
-        localcd.bIi.activity = this;
-        localcd.bIi.bGE = this.oOO;
-        localcd.bIi.bIk = this.bIk;
-        localcd.bIi.bIj = this.bIj;
-        localcd.bIi.bIl = 6;
-        localcd.bIi.imagePath = this.exD;
-        localcd.bIi.scene = 40;
+        com.tencent.mm.sdk.b.a.ymk.c(this.rGI);
+        cg localcg = new cg();
+        localcg.cpD.activity = this;
+        localcg.cpD.cnR = this.rGz;
+        localcg.cpD.cpF = this.cpF;
+        localcg.cpD.cpE = this.cpE;
+        localcg.cpD.cpG = 6;
+        localcg.cpD.imagePath = this.ffp;
+        localcg.cpD.scene = 40;
         Bundle localBundle = new Bundle();
-        localBundle.putString("stat_app_id", this.rkx);
+        localBundle.putString("stat_app_id", this.uZS);
         localBundle.putString("stat_url", this.url);
         localBundle.putInt("stat_scene", 4);
-        localcd.bIi.bIo = localBundle;
-        com.tencent.mm.sdk.b.a.udP.m(localcd);
-        com.tencent.mm.sdk.b.a.udP.c(this.oOV);
+        localcg.cpD.cpJ = localBundle;
+        com.tencent.mm.sdk.b.a.ymk.l(localcg);
       }
     }
-    this.rkw = true;
+    this.uZR = true;
+    AppMethodBeat.o(7338);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

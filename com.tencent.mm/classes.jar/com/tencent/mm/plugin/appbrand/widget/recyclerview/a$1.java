@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.appbrand.widget.recyclerview;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
 import android.support.v7.widget.RecyclerView.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class a$1
@@ -10,72 +11,84 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final void al(int paramInt1, int paramInt2)
+  public final void ar(int paramInt1, int paramInt2)
   {
-    if (a.a(this.hDM).isEmpty()) {}
+    AppMethodBeat.i(77457);
+    if (a.a(this.jwm).isEmpty()) {}
     for (int i = 0;; i = 1)
     {
-      this.hDM.ah(i + paramInt1, paramInt2);
+      this.jwm.an(i + paramInt1, paramInt2);
+      AppMethodBeat.o(77457);
       return;
     }
   }
   
-  public final void am(int paramInt1, int paramInt2)
+  public final void as(int paramInt1, int paramInt2)
   {
-    if (a.a(this.hDM).isEmpty()) {}
+    AppMethodBeat.i(77459);
+    if (a.a(this.jwm).isEmpty()) {}
     for (int i = 0;; i = 1)
     {
-      this.hDM.aj(i + paramInt1, paramInt2);
+      this.jwm.ap(i + paramInt1, paramInt2);
+      AppMethodBeat.o(77459);
       return;
     }
   }
   
-  public final void an(int paramInt1, int paramInt2)
+  public final void at(int paramInt1, int paramInt2)
   {
-    if (a.a(this.hDM).isEmpty()) {}
+    AppMethodBeat.i(77460);
+    if (a.a(this.jwm).isEmpty()) {}
     for (int i = 0;; i = 1)
     {
-      this.hDM.ak(i + paramInt1, paramInt2);
+      this.jwm.aq(i + paramInt1, paramInt2);
+      AppMethodBeat.o(77460);
       return;
     }
   }
   
-  public final void ao(int paramInt1, int paramInt2)
+  public final void au(int paramInt1, int paramInt2)
   {
     int j = 0;
-    a locala = this.hDM;
+    AppMethodBeat.i(77461);
+    a locala = this.jwm;
     int i;
-    if (a.a(this.hDM).isEmpty())
+    if (a.a(locala).isEmpty())
     {
       i = 0;
-      if (!a.a(this.hDM).isEmpty()) {
-        break label59;
+      if (!a.a(this.jwm).isEmpty()) {
+        break label67;
       }
     }
     for (;;)
     {
-      locala.ai(i + paramInt1, j + paramInt2);
+      locala.ao(i + paramInt1, j + paramInt2);
+      AppMethodBeat.o(77461);
       return;
       i = 1;
       break;
-      label59:
+      label67:
       j = 1;
     }
   }
   
-  public final void d(int paramInt1, int paramInt2, Object paramObject)
+  public final void f(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (a.a(this.hDM).isEmpty()) {}
+    AppMethodBeat.i(77458);
+    if (a.a(this.jwm).isEmpty()) {}
     for (int i = 0;; i = 1)
     {
-      this.hDM.c(i + paramInt1, paramInt2, paramObject);
+      this.jwm.e(i + paramInt1, paramInt2, paramObject);
+      AppMethodBeat.o(77458);
       return;
     }
   }
   
   public final void onChanged()
   {
-    this.hDM.agL.notifyChanged();
+    AppMethodBeat.i(77456);
+    this.jwm.ajb.notifyChanged();
+    AppMethodBeat.o(77456);
   }
 }
 

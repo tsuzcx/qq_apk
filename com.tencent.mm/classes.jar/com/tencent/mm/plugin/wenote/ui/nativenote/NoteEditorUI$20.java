@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class NoteEditorUI$20
   implements Runnable
 {
@@ -7,13 +9,17 @@ final class NoteEditorUI$20
   
   public final void run()
   {
-    if ((this.rLZ) && (!NoteEditorUI.O(this.rLT))) {
-      this.rLT.showVKB();
-    }
-    while ((this.rLZ) || (!NoteEditorUI.O(this.rLT))) {
+    AppMethodBeat.i(27016);
+    if ((this.vCD) && (!NoteEditorUI.O(this.vCx)))
+    {
+      this.vCx.showVKB();
+      AppMethodBeat.o(27016);
       return;
     }
-    this.rLT.XM();
+    if ((!this.vCD) && (NoteEditorUI.O(this.vCx))) {
+      this.vCx.hideVKB();
+    }
+    AppMethodBeat.o(27016);
   }
 }
 

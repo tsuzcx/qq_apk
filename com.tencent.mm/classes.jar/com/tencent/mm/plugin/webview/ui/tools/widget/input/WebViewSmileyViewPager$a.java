@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget.input;
 
 public abstract interface WebViewSmileyViewPager$a
 {
-  public abstract void asF();
+  public abstract void aRJ();
 }
 
 

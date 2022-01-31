@@ -1,57 +1,52 @@
 package com.google.android.exoplayer2.source.a;
 
 import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.h.f;
-import com.google.android.exoplayer2.h.i;
-import com.google.android.exoplayer2.i.t;
+import com.google.android.exoplayer2.h.g;
+import com.google.android.exoplayer2.h.j;
+import com.google.android.exoplayer2.i.x;
 import java.util.Arrays;
 
 public abstract class c
   extends a
 {
-  private volatile boolean aJg;
+  private volatile boolean aPM;
   public byte[] data;
   private int limit;
   
-  public c(f paramf, i parami, Format paramFormat, int paramInt, Object paramObject, byte[] paramArrayOfByte)
+  public c(g paramg, j paramj, Format paramFormat, int paramInt, Object paramObject, byte[] paramArrayOfByte)
   {
-    super(paramf, parami, 3, paramFormat, paramInt, paramObject, -9223372036854775807L, -9223372036854775807L);
+    super(paramg, paramj, 3, paramFormat, paramInt, paramObject, -9223372036854775807L, -9223372036854775807L);
     this.data = paramArrayOfByte;
   }
   
-  public abstract void e(byte[] paramArrayOfByte, int paramInt);
+  protected abstract void d(byte[] paramArrayOfByte, int paramInt);
   
-  public final long mQ()
+  public final void pf()
   {
-    return this.limit;
+    this.aPM = true;
   }
   
-  public final void mR()
+  public final boolean pg()
   {
-    this.aJg = true;
+    return this.aPM;
   }
   
-  public final boolean mS()
-  {
-    return this.aJg;
-  }
-  
-  public final void mT()
+  public final void ph()
   {
     int i = 0;
     for (;;)
     {
       try
       {
-        this.ayZ.a(this.aJa);
+        this.aBo.a(this.aQI);
         this.limit = 0;
-        if ((i == -1) || (this.aJg)) {
+        if ((i == -1) || (this.aPM)) {
           break;
         }
         if (this.data == null)
         {
           this.data = new byte[16384];
-          int j = this.ayZ.read(this.data, this.limit, 16384);
+          int j = this.aBo.read(this.data, this.limit, 16384);
           i = j;
           if (j == -1) {
             continue;
@@ -66,14 +61,19 @@ public abstract class c
       }
       finally
       {
-        t.a(this.ayZ);
+        x.a(this.aBo);
       }
       this.data = Arrays.copyOf(this.data, this.data.length + 16384);
     }
-    if (!this.aJg) {
-      e(this.data, this.limit);
+    if (!this.aPM) {
+      d(this.data, this.limit);
     }
-    t.a(this.ayZ);
+    x.a(this.aBo);
+  }
+  
+  public final long pt()
+  {
+    return this.limit;
   }
 }
 

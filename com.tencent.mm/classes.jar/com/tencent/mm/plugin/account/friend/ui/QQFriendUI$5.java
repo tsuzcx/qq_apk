@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.friend.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class QQFriendUI$5
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class QQFriendUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.fis.XM();
-    this.fis.finish();
+    AppMethodBeat.i(108617);
+    this.gzZ.hideVKB();
+    this.gzZ.finish();
+    AppMethodBeat.o(108617);
     return true;
   }
 }

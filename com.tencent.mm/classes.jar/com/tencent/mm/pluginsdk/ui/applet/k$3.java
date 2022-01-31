@@ -3,6 +3,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class k$3
   implements View.OnClickListener
@@ -11,7 +12,9 @@ final class k$3
   
   public final void onClick(View paramView)
   {
-    this.sdl.scA.Ea(this.kX);
+    AppMethodBeat.i(79782);
+    this.vUo.vTG.LX(this.lU);
+    AppMethodBeat.o(79782);
   }
 }
 

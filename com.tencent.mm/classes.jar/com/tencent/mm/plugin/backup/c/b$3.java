@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.backup.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.b.f.b;
 import java.util.LinkedList;
 
@@ -10,9 +11,11 @@ public final class b$3
   
   public final void run()
   {
-    if ((!this.hFX.hFU) && (this.hFY != null)) {
-      this.hFY.a(this.hFZ, this.hGa, this.hGb);
+    AppMethodBeat.i(17169);
+    if ((!this.jzt.jzq) && (this.jzu != null)) {
+      this.jzu.a(this.jzv, this.jzw, this.jzx);
     }
+    AppMethodBeat.o(17169);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.c.axd;
+import com.tencent.mm.protocal.protobuf.bdt;
 import com.tencent.mm.vending.b.b;
 
 public abstract interface d
@@ -9,7 +9,7 @@ public abstract interface d
 {
   public abstract b a(c paramc);
   
-  public abstract void a(axd paramaxd, String paramString);
+  public abstract void a(bdt parambdt, String paramString);
 }
 
 

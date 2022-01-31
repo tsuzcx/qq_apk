@@ -9,10 +9,10 @@ import android.view.ViewGroup.MarginLayoutParams;
 public class RecyclerView$LayoutParams
   extends ViewGroup.MarginLayoutParams
 {
-  final Rect adx = new Rect();
-  RecyclerView.v ahi;
-  boolean ahj = true;
-  boolean ahk = false;
+  final Rect afM = new Rect();
+  boolean ajA = false;
+  public RecyclerView.v ajy;
+  boolean ajz = true;
   
   public RecyclerView$LayoutParams(int paramInt1, int paramInt2)
   {

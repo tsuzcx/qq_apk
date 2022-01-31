@@ -8,19 +8,19 @@ final class a$5
 {
   a$5(a parama) {}
   
-  public final int ap(int paramInt1, int paramInt2)
+  public final int av(int paramInt1, int paramInt2)
   {
-    if (this.aoa.anU == null) {}
+    if (this.aqr.aql == null) {}
     int i;
     do
     {
       return paramInt2;
-      int j = this.aoa.anV;
+      int j = this.aqr.aqm;
       i = j;
       if (j == -1)
       {
-        i = this.aoa.acI.indexOfChild(this.aoa.anU);
-        this.aoa.anV = i;
+        i = this.aqr.adt.indexOfChild(this.aqr.aql);
+        this.aqr.aqm = i;
       }
       if (paramInt2 == paramInt1 - 1) {
         return i;
@@ -31,7 +31,7 @@ final class a$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v7.widget.a.a.5
  * JD-Core Version:    0.7.0.1
  */

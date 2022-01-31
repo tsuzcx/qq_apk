@@ -5,10 +5,10 @@ import android.widget.TextView;
 
 final class ScannerHistoryUI$b
 {
-  ImageView hic;
-  TextView iwq;
-  TextView iwr;
-  TextView iws;
+  ImageView iTH;
+  TextView kxu;
+  TextView kxv;
+  TextView kxw;
   
   private ScannerHistoryUI$b(ScannerHistoryUI paramScannerHistoryUI) {}
 }

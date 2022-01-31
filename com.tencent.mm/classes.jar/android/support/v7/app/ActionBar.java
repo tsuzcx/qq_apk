@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.v7.a.a.j;
+import android.support.v7.a.a.a;
 import android.support.v7.view.b;
 import android.support.v7.view.b.a;
 import android.util.AttributeSet;
@@ -15,11 +15,11 @@ import android.view.ViewGroup.MarginLayoutParams;
 
 public abstract class ActionBar
 {
+  public void K(boolean paramBoolean) {}
+  
   public void L(boolean paramBoolean) {}
   
   public void M(boolean paramBoolean) {}
-  
-  public void N(boolean paramBoolean) {}
   
   public b a(b.a parama)
   {
@@ -36,23 +36,30 @@ public abstract class ActionBar
     return false;
   }
   
-  public abstract void dY();
+  public abstract void es();
   
-  public abstract void dZ();
+  public abstract void et();
   
-  public abstract void ea();
+  public abstract void eu();
   
-  public boolean eb()
+  public abstract void ev();
+  
+  public void ew()
+  {
+    throw new UnsupportedOperationException("Hide on content scroll is not supported in this action bar configuration.");
+  }
+  
+  public boolean ex()
   {
     return false;
   }
   
-  public boolean ec()
+  public boolean ey()
   {
     return false;
   }
   
-  public boolean ed()
+  public boolean ez()
   {
     return false;
   }
@@ -102,8 +109,6 @@ public abstract class ActionBar
   
   public void setHomeActionContentDescription(int paramInt) {}
   
-  public abstract void setIcon(int paramInt);
-  
   public abstract void setLogo(Drawable paramDrawable);
   
   public void setWindowTitle(CharSequence paramCharSequence) {}
@@ -115,7 +120,7 @@ public abstract class ActionBar
   {
     public int gravity = 0;
     
-    public LayoutParams()
+    public LayoutParams(int paramInt)
     {
       super(-2);
       this.gravity = 8388627;
@@ -124,8 +129,8 @@ public abstract class ActionBar
     public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.ActionBarLayout);
-      this.gravity = paramContext.getInt(a.j.ActionBarLayout_android_layout_gravity, 0);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ActionBarLayout);
+      this.gravity = paramContext.getInt(0, 0);
       paramContext.recycle();
     }
     

@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.readerapp.ui;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.Html.ImageGetter;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class ReaderAppUI$a$1
   implements Html.ImageGetter
@@ -12,9 +13,11 @@ final class ReaderAppUI$a$1
   
   public final Drawable getDrawable(String paramString)
   {
-    int i = bk.getInt(paramString, 0);
-    paramString = this.noZ.noS.getResources().getDrawable(i);
+    AppMethodBeat.i(76822);
+    int i = bo.getInt(paramString, 0);
+    paramString = this.pUn.pUg.getResources().getDrawable(i);
     paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), paramString.getIntrinsicHeight());
+    AppMethodBeat.o(76822);
     return paramString;
   }
 }

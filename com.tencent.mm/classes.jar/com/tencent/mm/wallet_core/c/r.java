@@ -1,92 +1,78 @@
 package com.tencent.mm.wallet_core.c;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.network.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.ccx;
-import com.tencent.mm.protocal.c.ccy;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet_core.model.m;
+import com.tencent.mm.protocal.protobuf.blq;
+import com.tencent.mm.protocal.protobuf.blr;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class r
-  extends s
+  extends u
 {
-  private final b dmK;
-  private f dmL;
-  public int errCode;
-  public String iZD = null;
-  public String iZF;
-  public int qLI = 0;
+  private f callback;
+  private com.tencent.mm.ai.b rr;
   
-  public r(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public r(String paramString)
   {
+    this(paramString, null, null, -1, -1, -1);
+  }
+  
+  public r(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(49074);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new ccx();
-    ((b.a)localObject).ecI = new ccy();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/verifypurchase";
-    ((b.a)localObject).ecG = 414;
-    ((b.a)localObject).ecJ = 215;
-    ((b.a)localObject).ecK = 1000000215;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (ccx)this.dmK.ecE.ecN;
-    this.iZD = paramString1;
-    ((ccx)localObject).syc = paramString1;
-    ((ccx)localObject).tRN = paramInt1;
-    ((ccx)localObject).tAj = paramInt3;
-    ((ccx)localObject).mPQ = paramInt2;
-    if (!bk.bl(paramString6))
-    {
-      ((ccx)localObject).tAh = paramString6;
-      ((ccx)localObject).tAi = paramString5;
+    ((b.a)localObject).fsX = new blq();
+    ((b.a)localObject).fsY = new blr();
+    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/paysubscribe";
+    ((b.a)localObject).funcId = 421;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    ((b.a)localObject).routeInfo = com.tencent.mm.wallet_core.ui.e.awk(paramString2);
+    this.rr = ((b.a)localObject).ado();
+    localObject = (blq)this.rr.fsV.fta;
+    ((blq)localObject).xAn = paramString1;
+    ((blq)localObject).wDH = m.cTC();
+    ((blq)localObject).xAo = paramString3;
+    if (!bo.isNullOrNil(paramString2)) {
+      ((blq)localObject).xAp = new com.tencent.mm.bv.b(paramString2.getBytes());
     }
-    ((ccx)localObject).tAk = paramString2;
-    ((ccx)localObject).tRP = paramString4;
-    if (paramString3 != null) {
-      paramString1 = paramString3.getBytes();
+    if (paramInt1 >= 0) {
+      ((blq)localObject).wDC = paramInt1;
     }
-    for (((ccx)localObject).tRM = new bmk().bs(paramString1);; ((ccx)localObject).tRM = new bmk())
-    {
-      ((ccx)localObject).tRO = ((int)bk.UX());
-      y.i("MicroMsg.NetSceneVerifyPurchase", "productId:" + this.iZD + ",verifyType:" + paramInt1 + ",palyType:" + paramInt2 + ",payload:" + paramString2 + ",purchaseData:" + paramString3 + ",dataSignature:" + paramString4);
-      return;
+    if (paramInt2 >= 0) {
+      ((blq)localObject).wkX = paramInt2;
     }
+    if (paramInt3 >= 0) {
+      ((blq)localObject).xAq = paramInt3;
+    }
+    AppMethodBeat.o(49074);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void e(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    y.e("MicroMsg.NetSceneVerifyPurchase", "ErrType:" + paramInt1 + "   errCode:" + paramInt2);
-    this.errCode = 0;
-    if ((paramInt1 != 0) || (paramInt2 != 0))
-    {
-      this.errCode = -1;
-      this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
-      return;
-    }
-    paramq = (ccy)((b)paramq).ecF.ecN;
-    if (paramq.tFx != null)
-    {
-      this.qLI = paramq.tRR;
-      y.d("MicroMsg.NetSceneVerifyPurchase", " Get Series ID is " + paramq.sTa);
-      y.d("MicroMsg.NetSceneVerifyPurchase", " Get Biz Type is " + paramq.tRQ);
-      this.iZF = paramq.sTa;
-    }
-    this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    AppMethodBeat.i(49075);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(49075);
+    return i;
   }
   
   public final int getType()
   {
-    return 414;
+    return 421;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  {
+    AppMethodBeat.i(142656);
+    ab.d("MicroMsg.NetScenePaySubscribe", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(142656);
   }
 }
 

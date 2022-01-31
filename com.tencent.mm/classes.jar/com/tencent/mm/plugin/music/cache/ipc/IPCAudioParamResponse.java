@@ -3,44 +3,57 @@ package com.tencent.mm.plugin.music.cache.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.av.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.h;
 
 public class IPCAudioParamResponse
   implements Parcelable
 {
-  public static final Parcelable.Creator<IPCAudioParamResponse> CREATOR = new IPCAudioParamResponse.1();
-  public String bSB;
-  public byte[] euY;
-  public int euZ;
-  public String eva;
+  public static final Parcelable.Creator<IPCAudioParamResponse> CREATOR;
+  public String cAd;
+  public byte[] fKK;
+  public int fKL;
+  public String fKM;
+  public int fKN;
   public String fileName;
   public String musicUrl;
+  
+  static
+  {
+    AppMethodBeat.i(137464);
+    CREATOR = new IPCAudioParamResponse.1();
+    AppMethodBeat.o(137464);
+  }
   
   public IPCAudioParamResponse() {}
   
   public IPCAudioParamResponse(Parcel paramParcel)
   {
-    this.bSB = paramParcel.readString();
+    AppMethodBeat.i(137462);
+    this.cAd = paramParcel.readString();
     this.musicUrl = paramParcel.readString();
     this.fileName = paramParcel.readString();
-    this.eva = paramParcel.readString();
-    this.euZ = paramParcel.readInt();
+    this.fKM = paramParcel.readString();
+    this.fKL = paramParcel.readInt();
+    this.fKN = paramParcel.readInt();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.euY = new byte[i];
-      paramParcel.readByteArray(this.euY);
+      this.fKK = new byte[i];
+      paramParcel.readByteArray(this.fKK);
     }
+    AppMethodBeat.o(137462);
   }
   
   public IPCAudioParamResponse(h paramh)
   {
-    this.bSB = paramh.bSB;
+    this.cAd = paramh.cAd;
     this.musicUrl = paramh.musicUrl;
     this.fileName = paramh.fileName;
-    this.euZ = paramh.euZ;
-    this.eva = paramh.eva;
-    this.euY = paramh.euY;
+    this.fKL = paramh.fKL;
+    this.fKM = paramh.fKM;
+    this.fKK = paramh.fKK;
+    this.fKN = paramh.fKN;
   }
   
   public int describeContents()
@@ -50,18 +63,22 @@ public class IPCAudioParamResponse
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.bSB);
+    AppMethodBeat.i(137463);
+    paramParcel.writeString(this.cAd);
     paramParcel.writeString(this.musicUrl);
     paramParcel.writeString(this.fileName);
-    paramParcel.writeString(this.eva);
-    paramParcel.writeInt(this.euZ);
-    if (this.euY != null)
+    paramParcel.writeString(this.fKM);
+    paramParcel.writeInt(this.fKL);
+    paramParcel.writeInt(this.fKN);
+    if (this.fKK != null)
     {
-      paramParcel.writeInt(this.euY.length);
-      paramParcel.writeByteArray(this.euY);
+      paramParcel.writeInt(this.fKK.length);
+      paramParcel.writeByteArray(this.fKK);
+      AppMethodBeat.o(137463);
       return;
     }
     paramParcel.writeInt(0);
+    AppMethodBeat.o(137463);
   }
 }
 

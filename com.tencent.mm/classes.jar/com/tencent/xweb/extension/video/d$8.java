@@ -1,6 +1,7 @@
 package com.tencent.xweb.extension.video;
 
 import android.widget.ProgressBar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$8
   implements Runnable
@@ -9,7 +10,9 @@ final class d$8
   
   public final void run()
   {
-    d.p(this.xiF).setVisibility(8);
+    AppMethodBeat.i(84582);
+    d.p(this.BFR).setVisibility(8);
+    AppMethodBeat.o(84582);
   }
 }
 

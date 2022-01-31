@@ -10,12 +10,12 @@ final class o$3
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.fpr.fpj.fex = null;
+    this.gGO.gGG.gwg = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.o.3
  * JD-Core Version:    0.7.0.1
  */

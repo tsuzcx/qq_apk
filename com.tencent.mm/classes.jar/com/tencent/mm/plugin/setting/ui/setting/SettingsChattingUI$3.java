@@ -1,28 +1,34 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.h.a.og;
-import com.tencent.mm.model.bd.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ph;
+import com.tencent.mm.model.bf.a;
 import com.tencent.mm.sdk.b.a;
 
 final class SettingsChattingUI$3
-  implements bd.a
+  implements bf.a
 {
   SettingsChattingUI$3(SettingsChattingUI paramSettingsChattingUI) {}
   
-  public final void xA()
+  public final boolean JS()
   {
-    if (SettingsChattingUI.a(this.nUf) != null)
-    {
-      SettingsChattingUI.a(this.nUf).dismiss();
-      SettingsChattingUI.a(this.nUf, null);
-    }
-    a.udP.m(new og());
+    AppMethodBeat.i(127214);
+    boolean bool = SettingsChattingUI.c(this.qIf);
+    AppMethodBeat.o(127214);
+    return bool;
   }
   
-  public final boolean xz()
+  public final void JT()
   {
-    return SettingsChattingUI.c(this.nUf);
+    AppMethodBeat.i(127215);
+    if (SettingsChattingUI.a(this.qIf) != null)
+    {
+      SettingsChattingUI.a(this.qIf).dismiss();
+      SettingsChattingUI.a(this.qIf, null);
+    }
+    a.ymk.l(new ph());
+    AppMethodBeat.o(127215);
   }
 }
 

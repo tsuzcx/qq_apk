@@ -2,6 +2,7 @@ package com.tencent.mm.ui.tools;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$1
   implements Animator.AnimatorListener
@@ -10,30 +11,34 @@ final class e$1
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
-    this.wcP.wcN = this.wcP.wcL;
+    this.Avj.Avh = this.Avj.Avf;
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.wcO != null) {
-      this.wcO.onAnimationEnd();
+    AppMethodBeat.i(107641);
+    if (this.Avi != null) {
+      this.Avi.onAnimationEnd();
     }
-    this.wcP.wcN = this.wcP.wcL;
+    this.Avj.Avh = this.Avj.Avf;
+    AppMethodBeat.o(107641);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    if (this.wcO != null) {
-      this.wcO.onAnimationStart();
+    AppMethodBeat.i(107640);
+    if (this.Avi != null) {
+      this.Avi.onAnimationStart();
     }
-    this.wcP.wcN = this.wcP.wcK;
+    this.Avj.Avh = this.Avj.Ave;
+    AppMethodBeat.o(107640);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.tools.e.1
  * JD-Core Version:    0.7.0.1
  */

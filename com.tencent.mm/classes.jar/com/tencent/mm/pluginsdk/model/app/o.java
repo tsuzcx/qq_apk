@@ -1,34 +1,48 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import android.database.Cursor;
-import com.tencent.mm.h.c.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.v;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class o
-  extends i<t>
+  extends j<v>
 {
-  public static final String[] dXp = { i.a(n.buS, "AppSort") };
-  public e dXw;
+  public static final String[] SQL_CREATE;
+  public e db;
+  
+  static
+  {
+    AppMethodBeat.i(27354);
+    SQL_CREATE = new String[] { j.getCreateSQLs(n.info, "AppSort") };
+    AppMethodBeat.o(27354);
+  }
   
   public o(e parame)
   {
-    super(parame, n.buS, "AppSort", null);
-    this.dXw = parame;
-    parame.gk("AppSort", "CREATE INDEX IF NOT EXISTS flagIdIndex ON AppSort ( flag )");
-    parame.gk("AppSort", "CREATE INDEX IF NOT EXISTS flagIdIndex ON AppSort ( sortId )");
+    super(parame, n.info, "AppSort", null);
+    AppMethodBeat.i(27351);
+    this.db = parame;
+    parame.execSQL("AppSort", "CREATE INDEX IF NOT EXISTS flagIdIndex ON AppSort ( flag )");
+    parame.execSQL("AppSort", "CREATE INDEX IF NOT EXISTS flagIdIndex ON AppSort ( sortId )");
+    AppMethodBeat.o(27351);
   }
   
   public final boolean a(n paramn)
   {
-    return super.b(paramn);
+    AppMethodBeat.i(27353);
+    boolean bool = super.insert(paramn);
+    AppMethodBeat.o(27353);
+    return bool;
   }
   
-  public final List<String> hc(long paramLong)
+  public final List<String> ny(long paramLong)
   {
+    AppMethodBeat.i(27352);
     ArrayList localArrayList = new ArrayList();
     Object localObject = new StringBuilder(256);
     ((StringBuilder)localObject).append("select * from AppSort");
@@ -38,15 +52,17 @@ public final class o
     localObject = rawQuery(((StringBuilder)localObject).toString(), new String[0]);
     if (localObject == null)
     {
-      y.e("MicroMsg.AppSortStorage", "getAppListByFlag : cursor is null");
+      ab.e("MicroMsg.AppSortStorage", "getAppListByFlag : cursor is null");
+      AppMethodBeat.o(27352);
       return null;
     }
-    y.d("MicroMsg.AppSortStorage", "getAppListByFlag count = %d", new Object[] { Integer.valueOf(((Cursor)localObject).getCount()) });
+    ab.d("MicroMsg.AppSortStorage", "getAppListByFlag count = %d", new Object[] { Integer.valueOf(((Cursor)localObject).getCount()) });
     int i = ((Cursor)localObject).getColumnIndex("appId");
     while (((Cursor)localObject).moveToNext()) {
       localArrayList.add(((Cursor)localObject).getString(i));
     }
     ((Cursor)localObject).close();
+    AppMethodBeat.o(27352);
     return localArrayList;
   }
 }

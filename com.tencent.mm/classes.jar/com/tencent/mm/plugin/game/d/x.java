@@ -1,96 +1,72 @@
 package com.tencent.mm.plugin.game.d;
 
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class x
   extends com.tencent.mm.bv.a
 {
-  public String kRN;
-  public e kRQ;
-  public LinkedList<String> kSZ = new LinkedList();
-  public String kTa;
+  public String Name;
+  public String nqE;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(111561);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.kRQ != null)
-      {
-        paramVarArgs.gD(1, this.kRQ.btq());
-        this.kRQ.a(paramVarArgs);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.nqE != null) {
+        paramVarArgs.e(1, this.nqE);
       }
-      paramVarArgs.d(2, 1, this.kSZ);
-      if (this.kTa != null) {
-        paramVarArgs.d(3, this.kTa);
+      if (this.Name != null) {
+        paramVarArgs.e(2, this.Name);
       }
-      if (this.kRN != null) {
-        paramVarArgs.d(4, this.kRN);
-      }
+      AppMethodBeat.o(111561);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.kRQ == null) {
-        break label434;
+      if (this.nqE == null) {
+        break label274;
       }
     }
-    label434:
-    for (paramInt = d.a.a.a.gA(1, this.kRQ.btq()) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = e.a.a.b.b.a.f(1, this.nqE) + 0;; paramInt = 0)
     {
-      int i = paramInt + d.a.a.a.c(2, 1, this.kSZ);
-      paramInt = i;
-      if (this.kTa != null) {
-        paramInt = i + d.a.a.b.b.a.e(3, this.kTa);
+      int i = paramInt;
+      if (this.Name != null) {
+        i = paramInt + e.a.a.b.b.a.f(2, this.Name);
       }
-      i = paramInt;
-      if (this.kRN != null) {
-        i = paramInt + d.a.a.b.b.a.e(4, this.kRN);
-      }
+      AppMethodBeat.o(111561);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.kSZ.clear();
-        paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        AppMethodBeat.o(111561);
+        return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         x localx = (x)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(111561);
           return -1;
         case 1: 
-          paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new e();
-            localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((e)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-            localx.kRQ = ((e)localObject1);
-            paramInt += 1;
-          }
-        case 2: 
-          localx.kSZ.add(((d.a.a.a.a)localObject1).xpH.readString());
-          return 0;
-        case 3: 
-          localx.kTa = ((d.a.a.a.a)localObject1).xpH.readString();
+          localx.nqE = locala.CLY.readString();
+          AppMethodBeat.o(111561);
           return 0;
         }
-        localx.kRN = ((d.a.a.a.a)localObject1).xpH.readString();
+        localx.Name = locala.CLY.readString();
+        AppMethodBeat.o(111561);
         return 0;
       }
+      AppMethodBeat.o(111561);
       return -1;
     }
   }

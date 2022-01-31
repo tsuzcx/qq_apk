@@ -1,207 +1,372 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-import android.app.Activity;
 import android.util.Pair;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.ValueCallback;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ipcinvoker.wx_extension.b;
-import com.tencent.mm.plugin.appbrand.config.d;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.i.e;
-import com.tencent.mm.plugin.appbrand.i.f;
-import com.tencent.mm.plugin.appbrand.i.g;
-import com.tencent.mm.plugin.appbrand.o.k.b;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.protocal.c.ajx;
-import com.tencent.mm.protocal.c.ajy;
-import com.tencent.mm.protocal.c.cgp;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.net.URL;
+import com.tencent.luggage.sdk.b.a.c.c;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.m.a;
+import com.tencent.mm.protocal.protobuf.cto;
+import com.tencent.mm.protocal.protobuf.ctw;
+import com.tencent.mm.protocal.protobuf.cud;
+import com.tencent.mm.protocal.protobuf.cui;
+import com.tencent.mm.sdk.platformtools.f;
+import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class l
-  implements f
 {
-  j fSm;
-  String fSn;
-  q fSo;
-  n fSp = new n();
-  public s fSq;
-  k.b fSr = new l.2(this);
-  Activity fyk;
-  com.tencent.mm.plugin.appbrand.o fyo;
+  LinkedList<Pair<String, ValueCallback<String>>> hlA;
+  final LinkedList<o> hlB;
+  final Map<String, k> hlC;
+  final LinkedList<ctw> hlD;
+  final HashMap<Integer, b> hlE;
+  int hlF;
+  long hlG;
+  c hlj;
+  final cto hlk;
+  private String hll;
+  private int hlm;
+  private int hln;
+  cui hlo;
+  m hlp;
+  AtomicInteger hlq;
+  long hlr;
+  long hls;
+  long hlt;
+  long hlu;
+  AtomicInteger hlv;
+  private boolean hlw;
+  private boolean hlx;
+  private final HashMap<String, Method> hly;
+  private final HashMap<String, cud> hlz;
+  final Object mLock;
+  private int mStatus;
   
   public l()
   {
-    com.tencent.mm.sdk.b.a.udP.b(new l.4(this));
+    AppMethodBeat.i(101823);
+    this.hlm = 0;
+    this.hln = 0;
+    this.mStatus = 0;
+    this.hlq = new AtomicInteger(0);
+    this.hlr = 0L;
+    this.hls = 0L;
+    this.hlu = System.currentTimeMillis();
+    this.hlv = new AtomicInteger(0);
+    this.hly = new HashMap();
+    this.hlz = new HashMap();
+    this.hlA = new LinkedList();
+    this.hlB = new LinkedList();
+    this.hlC = new HashMap();
+    this.hlD = new LinkedList();
+    this.hlE = new HashMap();
+    this.mLock = new Object();
+    this.hlF = 0;
+    this.hlG = 0L;
+    this.hlk = new cto();
+    this.hlk.wCA = f.ymG;
+    AppMethodBeat.o(101823);
   }
   
-  public final <T extends g> T I(Class<T> paramClass)
+  private int getStatus()
   {
-    return null;
-  }
-  
-  public final void a(j paramj)
-  {
-    this.fSm = paramj;
-    this.fyo = this.fSm.fRI;
-    this.fyk = ((Activity)this.fyo.getContext());
-    this.fSq = new s(this.fyk, this.fSm, new l.1(this));
-    paramj = this.fSq;
-    paramj.fSV = ((ViewGroup)this.fyo.getRuntime().fyq.getParent());
-    int i = 0;
-    Object localObject;
-    while (i < paramj.fSV.getChildCount())
+    try
     {
-      localObject = paramj.fSV.getChildAt(i);
-      if ((localObject instanceof s)) {
-        paramj.fSV.removeView((View)localObject);
+      int i = this.mStatus;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void AL(String paramString)
+  {
+    try
+    {
+      this.hll = paramString;
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public final void a(c paramc, String paramString)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(140824);
+    this.hlj = paramc;
+    t.setUin(this.hlj.wj().wS().uin);
+    this.hlp = t.AS(paramString);
+    paramString = this.hlj.wj().wR();
+    if (paramString != null)
+    {
+      paramString.bDm = this.hlp.bDm;
+      paramString.bCW = true;
+      paramc = (a)paramc.wj().U(a.class);
+      if (paramc != null) {
+        if (paramString.bDm) {
+          break label102;
+        }
       }
-      i += 1;
-    }
-    paramj.fSV.addView(paramj);
-    paramj.fSV.bringChildToFront(paramj);
-    paramj.fSW = ((RemoteDebugMoveView)LayoutInflater.from(paramj.getContext()).inflate(y.h.app_brand_remote_debug_move_view, null));
-    paramj.fSZ = ((TextView)paramj.fSW.findViewById(y.g.app_brand_remote_debug_connect_tv));
-    paramj.fSY = ((TextView)paramj.fSW.findViewById(y.g.app_brand_remote_debug_server_tv));
-    paramj.fTa = ((TextView)paramj.fSW.findViewById(y.g.app_brand_remote_debug_info_tv));
-    paramj.fTb = ((TextView)paramj.fSW.findViewById(y.g.app_brand_remote_debug_quit_tv));
-    paramj.fTc = ((TextView)paramj.fSW.findViewById(y.g.app_brand_remote_debug_expand_tv));
-    paramj.fTd = ((TextView)paramj.fSW.findViewById(y.g.app_brand_remote_debug_collapse_tv));
-    paramj.fTe = ((TextView)paramj.fSW.findViewById(y.g.app_brand_remote_debug_error_tv));
-    paramj.fTg = ((ImageView)paramj.fSW.findViewById(y.g.app_brand_remote_debug_connect_dot));
-    paramj.fTf = ((ImageView)paramj.fSW.findViewById(y.g.app_brand_remote_debug_server_dot));
-    paramj.fTh = paramj.fSW.findViewById(y.g.app_brand_remote_debug_detail_layout);
-    paramj.show();
-    paramj.fTc.setOnClickListener(paramj.mOnClickListener);
-    paramj.fTd.setOnClickListener(paramj.mOnClickListener);
-    paramj.fTb.setOnClickListener(paramj.mOnClickListener);
-    paramj.postDelayed(new s.1(paramj), 100L);
-    connect();
-    if (bk.bl(this.fSm.aez()))
-    {
-      y.i("MicroMsg.RemoteDebugJsEngine", "getRemoteDebugTicket");
-      paramj = new ajx();
-      localObject = new b.a();
-      ((b.a)localObject).ecH = paramj;
-      ((b.a)localObject).ecI = new ajy();
-      ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxabusiness/getremotedebugticket";
-      ((b.a)localObject).ecG = 1862;
-      ((b.a)localObject).ecJ = 0;
-      ((b.a)localObject).ecK = 0;
-      b.a(((b.a)localObject).Kt(), new l.3(this));
-    }
-  }
-  
-  public final void a(m paramm)
-  {
-    this.fSp.a(paramm);
-  }
-  
-  public final void a(URL paramURL, String paramString, ValueCallback<String> paramValueCallback)
-  {
-    evaluateJavascript(paramString, paramValueCallback);
-  }
-  
-  public final void a(URL paramURL, String paramString1, String paramString2, String paramString3, ValueCallback<String> paramValueCallback)
-  {
-    evaluateJavascript(paramString3, paramValueCallback);
-  }
-  
-  public final void addJavascriptInterface(Object paramObject, String paramString) {}
-  
-  final void connect()
-  {
-    if (this.fSo == null)
-    {
-      this.fSo = new q(d.h((com.tencent.mm.plugin.appbrand.n)this.fyo.getRuntime()));
-      n localn = this.fSp;
-      q localq = this.fSo;
-      j localj = this.fSm;
-      s locals = this.fSq;
-      localn.fSo = localq;
-      localn.fSm = localj;
-      localn.fSq = locals;
-    }
-    if (this.fSm.aeE())
-    {
-      this.fSo.a("ws://localhost:" + this.fSm.fRO.fSk, this.fSr);
-      return;
-    }
-    this.fSo.a("wss://wxagame.weixin.qq.com/remote/", this.fSr);
-  }
-  
-  public final void destroy()
-  {
-    this.fSp.quit();
-    this.fSp.aeK();
-  }
-  
-  public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
-  {
-    if (this.fSm.aeC()) {
-      return;
-    }
-    if (!this.fSm.isReady())
-    {
-      this.fSm.fRZ.add(new Pair(paramString, paramValueCallback));
-      this.fSn = null;
-      return;
-    }
-    Object localObject = new cgp();
-    ((cgp)localObject).tVE = this.fSm.fRU.incrementAndGet();
-    ((cgp)localObject).script = paramString;
-    m localm = r.a((com.tencent.mm.bv.a)localObject, this.fSm, "evaluateJavascript");
-    this.fSp.a(localm);
-    int i = ((cgp)localObject).tVE;
-    localObject = new a();
-    if (!bk.bl(this.fSn))
-    {
-      ((a)localObject).bGt = this.fSn;
-      this.fSn = null;
     }
     for (;;)
     {
-      ((a)localObject).fRE = System.currentTimeMillis();
-      ((a)localObject).size = paramString.length();
-      ((a)localObject).fRD = paramValueCallback;
-      this.fSm.fSd.put(Integer.valueOf(i), localObject);
+      paramc.ism = bool;
+      AppMethodBeat.o(140824);
       return;
-      ((a)localObject).bGt = o.sP(paramString);
+      label102:
+      bool = false;
     }
   }
   
-  final void onReady()
+  public final String ayU()
   {
-    y.i("MicroMsg.RemoteDebugJsEngine", "onReady");
-    this.fSm.setStatus(3);
-    y.i("MicroMsg.RemoteDebugJsEngine", "clearPendingScript");
-    Iterator localIterator = this.fSm.fRZ.iterator();
-    while (localIterator.hasNext())
+    try
     {
-      Pair localPair = (Pair)localIterator.next();
-      evaluateJavascript((String)localPair.first, (ValueCallback)localPair.second);
+      String str = this.hll;
+      return str;
     }
-    this.fSm.fRZ.clear();
-    this.fSp.bP(this.fSm.aeA(), 2147483647);
-    this.fSq.aeS();
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public final void setJsExceptionHandler(e parame) {}
+  public final int ayV()
+  {
+    try
+    {
+      int i = this.hlm;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final int ayW()
+  {
+    try
+    {
+      int i = this.hln;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final boolean ayX()
+  {
+    try
+    {
+      boolean bool = this.hlx;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final boolean ayY()
+  {
+    AppMethodBeat.i(101826);
+    if (getStatus() == 4)
+    {
+      AppMethodBeat.o(101826);
+      return true;
+    }
+    AppMethodBeat.o(101826);
+    return false;
+  }
+  
+  public final boolean ayZ()
+  {
+    AppMethodBeat.i(101827);
+    if (getStatus() == 5)
+    {
+      AppMethodBeat.o(101827);
+      return true;
+    }
+    AppMethodBeat.o(101827);
+    return false;
+  }
+  
+  public final boolean aza()
+  {
+    return this.hlp.hlK == 3;
+  }
+  
+  public final void cZ(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      if ((this.hln >= paramInt1) && (this.hln <= paramInt2)) {
+        this.hln = paramInt2;
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void dR(boolean paramBoolean)
+  {
+    try
+    {
+      this.hlw = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void dS(boolean paramBoolean)
+  {
+    try
+    {
+      this.hlx = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final boolean isBusy()
+  {
+    try
+    {
+      boolean bool = this.hlw;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  /* Error */
+  public final boolean isReady()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 221
+    //   4: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: invokespecial 205	com/tencent/mm/plugin/appbrand/debugger/l:getStatus	()I
+    //   11: iconst_3
+    //   12: if_icmpne +14 -> 26
+    //   15: iconst_1
+    //   16: istore_1
+    //   17: ldc 221
+    //   19: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: iload_1
+    //   25: ireturn
+    //   26: iconst_0
+    //   27: istore_1
+    //   28: ldc 221
+    //   30: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   33: goto -11 -> 22
+    //   36: astore_2
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: aload_2
+    //   40: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	41	0	this	l
+    //   16	12	1	bool	boolean
+    //   36	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	15	36	finally
+    //   17	22	36	finally
+    //   28	33	36	finally
+  }
+  
+  public final void nA(int paramInt)
+  {
+    try
+    {
+      this.hlm = paramInt;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void nB(int paramInt)
+  {
+    try
+    {
+      if (this.hln < paramInt) {
+        this.hln = paramInt;
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void nC(int paramInt)
+  {
+    this.hlG += paramInt;
+  }
+  
+  public final void setStatus(int paramInt)
+  {
+    try
+    {
+      this.mStatus = paramInt;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.l
  * JD-Core Version:    0.7.0.1
  */

@@ -9,46 +9,46 @@ import java.util.zip.ZipException;
 public final class f
   implements Cloneable
 {
+  public long Bwi = -1L;
+  long Bwt = -1L;
+  int Bwu = -1;
+  int Bwv = -1;
+  byte[] Bww;
+  long Bwx = -1L;
+  long Bwy = -1L;
   public String name;
+  int oLs = -1;
   long size = -1L;
-  String tIg;
-  int time = -1;
-  public long wZD = -1L;
-  long wZN = -1L;
-  int wZO = -1;
-  int wZP = -1;
-  byte[] wZQ;
-  long wZR = -1L;
-  long wZS = -1L;
+  String wqH;
   
   public f(f paramf)
   {
     this.name = paramf.name;
-    this.tIg = paramf.tIg;
-    this.time = paramf.time;
+    this.wqH = paramf.wqH;
+    this.oLs = paramf.oLs;
     this.size = paramf.size;
-    this.wZN = paramf.wZN;
-    this.wZD = paramf.wZD;
-    this.wZO = paramf.wZO;
-    this.wZP = paramf.wZP;
-    this.wZQ = paramf.wZQ;
-    this.wZR = paramf.wZR;
-    this.wZS = paramf.wZS;
+    this.Bwt = paramf.Bwt;
+    this.Bwi = paramf.Bwi;
+    this.Bwu = paramf.Bwu;
+    this.Bwv = paramf.Bwv;
+    this.Bww = paramf.Bww;
+    this.Bwx = paramf.Bwx;
+    this.Bwy = paramf.Bwy;
   }
   
   public f(f paramf, String paramString)
   {
     this.name = paramString;
-    this.tIg = paramf.tIg;
-    this.time = paramf.time;
+    this.wqH = paramf.wqH;
+    this.oLs = paramf.oLs;
     this.size = paramf.size;
-    this.wZN = paramf.wZN;
-    this.wZD = paramf.wZD;
-    this.wZO = paramf.wZO;
-    this.wZP = paramf.wZP;
-    this.wZQ = paramf.wZQ;
-    this.wZR = paramf.wZR;
-    this.wZS = paramf.wZS;
+    this.Bwt = paramf.Bwt;
+    this.Bwi = paramf.Bwi;
+    this.Bwu = paramf.Bwu;
+    this.Bwv = paramf.Bwv;
+    this.Bww = paramf.Bww;
+    this.Bwx = paramf.Bwx;
+    this.Bwy = paramf.Bwy;
   }
   
   public f(String paramString)
@@ -74,42 +74,42 @@ public final class f
     paramArrayOfByte.seek(8);
     i = paramArrayOfByte.readShort() & 0xFFFF;
     if ((i & 0x1) != 0) {
-      throw new ZipException("Invalid General Purpose Bit Flag: " + i);
+      throw new ZipException("Invalid General Purpose Bit Flag: ".concat(String.valueOf(i)));
     }
     if ((i & 0x800) != 0) {
       paramCharset = Charset.forName("UTF-8");
     }
-    this.wZO = (paramArrayOfByte.readShort() & 0xFFFF);
-    this.time = (paramArrayOfByte.readShort() & 0xFFFF);
-    this.wZP = (paramArrayOfByte.readShort() & 0xFFFF);
-    this.wZD = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
-    this.wZN = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
+    this.Bwu = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.oLs = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.Bwv = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.Bwi = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
+    this.Bwt = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
     this.size = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
     i = paramArrayOfByte.readShort();
     int j = paramArrayOfByte.readShort() & 0xFFFF;
     int k = paramArrayOfByte.readShort() & 0xFFFF;
     paramArrayOfByte.seek(42);
-    this.wZR = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
+    this.Bwx = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
     paramArrayOfByte = new byte[i & 0xFFFF];
     e.b(paramInputStream, paramArrayOfByte, 0, paramArrayOfByte.length);
-    if (bT(paramArrayOfByte)) {
+    if (cu(paramArrayOfByte)) {
       throw new ZipException("Filename contains NUL byte: " + Arrays.toString(paramArrayOfByte));
     }
     this.name = new String(paramArrayOfByte, 0, paramArrayOfByte.length, paramCharset);
     if (j > 0)
     {
-      this.wZQ = new byte[j];
-      e.b(paramInputStream, this.wZQ, 0, j);
+      this.Bww = new byte[j];
+      e.b(paramInputStream, this.Bww, 0, j);
     }
     if (k > 0)
     {
       paramArrayOfByte = new byte[k];
       e.b(paramInputStream, paramArrayOfByte, 0, k);
-      this.tIg = new String(paramArrayOfByte, 0, paramArrayOfByte.length, paramCharset);
+      this.wqH = new String(paramArrayOfByte, 0, paramArrayOfByte.length, paramCharset);
     }
   }
   
-  private static boolean bT(byte[] paramArrayOfByte)
+  private static boolean cu(byte[] paramArrayOfByte)
   {
     boolean bool2 = false;
     int j = paramArrayOfByte.length;
@@ -135,30 +135,30 @@ public final class f
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 172	java/lang/Object:clone	()Ljava/lang/Object;
+    //   1: invokespecial 180	java/lang/Object:clone	()Ljava/lang/Object;
     //   4: checkcast 2	com/tencent/tinker/d/a/f
     //   7: astore_2
     //   8: aload_0
-    //   9: getfield 50	com/tencent/tinker/d/a/f:wZQ	[B
+    //   9: getfield 50	com/tencent/tinker/d/a/f:Bww	[B
     //   12: ifnull +21 -> 33
     //   15: aload_0
-    //   16: getfield 50	com/tencent/tinker/d/a/f:wZQ	[B
-    //   19: invokevirtual 174	[B:clone	()Ljava/lang/Object;
-    //   22: checkcast 173	[B
+    //   16: getfield 50	com/tencent/tinker/d/a/f:Bww	[B
+    //   19: invokevirtual 182	[B:clone	()Ljava/lang/Object;
+    //   22: checkcast 181	[B
     //   25: astore_1
     //   26: aload_2
     //   27: aload_1
-    //   28: putfield 50	com/tencent/tinker/d/a/f:wZQ	[B
+    //   28: putfield 50	com/tencent/tinker/d/a/f:Bww	[B
     //   31: aload_2
     //   32: areturn
     //   33: aconst_null
     //   34: astore_1
     //   35: goto -9 -> 26
     //   38: astore_1
-    //   39: new 176	java/lang/AssertionError
+    //   39: new 184	java/lang/AssertionError
     //   42: dup
     //   43: aload_1
-    //   44: invokespecial 179	java/lang/AssertionError:<init>	(Ljava/lang/Object;)V
+    //   44: invokespecial 187	java/lang/AssertionError:<init>	(Ljava/lang/Object;)V
     //   47: athrow
     // Local variable table:
     //   start	length	slot	name	signature
@@ -172,6 +172,14 @@ public final class f
     //   26	31	38	java/lang/CloneNotSupportedException
   }
   
+  public final boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof f)) {
+      return false;
+    }
+    return this.name.equals(((f)paramObject).name);
+  }
+  
   public final int hashCode()
   {
     return this.name.hashCode();
@@ -180,15 +188,15 @@ public final class f
   public final void setMethod(int paramInt)
   {
     if ((paramInt != 0) && (paramInt != 8)) {
-      throw new IllegalArgumentException("Bad method: " + paramInt);
+      throw new IllegalArgumentException("Bad method: ".concat(String.valueOf(paramInt)));
     }
-    this.wZO = paramInt;
+    this.Bwu = paramInt;
   }
   
   public final void setSize(long paramLong)
   {
     if (paramLong < 0L) {
-      throw new IllegalArgumentException("Bad size: " + paramLong);
+      throw new IllegalArgumentException("Bad size: ".concat(String.valueOf(paramLong)));
     }
     this.size = paramLong;
   }
@@ -197,16 +205,16 @@ public final class f
   {
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("name:" + this.name);
-    localStringBuffer.append("\ncomment:" + this.tIg);
-    localStringBuffer.append("\ntime:" + this.time);
+    localStringBuffer.append("\ncomment:" + this.wqH);
+    localStringBuffer.append("\ntime:" + this.oLs);
     localStringBuffer.append("\nsize:" + this.size);
-    localStringBuffer.append("\ncompressedSize:" + this.wZN);
-    localStringBuffer.append("\ncrc:" + this.wZD);
-    localStringBuffer.append("\ncompressionMethod:" + this.wZO);
-    localStringBuffer.append("\nmodDate:" + this.wZP);
-    localStringBuffer.append("\nextra length:" + this.wZQ.length);
-    localStringBuffer.append("\nlocalHeaderRelOffset:" + this.wZR);
-    localStringBuffer.append("\ndataOffset:" + this.wZS);
+    localStringBuffer.append("\ncompressedSize:" + this.Bwt);
+    localStringBuffer.append("\ncrc:" + this.Bwi);
+    localStringBuffer.append("\ncompressionMethod:" + this.Bwu);
+    localStringBuffer.append("\nmodDate:" + this.Bwv);
+    localStringBuffer.append("\nextra length:" + this.Bww.length);
+    localStringBuffer.append("\nlocalHeaderRelOffset:" + this.Bwx);
+    localStringBuffer.append("\ndataOffset:" + this.Bwy);
     return localStringBuffer.toString();
   }
 }

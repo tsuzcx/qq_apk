@@ -1,14 +1,13 @@
 package com.tencent.mm.plugin.qqmail.b;
 
 import android.util.SparseArray;
-import com.tencent.mm.a.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.qqmail.b.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -24,23 +23,103 @@ import java.util.Map;
 
 public final class v
 {
-  private static SparseArray<String> ner = null;
-  private Map<String, String> ndM = new HashMap();
-  public p nem;
-  public i nen;
-  private k neo;
-  private Map<Long, v.d> nep = new HashMap();
-  private Map<Long, v.b> neq = new HashMap();
+  private static SparseArray<String> pJH = null;
+  public p pJC;
+  public i pJD;
+  private k pJE;
+  private Map<Long, v.d> pJF;
+  private Map<Long, v.b> pJG;
+  private Map<String, String> pJc;
   
   public v(int paramInt, String paramString)
   {
+    AppMethodBeat.i(68004);
+    this.pJc = new HashMap();
+    this.pJF = new HashMap();
+    this.pJG = new HashMap();
     af.setHost("qqmail.weixin.qq.com:443");
     af.setUserAgent("weixin/" + paramString + "/0x" + Integer.toHexString(paramInt));
     reset();
+    AppMethodBeat.o(68004);
   }
   
-  private static String aA(int paramInt, String paramString)
+  private static String BV(int paramInt)
   {
+    AppMethodBeat.i(68018);
+    Object localObject1;
+    if (pJH == null)
+    {
+      pJH = new SparseArray();
+      localObject1 = HttpURLConnection.class.getDeclaredFields();
+      int k = localObject1.length;
+      int i = 0;
+      while (i < k)
+      {
+        StringBuilder localStringBuilder = localObject1[i];
+        int j = localStringBuilder.getModifiers();
+        Object localObject2 = localStringBuilder.getName();
+        if ((localObject2 != null) && (((String)localObject2).startsWith("HTTP_")) && (Modifier.isPublic(j)) && (Modifier.isFinal(j)) && (Modifier.isStatic(j))) {}
+        try
+        {
+          int m = localStringBuilder.getInt(Integer.valueOf(0));
+          localStringBuilder = new StringBuilder();
+          localObject2 = ((String)localObject2).split("_");
+          if (localObject2 != null)
+          {
+            j = 1;
+            while (j < localObject2.length)
+            {
+              localStringBuilder.append(localObject2[j]).append(' ');
+              j += 1;
+            }
+            localStringBuilder.append("error");
+          }
+          pJH.put(m, localStringBuilder.toString().toLowerCase());
+        }
+        catch (Exception localException)
+        {
+          label183:
+          break label183;
+        }
+        i += 1;
+      }
+    }
+    else
+    {
+      localObject1 = (String)pJH.get(paramInt);
+      if (localObject1 == null)
+      {
+        localObject1 = aX(paramInt, "request error");
+        AppMethodBeat.o(68018);
+        return localObject1;
+      }
+      AppMethodBeat.o(68018);
+      return localObject1;
+    }
+  }
+  
+  private long a(String paramString, int paramInt, Map<String, String> paramMap, n.d paramd, v.c paramc, v.a parama)
+  {
+    AppMethodBeat.i(68010);
+    Object localObject = paramMap;
+    if (paramMap == null) {
+      localObject = new HashMap();
+    }
+    ((Map)localObject).put("appname", "qqmail_weixin");
+    ((Map)localObject).put("f", "xml");
+    ((Map)localObject).put("charset", "utf-8");
+    ((Map)localObject).put("clientip", getLocalIp());
+    paramString = new v.d(this, paramString, new n.b(paramInt, (Map)localObject, getCookie(), paramd), parama);
+    paramString.pJQ = paramc;
+    al.d(new v.1(this, paramString));
+    long l = paramString.id;
+    AppMethodBeat.o(68010);
+    return l;
+  }
+  
+  private static String aX(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(68019);
     int i = 0;
     switch (paramInt)
     {
@@ -49,45 +128,66 @@ public final class v
     }
     while (paramInt == 0)
     {
+      AppMethodBeat.o(68019);
       return paramString;
-      paramInt = b.j.plugin_qqmail_svr_error_desc_1;
+      paramInt = 2131302142;
       continue;
-      paramInt = b.j.plugin_qqmail_svr_error_desc_3;
+      paramInt = 2131302147;
       continue;
-      paramInt = b.j.plugin_qqmail_svr_error_desc_7;
+      paramInt = 2131302149;
       continue;
-      paramInt = b.j.plugin_qqmail_svr_error_desc_104;
+      paramInt = 2131302146;
       continue;
-      paramInt = b.j.plugin_qqmail_svr_error_desc_6;
+      paramInt = 2131302148;
       continue;
-      paramInt = b.j.plugin_qqmail_svr_error_desc_102;
+      paramInt = 2131302144;
       continue;
-      paramInt = b.j.plugin_qqmail_svr_error_desc_103;
+      paramInt = 2131302145;
     }
-    return a.ac(ae.getContext(), paramInt);
+    paramString = a.aq(ah.getContext(), paramInt);
+    AppMethodBeat.o(68019);
+    return paramString;
   }
   
-  static String btA()
+  private void cancel()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    g.DQ();
-    return g.DP().dKt + "mailapp/";
+    AppMethodBeat.i(68011);
+    Iterator localIterator = this.pJG.values().iterator();
+    while (localIterator.hasNext()) {
+      ((v.b)localIterator.next()).cancel(true);
+    }
+    this.pJG.clear();
+    this.pJF.clear();
+    AppMethodBeat.o(68011);
   }
   
-  public static String btz()
+  public static String cdK()
   {
     return "https://qqmail.weixin.qq.com:443";
   }
   
+  private static String cdL()
+  {
+    AppMethodBeat.i(68020);
+    Object localObject = new StringBuilder();
+    g.RM();
+    localObject = g.RL().eHR + "mailapp/";
+    AppMethodBeat.o(68020);
+    return localObject;
+  }
+  
   public static String getDownloadPath()
   {
-    String str = com.tencent.mm.compatible.util.e.dzB;
-    com.tencent.mm.vfs.e.nb(str);
+    AppMethodBeat.i(68015);
+    String str = com.tencent.mm.compatible.util.e.esq;
+    com.tencent.mm.vfs.e.um(str);
+    AppMethodBeat.o(68015);
     return str;
   }
   
   private static String getLocalIp()
   {
+    AppMethodBeat.i(68016);
     try
     {
       InetAddress localInetAddress;
@@ -105,143 +205,117 @@ public final class v
         localInetAddress = (InetAddress)localEnumeration.nextElement();
       } while (localInetAddress.isLoopbackAddress());
       Object localObject = localInetAddress.getHostAddress();
+      AppMethodBeat.o(68016);
       return localObject;
     }
     catch (Exception localException)
     {
+      AppMethodBeat.o(68016);
       return null;
     }
     catch (SocketException localSocketException)
     {
-      label60:
-      break label60;
+      label72:
+      break label72;
     }
   }
   
-  private static String wk(int paramInt)
+  public final long a(String paramString1, String paramString2, String paramString3, v.c paramc, v.a parama)
   {
-    Object localObject1;
-    Object localObject2;
-    if (ner == null)
-    {
-      ner = new SparseArray();
-      localObject1 = HttpURLConnection.class.getDeclaredFields();
-      int k = localObject1.length;
-      int i = 0;
-      while (i < k)
-      {
-        StringBuilder localStringBuilder = localObject1[i];
-        int j = localStringBuilder.getModifiers();
-        localObject2 = localStringBuilder.getName();
-        if ((localObject2 != null) && (((String)localObject2).startsWith("HTTP_")) && (Modifier.isPublic(j)) && (Modifier.isFinal(j)) && (Modifier.isStatic(j))) {}
-        try
-        {
-          int m = localStringBuilder.getInt(Integer.valueOf(0));
-          localStringBuilder = new StringBuilder();
-          localObject2 = ((String)localObject2).split("_");
-          if (localObject2 != null)
-          {
-            j = 1;
-            while (j < localObject2.length)
-            {
-              localStringBuilder.append(localObject2[j]).append(' ');
-              j += 1;
-            }
-            localStringBuilder.append("error");
-          }
-          ner.put(m, localStringBuilder.toString().toLowerCase());
-        }
-        catch (Exception localException)
-        {
-          label182:
-          break label182;
-        }
-        i += 1;
-      }
-    }
-    else
-    {
-      localObject2 = (String)ner.get(paramInt);
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = aA(paramInt, "request error");
-      }
-      return localObject1;
-    }
+    AppMethodBeat.i(68009);
+    long l = a(paramString1, 1, null, new n.d(paramString2, paramString3), paramc, parama);
+    AppMethodBeat.o(68009);
+    return l;
   }
   
-  public final long a(String paramString, int paramInt, Map<String, String> paramMap, n.d paramd, v.c paramc, v.a parama)
+  public final long a(String paramString, Map<String, String> paramMap, v.a parama)
   {
-    Object localObject = paramMap;
-    if (paramMap == null) {
-      localObject = new HashMap();
-    }
-    ((Map)localObject).put("appname", "qqmail_weixin");
-    ((Map)localObject).put("f", "xml");
-    ((Map)localObject).put("charset", "utf-8");
-    ((Map)localObject).put("clientip", getLocalIp());
-    paramString = new v.d(this, paramString, new n.b(paramInt, (Map)localObject, getCookie(), paramd), parama);
-    paramString.neB = paramc;
-    ai.d(new v.1(this, paramString));
-    return paramString.id;
+    AppMethodBeat.i(68005);
+    long l = a(paramString, paramMap, new v.c(), parama);
+    AppMethodBeat.o(68005);
+    return l;
   }
   
   public final long a(String paramString, Map<String, String> paramMap, v.c paramc, v.a parama)
   {
-    return a(paramString, 1, paramMap, null, paramc, parama);
+    AppMethodBeat.i(68006);
+    long l = a(paramString, 1, paramMap, null, paramc, parama);
+    AppMethodBeat.o(68006);
+    return l;
+  }
+  
+  public final long b(String paramString, Map<String, String> paramMap, v.a parama)
+  {
+    AppMethodBeat.i(68007);
+    long l = b(paramString, paramMap, new v.c(), parama);
+    AppMethodBeat.o(68007);
+    return l;
   }
   
   public final long b(String paramString, Map<String, String> paramMap, v.c paramc, v.a parama)
   {
-    return a(paramString, 0, paramMap, null, paramc, parama);
+    AppMethodBeat.i(68008);
+    long l = a(paramString, 0, paramMap, null, paramc, parama);
+    AppMethodBeat.o(68008);
+    return l;
   }
   
   public final void cancel(long paramLong)
   {
-    v.b localb = (v.b)this.neq.get(Long.valueOf(paramLong));
+    AppMethodBeat.i(68012);
+    v.b localb = (v.b)this.pJG.get(Long.valueOf(paramLong));
     if (localb != null)
     {
       localb.onCancelled();
       localb.cancel(true);
     }
-    this.neq.remove(Long.valueOf(paramLong));
-    this.nep.remove(Long.valueOf(paramLong));
+    this.pJG.remove(Long.valueOf(paramLong));
+    this.pJF.remove(Long.valueOf(paramLong));
+    AppMethodBeat.o(68012);
+  }
+  
+  public final void clearData()
+  {
+    AppMethodBeat.i(68014);
+    com.tencent.mm.vfs.e.O(cdL(), true);
+    reset();
+    AppMethodBeat.o(68014);
   }
   
   public final Map<String, String> getCookie()
   {
-    String str2 = (String)g.DP().Dz().get(-1535680990, null);
-    Map localMap = this.ndM;
-    if (str2 == null) {}
-    for (String str1 = "";; str1 = str2)
+    AppMethodBeat.i(68017);
+    String str = (String)g.RL().Ru().get(-1535680990, null);
+    Map localMap = this.pJc;
+    if (str == null) {}
+    for (Object localObject = "";; localObject = str)
     {
-      localMap.put("skey", str1);
-      int i = bk.e(g.DP().Dz().get(9, null), 0);
-      this.ndM.put("uin", "o" + new o(i));
-      y.d("MicroMsg.NormalMailAppService", "sKey:%b, uin:%d", new Object[] { Boolean.valueOf(bk.bl(str2)), Integer.valueOf(i) });
-      return this.ndM;
+      localMap.put("skey", localObject);
+      int i = bo.f(g.RL().Ru().get(9, null), 0);
+      this.pJc.put("uin", "o" + new com.tencent.mm.a.p(i));
+      ab.d("MicroMsg.NormalMailAppService", "sKey:%b, uin:%d", new Object[] { Boolean.valueOf(bo.isNullOrNil(str)), Integer.valueOf(i) });
+      localObject = this.pJc;
+      AppMethodBeat.o(68017);
+      return localObject;
     }
   }
   
   public final void reset()
   {
-    af.Lg(getDownloadPath());
-    Object localObject = this.neq.values().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((v.b)((Iterator)localObject).next()).cancel(true);
-    }
-    this.neq.clear();
-    this.nep.clear();
-    this.ndM.clear();
-    localObject = btA();
-    this.nem = new p((String)localObject + "addr/");
-    this.nen = new i((String)localObject + "draft/");
-    this.neo = new k((String)localObject + "http/", 0);
+    AppMethodBeat.i(68013);
+    af.Xq(getDownloadPath());
+    cancel();
+    this.pJc.clear();
+    String str = cdL();
+    this.pJC = new p(str + "addr/");
+    this.pJD = new i(str + "draft/");
+    this.pJE = new k(str + "http/", 0);
+    AppMethodBeat.o(68013);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.v
  * JD-Core Version:    0.7.0.1
  */

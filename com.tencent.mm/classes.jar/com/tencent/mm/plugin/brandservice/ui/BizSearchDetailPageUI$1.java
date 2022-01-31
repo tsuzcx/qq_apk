@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class BizSearchDetailPageUI$1
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class BizSearchDetailPageUI$1
   
   public final void run()
   {
-    BizSearchDetailPageUI.c(this.icA).bi(BizSearchDetailPageUI.a(this.icA), BizSearchDetailPageUI.b(this.icA));
-    BizSearchDetailPageUI.d(this.icA);
+    AppMethodBeat.i(13875);
+    BizSearchDetailPageUI.c(this.jTp).bJ(BizSearchDetailPageUI.a(this.jTp), BizSearchDetailPageUI.b(this.jTp));
+    BizSearchDetailPageUI.d(this.jTp);
+    AppMethodBeat.o(13875);
   }
 }
 

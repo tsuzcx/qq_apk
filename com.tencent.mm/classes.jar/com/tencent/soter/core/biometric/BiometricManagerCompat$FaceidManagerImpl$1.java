@@ -1,6 +1,7 @@
 package com.tencent.soter.core.biometric;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.core.c.d;
 
 final class BiometricManagerCompat$FaceidManagerImpl$1
@@ -12,10 +13,12 @@ final class BiometricManagerCompat$FaceidManagerImpl$1
   
   public final void onAuthenticationError(int paramInt, CharSequence paramCharSequence)
   {
+    AppMethodBeat.i(72895);
     d.d("Soter.BiometricManagerCompat.Faceid", "soter: basic onAuthenticationError code[%d], msg[%s] entered.", new Object[] { Integer.valueOf(paramInt), paramCharSequence });
     if (this.mMarkPermanentlyCallbacked)
     {
       d.d("Soter.BiometricManagerCompat.Faceid", "soter: basic onAuthenticationError code[%d], msg[%s] returned cause permanently callback.", new Object[] { Integer.valueOf(paramInt), paramCharSequence });
+      AppMethodBeat.o(72895);
       return;
     }
     this.mMarkPermanentlyCallbacked = true;
@@ -23,6 +26,7 @@ final class BiometricManagerCompat$FaceidManagerImpl$1
     {
       d.i("Soter.BiometricManagerCompat.Faceid", "soter: basic onAuthenticationError code[%d], msg[%s] callbacked and returned cause FACE_ERROR_CANCELED got.", new Object[] { Integer.valueOf(paramInt), paramCharSequence });
       this.val$callback.onAuthenticationCancelled();
+      AppMethodBeat.o(72895);
       return;
     }
     if (paramInt == 7)
@@ -32,16 +36,21 @@ final class BiometricManagerCompat$FaceidManagerImpl$1
         SoterBiometricAntiBruteForceStrategy.freeze(this.val$context);
       }
       this.val$callback.onAuthenticationError(10308, "Too many failed times");
+      AppMethodBeat.o(72895);
       return;
     }
     d.d("Soter.BiometricManagerCompat.Faceid", "soter: basic onAuthenticationError code[%d], msg[%s] callbacked and returned.", new Object[] { Integer.valueOf(paramInt), paramCharSequence });
     this.val$callback.onAuthenticationError(paramInt, paramCharSequence);
+    AppMethodBeat.o(72895);
   }
   
   public final void onAuthenticationFailed()
   {
+    AppMethodBeat.i(72898);
     d.d("Soter.BiometricManagerCompat.Faceid", "soter: basic onAuthenticationFailed", new Object[0]);
-    if (this.mMarkPermanentlyCallbacked) {
+    if (this.mMarkPermanentlyCallbacked)
+    {
+      AppMethodBeat.o(72898);
       return;
     }
     this.mMarkPermanentlyCallbacked = true;
@@ -53,36 +62,48 @@ final class BiometricManagerCompat$FaceidManagerImpl$1
         d.w("Soter.BiometricManagerCompat.Faceid", "soter: too many fail trials", new Object[0]);
         SoterBiometricAntiBruteForceStrategy.freeze(this.val$context);
         BiometricManagerCompat.FaceidManagerImpl.access$500(this);
+        AppMethodBeat.o(72898);
         return;
       }
     }
     this.val$callback.onAuthenticationFailed();
+    AppMethodBeat.o(72898);
   }
   
   public final void onAuthenticationHelp(int paramInt, CharSequence paramCharSequence)
   {
+    AppMethodBeat.i(72896);
     d.d("Soter.BiometricManagerCompat.Faceid", "soter: basic onAuthenticationHelp helpMsgId[%d], helpString[%s]", new Object[] { Integer.valueOf(paramInt), paramCharSequence });
     System.currentTimeMillis();
-    if (this.mMarkPermanentlyCallbacked) {}
-    while (BiometricManagerCompat.FaceidManagerImpl.access$300(this, this.val$context)) {
+    if (this.mMarkPermanentlyCallbacked)
+    {
+      AppMethodBeat.o(72896);
       return;
     }
-    this.val$callback.onAuthenticationHelp(paramInt, paramCharSequence);
+    if (!BiometricManagerCompat.FaceidManagerImpl.access$300(this, this.val$context)) {
+      this.val$callback.onAuthenticationHelp(paramInt, paramCharSequence);
+    }
+    AppMethodBeat.o(72896);
   }
   
   public final void onAuthenticationSucceeded(FaceidManagerProxy.AuthenticationResult paramAuthenticationResult)
   {
+    AppMethodBeat.i(72897);
     d.d("Soter.BiometricManagerCompat.Faceid", "soter: basic onAuthenticationSucceeded", new Object[0]);
-    if (this.mMarkPermanentlyCallbacked) {}
-    do
+    if (this.mMarkPermanentlyCallbacked)
     {
+      AppMethodBeat.o(72897);
       return;
-      this.mMarkPermanentlyCallbacked = true;
-    } while (BiometricManagerCompat.FaceidManagerImpl.access$300(this, this.val$context));
-    if (!SoterBiometricAntiBruteForceStrategy.isSystemHasAntiBruteForce()) {
-      SoterBiometricAntiBruteForceStrategy.unFreeze(this.val$context);
     }
-    this.val$callback.onAuthenticationSucceeded(new BiometricManagerCompat.AuthenticationResult(BiometricManagerCompat.FaceidManagerImpl.access$400(paramAuthenticationResult.getCryptoObject())));
+    this.mMarkPermanentlyCallbacked = true;
+    if (!BiometricManagerCompat.FaceidManagerImpl.access$300(this, this.val$context))
+    {
+      if (!SoterBiometricAntiBruteForceStrategy.isSystemHasAntiBruteForce()) {
+        SoterBiometricAntiBruteForceStrategy.unFreeze(this.val$context);
+      }
+      this.val$callback.onAuthenticationSucceeded(new BiometricManagerCompat.AuthenticationResult(BiometricManagerCompat.FaceidManagerImpl.access$400(paramAuthenticationResult.getCryptoObject())));
+    }
+    AppMethodBeat.o(72897);
   }
 }
 

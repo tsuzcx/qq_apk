@@ -1,378 +1,272 @@
 package android.support.v4.d;
 
-import android.content.ContentResolver;
-import android.content.ContentUris;
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.ProviderInfo;
-import android.content.pm.Signature;
-import android.content.res.Resources;
-import android.database.Cursor;
 import android.graphics.Typeface;
-import android.net.Uri;
-import android.net.Uri.Builder;
 import android.os.Build.VERSION;
-import android.os.Handler;
-import android.support.v4.a.d;
-import android.support.v4.a.i;
-import android.support.v4.f.g;
-import android.support.v4.f.l;
-import android.support.v4.f.m;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.Callable;
+import android.os.LocaleList;
+import android.support.v4.e.i;
+import android.text.PrecomputedText;
+import android.text.PrecomputedText.Params;
+import android.text.PrecomputedText.Params.Builder;
+import android.text.Spannable;
+import android.text.TextDirectionHeuristic;
+import android.text.TextDirectionHeuristics;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.MetricAffectingSpan;
+import java.util.Locale;
+import java.util.concurrent.Executor;
 
 public final class b
+  implements Spannable
 {
-  private static final c Df;
-  private static final m<String, ArrayList<c.a<c>>> Dg = new m();
-  private static final Comparator<byte[]> Dh = new Comparator() {};
-  private static final Object sLock;
-  private static final g<String, Typeface> zY = new g(16);
+  private static Executor Ek = null;
+  private static final Object sLock = new Object();
+  public final Spannable El;
+  public final a Em;
+  private final PrecomputedText En;
   
-  static
+  public final char charAt(int paramInt)
   {
-    Df = new c("fonts");
-    sLock = new Object();
+    return this.El.charAt(paramInt);
   }
   
-  public static Typeface a(Context paramContext, final a parama, android.support.v4.content.a.b.a arg2, boolean paramBoolean, int paramInt1, final int paramInt2)
+  public final int getSpanEnd(Object paramObject)
   {
-    final String str = parama.De + "-" + paramInt2;
-    Object localObject = (Typeface)zY.get(str);
-    if (localObject != null)
-    {
-      if (??? != null) {
-        ???.b((Typeface)localObject);
-      }
-      return localObject;
-    }
-    if ((paramBoolean) && (paramInt1 == -1))
-    {
-      paramContext = a(paramContext, parama, paramInt2);
-      if (??? != null)
-      {
-        if (paramContext.Do != 0) {
-          break label103;
-        }
-        ???.a(paramContext.lu, null);
-      }
-      for (;;)
-      {
-        return paramContext.lu;
-        label103:
-        ???.a(paramContext.Do, null);
-      }
-    }
-    parama = new Callable() {};
-    if (paramBoolean) {}
-    try
-    {
-      paramContext = ((c)Df.a(parama, paramInt1)).lu;
-      return paramContext;
-    }
-    catch (InterruptedException paramContext) {}
-    if (??? == null) {}
-    for (paramContext = null;; paramContext = new c.a() {}) {
-      synchronized (sLock)
-      {
-        if (!Dg.containsKey(str)) {
-          break;
-        }
-        if (paramContext != null) {
-          ((ArrayList)Dg.get(str)).add(paramContext);
-        }
-        return null;
-      }
-    }
-    if (paramContext != null)
-    {
-      localObject = new ArrayList();
-      ((ArrayList)localObject).add(paramContext);
-      Dg.put(str, localObject);
-    }
-    paramContext = Df;
-    ??? = new c.a() {};
-    paramContext.f(new c.2(paramContext, parama, new Handler(), ???));
-    return null;
-    return null;
+    return this.El.getSpanEnd(paramObject);
   }
   
-  private static c a(Context paramContext, a parama, int paramInt)
+  public final int getSpanFlags(Object paramObject)
   {
-    int j = -3;
-    Object localObject3;
-    ProviderInfo localProviderInfo;
-    try
-    {
-      localObject2 = paramContext.getPackageManager();
-      localObject1 = paramContext.getResources();
-      localObject3 = parama.CZ;
-      localProviderInfo = ((PackageManager)localObject2).resolveContentProvider((String)localObject3, 0);
-      if (localProviderInfo == null) {
-        throw new PackageManager.NameNotFoundException("No package found for authority: " + (String)localObject3);
-      }
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      return new c(null, -1);
-    }
-    if (!localProviderInfo.packageName.equals(parama.Da)) {
-      throw new PackageManager.NameNotFoundException("Found content provider " + (String)localObject3 + ", but package was not " + parama.Da);
-    }
-    Object localObject2 = a(((PackageManager)localObject2).getPackageInfo(localProviderInfo.packageName, 64).signatures);
-    Collections.sort((List)localObject2, Dh);
-    int i;
-    if (parama.Dc != null)
-    {
-      localObject1 = parama.Dc;
-      break label336;
-      if (i >= ((List)localObject1).size()) {
-        break label348;
-      }
-      localObject3 = new ArrayList((Collection)((List)localObject1).get(i));
-      Collections.sort((List)localObject3, Dh);
-      if (!b((List)localObject2, (List)localObject3)) {
-        break label341;
-      }
-    }
-    label306:
-    label312:
-    label336:
-    label341:
-    label348:
-    for (Object localObject1 = localProviderInfo;; localObject1 = null)
-    {
-      if (localObject1 == null)
-      {
-        parama = new a(1, null);
-        if (parama.mStatusCode != 0) {
-          break label312;
-        }
-        paramContext = d.a(paramContext, parama.Dm, paramInt);
-        if (paramContext == null) {
-          break label306;
-        }
-      }
-      for (paramInt = 0;; paramInt = -3)
-      {
-        return new c(paramContext, paramInt);
-        localObject1 = android.support.v4.content.a.a.a((Resources)localObject1, parama.Dd);
-        break label336;
-        parama = new a(0, a(paramContext, parama, ((ProviderInfo)localObject1).authority));
-        break;
-      }
-      paramInt = j;
-      if (parama.mStatusCode == 1) {
-        paramInt = -2;
-      }
-      return new c(null, paramInt);
-      i = 0;
-      break;
-      i += 1;
-      break;
-    }
+    return this.El.getSpanFlags(paramObject);
   }
   
-  private static List<byte[]> a(Signature[] paramArrayOfSignature)
+  public final int getSpanStart(Object paramObject)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayOfSignature.length)
-    {
-      localArrayList.add(paramArrayOfSignature[i].toByteArray());
-      i += 1;
-    }
-    return localArrayList;
+    return this.El.getSpanStart(paramObject);
   }
   
-  public static Map<Uri, ByteBuffer> a(Context paramContext, b[] paramArrayOfb)
+  public final <T> T[] getSpans(int paramInt1, int paramInt2, Class<T> paramClass)
   {
-    HashMap localHashMap = new HashMap();
-    int j = paramArrayOfb.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject = paramArrayOfb[i];
-      if (((b)localObject).CX == 0)
-      {
-        localObject = ((b)localObject).mUri;
-        if (!localHashMap.containsKey(localObject)) {
-          localHashMap.put(localObject, i.b(paramContext, (Uri)localObject));
-        }
-      }
-      i += 1;
+    if (Build.VERSION.SDK_INT >= 28) {
+      return this.En.getSpans(paramInt1, paramInt2, paramClass);
     }
-    return Collections.unmodifiableMap(localHashMap);
+    return this.El.getSpans(paramInt1, paramInt2, paramClass);
   }
   
-  private static b[] a(Context paramContext, a parama, String paramString)
+  public final int length()
   {
-    ArrayList localArrayList = new ArrayList();
-    Uri localUri1 = new Uri.Builder().scheme("content").authority(paramString).build();
-    Uri localUri2 = new Uri.Builder().scheme("content").authority(paramString).appendPath("file").build();
-    for (;;)
-    {
-      try
-      {
-        if (Build.VERSION.SDK_INT <= 16) {
-          continue;
-        }
-        paramContext = paramContext.getContentResolver();
-        parama = parama.Db;
-        paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { parama }, null, null);
-        if (paramContext == null) {
-          continue;
-        }
-        try
-        {
-          if (paramContext.getCount() <= 0) {
-            continue;
-          }
-          int m = paramContext.getColumnIndex("result_code");
-          paramString = new ArrayList();
-          int n = paramContext.getColumnIndex("_id");
-          i1 = paramContext.getColumnIndex("file_id");
-          int i2 = paramContext.getColumnIndex("font_ttc_index");
-          int i3 = paramContext.getColumnIndex("font_weight");
-          int i4 = paramContext.getColumnIndex("font_italic");
-          parama = paramString;
-          if (!paramContext.moveToNext()) {
-            continue;
-          }
-          if (m == -1) {
-            continue;
-          }
-          i = paramContext.getInt(m);
-          if (i2 == -1) {
-            continue;
-          }
-          j = paramContext.getInt(i2);
-          if (i1 != -1) {
-            continue;
-          }
-          parama = ContentUris.withAppendedId(localUri1, paramContext.getLong(n));
-          if (i3 == -1) {
-            continue;
-          }
-          k = paramContext.getInt(i3);
-          if ((i4 == -1) || (paramContext.getInt(i4) != 1)) {
-            continue;
-          }
-          bool = true;
-          paramString.add(new b(parama, j, k, bool, i));
-          continue;
-          if (parama == null) {
-            continue;
-          }
-        }
-        finally
-        {
-          parama = paramContext;
-          paramContext = paramString;
-        }
-      }
-      finally
-      {
-        int i1;
-        int i;
-        int j;
-        int k;
-        boolean bool;
-        parama = null;
-        continue;
-      }
-      parama.close();
-      throw paramContext;
-      paramContext = paramContext.getContentResolver();
-      parama = parama.Db;
-      paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { parama }, null);
-      continue;
-      i = 0;
-      continue;
-      j = 0;
-      continue;
-      parama = ContentUris.withAppendedId(localUri2, paramContext.getLong(i1));
-      continue;
-      k = 400;
-      continue;
-      bool = false;
-    }
-    parama = localArrayList;
-    if (paramContext != null) {
-      paramContext.close();
-    }
-    return (b[])parama.toArray(new b[0]);
+    return this.El.length();
   }
   
-  private static boolean b(List<byte[]> paramList1, List<byte[]> paramList2)
+  public final int nextSpanTransition(int paramInt1, int paramInt2, Class paramClass)
   {
-    if (paramList1.size() != paramList2.size()) {
-      return false;
+    return this.El.nextSpanTransition(paramInt1, paramInt2, paramClass);
+  }
+  
+  public final void removeSpan(Object paramObject)
+  {
+    if ((paramObject instanceof MetricAffectingSpan)) {
+      throw new IllegalArgumentException("MetricAffectingSpan can not be removed from PrecomputedText.");
     }
-    int i = 0;
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 28)
     {
-      if (i >= paramList1.size()) {
-        break label62;
-      }
-      if (!Arrays.equals((byte[])paramList1.get(i), (byte[])paramList2.get(i))) {
-        break;
-      }
-      i += 1;
+      this.En.removeSpan(paramObject);
+      return;
     }
-    label62:
-    return true;
+    this.El.removeSpan(paramObject);
+  }
+  
+  public final void setSpan(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramObject instanceof MetricAffectingSpan)) {
+      throw new IllegalArgumentException("MetricAffectingSpan can not be set to PrecomputedText.");
+    }
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      this.En.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
+      return;
+    }
+    this.El.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public final CharSequence subSequence(int paramInt1, int paramInt2)
+  {
+    return this.El.subSequence(paramInt1, paramInt2);
+  }
+  
+  public final String toString()
+  {
+    return this.El.toString();
   }
   
   public static final class a
   {
-    final b.b[] Dm;
-    final int mStatusCode;
+    public final TextDirectionHeuristic Eo;
+    public final int Ep;
+    public final int Eq;
+    final PrecomputedText.Params Er;
+    public final TextPaint mPaint;
     
-    public a(int paramInt, b.b[] paramArrayOfb)
+    public a(PrecomputedText.Params paramParams)
     {
-      this.mStatusCode = paramInt;
-      this.Dm = paramArrayOfb;
+      this.mPaint = paramParams.getTextPaint();
+      this.Eo = paramParams.getTextDirection();
+      this.Ep = paramParams.getBreakStrategy();
+      this.Eq = paramParams.getHyphenationFrequency();
+      this.Er = paramParams;
     }
-  }
-  
-  public static final class b
-  {
-    final int CX;
-    public final int Dn;
-    public final Uri mUri;
-    public final int zI;
-    public final boolean zJ;
     
-    public b(Uri paramUri, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
+    public a(TextPaint paramTextPaint, TextDirectionHeuristic paramTextDirectionHeuristic, int paramInt1, int paramInt2)
     {
-      this.mUri = ((Uri)l.E(paramUri));
-      this.Dn = paramInt1;
-      this.zI = paramInt2;
-      this.zJ = paramBoolean;
-      this.CX = paramInt3;
+      if (Build.VERSION.SDK_INT >= 28) {}
+      for (this.Er = new PrecomputedText.Params.Builder(paramTextPaint).setBreakStrategy(paramInt1).setHyphenationFrequency(paramInt2).setTextDirection(paramTextDirectionHeuristic).build();; this.Er = null)
+      {
+        this.mPaint = paramTextPaint;
+        this.Eo = paramTextDirectionHeuristic;
+        this.Ep = paramInt1;
+        this.Eq = paramInt2;
+        return;
+      }
     }
-  }
-  
-  private static final class c
-  {
-    final int Do;
-    final Typeface lu;
     
-    c(Typeface paramTypeface, int paramInt)
+    public final boolean equals(Object paramObject)
     {
-      this.lu = paramTypeface;
-      this.Do = paramInt;
+      if (paramObject == this) {}
+      do
+      {
+        do
+        {
+          return true;
+          if ((paramObject == null) || (!(paramObject instanceof a))) {
+            return false;
+          }
+          paramObject = (a)paramObject;
+          if (this.Er != null) {
+            return this.Er.equals(paramObject.Er);
+          }
+          if (Build.VERSION.SDK_INT >= 23)
+          {
+            if (this.Ep != paramObject.Ep) {
+              return false;
+            }
+            if (this.Eq != paramObject.Eq) {
+              return false;
+            }
+          }
+          if ((Build.VERSION.SDK_INT >= 18) && (this.Eo != paramObject.Eo)) {
+            return false;
+          }
+          if (this.mPaint.getTextSize() != paramObject.mPaint.getTextSize()) {
+            return false;
+          }
+          if (this.mPaint.getTextScaleX() != paramObject.mPaint.getTextScaleX()) {
+            return false;
+          }
+          if (this.mPaint.getTextSkewX() != paramObject.mPaint.getTextSkewX()) {
+            return false;
+          }
+          if (Build.VERSION.SDK_INT >= 21)
+          {
+            if (this.mPaint.getLetterSpacing() != paramObject.mPaint.getLetterSpacing()) {
+              return false;
+            }
+            if (!TextUtils.equals(this.mPaint.getFontFeatureSettings(), paramObject.mPaint.getFontFeatureSettings())) {
+              return false;
+            }
+          }
+          if (this.mPaint.getFlags() != paramObject.mPaint.getFlags()) {
+            return false;
+          }
+          if (Build.VERSION.SDK_INT >= 24)
+          {
+            if (!this.mPaint.getTextLocales().equals(paramObject.mPaint.getTextLocales())) {
+              return false;
+            }
+          }
+          else if ((Build.VERSION.SDK_INT >= 17) && (!this.mPaint.getTextLocale().equals(paramObject.mPaint.getTextLocale()))) {
+            return false;
+          }
+          if (this.mPaint.getTypeface() != null) {
+            break;
+          }
+        } while (paramObject.mPaint.getTypeface() == null);
+        return false;
+      } while (this.mPaint.getTypeface().equals(paramObject.mPaint.getTypeface()));
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      if (Build.VERSION.SDK_INT >= 24) {
+        return i.hash(new Object[] { Float.valueOf(this.mPaint.getTextSize()), Float.valueOf(this.mPaint.getTextScaleX()), Float.valueOf(this.mPaint.getTextSkewX()), Float.valueOf(this.mPaint.getLetterSpacing()), Integer.valueOf(this.mPaint.getFlags()), this.mPaint.getTextLocales(), this.mPaint.getTypeface(), Boolean.valueOf(this.mPaint.isElegantTextHeight()), this.Eo, Integer.valueOf(this.Ep), Integer.valueOf(this.Eq) });
+      }
+      if (Build.VERSION.SDK_INT >= 21) {
+        return i.hash(new Object[] { Float.valueOf(this.mPaint.getTextSize()), Float.valueOf(this.mPaint.getTextScaleX()), Float.valueOf(this.mPaint.getTextSkewX()), Float.valueOf(this.mPaint.getLetterSpacing()), Integer.valueOf(this.mPaint.getFlags()), this.mPaint.getTextLocale(), this.mPaint.getTypeface(), Boolean.valueOf(this.mPaint.isElegantTextHeight()), this.Eo, Integer.valueOf(this.Ep), Integer.valueOf(this.Eq) });
+      }
+      if (Build.VERSION.SDK_INT >= 18) {
+        return i.hash(new Object[] { Float.valueOf(this.mPaint.getTextSize()), Float.valueOf(this.mPaint.getTextScaleX()), Float.valueOf(this.mPaint.getTextSkewX()), Integer.valueOf(this.mPaint.getFlags()), this.mPaint.getTextLocale(), this.mPaint.getTypeface(), this.Eo, Integer.valueOf(this.Ep), Integer.valueOf(this.Eq) });
+      }
+      if (Build.VERSION.SDK_INT >= 17) {
+        return i.hash(new Object[] { Float.valueOf(this.mPaint.getTextSize()), Float.valueOf(this.mPaint.getTextScaleX()), Float.valueOf(this.mPaint.getTextSkewX()), Integer.valueOf(this.mPaint.getFlags()), this.mPaint.getTextLocale(), this.mPaint.getTypeface(), this.Eo, Integer.valueOf(this.Ep), Integer.valueOf(this.Eq) });
+      }
+      return i.hash(new Object[] { Float.valueOf(this.mPaint.getTextSize()), Float.valueOf(this.mPaint.getTextScaleX()), Float.valueOf(this.mPaint.getTextSkewX()), Integer.valueOf(this.mPaint.getFlags()), this.mPaint.getTypeface(), this.Eo, Integer.valueOf(this.Ep), Integer.valueOf(this.Eq) });
+    }
+    
+    public final String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder("{");
+      localStringBuilder.append("textSize=" + this.mPaint.getTextSize());
+      localStringBuilder.append(", textScaleX=" + this.mPaint.getTextScaleX());
+      localStringBuilder.append(", textSkewX=" + this.mPaint.getTextSkewX());
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        localStringBuilder.append(", letterSpacing=" + this.mPaint.getLetterSpacing());
+        localStringBuilder.append(", elegantTextHeight=" + this.mPaint.isElegantTextHeight());
+      }
+      if (Build.VERSION.SDK_INT >= 24) {
+        localStringBuilder.append(", textLocale=" + this.mPaint.getTextLocales());
+      }
+      for (;;)
+      {
+        localStringBuilder.append(", typeface=" + this.mPaint.getTypeface());
+        if (Build.VERSION.SDK_INT >= 26) {
+          localStringBuilder.append(", variationSettings=" + this.mPaint.getFontVariationSettings());
+        }
+        localStringBuilder.append(", textDir=" + this.Eo);
+        localStringBuilder.append(", breakStrategy=" + this.Ep);
+        localStringBuilder.append(", hyphenationFrequency=" + this.Eq);
+        localStringBuilder.append("}");
+        return localStringBuilder.toString();
+        if (Build.VERSION.SDK_INT >= 17) {
+          localStringBuilder.append(", textLocale=" + this.mPaint.getTextLocale());
+        }
+      }
+    }
+    
+    public static final class a
+    {
+      public TextDirectionHeuristic Eo;
+      public int Ep;
+      public int Eq;
+      public final TextPaint mPaint;
+      
+      public a(TextPaint paramTextPaint)
+      {
+        this.mPaint = paramTextPaint;
+        if (Build.VERSION.SDK_INT >= 23)
+        {
+          this.Ep = 1;
+          this.Eq = 1;
+        }
+        while (Build.VERSION.SDK_INT >= 18)
+        {
+          this.Eo = TextDirectionHeuristics.FIRSTSTRONG_LTR;
+          return;
+          this.Eq = 0;
+          this.Ep = 0;
+        }
+        this.Eo = null;
+      }
     }
   }
 }

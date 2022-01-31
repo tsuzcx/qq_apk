@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet.pay.ui;
 
 public abstract interface a$a
 {
-  public abstract void b(boolean paramBoolean, String paramString1, String paramString2);
+  public abstract void c(boolean paramBoolean, String paramString1, String paramString2);
 }
 
 

@@ -1,42 +1,39 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.i.i;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class SnsAdNativeLandingPagesUI$17$1
-  implements n.c
+  implements Runnable
 {
-  SnsAdNativeLandingPagesUI$17$1(SnsAdNativeLandingPagesUI.17 param17) {}
+  SnsAdNativeLandingPagesUI$17$1(SnsAdNativeLandingPagesUI.17 param17, Object paramObject) {}
   
-  public final void a(l paraml)
+  public final void run()
   {
-    if ((SnsAdNativeLandingPagesUI.t(this.oVc.oUU) == 0) || ((SnsAdNativeLandingPagesUI.t(this.oVc.oUU) & 0x2) == 0)) {
-      paraml.a(1, this.oVc.oUU.getString(i.j.retransmits), i.i.bottomsheet_icon_transmit);
-    }
-    if ((SnsAdNativeLandingPagesUI.t(this.oVc.oUU) == 0) || ((SnsAdNativeLandingPagesUI.t(this.oVc.oUU) & 0x1) == 0)) {
-      paraml.a(2, this.oVc.oUU.getString(i.j.sns_ad_video_right_menu_share_sns), i.i.bottomsheet_icon_moment);
-    }
-    if (((SnsAdNativeLandingPagesUI.t(this.oVc.oUU) == 0) || ((SnsAdNativeLandingPagesUI.t(this.oVc.oUU) & 0x4) == 0)) && (SnsAdNativeLandingPagesUI.u(this.oVc.oUU) != 7)) {
-      paraml.a(3, this.oVc.oUU.getString(i.j.chatting_fav), i.i.bottomsheet_icon_fav);
-    }
-    if (((SnsAdNativeLandingPagesUI.t(this.oVc.oUU) == 0) || (SnsAdNativeLandingPagesUI.v(this.oVc.oUU))) && (SnsAdNativeLandingPagesUI.w(this.oVc.oUU) == 2) && (SnsAdNativeLandingPagesUI.x(this.oVc.oUU))) {
-      if (SnsAdNativeLandingPagesUI.y(this.oVc.oUU) == null) {
-        break label251;
-      }
-    }
-    label251:
-    for (String str = SnsAdNativeLandingPagesUI.y(this.oVc.oUU);; str = "")
+    AppMethodBeat.i(38648);
+    SnsAdNativeLandingPagesUI localSnsAdNativeLandingPagesUI = this.rNe.rMW;
+    String str1 = SnsAdNativeLandingPagesUI.m(this.rNe.rMW);
+    String str2 = SnsAdNativeLandingPagesUI.n(this.rNe.rMW);
+    String str3 = (String)this.rNd;
+    SnsAdNativeLandingPagesUI.o(this.rNe.rMW);
+    SnsAdNativeLandingPagesUI.p(this.rNe.rMW);
+    localSnsAdNativeLandingPagesUI.rLY = i.am(str1, str2, str3);
+    al.d(new Runnable()
     {
-      paraml.a(4, str, 0);
-      return;
-    }
+      public final void run()
+      {
+        AppMethodBeat.i(38647);
+        SnsAdNativeLandingPagesUI.q(SnsAdNativeLandingPagesUI.17.1.this.rNe.rMW);
+        AppMethodBeat.o(38647);
+      }
+    });
+    AppMethodBeat.o(38648);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI.17.1
  * JD-Core Version:    0.7.0.1
  */

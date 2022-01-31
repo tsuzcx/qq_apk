@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.ui.base.MMFormVerifyCodeInputView;
-import com.tencent.mm.ui.base.h;
 
 final class l$9
   implements View.OnClickListener
@@ -14,13 +14,13 @@ final class l$9
   
   public final void onClick(View paramView)
   {
-    h.a(this.fok.fnW, this.fok.fnW.getString(q.j.regbymobile_reg_verify_mobile_msg) + this.fok.account, this.fok.fnW.getString(q.j.regbymobile_reg_verify_mobile_title), this.fok.fnW.getString(q.j.app_ok), this.fok.fnW.getString(q.j.app_cancel), false, new l.9.1(this), new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        l.9.this.fok.fnW.foq.reset();
-      }
-    });
+    AppMethodBeat.i(125142);
+    this.gFF.gFq.gEs[1] = 2;
+    this.gFF.gFq.fme = 7;
+    this.gFF.gFq.gFL.reset();
+    g.Rc().b(145, this.gFF);
+    l.a(this.gFF);
+    AppMethodBeat.o(125142);
   }
 }
 

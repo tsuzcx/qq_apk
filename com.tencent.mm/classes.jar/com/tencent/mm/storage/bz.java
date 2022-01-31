@@ -1,36 +1,39 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.h.c.em;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.fc;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class bz
-  extends em
+  extends fc
 {
-  protected static c.a buS;
+  protected static c.a info;
   
   static
   {
+    AppMethodBeat.i(29070);
     c.a locala = new c.a();
-    locala.ujL = new Field[3];
+    locala.yrK = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "openId";
-    locala.ujN.put("openId", "TEXT PRIMARY KEY ");
+    locala.yrM.put("openId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" openId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "openId";
+    locala.yrL = "openId";
     locala.columns[1] = "appId";
-    locala.ujN.put("appId", "TEXT");
+    locala.yrM.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "username";
-    locala.ujN.put("username", "TEXT");
+    locala.yrM.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(29070);
   }
   
   public bz() {}
@@ -42,9 +45,9 @@ public final class bz
     this.field_openId = paramString3;
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

@@ -5,20 +5,22 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.ac.a.m;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ad.a.a;
 import com.tencent.mm.ui.ListViewInScrollView;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.c.a;
+import com.tencent.mm.ui.widget.b.c.a;
 import java.util.HashMap;
 
 public final class DialogPreference
   extends Preference
 {
-  private com.tencent.mm.ui.widget.a.c few;
-  public Preference.a vcc;
-  private final d vce;
-  DialogPreference.a vcf;
+  private com.tencent.mm.ui.widget.b.c gwf;
+  public Preference.a zqD;
+  private final d zqF;
+  DialogPreference.a zqG;
   
   public DialogPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,59 +30,85 @@ public final class DialogPreference
   public DialogPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.vce = new d(paramContext);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.ChoicePreference, paramInt, 0);
-    paramInt = paramAttributeSet.getResourceId(a.m.ChoicePreference_entries, -1);
+    AppMethodBeat.i(107155);
+    this.zqF = new d(paramContext);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ChoicePreference, paramInt, 0);
+    paramInt = paramAttributeSet.getResourceId(0, -1);
     if (paramInt != -1) {
-      this.vce.vca = paramContext.getResources().getStringArray(paramInt);
+      this.zqF.zqB = paramContext.getResources().getStringArray(paramInt);
     }
-    this.vce.vcb = paramAttributeSet.getTextArray(a.m.ChoicePreference_entryValues);
+    this.zqF.zqC = paramAttributeSet.getTextArray(1);
     paramAttributeSet.recycle();
-    this.vce.cBs();
+    this.zqF.dEH();
+    AppMethodBeat.o(107155);
   }
   
   public final void a(Preference.a parama)
   {
-    this.vcc = parama;
+    this.zqD = parama;
   }
   
   public final String getValue()
   {
-    return this.vce.value;
+    return this.zqF.value;
   }
   
   public final void onBindView(View paramView)
   {
-    c localc = (c)this.vce.values.get(this.vce.value);
+    AppMethodBeat.i(107157);
+    c localc = (c)this.zqF.values.get(this.zqF.value);
     if (localc != null) {
       setSummary(localc.text);
     }
     super.onBindView(paramView);
+    AppMethodBeat.o(107157);
   }
   
   public final void setValue(String paramString)
   {
-    this.vce.value = paramString;
-    paramString = (c)this.vce.values.get(paramString);
+    AppMethodBeat.i(107156);
+    this.zqF.value = paramString;
+    paramString = (c)this.zqF.values.get(paramString);
     if (paramString == null)
     {
-      this.vce.mTD = -1;
+      this.zqF.pvJ = -1;
+      AppMethodBeat.o(107156);
       return;
     }
-    this.vce.mTD = paramString.id;
+    this.zqF.pvJ = paramString.id;
+    AppMethodBeat.o(107156);
   }
   
   protected final void showDialog()
   {
-    ListViewInScrollView localListViewInScrollView = (ListViewInScrollView)View.inflate(this.mContext, a.h.mm_list, null);
-    localListViewInScrollView.setOnItemClickListener(new DialogPreference.1(this));
-    localListViewInScrollView.setAdapter(this.vce);
+    AppMethodBeat.i(107158);
+    ListViewInScrollView localListViewInScrollView = (ListViewInScrollView)View.inflate(this.mContext, 2130970172, null);
+    localListViewInScrollView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(107154);
+        if (DialogPreference.a(DialogPreference.this) != null) {
+          DialogPreference.a(DialogPreference.this).dismiss();
+        }
+        DialogPreference.this.setValue((String)DialogPreference.b(DialogPreference.this).zqC[paramAnonymousInt]);
+        if (DialogPreference.c(DialogPreference.this) != null) {
+          DialogPreference.c(DialogPreference.this).dEI();
+        }
+        if (DialogPreference.d(DialogPreference.this) != null) {
+          DialogPreference.d(DialogPreference.this).a(DialogPreference.this, DialogPreference.this.getValue());
+        }
+        AppMethodBeat.o(107154);
+      }
+    });
+    localListViewInScrollView.setAdapter(this.zqF);
     c.a locala = new c.a(this.mContext);
-    locala.aez(getTitle().toString());
-    locala.ei(localListViewInScrollView);
-    this.few = locala.aoP();
-    this.few.show();
-    h.a(this.mContext, this.few);
+    locala.avm(getTitle().toString());
+    locala.fu(localListViewInScrollView);
+    this.gwf = locala.aLZ();
+    this.gwf.show();
+    h.a(this.mContext, this.gwf);
+    AppMethodBeat.o(107158);
   }
 }
 

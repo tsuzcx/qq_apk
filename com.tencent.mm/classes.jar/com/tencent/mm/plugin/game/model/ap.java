@@ -1,18 +1,20 @@
 package com.tencent.mm.plugin.game.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.bv.a;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.game.a.c;
-import com.tencent.mm.plugin.game.d.bg;
-import com.tencent.mm.plugin.game.d.bh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.game.d.bj;
+import com.tencent.mm.plugin.game.d.bk;
+import com.tencent.mm.plugin.game.d.t;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -20,110 +22,120 @@ public final class ap
   extends m
   implements k
 {
-  private com.tencent.mm.ah.f dmL;
-  public final b jvQ;
+  private f callback;
+  public final b lFp;
   
-  public ap(String paramString, LinkedList<String> paramLinkedList, o paramo1, o paramo2, o paramo3, boolean paramBoolean)
+  public ap(String paramString, LinkedList<String> paramLinkedList, n paramn1, n paramn2, n paramn3, boolean paramBoolean)
   {
-    y.i("MicroMsg.NetSceneGetGameIndexDownloadGuidance", "lang = " + paramString + ", installedApp list size: " + paramLinkedList.size());
+    AppMethodBeat.i(111442);
+    ab.i("MicroMsg.NetSceneGetGameIndexForeign", "lang = " + paramString + ", installedApp list size: " + paramLinkedList.size());
     Object localObject = paramLinkedList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      y.i("MicroMsg.NetSceneGetGameIndexDownloadGuidance", "install id:[%s]", new Object[] { (String)((Iterator)localObject).next() });
+      ab.i("MicroMsg.NetSceneGetGameIndexForeign", "install id:[%s]", new Object[] { (String)((Iterator)localObject).next() });
     }
-    localObject = new bg();
-    ((bg)localObject).kUa = paramString;
-    ((bg)localObject).kUD = paramLinkedList;
-    paramLinkedList = f.dw(ae.getContext());
+    localObject = new bj();
+    ((bj)localObject).nsa = paramString;
+    ((bj)localObject).nsF = paramLinkedList;
+    paramLinkedList = e.ej(ah.getContext());
     paramString = paramLinkedList;
-    if (bk.bl(paramLinkedList)) {
-      paramString = bk.fS(ae.getContext());
+    if (bo.isNullOrNil(paramLinkedList)) {
+      paramString = bo.hi(ah.getContext());
     }
-    if (!bk.bl(j.countryCode)) {
-      paramString = j.countryCode;
+    if (!bo.isNullOrNil(i.countryCode)) {
+      paramString = i.countryCode;
     }
     for (;;)
     {
-      ((bg)localObject).ffq = paramString;
-      if (paramo1 != null) {}
+      ((bj)localObject).gwY = paramString;
+      if (paramn1 != null) {}
       for (;;)
       {
-        ((bg)localObject).kUE = new com.tencent.mm.plugin.game.d.s();
-        if (paramo1 != null)
+        ((bj)localObject).nsG = new t();
+        if (paramn1 != null)
         {
-          ((bg)localObject).kUE.kSU = paramo1.kPf.kPU;
-          ((bg)localObject).kUE.euK = paramo1.field_appId;
-          ((bg)localObject).kUE.kRU = paramo1.kPN;
-          if (paramo1.field_msgType == 100) {
-            ((bg)localObject).kUE.kSW = paramo1.kPM;
+          ((bj)localObject).nsG.nqU = paramn1.nnb.nnV;
+          ((bj)localObject).nsG.fKw = paramn1.field_appId;
+          ((bj)localObject).nsG.npW = paramn1.nnM;
+          if (paramn1.field_msgType == 100) {
+            ((bj)localObject).nsG.nqW = paramn1.nnL;
           }
         }
         else
         {
-          label223:
-          if (paramo2 != null)
+          label228:
+          if (paramn2 != null)
           {
-            paramLinkedList = ((bg)localObject).kUE;
-            paramLinkedList.kSV |= 0x1;
+            paramLinkedList = ((bj)localObject).nsG;
+            paramLinkedList.nqV |= 0x1;
           }
-          if (paramo3 != null)
+          if (paramn3 != null)
           {
-            paramLinkedList = ((bg)localObject).kUE;
-            paramLinkedList.kSV |= 0x2;
+            paramLinkedList = ((bj)localObject).nsG;
+            paramLinkedList.nqV |= 0x2;
           }
-          ((bg)localObject).kUF = ((c)g.r(c.class)).aYf().aZv();
-          ((bg)localObject).kUG = paramBoolean;
-          if (!com.tencent.mm.sdk.platformtools.e.cqq()) {
-            break label418;
+          ((bj)localObject).nsH = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.game.api.e.class)).bES().bGx();
+          ((bj)localObject).nsI = paramBoolean;
+          if (!com.tencent.mm.sdk.platformtools.g.dsn()) {
+            break label467;
           }
         }
-        label418:
+        label467:
         for (int i = 1;; i = 0)
         {
-          ((bg)localObject).kUb = i;
-          y.i("MicroMsg.NetSceneGetGameIndexDownloadGuidance", "Country Code: %s", new Object[] { paramString });
+          ((bj)localObject).nsb = i;
+          ab.i("MicroMsg.NetSceneGetGameIndexForeign", "Country Code: %s", new Object[] { paramString });
+          if ((!bo.isNullOrNil(((bj)localObject).gwY)) && ("CN".equalsIgnoreCase(((bj)localObject).gwY))) {
+            h.qsU.idkeyStat(860L, 8L, 1L, false);
+          }
           paramString = new b.a();
-          paramString.ecH = ((a)localObject);
-          paramString.ecI = new bh();
-          paramString.uri = "/cgi-bin/mmgame-bin/getgameindexdownloadguidance";
-          paramString.ecG = 2586;
-          paramString.ecJ = 0;
-          paramString.ecK = 0;
-          this.jvQ = paramString.Kt();
+          paramString.fsX = ((a)localObject);
+          paramString.fsY = new bk();
+          paramString.uri = "/cgi-bin/mmgame-bin/getgameindexforeign";
+          paramString.funcId = getType();
+          paramString.reqCmdId = 0;
+          paramString.respCmdId = 0;
+          this.lFp = paramString.ado();
+          AppMethodBeat.o(111442);
           return;
-          if (paramo2 != null)
+          if (paramn2 != null)
           {
-            paramo1 = paramo2;
+            paramn1 = paramn2;
             break;
           }
-          if (paramo3 == null) {
-            break label424;
+          if (paramn3 == null) {
+            break label473;
           }
-          paramo1 = paramo3;
+          paramn1 = paramn3;
           break;
-          ((bg)localObject).kUE.kSW = paramo1.field_msgType;
-          break label223;
+          ((bj)localObject).nsG.nqW = paramn1.field_msgType;
+          break label228;
         }
-        label424:
-        paramo1 = null;
+        label473:
+        paramn1 = null;
       }
     }
   }
   
-  public final int a(com.tencent.mm.network.e parame, com.tencent.mm.ah.f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.jvQ, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneGetGameIndexDownloadGuidance", "errType = " + paramInt2 + ", errCode = " + paramInt3);
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(111443);
+    this.callback = paramf;
+    int i = dispatch(parame, this.lFp, this);
+    AppMethodBeat.o(111443);
+    return i;
   }
   
   public final int getType()
   {
-    return 2586;
+    return 2855;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(111444);
+    ab.i("MicroMsg.NetSceneGetGameIndexForeign", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(111444);
   }
 }
 

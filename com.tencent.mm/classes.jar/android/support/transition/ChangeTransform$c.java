@@ -1,29 +1,29 @@
 package android.support.transition;
 
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.view.View;
 
 final class ChangeTransform$c
 {
   final float mScaleX;
   final float mScaleY;
-  final float qp;
-  final float qr;
-  final float qs;
-  final float qt;
-  final float qu;
-  final float qv;
+  final float rm;
+  final float rn;
+  final float ro;
+  final float rp;
+  final float rq;
+  final float rs;
   
   ChangeTransform$c(View paramView)
   {
-    this.qp = paramView.getTranslationX();
-    this.qr = paramView.getTranslationY();
-    this.qs = q.aa(paramView);
+    this.rm = paramView.getTranslationX();
+    this.rn = paramView.getTranslationY();
+    this.ro = t.ah(paramView);
     this.mScaleX = paramView.getScaleX();
     this.mScaleY = paramView.getScaleY();
-    this.qt = paramView.getRotationX();
-    this.qu = paramView.getRotationY();
-    this.qv = paramView.getRotation();
+    this.rp = paramView.getRotationX();
+    this.rq = paramView.getRotationY();
+    this.rs = paramView.getRotation();
   }
   
   public final boolean equals(Object paramObject)
@@ -33,7 +33,7 @@ final class ChangeTransform$c
     {
       return false;
       paramObject = (c)paramObject;
-    } while ((paramObject.qp != this.qp) || (paramObject.qr != this.qr) || (paramObject.qs != this.qs) || (paramObject.mScaleX != this.mScaleX) || (paramObject.mScaleY != this.mScaleY) || (paramObject.qt != this.qt) || (paramObject.qu != this.qu) || (paramObject.qv != this.qv));
+    } while ((paramObject.rm != this.rm) || (paramObject.rn != this.rn) || (paramObject.ro != this.ro) || (paramObject.mScaleX != this.mScaleX) || (paramObject.mScaleY != this.mScaleY) || (paramObject.rp != this.rp) || (paramObject.rq != this.rq) || (paramObject.rs != this.rs));
     return true;
   }
   
@@ -50,17 +50,17 @@ final class ChangeTransform$c
     int n;
     label90:
     int i1;
-    if (this.qp != 0.0F)
+    if (this.rm != 0.0F)
     {
-      i = Float.floatToIntBits(this.qp);
-      if (this.qr == 0.0F) {
+      i = Float.floatToIntBits(this.rm);
+      if (this.rn == 0.0F) {
         break label191;
       }
-      j = Float.floatToIntBits(this.qr);
-      if (this.qs == 0.0F) {
+      j = Float.floatToIntBits(this.rn);
+      if (this.ro == 0.0F) {
         break label196;
       }
-      k = Float.floatToIntBits(this.qs);
+      k = Float.floatToIntBits(this.ro);
       if (this.mScaleX == 0.0F) {
         break label201;
       }
@@ -69,12 +69,12 @@ final class ChangeTransform$c
         break label207;
       }
       n = Float.floatToIntBits(this.mScaleY);
-      if (this.qt == 0.0F) {
+      if (this.rp == 0.0F) {
         break label213;
       }
-      i1 = Float.floatToIntBits(this.qt);
+      i1 = Float.floatToIntBits(this.rp);
       label108:
-      if (this.qu == 0.0F) {
+      if (this.rq == 0.0F) {
         break label219;
       }
     }
@@ -84,10 +84,10 @@ final class ChangeTransform$c
     label207:
     label213:
     label219:
-    for (int i2 = Float.floatToIntBits(this.qu);; i2 = 0)
+    for (int i2 = Float.floatToIntBits(this.rq);; i2 = 0)
     {
-      if (this.qv != 0.0F) {
-        i3 = Float.floatToIntBits(this.qv);
+      if (this.rs != 0.0F) {
+        i3 = Float.floatToIntBits(this.rs);
       }
       return (i2 + (i1 + (n + (m + (k + (j + i * 31) * 31) * 31) * 31) * 31) * 31) * 31 + i3;
       i = 0;
@@ -105,14 +105,14 @@ final class ChangeTransform$c
     }
   }
   
-  public final void v(View paramView)
+  public final void y(View paramView)
   {
-    ChangeTransform.b(paramView, this.qp, this.qr, this.qs, this.mScaleX, this.mScaleY, this.qt, this.qu, this.qv);
+    ChangeTransform.b(paramView, this.rm, this.rn, this.ro, this.mScaleX, this.mScaleY, this.rp, this.rq, this.rs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.ChangeTransform.c
  * JD-Core Version:    0.7.0.1
  */

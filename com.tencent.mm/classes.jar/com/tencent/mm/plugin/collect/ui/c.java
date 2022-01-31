@@ -5,73 +5,95 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.am.a;
-import com.tencent.mm.model.am.b;
+import com.tencent.mm.model.ao.a;
+import com.tencent.mm.model.ao.b;
 import com.tencent.mm.n.a;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class c
   extends Preference
 {
-  String djD = null;
-  private TextView haW = null;
-  private ImageView iIS = null;
-  private Context mContext = null;
-  String mTitle = null;
-  private View mView = null;
+  String eaX;
+  private TextView iJG;
+  private ImageView kPy;
+  private Context mContext;
+  String mTitle;
+  private View mView;
   
   public c(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(41324);
+    this.mView = null;
+    this.iJG = null;
+    this.kPy = null;
+    this.eaX = null;
+    this.mTitle = null;
+    this.mContext = null;
     this.mContext = paramContext;
-    setLayoutResource(a.g.collect_pay_info_preference);
+    setLayoutResource(2130969183);
+    AppMethodBeat.o(41324);
   }
   
-  public c(Context paramContext, int paramInt)
+  public c(Context paramContext, byte paramByte)
   {
     super(paramContext);
+    AppMethodBeat.i(41325);
+    this.mView = null;
+    this.iJG = null;
+    this.kPy = null;
+    this.eaX = null;
+    this.mTitle = null;
+    this.mContext = null;
     this.mContext = paramContext;
-    setLayoutResource(paramInt);
+    setLayoutResource(2130969182);
+    AppMethodBeat.o(41325);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(41326);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
-    return this.mView;
+    paramView = this.mView;
+    AppMethodBeat.o(41326);
+    return paramView;
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(41327);
     super.onBindView(paramView);
-    this.haW = ((TextView)paramView.findViewById(16908310));
-    this.iIS = ((ImageView)paramView.findViewById(a.f.collect_payer_avatar));
-    this.haW.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.mContext, this.mTitle, this.haW.getTextSize()));
-    if (!bk.bl(this.djD))
+    this.iJG = ((TextView)paramView.findViewById(16908310));
+    this.kPy = ((ImageView)paramView.findViewById(2131822958));
+    this.iJG.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.mContext, this.mTitle, this.iJG.getTextSize()));
+    if (!bo.isNullOrNil(this.eaX))
     {
-      this.iIS.setVisibility(0);
-      g.DQ();
-      paramView = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abk(this.djD);
-      if ((paramView == null) || ((int)paramView.dBe <= 0))
+      this.kPy.setVisibility(0);
+      g.RM();
+      paramView = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arv(this.eaX);
+      if ((paramView == null) || ((int)paramView.euF <= 0))
       {
-        y.d("MicroMsg.CollectPayInfoPreference", "Receiver in contactStg and try to get contact");
-        long l = bk.UY();
-        am.a.dVy.a(this.djD, "", new c.1(this, l));
+        ab.d("MicroMsg.CollectPayInfoPreference", "Receiver in contactStg and try to get contact");
+        long l = bo.aoy();
+        ao.a.flI.a(this.eaX, "", new c.1(this, l));
+        AppMethodBeat.o(41327);
         return;
       }
-      a.b.a(this.iIS, this.djD);
+      a.b.c(this.kPy, this.eaX);
+      AppMethodBeat.o(41327);
       return;
     }
-    this.iIS.setVisibility(8);
+    this.kPy.setVisibility(8);
+    AppMethodBeat.o(41327);
   }
 }
 

@@ -8,7 +8,7 @@ import android.os.Parcel;
 public abstract interface b
   extends IInterface
 {
-  public abstract boolean ccY();
+  public abstract boolean dcU();
   
   public abstract boolean getResult();
   
@@ -25,7 +25,7 @@ public abstract interface b
       attachInterface(this, "com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
     }
     
-    public static b G(IBinder paramIBinder)
+    public static b E(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -56,7 +56,7 @@ public abstract interface b
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-        bool = ccY();
+        bool = dcU();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -91,7 +91,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.stub.b
  * JD-Core Version:    0.7.0.1
  */

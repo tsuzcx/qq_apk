@@ -1,60 +1,29 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.content.Intent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.subapp.ui.pluginapp.AddMoreFriendsUI;
 
 final class FMessageConversationUI$5
-  extends BaseAdapter
+  implements MenuItem.OnMenuItemClickListener
 {
   FMessageConversationUI$5(FMessageConversationUI paramFMessageConversationUI) {}
   
-  public final int getCount()
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    return 1;
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if ((paramView == null) || (paramView.getTag() == null))
-    {
-      paramView = LayoutInflater.from(this.pwx.mController.uMN).inflate(R.i.fmessage_conversation_empty_list_item, null);
-      paramViewGroup = new FMessageConversationUI.a(this.pwx, paramView);
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      if (paramInt == 0)
-      {
-        paramViewGroup.hic.setImageResource(R.k.find_more_friend_mobile_icon);
-        paramViewGroup.fcy.setText(R.l.find_friends_by_mobile);
-      }
-      return paramView;
-      paramViewGroup = (FMessageConversationUI.a)paramView.getTag();
-    }
+    AppMethodBeat.i(25362);
+    paramMenuItem = new Intent(this.sYg, AddMoreFriendsUI.class);
+    paramMenuItem.putExtra("invite_friend_scene", 3);
+    this.sYg.startActivity(paramMenuItem);
+    AppMethodBeat.o(25362);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.friend.FMessageConversationUI.5
  * JD-Core Version:    0.7.0.1
  */

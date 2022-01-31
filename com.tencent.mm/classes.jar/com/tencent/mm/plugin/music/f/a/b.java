@@ -1,54 +1,72 @@
 package com.tencent.mm.plugin.music.f.a;
 
-import com.tencent.mm.av.e;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.e;
+import com.tencent.mm.sdk.platformtools.al;
 
 public abstract class b
 {
-  protected f mAR;
-  public g mAS = new g();
-  protected e myu;
+  protected e oYB;
+  protected f paW;
+  public g paX = new g();
+  
+  public final void Av(final int paramInt)
+  {
+    if (this.paW != null) {
+      al.d(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(137651);
+          if (b.this.bWb()) {
+            b.this.paW.I(b.this.oYB);
+          }
+          AppMethodBeat.o(137651);
+        }
+      });
+    }
+  }
   
   public final void J(e parame)
   {
-    this.myu = parame;
+    this.oYB = parame;
   }
   
-  public abstract void JG(String paramString);
+  public abstract void VE(String paramString);
   
   public final void a(f paramf)
   {
-    this.mAR = paramf;
+    this.paW = paramf;
   }
   
-  public abstract boolean bnE();
+  public abstract boolean bWb();
   
-  public abstract int bnF();
+  public abstract int bWc();
   
-  public abstract String bnG();
+  public abstract String bWd();
   
   public abstract int getDuration();
   
-  public void hS(boolean paramBoolean)
-  {
-    if (this.mAR != null) {
-      ai.d(new b.1(this, paramBoolean));
-    }
-  }
-  
-  public void hT(boolean paramBoolean)
-  {
-    if (this.mAR != null) {
-      ai.d(new b.4(this, paramBoolean));
-    }
-  }
-  
   public abstract boolean isPlaying();
+  
+  public void jP(boolean paramBoolean)
+  {
+    if (this.paW != null) {
+      al.d(new b.1(this, paramBoolean));
+    }
+  }
+  
+  public void jQ(boolean paramBoolean)
+  {
+    if (this.paW != null) {
+      al.d(new b.4(this, paramBoolean));
+    }
+  }
   
   public final void onStart()
   {
-    if (this.mAR != null) {
-      ai.d(new b.2(this));
+    if (this.paW != null) {
+      al.d(new b.2(this));
     }
   }
   
@@ -59,13 +77,6 @@ public abstract class b
   public abstract void seek(long paramLong);
   
   public abstract void stop();
-  
-  public final void uU(int paramInt)
-  {
-    if (this.mAR != null) {
-      ai.d(new b.3(this, paramInt));
-    }
-  }
 }
 
 

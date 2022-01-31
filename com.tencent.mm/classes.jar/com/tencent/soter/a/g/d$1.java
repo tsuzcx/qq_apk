@@ -1,5 +1,6 @@
 package com.tencent.soter.a.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.a.b.b;
 import com.tencent.soter.a.b.e;
 
@@ -10,13 +11,15 @@ final class d$1
   
   public final void run()
   {
-    d locald = this.wPY;
-    e locale = this.wPX;
-    if ((locald.wPW != null) && (!locald.wPH))
+    AppMethodBeat.i(10479);
+    d locald = this.Bny;
+    e locale = this.Bnx;
+    if ((locald.Bnw != null) && (!locald.Bnh))
     {
-      locald.wPW.a(locale);
-      locald.wPH = true;
+      locald.Bnw.a(locale);
+      locald.Bnh = true;
     }
+    AppMethodBeat.o(10479);
   }
 }
 

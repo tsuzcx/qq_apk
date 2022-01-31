@@ -5,7 +5,7 @@ public final class c$ld
 {
   public c$ld()
   {
-    super("WNNativeCallbackOnBecomeEditing", "WNNativeCallbackOnBecomeEditing", 10006, false);
+    super("uploadVoice", "uploadVoice", 102, true);
   }
 }
 

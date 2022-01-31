@@ -1,27 +1,17 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsTimeLineUI$46
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  SnsTimeLineUI$46(SnsTimeLineUI paramSnsTimeLineUI, SnsTimeLineUI.b paramb) {}
+  SnsTimeLineUI$46(SnsTimeLineUI paramSnsTimeLineUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    SnsTimeLineUI.J(this.pfC).yS(1);
-    SnsTimeLineUI.b(SnsTimeLineUI.J(this.pfC));
-    switch (this.pfN.type)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      SnsTimeLineUI.M(this.pfC);
-      return;
-    }
-    SnsTimeLineUI.N(this.pfC);
+    AppMethodBeat.i(155756);
+    SnsTimeLineUI.O(this.rYv);
+    AppMethodBeat.o(155756);
   }
 }
 

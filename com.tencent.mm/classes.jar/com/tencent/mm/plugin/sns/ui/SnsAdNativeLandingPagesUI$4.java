@@ -1,37 +1,20 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mm.plugin.sns.i.a;
-import com.tencent.mm.plugin.sns.ui.a.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.SwipeBackLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.b;
 
 final class SnsAdNativeLandingPagesUI$4
-  implements a
+  implements Runnable
 {
   SnsAdNativeLandingPagesUI$4(SnsAdNativeLandingPagesUI paramSnsAdNativeLandingPagesUI) {}
   
-  public final void aE(float paramFloat)
+  public final void run()
   {
-    SnsAdNativeLandingPagesUI.F(this.oUU).setAlpha(1.0F - paramFloat);
-  }
-  
-  public final void onAnimationEnd()
-  {
-    SnsAdNativeLandingPagesUI.G(this.oUU);
-    y.i("MicroMsg.SnsAdNativeLandingPagesUI", "sns exit anim end");
-    this.oUU.finish();
-    this.oUU.overridePendingTransition(i.a.anim_not_change, i.a.anim_not_change);
-    if (this.oUU.isSupportNavigationSwipeBack()) {
-      this.oUU.getSwipeBackLayout().setEnableGesture(true);
-    }
-  }
-  
-  public final void onAnimationStart()
-  {
-    y.i("MicroMsg.SnsAdNativeLandingPagesUI", "sns exit anim start");
-    SnsAdNativeLandingPagesUI.f(this.oUU).setVisibility(4);
+    AppMethodBeat.i(154483);
+    ab.i("MicroMsg.SnsAdNativeLandingPagesUI", "noCutOut, assistActivity");
+    b.a(this.rMW, false, SnsAdNativeLandingPagesUI.b(this.rMW));
+    AppMethodBeat.o(154483);
   }
 }
 

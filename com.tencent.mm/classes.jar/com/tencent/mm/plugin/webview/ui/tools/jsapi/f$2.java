@@ -1,18 +1,11 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import android.webkit.ValueCallback;
 
 final class f$2
-  implements am.a
+  implements ValueCallback<String>
 {
-  f$2(f paramf) {}
-  
-  public final boolean tC()
-  {
-    f.b(this.ryl);
-    f.c(this.ryl);
-    return false;
-  }
+  f$2(f paramf, long paramLong, boolean paramBoolean1, boolean paramBoolean2) {}
 }
 
 

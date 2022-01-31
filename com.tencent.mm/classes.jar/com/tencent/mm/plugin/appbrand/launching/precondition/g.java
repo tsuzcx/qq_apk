@@ -1,30 +1,18 @@
 package com.tencent.mm.plugin.appbrand.launching.precondition;
 
-import android.content.Context;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.d;
-import com.tencent.mm.modelappbrand.LaunchParamsOptional;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import android.content.Intent;
 
 public abstract interface g
 {
-  public static final g gMF;
+  public abstract void F(Intent paramIntent);
   
-  static
-  {
-    if (((h)com.tencent.mm.kernel.g.DM().Dr()).Ex()) {}
-    for (Object localObject = new i();; localObject = new c())
-    {
-      gMF = (g)localObject;
-      return;
-    }
-  }
+  public abstract boolean aHw();
   
-  public abstract boolean a(Context paramContext, LaunchParcel paramLaunchParcel);
+  public abstract void onDestroy();
   
-  public abstract boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, AppBrandStatObject paramAppBrandStatObject, AppBrandLaunchReferrer paramAppBrandLaunchReferrer, LaunchParamsOptional paramLaunchParamsOptional);
+  public abstract void onPause();
+  
+  public abstract void onResume();
 }
 
 

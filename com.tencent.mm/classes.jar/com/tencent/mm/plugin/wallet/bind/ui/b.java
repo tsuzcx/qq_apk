@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet.bind.ui;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
@@ -8,33 +9,39 @@ import com.tencent.mm.storage.z;
 
 public final class b
 {
-  public static boolean a(Bankcard paramBankcard)
+  public static boolean b(Bankcard paramBankcard)
   {
-    if (paramBankcard == null) {
+    AppMethodBeat.i(45739);
+    if (paramBankcard == null)
+    {
+      AppMethodBeat.o(45739);
       return false;
     }
-    g.DQ();
-    Object localObject1 = (String)g.DP().Dz().get(196659, null);
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+    g.RM();
+    Object localObject1 = (String)g.RL().Ru().get(196659, null);
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      AppMethodBeat.o(45739);
       return true;
     }
     localObject1 = ((String)localObject1).split("&");
-    if ((localObject1 == null) || (localObject1.length == 0)) {
+    if ((localObject1 == null) || (localObject1.length == 0))
+    {
+      AppMethodBeat.o(45739);
       return true;
     }
     int i = 0;
-    for (;;)
+    while (i < localObject1.length)
     {
-      if (i >= localObject1.length) {
-        break label87;
-      }
       Object localObject2 = localObject1[i];
-      if ((localObject2 != null) && (localObject2.equals(paramBankcard.field_bankcardType))) {
-        break;
+      if ((localObject2 != null) && (localObject2.equals(paramBankcard.field_bankcardType)))
+      {
+        AppMethodBeat.o(45739);
+        return false;
       }
       i += 1;
     }
-    label87:
+    AppMethodBeat.o(45739);
     return true;
   }
 }

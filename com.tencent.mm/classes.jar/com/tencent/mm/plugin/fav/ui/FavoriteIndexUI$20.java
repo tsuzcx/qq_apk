@@ -1,15 +1,29 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import com.tencent.mm.plugin.fav.ui.widget.c;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FavoriteIndexUI$20
-  implements Runnable
+  implements AdapterView.OnItemLongClickListener
 {
   FavoriteIndexUI$20(FavoriteIndexUI paramFavoriteIndexUI) {}
   
-  public final void run()
+  public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.kee.kbe.aSa();
+    AppMethodBeat.i(74246);
+    if (paramInt < this.myP.mvw.getHeaderViewsCount())
+    {
+      ab.w("MicroMsg.FavoriteIndexUI", "on header view long click, ignore");
+      AppMethodBeat.o(74246);
+      return true;
+    }
+    FavoriteIndexUI.a(this.myP, paramView, paramInt, paramLong, FavoriteIndexUI.c(this.myP));
+    AppMethodBeat.o(74246);
+    return true;
   }
 }
 

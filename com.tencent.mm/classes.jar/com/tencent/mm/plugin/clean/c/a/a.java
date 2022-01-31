@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.clean.c.a;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public abstract class a
   implements Runnable
 {
-  private long gYL = 0L;
-  private a.a iBZ;
-  c iCa;
+  private long iHc = 0L;
+  private a.a kHg;
+  c kHh;
   
   public a(a.a parama)
   {
-    this.iBZ = parama;
+    this.kHg = parama;
   }
   
-  public String Sj()
+  public String alu()
   {
-    return this.gYL;
+    return this.iHc;
   }
   
   public abstract void execute();
@@ -26,23 +26,23 @@ public abstract class a
   {
     try
     {
-      this.gYL = bk.UZ();
+      this.iHc = bo.yB();
       execute();
-      this.gYL = bk.cp(this.gYL);
+      this.iHc = bo.av(this.iHc);
       return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.AbstractTask", localException, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.AbstractTask", localException, "", new Object[0]);
       return;
     }
     finally
     {
-      if (this.iCa != null) {
-        this.iCa.g(Long.valueOf(Thread.currentThread().getId()));
+      if (this.kHh != null) {
+        this.kHh.f(Long.valueOf(Thread.currentThread().getId()));
       }
-      if (this.iBZ != null) {
-        this.iBZ.a(this);
+      if (this.kHg != null) {
+        this.kHg.a(this);
       }
     }
   }

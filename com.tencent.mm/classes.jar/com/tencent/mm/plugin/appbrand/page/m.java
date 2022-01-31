@@ -1,47 +1,27 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.mm.ui.widget.a.d;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 
 public final class m
-  extends l
+  extends p
 {
-  m(s params, List<com.tencent.mm.plugin.appbrand.menu.n> paramList)
+  private static final int CTRL_INDEX = 156;
+  private static final String NAME = "onTapStatusBar";
+  private static m ivU;
+  
+  static
   {
-    super(params, paramList);
+    AppMethodBeat.i(87068);
+    ivU = new m();
+    AppMethodBeat.o(87068);
   }
   
-  protected final void a(d paramd)
+  public static void d(v paramv)
   {
-    boolean bool2 = false;
-    super.a(paramd);
-    s locals = (s)this.gSP;
-    boolean bool1;
-    if (locals.getRuntime().ZH()) {
-      if ((locals.isFullScreen()) || (locals.anp()))
-      {
-        bool1 = true;
-        paramd.rxb = bool1;
-        if (!locals.isFullScreen())
-        {
-          bool1 = bool2;
-          if (!locals.anp()) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
-    }
-    for (paramd.rxc = bool1;; paramd.rxc = locals.isFullScreen())
-    {
-      locals.a(new m.1(this, locals));
-      locals.a(new m.2(this, locals));
-      return;
-      bool1 = false;
-      break;
-      paramd.rxb = locals.isFullScreen();
-    }
+    AppMethodBeat.i(87067);
+    ivU.i(paramv).aBz();
+    AppMethodBeat.o(87067);
   }
 }
 

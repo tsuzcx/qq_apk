@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.expt.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.b.a;
 
 final class ExptDebugUI$5
@@ -11,8 +12,10 @@ final class ExptDebugUI$5
   
   public final void onClick(View paramView)
   {
-    a.aMZ();
-    a.aNb();
+    AppMethodBeat.i(73637);
+    a.bsG();
+    a.vv(1);
+    AppMethodBeat.o(73637);
   }
 }
 

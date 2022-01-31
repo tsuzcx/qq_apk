@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/fr"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/a5c" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/aj4" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" layout="@layout/ki" />
-    <TextView android:id="@id/mp" android:visibility="gone" android:layout_toRightOf="@id/aj4" style="@style/g1" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/aj4" android:layout_below="@id/mp">
-        <com.tencent.mm.ui.widget.MMNeatTextView android:id="@id/mq" android:background="@drawable/go" android:minHeight="@dimen/ed" style="@style/g7" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:id="@id/all" android:background="@drawable/cb" android:padding="@dimen/dl" android:text="{source}" style="@style/fs" />
-            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-            <TextView android:id="@id/aj7" android:background="@drawable/cb" android:layout_marginRight="50.0dip" android:text="@string/ah8" style="@style/fs" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <ImageView android:layout_width="@dimen/g9" android:layout_height="@dimen/g9" android:layout_marginLeft="36.0dip" android:layout_marginTop="@dimen/g4" android:layout_marginRight="36.0dip" android:src="@raw/toast_ok" />
+    <TextView android:textSize="@dimen/nf" android:textColor="@color/a6q" android:id="@id/aml" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/fx" android:layout_marginBottom="@dimen/g2" android:singleLine="true" />
+</LinearLayout>

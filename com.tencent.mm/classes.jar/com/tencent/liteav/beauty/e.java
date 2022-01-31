@@ -1,14 +1,14 @@
 package com.tencent.liteav.beauty;
 
-import com.tencent.liteav.basic.f.c;
+import com.tencent.liteav.basic.structs.b;
 
 public abstract interface e
 {
-  public abstract int a(c paramc);
+  public abstract int a(b paramb);
   
-  public abstract void a(c paramc, long paramLong);
+  public abstract void a(b paramb, long paramLong);
   
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong);
+  public abstract void b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong);
 }
 
 

@@ -1,60 +1,69 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.afv;
-import com.tencent.mm.protocal.c.afw;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.akm;
+import com.tencent.mm.protocal.protobuf.akn;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class ak
   extends m
   implements k
 {
-  private final com.tencent.mm.ah.b dmK;
-  private f dmL = null;
+  private f callback;
+  private final com.tencent.mm.ai.b rr;
   
   public ak()
   {
+    AppMethodBeat.i(102740);
+    this.callback = null;
     b.a locala = new b.a();
-    locala.ecH = new afv();
-    locala.ecI = new afw();
+    locala.fsX = new akm();
+    locala.fsY = new akn();
     locala.uri = "/cgi-bin/micromsg-bin/getfavinfo";
-    locala.ecG = 438;
-    locala.ecJ = 217;
-    locala.ecK = 1000000217;
-    this.dmK = locala.Kt();
+    locala.funcId = 438;
+    locala.reqCmdId = 217;
+    locala.respCmdId = 1000000217;
+    this.rr = locala.ado();
+    AppMethodBeat.o(102740);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneGetFavInfo", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      paramq = (afw)((com.tencent.mm.ah.b)paramq).ecF.ecN;
-      y.v("MicroMsg.NetSceneGetFavInfo", "used:%d  total:%d  mxDown:%d  mxUp:%d  mxFile:%d", new Object[] { Long.valueOf(paramq.svD), Long.valueOf(paramq.hQp), Integer.valueOf(paramq.tdK), Integer.valueOf(paramq.tdJ), Integer.valueOf(paramq.tdI) });
-      b.en(paramq.svD);
-      b.eo(paramq.hQp);
-      b.eq(paramq.tdK);
-      b.er(paramq.tdJ);
-      b.es(paramq.tdI);
-    }
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(102741);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(102741);
+    return i;
   }
   
   public final int getType()
   {
     return 438;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(102742);
+    ab.d("MicroMsg.NetSceneGetFavInfo", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      paramq = (akn)((com.tencent.mm.ai.b)paramq).fsW.fta;
+      ab.v("MicroMsg.NetSceneGetFavInfo", "used:%d  total:%d  mxDown:%d  mxUp:%d  mxFile:%d", new Object[] { Long.valueOf(paramq.woK), Long.valueOf(paramq.jJR), Integer.valueOf(paramq.xbI), Integer.valueOf(paramq.xbH), Integer.valueOf(paramq.xbG) });
+      b.jK(paramq.woK);
+      b.jL(paramq.jJR);
+      b.jN(paramq.xbI);
+      b.jO(paramq.xbH);
+      b.jP(paramq.xbG);
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(102742);
   }
 }
 

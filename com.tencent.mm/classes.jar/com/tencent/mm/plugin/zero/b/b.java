@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.zero.b;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.model.bw;
+import com.tencent.mm.model.by;
 import com.tencent.mm.modelmulti.o;
 
 public abstract interface b
   extends a
 {
-  public abstract o Pm();
+  public abstract o aio();
   
-  public abstract bw ckh();
+  public abstract by dkL();
 }
 
 

@@ -8,8 +8,8 @@ import android.view.ViewGroup.MarginLayoutParams;
 public class GridLayoutManager$LayoutParams
   extends RecyclerView.LayoutParams
 {
-  int ady = -1;
-  int adz = 0;
+  int afN = -1;
+  int afO = 0;
   
   public GridLayoutManager$LayoutParams(int paramInt1, int paramInt2)
   {

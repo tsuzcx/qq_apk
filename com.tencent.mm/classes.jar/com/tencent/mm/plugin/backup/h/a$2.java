@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.backup.h;
 
-import com.tencent.mm.model.am.a;
-import com.tencent.mm.model.am.b;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ao.a;
+import com.tencent.mm.model.ao.b;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -15,22 +16,24 @@ public final class a$2
   
   public final void run()
   {
-    Iterator localIterator = this.hMJ.hMI.iterator();
+    AppMethodBeat.i(17684);
+    Iterator localIterator = this.jGl.jGk.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (a.a)localIterator.next();
       if ((((a.a)localObject).type == 2) && (((a.a)localObject).obj != null) && ((((a.a)localObject).obj instanceof String)))
       {
         localObject = (String)((a.a)localObject).obj;
-        y.d("MicroMsg.BackupRecoverDelayData", "getContact:" + (String)localObject);
-        am.a.dVy.V((String)localObject, "");
+        ab.d("MicroMsg.BackupRecoverDelayData", "getContact:".concat(String.valueOf(localObject)));
+        ao.a.flI.am((String)localObject, "");
       }
       else if ((((a.a)localObject).type == 1) && (((a.a)localObject).obj != null) && ((((a.a)localObject).obj instanceof String)))
       {
-        ap.brm().VS((String)((a.a)localObject).obj);
+        al.cab().alr((String)((a.a)localObject).obj);
       }
     }
-    this.hMJ.hMI.clear();
+    this.jGl.jGk.clear();
+    AppMethodBeat.o(17684);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mm.ui.tools;
 
-import com.tencent.mm.model.bi.a;
+import com.tencent.mm.model.bk.a;
 import com.tencent.mm.network.e;
 
 final class ShareScreenToTimeLineUI$1
-  implements bi.a
+  implements bk.a
 {
   ShareScreenToTimeLineUI$1(ShareScreenToTimeLineUI paramShareScreenToTimeLineUI) {}
   

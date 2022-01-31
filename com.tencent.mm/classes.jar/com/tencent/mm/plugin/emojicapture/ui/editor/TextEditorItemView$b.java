@@ -1,39 +1,30 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
-import a.d.b.g;
-import a.k;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Paint;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class TextEditorItemView$b
-  implements ValueAnimator.AnimatorUpdateListener
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
+final class TextEditorItemView$b
+  implements Runnable
 {
-  public TextEditorItemView$b(TextEditorItemView paramTextEditorItemView) {}
+  TextEditorItemView$b(TextEditorItemView paramTextEditorItemView) {}
   
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public final void run()
   {
-    g.j(paramValueAnimator, "animation");
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if (paramValueAnimator == null) {
-      throw new k("null cannot be cast to non-null type kotlin.Float");
-    }
-    float f = ((Float)paramValueAnimator).floatValue();
-    if (f < 0.01F) {
-      TextEditorItemView.a(this.jqJ, false);
-    }
-    for (;;)
+    AppMethodBeat.i(3110);
+    EditorItemContainer localEditorItemContainer = this.lAu.getItemContainer();
+    if (localEditorItemContainer != null)
     {
-      this.jqJ.invalidate();
+      localEditorItemContainer.setEditing((a)this.lAu);
+      AppMethodBeat.o(3110);
       return;
-      TextEditorItemView.a(this.jqJ, true);
-      TextEditorItemView.d(this.jqJ).setAlpha((int)(f * 255.0F));
     }
+    AppMethodBeat.o(3110);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.editor.TextEditorItemView.b
  * JD-Core Version:    0.7.0.1
  */

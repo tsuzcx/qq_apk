@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
-import android.support.v4.app.e;
+import android.support.v4.app.c;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,42 +13,42 @@ import java.util.List;
 class MediaControllerCompat$MediaControllerImplApi21$ExtraBinderRequestResultReceiver
   extends ResultReceiver
 {
-  private WeakReference<MediaControllerCompat.MediaControllerImplApi21> Cp;
+  private WeakReference<MediaControllerCompat.MediaControllerImplApi21> CY;
   
   public MediaControllerCompat$MediaControllerImplApi21$ExtraBinderRequestResultReceiver(MediaControllerCompat.MediaControllerImplApi21 paramMediaControllerImplApi21, Handler paramHandler)
   {
     super(paramHandler);
-    this.Cp = new WeakReference(paramMediaControllerImplApi21);
+    this.CY = new WeakReference(paramMediaControllerImplApi21);
   }
   
   protected void onReceiveResult(int paramInt, Bundle arg2)
   {
-    MediaControllerCompat.MediaControllerImplApi21 localMediaControllerImplApi21 = (MediaControllerCompat.MediaControllerImplApi21)this.Cp.get();
+    MediaControllerCompat.MediaControllerImplApi21 localMediaControllerImplApi21 = (MediaControllerCompat.MediaControllerImplApi21)this.CY.get();
     if ((localMediaControllerImplApi21 == null) || (??? == null)) {}
     do
     {
       return;
-      localMediaControllerImplApi21.Cn = b.a.c(e.c(???, "android.support.v4.media.session.EXTRA_BINDER"));
-    } while (localMediaControllerImplApi21.Cn == null);
-    synchronized (localMediaControllerImplApi21.Cm)
+      localMediaControllerImplApi21.CW = b.a.d(c.c(???, "android.support.v4.media.session.EXTRA_BINDER"));
+    } while (localMediaControllerImplApi21.CW == null);
+    synchronized (localMediaControllerImplApi21.CV)
     {
-      Iterator localIterator = localMediaControllerImplApi21.Cm.iterator();
+      Iterator localIterator = localMediaControllerImplApi21.CV.iterator();
       for (;;)
       {
         if (localIterator.hasNext())
         {
           MediaControllerCompat.a locala = (MediaControllerCompat.a)localIterator.next();
           MediaControllerCompat.MediaControllerImplApi21.a locala1 = new MediaControllerCompat.MediaControllerImplApi21.a(locala);
-          localMediaControllerImplApi21.Co.put(locala, locala1);
-          locala.Ci = true;
+          localMediaControllerImplApi21.CX.put(locala, locala1);
+          locala.CR = true;
           try
           {
-            localMediaControllerImplApi21.Cn.a(locala1);
+            localMediaControllerImplApi21.CW.a(locala1);
           }
           catch (RemoteException localRemoteException) {}
         }
       }
-      localMediaControllerImplApi21.Cm.clear();
+      localMediaControllerImplApi21.CV.clear();
       return;
     }
   }

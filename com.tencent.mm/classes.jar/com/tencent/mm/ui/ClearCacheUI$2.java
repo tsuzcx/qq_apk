@@ -2,6 +2,7 @@ package com.tencent.mm.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ClearCacheUI$2
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class ClearCacheUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.uHM.finish();
+    AppMethodBeat.i(29166);
+    this.yUX.finish();
+    AppMethodBeat.o(29166);
   }
 }
 

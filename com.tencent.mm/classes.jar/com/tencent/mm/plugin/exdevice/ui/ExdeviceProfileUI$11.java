@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.f.a.e;
-import com.tencent.mm.plugin.sport.b.d;
+import com.tencent.mm.plugin.sport.a.d;
 
 final class ExdeviceProfileUI$11
   implements View.OnClickListener
@@ -12,8 +13,10 @@ final class ExdeviceProfileUI$11
   
   public final void onClick(View paramView)
   {
-    d.jdMethod_if(18);
-    e.d(this.jEM);
+    AppMethodBeat.i(20032);
+    d.kS(18);
+    e.e(this.lOl);
+    AppMethodBeat.o(20032);
   }
 }
 

@@ -7,17 +7,17 @@ final class ContentLoadingProgressBar$2
   
   public final void run()
   {
-    this.JJ.JG = false;
-    if (!this.JJ.mDismissed)
+    this.Jp.Jm = false;
+    if (!this.Jp.mDismissed)
     {
-      this.JJ.mStartTime = System.currentTimeMillis();
-      this.JJ.setVisibility(0);
+      this.Jp.mStartTime = System.currentTimeMillis();
+      this.Jp.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v4.widget.ContentLoadingProgressBar.2
  * JD-Core Version:    0.7.0.1
  */

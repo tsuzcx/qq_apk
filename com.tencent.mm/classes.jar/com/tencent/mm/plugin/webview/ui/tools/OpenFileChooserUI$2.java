@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class OpenFileChooserUI$2
   implements DialogInterface.OnCancelListener
@@ -10,8 +11,10 @@ final class OpenFileChooserUI$2
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.rlE.setResult(0);
-    this.rlE.finish();
+    AppMethodBeat.i(7443);
+    this.vbg.setResult(0);
+    this.vbg.finish();
+    AppMethodBeat.o(7443);
   }
 }
 

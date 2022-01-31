@@ -1,13 +1,13 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import com.tencent.mm.ui.widget.a.e.d;
+import com.tencent.mm.ui.widget.b.e.c;
 
 final class n$8$2
-  implements e.d
+  implements e.c
 {
   n$8$2(n.8 param8) {}
   
-  public final void b(boolean paramBoolean, String paramString) {}
+  public final void d(boolean paramBoolean, String paramString) {}
 }
 
 

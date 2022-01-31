@@ -5,7 +5,7 @@ public final class c$il
 {
   public c$il()
   {
-    super("setSendDataDirection", "setSendDataDirection", 127, false);
+    super("sendEnterpriseChat", "sendEnterpriseChat", 222, true);
   }
 }
 

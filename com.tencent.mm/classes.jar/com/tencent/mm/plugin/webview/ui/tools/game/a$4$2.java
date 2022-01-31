@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$4$2
   implements Runnable
@@ -9,13 +10,15 @@ final class a$4$2
   
   public final void run()
   {
-    int i = this.rwf.rwe.rvX.cdV();
-    this.rqe.putInt("height", i);
+    AppMethodBeat.i(8651);
+    int i = this.vmx.vmw.vmn.daT();
+    this.val$result.putInt("height", i);
+    AppMethodBeat.o(8651);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.game.a.4.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.api.recordView;
 
-import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.h;
+import com.tencent.mm.plugin.mmsight.model.a.d.a;
 
 final class f$3
-  implements Runnable
+  implements d.a
 {
-  f$3(f paramf, MMSightRecordView.f paramf1) {}
+  f$3(f paramf, MMSightRecordView.h paramh) {}
   
-  public final void run()
+  public final void asO()
   {
-    this.fxk.fwV = false;
-    if (this.fxl != null) {
-      this.fxl.db(false);
+    AppMethodBeat.i(138313);
+    if (this.gOp != null) {
+      this.gOp.ef(true);
     }
+    AppMethodBeat.o(138313);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.api.recordView.f.3
  * JD-Core Version:    0.7.0.1
  */

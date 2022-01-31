@@ -1,20 +1,27 @@
 package com.tencent.mm.plugin.aa;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
-    return new a();
+    AppMethodBeat.i(40571);
+    a locala = new a();
+    AppMethodBeat.o(40571);
+    return locala;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new b();
+    AppMethodBeat.i(40572);
+    b localb = new b();
+    AppMethodBeat.o(40572);
+    return localb;
   }
   
   public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()

@@ -1,107 +1,53 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.os.Bundle;
-import com.tencent.mm.m.c;
-import com.tencent.mm.m.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.os.FileObserver;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class s
+  extends FileObserver
 {
-  private static volatile s rTK = null;
+  private String qGD;
+  private s.a vKN;
   
-  public static int DE(int paramInt)
+  public s(String paramString, s.a parama)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 5;
-    case 0: 
-      return bk.getInt(g.AB().H("QQBroswer", "RecommendCount"), 5);
-    }
-    return 2147483647;
+    super(paramString);
+    AppMethodBeat.i(79226);
+    ab.i("MicroMsg.ScreenshotObserver", "observer  ".concat(String.valueOf(paramString)));
+    this.vKN = parama;
+    AppMethodBeat.o(79226);
   }
   
-  public static void DF(int paramInt)
+  public final void onEvent(int paramInt, String paramString)
   {
-    switch (paramInt)
+    AppMethodBeat.i(79227);
+    if ((paramString != null) && (paramInt == 8) && ((this.qGD == null) || (!paramString.equalsIgnoreCase(this.qGD))))
     {
-    default: 
-      return;
-    case 0: 
-      h.nFQ.f(10998, new Object[] { Integer.valueOf(0) });
-      return;
+      this.qGD = paramString;
+      this.vKN.cuT();
+      ab.i("MicroMsg.ScreenshotObserver", "Send event to listener. ".concat(String.valueOf(paramString)));
     }
-    h.nFQ.f(11091, new Object[] { Integer.valueOf(0) });
+    AppMethodBeat.o(79227);
   }
   
-  public static void DG(int paramInt)
+  public final void start()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      h.nFQ.f(10998, new Object[] { Integer.valueOf(1) });
-      return;
-    }
-    h.nFQ.f(11091, new Object[] { Integer.valueOf(1) });
+    AppMethodBeat.i(79228);
+    super.startWatching();
+    AppMethodBeat.o(79228);
   }
   
-  public static void DH(int paramInt)
+  public final void stop()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      h.nFQ.f(10998, new Object[] { Integer.valueOf(3) });
-      return;
-    }
-    h.nFQ.f(11091, new Object[] { Integer.valueOf(3) });
-  }
-  
-  public static void DI(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      h.nFQ.f(10998, new Object[] { Integer.valueOf(2) });
-      return;
-    }
-    h.nFQ.f(11091, new Object[] { Integer.valueOf(2) });
-  }
-  
-  public static s ckE()
-  {
-    if (rTK == null) {}
-    try
-    {
-      if (rTK == null) {
-        rTK = new s();
-      }
-      return rTK;
-    }
-    finally {}
-  }
-  
-  public static r u(int paramInt, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return new o();
-    case 2: 
-      return new a(paramBundle);
-    }
-    return new w();
+    AppMethodBeat.i(79229);
+    super.stopWatching();
+    AppMethodBeat.o(79229);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.s
  * JD-Core Version:    0.7.0.1
  */

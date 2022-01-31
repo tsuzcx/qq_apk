@@ -1,21 +1,83 @@
 package com.tencent.mm.plugin.music.b.a;
 
-import com.tencent.mm.plugin.music.f.c.a;
+import com.tencent.mars.smc.IDKey;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract interface b
-  extends a
+public final class b
 {
-  public abstract void Je(String paramString);
+  static void r(ArrayList<IDKey> paramArrayList)
+  {
+    AppMethodBeat.i(104815);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("idkeyGroupStat:  id:688");
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      IDKey localIDKey = (IDKey)paramArrayList.next();
+      localStringBuilder.append(", key:" + localIDKey.GetKey() + " value:" + localIDKey.GetValue());
+    }
+    com.tencent.mm.audio.mix.h.b.d("MicroMsg.Audio.AudioPlayIdKeyReport", localStringBuilder.toString());
+    AppMethodBeat.o(104815);
+  }
   
-  public abstract void a(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void dm(int paramInt1, int paramInt2);
-  
-  public abstract void ea(String paramString1, String paramString2);
-  
-  public abstract void ux(int paramInt);
-  
-  public abstract void uy(int paramInt);
+  public static int zN(int paramInt)
+  {
+    AppMethodBeat.i(104814);
+    ab.i("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
+    switch (paramInt)
+    {
+    default: 
+      AppMethodBeat.o(104814);
+      return 115;
+    case 702: 
+      AppMethodBeat.o(104814);
+      return 98;
+    case 703: 
+      AppMethodBeat.o(104814);
+      return 99;
+    case 704: 
+      AppMethodBeat.o(104814);
+      return 100;
+    case 705: 
+      AppMethodBeat.o(104814);
+      return 101;
+    case 706: 
+      AppMethodBeat.o(104814);
+      return 102;
+    case 707: 
+      AppMethodBeat.o(104814);
+      return 103;
+    case 708: 
+      AppMethodBeat.o(104814);
+      return 104;
+    case 709: 
+      AppMethodBeat.o(104814);
+      return 105;
+    case 710: 
+      AppMethodBeat.o(104814);
+      return 106;
+    case 711: 
+      AppMethodBeat.o(104814);
+      return 107;
+    case 712: 
+      AppMethodBeat.o(104814);
+      return 108;
+    case 713: 
+      AppMethodBeat.o(104814);
+      return 119;
+    case 714: 
+      AppMethodBeat.o(104814);
+      return 120;
+    case 715: 
+      AppMethodBeat.o(104814);
+      return 109;
+    }
+    AppMethodBeat.o(104814);
+    return 110;
+  }
 }
 
 

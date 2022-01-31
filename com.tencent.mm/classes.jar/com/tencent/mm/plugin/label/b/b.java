@@ -1,68 +1,78 @@
 package com.tencent.mm.plugin.label.b;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.ss;
-import com.tencent.mm.protocal.c.st;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ws;
+import com.tencent.mm.protocal.protobuf.wt;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class b
   extends m
   implements k
 {
-  private final com.tencent.mm.ah.b dmK;
-  private f dmL;
-  public String lAN = null;
+  private f callback;
+  public String nXY;
+  private final com.tencent.mm.ai.b rr;
   
   public b(String paramString)
   {
+    AppMethodBeat.i(22524);
+    this.nXY = null;
     b.a locala = new b.a();
-    locala.ecH = new ss();
-    locala.ecI = new st();
+    locala.fsX = new ws();
+    locala.fsY = new wt();
     locala.uri = "/cgi-bin/micromsg-bin/delcontactlabel";
-    locala.ecG = 636;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    this.lAN = paramString;
+    locala.funcId = 636;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    this.nXY = paramString;
+    AppMethodBeat.o(22524);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    ss localss = (ss)this.dmK.ecE.ecN;
-    localss.sQu = this.lAN;
-    if ((this.lAN != null) && (!bk.bl(this.lAN)))
+    AppMethodBeat.i(22526);
+    this.callback = paramf;
+    ws localws = (ws)this.rr.fsV.fta;
+    localws.wOV = this.nXY;
+    if ((this.nXY != null) && (!bo.isNullOrNil(this.nXY)))
     {
-      localss.sQu = this.lAN;
-      localss.sQu = this.lAN;
-      return a(parame, this.dmK, this);
+      localws.wOV = this.nXY;
+      localws.wOV = this.nXY;
+      int i = dispatch(parame, this.rr, this);
+      AppMethodBeat.o(22526);
+      return i;
     }
-    y.e("MicroMsg.Label.NetSceneDelContactLabel", "cpan[doScene] label id list is null.");
+    ab.e("MicroMsg.Label.NetSceneDelContactLabel", "cpan[doScene] label id list is null.");
     paramf.onSceneEnd(3, -1, "[doScene]empty label is list.", this);
+    AppMethodBeat.o(22526);
     return 0;
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.Label.NetSceneDelContactLabel", "cpan[onGYNetEnd] netId:%d errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
   }
   
   public final int getType()
   {
     return 636;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(22525);
+    ab.d("MicroMsg.Label.NetSceneDelContactLabel", "cpan[onGYNetEnd] netId:%d errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(22525);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.label.b.b
  * JD-Core Version:    0.7.0.1
  */

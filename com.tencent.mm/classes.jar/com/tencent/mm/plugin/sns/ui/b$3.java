@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$3
   implements Animation.AnimationListener
@@ -11,20 +12,22 @@ final class b$3
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.ovR != null)
+    AppMethodBeat.i(38066);
+    if (this.rkM != null)
     {
-      this.ovR.clearAnimation();
-      this.ovR.setVisibility(8);
-      this.oMj.bEx();
+      this.rkM.clearAnimation();
+      this.rkM.setVisibility(8);
+      this.rDU.cpX();
     }
-    this.oMj.ovC = false;
+    this.rDU.rkx = false;
+    AppMethodBeat.o(38066);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    this.oMj.ovC = true;
+    this.rDU.rkx = true;
   }
 }
 

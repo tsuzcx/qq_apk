@@ -1,8 +1,17 @@
 package com.tencent.mm.plugin.facedetectaction.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a$b
 {
-  private static a jWa = new a((byte)0);
+  private static a mqs;
+  
+  static
+  {
+    AppMethodBeat.i(681);
+    mqs = new a((byte)0);
+    AppMethodBeat.o(681);
+  }
 }
 
 

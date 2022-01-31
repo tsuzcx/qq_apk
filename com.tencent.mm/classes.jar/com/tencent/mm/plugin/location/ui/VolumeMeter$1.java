@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.location.ui;
 
 import android.os.Looper;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class VolumeMeter$1
   implements Runnable
@@ -10,9 +11,11 @@ final class VolumeMeter$1
   
   public final void run()
   {
+    AppMethodBeat.i(113577);
     Looper.prepare();
-    VolumeMeter.a(this.lHN, new ah());
+    VolumeMeter.a(this.oeZ, new ak());
     Looper.loop();
+    AppMethodBeat.o(113577);
   }
 }
 

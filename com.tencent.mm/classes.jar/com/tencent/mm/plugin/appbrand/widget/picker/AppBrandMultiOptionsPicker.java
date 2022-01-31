@@ -10,69 +10,79 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
-import com.tencent.luggage.c.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m.b;
+import com.tencent.mm.plugin.appbrand.jsapi.n.b;
 
 public final class AppBrandMultiOptionsPicker
   extends FrameLayout
   implements b<int[]>
 {
-  private boolean afR;
-  private final Drawable hzU;
-  public LinearLayout hzV;
-  private boolean hzW;
-  private d hzX;
-  public final YANumberPicker.b hzY = new AppBrandMultiOptionsPicker.1(this);
+  private boolean aih;
+  private final Drawable jsk;
+  public LinearLayout jsl;
+  private boolean jsm;
+  private d jsn;
+  public final YANumberPicker.b jso;
   
   @Keep
   public AppBrandMultiOptionsPicker(Context paramContext)
   {
     super(paramContext);
-    this.hzU = paramContext.getResources().getDrawable(a.b.app_brand_multi_options_picker_column_divider);
-    this.hzV = new LinearLayout(paramContext);
-    this.hzV.setPadding(a.fromDPToPix(paramContext, 2), 0, a.fromDPToPix(paramContext, 2), 0);
-    this.hzV.setOrientation(0);
-    addView(this.hzV, new FrameLayout.LayoutParams(-1, -1, 17));
-    this.hzV.setDividerDrawable(this.hzU);
-    this.hzV.setShowDividers(2);
+    AppMethodBeat.i(126704);
+    this.jso = new AppBrandMultiOptionsPicker.1(this);
+    this.jsk = paramContext.getResources().getDrawable(2130837750);
+    this.jsl = new LinearLayout(paramContext);
+    this.jsl.setPadding(a.fromDPToPix(paramContext, 2), 0, a.fromDPToPix(paramContext, 2), 0);
+    this.jsl.setOrientation(0);
+    addView(this.jsl, new FrameLayout.LayoutParams(-1, -1, 17));
+    this.jsl.setDividerDrawable(this.jsk);
+    this.jsl.setShowDividers(2);
+    AppMethodBeat.o(126704);
   }
   
   public final void a(d paramd)
   {
-    this.hzX = paramd;
+    this.jsn = paramd;
   }
   
-  public final void ajP()
+  public final void aEs()
   {
+    AppMethodBeat.i(126712);
     int j = getPickersCount();
     int i = 0;
     while (i < j)
     {
-      c localc = nb(i);
+      c localc = qI(i);
       if (localc != null) {
-        localc.asY();
+        localc.aSe();
       }
       i += 1;
     }
+    AppMethodBeat.o(126712);
   }
   
-  public final void ajQ()
+  public final void aEt()
   {
-    this.hzX = null;
+    this.jsn = null;
   }
   
   public final void b(d paramd)
   {
-    this.hzX = paramd;
+    this.jsn = paramd;
   }
   
   public final int getPickersCount()
   {
-    if (this.hzV == null) {
+    AppMethodBeat.i(126710);
+    if (this.jsl == null)
+    {
+      AppMethodBeat.o(126710);
       return 0;
     }
-    return this.hzV.getChildCount();
+    int i = this.jsl.getChildCount();
+    AppMethodBeat.o(126710);
+    return i;
   }
   
   public final View getView()
@@ -80,80 +90,104 @@ public final class AppBrandMultiOptionsPicker
     return this;
   }
   
-  public final c nb(int paramInt)
-  {
-    if (paramInt < 0) {}
-    while (this.hzV == null) {
-      return null;
-    }
-    return (c)this.hzV.getChildAt(paramInt);
-  }
-  
-  public final void nc(int paramInt)
-  {
-    if (paramInt <= 0) {}
-    for (;;)
-    {
-      return;
-      int i = getPickersCount() - 1;
-      while (paramInt > 0)
-      {
-        this.hzV.removeViewAt(i);
-        i -= 1;
-        paramInt -= 1;
-      }
-    }
-  }
-  
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.afR) {
+    AppMethodBeat.i(126707);
+    if (this.aih)
+    {
+      AppMethodBeat.o(126707);
       return false;
     }
-    return super.onInterceptTouchEvent(paramMotionEvent);
+    boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(126707);
+    return bool;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.afR) {
+    AppMethodBeat.i(126708);
+    if (this.aih)
+    {
+      AppMethodBeat.o(126708);
       return false;
     }
-    return super.onTouchEvent(paramMotionEvent);
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(126708);
+    return bool;
+  }
+  
+  public final c qI(int paramInt)
+  {
+    AppMethodBeat.i(126709);
+    if (paramInt < 0)
+    {
+      AppMethodBeat.o(126709);
+      return null;
+    }
+    if (this.jsl == null)
+    {
+      AppMethodBeat.o(126709);
+      return null;
+    }
+    c localc = (c)this.jsl.getChildAt(paramInt);
+    AppMethodBeat.o(126709);
+    return localc;
+  }
+  
+  public final void qJ(int paramInt)
+  {
+    AppMethodBeat.i(126711);
+    if (paramInt <= 0)
+    {
+      AppMethodBeat.o(126711);
+      return;
+    }
+    int i = getPickersCount() - 1;
+    while (paramInt > 0)
+    {
+      this.jsl.removeViewAt(i);
+      i -= 1;
+      paramInt -= 1;
+    }
+    AppMethodBeat.o(126711);
   }
   
   public final void requestLayout()
   {
-    if (this.afR)
+    AppMethodBeat.i(126706);
+    if (this.aih)
     {
-      this.hzW = true;
+      this.jsm = true;
+      AppMethodBeat.o(126706);
       return;
     }
     super.requestLayout();
+    AppMethodBeat.o(126706);
   }
   
   public final void setLayoutFrozen(boolean paramBoolean)
   {
-    if (this.afR != paramBoolean)
+    AppMethodBeat.i(126705);
+    if (this.aih != paramBoolean)
     {
-      this.afR = paramBoolean;
-      if (!paramBoolean) {
-        break label36;
+      this.aih = paramBoolean;
+      if (paramBoolean)
+      {
+        long l = SystemClock.uptimeMillis();
+        onTouchEvent(MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0));
+        AppMethodBeat.o(126705);
+        return;
       }
-      l = SystemClock.uptimeMillis();
-      onTouchEvent(MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0));
+      if (this.jsm) {
+        requestLayout();
+      }
     }
-    label36:
-    while (!this.hzW)
-    {
-      long l;
-      return;
-    }
-    requestLayout();
+    AppMethodBeat.o(126705);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandMultiOptionsPicker
  * JD-Core Version:    0.7.0.1
  */

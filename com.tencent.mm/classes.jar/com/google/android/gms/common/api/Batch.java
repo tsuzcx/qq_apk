@@ -1,79 +1,47 @@
 package com.google.android.gms.common.api;
 
-import com.google.android.gms.internal.zzaaf;
+import com.google.android.gms.common.api.internal.BasePendingResult;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 public final class Batch
-  extends zzaaf<BatchResult>
+  extends BasePendingResult<BatchResult>
 {
-  private int zzayM;
-  private boolean zzayN;
-  private boolean zzayO;
-  private final PendingResult<?>[] zzayP;
-  private final Object zzrJ = new Object();
+  private final Object mLock;
+  private int zzcd;
+  private boolean zzce;
+  private boolean zzcf;
+  private final PendingResult<?>[] zzcg;
   
   private Batch(List<PendingResult<?>> paramList, GoogleApiClient paramGoogleApiClient)
   {
     super(paramGoogleApiClient);
-    this.zzayM = paramList.size();
-    this.zzayP = new PendingResult[this.zzayM];
-    if (paramList.isEmpty()) {
-      zzb(new BatchResult(Status.zzazx, this.zzayP));
-    }
-    for (;;)
+    AppMethodBeat.i(60486);
+    this.mLock = new Object();
+    this.zzcd = paramList.size();
+    this.zzcg = new PendingResult[this.zzcd];
+    if (paramList.isEmpty())
     {
+      setResult(new BatchResult(Status.RESULT_SUCCESS, this.zzcg));
+      AppMethodBeat.o(60486);
       return;
-      int i = 0;
-      while (i < paramList.size())
-      {
-        paramGoogleApiClient = (PendingResult)paramList.get(i);
-        this.zzayP[i] = paramGoogleApiClient;
-        paramGoogleApiClient.zza(new PendingResult.zza()
-        {
-          public void zzy(Status paramAnonymousStatus)
-          {
-            for (;;)
-            {
-              synchronized (Batch.zza(Batch.this))
-              {
-                if (Batch.this.isCanceled()) {
-                  return;
-                }
-                if (paramAnonymousStatus.isCanceled())
-                {
-                  Batch.zza(Batch.this, true);
-                  Batch.zzb(Batch.this);
-                  if (Batch.zzc(Batch.this) == 0)
-                  {
-                    if (!Batch.zzd(Batch.this)) {
-                      break;
-                    }
-                    Batch.zze(Batch.this);
-                  }
-                  return;
-                }
-              }
-              if (!paramAnonymousStatus.isSuccess()) {
-                Batch.zzb(Batch.this, true);
-              }
-            }
-            if (Batch.zzf(Batch.this)) {}
-            for (paramAnonymousStatus = new Status(13);; paramAnonymousStatus = Status.zzazx)
-            {
-              Batch.this.zzb(new BatchResult(paramAnonymousStatus, Batch.zzg(Batch.this)));
-              break;
-            }
-          }
-        });
-        i += 1;
-      }
     }
+    int i = 0;
+    while (i < paramList.size())
+    {
+      paramGoogleApiClient = (PendingResult)paramList.get(i);
+      this.zzcg[i] = paramGoogleApiClient;
+      paramGoogleApiClient.addStatusListener(new zza(this));
+      i += 1;
+    }
+    AppMethodBeat.o(60486);
   }
   
   public final void cancel()
   {
+    AppMethodBeat.i(60487);
     super.cancel();
-    PendingResult[] arrayOfPendingResult = this.zzayP;
+    PendingResult[] arrayOfPendingResult = this.zzcg;
     int j = arrayOfPendingResult.length;
     int i = 0;
     while (i < j)
@@ -81,16 +49,20 @@ public final class Batch
       arrayOfPendingResult[i].cancel();
       i += 1;
     }
+    AppMethodBeat.o(60487);
   }
   
   public final BatchResult createFailedResult(Status paramStatus)
   {
-    return new BatchResult(paramStatus, this.zzayP);
+    AppMethodBeat.i(60488);
+    paramStatus = new BatchResult(paramStatus, this.zzcg);
+    AppMethodBeat.o(60488);
+    return paramStatus;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.common.api.Batch
  * JD-Core Version:    0.7.0.1
  */

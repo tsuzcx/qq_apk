@@ -4,11 +4,12 @@ import android.content.Context;
 import android.net.DhcpInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import com.tencent.mm.a.n;
-import com.tencent.mm.protocal.c.ri;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.o;
+import com.tencent.mm.protocal.protobuf.vd;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,67 +21,74 @@ final class b$1
   
   public final void run()
   {
+    AppMethodBeat.i(17807);
     Object localObject;
     int k;
     String str;
     int i;
-    switch (this.bns)
+    switch (this.bHS)
     {
     default: 
+      AppMethodBeat.o(17807);
+      return;
     case 1: 
-      int j;
-      do
+      localObject = (WifiManager)ah.getContext().getSystemService("wifi");
+      int j = ((WifiManager)localObject).getConnectionInfo().getIpAddress();
+      localObject = ((WifiManager)localObject).getDhcpInfo();
+      if (localObject == null)
       {
+        AppMethodBeat.o(17807);
         return;
-        localObject = (WifiManager)ae.getContext().getSystemService("wifi");
-        j = ((WifiManager)localObject).getConnectionInfo().getIpAddress();
-        localObject = ((WifiManager)localObject).getDhcpInfo();
-      } while (localObject == null);
+      }
       k = ((DhcpInfo)localObject).netmask;
       str = (j & 0xFF) + "." + (j >> 8 & 0xFF) + "." + (j >> 16 & 0xFF) + "." + (j >> 24 & 0xFF);
-      y.e("MicroMsg.BakOldJavaEngine", "localip:%s, mask:%d", new Object[] { str, Integer.valueOf(k) });
+      ab.e("MicroMsg.BakOldJavaEngine", "localip:%s, mask:%d", new Object[] { str, Integer.valueOf(k) });
       localObject = null;
       i = 0;
-      Iterator localIterator = this.hNF.iterator();
+      Iterator localIterator = this.jHh.iterator();
+      label193:
       while (localIterator.hasNext())
       {
-        ri localri = (ri)localIterator.next();
-        y.i("MicroMsg.BakOldJavaEngine", "try ip:%s", new Object[] { localri.sMR });
-        if (localri.sMR != null)
+        vd localvd = (vd)localIterator.next();
+        ab.i("MicroMsg.BakOldJavaEngine", "try ip:%s", new Object[] { localvd.wKH });
+        if (localvd.wKH != null)
         {
-          String[] arrayOfString = localri.sMR.split("\\.");
+          String[] arrayOfString = localvd.wKH.split("\\.");
           if (arrayOfString.length >= 4)
           {
-            int m = n.q(new byte[] { (byte)(bk.getInt(arrayOfString[0], 0) & 0xFF), (byte)(bk.getInt(arrayOfString[1], 0) & 0xFF), (byte)(bk.getInt(arrayOfString[2], 0) & 0xFF), (byte)(bk.getInt(arrayOfString[3], 0) & 0xFF) });
+            int m = o.z(new byte[] { (byte)(bo.getInt(arrayOfString[0], 0) & 0xFF), (byte)(bo.getInt(arrayOfString[1], 0) & 0xFF), (byte)(bo.getInt(arrayOfString[2], 0) & 0xFF), (byte)(bo.getInt(arrayOfString[3], 0) & 0xFF) });
             if ((k & m) == (k & j))
             {
-              b.a(this.hNG, localri.sMR, ((Integer)localri.sPm.getFirst()).intValue());
+              b.a(this.jHi, localvd.wKH, ((Integer)localvd.wNF.getFirst()).intValue());
+              AppMethodBeat.o(17807);
               return;
             }
             if ((m & 0xFFFF) != (0xFFFF & j)) {
-              break label520;
+              break label557;
             }
-            localObject = localri.sMR;
-            i = ((Integer)localri.sPm.getFirst()).intValue();
+            localObject = localvd.wKH;
+            i = ((Integer)localvd.wNF.getFirst()).intValue();
           }
         }
       }
     }
-    label520:
+    label557:
     for (;;)
     {
-      break;
+      break label193;
       if (localObject != null)
       {
-        y.w("MicroMsg.BakOldJavaEngine", "try to connect to secondary:%s, port:%d", new Object[] { localObject, Integer.valueOf(i) });
-        b.a(this.hNG, (String)localObject, i);
+        ab.w("MicroMsg.BakOldJavaEngine", "try to connect to secondary:%s, port:%d", new Object[] { localObject, Integer.valueOf(i) });
+        b.a(this.jHi, (String)localObject, i);
+        AppMethodBeat.o(17807);
         return;
       }
-      b.a(this.hNG, 10009, String.format("not match ip mask:%d, localip:%s", new Object[] { Integer.valueOf(k), str }).getBytes());
-      y.e("MicroMsg.BakOldJavaEngine", "not match ip mask:%d, localip:%s", new Object[] { Integer.valueOf(k), str });
+      b.a(this.jHi, 10009, String.format("not match ip mask:%d, localip:%s", new Object[] { Integer.valueOf(k), str }).getBytes());
+      ab.e("MicroMsg.BakOldJavaEngine", "not match ip mask:%d, localip:%s", new Object[] { Integer.valueOf(k), str });
+      AppMethodBeat.o(17807);
       return;
-      b.a(this.hNG, ((Integer)((ri)this.hNF.get(0)).sPm.getFirst()).intValue());
-      return;
+      b.a(this.jHi, ((Integer)((vd)this.jHh.get(0)).wNF.getFirst()).intValue());
+      break;
     }
   }
 }

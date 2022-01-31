@@ -11,12 +11,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
-import com.tencent.mm.R.c;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.pluginsdk.f.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.k;
 import java.util.List;
 
@@ -27,96 +26,104 @@ final class l$7
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = this.lzG.replace(" ", "").replace("(", "").replace(")", "").replace("-", "");
-    paramAdapterView = (String)this.kbG.get(paramInt);
-    y.i("MicroMsg.MailPhoneMenuHelper", paramAdapterView);
-    if (this.val$context.getString(R.l.chatting_phone_use).equals(paramAdapterView))
+    AppMethodBeat.i(28139);
+    paramView = this.nWS.replace(" ", "").replace("(", "").replace(")", "").replace("-", "");
+    paramAdapterView = (String)this.mwc.get(paramInt);
+    ab.i("MicroMsg.MailPhoneMenuHelper", paramAdapterView);
+    if (this.val$context.getString(2131298279).equals(paramAdapterView))
     {
-      paramAdapterView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + paramView));
+      paramAdapterView = new Intent("android.intent.action.DIAL", Uri.parse("tel:".concat(String.valueOf(paramView))));
       paramAdapterView.addFlags(268435456);
-      if (bk.i(this.val$context, paramAdapterView)) {
+      if (bo.k(this.val$context, paramAdapterView)) {
         this.val$context.startActivity(paramAdapterView);
       }
-      com.tencent.mm.plugin.report.service.h.nFQ.aC(10112, "1");
-      this.sjO.dismiss();
-      if (this.sjL != null) {
-        this.sjL.onDismiss(null);
+      com.tencent.mm.plugin.report.service.h.qsU.kvStat(10112, "1");
+      this.wcv.dismiss();
+      if (this.wcs != null) {
+        this.wcs.onDismiss(null);
+      }
+      AppMethodBeat.o(28139);
+      return;
+    }
+    if (this.val$context.getString(2131298280).equals(paramAdapterView))
+    {
+      com.tencent.mm.plugin.report.service.h.qsU.e(12059, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+      paramAdapterView = new Intent();
+      paramAdapterView.putExtra("IPCallTalkUI_phoneNumber", paramView);
+      d.b(this.val$context, "ipcall", ".ui.IPCallDialUI", paramAdapterView);
+      this.wcv.dismiss();
+      if (this.wcs != null) {
+        this.wcs.onDismiss(null);
+      }
+      AppMethodBeat.o(28139);
+      return;
+    }
+    if (this.val$context.getString(2131298271).equals(paramAdapterView))
+    {
+      if ((l.dpp()) && (l.dpq())) {
+        paramAdapterView = this.val$context.getResources().getStringArray(2131755042);
+      }
+      for (;;)
+      {
+        this.val$context.getResources().getString(2131298277);
+        com.tencent.mm.ui.base.h.a(this.val$context, this.nWS, paramAdapterView, "", new l.7.1(this, paramView), new l.7.2(this));
+        this.wcv.dismiss();
+        AppMethodBeat.o(28139);
+        return;
+        if (l.dpp())
+        {
+          paramAdapterView = new String[1];
+          paramAdapterView[0] = this.val$context.getResources().getString(2131298270);
+        }
+        else
+        {
+          paramAdapterView = new String[1];
+          paramAdapterView[0] = this.val$context.getResources().getString(2131298278);
+        }
       }
     }
-    do
+    if (this.val$context.getString(2131298273).equals(paramAdapterView))
     {
-      do
-      {
-        do
-        {
-          return;
-          if (!this.val$context.getString(R.l.chatting_phone_use_by_ipcall).equals(paramAdapterView)) {
-            break;
-          }
-          com.tencent.mm.plugin.report.service.h.nFQ.f(12059, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-          paramAdapterView = new Intent();
-          paramAdapterView.putExtra("IPCallTalkUI_phoneNumber", paramView);
-          d.b(this.val$context, "ipcall", ".ui.IPCallDialUI", paramAdapterView);
-          this.sjO.dismiss();
-        } while (this.sjL == null);
-        this.sjL.onDismiss(null);
-        return;
-        if (this.val$context.getString(R.l.chatting_phone_add_op).equals(paramAdapterView))
-        {
-          if ((l.coc()) && (l.cod())) {
-            paramAdapterView = this.val$context.getResources().getStringArray(R.c.phone_url_add);
-          }
-          for (;;)
-          {
-            this.val$context.getResources().getString(R.l.chatting_phone_maybe_phone);
-            com.tencent.mm.ui.base.h.a(this.val$context, this.lzG, paramAdapterView, "", new l.7.1(this, paramView), new l.7.2(this));
-            this.sjO.dismiss();
-            return;
-            if (l.coc())
-            {
-              paramAdapterView = new String[1];
-              paramAdapterView[0] = this.val$context.getResources().getString(R.l.chatting_phone_add_contact);
-            }
-            else
-            {
-              paramAdapterView = new String[1];
-              paramAdapterView[0] = this.val$context.getResources().getString(R.l.chatting_phone_modify_contact);
-            }
-          }
-        }
-        if (this.val$context.getString(R.l.chatting_phone_copy).equals(paramAdapterView))
-        {
-          a.a(this.val$context, paramView, paramView);
-          com.tencent.mm.plugin.report.service.h.nFQ.aC(10115, "1");
-          if (this.sjL != null) {
-            this.sjL.onDismiss(null);
-          }
-          this.sjO.dismiss();
-          Toast.makeText(this.val$context, this.val$context.getString(R.l.app_copy_ok), 1).show();
-          return;
-        }
-        if (this.val$context.getString(R.l.chatting_phone_download_wxpb).equals(paramAdapterView))
-        {
-          y.d("MicroMsg.MailPhoneMenuHelper", "hy: button should consume this action");
-          return;
-        }
-        if (!l.sjK.equals(paramAdapterView)) {
-          break;
-        }
-        l.a((Activity)this.val$context, this.lzG, this.sjP);
-        this.sjO.dismiss();
-      } while (this.sjL == null);
-      this.sjL.onDismiss(null);
+      a.b(paramView, paramView);
+      com.tencent.mm.plugin.report.service.h.qsU.kvStat(10115, "1");
+      if (this.wcs != null) {
+        this.wcs.onDismiss(null);
+      }
+      this.wcv.dismiss();
+      Toast.makeText(this.val$context, this.val$context.getString(2131296896), 1).show();
+      AppMethodBeat.o(28139);
       return;
-      y.e("MicroMsg.MailPhoneMenuHelper", "hy: error phone item clicked. should not happen");
-      this.sjO.dismiss();
-    } while (this.sjL == null);
-    this.sjL.onDismiss(null);
+    }
+    if (this.val$context.getString(2131298275).equals(paramAdapterView))
+    {
+      ab.d("MicroMsg.MailPhoneMenuHelper", "hy: button should consume this action");
+      AppMethodBeat.o(28139);
+      return;
+    }
+    if (l.wcr.equals(paramAdapterView))
+    {
+      l.a((Activity)this.val$context, this.nWS, this.wcw);
+      this.wcv.dismiss();
+      if (this.wcs != null)
+      {
+        this.wcs.onDismiss(null);
+        AppMethodBeat.o(28139);
+      }
+    }
+    else
+    {
+      ab.e("MicroMsg.MailPhoneMenuHelper", "hy: error phone item clicked. should not happen");
+      this.wcv.dismiss();
+      if (this.wcs != null) {
+        this.wcs.onDismiss(null);
+      }
+    }
+    AppMethodBeat.o(28139);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.d.l.7
  * JD-Core Version:    0.7.0.1
  */

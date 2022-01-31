@@ -1,46 +1,18 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
-import com.google.android.gms.common.internal.safeparcel.zzc;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.wearable.CapabilityApi.CapabilityListener;
 
-public class zzz
-  implements Parcelable.Creator<zzy>
+final class zzz
+  extends zzn<Status>
 {
-  static void zza(zzy paramzzy, Parcel paramParcel, int paramInt)
-  {
-    paramInt = zzc.zzaZ(paramParcel);
-    zzc.zzc(paramParcel, 2, paramzzy.statusCode);
-    zzc.zzJ(paramParcel, paramInt);
-  }
+  private CapabilityApi.CapabilityListener zzbs;
   
-  public zzy zzkU(Parcel paramParcel)
+  private zzz(GoogleApiClient paramGoogleApiClient, CapabilityApi.CapabilityListener paramCapabilityListener)
   {
-    int j = zzb.zzaY(paramParcel);
-    int i = 0;
-    while (paramParcel.dataPosition() < j)
-    {
-      int k = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(k))
-      {
-      default: 
-        zzb.zzb(paramParcel, k);
-        break;
-      case 2: 
-        i = zzb.zzg(paramParcel, k);
-      }
-    }
-    if (paramParcel.dataPosition() != j) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + j, paramParcel);
-    }
-    return new zzy(i);
-  }
-  
-  public zzy[] zzpw(int paramInt)
-  {
-    return new zzy[paramInt];
+    super(paramGoogleApiClient);
+    this.zzbs = paramCapabilityListener;
   }
 }
 

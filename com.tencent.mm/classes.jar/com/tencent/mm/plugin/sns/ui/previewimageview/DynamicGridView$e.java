@@ -4,15 +4,15 @@ import android.graphics.Rect;
 
 public abstract interface DynamicGridView$e
 {
-  public abstract void bKp();
+  public abstract void Fn(int paramInt);
   
-  public abstract void k(Rect paramRect);
+  public abstract void Fo(int paramInt);
   
-  public abstract boolean l(Rect paramRect);
+  public abstract void cxc();
   
-  public abstract void zc(int paramInt);
+  public abstract void m(Rect paramRect);
   
-  public abstract void zd(int paramInt);
+  public abstract boolean n(Rect paramRect);
 }
 
 

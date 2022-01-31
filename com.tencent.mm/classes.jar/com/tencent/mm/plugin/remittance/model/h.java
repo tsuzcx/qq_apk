@@ -1,67 +1,75 @@
 package com.tencent.mm.plugin.remittance.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.co;
-import com.tencent.mm.protocal.c.kb;
-import com.tencent.mm.protocal.c.kc;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cz;
+import com.tencent.mm.protocal.protobuf.mn;
+import com.tencent.mm.protocal.protobuf.mo;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class h
   extends m
   implements k
 {
-  private f dmL;
-  private b eWr;
-  public kc nyg;
+  private f callback;
+  private b goo;
+  public mo qjh;
   
-  public h(co paramco, String paramString)
+  public h(cz paramcz, String paramString)
   {
+    AppMethodBeat.i(44735);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new kb();
-    ((b.a)localObject).ecI = new kc();
-    ((b.a)localObject).ecG = 1241;
+    ((b.a)localObject).fsX = new mn();
+    ((b.a)localObject).fsY = new mo();
+    ((b.a)localObject).funcId = 1241;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/busif2fpaycheck";
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.eWr = ((b.a)localObject).Kt();
-    localObject = (kb)this.eWr.ecE.ecN;
-    ((kb)localObject).sEQ = paramco;
-    ((kb)localObject).sER = paramString;
-    y.i("MicroMsg.NetSceneBusiF2fPayCheck", "NetSceneBusiF2fPayCheck, f2fId: %s, transId: %s, amount: %s req: %s", new Object[] { paramco.swc, paramco.swd, Integer.valueOf(paramco.swh), a.a(paramco) });
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.goo = ((b.a)localObject).ado();
+    localObject = (mn)this.goo.fsV.fta;
+    ((mn)localObject).wAZ = paramcz;
+    ((mn)localObject).wBa = paramString;
+    ab.i("MicroMsg.NetSceneBusiF2fPayCheck", "NetSceneBusiF2fPayCheck, f2fId: %s, transId: %s, amount: %s req: %s", new Object[] { paramcz.wpp, paramcz.wpq, Integer.valueOf(paramcz.wpu), a.a(paramcz) });
+    AppMethodBeat.o(44735);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.eWr, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneBusiF2fPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.nyg = ((kc)((b)paramq).ecF.ecN);
-    y.i("MicroMsg.NetSceneBusiF2fPayCheck", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.nyg.ino), this.nyg.inp });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
+    AppMethodBeat.i(44736);
+    this.callback = paramf;
+    int i = dispatch(parame, this.goo, this);
+    AppMethodBeat.o(44736);
+    return i;
   }
   
   public final int getType()
   {
     return 1241;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(44737);
+    ab.i("MicroMsg.NetSceneBusiF2fPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.qjh = ((mo)((b)paramq).fsW.fta);
+    ab.i("MicroMsg.NetSceneBusiF2fPayCheck", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.qjh.koj), this.qjh.kok });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(44737);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.h
  * JD-Core Version:    0.7.0.1
  */

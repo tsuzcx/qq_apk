@@ -1,52 +1,77 @@
 package com.tencent.mm.sdk.platformtools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.IOException;
 
 public class FLock
 {
-  private File fDw = null;
-  private volatile int uep = -1;
+  private File gVL;
+  private volatile int ymQ;
+  
+  static
+  {
+    AppMethodBeat.i(115187);
+    try
+    {
+      System.loadLibrary("wechatcommon");
+      AppMethodBeat.o(115187);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      ab.printErrStackTrace("MicroMsg.FLock", localThrowable, "fail to load so.", new Object[0]);
+      AppMethodBeat.o(115187);
+    }
+  }
   
   public FLock(File paramFile)
   {
+    AppMethodBeat.i(115179);
+    this.gVL = null;
+    this.ymQ = -1;
     if (!paramFile.exists()) {}
     while (paramFile.isFile()) {
       try
       {
         paramFile.createNewFile();
-        this.fDw = paramFile;
+        this.gVL = paramFile;
+        AppMethodBeat.o(115179);
         return;
       }
       catch (IOException paramFile)
       {
-        throw new IllegalStateException(paramFile);
+        paramFile = new IllegalStateException(paramFile);
+        AppMethodBeat.o(115179);
+        throw paramFile;
       }
     }
-    throw new IllegalArgumentException("target is not a file.");
+    paramFile = new IllegalArgumentException("target is not a file.");
+    AppMethodBeat.o(115179);
+    throw paramFile;
   }
   
   public FLock(String paramString)
   {
     this(new File(paramString));
+    AppMethodBeat.i(115178);
+    AppMethodBeat.o(115178);
   }
   
   private void free()
   {
     try
     {
-      if (this.uep != -1)
+      AppMethodBeat.i(115182);
+      if (this.ymQ != -1)
       {
-        nativeFree(this.uep);
-        this.uep = -1;
+        nativeFree(this.ymQ);
+        this.ymQ = -1;
       }
+      AppMethodBeat.o(115182);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   /* Error */
@@ -55,61 +80,65 @@ public class FLock
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 17	com/tencent/mm/sdk/platformtools/FLock:fDw	Ljava/io/File;
-    //   6: invokevirtual 25	java/io/File:exists	()Z
-    //   9: istore_2
-    //   10: iload_2
-    //   11: ifne +16 -> 27
-    //   14: aload_0
-    //   15: getfield 17	com/tencent/mm/sdk/platformtools/FLock:fDw	Ljava/io/File;
-    //   18: invokevirtual 28	java/io/File:createNewFile	()Z
-    //   21: pop
-    //   22: aload_0
-    //   23: iconst_m1
-    //   24: putfield 19	com/tencent/mm/sdk/platformtools/FLock:uep	I
+    //   2: ldc 87
+    //   4: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 50	com/tencent/mm/sdk/platformtools/FLock:gVL	Ljava/io/File;
+    //   11: invokevirtual 58	java/io/File:exists	()Z
+    //   14: istore_2
+    //   15: iload_2
+    //   16: ifne +16 -> 32
+    //   19: aload_0
+    //   20: getfield 50	com/tencent/mm/sdk/platformtools/FLock:gVL	Ljava/io/File;
+    //   23: invokevirtual 61	java/io/File:createNewFile	()Z
+    //   26: pop
     //   27: aload_0
-    //   28: getfield 19	com/tencent/mm/sdk/platformtools/FLock:uep	I
-    //   31: iconst_m1
-    //   32: if_icmpne +17 -> 49
-    //   35: aload_0
-    //   36: aload_0
-    //   37: getfield 17	com/tencent/mm/sdk/platformtools/FLock:fDw	Ljava/io/File;
-    //   40: invokevirtual 58	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   43: invokestatic 62	com/tencent/mm/sdk/platformtools/FLock:nativeInit	(Ljava/lang/String;)I
-    //   46: putfield 19	com/tencent/mm/sdk/platformtools/FLock:uep	I
-    //   49: aload_0
-    //   50: getfield 19	com/tencent/mm/sdk/platformtools/FLock:uep	I
-    //   53: istore_1
+    //   28: iconst_m1
+    //   29: putfield 52	com/tencent/mm/sdk/platformtools/FLock:ymQ	I
+    //   32: aload_0
+    //   33: getfield 52	com/tencent/mm/sdk/platformtools/FLock:ymQ	I
+    //   36: iconst_m1
+    //   37: if_icmpne +17 -> 54
+    //   40: aload_0
+    //   41: aload_0
+    //   42: getfield 50	com/tencent/mm/sdk/platformtools/FLock:gVL	Ljava/io/File;
+    //   45: invokevirtual 91	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   48: invokestatic 95	com/tencent/mm/sdk/platformtools/FLock:nativeInit	(Ljava/lang/String;)I
+    //   51: putfield 52	com/tencent/mm/sdk/platformtools/FLock:ymQ	I
     //   54: aload_0
-    //   55: monitorexit
-    //   56: iload_1
-    //   57: ireturn
-    //   58: astore_3
-    //   59: aload_0
-    //   60: monitorexit
-    //   61: aload_3
-    //   62: athrow
-    //   63: astore_3
-    //   64: goto -42 -> 22
+    //   55: getfield 52	com/tencent/mm/sdk/platformtools/FLock:ymQ	I
+    //   58: istore_1
+    //   59: ldc 87
+    //   61: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: aload_0
+    //   65: monitorexit
+    //   66: iload_1
+    //   67: ireturn
+    //   68: astore_3
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: aload_3
+    //   72: athrow
+    //   73: astore_3
+    //   74: goto -47 -> 27
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	67	0	this	FLock
-    //   53	4	1	i	int
-    //   9	2	2	bool	boolean
-    //   58	4	3	localObject	Object
-    //   63	1	3	localIOException	IOException
+    //   0	77	0	this	FLock
+    //   58	9	1	i	int
+    //   14	2	2	bool	boolean
+    //   68	4	3	localObject	Object
+    //   73	1	3	localIOException	IOException
     // Exception table:
     //   from	to	target	type
-    //   2	10	58	finally
-    //   14	22	58	finally
-    //   22	27	58	finally
-    //   27	49	58	finally
-    //   49	54	58	finally
-    //   14	22	63	java/io/IOException
+    //   2	15	68	finally
+    //   19	27	68	finally
+    //   27	32	68	finally
+    //   32	54	68	finally
+    //   54	64	68	finally
+    //   19	27	73	java/io/IOException
   }
   
-  private static native int nativeFree(int paramInt);
+  private static native void nativeFree(int paramInt);
   
   private static native int nativeInit(String paramString);
   
@@ -119,54 +148,68 @@ public class FLock
   
   private static native int nativeUnlock(int paramInt);
   
-  public final boolean cqt()
+  public final boolean dsq()
   {
-    boolean bool2 = false;
+    boolean bool = false;
     for (;;)
     {
       try
       {
+        AppMethodBeat.i(115184);
         int i = init();
-        int j = nativeLockWrite(i, false);
-        boolean bool1 = bool2;
-        switch (j)
+        switch (nativeLockWrite(i, false))
         {
-        default: 
-          bool1 = true;
-        case 11: 
-          return bool1;
+        case 9: 
+          bool = true;
+          AppMethodBeat.o(115184);
+          return bool;
         }
       }
       finally {}
-      throw new IllegalStateException("bad file descriptor.");
-      throw new IllegalStateException("bad operation.");
-      throw new IllegalStateException("kernel lock spaces ran out.");
+      IllegalStateException localIllegalStateException1 = new IllegalStateException("bad file descriptor.");
+      AppMethodBeat.o(115184);
+      throw localIllegalStateException1;
+      IllegalStateException localIllegalStateException2 = new IllegalStateException("bad operation.");
+      AppMethodBeat.o(115184);
+      throw localIllegalStateException2;
+      localIllegalStateException2 = new IllegalStateException("kernel lock spaces ran out.");
+      AppMethodBeat.o(115184);
+      throw localIllegalStateException2;
       try
       {
         Thread.sleep(0L);
       }
       catch (InterruptedException localInterruptedException) {}
+      continue;
+      AppMethodBeat.o(115184);
     }
   }
   
-  public final void cqu()
+  public final void dsr()
   {
     for (;;)
     {
       try
       {
+        AppMethodBeat.i(115185);
         int i = init();
-        int j = nativeLockWrite(i, true);
-        switch (j)
+        switch (nativeLockWrite(i, true))
         {
-        default: 
+        case 9: 
+          AppMethodBeat.o(115185);
           return;
         }
       }
       finally {}
-      throw new IllegalStateException("bad file descriptor.");
-      throw new IllegalStateException("bad operation.");
-      throw new IllegalStateException("kernel lock spaces ran out.");
+      IllegalStateException localIllegalStateException1 = new IllegalStateException("bad file descriptor.");
+      AppMethodBeat.o(115185);
+      throw localIllegalStateException1;
+      IllegalStateException localIllegalStateException2 = new IllegalStateException("bad operation.");
+      AppMethodBeat.o(115185);
+      throw localIllegalStateException2;
+      localIllegalStateException2 = new IllegalStateException("kernel lock spaces ran out.");
+      AppMethodBeat.o(115185);
+      throw localIllegalStateException2;
       try
       {
         Thread.sleep(0L);
@@ -177,8 +220,10 @@ public class FLock
   
   protected void finalize()
   {
+    AppMethodBeat.i(115180);
     super.finalize();
     unlock();
+    AppMethodBeat.o(115180);
   }
   
   public final void lockRead()
@@ -187,18 +232,25 @@ public class FLock
     {
       try
       {
+        AppMethodBeat.i(115183);
         int i = init();
-        int j = nativeLockRead(i, true);
-        switch (j)
+        switch (nativeLockRead(i, true))
         {
-        default: 
+        case 9: 
+          AppMethodBeat.o(115183);
           return;
         }
       }
       finally {}
-      throw new IllegalStateException("bad file descriptor.");
-      throw new IllegalStateException("bad operation.");
-      throw new IllegalStateException("kernel lock spaces ran out.");
+      IllegalStateException localIllegalStateException1 = new IllegalStateException("bad file descriptor.");
+      AppMethodBeat.o(115183);
+      throw localIllegalStateException1;
+      IllegalStateException localIllegalStateException2 = new IllegalStateException("bad operation.");
+      AppMethodBeat.o(115183);
+      throw localIllegalStateException2;
+      localIllegalStateException2 = new IllegalStateException("kernel lock spaces ran out.");
+      AppMethodBeat.o(115183);
+      throw localIllegalStateException2;
       try
       {
         Thread.sleep(0L);
@@ -213,34 +265,44 @@ public class FLock
     {
       try
       {
-        int i = this.uep;
-        if (i == -1) {
+        AppMethodBeat.i(115186);
+        if (this.ymQ == -1)
+        {
+          AppMethodBeat.o(115186);
           return;
         }
         try
         {
-          i = nativeUnlock(this.uep);
+          int i = nativeUnlock(this.ymQ);
           switch (i)
           {
           case 9: 
-            throw new IllegalStateException("other err: " + i);
+            IllegalStateException localIllegalStateException = new IllegalStateException("other err: ".concat(String.valueOf(i)));
+            AppMethodBeat.o(115186);
+            throw localIllegalStateException;
           }
         }
         finally
         {
           free();
+          AppMethodBeat.o(115186);
         }
-        throw new IllegalArgumentException(this.uep + " is not a valid fd.");
+        localObject3 = new IllegalArgumentException(this.ymQ + " is not a valid fd.");
       }
       finally {}
-      throw new IllegalStateException("bad operation.");
+      AppMethodBeat.o(115186);
+      throw ((Throwable)localObject3);
+      Object localObject3 = new IllegalStateException("bad operation.");
+      AppMethodBeat.o(115186);
+      throw ((Throwable)localObject3);
       free();
+      AppMethodBeat.o(115186);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.FLock
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.label.ui.widget;
 
 public abstract interface InputClearablePreference$a
 {
-  public abstract void Gs(String paramString);
+  public abstract void RV(String paramString);
   
-  public abstract void he(boolean paramBoolean);
+  public abstract void iO(boolean paramBoolean);
 }
 
 

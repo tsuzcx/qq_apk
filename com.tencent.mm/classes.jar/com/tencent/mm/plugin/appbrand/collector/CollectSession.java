@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -14,20 +15,37 @@ import junit.framework.Assert;
 public class CollectSession
   implements Parcelable
 {
-  public static final Parcelable.Creator<CollectSession> CREATOR = new CollectSession.1();
-  public final Bundle bOY = new Bundle();
-  TimePoint fNl;
-  TimePoint fNm;
-  final Map<String, TimePoint> fNn = new HashMap();
-  String fNo;
+  public static final Parcelable.Creator<CollectSession> CREATOR;
+  public final Bundle cwp;
   String groupId;
+  TimePoint hgv;
+  TimePoint hgw;
+  final Map<String, TimePoint> hgx;
+  String hgy;
   String id;
   
-  CollectSession() {}
+  static
+  {
+    AppMethodBeat.i(57019);
+    CREATOR = new CollectSession.1();
+    AppMethodBeat.o(57019);
+  }
+  
+  CollectSession()
+  {
+    AppMethodBeat.i(57014);
+    this.hgx = new HashMap();
+    this.cwp = new Bundle();
+    AppMethodBeat.o(57014);
+  }
   
   public CollectSession(String paramString)
   {
+    AppMethodBeat.i(57015);
+    this.hgx = new HashMap();
+    this.cwp = new Bundle();
     this.id = paramString;
+    AppMethodBeat.o(57015);
   }
   
   public int describeContents()
@@ -35,45 +53,52 @@ public class CollectSession
     return 0;
   }
   
-  public final void rR(String paramString)
+  public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    Assert.assertNull(this.fNl);
-    this.fNl = new TimePoint(paramString, System.nanoTime());
-    this.fNm = this.fNl;
-    this.fNl.fNw.set(1);
-    this.fNn.put(paramString, this.fNl);
+    AppMethodBeat.i(57018);
+    paramParcel.writeString(this.groupId);
+    paramParcel.writeString(this.id);
+    paramParcel.writeParcelable(this.hgv, paramInt);
+    paramParcel.writeString(this.hgy);
+    paramParcel.writeBundle(this.cwp);
+    AppMethodBeat.o(57018);
   }
   
-  public final void rS(String paramString)
+  public final void zH(String paramString)
   {
-    Assert.assertNotNull(this.fNm);
+    AppMethodBeat.i(57016);
+    Assert.assertNull(this.hgv);
+    this.hgv = new TimePoint(paramString, System.nanoTime());
+    this.hgw = this.hgv;
+    this.hgv.hgG.set(1);
+    this.hgx.put(paramString, this.hgv);
+    AppMethodBeat.o(57016);
+  }
+  
+  public final void zI(String paramString)
+  {
+    AppMethodBeat.i(57017);
+    Assert.assertNotNull(this.hgw);
     long l = System.nanoTime();
-    TimePoint localTimePoint = (TimePoint)this.fNn.get(paramString);
+    TimePoint localTimePoint = (TimePoint)this.hgx.get(paramString);
     if (localTimePoint == null)
     {
       localTimePoint = new TimePoint(paramString, l);
-      localTimePoint.fNw.set(1);
-      this.fNn.put(paramString, localTimePoint);
-      this.fNm.fNy.set(localTimePoint);
-      this.fNm = localTimePoint;
+      localTimePoint.hgG.set(1);
+      this.hgx.put(paramString, localTimePoint);
+      this.hgw.hgI.set(localTimePoint);
+      this.hgw = localTimePoint;
+      AppMethodBeat.o(57017);
       return;
     }
-    localTimePoint.fNx.set((l + localTimePoint.fNx.get() * localTimePoint.fNw.get()) / (localTimePoint.fNw.get() + 1));
-    localTimePoint.fNw.incrementAndGet();
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    paramParcel.writeString(this.groupId);
-    paramParcel.writeString(this.id);
-    paramParcel.writeParcelable(this.fNl, paramInt);
-    paramParcel.writeString(this.fNo);
-    paramParcel.writeBundle(this.bOY);
+    localTimePoint.hgH.set((l + localTimePoint.hgH.get() * localTimePoint.hgG.get()) / (localTimePoint.hgG.get() + 1));
+    localTimePoint.hgG.incrementAndGet();
+    AppMethodBeat.o(57017);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.CollectSession
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,35 @@
 package com.tencent.mm.plugin.appbrand.game.c;
 
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.l;
-import com.tencent.xweb.m;
-import com.tencent.xweb.p;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.udp.libmmudp.a.a;
 
 final class b$2
-  extends p
+  implements a.a
 {
-  b$2(b paramb) {}
-  
-  private static m tw(String paramString)
+  public final void loadLibrary(String paramString)
   {
-    if ("wagame://WAGameVConsole.html".equals(paramString)) {
-      return WxaCommLibRuntimeReader.qY("WAGameVConsole.html");
-    }
-    return null;
-  }
-  
-  public final m a(WebView paramWebView, l paraml)
-  {
-    return tw(paraml.getUrl().toString());
-  }
-  
-  public final m a(WebView paramWebView, l paraml, Bundle paramBundle)
-  {
-    return tw(paraml.getUrl().toString());
-  }
-  
-  public final void a(WebView paramWebView, String paramString)
-  {
-    b.a(this.gbg);
-    if ((b.b(this.gbg) != null) && (!b.b(this.gbg).isEmpty()))
+    AppMethodBeat.i(143125);
+    try
     {
-      paramWebView = b.b(this.gbg).iterator();
-      while (paramWebView.hasNext())
-      {
-        paramString = (String)paramWebView.next();
-        b.a(this.gbg, paramString);
-      }
+      ab.i("MicroMsg.WAGame.MBLoadDelegateRegistryWC", "loadLibrary libName:%s", new Object[] { paramString });
+      k.a(paramString, b.aAC());
+      AppMethodBeat.o(143125);
+      return;
     }
-  }
-  
-  public final m c(WebView paramWebView, String paramString)
-  {
-    return tw(paramString);
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      ab.printErrStackTrace("MicroMsg.WAGame.MBLoadDelegateRegistryWC", localUnsatisfiedLinkError, "hy: link %s error!!", new Object[] { paramString });
+      com.tencent.mm.plugin.appbrand.game.h.b.cJ(ah.getContext());
+      AppMethodBeat.o(143125);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.c.b.2
  * JD-Core Version:    0.7.0.1
  */

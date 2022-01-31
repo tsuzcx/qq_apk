@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/amx" />
-    <item android:drawable="@drawable/amw" />
-</selector>
+    <solid android:color="#ffe0e0e0" />
+    <corners android:radius="@dimen/fb" />
+</shape>

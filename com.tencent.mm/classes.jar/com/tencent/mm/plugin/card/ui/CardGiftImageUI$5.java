@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.card.ui;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.tools.e;
 
 final class CardGiftImageUI$5
@@ -12,8 +13,10 @@ final class CardGiftImageUI$5
   
   public final boolean onPreDraw()
   {
-    CardGiftImageUI.c(this.itG).getViewTreeObserver().removeOnPreDrawListener(this);
-    CardGiftImageUI.e(this.itG).a(CardGiftImageUI.c(this.itG), CardGiftImageUI.d(this.itG), null);
+    AppMethodBeat.i(88397);
+    CardGiftImageUI.c(this.kuL).getViewTreeObserver().removeOnPreDrawListener(this);
+    CardGiftImageUI.e(this.kuL).a(CardGiftImageUI.c(this.kuL), CardGiftImageUI.d(this.kuL), null);
+    AppMethodBeat.o(88397);
     return true;
   }
 }

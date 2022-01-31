@@ -1,5 +1,6 @@
 package com.tencent.mm.chatroom.plugin;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import org.xwalk.core.Log;
@@ -9,8 +10,10 @@ public class PluginChatroomUI
 {
   public void execute(g paramg)
   {
+    AppMethodBeat.i(103961);
     Log.i("MicroMsg.PluginChatroomUI", "[execute]");
-    pin(a.xh());
+    pin(a.Jz());
+    AppMethodBeat.o(103961);
   }
   
   public String name()

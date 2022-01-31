@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.bbom;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.n.a;
 
 final class p$1
@@ -8,12 +9,16 @@ final class p$1
 {
   p$1(Context paramContext) {}
   
-  public final void et(int paramInt)
+  public final void onNetworkChange(int paramInt)
   {
-    if ((paramInt != 4) && (paramInt != 6)) {
+    AppMethodBeat.i(18275);
+    if ((paramInt != 4) && (paramInt != 6))
+    {
+      AppMethodBeat.o(18275);
       return;
     }
-    p.awk();
+    p.aVO();
+    AppMethodBeat.o(18275);
   }
 }
 

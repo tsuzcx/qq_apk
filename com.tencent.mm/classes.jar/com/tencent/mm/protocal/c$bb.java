@@ -5,12 +5,12 @@ public final class c$bb
 {
   public c$bb()
   {
-    super("openEmotionUrl", "openEmotionUrl", 20000, false);
+    super("downloadImage", "downloadImage", 106, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.c.bb
  * JD-Core Version:    0.7.0.1
  */

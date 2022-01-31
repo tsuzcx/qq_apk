@@ -6,30 +6,30 @@ import android.os.Build.VERSION;
 
 final class a
 {
-  private static final d pk = new b();
+  private static final d qg = new b();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 19)
     {
-      pk = new c();
+      qg = new c();
       return;
     }
   }
   
   static void a(Animator paramAnimator, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    pk.a(paramAnimator, paramAnimatorListenerAdapter);
+    qg.a(paramAnimator, paramAnimatorListenerAdapter);
   }
   
   static void b(Animator paramAnimator)
   {
-    pk.b(paramAnimator);
+    qg.b(paramAnimator);
   }
   
   static void c(Animator paramAnimator)
   {
-    pk.c(paramAnimator);
+    qg.c(paramAnimator);
   }
 }
 

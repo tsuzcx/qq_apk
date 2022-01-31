@@ -1,19 +1,37 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.model.am.a;
-import com.tencent.mm.model.am.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.applet.n;
 
 final class g$115
-  implements DialogInterface.OnCancelListener
+  implements n
 {
-  g$115(g paramg, String paramString) {}
+  g$115(g paramg, i parami) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void nP(int paramInt)
   {
-    am.a.dVy.iC(this.dol);
-    g.a(this.rzi, g.j(this.rzi), "profile:cancel", null);
+    AppMethodBeat.i(155035);
+    switch (paramInt)
+    {
+    default: 
+      this.vqm.a(this.uZa, "quickly_add_contact:fail", null);
+      AppMethodBeat.o(155035);
+      return;
+    case -2: 
+      this.vqm.a(this.uZa, "quickly_add_contact:added", null);
+      AppMethodBeat.o(155035);
+      return;
+    case 0: 
+      this.vqm.a(this.uZa, "quickly_add_contact:cancel", null);
+      AppMethodBeat.o(155035);
+      return;
+    case -1: 
+      this.vqm.a(this.uZa, "quickly_add_contact:fail", null);
+      AppMethodBeat.o(155035);
+      return;
+    }
+    this.vqm.a(this.uZa, "quickly_add_contact:ok", null);
+    AppMethodBeat.o(155035);
   }
 }
 

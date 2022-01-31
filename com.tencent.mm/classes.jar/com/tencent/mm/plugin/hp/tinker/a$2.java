@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$2
   extends BroadcastReceiver
@@ -12,16 +13,19 @@ final class a$2
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
+    AppMethodBeat.i(90625);
     if (paramIntent == null) {}
     for (paramIntent = ""; "android.intent.action.SCREEN_OFF".equals(paramIntent); paramIntent = paramIntent.getAction())
     {
       com.tencent.tinker.lib.f.a.i("Tinker.ScreenOffRetryPatch", "ScreenOffRetryPatch screen off now, send message now", new Object[0]);
-      this.lnm.handler.postDelayed(this.val$runnable, this.lnn);
+      this.nKD.handler.postDelayed(this.val$runnable, this.nKE);
+      AppMethodBeat.o(90625);
       return;
     }
     com.tencent.tinker.lib.f.a.i("Tinker.ScreenOffRetryPatch", "ScreenOffRetryPatch screen on, remove pending runnable and receive", new Object[0]);
-    this.lnm.handler.removeCallbacks(this.val$runnable);
+    this.nKD.handler.removeCallbacks(this.val$runnable);
     paramContext.unregisterReceiver(this);
+    AppMethodBeat.o(90625);
   }
 }
 

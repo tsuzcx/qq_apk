@@ -1,49 +1,70 @@
 package com.google.android.gms.auth.api.signin.internal;
 
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptionsExtension;
-import com.google.android.gms.common.internal.safeparcel.zza;
+import android.content.Intent;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInApi;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.OptionalPendingResult;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Status;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class zzg
-  extends zza
+public final class zzg
+  implements GoogleSignInApi
 {
-  public static final Parcelable.Creator<zzg> CREATOR = new zzf();
-  final int versionCode;
-  private Bundle zzaic;
-  private int zzakD;
-  
-  zzg(int paramInt1, int paramInt2, Bundle paramBundle)
+  private static GoogleSignInOptions zzd(GoogleApiClient paramGoogleApiClient)
   {
-    this.versionCode = paramInt1;
-    this.zzakD = paramInt2;
-    this.zzaic = paramBundle;
+    AppMethodBeat.i(50431);
+    paramGoogleApiClient = ((zzh)paramGoogleApiClient.getClient(Auth.zzak)).zzn();
+    AppMethodBeat.o(50431);
+    return paramGoogleApiClient;
   }
   
-  public zzg(GoogleSignInOptionsExtension paramGoogleSignInOptionsExtension)
+  public final Intent getSignInIntent(GoogleApiClient paramGoogleApiClient)
   {
-    this(1, 1, paramGoogleSignInOptionsExtension.toBundle());
+    AppMethodBeat.i(50426);
+    paramGoogleApiClient = zzi.zzd(paramGoogleApiClient.getContext(), zzd(paramGoogleApiClient));
+    AppMethodBeat.o(50426);
+    return paramGoogleApiClient;
   }
   
-  public Bundle getBundle()
+  public final GoogleSignInResult getSignInResultFromIntent(Intent paramIntent)
   {
-    return this.zzaic;
+    AppMethodBeat.i(50430);
+    paramIntent = zzi.getSignInResultFromIntent(paramIntent);
+    AppMethodBeat.o(50430);
+    return paramIntent;
   }
   
-  public int getType()
+  public final PendingResult<Status> revokeAccess(GoogleApiClient paramGoogleApiClient)
   {
-    return this.zzakD;
+    AppMethodBeat.i(50429);
+    paramGoogleApiClient = zzi.zze(paramGoogleApiClient, paramGoogleApiClient.getContext(), false);
+    AppMethodBeat.o(50429);
+    return paramGoogleApiClient;
   }
   
-  public void writeToParcel(Parcel paramParcel, int paramInt)
+  public final PendingResult<Status> signOut(GoogleApiClient paramGoogleApiClient)
   {
-    zzf.zza(this, paramParcel, paramInt);
+    AppMethodBeat.i(50428);
+    paramGoogleApiClient = zzi.zzd(paramGoogleApiClient, paramGoogleApiClient.getContext(), false);
+    AppMethodBeat.o(50428);
+    return paramGoogleApiClient;
+  }
+  
+  public final OptionalPendingResult<GoogleSignInResult> silentSignIn(GoogleApiClient paramGoogleApiClient)
+  {
+    AppMethodBeat.i(50427);
+    paramGoogleApiClient = zzi.zzd(paramGoogleApiClient, paramGoogleApiClient.getContext(), zzd(paramGoogleApiClient), false);
+    AppMethodBeat.o(50427);
+    return paramGoogleApiClient;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.zzg
  * JD-Core Version:    0.7.0.1
  */

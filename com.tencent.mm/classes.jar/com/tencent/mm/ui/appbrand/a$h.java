@@ -6,9 +6,9 @@ import com.tencent.mm.ui.base.l;
 
 public abstract interface a$h
 {
-  public abstract void a(l paraml);
+  public abstract View dDv();
   
-  public abstract View cAl();
+  public abstract void onCreateMMMenu(l paraml);
   
   public abstract void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt);
 }

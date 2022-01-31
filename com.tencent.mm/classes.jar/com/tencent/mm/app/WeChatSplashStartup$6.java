@@ -1,11 +1,24 @@
 package com.tencent.mm.app;
 
-import com.tencent.mm.vending.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.api.g;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class WeChatSplashStartup$6
-  implements a<Void, Void>
+  implements g
 {
   WeChatSplashStartup$6(WeChatSplashStartup paramWeChatSplashStartup) {}
+  
+  public final void BN()
+  {
+    AppMethodBeat.i(137953);
+    if (!ah.dsV()) {
+      y.a.bZh.BA();
+    }
+    AppMethodBeat.o(137953);
+  }
+  
+  public final void br(boolean paramBoolean) {}
 }
 
 

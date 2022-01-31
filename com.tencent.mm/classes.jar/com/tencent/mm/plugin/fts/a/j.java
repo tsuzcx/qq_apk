@@ -6,15 +6,15 @@ import java.util.List;
 
 public abstract interface j
 {
-  public abstract ad DK(String paramString);
+  public abstract ad OT(String paramString);
   
-  public abstract boolean DL(String paramString);
+  public abstract boolean OU(String paramString);
   
-  public abstract long DM(String paramString);
+  public abstract long OV(String paramString);
   
-  public abstract List<String> DN(String paramString);
+  public abstract List<String> OW(String paramString);
   
-  public abstract Cursor g(String paramString, String[] paramArrayOfString);
+  public abstract Cursor i(String paramString, String[] paramArrayOfString);
   
   public abstract Cursor rawQuery(String paramString, String[] paramArrayOfString);
 }

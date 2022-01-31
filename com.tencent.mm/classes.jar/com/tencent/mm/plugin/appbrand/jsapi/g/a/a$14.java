@@ -1,23 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnScreenShotListener;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.animation.AnimatorSet;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.e.c;
 
 final class a$14
-  implements TencentMap.OnScreenShotListener
+  implements Runnable
 {
-  a$14(a parama) {}
+  a$14(a parama, c paramc) {}
   
-  public final void onMapScreenShot(Bitmap paramBitmap)
+  public final void run()
   {
-    y.v("MicroMsg.DefaultTencentMapView", "updateScreenCapture end");
-    if (paramBitmap != null) {
-      this.gtW.bNu.setImageBitmap(paramBitmap);
-    }
-    this.gtW.gtU.set(false);
+    AppMethodBeat.i(51161);
+    this.hOX.nC.start();
+    AppMethodBeat.o(51161);
   }
 }
 

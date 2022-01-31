@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ComposeUI$19$2$1
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class ComposeUI$19$2$1
   
   public final void run()
   {
-    ComposeUI.h(this.ngU.ngS.ngJ);
-    this.ngU.ngR.requestFocus();
-    this.ngU.ngS.ngJ.showVKB();
+    AppMethodBeat.i(68199);
+    ComposeUI.h(this.pMi.pMg.pLX);
+    this.pMi.pMf.requestFocus();
+    this.pMi.pMg.pLX.showVKB();
+    AppMethodBeat.o(68199);
   }
 }
 

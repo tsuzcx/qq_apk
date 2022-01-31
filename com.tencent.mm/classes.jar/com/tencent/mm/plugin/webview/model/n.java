@@ -1,62 +1,80 @@
 package com.tencent.mm.plugin.webview.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.ajo;
-import com.tencent.mm.protocal.c.ajp;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ahk;
+import com.tencent.mm.protocal.protobuf.ahl;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.Map;
 
 public final class n
   extends m
   implements k
 {
-  private f dIJ;
-  public final b dmK;
-  public Object tag;
+  private f callback;
+  public b rr;
   
-  public n(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public n(String paramString1, String paramString2, Map<String, Object> paramMap)
   {
-    y.d("MicroMsg.NetSceneGetReadingModeInfoProxy", "NetSceneSetOAuthScope doScene url[%s], userAgent[%s], width[%d], height[%d]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(6601);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new ajo();
-    ((b.a)localObject).ecI = new ajp();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getreadingmodeinfo";
-    ((b.a)localObject).ecG = 673;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (ajo)this.dmK.ecE.ecN;
-    ((ajo)localObject).URL = paramString1;
-    ((ajo)localObject).tgg = paramString2;
-    ((ajo)localObject).Width = paramInt1;
-    ((ajo)localObject).Height = paramInt2;
+    ((b.a)localObject).fsX = new ahk();
+    ((b.a)localObject).fsY = new ahl();
+    ((b.a)localObject).uri = "/cgi-bin/mmocbiz-bin/getbizjsapiredirecturl";
+    ((b.a)localObject).funcId = 1393;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (ahk)this.rr.fsV.fta;
+    ((ahk)localObject).wOf = paramString1;
+    ((ahk)localObject).wAE = paramString2;
+    ((ahk)localObject).wZM = ((String)paramMap.get("groupId"));
+    ((ahk)localObject).uho = ((String)paramMap.get("timestamp"));
+    ((ahk)localObject).kwJ = ((String)paramMap.get("nonceStr"));
+    ((ahk)localObject).signature = ((String)paramMap.get("signature"));
+    ((ahk)localObject).wZN = paramMap.get("params").toString();
+    AppMethodBeat.o(6601);
   }
   
-  public final int a(e parame, f paramf)
+  public final ahl dbK()
   {
-    y.i("MicroMsg.NetSceneGetReadingModeInfoProxy", "doScene");
-    this.dIJ = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneGetReadingModeInfoProxy", "errType = " + paramInt2 + ", errCode = " + paramInt3);
-    this.dIJ.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      y.e("MicroMsg.NetSceneGetReadingModeInfoProxy", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    if ((this.rr != null) && (this.rr.fsW.fta != null)) {
+      return (ahl)this.rr.fsW.fta;
     }
+    return null;
+  }
+  
+  public final int doScene(e parame, f paramf)
+  {
+    AppMethodBeat.i(6603);
+    this.callback = paramf;
+    ab.i("MicroMsg.NetSceneGetBizJsApiRedirectUrl", "do scene");
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(6603);
+    return i;
   }
   
   public final int getType()
   {
-    return 673;
+    return 1393;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(6602);
+    ab.d("MicroMsg.NetSceneGetBizJsApiRedirectUrl", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(6602);
   }
 }
 

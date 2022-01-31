@@ -1,5 +1,7 @@
 package com.tencent.tmassistantsdk.storage.table;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class TipsInfoLogTable
   extends BaseLogTable
 {
@@ -12,10 +14,12 @@ public class TipsInfoLogTable
   {
     try
     {
+      AppMethodBeat.i(76209);
       if (mInstance == null) {
         mInstance = new TipsInfoLogTable();
       }
       TipsInfoLogTable localTipsInfoLogTable = mInstance;
+      AppMethodBeat.o(76209);
       return localTipsInfoLogTable;
     }
     finally {}
@@ -23,9 +27,14 @@ public class TipsInfoLogTable
   
   protected String[] getAlterSQL(int paramInt)
   {
-    if (paramInt > 1) {
-      return new String[] { getCreateTableSQL() };
+    AppMethodBeat.i(76210);
+    if (paramInt > 1)
+    {
+      String str = getCreateTableSQL();
+      AppMethodBeat.o(76210);
+      return new String[] { str };
     }
+    AppMethodBeat.o(76210);
     return null;
   }
   
@@ -46,7 +55,7 @@ public class TipsInfoLogTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.TipsInfoLogTable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,18 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
+import com.google.android.gms.common.api.Result;
+import com.google.android.gms.common.internal.PendingResultUtil.ResultConverter;
 
-public class zzco
-  extends zza
+final class zzco
+  implements PendingResultUtil.ResultConverter
 {
-  public static final Parcelable.Creator<zzco> CREATOR = new zzcp();
-  public final int statusCode;
-  public final int zzbhZ;
+  static final PendingResultUtil.ResultConverter zzbx;
   
-  public zzco(int paramInt1, int paramInt2)
-  {
-    this.statusCode = paramInt1;
-    this.zzbhZ = paramInt2;
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    zzcp.zza(this, paramParcel, paramInt);
-  }
+  public final Object convert(Result arg1) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzco
  * JD-Core Version:    0.7.0.1
  */

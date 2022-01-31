@@ -1,33 +1,36 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.tools.n.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.tools.q.b;
 
 final class MobileFriendUI$11
-  implements n.b
+  implements q.b
 {
   MobileFriendUI$11(MobileFriendUI paramMobileFriendUI) {}
   
-  public final void Wl() {}
+  public final void apN() {}
   
-  public final void Wm() {}
+  public final void apO() {}
   
-  public final void Wn() {}
+  public final void apP() {}
   
-  public final void Wo() {}
+  public final void apQ() {}
   
-  public final boolean pB(String paramString)
+  public final boolean wR(String paramString)
   {
     return false;
   }
   
-  public final void pC(String paramString)
+  public final void wS(String paramString)
   {
-    MobileFriendUI.a(this.fes, bk.pl(paramString));
-    paramString = this.fes;
-    if (paramString.fen != null) {
-      paramString.fen.pA(paramString.feq);
+    AppMethodBeat.i(13729);
+    MobileFriendUI.a(this.gwb, bo.wC(paramString));
+    paramString = this.gwb;
+    if (paramString.gvW != null) {
+      paramString.gvW.wQ(paramString.gvZ);
     }
+    AppMethodBeat.o(13729);
   }
 }
 

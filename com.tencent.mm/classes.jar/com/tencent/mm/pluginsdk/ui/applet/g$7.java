@@ -1,15 +1,18 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.widget.ImageView;
-import com.tencent.mm.ui.e.a.a;
-import com.tencent.mm.ui.widget.a.c.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.f.a.a;
+import com.tencent.mm.ui.widget.b.c.a.a;
 
 final class g$7
   implements c.a.a
 {
-  public final void q(ImageView paramImageView, String paramString)
+  public final void v(ImageView paramImageView, String paramString)
   {
-    a.a(paramImageView, paramString);
+    AppMethodBeat.i(27645);
+    a.c(paramImageView, paramString);
+    AppMethodBeat.o(27645);
   }
 }
 

@@ -1,10 +1,22 @@
 package android.support.v4.widget;
 
-import android.support.v4.os.a;
+import android.os.Build.VERSION;
 
 public abstract interface b
 {
-  public static final boolean IY = ;
+  public static final boolean IG;
+  
+  static
+  {
+    if (Build.VERSION.SDK_INT >= 27) {}
+    for (boolean bool = true;; bool = false)
+    {
+      IG = bool;
+      return;
+    }
+  }
+  
+  public abstract void setAutoSizeTextTypeWithDefaults(int paramInt);
 }
 
 

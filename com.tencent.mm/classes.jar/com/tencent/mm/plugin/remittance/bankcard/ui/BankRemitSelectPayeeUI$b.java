@@ -7,17 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.bankcard.model.TransferRecordParcel;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 final class BankRemitSelectPayeeUI$b
@@ -25,49 +20,81 @@ final class BankRemitSelectPayeeUI$b
 {
   private BankRemitSelectPayeeUI$b(BankRemitSelectPayeeUI paramBankRemitSelectPayeeUI) {}
   
-  private boolean bwe()
+  private boolean cgV()
   {
-    return BankRemitSelectPayeeUI.d(this.nxC) >= 0;
+    AppMethodBeat.i(44687);
+    if (BankRemitSelectPayeeUI.d(this.qiD) >= 0)
+    {
+      AppMethodBeat.o(44687);
+      return true;
+    }
+    AppMethodBeat.o(44687);
+    return false;
   }
   
-  private boolean bwf()
+  private boolean cgW()
   {
-    return BankRemitSelectPayeeUI.e(this.nxC) >= 0;
+    AppMethodBeat.i(44688);
+    if (BankRemitSelectPayeeUI.e(this.qiD) >= 0)
+    {
+      AppMethodBeat.o(44688);
+      return true;
+    }
+    AppMethodBeat.o(44688);
+    return false;
   }
   
   public final int getCount()
   {
-    int j = BankRemitSelectPayeeUI.c(this.nxC).size();
+    AppMethodBeat.i(44682);
+    int j = BankRemitSelectPayeeUI.c(this.qiD).size();
     int i = j;
-    if (bwe()) {
+    if (cgV()) {
       i = j + 1;
     }
     j = i;
-    if (bwf()) {
+    if (cgW()) {
       j = i + 1;
     }
+    AppMethodBeat.o(44682);
     return j;
   }
   
   public final Object getItem(int paramInt)
   {
-    if ((paramInt == BankRemitSelectPayeeUI.d(this.nxC)) || (paramInt == BankRemitSelectPayeeUI.e(this.nxC))) {
+    AppMethodBeat.i(44683);
+    if ((paramInt == BankRemitSelectPayeeUI.d(this.qiD)) || (paramInt == BankRemitSelectPayeeUI.e(this.qiD)))
+    {
+      AppMethodBeat.o(44683);
       return null;
     }
-    if (paramInt < BankRemitSelectPayeeUI.e(this.nxC)) {
-      return BankRemitSelectPayeeUI.c(this.nxC).get(paramInt - 1);
-    }
-    if ((bwf()) && (paramInt > BankRemitSelectPayeeUI.e(this.nxC)))
+    Object localObject;
+    if (paramInt < BankRemitSelectPayeeUI.e(this.qiD))
     {
-      if (bwe()) {
-        return BankRemitSelectPayeeUI.c(this.nxC).get(paramInt - 2);
+      localObject = BankRemitSelectPayeeUI.c(this.qiD).get(paramInt - 1);
+      AppMethodBeat.o(44683);
+      return localObject;
+    }
+    if ((cgW()) && (paramInt > BankRemitSelectPayeeUI.e(this.qiD)))
+    {
+      if (cgV())
+      {
+        localObject = BankRemitSelectPayeeUI.c(this.qiD).get(paramInt - 2);
+        AppMethodBeat.o(44683);
+        return localObject;
       }
-      return BankRemitSelectPayeeUI.c(this.nxC).get(paramInt - 1);
+      localObject = BankRemitSelectPayeeUI.c(this.qiD).get(paramInt - 1);
+      AppMethodBeat.o(44683);
+      return localObject;
     }
-    if (bwe()) {
-      return BankRemitSelectPayeeUI.c(this.nxC).get(paramInt - 1);
+    if (cgV())
+    {
+      localObject = BankRemitSelectPayeeUI.c(this.qiD).get(paramInt - 1);
+      AppMethodBeat.o(44683);
+      return localObject;
     }
-    y.i("MicroMsg.BankRemitSelectPayeeUI", "maybe wrong pos: [%s,%s,%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(BankRemitSelectPayeeUI.d(this.nxC)), Integer.valueOf(BankRemitSelectPayeeUI.e(this.nxC)) });
+    ab.i("MicroMsg.BankRemitSelectPayeeUI", "maybe wrong pos: [%s,%s,%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(BankRemitSelectPayeeUI.d(this.qiD)), Integer.valueOf(BankRemitSelectPayeeUI.e(this.qiD)) });
+    AppMethodBeat.o(44683);
     return null;
   }
   
@@ -78,77 +105,91 @@ final class BankRemitSelectPayeeUI$b
   
   public final int getItemViewType(int paramInt)
   {
-    if ((paramInt == BankRemitSelectPayeeUI.d(this.nxC)) || (paramInt == BankRemitSelectPayeeUI.e(this.nxC))) {
+    AppMethodBeat.i(44685);
+    if ((paramInt == BankRemitSelectPayeeUI.d(this.qiD)) || (paramInt == BankRemitSelectPayeeUI.e(this.qiD)))
+    {
+      AppMethodBeat.o(44685);
       return 0;
     }
+    AppMethodBeat.o(44685);
     return 1;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(44686);
     int i = getItemViewType(paramInt);
     View localView = paramView;
     if (paramView == null)
     {
-      if (i != 0) {
-        break label90;
+      if (i == 0) {
+        localView = LayoutInflater.from(this.qiD.getContext()).inflate(2130968831, paramViewGroup, false);
       }
-      localView = LayoutInflater.from(this.nxC.mController.uMN).inflate(a.g.bank_remit_select_payee_header_item, paramViewGroup, false);
     }
-    for (;;)
-    {
+    else {
       switch (i)
       {
       default: 
-        y.w("MicroMsg.BankRemitSelectPayeeUI", "unknown type: %d", new Object[] { Integer.valueOf(i) });
-        return localView;
-        label90:
-        localView = LayoutInflater.from(this.nxC.mController.uMN).inflate(a.g.bank_remit_select_payee_item, paramViewGroup, false);
-        paramView = new BankRemitSelectPayeeUI.a(this.nxC, (byte)0);
-        paramView.nxH = ((CdnImageView)localView.findViewById(a.f.brsp_item_bank_icon_iv));
-        paramView.nvw = ((TextView)localView.findViewById(a.f.brsp_item_payee_name_tv));
-        paramView.nxI = ((TextView)localView.findViewById(a.f.brsp_item_bank_info_tv));
-        localView.setTag(paramView);
+        ab.w("MicroMsg.BankRemitSelectPayeeUI", "unknown type: %d", new Object[] { Integer.valueOf(i) });
       }
     }
-    paramView = (TextView)localView.findViewById(a.f.brsp_header_tv);
-    if (BankRemitSelectPayeeUI.d(this.nxC) == paramInt) {}
-    for (i = 1; i != 0; i = 0)
+    for (;;)
     {
-      paramView.setText(a.i.bank_remit_select_payee_self_title);
+      AppMethodBeat.o(44686);
       return localView;
-    }
-    if (BankRemitSelectPayeeUI.e(this.nxC) == paramInt) {}
-    for (i = 1; i != 0; i = 0)
-    {
-      paramView.setText(a.i.bank_remit_select_payee_other_title);
-      return localView;
-    }
-    paramView.setText("");
-    y.w("MicroMsg.BankRemitSelectPayeeUI", "wrong header pos: %s", new Object[] { Integer.valueOf(paramInt) });
-    return localView;
-    paramView = (BankRemitSelectPayeeUI.a)localView.getTag();
-    paramViewGroup = (TransferRecordParcel)getItem(paramInt);
-    if (paramViewGroup != null)
-    {
-      paramView.nxH.dl(paramViewGroup.nve, a.c.transparent);
-      if (!bk.bl(paramViewGroup.nvB))
+      localView = LayoutInflater.from(this.qiD.getContext()).inflate(2130968832, paramViewGroup, false);
+      paramView = new BankRemitSelectPayeeUI.a(this.qiD, (byte)0);
+      paramView.qiI = ((CdnImageView)localView.findViewById(2131821728));
+      paramView.qgs = ((TextView)localView.findViewById(2131821729));
+      paramView.qiJ = ((TextView)localView.findViewById(2131821730));
+      localView.setTag(paramView);
+      break;
+      paramView = (TextView)localView.findViewById(2131821726);
+      if (BankRemitSelectPayeeUI.d(this.qiD) == paramInt) {}
+      for (i = 1;; i = 0)
       {
-        SpannableString localSpannableString = j.b(paramView.nxC.mController.uMN, paramView.nxC.mController.uMN.getString(a.i.bank_remit_select_payee_name_with_remark, new Object[] { paramViewGroup.nvA, paramViewGroup.nvB }));
-        paramView.nvw.setText(localSpannableString);
+        if (i == 0) {
+          break label223;
+        }
+        paramView.setText(2131297516);
+        break;
       }
-      for (;;)
+      label223:
+      if (BankRemitSelectPayeeUI.e(this.qiD) == paramInt) {}
+      for (i = 1;; i = 0)
       {
-        paramView.nxI.setText(paramView.nxC.getString(a.i.bank_remit_select_payee_name_with_remark, new Object[] { paramViewGroup.lnT, paramViewGroup.nvz }));
-        return localView;
-        paramView.nvw.setText(paramViewGroup.nvA);
+        if (i == 0) {
+          break label257;
+        }
+        paramView.setText(2131297514);
+        break;
       }
+      label257:
+      paramView.setText("");
+      ab.w("MicroMsg.BankRemitSelectPayeeUI", "wrong header pos: %s", new Object[] { Integer.valueOf(paramInt) });
+      continue;
+      paramView = (BankRemitSelectPayeeUI.a)localView.getTag();
+      paramViewGroup = (TransferRecordParcel)getItem(paramInt);
+      if (paramViewGroup != null)
+      {
+        paramView.qiI.eq(paramViewGroup.qfY, 2131690605);
+        if (!bo.isNullOrNil(paramViewGroup.qgx))
+        {
+          SpannableString localSpannableString = j.b(paramView.qiD.getContext(), paramView.qiD.getContext().getString(2131297513, new Object[] { paramViewGroup.qgw, paramViewGroup.qgx }));
+          paramView.qgs.setText(localSpannableString);
+        }
+        for (;;)
+        {
+          paramView.qiJ.setText(paramView.qiD.getString(2131297513, new Object[] { paramViewGroup.nLq, paramViewGroup.qgv }));
+          break;
+          paramView.qgs.setText(paramViewGroup.qgw);
+        }
+      }
+      paramView.qiI.setImageResource(2131690605);
+      paramView.qgs.setText("");
+      paramView.qiJ.setText("");
+      ab.w("MicroMsg.BankRemitSelectPayeeUI", "empty record");
     }
-    paramView.nxH.setImageResource(a.c.transparent);
-    paramView.nvw.setText("");
-    paramView.nxI.setText("");
-    y.w("MicroMsg.BankRemitSelectPayeeUI", "empty record");
-    return localView;
   }
   
   public final int getViewTypeCount()
@@ -158,7 +199,14 @@ final class BankRemitSelectPayeeUI$b
   
   public final boolean isEnabled(int paramInt)
   {
-    return (paramInt != BankRemitSelectPayeeUI.d(this.nxC)) && (paramInt != BankRemitSelectPayeeUI.e(this.nxC));
+    AppMethodBeat.i(44684);
+    if ((paramInt == BankRemitSelectPayeeUI.d(this.qiD)) || (paramInt == BankRemitSelectPayeeUI.e(this.qiD)))
+    {
+      AppMethodBeat.o(44684);
+      return false;
+    }
+    AppMethodBeat.o(44684);
+    return true;
   }
 }
 

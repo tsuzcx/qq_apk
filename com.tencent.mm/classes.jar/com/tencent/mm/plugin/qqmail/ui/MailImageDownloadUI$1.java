@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 
@@ -13,8 +14,10 @@ final class MailImageDownloadUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    g.DO().dJT.c(MailImageDownloadUI.a(this.niP));
-    this.niP.finish();
+    AppMethodBeat.i(68381);
+    g.RK().eHt.a(MailImageDownloadUI.a(this.pOc));
+    this.pOc.finish();
+    AppMethodBeat.o(68381);
     return true;
   }
 }

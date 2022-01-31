@@ -1,19 +1,30 @@
 package com.tencent.mm.ui.gridviewheaders;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class GridHeadersGridView$f
 {
-  private int uXU;
+  private int zml;
   
   private GridHeadersGridView$f(GridHeadersGridView paramGridHeadersGridView) {}
   
-  public final void cID()
+  public final void dNn()
   {
-    this.uXU = GridHeadersGridView.b(this.vWW);
+    AppMethodBeat.i(107371);
+    this.zml = GridHeadersGridView.b(this.Ape);
+    AppMethodBeat.o(107371);
   }
   
-  public final boolean cIE()
+  public final boolean dNo()
   {
-    return (this.vWW.hasWindowFocus()) && (GridHeadersGridView.c(this.vWW) == this.uXU);
+    AppMethodBeat.i(107372);
+    if ((this.Ape.hasWindowFocus()) && (GridHeadersGridView.c(this.Ape) == this.zml))
+    {
+      AppMethodBeat.o(107372);
+      return true;
+    }
+    AppMethodBeat.o(107372);
+    return false;
   }
 }
 

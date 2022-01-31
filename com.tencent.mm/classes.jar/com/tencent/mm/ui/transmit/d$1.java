@@ -10,7 +10,7 @@ final class d$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.vmU.wgP = true;
+    this.zCq.AzG = true;
   }
 }
 

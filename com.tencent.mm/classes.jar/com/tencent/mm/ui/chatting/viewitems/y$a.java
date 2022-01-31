@@ -1,41 +1,62 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Map;
 
 final class y$a
-  extends c.a
+  implements Comparable<a>
 {
-  protected TextView vEK;
-  protected TextView vEL;
-  protected TextView vEM;
-  protected TextView vEN;
-  protected TextView vEO;
-  protected TextView vEP;
-  protected ImageView vEQ;
+  public boolean cIi;
+  public int color;
+  public int hPx;
+  public int offset;
+  public boolean zVG;
+  public String zVH;
   
-  y$a(y paramy) {}
-  
-  public final a dY(View paramView)
+  public static a x(Map<String, String> paramMap, String paramString)
   {
-    super.dN(paramView);
-    this.vEK = ((TextView)paramView.findViewById(R.h.step_number));
-    this.vEM = ((TextView)paramView.findViewById(R.h.rank_number));
-    this.vEL = ((TextView)paramView.findViewById(R.h.step_number_tip));
-    this.vEN = ((TextView)paramView.findViewById(R.h.rank_number_tip));
-    this.vEO = ((TextView)paramView.findViewById(R.h.view_rank_tip));
-    this.vEP = ((TextView)paramView.findViewById(R.h.hard_device_spilter));
-    this.khV = ((CheckBox)paramView.findViewById(R.h.chatting_checkbox));
-    this.vEQ = ((ImageView)paramView.findViewById(R.h.view_avatar));
-    return this;
+    AppMethodBeat.i(33178);
+    a locala = new a();
+    for (;;)
+    {
+      try
+      {
+        locala.offset = bo.getInt((String)paramMap.get(paramString + ".offset"), 0);
+        str = (String)paramMap.get(paramString + ".font");
+        if (bo.isNullOrNil(str))
+        {
+          ab.d("MicroMsg.LineNode", "parseFrom, font is null, use default value");
+          str = "m";
+          locala.cIi = y.dA(str);
+          locala.zVG = y.yq(str);
+          locala.hPx = y.aus(str);
+          locala.color = y.aut((String)paramMap.get(paramString + ".color"));
+          locala.zVH = ((String)paramMap.get(paramString + ".chars"));
+          if (!bo.isNullOrNil(locala.zVH)) {
+            break;
+          }
+          ab.e("MicroMsg.LineNode", "parseFrom fail, chars is null");
+          AppMethodBeat.o(33178);
+          return null;
+        }
+      }
+      catch (Exception paramMap)
+      {
+        ab.e("MicroMsg.LineNode", "parseFrom fail, ex = " + paramMap.getMessage());
+        AppMethodBeat.o(33178);
+        return null;
+      }
+      String str = str.toLowerCase();
+    }
+    AppMethodBeat.o(33178);
+    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.y.a
  * JD-Core Version:    0.7.0.1
  */

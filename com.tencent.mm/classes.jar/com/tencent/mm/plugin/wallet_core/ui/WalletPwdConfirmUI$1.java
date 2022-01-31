@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletPwdConfirmUI$1
   implements View.OnClickListener
@@ -10,13 +11,16 @@ final class WalletPwdConfirmUI$1
   
   public final void onClick(View paramView)
   {
-    if (this.qFp.bTZ())
+    AppMethodBeat.i(47538);
+    if (this.usw.needConfirmFinish())
     {
-      this.qFp.XM();
-      this.qFp.showDialog(1000);
+      this.usw.hideVKB();
+      this.usw.showDialog(1000);
+      AppMethodBeat.o(47538);
       return;
     }
-    this.qFp.finish();
+    this.usw.finish();
+    AppMethodBeat.o(47538);
   }
 }
 

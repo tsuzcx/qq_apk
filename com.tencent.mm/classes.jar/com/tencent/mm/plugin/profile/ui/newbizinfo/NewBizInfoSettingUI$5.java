@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NewBizInfoSettingUI$5
   implements DialogInterface.OnCancelListener
@@ -10,7 +11,9 @@ final class NewBizInfoSettingUI$5
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    NewBizInfoSettingUI.c(this.nad);
+    AppMethodBeat.i(23916);
+    NewBizInfoSettingUI.d(this.pDY);
+    AppMethodBeat.o(23916);
   }
 }
 

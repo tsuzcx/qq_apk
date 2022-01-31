@@ -4,8 +4,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class DisasterUI$1
   implements View.OnClickListener
@@ -14,11 +15,13 @@ final class DisasterUI$1
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.DisasterUI", "summerdiz jump link");
-    h.nFQ.f(13939, new Object[] { Integer.valueOf(1) });
+    AppMethodBeat.i(124754);
+    ab.i("MicroMsg.DisasterUI", "summerdiz jump link");
+    h.qsU.e(13939, new Object[] { Integer.valueOf(1) });
     paramView = new Intent("android.intent.action.VIEW");
     paramView.setData(Uri.parse(this.val$url));
-    this.flo.startActivity(paramView);
+    this.gCF.startActivity(paramView);
+    AppMethodBeat.o(124754);
   }
 }
 

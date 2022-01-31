@@ -3,8 +3,7 @@ package com.tencent.mm.ui.contact;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactRemarkImagePreviewUI$3
   implements AdapterView.OnItemClickListener
@@ -13,12 +12,15 @@ final class ContactRemarkImagePreviewUI$3
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (!this.vKp.mController.isTitleShowing())
+    AppMethodBeat.i(33617);
+    if (!this.AbP.isTitleShowing())
     {
-      this.vKp.mController.showTitleView();
+      this.AbP.showTitleView();
+      AppMethodBeat.o(33617);
       return;
     }
-    this.vKp.mController.hideTitleView();
+    this.AbP.hideTitleView();
+    AppMethodBeat.o(33617);
   }
 }
 

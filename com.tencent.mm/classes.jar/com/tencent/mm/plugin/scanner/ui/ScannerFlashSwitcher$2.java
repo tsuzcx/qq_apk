@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.scanner.ui;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ScannerFlashSwitcher$2
   extends AnimatorListenerAdapter
@@ -11,7 +12,9 @@ final class ScannerFlashSwitcher$2
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    ScannerFlashSwitcher.a(this.nNt).setAlpha(1.0F);
+    AppMethodBeat.i(81320);
+    ScannerFlashSwitcher.a(this.qBe).setAlpha(1.0F);
+    AppMethodBeat.o(81320);
   }
 }
 

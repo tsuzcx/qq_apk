@@ -1,33 +1,17 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.widget.RelativeLayout;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class j$15
-  implements am.a
+  implements Runnable
 {
   j$15(j paramj) {}
   
-  public final boolean tC()
+  public final void run()
   {
-    if (!j.f(this.vwT).isStreaming()) {}
-    k localk;
-    boolean bool;
-    do
-    {
-      do
-      {
-        return false;
-        localk = this.vwT.vtH.cFV();
-      } while ((localk == null) || (localk.vxg == null) || (localk.cGH().vxg.getVisibility() != 0));
-      bool = true;
-      if (localk.cGH().vxj.isPlaying()) {
-        bool = j.b(this.vwT, localk);
-      }
-    } while (!bool);
-    int i = localk.cGH().vxj.getCurrentPosition() / 1000;
-    return j.f(this.vwT).jr(i);
+    AppMethodBeat.i(32330);
+    this.zNd.zJI.zJK.onBackPressed();
+    AppMethodBeat.o(32330);
   }
 }
 

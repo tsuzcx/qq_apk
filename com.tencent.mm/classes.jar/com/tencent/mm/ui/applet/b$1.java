@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.applet;
 
 import android.os.MessageQueue.IdleHandler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 final class b$1
@@ -10,11 +11,13 @@ final class b$1
   
   public final boolean queueIdle()
   {
-    while (this.uSc.uSa.size() > 0)
+    AppMethodBeat.i(106223);
+    while (this.zgD.zgB.size() > 0)
     {
-      String str = (String)this.uSc.uSa.removeFirst();
-      this.uSc.uSb.pM(str);
+      String str = (String)this.zgD.zgB.removeFirst();
+      this.zgD.zgC.xh(str);
     }
+    AppMethodBeat.o(106223);
     return true;
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
-import com.tencent.mm.protocal.c.mg;
+import com.tencent.mm.protocal.protobuf.pg;
 
 public final class q
 {
-  public String bZd = "";
-  public mg ims = null;
+  public String cHo = "";
+  public pg kno = null;
 }
 
 

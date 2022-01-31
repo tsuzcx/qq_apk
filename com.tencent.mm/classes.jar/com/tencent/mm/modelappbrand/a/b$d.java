@@ -1,85 +1,117 @@
 package com.tencent.mm.modelappbrand.a;
 
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public final class b$d
+final class b$d
 {
-  private final ah eav;
-  final Map<String, List<b.d.a>> eaw = new HashMap();
-  final Map<String, Boolean> eax = new HashMap();
+  private final ak fqE;
+  final Map<String, List<b.d.a>> fqF;
+  final Map<String, Boolean> fqG;
   
-  private b$d(ah paramah)
+  private b$d(ak paramak)
   {
-    this.eav = paramah;
+    AppMethodBeat.i(77333);
+    this.fqF = new HashMap();
+    this.fqG = new HashMap();
+    this.fqE = paramak;
+    AppMethodBeat.o(77333);
   }
   
   final void a(String paramString, b.d.a parama)
   {
-    if ((bk.bl(paramString)) || (parama == null)) {}
-    do
+    AppMethodBeat.i(77337);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(77337);
       return;
-      paramString = (List)this.eaw.get(paramString);
-    } while (paramString == null);
-    paramString.remove(parama);
-  }
-  
-  final void f(Runnable paramRunnable)
-  {
-    this.eav.post(paramRunnable);
-  }
-  
-  final void jL(String paramString)
-  {
-    if (bk.bl(paramString)) {}
-    for (;;)
-    {
-      return;
-      paramString = (List)this.eaw.remove(paramString);
-      if (!bk.dk(paramString))
-      {
-        paramString = paramString.iterator();
-        while (paramString.hasNext()) {
-          ((b.d.a)paramString.next()).JI();
-        }
-      }
     }
+    paramString = (List)this.fqF.get(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(77337);
+      return;
+    }
+    paramString.remove(parama);
+    AppMethodBeat.o(77337);
   }
   
-  public final boolean jM(String paramString)
+  final void post(Runnable paramRunnable)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(77339);
+    this.fqE.post(paramRunnable);
+    AppMethodBeat.o(77339);
+  }
+  
+  final void qE(String paramString)
+  {
+    AppMethodBeat.i(77334);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(77334);
+      return;
+    }
+    paramString = (List)this.fqF.remove(paramString);
+    if (bo.es(paramString))
+    {
+      AppMethodBeat.o(77334);
+      return;
+    }
+    paramString = paramString.iterator();
+    while (paramString.hasNext()) {
+      ((b.d.a)paramString.next()).acI();
+    }
+    AppMethodBeat.o(77334);
+  }
+  
+  final boolean qF(String paramString)
+  {
+    AppMethodBeat.i(77335);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(77335);
       return false;
     }
-    return this.eax.containsKey(paramString);
+    boolean bool = this.fqG.containsKey(paramString);
+    AppMethodBeat.o(77335);
+    return bool;
   }
   
-  final void jN(String paramString)
+  final void qG(String paramString)
   {
-    if (bk.bl(paramString)) {
-      return;
-    }
-    this.eax.remove(paramString);
-  }
-  
-  final void jO(String paramString)
-  {
-    if (bk.bl(paramString)) {}
-    do
+    AppMethodBeat.i(77336);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(77336);
       return;
-      paramString = (List)this.eaw.remove(paramString);
-    } while (bk.dk(paramString));
-    Iterator localIterator = paramString.iterator();
-    while (localIterator.hasNext()) {
-      ((b.d.a)localIterator.next()).JJ();
     }
-    paramString.clear();
+    this.fqG.remove(paramString);
+    AppMethodBeat.o(77336);
+  }
+  
+  final void qH(String paramString)
+  {
+    AppMethodBeat.i(77338);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(77338);
+      return;
+    }
+    paramString = (List)this.fqF.remove(paramString);
+    if (!bo.es(paramString))
+    {
+      Iterator localIterator = paramString.iterator();
+      while (localIterator.hasNext()) {
+        ((b.d.a)localIterator.next()).acJ();
+      }
+      paramString.clear();
+    }
+    AppMethodBeat.o(77338);
   }
 }
 

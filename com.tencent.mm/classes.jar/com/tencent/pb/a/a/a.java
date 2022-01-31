@@ -4,32 +4,37 @@ import com.tencent.pb.common.c.g;
 
 public final class a
 {
+  private static int Bhj = 0;
+  private static String Bhk = "";
   private static String TAG = "AccountEngine";
-  private static int wJJ = 0;
-  private static String wJK = "";
   
-  public static void Jg(int paramInt)
+  public static void Sc(int paramInt)
   {
-    wJJ = paramInt;
+    Bhj = paramInt;
   }
   
-  public static void afv(String paramString)
+  public static void awt(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    wJK = str;
+    Bhk = str;
   }
   
-  public static String cOl()
+  public static String dTX()
   {
-    return wJK;
+    return Bhk;
   }
   
-  public static boolean cOm()
+  public static boolean dTY()
   {
-    return !g.isEmpty(wJK);
+    return !g.isEmpty(Bhk);
+  }
+  
+  public static boolean dTZ()
+  {
+    return true;
   }
 }
 

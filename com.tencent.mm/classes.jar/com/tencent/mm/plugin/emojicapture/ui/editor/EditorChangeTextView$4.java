@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
+import a.l;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
-import com.tencent.mm.plugin.emojicapture.f.a;
-import com.tencent.mm.plugin.emojicapture.f.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emojicapture.api.EmojiCaptureReporter;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class EditorChangeTextView$4
   implements View.OnClickListener
 {
@@ -13,19 +15,18 @@ final class EditorChangeTextView$4
   
   public final void onClick(View paramView)
   {
-    paramView = EditorChangeTextView.b(this.jpR).getText();
-    EditorChangeTextView.a locala = this.jpR.getCallback();
+    AppMethodBeat.i(3058);
+    paramView = EditorChangeTextView.b(this.lzA).getText();
+    EditorChangeTextView.a locala = this.lzA.getCallback();
     if (locala != null) {
-      locala.a((CharSequence)paramView, EditorChangeTextView.c(this.jpR), EditorChangeTextView.d(this.jpR));
+      locala.i((CharSequence)paramView, EditorChangeTextView.c(this.lzA));
     }
-    EditorChangeTextView.b(this.jpR).clearFocus();
-    if (this.jpR.getTextChanged())
-    {
-      paramView = a.jnW;
-      a.a.a(16, 0L, 0L, 0L);
+    EditorChangeTextView.b(this.lzA).clearFocus();
+    if (this.lzA.getTextChanged()) {
+      EmojiCaptureReporter.a(16, this.lzA.getReporter().eyh, 0L, 0L, 0L, 0L, 0L, 0, 0, this.lzA.getReporter().scene);
     }
-    paramView = a.jnW;
-    a.a.a(15, 0L, 0L, 0L);
+    EmojiCaptureReporter.a(15, this.lzA.getReporter().eyh, 0L, 0L, 0L, 0L, 0L, 0, 0, this.lzA.getReporter().scene);
+    AppMethodBeat.o(3058);
   }
 }
 

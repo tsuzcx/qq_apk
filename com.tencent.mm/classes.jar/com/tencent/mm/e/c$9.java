@@ -5,7 +5,8 @@ import android.animation.Animator.AnimatorListener;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c$9
   implements Animator.AnimatorListener
@@ -16,28 +17,32 @@ public final class c$9
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    y.i("MicroMsg.CropArtist", "onAnimationEnd");
-    c.f(this.bAK);
-    if (c.g(this.bAK) == 0)
+    AppMethodBeat.i(116165);
+    ab.i("MicroMsg.CropArtist", "onAnimationEnd");
+    c.f(this.cdH);
+    if (c.g(this.cdH) == 0)
     {
-      c.b(this.bAK, false);
+      c.b(this.cdH, false);
       paramAnimator = new RectF();
-      paramAnimator.set(c.d(this.bAK));
-      c.e(this.bAK).mapRect(paramAnimator);
-      c.e(this.bAK).reset();
-      c.d(this.bAK).set((int)paramAnimator.left, (int)paramAnimator.top, (int)paramAnimator.right, (int)paramAnimator.bottom);
-      this.bAK.tT();
+      paramAnimator.set(c.d(this.cdH));
+      c.e(this.cdH).mapRect(paramAnimator);
+      c.e(this.cdH).reset();
+      c.d(this.cdH).set((int)paramAnimator.left, (int)paramAnimator.top, (int)paramAnimator.right, (int)paramAnimator.bottom);
+      this.cdH.CL();
     }
-    c.a(this.bAK, 200L, false, true);
+    c.a(this.cdH, 200L, false, true);
+    AppMethodBeat.o(116165);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    c.a(this.bAK, false);
-    this.bAK.bAy = true;
-    c.b(this.bAK, true);
+    AppMethodBeat.i(116164);
+    c.a(this.cdH, false);
+    this.cdH.cdv = true;
+    c.b(this.cdH, true);
+    AppMethodBeat.o(116164);
   }
 }
 

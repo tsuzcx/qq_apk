@@ -6,22 +6,24 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.text.TextUtils;
-import com.tencent.mm.a.o;
-import com.tencent.mm.h.a.mf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.p;
+import com.tencent.mm.g.a.mx;
+import com.tencent.mm.g.a.my;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.c.atp;
-import com.tencent.mm.protocal.c.byf;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.azu;
+import com.tencent.mm.protocal.protobuf.ckw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
+import com.tencent.mm.vfs.b;
 import com.tencent.mm.vfs.j;
 import java.io.Closeable;
 import java.io.FileNotFoundException;
@@ -40,68 +42,86 @@ import org.json.JSONObject;
 
 public final class aa
 {
-  private static Map<Integer, ap> qTW = new HashMap();
-  private static Map<Integer, k> qTX = new HashMap();
+  private static Map<Integer, ao> uJf;
+  private static Map<Integer, k> uJg;
+  private static int uJh;
   
   static
   {
-    qTW.put(Integer.valueOf(1), new ap("fts_browse/res", "wrd_template.zip", "browse"));
-    qTW.put(Integer.valueOf(0), new ap("fts/res", "fts_template.zip", ""));
-    Map localMap = qTX;
-    Bo(0);
-    localMap.put(Integer.valueOf(0), ag.bZD());
-    localMap = qTX;
-    Bo(1);
-    localMap.put(Integer.valueOf(1), ag.bZD());
+    AppMethodBeat.i(124148);
+    uJf = new HashMap();
+    uJg = new HashMap();
+    uJf.put(Integer.valueOf(2), new ao("wxa_fts/res", "wxa_fts_template.zip", ""));
+    uJf.put(Integer.valueOf(1), new ao("fts_browse/res", "wrd_template.zip", "browse"));
+    uJf.put(Integer.valueOf(0), new ao("fts/res", "fts_template.zip", ""));
+    Map localMap = uJg;
+    Jb(0);
+    localMap.put(Integer.valueOf(0), ag.cZz());
+    localMap = uJg;
+    Jb(1);
+    localMap.put(Integer.valueOf(1), ag.cZz());
+    localMap = uJg;
+    Jb(2);
+    localMap.put(Integer.valueOf(2), ag.cZz());
+    AppMethodBeat.o(124148);
   }
   
-  private static int BA(int paramInt)
+  public static String F(Map<String, String> paramMap)
   {
-    switch (paramInt)
+    AppMethodBeat.i(156851);
+    paramMap = d(paramMap, 0);
+    AppMethodBeat.o(156851);
+    return paramMap;
+  }
+  
+  public static final String IZ(int paramInt)
+  {
+    AppMethodBeat.i(124092);
+    Object localObject = new StringBuilder().append(paramInt).append("_");
+    g.RJ();
+    localObject = p.getString(com.tencent.mm.kernel.a.getUin()) + "_" + System.currentTimeMillis();
+    AppMethodBeat.o(124092);
+    return localObject;
+  }
+  
+  public static ao Ja(int paramInt)
+  {
+    AppMethodBeat.i(124093);
+    ao localao = (ao)uJf.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(124093);
+    return localao;
+  }
+  
+  private static String Jb(int paramInt)
+  {
+    AppMethodBeat.i(124094);
+    Object localObject = (ao)uJf.get(Integer.valueOf(paramInt));
+    localObject = ((ao)localObject).aLw() + "/app.html";
+    AppMethodBeat.o(124094);
+    return localObject;
+  }
+  
+  public static boolean Jc(int paramInt)
+  {
+    AppMethodBeat.i(124098);
+    if (paramInt == 2)
     {
-    default: 
-      return -1;
-    case 1: 
-      return 0;
+      AppMethodBeat.o(124098);
+      return true;
     }
-    return 1;
+    boolean bool = ((ao)uJf.get(Integer.valueOf(paramInt))).cZP();
+    AppMethodBeat.o(124098);
+    return bool;
   }
   
-  public static String BB(int paramInt)
+  public static int Jd(int paramInt)
   {
-    return j(new com.tencent.mm.vfs.b(((ap)qTW.get(Integer.valueOf(paramInt))).aoA(), "config_data.conf")).getProperty("kv_set", "");
-  }
-  
-  public static final String Bm(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append(paramInt).append("_");
-    g.DN();
-    return o.getString(com.tencent.mm.kernel.a.CK()) + "_" + System.currentTimeMillis();
-  }
-  
-  public static ap Bn(int paramInt)
-  {
-    return (ap)qTW.get(Integer.valueOf(paramInt));
-  }
-  
-  private static String Bo(int paramInt)
-  {
-    ap localap = (ap)qTW.get(Integer.valueOf(paramInt));
-    return localap.aoA() + "/app.html";
-  }
-  
-  public static boolean Bp(int paramInt)
-  {
-    return ((ap)qTW.get(Integer.valueOf(paramInt))).bZU();
-  }
-  
-  public static int Bq(int paramInt)
-  {
-    localObject1 = (ap)qTW.get(Integer.valueOf(paramInt));
-    if (TextUtils.isEmpty(((ap)localObject1).qVe)) {}
-    for (Object localObject4 = "config.conf";; localObject4 = ((ap)localObject1).qVe + "/config.conf")
+    AppMethodBeat.i(124099);
+    localObject1 = (ao)uJf.get(Integer.valueOf(paramInt));
+    if (TextUtils.isEmpty(((ao)localObject1).uKp)) {}
+    for (Object localObject4 = "config.conf";; localObject4 = ((ao)localObject1).uKp + "/config.conf")
     {
-      AssetManager localAssetManager = ae.getContext().getAssets();
+      AssetManager localAssetManager = ah.getContext().getAssets();
       Properties localProperties = new Properties();
       localObject3 = null;
       localObject1 = null;
@@ -111,46 +131,66 @@ public final class aa
         localObject1 = localObject4;
         localObject3 = localObject4;
         localProperties.load((InputStream)localObject4);
-        bk.b((Closeable)localObject4);
+        bo.b((Closeable)localObject4);
       }
       catch (Exception localException)
       {
         for (;;)
         {
           localObject3 = localObject1;
-          y.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", localException, localException.getMessage(), new Object[0]);
-          bk.b((Closeable)localObject1);
+          ab.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", localException, localException.getMessage(), new Object[0]);
+          bo.b((Closeable)localObject1);
         }
       }
       finally
       {
-        bk.b(localObject3);
+        bo.b(localObject3);
+        AppMethodBeat.o(124099);
       }
-      return Integer.valueOf(localProperties.getProperty("version", "1")).intValue();
+      paramInt = Integer.valueOf(localProperties.getProperty("version", "1")).intValue();
+      AppMethodBeat.o(124099);
+      return paramInt;
     }
   }
   
-  public static boolean Br(int paramInt)
+  public static boolean Je(int paramInt)
   {
-    y.i("MicroMsg.WebSearch.WebSearchApiLogic", "isFTSH5TemplateAvail exportType:%d, use search default.", new Object[] { Integer.valueOf(paramInt) });
-    return ((ap)qTW.get(Integer.valueOf(paramInt))).NA() > 1;
+    AppMethodBeat.i(124100);
+    ab.i("MicroMsg.WebSearch.WebSearchApiLogic", "isFTSH5TemplateAvail exportType:%d, use search default.", new Object[] { Integer.valueOf(paramInt) });
+    if (((ao)uJf.get(Integer.valueOf(paramInt))).agn() > 1)
+    {
+      AppMethodBeat.o(124100);
+      return true;
+    }
+    AppMethodBeat.o(124100);
+    return false;
   }
   
-  public static int Bs(int paramInt)
+  public static int Jf(int paramInt)
   {
-    return ((ap)qTW.get(Integer.valueOf(paramInt))).NA();
+    AppMethodBeat.i(124101);
+    paramInt = ((ao)uJf.get(Integer.valueOf(paramInt))).agn();
+    AppMethodBeat.o(124101);
+    return paramInt;
   }
   
-  private static boolean Bt(int paramInt)
+  public static void Jg(int paramInt)
+  {
+    uJh = paramInt;
+  }
+  
+  private static boolean Jh(int paramInt)
   {
     Object localObject2 = null;
-    AssetManager localAssetManager = ae.getContext().getAssets();
-    Object localObject3 = ((ap)qTW.get(Integer.valueOf(paramInt))).bZT();
-    Object localObject1 = (ap)qTW.get(Integer.valueOf(paramInt));
-    if (TextUtils.isEmpty(((ap)localObject1).qVe)) {}
-    for (localObject1 = ((ap)localObject1).qVd; (bk.bl((String)localObject3)) || (bk.bl((String)localObject1)); localObject1 = ((ap)localObject1).qVe + "/" + ((ap)localObject1).qVd)
+    AppMethodBeat.i(124102);
+    AssetManager localAssetManager = ah.getContext().getAssets();
+    Object localObject3 = ((ao)uJf.get(Integer.valueOf(paramInt))).cZO();
+    Object localObject1 = (ao)uJf.get(Integer.valueOf(paramInt));
+    if (TextUtils.isEmpty(((ao)localObject1).uKp)) {}
+    for (localObject1 = ((ao)localObject1).uKo; (bo.isNullOrNil((String)localObject3)) || (bo.isNullOrNil((String)localObject1)); localObject1 = ((ao)localObject1).uKp + "/" + ((ao)localObject1).uKo)
     {
-      y.w("MicroMsg.WebSearch.WebSearchApiLogic", "copyTemplateFromAsset no dstPath or template path!");
+      ab.w("MicroMsg.WebSearch.WebSearchApiLogic", "copyTemplateFromAsset no dstPath or template path!");
+      AppMethodBeat.o(124102);
       return false;
     }
     try
@@ -158,7 +198,8 @@ public final class aa
       localObject1 = localAssetManager.open((String)localObject1);
       if (localObject1 == null)
       {
-        y.e("MicroMsg.WebSearch.WebSearchApiLogic", "file inputStream not found");
+        ab.e("MicroMsg.WebSearch.WebSearchApiLogic", "file inputStream not found");
+        AppMethodBeat.o(124102);
         return false;
       }
     }
@@ -167,17 +208,17 @@ public final class aa
       InputStream localInputStream;
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", localIOException1, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", localIOException1, "", new Object[0]);
         localInputStream = null;
       }
-      localObject3 = new com.tencent.mm.vfs.b((String)localObject3);
-      if (((com.tencent.mm.vfs.b)localObject3).exists()) {
-        ((com.tencent.mm.vfs.b)localObject3).delete();
+      localObject3 = new b((String)localObject3);
+      if (((b)localObject3).exists()) {
+        ((b)localObject3).delete();
       }
-      ((com.tencent.mm.vfs.b)localObject3).cLq().mkdirs();
+      ((b)localObject3).dQI().mkdirs();
       try
       {
-        localObject3 = com.tencent.mm.vfs.e.p((com.tencent.mm.vfs.b)localObject3);
+        localObject3 = com.tencent.mm.vfs.e.r((b)localObject3);
         localObject2 = localObject3;
       }
       catch (FileNotFoundException localFileNotFoundException)
@@ -191,129 +232,156 @@ public final class aa
           }
           catch (IOException localIOException2)
           {
-            y.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", localIOException2, "", new Object[0]);
+            ab.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", localIOException2, "", new Object[0]);
             return false;
           }
           finally
           {
-            bk.b(localInputStream);
-            bk.b(localObject2);
+            bo.b(localInputStream);
+            bo.b(localObject2);
+            AppMethodBeat.o(124102);
           }
           localFileNotFoundException = localFileNotFoundException;
-          y.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", localFileNotFoundException, "", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", localFileNotFoundException, "", new Object[0]);
         }
       }
       if (localObject2 != null) {}
-      bk.b(localInputStream);
+      bo.b(localInputStream);
+      AppMethodBeat.o(124102);
     }
     return false;
   }
   
-  public static String Bu(int paramInt)
+  public static String Ji(int paramInt)
   {
-    return ((ap)qTW.get(Integer.valueOf(paramInt))).bZT();
+    AppMethodBeat.i(124104);
+    String str = ((ao)uJf.get(Integer.valueOf(paramInt))).cZO();
+    AppMethodBeat.o(124104);
+    return str;
   }
   
-  public static void Bv(int paramInt)
+  public static void Jj(int paramInt)
   {
-    ((ap)qTW.get(Integer.valueOf(paramInt))).bZR();
+    AppMethodBeat.i(124105);
+    ((ao)uJf.get(Integer.valueOf(paramInt))).cZM();
+    AppMethodBeat.o(124105);
   }
   
-  public static String Bw(int paramInt)
+  public static String Jk(int paramInt)
   {
-    return ((ap)qTW.get(Integer.valueOf(paramInt))).aoA();
+    AppMethodBeat.i(124106);
+    String str = ((ao)uJf.get(Integer.valueOf(paramInt))).aLw();
+    AppMethodBeat.o(124106);
+    return str;
   }
   
-  public static String Bx(int paramInt)
+  public static String Jl(int paramInt)
   {
-    return ((ap)qTW.get(Integer.valueOf(BA(paramInt)))).aoA();
+    AppMethodBeat.i(124107);
+    String str = ((ao)uJf.get(Integer.valueOf(Jo(paramInt)))).aLw();
+    AppMethodBeat.o(124107);
+    return str;
   }
   
-  public static String By(int paramInt)
+  public static String Jm(int paramInt)
   {
-    return ((ap)qTW.get(Integer.valueOf(BA(paramInt)))).qVd;
+    AppMethodBeat.i(124108);
+    String str = ((ao)uJf.get(Integer.valueOf(Jo(paramInt)))).uKo;
+    AppMethodBeat.o(124108);
+    return str;
   }
   
-  public static int Bz(int paramInt)
+  public static int Jn(int paramInt)
   {
-    return ((ap)qTW.get(Integer.valueOf(BA(paramInt)))).NA();
+    AppMethodBeat.i(124109);
+    paramInt = ((ao)uJf.get(Integer.valueOf(Jo(paramInt)))).agn();
+    AppMethodBeat.o(124109);
+    return paramInt;
   }
   
-  public static atp Jx()
+  private static int Jo(int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      Object localObject = (String)g.DP().Dz().get(67591, null);
-      if (localObject != null)
-      {
-        atp localatp = new atp();
-        localObject = ((String)localObject).split(",");
-        localatp.sUn = Integer.valueOf(localObject[0]).intValue();
-        localatp.sUq = Integer.valueOf(localObject[1]).intValue();
-        localatp.sGK = (Integer.valueOf(localObject[2]).intValue() / 1000000.0F);
-        localatp.sGJ = (Integer.valueOf(localObject[3]).intValue() / 1000000.0F);
-        y.i("MicroMsg.WebSearch.WebSearchApiLogic", "lbs location is not null, %f, %f", new Object[] { Float.valueOf(localatp.sGK), Float.valueOf(localatp.sGJ) });
-        return localatp;
-      }
-      y.i("MicroMsg.WebSearch.WebSearchApiLogic", "lbs location is null, lbsContent is null!");
-      return null;
+    default: 
+      return -1;
+    case 1: 
+      return 0;
     }
-    catch (Exception localException)
-    {
-      y.i("MicroMsg.WebSearch.WebSearchApiLogic", "lbs location is null, reason %s", new Object[] { localException.getMessage() });
-    }
-    return null;
+    return 1;
   }
   
-  public static long Ng(String paramString)
+  public static String Jp(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    AppMethodBeat.i(124110);
+    String str = l(new b(((ao)uJf.get(Integer.valueOf(paramInt))).aLw(), "config_data.conf")).getProperty("kv_set", "");
+    AppMethodBeat.o(124110);
+    return str;
+  }
+  
+  public static long ZN(String paramString)
+  {
+    AppMethodBeat.i(124130);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(124130);
       return 0L;
     }
     long l = new BigInteger(paramString).longValue();
-    y.i("MicroMsg.WebSearch.WebSearchApiLogic", "seq %s to snsId %d ", new Object[] { paramString, Long.valueOf(l) });
+    ab.i("MicroMsg.WebSearch.WebSearchApiLogic", "seq %s to snsId %d ", new Object[] { paramString, Long.valueOf(l) });
+    AppMethodBeat.o(124130);
     return l;
-  }
-  
-  public static String T(Map<String, ? extends Object> paramMap)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      localStringBuffer.append((String)localEntry.getKey());
-      localStringBuffer.append("=");
-      if (localEntry.getValue() != null) {
-        localStringBuffer.append(localEntry.getValue().toString());
-      }
-      localStringBuffer.append("&");
-    }
-    return localStringBuffer.substring(0, localStringBuffer.length() - 1).toString();
   }
   
   public static long a(Map<String, Object> paramMap, String paramString, long paramLong)
   {
-    paramMap = s(paramMap, paramString);
-    if (bk.bl(paramMap)) {
+    AppMethodBeat.i(124140);
+    paramMap = t(paramMap, paramString);
+    if (bo.isNullOrNil(paramMap))
+    {
+      AppMethodBeat.o(124140);
       return paramLong;
     }
     try
     {
       long l = Long.valueOf(paramMap).longValue();
+      AppMethodBeat.o(124140);
       return l;
     }
-    catch (Exception paramMap) {}
+    catch (Exception paramMap)
+    {
+      AppMethodBeat.o(124140);
+    }
     return paramLong;
   }
   
   public static Map<String, String> a(int paramInt1, boolean paramBoolean, int paramInt2, String paramString)
   {
-    return a(paramInt1, paramBoolean, paramInt2, paramString, "", "", "", "", "", "", "");
+    AppMethodBeat.i(124117);
+    paramString = a(paramInt1, paramBoolean, paramInt2, paramString, "");
+    AppMethodBeat.o(124117);
+    return paramString;
+  }
+  
+  private static Map<String, String> a(int paramInt1, boolean paramBoolean, int paramInt2, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(124118);
+    paramString1 = a(paramInt1, paramBoolean, paramInt2, paramString1, "", "", "", "", "", paramString2);
+    AppMethodBeat.o(124118);
+    return paramString1;
+  }
+  
+  private static Map<String, String> a(int paramInt1, boolean paramBoolean, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    AppMethodBeat.i(124119);
+    paramString1 = a(paramInt1, paramBoolean, paramInt2, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, "");
+    AppMethodBeat.o(124119);
+    return paramString1;
   }
   
   public static Map<String, String> a(int paramInt1, boolean paramBoolean, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
+    AppMethodBeat.i(124115);
     HashMap localHashMap = new HashMap();
     if (!TextUtils.isEmpty(paramString2)) {
       localHashMap.put("searchId", paramString2);
@@ -335,7 +403,7 @@ public final class aa
     }
     localHashMap.put("scene", String.valueOf(paramInt1));
     localHashMap.put("type", String.valueOf(paramInt2));
-    localHashMap.put("lang", x.fB(ae.getContext()));
+    localHashMap.put("lang", com.tencent.mm.sdk.platformtools.aa.gP(ah.getContext()));
     localHashMap.put("platform", "android");
     if (!TextUtils.isEmpty(paramString7)) {
       localHashMap.put("poiInfo", paramString7);
@@ -353,7 +421,7 @@ public final class aa
     switch (paramInt1)
     {
     default: 
-      paramString1 = String.valueOf(Bs(0));
+      paramString1 = String.valueOf(Jf(0));
       localHashMap.put("version", paramString1);
       bool1 = false;
       bool7 = false;
@@ -367,8 +435,8 @@ public final class aa
         bool6 = bool2;
         bool5 = bool3;
         bool1 = bool7;
-        label396:
-        y.i("MicroMsg.WebSearch.WebSearchApiLogic", "genFTSParams scene=%d isHomePage=%b type=%d %b %b %b", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Boolean.valueOf(bool1), Boolean.valueOf(bool6), Boolean.valueOf(bool5) });
+        label400:
+        ab.i("MicroMsg.WebSearch.WebSearchApiLogic", "genFTSParams scene=%d isHomePage=%b type=%d %b %b %b", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Boolean.valueOf(bool1), Boolean.valueOf(bool6), Boolean.valueOf(bool5) });
         if (bool1) {
           localHashMap.put("isSug", "1");
         }
@@ -387,30 +455,30 @@ public final class aa
     }
     for (;;)
     {
-      float f2 = com.tencent.mm.cb.a.cJ(ae.getContext());
+      float f2 = com.tencent.mm.cb.a.dr(ah.getContext());
       float f1 = f2;
       if (f2 != 1.0F)
       {
         f1 = f2;
-        if (f2 != 0.875F)
+        if (f2 != 0.8F)
         {
           f1 = f2;
-          if (f2 != 1.125F)
+          if (f2 != 1.1F)
           {
             f1 = f2;
-            if (f2 != 1.25F)
+            if (f2 != 1.12F)
             {
               f1 = f2;
-              if (f2 != 1.375F)
+              if (f2 != 1.125F)
               {
                 f1 = f2;
-                if (f2 != 1.625F)
+                if (f2 != 1.4F)
                 {
                   f1 = f2;
-                  if (f2 != 1.875F)
+                  if (f2 != 1.55F)
                   {
                     f1 = f2;
-                    if (f2 != 2.025F) {
+                    if (f2 != 1.65F) {
                       f1 = 1.0F;
                     }
                   }
@@ -421,25 +489,26 @@ public final class aa
         }
       }
       localHashMap.put("fontRatio", String.valueOf(f1));
-      localHashMap.put("netType", boM());
-      if (com.tencent.mm.av.a.Pu())
+      localHashMap.put("netType", bXn());
+      if (com.tencent.mm.aw.a.aiw())
       {
-        paramString1 = com.tencent.mm.av.a.Pw();
+        paramString1 = com.tencent.mm.aw.a.aiz();
         if (paramString1 != null) {
-          localHashMap.put("musicSnsId", paramString1.eux);
+          localHashMap.put("musicSnsId", paramString1.fKj);
         }
       }
+      AppMethodBeat.o(124115);
       return localHashMap;
-      paramString1 = String.valueOf(Bs(1));
+      paramString1 = String.valueOf(Jf(1));
       break;
-      paramString1 = ac.Ru("mixGlobal");
+      paramString1 = ac.agv("mixGlobal");
       if (paramBoolean)
       {
         bool1 = bool7;
         bool5 = bool3;
         bool6 = bool2;
         if (paramString1.optInt("mixSugSwitch", 0) != 1) {
-          break label396;
+          break label400;
         }
       }
       for (;;)
@@ -508,7 +577,7 @@ public final class aa
         if (paramInt2 == 1)
         {
           bool2 = bool1;
-          if (ac.Ru("bizTab").optInt("bizSugSwitch", 0) == 1) {
+          if (ac.agv("bizTab").optInt("bizSugSwitch", 0) == 1) {
             bool2 = true;
           }
         }
@@ -516,7 +585,7 @@ public final class aa
         if (paramInt2 == 2)
         {
           bool1 = bool2;
-          if (ac.Ru("articleTab").optInt("sugSwitch", 0) == 1) {
+          if (ac.agv("articleTab").optInt("sugSwitch", 0) == 1) {
             bool1 = true;
           }
         }
@@ -524,7 +593,7 @@ public final class aa
         bool2 = bool5;
         if (paramInt2 == 8)
         {
-          paramString1 = ac.Ru("snsTab");
+          paramString1 = ac.agv("snsTab");
           if (paramString1.optInt("sugSwitch", 0) == 1) {
             bool1 = true;
           }
@@ -543,7 +612,7 @@ public final class aa
           if (paramInt2 == 4)
           {
             bool1 = bool3;
-            if (ac.Ru("bizTab").optInt("bizServiceSugSwitch", 0) == 1) {
+            if (ac.agv("bizTab").optInt("bizServiceSugSwitch", 0) == 1) {
               bool1 = true;
             }
           }
@@ -552,7 +621,7 @@ public final class aa
         if (paramInt2 == 1)
         {
           bool3 = bool4;
-          if (ac.Ru("bizTab").optInt("mfsBizSwitch", 0) == 1) {
+          if (ac.agv("bizTab").optInt("mfsBizSwitch", 0) == 1) {
             bool3 = true;
           }
         }
@@ -560,7 +629,7 @@ public final class aa
         if (paramInt2 == 1024)
         {
           bool4 = bool1;
-          if (ac.Ru("novelTab").optInt("sugSwitch", 0) == 1) {
+          if (ac.agv("novelTab").optInt("sugSwitch", 0) == 1) {
             bool4 = true;
           }
         }
@@ -568,7 +637,7 @@ public final class aa
         if (paramInt2 == 512)
         {
           bool1 = bool4;
-          if (ac.Ru("musicTab").optInt("sugSwitch", 0) == 1) {
+          if (ac.agv("musicTab").optInt("sugSwitch", 0) == 1) {
             bool1 = true;
           }
         }
@@ -576,7 +645,7 @@ public final class aa
         if (paramInt2 == 384)
         {
           bool4 = bool1;
-          if (ac.Ru("emotionTab").optInt("sugSwitch", 0) == 1) {
+          if (ac.agv("emotionTab").optInt("sugSwitch", 0) == 1) {
             bool4 = true;
           }
         }
@@ -595,7 +664,7 @@ public final class aa
         bool1 = bool4;
         bool5 = bool3;
         bool6 = bool2;
-        if (ac.Ru("mixGlobal").optInt("mixSugSwitch", 0) != 1) {
+        if (ac.agv("mixGlobal").optInt("mixSugSwitch", 0) != 1) {
           break;
         }
         bool1 = true;
@@ -605,14 +674,14 @@ public final class aa
         bool1 = bool7;
         bool5 = bool3;
         bool6 = bool2;
-        if (ac.Ru("bizEntry").optInt("sugSwitch") != 1) {
+        if (ac.agv("bizEntry").optInt("sugSwitch") != 1) {
           break;
         }
         continue;
         bool1 = bool7;
         bool5 = bool3;
         bool6 = bool2;
-        if (ac.Ru("bizUnionTopEntry").optInt("sugSwitch") != 1) {
+        if (ac.agv("bizUnionTopEntry").optInt("sugSwitch") != 1) {
           break;
         }
       }
@@ -620,72 +689,80 @@ public final class aa
       bool5 = bool3;
       bool6 = bool2;
       if (paramInt2 != 384) {
-        break label396;
+        break label400;
       }
       bool1 = bool7;
       bool5 = bool3;
       bool6 = bool2;
-      if (ac.Ru("emoticonMall").optInt("sugSwitch", 0) != 1) {
-        break label396;
+      if (ac.agv("emoticonMall").optInt("sugSwitch", 0) != 1) {
+        break label400;
       }
       bool1 = true;
       bool5 = bool3;
       bool6 = bool2;
-      break label396;
+      break label400;
       localHashMap.put("isHomePage", "1");
     }
   }
   
-  public static void a(Activity paramActivity, byf parambyf)
+  public static void a(Activity paramActivity, ckw paramckw)
   {
+    AppMethodBeat.i(124146);
     Intent localIntent = new Intent();
     try
     {
-      localIntent.putExtra("key_context", parambyf.toByteArray());
-      label20:
-      if (gP(parambyf.tOo))
+      localIntent.putExtra("key_context", paramckw.toByteArray());
+      label26:
+      if (nl(paramckw.xUO))
       {
-        d(paramActivity, ".ui.video.fs.TopStoryFSVideoUI", localIntent);
+        e(paramActivity, ".ui.video.fs.TopStoryFSVideoUI", localIntent);
+        AppMethodBeat.o(124146);
         return;
       }
-      d(paramActivity, ".ui.video.list.TopStoryListVideoUI", localIntent);
+      e(paramActivity, ".ui.video.list.TopStoryListVideoUI", localIntent);
+      AppMethodBeat.o(124146);
       return;
     }
     catch (IOException localIOException)
     {
-      break label20;
+      break label26;
     }
   }
   
-  public static void a(Context paramContext, byf parambyf)
+  public static void a(Context paramContext, ckw paramckw)
   {
+    AppMethodBeat.i(124147);
     Intent localIntent = new Intent();
     try
     {
-      localIntent.putExtra("key_context", parambyf.toByteArray());
-      label20:
-      if (gP(parambyf.tOo))
+      localIntent.putExtra("key_context", paramckw.toByteArray());
+      label26:
+      if (nl(paramckw.xUO))
       {
-        c(paramContext, ".ui.video.fs.TopStoryFSVideoUI", localIntent);
+        d(paramContext, ".ui.video.fs.TopStoryFSVideoUI", localIntent);
+        AppMethodBeat.o(124147);
         return;
       }
-      c(paramContext, ".ui.video.list.TopStoryListVideoUI", localIntent);
+      d(paramContext, ".ui.video.list.TopStoryListVideoUI", localIntent);
+      AppMethodBeat.o(124147);
       return;
     }
     catch (IOException localIOException)
     {
-      break label20;
+      break label26;
     }
   }
   
   public static void a(Context paramContext, String paramString1, Intent paramIntent, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
+    AppMethodBeat.i(124121);
     if (paramContext == null)
     {
-      y.e("MicroMsg.WebSearch.WebSearchApiLogic", "openNews intent is null, or context is null");
+      ab.e("MicroMsg.WebSearch.WebSearchApiLogic", "openNews intent is null, or context is null");
+      AppMethodBeat.o(124121);
       return;
     }
-    Intent localIntent = ab(paramIntent);
+    Intent localIntent = ay(paramIntent);
     localIntent.putExtra("ftsbizscene", 21);
     localIntent.putExtra("ftsQuery", paramString1);
     if (paramString2 != null) {
@@ -695,60 +772,77 @@ public final class aa
     localIntent.putExtra("ftscaneditable", false);
     localIntent.putExtra("key_load_js_without_delay", true);
     if (TextUtils.isEmpty(paramString5)) {}
-    for (paramIntent = Bm(21);; paramIntent = paramString5)
+    for (paramIntent = IZ(21);; paramIntent = paramString5)
     {
       if (TextUtils.isEmpty(paramString6)) {}
-      for (paramString2 = Bm(21);; paramString2 = paramString6)
+      for (paramString2 = IZ(21);; paramString2 = paramString6)
       {
         paramString1 = a(21, false, 2, paramString3, paramString4, paramIntent, paramString1, "2", paramString2, "", "");
-        if (!bk.bl("")) {
+        if (!bo.isNullOrNil("")) {
           paramString1.put("redPointMsgId", "");
         }
-        localIntent.putExtra("rawUrl", c(paramString1, 1));
+        localIntent.putExtra("rawUrl", d(paramString1, 1));
         localIntent.putExtra("sessionId", paramIntent);
         localIntent.putExtra("customize_status_bar_color", Color.parseColor("#F2F2F2"));
         localIntent.putExtra("status_bar_style", "black");
-        com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.fts.FTSWebViewUI", localIntent);
+        com.tencent.mm.bq.d.b(paramContext, "webview", ".ui.tools.fts.FTSWebViewUI", localIntent);
+        AppMethodBeat.o(124121);
         return;
       }
     }
   }
   
-  public static void a(com.tencent.mm.vfs.b paramb, int paramInt)
+  public static void a(Intent paramIntent, int paramInt)
   {
-    a(paramb, paramInt, false);
+    AppMethodBeat.i(124129);
+    paramIntent.putExtra("ftsbizscene", paramInt);
+    Map localMap = d(paramInt, false, 384);
+    String str = IZ(bo.apV((String)localMap.get("scene")));
+    localMap.put("sessionId", str);
+    paramIntent.putExtra("sessionId", str);
+    paramIntent.putExtra("rawUrl", d(localMap, 0));
+    paramIntent.putExtra("ftsType", 384);
+    AppMethodBeat.o(124129);
   }
   
-  public static void a(com.tencent.mm.vfs.b paramb, int paramInt, boolean paramBoolean)
+  public static void a(b paramb, int paramInt)
   {
+    AppMethodBeat.i(124144);
+    a(paramb, paramInt, false);
+    AppMethodBeat.o(124144);
+  }
+  
+  public static void a(b paramb, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(124145);
     for (;;)
     {
-      Object localObject = Bu(paramInt);
-      if (bk.bl((String)localObject))
+      Object localObject = Ji(paramInt);
+      if (bo.isNullOrNil((String)localObject))
       {
-        y.w("MicroMsg.WebSearch.WebSearchApiLogic", "initTemplateFolder outputZipFilePath nil! type:%d, ftsTemplateFolder:%s", new Object[] { Integer.valueOf(paramInt), j.n(paramb.cLr()) });
-        label43:
+        ab.w("MicroMsg.WebSearch.WebSearchApiLogic", "initTemplateFolder outputZipFilePath nil! type:%d, ftsTemplateFolder:%s", new Object[] { Integer.valueOf(paramInt), j.p(paramb.dQJ()) });
+        AppMethodBeat.o(124145);
         return;
       }
       if (!paramb.exists()) {
         paramb.mkdirs();
       }
-      com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(paramb, ".nomedia");
+      b localb = new b(paramb, ".nomedia");
       if (!localb.exists()) {}
       try
       {
         localb.createNewFile();
-        localObject = new com.tencent.mm.vfs.b((String)localObject);
-        if (Bt(paramInt))
+        localObject = new b((String)localObject);
+        if (Jh(paramInt))
         {
-          i = bk.gh(j.n(((com.tencent.mm.vfs.b)localObject).cLr()), ((com.tencent.mm.vfs.b)localObject).getParent());
+          i = bo.ii(j.p(((b)localObject).dQJ()), ((b)localObject).getParent());
           if (i < 0)
           {
-            y.e("MicroMsg.WebSearch.WebSearchApiLogic", "unzip fail, ret = " + i + ", zipFilePath = " + j.n(((com.tencent.mm.vfs.b)localObject).cLr()) + ", unzipPath = " + ((com.tencent.mm.vfs.b)localObject).getParent());
-            if ((paramBoolean) || (paramInt != 0) || (Bp(paramInt))) {
-              break label43;
+            ab.e("MicroMsg.WebSearch.WebSearchApiLogic", "unzip fail, ret = " + i + ", zipFilePath = " + j.p(((b)localObject).dQJ()) + ", unzipPath = " + ((b)localObject).getParent());
+            if ((paramBoolean) || (paramInt != 0) || (Jc(paramInt))) {
+              break label314;
             }
-            y.i("MicroMsg.WebSearch.WebSearchApiLogic", "init template fail, try again , ftsTemplateFolder %s, type %d", new Object[] { paramb, Integer.valueOf(paramInt) });
+            ab.i("MicroMsg.WebSearch.WebSearchApiLogic", "init template fail, try again , ftsTemplateFolder %s, type %d", new Object[] { paramb, Integer.valueOf(paramInt) });
             paramBoolean = true;
           }
         }
@@ -757,188 +851,335 @@ public final class aa
       {
         for (;;)
         {
-          y.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", localIOException, "create nomedia file error", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", localIOException, "create nomedia file error", new Object[0]);
           continue;
-          Bv(paramInt);
-          int i = Bs(paramInt);
-          y.i("MicroMsg.WebSearch.WebSearchApiLogic", "Unzip Path%s version=%d", new Object[] { ((com.tencent.mm.vfs.b)localObject).getParent(), Integer.valueOf(i) });
+          Jj(paramInt);
+          int i = Jf(paramInt);
+          ab.i("MicroMsg.WebSearch.WebSearchApiLogic", "Unzip Path%s version=%d", new Object[] { ((b)localObject).getParent(), Integer.valueOf(i) });
           continue;
-          y.i("MicroMsg.WebSearch.WebSearchApiLogic", "copy template file from asset fail %s", new Object[] { j.n(((com.tencent.mm.vfs.b)localObject).cLr()) });
+          ab.i("MicroMsg.WebSearch.WebSearchApiLogic", "copy template file from asset fail %s", new Object[] { j.p(((b)localObject).dQJ()) });
         }
+        label314:
+        AppMethodBeat.o(124145);
       }
     }
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, String paramString5, int paramInt2)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, String paramString5, int paramInt2, String paramString6)
   {
-    mf localmf = new mf();
-    localmf.bVo.bVk = paramString4;
-    localmf.bVo.bIB = paramString2;
-    localmf.bVo.bVp = paramString3;
-    localmf.bVo.scene = paramInt1;
-    localmf.bVo.bVq = paramString1;
-    localmf.bVo.bVs = paramString5;
-    localmf.bVo.bVt = paramInt2;
-    com.tencent.mm.sdk.b.a.udP.m(localmf);
+    AppMethodBeat.i(124133);
+    mx localmx = new mx();
+    localmx.cCV.query = paramString4;
+    localmx.cCV.cpW = paramString2;
+    localmx.cCV.cCW = paramString3;
+    localmx.cCV.scene = paramInt1;
+    localmx.cCV.cCX = paramString1;
+    localmx.cCV.cCZ = paramString5;
+    localmx.cCV.cDa = paramInt2;
+    localmx.cCV.cCY = paramString6;
+    com.tencent.mm.sdk.b.a.ymk.l(localmx);
+    AppMethodBeat.o(124133);
   }
   
-  private static Intent ab(Intent paramIntent)
+  public static azu acv()
   {
-    if (paramIntent == null) {
+    AppMethodBeat.i(124112);
+    try
+    {
+      Object localObject = (String)g.RL().Ru().get(67591, null);
+      if (localObject != null)
+      {
+        azu localazu = new azu();
+        localObject = ((String)localObject).split(",");
+        localazu.wSk = Integer.valueOf(localObject[0]).intValue();
+        localazu.wSn = Integer.valueOf(localObject[1]).intValue();
+        localazu.wDi = (Integer.valueOf(localObject[2]).intValue() / 1000000.0F);
+        localazu.wDh = (Integer.valueOf(localObject[3]).intValue() / 1000000.0F);
+        ab.i("MicroMsg.WebSearch.WebSearchApiLogic", "lbs location is not null, %f, %f", new Object[] { Float.valueOf(localazu.wDi), Float.valueOf(localazu.wDh) });
+        AppMethodBeat.o(124112);
+        return localazu;
+      }
+      ab.i("MicroMsg.WebSearch.WebSearchApiLogic", "lbs location is null, lbsContent is null!");
+      AppMethodBeat.o(124112);
       return null;
     }
-    paramIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.spm);
-    paramIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.spj);
+    catch (Exception localException)
+    {
+      ab.i("MicroMsg.WebSearch.WebSearchApiLogic", "lbs location is null, reason %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(124112);
+    }
+    return null;
+  }
+  
+  public static void agr(String paramString)
+  {
+    AppMethodBeat.i(124125);
+    g.RO().ac(new aa.2(paramString));
+    AppMethodBeat.o(124125);
+  }
+  
+  public static void ags(String paramString)
+  {
+    AppMethodBeat.i(124134);
+    my localmy = new my();
+    localmy.cDb.scene = 201;
+    localmy.cDb.cpW = paramString;
+    com.tencent.mm.sdk.b.a.ymk.l(localmy);
+    AppMethodBeat.o(124134);
+  }
+  
+  public static String an(Map<String, ? extends Object> paramMap)
+  {
+    AppMethodBeat.i(124136);
+    StringBuffer localStringBuffer = new StringBuffer();
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      localStringBuffer.append((String)localEntry.getKey());
+      localStringBuffer.append("=");
+      if (localEntry.getValue() != null) {
+        localStringBuffer.append(localEntry.getValue().toString());
+      }
+      localStringBuffer.append("&");
+    }
+    paramMap = localStringBuffer.substring(0, localStringBuffer.length() - 1).toString();
+    AppMethodBeat.o(124136);
+    return paramMap;
+  }
+  
+  private static Intent ay(Intent paramIntent)
+  {
+    AppMethodBeat.i(124113);
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(124113);
+      return null;
+    }
+    paramIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.wib);
+    paramIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.whX);
     paramIntent.putExtra("neverGetA8Key", true);
+    AppMethodBeat.o(124113);
     return paramIntent;
   }
   
-  public static void ac(Intent paramIntent)
+  public static String bXn()
   {
-    paramIntent.putExtra("ftsbizscene", 24);
-    Map localMap = b(24, false, 384);
-    String str = Bm(bk.ZR((String)localMap.get("scene")));
-    localMap.put("sessionId", str);
-    paramIntent.putExtra("sessionId", str);
-    paramIntent.putExtra("rawUrl", c(localMap, 0));
-    paramIntent.putExtra("ftsType", 384);
+    AppMethodBeat.i(124111);
+    if (at.isWifi(ah.getContext()))
+    {
+      AppMethodBeat.o(124111);
+      return "wifi";
+    }
+    if (at.is4G(ah.getContext()))
+    {
+      AppMethodBeat.o(124111);
+      return "4g";
+    }
+    if (at.is3G(ah.getContext()))
+    {
+      AppMethodBeat.o(124111);
+      return "3g";
+    }
+    if (at.is2G(ah.getContext()))
+    {
+      AppMethodBeat.o(124111);
+      return "2g";
+    }
+    if (!at.isConnected(ah.getContext()))
+    {
+      AppMethodBeat.o(124111);
+      return "fail";
+    }
+    AppMethodBeat.o(124111);
+    return "";
   }
   
-  public static Map<String, String> b(int paramInt1, boolean paramBoolean, int paramInt2)
+  public static String bx(int paramInt, String paramString)
   {
-    return a(paramInt1, paramBoolean, paramInt2, "");
+    AppMethodBeat.i(124126);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("scene", String.valueOf(paramInt));
+    localHashMap.put("type", "64");
+    localHashMap.put("lang", com.tencent.mm.sdk.platformtools.aa.gP(ah.getContext()));
+    localHashMap.put("platform", "android");
+    localHashMap.put("version", String.valueOf(((ao)uJf.get(Integer.valueOf(2))).agn()));
+    localHashMap.put("isHomePage", "0");
+    localHashMap.put("isSug", "1");
+    localHashMap.put("netType", bXn());
+    localHashMap.put("WASessionId", paramString);
+    localHashMap.put("sessionId", paramString);
+    localHashMap.put("subSessionId", paramString);
+    localHashMap.put("isPreload", "1");
+    paramString = d(localHashMap, 2);
+    AppMethodBeat.o(124126);
+    return paramString;
   }
   
-  public static String bZq()
+  public static String cZl()
   {
-    qTW.get(Integer.valueOf(1));
+    AppMethodBeat.i(124095);
+    uJf.get(Integer.valueOf(1));
+    AppMethodBeat.o(124095);
     return "app.html";
   }
   
-  public static String bZr()
+  public static String cZm()
   {
-    qTW.get(Integer.valueOf(1));
+    AppMethodBeat.i(124096);
+    uJf.get(Integer.valueOf(1));
+    AppMethodBeat.o(124096);
     return "config.conf";
   }
   
-  public static void bZs()
+  public static void cZn()
   {
-    Iterator localIterator = qTX.values().iterator();
+    AppMethodBeat.i(124097);
+    Iterator localIterator = uJg.values().iterator();
     while (localIterator.hasNext()) {
       localIterator.next();
     }
+    AppMethodBeat.o(124097);
   }
   
-  public static Intent bZt()
+  public static int cZo()
   {
-    return ab(new Intent());
+    return uJh;
   }
   
-  public static void bZu()
+  public static Intent cZp()
   {
-    gN(0L);
+    AppMethodBeat.i(124114);
+    Intent localIntent = ay(new Intent());
+    AppMethodBeat.o(124114);
+    return localIntent;
   }
   
-  public static String bZv()
+  public static void cZq()
   {
-    String str = Bm(-1);
-    Map localMap = b(-1, true, 0);
+    AppMethodBeat.i(124122);
+    nj(0L);
+    AppMethodBeat.o(124122);
+  }
+  
+  public static String cZr()
+  {
+    AppMethodBeat.i(124124);
+    String str = IZ(-1);
+    Map localMap = d(-1, true, 0);
     localMap.put("sessionId", str);
     localMap.put("inputMarginTop", "32");
     localMap.put("inputMarginLeftRight", "24");
     localMap.put("inputHeight", "48");
     localMap.put("isPreload", "1");
-    return c(localMap, 0);
+    str = d(localMap, 0);
+    AppMethodBeat.o(124124);
+    return str;
   }
   
-  public static boolean bZw()
+  public static boolean cZs()
   {
-    JSONObject localJSONObject = ac.Ru("snsContactMatch");
-    if (localJSONObject != null) {
-      return localJSONObject.optInt("matchSwitch") == 1;
+    AppMethodBeat.i(124132);
+    JSONObject localJSONObject = ac.agv("snsContactMatch");
+    if (localJSONObject != null)
+    {
+      if (localJSONObject.optInt("matchSwitch") == 1)
+      {
+        AppMethodBeat.o(124132);
+        return true;
+      }
+      AppMethodBeat.o(124132);
+      return false;
     }
+    AppMethodBeat.o(124132);
     return false;
   }
   
-  public static int bZx()
+  public static int cZt()
   {
-    JSONObject localJSONObject = ac.Ru("snsContactMatch");
-    if (localJSONObject != null) {
-      return localJSONObject.optInt("queryUtfLenLimit");
+    AppMethodBeat.i(124135);
+    JSONObject localJSONObject = ac.agv("snsContactMatch");
+    if (localJSONObject != null)
+    {
+      int i = localJSONObject.optInt("queryUtfLenLimit");
+      AppMethodBeat.o(124135);
+      return i;
     }
+    AppMethodBeat.o(124135);
     return 0;
   }
   
-  public static boolean bZy()
+  public static boolean cZu()
   {
-    return com.tencent.mm.sdk.platformtools.d.CLIENT_VERSION.endsWith("0F");
+    AppMethodBeat.i(124143);
+    boolean bool = f.CLIENT_VERSION.endsWith("0F");
+    AppMethodBeat.o(124143);
+    return bool;
   }
   
-  public static String boM()
+  private static void copyFile(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    if (aq.isWifi(ae.getContext())) {
-      return "wifi";
+    AppMethodBeat.i(124103);
+    byte[] arrayOfByte = new byte[1024];
+    for (;;)
+    {
+      int i = paramInputStream.read(arrayOfByte);
+      if (i == -1) {
+        break;
+      }
+      paramOutputStream.write(arrayOfByte, 0, i);
     }
-    if (aq.is4G(ae.getContext())) {
-      return "4g";
-    }
-    if (aq.is3G(ae.getContext())) {
-      return "3g";
-    }
-    if (aq.is2G(ae.getContext())) {
-      return "2g";
-    }
-    if (!aq.isConnected(ae.getContext())) {
-      return "fail";
-    }
-    return "";
+    AppMethodBeat.o(124103);
   }
   
-  public static int c(Map<String, Object> paramMap, String paramString, int paramInt)
+  public static int d(Map<String, Object> paramMap, String paramString, int paramInt)
   {
-    paramMap = s(paramMap, paramString);
-    if (bk.bl(paramMap)) {
+    AppMethodBeat.i(124139);
+    paramMap = t(paramMap, paramString);
+    if (bo.isNullOrNil(paramMap))
+    {
+      AppMethodBeat.o(124139);
       return paramInt;
     }
     try
     {
       int i = Integer.valueOf(paramMap).intValue();
+      AppMethodBeat.o(124139);
       return i;
     }
-    catch (Exception paramMap) {}
+    catch (Exception paramMap)
+    {
+      AppMethodBeat.o(124139);
+    }
     return paramInt;
   }
   
-  public static String c(Map<String, String> paramMap, int paramInt)
+  public static String d(Map<String, String> paramMap, int paramInt)
   {
     int j = 1;
+    AppMethodBeat.i(124128);
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("file://");
-    Object localObject1 = Bn(paramInt).aoA();
+    Object localObject1 = Ja(paramInt).aLw();
     Object localObject2 = new StringBuilder();
-    ak localak = ak.bZF();
-    if (paramInt == 1) {}
-    for (int i = 2; !ae.cqV(); i = 1) {
-      throw new IllegalStateException("please call from main process");
-    }
-    boolean bool;
-    switch (i)
+    aj localaj = aj.cZB();
+    if (paramInt == 1)
     {
-    default: 
-      bool = localak.bZH();
-      if (!bool) {
-        break;
+      i = 2;
+      if (!localaj.Js(i)) {
+        break label220;
       }
     }
-    for (i = j;; i = 0)
+    label220:
+    for (int i = j;; i = 0)
     {
       paramMap.put("isOpenPreload", i);
       localStringBuffer.append((String)localObject1);
       if (paramMap.size() <= 0) {
-        break label446;
+        break label411;
       }
       localObject1 = localStringBuffer.append("/");
-      Bn(paramInt);
+      Ja(paramInt);
       ((StringBuffer)localObject1).append("app.html?");
       localObject1 = paramMap.entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
@@ -949,13 +1190,13 @@ public final class aa
         localStringBuffer.append((String)((Map.Entry)localObject2).getValue());
         localStringBuffer.append("&");
       }
-      bool = localak.bZG();
+      i = 1;
       break;
     }
     localObject1 = (String)paramMap.get("sessionId");
     if (!paramMap.containsKey("sessionId"))
     {
-      localObject1 = Bm(bk.ZR((String)paramMap.get("scene")));
+      localObject1 = IZ(bo.apV((String)paramMap.get("scene")));
       localStringBuffer.append("sessionId");
       localStringBuffer.append("=");
       localStringBuffer.append((String)localObject1);
@@ -970,132 +1211,87 @@ public final class aa
     }
     localStringBuffer.append("wechatVersion");
     localStringBuffer.append("=");
-    localStringBuffer.append(com.tencent.mm.protocal.d.spa);
+    localStringBuffer.append(com.tencent.mm.protocal.d.whH);
     localStringBuffer.append("&");
-    return localStringBuffer.substring(0, localStringBuffer.length() - 1);
-    label446:
+    paramMap = localStringBuffer.substring(0, localStringBuffer.length() - 1);
+    AppMethodBeat.o(124128);
+    return paramMap;
+    label411:
     paramMap = localStringBuffer.append("/");
-    Bn(paramInt);
+    Ja(paramInt);
     paramMap.append("app.html");
-    return localStringBuffer.toString();
+    paramMap = localStringBuffer.toString();
+    AppMethodBeat.o(124128);
+    return paramMap;
   }
   
-  public static void c(Context paramContext, String paramString, Intent paramIntent)
+  public static Map<String, String> d(int paramInt1, boolean paramBoolean, int paramInt2)
   {
+    AppMethodBeat.i(124116);
+    Map localMap = a(paramInt1, paramBoolean, paramInt2, "");
+    AppMethodBeat.o(124116);
+    return localMap;
+  }
+  
+  public static void d(Context paramContext, String paramString, Intent paramIntent)
+  {
+    AppMethodBeat.i(124141);
     try
     {
-      String str2 = ae.cqQ() + ".plugin.topstory";
+      String str2 = ah.dsO() + ".plugin.topstory";
       String str1 = paramString;
       if (paramString.startsWith(".")) {
         str1 = str2 + paramString;
       }
-      paramIntent.setClassName(ae.getPackageName(), str1);
+      paramIntent.setClassName(ah.getPackageName(), str1);
       Class.forName(str1, false, paramContext.getClassLoader());
       if ((paramContext instanceof Activity))
       {
         paramContext.startActivity(paramIntent);
+        AppMethodBeat.o(124141);
         return;
       }
       paramIntent.addFlags(268435456);
       paramContext.startActivity(paramIntent);
+      AppMethodBeat.o(124141);
       return;
     }
     catch (Exception paramContext)
     {
-      y.e("MicroMsg.WebSearch.WebSearchApiLogic", "Class Not Found when startActivity %s", new Object[] { paramContext });
+      ab.e("MicroMsg.WebSearch.WebSearchApiLogic", "Class Not Found when startActivity %s", new Object[] { paramContext });
+      AppMethodBeat.o(124141);
     }
   }
   
-  private static void copyFile(InputStream paramInputStream, OutputStream paramOutputStream)
+  private static void e(Context paramContext, String paramString, Intent paramIntent)
   {
-    byte[] arrayOfByte = new byte[1024];
-    for (;;)
-    {
-      int i = paramInputStream.read(arrayOfByte);
-      if (i == -1) {
-        break;
-      }
-      paramOutputStream.write(arrayOfByte, 0, i);
-    }
-  }
-  
-  private static void d(Context paramContext, String paramString, Intent paramIntent)
-  {
+    AppMethodBeat.i(124142);
     try
     {
-      String str2 = ae.cqQ() + ".plugin.topstory";
+      String str2 = ah.dsO() + ".plugin.topstory";
       String str1 = paramString;
       if (paramString.startsWith(".")) {
         str1 = str2 + paramString;
       }
-      paramIntent.setClassName(ae.getPackageName(), str1);
+      paramIntent.setClassName(ah.getPackageName(), str1);
       Class.forName(str1, false, paramContext.getClassLoader());
       if ((paramContext instanceof Activity)) {
         ((Activity)paramContext).startActivityForResult(paramIntent, 10001);
       }
+      AppMethodBeat.o(124142);
       return;
     }
     catch (Exception paramContext)
     {
-      y.e("MicroMsg.WebSearch.WebSearchApiLogic", "Class Not Found when startActivity %s", new Object[] { paramContext });
+      ab.e("MicroMsg.WebSearch.WebSearchApiLogic", "Class Not Found when startActivity %s", new Object[] { paramContext });
+      AppMethodBeat.o(124142);
     }
   }
   
-  public static void gN(long paramLong)
+  public static Properties l(b paramb)
   {
-    ak localak = ak.bZF();
-    if (localak.eAg == null)
-    {
-      localak.eAg = new ai();
-      localak.eAg.O(new ak.2(localak));
-    }
-    g.DS().k(new aa.1(), paramLong);
-  }
-  
-  public static boolean gO(long paramLong)
-  {
-    y.i("MicroMsg.WebSearch.WebSearchApiLogic", "rec updateRedDotTimestamp %d", new Object[] { Long.valueOf(paramLong) });
-    g.DP().Dz().c(ac.a.uzh, Long.valueOf(paramLong));
-    return false;
-  }
-  
-  private static boolean gP(long paramLong)
-  {
-    return paramLong == 100203L;
-  }
-  
-  public static boolean i(Activity paramActivity, int paramInt)
-  {
-    try
-    {
-      int i = android.support.v4.content.b.checkSelfPermission(paramActivity, "android.permission.ACCESS_COARSE_LOCATION");
-      if (i == 0)
-      {
-        h.nFQ.f(15104, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(2) });
-        return true;
-      }
-    }
-    catch (Exception paramActivity)
-    {
-      y.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", paramActivity, "", new Object[0]);
-      return true;
-    }
-    h.nFQ.f(15104, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1) });
-    if (android.support.v4.app.a.a(paramActivity, "android.permission.ACCESS_COARSE_LOCATION"))
-    {
-      y.w("MicroMsg.WebSearch.WebSearchApiLogic", "has shown request permission and user denied, do not show agagin");
-      return true;
-    }
-    y.w("MicroMsg.WebSearch.WebSearchApiLogic", "showing request permission dialog");
-    android.support.v4.app.a.a(paramActivity, new String[] { "android.permission.ACCESS_COARSE_LOCATION" }, 73);
-    return false;
-  }
-  
-  public static Properties j(com.tencent.mm.vfs.b paramb)
-  {
+    AppMethodBeat.i(124091);
     Properties localProperties = new Properties();
-    Object localObject;
-    com.tencent.mm.vfs.b localb;
     if ((paramb != null) && (paramb.isFile()))
     {
       localObject = null;
@@ -1103,69 +1299,213 @@ public final class aa
     }
     try
     {
-      paramb = com.tencent.mm.vfs.e.o(paramb);
+      paramb = com.tencent.mm.vfs.e.q(paramb);
       localb = paramb;
       localObject = paramb;
       localProperties.load(paramb);
-      bk.b(paramb);
-      return localProperties;
+      bo.b(paramb);
     }
     catch (Exception paramb)
     {
-      localObject = localb;
-      y.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", paramb, "", new Object[0]);
-      bk.b(localb);
-      return localProperties;
+      for (;;)
+      {
+        localObject = localb;
+        ab.printErrStackTrace("MicroMsg.WebSearch.WebSearchApiLogic", paramb, "", new Object[0]);
+        bo.b(localb);
+      }
     }
     finally
     {
-      bk.b((Closeable)localObject);
+      bo.b((Closeable)localObject);
+      AppMethodBeat.o(124091);
     }
+    AppMethodBeat.o(124091);
+    return localProperties;
   }
   
-  public static String s(Map<String, Object> paramMap, String paramString)
+  /* Error */
+  public static boolean l(Activity paramActivity, int paramInt)
   {
-    if (paramMap.containsKey(paramString))
-    {
-      if (paramMap.get(paramString) != null) {
-        return paramMap.get(paramString).toString();
-      }
-      return "";
-    }
-    return "";
+    // Byte code:
+    //   0: ldc_w 1091
+    //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: ldc_w 1093
+    //   10: invokestatic 1099	android/support/v4/content/b:checkSelfPermission	(Landroid/content/Context;Ljava/lang/String;)I
+    //   13: istore_2
+    //   14: iload_2
+    //   15: ifne +59 -> 74
+    //   18: getstatic 1105	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   21: sipush 15104
+    //   24: iconst_2
+    //   25: anewarray 4	java/lang/Object
+    //   28: dup
+    //   29: iconst_0
+    //   30: iload_1
+    //   31: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   34: aastore
+    //   35: dup
+    //   36: iconst_1
+    //   37: iconst_2
+    //   38: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   41: aastore
+    //   42: invokevirtual 1108	com/tencent/mm/plugin/report/service/h:e	(I[Ljava/lang/Object;)V
+    //   45: ldc_w 1091
+    //   48: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   51: iconst_1
+    //   52: ireturn
+    //   53: astore_0
+    //   54: ldc 215
+    //   56: aload_0
+    //   57: ldc 43
+    //   59: iconst_0
+    //   60: anewarray 4	java/lang/Object
+    //   63: invokestatic 224	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   66: ldc_w 1091
+    //   69: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   72: iconst_1
+    //   73: ireturn
+    //   74: getstatic 1105	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   77: sipush 15104
+    //   80: iconst_2
+    //   81: anewarray 4	java/lang/Object
+    //   84: dup
+    //   85: iconst_0
+    //   86: iload_1
+    //   87: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   90: aastore
+    //   91: dup
+    //   92: iconst_1
+    //   93: iconst_1
+    //   94: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   97: aastore
+    //   98: invokevirtual 1108	com/tencent/mm/plugin/report/service/h:e	(I[Ljava/lang/Object;)V
+    //   101: aload_0
+    //   102: ldc_w 1093
+    //   105: invokestatic 1113	android/support/v4/app/a:a	(Landroid/app/Activity;Ljava/lang/String;)Z
+    //   108: ifeq +19 -> 127
+    //   111: ldc 215
+    //   113: ldc_w 1115
+    //   116: invokestatic 261	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   119: ldc_w 1091
+    //   122: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   125: iconst_1
+    //   126: ireturn
+    //   127: ldc 215
+    //   129: ldc_w 1117
+    //   132: invokestatic 261	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   135: aload_0
+    //   136: iconst_1
+    //   137: anewarray 387	java/lang/String
+    //   140: dup
+    //   141: iconst_0
+    //   142: ldc_w 1093
+    //   145: aastore
+    //   146: bipush 73
+    //   148: invokestatic 1120	android/support/v4/app/a:a	(Landroid/app/Activity;[Ljava/lang/String;I)V
+    //   151: ldc_w 1091
+    //   154: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   157: iconst_0
+    //   158: ireturn
+    //   159: astore_0
+    //   160: ldc 215
+    //   162: aload_0
+    //   163: ldc 43
+    //   165: iconst_0
+    //   166: anewarray 4	java/lang/Object
+    //   169: invokestatic 224	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   172: goto -21 -> 151
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	175	0	paramActivity	Activity
+    //   0	175	1	paramInt	int
+    //   13	2	2	i	int
+    // Exception table:
+    //   from	to	target	type
+    //   6	14	53	java/lang/Exception
+    //   18	45	159	java/lang/Exception
+    //   54	66	159	java/lang/Exception
+    //   74	119	159	java/lang/Exception
+    //   127	151	159	java/lang/Exception
   }
   
-  public static boolean t(Map<String, Object> paramMap, String paramString)
+  public static void nj(long paramLong)
   {
-    paramMap = s(paramMap, paramString);
-    if (bk.bl(paramMap)) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        if ("1".equals(paramMap)) {
-          return true;
-        }
-        if (!"0".equals(paramMap))
-        {
-          boolean bool = Boolean.valueOf(paramMap).booleanValue();
-          return bool;
-        }
-      }
-      catch (Exception paramMap) {}
-    }
+    AppMethodBeat.i(124123);
+    aj.cZB().cZC();
+    g.RO().o(new aa.1(), paramLong);
+    AppMethodBeat.o(124123);
+  }
+  
+  public static boolean nk(long paramLong)
+  {
+    AppMethodBeat.i(124131);
+    ab.i("MicroMsg.WebSearch.WebSearchApiLogic", "rec updateRedDotTimestamp %d", new Object[] { Long.valueOf(paramLong) });
+    g.RL().Ru().set(ac.a.yJV, Long.valueOf(paramLong));
+    AppMethodBeat.o(124131);
     return false;
   }
   
-  public static String v(Map<String, String> paramMap)
+  private static boolean nl(long paramLong)
   {
-    return c(paramMap, 0);
+    return paramLong == 100203L;
+  }
+  
+  public static String t(Map<String, Object> paramMap, String paramString)
+  {
+    AppMethodBeat.i(124137);
+    if (paramMap.containsKey(paramString))
+    {
+      if (paramMap.get(paramString) != null)
+      {
+        paramMap = paramMap.get(paramString).toString();
+        AppMethodBeat.o(124137);
+        return paramMap;
+      }
+      AppMethodBeat.o(124137);
+      return "";
+    }
+    AppMethodBeat.o(124137);
+    return "";
+  }
+  
+  public static boolean u(Map<String, Object> paramMap, String paramString)
+  {
+    AppMethodBeat.i(124138);
+    paramMap = t(paramMap, paramString);
+    if (bo.isNullOrNil(paramMap))
+    {
+      AppMethodBeat.o(124138);
+      return false;
+    }
+    try
+    {
+      boolean bool = "1".equals(paramMap);
+      if (bool)
+      {
+        AppMethodBeat.o(124138);
+        return true;
+      }
+      bool = "0".equals(paramMap);
+      if (bool)
+      {
+        AppMethodBeat.o(124138);
+        return false;
+      }
+      bool = Boolean.valueOf(paramMap).booleanValue();
+      AppMethodBeat.o(124138);
+      return bool;
+    }
+    catch (Exception paramMap)
+    {
+      AppMethodBeat.o(124138);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.aa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,102 +1,132 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.voiceprint.model.d;
 import com.tencent.mm.plugin.voiceprint.model.j;
 import com.tencent.mm.plugin.voiceprint.model.q;
 import com.tencent.mm.plugin.voiceprint.model.q.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class VoiceUnLockUI
   extends BaseVoicePrintUI
   implements q.a
 {
-  private q pNa;
+  private q tsU;
   
-  public final void PX(String paramString)
+  public final void aeD(String paramString)
   {
-    this.pLy = paramString;
-    this.pLS.bPs();
-    this.pLS.setTipText(paramString);
-    this.pLS.bPr();
-    this.pLP.setEnabled(true);
+    AppMethodBeat.i(26244);
+    this.tru = paramString;
+    this.trO.cLx();
+    this.trO.setTipText(paramString);
+    this.trO.bRO();
+    this.trL.setEnabled(true);
+    AppMethodBeat.o(26244);
   }
   
-  public final void bPa()
+  protected final void bMe()
   {
-    bPg();
+    AppMethodBeat.i(26243);
+    findViewById(2131823890).setVisibility(8);
+    this.trO.bRN();
+    this.trO.setTitleText(2131304561);
+    this.trO.cLy();
+    this.trL.setEnabled(false);
+    AppMethodBeat.o(26243);
   }
   
-  protected final void bPh()
+  public final void cLf()
   {
-    y.d("MicroMsg.VoiceUnLockUI", "sendVoice, filename:%s", new Object[] { this.pLU });
-    if ((!bk.bl(this.pLU)) && (!bk.bl(this.pNa.pLy)))
+    AppMethodBeat.i(26247);
+    cLm();
+    AppMethodBeat.o(26247);
+  }
+  
+  public final void cLg()
+  {
+    AppMethodBeat.i(153683);
+    GY(2131304562);
+    AppMethodBeat.o(153683);
+  }
+  
+  protected final void cLn()
+  {
+    AppMethodBeat.i(26242);
+    ab.d("MicroMsg.VoiceUnLockUI", "sendVoice, filename:%s", new Object[] { this.trQ });
+    if ((!bo.isNullOrNil(this.trQ)) && (!bo.isNullOrNil(this.tsU.tru)))
     {
-      Object localObject = this.pNa;
-      localObject = new j(this.pLU, ((q)localObject).pLz);
-      ((j)localObject).pLi = true;
-      au.Dk().a((m)localObject, 0);
-      this.pLP.setEnabled(false);
-      this.pLS.bPq();
+      Object localObject = this.tsU;
+      localObject = new j(this.trQ, ((q)localObject).trv);
+      ((j)localObject).tre = true;
+      aw.Rc().a((m)localObject, 0);
+      this.trL.setEnabled(false);
+      this.trO.bRN();
     }
+    AppMethodBeat.o(26242);
   }
   
-  protected void bPp()
+  protected void cLw()
   {
+    AppMethodBeat.i(26246);
     Intent localIntent = new Intent();
     localIntent.putExtra("kscene_type", 73);
     localIntent.setClass(this, VoicePrintFinishUI.class);
     startActivity(localIntent);
     finish();
+    AppMethodBeat.o(26246);
   }
   
-  protected final void beK()
+  public final void mI(boolean paramBoolean)
   {
-    findViewById(R.h.right_btn).setVisibility(8);
-    this.pLS.bPq();
-    this.pLS.setTitleText(R.l.voice_print_auth_title);
-    this.pLS.bPt();
-    this.pLP.setEnabled(false);
-  }
-  
-  public final void jP(boolean paramBoolean)
-  {
-    this.pLS.bPr();
-    this.pLP.setEnabled(true);
+    AppMethodBeat.i(26245);
+    this.trO.bRO();
+    this.trL.setEnabled(true);
     if (paramBoolean)
     {
-      y.d("MicroMsg.VoiceUnLockUI", "unlock success");
-      bPp();
+      ab.d("MicroMsg.VoiceUnLockUI", "unlock success");
+      cLw();
+      AppMethodBeat.o(26245);
       return;
     }
-    this.pLS.setErr(R.l.voice_print_auth_error);
-    this.pLS.bPu();
+    this.trO.setErr(2131304560);
+    this.trO.cLz();
+    AppMethodBeat.o(26245);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(26241);
     super.onCreate(paramBundle);
-    this.pNa = new q(this);
-    y.d("MicroMsg.VoicePrintUnLockService", "getVoiceText");
-    au.Dk().a(new d(73, ""), 0);
+    this.tsU = new q(this);
+    ab.d("MicroMsg.VoicePrintUnLockService", "getVoiceText");
+    aw.Rc().a(new d(73, ""), 0);
+    AppMethodBeat.o(26241);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(26248);
     super.onDestroy();
-    q localq = this.pNa;
-    au.Dk().b(611, localq);
-    au.Dk().b(613, localq);
-    localq.pLO = null;
+    q localq = this.tsU;
+    aw.Rc().b(611, localq);
+    aw.Rc().b(613, localq);
+    localq.trK = null;
+    AppMethodBeat.o(26248);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

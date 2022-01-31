@@ -1,46 +1,49 @@
 package com.tencent.mm.plugin.ipcall.a.g;
 
-import com.tencent.mm.h.c.ck;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.cp;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class i
-  extends ck
+  extends cp
 {
-  public static c.a buS;
+  public static c.a info;
   
   static
   {
+    AppMethodBeat.i(21936);
     c.a locala = new c.a();
-    locala.ujL = new Field[3];
+    locala.yrK = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "countryCode";
-    locala.ujN.put("countryCode", "INTEGER PRIMARY KEY ");
+    locala.yrM.put("countryCode", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" countryCode INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "countryCode";
+    locala.yrL = "countryCode";
     locala.columns[1] = "callTimeCount";
-    locala.ujN.put("callTimeCount", "LONG");
+    locala.yrM.put("callTimeCount", "LONG");
     localStringBuilder.append(" callTimeCount LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "lastCallTime";
-    locala.ujN.put("lastCallTime", "LONG");
+    locala.yrM.put("lastCallTime", "LONG");
     localStringBuilder.append(" lastCallTime LONG");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(21936);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.g.i
  * JD-Core Version:    0.7.0.1
  */

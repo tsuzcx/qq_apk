@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.sport;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.plugin.sport.c.m;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.plugin.sport.model.m;
 
 final class PluginSport$2
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return m.ptI;
+    return m.spZ;
   }
 }
 

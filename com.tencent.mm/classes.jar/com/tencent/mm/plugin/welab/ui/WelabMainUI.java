@@ -1,211 +1,223 @@
 package com.tencent.mm.plugin.welab.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.kernel.j;
-import com.tencent.mm.plugin.welab.a.a;
-import com.tencent.mm.plugin.welab.a.b;
-import com.tencent.mm.plugin.welab.a.c;
-import com.tencent.mm.plugin.welab.a.d;
-import com.tencent.mm.plugin.welab.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.i;
+import com.tencent.mm.plugin.welab.d;
+import com.tencent.mm.plugin.welab.e.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@j
+@i
 public class WelabMainUI
   extends MMActivity
 {
-  private boolean rEC = false;
-  private LinearLayout rEN;
-  private LinearLayout rEO;
-  private LinearLayout rEP;
-  private LinearLayout rEQ;
-  private View rER;
-  private View rES;
-  private List<String> rET;
-  private Comparator<com.tencent.mm.plugin.welab.c.a.a> rEU = new WelabMainUI.3(this);
-  private View.OnClickListener rEV = new WelabMainUI.4(this);
+  private View vvA;
+  private View vvB;
+  private List<String> vvC;
+  private Comparator<com.tencent.mm.plugin.welab.d.a.a> vvD;
+  private View.OnClickListener vvE;
+  private boolean vvl;
+  private LinearLayout vvw;
+  private LinearLayout vvx;
+  private LinearLayout vvy;
+  private LinearLayout vvz;
   
-  private void a(com.tencent.mm.plugin.welab.c.a.a parama, LinearLayout paramLinearLayout)
+  public WelabMainUI()
   {
-    LinearLayout localLinearLayout = (LinearLayout)getLayoutInflater().inflate(a.c.welab_app_view, paramLinearLayout, false);
-    ImageView localImageView1 = (ImageView)localLinearLayout.findViewById(a.b.title_prospect);
-    ImageView localImageView2 = (ImageView)localLinearLayout.findViewById(a.b.app_img);
-    TextView localTextView1 = (TextView)localLinearLayout.findViewById(a.b.title);
-    TextView localTextView2 = (TextView)localLinearLayout.findViewById(a.b.summary);
-    if (com.tencent.mm.plugin.welab.d.b.chq().e(parama)) {
+    AppMethodBeat.i(80619);
+    this.vvl = false;
+    this.vvD = new WelabMainUI.3(this);
+    this.vvE = new WelabMainUI.4(this);
+    AppMethodBeat.o(80619);
+  }
+  
+  private void a(com.tencent.mm.plugin.welab.d.a.a parama, LinearLayout paramLinearLayout)
+  {
+    AppMethodBeat.i(80625);
+    LinearLayout localLinearLayout = (LinearLayout)getLayoutInflater().inflate(2130971313, paramLinearLayout, false);
+    ImageView localImageView1 = (ImageView)localLinearLayout.findViewById(2131829568);
+    ImageView localImageView2 = (ImageView)localLinearLayout.findViewById(2131829567);
+    TextView localTextView1 = (TextView)localLinearLayout.findViewById(2131820680);
+    TextView localTextView2 = (TextView)localLinearLayout.findViewById(2131821890);
+    if (b.dhC().e(parama)) {
       localImageView1.setVisibility(0);
     }
     for (;;)
     {
-      com.tencent.mm.as.a.a.OT().a(parama.Um("field_ThumbUrl"), localImageView2, com.tencent.mm.plugin.welab.b.chc().qXu);
-      com.tencent.mm.plugin.welab.b.chc();
-      localTextView1.setText(com.tencent.mm.plugin.welab.b.a(parama));
-      localTextView2.setText(parama.Um("field_Desc"));
+      com.tencent.mm.at.a.a.ahM().a(parama.ajA("field_ThumbUrl"), localImageView2, com.tencent.mm.plugin.welab.a.dhl().uMJ);
+      com.tencent.mm.plugin.welab.a.dhl();
+      localTextView1.setText(com.tencent.mm.plugin.welab.a.a(parama));
+      localTextView2.setText(parama.ajA("field_Desc"));
       localLinearLayout.setTag(parama);
-      localLinearLayout.setOnClickListener(this.rEV);
+      localLinearLayout.setOnClickListener(this.vvE);
       paramLinearLayout.addView(localLinearLayout);
+      AppMethodBeat.o(80625);
       return;
       localImageView1.setVisibility(8);
     }
   }
   
-  private void chp()
+  private void dhB()
   {
-    List localList = com.tencent.mm.plugin.welab.b.chc().rEr.chl();
-    Object localObject = localList.iterator();
-    while (((Iterator)localObject).hasNext())
+    AppMethodBeat.i(80624);
+    Object localObject = com.tencent.mm.plugin.welab.a.dhl().vuT.dht();
+    Iterator localIterator = ((List)localObject).iterator();
+    while (localIterator.hasNext())
     {
-      com.tencent.mm.plugin.welab.c.a.a locala = (com.tencent.mm.plugin.welab.c.a.a)((Iterator)localObject).next();
+      com.tencent.mm.plugin.welab.d.a.a locala = (com.tencent.mm.plugin.welab.d.a.a)localIterator.next();
       if ((System.currentTimeMillis() / 1000L - locala.field_endtime >= 2592000L) || ("labs1de6f3".equals(locala.field_LabsAppId)))
       {
-        ((Iterator)localObject).remove();
-        com.tencent.mm.plugin.welab.b.chc().rEr.a(locala, new String[0]);
+        localIterator.remove();
+        com.tencent.mm.plugin.welab.a.vuS.vuT.delete(locala, new String[0]);
       }
-      else if ((locala.caB()) && (locala.field_Switch != 3))
+      else if ((locala.isExpired()) && (locala.field_Switch != 3))
       {
         locala.field_Switch = 3;
-        com.tencent.mm.plugin.welab.b.chc().rEr.c(locala, new String[0]);
+        com.tencent.mm.plugin.welab.a.vuS.vuT.update(locala, new String[0]);
       }
       else if (locala.field_Switch != 3)
       {
-        ((Iterator)localObject).remove();
+        localIterator.remove();
       }
     }
-    if ("stopped lab " + localList != null) {}
-    for (localObject = localList.toString();; localObject = "")
+    ab.i("WelabMgr", "stopped lab %s", new Object[] { localObject.toString() });
+    if (((List)localObject).isEmpty())
     {
-      y.i("WelabMgr", (String)localObject);
-      if (!localList.isEmpty()) {
-        break;
-      }
-      this.rEO.setVisibility(8);
+      this.vvx.setVisibility(8);
+      AppMethodBeat.o(80624);
       return;
     }
-    this.rEO.setVisibility(0);
-    Collections.sort(localList, this.rEU);
-    localObject = localList.iterator();
+    this.vvx.setVisibility(0);
+    Collections.sort((List)localObject, this.vvD);
+    localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      a((com.tencent.mm.plugin.welab.c.a.a)((Iterator)localObject).next(), this.rEQ);
+      a((com.tencent.mm.plugin.welab.d.a.a)((Iterator)localObject).next(), this.vvz);
     }
-    y.d("MicroMsg.WelabMainUI", "get online app count " + this.rEQ.getChildCount());
+    ab.d("MicroMsg.WelabMainUI", "get online app count " + this.vvz.getChildCount());
+    AppMethodBeat.o(80624);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.c.welab_main;
+    return 2130971315;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(a.d.welab_name);
-    s.czz();
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      Window localWindow = getWindow();
-      localWindow.clearFlags(201326592);
-      localWindow.addFlags(-2147483648);
-      localWindow.setStatusBarColor(getResources().getColor(a.a.welab_main_color));
-    }
-    if (getSupportActionBar() != null) {
-      getSupportActionBar().getCustomView().setBackgroundColor(getResources().getColor(a.a.welab_main_color));
-    }
-    this.rEN = ((LinearLayout)findViewById(a.b.online_composite_container));
-    this.rEP = ((LinearLayout)findViewById(a.b.online_container));
-    this.rEO = ((LinearLayout)findViewById(a.b.stopped_composite_container));
-    this.rEQ = ((LinearLayout)findViewById(a.b.stopped_container));
-    this.rER = findViewById(a.b.privacy_detail);
-    this.rES = findViewById(a.b.no_app_view);
-    this.rER.setOnClickListener(new WelabMainUI.1(this));
+    AppMethodBeat.i(80621);
+    setMMTitle(2131305953);
+    setTitleDividerColor(2131690709);
+    setActionbarColor(getResources().getColor(2131690708));
+    setActionbarElementColor(getResources().getColor(2131689615));
+    this.vvw = ((LinearLayout)findViewById(2131829576));
+    this.vvy = ((LinearLayout)findViewById(2131829577));
+    this.vvx = ((LinearLayout)findViewById(2131829578));
+    this.vvz = ((LinearLayout)findViewById(2131829579));
+    this.vvA = findViewById(2131829580);
+    this.vvB = findViewById(2131829575);
+    this.vvA.setOnClickListener(new WelabMainUI.1(this));
     setBackBtn(new WelabMainUI.2(this));
+    AppMethodBeat.o(80621);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     boolean bool = false;
+    AppMethodBeat.i(80620);
     super.onCreate(paramBundle);
-    mS(true);
-    czo();
+    setIsDarkActionbarBg(true);
+    hideActionbarLine();
     if (getIntent() != null)
     {
       if (getIntent().getIntExtra("para_from_with_red_point", 0) == 1) {
         bool = true;
       }
-      this.rEC = bool;
-      this.rET = getIntent().getStringArrayListExtra("key_exclude_apps");
+      this.vvl = bool;
+      this.vvC = getIntent().getStringArrayListExtra("key_exclude_apps");
     }
     initView();
-    com.tencent.mm.plugin.welab.d.b.chq();
-    ae.cqS().edit().putBoolean("key_has_enter_welab", true).commit();
-    com.tencent.mm.plugin.welab.d.b.chr();
-    e.q("", 1, this.rEC);
+    b.dhC();
+    ah.dsQ().edit().putBoolean("key_has_enter_welab", true).commit();
+    b.dhE();
+    d.t("", 1, this.vvl);
+    AppMethodBeat.o(80620);
   }
   
   public void onPause()
   {
+    AppMethodBeat.i(80623);
     super.onPause();
+    AppMethodBeat.o(80623);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(80622);
     super.onResume();
-    this.rEP.removeAllViews();
-    this.rEQ.removeAllViews();
-    Object localObject = com.tencent.mm.plugin.welab.b.chc().chd();
+    this.vvy.removeAllViews();
+    this.vvz.removeAllViews();
+    Object localObject = com.tencent.mm.plugin.welab.a.dhl().dhm();
     if ((localObject == null) || (((List)localObject).isEmpty())) {
-      this.rEN.setVisibility(8);
+      this.vvw.setVisibility(8);
     }
     for (;;)
     {
-      chp();
-      if ((this.rEN.getVisibility() == 0) || (this.rEO.getVisibility() == 0)) {
+      dhB();
+      if ((this.vvw.getVisibility() == 0) || (this.vvx.getVisibility() == 0)) {
         break;
       }
-      this.rES.setVisibility(0);
+      this.vvB.setVisibility(0);
+      AppMethodBeat.o(80622);
       return;
       Iterator localIterator = ((List)localObject).iterator();
       while (localIterator.hasNext())
       {
-        com.tencent.mm.plugin.welab.c.a.a locala = (com.tencent.mm.plugin.welab.c.a.a)localIterator.next();
-        if ((!bk.bl(locala.field_LabsAppId)) && (this.rET.contains(locala.field_LabsAppId))) {
+        com.tencent.mm.plugin.welab.d.a.a locala = (com.tencent.mm.plugin.welab.d.a.a)localIterator.next();
+        if ((!bo.isNullOrNil(locala.field_LabsAppId)) && (this.vvC.contains(locala.field_LabsAppId))) {
           localIterator.remove();
         }
       }
       if (((List)localObject).isEmpty())
       {
-        this.rEN.setVisibility(8);
+        this.vvw.setVisibility(8);
       }
       else
       {
-        this.rEN.setVisibility(0);
-        Collections.sort((List)localObject, this.rEU);
+        this.vvw.setVisibility(0);
+        Collections.sort((List)localObject, this.vvD);
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          a((com.tencent.mm.plugin.welab.c.a.a)((Iterator)localObject).next(), this.rEP);
+          a((com.tencent.mm.plugin.welab.d.a.a)((Iterator)localObject).next(), this.vvy);
         }
-        y.d("MicroMsg.WelabMainUI", "get online app count " + this.rEP.getChildCount());
+        ab.d("MicroMsg.WelabMainUI", "get online app count " + this.vvy.getChildCount());
       }
     }
-    this.rES.setVisibility(8);
+    this.vvB.setVisibility(8);
+    AppMethodBeat.o(80622);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

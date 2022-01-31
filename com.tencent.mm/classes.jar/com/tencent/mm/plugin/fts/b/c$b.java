@@ -1,29 +1,37 @@
 package com.tencent.mm.plugin.fts.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.a;
-import java.util.List;
 
 final class c$b
   extends a
 {
-  private int mCount = 0;
+  private long eaY;
   
-  private c$b(c paramc) {}
-  
-  public final String afJ()
+  public c$b(c paramc, long paramLong)
   {
-    return String.format("{mCount: %d}", new Object[] { Integer.valueOf(this.mCount) });
+    this.eaY = paramLong;
+  }
+  
+  public final String aAn()
+  {
+    AppMethodBeat.i(136749);
+    String str = String.format("{MsgId: %d}", new Object[] { Long.valueOf(this.eaY) });
+    AppMethodBeat.o(136749);
+    return str;
   }
   
   public final boolean execute()
   {
-    this.mCount = this.kze.kyW.f(com.tencent.mm.plugin.fts.a.c.kuN, -1).size();
+    AppMethodBeat.i(136748);
+    this.mUU.mUM.c(com.tencent.mm.plugin.fts.a.c.mQA, this.eaY);
+    AppMethodBeat.o(136748);
     return true;
   }
   
   public final String getName()
   {
-    return "DeleteAllTask";
+    return "DeleteMessageTask";
   }
 }
 

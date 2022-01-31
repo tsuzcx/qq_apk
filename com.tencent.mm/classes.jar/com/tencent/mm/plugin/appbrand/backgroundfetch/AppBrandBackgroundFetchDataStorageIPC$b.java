@@ -1,35 +1,43 @@
 package com.tencent.mm.plugin.appbrand.backgroundfetch;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.i;
+import com.tencent.mm.ipcinvoker.type.IPCLong;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 class AppBrandBackgroundFetchDataStorageIPC$b
-  implements i<AppBrandBackgroundFetchDataStorageIPC.WxappIdentityWithAppId, AppBrandBackgroundFetchDataParcel>
+  implements i<AppBrandBackgroundFetchDataStorageIPC.WxappIdentity, IPCLong>
 {
-  private static AppBrandBackgroundFetchDataParcel a(AppBrandBackgroundFetchDataStorageIPC.WxappIdentityWithAppId paramWxappIdentityWithAppId)
+  private static IPCLong a(AppBrandBackgroundFetchDataStorageIPC.WxappIdentity paramWxappIdentity)
   {
-    if ((paramWxappIdentityWithAppId == null) || (bk.bl(paramWxappIdentityWithAppId.bOL)))
+    AppMethodBeat.i(129781);
+    if ((paramWxappIdentity == null) || (bo.isNullOrNil(paramWxappIdentity.username)))
     {
-      y.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC.javayhu", "GetByAppIdCall:data or appid is null");
-      return null;
+      ab.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "GetUpdateTimeCall:data or username is null");
+      paramWxappIdentity = new IPCLong(0L);
+      AppMethodBeat.o(129781);
+      return paramWxappIdentity;
     }
     try
     {
-      paramWxappIdentityWithAppId = ((h)g.r(h.class)).aB(paramWxappIdentityWithAppId.bOL, paramWxappIdentityWithAppId.fKK);
-      return paramWxappIdentityWithAppId;
+      paramWxappIdentity = new IPCLong(((k)g.E(k.class)).aQ(paramWxappIdentity.username, paramWxappIdentity.hdX));
+      AppMethodBeat.o(129781);
+      return paramWxappIdentity;
     }
-    catch (Exception paramWxappIdentityWithAppId)
+    catch (Exception paramWxappIdentity)
     {
-      y.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC.javayhu", "GetByAppIdCall fail", new Object[] { paramWxappIdentityWithAppId });
+      ab.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageIPC", "GetUpdateTimeCall fail", new Object[] { paramWxappIdentity });
+      paramWxappIdentity = new IPCLong(0L);
+      AppMethodBeat.o(129781);
     }
-    return null;
+    return paramWxappIdentity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.AppBrandBackgroundFetchDataStorageIPC.b
  * JD-Core Version:    0.7.0.1
  */

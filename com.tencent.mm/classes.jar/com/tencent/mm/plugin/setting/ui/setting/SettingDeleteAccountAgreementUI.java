@@ -1,41 +1,50 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.CheckedTextView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.g;
-import com.tencent.mm.plugin.setting.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
 public class SettingDeleteAccountAgreementUI
   extends MMActivity
 {
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.setting_delete_account_agreement_ui;
+    return 2130970683;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    TextView localTextView = (TextView)findViewById(a.f.next_btn);
+    AppMethodBeat.i(127065);
+    TextView localTextView = (TextView)findViewById(2131822914);
     localTextView.setOnClickListener(new SettingDeleteAccountAgreementUI.1(this));
-    CheckedTextView localCheckedTextView = (CheckedTextView)findViewById(a.f.agreement_cb);
+    CheckedTextView localCheckedTextView = (CheckedTextView)findViewById(2131827592);
     localCheckedTextView.setOnClickListener(new SettingDeleteAccountAgreementUI.2(this, localTextView, localCheckedTextView));
     localTextView.setEnabled(localCheckedTextView.isChecked());
     setBackBtn(new SettingDeleteAccountAgreementUI.3(this));
+    AppMethodBeat.o(127065);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127064);
     super.onCreate(paramBundle);
-    setMMTitle(a.i.setting_del_account_title);
+    setMMTitle(2131303144);
     initView();
+    AppMethodBeat.o(127064);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingDeleteAccountAgreementUI
  * JD-Core Version:    0.7.0.1
  */

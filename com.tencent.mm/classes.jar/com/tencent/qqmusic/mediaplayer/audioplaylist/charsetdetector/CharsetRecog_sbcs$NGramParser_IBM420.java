@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class CharsetRecog_sbcs$NGramParser_IBM420
   extends CharsetRecog_sbcs.NGramParser
 {
@@ -27,7 +29,10 @@ class CharsetRecog_sbcs$NGramParser_IBM420
   
   private int nextByte(CharsetDetector paramCharsetDetector)
   {
-    if ((this.byteIndex >= paramCharsetDetector.fInputLen) || (paramCharsetDetector.fInputBytes[this.byteIndex] == 0)) {
+    AppMethodBeat.i(104760);
+    if ((this.byteIndex >= paramCharsetDetector.fInputLen) || (paramCharsetDetector.fInputBytes[this.byteIndex] == 0))
+    {
+      AppMethodBeat.o(104760);
       return -1;
     }
     this.alef = isLamAlef(paramCharsetDetector.fInputBytes[this.byteIndex]);
@@ -35,12 +40,14 @@ class CharsetRecog_sbcs$NGramParser_IBM420
     for (int i = 177;; i = unshapeMap[(paramCharsetDetector.fInputBytes[this.byteIndex] & 0xFF)] & 0xFF)
     {
       this.byteIndex += 1;
+      AppMethodBeat.o(104760);
       return i;
     }
   }
   
   protected void parseCharacters(CharsetDetector paramCharsetDetector)
   {
+    AppMethodBeat.i(104761);
     int i = 0;
     for (;;)
     {
@@ -56,10 +63,10 @@ class CharsetRecog_sbcs$NGramParser_IBM420
           addByte(k);
         }
         if (k != this.spaceChar) {
-          break label121;
+          break label126;
         }
       }
-      label121:
+      label126:
       for (j = 1;; j = 0)
       {
         i = j;
@@ -75,19 +82,20 @@ class CharsetRecog_sbcs$NGramParser_IBM420
           addByte(k);
         }
         if (k != this.spaceChar) {
-          break label126;
+          break label131;
         }
         i = 1;
         break;
       }
-      label126:
+      label131:
       i = 0;
     }
+    AppMethodBeat.o(104761);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector.CharsetRecog_sbcs.NGramParser_IBM420
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.order.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallOrderDetailInfoUI$4
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class MallOrderDetailInfoUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    MallOrderDetailInfoUI.d(this.mQG);
+    AppMethodBeat.i(43799);
+    MallOrderDetailInfoUI.d(this.pqU);
+    AppMethodBeat.o(43799);
     return true;
   }
 }

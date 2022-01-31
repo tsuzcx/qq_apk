@@ -1,8 +1,8 @@
 package com.tencent.mm.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
@@ -11,245 +11,303 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelsimple.x;
-import com.tencent.mm.modelvoice.n;
-import com.tencent.mm.modelvoice.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.bkj;
-import com.tencent.mm.protocal.c.bqo;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.modelsimple.y;
+import com.tencent.mm.modelvoice.s;
+import com.tencent.mm.protocal.protobuf.btj;
+import com.tencent.mm.protocal.protobuf.caw;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi.d;
-import com.tencent.mm.ui.widget.b.a;
+import com.tencent.mm.ui.widget.c.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class AllRemindMsgUI
   extends MMActivity
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
-  private static final com.tencent.mm.a.f<Integer, com.tencent.mm.protocal.b.a.c> dss = new com.tencent.mm.a.f(32);
-  private RecyclerView acI;
-  private ProgressBar fsc;
-  private LinkedList<AllRemindMsgUI.d> irx;
-  private AllRemindMsgUI.a uGA = new AllRemindMsgUI.a(this);
-  private View uGy;
-  private AllRemindMsgUI.b uGz;
+  private static final com.tencent.mm.a.f<Integer, com.tencent.mm.protocal.b.a.c> eka;
+  private RecyclerView adt;
+  private ProgressBar gJE;
+  private LinkedList<AllRemindMsgUI.d> ksE;
+  private View yTA;
+  private AllRemindMsgUI.b yTB;
+  private AllRemindMsgUI.a yTC;
+  
+  static
+  {
+    AppMethodBeat.i(29136);
+    eka = new com.tencent.mm.memory.a.c(32);
+    AppMethodBeat.o(29136);
+  }
+  
+  public AllRemindMsgUI()
+  {
+    AppMethodBeat.i(29129);
+    this.yTC = new AllRemindMsgUI.a(this);
+    AppMethodBeat.o(29129);
+  }
   
   public static String a(Context paramContext, int paramInt1, String paramString, int paramInt2)
   {
+    AppMethodBeat.i(29135);
     String str = "";
-    Object localObject = g.a.gp(paramString);
+    Object localObject = j.b.mY(paramString);
     switch (paramInt1)
     {
     default: 
-      localObject = paramContext.getString(R.l.none_type);
+      localObject = paramContext.getString(2131301870);
     }
-    do
+    for (;;)
     {
-      do
+      AppMethodBeat.o(29135);
+      return localObject;
+      localObject = paramContext.getString(2131296607);
+      continue;
+      localObject = paramContext.getString(2131302366, new Object[] { Integer.valueOf((int)s.hi(new com.tencent.mm.modelvoice.p(paramString).time)) });
+      continue;
+      localObject = paramContext.getString(2131297036);
+      continue;
+      if (62 == paramInt1) {}
+      for (paramInt1 = 2131297077;; paramInt1 = 2131297102)
       {
-        do
+        localObject = paramContext.getString(paramInt1);
+        break;
+      }
+      aw.aaz();
+      com.tencent.mm.model.c.YC().Tz(paramString);
+      localObject = paramContext.getString(2131302357, new Object[] { "" });
+      continue;
+      localObject = paramContext.getString(2131296967);
+      continue;
+      if (localObject == null)
+      {
+        ab.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
+        AppMethodBeat.o(29135);
+        return "";
+      }
+      switch (((j.b)localObject).type)
+      {
+      default: 
+        ab.i("MicroMsg.emoji.AllRemindMsgUI", "default type:%s", new Object[] { Integer.valueOf(((j.b)localObject).type) });
+        break;
+      case 33: 
+        localObject = paramContext.getString(2131296607);
+        break;
+      case 6: 
+        localObject = paramContext.getString(2131302354, new Object[] { ((j.b)localObject).title });
+        break;
+      case 5: 
+      case 7: 
+        localObject = paramContext.getString(2131302364, new Object[] { "" });
+        break;
+      case 8: 
+        localObject = paramContext.getString(2131296916);
+        break;
+      case 15: 
+      case 26: 
+      case 27: 
+        localObject = paramContext.getString(2131296915);
+        break;
+      case 25: 
+        localObject = paramContext.getString(2131296903);
+        break;
+      case 17: 
+        localObject = paramContext.getString(2131302357, new Object[] { "" });
+        break;
+      case 19: 
+        localObject = paramContext.getString(2131302360, new Object[] { "" });
+        break;
+      case 24: 
+        localObject = paramContext.getString(2131302359, new Object[] { "" });
+        break;
+      case 3: 
+        localObject = paramContext.getString(2131302358, new Object[] { "" });
+        break;
+      case 4: 
+        localObject = paramContext.getString(2131302365, new Object[] { "" });
+        break;
+      case 2: 
+        localObject = paramContext.getString(2131297036);
+        break;
+      case 44: 
+        if (bo.isNullOrNil(((j.b)localObject).q(paramContext, true))) {
+          break;
+        }
+        localObject = ((j.b)localObject).q(paramContext, true) + " " + ((j.b)localObject).title;
+        continue;
+        localObject = paramContext.getString(2131296915);
+        continue;
+        localObject = paramContext.getString(2131302361);
+        continue;
+        if (localObject == null)
         {
-          do
+          ab.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
+          AppMethodBeat.o(29135);
+          return "";
+        }
+        if (paramInt2 == 1)
+        {
+          localObject = paramContext.getString(2131302351, new Object[] { ((j.b)localObject).fie, "" });
+        }
+        else
+        {
+          localObject = paramContext.getString(2131302351, new Object[] { ((j.b)localObject).fie, "" });
+          continue;
+          if (localObject == null)
           {
-            return localObject;
-            return paramContext.getString(R.l.app_brand_default_name_with_brackets);
-            paramString = new n(paramString);
-            return paramContext.getString(R.l.record_voice_with_time, new Object[] { Integer.valueOf((int)q.ck(paramString.time)) });
-            return paramContext.getString(R.l.app_pic);
-            if (62 == paramInt1) {}
-            for (paramInt1 = R.l.app_shortvideo;; paramInt1 = R.l.app_video) {
-              return paramContext.getString(paramInt1);
-            }
-            au.Hx();
-            com.tencent.mm.model.c.Fy().HO(paramString);
-            return paramContext.getString(R.l.record_location_with_title, new Object[] { "" });
-            return paramContext.getString(R.l.app_friend_card);
-            if (localObject == null)
-            {
-              y.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
-              return "";
-            }
-            switch (((g.a)localObject).type)
-            {
-            case 9: 
-            case 10: 
-            case 11: 
-            case 12: 
-            case 13: 
-            case 14: 
-            case 16: 
-            case 18: 
-            case 20: 
-            case 21: 
-            case 22: 
-            case 23: 
-            case 28: 
-            case 29: 
-            case 30: 
-            case 31: 
-            case 32: 
-            default: 
-              y.i("MicroMsg.emoji.AllRemindMsgUI", "default type:%s", new Object[] { Integer.valueOf(((g.a)localObject).type) });
-              break;
-            case 33: 
-              return paramContext.getString(R.l.app_brand_default_name_with_brackets);
-            case 6: 
-              return paramContext.getString(R.l.record_file_with_title, new Object[] { ((g.a)localObject).title });
-            case 5: 
-            case 7: 
-              return paramContext.getString(R.l.record_url_with_title, new Object[] { "" });
-            case 8: 
-              return paramContext.getString(R.l.app_emoji2);
-            case 15: 
-            case 26: 
-            case 27: 
-              return paramContext.getString(R.l.app_emoji);
-            case 25: 
-              return paramContext.getString(R.l.app_designer_share);
-            case 17: 
-              return paramContext.getString(R.l.record_location_with_title, new Object[] { "" });
-            case 19: 
-              return paramContext.getString(R.l.record_record_with_title, new Object[] { "" });
-            case 24: 
-              return paramContext.getString(R.l.record_note_with_title, new Object[] { "" });
-            case 3: 
-              return paramContext.getString(R.l.record_music_with_title, new Object[] { "" });
-            case 4: 
-              return paramContext.getString(R.l.record_video_with_title, new Object[] { "" });
-            case 2: 
-              return paramContext.getString(R.l.app_pic);
-              return paramContext.getString(R.l.app_emoji);
-              return paramContext.getString(R.l.record_remittance_with_title);
-              if (localObject == null)
-              {
-                y.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
-                return "";
-              }
-              if (paramInt2 == 1) {
-                return paramContext.getString(R.l.record_c2c_with_title, new Object[] { ((g.a)localObject).dSf, "" });
-              }
-              return paramContext.getString(R.l.record_c2c_with_title, new Object[] { ((g.a)localObject).dSf, "" });
-              if (localObject == null)
-              {
-                y.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
-                return "";
-              }
-              return paramContext.getString(R.l.record_c2c_with_title, new Object[] { ((g.a)localObject).dSf, "" });
-              return paramContext.getString(R.l.record_card_with_title, new Object[] { "" });
-              return paramContext.getString(R.l.record_card_with_title, new Object[] { "" });
-              return paramContext.getString(R.l.record_app_with_title, new Object[] { "" });
-              return paramContext.getString(R.l.record_share_location_with_title, new Object[] { "" });
-              localObject = str;
-            }
-          } while (paramString == null);
+            ab.e("MicroMsg.emoji.AllRemindMsgUI", "decode msg content failed");
+            AppMethodBeat.o(29135);
+            return "";
+          }
+          localObject = paramContext.getString(2131302351, new Object[] { ((j.b)localObject).fie, "" });
+          continue;
+          localObject = paramContext.getString(2131302352, new Object[] { "" });
+          continue;
+          localObject = paramContext.getString(2131302352, new Object[] { "" });
+          continue;
+          localObject = paramContext.getString(2131302350, new Object[] { "" });
+          continue;
+          localObject = paramContext.getString(2131302363, new Object[] { "" });
+          continue;
           localObject = str;
-        } while (paramString.length() <= 0);
-        paramString = bi.d.acc(paramString);
-        localObject = str;
-      } while (paramString.pyp == null);
-      localObject = str;
-    } while (paramString.pyp.length() <= 0);
-    switch (paramString.scene)
-    {
-    case 19: 
-    case 20: 
-    case 21: 
-    default: 
-      return paramContext.getString(R.l.fmt_want_to_be_your_friend, new Object[] { paramString.getDisplayName() });
-    case 18: 
-      return paramContext.getString(R.l.fmt_say_hello_to_you, new Object[] { paramString.getDisplayName() });
-    case 22: 
-    case 23: 
-    case 24: 
-    case 26: 
-    case 27: 
-    case 28: 
-    case 29: 
-      return paramContext.getString(R.l.fmt_shake_say_hello_to_you, new Object[] { paramString.getDisplayName() });
+          if (paramString != null)
+          {
+            localObject = str;
+            if (paramString.length() > 0)
+            {
+              paramString = bi.d.asm(paramString);
+              localObject = str;
+              if (paramString.tac != null)
+              {
+                localObject = str;
+                if (paramString.tac.length() > 0) {
+                  switch (paramString.scene)
+                  {
+                  case 19: 
+                  case 20: 
+                  case 21: 
+                  default: 
+                    localObject = paramContext.getString(2131300111, new Object[] { paramString.getDisplayName() });
+                    break;
+                  case 18: 
+                    localObject = paramContext.getString(2131300092, new Object[] { paramString.getDisplayName() });
+                    break;
+                  case 22: 
+                  case 23: 
+                  case 24: 
+                  case 26: 
+                  case 27: 
+                  case 28: 
+                  case 29: 
+                    localObject = paramContext.getString(2131300102, new Object[] { paramString.getDisplayName() });
+                    break;
+                  case 25: 
+                    localObject = paramContext.getString(2131300024, new Object[] { paramString.getDisplayName() });
+                  }
+                }
+              }
+            }
+          }
+        }
+        break;
+      }
     }
-    return paramContext.getString(R.l.fmt_bottle_say_hello_to_you, new Object[] { paramString.getDisplayName() });
   }
   
-  protected final int getLayoutId()
+  protected int getLayoutId()
   {
-    return R.i.all_remind_msg_ui;
+    return 2130968648;
   }
   
-  protected final void initView()
+  protected void initView()
   {
-    setMMTitle(R.l.remind_title);
-    this.acI = ((RecyclerView)findViewById(R.h.all_msg_list));
-    this.fsc = ((ProgressBar)findViewById(R.h.progress_bar));
-    this.uGy = findViewById(R.h.hint_tip);
-    this.acI.setVisibility(8);
-    RecyclerView localRecyclerView = this.acI;
-    AppCompatActivity localAppCompatActivity = this.mController.uMN;
+    AppMethodBeat.i(29132);
+    setMMTitle(2131302512);
+    this.adt = ((RecyclerView)findViewById(2131821118));
+    this.gJE = ((ProgressBar)findViewById(2131821119));
+    this.yTA = findViewById(2131821120);
+    this.adt.setVisibility(8);
+    RecyclerView localRecyclerView = this.adt;
+    getContext();
     localRecyclerView.setLayoutManager(new LinearLayoutManager());
-    this.uGz = new AllRemindMsgUI.b(this);
-    this.acI.setAdapter(this.uGz);
-    this.uGz.a(new AllRemindMsgUI.1(this));
+    this.yTB = new AllRemindMsgUI.b(this);
+    this.adt.setAdapter(this.yTB);
+    this.yTB.a(new AllRemindMsgUI.1(this));
     setBackBtn(new AllRemindMsgUI.2(this));
+    AppMethodBeat.o(29132);
   }
   
   public void onBackPressed()
   {
+    AppMethodBeat.i(29133);
     finish();
+    AppMethodBeat.o(29133);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(29130);
     super.onCreate(paramBundle);
-    au.Dk().a(866, this.uGA);
-    au.Dk().a(525, this);
-    h.nFQ.a(795L, 3L, 1L, false);
+    aw.Rc().a(866, this.yTC);
+    aw.Rc().a(525, this);
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(795L, 3L, 1L, false);
     initView();
-    e.post(new AllRemindMsgUI.a(this), "load remind data!");
+    d.post(new AllRemindMsgUI.a(this), "load remind data!");
+    AppMethodBeat.o(29130);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(29131);
     super.onDestroy();
-    au.Dk().b(866, this.uGA);
-    au.Dk().b(525, this);
+    aw.Rc().b(866, this.yTC);
+    aw.Rc().b(525, this);
+    AppMethodBeat.o(29131);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(29134);
+    ab.i("MicroMsg.emoji.AllRemindMsgUI", "[onSceneEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (paramm.getType() != 525) {
+      if (paramm.getType() != 525)
+      {
+        AppMethodBeat.o(29134);
         return;
       }
-      paramString = (bqo)((x)paramm).esv.ecE.ecN;
-      paramm = this.irx.listIterator();
+      paramString = (caw)((y)paramm).fBd.fsV.fta;
+      paramm = this.ksE.listIterator();
       while (paramm.hasNext()) {
-        if (((AllRemindMsgUI.d)paramm.next()).uGJ == paramString.tHE.tEd) {
+        if (((AllRemindMsgUI.d)paramm.next()).yTL == paramString.xLU.xGT) {
           paramm.remove();
         }
       }
-      this.uGz.agL.notifyChanged();
+      this.yTB.ajb.notifyChanged();
+      AppMethodBeat.o(29134);
       return;
     }
-    Toast.makeText(this.mController.uMN, bk.aM(paramString, getString(R.l.notify_message_settings_complain_failed)), 0).show();
+    Toast.makeText(getContext(), bo.bf(paramString, getString(2131301979)), 0).show();
+    AppMethodBeat.o(29134);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.AllRemindMsgUI
  * JD-Core Version:    0.7.0.1
  */

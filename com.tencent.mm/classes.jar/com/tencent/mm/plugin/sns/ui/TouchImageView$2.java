@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class TouchImageView$2
   implements View.OnTouchListener
@@ -12,24 +13,28 @@ final class TouchImageView$2
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!TouchImageView.a(this.pky)) {}
-    for (;;)
+    AppMethodBeat.i(39896);
+    if (!TouchImageView.a(this.sdb))
     {
+      AppMethodBeat.o(39896);
       return false;
-      TouchImageView localTouchImageView = this.pky;
-      switch (paramMotionEvent.getAction())
-      {
-      }
-      while ((!localTouchImageView.isClickable()) && (!localTouchImageView.isLongClickable()))
-      {
-        return true;
-        paramView.setPressed(true);
-        paramView.invalidate();
-        localTouchImageView.oNg.removeCallbacks(localTouchImageView.oNh);
-        continue;
-        localTouchImageView.oNg.post(localTouchImageView.oNh);
-      }
     }
+    TouchImageView localTouchImageView = this.sdb;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    while ((!localTouchImageView.isClickable()) && (!localTouchImageView.isLongClickable()))
+    {
+      AppMethodBeat.o(39896);
+      return true;
+      paramView.setPressed(true);
+      paramView.invalidate();
+      localTouchImageView.rER.removeCallbacks(localTouchImageView.rES);
+      continue;
+      localTouchImageView.rER.post(localTouchImageView.rES);
+    }
+    AppMethodBeat.o(39896);
+    return false;
   }
 }
 

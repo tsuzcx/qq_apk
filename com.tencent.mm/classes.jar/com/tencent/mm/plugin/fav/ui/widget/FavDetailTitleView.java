@@ -5,13 +5,13 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.fav.ui.n.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FavDetailTitleView
   extends LinearLayout
 {
-  private ImageView doU;
-  private TextView eXO;
+  private ImageView egq;
+  private TextView gpL;
   
   public FavDetailTitleView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -20,14 +20,16 @@ public class FavDetailTitleView
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(74671);
     super.onFinishInflate();
-    this.doU = ((ImageView)findViewById(n.e.avatar_iv));
-    this.eXO = ((TextView)findViewById(n.e.title_tv));
+    this.egq = ((ImageView)findViewById(2131821210));
+    this.gpL = ((TextView)findViewById(2131821212));
+    AppMethodBeat.o(74671);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavDetailTitleView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,14 @@ package com.tencent.mm.ui.chatting.viewitems;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.model.au;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
 
 final class d$c$1
@@ -16,48 +19,53 @@ final class d$c$1
   
   public final void onClick(View paramView)
   {
-    if (this.vCb.booleanValue())
+    AppMethodBeat.i(32810);
+    if (this.zSP.booleanValue())
     {
-      l = this.byn;
-      paramView = this.vCc;
-      localb = ap.avh().gY(l);
+      l = this.cap;
+      paramView = this.zSQ;
+      localb = al.aUJ().nw(l);
       if (localb == null)
       {
-        y.e("MicroMsg.AppMsgLogic", "ERR:" + com.tencent.mm.compatible.util.g.zI() + " getinfo failed: " + paramView);
+        ab.e("MicroMsg.AppMsgLogic", "ERR:" + g.Ml() + " getinfo failed: " + paramView);
+        AppMethodBeat.o(32810);
         return;
       }
       if (localb.field_status != 101L)
       {
-        y.e("MicroMsg.AppMsgLogic", "ERR:" + com.tencent.mm.compatible.util.g.zI() + " get status failed: " + paramView + " status:" + localb.field_status);
+        ab.e("MicroMsg.AppMsgLogic", "ERR:" + g.Ml() + " get status failed: " + paramView + " status:" + localb.field_status);
+        AppMethodBeat.o(32810);
         return;
       }
       localb.field_status = 102L;
-      localb.field_lastModifyTime = bk.UX();
-      ap.avh().c(localb, new String[0]);
+      localb.field_lastModifyTime = bo.aox();
+      al.aUJ().a(localb, new String[0]);
+      AppMethodBeat.o(32810);
       return;
     }
-    long l = this.byn;
-    paramView = this.vCc;
-    b localb = ap.avh().gY(l);
+    long l = this.cap;
+    paramView = this.zSQ;
+    b localb = al.aUJ().nw(l);
     if (localb == null) {
-      y.e("MicroMsg.AppMsgLogic", "ERR:" + com.tencent.mm.compatible.util.g.zI() + " getinfo failed: " + paramView);
+      ab.e("MicroMsg.AppMsgLogic", "ERR:" + g.Ml() + " getinfo failed: " + paramView);
     }
     for (;;)
     {
-      this.dUy.setStatus(5);
-      au.Hx();
-      com.tencent.mm.model.c.Fy().fd(this.byn);
+      this.fkH.setStatus(5);
+      aw.aaz();
+      com.tencent.mm.model.c.YC().kB(this.cap);
+      AppMethodBeat.o(32810);
       return;
       if (localb.field_status == 101L) {
         break;
       }
-      y.e("MicroMsg.AppMsgLogic", "ERR:" + com.tencent.mm.compatible.util.g.zI() + " get status failed: " + paramView + " status:" + localb.field_status);
+      ab.e("MicroMsg.AppMsgLogic", "ERR:" + g.Ml() + " get status failed: " + paramView + " status:" + localb.field_status);
     }
-    if ((bk.bl(localb.field_clientAppDataId)) && (!bk.bl(localb.field_mediaSvrId))) {}
+    if ((bo.isNullOrNil(localb.field_clientAppDataId)) && (!bo.isNullOrNil(localb.field_mediaSvrId))) {}
     for (localb.field_status = 102L;; localb.field_status = 105L)
     {
-      localb.field_lastModifyTime = bk.UX();
-      ap.avh().c(localb, new String[0]);
+      localb.field_lastModifyTime = bo.aox();
+      al.aUJ().a(localb, new String[0]);
       break;
     }
   }

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.card.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.a;
 import com.tencent.mm.plugin.card.base.c;
 import java.util.List;
@@ -7,37 +8,43 @@ import java.util.List;
 public final class h
   implements a
 {
-  private g ivs;
+  private g kww;
   
   public h(g paramg)
   {
-    this.ivs = paramg;
+    this.kww = paramg;
   }
   
-  public final void HL()
+  public final void aaK()
   {
-    if (this.ivs != null) {
-      this.ivs.notifyDataSetChanged();
+    AppMethodBeat.i(88553);
+    if (this.kww != null) {
+      this.kww.notifyDataSetChanged();
     }
+    AppMethodBeat.o(88553);
   }
   
   public final void onCreate()
   {
-    this.ivs.notifyDataSetChanged();
+    AppMethodBeat.i(88551);
+    this.kww.notifyDataSetChanged();
+    AppMethodBeat.o(88551);
   }
   
   public final void onDestroy()
   {
-    if (this.ivs != null)
+    AppMethodBeat.i(88552);
+    if (this.kww != null)
     {
-      g localg = this.ivs;
-      localg.iqd.release();
-      localg.iqd = null;
-      localg.iqo.clear();
+      g localg = this.kww;
+      localg.krl.release();
+      localg.krl = null;
+      localg.krw.clear();
       localg.mContext = null;
-      localg.ivq = null;
-      this.ivs = null;
+      localg.kwu = null;
+      this.kww = null;
     }
+    AppMethodBeat.o(88552);
   }
 }
 

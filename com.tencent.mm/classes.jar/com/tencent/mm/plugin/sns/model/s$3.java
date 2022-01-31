@@ -1,56 +1,63 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.h.a.na;
-import com.tencent.mm.h.a.na.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.nx;
+import com.tencent.mm.g.a.nx.a;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
 final class s$3
-  extends c<na>
+  extends c<nx>
 {
   s$3(s params)
   {
-    this.udX = na.class.getName().hashCode();
+    AppMethodBeat.i(36286);
+    this.__eventId = nx.class.getName().hashCode();
+    AppMethodBeat.o(36286);
   }
   
-  private boolean a(na paramna)
+  private boolean a(nx paramnx)
   {
-    if (!this.oqp.oqn.containsKey(paramna.bWH.filePath)) {
+    AppMethodBeat.i(36287);
+    if (!this.reY.reW.containsKey(paramnx.cEx.filePath))
+    {
+      AppMethodBeat.o(36287);
       return false;
     }
-    int i = ((Integer)this.oqp.oqn.remove(paramna.bWH.filePath)).intValue();
+    int i = ((Integer)this.reY.reW.remove(paramnx.cEx.filePath)).intValue();
     String str;
-    if (this.oqp.oqk == 12)
+    if (this.reY.reS == 12)
     {
       str = "2,3,,";
-      paramna = str;
+      paramnx = str;
       if (i != 0) {}
     }
     try
     {
-      paramna = "2,3,," + "," + URLEncoder.encode(this.oqp.oqo, "UTF-8");
-      y.i("MicroMsg.NetSceneSnsPost", "androidSystemShareFixed(13717) fileToIndex:%d,  %s", new Object[] { Integer.valueOf(i), paramna });
-      h.nFQ.aC(13717, paramna);
-      s.a(this.oqp);
+      paramnx = "2,3,," + "," + URLEncoder.encode(this.reY.reX, "UTF-8");
+      ab.i("MicroMsg.NetSceneSnsPost", "androidSystemShareFixed(13717) fileToIndex:%d,  %s", new Object[] { Integer.valueOf(i), paramnx });
+      h.qsU.kvStat(13717, paramnx);
+      s.a(this.reY);
+      AppMethodBeat.o(36287);
       return false;
     }
-    catch (UnsupportedEncodingException paramna)
+    catch (UnsupportedEncodingException paramnx)
     {
       for (;;)
       {
-        y.e("MicroMsg.NetSceneSnsPost", "", new Object[] { paramna.getMessage() });
-        paramna = str;
+        ab.e("MicroMsg.NetSceneSnsPost", "", new Object[] { paramnx.getMessage() });
+        paramnx = str;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.s.3
  * JD-Core Version:    0.7.0.1
  */

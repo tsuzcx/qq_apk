@@ -1,6 +1,6 @@
 package com.google.android.exoplayer2.source.a;
 
-import com.google.android.exoplayer2.h.q.e;
+import com.google.android.exoplayer2.h.s.e;
 
 public final class b
 {
@@ -8,9 +8,9 @@ public final class b
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramException instanceof q.e))
+    if ((paramException instanceof s.e))
     {
-      int i = ((q.e)paramException).responseCode;
+      int i = ((s.e)paramException).responseCode;
       if (i != 404)
       {
         bool1 = bool2;

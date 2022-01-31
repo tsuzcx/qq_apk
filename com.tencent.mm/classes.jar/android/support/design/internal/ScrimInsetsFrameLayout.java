@@ -5,19 +5,18 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.design.a.j;
-import android.support.design.a.k;
-import android.support.v4.view.q;
-import android.support.v4.view.y;
+import android.support.design.a.a;
+import android.support.v4.view.ab;
+import android.support.v4.view.t;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
 public class ScrimInsetsFrameLayout
   extends FrameLayout
 {
-  Drawable ea;
-  Rect eb;
-  private Rect ec = new Rect();
+  Drawable eZ;
+  Rect fa;
+  private Rect mTempRect = new Rect();
   
   public ScrimInsetsFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,36 +26,36 @@ public class ScrimInsetsFrameLayout
   public ScrimInsetsFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.ScrimInsetsFrameLayout, paramInt, a.j.Widget_Design_ScrimInsetsFrameLayout);
-    this.ea = paramContext.getDrawable(a.k.ScrimInsetsFrameLayout_insetForeground);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ScrimInsetsFrameLayout, paramInt, 2131493841);
+    this.eZ = paramContext.getDrawable(0);
     paramContext.recycle();
     setWillNotDraw(true);
-    q.a(this, new ScrimInsetsFrameLayout.1(this));
+    t.a(this, new ScrimInsetsFrameLayout.1(this));
   }
   
-  public void a(y paramy) {}
+  protected void a(ab paramab) {}
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
     int i = getWidth();
     int j = getHeight();
-    if ((this.eb != null) && (this.ea != null))
+    if ((this.fa != null) && (this.eZ != null))
     {
       int k = paramCanvas.save();
       paramCanvas.translate(getScrollX(), getScrollY());
-      this.ec.set(0, 0, i, this.eb.top);
-      this.ea.setBounds(this.ec);
-      this.ea.draw(paramCanvas);
-      this.ec.set(0, j - this.eb.bottom, i, j);
-      this.ea.setBounds(this.ec);
-      this.ea.draw(paramCanvas);
-      this.ec.set(0, this.eb.top, this.eb.left, j - this.eb.bottom);
-      this.ea.setBounds(this.ec);
-      this.ea.draw(paramCanvas);
-      this.ec.set(i - this.eb.right, this.eb.top, i, j - this.eb.bottom);
-      this.ea.setBounds(this.ec);
-      this.ea.draw(paramCanvas);
+      this.mTempRect.set(0, 0, i, this.fa.top);
+      this.eZ.setBounds(this.mTempRect);
+      this.eZ.draw(paramCanvas);
+      this.mTempRect.set(0, j - this.fa.bottom, i, j);
+      this.eZ.setBounds(this.mTempRect);
+      this.eZ.draw(paramCanvas);
+      this.mTempRect.set(0, this.fa.top, this.fa.left, j - this.fa.bottom);
+      this.eZ.setBounds(this.mTempRect);
+      this.eZ.draw(paramCanvas);
+      this.mTempRect.set(i - this.fa.right, this.fa.top, i, j - this.fa.bottom);
+      this.eZ.setBounds(this.mTempRect);
+      this.eZ.draw(paramCanvas);
       paramCanvas.restoreToCount(k);
     }
   }
@@ -64,22 +63,22 @@ public class ScrimInsetsFrameLayout
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.ea != null) {
-      this.ea.setCallback(this);
+    if (this.eZ != null) {
+      this.eZ.setCallback(this);
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.ea != null) {
-      this.ea.setCallback(null);
+    if (this.eZ != null) {
+      this.eZ.setCallback(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.design.internal.ScrimInsetsFrameLayout
  * JD-Core Version:    0.7.0.1
  */

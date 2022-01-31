@@ -1,6 +1,8 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyAutoScrollView$2
   implements Runnable
@@ -9,15 +11,20 @@ final class LuckyMoneyAutoScrollView$2
   
   public final void run()
   {
-    LuckyMoneyAutoScrollView.a(this.lUp).setVisibility(8);
-    LuckyMoneyAutoScrollView.b(this.lUp).setVisibility(8);
-    LuckyMoneyAutoScrollView.c(this.lUp).setVisibility(8);
-    LuckyMoneyAutoScrollView.d(this.lUp).setVisibility(0);
-    LuckyMoneyAutoScrollView.e(this.lUp).setVisibility(0);
-    LuckyMoneyAutoScrollView.f(this.lUp).setVisibility(0);
-    if (LuckyMoneyAutoScrollView.g(this.lUp) != null) {
-      LuckyMoneyAutoScrollView.g(this.lUp).bga();
+    AppMethodBeat.i(42569);
+    LuckyMoneyAutoScrollView.a(this.ory).setVisibility(8);
+    LuckyMoneyAutoScrollView.b(this.ory).setVisibility(8);
+    LuckyMoneyAutoScrollView.c(this.ory).setVisibility(8);
+    LuckyMoneyAutoScrollView.d(this.ory).setVisibility(8);
+    LuckyMoneyAutoScrollView.e(this.ory).setVisibility(8);
+    LuckyMoneyAutoScrollView.f(this.ory).setVisibility(8);
+    LuckyMoneyAutoScrollView.g(this.ory).setVisibility(0);
+    LuckyMoneyAutoScrollView.h(this.ory).setVisibility(0);
+    LuckyMoneyAutoScrollView.i(this.ory).setVisibility(0);
+    if (LuckyMoneyAutoScrollView.j(this.ory) != null) {
+      LuckyMoneyAutoScrollView.j(this.ory).bNO();
     }
+    AppMethodBeat.o(42569);
   }
 }
 

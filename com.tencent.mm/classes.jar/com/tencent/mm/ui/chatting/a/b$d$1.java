@@ -7,9 +7,10 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$d$1
   implements View.OnClickListener
@@ -18,23 +19,28 @@ final class b$d$1
   
   public final void onClick(View paramView)
   {
-    Object localObject = this.vop.vol.GZ(((Integer)paramView.getTag()).intValue());
-    if (localObject == null) {
+    AppMethodBeat.i(31135);
+    Object localObject = this.zDL.zDH.PC(((Integer)paramView.getTag()).intValue());
+    if (localObject == null)
+    {
+      AppMethodBeat.o(31135);
       return;
     }
-    b localb = this.vop.vol;
+    b localb = this.zDL.zDH;
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_biz_chat_id", localb.voj);
-    localIntent.putExtra("key_is_biz_chat", localb.kax);
+    localIntent.putExtra("key_biz_chat_id", localb.zDF);
+    localIntent.putExtra("key_is_biz_chat", localb.muT);
     if (localObject == null)
     {
-      y.e("MicroMsg.MediaHistoryGalleryAdapter", "[enterGallery] item == null");
+      ab.e("MicroMsg.MediaHistoryGalleryAdapter", "[enterGallery] item == null");
+      AppMethodBeat.o(31135);
       return;
     }
-    localObject = ((b.c)localObject).bWO;
+    localObject = ((b.c)localObject).cEE;
     if (localObject == null)
     {
-      y.e("MicroMsg.MediaHistoryGalleryAdapter", "[enterGallery] msg == null");
+      ab.e("MicroMsg.MediaHistoryGalleryAdapter", "[enterGallery] msg == null");
+      AppMethodBeat.o(31135);
       return;
     }
     int k = localb.mContext.getResources().getConfiguration().orientation;
@@ -50,14 +56,15 @@ final class b$d$1
     for (;;)
     {
       localIntent.addFlags(536870912);
-      localIntent.putExtra("img_gallery_msg_id", ((cs)localObject).field_msgId).putExtra("img_gallery_msg_svr_id", ((cs)localObject).field_msgSvrId).putExtra("img_gallery_talker", ((cs)localObject).field_talker).putExtra("img_gallery_chatroom_name", ((cs)localObject).field_talker).putExtra("img_gallery_orientation", k);
+      localIntent.putExtra("img_gallery_msg_id", ((dd)localObject).field_msgId).putExtra("img_gallery_msg_svr_id", ((dd)localObject).field_msgSvrId).putExtra("img_gallery_talker", ((dd)localObject).field_talker).putExtra("img_gallery_chatroom_name", ((dd)localObject).field_talker).putExtra("img_gallery_orientation", k);
       if (paramView != null) {
         localIntent.putExtra("img_gallery_width", j).putExtra("img_gallery_height", i).putExtra("img_gallery_left", arrayOfInt[0]).putExtra("img_gallery_top", arrayOfInt[1]).putExtra("img_gallery_enter_from_grid", true);
       }
       for (;;)
       {
-        d.e(localb.mContext, "com.tencent.mm.ui.chatting.gallery.ImageGalleryUI", localIntent);
+        d.f(localb.mContext, "com.tencent.mm.ui.chatting.gallery.ImageGalleryUI", localIntent);
         ((Activity)localb.mContext).overridePendingTransition(0, 0);
+        AppMethodBeat.o(31135);
         return;
         localIntent.putExtra("img_gallery_back_from_grid", true);
       }

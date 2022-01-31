@@ -2,41 +2,46 @@ package com.tencent.mm.plugin.sight.decode.ui;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView.ScaleType;
-import com.tencent.mm.R.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 
 final class SightPlayAutoSizeImageView$a
   extends b
 {
-  private WeakReference<SightPlayAutoSizeImageView> ofE;
+  private WeakReference<SightPlayAutoSizeImageView> qTS;
   
   public SightPlayAutoSizeImageView$a(SightPlayAutoSizeImageView paramSightPlayAutoSizeImageView)
   {
     super(0, paramSightPlayAutoSizeImageView);
-    this.ofE = new WeakReference(paramSightPlayAutoSizeImageView);
+    AppMethodBeat.i(24956);
+    this.qTS = new WeakReference(paramSightPlayAutoSizeImageView);
+    AppMethodBeat.o(24956);
   }
   
-  public final void G(Bitmap paramBitmap)
+  public final void S(Bitmap paramBitmap)
   {
-    SightPlayAutoSizeImageView localSightPlayAutoSizeImageView = (SightPlayAutoSizeImageView)this.ofE.get();
+    AppMethodBeat.i(24957);
+    SightPlayAutoSizeImageView localSightPlayAutoSizeImageView = (SightPlayAutoSizeImageView)this.qTS.get();
     if (localSightPlayAutoSizeImageView == null)
     {
-      y.e("MicroMsg.SightPlayAutoSizeImageView", "onGetFrameBmp, imageView is null, do clear");
+      ab.e("MicroMsg.SightPlayAutoSizeImageView", "onGetFrameBmp, imageView is null, do clear");
       clear();
+      AppMethodBeat.o(24957);
       return;
     }
     localSightPlayAutoSizeImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     localSightPlayAutoSizeImageView.setImageBitmap(paramBitmap);
+    AppMethodBeat.o(24957);
   }
   
-  protected final int bAZ()
+  public final int cmz()
   {
-    return R.a.sight_loop;
+    return 2131034258;
   }
   
-  public final void cw(int paramInt1, int paramInt2) {}
+  public final void dQ(int paramInt1, int paramInt2) {}
 }
 
 

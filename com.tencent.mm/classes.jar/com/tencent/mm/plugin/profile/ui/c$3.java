@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Intent;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.ui.MMActivity;
 
 final class c$3
@@ -11,13 +12,15 @@ final class c$3
   
   public final void run()
   {
-    this.mWY.az(4, null);
-    if (this.mWY.bER.getIntent().getIntExtra("Kdel_from", -1) == 1)
+    AppMethodBeat.i(23459);
+    this.pzT.aV(4, null);
+    if (this.pzT.cmc.getIntent().getIntExtra("Kdel_from", -1) == 1)
     {
       Intent localIntent = new Intent();
       localIntent.addFlags(67108864);
-      d.b(this.mWY.bER, "shake", ".ui.ShakeReportUI", localIntent);
+      d.b(this.pzT.cmc, "shake", ".ui.ShakeReportUI", localIntent);
     }
+    AppMethodBeat.o(23459);
   }
 }
 

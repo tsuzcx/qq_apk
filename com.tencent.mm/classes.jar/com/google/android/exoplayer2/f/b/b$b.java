@@ -2,10 +2,10 @@ package com.google.android.exoplayer2.f.b;
 
 final class b$b
 {
-  public final int aOa;
-  public final int aOb;
-  public final int aOc;
-  public final int aOd;
+  public final int aVu;
+  public final int aVv;
+  public final int aVw;
+  public final int aVx;
   public final int height;
   public final int width;
   
@@ -13,15 +13,15 @@ final class b$b
   {
     this.width = paramInt1;
     this.height = paramInt2;
-    this.aOa = paramInt3;
-    this.aOb = paramInt4;
-    this.aOc = paramInt5;
-    this.aOd = paramInt6;
+    this.aVu = paramInt3;
+    this.aVv = paramInt4;
+    this.aVw = paramInt5;
+    this.aVx = paramInt6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.f.b.b.b
  * JD-Core Version:    0.7.0.1
  */

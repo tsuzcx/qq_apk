@@ -10,6 +10,7 @@ public abstract interface DataSourceErrors
   public static final int CREATE_NATIVE_DATASOURCE_SO_LOAD_FAILED = -3;
   public static final int CREATE_NATIVE_DATASOURCE_UNSATISFIED_LINK = -2;
   public static final int IO = -7;
+  public static final int QMERR_EMPTY_MEDIA = -9;
 }
 
 

@@ -3,11 +3,11 @@ package com.tencent.mm.pluginsdk.ui.applet;
 final class j$b
 {
   public int order;
-  public Object sdb;
+  public Object vUf;
   
   public j$b(j paramj, Object paramObject, int paramInt)
   {
-    this.sdb = paramObject;
+    this.vUf = paramObject;
     this.order = paramInt;
   }
 }

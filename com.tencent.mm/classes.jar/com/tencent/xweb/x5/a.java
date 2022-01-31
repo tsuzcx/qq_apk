@@ -1,21 +1,26 @@
 package com.tencent.xweb.x5;
 
 import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.xweb.m;
+import com.tencent.xweb.s;
 import org.xwalk.core.Log;
 
 public final class a
 {
-  public static WebResourceResponse b(m paramm)
+  public static WebResourceResponse b(s params)
   {
-    if (paramm == null) {
+    AppMethodBeat.i(84795);
+    if (params == null)
+    {
+      AppMethodBeat.o(84795);
       return null;
     }
-    if ((paramm.xgV) && (Build.VERSION.SDK_INT >= 21)) {
+    if ((params.BDU) && (Build.VERSION.SDK_INT >= 21)) {
       try
       {
-        WebResourceResponse localWebResourceResponse1 = new WebResourceResponse(paramm.mMimeType, paramm.mEncoding, paramm.mStatusCode, paramm.mReasonPhrase, paramm.mResponseHeaders, paramm.mInputStream);
+        WebResourceResponse localWebResourceResponse1 = new WebResourceResponse(params.mMimeType, params.mEncoding, params.mStatusCode, params.mReasonPhrase, params.mResponseHeaders, params.mInputStream);
+        AppMethodBeat.o(84795);
         return localWebResourceResponse1;
       }
       catch (Exception localException)
@@ -23,11 +28,12 @@ public final class a
         Log.e("SysWebDataTrans", "create webkit WebResourceResponse error :" + localException.getMessage());
       }
     }
-    WebResourceResponse localWebResourceResponse2 = new WebResourceResponse(paramm.mMimeType, paramm.mEncoding, paramm.mInputStream);
-    if ((paramm.mStatusCode > 100) && (paramm.mReasonPhrase != null) && (!paramm.mReasonPhrase.isEmpty())) {
-      localWebResourceResponse2.setStatusCodeAndReasonPhrase(paramm.mStatusCode, paramm.mReasonPhrase);
+    WebResourceResponse localWebResourceResponse2 = new WebResourceResponse(params.mMimeType, params.mEncoding, params.mInputStream);
+    if ((params.mStatusCode > 100) && (params.mReasonPhrase != null) && (!params.mReasonPhrase.isEmpty())) {
+      localWebResourceResponse2.setStatusCodeAndReasonPhrase(params.mStatusCode, params.mReasonPhrase);
     }
-    localWebResourceResponse2.setResponseHeaders(paramm.mResponseHeaders);
+    localWebResourceResponse2.setResponseHeaders(params.mResponseHeaders);
+    AppMethodBeat.o(84795);
     return localWebResourceResponse2;
   }
 }

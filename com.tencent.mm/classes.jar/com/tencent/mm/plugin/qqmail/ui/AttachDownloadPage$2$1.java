@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.c;
 
 final class AttachDownloadPage$2$1
@@ -7,14 +8,18 @@ final class AttachDownloadPage$2$1
 {
   AttachDownloadPage$2$1(AttachDownloadPage.2 param2) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(68131);
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    AttachDownloadPage.a(this.nfM.nfL, AttachDownloadPage.a(this.nfM.nfL));
+    for (;;)
+    {
+      AppMethodBeat.o(68131);
+      return;
+      AttachDownloadPage.a(this.pLb.pLa, AttachDownloadPage.a(this.pLb.pLa));
+    }
   }
 }
 

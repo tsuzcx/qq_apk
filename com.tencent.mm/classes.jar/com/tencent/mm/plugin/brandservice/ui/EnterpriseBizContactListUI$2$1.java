@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
-import com.tencent.mm.plugin.brandservice.b.g;
-import com.tencent.mm.plugin.brandservice.b.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -10,11 +9,13 @@ final class EnterpriseBizContactListUI$2$1
 {
   EnterpriseBizContactListUI$2$1(EnterpriseBizContactListUI.2 param2) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.ak(2, b.h.contact_info_send_card_biz, b.g.ofm_send_icon);
-    paraml.ak(3, b.h.enterprise_disable, b.g.actionbar_goto_disabled_biz_icon);
-    paraml.ak(4, b.h.actionbar_title_setting, b.g.actionbar_setting_icon);
+    AppMethodBeat.i(13943);
+    paraml.aw(2, 2131298744, 2131231823);
+    paraml.aw(3, 2131299311, 2131230732);
+    paraml.aw(4, 2131296408, 2131230759);
+    AppMethodBeat.o(13943);
   }
 }
 

@@ -2,10 +2,9 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import android.graphics.Point;
 import android.util.DisplayMetrics;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.util.b;
 import com.tencent.mm.plugin.scanner.util.b.a;
-import com.tencent.mm.plugin.scanner.util.k;
 
 public class m
   extends c
@@ -17,27 +16,30 @@ public class m
   
   protected final b a(b.a parama)
   {
-    return new k(parama, 1);
+    AppMethodBeat.i(81183);
+    parama = new com.tencent.mm.plugin.scanner.util.m(parama, 1);
+    AppMethodBeat.o(81183);
+    return parama;
   }
   
-  protected final float bxl()
-  {
-    return 1.586F;
-  }
-  
-  protected final String bxm()
+  protected final String cij()
   {
     return "identity";
   }
   
-  protected final int bxn()
+  protected final int cik()
   {
-    return R.l.scan_entry_id_card;
+    return 2131302891;
+  }
+  
+  protected final float getAspectRatio()
+  {
+    return 1.586F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.m
  * JD-Core Version:    0.7.0.1
  */

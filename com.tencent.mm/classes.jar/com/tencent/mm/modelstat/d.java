@@ -4,91 +4,115 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashSet;
 
 public final class d
 {
-  private static d eCD;
-  private d.a eCB = new d.a();
-  private HashSet<String> eCC = new HashSet();
+  private static d fSu;
+  private d.a fSs;
+  private HashSet<String> fSt;
   
   private d()
   {
-    this.eCC.add("com.tencent.mm.ui.LauncherUI");
-    this.eCC.add("com.tencent.mm.plugin.profile.ui.ContactInfoUI");
-    this.eCC.add("com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
-    this.eCC.add("com.tencent.mm.ui.conversation.BizConversationUI");
-    this.eCC.add("com.tencent.mm.ui.chatting.ChattingUI");
-    this.eCC.add("com.tencent.mm.plugin.label.ui.ContactLabelEditUI");
-    this.eCC.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI");
-    this.eCC.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI1");
-    this.eCC.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI2");
-    this.eCC.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI3");
-    this.eCC.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI4");
+    AppMethodBeat.i(78711);
+    this.fSs = new d.a();
+    this.fSt = new HashSet();
+    this.fSt.add("com.tencent.mm.ui.LauncherUI");
+    this.fSt.add("com.tencent.mm.plugin.profile.ui.ContactInfoUI");
+    this.fSt.add("com.tencent.mm.plugin.webview.ui.tools.WebViewUI");
+    this.fSt.add("com.tencent.mm.ui.conversation.BizConversationUI");
+    this.fSt.add("com.tencent.mm.ui.chatting.ChattingUI");
+    this.fSt.add("com.tencent.mm.plugin.label.ui.ContactLabelEditUI");
+    this.fSt.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI");
+    this.fSt.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI1");
+    this.fSt.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI2");
+    this.fSt.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI3");
+    this.fSt.add("com.tencent.mm.plugin.appbrand.ui.AppBrandUI4");
+    AppMethodBeat.o(78711);
   }
   
-  public static boolean Ro()
+  public static boolean akx()
   {
-    d.a locala = Rp().eCB;
-    return locala.eCG > locala.eCH;
+    AppMethodBeat.i(78709);
+    d.a locala = aky().fSs;
+    if (locala.fSx > locala.fSy)
+    {
+      AppMethodBeat.o(78709);
+      return true;
+    }
+    AppMethodBeat.o(78709);
+    return false;
   }
   
-  public static d Rp()
+  public static d aky()
   {
-    if (eCD == null) {}
+    AppMethodBeat.i(78712);
+    if (fSu == null) {}
     try
     {
-      if (eCD == null) {
-        eCD = new d();
+      if (fSu == null) {
+        fSu = new d();
       }
-      return eCD;
+      d locald = fSu;
+      AppMethodBeat.o(78712);
+      return locald;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(78712);
+    }
   }
   
   public static void b(int paramInt1, String paramString, int paramInt2)
   {
+    AppMethodBeat.i(78710);
     Intent localIntent = new Intent("com.tencent.mm.Intent.ACTION_CLICK_FLOW_REPORT");
     localIntent.putExtra("opCode", paramInt1);
     localIntent.putExtra("ui", paramString);
     localIntent.putExtra("uiHashCode", paramInt2);
-    localIntent.putExtra("nowMilliSecond", bk.UY());
+    localIntent.putExtra("nowMilliSecond", bo.aoy());
     localIntent.putExtra("elapsedRealtime", SystemClock.elapsedRealtime());
-    paramString = ae.getContext();
+    com.tencent.mm.sdk.platformtools.e.aK(localIntent);
+    paramString = ah.getContext();
     if (paramString != null)
     {
-      if (!ae.cqV()) {
-        break label88;
+      if (!ah.brt()) {
+        break label102;
       }
-      c.Rn().j(localIntent);
+      c.akw().x(localIntent);
     }
     for (;;)
     {
       localIntent.setAction("com.tencent.mm.Intent.ACTION_NET_STATS");
       paramString.sendBroadcast(localIntent);
+      AppMethodBeat.o(78710);
       return;
-      label88:
-      y.d("MicroMsg.ClickFlowStatSender", "sendBroadcast, Intent: %s, Extra: %s", new Object[] { localIntent, localIntent.getExtras() });
+      label102:
+      ab.d("MicroMsg.ClickFlowStatSender", "sendBroadcast, Intent: %s, Extra: %s", new Object[] { localIntent, localIntent.getExtras() });
       paramString.sendBroadcast(localIntent);
     }
   }
   
-  public static void c(Application paramApplication)
+  public static void d(Application paramApplication)
   {
-    paramApplication.registerActivityLifecycleCallbacks(Rp().eCB);
+    AppMethodBeat.i(78708);
+    paramApplication.registerActivityLifecycleCallbacks(aky().fSs);
+    AppMethodBeat.o(78708);
   }
   
-  public static void h(String paramString, long paramLong1, long paramLong2)
+  public static void o(String paramString, long paramLong1, long paramLong2)
   {
-    if ((com.tencent.mm.protocal.d.spd) || (com.tencent.mm.protocal.d.spc))
+    AppMethodBeat.i(78713);
+    if ((com.tencent.mm.protocal.d.whK) || (com.tencent.mm.protocal.d.whJ))
     {
-      y.i("MicroMsg.ClickFlowStatSender", "kvCheck :%s [%s,%s,%s]", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong2 - paramLong1) });
-      f.nEG.aC(13393, "99999,0,0," + paramLong1 + "," + paramLong2 + "," + paramString);
+      ab.i("MicroMsg.ClickFlowStatSender", "kvCheck :%s [%s,%s,%s]", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong2 - paramLong1) });
+      com.tencent.mm.plugin.report.e.qrI.kvStat(13393, "99999,0,0," + paramLong1 + "," + paramLong2 + "," + paramString);
     }
+    AppMethodBeat.o(78713);
   }
 }
 

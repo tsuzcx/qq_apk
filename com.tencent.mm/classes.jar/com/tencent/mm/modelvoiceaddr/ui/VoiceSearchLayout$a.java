@@ -2,11 +2,11 @@ package com.tencent.mm.modelvoiceaddr.ui;
 
 public abstract interface VoiceSearchLayout$a
 {
-  public abstract void TK();
-  
-  public abstract void TL();
-  
   public abstract void a(boolean paramBoolean, String[] paramArrayOfString, long paramLong);
+  
+  public abstract void amX();
+  
+  public abstract void amY();
 }
 
 

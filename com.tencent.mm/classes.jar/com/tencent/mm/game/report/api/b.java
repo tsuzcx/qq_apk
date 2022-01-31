@@ -1,28 +1,40 @@
 package com.tencent.mm.game.report.api;
 
-public abstract class b
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+
+public final class b
 {
-  public static b dCw;
+  public int ezN;
+  public String ezO;
   
-  public abstract void a(long paramLong, a parama);
+  public b() {}
   
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3, String paramString2, int paramInt3, int paramInt4, String paramString3, long paramLong4, int paramInt5, long paramLong5, String paramString4);
-  
-  public final void a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2, String paramString3)
+  public b(int paramInt, String paramString)
   {
-    a(paramString1, paramInt1, paramInt2, 0L, 0L, 0L, "", 0, 0, paramString2, 0L, 0, paramLong, paramString3);
+    this.ezN = paramInt;
+    this.ezO = paramString;
   }
   
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5);
-  
-  public final void a(String paramString1, int paramInt, long paramLong1, String paramString2, long paramLong2)
+  public static b b(int paramInt, Object... paramVarArgs)
   {
-    a(paramString1, 0, paramInt, 0L, 0L, 0L, "", 0, 0, paramString2, paramLong2, 0, paramLong1, "");
+    AppMethodBeat.i(128610);
+    b localb = new b();
+    localb.ezN = paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    int j = paramVarArgs.length - 1;
+    int i = 0;
+    while (i < j)
+    {
+      localStringBuilder.append(String.valueOf(paramVarArgs[i])).append(',');
+      i += 1;
+    }
+    localStringBuilder.append(String.valueOf(paramVarArgs[j]));
+    localb.ezO = localStringBuilder.toString();
+    ab.d("MicroMsg.GameReportInfo", "appStat logID=%d, vals.size=%d, val = %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramVarArgs.length), localStringBuilder.toString() });
+    AppMethodBeat.o(128610);
+    return localb;
   }
-  
-  public abstract a bu(long paramLong);
-  
-  public abstract void i(String paramString, long paramLong);
 }
 
 

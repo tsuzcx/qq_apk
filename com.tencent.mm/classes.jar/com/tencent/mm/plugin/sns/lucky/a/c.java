@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.sns.lucky.a;
 
 public final class c
 {
-  public long euQ;
-  public long hRd;
-  public String onq;
+  public long fKC;
+  public long jKE;
+  public String rbH;
 }
 
 

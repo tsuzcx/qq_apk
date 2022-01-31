@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.widget.GridView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SeeAccessVerifyInfoUI$4
   implements Runnable
@@ -12,15 +13,24 @@ final class SeeAccessVerifyInfoUI$4
   
   public final void run()
   {
+    AppMethodBeat.i(104263);
     int i = 0;
-    if (SeeAccessVerifyInfoUI.c(this.dqZ) != null) {
-      i = (int)(SeeAccessVerifyInfoUI.c(this.dqZ).getHeight() + this.dqZ.getResources().getDimension(a.c.BigPadding) + this.dqZ.getResources().getDimension(a.c.NormalAvatarSize));
+    if (SeeAccessVerifyInfoUI.c(this.eiF) != null) {
+      if (!SeeAccessVerifyInfoUI.d(this.eiF)) {
+        break label136;
+      }
     }
-    int j = i;
-    if (SeeAccessVerifyInfoUI.d(this.dqZ).getCount() / 4 > 0) {
-      j = i * (SeeAccessVerifyInfoUI.d(this.dqZ).getCount() / 4 + 1);
+    label136:
+    for (i = (int)(SeeAccessVerifyInfoUI.c(this.eiF).getHeight() * 2 + this.eiF.getResources().getDimension(2131427500) + this.eiF.getResources().getDimension(2131427800));; i = (int)(SeeAccessVerifyInfoUI.c(this.eiF).getHeight() + this.eiF.getResources().getDimension(2131427500) + this.eiF.getResources().getDimension(2131427800)))
+    {
+      int j = i;
+      if (SeeAccessVerifyInfoUI.e(this.eiF).getCount() / 4 > 0) {
+        j = i * (SeeAccessVerifyInfoUI.e(this.eiF).getCount() / 4 + 1);
+      }
+      SeeAccessVerifyInfoUI.f(this.eiF).setLayoutParams(new LinearLayout.LayoutParams(SeeAccessVerifyInfoUI.f(this.eiF).getWidth(), j));
+      AppMethodBeat.o(104263);
+      return;
     }
-    SeeAccessVerifyInfoUI.e(this.dqZ).setLayoutParams(new LinearLayout.LayoutParams(SeeAccessVerifyInfoUI.e(this.dqZ).getWidth(), j));
   }
 }
 

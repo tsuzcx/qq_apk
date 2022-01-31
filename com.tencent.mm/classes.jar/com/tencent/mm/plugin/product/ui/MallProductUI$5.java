@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.product.b.n.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MallProductUI$5
   implements AdapterView.OnItemClickListener
@@ -16,29 +17,33 @@ final class MallProductUI$5
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(44161);
     paramView = (m)paramView.getTag();
-    paramAdapterView = MallProductUI.e(this.mVg);
-    if ((paramView != null) && (paramView.mUJ != null))
+    paramAdapterView = MallProductUI.e(this.pxl);
+    if ((paramView != null) && (paramView.pwO != null))
     {
-      paramView = paramView.mUJ;
-      y.i("MicroMsg.MallProductUI", "goProductUI type : " + paramView.type);
+      paramView = paramView.pwO;
+      ab.i("MicroMsg.MallProductUI", "goProductUI type : " + paramView.type);
+      switch (paramView.type)
+      {
+      }
     }
-    switch (paramView.type)
+    for (;;)
     {
-    default: 
+      AppMethodBeat.o(44161);
       return;
-    case 0: 
-      localIntent = new Intent();
+      Intent localIntent = new Intent();
       localIntent.putExtra("rawUrl", paramView.url);
-      d.b(paramAdapterView.fyk, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+      d.b(paramAdapterView.gQx, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+      AppMethodBeat.o(44161);
       return;
+      paramView = paramView.data.replace("product_id=", "");
+      localIntent = new Intent();
+      localIntent.putExtra("key_product_id", paramView);
+      localIntent.putExtra("key_product_scene", 6);
+      d.b(paramAdapterView.gQx, "mall", ".product.ui.MallProductUI", localIntent);
+      paramAdapterView.gQx.finish();
     }
-    paramView = paramView.data.replace("product_id=", "");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_product_id", paramView);
-    localIntent.putExtra("key_product_scene", 6);
-    d.b(paramAdapterView.fyk, "mall", ".product.ui.MallProductUI", localIntent);
-    paramAdapterView.fyk.finish();
   }
 }
 

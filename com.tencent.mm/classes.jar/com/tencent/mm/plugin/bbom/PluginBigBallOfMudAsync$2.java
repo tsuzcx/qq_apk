@@ -1,17 +1,21 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.ae.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.af.r;
 import com.tencent.mm.pluginsdk.model.app.l;
 
 final class PluginBigBallOfMudAsync$2
-  implements n
+  implements r
 {
   PluginBigBallOfMudAsync$2(PluginBigBallOfMudAsync paramPluginBigBallOfMudAsync) {}
   
-  public final int a(g.a parama, String paramString1, String paramString2, String paramString3, String paramString4, byte[] paramArrayOfByte)
+  public final int a(j.b paramb, String paramString1, String paramString2, String paramString3, String paramString4, byte[] paramArrayOfByte)
   {
-    return l.a(parama, paramString1, paramString2, paramString3, paramString4, paramArrayOfByte);
+    AppMethodBeat.i(18307);
+    int i = l.a(paramb, paramString1, paramString2, paramString3, paramString4, paramArrayOfByte);
+    AppMethodBeat.o(18307);
+    return i;
   }
 }
 

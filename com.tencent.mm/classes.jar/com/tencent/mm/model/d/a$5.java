@@ -2,7 +2,8 @@ package com.tencent.mm.model.d;
 
 import android.content.pm.IPackageStatsObserver.Stub;
 import android.content.pm.PackageStats;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$5
   extends IPackageStatsObserver.Stub
@@ -11,10 +12,12 @@ final class a$5
   
   public final void onGetStatsCompleted(PackageStats paramPackageStats, boolean paramBoolean)
   {
-    a.m(this.dZq)[0] = paramPackageStats.cacheSize;
-    a.m(this.dZq)[1] = paramPackageStats.dataSize;
-    a.m(this.dZq)[2] = paramPackageStats.codeSize;
-    y.i("MicroMsg.HandlerTraceManager", "package cacheSize :%d ,dataSize :%d ,codeSize :%d ", new Object[] { Long.valueOf(paramPackageStats.cacheSize), Long.valueOf(paramPackageStats.dataSize), Long.valueOf(paramPackageStats.codeSize) });
+    AppMethodBeat.i(16378);
+    a.n(this.fpv)[0] = paramPackageStats.cacheSize;
+    a.n(this.fpv)[1] = paramPackageStats.dataSize;
+    a.n(this.fpv)[2] = paramPackageStats.codeSize;
+    ab.i("MicroMsg.HandlerTraceManager", "package cacheSize :%d ,dataSize :%d ,codeSize :%d ", new Object[] { Long.valueOf(paramPackageStats.cacheSize), Long.valueOf(paramPackageStats.dataSize), Long.valueOf(paramPackageStats.codeSize) });
+    AppMethodBeat.o(16378);
   }
 }
 

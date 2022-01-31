@@ -1,5 +1,7 @@
 package com.qq.taf.jce.dynamic;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class ZeroField
   extends NumberField
 {
@@ -25,6 +27,8 @@ public final class ZeroField
   
   public final Number getNumber()
   {
+    AppMethodBeat.i(117015);
+    AppMethodBeat.o(117015);
     return Integer.valueOf(0);
   }
   
@@ -45,7 +49,7 @@ public final class ZeroField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.qq.taf.jce.dynamic.ZeroField
  * JD-Core Version:    0.7.0.1
  */

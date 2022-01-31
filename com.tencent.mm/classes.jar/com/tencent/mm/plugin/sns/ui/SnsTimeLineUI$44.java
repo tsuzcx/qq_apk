@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsTimeLineUI$44
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
   SnsTimeLineUI$44(SnsTimeLineUI paramSnsTimeLineUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void run()
   {
-    SnsTimeLineUI.J(this.pfC).yQ(10);
-    SnsTimeLineUI.b(SnsTimeLineUI.J(this.pfC));
+    AppMethodBeat.i(39518);
+    this.rYv.ctC();
+    AppMethodBeat.o(39518);
   }
 }
 

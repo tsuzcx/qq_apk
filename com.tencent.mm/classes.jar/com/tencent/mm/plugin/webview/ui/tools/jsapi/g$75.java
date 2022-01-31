@@ -1,41 +1,24 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.app.ProgressDialog;
-import com.tencent.mm.plugin.webview.model.ag;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.model.al;
 import com.tencent.mm.plugin.webview.model.d.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import java.util.Map;
 
 final class g$75
-  implements d.b
+  implements DialogInterface.OnCancelListener
 {
-  g$75(g paramg, String paramString1, String paramString2, i parami) {}
+  g$75(g paramg, d.b paramb, String paramString, i parami) {}
   
-  public final void b(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    y.i("MicroMsg.MsgHandler", this.gQZ + ", on cdn finish,  is success : %s, mediaId : %s, local id is : %s, mediaUrl : %s", new Object[] { Boolean.valueOf(paramBoolean), paramString2, paramString1, paramString3 });
-    if ((bk.bl(paramString1)) || (!paramString1.equals(this.rec))) {
-      return;
-    }
-    g.A(this.rzi).remove(this.rec);
-    com.tencent.mm.plugin.webview.modeltools.g.ccK().a(this);
-    if (g.k(this.rzi) != null)
-    {
-      g.k(this.rzi).dismiss();
-      g.a(this.rzi, null);
-    }
-    g.B(this.rzi);
-    if (!paramBoolean)
-    {
-      g.a(this.rzi, this.rzk, this.gQZ + ":fail", null);
-      return;
-    }
-    paramString1 = new HashMap();
-    paramString1.put("serverId", paramString2);
-    paramString1.put("mediaUrl", paramString3);
-    g.a(this.rzi, this.rzk, this.gQZ + ":ok", paramString1);
+    AppMethodBeat.i(154995);
+    com.tencent.mm.plugin.webview.modeltools.g.dcD().a(this.uTy);
+    com.tencent.mm.plugin.webview.modeltools.g.dcD();
+    al.ahd(this.uTw);
+    this.vqm.a(this.uZa, "downloadImage:fail", null);
+    AppMethodBeat.o(154995);
   }
 }
 

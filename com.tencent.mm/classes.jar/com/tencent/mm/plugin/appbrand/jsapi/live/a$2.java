@@ -1,18 +1,30 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.f.d;
+import com.tencent.mm.sdk.platformtools.ab;
+
 final class a$2
-  implements Runnable
+  implements f.d
 {
-  a$2(String paramString1, String paramString2, String paramString3) {}
+  a$2(a parama, AppBrandLivePlayerView paramAppBrandLivePlayerView) {}
   
-  public final void run()
+  public final void onForeground()
   {
-    a.A(this.val$url, this.grU, this.grV);
+    AppMethodBeat.i(96071);
+    Object localObject = this.hNC.hNq;
+    if (((k)localObject).bGp) {}
+    for (localObject = ((k)localObject).Ce("resume");; localObject = new i())
+    {
+      ab.i("MicroMsg.AppBrandLivePlayerView", "onForeground code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).bFT });
+      AppMethodBeat.o(96071);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.a.2
  * JD-Core Version:    0.7.0.1
  */

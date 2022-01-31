@@ -1,43 +1,58 @@
 package com.tencent.wecall.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.c.c;
 
 public class a
 {
-  private static a xdn = null;
-  private f xdo = null;
+  private static a BzV = null;
+  private f BzW = null;
   
-  public static a cRp()
+  public static a dXf()
   {
-    if (xdn == null) {}
+    AppMethodBeat.i(127764);
+    if (BzV == null) {}
     try
     {
-      if (xdn == null) {
-        xdn = new a();
+      if (BzV == null) {
+        BzV = new a();
       }
-      return xdn;
+      a locala = BzV;
+      AppMethodBeat.o(127764);
+      return locala;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(127764);
+    }
   }
   
-  public static f cRq()
+  public static f dXg()
   {
-    a locala = cRp();
-    if (locala.xdo == null) {}
+    AppMethodBeat.i(127765);
+    Object localObject1 = dXf();
+    if (((a)localObject1).BzW == null) {}
     try
     {
-      if (locala.xdo == null) {
-        locala.xdo = new f();
+      if (((a)localObject1).BzW == null) {
+        ((a)localObject1).BzW = new f();
       }
-      return locala.xdo;
+      localObject1 = ((a)localObject1).BzW;
+      AppMethodBeat.o(127765);
+      return localObject1;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(127765);
+    }
   }
   
-  public static void cRr()
+  public static void dXh()
   {
+    AppMethodBeat.i(127766);
     c.d("MicroMsg.Voip", new Object[] { "registerEvents" });
-    cRq();
+    dXg();
+    AppMethodBeat.o(127766);
   }
 }
 

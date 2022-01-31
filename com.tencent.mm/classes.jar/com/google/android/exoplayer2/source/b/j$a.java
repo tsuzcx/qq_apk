@@ -1,13 +1,14 @@
 package com.google.android.exoplayer2.source.b;
 
 import com.google.android.exoplayer2.source.b.a.a.a;
+import com.google.android.exoplayer2.source.m.a;
 
 public abstract interface j$a
-  extends com.google.android.exoplayer2.source.j.a<j>
+  extends m.a<j>
 {
   public abstract void a(a.a parama);
   
-  public abstract void kA();
+  public abstract void mG();
 }
 
 

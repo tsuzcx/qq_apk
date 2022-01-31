@@ -3,33 +3,60 @@ package com.tencent.mm.plugin.report.service;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 class BroadCastData
   implements Parcelable
 {
-  public static final Parcelable.Creator<BroadCastData> CREATOR = new Parcelable.Creator() {};
-  ArrayList<KVReportDataInfo> nFc = new ArrayList();
-  ArrayList<StIDKeyDataInfo> nFd = new ArrayList();
-  ArrayList<GroupIDKeyDataInfo> nFe = new ArrayList();
+  public static final Parcelable.Creator<BroadCastData> CREATOR;
+  ArrayList<KVReportDataInfo> qse;
+  ArrayList<StIDKeyDataInfo> qsf;
+  ArrayList<GroupIDKeyDataInfo> qsg;
   
-  public BroadCastData() {}
+  static
+  {
+    AppMethodBeat.i(72694);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(72694);
+  }
+  
+  public BroadCastData()
+  {
+    AppMethodBeat.i(72690);
+    this.qse = new ArrayList();
+    this.qsf = new ArrayList();
+    this.qsg = new ArrayList();
+    AppMethodBeat.o(72690);
+  }
   
   protected BroadCastData(Parcel paramParcel)
   {
-    paramParcel.readTypedList(this.nFc, KVReportDataInfo.CREATOR);
-    paramParcel.readTypedList(this.nFd, StIDKeyDataInfo.CREATOR);
-    paramParcel.readTypedList(this.nFe, GroupIDKeyDataInfo.CREATOR);
+    AppMethodBeat.i(72692);
+    this.qse = new ArrayList();
+    this.qsf = new ArrayList();
+    this.qsg = new ArrayList();
+    paramParcel.readTypedList(this.qse, KVReportDataInfo.CREATOR);
+    paramParcel.readTypedList(this.qsf, StIDKeyDataInfo.CREATOR);
+    paramParcel.readTypedList(this.qsg, GroupIDKeyDataInfo.CREATOR);
+    AppMethodBeat.o(72692);
   }
   
   public BroadCastData(BroadCastData paramBroadCastData)
   {
-    if (paramBroadCastData == null) {
+    AppMethodBeat.i(72691);
+    this.qse = new ArrayList();
+    this.qsf = new ArrayList();
+    this.qsg = new ArrayList();
+    if (paramBroadCastData == null)
+    {
+      AppMethodBeat.o(72691);
       return;
     }
-    this.nFc = new ArrayList(paramBroadCastData.nFc);
-    this.nFd = new ArrayList(paramBroadCastData.nFd);
-    this.nFe = new ArrayList(paramBroadCastData.nFe);
+    this.qse = new ArrayList(paramBroadCastData.qse);
+    this.qsf = new ArrayList(paramBroadCastData.qsf);
+    this.qsg = new ArrayList(paramBroadCastData.qsg);
+    AppMethodBeat.o(72691);
   }
   
   public int describeContents()
@@ -39,9 +66,11 @@ class BroadCastData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeTypedList(this.nFc);
-    paramParcel.writeTypedList(this.nFd);
-    paramParcel.writeTypedList(this.nFe);
+    AppMethodBeat.i(72693);
+    paramParcel.writeTypedList(this.qse);
+    paramParcel.writeTypedList(this.qsf);
+    paramParcel.writeTypedList(this.qsg);
+    AppMethodBeat.o(72693);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
 final class BindLinkedInUI$2
@@ -7,14 +8,16 @@ final class BindLinkedInUI$2
 {
   BindLinkedInUI$2(BindLinkedInUI paramBindLinkedInUI) {}
   
-  public final void cr(boolean paramBoolean)
+  public final void onStatusChange(boolean paramBoolean)
   {
-    BindLinkedInUI.a(this.fbn, paramBoolean, false);
+    AppMethodBeat.i(13388);
+    BindLinkedInUI.a(this.gtf, paramBoolean, false);
+    AppMethodBeat.o(13388);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindLinkedInUI.2
  * JD-Core Version:    0.7.0.1
  */

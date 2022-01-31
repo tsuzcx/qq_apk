@@ -1,55 +1,80 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.content.Intent;
-import android.os.Build.VERSION;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.appbrand.task.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appcache.y;
+import com.tencent.mm.sdk.g.d;
 
-public class v
-  implements MMActivity.a
+public abstract class v
+  implements o
 {
-  public final int bQU = v.class.hashCode() & 0xFFFF;
+  public volatile o.c ilE;
+  private volatile o.b ilF;
+  final y ilG;
   
-  public void alL() {}
-  
-  public final void alM()
+  v(y paramy)
   {
-    if (d.gF(17)) {
-      onReady();
+    this.ilG = paramy;
+  }
+  
+  public final void a(o.b paramb)
+  {
+    this.ilF = paramb;
+  }
+  
+  public final void a(o.c paramc)
+  {
+    this.ilE = paramc;
+  }
+  
+  final void aHa()
+  {
+    if (this.ilE != null) {
+      this.ilE.aGU();
     }
   }
   
-  public final void c(int paramInt1, int paramInt2, Intent paramIntent)
+  final void aHb()
   {
-    if (this.bQU != paramInt1) {
-      return;
+    if (this.ilE != null) {
+      this.ilE.aGW();
     }
-    if (paramInt2 == -1)
-    {
-      y.i("MicroMsg.AppBrand.PreLaunchCheckForTBS", "onActivityResult, tbs download ok");
-      g.mo(0);
-      onReady();
-      return;
-    }
-    if (paramInt2 == 2)
-    {
-      y.i("MicroMsg.AppBrand.PreLaunchCheckForTBS", "onActivityResult, tbs cancel loading, download in background");
-      alL();
-      return;
-    }
-    y.i("MicroMsg.AppBrand.PreLaunchCheckForTBS", "onActivityResult, tbs download unknown error, resultCode = %d, apiLevel = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(Build.VERSION.SDK_INT) });
-    h.nFQ.a(366L, 8L, 1L, false);
-    alM();
   }
   
-  public void onReady() {}
+  public abstract String aHc();
+  
+  final void c(WxaPkgLoadProgress paramWxaPkgLoadProgress)
+  {
+    o.b localb = this.ilF;
+    if (localb != null) {
+      localb.a(paramWxaPkgLoadProgress);
+    }
+  }
+  
+  final void d(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
+  {
+    if (this.ilE != null) {
+      this.ilE.a(paramWxaPkgWrappingInfo);
+    }
+  }
+  
+  final void e(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
+  {
+    if (this.ilE != null) {
+      this.ilE.b(paramWxaPkgWrappingInfo);
+    }
+  }
+  
+  public abstract void prepare();
+  
+  public final void prepareAsync()
+  {
+    d.post(new v.1(this), "AppBrandLaunchPrepareJob#" + aHc());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.v
  * JD-Core Version:    0.7.0.1
  */

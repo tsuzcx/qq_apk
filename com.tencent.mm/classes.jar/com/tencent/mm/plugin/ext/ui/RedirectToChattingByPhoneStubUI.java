@@ -5,45 +5,53 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.ui.base.h;
 
 public class RedirectToChattingByPhoneStubUI
   extends Activity
   implements f
 {
-  private com.tencent.mm.ui.base.p jLo = null;
+  private com.tencent.mm.ui.base.p mfs = null;
   
   public final boolean hideVKB()
   {
+    AppMethodBeat.i(20438);
     InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
-    if (localInputMethodManager == null) {}
-    Object localObject;
-    do
+    if (localInputMethodManager == null)
     {
-      do
-      {
-        return false;
-        localObject = getCurrentFocus();
-      } while (localObject == null);
-      localObject = ((View)localObject).getWindowToken();
-    } while (localObject == null);
+      AppMethodBeat.o(20438);
+      return false;
+    }
+    Object localObject = getCurrentFocus();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(20438);
+      return false;
+    }
+    localObject = ((View)localObject).getWindowToken();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(20438);
+      return false;
+    }
     try
     {
       bool = localInputMethodManager.hideSoftInputFromWindow((IBinder)localObject, 0);
-      y.v("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB result %B", new Object[] { Boolean.valueOf(bool) });
+      ab.v("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB result %B", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(20438);
       return bool;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
       for (;;)
       {
-        y.e("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB exception %s", new Object[] { localIllegalArgumentException });
+        ab.e("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB exception %s", new Object[] { localIllegalArgumentException });
         boolean bool = false;
       }
     }
@@ -51,32 +59,44 @@ public class RedirectToChattingByPhoneStubUI
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(20435);
     super.onCreate(paramBundle);
-    getString(R.l.app_waiting);
-    this.jLo = h.b(this, "", false, null);
-    ai.l(new RedirectToChattingByPhoneStubUI.1(this), 500L);
-    au.Dk().a(106, this);
+    getString(2131297112);
+    this.mfs = h.b(this, "", false, null);
+    al.p(new RedirectToChattingByPhoneStubUI.1(this), 500L);
+    aw.Rc().a(106, this);
+    AppMethodBeat.o(20435);
   }
   
   protected void onDestroy()
   {
+    AppMethodBeat.i(20436);
     super.onDestroy();
-    au.Dk().b(106, this);
-    if (this.jLo != null)
+    aw.Rc().b(106, this);
+    if (this.mfs != null)
     {
-      this.jLo.dismiss();
-      this.jLo = null;
+      this.mfs.dismiss();
+      this.mfs = null;
     }
+    AppMethodBeat.o(20436);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(20437);
     finish();
+    AppMethodBeat.o(20437);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.ui.RedirectToChattingByPhoneStubUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,24 @@
 package com.tinkerboots.sdk.b;
 
-import java.util.HashSet;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static String xnT;
-  private static HashSet<String> xnU = new HashSet();
+  public static Context context;
   
-  public static String cUa()
+  public static Context getContext()
   {
-    if (xnT == null) {
-      return "";
+    AppMethodBeat.i(65555);
+    if (context == null)
+    {
+      localObject = new RuntimeException("TinkerClientContext, context is null, please init first");
+      AppMethodBeat.o(65555);
+      throw ((Throwable)localObject);
     }
-    return xnT;
-  }
-  
-  public static boolean cUb()
-  {
-    if (xnT == null) {
-      return false;
-    }
-    return xnU.contains(xnT);
+    Object localObject = context;
+    AppMethodBeat.o(65555);
+    return localObject;
   }
 }
 

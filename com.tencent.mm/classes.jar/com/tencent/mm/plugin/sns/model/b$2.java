@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import java.util.Set;
 
@@ -11,16 +12,18 @@ final class b$2
   
   public final void run()
   {
-    b localb = this.ooN;
-    b.b localb1 = this.ooM;
-    localb.dup.remove(localb1);
-    int i = b.ooB - 1;
-    b.ooB = i;
+    AppMethodBeat.i(36100);
+    b localb = this.rdk;
+    b.b localb1 = this.rdj;
+    localb.bLQ.remove(localb1);
+    int i = b.rcV - 1;
+    b.rcV = i;
     if (i <= 0)
     {
-      g.DQ();
-      g.DO().dJT.b(208, localb);
+      g.RM();
+      g.RK().eHt.b(208, localb);
     }
+    AppMethodBeat.o(36100);
   }
 }
 

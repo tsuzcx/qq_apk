@@ -1,7 +1,8 @@
 package com.tenpay.android.wechat;
 
 import android.content.Context;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tenpay.ndk.Encrypt;
 import java.lang.reflect.Field;
 import java.security.MessageDigest;
@@ -10,35 +11,34 @@ public class TenpayUtil
 {
   public static final int getResourceDeclareStyleableIndex(Context paramContext, String paramString)
   {
-    int k = 0;
+    AppMethodBeat.i(49512);
     try
     {
       paramContext = Class.forName(paramContext.getPackageName() + ".R$styleable").getFields();
-      int m = paramContext.length;
+      int j = paramContext.length;
       int i = 0;
-      for (;;)
+      while (i < j)
       {
-        int j = k;
-        if (i < m)
+        Object localObject = paramContext[i];
+        if (localObject.getName().equals(paramString))
         {
-          Object localObject = paramContext[i];
-          if (localObject.getName().equals(paramString)) {
-            j = localObject.getInt(null);
-          }
-        }
-        else
-        {
-          return j;
+          i = localObject.getInt(null);
+          AppMethodBeat.o(49512);
+          return i;
         }
         i += 1;
       }
       return 0;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      AppMethodBeat.o(49512);
+    }
   }
   
   public static final int[] getResourceDeclareStyleableIntArray(Context paramContext, String paramString)
   {
+    AppMethodBeat.i(49511);
     try
     {
       paramContext = Class.forName(paramContext.getPackageName() + ".R$styleable").getFields();
@@ -50,93 +50,107 @@ public class TenpayUtil
         if (localObject.getName().equals(paramString))
         {
           paramContext = (int[])localObject.get(null);
+          AppMethodBeat.o(49511);
           return paramContext;
         }
         i += 1;
       }
-      return null;
+      AppMethodBeat.o(49511);
     }
     catch (Throwable paramContext)
     {
+      AppMethodBeat.o(49511);
       return null;
     }
+    return null;
   }
   
   public static boolean invalidateID(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
+    AppMethodBeat.i(49513);
+    if (paramString == null)
     {
+      AppMethodBeat.o(49513);
       return false;
-      if (paramString.length() == 18)
+    }
+    if (paramString.length() != 18)
+    {
+      AppMethodBeat.o(49513);
+      return false;
+    }
+    int i = 0;
+    int j = 0;
+    try
+    {
+      while (i < paramString.length() - 1)
       {
-        int i = 0;
-        int j = 0;
-        try
-        {
-          while (i < paramString.length() - 1)
-          {
-            int k = bk.ZR(paramString.substring(i, i + 1));
-            int m = new int[] { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 }[i];
-            j += k * m;
-            i += 1;
-          }
-          i = j % 11;
-          j = paramString.charAt(17);
-          if (i == 2)
-          {
-            if ((j != 88) && (j != 120)) {}
-          }
-          else
-          {
-            while (j == new char[] { 49, 48, 88, 57, 56, 55, 54, 53, 52, 51, 50 }[i]) {
-              return true;
-            }
-            return false;
-          }
-        }
-        catch (NumberFormatException paramString) {}
+        int k = bo.apV(paramString.substring(i, i + 1));
+        int m = new int[] { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 }[i];
+        j += k * m;
+        i += 1;
+      }
+      i = j % 11;
+    }
+    catch (NumberFormatException paramString)
+    {
+      AppMethodBeat.o(49513);
+      return false;
+    }
+    j = paramString.charAt(17);
+    if (i == 2)
+    {
+      if ((j != 88) && (j != 120))
+      {
+        AppMethodBeat.o(49513);
+        return false;
       }
     }
-    return false;
+    else if (j != new char[] { 49, 48, 88, 57, 56, 55, 54, 53, 52, 51, 50 }[i])
+    {
+      AppMethodBeat.o(49513);
+      return false;
+    }
+    AppMethodBeat.o(49513);
+    return true;
   }
   
   public static String md5HexDigest(String paramString)
   {
+    AppMethodBeat.i(49510);
     char[] arrayOfChar = new char[16];
-    char[] tmp8_6 = arrayOfChar;
-    tmp8_6[0] = 48;
-    char[] tmp13_8 = tmp8_6;
-    tmp13_8[1] = 49;
-    char[] tmp18_13 = tmp13_8;
-    tmp18_13[2] = 50;
+    char[] tmp13_11 = arrayOfChar;
+    tmp13_11[0] = 48;
+    char[] tmp18_13 = tmp13_11;
+    tmp18_13[1] = 49;
     char[] tmp23_18 = tmp18_13;
-    tmp23_18[3] = 51;
+    tmp23_18[2] = 50;
     char[] tmp28_23 = tmp23_18;
-    tmp28_23[4] = 52;
+    tmp28_23[3] = 51;
     char[] tmp33_28 = tmp28_23;
-    tmp33_28[5] = 53;
+    tmp33_28[4] = 52;
     char[] tmp38_33 = tmp33_28;
-    tmp38_33[6] = 54;
-    char[] tmp44_38 = tmp38_33;
-    tmp44_38[7] = 55;
-    char[] tmp50_44 = tmp44_38;
-    tmp50_44[8] = 56;
-    char[] tmp56_50 = tmp50_44;
-    tmp56_50[9] = 57;
-    char[] tmp62_56 = tmp56_50;
-    tmp62_56[10] = 65;
-    char[] tmp68_62 = tmp62_56;
-    tmp68_62[11] = 66;
-    char[] tmp74_68 = tmp68_62;
-    tmp74_68[12] = 67;
-    char[] tmp80_74 = tmp74_68;
-    tmp80_74[13] = 68;
-    char[] tmp86_80 = tmp80_74;
-    tmp86_80[14] = 69;
-    char[] tmp92_86 = tmp86_80;
-    tmp92_86[15] = 70;
-    tmp92_86;
+    tmp38_33[5] = 53;
+    char[] tmp43_38 = tmp38_33;
+    tmp43_38[6] = 54;
+    char[] tmp49_43 = tmp43_38;
+    tmp49_43[7] = 55;
+    char[] tmp55_49 = tmp49_43;
+    tmp55_49[8] = 56;
+    char[] tmp61_55 = tmp55_49;
+    tmp61_55[9] = 57;
+    char[] tmp67_61 = tmp61_55;
+    tmp67_61[10] = 65;
+    char[] tmp73_67 = tmp67_61;
+    tmp73_67[11] = 66;
+    char[] tmp79_73 = tmp73_67;
+    tmp79_73[12] = 67;
+    char[] tmp85_79 = tmp79_73;
+    tmp85_79[13] = 68;
+    char[] tmp91_85 = tmp85_79;
+    tmp91_85[14] = 69;
+    char[] tmp97_91 = tmp91_85;
+    tmp97_91[15] = 70;
+    tmp97_91;
     for (;;)
     {
       Object localObject;
@@ -153,9 +167,11 @@ public class TenpayUtil
       }
       catch (Exception paramString)
       {
-        return null;
+        paramString = null;
+        continue;
       }
       paramString = new String((char[])localObject);
+      AppMethodBeat.o(49510);
       return paramString;
       while (i < 16)
       {
@@ -171,27 +187,42 @@ public class TenpayUtil
   
   public static String signWith3Des(String paramString)
   {
-    if (paramString == null) {
+    AppMethodBeat.i(49509);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(49509);
       return null;
     }
     paramString = md5HexDigest(paramString);
-    return new Encrypt().desedeEncode(paramString);
+    paramString = new Encrypt().desedeEncode(paramString);
+    AppMethodBeat.o(49509);
+    return paramString;
   }
   
   public static byte[] sm4DecryptCBC(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    if (paramArrayOfByte1 == null) {
+    AppMethodBeat.i(49508);
+    if (paramArrayOfByte1 == null)
+    {
+      AppMethodBeat.o(49508);
       return null;
     }
-    return new Encrypt().sm4BCDDecryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
+    paramArrayOfByte1 = new Encrypt().sm4BCDDecryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
+    AppMethodBeat.o(49508);
+    return paramArrayOfByte1;
   }
   
   public static byte[] sm4EncryptCBC(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    if (paramArrayOfByte1 == null) {
+    AppMethodBeat.i(49507);
+    if (paramArrayOfByte1 == null)
+    {
+      AppMethodBeat.o(49507);
       return null;
     }
-    return new Encrypt().sm4BCDEncryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
+    paramArrayOfByte1 = new Encrypt().sm4BCDEncryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
+    AppMethodBeat.o(49507);
+    return paramArrayOfByte1;
   }
 }
 

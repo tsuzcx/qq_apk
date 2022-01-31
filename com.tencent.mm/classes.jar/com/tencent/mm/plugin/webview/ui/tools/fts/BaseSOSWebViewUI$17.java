@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseSOSWebViewUI$17
   implements Runnable
@@ -9,9 +9,11 @@ final class BaseSOSWebViewUI$17
   
   public final void run()
   {
-    if (BaseSOSWebViewUI.f(this.rtA) != null) {
-      BaseSOSWebViewUI.g(this.rtA).a(this.rtA.getTotalQuery(), this.rtA.getInEditTextQuery(), this.rtA.cfw());
+    AppMethodBeat.i(8347);
+    if (this.vjG.getJsapi() != null) {
+      this.vjG.Y(new BaseSOSWebViewUI.17.1(this));
     }
+    AppMethodBeat.o(8347);
   }
 }
 

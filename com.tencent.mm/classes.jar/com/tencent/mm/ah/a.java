@@ -1,61 +1,33 @@
 package com.tencent.mm.ah;
 
-import com.tencent.mm.ck.f;
-import com.tencent.mm.ck.g;
-import com.tencent.mm.protocal.c.bly;
-import junit.framework.Assert;
+import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.f;
+import com.tencent.mm.cache.f.a;
+import com.tencent.mm.memory.a.c;
 
-public class a<_Resp extends bly>
+public final class a
 {
-  public b dmK;
-  a.b<_Resp> ect = new a.b(this);
-  private f<a<_Resp>> ecu;
+  f<String, Bitmap> frn;
   
-  public f<a<_Resp>> Km()
+  public a(int paramInt)
   {
-    try
-    {
-      Assert.assertNotNull("You should set a CommReqResp!", this.dmK);
-      Assert.assertTrue("RunCgi NetSceneQueue not ready!", w.Lo());
-      if (this.ecu == null) {
-        this.ecu = g.c(new a.1(this));
-      }
-      f localf = this.ecu;
-      return localf;
-    }
-    finally {}
+    AppMethodBeat.i(77829);
+    this.frn = new c(paramInt);
+    AppMethodBeat.o(77829);
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString, _Resp param_Resp, m paramm) {}
-  
-  public final void a(b paramb)
+  public final void d(String paramString, Bitmap paramBitmap)
   {
-    this.dmK = paramb;
-  }
-  
-  public static class a<T extends bly>
-  {
-    public String aox;
-    public m bJk;
-    public T ecw;
-    public a ecx;
-    public int errCode;
-    public int errType;
-    
-    public static <T extends bly> a<T> a(int paramInt1, int paramInt2, String paramString, T paramT, m paramm, a parama)
+    AppMethodBeat.i(77830);
+    if (this.frn != null)
     {
-      a locala = new a();
-      locala.errType = paramInt1;
-      locala.errCode = paramInt2;
-      locala.aox = paramString;
-      locala.ecw = paramT;
-      locala.bJk = paramm;
-      locala.ecx = parama;
-      if (parama != null) {
-        parama.a(paramInt1, paramInt2, paramString, paramT, paramm);
-      }
-      return locala;
+      this.frn.f(paramString, paramBitmap);
+      AppMethodBeat.o(77830);
+      return;
     }
+    f.a.a("avatar_cache", paramString, paramBitmap);
+    AppMethodBeat.o(77830);
   }
 }
 

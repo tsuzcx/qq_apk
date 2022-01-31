@@ -1,20 +1,24 @@
 package com.tencent.mm.plugin.order;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
     return null;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new com.tencent.mm.plugin.order.a.b();
+    AppMethodBeat.i(43722);
+    com.tencent.mm.plugin.order.a.b localb = new com.tencent.mm.plugin.order.a.b();
+    AppMethodBeat.o(43722);
+    return localb;
   }
   
   public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
@@ -24,7 +28,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.order.Plugin
  * JD-Core Version:    0.7.0.1
  */

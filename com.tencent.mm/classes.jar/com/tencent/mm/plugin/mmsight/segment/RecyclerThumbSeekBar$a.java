@@ -3,44 +3,49 @@ package com.tencent.mm.plugin.mmsight.segment;
 import android.animation.ObjectAnimator;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class RecyclerThumbSeekBar$a
   implements Runnable
 {
-  private ImageView bNu;
   private Bitmap bitmap;
-  private RecyclerThumbSeekBar.b mmk;
+  private ImageView cuM;
+  private RecyclerThumbSeekBar.b oLr;
   
   RecyclerThumbSeekBar$a(RecyclerThumbSeekBar paramRecyclerThumbSeekBar, Bitmap paramBitmap, ImageView paramImageView, RecyclerThumbSeekBar.b paramb)
   {
     this.bitmap = paramBitmap;
-    this.bNu = paramImageView;
-    this.mmk = paramb;
+    this.cuM = paramImageView;
+    this.oLr = paramb;
   }
   
   public final void run()
   {
     boolean bool = true;
+    AppMethodBeat.i(54985);
     if ((this.bitmap == null) || (this.bitmap.isRecycled()))
     {
       if (this.bitmap == null) {}
       for (;;)
       {
-        y.i("RecyclerThumbSeekBar", "bitmap is null %b in DrawBitmapOnViewTask", new Object[] { Boolean.valueOf(bool) });
+        ab.i("RecyclerThumbSeekBar", "bitmap is null %b in DrawBitmapOnViewTask", new Object[] { Boolean.valueOf(bool) });
+        AppMethodBeat.o(54985);
         return;
         bool = false;
       }
     }
-    if ((this.mmk == null) || (this.mmk.esC) || (this.bNu == null))
+    if ((this.oLr == null) || (this.oLr.fIp) || (this.cuM == null))
     {
-      y.i("RecyclerThumbSeekBar", "bitmap in DrawBitmapOnViewTask");
+      ab.i("RecyclerThumbSeekBar", "bitmap in DrawBitmapOnViewTask");
+      AppMethodBeat.o(54985);
       return;
     }
-    ImageView localImageView = this.bNu;
+    ImageView localImageView = this.cuM;
     localImageView.setTag(null);
     ObjectAnimator.ofInt(localImageView, "imageAlpha", new int[] { 50, 255 }).setDuration(200L).start();
     localImageView.setImageBitmap(this.bitmap);
+    AppMethodBeat.o(54985);
   }
 }
 

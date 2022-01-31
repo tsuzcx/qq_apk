@@ -1,20 +1,21 @@
 package com.tencent.mm.ui.conversation;
 
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gp;
+import com.tencent.mm.sdk.b.a;
 
 final class j$2
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   j$2(j paramj) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setClassName(j.a(this.vTn), "com.tencent.mm.plugin.account.ui.RegByFacebookSetPwdUI");
-    j.a(this.vTn).startActivity(paramDialogInterface);
+    AppMethodBeat.i(34463);
+    gp localgp = new gp();
+    localgp.cvB.data = "MAIN_UI_EVENT_INIT_FINALLY";
+    a.ymk.l(localgp);
+    AppMethodBeat.o(34463);
   }
 }
 

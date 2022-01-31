@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.brandservice.ui;
 
 import android.content.Context;
 import android.util.SparseArray;
-import com.tencent.mm.protocal.c.bjr;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.boe;
-import com.tencent.mm.protocal.c.kq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bsm;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.bxz;
+import com.tencent.mm.protocal.protobuf.nc;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,139 +14,162 @@ import java.util.List;
 public final class f
   extends c
 {
-  List<bjr> idY = null;
-  private SparseArray<com.tencent.mm.plugin.brandservice.ui.base.a> idZ = new SparseArray();
-  private int iea;
+  List<bsm> jUM;
+  private SparseArray<com.tencent.mm.plugin.brandservice.ui.base.a> jUN;
+  private int jUO;
   
   public f(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(14032);
+    this.jUM = null;
+    this.jUN = new SparseArray();
     setReporter(new f.1(this));
+    AppMethodBeat.o(14032);
   }
   
-  public final void a(kq paramkq, boolean paramBoolean)
+  public final void a(nc paramnc, boolean paramBoolean)
   {
-    super.a(paramkq, paramBoolean);
-    if (this.iea == 0) {
-      this.iea = super.getCount();
+    AppMethodBeat.i(14034);
+    super.a(paramnc, paramBoolean);
+    if (this.jUO == 0) {
+      this.jUO = super.getCount();
     }
+    AppMethodBeat.o(14034);
   }
   
-  public final void axz()
+  public final void aWx()
   {
-    super.axz();
+    AppMethodBeat.i(14036);
+    super.aWx();
+    AppMethodBeat.o(14036);
   }
   
   public final int getCount()
   {
+    AppMethodBeat.i(14035);
     int i = super.getCount();
     int j = i;
     if (i == 0)
     {
       j = i;
-      if (this.idY != null)
+      if (this.jUM != null)
       {
-        Iterator localIterator = this.idY.iterator();
+        Iterator localIterator = this.jUM.iterator();
         if (localIterator.hasNext())
         {
-          bjr localbjr = (bjr)localIterator.next();
-          if ((localbjr == null) || (localbjr.tDw == null)) {
-            break label81;
+          bsm localbsm = (bsm)localIterator.next();
+          if ((localbsm == null) || (localbsm.xFX == null)) {
+            break label93;
           }
-          i += localbjr.tDw.size();
+          i += localbsm.xFX.size();
         }
       }
     }
-    label81:
+    label93:
     for (;;)
     {
       break;
       j = i;
+      AppMethodBeat.o(14035);
       return j;
     }
   }
   
-  public final void h(String paramString, List<kq> paramList)
+  public final void i(String paramString, List<nc> paramList)
   {
-    super.h(paramString, paramList);
-    this.iea = super.getCount();
+    AppMethodBeat.i(14033);
+    super.i(paramString, paramList);
+    this.jUO = super.getCount();
+    AppMethodBeat.o(14033);
   }
   
-  protected final Object[] ou(int paramInt)
+  public final Object[] sa(int paramInt)
   {
-    Object localObject2 = or(paramInt);
-    Object localObject1 = os(paramInt);
+    AppMethodBeat.i(14038);
+    Object localObject2 = rX(paramInt);
+    Object localObject1 = rY(paramInt);
     if (localObject2 != null)
     {
-      localObject2 = ((c.a)localObject2).icJ;
-      if (paramInt < this.iea)
+      localObject2 = ((c.a)localObject2).jTy;
+      if (paramInt < this.jUO)
       {
         paramInt = 39;
         if (localObject1 == null) {
-          break label71;
+          break label83;
         }
       }
-      label71:
-      for (localObject1 = ((kq)localObject1).sFF;; localObject1 = "")
+      label83:
+      for (localObject1 = ((nc)localObject1).wBZ;; localObject1 = "")
       {
+        AppMethodBeat.o(14038);
         return new Object[] { this, localObject2, Integer.valueOf(paramInt), localObject1 };
         paramInt = 56;
         break;
       }
     }
-    return super.ou(paramInt);
+    localObject1 = super.sa(paramInt);
+    AppMethodBeat.o(14038);
+    return localObject1;
   }
   
-  public final com.tencent.mm.ui.base.sortview.a ow(int paramInt)
+  public final com.tencent.mm.ui.base.sortview.a sc(int paramInt)
   {
+    AppMethodBeat.i(14037);
     int i = super.getCount();
-    if (i != 0) {
-      localObject1 = super.ow(paramInt);
+    if (i != 0)
+    {
+      localObject1 = super.sc(paramInt);
+      AppMethodBeat.o(14037);
+      return localObject1;
     }
-    Object localObject2;
-    do
+    Object localObject2 = (com.tencent.mm.plugin.brandservice.ui.base.a)this.jUN.get(paramInt);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      do
-      {
-        return localObject1;
-        localObject2 = (com.tencent.mm.plugin.brandservice.ui.base.a)this.idZ.get(paramInt);
-        localObject1 = localObject2;
-      } while (localObject2 != null);
       localObject1 = localObject2;
-    } while (this.idY.size() <= 0);
-    Object localObject1 = this.idY.iterator();
-    if (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (bjr)((Iterator)localObject1).next();
-      if (i == paramInt) {
-        if (((bjr)localObject2).tDu == null)
-        {
-          localObject1 = null;
-          label98:
-          boe localboe = (boe)((bjr)localObject2).tDw.get(0);
-          localObject2 = localObject1;
-          localObject1 = localboe;
+      if (this.jUM.size() > 0)
+      {
+        localObject1 = this.jUM.iterator();
+        if (!((Iterator)localObject1).hasNext()) {
+          break label229;
         }
+        localObject2 = (bsm)((Iterator)localObject1).next();
+        if (i != paramInt) {
+          break label180;
+        }
+        if (((bsm)localObject2).xFV != null) {
+          break label168;
+        }
+        localObject1 = null;
+        label110:
+        bxz localbxz = (bxz)((bsm)localObject2).xFX.get(0);
+        localObject2 = localObject1;
+        localObject1 = localbxz;
       }
     }
     for (;;)
     {
       localObject1 = new b(localObject1, (String)localObject2);
-      ((com.tencent.mm.plugin.brandservice.ui.base.a)localObject1).ox(paramInt);
+      ((com.tencent.mm.plugin.brandservice.ui.base.a)localObject1).sd(paramInt);
       ((com.tencent.mm.plugin.brandservice.ui.base.a)localObject1).setPosition(paramInt);
-      this.idZ.put(paramInt, localObject1);
+      this.jUN.put(paramInt, localObject1);
+      AppMethodBeat.o(14037);
       return localObject1;
-      localObject1 = ((bjr)localObject2).tDu.toString();
-      break label98;
-      if (paramInt < ((bjr)localObject2).tDw.size() + i)
+      label168:
+      localObject1 = ((bsm)localObject2).xFV.toString();
+      break label110;
+      label180:
+      if (paramInt < ((bsm)localObject2).xFX.size() + i)
       {
-        localObject1 = (boe)((bjr)localObject2).tDw.get(paramInt - i);
+        localObject1 = (bxz)((bsm)localObject2).xFX.get(paramInt - i);
         localObject2 = null;
       }
       else
       {
-        i = ((bjr)localObject2).tDw.size() + i;
+        i = ((bsm)localObject2).xFX.size() + i;
         break;
+        label229:
         localObject2 = null;
         localObject1 = null;
       }

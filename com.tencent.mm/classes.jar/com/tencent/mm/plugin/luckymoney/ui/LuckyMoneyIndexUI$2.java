@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class LuckyMoneyIndexUI$2
@@ -11,8 +12,10 @@ final class LuckyMoneyIndexUI$2
   
   public final void onClick(View paramView)
   {
-    h.nFQ.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
-    LuckyMoneyIndexUI.a(this.lVD, 0);
+    AppMethodBeat.i(42722);
+    h.qsU.e(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
+    LuckyMoneyIndexUI.a(this.otI, 0);
+    AppMethodBeat.o(42722);
   }
 }
 

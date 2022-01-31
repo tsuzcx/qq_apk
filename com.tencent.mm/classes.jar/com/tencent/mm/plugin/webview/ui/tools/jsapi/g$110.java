@@ -1,23 +1,21 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.plugin.webview.model.n;
 
 final class g$110
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  g$110(g paramg) {}
+  g$110(g paramg, n paramn) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      g.j(this.rzi, new i());
-      return;
-    }
-    catch (Exception localException)
-    {
-      y.i("MicroMsg.MsgHandler", "openCunstomWebview, close window exception : %s", new Object[] { localException.getMessage() });
-    }
+    AppMethodBeat.i(155029);
+    com.tencent.mm.kernel.g.Rc().a(this.vry);
+    AppMethodBeat.o(155029);
   }
 }
 

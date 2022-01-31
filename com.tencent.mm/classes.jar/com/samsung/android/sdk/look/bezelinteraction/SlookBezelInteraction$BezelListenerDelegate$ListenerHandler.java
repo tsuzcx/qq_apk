@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import com.samsung.android.bezelinteraction.BezelEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class SlookBezelInteraction$BezelListenerDelegate$ListenerHandler
   extends Handler
@@ -18,6 +19,7 @@ class SlookBezelInteraction$BezelListenerDelegate$ListenerHandler
   
   public void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(117212);
     if (this.mListener != null)
     {
       paramMessage = (BezelEvent)paramMessage.obj;
@@ -25,6 +27,7 @@ class SlookBezelInteraction$BezelListenerDelegate$ListenerHandler
         this.mListener.onItemSelected(paramMessage);
       }
     }
+    AppMethodBeat.o(117212);
   }
 }
 

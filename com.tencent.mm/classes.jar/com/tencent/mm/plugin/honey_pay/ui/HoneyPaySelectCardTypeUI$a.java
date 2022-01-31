@@ -3,49 +3,52 @@ package com.tencent.mm.plugin.honey_pay.ui;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.honey_pay.model.c;
-import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.c.aoi;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aua;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class HoneyPaySelectCardTypeUI$a
 {
-  public TextView lkD;
-  public CdnImageView lkt;
-  public CdnImageView lmr;
-  public TextView lms;
-  public TextView lmt;
-  public ImageView lmu;
+  public CdnImageView nHP;
+  public TextView nHZ;
+  public CdnImageView nJN;
+  public TextView nJO;
+  public TextView nJP;
+  public ImageView nJQ;
   
   private HoneyPaySelectCardTypeUI$a(HoneyPaySelectCardTypeUI paramHoneyPaySelectCardTypeUI) {}
   
-  final void a(View paramView, aoi paramaoi)
+  final void a(View paramView, aua paramaua)
   {
-    this.lmr = ((CdnImageView)paramView.findViewById(a.f.hpsc_avatar_iv));
-    this.lkD = ((TextView)paramView.findViewById(a.f.hpsc_card_type_tv));
-    this.lms = ((TextView)paramView.findViewById(a.f.hpsc_card_type_desc_tv));
-    this.lmu = ((ImageView)paramView.findViewById(a.f.hpsc_arrow_iv));
-    if (!bk.bl(paramaoi.bVO)) {
-      this.lmr.dl(paramaoi.bVO, c.R(paramaoi.ilo, paramaoi.tkb));
+    AppMethodBeat.i(41955);
+    this.nJN = ((CdnImageView)paramView.findViewById(2131825074));
+    this.nHZ = ((TextView)paramView.findViewById(2131825075));
+    this.nJO = ((TextView)paramView.findViewById(2131825076));
+    this.nJQ = ((ImageView)paramView.findViewById(2131825077));
+    if (!bo.isNullOrNil(paramaua.cDz)) {
+      this.nJN.eq(paramaua.cDz, c.Z(paramaua.iFL, paramaua.xiS));
     }
     for (;;)
     {
-      this.lkD.setText(paramaoi.imz);
-      this.lms.setText(paramaoi.ioU);
-      if (!paramaoi.tkb) {
+      this.nHZ.setText(paramaua.knv);
+      this.nJO.setText(paramaua.kqb);
+      if (!paramaua.xiS) {
         break;
       }
-      y.i("MicroMsg.HoneyPaySelectCardTypeUI", "disable this card");
+      ab.i("MicroMsg.HoneyPaySelectCardTypeUI", "disable this card");
       paramView.setEnabled(false);
-      this.lkD.setEnabled(false);
-      this.lms.setEnabled(false);
-      this.lmu.setVisibility(8);
+      this.nHZ.setEnabled(false);
+      this.nJO.setEnabled(false);
+      this.nJQ.setVisibility(8);
+      AppMethodBeat.o(41955);
       return;
-      this.lmr.setImageResource(c.R(paramaoi.ilo, paramaoi.tkb));
+      this.nJN.setImageResource(c.Z(paramaua.iFL, paramaua.xiS));
     }
-    paramView.setOnClickListener(new HoneyPaySelectCardTypeUI.a.2(this, paramaoi));
+    paramView.setOnClickListener(new HoneyPaySelectCardTypeUI.a.2(this, paramaua));
+    AppMethodBeat.o(41955);
   }
 }
 

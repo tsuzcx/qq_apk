@@ -2,21 +2,18 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.picker.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletCardElementUI$13
   implements View.OnClickListener
 {
-  WalletCardElementUI$13(WalletCardElementUI paramWalletCardElementUI, String[] paramArrayOfString) {}
+  WalletCardElementUI$13(WalletCardElementUI paramWalletCardElementUI) {}
   
   public final void onClick(View paramView)
   {
-    paramView = new b(this.qCj.mController.uMN, this.qCl);
-    paramView.wov = new WalletCardElementUI.13.1(this, paramView);
-    paramView.IC(WalletCardElementUI.i(this.qCj));
-    paramView.show();
+    AppMethodBeat.i(47228);
+    this.uoW.showDialog(1);
+    AppMethodBeat.o(47228);
   }
 }
 

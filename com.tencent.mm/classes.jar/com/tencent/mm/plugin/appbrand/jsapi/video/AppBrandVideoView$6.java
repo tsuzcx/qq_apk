@@ -1,13 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class AppBrandVideoView$6
-  implements c.e
+  implements d.e
 {
   AppBrandVideoView$6(AppBrandVideoView paramAppBrandVideoView) {}
   
-  public final void cLm()
+  public final void onVisibilityChanged(boolean paramBoolean)
   {
-    AppBrandVideoView.F(this.gDS);
+    AppMethodBeat.i(126447);
+    AppBrandVideoView.C(this.icX);
+    AppMethodBeat.o(126447);
   }
 }
 

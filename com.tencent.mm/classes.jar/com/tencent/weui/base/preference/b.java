@@ -7,11 +7,9 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.mm.ci.a.c;
-import com.tencent.mm.ci.a.e;
-import com.tencent.mm.ci.a.f;
-import com.tencent.mm.ci.a.g;
-import com.tencent.mm.ui.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ak;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,101 +19,122 @@ public final class b
   extends BaseAdapter
   implements a
 {
+  final c BCA;
+  boolean BCB;
+  Preference.OnPreferenceChangeListener BCC;
   private final Context context;
-  private final SharedPreferences dnD;
-  private final LinkedList<String> vdm = new LinkedList();
-  private final HashMap<String, Preference> vdn = new HashMap();
-  private final HashSet<String> vdo = new HashSet();
-  private final LinkedList<String> vdp = new LinkedList();
-  private final HashMap<String, Integer> vdq = new HashMap();
-  private final HashMap<String, String> vdr = new HashMap();
-  private int[] vds = new int[0];
-  boolean vdt = false;
-  private boolean vdu = false;
-  final c xfU;
-  Preference.OnPreferenceChangeListener xfV;
+  private final SharedPreferences sp;
+  private final LinkedList<String> zrJ;
+  private final HashMap<String, Preference> zrK;
+  private final HashSet<String> zrL;
+  private final LinkedList<String> zrM;
+  private final HashMap<String, Integer> zrN;
+  private final HashMap<String, String> zrO;
+  private int[] zrQ;
+  private boolean zrS;
   
   public b(Context paramContext, SharedPreferences paramSharedPreferences)
   {
-    this.xfU = new c(paramContext);
+    AppMethodBeat.i(113264);
+    this.zrJ = new LinkedList();
+    this.zrK = new HashMap();
+    this.zrL = new HashSet();
+    this.zrM = new LinkedList();
+    this.zrN = new HashMap();
+    this.zrO = new HashMap();
+    this.zrQ = new int[0];
+    this.BCB = false;
+    this.zrS = false;
+    this.BCA = new c(paramContext);
     this.context = paramContext;
-    this.dnD = paramSharedPreferences;
+    this.sp = paramSharedPreferences;
+    AppMethodBeat.o(113264);
   }
   
-  private static boolean GB(int paramInt)
+  private static boolean OU(int paramInt)
   {
-    return (paramInt == a.g.mm_preference) || (paramInt == a.g.mm_preference_summary_below) || (paramInt == a.g.mm_preference_summary_checkbox);
+    return (paramInt == 2130970179) || (paramInt == 2130970256) || (paramInt == 2130970259);
   }
   
   private void a(Preference paramPreference, int paramInt)
   {
-    if ((paramPreference.getKey() != null) && (paramPreference.getKey().length() > 0)) {}
-    for (String str = paramPreference.getKey();; str = "_anonymous_pref@" + paramPreference.hashCode())
-    {
-      this.vdn.put(str, paramPreference);
-      LinkedList localLinkedList = this.vdm;
-      int i = paramInt;
-      if (paramInt == -1) {
-        i = this.vdm.size();
-      }
-      localLinkedList.add(i, str);
-      if ((!this.vdq.containsKey(b(paramPreference))) && (!this.vdu)) {
-        this.vdq.put(b(paramPreference), Integer.valueOf(this.vdq.size()));
-      }
-      if (paramPreference.getDependency() != null) {
-        this.vdr.put(paramPreference.getDependency() + "|" + paramPreference.getKey(), paramPreference.getKey());
-      }
-      return;
+    AppMethodBeat.i(113269);
+    String str = c(paramPreference);
+    this.zrK.put(str, paramPreference);
+    LinkedList localLinkedList = this.zrJ;
+    int i = paramInt;
+    if (paramInt == -1) {
+      i = this.zrJ.size();
     }
+    localLinkedList.add(i, str);
+    if ((!this.zrN.containsKey(b(paramPreference))) && (!this.zrS)) {
+      this.zrN.put(b(paramPreference), Integer.valueOf(this.zrN.size()));
+    }
+    if (paramPreference.getDependency() != null) {
+      this.zrO.put(paramPreference.getDependency() + "|" + paramPreference.getKey(), paramPreference.getKey());
+    }
+    AppMethodBeat.o(113269);
   }
   
   private static void a(Preference paramPreference, SharedPreferences paramSharedPreferences)
   {
+    AppMethodBeat.i(113267);
     if ((paramPreference instanceof CheckBoxPreference))
     {
       CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)paramPreference;
       if (localCheckBoxPreference.isPersistent()) {
-        localCheckBoxPreference.rHo = paramSharedPreferences.getBoolean(paramPreference.getKey(), ((CheckBoxPreference)paramPreference).isChecked());
+        localCheckBoxPreference.vxW = paramSharedPreferences.getBoolean(paramPreference.getKey(), ((CheckBoxPreference)paramPreference).isChecked());
       }
     }
+    AppMethodBeat.o(113267);
   }
   
   private static String b(Preference paramPreference)
   {
-    return paramPreference.getClass().getName() + "L" + paramPreference.getLayoutResource() + "W" + paramPreference.getWidgetLayoutResource();
+    AppMethodBeat.i(113265);
+    paramPreference = paramPreference.getClass().getName() + "L" + paramPreference.getLayoutResource() + "W" + paramPreference.getWidgetLayoutResource();
+    AppMethodBeat.o(113265);
+    return paramPreference;
   }
   
-  private void cBy()
+  private static String c(Preference paramPreference)
   {
-    HashSet localHashSet = new HashSet();
-    int i = 0;
-    while (i < this.vdp.size())
+    AppMethodBeat.i(113266);
+    if ((paramPreference.getKey() != null) && (paramPreference.getKey().length() > 0))
     {
-      this.vdn.get(this.vdp.get(i));
-      if (i != 0) {
-        this.vdn.get(this.vdp.get(i - 1));
-      }
-      i += 1;
+      paramPreference = paramPreference.getKey();
+      AppMethodBeat.o(113266);
+      return paramPreference;
     }
-    this.vdp.removeAll(localHashSet);
+    paramPreference = "_anonymous_pref@" + paramPreference.hashCode();
+    AppMethodBeat.o(113266);
+    return paramPreference;
   }
   
   public final void a(Preference paramPreference)
   {
+    AppMethodBeat.i(113268);
     a(paramPreference, -1);
-    if (!this.vdt) {
+    if (!this.BCB) {
       notifyDataSetChanged();
     }
+    AppMethodBeat.o(113268);
   }
   
   public final int getCount()
   {
-    return this.vdp.size();
+    AppMethodBeat.i(113271);
+    int i = this.zrM.size();
+    AppMethodBeat.o(113271);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.vdn.get(this.vdp.get(paramInt));
+    AppMethodBeat.i(113272);
+    Object localObject = this.zrK.get(this.zrM.get(paramInt));
+    AppMethodBeat.o(113272);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -125,156 +144,192 @@ public final class b
   
   public final int getItemViewType(int paramInt)
   {
-    if (paramInt > this.vdp.size()) {
+    AppMethodBeat.i(113274);
+    if (paramInt > this.zrM.size())
+    {
+      AppMethodBeat.o(113274);
       return -1;
     }
-    Object localObject = (Preference)this.vdn.get(this.vdp.get(paramInt));
-    localObject = (Integer)this.vdq.get(b((Preference)localObject));
-    if (localObject == null) {
+    Object localObject = (Preference)this.zrK.get(this.zrM.get(paramInt));
+    localObject = (Integer)this.zrN.get(b((Preference)localObject));
+    if (localObject == null)
+    {
+      AppMethodBeat.o(113274);
       return -1;
     }
-    return ((Integer)localObject).intValue();
+    paramInt = ((Integer)localObject).intValue();
+    AppMethodBeat.o(113274);
+    return paramInt;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramInt > this.vdp.size()) {}
-    Object localObject;
-    int i6;
-    View localView;
-    do
+    AppMethodBeat.i(113275);
+    if (paramInt > this.zrM.size())
     {
+      AppMethodBeat.o(113275);
       return paramView;
-      localObject = (Preference)this.vdn.get(this.vdp.get(paramInt));
-      if ((localObject instanceof CheckBoxPreference)) {
-        ((Preference)localObject).setOnPreferenceChangeListener(this.xfV);
+    }
+    Object localObject = (Preference)this.zrK.get(this.zrM.get(paramInt));
+    if ((localObject instanceof CheckBoxPreference)) {
+      ((Preference)localObject).setOnPreferenceChangeListener(this.BCC);
+    }
+    if (!this.zrN.containsKey(b((Preference)localObject))) {
+      paramView = null;
+    }
+    paramView = ((Preference)localObject).getView(paramView, paramViewGroup);
+    int j = this.zrQ[paramInt];
+    paramViewGroup = paramView.findViewById(2131820946);
+    if (paramViewGroup == null)
+    {
+      ak.d("MicroMsg.WeUIPreferenceAdapter", "find content view error", new Object[0]);
+      AppMethodBeat.o(113275);
+      return paramView;
+    }
+    localObject = paramView.findViewById(16908312);
+    int i;
+    int k;
+    int m;
+    int n;
+    int i1;
+    int i2;
+    int i3;
+    int i4;
+    int i5;
+    if ((j & 0x4) == 0)
+    {
+      i = 0;
+      k = paramViewGroup.getPaddingLeft();
+      m = paramViewGroup.getPaddingRight();
+      n = paramViewGroup.getPaddingTop();
+      i1 = paramViewGroup.getPaddingBottom();
+      i2 = paramView.getPaddingLeft();
+      i3 = paramView.getPaddingRight();
+      i4 = paramView.getPaddingTop();
+      i5 = paramView.getPaddingBottom();
+      if ((j & 0x8) == 0) {
+        break label332;
       }
-      if (!this.vdq.containsKey(b((Preference)localObject))) {
-        paramView = null;
+      if ((paramInt != this.zrM.size() - 1) && ((paramInt != this.zrM.size() - 2) || (!(getItem(this.zrM.size() - 1) instanceof PreferenceCategory)))) {
+        break label311;
       }
-      paramViewGroup = ((Preference)localObject).getView(paramView, paramViewGroup);
-      i6 = this.vds[paramInt];
-      localObject = paramViewGroup.findViewById(a.f.content);
-      if (localObject == null)
-      {
-        ao.s("find content view error", new Object[0]);
-        return paramViewGroup;
-      }
-      localView = paramViewGroup.findViewById(16908312);
-      paramView = paramViewGroup;
-    } while ((i6 & 0x4) != 0);
-    int j = 0;
-    int k = ((View)localObject).getPaddingLeft();
-    int m = ((View)localObject).getPaddingRight();
-    int n = ((View)localObject).getPaddingTop();
-    int i1 = ((View)localObject).getPaddingBottom();
-    int i = a.e.settings_line;
-    int i2 = paramViewGroup.getPaddingLeft();
-    int i3 = paramViewGroup.getPaddingRight();
-    int i4 = paramViewGroup.getPaddingTop();
-    int i5 = paramViewGroup.getPaddingBottom();
-    if ((i6 & 0x8) != 0) {
-      if ((paramInt == this.vdp.size() - 1) || ((paramInt == this.vdp.size() - 2) && ((getItem(this.vdp.size() - 1) instanceof PreferenceCategory))))
-      {
-        paramInt = a.e.mm_trans;
-        j = a.c.white;
-        i = paramInt;
-        paramInt = j;
-      }
+      paramInt = 2130839676;
+      j = 2131690709;
+      i = paramInt;
+      paramInt = j;
     }
     for (;;)
     {
-      ((View)localObject).setBackgroundResource(i);
-      ((View)localObject).setPadding(k, n, m, i1);
-      if (localView != null) {
-        localView.setBackgroundResource(i);
+      paramViewGroup.setBackgroundResource(i);
+      paramViewGroup.setPadding(k, n, m, i1);
+      if (localObject != null) {
+        ((View)localObject).setBackgroundResource(i);
       }
-      paramViewGroup.setBackgroundResource(paramInt);
-      paramViewGroup.setPadding(i2, i4, i3, i5);
-      return paramViewGroup;
-      if ((i6 & 0x2) != 0)
+      paramView.setBackgroundResource(paramInt);
+      paramView.setPadding(i2, i4, i3, i5);
+      AppMethodBeat.o(113275);
+      return paramView;
+      label311:
+      if ((j & 0x2) != 0)
       {
-        paramInt = a.e.mm_trans;
+        paramInt = 2130839676;
         break;
       }
-      paramInt = a.e.list_item_normal;
+      paramInt = 2130839276;
       break;
-      if (((i6 & 0x10) != 0) || ((i6 & 0x2) == 0))
+      label332:
+      if (((j & 0x10) != 0) || ((j & 0x2) == 0))
       {
-        j = a.e.list_item_normal;
-        paramInt = i;
-        i = j;
+        i = 2130839276;
+        paramInt = 2130840247;
       }
       else
       {
-        paramInt = i;
-        i = j;
+        paramInt = 2130840247;
       }
     }
   }
   
   public final int getViewTypeCount()
   {
-    if (!this.vdu) {
-      this.vdu = true;
+    AppMethodBeat.i(113273);
+    if (!this.zrS) {
+      this.zrS = true;
     }
-    return Math.max(1, this.vdq.size());
+    int i = Math.max(1, this.zrN.size());
+    AppMethodBeat.o(113273);
+    return i;
   }
   
   public final void notifyDataSetChanged()
   {
-    int i = 0;
-    this.vdp.clear();
-    Object localObject = this.vdm.iterator();
+    int j = 0;
+    AppMethodBeat.i(113270);
+    this.zrM.clear();
+    Object localObject = this.zrJ.iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      if (!this.vdo.contains(str)) {
-        if (this.vdn.get(str) == null) {
-          ao.v("not found pref by key " + str, new Object[0]);
+      if (!this.zrL.contains(str)) {
+        if (this.zrK.get(str) == null) {
+          ak.e("MicroMsg.WeUIPreferenceAdapter", "not found pref by key ".concat(String.valueOf(str)), new Object[0]);
         } else {
-          this.vdp.add(str);
+          this.zrM.add(str);
         }
       }
     }
-    if ((!this.vdp.isEmpty()) && (GB(((Preference)this.vdn.get(this.vdp.get(0))).getLayoutResource()))) {
+    if ((!this.zrM.isEmpty()) && (OU(((Preference)this.zrK.get(this.zrM.get(0))).getLayoutResource()))) {
       a(new PreferenceSmallCategory(this.context), 0);
     }
-    cBy();
-    this.vds = new int[this.vdp.size()];
-    if (this.vds.length <= 0) {
+    localObject = new HashSet();
+    int i = 0;
+    while (i < this.zrM.size())
+    {
+      this.zrK.get(this.zrM.get(i));
+      if (i != 0) {
+        this.zrK.get(this.zrM.get(i - 1));
+      }
+      i += 1;
+    }
+    this.zrM.removeAll((Collection)localObject);
+    this.zrQ = new int[this.zrM.size()];
+    if (this.zrQ.length <= 0)
+    {
+      AppMethodBeat.o(113270);
       return;
     }
-    if (this.vds.length == 1)
+    i = j;
+    if (this.zrQ.length == 1)
     {
-      i = ((Preference)this.vdn.get(this.vdp.get(0))).getLayoutResource();
-      localObject = (Preference)this.vdn.get(this.vdp.get(0));
-      if (GB(i)) {
+      i = ((Preference)this.zrK.get(this.zrM.get(0))).getLayoutResource();
+      localObject = (Preference)this.zrK.get(this.zrM.get(0));
+      if (OU(i)) {
         if ((localObject instanceof CheckBoxPreference))
         {
-          localObject = this.vds;
+          localObject = this.zrQ;
           localObject[0] |= 0x8;
         }
       }
       for (;;)
       {
-        a((Preference)this.vdn.get(this.vdp.get(0)), this.dnD);
+        a((Preference)this.zrK.get(this.zrM.get(0)), this.sp);
         super.notifyDataSetChanged();
+        AppMethodBeat.o(113270);
         return;
-        this.vds[0] = 3;
+        this.zrQ[0] = 3;
         continue;
-        this.vds[0] = 4;
+        this.zrQ[0] = 4;
       }
     }
-    if (i < this.vdp.size())
+    if (i < this.zrM.size())
     {
-      a((Preference)this.vdn.get(this.vdp.get(i)), this.dnD);
-      localObject = (Preference)this.vdn.get(this.vdp.get(i));
-      int j = ((Preference)localObject).getLayoutResource();
-      if (GB(j)) {
+      a((Preference)this.zrK.get(this.zrM.get(i)), this.sp);
+      localObject = (Preference)this.zrK.get(this.zrM.get(i));
+      j = ((Preference)localObject).getLayoutResource();
+      if (OU(j)) {
         if ((localObject instanceof CheckBoxPreference))
         {
-          localObject = this.vds;
+          localObject = this.zrQ;
           localObject[i] |= 0x8;
         }
       }
@@ -284,37 +339,37 @@ public final class b
         break;
         if (i == 0)
         {
-          localObject = this.vds;
+          localObject = this.zrQ;
           localObject[i] |= 0x1;
         }
         else
         {
-          if (i == this.vdp.size() - 1)
+          if (i == this.zrM.size() - 1)
           {
-            localObject = this.vds;
+            localObject = this.zrQ;
             localObject[i] |= 0x2;
           }
-          j = ((Preference)this.vdn.get(this.vdp.get(i - 1))).getLayoutResource();
-          if ((j != a.g.mm_preference) || (j == a.g.mm_preference_summary_below) || (j == a.g.mm_preference_summary_checkbox))
+          j = ((Preference)this.zrK.get(this.zrM.get(i - 1))).getLayoutResource();
+          if ((j != 2130970179) || (j == 2130970256) || (j == 2130970259))
           {
-            localObject = this.vds;
+            localObject = this.zrQ;
             localObject[i] |= 0x1;
             continue;
-            if (j == a.g.mm_preference_info)
+            if (j == 2130970236)
             {
               if (i == 0)
               {
-                localObject = this.vds;
+                localObject = this.zrQ;
                 localObject[i] |= 0x4;
               }
               else
               {
-                localObject = this.vds;
+                localObject = this.zrQ;
                 localObject[i] |= 0x10;
-                j = ((Preference)this.vdn.get(this.vdp.get(i - 1))).getLayoutResource();
-                if ((j == a.g.mm_preference) || (j == a.g.mm_preference_summary_below) || (j == a.g.mm_preference_summary_checkbox))
+                j = ((Preference)this.zrK.get(this.zrM.get(i - 1))).getLayoutResource();
+                if ((j == 2130970179) || (j == 2130970256) || (j == 2130970259))
                 {
-                  localObject = this.vds;
+                  localObject = this.zrQ;
                   j = i - 1;
                   localObject[j] |= 0x2;
                 }
@@ -322,14 +377,14 @@ public final class b
             }
             else
             {
-              localObject = this.vds;
+              localObject = this.zrQ;
               localObject[i] |= 0x4;
               if (i != 0)
               {
-                j = ((Preference)this.vdn.get(this.vdp.get(i - 1))).getLayoutResource();
-                if ((GB(j)) || (j == a.g.mm_preference_info))
+                j = ((Preference)this.zrK.get(this.zrM.get(i - 1))).getLayoutResource();
+                if ((OU(j)) || (j == 2130970236))
                 {
-                  localObject = this.vds;
+                  localObject = this.zrQ;
                   j = i - 1;
                   localObject[j] |= 0x2;
                 }
@@ -340,11 +395,12 @@ public final class b
       }
     }
     super.notifyDataSetChanged();
+    AppMethodBeat.o(113270);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.weui.base.preference.b
  * JD-Core Version:    0.7.0.1
  */

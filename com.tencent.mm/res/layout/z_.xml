@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/iu"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="@dimen/z4" android:layout_height="@dimen/z4">
-                <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/bpp" android:layout_width="@dimen/z4" android:layout_height="@dimen/z4" android:layout_centerInParent="true" />
-                <ProgressBar android:gravity="center" android:id="@id/xj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-            </RelativeLayout>
-            <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <Button android:id="@id/bpq" android:layout_width="wrap_content" android:layout_marginTop="15.0dip" android:minWidth="200.0dip" android:text="@string/djz" android:maxLines="1" style="@style/oc" />
-                <Button android:id="@id/bpr" android:layout_width="wrap_content" android:layout_marginTop="25.0dip" android:minWidth="200.0dip" android:text="@string/cc" android:maxLines="1" style="@style/of" />
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/hx" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/im">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/zl" android:contentDescription="@string/gd" style="@style/ik" />
+                    <ImageView android:layout_gravity="center" android:id="@id/zm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/afu" android:contentDescription="@string/gd" />
+                </FrameLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs">
+                    <TextView android:id="@id/bb" android:text="{title}" style="@style/ir" />
+                    <TextView android:id="@id/av" android:visibility="gone" android:layout_marginTop="@dimen/i2" android:text="{desc}" style="@style/io" />
+                    <TextView android:id="@id/b8" android:visibility="gone" android:layout_marginTop="@dimen/i2" android:text="{source}" style="@style/io" />
+                </LinearLayout>
             </LinearLayout>
+            <include layout="@layout/zd" />
+            <include layout="@layout/zc" />
         </LinearLayout>
-    </RelativeLayout>
-    <View android:background="@color/wl" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="20.0dip" />
-    <RelativeLayout android:id="@id/b_u" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_marginLeft="20.0dip" android:layout_alignParentBottom="true">
-        <TextView android:textSize="@dimen/lj" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b5m" android:layout_centerVertical="true" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
-            <TextView android:textSize="@dimen/lj" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/bps" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:maxWidth="150.0dip" android:text="{emoji_from_title_tv}" android:lines="1" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/bpt" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginRight="10.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+        <include layout="@layout/zb" />
+    </LinearLayout>
+</FrameLayout>

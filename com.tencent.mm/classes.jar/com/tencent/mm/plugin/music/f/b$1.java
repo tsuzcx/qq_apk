@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.music.f;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$1
   implements MediaPlayer.OnCompletionListener
@@ -11,8 +12,10 @@ final class b$1
   
   public final void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    y.e("MicroMsg.Music.MMMediaPlayer", "onCompletion, stop music");
-    this.mAy.hT(true);
+    AppMethodBeat.i(137548);
+    ab.e("MicroMsg.Music.MMMediaPlayer", "onCompletion, stop music");
+    this.paE.jQ(true);
+    AppMethodBeat.o(137548);
   }
 }
 

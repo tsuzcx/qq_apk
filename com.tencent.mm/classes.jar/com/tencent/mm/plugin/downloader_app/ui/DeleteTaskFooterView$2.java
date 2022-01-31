@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.downloader_app.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.mm.plugin.downloader_app.b.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DeleteTaskFooterView$2
   implements View.OnClickListener
@@ -12,20 +12,22 @@ final class DeleteTaskFooterView$2
   
   public final void onClick(View paramView)
   {
-    if (DeleteTaskFooterView.a(this.iTk))
+    AppMethodBeat.i(136216);
+    if (DeleteTaskFooterView.a(this.lbZ))
     {
-      DeleteTaskFooterView.a(this.iTk, false);
-      DeleteTaskFooterView.b(this.iTk).setImageResource(b.d.check_box_unselected);
+      DeleteTaskFooterView.a(this.lbZ, false);
+      DeleteTaskFooterView.b(this.lbZ).setImageResource(2130838379);
     }
     for (;;)
     {
-      if (DeleteTaskFooterView.c(this.iTk)) {
-        DeleteTaskFooterView.eW(DeleteTaskFooterView.a(this.iTk));
+      if (DeleteTaskFooterView.c(this.lbZ)) {
+        DeleteTaskFooterView.gz(DeleteTaskFooterView.a(this.lbZ));
       }
-      DeleteTaskFooterView.d(this.iTk);
+      DeleteTaskFooterView.d(this.lbZ);
+      AppMethodBeat.o(136216);
       return;
-      DeleteTaskFooterView.a(this.iTk, true);
-      DeleteTaskFooterView.b(this.iTk).setImageResource(b.d.check_box_selected);
+      DeleteTaskFooterView.a(this.lbZ, true);
+      DeleteTaskFooterView.b(this.lbZ).setImageResource(2130838378);
     }
   }
 }

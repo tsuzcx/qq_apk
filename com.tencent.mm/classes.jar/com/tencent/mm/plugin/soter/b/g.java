@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.soter.b;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.m.b;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.m.b;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.soter.a.f.b;
 import com.tencent.soter.a.f.e.b;
 
@@ -14,61 +15,71 @@ public final class g
   extends m
   implements k, com.tencent.soter.a.f.e
 {
-  private f dmL;
-  private q edR;
-  private b<e.b> klO = null;
-  
-  protected final int Ka()
-  {
-    return 3;
-  }
-  
-  public final int a(com.tencent.mm.network.e parame, f paramf)
-  {
-    this.dmL = paramf;
-    return a(parame, this.edR, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneUploadSoterASKRsa", "alvinluo errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      y.i("MicroMsg.NetSceneUploadSoterASKRsa", "netscene upload soter ask rsa successfully");
-      if (this.klO != null) {
-        this.klO.cr(new e.b(true));
-      }
-    }
-    do
-    {
-      return;
-      y.e("MicroMsg.NetSceneUploadSoterASKRsa", "netscene upload soter ask rsa failed");
-    } while (this.klO == null);
-    this.klO.cr(new e.b(false));
-  }
+  private f callback;
+  private q ftU;
+  private b<e.b> mGF = null;
   
   public final void a(b<e.b> paramb)
   {
-    this.klO = paramb;
+    this.mGF = paramb;
   }
   
-  protected final m.b b(q paramq)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    return m.b.edr;
+    AppMethodBeat.i(59314);
+    this.callback = paramf;
+    int i = dispatch(parame, this.ftU, this);
+    AppMethodBeat.o(59314);
+    return i;
   }
   
   public final void execute()
   {
-    y.v("MicroMsg.NetSceneUploadSoterASKRsa", "alvinluo NetSceneUploadSoterASKRsa doScene");
-    com.tencent.mm.kernel.g.Dk().a(this, 0);
+    AppMethodBeat.i(59316);
+    ab.v("MicroMsg.NetSceneUploadSoterASKRsa", "alvinluo NetSceneUploadSoterASKRsa doScene");
+    com.tencent.mm.kernel.g.Rc().a(this, 0);
+    AppMethodBeat.o(59316);
   }
   
   public final int getType()
   {
     return 627;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(59315);
+    ab.i("MicroMsg.NetSceneUploadSoterASKRsa", "alvinluo errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      ab.i("MicroMsg.NetSceneUploadSoterASKRsa", "netscene upload soter ask rsa successfully");
+      if (this.mGF != null)
+      {
+        this.mGF.cW(new e.b(true));
+        AppMethodBeat.o(59315);
+      }
+    }
+    else
+    {
+      ab.e("MicroMsg.NetSceneUploadSoterASKRsa", "netscene upload soter ask rsa failed");
+      if (this.mGF != null) {
+        this.mGF.cW(new e.b(false));
+      }
+    }
+    AppMethodBeat.o(59315);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 3;
+  }
+  
+  public final m.b securityVerificationChecked(q paramq)
+  {
+    return m.b.ftu;
   }
 }
 

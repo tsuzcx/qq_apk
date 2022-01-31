@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ComposeUI$23
   implements View.OnFocusChangeListener
@@ -12,9 +13,11 @@ final class ComposeUI$23
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
+    AppMethodBeat.i(68206);
     if (paramBoolean) {
-      ComposeUI.j(this.ngJ).setSelection(ComposeUI.j(this.ngJ).getText().length());
+      ComposeUI.j(this.pLX).setSelection(ComposeUI.j(this.pLX).getText().length());
     }
+    AppMethodBeat.o(68206);
   }
 }
 

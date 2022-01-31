@@ -1,17 +1,24 @@
 package com.tencent.mm.m;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.zero.b.a;
 
 public final class g
 {
-  public static e AA()
+  public static e Nq()
   {
-    return ((a)com.tencent.mm.kernel.g.r(a.class)).AA();
+    AppMethodBeat.i(114642);
+    e locale = ((a)com.tencent.mm.kernel.g.E(a.class)).Nq();
+    AppMethodBeat.o(114642);
+    return locale;
   }
   
-  public static c AB()
+  public static c Nr()
   {
-    return ((a)com.tencent.mm.kernel.g.r(a.class)).AB();
+    AppMethodBeat.i(114643);
+    c localc = ((a)com.tencent.mm.kernel.g.E(a.class)).Nr();
+    AppMethodBeat.o(114643);
+    return localc;
   }
 }
 

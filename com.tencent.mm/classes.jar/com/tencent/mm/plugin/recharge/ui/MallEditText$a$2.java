@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.recharge.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recharge.a.a;
 import java.util.LinkedList;
 
@@ -12,10 +13,12 @@ final class MallEditText$a$2
   
   public final void onClick(View paramView)
   {
-    a.bva().ce(null);
-    this.nqq.nqk.setInput(null);
-    MallEditText.d(this.nqq.nqk).ce(new LinkedList());
-    MallEditText.d(this.nqq.nqk).notifyDataSetChanged();
+    AppMethodBeat.i(44212);
+    a.cfm().cH(null);
+    this.pVE.pVy.setInput(null);
+    MallEditText.d(this.pVE.pVy).cH(new LinkedList());
+    MallEditText.d(this.pVE.pVy).notifyDataSetChanged();
+    AppMethodBeat.o(44212);
   }
 }
 

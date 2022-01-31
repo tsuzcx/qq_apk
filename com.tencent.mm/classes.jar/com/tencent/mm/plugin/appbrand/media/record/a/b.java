@@ -1,97 +1,57 @@
 package com.tencent.mm.plugin.appbrand.media.record.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.media.record.h;
+import com.tencent.mm.sdk.platformtools.ab;
 
-public class b
-  implements c
+public abstract class b
 {
-  String gOt = "audio/mp4a-latm";
-  String gOu = "audio/mpeg";
-  c.a gOv = null;
-  int gOw = 0;
-  int gOx = 0;
-  byte[] gOy;
-  int gOz = 0;
-  
-  public final void a(c.a parama)
+  private static b iqe = new b()
   {
-    this.gOv = parama;
-  }
-  
-  public boolean a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
-  {
-    return false;
-  }
-  
-  public void close() {}
-  
-  public final void d(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
-  {
-    if (this.gOv == null) {
-      y.e("MicroMsg.Record.AudioEncoder", "mEncodeListener is null, return");
-    }
-    for (;;)
+    public final d DG(String paramAnonymousString)
     {
-      return;
-      if (this.gOx == 0.0D)
+      AppMethodBeat.i(140657);
+      ab.i("MicroMsg.Record.AudioEncodeFactory", "createEncodeByType:%s", new Object[] { paramAnonymousString });
+      if (!h.DD(paramAnonymousString))
       {
-        y.e("MicroMsg.Record.AudioEncoder", "no frameSize, return");
-        return;
+        AppMethodBeat.o(140657);
+        return null;
       }
-      if (paramInt > this.gOx) {
-        y.w("MicroMsg.Record.AudioEncoder", "buffSize:%d frameSize:%d, buffSize > frameSize ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.gOx) });
-      }
-      y.d("MicroMsg.Record.AudioEncoder", "bufferedSize:%d, buffSize:%d", new Object[] { Integer.valueOf(this.gOz), Integer.valueOf(paramInt) });
-      int i = this.gOz + paramInt;
-      if ((i >= this.gOx) && (paramArrayOfByte != null))
+      if ("aac".equalsIgnoreCase(paramAnonymousString))
       {
-        y.d("MicroMsg.Record.AudioEncoder", "flush all, currentBufferedSize:%d", new Object[] { Integer.valueOf(i) });
-        if (i > this.gOy.length)
-        {
-          y.i("MicroMsg.Record.AudioEncoder", "expand the end codeBuffer:%d", new Object[] { Integer.valueOf(i) });
-          byte[] arrayOfByte = this.gOy;
-          this.gOy = new byte[i];
-          System.arraycopy(arrayOfByte, 0, this.gOy, 0, this.gOz);
-        }
-        System.arraycopy(paramArrayOfByte, 0, this.gOy, this.gOz, paramInt);
-        this.gOv.c(this.gOy, i, false);
-        this.gOz = 0;
+        paramAnonymousString = new a();
+        AppMethodBeat.o(140657);
+        return paramAnonymousString;
       }
-      while (paramBoolean)
+      if ("mp3".equalsIgnoreCase(paramAnonymousString))
       {
-        y.i("MicroMsg.Record.AudioEncoder", "isEnd is true, flush the buffer, bufferedSize:%d", new Object[] { Integer.valueOf(this.gOz) });
-        this.gOv.c(this.gOy, this.gOz, paramBoolean);
-        this.gOz = 0;
-        return;
-        if (paramArrayOfByte != null)
-        {
-          System.arraycopy(paramArrayOfByte, 0, this.gOy, this.gOz, paramInt);
-          this.gOz = i;
-          y.d("MicroMsg.Record.AudioEncoder", "append buff, currentBufferedSize:%d", new Object[] { Integer.valueOf(this.gOz) });
-        }
+        paramAnonymousString = new e();
+        AppMethodBeat.o(140657);
+        return paramAnonymousString;
       }
+      if ("wav".equalsIgnoreCase(paramAnonymousString))
+      {
+        paramAnonymousString = new g();
+        AppMethodBeat.o(140657);
+        return paramAnonymousString;
+      }
+      if ("pcm".equalsIgnoreCase(paramAnonymousString))
+      {
+        paramAnonymousString = new f();
+        AppMethodBeat.o(140657);
+        return paramAnonymousString;
+      }
+      AppMethodBeat.o(140657);
+      return null;
     }
-  }
+  };
   
-  public boolean f(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public static d DH(String paramString)
   {
-    return false;
+    return iqe.DG(paramString);
   }
   
-  public void flush() {}
-  
-  public final void lV(int paramInt)
-  {
-    y.i("MicroMsg.Record.AudioEncoder", "mMinBufferSize:%d", new Object[] { Integer.valueOf(this.gOw) });
-    this.gOw = paramInt;
-  }
-  
-  public final void p(double paramDouble)
-  {
-    this.gOx = ((int)(1024.0D * paramDouble));
-    y.i("MicroMsg.Record.AudioEncoder", "setEncodeBuffFrameSize frameKbSize:%b frameByteSize:%d", new Object[] { Double.valueOf(paramDouble), Integer.valueOf(this.gOx) });
-    this.gOy = new byte[this.gOx];
-  }
+  public abstract d DG(String paramString);
 }
 
 

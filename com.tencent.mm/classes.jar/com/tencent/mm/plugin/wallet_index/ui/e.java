@@ -2,30 +2,32 @@ package com.tencent.mm.plugin.wallet_index.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.channel.MMessageActV2;
 import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.modelpay.PayReq.Options;
 import com.tencent.mm.opensdk.modelpay.PayResp;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class e
 {
   public static boolean a(Context paramContext, String paramString, PayResp paramPayResp, PayReq.Options paramOptions)
   {
-    y.d("MicroMsg.PayCallbackHelper", "callback, packageName = " + paramString);
+    AppMethodBeat.i(135771);
+    ab.d("MicroMsg.PayCallbackHelper", "callback, packageName = ".concat(String.valueOf(paramString)));
     String str;
-    if ((paramOptions == null) || (bk.bl(paramOptions.callbackClassName)))
+    if ((paramOptions == null) || (bo.isNullOrNil(paramOptions.callbackClassName)))
     {
       str = paramString + ".wxapi.WXPayEntryActivity";
       if ((paramOptions != null) && (paramOptions.callbackFlags != -1)) {
-        break label186;
+        break label193;
       }
     }
-    label186:
+    label193:
     for (int i = 268435456;; i = paramOptions.callbackFlags)
     {
-      y.d("MicroMsg.PayCallbackHelper", "callback, cbPkg = " + paramString + ", cbCls = " + str + ", cbFlags(hex) = " + Integer.toHexString(i));
+      ab.d("MicroMsg.PayCallbackHelper", "callback, cbPkg = " + paramString + ", cbCls = " + str + ", cbFlags(hex) = " + Integer.toHexString(i));
       paramOptions = new Bundle();
       paramOptions.putString("wx_token_key", "com.tencent.mm.openapi.token");
       if (paramPayResp != null) {
@@ -36,7 +38,9 @@ public final class e
       paramPayResp.targetClassName = str;
       paramPayResp.bundle = paramOptions;
       paramPayResp.flags = i;
-      return MMessageActV2.send(paramContext, paramPayResp);
+      boolean bool = MMessageActV2.send(paramContext, paramPayResp);
+      AppMethodBeat.o(135771);
+      return bool;
       str = paramOptions.callbackClassName;
       break;
     }
@@ -44,7 +48,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.ui.e
  * JD-Core Version:    0.7.0.1
  */

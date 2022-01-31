@@ -4,36 +4,37 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mm.plugin.sight.decode.a.a;
-import com.tencent.mm.protocal.c.bxk;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 public final class aj
 {
-  public String bJQ;
-  public ImageView oGT;
-  public TextView oGU;
-  public bxk oTF;
-  public View oTG;
-  public View oTH;
-  public MMPinProgressBtn oTI;
-  public TextView oTJ;
-  public boolean oTK = false;
-  public int oTL = 0;
-  public a ogP;
-  public boolean omL = false;
+  public String crk;
   public int position;
+  public a qVe;
+  public TimeLineObject rLC;
+  public View rLD;
+  public View rLE;
+  public MMPinProgressBtn rLF;
+  public TextView rLG;
+  public int rLH = 2;
+  public boolean rLI = false;
+  public int rLJ = 0;
+  public boolean raZ = false;
+  public ImageView rwJ;
+  public TextView rwK;
   
-  public final void a(bxk parambxk, int paramInt, String paramString, boolean paramBoolean)
+  public final void a(TimeLineObject paramTimeLineObject, int paramInt, String paramString, boolean paramBoolean)
   {
-    this.oTF = parambxk;
+    this.rLC = paramTimeLineObject;
     this.position = paramInt;
-    this.bJQ = paramString;
-    this.omL = paramBoolean;
+    this.crk = paramString;
+    this.raZ = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.aj
  * JD-Core Version:    0.7.0.1
  */

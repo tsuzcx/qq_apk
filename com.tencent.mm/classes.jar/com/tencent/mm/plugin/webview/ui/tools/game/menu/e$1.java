@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.game.menu;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$1
   implements View.OnClickListener
@@ -10,9 +11,11 @@ final class e$1
   
   public final void onClick(View paramView)
   {
-    if (this.rxl.isShowing()) {
-      this.rxl.cancel();
+    AppMethodBeat.i(8835);
+    if (this.voe.isShowing()) {
+      this.voe.cancel();
     }
+    AppMethodBeat.o(8835);
   }
 }
 

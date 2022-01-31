@@ -1,49 +1,50 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
-import android.app.Activity;
-import android.util.Base64;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.c.bxp;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.io.IOException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.t;
+import com.tencent.mm.protocal.protobuf.ckd;
+import com.tencent.mm.protocal.protobuf.cke;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 final class BizTimeLineHotView$4
-  implements w.a
+  implements Runnable
 {
-  BizTimeLineHotView$4(BizTimeLineHotView paramBizTimeLineHotView) {}
+  BizTimeLineHotView$4(BizTimeLineHotView paramBizTimeLineHotView, ckd paramckd) {}
   
-  public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
+  public final void run()
   {
-    y.i("MicroMsg.BizTimeLineHotList", "timeline_often_read_biz CGI return, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if ((paramInt1 != 0) || (paramInt2 != 0)) {}
-    do
+    boolean bool = false;
+    AppMethodBeat.i(14310);
+    BizTimeLineHotView.a(this.jZn, new ArrayList());
+    Object localObject = this.jZq.xUg.iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
     {
-      return 0;
-      paramString = (bxp)paramb.ecF.ecN;
-    } while (((BizTimeLineHotView.d(this.ihA) instanceof Activity)) && (((Activity)BizTimeLineHotView.d(this.ihA)).isFinishing()));
-    d.ihH = paramString;
-    try
-    {
-      paramb = Base64.encodeToString(paramString.toByteArray(), 0);
-      g.DP().Dz().c(ac.a.uzr, paramb);
-      BizTimeLineHotView.a(this.ihA, paramString);
-      return 0;
-    }
-    catch (IOException paramb)
-    {
-      for (;;)
+      cke localcke = (cke)((Iterator)localObject).next();
+      int j = i + 1;
+      if (j > 12) {
+        break;
+      }
+      b localb = new b();
+      i = j;
+      if (t.nT(localcke.wqR))
       {
-        y.e("MicroMsg.BizTimeLineOftenReadHelper", "resetOftenRead exp: %s", new Object[] { paramb.getMessage() });
-        g.DP().Dz().c(ac.a.uzr, "");
+        localb.wqR = localcke.wqR;
+        BizTimeLineHotView.a(this.jZn).add(localb);
+        i = j;
       }
     }
+    this.jZn.aXa();
+    localObject = this.jZn;
+    if (this.jZq.xUi == 1) {
+      bool = true;
+    }
+    BizTimeLineHotView.a((BizTimeLineHotView)localObject, bool);
+    BizTimeLineHotView.b(this.jZn);
+    AppMethodBeat.o(14310);
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui.previewimageview;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DynamicGridView$3
   extends AnimatorListenerAdapter
@@ -11,7 +12,9 @@ final class DynamicGridView$3
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.hdG.setLayerType(0, null);
+    AppMethodBeat.i(40346);
+    this.bTJ.setLayerType(0, null);
+    AppMethodBeat.o(40346);
   }
 }
 

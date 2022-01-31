@@ -1,17 +1,30 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.plugin.appbrand.ui.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Deque;
 
 final class i$10
   implements Runnable
 {
-  i$10(i parami, int paramInt) {}
+  i$10(i parami) {}
   
   public final void run()
   {
-    if (this.fyM.fyr != null) {
-      this.fyM.fyr.setProgress(this.fyT);
+    AppMethodBeat.i(86662);
+    if (this.gPY.mFinished)
+    {
+      AppMethodBeat.o(86662);
+      return;
     }
+    i.d(this.gPY);
+    this.gPY.mInitialized = true;
+    i locali = this.gPY;
+    while (!locali.gPX.isEmpty()) {
+      locali.k((Runnable)locali.gPX.removeFirst(), 0L);
+    }
+    locali = this.gPY;
+    locali.gPx.removeCallbacks(locali.gPW);
+    AppMethodBeat.o(86662);
   }
 }
 

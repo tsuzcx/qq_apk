@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.remittance.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -16,23 +17,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.h.a.ft;
+import com.tencent.mm.g.a.fw;
+import com.tencent.mm.g.a.oi;
+import com.tencent.mm.g.a.oi.a;
 import com.tencent.mm.platformtools.x.a;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.h;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.wallet_core.utils.c;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.protocal.c.wv;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.protocal.protobuf.aba;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.wallet_core.c.p;
+import com.tencent.mm.wallet_core.c.p.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
-import com.tencent.mm.wallet_core.ui.e;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,126 +39,165 @@ import java.util.List;
 public class RemittanceF2fDynamicCodeUI
   extends WalletBaseUI
 {
-  private static int nDN = 60000;
-  private int amount;
-  private String bMS;
-  private String iLB;
-  private x.a iLK = new RemittanceF2fDynamicCodeUI.1(this);
-  private String mPw;
-  private Button nBL;
-  private String nDA;
-  private String nDB;
-  private List<wv> nDC = new ArrayList();
-  private boolean nDD = false;
-  private TextView nDE;
-  private TextView nDF;
-  private LinearLayout nDG;
-  private ImageView nDH;
-  private LinearLayout nDI;
-  private WalletTextView nDJ;
-  private boolean nDK = false;
-  private long nDL = 0L;
-  private long nDM = 0L;
-  private am nDO = new am(new RemittanceF2fDynamicCodeUI.a(this, (byte)0), true);
-  private PayInfo nDu;
-  private String nDv;
-  private String nDw;
-  private String nDx;
-  private String nDy;
-  private String nDz;
+  private static int qqG = 60000;
+  private String cum;
+  private int kRS;
+  private String kSi;
+  private x.a kSu;
+  private PayInfo mPayInfo;
   private String nickname;
-  private String nyX;
+  private int okH;
+  private String ppM;
+  private String qjX;
+  private ImageView qqA;
+  private LinearLayout qqB;
+  private WalletTextView qqC;
+  private boolean qqD;
+  private long qqE;
+  private long qqF;
+  private ap qqH;
+  private String qqn;
+  private String qqo;
+  private String qqp;
+  private String qqq;
+  private String qqr;
+  private String qqs;
+  private String qqt;
+  private List<aba> qqu;
+  private boolean qqv;
+  private TextView qqw;
+  private TextView qqx;
+  private Button qqy;
+  private LinearLayout qqz;
   private String username;
   
-  private boolean bwI()
+  public RemittanceF2fDynamicCodeUI()
   {
-    return getIntent().getBooleanExtra("from_patch_ui", false);
+    AppMethodBeat.i(45059);
+    this.qqu = new ArrayList();
+    this.qqv = false;
+    this.qqD = false;
+    this.qqE = 0L;
+    this.qqF = 0L;
+    this.qqH = new ap(new RemittanceF2fDynamicCodeUI.a(this, (byte)0), true);
+    this.kSu = new RemittanceF2fDynamicCodeUI.1(this);
+    AppMethodBeat.o(45059);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  private boolean chz()
   {
-    if ((bwI()) && ((paramm instanceof com.tencent.mm.plugin.remittance.model.m)))
+    AppMethodBeat.i(45067);
+    boolean bool = getIntent().getBooleanExtra("from_patch_ui", false);
+    AppMethodBeat.o(45067);
+    return bool;
+  }
+  
+  public int getLayoutId()
+  {
+    return 2130970572;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(45061);
+    if (chz())
     {
-      this.nDK = false;
-      paramString = (com.tencent.mm.plugin.remittance.model.m)paramm;
-      vN(0);
-      paramString.a(new RemittanceF2fDynamicCodeUI.2(this, paramString)).b(new n.a()
-      {
-        public final void f(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ah.m paramAnonymousm) {}
-      }).c(new RemittanceF2fDynamicCodeUI.9(this));
-    }
-    return true;
-  }
-  
-  protected final int getLayoutId()
-  {
-    return a.g.remittance_f2f_dynamic_code_ui;
-  }
-  
-  protected final void initView()
-  {
-    if (bwI())
-    {
-      this.nDE = ((TextView)findViewById(a.f.rfdc_supervision_tv));
-      this.nDF = ((TextView)findViewById(a.f.rfdc_spam_tv));
-      this.nBL = ((Button)findViewById(a.f.rfdc_pay_btn));
-      this.nDH = ((ImageView)findViewById(a.f.rfdc_code_iv));
-      this.nDG = ((LinearLayout)findViewById(a.f.rfdc_items_layout));
-      this.nDI = ((LinearLayout)findViewById(a.f.spam_ll));
-      this.nDJ = ((WalletTextView)findViewById(a.f.pay_fee_tv));
-      this.nDJ.setText(getString(a.i.remittance_scan_qrcode_amount, new Object[] { e.B(this.amount / 100.0D) }));
-      this.nBL.setOnClickListener(new RemittanceF2fDynamicCodeUI.4(this));
-      this.nDH.setOnLongClickListener(new View.OnLongClickListener()
+      this.qqw = ((TextView)findViewById(2131827290));
+      this.qqx = ((TextView)findViewById(2131827295));
+      this.qqy = ((Button)findViewById(2131827296));
+      this.qqA = ((ImageView)findViewById(2131827292));
+      this.qqz = ((LinearLayout)findViewById(2131827293));
+      this.qqB = ((LinearLayout)findViewById(2131827294));
+      this.qqC = ((WalletTextView)findViewById(2131827291));
+      this.qqC.setText(getString(2131302622, new Object[] { com.tencent.mm.wallet_core.ui.e.F(this.okH / 100.0D) }));
+      this.qqy.setOnClickListener(new RemittanceF2fDynamicCodeUI.4(this));
+      this.qqA.setOnLongClickListener(new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
         {
+          AppMethodBeat.i(45055);
           RemittanceF2fDynamicCodeUI.d(RemittanceF2fDynamicCodeUI.this);
+          AppMethodBeat.o(45055);
           return false;
         }
       });
     }
+    AppMethodBeat.o(45061);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    boolean bool = true;
+    AppMethodBeat.i(45065);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (bwI())
+    if (chz())
     {
-      y.i("MicroMsg.RemittanceF2fDynamicCodeUI", "onActivityResult requestCode:%s resultCode:%s %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramIntent });
+      ab.i("MicroMsg.RemittanceF2fDynamicCodeUI", "onActivityResult requestCode:%s resultCode:%s %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramIntent });
       if (paramInt1 == 1)
       {
-        if (paramInt2 != -1) {
-          break label66;
+        oi localoi = new oi();
+        oi.a locala = localoi.cET;
+        if (paramInt2 == -1)
+        {
+          locala.cqS = bool;
+          if (paramIntent == null) {
+            break label143;
+          }
         }
-        setResult(-1, paramIntent);
-        finish();
+        label143:
+        for (localoi.cET.cEU = paramIntent.getIntExtra("key_pay_reslut_type", 3);; localoi.cET.cEU = 3)
+        {
+          com.tencent.mm.sdk.b.a.ymk.l(localoi);
+          if (paramInt2 != -1) {
+            break label155;
+          }
+          setResult(-1, paramIntent);
+          finish();
+          AppMethodBeat.o(45065);
+          return;
+          bool = false;
+          break;
+        }
+        label155:
+        if (c.av(paramIntent))
+        {
+          setResult(0, paramIntent);
+          finish();
+          AppMethodBeat.o(45065);
+          return;
+        }
+        if (c.aw(paramIntent))
+        {
+          AppMethodBeat.o(45065);
+          return;
+        }
+        paramIntent = new fw();
+        paramIntent.cuj.cuk = false;
+        com.tencent.mm.sdk.b.a.ymk.l(paramIntent);
       }
     }
-    return;
-    label66:
-    paramIntent = new ft();
-    paramIntent.bMP.bMQ = false;
-    com.tencent.mm.sdk.b.a.udP.m(paramIntent);
+    AppMethodBeat.o(45065);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(45060);
     super.onCreate(paramBundle);
-    if (bwI())
+    if (chz())
     {
       if (getSupportActionBar() != null)
       {
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(a.c.remittance_busi_common_bg)));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131690396)));
         paramBundle = getSupportActionBar().getCustomView();
         if (paramBundle != null)
         {
-          View localView = paramBundle.findViewById(a.f.divider);
+          View localView = paramBundle.findViewById(2131821148);
           if (localView != null) {
-            localView.setBackgroundColor(getResources().getColor(a.c.half_alpha_white));
+            localView.setBackgroundColor(getResources().getColor(2131690161));
           }
           paramBundle = paramBundle.findViewById(16908308);
           if ((paramBundle != null) && ((paramBundle instanceof TextView))) {
-            ((TextView)paramBundle).setTextColor(getResources().getColor(a.c.black));
+            ((TextView)paramBundle).setTextColor(getResources().getColor(2131689763));
           }
         }
       }
@@ -167,12 +205,12 @@ public class RemittanceF2fDynamicCodeUI
       {
         paramBundle = getWindow();
         paramBundle.addFlags(-2147483648);
-        paramBundle.setStatusBarColor(getResources().getColor(a.c.remittance_busi_common_bg));
+        paramBundle.setStatusBarColor(getResources().getColor(2131690396));
       }
-      if (d.gF(21))
+      if (d.fv(21))
       {
-        if (!d.gF(23)) {
-          break label451;
+        if (!d.fv(23)) {
+          break label462;
         }
         getWindow().getDecorView().setSystemUiVisibility(8192);
       }
@@ -183,87 +221,121 @@ public class RemittanceF2fDynamicCodeUI
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
+          AppMethodBeat.i(45053);
           if (RemittanceF2fDynamicCodeUI.c(RemittanceF2fDynamicCodeUI.this))
           {
-            RemittanceF2fDynamicCodeUI.this.XM();
+            RemittanceF2fDynamicCodeUI.this.hideVKB();
             RemittanceF2fDynamicCodeUI.this.showDialog(1000);
           }
           for (;;)
           {
+            AppMethodBeat.o(45053);
             return true;
+            RemittanceF2fDynamicCodeUI.this.setResult(0, new Intent().putExtra("key_pay_reslut_type", 4));
             RemittanceF2fDynamicCodeUI.this.finish();
           }
         }
-      }, a.h.back_icon_normal_black);
-      kh(2736);
-      setMMTitle(a.i.remittance_busi_pay);
-      this.nDu = ((PayInfo)getIntent().getParcelableExtra("key_pay_info"));
-      if (this.nDu == null)
+      }, 2131230946);
+      addSceneEndListener(2736);
+      setMMTitle(2131302530);
+      this.mPayInfo = ((PayInfo)getIntent().getParcelableExtra("key_pay_info"));
+      if (this.mPayInfo == null)
       {
-        y.e("MicroMsg.RemittanceF2fDynamicCodeUI", "payinfo is null");
+        ab.e("MicroMsg.RemittanceF2fDynamicCodeUI", "payinfo is null");
         finish();
       }
-      vN(4);
-      this.amount = this.nDu.snX.getInt("extinfo_key_15");
-      this.username = this.nDu.snX.getString("extinfo_key_1");
-      this.mPw = this.nDu.snX.getString("extinfo_key_2");
-      this.nDx = this.nDu.snX.getString("extinfo_key_17");
-      this.nDy = this.nDu.snX.getString("extinfo_key_18");
-      this.nDv = getIntent().getStringExtra("key_rcvr_open_id");
-      this.nDz = getIntent().getStringExtra("key_mch_info");
-      this.nDw = getIntent().getStringExtra("key_transfer_qrcode_id");
-      this.iLB = getIntent().getStringExtra("key_mch_photo");
-      this.nyX = getIntent().getStringExtra("show_paying_wording");
-      this.nDA = getIntent().getStringExtra("dynamic_code_spam_wording");
-      this.nDD = getIntent().getBooleanExtra("show_avatar_type", false);
-      this.nickname = e.gV(this.username);
+      setContentViewVisibility(4);
+      this.okH = this.mPayInfo.wgv.getInt("extinfo_key_15");
+      this.username = this.mPayInfo.wgv.getString("extinfo_key_1");
+      this.ppM = this.mPayInfo.wgv.getString("extinfo_key_2");
+      this.qqp = this.mPayInfo.wgv.getString("extinfo_key_17");
+      this.qqq = this.mPayInfo.wgv.getString("extinfo_key_18");
+      this.qqn = getIntent().getStringExtra("key_rcvr_open_id");
+      this.qqr = getIntent().getStringExtra("key_mch_info");
+      this.qqo = getIntent().getStringExtra("key_transfer_qrcode_id");
+      this.kSi = getIntent().getStringExtra("key_mch_photo");
+      this.qjX = getIntent().getStringExtra("show_paying_wording");
+      this.qqs = getIntent().getStringExtra("dynamic_code_spam_wording");
+      this.qqv = getIntent().getBooleanExtra("show_avatar_type", false);
+      this.nickname = com.tencent.mm.wallet_core.ui.e.nE(this.username);
       initView();
+      AppMethodBeat.o(45060);
       return;
-      label451:
+      label462:
       getWindow().setStatusBarColor(Color.parseColor("#E5E5E5"));
     }
   }
   
   public void onDestroy()
   {
-    if (bwI()) {
-      ki(2736);
+    AppMethodBeat.i(45064);
+    if (chz()) {
+      removeSceneEndListener(2736);
     }
     super.onDestroy();
+    AppMethodBeat.o(45064);
   }
   
   public void onPause()
   {
+    AppMethodBeat.i(45063);
     super.onPause();
-    if (bwI())
+    if (chz())
     {
-      this.nDO.stopTimer();
-      y.d("MicroMsg.RemittanceF2fDynamicCodeUI", "stop timer");
+      this.qqH.stopTimer();
+      ab.d("MicroMsg.RemittanceF2fDynamicCodeUI", "stop timer");
     }
+    AppMethodBeat.o(45063);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(45062);
     super.onResume();
-    if (bwI())
+    e.chr().eN(this);
+    if (chz())
     {
       l = System.currentTimeMillis();
-      if (this.nDL > 0L) {
-        break label103;
+      if (this.qqE > 0L) {
+        break label120;
       }
     }
-    label103:
-    for (long l = 0L;; l = nDN - (l - this.nDL))
+    label120:
+    for (long l = 0L;; l = qqG - (l - this.qqE))
     {
-      this.nDM = l;
-      y.i("MicroMsg.RemittanceF2fDynamicCodeUI", "last time: %s, delay: %s", new Object[] { Long.valueOf(this.nDL), Long.valueOf(this.nDM) });
-      if (this.nDM < 0L) {
-        this.nDM = 0L;
+      this.qqF = l;
+      ab.i("MicroMsg.RemittanceF2fDynamicCodeUI", "last time: %s, delay: %s", new Object[] { Long.valueOf(this.qqE), Long.valueOf(this.qqF) });
+      if (this.qqF < 0L) {
+        this.qqF = 0L;
       }
-      this.nDO.S(this.nDM, nDN);
-      y.d("MicroMsg.RemittanceF2fDynamicCodeUI", "start timer");
+      this.qqH.ag(this.qqF, qqG);
+      ab.d("MicroMsg.RemittanceF2fDynamicCodeUI", "start timer");
+      AppMethodBeat.o(45062);
       return;
     }
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  {
+    AppMethodBeat.i(45066);
+    if ((chz()) && ((paramm instanceof com.tencent.mm.plugin.remittance.model.m)))
+    {
+      this.qqD = false;
+      paramString = (com.tencent.mm.plugin.remittance.model.m)paramm;
+      setContentViewVisibility(0);
+      paramString.a(new RemittanceF2fDynamicCodeUI.2(this, paramString)).b(new p.a()
+      {
+        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ai.m paramAnonymousm) {}
+      }).c(new RemittanceF2fDynamicCodeUI.9(this));
+    }
+    AppMethodBeat.o(45066);
+    return true;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

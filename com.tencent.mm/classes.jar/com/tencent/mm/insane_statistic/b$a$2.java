@@ -1,14 +1,17 @@
 package com.tencent.mm.insane_statistic;
 
-import com.tencent.mm.h.a.na;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.nx;
 import com.tencent.mm.sdk.b.c;
 
 final class b$a$2
-  extends c<na>
+  extends c<nx>
 {
   b$a$2(b.a parama)
   {
-    this.udX = na.class.getName().hashCode();
+    AppMethodBeat.i(16178);
+    this.__eventId = nx.class.getName().hashCode();
+    AppMethodBeat.o(16178);
   }
 }
 

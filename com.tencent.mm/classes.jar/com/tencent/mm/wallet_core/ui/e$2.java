@@ -1,45 +1,50 @@
 package com.tencent.mm.wallet_core.ui;
 
-import com.tencent.mm.model.bi.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bk.a;
 import com.tencent.mm.network.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class e$2
-  implements bi.a
+  implements bk.a
 {
   e$2(e.c[] paramArrayOfc) {}
   
   public final void a(com.tencent.mm.network.e parame)
   {
-    if ((parame == null) || (parame.KR() == null)) {}
-    for (;;)
+    AppMethodBeat.i(49257);
+    if ((parame == null) || (parame.adI() == null))
     {
+      AppMethodBeat.o(49257);
       return;
-      if ((this.wCs == null) || (this.wCs.length == 0))
+    }
+    if ((this.AYF == null) || (this.AYF.length == 0))
+    {
+      ab.w("MicroMsg.WalletBaseUtil ", "hy: kvs is null or length is 0");
+      AppMethodBeat.o(49257);
+      return;
+    }
+    try
+    {
+      e.c[] arrayOfc = this.AYF;
+      int j = arrayOfc.length;
+      int i = 0;
+      while (i < j)
       {
-        y.w("MicroMsg.WalletBaseUtil ", "hy: kvs is null or length is 0");
-        return;
-      }
-      try
-      {
-        e.c[] arrayOfc = this.wCs;
-        int j = arrayOfc.length;
-        int i = 0;
-        while (i < j)
-        {
-          e.c localc = arrayOfc[i];
-          if ((localc != null) && (!bk.bl(localc.key))) {
-            parame.KR().i(localc.key, e.cm(localc.uhK));
-          }
-          i += 1;
+        e.c localc = arrayOfc[i];
+        if ((localc != null) && (!bo.isNullOrNil(localc.key))) {
+          parame.adI().o(localc.key, e.cS(localc.ypP));
         }
-        return;
+        i += 1;
       }
-      catch (Exception parame)
-      {
-        y.e("MicroMsg.WalletBaseUtil ", "hy: serialize failed: %s", new Object[] { parame.toString() });
-      }
+      AppMethodBeat.o(49257);
+      return;
+    }
+    catch (Exception parame)
+    {
+      ab.e("MicroMsg.WalletBaseUtil ", "hy: serialize failed: %s", new Object[] { parame.toString() });
+      AppMethodBeat.o(49257);
     }
   }
 }

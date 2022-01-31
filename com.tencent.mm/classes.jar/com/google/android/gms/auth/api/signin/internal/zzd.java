@@ -1,74 +1,34 @@
 package com.google.android.gms.auth.api.signin.internal;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.IBinder;
-import android.os.Looper;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions.Builder;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.common.internal.zzg;
-import com.google.android.gms.common.internal.zzl;
-import java.util.Iterator;
-import java.util.Set;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.common.api.Status;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class zzd
-  extends zzl<zzk>
+  extends zzu
 {
-  private final GoogleSignInOptions zzakw;
-  
-  public zzd(Context paramContext, Looper paramLooper, zzg paramzzg, GoogleSignInOptions paramGoogleSignInOptions, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
+  public void zzd(GoogleSignInAccount paramGoogleSignInAccount, Status paramStatus)
   {
-    super(paramContext, paramLooper, 91, paramzzg, paramConnectionCallbacks, paramOnConnectionFailedListener);
-    if (paramGoogleSignInOptions != null) {}
-    for (;;)
-    {
-      paramContext = paramGoogleSignInOptions;
-      if (paramzzg.zzxM().isEmpty()) {
-        break label103;
-      }
-      paramContext = new GoogleSignInOptions.Builder(paramGoogleSignInOptions);
-      paramLooper = paramzzg.zzxM().iterator();
-      while (paramLooper.hasNext()) {
-        paramContext.requestScopes((Scope)paramLooper.next(), new Scope[0]);
-      }
-      paramGoogleSignInOptions = new GoogleSignInOptions.Builder().build();
-    }
-    paramContext = paramContext.build();
-    label103:
-    this.zzakw = paramContext;
+    AppMethodBeat.i(50414);
+    paramGoogleSignInAccount = new UnsupportedOperationException();
+    AppMethodBeat.o(50414);
+    throw paramGoogleSignInAccount;
   }
   
-  protected zzk zzaK(IBinder paramIBinder)
+  public void zzg(Status paramStatus)
   {
-    return zzk.zza.zzaM(paramIBinder);
+    AppMethodBeat.i(50415);
+    paramStatus = new UnsupportedOperationException();
+    AppMethodBeat.o(50415);
+    throw paramStatus;
   }
   
-  protected String zzeA()
+  public void zzh(Status paramStatus)
   {
-    return "com.google.android.gms.auth.api.signin.internal.ISignInService";
-  }
-  
-  protected String zzez()
-  {
-    return "com.google.android.gms.auth.api.signin.service.START";
-  }
-  
-  public boolean zzrr()
-  {
-    return true;
-  }
-  
-  public Intent zzrs()
-  {
-    return zze.zza(getContext(), this.zzakw);
-  }
-  
-  public GoogleSignInOptions zzrt()
-  {
-    return this.zzakw;
+    AppMethodBeat.i(50416);
+    paramStatus = new UnsupportedOperationException();
+    AppMethodBeat.o(50416);
+    throw paramStatus;
   }
 }
 

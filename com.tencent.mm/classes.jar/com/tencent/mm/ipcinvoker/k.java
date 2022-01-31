@@ -1,5 +1,6 @@
 package com.tencent.mm.ipcinvoker;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.c.a;
 import com.tencent.mm.ipcinvoker.extension.e;
 import java.util.Map;
@@ -7,67 +8,93 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class k
 {
-  private static final Map<String, e> dGN = new ConcurrentHashMap();
+  private static final Map<String, e> eEq;
   
-  public static <T> T a(Class<?> paramClass1, Class<?> paramClass2)
+  static
   {
+    AppMethodBeat.i(114048);
+    eEq = new ConcurrentHashMap();
+    AppMethodBeat.o(114048);
+  }
+  
+  public static <T> T b(Class<?> paramClass1, Class<?> paramClass2)
+  {
+    AppMethodBeat.i(114046);
     try
     {
       if (!paramClass2.isAssignableFrom(paramClass1))
       {
         com.tencent.mm.ipcinvoker.h.b.e("IPC.ObjectStore", "%s isAssignableFrom %s return false", new Object[] { paramClass2, paramClass1 });
+        AppMethodBeat.o(114046);
         return null;
       }
       if (paramClass1.isAnnotationPresent(a.class))
       {
         String str = paramClass1.getName();
-        e locale = (e)dGN.get(str);
+        e locale = (e)eEq.get(str);
         paramClass2 = locale;
         if (locale == null)
         {
           paramClass2 = new e(paramClass1);
-          dGN.put(str, paramClass2);
+          eEq.put(str, paramClass2);
         }
-        return paramClass2.get();
+        paramClass1 = paramClass2.get();
+        AppMethodBeat.o(114046);
+        return paramClass1;
       }
-      paramClass1 = com.tencent.mm.ipcinvoker.g.b.b(paramClass1, paramClass2);
+      paramClass1 = com.tencent.mm.ipcinvoker.g.b.c(paramClass1, paramClass2);
+      AppMethodBeat.o(114046);
       return paramClass1;
     }
-    catch (Exception paramClass1) {}
+    catch (Exception paramClass1)
+    {
+      AppMethodBeat.o(114046);
+    }
     return null;
   }
   
-  public static <T> T d(String paramString, Class<?> paramClass)
+  public static <T> T c(String paramString, Class<?> paramClass)
   {
+    AppMethodBeat.i(114045);
     try
     {
       Class localClass = Class.forName(paramString);
       if (!paramClass.isAssignableFrom(localClass))
       {
         com.tencent.mm.ipcinvoker.h.b.e("IPC.ObjectStore", "%s isAssignableFrom %s return false", new Object[] { paramClass, localClass });
+        AppMethodBeat.o(114045);
         return null;
       }
       if (localClass.isAnnotationPresent(a.class))
       {
-        e locale = (e)dGN.get(paramString);
+        e locale = (e)eEq.get(paramString);
         paramClass = locale;
         if (locale == null)
         {
           paramClass = new e(localClass);
-          dGN.put(paramString, paramClass);
+          eEq.put(paramString, paramClass);
         }
-        return paramClass.get();
+        paramString = paramClass.get();
+        AppMethodBeat.o(114045);
+        return paramString;
       }
-      paramString = com.tencent.mm.ipcinvoker.g.b.e(paramString, paramClass);
+      paramString = com.tencent.mm.ipcinvoker.g.b.d(paramString, paramClass);
+      AppMethodBeat.o(114045);
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(114045);
+    }
     return null;
   }
   
-  public static <T> T e(String paramString, Class<?> paramClass)
+  public static <T> T d(String paramString, Class<?> paramClass)
   {
-    return com.tencent.mm.ipcinvoker.g.b.e(paramString, paramClass);
+    AppMethodBeat.i(114047);
+    paramString = com.tencent.mm.ipcinvoker.g.b.d(paramString, paramClass);
+    AppMethodBeat.o(114047);
+    return paramString;
   }
 }
 

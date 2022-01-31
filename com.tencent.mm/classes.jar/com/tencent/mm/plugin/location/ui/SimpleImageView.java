@@ -1,50 +1,27 @@
 package com.tencent.mm.plugin.location.ui;
 
 import android.content.Context;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import com.tencent.mm.a.g;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.vfs.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class SimpleImageView
   extends ImageView
 {
-  public int eIB;
-  public int eIC;
-  public ah handler = new ah()
-  {
-    public final void handleMessage(Message paramAnonymousMessage)
-    {
-      byte[] arrayOfByte = (byte[])paramAnonymousMessage.obj;
-      if ((arrayOfByte == null) || (arrayOfByte.length == 0))
-      {
-        y.e("MicroMsg.SimpleImageView", "handleMsg fail, data is null");
-        return;
-      }
-      paramAnonymousMessage = c.bu(arrayOfByte);
-      String str = SimpleImageView.a(SimpleImageView.this) + g.o(SimpleImageView.b(SimpleImageView.this).getBytes());
-      y.d("MicroMsg.SimpleImageView", "filePath  %s", new Object[] { str });
-      e.b(str, arrayOfByte, arrayOfByte.length);
-      if ((paramAnonymousMessage != null) && (SimpleImageView.c(SimpleImageView.this) > 0) && (SimpleImageView.d(SimpleImageView.this) > 0)) {
-        paramAnonymousMessage = c.a(paramAnonymousMessage, SimpleImageView.d(SimpleImageView.this), SimpleImageView.c(SimpleImageView.this), true, false);
-      }
-      for (;;)
-      {
-        SimpleImageView.this.setImageBitmap(paramAnonymousMessage);
-        return;
-      }
-    }
-  };
+  public int eRu;
+  public int eRv;
+  public ak handler;
   public String imagePath;
-  public String url = null;
+  public String url;
   
   public SimpleImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(113529);
+    this.url = null;
+    this.handler = new SimpleImageView.1(this);
+    AppMethodBeat.o(113529);
   }
 }
 

@@ -3,31 +3,35 @@ package com.tencent.mm.plugin.webview.ui.tools;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.mm.R.k;
-import com.tencent.mm.protocal.c.azs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bgv;
 
 final class SDKOAuthUI$a$1
   implements View.OnClickListener
 {
-  SDKOAuthUI$a$1(SDKOAuthUI.a parama, azs paramazs, ImageView paramImageView) {}
+  SDKOAuthUI$a$1(SDKOAuthUI.a parama, bgv parambgv, ImageView paramImageView) {}
   
   public final void onClick(View paramView)
   {
-    if (this.rlZ.tvP == 2)
+    AppMethodBeat.i(7539);
+    if (this.vbC.xwa == 2)
     {
-      this.fYc.setImageResource(R.k.login_auth_state_not_selected);
-      this.rlZ.tvP = 1;
-    }
-    while (this.rlZ.tvP != 1) {
+      this.vbD.setImageResource(2131231594);
+      this.vbC.xwa = 1;
+      AppMethodBeat.o(7539);
       return;
     }
-    this.fYc.setImageResource(R.k.login_auth_state_default_select);
-    this.rlZ.tvP = 2;
+    if (this.vbC.xwa == 1)
+    {
+      this.vbD.setImageResource(2131231592);
+      this.vbC.xwa = 2;
+    }
+    AppMethodBeat.o(7539);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.SDKOAuthUI.a.1
  * JD-Core Version:    0.7.0.1
  */

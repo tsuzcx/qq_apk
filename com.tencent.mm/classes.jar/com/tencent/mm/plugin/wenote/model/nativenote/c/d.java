@@ -1,50 +1,71 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class d
 {
-  public int ebL = -1;
-  public int endPos = -1;
-  public int rJE = -1;
-  public int startOffset = -1;
+  public int chT;
+  public int endPos;
+  public int startOffset;
+  public int vAi;
   
   public d()
   {
+    AppMethodBeat.i(26855);
+    this.chT = -1;
+    this.startOffset = -1;
+    this.endPos = -1;
+    this.vAi = -1;
     set(-1, -1, -1, -1);
+    AppMethodBeat.o(26855);
   }
   
   public d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(26856);
+    this.chT = -1;
+    this.startOffset = -1;
+    this.endPos = -1;
+    this.vAi = -1;
     set(paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(26856);
   }
   
-  public final int ciI()
+  public final int djb()
   {
-    int i = 1;
-    if ((this.ebL < 0) || (this.startOffset < 0) || (this.endPos < 0) || (this.rJE < 0) || (this.ebL > this.endPos) || ((this.ebL == this.endPos) && (this.startOffset > this.rJE))) {
-      i = 0;
-    }
-    com.tencent.mm.plugin.wenote.model.a.c localc1;
-    do
+    AppMethodBeat.i(26857);
+    if ((this.chT < 0) || (this.startOffset < 0) || (this.endPos < 0) || (this.vAi < 0) || (this.chT > this.endPos) || ((this.chT == this.endPos) && (this.startOffset > this.vAi)))
     {
-      return i;
-      localc1 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(this.ebL);
-      com.tencent.mm.plugin.wenote.model.a.c localc2 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(this.endPos);
-      if ((localc1 == null) || (localc2 == null)) {
-        return 0;
-      }
-    } while ((this.ebL == this.endPos) && (this.startOffset == this.rJE));
-    if ((this.ebL == this.endPos) && (localc1.getType() == 1)) {
+      AppMethodBeat.o(26857);
+      return 0;
+    }
+    com.tencent.mm.plugin.wenote.model.a.c localc1 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(this.chT);
+    com.tencent.mm.plugin.wenote.model.a.c localc2 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(this.endPos);
+    if ((localc1 == null) || (localc2 == null))
+    {
+      AppMethodBeat.o(26857);
+      return 0;
+    }
+    if ((this.chT == this.endPos) && (this.startOffset == this.vAi))
+    {
+      AppMethodBeat.o(26857);
+      return 1;
+    }
+    if ((this.chT == this.endPos) && (localc1.getType() == 1))
+    {
+      AppMethodBeat.o(26857);
       return 2;
     }
+    AppMethodBeat.o(26857);
     return 3;
   }
   
   public final void set(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.ebL = paramInt1;
+    this.chT = paramInt1;
     this.startOffset = paramInt2;
     this.endPos = paramInt3;
-    this.rJE = paramInt4;
+    this.vAi = paramInt4;
   }
 }
 

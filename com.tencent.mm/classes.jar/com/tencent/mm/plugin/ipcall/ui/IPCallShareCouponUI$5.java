@@ -6,11 +6,11 @@ import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class IPCallShareCouponUI$5
   extends ClickableSpan
@@ -19,27 +19,31 @@ final class IPCallShareCouponUI$5
   
   public final void onClick(View paramView)
   {
-    ((TextView)paramView).setHighlightColor(this.lyX.getResources().getColor(R.e.transparent));
+    AppMethodBeat.i(22321);
+    ((TextView)paramView).setHighlightColor(this.nWj.getResources().getColor(2131690605));
     paramView = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=weixin_phone/notice";
-    Object localObject = x.fB(ae.getContext());
-    if (!bk.bl((String)localObject)) {
+    Object localObject = aa.gP(ah.getContext());
+    if (!bo.isNullOrNil((String)localObject)) {
       paramView = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=weixin_phone/notice" + "&wechat_real_lang=" + (String)localObject;
     }
     localObject = new Intent();
     ((Intent)localObject).putExtra("rawUrl", paramView);
     ((Intent)localObject).putExtra("showShare", false);
-    d.b(this.lyX, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+    d.b(this.nWj, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+    AppMethodBeat.o(22321);
   }
   
   public final void updateDrawState(TextPaint paramTextPaint)
   {
-    paramTextPaint.setColor(this.lyX.getResources().getColor(R.e.link_color));
+    AppMethodBeat.i(22322);
+    paramTextPaint.setColor(this.nWj.getResources().getColor(2131690214));
     paramTextPaint.setUnderlineText(false);
+    AppMethodBeat.o(22322);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallShareCouponUI.5
  * JD-Core Version:    0.7.0.1
  */

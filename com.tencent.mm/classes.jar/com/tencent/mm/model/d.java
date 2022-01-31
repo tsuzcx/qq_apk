@@ -1,96 +1,77 @@
 package com.tencent.mm.model;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.b;
 import com.tencent.mm.compatible.util.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class d
 {
-  private b bDz;
-  private b.a dUs;
-  a dUt;
-  private boolean dUu = false;
-  private Context ze = ae.getContext();
+  private b cko;
+  private b.a fkB;
+  d.a fkC;
+  private boolean fkD;
+  private Context zF;
   
-  public final boolean a(a parama)
+  public d()
   {
-    this.dUt = parama;
-    parama = new b((byte)0);
-    if (this.bDz == null) {
-      this.bDz = new b(this.ze);
+    AppMethodBeat.i(77795);
+    this.fkD = false;
+    this.zF = ah.getContext();
+    AppMethodBeat.o(77795);
+  }
+  
+  public final boolean a(d.a parama)
+  {
+    AppMethodBeat.i(77796);
+    this.fkC = parama;
+    parama = new d.b(this, (byte)0);
+    if (this.cko == null) {
+      this.cko = new b(this.zF);
     }
-    if (this.dUs != parama) {
-      this.dUs = parama;
+    if (this.fkB != parama) {
+      this.fkB = parama;
     }
-    this.bDz.a(this.dUs);
-    if (this.bDz == null) {}
-    while (this.dUu) {
+    this.cko.a(this.fkB);
+    if (this.cko == null)
+    {
+      AppMethodBeat.o(77796);
       return false;
     }
-    this.bDz.requestFocus();
-    this.dUu = true;
-    return this.dUu;
+    if (this.fkD)
+    {
+      AppMethodBeat.o(77796);
+      return false;
+    }
+    this.cko.requestFocus();
+    this.fkD = true;
+    boolean bool = this.fkD;
+    AppMethodBeat.o(77796);
+    return bool;
   }
   
-  public final boolean bH(boolean paramBoolean)
+  public final boolean cJ(boolean paramBoolean)
   {
-    if (this.bDz != null) {}
-    for (boolean bool = this.bDz.zE();; bool = false)
+    AppMethodBeat.i(77797);
+    if (this.cko != null) {}
+    for (boolean bool = this.cko.Mh();; bool = false)
     {
-      this.dUu = false;
+      this.fkD = false;
       if (paramBoolean)
       {
-        this.bDz = null;
-        this.dUs = null;
-        this.dUt = null;
+        this.cko = null;
+        this.fkB = null;
+        this.fkC = null;
       }
+      AppMethodBeat.o(77797);
       return bool;
-    }
-  }
-  
-  public static abstract interface a {}
-  
-  private final class b
-    implements b.a
-  {
-    private b() {}
-    
-    public final void ex(int paramInt)
-    {
-      switch (paramInt)
-      {
-      case 0: 
-      default: 
-        y.v("MicroMsg.AudioHelperTool", "jacks UNKNOW_AUDIOFOCUS_LOSS DEFAULT");
-      }
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              y.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_GAIN");
-            } while (d.this.dUt == null);
-            return;
-            y.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS");
-          } while (d.this.dUt == null);
-          return;
-          y.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS_TRANSIENT");
-        } while (d.this.dUt == null);
-        return;
-        y.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK");
-      } while (d.this.dUt == null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.model.d
  * JD-Core Version:    0.7.0.1
  */

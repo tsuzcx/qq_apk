@@ -1,342 +1,198 @@
 package com.tencent.mm.plugin.wepkg.model;
 
-import android.os.Bundle;
-import com.tencent.mm.a.g;
-import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wepkg.ipc.WepkgMainProcessService;
-import com.tencent.mm.plugin.wepkg.utils.b;
-import com.tencent.mm.protocal.c.bet;
-import com.tencent.mm.protocal.c.cla;
-import com.tencent.mm.protocal.c.cld;
-import com.tencent.mm.protocal.c.cle;
-import com.tencent.mm.protocal.c.clg;
-import com.tencent.mm.protocal.c.clh;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wepkg.d.b;
+import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.protocal.protobuf.cwh;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.xweb.s;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.channels.FileChannel;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 public final class e
 {
-  public static d Ve(String paramString)
+  private static int vFU = 4;
+  private static ByteOrder vFV = ByteOrder.BIG_ENDIAN;
+  private File gVL;
+  volatile boolean gVO;
+  private volatile String mDesc;
+  private volatile int vFW;
+  private volatile int vFX;
+  volatile cwh vFY;
+  private volatile LinkedList<adp> vFZ;
+  private volatile String vGa;
+  
+  public e(File paramFile)
   {
-    for (;;)
+    AppMethodBeat.i(63525);
+    this.gVO = false;
+    this.vFX = 0;
+    this.vFY = null;
+    this.vFZ = null;
+    this.vGa = "";
+    this.mDesc = "";
+    this.gVL = paramFile;
+    if (avP()) {
+      bool = true;
+    }
+    this.gVO = bool;
+    AppMethodBeat.o(63525);
+  }
+  
+  private boolean a(FileChannel paramFileChannel)
+  {
+    AppMethodBeat.i(63528);
+    if (this.vFW <= 0)
     {
-      String str;
-      Object localObject1;
-      long l;
-      WepkgVersion localWepkgVersion;
-      c localc;
-      boolean bool;
-      HashMap localHashMap;
-      Object localObject2;
-      int i;
-      try
+      AppMethodBeat.o(63528);
+      return false;
+    }
+    try
+    {
+      paramFileChannel.position(vFU);
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(this.vFW);
+      localByteBuffer.order(vFV);
+      paramFileChannel.read(localByteBuffer);
+      paramFileChannel = localByteBuffer.array();
+      if (paramFileChannel != null)
       {
-        str = com.tencent.mm.plugin.wepkg.utils.d.Vq(paramString);
-        localObject1 = com.tencent.mm.plugin.wepkg.utils.d.Vr(paramString);
-        l = System.currentTimeMillis();
-        if ((bk.bl(str)) || (bk.bl((String)localObject1)))
-        {
-          y.e("MicroMsg.Wepkg.WepkgManager", "pkgId = %s, domain = %s", new Object[] { str, localObject1 });
-          paramString = null;
-          return paramString;
-        }
-        h.nFQ.a(859L, 6L, 1L, false);
-        localWepkgVersion = f.Vk(str);
-        if (localWepkgVersion == null)
-        {
-          y.i("MicroMsg.Wepkg.WepkgManager", "DB dont have valid record, pkgid:%s, domain:%s, version:%s:", new Object[] { str, "", "" });
-          com.tencent.mm.plugin.wepkg.utils.a.b("EnterWeb", paramString, str, null, 0L, 0L, com.tencent.mm.plugin.wepkg.utils.a.Dy(14));
-          h.nFQ.a(859L, 7L, 1L, false);
-          paramString = null;
-          continue;
-        }
-        if (!((String)localObject1).equalsIgnoreCase(localWepkgVersion.ceG))
-        {
-          y.i("MicroMsg.Wepkg.WepkgManager", "the domain not match, pkgid:%s, version:%s, UrlDomain[%s] != DBDomain[%s]", new Object[] { str, localWepkgVersion.version, localObject1, localWepkgVersion.ceG });
-          com.tencent.mm.plugin.wepkg.utils.a.b("EnterWeb", paramString, str, null, 0L, 0L, com.tencent.mm.plugin.wepkg.utils.a.Dy(13));
-          h.nFQ.a(859L, 8L, 1L, false);
-          paramString = null;
-          continue;
-        }
-        if (bk.bl(localWepkgVersion.version))
-        {
-          y.i("MicroMsg.Wepkg.WepkgManager", "this pkgid(%s) is disable form server", new Object[] { str });
-          com.tencent.mm.plugin.wepkg.utils.a.b("EnterWeb", paramString, str, null, 0L, 0L, com.tencent.mm.plugin.wepkg.utils.a.Dy(15));
-          h.nFQ.a(859L, 9L, 1L, false);
-          paramString = null;
-          continue;
-        }
-        if ((!localWepkgVersion.rPY) || ((!localWepkgVersion.rPZ) && (localWepkgVersion.rQa)))
-        {
-          y.i("MicroMsg.Wepkg.WepkgManager", "local cache disable, pkgid:%s, version:%s, bigPackageReady:%s, preloadFilesReady:%s, preloadFilesAtomic:%s", new Object[] { localWepkgVersion.dCD, localWepkgVersion.version, Boolean.valueOf(localWepkgVersion.rPY), Boolean.valueOf(localWepkgVersion.rPZ), Boolean.valueOf(localWepkgVersion.rQa) });
-          com.tencent.mm.plugin.wepkg.utils.a.b("EnterWeb", paramString, str, localWepkgVersion.version, 0L, 0L, com.tencent.mm.plugin.wepkg.utils.a.Dy(16));
-          h.nFQ.a(859L, 10L, 1L, false);
-          paramString = null;
-          continue;
-        }
-        localc = a(str, localWepkgVersion.version, localWepkgVersion.fCl, localWepkgVersion.bIW, localWepkgVersion.rPW);
-        if ((localc == null) && (!bk.bl(localWepkgVersion.fCl)))
-        {
-          com.tencent.mm.plugin.wepkg.utils.a.b("EnterWeb", paramString, str, localWepkgVersion.version, 0L, 0L, com.tencent.mm.plugin.wepkg.utils.a.Dy(17));
-          h.nFQ.a(859L, 11L, 1L, false);
-          paramString = null;
-          continue;
-        }
-        bool = localWepkgVersion.rQa;
-        if (bk.bl(str))
-        {
-          localObject1 = null;
-          if (localObject1 != null) {
-            break label912;
-          }
-          com.tencent.mm.plugin.wepkg.utils.a.b("EnterWeb", paramString, str, localWepkgVersion.version, 0L, 0L, com.tencent.mm.plugin.wepkg.utils.a.Dy(18));
-          h.nFQ.a(859L, 11L, 1L, false);
-          paramString = null;
-          continue;
-        }
-        localHashMap = new HashMap();
-        localObject2 = f.Vm(str);
-        localObject1 = localHashMap;
-        if (bk.dk((List)localObject2)) {
-          continue;
-        }
-        localObject1 = ((List)localObject2).iterator();
-        i = 0;
-        if (!((Iterator)localObject1).hasNext()) {
-          break label965;
-        }
-        localObject2 = (WepkgPreloadFile)((Iterator)localObject1).next();
-        if (localObject2 == null) {
-          continue;
-        }
-        if (bk.bl(((WepkgPreloadFile)localObject2).filePath))
-        {
-          y.i("MicroMsg.Wepkg.WepkgManager", "readCachePreloadFiles, pkgPath is null, isAtomic:%s", new Object[] { Boolean.valueOf(bool) });
-          if (bool)
-          {
-            fM(((WepkgPreloadFile)localObject2).dCD, ((WepkgPreloadFile)localObject2).rPo);
-            i = 1;
-            continue;
-          }
-          f.a(str, ((WepkgPreloadFile)localObject2).rPo, "", null);
-          continue;
-        }
-        localFile = new File(((WepkgPreloadFile)localObject2).filePath);
-      }
-      finally {}
-      File localFile;
-      if (!localFile.exists())
-      {
-        y.i("MicroMsg.Wepkg.WepkgManager", "readCachePreloadFiles, pkgPath:%s, file dont exist, isAtomic:%s", new Object[] { ((WepkgPreloadFile)localObject2).filePath, Boolean.valueOf(bool) });
-        if (bool)
-        {
-          fM(((WepkgPreloadFile)localObject2).dCD, ((WepkgPreloadFile)localObject2).rPo);
-          i = 1;
-        }
-        else
-        {
-          f.a(str, ((WepkgPreloadFile)localObject2).rPo, "", null);
-        }
-      }
-      else if (localFile.length() != ((WepkgPreloadFile)localObject2).size)
-      {
-        y.i("MicroMsg.Wepkg.WepkgManager", "readCachePreloadFiles, [server_pkgSize:%d] != [local_pkgSize:%d], isAtomic:%s", new Object[] { Integer.valueOf(((WepkgPreloadFile)localObject2).size), Long.valueOf(localFile.length()), Boolean.valueOf(bool) });
-        if (bool)
-        {
-          fM(((WepkgPreloadFile)localObject2).dCD, ((WepkgPreloadFile)localObject2).rPo);
-          localFile.delete();
-          i = 1;
-        }
-        else
-        {
-          f.a(str, ((WepkgPreloadFile)localObject2).rPo, "", null);
-        }
+        int i = paramFileChannel.length;
+        if (i != 0) {}
       }
       else
       {
-        localHashMap.put(((WepkgPreloadFile)localObject2).rPo, localObject2);
-        continue;
-        label912:
-        paramString = new d(localWepkgVersion, localc, (Map)localObject1);
-        y.i("MicroMsg.Wepkg.WepkgManager", "loadWepkg time:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-        h.nFQ.a(859L, 12L, 1L, false);
-        continue;
-        label965:
-        localObject1 = localHashMap;
-        if (i != 0) {
-          localObject1 = null;
-        }
+        AppMethodBeat.o(63528);
+        return false;
       }
+      this.vFY = new cwh();
+      this.vFY.parseFrom(paramFileChannel);
+      this.vFZ = this.vFY.yev;
+      this.vGa = this.vFY.yew;
+      this.mDesc = this.vFY.Desc;
+      this.vFX = (vFU + this.vFW);
+      AppMethodBeat.o(63528);
+      return true;
     }
-  }
-  
-  public static void Vf(String paramString)
-  {
-    y.i("MicroMsg.Wepkg.WepkgManager", "clear wepkg info, pkgid:%s", new Object[] { paramString });
-    WepkgCrossProcessTask localWepkgCrossProcessTask = new WepkgCrossProcessTask();
-    localWepkgCrossProcessTask.uC = 2001;
-    localWepkgCrossProcessTask.rPj.dCD = paramString;
-    if (ae.cqV())
+    catch (Exception paramFileChannel)
     {
-      com.tencent.mm.plugin.wepkg.utils.d.DS().O(new f.2(localWepkgCrossProcessTask));
-      return;
-    }
-    localWepkgCrossProcessTask.gfD = new f.3(localWepkgCrossProcessTask);
-    localWepkgCrossProcessTask.ahC();
-    WepkgMainProcessService.a(localWepkgCrossProcessTask);
-  }
-  
-  public static void Vg(String paramString)
-  {
-    Bundle localBundle = new Bundle(1);
-    localBundle.putString("call_pkg_id", paramString);
-    ToolsProcessIPCService.a(localBundle, e.b.class, new e.1(paramString));
-  }
-  
-  public static boolean Vh(String paramString)
-  {
-    try
-    {
-      paramString = new File(paramString);
-      Object localObject = paramString.getName() + "_temp";
-      localObject = new File(paramString.getParent(), (String)localObject);
-      if (paramString.renameTo((File)localObject))
-      {
-        com.tencent.mm.a.e.k((File)localObject);
-        return true;
-      }
-    }
-    catch (Exception paramString)
-    {
-      y.i("MicroMsg.Wepkg.WepkgManager", "safeDeleteDir err:" + paramString.getMessage());
+      ab.e("MicroMsg.Wepkg.WePkgReader", "dealProtoData error, " + paramFileChannel.getMessage());
+      AppMethodBeat.o(63528);
     }
     return false;
   }
   
-  private static void Vi(String paramString)
+  private boolean avP()
   {
-    if (bk.bl(paramString)) {
-      return;
+    AppMethodBeat.i(63527);
+    localObject1 = null;
+    try
+    {
+      FileChannel localFileChannel = new RandomAccessFile(this.gVL, "r").getChannel();
+      localObject1 = localFileChannel;
     }
-    f.a(paramString, "", false, new e.4());
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        ab.e("MicroMsg.Wepkg.WePkgReader", "openfile failed, " + localException1.getMessage());
+      }
+      try
+      {
+        localObject1.position(0L);
+        ByteBuffer localByteBuffer = ByteBuffer.allocate(vFU);
+        localByteBuffer.order(vFV);
+        localObject1.read(localByteBuffer);
+        this.vFW = localByteBuffer.getInt(0);
+        boolean bool = a(localObject1);
+        return bool;
+      }
+      catch (Exception localException2)
+      {
+        ab.e("MicroMsg.Wepkg.WePkgReader", "parseHeader error, " + localException2.getMessage());
+        return false;
+      }
+      finally
+      {
+        b(localObject1);
+        AppMethodBeat.o(63527);
+      }
+    }
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(63527);
+      return false;
+    }
   }
   
-  public static c a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  private static void b(FileChannel paramFileChannel)
   {
-    if ((bk.bl(paramString1)) || (bk.bl(paramString3)) || (bk.bl(paramString4)))
-    {
-      y.i("MicroMsg.Wepkg.WepkgManager", "pkgid or pkgPath or md5 is null, pkg invalid");
-      paramString2 = null;
+    AppMethodBeat.i(63529);
+    if (paramFileChannel != null) {
+      try
+      {
+        paramFileChannel.close();
+        AppMethodBeat.o(63529);
+        return;
+      }
+      catch (IOException paramFileChannel) {}
     }
-    do
-    {
-      return paramString2;
-      File localFile = new File(paramString3);
-      if (!localFile.exists())
-      {
-        y.i("MicroMsg.Wepkg.WepkgManager", "readCacheWepkg, pkgPath:%s, file dont exist", new Object[] { paramString3 });
-        Vi(paramString1);
-        com.tencent.mm.plugin.wepkg.utils.a.b("PkgModified", null, paramString1, paramString2, 1L, 0L, null);
-        return null;
-      }
-      if (localFile.length() != paramInt)
-      {
-        y.i("MicroMsg.Wepkg.WepkgManager", "readCacheWepkg, [server_pkgSize:%d] != [local_pkgSize:%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(localFile.length()) });
-        localFile.delete();
-        Vi(paramString1);
-        com.tencent.mm.plugin.wepkg.utils.a.b("PkgModified", null, paramString1, paramString2, 2L, 0L, null);
-        return null;
-      }
-      if (localFile.length() <= 5242880L)
-      {
-        paramString3 = g.m(localFile);
-        if (!paramString4.equalsIgnoreCase(paramString3))
-        {
-          y.i("MicroMsg.Wepkg.WepkgManager", "readCacheBigPackage, [server_md5:%s] != [local_md5:%s]", new Object[] { paramString4, paramString3 });
-          localFile.delete();
-          Vi(paramString1);
-          com.tencent.mm.plugin.wepkg.utils.a.b("PkgModified", null, paramString1, paramString2, 3L, 0L, null);
-          return null;
-        }
-      }
-      else
-      {
-        y.i("MicroMsg.Wepkg.WepkgManager", "readCacheBigPackage fileLength(%d) > checkSize(%d). dont check md5", new Object[] { Long.valueOf(localFile.length()), Long.valueOf(5242880L) });
-      }
-      paramString3 = new c(localFile);
-      if (!paramString3.fDy) {
-        break;
-      }
-      paramString2 = paramString3;
-    } while (paramString3.rPg != null);
-    Vf(paramString1);
-    return null;
+    AppMethodBeat.o(63529);
   }
   
-  public static List<String> a(bet parambet)
+  public final s hO(String paramString1, String paramString2)
   {
-    if ((parambet == null) || (parambet.tzE == null)) {
+    AppMethodBeat.i(63526);
+    if ((bo.es(this.vFZ)) || (this.vFX < vFU) || (bo.isNullOrNil(paramString1)))
+    {
+      ab.e("MicroMsg.Wepkg.WePkgReader", "mFileIndexList is null");
+      AppMethodBeat.o(63526);
       return null;
     }
-    Object localObject1 = parambet.tzE.tYB;
-    Object localObject2 = parambet.tzE.tYC;
-    ArrayList localArrayList = new ArrayList();
-    if ((localObject1 != null) && (((cla)localObject1).tYo != null)) {
-      localArrayList.add(ad.bB(parambet.kSE + ((cla)localObject1).tYo.sww));
-    }
-    if ((localObject2 != null) && (!bk.dk(((clg)localObject2).tYy)))
+    Iterator localIterator = this.vFZ.iterator();
+    while (localIterator.hasNext())
     {
-      localObject1 = ((clg)localObject2).tYy.iterator();
-      while (((Iterator)localObject1).hasNext())
+      adp localadp = (adp)localIterator.next();
+      if (bo.nullAsNil(localadp.wWA).equals(paramString1))
       {
-        localObject2 = (cle)((Iterator)localObject1).next();
-        if ((localObject2 != null) && (((cle)localObject2).tYo != null)) {
-          localArrayList.add(ad.bB(parambet.kSE + ((cle)localObject2).tYo.sww));
+        Object localObject = localadp.wWC;
+        if ((!bo.isNullOrNil((String)localObject)) && ((((String)localObject).startsWith("video/")) || (((String)localObject).startsWith("audio/")))) {}
+        for (int i = 1; i != 0; i = 0)
+        {
+          ab.i("MicroMsg.Wepkg.WePkgReader", "filename (%s) is media resource", new Object[] { paramString1 });
+          AppMethodBeat.o(63526);
+          return null;
+        }
+        if (localadp.jKn <= 5242880L) {
+          try
+          {
+            ab.i("MicroMsg.Wepkg.WePkgReader", "rid hit big package. rid:%s", new Object[] { paramString1 });
+            localObject = new s(localadp.wWC, paramString2, new b(this.gVL, this.vFX + localadp.wWB, localadp.jKn));
+            AppMethodBeat.o(63526);
+            return localObject;
+          }
+          catch (IOException localIOException)
+          {
+            ab.e("MicroMsg.Wepkg.WePkgReader", "filename = %s, offset = %d, size = %d, mimeType = %s, e = %s", new Object[] { paramString1, Long.valueOf(localadp.wWB), Integer.valueOf(localadp.jKn), localadp.wWC, localIOException.getMessage() });
+          }
+        } else {
+          ab.i("MicroMsg.Wepkg.WePkgReader", "fileSize(%d) > limitSize(%d), filename = %s, offset = %d, mimeType = %s", new Object[] { Integer.valueOf(localadp.jKn), Long.valueOf(5242880L), paramString1, Long.valueOf(localadp.wWB), localadp.wWC });
         }
       }
     }
-    return localArrayList;
-  }
-  
-  public static void a(e.a parama)
-  {
-    String str = b.OBJECT_ROOT_DIR_PATH;
-    File localFile = new File(str);
-    if ((!localFile.exists()) || (!localFile.isDirectory())) {
-      parama.R(null);
-    }
-    WepkgCrossProcessTask localWepkgCrossProcessTask = new WepkgCrossProcessTask();
-    localWepkgCrossProcessTask.uC = 1001;
-    localWepkgCrossProcessTask.gfD = new e.3(localWepkgCrossProcessTask, str, localFile, parama);
-    localWepkgCrossProcessTask.ahC();
-    WepkgMainProcessService.a(localWepkgCrossProcessTask);
-  }
-  
-  private static void fM(String paramString1, String paramString2)
-  {
-    if ((bk.bl(paramString1)) || (bk.bl(paramString2))) {
-      return;
-    }
-    f.a(paramString1, paramString2, "", new e.6(paramString1, new a()
-    {
-      public final void a(BaseWepkgProcessTask paramAnonymousBaseWepkgProcessTask) {}
-    }));
+    AppMethodBeat.o(63526);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.e
  * JD-Core Version:    0.7.0.1
  */

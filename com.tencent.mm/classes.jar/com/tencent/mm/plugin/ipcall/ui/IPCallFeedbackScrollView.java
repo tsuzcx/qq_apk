@@ -8,7 +8,8 @@ import android.view.Display;
 import android.view.View.MeasureSpec;
 import android.view.WindowManager;
 import android.widget.ScrollView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class IPCallFeedbackScrollView
   extends ScrollView
@@ -25,6 +26,7 @@ public class IPCallFeedbackScrollView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(22179);
     try
     {
       Display localDisplay = ((Activity)getContext()).getWindowManager().getDefaultDisplay();
@@ -37,10 +39,11 @@ public class IPCallFeedbackScrollView
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.IPCallFeedbackScrollView", localException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.IPCallFeedbackScrollView", localException, "", new Object[0]);
       }
     }
     super.onMeasure(paramInt1, paramInt2);
+    AppMethodBeat.o(22179);
   }
 }
 

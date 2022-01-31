@@ -15,10 +15,11 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeProvider;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.reflect.Method;
 import java.util.Locale;
 
@@ -26,16 +27,19 @@ import java.util.Locale;
 public final class c
   extends View.AccessibilityDelegate
 {
-  private boolean uRy = false;
+  private boolean zfZ;
   
   public c()
   {
-    a locala = a.a.cAj();
-    AudioManager localAudioManager = (AudioManager)locala.ze.getSystemService("audio");
-    if ((locala.cAi()) && ((Settings.Secure.getInt(locala.ze.getContentResolver(), "speak_password", 0) != 0) || (localAudioManager.isWiredHeadsetOn()))) {}
+    AppMethodBeat.i(106143);
+    this.zfZ = false;
+    a locala = a.a.dDt();
+    AudioManager localAudioManager = (AudioManager)locala.zF.getSystemService("audio");
+    if ((locala.dDs()) && ((Settings.Secure.getInt(locala.zF.getContentResolver(), "speak_password", 0) != 0) || (localAudioManager.isWiredHeadsetOn()))) {}
     for (boolean bool = true;; bool = false)
     {
-      this.uRy = bool;
+      this.zfZ = bool;
+      AppMethodBeat.o(106143);
       return;
     }
   }
@@ -68,33 +72,57 @@ public final class c
   
   public final void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if (!this.uRy) {
-      break label7;
-    }
-    label7:
-    while ((paramView == null) || ((paramInt != 128) && (paramInt != 1))) {
+    AppMethodBeat.i(106144);
+    if (!this.zfZ)
+    {
+      AppMethodBeat.o(106144);
       return;
     }
     Object localObject;
-    if ((paramView instanceof EditText))
-    {
-      localObject = (EditText)paramView;
-      if (!bk.L(((EditText)localObject).getText())) {
-        localObject = ((EditText)localObject).getText();
+    if ((paramView != null) && ((paramInt == 128) || (paramInt == 1))) {
+      if ((paramView instanceof EditText))
+      {
+        localObject = (EditText)paramView;
+        if (!bo.aa(((EditText)localObject).getText())) {
+          localObject = ((EditText)localObject).getText();
+        }
       }
     }
     for (;;)
     {
-      for (;;)
+      ab.d("MicroMsg.MMSecureAccessibilityDelegate", "speak content: %s", new Object[] { localObject });
+      if (bo.aa((CharSequence)localObject))
       {
-        y.d("MicroMsg.MMSecureAccessibilityDelegate", "speak content: %s", new Object[] { localObject });
-        if (bk.L((CharSequence)localObject)) {
-          break;
+        AppMethodBeat.o(106144);
+        return;
+        if (!bo.aa(((EditText)localObject).getContentDescription()))
+        {
+          localObject = ((EditText)localObject).getContentDescription();
+          continue;
         }
-        a locala = a.a.cAj();
+        if (((EditText)localObject).getHint() != null)
+        {
+          localObject = ((EditText)localObject).getHint();
+          continue;
+          if ((paramView instanceof TextView))
+          {
+            if (bo.aa(paramView.getContentDescription()))
+            {
+              localObject = ((TextView)paramView).getText();
+              continue;
+            }
+            localObject = paramView.getContentDescription();
+            continue;
+          }
+          localObject = paramView.getContentDescription();
+        }
+      }
+      else
+      {
+        a locala = a.a.dDt();
         String str = ((CharSequence)localObject).toString();
-        if (locala.uRu == null) {
-          locala.uRu = new TextToSpeech(locala.ze, new a.1(locala, str));
+        if (locala.zfT == null) {
+          locala.zfT = new TextToSpeech(locala.zF, new a.1(locala, str));
         }
         try
         {
@@ -104,53 +132,32 @@ public final class c
           localObject = View.class.getMethod("requestAccessibilityFocus", new Class[0]);
           ((Method)localObject).setAccessible(true);
           ((Method)localObject).invoke(paramView, new Object[0]);
-          if (locala.ibr != null) {
-            locala.ibr = ((Vibrator)ae.getContext().getSystemService("vibrator"));
+          if (locala.kqP != null) {
+            locala.kqP = ((Vibrator)ah.getContext().getSystemService("vibrator"));
           }
-          if (locala.ibr == null) {
-            break label7;
+          if (locala.kqP != null) {
+            locala.kqP.vibrate(50L);
           }
-          locala.ibr.vibrate(50L);
+          AppMethodBeat.o(106144);
           return;
-          if (!bk.L(((EditText)localObject).getContentDescription()))
+          TextToSpeech localTextToSpeech = locala.zfT;
+          if (aa.dsC()) {}
+          for (localObject = Locale.CHINESE;; localObject = Locale.ENGLISH)
           {
-            localObject = ((EditText)localObject).getContentDescription();
-          }
-          else if (((EditText)localObject).getHint() != null)
-          {
-            localObject = ((EditText)localObject).getHint();
-            continue;
-            if ((paramView instanceof TextView))
-            {
-              if (bk.L(paramView.getContentDescription()))
-              {
-                localObject = ((TextView)paramView).getText();
-                continue;
-              }
-              localObject = paramView.getContentDescription();
-              continue;
-            }
-            localObject = paramView.getContentDescription();
-            continue;
-            TextToSpeech localTextToSpeech = locala.uRu;
-            if (x.cqF()) {}
-            for (localObject = Locale.CHINESE;; localObject = Locale.ENGLISH)
-            {
-              localTextToSpeech.setLanguage((Locale)localObject);
-              locala.uRu.speak(str, 0, null);
-              break;
-            }
+            localTextToSpeech.setLanguage((Locale)localObject);
+            locala.zfT.speak(str, 0, null);
+            break;
           }
         }
         catch (Exception paramView)
         {
           for (;;)
           {
-            y.printErrStackTrace("MicroMsg.Accessibility.AccessibilityHelper", paramView, "", new Object[0]);
+            ab.printErrStackTrace("MicroMsg.Accessibility.AccessibilityHelper", paramView, "", new Object[0]);
           }
-          localObject = null;
         }
       }
+      localObject = null;
     }
   }
   

@@ -3,42 +3,48 @@ package com.davemorrissey.labs.subscaleview.view;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 public final class a
 {
-  final Integer aoR;
-  public boolean aoS;
-  public int aoT;
-  public int aoU;
-  public Rect aoV;
-  boolean aoW;
+  final Integer arl;
+  public boolean arm;
+  public int arn;
+  public int aro;
+  public Rect arp;
+  boolean arq;
   public final Bitmap bitmap;
   public final Uri uri;
   
   a(int paramInt)
   {
+    AppMethodBeat.i(115638);
     this.bitmap = null;
     this.uri = null;
-    this.aoR = Integer.valueOf(paramInt);
-    this.aoS = true;
+    this.arl = Integer.valueOf(paramInt);
+    this.arm = true;
+    AppMethodBeat.o(115638);
   }
   
   public a(Bitmap paramBitmap)
   {
+    AppMethodBeat.i(115636);
     this.bitmap = paramBitmap;
     this.uri = null;
-    this.aoR = null;
-    this.aoS = false;
-    this.aoT = paramBitmap.getWidth();
-    this.aoU = paramBitmap.getHeight();
-    this.aoW = true;
+    this.arl = null;
+    this.arm = false;
+    this.arn = paramBitmap.getWidth();
+    this.aro = paramBitmap.getHeight();
+    this.arq = true;
+    AppMethodBeat.o(115636);
   }
   
   private a(Uri paramUri)
   {
+    AppMethodBeat.i(115637);
     String str = paramUri.toString();
     Uri localUri1 = paramUri;
     if (str.startsWith("file:///"))
@@ -51,8 +57,9 @@ public final class a
       localUri1 = Uri.parse(URLDecoder.decode(str, "UTF-8"));
       this.bitmap = null;
       this.uri = localUri1;
-      this.aoR = null;
-      this.aoS = true;
+      this.arl = null;
+      this.arm = true;
+      AppMethodBeat.o(115637);
       return;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -64,10 +71,14 @@ public final class a
     }
   }
   
-  public static a U(String paramString)
+  public static a Y(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("Uri must not be null");
+    AppMethodBeat.i(115639);
+    if (paramString == null)
+    {
+      paramString = new NullPointerException("Uri must not be null");
+      AppMethodBeat.o(115639);
+      throw paramString;
     }
     String str = paramString;
     if (!paramString.contains("://"))
@@ -76,14 +87,16 @@ public final class a
       if (paramString.startsWith("/")) {
         str = paramString.substring(1);
       }
-      str = "file:///" + str;
+      str = "file:///".concat(String.valueOf(str));
     }
-    return new a(Uri.parse(str));
+    paramString = new a(Uri.parse(str));
+    AppMethodBeat.o(115639);
+    return paramString;
   }
   
-  public final a jx()
+  public final a lr()
   {
-    this.aoS = true;
+    this.arm = true;
     return this;
   }
 }

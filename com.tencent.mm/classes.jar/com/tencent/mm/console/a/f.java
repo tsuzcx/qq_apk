@@ -1,28 +1,36 @@
 package com.tencent.mm.console.a;
 
 import android.content.Context;
-import com.tencent.mm.h.a.nf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.oc;
 import com.tencent.mm.modelstat.WatchDogPushReceiver;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class f
   implements com.tencent.mm.pluginsdk.cmd.a
 {
   static
   {
+    AppMethodBeat.i(16135);
     b.a(new f(), new String[] { "//recovery" });
+    AppMethodBeat.o(16135);
   }
   
   public static void init() {}
   
-  public final boolean a(Context paramContext, String[] paramArrayOfString)
+  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     int i = 0;
-    if (y.getLogLevel() > 1) {
+    AppMethodBeat.i(16134);
+    if (ab.getLogLevel() > 1)
+    {
+      AppMethodBeat.o(16134);
       return false;
     }
-    if (paramArrayOfString.length < 2) {
+    if (paramArrayOfString.length < 2)
+    {
+      AppMethodBeat.o(16134);
       return true;
     }
     paramContext = paramArrayOfString[1];
@@ -30,7 +38,7 @@ public final class f
     {
     default: 
       i = -1;
-      label70:
+      label91:
       switch (i)
       {
       }
@@ -38,39 +46,40 @@ public final class f
     }
     for (;;)
     {
+      AppMethodBeat.o(16134);
       return true;
       if (!paramContext.equals("testpush")) {
         break;
       }
-      break label70;
+      break label91;
       if (!paramContext.equals("testmm")) {
         break;
       }
       i = 1;
-      break label70;
+      break label91;
       if (!paramContext.equals("testmmonline")) {
         break;
       }
       i = 2;
-      break label70;
+      break label91;
       if (!paramContext.equals("log")) {
         break;
       }
       i = 3;
-      break label70;
-      WatchDogPushReceiver.RE();
+      break label91;
+      WatchDogPushReceiver.akN();
       continue;
-      paramContext = new nf();
-      paramContext.bWX.action = 1;
-      com.tencent.mm.sdk.b.a.udP.m(paramContext);
+      paramContext = new oc();
+      paramContext.cEO.action = 1;
+      com.tencent.mm.sdk.b.a.ymk.l(paramContext);
       continue;
-      paramContext = new nf();
-      paramContext.bWX.action = 3;
-      com.tencent.mm.sdk.b.a.udP.m(paramContext);
+      paramContext = new oc();
+      paramContext.cEO.action = 3;
+      com.tencent.mm.sdk.b.a.ymk.l(paramContext);
       continue;
-      paramContext = new nf();
-      paramContext.bWX.action = 2;
-      com.tencent.mm.sdk.b.a.udP.m(paramContext);
+      paramContext = new oc();
+      paramContext.cEO.action = 2;
+      com.tencent.mm.sdk.b.a.ymk.l(paramContext);
     }
   }
 }

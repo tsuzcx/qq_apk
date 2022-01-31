@@ -6,10 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.plugin.fts.ui.n.d;
-import com.tencent.mm.plugin.fts.ui.n.e;
-import com.tencent.mm.plugin.fts.ui.n.f;
 
 public final class a$b
   extends com.tencent.mm.plugin.fts.a.d.a.a.b
@@ -21,21 +19,25 @@ public final class a$b
   
   public final View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(n.e.fts_search_contact_item, paramViewGroup, false);
-    paramViewGroup = new a.a(this.kCw);
-    paramViewGroup.gSx = ((ImageView)paramContext.findViewById(n.d.icon_iv));
-    paramViewGroup.kCv = ((TextView)paramContext.findViewById(n.d.tip_tv));
-    paramViewGroup.contentView = paramContext.findViewById(n.d.search_item_content_layout);
+    AppMethodBeat.i(61968);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969675, paramViewGroup, false);
+    paramViewGroup = new a.a(this.mYt);
+    paramViewGroup.ivs = ((ImageView)paramContext.findViewById(2131821253));
+    paramViewGroup.mYs = ((TextView)paramContext.findViewById(2131821071));
+    paramViewGroup.contentView = paramContext.findViewById(2131821209);
     paramContext.setTag(paramViewGroup);
+    AppMethodBeat.o(61968);
     return paramContext;
   }
   
   public final void a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a.a parama, com.tencent.mm.plugin.fts.a.d.a.a parama1, Object... paramVarArgs)
   {
+    AppMethodBeat.i(61969);
     paramContext = (a.a)parama;
-    m.k(paramContext.contentView, this.kCw.kxT);
-    m.a(this.kCw.kCs, paramContext.kCv);
-    paramContext.gSx.setImageResource(n.f.search_add_icon_green);
+    m.q(paramContext.contentView, this.mYt.mTH);
+    m.a(this.mYt.mYp, paramContext.mYs);
+    paramContext.ivs.setImageResource(2131231945);
+    AppMethodBeat.o(61969);
   }
   
   public final boolean a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)

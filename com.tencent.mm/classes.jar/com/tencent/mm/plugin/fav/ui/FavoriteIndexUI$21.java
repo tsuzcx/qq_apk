@@ -1,15 +1,42 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import com.tencent.mm.plugin.fav.ui.widget.c;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
+import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fav.a.g;
+import com.tencent.mm.plugin.fav.a.k;
 
 final class FavoriteIndexUI$21
-  implements Runnable
+  implements View.OnCreateContextMenuListener
 {
-  FavoriteIndexUI$21(FavoriteIndexUI paramFavoriteIndexUI) {}
+  FavoriteIndexUI$21(FavoriteIndexUI paramFavoriteIndexUI, int paramInt) {}
   
-  public final void run()
+  public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    this.kee.kbe.aSa();
+    AppMethodBeat.i(74247);
+    paramView = new k();
+    paramContextMenuInfo = FavoriteIndexUI.a(this.myP).vZ(this.lU - this.myP.mvw.getHeaderViewsCount() - 1);
+    boolean bool = paramView.t(paramContextMenuInfo);
+    if (!bool) {
+      paramContextMenu.add(0, 3, 0, 2131299812);
+    }
+    if ((bool) && (com.tencent.mm.plugin.fav.a.b.g(paramContextMenuInfo))) {
+      paramContextMenu.add(0, 3, 0, 2131299812);
+    }
+    if (paramContextMenuInfo.field_type == 8)
+    {
+      paramView = com.tencent.mm.plugin.fav.a.b.c(paramContextMenuInfo);
+      if ((com.tencent.mm.plugin.fav.a.b.f(paramView)) && (!com.tencent.mm.plugin.fav.a.b.g(paramView))) {
+        paramContextMenu.add(0, 4, 0, 2131299767);
+      }
+    }
+    paramContextMenu.add(0, 2, 0, 2131299703);
+    paramContextMenu.add(0, 0, 0, 2131299684);
+    paramContextMenu.add(0, 1, 0, 2131299756);
+    AppMethodBeat.o(74247);
   }
 }
 

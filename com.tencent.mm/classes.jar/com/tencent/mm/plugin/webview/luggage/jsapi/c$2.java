@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
-import com.tencent.luggage.e.a.a;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.b.a;
-import com.tencent.mm.protocal.c.aqz;
-import com.tencent.mm.protocal.c.arm;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.axe;
+import com.tencent.mm.protocal.protobuf.axr;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$2
   implements b.a
@@ -15,39 +16,45 @@ final class c$2
   
   public final void a(int paramInt1, int paramInt2, String paramString, b paramb)
   {
-    y.i("MicroMsg.JsApiAuthorize", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(6280);
+    ab.i("MicroMsg.JsApiAuthorize", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      this.kNj.a("fail", null);
+      this.njN.a("fail", null);
+      AppMethodBeat.o(6280);
       return;
     }
-    if (this.fVh == 2)
+    if (this.hoJ == 2)
     {
-      y.d("MicroMsg.JsApiAuthorize", "press reject button");
-      this.kNj.a("fail", null);
+      ab.d("MicroMsg.JsApiAuthorize", "press reject button");
+      this.njN.a("fail", null);
+      AppMethodBeat.o(6280);
       return;
     }
-    paramString = (arm)paramb.ecF.ecN;
-    if ((paramString == null) || (paramString.tnb == null))
+    paramString = (axr)paramb.fsW.fta;
+    if ((paramString == null) || (paramString.xmS == null))
     {
-      this.kNj.a("fail", null);
+      this.njN.a("fail", null);
+      AppMethodBeat.o(6280);
       return;
     }
-    paramInt1 = paramString.tnb.bLB;
-    paramString = paramString.tnb.bLC;
-    y.i("MicroMsg.JsApiAuthorize", "jsErrcode = %d", new Object[] { Integer.valueOf(paramInt1) });
+    paramInt1 = paramString.xmS.csV;
+    paramString = paramString.xmS.csW;
+    ab.i("MicroMsg.JsApiAuthorize", "jsErrcode = %d", new Object[] { Integer.valueOf(paramInt1) });
     if (paramInt1 == 0)
     {
-      this.kNj.a("", null);
+      this.njN.a("", null);
+      AppMethodBeat.o(6280);
       return;
     }
-    y.e("MicroMsg.JsApiAuthorize", "ERROR = %s", new Object[] { paramString });
-    this.kNj.a("fail", null);
+    ab.e("MicroMsg.JsApiAuthorize", "ERROR = %s", new Object[] { paramString });
+    this.njN.a("fail", null);
+    AppMethodBeat.o(6280);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.c.2
  * JD-Core Version:    0.7.0.1
  */

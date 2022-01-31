@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.qmessage.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 
 final class QConversationUI$8
@@ -8,19 +9,22 @@ final class QConversationUI$8
 {
   QConversationUI$8(QConversationUI paramQConversationUI) {}
   
-  public final void bg(Object paramObject)
+  public final void bC(Object paramObject)
   {
+    AppMethodBeat.i(24134);
     if (paramObject == null)
     {
-      y.e("MicroMsg.QConversationUI", "onItemDel object null");
+      ab.e("MicroMsg.QConversationUI", "onItemDel object null");
+      AppMethodBeat.o(24134);
       return;
     }
-    QConversationUI.a(this.ncU, paramObject.toString());
+    QConversationUI.a(this.pIm, paramObject.toString());
+    AppMethodBeat.o(24134);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qmessage.ui.QConversationUI.8
  * JD-Core Version:    0.7.0.1
  */

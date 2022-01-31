@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.address.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.a.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.p;
 import com.tencent.mm.ui.base.h;
 
 final class WalletSelectAddrUI$3
@@ -13,7 +13,9 @@ final class WalletSelectAddrUI$3
   
   public final void onClick(View paramView)
   {
-    h.a(this.fvI, true, this.fvI.getString(R.l.addressui_mall_address_import_confirm, new Object[] { WalletSelectAddrUI.a(this.fvI).toString() }), "", this.fvI.getString(R.l.addressui_mall_address_import_confirm_ok), this.fvI.getString(R.l.app_cancel), new WalletSelectAddrUI.3.1(this), null);
+    AppMethodBeat.i(16979);
+    h.a(this.gNo, true, this.gNo.getString(2131296505, new Object[] { WalletSelectAddrUI.a(this.gNo).toString() }), "", this.gNo.getString(2131296506), this.gNo.getString(2131296888), new WalletSelectAddrUI.3.1(this), null);
+    AppMethodBeat.o(16979);
   }
 }
 

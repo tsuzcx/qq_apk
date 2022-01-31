@@ -1,114 +1,135 @@
 package com.tencent.mm.plugin.topstory.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aa.i;
+import com.tencent.mm.g.a.in;
+import com.tencent.mm.g.a.in.a;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.plugin.topstory.ui.home.d;
-import com.tencent.mm.plugin.websearch.api.ao;
+import com.tencent.mm.plugin.websearch.api.an;
 import com.tencent.mm.pluginsdk.f.h;
-import com.tencent.mm.protocal.c.byc;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
-import java.io.File;
 import java.util.HashMap;
 
 public class PluginTopStoryUI
   extends f
-  implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.c, a
+  implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.c, b
 {
-  private int pDC = 2;
-  private c pDD;
-  private d pDE;
+  private int tft;
+  private c tfu;
+  private com.tencent.mm.plugin.topstory.ui.home.d tfv;
+  private HashMap<String, Integer> tfw;
+  private b.a tfx;
+  private com.tencent.mm.sdk.b.c<in> tfy;
+  
+  public PluginTopStoryUI()
+  {
+    AppMethodBeat.i(1524);
+    this.tft = 2;
+    this.tfw = new HashMap();
+    this.tfy = new com.tencent.mm.sdk.b.c()
+    {
+      private boolean a(in paramAnonymousin)
+      {
+        AppMethodBeat.i(1522);
+        if (paramAnonymousin.cxU == null)
+        {
+          AppMethodBeat.o(1522);
+          return false;
+        }
+        ab.i("MicroMsg.TopStory.PluginTopStoryUI", "recv HaoKanActionEvent, serverData:%s, clientData:%s", new Object[] { paramAnonymousin.cxU.cxV, paramAnonymousin.cxU.cxW });
+        if ((!bo.isNullOrNil(paramAnonymousin.cxU.cxV)) && (PluginTopStoryUI.this.tfx != null)) {
+          PluginTopStoryUI.this.tfx.aeg(paramAnonymousin.cxU.cxV);
+        }
+        if (!bo.isNullOrNil(paramAnonymousin.cxU.cxW)) {}
+        try
+        {
+          i locali = new i(paramAnonymousin.cxU.cxW);
+          paramAnonymousin = locali.getString("action");
+          locali = locali.mt("params");
+          if (paramAnonymousin.equals("updateNumReddot"))
+          {
+            locali.optString("msgId");
+            int i = locali.getInt("latestTimeStamp");
+            int j = locali.getInt("seq");
+            ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().h(i, j, true);
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(1522);
+            return true;
+            if (!paramAnonymousin.equals("openProfile")) {
+              break;
+            }
+            d.aei(locali.getString("openId"));
+          }
+        }
+        catch (Exception paramAnonymousin)
+        {
+          for (;;)
+          {
+            ab.e("MicroMsg.TopStory.PluginTopStoryUI", "HaoKanActionEvent error");
+            ab.printErrStackTrace("MicroMsg.TopStory.PluginTopStoryUI", paramAnonymousin, "", new Object[0]);
+            continue;
+            if (paramAnonymousin.equals("openWowColikeSetting")) {
+              d.ff(ah.getContext());
+            }
+          }
+        }
+      }
+    };
+    AppMethodBeat.o(1524);
+  }
   
   public void execute(com.tencent.mm.kernel.b.g paramg) {}
   
   public int getFirstLoadWebView()
   {
-    return this.pDC;
+    return this.tft;
   }
   
   public c getTopStoryCommand()
   {
-    return this.pDD;
+    return this.tfu;
   }
   
-  public d getWebViewMgr()
+  public HashMap<String, Integer> getVideoPlayProgressMap()
   {
-    return this.pDE;
+    return this.tfw;
+  }
+  
+  public com.tencent.mm.plugin.topstory.ui.home.d getWebViewMgr()
+  {
+    return this.tfv;
   }
   
   public void onAccountInitialized(e.c paramc)
   {
     int i = 1;
-    this.pDE = new d();
-    this.pDD = new c();
-    com.tencent.mm.pluginsdk.cmd.b.a(this.pDD, new String[] { "//topstory" });
-    long l = com.tencent.mm.kernel.g.DP().Dz().a(ac.a.uzw, 0L);
+    AppMethodBeat.i(1525);
+    this.tfv = new com.tencent.mm.plugin.topstory.ui.home.d();
+    this.tfu = new c();
+    com.tencent.mm.pluginsdk.cmd.b.a(this.tfu, new String[] { "//topstory" });
+    this.tfy.alive();
+    long l = com.tencent.mm.kernel.g.RL().Ru().a(ac.a.yKk, 0L);
     if (System.currentTimeMillis() - l <= 259200000L)
     {
-      y.i("MicroMsg.TopStory.PluginTopStoryUI", "Use TopStory In Three Days %s", new Object[] { h.g("yyyy-MM-dd HH:mm:ss", l / 1000L) });
-      ao.BG(23);
+      ab.i("MicroMsg.TopStory.PluginTopStoryUI", "Use TopStory In Three Days %s", new Object[] { h.formatTime("yyyy-MM-dd HH:mm:ss", l / 1000L) });
+      an.Jw(23);
     }
     for (;;)
     {
       if (i != 0) {
         tryToCreateTopStoryWebView();
       }
-      com.tencent.mm.sdk.f.e.post(new PluginTopStoryUI.1(this), "TopStory.DeleteTopStoryConversation");
-      com.tencent.mm.sdk.f.e.post(new Runnable()
-      {
-        public final void run()
-        {
-          d locald = PluginTopStoryUI.this.pDE;
-          File localFile = new File(com.tencent.mm.plugin.topstory.a.g.bNe());
-          if (localFile.exists())
-          {
-            File[] arrayOfFile = localFile.listFiles();
-            if ((arrayOfFile != null) && (arrayOfFile.length > 0))
-            {
-              int j = arrayOfFile.length;
-              int i = 0;
-              if (i < j)
-              {
-                localFile = arrayOfFile[i];
-                int k = bk.getInt(localFile.getName(), -1);
-                byc localbyc;
-                if (k > 0) {
-                  localbyc = new byc();
-                }
-                for (;;)
-                {
-                  try
-                  {
-                    byte[] arrayOfByte = com.tencent.mm.vfs.e.c(localFile.getAbsolutePath(), 0, -1);
-                    localbyc.aH(arrayOfByte);
-                    locald.pEi.put(Integer.valueOf(k), localbyc);
-                    y.i("MicroMsg.TopStory.TopStoryWebViewMgr", "put home data cache key:%d size:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(arrayOfByte.length) });
-                    i += 1;
-                  }
-                  catch (Exception localException)
-                  {
-                    y.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewMgr", localException, "loadHomeDataCache %s", new Object[] { localFile.getAbsoluteFile() });
-                    continue;
-                  }
-                  y.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadHomeDataCache Decode Key Error %s", new Object[] { localFile.getAbsolutePath() });
-                }
-              }
-            }
-            else
-            {
-              y.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadHomeDataCache Folder Not Files %s", new Object[] { localFile.getAbsolutePath() });
-            }
-          }
-          for (;;)
-          {
-            PluginTopStoryUI.this.pDE.bNo();
-            return;
-            y.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadHomeDataCache Folder Not Exist %s", new Object[] { localFile.getAbsolutePath() });
-          }
-        }
-      }, "TopStory.LoadHomeCacheData");
+      com.tencent.mm.sdk.g.d.post(new PluginTopStoryUI.1(this), "TopStory.DeleteTopStoryConversation");
+      com.tencent.mm.sdk.g.d.post(new PluginTopStoryUI.2(this), "TopStory.LoadHomeCacheData");
+      AppMethodBeat.o(1525);
       return;
       i = 0;
     }
@@ -116,19 +137,33 @@ public class PluginTopStoryUI
   
   public void onAccountRelease()
   {
-    this.pDE = null;
-    this.pDD = null;
-    com.tencent.mm.pluginsdk.cmd.b.E(new String[] { "//topstory" });
+    AppMethodBeat.i(1526);
+    this.tfv = null;
+    this.tfu = null;
+    this.tfy.dead();
+    com.tencent.mm.pluginsdk.cmd.b.N(new String[] { "//topstory" });
+    this.tfw.clear();
+    AppMethodBeat.o(1526);
   }
   
   public void parallelsDependency() {}
   
   public void setFirstLoadWebView(int paramInt)
   {
-    this.pDC = paramInt;
+    this.tft = paramInt;
   }
   
-  public void tryToCreateTopStoryWebView() {}
+  public void setHaokanEventListener(b.a parama)
+  {
+    this.tfx = parama;
+  }
+  
+  public void tryToCreateTopStoryWebView()
+  {
+    AppMethodBeat.i(1527);
+    al.p(new PluginTopStoryUI.3(this), 5000L);
+    AppMethodBeat.o(1527);
+  }
 }
 
 

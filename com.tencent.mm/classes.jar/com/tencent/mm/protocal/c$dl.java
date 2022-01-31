@@ -5,12 +5,12 @@ final class c$dl
 {
   c$dl()
   {
-    super("invokeMiniProgramAPI", "invokeMiniProgramAPI", 295, false);
+    super("handleMPPageAction", "handleMPPageAction", 345, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.c.dl
  * JD-Core Version:    0.7.0.1
  */

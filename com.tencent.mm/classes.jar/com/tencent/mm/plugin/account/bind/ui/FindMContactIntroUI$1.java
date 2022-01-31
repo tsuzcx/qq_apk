@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FindMContactIntroUI$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class FindMContactIntroUI$1
   
   public final void onClick(View paramView)
   {
-    FindMContactIntroUI.a(this.fdm);
+    AppMethodBeat.i(13596);
+    FindMContactIntroUI.a(this.guX);
+    AppMethodBeat.o(13596);
   }
 }
 

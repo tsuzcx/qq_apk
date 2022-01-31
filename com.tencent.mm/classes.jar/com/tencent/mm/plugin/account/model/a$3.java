@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.account.model;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.friend.a.ab;
 import com.tencent.mm.plugin.account.friend.a.al;
 import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -17,54 +16,61 @@ final class a$3
 {
   a$3(a parama) {}
   
-  public final void bW(boolean paramBoolean)
+  public final void cY(boolean paramBoolean)
   {
-    y.i("MicroMsg.ContactsAutoSyncLogic ", "performSync end, succ:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!paramBoolean) {
-      return;
-    }
-    if (l.WW().size() > 0)
+    AppMethodBeat.i(124656);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ContactsAutoSyncLogic ", "performSync end, succ:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (!paramBoolean)
     {
-      y.i("MicroMsg.ContactsAutoSyncLogic ", "start to upload mobile list");
-      g.Dk().a(133, this.fjm);
-      System.currentTimeMillis();
-      localObject = new al(l.WW(), l.WV());
-      g.Dk().a((m)localObject, 0);
+      AppMethodBeat.o(124656);
       return;
     }
-    y.i("MicroMsg.ContactsAutoSyncLogic ", "update mobile friend list");
-    Object localObject = (String[])this.fjm.fjj.toArray(new String[0]);
-    this.fjm.fjj.clear();
+    if (l.aqz().size() > 0)
+    {
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ContactsAutoSyncLogic ", "start to upload mobile list");
+      g.Rc().a(133, this.gAE);
+      System.currentTimeMillis();
+      l.aqv();
+      localObject = new al(l.aqz(), l.aqy());
+      g.Rc().a((m)localObject, 0);
+      AppMethodBeat.o(124656);
+      return;
+    }
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ContactsAutoSyncLogic ", "update mobile friend list");
+    Object localObject = (String[])this.gAE.gAB.toArray(new String[0]);
+    this.gAE.gAB.clear();
     ArrayList localArrayList = new ArrayList();
     int j = localObject.length;
     int i = 0;
     if (i < j)
     {
       String str = localObject[i];
-      com.tencent.mm.plugin.account.friend.a.a locala = com.tencent.mm.plugin.account.b.getAddrUploadStg().pH(str);
-      if ((locala != null) && (!bk.bl(locala.WD())))
+      com.tencent.mm.plugin.account.friend.a.a locala = com.tencent.mm.plugin.account.a.getAddrUploadStg().wX(str);
+      if ((locala != null) && (!bo.isNullOrNil(locala.aqf())))
       {
-        localArrayList.add(locala.WD());
-        y.i("MicroMsg.ContactsAutoSyncLogic ", "find mobile %s username %s", new Object[] { locala.WD(), str });
+        localArrayList.add(locala.aqf());
+        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ContactsAutoSyncLogic ", "find mobile %s username %s", new Object[] { locala.aqf(), str });
       }
       for (;;)
       {
         i += 1;
         break;
-        y.i("MicroMsg.ContactsAutoSyncLogic ", "not find mobile username %s", new Object[] { str });
+        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ContactsAutoSyncLogic ", "not find mobile username %s", new Object[] { str });
       }
     }
-    g.Dk().a(32, this.fjm);
+    g.Rc().a(32, this.gAE);
     if (localArrayList.size() == 0)
     {
-      y.i("MicroMsg.ContactsAutoSyncLogic ", "sync mobile list is zero");
-      localObject = new ab();
-      g.Dk().a((m)localObject, 0);
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ContactsAutoSyncLogic ", "sync mobile list is zero");
+      localObject = new com.tencent.mm.plugin.account.friend.a.ab();
+      g.Rc().a((m)localObject, 0);
+      AppMethodBeat.o(124656);
       return;
     }
-    y.i("MicroMsg.ContactsAutoSyncLogic ", "sync mobile list is %d", new Object[] { Integer.valueOf(localArrayList.size()) });
-    localObject = new ab(localArrayList, null);
-    g.Dk().a((m)localObject, 0);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ContactsAutoSyncLogic ", "sync mobile list is %d", new Object[] { Integer.valueOf(localArrayList.size()) });
+    localObject = new com.tencent.mm.plugin.account.friend.a.ab(localArrayList, null);
+    g.Rc().a((m)localObject, 0);
+    AppMethodBeat.o(124656);
   }
 }
 

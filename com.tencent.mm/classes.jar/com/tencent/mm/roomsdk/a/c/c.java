@@ -2,47 +2,61 @@ package com.tencent.mm.roomsdk.a.c;
 
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.h;
 
 public final class c
   extends a
 {
-  com.tencent.mm.sdk.b.c dpQ = new c.1(this);
-  public i.b ubx;
-  boolean uby = false;
-  h.a ubz = new c.2(this);
+  com.tencent.mm.sdk.b.c ehn;
+  public j.b yjM;
+  boolean yjN;
+  i.a yjO;
   
   public c(boolean paramBoolean)
   {
-    this.ubr = paramBoolean;
+    AppMethodBeat.i(80266);
+    this.yjN = false;
+    this.ehn = new c.1(this);
+    this.yjO = new c.2(this);
+    this.yjH = paramBoolean;
+    AppMethodBeat.o(80266);
   }
   
   public final void a(Context paramContext, String paramString, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    this.tipDialog = com.tencent.mm.ui.base.h.b(paramContext, paramString, paramBoolean, paramOnCancelListener);
-    cpz();
+    AppMethodBeat.i(80269);
+    this.tipDialog = h.b(paramContext, paramString, paramBoolean, paramOnCancelListener);
+    drn();
+    AppMethodBeat.o(80269);
   }
   
   public final void cancel()
   {
-    ((j)g.r(j.class)).Fv().c(this.ubx);
-    ((j)g.r(j.class)).Fv().b(this.ubx.getCmdId(), this.ubz);
-    this.dpQ.dead();
+    AppMethodBeat.i(80267);
+    ((j)g.E(j.class)).Yz().d(this.yjM);
+    ((j)g.E(j.class)).Yz().b(this.yjM.getCmdId(), this.yjO);
+    this.ehn.dead();
+    AppMethodBeat.o(80267);
   }
   
-  public final void cpz()
+  public final void drn()
   {
-    y.i("MicroMsg.RoomCallbackFactory", "request oplog %s", new Object[] { this.ubx });
-    if ((this.ubs != null) || (this.ubt != null) || (this.ubu != null))
+    AppMethodBeat.i(80268);
+    ab.i("MicroMsg.RoomCallbackFactory", "request oplog %s", new Object[] { this.yjM });
+    if ((this.yjI != null) || (this.yjJ != null) || (this.yjK != null))
     {
-      this.dpQ.cqo();
-      ((j)g.r(j.class)).Fv().a(this.ubx.getCmdId(), this.ubz);
+      this.ehn.alive();
+      ((j)g.E(j.class)).Yz().a(this.yjM.getCmdId(), this.yjO);
     }
-    ((j)g.r(j.class)).Fv().b(this.ubx);
+    ((j)g.E(j.class)).Yz().c(this.yjM);
+    AppMethodBeat.o(80268);
   }
 }
 

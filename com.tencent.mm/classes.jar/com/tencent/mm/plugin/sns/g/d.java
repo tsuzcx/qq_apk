@@ -1,152 +1,108 @@
 package com.tencent.mm.plugin.sns.g;
 
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public final class d
-  extends com.tencent.mm.bv.a
 {
-  public LinkedList<e> owS = new LinkedList();
-  public LinkedList<e> owT = new LinkedList();
-  public LinkedList<e> owU = new LinkedList();
-  public LinkedList<e> owV = new LinkedList();
-  public LinkedList<f> owW = new LinkedList();
-  public LinkedList<f> owX = new LinkedList();
+  public boolean cqS;
+  public String nZZ;
+  public String rkS;
+  public String rkT;
+  public int rlu;
+  public List<d.b> rlv;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public d()
   {
-    if (paramInt == 0)
+    AppMethodBeat.i(36802);
+    this.rkT = "";
+    this.rkS = "";
+    this.nZZ = "";
+    this.rlu = 0;
+    this.rlv = new ArrayList();
+    this.cqS = true;
+    AppMethodBeat.o(36802);
+  }
+  
+  public final boolean h(String paramString1, String paramString2, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(36803);
+    this.rkT = paramString1;
+    this.rkS = paramString2;
+    if (paramMap == null)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.d(1, 8, this.owS);
-      paramVarArgs.d(2, 8, this.owT);
-      paramVarArgs.d(3, 8, this.owU);
-      paramVarArgs.d(4, 8, this.owV);
-      paramVarArgs.d(5, 8, this.owW);
-      paramVarArgs.d(6, 8, this.owX);
-      return 0;
+      AppMethodBeat.o(36803);
+      return false;
     }
-    if (paramInt == 1) {
-      return d.a.a.a.c(1, 8, this.owS) + 0 + d.a.a.a.c(2, 8, this.owT) + d.a.a.a.c(3, 8, this.owU) + d.a.a.a.c(4, 8, this.owV) + d.a.a.a.c(5, 8, this.owW) + d.a.a.a.c(6, 8, this.owX);
-    }
-    if (paramInt == 2)
+    for (;;)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.owS.clear();
-      this.owT.clear();
-      this.owU.clear();
-      this.owV.clear();
-      this.owW.clear();
-      this.owX.clear();
-      paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
-        }
-      }
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (d.a.a.a.a)paramVarArgs[0];
-      d locald = (d)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      Object localObject2;
-      boolean bool;
-      switch (paramInt)
+      try
       {
-      default: 
-        return -1;
-      case 1: 
-        paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new e();
-          localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((e)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-          locald.owS.add(localObject1);
-          paramInt += 1;
+        this.rlv.clear();
+        this.nZZ = bo.bf((String)paramMap.get("language"), "");
+        if (!this.nZZ.equals("zh_cn")) {
+          this.cqS = false;
         }
-        return 0;
-      case 2: 
-        paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new e();
-          localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((e)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-          locald.owT.add(localObject1);
-          paramInt += 1;
+        int k = bo.apV((String)paramMap.get("tipcount"));
+        m = bo.apV((String)paramMap.get("expertype"));
+        i = 0;
+        if (i >= k) {
+          continue;
         }
-        return 0;
-      case 3: 
-        paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new e();
-          localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((e)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-          locald.owU.add(localObject1);
-          paramInt += 1;
+        paramString2 = new d.b();
+        paramString2.title = bo.bf((String)paramMap.get(String.format("tip_%d_basetextformat", new Object[] { Integer.valueOf(i) })), "");
+        paramString2.rlz = bo.apV((String)paramMap.get(String.format("tip_%d_id", new Object[] { Integer.valueOf(i) })));
+        paramString2.showType = bo.apV((String)paramMap.get(String.format("tip_%d_showtype", new Object[] { Integer.valueOf(i) })));
+        n = bo.apV((String)paramMap.get(String.format("tip_%d_button_count", new Object[] { Integer.valueOf(i) })));
+        if (paramString2.showType < 6) {
+          continue;
         }
-        return 0;
-      case 4: 
-        paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new e();
-          localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((e)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-          locald.owV.add(localObject1);
-          paramInt += 1;
-        }
-        return 0;
-      case 5: 
-        paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new f();
-          localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((f)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-          locald.owW.add(localObject1);
-          paramInt += 1;
-        }
-        return 0;
+        this.cqS = false;
       }
-      paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      catch (Exception paramString1)
       {
-        localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new f();
-        localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (bool = true; bool; bool = ((f)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-        locald.owX.add(localObject1);
-        paramInt += 1;
+        int m;
+        int i;
+        int n;
+        d.a locala;
+        ab.printErrStackTrace("Micromsg.SnsABTestInfo", paramString1, "feed xml error ", new Object[0]);
+        continue;
+        int j = 0;
+        continue;
       }
-      return 0;
+      if (j < n)
+      {
+        locala = new d.a();
+        locala.index = bo.apV((String)paramMap.get(String.format("tip_%d_button_%d_index", new Object[] { Integer.valueOf(i), Integer.valueOf(j) })));
+        locala.actionType = bo.apV((String)paramMap.get(String.format("tip_%d_button_%d_actiontype", new Object[] { Integer.valueOf(i), Integer.valueOf(j) })));
+        locala.rlw = bo.bf((String)paramMap.get(String.format("tip_%d_button_%d_basetextformat", new Object[] { Integer.valueOf(i), Integer.valueOf(j) })), "");
+        locala.jumpUrl = bo.bf((String)paramMap.get(String.format("tip_%d_button_%d_jumpurl", new Object[] { Integer.valueOf(i), Integer.valueOf(j) })), "");
+        locala.rlx = bo.bf((String)paramMap.get(String.format("tip_%d_button_%d_priortextformat", new Object[] { Integer.valueOf(i), Integer.valueOf(j) })), "");
+        locala.rly = bo.apV((String)paramMap.get(String.format("tip_%d_button_%d_nexttipviewid", new Object[] { Integer.valueOf(i), Integer.valueOf(j) })));
+        if (locala.actionType >= 9) {
+          this.cqS = false;
+        }
+        paramString2.hjU.add(locala);
+        j += 1;
+      }
+      else
+      {
+        this.rlv.add(paramString2);
+        i += 1;
+      }
     }
-    return -1;
+    ab.i("Micromsg.SnsABTestInfo", "expertType " + m + " " + paramString1);
+    AppMethodBeat.o(36803);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.g.d
  * JD-Core Version:    0.7.0.1
  */

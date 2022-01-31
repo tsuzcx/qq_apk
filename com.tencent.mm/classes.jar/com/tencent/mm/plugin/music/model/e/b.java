@@ -2,359 +2,171 @@ package com.tencent.mm.plugin.music.model.e;
 
 import android.content.Context;
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.music.a.f;
-import com.tencent.mm.plugin.music.model.a.a;
+import com.tencent.mm.memory.a.c;
 import com.tencent.mm.plugin.music.model.d;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class b
-  extends i<a>
+  extends j<a>
 {
-  public com.tencent.mm.sdk.e.e dXw;
-  public f<String, a> mAr;
-  public f<String, com.tencent.mm.plugin.music.model.a> mAs;
+  public com.tencent.mm.sdk.e.e db;
+  public f<String, a> pax;
+  public f<String, com.tencent.mm.plugin.music.model.a> pay;
   
   public b(com.tencent.mm.sdk.e.e parame)
   {
-    super(parame, a.buS, "Music", null);
-    this.dXw = parame;
-    this.mAr = new f(20);
-    this.mAs = new f(10);
+    super(parame, a.info, "Music", null);
+    AppMethodBeat.i(105034);
+    this.db = parame;
+    this.pax = new c(20);
+    this.pay = new c(10);
+    AppMethodBeat.o(105034);
   }
   
-  public final a JE(String paramString)
+  public final a VC(String paramString)
   {
-    if (this.mAr.get(paramString) != null) {
-      return (a)this.mAr.get(paramString);
+    AppMethodBeat.i(105035);
+    if (this.pax.get(paramString) != null)
+    {
+      paramString = (a)this.pax.get(paramString);
+      AppMethodBeat.o(105035);
+      return paramString;
     }
     Object localObject = String.format("Select * From Music Where musicId=?", new Object[0]);
-    localObject = this.dXw.a((String)localObject, new String[] { paramString }, 2);
+    localObject = this.db.a((String)localObject, new String[] { paramString }, 2);
     if ((localObject != null) && (((Cursor)localObject).moveToFirst()))
     {
       a locala = new a();
-      locala.d((Cursor)localObject);
+      locala.convertFrom((Cursor)localObject);
       ((Cursor)localObject).close();
-      this.mAr.put(paramString, locala);
+      this.pax.put(paramString, locala);
+      AppMethodBeat.o(105035);
       return locala;
     }
     if (localObject != null) {
       ((Cursor)localObject).close();
     }
+    AppMethodBeat.o(105035);
     return null;
   }
   
-  public final a Y(String paramString, int paramInt1, int paramInt2)
+  public final a ap(String paramString, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.Music.MusicStorage", "updateMusicWithColor %s %d %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    a locala = JE(paramString);
+    AppMethodBeat.i(105038);
+    ab.i("MicroMsg.Music.MusicStorage", "updateMusicWithColor %s %d %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    a locala = VC(paramString);
     if (locala == null)
     {
-      y.e("MicroMsg.Music.MusicStorage", "updateMusicWithColor can not find music %s", new Object[] { paramString });
+      ab.e("MicroMsg.Music.MusicStorage", "updateMusicWithColor can not find music %s", new Object[] { paramString });
+      AppMethodBeat.o(105038);
       return null;
     }
     locala.field_songBgColor = paramInt1;
     locala.field_songLyricColor = paramInt2;
-    c(locala, new String[] { "songBgColor", "songLyricColor" });
-    this.mAr.put(paramString, locala);
+    update(locala, new String[] { "songBgColor", "songLyricColor" });
+    this.pax.put(paramString, locala);
+    AppMethodBeat.o(105038);
     return locala;
   }
   
   public final com.tencent.mm.plugin.music.model.a b(a parama, boolean paramBoolean)
   {
-    String str2 = parama.field_songLyric;
-    String str1 = ae.getContext().getString(a.f.music_prefix);
-    String str3 = parama.field_songSnsShareUser;
-    boolean bool = d.a(parama);
-    Object localObject1 = parama.field_songSinger;
-    com.tencent.mm.plugin.music.model.a locala = new com.tencent.mm.plugin.music.model.a();
-    long l = bk.UZ();
-    if (!bk.bl(str2)) {
-      if (str2 == null)
-      {
-        y.w("MicroMsg.Music.LyricObj", "parserLrc: but lrc or lrcMgr is null");
-        y.d("MicroMsg.Music.LyricObj", "getLrcMgr beg: src lrc = %s", new Object[] { str2 });
-        y.d("MicroMsg.Music.LyricObj", "parse finish: sentence size [%d], result:", new Object[] { Integer.valueOf(locala.mzk.size()) });
-        label110:
-        if (!bk.bl(str3)) {
-          break label1027;
-        }
-        y.w("MicroMsg.Music.LyricObj", "add lyric prefix: but prefix is empty, return");
-        label125:
-        if (!bk.bl(str2))
-        {
-          if (!bk.bl(str1)) {
-            break label1187;
-          }
-          y.w("MicroMsg.Music.LyricObj", "add lyric prefix: but prefix is empty, return");
-        }
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(105036);
+    if (this.pay.get(parama.field_musicId) != null)
     {
-      y.d("MicroMsg.Music.LyricObj", "getLrcMgr finish: use %d ms", new Object[] { Long.valueOf(bk.cp(l)) });
-      this.mAs.put(parama.field_musicId, locala);
-      return locala;
-      localObject1 = str2.replaceAll("\n", " ").replaceAll("\r", " ");
-      Matcher localMatcher1 = Pattern.compile("(\\[((\\d{2}:\\d{2}(\\.\\d{2}){0,1}\\])|(al:|ar:|by:|offset:|re:|ti:|ve:))[^\\[]*)").matcher((CharSequence)localObject1);
-      while (localMatcher1.find())
-      {
-        String str4 = localMatcher1.group();
-        localMatcher1.start();
-        localMatcher1.end();
-        if (str4 == null)
-        {
-          y.w("MicroMsg.Music.LyricObj", "parserLine fail: lrcMgr or str is null");
-        }
-        else if (str4.startsWith("[ti:"))
-        {
-          locala.title = com.tencent.mm.plugin.music.model.a.ee(str4, "[ti:");
-        }
-        else if (str4.startsWith("[ar:"))
-        {
-          locala.giq = com.tencent.mm.plugin.music.model.a.ee(str4, "[ar:");
-        }
-        else if (str4.startsWith("[al:"))
-        {
-          locala.album = com.tencent.mm.plugin.music.model.a.ee(str4, "[al:");
-        }
-        else if (str4.startsWith("[by:"))
-        {
-          locala.mzm = com.tencent.mm.plugin.music.model.a.ee(str4, "[by:");
-        }
-        else if (str4.startsWith("[offset:"))
-        {
-          locala.pj = bk.getLong(com.tencent.mm.plugin.music.model.a.ee(str4, "[offset:"), 0L);
-        }
-        else if (str4.startsWith("[re:"))
-        {
-          locala.mzn = com.tencent.mm.plugin.music.model.a.ee(str4, "[re:");
-        }
-        else if (str4.startsWith("[ve:"))
-        {
-          locala.mzo = com.tencent.mm.plugin.music.model.a.ee(str4, "[ve:");
-        }
-        else
-        {
-          Pattern localPattern = Pattern.compile("\\[(\\d{2}:\\d{2}(\\.\\d{2}){0,1})\\]");
-          Matcher localMatcher2 = localPattern.matcher(str4);
-          a.a locala1 = new a.a();
-          label476:
-          if (localMatcher2.find())
-          {
-            if (localMatcher2.groupCount() > 0) {
-              locala1.timestamp = com.tencent.mm.plugin.music.model.a.Jy(localMatcher2.group(1));
-            }
-            localObject1 = localPattern.split(str4);
-            if ((localObject1 != null) && (localObject1.length > 0))
-            {
-              localObject2 = localObject1[(localObject1.length - 1)];
-              localObject1 = localObject2;
-              if (localObject2 != null) {
-                localObject1 = ((String)localObject2).trim();
-              }
-              localObject2 = localObject1;
-              if (bk.bl((String)localObject1)) {
-                localObject2 = " ";
-              }
-              locala1.content = ((String)localObject2);
-              i = 0;
-            }
-            for (;;)
-            {
-              if (i < locala.mzl.size())
-              {
-                localObject1 = new a.a();
-                ((a.a)localObject1).timestamp = ((Long)locala.mzl.get(i)).longValue();
-                ((a.a)localObject1).content = locala1.content;
-                ((a.a)localObject1).mzq = true;
-                i += 1;
-                continue;
-                locala.mzl.add(Long.valueOf(locala1.timestamp));
-                break;
-              }
-            }
-            locala.mzl.clear();
-            i = locala.mzk.size() - 1;
-          }
-          for (;;)
-          {
-            if ((i >= 0) && (((a.a)locala.mzk.get(i)).timestamp != locala1.timestamp))
-            {
-              if (((a.a)locala.mzk.get(i)).timestamp < locala1.timestamp) {
-                locala.mzk.add(i + 1, locala1);
-              }
-            }
-            else
-            {
-              if (i >= 0) {
-                break label476;
-              }
-              locala.mzk.add(0, locala1);
-              break label476;
-              break;
-            }
-            i -= 1;
-          }
-        }
-      }
-      y.d("MicroMsg.Music.LyricObj", "handle offset %d", new Object[] { Long.valueOf(locala.pj) });
-      if (locala.pj != 0L)
-      {
-        i = 0;
-        while (i < locala.mzk.size())
-        {
-          localObject1 = (a.a)locala.mzk.get(i);
-          ((a.a)localObject1).timestamp += locala.pj;
-          i += 1;
-        }
-        locala.pj = 0L;
-      }
-      int i = 0;
-      while (i < locala.mzk.size() - 1)
-      {
-        localObject1 = (a.a)locala.mzk.get(i);
-        if ((((a.a)localObject1).mzq) && (((a.a)localObject1).content.equals(((a.a)locala.mzk.get(i + 1)).content))) {
-          ((a.a)localObject1).content = " ";
-        }
-        i += 1;
-      }
-      break;
-      Object localObject2 = new a.a();
-      ((a.a)localObject2).timestamp = 0L;
-      if (paramBoolean) {
-        ((a.a)localObject2).content = ((String)localObject1);
-      }
-      for (;;)
-      {
-        if (((a.a)localObject2).content == null) {
-          break label1025;
-        }
-        locala.mzk.add(localObject2);
-        break;
-        if (!bool) {
-          ((a.a)localObject2).content = ae.getContext().getString(a.f.no_licence_lyric_wording);
-        } else {
-          ((a.a)localObject2).content = ae.getContext().getString(a.f.no_lyric_wording);
-        }
-      }
-      label1025:
-      break label110;
-      label1027:
-      localObject1 = new a.a();
-      ((a.a)localObject1).timestamp = 0L;
-      ((a.a)localObject1).content = ae.getContext().getString(a.f.user_share_music, new Object[] { r.gV(str3) });
-      if (locala.mzk.isEmpty())
-      {
-        locala.mzk.add(localObject1);
-        break label125;
-      }
-      if (locala.mzk.size() == 1)
-      {
-        locala.mzk.add(0, localObject1);
-        ((a.a)locala.mzk.get(1)).timestamp = 5000L;
-        break label125;
-      }
-      locala.mzk.add(0, localObject1);
-      ((a.a)locala.mzk.get(1)).timestamp = (3L * (((a.a)locala.mzk.get(2)).timestamp >> 2));
-      break label125;
-      label1187:
-      localObject1 = new a.a();
-      ((a.a)localObject1).timestamp = 0L;
-      ((a.a)localObject1).content = str1;
-      if (locala.mzk.isEmpty())
-      {
-        locala.mzk.add(localObject1);
-      }
-      else if (locala.mzk.size() == 1)
-      {
-        locala.mzk.add(0, localObject1);
-        ((a.a)locala.mzk.get(1)).timestamp = 5000L;
-      }
-      else
-      {
-        locala.mzk.add(0, localObject1);
-        ((a.a)locala.mzk.get(1)).timestamp = (3L * (((a.a)locala.mzk.get(2)).timestamp >> 2));
-      }
+      parama = (com.tencent.mm.plugin.music.model.a)this.pay.get(parama.field_musicId);
+      AppMethodBeat.o(105036);
+      return parama;
     }
+    parama = c(parama, paramBoolean);
+    AppMethodBeat.o(105036);
+    return parama;
   }
   
-  public final a x(com.tencent.mm.av.e parame)
+  public final com.tencent.mm.plugin.music.model.a c(a parama, boolean paramBoolean)
   {
+    AppMethodBeat.i(105037);
+    com.tencent.mm.plugin.music.model.a locala = com.tencent.mm.plugin.music.model.a.a(parama.field_songLyric, ah.getContext().getString(2131301731), parama.field_songSnsShareUser, d.a(parama), parama.field_songSinger, paramBoolean);
+    this.pay.put(parama.field_musicId, locala);
+    AppMethodBeat.o(105037);
+    return locala;
+  }
+  
+  public final a x(com.tencent.mm.aw.e parame)
+  {
+    AppMethodBeat.i(105039);
     String str = com.tencent.mm.plugin.music.h.b.K(parame);
-    a locala = JE(str);
+    a locala = VC(str);
     if (locala == null) {
       locala = new a();
     }
     for (int i = 0;; i = 1)
     {
       locala.field_musicId = str;
-      locala.field_originMusicId = parame.eux;
-      locala.field_musicType = parame.euv;
-      locala.field_appId = parame.euK;
-      if (bk.bl(locala.field_appId)) {
+      locala.field_originMusicId = parame.fKj;
+      locala.field_musicType = parame.fKh;
+      locala.field_appId = parame.fKw;
+      if (bo.isNullOrNil(locala.field_appId)) {
         locala.field_appId = d.v(parame);
       }
-      locala.field_songAlbum = parame.euB;
-      locala.field_songAlbumType = parame.euL;
-      locala.field_songWifiUrl = parame.euD;
-      locala.field_songName = parame.euz;
-      locala.field_songSinger = parame.euA;
-      locala.field_songWapLinkUrl = parame.euE;
-      locala.field_songWebUrl = parame.euF;
-      locala.field_songAlbumLocalPath = parame.euH;
-      locala.field_songMediaId = parame.euN;
-      locala.field_songSnsAlbumUser = parame.euP;
-      locala.field_songAlbumUrl = parame.euC;
-      locala.field_songSnsShareUser = parame.euR;
-      if (!bk.bl(parame.euO)) {
-        locala.field_songHAlbumUrl = parame.euO;
+      locala.field_songAlbum = parame.fKn;
+      locala.field_songAlbumType = parame.fKx;
+      locala.field_songWifiUrl = parame.fKp;
+      locala.field_songName = parame.fKl;
+      locala.field_songSinger = parame.fKm;
+      locala.field_songWapLinkUrl = parame.fKq;
+      locala.field_songWebUrl = parame.fKr;
+      locala.field_songAlbumLocalPath = parame.fKt;
+      locala.field_songMediaId = parame.fKz;
+      locala.field_songSnsAlbumUser = parame.fKB;
+      locala.field_songAlbumUrl = parame.fKo;
+      locala.field_songSnsShareUser = parame.fKD;
+      if (!bo.isNullOrNil(parame.fKA)) {
+        locala.field_songHAlbumUrl = parame.fKA;
       }
       locala.field_updateTime = System.currentTimeMillis();
       if (locala.field_songId == 0)
       {
-        com.tencent.mm.plugin.music.h.e.N(parame);
-        locala.field_songId = parame.euM;
+        com.tencent.mm.plugin.music.h.e.P(parame);
+        locala.field_songId = parame.fKy;
       }
-      if (((bk.bl(locala.field_songWapLinkUrl)) || (locala.field_songWapLinkUrl.equals(locala.field_songWebUrl))) && (!bk.bl(locala.field_songWifiUrl))) {
+      if (((bo.isNullOrNil(locala.field_songWapLinkUrl)) || (locala.field_songWapLinkUrl.equals(locala.field_songWebUrl))) && (!bo.isNullOrNil(locala.field_songWifiUrl))) {
         locala.field_songWapLinkUrl = locala.field_songWifiUrl;
       }
-      if ((locala.field_songId == 0) && (parame.euv == 4)) {}
+      if ((locala.field_songId == 0) && (parame.fKh == 4)) {}
       try
       {
-        locala.field_songId = Integer.valueOf(parame.eux).intValue();
-        label287:
-        locala.field_hideBanner = parame.euT;
-        locala.field_jsWebUrlDomain = parame.euU;
+        locala.field_songId = Integer.valueOf(parame.fKj).intValue();
+        label292:
+        locala.field_hideBanner = parame.fKF;
+        locala.field_jsWebUrlDomain = parame.fKG;
         locala.field_startTime = parame.startTime;
-        locala.euV = parame.euV;
+        locala.fKH = parame.fKH;
         locala.field_protocol = parame.protocol;
-        locala.field_barBackToWebView = parame.euW;
-        locala.field_musicbar_url = parame.euX;
+        locala.field_barBackToWebView = parame.fKI;
+        locala.field_musicbar_url = parame.fKJ;
         if (i != 0)
         {
-          y.i("MicroMsg.Music.MusicStorage", "update music %s", new Object[] { str });
-          c(locala, new String[0]);
+          ab.i("MicroMsg.Music.MusicStorage", "update music %s", new Object[] { str });
+          update(locala, new String[0]);
         }
         for (;;)
         {
-          this.mAr.put(str, locala);
+          this.pax.put(str, locala);
+          AppMethodBeat.o(105039);
           return locala;
-          y.i("MicroMsg.Music.MusicStorage", "insert music %s", new Object[] { str });
-          b(locala);
+          ab.i("MicroMsg.Music.MusicStorage", "insert music %s", new Object[] { str });
+          insert(locala);
         }
       }
       catch (Exception localException)
       {
-        break label287;
+        break label292;
       }
     }
   }

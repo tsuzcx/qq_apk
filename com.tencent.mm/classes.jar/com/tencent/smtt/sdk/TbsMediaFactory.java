@@ -1,44 +1,63 @@
 package com.tencent.smtt.sdk;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.DexLoader;
 
 public class TbsMediaFactory
 {
-  private Context a = null;
-  private bi b = null;
-  private DexLoader c = null;
+  private Context a;
+  private bl b;
+  private DexLoader c;
   
   public TbsMediaFactory(Context paramContext)
   {
+    AppMethodBeat.i(64518);
+    this.a = null;
+    this.b = null;
+    this.c = null;
     this.a = paramContext.getApplicationContext();
     a();
+    AppMethodBeat.o(64518);
   }
   
   private void a()
   {
-    if (this.a == null) {}
-    do
+    AppMethodBeat.i(64519);
+    if (this.a == null)
     {
+      AppMethodBeat.o(64519);
       return;
-      if (this.b == null)
-      {
-        o.a(true).a(this.a, false, false, null);
-        this.b = o.a(true).a();
-        if (this.b != null) {
-          this.c = this.b.b();
-        }
+    }
+    if (this.b == null)
+    {
+      o.a(true).a(this.a, false, false, null);
+      this.b = o.a(true).a();
+      if (this.b != null) {
+        this.c = this.b.b();
       }
-    } while ((this.b != null) && (this.c != null));
-    throw new RuntimeException("tbs core dex(s) load failure !!!");
+    }
+    if ((this.b == null) || (this.c == null))
+    {
+      RuntimeException localRuntimeException = new RuntimeException("tbs core dex(s) load failure !!!");
+      AppMethodBeat.o(64519);
+      throw localRuntimeException;
+    }
+    AppMethodBeat.o(64519);
   }
   
   public TbsMediaPlayer createPlayer()
   {
-    if ((this.b == null) || (this.c == null)) {
-      throw new RuntimeException("tbs core dex(s) did not loaded !!!");
+    AppMethodBeat.i(64520);
+    if ((this.b == null) || (this.c == null))
+    {
+      localObject = new RuntimeException("tbs core dex(s) did not loaded !!!");
+      AppMethodBeat.o(64520);
+      throw ((Throwable)localObject);
     }
-    return new TbsMediaPlayer(new ba(this.c, this.a));
+    Object localObject = new TbsMediaPlayer(new bb(this.c, this.a));
+    AppMethodBeat.o(64520);
+    return localObject;
   }
 }
 

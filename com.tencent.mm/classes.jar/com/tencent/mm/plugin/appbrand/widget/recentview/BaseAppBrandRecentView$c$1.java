@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.recentview;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseAppBrandRecentView$c$1
   implements View.OnClickListener
@@ -10,11 +11,13 @@ final class BaseAppBrandRecentView$c$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(134350);
     a locala = (a)paramView.getTag();
-    locala.position = this.hCV.id();
-    if (this.hCV.hCR.getOnItemClickListener() != null) {
-      this.hCV.hCR.getOnItemClickListener().a(paramView, locala, BaseAppBrandRecentView.c(this.hCV.hCR), BaseAppBrandRecentView.d(this.hCV.hCR));
+    locala.position = this.jvw.jN();
+    if (this.jvw.jvt.getOnItemClickListener() != null) {
+      this.jvw.jvt.getOnItemClickListener().a(paramView, locala, BaseAppBrandRecentView.c(this.jvw.jvt), BaseAppBrandRecentView.d(this.jvw.jvt));
     }
+    AppMethodBeat.o(134350);
   }
 }
 

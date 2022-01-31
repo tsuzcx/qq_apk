@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.fts;
 
-import com.tencent.mm.h.a.ca;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cd;
 import com.tencent.mm.sdk.b.c;
 
 final class PluginFTS$5
-  extends c<ca>
+  extends c<cd>
 {
   PluginFTS$5(PluginFTS paramPluginFTS)
   {
-    this.udX = ca.class.getName().hashCode();
+    AppMethodBeat.i(136584);
+    this.__eventId = cd.class.getName().hashCode();
+    AppMethodBeat.o(136584);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.PluginFTS.5
  * JD-Core Version:    0.7.0.1
  */

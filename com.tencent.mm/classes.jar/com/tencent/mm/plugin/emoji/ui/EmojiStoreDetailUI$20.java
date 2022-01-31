@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.mm.as.a.c.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.c.i;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class EmojiStoreDetailUI$20
   implements i
@@ -12,10 +13,12 @@ final class EmojiStoreDetailUI$20
   
   public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
   {
-    y.d("MicroMsg.emoji.EmojiStoreDetailUI", "[cpan] on image load complete url:%s", new Object[] { paramString });
+    AppMethodBeat.i(53437);
+    ab.d("MicroMsg.emoji.EmojiStoreDetailUI", "[cpan] on image load complete url:%s", new Object[] { paramString });
     if (paramBitmap != null) {
-      this.jeK.pX(1006);
+      this.lnA.ut(1006);
     }
+    AppMethodBeat.o(53437);
   }
 }
 

@@ -3,22 +3,19 @@ package com.tencent.mm.plugin.game.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class GameBlockView
   extends LinearLayout
 {
-  LayoutInflater Lu;
-  LinearLayout.LayoutParams kXB;
-  k kXC;
-  GameBlockView.a kXD;
-  LinearLayout kjd;
+  LinearLayout mDJ;
+  LayoutInflater mInflater;
+  LinearLayout.LayoutParams nvD;
+  k nvE;
+  GameBlockView.a nvF;
   
   public GameBlockView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,13 +24,15 @@ public class GameBlockView
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111744);
     super.onFinishInflate();
     setOrientation(1);
-    this.Lu = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
-    this.kXB = new LinearLayout.LayoutParams(-1, -2);
-    this.kjd = this;
-    this.kXC = new k();
-    y.i("MicroMsg.GameBlockView", "initView finished");
+    this.mInflater = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
+    this.nvD = new LinearLayout.LayoutParams(-1, -2);
+    this.mDJ = this;
+    this.nvE = new k();
+    ab.i("MicroMsg.GameBlockView", "initView finished");
+    AppMethodBeat.o(111744);
   }
 }
 

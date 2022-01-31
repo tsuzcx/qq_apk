@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObject;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import java.util.ArrayList;
@@ -9,9 +10,16 @@ import java.util.ArrayList;
 final class JsApiChooseImage$ChooseResult
   extends AppBrandProxyUIProcessTask.ProcessResult
 {
-  public static final Parcelable.Creator<ChooseResult> CREATOR = new Parcelable.Creator() {};
-  int aYY;
-  ArrayList<AppBrandLocalMediaObject> gvq;
+  public static final Parcelable.Creator<ChooseResult> CREATOR;
+  int bpE;
+  ArrayList<AppBrandLocalMediaObject> hQH;
+  
+  static
+  {
+    AppMethodBeat.i(131134);
+    CREATOR = new JsApiChooseImage.ChooseResult.1();
+    AppMethodBeat.o(131134);
+  }
   
   JsApiChooseImage$ChooseResult() {}
   
@@ -25,16 +33,20 @@ final class JsApiChooseImage$ChooseResult
     return 0;
   }
   
-  protected final void h(Parcel paramParcel)
+  public final void j(Parcel paramParcel)
   {
-    this.aYY = paramParcel.readInt();
-    this.gvq = paramParcel.createTypedArrayList(AppBrandLocalMediaObject.CREATOR);
+    AppMethodBeat.i(131132);
+    this.bpE = paramParcel.readInt();
+    this.hQH = paramParcel.createTypedArrayList(AppBrandLocalMediaObject.CREATOR);
+    AppMethodBeat.o(131132);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.aYY);
-    paramParcel.writeTypedList(this.gvq);
+    AppMethodBeat.i(131133);
+    paramParcel.writeInt(this.bpE);
+    paramParcel.writeTypedList(this.hQH);
+    AppMethodBeat.o(131133);
   }
 }
 

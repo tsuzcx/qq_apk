@@ -9,304 +9,85 @@ import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.os.Looper;
 import android.util.Base64;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
-import com.tencent.mm.ah.e.d;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.api.l;
-import com.tencent.mm.api.o;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.compatible.e.w;
-import com.tencent.mm.h.a.ig;
-import com.tencent.mm.h.a.iu;
-import com.tencent.mm.h.a.mt;
-import com.tencent.mm.h.a.ok;
-import com.tencent.mm.h.c.as;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.platformtools.aa;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.ai.e.b;
+import com.tencent.mm.ai.e.d;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.api.m;
+import com.tencent.mm.g.a.ik;
+import com.tencent.mm.g.a.jb;
+import com.tencent.mm.g.a.np;
+import com.tencent.mm.g.a.pm;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.platformtools.ai;
 import com.tencent.mm.platformtools.ai.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.MMProtocalJni;
-import com.tencent.mm.protocal.c.asz;
-import com.tencent.mm.protocal.c.bah;
-import com.tencent.mm.protocal.c.bai;
-import com.tencent.mm.protocal.c.baj;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.aza;
+import com.tencent.mm.protocal.protobuf.bhk;
+import com.tencent.mm.protocal.protobuf.bhl;
+import com.tencent.mm.protocal.protobuf.bhm;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ba;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.ak;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.storage.bb;
 import com.tencent.mm.storage.bi;
+import com.tencent.mm.storage.y;
 import java.io.ByteArrayOutputStream;
 import java.net.URLDecoder;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 public final class f
   implements com.tencent.mm.plugin.messenger.foundation.a.n
 {
-  private long dUC = -1L;
-  public f.a dUD;
+  private long fkL = -1L;
+  public f.a fkM;
   
-  /* Error */
-  private static String f(String paramString, long paramLong1, long paramLong2)
+  private static void Zg()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ldc 29
-    //   3: invokevirtual 35	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   6: ifeq +70 -> 76
-    //   9: new 37	java/util/zip/ZipFile
-    //   12: dup
-    //   13: invokestatic 43	com/tencent/mm/sdk/platformtools/ae:getContext	()Landroid/content/Context;
-    //   16: invokevirtual 49	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   19: getfield 55	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   22: invokespecial 58	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
-    //   25: astore 9
-    //   27: aload 9
-    //   29: aload 9
-    //   31: aload_0
-    //   32: iconst_1
-    //   33: invokevirtual 62	java/lang/String:substring	(I)Ljava/lang/String;
-    //   36: invokevirtual 66	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   39: invokevirtual 70	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   42: astore 8
-    //   44: aload 9
-    //   46: astore_0
-    //   47: lload_1
-    //   48: lconst_0
-    //   49: lcmp
-    //   50: ifle +37 -> 87
-    //   53: aload_0
-    //   54: astore 10
-    //   56: aload 8
-    //   58: astore 9
-    //   60: aload 8
-    //   62: lload_1
-    //   63: invokevirtual 76	java/io/InputStream:skip	(J)J
-    //   66: lstore 6
-    //   68: lload_1
-    //   69: lload 6
-    //   71: lsub
-    //   72: lstore_1
-    //   73: goto -26 -> 47
-    //   76: aload_0
-    //   77: invokestatic 82	com/tencent/mm/vfs/e:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   80: astore 8
-    //   82: aconst_null
-    //   83: astore_0
-    //   84: goto -37 -> 47
-    //   87: aload_0
-    //   88: astore 10
-    //   90: aload 8
-    //   92: astore 9
-    //   94: ldc 84
-    //   96: invokestatic 90	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   99: astore 11
-    //   101: aload_0
-    //   102: astore 10
-    //   104: aload 8
-    //   106: astore 9
-    //   108: sipush 2048
-    //   111: newarray byte
-    //   113: astore 12
-    //   115: lload_3
-    //   116: lconst_0
-    //   117: lcmp
-    //   118: ifle +60 -> 178
-    //   121: aload_0
-    //   122: astore 10
-    //   124: aload 8
-    //   126: astore 9
-    //   128: aload 8
-    //   130: aload 12
-    //   132: iconst_0
-    //   133: ldc2_w 91
-    //   136: lload_3
-    //   137: invokestatic 98	java/lang/Math:min	(JJ)J
-    //   140: l2i
-    //   141: invokevirtual 102	java/io/InputStream:read	([BII)I
-    //   144: istore 5
-    //   146: iload 5
-    //   148: iconst_m1
-    //   149: if_icmpeq +29 -> 178
-    //   152: aload_0
-    //   153: astore 10
-    //   155: aload 8
-    //   157: astore 9
-    //   159: aload 11
-    //   161: aload 12
-    //   163: iconst_0
-    //   164: iload 5
-    //   166: invokevirtual 106	java/security/MessageDigest:update	([BII)V
-    //   169: lload_3
-    //   170: iload 5
-    //   172: i2l
-    //   173: lsub
-    //   174: lstore_3
-    //   175: goto -60 -> 115
-    //   178: aload_0
-    //   179: astore 10
-    //   181: aload 8
-    //   183: astore 9
-    //   185: aload 11
-    //   187: invokevirtual 110	java/security/MessageDigest:digest	()[B
-    //   190: invokestatic 116	com/tencent/mm/sdk/platformtools/bk:bG	([B)Ljava/lang/String;
-    //   193: astore 11
-    //   195: aload 11
-    //   197: astore 9
-    //   199: aload 8
-    //   201: ifnull +8 -> 209
-    //   204: aload 8
-    //   206: invokevirtual 119	java/io/InputStream:close	()V
-    //   209: aload 9
-    //   211: astore 8
-    //   213: aload_0
-    //   214: ifnull +11 -> 225
-    //   217: aload_0
-    //   218: invokevirtual 120	java/util/zip/ZipFile:close	()V
-    //   221: aload 9
-    //   223: astore 8
-    //   225: aload 8
-    //   227: areturn
-    //   228: astore 11
-    //   230: aconst_null
-    //   231: astore_0
-    //   232: aconst_null
-    //   233: astore 8
-    //   235: aload_0
-    //   236: astore 10
-    //   238: aload 8
-    //   240: astore 9
-    //   242: ldc 122
-    //   244: aload 11
-    //   246: ldc 124
-    //   248: iconst_0
-    //   249: anewarray 4	java/lang/Object
-    //   252: invokestatic 130	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   255: ldc 124
-    //   257: astore 9
-    //   259: aload 8
-    //   261: ifnull +8 -> 269
-    //   264: aload 8
-    //   266: invokevirtual 119	java/io/InputStream:close	()V
-    //   269: aload 9
-    //   271: astore 8
-    //   273: aload_0
-    //   274: ifnull -49 -> 225
-    //   277: aload_0
-    //   278: invokevirtual 120	java/util/zip/ZipFile:close	()V
-    //   281: ldc 124
-    //   283: areturn
-    //   284: astore_0
-    //   285: ldc 124
-    //   287: areturn
-    //   288: astore_0
-    //   289: aconst_null
-    //   290: astore 10
-    //   292: aconst_null
-    //   293: astore 9
-    //   295: aload 9
-    //   297: ifnull +8 -> 305
-    //   300: aload 9
-    //   302: invokevirtual 119	java/io/InputStream:close	()V
-    //   305: aload 10
-    //   307: ifnull +8 -> 315
-    //   310: aload 10
-    //   312: invokevirtual 120	java/util/zip/ZipFile:close	()V
-    //   315: aload_0
-    //   316: athrow
-    //   317: astore 8
-    //   319: goto -110 -> 209
-    //   322: astore_0
-    //   323: aload 9
-    //   325: areturn
-    //   326: astore 8
-    //   328: goto -59 -> 269
-    //   331: astore 8
-    //   333: goto -28 -> 305
-    //   336: astore 8
-    //   338: goto -23 -> 315
-    //   341: astore_0
-    //   342: aconst_null
-    //   343: astore 8
-    //   345: aload 9
-    //   347: astore 10
-    //   349: aload 8
-    //   351: astore 9
-    //   353: goto -58 -> 295
-    //   356: astore_0
-    //   357: goto -62 -> 295
-    //   360: astore 11
-    //   362: aconst_null
-    //   363: astore 8
-    //   365: aload 9
-    //   367: astore_0
-    //   368: goto -133 -> 235
-    //   371: astore 11
-    //   373: goto -138 -> 235
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	376	0	paramString	String
-    //   0	376	1	paramLong1	long
-    //   0	376	3	paramLong2	long
-    //   144	27	5	i	int
-    //   66	4	6	l	long
-    //   42	230	8	localObject1	Object
-    //   317	1	8	localIOException1	java.io.IOException
-    //   326	1	8	localIOException2	java.io.IOException
-    //   331	1	8	localIOException3	java.io.IOException
-    //   336	1	8	localIOException4	java.io.IOException
-    //   343	21	8	localObject2	Object
-    //   25	341	9	localObject3	Object
-    //   54	294	10	localObject4	Object
-    //   99	97	11	localObject5	Object
-    //   228	17	11	localException1	Exception
-    //   360	1	11	localException2	Exception
-    //   371	1	11	localException3	Exception
-    //   113	49	12	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   0	27	228	java/lang/Exception
-    //   76	82	228	java/lang/Exception
-    //   277	281	284	java/io/IOException
-    //   0	27	288	finally
-    //   76	82	288	finally
-    //   204	209	317	java/io/IOException
-    //   217	221	322	java/io/IOException
-    //   264	269	326	java/io/IOException
-    //   300	305	331	java/io/IOException
-    //   310	315	336	java/io/IOException
-    //   27	44	341	finally
-    //   60	68	356	finally
-    //   94	101	356	finally
-    //   108	115	356	finally
-    //   128	146	356	finally
-    //   159	169	356	finally
-    //   185	195	356	finally
-    //   242	255	356	finally
-    //   27	44	360	java/lang/Exception
-    //   60	68	371	java/lang/Exception
-    //   94	101	371	java/lang/Exception
-    //   108	115	371	java/lang/Exception
-    //   128	146	371	java/lang/Exception
-    //   159	169	371	java/lang/Exception
-    //   185	195	371	java/lang/Exception
+    AppMethodBeat.i(16266);
+    List localList = com.tencent.mm.m.g.Nq().lv("^JDEntranceConfigName$");
+    ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "jd config name %s", new Object[] { localList });
+    if (localList.isEmpty()) {
+      com.tencent.mm.plugin.report.service.h.qsU.cT(931, 6);
+    }
+    for (;;)
+    {
+      localList = com.tencent.mm.m.g.Nq().lv("^JDEntranceConfigJumpUrl$");
+      ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "jd jump url %s", new Object[] { localList });
+      if (!localList.isEmpty()) {
+        break;
+      }
+      com.tencent.mm.plugin.report.service.h.qsU.cT(931, 8);
+      AppMethodBeat.o(16266);
+      return;
+      if (bo.isNullOrNil((String)localList.get(0))) {
+        com.tencent.mm.plugin.report.service.h.qsU.cT(931, 9);
+      }
+    }
+    if (bo.isNullOrNil((String)localList.get(0))) {
+      com.tencent.mm.plugin.report.service.h.qsU.cT(931, 11);
+    }
+    AppMethodBeat.o(16266);
   }
   
-  private static String f(Object... paramVarArgs)
+  private static String h(Object... paramVarArgs)
   {
+    AppMethodBeat.i(16270);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     for (;;)
     {
@@ -317,7 +98,7 @@ public final class f
         int m = paramVarArgs.length;
         i = 0;
         if (i >= m) {
-          break label218;
+          break label236;
         }
         localObject = paramVarArgs[i];
         if ((localObject instanceof String))
@@ -359,132 +140,389 @@ public final class f
       }
       catch (Exception paramVarArgs)
       {
-        com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.BigBallSysCmdMsgConsumer", paramVarArgs, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.BigBallSysCmdMsgConsumer", paramVarArgs, "", new Object[0]);
+        AppMethodBeat.o(16270);
         return "";
       }
       int j = 0;
       continue;
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BigBallSysCmdMsgConsumer", "Invalid object class: %s", new Object[] { localObject });
+      ab.e("MicroMsg.BigBallSysCmdMsgConsumer", "Invalid object class: %s", new Object[] { localObject });
+      AppMethodBeat.o(16270);
       return "";
-      label218:
-      paramVarArgs = bk.bG(MessageDigest.getInstance("MD5").digest(localByteArrayOutputStream.toByteArray()));
+      label236:
+      paramVarArgs = bo.cg(MessageDigest.getInstance("MD5").digest(localByteArrayOutputStream.toByteArray()));
+      AppMethodBeat.o(16270);
       return paramVarArgs;
       i += 1;
     }
   }
   
   /* Error */
-  private static long gy(String paramString)
+  private static String m(String paramString, long paramLong1, long paramLong2)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: ldc 29
-    //   3: invokevirtual 35	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   6: ifeq +115 -> 121
-    //   9: new 37	java/util/zip/ZipFile
-    //   12: dup
-    //   13: invokestatic 43	com/tencent/mm/sdk/platformtools/ae:getContext	()Landroid/content/Context;
-    //   16: invokevirtual 49	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   19: getfield 55	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   22: invokespecial 58	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
-    //   25: astore 4
-    //   27: aload 4
-    //   29: astore_3
-    //   30: aload 4
-    //   32: aload_0
-    //   33: iconst_1
-    //   34: invokevirtual 62	java/lang/String:substring	(I)Ljava/lang/String;
-    //   37: invokevirtual 66	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   40: astore_0
-    //   41: aload_0
-    //   42: ifnonnull +12 -> 54
-    //   45: aload 4
-    //   47: invokevirtual 120	java/util/zip/ZipFile:close	()V
-    //   50: ldc2_w 17
-    //   53: lreturn
-    //   54: aload 4
-    //   56: astore_3
-    //   57: aload_0
-    //   58: invokevirtual 183	java/util/zip/ZipEntry:getSize	()J
-    //   61: lstore_1
-    //   62: aload 4
-    //   64: invokevirtual 120	java/util/zip/ZipFile:close	()V
-    //   67: lload_1
-    //   68: lreturn
-    //   69: astore_0
-    //   70: lload_1
-    //   71: lreturn
-    //   72: astore 5
-    //   74: aconst_null
-    //   75: astore_0
-    //   76: aload_0
-    //   77: astore_3
-    //   78: ldc 122
-    //   80: aload 5
-    //   82: ldc 124
-    //   84: iconst_0
-    //   85: anewarray 4	java/lang/Object
-    //   88: invokestatic 130	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   91: aload_0
-    //   92: ifnull -42 -> 50
-    //   95: aload_0
-    //   96: invokevirtual 120	java/util/zip/ZipFile:close	()V
-    //   99: ldc2_w 17
-    //   102: lreturn
-    //   103: astore_0
-    //   104: ldc2_w 17
-    //   107: lreturn
-    //   108: astore_0
-    //   109: aconst_null
-    //   110: astore_3
-    //   111: aload_3
-    //   112: ifnull +7 -> 119
-    //   115: aload_3
-    //   116: invokevirtual 120	java/util/zip/ZipFile:close	()V
-    //   119: aload_0
-    //   120: athrow
-    //   121: aload_0
-    //   122: invokestatic 186	com/tencent/mm/vfs/e:aeQ	(Ljava/lang/String;)J
-    //   125: lreturn
-    //   126: astore_0
-    //   127: ldc2_w 17
-    //   130: lreturn
-    //   131: astore_3
-    //   132: goto -13 -> 119
-    //   135: astore_0
-    //   136: goto -25 -> 111
-    //   139: astore 5
-    //   141: aload 4
-    //   143: astore_0
-    //   144: goto -68 -> 76
+    //   0: sipush 16268
+    //   3: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: ldc 160
+    //   9: invokevirtual 163	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   12: ifeq +70 -> 82
+    //   15: new 165	java/util/zip/ZipFile
+    //   18: dup
+    //   19: invokestatic 171	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
+    //   22: invokevirtual 177	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   25: getfield 183	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
+    //   28: invokespecial 186	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   31: astore 9
+    //   33: aload 9
+    //   35: aload 9
+    //   37: aload_0
+    //   38: iconst_1
+    //   39: invokevirtual 190	java/lang/String:substring	(I)Ljava/lang/String;
+    //   42: invokevirtual 194	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   45: invokevirtual 198	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   48: astore 8
+    //   50: aload 9
+    //   52: astore_0
+    //   53: lload_1
+    //   54: lconst_0
+    //   55: lcmp
+    //   56: ifle +37 -> 93
+    //   59: aload_0
+    //   60: astore 10
+    //   62: aload 8
+    //   64: astore 9
+    //   66: aload 8
+    //   68: lload_1
+    //   69: invokevirtual 204	java/io/InputStream:skip	(J)J
+    //   72: lstore 6
+    //   74: lload_1
+    //   75: lload 6
+    //   77: lsub
+    //   78: lstore_1
+    //   79: goto -26 -> 53
+    //   82: aload_0
+    //   83: invokestatic 210	com/tencent/mm/vfs/e:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   86: astore 8
+    //   88: aconst_null
+    //   89: astore_0
+    //   90: goto -37 -> 53
+    //   93: aload_0
+    //   94: astore 10
+    //   96: aload 8
+    //   98: astore 9
+    //   100: ldc 137
+    //   102: invokestatic 143	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   105: astore 11
+    //   107: aload_0
+    //   108: astore 10
+    //   110: aload 8
+    //   112: astore 9
+    //   114: sipush 2048
+    //   117: newarray byte
+    //   119: astore 12
+    //   121: lload_3
+    //   122: lconst_0
+    //   123: lcmp
+    //   124: ifle +60 -> 184
+    //   127: aload_0
+    //   128: astore 10
+    //   130: aload 8
+    //   132: astore 9
+    //   134: aload 8
+    //   136: aload 12
+    //   138: iconst_0
+    //   139: ldc2_w 211
+    //   142: lload_3
+    //   143: invokestatic 218	java/lang/Math:min	(JJ)J
+    //   146: l2i
+    //   147: invokevirtual 222	java/io/InputStream:read	([BII)I
+    //   150: istore 5
+    //   152: iload 5
+    //   154: iconst_m1
+    //   155: if_icmpeq +29 -> 184
+    //   158: aload_0
+    //   159: astore 10
+    //   161: aload 8
+    //   163: astore 9
+    //   165: aload 11
+    //   167: aload 12
+    //   169: iconst_0
+    //   170: iload 5
+    //   172: invokevirtual 226	java/security/MessageDigest:update	([BII)V
+    //   175: lload_3
+    //   176: iload 5
+    //   178: i2l
+    //   179: lsub
+    //   180: lstore_3
+    //   181: goto -60 -> 121
+    //   184: aload_0
+    //   185: astore 10
+    //   187: aload 8
+    //   189: astore 9
+    //   191: aload 11
+    //   193: invokevirtual 228	java/security/MessageDigest:digest	()[B
+    //   196: invokestatic 154	com/tencent/mm/sdk/platformtools/bo:cg	([B)Ljava/lang/String;
+    //   199: astore 11
+    //   201: aload 8
+    //   203: ifnull +8 -> 211
+    //   206: aload 8
+    //   208: invokevirtual 231	java/io/InputStream:close	()V
+    //   211: aload_0
+    //   212: ifnull +7 -> 219
+    //   215: aload_0
+    //   216: invokevirtual 232	java/util/zip/ZipFile:close	()V
+    //   219: sipush 16268
+    //   222: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   225: aload 11
+    //   227: areturn
+    //   228: astore 11
+    //   230: aconst_null
+    //   231: astore_0
+    //   232: aconst_null
+    //   233: astore 8
+    //   235: aload_0
+    //   236: astore 10
+    //   238: aload 8
+    //   240: astore 9
+    //   242: ldc 46
+    //   244: aload 11
+    //   246: ldc 126
+    //   248: iconst_0
+    //   249: anewarray 4	java/lang/Object
+    //   252: invokestatic 130	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   255: aload 8
+    //   257: ifnull +8 -> 265
+    //   260: aload 8
+    //   262: invokevirtual 231	java/io/InputStream:close	()V
+    //   265: aload_0
+    //   266: ifnull +7 -> 273
+    //   269: aload_0
+    //   270: invokevirtual 232	java/util/zip/ZipFile:close	()V
+    //   273: sipush 16268
+    //   276: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   279: ldc 126
+    //   281: areturn
+    //   282: astore_0
+    //   283: aconst_null
+    //   284: astore 10
+    //   286: aconst_null
+    //   287: astore 9
+    //   289: aload 9
+    //   291: ifnull +8 -> 299
+    //   294: aload 9
+    //   296: invokevirtual 231	java/io/InputStream:close	()V
+    //   299: aload 10
+    //   301: ifnull +8 -> 309
+    //   304: aload 10
+    //   306: invokevirtual 232	java/util/zip/ZipFile:close	()V
+    //   309: sipush 16268
+    //   312: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   315: aload_0
+    //   316: athrow
+    //   317: astore 8
+    //   319: goto -108 -> 211
+    //   322: astore_0
+    //   323: goto -104 -> 219
+    //   326: astore 8
+    //   328: goto -63 -> 265
+    //   331: astore_0
+    //   332: goto -59 -> 273
+    //   335: astore 8
+    //   337: goto -38 -> 299
+    //   340: astore 8
+    //   342: goto -33 -> 309
+    //   345: astore_0
+    //   346: aconst_null
+    //   347: astore 8
+    //   349: aload 9
+    //   351: astore 10
+    //   353: aload 8
+    //   355: astore 9
+    //   357: goto -68 -> 289
+    //   360: astore_0
+    //   361: goto -72 -> 289
+    //   364: astore 11
+    //   366: aconst_null
+    //   367: astore 8
+    //   369: aload 9
+    //   371: astore_0
+    //   372: goto -137 -> 235
+    //   375: astore 11
+    //   377: goto -142 -> 235
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	147	0	paramString	String
-    //   61	10	1	l	long
-    //   29	87	3	localObject	Object
-    //   131	1	3	localIOException1	java.io.IOException
-    //   25	117	4	localZipFile	java.util.zip.ZipFile
-    //   72	9	5	localIOException2	java.io.IOException
-    //   139	1	5	localIOException3	java.io.IOException
+    //   0	380	0	paramString	String
+    //   0	380	1	paramLong1	long
+    //   0	380	3	paramLong2	long
+    //   150	27	5	i	int
+    //   72	4	6	l	long
+    //   48	213	8	localInputStream	java.io.InputStream
+    //   317	1	8	localIOException1	java.io.IOException
+    //   326	1	8	localIOException2	java.io.IOException
+    //   335	1	8	localIOException3	java.io.IOException
+    //   340	1	8	localIOException4	java.io.IOException
+    //   347	21	8	localObject1	Object
+    //   31	339	9	localObject2	Object
+    //   60	292	10	localObject3	Object
+    //   105	121	11	localObject4	Object
+    //   228	17	11	localException1	Exception
+    //   364	1	11	localException2	Exception
+    //   375	1	11	localException3	Exception
+    //   119	49	12	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   62	67	69	java/io/IOException
-    //   9	27	72	java/io/IOException
-    //   95	99	103	java/io/IOException
-    //   9	27	108	finally
-    //   45	50	126	java/io/IOException
-    //   115	119	131	java/io/IOException
-    //   30	41	135	finally
-    //   57	62	135	finally
-    //   78	91	135	finally
-    //   30	41	139	java/io/IOException
-    //   57	62	139	java/io/IOException
+    //   6	33	228	java/lang/Exception
+    //   82	88	228	java/lang/Exception
+    //   6	33	282	finally
+    //   82	88	282	finally
+    //   206	211	317	java/io/IOException
+    //   215	219	322	java/io/IOException
+    //   260	265	326	java/io/IOException
+    //   269	273	331	java/io/IOException
+    //   294	299	335	java/io/IOException
+    //   304	309	340	java/io/IOException
+    //   33	50	345	finally
+    //   66	74	360	finally
+    //   100	107	360	finally
+    //   114	121	360	finally
+    //   134	152	360	finally
+    //   165	175	360	finally
+    //   191	201	360	finally
+    //   242	255	360	finally
+    //   33	50	364	java/lang/Exception
+    //   66	74	375	java/lang/Exception
+    //   100	107	375	java/lang/Exception
+    //   114	121	375	java/lang/Exception
+    //   134	152	375	java/lang/Exception
+    //   165	175	375	java/lang/Exception
+    //   191	201	375	java/lang/Exception
+  }
+  
+  /* Error */
+  private static long ng(String paramString)
+  {
+    // Byte code:
+    //   0: sipush 16269
+    //   3: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: ldc 160
+    //   9: invokevirtual 163	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   12: ifeq +131 -> 143
+    //   15: new 165	java/util/zip/ZipFile
+    //   18: dup
+    //   19: invokestatic 171	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
+    //   22: invokevirtual 177	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   25: getfield 183	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
+    //   28: invokespecial 186	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   31: astore 4
+    //   33: aload 4
+    //   35: astore_3
+    //   36: aload 4
+    //   38: aload_0
+    //   39: iconst_1
+    //   40: invokevirtual 190	java/lang/String:substring	(I)Ljava/lang/String;
+    //   43: invokevirtual 194	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   46: astore_0
+    //   47: aload_0
+    //   48: ifnonnull +18 -> 66
+    //   51: aload 4
+    //   53: invokevirtual 232	java/util/zip/ZipFile:close	()V
+    //   56: sipush 16269
+    //   59: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   62: ldc2_w 19
+    //   65: lreturn
+    //   66: aload 4
+    //   68: astore_3
+    //   69: aload_0
+    //   70: invokevirtual 239	java/util/zip/ZipEntry:getSize	()J
+    //   73: lstore_1
+    //   74: aload 4
+    //   76: invokevirtual 232	java/util/zip/ZipFile:close	()V
+    //   79: sipush 16269
+    //   82: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: lload_1
+    //   86: lreturn
+    //   87: astore 5
+    //   89: aconst_null
+    //   90: astore_0
+    //   91: aload_0
+    //   92: astore_3
+    //   93: ldc 46
+    //   95: aload 5
+    //   97: ldc 126
+    //   99: iconst_0
+    //   100: anewarray 4	java/lang/Object
+    //   103: invokestatic 130	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   106: aload_0
+    //   107: ifnull +7 -> 114
+    //   110: aload_0
+    //   111: invokevirtual 232	java/util/zip/ZipFile:close	()V
+    //   114: sipush 16269
+    //   117: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   120: ldc2_w 19
+    //   123: lreturn
+    //   124: astore_0
+    //   125: aconst_null
+    //   126: astore_3
+    //   127: aload_3
+    //   128: ifnull +7 -> 135
+    //   131: aload_3
+    //   132: invokevirtual 232	java/util/zip/ZipFile:close	()V
+    //   135: sipush 16269
+    //   138: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   141: aload_0
+    //   142: athrow
+    //   143: aload_0
+    //   144: invokestatic 242	com/tencent/mm/vfs/e:avI	(Ljava/lang/String;)J
+    //   147: lstore_1
+    //   148: sipush 16269
+    //   151: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   154: lload_1
+    //   155: lreturn
+    //   156: astore_0
+    //   157: goto -101 -> 56
+    //   160: astore_0
+    //   161: goto -82 -> 79
+    //   164: astore_0
+    //   165: goto -51 -> 114
+    //   168: astore_3
+    //   169: goto -34 -> 135
+    //   172: astore_0
+    //   173: goto -46 -> 127
+    //   176: astore 5
+    //   178: aload 4
+    //   180: astore_0
+    //   181: goto -90 -> 91
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	184	0	paramString	String
+    //   73	82	1	l	long
+    //   35	97	3	localObject	Object
+    //   168	1	3	localIOException1	java.io.IOException
+    //   31	148	4	localZipFile	java.util.zip.ZipFile
+    //   87	9	5	localIOException2	java.io.IOException
+    //   176	1	5	localIOException3	java.io.IOException
+    // Exception table:
+    //   from	to	target	type
+    //   15	33	87	java/io/IOException
+    //   15	33	124	finally
+    //   51	56	156	java/io/IOException
+    //   74	79	160	java/io/IOException
+    //   110	114	164	java/io/IOException
+    //   131	135	168	java/io/IOException
+    //   36	47	172	finally
+    //   69	74	172	finally
+    //   93	106	172	finally
+    //   36	47	176	java/io/IOException
+    //   69	74	176	java/io/IOException
   }
   
   public final e.b a(String paramString, Map<String, String> paramMap, e.a parama)
   {
-    Object localObject6 = parama.dBs;
-    Object localObject5 = aa.a(((cd)localObject6).svH);
+    AppMethodBeat.i(16267);
+    Object localObject6 = parama.eyJ;
+    Object localObject5 = com.tencent.mm.platformtools.aa.a(((cm)localObject6).woR);
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if (paramString != null)
@@ -492,11 +530,11 @@ public final class f
       localObject1 = localObject2;
       if (paramString.equals("addcontact"))
       {
-        ((cd)localObject6).svH = aa.pj((String)paramMap.get(".sysmsg.addcontact.content"));
-        ((cd)localObject6).kSW = 1;
-        localObject1 = e.d.aB(Integer.valueOf(1));
+        ((cm)localObject6).woR = com.tencent.mm.platformtools.aa.wA((String)paramMap.get(".sysmsg.addcontact.content"));
+        ((cm)localObject6).nqW = 1;
+        localObject1 = e.d.aV(Integer.valueOf(1));
         if (localObject1 != null) {
-          break label1160;
+          break label1193;
         }
         localObject1 = null;
       }
@@ -504,16 +542,23 @@ public final class f
     int i;
     if ((paramString != null) && (paramString.equals("dynacfg")))
     {
-      com.tencent.mm.m.g.AA().a((String)localObject5, paramMap, false);
-      com.tencent.mm.m.g.AB();
-      if (com.tencent.mm.m.c.Am() == 2) {
-        com.tencent.mm.plugin.report.service.h.nFQ.aC(10879, "");
+      com.tencent.mm.m.g.Nq().a((String)localObject5, paramMap, false);
+      com.tencent.mm.m.g.Nr();
+      if (com.tencent.mm.m.c.Nb() == 2) {
+        com.tencent.mm.plugin.report.service.h.qsU.kvStat(10879, "");
       }
-      i = bk.getInt(com.tencent.mm.m.g.AA().getValue("MuteRoomDisable"), 0);
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.BigBallSysCmdMsgConsumer", "Mute_Room_Disable:" + Integer.toString(i));
+      i = bo.getInt(com.tencent.mm.m.g.Nq().getValue("MuteRoomDisable"), 0);
+      ab.d("MicroMsg.BigBallSysCmdMsgConsumer", "Mute_Room_Disable:" + Integer.toString(i));
+      if (com.tencent.mm.sdk.platformtools.aa.dsD()) {
+        Zg();
+      }
     }
-    if ((paramString != null) && (paramString.equals("dynacfg_split"))) {
-      com.tencent.mm.m.g.AA().a((String)localObject5, paramMap, true);
+    if ((paramString != null) && (paramString.equals("dynacfg_split")))
+    {
+      com.tencent.mm.m.g.Nq().a((String)localObject5, paramMap, true);
+      if (com.tencent.mm.sdk.platformtools.aa.dsD()) {
+        Zg();
+      }
     }
     Object localObject7;
     Object localObject8;
@@ -524,6 +569,10 @@ public final class f
       localObject8 = (String)paramMap.get(".sysmsg.mainframebanner.data");
       if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {}
     }
+    label1193:
+    label2602:
+    label3887:
+    label4149:
     for (;;)
     {
       Object localObject9;
@@ -531,7 +580,7 @@ public final class f
       long l1;
       try
       {
-        bc.HI().a(new bb(Integer.valueOf((String)localObject2).intValue(), Integer.valueOf((String)localObject7).intValue(), (String)localObject8));
+        be.aaG().a(new bd(Integer.valueOf((String)localObject2).intValue(), Integer.valueOf((String)localObject7).intValue(), (String)localObject8));
         localObject2 = (String)paramMap.get(".sysmsg.friendrecommand.fromuser");
         localObject7 = (String)paramMap.get(".sysmsg.friendrecommand.touser");
         if ((localObject2 == null) || (localObject7 == null)) {}
@@ -540,46 +589,46 @@ public final class f
       {
         try
         {
-          au.Hx().FX().a((String)localObject7, true, null);
+          aw.aaz().YY().a((String)localObject7, true, null);
           localObject2 = (String)paramMap.get(".sysmsg.banner.securitybanner.chatname");
           localObject7 = (String)paramMap.get(".sysmsg.banner.securitybanner.wording");
           localObject8 = (String)paramMap.get(".sysmsg.banner.securitybanner.linkname");
           localObject9 = (String)paramMap.get(".sysmsg.banner.securitybanner.linksrc");
           localObject10 = (String)paramMap.get(".sysmsg.banner.securitybanner.showtype");
-          if ((bk.bl((String)localObject2)) || (bk.bl((String)localObject10))) {}
+          if ((bo.isNullOrNil((String)localObject2)) || (bo.isNullOrNil((String)localObject10))) {}
         }
         catch (Exception localException3)
         {
           try
           {
             if (!((String)localObject10).equals("1")) {
-              break label7089;
+              break label7300;
             }
             bool1 = true;
-            au.Hx().FY().a((String)localObject2, bool1, new String[] { localObject7, localObject8, localObject9 });
-            au.Hx().FZ().k(paramMap);
-            if ((!bk.bl(paramString)) && (paramString.equals("midinfo")))
+            aw.aaz().YZ().a((String)localObject2, bool1, new String[] { localObject7, localObject8, localObject9 });
+            aw.aaz().Za().o(paramMap);
+            if ((!bo.isNullOrNil(paramString)) && (paramString.equals("midinfo")))
             {
               localObject2 = (String)paramMap.get(".sysmsg.midinfo.json_buffer");
               localObject7 = (String)paramMap.get(".sysmsg.midinfo.time_interval");
-              com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "QueryMid time[%s] json[%s]  [%s] ", new Object[] { localObject7, localObject2, localObject5 });
-              i = bk.getInt((String)localObject7, 0);
+              ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "QueryMid time[%s] json[%s]  [%s] ", new Object[] { localObject7, localObject2, localObject5 });
+              i = bo.getInt((String)localObject7, 0);
               if ((i > 86400L) && (i < 864000L))
               {
-                au.Hx();
-                c.Dz().o(331777, Long.valueOf(bk.UX() + i));
+                aw.aaz();
+                c.Ru().set(331777, Long.valueOf(bo.aox() + i));
               }
-              if (!bk.bl((String)localObject2)) {
-                com.tencent.mm.plugin.report.b.d.LU((String)localObject2);
+              if (!bo.isNullOrNil((String)localObject2)) {
+                com.tencent.mm.plugin.report.b.d.Yr((String)localObject2);
               }
             }
             if ((paramString != null) && (paramString.equals("revokemsg")))
             {
-              com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "mm hit MM_DATA_SYSCMD_NEWXML_SUBTYPE_REVOKE");
+              ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "mm hit MM_DATA_SYSCMD_NEWXML_SUBTYPE_REVOKE");
               localObject1 = (String)paramMap.get(".sysmsg.revokemsg.session");
               localObject2 = (String)paramMap.get(".sysmsg.revokemsg.newmsgid");
               paramString = (String)paramMap.get(".sysmsg.revokemsg.replacemsg");
-              com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "ashutest::[oneliang][xml parse] ,msgId:%s,replaceMsg:%s ", new Object[] { localObject2, paramString });
+              ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "ashutest::[oneliang][xml parse] ,msgId:%s,replaceMsg:%s ", new Object[] { localObject2, paramString });
               l1 = 0L;
             }
           }
@@ -587,130 +636,130 @@ public final class f
           {
             try
             {
-              long l2 = bk.getLong((String)localObject2, 0L);
+              long l2 = bo.getLong((String)localObject2, 0L);
               l1 = l2;
-              au.Hx();
+              aw.aaz();
               l1 = l2;
-              paramMap = c.Fy().O((String)localObject1, l2);
+              paramMap = c.YC().ag((String)localObject1, l2);
               l1 = l2;
-              localObject1 = bi.ak(paramMap);
+              localObject1 = bi.as(paramMap);
               l1 = l2;
-              if ((paramMap.czq & 0x4) != 4)
+              if ((paramMap.dnr & 0x4) != 4)
               {
                 l1 = l2;
                 paramMap.setContent(paramString);
                 l1 = l2;
                 paramMap.setType(10000);
                 l1 = l2;
-                bd.a(paramMap, parama);
+                bf.a(paramMap, parama);
                 l1 = l2;
-                au.Hx();
+                aw.aaz();
                 l1 = l2;
-                c.Fy().a(paramMap.field_msgId, paramMap);
+                c.YC().a(paramMap.field_msgId, paramMap);
               }
               l1 = l2;
-              au.Hx();
+              aw.aaz();
               l1 = l2;
-              localObject2 = c.FB().abv(paramMap.field_talker);
+              localObject2 = c.YF().arH(paramMap.field_talker);
               if (localObject2 != null)
               {
                 l1 = l2;
-                if (((as)localObject2).field_unReadCount > 0)
+                if (((au)localObject2).field_unReadCount > 0)
                 {
                   l1 = l2;
-                  au.Hx();
+                  aw.aaz();
                   l1 = l2;
-                  i = c.Fy().S(paramMap);
+                  i = c.YC().Y(paramMap);
                   l1 = l2;
-                  if (((as)localObject2).field_unReadCount >= i)
+                  if (((au)localObject2).field_unReadCount >= i)
                   {
                     l1 = l2;
-                    ((ak)localObject2).fy(((as)localObject2).field_unReadCount - 1);
+                    ((com.tencent.mm.storage.ak)localObject2).hJ(((au)localObject2).field_unReadCount - 1);
                     l1 = l2;
-                    au.Hx();
+                    aw.aaz();
                     l1 = l2;
-                    c.FB().a((ak)localObject2, ((as)localObject2).field_username);
+                    c.YF().a((com.tencent.mm.storage.ak)localObject2, ((au)localObject2).field_username);
                   }
                 }
               }
               if (parama != null)
               {
                 l1 = l2;
-                if (parama.ecS)
+                if (parama.fte)
                 {
                   l1 = l2;
-                  localObject7 = new com.tencent.mm.storage.bb();
+                  localObject7 = new bb();
                   l1 = l2;
-                  ((com.tencent.mm.storage.bb)localObject7).field_originSvrId = l2;
+                  ((bb)localObject7).field_originSvrId = l2;
                   l1 = l2;
                   if (paramMap.field_msgId == 0L)
                   {
                     l1 = l2;
-                    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbadcr get a revoke but msg id is 0 originSvrId[%d]", new Object[] { Long.valueOf(l2) });
+                    ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbadcr get a revoke but msg id is 0 originSvrId[%d]", new Object[] { Long.valueOf(l2) });
                     l1 = l2;
-                    ((com.tencent.mm.storage.bb)localObject7).field_content = ((String)localObject5);
+                    ((bb)localObject7).field_content = ((String)localObject5);
                     l1 = l2;
-                    ((com.tencent.mm.storage.bb)localObject7).field_createTime = ((cd)localObject6).mPL;
+                    ((bb)localObject7).field_createTime = ((cm)localObject6).CreateTime;
                     l1 = l2;
-                    ((com.tencent.mm.storage.bb)localObject7).field_flag = bd.c(parama);
+                    ((bb)localObject7).field_flag = bf.d(parama);
                     l1 = l2;
-                    ((com.tencent.mm.storage.bb)localObject7).field_fromUserName = aa.a(((cd)localObject6).svF);
+                    ((bb)localObject7).field_fromUserName = com.tencent.mm.platformtools.aa.a(((cm)localObject6).woP);
                     l1 = l2;
-                    ((com.tencent.mm.storage.bb)localObject7).field_toUserName = aa.a(((cd)localObject6).svG);
+                    ((bb)localObject7).field_toUserName = com.tencent.mm.platformtools.aa.a(((cm)localObject6).woQ);
                     l1 = l2;
-                    ((com.tencent.mm.storage.bb)localObject7).field_newMsgId = ((cd)localObject6).ndp;
+                    ((bb)localObject7).field_newMsgId = ((cm)localObject6).pIG;
                     l1 = l2;
-                    com.tencent.mm.modelmulti.n.Pn();
+                    com.tencent.mm.modelmulti.n.aip();
                     l1 = l2;
-                    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbadcr insert ret[%b], systemRowid[%d]", new Object[] { Boolean.valueOf(com.tencent.mm.modelmulti.n.Pl().b((com.tencent.mm.sdk.e.c)localObject7)), Long.valueOf(((com.tencent.mm.storage.bb)localObject7).ujK) });
+                    ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbadcr insert ret[%b], systemRowid[%d]", new Object[] { Boolean.valueOf(com.tencent.mm.modelmulti.n.ain().insert((com.tencent.mm.sdk.e.c)localObject7)), Long.valueOf(((bb)localObject7).systemRowid) });
+                    AppMethodBeat.o(16267);
                     return null;
-                    label1160:
-                    localObject1 = ((com.tencent.mm.ah.e)localObject1).b(parama);
+                    localObject1 = ((com.tencent.mm.ai.e)localObject1).b(parama);
                     break;
                     localException1 = localException1;
-                    com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BigBallSysCmdMsgConsumer", localException1.toString());
+                    ab.e("MicroMsg.BigBallSysCmdMsgConsumer", localException1.toString());
                     continue;
                     localException2 = localException2;
-                    com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BigBallSysCmdMsgConsumer", localException2.toString());
+                    ab.e("MicroMsg.BigBallSysCmdMsgConsumer", localException2.toString());
                     continue;
                     localException3 = localException3;
-                    com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BigBallSysCmdMsgConsumer", "[oneliang]" + localException3.toString());
+                    ab.e("MicroMsg.BigBallSysCmdMsgConsumer", "[oneliang]" + localException3.toString());
                     continue;
                   }
                   l1 = l2;
-                  com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbadcr get a revoke and has done delete info, originSvrId[%d]", new Object[] { Long.valueOf(l2) });
+                  ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbadcr get a revoke and has done delete info, originSvrId[%d]", new Object[] { Long.valueOf(l2) });
                   l1 = l2;
-                  com.tencent.mm.modelmulti.n.Pn();
+                  com.tencent.mm.modelmulti.n.aip();
                   l1 = l2;
-                  com.tencent.mm.modelmulti.n.Pl().a((com.tencent.mm.sdk.e.c)localObject7, true, new String[0]);
+                  com.tencent.mm.modelmulti.n.ain().delete((com.tencent.mm.sdk.e.c)localObject7, true, new String[0]);
                   l1 = l2;
-                  au.Hx();
+                  aw.aaz();
                   l1 = l2;
-                  c.Fy().fh(l2);
+                  c.YC().kF(l2);
                   if (localException3 != null)
                   {
                     l1 = l2;
-                    if (parama.dBs != null)
+                    if (parama.eyJ != null)
                     {
                       l1 = l2;
-                      if (localException3.field_lastSeq == parama.dBs.svM)
+                      if (localException3.field_lastSeq == parama.eyJ.woW)
                       {
                         l1 = l2;
-                        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbadcr get a revoke and fix fault lastseq[%s], firstUnDeliverSeq[%s]", new Object[] { Long.valueOf(localException3.field_lastSeq), Long.valueOf(localException3.field_firstUnDeliverSeq) });
+                        ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbadcr get a revoke and fix fault lastseq[%s], firstUnDeliverSeq[%s]", new Object[] { Long.valueOf(localException3.field_lastSeq), Long.valueOf(localException3.field_firstUnDeliverSeq) });
                         l1 = l2;
-                        au.Hx();
+                        aw.aaz();
                         l1 = l2;
-                        localObject5 = c.Fy().HB(localException3.field_username);
+                        localObject5 = c.YC().Tn(localException3.field_username);
                         if (localObject5 != null)
                         {
                           l1 = l2;
-                          localException3.bc(((cs)localObject5).field_msgSeq);
+                          localException3.fM(((dd)localObject5).field_msgSeq);
                           l1 = l2;
-                          au.Hx();
+                          aw.aaz();
                           l1 = l2;
-                          i = c.FB().a(localException3, localException3.field_username);
+                          i = c.YF().a(localException3, localException3.field_username);
                           l1 = l2;
-                          com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbadcr get a revoke and fix fault by [%s, %s] lastseq[%s], firstUnDeliverSeq[%s], update[%s]", new Object[] { Long.valueOf(((cs)localObject5).field_msgSvrId), Long.valueOf(((cs)localObject5).field_msgSeq), Long.valueOf(localException3.field_lastSeq), Long.valueOf(localException3.field_firstUnDeliverSeq), Integer.valueOf(i) });
+                          ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbadcr get a revoke and fix fault by [%s, %s] lastseq[%s], firstUnDeliverSeq[%s], update[%s]", new Object[] { Long.valueOf(((dd)localObject5).field_msgSvrId), Long.valueOf(((dd)localObject5).field_msgSeq), Long.valueOf(localException3.field_lastSeq), Long.valueOf(localException3.field_firstUnDeliverSeq), Integer.valueOf(i) });
                         }
                       }
                     }
@@ -722,43 +771,60 @@ public final class f
                 if (parama != null)
                 {
                   l1 = l2;
-                  if (parama.ecS) {}
+                  if (parama.fte) {}
                 }
                 else
                 {
                   l1 = l2;
-                  com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summer revoke msg id is 0 and svrid[%d]", new Object[] { Long.valueOf(l2) });
+                  ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summer revoke msg id is 0 and svrid[%d]", new Object[] { Long.valueOf(l2) });
                   l1 = l2;
-                  au.Hx();
+                  aw.aaz();
                   l1 = l2;
-                  c.Fy().fh(l2);
+                  c.YC().kF(l2);
                 }
               }
               l1 = l2;
-              parama = new ok();
+              parama = new pm();
               l1 = l2;
-              parama.bXY.bIt = paramMap.field_msgId;
+              parama.cFZ.cpO = paramMap.field_msgId;
               l1 = l2;
-              parama.bXY.bXZ = paramString;
+              parama.cFZ.cGa = paramString;
               l1 = l2;
-              parama.bXY.bWO = paramMap;
+              parama.cFZ.cEE = paramMap;
               l1 = l2;
-              parama.bXY.bYa = ((bi)localObject1);
+              parama.cFZ.cGb = ((bi)localObject1);
               l1 = l2;
-              parama.bXY.bYb = l2;
+              parama.cFZ.cGc = l2;
               l1 = l2;
-              com.tencent.mm.sdk.b.a.udP.m(parama);
+              com.tencent.mm.sdk.b.a.ymk.l(parama);
               if (localObject1 != null)
               {
                 l1 = l2;
-                com.tencent.mm.kernel.g.DS().O(new f.3(this, (bi)localObject1));
+                com.tencent.mm.kernel.g.RO().ac(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(16265);
+                    ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "[deleteLocalFile] id:%s type:%s", new Object[] { Long.valueOf(this.fkQ.field_msgId), Integer.valueOf(this.fkQ.getType()) });
+                    switch (this.fkQ.getType())
+                    {
+                    }
+                    for (;;)
+                    {
+                      AppMethodBeat.o(16265);
+                      return;
+                      bf.m(this.fkQ);
+                    }
+                  }
+                });
               }
             }
             catch (Exception paramString)
             {
-              com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.BigBallSysCmdMsgConsumer", paramString, "[oneliang][revokeMsg] msgId:%d,error:%s", new Object[] { Long.valueOf(l1), paramString.toString() });
+              ab.printErrStackTrace("MicroMsg.BigBallSysCmdMsgConsumer", paramString, "[oneliang][revokeMsg] msgId:%d,error:%s", new Object[] { Long.valueOf(l1), paramString.toString() });
               continue;
             }
+            AppMethodBeat.o(16267);
             return null;
           }
         }
@@ -766,7 +832,7 @@ public final class f
       int j;
       if ((paramString != null) && (paramString.equals("clouddelmsg")))
       {
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "mm hit MM_DATA_SYSCMD_NEWXML_CLOUD_DEL_MSG");
+        ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "mm hit MM_DATA_SYSCMD_NEWXML_CLOUD_DEL_MSG");
         localObject3 = (String)paramMap.get(".sysmsg.clouddelmsg.delcommand");
         localObject1 = (String)paramMap.get(".sysmsg.clouddelmsg.msgid");
         paramMap = (String)paramMap.get(".sysmsg.clouddelmsg.fromuser");
@@ -775,76 +841,76 @@ public final class f
         if ((i == -1) || (j == -1))
         {
           paramString = "";
-          com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "[hakon][clouddelmsg], delcommand:%s, msgid:%s, fromuser:%s, sysmsgcontent:%s", new Object[] { localObject3, localObject1, paramMap, paramString });
+          ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "[hakon][clouddelmsg], delcommand:%s, msgid:%s, fromuser:%s, sysmsgcontent:%s", new Object[] { localObject3, localObject1, paramMap, paramString });
         }
         for (;;)
         {
           try
           {
-            au.Hx();
-            paramMap = c.Fy().dS(paramMap, (String)localObject1);
+            aw.aaz();
+            paramMap = c.YC().fl(paramMap, (String)localObject1);
             if ((paramMap == null) || (paramMap.size() <= 0))
             {
-              com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BigBallSysCmdMsgConsumer", "get null by getByBizClientMsgId");
+              ab.e("MicroMsg.BigBallSysCmdMsgConsumer", "get null by getByBizClientMsgId");
+              AppMethodBeat.o(16267);
               return null;
-              paramString = ba.au(bn.s(((String)localObject5).substring(i, j + 6), "msg"));
+              paramString = com.tencent.mm.sdk.platformtools.be.aT(br.F(((String)localObject5).substring(i, j + 6), "msg"));
               break;
             }
             paramMap = paramMap.iterator();
             if (paramMap.hasNext())
             {
               localObject5 = (bi)paramMap.next();
-              if (localObject5 == null) {
-                com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BigBallSysCmdMsgConsumer", "[hakon][clouddelmsg], msgInfo == null");
+              if (localObject5 != null) {
+                break label2059;
               }
+              ab.e("MicroMsg.BigBallSysCmdMsgConsumer", "[hakon][clouddelmsg], msgInfo == null");
             }
-            else
-            {
-              return null;
+            if (((dd)localObject5).field_msgSvrId >= 0L) {
+              break label2106;
             }
           }
           catch (Exception paramString)
           {
-            com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.BigBallSysCmdMsgConsumer", paramString, "[hakon][clouddelmsg], BizClientMsgId:%d,error:%s", new Object[] { localObject1, paramString.toString() });
+            ab.printErrStackTrace("MicroMsg.BigBallSysCmdMsgConsumer", paramString, "[hakon][clouddelmsg], BizClientMsgId:%d,error:%s", new Object[] { localObject1, paramString.toString() });
+            AppMethodBeat.o(16267);
+            return null;
           }
-          if (((cs)localObject5).field_msgSvrId >= 0L) {
-            break label2055;
-          }
-          com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BigBallSysCmdMsgConsumer", "[hakon][clouddelmsg], invalid msgInfo.msgId = %s, srvId = %s", new Object[] { Long.valueOf(((cs)localObject5).field_msgId), Long.valueOf(((cs)localObject5).field_msgSvrId) });
+          ab.e("MicroMsg.BigBallSysCmdMsgConsumer", "[hakon][clouddelmsg], invalid msgInfo.msgId = %s, srvId = %s", new Object[] { Long.valueOf(((dd)localObject5).field_msgId), Long.valueOf(((dd)localObject5).field_msgSvrId) });
         }
-        label2055:
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "[hakon][clouddelmsg], msgInfo.msgId = %s, srvId = %s", new Object[] { Long.valueOf(((cs)localObject5).field_msgId), Long.valueOf(((cs)localObject5).field_msgSvrId) });
-        i = bk.getInt((String)localObject3, 0);
+        label2106:
+        ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "[hakon][clouddelmsg], msgInfo.msgId = %s, srvId = %s", new Object[] { Long.valueOf(((dd)localObject5).field_msgId), Long.valueOf(((dd)localObject5).field_msgSvrId) });
+        i = bo.getInt((String)localObject3, 0);
         if (i == 1)
         {
-          au.Hx();
-          c.Fy().Y(((cs)localObject5).field_talker, ((cs)localObject5).field_msgSvrId);
+          aw.aaz();
+          c.YC().aq(((dd)localObject5).field_talker, ((dd)localObject5).field_msgSvrId);
         }
         for (;;)
         {
-          localObject6 = new ok();
-          ((ok)localObject6).bXY.bIt = ((cs)localObject5).field_msgId;
-          ((ok)localObject6).bXY.bXZ = paramString;
-          ((ok)localObject6).bXY.bWO = ((bi)localObject5);
-          com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject6);
+          localObject6 = new pm();
+          ((pm)localObject6).cFZ.cpO = ((dd)localObject5).field_msgId;
+          ((pm)localObject6).cFZ.cGa = paramString;
+          ((pm)localObject6).cFZ.cEE = ((bi)localObject5);
+          com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject6);
           break;
-          if ((i == 2) && (((bi)localObject5).ctz()))
+          if ((i == 2) && (((bi)localObject5).dvV()))
           {
             ((bi)localObject5).setContent(paramString);
-            bd.a((bi)localObject5, parama);
-            au.Hx();
-            c.Fy().b(((cs)localObject5).field_msgSvrId, (bi)localObject5);
-            au.Hx();
-            localObject6 = c.FB().abv(((cs)localObject5).field_talker);
-            if ((localObject6 != null) && (((as)localObject6).field_unReadCount > 0))
+            bf.a((bi)localObject5, parama);
+            aw.aaz();
+            c.YC().b(((dd)localObject5).field_msgSvrId, (bi)localObject5);
+            aw.aaz();
+            localObject6 = c.YF().arH(((dd)localObject5).field_talker);
+            if ((localObject6 != null) && (((au)localObject6).field_unReadCount > 0))
             {
-              au.Hx();
-              i = c.Fy().S((bi)localObject5);
-              if (((as)localObject6).field_unReadCount >= i)
+              aw.aaz();
+              i = c.YC().Y((bi)localObject5);
+              if (((au)localObject6).field_unReadCount >= i)
               {
-                ((ak)localObject6).fy(((as)localObject6).field_unReadCount - 1);
-                au.Hx();
-                c.FB().a((ak)localObject6, ((as)localObject6).field_username);
+                ((com.tencent.mm.storage.ak)localObject6).hJ(((au)localObject6).field_unReadCount - 1);
+                aw.aaz();
+                c.YF().a((com.tencent.mm.storage.ak)localObject6, ((au)localObject6).field_username);
               }
             }
           }
@@ -852,15 +918,13 @@ public final class f
       }
       if ((paramString != null) && (paramString.equals("updatepackage")))
       {
-        localObject1 = e.d.aB(Integer.valueOf(-1879048175));
+        localObject1 = e.d.aV(Integer.valueOf(-1879048175));
         if (localObject1 != null) {}
       }
-      label2391:
-      label2551:
+      label2813:
       Object localObject4;
-      label3970:
-      label3978:
-      label6160:
+      label3544:
+      label6365:
       for (Object localObject3 = null;; localObject4 = localObject1)
       {
         for (;;)
@@ -871,37 +935,35 @@ public final class f
             localObject1 = localObject3;
             if (paramString.equals("deletepackage"))
             {
-              localObject1 = e.d.aB(Integer.valueOf(-1879048174));
+              localObject1 = e.d.aV(Integer.valueOf(-1879048174));
               if (localObject1 != null) {
-                break label3245;
+                break label3298;
               }
               localObject1 = null;
             }
           }
-          label2762:
-          label2798:
           Object localObject11;
           if ((paramString != null) && (paramString.equals("delchatroommember")))
           {
-            localObject3 = aa.a(((cd)localObject6).svF);
-            au.Hx();
-            localObject7 = c.Fy().O((String)localObject3, ((cd)localObject6).ndp);
+            localObject3 = com.tencent.mm.platformtools.aa.a(((cm)localObject6).woP);
+            aw.aaz();
+            localObject7 = c.YC().ag((String)localObject3, ((cm)localObject6).pIG);
             i = 0;
-            if (((cs)localObject7).field_msgId > 0L) {
+            if (((dd)localObject7).field_msgId > 0L) {
               i = 1;
             }
-            ((bi)localObject7).bf(((cd)localObject6).ndp);
-            if ((parama == null) || (!parama.ecS) || (!parama.ecU)) {
-              ((bi)localObject7).bg(bd.o((String)localObject3, ((cd)localObject6).mPL));
+            ((bi)localObject7).fP(((cm)localObject6).pIG);
+            if ((parama == null) || (!parama.fte) || (!parama.ftg)) {
+              ((bi)localObject7).fQ(bf.x((String)localObject3, ((cm)localObject6).CreateTime));
             }
             ((bi)localObject7).setType(10002);
             ((bi)localObject7).setContent((String)localObject5);
-            ((bi)localObject7).fA(0);
-            ((bi)localObject7).ec((String)localObject3);
-            ((bi)localObject7).cY(((cd)localObject6).svK);
-            bd.a((bi)localObject7, parama);
+            ((bi)localObject7).hL(0);
+            ((bi)localObject7).kj((String)localObject3);
+            ((bi)localObject7).jl(((cm)localObject6).woU);
+            bf.a((bi)localObject7, parama);
             if (i == 0) {
-              bd.h((bi)localObject7);
+              bf.l((bi)localObject7);
             }
           }
           else
@@ -913,321 +975,332 @@ public final class f
               if (paramString.equals("WakenPush"))
               {
                 localObject3 = localObject1;
-                if (this.dUC != ((cd)localObject6).ndp)
+                if (this.fkL != ((cm)localObject6).pIG)
                 {
-                  this.dUC = ((cd)localObject6).ndp;
-                  com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "dzmonster[subType wakenpush]");
-                  localObject3 = new ce(paramMap);
-                  localObject5 = (String)((ce)localObject3).dTl.get(".sysmsg.WakenPush.PushContent");
-                  localObject7 = (String)((ce)localObject3).dTl.get(".sysmsg.WakenPush.Jump");
-                  localObject1 = (String)((ce)localObject3).dTl.get(".sysmsg.WakenPush.ExpiredTime");
-                  localObject8 = (String)((ce)localObject3).dTl.get(".sysmsg.WakenPush.Username");
-                  com.tencent.mm.sdk.platformtools.y.d("MicroMsg.WakenPushMsgExtension", "dzmonster[xml parse of wakenpush,pushContent:%s, jump:%s, expiredTime %s]", new Object[] { localObject5, localObject7, localObject1 });
-                  localObject1 = com.tencent.mm.m.g.AA().getValue("WakenPushDeepLinkBitSet");
-                  com.tencent.mm.sdk.platformtools.y.d("MicroMsg.WakenPushMsgExtension", "dzmonster[config of WakenPushDeepLinkBitSet:%s", new Object[] { localObject1 });
-                  if (bk.bl((String)localObject1)) {
-                    break label3280;
+                  this.fkL = ((cm)localObject6).pIG;
+                  ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "dzmonster[subType wakenpush]");
+                  localObject3 = new cg(paramMap);
+                  localObject5 = (String)((cg)localObject3).fjm.get(".sysmsg.WakenPush.PushContent");
+                  localObject7 = (String)((cg)localObject3).fjm.get(".sysmsg.WakenPush.Jump");
+                  localObject1 = (String)((cg)localObject3).fjm.get(".sysmsg.WakenPush.ExpiredTime");
+                  localObject8 = (String)((cg)localObject3).fjm.get(".sysmsg.WakenPush.Username");
+                  ab.d("MicroMsg.WakenPushMsgExtension", "dzmonster[xml parse of wakenpush,pushContent:%s, jump:%s, expiredTime %s]", new Object[] { localObject5, localObject7, localObject1 });
+                  localObject1 = com.tencent.mm.m.g.Nq().getValue("WakenPushDeepLinkBitSet");
+                  ab.d("MicroMsg.WakenPushMsgExtension", "dzmonster[config of WakenPushDeepLinkBitSet:%s", new Object[] { localObject1 });
+                  if (bo.isNullOrNil((String)localObject1)) {
+                    break label3333;
                   }
-                  l1 = bk.getLong((String)localObject1, 0L);
-                  localObject9 = com.tencent.mm.ag.b.a((String)localObject8, false, -1);
-                  localObject10 = au.getNotification();
-                  if (!bk.bl((String)localObject7)) {
-                    break label3286;
+                  l1 = bo.getLong((String)localObject1, 0L);
+                  localObject9 = com.tencent.mm.ah.b.b((String)localObject8, false, -1);
+                  localObject10 = aw.getNotification();
+                  if (!bo.isNullOrNil((String)localObject7)) {
+                    break label3339;
                   }
-                  com.tencent.mm.sdk.platformtools.y.e("MicroMsg.WakenPushMsgExtension", "dzmonster:dealDeepLink[url is null]");
+                  ab.e("MicroMsg.WakenPushMsgExtension", "dzmonster:dealDeepLink[url is null]");
                   localObject1 = "com.tencent.mm.ui.LauncherUI";
                   localObject11 = new Intent();
-                  ((Intent)localObject11).setClassName(ae.getContext(), (String)localObject1);
+                  ((Intent)localObject11).setClassName(ah.getContext(), (String)localObject1);
                   ((Intent)localObject11).setFlags(536870912);
-                  ((Intent)localObject11).putExtra("LauncherUI.Show.Update.DialogMsg", (String)((ce)localObject3).dTl.get(".sysmsg.WakenPush.PushContent"));
+                  ((Intent)localObject11).putExtra("LauncherUI.Show.Update.DialogMsg", (String)((cg)localObject3).fjm.get(".sysmsg.WakenPush.PushContent"));
                   if (!((String)localObject7).equals("weixin://dl/update_newest_version")) {
-                    ((Intent)localObject11).putExtra("LauncherUI.Show.Update.Url", (String)((ce)localObject3).dTl.get(".sysmsg.WakenPush.Jump"));
+                    ((Intent)localObject11).putExtra("LauncherUI.Show.Update.Url", (String)((cg)localObject3).fjm.get(".sysmsg.WakenPush.Jump"));
                   }
-                  com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 32L, 1L, true);
-                  localObject1 = ((al)localObject10).a(PendingIntent.getActivity(ae.getContext(), UUID.randomUUID().hashCode(), (Intent)localObject11, 134217728), ae.getContext().getString(R.l.app_name), (String)localObject5, (String)localObject5, (Bitmap)localObject9, (String)localObject8);
+                  com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 32L, 1L, true);
+                  localObject1 = ((an)localObject10).a(PendingIntent.getActivity(ah.getContext(), UUID.randomUUID().hashCode(), (Intent)localObject11, 134217728), ah.getContext().getString(2131297005), (String)localObject5, (String)localObject5, (Bitmap)localObject9, (String)localObject8);
                   ((Notification)localObject1).flags |= 0x10;
-                  au.getNotification().a((Notification)localObject1, false);
-                  com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 31L, 1L, true);
+                  aw.getNotification().a((Notification)localObject1, false);
+                  com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 31L, 1L, true);
                   localObject3 = null;
                 }
               }
             }
             localObject1 = localObject3;
             if (paramString == null) {
-              break label3548;
+              break label3601;
             }
             localObject1 = localObject3;
             if (!paramString.equals("DisasterNotice")) {
-              break label3548;
+              break label3601;
             }
             localObject7 = (String)paramMap.get(".sysmsg.NoticeId");
             localObject8 = (String)paramMap.get(".sysmsg.Content");
-            com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "disaster noticeID:%s, content:%s", new Object[] { localObject7, localObject8 });
-            localObject9 = ae.getContext().getSharedPreferences("disaster_pref", 4);
+            ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "disaster noticeID:%s, content:%s", new Object[] { localObject7, localObject8 });
+            localObject9 = ah.getContext().getSharedPreferences("disaster_pref", com.tencent.mm.compatible.util.h.Mp());
             localObject5 = ((SharedPreferences)localObject9).getString("disaster_noticeid_list_key", "");
             if (((String)localObject5).contains((CharSequence)localObject7)) {
-              break label3491;
+              break label3544;
             }
             localObject10 = ((String)localObject5).split(";");
             if ((localObject10 == null) || (localObject10.length <= 10)) {
-              break label3402;
+              break label3455;
             }
             localObject1 = "";
             j = localObject10.length;
             i = 0;
-            label3130:
+            label3183:
             localObject3 = localObject1;
             if (i >= j) {
-              break label3406;
+              break label3459;
             }
             localObject11 = localObject10[i].split(",");
             localObject3 = localObject1;
           }
           try
           {
-            if (bk.cn(bk.getLong(localObject11[0], 0L)) < 1296000L) {
+            if (bo.gz(bo.getLong(localObject11[0], 0L)) < 1296000L) {
               localObject3 = (String)localObject1 + localObject11[0] + "," + localObject11[1] + ";";
             }
             i += 1;
             localObject1 = localObject3;
-            break label3130;
-            localObject3 = ((com.tencent.mm.ah.e)localObject1).b(parama);
+            break label3183;
+            localObject3 = ((com.tencent.mm.ai.e)localObject1).b(parama);
             continue;
-            label3245:
-            localObject1 = ((com.tencent.mm.ah.e)localObject1).b(parama);
-            break label2391;
-            au.Hx();
-            c.Fy().b(((cd)localObject6).ndp, (bi)localObject7);
-            break label2551;
-            label3280:
+            label3298:
+            localObject1 = ((com.tencent.mm.ai.e)localObject1).b(parama);
+            break label2442;
+            aw.aaz();
+            c.YC().b(((cm)localObject6).pIG, (bi)localObject7);
+            break label2602;
             l1 = 0L;
-            break label2762;
-            label3286:
+            break label2813;
             if (((0x4 & l1) == 4L) && (((String)localObject7).startsWith("weixin://dl/moments")))
             {
               localObject1 = "com.tencent.mm.plugin.sns.ui.SnsTimeLineUI";
-              break label2798;
+              break label2849;
             }
             if (((l1 & 0x40000) == 262144L) && (((String)localObject7).startsWith("weixin://dl/recommendation")))
             {
               localObject1 = "com.tencent.mm.plugin.subapp.ui.friend.FMessageConversationUI";
-              break label2798;
+              break label2849;
             }
-            com.tencent.mm.sdk.platformtools.y.e("MicroMsg.WakenPushMsgExtension", "dzmonster:dealDeepLink[unable to deal with the deep link:%s)", new Object[] { localObject7 });
+            ab.e("MicroMsg.WakenPushMsgExtension", "dzmonster:dealDeepLink[unable to deal with the deep link:%s)", new Object[] { localObject7 });
             localObject1 = "com.tencent.mm.ui.LauncherUI";
           }
           catch (Exception localException4)
           {
             for (;;)
             {
-              com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BigBallSysCmdMsgConsumer", "MM_DATA_SYSCMD_NEWXML_DISASTER_NOTICE parseLong error:%s", new Object[] { localException4 });
+              ab.e("MicroMsg.BigBallSysCmdMsgConsumer", "MM_DATA_SYSCMD_NEWXML_DISASTER_NOTICE parseLong error:%s", new Object[] { localException4 });
               localObject4 = localObject1;
             }
           }
         }
-        label3402:
+        label3455:
         localObject4 = localObject5;
-        label3406:
-        localObject1 = (String)localObject4 + bk.UX() + "," + (String)localObject7 + ";";
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "update noticeIdList %s -> %s", new Object[] { localObject5, localObject1 });
+        localObject1 = (String)localObject4 + bo.aox() + "," + (String)localObject7 + ";";
+        ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "update noticeIdList %s -> %s", new Object[] { localObject5, localObject1 });
         ((SharedPreferences)localObject9).edit().putString("disaster_noticeid_list_key", (String)localObject1).commit();
-        label3491:
-        new ah(Looper.getMainLooper()).post(new f.1(this, (String)localObject7));
-        ((cd)localObject6).svH = aa.pj((String)localObject8);
-        ((cd)localObject6).kSW = 1;
-        localObject1 = e.d.aB(Integer.valueOf(1));
+        new com.tencent.mm.sdk.platformtools.ak(Looper.getMainLooper()).post(new f.1(this, (String)localObject7));
+        ((cm)localObject6).woR = com.tencent.mm.platformtools.aa.wA((String)localObject8);
+        ((cm)localObject6).nqW = 1;
+        localObject1 = e.d.aV(Integer.valueOf(1));
         if (localObject1 == null)
         {
           localObject1 = null;
-          label3548:
           if ((paramString == null) || (!paramString.equals("EmotionKv"))) {
-            break label4021;
+            break label4149;
           }
           paramString = (String)paramMap.get(".sysmsg.EmotionKv.K");
           localObject1 = (String)paramMap.get(".sysmsg.EmotionKv.I");
           if (paramString != null) {
-            break label7079;
+            break label7290;
           }
           paramString = "";
         }
-        label3870:
-        label4005:
-        label7079:
+        label3811:
+        label3947:
+        label4080:
+        label4088:
+        label7290:
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summercck emotionkv pcKeyStr len:%d, content[%s] pcId[%s]", new Object[] { Integer.valueOf(paramString.length()), paramString, localObject1 });
-          localObject4 = com.tencent.mm.protocal.y.cph().sqr.getBytes();
-          localObject5 = com.tencent.mm.protocal.y.cph().sqs.getBytes();
+          ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summercck emotionkv pcKeyStr len:%d, content[%s] pcId[%s]", new Object[] { Integer.valueOf(paramString.length()), paramString, localObject1 });
+          localObject4 = com.tencent.mm.protocal.aa.dqE().wiZ.getBytes();
+          localObject5 = com.tencent.mm.protocal.aa.dqE().wja.getBytes();
           paramMap = null;
           try
           {
-            parama = au.Dk().edx.KR().KO();
+            parama = aw.Rc().ftA.adI().adD();
             paramMap = parama;
           }
           catch (Exception parama)
           {
             for (;;)
             {
-              com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BigBallSysCmdMsgConsumer", "DISASTER_NOTICE :%s ", new Object[] { bk.j(parama) });
+              ab.e("MicroMsg.BigBallSysCmdMsgConsumer", "DISASTER_NOTICE :%s ", new Object[] { bo.l(parama) });
             }
+            localObject6 = com.tencent.mm.protocal.f.dqt();
+            if (!bo.ce((byte[])localObject6)) {
+              break label3811;
+            }
+            ab.e("MicroMsg.BigBallSysCmdMsgConsumer", "DISASTER_NOTICE  newECDH  is null .");
+            AppMethodBeat.o(16267);
+            return null;
             parama = new PByteArray();
-            if (bk.bl(paramString)) {
-              break label3761;
+            if (bo.isNullOrNil(paramString)) {
+              break label3857;
             }
           }
-          if (bk.bE(paramMap))
+          if (bo.ce(paramMap))
           {
-            com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BigBallSysCmdMsgConsumer", "DISASTER_NOTICE  ecdh  is null .");
+            ab.e("MicroMsg.BigBallSysCmdMsgConsumer", "DISASTER_NOTICE  ecdh  is null .");
+            AppMethodBeat.o(16267);
             return null;
-            localObject1 = ((com.tencent.mm.ah.e)localObject1).b(parama);
+            localObject1 = ((com.tencent.mm.ai.e)localObject1).b(parama);
             break;
           }
-          label3761:
-          label3776:
           int k;
-          label3784:
           int m;
-          if ((bk.bE((byte[])localObject5)) || (bk.bE((byte[])localObject4)) || (bk.bE(paramMap))) {
+          int n;
+          if ((bo.ce((byte[])localObject5)) || (bo.ce((byte[])localObject4)) || (bo.ce(paramMap)) || (bo.ce((byte[])localObject6))) {
             if (paramString == null)
             {
               i = -1;
               if (localObject5 != null) {
-                break label3962;
+                break label4080;
               }
               j = -1;
               if (localObject4 != null) {
-                break label3970;
+                break label4088;
               }
               k = -1;
               if (paramMap != null) {
-                break label3978;
+                break label4096;
               }
               m = -1;
-              label3791:
-              com.tencent.mm.sdk.platformtools.y.w("MicroMsg.BigBallSysCmdMsgConsumer", "summercck emotionkv param len err pcKeylen:%d, keynlen:%d, keyelen:%d, ecdhlen:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
-              label3835:
-              paramString = parama.value;
-              paramMap = new asz();
-              if (parama.value == null) {
-                break label4005;
+              if (localObject6 != null) {
+                break label4103;
               }
-              paramMap.nFs = new String(parama.value);
+              n = -1;
+              ab.w("MicroMsg.BigBallSysCmdMsgConsumer", "summercck emotionkv param len err pcKeylen:%d, keynlen:%d, keyelen:%d, ecdhlen:%d newECDH:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n) });
+              paramString = parama.value;
+              paramMap = new aza();
+              if (parama.value == null) {
+                break label4133;
+              }
+              paramMap.qsu = new String(parama.value);
               if (paramString != null) {
-                break label4014;
+                break label4142;
               }
             }
           }
-          label4014:
           for (i = -1;; i = paramString.length)
           {
-            com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summercck emotionkv res len:%d val len:%d, content[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramMap.nFs.length()), com.tencent.mm.a.g.o(paramMap.nFs.getBytes()) });
-            paramMap.toE = ((String)localObject1);
-            au.Hx();
-            c.Fv().b(new i.a(59, paramMap));
+            ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summercck emotionkv res len:%d val len:%d, content[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramMap.qsu.length()), com.tencent.mm.a.g.w(paramMap.qsu.getBytes()) });
+            paramMap.xox = ((String)localObject1);
+            aw.aaz();
+            c.Yz().c(new j.a(59, paramMap));
+            AppMethodBeat.o(16267);
             return null;
             i = paramString.length();
             break;
-            label3962:
             j = localObject5.length;
-            break label3776;
+            break label3872;
             k = localObject4.length;
-            break label3784;
+            break label3880;
             m = paramMap.length;
-            break label3791;
-            au.Hx();
-            MMProtocalJni.genClientCheckKVRes(c.CK(), paramString, (byte[])localObject4, (byte[])localObject5, paramMap, parama);
-            break label3835;
-            paramMap.nFs = "";
-            break label3870;
+            break label3887;
+            n = localObject6.length;
+            break label3895;
+            aw.aaz();
+            MMProtocalJni.genClientCheckKVRes(c.getUin(), paramString, (byte[])localObject4, (byte[])localObject5, paramMap, (byte[])localObject6, parama);
+            break label3947;
+            paramMap.qsu = "";
+            break label3982;
           }
-          label4021:
           if ((paramString != null) && (paramString.equals("globalalert")))
           {
             paramString = (String)paramMap.get(".sysmsg.uuid");
-            i = bk.getInt((String)paramMap.get(".sysmsg.id"), -1);
-            j = bk.getInt((String)paramMap.get(".sysmsg.important"), -1);
-            if ((bk.bl(paramString)) || (i < 0) || (j < 0))
+            i = bo.getInt((String)paramMap.get(".sysmsg.id"), -1);
+            j = bo.getInt((String)paramMap.get(".sysmsg.important"), -1);
+            if ((bo.isNullOrNil(paramString)) || (i < 0) || (j < 0))
             {
-              com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summeralert uuid[%s], id[%d], important[%d] is illegal ret", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j) });
+              ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summeralert uuid[%s], id[%d], important[%d] is illegal ret", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j) });
+              AppMethodBeat.o(16267);
               return null;
             }
             parama = (String)paramMap.get(".sysmsg.title");
             localObject1 = (String)paramMap.get(".sysmsg.msg");
-            if ((bk.bl(parama)) && (bk.bl((String)localObject1)))
+            if ((bo.isNullOrNil(parama)) && (bo.isNullOrNil((String)localObject1)))
             {
-              com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summeralert title[%s], msg[%s] is illegal ret", new Object[] { parama, localObject1 });
+              ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summeralert title[%s], msg[%s] is illegal ret", new Object[] { parama, localObject1 });
+              AppMethodBeat.o(16267);
               return null;
             }
             localObject5 = (String)paramMap.get(".sysmsg.btnlist.btn.$title");
-            k = bk.getInt((String)paramMap.get(".sysmsg.btnlist.btn.$id"), -1);
-            m = bk.getInt((String)paramMap.get(".sysmsg.btnlist.btn.$actiontype"), -1);
+            k = bo.getInt((String)paramMap.get(".sysmsg.btnlist.btn.$id"), -1);
+            m = bo.getInt((String)paramMap.get(".sysmsg.btnlist.btn.$actiontype"), -1);
             localObject6 = (String)paramMap.get(".sysmsg.btnlist.btn");
-            if ((bk.bl((String)localObject5)) || (k < 0) || (m < 0))
+            if ((bo.isNullOrNil((String)localObject5)) || (k < 0) || (m < 0))
             {
-              com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summeralert first btn btnStr[%s], btnId[%d] btnActionType[%d] is illegal ret", new Object[] { localObject5, Integer.valueOf(k), Integer.valueOf(m) });
+              ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summeralert first btn btnStr[%s], btnId[%d] btnActionType[%d] is illegal ret", new Object[] { localObject5, Integer.valueOf(k), Integer.valueOf(m) });
+              AppMethodBeat.o(16267);
               return null;
             }
             localObject4 = (String)paramMap.get(".sysmsg.btnlist.btn1.$title");
-            int n = bk.getInt((String)paramMap.get(".sysmsg.btnlist.btn1.$id"), -1);
-            int i1 = bk.getInt((String)paramMap.get(".sysmsg.btnlist.btn1.$actiontype"), -1);
+            n = bo.getInt((String)paramMap.get(".sysmsg.btnlist.btn1.$id"), -1);
+            int i1 = bo.getInt((String)paramMap.get(".sysmsg.btnlist.btn1.$actiontype"), -1);
             paramMap = (String)paramMap.get(".sysmsg.btnlist.btn1");
             bool1 = true;
-            if ((bk.bl((String)localObject4)) || (n < 0) || (i1 < 0))
+            if ((bo.isNullOrNil((String)localObject4)) || (n < 0) || (i1 < 0))
             {
               bool1 = false;
-              com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summeralert sec btn btnStr[%s], btnId[%d] btnActionType[%d] is illegal only one btn", new Object[] { localObject5, Integer.valueOf(k), Integer.valueOf(m) });
+              ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summeralert sec btn btnStr[%s], btnId[%d] btnActionType[%d] is illegal only one btn", new Object[] { localObject5, Integer.valueOf(k), Integer.valueOf(m) });
             }
-            localObject7 = new ig();
+            localObject7 = new ik();
             localObject8 = new com.tencent.mm.protocal.b.a.b();
-            ((ig)localObject7).bQt.bQu = ((com.tencent.mm.protocal.b.a.b)localObject8);
+            ((ik)localObject7).cxM.cxN = ((com.tencent.mm.protocal.b.a.b)localObject8);
             ((com.tencent.mm.protocal.b.a.b)localObject8).id = i;
             ((com.tencent.mm.protocal.b.a.b)localObject8).title = parama;
-            ((com.tencent.mm.protocal.b.a.b)localObject8).bHk = ((String)localObject1);
-            ((com.tencent.mm.protocal.b.a.b)localObject8).srm = new LinkedList();
+            ((com.tencent.mm.protocal.b.a.b)localObject8).bjm = ((String)localObject1);
+            ((com.tencent.mm.protocal.b.a.b)localObject8).wjT = new LinkedList();
             localObject9 = new com.tencent.mm.protocal.b.a.a();
             ((com.tencent.mm.protocal.b.a.a)localObject9).id = k;
             ((com.tencent.mm.protocal.b.a.a)localObject9).actionType = m;
-            ((com.tencent.mm.protocal.b.a.a)localObject9).srk = ((String)localObject5);
-            ((com.tencent.mm.protocal.b.a.a)localObject9).srl = ((String)localObject6);
-            ((com.tencent.mm.protocal.b.a.b)localObject8).srm.add(localObject9);
+            ((com.tencent.mm.protocal.b.a.a)localObject9).wjR = ((String)localObject5);
+            ((com.tencent.mm.protocal.b.a.a)localObject9).wjS = ((String)localObject6);
+            ((com.tencent.mm.protocal.b.a.b)localObject8).wjT.add(localObject9);
             if (bool1)
             {
               localObject5 = new com.tencent.mm.protocal.b.a.a();
               ((com.tencent.mm.protocal.b.a.a)localObject5).id = n;
               ((com.tencent.mm.protocal.b.a.a)localObject5).actionType = i1;
-              ((com.tencent.mm.protocal.b.a.a)localObject5).srk = ((String)localObject4);
-              ((com.tencent.mm.protocal.b.a.a)localObject5).srl = paramMap;
-              ((com.tencent.mm.protocal.b.a.b)localObject8).srm.add(localObject5);
+              ((com.tencent.mm.protocal.b.a.a)localObject5).wjR = ((String)localObject4);
+              ((com.tencent.mm.protocal.b.a.a)localObject5).wjS = paramMap;
+              ((com.tencent.mm.protocal.b.a.b)localObject8).wjT.add(localObject5);
             }
-            com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summeralert uuid[%s], id[%d], important[%d], title[%s], msg[%s], twoBtn[%b], publish[%b]", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j), parama, localObject1, Boolean.valueOf(bool1), Boolean.valueOf(com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject7)) });
+            ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summeralert uuid[%s], id[%d], important[%d], title[%s], msg[%s], twoBtn[%b], publish[%b]", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j), parama, localObject1, Boolean.valueOf(bool1), Boolean.valueOf(com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject7)) });
+            AppMethodBeat.o(16267);
             return null;
           }
           if ((paramString != null) && (paramString.equals("yybsigcheck")))
           {
-            com.tencent.mm.plugin.report.service.h.nFQ.a(322L, 14L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 14L, 1L, false);
             l1 = System.currentTimeMillis();
             paramString = (String)paramMap.get(".sysmsg.yybsigcheck.yybsig.nocheckmarket");
             parama = (String)paramMap.get(".sysmsg.yybsigcheck.yybsig.wording");
             paramMap = (String)paramMap.get(".sysmsg.yybsigcheck.yybsig.url");
-            com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml nocheckmarket[%s], wording[%s], url[%s]", new Object[] { paramString, parama, paramMap });
-            com.tencent.mm.plugin.report.service.h.nFQ.f(11098, new Object[] { Integer.valueOf(4014), String.format("%s|%s|%s", new Object[] { paramString, parama, paramMap }) });
-            if (bk.bl(paramString))
+            ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml nocheckmarket[%s], wording[%s], url[%s]", new Object[] { paramString, parama, paramMap });
+            com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4014), String.format("%s|%s|%s", new Object[] { paramString, parama, paramMap }) });
+            if (bo.isNullOrNil(paramString))
             {
-              com.tencent.mm.sdk.platformtools.y.w("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml nocheckmarket is nil and return");
-              com.tencent.mm.plugin.report.service.h.nFQ.a(322L, 15L, 1L, false);
-              com.tencent.mm.plugin.report.service.h.nFQ.f(11098, new Object[] { Integer.valueOf(4015), String.format("%s|%s", new Object[] { parama, paramMap }) });
+              ab.w("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml nocheckmarket is nil and return");
+              com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 15L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4015), String.format("%s|%s", new Object[] { parama, paramMap }) });
+              AppMethodBeat.o(16267);
               return null;
             }
             localObject1 = paramString.split(";");
             if (localObject1 == null) {}
             for (i = -1;; i = localObject1.length)
             {
-              com.tencent.mm.sdk.platformtools.y.d("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml infoStrs len is %d", new Object[] { Integer.valueOf(i) });
+              ab.d("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml infoStrs len is %d", new Object[] { Integer.valueOf(i) });
               if ((localObject1 != null) && (localObject1.length != 0)) {
                 break;
               }
-              com.tencent.mm.plugin.report.service.h.nFQ.a(322L, 16L, 1L, false);
-              com.tencent.mm.plugin.report.service.h.nFQ.f(11098, new Object[] { Integer.valueOf(4016), paramString });
+              com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 16L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4016), paramString });
+              AppMethodBeat.o(16267);
               return null;
             }
             localObject4 = new ArrayList();
@@ -1235,8 +1308,8 @@ public final class f
             if (i < localObject1.length)
             {
               localObject5 = localObject1[i];
-              if (bk.bl((String)localObject5)) {
-                com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml infoStr is nil index:%d, continue", new Object[] { Integer.valueOf(i) });
+              if (bo.isNullOrNil((String)localObject5)) {
+                ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml infoStr is nil index:%d, continue", new Object[] { Integer.valueOf(i) });
               }
               for (;;)
               {
@@ -1246,11 +1319,11 @@ public final class f
                 if (localObject6 == null) {}
                 for (j = -1;; j = localObject6.length)
                 {
-                  com.tencent.mm.sdk.platformtools.y.d("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml fields len is %d", new Object[] { Integer.valueOf(j) });
+                  ab.d("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml fields len is %d", new Object[] { Integer.valueOf(j) });
                   if ((localObject6 != null) && (localObject6.length == 3)) {
-                    break label5124;
+                    break label5288;
                   }
-                  com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml fields len is invalid index:%d, continue", new Object[] { Integer.valueOf(i) });
+                  ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml fields len is invalid index:%d, continue", new Object[] { Integer.valueOf(i) });
                   break;
                 }
                 try
@@ -1259,43 +1332,45 @@ public final class f
                 }
                 catch (Exception localException5)
                 {
-                  com.tencent.mm.sdk.platformtools.y.w("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml parse info index:%d, e:%s", new Object[] { Integer.valueOf(i), localException5.getMessage() });
-                  com.tencent.mm.plugin.report.service.h.nFQ.a(322L, 17L, 1L, false);
-                  com.tencent.mm.plugin.report.service.h.nFQ.f(11098, new Object[] { Integer.valueOf(4017), localObject5 });
+                  ab.w("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml parse info index:%d, e:%s", new Object[] { Integer.valueOf(i), localException5.getMessage() });
+                  com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 17L, 1L, false);
+                  com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4017), localObject5 });
                 }
               }
             }
             if (((ArrayList)localObject4).size() == 0)
             {
-              com.tencent.mm.sdk.platformtools.y.w("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml marketList size is 0 and return");
-              com.tencent.mm.plugin.report.service.h.nFQ.a(322L, 18L, 1L, false);
-              com.tencent.mm.plugin.report.service.h.nFQ.f(11098, new Object[] { Integer.valueOf(4018), String.format("%s|%s|%s", new Object[] { paramString, parama, paramMap }) });
+              ab.w("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml marketList size is 0 and return");
+              com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 18L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4018), String.format("%s|%s|%s", new Object[] { paramString, parama, paramMap }) });
+              AppMethodBeat.o(16267);
               return null;
             }
-            if (bk.getInt(com.tencent.mm.m.g.AA().getValue("YYBVerifyMarketUseSystemApi"), 0) != 0)
+            if (bo.getInt(com.tencent.mm.m.g.Nq().getValue("YYBVerifyMarketUseSystemApi"), 0) != 0)
             {
               bool1 = true;
-              boolean bool2 = com.tencent.mm.platformtools.ai.a(ae.getContext(), (ArrayList)localObject4, bool1);
-              com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml marketList size[%d], usesSystemApi[%b], containLowerMarket[%b], take[%d]ms", new Object[] { Integer.valueOf(((ArrayList)localObject4).size()), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Long.valueOf(System.currentTimeMillis() - l1) });
+              boolean bool2 = ai.a(ah.getContext(), (ArrayList)localObject4, bool1);
+              ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summertoken newxml marketList size[%d], usesSystemApi[%b], containLowerMarket[%b], take[%d]ms", new Object[] { Integer.valueOf(((ArrayList)localObject4).size()), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Long.valueOf(System.currentTimeMillis() - l1) });
               if (bool2) {
-                break label5512;
+                break label5688;
               }
-              au.Hv().setInt(46, 4);
-              localObject1 = new iu();
-              ((iu)localObject1).bQY.bQZ = parama;
-              ((iu)localObject1).bQY.url = paramMap;
-              com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject1);
-              com.tencent.mm.plugin.report.service.h.nFQ.a(322L, 20L, 1L, true);
-              com.tencent.mm.plugin.report.service.h.nFQ.f(11098, new Object[] { Integer.valueOf(4020), String.format("%s|%s|%s", new Object[] { paramString, parama, paramMap }) });
+              aw.aax().setInt(46, 4);
+              localObject1 = new jb();
+              ((jb)localObject1).cyz.cyA = parama;
+              ((jb)localObject1).cyz.url = paramMap;
+              com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject1);
+              com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 20L, 1L, true);
+              com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4020), String.format("%s|%s|%s", new Object[] { paramString, parama, paramMap }) });
             }
             for (;;)
             {
+              AppMethodBeat.o(16267);
               return null;
               bool1 = false;
               break;
-              au.Hv().setInt(46, 0);
-              com.tencent.mm.plugin.report.service.h.nFQ.a(322L, 19L, 1L, true);
-              com.tencent.mm.plugin.report.service.h.nFQ.f(11098, new Object[] { Integer.valueOf(4019), String.format("%s|%s|%s", new Object[] { paramString, parama, paramMap }) });
+              aw.aax().setInt(46, 0);
+              com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 19L, 1L, true);
+              com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4019), String.format("%s|%s|%s", new Object[] { paramString, parama, paramMap }) });
             }
           }
           if ((paramString != null) && (paramString.equals("qy_status_notify")))
@@ -1303,196 +1378,200 @@ public final class f
             parama = (String)paramMap.get(".sysmsg.chat_id");
             paramMap.get(".sysmsg.last_create_time");
             paramString = (String)paramMap.get(".sysmsg.brand_username");
-            l1 = com.tencent.mm.ai.a.e.lx(parama);
+            l1 = com.tencent.mm.aj.a.e.st(parama);
             if (l1 == -1L)
             {
-              com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "qy_status_notify bizLocalId == -1,%s", new Object[] { parama });
+              ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "qy_status_notify bizLocalId == -1,%s", new Object[] { parama });
+              AppMethodBeat.o(16267);
               return null;
             }
-            i = com.tencent.mm.ai.z.MB().bK(l1).field_newUnReadCount;
-            com.tencent.mm.ai.z.MB().bM(l1);
-            paramMap = com.tencent.mm.ai.z.MA().aj(l1);
-            au.Hx();
-            parama = c.FB().abv(paramString);
+            i = com.tencent.mm.aj.z.afl().gF(l1).field_newUnReadCount;
+            com.tencent.mm.aj.z.afl().gH(l1);
+            paramMap = com.tencent.mm.aj.z.afk().aG(l1);
+            aw.aaz();
+            parama = c.YF().arH(paramString);
             if (parama == null)
             {
-              com.tencent.mm.sdk.platformtools.y.w("MicroMsg.BigBallSysCmdMsgConsumer", "qy_status_notify cvs == null:%s", new Object[] { paramString });
+              ab.w("MicroMsg.BigBallSysCmdMsgConsumer", "qy_status_notify cvs == null:%s", new Object[] { paramString });
+              AppMethodBeat.o(16267);
               return null;
             }
-            if (paramMap.il(1))
+            if (paramMap.kY(1))
             {
               if (parama.field_unReadMuteCount <= i)
               {
-                parama.fE(0);
-                au.Hx();
-                c.FB().a(parama, paramString);
-                au.getNotification().cancelNotification(paramString);
+                parama.hP(0);
+                aw.aaz();
+                c.YF().a(parama, paramString);
+                aw.getNotification().cancelNotification(paramString);
               }
               for (;;)
               {
+                AppMethodBeat.o(16267);
                 return null;
-                parama.fE(parama.field_unReadMuteCount - i);
-                au.Hx();
-                c.FB().a(parama, paramString);
+                parama.hP(parama.field_unReadMuteCount - i);
+                aw.aaz();
+                c.YF().a(parama, paramString);
               }
             }
             if (parama.field_unReadCount <= i)
             {
-              au.Hx();
-              c.FB().abx(paramString);
-              au.getNotification().cancelNotification(paramString);
+              aw.aaz();
+              c.YF().arJ(paramString);
+              aw.getNotification().cancelNotification(paramString);
             }
             for (;;)
             {
+              AppMethodBeat.o(16267);
               return null;
-              parama.fD(0);
-              parama.fG(0);
-              parama.fy(parama.field_unReadCount - i);
-              au.Hx();
-              c.FB().a(parama, paramString);
+              parama.hO(0);
+              parama.hR(0);
+              parama.hJ(parama.field_unReadCount - i);
+              aw.aaz();
+              c.YF().a(parama, paramString);
             }
           }
           if ((paramString != null) && (paramString.equals("qy_chat_update")))
           {
             parama = (String)paramMap.get(".sysmsg.chat_id");
             localObject4 = (String)paramMap.get(".sysmsg.ver");
-            com.tencent.mm.ai.a.e.n((String)paramMap.get(".sysmsg.brand_username"), parama, (String)localObject4);
+            com.tencent.mm.aj.a.e.p((String)paramMap.get(".sysmsg.brand_username"), parama, (String)localObject4);
           }
           if ((paramString != null) && (paramString.equals("bindmobiletip")))
           {
-            i = bk.getInt((String)paramMap.get(".sysmsg.bindmobiletip.forcebind"), 0);
-            parama = bk.pm((String)paramMap.get(".sysmsg.bindmobiletip.deviceid"));
-            paramString = bk.pm((String)paramMap.get(".sysmsg.bindmobiletip.wording"));
+            i = bo.getInt((String)paramMap.get(".sysmsg.bindmobiletip.forcebind"), 0);
+            parama = bo.nullAsNil((String)paramMap.get(".sysmsg.bindmobiletip.deviceid"));
+            paramString = bo.nullAsNil((String)paramMap.get(".sysmsg.bindmobiletip.wording"));
             paramMap = new String(Base64.decode(parama.getBytes(), 0));
-            parama = new String(com.tencent.mm.bv.b.bk(q.zg().getBytes()).EB(16).oY);
-            com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbindmobile forceBind:%d,decodeDeviceId[%s],localDeviceId[%s],woridingStr[%s]", new Object[] { Integer.valueOf(i), paramMap, parama, paramString });
-            if ((bk.bl(paramMap)) || (paramMap.equals(parama)))
+            parama = new String(com.tencent.mm.bv.b.bL(com.tencent.mm.compatible.e.q.LK().getBytes()).Mz(16).pW);
+            ab.i("MicroMsg.BigBallSysCmdMsgConsumer", "summerbindmobile forceBind:%d,decodeDeviceId[%s],localDeviceId[%s],woridingStr[%s]", new Object[] { Integer.valueOf(i), paramMap, parama, paramString });
+            if ((bo.isNullOrNil(paramMap)) || (paramMap.equals(parama)))
             {
-              au.Hx();
-              c.Dz().c(ac.a.upL, Boolean.valueOf(true));
-              au.Hx();
-              paramMap = c.Dz();
-              parama = ac.a.upM;
+              aw.aaz();
+              c.Ru().set(ac.a.yzL, Boolean.TRUE);
+              aw.aaz();
+              paramMap = c.Ru();
+              parama = ac.a.yzM;
               if (i != 1) {
-                break label6160;
+                break label6365;
               }
             }
             for (bool1 = true;; bool1 = false)
             {
-              paramMap.c(parama, Boolean.valueOf(bool1));
-              au.Hx();
-              c.Dz().c(ac.a.upN, paramString);
+              paramMap.set(parama, Boolean.valueOf(bool1));
+              aw.aaz();
+              c.Ru().set(ac.a.yzN, paramString);
+              AppMethodBeat.o(16267);
               return null;
             }
           }
           if ((paramString != null) && (paramString.equals("ClientCheckConsistency")))
           {
-            parama = new bah();
-            parama.ewD = ((String)paramMap.get(".sysmsg.ClientCheckConsistency.clientcheck.fullpathfilename"));
-            parama.twk = bk.getInt((String)paramMap.get(".sysmsg.ClientCheckConsistency.clientcheck.fileoffset"), 0);
-            parama.twl = bk.getInt((String)paramMap.get(".sysmsg.ClientCheckConsistency.clientcheck.checkbuffersize"), 0);
-            parama.sEE = bk.getInt((String)paramMap.get(".sysmsg.ClientCheckConsistency.clientcheck.seq"), 0);
-            parama.twm = f(parama.ewD, parama.twk, parama.twl);
-            parama.ndo = ((int)gy(parama.ewD));
-            if (!com.tencent.mm.plugin.normsg.a.b.mGK.boG()) {
-              break label7026;
+            parama = new bhk();
+            parama.fMs = ((String)paramMap.get(".sysmsg.ClientCheckConsistency.clientcheck.fullpathfilename"));
+            parama.xwy = bo.getInt((String)paramMap.get(".sysmsg.ClientCheckConsistency.clientcheck.fileoffset"), 0);
+            parama.xwz = bo.getInt((String)paramMap.get(".sysmsg.ClientCheckConsistency.clientcheck.checkbuffersize"), 0);
+            parama.wAK = bo.getInt((String)paramMap.get(".sysmsg.ClientCheckConsistency.clientcheck.seq"), 0);
+            parama.xwA = m(parama.fMs, parama.xwy, parama.xwz);
+            parama.FileSize = ((int)ng(parama.fMs));
+            if (!com.tencent.mm.plugin.normsg.a.b.pgQ.bXh()) {
+              break label7237;
             }
             i = 1;
           }
           for (;;)
           {
-            parama.twn = i;
-            parama.sNU = w.zx();
-            parama.two = f(new Object[] { parama.ewD, Integer.valueOf(parama.twk), Integer.valueOf(parama.twl), Integer.valueOf(parama.sEE), parama.twm, Integer.valueOf(parama.ndo), Integer.valueOf(parama.twn), Integer.valueOf(parama.sNU) });
-            au.Hx();
-            c.Fv().b(new i.a(61, parama));
+            parama.xwB = i;
+            parama.wLO = com.tencent.mm.compatible.e.z.LZ();
+            parama.xwC = h(new Object[] { parama.fMs, Integer.valueOf(parama.xwy), Integer.valueOf(parama.xwz), Integer.valueOf(parama.wAK), parama.xwA, Integer.valueOf(parama.FileSize), Integer.valueOf(parama.xwB), Integer.valueOf(parama.wLO) });
+            aw.aaz();
+            c.Yz().c(new j.a(61, parama));
             if ((paramString != null) && (paramString.equals("ClientCheckHook")))
             {
-              parama = new baj();
-              parama.sEE = bk.getInt((String)paramMap.get(".sysmsg.ClientCheckHook.clientcheck.seq"), 0);
-              parama.twq = com.tencent.mm.plugin.normsg.a.b.mGK.hY(false);
-              if (com.tencent.mm.plugin.normsg.a.b.mGK.boG())
+              parama = new bhm();
+              parama.wAK = bo.getInt((String)paramMap.get(".sysmsg.ClientCheckHook.clientcheck.seq"), 0);
+              parama.xwE = com.tencent.mm.plugin.normsg.a.b.pgQ.jU(false);
+              if (com.tencent.mm.plugin.normsg.a.b.pgQ.bXh())
               {
                 i = 1;
-                label6497:
-                parama.twn = i;
-                parama.sNU = w.zx();
-                parama.two = f(new Object[] { Integer.valueOf(parama.sEE), parama.twq, Integer.valueOf(parama.twn), Integer.valueOf(parama.sNU) });
-                au.Hx();
-                c.Fv().b(new i.a(62, parama));
+                parama.xwB = i;
+                parama.wLO = com.tencent.mm.compatible.e.z.LZ();
+                parama.xwC = h(new Object[] { Integer.valueOf(parama.wAK), parama.xwE, Integer.valueOf(parama.xwB), Integer.valueOf(parama.wLO) });
+                aw.aaz();
+                c.Yz().c(new j.a(62, parama));
               }
             }
             else
             {
               if ((paramString != null) && (paramString.equals("ClientCheckGetAppList")))
               {
-                parama = new bai();
-                parama.sEE = bk.getInt((String)paramMap.get(".sysmsg.ClientCheckGetAppList.clientcheck.seq"), 0);
-                parama.twp = com.tencent.mm.plugin.normsg.a.b.mGK.boN();
-                if (!com.tencent.mm.plugin.normsg.a.b.mGK.boG()) {
-                  break label7038;
+                parama = new bhl();
+                parama.wAK = bo.getInt((String)paramMap.get(".sysmsg.ClientCheckGetAppList.clientcheck.seq"), 0);
+                parama.xwD = com.tencent.mm.plugin.normsg.a.b.pgQ.bXo();
+                if (!com.tencent.mm.plugin.normsg.a.b.pgQ.bXh()) {
+                  break label7249;
                 }
                 i = 1;
-                parama.twn = i;
-                parama.sNU = w.zx();
-                parama.two = f(new Object[] { Integer.valueOf(parama.sEE), parama.twp, Integer.valueOf(parama.twn), Integer.valueOf(parama.sNU) });
-                au.Hx();
-                c.Fv().b(new i.a(63, parama));
+                parama.xwB = i;
+                parama.wLO = com.tencent.mm.compatible.e.z.LZ();
+                parama.xwC = h(new Object[] { Integer.valueOf(parama.wAK), parama.xwD, Integer.valueOf(parama.xwB), Integer.valueOf(parama.wLO) });
+                aw.aaz();
+                c.Yz().c(new j.a(63, parama));
               }
               if ((paramString != null) && (paramString.equals("ClientCheckGetExtInfo"))) {
-                com.tencent.mm.sdk.f.e.a(new f.2(this, paramMap), "syscmd_rpt_cc");
+                com.tencent.mm.sdk.g.d.g(new f.2(this, paramMap), "syscmd_rpt_cc");
               }
-              if ((!bk.bl(paramString)) && (paramString.equals("functionmsg")))
+              if ((!bo.isNullOrNil(paramString)) && (paramString.equals("functionmsg")))
               {
-                com.tencent.mm.sdk.platformtools.y.d("MicroMsg.BigBallSysCmdMsgConsumer", "subtype functionmsg");
-                ((o)com.tencent.mm.kernel.g.t(o.class)).getReceiver().a(localException5, paramMap);
+                ab.d("MicroMsg.BigBallSysCmdMsgConsumer", "subtype functionmsg");
+                ((com.tencent.mm.api.q)com.tencent.mm.kernel.g.G(com.tencent.mm.api.q.class)).getReceiver().a(localException5, paramMap);
               }
-              if ((!bk.bl(paramString)) && (paramString.equals("paymsg")))
+              if ((!bo.isNullOrNil(paramString)) && (paramString.equals("paymsg")))
               {
-                i = bk.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), 0);
+                i = bo.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), 0);
                 localObject4 = (String)paramMap.get(".sysmsg.paymsg.appmsgcontent");
                 paramString = (String)paramMap.get(".sysmsg.paymsg.fromusername");
                 parama = (String)paramMap.get(".sysmsg.paymsg.tousername");
                 paramMap = (String)paramMap.get(".sysmsg.paymsg.paymsgid");
-                com.tencent.mm.sdk.platformtools.y.d("MicroMsg.BigBallSysCmdMsgConsumer", "payMsg, payMsgType: %s, MsgId: %s, fromUsername: %s, toUsername: %s, paymsgid: %s, appMsgContentEncode: %s, ", new Object[] { Integer.valueOf(i), Long.valueOf(localException5.ndp), paramString, parama, paramMap, localObject4 });
+                ab.d("MicroMsg.BigBallSysCmdMsgConsumer", "payMsg, payMsgType: %s, MsgId: %s, fromUsername: %s, toUsername: %s, paymsgid: %s, appMsgContentEncode: %s, ", new Object[] { Integer.valueOf(i), Long.valueOf(localException5.pIG), paramString, parama, paramMap, localObject4 });
               }
             }
             try
             {
               localObject4 = URLDecoder.decode((String)localObject4, "UTF-8");
-              if (!bk.bl((String)localObject4))
+              if (!bo.isNullOrNil((String)localObject4))
               {
-                localObject5 = new mt();
-                ((mt)localObject5).bWs.type = i;
-                ((mt)localObject5).bWs.content = ((String)localObject4);
-                ((mt)localObject5).bWs.bRO = paramString;
-                ((mt)localObject5).bWs.toUser = parama;
-                ((mt)localObject5).bWs.bWt = paramMap;
-                com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject5);
+                localObject5 = new np();
+                ((np)localObject5).cEf.type = i;
+                ((np)localObject5).cEf.content = ((String)localObject4);
+                ((np)localObject5).cEf.czp = paramString;
+                ((np)localObject5).cEf.toUser = parama;
+                ((np)localObject5).cEf.cEg = paramMap;
+                com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject5);
               }
+              AppMethodBeat.o(16267);
               return localObject1;
-              label7026:
               i = 0;
               continue;
               i = 0;
-              break label6497;
-              label7038:
+              break label6702;
               i = 0;
             }
             catch (Exception paramString)
             {
               for (;;)
               {
-                com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.BigBallSysCmdMsgConsumer", paramString, "", new Object[0]);
-                com.tencent.mm.sdk.platformtools.y.d("MicroMsg.BigBallSysCmdMsgConsumer", "pay msg, parse failed: %s", new Object[] { paramString.getMessage() });
+                ab.printErrStackTrace("MicroMsg.BigBallSysCmdMsgConsumer", paramString, "", new Object[0]);
+                ab.d("MicroMsg.BigBallSysCmdMsgConsumer", "pay msg, parse failed: %s", new Object[] { paramString.getMessage() });
               }
             }
           }
         }
       }
-      label5124:
-      label5512:
-      label7089:
+      label3895:
+      label5688:
+      label7237:
+      label7249:
       boolean bool1 = false;
     }
   }

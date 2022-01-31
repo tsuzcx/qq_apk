@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CleanChattingUI$2
   implements AdapterView.OnItemClickListener
@@ -12,9 +13,11 @@ final class CleanChattingUI$2
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = new Intent(this.iEe, CleanChattingDetailUI.class);
+    AppMethodBeat.i(18875);
+    paramAdapterView = new Intent(this.kJl, CleanChattingDetailUI.class);
     paramAdapterView.putExtra("key_position", paramInt);
-    this.iEe.startActivityForResult(paramAdapterView, 0);
+    this.kJl.startActivityForResult(paramAdapterView, 0);
+    AppMethodBeat.o(18875);
   }
 }
 

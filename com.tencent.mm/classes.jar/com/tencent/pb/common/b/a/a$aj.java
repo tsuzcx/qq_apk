@@ -8,192 +8,192 @@ import java.util.Arrays;
 public final class a$aj
   extends e
 {
+  public a.at BdI = null;
+  public a.av[] BeZ = a.av.dTR();
+  public a.as Ben = null;
+  public int Bep = 0;
+  public a.av[] Bet = a.av.dTR();
+  public a.o[] Bfa = a.o.dTL();
+  public a.aw[] Bfb = a.aw.dTS();
+  public int Bfc = 0;
+  public int[] Bfd = g.bgZ;
+  public a.o[] Bfe = a.o.dTL();
+  public a.o[] Bfh = a.o.dTL();
+  public int Bfi = 0;
+  public int Bfj = 0;
+  public int Bfk = 0;
+  public byte[] Bfl = g.bhf;
+  public int[] Bfm = g.bgZ;
   public String groupId = "";
-  public int pRI = 0;
-  public long pRJ = 0L;
-  public int sPg = -1;
-  public a.as wGM = null;
-  public int wGO = 0;
-  public a.av[] wGS = a.av.cOf();
-  public a.at wGh = null;
-  public a.o[] wHA = a.o.cNZ();
-  public a.aw[] wHB = a.aw.cOg();
-  public int wHC = 0;
-  public int[] wHD = g.aUJ;
-  public a.o[] wHE = a.o.cNZ();
-  public a.o[] wHH = a.o.cNZ();
-  public int wHI = 0;
-  public int wHJ = 0;
-  public int wHK = 0;
-  public byte[] wHL = g.aUP;
-  public int[] wHM = g.aUJ;
-  public a.av[] wHz = a.av.cOf();
+  public int twP = 0;
+  public long twQ = 0L;
+  public int wNy = -1;
   
   public a$aj()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
     int j = 0;
     if (!this.groupId.equals("")) {
-      paramb.d(1, this.groupId);
+      paramb.e(1, this.groupId);
     }
-    if (this.pRI != 0) {
-      paramb.aL(2, this.pRI);
+    if (this.twP != 0) {
+      paramb.bj(2, this.twP);
     }
-    if (this.pRJ != 0L) {
-      paramb.i(3, this.pRJ);
+    if (this.twQ != 0L) {
+      paramb.n(3, this.twQ);
     }
     int i;
     Object localObject;
-    if ((this.wHA != null) && (this.wHA.length > 0))
+    if ((this.Bfa != null) && (this.Bfa.length > 0))
     {
       i = 0;
-      while (i < this.wHA.length)
+      while (i < this.Bfa.length)
       {
-        localObject = this.wHA[i];
+        localObject = this.Bfa[i];
         if (localObject != null) {
           paramb.a(4, (e)localObject);
         }
         i += 1;
       }
     }
-    if ((this.wHz != null) && (this.wHz.length > 0))
+    if ((this.BeZ != null) && (this.BeZ.length > 0))
     {
       i = 0;
-      while (i < this.wHz.length)
+      while (i < this.BeZ.length)
       {
-        localObject = this.wHz[i];
+        localObject = this.BeZ[i];
         if (localObject != null) {
           paramb.a(5, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.wGM != null) {
-      paramb.a(6, this.wGM);
+    if (this.Ben != null) {
+      paramb.a(6, this.Ben);
     }
-    if (this.wHC != 0) {
-      paramb.aL(7, this.wHC);
+    if (this.Bfc != 0) {
+      paramb.bj(7, this.Bfc);
     }
-    if ((this.wHD != null) && (this.wHD.length > 0))
+    if ((this.Bfd != null) && (this.Bfd.length > 0))
     {
       i = 0;
-      while (i < this.wHD.length)
+      while (i < this.Bfd.length)
       {
-        paramb.aL(8, this.wHD[i]);
+        paramb.bj(8, this.Bfd[i]);
         i += 1;
       }
     }
-    if ((this.wHB != null) && (this.wHB.length > 0))
+    if ((this.Bfb != null) && (this.Bfb.length > 0))
     {
       i = 0;
-      while (i < this.wHB.length)
+      while (i < this.Bfb.length)
       {
-        localObject = this.wHB[i];
+        localObject = this.Bfb[i];
         if (localObject != null) {
           paramb.a(9, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.wGh != null) {
-      paramb.a(10, this.wGh);
+    if (this.BdI != null) {
+      paramb.a(10, this.BdI);
     }
-    if ((this.wHE != null) && (this.wHE.length > 0))
+    if ((this.Bfe != null) && (this.Bfe.length > 0))
     {
       i = 0;
-      while (i < this.wHE.length)
+      while (i < this.Bfe.length)
       {
-        localObject = this.wHE[i];
+        localObject = this.Bfe[i];
         if (localObject != null) {
           paramb.a(11, (e)localObject);
         }
         i += 1;
       }
     }
-    if ((this.wGS != null) && (this.wGS.length > 0))
+    if ((this.Bet != null) && (this.Bet.length > 0))
     {
       i = 0;
-      while (i < this.wGS.length)
+      while (i < this.Bet.length)
       {
-        localObject = this.wGS[i];
+        localObject = this.Bet[i];
         if (localObject != null) {
           paramb.a(12, (e)localObject);
         }
         i += 1;
       }
     }
-    if ((this.wHH != null) && (this.wHH.length > 0))
+    if ((this.Bfh != null) && (this.Bfh.length > 0))
     {
       i = 0;
-      while (i < this.wHH.length)
+      while (i < this.Bfh.length)
       {
-        localObject = this.wHH[i];
+        localObject = this.Bfh[i];
         if (localObject != null) {
           paramb.a(13, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.wHI != 0) {
-      paramb.aL(14, this.wHI);
+    if (this.Bfi != 0) {
+      paramb.bj(14, this.Bfi);
     }
-    if (this.wHJ != 0) {
-      paramb.aL(15, this.wHJ);
+    if (this.Bfj != 0) {
+      paramb.bj(15, this.Bfj);
     }
-    if (this.wHK != 0) {
-      paramb.aL(16, this.wHK);
+    if (this.Bfk != 0) {
+      paramb.bj(16, this.Bfk);
     }
-    if (!Arrays.equals(this.wHL, g.aUP)) {
-      paramb.b(17, this.wHL);
+    if (!Arrays.equals(this.Bfl, g.bhf)) {
+      paramb.b(17, this.Bfl);
     }
-    if (this.sPg != -1) {
-      paramb.aL(18, this.sPg);
+    if (this.wNy != -1) {
+      paramb.bj(18, this.wNy);
     }
-    if ((this.wHM != null) && (this.wHM.length > 0))
+    if ((this.Bfm != null) && (this.Bfm.length > 0))
     {
       i = j;
-      while (i < this.wHM.length)
+      while (i < this.Bfm.length)
       {
-        paramb.aM(19, this.wHM[i]);
+        paramb.bk(19, this.Bfm[i]);
         i += 1;
       }
     }
-    if (this.wGO != 0) {
-      paramb.aM(20, this.wGO);
+    if (this.Bep != 0) {
+      paramb.bk(20, this.Bep);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.e(1, this.groupId);
+      i = j + b.f(1, this.groupId);
     }
     j = i;
-    if (this.pRI != 0) {
-      j = i + b.aN(2, this.pRI);
+    if (this.twP != 0) {
+      j = i + b.bl(2, this.twP);
     }
     i = j;
-    if (this.pRJ != 0L) {
-      i = j + b.k(3, this.pRJ);
+    if (this.twQ != 0L) {
+      i = j + b.p(3, this.twQ);
     }
     j = i;
     Object localObject;
-    if (this.wHA != null)
+    if (this.Bfa != null)
     {
       j = i;
-      if (this.wHA.length > 0)
+      if (this.Bfa.length > 0)
       {
         j = 0;
-        while (j < this.wHA.length)
+        while (j < this.Bfa.length)
         {
-          localObject = this.wHA[j];
+          localObject = this.Bfa[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(4, (e)localObject);
@@ -205,17 +205,17 @@ public final class a$aj
       }
     }
     i = j;
-    if (this.wHz != null)
+    if (this.BeZ != null)
     {
       i = j;
-      if (this.wHz.length > 0)
+      if (this.BeZ.length > 0)
       {
         k = 0;
         i = j;
         j = k;
-        while (j < this.wHz.length)
+        while (j < this.BeZ.length)
         {
-          localObject = this.wHz[j];
+          localObject = this.BeZ[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(5, (e)localObject);
@@ -226,39 +226,39 @@ public final class a$aj
       }
     }
     int k = i;
-    if (this.wGM != null) {
-      k = i + b.b(6, this.wGM);
+    if (this.Ben != null) {
+      k = i + b.b(6, this.Ben);
     }
     j = k;
-    if (this.wHC != 0) {
-      j = k + b.aN(7, this.wHC);
+    if (this.Bfc != 0) {
+      j = k + b.bl(7, this.Bfc);
     }
     i = j;
-    if (this.wHD != null)
+    if (this.Bfd != null)
     {
       i = j;
-      if (this.wHD.length > 0)
+      if (this.Bfd.length > 0)
       {
         i = 0;
         k = 0;
-        while (i < this.wHD.length)
+        while (i < this.Bfd.length)
         {
-          k += b.dO(this.wHD[i]);
+          k += b.eU(this.Bfd[i]);
           i += 1;
         }
-        i = j + k + this.wHD.length * 1;
+        i = j + k + this.Bfd.length * 1;
       }
     }
     j = i;
-    if (this.wHB != null)
+    if (this.Bfb != null)
     {
       j = i;
-      if (this.wHB.length > 0)
+      if (this.Bfb.length > 0)
       {
         j = 0;
-        while (j < this.wHB.length)
+        while (j < this.Bfb.length)
         {
-          localObject = this.wHB[j];
+          localObject = this.Bfb[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(9, (e)localObject);
@@ -270,19 +270,19 @@ public final class a$aj
       }
     }
     i = j;
-    if (this.wGh != null) {
-      i = j + b.b(10, this.wGh);
+    if (this.BdI != null) {
+      i = j + b.b(10, this.BdI);
     }
     j = i;
-    if (this.wHE != null)
+    if (this.Bfe != null)
     {
       j = i;
-      if (this.wHE.length > 0)
+      if (this.Bfe.length > 0)
       {
         j = 0;
-        while (j < this.wHE.length)
+        while (j < this.Bfe.length)
         {
-          localObject = this.wHE[j];
+          localObject = this.Bfe[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(11, (e)localObject);
@@ -294,17 +294,17 @@ public final class a$aj
       }
     }
     i = j;
-    if (this.wGS != null)
+    if (this.Bet != null)
     {
       i = j;
-      if (this.wGS.length > 0)
+      if (this.Bet.length > 0)
       {
         k = 0;
         i = j;
         j = k;
-        while (j < this.wGS.length)
+        while (j < this.Bet.length)
         {
-          localObject = this.wGS[j];
+          localObject = this.Bet[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(12, (e)localObject);
@@ -315,15 +315,15 @@ public final class a$aj
       }
     }
     j = i;
-    if (this.wHH != null)
+    if (this.Bfh != null)
     {
       j = i;
-      if (this.wHH.length > 0)
+      if (this.Bfh.length > 0)
       {
         j = 0;
-        while (j < this.wHH.length)
+        while (j < this.Bfh.length)
         {
-          localObject = this.wHH[j];
+          localObject = this.Bfh[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(13, (e)localObject);
@@ -335,51 +335,51 @@ public final class a$aj
       }
     }
     i = j;
-    if (this.wHI != 0) {
-      i = j + b.aN(14, this.wHI);
+    if (this.Bfi != 0) {
+      i = j + b.bl(14, this.Bfi);
     }
     j = i;
-    if (this.wHJ != 0) {
-      j = i + b.aN(15, this.wHJ);
+    if (this.Bfj != 0) {
+      j = i + b.bl(15, this.Bfj);
     }
     i = j;
-    if (this.wHK != 0) {
-      i = j + b.aN(16, this.wHK);
+    if (this.Bfk != 0) {
+      i = j + b.bl(16, this.Bfk);
     }
     j = i;
-    if (!Arrays.equals(this.wHL, g.aUP)) {
-      j = i + b.c(17, this.wHL);
+    if (!Arrays.equals(this.Bfl, g.bhf)) {
+      j = i + b.c(17, this.Bfl);
     }
     i = j;
-    if (this.sPg != -1) {
-      i = j + b.aN(18, this.sPg);
+    if (this.wNy != -1) {
+      i = j + b.bl(18, this.wNy);
     }
     j = i;
-    if (this.wHM != null)
+    if (this.Bfm != null)
     {
       j = i;
-      if (this.wHM.length > 0)
+      if (this.Bfm.length > 0)
       {
         j = 0;
         k = 0;
-        while (j < this.wHM.length)
+        while (j < this.Bfm.length)
         {
-          k += b.dS(this.wHM[j]);
+          k += b.eY(this.Bfm[j]);
           j += 1;
         }
-        j = i + k + this.wHM.length * 2;
+        j = i + k + this.Bfm.length * 2;
       }
     }
     i = j;
-    if (this.wGO != 0) {
-      i = j + b.aO(20, this.wGO);
+    if (this.Bep != 0) {
+      i = j + b.bm(20, this.Bep);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.aj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,49 @@
 package com.tencent.mm.plugin.scanner.ui;
 
 import android.os.Bundle;
-import com.tencent.mm.plugin.scanner.util.e.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.util.f.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class p$1
-  implements e.a
+  implements f.a
 {
   p$1(p paramp) {}
   
-  public final void n(int paramInt, Bundle paramBundle)
+  public final void q(int paramInt, Bundle paramBundle)
   {
-    y.i("MicroMsg.scanner.ScanModeQRCode", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(81200);
+    ab.i("MicroMsg.scanner.ScanModeQRCode", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(81200);
       return;
-    case 0: 
-      this.nMw.nMm = false;
+      this.qAf.qzT = false;
+      AppMethodBeat.o(81200);
       return;
-    case 1: 
-      this.nMw.im(true);
+      this.qAf.qzT = false;
+      this.qAf.kn(true);
+      AppMethodBeat.o(81200);
       return;
-    case 2: 
-      this.nMw.im(true);
+      this.qAf.kn(true);
+      AppMethodBeat.o(81200);
       return;
-    case 3: 
-      this.nMw.nLB.bxF();
+      this.qAf.qzg.ciG();
+      AppMethodBeat.o(81200);
       return;
-    case 4: 
       if (paramBundle != null)
       {
         paramBundle = paramBundle.getString("geta8key_fullurl");
         if ((paramBundle != null) && ((paramBundle.startsWith("http://login.weixin.qq.com")) || (paramBundle.startsWith("https://login.weixin.qq.com")))) {
-          this.nMw.bID = 2;
+          this.qAf.cpY = 2;
         }
       }
-      break;
+      this.qAf.qzg.kA(true);
+      this.qAf.qzT = true;
     }
-    this.nMw.nLB.ix(true);
-    this.nMw.nMm = true;
   }
 }
 

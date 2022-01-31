@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.canvas;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$7
   implements Runnable
@@ -9,10 +10,12 @@ final class b$7
   
   public final void run()
   {
-    y.i("MicroMsg.DrawActionDelegateImpl", "clear draw actions");
-    this.fLj.fKR = null;
-    this.fLj.fKQ = null;
-    this.fLj.fKP = true;
+    AppMethodBeat.i(103146);
+    ab.i("MicroMsg.DrawActionDelegateImpl", "clear draw actions");
+    this.hev.hef = null;
+    this.hev.hee = null;
+    this.hev.hed = true;
+    AppMethodBeat.o(103146);
   }
 }
 

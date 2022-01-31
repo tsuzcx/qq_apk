@@ -2,53 +2,52 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mm.plugin.luckymoney.b.i;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
+import android.widget.BaseAdapter;
+import com.tencent.mm.plugin.luckymoney.model.r;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class e
-  extends d
+public abstract class e
+  extends BaseAdapter
 {
-  private Context mContext = null;
+  protected Context mContext;
+  protected LayoutInflater mInflater;
+  protected List<r> oja = new LinkedList();
   
   public e(Context paramContext)
   {
-    super(paramContext);
     this.mContext = paramContext;
+    this.mInflater = LayoutInflater.from(paramContext);
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public final void a(r paramr)
   {
-    if (paramView == null)
+    this.oja.remove(paramr);
+  }
+  
+  public final void ci(List<r> paramList)
+  {
+    if (paramList == null) {}
+    for (this.oja = new LinkedList();; this.oja = paramList)
     {
-      paramView = this.Lu.inflate(a.g.lucky_money_my_send_record_item, paramViewGroup, false);
-      paramViewGroup = new e.a(this);
-      paramViewGroup.haW = ((TextView)paramView.findViewById(a.f.lucky_money_my_send_record_title));
-      paramViewGroup.iIV = ((TextView)paramView.findViewById(a.f.lucky_money_my_send_record_desc));
-      paramViewGroup.lLL = ((TextView)paramView.findViewById(a.f.lucky_money_my_send_record_time));
-      paramViewGroup.lLM = ((TextView)paramView.findViewById(a.f.lucky_money_my_send_record_amount));
-      paramViewGroup.El = paramInt;
-      paramView.setTag(paramViewGroup);
+      notifyDataSetChanged();
+      return;
     }
-    for (;;)
-    {
-      i locali = tt(paramInt);
-      paramViewGroup.haW.setText(locali.lQA);
-      paramViewGroup.lLL.setText(locali.lQB);
-      paramViewGroup.lLM.setText(this.mContext.getString(a.i.lucky_money_amount_with_unit, new Object[] { com.tencent.mm.wallet_core.ui.e.A(locali.lQa / 100.0D) }));
-      String str2 = this.mContext.getString(a.i.lucky_money_send_record_desc, new Object[] { Long.valueOf(locali.lPY), Long.valueOf(locali.lQC) });
-      String str1 = str2;
-      if (locali.status == 5) {
-        str1 = this.mContext.getString(a.i.lucky_money_send_record_status_expired) + " " + str2;
-      }
-      paramViewGroup.iIV.setText(str1);
-      return paramView;
-      paramViewGroup = (e.a)paramView.getTag();
-    }
+  }
+  
+  public int getCount()
+  {
+    return this.oja.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final r yz(int paramInt)
+  {
+    return (r)this.oja.get(paramInt);
   }
 }
 

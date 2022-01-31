@@ -5,42 +5,53 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.emoji.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.w;
 
 public final class b
 {
-  private final String TAG = "MicroMsg.emoji.BaseEmojiStoreItemViewHolder";
-  public View iUL;
-  public String iUT;
-  public ImageView iUU;
-  public ImageView iUV;
-  public TextView iuO;
+  private final String TAG;
+  public TextView kvS;
+  public View ldP;
+  public String ldX;
+  public ImageView ldY;
+  public ImageView ldZ;
   public Context mContext;
   
-  public b(Context paramContext, int paramInt)
+  public b(Context paramContext)
   {
+    AppMethodBeat.i(52719);
+    this.TAG = "MicroMsg.emoji.BaseEmojiStoreItemViewHolder";
     this.mContext = paramContext;
-    this.iUL = com.tencent.mm.ui.y.gt(this.mContext).inflate(paramInt, null);
-    aGO();
+    this.ldP = w.hM(this.mContext).inflate(2130969402, null);
+    bkA();
+    AppMethodBeat.o(52719);
   }
   
   public b(Context paramContext, View paramView)
   {
+    AppMethodBeat.i(52720);
+    this.TAG = "MicroMsg.emoji.BaseEmojiStoreItemViewHolder";
     this.mContext = paramContext;
-    this.iUL = paramView;
-    aGO();
+    this.ldP = paramView;
+    bkA();
+    AppMethodBeat.o(52720);
   }
   
-  private void aGO()
+  private void bkA()
   {
-    if (this.iUL == null)
+    AppMethodBeat.i(52721);
+    if (this.ldP == null)
     {
-      com.tencent.mm.sdk.platformtools.y.w("MicroMsg.emoji.BaseEmojiStoreItemViewHolder", "initView failed. root is null.");
+      ab.w("MicroMsg.emoji.BaseEmojiStoreItemViewHolder", "initView failed. root is null.");
+      AppMethodBeat.o(52721);
       return;
     }
-    this.iUU = ((ImageView)this.iUL.findViewById(f.e.item_icon));
-    this.iuO = ((TextView)this.iUL.findViewById(f.e.item_title));
-    this.iUV = ((ImageView)this.iUL.findViewById(f.e.item_fg));
+    this.ldY = ((ImageView)this.ldP.findViewById(2131823589));
+    this.kvS = ((TextView)this.ldP.findViewById(2131823680));
+    this.ldZ = ((ImageView)this.ldP.findViewById(2131823674));
+    AppMethodBeat.o(52721);
   }
 }
 

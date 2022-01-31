@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.ui.base.h.a;
 import java.util.List;
@@ -9,10 +10,12 @@ final class WalletPayDeductUI$3$1
 {
   WalletPayDeductUI$3$1(WalletPayDeductUI.3 param3) {}
   
-  public final void wv(int paramInt)
+  public final void Ch(int paramInt)
   {
-    WalletPayDeductUI.a(this.qni.qng, (Bankcard)this.qni.qnh.get(paramInt));
-    WalletPayDeductUI.c(this.qni.qng);
+    AppMethodBeat.i(46019);
+    WalletPayDeductUI.a(this.tWy.tWw, (Bankcard)this.tWy.tWx.get(paramInt));
+    WalletPayDeductUI.c(this.tWy.tWw);
+    AppMethodBeat.o(46019);
   }
 }
 

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.emoji.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emoji.e.h;
 import com.tencent.mm.pluginsdk.a.d;
 import com.tencent.mm.storage.aq;
 import com.tencent.mm.storage.at;
@@ -11,17 +13,26 @@ final class b$1
   
   public final aq getEmojiDescMgr()
   {
-    return i.getEmojiDescMgr();
+    AppMethodBeat.i(52996);
+    aq localaq = i.getEmojiDescMgr();
+    AppMethodBeat.o(52996);
+    return localaq;
   }
   
   public final d getEmojiMgr()
   {
-    return i.aHP();
+    AppMethodBeat.i(52994);
+    h localh = i.blp();
+    AppMethodBeat.o(52994);
+    return localh;
   }
   
   public final at getEmojiStorageMgr()
   {
-    return i.getEmojiStorageMgr();
+    AppMethodBeat.i(52995);
+    at localat = i.getEmojiStorageMgr();
+    AppMethodBeat.o(52995);
+    return localat;
   }
 }
 

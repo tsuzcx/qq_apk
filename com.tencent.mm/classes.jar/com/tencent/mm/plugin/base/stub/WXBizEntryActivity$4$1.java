@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.base.stub;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WXBizEntryActivity$4$1
   implements DialogInterface.OnClickListener
@@ -10,8 +11,10 @@ final class WXBizEntryActivity$4$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    WXBizEntryActivity.b(this.hSf.hSd);
-    this.hSf.hSd.finish();
+    AppMethodBeat.i(18139);
+    WXBizEntryActivity.b(this.jLK.jLI);
+    this.jLK.jLI.finish();
+    AppMethodBeat.o(18139);
   }
 }
 

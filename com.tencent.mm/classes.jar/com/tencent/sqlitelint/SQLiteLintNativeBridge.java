@@ -2,6 +2,7 @@ package com.tencent.sqlitelint;
 
 import android.database.Cursor;
 import android.database.SQLException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.sqlitelint.util.SLog;
 import java.util.ArrayList;
 
@@ -11,9 +12,11 @@ public class SQLiteLintNativeBridge
   
   private void doExecSqlCallback(long paramLong1, long paramLong2, String paramString, Cursor paramCursor)
   {
+    AppMethodBeat.i(94022);
     if (paramCursor == null)
     {
       SLog.w("SQLiteLint.SQLiteLintNativeBridge", "doExecSqlCallback cu is null", new Object[0]);
+      AppMethodBeat.o(94022);
       return;
     }
     int j;
@@ -49,14 +52,17 @@ public class SQLiteLintNativeBridge
       continue;
       arrayOfString2[i] = String.valueOf(paramCursor.getFloat(i));
     }
+    AppMethodBeat.o(94022);
   }
   
   private native void execSqlCallback(long paramLong1, long paramLong2, String paramString, int paramInt, String[] paramArrayOfString1, String[] paramArrayOfString2);
   
   public static void loadLibrary()
   {
+    AppMethodBeat.i(94019);
     System.loadLibrary("SqliteLint-lib");
     SLog.nativeSetLogger(2);
+    AppMethodBeat.o(94019);
   }
   
   public static native void nativeAddToWhiteList(String paramString, String[] paramArrayOfString, String[][] paramArrayOfString1);
@@ -71,21 +77,24 @@ public class SQLiteLintNativeBridge
   
   private static void onPublishIssue(String paramString, ArrayList<SQLiteLintIssue> paramArrayList)
   {
+    AppMethodBeat.i(94020);
     try
     {
-      g.wRf.afX(paramString).ey(paramArrayList);
+      SQLiteLintAndroidCoreManager.INSTANCE.get(paramString).onPublish(paramArrayList);
+      AppMethodBeat.o(94020);
       return;
     }
     catch (Throwable paramString)
     {
       SLog.e("SQLiteLint.SQLiteLintNativeBridge", "onPublishIssue ex ", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(94020);
     }
   }
   
   private String[] sqliteLintExecSql(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    String[] arrayOfString = new String[2];
-    c localc;
+    AppMethodBeat.i(94021);
+    arrayOfString = new String[2];
     for (;;)
     {
       try
@@ -93,60 +102,61 @@ public class SQLiteLintNativeBridge
         SLog.i("SQLiteLint.SQLiteLintNativeBridge", "dbPath %s, sql is %s ,needCallBack: %b", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
         arrayOfString[0] = "";
         arrayOfString[1] = "-1";
-        localc = null;
-        f localf = g.wRf.afX(paramString1);
-        if (localf != null) {
-          localc = localf.wQX;
+        localISQLiteExecutionDelegate = null;
+        SQLiteLintAndroidCore localSQLiteLintAndroidCore = SQLiteLintAndroidCoreManager.INSTANCE.get(paramString1);
+        if (localSQLiteLintAndroidCore != null) {
+          localISQLiteExecutionDelegate = localSQLiteLintAndroidCore.getSQLiteExecutionDelegate();
         }
-        if (localc == null)
+        if (localISQLiteExecutionDelegate == null)
         {
           SLog.w("SQLiteLint.SQLiteLintNativeBridge", "sqliteLintExecSql mExecSqlImp is null", new Object[0]);
+          AppMethodBeat.o(94021);
           return arrayOfString;
         }
         if (!paramBoolean) {
-          break;
+          continue;
         }
-        try
-        {
-          paramString2 = localc.rawQuery(paramString2, new String[0]);
-          if ((paramString2 == null) || (paramString2.getCount() < 0))
-          {
-            SLog.w("SQLiteLint.SQLiteLintNativeBridge", "sqliteLintExecSql cu is null", new Object[0]);
-            arrayOfString[0] = "Cursor is null";
-            if (paramString2 == null) {
-              continue;
-            }
-            paramString2.close();
-            return arrayOfString;
-          }
-        }
-        catch (Exception paramString1)
-        {
-          SLog.w("SQLiteLint.SQLiteLintNativeBridge", "sqliteLintExecSql rawQuery exp: %s", new Object[] { paramString1.getMessage() });
-          arrayOfString[0] = paramString1.getMessage();
-          return arrayOfString;
-        }
-        doExecSqlCallback(paramLong1, paramLong2, paramString1, paramString2);
       }
       catch (Throwable paramString1)
       {
+        ISQLiteExecutionDelegate localISQLiteExecutionDelegate;
         SLog.e("SQLiteLint.SQLiteLintNativeBridge", "sqliteLintExecSql ex ", new Object[] { paramString1.getMessage() });
-        return arrayOfString;
+        continue;
+        try
+        {
+          localISQLiteExecutionDelegate.execSQL(paramString2);
+          arrayOfString[1] = "0";
+        }
+        catch (SQLException paramString1)
+        {
+          SLog.w("SQLiteLint.SQLiteLintNativeBridge", "sqliteLintExecSql execSQL exp: %s", new Object[] { paramString1.getMessage() });
+          arrayOfString[0] = paramString1.getMessage();
+        }
+        continue;
       }
-      arrayOfString[1] = "0";
-    }
-    try
-    {
-      localc.execSQL(paramString2);
-      arrayOfString[1] = "0";
+      try
+      {
+        paramString2 = localISQLiteExecutionDelegate.rawQuery(paramString2, new String[0]);
+        if ((paramString2 != null) && (paramString2.getCount() >= 0)) {
+          continue;
+        }
+        SLog.w("SQLiteLint.SQLiteLintNativeBridge", "sqliteLintExecSql cu is null", new Object[0]);
+        arrayOfString[0] = "Cursor is null";
+        if (paramString2 != null) {
+          paramString2.close();
+        }
+      }
+      catch (Exception paramString1)
+      {
+        SLog.w("SQLiteLint.SQLiteLintNativeBridge", "sqliteLintExecSql rawQuery exp: %s", new Object[] { paramString1.getMessage() });
+        arrayOfString[0] = paramString1.getMessage();
+        continue;
+      }
+      AppMethodBeat.o(94021);
       return arrayOfString;
+      doExecSqlCallback(paramLong1, paramLong2, paramString1, paramString2);
+      arrayOfString[1] = "0";
     }
-    catch (SQLException paramString1)
-    {
-      SLog.w("SQLiteLint.SQLiteLintNativeBridge", "sqliteLintExecSql execSQL exp: %s", new Object[] { paramString1.getMessage() });
-      arrayOfString[0] = paramString1.getMessage();
-    }
-    return arrayOfString;
   }
 }
 

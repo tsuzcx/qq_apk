@@ -3,20 +3,30 @@ package com.tencent.mm.plugin.appbrand.report.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AdReportCgiHelper$AdReportCgiParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<AdReportCgiParams> CREATOR = new AdReportCgiHelper.AdReportCgiParams.1();
-  private int dCy;
-  private String gXW;
+  public static final Parcelable.Creator<AdReportCgiParams> CREATOR;
+  private int ezN;
+  private String iGp;
+  
+  static
+  {
+    AppMethodBeat.i(132575);
+    CREATOR = new AdReportCgiHelper.AdReportCgiParams.1();
+    AppMethodBeat.o(132575);
+  }
   
   AdReportCgiHelper$AdReportCgiParams() {}
   
   protected AdReportCgiHelper$AdReportCgiParams(Parcel paramParcel)
   {
-    this.dCy = paramParcel.readInt();
-    this.gXW = paramParcel.readString();
+    AppMethodBeat.i(132573);
+    this.ezN = paramParcel.readInt();
+    this.iGp = paramParcel.readString();
+    AppMethodBeat.o(132573);
   }
   
   public final int describeContents()
@@ -26,8 +36,10 @@ final class AdReportCgiHelper$AdReportCgiParams
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.dCy);
-    paramParcel.writeString(this.gXW);
+    AppMethodBeat.i(132574);
+    paramParcel.writeInt(this.ezN);
+    paramParcel.writeString(this.iGp);
+    AppMethodBeat.o(132574);
   }
 }
 

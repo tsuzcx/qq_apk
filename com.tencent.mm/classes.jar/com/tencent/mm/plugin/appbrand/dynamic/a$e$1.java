@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$e$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class a$e$1
   
   public final void run()
   {
-    this.fTt.onResume();
+    AppMethodBeat.i(10651);
+    this.hmU.onResume();
+    AppMethodBeat.o(10651);
   }
 }
 

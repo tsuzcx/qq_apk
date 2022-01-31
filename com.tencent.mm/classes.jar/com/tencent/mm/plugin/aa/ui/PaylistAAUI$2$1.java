@@ -2,7 +2,9 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.protocal.c.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.o;
+import com.tencent.mm.wallet_core.ui.g;
 
 final class PaylistAAUI$2$1
   implements DialogInterface.OnClickListener
@@ -11,7 +13,10 @@ final class PaylistAAUI$2$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PaylistAAUI.a(this.eZO.eZM, this.eZN);
+    AppMethodBeat.i(40865);
+    PaylistAAUI.a(this.grH.grF, this.grG);
+    PaylistAAUI.a(this.grH.grF, g.b(this.grH.grF, false, null));
+    AppMethodBeat.o(40865);
   }
 }
 

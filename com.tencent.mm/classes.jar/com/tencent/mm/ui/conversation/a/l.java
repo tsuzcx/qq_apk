@@ -1,95 +1,179 @@
 package com.tencent.mm.ui.conversation.a;
 
 import android.content.Context;
-import android.os.Looper;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mm.R.i;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.t;
-import com.tencent.mm.modelvideo.t.a;
-import com.tencent.mm.modelvideo.t.a.a;
-import com.tencent.mm.modelvideo.u;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class l
   extends b
-  implements t.a
 {
-  ViewGroup mContainer;
-  Map<String, Long> vUQ = new HashMap();
-  Map<Long, l.b> vUR = new HashMap();
+  protected bd AmP;
+  private TextView AmQ;
+  private View jGC;
+  private View jGD;
   
-  public l(Context paramContext)
+  public l(Context paramContext, bd parambd)
   {
     super(paramContext);
-    o.Sr().a(this, Looper.getMainLooper());
-    this.mContainer = ((ViewGroup)this.view);
-  }
-  
-  private void apa()
-  {
-    y.i("MicroMsg.MassSightBanner", "call update status");
-    l.a locala = new l.a((byte)0);
-    locala.vUS = new WeakReference(this);
-    au.DS().O(locala);
-  }
-  
-  public final void a(t.a.a parama)
-  {
-    parama = parama.fileName;
-    Long localLong = (Long)this.vUQ.get(parama);
-    if (localLong == null)
+    AppMethodBeat.i(34685);
+    this.AmP = null;
+    this.AmP = parambd;
+    final int i;
+    final int j;
+    if (this.view != null)
     {
-      y.d("MicroMsg.MassSightBanner", "massSendId is null, fileName %s", new Object[] { parama });
-      if (bk.aM(parama, "").startsWith("DELETE_")) {
-        apa();
+      this.jGC = this.view.findViewById(2131824232);
+      this.jGD = this.view.findViewById(2131821667);
+      paramContext = (WeImageView)this.view.findViewById(2131825905);
+      paramContext.setIconColor(((Context)this.vUD.get()).getResources().getColor(2131690589));
+      this.AmQ = ((TextView)this.view.findViewById(2131825906));
+      switch (this.AmP.type)
+      {
+      case 5: 
+      default: 
+        parambd = this.view;
+        i = this.AmP.type;
+        j = this.AmP.showType;
+        switch (i)
+        {
+        case 5: 
+        default: 
+          paramContext = null;
+        }
+        break;
       }
-      return;
     }
-    l.b localb = (l.b)this.vUR.get(localLong);
-    if (localb == null)
+    for (;;)
     {
-      y.d("MicroMsg.MassSightBanner", "find massSendId %d, but holder is null", new Object[] { localLong });
+      parambd.setOnClickListener(paramContext);
+      AppMethodBeat.o(34685);
       return;
+      paramContext.setImageResource(2131231491);
+      this.AmQ.setText(2131297527);
+      break;
+      paramContext.setImageResource(2131231498);
+      this.AmQ.setText(2131299925);
+      break;
+      paramContext.setImageResource(2131231487);
+      this.AmQ.setText(2131297536);
+      break;
+      paramContext.setImageResource(2131232151);
+      this.AmQ.setText(2131297530);
+      break;
+      paramContext.setImageResource(2131232146);
+      this.AmQ.setText(2131297534);
+      break;
+      paramContext.setImageResource(2131232147);
+      this.AmQ.setText(2131297533);
+      break;
+      paramContext.setImageResource(2131232149);
+      this.AmQ.setText(2131297535);
+      break;
+      paramContext.setImageResource(2131232150);
+      this.AmQ.setText(2131297531);
+      break;
+      paramContext.setImageResource(2131232145);
+      this.AmQ.setText(2131297524);
+      break;
+      paramContext = new l.1(this, i, j);
+      continue;
+      paramContext = new l.2(this, i, j);
+      continue;
+      paramContext = new l.3(this, i, j);
+      continue;
+      paramContext = new l.4(this, i, j);
+      continue;
+      paramContext = new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(34680);
+          be.aaG().cs(i, j);
+          paramAnonymousView = (Context)l.this.vUD.get();
+          Intent localIntent = new Intent();
+          localIntent.putExtra("preceding_scence", 17);
+          d.b(paramAnonymousView, "emoji", ".ui.v2.EmojiStoreV2UI", localIntent);
+          h.qsU.e(11002, new Object[] { Integer.valueOf(10), Integer.valueOf(1) });
+          h.qsU.e(12065, new Object[] { Integer.valueOf(2) });
+          AppMethodBeat.o(34680);
+        }
+      };
+      continue;
+      paramContext = new l.6(this, i, j);
+      continue;
+      paramContext = new l.7(this, i, j);
+      continue;
+      paramContext = new l.8(this, i, j);
+      continue;
+      paramContext = new l.9(this, i, j);
     }
-    s locals = u.oe(parama);
-    if (locals == null)
-    {
-      y.w("MicroMsg.MassSightBanner", "on nofify changed, filename %s, massSendId %d, but videoinfo is null", new Object[] { parama, localLong });
-      return;
-    }
-    if (locals.status == 199)
-    {
-      y.i("MicroMsg.MassSightBanner", "fileName %s, massSendId %d, done", new Object[] { parama, localLong });
-      apa();
-      return;
-    }
-    l.c.a(localb, locals);
   }
   
-  public final void destroy()
+  public final boolean aMK()
   {
-    o.Sr().a(this);
+    AppMethodBeat.i(34686);
+    if ((this.nwf) && (this.eUx))
+    {
+      this.jGD.setBackgroundResource(2130840583);
+      this.jGC.setBackground(null);
+      this.AmQ.setBackground(null);
+    }
+    for (;;)
+    {
+      boolean bool = super.aMK();
+      AppMethodBeat.o(34686);
+      return bool;
+      if (this.nwf)
+      {
+        this.jGD.setBackgroundResource(2130839279);
+        this.jGC.setBackgroundResource(2130839278);
+        this.AmQ.setBackgroundResource(2130839276);
+      }
+      else if (this.eUx)
+      {
+        this.jGD.setBackgroundResource(2130839279);
+        this.jGC.setBackgroundResource(2130839276);
+        this.AmQ.setBackground(null);
+      }
+      else
+      {
+        this.jGD.setBackgroundResource(2130839279);
+        this.jGC.setBackground(null);
+        this.AmQ.setBackgroundResource(2130839276);
+      }
+    }
   }
+  
+  public final void destroy() {}
   
   public final int getLayoutId()
   {
-    return R.i.mass_send_sight_banner;
+    return 2130970072;
+  }
+  
+  public final void setVisibility(int paramInt)
+  {
+    AppMethodBeat.i(34687);
+    if (this.jGC != null) {
+      this.jGC.setVisibility(paramInt);
+    }
+    AppMethodBeat.o(34687);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.l
  * JD-Core Version:    0.7.0.1
  */

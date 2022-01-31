@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.emoji.a;
 
+import android.graphics.Bitmap;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mm.plugin.emoji.f.e;
-import com.tencent.mm.pluginsdk.ui.emoji.StoreBannerEmojiView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class i$a
+  implements com.tencent.mm.at.a.c.i
 {
-  StoreBannerEmojiView iVF;
-  ImageView iVG;
+  i leI;
   
-  public i$a(i parami, View paramView)
+  public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
   {
-    this.iVF = ((StoreBannerEmojiView)paramView.findViewById(f.e.emoji_bar_view));
-    this.iVG = ((ImageView)paramView.findViewById(f.e.new_tips));
-    this.iVF.setDefaultImageResource(0);
+    AppMethodBeat.i(52764);
+    ab.i("MicroMsg.emoji.EmojiStoreVpHeaderAdapter", "onImageLoadComplete url:%s", new Object[] { paramString });
+    al.d(new i.a.1(this));
+    AppMethodBeat.o(52764);
   }
 }
 

@@ -1,8 +1,28 @@
 package com.tencent.mm.plugin.appbrand;
 
-abstract interface i$a
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
+
+final class i$a
+  extends ak
 {
-  public abstract void done();
+  i$a(i parami)
+  {
+    super(Looper.getMainLooper());
+    AppMethodBeat.i(141625);
+    AppMethodBeat.o(141625);
+  }
+  
+  public final void handleMessage(Message paramMessage)
+  {
+    AppMethodBeat.i(141626);
+    if (1 == paramMessage.what) {
+      ((Runnable)paramMessage.obj).run();
+    }
+    AppMethodBeat.o(141626);
+  }
 }
 
 

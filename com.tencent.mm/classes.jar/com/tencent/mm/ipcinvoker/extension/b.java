@@ -1,33 +1,39 @@
 package com.tencent.mm.ipcinvoker.extension;
 
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.k;
 
 public final class b
   implements a
 {
-  public final boolean X(Object paramObject)
+  public final void a(Object paramObject, Parcel paramParcel)
+  {
+    AppMethodBeat.i(114079);
+    paramObject = (com.tencent.mm.ipcinvoker.d.a)paramObject;
+    paramParcel.writeString(paramObject.getClass().getName());
+    paramParcel.writeBundle(paramObject.toBundle());
+    AppMethodBeat.o(114079);
+  }
+  
+  public final boolean af(Object paramObject)
   {
     return paramObject instanceof com.tencent.mm.ipcinvoker.d.a;
   }
   
-  public final void a(Object paramObject, Parcel paramParcel)
+  public final Object d(Parcel paramParcel)
   {
-    paramObject = (com.tencent.mm.ipcinvoker.d.a)paramObject;
-    paramParcel.writeString(paramObject.getClass().getName());
-    paramParcel.writeBundle(paramObject.toBundle());
-  }
-  
-  public final Object c(Parcel paramParcel)
-  {
+    AppMethodBeat.i(114080);
     Object localObject = paramParcel.readString();
     paramParcel = paramParcel.readBundle();
-    localObject = (com.tencent.mm.ipcinvoker.d.a)k.e((String)localObject, com.tencent.mm.ipcinvoker.d.a.class);
+    localObject = (com.tencent.mm.ipcinvoker.d.a)k.d((String)localObject, com.tencent.mm.ipcinvoker.d.a.class);
     if (localObject != null)
     {
       ((com.tencent.mm.ipcinvoker.d.a)localObject).fromBundle(paramParcel);
+      AppMethodBeat.o(114080);
       return localObject;
     }
+    AppMethodBeat.o(114080);
     return null;
   }
 }

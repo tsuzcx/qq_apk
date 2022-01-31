@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.emoji.a.a;
 
-import com.tencent.mm.plugin.emoji.model.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emoji.model.e;
 
 final class a$1
   implements Runnable
 {
-  a$1(a parama, f paramf) {}
+  a$1(a parama, e parame) {}
   
   public final void run()
   {
-    if (this.iVN == null) {
+    AppMethodBeat.i(52773);
+    if (this.leT == null)
+    {
+      AppMethodBeat.o(52773);
       return;
     }
-    a.a(this.iVO, this.iVO.a(this.iVN));
-    this.iVO.notifyDataSetChanged();
+    a.a(this.leU, this.leU.a(this.leT));
+    this.leU.notifyDataSetChanged();
+    AppMethodBeat.o(52773);
   }
 }
 

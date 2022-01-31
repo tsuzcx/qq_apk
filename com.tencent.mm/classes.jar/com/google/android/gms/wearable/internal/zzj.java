@@ -1,13 +1,13 @@
 package com.google.android.gms.wearable.internal;
 
-import com.google.android.gms.wearable.zzc;
+import android.os.Parcelable.Creator;
 
 public final class zzj
-  implements zzc
+  implements Parcelable.Creator<zzi>
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzj
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.ui.applet;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SecurityImage$1
   implements View.OnClickListener
@@ -10,10 +11,12 @@ final class SecurityImage$1
   
   public final void onClick(View paramView)
   {
-    SecurityImage.a(this.uSt);
-    if (SecurityImage.b(this.uSt) != null) {
-      SecurityImage.b(this.uSt).Ws();
+    AppMethodBeat.i(106231);
+    SecurityImage.a(this.zgU);
+    if (SecurityImage.b(this.zgU) != null) {
+      SecurityImage.b(this.zgU).apW();
     }
+    AppMethodBeat.o(106231);
   }
 }
 

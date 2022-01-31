@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.s;
+import com.tencent.mm.modelsimple.u;
 import com.tencent.mm.ui.base.h;
 
 final class RegByMobileSetNickUI$1
@@ -18,21 +19,24 @@ final class RegByMobileSetNickUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = RegByMobileSetNickUI.a(this.fqY).getText().toString().trim();
+    AppMethodBeat.i(125429);
+    paramMenuItem = RegByMobileSetNickUI.a(this.gIB).getText().toString().trim();
     if ((paramMenuItem == null) || (paramMenuItem.length() <= 0))
     {
-      h.h(this.fqY, q.j.verify_account_null_tip, q.j.regbymobile_reg_setpwd_alert_title);
+      h.h(this.gIB, 2131304491, 2131302443);
+      AppMethodBeat.o(125429);
       return true;
     }
-    this.fqY.XM();
-    Object localObject1 = this.fqY.getIntent().getExtras().getString("regbymobile_pwd");
-    Object localObject2 = this.fqY.getIntent().getExtras().getString("regbymobile_ticket");
-    paramMenuItem = new s("", (String)localObject1, paramMenuItem, 0, "", RegByMobileSetNickUI.b(this.fqY), (String)localObject2, 4);
-    g.Dk().a(paramMenuItem, 0);
-    localObject1 = this.fqY;
-    localObject2 = this.fqY;
-    this.fqY.getString(q.j.app_tip);
-    RegByMobileSetNickUI.a((RegByMobileSetNickUI)localObject1, h.b((Context)localObject2, this.fqY.getString(q.j.regbyqq_reg_waiting), true, new RegByMobileSetNickUI.1.1(this, paramMenuItem)));
+    this.gIB.hideVKB();
+    Object localObject1 = this.gIB.getIntent().getExtras().getString("regbymobile_pwd");
+    Object localObject2 = this.gIB.getIntent().getExtras().getString("regbymobile_ticket");
+    paramMenuItem = new u("", (String)localObject1, paramMenuItem, 0, "", RegByMobileSetNickUI.b(this.gIB), (String)localObject2, 4);
+    g.Rc().a(paramMenuItem, 0);
+    localObject1 = this.gIB;
+    localObject2 = this.gIB;
+    this.gIB.getString(2131297087);
+    RegByMobileSetNickUI.a((RegByMobileSetNickUI)localObject1, h.b((Context)localObject2, this.gIB.getString(2131302482), true, new RegByMobileSetNickUI.1.1(this, paramMenuItem)));
+    AppMethodBeat.o(125429);
     return true;
   }
 }

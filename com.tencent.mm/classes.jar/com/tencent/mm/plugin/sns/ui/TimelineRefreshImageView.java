@@ -5,7 +5,8 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.reflect.Field;
 
 public class TimelineRefreshImageView
@@ -23,6 +24,7 @@ public class TimelineRefreshImageView
   
   public void buildDrawingCache(boolean paramBoolean)
   {
+    AppMethodBeat.i(39893);
     Object localObject;
     if (paramBoolean) {
       localObject = "mDrawingCache";
@@ -38,16 +40,17 @@ public class TimelineRefreshImageView
           continue;
         }
         localObject = "cache is null";
-        y.d("MicroMsg.TimelineRefreshImageView", (String)localObject);
+        ab.d("MicroMsg.TimelineRefreshImageView", (String)localObject);
       }
       catch (Exception localException)
       {
-        y.printErrStackTrace("MicroMsg.TimelineRefreshImageView", localException, "", new Object[0]);
-        y.e("MicroMsg.TimelineRefreshImageView", "checkIfCanReuseDrawingCache error: %s", new Object[] { localException.getMessage() });
+        ab.printErrStackTrace("MicroMsg.TimelineRefreshImageView", localException, "", new Object[0]);
+        ab.e("MicroMsg.TimelineRefreshImageView", "checkIfCanReuseDrawingCache error: %s", new Object[] { localException.getMessage() });
         continue;
       }
-      y.d("MicroMsg.TimelineRefreshImageView", "buildDrawingCache, autoScale: %s, width: %s, height: %s, hash: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(getWidth()), Integer.valueOf(getHeight()), Integer.valueOf(hashCode()) });
+      ab.d("MicroMsg.TimelineRefreshImageView", "buildDrawingCache, autoScale: %s, width: %s, height: %s, hash: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(getWidth()), Integer.valueOf(getHeight()), Integer.valueOf(hashCode()) });
       super.buildDrawingCache(paramBoolean);
+      AppMethodBeat.o(39893);
       return;
       localObject = "mUnscaledDrawingCache";
       continue;
@@ -57,8 +60,10 @@ public class TimelineRefreshImageView
   
   public void destroyDrawingCache()
   {
+    AppMethodBeat.i(39894);
     super.destroyDrawingCache();
-    y.d("MicroMsg.TimelineRefreshImageView", "destroyDrawingCache, width: %s, height: %s, hash: %s", new Object[] { Integer.valueOf(getWidth()), Integer.valueOf(getHeight()), Integer.valueOf(hashCode()) });
+    ab.d("MicroMsg.TimelineRefreshImageView", "destroyDrawingCache, width: %s, height: %s, hash: %s", new Object[] { Integer.valueOf(getWidth()), Integer.valueOf(getHeight()), Integer.valueOf(hashCode()) });
+    AppMethodBeat.o(39894);
   }
 }
 

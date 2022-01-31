@@ -2,23 +2,26 @@ package com.google.android.exoplayer2.source.b;
 
 import com.google.android.exoplayer2.source.a.a;
 import com.google.android.exoplayer2.source.b.a.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c$b
 {
-  public a aJE;
-  public boolean aJF;
-  public a.a aJG;
+  public a aRk;
+  public boolean aRl;
+  public a.a aRm;
   
   public c$b()
   {
+    AppMethodBeat.i(125900);
     clear();
+    AppMethodBeat.o(125900);
   }
   
   public final void clear()
   {
-    this.aJE = null;
-    this.aJF = false;
-    this.aJG = null;
+    this.aRk = null;
+    this.aRl = false;
+    this.aRm = null;
   }
 }
 

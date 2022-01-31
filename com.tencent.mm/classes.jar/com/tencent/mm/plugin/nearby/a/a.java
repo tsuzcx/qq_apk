@@ -1,12 +1,20 @@
 package com.tencent.mm.plugin.nearby.a;
 
-import com.tencent.mm.protocal.c.atm;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.azr;
 import java.util.LinkedList;
 
 public final class a
-  extends atm
+  extends azr
 {
-  public LinkedList<String> mCw = new LinkedList();
+  public LinkedList<String> pcn;
+  
+  public a()
+  {
+    AppMethodBeat.i(55352);
+    this.pcn = new LinkedList();
+    AppMethodBeat.o(55352);
+  }
 }
 
 

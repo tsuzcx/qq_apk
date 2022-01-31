@@ -5,12 +5,12 @@ import android.widget.TextView;
 
 final class d$b
 {
-  ImageView dpY;
-  TextView fdY;
-  TextView ffL;
-  TextView flK;
-  TextView flL;
-  ImageView flM;
+  ImageView ehv;
+  TextView gDc;
+  TextView gDd;
+  ImageView gDe;
+  TextView gvI;
+  TextView gxt;
 }
 
 

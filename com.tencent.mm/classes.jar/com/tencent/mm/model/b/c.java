@@ -3,7 +3,7 @@ package com.tencent.mm.model.b;
 public final class c
   extends a
 {
-  public final String IA()
+  public final String aby()
   {
     return "ChattingBannerHelper_user_status_";
   }

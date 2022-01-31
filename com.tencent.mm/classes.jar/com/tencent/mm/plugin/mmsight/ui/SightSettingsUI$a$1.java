@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,17 +14,19 @@ final class SightSettingsUI$a$1
   
   public final void onClick(View paramView)
   {
-    paramView = this.mqN;
+    AppMethodBeat.i(55281);
+    paramView = this.oQC;
     LinkedList localLinkedList1 = new LinkedList();
     LinkedList localLinkedList2 = new LinkedList();
     int i = 0;
-    while (i < paramView.mqQ.length)
+    while (i < paramView.oQF.length)
     {
-      localLinkedList1.add(paramView.mqQ[i]);
+      localLinkedList1.add(paramView.oQF[i]);
       localLinkedList2.add(Integer.valueOf(i));
       i += 1;
     }
-    h.a(paramView.mqM, "", localLinkedList1, localLinkedList2, "", new SightSettingsUI.b.1(paramView));
+    h.a(paramView.oQB, "", localLinkedList1, localLinkedList2, "", new SightSettingsUI.b.1(paramView));
+    AppMethodBeat.o(55281);
   }
 }
 

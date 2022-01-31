@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wallet_payu.bind.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,30 +9,34 @@ import org.json.JSONObject;
 public final class NetScenePayUElementQuery
   extends a
 {
-  public String qMF;
-  public NetScenePayUElementQuery.PayUBankcardElement qMH;
+  public String uBM;
+  public NetScenePayUElementQuery.PayUBankcardElement uBO;
   
   public NetScenePayUElementQuery(String paramString)
   {
-    this.qMF = paramString;
+    AppMethodBeat.i(48335);
+    this.uBM = paramString;
     HashMap localHashMap = new HashMap();
     localHashMap.put("card_number", paramString);
-    D(localHashMap);
+    setRequestData(localHashMap);
+    AppMethodBeat.o(48335);
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    this.qMH = new NetScenePayUElementQuery.PayUBankcardElement();
-    this.qMH.qMI = paramJSONObject.optString("bin");
-    this.qMH.mOX = paramJSONObject.optString("bank_name");
-    this.qMH.qMJ = paramJSONObject.optString("issuer_type");
-    this.qMH.cardType = paramJSONObject.optString("card_type");
-    this.qMH.bRP = paramJSONObject.optString("payu_reference");
-  }
-  
-  public final int bUM()
+  public final int cTa()
   {
     return 22;
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(48336);
+    this.uBO = new NetScenePayUElementQuery.PayUBankcardElement();
+    this.uBO.uBP = paramJSONObject.optString("bin");
+    this.uBO.ppn = paramJSONObject.optString("bank_name");
+    this.uBO.uBQ = paramJSONObject.optString("issuer_type");
+    this.uBO.cardType = paramJSONObject.optString("card_type");
+    this.uBO.czq = paramJSONObject.optString("payu_reference");
+    AppMethodBeat.o(48336);
   }
 }
 

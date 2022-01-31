@@ -1,35 +1,30 @@
 package com.tencent.mm.plugin.subapp.ui.gallery;
 
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
-import com.tencent.mm.R.c;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.b.l;
+import com.tencent.mm.plugin.sns.b.n;
+import com.tencent.mm.pluginsdk.ui.applet.q.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.tools.MMGestureGallery;
-import com.tencent.mm.ui.tools.MMGestureGallery.c;
 
 final class GestureGalleryUI$4
-  implements MMGestureGallery.c
+  implements q.a
 {
-  GestureGalleryUI$4(GestureGalleryUI paramGestureGalleryUI, int paramInt) {}
+  GestureGalleryUI$4(GestureGalleryUI paramGestureGalleryUI, String paramString) {}
   
-  public final void aRg()
+  public final void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (1 == this.pwO)
+    AppMethodBeat.i(153672);
+    if (paramBoolean)
     {
-      localObject = u.Hc().v("basescanui@datacenter", true);
-      ((u.b)localObject).h("key_basescanui_screen_x", Integer.valueOf(GestureGalleryUI.a(this.pwN).getXDown()));
-      ((u.b)localObject).h("key_basescanui_screen_y", Integer.valueOf(GestureGalleryUI.a(this.pwN).getYDown()));
-      GestureGalleryUI.b(this.pwN);
+      if (n.raP != null)
+      {
+        n.raP.gf(this.val$filePath, paramString);
+        n.raP.cnP();
+      }
+      h.bO(this.sYB, this.sYB.getResources().getString(2131297076));
     }
-    while (2 != this.pwO) {
-      return;
-    }
-    Object localObject = this.pwN.mController.uMN.getResources().getStringArray(R.c.shake_tran_img_alert);
-    h.a(this.pwN, null, (String[])localObject, "", false, new GestureGalleryUI.4.1(this));
+    AppMethodBeat.o(153672);
   }
 }
 

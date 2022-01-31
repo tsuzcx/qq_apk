@@ -3,37 +3,43 @@ package com.tencent.mm.plugin.topstory.ui.video.fs;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.r.a;
-import android.support.v7.widget.af;
+import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$1
-  extends af
+  extends ae
 {
   b$1(b paramb, Context paramContext)
   {
     super(paramContext);
   }
   
-  protected final float a(DisplayMetrics paramDisplayMetrics)
+  public final void a(View paramView, RecyclerView.r.a parama)
   {
-    return 100.0F / paramDisplayMetrics.densityDpi;
-  }
-  
-  protected final void a(View paramView, RecyclerView.r.a parama)
-  {
-    paramView = this.pGL.a(this.pGL.acI.getLayoutManager(), paramView);
+    AppMethodBeat.i(1860);
+    paramView = this.tkd.a(this.tkd.adt.getLayoutManager(), paramView);
     int i = paramView[0];
     int j = paramView[1];
-    int k = bG(Math.max(Math.abs(i), Math.abs(j)));
+    int k = bL(Math.max(Math.abs(i), Math.abs(j)));
     if (k > 0) {
-      parama.a(i, j, k, this.Mh);
+      parama.a(i, j, k, this.LP);
     }
+    AppMethodBeat.o(1860);
   }
   
-  protected final int bH(int paramInt)
+  public final int bM(int paramInt)
   {
-    return Math.min(100, super.bH(paramInt));
+    AppMethodBeat.i(1861);
+    paramInt = Math.min(100, super.bM(paramInt));
+    AppMethodBeat.o(1861);
+    return paramInt;
+  }
+  
+  public final float c(DisplayMetrics paramDisplayMetrics)
+  {
+    return 100.0F / paramDisplayMetrics.densityDpi;
   }
 }
 

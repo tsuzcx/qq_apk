@@ -5,7 +5,7 @@ public final class c$dn
 {
   public c$dn()
   {
-    super("jumpToInstallUrl", "", 26, false);
+    super("hideAllNonBaseMenuItem", "hideAllNonBaseMenuItem", 93, false);
   }
 }
 

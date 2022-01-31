@@ -1,19 +1,29 @@
 package com.tencent.mm.plugin.radar;
 
-import com.tencent.mm.model.ar;
-import com.tencent.mm.pluginsdk.n;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
+import com.tencent.mm.pluginsdk.b.c;
+import com.tencent.mm.pluginsdk.o;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/Plugin;", "Lcom/tencent/mm/pluginsdk/deprecated/IPlugin;", "()V", "createApplication", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "createSubCore", "Lcom/tencent/mm/model/ISubCore;", "getContactWidgetFactory", "Lcom/tencent/mm/pluginsdk/deprecated/IContactWidgetFactory;", "plugin-radar_release"})
 public final class Plugin
-  implements com.tencent.mm.pluginsdk.b.c
+  implements c
 {
-  public final n createApplication()
+  public final o createApplication()
   {
-    return (n)new b();
+    AppMethodBeat.i(102844);
+    o localo = (o)new a();
+    AppMethodBeat.o(102844);
+    return localo;
   }
   
-  public final ar createSubCore()
+  public final at createSubCore()
   {
-    return (ar)new c();
+    AppMethodBeat.i(102845);
+    at localat = (at)new b();
+    AppMethodBeat.o(102845);
+    return localat;
   }
   
   public final com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.walletlock.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletLockSettingUI$2
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class WalletLockSettingUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    WalletLockSettingUI.b(this.qRr);
+    AppMethodBeat.i(51745);
+    WalletLockSettingUI.b(this.uGz);
+    AppMethodBeat.o(51745);
   }
 }
 

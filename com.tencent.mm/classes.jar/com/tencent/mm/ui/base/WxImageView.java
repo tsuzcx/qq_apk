@@ -5,216 +5,367 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View.MeasureSpec;
-import com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.ui.WxBaseImageView;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class WxImageView
   extends WxBaseImageView
   implements g
 {
-  private float aqM = 1.0F;
-  protected Matrix aqz = new Matrix();
-  private boolean isInited = false;
-  private int jsq;
-  private int jsr;
-  protected ah mHandler = new ah();
-  protected Bitmap oJZ = null;
-  private boolean oYK = true;
-  private MultiTouchImageView.a oZh;
+  protected Matrix asS;
+  private float atf;
+  private boolean isInited;
+  private boolean jeA;
+  private int jgD;
+  private int jgE;
+  protected ak mHandler;
   private int orientation;
-  private final float[] tz = new float[9];
-  protected Matrix uZJ = new Matrix();
-  private final Matrix uZK = new Matrix();
-  int uZL = -1;
-  int uZM = -1;
-  private float uZN = 0.0F;
-  private float uZO = 0.0F;
-  private float uZP = 0.0F;
-  private float uZQ;
-  private boolean uZR = false;
-  private float uZS = 2.0F;
-  private float uZT = 0.75F;
-  private float uZU = 20.0F;
-  private boolean uZV = false;
-  private boolean uZW = false;
-  private boolean uZX = false;
-  private float uZY;
-  private float uZZ;
-  private boolean vab = false;
-  private Drawable vac;
+  private MultiTouchImageView.a rRA;
+  private boolean rRd;
+  protected Bitmap rzS;
+  private final float[] uA;
+  protected Matrix zoa;
+  private final Matrix zob;
+  int zoc;
+  int zod;
+  private float zoe;
+  private float zof;
+  private float zog;
+  private float zoh;
+  private float zoi;
+  private float zoj;
+  private float zok;
+  private boolean zol;
+  private boolean zom;
+  private boolean zon;
+  private float zoo;
+  private float zop;
+  private boolean zor;
+  private Drawable zos;
   
   public WxImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(107098);
+    this.zoa = new Matrix();
+    this.asS = new Matrix();
+    this.zob = new Matrix();
+    this.uA = new float[9];
+    this.rzS = null;
+    this.zoc = -1;
+    this.zod = -1;
+    this.zoe = 0.0F;
+    this.zof = 0.0F;
+    this.zog = 0.0F;
+    this.isInited = false;
+    this.jeA = false;
+    this.zoi = 2.0F;
+    this.zoj = 0.75F;
+    this.zok = 20.0F;
+    this.zol = false;
+    this.zom = false;
+    this.zon = false;
+    this.rRd = true;
+    this.zor = false;
+    this.mHandler = new ak();
+    this.atf = 1.0F;
+    AppMethodBeat.o(107098);
   }
   
   public WxImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(107099);
+    this.zoa = new Matrix();
+    this.asS = new Matrix();
+    this.zob = new Matrix();
+    this.uA = new float[9];
+    this.rzS = null;
+    this.zoc = -1;
+    this.zod = -1;
+    this.zoe = 0.0F;
+    this.zof = 0.0F;
+    this.zog = 0.0F;
+    this.isInited = false;
+    this.jeA = false;
+    this.zoi = 2.0F;
+    this.zoj = 0.75F;
+    this.zok = 20.0F;
+    this.zol = false;
+    this.zom = false;
+    this.zon = false;
+    this.rRd = true;
+    this.zor = false;
+    this.mHandler = new ak();
+    this.atf = 1.0F;
+    AppMethodBeat.o(107099);
   }
   
-  private void cBk()
+  private void aj(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    float f2 = 0.0F;
+    AppMethodBeat.i(107112);
+    if ((this.zos == null) && (this.zor))
+    {
+      AppMethodBeat.o(107112);
+      return;
+    }
+    Matrix localMatrix = getImageViewMatrix();
+    RectF localRectF;
+    float f1;
+    float f3;
+    if (this.zor)
+    {
+      localRectF = new RectF(0.0F, 0.0F, this.zos.getIntrinsicWidth(), this.zos.getIntrinsicHeight());
+      localMatrix.mapRect(localRectF);
+      f1 = localRectF.height();
+      f3 = localRectF.width();
+      if (!paramBoolean2) {
+        break label248;
+      }
+      if (f1 >= this.jgE) {
+        break label199;
+      }
+      f1 = (this.jgE - f1) / 2.0F - localRectF.top;
+    }
+    for (;;)
+    {
+      label119:
+      if (paramBoolean1) {
+        if (f3 < this.jgD) {
+          f2 = (this.jgD - f3) / 2.0F - localRectF.left;
+        }
+      }
+      for (;;)
+      {
+        ap(f2, f1);
+        getImageViewMatrix().mapRect(localRectF);
+        AppMethodBeat.o(107112);
+        return;
+        localRectF = new RectF(0.0F, 0.0F, this.imageWidth, this.imageHeight);
+        break;
+        label199:
+        if (localRectF.top > 0.0F)
+        {
+          f1 = -localRectF.top;
+          break label119;
+        }
+        if (localRectF.bottom >= this.jgE) {
+          break label399;
+        }
+        f1 = this.jgE - localRectF.bottom;
+        break label119;
+        label248:
+        if (localRectF.top > 0.0F)
+        {
+          f1 = -localRectF.top;
+          break label119;
+        }
+        if (localRectF.bottom >= this.jgE) {
+          break label399;
+        }
+        f1 = this.jgE - localRectF.bottom;
+        break label119;
+        if (localRectF.left > 0.0F)
+        {
+          f2 = -localRectF.left;
+        }
+        else if (localRectF.right < this.jgD)
+        {
+          f2 = this.jgD - localRectF.right;
+          continue;
+          if (localRectF.left > 0.0F) {
+            f2 = -localRectF.left;
+          } else if (localRectF.right < this.jgD) {
+            f2 = this.jgD - localRectF.right;
+          }
+        }
+      }
+      label399:
+      f1 = 0.0F;
+    }
+  }
+  
+  private void dEz()
   {
     boolean bool2 = true;
+    AppMethodBeat.i(107109);
     int i = getImageWidth();
     int j = getImageHeight();
-    this.uZY = (this.jsq / i);
-    this.uZZ = (this.jsr / j);
+    this.zoo = (this.jgD / i);
+    this.zop = (this.jgE / j);
     boolean bool1;
     if (i > j * 2.2F)
     {
       bool1 = true;
-      this.uZW = bool1;
+      this.zom = bool1;
       if (j <= i * 2.2F) {
-        break label215;
+        break label225;
       }
       bool1 = true;
-      label79:
-      this.uZX = bool1;
-      if ((!this.uZW) || (i <= this.jsq)) {
-        break label221;
+      label84:
+      this.zon = bool1;
+      if ((!this.zom) || (i <= this.jgD)) {
+        break label231;
       }
       bool1 = true;
-      label104:
-      this.uZW = bool1;
-      if ((!this.uZX) || (j <= this.jsr)) {
-        break label227;
+      label109:
+      this.zom = bool1;
+      if ((!this.zon) || (j <= this.jgE)) {
+        break label237;
       }
       bool1 = bool2;
-      label130:
-      this.uZX = bool1;
+      label135:
+      this.zon = bool1;
       float f3 = j / i;
       float f2 = 1.8F;
       float f1 = f2;
-      if (this.jsq != 0)
+      if (this.jgD != 0)
       {
         f1 = f2;
-        if (this.jsr != 0) {
-          f1 = this.jsr / this.jsq;
+        if (this.jgE != 0) {
+          f1 = this.jgE / this.jgD;
         }
       }
       if ((f3 <= f1) || (f3 > 2.2D)) {
-        break label233;
+        break label243;
       }
     }
-    label215:
-    label221:
-    label227:
-    label233:
-    for (this.uZQ = this.uZZ;; this.uZQ = this.uZY)
+    label225:
+    label231:
+    label237:
+    label243:
+    for (this.zoh = this.zop;; this.zoh = this.zoo)
     {
-      setScaleRate(this.uZQ);
+      setScaleRate(this.zoh);
+      AppMethodBeat.o(107109);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label79;
+      break label84;
       bool1 = false;
-      break label104;
+      break label109;
       bool1 = false;
-      break label130;
+      break label135;
     }
   }
   
   private void l(float paramFloat1, float paramFloat2, float paramFloat3)
   {
+    AppMethodBeat.i(107119);
     paramFloat1 = (paramFloat1 - getScale()) / 128.0F;
     float f = getScale();
     long l = System.currentTimeMillis();
     this.mHandler.post(new WxImageView.1(this, l, f, paramFloat1, paramFloat2, paramFloat3));
+    AppMethodBeat.o(107119);
   }
   
-  public final void ac(float paramFloat1, float paramFloat2)
+  public final void an(float paramFloat1, float paramFloat2)
   {
-    cBk();
-    l(this.uZQ, paramFloat1, paramFloat2);
+    AppMethodBeat.i(107107);
+    dEz();
+    l(this.zoh, paramFloat1, paramFloat2);
+    AppMethodBeat.o(107107);
   }
   
-  public final void ad(float paramFloat1, float paramFloat2)
+  public final void ao(float paramFloat1, float paramFloat2)
   {
-    this.uZN = getDoubleTabScale();
-    l(this.uZN, paramFloat1, paramFloat2);
+    AppMethodBeat.i(107118);
+    this.zoe = getDoubleTabScale();
+    l(this.zoe, paramFloat1, paramFloat2);
+    AppMethodBeat.o(107118);
   }
   
-  public final void ae(float paramFloat1, float paramFloat2)
+  public final void ap(float paramFloat1, float paramFloat2)
   {
-    y.d("MicroMsg.WxImageView", "alvinluo WxImageView postTranslate dx: %f, dy: %f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
-    this.aqz.postTranslate(paramFloat1, paramFloat2);
+    AppMethodBeat.i(107120);
+    ab.d("MicroMsg.WxImageView", "alvinluo WxImageView postTranslate dx: %f, dy: %f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+    this.asS.postTranslate(paramFloat1, paramFloat2);
+    AppMethodBeat.o(107120);
   }
   
-  public final boolean cAw()
+  public final boolean dDH()
   {
-    return this.uZW;
+    return this.zom;
   }
   
-  public final boolean cAx()
+  public final boolean dDI()
   {
-    return this.uZX;
+    return this.zon;
   }
   
-  public final void cAy()
+  public final void dDJ()
   {
-    y.d("MicroMsg.WxImageView", "alvinluo adaptViewSize");
-    this.aqz.reset();
-    cBk();
-    if (this.dDM != null)
-    {
-      SubsamplingScaleImageView localSubsamplingScaleImageView = this.dDM;
-      localSubsamplingScaleImageView.a(localSubsamplingScaleImageView.aqJ, new PointF(0.0F, 0.0F));
+    AppMethodBeat.i(107106);
+    ab.d("MicroMsg.WxImageView", "alvinluo adaptViewSize");
+    this.asS.reset();
+    dEz();
+    Pz();
+    k(this.zoh, 0.0F, 0.0F);
+    AppMethodBeat.o(107106);
+  }
+  
+  public final void dDK()
+  {
+    AppMethodBeat.i(107115);
+    if ((this.zol) && (0.0F == this.zoe)) {
+      this.zoe = getDoubleTabScale();
     }
-    k(this.uZQ, 0.0F, 0.0F);
-  }
-  
-  public final void cAz()
-  {
-    if ((this.uZV) && (0.0F == this.uZN)) {
-      this.uZN = getDoubleTabScale();
-    }
+    AppMethodBeat.o(107115);
   }
   
   public int getContentLeft()
   {
-    if (!this.isInited) {
+    AppMethodBeat.i(107105);
+    if (!this.isInited)
+    {
+      AppMethodBeat.o(107105);
       return 0;
     }
-    float f1 = this.uZQ;
+    float f1 = this.zoh;
     float f2 = this.imageWidth;
-    int j = (int)((this.jsq - f1 * f2) / 2.0F);
+    int j = (int)((this.jgD - f1 * f2) / 2.0F);
     int i = j;
     if (j < 0) {
       i = 0;
     }
-    y.i("MicroMsg.WxImageView", "alvinluo scaleRate: %f, imageWidth: %d, viewWidth: %d, left: %d", new Object[] { Float.valueOf(this.uZQ), Integer.valueOf(this.imageWidth), Integer.valueOf(this.jsq), Integer.valueOf(i) });
+    ab.i("MicroMsg.WxImageView", "alvinluo scaleRate: %f, imageWidth: %d, viewWidth: %d, left: %d", new Object[] { Float.valueOf(this.zoh), Integer.valueOf(this.imageWidth), Integer.valueOf(this.jgD), Integer.valueOf(i) });
+    AppMethodBeat.o(107105);
     return i;
   }
   
   public int getContentTop()
   {
-    if (!this.isInited) {
+    AppMethodBeat.i(107104);
+    if (!this.isInited)
+    {
+      AppMethodBeat.o(107104);
       return 0;
     }
-    float f1 = this.uZQ;
+    float f1 = this.zoh;
     float f2 = getImageHeight();
-    int j = (int)((this.jsr - f1 * f2) / 2.0F);
+    int j = (int)((this.jgE - f1 * f2) / 2.0F);
     int i = j;
     if (j < 0) {
       i = 0;
     }
-    y.i("MicroMsg.WxImageView", "alvinluo scaleRate: %f, imageHeight: %d, viewHeight: %d, top: %d", new Object[] { Float.valueOf(this.uZQ), Integer.valueOf(getImageHeight()), Integer.valueOf(this.jsr), Integer.valueOf(i) });
+    ab.i("MicroMsg.WxImageView", "alvinluo scaleRate: %f, imageHeight: %d, viewHeight: %d, top: %d", new Object[] { Float.valueOf(this.zoh), Integer.valueOf(getImageHeight()), Integer.valueOf(this.jgE), Integer.valueOf(i) });
+    AppMethodBeat.o(107104);
     return i;
   }
   
   public float getDoubleTabScale()
   {
+    AppMethodBeat.i(107117);
     float f1 = getScaleRate();
     if (getScaleWidth() * 0.7F > f1) {
       f1 = getScaleWidth();
@@ -229,11 +380,12 @@ public class WxImageView
       if (f2 > getMaxZoom()) {
         f1 = getMaxZoom();
       }
+      AppMethodBeat.o(107117);
       return f1;
       if (getScaleHeight() * 0.7F > f1) {
         f1 = getScaleHeight();
       } else {
-        f1 = getScaleRate() * this.uZS;
+        f1 = getScaleRate() * this.zoi;
       }
     }
   }
@@ -248,16 +400,22 @@ public class WxImageView
   
   public Matrix getImageMatrix()
   {
-    this.uZK.set(this.uZJ);
-    this.uZK.postConcat(this.aqz);
-    return this.uZK;
+    AppMethodBeat.i(107122);
+    this.zob.set(this.zoa);
+    this.zob.postConcat(this.asS);
+    Matrix localMatrix = this.zob;
+    AppMethodBeat.o(107122);
+    return localMatrix;
   }
   
   protected Matrix getImageViewMatrix()
   {
-    this.uZK.set(this.uZJ);
-    this.uZK.postConcat(this.aqz);
-    return this.uZK;
+    AppMethodBeat.i(107114);
+    this.zob.set(this.zoa);
+    this.zob.postConcat(this.asS);
+    Matrix localMatrix = this.zob;
+    AppMethodBeat.o(107114);
+    return localMatrix;
   }
   
   public int getImageWidth()
@@ -270,184 +428,106 @@ public class WxImageView
   
   public float getMaxZoom()
   {
-    return this.uZO;
+    return this.zof;
   }
   
   public float getMinZoom()
   {
-    return this.uZP;
+    return this.zog;
   }
   
   public float getScale()
   {
-    return super.getScale();
+    AppMethodBeat.i(107113);
+    float f = super.getScale();
+    AppMethodBeat.o(107113);
+    return f;
   }
   
   public float getScaleHeight()
   {
-    return this.uZZ;
+    return this.zop;
   }
   
   public float getScaleRate()
   {
-    return this.uZQ;
+    return this.zoh;
   }
   
   public float getScaleWidth()
   {
-    return this.uZY;
+    return this.zoo;
   }
   
   public final void k(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    int j = 1;
-    float f3 = getScale();
+    boolean bool2 = true;
+    AppMethodBeat.i(107116);
+    float f2 = getScale();
     float f1;
-    label72:
-    float f2;
-    int i;
-    label173:
-    label180:
-    RectF localRectF;
-    if (this.uZV)
+    label78:
+    boolean bool1;
+    if (this.zol)
     {
-      if (0.0F == this.uZN)
+      if (0.0F == this.zoe)
       {
-        f1 = this.uZU * this.aqM;
-        this.uZO = f1;
+        f1 = this.zok * this.atf;
+        this.zof = f1;
       }
     }
     else
     {
-      if (paramFloat1 <= this.uZO * 2.0F) {
-        break label365;
+      if (paramFloat1 <= this.zof * 2.0F) {
+        break label228;
       }
-      f1 = this.uZO * 2.0F + (paramFloat1 - this.uZO) * 0.1F;
-      f2 = f1 / f3;
-      y.d("MicroMsg.WxImageView", "alvinluo zoomTo mzdt=%f,mz=%f,scale=%f,oldScale=%f,deltaScale=%f", new Object[] { Float.valueOf(this.uZN), Float.valueOf(this.uZO), Float.valueOf(f1), Float.valueOf(f3), Float.valueOf(f2) });
-      if (!this.vab) {
-        this.aqz.postScale(f2, f2, paramFloat2, paramFloat3);
+      f1 = this.zof * 2.0F + (paramFloat1 - this.zof) * 0.1F;
+      paramFloat1 = f1 / f2;
+      ab.d("MicroMsg.WxImageView", "alvinluo zoomTo mzdt=%f,mz=%f,scale=%f,oldScale=%f,deltaScale=%f", new Object[] { Float.valueOf(this.zoe), Float.valueOf(this.zof), Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(paramFloat1) });
+      if (!this.zor) {
+        this.asS.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
       }
-      if ((this.oYK) && (this.uZW)) {
-        break label386;
+      if ((this.rRd) && (this.zom)) {
+        break label249;
       }
-      i = 1;
-      if (this.uZX) {
-        break label392;
-      }
-      if ((this.vac != null) || (!this.vab))
-      {
-        Matrix localMatrix = getImageViewMatrix();
-        if (!this.vab) {
-          break label398;
-        }
-        localRectF = new RectF(0.0F, 0.0F, this.vac.getIntrinsicWidth(), this.vac.getIntrinsicHeight());
-        label234:
-        localMatrix.mapRect(localRectF);
-        paramFloat1 = localRectF.height();
-        paramFloat2 = localRectF.width();
-        if (j == 0) {
-          break label471;
-        }
-        if (paramFloat1 >= this.jsr) {
-          break label422;
-        }
-        paramFloat1 = (this.jsr - paramFloat1) / 2.0F - localRectF.top;
+      bool1 = true;
+      label175:
+      if (this.zon) {
+        break label255;
       }
     }
     for (;;)
     {
-      label285:
-      if (i != 0) {
-        if (paramFloat2 < this.jsq) {
-          paramFloat2 = (this.jsq - paramFloat2) / 2.0F - localRectF.left;
-        }
+      aj(bool1, bool2);
+      if (this.rRA == null) {
+        break label276;
       }
-      for (;;)
-      {
-        label316:
-        ae(paramFloat2, paramFloat1);
-        getImageViewMatrix().mapRect(localRectF);
-        if (this.oZh != null)
-        {
-          if (f2 <= 1.0F) {
-            break label618;
-          }
-          this.oZh.bIV();
-        }
-        label365:
-        while (f2 >= 1.0F)
-        {
-          return;
-          f1 = this.uZN;
-          break;
-          f1 = paramFloat1;
-          if (paramFloat1 >= this.uZP) {
-            break label72;
-          }
-          f1 = this.uZP;
-          break label72;
-          i = 0;
-          break label173;
-          j = 0;
-          break label180;
-          localRectF = new RectF(0.0F, 0.0F, this.imageWidth, this.imageHeight);
-          break label234;
-          if (localRectF.top > 0.0F)
-          {
-            paramFloat1 = -localRectF.top;
-            break label285;
-          }
-          if (localRectF.bottom >= this.jsr) {
-            break label640;
-          }
-          paramFloat1 = this.jsr - localRectF.bottom;
-          break label285;
-          if (localRectF.top > 0.0F)
-          {
-            paramFloat1 = -localRectF.top;
-            break label285;
-          }
-          if (localRectF.bottom >= this.jsr) {
-            break label640;
-          }
-          paramFloat1 = this.jsr - localRectF.bottom;
-          break label285;
-          if (localRectF.left > 0.0F)
-          {
-            paramFloat2 = -localRectF.left;
-            break label316;
-          }
-          if (localRectF.right >= this.jsq) {
-            break label635;
-          }
-          paramFloat2 = this.jsq - localRectF.right;
-          break label316;
-          if (localRectF.left > 0.0F)
-          {
-            paramFloat2 = -localRectF.left;
-            break label316;
-          }
-          if (localRectF.right >= this.jsq) {
-            break label635;
-          }
-          paramFloat2 = this.jsq - localRectF.right;
-          break label316;
-        }
-        label386:
-        label392:
-        label398:
-        label422:
-        label471:
-        label618:
-        this.oZh.bIU();
-        return;
-        label635:
-        paramFloat2 = 0.0F;
+      if (paramFloat1 <= 1.0F) {
+        break label261;
       }
-      label640:
-      paramFloat1 = 0.0F;
+      this.rRA.cvq();
+      AppMethodBeat.o(107116);
+      return;
+      f1 = this.zoe;
+      break;
+      label228:
+      f1 = paramFloat1;
+      if (paramFloat1 >= this.zog) {
+        break label78;
+      }
+      f1 = this.zog;
+      break label78;
+      label249:
+      bool1 = false;
+      break label175;
+      label255:
+      bool2 = false;
     }
+    label261:
+    if (paramFloat1 < 1.0F) {
+      this.rRA.cvp();
+    }
+    label276:
+    AppMethodBeat.o(107116);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
@@ -459,64 +539,77 @@ public class WxImageView
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(107110);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       f.c(paramKeyEvent);
+      AppMethodBeat.o(107110);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(107110);
+    return bool;
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(107111);
     if ((paramInt == 4) && (f.d(paramKeyEvent)) && (!f.e(paramKeyEvent)) && (getScale() > 1.0F))
     {
-      k(1.0F, this.jsq / 2.0F, this.jsr / 2.0F);
+      k(1.0F, this.jgD / 2.0F, this.jgE / 2.0F);
+      AppMethodBeat.o(107111);
       return true;
     }
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.o(107111);
+    return bool;
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(107103);
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.jsq != View.MeasureSpec.getSize(paramInt1)) || (this.jsr != View.MeasureSpec.getSize(paramInt2))) {}
-    for (this.uZR = true;; this.uZR = false)
+    if ((this.jgD != View.MeasureSpec.getSize(paramInt1)) || (this.jgE != View.MeasureSpec.getSize(paramInt2))) {}
+    for (this.jeA = true;; this.jeA = false)
     {
-      this.jsq = View.MeasureSpec.getSize(paramInt1);
-      this.jsr = View.MeasureSpec.getSize(paramInt2);
-      y.d("MicroMsg.WxImageView", "alvinluo onMeasure viewWidth: %d, viewHeight: %d", new Object[] { Integer.valueOf(this.jsq), Integer.valueOf(this.jsr) });
+      this.jgD = View.MeasureSpec.getSize(paramInt1);
+      this.jgE = View.MeasureSpec.getSize(paramInt2);
+      ab.d("MicroMsg.WxImageView", "alvinluo onMeasure viewWidth: %d, viewHeight: %d", new Object[] { Integer.valueOf(this.jgD), Integer.valueOf(this.jgE) });
       if (!this.isInited)
       {
         this.isInited = true;
-        this.vab = false;
-        y.d("MicroMsg.WxImageView", "init screenWidth:" + this.jsq + " screenHeight :" + this.jsr);
+        this.zor = false;
+        ab.d("MicroMsg.WxImageView", "init screenWidth:" + this.jgD + " screenHeight :" + this.jgE);
         float f = getContext().getResources().getDisplayMetrics().widthPixels / 720.0F;
         if (f > 1.0F) {
-          this.aqM = f;
+          this.atf = f;
         }
-        cAy();
+        dDJ();
       }
-      if (this.uZR) {
-        cAy();
+      if (this.jeA) {
+        dDJ();
       }
+      AppMethodBeat.o(107103);
       return;
     }
   }
   
   public void setDoubleTabScaleLimit(float paramFloat)
   {
+    AppMethodBeat.i(107102);
     if (Float.compare(paramFloat, 0.0F) < 0)
     {
-      y.w("MicroMsg.WxImageView", "double tab scale limit is less than 0.0, change nothing, return");
+      ab.w("MicroMsg.WxImageView", "double tab scale limit is less than 0.0, change nothing, return");
+      AppMethodBeat.o(107102);
       return;
     }
-    this.uZS = paramFloat;
+    this.zoi = paramFloat;
+    AppMethodBeat.o(107102);
   }
   
   public void setEnableHorLongBmpMode(boolean paramBoolean)
   {
-    this.oYK = paramBoolean;
+    this.rRd = paramBoolean;
   }
   
   public void setImageHeight(int paramInt)
@@ -531,52 +624,63 @@ public class WxImageView
   
   public void setMaxZoomDoubleTab(boolean paramBoolean)
   {
-    this.uZV = paramBoolean;
+    this.zol = paramBoolean;
   }
   
   public void setMaxZoomLimit(float paramFloat)
   {
+    AppMethodBeat.i(107100);
     if (Float.compare(paramFloat, 1.0F) < 0)
     {
-      y.w("MicroMsg.WxImageView", "max scale limit is less than 1.0, change nothing, return");
+      ab.w("MicroMsg.WxImageView", "max scale limit is less than 1.0, change nothing, return");
+      AppMethodBeat.o(107100);
       return;
     }
-    this.uZU = paramFloat;
+    this.zok = paramFloat;
+    AppMethodBeat.o(107100);
   }
   
   public void setMinZoomLimit(float paramFloat)
   {
+    AppMethodBeat.i(107101);
     if (Float.compare(paramFloat, 1.0F) > 0)
     {
-      y.w("MicroMsg.WxImageView", "min scale limit is greater than 1.0, change nothing, return");
+      ab.w("MicroMsg.WxImageView", "min scale limit is greater than 1.0, change nothing, return");
+      AppMethodBeat.o(107101);
       return;
     }
     if (Float.compare(paramFloat, 0.0F) < 0)
     {
-      y.w("MicroMsg.WxImageView", "min scale limit is less than 0.0, change nothing, return");
+      ab.w("MicroMsg.WxImageView", "min scale limit is less than 0.0, change nothing, return");
+      AppMethodBeat.o(107101);
       return;
     }
-    this.uZT = paramFloat;
+    this.zoj = paramFloat;
+    AppMethodBeat.o(107101);
   }
   
   public void setOrientation(int paramInt)
   {
+    AppMethodBeat.i(107108);
     this.orientation = paramInt;
-    cBk();
+    dEz();
+    AppMethodBeat.o(107108);
   }
   
   public final void translate(float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(107121);
     float f1 = getTranslationX();
     float f2 = getTranslationY();
     setTranslationX(f1 + paramFloat1);
     setTranslationY(f2 + paramFloat2);
-    y.i("MicroMsg.WxImageView", "alvinluo translate x: %f, y: %f, x + dx: %f, y + dy: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f1 + paramFloat1), Float.valueOf(f2 + paramFloat2) });
+    ab.i("MicroMsg.WxImageView", "alvinluo translate x: %f, y: %f, x + dx: %f, y + dy: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f1 + paramFloat1), Float.valueOf(f2 + paramFloat2) });
+    AppMethodBeat.o(107121);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.WxImageView
  * JD-Core Version:    0.7.0.1
  */

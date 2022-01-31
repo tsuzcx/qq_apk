@@ -5,15 +5,15 @@ import com.tencent.mm.vending.base.Vending;
 
 public abstract interface w
 {
-  public abstract void bHx();
+  public abstract n EE(int paramInt);
   
-  public abstract Vending bHy();
+  public abstract void ctD();
+  
+  public abstract Vending ctE();
   
   public abstract int getCount();
   
   public abstract void notifyDataSetChanged();
-  
-  public abstract n yy(int paramInt);
 }
 
 

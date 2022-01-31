@@ -5,37 +5,38 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f$a
   extends RecyclerView.v
 {
-  public ImageView kHP;
-  public ImageView kHQ;
-  public RelativeLayout kHR;
-  public TextView kHS;
-  public ImageView kHU;
-  public ImageView kHV;
-  public ImageView kHW;
-  public int kKA;
-  public ImageView kKy;
-  public View kKz;
+  public ImageView mZY;
+  public ImageView neb;
+  public RelativeLayout nec;
+  public TextView ned;
+  public ImageView nef;
+  public ImageView neg;
+  public ImageView neh;
+  public ImageView ngY;
+  public View ngZ;
+  public int nha;
   
   public f$a(View paramView)
   {
     super(paramView);
-    this.kKz = paramView;
-    this.kHV = ((ImageView)paramView.findViewById(R.h.gif_mask));
-    this.kHW = ((ImageView)paramView.findViewById(R.h.edit_mark_iv));
-    this.kKy = ((ImageView)paramView.findViewById(R.h.error_icon_iv));
-    this.kHP = ((ImageView)paramView.findViewById(R.h.media_placeholder));
-    this.kHQ = ((ImageView)paramView.findViewById(R.h.media_thumb));
-    this.kHR = ((RelativeLayout)paramView.findViewById(R.h.video_mask));
-    this.kHS = ((TextView)paramView.findViewById(R.h.video_mask_tv));
-    this.kHU = ((ImageView)paramView.findViewById(R.h.media_mask));
-    this.kHU.setBackgroundResource(R.e.half_alpha_black);
-    this.kHU.setVisibility(8);
+    AppMethodBeat.i(21577);
+    this.ngZ = paramView;
+    this.neg = ((ImageView)paramView.findViewById(2131826762));
+    this.neh = ((ImageView)paramView.findViewById(2131826763));
+    this.ngY = ((ImageView)paramView.findViewById(2131822585));
+    this.neb = ((ImageView)paramView.findViewById(2131826765));
+    this.mZY = ((ImageView)paramView.findViewById(2131822416));
+    this.nec = ((RelativeLayout)paramView.findViewById(2131825137));
+    this.ned = ((TextView)paramView.findViewById(2131826761));
+    this.nef = ((ImageView)paramView.findViewById(2131826764));
+    this.nef.setBackgroundResource(2131690159);
+    this.nef.setVisibility(8);
+    AppMethodBeat.o(21577);
   }
 }
 

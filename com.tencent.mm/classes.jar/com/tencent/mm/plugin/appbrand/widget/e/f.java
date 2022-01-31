@@ -1,18 +1,30 @@
 package com.tencent.mm.plugin.appbrand.widget.e;
 
-import android.view.View;
-import android.widget.FrameLayout;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mapsdk.raster.model.LatLng;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface f
+public final class f
 {
-  public static final long hBV = TimeUnit.SECONDS.toMillis(4L);
+  public static double jrI = 6378137.0D;
+  final double jrJ;
   
-  public abstract void a(FrameLayout paramFrameLayout);
+  public f()
+  {
+    AppMethodBeat.i(51276);
+    this.jrJ = (6.283185307179586D * jrI);
+    AppMethodBeat.o(51276);
+  }
   
-  public abstract View getView();
-  
-  public abstract void xk(String paramString);
+  public final e b(LatLng paramLatLng)
+  {
+    AppMethodBeat.i(51277);
+    double d1 = paramLatLng.getLongitude() / 360.0D;
+    double d2 = Math.sin(Math.toRadians(paramLatLng.getLatitude()));
+    d2 = Math.log((1.0D + d2) / (1.0D - d2)) * 0.5D / -6.283185307179586D;
+    paramLatLng = new e((d1 + 0.5D) * this.jrJ, (d2 + 0.5D) * this.jrJ);
+    AppMethodBeat.o(51277);
+    return paramLatLng;
+  }
 }
 
 

@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.webview.ui.tools;
 import android.os.RemoteException;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WebViewUI$8
   implements MenuItem.OnMenuItemClickListener
@@ -13,22 +14,26 @@ final class WebViewUI$8
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
+    AppMethodBeat.i(7816);
     try
     {
-      paramMenuItem = this.rpH.gGn.SV(null);
-      this.rpH.b(paramMenuItem, null, false);
+      paramMenuItem = this.vgz.igU.ahX(null);
+      this.vgz.loadUrl(paramMenuItem);
+      AppMethodBeat.o(7816);
       return false;
     }
     catch (RemoteException paramMenuItem)
     {
-      y.printErrStackTrace("MicroMsg.WebViewUI", paramMenuItem, "[oneliang]feedback exception:%s", new Object[] { paramMenuItem.getMessage() });
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.WebViewUI", paramMenuItem, "[oneliang]feedback exception:%s", new Object[] { paramMenuItem.getMessage() });
+      }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.WebViewUI.8
  * JD-Core Version:    0.7.0.1
  */

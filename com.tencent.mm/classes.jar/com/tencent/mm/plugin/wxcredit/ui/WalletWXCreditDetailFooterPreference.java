@@ -7,18 +7,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class WalletWXCreditDetailFooterPreference
   extends Preference
   implements View.OnClickListener
 {
-  private LayoutInflater Lu;
-  View.OnClickListener nXW;
-  private TextView rRG;
-  private TextView rRH;
+  private LayoutInflater mInflater;
+  View.OnClickListener qMg;
+  private TextView vIw;
+  private TextView vIx;
   
   public WalletWXCreditDetailFooterPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,38 +27,46 @@ public class WalletWXCreditDetailFooterPreference
   public WalletWXCreditDetailFooterPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.Lu = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    setLayoutResource(a.g.mm_preference);
+    AppMethodBeat.i(48713);
+    this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(48713);
   }
   
   public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(48715);
     super.onBindView(paramView);
-    this.rRG = ((TextView)paramView.findViewById(a.f.wallet_wxcredit_detail_username_tv));
-    this.rRH = ((TextView)paramView.findViewById(a.f.wallet_wxcredit_detail_help_tv));
-    this.rRG.setOnClickListener(this);
-    this.rRH.setOnClickListener(this);
+    this.vIw = ((TextView)paramView.findViewById(2131829429));
+    this.vIx = ((TextView)paramView.findViewById(2131829430));
+    this.vIw.setOnClickListener(this);
+    this.vIx.setOnClickListener(this);
+    AppMethodBeat.o(48715);
   }
   
   public void onClick(View paramView)
   {
-    if (this.nXW != null) {
-      this.nXW.onClick(paramView);
+    AppMethodBeat.i(48716);
+    if (this.qMg != null) {
+      this.qMg.onClick(paramView);
     }
+    AppMethodBeat.o(48716);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(48714);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.f.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    this.Lu.inflate(a.g.wallet_wxcredit_detail_footer_pref, localViewGroup);
+    this.mInflater.inflate(2130971269, localViewGroup);
+    AppMethodBeat.o(48714);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditDetailFooterPreference
  * JD-Core Version:    0.7.0.1
  */

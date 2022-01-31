@@ -1,121 +1,75 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.support.v4.view.q;
-import android.util.DisplayMetrics;
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.widget.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.u;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
-public final class t
-  implements a
+final class t
+  extends r
 {
-  private static Integer huE = null;
-  private final Rect huA = new Rect();
-  private boolean huB = false;
-  private View huC;
-  t.a huD;
-  private int huy = 0;
-  private final int[] huz = new int[2];
-  
-  private Context getContext()
+  public t(Context paramContext)
   {
-    if (this.huC == null) {
-      return ae.getContext();
-    }
-    return this.huC.getContext();
+    super(paramContext);
   }
   
-  private int getFrameHeight()
+  public final void aQZ()
   {
-    if (this.huC == null) {}
-    for (Object localObject = null; localObject == null; localObject = this.huC.getRootView()) {
-      return 0;
-    }
-    localObject = this.huA;
-    getWindowVisibleDisplayFrame((Rect)localObject);
-    if (q.al(this.huC)) {}
-    for (int i = this.huC.getMeasuredHeight();; i = getContext().getResources().getDisplayMetrics().heightPixels) {
-      return i - ((Rect)localObject).top;
-    }
-  }
-  
-  private void getWindowVisibleDisplayFrame(Rect paramRect)
-  {
-    if (this.huC != null)
+    AppMethodBeat.i(123740);
+    try
     {
-      this.huC.getWindowVisibleDisplayFrame(paramRect);
-      this.huC.getLocationInWindow(this.huz);
-      paramRect.top = this.huz[1];
-    }
-  }
-  
-  public final void ck(View paramView)
-  {
-    int j = 1;
-    this.huC = paramView;
-    paramView = this.huA;
-    getWindowVisibleDisplayFrame(paramView);
-    int k = paramView.height();
-    boolean bool;
-    if (this.huy == 0)
-    {
-      this.huy = k;
-      if (getFrameHeight() <= k) {
-        break label204;
-      }
-      bool = true;
-      label48:
-      if (this.huB == bool) {
-        break label210;
-      }
-    }
-    label202:
-    label204:
-    label210:
-    for (int i = j;; i = 0)
-    {
-      if ((i != 0) && (this.huD != null)) {
-        this.huD.dW(bool);
-      }
-      this.huB = bool;
-      this.huy = k;
-      this.huC = null;
+      aj.cV(this).restartInput(this);
+      AppMethodBeat.o(123740);
       return;
-      int m = getFrameHeight() - k;
-      if (m <= 0) {
-        break;
-      }
-      paramView = getContext();
-      if (m > 0)
+    }
+    catch (RuntimeException localRuntimeException1)
+    {
+      ab.e("Luggage.Wxa.AppBrandInputWidgetSingleLineWithSoftKeyboard", "ensureInputConnection restartInput re=%s", new Object[] { localRuntimeException1 });
+      try
       {
-        if (huE == null) {
-          huE = Integer.valueOf(u.fy(paramView));
-        }
-        if (huE.intValue() != m) {
-          huE = Integer.valueOf(m);
-        }
+        aj.cV(this).showSoftInput(this, 0);
+        AppMethodBeat.o(123740);
+        return;
       }
-      for (i = 1;; i = 0)
+      catch (RuntimeException localRuntimeException2)
       {
-        if ((i == 0) || (this.huD == null) || (this.huD.getHeight() == m)) {
-          break label202;
-        }
-        this.huD.mP(m);
-        break;
+        ab.e("Luggage.Wxa.AppBrandInputWidgetSingleLineWithSoftKeyboard", "ensureInputConnection showSoftInput re=%s", new Object[] { localRuntimeException2 });
+        AppMethodBeat.o(123740);
       }
-      break;
-      bool = false;
-      break label48;
+    }
+  }
+  
+  public final View getInputPanel()
+  {
+    AppMethodBeat.i(123738);
+    w localw = w.cQ(this);
+    AppMethodBeat.o(123738);
+    return localw;
+  }
+  
+  public final void setPasswordMode(boolean paramBoolean)
+  {
+    AppMethodBeat.i(123739);
+    aRu();
+    int i = getInputType() | 0x1;
+    if (paramBoolean) {
+      i |= 0x80;
+    }
+    for (;;)
+    {
+      setInputType(i);
+      super.setPasswordMode(paramBoolean);
+      aRv();
+      AppMethodBeat.o(123739);
+      return;
+      i &= 0xFFFFFF7F;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.t
  * JD-Core Version:    0.7.0.1
  */

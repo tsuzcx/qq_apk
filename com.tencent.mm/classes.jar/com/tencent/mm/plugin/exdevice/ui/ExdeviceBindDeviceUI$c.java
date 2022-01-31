@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 final class ExdeviceBindDeviceUI$c
 {
-  public String btt;
-  public String jBK;
+  public String bUD;
+  public String lLj;
   
   private ExdeviceBindDeviceUI$c(ExdeviceBindDeviceUI paramExdeviceBindDeviceUI) {}
 }

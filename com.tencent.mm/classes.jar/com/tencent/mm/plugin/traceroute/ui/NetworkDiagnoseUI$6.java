@@ -1,44 +1,51 @@
 package com.tencent.mm.plugin.traceroute.ui;
 
-import com.tencent.mm.model.bi.a;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bk.a;
+import com.tencent.mm.model.r;
+import com.tencent.mm.network.e;
 import com.tencent.mm.plugin.traceroute.b.a;
 import com.tencent.mm.plugin.traceroute.b.a.j;
 import com.tencent.mm.plugin.traceroute.b.c;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.Map;
 
 final class NetworkDiagnoseUI$6
-  implements bi.a
+  implements bk.a
 {
   NetworkDiagnoseUI$6(NetworkDiagnoseUI paramNetworkDiagnoseUI) {}
   
-  public final void a(com.tencent.mm.network.e parame)
+  public final void a(e parame)
   {
-    if (parame == null) {
+    AppMethodBeat.i(26032);
+    if (parame == null)
+    {
+      AppMethodBeat.o(26032);
       return;
     }
-    String str = q.Gj();
-    NetworkDiagnoseUI.a(this.pJy, new a(str));
-    NetworkDiagnoseUI.d(this.pJy).b(parame.getIPsString(true), true);
-    NetworkDiagnoseUI.d(this.pJy).b(parame.getIPsString(false), false);
-    NetworkDiagnoseUI.d(this.pJy).pIE = new NetworkDiagnoseUI.6.1(this);
-    NetworkDiagnoseUI.d(this.pJy).pID = new NetworkDiagnoseUI.6.2(this);
-    NetworkDiagnoseUI.d(this.pJy).pIG = new NetworkDiagnoseUI.6.3(this);
-    NetworkDiagnoseUI.d(this.pJy).pIF = new NetworkDiagnoseUI.6.4(this);
-    parame = NetworkDiagnoseUI.d(this.pJy);
-    if ((parame.pIC == null) || (parame.pIC.size() == 0)) {
-      y.e("MicroMsg.MMTraceRoute", "no iplist");
+    String str = r.Zn();
+    NetworkDiagnoseUI.a(this.tnM, new a(str));
+    NetworkDiagnoseUI.d(this.tnM).c(parame.getIPsString(true), true);
+    NetworkDiagnoseUI.d(this.tnM).c(parame.getIPsString(false), false);
+    NetworkDiagnoseUI.d(this.tnM).tmS = new NetworkDiagnoseUI.6.1(this);
+    NetworkDiagnoseUI.d(this.tnM).tmR = new NetworkDiagnoseUI.6.2(this);
+    NetworkDiagnoseUI.d(this.tnM).tmU = new NetworkDiagnoseUI.6.3(this);
+    NetworkDiagnoseUI.d(this.tnM).tmT = new NetworkDiagnoseUI.6.4(this);
+    parame = NetworkDiagnoseUI.d(this.tnM);
+    if ((parame.tmQ == null) || (parame.tmQ.size() == 0)) {
+      ab.e("MicroMsg.MMTraceRoute", "no iplist");
     }
     for (;;)
     {
-      NetworkDiagnoseUI.j(this.pJy).S(1200L, 1200L);
+      NetworkDiagnoseUI.j(this.tnM).ag(1200L, 1200L);
+      AppMethodBeat.o(26032);
       return;
-      if (a.pIy == null) {
-        a.pIy = new c();
+      if (a.tmM == null) {
+        a.tmM = new c();
       }
-      com.tencent.mm.sdk.f.e.post(new a.j(parame, (byte)0), "MMTraceRoute_start");
+      d.post(new a.j(parame, (byte)0), "MMTraceRoute_start");
     }
   }
 }

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.clean.ui.newui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.clean.c.d;
 
 final class CleanMsgUI$2$1
@@ -11,7 +12,9 @@ final class CleanMsgUI$2$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CleanMsgUI.a(this.iEi.iEh, d.aDP());
+    AppMethodBeat.i(18888);
+    CleanMsgUI.a(this.kJp.kJo, d.bgP());
+    AppMethodBeat.o(18888);
   }
 }
 

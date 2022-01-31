@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.dynamic.debugger;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.l.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,81 +11,114 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static final Map<String, List<l.a>> dGN = new ConcurrentHashMap();
-  private static final Map<String, DebuggerInfo> fUZ = new ConcurrentHashMap();
+  private static final Map<String, List<l.a>> eEq;
+  private static final Map<String, DebuggerInfo> hoB;
   
-  public static void D(String paramString, int paramInt)
+  static
   {
-    if (bk.bl(paramString)) {}
-    for (;;)
+    AppMethodBeat.i(10812);
+    eEq = new ConcurrentHashMap();
+    hoB = new ConcurrentHashMap();
+    AppMethodBeat.o(10812);
+  }
+  
+  public static DebuggerInfo Bg(String paramString)
+  {
+    AppMethodBeat.i(10807);
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      return;
-      paramString = (List)dGN.get(paramString);
-      if (paramString != null)
-      {
-        paramString = new LinkedList(paramString).iterator();
-        while (paramString.hasNext()) {
-          ((l.a)paramString.next()).ie(paramInt);
-        }
-      }
+      AppMethodBeat.o(10807);
+      return null;
     }
+    paramString = (DebuggerInfo)hoB.get(paramString);
+    AppMethodBeat.o(10807);
+    return paramString;
+  }
+  
+  public static void I(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(10811);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(10811);
+      return;
+    }
+    paramString = (List)eEq.get(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(10811);
+      return;
+    }
+    paramString = new LinkedList(paramString).iterator();
+    while (paramString.hasNext()) {
+      ((l.a)paramString.next()).kR(paramInt);
+    }
+    AppMethodBeat.o(10811);
   }
   
   public static void a(String paramString, DebuggerInfo paramDebuggerInfo)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
+    AppMethodBeat.i(10808);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(10808);
       return;
     }
-    fUZ.put(paramString, paramDebuggerInfo);
+    hoB.put(paramString, paramDebuggerInfo);
+    AppMethodBeat.o(10808);
   }
   
   public static boolean c(String paramString, l.a parama)
   {
-    if ((bk.bl(paramString)) || (parama == null)) {
+    AppMethodBeat.i(10809);
+    if ((bo.isNullOrNil(paramString)) || (parama == null))
+    {
+      AppMethodBeat.o(10809);
       return false;
     }
-    Object localObject = (List)dGN.get(paramString);
+    Object localObject = (List)eEq.get(paramString);
     if (localObject == null)
     {
       localObject = new LinkedList();
-      dGN.put(paramString, localObject);
+      eEq.put(paramString, localObject);
       paramString = (String)localObject;
     }
     do
     {
-      return paramString.add(parama);
+      boolean bool = paramString.add(parama);
+      AppMethodBeat.o(10809);
+      return bool;
       paramString = (String)localObject;
     } while (!((List)localObject).contains(parama));
+    AppMethodBeat.o(10809);
     return true;
   }
   
   public static boolean d(String paramString, l.a parama)
   {
-    if ((bk.bl(paramString)) || (parama == null)) {
+    AppMethodBeat.i(10810);
+    if ((bo.isNullOrNil(paramString)) || (parama == null))
+    {
+      AppMethodBeat.o(10810);
       return false;
     }
-    List localList = (List)dGN.get(paramString);
-    if (localList == null) {
+    List localList = (List)eEq.get(paramString);
+    if (localList == null)
+    {
+      AppMethodBeat.o(10810);
       return false;
     }
     boolean bool = localList.remove(parama);
     if (localList.isEmpty()) {
-      dGN.remove(paramString);
+      eEq.remove(paramString);
     }
+    AppMethodBeat.o(10810);
     return bool;
-  }
-  
-  public static DebuggerInfo te(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
-    }
-    return (DebuggerInfo)fUZ.get(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.debugger.b
  * JD-Core Version:    0.7.0.1
  */

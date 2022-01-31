@@ -3,8 +3,8 @@ package com.tencent.ttpic.filter;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.m.g;
 import com.tencent.filter.m.i;
-import com.tencent.ttpic.model.VideoMaterial.FaceImageLayer;
-import java.util.Arrays;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.model.FaceImageLayer;
 import java.util.List;
 
 public class FaceSkinBalanceFilter
@@ -13,27 +13,39 @@ public class FaceSkinBalanceFilter
   private static final String FRAGMENT_SHADER = " precision mediump float;\n varying lowp vec2 textureCoordinate;\n uniform sampler2D inputImageTexture;\n \n uniform vec3 diffRGB;\n uniform vec3 userRGB;\n uniform int shouldBalance;\n\n \n void main()\n {\n     vec4 color = texture2D(inputImageTexture, textureCoordinate);\n     if (shouldBalance == 1) {\n         float ry;\n         float ri;\n         float rq;\n         if (color.r <= userRGB.r) {\n             ry = color.r + diffRGB.r * (color.r / userRGB.r);\n         } else {\n             ry = color.r + diffRGB.r * ((1.0 - color.r) / (1.0 - userRGB.r));\n         }\n         if (color.g <= userRGB.g) {\n             ri = color.g + diffRGB.g * (color.g / userRGB.g);\n         } else {\n             ri = color.g + diffRGB.g * ((1.0 - color.g) / (1.0 - userRGB.g));\n         }\n         if (color.b <= userRGB.b) {\n             rq = color.b + diffRGB.b * (color.b / userRGB.b);\n         } else {\n             rq = color.b + diffRGB.b * ((1.0 - color.b) / (1.0 - userRGB.b));\n         }\n         vec3 refineRGB = vec3(ry, ri, rq);\n         gl_FragColor = vec4(clamp(refineRGB, 0.0, 1.0), 1.0);\n     }\n     else {\n         gl_FragColor = color;\n     }\n }";
   private static int count = 0;
   private static int total = 0;
-  private byte[] data = null;
-  private float modelU = -1.0F;
-  private float modelU2 = -1.0F;
-  private float modelV = -1.0F;
-  private float modelV2 = -1.0F;
-  private float modelY = -1.0F;
-  private float modelY2 = -1.0F;
-  private int shouldBalance = 1;
+  private byte[] data;
+  private float modelU;
+  private float modelU2;
+  private float modelV;
+  private float modelV2;
+  private float modelY;
+  private float modelY2;
+  private int shouldBalance;
   
-  public FaceSkinBalanceFilter(VideoMaterial.FaceImageLayer paramFaceImageLayer)
+  public FaceSkinBalanceFilter(FaceImageLayer paramFaceImageLayer)
   {
     super(" precision mediump float;\n varying lowp vec2 textureCoordinate;\n uniform sampler2D inputImageTexture;\n \n uniform vec3 diffRGB;\n uniform vec3 userRGB;\n uniform int shouldBalance;\n\n \n void main()\n {\n     vec4 color = texture2D(inputImageTexture, textureCoordinate);\n     if (shouldBalance == 1) {\n         float ry;\n         float ri;\n         float rq;\n         if (color.r <= userRGB.r) {\n             ry = color.r + diffRGB.r * (color.r / userRGB.r);\n         } else {\n             ry = color.r + diffRGB.r * ((1.0 - color.r) / (1.0 - userRGB.r));\n         }\n         if (color.g <= userRGB.g) {\n             ri = color.g + diffRGB.g * (color.g / userRGB.g);\n         } else {\n             ri = color.g + diffRGB.g * ((1.0 - color.g) / (1.0 - userRGB.g));\n         }\n         if (color.b <= userRGB.b) {\n             rq = color.b + diffRGB.b * (color.b / userRGB.b);\n         } else {\n             rq = color.b + diffRGB.b * ((1.0 - color.b) / (1.0 - userRGB.b));\n         }\n         vec3 refineRGB = vec3(ry, ri, rq);\n         gl_FragColor = vec4(clamp(refineRGB, 0.0, 1.0), 1.0);\n     }\n     else {\n         gl_FragColor = color;\n     }\n }");
+    AppMethodBeat.i(82443);
+    this.modelY = -1.0F;
+    this.modelU = -1.0F;
+    this.modelV = -1.0F;
+    this.modelY2 = -1.0F;
+    this.modelU2 = -1.0F;
+    this.modelV2 = -1.0F;
+    this.shouldBalance = 1;
+    this.data = null;
     setModelColor(paramFaceImageLayer.imageFaceColor);
     initParam();
+    AppMethodBeat.o(82443);
   }
   
   private void initParam()
   {
+    AppMethodBeat.i(82445);
     addParam(new m.i("shouldBalance", this.shouldBalance));
     addParam(new m.g("diffRGB", new float[] { 0.0F, 0.0F, 0.0F }));
     addParam(new m.g("userRGB", new float[] { this.modelY, this.modelU, this.modelV }));
+    AppMethodBeat.o(82445);
   }
   
   private boolean isSkinColor(int paramInt1, int paramInt2, int paramInt3)
@@ -58,7 +70,10 @@ public class FaceSkinBalanceFilter
   
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((total == 0) || (this.data == null)) {
+    AppMethodBeat.i(82446);
+    if ((total == 0) || (this.data == null))
+    {
+      AppMethodBeat.o(82446);
       return;
     }
     total = 0;
@@ -121,7 +136,7 @@ public class FaceSkinBalanceFilter
       f2 = (float)d4;
       f1 = (float)d7;
       if (d3 <= 0.0D) {
-        break label528;
+        break label543;
       }
       f3 = (float)d3;
       f2 = (float)d2;
@@ -130,7 +145,7 @@ public class FaceSkinBalanceFilter
       f5 = this.modelU2;
       f4 = this.modelV2;
     }
-    label528:
+    label543:
     for (;;)
     {
       float f9 = f4;
@@ -157,6 +172,7 @@ public class FaceSkinBalanceFilter
       addParam(new m.g("diffRGB", new float[] { f7 - f3, f8 - f2, f9 - f1 }));
       addParam(new m.g("userRGB", new float[] { f3, f2, f1 }));
       addParam(new m.i("shouldBalance", this.shouldBalance));
+      AppMethodBeat.o(82446);
       return;
       d5 /= paramInt2;
       d2 = d3 / paramInt2;
@@ -175,15 +191,17 @@ public class FaceSkinBalanceFilter
       return;
     }
     count = 0;
-    this.data = Arrays.copyOf(paramArrayOfByte, paramArrayOfByte.length);
+    this.data = paramArrayOfByte;
     total = 1;
   }
   
   public void setModelColor(List<Double> paramList)
   {
+    AppMethodBeat.i(82444);
     if ((paramList == null) || (paramList.size() < 6))
     {
       this.shouldBalance = 0;
+      AppMethodBeat.o(82444);
       return;
     }
     this.modelY = ((Double)paramList.get(0)).floatValue();
@@ -192,11 +210,12 @@ public class FaceSkinBalanceFilter
     this.modelY2 = ((Double)paramList.get(3)).floatValue();
     this.modelU2 = ((Double)paramList.get(4)).floatValue();
     this.modelV2 = ((Double)paramList.get(5)).floatValue();
+    AppMethodBeat.o(82444);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceSkinBalanceFilter
  * JD-Core Version:    0.7.0.1
  */

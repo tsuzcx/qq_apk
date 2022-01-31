@@ -2,9 +2,7 @@ package android.support.v7.app;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.res.Configuration;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v7.view.b;
 import android.support.v7.view.b.a;
@@ -12,46 +10,28 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
 
 public abstract class d
 {
-  static int OF = -1;
-  private static boolean OG = false;
+  static int Ot = -1;
   
   public static d a(Activity paramActivity, c paramc)
   {
-    return a(paramActivity, paramActivity.getWindow(), paramc);
+    return new AppCompatDelegateImpl(paramActivity, paramActivity.getWindow(), paramc);
   }
   
   public static d a(Dialog paramDialog, c paramc)
   {
-    return a(paramDialog.getContext(), paramDialog.getWindow(), paramc);
-  }
-  
-  private static d a(Context paramContext, Window paramWindow, c paramc)
-  {
-    if (Build.VERSION.SDK_INT >= 24) {
-      return new f(paramContext, paramWindow, paramc);
-    }
-    if (Build.VERSION.SDK_INT >= 23) {
-      return new h(paramContext, paramWindow, paramc);
-    }
-    return new g(paramContext, paramWindow, paramc);
-  }
-  
-  public static boolean ei()
-  {
-    return OG;
+    return new AppCompatDelegateImpl(paramDialog.getContext(), paramDialog.getWindow(), paramc);
   }
   
   public abstract void addContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams);
   
-  public abstract void ef();
+  public abstract void eB();
   
-  public abstract void eg();
+  public abstract void eC();
   
-  public abstract boolean eh();
+  public abstract boolean eD();
   
   public abstract <T extends View> T findViewById(int paramInt);
   

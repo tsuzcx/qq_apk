@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.talkroom.model;
 
-import com.tencent.mm.bf.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bg.d;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,13 +12,15 @@ final class i$8
   
   public final void run()
   {
-    synchronized (this.pBA.dhm)
+    AppMethodBeat.i(25854);
+    synchronized (this.tdk.callbacks)
     {
-      Iterator localIterator = this.pBA.dhm.iterator();
+      Iterator localIterator = this.tdk.callbacks.iterator();
       if (localIterator.hasNext()) {
-        ((d)localIterator.next()).ny(this.byr);
+        ((d)localIterator.next()).uM(this.cat);
       }
     }
+    AppMethodBeat.o(25854);
   }
 }
 

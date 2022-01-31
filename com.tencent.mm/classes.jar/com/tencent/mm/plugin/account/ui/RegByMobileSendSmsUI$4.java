@@ -1,30 +1,33 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.modelsimple.s;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.model.av;
+import com.tencent.mm.modelsimple.u;
+import com.tencent.mm.pluginsdk.n;
 
 final class RegByMobileSendSmsUI$4
   implements Runnable
 {
-  RegByMobileSendSmsUI$4(RegByMobileSendSmsUI paramRegByMobileSendSmsUI, s params, String paramString) {}
+  RegByMobileSendSmsUI$4(RegByMobileSendSmsUI paramRegByMobileSendSmsUI, u paramu, String paramString) {}
   
   public final void run()
   {
-    RegByMobileSendSmsUI.a(this.fqR, this.fqS.QI());
-    at.dVC.Y("login_user_name", this.fpg);
-    com.tencent.mm.vfs.e.deleteFile(com.tencent.mm.compatible.util.e.dzK + "temp.avatar");
-    Object localObject = com.tencent.mm.plugin.account.a.a.eUR.aN(this.fqR);
+    AppMethodBeat.i(125401);
+    RegByMobileSendSmsUI.a(this.gIu, this.gIv.ajQ());
+    av.flM.ao("login_user_name", this.gGC);
+    com.tencent.mm.vfs.e.deleteFile(com.tencent.mm.compatible.util.e.esy + "temp.avatar");
+    Object localObject = com.tencent.mm.plugin.account.a.a.gmO.bm(this.gIu);
     ((Intent)localObject).addFlags(67108864);
-    this.fqR.startActivity((Intent)localObject);
+    this.gIu.startActivity((Intent)localObject);
     localObject = new StringBuilder();
-    g.DN();
-    localObject = ((StringBuilder)localObject).append(com.tencent.mm.kernel.a.Df()).append(",").append(getClass().getName()).append(",R200_600,");
-    g.DN();
-    com.tencent.mm.plugin.b.a.qk(com.tencent.mm.kernel.a.gd("R200_600") + ",4");
-    this.fqR.finish();
+    g.RJ();
+    localObject = ((StringBuilder)localObject).append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",R200_600,");
+    g.RJ();
+    com.tencent.mm.plugin.b.a.xE(com.tencent.mm.kernel.a.mx("R200_600") + ",4");
+    this.gIu.finish();
+    AppMethodBeat.o(125401);
   }
 }
 

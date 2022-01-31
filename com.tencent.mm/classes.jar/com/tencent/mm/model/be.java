@@ -1,318 +1,326 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.am.a;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.a.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.z;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class be
+public class be
 {
-  private static final Queue<Integer> dWP = new ConcurrentLinkedQueue();
-  private static final long[] dWQ = { 0L, 2000L, 5000L, 10000L, 30000L, 60000L, 180000L, 300000L, 600000L, 1800000L, 3600000L };
-  private static final int[] dWR = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-  private static final int[] dWS = { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 };
+  private static be fmr;
+  public be.b fmq;
   
-  public static void a(String paramString, long paramLong1, long paramLong2, int paramInt)
+  public static be aaG()
   {
-    if (paramString == null) {}
-    boolean bool;
-    label165:
-    long l3;
-    label255:
-    do
+    AppMethodBeat.i(16330);
+    try
     {
-      do
+      if (fmr == null) {
+        fmr = new be();
+      }
+      be localbe = fmr;
+      AppMethodBeat.o(16330);
+      return localbe;
+    }
+    finally
+    {
+      AppMethodBeat.o(16330);
+    }
+  }
+  
+  public static bd aaH()
+  {
+    AppMethodBeat.i(16332);
+    aw.aaz();
+    Object localObject = c.mC("banner");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(16332);
+      return null;
+    }
+    int i = ((SharedPreferences)localObject).getInt("CurrentType", -1);
+    int j = ((SharedPreferences)localObject).getInt("CurrentShowType", -1);
+    localObject = ((SharedPreferences)localObject).getString("CurrentData", "");
+    if (i != -1)
+    {
+      switch (i)
       {
+      case 4: 
+      case 6: 
+      case 7: 
+      case 8: 
+      case 9: 
+      case 10: 
+      default: 
+      case 1: 
+      case 3: 
+      case 2: 
         do
         {
+          be.a locala;
           do
           {
-            do
-            {
-              long l1;
-              for (;;)
-              {
-                return;
-                try
-                {
-                  Object localObject = q.Gj();
-                  if ((localObject == null) || (!((String)localObject).equals(paramString)))
-                  {
-                    localObject = ((j)g.r(j.class)).Fw().abl(paramString);
-                    if (paramString.endsWith("@chatroom"))
-                    {
-                      if (((ao)localObject).cCy != 0) {
-                        y.i("MicroMsg.MsgReporter", "[oneliang]it is a normal chatroom? username:%s", new Object[] { paramString });
-                      }
-                    }
-                    else
-                    {
-                      do
-                      {
-                        l1 = bz.Is();
-                        if (l1 > 0L) {
-                          break label165;
-                        }
-                        y.i("MicroMsg.MsgReporter", "[oneliang]current server time is 0l,then return");
-                        return;
-                        if ((s.hR(paramString)) || (ad.aaR(paramString)) || (ad.aaT(paramString)) || (s.hN(paramString)) || (ad.hd(paramString))) {
-                          break;
-                        }
-                        bool = ((ad)localObject).cua();
-                      } while (!bool);
-                      return;
-                    }
-                  }
-                }
-                catch (Exception paramString)
-                {
-                  y.e("MicroMsg.MsgReporter", "[oneliang]something about contact has exception:%s", new Object[] { paramString.getMessage() });
-                  return;
-                }
-              }
-              long l2 = System.currentTimeMillis();
-              l3 = l1 - paramLong2;
-              y.i("MicroMsg.MsgReporter", "[oneliang]current server time:%s, msg server time:%s, intervalTime:%s, username:%s, msg server id:%s,msg type:%s", new Object[] { Long.valueOf(l1), Long.valueOf(paramLong2), Long.valueOf(l3), paramString, Long.valueOf(paramLong1), Integer.valueOf(paramInt) });
-              bool = a.bT(paramLong2);
-              int i;
-              if (bool)
-              {
-                f.nEG.a(780L, 100L, 1L, false);
-                i = dWQ.length - 1;
-              }
-              for (;;)
-              {
-                if (i >= 0)
-                {
-                  if (l3 < dWQ[i]) {
-                    break label444;
-                  }
-                  if (!bool) {
-                    break label423;
-                  }
-                  f.nEG.a(780L, dWR[i], 1L, false);
-                }
-                for (;;)
-                {
-                  if (l3 >= 2000L) {
-                    a.a(l1, l2, paramLong2, l3, paramLong1);
-                  }
-                  switch (paramInt)
-                  {
-                  default: 
-                    return;
-                  case 1: 
-                    if (l3 < 60000L) {
-                      break label468;
-                    }
-                    if (!bool) {
-                      break label453;
-                    }
-                    f.nEG.a(780L, 113L, 1L, false);
-                    return;
-                    f.nEG.a(780L, 101L, 1L, false);
-                    break label255;
-                    f.nEG.a(780L, dWS[i], 1L, false);
-                  }
-                }
-                i -= 1;
-              }
-              f.nEG.a(780L, 118L, 1L, false);
-              return;
-              if (l3 >= 30000L)
-              {
-                if (bool)
-                {
-                  f.nEG.a(780L, 112L, 1L, false);
-                  return;
-                }
-                f.nEG.a(780L, 117L, 1L, false);
-                return;
-              }
-              if (l3 >= 10000L)
-              {
-                if (bool)
-                {
-                  f.nEG.a(780L, 111L, 1L, false);
-                  return;
-                }
-                f.nEG.a(780L, 116L, 1L, false);
-                return;
-              }
-            } while (l3 < 0L);
-            if (bool)
-            {
-              f.nEG.a(780L, 110L, 1L, false);
-              return;
-            }
-            f.nEG.a(780L, 115L, 1L, false);
-            return;
-            if (l3 >= 60000L)
-            {
-              if (bool)
-              {
-                f.nEG.a(780L, 123L, 1L, false);
-                return;
-              }
-              f.nEG.a(780L, 128L, 1L, false);
-              return;
-            }
-            if (l3 >= 30000L)
-            {
-              if (bool)
-              {
-                f.nEG.a(780L, 122L, 1L, false);
-                return;
-              }
-              f.nEG.a(780L, 127L, 1L, false);
-              return;
-            }
-            if (l3 >= 10000L)
-            {
-              if (bool)
-              {
-                f.nEG.a(780L, 121L, 1L, false);
-                return;
-              }
-              f.nEG.a(780L, 126L, 1L, false);
-              return;
-            }
-          } while (l3 < 0L);
-          if (bool)
-          {
-            f.nEG.a(780L, 120L, 1L, false);
-            return;
+            localObject = new bd(i, j, (String)localObject);
+            AppMethodBeat.o(16332);
+            return localObject;
+            locala = aaJ();
+          } while ((locala != be.a.fmu) && (locala != be.a.fmv) && (!g.abw().abu()));
+          if (g.abw().abu()) {
+            ab.i("MicorMsg.MainFrameBannerStorage", "has abtest case. ignore bind bind contacts banner.");
           }
-          f.nEG.a(780L, 125L, 1L, false);
-          return;
-          if (l3 >= 60000L)
+          for (;;)
           {
-            if (bool)
-            {
-              f.nEG.a(780L, 133L, 1L, false);
-              return;
-            }
-            f.nEG.a(780L, 138L, 1L, false);
-            return;
+            AppMethodBeat.o(16332);
+            return null;
+            ab.i("MicorMsg.MainFrameBannerStorage", "already Bind the Mobile");
           }
-          if (l3 >= 30000L)
-          {
-            if (bool)
-            {
-              f.nEG.a(780L, 132L, 1L, false);
-              return;
-            }
-            f.nEG.a(780L, 137L, 1L, false);
-            return;
-          }
-          if (l3 >= 10000L)
-          {
-            if (bool)
-            {
-              f.nEG.a(780L, 131L, 1L, false);
-              return;
-            }
-            f.nEG.a(780L, 136L, 1L, false);
-            return;
-          }
-        } while (l3 < 0L);
-        if (bool)
-        {
-          f.nEG.a(780L, 130L, 1L, false);
-          return;
+          ab.i("MicorMsg.MainFrameBannerStorage", "avatar already existed");
+          AppMethodBeat.o(16332);
+          return null;
+        } while ((aaJ() != be.a.fmu) && (!g.abw().abu()));
+        if (g.abw().abu()) {
+          ab.i("MicorMsg.MainFrameBannerStorage", "has abtest case. ignore bind upload contacts banner.");
         }
-        f.nEG.a(780L, 135L, 1L, false);
-        return;
-        if (l3 >= 60000L)
+        for (;;)
         {
-          if (bool)
-          {
-            f.nEG.a(780L, 143L, 1L, false);
-            return;
-          }
-          f.nEG.a(780L, 148L, 1L, false);
-          return;
+          AppMethodBeat.o(16332);
+          return null;
+          ab.i("MicorMsg.MainFrameBannerStorage", "already upload the contacts");
         }
-        if (l3 >= 30000L)
-        {
-          if (bool)
-          {
-            f.nEG.a(780L, 142L, 1L, false);
-            return;
-          }
-          f.nEG.a(780L, 147L, 1L, false);
-          return;
-        }
-        if (l3 >= 10000L)
-        {
-          if (bool)
-          {
-            f.nEG.a(780L, 141L, 1L, false);
-            return;
-          }
-          f.nEG.a(780L, 146L, 1L, false);
-          return;
-        }
-      } while (l3 < 0L);
-      if (bool)
-      {
-        f.nEG.a(780L, 140L, 1L, false);
-        return;
+      case 10000: 
+      case 57005: 
+        AppMethodBeat.o(16332);
+        return null;
       }
-      f.nEG.a(780L, 145L, 1L, false);
-      return;
-      if (l3 >= 60000L)
-      {
-        if (bool)
-        {
-          f.nEG.a(780L, 153L, 1L, false);
-          return;
-        }
-        f.nEG.a(780L, 158L, 1L, false);
-        return;
-      }
-      if (l3 >= 30000L)
-      {
-        if (bool)
-        {
-          f.nEG.a(780L, 152L, 1L, false);
-          return;
-        }
-        f.nEG.a(780L, 157L, 1L, false);
-        return;
-      }
-      if (l3 >= 10000L)
-      {
-        if (bool)
-        {
-          f.nEG.a(780L, 151L, 1L, false);
-          return;
-        }
-        f.nEG.a(780L, 156L, 1L, false);
-        return;
-      }
-    } while (l3 < 0L);
-    label423:
-    label444:
-    label453:
-    label468:
-    if (bool)
+      AppMethodBeat.o(16332);
+      return null;
+    }
+    AppMethodBeat.o(16332);
+    return null;
+  }
+  
+  private static boolean aaI()
+  {
+    AppMethodBeat.i(16334);
+    aw.aaz();
+    SharedPreferences localSharedPreferences = c.mC("banner");
+    if ((localSharedPreferences != null) && (localSharedPreferences.edit().clear().commit()))
     {
-      f.nEG.a(780L, 150L, 1L, false);
+      AppMethodBeat.o(16334);
+      return true;
+    }
+    AppMethodBeat.o(16334);
+    return false;
+  }
+  
+  public static be.a aaJ()
+  {
+    AppMethodBeat.i(16338);
+    for (;;)
+    {
+      try
+      {
+        aw.aaz();
+        localObject2 = (String)c.Ru().get(4097, "");
+        aw.aaz();
+        String str = (String)c.Ru().get(6, "");
+        boolean bool = r.ZR();
+        ab.d("MicorMsg.MainFrameBannerStorage", "isUpload " + bool + " stat " + r.Zr());
+        if (localObject2 != null)
+        {
+          Object localObject1 = localObject2;
+          if (((String)localObject2).length() > 0)
+          {
+            if (str == null) {
+              break label197;
+            }
+            localObject2 = str;
+            if (str.length() <= 0) {
+              break label197;
+            }
+            if ((localObject1 == null) && (localObject2 == null))
+            {
+              localObject1 = be.a.fms;
+              AppMethodBeat.o(16338);
+              return localObject1;
+            }
+            if ((localObject1 != null) && (localObject2 == null))
+            {
+              localObject1 = be.a.fmt;
+              AppMethodBeat.o(16338);
+              return localObject1;
+            }
+            if (bool)
+            {
+              localObject1 = be.a.fmu;
+              AppMethodBeat.o(16338);
+              return localObject1;
+            }
+            localObject1 = be.a.fmv;
+            AppMethodBeat.o(16338);
+            return localObject1;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        locala = be.a.fms;
+        AppMethodBeat.o(16338);
+        return locala;
+      }
+      be.a locala = null;
+      continue;
+      label197:
+      Object localObject2 = null;
+    }
+  }
+  
+  private static boolean b(bd parambd)
+  {
+    AppMethodBeat.i(16335);
+    boolean bool = pp("HistoryInfo").contains(Integer.valueOf(parambd.type));
+    AppMethodBeat.o(16335);
+    return bool;
+  }
+  
+  private static boolean g(String paramString, List<Integer> paramList)
+  {
+    AppMethodBeat.i(16336);
+    aw.aaz();
+    Object localObject = c.mC("banner");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(16336);
+      return false;
+    }
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putInt(paramString + "ArraySize", paramList.size());
+    int i = 0;
+    while (i < paramList.size())
+    {
+      ((SharedPreferences.Editor)localObject).putInt(paramString + i, ((Integer)paramList.get(i)).intValue());
+      i += 1;
+    }
+    boolean bool = ((SharedPreferences.Editor)localObject).commit();
+    AppMethodBeat.o(16336);
+    return bool;
+  }
+  
+  private static List<Integer> pp(String paramString)
+  {
+    AppMethodBeat.i(16337);
+    aw.aaz();
+    SharedPreferences localSharedPreferences = c.mC("banner");
+    if (localSharedPreferences == null)
+    {
+      AppMethodBeat.o(16337);
+      return null;
+    }
+    int j = localSharedPreferences.getInt(paramString + "ArraySize", 0);
+    ArrayList localArrayList = new ArrayList(j);
+    int i = 0;
+    while (i < j)
+    {
+      localArrayList.add(Integer.valueOf(localSharedPreferences.getInt(paramString + i, 0)));
+      i += 1;
+    }
+    AppMethodBeat.o(16337);
+    return localArrayList;
+  }
+  
+  public final boolean a(bd parambd)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(16331);
+    if (parambd.type == 10000)
+    {
+      aaI();
+      if (this.fmq != null) {
+        this.fmq.aaK();
+      }
+      AppMethodBeat.o(16331);
+      return true;
+    }
+    if (parambd.type == 57005)
+    {
+      AppMethodBeat.o(16331);
+      return false;
+    }
+    aw.aaz();
+    Object localObject = c.mC("banner");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(16331);
+      return false;
+    }
+    localObject = ((SharedPreferences)localObject).edit();
+    bd localbd = aaH();
+    if (!b(parambd)) {}
+    for (;;)
+    {
+      if ((localbd != null) && (localbd.showType == 2))
+      {
+        List localList = pp("HistoryInfo");
+        if (!localList.contains(Integer.valueOf(localbd.type))) {
+          localList.add(Integer.valueOf(localbd.type));
+        }
+        g("HistoryInfo", localList);
+      }
+      if (bool) {
+        ((SharedPreferences.Editor)localObject).putInt("CurrentType", parambd.type).putInt("CurrentShowType", parambd.showType).putString("CurrentData", parambd.data).commit();
+      }
+      if (this.fmq != null) {
+        this.fmq.aaK();
+      }
+      AppMethodBeat.o(16331);
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public final void cs(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(16333);
+    aw.aaz();
+    Object localObject = c.mC("banner");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(16333);
       return;
     }
-    f.nEG.a(780L, 155L, 1L, false);
+    localObject = ((SharedPreferences)localObject).edit();
+    switch (paramInt2)
+    {
+    }
+    for (;;)
+    {
+      if (this.fmq != null) {
+        this.fmq.aaK();
+      }
+      AppMethodBeat.o(16333);
+      return;
+      ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
+      continue;
+      ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
+      localObject = pp("HistoryInfo");
+      if (!((List)localObject).contains(Integer.valueOf(paramInt1))) {
+        ((List)localObject).add(Integer.valueOf(paramInt1));
+      }
+      g("HistoryInfo", (List)localObject);
+      continue;
+      if (paramInt1 == 3) {
+        ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.model.be
  * JD-Core Version:    0.7.0.1
  */

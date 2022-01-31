@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
 public abstract interface f$a
 {
-  public abstract void eu(boolean paramBoolean);
+  public abstract void fM(boolean paramBoolean);
   
-  public abstract void oA(int paramInt);
+  public abstract void sh(int paramInt);
 }
 
 

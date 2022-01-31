@@ -1,34 +1,50 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.e;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.a.b;
-import com.tencent.mm.sdk.e.f;
+import com.tencent.mm.plugin.appbrand.a.c;
+import com.tencent.mm.sdk.e.g;
 import java.util.List;
 
-@e(b.class)
+@e(c.class)
 public abstract interface af
-  extends a, f
+  extends a, g
 {
-  public abstract List<LocalUsageInfo> a(int paramInt, af.a parama);
+  public abstract List<LocalUsageInfo> a(int paramInt, a parama);
   
-  public abstract void acK();
+  public abstract boolean aC(String paramString, int paramInt);
   
-  public abstract int acL();
+  public abstract int aD(String paramString, int paramInt);
   
-  public abstract boolean ap(String paramString, int paramInt);
+  public abstract boolean aE(String paramString, int paramInt);
   
-  public abstract int aq(String paramString, int paramInt);
+  public abstract void awQ();
   
-  public abstract boolean ar(String paramString, int paramInt);
+  public abstract int awR();
   
-  public abstract boolean d(List<LocalUsageInfo> paramList, int paramInt);
+  public abstract boolean g(List<LocalUsageInfo> paramList, int paramInt);
   
   public abstract int getCount();
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(114907);
+      hcJ = new a("DESC", 0);
+      hcK = new a("ASC", 1);
+      hcL = new a("UPATE_TIME_DESC", 2);
+      hcM = new a[] { hcJ, hcK, hcL };
+      AppMethodBeat.o(114907);
+    }
+    
+    private a() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.af
  * JD-Core Version:    0.7.0.1
  */

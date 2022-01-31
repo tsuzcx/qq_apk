@@ -1,49 +1,63 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.d;
 
-import android.database.Cursor;
-import android.util.Pair;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.s;
+import com.tencent.mm.plugin.appbrand.r.b.a;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-public class b
-  extends i<a>
+public final class b
+  extends s
+  implements com.tencent.mm.plugin.appbrand.r.b
 {
-  public static final String[] dUb = { i.a(a.dUa, "PredownloadBlockCgiRequest") };
-  private final e fCV;
+  static final c.a fkk;
+  static final String[] gUa;
   
-  public b(e parame)
+  static
   {
-    super(parame, a.dUa, "PredownloadBlockCgiRequest", a.cqY);
-    this.fCV = parame;
+    AppMethodBeat.i(129503);
+    gUa = new String[] { "appId", "version" };
+    Object localObject1 = new c.a();
+    ((c.a)localObject1).yrK = new Field[5];
+    ((c.a)localObject1).columns = new String[6];
+    Object localObject2 = new StringBuilder();
+    ((c.a)localObject1).columns[0] = "appId";
+    ((c.a)localObject1).yrM.put("appId", "TEXT");
+    ((StringBuilder)localObject2).append(" appId TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[1] = "version";
+    ((c.a)localObject1).yrM.put("version", "INTEGER");
+    ((StringBuilder)localObject2).append(" version INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[2] = "source";
+    ((c.a)localObject1).yrM.put("source", "INTEGER default '0' ");
+    ((StringBuilder)localObject2).append(" source INTEGER default '0' ");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[3] = "hitCount";
+    ((c.a)localObject1).yrM.put("hitCount", "INTEGER default '0' ");
+    ((StringBuilder)localObject2).append(" hitCount INTEGER default '0' ");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[4] = "reportId";
+    ((c.a)localObject1).yrM.put("reportId", "INTEGER default '0' ");
+    ((StringBuilder)localObject2).append(" reportId INTEGER default '0' ");
+    ((c.a)localObject1).columns[5] = "rowid";
+    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
+    fkk = (c.a)localObject1;
+    localObject1 = new StringBuilder();
+    localObject2 = fkk;
+    ((c.a)localObject2).sql += b.a.l(gUa);
+    AppMethodBeat.o(129503);
   }
   
-  private Pair<Boolean, Integer> c(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public final c.a getDBInfo()
   {
-    int i = -1;
-    long l = bk.UX();
-    paramString1 = "select reportId from PredownloadBlockCgiRequest where " + paramString1 + "=? and startTime<" + l + " and " + l + "<endTime and cgiList like '%;" + paramInt1 + ";%' and sceneList like '%;" + paramInt2 + ";%'";
-    paramString1 = this.fCV.rawQuery(paramString1, new String[] { paramString2 });
-    if ((paramString1 == null) || (paramString1.isClosed())) {
-      return Pair.create(Boolean.valueOf(false), Integer.valueOf(-1));
-    }
-    boolean bool = paramString1.moveToFirst();
-    paramInt1 = i;
-    if (bool) {
-      paramInt1 = paramString1.getInt(0);
-    }
-    paramString1.close();
-    return Pair.create(Boolean.valueOf(bool), Integer.valueOf(paramInt1));
+    return fkk;
   }
   
-  public final Pair<Boolean, Integer> v(String paramString, int paramInt1, int paramInt2)
+  public final String[] getKeys()
   {
-    return c("username", paramString, paramInt1, paramInt2);
-  }
-  
-  public final Pair<Boolean, Integer> w(String paramString, int paramInt1, int paramInt2)
-  {
-    return c("appId", paramString, paramInt1, paramInt2);
+    return gUa;
   }
 }
 

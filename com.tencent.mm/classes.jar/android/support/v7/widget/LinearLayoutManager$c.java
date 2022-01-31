@@ -5,59 +5,35 @@ import java.util.List;
 
 final class LinearLayoutManager$c
 {
-  int El;
-  boolean adC = true;
-  int adD;
-  int adE;
-  int adF;
-  boolean adJ;
-  int aer;
-  int aes = 0;
-  boolean aet = false;
-  int aeu;
-  List<RecyclerView.v> aev = null;
-  int kO;
+  int Fb;
+  boolean afR = true;
+  int afS;
+  int afT;
+  int afU;
+  boolean afY;
+  int agE;
+  int agF = 0;
+  boolean agG = false;
+  int agH;
+  List<RecyclerView.v> agI = null;
+  int mLayoutDirection;
   
-  final View a(RecyclerView.o paramo)
+  private View bg(View paramView)
   {
-    if (this.aev != null)
-    {
-      int j = this.aev.size();
-      int i = 0;
-      while (i < j)
-      {
-        paramo = ((RecyclerView.v)this.aev.get(i)).aie;
-        RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramo.getLayoutParams();
-        if ((!localLayoutParams.ahi.isRemoved()) && (this.adE == localLayoutParams.ahi.ic()))
-        {
-          aW(paramo);
-          return paramo;
-        }
-        i += 1;
-      }
-      return null;
-    }
-    paramo = paramo.bV(this.adE);
-    this.adE += this.adF;
-    return paramo;
-  }
-  
-  public final void aW(View paramView)
-  {
-    int m = this.aev.size();
+    int m = this.agI.size();
     Object localObject = null;
     int i = 2147483647;
     int j = 0;
     if (j < m)
     {
-      View localView = ((RecyclerView.v)this.aev.get(j)).aie;
+      View localView = ((RecyclerView.v)this.agI.get(j)).aku;
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)localView.getLayoutParams();
-      if ((localView == paramView) || (localLayoutParams.ahi.isRemoved())) {
-        break label154;
+      if ((localView == paramView) || (localLayoutParams.ajy.isRemoved())) {
+        break label127;
       }
-      int k = (localLayoutParams.ahi.ic() - this.adE) * this.adF;
+      int k = (localLayoutParams.ajy.jM() - this.afT) * this.afU;
       if ((k < 0) || (k >= i)) {
-        break label154;
+        break label127;
       }
       localObject = localView;
       if (k != 0)
@@ -66,24 +42,57 @@ final class LinearLayoutManager$c
         i = k;
       }
     }
-    label154:
+    label127:
     for (;;)
     {
       j += 1;
       break;
-      if (localObject == null)
-      {
-        this.adE = -1;
-        return;
-      }
-      this.adE = ((RecyclerView.LayoutParams)localObject.getLayoutParams()).ahi.ic();
-      return;
+      return localObject;
     }
+  }
+  
+  private View iy()
+  {
+    int j = this.agI.size();
+    int i = 0;
+    while (i < j)
+    {
+      View localView = ((RecyclerView.v)this.agI.get(i)).aku;
+      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)localView.getLayoutParams();
+      if ((!localLayoutParams.ajy.isRemoved()) && (this.afT == localLayoutParams.ajy.jM()))
+      {
+        bf(localView);
+        return localView;
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  final View a(RecyclerView.o paramo)
+  {
+    if (this.agI != null) {
+      return iy();
+    }
+    paramo = paramo.cc(this.afT);
+    this.afT += this.afU;
+    return paramo;
   }
   
   final boolean b(RecyclerView.s params)
   {
-    return (this.adE >= 0) && (this.adE < params.getItemCount());
+    return (this.afT >= 0) && (this.afT < params.getItemCount());
+  }
+  
+  public final void bf(View paramView)
+  {
+    paramView = bg(paramView);
+    if (paramView == null)
+    {
+      this.afT = -1;
+      return;
+    }
+    this.afT = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).ajy.jM();
   }
 }
 

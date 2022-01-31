@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/k5"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <AutoCompleteTextView android:textSize="@dimen/lj" android:layout_gravity="center|left" android:id="@id/d_q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="120.0dip" android:completionThreshold="1" android:dropDownSelector="@color/sz" android:dropDownWidth="fill_parent" android:dropDownHeight="wrap_content" android:dropDownHorizontalOffset="-20.0dip" android:dropDownVerticalOffset="-5.0dip" style="@style/lq" />
-</LinearLayout>
+<ScrollView android:configChanges="keyboardHidden|orientation" android:id="@id/dfj" android:background="#ffeeeef3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:windowSoftInputMode="stateHidden" style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:invoice="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="0.0dip">
+        <LinearLayout android:orientation="vertical" android:background="#ffeeeef3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0dip" android:textColor="#ff888888" android:gravity="center_vertical" android:id="@id/dfk" android:paddingLeft="24.0dip" android:paddingTop="8.0dip" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginRight="@dimen/dl" android:minWidth="50.0dip" android:text="@string/ci2" android:singleLine="true" android:layout_centerVertical="true" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:paddingLeft="16.0dip" android:paddingTop="60.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/dfl" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/cij" app:invoice_singleLine="false" style="@style/o2" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/dfm" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/cij" app:invoice_singleLine="false" style="@style/o2" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/dfn" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/cie" app:invoice_singleLine="false" style="@style/o2" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/dfo" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/chz" app:invoice_singleLine="false" style="@style/o2" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/dfp" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/ci_" style="@style/o2" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/dfq" android:layout_height="wrap_content" android:minHeight="36.0dip" app:invoice_tipmsg="@string/chs" app:invoice_singleLine="false" style="@style/o2" />
+            <com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView android:gravity="center_vertical" android:id="@id/dfr" android:minHeight="36.0dip" app:invoice_tipmsg="@string/chu" app:invoice_singleLine="false" style="@style/o2" />
+            <View android:id="@id/dfs" android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="12.0dip" />
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/dft" android:layout_width="180.0dip" android:layout_height="180.0dip" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#4d000000" android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/dfu" android:visibility="visible" android:text="@string/cib" android:layout_centerVertical="true" style="@style/o2" />
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>

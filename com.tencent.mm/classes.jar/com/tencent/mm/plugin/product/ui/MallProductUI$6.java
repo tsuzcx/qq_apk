@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.b.c;
 import com.tencent.mm.plugin.product.b.m;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.t;
 
 final class MallProductUI$6
   implements View.OnClickListener
@@ -18,14 +18,17 @@ final class MallProductUI$6
   
   public final void onClick(View paramView)
   {
-    paramView = MallProductUI.e(this.mVg);
-    if (paramView.mTL.bsa())
+    AppMethodBeat.i(44162);
+    paramView = MallProductUI.e(this.pxl);
+    if (paramView.pvR.cbg())
     {
-      paramView.fyk.startActivity(new Intent(paramView.fyk, MallProductSelectSkuUI.class));
-      h.nFQ.f(11008, new Object[] { paramView.mTL.brW(), paramView.mTL.mRP.mSq, Integer.valueOf(f.fzn), Integer.valueOf(1) });
+      paramView.gQx.startActivity(new Intent(paramView.gQx, MallProductSelectSkuUI.class));
+      h.qsU.e(11008, new Object[] { paramView.pvR.cbc(), paramView.pvR.ptU.puw, Integer.valueOf(f.mScene), Integer.valueOf(1) });
+      AppMethodBeat.o(44162);
       return;
     }
-    s.makeText(paramView.fyk, a.i.mall_product_data_loading, 1).show();
+    t.makeText(paramView.gQx, 2131301472, 1).show();
+    AppMethodBeat.o(44162);
   }
 }
 

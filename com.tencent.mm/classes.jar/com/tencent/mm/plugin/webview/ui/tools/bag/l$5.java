@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 import android.view.animation.Animation;
-import com.tencent.mm.ui.widget.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.c;
 
-final class l$5
-  extends b
+public final class l$5
+  extends c
 {
-  l$5(l paraml) {}
+  public l$5(l paraml) {}
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    l.e(this.rsA);
+    AppMethodBeat.i(8214);
+    l.e(this.viG);
+    AppMethodBeat.o(8214);
   }
 }
 

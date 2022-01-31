@@ -19,8 +19,8 @@ import java.util.List;
 
 public class RecoveryLogic
 {
-  public static Field wKH = null;
-  public static int wKI = 17;
+  public static Field Bii = null;
+  public static int Bij = 17;
   
   public static void a(Context paramContext, ArrayList<RecoveryHandleItem> paramArrayList, String paramString)
   {
@@ -34,52 +34,52 @@ public class RecoveryLogic
   
   public static boolean a(Context paramContext, CommonOptions paramCommonOptions, RecoveryContext paramRecoveryContext)
   {
-    if (paramCommonOptions.wKY == null)
+    if (paramCommonOptions.Bix == null)
     {
       RecoveryLog.i("Recovery.RecoveryLogic", "startRecoveryProcess not set handle service", new Object[0]);
       return false;
     }
-    RecoveryLog.i("Recovery.RecoveryLogic", "startHandleService %s", new Object[] { Util.ht(paramContext) });
+    RecoveryLog.i("Recovery.RecoveryLogic", "startHandleService %s", new Object[] { Util.iU(paramContext) });
     String str1;
-    if (Util.bl(paramCommonOptions.wKZ))
+    if (Util.isNullOrNil(paramCommonOptions.Biy))
     {
       str1 = RecoveryUploadService.class.getName();
-      if (!Util.bl(paramCommonOptions.wKY)) {
+      if (!Util.isNullOrNil(paramCommonOptions.Bix)) {
         break label185;
       }
     }
     label185:
-    for (String str2 = RecoveryHandleService.class.getName();; str2 = paramCommonOptions.wKY)
+    for (String str2 = RecoveryHandleService.class.getName();; str2 = paramCommonOptions.Bix)
     {
       RecoveryData localRecoveryData = new RecoveryData();
-      localRecoveryData.processName = Util.ht(paramContext);
-      localRecoveryData.dCX = paramCommonOptions.dCX;
-      localRecoveryData.wKU = paramCommonOptions.wKU;
-      localRecoveryData.wKV = paramRecoveryContext.wKG;
+      localRecoveryData.processName = Util.iU(paramContext);
+      localRecoveryData.eAx = paramCommonOptions.eAx;
+      localRecoveryData.Biu = paramCommonOptions.Biu;
+      localRecoveryData.Biv = paramRecoveryContext.Bih;
       localRecoveryData.clientVersion = paramCommonOptions.clientVersion;
       paramRecoveryContext = new Intent();
-      paramRecoveryContext.setClassName(paramContext, paramCommonOptions.wKY);
+      paramRecoveryContext.setClassName(paramContext, paramCommonOptions.Bix);
       paramRecoveryContext.putExtra("KeyReportUploadClassName", str1);
       paramRecoveryContext.putExtra("KeyReportHandleClassName", str2);
       paramRecoveryContext.putExtra("KeyRecoveryData", localRecoveryData);
       paramContext.startService(paramRecoveryContext);
       return true;
-      str1 = paramCommonOptions.wKZ;
+      str1 = paramCommonOptions.Biy;
       break;
     }
   }
   
-  public static int bI(Context paramContext, String paramString)
+  public static int bV(Context paramContext, String paramString)
   {
-    if (wKI != 17) {
-      return wKI;
+    if (Bij != 17) {
+      return Bij;
     }
-    wKI = 16;
-    if (wKH == null) {}
+    Bij = 16;
+    if (Bii == null) {}
     try
     {
-      wKH = ActivityManager.RunningAppProcessInfo.class.getDeclaredField("processState");
-      if (wKH != null) {
+      Bii = ActivityManager.RunningAppProcessInfo.class.getDeclaredField("processState");
+      if (Bii != null) {
         paramContext = (ActivityManager)paramContext.getSystemService("activity");
       }
       for (;;)
@@ -91,7 +91,7 @@ public class RecoveryLogic
           if ((paramContext == null) || (paramContext.isEmpty()))
           {
             RecoveryLog.i("Recovery.RecoveryLogic", "can not get running app process", new Object[0]);
-            return wKI;
+            return Bij;
           }
         }
         catch (Exception paramContext)
@@ -112,7 +112,7 @@ public class RecoveryLogic
           } while ((localRunningAppProcessInfo == null) || (localRunningAppProcessInfo.importance != 100) || (localRunningAppProcessInfo.importanceReasonCode != 0));
           try
           {
-            int i = wKH.getInt(localRunningAppProcessInfo);
+            int i = Bii.getInt(localRunningAppProcessInfo);
             localObject1 = Integer.valueOf(i);
           }
           catch (Exception localException1)
@@ -141,7 +141,7 @@ public class RecoveryLogic
           if (!paramString.equals(((ActivityManager.RunningAppProcessInfo)localObject1).processName)) {
             continue;
           }
-          wKI = 1;
+          Bij = 1;
         }
       }
     }

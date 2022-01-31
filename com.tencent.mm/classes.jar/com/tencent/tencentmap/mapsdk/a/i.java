@@ -1,27 +1,19 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import android.text.TextUtils;
+import android.content.Context;
 
 public class i
 {
-  private static Boolean a = Boolean.valueOf(false);
+  private static volatile Context a;
   
-  public static void a(String paramString)
+  public static Context a()
   {
-    a(null, paramString, 'e');
+    return a;
   }
   
-  public static void a(String paramString1, String paramString2)
+  public static void a(Context paramContext)
   {
-    a(paramString1, paramString2, 'v');
-  }
-  
-  private static void a(String paramString1, String paramString2, char paramChar)
-  {
-    if (!a.booleanValue()) {
-      return;
-    }
-    TextUtils.isEmpty(paramString1);
+    a = paramContext;
   }
 }
 

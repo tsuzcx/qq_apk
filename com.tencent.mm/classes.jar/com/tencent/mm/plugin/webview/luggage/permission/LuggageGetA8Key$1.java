@@ -1,13 +1,21 @@
 package com.tencent.mm.plugin.webview.luggage.permission;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+
 final class LuggageGetA8Key$1
   implements Runnable
 {
-  LuggageGetA8Key$1(LuggageGetA8Key paramLuggageGetA8Key, String paramString, int paramInt, LuggageGetA8Key.RunCgiTask paramRunCgiTask, LuggageGetA8Key.a parama) {}
+  LuggageGetA8Key$1(LuggageGetA8Key paramLuggageGetA8Key, String paramString, int paramInt, LuggageGetA8Key.a parama) {}
   
   public final void run()
   {
-    LuggageGetA8Key.a(this.reD, this.val$url, this.zQ, this.reB.errType, this.reB.errCode, this.reB.aox, this.reB.kMO, this.reC);
+    AppMethodBeat.i(6458);
+    ab.i("MicroMsg.LuggageGetA8Key", "callback: %s", new Object[] { this.val$url });
+    if (LuggageGetA8Key.a(this.uUH) != null) {
+      LuggageGetA8Key.a(this.uUH, this.val$url, this.uUF, LuggageGetA8Key.a(this.uUH).errType, LuggageGetA8Key.a(this.uUH).errCode, LuggageGetA8Key.a(this.uUH).errMsg, LuggageGetA8Key.a(this.uUH).uUI, this.uUG);
+    }
+    AppMethodBeat.o(6458);
   }
 }
 

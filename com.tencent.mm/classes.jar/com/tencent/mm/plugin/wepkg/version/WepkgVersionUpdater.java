@@ -2,81 +2,101 @@ package com.tencent.mm.plugin.wepkg.version;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.w;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.w;
+import com.tencent.mm.bv.a;
 import com.tencent.mm.plugin.wepkg.ipc.WepkgMainProcessService;
 import com.tencent.mm.plugin.wepkg.ipc.WepkgMainProcessTask;
 import com.tencent.mm.plugin.wepkg.model.BaseWepkgProcessTask;
-import com.tencent.mm.plugin.wepkg.model.WepkgCrossProcessTask;
 import com.tencent.mm.plugin.wepkg.model.WepkgVersion;
-import com.tencent.mm.plugin.wepkg.model.f;
 import com.tencent.mm.plugin.wepkg.utils.WepkgRunCgi.1;
 import com.tencent.mm.plugin.wepkg.utils.WepkgRunCgi.RemoteCgiTask;
 import com.tencent.mm.plugin.wepkg.utils.WepkgRunCgi.a;
 import com.tencent.mm.plugin.wepkg.utils.d;
-import com.tencent.mm.protocal.c.qe;
-import com.tencent.mm.protocal.c.qf;
-import com.tencent.mm.protocal.c.qp;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.tj;
+import com.tencent.mm.protocal.protobuf.tk;
+import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public final class WepkgVersionUpdater
 {
-  public static void Vv(String paramString)
+  public static void a(Set<String> paramSet, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    WepkgCrossProcessTask localWepkgCrossProcessTask = new WepkgCrossProcessTask();
-    localWepkgCrossProcessTask.uC = 3003;
-    localWepkgCrossProcessTask.rPj.dCD = paramString;
-    if (ae.cqV())
+    AppMethodBeat.i(63682);
+    if (paramSet == null)
     {
-      d.DS().O(new WepkgVersionUpdater.1(localWepkgCrossProcessTask));
+      AppMethodBeat.o(63682);
       return;
     }
-    WepkgMainProcessService.a(localWepkgCrossProcessTask);
-  }
-  
-  public static void ag(String paramString, int paramInt1, int paramInt2)
-  {
-    if (bk.bl(paramString))
+    LinkedList localLinkedList = new LinkedList();
+    StringBuffer localStringBuffer1 = new StringBuffer();
+    StringBuffer localStringBuffer2 = new StringBuffer();
+    paramSet = paramSet.iterator();
+    while (paramSet.hasNext())
     {
-      paramString = com.tencent.mm.plugin.wepkg.a.Dv(paramInt1);
-      if (paramString != null)
+      String str = (String)paramSet.next();
+      if (!bo.isNullOrNil(str))
       {
-        localObject = new LinkedList();
-        ((LinkedList)localObject).add(paramString);
-        b((LinkedList)localObject, paramInt2, false);
+        localStringBuffer1.append(str);
+        localStringBuffer1.append(";");
+        tu localtu = new tu();
+        localtu.nqD = str;
+        localtu.Scene = paramInt1;
+        WepkgVersion localWepkgVersion = com.tencent.mm.plugin.wepkg.model.h.akF(str);
+        if (localWepkgVersion == null)
+        {
+          localtu.jKg = "";
+          localLinkedList.add(localtu);
+        }
+        else
+        {
+          localtu.jKg = localWepkgVersion.version;
+          long l = localWepkgVersion.vGP;
+          if (d.aNY() >= l)
+          {
+            localLinkedList.add(localtu);
+            com.tencent.mm.plugin.wepkg.model.h.akI(str);
+          }
+          else
+          {
+            localStringBuffer2.append(str);
+            localStringBuffer2.append(";");
+          }
+        }
       }
-      return;
     }
-    Object localObject = f.Vj(paramString);
-    if (localObject == null)
-    {
-      p(paramString, "", paramInt1, paramInt2);
-      return;
+    ab.i("MicroMsg.Wepkg.WepkgVersionUpdater", "All wepkg list[%s] to update, excluded wepkg list[%s], scene:%d, downloadTriggerType:%d, isReportSize:%b", new Object[] { localStringBuffer1.toString(), localStringBuffer2.toString(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) });
+    if (!bo.es(localLinkedList)) {
+      b(localLinkedList, paramInt2, paramBoolean);
     }
-    long l1 = ((WepkgVersion)localObject).rPX;
-    long l2 = d.aqv();
-    if (l2 >= l1)
-    {
-      p(paramString, ((WepkgVersion)localObject).version, paramInt1, paramInt2);
-      Vv(paramString);
-      return;
-    }
-    y.i("MicroMsg.Wepkg.WepkgVersionUpdater", "currTime[%s]s < nextCheckTime[%s]s, no net request", new Object[] { Long.valueOf(l2), Long.valueOf(l1) });
+    AppMethodBeat.o(63682);
   }
   
-  public static void b(LinkedList<qp> paramLinkedList, int paramInt, boolean paramBoolean)
+  public static void a(Set<String> paramSet, int paramInt, boolean paramBoolean)
   {
-    if (paramLinkedList.size() == 0) {
+    AppMethodBeat.i(63681);
+    a(paramSet, paramInt, -1, paramBoolean);
+    AppMethodBeat.o(63681);
+  }
+  
+  private static void b(LinkedList<tu> paramLinkedList, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(63683);
+    if (paramLinkedList.size() == 0)
+    {
+      AppMethodBeat.o(63683);
       return;
     }
     WepkgNetSceneProcessTask localWepkgNetSceneProcessTask = new WepkgNetSceneProcessTask();
@@ -85,140 +105,164 @@ public final class WepkgVersionUpdater
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      qp localqp = (qp)paramLinkedList.next();
+      tu localtu = (tu)paramLinkedList.next();
       WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq localWepkgCheckReq = new WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq((byte)0);
-      WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.a(localWepkgCheckReq, localqp.kSE);
-      WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.b(localWepkgCheckReq, localqp.hQE);
-      WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.a(localWepkgCheckReq, localqp.pyo);
+      WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.a(localWepkgCheckReq, localtu.nqD);
+      WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.b(localWepkgCheckReq, localtu.jKg);
+      WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.a(localWepkgCheckReq, localtu.Scene);
       WepkgNetSceneProcessTask.a(localWepkgNetSceneProcessTask).add(localWepkgCheckReq);
     }
-    if (ae.cqV())
+    if (ah.brt())
     {
-      d.DS().O(new WepkgVersionUpdater.2(localWepkgNetSceneProcessTask));
+      d.aNS().ac(new WepkgVersionUpdater.1(localWepkgNetSceneProcessTask));
+      AppMethodBeat.o(63683);
       return;
     }
     WepkgMainProcessService.a(localWepkgNetSceneProcessTask);
+    AppMethodBeat.o(63683);
   }
   
-  private static void p(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public static void q(List<String> paramList, int paramInt)
   {
-    y.i("MicroMsg.Wepkg.WepkgVersionUpdater", "pkgId = " + paramString1 + ", version = " + paramString2 + ", scene = " + paramInt1 + ", downloadTriggerType = " + paramInt2);
-    LinkedList localLinkedList = new LinkedList();
-    qp localqp = new qp();
-    localqp.kSE = paramString1;
-    localqp.hQE = paramString2;
-    localqp.pyo = paramInt1;
-    localLinkedList.add(localqp);
-    paramString1 = com.tencent.mm.plugin.wepkg.a.Dv(paramInt1);
-    if (paramString1 != null) {
-      localLinkedList.add(paramString1);
+    AppMethodBeat.i(63680);
+    if (bo.es(paramList))
+    {
+      AppMethodBeat.o(63680);
+      return;
     }
-    b(localLinkedList, paramInt2, false);
+    HashSet localHashSet = new HashSet();
+    localHashSet.addAll(paramList);
+    a(localHashSet, paramInt, false);
+    AppMethodBeat.o(63680);
   }
   
-  public static final class WepkgNetSceneProcessTask
+  static final class WepkgNetSceneProcessTask
     extends BaseWepkgProcessTask
   {
-    public static final Parcelable.Creator<WepkgNetSceneProcessTask> CREATOR = new WepkgVersionUpdater.WepkgNetSceneProcessTask.2();
-    private int cfl;
-    private List<WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq> rQv;
-    private boolean rQw;
+    public static final Parcelable.Creator<WepkgNetSceneProcessTask> CREATOR;
+    private int cNS;
+    private List<WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq> vHm;
+    private boolean vHn;
+    
+    static
+    {
+      AppMethodBeat.i(63679);
+      CREATOR = new WepkgVersionUpdater.WepkgNetSceneProcessTask.2();
+      AppMethodBeat.o(63679);
+    }
     
     public WepkgNetSceneProcessTask()
     {
-      this.rQv = new ArrayList();
+      AppMethodBeat.i(63674);
+      this.vHm = new ArrayList();
+      AppMethodBeat.o(63674);
     }
     
     private WepkgNetSceneProcessTask(Parcel paramParcel)
     {
-      e(paramParcel);
+      AppMethodBeat.i(63675);
+      f(paramParcel);
+      AppMethodBeat.o(63675);
     }
     
-    public final void Zu()
+    public final void a(Parcel paramParcel, int paramInt)
     {
-      if (bk.dk(this.rQv)) {
+      AppMethodBeat.i(63678);
+      paramParcel.writeList(this.vHm);
+      paramParcel.writeInt(this.cNS);
+      if (this.vHn) {}
+      for (paramInt = 1;; paramInt = 0)
+      {
+        paramParcel.writeByte((byte)paramInt);
+        AppMethodBeat.o(63678);
+        return;
+      }
+    }
+    
+    public final void ata()
+    {
+      AppMethodBeat.i(63676);
+      if (bo.es(this.vHm))
+      {
+        AppMethodBeat.o(63676);
         return;
       }
       Object localObject1 = new b.a();
-      ((b.a)localObject1).ecG = 1313;
-      ((b.a)localObject1).ecJ = 0;
-      ((b.a)localObject1).ecK = 0;
+      ((b.a)localObject1).funcId = 1313;
+      ((b.a)localObject1).reqCmdId = 0;
+      ((b.a)localObject1).respCmdId = 0;
       ((b.a)localObject1).uri = "/cgi-bin/mmgame-bin/checkwepkgversion";
-      Object localObject2 = new qe();
-      Object localObject3 = this.rQv.iterator();
+      Object localObject2 = new tj();
+      Object localObject3 = this.vHm.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq localWepkgCheckReq = (WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq)((Iterator)localObject3).next();
-        qp localqp = new qp();
-        localqp.kSE = WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.a(localWepkgCheckReq);
-        localqp.hQE = WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.b(localWepkgCheckReq);
-        localqp.pyo = WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.c(localWepkgCheckReq);
-        ((qe)localObject2).sNS.add(localqp);
+        tu localtu = new tu();
+        localtu.nqD = WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.a(localWepkgCheckReq);
+        localtu.jKg = WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.b(localWepkgCheckReq);
+        localtu.Scene = WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.c(localWepkgCheckReq);
+        ((tj)localObject2).wLM.add(localtu);
       }
-      ((b.a)localObject1).ecH = ((com.tencent.mm.bv.a)localObject2);
-      ((b.a)localObject1).ecI = new qf();
-      h.nFQ.a(859L, 15L, 1L, false);
-      localObject1 = ((b.a)localObject1).Kt();
+      ((b.a)localObject1).fsX = ((a)localObject2);
+      ((b.a)localObject1).fsY = new tk();
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(859L, 15L, 1L, false);
+      localObject1 = ((b.a)localObject1).ado();
       localObject2 = new WepkgRunCgi.a()
       {
         public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb)
         {
-          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousb.ecF.ecN == null))
+          AppMethodBeat.i(63668);
+          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousb.fsW.fta == null))
           {
-            y.e("MicroMsg.Wepkg.WepkgVersionUpdater", "check wepkg version, cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, paramAnonymousb.ecF.ecN });
-            h.nFQ.a(859L, 16L, 1L, false);
+            ab.e("MicroMsg.Wepkg.WepkgVersionUpdater", "check wepkg version, cgi failed, errType = %d, errCode = %d, errMsg = %s, rr.resp = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, paramAnonymousb.fsW.fta });
+            com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(859L, 16L, 1L, false);
+            AppMethodBeat.o(63668);
             return;
           }
           try
           {
-            paramAnonymousString = (qf)paramAnonymousb.ecF.ecN;
-            d.DS().O(new WepkgVersionUpdater.WepkgNetSceneProcessTask.1.1(this, paramAnonymousString));
+            paramAnonymousString = (tk)paramAnonymousb.fsW.fta;
+            d.aNS().ac(new WepkgVersionUpdater.WepkgNetSceneProcessTask.1.1(this, paramAnonymousString));
+            AppMethodBeat.o(63668);
             return;
           }
           catch (Exception paramAnonymousString)
           {
-            y.e("MicroMsg.Wepkg.WepkgVersionUpdater", "get checkwepkgversion error");
+            ab.e("MicroMsg.Wepkg.WepkgVersionUpdater", "get checkwepkgversion error");
+            AppMethodBeat.o(63668);
           }
         }
       };
-      if (ae.cqV())
+      if (ah.brt())
       {
         w.a((b)localObject1, new WepkgRunCgi.1((WepkgRunCgi.a)localObject2));
+        AppMethodBeat.o(63676);
         return;
       }
       localObject3 = new WepkgRunCgi.RemoteCgiTask();
-      d.aU(localObject3);
-      ((WepkgRunCgi.RemoteCgiTask)localObject3).rQq = ((b)localObject1);
-      ((WepkgRunCgi.RemoteCgiTask)localObject3).rQr = ((WepkgRunCgi.a)localObject2);
-      ((WepkgRunCgi.RemoteCgiTask)localObject3).rQo = 1;
+      d.bq(localObject3);
+      ((WepkgRunCgi.RemoteCgiTask)localObject3).vHi = ((b)localObject1);
+      ((WepkgRunCgi.RemoteCgiTask)localObject3).vHj = ((WepkgRunCgi.a)localObject2);
+      ((WepkgRunCgi.RemoteCgiTask)localObject3).vHg = 1;
       WepkgMainProcessService.a((WepkgMainProcessTask)localObject3);
+      AppMethodBeat.o(63676);
     }
     
-    public final void Zv() {}
+    public final void atb() {}
     
-    public final void a(Parcel paramParcel, int paramInt)
+    public final void m(Parcel paramParcel)
     {
-      paramParcel.writeList(this.rQv);
-      paramParcel.writeInt(this.cfl);
-      if (this.rQw) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        paramParcel.writeByte((byte)paramInt);
-        return;
+      AppMethodBeat.i(63677);
+      if (this.vHm == null) {
+        this.vHm = new ArrayList();
       }
-    }
-    
-    public final void j(Parcel paramParcel)
-    {
-      if (this.rQv == null) {
-        this.rQv = new ArrayList();
-      }
-      paramParcel.readList(this.rQv, WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.class.getClassLoader());
-      this.cfl = paramParcel.readInt();
+      paramParcel.readList(this.vHm, WepkgVersionUpdater.WepkgNetSceneProcessTask.WepkgCheckReq.class.getClassLoader());
+      this.cNS = paramParcel.readInt();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.rQw = bool;
+        this.vHn = bool;
+        AppMethodBeat.o(63677);
         return;
       }
     }
@@ -226,7 +270,7 @@ public final class WepkgVersionUpdater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.version.WepkgVersionUpdater
  * JD-Core Version:    0.7.0.1
  */

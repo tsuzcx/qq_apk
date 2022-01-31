@@ -6,7 +6,7 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mm.plugin.appbrand.y.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ConversationAppBrandRecentView$1$1
   implements View.OnCreateContextMenuListener
@@ -15,10 +15,12 @@ final class ConversationAppBrandRecentView$1$1
   
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    if (ConversationAppBrandRecentView.b(this.hDi.hDh) != null) {
-      ConversationAppBrandRecentView.b(this.hDi.hDh).onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
+    AppMethodBeat.i(134356);
+    if (ConversationAppBrandRecentView.b(this.jvJ.jvI) != null) {
+      ConversationAppBrandRecentView.b(this.jvJ.jvI).onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
     }
-    paramContextMenu.add(0, 1, paramContextMenu.size() + 1, this.hDi.hDh.getContext().getResources().getString(y.j.delete_appbrand));
+    paramContextMenu.add(0, 1, paramContextMenu.size() + 1, this.jvJ.jvI.getContext().getResources().getString(2131298946));
+    AppMethodBeat.o(134356);
   }
 }
 

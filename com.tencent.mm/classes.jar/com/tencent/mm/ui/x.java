@@ -1,873 +1,198 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.media.AudioManager;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.h.a.ko;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.tools.n;
-import com.tencent.mm.ui.widget.SwipeBackLayout;
-import com.tencent.mm.ui.widget.SwipeBackLayout.a;
-import java.util.Locale;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.blink.b;
+import com.tencent.mm.g.a.qf;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.x.a.a;
 
-public abstract class x
-  extends i
-  implements View.OnAttachStateChangeListener, com.tencent.mm.ui.h.a
+public final class x
+  implements n.b
 {
-  protected static final int DEFAULT_TOAST_TIME = 3000;
-  public static final String FLAG_OVERRIDE_ENTER_ANIMATION = "MMActivity.OverrideEnterAnimation";
-  public static final String FLAG_OVERRIDE_EXIT_ANIMATION = "MMActivity.OverrideExitAnimation";
-  private static final String TAG = "MicroMsg.MMFragment";
-  private static final String TAG2 = "MicroMsg.INIT";
-  String className;
-  public s mController = new s()
-  {
-    protected final String bdI()
-    {
-      return x.this.getIdentityString();
-    }
-    
-    protected final boolean czg()
-    {
-      return false;
-    }
-    
-    protected final void dealContentView(View paramAnonymousView)
-    {
-      x.this.dealContentView(paramAnonymousView);
-    }
-    
-    protected final String getClassName()
-    {
-      return x.this.getClass().getName();
-    }
-    
-    protected final int getLayoutId()
-    {
-      return x.this.getLayoutId();
-    }
-    
-    protected final View getLayoutView()
-    {
-      return x.this.getLayoutView();
-    }
-    
-    public final boolean noActionBar()
-    {
-      return x.this.noActionBar();
-    }
-    
-    protected final void onCreateBeforeSetContentView()
-    {
-      x.this.onCreateBeforeSetContentView();
-    }
-    
-    public final void onKeyboardStateChanged()
-    {
-      x.this.onKeyboardStateChanged();
-    }
-  };
-  private boolean mCurVisible = false;
-  private com.tencent.mm.ui.h.a mListener;
-  protected AppCompatActivity mParent;
-  private x mParentFragment;
-  private boolean mParentVisible = false;
-  private SwipeBackLayout mSwipeBackLayout;
+  com.tencent.mm.sdk.b.c<qf> yWx;
+  com.tencent.mm.sdk.b.c yWy;
+  MMFragmentActivity yXg;
+  LauncherUI.c zcK;
+  c zcL;
+  boolean zcM;
+  Runnable zcN;
+  x.a zcO;
+  a.a zcP;
+  n.b zcQ;
+  com.tencent.mm.sdk.b.c zcR;
   
-  public x() {}
-  
-  public x(boolean paramBoolean)
+  public x()
   {
-    super(paramBoolean);
-  }
-  
-  private void filterAndNotifyVisibility(boolean paramBoolean)
-  {
-    filterAndNotifyVisibility(paramBoolean, false);
-  }
-  
-  private void filterAndNotifyVisibility(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1 == this.mCurVisible) {
-      return;
-    }
-    label21:
-    boolean bool1;
-    boolean bool2;
-    if (this.mParentFragment == null)
+    AppMethodBeat.i(29672);
+    this.zcN = new x.1(this);
+    this.yWy = new x.4(this);
+    this.yWx = new x.5(this);
+    this.zcP = new a.a()
     {
-      paramBoolean1 = this.mParentVisible;
-      bool1 = super.isVisible();
-      bool2 = getUserVisibleHint();
-      if ((!paramBoolean1) || (!bool1) || (!bool2) || (paramBoolean2)) {
-        break label134;
-      }
-    }
-    label134:
-    for (paramBoolean2 = true;; paramBoolean2 = false)
-    {
-      y.i("MicroMsg.MMFragment", "[filterAndNotifyVisibility] visible = %s parent = %s, super = %s, hint = %s name:%s", new Object[] { Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(bool1), Boolean.valueOf(bool2), getClass().getName() });
-      if (paramBoolean2 == this.mCurVisible) {
-        break;
-      }
-      this.mCurVisible = paramBoolean2;
-      onVisibilityChanged(this.mCurVisible);
-      return;
-      paramBoolean1 = this.mParentFragment.isFragmentVisible();
-      break label21;
-    }
-  }
-  
-  public static Locale initLanguage(Context paramContext)
-  {
-    return s.initLanguage(paramContext);
-  }
-  
-  private void initSwipeBack()
-  {
-    View localView = getContentView();
-    ViewGroup localViewGroup = (ViewGroup)localView.getParent();
-    if (localViewGroup != null)
-    {
-      this.mSwipeBackLayout = ((SwipeBackLayout)LayoutInflater.from(thisActivity()).inflate(a.h.swipeback_layout, localViewGroup, false));
-      localViewGroup.removeView(localView);
-      localViewGroup.addView(this.mSwipeBackLayout);
-    }
-    for (;;)
-    {
-      this.mSwipeBackLayout.addView(localView);
-      this.mSwipeBackLayout.setContentView(localView);
-      this.mSwipeBackLayout.nR(true);
-      this.mSwipeBackLayout.setSwipeGestureDelegate(new SwipeBackLayout.a()
+      public final void b(ac.a paramAnonymousa)
       {
-        public final void onCancel()
-        {
-          x.this.onCancelDrag();
+        AppMethodBeat.i(29669);
+        if (paramAnonymousa == ac.a.yIY) {
+          x.b(x.this);
         }
-        
-        public final void onDrag()
-        {
-          x.this.onDragBegin();
+        AppMethodBeat.o(29669);
+      }
+      
+      public final void s(int paramAnonymousInt, String paramAnonymousString)
+      {
+        AppMethodBeat.i(29668);
+        if ((paramAnonymousInt == 262145) || (paramAnonymousInt == 262156) || (paramAnonymousInt == 262152) || (paramAnonymousInt == 266260) || (paramAnonymousInt == 266267)) {
+          x.b(x.this);
         }
-        
-        public final void onSwipeBack()
-        {
-          x.this.onSwipeBack();
+        if ((paramAnonymousInt == 262147) || (paramAnonymousInt == 262149) || (paramAnonymousInt == 352279)) {
+          x.b(x.this);
         }
-      });
-      return;
-      this.mSwipeBackLayout = ((SwipeBackLayout)LayoutInflater.from(thisActivity()).inflate(a.h.swipeback_layout, null));
-    }
-  }
-  
-  public static void showVKB(Activity paramActivity)
-  {
-    InputMethodManager localInputMethodManager = (InputMethodManager)paramActivity.getSystemService("input_method");
-    if (localInputMethodManager == null) {}
-    do
+        AppMethodBeat.o(29668);
+      }
+    };
+    this.zcQ = new n.b()
     {
-      return;
-      paramActivity = paramActivity.getCurrentFocus();
-    } while ((paramActivity == null) || (paramActivity.getWindowToken() == null));
-    localInputMethodManager.toggleSoftInput(0, 2);
+      public final void a(int paramAnonymousInt, n paramAnonymousn, Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(29670);
+        int i = bo.f(paramAnonymousObject, 0);
+        ab.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), paramAnonymousn });
+        aw.aaz();
+        if ((paramAnonymousn != com.tencent.mm.model.c.Ru()) || (i <= 0))
+        {
+          ab.e("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramAnonymousn });
+          AppMethodBeat.o(29670);
+          return;
+        }
+        x.this.dCI();
+        if (i == 143618)
+        {
+          x.a(x.this);
+          AppMethodBeat.o(29670);
+          return;
+        }
+        if ((i == 204817) || (i == 204820)) {
+          x.b(x.this);
+        }
+        AppMethodBeat.o(29670);
+      }
+    };
+    this.zcR = new x.2(this);
+    AppMethodBeat.o(29672);
   }
   
-  public void activateBroadcast(boolean paramBoolean)
+  public final void Oo(int paramInt)
   {
-    this.mController.activateBroadcast(paramBoolean);
-  }
-  
-  public void addDialog(Dialog paramDialog)
-  {
-    this.mController.addDialog(paramDialog);
-  }
-  
-  public void addIconOptionMenu(int paramInt1, int paramInt2, int paramInt3, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
-  {
-    this.mController.addIconOptionMenu(paramInt1, paramInt2, paramInt3, paramOnMenuItemClickListener);
-  }
-  
-  public void addIconOptionMenu(int paramInt1, int paramInt2, int paramInt3, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener)
-  {
-    this.mController.addIconOptionMenu(paramInt1, paramInt2, paramInt3, paramOnMenuItemClickListener, paramOnLongClickListener);
-  }
-  
-  public void addIconOptionMenu(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
-  {
-    this.mController.addIconOptionMenu(paramInt1, paramInt2, paramInt3, paramBoolean, paramOnMenuItemClickListener);
-  }
-  
-  public void addIconOptionMenu(int paramInt1, int paramInt2, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
-  {
-    this.mController.addIconOptionMenu(paramInt1, paramInt2, paramOnMenuItemClickListener);
-  }
-  
-  public void addIconOptionMenu(int paramInt1, int paramInt2, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener)
-  {
-    this.mController.addIconOptionMenu(paramInt1, paramInt2, paramOnMenuItemClickListener, paramOnLongClickListener);
-  }
-  
-  public void addIconOptionMenu(int paramInt1, String paramString, int paramInt2, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
-  {
-    this.mController.addIconOptionMenu(paramInt1, paramString, paramInt2, paramOnMenuItemClickListener);
-  }
-  
-  public void addSearchMenu(boolean paramBoolean, n paramn)
-  {
-    this.mController.addSearchMenu(paramBoolean, paramn);
-  }
-  
-  public void addTextOptionMenu(int paramInt, String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
-  {
-    this.mController.addTextOptionMenu(paramInt, paramString, paramOnMenuItemClickListener);
-  }
-  
-  public void addTextOptionMenu(int paramInt, String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener)
-  {
-    this.mController.a(paramInt, 0, paramString, false, paramOnMenuItemClickListener, paramOnLongClickListener, s.b.uNw);
-  }
-  
-  public void addTextOptionMenu(int paramInt, String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener, s.b paramb)
-  {
-    this.mController.addTextOptionMenu(paramInt, paramString, paramOnMenuItemClickListener, paramOnLongClickListener, paramb);
-  }
-  
-  public boolean callBackMenu()
-  {
-    return this.mController.callBackMenu();
-  }
-  
-  public void dealContentView(View paramView) {}
-  
-  public void enableBackMenu(boolean paramBoolean)
-  {
-    this.mController.enableBackMenu(paramBoolean);
-  }
-  
-  public void enableOptionMenu(int paramInt, boolean paramBoolean)
-  {
-    this.mController.c(false, paramInt, paramBoolean);
-  }
-  
-  public void enableOptionMenu(boolean paramBoolean)
-  {
-    this.mController.c(true, -1, paramBoolean);
-  }
-  
-  public void finish()
-  {
-    super.finish();
-    int i = thisActivity().getIntent().getIntExtra("MMActivity.OverrideEnterAnimation", -1);
-    int j = thisActivity().getIntent().getIntExtra("MMActivity.OverrideExitAnimation", -1);
-    if (i != -1) {
-      getContext().overridePendingTransition(i, j);
-    }
-  }
-  
-  public void fullScreenNoTitleBar(boolean paramBoolean)
-  {
-    this.mController.fullScreenNoTitleBar(paramBoolean);
-  }
-  
-  public void fullScreenWithTitleBar(boolean paramBoolean)
-  {
-    s locals = this.mController;
-    if (paramBoolean)
+    AppMethodBeat.i(29677);
+    if (this.zcL != null)
     {
-      locals.uMN.getWindow().setFlags(1024, 1024);
+      this.zcL.NU(paramInt);
+      this.zcK.dBQ();
+    }
+    AppMethodBeat.o(29677);
+  }
+  
+  public final void Op(int paramInt)
+  {
+    AppMethodBeat.i(29679);
+    if (this.zcL != null) {
+      this.zcL.setTo(paramInt);
+    }
+    AppMethodBeat.o(29679);
+  }
+  
+  public final void a(int paramInt, n paramn, Object paramObject)
+  {
+    AppMethodBeat.i(29678);
+    if ((paramObject == null) || (!(paramObject instanceof String)))
+    {
+      ab.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      AppMethodBeat.o(29678);
       return;
     }
-    locals.uMN.getWindow().clearFlags(1024);
-  }
-  
-  public View getBodyView()
-  {
-    return this.mController.uMz;
-  }
-  
-  public final View getContentView()
-  {
-    return this.mController.contentView;
-  }
-  
-  public final Activity getContext()
-  {
-    return this.mController.uMN;
-  }
-  
-  public s getController()
-  {
-    return this.mController;
-  }
-  
-  public int getForceOrientation()
-  {
-    return s.getForceOrientation();
-  }
-  
-  public String getIdentityString()
-  {
-    return "";
-  }
-  
-  public boolean getLandscapeMode()
-  {
-    return this.mController.getLandscapeMode();
-  }
-  
-  public abstract int getLayoutId();
-  
-  public View getLayoutView()
-  {
-    return null;
-  }
-  
-  public Resources getMMResources()
-  {
-    return thisActivity().getResources();
-  }
-  
-  public String getMMString(int paramInt)
-  {
-    return thisActivity().getString(paramInt);
-  }
-  
-  public String getMMString(int paramInt, Object... paramVarArgs)
-  {
-    return thisActivity().getString(paramInt, paramVarArgs);
-  }
-  
-  public CharSequence getMMTitle()
-  {
-    return this.mController.getMMTitle();
-  }
-  
-  public int getStreamMaxVolume(int paramInt)
-  {
-    return this.mController.eJZ.getStreamMaxVolume(paramInt);
-  }
-  
-  public int getStreamVolume(int paramInt)
-  {
-    return this.mController.eJZ.getStreamVolume(paramInt);
-  }
-  
-  public SwipeBackLayout getSwipeBackLayout()
-  {
-    return this.mSwipeBackLayout;
-  }
-  
-  public int getTitleLocation()
-  {
-    return this.mController.getTitleLocation();
-  }
-  
-  public void hideTitleView()
-  {
-    this.mController.hideTitleView();
-  }
-  
-  public boolean hideVKB()
-  {
-    return this.mController.hideVKB();
-  }
-  
-  public boolean hideVKB(View paramView)
-  {
-    return this.mController.hideVKB(paramView);
-  }
-  
-  public boolean interceptSupportInvalidateOptionsMenu()
-  {
-    if (this.mController.interceptSupportInvalidateOptionsMenu())
+    aw.aaz();
+    if (paramn == com.tencent.mm.model.c.YF())
     {
-      this.mController.supportInvalidateOptionsMenu();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean isFragmentVisible()
-  {
-    return this.mCurVisible;
-  }
-  
-  public boolean isScreenEnable()
-  {
-    return this.mController.uMD;
-  }
-  
-  public boolean isSupportCustomActionBar()
-  {
-    return isSupportNavigationSwipeBack();
-  }
-  
-  public final boolean isSupportNavigationSwipeBack()
-  {
-    if ((d.gF(19)) && (com.tencent.mm.compatible.i.a.zD())) {
-      return supportNavigationSwipeBack();
-    }
-    return false;
-  }
-  
-  public boolean isTitleShowing()
-  {
-    return this.mController.isTitleShowing();
-  }
-  
-  public int keyboardState()
-  {
-    return this.mController.uNh;
-  }
-  
-  public boolean needShowIdcError()
-  {
-    return true;
-  }
-  
-  public boolean noActionBar()
-  {
-    return false;
-  }
-  
-  public void onAttach(Context paramContext)
-  {
-    super.onAttach(paramContext);
-    paramContext = getParentFragment();
-    if ((paramContext != null) && ((paramContext instanceof x)))
-    {
-      this.mParentFragment = ((x)paramContext);
-      this.mParentFragment.setOnVisibilityChangedListener(this);
-    }
-    filterAndNotifyVisibility(true);
-  }
-  
-  public void onCancelDrag() {}
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    this.mController.a(thisActivity().getBaseContext(), (AppCompatActivity)thisActivity());
-  }
-  
-  protected void onCreateBeforeSetContentView() {}
-  
-  public void onCreateOptionsMenu(Menu paramMenu, MenuInflater paramMenuInflater)
-  {
-    if (!this.mController.onCreateOptionsMenu(paramMenu)) {
-      super.onCreateOptionsMenu(paramMenu, paramMenuInflater);
-    }
-  }
-  
-  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    setHasOptionsMenu(true);
-    return getContentView();
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    this.mController.onDestroy();
-  }
-  
-  public void onDestroyView()
-  {
-    super.onDestroyView();
-    getView().removeOnAttachStateChangeListener(this);
-  }
-  
-  public void onDetach()
-  {
-    if (this.mParentFragment != null) {
-      this.mParentFragment.setOnVisibilityChangedListener(null);
-    }
-    super.onDetach();
-    filterAndNotifyVisibility(false);
-    this.mParentFragment = null;
-  }
-  
-  public void onDragBegin() {}
-  
-  public void onFragmentVisibilityChanged(boolean paramBoolean)
-  {
-    filterAndNotifyVisibility(paramBoolean);
-  }
-  
-  public void onHiddenChanged(boolean paramBoolean)
-  {
-    super.onHiddenChanged(paramBoolean);
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      filterAndNotifyVisibility(bool, paramBoolean);
+      ab.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "Launcherui onNotifyChange event type %d, username %s", new Object[] { Integer.valueOf(paramInt), paramObject });
+      if (ad.nM((String)paramObject)) {
+        dCI();
+      }
+      AppMethodBeat.o(29678);
       return;
     }
+    AppMethodBeat.o(29678);
   }
   
-  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  protected final void dCG()
   {
-    if (this.mController.onKeyDown(paramInt, paramKeyEvent)) {
-      return true;
+    AppMethodBeat.i(29675);
+    b.HP().o(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(29667);
+        if (x.this.zcM)
+        {
+          ab.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "remove setTagRunnable");
+          al.ae(x.this.zcN);
+        }
+        AppMethodBeat.o(29667);
+      }
+    });
+    AppMethodBeat.o(29675);
+  }
+  
+  protected final void dCH()
+  {
+    AppMethodBeat.i(29676);
+    if (this.zcM)
+    {
+      ab.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "start  setAppTagUnreadNow");
+      dCM();
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(29676);
   }
   
-  public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
+  protected final void dCI()
   {
-    if (this.mController.onKeyUp(paramInt, paramKeyEvent)) {
-      return true;
-    }
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.i(29674);
+    b.HP().o(new x.8(this));
+    AppMethodBeat.o(29674);
   }
   
-  public void onKeyboardStateChanged() {}
-  
-  public boolean onOptionsItemSelected(MenuItem paramMenuItem)
+  protected final void dCM()
   {
-    return this.mController.onOptionsItemSelected(paramMenuItem);
+    AppMethodBeat.i(29673);
+    b.HP().o(new x.7(this));
+    AppMethodBeat.o(29673);
   }
   
-  protected void onParentVisibilityChanged(boolean paramBoolean)
+  public final int dCN()
   {
-    this.mParentVisible = paramBoolean;
-    filterAndNotifyVisibility(paramBoolean);
-  }
-  
-  public void onPause()
-  {
-    long l = System.currentTimeMillis();
-    ai.be(2, this.className);
-    super.onPause();
-    this.mController.onPause();
-    y.v("MicroMsg.INIT", "KEVIN MMActivity onPause:" + (System.currentTimeMillis() - l));
-    onParentVisibilityChanged(false);
-  }
-  
-  public void onPrepareOptionsMenu(Menu paramMenu)
-  {
-    this.mController.onPrepareOptionsMenu(paramMenu);
-    super.onPrepareOptionsMenu(paramMenu);
-  }
-  
-  public void onResume()
-  {
-    long l = System.currentTimeMillis();
-    ai.be(1, this.className);
-    super.onResume();
-    y.v("MicroMsg.INIT", "KEVIN MMActivity super..onResume " + (System.currentTimeMillis() - l));
-    this.mController.onResume();
-    y.v("MicroMsg.INIT", "KEVIN MMActivity onResume :" + (System.currentTimeMillis() - l));
-    onParentVisibilityChanged(true);
-  }
-  
-  public void onStart()
-  {
-    this.mController.onStart();
-    super.onStart();
-    onParentVisibilityChanged(true);
-  }
-  
-  public void onStop()
-  {
-    super.onStop();
-    onParentVisibilityChanged(false);
-  }
-  
-  public void onSwipeBack() {}
-  
-  public void onViewAttachedToWindow(View paramView)
-  {
-    filterAndNotifyVisibility(true);
-  }
-  
-  public void onViewCreated(View paramView, Bundle paramBundle)
-  {
-    if (isSupportNavigationSwipeBack()) {
-      initSwipeBack();
-    }
-    getView().addOnAttachStateChangeListener(this);
-  }
-  
-  public void onViewDetachedFromWindow(View paramView)
-  {
-    filterAndNotifyVisibility(false);
-  }
-  
-  protected void onVisibilityChanged(boolean paramBoolean)
-  {
-    if (this.mListener != null) {
-      this.mListener.onFragmentVisibilityChanged(paramBoolean);
-    }
-    int j = -1;
-    Object localObject = getArguments();
+    AppMethodBeat.i(29680);
+    int j = 0;
     int i = j;
-    if (localObject != null)
+    if (this.zcL != null)
     {
       i = j;
-      if (((Bundle)localObject).containsKey(getClass().getName())) {
-        i = ((Bundle)localObject).getInt(getClass().getName());
+      if (this.zcL.getMainTabUnread() > 0) {
+        i = this.zcL.getMainTabUnread();
       }
     }
-    y.i("MicroMsg.MMFragment", "[onVisibilityChanged] visible:%s name:%s id:%s", new Object[] { Boolean.valueOf(paramBoolean), getClass().getName(), Integer.valueOf(i) });
-    localObject = new ko();
-    ((ko)localObject).bTF.name = getClass().getName();
-    ((ko)localObject).bTF.id = i;
-    ((ko)localObject).bTF.aoL = paramBoolean;
-    com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-  }
-  
-  public void removeAllOptionMenu()
-  {
-    this.mController.removeAllOptionMenu();
-  }
-  
-  public boolean removeOptionMenu(int paramInt)
-  {
-    return this.mController.removeOptionMenu(paramInt);
-  }
-  
-  public void setActivityController(s params)
-  {
-    if (params != null) {
-      this.mController = params;
-    }
-  }
-  
-  public void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
-  {
-    this.mController.setBackBtn(paramOnMenuItemClickListener, 0);
-  }
-  
-  public void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, int paramInt)
-  {
-    this.mController.setBackBtn(paramOnMenuItemClickListener, paramInt);
-  }
-  
-  public void setBackGroundColorResource(int paramInt)
-  {
-    this.mController.setBackGroundColorResource(paramInt);
-  }
-  
-  protected final void setBodyView(int paramInt)
-  {
-    s locals = this.mController;
-    if (locals.uMC == null) {
-      locals.uMC = ((FrameLayout)locals.contentView.findViewById(a.g.mm_content_fl));
-    }
-    if (locals.uMA != null) {
-      locals.uMC.removeView(locals.uMA);
-    }
-    locals.uMC.removeView(locals.uMz);
-    locals.uMz = ((LayoutInflater)locals.mContext.getSystemService("layout_inflater")).inflate(paramInt, null);
-    locals.uMC.addView(locals.uMz, 0, new FrameLayout.LayoutParams(-1, -1));
-    if (locals.uMA != null)
-    {
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, BackwardSupportUtil.b.b(locals.mContext, 47.0F));
-      locals.uMC.addView(locals.uMA, locals.uMC.getChildCount(), localLayoutParams);
-    }
-    locals.uMC.invalidate();
-  }
-  
-  public void setMMSubTitle(int paramInt)
-  {
-    this.mController.setMMSubTitle(paramInt);
-  }
-  
-  public void setMMSubTitle(String paramString)
-  {
-    this.mController.setMMSubTitle(paramString);
-  }
-  
-  public void setMMSubTitleColor(int paramInt) {}
-  
-  public void setMMTitle(int paramInt)
-  {
-    this.mController.setMMTitle(paramInt);
-  }
-  
-  public void setMMTitle(String paramString)
-  {
-    this.mController.setMMTitle(paramString);
-  }
-  
-  public void setOnVisibilityChangedListener(com.tencent.mm.ui.h.a parama)
-  {
-    this.mListener = parama;
-  }
-  
-  public void setParent(AppCompatActivity paramAppCompatActivity)
-  {
-    this.mParent = paramAppCompatActivity;
-  }
-  
-  @Deprecated
-  public void setRedDotVisibilty(int paramInt) {}
-  
-  public void setScreenEnable(boolean paramBoolean)
-  {
-    this.mController.setScreenEnable(paramBoolean);
-  }
-  
-  public void setTitleBarDoubleClickListener(Runnable paramRunnable)
-  {
-    this.mController.setTitleBarDoubleClickListener(paramRunnable);
-  }
-  
-  @Deprecated
-  public void setTitleClickAction(GestureDetector.SimpleOnGestureListener paramSimpleOnGestureListener) {}
-  
-  public void setTitleLogo(int paramInt1, int paramInt2)
-  {
-    this.mController.setTitleLogo(paramInt1, paramInt2);
-  }
-  
-  public void setTitleMuteIconVisibility(int paramInt)
-  {
-    this.mController.setTitleMuteIconVisibility(paramInt);
-  }
-  
-  public void setTitlePhoneIconVisibility(int paramInt)
-  {
-    s locals = this.mController;
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      locals.uMM = bool;
-      locals.czA();
-      return;
-    }
-  }
-  
-  public void setTitleVisibility(int paramInt)
-  {
-    this.mController.setTitleVisibility(paramInt);
-  }
-  
-  @Deprecated
-  public void setToTop(View.OnClickListener paramOnClickListener) {}
-  
-  public void setUserVisibleHint(boolean paramBoolean)
-  {
-    y.i("MicroMsg.MMFragment", "[setUserVisibleHint] isVisibleToUser:%s name:%s", new Object[] { Boolean.valueOf(paramBoolean), getClass().getName() });
-    super.setUserVisibleHint(paramBoolean);
-    filterAndNotifyVisibility(paramBoolean);
-  }
-  
-  public void showHomeBtn(boolean paramBoolean)
-  {
-    this.mController.showHomeBtn(paramBoolean);
-  }
-  
-  public void showOptionMenu(int paramInt, boolean paramBoolean)
-  {
-    this.mController.d(false, paramInt, paramBoolean);
-  }
-  
-  public void showOptionMenu(boolean paramBoolean)
-  {
-    this.mController.d(true, -1, paramBoolean);
-  }
-  
-  public void showTitleView()
-  {
-    this.mController.showTitleView();
-  }
-  
-  public void showVKB()
-  {
-    this.mController.showVKB();
-  }
-  
-  public void startActivity(Intent paramIntent)
-  {
-    startActivityReal(paramIntent);
-  }
-  
-  public void startActivityReal(Intent paramIntent)
-  {
-    super.startActivity(paramIntent);
-  }
-  
-  public boolean supportNavigationSwipeBack()
-  {
-    return true;
-  }
-  
-  public FragmentActivity thisActivity()
-  {
-    if (this.mController.uMN != null) {
-      return this.mController.uMN;
-    }
-    return super.getActivity();
-  }
-  
-  public Resources thisResources()
-  {
-    FragmentActivity localFragmentActivity = super.getActivity();
-    if (localFragmentActivity == null) {
-      return ae.getContext().getResources();
-    }
-    return localFragmentActivity.getResources();
-  }
-  
-  public void updateDescription(String paramString)
-  {
-    this.mController.updateDescription(paramString);
-  }
-  
-  public void updateOptionMenuIcon(int paramInt1, int paramInt2)
-  {
-    s locals = this.mController;
-    s.a locala = locals.FU(paramInt1);
-    if ((locala != null) && (locala.uHe != paramInt2))
-    {
-      locala.uHe = paramInt2;
-      locals.supportInvalidateOptionsMenu();
-    }
-  }
-  
-  public void updateOptionMenuListener(int paramInt, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener)
-  {
-    this.mController.updateOptionMenuListener(paramInt, paramOnMenuItemClickListener, paramOnLongClickListener);
-  }
-  
-  public void updateOptionMenuText(int paramInt, String paramString)
-  {
-    this.mController.updateOptionMenuText(paramInt, paramString);
+    AppMethodBeat.o(29680);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.x
  * JD-Core Version:    0.7.0.1
  */

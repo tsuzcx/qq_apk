@@ -1,30 +1,47 @@
 package com.tencent.mm.plugin.appbrand.jsapi.d;
 
-import com.tencent.mm.plugin.appbrand.jsapi.l;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.u.h;
-import com.tencent.mm.plugin.appbrand.widget.input.AppBrandInputInvokeHandler;
-import com.tencent.mm.plugin.appbrand.widget.input.AppBrandInputInvokeHandler.b;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$1
-  implements AppBrandInputInvokeHandler.b
+  implements Runnable
 {
-  c$1(c paramc, AppBrandInputInvokeHandler paramAppBrandInputInvokeHandler) {}
+  c$1(c paramc, com.tencent.mm.plugin.appbrand.jsapi.c paramc1, Integer paramInteger, int paramInt) {}
   
-  public final void bW(int paramInt1, int paramInt2)
+  public final void run()
   {
-    int i = this.grm.getInputId();
-    q localq = c.ls(i);
-    if ((localq == null) || (!localq.ahC)) {
+    AppMethodBeat.i(123526);
+    if (!this.hMA.isRunning())
+    {
+      AppMethodBeat.o(123526);
       return;
     }
-    c.a locala = new c.a((byte)0);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("height", Integer.valueOf(h.mx(paramInt2)));
-    localHashMap.put("lineCount", Integer.valueOf(paramInt1));
-    localHashMap.put("inputId", Integer.valueOf(i));
-    locala.d(localq).o(localHashMap).dispatch();
+    Object localObject = this.hMA;
+    if ((localObject instanceof v))
+    {
+      localObject = (v)localObject;
+      if (!com.tencent.mm.plugin.appbrand.widget.input.o.a((v)localObject, this.hMB)) {
+        break label121;
+      }
+    }
+    label121:
+    for (localObject = "ok";; localObject = "fail:input not exists")
+    {
+      this.hMA.h(this.bAX, this.hMC.j((String)localObject, null));
+      AppMethodBeat.o(123526);
+      return;
+      if ((localObject instanceof com.tencent.mm.plugin.appbrand.r))
+      {
+        localObject = ((com.tencent.mm.plugin.appbrand.r)localObject).getRuntime().atj().getCurrentPage().getCurrentPageView();
+        break;
+      }
+      ab.e("MicroMsg.JsApiHideKeyboard", "invalid component type while calling hide keyboard");
+      localObject = null;
+      break;
+    }
   }
 }
 

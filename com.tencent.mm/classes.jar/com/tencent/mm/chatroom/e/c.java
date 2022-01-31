@@ -1,22 +1,26 @@
 package com.tencent.mm.chatroom.e;
 
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
-import com.tencent.mm.protocal.c.big;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
+import com.tencent.mm.protocal.protobuf.bqw;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.sdk.platformtools.bo;
 
 @Deprecated
 public final class c
-  extends i.b
+  extends j.b
 {
-  private big dnk = new big();
+  private bqw eeL;
   
   public c(String paramString1, String paramString2)
   {
     super(16);
-    this.dnk.sQs = new bml().YI(bk.pm(paramString1));
-    this.dnk.svp = new bml().YI(bk.pm(paramString2));
-    this.mdD = this.dnk;
+    AppMethodBeat.i(103959);
+    this.eeL = new bqw();
+    this.eeL.wOT = new bwc().aoF(bo.nullAsNil(paramString1));
+    this.eeL.wow = new bwc().aoF(bo.nullAsNil(paramString2));
+    this.oDZ = this.eeL;
+    AppMethodBeat.o(103959);
   }
 }
 

@@ -1,77 +1,79 @@
 package com.tencent.mm.plugin.card.base;
 
-import com.tencent.mm.protocal.c.bru;
-import com.tencent.mm.protocal.c.lv;
-import com.tencent.mm.protocal.c.mb;
-import com.tencent.mm.protocal.c.mg;
+import com.tencent.mm.protocal.protobuf.ccf;
+import com.tencent.mm.protocal.protobuf.oj;
+import com.tencent.mm.protocal.protobuf.oz;
+import com.tencent.mm.protocal.protobuf.pg;
 
 public abstract interface b
 {
-  public abstract void a(lv paramlv);
+  public abstract void Hx(String paramString);
   
-  public abstract void a(mb parammb);
+  public abstract void a(oj paramoj);
   
-  public abstract mb azA();
+  public abstract void a(oz paramoz);
   
-  public abstract String azB();
+  public abstract boolean baJ();
   
-  public abstract String azC();
+  public abstract boolean baK();
   
-  public abstract String azD();
+  public abstract boolean baL();
   
-  public abstract long azE();
+  public abstract boolean baM();
   
-  public abstract String azF();
+  public abstract boolean baN();
   
-  public abstract int azG();
+  public abstract boolean baO();
   
-  public abstract String azH();
+  public abstract boolean baP();
   
-  public abstract boolean azd();
+  public abstract boolean baQ();
   
-  public abstract boolean aze();
+  public abstract boolean baR();
   
-  public abstract boolean azf();
+  public abstract boolean baS();
   
-  public abstract boolean azg();
+  public abstract boolean baT();
   
-  public abstract boolean azh();
+  public abstract boolean baU();
   
-  public abstract boolean azi();
+  public abstract boolean baV();
   
-  public abstract boolean azj();
+  public abstract boolean baW();
   
-  public abstract boolean azk();
+  public abstract boolean baX();
   
-  public abstract boolean azl();
+  public abstract boolean baY();
   
-  public abstract boolean azm();
+  public abstract boolean baZ();
   
-  public abstract boolean azn();
+  public abstract boolean bba();
   
-  public abstract boolean azo();
+  public abstract boolean bbb();
   
-  public abstract boolean azp();
+  public abstract boolean bbc();
   
-  public abstract boolean azq();
+  public abstract pg bbd();
   
-  public abstract boolean azr();
+  public abstract oj bbe();
   
-  public abstract boolean azs();
+  public abstract ccf bbf();
   
-  public abstract boolean azt();
+  public abstract oz bbg();
   
-  public abstract boolean azu();
+  public abstract String bbh();
   
-  public abstract boolean azv();
+  public abstract String bbi();
   
-  public abstract boolean azw();
+  public abstract String bbj();
   
-  public abstract mg azx();
+  public abstract long bbk();
   
-  public abstract lv azy();
+  public abstract String bbl();
   
-  public abstract bru azz();
+  public abstract int bbm();
+  
+  public abstract String bbn();
   
   public abstract long getEndTime();
   
@@ -79,13 +81,11 @@ public abstract interface b
   
   public abstract boolean isNormal();
   
-  public abstract String oL(int paramInt);
-  
-  public abstract void xW(String paramString);
+  public abstract String sV(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.base.b
  * JD-Core Version:    0.7.0.1
  */

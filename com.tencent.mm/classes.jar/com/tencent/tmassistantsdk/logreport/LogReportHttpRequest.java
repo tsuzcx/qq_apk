@@ -1,6 +1,7 @@
 package com.tencent.tmassistantsdk.logreport;
 
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tmassistantsdk.network.PostHttpRequest;
 import com.tencent.tmassistantsdk.protocol.ProtocolPackage;
 import com.tencent.tmassistantsdk.protocol.jce.ReportLogRequest;
@@ -14,9 +15,12 @@ public class LogReportHttpRequest
 {
   protected ILogReportHttpListener mListener = null;
   
-  protected void onFinished(JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt)
+  public void onFinished(JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt)
   {
-    if (paramJceStruct2 == null) {
+    AppMethodBeat.i(75816);
+    if (paramJceStruct2 == null)
+    {
+      AppMethodBeat.o(75816);
       return;
     }
     if ((this.mListener != null) && (paramInt == 0))
@@ -26,25 +30,34 @@ public class LogReportHttpRequest
         if (((ReportLogResponse)paramJceStruct2).ret == 0)
         {
           this.mListener.onLogReprotHttpRequestFinish(this, true);
+          AppMethodBeat.o(75816);
           return;
         }
         this.mListener.onLogReprotHttpRequestFinish(this, false);
+        AppMethodBeat.o(75816);
         return;
       }
       TMLog.i("LogReportHttpRequest", "response isn't instanceof ReportLogResponse !");
+      AppMethodBeat.o(75816);
       return;
     }
     TMLog.i("LogReportHttpRequest", "mListener is null !");
+    AppMethodBeat.o(75816);
   }
   
   public boolean sendLogDataToServer(byte paramByte, BaseLogTable.DataWrapper paramDataWrapper)
   {
-    if (paramDataWrapper == null) {
+    AppMethodBeat.i(75815);
+    if (paramDataWrapper == null)
+    {
+      AppMethodBeat.o(75815);
       return false;
     }
     String str = GlobalUtil.getAppPackageName(GlobalUtil.getInstance().getContext());
     int i = GlobalUtil.getAppVersionCode(GlobalUtil.getInstance().getContext());
-    return super.sendRequest((ReportLogRequest)ProtocolPackage.buildReportRequest(paramByte, paramDataWrapper.dataList, str, i, ""));
+    boolean bool = super.sendRequest((ReportLogRequest)ProtocolPackage.buildReportRequest(paramByte, paramDataWrapper.dataList, str, i, ""));
+    AppMethodBeat.o(75815);
+    return bool;
   }
   
   public void setmListener(ILogReportHttpListener paramILogReportHttpListener)

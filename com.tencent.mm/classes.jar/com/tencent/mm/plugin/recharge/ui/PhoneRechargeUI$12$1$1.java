@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.recharge.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recharge.model.a;
 import com.tencent.mm.plugin.recharge.ui.form.c.b;
 
@@ -10,8 +11,10 @@ final class PhoneRechargeUI$12$1$1
   
   public final void run()
   {
-    PhoneRechargeUI.b(this.nre.nrd.nrb).setInput(this.nqs);
-    PhoneRechargeUI.LE(this.nre.nrc);
+    AppMethodBeat.i(44263);
+    PhoneRechargeUI.b(this.pWs.pWr.pWp).setInput(this.pVG);
+    PhoneRechargeUI.XP(this.pWs.pWq);
+    AppMethodBeat.o(44263);
   }
 }
 

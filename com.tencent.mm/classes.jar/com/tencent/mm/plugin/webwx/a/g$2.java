@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.webwx.a;
 
-import com.tencent.mm.model.aq;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.as;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 
 final class g$2
-  implements aq
+  implements as
 {
   g$2(g paramg) {}
   
-  public final void Hn()
+  public final void aaq()
   {
-    au.Hx();
-    if (c.Fs()) {
-      g.cha();
+    AppMethodBeat.i(26509);
+    aw.aaz();
+    if (c.Yw()) {
+      g.dhi();
     }
+    AppMethodBeat.o(26509);
   }
 }
 

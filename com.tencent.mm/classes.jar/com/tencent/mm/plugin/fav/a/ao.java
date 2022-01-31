@@ -1,92 +1,104 @@
 package com.tencent.mm.plugin.fav.a;
 
 import android.os.Bundle;
-import com.tencent.mm.h.a.kv;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.lj;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.platformtools.SensorController;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bb;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class ao
   implements n.a
 {
-  private static n kai = null;
-  private static ao kaj = null;
-  public int bNM;
+  private static n muE = null;
+  private static ao muF = null;
+  public int cve;
   public int duration;
   public String path;
   
-  public static ao aQQ()
+  public static ao bxf()
   {
-    if (kaj == null) {
-      kaj = new ao();
+    AppMethodBeat.i(102749);
+    if (muF == null) {
+      muF = new ao();
     }
-    return kaj;
+    ao localao = muF;
+    AppMethodBeat.o(102749);
+    return localao;
   }
   
-  public static n aQS()
+  public static n bxh()
   {
-    return kai;
+    return muE;
   }
   
-  public final void aQR()
+  public final void bK(String paramString, int paramInt)
   {
-    if (kai == null) {
-      kai = new n();
-    }
-    kai.a(this);
-    kai.jZD = true;
-    n localn = kai;
-    if (n.iah == null) {
-      n.iah = new SensorController(ae.getContext());
-    }
-    if (localn.ial == null) {
-      localn.ial = new bb(ae.getContext());
-    }
-  }
-  
-  public final void bj(String paramString, int paramInt)
-  {
-    y.d("MicroMsg.WNNoteVoicePlayLogic", "on play, my path %s, my duration %d, play path %s", new Object[] { this.path, Integer.valueOf(this.duration), paramString });
+    AppMethodBeat.i(102751);
+    ab.d("MicroMsg.WNNoteVoicePlayLogic", "on play, my path %s, my duration %d, play path %s", new Object[] { this.path, Integer.valueOf(this.duration), paramString });
     Bundle localBundle = new Bundle();
     localBundle.putInt("actionCode", 1);
-    if (!bk.aM(paramString, "").equals(this.path)) {
+    if (!bo.bf(paramString, "").equals(this.path)) {
       localBundle.putBoolean("result", true);
     }
     for (;;)
     {
       localBundle.putInt("position", paramInt);
-      paramString = new kv();
-      paramString.bTV.bTQ = localBundle;
-      paramString.bTV.type = 4;
-      a.udP.m(paramString);
+      paramString = new lj();
+      paramString.cBB.cBw = localBundle;
+      paramString.cBB.type = 4;
+      a.ymk.l(paramString);
+      AppMethodBeat.o(102751);
       return;
       localBundle.putBoolean("result", false);
     }
   }
   
+  public final void bxg()
+  {
+    AppMethodBeat.i(102750);
+    if (muE == null) {
+      muE = new n();
+    }
+    muE.a(this);
+    muE.mtZ = true;
+    n localn = muE;
+    if (n.mub == null) {
+      n.mub = new SensorController(ah.getContext());
+    }
+    if (localn.mtY == null) {
+      localn.mtY = new bf(ah.getContext());
+    }
+    AppMethodBeat.o(102750);
+  }
+  
   public final void onFinish()
   {
-    kai.stopPlay();
+    AppMethodBeat.i(102752);
+    muE.stopPlay();
     Bundle localBundle = new Bundle();
     localBundle.putInt("actionCode", 2);
-    kv localkv = new kv();
-    localkv.bTV.bTQ = localBundle;
-    localkv.bTV.type = 4;
-    a.udP.m(localkv);
+    lj locallj = new lj();
+    locallj.cBB.cBw = localBundle;
+    locallj.cBB.type = 4;
+    a.ymk.l(locallj);
+    AppMethodBeat.o(102752);
   }
   
   public final void onPause()
   {
-    kai.aQm();
+    AppMethodBeat.i(102753);
+    muE.bwB();
     Bundle localBundle = new Bundle();
     localBundle.putInt("actionCode", 3);
-    kv localkv = new kv();
-    localkv.bTV.bTQ = localBundle;
-    localkv.bTV.type = 4;
-    a.udP.m(localkv);
+    lj locallj = new lj();
+    locallj.cBB.cBw = localBundle;
+    locallj.cBB.type = 4;
+    a.ymk.l(locallj);
+    AppMethodBeat.o(102753);
   }
 }
 

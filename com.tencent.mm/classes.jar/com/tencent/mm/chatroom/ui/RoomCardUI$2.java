@@ -1,20 +1,24 @@
 package com.tencent.mm.chatroom.ui;
 
-import com.tencent.mm.roomsdk.a.b.a;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RoomCardUI$2
-  implements a
+  implements DialogInterface.OnClickListener
 {
   RoomCardUI$2(RoomCardUI paramRoomCardUI) {}
   
-  public final void a(int paramInt1, int paramInt2, String paramString, a parama)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RoomCardUI.a(this.dpS, paramInt1, paramInt2, paramString);
+    AppMethodBeat.i(155166);
+    RoomCardUI.d(this.ehp);
+    AppMethodBeat.o(155166);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.RoomCardUI.2
  * JD-Core Version:    0.7.0.1
  */

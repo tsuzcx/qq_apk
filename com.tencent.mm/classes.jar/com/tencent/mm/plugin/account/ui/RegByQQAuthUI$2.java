@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RegByQQAuthUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class RegByQQAuthUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.frL.XM();
-    this.frL.finish();
+    AppMethodBeat.i(125500);
+    this.gJn.hideVKB();
+    this.gJn.finish();
+    AppMethodBeat.o(125500);
     return true;
   }
 }

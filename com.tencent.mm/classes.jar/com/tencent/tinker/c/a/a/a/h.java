@@ -9,36 +9,36 @@ import com.tencent.tinker.c.a.c.c;
 public final class h
   extends i<com.tencent.tinker.a.a.h>
 {
-  private t.a wUy = null;
-  private i.e wUz = null;
+  private t.a Brc = null;
+  private i.e Brd = null;
   
   public h(com.tencent.tinker.c.a.b.a parama, com.tencent.tinker.a.a.i parami1, com.tencent.tinker.a.a.i parami2, c paramc)
   {
     super(parama, parami1, paramc);
     if (parami2 != null)
     {
-      this.wUy = parami2.wSC.wTk;
-      this.wUz = parami2.a(this.wUy);
+      this.Brc = parami2.Bpj.BpR;
+      this.Brd = parami2.a(this.Brc);
     }
   }
   
   protected final void a(c paramc, int paramInt1, int paramInt2)
   {
     if (paramInt2 >= 0) {
-      paramc.wVR.JS(paramInt2);
+      paramc.Bsw.SN(paramInt2);
     }
   }
   
   protected final void a(c paramc, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramInt2 != paramInt4) {
-      paramc.wVD.put(paramInt2, paramInt4);
+      paramc.Bsi.put(paramInt2, paramInt4);
     }
   }
   
   protected final t.a c(com.tencent.tinker.a.a.i parami)
   {
-    return parami.wSC.wTk;
+    return parami.Bpj.BpR;
   }
 }
 

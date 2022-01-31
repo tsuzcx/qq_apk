@@ -1,9 +1,10 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class i$2
   implements Runnable
@@ -12,21 +13,24 @@ final class i$2
   
   public final void run()
   {
-    if (!au.DK())
+    AppMethodBeat.i(34398);
+    if (!aw.RG())
     {
-      i.c(this.vSJ).stopTimer();
-      y.e("MicroMsg.EnterpriseConversationAdapter", "dkpno handleDataChange acc has not ready");
+      i.c(this.AkC).stopTimer();
+      ab.e("MicroMsg.EnterpriseConversationAdapter", "dkpno handleDataChange acc has not ready");
+      AppMethodBeat.o(34398);
       return;
     }
-    long l = ah.UY();
-    i.d(this.vSJ);
-    l = ah.co(l) * 3L;
-    y.d("MicroMsg.EnterpriseConversationAdapter", "dkpno handleDataChange guest:%d old:%d needNotify:%b", new Object[] { Long.valueOf(l), Long.valueOf(i.cIj()), Boolean.valueOf(i.a(this.vSJ)) });
-    i.jdMethod_if((l + i.cIj()) / 2L);
-    i.e(this.vSJ);
-    am localam = i.c(this.vSJ);
-    l = i.cIj();
-    localam.S(l, l);
+    long l = ah.aoy();
+    i.d(this.AkC);
+    l = ah.hl(l) * 3L;
+    ab.d("MicroMsg.EnterpriseConversationAdapter", "dkpno handleDataChange guest:%d old:%d needNotify:%b", new Object[] { Long.valueOf(l), Long.valueOf(i.access$600()), Boolean.valueOf(i.a(this.AkC)) });
+    i.oR((l + i.access$600()) / 2L);
+    i.e(this.AkC);
+    ap localap = i.c(this.AkC);
+    l = i.access$600();
+    localap.ag(l, l);
+    AppMethodBeat.o(34398);
   }
 }
 

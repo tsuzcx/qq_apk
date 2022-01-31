@@ -7,7 +7,8 @@ import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.f;
 import java.util.Timer;
 
@@ -18,120 +19,131 @@ final class CropImageView$3
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!CropImageView.u(this.vZj)) {}
-    do
+    AppMethodBeat.i(107603);
+    if (!CropImageView.u(this.Arw))
     {
-      int i;
-      do
-      {
-        do
-        {
-          return false;
-        } while (CropImageView.i(this.vZj) == null);
-        i = paramMotionEvent.getAction() & 0xFF;
-        y.d("MicroMsg.CropImageView", "on touch : event type=" + i + ", isDownOnImg=" + CropImageView.v(this.vZj));
-      } while ((!CropImageView.v(this.vZj)) && (i != 0));
-      switch (i)
-      {
-      case 3: 
-      case 4: 
-      default: 
-        return false;
-      case 0: 
-        y.d("MicroMsg.CropImageView", "action_down");
-        CropImageView.a(this.vZj, paramMotionEvent.getRawX());
-        CropImageView.b(this.vZj, paramMotionEvent.getRawY());
-        y.d("MicroMsg.CropImageView", "lastX=" + CropImageView.w(this.vZj) + ",lastY=" + CropImageView.x(this.vZj));
-        CropImageView.c(this.vZj, CropImageView.w(this.vZj));
-        CropImageView.d(this.vZj, CropImageView.x(this.vZj));
-        paramView = this.vZj.getImageMatrix();
-        paramMotionEvent = new RectF();
-        paramMotionEvent.set(0.0F, 0.0F, CropImageView.i(this.vZj).getWidth(), CropImageView.i(this.vZj).getHeight());
-        paramView.mapRect(paramMotionEvent);
-        CropImageView.a(this.vZj, paramMotionEvent.contains(CropImageView.w(this.vZj), CropImageView.x(this.vZj)));
-        CropImageView.a(this.vZj, System.currentTimeMillis());
-        return false;
-      case 5: 
-        y.d("MicroMsg.CropImageView", "action_mult_down");
-        CropImageView.b(this.vZj, true);
-        this.vZj.oOR = f.I(paramMotionEvent);
-      }
-    } while (this.vZj.oOR <= 5.0F);
-    this.vZj.vYS = true;
-    f.a(CropImageView.h(this.vZj), paramMotionEvent);
-    return true;
-    y.d("MicroMsg.CropImageView", "action_mult_up");
-    this.vZj.vYS = false;
-    CropImageView.b(this.vZj, true);
-    return true;
-    y.d("MicroMsg.CropImageView", "action_move");
-    float f1;
-    if (this.vZj.vYS)
+      AppMethodBeat.o(107603);
+      return false;
+    }
+    if (CropImageView.i(this.Arw) == null)
     {
-      y.d("MicroMsg.CropImageView", "is valid mult down");
-      this.vZj.oOS = f.I(paramMotionEvent);
-      f1 = this.vZj.oOS - this.vZj.oOR;
-      if ((this.vZj.oOS > 5.0F) && (Math.abs(f1) > 5.0F))
-      {
-        f.a(CropImageView.h(this.vZj), paramMotionEvent);
-        y.d("MicroMsg.CropImageView", "mX=" + CropImageView.h(this.vZj).x + ",mY=" + CropImageView.h(this.vZj).y);
-        if (f1 <= 0.0F) {
-          break label690;
-        }
-        y.d("MicroMsg.CropImageView", "zoom in");
-        this.vZj.zoomIn();
-      }
+      AppMethodBeat.o(107603);
+      return false;
+    }
+    int i = paramMotionEvent.getAction() & 0xFF;
+    ab.d("MicroMsg.CropImageView", "on touch : event type=" + i + ", isDownOnImg=" + CropImageView.v(this.Arw));
+    if ((!CropImageView.v(this.Arw)) && (i != 0))
+    {
+      AppMethodBeat.o(107603);
+      return false;
+    }
+    switch (i)
+    {
     }
     for (;;)
     {
-      this.vZj.oOR = this.vZj.oOS;
-      if (!CropImageView.y(this.vZj))
+      AppMethodBeat.o(107603);
+      return false;
+      ab.d("MicroMsg.CropImageView", "action_mult_down");
+      CropImageView.b(this.Arw, true);
+      this.Arw.rGE = f.S(paramMotionEvent);
+      if (this.Arw.rGE > 5.0F)
       {
-        f1 = paramMotionEvent.getRawX() - CropImageView.w(this.vZj);
-        float f2 = paramMotionEvent.getRawY() - CropImageView.x(this.vZj);
-        if ((Math.abs(f1) > 5.0F) || (Math.abs(f2) > 5.0F)) {
-          this.vZj.getImageMatrix().postTranslate(f1, f2);
+        this.Arw.Arf = true;
+        f.a(CropImageView.h(this.Arw), paramMotionEvent);
+        AppMethodBeat.o(107603);
+        return true;
+        ab.d("MicroMsg.CropImageView", "action_mult_up");
+        this.Arw.Arf = false;
+        CropImageView.b(this.Arw, true);
+        AppMethodBeat.o(107603);
+        return true;
+        ab.d("MicroMsg.CropImageView", "action_down");
+        CropImageView.a(this.Arw, paramMotionEvent.getRawX());
+        CropImageView.b(this.Arw, paramMotionEvent.getRawY());
+        ab.d("MicroMsg.CropImageView", "lastX=" + CropImageView.w(this.Arw) + ",lastY=" + CropImageView.x(this.Arw));
+        CropImageView.c(this.Arw, CropImageView.w(this.Arw));
+        CropImageView.d(this.Arw, CropImageView.x(this.Arw));
+        paramView = this.Arw.getImageMatrix();
+        paramMotionEvent = new RectF();
+        paramMotionEvent.set(0.0F, 0.0F, CropImageView.i(this.Arw).getWidth(), CropImageView.i(this.Arw).getHeight());
+        paramView.mapRect(paramMotionEvent);
+        CropImageView.a(this.Arw, paramMotionEvent.contains(CropImageView.w(this.Arw), CropImageView.x(this.Arw)));
+        CropImageView.a(this.Arw, System.currentTimeMillis());
+        continue;
+        ab.d("MicroMsg.CropImageView", "action_move");
+        float f1;
+        if (this.Arw.Arf)
+        {
+          ab.d("MicroMsg.CropImageView", "is valid mult down");
+          this.Arw.rGF = f.S(paramMotionEvent);
+          f1 = this.Arw.rGF - this.Arw.rGE;
+          if ((this.Arw.rGF > 5.0F) && (Math.abs(f1) > 5.0F))
+          {
+            f.a(CropImageView.h(this.Arw), paramMotionEvent);
+            ab.d("MicroMsg.CropImageView", "mX=" + CropImageView.h(this.Arw).x + ",mY=" + CropImageView.h(this.Arw).y);
+            if (f1 <= 0.0F) {
+              break label731;
+            }
+            ab.d("MicroMsg.CropImageView", "zoom in");
+            this.Arw.zoomIn();
+          }
         }
-        this.vZj.invalidate();
+        for (;;)
+        {
+          this.Arw.rGE = this.Arw.rGF;
+          if (!CropImageView.y(this.Arw))
+          {
+            f1 = paramMotionEvent.getRawX() - CropImageView.w(this.Arw);
+            float f2 = paramMotionEvent.getRawY() - CropImageView.x(this.Arw);
+            if ((Math.abs(f1) > 5.0F) || (Math.abs(f2) > 5.0F)) {
+              this.Arw.getImageMatrix().postTranslate(f1, f2);
+            }
+            this.Arw.invalidate();
+          }
+          CropImageView.b(this.Arw, false);
+          CropImageView.a(this.Arw, paramMotionEvent.getRawX());
+          CropImageView.b(this.Arw, paramMotionEvent.getRawY());
+          break;
+          label731:
+          ab.d("MicroMsg.CropImageView", "zoom out");
+          this.Arw.zoomOut();
+        }
+        ab.d("MicroMsg.CropImageView", "action_up");
+        if (CropImageView.z(this.Arw))
+        {
+          CropImageView.c(this.Arw, false);
+          if (CropImageView.A(this.Arw))
+          {
+            CropImageView.d(this.Arw, false);
+            this.Arw.zoomOut();
+            this.Arw.zoomOut();
+            this.Arw.zoomOut();
+            this.Arw.zoomOut();
+            this.Arw.zoomOut();
+          }
+          else
+          {
+            CropImageView.d(this.Arw, true);
+            this.Arw.zoomIn();
+            this.Arw.zoomIn();
+            this.Arw.zoomIn();
+            this.Arw.zoomIn();
+            this.Arw.zoomIn();
+          }
+        }
+        else
+        {
+          CropImageView.c(this.Arw, true);
+          if (CropImageView.B(this.Arw) != null) {
+            CropImageView.B(this.Arw).cancel();
+          }
+          CropImageView.a(this.Arw, new Timer());
+          paramView = new CropImageView.3.1(this, paramMotionEvent);
+          CropImageView.B(this.Arw).schedule(paramView, 200L);
+        }
       }
-      CropImageView.b(this.vZj, false);
-      CropImageView.a(this.vZj, paramMotionEvent.getRawX());
-      CropImageView.b(this.vZj, paramMotionEvent.getRawY());
-      return false;
-      label690:
-      y.d("MicroMsg.CropImageView", "zoom out");
-      this.vZj.zoomOut();
     }
-    y.d("MicroMsg.CropImageView", "action_up");
-    if (CropImageView.z(this.vZj))
-    {
-      CropImageView.c(this.vZj, false);
-      if (CropImageView.A(this.vZj))
-      {
-        CropImageView.d(this.vZj, false);
-        this.vZj.zoomOut();
-        this.vZj.zoomOut();
-        this.vZj.zoomOut();
-        this.vZj.zoomOut();
-        this.vZj.zoomOut();
-        return false;
-      }
-      CropImageView.d(this.vZj, true);
-      this.vZj.zoomIn();
-      this.vZj.zoomIn();
-      this.vZj.zoomIn();
-      this.vZj.zoomIn();
-      this.vZj.zoomIn();
-      return false;
-    }
-    CropImageView.c(this.vZj, true);
-    if (CropImageView.B(this.vZj) != null) {
-      CropImageView.B(this.vZj).cancel();
-    }
-    CropImageView.a(this.vZj, new Timer());
-    paramView = new CropImageView.3.1(this, paramMotionEvent);
-    CropImageView.B(this.vZj).schedule(paramView, 200L);
-    return false;
   }
 }
 

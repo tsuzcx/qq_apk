@@ -1,20 +1,30 @@
 package com.tencent.mm.plugin.appbrand.widget.b;
 
-import android.content.DialogInterface;
+import android.content.Context;
 import android.view.View;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface h
-  extends DialogInterface
+public final class h
+  extends g
 {
-  public abstract void a(i parami);
+  private TextView jjC;
   
-  public abstract boolean arC();
+  public h(Context paramContext)
+  {
+    super(paramContext);
+    AppMethodBeat.i(143668);
+    setContentView(2130970266);
+    this.jjC = ((TextView)getContentView().findViewById(2131821848));
+    AppMethodBeat.o(143668);
+  }
   
-  public abstract View getContentView();
-  
-  public abstract boolean isCancelable();
-  
-  public abstract void onCancel();
+  public final void setMessage(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(143669);
+    this.jjC.setText(paramCharSequence);
+    AppMethodBeat.o(143669);
+  }
 }
 
 

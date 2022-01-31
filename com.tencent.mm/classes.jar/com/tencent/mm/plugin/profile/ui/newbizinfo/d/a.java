@@ -1,37 +1,49 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo.d;
 
-import com.tencent.mm.plugin.profile.ui.newbizinfo.b.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.profile.ui.newbizinfo.b.h;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
-  extends i<d>
+  extends j<h>
 {
-  public static final String[] dUb = { i.a(d.dUa, "ProfileInfo") };
-  public static final String[] dUc = new String[0];
+  public static final String[] fkl;
+  public static final String[] fkm;
+  
+  static
+  {
+    AppMethodBeat.i(23959);
+    fkl = new String[] { j.getCreateSQLs(h.fkk, "ProfileInfo") };
+    fkm = new String[0];
+    AppMethodBeat.o(23959);
+  }
   
   public a(e parame)
   {
-    super(parame, d.dUa, "ProfileInfo", dUc);
+    super(parame, h.fkk, "ProfileInfo", fkm);
   }
   
-  public final d Lb(String paramString)
+  public final h Xk(String paramString)
   {
-    d locald = new d();
-    locald.field_username = paramString;
-    if (!b(locald, new String[] { "username" }))
+    AppMethodBeat.i(23958);
+    h localh = new h();
+    localh.field_username = paramString;
+    if (!get(localh, new String[] { "username" }))
     {
-      y.e("MicroMsg.ProfileInfoStorage", "profileInfo is null");
+      ab.e("MicroMsg.ProfileInfoStorage", "profileInfo is null");
+      AppMethodBeat.o(23958);
       return null;
     }
-    y.i("MicroMsg.ProfileInfoStorage", "get username:%s", new Object[] { locald.field_username });
-    return locald;
+    ab.i("MicroMsg.ProfileInfoStorage", "get username:%s", new Object[] { localh.field_username });
+    AppMethodBeat.o(23958);
+    return localh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.d.a
  * JD-Core Version:    0.7.0.1
  */

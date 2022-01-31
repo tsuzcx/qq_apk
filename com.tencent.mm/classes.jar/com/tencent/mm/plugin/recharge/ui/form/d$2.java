@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.recharge.ui.form;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recharge.a.a;
 import java.util.LinkedList;
 
@@ -12,12 +13,14 @@ final class d$2
   
   public final void onClick(View paramView)
   {
-    a.bva().ce(null);
-    d.b(this.nsF).bvr();
-    this.nsF.ce(new LinkedList());
-    if (d.c(this.nsF) != null) {
-      d.c(this.nsF).bvi();
+    AppMethodBeat.i(44404);
+    a.cfm().cH(null);
+    d.b(this.pXT).cfK();
+    this.pXT.cH(new LinkedList());
+    if (d.c(this.pXT) != null) {
+      d.c(this.pXT).cfz();
     }
+    AppMethodBeat.o(44404);
   }
 }
 

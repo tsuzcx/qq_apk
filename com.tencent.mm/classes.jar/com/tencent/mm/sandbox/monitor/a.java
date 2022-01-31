@@ -6,13 +6,14 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import com.tencent.mm.a.c;
 import com.tencent.mm.a.g;
-import com.tencent.mm.a.o;
+import com.tencent.mm.a.p;
+import com.tencent.mm.a.r;
+import com.tencent.mm.compatible.e.q;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.d;
 import com.tencent.mm.sandbox.updater.AppUpdaterUI;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -25,47 +26,47 @@ import java.util.regex.Pattern;
 
 public final class a
 {
-  static final HashMap<String, Integer> dBh;
+  static final HashMap<String, Integer> euI;
   
   static
   {
     HashMap localHashMap = new HashMap(16);
-    dBh = localHashMap;
+    euI = localHashMap;
     localHashMap.put("exception", Integer.valueOf(10001));
-    dBh.put("anr", Integer.valueOf(10002));
-    dBh.put("handler", Integer.valueOf(10003));
-    dBh.put("sql", Integer.valueOf(10004));
-    dBh.put("permission", Integer.valueOf(10005));
-    dBh.put("main_thread_watch", Integer.valueOf(10006));
+    euI.put("anr", Integer.valueOf(10002));
+    euI.put("handler", Integer.valueOf(10003));
+    euI.put("sql", Integer.valueOf(10004));
+    euI.put("permission", Integer.valueOf(10005));
+    euI.put("main_thread_watch", Integer.valueOf(10006));
   }
   
   public static int a(String paramString1, String paramString2, b.a parama)
   {
-    if (bk.bl(parama.toString())) {
+    if (bo.isNullOrNil(parama.toString())) {
       return -1;
     }
-    Object localObject = new File(ac.dOP + "crash/");
+    Object localObject = new File(ac.eQv + "crash/");
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdir();
     }
-    localObject = ac.dOP + "crash/" + paramString1 + "." + paramString2 + ".crashini";
-    com.tencent.mm.sdk.e.a.i((String)localObject, "count", bk.c(com.tencent.mm.sdk.e.a.gj((String)localObject, "count")) + 1L);
-    if (bk.c(com.tencent.mm.sdk.e.a.gj((String)localObject, "lasttime")) == 0L) {
-      com.tencent.mm.sdk.e.a.i((String)localObject, "lasttime", bk.UY());
+    localObject = ac.eQv + "crash/" + paramString1 + "." + paramString2 + ".crashini";
+    com.tencent.mm.sdk.e.a.r((String)localObject, "count", bo.c(com.tencent.mm.sdk.e.a.ik((String)localObject, "count")) + 1L);
+    if (bo.c(com.tencent.mm.sdk.e.a.ik((String)localObject, "lasttime")) == 0L) {
+      com.tencent.mm.sdk.e.a.r((String)localObject, "lasttime", bo.aoy());
     }
-    localObject = ac.dOP + "crash/" + paramString1 + "." + paramString2 + ".crashlog";
-    y.d("MicroMsg.CrashUpload", "crash:[%s] len:[%d]", new Object[] { localObject, Integer.valueOf(parama.toString().length()) });
+    localObject = ac.eQv + "crash/" + paramString1 + "." + paramString2 + ".crashlog";
+    ab.d("MicroMsg.CrashUpload", "crash:[%s] len:[%d]", new Object[] { localObject, Integer.valueOf(parama.toString().length()) });
     a(parama);
     a((String)localObject, parama);
-    return gb(paramString1, paramString2);
+    return ic(paramString1, paramString2);
   }
   
   private static void a(b.a parama)
   {
-    if (!parama.ubI) {
+    if (!parama.yjX) {
       return;
     }
-    Object localObject = new File(com.tencent.mm.compatible.util.e.dOR);
+    Object localObject = new File(com.tencent.mm.compatible.util.e.eQA);
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -77,9 +78,9 @@ public final class a
       while (i < j)
       {
         localSimpleDateFormat = localObject[i];
-        if (bk.co(localSimpleDateFormat.lastModified()) > 604800000L)
+        if (bo.hl(localSimpleDateFormat.lastModified()) > 604800000L)
         {
-          y.i("MicroMsg.CrashUpload", "dealWithSdcardCrash del old file: %s", new Object[] { localSimpleDateFormat.getPath() });
+          ab.i("MicroMsg.CrashUpload", "dealWithSdcardCrash del old file: %s", new Object[] { localSimpleDateFormat.getPath() });
           localSimpleDateFormat.delete();
         }
         i += 1;
@@ -87,8 +88,8 @@ public final class a
     }
     localObject = new Date();
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
-    localObject = com.tencent.mm.compatible.util.e.dOR + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
-    y.i("MicroMsg.CrashUpload", "dealWithSdcardCrash %s", new Object[] { localObject });
+    localObject = com.tencent.mm.compatible.util.e.eQA + "crash_" + localSimpleDateFormat.format((Date)localObject) + ".txt";
+    ab.i("MicroMsg.CrashUpload", "dealWithSdcardCrash %s", new Object[] { localObject });
     a((String)localObject, parama);
   }
   
@@ -99,45 +100,59 @@ public final class a
     Object localObject;
     if (!new File(paramString).exists())
     {
-      i = ae.getContext().getSharedPreferences("system_config_prefs", 0).getInt("default_uin", 0);
+      i = ah.getContext().getSharedPreferences("system_config_prefs", 0).getInt("default_uin", 0);
       localStringBuilder = new StringBuilder();
       if (i != 0) {
-        break label323;
+        break label335;
       }
-      localObject = bk.fP(ae.getContext());
-      if (bk.bl((String)localObject)) {
-        break label251;
+      localObject = q.bP(false);
+      if (bo.isNullOrNil((String)localObject)) {
+        break label261;
       }
       localStringBuilder.append("uin[" + (String)localObject + "] ");
     }
     for (;;)
     {
-      localStringBuilder.append(y.getSysInfo());
+      localStringBuilder.append(ab.getSysInfo());
       localStringBuilder.append(" BRAND:[" + Build.BRAND + "] ");
-      localObject = com.tencent.mm.compatible.e.q.zm();
+      localObject = q.LQ();
       localStringBuilder.append("c1[" + localObject[0] + "] ");
       localStringBuilder.append("c2[" + localObject[1] + "] ");
       localStringBuilder.append("\n");
       com.tencent.mm.a.e.e(paramString, localStringBuilder.toString().getBytes());
-      if (com.tencent.mm.a.e.bJ(paramString) > 10485760) {
+      if (com.tencent.mm.a.e.cM(paramString) > 10485760) {
         com.tencent.mm.a.e.deleteFile(paramString);
       }
       com.tencent.mm.a.e.e(paramString, (parama.toString() + "\n").getBytes());
       return;
-      label251:
+      label261:
       localObject = Build.DEVICE + Build.FINGERPRINT + Build.MANUFACTURER + Build.MODEL;
       localStringBuilder.append("uin[" + Integer.toString(((String)localObject).hashCode()) + "] ");
       continue;
-      label323:
-      localStringBuilder.append("uin[" + o.getString(i) + "] ");
+      label335:
+      localStringBuilder.append("uin[" + p.getString(i) + "] ");
     }
   }
   
-  public static int cpE()
+  private static void aC(String paramString1, String paramString2, String paramString3)
   {
-    Object localObject = new File(ac.dOP + "crash/");
+    byte[] arrayOfByte = com.tencent.mm.a.e.j(paramString3, 0, -1);
+    if (bo.ce(arrayOfByte)) {
+      return;
+    }
+    int i = arrayOfByte.length;
+    paramString3 = g.w(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.whH), Integer.valueOf(i) }).getBytes()).toLowerCase();
+    arrayOfByte = r.compress(arrayOfByte);
+    PByteArray localPByteArray = new PByteArray();
+    c.a(localPByteArray, arrayOfByte, paramString3.getBytes());
+    com.tencent.mm.sdk.g.d.post(new a.2(i, paramString3, paramString2, paramString1, localPByteArray), "CrashUpload_upload");
+  }
+  
+  public static int drs()
+  {
+    Object localObject = new File(ac.eQv + "crash/");
     if (!((File)localObject).exists()) {
-      y.w("MicroMsg.CrashUpload", "dkcrash checkUpload dir never create ?");
+      ab.w("MicroMsg.CrashUpload", "dkcrash checkUpload dir never create ?");
     }
     String[] arrayOfString;
     do
@@ -146,7 +161,7 @@ public final class a
       if (((File)localObject).isFile())
       {
         ((File)localObject).delete();
-        y.w("MicroMsg.CrashUpload", "dkcrash is the fucking file ??");
+        ab.w("MicroMsg.CrashUpload", "dkcrash is the fucking file ??");
         return -1;
       }
       arrayOfString = ((File)localObject).list(new a.1());
@@ -168,7 +183,7 @@ public final class a
       label153:
       for (localObject = localObject[1];; localObject = "")
       {
-        gb(str, (String)localObject);
+        ic(str, (String)localObject);
         i += 1;
         break;
       }
@@ -176,31 +191,21 @@ public final class a
     return 1;
   }
   
-  private static int gb(String paramString1, String paramString2)
+  private static int ic(String paramString1, String paramString2)
   {
-    String str1 = ac.dOP + "crash/" + paramString1 + "." + paramString2 + ".crashini";
-    long l1 = bk.c(com.tencent.mm.sdk.e.a.gj(str1, "count"));
-    long l2 = bk.c(com.tencent.mm.sdk.e.a.gj(str1, "lasttime"));
-    long l3 = bk.UY();
-    String str2 = ac.dOP + "crash/" + paramString1 + "." + paramString2 + ".crashlog";
-    int i = com.tencent.mm.a.e.bJ(str2);
-    y.d("MicroMsg.CrashUpload", "dkcrash count:" + l1 + " t:" + (l3 - l2) + " len:" + i);
-    if (i < 5242880)
-    {
-      byte[] arrayOfByte = com.tencent.mm.a.e.d(str2, 0, -1);
-      if (!bk.bE(arrayOfByte))
-      {
-        i = arrayOfByte.length;
-        String str3 = g.o(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.spa), Integer.valueOf(i) }).getBytes()).toLowerCase();
-        arrayOfByte = com.tencent.mm.a.q.l(arrayOfByte);
-        PByteArray localPByteArray = new PByteArray();
-        c.a(localPByteArray, arrayOfByte, str3.getBytes());
-        com.tencent.mm.sdk.f.e.post(new a.2(i, str3, paramString2, paramString1, localPByteArray), "CrashUpload_upload");
-      }
+    String str1 = ac.eQv + "crash/" + paramString1 + "." + paramString2 + ".crashini";
+    long l1 = bo.c(com.tencent.mm.sdk.e.a.ik(str1, "count"));
+    long l2 = bo.c(com.tencent.mm.sdk.e.a.ik(str1, "lasttime"));
+    long l3 = bo.aoy();
+    String str2 = ac.eQv + "crash/" + paramString1 + "." + paramString2 + ".crashlog";
+    int i = com.tencent.mm.a.e.cM(str2);
+    ab.d("MicroMsg.CrashUpload", "dkcrash count:" + l1 + " t:" + (l3 - l2) + " len:" + i);
+    if (i < 5242880) {
+      aC(paramString1, paramString2, str2);
     }
     com.tencent.mm.a.e.deleteFile(str2);
-    new com.tencent.mm.sdk.e.a(str1).dq("count", 0);
-    com.tencent.mm.sdk.e.a.i(str1, "lasttime", bk.UY());
+    com.tencent.mm.sdk.e.a.il(str1, "count");
+    com.tencent.mm.sdk.e.a.r(str1, "lasttime", bo.aoy());
     return 1;
   }
 }

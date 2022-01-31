@@ -1,10 +1,13 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,65 +17,68 @@ import java.util.Set;
 public final class d
   implements f
 {
-  public Map<Integer, Set<t>> edB = new HashMap();
+  Map<Integer, Set<t>> ftE;
   
   public d()
   {
-    g.DO().dJT.a(452, this);
+    AppMethodBeat.i(79237);
+    this.ftE = new HashMap();
+    g.RK().eHt.a(452, this);
+    AppMethodBeat.o(79237);
   }
   
   public static void a(int paramInt, x paramx)
   {
+    AppMethodBeat.i(79240);
     paramx = new y(paramInt, paramx);
-    g.DO().dJT.a(paramx, 0);
+    g.RK().eHt.a(paramx, 0);
+    AppMethodBeat.o(79240);
   }
   
   public final void a(int paramInt, t paramt)
   {
-    if (!this.edB.containsKey(Integer.valueOf(paramInt))) {
-      this.edB.put(Integer.valueOf(paramInt), new HashSet());
-    }
-    if (!((Set)this.edB.get(Integer.valueOf(paramInt))).contains(paramt)) {
-      ((Set)this.edB.get(Integer.valueOf(paramInt))).add(paramt);
-    }
+    AppMethodBeat.i(79238);
+    al.d(new d.1(this, paramInt, paramt));
+    AppMethodBeat.o(79238);
   }
   
   public final void b(int paramInt, t paramt)
   {
-    if (this.edB.get(Integer.valueOf(paramInt)) != null) {
-      ((Set)this.edB.get(Integer.valueOf(paramInt))).remove(paramt);
-    }
+    AppMethodBeat.i(79239);
+    al.d(new d.2(this, paramInt, paramt));
+    AppMethodBeat.o(79239);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (!(paramm instanceof y)) {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.AppCenterNetSceneService", "onSceneEnd, the scene is not a instance of NetSceneAppCenter");
-    }
-    for (;;)
+    AppMethodBeat.i(79241);
+    if (!(paramm instanceof y))
     {
+      ab.i("MicroMsg.AppCenterNetSceneService", "onSceneEnd, the scene is not a instance of NetSceneAppCenter");
+      AppMethodBeat.o(79241);
       return;
-      paramm = (y)paramm;
-      Set localSet = (Set)this.edB.get(Integer.valueOf(paramm.rUy));
-      if ((localSet != null) && (localSet.size() > 0))
+    }
+    paramm = (y)paramm;
+    Set localSet = (Set)this.ftE.get(Integer.valueOf(paramm.vLw));
+    if ((localSet != null) && (localSet.size() > 0))
+    {
+      Object localObject = new HashSet();
+      ((Set)localObject).addAll(localSet);
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Object localObject = new HashSet();
-        ((Set)localObject).addAll(localSet);
-        localObject = ((Set)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          t localt = (t)((Iterator)localObject).next();
-          if ((localt != null) && (localSet.contains(localt))) {
-            localt.a(paramInt1, paramInt2, paramString, paramm.rUz);
-          }
+        t localt = (t)((Iterator)localObject).next();
+        if ((localt != null) && (localSet.contains(localt))) {
+          localt.a(paramInt1, paramInt2, paramString, paramm.vLx);
         }
       }
     }
+    AppMethodBeat.o(79241);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.d
  * JD-Core Version:    0.7.0.1
  */

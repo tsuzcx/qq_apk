@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.honey_pay.ui;
 import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMEditText;
 
 final class HoneyPayGiveCardUI$5
@@ -12,12 +13,14 @@ final class HoneyPayGiveCardUI$5
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(41863);
     if ((paramInt == 6) || (paramInt == 5))
     {
-      HoneyPayGiveCardUI.a(this.llB, HoneyPayGiveCardUI.e(this.llB).getText().toString());
-      this.llB.XM();
-      HoneyPayGiveCardUI.f(this.llB);
+      HoneyPayGiveCardUI.a(this.nIX, HoneyPayGiveCardUI.e(this.nIX).getText().toString());
+      this.nIX.hideVKB();
+      HoneyPayGiveCardUI.f(this.nIX);
     }
+    AppMethodBeat.o(41863);
     return false;
   }
 }

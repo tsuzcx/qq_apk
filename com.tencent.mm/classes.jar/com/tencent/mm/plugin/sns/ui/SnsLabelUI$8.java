@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 import java.util.ArrayList;
 
@@ -14,21 +14,25 @@ final class SnsLabelUI$8
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = this.oZN;
-    String str1 = bk.c(paramMenuItem.oZz.oZV, ",");
-    String str2 = bk.c(paramMenuItem.oZz.oZX, ",");
-    String str3 = bk.c(paramMenuItem.oZz.oZW, ",");
-    String str4 = bk.c(paramMenuItem.oZz.oZY, ",");
-    if (((paramMenuItem.oZz.oZT == 2) && (paramMenuItem.oZz.oZV.size() == 0) && (paramMenuItem.oZz.oZX.size() == 0)) || ((paramMenuItem.oZz.oZT == 3) && (paramMenuItem.oZz.oZW.size() == 0) && (paramMenuItem.oZz.oZY.size() == 0))) {
-      h.a(paramMenuItem, paramMenuItem.getString(i.j.sns_label_need_select_one_least), "", paramMenuItem.getString(i.j.sns_label_transform_ok), null);
+    AppMethodBeat.i(39018);
+    paramMenuItem = this.rSh;
+    String str1 = bo.d(paramMenuItem.rRT.rSs, ",");
+    String str2 = bo.d(paramMenuItem.rRT.rSu, ",");
+    String str3 = bo.d(paramMenuItem.rRT.rSw, ",");
+    String str4 = bo.d(paramMenuItem.rRT.rSt, ",");
+    String str5 = bo.d(paramMenuItem.rRT.rSv, ",");
+    String str6 = bo.d(paramMenuItem.rRT.rSx, ",");
+    if (((paramMenuItem.rRT.rSq == 2) && (paramMenuItem.rRT.rSs.size() == 0) && (paramMenuItem.rRT.rSu.size() == 0) && (paramMenuItem.rRT.rSw.size() == 0)) || ((paramMenuItem.rRT.rSq == 3) && (paramMenuItem.rRT.rSt.size() == 0) && (paramMenuItem.rRT.rSv.size() == 0) && (paramMenuItem.rRT.rSx.size() == 0))) {
+      h.a(paramMenuItem, paramMenuItem.getString(2131303859), "", paramMenuItem.getString(2131303871), null);
     }
     for (;;)
     {
+      AppMethodBeat.o(39018);
       return true;
-      if (((paramMenuItem.oZz.oZT == 2) && (bk.bl(str1)) && (bk.bl(str2))) || ((paramMenuItem.oZz.oZT == 3) && (bk.bl(str3)) && (bk.bl(str4)))) {
-        h.a(paramMenuItem, paramMenuItem.getString(i.j.sns_label_need_select_one_least), "", paramMenuItem.getString(i.j.sns_label_transform_ok), null);
+      if (((paramMenuItem.rRT.rSq == 2) && (bo.isNullOrNil(str1)) && (bo.isNullOrNil(str2)) && (bo.isNullOrNil(str3))) || ((paramMenuItem.rRT.rSq == 3) && (bo.isNullOrNil(str4)) && (bo.isNullOrNil(str5)) && (bo.isNullOrNil(str6)))) {
+        h.a(paramMenuItem, paramMenuItem.getString(2131303859), "", paramMenuItem.getString(2131303871), null);
       } else {
-        paramMenuItem.bIY();
+        paramMenuItem.cvu();
       }
     }
   }

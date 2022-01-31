@@ -6,25 +6,25 @@ import java.util.List;
 public abstract class a
   implements Comparable<a>
 {
-  public long kvY = 0L;
-  public long kvZ = 0L;
-  public List<a.a> kwa;
-  public Object kwb;
   public boolean mCancelled = false;
   public int mPriority = 2147483647;
+  public long mRN = 0L;
+  public long mRO = 0L;
+  public List<a.a> mRP;
+  public Object mRQ;
   
-  public final void DW(String paramString)
+  protected final void Pg(String paramString)
   {
-    if (this.kwa == null) {
-      this.kwa = new ArrayList();
+    if (this.mRP == null) {
+      this.mRP = new ArrayList();
     }
     a.a locala = new a.a(this);
-    locala.kwc = paramString;
+    locala.mRR = paramString;
     locala.timestamp = System.currentTimeMillis();
-    this.kwa.add(locala);
+    this.mRP.add(locala);
   }
   
-  public String afJ()
+  public String aAn()
   {
     return "";
   }

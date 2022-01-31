@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="20.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/sf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/sg" android:background="#a4000000" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/sh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/si" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ImageView android:id="@id/sj" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/aoh" />
-            <TextView android:textSize="@dimen/lj" android:textColor="@color/a23" android:id="@id/sk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mq" />
-        </LinearLayout>
-    </RelativeLayout>
-    <com.tencent.mm.plugin.appbrand.jsapi.video.danmu.DanmuView android:id="@id/sl" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/sf" android:layout_alignTop="@id/sf" android:layout_alignRight="@id/sf" android:layout_alignBottom="@id/sf" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/sm" android:background="@drawable/c9" android:visibility="gone" android:layout_width="130.0dip" android:layout_height="130.0dip" android:layout_centerInParent="true">
-        <ImageView android:id="@id/sn" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="21.0dip" android:scaleType="fitCenter" />
-        <TextView android:textSize="@dimen/lj" android:textColor="@color/a23" android:id="@id/so" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/cnu" />
-        <com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandDotPercentIndicator android:id="@id/sp" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/a23" android:gravity="center" android:id="@id/rr" android:background="@drawable/c9" android:paddingLeft="@dimen/mq" android:paddingTop="@dimen/li" android:paddingRight="@dimen/mq" android:paddingBottom="@dimen/li" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <FrameLayout android:id="@id/sq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true">
-        <ImageView android:layout_gravity="start|center" android:id="@id/sr" android:background="#10eeeeee" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ImageView android:layout_gravity="start|center" android:id="@id/ss" android:background="#ffeeeeee" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-</RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="#ff888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nj" />
+    <View android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="8.299988dip" style="@style/ww" />
+</LinearLayout>

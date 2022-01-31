@@ -1,59 +1,58 @@
 package android.support.v7.app;
 
-import android.app.UiModeManager;
-import android.content.Context;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Window;
-import android.view.Window.Callback;
-
-class h
-  extends g
+final class h
 {
-  private final UiModeManager Pj;
+  private static h Qh;
+  public long Qi;
+  public long Qj;
+  public int state;
   
-  h(Context paramContext, Window paramWindow, c paramc)
+  static h eT()
   {
-    super(paramContext, paramWindow, paramc);
-    this.Pj = ((UiModeManager)paramContext.getSystemService("uimode"));
+    if (Qh == null) {
+      Qh = new h();
+    }
+    return Qh;
   }
   
-  Window.Callback a(Window.Callback paramCallback)
+  public final void a(long paramLong, double paramDouble1, double paramDouble2)
   {
-    return new a(paramCallback);
-  }
-  
-  final int aU(int paramInt)
-  {
-    if ((paramInt == 0) && (this.Pj.getNightMode() == 0)) {
-      return -1;
-    }
-    return super.aU(paramInt);
-  }
-  
-  class a
-    extends g.a
-  {
-    a(Window.Callback paramCallback)
+    float f1 = (float)(paramLong - 946728000000L) / 86400000.0F;
+    float f2 = 6.24006F + 0.01720197F * f1;
+    double d1 = f2 + 0.03341960161924362D * Math.sin(f2) + 0.0003490659873933D * Math.sin(2.0F * f2) + 5.236000106378924E-006D * Math.sin(3.0F * f2) + 1.796593063D + 3.141592653589793D;
+    paramDouble2 = -paramDouble2 / 360.0D;
+    double d2 = (float)Math.round(f1 - 0.0009F - paramDouble2) + 0.0009F;
+    paramDouble2 = Math.sin(f2) * 0.0053D + (paramDouble2 + d2) + -0.0069D * Math.sin(2.0D * d1);
+    d1 = Math.asin(Math.sin(d1) * Math.sin(0.4092797040939331D));
+    double d4 = 0.0174532923847437D * paramDouble1;
+    paramDouble1 = Math.sin(-0.1047197580337524D);
+    d2 = Math.sin(d4);
+    double d3 = Math.sin(d1);
+    d4 = Math.cos(d4);
+    paramDouble1 = (paramDouble1 - d2 * d3) / (Math.cos(d1) * d4);
+    if (paramDouble1 >= 1.0D)
     {
-      super(paramCallback);
+      this.state = 1;
+      this.Qi = -1L;
+      this.Qj = -1L;
+      return;
     }
-    
-    public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
+    if (paramDouble1 <= -1.0D)
     {
-      return null;
+      this.state = 0;
+      this.Qi = -1L;
+      this.Qj = -1L;
+      return;
     }
-    
-    public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
+    f1 = (float)(Math.acos(paramDouble1) / 6.283185307179586D);
+    this.Qi = (Math.round((f1 + paramDouble2) * 86400000.0D) + 946728000000L);
+    this.Qj = (Math.round((paramDouble2 - f1) * 86400000.0D) + 946728000000L);
+    if ((this.Qj < paramLong) && (this.Qi > paramLong))
     {
-      if (h.this.Pb) {}
-      switch (paramInt)
-      {
-      default: 
-        return super.onWindowStartingActionMode(paramCallback, paramInt);
-      }
-      return a(paramCallback);
+      this.state = 0;
+      return;
     }
+    this.state = 1;
   }
 }
 

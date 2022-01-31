@@ -2,36 +2,43 @@ package com.tencent.mm.vending.app;
 
 import android.app.Activity;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vending.e.b;
 
 public abstract class PresenterActivity
   extends Activity
   implements b
 {
-  private c wsY = new c();
+  private c ANT = new c();
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.wsY.B(getIntent(), this);
+    this.ANT.A(getIntent(), this);
   }
   
   protected void onDestroy()
   {
-    this.wsY.onDestroy();
+    this.ANT.onDestroy();
     super.onDestroy();
   }
   
   protected void onPause()
   {
-    this.wsY.a(3);
+    this.ANT.a(3);
     super.onPause();
   }
   
   protected void onResume()
   {
     super.onResume();
-    this.wsY.a(2);
+    this.ANT.a(2);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

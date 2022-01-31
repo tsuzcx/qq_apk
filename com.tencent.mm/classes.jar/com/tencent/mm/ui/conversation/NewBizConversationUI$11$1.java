@@ -1,6 +1,6 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -9,9 +9,11 @@ final class NewBizConversationUI$11$1
 {
   NewBizConversationUI$11$1(NewBizConversationUI.11 param11) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.fq(1, R.l.biz_time_line_new_msg_list);
+    AppMethodBeat.i(34544);
+    paraml.hx(1, 2131297715);
+    AppMethodBeat.o(34544);
   }
 }
 

@@ -1,127 +1,131 @@
 package com.tencent.mm.openim;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.h.a.lo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.ag;
-import com.tencent.mm.openim.b.j;
-import com.tencent.mm.openim.d.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.ah;
+import com.tencent.mm.openim.e.d;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 
 public class PluginOpenIM
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.a, com.tencent.mm.kernel.api.bucket.c
 {
-  public static HashMap<Integer, h.d> dgp;
-  private com.tencent.mm.sdk.b.c ePC = new PluginOpenIM.1(this);
-  private com.tencent.mm.sdk.b.c ePD = new PluginOpenIM.2(this);
-  private d ePE;
-  private com.tencent.mm.openim.d.b ePF;
-  private com.tencent.mm.openim.d.f ePG;
-  private com.tencent.mm.ah.f eeo = new com.tencent.mm.ah.f()
-  {
-    public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm)
-    {
-      if ((paramAnonymousm instanceof j))
-      {
-        paramAnonymousString = (j)paramAnonymousm;
-        paramAnonymousm = new lo();
-        paramAnonymousm.bUE.bUF = paramAnonymousString.bUF;
-        com.tencent.mm.sdk.b.a.udP.m(paramAnonymousm);
-      }
-    }
-  };
+  public static HashMap<Integer, h.d> baseDBFactories;
+  private com.tencent.mm.ai.f fur;
+  private com.tencent.mm.openim.e.b gfA;
+  private com.tencent.mm.openim.e.f gfB;
+  private com.tencent.mm.sdk.b.c gfx;
+  private com.tencent.mm.sdk.b.c gfy;
+  private d gfz;
   
   static
   {
+    AppMethodBeat.i(78831);
     HashMap localHashMap = new HashMap();
-    dgp = localHashMap;
+    baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("OpenIMAccTypeInfo_TABLE".hashCode()), new PluginOpenIM.4());
-    dgp.put(Integer.valueOf("OpenIMAppIdInfo_TABLE".hashCode()), new h.d()
-    {
-      public final String[] rK()
-      {
-        return d.dXp;
-      }
-    });
-    dgp.put(Integer.valueOf("OpenIMWordingInfo_TABLE".hashCode()), new PluginOpenIM.6());
+    baseDBFactories.put(Integer.valueOf("OpenIMAppIdInfo_TABLE".hashCode()), new PluginOpenIM.5());
+    baseDBFactories.put(Integer.valueOf("OpenIMWordingInfo_TABLE".hashCode()), new PluginOpenIM.6());
+    AppMethodBeat.o(78831);
+  }
+  
+  public PluginOpenIM()
+  {
+    AppMethodBeat.i(78825);
+    this.gfx = new PluginOpenIM.1(this);
+    this.gfy = new PluginOpenIM.2(this);
+    this.fur = new PluginOpenIM.3(this);
+    AppMethodBeat.o(78825);
   }
   
   public HashMap<Integer, h.d> collectDatabaseFactory()
   {
-    return dgp;
+    return baseDBFactories;
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg) {}
   
   public void execute(com.tencent.mm.kernel.b.g paramg) {}
   
-  public com.tencent.mm.openim.d.b getAccTypeInfoStg()
+  public com.tencent.mm.openim.e.b getAccTypeInfoStg()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (this.ePF == null)
+    AppMethodBeat.i(78827);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    if (this.gfA == null)
     {
-      com.tencent.mm.kernel.g.DQ();
-      this.ePF = new com.tencent.mm.openim.d.b(com.tencent.mm.kernel.g.DP().dKu);
+      com.tencent.mm.kernel.g.RM();
+      this.gfA = new com.tencent.mm.openim.e.b(com.tencent.mm.kernel.g.RL().eHS);
     }
-    return this.ePF;
+    com.tencent.mm.openim.e.b localb = this.gfA;
+    AppMethodBeat.o(78827);
+    return localb;
   }
   
   public d getAppIdInfoStg()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (this.ePF == null)
+    AppMethodBeat.i(78826);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    if (this.gfA == null)
     {
-      com.tencent.mm.kernel.g.DQ();
-      this.ePE = new d(com.tencent.mm.kernel.g.DP().dKu);
+      com.tencent.mm.kernel.g.RM();
+      this.gfz = new d(com.tencent.mm.kernel.g.RL().eHS);
     }
-    return this.ePE;
+    d locald = this.gfz;
+    AppMethodBeat.o(78826);
+    return locald;
   }
   
-  public com.tencent.mm.openim.d.f getWordingInfoStg()
+  public com.tencent.mm.openim.e.f getWordingInfoStg()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (this.ePG == null)
+    AppMethodBeat.i(78828);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    if (this.gfB == null)
     {
-      com.tencent.mm.kernel.g.DQ();
-      this.ePG = new com.tencent.mm.openim.d.f(com.tencent.mm.kernel.g.DP().dKu);
+      com.tencent.mm.kernel.g.RM();
+      this.gfB = new com.tencent.mm.openim.e.f(com.tencent.mm.kernel.g.RL().eHS);
     }
-    return this.ePG;
+    com.tencent.mm.openim.e.f localf = this.gfB;
+    AppMethodBeat.o(78828);
+    return localf;
   }
   
   public void onAccountInitialized(e.c paramc)
   {
-    y.i("MicroMsg.PluginOpenIM", "onAccountInitialized");
-    com.tencent.mm.sdk.b.a.udP.b(this.ePC);
-    this.ePD.cqo();
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.a(com.tencent.mm.openim.a.b.class, new com.tencent.mm.openim.b.s());
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.a(com.tencent.mm.openim.a.a.class, new com.tencent.mm.openim.c.p());
-    com.tencent.mm.model.s.a((ag)com.tencent.mm.kernel.g.r(com.tencent.mm.openim.a.a.class));
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DO().dJT.a(453, (com.tencent.mm.ah.f)com.tencent.mm.kernel.g.r(com.tencent.mm.openim.a.b.class));
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DO().dJT.a(913, this.eeo);
+    AppMethodBeat.i(78829);
+    ab.i("MicroMsg.PluginOpenIM", "onAccountInitialized");
+    com.tencent.mm.sdk.b.a.ymk.b(this.gfx);
+    this.gfy.alive();
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.b(com.tencent.mm.openim.a.b.class, new com.tencent.mm.openim.b.t());
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.b(com.tencent.mm.openim.a.a.class, new com.tencent.mm.openim.d.p());
+    com.tencent.mm.model.t.a((ah)com.tencent.mm.kernel.g.E(com.tencent.mm.openim.a.a.class));
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.a(453, (com.tencent.mm.ai.f)com.tencent.mm.kernel.g.E(com.tencent.mm.openim.a.b.class));
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.a(913, this.fur);
+    AppMethodBeat.o(78829);
   }
   
   public void onAccountRelease()
   {
-    y.i("MicroMsg.PluginOpenIM", "onAccountRelease");
-    com.tencent.mm.sdk.b.a.udP.d(this.ePC);
-    this.ePD.dead();
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DO().dJT.b(453, (com.tencent.mm.ah.f)com.tencent.mm.kernel.g.r(com.tencent.mm.openim.a.b.class));
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DO().dJT.b(913, this.eeo);
+    AppMethodBeat.i(78830);
+    ab.i("MicroMsg.PluginOpenIM", "onAccountRelease");
+    com.tencent.mm.sdk.b.a.ymk.d(this.gfx);
+    this.gfy.dead();
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.b(453, (com.tencent.mm.ai.f)com.tencent.mm.kernel.g.E(com.tencent.mm.openim.a.b.class));
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.b(913, this.fur);
+    AppMethodBeat.o(78830);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.openim.PluginOpenIM
  * JD-Core Version:    0.7.0.1
  */

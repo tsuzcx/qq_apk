@@ -5,39 +5,49 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.SurfaceTexture;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import com.tencent.luggage.a.e;
 import com.tencent.mapsdk.raster.model.BitmapDescriptor;
+import com.tencent.mapsdk.raster.model.CameraPosition;
+import com.tencent.mapsdk.raster.model.CameraPosition.Builder;
 import com.tencent.mapsdk.raster.model.Circle;
 import com.tencent.mapsdk.raster.model.CircleOptions;
+import com.tencent.mapsdk.raster.model.IndoorBuilding;
+import com.tencent.mapsdk.raster.model.IndoorInfo;
+import com.tencent.mapsdk.raster.model.IndoorLevel;
 import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.mapsdk.raster.model.LatLngBounds;
 import com.tencent.mapsdk.raster.model.LatLngBounds.Builder;
 import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.mapsdk.raster.model.MarkerOptions;
+import com.tencent.mapsdk.raster.model.OverlayLevel;
 import com.tencent.mapsdk.raster.model.Polygon;
 import com.tencent.mapsdk.raster.model.PolygonOptions;
 import com.tencent.mapsdk.raster.model.Polyline;
 import com.tencent.mapsdk.raster.model.PolylineOptions;
 import com.tencent.mapsdk.raster.model.VisibleRegion;
-import com.tencent.mm.plugin.appbrand.u.h;
-import com.tencent.mm.plugin.appbrand.u.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s.m;
+import com.tencent.mm.plugin.appbrand.widget.e.c;
 import com.tencent.mm.plugin.location_soso.api.SoSoMapView;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.tencentmap.mapsdk.map.CameraUpdateFactory;
 import com.tencent.tencentmap.mapsdk.map.Projection;
 import com.tencent.tencentmap.mapsdk.map.TencentMap;
+import com.tencent.tencentmap.mapsdk.map.TencentMap.OnIndoorStateChangeListener;
 import com.tencent.tencentmap.mapsdk.map.TencentMapOptions;
 import com.tencent.tencentmap.mapsdk.map.UiSettings;
 import java.util.ArrayList;
@@ -48,96 +58,152 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
 
-public final class a
+public class a
   implements b
 {
-  private String appId;
-  ImageView bNu;
+  private static final String hOl;
   Context context;
-  b.l gtA;
-  private String gtB;
-  private String gtC;
-  private int gtD;
-  SurfaceView gtE;
-  private Runnable gtF = new a.19(this);
-  b.j gtG;
-  b.r gtH;
-  boolean gtI = false;
-  Runnable gtJ;
-  public ArrayList<Circle> gtK = new ArrayList();
-  public ArrayList<a.b> gtL = new ArrayList();
-  public ArrayList<Polyline> gtM = new ArrayList();
-  private a.a gtN = new a.a(this);
-  Map<String, a.d> gtO = new ConcurrentHashMap();
-  public ArrayList<a.c> gtP = new ArrayList();
-  public ArrayList<Polygon> gtQ = new ArrayList();
-  boolean gtR;
-  d gtS;
-  private final int gtT = 500;
-  AtomicBoolean gtU = new AtomicBoolean(false);
-  private AtomicBoolean gtV = new AtomicBoolean(false);
-  private String gtw;
-  private FrameLayout gtx;
-  final SoSoMapView gty;
-  b.i gtz;
+  private ImageView cuM;
+  public ArrayList<a.b> hOA;
+  private Map<String, Polyline> hOB;
+  private a.a hOC;
+  private Map<String, d> hOD;
+  public ArrayList<c> hOE;
+  public ArrayList<Polygon> hOF;
+  private boolean hOG;
+  private d hOH;
+  private com.tencent.mm.plugin.appbrand.t.b.a.b hOI;
+  private final int hOJ;
+  private AtomicBoolean hOK;
+  private AtomicBoolean hOL;
+  private String hOg;
+  FrameLayout hOh;
+  protected final SoSoMapView hOi;
+  private b.k hOj;
+  private b.n hOk;
+  private String hOm;
+  private String hOn;
+  private int hOo;
+  private CameraPosition hOp;
+  SurfaceView hOq;
+  private Runnable hOr;
+  private b.l hOs;
+  private b.u hOt;
+  private b.v hOu;
+  private boolean hOv;
+  private Runnable hOw;
+  private b.t hOx;
+  private b.e hOy;
+  public ArrayList<Circle> hOz;
   private boolean isBackground;
-  private long lastCheckTime = 0L;
-  private int mapId;
+  private long lastCheckTime;
+  private int mMapType;
   
-  public a(Context paramContext, String paramString1, String paramString2, int paramInt, JSONObject paramJSONObject)
+  static
   {
-    this.context = paramContext;
-    this.appId = paramString1;
-    this.gtw = paramString2;
-    this.mapId = paramInt;
-    this.gtx = new FrameLayout(paramContext);
-    paramString1 = new FrameLayout.LayoutParams(-1, -1);
-    this.gtx.setBackgroundColor(0);
-    this.gtx.setLayoutParams(paramString1);
-    paramString1 = new TencentMapOptions();
-    paramString2 = paramJSONObject.optString("theme", "normal");
-    boolean bool = paramString2.equals("handDraw");
-    paramString1.enableHandDrawMap(bool);
-    if (paramJSONObject.optBoolean("isVector", true)) {
-      paramString1.setMapType(1);
-    }
-    for (;;)
-    {
-      this.gtB = paramJSONObject.optString("subKey", "");
-      this.gtC = this.appId;
-      if (bk.bl(this.gtB))
-      {
-        this.gtB = "E6FBZ-OLSCQ-UIU5C-GWLJ7-ABUPT-V7FJX";
-        this.gtC = "";
-      }
-      paramString1.setSubInfo(this.gtB, this.gtC);
-      this.gtD = paramJSONObject.optInt("styleId", 0);
-      y.d("MicroMsg.DefaultTencentMapView", "MapReport subId:%s, subKey:%s", new Object[] { this.gtC, this.gtB });
-      y.i("MicroMsg.DefaultTencentMapView", "[createTencentMapOptions]isHandDraw:%b, isVector:%b, subId:%s, subKey:%s, styleId:%d", new Object[] { paramString2, Boolean.valueOf(bool), this.gtC, this.gtB, Integer.valueOf(this.gtD) });
-      this.gty = new SoSoMapView(paramContext, paramString1);
-      this.gtx.addView(this.gty, new FrameLayout.LayoutParams(-1, -1));
-      this.bNu = new ImageView(paramContext);
-      this.bNu.setScaleType(ImageView.ScaleType.FIT_XY);
-      this.gtx.addView(this.bNu, new ViewGroup.LayoutParams(-1, -1));
-      y.i("MicroMsg.DefaultTencentMapView", "map:%s, init", new Object[] { this });
-      this.gty.getMap().setInfoWindowAdapter(this.gtN);
-      this.gty.getMap().setMapAnchor(0.5F, 0.5F);
-      this.gty.getMap().enableMultipleInfowindow(true);
-      this.gty.getMap().setMapStyle(this.gtD);
-      this.gty.getMap().setOnInfoWindowClickListener(new a.1(this));
-      this.gty.getMap().setOnMarkerClickListener(new a.12(this));
-      this.gty.getMap().setOnMapClickListener(new a.15(this));
-      this.gty.getMap().setOnMapLoadedListener(new a.16(this));
-      this.gty.getMap().setOnMapPoiClickListener(new a.17(this));
-      return;
-      paramString1.setMapType(0);
-    }
+    AppMethodBeat.i(146056);
+    hOl = com.tencent.luggage.g.i.y("TencentMapSubKey", "E6FBZ-OLSCQ-UIU5C-GWLJ7-ABUPT-V7FJX");
+    AppMethodBeat.o(146056);
   }
   
-  static void a(float paramFloat1, float paramFloat2, Bitmap paramBitmap, ImageView paramImageView)
+  public a(Context paramContext, String paramString, Map<String, Object> paramMap)
   {
+    AppMethodBeat.i(51177);
+    this.hOr = new a.22(this);
+    this.hOv = false;
+    this.hOz = new ArrayList();
+    this.hOA = new ArrayList();
+    this.hOB = new ConcurrentHashMap();
+    this.hOC = new a.a(this);
+    this.hOD = new ConcurrentHashMap();
+    this.hOE = new ArrayList();
+    this.hOF = new ArrayList();
+    this.hOI = new a.15(this);
+    this.lastCheckTime = 0L;
+    this.hOJ = 500;
+    this.hOK = new AtomicBoolean(false);
+    this.hOL = new AtomicBoolean(false);
+    this.context = paramContext;
+    this.hOg = paramString;
+    this.hOh = new FrameLayout(paramContext);
+    paramString = new FrameLayout.LayoutParams(-1, -1);
+    this.hOh.setBackgroundColor(0);
+    this.hOh.setLayoutParams(paramString);
+    this.hOi = new SoSoMapView(paramContext, B(paramMap));
+    this.hOh.addView(this.hOi, new FrameLayout.LayoutParams(-1, -1));
+    this.cuM = new ImageView(paramContext);
+    this.cuM.setScaleType(ImageView.ScaleType.FIT_XY);
+    this.hOh.addView(this.cuM, new ViewGroup.LayoutParams(-1, -1));
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s, init", new Object[] { this });
+    this.hOi.getMap().setInfoWindowAdapter(this.hOC);
+    this.hOi.getMap().setMapAnchor(0.5F, 0.5F);
+    this.hOi.getMap().enableMultipleInfowindow(true);
+    this.hOi.getMap().setMapStyle(this.hOo);
+    this.hOi.getMap().setOnInfoWindowClickListener(new a.1(this));
+    this.hOi.getMap().setOnMarkerClickListener(new a.12(this));
+    this.hOi.getMap().setOnMapClickListener(new a.17(this));
+    this.hOi.getMap().setOnMapLoadedListener(new a.18(this));
+    this.hOi.getMap().setOnMapPoiClickListener(new a.19(this));
+    this.hOi.getMap().setOnIndoorStateChangeListener(new TencentMap.OnIndoorStateChangeListener()
+    {
+      public final boolean onIndoorBuildingDeactivated()
+      {
+        AppMethodBeat.i(51171);
+        ab.v("MicroMsg.DefaultTencentMapView", "[onIndoorBuildingDeactivated]");
+        if (a.i(a.this) != null)
+        {
+          b.e locale = a.aDG();
+          a.a(a.this, locale);
+          a.i(a.this).a(locale);
+        }
+        AppMethodBeat.o(51171);
+        return true;
+      }
+      
+      public final boolean onIndoorBuildingFocused()
+      {
+        AppMethodBeat.i(51169);
+        ab.v("MicroMsg.DefaultTencentMapView", "[onIndoorBuildingFocused]");
+        AppMethodBeat.o(51169);
+        return true;
+      }
+      
+      public final boolean onIndoorLevelActivated(IndoorBuilding paramAnonymousIndoorBuilding)
+      {
+        AppMethodBeat.i(51170);
+        ab.v("MicroMsg.DefaultTencentMapView", "[onIndoorLevelActivated]indoorBuilding:%s", new Object[] { paramAnonymousIndoorBuilding });
+        if (a.i(a.this) != null)
+        {
+          b.e locale = new b.e();
+          locale.buildingId = paramAnonymousIndoorBuilding.getBuidlingId();
+          locale.buildingName = paramAnonymousIndoorBuilding.getBuildingName();
+          locale.hPg = new LinkedList();
+          Iterator localIterator = paramAnonymousIndoorBuilding.getLevels().iterator();
+          while (localIterator.hasNext())
+          {
+            IndoorLevel localIndoorLevel = (IndoorLevel)localIterator.next();
+            b.f localf = new b.f();
+            localf.floorName = localIndoorLevel.getName();
+            locale.hPg.add(localf);
+          }
+          locale.hPh = paramAnonymousIndoorBuilding.getActiveLevelIndex();
+          a.a(a.this, locale);
+          a.i(a.this).a(locale);
+        }
+        AppMethodBeat.o(51170);
+        return true;
+      }
+    });
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s onCreate", new Object[] { this });
+    this.hOi.onCreate(null);
+    onResume();
+    AppMethodBeat.o(51177);
+  }
+  
+  private static void a(float paramFloat1, float paramFloat2, Bitmap paramBitmap, ImageView paramImageView)
+  {
+    AppMethodBeat.i(51222);
     float f;
     if (paramFloat1 != 0.0F)
     {
@@ -147,8 +213,8 @@ public final class a
     }
     else
     {
-      f = h.my(paramBitmap.getWidth());
-      paramFloat1 = h.my(paramBitmap.getHeight());
+      f = com.tencent.mm.plugin.appbrand.s.g.pO(paramBitmap.getWidth());
+      paramFloat1 = com.tencent.mm.plugin.appbrand.s.g.pO(paramBitmap.getHeight());
     }
     if ((f > 0.0F) && (paramFloat1 > 0.0F) && ((f != paramBitmap.getWidth()) || (paramFloat1 != paramBitmap.getHeight())))
     {
@@ -157,691 +223,1047 @@ public final class a
       Matrix localMatrix = new Matrix();
       localMatrix.postScale(paramFloat2, paramFloat1);
       paramImageView.setImageBitmap(Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, true));
+      AppMethodBeat.o(51222);
       return;
     }
     paramImageView.setImageBitmap(paramBitmap);
     paramImageView.setScaleType(ImageView.ScaleType.CENTER);
+    AppMethodBeat.o(51222);
   }
   
-  private void a(String paramString, a.d paramd)
+  private void a(String paramString, d paramd)
   {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s addMarker markerId:%s", new Object[] { this, paramString });
-    this.gtO.put(paramString, paramd);
+    AppMethodBeat.i(51223);
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s addMarker markerId:%s", new Object[] { this, paramString });
+    this.hOD.put(paramString, paramd);
+    AppMethodBeat.o(51223);
   }
   
-  private SurfaceView ajh()
+  private Bundle aDF()
   {
-    if (this.gtE != null) {
-      return this.gtE;
+    AppMethodBeat.i(51230);
+    Bundle localBundle = new Bundle();
+    if (!hOl.equals(this.hOm))
+    {
+      String str = bo.nullAsNil(localBundle.getString("smallAppKey"));
+      localBundle.putString("smallAppKey", str + this.hOm + "#" + this.hOn + ";");
     }
-    Object localObject = this.gty;
-    if ((localObject == null) || (((ViewGroup)localObject).getChildCount() == 0)) {
-      localObject = null;
+    AppMethodBeat.o(51230);
+    return localBundle;
+  }
+  
+  private static b.e aDq()
+  {
+    AppMethodBeat.i(51179);
+    b.e locale = new b.e();
+    locale.buildingId = "";
+    locale.buildingName = "";
+    locale.hPg = new LinkedList();
+    locale.hPh = -1;
+    AppMethodBeat.o(51179);
+    return locale;
+  }
+  
+  private SurfaceView aDr()
+  {
+    AppMethodBeat.i(51182);
+    if (this.hOq != null)
+    {
+      localSurfaceView = this.hOq;
+      AppMethodBeat.o(51182);
+      return localSurfaceView;
     }
+    this.hOq = h(this.hOi);
+    SurfaceView localSurfaceView = this.hOq;
+    AppMethodBeat.o(51182);
+    return localSurfaceView;
+  }
+  
+  private void aDs()
+  {
+    AppMethodBeat.i(51183);
+    if (this.hOq == null) {
+      this.hOq = aDr();
+    }
+    if (this.hOq != null)
+    {
+      al.ae(this.hOr);
+      this.hOq.setVisibility(0);
+      AppMethodBeat.o(51183);
+      return;
+    }
+    ab.e("MicroMsg.DefaultTencentMapView", "showTencentMap err");
+    AppMethodBeat.o(51183);
+  }
+  
+  private static SurfaceView h(ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(51233);
+    if ((paramViewGroup == null) || (paramViewGroup.getChildCount() == 0))
+    {
+      AppMethodBeat.o(51233);
+      return null;
+    }
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
     for (;;)
     {
-      label30:
-      this.gtE = ((SurfaceView)localObject);
-      return this.gtE;
-      int j = ((ViewGroup)localObject).getChildCount();
-      int i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label100;
-        }
-        View localView = ((ViewGroup)localObject).getChildAt(i);
-        if ((localView instanceof SurfaceView))
-        {
-          localObject = (SurfaceView)localView;
-          break label30;
-        }
-        if ((localView instanceof ViewGroup))
-        {
-          localObject = (ViewGroup)localView;
-          break;
-        }
-        i += 1;
+      if (i >= j) {
+        break label85;
       }
-      label100:
-      localObject = null;
+      View localView = paramViewGroup.getChildAt(i);
+      if ((localView instanceof SurfaceView))
+      {
+        paramViewGroup = (SurfaceView)localView;
+        AppMethodBeat.o(51233);
+        return paramViewGroup;
+      }
+      if ((localView instanceof ViewGroup))
+      {
+        paramViewGroup = (ViewGroup)localView;
+        break;
+      }
+      i += 1;
     }
+    label85:
+    AppMethodBeat.o(51233);
+    return null;
   }
   
-  public final void F(float paramFloat1, float paramFloat2)
+  protected TencentMapOptions B(Map<String, Object> paramMap)
   {
-    this.gty.getIController().setCenter(paramFloat1, paramFloat2);
+    AppMethodBeat.i(51178);
+    TencentMapOptions localTencentMapOptions = new TencentMapOptions();
+    if (paramMap == null)
+    {
+      ab.w("MicroMsg.DefaultTencentMapView", "params is null, return");
+      AppMethodBeat.o(51178);
+      return localTencentMapOptions;
+    }
+    String str = f.a(paramMap, "theme", "normal");
+    boolean bool = str.equals("handDraw");
+    localTencentMapOptions.enableHandDrawMap(bool);
+    this.mMapType = f.a(paramMap, "mapType", 1);
+    localTencentMapOptions.setMapType(this.mMapType);
+    this.hOm = f.a(paramMap, "subKey", "");
+    this.hOn = f.a(paramMap, "subId", "");
+    if (bo.isNullOrNil(this.hOm))
+    {
+      this.hOm = hOl;
+      this.hOn = "";
+    }
+    localTencentMapOptions.setSubInfo(this.hOm, this.hOn);
+    this.hOo = f.a(paramMap, "styleId", 0);
+    ab.d("MicroMsg.DefaultTencentMapView", "MapReport subId:%s, subKey:%s", new Object[] { this.hOn, this.hOm });
+    ab.i("MicroMsg.DefaultTencentMapView", "[createTencentMapOptions]theme:%s isHandDraw:%b, mapType:%d, subId:%s, subKey:%s, styleId:%d", new Object[] { str, Boolean.valueOf(bool), Integer.valueOf(this.mMapType), this.hOn, this.hOm, Integer.valueOf(this.hOo) });
+    AppMethodBeat.o(51178);
+    return localTencentMapOptions;
   }
   
-  public final void G(float paramFloat1, float paramFloat2)
+  public final boolean Cg(String paramString)
   {
-    if ((!this.gtR) || (this.isBackground)) {}
-    while (this.gtS == null) {
+    AppMethodBeat.i(51215);
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s removeLine lineId:%s", new Object[] { this, paramString });
+    Polyline localPolyline = (Polyline)this.hOB.get(paramString);
+    if (localPolyline == null)
+    {
+      ab.w("MicroMsg.DefaultTencentMapView", "lineId:%s is null", new Object[] { paramString });
+      AppMethodBeat.o(51215);
+      return false;
+    }
+    localPolyline.remove();
+    this.hOB.remove(paramString);
+    AppMethodBeat.o(51215);
+    return true;
+  }
+  
+  public final b.q Ch(String paramString)
+  {
+    AppMethodBeat.i(51218);
+    paramString = (b.q)this.hOD.get(paramString);
+    AppMethodBeat.o(51218);
+    return paramString;
+  }
+  
+  public final boolean Ci(String paramString)
+  {
+    AppMethodBeat.i(51220);
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s removeMarker markerId:%s", new Object[] { this, paramString });
+    d locald = (d)this.hOD.get(paramString);
+    if (locald == null)
+    {
+      ab.w("MicroMsg.DefaultTencentMapView", "marker:%s is null", new Object[] { paramString });
+      AppMethodBeat.o(51220);
+      return false;
+    }
+    locald.hPb.remove();
+    if (locald.hPc != null)
+    {
+      if ((locald.hPc.getMarkerView() != null) && ((locald.hPc.getMarkerView() instanceof com.tencent.mm.plugin.appbrand.widget.e.d))) {
+        i.a((com.tencent.mm.plugin.appbrand.widget.e.d)locald.hPc.getMarkerView());
+      }
+      locald.hPc.remove();
+      this.hOD.remove(paramString + "#label");
+    }
+    this.hOD.remove(paramString);
+    AppMethodBeat.o(51220);
+    return true;
+  }
+  
+  public final void L(float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(146051);
+    this.hOi.getIController().animateTo(paramFloat1, paramFloat2);
+    AppMethodBeat.o(146051);
+  }
+  
+  public final void M(float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(51206);
+    this.hOi.getIController().setCenter(paramFloat1, paramFloat2);
+    AppMethodBeat.o(51206);
+  }
+  
+  public final void N(float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(51231);
+    if ((!this.hOG) || (this.isBackground))
+    {
+      AppMethodBeat.o(51231);
       return;
     }
-    this.gtS.G(paramFloat1, paramFloat2);
+    if (this.hOH != null) {
+      this.hOH.N(paramFloat1, paramFloat2);
+    }
+    AppMethodBeat.o(51231);
   }
   
-  public final void a(double paramDouble1, double paramDouble2, String paramString, double paramDouble3)
+  public final void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    if ((!this.gtR) || (this.isBackground)) {
-      return;
+    AppMethodBeat.i(51209);
+    TencentMap localTencentMap = this.hOi.getMap();
+    if (localTencentMap != null)
+    {
+      localTencentMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(new LatLng(paramFloat1, paramFloat2), paramFloat3, paramFloat5, paramFloat4)));
+      this.hOw = null;
     }
-    n.runOnUiThread(new a.13(this, paramDouble1, paramDouble2, paramString, paramDouble3));
+    AppMethodBeat.o(51209);
   }
   
   public final void a(b.b arg1)
   {
+    AppMethodBeat.i(51211);
     Object localObject1 = new CircleOptions();
     ((CircleOptions)localObject1).center(new LatLng(???.latitude, ???.longitude));
     ((CircleOptions)localObject1).radius(???.radius);
     ((CircleOptions)localObject1).strokeColor(???.strokeColor);
     ((CircleOptions)localObject1).strokeWidth(???.strokeWidth);
     ((CircleOptions)localObject1).fillColor(???.fillColor);
-    localObject1 = this.gty.getMap().addCircle((CircleOptions)localObject1);
-    synchronized (this.gtK)
+    localObject1 = this.hOi.getMap().addCircle((CircleOptions)localObject1);
+    synchronized (this.hOz)
     {
-      this.gtK.add(localObject1);
+      this.hOz.add(localObject1);
+      AppMethodBeat.o(51211);
       return;
     }
   }
   
-  public final void a(b.h arg1)
+  public final void a(b.j paramj, com.tencent.mm.plugin.appbrand.e.a parama)
   {
-    Object localObject1 = new PolylineOptions();
+    AppMethodBeat.i(51216);
+    Object localObject = new PolylineOptions();
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ???.gus.iterator();
+    Iterator localIterator = paramj.hPm.iterator();
     while (localIterator.hasNext())
     {
-      b.f localf = (b.f)localIterator.next();
-      localArrayList.add(new LatLng(localf.latitude, localf.longitude));
+      b.h localh = (b.h)localIterator.next();
+      localArrayList.add(new LatLng(localh.latitude, localh.longitude));
     }
-    ((PolylineOptions)localObject1).addAll(localArrayList);
-    ((PolylineOptions)localObject1).color(???.color);
-    ((PolylineOptions)localObject1).width(???.width);
-    ((PolylineOptions)localObject1).setDottedLine(???.gut);
-    ((PolylineOptions)localObject1).edgeColor(???.guu);
-    ((PolylineOptions)localObject1).edgeWidth(???.borderWidth);
-    if (???.guv)
+    ((PolylineOptions)localObject).addAll(localArrayList);
+    if (paramj.style != -1) {
+      ((PolylineOptions)localObject).color(paramj.style);
+    }
+    for (;;)
     {
-      ??? = ((com.tencent.mm.plugin.appbrand.d.a)com.tencent.luggage.b.e.i(com.tencent.mm.plugin.appbrand.d.a.class)).ba(???.guw);
-      ((PolylineOptions)localObject1).arrowTexture(new BitmapDescriptor(???));
-      if (??? == null) {
-        ((PolylineOptions)localObject1).arrowTexture(new BitmapDescriptor(BitmapFactory.decodeResource(this.context.getResources(), com.tencent.luggage.h.a.a.app_brand_map_line_texture_arrow)));
+      ((PolylineOptions)localObject).width(paramj.width);
+      ((PolylineOptions)localObject).setDottedLine(paramj.hPn);
+      ((PolylineOptions)localObject).edgeColor(paramj.borderColor);
+      ((PolylineOptions)localObject).edgeWidth(paramj.borderWidth);
+      if (paramj.hPo)
+      {
+        parama = parama.bB(paramj.hPp);
+        ((PolylineOptions)localObject).arrowTexture(new BitmapDescriptor(parama));
+        if (parama == null) {
+          ((PolylineOptions)localObject).arrowTexture(new BitmapDescriptor(BitmapFactory.decodeResource(this.context.getResources(), 2130837748)));
+        }
       }
-    }
-    ((PolylineOptions)localObject1).zIndex(1.0F);
-    localObject1 = this.gty.getMap().addPolyline((PolylineOptions)localObject1);
-    if (localObject1 == null)
-    {
-      y.e("MicroMsg.DefaultTencentMapView", "polyline is null, return");
+      ((PolylineOptions)localObject).zIndex(1.0F);
+      if ((!bo.isNullOrNil(paramj.buildingId)) && (!bo.isNullOrNil(paramj.floorName))) {
+        ((PolylineOptions)localObject).indoorInfo(new IndoorInfo(paramj.buildingId, paramj.floorName));
+      }
+      ((PolylineOptions)localObject).arrowGap(paramj.hPq);
+      if (this.hOi.getMap().isHandDrawMapEnable()) {
+        ((PolylineOptions)localObject).level(OverlayLevel.OverlayLevelAboveBuildings);
+      }
+      localObject = this.hOi.getMap().addPolyline((PolylineOptions)localObject);
+      if (localObject != null) {
+        break;
+      }
+      ab.e("MicroMsg.DefaultTencentMapView", "polyline is null, return");
+      AppMethodBeat.o(51216);
       return;
+      ((PolylineOptions)localObject).color(paramj.color);
     }
-    synchronized (this.gtM)
+    if (bo.isNullOrNil(paramj.id)) {}
+    for (parama = paramj.hashCode();; parama = paramj.id)
     {
-      this.gtM.add(localObject1);
+      this.hOB.put(bo.bf(parama, paramj.toString()), localObject);
+      AppMethodBeat.o(51216);
       return;
     }
   }
   
-  public final void a(b.i parami)
+  public final void a(b.k paramk)
   {
-    this.gtz = parami;
-  }
-  
-  public final void a(b.j paramj)
-  {
-    this.gtG = paramj;
+    this.hOj = paramk;
   }
   
   public final void a(b.l paraml)
   {
-    this.gtA = paraml;
+    this.hOs = paraml;
   }
   
-  public final void a(b.q paramq)
+  public final void a(b.n paramn)
   {
-    this.gty.getMap().setTencentMapGestureListener(new a.21(this));
-    this.gty.getMap().setOnMapCameraChangeListener(new a.2(this, paramq));
+    this.hOk = paramn;
   }
   
-  public final void a(b.r paramr)
+  public final void a(b.s params)
   {
-    this.gtH = paramr;
+    AppMethodBeat.i(51186);
+    this.hOi.getMap().setTencentMapGestureListener(new a.23(this));
+    this.hOi.getMap().setOnMapCameraChangeListener(new a.2(this, params));
+    AppMethodBeat.o(51186);
   }
   
-  public final void a(String paramString, b.p paramp)
+  public final void a(b.t paramt)
   {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s addMarker markerId:%s", new Object[] { this, paramString });
-    Object localObject1 = new MarkerOptions();
-    ((MarkerOptions)localObject1).position(new LatLng(paramp.latitude, paramp.longitude));
-    if (!bk.bl(paramp.title)) {
-      ((MarkerOptions)localObject1).title(paramp.title);
+    this.hOx = paramt;
+  }
+  
+  public final void a(b.v paramv)
+  {
+    this.hOu = paramv;
+  }
+  
+  public final void a(String paramString, int paramInt, b.h paramh, boolean paramBoolean)
+  {
+    AppMethodBeat.i(51217);
+    Polyline localPolyline = (Polyline)this.hOB.get(paramString);
+    if (localPolyline == null)
+    {
+      ab.w("MicroMsg.DefaultTencentMapView", "lineId:%s is null", new Object[] { paramString });
+      AppMethodBeat.o(51217);
+      return;
     }
-    ((MarkerOptions)localObject1).rotation(paramp.rotate);
-    ((MarkerOptions)localObject1).alpha(paramp.alpha);
-    Object localObject2 = (FrameLayout)((LayoutInflater)this.context.getSystemService("layout_inflater")).inflate(com.tencent.luggage.h.a.c.default_tencent_map_marker_icon, null);
-    Object localObject3 = (ImageView)((FrameLayout)localObject2).findViewById(com.tencent.luggage.h.a.b.marker_icon);
-    float f1 = paramp.guy;
-    float f2 = paramp.guz;
-    Object localObject4 = ((com.tencent.mm.plugin.appbrand.d.a)com.tencent.luggage.b.e.i(com.tencent.mm.plugin.appbrand.d.a.class)).a(paramp.gum, null, new a.6(this, f1, f2, (ImageView)localObject3));
-    if (localObject4 != null) {
-      a(f1, f2, (Bitmap)localObject4, (ImageView)localObject3);
+    localPolyline.setEraseable(paramBoolean);
+    localPolyline.eraseTo(paramInt, new LatLng(paramh.latitude, paramh.longitude));
+    AppMethodBeat.o(51217);
+  }
+  
+  public final void a(String paramString, b.r paramr, com.tencent.mm.plugin.appbrand.e.a parama)
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(51221);
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s addMarker markerId:%s", new Object[] { this, paramString });
+    Object localObject2 = new MarkerOptions();
+    ((MarkerOptions)localObject2).position(new LatLng(paramr.latitude, paramr.longitude));
+    if (!bo.isNullOrNil(paramr.title)) {
+      ((MarkerOptions)localObject2).title(paramr.title);
+    }
+    if (!bo.isNullOrNil(paramr.hPu)) {
+      ((MarkerOptions)localObject2).contentDescription(paramr.hPu);
+    }
+    ((MarkerOptions)localObject2).rotation(paramr.rotate);
+    ((MarkerOptions)localObject2).alpha(paramr.alpha);
+    Object localObject3 = (FrameLayout)((LayoutInflater)this.context.getSystemService("layout_inflater")).inflate(2130969299, null);
+    ImageView localImageView = (ImageView)((FrameLayout)localObject3).findViewById(2131821263);
+    float f1 = paramr.hPs;
+    float f2 = paramr.hPt;
+    if (parama != null) {
+      localObject1 = parama.a(paramr.hPe, null, new a.8(this, f1, f2, localImageView));
+    }
+    if (localObject1 != null) {
+      a(f1, f2, (Bitmap)localObject1, localImageView);
     }
     for (;;)
     {
-      ((MarkerOptions)localObject1).markerView((View)localObject2);
-      ((MarkerOptions)localObject1).anchor(paramp.aWt, paramp.aWu);
-      ((MarkerOptions)localObject1).tag(paramString);
-      ((MarkerOptions)localObject1).infoWindowHideAnimation(new Animation() {});
-      ((MarkerOptions)localObject1).infoWindowShowAnimation(new a.8(this));
-      ((MarkerOptions)localObject1).visible(true);
-      ((MarkerOptions)localObject1).zIndex(paramp.zIndex + 2);
-      localObject1 = this.gty.getMap().addMarker((MarkerOptions)localObject1);
-      localObject3 = new a.d();
-      ((a.d)localObject3).guj = ((Marker)localObject1);
-      ((a.d)localObject3).data = paramp.data;
-      ((a.d)localObject3).gux = paramp;
-      a(paramString, (a.d)localObject3);
-      if ((paramp.guA != null) && (paramp.guA.guH == b.p.a.guJ)) {
-        ((a.d)localObject3).guj.showInfoWindow();
+      ((MarkerOptions)localObject2).markerView((View)localObject3);
+      ((MarkerOptions)localObject2).anchor(paramr.bna, paramr.bnb);
+      ((MarkerOptions)localObject2).tag(paramString);
+      ((MarkerOptions)localObject2).infoWindowHideAnimation(new a.9(this));
+      ((MarkerOptions)localObject2).infoWindowShowAnimation(new a.10(this));
+      ((MarkerOptions)localObject2).visible(true);
+      ((MarkerOptions)localObject2).zIndex(paramr.zIndex + 2);
+      if ((!bo.isNullOrNil(paramr.buildingId)) && (!bo.isNullOrNil(paramr.floorName))) {
+        ((MarkerOptions)localObject2).indoorInfo(new IndoorInfo(paramr.buildingId, paramr.floorName));
       }
-      if (paramp.guB != null)
+      parama = this.hOi.getMap().addMarker((MarkerOptions)localObject2);
+      localObject2 = new d();
+      ((d)localObject2).hPb = parama;
+      ((d)localObject2).data = paramr.data;
+      ((d)localObject2).hPr = paramr;
+      a(paramString, (d)localObject2);
+      if ((paramr.hPv != null) && (paramr.hPv.hPC == b.r.a.hPE)) {
+        ((d)localObject2).hPb.showInfoWindow();
+      }
+      if (paramr.hPw != null)
       {
-        localObject4 = new MarkerOptions();
-        ((MarkerOptions)localObject4).position(new LatLng(paramp.latitude, paramp.longitude));
-        ((MarkerOptions)localObject4).alpha(paramp.alpha);
-        localObject2 = i.ajt();
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = new com.tencent.mm.plugin.appbrand.widget.d.e(this.context);
+        localObject3 = new MarkerOptions();
+        ((MarkerOptions)localObject3).position(new LatLng(paramr.latitude, paramr.longitude));
+        ((MarkerOptions)localObject3).alpha(paramr.alpha);
+        localObject1 = i.aDJ();
+        parama = (com.tencent.mm.plugin.appbrand.e.a)localObject1;
+        if (localObject1 == null) {
+          parama = new com.tencent.mm.plugin.appbrand.widget.e.d(this.context);
         }
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setText("");
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setTextSize(12);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setTextColor(com.tencent.mm.plugin.appbrand.widget.d.e.hzp);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setTextPadding(0);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setGravity("center");
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).p(0, 0, com.tencent.mm.plugin.appbrand.widget.d.e.hzq, com.tencent.mm.plugin.appbrand.widget.d.e.hzq);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setTextColor(paramp.guB.color);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setTextSize(paramp.guB.guC);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setText(paramp.guB.content);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setTextPadding(paramp.guB.padding);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setGravity(paramp.guB.fMb);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).p(paramp.guB.guD, paramp.guB.borderWidth, paramp.guB.guu, paramp.guB.bgColor);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setX(paramp.guB.x);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).setY(paramp.guB.y);
-        ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).measure(0, 0);
-        ((MarkerOptions)localObject4).anchor(((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).getAnchorX(), ((com.tencent.mm.plugin.appbrand.widget.d.e)localObject1).getAnchorY());
-        ((MarkerOptions)localObject4).markerView((View)localObject1);
-        ((MarkerOptions)localObject4).visible(true);
-        ((MarkerOptions)localObject4).tag(paramString + "#label");
-        ((MarkerOptions)localObject4).zIndex(paramp.zIndex + 2);
-        ((a.d)localObject3).guk = this.gty.getMap().addMarker((MarkerOptions)localObject4);
-        a(paramString + "#label", (a.d)localObject3);
+        parama.setText("");
+        parama.setTextSize(12);
+        parama.setTextColor(com.tencent.mm.plugin.appbrand.widget.e.d.jrs);
+        parama.setTextPadding(0);
+        parama.setGravity("center");
+        int i = com.tencent.mm.plugin.appbrand.widget.e.d.jrt;
+        parama.x(0, 0, i, i);
+        parama.setTextColor(paramr.hPw.color);
+        parama.setTextSize(paramr.hPw.hPx);
+        parama.setText(paramr.hPw.content);
+        parama.setTextPadding(paramr.hPw.padding);
+        parama.setGravity(paramr.hPw.hfl);
+        parama.x(paramr.hPw.hPy, paramr.hPw.borderWidth, paramr.hPw.borderColor, paramr.hPw.bgColor);
+        parama.setX(paramr.hPw.x);
+        parama.setY(paramr.hPw.y);
+        parama.measure(0, 0);
+        ((MarkerOptions)localObject3).anchor(parama.getAnchorX(), parama.getAnchorY());
+        ((MarkerOptions)localObject3).markerView(parama);
+        ((MarkerOptions)localObject3).visible(true);
+        ((MarkerOptions)localObject3).tag(paramString + "#label");
+        ((MarkerOptions)localObject3).zIndex(paramr.zIndex + 3);
+        if ((!bo.isNullOrNil(paramr.buildingId)) && (!bo.isNullOrNil(paramr.floorName))) {
+          ((MarkerOptions)localObject3).indoorInfo(new IndoorInfo(paramr.buildingId, paramr.floorName));
+        }
+        ((d)localObject2).hPc = this.hOi.getMap().addMarker((MarkerOptions)localObject3);
+        a(paramString + "#label", (d)localObject2);
       }
+      AppMethodBeat.o(51221);
       return;
-      y.e("MicroMsg.DefaultTencentMapView", "[addMarker] bitmap is null, use default");
+      ab.e("MicroMsg.DefaultTencentMapView", "[addMarker] bitmap is null, use default");
     }
   }
   
-  public final void a(String paramString, LinkedList<b.e> paramLinkedList, b.m paramm)
+  public final void a(String paramString, LinkedList<b.g> paramLinkedList, b.o paramo)
   {
-    paramString = (a.d)ug(paramString);
-    if ((paramString == null) || (paramString.guj == null))
+    AppMethodBeat.i(51224);
+    paramString = (d)Ch(paramString);
+    if ((paramString == null) || (paramString.hPb == null))
     {
-      y.e("MicroMsg.DefaultTencentMapView", "get marker failed!");
-      paramm.df(false);
-    }
-    do
-    {
+      ab.e("MicroMsg.DefaultTencentMapView", "get marker failed!");
+      paramo.ei(false);
+      AppMethodBeat.o(51224);
       return;
-      if (paramLinkedList.size() <= 0)
-      {
-        y.e("MicroMsg.DefaultTencentMapView", "keyFrame is empty, err, return");
-        paramm.df(false);
-        return;
+    }
+    if (paramLinkedList.size() <= 0)
+    {
+      ab.e("MicroMsg.DefaultTencentMapView", "keyFrame is empty, err, return");
+      paramo.ei(false);
+      AppMethodBeat.o(51224);
+      return;
+    }
+    Object localObject = (b.g)paramLinkedList.get(0);
+    ((b.g)localObject).hPj = paramString.hPb.getPosition().getLatitude();
+    ((b.g)localObject).hPi = paramString.hPb.getPosition().getLongitude();
+    int j = paramLinkedList.size();
+    int i = 1;
+    if (i < j)
+    {
+      localObject = (b.g)paramLinkedList.get(i - 1);
+      b.g localg = (b.g)paramLinkedList.get(i);
+      if (((b.g)localObject).rotate == 0.0F) {
+        localg.hPi = ((b.g)localObject).longitude;
       }
-      Object localObject = (b.e)paramLinkedList.get(0);
-      ((b.e)localObject).gup = paramString.guj.getPosition().getLatitude();
-      ((b.e)localObject).guo = paramString.guj.getPosition().getLongitude();
-      int j = paramLinkedList.size();
-      int i = 1;
-      if (i < j)
+      for (localg.hPj = ((b.g)localObject).latitude;; localg.hPj = paramString.hPb.getPosition().getLatitude())
       {
-        localObject = (b.e)paramLinkedList.get(i - 1);
-        b.e locale = (b.e)paramLinkedList.get(i);
-        if (((b.e)localObject).rotate == 0.0F) {
-          locale.guo = ((b.e)localObject).longitude;
-        }
-        for (locale.gup = ((b.e)localObject).latitude;; locale.gup = paramString.guj.getPosition().getLatitude())
-        {
-          i += 1;
-          break;
-          locale.guo = paramString.guj.getPosition().getLongitude();
-        }
+        i += 1;
+        break;
+        localg.hPi = paramString.hPb.getPosition().getLongitude();
       }
-      localObject = new com.tencent.mm.plugin.appbrand.widget.d.d(paramLinkedList, paramString.guj, this.gty);
-      paramm = new a.9(this, paramm);
-      ((com.tencent.mm.plugin.appbrand.widget.d.d)localObject).mF.addListener(paramm);
-      n.runOnUiThread(new a.10(this, (com.tencent.mm.plugin.appbrand.widget.d.d)localObject));
-    } while (paramString.guk == null);
-    n.runOnUiThread(new a.11(this, new com.tencent.mm.plugin.appbrand.widget.d.d(paramLinkedList, paramString.guk, this.gty)));
+    }
+    localObject = new c(paramLinkedList, paramString.hPb, this.hOi);
+    paramo = new a.11(this, paramo);
+    ((c)localObject).nC.addListener(paramo);
+    m.runOnUiThread(new a.13(this, (c)localObject));
+    if (paramString.hPc != null) {
+      m.runOnUiThread(new a.14(this, new c(paramLinkedList, paramString.hPc, this.hOi)));
+    }
+    AppMethodBeat.o(51224);
   }
   
-  public final boolean a(b.c paramc)
+  public final boolean a(b.c paramc, b.m paramm, com.tencent.mm.plugin.appbrand.e.a parama)
   {
-    return a(paramc, null);
-  }
-  
-  public final boolean a(b.c arg1, b.k paramk)
-  {
-    if (??? == null) {
+    AppMethodBeat.i(51213);
+    if (bo.isNullOrNil(paramc.hPe))
+    {
+      AppMethodBeat.o(51213);
       return false;
     }
-    if (bk.bl(???.gum)) {
+    Object localObject = parama.bB(paramc.hPe);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(51213);
       return false;
     }
-    Object localObject = ((com.tencent.mm.plugin.appbrand.d.a)com.tencent.luggage.b.e.i(com.tencent.mm.plugin.appbrand.d.a.class)).ba(???.gum);
-    if (localObject == null) {
-      return false;
-    }
-    ImageView localImageView = new ImageView(this.context);
-    localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    localImageView.setImageBitmap((Bitmap)localObject);
-    int k = ???.left;
-    int m = ???.top;
+    parama = new ImageView(this.context);
+    parama.setScaleType(ImageView.ScaleType.FIT_XY);
+    parama.setImageBitmap((Bitmap)localObject);
+    int k = paramc.left;
+    int m = paramc.top;
     int i;
-    if (???.height == 0) {
-      i = h.my(((Bitmap)localObject).getHeight());
-    }
-    for (;;)
+    if (paramc.height == 0)
     {
-      int j;
-      if (???.width == 0)
-      {
-        j = h.my(((Bitmap)localObject).getWidth());
-        localObject = new FrameLayout.LayoutParams(j, i);
-        ((FrameLayout.LayoutParams)localObject).setMargins(k, m, 0, 0);
-        boolean bool = ???.gun;
-        ??? = ???.data;
-        localImageView.setOnTouchListener(new a.4(this, bool, localImageView));
-        localImageView.setOnClickListener(new a.5(this, bool, paramk, ???));
-        ((ViewGroup)this.gtx).addView(localImageView, (ViewGroup.LayoutParams)localObject);
+      i = com.tencent.mm.plugin.appbrand.s.g.pO(((Bitmap)localObject).getHeight());
+      if (paramc.width != 0) {
+        break label217;
       }
-      synchronized (this.gtL)
-      {
-        this.gtL.add(new a.b(this, localImageView));
-        return true;
-        i = ???.height;
-        continue;
-        j = ???.width;
-      }
+    }
+    label217:
+    for (int j = com.tencent.mm.plugin.appbrand.s.g.pO(((Bitmap)localObject).getWidth());; j = paramc.width)
+    {
+      localObject = new FrameLayout.LayoutParams(j, i);
+      ((FrameLayout.LayoutParams)localObject).setMargins(k, m, 0, 0);
+      boolean bool = paramc.hPf;
+      paramc = paramc.data;
+      parama.setOnTouchListener(new a.5(this, bool, parama));
+      parama.setOnClickListener(new a.6(this, bool, paramm, paramc));
+      m.runOnUiThread(new a.7(this, parama, (FrameLayout.LayoutParams)localObject));
+      AppMethodBeat.o(51213);
+      return true;
+      i = paramc.height;
+      break;
     }
   }
   
-  public final boolean a(b.d arg1)
+  public final boolean a(b.d arg1, com.tencent.mm.plugin.appbrand.e.a parama)
   {
-    if (bk.bl(???.gum)) {
+    AppMethodBeat.i(51226);
+    if (bo.isNullOrNil(???.hPe))
+    {
+      AppMethodBeat.o(51226);
       return false;
     }
-    Object localObject1 = new MarkerOptions();
-    ((MarkerOptions)localObject1).position(new LatLng(???.latitude, ???.longitude));
-    Bitmap localBitmap = ((com.tencent.mm.plugin.appbrand.d.a)com.tencent.luggage.b.e.i(com.tencent.mm.plugin.appbrand.d.a.class)).ba(???.gum);
-    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-      ((MarkerOptions)localObject1).icon(new BitmapDescriptor(localBitmap));
+    MarkerOptions localMarkerOptions = new MarkerOptions();
+    localMarkerOptions.position(new LatLng(???.latitude, ???.longitude));
+    parama = parama.bB(???.hPe);
+    if ((parama != null) && (!parama.isRecycled())) {
+      localMarkerOptions.icon(new BitmapDescriptor(parama));
     }
-    ((MarkerOptions)localObject1).rotation(???.rotate);
-    localObject1 = this.gty.getMap().addMarker((MarkerOptions)localObject1);
-    synchronized (this.gtP)
+    localMarkerOptions.rotation(???.rotate);
+    parama = this.hOi.getMap().addMarker(localMarkerOptions);
+    synchronized (this.hOE)
     {
-      this.gtP.add(new a.c(this, (Marker)localObject1));
+      this.hOE.add(new c(parama));
+      AppMethodBeat.o(51226);
       return true;
     }
   }
   
-  public final boolean a(b.s arg1)
+  public final boolean a(b.w arg1)
   {
+    AppMethodBeat.i(51228);
     Object localObject1 = new PolygonOptions();
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ???.gus.iterator();
+    Iterator localIterator = ???.hPm.iterator();
     while (localIterator.hasNext())
     {
-      b.f localf = (b.f)localIterator.next();
-      localArrayList.add(new LatLng(localf.latitude, localf.longitude));
+      b.h localh = (b.h)localIterator.next();
+      localArrayList.add(new LatLng(localh.latitude, localh.longitude));
     }
     ((PolygonOptions)localObject1).addAll(localArrayList);
     ((PolygonOptions)localObject1).fillColor(???.fillColor);
     ((PolygonOptions)localObject1).strokeColor(???.strokeColor);
     ((PolygonOptions)localObject1).strokeWidth(???.strokeWidth);
     ((PolygonOptions)localObject1).zIndex(???.zIndex);
-    localObject1 = this.gty.getMap().addPolygon((PolygonOptions)localObject1);
-    synchronized (this.gtQ)
+    localObject1 = this.hOi.getMap().addPolygon((PolygonOptions)localObject1);
+    synchronized (this.hOF)
     {
-      this.gtQ.add(localObject1);
+      this.hOF.add(localObject1);
+      AppMethodBeat.o(51228);
       return true;
     }
   }
   
-  public final void ajg()
+  public final void aDA()
   {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s onCreate", new Object[] { this });
-    this.gty.onCreate(null);
+    AppMethodBeat.i(51212);
+    m.runOnUiThread(new a.4(this));
+    AppMethodBeat.o(51212);
   }
   
-  public final b.t aji()
+  public final void aDB()
   {
-    Object localObject2 = this.gty.getProjection().getVisibleRegion().getLatLngBounds();
-    Object localObject1 = new b.g();
-    ((b.g)localObject1).guq = new b.f(((LatLngBounds)localObject2).getSouthwest().getLatitude(), ((LatLngBounds)localObject2).getSouthwest().getLongitude());
-    ((b.g)localObject1).gur = new b.f(((LatLngBounds)localObject2).getNortheast().getLatitude(), ((LatLngBounds)localObject2).getNortheast().getLongitude());
-    localObject2 = new b.u();
-    ((b.u)localObject2).guL = ((b.g)localObject1);
-    localObject1 = new b.t();
-    ((b.t)localObject1).guK = ((b.u)localObject2);
-    return localObject1;
-  }
-  
-  public final void ajj()
-  {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s moveToMapLocation", new Object[] { this });
-    this.gtJ = new a.3(this);
-    if ((this.gtS != null) && (this.gtR))
-    {
-      this.gtJ.run();
-      this.gtJ = null;
+    AppMethodBeat.i(51214);
+    Iterator localIterator = this.hOB.values().iterator();
+    while (localIterator.hasNext()) {
+      ((Polyline)localIterator.next()).remove();
     }
+    this.hOB.clear();
+    AppMethodBeat.o(51214);
   }
   
-  public final b.f ajk()
+  public final void aDC()
   {
-    LatLng localLatLng = this.gty.getMap().getMapCenter();
-    return new b.f(localLatLng.getLatitude(), localLatLng.getLongitude());
-  }
-  
-  public final void ajl()
-  {
-    synchronized (this.gtK)
-    {
-      Iterator localIterator = this.gtK.iterator();
-      if (localIterator.hasNext()) {
-        ((Circle)localIterator.next()).remove();
-      }
-    }
-    this.gtK.clear();
-  }
-  
-  public final void ajm()
-  {
-    ViewGroup localViewGroup = (ViewGroup)this.gtx;
-    synchronized (this.gtL)
-    {
-      Iterator localIterator = this.gtL.iterator();
-      if (localIterator.hasNext()) {
-        localViewGroup.removeView(((a.b)localIterator.next()).gui);
-      }
-    }
-    this.gtL.clear();
-  }
-  
-  public final void ajn()
-  {
-    synchronized (this.gtM)
-    {
-      Iterator localIterator = this.gtM.iterator();
-      if (localIterator.hasNext()) {
-        ((Polyline)localIterator.next()).remove();
-      }
-    }
-    this.gtM.clear();
-  }
-  
-  public final void ajo()
-  {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s removeAllMarker", new Object[] { this });
-    Iterator localIterator = this.gtO.values().iterator();
+    AppMethodBeat.i(51219);
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s removeAllMarker", new Object[] { this });
+    Iterator localIterator = this.hOD.values().iterator();
     while (localIterator.hasNext())
     {
-      a.d locald = (a.d)localIterator.next();
-      locald.guj.remove();
-      if (locald.guk != null)
+      d locald = (d)localIterator.next();
+      locald.hPb.remove();
+      if (locald.hPc != null)
       {
-        if ((locald.guk.getMarkerView() != null) && ((locald.guk.getMarkerView() instanceof com.tencent.mm.plugin.appbrand.widget.d.e))) {
-          i.a((com.tencent.mm.plugin.appbrand.widget.d.e)locald.guk.getMarkerView());
+        if ((locald.hPc.getMarkerView() != null) && ((locald.hPc.getMarkerView() instanceof com.tencent.mm.plugin.appbrand.widget.e.d))) {
+          i.a((com.tencent.mm.plugin.appbrand.widget.e.d)locald.hPc.getMarkerView());
         }
-        locald.guk.remove();
+        locald.hPc.remove();
       }
     }
-    this.gtO.clear();
+    this.hOD.clear();
+    AppMethodBeat.o(51219);
   }
   
-  public final void ajp()
+  public final void aDD()
   {
-    synchronized (this.gtP)
+    AppMethodBeat.i(51225);
+    synchronized (this.hOE)
     {
-      Iterator localIterator = this.gtP.iterator();
+      Iterator localIterator = this.hOE.iterator();
       if (localIterator.hasNext()) {
-        ((a.c)localIterator.next()).guj.remove();
+        ((c)localIterator.next()).hPb.remove();
       }
     }
-    this.gtP.clear();
+    this.hOE.clear();
+    AppMethodBeat.o(51225);
   }
   
-  public final void ajq()
+  public final void aDE()
   {
-    synchronized (this.gtQ)
+    AppMethodBeat.i(51227);
+    synchronized (this.hOF)
     {
-      Iterator localIterator = this.gtQ.iterator();
+      Iterator localIterator = this.hOF.iterator();
       if (localIterator.hasNext()) {
         ((Polygon)localIterator.next()).remove();
       }
     }
-    this.gtQ.clear();
+    this.hOF.clear();
+    AppMethodBeat.o(51227);
   }
   
-  public final void c(float paramFloat1, float paramFloat2, int paramInt)
+  public final b.x aDt()
   {
-    TencentMap localTencentMap = this.gty.getMap();
-    if (localTencentMap != null)
+    AppMethodBeat.i(51185);
+    Object localObject2 = this.hOi.getProjection().getVisibleRegion().getLatLngBounds();
+    Object localObject1 = new b.i();
+    ((b.i)localObject1).hPk = new b.h(((LatLngBounds)localObject2).getSouthwest().getLatitude(), ((LatLngBounds)localObject2).getSouthwest().getLongitude());
+    ((b.i)localObject1).hPl = new b.h(((LatLngBounds)localObject2).getNortheast().getLatitude(), ((LatLngBounds)localObject2).getNortheast().getLongitude());
+    localObject2 = new b.y();
+    ((b.y)localObject2).hPG = ((b.i)localObject1);
+    localObject1 = new b.x();
+    ((b.x)localObject1).hPF = ((b.y)localObject2);
+    AppMethodBeat.o(51185);
+    return localObject1;
+  }
+  
+  public final void aDu()
+  {
+    AppMethodBeat.i(51187);
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s moveToMapLocation", new Object[] { this });
+    this.hOw = new a.3(this);
+    if ((this.hOH != null) && (this.hOG))
     {
-      localTencentMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(paramFloat1, paramFloat2), paramInt));
-      this.gtJ = null;
+      this.hOw.run();
+      this.hOw = null;
     }
+    AppMethodBeat.o(51187);
   }
   
-  public final void dg(boolean paramBoolean)
+  public final float aDv()
   {
-    this.gty.getUiSettings().setZoomGesturesEnabled(paramBoolean);
+    AppMethodBeat.i(51192);
+    if (this.hOp != null)
+    {
+      float f = this.hOp.getBearing();
+      AppMethodBeat.o(51192);
+      return f;
+    }
+    ab.e("MicroMsg.DefaultTencentMapView", "getRotate fail, curCameraPosition is null");
+    AppMethodBeat.o(51192);
+    return 0.0F;
   }
   
-  public final void dh(boolean paramBoolean)
+  public final b.e aDw()
   {
-    this.gty.getUiSettings().setScrollGesturesEnabled(paramBoolean);
+    AppMethodBeat.i(51204);
+    if (this.hOy != null)
+    {
+      locale = this.hOy;
+      AppMethodBeat.o(51204);
+      return locale;
+    }
+    b.e locale = aDq();
+    AppMethodBeat.o(51204);
+    return locale;
   }
   
-  public final void di(boolean paramBoolean)
+  public boolean aDx()
   {
-    this.gty.getUiSettings().setRotateGesturesEnabled(paramBoolean);
+    return false;
   }
   
-  public final void dj(boolean paramBoolean)
+  public final b.h aDy()
   {
-    this.gty.getUiSettings().setCompassEnabled(paramBoolean);
+    AppMethodBeat.i(51207);
+    Object localObject = this.hOi.getMap().getMapCenter();
+    localObject = new b.h(((LatLng)localObject).getLatitude(), ((LatLng)localObject).getLongitude());
+    AppMethodBeat.o(51207);
+    return localObject;
   }
   
-  public final void dk(boolean paramBoolean)
+  public final void aDz()
   {
-    this.gty.getMap().set3DEnable(paramBoolean);
+    AppMethodBeat.i(51210);
+    synchronized (this.hOz)
+    {
+      Iterator localIterator = this.hOz.iterator();
+      if (localIterator.hasNext()) {
+        ((Circle)localIterator.next()).remove();
+      }
+    }
+    this.hOz.clear();
+    AppMethodBeat.o(51210);
   }
   
-  public final void dl(boolean paramBoolean)
+  public final void ar(float paramFloat)
   {
-    this.gty.getUiSettings().setTiltGesturesEnabled(paramBoolean);
+    AppMethodBeat.i(51188);
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s zoomTo scale:%f", new Object[] { this, Float.valueOf(paramFloat) });
+    TencentMap localTencentMap = this.hOi.getMap();
+    if (localTencentMap != null) {
+      localTencentMap.animateCamera(CameraUpdateFactory.zoomTo(paramFloat));
+    }
+    AppMethodBeat.o(51188);
   }
   
-  public final void dm(boolean paramBoolean)
+  public final void as(float paramFloat)
   {
-    this.gty.getMap().setSatelliteEnabled(paramBoolean);
+    AppMethodBeat.i(51189);
+    TencentMap localTencentMap = this.hOi.getMap();
+    if ((localTencentMap != null) && (this.hOp != null)) {
+      localTencentMap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder(this.hOp).skew(this.hOp.getSkew()).bearing(paramFloat).build()));
+    }
+    AppMethodBeat.o(51189);
   }
   
-  public final void dn(boolean paramBoolean)
+  public final void at(float paramFloat)
   {
-    this.gty.getMap().setTrafficEnabled(paramBoolean);
+    AppMethodBeat.i(51190);
+    TencentMap localTencentMap = this.hOi.getMap();
+    if ((localTencentMap != null) && (this.hOp != null)) {
+      localTencentMap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder(this.hOp).skew(paramFloat).bearing(this.hOp.getBearing()).build()));
+    }
+    AppMethodBeat.o(51190);
   }
   
-  public final void jdMethod_do(boolean paramBoolean)
+  public final void ck(String paramString1, String paramString2)
   {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s show location", new Object[] { this });
-    this.gtR = paramBoolean;
+    AppMethodBeat.i(51203);
+    this.hOi.getMap().setIndoorFloor(paramString1, paramString2);
+    AppMethodBeat.o(51203);
+  }
+  
+  public final void ej(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51194);
+    this.hOi.getUiSettings().setZoomGesturesEnabled(paramBoolean);
+    AppMethodBeat.o(51194);
+  }
+  
+  public final void ek(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51195);
+    this.hOi.getUiSettings().setScrollGesturesEnabled(paramBoolean);
+    AppMethodBeat.o(51195);
+  }
+  
+  public final void el(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51196);
+    this.hOi.getUiSettings().setRotateGesturesEnabled(paramBoolean);
+    AppMethodBeat.o(51196);
+  }
+  
+  public final void em(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51197);
+    this.hOi.getUiSettings().setCompassEnabled(paramBoolean);
+    AppMethodBeat.o(51197);
+  }
+  
+  public final void en(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51198);
+    this.hOi.getMap().set3DEnable(paramBoolean);
+    AppMethodBeat.o(51198);
+  }
+  
+  public final void eo(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51199);
+    this.hOi.getUiSettings().setTiltGesturesEnabled(paramBoolean);
+    AppMethodBeat.o(51199);
+  }
+  
+  public final void ep(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51200);
+    this.hOi.getMap().setSatelliteEnabled(paramBoolean);
+    AppMethodBeat.o(51200);
+  }
+  
+  public final void eq(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51201);
+    this.hOi.getMap().setTrafficEnabled(paramBoolean);
+    AppMethodBeat.o(51201);
+  }
+  
+  public final void er(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51202);
+    this.hOi.getMap().setIndoorEnabled(paramBoolean);
+    AppMethodBeat.o(51202);
+  }
+  
+  public final void es(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51205);
+    this.hOi.getUiSettings().setIndoorLevelPickerEnabled(paramBoolean);
+    AppMethodBeat.o(51205);
+  }
+  
+  public final void et(boolean paramBoolean)
+  {
+    AppMethodBeat.i(146052);
+    this.hOi.getUiSettings().setScaleControlsEnabled(paramBoolean);
+    AppMethodBeat.o(146052);
+  }
+  
+  public final void eu(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51229);
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s show location", new Object[] { this });
+    this.hOG = paramBoolean;
+    d locald;
     if (paramBoolean)
     {
-      f.a(this);
+      if (this.hOH != null)
+      {
+        locald = this.hOH;
+        if (locald.hPb != null) {
+          locald.hPb.setVisible(true);
+        }
+      }
+      ((com.tencent.mm.plugin.appbrand.t.b.a)e.q(com.tencent.mm.plugin.appbrand.t.b.a.class)).b("gcj02", this.hOI, aDF());
+      g.a(this);
+      AppMethodBeat.o(51229);
       return;
     }
-    f.b(this);
+    if (this.hOH != null)
+    {
+      locald = this.hOH;
+      if (locald.hPb != null) {
+        locald.hPb.setVisible(false);
+      }
+    }
+    ((com.tencent.mm.plugin.appbrand.t.b.a)e.q(com.tencent.mm.plugin.appbrand.t.b.a.class)).c("gcj02", this.hOI, aDF());
+    g.b(this);
+    AppMethodBeat.o(51229);
   }
   
-  public final void e(List<b.f> paramList, int paramInt)
+  public void g(SurfaceTexture paramSurfaceTexture) {}
+  
+  public final float getSkew()
   {
+    AppMethodBeat.i(51193);
+    if (this.hOp != null)
+    {
+      float f = this.hOp.getSkew();
+      AppMethodBeat.o(51193);
+      return f;
+    }
+    ab.e("MicroMsg.DefaultTencentMapView", "getRotate fail, curCameraPosition is null");
+    AppMethodBeat.o(51193);
+    return 0.0F;
+  }
+  
+  public final View getView()
+  {
+    return this.hOh;
+  }
+  
+  public final int getZoomLevel()
+  {
+    AppMethodBeat.i(51191);
+    int i = this.hOi.getMap().getZoomLevel();
+    AppMethodBeat.o(51191);
+    return i;
+  }
+  
+  public final void h(List<b.h> paramList, int paramInt)
+  {
+    AppMethodBeat.i(51208);
     LatLngBounds.Builder localBuilder = new LatLngBounds.Builder();
     LinkedList localLinkedList = new LinkedList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      b.f localf = (b.f)paramList.next();
-      localLinkedList.add(new LatLng(localf.latitude, localf.longitude));
+      b.h localh = (b.h)paramList.next();
+      localLinkedList.add(new LatLng(localh.latitude, localh.longitude));
     }
     localBuilder.include(localLinkedList);
-    this.gty.getMap().animateCamera(CameraUpdateFactory.newLatLngBounds(localBuilder.build(), paramInt));
-    this.gtJ = null;
-  }
-  
-  public final View getView()
-  {
-    return this.gtx;
-  }
-  
-  public final int getZoomLevel()
-  {
-    return this.gty.getMap().getZoomLevel();
-  }
-  
-  public final void lv(int paramInt)
-  {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s zoomTo scale:%d", new Object[] { this, Integer.valueOf(paramInt) });
-    TencentMap localTencentMap = this.gty.getMap();
-    if (localTencentMap != null) {
-      localTencentMap.animateCamera(CameraUpdateFactory.zoomTo(paramInt));
-    }
+    this.hOi.getMap().animateCamera(CameraUpdateFactory.newLatLngBounds(localBuilder.build(), paramInt));
+    this.hOw = null;
+    AppMethodBeat.o(51208);
   }
   
   public final void onDestroy()
   {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s onDestroy", new Object[] { this });
-    this.gtV.set(true);
-    this.gty.getMap().setOnMapCameraChangeListener(null);
-    ajo();
-    ajn();
-    ajn();
-    ajm();
-    ajp();
-    ajq();
-    ai.d(new a.20(this));
-    if (this.gtS != null)
+    AppMethodBeat.i(51184);
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s onDestroy", new Object[] { this });
+    this.hOL.set(true);
+    this.hOi.getMap().setOnMapCameraChangeListener(null);
+    aDC();
+    aDB();
+    aDB();
+    aDA();
+    aDD();
+    aDE();
+    if (this.hOi != null)
     {
-      d locald = this.gtS;
-      if (locald.guj != null)
-      {
-        locald.guj.remove();
-        locald.guj = null;
-      }
+      this.hOi.clean();
+      this.hOi.onDestroy();
     }
+    if (this.hOH != null)
+    {
+      d locald = this.hOH;
+      if (locald.hPb != null)
+      {
+        locald.hPb.remove();
+        locald.hPb = null;
+      }
+      this.hOH = null;
+    }
+    AppMethodBeat.o(51184);
   }
   
   public final void onPause()
   {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s onPause", new Object[] { this });
-    this.bNu.setVisibility(0);
-    if (this.gtE == null) {
-      this.gtE = ajh();
-    }
-    if (this.gtE != null) {
-      ai.l(this.gtF, 100L);
+    AppMethodBeat.i(51181);
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s onPause", new Object[] { this });
+    if (this.mMapType == 0)
+    {
+      this.cuM.setVisibility(0);
+      if (this.hOq == null) {
+        this.hOq = aDr();
+      }
+      if (this.hOq != null)
+      {
+        al.p(this.hOr, 100L);
+        this.hOi.setVisibility(4);
+        this.hOi.getMap().getScreenShot(new a.21(this));
+      }
     }
     for (;;)
     {
-      this.gty.setVisibility(4);
-      this.gty.getMap().getScreenShot(new a.18(this));
       this.isBackground = true;
+      if (this.hOG)
+      {
+        ((com.tencent.mm.plugin.appbrand.t.b.a)e.q(com.tencent.mm.plugin.appbrand.t.b.a.class)).c("gcj02", this.hOI, aDF());
+        g.b(this);
+      }
+      AppMethodBeat.o(51181);
       return;
-      y.e("MicroMsg.DefaultTencentMapView", "hideTencentMap err");
+      ab.e("MicroMsg.DefaultTencentMapView", "hideTencentMap err");
+      break;
+      this.hOi.onPause();
     }
   }
   
   public final void onResume()
   {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s onResume", new Object[] { this });
-    this.bNu.setVisibility(4);
-    this.gty.setVisibility(0);
-    this.gty.onResume();
-    if (this.gtE == null) {
-      this.gtE = ajh();
-    }
-    if (this.gtE != null)
+    AppMethodBeat.i(51180);
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s onResume", new Object[] { this });
+    if (this.mMapType == 0)
     {
-      ai.S(this.gtF);
-      this.gtE.setVisibility(0);
+      this.cuM.setVisibility(4);
+      this.hOi.setVisibility(0);
+      this.hOi.onResume();
+      aDs();
     }
     for (;;)
     {
       this.isBackground = false;
-      return;
-      y.e("MicroMsg.DefaultTencentMapView", "showTencentMap err");
-    }
-  }
-  
-  public final String toString()
-  {
-    return "DefaultTencentMapView{appId='" + this.appId + '\'' + ", componentId='" + this.gtw + '\'' + ", mapId=" + this.mapId + '}';
-  }
-  
-  public final b.o ug(String paramString)
-  {
-    return (b.o)this.gtO.get(paramString);
-  }
-  
-  public final void uh(String paramString)
-  {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s removeMarker markerId:%s", new Object[] { this, paramString });
-    a.d locald = (a.d)this.gtO.get(paramString);
-    if (locald == null)
-    {
-      y.w("MicroMsg.DefaultTencentMapView", "marker:%s is null", new Object[] { paramString });
-      return;
-    }
-    locald.guj.remove();
-    if (locald.guk != null)
-    {
-      if ((locald.guk.getMarkerView() != null) && ((locald.guk.getMarkerView() instanceof com.tencent.mm.plugin.appbrand.widget.d.e))) {
-        i.a((com.tencent.mm.plugin.appbrand.widget.d.e)locald.guk.getMarkerView());
+      if (this.hOG)
+      {
+        ((com.tencent.mm.plugin.appbrand.t.b.a)e.q(com.tencent.mm.plugin.appbrand.t.b.a.class)).b("gcj02", this.hOI, aDF());
+        g.a(this);
       }
-      locald.guk.remove();
-      this.gtO.remove(paramString + "#label");
+      AppMethodBeat.o(51180);
+      return;
+      this.hOi.onResume();
     }
-    this.gtO.remove(paramString);
   }
   
-  public final void x(Bundle paramBundle)
+  public void onSizeChanged(int paramInt1, int paramInt2) {}
+  
+  public void onTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public String toString()
   {
-    if (!"E6FBZ-OLSCQ-UIU5C-GWLJ7-ABUPT-V7FJX".equals(this.gtB))
+    AppMethodBeat.i(51232);
+    String str = "DefaultTencentMapView{mapId=" + this.hOg + '}';
+    AppMethodBeat.o(51232);
+    return str;
+  }
+  
+  public final class c
+  {
+    Marker hPb;
+    
+    public c(Marker paramMarker)
     {
-      String str = bk.pm(paramBundle.getString("smallAppKey"));
-      paramBundle.putString("smallAppKey", str + this.gtB + "#" + this.gtC + ";");
+      this.hPb = paramMarker;
     }
+  }
+  
+  public static final class d
+    extends b.q
+  {
+    public Marker hPb;
+    public Marker hPc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.a.a
  * JD-Core Version:    0.7.0.1
  */

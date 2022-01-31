@@ -2,41 +2,55 @@ package com.tencent.mm.plugin.webview.luggage;
 
 import android.os.Build.VERSION;
 import android.webkit.WebResourceResponse;
-import com.tencent.luggage.j.h;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.luggage.g.d;
+import com.tencent.luggage.g.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
-import java.util.Map;
 
 public final class c
   implements com.tencent.luggage.webview.a.c
 {
-  public final WebResourceResponse bf(String paramString)
+  private String uRe = "";
+  
+  public c() {}
+  
+  public c(String paramString)
   {
-    if (Build.VERSION.SDK_INT < 21) {
+    this.uRe = paramString;
+  }
+  
+  public final WebResourceResponse bG(String paramString)
+  {
+    AppMethodBeat.i(5979);
+    if (Build.VERSION.SDK_INT < 21)
+    {
+      AppMethodBeat.o(5979);
       return null;
     }
-    paramString = h.k(ae.getContext(), "LuggageBridge.js");
-    Object localObject = h.k(ae.getContext(), "luggage_game_adapter.js");
-    paramString = paramString + (String)localObject;
+    paramString = i.p(ah.getContext(), "LuggageBridge.js");
+    paramString = paramString + this.uRe;
     try
     {
       paramString = new WebResourceResponse("application/javascript", "utf-8", new ByteArrayInputStream(paramString.getBytes("UTF-8")));
-      localObject = new HashMap();
-      ((HashMap)localObject).put("Cache-Control", "no-cache, no-store, must-revalidate");
-      ((HashMap)localObject).put("Pragma", "no-cache");
-      ((HashMap)localObject).put("Expires", "0");
-      paramString.setResponseHeaders((Map)localObject);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("Cache-Control", "no-cache, no-store, must-revalidate");
+      localHashMap.put("Pragma", "no-cache");
+      localHashMap.put("Expires", "0");
+      paramString.setResponseHeaders(localHashMap);
+      AppMethodBeat.o(5979);
       return paramString;
     }
     catch (Exception paramString)
     {
-      com.tencent.luggage.j.c.b("MicroMsg.LuggageMMJsBridgeResourceProvider", "", new Object[] { paramString });
+      d.a("MicroMsg.LuggageMMJsBridgeResourceProvider", "", new Object[] { paramString });
+      AppMethodBeat.o(5979);
     }
     return null;
   }
   
-  public final String qx()
+  public final String xd()
   {
     return "weixin://bridge.js";
   }

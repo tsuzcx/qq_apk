@@ -3,17 +3,20 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mm.model.u.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v.b;
 
 final class e$2
   implements View.OnTouchListener
 {
-  e$2(e parame, u.b paramb, com.tencent.mm.plugin.appbrand.jsapi.e parame1) {}
+  e$2(e parame, v.b paramb, com.tencent.mm.plugin.appbrand.jsapi.e parame1) {}
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = "webview".equals(this.giE.getString("sendTo", null));
-    a.a(this.gkV, paramMotionEvent, this.giE.getString("data", ""), bool);
+    AppMethodBeat.i(126304);
+    boolean bool = "webview".equals(this.hBX.getString("sendTo", null));
+    a.a(this.hEL, paramMotionEvent, this.hBX.getString("data", ""), bool);
+    AppMethodBeat.o(126304);
     return true;
   }
 }

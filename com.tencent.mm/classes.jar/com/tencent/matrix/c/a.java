@@ -1,66 +1,120 @@
 package com.tencent.matrix.c;
 
+import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.matrix.d.b;
+import com.tencent.matrix.g.a.a;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
+import org.json.JSONObject;
 
-public class a
-  extends c
+public final class a
+  extends b
 {
-  private final long boF = 86400000L;
-  private final SharedPreferences boG;
-  private final SharedPreferences.Editor boH;
-  private final HashMap<String, Long> boI;
+  public final com.tencent.matrix.c.a.a bNM;
+  private com.tencent.matrix.c.b.a bNN;
   
-  public a(Context paramContext, String paramString, c.a parama)
+  public a(com.tencent.matrix.c.a.a parama)
   {
-    super(parama);
-    this.boG = paramContext.getSharedPreferences(paramString + com.tencent.matrix.d.c.ak(paramContext), 0);
-    this.boI = new HashMap();
-    long l1 = System.currentTimeMillis();
-    this.boH = this.boG.edit();
-    paramContext = new HashSet(this.boG.getAll().keySet()).iterator();
-    while (paramContext.hasNext())
-    {
-      paramString = (String)paramContext.next();
-      long l2 = this.boG.getLong(paramString, 0L);
-      if ((l2 <= 0L) || (l1 - l2 > this.boF)) {
-        this.boH.remove(paramString);
-      } else {
-        this.boI.put(paramString, Long.valueOf(l2));
-      }
-    }
-    this.boH.apply();
+    this.bNM = parama;
   }
   
-  public final void bx(String paramString)
+  public final void destroy()
   {
-    if (paramString == null) {}
-    while (this.boI.containsKey(paramString)) {
+    super.destroy();
+  }
+  
+  public final JSONObject getJsonInfo()
+  {
+    return this.bNN.getJsonInfo();
+  }
+  
+  public final String getTag()
+  {
+    return "memoryinfo";
+  }
+  
+  public final void init(Application paramApplication, com.tencent.matrix.d.c paramc)
+  {
+    super.init(paramApplication, paramc);
+    this.bNN = new com.tencent.matrix.c.b.a(this);
+  }
+  
+  public final void onForeground(boolean paramBoolean)
+  {
+    try
+    {
+      com.tencent.matrix.g.c.i("Matrix.MemoryCanaryPlugin", "onForeground:".concat(String.valueOf(paramBoolean)), new Object[0]);
+      super.onForeground(paramBoolean);
       return;
     }
-    long l = System.currentTimeMillis();
-    this.boI.put(paramString, Long.valueOf(l));
-    this.boH.putLong(paramString, l).apply();
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public final boolean by(String paramString)
+  public final void start()
   {
-    if (!this.boI.containsKey(paramString)) {
-      return false;
-    }
-    long l = ((Long)this.boI.get(paramString)).longValue();
-    if ((l <= 0L) || (System.currentTimeMillis() - l > this.boF))
+    for (;;)
     {
-      this.boH.remove(paramString).apply();
-      this.boI.remove(paramString);
-      return false;
+      try
+      {
+        com.tencent.matrix.c.b.a locala;
+        if (!isPluginStarted())
+        {
+          super.start();
+          locala = this.bNN;
+          locala.bNQ = com.tencent.matrix.g.a.aC(locala.mContext);
+          if ((!com.tencent.matrix.c.b.a.za()) || (locala.bNQ == a.a.bTU) || (locala.bNQ == a.a.bTV) || (locala.bNQ == a.a.bTW)) {
+            locala.mIsOpen = false;
+          }
+        }
+        else
+        {
+          return;
+        }
+        locala.mIsOpen = true;
+        locala.mStartTime = System.currentTimeMillis();
+        locala.bNW = 1;
+        locala.bNV = (locala.mStartTime + locala.zb() - 5000L);
+        com.tencent.matrix.g.c.d("Matrix.MemoryCanaryCore", "next report delay:%d, starttime:%d", new Object[] { Long.valueOf(locala.zb()), Long.valueOf(locala.mStartTime) });
+        locala.mHandler.postDelayed(locala.bOa, locala.zb());
+        locala.bNZ = new HashMap();
+        com.tencent.matrix.c.b.a.bNR = com.tencent.matrix.g.a.getTotalMemory(locala.mContext) / 1024L;
+        com.tencent.matrix.c.b.a.bNS = com.tencent.matrix.g.a.aD(locala.mContext) / 1024L;
+        com.tencent.matrix.c.b.a.bNT = com.tencent.matrix.g.a.aE(locala.mContext);
+        if ((com.tencent.matrix.c.b.a.bNS >= com.tencent.matrix.c.b.a.bNR) || (com.tencent.matrix.c.b.a.bNS <= 0L) || (com.tencent.matrix.c.b.a.bNT <= 102400) || (com.tencent.matrix.c.b.a.bNR <= 0L))
+        {
+          locala.mIsOpen = false;
+          continue;
+        }
+        ((Application)localObject.mContext).registerActivityLifecycleCallbacks(localObject.bOc);
+      }
+      finally {}
+      localObject.mContext.registerComponentCallbacks(localObject.bOd);
     }
-    return true;
+  }
+  
+  public final void stop()
+  {
+    try
+    {
+      if (isPluginStarted())
+      {
+        super.stop();
+        com.tencent.matrix.c.b.a locala = this.bNN;
+        ((Application)locala.mContext).unregisterActivityLifecycleCallbacks(locala.bOc);
+        locala.mContext.unregisterComponentCallbacks(locala.bOd);
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

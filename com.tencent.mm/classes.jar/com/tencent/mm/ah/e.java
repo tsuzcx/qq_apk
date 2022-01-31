@@ -1,109 +1,114 @@
 package com.tencent.mm.ah;
 
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.bi;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.ad;
+import junit.framework.Assert;
 
-public abstract interface e
+public final class e
+  implements f
 {
-  public abstract void a(c paramc);
+  h frB;
+  e.c frP;
+  k frQ;
+  boolean frR;
+  boolean frS;
+  boolean frT;
+  az frU;
   
-  public abstract b b(a parama);
-  
-  public static final class a
+  public e()
   {
-    public cd dBs;
-    public boolean ecS = false;
-    public boolean ecT = false;
-    public boolean ecU = false;
-    public long ecV = 0L;
-    public Object ecW;
-    
-    public a(cd paramcd, Object paramObject)
-    {
-      this.dBs = paramcd;
-      this.ecW = paramObject;
+    AppMethodBeat.i(77910);
+    this.frB = null;
+    this.frP = null;
+    this.frQ = null;
+    this.frR = false;
+    this.frS = true;
+    this.frT = true;
+    this.frU = null;
+    g.Rc().a(158, this);
+    AppMethodBeat.o(77910);
+  }
+  
+  private int a(h paramh)
+  {
+    AppMethodBeat.i(77914);
+    if ((this.frU == null) || (this.frU.dtw())) {
+      this.frU = new az(1, "get-hd-headimg", 1);
     }
-    
-    public a(cd paramcd, boolean paramBoolean, long paramLong)
+    int i = this.frU.e(new e.b(this, paramh));
+    AppMethodBeat.o(77914);
+    return i;
+  }
+  
+  public final int a(String paramString, e.c paramc)
+  {
+    AppMethodBeat.i(77912);
+    Assert.assertTrue("GetHDHeadImg must set callback", true);
+    if (bo.isNullOrNil(paramString))
     {
-      this.dBs = paramcd;
-      this.ecS = true;
-      this.ecT = false;
-      this.ecU = paramBoolean;
-      this.ecV = paramLong;
+      paramc.cv(3, -101);
+      AppMethodBeat.o(77912);
+      return -101;
     }
-    
-    public a(cd paramcd, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+    this.frP = paramc;
+    if (ad.nM(paramString)) {}
+    for (String str = ad.ark(paramString);; str = paramString)
     {
-      this.dBs = paramcd;
-      this.ecS = paramBoolean1;
-      this.ecT = paramBoolean2;
-      this.ecU = paramBoolean3;
-    }
-    
-    public final String toString()
-    {
-      return String.format("AddMsgInfo(%d), get[%b], fault[%b], up[%b] fixTime[%s]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.ecS), Boolean.valueOf(this.ecT), Boolean.valueOf(this.ecU), Long.valueOf(this.ecV) });
+      this.frB = o.adg().rj(str);
+      ab.d("MicroMsg.GetHDHeadImgHelper", "GetHDHeadImg: %s", new Object[] { str });
+      if ((this.frB == null) || (!this.frB.getUsername().equals(str)))
+      {
+        this.frB = new h();
+        this.frB.username = str;
+      }
+      if (bo.isNullOrNil(this.frB.acX()))
+      {
+        ab.w("MicroMsg.GetHDHeadImgHelper", "dkhurl [%s] has NO URL flag:%d !", new Object[] { paramString, Integer.valueOf(this.frB.dqB) });
+        this.frQ = new k(str);
+        if (!g.Rc().a(this.frQ, 0))
+        {
+          paramc.cv(3, -102);
+          AppMethodBeat.o(77912);
+          return -102;
+        }
+        AppMethodBeat.o(77912);
+        return 0;
+      }
+      if (a(this.frB) == 0)
+      {
+        AppMethodBeat.o(77912);
+        return 0;
+      }
+      paramc.cv(3, -103);
+      AppMethodBeat.o(77912);
+      return -103;
     }
   }
   
-  public static final class b
+  public final void acU()
   {
-    public bi bFH;
-    public boolean ecX;
-    
-    public b(bi parambi, boolean paramBoolean)
-    {
-      this.bFH = parambi;
-      this.ecX = paramBoolean;
-    }
+    AppMethodBeat.i(77911);
+    g.Rc().b(158, this);
+    AppMethodBeat.o(77911);
   }
   
-  public static final class c
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    public bi bWO;
-    public cd dBs;
-    public Object ecW;
-    
-    public c(cd paramcd, Object paramObject)
-    {
-      this.dBs = paramcd;
-      this.ecW = paramObject;
-    }
-    
-    public c(bi parambi)
-    {
-      this.bWO = parambi;
-    }
-  }
-  
-  public static final class d
-  {
-    private static ConcurrentHashMap<Object, e> ecP = new ConcurrentHashMap();
-    
-    public static void a(Object paramObject, e parame)
-    {
-      y.i("MicroMsg.IMessageExtension.Factory", "registerExtensionFor %s, %s", new Object[] { paramObject, parame });
-      ecP.put(paramObject, parame);
-    }
-    
-    public static e aB(Object paramObject)
-    {
-      return (e)ecP.get(paramObject);
-    }
-    
-    public static void b(Object paramObject, e parame)
-    {
-      y.i("MicroMsg.IMessageExtension.Factory", "unregisterExtensionFor %s, %s", new Object[] { paramObject, parame });
-      ecP.remove(paramObject);
-    }
+    AppMethodBeat.i(77913);
+    this.frP.cv(paramInt1, paramInt2);
+    AppMethodBeat.o(77913);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ah.e
  * JD-Core Version:    0.7.0.1
  */

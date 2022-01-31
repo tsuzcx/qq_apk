@@ -1,87 +1,98 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.i;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent.c;
-import com.tencent.mm.plugin.appbrand.permission.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.fakenative.OpenBusinessViewUtil;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.page.r;
+import com.tencent.mm.plugin.appbrand.permission.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.MMActivity;
 
 public final class ILaunchWxaAppInfoNotify$a$1
   implements MMToClientEvent.c
 {
-  public ILaunchWxaAppInfoNotify$a$1(com.tencent.mm.plugin.appbrand.n paramn) {}
+  public ILaunchWxaAppInfoNotify$a$1(o paramo) {}
   
-  public final void aG(final Object paramObject)
+  public final void aZ(final Object paramObject)
   {
-    AppBrandLaunchErrorAction localAppBrandLaunchErrorAction;
+    AppMethodBeat.i(131826);
     if ((paramObject instanceof ILaunchWxaAppInfoNotify.LaunchInfoIpcWrapper))
     {
       paramObject = (ILaunchWxaAppInfoNotify.LaunchInfoIpcWrapper)paramObject;
-      if ((this.gKu.mAppId.equals(paramObject.appId)) && (this.gKu.fyn.fEL == paramObject.fJy))
+      if ((this.gOJ.mAppId.equals(paramObject.appId)) && (this.gOJ.gPz.gXd == paramObject.hcr))
       {
-        if (paramObject.gKt == null) {
-          break label153;
+        if (paramObject.ilk != null)
+        {
+          ab.i("MicroMsg.ILaunchWxaAppInfoNotify[permission]", "try notify update runtime(%s %d), error action %s ", new Object[] { this.gOJ.mAppId, Integer.valueOf(this.gOJ.gPz.gXd), paramObject.ilk.getClass().getName() });
+          AppBrandLaunchErrorAction localAppBrandLaunchErrorAction = paramObject.ilk;
+          localObject = this.gOJ;
+          paramObject = localObject;
+          if (localObject == null) {
+            paramObject = a.xL(localAppBrandLaunchErrorAction.appId);
+          }
+          if ((paramObject == null) || (localAppBrandLaunchErrorAction.hcr != paramObject.wZ().gXd)) {}
+          for (;;)
+          {
+            OpenBusinessViewUtil.z(this.gOJ);
+            AppMethodBeat.o(131826);
+            return;
+            localObject = paramObject.ati();
+            paramObject.finish();
+            if (localObject == null) {
+              paramObject = ah.getContext();
+            }
+            do
+            {
+              localAppBrandLaunchErrorAction.cS(paramObject);
+              break;
+              paramObject = ((i)localObject).atj();
+              if (paramObject == null) {
+                break;
+              }
+              localObject = (MMActivity)paramObject.getContext();
+              if (((MMActivity)localObject).isFinishing()) {
+                break;
+              }
+              paramObject = localObject;
+            } while (!((MMActivity)localObject).activityHasDestroyed());
+          }
         }
-        localAppBrandLaunchErrorAction = paramObject.gKt;
-        localObject = this.gKu;
-        paramObject = localObject;
-        if (localObject == null) {
-          paramObject = a.qn(localAppBrandLaunchErrorAction.appId);
+        Object localObject = this.gOJ.wO();
+        if (localObject != null)
+        {
+          ((e)localObject).a(paramObject.bDn);
+          AppMethodBeat.o(131826);
+          return;
         }
-        if ((paramObject != null) && (localAppBrandLaunchErrorAction.fJy == paramObject.ZA().fEL)) {
-          break label96;
+        if (this.gOJ.mFinished)
+        {
+          ab.e("MicroMsg.ILaunchWxaAppInfoNotify[permission]", "try notify update, runtime(%s %d) finished", new Object[] { this.gOJ.mAppId, Integer.valueOf(this.gOJ.gPz.gXd) });
+          AppMethodBeat.o(131826);
+          return;
         }
+        ab.i("MicroMsg.ILaunchWxaAppInfoNotify[permission]", "try notify update, runtime(%s %d) add deferred action", new Object[] { this.gOJ.mAppId, Integer.valueOf(this.gOJ.gPz.gXd) });
+        this.gOJ.z(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(131825);
+            ILaunchWxaAppInfoNotify.a.1.this.gOJ.wO().a(paramObject.bDn);
+            AppMethodBeat.o(131825);
+          }
+        });
       }
     }
-    return;
-    label96:
-    Object localObject = paramObject.Zx();
-    paramObject.finish();
-    if (localObject == null) {
-      paramObject = ae.getContext();
-    }
-    do
-    {
-      localAppBrandLaunchErrorAction.cr(paramObject);
-      return;
-      paramObject = ((i)localObject).Zz();
-      if (paramObject == null) {
-        break;
-      }
-      localObject = (MMActivity)paramObject.getContext();
-      if (((MMActivity)localObject).isFinishing()) {
-        break;
-      }
-      paramObject = localObject;
-    } while (!((MMActivity)localObject).uMr);
-    return;
-    label153:
-    localObject = this.gKu.fzB;
-    if (localObject != null)
-    {
-      ((d)localObject).a(paramObject.fPW);
-      return;
-    }
-    if (this.gKu.mFinished)
-    {
-      y.e("MicroMsg.ILaunchWxaAppInfoNotify", "try notify update, runtime(%s) finished", new Object[] { this.gKu.mAppId });
-      return;
-    }
-    this.gKu.s(new Runnable()
-    {
-      public final void run()
-      {
-        ILaunchWxaAppInfoNotify.a.1.this.gKu.fzB.a(paramObject.fPW);
-      }
-    });
+    AppMethodBeat.o(131826);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.ILaunchWxaAppInfoNotify.a.1
  * JD-Core Version:    0.7.0.1
  */

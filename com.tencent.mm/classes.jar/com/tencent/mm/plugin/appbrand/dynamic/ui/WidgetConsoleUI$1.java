@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WidgetConsoleUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class WidgetConsoleUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.fXs.finish();
+    AppMethodBeat.i(11002);
+    this.hqS.finish();
+    AppMethodBeat.o(11002);
     return false;
   }
 }

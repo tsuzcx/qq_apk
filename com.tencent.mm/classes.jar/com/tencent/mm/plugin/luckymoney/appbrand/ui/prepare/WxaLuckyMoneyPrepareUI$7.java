@@ -5,8 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 
 final class WxaLuckyMoneyPrepareUI$7
@@ -16,17 +15,21 @@ final class WxaLuckyMoneyPrepareUI$7
   
   public final void onClick(View paramView)
   {
-    if ((!this.lMx.lMr.isShown()) && (!this.eYg))
+    AppMethodBeat.i(42061);
+    if ((!this.ojQ.mKBLayout.isShown()) && (!this.val$isShowSysKB))
     {
-      this.lMx.lMr.setVisibility(0);
-      this.lMx.mKeyboard.setInputEditText((EditText)paramView);
-      WxaLuckyMoneyPrepareUI.b(this.lMx, this.eYk);
-    }
-    while (!this.eYg) {
+      this.ojQ.mKBLayout.setVisibility(0);
+      this.ojQ.mKeyboard.setInputEditText((EditText)paramView);
+      WxaLuckyMoneyPrepareUI.b(this.ojQ, this.val$editMode);
+      AppMethodBeat.o(42061);
       return;
     }
-    this.lMx.lMr.setVisibility(8);
-    ((InputMethodManager)this.lMx.mController.uMN.getSystemService("input_method")).showSoftInput(this.eYi, 0);
+    if (this.val$isShowSysKB)
+    {
+      this.ojQ.mKBLayout.setVisibility(8);
+      ((InputMethodManager)this.ojQ.getContext().getSystemService("input_method")).showSoftInput(this.val$hintTv, 0);
+    }
+    AppMethodBeat.o(42061);
   }
 }
 

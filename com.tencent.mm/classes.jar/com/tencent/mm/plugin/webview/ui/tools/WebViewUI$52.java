@@ -1,35 +1,19 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.view.MenuItem;
-import android.widget.TextView;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.n.b;
-import com.tencent.mm.ui.s;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebViewUI$52
-  implements n.b
+  implements View.OnLayoutChangeListener
 {
   WebViewUI$52(WebViewUI paramWebViewUI) {}
   
-  public final void a(TextView paramTextView, MenuItem paramMenuItem)
+  public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    paramMenuItem = paramMenuItem.getTitle();
-    String str;
-    if (paramTextView != null)
-    {
-      str = (String)WebViewUI.R(this.rpH).get(paramMenuItem);
-      if (bk.bl(str)) {
-        WebViewUI.d(paramTextView, paramMenuItem);
-      }
-    }
-    else
-    {
-      return;
-    }
-    paramTextView.setText(j.a(this.rpH.mController.uMN, str, paramTextView.getTextSize()));
+    AppMethodBeat.i(7883);
+    this.vgz.aYx();
+    AppMethodBeat.o(7883);
   }
 }
 

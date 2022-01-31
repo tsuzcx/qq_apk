@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.order.model;
 
 public final class j$a
 {
-  String jumpUrl;
-  String name;
+  public String jumpUrl;
+  public String name;
 }
 
 

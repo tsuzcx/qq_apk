@@ -1,5 +1,6 @@
 package oicq.wlogin_sdk.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ final class a
 {
   int contextStart;
   int crypt;
-  boolean header = true;
+  boolean header;
   byte[] key;
   byte[] out;
   int padding;
@@ -17,19 +18,28 @@ final class a
   int pos;
   int preCrypt;
   byte[] prePlain;
-  Random random = new Random();
+  Random random;
+  
+  a()
+  {
+    AppMethodBeat.i(96513);
+    this.header = true;
+    this.random = new Random();
+    AppMethodBeat.o(96513);
+  }
   
   private byte[] encipher(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(96514);
     int i = 16;
     try
     {
-      long l2 = y(paramArrayOfByte, 0);
-      long l1 = y(paramArrayOfByte, 4);
-      long l4 = y(this.key, 0);
-      long l5 = y(this.key, 4);
-      long l6 = y(this.key, 8);
-      long l7 = y(this.key, 12);
+      long l2 = z(paramArrayOfByte, 0);
+      long l1 = z(paramArrayOfByte, 4);
+      long l4 = z(this.key, 0);
+      long l5 = z(this.key, 4);
+      long l6 = z(this.key, 8);
+      long l7 = z(this.key, 12);
       long l3 = 0L;
       for (;;)
       {
@@ -41,6 +51,7 @@ final class a
           localDataOutputStream.writeInt((int)l1);
           localDataOutputStream.close();
           paramArrayOfByte = paramArrayOfByte.toByteArray();
+          AppMethodBeat.o(96514);
           return paramArrayOfByte;
         }
         l3 = l3 + 2654435769L & 0xFFFFFFFF;
@@ -50,10 +61,13 @@ final class a
       }
       return null;
     }
-    catch (IOException paramArrayOfByte) {}
+    catch (IOException paramArrayOfByte)
+    {
+      AppMethodBeat.o(96514);
+    }
   }
   
-  private static long y(byte[] paramArrayOfByte, int paramInt)
+  private static long z(byte[] paramArrayOfByte, int paramInt)
   {
     long l = 0L;
     int i = paramInt;
@@ -67,25 +81,25 @@ final class a
     }
   }
   
-  final boolean D(byte[] paramArrayOfByte, int paramInt)
+  final boolean E(byte[] paramArrayOfByte, int paramInt)
   {
-    boolean bool2 = true;
+    AppMethodBeat.i(96517);
     for (this.pos = 0;; this.pos += 1)
     {
-      boolean bool1;
       if (this.pos >= 8)
       {
-        this.prePlain = R(this.prePlain);
+        this.prePlain = al(this.prePlain);
         if (this.prePlain != null) {
           break;
         }
-        bool1 = false;
+        AppMethodBeat.o(96517);
+        return false;
       }
-      do
+      if (this.contextStart + this.pos >= paramInt)
       {
-        return bool1;
-        bool1 = bool2;
-      } while (this.contextStart + this.pos >= paramInt);
+        AppMethodBeat.o(96517);
+        return true;
+      }
       byte[] arrayOfByte = this.prePlain;
       int i = this.pos;
       arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ paramArrayOfByte[(this.crypt + 0 + this.pos)]));
@@ -93,20 +107,22 @@ final class a
     this.contextStart += 8;
     this.crypt += 8;
     this.pos = 0;
+    AppMethodBeat.o(96517);
     return true;
   }
   
-  final byte[] R(byte[] paramArrayOfByte)
+  final byte[] al(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(96515);
     int i = 16;
     try
     {
-      long l1 = y(paramArrayOfByte, 0);
-      long l3 = y(paramArrayOfByte, 4);
-      long l4 = y(this.key, 0);
-      long l5 = y(this.key, 4);
-      long l6 = y(this.key, 8);
-      long l7 = y(this.key, 12);
+      long l1 = z(paramArrayOfByte, 0);
+      long l3 = z(paramArrayOfByte, 4);
+      long l4 = z(this.key, 0);
+      long l5 = z(this.key, 4);
+      long l6 = z(this.key, 8);
+      long l7 = z(this.key, 12);
       long l2 = 3816266640L;
       for (;;)
       {
@@ -118,6 +134,7 @@ final class a
           localDataOutputStream.writeInt((int)l3);
           localDataOutputStream.close();
           paramArrayOfByte = paramArrayOfByte.toByteArray();
+          AppMethodBeat.o(96515);
           return paramArrayOfByte;
         }
         l3 = l3 - ((l1 << 4) + l6 ^ l1 + l2 ^ (l1 >>> 5) + l7) & 0xFFFFFFFF;
@@ -127,11 +144,15 @@ final class a
       }
       return null;
     }
-    catch (IOException paramArrayOfByte) {}
+    catch (IOException paramArrayOfByte)
+    {
+      AppMethodBeat.o(96515);
+    }
   }
   
   final void encrypt8Bytes()
   {
+    AppMethodBeat.i(96516);
     this.pos = 0;
     if (this.pos >= 8) {
       System.arraycopy(encipher(this.plain), 0, this.out, this.crypt, 8);
@@ -145,6 +166,7 @@ final class a
         this.crypt += 8;
         this.pos = 0;
         this.header = false;
+        AppMethodBeat.o(96516);
         return;
         if (this.header)
         {

@@ -1,28 +1,19 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.report.c;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.e;
-import com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.k.a.b;
+import com.tencent.mm.plugin.appbrand.k.a.d;
 
 final class s$7
-  implements View.OnLongClickListener
+  implements a.b
 {
-  s$7(s params) {}
+  s$7(s params, r.b paramb) {}
   
-  public final boolean onLongClick(View paramView)
+  public final void a(a.d paramd)
   {
-    if (this.gUs.getRuntime().aag() == 1086) {}
-    while ((s.a(this.gUs) == null) || (s.a(this.gUs).getCount() == 0)) {
-      return true;
-    }
-    s.a(this.gUs).refresh();
-    this.gUs.gUh.showAsDropDown(paramView);
-    c.a(this.gUs.mAppId, this.gUs.getURL(), 21, "", bk.UX(), 1, 0);
-    return true;
+    AppMethodBeat.i(154340);
+    this.iwT.runOnUiThread(new s.7.1(this));
+    AppMethodBeat.o(154340);
   }
 }
 

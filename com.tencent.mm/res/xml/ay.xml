@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<host-apdu-service android:description="@string/q9" android:requireDeviceUnlock="true" android:apduServiceBanner="@drawable/icon"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <aid-group android:description="@string/q9" android:category="payment">
-        <aid-filter android:name="F123456789" />
-    </aid-group>
-</host-apdu-service>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <IconPreference android:title="@string/eal" android:icon="@drawable/apx" android:key="settings_invite_facebook_friends" />
+    <IconPreference android:title="@string/eao" android:icon="@raw/find_more_friend_qq_icon" android:key="settings_invite_qq_friends" />
+    <IconPreference android:title="@string/edr" android:icon="@drawable/aj0" android:key="settings_recommend_by_mail" />
+    <IconPreference android:title="@string/eds" android:icon="@drawable/aq0" android:key="settings_recommend_by_mb" />
+    <IconPreference android:title="@string/ean" android:icon="@drawable/aj1" android:key="settings_invite_mobile_friends" />
+</PreferenceScreen>

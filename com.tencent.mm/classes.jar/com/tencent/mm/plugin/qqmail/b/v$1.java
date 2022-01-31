@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.qqmail.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 final class v$1
@@ -9,10 +10,12 @@ final class v$1
   
   public final void run()
   {
-    v.b localb = new v.b(this.neu, (byte)0);
-    v.a(this.neu).put(Long.valueOf(this.nes.id), this.nes);
-    v.b(this.neu).put(Long.valueOf(this.nes.id), localb);
-    localb.b(this.nes);
+    AppMethodBeat.i(67992);
+    v.b localb = new v.b(this.pJJ, (byte)0);
+    v.a(this.pJJ).put(Long.valueOf(this.pJI.id), this.pJI);
+    v.b(this.pJJ).put(Long.valueOf(this.pJI.id), localb);
+    localb.b(this.pJI);
+    AppMethodBeat.o(67992);
   }
 }
 

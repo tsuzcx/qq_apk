@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.widget.ScrollView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.ui.a;
 
 final class WalletCheckPwdUI$5
@@ -9,10 +10,12 @@ final class WalletCheckPwdUI$5
 {
   WalletCheckPwdUI$5(WalletCheckPwdUI paramWalletCheckPwdUI) {}
   
-  public final void gK(boolean paramBoolean)
+  public final void onVisibleStateChange(boolean paramBoolean)
   {
-    y.d("Micromsg.WalletCheckPwdUI", "kb visibility: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    WalletCheckPwdUI.h(this.qDk).post(new WalletCheckPwdUI.5.1(this, paramBoolean));
+    AppMethodBeat.i(47337);
+    ab.d("Micromsg.WalletCheckPwdUI", "kb visibility: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    WalletCheckPwdUI.h(this.uqg).post(new WalletCheckPwdUI.5.1(this, paramBoolean));
+    AppMethodBeat.o(47337);
   }
 }
 

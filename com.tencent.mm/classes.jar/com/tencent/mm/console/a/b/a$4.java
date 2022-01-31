@@ -1,9 +1,12 @@
 package com.tencent.mm.console.a.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.t;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bi;
 import java.util.List;
 
@@ -14,22 +17,23 @@ final class a$4
   
   public final void execute()
   {
-    y.i("MicroMsg.AgingTestCommand", "[oneliang] batch insert test msg info, begin single transaction, username:%s", new Object[] { this.dol });
+    AppMethodBeat.i(16157);
+    ab.i("MicroMsg.AgingTestCommand", "[oneliang] batch insert test msg info, begin single transaction, username:%s", new Object[] { this.efI });
     long l1 = System.currentTimeMillis();
     int i = 0;
-    if (i < this.dAW)
+    if (i < this.eux)
     {
-      int j = a.gQ(this.dAX.length);
-      int k = this.dAX[j];
+      int j = a.jd(this.euy.length);
+      int k = this.euy[j];
       c localc = null;
       bi localbi;
-      label98:
+      label102:
       long l2;
       switch (k)
       {
       default: 
-        localbi = a.C(this.dol, i);
-        l2 = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().T(localbi);
+        localbi = a.H(this.efI, i);
+        l2 = ((j)g.E(j.class)).bPQ().Z(localbi);
         if (l2 <= 0L) {
           if (i > 0) {
             j = i - 1;
@@ -42,27 +46,27 @@ final class a$4
         i = j + 1;
         break;
         j = i;
-        if (!this.dAR.dAZ.isEmpty())
+        if (!this.eus.euA.isEmpty())
         {
-          localbi = a.a(this.dol, (c)this.dAR.dAZ.get(a.gQ(this.dAR.dAZ.size())));
-          break label98;
+          localbi = a.a(this.efI, (c)this.eus.euA.get(a.jd(this.eus.euA.size())));
+          break label102;
           j = i;
-          if (!this.dAR.dBa.isEmpty())
+          if (!this.eus.euB.isEmpty())
           {
-            localc = (c)this.dAR.dBa.get(a.gQ(this.dAR.dBa.size()));
-            localbi = a.b(this.dol, localc);
-            break label98;
+            localc = (c)this.eus.euB.get(a.jd(this.eus.euB.size()));
+            localbi = a.b(this.efI, localc);
+            break label102;
             j = i;
-            if (!this.dAR.dBb.isEmpty())
+            if (!this.eus.euC.isEmpty())
             {
-              localbi = a.c(this.dol, (c)this.dAR.dBb.get(a.gQ(this.dAR.dBb.size())));
-              break label98;
+              localbi = a.c(this.efI, (c)this.eus.euC.get(a.jd(this.eus.euC.size())));
+              break label102;
               j = 0;
               continue;
               j = i;
               if (k == 43)
               {
-                o.Sr().b(a.a(this.dol, (int)l2, localbi, localc));
+                o.alE().b(a.a(this.efI, (int)l2, localbi, localc));
                 j = i;
               }
             }
@@ -70,12 +74,13 @@ final class a$4
         }
       }
     }
-    y.i("MicroMsg.AgingTestCommand", "[oneliang] batch insert test msg info, end single transaction, username:%s, cost:%s", new Object[] { this.dol, Long.valueOf(System.currentTimeMillis() - l1) });
+    ab.i("MicroMsg.AgingTestCommand", "[oneliang] batch insert test msg info, end single transaction, username:%s, cost:%s", new Object[] { this.efI, Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(16157);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.console.a.b.a.4
  * JD-Core Version:    0.7.0.1
  */

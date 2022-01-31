@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.nearby.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class NearbyFriendsUI$1$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class NearbyFriendsUI$1$1
   
   public final void run()
   {
-    NearbyFriendsUI.a(this.mDt.mDs);
+    AppMethodBeat.i(55440);
+    NearbyFriendsUI.a(this.pdn.pdm);
+    AppMethodBeat.o(55440);
   }
 }
 

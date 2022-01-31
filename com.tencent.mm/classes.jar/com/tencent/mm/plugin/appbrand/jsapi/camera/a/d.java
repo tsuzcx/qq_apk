@@ -1,19 +1,30 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class d
   extends c
   implements b.a
 {
-  private a gpy = new a(this, "barcode|qrcode");
+  private a hJC;
   
-  protected final b aiQ()
+  public d()
   {
-    return this.gpy;
+    AppMethodBeat.i(130980);
+    this.hJC = new a(this, "barcode|qrcode");
+    AppMethodBeat.o(130980);
+  }
+  
+  protected final b aCQ()
+  {
+    return this.hJC;
   }
   
   public final void c(int paramInt, String paramString, byte[] paramArrayOfByte)
   {
-    this.gpx.b(paramInt, paramString, paramArrayOfByte);
+    AppMethodBeat.i(130981);
+    this.hJB.b(paramInt, paramString, paramArrayOfByte);
+    AppMethodBeat.o(130981);
   }
 }
 

@@ -2,66 +2,75 @@ package com.tencent.mm.ui;
 
 import android.os.HandlerThread;
 import android.os.Looper;
-import android.os.Message;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.LinkedList;
 
 final class f$e
 {
-  f<K, T>.e.b uIv;
-  private f<K, T>.e.c uIw;
-  LinkedList<Integer> uIx;
-  int uIy;
+  f<K, T>.e.b yVO;
+  private f<K, T>.e.c yVP;
+  LinkedList<Integer> yVQ;
+  int yVR;
   
   public f$e(f paramf)
   {
-    cyi();
+    AppMethodBeat.i(29181);
+    dBi();
+    AppMethodBeat.o(29181);
   }
   
-  private void cyi()
+  private void dBi()
   {
-    this.uIv = new b(Looper.getMainLooper());
-    this.uIw = new f.e.c(this, au.DS().mnU.getLooper());
+    AppMethodBeat.i(29182);
+    this.yVO = new f.e.b(this, Looper.getMainLooper());
+    this.yVP = new f.e.c(this, aw.RO().oNc.getLooper());
+    AppMethodBeat.o(29182);
   }
   
-  private void cyj()
+  private void dBj()
   {
-    Object localObject = this.uIw;
-    ((f.e.c)localObject).removeMessages(((f.e.c)localObject).uIF);
-    ((f.e.c)localObject).removeMessages(((f.e.c)localObject).uIG);
-    localObject = this.uIv;
-    ((b)localObject).uIB = true;
-    ((b)localObject).removeMessages(1);
-    ((b)localObject).removeMessages(2);
-    this.uIx.clear();
-    this.uIy = 0;
+    AppMethodBeat.i(29183);
+    Object localObject = this.yVP;
+    ((f.e.c)localObject).removeMessages(((f.e.c)localObject).yVY);
+    ((f.e.c)localObject).removeMessages(((f.e.c)localObject).yVZ);
+    localObject = this.yVO;
+    ((f.e.b)localObject).yVU = true;
+    ((f.e.b)localObject).removeMessages(1);
+    ((f.e.b)localObject).removeMessages(2);
+    this.yVQ.clear();
+    this.yVR = 0;
+    AppMethodBeat.o(29183);
   }
   
-  final void FL(int paramInt)
+  final void NZ(int paramInt)
   {
     try
     {
-      if (!this.uIx.contains(Integer.valueOf(paramInt))) {
-        this.uIx.add(Integer.valueOf(paramInt));
+      AppMethodBeat.i(29188);
+      if (!this.yVQ.contains(Integer.valueOf(paramInt))) {
+        this.yVQ.add(Integer.valueOf(paramInt));
       }
-      this.uIy = cyl();
-      f.e.c localc = this.uIw;
-      localc.sendEmptyMessage(localc.uIG);
+      this.yVR = dBl();
+      f.e.c localc = this.yVP;
+      localc.sendEmptyMessage(localc.yVZ);
+      AppMethodBeat.o(29188);
       return;
     }
     finally {}
   }
   
-  public final void cyk()
+  public final void dBk()
   {
     try
     {
-      y.i(this.uIr.TAG, "newcursor resetQueue ");
-      cyj();
-      cyi();
+      AppMethodBeat.i(29184);
+      ab.i(this.yVK.TAG, "newcursor resetQueue ");
+      dBj();
+      dBi();
+      AppMethodBeat.o(29184);
       return;
     }
     finally
@@ -71,26 +80,31 @@ final class f$e
     }
   }
   
-  final int cyl()
+  final int dBl()
   {
     int i = 0;
-    if (this.uIx.size() > 1) {
+    AppMethodBeat.i(29186);
+    if (this.yVQ.size() > 1) {
       i = 2;
     }
-    while (this.uIx.size() != 1) {
+    for (;;)
+    {
+      AppMethodBeat.o(29186);
       return i;
+      if (this.yVQ.size() == 1) {
+        i = ((Integer)this.yVQ.get(0)).intValue();
+      }
     }
-    return ((Integer)this.uIx.get(0)).intValue();
   }
   
   /* Error */
-  public final boolean cym()
+  public final boolean dBm()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 172	com/tencent/mm/ui/f$e:uIy	I
+    //   3: getfield 178	com/tencent/mm/ui/f$e:yVR	I
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +9 -> 17
@@ -119,11 +133,13 @@ final class f$e
     //   2	7	22	finally
   }
   
-  final void cyn()
+  final void dBn()
   {
     try
     {
-      this.uIw.lastUpdateTime = System.currentTimeMillis();
+      AppMethodBeat.i(29187);
+      this.yVP.lastUpdateTime = System.currentTimeMillis();
+      AppMethodBeat.o(29187);
       return;
     }
     finally
@@ -133,11 +149,11 @@ final class f$e
     }
   }
   
-  final int cyo()
+  final int dBo()
   {
     try
     {
-      int i = this.uIy;
+      int i = this.yVR;
       return i;
     }
     finally
@@ -151,8 +167,10 @@ final class f$e
   {
     try
     {
-      y.i(this.uIr.TAG, "newcursor quit ");
-      cyj();
+      AppMethodBeat.i(29185);
+      ab.i(this.yVK.TAG, "newcursor quit ");
+      dBj();
+      AppMethodBeat.o(29185);
       return;
     }
     finally
@@ -161,44 +179,10 @@ final class f$e
       throw localObject;
     }
   }
-  
-  final class b
-    extends ah
-  {
-    boolean uIB;
-    public final int uIC = 1;
-    public final int uID = 2;
-    
-    public b(Looper paramLooper)
-    {
-      super();
-    }
-    
-    public final void handleMessage(Message paramMessage)
-    {
-      super.handleMessage(paramMessage);
-      if (this.uIB) {}
-      do
-      {
-        return;
-        synchronized (f.e.this)
-        {
-          f.e.this.uIy = f.e.this.cyl();
-          y.i(f.e.this.uIr.TAG, "newcursor updateWorkerRefresh status %d", new Object[] { Integer.valueOf(f.e.this.uIy) });
-          if (paramMessage.what == 1)
-          {
-            f.d(f.e.this.uIr);
-            return;
-          }
-        }
-      } while (paramMessage.what != 2);
-      f.a(f.e.this.uIr, (f.c)paramMessage.obj, false, true);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.f.e
  * JD-Core Version:    0.7.0.1
  */

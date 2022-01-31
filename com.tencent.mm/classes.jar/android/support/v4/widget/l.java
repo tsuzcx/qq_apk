@@ -1,142 +1,97 @@
 package android.support.v4.widget;
 
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.support.v4.view.d;
-import android.support.v4.view.q;
-import android.view.View;
-import android.widget.PopupWindow;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import android.widget.ImageView;
 
 public final class l
 {
-  static final d Lo = new d();
-  
-  static
+  public static void a(ImageView paramImageView, ColorStateList paramColorStateList)
   {
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      Lo = new c();
-      return;
-    }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      Lo = new b();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      Lo = new a();
-      return;
-    }
-  }
-  
-  public static void a(PopupWindow paramPopupWindow, int paramInt)
-  {
-    Lo.a(paramPopupWindow, paramInt);
-  }
-  
-  public static void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Lo.a(paramPopupWindow, paramView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public static void a(PopupWindow paramPopupWindow, boolean paramBoolean)
-  {
-    Lo.a(paramPopupWindow, paramBoolean);
-  }
-  
-  static class a
-    extends l.d
-  {
-    public final void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
-    {
-      paramPopupWindow.showAsDropDown(paramView, paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  static class b
-    extends l.a
-  {
-    private static Field Lp;
-    
-    static
-    {
-      try
+      paramImageView.setImageTintList(paramColorStateList);
+      if (Build.VERSION.SDK_INT == 21)
       {
-        Field localField = PopupWindow.class.getDeclaredField("mOverlapAnchor");
-        Lp = localField;
-        localField.setAccessible(true);
-        return;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException) {}
-    }
-    
-    public void a(PopupWindow paramPopupWindow, boolean paramBoolean)
-    {
-      if (Lp != null) {}
-      try
-      {
-        Lp.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
-        return;
-      }
-      catch (IllegalAccessException paramPopupWindow) {}
-    }
-  }
-  
-  static final class c
-    extends l.b
-  {
-    public final void a(PopupWindow paramPopupWindow, int paramInt)
-    {
-      paramPopupWindow.setWindowLayoutType(paramInt);
-    }
-    
-    public final void a(PopupWindow paramPopupWindow, boolean paramBoolean)
-    {
-      paramPopupWindow.setOverlapAnchor(paramBoolean);
-    }
-  }
-  
-  static class d
-  {
-    private static Method Lq;
-    private static boolean Lr;
-    
-    public void a(PopupWindow paramPopupWindow, int paramInt)
-    {
-      if (!Lr) {}
-      try
-      {
-        Method localMethod = PopupWindow.class.getDeclaredMethod("setWindowLayoutType", new Class[] { Integer.TYPE });
-        Lq = localMethod;
-        localMethod.setAccessible(true);
-        label33:
-        Lr = true;
-        if (Lq != null) {}
-        try
-        {
-          Lq.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
-          return;
+        paramColorStateList = paramImageView.getDrawable();
+        if ((paramImageView.getImageTintList() == null) || (paramImageView.getImageTintMode() == null)) {
+          break label72;
         }
-        catch (Exception paramPopupWindow) {}
+        i = 1;
+        if ((paramColorStateList != null) && (i != 0))
+        {
+          if (paramColorStateList.isStateful()) {
+            paramColorStateList.setState(paramImageView.getDrawableState());
+          }
+          paramImageView.setImageDrawable(paramColorStateList);
+        }
       }
-      catch (Exception localException)
+    }
+    label72:
+    while (!(paramImageView instanceof s)) {
+      for (;;)
       {
-        break label33;
+        return;
+        int i = 0;
       }
     }
-    
-    public void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
+    ((s)paramImageView).setSupportImageTintList(paramColorStateList);
+  }
+  
+  public static void a(ImageView paramImageView, PorterDuff.Mode paramMode)
+  {
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      int i = paramInt1;
-      if ((d.getAbsoluteGravity(paramInt3, q.Q(paramView)) & 0x7) == 5) {
-        i = paramInt1 - (paramPopupWindow.getWidth() - paramView.getWidth());
+      paramImageView.setImageTintMode(paramMode);
+      if (Build.VERSION.SDK_INT == 21)
+      {
+        paramMode = paramImageView.getDrawable();
+        if ((paramImageView.getImageTintList() == null) || (paramImageView.getImageTintMode() == null)) {
+          break label72;
+        }
+        i = 1;
+        if ((paramMode != null) && (i != 0))
+        {
+          if (paramMode.isStateful()) {
+            paramMode.setState(paramImageView.getDrawableState());
+          }
+          paramImageView.setImageDrawable(paramMode);
+        }
       }
-      paramPopupWindow.showAsDropDown(paramView, i, paramInt2);
     }
-    
-    public void a(PopupWindow paramPopupWindow, boolean paramBoolean) {}
+    label72:
+    while (!(paramImageView instanceof s)) {
+      for (;;)
+      {
+        return;
+        int i = 0;
+      }
+    }
+    ((s)paramImageView).setSupportImageTintMode(paramMode);
+  }
+  
+  public static ColorStateList b(ImageView paramImageView)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return paramImageView.getImageTintList();
+    }
+    if ((paramImageView instanceof s)) {
+      return ((s)paramImageView).getSupportImageTintList();
+    }
+    return null;
+  }
+  
+  public static PorterDuff.Mode c(ImageView paramImageView)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return paramImageView.getImageTintMode();
+    }
+    if ((paramImageView instanceof s)) {
+      return ((s)paramImageView).getSupportImageTintMode();
+    }
+    return null;
   }
 }
 

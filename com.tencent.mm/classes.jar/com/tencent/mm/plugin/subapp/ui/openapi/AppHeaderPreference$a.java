@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 
 public abstract interface AppHeaderPreference$a
 {
-  public abstract String bMa();
+  public abstract String cGY();
   
-  public abstract Bitmap bMb();
+  public abstract Bitmap cGZ();
   
   public abstract String getHint();
   
-  public abstract String jE(boolean paramBoolean);
+  public abstract String mw(boolean paramBoolean);
 }
 
 

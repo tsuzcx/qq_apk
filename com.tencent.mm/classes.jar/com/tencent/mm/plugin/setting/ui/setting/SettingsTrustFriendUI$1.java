@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SettingsTrustFriendUI$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class SettingsTrustFriendUI$1
   
   public final void run()
   {
-    SettingsTrustFriendUI.a(this.nWp);
+    AppMethodBeat.i(127532);
+    SettingsTrustFriendUI.a(this.qKz);
+    AppMethodBeat.o(127532);
   }
 }
 

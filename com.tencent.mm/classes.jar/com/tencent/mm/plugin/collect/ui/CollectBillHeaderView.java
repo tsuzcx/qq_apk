@@ -6,44 +6,61 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.ui.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.collect.model.e;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 
 public class CollectBillHeaderView
   extends LinearLayout
 {
-  TextView iIV;
-  TextView iJR;
-  WalletTextView iJS;
-  private TextView iJT;
+  private TextView kGe;
+  private TextView kPB;
+  private WalletTextView kQx;
+  private TextView kQy;
   
   public CollectBillHeaderView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(41173);
     init(paramContext);
+    AppMethodBeat.o(41173);
   }
   
   public CollectBillHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(41174);
     init(paramContext);
+    AppMethodBeat.o(41174);
   }
   
   public CollectBillHeaderView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(41175);
     init(paramContext);
+    AppMethodBeat.o(41175);
   }
   
   private void init(Context paramContext)
   {
-    paramContext = y.gt(paramContext).inflate(a.g.collect_bill_header, this);
-    this.iJR = ((TextView)paramContext.findViewById(a.f.collect_bill_header_date_tv));
-    this.iJT = ((TextView)paramContext.findViewById(a.f.collect_bill_header_currency_tv));
-    this.iJS = ((WalletTextView)paramContext.findViewById(a.f.collect_bill_header_money_tv));
-    this.iIV = ((TextView)paramContext.findViewById(a.f.collect_bill_header_desc_tv));
+    AppMethodBeat.i(41176);
+    paramContext = w.hM(paramContext).inflate(2130969170, this);
+    this.kGe = ((TextView)paramContext.findViewById(2131822893));
+    this.kQy = ((TextView)paramContext.findViewById(2131822894));
+    this.kQx = ((WalletTextView)paramContext.findViewById(2131822895));
+    this.kPB = ((TextView)paramContext.findViewById(2131822896));
+    AppMethodBeat.o(41176);
+  }
+  
+  public final void a(int paramInt1, int paramInt2, long paramLong, int paramInt3)
+  {
+    AppMethodBeat.i(41177);
+    this.kGe.setText(e.a(getContext(), paramLong, paramInt3));
+    this.kQx.setText(e.tN(paramInt2));
+    this.kPB.setText(getContext().getString(2131298436, new Object[] { Integer.valueOf(paramInt1) }));
+    AppMethodBeat.o(41177);
   }
 }
 

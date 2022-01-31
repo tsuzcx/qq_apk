@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui.previewimageview;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DynamicGridView$d
   extends Handler
@@ -11,18 +12,21 @@ final class DynamicGridView$d
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(40365);
     switch (paramMessage.what)
     {
     }
-    View localView;
-    do
+    for (;;)
     {
+      AppMethodBeat.o(40365);
       return;
-      paramMessage = this.pqL;
-      localView = paramMessage.getChildAt(paramMessage.pqF);
-      new StringBuilder("downView ").append(localView).append(",downPos ").append(paramMessage.pqF).append(",lastTouchX ").append(paramMessage.pqG).append(",lastTouchY ").append(paramMessage.pqH);
-    } while ((paramMessage.pqp) || (paramMessage.pqq) || (!f.d(localView, paramMessage.pqG, paramMessage.pqH)));
-    paramMessage.ze(paramMessage.pqF);
+      paramMessage = this.slD;
+      View localView = paramMessage.getChildAt(paramMessage.slx);
+      new StringBuilder("downView ").append(localView).append(",downPos ").append(paramMessage.slx).append(",lastTouchX ").append(paramMessage.sly).append(",lastTouchY ").append(paramMessage.slz);
+      if ((!paramMessage.slh) && (!paramMessage.sli) && (f.d(localView, paramMessage.sly, paramMessage.slz))) {
+        paramMessage.Fp(paramMessage.slx);
+      }
+    }
   }
 }
 

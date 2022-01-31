@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.sight.encode.ui;
 
 import android.media.MediaPlayer;
-import com.tencent.mm.compatible.b.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.b.k;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SightVideoTextureView$2
   implements Runnable
@@ -12,51 +13,57 @@ final class SightVideoTextureView$2
   
   public final void run()
   {
-    if (SightVideoTextureView.e(this.oiV) != null) {}
+    AppMethodBeat.i(25120);
+    if (SightVideoTextureView.e(this.qXi) != null) {}
     try
     {
-      SightVideoTextureView.e(this.oiV).stop();
-      SightVideoTextureView.e(this.oiV).release();
+      SightVideoTextureView.e(this.qXi).stop();
+      SightVideoTextureView.e(this.qXi).release();
     }
     catch (Exception localException1)
     {
       try
       {
-        SightVideoTextureView.a(this.oiV, new j());
-        SightVideoTextureView.e(this.oiV).setOnCompletionListener(new SightVideoTextureView.2.1(this));
-        SightVideoTextureView.e(this.oiV).setOnErrorListener(new SightVideoTextureView.2.2(this));
-        SightVideoTextureView.e(this.oiV).setDataSource(this.oiW);
-        SightVideoTextureView.a(this.oiV, this.oiV.getPreviewSurface());
-        SightVideoTextureView.e(this.oiV).setSurface(SightVideoTextureView.f(this.oiV));
-        SightVideoTextureView.e(this.oiV).setAudioStreamType(3);
-        if (this.iFZ) {
-          SightVideoTextureView.e(this.oiV).setVolume(0.0F, 0.0F);
+        SightVideoTextureView.a(this.qXi, new k());
+        SightVideoTextureView.e(this.qXi).setOnCompletionListener(new SightVideoTextureView.2.1(this));
+        SightVideoTextureView.e(this.qXi).setOnErrorListener(new SightVideoTextureView.2.2(this));
+        SightVideoTextureView.e(this.qXi).setDataSource(this.qXj);
+        SightVideoTextureView.a(this.qXi, this.qXi.getPreviewSurface());
+        SightVideoTextureView.e(this.qXi).setSurface(SightVideoTextureView.f(this.qXi));
+        SightVideoTextureView.e(this.qXi).setAudioStreamType(3);
+        if (this.kLR) {
+          SightVideoTextureView.e(this.qXi).setVolume(0.0F, 0.0F);
         }
         for (;;)
         {
-          SightVideoTextureView.e(this.oiV).setScreenOnWhilePlaying(true);
-          SightVideoTextureView.e(this.oiV).setLooping(true);
-          SightVideoTextureView.e(this.oiV).prepare();
-          SightVideoTextureView.e(this.oiV).start();
+          SightVideoTextureView.e(this.qXi).setScreenOnWhilePlaying(true);
+          SightVideoTextureView.e(this.qXi).setLooping(true);
+          SightVideoTextureView.e(this.qXi).prepare();
+          SightVideoTextureView.e(this.qXi).start();
+          AppMethodBeat.o(25120);
           return;
           localException1 = localException1;
-          y.printErrStackTrace("MicroMsg.SightVideoTextureView", localException1, "", new Object[0]);
-          y.w("MicroMsg.SightVideoTextureView", "try to release mediaplayer error");
+          ab.printErrStackTrace("MicroMsg.SightVideoTextureView", localException1, "", new Object[0]);
+          ab.w("MicroMsg.SightVideoTextureView", "try to release mediaplayer error");
           break;
-          this.oiV.bBT();
+          this.qXi.cnu();
         }
         return;
       }
       catch (Exception localException2)
       {
-        y.e("MicroMsg.SightVideoTextureView", "play %s, error: %s, %s", new Object[] { this.oiW, localException2.getMessage(), bk.j(localException2) });
+        ab.e("MicroMsg.SightVideoTextureView", "play %s, error: %s, %s", new Object[] { this.qXj, localException2.getMessage(), bo.l(localException2) });
+        AppMethodBeat.o(25120);
       }
     }
   }
   
   public final String toString()
   {
-    return super.toString() + "|playVideo";
+    AppMethodBeat.i(25121);
+    String str = super.toString() + "|playVideo";
+    AppMethodBeat.o(25121);
+    return str;
   }
 }
 

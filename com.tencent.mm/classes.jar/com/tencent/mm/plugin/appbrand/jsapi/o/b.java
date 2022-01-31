@@ -1,51 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.o;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.r;
 
-public class b
-  extends a
+public final class b
+  extends a<r>
 {
-  private static final int CTRL_INDEX = 64;
-  private static final String NAME = "reportIDKey";
-  
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
-  {
-    paramJSONObject = paramJSONObject.optJSONArray("dataArray");
-    if (paramJSONObject == null)
-    {
-      paramc.C(paramInt, h("fail", null));
-      return;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramJSONObject.length()) {
-        try
-        {
-          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-          int j = localJSONObject.optInt("id");
-          int k = localJSONObject.optInt("key");
-          int m = localJSONObject.optInt("value");
-          h.nFQ.a(j, k, m, false);
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            y.e("MicroMsg.JsApiReportIDKey", "parse json failed : %s", new Object[] { localException.getMessage() });
-          }
-        }
-      }
-    }
-    paramc.C(paramInt, h("ok", null));
-  }
+  private static final int CTRL_INDEX = 107;
+  private static final String NAME = "showActionSheet";
 }
 
 

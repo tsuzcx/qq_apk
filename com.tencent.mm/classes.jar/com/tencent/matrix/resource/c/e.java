@@ -2,23 +2,24 @@ package com.tencent.matrix.resource.c;
 
 import com.tencent.matrix.resource.c.a.c;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 
 public final class e
   extends d
 {
-  int bpi = 0;
-  final OutputStream bpu;
-  final ByteArrayOutputStream bpv = new ByteArrayOutputStream();
+  int bPk = 0;
+  final OutputStream bPv;
+  final ByteArrayOutputStream bPw = new ByteArrayOutputStream();
   
   public e(OutputStream paramOutputStream)
   {
     super(null);
-    this.bpu = paramOutputStream;
+    this.bPv = paramOutputStream;
   }
   
-  private a b(int paramInt1, int paramInt2, long paramLong)
+  private a c(int paramInt1, int paramInt2, long paramLong)
   {
     try
     {
@@ -35,10 +36,10 @@ public final class e
   {
     try
     {
-      this.bpu.write(paramInt1);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt2);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, (int)paramLong);
-      this.bpu.write(paramArrayOfByte, 0, (int)paramLong);
+      this.bPv.write(paramInt1);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt2);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, (int)paramLong);
+      this.bPv.write(paramArrayOfByte, 0, (int)paramLong);
       return;
     }
     catch (Throwable paramArrayOfByte)
@@ -51,18 +52,18 @@ public final class e
   {
     try
     {
-      this.bpu.write(5);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt3);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, (int)paramLong);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt1);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt2);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramArrayOfb.length);
+      this.bPv.write(5);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt3);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, (int)paramLong);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt1);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt2);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramArrayOfb.length);
       paramInt2 = paramArrayOfb.length;
       paramInt1 = 0;
       while (paramInt1 < paramInt2)
       {
         com.tencent.matrix.resource.c.a.b localb = paramArrayOfb[paramInt1];
-        this.bpu.write(localb.bpC);
+        this.bPv.write(localb.bPD);
         paramInt1 += 1;
       }
       return;
@@ -77,13 +78,13 @@ public final class e
   {
     try
     {
-      this.bpu.write(2);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt3);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, (int)paramLong);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt1);
-      this.bpu.write(paramb1.bpC);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt2);
-      this.bpu.write(paramb2.bpC);
+      this.bPv.write(2);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt3);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, (int)paramLong);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt1);
+      this.bPv.write(paramb1.bPD);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt2);
+      this.bPv.write(paramb2.bPD);
       return;
     }
     catch (Throwable paramb1)
@@ -96,15 +97,15 @@ public final class e
   {
     try
     {
-      this.bpu.write(4);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt3);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, (int)paramLong);
-      this.bpu.write(paramb1.bpC);
-      this.bpu.write(paramb2.bpC);
-      this.bpu.write(paramb3.bpC);
-      this.bpu.write(paramb4.bpC);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt1);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt2);
+      this.bPv.write(4);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt3);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, (int)paramLong);
+      this.bPv.write(paramb1.bPD);
+      this.bPv.write(paramb2.bPD);
+      this.bPv.write(paramb3.bPD);
+      this.bPv.write(paramb4.bPD);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt1);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt2);
       return;
     }
     catch (Throwable paramb1)
@@ -117,11 +118,11 @@ public final class e
   {
     try
     {
-      this.bpu.write(1);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, (int)paramLong);
-      this.bpu.write(paramb.bpC);
-      paramb = this.bpu;
+      this.bPv.write(1);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt);
+      com.tencent.matrix.resource.c.b.a.b(this.bPv, (int)paramLong);
+      this.bPv.write(paramb.bPD);
+      paramb = this.bPv;
       paramInt = paramString.length();
       paramb.write(paramString.getBytes(Charset.forName("UTF-8")), 0, paramInt);
       return;
@@ -134,27 +135,29 @@ public final class e
   
   public final void a(String paramString, int paramInt, long paramLong)
   {
-    try
-    {
-      this.bpi = paramInt;
-      OutputStream localOutputStream = this.bpu;
-      localOutputStream.write(paramString.getBytes(Charset.forName("UTF-8")));
-      localOutputStream.write(0);
-      com.tencent.matrix.resource.c.b.a.b(this.bpu, paramInt);
-      com.tencent.matrix.resource.c.b.a.a(this.bpu, paramLong);
-      return;
+    if ((paramInt <= 0) || (paramInt >= 1073741823)) {
+      try
+      {
+        throw new IOException("bad idSize: ".concat(String.valueOf(paramInt)));
+      }
+      catch (Throwable paramString)
+      {
+        throw new RuntimeException(paramString);
+      }
     }
-    catch (Throwable paramString)
-    {
-      throw new RuntimeException(paramString);
-    }
+    this.bPk = paramInt;
+    OutputStream localOutputStream = this.bPv;
+    localOutputStream.write(paramString.getBytes(Charset.forName("UTF-8")));
+    localOutputStream.write(0);
+    com.tencent.matrix.resource.c.b.a.b(this.bPv, paramInt);
+    com.tencent.matrix.resource.c.b.a.a(this.bPv, paramLong);
   }
   
-  public final void rh()
+  public final void zi()
   {
     try
     {
-      this.bpu.flush();
+      this.bPv.flush();
       return;
     }
     catch (Throwable localThrowable)
@@ -163,28 +166,28 @@ public final class e
     }
   }
   
-  private final class a
+  final class a
     extends b
   {
-    private final int bpw;
-    private final long bpx;
+    private final int bPx;
+    private final long bPy;
     private final int mTag;
     
     a(int paramInt1, int paramInt2, long paramLong)
     {
       super();
       this.mTag = paramInt1;
-      this.bpw = paramInt2;
-      this.bpx = paramLong;
+      this.bPx = paramInt2;
+      this.bPy = paramLong;
     }
     
     public final void a(int paramInt, com.tencent.matrix.resource.c.a.b paramb)
     {
       try
       {
-        e.this.bpv.write(254);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt);
-        e.this.bpv.write(paramb.bpC);
+        e.this.bPw.write(254);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt);
+        e.this.bPw.write(paramb.bPD);
         return;
       }
       catch (Throwable paramb)
@@ -197,13 +200,13 @@ public final class e
     {
       try
       {
-        e.this.bpv.write(paramInt1);
-        e.this.bpv.write(paramb.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt2);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt3);
-        e.this.bpv.write(paramInt4);
-        paramInt1 = c.ef(paramInt4).getSize(e.this.bpi);
-        e.this.bpv.write(paramArrayOfByte, 0, paramInt1 * paramInt3);
+        e.this.bPw.write(paramInt1);
+        e.this.bPw.write(paramb.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt2);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt3);
+        e.this.bPw.write(paramInt4);
+        paramInt1 = c.fP(paramInt4).getSize(e.this.bPk);
+        e.this.bPw.write(paramArrayOfByte, 0, paramInt1 * paramInt3);
         return;
       }
       catch (Throwable paramb)
@@ -216,9 +219,9 @@ public final class e
     {
       try
       {
-        e.this.bpv.write(4);
-        e.this.bpv.write(paramb.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt);
+        e.this.bPw.write(4);
+        e.this.bPw.write(paramb.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt);
         return;
       }
       catch (Throwable paramb)
@@ -231,10 +234,10 @@ public final class e
     {
       try
       {
-        e.this.bpv.write(2);
-        e.this.bpv.write(paramb.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt1);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt2);
+        e.this.bPw.write(2);
+        e.this.bPw.write(paramb.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt1);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt2);
         return;
       }
       catch (Throwable paramb)
@@ -247,13 +250,13 @@ public final class e
     {
       try
       {
-        e.this.bpv.write(34);
-        e.this.bpv.write(paramb1.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt1);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt2);
-        e.this.bpv.write(paramb2.bpC);
-        paramInt1 = e.this.bpi;
-        e.this.bpv.write(paramArrayOfByte, 0, paramInt1 * paramInt2);
+        e.this.bPw.write(34);
+        e.this.bPw.write(paramb1.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt1);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt2);
+        e.this.bPw.write(paramb2.bPD);
+        paramInt1 = e.this.bPk;
+        e.this.bPw.write(paramArrayOfByte, 0, paramInt1 * paramInt2);
         return;
       }
       catch (Throwable paramb1)
@@ -266,25 +269,25 @@ public final class e
     {
       try
       {
-        e.this.bpv.write(32);
-        e.this.bpv.write(paramb1.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt1);
-        e.this.bpv.write(paramb2.bpC);
-        e.this.bpv.write(paramb3.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, e.this.bpi << 2);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt2);
-        com.tencent.matrix.resource.c.b.a.a(e.this.bpv, 0);
-        com.tencent.matrix.resource.c.b.a.a(e.this.bpv, paramArrayOfa1.length);
+        e.this.bPw.write(32);
+        e.this.bPw.write(paramb1.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt1);
+        e.this.bPw.write(paramb2.bPD);
+        e.this.bPw.write(paramb3.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, e.this.bPk << 2);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt2);
+        com.tencent.matrix.resource.c.b.a.a(e.this.bPw, 0);
+        com.tencent.matrix.resource.c.b.a.a(e.this.bPw, paramArrayOfa1.length);
         int i = paramArrayOfa1.length;
         paramInt1 = 0;
         if (paramInt1 >= i) {
           break label539;
         }
         paramb2 = paramArrayOfa1[paramInt1];
-        com.tencent.matrix.resource.c.b.a.a(e.this.bpv, paramb2.bpA);
-        e.this.bpv.write(paramb2.bpz);
-        paramb1 = e.this.bpv;
-        paramb2 = paramb2.bpB;
+        com.tencent.matrix.resource.c.b.a.a(e.this.bPw, paramb2.bPB);
+        e.this.bPw.write(paramb2.bPA);
+        paramb1 = e.this.bPw;
+        paramb2 = paramb2.bPC;
         if (paramb2 == null) {
           throw new IllegalArgumentException("value is null.");
         }
@@ -338,14 +341,14 @@ public final class e
         else
         {
           throw new IllegalArgumentException("bad value type: " + paramb2.getClass().getName());
-          com.tencent.matrix.resource.c.b.a.a(e.this.bpv, paramArrayOfa2.length);
+          com.tencent.matrix.resource.c.b.a.a(e.this.bPw, paramArrayOfa2.length);
           paramInt2 = paramArrayOfa2.length;
           paramInt1 = 0;
           while (paramInt1 < paramInt2)
           {
             paramb1 = paramArrayOfa2[paramInt1];
-            com.tencent.matrix.resource.c.b.a.a(e.this.bpv, paramb1.bpA);
-            e.this.bpv.write(paramb1.bpz);
+            com.tencent.matrix.resource.c.b.a.a(e.this.bPw, paramb1.bPB);
+            e.this.bPw.write(paramb1.bPA);
             paramInt1 += 1;
           }
           return;
@@ -359,12 +362,12 @@ public final class e
     {
       try
       {
-        e.this.bpv.write(33);
-        e.this.bpv.write(paramb1.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt);
-        e.this.bpv.write(paramb2.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramArrayOfByte.length);
-        e.this.bpv.write(paramArrayOfByte);
+        e.this.bPw.write(33);
+        e.this.bPw.write(paramb1.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt);
+        e.this.bPw.write(paramb2.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramArrayOfByte.length);
+        e.this.bPw.write(paramArrayOfByte);
         return;
       }
       catch (Throwable paramb1)
@@ -377,10 +380,10 @@ public final class e
     {
       try
       {
-        e.this.bpv.write(paramInt);
-        e.this.bpv.write(paramb.bpC);
+        e.this.bPw.write(paramInt);
+        e.this.bPw.write(paramb.bPD);
         if (paramInt == 1) {
-          com.tencent.matrix.resource.c.b.a.b(e.this.bpv, e.this.bpi);
+          com.tencent.matrix.resource.c.b.a.b(e.this.bPw, e.this.bPk);
         }
         return;
       }
@@ -394,9 +397,9 @@ public final class e
     {
       try
       {
-        e.this.bpv.write(6);
-        e.this.bpv.write(paramb.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt);
+        e.this.bPw.write(6);
+        e.this.bPw.write(paramb.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt);
         return;
       }
       catch (Throwable paramb)
@@ -409,10 +412,10 @@ public final class e
     {
       try
       {
-        e.this.bpv.write(3);
-        e.this.bpv.write(paramb.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt1);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt2);
+        e.this.bPw.write(3);
+        e.this.bPw.write(paramb.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt1);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt2);
         return;
       }
       catch (Throwable paramb)
@@ -425,10 +428,10 @@ public final class e
     {
       try
       {
-        e.this.bpv.write(8);
-        e.this.bpv.write(paramb.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt1);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt2);
+        e.this.bPw.write(8);
+        e.this.bPw.write(paramb.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt1);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt2);
         return;
       }
       catch (Throwable paramb)
@@ -441,10 +444,10 @@ public final class e
     {
       try
       {
-        e.this.bpv.write(142);
-        e.this.bpv.write(paramb.bpC);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt1);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpv, paramInt2);
+        e.this.bPw.write(142);
+        e.this.bPw.write(paramb.bPD);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt1);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPw, paramInt2);
         return;
       }
       catch (Throwable paramb)
@@ -453,15 +456,15 @@ public final class e
       }
     }
     
-    public final void rh()
+    public final void zi()
     {
       try
       {
-        e.this.bpu.write(this.mTag);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpu, this.bpw);
-        com.tencent.matrix.resource.c.b.a.b(e.this.bpu, e.this.bpv.size());
-        e.this.bpu.write(e.this.bpv.toByteArray());
-        e.this.bpv.reset();
+        e.this.bPv.write(this.mTag);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPv, this.bPx);
+        com.tencent.matrix.resource.c.b.a.b(e.this.bPv, e.this.bPw.size());
+        e.this.bPv.write(e.this.bPw.toByteArray());
+        e.this.bPw.reset();
         return;
       }
       catch (Throwable localThrowable)

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.shake.c.b;
 
 public abstract interface a$b
 {
-  public abstract void bAj();
+  public abstract void clB();
 }
 
 

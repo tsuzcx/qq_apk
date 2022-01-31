@@ -1,46 +1,56 @@
 package com.tencent.mm.plugin.shake.c.b;
 
-import com.tencent.mm.h.a.pm;
-import com.tencent.mm.h.a.pm.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.qt;
+import com.tencent.mm.g.a.qt.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$3
   implements Runnable
 {
-  a$3(a parama, pm parampm) {}
+  a$3(a parama, qt paramqt) {}
   
   public final void run()
   {
-    y.i("MicroMsg.ShakeCardDialog", "doNetSceneAccept callback");
-    a.a(this.oai, this.oaj.bZb);
-    if (a.g(this.oai) != null)
+    AppMethodBeat.i(24549);
+    ab.i("MicroMsg.ShakeCardDialog", "doNetSceneAccept callback");
+    a.a(this.qOr, this.qOs.cHm);
+    if (a.g(this.qOr) != null)
     {
-      a.a(this.oai, 8);
-      if (a.g(this.oai) != null) {
-        a.a(this.oai, a.g(this.oai).bZc);
+      a.a(this.qOr, 8);
+      if (a.g(this.qOr) != null) {
+        a.a(this.qOr, a.g(this.qOr).cHn);
       }
-      if ((a.g(this.oai) != null) && (a.g(this.oai).bKQ))
+      if ((a.g(this.qOr) != null) && (a.g(this.qOr).csk))
       {
-        a.a(this.oai, a.a.oam);
-        a.h(this.oai);
-        a.i(this.oai);
-        a.j(this.oai);
-        if (a.a(this.oai) != null) {
-          a.a(this.oai).bAj();
+        a.a(this.qOr, a.a.qOv);
+        a.h(this.qOr);
+        a.i(this.qOr);
+        a.j(this.qOr);
+        if (a.a(this.qOr) != null)
+        {
+          a.a(this.qOr).clB();
+          AppMethodBeat.o(24549);
         }
-        return;
       }
-      a.a(this.oai, a.a.oan);
-      a.h(this.oai);
-      a.k(this.oai);
-      return;
+      else
+      {
+        a.a(this.qOr, a.a.qOw);
+        a.h(this.qOr);
+        a.k(this.qOr);
+        AppMethodBeat.o(24549);
+      }
     }
-    y.i("MicroMsg.ShakeCardDialog", "doNetSceneAccept callback, mCardAcceptResult == null");
+    else
+    {
+      ab.i("MicroMsg.ShakeCardDialog", "doNetSceneAccept callback, mCardAcceptResult == null");
+    }
+    AppMethodBeat.o(24549);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.b.a.3
  * JD-Core Version:    0.7.0.1
  */

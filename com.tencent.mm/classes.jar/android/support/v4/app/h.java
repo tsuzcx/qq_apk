@@ -1,27 +1,19 @@
 package android.support.v4.app;
 
+import android.arch.lifecycle.ViewModelStore;
+import java.util.List;
+
 public final class h
 {
-  final i<?> mHost;
+  final List<Fragment> wC;
+  final List<h> wD;
+  final List<ViewModelStore> wE;
   
-  h(i<?> parami)
+  h(List<Fragment> paramList, List<h> paramList1, List<ViewModelStore> paramList2)
   {
-    this.mHost = parami;
-  }
-  
-  public final boolean execPendingActions()
-  {
-    return this.mHost.mFragmentManager.execPendingActions();
-  }
-  
-  public final Fragment findFragmentByWho(String paramString)
-  {
-    return this.mHost.mFragmentManager.findFragmentByWho(paramString);
-  }
-  
-  public final void noteStateNotSaved()
-  {
-    this.mHost.mFragmentManager.noteStateNotSaved();
+    this.wC = paramList;
+    this.wD = paramList1;
+    this.wE = paramList2;
   }
 }
 

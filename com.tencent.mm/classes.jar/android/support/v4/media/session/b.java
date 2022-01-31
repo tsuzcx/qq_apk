@@ -17,8 +17,6 @@ public abstract interface b
   
   public abstract void D(boolean paramBoolean);
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
   public abstract void a(MediaDescriptionCompat paramMediaDescriptionCompat);
   
   public abstract void a(MediaDescriptionCompat paramMediaDescriptionCompat, int paramInt);
@@ -33,9 +31,9 @@ public abstract interface b
   
   public abstract boolean a(KeyEvent paramKeyEvent);
   
-  public abstract void am(int paramInt);
+  public abstract void ak(int paramInt);
   
-  public abstract void an(int paramInt);
+  public abstract void al(int paramInt);
   
   public abstract void b(int paramInt1, int paramInt2, String paramString);
   
@@ -43,25 +41,25 @@ public abstract interface b
   
   public abstract void b(a parama);
   
-  public abstract boolean cF();
+  public abstract void c(int paramInt1, int paramInt2, String paramString);
   
-  public abstract PendingIntent cG();
+  public abstract boolean di();
   
-  public abstract ParcelableVolumeInfo cH();
+  public abstract PendingIntent dj();
   
-  public abstract MediaMetadataCompat cI();
+  public abstract ParcelableVolumeInfo dk();
   
-  public abstract PlaybackStateCompat cJ();
+  public abstract MediaMetadataCompat dl();
   
-  public abstract boolean cK();
+  public abstract PlaybackStateCompat dm();
   
-  public abstract boolean cL();
+  public abstract boolean dn();
   
-  public abstract int cM();
+  public abstract boolean jdMethod_do();
   
-  public abstract void cN();
+  public abstract int dp();
   
-  public abstract void cO();
+  public abstract void dq();
   
   public abstract void fastForward();
   
@@ -80,6 +78,8 @@ public abstract interface b
   public abstract int getRepeatMode();
   
   public abstract String getTag();
+  
+  public abstract void next();
   
   public abstract void pause();
   

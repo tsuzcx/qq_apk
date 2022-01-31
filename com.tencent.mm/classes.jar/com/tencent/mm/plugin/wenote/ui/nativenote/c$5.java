@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$5
   implements Runnable
@@ -9,7 +10,9 @@ final class c$5
   
   public final void run()
   {
-    this.hdG.setPressed(this.rMC);
+    AppMethodBeat.i(27119);
+    this.bTJ.setPressed(this.vDg);
+    AppMethodBeat.o(27119);
   }
 }
 

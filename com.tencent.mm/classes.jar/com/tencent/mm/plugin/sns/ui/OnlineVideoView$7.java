@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.s.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
@@ -12,20 +13,26 @@ final class OnlineVideoView$7
 {
   OnlineVideoView$7(OnlineVideoView paramOnlineVideoView) {}
   
-  public final long bin()
+  public final long bQp()
   {
-    y.i("MicroMsg.OnlineVideoView", "%d sns video get online cache", new Object[] { Integer.valueOf(this.oRM.hashCode()) });
-    g.DQ();
-    g.DP().Dz().c(ac.a.uuT, Boolean.valueOf(true));
+    AppMethodBeat.i(38396);
+    ab.i("MicroMsg.OnlineVideoView", "%d sns video get online cache", new Object[] { Integer.valueOf(this.rJD.hashCode()) });
+    g.RM();
+    g.RL().Ru().set(ac.a.yFa, Boolean.TRUE);
     try
     {
-      if ((OnlineVideoView.x(this.oRM)) && (OnlineVideoView.k(this.oRM) != null))
+      if ((OnlineVideoView.w(this.rJD)) && (this.rJD.rJi != null))
       {
-        int i = OnlineVideoView.k(this.oRM).eFy;
-        return i;
+        int i = this.rJD.rJi.fVp;
+        long l = i;
+        AppMethodBeat.o(38396);
+        return l;
       }
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(38396);
+    }
     return 0L;
   }
 }

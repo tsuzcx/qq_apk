@@ -1,111 +1,60 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import com.tencent.luggage.e.h;
-import com.tencent.mm.plugin.webview.ui.tools.bag.g.a;
-import com.tencent.mm.plugin.webview.ui.tools.bag.g.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.b;
-import java.util.LinkedList;
+import android.os.Looper;
+import com.tencent.luggage.d.k;
+import com.tencent.luggage.d.m;
+import com.tencent.luggage.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.permission.LuggageGetA8Key;
+import com.tencent.mm.plugin.webview.luggage.permission.b;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import java.util.HashMap;
 
 public final class n
-  implements com.tencent.mm.plugin.webview.ui.tools.bag.g
 {
-  private Intent intent = new Intent();
-  private e rcp;
+  private static HashMap<String, Integer> uSL;
   
-  public n(e parame)
+  static
   {
-    this.rcp = parame;
-    this.intent.putExtras(this.rcp.biV);
+    AppMethodBeat.i(6218);
+    uSL = new HashMap();
+    AppMethodBeat.o(6218);
   }
   
-  private boolean cbp()
+  public static int a(k paramk, LuggageGetA8Key paramLuggageGetA8Key)
   {
-    y.i("MicroMsg.LuggageWebBagAdapter", "useActivityEnv: " + this.rcp.bil.getPageStack().size());
-    return this.rcp.bil.getPageStack().size() <= 1;
+    AppMethodBeat.i(6216);
+    int i = m.a(ah.getContext(), paramk).intValue();
+    b.a(paramk.hashCode(), paramLuggageGetA8Key);
+    AppMethodBeat.o(6216);
+    return i;
   }
   
-  public final void a(g.a parama)
+  public static void remove(int paramInt)
   {
-    if (parama == null) {}
-    do
+    AppMethodBeat.i(6217);
+    k localk = m.a(Integer.valueOf(paramInt));
+    if (localk != null)
     {
-      do
-      {
-        return;
-      } while ((this.rcp.QR == null) || (!(this.rcp.QR instanceof me.imid.swipebacklayout.lib.SwipeBackLayout)));
-      if (!cbp()) {
-        ((me.imid.swipebacklayout.lib.SwipeBackLayout)this.rcp.QR).a(new n.1(this, parama));
+      b.JT(localk.hashCode());
+      if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
+        try
+        {
+          localk.destroy();
+          AppMethodBeat.o(6217);
+          return;
+        }
+        catch (Exception localException)
+        {
+          d.printErrStackTrace("MicroMsg.LuggageWebCoreStash", localException, "", new Object[0]);
+          AppMethodBeat.o(6217);
+          return;
+        }
       }
-    } while ((!cbp()) || (((MMActivity)getActivity()).getSwipeBackLayout() == null));
-    ((MMActivity)getActivity()).getSwipeBackLayout().setSwipeBackListener(new n.2(this, parama));
-  }
-  
-  public final void a(g.b paramb)
-  {
-    if (cbp())
-    {
-      b.a(getActivity(), new n.3(this, paramb));
-      return;
+      al.d(new n.1(localException));
     }
-    paramb.ld(true);
-  }
-  
-  public final ViewGroup cbn()
-  {
-    if (cbp()) {
-      return (ViewGroup)getActivity().getWindow().getDecorView();
-    }
-    return (ViewGroup)this.rcp.QR.getParent();
-  }
-  
-  public final boolean cbo()
-  {
-    return this.rcp.QR != null;
-  }
-  
-  public final Activity getActivity()
-  {
-    return (Activity)this.rcp.mContext;
-  }
-  
-  public final View getContentView()
-  {
-    if (cbp())
-    {
-      if (((MMActivity)getActivity()).getSwipeBackLayout() != null) {
-        return ((MMActivity)getActivity()).getSwipeBackLayout().getTargetContentView();
-      }
-      return null;
-    }
-    return ((me.imid.swipebacklayout.lib.SwipeBackLayout)this.rcp.QR).getTargetView();
-  }
-  
-  public final Intent getIntent()
-  {
-    if (!bk.bl(this.rcp.rbE.getTitle())) {
-      this.intent.putExtra("title", this.rcp.rbE.getTitle());
-    }
-    return this.intent;
-  }
-  
-  public final String getUrl()
-  {
-    return this.rcp.getUrl();
-  }
-  
-  public final void jW(boolean paramBoolean)
-  {
-    if (!this.rcp.bil.qj().aJ(false)) {
-      ((Activity)this.rcp.mContext).finish();
-    }
+    AppMethodBeat.o(6217);
   }
 }
 

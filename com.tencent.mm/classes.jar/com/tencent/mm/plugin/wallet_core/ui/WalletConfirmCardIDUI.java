@@ -1,28 +1,21 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet_core.c.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet_core.c.w;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.wallet_core.a;
-import com.tencent.mm.wallet_core.c.v;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 import com.tenpay.bankcard.TenpaySegmentEditText;
@@ -30,108 +23,58 @@ import com.tenpay.bankcard.TenpaySegmentEditText;
 public class WalletConfirmCardIDUI
   extends WalletBaseUI
 {
-  private Button laG;
-  private TenpaySegmentEditText qDp;
-  private boolean qDq = true;
+  private Button nyC;
+  private TenpaySegmentEditText uqk;
+  private boolean uql = true;
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public int getLayoutId()
   {
-    paramString = new Bundle();
-    boolean bool = this.BX.getBoolean("key_is_reset_with_new_card", false);
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if ((paramm instanceof t))
-      {
-        paramm = (t)paramm;
-        paramString.putBoolean("key_need_area", paramm.bUJ());
-        paramString.putBoolean("key_need_profession", paramm.bUK());
-        paramString.putParcelableArray("key_profession_list", paramm.qrb);
-        if (paramm.qqX != null)
-        {
-          if ((paramm.qqX.qvd) && (paramm.qqX.isError()))
-          {
-            h.h(this, a.i.wallet_bank_broken, a.i.app_tip);
-            return true;
-          }
-          paramString.putBoolean("key_is_reset_with_new_card", bool);
-          paramString.putString("bank_name", paramm.qqX.lnT);
-          paramString.putParcelable("elemt_query", paramm.qqX);
-          paramString.putString("key_card_id", this.qDp.getEncryptDataWithHash(false));
-          a.j(this, paramString);
-          return true;
-        }
-        paramString.putBoolean("key_is_reset_with_new_card", bool);
-        paramString.putString("bank_name", "");
-        paramString.putParcelable("elemt_query", new ElementQuery());
-        paramString.putString("key_card_id", this.qDp.getEncryptDataWithHash(false));
-        a.j(this, paramString);
-      }
-    }
-    while ((paramInt2 != 1) || (!(paramm instanceof t))) {
-      return false;
-    }
-    paramString.putString("bank_name", "");
-    paramString.putBoolean("key_is_reset_with_new_card", bool);
-    paramString.putParcelable("elemt_query", new ElementQuery());
-    paramString.putString("key_card_id", this.qDp.getEncryptDataWithHash(false));
-    a.j(this, paramString);
-    return true;
+    return 2130971164;
   }
   
-  protected final int getLayoutId()
+  public void initView()
   {
-    return a.g.wallet_confirm_card_id_ui;
-  }
-  
-  protected final void initView()
-  {
-    Object localObject = this.BX.getString("key_bankcard_id");
-    String str = this.BX.getString("key_bankcard_des");
-    Bitmap localBitmap = (Bitmap)this.BX.getParcelable("key_bankcard_cropimg");
+    AppMethodBeat.i(47373);
+    Object localObject = getInput().getString("key_bankcard_id");
+    String str = getInput().getString("key_bankcard_des");
+    Bitmap localBitmap = (Bitmap)getInput().getParcelable("key_bankcard_cropimg");
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      y.e("MicroMsg.WalletConfirmCardIDUI", "cardID is empty");
+      ab.e("MicroMsg.WalletConfirmCardIDUI", "cardID is empty");
       finish();
+      AppMethodBeat.o(47373);
       return;
     }
     if (localBitmap == null)
     {
-      y.e("MicroMsg.WalletConfirmCardIDUI", "cardID bitmap is null");
+      ab.e("MicroMsg.WalletConfirmCardIDUI", "cardID bitmap is null");
       finish();
+      AppMethodBeat.o(47373);
       return;
     }
-    setMMTitle(a.i.wallet_confirm_card_id_ui_title);
-    this.laG = ((Button)findViewById(a.f.next_btn));
-    this.qDp = ((TenpaySegmentEditText)findViewById(a.f.edit_card_id));
-    this.qDp.setText((String)localObject, str);
-    this.mKeyboard = ((MyKeyboardWindow)findViewById(a.f.tenpay_num_keyboard));
-    this.lMr = findViewById(a.f.tenpay_keyboard_layout);
-    ((ImageView)findViewById(a.f.card_id_src_bmp)).setImageBitmap(localBitmap);
-    this.qDp.setKeyboard(this.mKeyboard);
+    setMMTitle(2131305023);
+    this.nyC = ((Button)findViewById(2131822914));
+    this.uqk = ((TenpaySegmentEditText)findViewById(2131829092));
+    this.uqk.setText((String)localObject, str);
+    this.mKeyboard = ((MyKeyboardWindow)findViewById(2131822419));
+    this.mKBLayout = findViewById(2131822418);
+    ((ImageView)findViewById(2131829091)).setImageBitmap(localBitmap);
+    this.uqk.setKeyboard(this.mKeyboard);
     this.mKeyboard.setXMode(0);
-    ((InputMethodManager)this.mController.uMN.getSystemService("input_method")).hideSoftInputFromWindow(this.qDp.getWindowToken(), 0);
-    this.lMr.setVisibility(8);
-    this.qDp.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        if ((!WalletConfirmCardIDUI.a(WalletConfirmCardIDUI.this).isShown()) && (!WalletConfirmCardIDUI.b(WalletConfirmCardIDUI.this)))
-        {
-          WalletConfirmCardIDUI.c(WalletConfirmCardIDUI.this).setVisibility(0);
-          WalletConfirmCardIDUI.d(WalletConfirmCardIDUI.this).setVisibility(0);
-        }
-        WalletConfirmCardIDUI.e(WalletConfirmCardIDUI.this);
-      }
-    });
-    localObject = this.qDp.get3DesEncrptData();
-    this.laG.setOnClickListener(new WalletConfirmCardIDUI.3(this, (String)localObject));
-    this.mKeyboard = ((MyKeyboardWindow)findViewById(a.f.tenpay_num_keyboard));
-    this.lMr = findViewById(a.f.tenpay_keyboard_layout);
-    localObject = findViewById(a.f.tenpay_push_down);
-    if ((this.mKeyboard == null) || (this.lMr == null)) {}
+    ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.uqk.getWindowToken(), 0);
+    this.mKBLayout.setVisibility(8);
+    this.uqk.setOnClickListener(new WalletConfirmCardIDUI.2(this));
+    localObject = this.uqk.get3DesEncrptData();
+    this.nyC.setOnClickListener(new WalletConfirmCardIDUI.3(this, (String)localObject));
+    this.mKeyboard = ((MyKeyboardWindow)findViewById(2131822419));
+    this.mKBLayout = findViewById(2131822418);
+    localObject = findViewById(2131822420);
+    if ((this.mKeyboard == null) || (this.mKBLayout == null)) {}
     for (;;)
     {
-      this.qDp.setFocusable(false);
-      this.qDp.setFocusableInTouchMode(true);
+      this.uqk.setFocusable(false);
+      this.uqk.setFocusableInTouchMode(true);
+      AppMethodBeat.o(47373);
       return;
       ((View)localObject).setOnClickListener(new WalletConfirmCardIDUI.4(this));
     }
@@ -139,22 +82,81 @@ public class WalletConfirmCardIDUI
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(47369);
     super.onCreate(paramBundle);
     initView();
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        v.cMD();
-        WalletConfirmCardIDUI.this.finish();
-        return false;
-      }
-    });
+    setBackBtn(new WalletConfirmCardIDUI.1(this));
+    AppMethodBeat.o(47369);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(47370);
     super.onDestroy();
+    AppMethodBeat.o(47370);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(47372);
+    paramString = new Bundle();
+    boolean bool2 = getInput().getBoolean("key_is_reset_with_new_card", false);
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+      if ((paramm instanceof w))
+      {
+        paramm = (w)paramm;
+        paramString.putBoolean("key_need_area", paramm.cSY());
+        paramString.putBoolean("key_need_profession", paramm.cSZ());
+        paramString.putParcelableArray("key_profession_list", paramm.mProfessions);
+        if (paramm.ubX == 1) {}
+        for (bool1 = true;; bool1 = false)
+        {
+          paramString.putBoolean("key_need_country", bool1);
+          paramString.putStringArray("key_country_excludes", paramm.ubY);
+          if (paramm.ubT == null) {
+            break label233;
+          }
+          if ((!paramm.ubT.uhv) || (!paramm.ubT.isError())) {
+            break;
+          }
+          h.h(this, 2131304850, 2131297087);
+          AppMethodBeat.o(47372);
+          return true;
+        }
+        paramString.putBoolean("key_is_reset_with_new_card", bool2);
+        paramString.putString("bank_name", paramm.ubT.nLq);
+        paramString.putParcelable("elemt_query", paramm.ubT);
+        paramString.putString("key_card_id", this.uqk.getEncryptDataWithHash(false));
+        a.j(this, paramString);
+        AppMethodBeat.o(47372);
+        return true;
+        label233:
+        paramString.putBoolean("key_is_reset_with_new_card", bool2);
+        paramString.putString("bank_name", "");
+        paramString.putParcelable("elemt_query", new ElementQuery());
+        paramString.putString("key_card_id", this.uqk.getEncryptDataWithHash(false));
+        a.j(this, paramString);
+      }
+    }
+    while ((paramInt2 != 1) || (!(paramm instanceof w)))
+    {
+      boolean bool1;
+      AppMethodBeat.o(47372);
+      return false;
+    }
+    paramString.putString("bank_name", "");
+    paramString.putBoolean("key_is_reset_with_new_card", bool2);
+    paramString.putParcelable("elemt_query", new ElementQuery());
+    paramString.putString("key_card_id", this.uqk.getEncryptDataWithHash(false));
+    a.j(this, paramString);
+    AppMethodBeat.o(47372);
+    return true;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

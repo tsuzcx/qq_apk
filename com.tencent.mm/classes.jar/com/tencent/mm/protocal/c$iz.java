@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$iz
+public final class c$iz
   extends c.g
 {
-  c$iz()
+  public c$iz()
   {
-    super("showSearchOfBizHistory", "showSearchOfBizHistory", 266, false);
+    super("setLocalData", "setLocalData", 180, false);
   }
 }
 

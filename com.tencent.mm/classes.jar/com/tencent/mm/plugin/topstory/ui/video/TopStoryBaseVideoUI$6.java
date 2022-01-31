@@ -1,39 +1,28 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import com.tencent.mm.plugin.topstory.ui.b.g;
-import com.tencent.mm.ui.widget.a.e.a;
-import com.tencent.mm.ui.widget.a.e.c;
-import com.tencent.mm.ui.widget.a.e.e;
+import android.support.v7.widget.RecyclerView.a;
+import android.support.v7.widget.RecyclerView.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.List;
 
 final class TopStoryBaseVideoUI$6
-  implements e.e
+  implements Runnable
 {
-  TopStoryBaseVideoUI$6(TopStoryBaseVideoUI paramTopStoryBaseVideoUI, e.a parama, e.c paramc) {}
+  TopStoryBaseVideoUI$6(TopStoryBaseVideoUI paramTopStoryBaseVideoUI, List paramList, boolean paramBoolean) {}
   
-  public final void q(int[] paramArrayOfInt)
+  public final void run()
   {
-    int k = 0;
-    int i = 0;
-    for (;;)
+    AppMethodBeat.i(1724);
+    if (this.tiT.tiR)
     {
-      int j = k;
-      if (i < paramArrayOfInt.length)
-      {
-        if (paramArrayOfInt[i] == 1) {
-          j = 1;
-        }
-      }
-      else
-      {
-        if (j == 0) {
-          break;
-        }
-        this.gPd.Iu(b.g.app_finish).a(this.pFx);
-        return;
-      }
-      i += 1;
+      this.tiT.tiB.l(this.tiV, this.tiW);
+      this.tiT.tix.ajb.notifyChanged();
+      AppMethodBeat.o(1724);
+      return;
     }
-    this.gPd.Iu(b.g.top_story_feedback_unlike).a(this.pFx);
+    this.tiT.tix.l(this.tiV, this.tiW);
+    this.tiT.tiB.ajb.notifyChanged();
+    AppMethodBeat.o(1724);
   }
 }
 

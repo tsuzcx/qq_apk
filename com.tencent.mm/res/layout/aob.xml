@@ -1,20 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/i_" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ko">
-            <View android:layout_width="0.0dip" android:layout_height="@dimen/ed" android:layout_weight="1.0" />
-            <com.tencent.mm.ui.widget.MMTextView android:id="@id/dto" android:background="@drawable/hs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="215.0dip" android:minHeight="@dimen/ed" android:text="@string/d8h" style="@style/g7" />
-            <ImageView android:id="@id/dtp" android:layout_marginRight="@dimen/mq" style="@style/fw" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ko">
-            <ImageView android:layout_marginLeft="@dimen/mq" android:src="@drawable/icon" style="@style/ft" />
-            <com.tencent.mm.ui.widget.MMTextView android:id="@id/dtq" android:background="@drawable/go" android:maxWidth="@dimen/vb" android:minHeight="@dimen/ed" android:text="@string/dwx" style="@style/g7" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ko">
-            <ImageView android:layout_marginLeft="@dimen/mq" android:src="@drawable/icon" style="@style/ft" />
-            <com.tencent.mm.ui.widget.MMTextView android:id="@id/dtr" android:background="@drawable/go" android:maxWidth="@dimen/vb" android:minHeight="@dimen/ed" android:text="@string/dwv" style="@style/g7" />
-        </LinearLayout>
-    </LinearLayout>
-    <com.tencent.mm.plugin.setting.ui.widget.FontSelectorView android:id="@id/dts" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+<View android:id="@id/e07" android:background="@color/k8" android:layout_width="fill_parent" android:layout_height="@dimen/m1" android:minHeight="@dimen/m1"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

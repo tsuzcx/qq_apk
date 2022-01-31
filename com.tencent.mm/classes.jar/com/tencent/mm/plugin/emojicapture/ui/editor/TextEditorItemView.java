@@ -1,70 +1,80 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
-import a.d.b.g;
+import a.a.e;
+import a.f.b.j;
+import a.l;
+import a.v;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
-import android.graphics.Rect;
+import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.os.Build.VERSION;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.StaticLayout.Builder;
-import android.text.TextPaint;
-import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.mm.plugin.emojicapture.a.b;
-import com.tencent.mm.plugin.emojicapture.a.f;
-import com.tencent.mm.plugin.emojicapture.model.a.d;
+import android.view.ViewConfiguration;
+import android.view.ViewParent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emojicapture.c.c.b;
 import com.tencent.mm.plugin.report.service.h;
-import java.util.Arrays;
+import com.tencent.mm.sdk.platformtools.aa;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/TextEditorItemView;", "Landroid/view/View;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "animCount", "animIndex", "bitmapArray", "", "Landroid/graphics/Bitmap;", "[Landroid/graphics/Bitmap;", "bitmapOffset", "Landroid/graphics/PointF;", "bottomMargin", "", "clipPath", "Landroid/graphics/Path;", "contentPadding", "drawingOffset", "fontPaths", "[Ljava/lang/String;", "framePadding", "framePaint", "Landroid/graphics/Paint;", "framePath", "framePathRect", "Landroid/graphics/RectF;", "frameStrokeWidth", "isClipping", "", "isEditing", "isEditingBeforeTouch", "isValid", "maxScale", "minScale", "strokeColor", "switchRunnable", "Ljava/lang/Runnable;", "text", "", "textColor", "textDrawer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "touchDownX", "touchDownY", "touchMoved", "touchSlop", "touchTracker", "Lcom/tencent/mm/media/editor/touch/TouchTracker;", "typefaceIndex", "validRect", "wxTypeFaces", "Landroid/graphics/Typeface;", "[Landroid/graphics/Typeface;", "createEditorData", "Lcom/tencent/mm/media/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "createTextBitmap", "typeface", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "getText", "getTextColor", "handleRemove", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "pause", "preSetMatrix", "refresh", "resetFrame", "contentWidth", "contentHeight", "resume", "setEditing", "editing", "setValidArea", "bounds", "radius", "switchFont", "updateText", "color", "change", "Companion", "plugin-emojicapture_release"})
 public final class TextEditorItemView
   extends View
-  implements a
+  implements c.b
 {
-  private static final String[] jqH = { "WXxiari.ttf", "WXkatonglemiao.ttf" };
-  public static final TextEditorItemView.a jqI = new TextEditorItemView.a((byte)0);
-  private final String TAG = "MicroMsg.TextEditorItemView";
-  private final int contentPadding;
-  private final Layout.Alignment dNX = Layout.Alignment.ALIGN_CENTER;
-  private TextPaint dOi = new TextPaint();
-  private float fLH;
-  private boolean hJP;
-  private float jms;
-  private float jqA;
-  private boolean jqB;
-  public boolean jqC;
-  private final int jqD;
-  private int jqE;
-  private final Bitmap[] jqF;
-  private com.tencent.mm.plugin.emojicapture.ui.editor.a.c jqG;
-  private String jqm;
-  private Typeface[] jqn;
-  private int jqo;
-  private final Runnable jqp = (Runnable)new TextEditorItemView.d(this);
-  private final float jqq = 1.0F;
-  private final float jqr;
-  private final boolean jqs;
-  private TextPaint jqt = new TextPaint();
-  private Rect jqu = new Rect();
-  private final Paint jqv = new Paint(1);
-  private final Path jqw = new Path();
-  private final RectF jqx = new RectF();
-  private float jqy;
-  private float jqz;
-  private StaticLayout layout;
-  private String[] rdd;
-  private CharSequence text = (CharSequence)"";
+  public static final TextEditorItemView.a lAt;
+  private final String TAG;
+  private float arJ;
+  private float arK;
+  private boolean bRg;
+  private final float eTV;
+  private final float joa;
+  private String[] lAa;
+  private Typeface[] lAb;
+  private int lAc;
+  private final Runnable lAd;
+  private final Paint lAe;
+  private final float lAf;
+  private final Path lAg;
+  private final RectF lAh;
+  private final int lAi;
+  private int lAj;
+  private final Bitmap[] lAk;
+  private final float lAl;
+  private boolean lAm;
+  private float lAn;
+  private float lAo;
+  private boolean lAp;
+  private final float lAq;
+  private final PointF lAr;
+  private final PointF lAs;
+  private final com.tencent.mm.media.editor.c.c lwb;
+  private final Path lwd;
+  private boolean lwf;
+  private boolean lwg;
+  private RectF lzG;
+  private com.tencent.mm.plugin.emojicapture.ui.editor.a.c lzY;
+  private int strokeColor;
+  private CharSequence text;
+  private int textColor;
+  
+  static
+  {
+    AppMethodBeat.i(3129);
+    lAt = new TextEditorItemView.a((byte)0);
+    AppMethodBeat.o(3129);
+  }
   
   public TextEditorItemView(Context paramContext)
   {
@@ -79,32 +89,72 @@ public final class TextEditorItemView
   public TextEditorItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(3128);
+    this.TAG = "MicroMsg.TextEditorItemView";
+    this.lAd = ((Runnable)new TextEditorItemView.d(this));
+    this.lAe = new Paint(1);
+    this.lAg = new Path();
+    this.lAh = new RectF();
+    this.lzG = new RectF();
+    this.textColor = -1;
+    this.strokeColor = -1;
+    this.lAr = new PointF();
+    this.lAs = new PointF();
+    this.lwb = new com.tencent.mm.media.editor.c.c();
+    this.lwd = new Path();
+    this.arJ = 2.0F;
+    this.arK = 0.25F;
     if (paramContext == null) {
-      g.cUk();
+      j.ebi();
     }
-    float f = paramContext.getResources().getDimension(a.b.editor_text_item_size);
+    float f = paramContext.getResources().getDimension(2131428341);
+    label185:
     int i;
-    if (com.tencent.mm.an.b.NC().NF())
+    if (com.tencent.mm.ao.b.agp().ags())
     {
-      g.j(com.tencent.mm.an.b.NC(), "FontResLogic.getInstance()");
-      paramAttributeSet = com.tencent.mm.an.b.NG();
-      g.j(paramAttributeSet, "FontResLogic.getInstance().fontPath");
-      this.rdd = paramAttributeSet;
-      paramAttributeSet = com.tencent.mm.plugin.emojicapture.model.c.jko;
-      this.jqG = ((com.tencent.mm.plugin.emojicapture.ui.editor.a.c)new com.tencent.mm.plugin.emojicapture.ui.editor.a.b(this.rdd, (int)f));
-      i = ((Object[])this.rdd).length;
-      paramAttributeSet = new Typeface[i];
-      paramInt = 0;
-      while (paramInt < i)
+      paramAttributeSet = com.tencent.mm.plugin.emojicapture.model.c.ltu;
+      paramAttributeSet = aa.dsG();
+      if (paramAttributeSet == null) {}
+      do
       {
-        paramAttributeSet[paramInt] = Typeface.createFromFile(this.rdd[paramInt]);
-        paramInt += 1;
+        for (;;)
+        {
+          paramInt = 1;
+          if (paramInt == 0) {
+            break label384;
+          }
+          j.p(com.tencent.mm.ao.b.agp(), "FontResLogic.getInstance()");
+          paramAttributeSet = com.tencent.mm.ao.b.agt();
+          j.p(paramAttributeSet, "FontResLogic.getInstance().fontPath");
+          this.lAa = paramAttributeSet;
+          paramAttributeSet = com.tencent.mm.plugin.emojicapture.model.c.ltu;
+          this.lzY = ((com.tencent.mm.plugin.emojicapture.ui.editor.a.c)new com.tencent.mm.plugin.emojicapture.ui.editor.a.b(this.lAa, (int)f));
+          i = this.lAa.length;
+          paramAttributeSet = new Typeface[i];
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            paramAttributeSet[paramInt] = Typeface.createFromFile(this.lAa[paramInt]);
+            paramInt += 1;
+          }
+          switch (paramAttributeSet.hashCode())
+          {
+          }
+        }
+      } while (!paramAttributeSet.equals("zh_HK"));
+      for (;;)
+      {
+        paramInt = 0;
+        break label185;
+        if (!paramAttributeSet.equals("zh_TW")) {
+          break;
+        }
       }
     }
-    for (this.jqn = paramAttributeSet;; this.jqn = new Typeface[] { null })
+    for (this.lAb = paramAttributeSet;; this.lAb = new Typeface[] { null })
     {
-      this.jqD = ((Object[])this.jqn).length;
-      i = this.jqD;
+      this.lAi = this.lAb.length;
+      i = this.lAi;
       paramAttributeSet = new Bitmap[i];
       paramInt = 0;
       while (paramInt < i)
@@ -112,195 +162,227 @@ public final class TextEditorItemView
         paramAttributeSet[paramInt] = null;
         paramInt += 1;
       }
-      this.rdd = new String[] { "" };
-      h.nFQ.fy(3L);
-      this.jqG = ((com.tencent.mm.plugin.emojicapture.ui.editor.a.c)new com.tencent.mm.plugin.emojicapture.ui.editor.a.a());
+      label384:
+      this.lAa = new String[] { "" };
+      h.qsU.B(933L, 3L);
+      this.lzY = ((com.tencent.mm.plugin.emojicapture.ui.editor.a.c)new com.tencent.mm.plugin.emojicapture.ui.editor.a.a());
     }
-    this.jqF = paramAttributeSet;
-    this.jqz = paramContext.getResources().getDimension(a.b.editor_text_line_height);
-    this.jqA = paramContext.getResources().getDimension(a.b.editor_text_line_spacing);
-    paramAttributeSet = paramContext.getResources().getString(a.f.capture_emoji_text_default);
-    g.j(paramAttributeSet, "context.resources.getStr…pture_emoji_text_default)");
-    this.jqm = paramAttributeSet;
-    this.contentPadding = paramContext.getResources().getDimensionPixelSize(a.b.editor_text_item_padding);
-    this.dOi.setAntiAlias(true);
-    this.dOi.setTextSize(f);
-    this.dOi.setTypeface(this.jqn[0]);
-    this.jqt.setStrokeWidth(paramContext.getResources().getDimension(a.b.editor_text_stroke));
-    this.jqt.setAntiAlias(true);
-    this.jqt.setTextSize(this.dOi.getTextSize());
-    this.jqt.setStyle(Paint.Style.STROKE);
-    this.jqt.setTypeface(this.jqn[0]);
-    this.layout = new StaticLayout(this.text, this.dOi, getWidth(), this.dNX, this.jqq, this.jqr, this.jqs);
-    aKV();
-    this.jms = getResources().getDimension(a.b.editor_text_item_frame_padding);
-    this.jqv.setColor(-1);
-    this.jqv.setStyle(Paint.Style.STROKE);
-    this.jqv.setStrokeWidth(getResources().getDimension(a.b.editor_text_item_frame_stroke));
-    setLayerType(1, null);
-    f = this.jms + this.jqv.getStrokeWidth();
-    setPadding(0, (int)f, 0, (int)f);
+    this.lAk = paramAttributeSet;
+    bpf();
+    this.eTV = getResources().getDimension(2131428338);
+    this.lAf = getResources().getDimension(2131428339);
+    this.lAe.setColor(-1);
+    this.lAe.setStyle(Paint.Style.STROKE);
+    this.lAe.setStrokeWidth(this.lAf);
+    this.lAs.set(this.eTV, this.eTV);
+    this.lAq = getResources().getDimension(2131428337);
+    this.lAl = getResources().getDimension(2131428340);
+    paramContext = ViewConfiguration.get(paramContext);
+    j.p(paramContext, "ViewConfiguration.get(context)");
+    this.joa = paramContext.getScaledTouchSlop();
+    this.lwb.arJ = this.arJ;
+    this.lwb.arK = this.arK;
+    AppMethodBeat.o(3128);
   }
   
-  private final void a(Canvas paramCanvas, int paramInt, float paramFloat)
+  private final void bpg()
   {
-    if ((paramInt < 0) || (paramInt >= this.layout.getLineCount())) {
-      return;
+    AppMethodBeat.i(3124);
+    this.lwb.asO.setTranslate(this.lAr.x, this.lAr.y);
+    AppMethodBeat.o(3124);
+  }
+  
+  private final Bitmap d(Typeface paramTypeface)
+  {
+    AppMethodBeat.i(3125);
+    FontTextView localFontTextView = new FontTextView(getContext());
+    localFontTextView.setMaxWidth(this.lzG.width());
+    localFontTextView.setTextDrawer(this.lzY);
+    localFontTextView.setTypeface(paramTypeface);
+    localFontTextView.d(this.text, this.textColor, this.strokeColor);
+    localFontTextView.measure(View.MeasureSpec.makeMeasureSpec((int)(this.lzG.width() - 2.0F * this.lAl), -2147483648), 0);
+    paramTypeface = Bitmap.createBitmap(localFontTextView.getMeasuredWidth(), localFontTextView.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(paramTypeface);
+    localCanvas.save();
+    localFontTextView.draw(localCanvas);
+    localCanvas.restore();
+    j.p(paramTypeface, "bitmap");
+    AppMethodBeat.o(3125);
+    return paramTypeface;
+  }
+  
+  private final void eg(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(3123);
+    float f1 = paramInt1 + this.eTV * 2.0F;
+    float f2 = paramInt2 + this.eTV * 2.0F;
+    float f3 = this.lAh.width();
+    float f4 = this.lAh.height();
+    if (this.lAh.isEmpty()) {
+      this.lAr.offset(f1 / 2.0F, -f2);
     }
-    float f = this.layout.getLineLeft(paramInt) + getPaddingLeft();
-    paramFloat = this.layout.getLineBaseline(paramInt) + paramFloat + getPaddingTop();
-    boolean bool;
-    if (this.layout.getEllipsisCount(paramInt) > 0)
+    for (;;)
     {
-      bool = true;
-      if (!bool) {
-        break label166;
+      this.lAh.set(0.0F, 0.0F, f1, f2);
+      this.lAg.reset();
+      this.lAg.addRoundRect(this.lAh, this.eTV, this.eTV, Path.Direction.CW);
+      this.lwb.asO.preTranslate((this.lwb.width - f1) / 2.0F, this.lwb.height - f2);
+      if (!this.bRg) {
+        bpg();
       }
-    }
-    label166:
-    for (int i = this.layout.getLineStart(paramInt) + this.layout.getEllipsisStart(paramInt);; i = this.layout.getLineEnd(paramInt))
-    {
-      if (this.hJP) {
-        this.jqG.a(paramCanvas, this.layout.getLineStart(paramInt), i, f, paramFloat, (Paint)this.jqt, bool);
-      }
-      this.jqG.a(paramCanvas, this.layout.getLineStart(paramInt), i, f, paramFloat, (Paint)this.dOi, bool);
+      this.lwb.width = ((int)f1);
+      this.lwb.height = ((int)f2);
+      AppMethodBeat.o(3123);
       return;
-      bool = false;
-      break;
+      this.lAr.offset((f3 - f1) / 2.0F, (f4 - f2) / 2.0F);
     }
   }
   
-  private final void aKV()
+  private final void refresh()
   {
-    this.jqE += 1;
-    this.jqE %= this.jqD;
-    this.dOi.setTypeface(this.jqn[this.jqo]);
-    this.jqt.setTypeface(this.jqn[this.jqo]);
-    this.jqG.Bo(this.rdd[this.jqo]);
-    this.jqo += 1;
-    this.jqo %= ((Object[])this.jqn).length;
-    invalidate();
-    int i;
-    int j;
-    if (this.hJP)
+    AppMethodBeat.i(3121);
+    e.L(this.lAk);
+    this.lAj = 0;
+    this.lAc = 0;
+    bpf();
+    AppMethodBeat.o(3121);
+  }
+  
+  public final com.tencent.mm.media.editor.a.b UH()
+  {
+    AppMethodBeat.i(3127);
+    if (!this.bRg)
     {
-      Object localObject = this.jqF;
-      if (localObject == null) {
-        g.cUk();
-      }
-      localObject = (Object[])localObject;
-      int k = localObject.length;
-      i = 0;
-      if (i >= k) {
-        break label238;
-      }
-      if ((Bitmap)localObject[i] == null) {
-        break label226;
-      }
-      j = 1;
-      label157:
-      if (j != 0) {
-        break label231;
-      }
-      i = 0;
-      label163:
-      if (i != 0) {
-        break label243;
-      }
+      AppMethodBeat.o(3127);
+      return null;
     }
-    label226:
-    label231:
-    label238:
-    label243:
-    for (boolean bool = true;; bool = false)
-    {
-      setDrawingCacheEnabled(bool);
-      if (this.jqF[this.jqE] == null) {
-        post((Runnable)new TextEditorItemView.c(this));
-      }
-      removeCallbacks(this.jqp);
-      postDelayed(this.jqp, 100L);
-      return;
-      j = 0;
-      break label157;
-      i += 1;
-      break;
-      i = 1;
-      break label163;
-    }
+    Object localObject = new Matrix();
+    ((Matrix)localObject).postConcat(this.lwb.asO);
+    ((Matrix)localObject).postTranslate(this.lAs.x, this.lAs.y);
+    localObject = (com.tencent.mm.media.editor.a.b)new com.tencent.mm.media.editor.a.c(this.lAk, (Matrix)localObject);
+    AppMethodBeat.o(3127);
+    return localObject;
+  }
+  
+  public final com.tencent.mm.media.editor.a.a UI()
+  {
+    return null;
   }
   
   public final void a(RectF paramRectF, float paramFloat)
   {
-    g.k(paramRectF, "bounds");
-    this.fLH = paramRectF.width();
+    AppMethodBeat.i(3115);
+    j.q(paramRectF, "bounds");
+    this.lzG.set(paramRectF);
+    this.lwd.addRoundRect(new RectF(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom), paramFloat, paramFloat, Path.Direction.CW);
+    this.lAr.set(paramRectF.left + paramRectF.width() / 2.0F - this.lAh.width() / 2.0F, paramRectF.bottom - this.lAq - this.lAh.height());
+    bpg();
+    AppMethodBeat.o(3115);
   }
   
-  public final void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, boolean paramBoolean)
+  public final void a(CharSequence paramCharSequence, int paramInt, boolean paramBoolean)
   {
-    int i;
+    boolean bool = true;
+    AppMethodBeat.i(3118);
     if (paramBoolean)
     {
+      this.text = paramCharSequence;
+      this.textColor = paramInt;
+      this.strokeColor = com.tencent.mm.plugin.emojicapture.ui.a.uN(this.textColor);
       if ((paramCharSequence != null) && (paramCharSequence.length() != 0)) {
-        break label154;
+        break label72;
       }
-      i = 1;
-      if (i == 0) {
-        break label160;
+      paramInt = 1;
+      if (paramInt != 0) {
+        break label77;
       }
-      this.hJP = false;
-      this.text = ((CharSequence)this.jqm);
-      this.dOi.setColor(2147483647);
-      float f = com.tencent.mm.cb.a.fromDPToPix(getContext(), 1);
-      this.dOi.setShadowLayer(f, 0.0F, f, -16777216);
+    }
+    label72:
+    label77:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      this.bRg = paramBoolean;
+      refresh();
+      AppMethodBeat.o(3118);
+      return;
+      paramInt = 0;
+      break;
+    }
+  }
+  
+  public final boolean bpe()
+  {
+    AppMethodBeat.i(3117);
+    a((CharSequence)"", 0, true);
+    post((Runnable)new TextEditorItemView.b(this));
+    AppMethodBeat.o(3117);
+    return true;
+  }
+  
+  public final void bpf()
+  {
+    AppMethodBeat.i(3122);
+    Object localObject;
+    if (this.bRg)
+    {
+      this.lAj += 1;
+      this.lAj %= this.lAi;
+      localObject = this.lAb[this.lAc];
+      this.lzY.Lq(this.lAa[this.lAc]);
+      this.lAc += 1;
+      this.lAc %= this.lAb.length;
+      if (this.lAk[this.lAj] == null)
+      {
+        localObject = d((Typeface)localObject);
+        this.lAk[this.lAj] = localObject;
+        eg(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      }
+      removeCallbacks(this.lAd);
+      postDelayed(this.lAd, 100L);
     }
     for (;;)
     {
-      this.jqt.setColor(paramInt2);
-      this.jqG.setText(this.text);
-      this.jqB = true;
-      paramCharSequence = this.jqF;
-      if (paramCharSequence != null)
-      {
-        paramCharSequence = (Object[])paramCharSequence;
-        paramInt1 = paramCharSequence.length;
-        g.k(paramCharSequence, "$receiver");
-        Arrays.fill(paramCharSequence, 0, paramInt1, null);
-      }
-      this.jqE = 0;
-      this.jqo = 0;
-      requestLayout();
-      postInvalidate();
+      invalidate();
+      AppMethodBeat.o(3122);
       return;
-      label154:
-      i = 0;
-      break;
-      label160:
-      this.hJP = true;
-      if (paramCharSequence == null) {
-        g.cUk();
+      if (this.lAk[this.lAj] == null)
+      {
+        localObject = this.lAb[0];
+        this.lzY.Lq(this.lAa[this.lAc]);
+        localObject = d((Typeface)localObject);
+        this.lAk[this.lAj] = localObject;
+        eg(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
       }
-      this.text = paramCharSequence;
-      this.dOi.setColor(paramInt1);
-      this.dOi.clearShadowLayer();
-      removeCallbacks(this.jqp);
-      postDelayed(this.jqp, 100L);
     }
   }
   
-  public final com.tencent.mm.plugin.emojicapture.model.a.a aKU()
+  public final EditorItemContainer getItemContainer()
   {
-    if (!this.hJP) {
-      return null;
+    AppMethodBeat.i(3126);
+    Object localObject = getParent();
+    j.p(localObject, "parent");
+    if ((((ViewParent)localObject).getParent() instanceof EditorItemContainer))
+    {
+      localObject = getParent();
+      j.p(localObject, "parent");
+      localObject = ((ViewParent)localObject).getParent();
+      if (localObject == null)
+      {
+        localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer");
+        AppMethodBeat.o(3126);
+        throw ((Throwable)localObject);
+      }
+      localObject = (EditorItemContainer)localObject;
+      AppMethodBeat.o(3126);
+      return localObject;
     }
-    Matrix localMatrix = new Matrix();
-    localMatrix.setTranslate(getLeft() + this.jqu.left, getTop() + this.jqu.top);
-    return (com.tencent.mm.plugin.emojicapture.model.a.a)new d(this.jqF, localMatrix);
+    AppMethodBeat.o(3126);
+    return null;
   }
   
   public final CharSequence getText()
   {
-    if (this.hJP) {
+    if (this.bRg) {
       return this.text;
     }
     return null;
@@ -308,119 +390,112 @@ public final class TextEditorItemView
   
   public final int getTextColor()
   {
-    if (this.hJP) {
-      return this.dOi.getColor();
+    if (this.bRg) {
+      return this.textColor;
     }
     return 0;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    g.k(paramCanvas, "canvas");
-    super.onDraw(paramCanvas);
-    if (this.jqC) {
-      paramCanvas.drawPath(this.jqw, this.jqv);
+    AppMethodBeat.i(3120);
+    j.q(paramCanvas, "canvas");
+    if (this.lwg) {
+      paramCanvas.clipPath(this.lwd);
     }
     paramCanvas.save();
-    paramCanvas.translate(-this.jqy, 0.0F);
-    a(paramCanvas, 0, 0.0F);
-    a(paramCanvas, 1, this.jqA);
+    paramCanvas.concat(this.lwb.asO);
+    if (this.lwf) {
+      paramCanvas.drawPath(this.lAg, this.lAe);
+    }
+    Bitmap localBitmap = this.lAk[this.lAj];
+    if (localBitmap != null) {
+      paramCanvas.drawBitmap(localBitmap, this.lAs.x, this.lAs.y, null);
+    }
     paramCanvas.restore();
+    AppMethodBeat.o(3120);
   }
   
-  protected final void onMeasure(int paramInt1, int paramInt2)
+  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    super.onMeasure(paramInt1, paramInt2);
-    paramInt2 = View.MeasureSpec.getSize(paramInt1);
-    paramInt1 = paramInt2;
-    if (paramInt2 > this.fLH) {
-      paramInt1 = (int)this.fLH;
-    }
-    paramInt1 -= this.contentPadding * 2;
-    StaticLayout localStaticLayout2 = this.layout;
-    StaticLayout localStaticLayout1 = localStaticLayout2;
-    if (this.jqB)
+    AppMethodBeat.i(3119);
+    j.q(paramMotionEvent, "event");
+    boolean bool = this.lwb.u(paramMotionEvent);
+    if (bool)
     {
-      if (paramInt1 < 0) {
-        localStaticLayout1 = localStaticLayout2;
-      }
-    }
-    else
-    {
-      this.layout = localStaticLayout1;
-      paramInt1 = this.layout.getLineBottom(0) - this.layout.getLineTop(0);
-      if (paramInt1 > this.jqz) {
-        this.jqz = paramInt1;
-      }
-      if (this.layout.getLineCount() > 1) {
-        break label539;
-      }
-    }
-    label539:
-    for (paramInt1 = (int)this.jqz;; paramInt1 = (int)(this.jqz * 2.0F + this.jqA))
-    {
-      paramInt1 += getPaddingBottom() + getPaddingTop();
-      float f4 = this.layout.getLineLeft(0);
-      float f5 = this.layout.getLineRight(0);
-      paramInt2 = getPaddingBottom();
-      int i = getPaddingTop();
-      float f2 = f4;
-      float f3 = f5;
-      if (this.layout.getLineCount() > 1)
+      postInvalidate();
+      switch (paramMotionEvent.getActionMasked())
       {
-        f1 = f4;
-        if (f4 > this.layout.getLineLeft(1)) {
-          f1 = this.layout.getLineLeft(1);
+      case 4: 
+      default: 
+        if (!this.bRg) {
+          bpg();
         }
-        f2 = f1;
-        f3 = f5;
-        if (f5 < this.layout.getLineRight(1))
-        {
-          f3 = this.layout.getLineRight(1);
-          f2 = f1;
-        }
-      }
-      this.jqy = (f2 - this.contentPadding);
-      int j = (int)(f3 - f2 + this.contentPadding * 2);
-      float f1 = this.contentPadding;
-      f4 = this.contentPadding;
-      this.jqu.set((int)f4, i, (int)(f3 - f2 + f1), paramInt1 - paramInt2);
-      this.jqu.inset((int)(-this.jqt.getStrokeWidth() / 2.0F), 0);
-      if ((this.jqC) && (this.layout.getLineCount() > 0))
-      {
-        this.jqx.set(this.jqu);
-        this.jqx.inset(-this.jms, -this.jms);
-        this.jqw.reset();
-        this.jqw.addRoundRect(this.jqx, this.jms, this.jms, Path.Direction.CW);
-      }
-      setMeasuredDimension(j, paramInt1);
-      return;
-      this.jqG.refresh();
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        localStaticLayout1 = StaticLayout.Builder.obtain(this.text, 0, this.text.length(), this.dOi, paramInt1).setAlignment(this.dNX).setIncludePad(this.jqs).setMaxLines(2).setLineSpacing(this.jqr, this.jqq).setEllipsize(TextUtils.TruncateAt.END).build();
-        g.j(localStaticLayout1, "StaticLayout.Builder.obt…                 .build()");
-      }
-      for (;;)
-      {
-        this.jqB = false;
         break;
-        localStaticLayout1 = new StaticLayout(this.text, this.dOi, paramInt1, this.dNX, this.jqq, this.jqr, this.jqs);
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(3119);
+      return bool;
+      AppMethodBeat.o(3119);
+      return false;
+      this.lAm = this.lwf;
+      this.lAp = false;
+      this.lAn = paramMotionEvent.getX();
+      this.lAo = paramMotionEvent.getY();
+      this.lwg = true;
+      break;
+      this.lwg = false;
+      if ((Math.abs(paramMotionEvent.getX() - this.lAn) <= this.joa) && (Math.abs(paramMotionEvent.getY() - this.lAo) <= this.joa)) {
+        break;
+      }
+      this.lAp = true;
+      break;
+      this.lwg = true;
+      if (((!this.bRg) || (this.lAm)) && (!this.lAp)) {
+        performClick();
+      }
+      Object localObject = new com.tencent.mm.media.editor.c.a();
+      ((com.tencent.mm.media.editor.c.a)localObject).arK = this.arK;
+      ((com.tencent.mm.media.editor.c.a)localObject).arJ = this.arJ;
+      ((com.tencent.mm.media.editor.c.a)localObject).g(new float[] { this.lAh.width() / 2.0F, this.lAh.height() / 2.0F });
+      ((com.tencent.mm.media.editor.c.a)localObject).b(new RectF(this.lzG.left, this.lzG.top, this.lzG.right, this.lzG.bottom));
+      ((com.tencent.mm.media.editor.c.a)localObject).a(this.lwb.asO, (a.f.a.b)new TextEditorItemView.c(this));
+      break;
+      if (this.bRg) {
+        break;
+      }
+      AppMethodBeat.o(3119);
+      return false;
+      localObject = getItemContainer();
+      if (localObject != null) {
+        ((EditorItemContainer)localObject).a((a)this, paramMotionEvent);
       }
     }
   }
   
   public final void pause()
   {
-    removeCallbacks(this.jqp);
+    AppMethodBeat.i(3114);
+    removeCallbacks(this.lAd);
+    AppMethodBeat.o(3114);
   }
   
   public final void resume()
   {
-    aKV();
+    AppMethodBeat.i(3113);
+    bpf();
+    AppMethodBeat.o(3113);
   }
   
-  public final void setEditing(boolean paramBoolean) {}
+  public final void setEditing(boolean paramBoolean)
+  {
+    AppMethodBeat.i(3116);
+    this.lwf = paramBoolean;
+    postInvalidate();
+    AppMethodBeat.o(3116);
+  }
 }
 
 

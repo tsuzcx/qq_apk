@@ -6,70 +6,46 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.a.g.d;
 import com.tencent.mm.plugin.ipcall.a.g.k;
 import com.tencent.mm.plugin.ipcall.a.g.l;
 import com.tencent.mm.plugin.ipcall.a.i;
 import com.tencent.mm.plugin.ipcall.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.p;
 
 final class IPCallAllRecordUI$a
-  extends r<k>
+  extends p<k>
 {
   public IPCallAllRecordUI$a(IPCallAllRecordUI paramIPCallAllRecordUI, Context paramContext)
   {
     super(paramContext, null);
-    mR(true);
+    AppMethodBeat.i(22065);
+    qp(true);
+    AppMethodBeat.o(22065);
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null)
-    {
-      localView = this.luE.getLayoutInflater().inflate(R.i.ipcall_allrecord_item, paramViewGroup, false);
-      paramView = new IPCallAllRecordUI.a.a(this);
-      paramView.luF = ((TextView)localView.findViewById(R.h.profile_record_calltime_tv));
-      paramView.luG = ((TextView)localView.findViewById(R.h.profile_record_phonenumber_tv));
-      paramView.eXu = ((TextView)localView.findViewById(R.h.profile_record_status_duration_tv));
-      localView.setTag(paramView);
-    }
-    paramView = (k)getItem(paramInt);
-    paramViewGroup = (IPCallAllRecordUI.a.a)localView.getTag();
-    paramViewGroup.luG.setText(a.Ge(paramView.field_phonenumber));
-    if (paramView.field_duration > 0L) {
-      paramViewGroup.eXu.setText(com.tencent.mm.plugin.ipcall.b.c.fa(paramView.field_duration));
-    }
-    for (;;)
-    {
-      paramViewGroup.luF.setText(com.tencent.mm.plugin.ipcall.b.c.eY(paramView.field_calltime));
-      return localView;
-      paramViewGroup.eXu.setText(com.tencent.mm.plugin.ipcall.b.c.sV(paramView.field_status));
-    }
-  }
-  
-  public final void yc()
+  public final void Ku()
   {
     Object localObject2 = null;
+    AppMethodBeat.i(22066);
     Object localObject1;
-    if (!bk.bl(IPCallAllRecordUI.a(this.luE)))
+    if (!bo.isNullOrNil(IPCallAllRecordUI.a(this.nRW)))
     {
-      Object localObject3 = IPCallAllRecordUI.a(this.luE);
+      Object localObject3 = IPCallAllRecordUI.a(this.nRW);
       localObject1 = localObject2;
-      if (!bk.bl((String)localObject3))
+      if (!bo.isNullOrNil((String)localObject3))
       {
-        localObject3 = i.bcm().FA((String)localObject3);
+        localObject3 = i.bJt().Ra((String)localObject3);
         localObject1 = localObject2;
         if (localObject3 != null)
         {
           localObject1 = localObject2;
-          if (((com.tencent.mm.plugin.ipcall.a.g.c)localObject3).ujK != -1L)
+          if (((com.tencent.mm.plugin.ipcall.a.g.c)localObject3).systemRowid != -1L)
           {
-            long l = ((com.tencent.mm.plugin.ipcall.a.g.c)localObject3).ujK;
-            localObject1 = i.bcn().eX(l);
+            long l = ((com.tencent.mm.plugin.ipcall.a.g.c)localObject3).systemRowid;
+            localObject1 = i.bJu().kt(l);
           }
         }
       }
@@ -77,18 +53,49 @@ final class IPCallAllRecordUI$a
     for (;;)
     {
       setCursor((Cursor)localObject1);
+      AppMethodBeat.o(22066);
       return;
       localObject1 = localObject2;
-      if (!bk.bl(IPCallAllRecordUI.b(this.luE))) {
-        localObject1 = i.bcn().FE(IPCallAllRecordUI.b(this.luE));
+      if (!bo.isNullOrNil(IPCallAllRecordUI.b(this.nRW))) {
+        localObject1 = i.bJu().Rf(IPCallAllRecordUI.b(this.nRW));
       }
     }
   }
   
-  protected final void yd()
+  public final void Kv()
   {
-    bcS();
-    yc();
+    AppMethodBeat.i(22067);
+    bKb();
+    Ku();
+    AppMethodBeat.o(22067);
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(22068);
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = this.nRW.getLayoutInflater().inflate(2130969935, paramViewGroup, false);
+      paramView = new IPCallAllRecordUI.a.a(this);
+      paramView.nRX = ((TextView)localView.findViewById(2131825273));
+      paramView.nRY = ((TextView)localView.findViewById(2131825274));
+      paramView.gpr = ((TextView)localView.findViewById(2131825275));
+      localView.setTag(paramView);
+    }
+    paramView = (k)getItem(paramInt);
+    paramViewGroup = (IPCallAllRecordUI.a.a)localView.getTag();
+    paramViewGroup.nRY.setText(a.RG(paramView.field_phonenumber));
+    if (paramView.field_duration > 0L) {
+      paramViewGroup.gpr.setText(com.tencent.mm.plugin.ipcall.b.c.ky(paramView.field_duration));
+    }
+    for (;;)
+    {
+      paramViewGroup.nRX.setText(com.tencent.mm.plugin.ipcall.b.c.ku(paramView.field_calltime));
+      AppMethodBeat.o(22068);
+      return localView;
+      paramViewGroup.gpr.setText(com.tencent.mm.plugin.ipcall.b.c.xX(paramView.field_status));
+    }
   }
 }
 

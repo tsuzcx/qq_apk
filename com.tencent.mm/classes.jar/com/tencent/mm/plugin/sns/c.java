@@ -1,29 +1,35 @@
 package com.tencent.mm.plugin.sns;
 
-import com.tencent.mm.h.a.fm;
-import com.tencent.mm.h.a.fm.a;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fp;
+import com.tencent.mm.g.a.fp.a;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.an.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c
-  extends com.tencent.mm.sdk.b.c<fm>
+  extends com.tencent.mm.sdk.b.c<fp>
 {
   public c()
   {
-    this.udX = fm.class.getName().hashCode();
+    AppMethodBeat.i(35600);
+    this.__eventId = fp.class.getName().hashCode();
+    AppMethodBeat.o(35600);
   }
   
-  private boolean a(fm paramfm)
+  private boolean a(fp paramfp)
   {
-    if (!(paramfm instanceof fm))
+    AppMethodBeat.i(35601);
+    if (!(paramfp instanceof fp))
     {
-      y.f("MicroMsg.ExtStartSnsServerAndCallbackOnFpSetSizeEventListener", "mismatched event");
+      ab.f("MicroMsg.ExtStartSnsServerAndCallbackOnFpSetSizeEventListener", "mismatched event");
+      AppMethodBeat.o(35601);
       return false;
     }
-    am.a locala = af.bDv();
-    locala.a(paramfm.bMm.type, paramfm.bMm.username, new c.1(this, paramfm));
-    locala.a(1, paramfm.bMm.username, paramfm.bMm.bMo, paramfm.bMm.bMp);
+    an.a locala = ag.coV();
+    locala.a(paramfp.ctH.type, paramfp.ctH.username, new c.1(this, paramfp));
+    locala.a(1, paramfp.ctH.username, paramfp.ctH.ctJ, paramfp.ctH.ctK);
+    AppMethodBeat.o(35601);
     return true;
   }
 }

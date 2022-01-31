@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.api.recordView;
 
 public abstract interface g$a
 {
-  public abstract void Zg();
+  public abstract void asP();
   
-  public abstract void Zh();
+  public abstract void asQ();
   
-  public abstract void Zi();
+  public abstract void asR();
 }
 
 

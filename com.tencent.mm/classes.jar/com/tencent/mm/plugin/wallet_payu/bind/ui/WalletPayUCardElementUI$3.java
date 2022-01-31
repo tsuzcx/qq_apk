@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.bind.ui;
 
 import android.text.Editable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletPayUCardElementUI$3
   extends WalletPayUCardElementUI.a
@@ -12,12 +13,14 @@ final class WalletPayUCardElementUI$3
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    WalletPayUCardElementUI.a(this.qMZ, WalletPayUCardElementUI.c(this.qMZ), paramEditable);
+    AppMethodBeat.i(48362);
+    WalletPayUCardElementUI.a(this.uCg, WalletPayUCardElementUI.c(this.uCg), paramEditable);
+    AppMethodBeat.o(48362);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUCardElementUI.3
  * JD-Core Version:    0.7.0.1
  */

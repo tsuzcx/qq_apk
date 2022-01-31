@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.b;
 
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.PluginFTS;
 import com.tencent.mm.plugin.fts.a.j;
@@ -15,37 +16,45 @@ import java.util.Set;
 final class a$u
   extends com.tencent.mm.plugin.fts.a.a.a
 {
-  private int kyO = 0;
-  private int kyP = 0;
-  private int kyQ = 0;
+  private int mUD = 0;
+  private int mUE = 0;
+  private int mUF = 0;
   
   private a$u(a parama) {}
   
-  public final String afJ()
+  public final String aAn()
   {
-    return String.format("{Dirty: %d Timestamp: %d tophitsCount: %d}", new Object[] { Integer.valueOf(this.kyO), Integer.valueOf(this.kyP), Integer.valueOf(this.kyQ) });
+    AppMethodBeat.i(136694);
+    String str = String.format("{Dirty: %d Timestamp: %d tophitsCount: %d}", new Object[] { Integer.valueOf(this.mUD), Integer.valueOf(this.mUE), Integer.valueOf(this.mUF) });
+    AppMethodBeat.o(136694);
+    return str;
   }
   
   public final boolean execute()
   {
-    DW("start");
-    Object localObject1 = a.b(this.kyt).entrySet().iterator();
+    AppMethodBeat.i(136693);
+    Pg("start");
+    Object localObject1 = a.b(this.mUg).entrySet().iterator();
     int i = 50;
     if (((Iterator)localObject1).hasNext())
     {
       if (Thread.interrupted())
       {
-        a.a(this.kyt).commit();
-        throw new InterruptedException();
+        a.a(this.mUg).commit();
+        localObject1 = new InterruptedException();
+        AppMethodBeat.o(136693);
+        throw ((Throwable)localObject1);
       }
       if (i < 50) {
-        break label517;
+        break label545;
       }
-      a.a(this.kyt).commit();
-      a.a(this.kyt).beginTransaction();
+      a.a(this.mUg).commit();
+      a.a(this.mUg).beginTransaction();
       i = 0;
     }
-    label517:
+    label536:
+    label539:
+    label545:
     for (;;)
     {
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
@@ -54,60 +63,61 @@ final class a$u
       while (((Iterator)localObject3).hasNext())
       {
         l = ((Long)((Iterator)localObject3).next()).longValue();
-        a.a(this.kyt).h(Long.valueOf(l));
+        a.a(this.mUg).g(Long.valueOf(l));
         i += 1;
       }
       localObject2 = (String)((Map.Entry)localObject2).getKey();
-      localObject3 = a.d(this.kyt).DK((String)localObject2);
-      if ((localObject3 != null) && (((ao)localObject3).field_username.length() > 0) && (this.kyt.G((ad)localObject3))) {
-        i += this.kyt.H((ad)localObject3);
+      localObject3 = a.d(this.mUg).OT((String)localObject2);
+      if ((localObject3 != null) && (((aq)localObject3).field_username.length() > 0) && (this.mUg.H((ad)localObject3))) {
+        i += this.mUg.I((ad)localObject3);
       }
       for (;;)
       {
         ((Iterator)localObject1).remove();
-        a.c(this.kyt).remove(localObject2);
-        this.kyO += 1;
+        a.c(this.mUg).remove(localObject2);
+        this.mUD += 1;
         break;
-        DW("dirtyContact");
-        localObject1 = a.c(this.kyt).iterator();
+        Pg("dirtyContact");
+        localObject1 = a.c(this.mUg).iterator();
         if (((Iterator)localObject1).hasNext())
         {
           if (Thread.interrupted())
           {
-            a.a(this.kyt).commit();
-            throw new InterruptedException();
+            a.a(this.mUg).commit();
+            localObject1 = new InterruptedException();
+            AppMethodBeat.o(136693);
+            throw ((Throwable)localObject1);
           }
           if (i < 50) {
-            break label508;
+            break label536;
           }
-          a.a(this.kyt).commit();
-          a.a(this.kyt).beginTransaction();
+          a.a(this.mUg).commit();
+          a.a(this.mUg).beginTransaction();
           i = 0;
-          label343:
+          label366:
           localObject2 = (String)((Iterator)localObject1).next();
-          l = a.d(this.kyt).DM((String)localObject2);
-          localObject3 = a.d(this.kyt).DK((String)localObject2);
-          if ((localObject3 == null) || (((ao)localObject3).field_username.length() <= 0) || (!this.kyt.G((ad)localObject3))) {
-            break label511;
+          l = a.d(this.mUg).OV((String)localObject2);
+          localObject3 = a.d(this.mUg).OT((String)localObject2);
+          if ((localObject3 == null) || (((aq)localObject3).field_username.length() <= 0) || (!this.mUg.H((ad)localObject3))) {
+            break label539;
           }
-          a.a(this.kyt).E((String)localObject2, l);
+          a.a(this.mUg).W((String)localObject2, l);
           i += 1;
         }
-        label508:
-        label511:
         for (;;)
         {
           ((Iterator)localObject1).remove();
-          this.kyP += 1;
+          this.mUE += 1;
           break;
-          a.a(this.kyt).commit();
-          DW("timestampContact");
-          localObject1 = ((PluginFTS)g.t(PluginFTS.class)).getTopHitsLogic();
-          ((e)localObject1).kzw.clear();
-          this.kyQ = ((e)localObject1).kzv.aVT();
-          DW("topHits");
+          a.a(this.mUg).commit();
+          Pg("timestampContact");
+          localObject1 = ((PluginFTS)g.G(PluginFTS.class)).getTopHitsLogic();
+          ((e)localObject1).mVm.clear();
+          this.mUF = ((e)localObject1).mVl.bCw();
+          Pg("topHits");
+          AppMethodBeat.o(136693);
           return true;
-          break label343;
+          break label366;
         }
       }
     }
@@ -125,7 +135,7 @@ final class a$u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.a.u
  * JD-Core Version:    0.7.0.1
  */

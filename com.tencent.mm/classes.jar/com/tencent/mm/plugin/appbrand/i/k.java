@@ -1,9 +1,15 @@
 package com.tencent.mm.plugin.appbrand.i;
 
+import java.nio.ByteBuffer;
+
 public abstract interface k
-  extends g
+  extends j
 {
-  public abstract void setJsRuntimeTitle(String paramString);
+  public abstract ByteBuffer getNativeBuffer(int paramInt);
+  
+  public abstract int getNativeBufferId();
+  
+  public abstract void setNativeBuffer(int paramInt, ByteBuffer paramByteBuffer);
 }
 
 

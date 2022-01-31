@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.plugin.qqmail.b.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.v;
 import com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI;
 
@@ -15,40 +15,38 @@ final class CompressPreviewUI$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = CompressPreviewUI.a(this.nhe).wn(paramInt);
+    AppMethodBeat.i(68238);
+    paramView = CompressPreviewUI.a(this.pMs).BY(paramInt);
     String str1 = paramView.id;
-    paramAdapterView = CompressPreviewUI.a(this.nhe);
-    if (paramAdapterView.nhh == null)
+    paramAdapterView = CompressPreviewUI.a(this.pMs);
+    if (paramAdapterView.pMv == null) {}
+    for (paramAdapterView = null; str1.equals(paramAdapterView); paramAdapterView = paramAdapterView.pMv.id)
     {
-      paramAdapterView = null;
-      if (!str1.equals(paramAdapterView)) {
-        break label73;
-      }
-      CompressPreviewUI.a(this.nhe, CompressPreviewUI.a(this.nhe).btZ());
-    }
-    label73:
-    do
-    {
+      CompressPreviewUI.a(this.pMs, CompressPreviewUI.a(this.pMs).cel());
+      AppMethodBeat.o(68238);
       return;
-      paramAdapterView = paramAdapterView.nhh.id;
-      break;
-      if (paramView.btY())
-      {
-        CompressPreviewUI.a(this.nhe, paramView.id);
-        return;
-      }
-    } while (!paramView.aoD);
-    paramAdapterView = "mailid=" + CompressPreviewUI.b(this.nhe);
-    str1 = "attachid=" + paramView.id;
-    String str2 = "compressfilepath=" + CompressPreviewUI.c(this.nhe);
-    Intent localIntent = new Intent(this.nhe, MailWebViewUI.class);
-    localIntent.putExtra("uri", "/cgi-bin/viewdocument");
-    localIntent.putExtra("params", new String[] { paramAdapterView, str1, str2, "texttype=html" });
-    localIntent.putExtra("baseurl", v.btz());
-    localIntent.putExtra("method", "get");
-    localIntent.putExtra("singleColumn", FileExplorerUI.WW(paramView.name));
-    localIntent.putExtra("title", this.nhe.getString(b.j.readmail_attachment_preview));
-    this.nhe.startActivity(localIntent);
+    }
+    if (paramView.cek())
+    {
+      CompressPreviewUI.a(this.pMs, paramView.id);
+      AppMethodBeat.o(68238);
+      return;
+    }
+    if (paramView.aqX)
+    {
+      paramAdapterView = "mailid=" + CompressPreviewUI.b(this.pMs);
+      str1 = "attachid=" + paramView.id;
+      String str2 = "compressfilepath=" + CompressPreviewUI.c(this.pMs);
+      Intent localIntent = new Intent(this.pMs, MailWebViewUI.class);
+      localIntent.putExtra("uri", "/cgi-bin/viewdocument");
+      localIntent.putExtra("params", new String[] { paramAdapterView, str1, str2, "texttype=html" });
+      localIntent.putExtra("baseurl", v.cdK());
+      localIntent.putExtra("method", "get");
+      localIntent.putExtra("singleColumn", FileExplorerUI.amG(paramView.name));
+      localIntent.putExtra("title", this.pMs.getString(2131302308));
+      this.pMs.startActivity(localIntent);
+    }
+    AppMethodBeat.o(68238);
   }
 }
 

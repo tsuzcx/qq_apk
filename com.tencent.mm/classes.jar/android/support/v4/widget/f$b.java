@@ -9,14 +9,14 @@ final class f$b
   
   public final void onChanged()
   {
-    this.JS.JK = true;
-    this.JS.notifyDataSetChanged();
+    this.Jy.Jq = true;
+    this.Jy.notifyDataSetChanged();
   }
   
   public final void onInvalidated()
   {
-    this.JS.JK = false;
-    this.JS.notifyDataSetInvalidated();
+    this.Jy.Jq = false;
+    this.Jy.notifyDataSetInvalidated();
   }
 }
 

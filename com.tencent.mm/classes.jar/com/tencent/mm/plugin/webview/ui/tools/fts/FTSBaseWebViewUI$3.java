@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 
 final class FTSBaseWebViewUI$3
@@ -9,14 +10,16 @@ final class FTSBaseWebViewUI$3
   
   public final void run()
   {
-    if (FTSBaseWebViewUI.v(this.rtV) != null) {
-      FTSBaseWebViewUI.w(this.rtV).TP(this.hdV);
+    AppMethodBeat.i(8386);
+    if (this.vkg.uQS != null) {
+      this.vkg.uQS.aiZ(this.iOH);
     }
+    AppMethodBeat.o(8386);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSBaseWebViewUI.3
  * JD-Core Version:    0.7.0.1
  */

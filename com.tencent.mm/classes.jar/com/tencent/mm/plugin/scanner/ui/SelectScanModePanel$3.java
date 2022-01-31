@@ -4,7 +4,8 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SelectScanModePanel$3
   implements AdapterView.OnItemClickListener
@@ -14,21 +15,23 @@ final class SelectScanModePanel$3
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     boolean bool2 = true;
-    if ((paramAdapterView == null) || (SelectScanModePanel.e(this.nNV) == null))
+    AppMethodBeat.i(81333);
+    if ((paramAdapterView == null) || (SelectScanModePanel.e(this.qBF) == null))
     {
       paramView = new StringBuilder("parent == null ? ");
       if (paramAdapterView == null)
       {
         bool1 = true;
         paramAdapterView = paramView.append(bool1).append(", context == null ? ");
-        if (SelectScanModePanel.e(this.nNV) != null) {
-          break label81;
+        if (SelectScanModePanel.e(this.qBF) != null) {
+          break label91;
         }
       }
-      label81:
+      label91:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        y.e("MicroMsg.scanner.SelectScanModePanel", bool1);
+        ab.e("MicroMsg.scanner.SelectScanModePanel", bool1);
+        AppMethodBeat.o(81333);
         return;
         bool1 = false;
         break;
@@ -37,20 +40,22 @@ final class SelectScanModePanel$3
     paramView = (SelectScanModeGrid.b)paramAdapterView.getAdapter().getItem(paramInt);
     if (paramView == null)
     {
-      y.e("MicroMsg.scanner.SelectScanModePanel", "clickItem == null");
+      ab.e("MicroMsg.scanner.SelectScanModePanel", "clickItem == null");
+      AppMethodBeat.o(81333);
       return;
     }
-    ((SelectScanModeGrid.a)paramAdapterView.getAdapter()).nNu = paramInt;
-    y.d("MicroMsg.scanner.SelectScanModePanel", "position=[%s], clickItem=[%s]", new Object[] { Integer.valueOf(paramInt), paramView.title });
-    if ((SelectScanModePanel.f(this.nNV) != null) && (paramView != null)) {
-      SelectScanModePanel.f(this.nNV).wQ(paramView.nNz);
+    ((SelectScanModeGrid.a)paramAdapterView.getAdapter()).qBf = paramInt;
+    ab.d("MicroMsg.scanner.SelectScanModePanel", "position=[%s], clickItem=[%s]", new Object[] { Integer.valueOf(paramInt), paramView.title });
+    if ((SelectScanModePanel.f(this.qBF) != null) && (paramView != null)) {
+      SelectScanModePanel.f(this.qBF).CH(paramView.qBk);
     }
-    this.nNV.setSelectedMode(paramView.nNz);
+    this.qBF.setSelectedMode(paramView.qBk);
+    AppMethodBeat.o(81333);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.SelectScanModePanel.3
  * JD-Core Version:    0.7.0.1
  */

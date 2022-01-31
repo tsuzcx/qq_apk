@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView android:id="@id/bve" android:background="@color/os" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameBestSellingTitle android:orientation="vertical" android:padding="@dimen/jd" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/jj" android:textColor="@color/nx" android:id="@id/bru" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </com.tencent.mm.plugin.game.ui.GameBestSellingTitle>
-</FrameLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ij">
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/dw" android:textColor="#ff000000" android:id="@id/bvj" android:background="@drawable/l_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{detail detail detail detail detail detail detail detail }" android:maxLength="10000" android:lineSpacingMultiplier="1.2" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/yz" />
+    </LinearLayout>
+</com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView>

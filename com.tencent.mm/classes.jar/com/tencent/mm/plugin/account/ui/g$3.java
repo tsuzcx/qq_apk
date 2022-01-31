@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.a.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.ui.MMActivity;
 
 final class g$3
@@ -12,10 +13,12 @@ final class g$3
   
   public final void run()
   {
-    Intent localIntent = a.eUR.aN(this.byc);
+    AppMethodBeat.i(125083);
+    Intent localIntent = a.gmO.bm(this.cae);
     localIntent.addFlags(67108864);
-    this.byc.startActivity(localIntent);
-    this.byc.finish();
+    this.cae.startActivity(localIntent);
+    this.cae.finish();
+    AppMethodBeat.o(125083);
   }
 }
 

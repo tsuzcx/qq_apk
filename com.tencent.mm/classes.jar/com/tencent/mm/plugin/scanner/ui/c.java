@@ -14,41 +14,36 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w;
-import com.tencent.mm.h.a.ov;
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.scanner.util.k;
-import com.tencent.mm.protocal.c.jj;
-import com.tencent.mm.protocal.c.jk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.w;
+import com.tencent.mm.g.a.px;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.protocal.protobuf.lo;
+import com.tencent.mm.protocal.protobuf.lp;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 
 public abstract class c
   extends i
   implements com.tencent.mm.plugin.scanner.util.b.a
 {
-  private long nHZ;
-  int nIa = 0;
-  private HighlightRectSideView nIb;
-  m nIc = null;
-  private com.tencent.mm.ui.base.p nId = null;
-  private com.tencent.mm.ui.widget.a.c nIe = null;
+  int qvA = 0;
+  private HighlightRectSideView qvB;
+  com.tencent.mm.ai.m qvC = null;
+  private com.tencent.mm.ui.base.p qvD = null;
+  private com.tencent.mm.ui.widget.b.c qvE = null;
+  private long qvz;
   
   public c(i.b paramb, Point paramPoint, DisplayMetrics paramDisplayMetrics, int paramInt)
   {
     super(paramb, paramPoint);
-    this.nLz = 0;
-    this.nLA = 0;
-    float f = bxl();
+    this.qze = 0;
+    this.qzf = 0;
+    float f = getAspectRatio();
     int i;
     if (paramInt == 1)
     {
@@ -63,13 +58,13 @@ public abstract class c
     for (;;)
     {
       Point localPoint = new Point((int)(paramInt / paramDisplayMetrics.density), (int)(i / paramDisplayMetrics.density));
-      this.nLA = ((int)((paramPoint.y / paramDisplayMetrics.density - localPoint.y) / 2.0F));
-      dG(localPoint.x, localPoint.y);
-      if (bk.fQ(paramb.getContext()) >= 100L) {
+      this.qzf = ((int)((paramPoint.y / paramDisplayMetrics.density - localPoint.y) / 2.0F));
+      fo(localPoint.x, localPoint.y);
+      if (bo.hg(paramb.getContext()) >= 100L) {
         break label238;
       }
-      y.w("MicroMsg.BaseScanModeLicence", "memory is not much");
-      this.nHZ = 280L;
+      ab.w("MicroMsg.BaseScanModeLicence", "memory is not much");
+      this.qvz = 280L;
       return;
       paramPoint = new Point(paramDisplayMetrics.heightPixels, paramDisplayMetrics.widthPixels);
       break;
@@ -77,212 +72,218 @@ public abstract class c
       paramInt = (int)(i * f);
     }
     label238:
-    this.nHZ = 80L;
+    this.qvz = 80L;
   }
   
-  private void bxv()
-  {
-    boolean[] arrayOfBoolean = ((k)this.nLv).byx();
-    this.nIb.setShowRectEdges(arrayOfBoolean);
-    this.nLB.fC(this.nHZ);
-  }
-  
-  private void s(int paramInt, String paramString1, String paramString2)
+  private void C(int paramInt, String paramString1, String paramString2)
   {
     if (paramInt == 0)
     {
-      localov = new ov();
-      localov.bYr.cardType = paramString1;
-      localov.bYr.bYs = 1;
-      localov.bYr.bYt = paramString2;
-      if ((this.nLv instanceof k)) {
-        localov.bYr.bYu = ((k)this.nLv).nPx;
+      localpx = new px();
+      localpx.cGs.cardType = paramString1;
+      localpx.cGs.cGt = 1;
+      localpx.cGs.cGu = paramString2;
+      if ((this.qza instanceof com.tencent.mm.plugin.scanner.util.m)) {
+        localpx.cGs.cGv = ((com.tencent.mm.plugin.scanner.util.m)this.qza).qDq;
       }
-      a.udP.a(localov, Looper.getMainLooper());
-      if (this.nId != null) {
-        this.nId.dismiss();
+      a.ymk.a(localpx, Looper.getMainLooper());
+      if (this.qvD != null) {
+        this.qvD.dismiss();
       }
-      this.nLB.getContext().finish();
+      this.qzg.getContext().finish();
       return;
     }
     if (((paramInt & 0x2) > 0) && ((paramInt & 0x1) > 0))
     {
-      localov = new ov();
-      localov.bYr.cardType = paramString1;
-      localov.bYr.bYs = 0;
-      localov.bYr.bYt = paramString2;
-      a.udP.a(localov, Looper.getMainLooper());
-      if (this.nId != null) {
-        this.nId.dismiss();
+      localpx = new px();
+      localpx.cGs.cardType = paramString1;
+      localpx.cGs.cGt = 0;
+      localpx.cGs.cGu = paramString2;
+      a.ymk.a(localpx, Looper.getMainLooper());
+      if (this.qvD != null) {
+        this.qvD.dismiss();
       }
-      this.nLB.getContext().finish();
+      this.qzg.getContext().finish();
       return;
     }
-    if (this.nIa >= 3)
+    if (this.qvA >= 3)
     {
-      localov = new ov();
-      localov.bYr.cardType = paramString1;
-      localov.bYr.bYs = 1;
-      localov.bYr.bYt = paramString2;
-      if ((this.nLv instanceof k)) {
-        localov.bYr.bYu = ((k)this.nLv).nPx;
+      localpx = new px();
+      localpx.cGs.cardType = paramString1;
+      localpx.cGs.cGt = 1;
+      localpx.cGs.cGu = paramString2;
+      if ((this.qza instanceof com.tencent.mm.plugin.scanner.util.m)) {
+        localpx.cGs.cGv = ((com.tencent.mm.plugin.scanner.util.m)this.qza).qDq;
       }
-      a.udP.a(localov, Looper.getMainLooper());
-      if (this.nId != null) {
-        this.nId.dismiss();
+      a.ymk.a(localpx, Looper.getMainLooper());
+      if (this.qvD != null) {
+        this.qvD.dismiss();
       }
-      this.nLB.getContext().finish();
+      this.qzg.getContext().finish();
       return;
     }
-    if (((paramInt & 0x1) > 0) && (this.nIa < 3))
+    if (((paramInt & 0x1) > 0) && (this.qvA < 3))
     {
-      if (this.nId != null) {
-        this.nId.dismiss();
+      if (this.qvD != null) {
+        this.qvD.dismiss();
       }
-      bxp().byg();
-      if ((paramInt & 0x20) > 0) {
-        paramInt = R.l.scan_license_image_incomplete;
-      }
-      for (;;)
-      {
-        Toast.makeText(this.nLB.getContext(), paramInt, 0).show();
-        bxv();
-        return;
-        if ((paramInt & 0x40) > 0) {
-          paramInt = R.l.scan_license_image_too_dark;
-        } else {
-          paramInt = R.l.scan_license_continue;
-        }
-      }
+      cim().restartDecoder();
+      CG(paramInt);
+      cis();
+      return;
     }
-    ov localov = new ov();
-    localov.bYr.cardType = paramString1;
-    localov.bYr.bYs = 0;
-    localov.bYr.bYt = paramString2;
-    a.udP.a(localov, Looper.getMainLooper());
-    if (this.nId != null) {
-      this.nId.dismiss();
+    px localpx = new px();
+    localpx.cGs.cardType = paramString1;
+    localpx.cGs.cGt = 0;
+    localpx.cGs.cGu = paramString2;
+    a.ymk.a(localpx, Looper.getMainLooper());
+    if (this.qvD != null) {
+      this.qvD.dismiss();
     }
-    this.nLB.getContext().finish();
+    this.qzg.getContext().finish();
   }
   
-  public final void C(Bundle paramBundle) {}
-  
-  protected abstract com.tencent.mm.plugin.scanner.util.b a(com.tencent.mm.plugin.scanner.util.b.a parama);
-  
-  public void b(int paramInt1, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
+  private void CG(int paramInt)
   {
-    y.d("MicroMsg.BaseScanModeLicence", "onDecodeSuccess");
-    paramArrayOfByte1 = ((k)this.nLv).nPx;
-    paramString = bxm();
-    if (this.nId != null) {
-      this.nId.dismiss();
-    }
-    paramArrayOfByte2 = this.nLB.getContext();
-    paramArrayOfByte2.getString(R.l.app_tip);
-    this.nId = h.b(paramArrayOfByte2, paramArrayOfByte2.getString(R.l.scan_license_server_recognising), false, null);
-    this.nId.setOnKeyListener(new c.2(this, paramString));
-    paramArrayOfByte2 = new com.tencent.mm.ah.b.a();
-    paramArrayOfByte2.ecH = new jj();
-    paramArrayOfByte2.ecI = new jk();
-    paramArrayOfByte2.uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscanlicense";
-    paramArrayOfByte2.ecG = 1803;
-    paramArrayOfByte2 = paramArrayOfByte2.Kt();
-    Object localObject = new ByteArrayOutputStream();
-    if (!paramArrayOfByte1.compress(Bitmap.CompressFormat.JPEG, 80, (OutputStream)localObject))
-    {
-      s(2, paramString, "");
-      return;
-    }
-    paramArrayOfByte1 = ((ByteArrayOutputStream)localObject).toByteArray();
-    if (bk.bE(paramArrayOfByte1))
-    {
-      s(2, paramString, "");
-      return;
-    }
-    localObject = (jj)paramArrayOfByte2.ecE.ecN;
-    ((jj)localObject).sEa = new com.tencent.mm.bv.b(paramArrayOfByte1);
-    if (paramString.equals("driving")) {
-      ((jj)localObject).sDZ = 0;
+    if ((paramInt & 0x20) > 0) {
+      paramInt = 2131302910;
     }
     for (;;)
     {
-      this.nIc = w.a(paramArrayOfByte2, new c.1(this, paramString), false);
+      Toast.makeText(this.qzg.getContext(), paramInt, 0).show();
       return;
-      if (paramString.equals("identity")) {
-        ((jj)localObject).sDZ = 1;
+      if ((paramInt & 0x40) > 0) {
+        paramInt = 2131302911;
+      } else {
+        paramInt = 2131302909;
       }
     }
   }
   
-  protected abstract float bxl();
-  
-  protected abstract String bxm();
-  
-  protected abstract int bxn();
-  
-  protected final void bxo() {}
-  
-  protected final com.tencent.mm.plugin.scanner.util.b bxp()
+  private void cis()
   {
-    if (this.nLv == null) {
-      this.nLv = a(this);
+    boolean[] arrayOfBoolean = ((com.tencent.mm.plugin.scanner.util.m)this.qza).cjH();
+    this.qvB.setShowRectEdges(arrayOfBoolean);
+    this.qzg.lf(this.qvz);
+  }
+  
+  public final void T(Bundle paramBundle) {}
+  
+  protected abstract com.tencent.mm.plugin.scanner.util.b a(com.tencent.mm.plugin.scanner.util.b.a parama);
+  
+  public void a(int paramInt1, String paramString1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3, String paramString2)
+  {
+    ab.d("MicroMsg.BaseScanModeLicence", "onDecodeSuccess");
+    paramArrayOfByte1 = ((com.tencent.mm.plugin.scanner.util.m)this.qza).qDq;
+    paramString1 = cij();
+    if (this.qvD != null) {
+      this.qvD.dismiss();
     }
-    return this.nLv;
+    paramArrayOfByte2 = this.qzg.getContext();
+    paramArrayOfByte2.getString(2131297087);
+    this.qvD = h.b(paramArrayOfByte2, paramArrayOfByte2.getString(2131302912), false, null);
+    this.qvD.setOnKeyListener(new c.2(this, paramString1));
+    paramArrayOfByte2 = new com.tencent.mm.ai.b.a();
+    paramArrayOfByte2.fsX = new lo();
+    paramArrayOfByte2.fsY = new lp();
+    paramArrayOfByte2.uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscanlicense";
+    paramArrayOfByte2.funcId = 1803;
+    paramArrayOfByte2 = paramArrayOfByte2.ado();
+    paramString2 = new ByteArrayOutputStream();
+    if (!paramArrayOfByte1.compress(Bitmap.CompressFormat.JPEG, 80, paramString2))
+    {
+      C(2, paramString1, "");
+      return;
+    }
+    paramArrayOfByte1 = paramString2.toByteArray();
+    if (bo.ce(paramArrayOfByte1))
+    {
+      C(2, paramString1, "");
+      return;
+    }
+    paramString2 = (lo)paramArrayOfByte2.fsV.fta;
+    paramString2.wzZ = new com.tencent.mm.bv.b(paramArrayOfByte1);
+    if (paramString1.equals("driving")) {
+      paramString2.wzY = 0;
+    }
+    for (;;)
+    {
+      this.qvC = w.a(paramArrayOfByte2, new c.1(this, paramString1), false);
+      return;
+      if (paramString1.equals("identity")) {
+        paramString2.wzY = 1;
+      }
+    }
   }
   
-  protected final int bxq()
+  protected abstract String cij();
+  
+  protected abstract int cik();
+  
+  protected final void cil() {}
+  
+  protected final com.tencent.mm.plugin.scanner.util.b cim()
   {
-    return R.i.scan_licence;
+    if (this.qza == null) {
+      this.qza = a(this);
+    }
+    return this.qza;
   }
   
-  protected final int bxr()
+  protected final int cin()
+  {
+    return 2130970607;
+  }
+  
+  protected final int cio()
   {
     return 0;
   }
   
-  protected final void bxs() {}
+  protected final void cip() {}
   
-  protected final boolean bxt()
+  protected final boolean ciq()
   {
     return false;
   }
   
-  protected final boolean bxu()
+  protected final boolean cir()
   {
     return false;
   }
   
-  protected final void cK(View paramView)
+  protected final void dz(View paramView)
   {
     if (paramView != null)
     {
-      TextView localTextView = (TextView)paramView.findViewById(R.h.card_tips);
+      TextView localTextView = (TextView)paramView.findViewById(2131827433);
       if (localTextView != null) {
-        localTextView.setText(paramView.getContext().getString(R.l.scan_licence_tips, new Object[] { paramView.getContext().getString(bxn()) }));
+        localTextView.setText(paramView.getContext().getString(2131302907, new Object[] { paramView.getContext().getString(cik()) }));
       }
     }
   }
   
-  public final void fB(long paramLong)
-  {
-    y.d("MicroMsg.BaseScanModeLicence", "onDecodeFail");
-    if (this.nLB == null)
-    {
-      y.e("MicroMsg.BaseScanModeLicence", "ui callback is null");
-      return;
-    }
-    bxv();
-  }
+  protected abstract float getAspectRatio();
   
-  protected final void j(Rect paramRect)
+  protected final void k(Rect paramRect)
   {
-    y.d("MicroMsg.BaseScanModeLicence", "smoothie, maskRect = %s", new Object[] { paramRect });
-    HighlightRectSideView localHighlightRectSideView = (HighlightRectSideView)this.nLB.findViewById(R.h.card_highlight);
+    ab.d("MicroMsg.BaseScanModeLicence", "smoothie, maskRect = %s", new Object[] { paramRect });
+    HighlightRectSideView localHighlightRectSideView = (HighlightRectSideView)this.qzg.findViewById(2131827432);
     if (localHighlightRectSideView != null) {
       localHighlightRectSideView.setMaskRect(paramRect);
     }
-    this.nIb = localHighlightRectSideView;
+    this.qvB = localHighlightRectSideView;
+  }
+  
+  public final void le(long paramLong)
+  {
+    ab.d("MicroMsg.BaseScanModeLicence", "onDecodeFail");
+    if (this.qzg == null)
+    {
+      ab.e("MicroMsg.BaseScanModeLicence", "ui callback is null");
+      return;
+    }
+    cis();
   }
   
   protected final void onDestroy() {}
@@ -291,7 +292,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.c
  * JD-Core Version:    0.7.0.1
  */

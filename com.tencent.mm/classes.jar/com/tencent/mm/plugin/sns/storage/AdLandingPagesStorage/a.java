@@ -1,37 +1,72 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
+import android.content.Context;
+import android.content.IntentFilter;
+import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.downloader.a.c;
+import com.tencent.mm.plugin.downloader.a.d;
+import com.tencent.mm.plugin.downloader.g.b;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.plugin.downloader.model.d;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.plugin.downloader.model.m;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  public ConcurrentHashMap<Long, WeakReference<a.a>> oBW = new ConcurrentHashMap();
-  public ConcurrentHashMap<String, a.b> oBX = new ConcurrentHashMap();
+  public volatile a.b rcJ;
+  public a.a rrp;
+  public volatile boolean rrq;
+  private IntentFilter rrr;
+  ConcurrentHashMap<String, a.c> rrs;
+  public ConcurrentHashMap<String, a.d> rrt;
+  public m rru;
+  private ak rrv;
   
   private a()
   {
-    d.aFP();
-    com.tencent.mm.plugin.downloader.model.b.a(new a.1(this));
+    AppMethodBeat.i(36930);
+    this.rrs = new ConcurrentHashMap();
+    this.rrt = new ConcurrentHashMap();
+    this.rru = new a.1(this);
+    this.rrp = new a.a(this, (byte)0);
+    this.rrr = new IntentFilter();
+    this.rrr.addAction("android.intent.action.PACKAGE_ADDED");
+    this.rrr.addAction("android.intent.action.PACKAGE_REMOVED");
+    this.rrr.addDataScheme("package");
+    this.rrv = new a.2(this, Looper.getMainLooper());
+    AppMethodBeat.o(36930);
   }
   
-  public static long queryIdByAppid(String paramString)
+  private void f(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    paramString = d.aFP().zL(paramString);
-    if (paramString != null) {
-      return paramString.id;
+    AppMethodBeat.i(36935);
+    System.currentTimeMillis();
+    a.d locald = (a.d)this.rrt.get(paramString1);
+    String str = paramString2;
+    if (!TextUtils.isEmpty(paramString2)) {
+      str = paramString2.replaceAll("\\.", "_");
     }
-    return 9223372036854775807L;
+    if (locald == null) {}
+    for (paramString2 = "";; paramString2 = locald.rpv + "." + locald.heu + "." + str + ".0.20.0")
+    {
+      paramString1 = q(new Object[] { paramString1, Integer.valueOf(paramInt), paramString3, paramString2 });
+      ab.i("MicroMsg.AdDownloadApkMgr", "reporting %d  %s", new Object[] { Integer.valueOf(14542), paramString1 });
+      ab.d("MicroMsg.AdDownloadApkMgr", "14542  extinfo : ".concat(String.valueOf(paramString2)));
+      h.qsU.a(14542, paramString1, true, false);
+      AppMethodBeat.o(36935);
+      return;
+    }
   }
   
-  private static String r(Object... paramVarArgs)
+  private static String q(Object... paramVarArgs)
   {
+    AppMethodBeat.i(36934);
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
     while (i < 4)
@@ -40,49 +75,62 @@ public final class a
       i += 1;
     }
     localStringBuilder.append(System.currentTimeMillis() / 1000L);
-    return localStringBuilder.toString();
+    paramVarArgs = localStringBuilder.toString();
+    AppMethodBeat.o(36934);
+    return paramVarArgs;
   }
   
-  public static void stopTask(long paramLong)
+  public static long queryIdByAppid(String paramString)
   {
-    d.aFP().dc(paramLong);
-  }
-  
-  public final void N(int paramInt, long paramLong)
-  {
-    Object localObject = ((c)g.r(c.class)).FC().dr(paramLong);
-    if (localObject == null) {
-      return;
+    AppMethodBeat.i(36931);
+    paramString = f.bjl().JH(paramString);
+    if (paramString != null)
+    {
+      long l = paramString.id;
+      AppMethodBeat.o(36931);
+      return l;
     }
-    localObject = ((com.tencent.mm.plugin.downloader.f.a)localObject).field_appId;
-    com.tencent.mm.plugin.downloader.f.a locala = ((c)g.r(c.class)).FC().zH((String)localObject);
+    AppMethodBeat.o(36931);
+    return 9223372036854775807L;
+  }
+  
+  public final void a(String paramString, a.c paramc)
+  {
+    AppMethodBeat.i(36932);
+    this.rrs.put(paramString, paramc);
+    ab.i("MicroMsg.AdDownloadApkMgr", "register package receiver");
+    ah.getContext().registerReceiver(this.rrp, this.rrr);
+    this.rrq = true;
+    this.rrv.removeMessages(10008);
+    this.rrv.sendEmptyMessageDelayed(10008, 300000L);
+    AppMethodBeat.o(36932);
+  }
+  
+  public final void ad(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(36933);
+    com.tencent.mm.plugin.downloader.g.a locala = ((d)g.E(d.class)).YG().iU(paramLong);
     if (locala == null)
     {
-      y.i("MicroMsg.AdDownloadApkMgr", "downloadinfo not found");
+      AppMethodBeat.o(36933);
       return;
     }
-    String str1 = locala.field_packageName;
-    String str2 = locala.field_md5;
-    e(paramInt, (String)localObject, str1, locala.field_downloadUrl);
+    reportDownloadInfo(paramInt, locala.field_appId);
+    AppMethodBeat.o(36933);
   }
   
-  public final void e(int paramInt, String paramString1, String paramString2, String paramString3)
+  public final void reportDownloadInfo(int paramInt, String paramString)
   {
-    System.currentTimeMillis();
-    a.b localb = (a.b)this.oBX.get(paramString1);
-    String str = paramString2;
-    if (!TextUtils.isEmpty(paramString2)) {
-      str = paramString2.replaceAll("\\.", "_");
-    }
-    if (localb == null) {}
-    for (paramString2 = "";; paramString2 = localb.oAl + "." + localb.fLi + "." + str + ".0.20.0")
+    AppMethodBeat.i(36936);
+    com.tencent.mm.plugin.downloader.g.a locala = ((d)g.E(d.class)).YG().JD(paramString);
+    if (locala == null)
     {
-      paramString1 = r(new Object[] { paramString1, Integer.valueOf(paramInt), paramString3, paramString2 });
-      y.i("MicroMsg.AdDownloadApkMgr", "reporting %d  %s", new Object[] { Integer.valueOf(14542), paramString1 });
-      y.d("MicroMsg.AdDownloadApkMgr", "14542  extinfo : " + paramString2);
-      h.nFQ.a(14542, paramString1, true, false);
+      ab.i("MicroMsg.AdDownloadApkMgr", "downloadinfo not found");
+      AppMethodBeat.o(36936);
       return;
     }
+    f(paramInt, paramString, locala.field_packageName, locala.field_downloadUrl);
+    AppMethodBeat.o(36936);
   }
 }
 

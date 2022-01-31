@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CleanNewUI$3
   implements View.OnClickListener
@@ -11,12 +12,14 @@ final class CleanNewUI$3
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.CleanNewUI", "clean wechat cache");
+    AppMethodBeat.i(18813);
+    ab.i("MicroMsg.CleanNewUI", "clean wechat cache");
+    AppMethodBeat.o(18813);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.CleanNewUI.3
  * JD-Core Version:    0.7.0.1
  */

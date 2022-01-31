@@ -7,10 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.plugin.comm.a.c;
-import com.tencent.mm.plugin.comm.a.e;
-import com.tencent.mm.plugin.comm.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.pluginsdk.ui.d;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -21,24 +19,27 @@ import java.util.List;
 public class ContactListExpandPreference
   extends Preference
 {
-  private int sdg = -1;
-  public i sdh;
-  public k sdi;
+  private int vUj;
+  public i vUk;
+  public k vUl;
   
   public ContactListExpandPreference(Context paramContext, int paramInt)
   {
     super(paramContext);
+    AppMethodBeat.i(79763);
+    this.vUj = -1;
     if (paramInt == 0) {
-      cmN();
+      dnG();
     }
     for (;;)
     {
-      setLayoutResource(a.f.mm_preference_contact_list_row);
+      setLayoutResource(2130970193);
+      AppMethodBeat.o(79763);
       return;
       if (paramInt == 1)
       {
-        this.sdg = 1;
-        this.sdi = new k();
+        this.vUj = 1;
+        this.vUl = new k();
       }
     }
   }
@@ -46,331 +47,353 @@ public class ContactListExpandPreference
   public ContactListExpandPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    cmN();
-    setLayoutResource(a.f.mm_preference_contact_list_row);
+    AppMethodBeat.i(79764);
+    this.vUj = -1;
+    dnG();
+    setLayoutResource(2130970193);
+    AppMethodBeat.o(79764);
   }
   
   public ContactListExpandPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    cmN();
-    setLayoutResource(a.f.mm_preference_contact_list_row);
+    AppMethodBeat.i(79765);
+    this.vUj = -1;
+    dnG();
+    setLayoutResource(2130970193);
+    AppMethodBeat.o(79765);
   }
   
-  private void cmN()
+  private void dnG()
   {
-    this.sdg = 0;
-    this.sdh = new i(this.mContext);
+    AppMethodBeat.i(79766);
+    this.vUj = 0;
+    this.vUk = new i(this.mContext);
+    AppMethodBeat.o(79766);
   }
   
-  public final boolean Ec(int paramInt)
+  public final boolean LY(int paramInt)
   {
-    if (this.sdh != null) {
-      return this.sdh.scu.Ec(paramInt);
+    AppMethodBeat.i(79772);
+    if (this.vUk != null)
+    {
+      boolean bool = this.vUk.vTA.LY(paramInt);
+      AppMethodBeat.o(79772);
+      return bool;
     }
+    AppMethodBeat.o(79772);
+    return true;
+  }
+  
+  public final boolean Ma(int paramInt)
+  {
+    AppMethodBeat.i(79773);
+    if (this.vUk != null)
+    {
+      boolean bool = this.vUk.vTA.Ma(paramInt);
+      AppMethodBeat.o(79773);
+      return bool;
+    }
+    AppMethodBeat.o(79773);
     return false;
   }
   
-  public final String Ed(int paramInt)
+  public final String Mb(int paramInt)
   {
-    if ((this.sdh != null) && (this.sdh.scu.Ec(paramInt))) {
-      return ((ad)this.sdh.scu.getItem(paramInt)).field_username;
+    AppMethodBeat.i(79775);
+    if ((this.vUk != null) && (this.vUk.vTA.Ma(paramInt)))
+    {
+      String str = ((ad)this.vUk.vTA.getItem(paramInt)).field_username;
+      AppMethodBeat.o(79775);
+      return str;
     }
+    AppMethodBeat.o(79775);
     return "";
   }
   
-  public final String Ee(int paramInt)
+  public final String Mc(int paramInt)
   {
-    if ((this.sdh != null) && (this.sdh.scu.Ec(paramInt))) {
-      return ((ad)this.sdh.scu.getItem(paramInt)).field_nickname;
+    AppMethodBeat.i(79776);
+    if ((this.vUk != null) && (this.vUk.vTA.Ma(paramInt)))
+    {
+      String str = ((ad)this.vUk.vTA.getItem(paramInt)).field_nickname;
+      AppMethodBeat.o(79776);
+      return str;
     }
+    AppMethodBeat.o(79776);
     return "";
   }
   
-  public final String Ef(int paramInt)
+  public final String Md(int paramInt)
   {
-    if ((this.sdh != null) && (this.sdh.scu.Ec(paramInt))) {
-      return ((ad)this.sdh.scu.getItem(paramInt)).field_conRemark;
+    AppMethodBeat.i(79777);
+    if ((this.vUk != null) && (this.vUk.vTA.Ma(paramInt)))
+    {
+      String str = ((ad)this.vUk.vTA.getItem(paramInt)).field_conRemark;
+      AppMethodBeat.o(79777);
+      return str;
     }
+    AppMethodBeat.o(79777);
     return "";
-  }
-  
-  public final void WI(String paramString)
-  {
-    if (this.sdh != null) {
-      this.sdh.scu.scU = paramString;
-    }
   }
   
   public final void a(ContactListExpandPreference.a parama)
   {
-    if (this.sdh != null) {
-      this.sdh.ptQ = parama;
+    if (this.vUk != null) {
+      this.vUk.sqf = parama;
     }
   }
   
   public final void a(k.b paramb)
   {
-    if (this.sdh != null) {
-      this.sdh.scv = paramb;
+    if (this.vUk != null) {
+      this.vUk.vTB = paramb;
     }
   }
   
   public final void a(d paramd)
   {
-    if (this.sdh != null) {
-      this.sdh.scu.scN = paramd;
+    if (this.vUk != null) {
+      this.vUk.vTA.vTR = paramd;
     }
   }
   
   public final void a(f paramf, String paramString)
   {
-    i locali;
-    if (this.sdh != null)
-    {
-      locali = this.sdh;
-      if ((paramf != null) && (paramString != null)) {}
+    AppMethodBeat.i(79768);
+    if (this.vUk != null) {
+      this.vUk.a(paramf, paramString);
     }
-    else
-    {
-      return;
-    }
-    locali.dnn = paramf;
-    locali.scq = paramString;
-    paramf.bJ(paramString, true);
+    AppMethodBeat.o(79768);
   }
   
-  public final void ac(ArrayList<ad> paramArrayList)
+  public final void ah(ArrayList<ad> paramArrayList)
   {
-    if (this.sdh != null)
-    {
-      i locali = this.sdh;
-      locali.scu.ab(paramArrayList);
-      locali.GI(null);
+    AppMethodBeat.i(79771);
+    if (this.vUk != null) {
+      this.vUk.ah(paramArrayList);
     }
+    AppMethodBeat.o(79771);
   }
   
-  public final void bJ(List<String> paramList)
+  public final void amp(String paramString)
   {
-    if (this.sdh != null)
-    {
-      j localj = this.sdh.scu;
-      localj.cD(paramList);
-      localj.notifyChanged();
+    if (this.vUk != null) {
+      this.vUk.vTA.vTY = paramString;
     }
   }
   
-  public final void cmO()
+  public final void cg(List<String> paramList)
   {
-    if (this.sdh != null) {
-      this.sdh.scu.scY = false;
+    AppMethodBeat.i(79781);
+    if (this.vUk != null) {
+      this.vUk.vTA.cg(paramList);
+    }
+    AppMethodBeat.o(79781);
+  }
+  
+  public final void dnB()
+  {
+    AppMethodBeat.i(79779);
+    if (this.vUk != null) {
+      this.vUk.dnB();
+    }
+    AppMethodBeat.o(79779);
+  }
+  
+  public final void dnF()
+  {
+    AppMethodBeat.i(79778);
+    if (this.vUk != null) {
+      this.vUk.vTA.dnF();
+    }
+    AppMethodBeat.o(79778);
+  }
+  
+  public final void dnH()
+  {
+    if (this.vUk != null) {
+      this.vUk.vTA.vUc = false;
     }
   }
   
-  public final void cmP()
+  public final ContactListExpandPreference dnI()
   {
-    if (this.sdh != null)
-    {
-      j localj = this.sdh.scu;
-      localj.dpW = false;
-      localj.notifyChanged();
-    }
-  }
-  
-  public final ContactListExpandPreference cmQ()
-  {
-    if (this.sdh != null) {
-      this.sdh.scu.scQ = false;
+    if (this.vUk != null) {
+      this.vUk.vTA.vTU = false;
     }
     return this;
-  }
-  
-  public final void cmR()
-  {
-    boolean bool = false;
-    if (this.sdh != null)
-    {
-      i locali = this.sdh;
-      locali.scs = false;
-      if (locali.scs) {
-        bool = true;
-      }
-      locali.sct = bool;
-    }
   }
   
   public final Object getItem(int paramInt)
   {
-    if ((this.sdh != null) && (this.sdh.scu.Ec(paramInt))) {
-      return this.sdh.scu.getItem(paramInt);
+    AppMethodBeat.i(79774);
+    if ((this.vUk != null) && (this.vUk.vTA.Ma(paramInt)))
+    {
+      Object localObject = this.vUk.vTA.getItem(paramInt);
+      AppMethodBeat.o(79774);
+      return localObject;
     }
+    AppMethodBeat.o(79774);
     return null;
-  }
-  
-  public final ContactListExpandPreference lS(boolean paramBoolean)
-  {
-    if (this.sdh != null) {
-      this.sdh.scu.scP = paramBoolean;
-    }
-    return this;
-  }
-  
-  public final ContactListExpandPreference lT(boolean paramBoolean)
-  {
-    if (this.sdh != null) {
-      this.sdh.scu.scO = paramBoolean;
-    }
-    return this;
   }
   
   public final void notifyChanged()
   {
-    if (this.sdh != null) {
-      this.sdh.buD();
+    AppMethodBeat.i(79769);
+    if (this.vUk != null) {
+      this.vUk.aPD();
     }
+    AppMethodBeat.o(79769);
   }
   
   public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(79767);
     ViewGroup localViewGroup;
-    if (this.sdg == 1)
+    if (this.vUj == 1)
     {
-      k localk = this.sdi;
-      if (paramView.getId() == a.e.contact_list_content_layout)
+      k localk = this.vUl;
+      label77:
+      int i;
+      label163:
+      label214:
+      View localView;
+      label252:
+      LinearLayout.LayoutParams localLayoutParams;
+      int j;
+      if (paramView.getId() == 2131826200)
       {
         localViewGroup = (ViewGroup)paramView;
         if (localk.row != 0) {
-          break label235;
+          break label450;
         }
-        localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getResources().getDimensionPixelSize(a.c.ListPadding), localViewGroup.getPaddingRight(), localViewGroup.getResources().getDimensionPixelSize(a.c.MiddlePadding));
-        label75:
-        if (((localk.scu.scM % j.scE != j.scE - 1) && (localk.scu.scM % j.scE != 0)) || (!localk.dnG) || (localk.row != localk.scu.getCount() / j.scE - 1)) {
-          break label331;
+        localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getResources().getDimensionPixelSize(2131427781), localViewGroup.getPaddingRight(), localViewGroup.getResources().getDimensionPixelSize(2131427792));
+        if (((localk.vTA.vTQ % j.vTJ != j.vTJ - 1) && (localk.vTA.vTQ % j.vTJ != 0)) || (!localk.efd) || (localk.row != localk.vTA.getCount() / j.vTJ - 1)) {
+          break label543;
         }
         localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getPaddingTop(), localViewGroup.getPaddingRight(), 0);
+        if (localk.vTA == null) {
+          break label693;
+        }
+        localViewGroup.setOnClickListener(localk.qaq);
+        if (localViewGroup.getChildCount() > j.vTJ)
+        {
+          localViewGroup.removeViews(0, localViewGroup.getChildCount() - j.vTJ);
+          localViewGroup.requestLayout();
+        }
+        i = 0;
+        if (i >= localk.vUm) {
+          break label660;
+        }
+        if (localViewGroup.getChildAt(i) != null) {
+          break label626;
+        }
+        localView = View.inflate(localViewGroup.getContext(), 2130970591, null);
+        localViewGroup.addView(localView);
+        localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+        localLayoutParams.gravity = 49;
+        if (j.vTJ != 4) {
+          break label637;
+        }
+        j = localViewGroup.getResources().getDimensionPixelSize(2131427808);
+        localLayoutParams.setMargins(j, 0, j, 0);
       }
-      label655:
       for (;;)
       {
-        label161:
-        if (localk.scu != null)
+        if ((!localk.vTA.dnD()) && (localk.vTA.vTQ == 1))
         {
-          localViewGroup.setOnClickListener(localk.nuB);
-          int j;
-          if (localViewGroup.getChildCount() > j.scE)
-          {
-            j = localViewGroup.getChildCount();
-            i = 0;
-            for (;;)
-            {
-              if (i < j - j.scE)
-              {
-                localViewGroup.removeViewAt(i);
-                i += 1;
-                continue;
-                localViewGroup = (ViewGroup)paramView.findViewById(a.e.contact_list_content_layout);
-                break;
-                label235:
-                if (localk.row == localk.scu.getCount() / j.scE - 1)
-                {
-                  localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getPaddingTop(), localViewGroup.getPaddingRight(), localViewGroup.getResources().getDimensionPixelSize(a.c.ListPadding));
-                  break label75;
-                }
-                localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getResources().getDimensionPixelSize(a.c.MiddlePadding), localViewGroup.getPaddingRight(), localViewGroup.getResources().getDimensionPixelSize(a.c.MiddlePadding));
-                break label75;
-                label331:
-                if ((localk.dnG) || (localk.scu.scM % j.scE != 0) || (localk.row != localk.scu.getCount() / j.scE - 1)) {
-                  break label161;
-                }
-                localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getPaddingTop(), localViewGroup.getPaddingRight(), (int)localViewGroup.getContext().getResources().getDimension(a.c.SmallPadding));
-                break label161;
-              }
-            }
-            localViewGroup.requestLayout();
-          }
-          int i = 0;
-          if (i < localk.sdj)
-          {
-            View localView;
-            label460:
-            LinearLayout.LayoutParams localLayoutParams;
-            if (localViewGroup.getChildAt(i) == null)
-            {
-              localView = View.inflate(localViewGroup.getContext(), a.f.roominfo_contact, null);
-              localViewGroup.addView(localView);
-              localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-              localLayoutParams.gravity = 49;
-              if (j.scE != 4) {
-                break label655;
-              }
-              j = localViewGroup.getResources().getDimensionPixelSize(a.c.NormalPadding);
-              localLayoutParams.setMargins(j, 0, j, 0);
-            }
-            for (;;)
-            {
-              if ((!localk.scu.cmL()) && (localk.scu.scM == 1))
-              {
-                j = localViewGroup.getResources().getDimensionPixelSize(a.c.BiggerPadding);
-                localLayoutParams.setMargins(j, 0, j, 0);
-              }
-              localView.setLayoutParams(localLayoutParams);
-              j = localk.row * localk.sdj + i;
-              localk.scu.getView(j, localView, localViewGroup);
-              if (localk.scA != null) {
-                localView.setOnClickListener(new k.3(localk, localViewGroup, j));
-              }
-              if (localk.sdk != null) {
-                localView.setOnLongClickListener(new k.4(localk, localViewGroup, j));
-              }
-              i += 1;
-              break;
-              localView = localViewGroup.getChildAt(i);
-              break label460;
-              j = localViewGroup.getResources().getDimensionPixelSize(a.c.MiddlePadding);
-              localLayoutParams.setMargins(j, 0, j, 0);
-            }
-          }
-          if ((!localk.scu.cmL()) && (localk.scu.scM <= 1)) {
-            break label718;
-          }
-          ((LinearLayout)localViewGroup).setGravity(17);
+          j = localViewGroup.getResources().getDimensionPixelSize(2131427506);
+          localLayoutParams.setMargins(j, 0, j, 0);
         }
+        localView.setLayoutParams(localLayoutParams);
+        j = localk.row * localk.vUm + i;
+        localk.vTA.getView(j, localView, localViewGroup);
+        if (localk.vTG != null) {
+          localView.setOnClickListener(new k.3(localk, localViewGroup, j));
+        }
+        if (localk.vUn != null) {
+          localView.setOnLongClickListener(new k.4(localk, localViewGroup, j));
+        }
+        i += 1;
+        break label214;
+        localViewGroup = (ViewGroup)paramView.findViewById(2131826200);
+        break;
+        label450:
+        if (localk.row == localk.vTA.getCount() / j.vTJ - 1)
+        {
+          localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getPaddingTop(), localViewGroup.getPaddingRight(), localViewGroup.getResources().getDimensionPixelSize(2131427781));
+          break label77;
+        }
+        localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getResources().getDimensionPixelSize(2131427792), localViewGroup.getPaddingRight(), localViewGroup.getResources().getDimensionPixelSize(2131427792));
+        break label77;
+        label543:
+        if ((localk.efd) || (localk.vTA.vTQ % j.vTJ != 0) || (localk.row != localk.vTA.getCount() / j.vTJ - 1)) {
+          break label163;
+        }
+        localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getPaddingTop(), localViewGroup.getPaddingRight(), (int)localViewGroup.getContext().getResources().getDimension(2131427854));
+        break label163;
+        label626:
+        localView = localViewGroup.getChildAt(i);
+        break label252;
+        label637:
+        j = localViewGroup.getResources().getDimensionPixelSize(2131427792);
+        localLayoutParams.setMargins(j, 0, j, 0);
       }
+      label660:
+      if ((!localk.vTA.dnD()) && (localk.vTA.vTQ <= 1)) {
+        break label704;
+      }
+      ((LinearLayout)localViewGroup).setGravity(17);
     }
     for (;;)
     {
+      label693:
       super.onBindView(paramView);
+      AppMethodBeat.o(79767);
       return;
-      label718:
+      label704:
       ((LinearLayout)localViewGroup).setGravity(19);
     }
   }
   
-  public final void refresh()
+  public final ContactListExpandPreference pf(boolean paramBoolean)
   {
-    if (this.sdh != null) {
-      this.sdh.scu.notifyChanged();
+    if (this.vUk != null) {
+      this.vUk.vTA.vTT = paramBoolean;
     }
+    return this;
   }
   
-  public final void s(String paramString, List<String> paramList)
+  public final ContactListExpandPreference pg(boolean paramBoolean)
   {
-    if (this.sdh != null)
-    {
-      i locali = this.sdh;
-      locali.username = paramString;
-      Object localObject = paramList;
-      if (paramList == null) {
-        localObject = new ArrayList(0);
-      }
-      locali.scu.cD((List)localObject);
-      locali.GI(paramString);
+    if (this.vUk != null) {
+      this.vUk.vTA.vTS = paramBoolean;
     }
+    return this;
+  }
+  
+  public final void refresh()
+  {
+    AppMethodBeat.i(79780);
+    if (this.vUk != null) {
+      this.vUk.vTA.Kc();
+    }
+    AppMethodBeat.o(79780);
+  }
+  
+  public final void v(String paramString, List<String> paramList)
+  {
+    AppMethodBeat.i(79770);
+    if (this.vUk != null) {
+      this.vUk.v(paramString, paramList);
+    }
+    AppMethodBeat.o(79770);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference
  * JD-Core Version:    0.7.0.1
  */

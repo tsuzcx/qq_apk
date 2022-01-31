@@ -1,31 +1,22 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.os.Message;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseScanUI$4
-  extends ah
+  implements DialogInterface.OnClickListener
 {
   BaseScanUI$4(BaseScanUI paramBaseScanUI) {}
   
-  public final void handleMessage(Message paramMessage)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramMessage == null) || (paramMessage.what != 1) || (BaseScanUI.p(this.nJg) == null) || (BaseScanUI.q(this.nJg) == null) || ((BaseScanUI.a(this.nJg)) && (!BaseScanUI.b(this.nJg)))) {
-      return;
-    }
-    if ((BaseScanUI.i(this.nJg) == null) || (BaseScanUI.i(this.nJg).bxr() <= 0))
-    {
-      y.w("MicroMsg.scanner.BaseScanUI", "startAnimHandler scanMode == null");
-      this.nJg.bxx();
-      return;
-    }
-    BaseScanUI.p(this.nJg).setVisibility(0);
-    BaseScanUI.q(this.nJg).setRepeatCount(-1);
-    BaseScanUI.q(this.nJg).setDuration(2600L);
-    BaseScanUI.p(this.nJg).startAnimation(BaseScanUI.q(this.nJg));
+    AppMethodBeat.i(80914);
+    this.qwI.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    BaseScanUI.o(this.qwI);
+    this.qwI.finish();
+    AppMethodBeat.o(80914);
   }
 }
 

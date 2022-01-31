@@ -19,7 +19,7 @@ public class AutoTransition
   
   private void init()
   {
-    V(1);
+    U(1);
     d(new Fade(2)).d(new ChangeBounds()).d(new Fade(1));
   }
 }

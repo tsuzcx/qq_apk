@@ -1,30 +1,35 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.h.a.qe;
-import com.tencent.mm.h.a.qe.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ro;
+import com.tencent.mm.g.a.ro.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class OnlineVideoView$4$1
   implements Runnable
 {
-  OnlineVideoView$4$1(OnlineVideoView.4 param4, qe paramqe) {}
+  OnlineVideoView$4$1(OnlineVideoView.4 param4, ro paramro) {}
   
   public final void run()
   {
-    if (bk.isEqual(this.oRO.bZC.bMB, OnlineVideoView.a(this.oRP.oRM)))
+    AppMethodBeat.i(38389);
+    if (bo.isEqual(this.rJF.cHU.ctV, OnlineVideoView.a(this.rJG.rJD)))
     {
-      if (!OnlineVideoView.q(this.oRP.oRM))
+      if (!OnlineVideoView.o(this.rJG.rJD))
       {
-        OnlineVideoView.a(this.oRP.oRM, true);
-        this.oRP.oRM.onResume();
+        OnlineVideoView.a(this.rJG.rJD, true);
+        this.rJG.rJD.onResume();
+        AppMethodBeat.o(38389);
         return;
       }
-      this.oRP.oRM.requestLayout();
+      this.rJG.rJD.requestLayout();
+      AppMethodBeat.o(38389);
       return;
     }
-    OnlineVideoView.a(this.oRP.oRM, false);
-    this.oRP.oRM.bHM();
-    this.oRP.oRM.onDestroy();
+    OnlineVideoView.a(this.rJG.rJD, false);
+    this.rJG.rJD.ctS();
+    this.rJG.rJD.onDestroy();
+    AppMethodBeat.o(38389);
   }
 }
 

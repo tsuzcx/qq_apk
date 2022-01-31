@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class DataSourceException
   extends Exception
 {
@@ -18,7 +20,10 @@ public class DataSourceException
   
   public String toString()
   {
-    return "DataSourceException{errorCode=" + this.errorCode + "\nmessage=" + getMessage() + '}';
+    AppMethodBeat.i(105508);
+    String str = "DataSourceException{errorCode=" + this.errorCode + "\nmessage=" + getMessage() + '}';
+    AppMethodBeat.o(105508);
+    return str;
   }
 }
 

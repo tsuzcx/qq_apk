@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.mmsight.segment;
 
 public abstract interface c
 {
-  public abstract void Ip(String paramString);
+  public abstract void Ub(String paramString);
   
-  public abstract float bjK();
+  public abstract float bRy();
   
-  public abstract float bjL();
+  public abstract float bRz();
   
   public abstract int getDurationMs();
   
-  public abstract void hv(boolean paramBoolean);
+  public abstract void jo(boolean paramBoolean);
   
   public abstract void release();
   

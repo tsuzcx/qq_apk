@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
+import a.l;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/TextEditorItemView$Companion;", "", "()V", "ANIM_INTERVAL", "", "TEXT_COLOR_INVALID", "", "plugin-emojicapture_release"})
 public final class TextEditorItemView$a {}
 
 

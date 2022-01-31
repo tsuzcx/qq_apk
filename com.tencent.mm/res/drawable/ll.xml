@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#00000000" android:endColor="#33000000" android:angle="270.0" android:type="linear" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/lk" />
+    <item android:state_focused="true" android:drawable="@drawable/lm" />
+    <item android:drawable="@drawable/ln" />
+</selector>

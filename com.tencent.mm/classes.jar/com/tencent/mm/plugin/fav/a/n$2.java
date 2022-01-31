@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class n$2
   implements Runnable
@@ -9,7 +10,9 @@ final class n$2
   
   public final void run()
   {
-    this.jZF.iam = bk.UZ();
+    AppMethodBeat.i(102701);
+    this.muc.lastShakeTime = bo.yB();
+    AppMethodBeat.o(102701);
   }
 }
 

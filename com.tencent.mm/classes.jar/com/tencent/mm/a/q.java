@@ -1,254 +1,248 @@
 package com.tencent.mm.a;
 
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.zip.Inflater;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.zip.ZipOutputStream;
 
 public final class q
 {
   /* Error */
-  public static byte[] l(byte[] paramArrayOfByte)
+  private static void a(File paramFile, ZipOutputStream paramZipOutputStream, String paramString)
   {
     // Byte code:
-    //   0: new 14	java/util/zip/Deflater
+    //   0: new 10	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 18	java/util/zip/Deflater:<init>	()V
-    //   7: astore 4
-    //   9: aload 4
-    //   11: invokevirtual 21	java/util/zip/Deflater:reset	()V
-    //   14: aload 4
-    //   16: aload_0
-    //   17: invokevirtual 25	java/util/zip/Deflater:setInput	([B)V
-    //   20: aload 4
-    //   22: invokevirtual 28	java/util/zip/Deflater:finish	()V
-    //   25: new 30	java/io/ByteArrayOutputStream
-    //   28: dup
-    //   29: aload_0
-    //   30: arraylength
-    //   31: invokespecial 33	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   34: astore_2
-    //   35: aload_2
-    //   36: astore_1
-    //   37: sipush 1024
-    //   40: newarray byte
-    //   42: astore_3
-    //   43: aload_2
-    //   44: astore_1
-    //   45: aload 4
-    //   47: invokevirtual 37	java/util/zip/Deflater:finished	()Z
-    //   50: ifne +54 -> 104
-    //   53: aload_2
-    //   54: astore_1
-    //   55: aload_2
-    //   56: aload_3
-    //   57: iconst_0
-    //   58: aload 4
-    //   60: aload_3
-    //   61: invokevirtual 41	java/util/zip/Deflater:deflate	([B)I
-    //   64: invokevirtual 45	java/io/ByteArrayOutputStream:write	([BII)V
-    //   67: goto -24 -> 43
-    //   70: astore_3
-    //   71: aload_2
-    //   72: astore_1
-    //   73: ldc 47
-    //   75: aload_3
-    //   76: ldc 49
-    //   78: iconst_0
-    //   79: anewarray 4	java/lang/Object
-    //   82: invokestatic 55	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   85: aload_0
-    //   86: astore_1
-    //   87: aload_2
-    //   88: ifnull +9 -> 97
-    //   91: aload_2
-    //   92: invokevirtual 58	java/io/ByteArrayOutputStream:close	()V
-    //   95: aload_0
-    //   96: astore_1
-    //   97: aload 4
-    //   99: invokevirtual 61	java/util/zip/Deflater:end	()V
-    //   102: aload_1
-    //   103: areturn
-    //   104: aload_2
-    //   105: astore_1
-    //   106: aload_2
-    //   107: invokevirtual 65	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   110: astore_3
-    //   111: aload_3
-    //   112: astore_1
-    //   113: aload_2
-    //   114: invokevirtual 58	java/io/ByteArrayOutputStream:close	()V
-    //   117: goto -20 -> 97
-    //   120: astore_0
-    //   121: ldc 47
-    //   123: aload_0
-    //   124: ldc 49
-    //   126: iconst_0
-    //   127: anewarray 4	java/lang/Object
-    //   130: invokestatic 55	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   133: goto -36 -> 97
-    //   136: astore_1
-    //   137: ldc 47
-    //   139: aload_1
-    //   140: ldc 49
-    //   142: iconst_0
-    //   143: anewarray 4	java/lang/Object
-    //   146: invokestatic 55	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   149: aload_0
-    //   150: astore_1
-    //   151: goto -54 -> 97
-    //   154: astore_1
-    //   155: aconst_null
-    //   156: astore_1
-    //   157: new 10	java/lang/OutOfMemoryError
-    //   160: dup
-    //   161: new 67	java/lang/StringBuilder
-    //   164: dup
-    //   165: ldc 69
-    //   167: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   170: aload_0
-    //   171: arraylength
-    //   172: invokevirtual 76	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   175: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokespecial 81	java/lang/OutOfMemoryError:<init>	(Ljava/lang/String;)V
-    //   181: athrow
-    //   182: astore_0
-    //   183: aload_1
-    //   184: ifnull +7 -> 191
-    //   187: aload_1
-    //   188: invokevirtual 58	java/io/ByteArrayOutputStream:close	()V
-    //   191: aload_0
-    //   192: athrow
-    //   193: astore_1
-    //   194: ldc 47
-    //   196: aload_1
-    //   197: ldc 49
-    //   199: iconst_0
-    //   200: anewarray 4	java/lang/Object
-    //   203: invokestatic 55	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   206: goto -15 -> 191
-    //   209: astore_0
-    //   210: aconst_null
+    //   4: invokespecial 14	java/lang/StringBuilder:<init>	()V
+    //   7: aload_2
+    //   8: invokevirtual 18	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11: astore 5
+    //   13: aload_2
+    //   14: invokevirtual 24	java/lang/String:trim	()Ljava/lang/String;
+    //   17: invokevirtual 28	java/lang/String:length	()I
+    //   20: ifne +64 -> 84
+    //   23: ldc 30
+    //   25: astore_2
+    //   26: aload 5
+    //   28: aload_2
+    //   29: invokevirtual 18	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: aload_0
+    //   33: invokevirtual 35	java/io/File:getName	()Ljava/lang/String;
+    //   36: invokevirtual 18	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: astore 5
+    //   44: aload_0
+    //   45: invokevirtual 42	java/io/File:isDirectory	()Z
+    //   48: ifeq +43 -> 91
+    //   51: aload_0
+    //   52: invokevirtual 46	java/io/File:listFiles	()[Ljava/io/File;
+    //   55: astore_0
+    //   56: aload_0
+    //   57: arraylength
+    //   58: istore 4
+    //   60: iconst_0
+    //   61: istore_3
+    //   62: iload_3
+    //   63: iload 4
+    //   65: if_icmpge +125 -> 190
+    //   68: aload_0
+    //   69: iload_3
+    //   70: aaload
+    //   71: aload_1
+    //   72: aload 5
+    //   74: invokestatic 48	com/tencent/mm/a/q:a	(Ljava/io/File;Ljava/util/zip/ZipOutputStream;Ljava/lang/String;)V
+    //   77: iload_3
+    //   78: iconst_1
+    //   79: iadd
+    //   80: istore_3
+    //   81: goto -19 -> 62
+    //   84: getstatic 52	java/io/File:separator	Ljava/lang/String;
+    //   87: astore_2
+    //   88: goto -62 -> 26
+    //   91: ldc 53
+    //   93: newarray byte
+    //   95: astore 6
+    //   97: new 55	java/io/BufferedInputStream
+    //   100: dup
+    //   101: new 57	java/io/FileInputStream
+    //   104: dup
+    //   105: aload_0
+    //   106: invokespecial 60	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   109: ldc 53
+    //   111: invokespecial 63	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   114: astore_2
+    //   115: aload_2
+    //   116: astore_0
+    //   117: aload_1
+    //   118: new 65	java/util/zip/ZipEntry
+    //   121: dup
+    //   122: aload 5
+    //   124: invokespecial 68	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   127: invokevirtual 74	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   130: aload_2
+    //   131: astore_0
+    //   132: aload_2
+    //   133: aload 6
+    //   135: invokevirtual 78	java/io/BufferedInputStream:read	([B)I
+    //   138: istore_3
+    //   139: iload_3
+    //   140: iconst_m1
+    //   141: if_icmpeq +50 -> 191
+    //   144: aload_2
+    //   145: astore_0
+    //   146: aload_1
+    //   147: aload 6
+    //   149: iconst_0
+    //   150: iload_3
+    //   151: invokevirtual 82	java/util/zip/ZipOutputStream:write	([BII)V
+    //   154: goto -24 -> 130
+    //   157: astore 5
+    //   159: aload_2
+    //   160: astore_0
+    //   161: ldc 84
+    //   163: aload 5
+    //   165: ldc 30
+    //   167: iconst_0
+    //   168: anewarray 4	java/lang/Object
+    //   171: invokestatic 90	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   174: aload_2
+    //   175: ifnull +7 -> 182
+    //   178: aload_2
+    //   179: invokevirtual 93	java/io/BufferedInputStream:close	()V
+    //   182: aload_1
+    //   183: invokevirtual 96	java/util/zip/ZipOutputStream:flush	()V
+    //   186: aload_1
+    //   187: invokevirtual 99	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   190: return
+    //   191: aload_2
+    //   192: invokevirtual 93	java/io/BufferedInputStream:close	()V
+    //   195: goto -13 -> 182
+    //   198: astore_1
+    //   199: aconst_null
+    //   200: astore_0
+    //   201: aload_0
+    //   202: ifnull +7 -> 209
+    //   205: aload_0
+    //   206: invokevirtual 93	java/io/BufferedInputStream:close	()V
+    //   209: aload_1
+    //   210: athrow
     //   211: astore_1
-    //   212: goto -29 -> 183
-    //   215: astore_1
-    //   216: aload_2
-    //   217: astore_1
-    //   218: goto -61 -> 157
-    //   221: astore_3
-    //   222: aconst_null
-    //   223: astore_2
-    //   224: goto -153 -> 71
+    //   212: goto -11 -> 201
+    //   215: astore 5
+    //   217: aconst_null
+    //   218: astore_2
+    //   219: goto -60 -> 159
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	227	0	paramArrayOfByte	byte[]
-    //   36	77	1	localObject1	Object
-    //   136	4	1	localIOException1	IOException
-    //   150	1	1	arrayOfByte1	byte[]
-    //   154	1	1	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   156	32	1	localObject2	Object
-    //   193	4	1	localIOException2	IOException
-    //   211	1	1	localObject3	Object
-    //   215	1	1	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   217	1	1	localByteArrayOutputStream1	ByteArrayOutputStream
-    //   34	190	2	localByteArrayOutputStream2	ByteArrayOutputStream
-    //   42	19	3	arrayOfByte2	byte[]
-    //   70	6	3	localException1	Exception
-    //   110	2	3	arrayOfByte3	byte[]
-    //   221	1	3	localException2	Exception
-    //   7	91	4	localDeflater	java.util.zip.Deflater
+    //   0	222	0	paramFile	File
+    //   0	222	1	paramZipOutputStream	ZipOutputStream
+    //   0	222	2	paramString	String
+    //   61	90	3	i	int
+    //   58	8	4	j	int
+    //   11	112	5	localObject	Object
+    //   157	7	5	localException1	Exception
+    //   215	1	5	localException2	Exception
+    //   95	53	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   37	43	70	java/lang/Exception
-    //   45	53	70	java/lang/Exception
-    //   55	67	70	java/lang/Exception
-    //   106	111	70	java/lang/Exception
-    //   113	117	120	java/io/IOException
-    //   91	95	136	java/io/IOException
-    //   25	35	154	java/lang/OutOfMemoryError
-    //   37	43	182	finally
-    //   45	53	182	finally
-    //   55	67	182	finally
-    //   73	85	182	finally
-    //   106	111	182	finally
-    //   157	182	182	finally
-    //   187	191	193	java/io/IOException
-    //   25	35	209	finally
-    //   37	43	215	java/lang/OutOfMemoryError
-    //   45	53	215	java/lang/OutOfMemoryError
-    //   55	67	215	java/lang/OutOfMemoryError
-    //   106	111	215	java/lang/OutOfMemoryError
-    //   25	35	221	java/lang/Exception
+    //   117	130	157	java/lang/Exception
+    //   132	139	157	java/lang/Exception
+    //   146	154	157	java/lang/Exception
+    //   97	115	198	finally
+    //   117	130	211	finally
+    //   132	139	211	finally
+    //   146	154	211	finally
+    //   161	174	211	finally
+    //   97	115	215	java/lang/Exception
   }
   
-  public static byte[] r(byte[] paramArrayOfByte)
+  public static void a(Collection<File> paramCollection, File paramFile)
   {
-    Inflater localInflater = new Inflater();
-    localInflater.reset();
-    localInflater.setInput(paramArrayOfByte);
-    Object localObject = null;
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length);
-    try
+    paramFile = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(paramFile), 131072));
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext())
     {
-      byte[] arrayOfByte = new byte[1024];
-      while (!localInflater.finished()) {
-        localByteArrayOutputStream.write(arrayOfByte, 0, localInflater.inflate(arrayOfByte));
+      File localFile = (File)paramCollection.next();
+      if (localFile.exists()) {
+        a(localFile, paramFile, "");
       }
-      return paramArrayOfByte;
     }
-    catch (Exception localException)
+    paramFile.close();
+  }
+  
+  public static String b(File paramFile, boolean paramBoolean, String paramString)
+  {
+    int j = 0;
+    Object localObject;
+    if (paramString != null)
     {
-      y.printErrStackTrace("MicroMsg.Zlib", localException, "exception when loop read byte", new Object[0]);
+      localObject = new File(paramString).getParentFile();
+      if ((localObject != null) && (!((File)localObject).exists())) {
+        ((File)localObject).mkdirs();
+      }
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    if (paramFile.isDirectory())
+    {
+      localObject = paramFile.listFiles();
+      if (localObject == null) {
+        return null;
+      }
+      i = 0;
+      while (i < localObject.length)
+      {
+        localArrayList.add(localObject[i]);
+        i += 1;
+      }
+      localObject = paramString;
+      if (paramString == null) {
+        localObject = paramFile.getAbsolutePath() + File.separator + paramFile.getName() + ".zip";
+      }
+    }
+    for (;;)
+    {
+      paramFile = new File((String)localObject);
+      if (paramFile.exists()) {
+        paramFile.delete();
+      }
       try
       {
-        localByteArrayOutputStream.close();
-        for (;;)
+        a(localArrayList, paramFile);
+        if (paramBoolean)
         {
-          localInflater.end();
-          if (localException == null) {
-            break;
-          }
-          throw new Exception(localException);
-          arrayOfByte = localByteArrayOutputStream.toByteArray();
-          paramArrayOfByte = arrayOfByte;
-          try
+          i = j;
+          for (;;)
           {
-            localByteArrayOutputStream.close();
-          }
-          catch (IOException localIOException2)
-          {
-            y.printErrStackTrace("MicroMsg.Zlib", localIOException2, "", new Object[0]);
+            if (i < localArrayList.size())
+            {
+              ((File)localArrayList.get(i)).delete();
+              i += 1;
+              continue;
+              localArrayList.add(paramFile);
+              localObject = paramString;
+              if (paramString != null) {
+                break;
+              }
+              localObject = paramFile.getAbsoluteFile().getParentFile().getAbsolutePath() + File.separator + paramFile.getName() + ".zip";
+            }
           }
         }
       }
-      catch (IOException localIOException3)
+      catch (Exception paramFile)
       {
-        for (;;)
-        {
-          y.printErrStackTrace("MicroMsg.Zlib", localIOException3, "", new Object[0]);
-        }
+        return null;
       }
     }
-    finally
-    {
-      try
-      {
-        localByteArrayOutputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (IOException localIOException1)
-      {
-        for (;;)
-        {
-          y.printErrStackTrace("MicroMsg.Zlib", localIOException1, "", new Object[0]);
-        }
-      }
-    }
+    return paramFile.getAbsolutePath();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.a.q
  * JD-Core Version:    0.7.0.1
  */

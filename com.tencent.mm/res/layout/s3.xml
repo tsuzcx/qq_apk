@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/s1" />
-    <LinearLayout android:background="@drawable/w3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/mp"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <LinearLayout android:orientation="horizontal" android:id="@id/b7i" android:background="@drawable/ij" android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_height="@dimen/mp" style="@style/lu">
-            <ImageView android:id="@id/b75" android:paddingRight="@dimen/ym" android:layout_width="@dimen/mp" android:layout_height="fill_parent" android:src="@raw/emotionstore_custom_icon" />
-            <TextView android:id="@android:id/title" style="@style/kl" />
-        </LinearLayout>
+    <LinearLayout android:layout_gravity="left" android:background="#55000000" android:padding="@dimen/n_" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1">
+        <Button android:id="@id/b8w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="C" android:layout_weight="1.0" style="@style/h_" />
+        <Button android:id="@id/b8x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:text="S" android:layout_weight="1.0" style="@style/h_" />
+        <Button android:id="@id/b8y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:text="P" android:layout_weight="1.0" style="@style/h_" />
     </LinearLayout>
-    <TextView android:gravity="bottom|center|left" android:id="@id/b7j" android:layout_marginLeft="@dimen/mg" android:layout_marginRight="@dimen/mg" style="@style/mr" />
+    <LinearLayout android:orientation="vertical" android:id="@id/b8z" android:background="#fff0eff4" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <View android:background="@color/rg" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.plugin.appbrand.wxawidget.console.ConsolePanel android:id="@id/b90" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.mm.plugin.appbrand.wxawidget.console.SettingsPanel android:id="@id/b91" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.mm.plugin.appbrand.wxawidget.console.PerformancePanel android:id="@id/b92" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </LinearLayout>
 </LinearLayout>

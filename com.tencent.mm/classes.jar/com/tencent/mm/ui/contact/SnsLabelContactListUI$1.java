@@ -2,6 +2,7 @@ package com.tencent.mm.ui.contact;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsLabelContactListUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class SnsLabelContactListUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.vNU.finish();
+    AppMethodBeat.i(33938);
+    this.AfC.finish();
+    AppMethodBeat.o(33938);
     return true;
   }
 }

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fav.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.x;
@@ -11,7 +12,9 @@ final class FavSearchUI$1
   
   public final void run()
   {
-    FavSearchUI.a(this.kcM, ((ae)g.t(ae.class)).getFavItemInfoStorage().aQD());
+    AppMethodBeat.i(74065);
+    FavSearchUI.a(this.mxx, ((ae)g.G(ae.class)).getFavItemInfoStorage().bwS());
+    AppMethodBeat.o(74065);
   }
 }
 

@@ -1,73 +1,77 @@
 package com.tencent.mm.plugin.voip.model.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.voip.a.a;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.bve;
-import com.tencent.mm.protocal.c.ceb;
-import com.tencent.mm.protocal.c.cft;
-import com.tencent.mm.protocal.c.cfu;
+import com.tencent.mm.plugin.voip.model.k;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.cfu;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.cte;
+import com.tencent.mm.protocal.protobuf.ctf;
 import java.util.LinkedList;
 
 public final class j
-  extends n<cft, cfu>
+  extends n<cte, ctf>
 {
   public j(long paramLong1, long paramLong2, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int[] paramArrayOfInt)
   {
+    AppMethodBeat.i(4727);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new cft();
-    ((b.a)localObject).ecI = new cfu();
+    ((b.a)localObject).fsX = new cte();
+    ((b.a)localObject).fsY = new ctf();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipspeedresult";
-    ((b.a)localObject).ecG = 901;
-    ((b.a)localObject).ecJ = 901;
-    ((b.a)localObject).ecK = 1000000901;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (cft)this.dmK.ecE.ecN;
-    ((cft)localObject).tUY = paramLong1;
-    ((cft)localObject).sSU = paramLong2;
-    ((cft)localObject).sNU = paramInt1;
-    ((cft)localObject).tUZ = new bml().YI(paramString1);
-    ((cft)localObject).tVa = new bml().YI(paramString2);
-    ((cft)localObject).sDm = 0.0D;
-    ((cft)localObject).sDn = 0.0D;
-    ((cft)localObject).sST = paramInt2;
-    ((cft)localObject).tVb = paramInt3;
+    ((b.a)localObject).funcId = 901;
+    ((b.a)localObject).reqCmdId = 901;
+    ((b.a)localObject).respCmdId = 1000000901;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (cte)this.rr.fsV.fta;
+    ((cte)localObject).ycp = paramLong1;
+    ((cte)localObject).wQQ = paramLong2;
+    ((cte)localObject).wLO = paramInt1;
+    ((cte)localObject).ycq = new bwc().aoF(paramString1);
+    ((cte)localObject).ycr = new bwc().aoF(paramString2);
+    ((cte)localObject).wyO = 0.0D;
+    ((cte)localObject).wyP = 0.0D;
+    ((cte)localObject).wQP = paramInt2;
+    ((cte)localObject).ycs = paramInt3;
     paramInt1 = 0;
     int i = 0;
     while (i < paramInt3)
     {
-      paramString1 = new bve();
+      paramString1 = new cfu();
       paramInt2 = paramInt1 + 1;
-      paramString1.tLy = paramArrayOfInt[paramInt1];
+      paramString1.xQb = paramArrayOfInt[paramInt1];
       paramInt1 = paramInt2 + 1;
-      paramString1.tLz = paramArrayOfInt[paramInt2];
+      paramString1.xQc = paramArrayOfInt[paramInt2];
       paramInt2 = paramInt1 + 1;
-      paramString1.tLA = paramArrayOfInt[paramInt1];
-      paramString1.tLB = new ceb();
-      paramString2 = paramString1.tLB;
+      paramString1.xQd = paramArrayOfInt[paramInt1];
+      paramString1.xQe = new crm();
+      paramString2 = paramString1.xQe;
       paramInt1 = paramInt2 + 1;
-      paramString2.tNg = paramArrayOfInt[paramInt2];
-      paramString2 = paramString1.tLB;
+      paramString2.xTC = paramArrayOfInt[paramInt2];
+      paramString2 = paramString1.xQe;
       paramInt2 = paramInt1 + 1;
-      paramString2.tAA = paramArrayOfInt[paramInt1];
+      paramString2.xCi = paramArrayOfInt[paramInt1];
       paramInt1 = paramInt2 + 1;
-      paramString1.tLC = paramArrayOfInt[paramInt2];
+      paramString1.xQf = paramArrayOfInt[paramInt2];
       paramInt2 = paramInt1 + 1;
-      paramString1.tLD = paramArrayOfInt[paramInt1];
+      paramString1.xQg = paramArrayOfInt[paramInt1];
       int j = paramInt2 + 1;
-      paramString1.tLE = paramArrayOfInt[paramInt2];
+      paramString1.xQh = paramArrayOfInt[paramInt2];
       paramInt1 = j + 1;
-      paramString1.tLF = paramArrayOfInt[j];
+      paramString1.xQi = paramArrayOfInt[j];
       paramInt2 = 0;
-      while (paramInt2 < paramString1.tLF)
+      while (paramInt2 < paramString1.xQi)
       {
         j = paramInt1;
         if (paramInt1 < paramArrayOfInt.length)
         {
-          paramString1.tLG.add(Integer.valueOf(paramArrayOfInt[paramInt1]));
+          paramString1.xQj.add(Integer.valueOf(paramArrayOfInt[paramInt1]));
           j = paramInt1 + 1;
         }
         paramInt2 += 1;
@@ -76,18 +80,18 @@ public final class j
       paramInt2 = paramInt1;
       if (paramInt1 < paramArrayOfInt.length)
       {
-        paramString1.tLH = paramArrayOfInt[paramInt1];
+        paramString1.xQk = paramArrayOfInt[paramInt1];
         paramInt2 = paramInt1 + 1;
       }
       j = 0;
       paramInt1 = paramInt2;
       paramInt2 = j;
-      while (paramInt2 < paramString1.tLH)
+      while (paramInt2 < paramString1.xQk)
       {
         j = paramInt1;
         if (paramInt1 < paramArrayOfInt.length)
         {
-          paramString1.tLI.add(Integer.valueOf(paramArrayOfInt[paramInt1]));
+          paramString1.xQl.add(Integer.valueOf(paramArrayOfInt[paramInt1]));
           j = paramInt1 + 1;
         }
         paramInt2 += 1;
@@ -96,32 +100,45 @@ public final class j
       paramInt2 = paramInt1;
       if (paramInt1 < paramArrayOfInt.length)
       {
-        paramString1.tLJ = paramArrayOfInt[paramInt1];
+        paramString1.xQm = paramArrayOfInt[paramInt1];
         paramInt2 = paramInt1 + 1;
       }
       j = 0;
       paramInt1 = paramInt2;
       paramInt2 = j;
-      while (paramInt2 < paramString1.tLJ)
+      while (paramInt2 < paramString1.xQm)
       {
         j = paramInt1;
         if (paramInt1 < paramArrayOfInt.length)
         {
-          paramString1.tLK.add(Integer.valueOf(paramArrayOfInt[paramInt1]));
+          paramString1.xQn.add(Integer.valueOf(paramArrayOfInt[paramInt1]));
           j = paramInt1 + 1;
         }
         paramInt2 += 1;
         paramInt1 = j;
       }
-      a.Logi("MicroMsg.NetSceneVoipSpeedResult", "SpeedResult: pkt_size[" + paramString1.tLz + "], pkt_count[" + paramString1.tLA + "], svr_ip[" + paramString1.tLB.tNg + "], avg_rtt[" + paramString1.tLC + "], min_rtt[" + paramString1.tLD + "], max_rtt[" + paramString1.tLE + "], rtt_count[" + paramString1.tLF + "], down_seq_count[" + paramString1.tLH + "], up_seq_count[" + paramString1.tLJ + "]");
-      ((cft)localObject).tee.add(paramString1);
+      a.Logi("MicroMsg.NetSceneVoipSpeedResult", "SpeedResult: pkt_size[" + paramString1.xQc + "], pkt_count[" + paramString1.xQd + "], svr_ip[" + paramString1.xQe.xTC + "], avg_rtt[" + paramString1.xQf + "], min_rtt[" + paramString1.xQg + "], max_rtt[" + paramString1.xQh + "], rtt_count[" + paramString1.xQi + "], down_seq_count[" + paramString1.xQk + "], up_seq_count[" + paramString1.xQm + "]");
+      ((cte)localObject).xcd.add(paramString1);
       i += 1;
     }
+    AppMethodBeat.o(4727);
   }
   
-  public final f bRy()
+  public final f cOp()
   {
-    return new j.1(this);
+    AppMethodBeat.i(4728);
+    f local1 = new f()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm)
+      {
+        AppMethodBeat.i(4726);
+        a.Logi("MicroMsg.NetSceneVoipSpeedResult", "VoipContext onVoipSpeedResultResp errType=" + paramAnonymousInt1 + " errCode=" + paramAnonymousInt2 + " errMsg=" + paramAnonymousString);
+        j.this.tvE.cLW();
+        AppMethodBeat.o(4726);
+      }
+    };
+    AppMethodBeat.o(4728);
+    return local1;
   }
   
   public final int getType()
@@ -131,7 +148,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.j
  * JD-Core Version:    0.7.0.1
  */

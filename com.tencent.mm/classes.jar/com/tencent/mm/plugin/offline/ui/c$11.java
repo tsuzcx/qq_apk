@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.offline.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.offline.a.s.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$11
   implements DialogInterface.OnClickListener
@@ -12,11 +13,13 @@ final class c$11
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(43481);
     paramDialogInterface.dismiss();
-    if (this.mMg.mMb != null) {
-      this.mMg.mMb.d(1, this.mMh.id, "", this.mMh.bOT);
+    if (this.pmw.pmr != null) {
+      this.pmw.pmr.e(1, this.pmx.id, "", this.pmx.cwk);
     }
-    y.i("MicroMsg.OfflineLogicMgr", "launchPwdDialog do pay");
+    ab.i("MicroMsg.OfflineLogicMgr", "launchPwdDialog do pay");
+    AppMethodBeat.o(43481);
   }
 }
 

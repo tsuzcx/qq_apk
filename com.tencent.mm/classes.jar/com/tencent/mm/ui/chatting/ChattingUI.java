@@ -2,104 +2,140 @@ package com.tencent.mm.ui.chatting;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.o;
+import android.support.v4.app.g;
+import android.support.v4.app.k;
 import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
 import android.view.Window;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.f.b;
-import com.tencent.mm.pluginsdk.e;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.kernel.i;
+import com.tencent.mm.pluginsdk.f;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.chatting.b.c;
+import com.tencent.mm.ui.chatting.c.c;
 
-@com.tencent.mm.kernel.j
+@i
 @SuppressLint({"DefaultLocale", "ValidFragment"})
 @TargetApi(11)
 public class ChattingUI
   extends MMFragmentActivity
 {
-  public ah vhb = new ah();
-  public y vlN;
+  public ChattingUIFragment zBm;
+  public ak zBn;
+  
+  public ChattingUI()
+  {
+    AppMethodBeat.i(30821);
+    this.zBn = new ak();
+    AppMethodBeat.o(30821);
+  }
+  
+  protected ChattingUIFragment dFB()
+  {
+    AppMethodBeat.i(30823);
+    ChattingUIFragment localChattingUIFragment = new ChattingUIFragment((byte)0);
+    AppMethodBeat.o(30823);
+    return localChattingUIFragment;
+  }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.ChattingUI", "chatting ui dispatch key event %s", new Object[] { paramKeyEvent });
-    if ((this.vlN != null) && (this.vlN.onKeyDown(paramKeyEvent.getKeyCode(), paramKeyEvent))) {
+    AppMethodBeat.i(30824);
+    ab.d("MicroMsg.ChattingUI", "chatting ui dispatch key event %s", new Object[] { paramKeyEvent });
+    if ((this.zBm != null) && (this.zBm.onKeyDown(paramKeyEvent.getKeyCode(), paramKeyEvent)))
+    {
+      AppMethodBeat.o(30824);
       return true;
     }
-    return super.dispatchKeyEvent(paramKeyEvent);
+    boolean bool = super.dispatchKeyEvent(paramKeyEvent);
+    AppMethodBeat.o(30824);
+    return bool;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(30828);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.vlN.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.zBm.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(30828);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(30822);
     getWindow().setFormat(-2);
-    e.S(this);
+    f.ao(this);
     super.onCreate(null);
-    if (c.aq(getIntent()))
+    if (c.aS(getIntent()))
     {
       finish();
+      AppMethodBeat.o(30822);
       return;
     }
-    setContentView(R.i.chattingui_activity_container);
-    this.vlN = new y((byte)0);
+    setContentView(2130969146);
+    this.zBm = dFB();
     paramBundle = getIntent().getExtras();
     paramBundle.putBoolean("FROM_CHATTING_ACTIVITY", true);
-    this.vlN.setArguments(paramBundle);
-    getSupportFragmentManager().bP().a(R.h.mm_root_view, this.vlN).commit();
+    this.zBm.setArguments(paramBundle);
+    getSupportFragmentManager().beginTransaction().a(2131821947, this.zBm).commit();
     getSupportActionBar().show();
     if (getIntent().getBooleanExtra("resend_fail_messages", false))
     {
-      ai.l(new Runnable()
-      {
-        public final void run()
-        {
-          h.a(ChattingUI.this, ChattingUI.this.getString(R.l.notification_need_resend_dialog_prompt), "", ChattingUI.this.getString(R.l.notification_need_resend_dialog_prompt_resend_now), ChattingUI.this.getString(R.l.app_cancel), new ChattingUI.1.1(this), new ChattingUI.1.2(this));
-        }
-      }, 500L);
+      al.p(new ChattingUI.1(this), 500L);
       getIntent().putExtra("is_need_resend_sns", false);
     }
     initNavigationSwipeBack();
-    this.vhb.post(new Runnable()
+    this.zBn.post(new Runnable()
     {
       public final void run()
       {
-        if (ChattingUI.this.vlN != null) {
-          e.a(ChattingUI.this, ChattingUI.this.vlN.getBodyView());
+        AppMethodBeat.i(30820);
+        if (ChattingUI.this.zBm != null) {
+          f.a(ChattingUI.this, ChattingUI.this.zBm.getBodyView());
         }
-        b.bf(ChattingUI.this.vlN.getContext());
+        b.bJ(ChattingUI.this.zBm.getContext());
+        AppMethodBeat.o(30820);
       }
     });
+    AppMethodBeat.o(30822);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.ChattingUI", "chatting ui on key down, %d, %s", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.i(30826);
+    ab.d("MicroMsg.ChattingUI", "chatting ui on key down, %d, %s", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(30826);
+    return bool;
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.ChattingUI", "chatting ui on key up");
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.i(30825);
+    ab.d("MicroMsg.ChattingUI", "chatting ui on key up");
+    boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.o(30825);
+    return bool;
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.ChattingUI", "chatting onRequestPermissionsResult");
-    this.vlN.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.i(30827);
+    ab.i("MicroMsg.ChattingUI", "chatting onRequestPermissionsResult");
+    this.zBm.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(30827);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

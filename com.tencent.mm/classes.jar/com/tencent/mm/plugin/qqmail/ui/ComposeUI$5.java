@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ComposeUI$5
   implements MenuItem.OnMenuItemClickListener
@@ -11,7 +12,9 @@ final class ComposeUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    ComposeUI.l(this.ngJ).onClick(null);
+    AppMethodBeat.i(68171);
+    ComposeUI.l(this.pLX).onClick(null);
+    AppMethodBeat.o(68171);
     return false;
   }
 }

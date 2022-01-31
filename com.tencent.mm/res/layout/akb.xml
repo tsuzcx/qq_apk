@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/pj"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView style="@style/pk" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include layout="@layout/ak9" />
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <include layout="@layout/apt" />
+    <ListView android:id="@id/dmu" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/n9" android:listSelector="@color/a3x" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
+    <TextView android:textSize="16.0dip" android:textColor="#ffaaaaaa" android:layout_gravity="center" android:id="@id/dmv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/n9" android:text="@string/bux" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/dmw" android:background="@color/dv" android:padding="@dimen/n_" android:layout_width="fill_parent" android:layout_height="@dimen/n9">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dmx" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/a95" android:id="@id/dmy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/buy" />
+            <ImageView android:background="@null" android:paddingTop="@dimen/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:src="@drawable/a5a" />
         </LinearLayout>
-        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/pn" />
-    </LinearLayout>
-</LinearLayout>
+        <TextView android:textSize="@dimen/na" android:textColor="@color/a95" android:id="@id/dmz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.mm.pluginsdk.ui.tools.FileSelectorFolderView android:id="@id/dn0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/n9" />
+</FrameLayout>

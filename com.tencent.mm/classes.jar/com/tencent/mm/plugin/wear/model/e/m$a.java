@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.wear.model.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.g.a;
+import com.tencent.mm.audio.b.i;
 import com.tencent.mm.bv.b;
-import com.tencent.mm.f.b.g.a;
-import com.tencent.mm.f.b.i;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelvoice.m;
-import com.tencent.mm.modelvoice.q;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.modelvoice.o;
+import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.plugin.wear.model.f.d;
-import com.tencent.mm.protocal.c.cki;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cxv;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.be;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -17,22 +18,23 @@ import java.io.InputStream;
 final class m$a
   extends d
 {
-  private cki qSC;
+  private cxv uHJ;
   
-  public m$a(cki paramcki)
+  public m$a(cxv paramcxv)
   {
-    this.qSC = paramcki;
+    this.uHJ = paramcxv;
   }
   
-  protected final void execute()
+  public final void execute()
   {
-    String str = q.oz(this.qSC.tXp);
-    y.i("MicroMsg.Wear.HttpReplyServer", "get fileName=%s", new Object[] { str });
-    Object localObject = q.R(str, false);
-    y.i("MicroMsg.Wear.HttpReplyServer", "get fullPath=%s", new Object[] { localObject });
-    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(this.qSC.sxO.toByteArray());
-    com.tencent.mm.f.c.c localc = new com.tencent.mm.f.c.c(8000, 16000);
-    localc.cG((String)localObject);
+    AppMethodBeat.i(26411);
+    String str = s.vM(this.uHJ.xlH);
+    ab.i("MicroMsg.Wear.HttpReplyServer", "get fileName=%s", new Object[] { str });
+    Object localObject = s.V(str, false);
+    ab.i("MicroMsg.Wear.HttpReplyServer", "get fullPath=%s", new Object[] { localObject });
+    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(this.uHJ.wrr.toByteArray());
+    com.tencent.mm.audio.e.c localc = new com.tencent.mm.audio.e.c(8000, 16000);
+    localc.eN((String)localObject);
     localObject = new byte[320];
     int i = 0;
     for (;;)
@@ -51,13 +53,14 @@ final class m$a
       }
       localc.a(new g.a((byte[])localObject, i), 0, false);
     }
-    localc.uE();
-    y.i("MicroMsg.Wear.HttpReplyServer", "amr compress finish");
-    q.Z(str, (int)this.qSC.tXK);
-    m.Ti().run();
-    y.i("MicroMsg.Wear.HttpReplyServer", "run service to send the voice");
-    au.Hx();
-    com.tencent.mm.model.c.FB().abx(this.qSC.tXp);
+    localc.Fb();
+    ab.i("MicroMsg.Wear.HttpReplyServer", "amr compress finish");
+    s.ah(str, (int)this.uHJ.yfa);
+    o.amu().run();
+    ab.i("MicroMsg.Wear.HttpReplyServer", "run service to send the voice");
+    aw.aaz();
+    com.tencent.mm.model.c.YF().arJ(this.uHJ.xlH);
+    AppMethodBeat.o(26411);
   }
   
   public final String getName()
@@ -67,7 +70,7 @@ final class m$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.m.a
  * JD-Core Version:    0.7.0.1
  */

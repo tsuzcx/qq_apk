@@ -1,18 +1,19 @@
 package oicq.wlogin_sdk.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import oicq.wlogin_sdk.tools.util;
 
 public final class aa
   extends a
 {
-  int xrA = 0;
+  int CNN = 0;
   
   public aa()
   {
-    this.xqq = 296;
+    this.CMD = 296;
   }
   
-  private static int ab(byte[] paramArrayOfByte, int paramInt)
+  private static int ac(byte[] paramArrayOfByte, int paramInt)
   {
     if (paramArrayOfByte != null)
     {
@@ -26,26 +27,29 @@ public final class aa
   
   public final byte[] a(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    int j = ab(paramArrayOfByte1, 32);
-    int i = ab(paramArrayOfByte2, 16);
-    this.xrA = (j + 11 + 2 + i + 2);
-    byte[] arrayOfByte = new byte[this.xrA];
-    util.D(arrayOfByte, 0, 0);
-    util.C(arrayOfByte, 2, paramInt1);
-    util.C(arrayOfByte, 3, paramInt2);
-    util.C(arrayOfByte, 4, paramInt3);
-    util.E(arrayOfByte, 5, 0);
-    util.D(arrayOfByte, 9, j);
+    AppMethodBeat.i(96495);
+    int j = ac(paramArrayOfByte1, 32);
+    int i = ac(paramArrayOfByte2, 16);
+    this.CNN = (j + 11 + 2 + i + 2);
+    byte[] arrayOfByte = new byte[this.CNN];
+    util.O(arrayOfByte, 0, 0);
+    util.N(arrayOfByte, 2, paramInt1);
+    util.N(arrayOfByte, 3, paramInt2);
+    util.N(arrayOfByte, 4, paramInt3);
+    util.P(arrayOfByte, 5, 0);
+    util.O(arrayOfByte, 9, j);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 11, j);
     paramInt1 = j + 11;
-    util.D(arrayOfByte, paramInt1, i);
+    util.O(arrayOfByte, paramInt1, i);
     paramInt1 += 2;
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, paramInt1, i);
-    util.D(arrayOfByte, paramInt1 + i, 0);
-    super.KP(this.xqq);
-    super.aa(arrayOfByte, this.xrA);
-    super.cUF();
-    return super.cUB();
+    util.O(arrayOfByte, paramInt1 + i, 0);
+    super.Wr(this.CMD);
+    super.ab(arrayOfByte, this.CNN);
+    super.ere();
+    paramArrayOfByte1 = super.era();
+    AppMethodBeat.o(96495);
+    return paramArrayOfByte1;
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceConnectWifiUI$9$2$1
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class ExdeviceConnectWifiUI$9$2$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jCH.jCG.jCy.a(ExdeviceConnectWifiUI.b.jCM);
+    AppMethodBeat.i(19883);
+    this.lMe.lMd.lLW.a(ExdeviceConnectWifiUI.b.lMj);
+    AppMethodBeat.o(19883);
   }
 }
 

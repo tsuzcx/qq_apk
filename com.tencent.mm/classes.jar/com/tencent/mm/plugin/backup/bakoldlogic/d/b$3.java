@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$3
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class b$3
   
   public final void run()
   {
-    this.hPr.a(this.hPv, this.hPw - 1);
+    AppMethodBeat.i(18010);
+    this.jIT.c(this.jIX, this.jIY - 1);
+    AppMethodBeat.o(18010);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.d.b.3
  * JD-Core Version:    0.7.0.1
  */

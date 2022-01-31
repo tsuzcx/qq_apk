@@ -5,21 +5,18 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.plugin.appbrand.app.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.f;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObject;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
-import com.tencent.mm.plugin.appbrand.c.a.a;
 import com.tencent.mm.plugin.appbrand.c.d.a;
 import com.tencent.mm.plugin.appbrand.c.d.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.l;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
 import org.json.JSONObject;
@@ -27,245 +24,220 @@ import org.json.JSONObject;
 public class JsApiUploadEncryptedFileToCDN$JsApiUploadEncryptedMediaFileTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<JsApiUploadEncryptedMediaFileTask> CREATOR = new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.5();
+  public static final Parcelable.Creator<JsApiUploadEncryptedMediaFileTask> CREATOR;
   public String appId;
-  public String bMB;
-  public String dQR;
-  private ProgressDialog dnm = null;
-  public int fDG;
+  public String ctV;
+  private ProgressDialog eeN;
+  public String ewj;
   public String fileId;
   public String fileUrl;
-  public Runnable gfD;
-  com.tencent.mm.plugin.appbrand.jsapi.c ggu;
-  d.b gwA;
-  public boolean gwu;
-  public int gwv = 0;
-  public int gww = 0;
-  public int gwx = 0;
-  Activity gwy;
-  d.a gwz;
+  public int gVW;
+  public boolean hSp;
+  public int hSq;
+  public int hSr;
+  public int hSs;
+  Activity hSt;
+  d.a hSu;
+  d.b hSv;
+  public Runnable hxp;
+  com.tencent.mm.plugin.appbrand.jsapi.c hyO;
   public String mimeType;
   
-  public JsApiUploadEncryptedFileToCDN$JsApiUploadEncryptedMediaFileTask() {}
+  static
+  {
+    AppMethodBeat.i(131318);
+    CREATOR = new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.5();
+    AppMethodBeat.o(131318);
+  }
+  
+  public JsApiUploadEncryptedFileToCDN$JsApiUploadEncryptedMediaFileTask()
+  {
+    this.hSq = 0;
+    this.hSr = 0;
+    this.hSs = 0;
+    this.eeN = null;
+  }
   
   public JsApiUploadEncryptedFileToCDN$JsApiUploadEncryptedMediaFileTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(131311);
+    this.hSq = 0;
+    this.hSr = 0;
+    this.hSs = 0;
+    this.eeN = null;
+    f(paramParcel);
+    AppMethodBeat.o(131311);
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    y.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "runInMainProcess mainEvent:%d, clientEvent:%d", new Object[] { Integer.valueOf(this.gww), Integer.valueOf(this.gwx) });
-    if (this.gww == 1)
+    AppMethodBeat.i(131312);
+    ab.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "runInMainProcess mainEvent:%d, clientEvent:%d", new Object[] { Integer.valueOf(this.hSr), Integer.valueOf(this.hSs) });
+    if (this.hSr == 1)
     {
-      y.e("MicroMsg.JsApiUploadEncryptedFileToCDN", "user cancel upload the file, remove callback");
-      e.abe().a(this.gwz);
-      e.abe().a(this.gwA);
-      e.abe();
-      com.tencent.mm.plugin.appbrand.c.b.rO(this.bMB);
-      this.gww = 0;
-      this.gwx = 1;
-      ahI();
-    }
-    do
-    {
+      ab.e("MicroMsg.JsApiUploadEncryptedFileToCDN", "user cancel upload the file, remove callback");
+      com.tencent.mm.plugin.appbrand.app.g.auP().a(this.hSu);
+      com.tencent.mm.plugin.appbrand.app.g.auP().a(this.hSv);
+      com.tencent.mm.plugin.appbrand.app.g.auP();
+      com.tencent.mm.plugin.appbrand.c.b.zE(this.ctV);
+      this.hSr = 0;
+      this.hSs = 1;
+      aBp();
+      AppMethodBeat.o(131312);
       return;
-      final AppBrandLocalMediaObject localAppBrandLocalMediaObject = AppBrandLocalMediaObjectManager.getItemByLocalId(this.appId, this.bMB);
-      if (localAppBrandLocalMediaObject == null)
+    }
+    AppBrandLocalMediaObject localAppBrandLocalMediaObject = AppBrandLocalMediaObjectManager.bw(this.appId, this.ctV);
+    if (localAppBrandLocalMediaObject == null)
+    {
+      ab.e("MicroMsg.JsApiUploadEncryptedFileToCDN", "getItemByLocalId return mediaObject is null, ");
+      this.hSs = 1;
+      aBp();
+      AppMethodBeat.o(131312);
+      return;
+    }
+    Object localObject1 = new com.tencent.mm.plugin.appbrand.c.a();
+    ((com.tencent.mm.plugin.appbrand.c.a)localObject1).ctV = localAppBrandLocalMediaObject.ctV;
+    ((com.tencent.mm.plugin.appbrand.c.a)localObject1).hgj = localAppBrandLocalMediaObject.fod;
+    ((com.tencent.mm.plugin.appbrand.c.a)localObject1).gmb = localAppBrandLocalMediaObject.gmb;
+    Object localObject2 = this.ctV;
+    ((com.tencent.mm.plugin.appbrand.c.a)localObject1).cBO = com.tencent.mm.al.c.a("appbrandmediafile", bo.aoy(), (String)localObject2, (String)localObject2);
+    com.tencent.mm.plugin.appbrand.app.g.auO().a((com.tencent.mm.plugin.appbrand.c.a)localObject1);
+    this.hSu = new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.1(this);
+    this.hSv = new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.2(this, localAppBrandLocalMediaObject);
+    localObject1 = com.tencent.mm.plugin.appbrand.app.g.auP();
+    localObject2 = this.hSu;
+    if ((((com.tencent.mm.plugin.appbrand.c.b)localObject1).hgq != null) && (localObject2 != null) && (!((com.tencent.mm.plugin.appbrand.c.b)localObject1).hgq.contains(localObject2))) {
+      ((com.tencent.mm.plugin.appbrand.c.b)localObject1).hgq.add(localObject2);
+    }
+    localObject1 = com.tencent.mm.plugin.appbrand.app.g.auP();
+    Object localObject3 = this.appId;
+    localObject2 = localAppBrandLocalMediaObject.ctV;
+    int i = com.tencent.mm.i.a.ecK;
+    d.b localb = this.hSv;
+    com.tencent.mm.plugin.appbrand.c.a locala = com.tencent.mm.plugin.appbrand.app.g.auO().zG((String)localObject2);
+    boolean bool;
+    if (locala == null)
+    {
+      ab.e("MicroMsg.AppbrandCdnService", "addUploadTask get webview file chooser item  by local id failed : %s", new Object[] { localObject2 });
+      bool = false;
+      ab.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "addUploadTask: add cdn upload task result : %b", new Object[] { Boolean.valueOf(bool) });
+      if (!bool)
       {
-        y.e("MicroMsg.JsApiUploadEncryptedFileToCDN", "getItemByLocalId return mediaObject is null, ");
-        this.gwx = 1;
-        ahI();
-        return;
+        ab.e("MicroMsg.JsApiUploadEncryptedFileToCDN", "addUploadTask fail");
+        this.hSs = 1;
+        com.tencent.mm.plugin.appbrand.app.g.auP().a(this.hSu);
+        com.tencent.mm.plugin.appbrand.app.g.auP().a(this.hSv);
+        com.tencent.mm.plugin.appbrand.app.g.auP();
+        com.tencent.mm.plugin.appbrand.c.b.zE(localAppBrandLocalMediaObject.ctV);
+        aBp();
+        AppMethodBeat.o(131312);
       }
-      Object localObject1 = new com.tencent.mm.plugin.appbrand.c.a();
-      ((com.tencent.mm.plugin.appbrand.c.a)localObject1).bMB = localAppBrandLocalMediaObject.bMB;
-      ((com.tencent.mm.plugin.appbrand.c.a)localObject1).fMZ = localAppBrandLocalMediaObject.dXY;
-      ((com.tencent.mm.plugin.appbrand.c.a)localObject1).eUd = localAppBrandLocalMediaObject.eUd;
-      Object localObject2 = this.bMB;
-      ((com.tencent.mm.plugin.appbrand.c.a)localObject1).bUi = com.tencent.mm.ak.c.a("appbrandmediafile", bk.UY(), (String)localObject2, (String)localObject2);
-      e.abd().a((com.tencent.mm.plugin.appbrand.c.a)localObject1);
-      this.gwz = new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.1(this);
-      this.gwA = new d.b()
+    }
+    else
+    {
+      locala.appId = ((String)localObject3);
+      if ((localb != null) && (((com.tencent.mm.plugin.appbrand.c.b)localObject1).hgp != null) && (localb != null) && (!((com.tencent.mm.plugin.appbrand.c.b)localObject1).hgp.contains(localb))) {
+        ((com.tencent.mm.plugin.appbrand.c.b)localObject1).hgp.add(localb);
+      }
+      locala.hgm = true;
+      localObject3 = new com.tencent.mm.i.g();
+      ((com.tencent.mm.i.g)localObject3).edp = ((com.tencent.mm.plugin.appbrand.c.b)localObject1).fFy;
+      ((com.tencent.mm.i.g)localObject3).cMU = true;
+      ((com.tencent.mm.i.g)localObject3).field_mediaId = locala.cBO;
+      ((com.tencent.mm.i.g)localObject3).field_fullpath = locala.hgj;
+      ((com.tencent.mm.i.g)localObject3).field_fileType = i;
+      ((com.tencent.mm.i.g)localObject3).field_talker = "weixin";
+      ((com.tencent.mm.i.g)localObject3).field_priority = com.tencent.mm.i.a.ecF;
+      if (i == com.tencent.mm.i.a.ecK) {}
+      for (((com.tencent.mm.i.g)localObject3).field_needStorage = true;; ((com.tencent.mm.i.g)localObject3).field_needStorage = false)
       {
-        public final void b(boolean paramAnonymousBoolean, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
-        {
-          y.i("MicroMsg.JsApiUploadEncryptedFileToCDN", " on cdn finish,  is success : %s, mediaId : %s, localId : %s, mediaUrl : %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString2, paramAnonymousString1, paramAnonymousString3 });
-          if ((!bk.bl(paramAnonymousString1)) && (paramAnonymousString1.equals(localAppBrandLocalMediaObject.bMB)))
-          {
-            e.abe().a(JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this.gwz);
-            e.abe().a(JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this.gwA);
-            e.abe();
-            com.tencent.mm.plugin.appbrand.c.b.rO(localAppBrandLocalMediaObject.bMB);
-            if (paramAnonymousBoolean) {
-              break label257;
-            }
-            y.e("MicroMsg.JsApiUploadEncryptedFileToCDN", "upload encrypt file false");
-            paramAnonymousString1 = e.abd();
-            paramAnonymousString2 = JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this.fileId;
-            if (!bk.bl(paramAnonymousString2)) {
-              break label275;
-            }
-            y.e("MicroMsg.AppbrandMediaCdnItemManager", "getItemByServerId error, media id is null or nil");
-            label129:
-            break label289;
-            label130:
-            paramAnonymousString1 = null;
-            label132:
-            if ((paramAnonymousString1 == null) || (paramAnonymousString1.fNb == null)) {
-              break label327;
-            }
-            y.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "cdn info is valid");
-            JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this.dQR = paramAnonymousString1.fNb.field_aesKey;
-            JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this.fileId = paramAnonymousString1.fNb.field_fileId;
-            JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this.fileUrl = paramAnonymousString1.fNb.field_fileUrl;
-            JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this.fDG = paramAnonymousString1.fNb.field_fileLength;
-            y.d("MicroMsg.JsApiUploadEncryptedFileToCDN", "aesKey:%s, fileLength:%d", new Object[] { JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this.dQR, Integer.valueOf(JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this.fDG) });
-          }
-          for (;;)
-          {
-            JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this.gwx = 1;
-            JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.b(JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this);
-            return;
-            label257:
-            JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.this.fileId = paramAnonymousString2;
-            y.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "upload encrypt file success");
-            break;
-            label275:
-            paramAnonymousString3 = paramAnonymousString1.fNk.values().iterator();
-            label289:
-            if (!paramAnonymousString3.hasNext()) {
-              break label130;
-            }
-            paramAnonymousString1 = (com.tencent.mm.plugin.appbrand.c.a)paramAnonymousString3.next();
-            if (!bk.pm(paramAnonymousString1.fNa).equals(paramAnonymousString2)) {
-              break label129;
-            }
-            break label132;
-            label327:
-            y.e("MicroMsg.JsApiUploadEncryptedFileToCDN", "cdn info is null");
-          }
-        }
-      };
-      localObject1 = e.abe();
-      localObject2 = this.gwz;
-      if ((((com.tencent.mm.plugin.appbrand.c.b)localObject1).fNg != null) && (localObject2 != null) && (!((com.tencent.mm.plugin.appbrand.c.b)localObject1).fNg.contains(localObject2))) {
-        ((com.tencent.mm.plugin.appbrand.c.b)localObject1).fNg.add(localObject2);
+        ((com.tencent.mm.i.g)localObject3).field_isStreamMedia = false;
+        ((com.tencent.mm.i.g)localObject3).field_appType = 0;
+        ((com.tencent.mm.i.g)localObject3).field_bzScene = 0;
+        ((com.tencent.mm.i.g)localObject3).field_force_aeskeycdn = true;
+        ((com.tencent.mm.i.g)localObject3).field_trysafecdn = false;
+        bool = f.afO().e((com.tencent.mm.i.g)localObject3);
+        ab.i("MicroMsg.AppbrandCdnService", "summersafecdn add upload cdn task : %b, force_aeskeycdn: %b, trysafecdn: %b, localid : %s ", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(((com.tencent.mm.i.g)localObject3).field_force_aeskeycdn), Boolean.valueOf(((com.tencent.mm.i.g)localObject3).field_trysafecdn), localObject2 });
+        break;
       }
-      localObject1 = e.abe();
-      Object localObject3 = this.appId;
-      localObject2 = localAppBrandLocalMediaObject.bMB;
-      int i = com.tencent.mm.j.a.dlp;
-      d.b localb = this.gwA;
-      com.tencent.mm.plugin.appbrand.c.a locala = e.abd().rQ((String)localObject2);
-      boolean bool;
-      if (locala == null)
-      {
-        y.e("MicroMsg.AppbrandCdnService", "addUploadTask get webview file chooser item  by local id failed : %s", new Object[] { localObject2 });
-        bool = false;
-        y.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "addUploadTask: add cdn upload task result : %b", new Object[] { Boolean.valueOf(bool) });
-        if (!bool)
-        {
-          y.e("MicroMsg.JsApiUploadEncryptedFileToCDN", "addUploadTask fail");
-          this.gwx = 1;
-          e.abe().a(this.gwz);
-          e.abe().a(this.gwA);
-          e.abe();
-          com.tencent.mm.plugin.appbrand.c.b.rO(localAppBrandLocalMediaObject.bMB);
-          ahI();
-        }
-      }
-      else
-      {
-        locala.appId = ((String)localObject3);
-        if ((localb != null) && (((com.tencent.mm.plugin.appbrand.c.b)localObject1).fNf != null) && (localb != null) && (!((com.tencent.mm.plugin.appbrand.c.b)localObject1).fNf.contains(localb))) {
-          ((com.tencent.mm.plugin.appbrand.c.b)localObject1).fNf.add(localb);
-        }
-        locala.fNc = true;
-        localObject3 = new com.tencent.mm.j.f();
-        ((com.tencent.mm.j.f)localObject3).dlP = ((com.tencent.mm.plugin.appbrand.c.b)localObject1).epa;
-        ((com.tencent.mm.j.f)localObject3).ceg = true;
-        ((com.tencent.mm.j.f)localObject3).field_mediaId = locala.bUi;
-        ((com.tencent.mm.j.f)localObject3).field_fullpath = locala.fMZ;
-        ((com.tencent.mm.j.f)localObject3).field_fileType = i;
-        ((com.tencent.mm.j.f)localObject3).field_talker = "weixin";
-        ((com.tencent.mm.j.f)localObject3).field_priority = com.tencent.mm.j.a.dlk;
-        if (i == com.tencent.mm.j.a.dlp) {}
-        for (((com.tencent.mm.j.f)localObject3).field_needStorage = true;; ((com.tencent.mm.j.f)localObject3).field_needStorage = false)
-        {
-          ((com.tencent.mm.j.f)localObject3).field_isStreamMedia = false;
-          ((com.tencent.mm.j.f)localObject3).field_appType = 0;
-          ((com.tencent.mm.j.f)localObject3).field_bzScene = 0;
-          ((com.tencent.mm.j.f)localObject3).field_force_aeskeycdn = true;
-          ((com.tencent.mm.j.f)localObject3).field_trysafecdn = false;
-          bool = com.tencent.mm.ak.f.Nd().c((com.tencent.mm.j.f)localObject3);
-          y.i("MicroMsg.AppbrandCdnService", "summersafecdn add upload cdn task : %b, force_aeskeycdn: %b, trysafecdn: %b, localid : %s ", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(((com.tencent.mm.j.f)localObject3).field_force_aeskeycdn), Boolean.valueOf(((com.tencent.mm.j.f)localObject3).field_trysafecdn), localObject2 });
-          break;
-        }
-      }
-    } while (!this.gwu);
-    y.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "show the process dialog");
-    this.gwx = 2;
-    ahI();
+    }
+    if (this.hSp)
+    {
+      ab.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "show the process dialog");
+      this.hSs = 2;
+      aBp();
+    }
+    AppMethodBeat.o(131312);
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    if (this.gwx == 0) {
-      y.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "CLIENT_EVENT_INIT");
-    }
-    do
+    AppMethodBeat.i(131313);
+    if (this.hSs == 0)
     {
-      do
-      {
-        return;
-        if (this.gwx != 1) {
-          break;
-        }
-        y.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "CLIENT_EVENT_FINISH");
-        if (this.dnm != null)
-        {
-          this.dnm.dismiss();
-          this.dnm = null;
-        }
-      } while (this.gfD == null);
-      this.gfD.run();
+      ab.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "CLIENT_EVENT_INIT");
+      AppMethodBeat.o(131313);
       return;
-      if (this.gwx == 2)
+    }
+    if (this.hSs == 1)
+    {
+      ab.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "CLIENT_EVENT_FINISH");
+      if (this.eeN != null)
       {
-        y.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "CLIENT_EVENT_SHOW_DIALOG");
-        localObject = this.gwy;
-        this.gwy.getString(y.j.app_tip);
-        this.dnm = h.b((Context)localObject, this.gwy.getString(y.j.appbrand_jssdk_uploading), true, new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.3(this));
-        this.dnm.setOnKeyListener(new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.4(this));
+        this.eeN.dismiss();
+        this.eeN = null;
+      }
+      if (this.hxp != null)
+      {
+        this.hxp.run();
+        AppMethodBeat.o(131313);
+      }
+    }
+    else
+    {
+      Object localObject;
+      if (this.hSs == 2)
+      {
+        ab.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "CLIENT_EVENT_SHOW_DIALOG");
+        localObject = this.hSt;
+        this.hSt.getString(2131297087);
+        this.eeN = h.b((Context)localObject, this.hSt.getString(2131297156), true, new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.3(this));
+        this.eeN.setOnKeyListener(new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.4(this));
+        AppMethodBeat.o(131313);
         return;
       }
-    } while (this.gwx != 3);
-    y.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "CLIENT_EVENT_PROGRESS");
-    Object localObject = new HashMap();
-    ((Map)localObject).put("tempFilePath", this.bMB);
-    ((Map)localObject).put("percent", Integer.valueOf(this.gwv));
-    localObject = new JSONObject((Map)localObject).toString();
-    new JsApiUploadEncryptedFileToCDN.a((byte)0).d(this.ggu).tL((String)localObject).dispatch();
+      if (this.hSs == 3)
+      {
+        ab.i("MicroMsg.JsApiUploadEncryptedFileToCDN", "CLIENT_EVENT_PROGRESS");
+        localObject = new HashMap();
+        ((Map)localObject).put("tempFilePath", this.ctV);
+        ((Map)localObject).put("percent", Integer.valueOf(this.hSq));
+        localObject = new JSONObject((Map)localObject).toString();
+        new JsApiUploadEncryptedFileToCDN.a((byte)0).i(this.hyO).BM((String)localObject).aBz();
+      }
+    }
+    AppMethodBeat.o(131313);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     boolean bool = true;
+    AppMethodBeat.i(131314);
     this.appId = paramParcel.readString();
-    this.bMB = paramParcel.readString();
+    this.ctV = paramParcel.readString();
     this.fileId = paramParcel.readString();
-    this.dQR = paramParcel.readString();
+    this.ewj = paramParcel.readString();
     this.fileUrl = paramParcel.readString();
-    this.fDG = paramParcel.readInt();
+    this.gVW = paramParcel.readInt();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.gwu = bool;
-      this.gwv = paramParcel.readInt();
-      this.gwx = paramParcel.readInt();
-      this.gww = paramParcel.readInt();
+      this.hSp = bool;
+      this.hSq = paramParcel.readInt();
+      this.hSs = paramParcel.readInt();
+      this.hSr = paramParcel.readInt();
       this.mimeType = paramParcel.readString();
+      AppMethodBeat.o(131314);
       return;
       bool = false;
     }
@@ -273,20 +245,22 @@ public class JsApiUploadEncryptedFileToCDN$JsApiUploadEncryptedMediaFileTask
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(131315);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.bMB);
+    paramParcel.writeString(this.ctV);
     paramParcel.writeString(this.fileId);
-    paramParcel.writeString(this.dQR);
+    paramParcel.writeString(this.ewj);
     paramParcel.writeString(this.fileUrl);
-    paramParcel.writeInt(this.fDG);
-    if (this.gwu) {}
+    paramParcel.writeInt(this.gVW);
+    if (this.hSp) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.gwv);
-      paramParcel.writeInt(this.gwx);
-      paramParcel.writeInt(this.gww);
+      paramParcel.writeInt(this.hSq);
+      paramParcel.writeInt(this.hSs);
+      paramParcel.writeInt(this.hSr);
       paramParcel.writeString(this.mimeType);
+      AppMethodBeat.o(131315);
       return;
     }
   }

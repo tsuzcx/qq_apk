@@ -1,6 +1,7 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CheckCanSubscribeBizUI$3
   implements Runnable
@@ -9,14 +10,16 @@ final class CheckCanSubscribeBizUI$3
   
   public final void run()
   {
-    y.d("MicroMsg.CheckCanSubscribeBizUI", "onNotifyChange toUserName = " + CheckCanSubscribeBizUI.d(this.uHE) + ", userName = " + this.egy);
-    if (CheckCanSubscribeBizUI.d(this.uHE).equals(this.egy))
+    AppMethodBeat.i(29143);
+    ab.d("MicroMsg.CheckCanSubscribeBizUI", "onNotifyChange toUserName = " + CheckCanSubscribeBizUI.d(this.yUP) + ", userName = " + this.fwC);
+    if (CheckCanSubscribeBizUI.d(this.yUP).equals(this.fwC))
     {
-      CheckCanSubscribeBizUI.e(this.uHE);
-      if (!CheckCanSubscribeBizUI.f(this.uHE)) {
-        CheckCanSubscribeBizUI.b(this.uHE);
+      CheckCanSubscribeBizUI.e(this.yUP);
+      if (!CheckCanSubscribeBizUI.f(this.yUP)) {
+        CheckCanSubscribeBizUI.b(this.yUP);
       }
     }
+    AppMethodBeat.o(29143);
   }
 }
 

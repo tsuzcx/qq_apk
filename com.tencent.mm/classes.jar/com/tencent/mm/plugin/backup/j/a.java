@@ -1,81 +1,98 @@
 package com.tencent.mm.plugin.backup.j;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bx;
-import com.tencent.mm.model.bx.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bz;
+import com.tencent.mm.model.bz.a;
 import com.tencent.mm.plugin.backup.b.d;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 
 public class a
-  implements ar
+  implements at
 {
-  private static a hRq;
-  private c hRr = new a.1(this);
-  private c hRs = new a.2(this);
-  private c hRt = new a.3(this);
-  private c hRu = new a.4(this);
-  private bx.a hRv = new a.5(this);
-  private bx.a hRw = new a.6(this);
+  private static a jKR;
+  private c jKS;
+  private c jKT;
+  private c jKU;
+  private c jKV;
+  private bz.a jKW;
+  private bz.a jKX;
   
   public a()
   {
-    y.i("MicroMsg.BackupCore", "BackupCore init");
+    AppMethodBeat.i(18097);
+    this.jKS = new a.1(this);
+    this.jKT = new a.2(this);
+    this.jKU = new a.3(this);
+    this.jKV = new a.4(this);
+    this.jKW = new a.5(this);
+    this.jKX = new a.6(this);
+    ab.i("MicroMsg.BackupCore", "BackupCore init");
+    AppMethodBeat.o(18097);
   }
   
   public static void reset()
   {
-    if (d.atu()) {
+    AppMethodBeat.i(18098);
+    if (d.aSS())
+    {
+      AppMethodBeat.o(18098);
       return;
     }
-    hRq = null;
-    com.tencent.mm.plugin.backup.b.a.ath();
-    d.atv();
+    jKR = null;
+    com.tencent.mm.plugin.backup.b.a.aSF();
+    d.aST();
+    AppMethodBeat.o(18098);
   }
   
-  public final void bh(boolean paramBoolean)
-  {
-    b localb = b.avW();
-    y.i("MicroMsg.BackupEventListener", "init addListener");
-    localb.hRC = new b.1(localb);
-    com.tencent.mm.sdk.b.a.udP.c(localb.hRC);
-    localb.hRD = new b.2(localb);
-    com.tencent.mm.sdk.b.a.udP.c(localb.hRD);
-    localb.fAU = new b.3(localb);
-    com.tencent.mm.sdk.b.a.udP.c(localb.fAU);
-    au.getSysCmdMsgExtension().a("MMBakChatNotify", this.hRv, true);
-    au.getSysCmdMsgExtension().a("ChatSync", this.hRw, true);
-    com.tencent.mm.sdk.b.a.udP.b(this.hRr);
-    com.tencent.mm.sdk.b.a.udP.b(this.hRs);
-    com.tencent.mm.sdk.b.a.udP.b(this.hRt);
-    com.tencent.mm.sdk.b.a.udP.b(this.hRu);
-  }
+  public void clearPluginData(int paramInt) {}
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
-  {
-    b localb = b.avW();
-    com.tencent.mm.sdk.b.a.udP.d(localb.hRC);
-    com.tencent.mm.sdk.b.a.udP.d(localb.hRD);
-    com.tencent.mm.sdk.b.a.udP.d(localb.fAU);
-    au.getSysCmdMsgExtension().b("MMBakChatNotify", this.hRv, true);
-    au.getSysCmdMsgExtension().b("ChatSync", this.hRw, true);
-    com.tencent.mm.sdk.b.a.udP.d(this.hRr);
-    com.tencent.mm.sdk.b.a.udP.d(this.hRs);
-    com.tencent.mm.sdk.b.a.udP.d(this.hRt);
-    com.tencent.mm.sdk.b.a.udP.d(this.hRu);
-  }
-  
-  public final HashMap<Integer, h.d> xe()
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
     return null;
   }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(18099);
+    b localb = b.aVz();
+    ab.i("MicroMsg.BackupEventListener", "init addListener");
+    localb.jLd = new b.1(localb);
+    com.tencent.mm.sdk.b.a.ymk.c(localb.jLd);
+    localb.jLe = new b.2(localb);
+    com.tencent.mm.sdk.b.a.ymk.c(localb.jLe);
+    localb.gSJ = new b.3(localb);
+    com.tencent.mm.sdk.b.a.ymk.c(localb.gSJ);
+    aw.getSysCmdMsgExtension().a("MMBakChatNotify", this.jKW, true);
+    aw.getSysCmdMsgExtension().a("ChatSync", this.jKX, true);
+    com.tencent.mm.sdk.b.a.ymk.b(this.jKS);
+    com.tencent.mm.sdk.b.a.ymk.b(this.jKT);
+    com.tencent.mm.sdk.b.a.ymk.b(this.jKU);
+    com.tencent.mm.sdk.b.a.ymk.b(this.jKV);
+    AppMethodBeat.o(18099);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(18100);
+    b localb = b.aVz();
+    com.tencent.mm.sdk.b.a.ymk.d(localb.jLd);
+    com.tencent.mm.sdk.b.a.ymk.d(localb.jLe);
+    com.tencent.mm.sdk.b.a.ymk.d(localb.gSJ);
+    aw.getSysCmdMsgExtension().b("MMBakChatNotify", this.jKW, true);
+    aw.getSysCmdMsgExtension().b("ChatSync", this.jKX, true);
+    com.tencent.mm.sdk.b.a.ymk.d(this.jKS);
+    com.tencent.mm.sdk.b.a.ymk.d(this.jKT);
+    com.tencent.mm.sdk.b.a.ymk.d(this.jKU);
+    com.tencent.mm.sdk.b.a.ymk.d(this.jKV);
+    AppMethodBeat.o(18100);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

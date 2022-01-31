@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.appbrand.dynamic.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.widget.a.a;
-import com.tencent.mm.plugin.appbrand.widget.l;
-import com.tencent.mm.plugin.appbrand.widget.m;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.appbrand.widget.n;
+import com.tencent.mm.plugin.appbrand.widget.o;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
 final class WxaWidgetDebugUI$2
@@ -12,16 +13,18 @@ final class WxaWidgetDebugUI$2
 {
   WxaWidgetDebugUI$2(WxaWidgetDebugUI paramWxaWidgetDebugUI) {}
   
-  public final void cr(boolean paramBoolean)
+  public final void onStatusChange(boolean paramBoolean)
   {
-    this.fXw.fXv.field_openDebug = paramBoolean;
-    m localm = ((a)g.r(a.class)).aaW();
-    l locall = this.fXw.fXv;
-    if ((locall != null) && (!bk.bl(locall.field_appId)))
+    AppMethodBeat.i(11011);
+    this.hqW.hqV.field_openDebug = paramBoolean;
+    o localo = ((a)g.E(a.class)).auI();
+    n localn = this.hqW.hqV;
+    if ((localn != null) && (!bo.isNullOrNil(localn.field_appId)))
     {
-      locall.field_appIdHash = locall.field_appId.hashCode();
-      localm.a(locall);
+      localn.field_appIdHash = localn.field_appId.hashCode();
+      localo.replace(localn);
     }
+    AppMethodBeat.o(11011);
   }
 }
 

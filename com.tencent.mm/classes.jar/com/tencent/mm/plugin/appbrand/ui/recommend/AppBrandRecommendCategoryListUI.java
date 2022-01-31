@@ -1,83 +1,22 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.plugin.appbrand.y.i;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.protocal.c.mm;
-import com.tencent.mm.sdk.platformtools.y;
+import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.statusbar.DrawStatusBarActivity;
 
+@Deprecated
 public class AppBrandRecommendCategoryListUI
-  extends DrawStatusBarActivity
+  extends MMActivity
 {
-  private c hkb;
-  mm hko = new mm();
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
+  public int getLayoutId()
   {
-    Intent localIntent = new Intent(paramContext, AppBrandRecommendCategoryListUI.class);
-    localIntent.putExtra("category_id", paramInt);
-    localIntent.putExtra("category_name", paramString);
-    localIntent.putExtra("KEY_FROM_SCENE", 0);
-    paramContext.startActivity(localIntent);
+    return 0;
   }
   
-  protected final int getLayoutId()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return y.h.app_brand_recommend_category_list_ui;
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    this.hko.sJi = getIntent().getIntExtra("category_id", -1);
-    this.hko.sJp = getIntent().getStringExtra("category_name");
-    y.i("MicroMsg.AppBrandRecommendCategoryListUI", "onCreate cate_id:%s, cate_name:%s", new Object[] { Integer.valueOf(this.hko.sJi), this.hko.sJp });
-    if ((this.hko.sJi == -1) || (TextUtils.isEmpty(this.hko.sJp)))
-    {
-      y.e("MicroMsg.AppBrandRecommendCategoryListUI", "cate_id or cate_name is illegal");
-      finish();
-      return;
-    }
-    this.mController.contentView.setBackgroundColor(-855310);
-    ta(-855310);
-    setTitleBarDoubleClickListener(new Runnable()
-    {
-      public final void run()
-      {
-        if ((!AppBrandRecommendCategoryListUI.this.uMr) && (AppBrandRecommendCategoryListUI.this.isFinishing())) {}
-      }
-    });
-    setMMTitle(getResources().getString(y.j.app_brand_recommend_list_header_text_all_use));
-    oX(-16777216);
-    setBackBtn(new AppBrandRecommendCategoryListUI.3(this), y.i.actionbar_icon_dark_back);
-    if (this.hkb == null) {
-      this.hkb = new AppBrandRecommendCategoryListUI.1(this, this);
-    }
-    y.i("MicroMsg.AppBrandRecommendUILogic", "onCreate");
-    this.hkb.initView();
-  }
-  
-  protected void onDestroy()
-  {
-    super.onDestroy();
-    this.hkb.onDestroyView();
-    y.i("MicroMsg.AppBrandRecommendUILogic", "onDestroy");
-    y.i("MicroMsg.AppBrandRecommendCategoryListUI", "onDestroy");
-  }
-  
-  protected void onResume()
-  {
-    super.onResume();
-    y.i("MicroMsg.AppBrandRecommendCategoryListUI", "onResume");
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

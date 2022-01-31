@@ -1,12 +1,13 @@
 package com.tencent.mm.modelstat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
 import java.util.Locale;
 
 final class c$d
   implements Serializable, Comparable<d>
 {
-  String eCA = null;
+  String fSr = null;
   int left;
   long time = 0L;
   int top;
@@ -14,12 +15,15 @@ final class c$d
   
   public final String toString()
   {
-    return String.format(Locale.getDefault(), "[%s,%s]", new Object[] { this.eCA, c.cf(this.time) });
+    AppMethodBeat.i(78669);
+    String str = String.format(Locale.getDefault(), "[%s,%s]", new Object[] { this.fSr, c.hb(this.time) });
+    AppMethodBeat.o(78669);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelstat.c.d
  * JD-Core Version:    0.7.0.1
  */

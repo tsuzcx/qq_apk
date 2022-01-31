@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.ext.provider;
 
-import com.tencent.mm.h.a.ke;
-import com.tencent.mm.h.a.ke.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.kr;
+import com.tencent.mm.g.a.kr.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
@@ -13,35 +14,44 @@ final class ExtControlProviderNearBy$3
   
   public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.sdk.b.b paramb)
   {
-    if ((!(paramb instanceof ke)) || (ExtControlProviderNearBy.c(this.jKJ) == null)) {
-      return;
-    }
-    paramString = (ke)paramb;
-    y.i("MicroMsg.ExtControlProviderNearBy", "get lbsfriend errcode: " + paramInt2 + ", errType: " + paramInt1);
-    if ((paramInt1 == 0) && (paramInt2 == 0))
+    AppMethodBeat.i(20364);
+    if ((paramb instanceof kr))
     {
-      ExtControlProviderNearBy.a(this.jKJ, paramString.bTb.bTi);
-      if ((ExtControlProviderNearBy.d(this.jKJ) == null) || (ExtControlProviderNearBy.d(this.jKJ).size() == 0))
+      if (ExtControlProviderNearBy.c(this.meN) == null)
       {
-        y.e("MicroMsg.ExtControlProviderNearBy", "get lbsfriend list size:0");
-        ExtControlProviderNearBy.c(this.jKJ).countDown();
+        AppMethodBeat.o(20364);
+        return;
       }
+      paramString = (kr)paramb;
+      ab.i("MicroMsg.ExtControlProviderNearBy", "get lbsfriend errcode: " + paramInt2 + ", errType: " + paramInt1);
+      if ((paramInt1 != 0) || (paramInt2 != 0)) {
+        break label273;
+      }
+      ExtControlProviderNearBy.a(this.meN, paramString.cAG.cAN);
+      if ((ExtControlProviderNearBy.d(this.meN) != null) && (ExtControlProviderNearBy.d(this.meN).size() != 0)) {
+        break label146;
+      }
+      ab.e("MicroMsg.ExtControlProviderNearBy", "get lbsfriend list size:0");
+      ExtControlProviderNearBy.c(this.meN).countDown();
     }
     for (;;)
     {
-      ExtControlProviderNearBy.f(this.jKJ);
+      ExtControlProviderNearBy.f(this.meN);
+      AppMethodBeat.o(20364);
       return;
-      if (ExtControlProviderNearBy.d(this.jKJ).size() > 10)
+      label146:
+      if (ExtControlProviderNearBy.d(this.meN).size() > 10)
       {
-        y.i("MicroMsg.ExtControlProviderNearBy", "get lbsfriend size > 10," + ExtControlProviderNearBy.d(this.jKJ).size());
-        ExtControlProviderNearBy.d(this.jKJ).subList(10, ExtControlProviderNearBy.d(this.jKJ).size()).clear();
+        ab.i("MicroMsg.ExtControlProviderNearBy", "get lbsfriend size > 10," + ExtControlProviderNearBy.d(this.meN).size());
+        ExtControlProviderNearBy.d(this.meN).subList(10, ExtControlProviderNearBy.d(this.meN).size()).clear();
       }
-      ExtControlProviderNearBy.a(this.jKJ, new CountDownLatch(ExtControlProviderNearBy.d(this.jKJ).size()));
-      ExtControlProviderNearBy.c(this.jKJ).countDown();
-      ExtControlProviderNearBy.e(this.jKJ);
+      ExtControlProviderNearBy.a(this.meN, new CountDownLatch(ExtControlProviderNearBy.d(this.meN).size()));
+      ExtControlProviderNearBy.c(this.meN).countDown();
+      ExtControlProviderNearBy.e(this.meN);
       continue;
-      y.e("MicroMsg.ExtControlProviderNearBy", "get lbsfriend failed: errCode = " + paramInt2 + ", errType=" + paramInt1);
-      ExtControlProviderNearBy.c(this.jKJ).countDown();
+      label273:
+      ab.e("MicroMsg.ExtControlProviderNearBy", "get lbsfriend failed: errCode = " + paramInt2 + ", errType=" + paramInt1);
+      ExtControlProviderNearBy.c(this.meN).countDown();
     }
   }
 }

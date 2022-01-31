@@ -1,29 +1,32 @@
 package com.tencent.luggage.bridge;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONObject;
 
 public final class g
 {
-  private JSONObject bhk;
-  private String bhw;
-  int bhx;
-  boolean bhy;
+  private JSONObject bxK;
+  private String bxW;
+  int bxX;
+  boolean bxY;
   
   g(m paramm)
   {
-    paramm = paramm.pO();
-    this.bhw = paramm.getString("method");
-    this.bhk = paramm.optJSONObject("data");
-    if (this.bhk == null) {
-      this.bhk = new JSONObject();
+    AppMethodBeat.i(90723);
+    paramm = paramm.tS();
+    this.bxW = paramm.getString("method");
+    this.bxK = paramm.optJSONObject("data");
+    if (this.bxK == null) {
+      this.bxK = new JSONObject();
     }
-    this.bhx = paramm.optInt("callbackId", 0);
-    this.bhy = paramm.optBoolean("keepCallback", false);
+    this.bxX = paramm.optInt("callbackId", 0);
+    this.bxY = paramm.optBoolean("keepCallback", false);
+    AppMethodBeat.o(90723);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.bridge.g
  * JD-Core Version:    0.7.0.1
  */

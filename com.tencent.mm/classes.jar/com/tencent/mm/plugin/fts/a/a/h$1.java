@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fts.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.l;
 import java.lang.ref.WeakReference;
 
@@ -10,10 +11,12 @@ final class h$1
   
   public final void run()
   {
-    l locall = (l)h.a(this.kwV).get();
+    AppMethodBeat.i(114266);
+    l locall = (l)h.a(this.mSL).get();
     if (locall != null) {
-      locall.b(h.b(this.kwV));
+      locall.b(h.b(this.mSL));
     }
+    AppMethodBeat.o(114266);
   }
 }
 

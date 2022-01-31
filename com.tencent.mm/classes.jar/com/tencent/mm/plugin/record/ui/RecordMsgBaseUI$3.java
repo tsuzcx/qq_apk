@@ -2,38 +2,40 @@ package com.tencent.mm.plugin.record.ui;
 
 import android.view.View;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class RecordMsgBaseUI$3
   implements Runnable
 {
-  RecordMsgBaseUI$3(RecordMsgBaseUI paramRecordMsgBaseUI, View paramView) {}
+  RecordMsgBaseUI$3(RecordMsgBaseUI paramRecordMsgBaseUI) {}
   
   public final void run()
   {
-    View localView = this.ntT.fry.getChildAt(this.ntT.fry.getLastVisiblePosition());
-    if (localView != null)
+    AppMethodBeat.i(24233);
+    View localView = this.pZB.gJa.getChildAt(this.pZB.gJa.getLastVisiblePosition());
+    if ((localView != null) && (RecordMsgBaseUI.a(this.pZB) != null) && (RecordMsgBaseUI.a(this.pZB).getVisibility() == 0))
     {
-      int i = localView.getBottom();
-      int j = this.ntT.fry.getBottom();
-      int k = a.fromDPToPix(this.ntT.mController.uMN, 64);
-      y.d("MicroMsg.RecordMsgBaseUI", "lastBotm %s, listBotm %s, listEndmargin %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-      if (i < j - k)
+      int j = localView.getBottom();
+      int k = this.pZB.gJa.getBottom();
+      ab.d("MicroMsg.RecordMsgBaseUI", "footerBotm %d, listBotm %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k) });
+      int i = a.fromDPToPix(this.pZB.getContext(), 64);
+      if (k - j > 0)
       {
-        i = j - i - k;
-        y.d("MicroMsg.RecordMsgBaseUI", "offset %d", new Object[] { Integer.valueOf(i) });
-        this.ntU.setPadding(0, i, 0, 0);
+        j = k - j + a.fromDPToPix(this.pZB.getContext(), 15);
+        ab.d("MicroMsg.RecordMsgBaseUI", "offset %d", new Object[] { Integer.valueOf(j) });
+        if (j > i) {
+          RecordMsgBaseUI.a(this.pZB).setPadding(0, j, 0, 0);
+        }
       }
     }
-    this.ntT.fry.addFooterView(this.ntU, null, false);
+    AppMethodBeat.o(24233);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.RecordMsgBaseUI.3
  * JD-Core Version:    0.7.0.1
  */

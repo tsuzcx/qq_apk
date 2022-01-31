@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/t" android:gravity="center_horizontal" android:id="@id/b2x" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="9" android:includeFontPadding="false" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/x" android:gravity="center_horizontal" android:id="@id/b2y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ABCD" android:includeFontPadding="false" android:layout_below="@id/b2x" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<android.support.constraint.ConstraintLayout android:paddingLeft="@dimen/l2" android:paddingTop="28.0dip" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/b3p" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/fm" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintEnd_toEndOf="dn" app:layout_constraintTop_toTopOf="dn" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/m2" android:textColor="@color/h6" android:ellipsize="end" android:id="@id/biz_slot_title_neat_tv" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/la" android:maxLines="2" android:lineSpacingExtra="2.0dip" app:layout_constraintBottom_toTopOf="@id/b47" app:layout_constraintEnd_toStartOf="@id/b3p" app:layout_constraintHorizontal_bias="0.5" app:layout_constraintStart_toStartOf="dn" app:layout_constraintTop_toTopOf="dn" />
+    <TextView android:textSize="@dimen/na" android:textColor="#33000000" android:id="@id/b47" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/lb" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintStart_toStartOf="@id/biz_slot_title_neat_tv" app:layout_constraintTop_toBottomOf="@id/biz_slot_title_neat_tv" />
+    <TextView android:textSize="@dimen/na" android:textColor="#33000000" android:id="@id/biz_slot_show_desc_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/l2" app:layout_constraintStart_toEndOf="@id/b47" app:layout_constraintTop_toTopOf="@id/b47" />
+</android.support.constraint.ConstraintLayout>

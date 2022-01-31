@@ -1,75 +1,95 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import android.os.HandlerThread;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.vending.h.g;
 import com.tencent.mm.vending.h.h;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class b
 {
-  private static volatile ai gij;
-  private static String gik = "app_brand_audio_player";
-  private static AtomicInteger gil = new AtomicInteger(0);
-  private static Object lockObj = new Object();
-  private static ah mHandler;
+  private static volatile al hBA;
+  private static String hBB;
+  private static AtomicInteger hBC;
+  private static Object lockObj;
+  private static ak mHandler;
   
-  private static void ahW()
+  static
   {
-    if (gij == null)
-    {
-      gij = new ai(gik);
-      h localh = new h(gij.mnU.getLooper(), gik);
-      g.a(gik, localh);
-    }
-    mHandler = new ah(gij.mnU.getLooper());
+    AppMethodBeat.i(137714);
+    hBB = "app_brand_audio_player";
+    lockObj = new Object();
+    hBC = new AtomicInteger(0);
+    AppMethodBeat.o(137714);
   }
   
-  public static void onCreate(String arg0)
+  public static void BP(String arg0)
   {
-    y.i("MicroMsg.Audio.AudioApiTaskExecutor", "onCreate %s", new Object[] { ??? });
-    if (gil.incrementAndGet() == 1) {
+    AppMethodBeat.i(137712);
+    ab.i("MicroMsg.Audio.AudioApiTaskExecutor", "onDestroy:%s", new Object[] { ??? });
+    if (hBC.decrementAndGet() == 0) {
       synchronized (lockObj)
       {
-        ahW();
-        return;
-      }
-    }
-  }
-  
-  public static void tP(String arg0)
-  {
-    y.i("MicroMsg.Audio.AudioApiTaskExecutor", "onDestroy:%s", new Object[] { ??? });
-    if (gil.decrementAndGet() == 0) {
-      synchronized (lockObj)
-      {
-        if ((gij != null) && (gij != null))
+        if ((hBA != null) && (hBA != null))
         {
-          g.aeK(gik);
-          gij.mnU.quit();
-          gij = null;
+          g.avC(hBB);
+          hBA.oNc.quit();
+          hBA = null;
           mHandler = null;
         }
+        AppMethodBeat.o(137712);
         return;
       }
     }
+    AppMethodBeat.o(137712);
   }
   
-  public static void y(Runnable paramRunnable)
+  public static void G(Runnable paramRunnable)
   {
+    AppMethodBeat.i(137713);
     synchronized (lockObj)
     {
       if (mHandler != null)
       {
         mHandler.post(paramRunnable);
+        AppMethodBeat.o(137713);
         return;
       }
-      y.w("MicroMsg.Audio.AudioApiTaskExecutor", "mHandler is null, recreate");
-      ahW();
+      ab.w("MicroMsg.Audio.AudioApiTaskExecutor", "mHandler is null, recreate");
+      aBN();
       mHandler.post(paramRunnable);
     }
+  }
+  
+  private static void aBN()
+  {
+    AppMethodBeat.i(137711);
+    if (hBA == null)
+    {
+      hBA = new al(hBB);
+      h localh = new h(hBA.oNc.getLooper(), hBB);
+      g.a(hBB, localh);
+    }
+    mHandler = new ak(hBA.oNc.getLooper());
+    AppMethodBeat.o(137711);
+  }
+  
+  public static void onCreate(String arg0)
+  {
+    AppMethodBeat.i(137710);
+    ab.i("MicroMsg.Audio.AudioApiTaskExecutor", "onCreate %s", new Object[] { ??? });
+    if (hBC.incrementAndGet() == 1) {
+      synchronized (lockObj)
+      {
+        aBN();
+        AppMethodBeat.o(137710);
+        return;
+      }
+    }
+    AppMethodBeat.o(137710);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.address.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class InvoiceListUI$4
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class InvoiceListUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.fuL.setResult(0);
-    this.fuL.finish();
+    AppMethodBeat.i(16861);
+    this.gMn.setResult(0);
+    this.gMn.finish();
+    AppMethodBeat.o(16861);
     return true;
   }
 }

@@ -8,29 +8,29 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface e
   extends a
 {
-  public abstract d Jm();
+  public abstract String a(String paramString, View paramView, Bundle paramBundle, ab paramab);
   
-  public abstract l Jn();
+  public abstract void a(String paramString, View paramView);
   
-  public abstract String a(String paramString, View paramView, Bundle paramBundle, z paramz);
+  public abstract d ack();
   
-  public abstract void b(String paramString, View paramView);
+  public abstract l acl();
   
-  public abstract void bM(View paramView);
+  public abstract View bX(Context paramContext);
   
-  public abstract n bN(View paramView);
+  public abstract void cl(View paramView);
   
-  public abstract View bt(Context paramContext);
+  public abstract n cm(View paramView);
   
   public abstract void initialize();
   
-  public abstract void ju(String paramString);
+  public abstract void qi(String paramString);
   
   public abstract void shutdown();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.e
  * JD-Core Version:    0.7.0.1
  */

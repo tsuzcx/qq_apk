@@ -8,23 +8,23 @@ import android.widget.TextView;
 
 public final class aa$a
 {
-  public RelativeLayout iqZ;
-  public ImageView ira;
-  public TextView irb;
-  public TextView irc;
-  public TextView irf;
-  public View iwo;
-  public ImageView iwp;
-  public ImageView ixf;
-  public LinearLayout ixg;
-  public ImageView ixh;
-  public ImageView ixi;
-  public ImageView ixj;
-  public TextView iyL;
-  public TextView iyM;
-  public TextView iyN;
-  public TextView iyO;
-  public TextView iyP;
+  public TextView kBS;
+  public TextView kBT;
+  public TextView kBU;
+  public TextView kBV;
+  public TextView kBW;
+  public RelativeLayout ksh;
+  public ImageView ksi;
+  public TextView ksj;
+  public TextView ksk;
+  public TextView ksn;
+  public View kxs;
+  public ImageView kxt;
+  public ImageView kyi;
+  public LinearLayout kyj;
+  public ImageView kyk;
+  public ImageView kyl;
+  public ImageView kym;
   
   public aa$a(aa paramaa) {}
 }

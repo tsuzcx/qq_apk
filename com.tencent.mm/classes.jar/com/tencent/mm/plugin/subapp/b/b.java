@@ -1,18 +1,19 @@
 package com.tencent.mm.plugin.subapp.b;
 
-import com.tencent.mm.ah.e;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
-import com.tencent.mm.ah.e.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.ai.e.b;
+import com.tencent.mm.ai.e.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -20,99 +21,118 @@ import java.util.Queue;
 public final class b
   implements e, f
 {
-  private Queue<b.a> pvt = null;
-  private boolean pvu = false;
+  private Queue<b.a> sWY = null;
+  private boolean sWZ = false;
   
-  private void bLV()
+  private void cGR()
   {
-    if (this.pvu) {}
-    do
+    AppMethodBeat.i(25242);
+    if (this.sWZ)
     {
-      do
-      {
-        return;
-      } while (this.pvt.size() == 0);
-      localObject = (b.a)this.pvt.peek();
-      if (((b.a)localObject).pvv.size() == 0)
-      {
-        this.pvt.poll();
-        au.Hx();
-        c.Dz().o(8193, ((b.a)localObject).eZK);
-        au.Hx();
-        c.Dz().o(8449, Long.valueOf(bk.UX()));
-        return;
-      }
-      localObject = (String)((b.a)localObject).pvv.peek();
-    } while ((localObject == null) || (((String)localObject).length() <= 0));
-    this.pvu = true;
-    Object localObject = new a((String)localObject);
-    au.Dk().a(141, this);
-    au.Dk().a((m)localObject, 0);
+      AppMethodBeat.o(25242);
+      return;
+    }
+    if (this.sWY.size() == 0)
+    {
+      AppMethodBeat.o(25242);
+      return;
+    }
+    Object localObject = (b.a)this.sWY.peek();
+    if (((b.a)localObject).sXa.size() == 0)
+    {
+      this.sWY.poll();
+      aw.aaz();
+      c.Ru().set(8193, ((b.a)localObject).grD);
+      aw.aaz();
+      c.Ru().set(8449, Long.valueOf(bo.aox()));
+      AppMethodBeat.o(25242);
+      return;
+    }
+    localObject = (String)((b.a)localObject).sXa.peek();
+    if ((localObject == null) || (((String)localObject).length() <= 0))
+    {
+      AppMethodBeat.o(25242);
+      return;
+    }
+    this.sWZ = true;
+    localObject = new a((String)localObject);
+    aw.Rc().a(141, this);
+    aw.Rc().a((m)localObject, 0);
+    AppMethodBeat.o(25242);
   }
   
   public final void a(e.c paramc) {}
   
   public final e.b b(e.a parama)
   {
-    parama = aa.a(parama.dBs.svH);
-    if (this.pvt == null) {
-      this.pvt = new LinkedList();
+    AppMethodBeat.i(25241);
+    parama = aa.a(parama.eyJ.woR);
+    if (this.sWY == null) {
+      this.sWY = new LinkedList();
     }
     parama = new b.a(parama);
-    if (parama.eZK != null)
+    if (parama.grD != null)
     {
-      this.pvt.offer(parama);
-      bLV();
+      this.sWY.offer(parama);
+      cGR();
     }
+    AppMethodBeat.o(25241);
     return null;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(25243);
     if (paramm.getType() != 141)
     {
-      this.pvu = false;
+      this.sWZ = false;
+      AppMethodBeat.o(25243);
       return;
     }
-    au.Dk().b(141, this);
+    aw.Rc().b(141, this);
     paramString = ((a)paramm).url;
-    paramm = (b.a)this.pvt.peek();
-    if ((paramm == null) || (paramm.pvv.size() == 0))
+    paramm = (b.a)this.sWY.peek();
+    if ((paramm == null) || (paramm.sXa.size() == 0))
     {
-      y.e("MicroMsg.PushMessageExtension", "getDoSceneQueue failed ! reset queue!");
-      this.pvt = new LinkedList();
-      this.pvu = false;
+      ab.e("MicroMsg.PushMessageExtension", "getDoSceneQueue failed ! reset queue!");
+      this.sWY = new LinkedList();
+      this.sWZ = false;
+      AppMethodBeat.o(25243);
       return;
     }
-    if (paramm.pvv.size() == 0)
+    if (paramm.sXa.size() == 0)
     {
-      y.e("MicroMsg.PushMessageExtension", "get imgQueue failed ! ignore this message");
-      this.pvt.poll();
-      this.pvu = false;
+      ab.e("MicroMsg.PushMessageExtension", "get imgQueue failed ! ignore this message");
+      this.sWY.poll();
+      this.sWZ = false;
+      AppMethodBeat.o(25243);
       return;
     }
-    if (!((String)paramm.pvv.peek()).equals(paramString))
+    if (!((String)paramm.sXa.peek()).equals(paramString))
     {
-      y.e("MicroMsg.PushMessageExtension", "check img url failed ! ignore this message");
-      this.pvt.poll();
-      this.pvu = false;
+      ab.e("MicroMsg.PushMessageExtension", "check img url failed ! ignore this message");
+      this.sWY.poll();
+      this.sWZ = false;
+      AppMethodBeat.o(25243);
       return;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      y.e("MicroMsg.PushMessageExtension", "down failed [" + paramInt1 + "," + paramInt2 + "] ignore this message : img:[" + paramString + "] ");
-      this.pvt.poll();
-      this.pvu = false;
+      ab.e("MicroMsg.PushMessageExtension", "down failed [" + paramInt1 + "," + paramInt2 + "] ignore this message : img:[" + paramString + "] ");
+      this.sWY.poll();
+      this.sWZ = false;
+      AppMethodBeat.o(25243);
       return;
     }
-    paramm.pvv.poll();
-    this.pvu = false;
-    bLV();
+    paramm.sXa.poll();
+    this.sWZ = false;
+    cGR();
+    AppMethodBeat.o(25243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.b.b
  * JD-Core Version:    0.7.0.1
  */

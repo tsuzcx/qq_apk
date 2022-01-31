@@ -10,127 +10,152 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.f.c;
-import com.tencent.mm.plugin.emoji.f.e;
-import com.tencent.mm.plugin.emoji.f.f;
-import com.tencent.mm.plugin.emoji.f.h;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
+import com.tencent.mm.ui.w;
 
 public class EmojiStoreV2HotBarView
   extends LinearLayout
 {
-  private View ipf;
-  private View jgR;
-  private TextView jgS;
-  private View jgT;
-  private TextView jgU;
-  private View.OnClickListener jgV = new EmojiStoreV2HotBarView.1(this);
+  private View iCk;
+  private View lpK;
+  private TextView lpL;
+  private View lpM;
+  private TextView lpN;
+  private View.OnClickListener lpO;
   
   public EmojiStoreV2HotBarView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(53629);
+    this.lpO = new EmojiStoreV2HotBarView.1(this);
     init();
+    AppMethodBeat.o(53629);
   }
   
   public EmojiStoreV2HotBarView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(53630);
+    this.lpO = new EmojiStoreV2HotBarView.1(this);
     init();
+    AppMethodBeat.o(53630);
   }
   
   @TargetApi(11)
   public EmojiStoreV2HotBarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(53633);
+    this.lpO = new EmojiStoreV2HotBarView.1(this);
     init();
+    AppMethodBeat.o(53633);
   }
   
   private void init()
   {
-    this.ipf = ((ViewGroup)com.tencent.mm.ui.y.gt(getContext()).inflate(f.f.emoji_store_v2_hot_bar_view, this)).findViewById(f.e.root);
-    this.jgR = this.ipf.findViewById(f.e.emoji_designer_catalog);
-    this.jgS = ((TextView)this.ipf.findViewById(f.e.emoji_more));
-    this.jgS.setText(getResources().getText(f.h.emoji_store_new_suggest) + " ");
-    this.jgT = this.ipf.findViewById(f.e.designer_product);
-    this.jgT.setOnClickListener(new EmojiStoreV2HotBarView.2(this));
-    this.jgU = ((TextView)this.ipf.findViewById(f.e.new_tips));
-    aJA();
-    setMoreOnClickListener(this.jgV);
+    AppMethodBeat.i(53634);
+    this.iCk = ((ViewGroup)w.hM(getContext()).inflate(2130969398, this)).findViewById(2131821003);
+    this.lpK = this.iCk.findViewById(2131823675);
+    this.lpL = ((TextView)this.iCk.findViewById(2131823677));
+    this.lpL.setText(getResources().getText(2131299213) + " ");
+    this.lpM = this.iCk.findViewById(2131823666);
+    this.lpM.setOnClickListener(new EmojiStoreV2HotBarView.2(this));
+    this.lpN = ((TextView)this.iCk.findViewById(2131823665));
+    bnj();
+    setMoreOnClickListener(this.lpO);
+    AppMethodBeat.o(53634);
   }
   
-  public final void aJA()
+  public final void bnj()
   {
-    boolean bool = ((Boolean)g.DP().Dz().get(ac.a.uof, Boolean.valueOf(false))).booleanValue();
+    AppMethodBeat.i(53635);
+    boolean bool = ((Boolean)g.RL().Ru().get(ac.a.yxX, Boolean.FALSE)).booleanValue();
     TextView localTextView;
-    if (this.jgU != null)
+    if (this.lpN != null)
     {
-      localTextView = this.jgU;
+      localTextView = this.lpN;
       if (!bool) {
-        break label47;
+        break label56;
       }
     }
-    label47:
+    label56:
     for (int i = 0;; i = 8)
     {
       localTextView.setVisibility(i);
+      AppMethodBeat.o(53635);
       return;
     }
   }
   
   public View getRootView()
   {
-    return this.ipf;
+    return this.iCk;
   }
   
   protected void onAttachedToWindow()
   {
+    AppMethodBeat.i(53631);
     super.onAttachedToWindow();
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.emoji.EmojiStoreV2HotBarView", "onAttachedToWindow");
+    ab.d("MicroMsg.emoji.EmojiStoreV2HotBarView", "onAttachedToWindow");
+    AppMethodBeat.o(53631);
   }
   
   protected void onDetachedFromWindow()
   {
+    AppMethodBeat.i(53632);
     super.onDetachedFromWindow();
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.emoji.EmojiStoreV2HotBarView", "onAttachedToWindow");
+    ab.d("MicroMsg.emoji.EmojiStoreV2HotBarView", "onAttachedToWindow");
+    AppMethodBeat.o(53632);
   }
   
   public void setDesignerCatalogViewPadding(boolean paramBoolean)
   {
-    if ((this.jgR != null) && (!paramBoolean))
+    AppMethodBeat.i(53638);
+    if ((this.lpK != null) && (!paramBoolean))
     {
-      int i = a.aa(getContext(), f.c.ListPadding);
-      int j = a.aa(getContext(), f.c.MiddlePadding);
-      int k = a.aa(getContext(), f.c.NormalPadding);
-      this.jgR.setPadding(k, i, k, j);
+      int i = a.ao(getContext(), 2131427781);
+      int j = a.ao(getContext(), 2131427792);
+      int k = a.ao(getContext(), 2131427808);
+      this.lpK.setPadding(k, i, k, j);
     }
+    AppMethodBeat.o(53638);
   }
   
   public void setDesignerEmojiViewVisibility(int paramInt)
   {
-    if (this.jgT != null) {
-      this.jgT.setVisibility(paramInt);
+    AppMethodBeat.i(53637);
+    if (this.lpM != null) {
+      this.lpM.setVisibility(paramInt);
     }
+    AppMethodBeat.o(53637);
   }
   
   public void setMoreOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    if (this.jgS != null) {
-      this.jgS.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.i(53636);
+    if (this.lpL != null) {
+      this.lpL.setOnClickListener(paramOnClickListener);
     }
+    AppMethodBeat.o(53636);
   }
   
   public void setVisibility(int paramInt)
   {
-    if (this.ipf != null)
+    AppMethodBeat.i(53639);
+    if (this.iCk != null)
     {
-      this.ipf.setVisibility(paramInt);
+      this.iCk.setVisibility(paramInt);
+      AppMethodBeat.o(53639);
       return;
     }
     super.setVisibility(paramInt);
+    AppMethodBeat.o(53639);
   }
 }
 

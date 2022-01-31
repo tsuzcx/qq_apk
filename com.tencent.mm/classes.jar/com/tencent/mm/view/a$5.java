@@ -3,9 +3,9 @@ package com.tencent.mm.view;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.view.ViewTreeObserver;
-import com.tencent.mm.bo.a.c;
-import com.tencent.mm.sdk.platformtools.u;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$5
   implements Runnable
@@ -14,37 +14,39 @@ final class a$5
   
   public final void run()
   {
+    AppMethodBeat.i(116376);
     Rect localRect = new Rect();
-    this.wvE.getWindowVisibleDisplayFrame(localRect);
+    this.AQD.getWindowVisibleDisplayFrame(localRect);
     int i;
-    if (this.wvE.getBottom() - localRect.bottom >= 300)
+    if (this.AQD.getBottom() - localRect.bottom >= 300)
     {
       i = 1;
-      this.wvE.getResources().getDisplayMetrics();
+      this.AQD.getResources().getDisplayMetrics();
       if (i != 0) {
-        break label133;
+        break label142;
       }
-      i = this.wvE.getBottom() - (int)this.wvE.getResources().getDimension(a.c.color_select_layout_height);
+      i = this.AQD.getBottom() - (int)this.AQD.getResources().getDimension(2131428235);
     }
     for (;;)
     {
-      if (a.b(this.wvE).getHeight() != i) {
-        a.b(this.wvE).setHeight(i);
+      if (a.b(this.AQD).getHeight() != i) {
+        a.b(this.AQD).setHeight(i);
       }
-      this.wvE.getViewTreeObserver().removeOnGlobalLayoutListener(this.wvE);
-      this.wvE.getViewTreeObserver().addOnGlobalLayoutListener(this.wvE);
+      this.AQD.getViewTreeObserver().removeOnGlobalLayoutListener(this.AQD);
+      this.AQD.getViewTreeObserver().addOnGlobalLayoutListener(this.AQD);
+      AppMethodBeat.o(116376);
       return;
       i = 0;
       break;
-      label133:
-      i = this.wvE.getBottom() - u.u(this.wvE.getContext(), false) - (int)this.wvE.getResources().getDimension(a.c.color_select_layout_height);
-      y.e("MicroMsg.BaseDrawingView", "[onKeyboardChanged] height:%s", new Object[] { Integer.valueOf(i) });
+      label142:
+      i = this.AQD.getBottom() - j.Mr() - (int)this.AQD.getResources().getDimension(2131428235);
+      ab.e("MicroMsg.BaseDrawingView", "[onKeyboardChanged] height:%s", new Object[] { Integer.valueOf(i) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.view.a.5
  * JD-Core Version:    0.7.0.1
  */

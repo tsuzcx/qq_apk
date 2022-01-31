@@ -1,53 +1,19 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.os.Bundle;
-import com.tencent.mm.modelgeo.a.b;
-import com.tencent.mm.modelgeo.c;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$58
-  implements a.b
+  implements Runnable
 {
-  g$58(g paramg, String paramString) {}
+  g$58(g paramg) {}
   
-  public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
+  public final void run()
   {
-    return false;
-  }
-  
-  public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, Bundle paramBundle)
-  {
-    if (!paramBoolean) {
-      return true;
-    }
-    y.v("MicroMsg.MsgHandler", "doGeoLocation.onGetLocation, fLongitude:%f, fLatitude:%f, locType:%d, speed:%f, accuracy:%f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt), Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) });
-    if (g.x(this.rzi) != null) {
-      g.x(this.rzi).c(g.y(this.rzi));
-    }
-    if (g.y(this.rzi) == null)
-    {
-      y.w("MicroMsg.MsgHandler", "already callback");
-      return false;
-    }
-    g.z(this.rzi);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("longitude", Float.valueOf(paramFloat1));
-    g.b(this.rzi, String.valueOf(paramFloat1));
-    localHashMap.put("latitude", Float.valueOf(paramFloat2));
-    g.c(this.rzi, String.valueOf(paramFloat2));
-    localHashMap.put("speed", Double.valueOf(paramDouble1));
-    localHashMap.put("accuracy", Double.valueOf(paramDouble2));
-    localHashMap.put("type", this.rzU);
-    if (paramBundle != null)
-    {
-      localHashMap.put("indoor_building_id", paramBundle.getString("indoor_building_id"));
-      localHashMap.put("indoor_building_floor", paramBundle.getString("indoor_building_floor"));
-      localHashMap.put("indoor_building_type", Integer.valueOf(paramBundle.getInt("indoor_building_type")));
-    }
-    g.a(this.rzi, g.j(this.rzi), "geo_location:ok", localHashMap);
-    return false;
+    AppMethodBeat.i(9118);
+    Toast.makeText(g.j(this.vqm), g.j(this.vqm).getString(2131300361), 0).show();
+    AppMethodBeat.o(9118);
   }
 }
 

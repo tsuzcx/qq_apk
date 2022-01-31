@@ -2,96 +2,121 @@ package com.tencent.mm.plugin.backup.backuppcmodel;
 
 import android.os.Looper;
 import android.os.PowerManager.WakeLock;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class b
   extends com.tencent.mm.plugin.backup.b.d
 {
-  private static b hKr;
-  private com.tencent.mm.plugin.backup.c.a hHE;
-  private c hKs;
-  private e hKt;
-  private d hKu;
-  private a hKv;
+  private static b jDU;
+  private com.tencent.mm.plugin.backup.c.a jBa;
+  private c jDV;
+  private e jDW;
+  private d jDX;
+  private a jDY;
   private PowerManager.WakeLock wakeLock = null;
   
-  public static b auw()
+  public static b aTX()
   {
-    if (hKr == null)
+    AppMethodBeat.i(17490);
+    if (jDU == null)
     {
-      b localb = new b();
-      hKr = localb;
+      localb = new b();
+      jDU = localb;
       a(localb);
     }
-    return hKr;
+    b localb = jDU;
+    AppMethodBeat.o(17490);
+    return localb;
   }
   
-  public final com.tencent.mm.plugin.backup.c.a atT()
+  public final void aSG()
   {
-    if (this.hHE == null) {
-      this.hHE = new com.tencent.mm.plugin.backup.c.a();
+    jDU = null;
+  }
+  
+  public final void aSM()
+  {
+    AppMethodBeat.i(17497);
+    al.d(new b.1(this));
+    AppMethodBeat.o(17497);
+  }
+  
+  public final void aSN()
+  {
+    AppMethodBeat.i(17498);
+    al.d(new b.2(this));
+    AppMethodBeat.o(17498);
+  }
+  
+  public final c aTY()
+  {
+    AppMethodBeat.i(17493);
+    if (this.jDV == null) {
+      this.jDV = new c();
     }
-    return this.hHE;
+    c localc = this.jDV;
+    AppMethodBeat.o(17493);
+    return localc;
   }
   
-  public final void ati()
+  public final e aTZ()
   {
-    hKr = null;
-  }
-  
-  public final void ato()
-  {
-    ai.d(new b.1(this));
-  }
-  
-  public final void atp()
-  {
-    ai.d(new b.2(this));
-  }
-  
-  public final a auA()
-  {
-    if (this.hKv == null) {
-      this.hKv = new a();
+    AppMethodBeat.i(17494);
+    if (this.jDW == null) {
+      this.jDW = new e();
     }
-    return this.hKv;
+    e locale = this.jDW;
+    AppMethodBeat.o(17494);
+    return locale;
   }
   
-  public final c aux()
+  public final com.tencent.mm.plugin.backup.c.a aTs()
   {
-    if (this.hKs == null) {
-      this.hKs = new c();
+    AppMethodBeat.i(17492);
+    if (this.jBa == null) {
+      this.jBa = new com.tencent.mm.plugin.backup.c.a();
     }
-    return this.hKs;
+    com.tencent.mm.plugin.backup.c.a locala = this.jBa;
+    AppMethodBeat.o(17492);
+    return locala;
   }
   
-  public final e auy()
+  public final d aUa()
   {
-    if (this.hKt == null) {
-      this.hKt = new e();
+    AppMethodBeat.i(17495);
+    if (this.jDX == null) {
+      this.jDX = new d();
     }
-    return this.hKt;
+    d locald = this.jDX;
+    AppMethodBeat.o(17495);
+    return locald;
   }
   
-  public final d auz()
+  public final a aUb()
   {
-    if (this.hKu == null) {
-      this.hKu = new d();
+    AppMethodBeat.i(17496);
+    if (this.jDY == null) {
+      this.jDY = new a();
     }
-    return this.hKu;
+    a locala = this.jDY;
+    AppMethodBeat.o(17496);
+    return locala;
   }
   
-  public final void l(Object... paramVarArgs)
+  public final void m(Object... paramVarArgs)
   {
+    AppMethodBeat.i(17491);
     ((Boolean)paramVarArgs[0]).booleanValue();
-    paramVarArgs = auw().aux();
-    new ah(Looper.getMainLooper()).postDelayed(new c.5(paramVarArgs), 100L);
+    paramVarArgs = aTX().aTY();
+    new ak(Looper.getMainLooper()).postDelayed(new c.5(paramVarArgs), 100L);
+    AppMethodBeat.o(17491);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backuppcmodel.b
  * JD-Core Version:    0.7.0.1
  */

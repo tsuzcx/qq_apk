@@ -5,10 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
 import java.util.List;
 
 final class WalletSelectBankcardUI$a
@@ -18,25 +16,39 @@ final class WalletSelectBankcardUI$a
   
   public final int getCount()
   {
-    if (WalletSelectBankcardUI.a(this.qGy))
+    AppMethodBeat.i(47656);
+    if (WalletSelectBankcardUI.a(this.utE))
     {
-      if (WalletSelectBankcardUI.b(this.qGy) == null) {
+      if (WalletSelectBankcardUI.b(this.utE) == null)
+      {
+        AppMethodBeat.o(47656);
         return 1;
       }
-      return WalletSelectBankcardUI.b(this.qGy).size() + 1;
+      i = WalletSelectBankcardUI.b(this.utE).size();
+      AppMethodBeat.o(47656);
+      return i + 1;
     }
-    if (WalletSelectBankcardUI.b(this.qGy) == null) {
+    if (WalletSelectBankcardUI.b(this.utE) == null)
+    {
+      AppMethodBeat.o(47656);
       return 0;
     }
-    return WalletSelectBankcardUI.b(this.qGy).size();
+    int i = WalletSelectBankcardUI.b(this.utE).size();
+    AppMethodBeat.o(47656);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    if ((WalletSelectBankcardUI.b(this.qGy) == null) || (WalletSelectBankcardUI.b(this.qGy).size() <= paramInt)) {
+    AppMethodBeat.i(47657);
+    if ((WalletSelectBankcardUI.b(this.utE) == null) || (WalletSelectBankcardUI.b(this.utE).size() <= paramInt))
+    {
+      AppMethodBeat.o(47657);
       return null;
     }
-    return WalletSelectBankcardUI.b(this.qGy).get(paramInt);
+    Object localObject = WalletSelectBankcardUI.b(this.utE).get(paramInt);
+    AppMethodBeat.o(47657);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -46,25 +58,31 @@ final class WalletSelectBankcardUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(47658);
     Bankcard localBankcard = (Bankcard)getItem(paramInt);
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.qGy).inflate(a.g.wallet_select_bankcard_lv_item, paramViewGroup, false);
+      localView = LayoutInflater.from(this.utE).inflate(2130971249, paramViewGroup, false);
       paramView = new WalletSelectBankcardUI.a.a(this);
-      paramView.qGB = ((TextView)localView.findViewById(a.f.bankcard_desc));
+      paramView.utH = ((TextView)localView.findViewById(2131829394));
       localView.setTag(paramView);
       paramViewGroup = paramView;
+      if (localBankcard == null) {
+        break label105;
+      }
+      paramViewGroup.utH.setText(localBankcard.field_desc);
     }
-    while (localBankcard != null)
+    for (;;)
     {
-      paramViewGroup.qGB.setText(localBankcard.field_desc);
+      AppMethodBeat.o(47658);
       return localView;
       paramViewGroup = (WalletSelectBankcardUI.a.a)paramView.getTag();
       localView = paramView;
+      break;
+      label105:
+      paramViewGroup.utH.setText(2131305633);
     }
-    paramViewGroup.qGB.setText(a.i.wallet_select_bankcard_new_bankcard);
-    return localView;
   }
 }
 

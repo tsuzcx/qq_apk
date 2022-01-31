@@ -1,17 +1,38 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ak;
+import com.tencent.mm.plugin.sns.model.ax;
+import com.tencent.mm.plugin.sns.storage.n;
 
 final class SnsCommentDetailUI$9
-  implements Runnable
+  implements View.OnClickListener
 {
-  SnsCommentDetailUI$9(SnsCommentDetailUI paramSnsCommentDetailUI) {}
+  SnsCommentDetailUI$9(SnsCommentDetailUI paramSnsCommentDetailUI, n paramn) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    SnsCommentDetailUI.a(this.oWW, SnsCommentDetailUI.c(this.oWW).getBottom());
-    y.d("MicroMsg.SnsCommentDetailUI", "listOriginalBottom: " + SnsCommentDetailUI.d(this.oWW));
+    AppMethodBeat.i(38786);
+    if (this.rFG.Ex(32))
+    {
+      AppMethodBeat.o(38786);
+      return;
+    }
+    ak.DP(this.rFG.rCV);
+    ak.DN(this.rFG.rCV);
+    ag.cpb().cnP();
+    paramView = new Intent();
+    this.rPu.setResult(-1, paramView);
+    if (SnsCommentDetailUI.s(this.rPu)) {
+      paramView.putExtra("sns_gallery_force_finish", true);
+    }
+    this.rPu.finish();
+    this.rPu.finish();
+    AppMethodBeat.o(38786);
   }
 }
 

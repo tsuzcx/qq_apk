@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoiceInputUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class VoiceInputUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.sbE.DX(1);
+    AppMethodBeat.i(27606);
+    this.vSL.ni(1);
+    AppMethodBeat.o(27606);
     return true;
   }
 }

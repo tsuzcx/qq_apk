@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.ui.base.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsTimeLineUI$21
   implements Runnable
@@ -10,7 +9,9 @@ final class SnsTimeLineUI$21
   
   public final void run()
   {
-    h.a(this.pfC, this.pfC.getString(i.j.notification_need_resend_dialog_prompt), "", this.pfC.getString(i.j.notification_need_resend_dialog_prompt_resend_now), this.pfC.getString(i.j.app_cancel), new SnsTimeLineUI.21.1(this), new SnsTimeLineUI.21.2(this));
+    AppMethodBeat.i(145571);
+    SnsTimeLineUI.y(this.rYv);
+    AppMethodBeat.o(145571);
   }
 }
 

@@ -1,210 +1,200 @@
 package com.google.android.gms.common.internal;
 
+import android.content.ComponentName;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.support.v4.f.m;
-import android.text.TextUtils;
-import com.google.android.gms.R.string;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.common.util.zzj;
-import com.google.android.gms.internal.zzadf;
-import com.google.android.gms.internal.zzadg;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.util.Log;
+import com.google.android.gms.common.stats.ConnectionTracker;
+import com.google.android.gms.common.util.VisibleForTesting;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import javax.annotation.concurrent.GuardedBy;
 
-public final class zzh
+final class zzh
+  extends GmsClientSupervisor
+  implements Handler.Callback
 {
-  private static final m<String, String> zzaFE = new m();
+  private final Handler mHandler;
+  private final Context zzau;
+  @GuardedBy("mConnectionStatus")
+  private final HashMap<GmsClientSupervisor.ConnectionStatusConfig, zzi> zztr;
+  private final ConnectionTracker zzts;
+  private final long zztt;
+  private final long zztu;
   
-  private static String zzB(Context paramContext, String paramString)
+  zzh(Context paramContext)
   {
-    int i;
-    synchronized (zzaFE)
+    AppMethodBeat.i(89865);
+    this.zztr = new HashMap();
+    this.zzau = paramContext.getApplicationContext();
+    this.mHandler = new Handler(paramContext.getMainLooper(), this);
+    this.zzts = ConnectionTracker.getInstance();
+    this.zztt = 5000L;
+    this.zztu = 300000L;
+    AppMethodBeat.o(89865);
+  }
+  
+  protected final boolean bindService(GmsClientSupervisor.ConnectionStatusConfig paramConnectionStatusConfig, ServiceConnection paramServiceConnection, String paramString)
+  {
+    AppMethodBeat.i(89866);
+    Preconditions.checkNotNull(paramServiceConnection, "ServiceConnection must not be null");
+    for (;;)
     {
-      String str = (String)zzaFE.get(paramString);
-      if (str != null) {
-        return str;
-      }
-      paramContext = GooglePlayServicesUtil.getRemoteResource(paramContext);
-      if (paramContext == null) {
-        return null;
-      }
-      i = paramContext.getIdentifier(paramString, "string", "com.google.android.gms");
-      if (i == 0)
+      zzi localzzi;
+      synchronized (this.zztr)
       {
-        paramContext = String.valueOf(paramString);
-        if (paramContext.length() != 0)
+        localzzi = (zzi)this.zztr.get(paramConnectionStatusConfig);
+        if (localzzi == null)
         {
-          "Missing resource: ".concat(paramContext);
-          return null;
+          localzzi = new zzi(this, paramConnectionStatusConfig);
+          localzzi.zza(paramServiceConnection, paramString);
+          localzzi.zzj(paramString);
+          this.zztr.put(paramConnectionStatusConfig, localzzi);
+          paramConnectionStatusConfig = localzzi;
+          boolean bool = paramConnectionStatusConfig.isBound();
+          AppMethodBeat.o(89866);
+          return bool;
         }
-        new String("Missing resource: ");
+        this.mHandler.removeMessages(0, paramConnectionStatusConfig);
+        if (localzzi.zza(paramServiceConnection))
+        {
+          paramConnectionStatusConfig = String.valueOf(paramConnectionStatusConfig);
+          paramConnectionStatusConfig = new IllegalStateException(String.valueOf(paramConnectionStatusConfig).length() + 81 + "Trying to bind a GmsServiceConnection that was already connected before.  config=" + paramConnectionStatusConfig);
+          AppMethodBeat.o(89866);
+          throw paramConnectionStatusConfig;
+        }
       }
-    }
-    paramContext = paramContext.getString(i);
-    if (TextUtils.isEmpty(paramContext))
-    {
-      paramContext = String.valueOf(paramString);
-      if (paramContext.length() != 0) {
-        "Got empty resource: ".concat(paramContext);
-      }
-      for (;;)
+      localzzi.zza(paramServiceConnection, paramString);
+      switch (localzzi.getState())
       {
-        return null;
-        new String("Got empty resource: ");
+      case 1: 
+        paramServiceConnection.onServiceConnected(localzzi.getComponentName(), localzzi.getBinder());
+        paramConnectionStatusConfig = localzzi;
+        break;
+      case 2: 
+        localzzi.zzj(paramString);
+        paramConnectionStatusConfig = localzzi;
+        break;
+      default: 
+        paramConnectionStatusConfig = localzzi;
       }
     }
-    zzaFE.put(paramString, paramContext);
-    return paramContext;
   }
   
-  public static String zzaT(Context paramContext)
+  public final boolean handleMessage(Message paramMessage)
   {
-    String str2 = paramContext.getApplicationInfo().name;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str2 = paramContext.getPackageName();
-    }
-    try
+    AppMethodBeat.i(89868);
+    switch (paramMessage.what)
     {
-      str1 = zzadg.zzbi(paramContext).zzdA(paramContext.getPackageName()).toString();
-      return str1;
-    }
-    catch (PackageManager.NameNotFoundException paramContext) {}
-    return str2;
-  }
-  
-  public static String zzg(Context paramContext, int paramInt)
-  {
-    Resources localResources = paramContext.getResources();
-    switch (paramInt)
-    {
-    case 12: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 19: 
     default: 
-      new StringBuilder(33).append("Unexpected error code ").append(paramInt);
-    case 4: 
-    case 6: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 11: 
-    case 16: 
-    case 18: 
-      return null;
-    case 1: 
-      return localResources.getString(R.string.common_google_play_services_install_title);
-    case 3: 
-      return localResources.getString(R.string.common_google_play_services_enable_title);
-    case 2: 
-      return localResources.getString(R.string.common_google_play_services_update_title);
-    case 7: 
-      return zzB(paramContext, "common_google_play_services_network_error_title");
-    case 5: 
-      return zzB(paramContext, "common_google_play_services_invalid_account_title");
-    case 17: 
-      return zzB(paramContext, "common_google_play_services_sign_in_failed_title");
-    }
-    return zzB(paramContext, "common_google_play_services_restricted_profile_title");
-  }
-  
-  public static String zzh(Context paramContext, int paramInt)
-  {
-    if (paramInt == 6) {}
-    for (String str1 = zzB(paramContext, "common_google_play_services_resolution_required_title");; str1 = zzg(paramContext, paramInt))
-    {
-      String str2 = str1;
-      if (str1 == null) {
-        str2 = paramContext.getResources().getString(R.string.common_google_play_services_notification_ticker);
+      AppMethodBeat.o(89868);
+      return false;
+    case 0: 
+      synchronized (this.zztr)
+      {
+        paramMessage = (GmsClientSupervisor.ConnectionStatusConfig)paramMessage.obj;
+        ??? = (zzi)this.zztr.get(paramMessage);
+        if ((??? != null) && (((zzi)???).zzcv()))
+        {
+          if (((zzi)???).isBound()) {
+            ((zzi)???).zzk("GmsClientSupervisor");
+          }
+          this.zztr.remove(paramMessage);
+        }
+        AppMethodBeat.o(89868);
+        return true;
       }
-      return str2;
     }
-  }
-  
-  public static String zzi(Context paramContext, int paramInt)
-  {
-    Resources localResources = paramContext.getResources();
-    String str = zzaT(paramContext);
-    switch (paramInt)
+    for (;;)
     {
-    case 4: 
-    case 6: 
-    case 8: 
-    case 10: 
-    case 11: 
-    case 12: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 19: 
-    default: 
-      return localResources.getString(R.string.common_google_play_services_unknown_issue, new Object[] { str });
-    case 1: 
-      return localResources.getString(R.string.common_google_play_services_install_text, new Object[] { str });
-    case 3: 
-      return localResources.getString(R.string.common_google_play_services_enable_text, new Object[] { str });
-    case 18: 
-      return localResources.getString(R.string.common_google_play_services_updating_text, new Object[] { str });
-    case 2: 
-      if (zzj.zzba(paramContext)) {
-        return localResources.getString(R.string.common_google_play_services_wear_update_text);
+      synchronized (this.zztr)
+      {
+        GmsClientSupervisor.ConnectionStatusConfig localConnectionStatusConfig = (GmsClientSupervisor.ConnectionStatusConfig)paramMessage.obj;
+        zzi localzzi = (zzi)this.zztr.get(localConnectionStatusConfig);
+        if ((localzzi != null) && (localzzi.getState() == 3))
+        {
+          paramMessage = String.valueOf(localConnectionStatusConfig);
+          Log.wtf("GmsClientSupervisor", String.valueOf(paramMessage).length() + 47 + "Timeout waiting for ServiceConnection callback " + paramMessage, new Exception());
+          ??? = localzzi.getComponentName();
+          paramMessage = (Message)???;
+          if (??? == null) {
+            paramMessage = localConnectionStatusConfig.getComponentName();
+          }
+          if (paramMessage == null)
+          {
+            paramMessage = new ComponentName(localConnectionStatusConfig.getPackage(), "unknown");
+            localzzi.onServiceDisconnected(paramMessage);
+          }
+        }
+        else
+        {
+          AppMethodBeat.o(89868);
+          return true;
+        }
       }
-      return localResources.getString(R.string.common_google_play_services_update_text, new Object[] { str });
-    case 9: 
-      return localResources.getString(R.string.common_google_play_services_unsupported_text, new Object[] { str });
-    case 7: 
-      return zzo(paramContext, "common_google_play_services_network_error_text", str);
-    case 5: 
-      return zzo(paramContext, "common_google_play_services_invalid_account_text", str);
-    case 16: 
-      return zzo(paramContext, "common_google_play_services_api_unavailable_text", str);
-    case 17: 
-      return zzo(paramContext, "common_google_play_services_sign_in_failed_text", str);
     }
-    return zzo(paramContext, "common_google_play_services_restricted_profile_text", str);
   }
   
-  public static String zzj(Context paramContext, int paramInt)
+  @VisibleForTesting
+  public final void resetForTesting()
   {
-    if (paramInt == 6) {
-      return zzo(paramContext, "common_google_play_services_resolution_required_text", zzaT(paramContext));
-    }
-    return zzi(paramContext, paramInt);
-  }
-  
-  public static String zzk(Context paramContext, int paramInt)
-  {
-    paramContext = paramContext.getResources();
-    switch (paramInt)
+    AppMethodBeat.i(89869);
+    synchronized (this.zztr)
     {
-    default: 
-      return paramContext.getString(17039370);
-    case 1: 
-      return paramContext.getString(R.string.common_google_play_services_install_button);
-    case 3: 
-      return paramContext.getString(R.string.common_google_play_services_enable_button);
+      Iterator localIterator = this.zztr.values().iterator();
+      while (localIterator.hasNext())
+      {
+        zzi localzzi = (zzi)localIterator.next();
+        this.mHandler.removeMessages(0, zzi.zza(localzzi));
+        if (localzzi.isBound()) {
+          localzzi.zzk("GmsClientSupervisor");
+        }
+      }
     }
-    return paramContext.getString(R.string.common_google_play_services_update_button);
+    this.zztr.clear();
+    AppMethodBeat.o(89869);
   }
   
-  private static String zzo(Context paramContext, String paramString1, String paramString2)
+  protected final void unbindService(GmsClientSupervisor.ConnectionStatusConfig paramConnectionStatusConfig, ServiceConnection paramServiceConnection, String paramString)
   {
-    Resources localResources = paramContext.getResources();
-    paramString1 = zzB(paramContext, paramString1);
-    paramContext = paramString1;
-    if (paramString1 == null) {
-      paramContext = localResources.getString(R.string.common_google_play_services_unknown_issue);
+    AppMethodBeat.i(89867);
+    Preconditions.checkNotNull(paramServiceConnection, "ServiceConnection must not be null");
+    zzi localzzi;
+    synchronized (this.zztr)
+    {
+      localzzi = (zzi)this.zztr.get(paramConnectionStatusConfig);
+      if (localzzi == null)
+      {
+        paramConnectionStatusConfig = String.valueOf(paramConnectionStatusConfig);
+        paramConnectionStatusConfig = new IllegalStateException(String.valueOf(paramConnectionStatusConfig).length() + 50 + "Nonexistent connection status for service config: " + paramConnectionStatusConfig);
+        AppMethodBeat.o(89867);
+        throw paramConnectionStatusConfig;
+      }
     }
-    return String.format(localResources.getConfiguration().locale, paramContext, new Object[] { paramString2 });
+    if (!localzzi.zza(paramServiceConnection))
+    {
+      paramConnectionStatusConfig = String.valueOf(paramConnectionStatusConfig);
+      paramConnectionStatusConfig = new IllegalStateException(String.valueOf(paramConnectionStatusConfig).length() + 76 + "Trying to unbind a GmsServiceConnection  that was not bound before.  config=" + paramConnectionStatusConfig);
+      AppMethodBeat.o(89867);
+      throw paramConnectionStatusConfig;
+    }
+    localzzi.zzb(paramServiceConnection, paramString);
+    if (localzzi.zzcv())
+    {
+      paramConnectionStatusConfig = this.mHandler.obtainMessage(0, paramConnectionStatusConfig);
+      this.mHandler.sendMessageDelayed(paramConnectionStatusConfig, this.zztt);
+    }
+    AppMethodBeat.o(89867);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.internal.zzh
  * JD-Core Version:    0.7.0.1
  */

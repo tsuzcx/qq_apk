@@ -5,86 +5,96 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.t;
 import com.tencent.mm.plugin.sns.storage.u;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.p;
 
 final class SnsTagPartlyUI$a
-  extends r<t>
+  extends p<t>
 {
   private Context context;
-  public boolean pdW = false;
+  public boolean rWJ;
   
   public SnsTagPartlyUI$a(SnsTagPartlyUI paramSnsTagPartlyUI, Context paramContext)
   {
     super(paramContext, new t());
+    AppMethodBeat.i(39381);
+    this.rWJ = false;
     this.context = paramContext;
+    AppMethodBeat.o(39381);
   }
   
-  protected final int bam()
+  public final void Ku()
+  {
+    AppMethodBeat.i(39383);
+    setCursor(ag.cpl().getCursor());
+    notifyDataSetChanged();
+    AppMethodBeat.o(39383);
+  }
+  
+  public final void Kv()
+  {
+    AppMethodBeat.i(39384);
+    bKb();
+    Ku();
+    AppMethodBeat.o(39384);
+  }
+  
+  public final int bHs()
   {
     return 1;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject;
+    AppMethodBeat.i(39382);
+    int i;
     if (paramView == null)
     {
       paramViewGroup = new SnsTagPartlyUI.a.a(this);
-      paramView = View.inflate(this.context, i.g.partly_item_view, null);
-      paramViewGroup.pdX = ((TextView)paramView.findViewById(i.f.tag_name));
-      paramViewGroup.pdY = ((TextView)paramView.findViewById(i.f.sns_tag_count));
-      paramViewGroup.fks = ((Button)paramView.findViewById(i.f.del_btn));
+      paramView = View.inflate(this.context, 2130970399, null);
+      paramViewGroup.rWK = ((TextView)paramView.findViewById(2131826647));
+      paramViewGroup.rWL = ((TextView)paramView.findViewById(2131826648));
+      paramViewGroup.gBJ = ((Button)paramView.findViewById(2131822840));
       paramView.setTag(paramViewGroup);
-      if (sk(paramInt)) {
-        break label223;
+      if (xj(paramInt)) {
+        break label229;
       }
-      localObject = (t)getItem(paramInt);
-      paramViewGroup.pdX.setText(((t)localObject).field_tagName);
-      paramViewGroup.pdY.setVisibility(0);
-      paramViewGroup.pdY.setText(" (" + ((t)localObject).field_count + ") ");
-      localObject = paramViewGroup.fks;
-      if (!this.pdW) {
-        break label216;
+      Object localObject = (t)getItem(paramInt);
+      paramViewGroup.rWK.setText(((t)localObject).field_tagName);
+      paramViewGroup.rWL.setVisibility(0);
+      paramViewGroup.rWL.setText(" (" + ((t)localObject).field_count + ") ");
+      localObject = paramViewGroup.gBJ;
+      if (!this.rWJ) {
+        break label222;
       }
-    }
-    label216:
-    for (int i = 0;; i = 8)
-    {
+      i = 0;
+      label172:
       ((Button)localObject).setVisibility(i);
-      paramViewGroup.fks.setOnClickListener(SnsTagPartlyUI.b(this.pdU));
-      paramViewGroup.fks.setTag(Integer.valueOf(paramInt));
+      paramViewGroup.gBJ.setOnClickListener(SnsTagPartlyUI.b(this.rWH));
+      paramViewGroup.gBJ.setTag(Integer.valueOf(paramInt));
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(39382);
       return paramView;
       paramViewGroup = (SnsTagPartlyUI.a.a)paramView.getTag();
       break;
+      label222:
+      i = 8;
+      break label172;
+      label229:
+      paramViewGroup.rWK.setText(2131304226);
+      paramViewGroup.rWL.setVisibility(8);
+      paramViewGroup.gBJ.setVisibility(8);
     }
-    label223:
-    paramViewGroup.pdX.setText(i.j.tag_add_friend);
-    paramViewGroup.pdY.setVisibility(8);
-    paramViewGroup.fks.setVisibility(8);
-    return paramView;
-  }
-  
-  public final void yc()
-  {
-    setCursor(af.bDL().getCursor());
-    notifyDataSetChanged();
-  }
-  
-  protected final void yd()
-  {
-    bcS();
-    yc();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTagPartlyUI.a
  * JD-Core Version:    0.7.0.1
  */

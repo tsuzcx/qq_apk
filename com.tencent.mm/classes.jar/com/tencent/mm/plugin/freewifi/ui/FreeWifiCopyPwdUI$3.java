@@ -1,56 +1,64 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.d.a;
 import com.tencent.mm.plugin.freewifi.k.b;
 import com.tencent.mm.plugin.freewifi.m.a;
-import com.tencent.mm.protocal.c.fd;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.gm;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FreeWifiCopyPwdUI$3
   implements m.a
 {
   FreeWifiCopyPwdUI$3(FreeWifiCopyPwdUI paramFreeWifiCopyPwdUI) {}
   
-  public final void i(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public final void g(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
+    AppMethodBeat.i(20938);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (!(paramm instanceof a)) {
+      if (!(paramm instanceof a))
+      {
+        AppMethodBeat.o(20938);
         return;
       }
-      paramString = ((a)paramm).aUw();
+      paramString = ((a)paramm).bAW();
       if (paramString != null)
       {
-        y.i("MicroMsg.FreeWifi.FreeWifiCopyPwdUI", "backPageInfo appid: %s, nickName: %s, userName: %s, finishActionCode: %d, finishUrl: %s, signature: %s, qingHuaiPageUrl: %s", new Object[] { paramString.svu, paramString.hRf, paramString.hPY, Integer.valueOf(paramString.syP), paramString.syQ, paramString.ffk, paramString.syR });
-        FreeWifiCopyPwdUI.a(this.krr, new FreeWifiCopyPwdUI.b(this.krr, FreeWifiCopyPwdUI.b(this.krr), paramString));
+        ab.i("MicroMsg.FreeWifi.FreeWifiCopyPwdUI", "backPageInfo appid: %s, nickName: %s, userName: %s, finishActionCode: %d, finishUrl: %s, signature: %s, qingHuaiPageUrl: %s", new Object[] { paramString.woB, paramString.jKG, paramString.jJA, Integer.valueOf(paramString.wsQ), paramString.wsR, paramString.gwS, paramString.wsS });
+        FreeWifiCopyPwdUI.a(this.mNe, new FreeWifiCopyPwdUI.b(this.mNe, FreeWifiCopyPwdUI.b(this.mNe), paramString));
+        AppMethodBeat.o(20938);
         return;
       }
-      y.i("MicroMsg.FreeWifi.FreeWifiCopyPwdUI", "backPageInfo is null");
-      paramString = this.krr;
-      paramm = this.krr;
-      paramInt1 = FreeWifiCopyPwdUI.c(this.krr);
+      ab.i("MicroMsg.FreeWifi.FreeWifiCopyPwdUI", "backPageInfo is null");
+      paramString = this.mNe;
+      paramm = this.mNe;
+      paramInt1 = FreeWifiCopyPwdUI.c(this.mNe);
       localObject = new FreeWifiCopyPwdUI.a();
-      ((FreeWifiCopyPwdUI.a)localObject).kru = com.tencent.mm.plugin.freewifi.m.a(FreeWifiCopyPwdUI.d(this.krr), k.b.knf, 21);
+      ((FreeWifiCopyPwdUI.a)localObject).mNi = com.tencent.mm.plugin.freewifi.m.a(FreeWifiCopyPwdUI.d(this.mNe), k.b.mIS, 21);
       FreeWifiCopyPwdUI.a(paramString, new FreeWifiCopyPwdUI.b(paramm, paramInt1, localObject));
+      AppMethodBeat.o(20938);
       return;
     }
-    if ((com.tencent.mm.plugin.freewifi.m.cS(paramInt1, paramInt2)) && (!com.tencent.mm.plugin.freewifi.m.isEmpty(paramString)))
+    if ((com.tencent.mm.plugin.freewifi.m.eq(paramInt1, paramInt2)) && (!com.tencent.mm.plugin.freewifi.m.isEmpty(paramString)))
     {
-      paramm = this.krr;
-      localObject = this.krr;
-      paramInt1 = FreeWifiCopyPwdUI.c(this.krr);
+      paramm = this.mNe;
+      localObject = this.mNe;
+      paramInt1 = FreeWifiCopyPwdUI.c(this.mNe);
       FreeWifiCopyPwdUI.a locala = new FreeWifiCopyPwdUI.a();
       locala.text = paramString;
-      locala.kru = com.tencent.mm.plugin.freewifi.m.a(FreeWifiCopyPwdUI.d(this.krr), k.b.knf, paramInt2);
+      locala.mNi = com.tencent.mm.plugin.freewifi.m.a(FreeWifiCopyPwdUI.d(this.mNe), k.b.mIS, paramInt2);
       FreeWifiCopyPwdUI.a(paramm, new FreeWifiCopyPwdUI.b((FreeWifiCopyPwdUI)localObject, paramInt1, locala));
+      AppMethodBeat.o(20938);
       return;
     }
-    paramString = this.krr;
-    paramm = this.krr;
-    paramInt1 = FreeWifiCopyPwdUI.c(this.krr);
+    paramString = this.mNe;
+    paramm = this.mNe;
+    paramInt1 = FreeWifiCopyPwdUI.c(this.mNe);
     Object localObject = new FreeWifiCopyPwdUI.a();
-    ((FreeWifiCopyPwdUI.a)localObject).kru = com.tencent.mm.plugin.freewifi.m.a(FreeWifiCopyPwdUI.d(this.krr), k.b.knf, paramInt2);
+    ((FreeWifiCopyPwdUI.a)localObject).mNi = com.tencent.mm.plugin.freewifi.m.a(FreeWifiCopyPwdUI.d(this.mNe), k.b.mIS, paramInt2);
     FreeWifiCopyPwdUI.a(paramString, new FreeWifiCopyPwdUI.b(paramm, paramInt1, localObject));
+    AppMethodBeat.o(20938);
   }
 }
 

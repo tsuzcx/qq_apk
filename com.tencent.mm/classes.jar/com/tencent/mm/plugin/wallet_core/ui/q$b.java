@@ -1,16 +1,32 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface q$b
+final class q$b
+  implements DialogInterface.OnCancelListener
 {
-  public abstract int bgT();
+  private DialogInterface.OnCancelListener utw = null;
   
-  public abstract Context getContext();
+  private q$b(DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    this.utw = paramOnCancelListener;
+  }
+  
+  public final void onCancel(DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(47604);
+    q.nR(false);
+    if (this.utw != null) {
+      this.utw.onCancel(paramDialogInterface);
+    }
+    AppMethodBeat.o(47604);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.q.b
  * JD-Core Version:    0.7.0.1
  */

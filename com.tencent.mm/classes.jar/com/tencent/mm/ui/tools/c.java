@@ -5,10 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.at.b.a;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.au.b.a;
+import com.tencent.mm.sdk.platformtools.aa;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,59 +15,79 @@ public final class c
   extends BaseAdapter
 {
   private Context context;
-  private String feq;
+  private String gvZ;
   private List<b.a> list;
-  private List<b.a> luW = new ArrayList();
-  int[] luY;
-  boolean luZ = false;
+  private List<b.a> nSn;
+  int[] nSp;
+  boolean nSq;
   
   public c(Context paramContext, List<b.a> paramList)
   {
+    AppMethodBeat.i(34793);
+    this.nSn = new ArrayList();
+    this.nSq = false;
     this.context = paramContext;
     this.list = paramList;
-    bcW();
-    bcX();
+    bKg();
+    bKh();
+    AppMethodBeat.o(34793);
   }
   
-  private void bcW()
+  private void bKg()
   {
+    AppMethodBeat.i(34794);
     int i = 0;
     int j = this.list.size();
     while (i < j)
     {
-      this.luW.add(this.list.get(i));
+      this.nSn.add(this.list.get(i));
       i += 1;
     }
+    AppMethodBeat.o(34794);
   }
   
-  private void bcX()
+  private void bKh()
   {
-    this.luY = new int[this.list.size()];
+    AppMethodBeat.i(34795);
+    this.nSp = new int[this.list.size()];
     int j = this.list.size();
     int i = 0;
     while (i < j)
     {
-      this.luY[i] = ((b.a)this.list.get(i)).esi;
+      this.nSp[i] = ((b.a)this.list.get(i)).fHV;
       i += 1;
     }
+    AppMethodBeat.o(34795);
   }
   
-  private static String sL(int paramInt)
+  private static String xN(int paramInt)
   {
-    if (x.cqH()) {
-      return Integer.toString(paramInt) + "劃";
+    AppMethodBeat.i(34800);
+    if (aa.dsE())
+    {
+      String str = Integer.toString(paramInt) + "劃";
+      AppMethodBeat.o(34800);
+      return str;
     }
-    return String.valueOf((char)paramInt);
+    char c = (char)paramInt;
+    AppMethodBeat.o(34800);
+    return String.valueOf(c);
   }
   
   public final int getCount()
   {
-    return this.list.size();
+    AppMethodBeat.i(34796);
+    int i = this.list.size();
+    AppMethodBeat.o(34796);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.list.get(paramInt);
+    AppMethodBeat.i(34797);
+    Object localObject = this.list.get(paramInt);
+    AppMethodBeat.o(34797);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -78,87 +97,83 @@ public final class c
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(34799);
     b.a locala = (b.a)getItem(paramInt);
-    label87:
+    label88:
     int i;
     if (paramView == null) {
-      if (!x.cqH())
+      if (!aa.dsE())
       {
-        paramView = View.inflate(this.context, R.i.country_code_item, null);
-        paramViewGroup = new a();
-        paramViewGroup.lvb = ((TextView)paramView.findViewById(R.h.contactitem_catalog));
-        paramViewGroup.drB = ((TextView)paramView.findViewById(R.h.contactitem_nick));
-        paramViewGroup.lvc = ((TextView)paramView.findViewById(R.h.contactitem_signature));
+        paramView = View.inflate(this.context, 2130969280, null);
+        paramViewGroup = new c.a();
+        paramViewGroup.nSs = ((TextView)paramView.findViewById(2131821089));
+        paramViewGroup.ejj = ((TextView)paramView.findViewById(2131821099));
+        paramViewGroup.nSt = ((TextView)paramView.findViewById(2131821095));
         paramView.setTag(paramViewGroup);
         if (paramInt <= 0) {
-          break label196;
+          break label201;
         }
-        i = this.luY[(paramInt - 1)];
-        label101:
+        i = this.nSp[(paramInt - 1)];
+        label102:
         if (paramInt != 0) {
-          break label202;
+          break label207;
         }
-        paramViewGroup.lvb.setVisibility(0);
-        paramViewGroup.lvb.setText(sL(this.luY[paramInt]));
+        paramViewGroup.nSs.setVisibility(0);
+        paramViewGroup.nSs.setText(xN(this.nSp[paramInt]));
+        label130:
+        paramViewGroup.ejj.setText(locala.fHT);
+        paramViewGroup.nSt.setText(locala.fHS);
+        if (!this.nSq) {
+          break label261;
+        }
+        paramViewGroup.nSt.setVisibility(0);
       }
     }
     for (;;)
     {
-      paramViewGroup.drB.setText(locala.esg);
-      paramViewGroup.lvc.setText(locala.esf);
-      if (!this.luZ) {
-        break label256;
-      }
-      paramViewGroup.lvc.setVisibility(0);
+      AppMethodBeat.o(34799);
       return paramView;
-      paramView = View.inflate(this.context, R.i.country_code_item_big5, null);
+      paramView = View.inflate(this.context, 2130969281, null);
       break;
-      paramViewGroup = (a)paramView.getTag();
-      break label87;
-      label196:
+      paramViewGroup = (c.a)paramView.getTag();
+      break label88;
+      label201:
       i = -1;
-      break label101;
-      label202:
-      if ((paramInt > 0) && (this.luY[paramInt] != i))
+      break label102;
+      label207:
+      if ((paramInt > 0) && (this.nSp[paramInt] != i))
       {
-        paramViewGroup.lvb.setVisibility(0);
-        paramViewGroup.lvb.setText(sL(this.luY[paramInt]));
+        paramViewGroup.nSs.setVisibility(0);
+        paramViewGroup.nSs.setText(xN(this.nSp[paramInt]));
+        break label130;
       }
-      else
-      {
-        paramViewGroup.lvb.setVisibility(8);
-      }
+      paramViewGroup.nSs.setVisibility(8);
+      break label130;
+      label261:
+      paramViewGroup.nSt.setVisibility(4);
     }
-    label256:
-    paramViewGroup.lvc.setVisibility(4);
-    return paramView;
   }
   
-  public final void pA(String paramString)
+  public final void wQ(String paramString)
   {
+    AppMethodBeat.i(34798);
     if (paramString != null)
     {
-      this.feq = paramString.trim();
+      this.gvZ = paramString.trim();
       this.list.clear();
-      int j = this.luW.size();
+      int j = this.nSn.size();
       int i = 0;
       while (i < j)
       {
-        if ((((b.a)this.luW.get(i)).esg.toUpperCase().contains(this.feq.toUpperCase())) || (((b.a)this.luW.get(i)).esh.toUpperCase().contains(this.feq.toUpperCase())) || (((b.a)this.luW.get(i)).esf.contains(this.feq))) {
-          this.list.add(this.luW.get(i));
+        if ((((b.a)this.nSn.get(i)).fHT.toUpperCase().contains(this.gvZ.toUpperCase())) || (((b.a)this.nSn.get(i)).fHU.toUpperCase().contains(this.gvZ.toUpperCase())) || (((b.a)this.nSn.get(i)).fHS.contains(this.gvZ))) {
+          this.list.add(this.nSn.get(i));
         }
         i += 1;
       }
-      bcX();
+      bKh();
       super.notifyDataSetChanged();
     }
-  }
-  
-  static final class a
-  {
-    TextView drB;
-    TextView lvb;
-    TextView lvc;
+    AppMethodBeat.o(34798);
   }
 }
 

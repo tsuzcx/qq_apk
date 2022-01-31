@@ -13,15 +13,15 @@ public final class d
     super(paramContext, paramb, paramj);
   }
   
-  public final void q(boolean paramBoolean)
+  public final void p(boolean paramBoolean)
   {
-    super.q(paramBoolean);
-    ((h)this.Wy).q(paramBoolean);
+    super.p(paramBoolean);
+    ((h)this.Xl).p(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.design.internal.d
  * JD-Core Version:    0.7.0.1
  */

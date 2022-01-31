@@ -1,166 +1,184 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.io.Serializable;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
 
 public class dn
-  implements Serializable
+  implements dl
 {
-  private long a = -1L;
-  private String b;
-  private long c;
-  private String d;
-  private Map<String, String> e;
-  private boolean f;
+  private ArrayList<dl> a;
   
-  public final long a()
+  public dn()
   {
-    try
-    {
-      long l = this.a;
-      return l;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    AppMethodBeat.i(150122);
+    this.a = new ArrayList();
+    AppMethodBeat.o(150122);
   }
   
-  public final void a(long paramLong)
+  public void a()
   {
     try
     {
-      this.a = paramLong;
+      AppMethodBeat.i(150132);
+      int i = this.a.size() - 1;
+      while (i >= 0)
+      {
+        ((dl)this.a.get(i)).a();
+        i -= 1;
+      }
+      AppMethodBeat.o(150132);
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(dl paramdl)
+  {
+    try
+    {
+      AppMethodBeat.i(150123);
+      if ((paramdl != null) && (!this.a.contains(paramdl))) {
+        this.a.add(paramdl);
+      }
+      AppMethodBeat.o(150123);
+      return;
+    }
+    finally {}
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2)
+  {
+    try
+    {
+      AppMethodBeat.i(150125);
+      int i = this.a.size() - 1;
+      while (i >= 0)
+      {
+        ((dl)this.a.get(i)).a(paramFloat1, paramFloat2);
+        i -= 1;
+      }
+      AppMethodBeat.o(150125);
+      return false;
+    }
+    finally {}
+  }
+  
+  public void b(dl paramdl)
+  {
+    try
+    {
+      AppMethodBeat.i(150124);
+      this.a.remove(paramdl);
+      AppMethodBeat.o(150124);
       return;
     }
     finally
     {
-      localObject = finally;
-      throw localObject;
+      paramdl = finally;
+      throw paramdl;
     }
   }
   
-  public final void a(String paramString)
+  public boolean b(float paramFloat1, float paramFloat2)
   {
     try
     {
-      this.b = paramString;
-      return;
+      AppMethodBeat.i(150126);
+      int i = this.a.size() - 1;
+      while (i >= 0)
+      {
+        ((dl)this.a.get(i)).b(paramFloat1, paramFloat2);
+        i -= 1;
+      }
+      AppMethodBeat.o(150126);
+      return false;
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    finally {}
   }
   
-  public final void a(Map<String, String> paramMap)
+  public boolean c(float paramFloat1, float paramFloat2)
   {
     try
     {
-      this.e = paramMap;
-      return;
+      AppMethodBeat.i(150127);
+      int i = this.a.size() - 1;
+      while (i >= 0)
+      {
+        ((dl)this.a.get(i)).c(paramFloat1, paramFloat2);
+        i -= 1;
+      }
+      AppMethodBeat.o(150127);
+      return false;
     }
-    finally
-    {
-      paramMap = finally;
-      throw paramMap;
-    }
+    finally {}
   }
   
-  public final void a(boolean paramBoolean)
-  {
-    this.f = paramBoolean;
-  }
-  
-  public final String b()
+  public boolean d(float paramFloat1, float paramFloat2)
   {
     try
     {
-      String str = this.b;
-      return str;
+      AppMethodBeat.i(150128);
+      int i = this.a.size() - 1;
+      while (i >= 0)
+      {
+        ((dl)this.a.get(i)).d(paramFloat1, paramFloat2);
+        i -= 1;
+      }
+      AppMethodBeat.o(150128);
+      return false;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
-  public final void b(long paramLong)
+  public boolean e(float paramFloat1, float paramFloat2)
   {
     try
     {
-      this.c = paramLong;
-      return;
+      AppMethodBeat.i(150129);
+      int i = this.a.size() - 1;
+      while (i >= 0)
+      {
+        ((dl)this.a.get(i)).e(paramFloat1, paramFloat2);
+        i -= 1;
+      }
+      AppMethodBeat.o(150129);
+      return false;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
-  public final void b(String paramString)
+  public boolean f(float paramFloat1, float paramFloat2)
   {
     try
     {
-      this.d = paramString;
-      return;
+      AppMethodBeat.i(150130);
+      int i = this.a.size() - 1;
+      while (i >= 0)
+      {
+        ((dl)this.a.get(i)).f(paramFloat1, paramFloat2);
+        i -= 1;
+      }
+      AppMethodBeat.o(150130);
+      return false;
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    finally {}
   }
   
-  public final long c()
+  public boolean g(float paramFloat1, float paramFloat2)
   {
     try
     {
-      long l = this.c;
-      return l;
+      AppMethodBeat.i(150131);
+      int i = this.a.size() - 1;
+      while (i >= 0)
+      {
+        ((dl)this.a.get(i)).g(paramFloat1, paramFloat2);
+        i -= 1;
+      }
+      AppMethodBeat.o(150131);
+      return false;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final String d()
-  {
-    try
-    {
-      String str = this.d;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final Map<String, String> e()
-  {
-    try
-    {
-      Map localMap = this.e;
-      return localMap;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean f()
-  {
-    return this.f;
+    finally {}
   }
 }
 

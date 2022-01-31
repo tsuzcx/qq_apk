@@ -1,37 +1,40 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.h.c.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.ar;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ae
-  extends ap
+  extends ar
 {
-  protected static c.a buS;
+  protected static c.a info;
   
   static
   {
+    AppMethodBeat.i(1102);
     c.a locala = new c.a();
-    locala.ujL = new Field[2];
+    locala.yrK = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.ujN.put("username", "TEXT default ''  PRIMARY KEY ");
+    locala.yrM.put("username", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "username";
+    locala.yrL = "username";
     locala.columns[1] = "cmdbuf";
-    locala.ujN.put("cmdbuf", "BLOB default '' ");
+    locala.yrM.put("cmdbuf", "BLOB default '' ");
     localStringBuilder.append(" cmdbuf BLOB default '' ");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(1102);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

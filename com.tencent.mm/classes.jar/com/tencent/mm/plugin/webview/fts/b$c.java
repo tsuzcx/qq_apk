@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.webview.fts;
 
-import com.tencent.mm.protocal.c.sg;
+import com.tencent.mm.protocal.protobuf.wc;
 
 final class b$c
 {
-  public String bVk;
-  public int bVt;
-  public String fTF;
-  public String mVN;
-  public sg mWN;
+  public int cDa;
+  public String hng;
   public String nickname;
   public int position;
-  public int qZn;
-  public boolean qZo;
-  public String qZp;
-  public int qZq;
+  public String pyu;
+  public wc pzI;
+  public String query;
   public int scene;
   public String signature;
+  public int uOT;
+  public boolean uOU;
+  public String uOV;
+  public int uOW;
   public String username;
   
   private b$c(b paramb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.b.c
  * JD-Core Version:    0.7.0.1
  */

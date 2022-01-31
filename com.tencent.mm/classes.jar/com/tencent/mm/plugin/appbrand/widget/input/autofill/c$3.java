@@ -6,8 +6,9 @@ import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.appbrand.widget.input.aa;
+import com.tencent.mm.plugin.appbrand.widget.input.ab;
 
 final class c$3
   implements ViewTreeObserver.OnPreDrawListener
@@ -16,18 +17,20 @@ final class c$3
   
   public final boolean onPreDraw()
   {
-    this.hxc.getViewTreeObserver().removeOnPreDrawListener(this);
-    c localc = this.hxb;
-    if ((!localc.hwL.afe.isShowing()) || (localc.hwL.hxe == null) || (localc.hwL.hxe.getAdapter() == null) || (localc.hwL.hxe.getAdapter().getCount() <= 0)) {}
+    AppMethodBeat.i(123900);
+    this.jpm.getViewTreeObserver().removeOnPreDrawListener(this);
+    c localc = this.jpl;
+    if ((!localc.joV.aht.isShowing()) || (localc.joV.jpo == null) || (localc.joV.jpo.getAdapter() == null) || (localc.joV.jpo.getAdapter().getCount() <= 0)) {}
     Object localObject;
     do
     {
+      AppMethodBeat.o(123900);
       return true;
-      localObject = localc.hwK.getInputPanel();
+      localObject = localc.joU.getInputPanel();
     } while (localObject == null);
-    int m = a.fromDPToPix(localc.hwK.getContext(), 8);
-    int n = localc.hwL.hxe.getChildAt(0).getHeight();
-    int i = localc.hwL.hxe.getAdapter().getCount() * n;
+    int m = a.fromDPToPix(localc.joU.getContext(), 8);
+    int n = localc.joV.jpo.getChildAt(0).getHeight();
+    int i = localc.joV.jpo.getAdapter().getCount() * n;
     int k = i + m * 2;
     int j = n * 3 + m * 2;
     if (k > j) {
@@ -35,59 +38,60 @@ final class c$3
     }
     for (;;)
     {
-      localc.hwL.aeI = j;
+      localc.joV.agX = j;
       int[] arrayOfInt = new int[2];
-      localc.hwK.getView().getLocationInWindow(arrayOfInt);
+      localc.joU.getView().getLocationInWindow(arrayOfInt);
       j = arrayOfInt[1];
-      j = localc.hwK.getView().getHeight() + j;
+      j = localc.joU.getView().getHeight() + j;
       ((View)localObject).getLocationInWindow(arrayOfInt);
       k = arrayOfInt[1];
-      if (((localc.hwZ == -2147483648) || (localc.hwZ >= 0 - m)) && (k - j >= i + m))
+      label249:
+      if (((localc.jpj == -2147483648) || (localc.jpj >= 0 - m)) && (k - j >= i + m))
       {
-        localc.hwL.aeU = localc.hwK.getView();
-        localc.hwL.aeI = (m * 2 + i);
-        localc.hwL.setVerticalOffset(0 - m);
-        label315:
-        localc.hwL.show();
-        localObject = localc.hwL;
-        if (((AutoFillListPopupWindowBase)localObject).aeM) {
-          break label528;
+        localc.joV.ahj = localc.joU.getView();
+        localc.joV.agX = (m * 2 + i);
+        localc.joV.setVerticalOffset(0 - m);
+        localc.joV.show();
+        localObject = localc.joV;
+        if (((AutoFillListPopupWindowBase)localObject).ahb) {
+          break label539;
         }
       }
-      label528:
-      for (i = 0;; i = ((AutoFillListPopupWindowBase)localObject).aeK)
+      label325:
+      for (i = 0;; i = ((AutoFillListPopupWindowBase)localObject).agZ)
       {
-        localc.hwZ = i;
-        return true;
-        if (j - localc.hwK.getView().getHeight() >= i)
+        localc.jpj = i;
+        break;
+        if (j - localc.joU.getView().getHeight() >= i)
         {
-          localc.hwL.aeU = localc.hwK.getView();
-          localc.hwL.aeI = (m * 2 + i);
-          localc.hwL.setVerticalOffset(-(i + m) - localc.hwK.getView().getHeight());
-          break label315;
+          localc.joV.ahj = localc.joU.getView();
+          localc.joV.agX = (m * 2 + i);
+          localc.joV.setVerticalOffset(-(i + m) - localc.joU.getView().getHeight());
+          break label325;
         }
         if (i <= n)
         {
-          localc.hwL.aeI = n;
-          localc.hwL.aeU = localc.hwK.getView();
-          if (localc.hwZ < 0 - m)
+          localc.joV.agX = n;
+          localc.joV.ahj = localc.joU.getView();
+          if (localc.jpj < 0 - m)
           {
-            localc.hwL.setVerticalOffset(-(i + m) - localc.hwK.getView().getHeight());
-            break label315;
+            localc.joV.setVerticalOffset(-(i + m) - localc.joU.getView().getHeight());
+            break label325;
           }
-          localc.hwL.setVerticalOffset(0 - m);
-          break label315;
+          localc.joV.setVerticalOffset(0 - m);
+          break label325;
         }
         i -= n;
-        break;
+        break label249;
       }
+      label539:
       j = k;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.c.3
  * JD-Core Version:    0.7.0.1
  */

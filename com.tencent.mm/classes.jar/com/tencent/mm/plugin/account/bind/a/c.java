@@ -1,59 +1,67 @@
 package com.tencent.mm.plugin.account.bind.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bzg;
-import com.tencent.mm.protocal.c.bzh;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.clz;
+import com.tencent.mm.protocal.protobuf.cma;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 
 public final class c
   extends m
   implements k
 {
-  private final b dmK;
-  private f dmL;
+  private f callback;
+  private final b rr;
   
   public c()
   {
+    AppMethodBeat.i(13324);
     b.a locala = new b.a();
-    locala.ecH = new bzg();
-    locala.ecI = new bzh();
+    locala.fsX = new clz();
+    locala.fsY = new cma();
     locala.uri = "/cgi-bin/micromsg-bin/unbindlinkedincontact";
-    locala.ecG = 550;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    ((bzg)this.dmK.ecE.ecN).syV = 1;
+    locala.funcId = getType();
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ((clz)this.rr.fsV.fta).wsW = 1;
+    AppMethodBeat.o(13324);
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneUnBindLinkedinContact", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      g.DP().Dz().o(286722, "");
-      g.DP().Dz().o(286721, "");
-      g.DP().Dz().o(286723, "");
-    }
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(13325);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(13325);
+    return i;
   }
   
   public final int getType()
   {
     return 550;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(13326);
+    ab.d("MicroMsg.NetSceneUnBindLinkedinContact", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      g.RL().Ru().set(286722, "");
+      g.RL().Ru().set(286721, "");
+      g.RL().Ru().set(286723, "");
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(13326);
   }
 }
 

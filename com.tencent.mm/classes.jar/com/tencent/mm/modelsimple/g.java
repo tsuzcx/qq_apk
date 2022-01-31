@@ -1,70 +1,62 @@
 package com.tencent.mm.modelsimple;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.vt;
-import com.tencent.mm.protocal.c.vu;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.xj;
+import com.tencent.mm.protocal.protobuf.xk;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class g
   extends m
   implements k
 {
-  private final com.tencent.mm.ah.b dmK;
-  private f dmL;
+  private f callback;
+  private final com.tencent.mm.ai.b rr;
   
-  public g(String paramString1, int paramInt, String paramString2)
+  public g(String paramString)
   {
-    y.i("MicroMsg.NetSceneEnterTempSession", "NetSceneEnterTempSession %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    AppMethodBeat.i(16564);
+    ab.i("MicroMsg.NetSceneDelTempSession", "NetSceneDelTempSession %s", new Object[] { paramString });
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new vt();
-    ((b.a)localObject).ecI = new vu();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/entertempsession";
-    ((b.a)localObject).ecG = 1066;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    if (paramString2 != null)
-    {
-      localObject = paramString2;
-      if (paramString2.length() > 32)
-      {
-        localObject = paramString2;
-        if (paramInt == 19) {}
-      }
-    }
-    for (localObject = paramString2.substring(0, 32);; localObject = "")
-    {
-      paramString2 = (vt)this.dmK.ecE.ecN;
-      paramString2.sCE = paramString1;
-      paramString2.swS = paramInt;
-      paramString2.sSY = com.tencent.mm.bv.b.Xp((String)localObject);
-      paramString2.sQA = com.tencent.mm.bv.b.bk(new byte[0]);
-      y.i("MicroMsg.NetSceneEnterTempSession", "NetSceneEnterTempSession %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(paramString2.sQA.oY.length) });
-      return;
-    }
+    ((b.a)localObject).fsX = new xj();
+    ((b.a)localObject).fsY = new xk();
+    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/deltempsession";
+    ((b.a)localObject).funcId = 1067;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (xj)this.rr.fsV.fta;
+    ((xj)localObject).wxM = paramString;
+    ((xj)localObject).wPb = com.tencent.mm.bv.b.bL(new byte[0]);
+    AppMethodBeat.o(16564);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneEnterTempSession", "onGYNetEnd: %d, %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(16565);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(16565);
+    return i;
   }
   
   public final int getType()
   {
-    return 1066;
+    return 1067;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(16566);
+    ab.i("MicroMsg.NetSceneDelTempSession", "onGYNetEnd: %d, %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(16566);
   }
 }
 

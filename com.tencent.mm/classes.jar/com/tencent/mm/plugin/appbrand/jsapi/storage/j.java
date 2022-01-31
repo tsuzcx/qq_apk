@@ -8,7 +8,7 @@ public final class j
   public static final int CTRL_INDEX = 499;
   public static final String NAME = "removeGlobalStorage";
   
-  protected final String o(c paramc)
+  protected final String w(c paramc)
   {
     return "wxGlobal";
   }

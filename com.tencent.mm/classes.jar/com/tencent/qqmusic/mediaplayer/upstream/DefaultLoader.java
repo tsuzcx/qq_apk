@@ -1,6 +1,5 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -64,8 +63,8 @@ public abstract class DefaultLoader
       l1 = 0L;
       i = 0;
     }
-    label407:
-    label409:
+    label398:
+    label400:
     for (;;)
     {
       long l4 = l2 + l1;
@@ -76,25 +75,25 @@ public abstract class DefaultLoader
         {
           m = this.upstream.readAt(l4, paramChunk, 0, k);
           if (m != -1) {
-            break label237;
+            break label236;
           }
           Logger.i("DefaultLoader", "[loadChunk] read EOF.");
           Logger.d("DefaultLoader", "[loadChunk] exit. startPosition: " + l2 + ", loadedBytes: " + l1 + ", this.cancelled: " + this.cancelled + ", shutdown: " + this.shutdown);
           if (i != 0) {
-            break label407;
+            break label398;
           }
           return true;
         }
         catch (IOException paramChunk)
         {
-          throw new IOException(new SourceReadException(paramChunk, Uri.EMPTY));
+          throw new IOException(new SourceReadException(paramChunk, ""));
         }
         j = 0;
         break;
         label203:
         k = (int)Math.min(paramChunk.length, l3);
         break label94;
-        label237:
+        label236:
         if (m == 0)
         {
           Logger.d("DefaultLoader", "[loadChunk] read none.");
@@ -102,7 +101,7 @@ public abstract class DefaultLoader
         else
         {
           if (m < 0) {
-            throw new IOException(new SourceReadException("read error: " + m, Uri.EMPTY));
+            throw new IOException(new SourceReadException("read error: ".concat(String.valueOf(m)), ""));
           }
           for (;;)
           {
@@ -118,7 +117,7 @@ public abstract class DefaultLoader
                 i = 1;
                 if (i == 0) {
                   if ((j != 0) || (l1 < l3)) {
-                    break label409;
+                    break label400;
                   }
                 }
               }
@@ -191,7 +190,7 @@ public abstract class DefaultLoader
       try
       {
         if (!loadChunk(localInterruptedException)) {
-          break label92;
+          break label93;
         }
         this.eventHandler.obtainMessage(3).sendToTarget();
       }
@@ -201,7 +200,7 @@ public abstract class DefaultLoader
         this.eventHandler.obtainMessage(4, localIOException).sendToTarget();
       }
       continue;
-      label92:
+      label93:
       this.eventHandler.obtainMessage(5).sendToTarget();
     }
   }
@@ -240,7 +239,7 @@ public abstract class DefaultLoader
   
   public void startLoading(Chunk paramChunk)
   {
-    Logger.i("DefaultLoader", "[startLoading] chunk: " + paramChunk);
+    Logger.i("DefaultLoader", "[startLoading] chunk: ".concat(String.valueOf(paramChunk)));
     this.chunks.clear();
     if (!this.chunks.offer(paramChunk)) {
       throw new IllegalStateException("exceeds maximum of queue!");
@@ -255,7 +254,7 @@ public abstract class DefaultLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.DefaultLoader
  * JD-Core Version:    0.7.0.1
  */

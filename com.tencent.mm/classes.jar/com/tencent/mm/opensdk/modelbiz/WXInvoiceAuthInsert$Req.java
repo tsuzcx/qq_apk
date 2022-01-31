@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.modelbiz;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.utils.Log;
 import com.tencent.mm.opensdk.utils.d;
@@ -14,23 +15,29 @@ public final class WXInvoiceAuthInsert$Req
   
   public final boolean checkArgs()
   {
+    AppMethodBeat.i(128157);
     if (d.b(this.url))
     {
       Log.i("MicroMsg.SDK.WXInvoiceAuthInsert.Req", "url should not be empty");
+      AppMethodBeat.o(128157);
       return false;
     }
     if (this.url.length() > 10240)
     {
       Log.e("MicroMsg.SDK.WXInvoiceAuthInsert.Req", "url must be in 10k");
+      AppMethodBeat.o(128157);
       return false;
     }
+    AppMethodBeat.o(128157);
     return true;
   }
   
   public final void fromBundle(Bundle paramBundle)
   {
+    AppMethodBeat.i(128159);
     super.fromBundle(paramBundle);
     this.url = paramBundle.getString("_wxapi_invoice_auth_insert_req_url");
+    AppMethodBeat.o(128159);
   }
   
   public final int getType()
@@ -40,8 +47,10 @@ public final class WXInvoiceAuthInsert$Req
   
   public final void toBundle(Bundle paramBundle)
   {
+    AppMethodBeat.i(128158);
     super.fromBundle(paramBundle);
     paramBundle.putString("_wxapi_invoice_auth_insert_req_url", this.url);
+    AppMethodBeat.o(128158);
   }
 }
 

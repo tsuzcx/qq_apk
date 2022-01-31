@@ -1,28 +1,41 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.widget.MMEditText;
 
 final class SnsCommentFooter$7
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
   SnsCommentFooter$7(SnsCommentFooter paramSnsCommentFooter) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final void onClick(View paramView)
   {
-    SnsCommentFooter.n(this.oXQ);
-    SnsCommentFooter.b(this.oXQ).setVisibility(8);
-    SnsCommentFooter.b(this.oXQ).onPause();
-    SnsCommentFooter.m(this.oXQ).setImageResource(i.e.chatting_setmode_biaoqing_btn);
-    if (SnsCommentFooter.p(this.oXQ) != null) {
-      SnsCommentFooter.p(this.oXQ).bIG();
+    AppMethodBeat.i(38885);
+    this.rQk.setModeClick(true);
+    ab.i("MicroMsg.SnsCommentFooter", "state onClick" + SnsCommentFooter.i(this.rQk));
+    if (SnsCommentFooter.i(this.rQk) == 0)
+    {
+      this.rQk.cmc.hideVKB();
+      SnsCommentFooter.b(this.rQk).requestFocus();
+      SnsCommentFooter.a(this.rQk, 1);
+      SnsCommentFooter.j(this.rQk);
+      SnsCommentFooter.k(this.rQk).setImageResource(2130838350);
+      SnsCommentFooter.l(this.rQk);
+      AppMethodBeat.o(38885);
+      return;
     }
-    SnsCommentFooter.a(this.oXQ, 0);
-    return false;
+    SnsCommentFooter.m(this.rQk);
+    SnsCommentFooter.l(this.rQk);
+    SnsCommentFooter.b(this.rQk).requestFocus();
+    this.rQk.cmc.showVKB();
+    SnsCommentFooter.k(this.rQk).setImageResource(2130838345);
+    SnsCommentFooter.a(this.rQk, 0);
+    AppMethodBeat.o(38885);
   }
 }
 

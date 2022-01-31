@@ -5,12 +5,12 @@ public final class c$v
 {
   public c$v()
   {
-    super("checkJsApi", "checkJsApi", 84, false);
+    super("cancelSearchActionSheet", "cancelSearchActionSheet", 10000, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.v
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 
 final class WxaLuckyMoneyPrepareUI$4
@@ -12,13 +13,15 @@ final class WxaLuckyMoneyPrepareUI$4
   
   public final void onClick(View paramView)
   {
-    this.eYi.setOnClickListener(null);
-    this.lMy.setOnClickListener(null);
-    this.lMx.J(WxaLuckyMoneyPrepareUI.b(this.lMx), 2);
-    this.lMx.J(WxaLuckyMoneyPrepareUI.c(this.lMx), 0);
-    this.lMx.mKeyboard.setXMode(0);
-    this.lMx.mKeyboard.setInputEditText((EditText)paramView);
-    this.lMx.lMr.setVisibility(0);
+    AppMethodBeat.i(42056);
+    this.val$hintTv.setOnClickListener(null);
+    this.ojR.setOnClickListener(null);
+    this.ojQ.Z(WxaLuckyMoneyPrepareUI.b(this.ojQ), 2);
+    this.ojQ.Z(WxaLuckyMoneyPrepareUI.c(this.ojQ), 0);
+    this.ojQ.mKeyboard.setXMode(0);
+    this.ojQ.mKeyboard.setInputEditText((EditText)paramView);
+    this.ojQ.mKBLayout.setVisibility(0);
+    AppMethodBeat.o(42056);
   }
 }
 

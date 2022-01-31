@@ -1,116 +1,21 @@
 package android.support.transition;
 
-import android.graphics.Rect;
-import android.support.v4.view.q;
-import android.view.ViewGroup;
+import android.annotation.SuppressLint;
 
-public final class ac
-  extends bc
+@SuppressLint({"InlinedApi"})
+final class ac
 {
-  private float qw = 3.0F;
-  int rs = 80;
-  
-  public final long a(ViewGroup paramViewGroup, Transition paramTransition, ai paramai1, ai paramai2)
-  {
-    if ((paramai1 == null) && (paramai2 == null)) {
-      return 0L;
-    }
-    int j = 1;
-    Rect localRect = paramTransition.getEpicenter();
-    if ((paramai2 == null) || (e(paramai1) == 0))
-    {
-      j = -1;
-      paramai2 = paramai1;
-    }
-    int n = bc.a(paramai2, 0);
-    int i1 = bc.a(paramai2, 1);
-    paramai1 = new int[2];
-    paramViewGroup.getLocationOnScreen(paramai1);
-    int i2 = paramai1[0] + Math.round(paramViewGroup.getTranslationX());
-    int i3 = paramai1[1] + Math.round(paramViewGroup.getTranslationY());
-    int i4 = i2 + paramViewGroup.getWidth();
-    int i5 = i3 + paramViewGroup.getHeight();
-    int k;
-    int m;
-    label146:
-    label154:
-    label203:
-    float f;
-    if (localRect != null)
-    {
-      k = localRect.centerX();
-      m = localRect.centerY();
-      if (this.rs != 8388611) {
-        break label345;
-      }
-      if (q.Q(paramViewGroup) != 1) {
-        break label333;
-      }
-      i = 1;
-      if (i == 0) {
-        break label339;
-      }
-      i = 5;
-      switch (i)
-      {
-      default: 
-        i = 0;
-        f = i;
-        switch (this.rs)
-        {
-        }
-        break;
-      }
-    }
-    for (int i = paramViewGroup.getHeight();; i = paramViewGroup.getWidth())
-    {
-      f /= i;
-      long l2 = paramTransition.mDuration;
-      long l1 = l2;
-      if (l2 < 0L) {
-        l1 = 300L;
-      }
-      return Math.round((float)(l1 * j) / this.qw * f);
-      k = (i2 + i4) / 2;
-      m = (i3 + i5) / 2;
-      break;
-      label333:
-      i = 0;
-      break label146;
-      label339:
-      i = 3;
-      break label154;
-      label345:
-      if (this.rs == 8388613)
-      {
-        if (q.Q(paramViewGroup) == 1)
-        {
-          i = 1;
-          label365:
-          if (i == 0) {
-            break label382;
-          }
-        }
-        label382:
-        for (i = 3;; i = 5)
-        {
-          break;
-          i = 0;
-          break label365;
-        }
-      }
-      i = this.rs;
-      break label154;
-      i = i4 - n + Math.abs(m - i1);
-      break label203;
-      i = Math.abs(k - n) + (i5 - i1);
-      break label203;
-      i = n - i2 + Math.abs(m - i1);
-      break label203;
-      i = Math.abs(k - n) + (i1 - i3);
-      break label203;
-    }
-  }
+  static final int[] sC = { 16842799, 16843740, 16843841, 16843842, 16843853, 16843854 };
+  static final int[] sD = { 16843741, 16843742, 16843743 };
+  static final int[] sE = { 16843073, 16843160, 16843746, 16843855 };
+  static final int[] sF = { 16843983 };
+  static final int[] sG = { 16843900 };
+  static final int[] sH = { 16843745 };
+  static final int[] sI = { 16843964, 16843965 };
+  static final int[] sJ = { 16843824 };
+  static final int[] sK = { 16843744 };
+  static final int[] sL = { 16843901, 16843902, 16843903 };
+  static final int[] sM = { 16843978 };
 }
 
 

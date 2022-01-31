@@ -1,29 +1,13 @@
 package com.tencent.mm.plugin.appbrand.page.a;
 
-import java.util.concurrent.atomic.AtomicReference;
-
-public class b
-  implements c
+public abstract interface b
+  extends c, d
 {
-  protected AtomicReference<c.a> gVW = new AtomicReference();
+  public static final b iAk = new b.1();
   
-  public b()
-  {
-    this.gVW.set(c.a.gVX);
-  }
+  public abstract void pause();
   
-  public void agH() {}
-  
-  public void ahg() {}
-  
-  public void ahh() {}
-  
-  public final c.a ahi()
-  {
-    return (c.a)this.gVW.get();
-  }
-  
-  public void onOrientationChanged(int paramInt) {}
+  public abstract void resume();
 }
 
 

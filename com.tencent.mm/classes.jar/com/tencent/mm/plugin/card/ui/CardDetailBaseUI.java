@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.card.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -13,49 +14,47 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.a;
-import com.tencent.mm.plugin.card.a.b;
-import com.tencent.mm.plugin.card.a.c;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
-import com.tencent.mm.plugin.card.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.statusbar.DrawStatusBarActivity;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.statusbar.a;
+import com.tencent.mm.ui.w;
 
 public abstract class CardDetailBaseUI
-  extends DrawStatusBarActivity
+  extends MMActivity
 {
-  private TextView haW;
-  private View heP;
-  private ImageView irM;
-  private TextView irN;
-  ImageView irO;
-  private View irP;
+  private TextView iJG;
+  private View iQc;
+  private ImageView ksT;
+  private TextView ksU;
+  ImageView ksV;
+  private View ksW;
   
-  public final void J(int paramInt, boolean paramBoolean)
+  public final void Q(int paramInt, boolean paramBoolean)
   {
-    this.heP.setBackgroundColor(paramInt);
+    this.iQc.setBackgroundColor(paramInt);
     if (paramBoolean)
     {
-      this.haW.setTextColor(getResources().getColor(a.a.black));
-      this.irN.setTextColor(getResources().getColor(a.a.black));
-      this.irM.setImageResource(a.f.actionbar_icon_dark_back);
-      this.irO.setImageResource(a.c.card_mm_title_btn_menu);
-      this.irP.setBackgroundColor(getResources().getColor(a.a.actionbar_devider_color));
-      return;
+      this.iJG.setTextColor(getResources().getColor(2131689763));
+      this.ksU.setTextColor(getResources().getColor(2131689763));
+      this.ksT.setImageResource(2131230737);
+      this.ksV.setImageResource(2130838153);
+      this.ksW.setBackgroundColor(getResources().getColor(2131689647));
     }
-    this.haW.setTextColor(getResources().getColor(a.a.white));
-    this.irN.setTextColor(getResources().getColor(a.a.white));
-    this.irM.setImageResource(a.f.actionbar_icon_dark_back);
-    this.irO.setImageResource(a.c.mm_title_btn_menu);
-    this.irP.setBackgroundColor(getResources().getColor(a.a.half_alpha_white));
+    for (;;)
+    {
+      a.d(getContentView(), paramInt, paramBoolean);
+      return;
+      this.iJG.setTextColor(getResources().getColor(2131690709));
+      this.ksU.setTextColor(getResources().getColor(2131690709));
+      this.ksT.setImageResource(2131230737);
+      this.ksV.setImageResource(2130839668);
+      this.ksW.setBackgroundColor(getResources().getColor(2131690161));
+    }
   }
   
-  public final void ey(boolean paramBoolean)
+  public final void fY(boolean paramBoolean)
   {
-    ImageView localImageView = this.irO;
+    ImageView localImageView = this.ksV;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -64,71 +63,77 @@ public abstract class CardDetailBaseUI
     }
   }
   
-  public final boolean noActionBar()
+  public boolean noActionBar()
   {
     return false;
-  }
-  
-  public final void oX(int paramInt)
-  {
-    this.haW.setTextColor(paramInt);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.heP = y.gt(this.mController.uMN).inflate(a.e.card_detail_action_bar, null);
-    this.heP.setBackgroundColor(getResources().getColor(a.a.action_bar_color));
-    this.haW = ((TextView)this.heP.findViewById(a.d.title_area));
-    this.irN = ((TextView)this.heP.findViewById(a.d.sub_title_area));
-    this.irM = ((ImageView)this.heP.findViewById(a.d.arrow_area_btn));
-    this.irO = ((ImageView)this.heP.findViewById(a.d.menu_icon));
-    this.irP = this.heP.findViewById(a.d.divider);
+    this.iQc = w.hM(getContext()).inflate(2130968926, null);
+    this.iQc.setBackgroundColor(getResources().getColor(2131689641));
+    this.iJG = ((TextView)this.iQc.findViewById(2131820981));
+    this.ksU = ((TextView)this.iQc.findViewById(2131820982));
+    this.ksT = ((ImageView)this.iQc.findViewById(2131820980));
+    this.ksV = ((ImageView)this.iQc.findViewById(2131822061));
+    this.ksW = this.iQc.findViewById(2131821148);
     LinearLayout localLinearLayout;
     Object localObject;
-    if ((this.mController.contentView != null) && (((ViewGroup)this.mController.contentView).getChildCount() > 0))
+    if ((getContentView() != null) && (((ViewGroup)getContentView()).getChildCount() > 0))
     {
-      paramBundle = ((ViewGroup)this.mController.contentView).getChildAt(0);
-      ((ViewGroup)this.mController.contentView).removeView(paramBundle);
+      paramBundle = ((ViewGroup)getContentView()).getChildAt(0);
+      ((ViewGroup)getContentView()).removeView(paramBundle);
       localLinearLayout = new LinearLayout(this);
       localLinearLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       localLinearLayout.setOrientation(1);
       localObject = getResources().getDisplayMetrics();
       if (((DisplayMetrics)localObject).widthPixels <= ((DisplayMetrics)localObject).heightPixels) {
-        break label281;
+        break label255;
       }
     }
-    label281:
-    for (int i = getResources().getDimensionPixelSize(a.b.DefaultActionbarHeightLand);; i = getResources().getDimensionPixelSize(a.b.DefaultActionbarHeightPort))
+    label255:
+    for (int i = getResources().getDimensionPixelSize(2131427558);; i = getResources().getDimensionPixelSize(2131427559))
     {
       localObject = new LinearLayout.LayoutParams(-1, i);
-      localLinearLayout.addView(this.heP, (ViewGroup.LayoutParams)localObject);
+      localLinearLayout.addView(this.iQc, (ViewGroup.LayoutParams)localObject);
       localLinearLayout.addView(paramBundle);
-      ((ViewGroup)this.mController.contentView).addView(localLinearLayout);
+      ((ViewGroup)getContentView()).addView(localLinearLayout);
       return;
     }
   }
   
-  protected final void onCreateBeforeSetContentView()
+  public void onCreateBeforeSetContentView()
   {
     super.onCreateBeforeSetContentView();
     supportRequestWindowFeature(10);
     supportRequestWindowFeature(1);
   }
   
-  public final void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    this.irM.setOnClickListener(new CardDetailBaseUI.1(this, paramOnMenuItemClickListener));
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void setMMSubTitle(String paramString)
+  public void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    this.irN.setText(paramString);
+    this.ksT.setOnClickListener(new CardDetailBaseUI.1(this, paramOnMenuItemClickListener));
   }
   
-  public final void setMMTitle(String paramString)
+  public void setMMSubTitle(String paramString)
   {
-    this.haW.setText(paramString);
+    this.ksU.setText(paramString);
+  }
+  
+  public void setMMTitle(String paramString)
+  {
+    this.iJG.setText(paramString);
+  }
+  
+  public void setMMTitleColor(int paramInt)
+  {
+    this.iJG.setTextColor(paramInt);
   }
 }
 

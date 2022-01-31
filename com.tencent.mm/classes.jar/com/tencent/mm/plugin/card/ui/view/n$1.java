@@ -4,13 +4,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.c;
 import com.tencent.mm.plugin.card.d.d;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class n$1
   implements View.OnClickListener
@@ -19,27 +17,32 @@ final class n$1
   
   public final void onClick(View paramView)
   {
-    paramView = (Button)this.iyj.findViewById(a.d.code_button);
-    View localView = this.iyj.findViewById(a.d.code_qr_disable_layout);
-    if ((paramView.getVisibility() == 0) && (localView.getVisibility() == 0)) {
+    AppMethodBeat.i(88762);
+    paramView = (Button)this.kBq.findViewById(2131822023);
+    View localView = this.kBq.findViewById(2131822019);
+    if ((paramView.getVisibility() == 0) && (localView.getVisibility() == 0))
+    {
+      AppMethodBeat.o(88762);
       return;
     }
     if (localView.getVisibility() == 0)
     {
-      if (!l.isNetworkAvailable(this.iyk.hxN.mController.uMN))
+      if (!l.isNetworkAvailable(this.kBr.jpX.getContext()))
       {
-        d.a(this.iyk.hxN, this.iyk.hxN.getString(a.g.card_get_code_network_connet_failure), false);
+        d.a(this.kBr.jpX, this.kBr.jpX.getString(2131297910), false);
+        AppMethodBeat.o(88762);
         return;
       }
       localView.setVisibility(8);
-      this.iyj.findViewById(a.d.code_qr_area).setVisibility(0);
+      this.kBq.findViewById(2131822018).setVisibility(0);
     }
-    this.iyk.ixX.d(c.iyU);
+    this.kBr.kBe.d(c.kCb);
+    AppMethodBeat.o(88762);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.n.1
  * JD-Core Version:    0.7.0.1
  */

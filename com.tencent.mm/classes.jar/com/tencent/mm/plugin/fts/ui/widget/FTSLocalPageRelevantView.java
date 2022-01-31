@@ -7,10 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.fts.ui.n.d;
-import com.tencent.mm.plugin.fts.ui.n.e;
-import com.tencent.mm.protocal.c.bma;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bvm;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,58 +18,75 @@ public class FTSLocalPageRelevantView
   extends LinearLayout
   implements View.OnClickListener
 {
-  public String bVk = null;
-  public String fTF = null;
-  public LinearLayout fXV;
-  private FTSLocalPageRelevantView.b kEF = null;
-  public List<bma> kEG = null;
+  public String hng;
+  public LinearLayout jja;
+  private FTSLocalPageRelevantView.b nbd;
+  public List<bvm> nbe;
+  public String query;
   
   public FTSLocalPageRelevantView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(62138);
+    this.nbd = null;
+    this.query = null;
+    this.hng = null;
+    this.nbe = null;
     post(new FTSLocalPageRelevantView.1(this));
+    AppMethodBeat.o(62138);
   }
   
   public FTSLocalPageRelevantView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.nbd = null;
+    this.query = null;
+    this.hng = null;
+    this.nbe = null;
   }
   
   public FTSLocalPageRelevantView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.nbd = null;
+    this.query = null;
+    this.hng = null;
+    this.nbe = null;
   }
   
-  public static List<bma> bC(List<bma> paramList)
+  public static List<bvm> bX(List<bvm> paramList)
   {
+    AppMethodBeat.i(62141);
     LinkedList localLinkedList = new LinkedList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bma localbma = (bma)paramList.next();
-      if (!bk.bl(localbma.tFy)) {
-        localLinkedList.add(localbma);
+      bvm localbvm = (bvm)paramList.next();
+      if (!bo.isNullOrNil(localbvm.xJd)) {
+        localLinkedList.add(localbvm);
       }
     }
+    AppMethodBeat.o(62141);
     return localLinkedList;
   }
   
-  public final void a(List<bma> paramList, LinearLayout paramLinearLayout)
+  public final void b(List<bvm> paramList, LinearLayout paramLinearLayout)
   {
+    AppMethodBeat.i(62140);
     paramLinearLayout.removeAllViews();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (bma)localIterator.next();
+      Object localObject = (bvm)localIterator.next();
       if (localObject != null)
       {
-        View localView = LayoutInflater.from(paramLinearLayout.getContext()).inflate(n.e.fts_websearch_relevant_item, paramLinearLayout, false);
-        TextView localTextView = (TextView)localView.findViewById(n.d.content);
+        View localView = LayoutInflater.from(paramLinearLayout.getContext()).inflate(2130969682, paramLinearLayout, false);
+        TextView localTextView = (TextView)localView.findViewById(2131820946);
         localView.setOnClickListener(new FTSLocalPageRelevantView.2(this));
-        localTextView.setText(((bma)localObject).tFy);
+        localTextView.setText(((bvm)localObject).xJd);
         int i = paramList.indexOf(localObject);
         if ((paramList != null) && (i < paramList.size())) {}
-        for (localObject = new FTSLocalPageRelevantView.a(this, (bma)paramList.get(i), i + 1);; localObject = null)
+        for (localObject = new FTSLocalPageRelevantView.a(this, (bvm)paramList.get(i), i + 1);; localObject = null)
         {
           localView.setTag(localObject);
           paramLinearLayout.addView(localView);
@@ -78,59 +94,65 @@ public class FTSLocalPageRelevantView
         }
       }
     }
+    AppMethodBeat.o(62140);
   }
   
   public String getQuery()
   {
-    if (this.bVk != null) {
-      return this.bVk;
+    if (this.query != null) {
+      return this.query;
     }
     return "";
   }
   
   public String getSearchId()
   {
-    if (this.fTF != null) {
-      return this.fTF;
+    if (this.hng != null) {
+      return this.hng;
     }
     return "";
   }
   
   public String getWordList()
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    if (this.kEG != null)
+    AppMethodBeat.i(62142);
+    Object localObject = new StringBuilder("");
+    if (this.nbe != null)
     {
-      Iterator localIterator = this.kEG.iterator();
+      Iterator localIterator = this.nbe.iterator();
       while (localIterator.hasNext())
       {
-        bma localbma = (bma)localIterator.next();
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.append("|");
+        bvm localbvm = (bvm)localIterator.next();
+        if (((StringBuilder)localObject).length() > 0) {
+          ((StringBuilder)localObject).append("|");
         }
-        localStringBuilder.append(localbma.tFy);
+        ((StringBuilder)localObject).append(localbvm.xJd);
       }
     }
-    return localStringBuilder.toString();
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(62142);
+    return localObject;
   }
   
   public void onClick(View paramView)
   {
-    if ((this.kEF != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof FTSLocalPageRelevantView.a)))
+    AppMethodBeat.i(62139);
+    if ((this.nbd != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof FTSLocalPageRelevantView.a)))
     {
       paramView = (FTSLocalPageRelevantView.a)paramView.getTag();
-      this.kEF.a(paramView.kEI, this.fTF, paramView.position);
+      this.nbd.a(paramView.nbg, this.hng, paramView.position);
     }
+    AppMethodBeat.o(62139);
   }
   
   public void setOnRelevantClickListener(FTSLocalPageRelevantView.b paramb)
   {
-    this.kEF = paramb;
+    this.nbd = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.FTSLocalPageRelevantView
  * JD-Core Version:    0.7.0.1
  */

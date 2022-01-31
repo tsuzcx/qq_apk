@@ -3,9 +3,8 @@ package com.tencent.mm.plugin.wallet_core.id_verify;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class WalletRealNameVerifyUI$2
   implements View.OnClickListener
@@ -14,12 +13,14 @@ final class WalletRealNameVerifyUI$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(46621);
     paramView = new Intent();
     paramView.putExtra("GetAddress", true);
     paramView.putExtra("ShowSelectedLocation", false);
     paramView.putExtra("IsRealNameVerifyScene", true);
     paramView.putExtra("IsNeedShowSearchBar", true);
-    d.c(this.qse.mController.uMN, ".ui.tools.MultiStageCitySelectUI", paramView, 2);
+    d.b(this.udf.getContext(), ".ui.tools.MultiStageCitySelectUI", paramView, 2);
+    AppMethodBeat.o(46621);
   }
 }
 

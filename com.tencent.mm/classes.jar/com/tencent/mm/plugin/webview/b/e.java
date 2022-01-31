@@ -1,15 +1,23 @@
 package com.tencent.mm.plugin.webview.b;
 
-import com.tencent.mm.sdk.e.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.j;
 
 public final class e
-  extends i<d>
+  extends j<d>
 {
-  public static final String[] dXp = { i.a(d.buS, "WebViewHistory") };
+  public static final String[] SQL_CREATE;
+  
+  static
+  {
+    AppMethodBeat.i(5648);
+    SQL_CREATE = new String[] { j.getCreateSQLs(d.info, "WebViewHistory") };
+    AppMethodBeat.o(5648);
+  }
   
   public e(com.tencent.mm.sdk.e.e parame)
   {
-    super(parame, d.buS, "WebViewHistory", null);
+    super(parame, d.info, "WebViewHistory", null);
   }
 }
 

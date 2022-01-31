@@ -2,7 +2,9 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingVideoWrapper;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class r$7
   implements View.OnClickListener
@@ -11,13 +13,31 @@ final class r$7
   
   public final void onClick(View paramView)
   {
-    r.a(this.oHr);
-    this.oHr.oHa = false;
-    this.oHr.oGX = true;
-    this.oHr.oHh = 3;
-    this.oHr.bEV();
-    this.oHr.jo(true);
-    ai.l(new r.7.1(this), 10000L);
+    AppMethodBeat.i(37210);
+    ab.i("MicroMsg.Sns.AdLandingPageNewStreamVideoComponent", "play btn onclick isPlaying[%b]", new Object[] { Boolean.valueOf(this.rxh.rwF.isPlaying()) });
+    if (this.rxh.rwF.isPlaying())
+    {
+      this.rxh.crn();
+      this.rxh.rwX = 4;
+      if (this.rxh.rrB)
+      {
+        paramView = this.rxh;
+        paramView.rxa += 1;
+      }
+      AppMethodBeat.o(37210);
+      return;
+    }
+    if (this.rxh.rwP) {
+      this.rxh.cqy();
+    }
+    for (;;)
+    {
+      r.b(this.rxh);
+      this.rxh.rwX = 3;
+      break;
+      this.rxh.cqE();
+      this.rxh.cqD();
+    }
   }
 }
 

@@ -4,17 +4,19 @@ import android.graphics.Bitmap;
 
 public abstract interface h
 {
-  public abstract void Se();
+  public abstract void aEM();
   
-  public abstract void Sf();
+  public abstract void alo();
   
-  public abstract boolean aj(float paramFloat);
+  public abstract void alp();
   
-  public abstract void akT();
-  
-  public abstract void bFF();
+  public abstract boolean ay(float paramFloat);
   
   public abstract void c(boolean paramBoolean, String paramString, int paramInt);
+  
+  public abstract void crA();
+  
+  public abstract boolean d(double paramDouble, boolean paramBoolean);
   
   public abstract int getCacheTimeSec();
   
@@ -30,9 +32,9 @@ public abstract interface h
   
   public abstract boolean isPlaying();
   
-  public abstract boolean lF(int paramInt);
-  
   public abstract boolean pause();
+  
+  public abstract boolean r(double paramDouble);
   
   public abstract void setCover(Bitmap paramBitmap);
   
@@ -49,8 +51,6 @@ public abstract interface h
   public abstract void start();
   
   public abstract void stop();
-  
-  public abstract boolean y(int paramInt, boolean paramBoolean);
 }
 
 

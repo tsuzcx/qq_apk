@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.f.a;
 
 final class k$3
@@ -7,9 +8,11 @@ final class k$3
 {
   k$3(k paramk) {}
   
-  public final void ceI()
+  public final void aZa()
   {
-    this.rCv.a(this.rCv.rvZ);
+    AppMethodBeat.i(9923);
+    this.vsH.a(this.vsH.vmp);
+    AppMethodBeat.o(9923);
   }
 }
 

@@ -3,7 +3,7 @@ package android.support.transition;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.graphics.Rect;
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.view.View;
 
 final class ChangeBounds$9
@@ -22,14 +22,14 @@ final class ChangeBounds$9
   {
     if (!this.mIsCanceled)
     {
-      q.c(this.val$view, this.pK);
-      av.b(this.val$view, this.pL, this.pM, this.pN, this.pO);
+      t.c(this.val$view, this.qH);
+      au.b(this.val$view, this.qI, this.qJ, this.qK, this.qL);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.ChangeBounds.9
  * JD-Core Version:    0.7.0.1
  */

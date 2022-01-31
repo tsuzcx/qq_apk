@@ -2,7 +2,7 @@ package com.tencent.pb.common.b;
 
 public abstract interface c
 {
-  public abstract void r(int paramInt, byte[] paramArrayOfByte);
+  public abstract void onResp(int paramInt, byte[] paramArrayOfByte);
 }
 
 

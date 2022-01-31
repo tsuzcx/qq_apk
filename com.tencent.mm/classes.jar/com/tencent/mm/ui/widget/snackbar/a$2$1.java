@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.widget.snackbar;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$2$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class a$2$1
   
   public final void run()
   {
-    this.wpU.wpS.wpO.hide();
+    AppMethodBeat.i(112974);
+    this.AKy.AKw.AKs.hide();
+    AppMethodBeat.o(112974);
   }
 }
 

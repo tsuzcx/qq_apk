@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.voiceprint.ui;
 
 public abstract interface a$a
 {
-  public abstract void bPi();
+  public abstract void cLo();
   
-  public abstract void bPj();
+  public abstract void cLp();
 }
 
 

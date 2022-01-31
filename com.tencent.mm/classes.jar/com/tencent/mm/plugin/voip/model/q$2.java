@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.voip.model;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class q$2
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  q$2(Context paramContext) {}
+  q$2(q paramq) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    q.el(this.val$context);
-    q.access$000();
+    AppMethodBeat.i(4568);
+    this.tyK.tyJ.ag(2000L, 2000L);
+    AppMethodBeat.o(4568);
   }
 }
 

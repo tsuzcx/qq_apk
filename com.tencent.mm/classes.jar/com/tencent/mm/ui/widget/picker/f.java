@@ -2,12 +2,12 @@ package com.tencent.mm.ui.widget.picker;
 
 public final class f
 {
-  public static boolean nd(int paramInt)
+  public static boolean qK(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 59);
   }
   
-  public static boolean ne(int paramInt)
+  public static boolean qL(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 23);
   }

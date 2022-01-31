@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract interface MRecyclerView$a
 {
-  public abstract void B(View paramView, int paramInt);
+  public abstract void N(View paramView, int paramInt);
 }
 
 

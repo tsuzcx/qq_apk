@@ -2,13 +2,13 @@ package com.tencent.mm.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.view.f;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -21,297 +21,336 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ci.a.c;
-import com.tencent.mm.ci.a.e;
-import com.tencent.mm.ci.a.f;
-import com.tencent.mm.ci.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public abstract class BaseActivity
   extends AppCompatActivity
 {
-  private TextView how;
-  private TextView hrg;
-  private ImageView irM;
+  private View actionbarView;
+  private int bcg = this.yUe;
+  private TextView jaZ;
+  private TextView jhF;
+  private ImageView ksT;
   private ActionBar mActionBar;
   private Context mContext;
-  private boolean nST = false;
-  private View uGK;
-  private int uGL = 0;
-  private ImageButton uGM;
-  private ImageButton uGN;
-  private TextView uGO;
-  private MenuItem uGP;
-  private MenuItem uGQ;
-  private int uGR;
-  private int uGS;
-  private BaseActivity.c uGT;
-  private BaseActivity.a uGU = BaseActivity.a.uGZ;
-  LinkedList<BaseActivity.b> uGV = new LinkedList();
+  private boolean qGO = false;
+  private int theme;
+  private View yTS;
+  private View yTT;
+  private int yTU = 0;
+  private ImageButton yTV;
+  private ImageButton yTW;
+  private TextView yTX;
+  private MenuItem yTY;
+  private MenuItem yTZ;
+  private int yUa;
+  private int yUb;
+  private BaseActivity.c yUc;
+  private BaseActivity.a yUd = BaseActivity.a.yUk;
+  private int yUe;
+  private int yUf;
+  LinkedList<BaseActivity.b> yUg = new LinkedList();
   
-  private void cxR()
+  private void a(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, BaseActivity.a parama)
   {
-    if (this.uGT == BaseActivity.c.uHk) {
-      if (this.uGO != null) {}
+    if (this.mActionBar == null) {
+      return;
+    }
+    if (paramOnMenuItemClickListener == null)
+    {
+      this.mActionBar.setDisplayHomeAsUpEnabled(false);
+      this.yUd = parama;
+      if (this.yUd == BaseActivity.a.yUm) {
+        this.yUa = 0;
+      }
+      if (this.yUd != BaseActivity.a.yUk) {
+        break label132;
+      }
+      this.yUa = 2130837617;
+    }
+    for (;;)
+    {
+      if ((this.ksT != null) && (this.yUa != 0))
+      {
+        dAM();
+        this.ksT.setImageResource(this.yUa);
+      }
+      dAO();
+      return;
+      this.mActionBar.setDisplayHomeAsUpEnabled(false);
+      if (this.yTT == null) {
+        break;
+      }
+      this.yTT.setVisibility(0);
+      this.yTT.setOnClickListener(new BaseActivity.2(this, paramOnMenuItemClickListener));
+      break;
+      label132:
+      if (this.yUd == BaseActivity.a.yUl) {
+        this.yUa = 2130837619;
+      }
+    }
+  }
+  
+  private void dAM()
+  {
+    if (this.ksT == null) {
+      return;
+    }
+    this.ksT.setVisibility(0);
+  }
+  
+  private void dAN()
+  {
+    if (this.yUc == BaseActivity.c.yUv) {
+      if (this.yTX != null) {}
     }
     for (;;)
     {
       return;
-      if (this.nST)
+      if (this.qGO)
       {
-        this.uGO.setTextColor(this.mContext.getResources().getColorStateList(a.c.white_text_color_selector));
+        this.yTX.setTextColor(this.mContext.getResources().getColorStateList(2131690799));
         return;
       }
-      this.uGO.setTextColor(this.mContext.getResources().getColorStateList(a.c.black_text_color_selector));
+      this.yTX.setTextColor(this.mContext.getResources().getColorStateList(2131690741));
       return;
-      if (this.uGT == BaseActivity.c.uHm) {
-        this.uGS = a.e.actionbar_icon_dark_add;
+      if (this.yUc == BaseActivity.c.yUx) {
+        this.yUb = 2130837616;
       }
-      while ((this.uGM != null) && (this.uGS != 0))
+      while ((this.yTV != null) && (this.yUb != 0))
       {
-        this.uGM.setImageResource(this.uGS);
-        if (!this.nST) {
-          break label171;
+        this.yTV.setImageResource(this.yUb);
+        if (!this.qGO) {
+          break label166;
         }
-        this.uGM.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+        this.yTV.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
         return;
-        if (this.uGT == BaseActivity.c.uHn) {
-          this.uGS = a.e.actionbar_icon_dark_more;
-        } else if (this.uGT == BaseActivity.c.uHo) {
-          this.uGS = a.e.actionbar_icon_dark_search;
+        if (this.yUc == BaseActivity.c.yUy) {
+          this.yUb = 2130837620;
+        } else if (this.yUc == BaseActivity.c.yUz) {
+          this.yUb = 2130837621;
         }
       }
     }
-    label171:
-    this.uGM.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+    label166:
+    this.yTV.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
   }
   
-  protected abstract int getLayoutId();
+  private void dAO()
+  {
+    if (this.qGO)
+    {
+      this.ksT.setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+      return;
+    }
+    this.ksT.setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+  }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(getLayoutId());
-    this.mContext = this;
-    this.mActionBar = getSupportActionBar();
-    if (this.mActionBar != null)
+    int i = getApplicationContext().getSharedPreferences("SETTING_COLOR", 0).getInt("APP_THEME_COLOR", -16777216);
+    switch (i)
     {
-      this.mActionBar.setLogo(new ColorDrawable(getResources().getColor(17170445)));
-      this.mActionBar.dZ();
-      this.mActionBar.setDisplayHomeAsUpEnabled(false);
-      this.mActionBar.dY();
-      this.mActionBar.ea();
-      paramBundle = LayoutInflater.from(this).inflate(a.g.actionbar_title, null);
-      this.mActionBar.setCustomView(paramBundle);
-      if (this.uGL == 0) {
-        this.uGL = this.mContext.getResources().getColor(a.c.normal_actionbar_color);
-      }
-      this.nST = an.Gf(this.uGL);
-      this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.uGL));
-      this.hrg = ((TextView)findViewById(16908308));
-      this.how = ((TextView)findViewById(16908309));
-      this.uGK = findViewById(a.f.actionbar_up_indicator);
-      this.irM = ((ImageView)findViewById(a.f.actionbar_up_indicator_btn));
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
+    default: 
+      setTheme(i);
+      setContentView(2130970058);
+      this.mContext = this;
+      this.mActionBar = getSupportActionBar();
+      if (this.mActionBar != null)
       {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        this.mActionBar.setLogo(new ColorDrawable(getResources().getColor(17170445)));
+        this.mActionBar.eu();
+        this.mActionBar.setDisplayHomeAsUpEnabled(false);
+        this.mActionBar.et();
+        this.mActionBar.ev();
+        paramBundle = LayoutInflater.from(this).inflate(2130968618, null);
+        this.mActionBar.setCustomView(paramBundle);
+        if (this.yTU == 0) {
+          this.yTU = al.hX(this.mContext);
+        }
+        this.qGO = aj.Ow(this.yTU);
+        this.mActionBar.setBackgroundDrawable(new ColorDrawable(this.yTU));
+        this.jhF = ((TextView)findViewById(16908308));
+        this.jaZ = ((TextView)findViewById(16908309));
+        this.yTS = findViewById(2131820997);
+        this.yTT = findViewById(2131820988);
+        this.ksT = ((ImageView)findViewById(2131820989));
+        setBackBtn(new BaseActivity.1(this));
+      }
+      this.yUe = al.ap(this.mContext, 2131427559);
+      this.yUf = al.ap(this.mContext, 2131427845);
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        if (this.yTU == 0) {
+          this.yTU = al.hX(this.mContext);
+        }
+        paramBundle = getWindow();
+        paramBundle.clearFlags(201326592);
+        paramBundle.addFlags(-2147483648);
+        paramBundle.setStatusBarColor(this.yTU);
+        if (Build.VERSION.SDK_INT >= 23)
         {
-          BaseActivity.this.finish();
-          return true;
+          paramBundle = getWindow().getDecorView();
+          i = paramBundle.getSystemUiVisibility();
+          if (!this.qGO) {
+            break label419;
+          }
+          i &= 0xFFFFDFFF;
         }
-      });
-    }
-    int i;
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      if (this.uGL == 0) {
-        this.uGL = this.mContext.getResources().getColor(a.c.normal_actionbar_color);
       }
-      paramBundle = getWindow();
-      paramBundle.clearFlags(201326592);
-      paramBundle.addFlags(-2147483648);
-      paramBundle.setStatusBarColor(an.n(this.mContext.getResources().getColor(a.c.statusbar_fg_color), this.uGL));
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        paramBundle = getWindow().getDecorView();
-        i = paramBundle.getSystemUiVisibility();
-        if (!this.nST) {
-          break label337;
-        }
-        i &= 0xFFFFDFFF;
-      }
+      break;
     }
     for (;;)
     {
       paramBundle.setSystemUiVisibility(i);
       return;
-      label337:
+      this.theme = 2131493751;
+      break;
+      this.theme = 2131493750;
+      break;
+      label419:
       i |= 0x2000;
     }
   }
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    ao.s("on create option menu, menuCache size:%d", new Object[] { Integer.valueOf(this.uGV.size()) });
-    if ((this.mActionBar == null) || (this.uGV.size() == 0)) {
-      ao.u("error, mActionBar is null or cache size:%d", new Object[] { Integer.valueOf(this.uGV.size()) });
+    ak.d("BaseActivity", "on create option menu, menuCache size:%d", new Object[] { Integer.valueOf(this.yUg.size()) });
+    if ((this.mActionBar == null) || (this.yUg.size() == 0)) {
+      ak.w("BaseActivity", "error, mActionBar is null or cache size:%d", new Object[] { Integer.valueOf(this.yUg.size()) });
     }
     for (int i = 0; i != 0; i = 1)
     {
       return true;
-      Iterator localIterator = this.uGV.iterator();
+      Iterator localIterator = this.yUg.iterator();
       while (localIterator.hasNext())
       {
         BaseActivity.b localb = (BaseActivity.b)localIterator.next();
-        if (localb.uHd != 16908332)
+        if (localb.yUo != 16908332)
         {
-          if (localb.uHi == BaseActivity.c.uHo)
+          if (localb.yUt == BaseActivity.c.yUz)
           {
-            this.uGP = paramMenu.add(0, localb.uHd, 0, localb.text);
+            this.yTY = paramMenu.add(0, localb.yUo, 0, localb.text);
             localObject = new BaseActivity.3(this, localb);
-            if (localb.uHh == null) {
-              localb.uHh = View.inflate(this.mContext, a.g.action_option_view, null);
+            if (localb.yUs == null) {
+              localb.yUs = View.inflate(this.mContext, 2130968612, null);
             }
-            this.uGN = ((ImageButton)localb.uHh.findViewById(a.f.action_option_icon));
-            this.uGN.setVisibility(0);
-            if (this.uGN != null)
+            this.yTW = ((ImageButton)localb.yUs.findViewById(2131820976));
+            this.yTW.setVisibility(0);
+            if (this.yTW != null)
             {
-              if (!this.nST) {
-                break label296;
+              if (!this.qGO) {
+                break label304;
               }
-              this.uGN.setImageResource(a.e.actionbar_icon_light_search);
+              this.yTW.setImageResource(2130837628);
             }
             for (;;)
             {
-              this.uGN.setOnClickListener((View.OnClickListener)localObject);
-              this.uGN.setEnabled(localb.bIU);
-              f.a(this.uGP, localb.uHh);
-              this.uGP.setEnabled(localb.bIU);
-              this.uGP.setVisible(localb.aoL);
+              this.yTW.setOnClickListener((View.OnClickListener)localObject);
+              this.yTW.setEnabled(localb.enable);
+              this.yTY.setActionView(localb.yUs);
+              this.yTY.setEnabled(localb.enable);
+              this.yTY.setVisible(localb.arf);
               break;
-              label296:
-              this.uGN.setImageResource(a.e.actionbar_icon_dark_search);
+              label304:
+              this.yTW.setImageResource(2130837621);
             }
           }
-          this.uGQ = paramMenu.add(0, localb.uHd, 0, localb.text);
+          this.yTZ = paramMenu.add(0, localb.yUo, 0, localb.text);
           Object localObject = new BaseActivity.4(this, localb);
           BaseActivity.5 local5 = new BaseActivity.5(this, localb);
-          this.uGT = localb.uHi;
-          if ((localb.uHi == BaseActivity.c.uHl) || (localb.uHi == BaseActivity.c.uHk))
+          this.yUc = localb.yUt;
+          if ((localb.yUt == BaseActivity.c.yUw) || (localb.yUt == BaseActivity.c.yUv))
           {
-            if (localb.uHf == null) {
-              localb.uHf = View.inflate(this.mContext, a.g.action_option_view, null);
+            if (localb.yUq == null) {
+              localb.yUq = View.inflate(this.mContext, 2130968612, null);
             }
-            this.uGO = ((TextView)localb.uHf.findViewById(a.f.action_option_text));
-            this.uGO.setVisibility(0);
-            this.uGO.setText(localb.text);
-            if (localb.uHi == BaseActivity.c.uHl)
+            this.yTX = ((TextView)localb.yUq.findViewById(2131820974));
+            this.yTX.setVisibility(0);
+            this.yTX.setText(localb.text);
+            if (localb.yUt == BaseActivity.c.yUw)
             {
-              this.uGO.setTextColor(this.mContext.getResources().getColorStateList(a.c.green_text_color_selector));
-              label479:
-              this.uGO.setOnClickListener((View.OnClickListener)localObject);
-              this.uGO.setOnLongClickListener(local5);
-              this.uGO.setEnabled(localb.bIU);
-              f.a(this.uGQ, localb.uHf);
+              this.yTX.setTextColor(this.mContext.getResources().getColorStateList(2131690742));
+              label486:
+              this.yTX.setOnClickListener((View.OnClickListener)localObject);
+              this.yTX.setOnLongClickListener(local5);
+              this.yTX.setEnabled(localb.enable);
+              this.yTZ.setActionView(localb.yUq);
             }
           }
           for (;;)
           {
-            this.uGQ.setEnabled(localb.bIU);
-            this.uGQ.setVisible(localb.aoL);
-            if (this.uGQ == null) {
+            this.yTZ.setEnabled(localb.enable);
+            this.yTZ.setVisible(localb.arf);
+            if (this.yTZ == null) {
               break;
             }
-            f.a(this.uGQ, 2);
+            this.yTZ.setShowAsAction(2);
             break;
-            cxR();
-            break label479;
-            if (localb.uHe != 0) {
-              this.uGS = localb.uHe;
+            dAN();
+            break label486;
+            if (localb.yUp != 0) {
+              this.yUb = localb.yUp;
             }
-            if (localb.uHi == BaseActivity.c.uHp) {
-              this.uGS = 0;
+            if (localb.yUt == BaseActivity.c.yUA) {
+              this.yUb = 0;
             }
-            if (localb.uHg == null) {
-              localb.uHg = View.inflate(this.mContext, a.g.action_option_view, null);
+            if (localb.yUr == null) {
+              localb.yUr = View.inflate(this.mContext, 2130968612, null);
             }
-            this.uGM = ((ImageButton)localb.uHg.findViewById(a.f.action_option_icon));
-            cxR();
-            if (this.uGS != 0)
+            this.yTV = ((ImageButton)localb.yUr.findViewById(2131820976));
+            dAN();
+            if (this.yUb != 0)
             {
-              this.uGM.setVisibility(0);
-              this.uGM.setOnClickListener((View.OnClickListener)localObject);
-              this.uGM.setOnLongClickListener(local5);
-              this.uGM.setEnabled(localb.bIU);
-              f.a(this.uGQ, localb.uHg);
+              this.yTV.setVisibility(0);
+              this.yTV.setOnClickListener((View.OnClickListener)localObject);
+              this.yTV.setOnLongClickListener(local5);
+              this.yTV.setEnabled(localb.enable);
+              this.yTZ.setActionView(localb.yUr);
             }
           }
         }
       }
-      if (this.uGP != null) {
-        f.a(this.uGP, 2);
+      if (this.yTY != null) {
+        this.yTY.setShowAsAction(2);
       }
     }
     return super.onCreateOptionsMenu(paramMenu);
   }
   
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
   public final void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    BaseActivity.a locala = BaseActivity.a.uGZ;
-    if (this.mActionBar != null)
-    {
-      this.mActionBar.setDisplayHomeAsUpEnabled(false);
-      if (this.uGK != null)
-      {
-        this.uGK.setVisibility(0);
-        this.uGK.setOnClickListener(new BaseActivity.2(this, paramOnMenuItemClickListener));
-      }
-      this.uGU = locala;
-      if (this.uGU == BaseActivity.a.uHb) {
-        this.uGR = 0;
-      }
-      if (this.uGU != BaseActivity.a.uGZ) {
-        break label128;
-      }
-      this.uGR = a.e.actionbar_icon_dark_back;
-    }
-    for (;;)
-    {
-      if ((this.irM != null) && (this.uGR != 0))
-      {
-        if (this.irM != null) {
-          this.irM.setVisibility(0);
-        }
-        this.irM.setImageResource(this.uGR);
-      }
-      return;
-      label128:
-      if (this.uGU == BaseActivity.a.uHa) {
-        this.uGR = a.e.actionbar_icon_dark_close;
-      }
-    }
+    a(paramOnMenuItemClickListener, BaseActivity.a.yUk);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    if ((this.mActionBar == null) || (this.hrg == null)) {}
+    if ((this.mActionBar == null) || (this.jhF == null)) {}
     do
     {
       return;
-      this.hrg.setText(paramCharSequence.toString());
-    } while (this.hrg == null);
-    if (this.nST)
+      this.jhF.setText(paramCharSequence.toString());
+    } while (this.jhF == null);
+    if (this.qGO)
     {
-      this.hrg.setTextColor(this.mContext.getResources().getColor(a.c.actionbar_title_light_color));
+      this.jhF.setTextColor(this.mContext.getResources().getColor(2131689653));
       return;
     }
-    this.hrg.setTextColor(this.mContext.getResources().getColor(a.c.actionbar_title_color));
+    this.jhF.setTextColor(this.mContext.getResources().getColor(2131689652));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.BaseActivity
  * JD-Core Version:    0.7.0.1
  */

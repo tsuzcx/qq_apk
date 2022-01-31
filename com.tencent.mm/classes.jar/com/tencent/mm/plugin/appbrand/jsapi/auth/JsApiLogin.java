@@ -1,51 +1,77 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.a;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.i;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.sdk.platformtools.ab;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class JsApiLogin
-  extends c
+  extends f
 {
   public static final int CTRL_INDEX = 52;
   public static final String NAME = "login";
   
-  public final void a(f paramf, JSONObject paramJSONObject, int paramInt, b paramb)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.h paramh, JSONObject paramJSONObject, int paramInt)
   {
-    JsApiLogin.LoginTask localLoginTask = new JsApiLogin.LoginTask();
-    localLoginTask.appId = paramf.getAppId();
-    localLoginTask.gjL = "login";
-    Object localObject = paramf.getRuntime().ZB();
-    if (localObject != null) {
-      localLoginTask.fJy = ((com.tencent.mm.plugin.appbrand.config.i)localObject).fPS.fEM;
+    AppMethodBeat.i(130872);
+    try
+    {
+      if (!paramJSONObject.has("requestInQueue")) {
+        paramJSONObject.put("requestInQueue", false);
+      }
+      super.a(paramh, paramJSONObject, paramInt);
+      AppMethodBeat.o(130872);
+      return;
     }
-    localObject = a.qp(paramf.getAppId());
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        ab.e("MicroMsg.JsApiLogin", "invoke put KEY_IN_QUEUE e=%s", new Object[] { localJSONException.getMessage() });
+      }
+    }
+  }
+  
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.h paramh, JSONObject paramJSONObject, int paramInt, d paramd)
+  {
+    AppMethodBeat.i(130873);
+    JsApiLogin.LoginTask localLoginTask = new JsApiLogin.LoginTask();
+    localLoginTask.appId = paramh.getAppId();
+    localLoginTask.hDy = "login";
+    Object localObject = paramh.getRuntime().wY();
     if (localObject != null) {
-      localLoginTask.ghm = ((AppBrandStatObject)localObject).scene;
+      localLoginTask.hcr = ((com.tencent.mm.plugin.appbrand.config.h)localObject).hiX.gXe;
+    }
+    localObject = a.xN(paramh.getAppId());
+    if (localObject != null) {
+      localLoginTask.hzB = ((AppBrandStatObject)localObject).scene;
     }
     paramJSONObject = paramJSONObject.toString();
-    localLoginTask.gjH = this;
-    localLoginTask.gjI = paramf;
+    localLoginTask.hDu = this;
+    localLoginTask.hDv = paramh;
     localLoginTask.data = paramJSONObject;
-    localLoginTask.gfg = paramInt;
-    localLoginTask.gjJ = paramb;
-    localLoginTask.gjP = new Bundle();
-    if ((paramf instanceof o)) {
-      localLoginTask.gjQ = 1;
+    localLoginTask.hry = paramInt;
+    localLoginTask.hDw = paramd;
+    localLoginTask.hDI = new Bundle();
+    if ((paramh instanceof r)) {
+      localLoginTask.hDJ = 1;
     }
     for (;;)
     {
-      localLoginTask.ahC();
+      localLoginTask.aBj();
       AppBrandMainProcessService.a(localLoginTask);
+      AppMethodBeat.o(130873);
       return;
-      if ((paramf instanceof q)) {
-        localLoginTask.gjQ = 2;
+      if ((paramh instanceof v)) {
+        localLoginTask.hDJ = 2;
       }
     }
   }

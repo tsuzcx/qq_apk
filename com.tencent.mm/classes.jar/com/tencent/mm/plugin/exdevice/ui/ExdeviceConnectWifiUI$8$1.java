@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ExdeviceConnectWifiUI$8$1
   implements Runnable
 {
@@ -7,14 +9,16 @@ final class ExdeviceConnectWifiUI$8$1
   
   public final void run()
   {
-    if (ExdeviceConnectWifiUI.d(this.jCF.jCy) != ExdeviceConnectWifiUI.b.jCL) {
-      ExdeviceConnectWifiUI.e(this.jCF.jCy);
+    AppMethodBeat.i(19880);
+    if (ExdeviceConnectWifiUI.d(this.lMc.lLW) != ExdeviceConnectWifiUI.b.lMi) {
+      ExdeviceConnectWifiUI.e(this.lMc.lLW);
     }
+    AppMethodBeat.o(19880);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectWifiUI.8.1
  * JD-Core Version:    0.7.0.1
  */

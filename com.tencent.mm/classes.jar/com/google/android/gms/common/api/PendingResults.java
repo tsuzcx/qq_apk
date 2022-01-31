@@ -1,96 +1,100 @@
 package com.google.android.gms.common.api;
 
 import android.os.Looper;
-import com.google.android.gms.common.internal.zzac;
-import com.google.android.gms.internal.zzaaf;
-import com.google.android.gms.internal.zzabk;
-import com.google.android.gms.internal.zzabt;
+import com.google.android.gms.common.annotation.KeepForSdk;
+import com.google.android.gms.common.api.internal.BasePendingResult;
+import com.google.android.gms.common.api.internal.OptionalPendingResultImpl;
+import com.google.android.gms.common.api.internal.StatusPendingResult;
+import com.google.android.gms.common.internal.Preconditions;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@KeepForSdk
 public final class PendingResults
 {
   public static PendingResult<Status> canceledPendingResult()
   {
-    zzabt localzzabt = new zzabt(Looper.getMainLooper());
-    localzzabt.cancel();
-    return localzzabt;
+    AppMethodBeat.i(60561);
+    StatusPendingResult localStatusPendingResult = new StatusPendingResult(Looper.getMainLooper());
+    localStatusPendingResult.cancel();
+    AppMethodBeat.o(60561);
+    return localStatusPendingResult;
   }
   
   public static <R extends Result> PendingResult<R> canceledPendingResult(R paramR)
   {
-    zzac.zzb(paramR, "Result must not be null");
+    AppMethodBeat.i(60562);
+    Preconditions.checkNotNull(paramR, "Result must not be null");
     if (paramR.getStatus().getStatusCode() == 16) {}
     for (boolean bool = true;; bool = false)
     {
-      zzac.zzb(bool, "Status code must be CommonStatusCodes.CANCELED");
-      paramR = new zza(paramR);
+      Preconditions.checkArgument(bool, "Status code must be CommonStatusCodes.CANCELED");
+      paramR = new PendingResults.zza(paramR);
       paramR.cancel();
+      AppMethodBeat.o(60562);
       return paramR;
     }
   }
   
-  public static <R extends Result> OptionalPendingResult<R> immediatePendingResult(R paramR)
+  @KeepForSdk
+  public static <R extends Result> PendingResult<R> immediateFailedResult(R paramR, GoogleApiClient paramGoogleApiClient)
   {
-    zzac.zzb(paramR, "Result must not be null");
-    PendingResults.zzc localzzc = new PendingResults.zzc(null);
-    localzzc.zzb(paramR);
-    return new zzabk(localzzc);
-  }
-  
-  public static PendingResult<Status> immediatePendingResult(Status paramStatus)
-  {
-    zzac.zzb(paramStatus, "Result must not be null");
-    zzabt localzzabt = new zzabt(Looper.getMainLooper());
-    localzzabt.zzb(paramStatus);
-    return localzzabt;
-  }
-  
-  public static <R extends Result> PendingResult<R> zza(R paramR, GoogleApiClient paramGoogleApiClient)
-  {
-    zzac.zzb(paramR, "Result must not be null");
+    AppMethodBeat.i(60558);
+    Preconditions.checkNotNull(paramR, "Result must not be null");
     if (!paramR.getStatus().isSuccess()) {}
     for (boolean bool = true;; bool = false)
     {
-      zzac.zzb(bool, "Status code must not be SUCCESS");
+      Preconditions.checkArgument(bool, "Status code must not be SUCCESS");
       paramGoogleApiClient = new PendingResults.zzb(paramGoogleApiClient, paramR);
-      paramGoogleApiClient.zzb(paramR);
+      paramGoogleApiClient.setResult(paramR);
+      AppMethodBeat.o(60558);
       return paramGoogleApiClient;
     }
   }
   
-  public static PendingResult<Status> zza(Status paramStatus, GoogleApiClient paramGoogleApiClient)
+  @KeepForSdk
+  public static <R extends Result> OptionalPendingResult<R> immediatePendingResult(R paramR)
   {
-    zzac.zzb(paramStatus, "Result must not be null");
-    paramGoogleApiClient = new zzabt(paramGoogleApiClient);
-    paramGoogleApiClient.zzb(paramStatus);
-    return paramGoogleApiClient;
+    AppMethodBeat.i(60559);
+    Preconditions.checkNotNull(paramR, "Result must not be null");
+    PendingResults.zzc localzzc = new PendingResults.zzc(null);
+    localzzc.setResult(paramR);
+    paramR = new OptionalPendingResultImpl(localzzc);
+    AppMethodBeat.o(60559);
+    return paramR;
   }
   
-  public static <R extends Result> OptionalPendingResult<R> zzb(R paramR, GoogleApiClient paramGoogleApiClient)
+  @KeepForSdk
+  public static <R extends Result> OptionalPendingResult<R> immediatePendingResult(R paramR, GoogleApiClient paramGoogleApiClient)
   {
-    zzac.zzb(paramR, "Result must not be null");
+    AppMethodBeat.i(60560);
+    Preconditions.checkNotNull(paramR, "Result must not be null");
     paramGoogleApiClient = new PendingResults.zzc(paramGoogleApiClient);
-    paramGoogleApiClient.zzb(paramR);
-    return new zzabk(paramGoogleApiClient);
+    paramGoogleApiClient.setResult(paramR);
+    paramR = new OptionalPendingResultImpl(paramGoogleApiClient);
+    AppMethodBeat.o(60560);
+    return paramR;
   }
   
-  private static final class zza<R extends Result>
-    extends zzaaf<R>
+  @KeepForSdk
+  public static PendingResult<Status> immediatePendingResult(Status paramStatus)
   {
-    private final R zzazs;
-    
-    public zza(R paramR)
-    {
-      super();
-      this.zzazs = paramR;
-    }
-    
-    protected final R zzc(Status paramStatus)
-    {
-      if (paramStatus.getStatusCode() != this.zzazs.getStatus().getStatusCode()) {
-        throw new UnsupportedOperationException("Creating failed results is not supported");
-      }
-      return this.zzazs;
-    }
+    AppMethodBeat.i(60556);
+    Preconditions.checkNotNull(paramStatus, "Result must not be null");
+    StatusPendingResult localStatusPendingResult = new StatusPendingResult(Looper.getMainLooper());
+    localStatusPendingResult.setResult(paramStatus);
+    AppMethodBeat.o(60556);
+    return localStatusPendingResult;
+  }
+  
+  @KeepForSdk
+  public static PendingResult<Status> immediatePendingResult(Status paramStatus, GoogleApiClient paramGoogleApiClient)
+  {
+    AppMethodBeat.i(60557);
+    Preconditions.checkNotNull(paramStatus, "Result must not be null");
+    paramGoogleApiClient = new StatusPendingResult(paramGoogleApiClient);
+    paramGoogleApiClient.setResult(paramStatus);
+    AppMethodBeat.o(60557);
+    return paramGoogleApiClient;
   }
 }
 

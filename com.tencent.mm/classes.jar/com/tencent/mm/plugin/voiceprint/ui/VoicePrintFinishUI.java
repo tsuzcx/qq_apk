@@ -1,70 +1,78 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 public class VoicePrintFinishUI
   extends MMActivity
 {
-  private TextView haW;
-  private TextView pMv;
-  private Button pMw;
-  private ImageView pMx;
-  private int pMy;
+  private TextView iJG;
+  private TextView pBu;
+  private Button tsq;
+  private ImageView tsr;
+  private int tss;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.voice_print_finish;
+    return 2130971092;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    y.i("MicroMsg.VoicePrintFinishUI", "VoicePrintFinishUI");
+    AppMethodBeat.i(26207);
+    ab.i("MicroMsg.VoicePrintFinishUI", "VoicePrintFinishUI");
     super.onCreate(paramBundle);
-    this.mController.hideTitleView();
-    this.pMy = getIntent().getIntExtra("kscene_type", 73);
-    y.d("MicroMsg.VoicePrintFinishUI", "onCreate, sceneType:%d", new Object[] { Integer.valueOf(this.pMy) });
-    this.haW = ((TextView)findViewById(R.h.voice_print_title));
-    this.pMv = ((TextView)findViewById(R.h.voice_print_title_tip));
-    this.pMw = ((Button)findViewById(R.h.right_btn));
-    this.pMx = ((ImageView)findViewById(R.h.voice_print_sucesss_icon));
-    switch (this.pMy)
+    hideTitleView();
+    this.tss = getIntent().getIntExtra("kscene_type", 73);
+    ab.d("MicroMsg.VoicePrintFinishUI", "onCreate, sceneType:%d", new Object[] { Integer.valueOf(this.tss) });
+    this.iJG = ((TextView)findViewById(2131828763));
+    this.pBu = ((TextView)findViewById(2131823889));
+    this.tsq = ((Button)findViewById(2131823890));
+    this.tsr = ((ImageView)findViewById(2131823888));
+    switch (this.tss)
     {
     }
     for (;;)
     {
-      this.pMw.setOnClickListener(new VoicePrintFinishUI.1(this));
+      this.tsq.setOnClickListener(new VoicePrintFinishUI.1(this));
       setBackBtn(new VoicePrintFinishUI.2(this));
+      AppMethodBeat.o(26207);
       return;
-      this.haW.setText(R.l.voice_regeist_finish);
-      this.pMv.setText(R.l.voice_regeist_finish_tip);
-      this.pMx.setVisibility(0);
-      this.pMw.setText(R.l.settings_voiceprint_unlock);
+      this.iJG.setText(2131304580);
+      this.pBu.setText(2131304581);
+      this.tsr.setVisibility(0);
+      this.tsq.setText(2131303519);
       continue;
-      this.haW.setVisibility(8);
-      this.pMv.setText(R.l.voice_unlock_ok_tip);
-      this.pMx.setVisibility(0);
-      this.pMw.setText(R.l.settings_voiceprint_unlock_finish);
+      this.iJG.setVisibility(8);
+      this.pBu.setText(2131304603);
+      this.tsr.setVisibility(0);
+      this.tsq.setText(2131303520);
     }
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(26208);
     super.onDestroy();
+    AppMethodBeat.o(26208);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoicePrintFinishUI
  * JD-Core Version:    0.7.0.1
  */

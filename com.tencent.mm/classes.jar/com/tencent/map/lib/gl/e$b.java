@@ -1,5 +1,6 @@
 package com.tencent.map.lib.gl;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLDisplay;
@@ -13,29 +14,38 @@ class e$b
   protected int f;
   protected int g;
   protected int h;
-  private int[] j = new int[1];
+  private int[] j;
   
   public e$b(e parame, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     super(parame, new int[] { 12324, paramInt1, 12323, paramInt2, 12322, paramInt3, 12321, paramInt4, 12325, paramInt5, 12326, paramInt6, 12344 });
+    AppMethodBeat.i(98057);
+    this.j = new int[1];
     this.c = paramInt1;
     this.d = paramInt2;
     this.e = paramInt3;
     this.f = paramInt4;
     this.g = paramInt5;
     this.h = paramInt6;
+    AppMethodBeat.o(98057);
   }
   
   private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt1, int paramInt2)
   {
-    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.j)) {
-      paramInt2 = this.j[0];
+    AppMethodBeat.i(98059);
+    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.j))
+    {
+      paramInt1 = this.j[0];
+      AppMethodBeat.o(98059);
+      return paramInt1;
     }
+    AppMethodBeat.o(98059);
     return paramInt2;
   }
   
   public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
   {
+    AppMethodBeat.i(98058);
     int m = paramArrayOfEGLConfig.length;
     int k = 0;
     while (k < m)
@@ -49,12 +59,15 @@ class e$b
         i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323, 0);
         int i2 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322, 0);
         int i3 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321, 0);
-        if ((n == this.c) && (i1 == this.d) && (i2 == this.e) && (i3 == this.f)) {
+        if ((n == this.c) && (i1 == this.d) && (i2 == this.e) && (i3 == this.f))
+        {
+          AppMethodBeat.o(98058);
           return localEGLConfig;
         }
       }
       k += 1;
     }
+    AppMethodBeat.o(98058);
     return null;
   }
 }

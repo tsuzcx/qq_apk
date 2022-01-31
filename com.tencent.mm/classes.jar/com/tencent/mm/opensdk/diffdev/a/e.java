@@ -1,5 +1,6 @@
 package com.tencent.mm.opensdk.diffdev.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -13,9 +14,11 @@ public final class e
 {
   public static byte[] a(String paramString)
   {
+    AppMethodBeat.i(128045);
     if ((paramString == null) || (paramString.length() == 0))
     {
       Log.e("MicroMsg.SDK.NetUtil", "httpGet, url is null");
+      AppMethodBeat.o(128045);
       return null;
     }
     DefaultHttpClient localDefaultHttpClient = new DefaultHttpClient();
@@ -27,24 +30,29 @@ public final class e
       if (paramString.getStatusLine().getStatusCode() != 200)
       {
         Log.e("MicroMsg.SDK.NetUtil", "httpGet fail, status code = " + paramString.getStatusLine().getStatusCode());
+        AppMethodBeat.o(128045);
         return null;
       }
+      paramString = EntityUtils.toByteArray(paramString.getEntity());
+      AppMethodBeat.o(128045);
+      return paramString;
     }
     catch (Exception paramString)
     {
       Log.e("MicroMsg.SDK.NetUtil", "httpGet, Exception ex = " + paramString.getMessage());
+      AppMethodBeat.o(128045);
       return null;
-      paramString = EntityUtils.toByteArray(paramString.getEntity());
-      return paramString;
     }
     catch (IncompatibleClassChangeError paramString)
     {
       Log.e("MicroMsg.SDK.NetUtil", "httpGet, IncompatibleClassChangeError ex = " + paramString.getMessage());
+      AppMethodBeat.o(128045);
       return null;
     }
     catch (Throwable paramString)
     {
       Log.e("MicroMsg.SDK.NetUtil", "httpGet, Throwable ex = " + paramString.getMessage());
+      AppMethodBeat.o(128045);
     }
     return null;
   }

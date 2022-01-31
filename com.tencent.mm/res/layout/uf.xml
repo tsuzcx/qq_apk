@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="@dimen/li" android:paddingRight="@dimen/li" android:layout_height="100.0dip" style="@style/h2"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bbf" android:layout_width="fill_parent" android:layout_height="@dimen/ko" />
-    <ImageView android:textColor="@color/kz" android:id="@id/bbg" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_marginBottom="@dimen/mq" android:src="@raw/device_profile_the_end" android:layout_below="@id/bbf" android:layout_centerInParent="true" />
-    <Button android:id="@id/bbh" android:background="@drawable/eo" android:visibility="invisible" android:layout_marginTop="@dimen/ko" android:layout_marginBottom="@dimen/mq" android:text="@string/bci" style="@style/ln" />
-</RelativeLayout>
+    <com.tencent.mm.emoji.view.BaseEmojiView android:id="@id/bg6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.4" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bg7" android:background="@drawable/emoji_capture_sticker_hint_bg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/bg8" android:layout_width="56.0dip" android:layout_height="56.0dip" />
+        <TextView android:textSize="@dimen/dw" android:textColor="@color/a6q" android:gravity="center_horizontal" android:id="@id/bg9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:shadowColor="@color/n" android:shadowRadius="3.0" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.emojicapture.ui.editor.TextEditorItemView android:layout_gravity="bottom|center" android:id="@id/bg_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/a0b" />
+</merge>

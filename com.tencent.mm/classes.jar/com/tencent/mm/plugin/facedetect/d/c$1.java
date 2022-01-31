@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.facedetect.d;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class c$1
   
   public final void onClick(View paramView)
   {
-    c.a(this.jPn);
+    AppMethodBeat.i(297);
+    c.a(this.mjD);
+    AppMethodBeat.o(297);
   }
 }
 

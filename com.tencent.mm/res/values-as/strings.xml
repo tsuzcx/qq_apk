@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">গৃহ পৃষ্ঠালৈ যাওক</string>
+    <string name="b">ওপৰলৈ যাওক</string>
+    <string name="abc_action_menu_overflow_description">অধিক বিকল্প</string>
+    <string name="c">"সম্পন্ন কৰা হ'ল"</string>
+    <string name="d">সকলো চাওক</string>
+    <string name="e">এটা এপ্ বাছনি কৰক</string>
+    <string name="f">অফ কৰক</string>
+    <string name="g">অন কৰক</string>
+    <string name="h">Alt+</string>
+    <string name="i">CTRL+</string>
+    <string name="j">মচক</string>
+    <string name="k">এণ্টাৰ</string>
+    <string name="l">ফাংশ্বন+</string>
+    <string name="m">মেটা+</string>
+    <string name="n">শ্বিফ্ট+</string>
+    <string name="o">স্পেচ</string>
+    <string name="p">Sym+</string>
+    <string name="q">মেনু+</string>
+    <string name="r">অনুসন্ধান কৰক…</string>
+    <string name="s">প্ৰশ্ন মচক</string>
+    <string name="u">সন্ধান কৰক</string>
+    <string name="v">প্ৰশ্ন দাখিল কৰক</string>
+    <string name="w">কণ্ঠধ্বনিৰ যোগেৰে সন্ধান কৰক</string>
+    <string name="z">সংকুচিত কৰক</string>
+    <string name="a0">বিবিধ</string>
+    <string name="t">সন্ধান কৰিব খোজা প্ৰশ্ন</string>
+    <string name="x">ইয়াৰ জৰিয়তে শ্বেয়াৰ কৰক</string>
+    <string name="y">%sৰ জৰিয়তে শ্বেয়াৰ কৰক</string>
+    <string name="a1">অনুসন্ধান কৰক</string>
+    <string name="a2">৯৯৯+</string>
+</resources>

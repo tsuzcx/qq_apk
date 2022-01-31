@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class AppBrand404PageUI$1
   implements Runnable
@@ -11,8 +12,10 @@ final class AppBrand404PageUI$1
   
   public final void run()
   {
+    AppMethodBeat.i(132882);
     this.val$intent.addFlags(268435456);
-    ae.getContext().startActivity(this.val$intent);
+    ah.getContext().startActivity(this.val$intent);
+    AppMethodBeat.o(132882);
   }
 }
 

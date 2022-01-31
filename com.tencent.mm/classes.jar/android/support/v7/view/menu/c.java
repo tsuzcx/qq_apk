@@ -1,8 +1,8 @@
 package android.support.v7.view.menu;
 
 import android.content.Context;
-import android.support.v4.b.a.b;
-import android.support.v4.f.a;
+import android.support.v4.a.a.b;
+import android.support.v4.e.a;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import java.util.Map;
@@ -10,8 +10,8 @@ import java.util.Map;
 abstract class c<T>
   extends d<T>
 {
-  Map<b, MenuItem> Uw;
-  Map<android.support.v4.b.a.c, SubMenu> Ux;
+  Map<b, MenuItem> Vh;
+  Map<android.support.v4.a.a.c, SubMenu> Vi;
   final Context mContext;
   
   c(Context paramContext, T paramT)
@@ -22,38 +22,38 @@ abstract class c<T>
   
   final SubMenu a(SubMenu paramSubMenu)
   {
-    if ((paramSubMenu instanceof android.support.v4.b.a.c))
+    if ((paramSubMenu instanceof android.support.v4.a.a.c))
     {
-      android.support.v4.b.a.c localc = (android.support.v4.b.a.c)paramSubMenu;
-      if (this.Ux == null) {
-        this.Ux = new a();
+      android.support.v4.a.a.c localc = (android.support.v4.a.a.c)paramSubMenu;
+      if (this.Vi == null) {
+        this.Vi = new a();
       }
-      SubMenu localSubMenu = (SubMenu)this.Ux.get(localc);
+      SubMenu localSubMenu = (SubMenu)this.Vi.get(localc);
       paramSubMenu = localSubMenu;
       if (localSubMenu == null)
       {
         paramSubMenu = new v(this.mContext, localc);
-        this.Ux.put(localc, paramSubMenu);
+        this.Vi.put(localc, paramSubMenu);
       }
       return paramSubMenu;
     }
     return paramSubMenu;
   }
   
-  final MenuItem e(MenuItem paramMenuItem)
+  final MenuItem b(MenuItem paramMenuItem)
   {
     if ((paramMenuItem instanceof b))
     {
       b localb = (b)paramMenuItem;
-      if (this.Uw == null) {
-        this.Uw = new a();
+      if (this.Vh == null) {
+        this.Vh = new a();
       }
-      MenuItem localMenuItem = (MenuItem)this.Uw.get(paramMenuItem);
+      MenuItem localMenuItem = (MenuItem)this.Vh.get(paramMenuItem);
       paramMenuItem = localMenuItem;
       if (localMenuItem == null)
       {
         paramMenuItem = q.a(this.mContext, localb);
-        this.Uw.put(localb, paramMenuItem);
+        this.Vh.put(localb, paramMenuItem);
       }
       return paramMenuItem;
     }

@@ -1,21 +1,29 @@
 package com.tencent.mm.ui.chatting;
 
-import android.view.MenuItem;
-import android.widget.ImageView;
-import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.ui.base.n.a;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d.a;
+import com.tencent.mm.ui.chatting.c.b.i;
+import com.tencent.mm.ui.chatting.d.a;
 
 final class n$1
-  implements n.a
+  implements d.a
 {
-  public final void a(ImageView paramImageView, MenuItem paramMenuItem)
+  n$1(a parama) {}
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    a.b.p(paramImageView, paramMenuItem.getTitle());
+    AppMethodBeat.i(30617);
+    paramIntent = (i)this.zyx.ay(i.class);
+    if ((-1 == paramInt2) && (paramIntent != null) && (paramIntent.dHW())) {
+      paramIntent.dHU();
+    }
+    AppMethodBeat.o(30617);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.n.1
  * JD-Core Version:    0.7.0.1
  */

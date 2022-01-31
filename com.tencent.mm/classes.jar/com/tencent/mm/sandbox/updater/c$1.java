@@ -1,44 +1,47 @@
 package com.tencent.mm.sandbox.updater;
 
 import android.os.Message;
-import com.tencent.mm.protocal.c.bly;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bvk;
 import com.tencent.mm.sandbox.b.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.io.File;
 
 final class c$1
-  extends ah
+  extends ak
 {
   c$1(c paramc) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    if ((1 == paramMessage.what) && (!c.a(this.ucx)))
+    AppMethodBeat.i(28856);
+    if ((1 == paramMessage.what) && (!c.a(this.ykM)))
     {
-      new File(this.ucx.SV()).delete();
+      new File(this.ykM.amg()).delete();
       if (paramMessage.arg1 != 0) {
-        break label79;
+        break label91;
       }
-      y.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "patch ok");
-      c.b(this.ucx).b(200, 0, (bly)paramMessage.obj);
+      ab.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "patch ok");
+      c.b(this.ykM).b(200, 0, (bvk)paramMessage.obj);
     }
     for (;;)
     {
       super.handleMessage(paramMessage);
+      AppMethodBeat.o(28856);
       return;
-      label79:
+      label91:
       if (paramMessage.arg1 == 3) {
-        c.b(this.ucx).b(3, -1, (bly)paramMessage.obj);
+        c.b(this.ykM).b(3, -1, (bvk)paramMessage.obj);
       } else if (paramMessage.arg1 == 4) {
-        c.b(this.ucx).b(4, -1, (bly)paramMessage.obj);
+        c.b(this.ykM).b(4, -1, (bvk)paramMessage.obj);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.c.1
  * JD-Core Version:    0.7.0.1
  */

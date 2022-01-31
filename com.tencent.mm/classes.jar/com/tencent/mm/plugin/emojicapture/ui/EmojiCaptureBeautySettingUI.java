@@ -1,158 +1,189 @@
 package com.tencent.mm.plugin.emojicapture.ui;
 
-import a.d.b.g;
-import a.k;
+import a.l;
+import a.v;
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
-import com.tencent.mm.c.j;
-import com.tencent.mm.plugin.emojicapture.a.d;
-import com.tencent.mm.plugin.emojicapture.a.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.MMActivity;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureBeautySettingUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "chinInputText", "Landroid/widget/EditText;", "eyeInputText", "faceVInputText", "noseInputText", "shapeInputText", "skinInputText", "clamp", "", "value", "min", "max", "getLayoutId", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "saveParam", "plugin-emojicapture_release"})
 public final class EmojiCaptureBeautySettingUI
   extends MMActivity
 {
-  private EditText jnY;
-  private EditText jnZ;
-  private EditText joa;
-  private EditText job;
-  private EditText joc;
-  private EditText jod;
+  private EditText lwQ;
+  private EditText lwR;
+  private EditText lwS;
+  private EditText lwT;
+  private EditText lwU;
+  private EditText lwV;
   
-  private static int cH(int paramInt1, int paramInt2)
+  private static int ef(int paramInt1, int paramInt2)
   {
-    return Math.min(100, Math.max(paramInt2, paramInt1));
+    AppMethodBeat.i(2859);
+    paramInt1 = Math.min(100, Math.max(paramInt2, paramInt1));
+    AppMethodBeat.o(2859);
+    return paramInt1;
   }
   
-  protected final int getLayoutId()
+  public final int getLayoutId()
   {
-    return a.e.emoji_capture_beauty_setting_ui;
+    return 2130969355;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(2857);
     super.onCreate(paramBundle);
     setBackBtn((MenuItem.OnMenuItemClickListener)new EmojiCaptureBeautySettingUI.a(this));
-    paramBundle = findViewById(a.d.beauty_skin_para);
-    if (paramBundle == null) {
-      throw new k("null cannot be cast to non-null type android.widget.EditText");
+    paramBundle = findViewById(2131823526);
+    if (paramBundle == null)
+    {
+      paramBundle = new v("null cannot be cast to non-null type android.widget.EditText");
+      AppMethodBeat.o(2857);
+      throw paramBundle;
     }
-    this.jnY = ((EditText)paramBundle);
-    paramBundle = findViewById(a.d.beauty_shape_para);
-    if (paramBundle == null) {
-      throw new k("null cannot be cast to non-null type android.widget.EditText");
+    this.lwQ = ((EditText)paramBundle);
+    paramBundle = findViewById(2131823527);
+    if (paramBundle == null)
+    {
+      paramBundle = new v("null cannot be cast to non-null type android.widget.EditText");
+      AppMethodBeat.o(2857);
+      throw paramBundle;
     }
-    this.jnZ = ((EditText)paramBundle);
-    paramBundle = findViewById(a.d.beauty_facev_para);
-    if (paramBundle == null) {
-      throw new k("null cannot be cast to non-null type android.widget.EditText");
+    this.lwR = ((EditText)paramBundle);
+    paramBundle = findViewById(2131823528);
+    if (paramBundle == null)
+    {
+      paramBundle = new v("null cannot be cast to non-null type android.widget.EditText");
+      AppMethodBeat.o(2857);
+      throw paramBundle;
     }
-    this.joa = ((EditText)paramBundle);
-    paramBundle = findViewById(a.d.beauty_eye_para);
-    if (paramBundle == null) {
-      throw new k("null cannot be cast to non-null type android.widget.EditText");
+    this.lwS = ((EditText)paramBundle);
+    paramBundle = findViewById(2131823529);
+    if (paramBundle == null)
+    {
+      paramBundle = new v("null cannot be cast to non-null type android.widget.EditText");
+      AppMethodBeat.o(2857);
+      throw paramBundle;
     }
-    this.job = ((EditText)paramBundle);
-    paramBundle = findViewById(a.d.beauty_nose_para);
-    if (paramBundle == null) {
-      throw new k("null cannot be cast to non-null type android.widget.EditText");
+    this.lwT = ((EditText)paramBundle);
+    paramBundle = findViewById(2131823530);
+    if (paramBundle == null)
+    {
+      paramBundle = new v("null cannot be cast to non-null type android.widget.EditText");
+      AppMethodBeat.o(2857);
+      throw paramBundle;
     }
-    this.joc = ((EditText)paramBundle);
-    paramBundle = findViewById(a.d.beauty_chin_para);
-    if (paramBundle == null) {
-      throw new k("null cannot be cast to non-null type android.widget.EditText");
+    this.lwU = ((EditText)paramBundle);
+    paramBundle = findViewById(2131823531);
+    if (paramBundle == null)
+    {
+      paramBundle = new v("null cannot be cast to non-null type android.widget.EditText");
+      AppMethodBeat.o(2857);
+      throw paramBundle;
     }
-    this.jod = ((EditText)paramBundle);
-    paramBundle = ae.getContext().getSharedPreferences("EmojiCaptureDebugBeautyPara", 0);
-    int i = paramBundle.getInt("skin", 20);
-    int j = paramBundle.getInt("shape", 10);
+    this.lwV = ((EditText)paramBundle);
+    paramBundle = ah.getContext().getSharedPreferences("EmojiCaptureDebugBeautyPara", 0);
+    int i = paramBundle.getInt("skin", 50);
+    int j = paramBundle.getInt("shape", 20);
     int k = paramBundle.getInt("faceV", 0);
     int m = paramBundle.getInt("eye", 0);
     int n = paramBundle.getInt("nose", 0);
     int i1 = paramBundle.getInt("chin", 0);
-    paramBundle = this.jnY;
+    paramBundle = this.lwQ;
     if (paramBundle == null) {
-      g.ahh("skinInputText");
+      a.f.b.j.ays("skinInputText");
     }
     paramBundle.setText((CharSequence)String.valueOf(i));
-    paramBundle = this.jnZ;
+    paramBundle = this.lwR;
     if (paramBundle == null) {
-      g.ahh("shapeInputText");
+      a.f.b.j.ays("shapeInputText");
     }
     paramBundle.setText((CharSequence)String.valueOf(j));
-    paramBundle = this.joa;
+    paramBundle = this.lwS;
     if (paramBundle == null) {
-      g.ahh("faceVInputText");
+      a.f.b.j.ays("faceVInputText");
     }
     paramBundle.setText((CharSequence)String.valueOf(k));
-    paramBundle = this.job;
+    paramBundle = this.lwT;
     if (paramBundle == null) {
-      g.ahh("eyeInputText");
+      a.f.b.j.ays("eyeInputText");
     }
     paramBundle.setText((CharSequence)String.valueOf(m));
-    paramBundle = this.joc;
+    paramBundle = this.lwU;
     if (paramBundle == null) {
-      g.ahh("noseInputText");
+      a.f.b.j.ays("noseInputText");
     }
     paramBundle.setText((CharSequence)String.valueOf(n));
-    paramBundle = this.jod;
+    paramBundle = this.lwV;
     if (paramBundle == null) {
-      g.ahh("chinInputText");
+      a.f.b.j.ays("chinInputText");
     }
     paramBundle.setText((CharSequence)String.valueOf(i1));
+    AppMethodBeat.o(2857);
   }
   
-  protected final void onDestroy()
+  public final void onDestroy()
   {
+    AppMethodBeat.i(2858);
     super.onDestroy();
-    Object localObject = this.jnY;
+    Object localObject = this.lwQ;
     if (localObject == null) {
-      g.ahh("skinInputText");
+      a.f.b.j.ays("skinInputText");
     }
-    int i = j.getInt(((EditText)localObject).getText().toString(), -1);
-    localObject = this.jnZ;
+    int i = com.tencent.mm.c.j.getInt(((EditText)localObject).getText().toString(), -1);
+    localObject = this.lwR;
     if (localObject == null) {
-      g.ahh("shapeInputText");
+      a.f.b.j.ays("shapeInputText");
     }
-    int j = j.getInt(((EditText)localObject).getText().toString(), -1);
-    localObject = this.joa;
+    int j = com.tencent.mm.c.j.getInt(((EditText)localObject).getText().toString(), -1);
+    localObject = this.lwS;
     if (localObject == null) {
-      g.ahh("faceVInputText");
+      a.f.b.j.ays("faceVInputText");
     }
-    int k = j.getInt(((EditText)localObject).getText().toString(), -1);
-    localObject = this.job;
+    int k = com.tencent.mm.c.j.getInt(((EditText)localObject).getText().toString(), -1);
+    localObject = this.lwT;
     if (localObject == null) {
-      g.ahh("eyeInputText");
+      a.f.b.j.ays("eyeInputText");
     }
-    int m = j.getInt(((EditText)localObject).getText().toString(), -1);
-    localObject = this.joc;
+    int m = com.tencent.mm.c.j.getInt(((EditText)localObject).getText().toString(), -1);
+    localObject = this.lwU;
     if (localObject == null) {
-      g.ahh("noseInputText");
+      a.f.b.j.ays("noseInputText");
     }
-    int n = j.getInt(((EditText)localObject).getText().toString(), -1);
-    localObject = this.jod;
+    int n = com.tencent.mm.c.j.getInt(((EditText)localObject).getText().toString(), -1);
+    localObject = this.lwV;
     if (localObject == null) {
-      g.ahh("chinInputText");
+      a.f.b.j.ays("chinInputText");
     }
-    int i1 = j.getInt(((EditText)localObject).getText().toString(), -1);
-    localObject = ae.getContext().getSharedPreferences("EmojiCaptureDebugBeautyPara", 0).edit();
-    ((SharedPreferences.Editor)localObject).putInt("skin", cH(i, 0));
-    ((SharedPreferences.Editor)localObject).putInt("shape", cH(j, 0));
-    ((SharedPreferences.Editor)localObject).putInt("faceV", cH(k, 0));
-    ((SharedPreferences.Editor)localObject).putInt("eye", cH(m, 0));
-    ((SharedPreferences.Editor)localObject).putInt("nose", cH(n, 0));
-    ((SharedPreferences.Editor)localObject).putInt("chin", cH(i1, -100));
+    int i1 = com.tencent.mm.c.j.getInt(((EditText)localObject).getText().toString(), -1);
+    localObject = ah.getContext().getSharedPreferences("EmojiCaptureDebugBeautyPara", 0).edit();
+    ((SharedPreferences.Editor)localObject).putInt("skin", ef(i, 0));
+    ((SharedPreferences.Editor)localObject).putInt("shape", ef(j, 0));
+    ((SharedPreferences.Editor)localObject).putInt("faceV", ef(k, 0));
+    ((SharedPreferences.Editor)localObject).putInt("eye", ef(m, 0));
+    ((SharedPreferences.Editor)localObject).putInt("nose", ef(n, 0));
+    ((SharedPreferences.Editor)localObject).putInt("chin", ef(i1, -100));
     ((SharedPreferences.Editor)localObject).commit();
+    AppMethodBeat.o(2858);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureBeautySettingUI
  * JD-Core Version:    0.7.0.1
  */

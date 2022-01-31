@@ -1,28 +1,38 @@
 package oicq.wlogin_sdk.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import oicq.wlogin_sdk.tools.util;
 
 public final class t
   extends a
 {
-  public int xrw = 0;
+  public int CNJ = 0;
   
   public t()
   {
-    this.xqq = 282;
+    this.CMD = 282;
   }
   
-  public final Boolean cUG()
+  public final Boolean erf()
   {
-    if (this.xra < 5) {
-      return Boolean.valueOf(false);
+    AppMethodBeat.i(96503);
+    if (this.CNn < 5)
+    {
+      localBoolean = Boolean.FALSE;
+      AppMethodBeat.o(96503);
+      return localBoolean;
     }
-    int i = util.ac(this.xqk, this.xqZ + 2 + 1 + 1);
-    if (this.xra < i + 5) {
-      return Boolean.valueOf(false);
+    int i = util.ad(this.CMx, this.CNm + 2 + 1 + 1);
+    if (this.CNn < i + 5)
+    {
+      localBoolean = Boolean.FALSE;
+      AppMethodBeat.o(96503);
+      return localBoolean;
     }
-    this.xrw = i;
-    return Boolean.valueOf(true);
+    this.CNJ = i;
+    Boolean localBoolean = Boolean.TRUE;
+    AppMethodBeat.o(96503);
+    return localBoolean;
   }
 }
 

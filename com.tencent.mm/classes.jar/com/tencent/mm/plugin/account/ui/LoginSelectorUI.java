@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -7,116 +8,135 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.pluginsdk.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.e;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.aa;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.b;
-import com.tencent.mm.ui.s;
 
 @Deprecated
 public class LoginSelectorUI
   extends MMActivity
   implements View.OnClickListener
 {
-  private TextView fnu;
-  private View fnv;
+  private TextView gEN;
+  private View gEO;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return q.g.select_login_reg;
+    return 2130970654;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    Button localButton1 = (Button)findViewById(q.f.select_login_btn);
-    Button localButton2 = (Button)findViewById(q.f.select_register_btn);
-    this.fnu = ((TextView)findViewById(q.f.select_country));
-    this.fnv = findViewById(q.f.select_country_ly);
+    AppMethodBeat.i(125010);
+    Button localButton1 = (Button)findViewById(2131827535);
+    Button localButton2 = (Button)findViewById(2131827534);
+    this.gEN = ((TextView)findViewById(2131827537));
+    this.gEO = findViewById(2131827536);
     localButton1.setOnClickListener(this);
     localButton2.setOnClickListener(this);
-    this.fnu.setText(x.g(this.mController.uMN, q.b.language_setting, q.j.app_lang_sys));
-    this.fnv.setOnClickListener(new View.OnClickListener()
+    this.gEN.setText(aa.gQ(getContext()));
+    this.gEO.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
+        AppMethodBeat.i(125007);
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("not_auth_setting", true);
-        com.tencent.mm.plugin.account.a.a.eUR.p(paramAnonymousView, LoginSelectorUI.this.mController.uMN);
+        com.tencent.mm.plugin.account.a.a.gmO.o(paramAnonymousView, LoginSelectorUI.this.getContext());
+        AppMethodBeat.o(125007);
       }
     });
-    if (e.uem)
+    if (com.tencent.mm.sdk.platformtools.g.ymN)
     {
-      com.tencent.mm.plugin.account.a.a.eUS.n(this);
+      com.tencent.mm.plugin.account.a.a.gmP.o(this);
+      AppMethodBeat.o(125010);
       return;
     }
-    com.tencent.mm.plugin.account.a.a.eUS.aJ(this);
+    com.tencent.mm.plugin.account.a.a.gmP.bh(this);
+    AppMethodBeat.o(125010);
   }
   
   public void onClick(View paramView)
   {
-    if (q.f.select_login_btn == paramView.getId())
+    AppMethodBeat.i(125012);
+    if (2131827535 == paramView.getId())
     {
       paramView = new Intent(this, MobileInputUI.class);
       paramView.putExtra("mobile_input_purpose", 1);
       startActivity(paramView);
-    }
-    while (q.f.select_register_btn != paramView.getId()) {
+      AppMethodBeat.o(125012);
       return;
     }
-    if (d.spd)
+    if (2131827534 == paramView.getId())
     {
-      paramView = getString(q.j.create_forbiden_uri, new Object[] { "0x" + Integer.toHexString(d.spa), x.cqJ() });
-      Intent localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramView);
-      localIntent.putExtra("showShare", false);
-      localIntent.putExtra("show_bottom", false);
-      localIntent.putExtra("needRedirect", false);
-      localIntent.putExtra("neverGetA8Key", true);
-      localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.spm);
-      localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.spj);
-      com.tencent.mm.plugin.account.a.a.eUR.j(localIntent, this);
-      return;
+      if (d.whK)
+      {
+        paramView = getString(2131298884, new Object[] { "0x" + Integer.toHexString(d.whH), aa.dsG() });
+        Intent localIntent = new Intent();
+        localIntent.putExtra("rawUrl", paramView);
+        localIntent.putExtra("showShare", false);
+        localIntent.putExtra("show_bottom", false);
+        localIntent.putExtra("needRedirect", false);
+        localIntent.putExtra("neverGetA8Key", true);
+        localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.wib);
+        localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.whX);
+        com.tencent.mm.plugin.account.a.a.gmO.i(localIntent, this);
+        AppMethodBeat.o(125012);
+        return;
+      }
+      startActivity(new Intent(this, RegByMobileRegAIOUI.class));
     }
-    paramView = new Intent(this, RegByMobileRegAIOUI.class);
-    paramView.putExtra("login_type", 0);
-    startActivity(paramView);
+    AppMethodBeat.o(125012);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(125008);
     super.onCreate(paramBundle);
     setTitleVisibility(8);
-    com.tencent.mm.plugin.account.a.a.eUS.tn();
-    g.DN();
-    com.tencent.mm.kernel.a.Dg();
+    com.tencent.mm.plugin.account.a.a.gmP.BR();
+    com.tencent.mm.kernel.g.RJ();
+    com.tencent.mm.kernel.a.QY();
     initView();
+    AppMethodBeat.o(125008);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(125011);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      Intent localIntent = com.tencent.mm.plugin.account.a.a.eUR.aN(this);
+      Intent localIntent = com.tencent.mm.plugin.account.a.a.gmO.bm(this);
       localIntent.addFlags(67108864);
       localIntent.putExtra("can_finish", true);
       startActivity(localIntent);
       finish();
-      b.gK(this);
+      b.ig(this);
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(125011);
+    return bool;
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(125009);
     super.onResume();
-    g.DN();
-    com.tencent.mm.kernel.a.Dg();
+    com.tencent.mm.kernel.g.RJ();
+    com.tencent.mm.kernel.a.QY();
+    AppMethodBeat.o(125009);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

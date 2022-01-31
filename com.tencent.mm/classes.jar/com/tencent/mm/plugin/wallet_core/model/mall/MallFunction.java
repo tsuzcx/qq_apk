@@ -3,42 +3,56 @@ package com.tencent.mm.plugin.wallet_core.model.mall;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public class MallFunction
   implements Parcelable
 {
-  public static final Parcelable.Creator<MallFunction> CREATOR = new Parcelable.Creator() {};
-  public String caU;
-  public String ceb;
-  public String lZc;
-  public String lZd;
-  public String lfj;
-  public String npy;
-  public String qzv;
-  public ArrayList<String> qzw;
-  public MallNews qzx;
-  public String qzy;
-  public int qzz = 0;
+  public static final Parcelable.Creator<MallFunction> CREATOR;
+  public String cJt;
+  public String cMO;
+  public String nDe;
+  public String oyK;
+  public String oyL;
+  public String pUM;
   public int type;
+  public String umf;
+  public ArrayList<String> umg;
+  public MallNews umh;
+  public String umi;
+  public int umj;
   
-  public MallFunction() {}
+  static
+  {
+    AppMethodBeat.i(47006);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(47006);
+  }
+  
+  public MallFunction()
+  {
+    this.umj = 0;
+  }
   
   public MallFunction(Parcel paramParcel)
   {
-    this.npy = paramParcel.readString();
-    this.caU = paramParcel.readString();
-    this.qzv = paramParcel.readString();
-    this.lZc = paramParcel.readString();
-    this.lZd = paramParcel.readString();
-    this.ceb = paramParcel.readString();
-    this.lfj = paramParcel.readString();
-    this.qzw = new ArrayList();
-    paramParcel.readStringList(this.qzw);
-    this.qzx = ((MallNews)paramParcel.readParcelable(MallNews.class.getClassLoader()));
+    AppMethodBeat.i(47004);
+    this.umj = 0;
+    this.pUM = paramParcel.readString();
+    this.cJt = paramParcel.readString();
+    this.umf = paramParcel.readString();
+    this.oyK = paramParcel.readString();
+    this.oyL = paramParcel.readString();
+    this.cMO = paramParcel.readString();
+    this.nDe = paramParcel.readString();
+    this.umg = new ArrayList();
+    paramParcel.readStringList(this.umg);
+    this.umh = ((MallNews)paramParcel.readParcelable(MallNews.class.getClassLoader()));
     this.type = paramParcel.readInt();
-    this.qzy = paramParcel.readString();
-    this.qzz = paramParcel.readInt();
+    this.umi = paramParcel.readString();
+    this.umj = paramParcel.readInt();
+    AppMethodBeat.o(47004);
   }
   
   public int describeContents()
@@ -48,23 +62,25 @@ public class MallFunction
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.npy);
-    paramParcel.writeString(this.caU);
-    paramParcel.writeString(this.qzv);
-    paramParcel.writeString(this.lZc);
-    paramParcel.writeString(this.lZd);
-    paramParcel.writeString(this.ceb);
-    paramParcel.writeString(this.lfj);
-    paramParcel.writeStringList(this.qzw);
-    paramParcel.writeParcelable(this.qzx, paramInt);
+    AppMethodBeat.i(47005);
+    paramParcel.writeString(this.pUM);
+    paramParcel.writeString(this.cJt);
+    paramParcel.writeString(this.umf);
+    paramParcel.writeString(this.oyK);
+    paramParcel.writeString(this.oyL);
+    paramParcel.writeString(this.cMO);
+    paramParcel.writeString(this.nDe);
+    paramParcel.writeStringList(this.umg);
+    paramParcel.writeParcelable(this.umh, paramInt);
     paramParcel.writeInt(this.type);
-    paramParcel.writeString(this.qzy);
-    paramParcel.writeInt(this.qzz);
+    paramParcel.writeString(this.umi);
+    paramParcel.writeInt(this.umj);
+    AppMethodBeat.o(47005);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.mall.MallFunction
  * JD-Core Version:    0.7.0.1
  */

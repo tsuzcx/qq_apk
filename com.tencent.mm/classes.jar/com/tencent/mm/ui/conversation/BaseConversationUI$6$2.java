@@ -1,6 +1,9 @@
 package com.tencent.mm.ui.conversation;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.chatting.ChattingUIFragment;
 import com.tencent.mm.ui.tools.TestTimeForChatting;
 import com.tencent.mm.ui.tools.TestTimeForChatting.a;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
@@ -10,18 +13,26 @@ final class BaseConversationUI$6$2
 {
   BaseConversationUI$6$2(BaseConversationUI.6 param6) {}
   
-  public final void cAb()
+  public final void dDc()
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BaseConversationUI", "[onDrawed]");
-    this.vPj.start = System.currentTimeMillis();
-    if (BaseConversationUI.access$100(this.vPj.vPi).getSwipeBackLayout() != null) {
-      BaseConversationUI.access$100(this.vPj.vPi).getSwipeBackLayout().startAnimation(BaseConversationUI.access$700(this.vPj.vPi));
+    AppMethodBeat.i(34053);
+    ab.i("MicroMsg.BaseConversationUI", "[onDrawed]");
+    this.AgU.start = System.currentTimeMillis();
+    if (BaseConversationUI.access$100(this.AgU.AgT) == null)
+    {
+      ab.e("MicroMsg.BaseConversationUI", "chattingFragmet is null!");
+      AppMethodBeat.o(34053);
+      return;
+    }
+    if (BaseConversationUI.access$100(this.AgU.AgT).getSwipeBackLayout() != null) {
+      BaseConversationUI.access$100(this.AgU.AgT).getSwipeBackLayout().startAnimation(BaseConversationUI.access$700(this.AgU.AgT));
     }
     for (;;)
     {
-      BaseConversationUI.access$200(this.vPj.vPi).setOndispatchDraw(null);
+      BaseConversationUI.access$200(this.AgU.AgT).setOndispatchDraw(null);
+      AppMethodBeat.o(34053);
       return;
-      BaseConversationUI.access$100(this.vPj.vPi).getView().startAnimation(BaseConversationUI.access$700(this.vPj.vPi));
+      BaseConversationUI.access$100(this.AgU.AgT).getView().startAnimation(BaseConversationUI.access$700(this.AgU.AgT));
     }
   }
 }

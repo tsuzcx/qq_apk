@@ -1,43 +1,57 @@
 package com.tencent.mm.plugin.api.recordView;
 
 import android.content.Context;
+import android.opengl.EGL14;
+import android.opengl.EGLContext;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 class MMSightCameraGLSurfaceView
   extends GLSurfaceView
 {
-  int fvY;
-  int fvZ;
-  a fws = null;
-  private int fwt = 0;
-  int fwu;
+  EGLContext eZz;
+  int fbz;
+  int gNA;
+  int gNB;
+  a gNI;
+  private int gNJ;
   
   public MMSightCameraGLSurfaceView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(76319);
+    this.gNI = null;
+    this.gNJ = 0;
     init();
+    AppMethodBeat.o(76319);
   }
   
   public MMSightCameraGLSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(76320);
+    this.gNI = null;
+    this.gNJ = 0;
     init();
+    AppMethodBeat.o(76320);
   }
   
   private void init()
   {
+    AppMethodBeat.i(76321);
     getHolder().addCallback(this);
     try
     {
       getHolder().setType(2);
       setEGLContextFactory(new MMSightCameraGLSurfaceView.b(this));
       setEGLConfigChooser(new MMSightCameraGLSurfaceView.a(this));
-      this.fws = new a();
-      setRenderer(this.fws);
+      this.gNI = new a();
+      setRenderer(this.gNI);
       setRenderMode(0);
+      AppMethodBeat.o(76321);
       return;
     }
     catch (Exception localException1)
@@ -62,20 +76,27 @@ class MMSightCameraGLSurfaceView
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(76324);
     super.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-    y.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceChanged, format: %s, w: %s, h: %s this: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this });
+    ab.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceChanged, format: %s, w: %s, h: %s this: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this });
+    AppMethodBeat.o(76324);
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
+    AppMethodBeat.i(76322);
     super.surfaceCreated(paramSurfaceHolder);
-    y.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceCreated: %s this: %s %s", new Object[] { paramSurfaceHolder, this, Integer.valueOf(getId()) });
+    ab.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceCreated: %s this: %s %s", new Object[] { paramSurfaceHolder, this, Integer.valueOf(getId()) });
+    this.eZz = EGL14.eglGetCurrentContext();
+    AppMethodBeat.o(76322);
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
+    AppMethodBeat.i(76323);
     super.surfaceDestroyed(paramSurfaceHolder);
-    y.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceDestroyed: %s this: %s", new Object[] { paramSurfaceHolder, this });
+    ab.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceDestroyed: %s this: %s", new Object[] { paramSurfaceHolder, this });
+    AppMethodBeat.o(76323);
   }
 }
 

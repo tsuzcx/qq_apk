@@ -3,46 +3,38 @@ package com.google.android.gms.wearable.internal;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.common.internal.zzac;
-import com.google.android.gms.internal.zzabh;
+import com.google.android.gms.common.api.internal.ListenerHolder;
+import com.google.android.gms.common.internal.Preconditions;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class zzb<T>
-  extends zzm<Status>
+  extends zzn<Status>
 {
-  private T mListener;
-  private zzabh<T> zzaDf;
-  private zzb.zza<T> zzbTA;
+  private T zzaw;
+  private ListenerHolder<T> zzax;
+  private zzc<T> zzay;
   
-  private zzb(GoogleApiClient paramGoogleApiClient, T paramT, zzabh<T> paramzzabh, zzb.zza<T> paramzza)
+  private zzb(GoogleApiClient paramGoogleApiClient, T paramT, ListenerHolder<T> paramListenerHolder, zzc<T> paramzzc)
   {
     super(paramGoogleApiClient);
-    this.mListener = zzac.zzw(paramT);
-    this.zzaDf = ((zzabh)zzac.zzw(paramzzabh));
-    this.zzbTA = ((zzb.zza)zzac.zzw(paramzza));
+    AppMethodBeat.i(71060);
+    this.zzaw = Preconditions.checkNotNull(paramT);
+    this.zzax = ((ListenerHolder)Preconditions.checkNotNull(paramListenerHolder));
+    this.zzay = ((zzc)Preconditions.checkNotNull(paramzzc));
+    AppMethodBeat.o(71060);
   }
   
-  static <T> PendingResult<Status> zza(GoogleApiClient paramGoogleApiClient, zzb.zza<T> paramzza, T paramT)
+  static <T> PendingResult<Status> zza(GoogleApiClient paramGoogleApiClient, zzc<T> paramzzc, T paramT)
   {
-    return paramGoogleApiClient.zza(new zzb(paramGoogleApiClient, paramT, paramGoogleApiClient.zzr(paramT), paramzza));
-  }
-  
-  protected final void zza(zzcx paramzzcx)
-  {
-    this.zzbTA.zza(paramzzcx, this, this.mListener, this.zzaDf);
-    this.mListener = null;
-    this.zzaDf = null;
-  }
-  
-  protected final Status zzb(Status paramStatus)
-  {
-    this.mListener = null;
-    this.zzaDf = null;
-    return paramStatus;
+    AppMethodBeat.i(71059);
+    paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzb(paramGoogleApiClient, paramT, paramGoogleApiClient.registerListener(paramT), paramzzc));
+    AppMethodBeat.o(71059);
+    return paramGoogleApiClient;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzb
  * JD-Core Version:    0.7.0.1
  */

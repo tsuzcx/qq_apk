@@ -1,241 +1,183 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
 import android.database.Cursor;
-import com.tencent.mm.ah.e;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
-import com.tencent.mm.ah.e.d;
-import com.tencent.mm.at.b;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.be;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.ai.e.b;
+import com.tencent.mm.ai.e.d;
+import com.tencent.mm.au.b;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.t;
 import com.tencent.mm.platformtools.aa;
 import com.tencent.mm.platformtools.ae;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
-import com.tencent.mm.plugin.messenger.foundation.a.t;
 import com.tencent.mm.plugin.messenger.foundation.a.u;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.protocal.c.qv;
-import com.tencent.mm.protocal.c.su;
-import com.tencent.mm.protocal.c.ta;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.protocal.protobuf.ud;
+import com.tencent.mm.protocal.protobuf.wu;
+import com.tencent.mm.protocal.protobuf.xb;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
 import java.util.List;
 
 public final class c
-  implements r
+  implements com.tencent.mm.plugin.messenger.foundation.a.r
 {
-  public static e.b a(e.a parama, t paramt)
+  private static boolean SP(String paramString)
   {
-    cd localcd = parama.dBs;
-    if ((10008 == ae.eSP) && (ae.eSQ != 0))
+    AppMethodBeat.i(1027);
+    if ((t.nY(paramString)) && (!b.aih()))
     {
-      y.i("MicroMsg.MessageSyncExtension", "dkmsgid  set svrmsgid %d -> %d", new Object[] { Long.valueOf(localcd.ndp), Integer.valueOf(ae.eSQ) });
-      localcd.ndp = Long.valueOf(ae.eSQ).longValue();
-      ae.eSQ = 0;
+      AppMethodBeat.o(1027);
+      return true;
     }
-    if (((j)com.tencent.mm.kernel.g.r(j.class)).bhO().ff(localcd.ndp))
+    AppMethodBeat.o(1027);
+    return false;
+  }
+  
+  public static e.b a(e.a parama, u paramu)
+  {
+    AppMethodBeat.i(1026);
+    cm localcm = parama.eyJ;
+    if ((10008 == ae.gkK) && (ae.gkL != 0))
     {
-      y.i("MicroMsg.MessageSyncExtension", "ignore, because reSync the deleted msg perhaps the IDC has change has swtiched");
-      parama = null;
-      return parama;
+      ab.i("MicroMsg.MessageSyncExtension", "dkmsgid  set svrmsgid %d -> %d", new Object[] { Long.valueOf(localcm.pIG), Integer.valueOf(ae.gkL) });
+      localcm.pIG = ae.gkL;
+      ae.gkL = 0;
     }
-    String str = aa.a(localcd.svF);
-    Object localObject2 = aa.a(localcd.svG);
-    if ((str.equals(q.Gj())) && (((String)localObject2).equals("newsapp")) && (localcd.kSW != 51))
+    if (((j)g.E(j.class)).bPQ().kD(localcm.pIG))
     {
-      y.w("MicroMsg.MessageSyncExtension", "msgid:%d type:%d this fucking msg from mac weixin ,someone send msg to newsapp at mac weixin ,givp up.", new Object[] { Long.valueOf(localcd.ndp), Integer.valueOf(localcd.kSW) });
+      ab.i("MicroMsg.MessageSyncExtension", "ignore, because reSync the deleted msg perhaps the IDC has change has swtiched");
+      AppMethodBeat.o(1026);
       return null;
     }
-    long l1 = localcd.ndp;
-    int i = localcd.ndm;
-    int j = localcd.svM;
-    int k = localcd.hQq;
-    int m = localcd.kSW;
-    int n = localcd.mPL;
-    Object localObject3 = bk.hs(localcd.mPL);
-    long l2 = bk.UX();
-    long l3 = localcd.mPL;
-    int i1 = localcd.svI;
-    int i2 = aa.a(localcd.svJ, new byte[0]).length;
-    int i3 = bk.pm(localcd.svK).length();
-    int i4 = bk.pm(localcd.svL).length();
-    bml localbml = localcd.svH;
-    Object localObject1 = "";
-    if (localbml == null)
+    String str = aa.a(localcm.woP);
+    Object localObject = aa.a(localcm.woQ);
+    if ((str.equals(com.tencent.mm.model.r.Zn())) && (((String)localObject).equals("newsapp")) && (localcm.nqW != 51))
     {
-      label321:
-      y.i("MicroMsg.MessageSyncExtension", "dkAddMsg from:%s to:%s id:[%d,%d,%d] status:%d type:%d time:[%d %s] diff:%d imgstatus:%d imgbuf:%d src:%d push:%d content:%s", new Object[] { str, localObject2, Long.valueOf(l1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), localObject3, Long.valueOf(l2 - l3), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), bk.aac((String)localObject1) });
-      y.i("MicroMsg.MessageSyncExtension", "parseMsgSource  has been Deprecated  by dk. at 20151218 [%s] %s ", new Object[] { localcd.svK, "" });
-      u.h(localcd);
-      if (str.equals("readerapp"))
-      {
-        localcd.svF = aa.pj("newsapp");
-        localcd.kSW = 12399999;
-      }
-      if (((str.equals("blogapp")) || (str.equals("newsapp"))) && (localcd.kSW != 10002)) {
-        localcd.kSW = 12399999;
-      }
-      if (localcd.kSW == 52) {
-        localcd.kSW = 1000052;
-      }
-      if (localcd.kSW == 53) {
-        localcd.kSW = 1000053;
-      }
-      if ((parama != null) && (parama.dBs != null)) {
-        break label768;
-      }
-      label593:
-      i = 0;
-      localObject1 = null;
-      localObject3 = e.d.aB(Integer.valueOf(localcd.kSW));
-      localObject2 = localObject3;
-      if (localObject3 == null) {
-        localObject2 = e.d.aB(str);
-      }
-      if (localObject2 != null)
-      {
-        localObject2 = ((e)localObject2).b(parama);
-        if (localObject2 != null) {
-          break label983;
-        }
-        localObject1 = null;
-        label650:
-        if (localObject1 != null) {
-          break label993;
-        }
-        y.w("MicroMsg.MessageSyncExtension", "summerbadcr extension declared but skipped msg, type=%d, svrId=%d, MsgSeq=%d, createTime=%d, addMsgInfo=%s", new Object[] { Integer.valueOf(localcd.kSW), Long.valueOf(localcd.ndp), Integer.valueOf(localcd.svM), Integer.valueOf(localcd.mPL), parama });
-      }
+      ab.w("MicroMsg.MessageSyncExtension", "msgid:%d type:%d this fucking msg from mac weixin ,someone send msg to newsapp at mac weixin ,givp up.", new Object[] { Long.valueOf(localcm.pIG), Integer.valueOf(localcm.nqW) });
+      AppMethodBeat.o(1026);
+      return null;
     }
-    label768:
-    label1087:
+    ab.i("MicroMsg.MessageSyncExtension", "dkAddMsg from:%s to:%s id:[%d,%d,%d] status:%d type:%d time:[%d %s] diff:%d imgstatus:%d imgbuf:%d src:%d push:%d content:%s", new Object[] { str, localObject, Long.valueOf(localcm.pIG), Integer.valueOf(localcm.pIE), Integer.valueOf(localcm.woW), Integer.valueOf(localcm.jJS), Integer.valueOf(localcm.nqW), Integer.valueOf(localcm.CreateTime), bo.nU(localcm.CreateTime), Long.valueOf(bo.aox() - localcm.CreateTime), Integer.valueOf(localcm.woS), Integer.valueOf(aa.a(localcm.woT, new byte[0]).length), Integer.valueOf(bo.nullAsNil(localcm.woU).length()), Integer.valueOf(bo.nullAsNil(localcm.woV).length()), bo.aqg(aa.a(localcm.woR, "")) });
+    ab.i("MicroMsg.MessageSyncExtension", "parseMsgSource  has been Deprecated  by dk. at 20151218 [%s] %s ", new Object[] { localcm.woU, "" });
+    v.h(localcm);
+    if (str.equals("readerapp"))
+    {
+      localcm.woP = aa.wA("newsapp");
+      localcm.nqW = 12399999;
+    }
+    if (((str.equals("blogapp")) || (str.equals("newsapp"))) && (localcm.nqW != 10002)) {
+      localcm.nqW = 12399999;
+    }
+    if (localcm.nqW == 52) {
+      localcm.nqW = 1000052;
+    }
+    if (localcm.nqW == 53) {
+      localcm.nqW = 1000053;
+    }
+    bf.c(parama);
+    int i = 0;
+    e.b localb = null;
+    e locale = e.d.aV(Integer.valueOf(localcm.nqW));
+    localObject = locale;
+    if (locale == null) {
+      localObject = e.d.aV(str);
+    }
+    if (localObject != null)
+    {
+      localb = ((e)localObject).b(parama);
+      if (localb != null) {
+        break label696;
+      }
+      localObject = null;
+      if (localObject != null) {
+        break label705;
+      }
+      ab.w("MicroMsg.MessageSyncExtension", "summerbadcr extension declared but skipped msg, type=%d, svrId=%d, MsgSeq=%d, createTime=%d, addMsgInfo=%s", new Object[] { Integer.valueOf(localcm.nqW), Long.valueOf(localcm.pIG), Integer.valueOf(localcm.woW), Integer.valueOf(localcm.CreateTime), parama });
+    }
     for (;;)
     {
       i = 1;
-      localObject1 = localObject2;
-      u.b(5, localcd);
-      parama = (e.a)localObject1;
-      if (i != 0) {
-        break;
+      v.b(5, localcm);
+      if (i == 0) {
+        ab.f("MicroMsg.MessageSyncExtension", "unknown add msg request, type=%d. drop now !!!", new Object[] { Integer.valueOf(localcm.nqW) });
       }
-      y.f("MicroMsg.MessageSyncExtension", "unknown add msg request, type=%d. drop now !!!", new Object[] { Integer.valueOf(localcd.kSW) });
-      return localObject1;
-      localObject1 = localbml.tFO;
-      break label321;
-      localObject1 = parama.dBs;
-      localObject2 = aa.a(((cd)localObject1).svF);
-      localObject2 = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().O((String)localObject2, ((cd)localObject1).ndp);
-      if ((((cs)localObject2).field_msgId == 0L) || ((((cs)localObject2).field_isSend != 0) && (((cd)localObject1).svM == 0))) {
-        break label593;
-      }
-      i = ((cs)localObject2).field_flag;
-      if (parama.ecS)
+      AppMethodBeat.o(1026);
+      return localb;
+      label696:
+      localObject = localb.cmQ;
+      break;
+      label705:
+      if (!SP(str))
       {
-        i |= 0x2;
-        label854:
-        if (!parama.ecT) {
-          break label967;
+        ab.d("MicroMsg.MessageSyncExtension", " msg , id =" + ((dd)localObject).field_msgId + "  " + paramu);
+        if ((((dd)localObject).field_msgId > 0L) && (paramu != null) && (localb.ftj)) {
+          paramu.a((bi)localObject, localcm);
         }
-        i |= 0x1;
-        label865:
-        if (!parama.ecU) {
-          break label975;
-        }
-        i |= 0x4;
-      }
-      for (;;)
-      {
-        if (i == ((cs)localObject2).field_flag) {
-          break label981;
-        }
-        y.i("MicroMsg.MsgInfoStorageLogic", "summerbadcr updateMsgFlagByAddMsgInfo msgType[%d], flag new[%d], old[%d]", new Object[] { Integer.valueOf(((cd)localObject1).kSW), Integer.valueOf(i), Integer.valueOf(((cs)localObject2).field_flag) });
-        ((bi)localObject2).fJ(i);
-        ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().b(((cs)localObject2).field_msgSvrId, (bi)localObject2);
-        break;
-        i &= 0xFFFFFFFD;
-        break label854;
-        label967:
-        i &= 0xFFFFFFFE;
-        break label865;
-        label975:
-        i &= 0xFFFFFFFB;
-      }
-      label981:
-      break label593;
-      label983:
-      localObject1 = ((e.b)localObject2).bFH;
-      break label650;
-      label993:
-      if ((s.hp(str)) && (!b.Pf())) {}
-      for (i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label1087;
-        }
-        y.d("MicroMsg.MessageSyncExtension", " msg , id =" + ((cs)localObject1).field_msgId + "  " + paramt);
-        if ((((cs)localObject1).field_msgId <= 0L) || (paramt == null) || (!((e.b)localObject2).ecX)) {
-          break;
-        }
-        paramt.a((bi)localObject1, localcd);
-        break;
       }
     }
   }
   
-  public final void a(qv paramqv, byte[] paramArrayOfByte, boolean paramBoolean, t paramt)
+  public final void a(ud paramud, byte[] paramArrayOfByte, boolean paramBoolean, u paramu)
   {
-    switch (paramqv.sOA)
+    AppMethodBeat.i(1025);
+    switch (paramud.wMC)
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(1025);
       return;
-      paramqv = (cd)new cd().aH(paramArrayOfByte);
-      if (paramqv != null)
+      paramud = (cm)new cm().parseFrom(paramArrayOfByte);
+      if (paramud != null)
       {
-        paramArrayOfByte = new e.a(paramqv, false, false, false);
-        a(paramArrayOfByte, paramt);
-        if (!paramArrayOfByte.ecS)
-        {
-          be.a(aa.a(paramqv.svF), paramqv.ndp, paramqv.mPL * 1000L, paramqv.kSW);
-          return;
-          paramArrayOfByte = (su)new su().aH(paramArrayOfByte);
-          paramqv = aa.a(paramArrayOfByte.sQs);
-          int i = paramArrayOfByte.sQv;
-          paramArrayOfByte = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().bR(paramqv, i);
-          if (paramArrayOfByte.moveToFirst()) {
-            while (!paramArrayOfByte.isAfterLast())
-            {
-              paramt = new bi();
-              paramt.d(paramArrayOfByte);
-              bd.i(paramt);
-              paramArrayOfByte.moveToNext();
-            }
-          }
-          paramArrayOfByte.close();
-          ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().bQ(paramqv, i);
-          return;
-          paramqv = (ta)new ta().aH(paramArrayOfByte);
-          paramArrayOfByte = paramqv.sQy;
-          i = 0;
-          while (i < paramArrayOfByte.size())
-          {
-            bd.p(aa.a(paramqv.sQs), ((Integer)paramArrayOfByte.get(i)).intValue());
-            i += 1;
-          }
+        paramArrayOfByte = new e.a(paramud, false, false, false);
+        a(paramArrayOfByte, paramu);
+        if (!paramArrayOfByte.fte) {
+          bg.a(aa.a(paramud.woP), paramud.pIG, paramud.CreateTime * 1000L, paramud.nqW);
         }
+      }
+      AppMethodBeat.o(1025);
+      return;
+      paramArrayOfByte = (wu)new wu().parseFrom(paramArrayOfByte);
+      paramud = aa.a(paramArrayOfByte.wOT);
+      int i = paramArrayOfByte.wOW;
+      paramArrayOfByte = ((j)g.E(j.class)).bPQ().cI(paramud, i);
+      if (paramArrayOfByte.moveToFirst()) {
+        while (!paramArrayOfByte.isAfterLast())
+        {
+          paramu = new bi();
+          paramu.convertFrom(paramArrayOfByte);
+          bf.m(paramu);
+          paramArrayOfByte.moveToNext();
+        }
+      }
+      paramArrayOfByte.close();
+      ((j)g.E(j.class)).bPQ().cH(paramud, i);
+      AppMethodBeat.o(1025);
+      return;
+      paramud = (xb)new xb().parseFrom(paramArrayOfByte);
+      paramArrayOfByte = paramud.wOZ;
+      i = 0;
+      while (i < paramArrayOfByte.size())
+      {
+        bf.y(aa.a(paramud.wOT), ((Integer)paramArrayOfByte.get(i)).intValue());
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.c
  * JD-Core Version:    0.7.0.1
  */

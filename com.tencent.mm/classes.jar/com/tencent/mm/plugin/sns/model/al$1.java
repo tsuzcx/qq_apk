@@ -1,13 +1,11 @@
 package com.tencent.mm.plugin.sns.model;
 
+import android.net.wifi.ScanResult;
 import java.util.Comparator;
-import java.util.Map.Entry;
 
 final class al$1
-  implements Comparator<Map.Entry<K, al<K, O>.b<O>>>
-{
-  al$1(al paramal) {}
-}
+  implements Comparator<ScanResult>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar

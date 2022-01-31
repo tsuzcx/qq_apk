@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.c;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.f;
 
 final class a$1
@@ -10,16 +11,18 @@ final class a$1
   
   public final void run()
   {
+    AppMethodBeat.i(10793);
     String str2 = "com.tencent.mm";
     String str1 = str2;
-    if (this.dAS.length > 2)
+    if (this.eut.length > 2)
     {
       str1 = str2;
-      if (!TextUtils.isEmpty(this.dAS[2])) {
-        str1 = "com.tencent.mm" + ":" + this.dAS[2];
+      if (!TextUtils.isEmpty(this.eut[2])) {
+        str1 = "com.tencent.mm" + ":" + this.eut[2];
       }
     }
     f.a(str1, null, a.a.class, null);
+    AppMethodBeat.o(10793);
   }
 }
 

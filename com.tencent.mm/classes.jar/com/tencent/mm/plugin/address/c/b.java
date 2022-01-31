@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.address.c;
 
 import android.app.Dialog;
 import android.content.Context;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,99 +16,114 @@ import java.util.Set;
 public final class b
   implements f
 {
-  HashSet<m> fti = new HashSet();
-  HashSet<m> ftj = new HashSet();
-  Dialog ftk = null;
-  private a ftx = null;
-  private Set<Integer> fty = new HashSet();
+  HashSet<m> gKK;
+  HashSet<m> gKL;
+  Dialog gKM;
+  private a gKZ;
+  private Set<Integer> gLa;
   private Context mContext;
   
   public b(Context paramContext, a parama)
   {
+    AppMethodBeat.i(16779);
+    this.gKZ = null;
+    this.gKK = new HashSet();
+    this.gKL = new HashSet();
+    this.gKM = null;
+    this.gLa = new HashSet();
     this.mContext = paramContext;
-    this.ftx = parama;
+    this.gKZ = parama;
+    AppMethodBeat.o(16779);
   }
   
-  public final void g(m paramm)
+  public final void addSceneEndListener(int paramInt)
   {
-    y.d("MicroMsg.WalletNetSceneMgr", "isShowProgress true");
-    this.ftj.add(paramm);
-    if ((this.ftk == null) || ((this.ftk != null) && (!this.ftk.isShowing())))
+    AppMethodBeat.i(16781);
+    this.gLa.add(Integer.valueOf(paramInt));
+    aw.Rc().a(paramInt, this);
+    AppMethodBeat.o(16781);
+  }
+  
+  public final void e(m paramm)
+  {
+    AppMethodBeat.i(16780);
+    ab.d("MicroMsg.WalletNetSceneMgr", "isShowProgress true");
+    this.gKL.add(paramm);
+    if ((this.gKM == null) || ((this.gKM != null) && (!this.gKM.isShowing())))
     {
-      if (this.ftk != null) {
-        this.ftk.dismiss();
+      if (this.gKM != null) {
+        this.gKM.dismiss();
       }
-      this.ftk = h.b(this.mContext, "", true, new b.1(this));
+      this.gKM = h.b(this.mContext, "", true, new b.1(this));
     }
-    au.Dk().a(paramm, 0);
-  }
-  
-  public final void kh(int paramInt)
-  {
-    this.fty.add(Integer.valueOf(paramInt));
-    au.Dk().a(paramInt, this);
-  }
-  
-  public final void ki(int paramInt)
-  {
-    au.Dk().b(paramInt, this);
-    this.fty.remove(Integer.valueOf(paramInt));
-    if (this.fty.isEmpty())
-    {
-      if (this.ftk != null)
-      {
-        this.ftk.dismiss();
-        this.ftk = null;
-      }
-      Iterator localIterator = this.fti.iterator();
-      m localm;
-      while (localIterator.hasNext())
-      {
-        localm = (m)localIterator.next();
-        au.Dk().c(localm);
-      }
-      localIterator = this.ftj.iterator();
-      while (localIterator.hasNext())
-      {
-        localm = (m)localIterator.next();
-        au.Dk().c(localm);
-      }
-      this.fti.clear();
-      this.ftj.clear();
-      this.ftx = null;
-      this.mContext = null;
-    }
+    aw.Rc().a(paramm, 0);
+    AppMethodBeat.o(16780);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     int i = 1;
-    if (this.ftj.contains(paramm))
+    AppMethodBeat.i(16783);
+    if (this.gKL.contains(paramm))
     {
-      this.ftj.remove(paramm);
-      y.d("MicroMsg.WalletNetSceneMgr", "has find scene ");
+      this.gKL.remove(paramm);
+      ab.d("MicroMsg.WalletNetSceneMgr", "has find scene ");
     }
     for (;;)
     {
-      if ((this.ftj.isEmpty()) && (this.fti.isEmpty()) && (this.ftk != null))
+      if ((this.gKL.isEmpty()) && (this.gKK.isEmpty()) && (this.gKM != null))
       {
-        this.ftk.dismiss();
-        this.ftk = null;
+        this.gKM.dismiss();
+        this.gKM = null;
       }
-      if ((i != 0) && (this.ftx != null)) {
-        this.ftx.e(paramInt1, paramInt2, paramString, paramm);
+      if ((i != 0) && (this.gKZ != null)) {
+        this.gKZ.c(paramInt1, paramInt2, paramString, paramm);
       }
+      AppMethodBeat.o(16783);
       return;
-      if (this.fti.contains(paramm))
+      if (this.gKK.contains(paramm))
       {
-        this.fti.remove(paramm);
-        y.d("MicroMsg.WalletNetSceneMgr", "has find forcescenes ");
+        this.gKK.remove(paramm);
+        ab.d("MicroMsg.WalletNetSceneMgr", "has find forcescenes ");
       }
       else
       {
         i = 0;
       }
     }
+  }
+  
+  public final void removeSceneEndListener(int paramInt)
+  {
+    AppMethodBeat.i(16782);
+    aw.Rc().b(paramInt, this);
+    this.gLa.remove(Integer.valueOf(paramInt));
+    if (this.gLa.isEmpty())
+    {
+      if (this.gKM != null)
+      {
+        this.gKM.dismiss();
+        this.gKM = null;
+      }
+      Iterator localIterator = this.gKK.iterator();
+      m localm;
+      while (localIterator.hasNext())
+      {
+        localm = (m)localIterator.next();
+        aw.Rc().a(localm);
+      }
+      localIterator = this.gKL.iterator();
+      while (localIterator.hasNext())
+      {
+        localm = (m)localIterator.next();
+        aw.Rc().a(localm);
+      }
+      this.gKK.clear();
+      this.gKL.clear();
+      this.gKZ = null;
+      this.mContext = null;
+    }
+    AppMethodBeat.o(16782);
   }
 }
 

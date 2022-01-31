@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center_vertical" android:id="@android:id/progress" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/zh" />
-    <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:gravity="left" android:layout_gravity="center_vertical" android:id="@android:id/title" android:text="@string/dtx" style="@style/k6" />
+    <TextView android:textSize="@dimen/m2" android:textColor="#ff999999" android:id="@id/duc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:layout_marginBottom="4.0dip" />
+    <View android:background="#ffd4d4d4" android:layout_width="fill_parent" android:layout_height="2.0px" />
+    <com.tencent.mm.plugin.product.ui.MaxGridView android:gravity="center" android:id="@id/dud" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:horizontalSpacing="16.0dip" android:verticalSpacing="12.0dip" android:stretchMode="columnWidth" android:numColumns="3" />
 </LinearLayout>

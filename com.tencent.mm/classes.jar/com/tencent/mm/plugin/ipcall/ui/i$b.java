@@ -1,43 +1,56 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
-import android.support.v4.view.n;
+import android.support.v4.view.q;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public final class i$b
-  extends n
+  extends q
 {
-  View.OnClickListener lze;
-  LinkedList<Integer> lzj;
-  ArrayList<View> lzk = new ArrayList();
-  int mCount = 0;
+  int mCount;
+  View.OnClickListener nWq;
+  LinkedList<Integer> nWv;
+  ArrayList<View> nWw;
   
-  public i$b(i parami) {}
-  
-  public final int F(Object paramObject)
+  public i$b(i parami)
   {
-    return super.F(paramObject);
+    AppMethodBeat.i(22349);
+    this.nWw = new ArrayList();
+    this.mCount = 0;
+    AppMethodBeat.o(22349);
   }
   
-  public final void a(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    y.v("MicroMsg.IPCallShareDialog", "destroy item: %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(22350);
+    ab.v("MicroMsg.IPCallShareDialog", "destroy item: %d", new Object[] { Integer.valueOf(paramInt) });
     paramViewGroup.removeView((View)paramObject);
+    AppMethodBeat.o(22350);
   }
   
-  public final boolean a(View paramView, Object paramObject)
+  public final int getCount()
   {
-    return paramView == paramObject;
+    return this.mCount;
   }
   
-  public final Object b(ViewGroup paramViewGroup, int paramInt)
+  public final int getItemPosition(Object paramObject)
   {
-    if (this.lzk.get(paramInt) != null) {}
-    for (View localView = (View)this.lzk.get(paramInt);; localView = null)
+    AppMethodBeat.i(22352);
+    int i = super.getItemPosition(paramObject);
+    AppMethodBeat.o(22352);
+    return i;
+  }
+  
+  public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    AppMethodBeat.i(22351);
+    if (this.nWw.get(paramInt) != null) {}
+    for (View localView = (View)this.nWw.get(paramInt);; localView = null)
     {
       if (localView != null)
       {
@@ -48,18 +61,19 @@ public final class i$b
           paramViewGroup.addView(localView, 0);
         }
       }
+      AppMethodBeat.o(22351);
       return localView;
     }
   }
   
-  public final int getCount()
+  public final boolean isViewFromObject(View paramView, Object paramObject)
   {
-    return this.mCount;
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.i.b
  * JD-Core Version:    0.7.0.1
  */

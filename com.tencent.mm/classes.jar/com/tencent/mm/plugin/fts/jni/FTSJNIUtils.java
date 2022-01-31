@@ -4,6 +4,8 @@ public class FTSJNIUtils
 {
   public static native int countTokens(String paramString);
   
+  public static native int icuInitialize(String paramString);
+  
   public static native String icuTokenizer(String paramString);
   
   public static native void nativeInitFts(long paramLong, byte[] paramArrayOfByte);
@@ -12,7 +14,7 @@ public class FTSJNIUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.jni.FTSJNIUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,70 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.ni;
-import com.tencent.mm.protocal.c.nj;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.qk;
+import com.tencent.mm.protocal.protobuf.ql;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
   extends a
 {
-  private final String TAG = "MicroMsg.NetSceneQrRewardPayCheck";
-  private b dmK;
-  private f dmL;
-  private nj iId;
+  private final String TAG;
+  private f callback;
+  private ql kOI;
+  private b rr;
   
   public d(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
   {
+    AppMethodBeat.i(41039);
+    this.TAG = "MicroMsg.NetSceneQrRewardPayCheck";
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new ni();
-    ((b.a)localObject).ecI = new nj();
-    ((b.a)localObject).ecG = 1960;
+    ((b.a)localObject).fsX = new qk();
+    ((b.a)localObject).fsY = new ql();
+    ((b.a)localObject).funcId = 1960;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/rewardqrcodepaycheck";
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (ni)this.dmK.ecE.ecN;
-    ((ni)localObject).bOT = paramString1;
-    ((ni)localObject).sKX = paramString2;
-    ((ni)localObject).swd = paramString3;
-    ((ni)localObject).amount = paramInt;
-    ((ni)localObject).sKV = paramString4;
-    ((ni)localObject).sKU = paramString5;
-    y.i("MicroMsg.NetSceneQrRewardPayCheck", "rewardid: %s, amt: %s", new Object[] { paramString2, Integer.valueOf(paramInt) });
-  }
-  
-  public final int a(e parame, f paramf)
-  {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (qk)this.rr.fsV.fta;
+    ((qk)localObject).cwk = paramString1;
+    ((qk)localObject).wIM = paramString2;
+    ((qk)localObject).wpq = paramString3;
+    ((qk)localObject).okH = paramInt;
+    ((qk)localObject).wIK = paramString4;
+    ((qk)localObject).wIJ = paramString5;
+    ab.i("MicroMsg.NetSceneQrRewardPayCheck", "rewardid: %s, amt: %s", new Object[] { paramString2, Integer.valueOf(paramInt) });
+    AppMethodBeat.o(41039);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    y.i("MicroMsg.NetSceneQrRewardPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.iId = ((nj)((b)paramq).ecF.ecN);
-    y.i("MicroMsg.NetSceneQrRewardPayCheck", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.iId.iHq), this.iId.iHr });
-    if ((!this.iHX) && (this.iId.iHq != 0)) {
-      this.iHY = true;
+    AppMethodBeat.i(41041);
+    ab.i("MicroMsg.NetSceneQrRewardPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.kOI = ((ql)((b)paramq).fsW.fta);
+    ab.i("MicroMsg.NetSceneQrRewardPayCheck", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.kOI.cnK), this.kOI.kNv });
+    if ((!this.kOC) && (this.kOI.cnK != 0)) {
+      this.kOD = true;
     }
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
+    AppMethodBeat.o(41041);
+  }
+  
+  public final int doScene(e parame, f paramf)
+  {
+    AppMethodBeat.i(41040);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(41040);
+    return i;
   }
   
   public final int getType()

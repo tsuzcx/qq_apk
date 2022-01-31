@@ -1,50 +1,72 @@
 package com.tencent.mm.plugin.voip_cs.b.a;
 
-import com.tencent.mm.plugin.voip.video.i;
-import com.tencent.mm.plugin.voip_cs.a.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.voip.video.h;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class a
 {
-  private static a qei;
-  public i pTJ = new i(ae.getContext());
+  private static a tKV;
+  public h tzl;
   
-  public static a bSV()
+  private a()
   {
-    if (qei == null) {
-      qei = new a();
-    }
-    return qei;
+    AppMethodBeat.i(135312);
+    this.tzl = new h(ah.getContext());
+    AppMethodBeat.o(135312);
   }
   
-  public static a bSW()
+  public static a cQu()
   {
-    if (qei == null) {
-      qei = bSV();
+    AppMethodBeat.i(135313);
+    if (tKV == null) {
+      tKV = new a();
     }
-    return qei;
+    a locala = tKV;
+    AppMethodBeat.o(135313);
+    return locala;
   }
   
-  public final boolean bRj()
+  public static a cQv()
   {
-    if (this.pTJ != null) {
-      return this.pTJ.amn();
+    AppMethodBeat.i(135314);
+    if (tKV == null) {
+      tKV = cQu();
     }
+    a locala = tKV;
+    AppMethodBeat.o(135314);
+    return locala;
+  }
+  
+  public final boolean cOm()
+  {
+    AppMethodBeat.i(135317);
+    if (this.tzl != null)
+    {
+      boolean bool = this.tzl.Dt();
+      AppMethodBeat.o(135317);
+      return bool;
+    }
+    AppMethodBeat.o(135317);
     return true;
   }
   
-  public final void bSX()
+  public final void cQw()
   {
-    if (this.pTJ != null) {
-      this.pTJ.n(a.d.phonering, 0, true);
+    AppMethodBeat.i(135315);
+    if (this.tzl != null) {
+      this.tzl.aq(0, true);
     }
+    AppMethodBeat.o(135315);
   }
   
   public final void stopRing()
   {
-    if (this.pTJ != null) {
-      this.pTJ.stop();
+    AppMethodBeat.i(135316);
+    if (this.tzl != null) {
+      this.tzl.stop();
     }
+    AppMethodBeat.o(135316);
   }
 }
 

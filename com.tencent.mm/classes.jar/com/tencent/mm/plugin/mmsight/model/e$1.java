@@ -3,13 +3,15 @@ package com.tencent.mm.plugin.mmsight.model;
 import android.graphics.Point;
 import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.e.d.a.a;
 import com.tencent.mm.compatible.e.m;
+import com.tencent.mm.compatible.e.u;
 import com.tencent.mm.plugin.base.model.a;
 import com.tencent.mm.plugin.mmsight.model.a.j;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 final class e$1
@@ -19,151 +21,159 @@ final class e$1
   
   public final void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (!this.mhf.mgO)
+    AppMethodBeat.i(76468);
+    if (!this.oHp.oHh)
     {
-      y.i("MicroMsg.MMSightCamera", "onPreviewFrame: %s %s", new Object[] { paramArrayOfByte, this.mhf.dwJ });
-      this.mhf.mgO = true;
+      ab.i("MicroMsg.MMSightCamera", "onPreviewFrame: %s %s", new Object[] { paramArrayOfByte, this.oHp.eoH });
+      this.oHp.oHh = true;
     }
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
     {
-      y.e("MicroMsg.MMSightCamera", "onPreviewFrame, frame data is null!!");
-      e.a(this.mhf);
+      ab.e("MicroMsg.MMSightCamera", "onPreviewFrame, frame data is null!!");
+      AppMethodBeat.o(76468);
       return;
     }
-    paramCamera = this.mhf.mgL;
-    if (paramCamera.hRI == 0)
+    paramCamera = this.oHp.oHf;
+    if (paramCamera.jLj == 0)
     {
-      paramCamera.hRH += 1;
-      paramCamera.hRG = bk.ZR(m.yU());
+      paramCamera.jLi += 1;
+      paramCamera.jLh = bo.apV(m.Lr());
     }
-    paramCamera.hRI += 1;
+    paramCamera.jLj += 1;
     int i;
     long l1;
     byte[] arrayOfByte;
-    label370:
+    label367:
     long l2;
     int j;
-    if (paramCamera.hRI >= 90)
+    boolean bool;
+    if (paramCamera.jLj >= 90)
     {
       i = 0;
-      paramCamera.hRI = i;
-      if ((e.b(this.mhf)) || (this.mhf.mgN == null) || (this.mhf.mgN.size() <= 0)) {
-        break label934;
+      paramCamera.jLj = i;
+      if ((e.a(this.oHp)) || (this.oHp.fas == null) || (this.oHp.fas.size() <= 0)) {
+        break label944;
       }
-      if (this.mhf.mgH == null) {
-        break label576;
+      if (this.oHp.fav == null) {
+        break label584;
       }
-      paramCamera = j.mji.f(Integer.valueOf(this.mhf.mgw.jSV * this.mhf.mgH.y * 3 / 2));
-      e.c(this.mhf).fj(1L);
-      l1 = bk.UZ();
-      SightVideoJNI.cropCameraData(paramArrayOfByte, paramCamera, this.mhf.mgw.jSV, this.mhf.mgw.jSW, this.mhf.mgH.y);
-      if (this.mhf.mgH.x >= this.mhf.mgw.jSV) {
-        break label931;
+      paramCamera = j.oJp.f(Integer.valueOf(this.oHp.eZN.mnr * this.oHp.fav.y * 3 / 2));
+      e.b(this.oHp).kH(1L);
+      l1 = bo.yB();
+      SightVideoJNI.cropCameraData(paramArrayOfByte, paramCamera, this.oHp.eZN.mnr, this.oHp.eZN.mns, this.oHp.fav.y);
+      if (this.oHp.fav.x >= this.oHp.eZN.mnr) {
+        break label941;
       }
-      arrayOfByte = j.mji.f(Integer.valueOf(this.mhf.mgH.x * this.mhf.mgH.y * 3 / 2));
-      SightVideoJNI.cropCameraDataLongEdge(paramCamera, arrayOfByte, this.mhf.mgw.jSV, this.mhf.mgH.x, this.mhf.mgH.y);
-      j.mji.z(paramCamera);
+      arrayOfByte = j.oJp.f(Integer.valueOf(this.oHp.fav.x * this.oHp.fav.y * 3 / 2));
+      SightVideoJNI.cropCameraDataLongEdge(paramCamera, arrayOfByte, this.oHp.eZN.mnr, this.oHp.fav.x, this.oHp.fav.y);
+      j.oJp.O(paramCamera);
       paramCamera = arrayOfByte;
-      l2 = bk.cp(l1);
-      e.d(this.mhf).fj(l2);
-      if (!this.mhf.mhe)
+      l2 = bo.av(l1);
+      e.c(this.oHp).kH(l2);
+      if (!this.oHp.eZK)
       {
-        l1 = bk.UZ();
-        i = this.mhf.mgH.x;
-        j = this.mhf.mgH.y;
-        if ((this.mhf.jXx.rotate == 270) || (this.mhf.jXx.rotate == 90)) {
-          bool1 = true;
+        l1 = bo.yB();
+        i = this.oHp.fav.x;
+        j = this.oHp.fav.y;
+        if ((this.oHp.fau.rotate != 270) && (this.oHp.fau.rotate != 90)) {
+          break label578;
         }
-        SightVideoJNI.mirrorCameraData(paramCamera, i, j, bool1);
-        l2 = bk.cp(l1);
-        e.e(this.mhf).fj(l2);
+        bool = true;
+        label458:
+        SightVideoJNI.mirrorCameraData(paramCamera, i, j, bool);
+        l2 = bo.av(l1);
+        e.d(this.oHp).kH(l2);
       }
-      bool1 = e.a(this.mhf, paramCamera);
-      l1 = bk.cp(l1);
-      if (bool1) {
-        e.f(this.mhf).fj(l1);
+      bool = e.a(this.oHp, paramCamera);
+      l1 = bo.av(l1);
+      if (bool) {
+        e.e(this.oHp).kH(l1);
       }
     }
     for (;;)
     {
-      e.b(this.mhf, paramCamera);
-      if (e.g(this.mhf) == e.a.mhg) {
-        e.h(this.mhf).fj(1L);
+      e.b(this.oHp, paramCamera);
+      if (e.f(this.oHp) == e.a.oHq) {
+        e.g(this.oHp).kH(1L);
       }
       for (;;)
       {
-        this.mhf.dwJ.addCallbackBuffer(paramArrayOfByte);
+        this.oHp.eoH.addCallbackBuffer(paramArrayOfByte);
+        AppMethodBeat.o(76468);
         return;
-        i = paramCamera.hRI;
+        i = paramCamera.jLj;
         break;
-        label576:
-        l1 = bk.UZ();
-        if (!this.mhf.mhe)
-        {
-          i = this.mhf.mgw.jSV;
-          j = this.mhf.mgw.jSW;
-          if (this.mhf.jXx.rotate != 270)
-          {
-            bool1 = bool2;
-            if (this.mhf.jXx.rotate != 90) {}
-          }
-          else
-          {
-            bool1 = true;
-          }
-          SightVideoJNI.mirrorCameraData(paramArrayOfByte, i, j, bool1);
-          l2 = bk.cp(l1);
-          e.e(this.mhf).fj(l2);
-        }
-        label749:
+        label578:
+        bool = false;
+        break label458;
+        label584:
+        l1 = bo.yB();
+        label656:
+        label753:
         e locale;
-        if ((this.mhf.mgK) && (this.mhf.mgJ != null))
+        if (!this.oHp.eZK)
         {
-          SightVideoJNI.paddingYuvData16(paramArrayOfByte, this.mhf.mgJ, this.mhf.mgG.x, this.mhf.mgF.y, this.mhf.mgG.y);
-          paramCamera = this.mhf.mgJ;
-          bool1 = e.a(this.mhf, paramCamera);
-          l1 = bk.cp(l1);
-          if (bool1) {
-            e.f(this.mhf).fj(l1);
+          i = this.oHp.eZN.mnr;
+          j = this.oHp.eZN.mns;
+          if ((this.oHp.fau.rotate == 270) || (this.oHp.fau.rotate == 90))
+          {
+            bool = true;
+            SightVideoJNI.mirrorCameraData(paramArrayOfByte, i, j, bool);
+            l2 = bo.av(l1);
+            e.d(this.oHp).kH(l2);
           }
-          if (this.mhf.mgK)
+        }
+        else
+        {
+          if ((!this.oHp.oHe) || (this.oHp.oHd == null)) {
+            break label898;
+          }
+          SightVideoJNI.paddingYuvData16(paramArrayOfByte, this.oHp.oHd, this.oHp.oHb.x, this.oHp.oHa.y, this.oHp.oHb.y);
+          paramCamera = this.oHp.oHd;
+          bool = e.a(this.oHp, paramCamera);
+          l1 = bo.av(l1);
+          if (bool) {
+            e.e(this.oHp).kH(l1);
+          }
+          if (this.oHp.oHe)
           {
             arrayOfByte = paramArrayOfByte;
-            if (this.mhf.mgJ != null) {}
+            if (this.oHp.oHd != null) {}
           }
           else
           {
             arrayOfByte = paramArrayOfByte;
-            if (bool1) {
-              arrayOfByte = j.mji.f(Integer.valueOf(paramArrayOfByte.length));
+            if (bool) {
+              arrayOfByte = j.oJp.f(Integer.valueOf(paramArrayOfByte.length));
             }
           }
-          if ((this.mhf.mgK) && (this.mhf.mgJ != null))
+          if ((this.oHp.oHe) && (this.oHp.oHd != null))
           {
-            locale = this.mhf;
-            if (!bool1) {
-              break label893;
+            locale = this.oHp;
+            if (!bool) {
+              break label903;
             }
           }
         }
-        label893:
-        for (paramArrayOfByte = j.mji.f(Integer.valueOf(this.mhf.mgJ.length));; paramArrayOfByte = this.mhf.mgJ)
+        label898:
+        label903:
+        for (paramArrayOfByte = j.oJp.f(Integer.valueOf(this.oHp.oHd.length));; paramArrayOfByte = this.oHp.oHd)
         {
-          locale.mgJ = paramArrayOfByte;
+          locale.oHd = paramArrayOfByte;
           paramArrayOfByte = arrayOfByte;
           break;
+          bool = false;
+          break label656;
           paramCamera = paramArrayOfByte;
-          break label749;
+          break label753;
         }
-        if (e.g(this.mhf) == e.a.mhh) {
-          e.i(this.mhf).fj(1L);
+        if (e.f(this.oHp) == e.a.oHr) {
+          e.h(this.oHp).kH(1L);
         }
       }
-      label931:
-      break label370;
-      label934:
+      label941:
+      break label367;
+      label944:
       arrayOfByte = paramArrayOfByte;
       paramCamera = paramArrayOfByte;
       paramArrayOfByte = arrayOfByte;

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.k.b;
 import com.tencent.mm.plugin.location_soso.api.SoSoMapView;
-import com.tencent.mm.plugin.p.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$3
   implements Runnable
@@ -11,13 +12,15 @@ final class a$3
   
   public final void run()
   {
-    if ((this.gtW.gtS != null) && (this.gtW.gtR))
+    AppMethodBeat.i(138414);
+    if ((a.c(this.hOM) != null) && (a.l(this.hOM)))
     {
-      double d1 = this.gtW.gtS.getLatitude();
-      double d2 = this.gtW.gtS.getLongitude();
-      this.gtW.gty.getIController().animateTo(d1, d2);
-      y.d("MicroMsg.DefaultTencentMapView", "[moveToMapLocation]latitude:%f, longtitude:%f", new Object[] { Double.valueOf(d1), Double.valueOf(d2) });
+      double d1 = a.c(this.hOM).getLatitude();
+      double d2 = a.c(this.hOM).getLongitude();
+      this.hOM.hOi.getIController().animateTo(d1, d2);
+      ab.d("MicroMsg.DefaultTencentMapView", "[moveToMapLocation]latitude:%f, longtitude:%f", new Object[] { Double.valueOf(d1), Double.valueOf(d2) });
     }
+    AppMethodBeat.o(138414);
   }
 }
 

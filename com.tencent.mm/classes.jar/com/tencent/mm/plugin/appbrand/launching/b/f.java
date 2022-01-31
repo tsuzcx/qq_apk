@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.launching.b;
 
 import android.net.Uri;
-import com.tencent.mm.plugin.appbrand.report.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.report.e;
 import com.tencent.mm.plugin.appbrand.ui.AppBrand404PageUI;
-import com.tencent.mm.plugin.appbrand.y.j;
 
 final class f
   extends a
@@ -11,37 +11,43 @@ final class f
   final void a(String paramString, Uri paramUri, a.a parama)
   {
     int j = 1;
+    AppMethodBeat.i(132040);
     if (paramUri == null) {}
     for (paramString = "";; paramString = paramUri.getQueryParameter("appid")) {
-      switch (f.1.gMe[parama.ordinal()])
+      switch (f.1.inv[parama.ordinal()])
       {
       default: 
-        AppBrand404PageUI.show(y.j.app_brand_error);
-      case 4: 
+        AppBrand404PageUI.show(2131296631);
+        AppMethodBeat.o(132040);
         return;
       }
     }
     if ((paramUri != null) && (paramUri.getBooleanQueryParameter("debug", false)))
     {
       i = 1;
-      AppBrand404PageUI.show(y.j.app_brand_scan_qrcode_parameter_error);
+      AppBrand404PageUI.show(2131296844);
       if (i == 0) {
-        break label113;
+        break label125;
       }
     }
-    label113:
+    label125:
     for (int i = j;; i = 0)
     {
-      c.H(paramString, 2, i + 1);
+      e.U(paramString, 2, i + 1);
+      AppMethodBeat.o(132040);
       return;
       i = 0;
       break;
     }
-    AppBrand404PageUI.show(y.j.app_brand_qrcode_result_dev_qrcode_expired);
-    c.H("", 3, 2);
+    AppBrand404PageUI.show(2131296812);
+    e.U("", 3, 2);
+    AppMethodBeat.o(132040);
     return;
-    AppBrand404PageUI.show(y.j.app_brand_qrcode_result_uin_invalid);
-    c.H("", 4, 2);
+    AppBrand404PageUI.show(2131296813);
+    e.U("", 4, 2);
+    AppMethodBeat.o(132040);
+    return;
+    AppMethodBeat.o(132040);
   }
 }
 

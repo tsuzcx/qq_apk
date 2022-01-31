@@ -3,55 +3,132 @@ package com.tencent.mm.plugin.webview.modeltools;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.RemoteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.xweb.WebView;
 import com.tencent.xweb.b;
+import com.tencent.xweb.c.h;
+import com.tencent.xweb.u;
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import org.xwalk.core.Log;
 
 public final class c
 {
-  public static final String rhR = Integer.toString(100028);
+  public static final String uXq;
+  private static ArrayList<String> uXr;
+  
+  static
+  {
+    AppMethodBeat.i(6925);
+    uXq = Integer.toString(100028);
+    AppMethodBeat.o(6925);
+  }
   
   private static void a(String paramString, List<String> paramList, b paramb)
   {
-    if (!bk.dk(paramList))
+    AppMethodBeat.i(6921);
+    if (!bo.es(paramList))
     {
       String str = Uri.parse(paramString).getHost();
       Object localObject = str.split("\\.");
       if (localObject.length <= 1) {}
       for (localObject = "";; localObject = localObject[(localObject.length - 2)] + "." + localObject[(localObject.length - 1)])
       {
-        y.d("MicroMsg.WebView.CookiesCleanup", "host(%s)", new Object[] { str });
-        y.d("MicroMsg.WebView.CookiesCleanup", "domain(%s)", new Object[] { localObject });
+        ab.d("MicroMsg.WebView.CookiesCleanup", "host(%s)", new Object[] { str });
+        ab.d("MicroMsg.WebView.CookiesCleanup", "domain(%s)", new Object[] { localObject });
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
           str = (String)paramList.next();
-          if (!bk.bl(str))
+          if (!bo.isNullOrNil(str))
           {
             paramb.setCookie(paramString, str + "=");
             paramb.setCookie(paramString, str + "=;path=/");
-            if (!bk.bl((String)localObject)) {
+            if (!bo.isNullOrNil((String)localObject)) {
               paramb.setCookie((String)localObject, str + "=;domain=." + (String)localObject + ";path=/");
             }
           }
         }
       }
     }
+    AppMethodBeat.o(6921);
   }
   
-  public static void d(d paramd)
+  private static String ahy(String paramString)
   {
+    AppMethodBeat.i(6924);
+    String str;
     try
     {
-      paramd = paramd.f(24, new Bundle(0));
+      paramString = new URI(paramString);
+      str = paramString.getScheme();
+      if (bo.isNullOrNil(str))
+      {
+        AppMethodBeat.o(6924);
+        return null;
+      }
+    }
+    catch (Exception paramString)
+    {
+      ab.e("MicroMsg.WebView.CookiesCleanup", "getOrigin fail %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(6924);
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(str);
+    localStringBuilder.append("://");
+    localStringBuilder.append(paramString.getHost());
+    int i = paramString.getPort();
+    if ((i == -1) || ((str.equalsIgnoreCase("http")) && (i == 80)) || ((str.equalsIgnoreCase("https")) && (i == 443))) {}
+    for (i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        localStringBuilder.append(":");
+        localStringBuilder.append(paramString.getPort());
+      }
+      paramString = localStringBuilder.toString();
+      AppMethodBeat.o(6924);
+      return paramString;
+    }
+  }
+  
+  public static void bM(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(6923);
+    if (!paramBoolean)
+    {
+      AppMethodBeat.o(6923);
+      return;
+    }
+    if (uXr == null) {
+      uXr = new ArrayList();
+    }
+    if (uXr.contains(paramString))
+    {
+      AppMethodBeat.o(6923);
+      return;
+    }
+    uXr.add(paramString);
+    AppMethodBeat.o(6923);
+  }
+  
+  public static void c(d paramd)
+  {
+    AppMethodBeat.i(6919);
+    try
+    {
+      paramd = paramd.i(24, new Bundle(0));
       if (paramd == null)
       {
-        y.i("MicroMsg.WebView.CookiesCleanup", "bundle is null, skip cookies cleanup");
+        ab.i("MicroMsg.WebView.CookiesCleanup", "bundle is null, skip cookies cleanup");
+        AppMethodBeat.o(6919);
         return;
       }
     }
@@ -59,32 +136,70 @@ public final class c
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.WebView.CookiesCleanup", paramd, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.WebView.CookiesCleanup", paramd, "", new Object[0]);
         paramd = null;
       }
       paramd = paramd.getStringArrayList("cookies_cleanup_url_list");
-      if (bk.dk(paramd))
+      if (bo.es(paramd))
       {
-        y.i("MicroMsg.WebView.CookiesCleanup", "url list is empty, skip cookies cleanup");
+        ab.i("MicroMsg.WebView.CookiesCleanup", "url list is empty, skip cookies cleanup");
+        AppMethodBeat.o(6919);
         return;
       }
-      dc(paramd);
-      com.tencent.xweb.c.il(ae.getContext());
+      eg(paramd);
+      com.tencent.xweb.c.jQ(ah.getContext());
       com.tencent.xweb.c.sync();
-      y.i("MicroMsg.WebView.CookiesCleanup", "cleanup cookies end");
+      ab.i("MicroMsg.WebView.CookiesCleanup", "cleanup cookies end");
+      AppMethodBeat.o(6919);
     }
   }
   
-  private static void dc(List<String> paramList)
+  public static void dcv()
   {
-    b localb = b.cSe();
+    AppMethodBeat.i(6922);
+    if (uXr != null) {}
+    for (int i = uXr.size();; i = 0)
+    {
+      ab.i("MicroMsg.WebView.CookiesCleanup", "clearWebViewData url list size %d", new Object[] { Integer.valueOf(i) });
+      if (!bo.es(uXr)) {
+        break;
+      }
+      AppMethodBeat.o(6922);
+      return;
+    }
+    if (!bo.es(uXr))
+    {
+      eg(uXr);
+      com.tencent.xweb.c.jQ(ah.getContext());
+      com.tencent.xweb.c.sync();
+      ab.i("MicroMsg.WebView.CookiesCleanup", "clearHostCookies end");
+    }
+    Iterator localIterator = uXr.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = ahy((String)localIterator.next());
+      u localu = u.dYA();
+      if (localu.BEb == null) {
+        Log.e("WebStorage", "deleteOrigin failed webStg is null, cur core kind is " + WebView.getCurWebType());
+      } else {
+        localu.BEb.deleteOrigin(str);
+      }
+    }
+    uXr.clear();
+    AppMethodBeat.o(6922);
+  }
+  
+  private static void eg(List<String> paramList)
+  {
+    AppMethodBeat.i(6920);
+    b localb = b.dYg();
     Iterator localIterator = paramList.iterator();
     if (localIterator.hasNext())
     {
       String str1 = (String)localIterator.next();
-      y.i("MicroMsg.WebView.CookiesCleanup", "cookies cleanup: url(%s)", new Object[] { str1 });
+      ab.i("MicroMsg.WebView.CookiesCleanup", "cookies cleanup: url(%s)", new Object[] { str1 });
       paramList = localb.getCookie(str1);
-      if (bk.bl(paramList)) {
+      if (bo.isNullOrNil(paramList)) {
         paramList = null;
       }
       for (;;)
@@ -105,7 +220,7 @@ public final class c
         while (i < j)
         {
           String str2 = paramList[i];
-          if ((!bk.bl(str2)) && (str2.contains("="))) {
+          if ((!bo.isNullOrNil(str2)) && (str2.contains("="))) {
             localLinkedList.add(str2.split("=")[0]);
           }
           i += 1;
@@ -116,6 +231,7 @@ public final class c
         }
       }
     }
+    AppMethodBeat.o(6920);
   }
 }
 

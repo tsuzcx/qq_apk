@@ -1,43 +1,55 @@
 package com.tencent.mm.model.gdpr;
 
 import android.content.Context;
-import com.tencent.mm.ck.f;
-import com.tencent.mm.ck.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cm.f;
+import com.tencent.mm.cm.g;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.i;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class c
 {
-  public static boolean IO()
-  {
-    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", IPCVoid.dHo, a.class);
-    return (localIPCBoolean != null) && (localIPCBoolean.value);
-  }
-  
   public static void a(Context paramContext, a parama, String paramString, b paramb)
   {
+    AppMethodBeat.i(1494);
     Context localContext = paramContext;
     if (paramContext == null) {
-      localContext = ae.getContext();
+      localContext = ah.getContext();
     }
-    if (IO())
+    if (abL())
     {
-      if (bk.bl(paramString))
+      if (bo.isNullOrNil(paramString))
       {
-        paramb.hX(1);
+        paramb.kK(1);
+        AppMethodBeat.o(1494);
         return;
       }
-      g.cNB().h(new c.2(parama, paramString, paramb)).g(new c.1(paramb, localContext, parama, paramString));
+      g.dTg().h(new c.2(parama, paramString, paramb)).g(new c.1(paramb, localContext, parama, paramString));
+      AppMethodBeat.o(1494);
       return;
     }
-    paramb.hX(0);
+    paramb.kK(0);
+    AppMethodBeat.o(1494);
   }
   
-  private static final class a
+  public static boolean abL()
+  {
+    AppMethodBeat.i(1493);
+    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", IPCVoid.eER, a.class);
+    if ((localIPCBoolean != null) && (localIPCBoolean.value))
+    {
+      AppMethodBeat.o(1493);
+      return true;
+    }
+    AppMethodBeat.o(1493);
+    return false;
+  }
+  
+  static final class a
     implements i<IPCVoid, IPCBoolean>
   {}
 }

@@ -1,25 +1,30 @@
 package com.tencent.mm.plugin.account.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bi.a;
+import com.tencent.mm.model.bk.a;
 import com.tencent.mm.network.c;
 import com.tencent.mm.network.e;
 
 final class SimpleLoginUI$10
-  implements bi.a
+  implements bk.a
 {
   SimpleLoginUI$10(SimpleLoginUI paramSimpleLoginUI) {}
   
   public final void a(e parame)
   {
-    if (parame == null) {
+    AppMethodBeat.i(125604);
+    if (parame == null)
+    {
+      AppMethodBeat.o(125604);
       return;
     }
-    parame = parame.KR();
-    g.DN();
-    int i = a.CK();
-    parame.w(new byte[0], i);
+    parame = parame.adI();
+    g.RJ();
+    int i = a.getUin();
+    parame.a(new byte[0], new byte[0], new byte[0], i);
+    AppMethodBeat.o(125604);
   }
 }
 

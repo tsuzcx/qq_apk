@@ -6,20 +6,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.s;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.t;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.e.l;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.MMActivity;
@@ -35,75 +32,76 @@ final class NormalUserFooterPreference$a$1$1
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
     Object localObject3 = null;
-    Object localObject1;
-    Object localObject2;
+    AppMethodBeat.i(23674);
     switch (paramMenuItem.getItemId())
     {
-    case 8: 
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(23674);
       return;
-    case 2: 
-      if (NormalUserFooterPreference.a(this.mYF.mYE.mYC).Bi())
+      if (NormalUserFooterPreference.a(this.pCg.pCf.pCe).NY())
       {
-        s.n(NormalUserFooterPreference.a(this.mYF.mYE.mYC));
-        h.bC(NormalUserFooterPreference.b(this.mYF.mYE.mYC), NormalUserFooterPreference.b(this.mYF.mYE.mYC).getString(R.l.contact_info_unset_favour_start_biz_tips));
+        t.n(NormalUserFooterPreference.a(this.pCg.pCf.pCe));
+        h.bO(NormalUserFooterPreference.b(this.pCg.pCf.pCe), NormalUserFooterPreference.b(this.pCg.pCf.pCe).getString(2131298823));
       }
       for (;;)
       {
-        paramMenuItem = this.mYF.mYE.mYC;
-        au.Hx();
-        NormalUserFooterPreference.a(paramMenuItem, c.Fw().abl(NormalUserFooterPreference.a(this.mYF.mYE.mYC).field_username));
+        paramMenuItem = this.pCg.pCf.pCe;
+        aw.aaz();
+        NormalUserFooterPreference.a(paramMenuItem, c.YA().arw(NormalUserFooterPreference.a(this.pCg.pCf.pCe).field_username));
+        AppMethodBeat.o(23674);
         return;
-        s.m(NormalUserFooterPreference.a(this.mYF.mYE.mYC));
-        h.bC(NormalUserFooterPreference.b(this.mYF.mYE.mYC), NormalUserFooterPreference.b(this.mYF.mYE.mYC).getString(R.l.contact_info_favour_start_biz_tips));
+        t.m(NormalUserFooterPreference.a(this.pCg.pCf.pCe));
+        h.bO(NormalUserFooterPreference.b(this.pCg.pCf.pCe), NormalUserFooterPreference.b(this.pCg.pCf.pCe).getString(2131298605));
       }
-    case 3: 
       paramMenuItem = new Intent();
-      paramMenuItem.putExtra("sns_permission_userName", NormalUserFooterPreference.a(this.mYF.mYE.mYC).field_username);
+      paramMenuItem.putExtra("sns_permission_userName", NormalUserFooterPreference.a(this.pCg.pCf.pCe).field_username);
       paramMenuItem.putExtra("sns_permission_anim", true);
       paramMenuItem.putExtra("sns_permission_block_scene", 1);
-      d.b(NormalUserFooterPreference.b(this.mYF.mYE.mYC), "sns", ".ui.SnsPermissionUI", paramMenuItem);
+      d.b(NormalUserFooterPreference.b(this.pCg.pCf.pCe), "sns", ".ui.SnsPermissionUI", paramMenuItem);
+      AppMethodBeat.o(23674);
       return;
-    case 4: 
-      paramMenuItem = this.mYF.mYE;
-      localObject1 = new Intent();
-      ((Intent)localObject1).putExtra("Select_Talker_Name", NormalUserFooterPreference.a(paramMenuItem.mYC).field_username);
-      ((Intent)localObject1).putExtra("Select_block_List", NormalUserFooterPreference.a(paramMenuItem.mYC).field_username);
+      paramMenuItem = this.pCg.pCf;
+      Object localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("Select_Talker_Name", NormalUserFooterPreference.a(paramMenuItem.pCe).field_username);
+      ((Intent)localObject1).putExtra("Select_block_List", NormalUserFooterPreference.a(paramMenuItem.pCe).field_username);
       ((Intent)localObject1).putExtra("Select_Conv_Type", 3);
       ((Intent)localObject1).putExtra("Select_Send_Card", true);
       ((Intent)localObject1).putExtra("mutil_select_is_ret", true);
-      com.tencent.mm.plugin.profile.a.eUR.a((Intent)localObject1, NormalUserFooterPreference.b(paramMenuItem.mYC));
+      com.tencent.mm.plugin.profile.b.gmO.a((Intent)localObject1, NormalUserFooterPreference.b(paramMenuItem.pCe));
+      AppMethodBeat.o(23674);
       return;
-    case 1: 
-      this.mYF.mYE.mYC.ebu.bV("hide_btn");
-      this.mYF.mYE.mYC.ebu.doNotify();
-      NormalUserFooterPreference.a locala = this.mYF.mYE;
-      paramMenuItem = locala.mYC;
-      au.Hx();
-      NormalUserFooterPreference.a(paramMenuItem, c.Fw().abl(NormalUserFooterPreference.a(locala.mYC).field_username));
-      if (!com.tencent.mm.n.a.gR(NormalUserFooterPreference.a(locala.mYC).field_type))
+      this.pCg.pCf.pCe.frK.cy("hide_btn");
+      this.pCg.pCf.pCe.frK.doNotify();
+      NormalUserFooterPreference.a locala = this.pCg.pCf;
+      paramMenuItem = locala.pCe;
+      aw.aaz();
+      NormalUserFooterPreference.a(paramMenuItem, c.YA().arw(NormalUserFooterPreference.a(locala.pCe).field_username));
+      if (!com.tencent.mm.n.a.je(NormalUserFooterPreference.a(locala.pCe).field_type))
       {
-        locala.KW(NormalUserFooterPreference.a(locala.mYC).field_username);
+        locala.Xg(NormalUserFooterPreference.a(locala.pCe).field_username);
+        AppMethodBeat.o(23674);
         return;
       }
       Intent localIntent = new Intent();
-      localIntent.putExtra("Contact_Scene", NormalUserFooterPreference.l(locala.mYC));
-      localIntent.putExtra("Contact_User", NormalUserFooterPreference.a(locala.mYC).field_username);
-      localIntent.putExtra("Contact_RoomNickname", NormalUserFooterPreference.b(locala.mYC).getIntent().getStringExtra("Contact_RoomNickname"));
-      localIntent.putExtra("contact_phone_number_list", NormalUserFooterPreference.a(locala.mYC).cCP);
-      localObject2 = "";
+      localIntent.putExtra("Contact_Scene", NormalUserFooterPreference.l(locala.pCe));
+      localIntent.putExtra("Contact_User", NormalUserFooterPreference.a(locala.pCe).field_username);
+      localIntent.putExtra("Contact_RoomNickname", NormalUserFooterPreference.b(locala.pCe).getIntent().getStringExtra("Contact_RoomNickname"));
+      localIntent.putExtra("contact_phone_number_list", NormalUserFooterPreference.a(locala.pCe).dqZ);
+      Object localObject2 = "";
       localObject1 = localObject2;
       String str;
-      if (!NormalUserFooterPreference.a(locala.mYC).Bm())
+      if (!NormalUserFooterPreference.a(locala.pCe).Ob())
       {
-        localObject1 = NormalUserFooterPreference.b(locala.mYC).getIntent().getStringExtra("Contact_Mobile_MD5");
-        str = NormalUserFooterPreference.b(locala.mYC).getIntent().getStringExtra("Contact_full_Mobile_MD5");
-        if ((!bk.bl((String)localObject1)) || (!bk.bl(str))) {
-          break label764;
+        localObject1 = NormalUserFooterPreference.b(locala.pCe).getIntent().getStringExtra("Contact_Mobile_MD5");
+        str = NormalUserFooterPreference.b(locala.pCe).getIntent().getStringExtra("Contact_full_Mobile_MD5");
+        if ((!bo.isNullOrNil((String)localObject1)) || (!bo.isNullOrNil(str))) {
+          break label803;
         }
         paramMenuItem = localObject3;
-        if (!bk.bl(NormalUserFooterPreference.a(locala.mYC).field_username)) {
-          paramMenuItem = com.tencent.mm.plugin.account.b.getAddrUploadStg().pH(NormalUserFooterPreference.a(locala.mYC).field_username);
+        if (!bo.isNullOrNil(NormalUserFooterPreference.a(locala.pCe).field_username)) {
+          paramMenuItem = com.tencent.mm.plugin.account.a.getAddrUploadStg().wX(NormalUserFooterPreference.a(locala.pCe).field_username);
         }
       }
       for (;;)
@@ -112,104 +110,106 @@ final class NormalUserFooterPreference$a$1$1
         if (paramMenuItem != null)
         {
           localObject1 = localObject2;
-          if (!bk.bl(paramMenuItem.Wv())) {
-            localObject1 = bk.pm(paramMenuItem.WD()).replace(" ", "");
+          if (!bo.isNullOrNil(paramMenuItem.Al())) {
+            localObject1 = bo.nullAsNil(paramMenuItem.aqf()).replace(" ", "");
           }
         }
         localIntent.putExtra("contact_phone_number_by_md5", (String)localObject1);
-        com.tencent.mm.plugin.profile.a.eUR.n(localIntent, locala.mYC.mContext);
+        com.tencent.mm.plugin.profile.b.gmO.m(localIntent, locala.pCe.mContext);
+        AppMethodBeat.o(23674);
         return;
-        if (bk.bl((String)localObject1))
+        label803:
+        if (bo.isNullOrNil((String)localObject1))
         {
           paramMenuItem = localObject3;
-          if (bk.bl(str)) {}
+          if (bo.isNullOrNil(str)) {}
         }
         else
         {
-          localObject1 = com.tencent.mm.plugin.account.b.getAddrUploadStg().pI((String)localObject1);
+          localObject1 = com.tencent.mm.plugin.account.a.getAddrUploadStg().xa((String)localObject1);
           if (localObject1 != null)
           {
             paramMenuItem = (MenuItem)localObject1;
-            if (!bk.bl(((com.tencent.mm.plugin.account.friend.a.a)localObject1).Wv())) {}
+            if (!bo.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject1).Al())) {}
           }
           else
           {
-            paramMenuItem = com.tencent.mm.plugin.account.b.getAddrUploadStg().pI(str);
+            paramMenuItem = com.tencent.mm.plugin.account.a.getAddrUploadStg().xa(str);
           }
         }
       }
-    case 5: 
-      if (NormalUserFooterPreference.a(this.mYF.mYE.mYC).Bg())
+      if (NormalUserFooterPreference.a(this.pCg.pCf.pCe).NW())
       {
-        NormalUserFooterPreference.a.a(this.mYF.mYE);
+        NormalUserFooterPreference.a.a(this.pCg.pCf);
+        AppMethodBeat.o(23674);
         return;
       }
-      paramMenuItem = View.inflate(this.mYF.mYE.mYC.mContext, R.i.mm_alert_checkbox, null);
+      paramMenuItem = View.inflate(this.pCg.pCf.pCe.mContext, 2130970141, null);
       paramMenuItem.setPadding(0, 0, 0, 0);
-      localObject1 = (TextView)paramMenuItem.findViewById(R.h.mm_alert_dialog_info);
+      localObject1 = (TextView)paramMenuItem.findViewById(2131826140);
       ((TextView)localObject1).setPadding(0, 0, 0, 0);
-      if (ad.aaU(NormalUserFooterPreference.a(this.mYF.mYE.mYC).field_username))
+      if (ad.arf(NormalUserFooterPreference.a(this.pCg.pCf.pCe).field_username))
       {
-        paramInt = R.l.contact_info_movein_blacklist_confirm_for_openim;
+        paramInt = 2131298677;
         ((TextView)localObject1).setText(paramInt);
-        localObject1 = (CheckBox)paramMenuItem.findViewById(R.h.mm_alert_dialog_cb);
+        localObject1 = (CheckBox)paramMenuItem.findViewById(2131826141);
         ((CheckBox)localObject1).setChecked(false);
-        localObject2 = (TextView)paramMenuItem.findViewById(R.h.mm_alert_dialog_cb_txt);
-        ((TextView)localObject2).setText(R.l.contact_info_movein_blacklist_expose_confirm);
-        if (NormalUserFooterPreference.a(this.mYF.mYE.mYC).getSource() != 18) {
-          break label1089;
+        localObject2 = (TextView)paramMenuItem.findViewById(2131826142);
+        ((TextView)localObject2).setText(2131298678);
+        if (NormalUserFooterPreference.a(this.pCg.pCf.pCe).getSource() != 18) {
+          break label1140;
         }
         ((CheckBox)localObject1).setVisibility(0);
         ((TextView)localObject2).setVisibility(0);
       }
       for (;;)
       {
-        h.a(this.mYF.mYE.mYC.mContext, true, this.mYF.mYE.mYC.mContext.getString(R.l.contact_info_movein_blacklist), paramMenuItem, this.mYF.mYE.mYC.mContext.getString(R.l.app_ok), this.mYF.mYE.mYC.mContext.getString(R.l.app_cancel), new NormalUserFooterPreference.a.1.1.1(this, (CheckBox)localObject1), null);
+        h.a(this.pCg.pCf.pCe.mContext, true, this.pCg.pCf.pCe.mContext.getString(2131298675), paramMenuItem, this.pCg.pCf.pCe.mContext.getString(2131297018), this.pCg.pCf.pCe.mContext.getString(2131296888), new NormalUserFooterPreference.a.1.1.1(this, (CheckBox)localObject1), null);
+        AppMethodBeat.o(23674);
         return;
-        paramInt = R.l.contact_info_movein_blacklist_confirm;
+        paramInt = 2131298676;
         break;
+        label1140:
         ((CheckBox)localObject1).setVisibility(8);
         ((TextView)localObject2).setVisibility(8);
       }
-    case 6: 
-      localObject1 = View.inflate(this.mYF.mYE.mYC.mContext, R.i.mm_alert_checkbox, null);
+      localObject1 = View.inflate(this.pCg.pCf.pCe.mContext, 2130970141, null);
       ((View)localObject1).setPadding(0, 0, 0, 0);
-      localObject2 = (TextView)((View)localObject1).findViewById(R.h.mm_alert_dialog_info);
+      localObject2 = (TextView)((View)localObject1).findViewById(2131826140);
       ((TextView)localObject2).setPadding(0, 0, 0, 0);
-      if (s.hi(NormalUserFooterPreference.a(this.mYF.mYE.mYC).field_username))
+      if (t.nR(NormalUserFooterPreference.a(this.pCg.pCf.pCe).field_username))
       {
-        paramMenuItem = this.mYF.mYE.mYC.mContext.getString(R.l.del_groupcard_warning, new Object[] { NormalUserFooterPreference.a(this.mYF.mYE.mYC).Bq() });
+        paramMenuItem = this.pCg.pCf.pCe.mContext.getString(2131298937, new Object[] { NormalUserFooterPreference.a(this.pCg.pCf.pCe).Of() });
         ((TextView)localObject2).setText(paramMenuItem);
-        paramMenuItem = (CheckBox)((View)localObject1).findViewById(R.h.mm_alert_dialog_cb);
+        paramMenuItem = (CheckBox)((View)localObject1).findViewById(2131826141);
         paramMenuItem.setChecked(false);
-        localObject2 = (TextView)((View)localObject1).findViewById(R.h.mm_alert_dialog_cb_txt);
-        ((TextView)localObject2).setText(R.l.contact_info_movein_blacklist_expose_confirm);
-        if (NormalUserFooterPreference.a(this.mYF.mYE.mYC).getSource() != 18) {
-          break label1430;
+        localObject2 = (TextView)((View)localObject1).findViewById(2131826142);
+        ((TextView)localObject2).setText(2131298678);
+        if (NormalUserFooterPreference.a(this.pCg.pCf.pCe).getSource() != 18) {
+          break label1487;
         }
         paramMenuItem.setVisibility(0);
         ((TextView)localObject2).setVisibility(0);
       }
       for (;;)
       {
-        h.a(this.mYF.mYE.mYC.mContext, true, this.mYF.mYE.mYC.mContext.getString(R.l.contact_info_delete_contact), (View)localObject1, this.mYF.mYE.mYC.mContext.getString(R.l.app_delete), this.mYF.mYE.mYC.mContext.getString(R.l.app_cancel), new NormalUserFooterPreference.a.1.1.2(this, paramMenuItem), null, R.e.alert_btn_color_warn);
+        h.a(this.pCg.pCf.pCe.mContext, true, this.pCg.pCf.pCe.mContext.getString(2131298582), (View)localObject1, this.pCg.pCf.pCe.mContext.getString(2131296901), this.pCg.pCf.pCe.mContext.getString(2131296888), new NormalUserFooterPreference.a.1.1.2(this, paramMenuItem), null, 2131689667);
+        AppMethodBeat.o(23674);
         return;
-        paramMenuItem = this.mYF.mYE.mYC.mContext.getString(R.l.del_contact_warning, new Object[] { NormalUserFooterPreference.a(this.mYF.mYE.mYC).Bq() });
+        paramMenuItem = this.pCg.pCf.pCe.mContext.getString(2131298935, new Object[] { NormalUserFooterPreference.a(this.pCg.pCf.pCe).Of() });
         break;
+        label1487:
         paramMenuItem.setVisibility(8);
         ((TextView)localObject2).setVisibility(8);
       }
-    case 7: 
-      label764:
-      paramMenuItem = this.mYF.mYE;
-      label1089:
-      y.d("MicroMsg.NormalUserFooterPreference", "dealAddShortcut, username = " + NormalUserFooterPreference.a(paramMenuItem.mYC).field_username);
-      label1430:
-      com.tencent.mm.plugin.base.model.b.U(NormalUserFooterPreference.b(paramMenuItem.mYC), NormalUserFooterPreference.a(paramMenuItem.mYC).field_username);
-      ai.l(new NormalUserFooterPreference.a.10(paramMenuItem), 1000L);
+      paramMenuItem = this.pCg.pCf;
+      ab.d("MicroMsg.NormalUserFooterPreference", "dealAddShortcut, username = " + NormalUserFooterPreference.a(paramMenuItem.pCe).field_username);
+      com.tencent.mm.plugin.base.model.b.Z(NormalUserFooterPreference.b(paramMenuItem.pCe), NormalUserFooterPreference.a(paramMenuItem.pCe).field_username);
+      al.p(new NormalUserFooterPreference.a.10(paramMenuItem), 1000L);
+      AppMethodBeat.o(23674);
       return;
+      NormalUserFooterPreference.a.c(this.pCg.pCf);
     }
-    NormalUserFooterPreference.a.c(this.mYF.mYE);
   }
 }
 

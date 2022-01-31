@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.card.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.b;
 import com.tencent.mm.plugin.card.model.g;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.lt;
-import com.tencent.mm.protocal.c.ly;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.oh;
+import com.tencent.mm.protocal.protobuf.ov;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CardNewMsgUI$9
   implements View.OnClickListener
@@ -19,57 +19,68 @@ final class CardNewMsgUI$9
   
   public final void onClick(View paramView)
   {
-    if (paramView.getId() == a.d.extent_tv)
+    AppMethodBeat.i(88600);
+    if (paramView.getId() == 2131822296)
     {
       paramView = (g)paramView.getTag();
-      if ((paramView != null) && (paramView.aAi() != null)) {}
-    }
-    do
-    {
-      do
+      if ((paramView == null) || (paramView.bbU() == null))
       {
-        do
-        {
-          do
-          {
-            return;
-            h.nFQ.f(11941, new Object[] { Integer.valueOf(2), paramView.field_card_id, paramView.field_card_tp_id, paramView.field_msg_id, "" });
-            if (paramView.aAi().imX == 0)
-            {
-              y.i("MicroMsg.CardNewMsgUI", "card msg action_type is MM_CARD_ITEM_XML_MSG_BUTTON_TYPE_URL");
-              if (!TextUtils.isEmpty(paramView.aAi().url))
-              {
-                b.a(this.iwh, paramView.aAi().url, 2);
-                return;
-              }
-              y.e("MicroMsg.CardNewMsgUI", "card msg button url is empty");
-              return;
-            }
-          } while (paramView.aAi().imX != 1);
-          y.i("MicroMsg.CardNewMsgUI", "card msg action_type is MM_CARD_ITEM_XML_MSG_BUTTON_TYPE_SHOP");
-          Intent localIntent = new Intent();
-          localIntent.putExtra("KEY_CARD_ID", paramView.field_card_id);
-          localIntent.putExtra("KEY_CARD_TP_ID", paramView.field_card_tp_id);
-          localIntent.setClass(this.iwh, CardShopUI.class);
-          this.iwh.startActivity(localIntent);
-          h.nFQ.f(11324, new Object[] { "UsedStoresView", Integer.valueOf(paramView.field_card_type), paramView.field_card_tp_id, paramView.field_card_id, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), "" });
-          return;
-        } while (paramView.getId() != a.d.oper_layout);
-        paramView = (g)paramView.getTag();
-      } while ((paramView == null) || (paramView.aAj() == null));
-      if (paramView.aAj().type == 0)
-      {
-        y.i("MicroMsg.CardNewMsgUI", "card msg action_type is MM_CARD_ITEM_XML_MSG_OPERATION_REGION_TYPE_TEXT");
-        if (!TextUtils.isEmpty(paramView.aAj().url))
-        {
-          b.a(this.iwh, paramView.aAj().url, 2);
-          return;
-        }
-        y.e("MicroMsg.CardNewMsgUI", "card msg oper region url is empty");
+        AppMethodBeat.o(88600);
         return;
       }
-    } while (paramView.aAj().type != 1);
-    y.i("MicroMsg.CardNewMsgUI", "card msg action_type is MM_CARD_ITEM_XML_MSG_OPERATION_REGION_TYPE_CARDS");
+      h.qsU.e(11941, new Object[] { Integer.valueOf(2), paramView.field_card_id, paramView.field_card_tp_id, paramView.field_msg_id, "" });
+      if (paramView.bbU().knS == 0)
+      {
+        ab.i("MicroMsg.CardNewMsgUI", "card msg action_type is MM_CARD_ITEM_XML_MSG_BUTTON_TYPE_URL");
+        if (!TextUtils.isEmpty(paramView.bbU().url))
+        {
+          b.a(this.kxl, paramView.bbU().url, 2);
+          AppMethodBeat.o(88600);
+          return;
+        }
+        ab.e("MicroMsg.CardNewMsgUI", "card msg button url is empty");
+        AppMethodBeat.o(88600);
+        return;
+      }
+      if (paramView.bbU().knS == 1)
+      {
+        ab.i("MicroMsg.CardNewMsgUI", "card msg action_type is MM_CARD_ITEM_XML_MSG_BUTTON_TYPE_SHOP");
+        Intent localIntent = new Intent();
+        localIntent.putExtra("KEY_CARD_ID", paramView.field_card_id);
+        localIntent.putExtra("KEY_CARD_TP_ID", paramView.field_card_tp_id);
+        localIntent.setClass(this.kxl, CardShopUI.class);
+        this.kxl.startActivity(localIntent);
+        h.qsU.e(11324, new Object[] { "UsedStoresView", Integer.valueOf(paramView.field_card_type), paramView.field_card_tp_id, paramView.field_card_id, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), "" });
+      }
+      AppMethodBeat.o(88600);
+      return;
+    }
+    if (paramView.getId() == 2131822300)
+    {
+      paramView = (g)paramView.getTag();
+      if ((paramView == null) || (paramView.bbV() == null))
+      {
+        AppMethodBeat.o(88600);
+        return;
+      }
+      if (paramView.bbV().type == 0)
+      {
+        ab.i("MicroMsg.CardNewMsgUI", "card msg action_type is MM_CARD_ITEM_XML_MSG_OPERATION_REGION_TYPE_TEXT");
+        if (!TextUtils.isEmpty(paramView.bbV().url))
+        {
+          b.a(this.kxl, paramView.bbV().url, 2);
+          AppMethodBeat.o(88600);
+          return;
+        }
+        ab.e("MicroMsg.CardNewMsgUI", "card msg oper region url is empty");
+        AppMethodBeat.o(88600);
+        return;
+      }
+      if (paramView.bbV().type == 1) {
+        ab.i("MicroMsg.CardNewMsgUI", "card msg action_type is MM_CARD_ITEM_XML_MSG_OPERATION_REGION_TYPE_CARDS");
+      }
+    }
+    AppMethodBeat.o(88600);
   }
 }
 

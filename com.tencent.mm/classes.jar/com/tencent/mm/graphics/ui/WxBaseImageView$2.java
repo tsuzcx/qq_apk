@@ -1,9 +1,10 @@
 package com.tencent.mm.graphics.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.b.b;
 import com.tencent.mm.graphics.b.d;
 import com.tencent.mm.graphics.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WxBaseImageView$2
   implements Runnable
@@ -12,17 +13,21 @@ final class WxBaseImageView$2
   
   public final void run()
   {
+    AppMethodBeat.i(57103);
     try
     {
-      y.i("MicroMsg.WxBaseImageView", "alvinluo reportPerformanceInfo threadId: %d", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
-      b localb = d.dDu.BL();
-      a locala = a.dDA;
+      ab.i("MicroMsg.WxBaseImageView", "alvinluo reportPerformanceInfo threadId: %d", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
+      b localb = d.eAV.Px();
+      a locala = a.eBb;
       a.a(localb);
-      WxBaseImageView.b(this.dEa);
-      WxBaseImageView.c(this.dEa);
+      WxBaseImageView.b(this.eBB);
+      WxBaseImageView.c(this.eBB);
       return;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(57103);
+    }
   }
 }
 

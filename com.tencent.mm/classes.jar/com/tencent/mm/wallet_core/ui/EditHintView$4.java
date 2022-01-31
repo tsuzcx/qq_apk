@@ -19,7 +19,7 @@ final class EditHintView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.EditHintView.4
  * JD-Core Version:    0.7.0.1
  */

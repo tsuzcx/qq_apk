@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.dynamic.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.g;
 
 final class b$1
@@ -9,7 +10,9 @@ final class b$1
   
   public final void run()
   {
-    g.fF("com.tencent.mm:support");
+    AppMethodBeat.i(10731);
+    g.ma("com.tencent.mm:support");
+    AppMethodBeat.o(10731);
   }
 }
 

@@ -1,69 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.e.c;
 import java.util.HashMap;
-import org.json.JSONObject;
 
 final class j$1
-  implements Runnable
+  extends e.c
 {
-  j$1(j paramj, JSONObject paramJSONObject, c paramc, int paramInt) {}
+  j$1(j paramj, com.tencent.mm.plugin.appbrand.jsapi.e parame, e parame1, int paramInt) {}
   
-  public final void run()
+  public final void onDestroy()
   {
-    int i = this.gbZ.optInt("cameraId");
-    String str = this.gbZ.optString("type");
-    y.i("MicroMsg.JsApiOperateCamera", "cameraId=%d type=%s", new Object[] { Integer.valueOf(i), str });
-    Object localObject = a.a.aiD();
-    Integer localInteger = Integer.valueOf(i);
-    if (((a)localObject).goq.containsKey(localInteger)) {}
-    for (localObject = (d)((a)localObject).goq.get(localInteger); localObject == null; localObject = null)
-    {
-      this.ggE.C(this.dIS, this.gpd.h("fail:no such camera", null));
-      return;
+    AppMethodBeat.i(126241);
+    this.hEL.b(this.hJf);
+    this.hEL.b(this.hJf);
+    this.hEL.b(this.hJf);
+    a locala = a.a.aCy();
+    Integer localInteger = Integer.valueOf(this.hEO);
+    if (locala.hIm.containsKey(localInteger)) {
+      ((e)locala.hIm.remove(localInteger)).release();
     }
-    ((d)localObject).setOperateCallBack(new j.1.1(this));
-    i = -1;
-    switch (str.hashCode())
-    {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        y.w("MicroMsg.JsApiOperateCamera", "operateType not supported: %s", new Object[] { str });
-        this.ggE.C(this.dIS, this.gpd.h("fail:operateType not supported", null));
-        return;
-        if (str.equals("takePhoto"))
-        {
-          i = 0;
-          continue;
-          if (str.equals("startRecord"))
-          {
-            i = 1;
-            continue;
-            if (str.equals("stopRecord")) {
-              i = 2;
-            }
-          }
-        }
-        break;
-      }
-    }
-    ((d)localObject).setQuality(this.gbZ.optString("quality", "high"));
-    ((d)localObject).aiF();
-    return;
-    ((d)localObject).startRecord();
-    return;
-    ((d)localObject).aiN();
+    com.tencent.mm.plugin.appbrand.e.b(this.hEL.getAppId(), this);
+    AppMethodBeat.o(126241);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.j.1
  * JD-Core Version:    0.7.0.1
  */

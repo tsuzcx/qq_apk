@@ -1,56 +1,71 @@
 package com.tencent.mm.modelappbrand.a;
 
 import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.ref.Reference;
 import java.lang.ref.SoftReference;
 
 public final class b$c
-  implements b.i
+  implements b.j
 {
-  final f<String, Reference<Bitmap>> eas = new b.c.1(this);
+  final f<String, Reference<Bitmap>> fqB;
+  
+  public b$c()
+  {
+    AppMethodBeat.i(77329);
+    this.fqB = new b.c.1(this);
+    AppMethodBeat.o(77329);
+  }
   
   public final void c(String paramString, Bitmap paramBitmap)
   {
-    if ((bk.bl(paramString)) || (paramBitmap == null)) {
+    AppMethodBeat.i(77331);
+    if ((bo.isNullOrNil(paramString)) || (paramBitmap == null))
+    {
+      AppMethodBeat.o(77331);
       return;
     }
-    y.d("MicroMsg.AppBrandSimpleImageLoader.DefaultMemoryCache", "put, key %s, bmp %s", new Object[] { paramString, paramBitmap });
-    this.eas.put(paramString, new SoftReference(paramBitmap));
+    ab.d("MicroMsg.AppBrandSimpleImageLoader.DefaultMemoryCache", "put, key %s, bmp %s", new Object[] { paramString, paramBitmap });
+    this.fqB.put(paramString, new SoftReference(paramBitmap));
+    AppMethodBeat.o(77331);
   }
   
-  public final Bitmap jK(String paramString)
+  public final Bitmap lK(String paramString)
   {
-    Object localObject;
-    if (bk.bl(paramString)) {
-      localObject = null;
-    }
-    Bitmap localBitmap;
-    do
+    AppMethodBeat.i(77330);
+    if (bo.isNullOrNil(paramString))
     {
-      return localObject;
-      localObject = (Reference)this.eas.get(paramString);
-      if (localObject == null) {
-        return null;
-      }
-      localBitmap = (Bitmap)((Reference)localObject).get();
-      if (localBitmap == null) {
-        break;
-      }
-      localObject = localBitmap;
-    } while (!localBitmap.isRecycled());
-    this.eas.remove(paramString);
-    return null;
+      AppMethodBeat.o(77330);
+      return null;
+    }
+    Object localObject = (Reference)this.fqB.get(paramString);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(77330);
+      return null;
+    }
+    localObject = (Bitmap)((Reference)localObject).get();
+    if ((localObject == null) || (((Bitmap)localObject).isRecycled()))
+    {
+      this.fqB.remove(paramString);
+      AppMethodBeat.o(77330);
+      return null;
+    }
+    AppMethodBeat.o(77330);
+    return localObject;
   }
   
-  public final void m(Bitmap paramBitmap)
+  public final void t(Bitmap paramBitmap)
   {
-    y.d("MicroMsg.AppBrandSimpleImageLoader.DefaultMemoryCache", "release, bmp %s", new Object[] { paramBitmap });
+    AppMethodBeat.i(77332);
+    ab.d("MicroMsg.AppBrandSimpleImageLoader.DefaultMemoryCache", "release, bmp %s", new Object[] { paramBitmap });
     if (paramBitmap != null) {
       paramBitmap.isRecycled();
     }
+    AppMethodBeat.o(77332);
   }
 }
 

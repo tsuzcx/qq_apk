@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
 
 final class LuckyMoneyPrepareUI$9
-  implements View.OnFocusChangeListener
+  implements n.c
 {
-  LuckyMoneyPrepareUI$9(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI, EditText paramEditText1, EditText paramEditText2) {}
+  LuckyMoneyPrepareUI$9(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final void onFocusChange(View paramView, boolean paramBoolean)
+  public final void onCreateMMMenu(l paraml)
   {
-    this.eYi.setOnClickListener(null);
-    this.lMy.setOnClickListener(null);
-    this.lXg.J(LuckyMoneyPrepareUI.b(this.lXg), 2);
-    this.lXg.J(LuckyMoneyPrepareUI.a(this.lXg), 0);
+    AppMethodBeat.i(142062);
+    paraml.add(0, 0, 0, this.owL.getString(2131301206));
+    paraml.add(0, 1, 0, this.owL.getString(2131305119));
+    AppMethodBeat.o(142062);
   }
 }
 

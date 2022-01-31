@@ -1,21 +1,21 @@
 package com.tencent.smtt.sdk;
 
-import android.graphics.Picture;
-import com.tencent.smtt.export.external.interfaces.IX5WebViewBase;
-import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.PictureListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class bs
-  implements IX5WebViewBase.PictureListener
+  extends Thread
 {
-  bs(WebView paramWebView, WebView.PictureListener paramPictureListener) {}
-  
-  public void onNewPicture(IX5WebViewBase paramIX5WebViewBase, Picture paramPicture, boolean paramBoolean)
+  bs(WebView paramWebView, String paramString)
   {
-    this.b.a(paramIX5WebViewBase);
-    this.a.onNewPicture(this.b, paramPicture);
+    super(paramString);
   }
   
-  public void onNewPictureIfHaveContent(IX5WebViewBase paramIX5WebViewBase, Picture paramPicture) {}
+  public void run()
+  {
+    AppMethodBeat.i(139427);
+    this.a.tbsWebviewDestroy(false);
+    AppMethodBeat.o(139427);
+  }
 }
 
 

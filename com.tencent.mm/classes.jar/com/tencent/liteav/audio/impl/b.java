@@ -1,140 +1,59 @@
 package com.tencent.liteav.audio.impl;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothHeadset;
-import android.bluetooth.BluetoothProfile.ServiceListener;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.media.AudioManager;
-import com.tencent.liteav.audio.TXEAudioDef;
-import com.tencent.liteav.audio.c;
-import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.audio.impl.Play.d;
+import com.tencent.liteav.audio.impl.Record.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class b
 {
-  private static final String a = b.class.getSimpleName();
-  private Context b;
-  private BroadcastReceiver c;
-  private boolean d = false;
-  private BluetoothHeadset e;
-  private BluetoothProfile.ServiceListener f;
-  private d g;
+  private static int[] a = { 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350 };
   
-  public b(Context paramContext)
+  public static int a(int paramInt)
   {
-    this.b = paramContext.getApplicationContext();
-    this.c = new b.1(this);
-    this.f = new b.2(this);
-    boolean bool = ((AudioManager)this.b.getSystemService("audio")).isWiredHeadsetOn();
-    if (this.g != null) {
-      this.g.OnHeadsetState(bool);
+    if ((paramInt >= a.length) || (paramInt < 0)) {
+      return 0;
     }
-    this.d = false;
+    return a[paramInt];
   }
   
-  private void a(BluetoothDevice paramBluetoothDevice)
+  public static int b(int paramInt)
   {
-    if ((paramBluetoothDevice == null) || (this.e == null)) {
-      return;
-    }
-    for (;;)
+    AppMethodBeat.i(66555);
+    if (paramInt == 2)
     {
-      try
+      if (d.a().d())
       {
-        i = this.e.getConnectionState(paramBluetoothDevice);
-        TXCLog.d(a, "蓝牙耳机状态：" + i);
-        switch (i)
-        {
-        case 1: 
-        default: 
-          return;
-        case 0: 
-          if (c.a().f() != TXEAudioDef.TXE_AEC_SYSTEM)
-          {
-            if (this.g != null) {
-              this.g.OnHeadsetState(false);
-            }
-            TXCLog.d(a, "蓝牙耳机拔出");
-            return;
-          }
-          break;
-        }
-      }
-      catch (Exception paramBluetoothDevice)
-      {
-        TXCLog.e(a, "getConnectionState exception: " + paramBluetoothDevice);
-        int i = 0;
-        continue;
-        if (this.g != null) {
-          this.g.OnHeadsetState(true);
-        }
-        TXCLog.d(a, "蓝牙耳机插入");
-        return;
-      }
-      if (this.g != null) {
-        this.g.OnHeadsetState(true);
+        AppMethodBeat.o(66555);
+        return -5;
       }
     }
+    else if (TXCTraeJNI.nativeTraeIsPlaying())
+    {
+      AppMethodBeat.o(66555);
+      return -5;
+    }
+    AppMethodBeat.o(66555);
+    return 0;
   }
   
-  public void a()
+  public static int c(int paramInt)
   {
-    this.g = null;
-    if (!this.d) {
-      TXCLog.w(a, " invalid unregister headset, ignore");
-    }
-    for (;;)
+    AppMethodBeat.i(66556);
+    if (paramInt == 2)
     {
-      return;
-      this.d = false;
-      this.b.unregisterReceiver(this.c);
-      try
+      if (f.a().c())
       {
-        BluetoothAdapter localBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (localBluetoothAdapter != null)
-        {
-          localBluetoothAdapter.closeProfileProxy(1, this.e);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        TXCLog.e(a, "BluetoothAdapter closeProfileProxy: " + localException);
+        AppMethodBeat.o(66556);
+        return -106;
       }
     }
-  }
-  
-  public void a(d paramd)
-  {
-    this.g = paramd;
-    if (this.d)
+    else if (TXCTraeJNI.nativeTraeIsRecording())
     {
-      TXCLog.w(a, " repeate register headset, ignore");
-      return;
+      AppMethodBeat.o(66556);
+      return -106;
     }
-    paramd = new IntentFilter();
-    paramd.addAction("android.intent.action.HEADSET_PLUG");
-    paramd.addAction("android.bluetooth.device.action.ACL_CONNECTED");
-    paramd.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
-    paramd.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-    this.b.registerReceiver(this.c, paramd);
-    try
-    {
-      paramd = BluetoothAdapter.getDefaultAdapter();
-      if (paramd != null) {
-        paramd.getProfileProxy(this.b, this.f, 1);
-      }
-    }
-    catch (Exception paramd)
-    {
-      for (;;)
-      {
-        TXCLog.e(a, "BluetoothAdapter getProfileProxy: " + paramd);
-      }
-    }
-    this.d = true;
+    AppMethodBeat.o(66556);
+    return 0;
   }
 }
 

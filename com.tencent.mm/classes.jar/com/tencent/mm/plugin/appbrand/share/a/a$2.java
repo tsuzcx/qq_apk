@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.share.a;
 
 import android.view.View;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.f;
 import com.tencent.mm.plugin.appbrand.dynamic.widget.IPCDynamicPageView;
 import com.tencent.mm.plugin.appbrand.share.widget.WxaShareMessagePage;
-import com.tencent.mm.plugin.appbrand.y.i;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 
 final class a$2
@@ -13,36 +13,41 @@ final class a$2
 {
   a$2(a parama, WxaShareMessagePage paramWxaShareMessagePage) {}
   
-  public final void y(View paramView, int paramInt)
+  public final void I(View paramView, int paramInt)
   {
+    AppMethodBeat.i(132740);
     switch (paramInt)
     {
     case 2: 
     case 3: 
     default: 
-      this.haT.getLoadingView().cKc();
-      this.haT.getLoadingView().setVisibility(4);
-      this.haT.getErrorImageView().setVisibility(0);
-      this.haT.getWidgetPageView().setVisibility(4);
-      this.haT.getErrorImageView().setImageResource(y.i.app_brand_share_page_cover_default);
+      this.iJD.getLoadingView().dOW();
+      this.iJD.getLoadingView().setVisibility(4);
+      this.iJD.getErrorImageView().setVisibility(0);
+      this.iJD.getWidgetPageView().setVisibility(4);
+      this.iJD.getErrorImageView().setImageResource(2131230887);
+      AppMethodBeat.o(132740);
       return;
     case 0: 
-      this.haT.getLoadingView().setVisibility(0);
-      this.haT.getErrorImageView().setVisibility(4);
-      this.haT.getWidgetPageView().setVisibility(4);
-      this.haT.getLoadingView().cKb();
+      this.iJD.getLoadingView().setVisibility(0);
+      this.iJD.getErrorImageView().setVisibility(4);
+      this.iJD.getWidgetPageView().setVisibility(4);
+      this.iJD.getLoadingView().dOV();
+      AppMethodBeat.o(132740);
       return;
     case 1: 
-      this.haT.getLoadingView().cKc();
-      this.haT.getLoadingView().setVisibility(4);
-      this.haT.getErrorImageView().setVisibility(0);
-      this.haT.getWidgetPageView().setVisibility(4);
-      this.haT.getErrorImageView().setImageResource(y.i.dynamic_page_res_not_found);
+      this.iJD.getLoadingView().dOW();
+      this.iJD.getLoadingView().setVisibility(4);
+      this.iJD.getErrorImageView().setVisibility(0);
+      this.iJD.getWidgetPageView().setVisibility(4);
+      this.iJD.getErrorImageView().setImageResource(2131231255);
+      AppMethodBeat.o(132740);
       return;
     }
-    this.haT.getLoadingView().setVisibility(4);
-    this.haT.getErrorImageView().setVisibility(4);
-    this.haT.getWidgetPageView().setVisibility(0);
+    this.iJD.getLoadingView().setVisibility(4);
+    this.iJD.getErrorImageView().setVisibility(4);
+    this.iJD.getWidgetPageView().setVisibility(0);
+    AppMethodBeat.o(132740);
   }
 }
 

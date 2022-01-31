@@ -5,7 +5,7 @@ public final class x
 {
   public x()
   {
-    this.xqq = 289;
+    this.CMD = 289;
   }
 }
 

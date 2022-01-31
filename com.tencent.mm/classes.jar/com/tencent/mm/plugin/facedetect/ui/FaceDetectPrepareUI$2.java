@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.facedetect.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.c.a;
 
 final class FaceDetectPrepareUI$2
@@ -11,17 +12,23 @@ final class FaceDetectPrepareUI$2
   
   public final void onClick(View paramView)
   {
-    if (this.jRh)
+    AppMethodBeat.i(401);
+    if (this.mlD)
     {
-      if (FaceDetectPrepareUI.b(this.jRg) != null) {
-        FaceDetectPrepareUI.b(this.jRg).aNZ();
+      if (FaceDetectPrepareUI.b(this.mlC) != null)
+      {
+        FaceDetectPrepareUI.b(this.mlC).buc();
+        AppMethodBeat.o(401);
       }
-      return;
     }
-    if (this.jRi != null) {
-      this.jRi.n(this.bEf, this.bEg, this.edL);
+    else
+    {
+      if (this.mlE != null) {
+        this.mlE.s(this.val$errType, this.val$errCode, this.ftO);
+      }
+      this.mlC.a(this.val$errType, this.val$errCode, this.ftO, null);
     }
-    this.jRg.a(this.bEf, this.bEg, this.edL, null);
+    AppMethodBeat.o(401);
   }
 }
 

@@ -3,13 +3,10 @@ package com.tencent.mm.plugin.appbrand.appcache;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.xweb.m;
-import java.io.InputStream;
-import java.util.Locale;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -17,325 +14,275 @@ import java.util.concurrent.TimeUnit;
 
 public final class WxaCommLibRuntimeReader
 {
-  private static i fCX;
-  private static Future<Object> fCY;
-  private static final ThreadPoolExecutor fCZ = new ThreadPoolExecutor(1, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
+  private static n gVn;
+  private static Future<Object> gVo;
+  private static final ThreadPoolExecutor gVp;
+  
+  static
+  {
+    AppMethodBeat.i(59474);
+    gVp = new ThreadPoolExecutor(1, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
+    AppMethodBeat.o(59474);
+  }
   
   /* Error */
-  public static void abN()
+  public static void avF()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 49	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:mT	()V
-    //   6: getstatic 51	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:fCX	Lcom/tencent/mm/plugin/appbrand/appcache/i;
-    //   9: ifnonnull +9 -> 18
-    //   12: getstatic 55	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader$b:fDb	Lcom/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader$b;
-    //   15: putstatic 51	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:fCX	Lcom/tencent/mm/plugin/appbrand/appcache/i;
-    //   18: ldc 2
-    //   20: monitorexit
-    //   21: return
-    //   22: astore_0
-    //   23: ldc 57
-    //   25: ldc 59
-    //   27: iconst_1
-    //   28: anewarray 4	java/lang/Object
-    //   31: dup
-    //   32: iconst_0
-    //   33: aload_0
-    //   34: aastore
-    //   35: invokestatic 65	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   38: getstatic 51	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:fCX	Lcom/tencent/mm/plugin/appbrand/appcache/i;
-    //   41: ifnonnull -23 -> 18
-    //   44: getstatic 55	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader$b:fDb	Lcom/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader$b;
-    //   47: putstatic 51	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:fCX	Lcom/tencent/mm/plugin/appbrand/appcache/i;
-    //   50: goto -32 -> 18
-    //   53: astore_0
-    //   54: ldc 2
-    //   56: monitorexit
-    //   57: aload_0
-    //   58: athrow
-    //   59: astore_0
-    //   60: getstatic 51	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:fCX	Lcom/tencent/mm/plugin/appbrand/appcache/i;
-    //   63: ifnonnull +9 -> 72
-    //   66: getstatic 55	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader$b:fDb	Lcom/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader$b;
-    //   69: putstatic 51	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:fCX	Lcom/tencent/mm/plugin/appbrand/appcache/i;
+    //   3: ldc 53
+    //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: invokestatic 56	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:ph	()V
+    //   11: getstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
+    //   14: ifnonnull +80 -> 94
+    //   17: getstatic 64	com/tencent/mm/plugin/appbrand/appcache/c:gTP	Lcom/tencent/mm/plugin/appbrand/appcache/c;
+    //   20: putstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
+    //   23: ldc 53
+    //   25: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   28: ldc 2
+    //   30: monitorexit
+    //   31: return
+    //   32: astore_0
+    //   33: ldc 66
+    //   35: ldc 68
+    //   37: iconst_1
+    //   38: anewarray 4	java/lang/Object
+    //   41: dup
+    //   42: iconst_0
+    //   43: aload_0
+    //   44: aastore
+    //   45: invokestatic 74	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   48: getstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
+    //   51: ifnonnull +43 -> 94
+    //   54: getstatic 64	com/tencent/mm/plugin/appbrand/appcache/c:gTP	Lcom/tencent/mm/plugin/appbrand/appcache/c;
+    //   57: putstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
+    //   60: ldc 53
+    //   62: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: goto -37 -> 28
+    //   68: astore_0
+    //   69: ldc 2
+    //   71: monitorexit
     //   72: aload_0
     //   73: athrow
+    //   74: astore_0
+    //   75: getstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
+    //   78: ifnonnull +9 -> 87
+    //   81: getstatic 64	com/tencent/mm/plugin/appbrand/appcache/c:gTP	Lcom/tencent/mm/plugin/appbrand/appcache/c;
+    //   84: putstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
+    //   87: ldc 53
+    //   89: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   92: aload_0
+    //   93: athrow
+    //   94: ldc 53
+    //   96: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   99: goto -71 -> 28
     // Local variable table:
     //   start	length	slot	name	signature
-    //   22	12	0	localThrowable	Throwable
-    //   53	5	0	localObject1	Object
-    //   59	14	0	localObject2	Object
+    //   32	12	0	localThrowable	Throwable
+    //   68	5	0	localObject1	Object
+    //   74	19	0	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   3	6	22	java/lang/Throwable
-    //   6	18	53	finally
-    //   38	50	53	finally
-    //   60	72	53	finally
-    //   72	74	53	finally
-    //   3	6	59	finally
-    //   23	38	59	finally
+    //   8	11	32	java/lang/Throwable
+    //   3	8	68	finally
+    //   11	28	68	finally
+    //   48	65	68	finally
+    //   75	87	68	finally
+    //   87	94	68	finally
+    //   94	99	68	finally
+    //   8	11	74	finally
+    //   33	48	74	finally
   }
   
   /* Error */
-  public static boolean abO()
+  public static boolean avG()
   {
     // Byte code:
     //   0: iconst_1
     //   1: istore_0
     //   2: ldc 2
     //   4: monitorenter
-    //   5: getstatic 51	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:fCX	Lcom/tencent/mm/plugin/appbrand/appcache/i;
-    //   8: astore_1
-    //   9: ldc 57
-    //   11: ldc 69
-    //   13: iconst_1
-    //   14: anewarray 4	java/lang/Object
-    //   17: dup
-    //   18: iconst_0
-    //   19: aload_1
-    //   20: aastore
-    //   21: invokestatic 72	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   5: ldc 77
+    //   7: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: getstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
+    //   13: astore_1
+    //   14: ldc 66
+    //   16: ldc 79
+    //   18: iconst_1
+    //   19: anewarray 4	java/lang/Object
+    //   22: dup
+    //   23: iconst_0
     //   24: aload_1
-    //   25: ifnull +8 -> 33
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: iload_0
-    //   32: ireturn
-    //   33: iconst_0
-    //   34: istore_0
-    //   35: goto -7 -> 28
-    //   38: astore_1
-    //   39: ldc 2
-    //   41: monitorexit
-    //   42: aload_1
-    //   43: athrow
+    //   25: aastore
+    //   26: invokestatic 81	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   29: aload_1
+    //   30: ifnull +13 -> 43
+    //   33: ldc 77
+    //   35: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   38: ldc 2
+    //   40: monitorexit
+    //   41: iload_0
+    //   42: ireturn
+    //   43: ldc 77
+    //   45: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   48: iconst_0
+    //   49: istore_0
+    //   50: goto -12 -> 38
+    //   53: astore_1
+    //   54: ldc 2
+    //   56: monitorexit
+    //   57: aload_1
+    //   58: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   1	34	0	bool	boolean
-    //   8	17	1	locali	i
-    //   38	5	1	localObject	Object
+    //   1	49	0	bool	boolean
+    //   13	17	1	localn	n
+    //   53	5	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   5	24	38	finally
+    //   5	29	53	finally
+    //   33	38	53	finally
+    //   43	48	53	finally
   }
   
-  public static i abP()
+  public static n avH()
   {
     try
     {
-      if (fCX == null) {
-        abN();
+      AppMethodBeat.i(59467);
+      if (gVn == null) {
+        avF();
       }
-      i locali = fCX;
-      return locali;
+      n localn = gVn;
+      AppMethodBeat.o(59467);
+      return localn;
     }
     finally {}
   }
   
-  public static WxaPkgWrappingInfo abQ()
+  public static WxaPkgWrappingInfo avI()
   {
-    return abP().abB();
-  }
-  
-  /* Error */
-  private static String convertStreamToString(InputStream paramInputStream)
-  {
-    // Byte code:
-    //   0: new 91	java/io/InputStreamReader
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 94	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   8: astore_2
-    //   9: sipush 4096
-    //   12: newarray char
-    //   14: astore_3
-    //   15: new 96	java/io/StringWriter
-    //   18: dup
-    //   19: invokespecial 97	java/io/StringWriter:<init>	()V
-    //   22: astore 4
-    //   24: aload_2
-    //   25: aload_3
-    //   26: invokevirtual 101	java/io/InputStreamReader:read	([C)I
-    //   29: istore_1
-    //   30: iconst_m1
-    //   31: iload_1
-    //   32: if_icmpeq +44 -> 76
-    //   35: aload 4
-    //   37: aload_3
-    //   38: iconst_0
-    //   39: iload_1
-    //   40: invokevirtual 105	java/io/StringWriter:write	([CII)V
-    //   43: goto -19 -> 24
-    //   46: astore_3
-    //   47: ldc 57
-    //   49: ldc 107
-    //   51: iconst_1
-    //   52: anewarray 4	java/lang/Object
-    //   55: dup
-    //   56: iconst_0
-    //   57: aload_3
-    //   58: invokevirtual 111	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   61: aastore
-    //   62: invokestatic 65	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   65: aload_2
-    //   66: invokestatic 117	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   69: aload_0
-    //   70: invokestatic 117	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   73: ldc 119
-    //   75: areturn
-    //   76: aload_2
-    //   77: invokestatic 117	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   80: aload_0
-    //   81: invokestatic 117	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   84: aload 4
-    //   86: invokevirtual 122	java/io/StringWriter:toString	()Ljava/lang/String;
-    //   89: areturn
-    //   90: astore_3
-    //   91: aload_2
-    //   92: invokestatic 117	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   95: aload_0
-    //   96: invokestatic 117	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   99: aload_3
-    //   100: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	101	0	paramInputStream	InputStream
-    //   29	11	1	i	int
-    //   8	84	2	localInputStreamReader	java.io.InputStreamReader
-    //   14	24	3	arrayOfChar	char[]
-    //   46	12	3	localException	Exception
-    //   90	10	3	localObject	Object
-    //   22	63	4	localStringWriter	java.io.StringWriter
-    // Exception table:
-    //   from	to	target	type
-    //   24	30	46	java/lang/Exception
-    //   35	43	46	java/lang/Exception
-    //   24	30	90	finally
-    //   35	43	90	finally
-    //   47	65	90	finally
+    AppMethodBeat.i(59473);
+    WxaPkgWrappingInfo localWxaPkgWrappingInfo = avH().ave();
+    AppMethodBeat.o(59473);
+    return localWxaPkgWrappingInfo;
   }
   
   public static String getVersionName()
   {
-    return abP().abC();
+    AppMethodBeat.i(59468);
+    String str = avH().avc();
+    AppMethodBeat.o(59468);
+    return str;
   }
   
-  public static void mT()
+  public static void ph()
   {
     try
     {
-      if (fCX != null) {
-        y.i("MicroMsg.WxaCommLibRuntimeReader", "load(), sReader %s loaded", new Object[] { fCX });
+      AppMethodBeat.i(59465);
+      if (gVn != null)
+      {
+        ab.i("MicroMsg.WxaCommLibRuntimeReader", "load(), sReader %s loaded", new Object[] { gVn });
+        AppMethodBeat.o(59465);
       }
       for (;;)
       {
         return;
-        if (!ah.abV()) {
+        if (!an.avM()) {
           break;
         }
-        fCX = WxaCommLibRuntimeReader.b.fDb;
-        y.i("MicroMsg.WxaCommLibRuntimeReader", "load(), forceLocal, use AssetReader");
+        gVn = c.gTP;
+        ab.i("MicroMsg.WxaCommLibRuntimeReader", "load(), forceLocal, use AssetReader");
+        AppMethodBeat.o(59465);
       }
-      if (ae.cra()) {
-        break label79;
+      if (ah.dsZ()) {
+        break label101;
       }
     }
     finally {}
-    y.e("MicroMsg.WxaCommLibRuntimeReader", "load(), mm process not exists");
-    throw new AccountNotReadyError();
+    ab.e("MicroMsg.WxaCommLibRuntimeReader", "load(), mm process not exists");
+    Object localObject2 = new AccountNotReadyError();
+    AppMethodBeat.o(59465);
+    throw ((Throwable)localObject2);
+    label212:
     for (;;)
     {
       try
       {
-        label79:
-        if (fCY != null)
+        label101:
+        if (gVo != null)
         {
-          y.i("MicroMsg.WxaCommLibRuntimeReader", "loadAwaitingRetriever(), wait for existing retriever");
-          Object localObject2 = fCY.get(5L, TimeUnit.SECONDS);
+          ab.i("MicroMsg.WxaCommLibRuntimeReader", "loadAwaitingRetriever(), wait for existing retriever");
+          localObject2 = gVo.get(5L, TimeUnit.SECONDS);
           if (!(localObject2 instanceof WxaPkgWrappingInfo)) {
-            break label193;
+            break label225;
           }
           localObject2 = (WxaPkgWrappingInfo)localObject2;
-          if (!((WxaPkgWrappingInfo)localObject2).fEP) {
-            break label180;
+          if (!((WxaPkgWrappingInfo)localObject2).gXh) {
+            break label212;
           }
-          localObject2 = WxaCommLibRuntimeReader.b.fDb;
-          fCX = (i)localObject2;
+          localObject2 = c.gTP;
+          gVn = (n)localObject2;
+          AppMethodBeat.o(59465);
+          break;
         }
+        ab.i("MicroMsg.WxaCommLibRuntimeReader", "loadAwaitingRetriever(), new retriever");
+        gVo = gVp.submit(new WxaCommLibRuntimeReader.1());
+        continue;
+        localObject3 = new WxaCommLibRuntimeReader.b(localThrowable, (byte)0);
       }
       catch (Throwable localThrowable)
       {
-        fCY.cancel(false);
-        fCY = null;
+        gVo.cancel(false);
+        gVo = null;
+        AppMethodBeat.o(59465);
         throw localThrowable;
       }
-      y.i("MicroMsg.WxaCommLibRuntimeReader", "loadAwaitingRetriever(), new retriever");
-      fCY = fCZ.submit(new WxaCommLibRuntimeReader.1());
-      continue;
-      label180:
-      localObject3 = new WxaCommLibRuntimeReader.d(localThrowable, (byte)0);
     }
-    label193:
-    if ((localObject3 instanceof AccountNotReadyError)) {
-      throw ((AccountNotReadyError)localObject3);
+    label225:
+    if ((localObject3 instanceof AccountNotReadyError))
+    {
+      localObject3 = (AccountNotReadyError)localObject3;
+      AppMethodBeat.o(59465);
+      throw ((Throwable)localObject3);
     }
-    if ((localObject3 instanceof Exception)) {
-      throw ((Exception)localObject3);
+    if ((localObject3 instanceof Exception))
+    {
+      localObject3 = (Exception)localObject3;
+      AppMethodBeat.o(59465);
+      throw ((Throwable)localObject3);
     }
     if ("Unknown result " + null == localObject3) {}
-    for (Object localObject3 = "null";; localObject3 = localObject3.getClass().getName()) {
-      throw new IllegalArgumentException((String)localObject3);
+    for (Object localObject3 = "null";; localObject3 = localObject3.getClass().getName())
+    {
+      localObject3 = new IllegalArgumentException((String)localObject3);
+      AppMethodBeat.o(59465);
+      throw ((Throwable)localObject3);
     }
   }
   
-  private static InputStream qW(String paramString)
+  public static String yt(String paramString)
   {
-    if (bk.bl(paramString)) {
-      return null;
-    }
-    Object localObject = abP();
-    InputStream localInputStream = ((i)localObject).openRead(paramString);
-    localObject = String.format(Locale.US, "[v%d | %d | %s | %b]", new Object[] { Integer.valueOf(((i)localObject).abB().fEN), Integer.valueOf(((i)localObject).abB().fEM), bk.hs(((i)localObject).abB().fEO), Boolean.valueOf(((i)localObject).abB().fEP) });
-    if (localInputStream == null) {}
-    for (int i = -1;; i = localInputStream.available()) {
-      try
-      {
-        y.i("MicroMsg.WxaCommLibRuntimeReader", "read %s, %s, ret %d", new Object[] { paramString, localObject, Integer.valueOf(i) });
-        return localInputStream;
-      }
-      catch (Exception localException)
-      {
-        y.e("MicroMsg.WxaCommLibRuntimeReader", "read %s, %s, e %s", new Object[] { paramString, localObject, localException });
-        return localInputStream;
-      }
-    }
+    AppMethodBeat.i(59470);
+    paramString = avH().yl(paramString);
+    AppMethodBeat.o(59470);
+    return paramString;
   }
   
-  public static String qX(String paramString)
-  {
-    paramString = qW(paramString);
-    if (paramString == null) {
-      return "";
-    }
-    return convertStreamToString(paramString);
-  }
-  
-  public static m qY(String paramString)
-  {
-    InputStream localInputStream = qW(paramString);
-    if (localInputStream == null) {
-      return null;
-    }
-    return new m(s.wK(paramString), "UTF-8", localInputStream);
-  }
-  
-  private static final class AccountNotReadyError
+  static final class AccountNotReadyError
     extends Error
     implements Parcelable
   {
-    public static final Parcelable.Creator<AccountNotReadyError> CREATOR = new WxaCommLibRuntimeReader.AccountNotReadyError.1();
+    public static final Parcelable.Creator<AccountNotReadyError> CREATOR;
+    
+    static
+    {
+      AppMethodBeat.i(59456);
+      CREATOR = new WxaCommLibRuntimeReader.AccountNotReadyError.1();
+      AppMethodBeat.o(59456);
+    }
     
     AccountNotReadyError() {}
     

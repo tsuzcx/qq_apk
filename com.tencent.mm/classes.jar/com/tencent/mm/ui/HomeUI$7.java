@@ -1,9 +1,6 @@
 package com.tencent.mm.ui;
 
-import android.content.Intent;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.r.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class HomeUI$7
   implements Runnable
@@ -12,15 +9,17 @@ final class HomeUI$7
   
   public final void run()
   {
-    if ((a.bj(HomeUI.d(this.uKu))) && (!a.bi(HomeUI.d(this.uKu)))) {
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("BaseScanUI_select_scan_mode", 1);
-    localIntent.putExtra("GetFriendQRCodeUI.INTENT_FROM_ACTIVITY", 0);
-    localIntent.setFlags(65536);
-    h.nFQ.f(11409, new Object[0]);
-    d.b(HomeUI.d(this.uKu), "scanner", ".ui.BaseScanUI", localIntent);
+    AppMethodBeat.i(153764);
+    HomeUI.b(this.yYw).supportInvalidateOptionsMenu();
+    AppMethodBeat.o(153764);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(153765);
+    String str = super.toString() + "|supportInvalidateOptionsMenu";
+    AppMethodBeat.o(153765);
+    return str;
   }
 }
 

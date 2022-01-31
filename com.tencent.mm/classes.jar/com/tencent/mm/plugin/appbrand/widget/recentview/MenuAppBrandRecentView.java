@@ -4,17 +4,15 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.desktop.b;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.plugin.appbrand.y.i;
-import com.tencent.mm.plugin.appbrand.y.j;
 
 public class MenuAppBrandRecentView
   extends BaseAppBrandRecentView
 {
-  private static final int hDm = b.hpE - 1;
-  private static final int hDn = b.hpE;
-  private AppBrandRecentView.b hrk;
+  private static final int jvN = b.jdj - 1;
+  private static final int jvO = b.jdj;
+  private AppBrandRecentView.b jhJ;
   
   public MenuAppBrandRecentView(Context paramContext)
   {
@@ -28,50 +26,58 @@ public class MenuAppBrandRecentView
   
   public final void a(BaseAppBrandRecentView.c paramc, a parama, int paramInt)
   {
+    AppMethodBeat.i(134385);
     super.a(paramc, parama, paramInt);
-    paramc.eXr.setTextColor(-1728053248);
+    paramc.titleTv.setTextColor(-1728053248);
     if ((parama != null) && (parama.type == 2))
     {
-      paramc.eXr.setVisibility(0);
-      paramc.hqB.setVisibility(8);
-      paramc.eXr.setText(y.j.multitask_bar_back_wechat);
-      paramc.gSx.setImageResource(y.i.app_brand_capsule_multitasking_wechat);
-    }
-    while ((parama == null) || (parama.type != -1)) {
+      paramc.titleTv.setVisibility(0);
+      paramc.jfs.setVisibility(8);
+      paramc.titleTv.setText(2131301719);
+      paramc.ivs.setImageResource(2131230848);
+      AppMethodBeat.o(134385);
       return;
     }
-    paramc.gSx.setImageResource(y.i.default_avatar);
+    if ((parama != null) && (parama.type == -1)) {
+      paramc.ivs.setImageResource(2131231207);
+    }
+    AppMethodBeat.o(134385);
   }
   
   public int getLayoutId()
   {
-    return y.h.appbrand_menu_preview_item;
+    return 2130968772;
   }
   
   protected int getLoadCount()
   {
-    return hDn;
+    return jvO;
   }
   
   protected int getShowCount()
   {
-    return hDm;
+    return jvN;
   }
   
   protected String getType()
   {
-    return MenuAppBrandRecentView.class.getSimpleName();
+    AppMethodBeat.i(134384);
+    String str = MenuAppBrandRecentView.class.getSimpleName();
+    AppMethodBeat.o(134384);
+    return str;
   }
   
   protected final void init(Context paramContext)
   {
+    AppMethodBeat.i(134386);
     super.init(paramContext);
     super.setOnItemClickListener(new MenuAppBrandRecentView.1(this));
+    AppMethodBeat.o(134386);
   }
   
   public void setOnItemClickListener(AppBrandRecentView.b paramb)
   {
-    this.hrk = paramb;
+    this.jhJ = paramb;
   }
 }
 

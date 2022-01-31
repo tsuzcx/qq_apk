@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import com.tencent.mm.h.a.cy;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.db;
 import com.tencent.mm.sdk.b.c;
 
 final class EmojiStoreV2DesignerUI$1
-  extends c<cy>
+  extends c<db>
 {
   EmojiStoreV2DesignerUI$1(EmojiStoreV2DesignerUI paramEmojiStoreV2DesignerUI)
   {
-    this.udX = cy.class.getName().hashCode();
+    AppMethodBeat.i(53579);
+    this.__eventId = db.class.getName().hashCode();
+    AppMethodBeat.o(53579);
   }
 }
 

@@ -1,22 +1,24 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.media.MediaPlayer.OnInfoListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoTextureView$7
-  implements MediaPlayer.OnCompletionListener
+  implements MediaPlayer.OnInfoListener
 {
   VideoTextureView$7(VideoTextureView paramVideoTextureView) {}
   
-  public final void onCompletion(MediaPlayer paramMediaPlayer)
+  public final boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.VideoTextureView", "video on completion");
-    VideoTextureView.b(this.snF, bk.UX());
-    if (VideoTextureView.d(this.snF) != null) {
-      VideoTextureView.d(this.snF).ug();
+    AppMethodBeat.i(118014);
+    ab.d("MicroMsg.VideoTextureView", "onInfo [%d %d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (VideoTextureView.l(this.wga) != null) {
+      VideoTextureView.l(this.wga).he(paramInt1, paramInt2);
     }
+    AppMethodBeat.o(118014);
+    return false;
   }
 }
 

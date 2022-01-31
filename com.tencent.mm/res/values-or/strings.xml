@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">ହୋମ୍ ପେଜ୍‍କୁ ନେଭିଗେଟ୍ କରନ୍ତୁ</string>
+    <string name="b">ଉପରକୁ ନେଭିଗେଟ୍ କରନ୍ତୁ</string>
+    <string name="abc_action_menu_overflow_description">ଅଧିକ ବିକଳ୍ପ</string>
+    <string name="c">ହୋଇଗଲା</string>
+    <string name="d">ସବୁ ଦେଖନ୍ତୁ</string>
+    <string name="e">ଗୋଟିଏ ଆପ୍‍ ବାଛନ୍ତୁ</string>
+    <string name="f">ଅଫ୍</string>
+    <string name="g">ଅନ୍</string>
+    <string name="h">Alt+</string>
+    <string name="i">Ctrl+</string>
+    <string name="j">ଡିଲିଟ୍‍</string>
+    <string name="k">ଏଣ୍ଟର୍</string>
+    <string name="l">Function+</string>
+    <string name="m">Meta+</string>
+    <string name="n">Shift+</string>
+    <string name="o">ସ୍ପେସ୍‍</string>
+    <string name="p">Sym+</string>
+    <string name="q">ମେନୁ</string>
+    <string name="r">ସର୍ଚ୍ଚ…</string>
+    <string name="s">କ୍ୱେରୀ ଖାଲି କରନ୍ତୁ</string>
+    <string name="u">ସର୍ଚ୍ଚ କରନ୍ତୁ</string>
+    <string name="v">କ୍ୱେରୀ ଦାଖଲ କରନ୍ତୁ</string>
+    <string name="w">ଭଏସ୍‌ ସର୍ଚ୍ଚ</string>
+    <string name="z">ଛୋଟ କରନ୍ତୁ</string>
+    <string name="a0">ଅନ୍ୟାନ୍ୟ</string>
+    <string name="t">ସର୍ଚ୍ଚ କ୍ୱେରୀ</string>
+    <string name="x">ଏହାଙ୍କ ସହ ଶେୟାର୍‌ କରନ୍ତୁ</string>
+    <string name="y">%s ସହ ଶେୟାର୍‍ କରନ୍ତୁ</string>
+    <string name="a1">ସର୍ଚ୍ଚ କରନ୍ତୁ</string>
+    <string name="a2">999+</string>
+</resources>

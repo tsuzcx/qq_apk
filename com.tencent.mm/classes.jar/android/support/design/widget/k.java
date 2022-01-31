@@ -4,9 +4,9 @@ import android.graphics.drawable.Drawable;
 
 abstract interface k
 {
-  public abstract boolean aI();
+  public abstract boolean br();
   
-  public abstract void d(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void e(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
   public abstract float getRadius();
   

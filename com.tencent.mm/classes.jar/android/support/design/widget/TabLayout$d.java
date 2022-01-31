@@ -5,7 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build.VERSION;
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.LinearLayout;
@@ -14,60 +14,42 @@ import android.widget.LinearLayout.LayoutParams;
 final class TabLayout$d
   extends LinearLayout
 {
-  private int kK;
-  private final Paint kL;
-  int kM = -1;
-  float kN;
-  private int kO = -1;
-  private int kP = -1;
-  private int kQ = -1;
-  ValueAnimator kR;
+  private int lI;
+  private final Paint lJ;
+  int lK = -1;
+  float lL;
+  private int lM = -1;
+  private int lN = -1;
+  private ValueAnimator lO;
+  private int mLayoutDirection = -1;
   
   TabLayout$d(TabLayout paramTabLayout, Context paramContext)
   {
     super(paramContext);
     setWillNotDraw(false);
-    this.kL = new Paint();
+    this.lJ = new Paint();
   }
   
-  final void O(int paramInt)
+  private void bI()
   {
-    if (this.kL.getColor() != paramInt)
-    {
-      this.kL.setColor(paramInt);
-      q.O(this);
-    }
-  }
-  
-  final void P(int paramInt)
-  {
-    if (this.kK != paramInt)
-    {
-      this.kK = paramInt;
-      q.O(this);
-    }
-  }
-  
-  final void aY()
-  {
-    View localView = getChildAt(this.kM);
+    View localView = getChildAt(this.lK);
     int i;
     int j;
     if ((localView != null) && (localView.getWidth() > 0))
     {
       i = localView.getLeft();
       j = localView.getRight();
-      if ((this.kN <= 0.0F) || (this.kM >= getChildCount() - 1)) {
+      if ((this.lL <= 0.0F) || (this.lK >= getChildCount() - 1)) {
         break label151;
       }
-      localView = getChildAt(this.kM + 1);
-      float f1 = this.kN;
+      localView = getChildAt(this.lK + 1);
+      float f1 = this.lL;
       float f2 = localView.getLeft();
-      float f3 = this.kN;
+      float f3 = this.lL;
       i = (int)(i * (1.0F - f3) + f1 * f2);
-      f1 = this.kN;
+      f1 = this.lL;
       f2 = localView.getRight();
-      f3 = this.kN;
+      f3 = this.lL;
       j = (int)(j * (1.0F - f3) + f2 * f1);
     }
     label151:
@@ -80,39 +62,67 @@ final class TabLayout$d
     }
   }
   
+  final void N(int paramInt)
+  {
+    if (this.lJ.getColor() != paramInt)
+    {
+      this.lJ.setColor(paramInt);
+      t.R(this);
+    }
+  }
+  
+  final void O(int paramInt)
+  {
+    if (this.lI != paramInt)
+    {
+      this.lI = paramInt;
+      t.R(this);
+    }
+  }
+  
+  final void c(int paramInt, float paramFloat)
+  {
+    if ((this.lO != null) && (this.lO.isRunning())) {
+      this.lO.cancel();
+    }
+    this.lK = paramInt;
+    this.lL = paramFloat;
+    bI();
+  }
+  
   public final void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.kP >= 0) && (this.kQ > this.kP)) {
-      paramCanvas.drawRect(this.kP, getHeight() - this.kK, this.kQ, getHeight(), this.kL);
+    if ((this.lM >= 0) && (this.lN > this.lM)) {
+      paramCanvas.drawRect(this.lM, getHeight() - this.lI, this.lN, getHeight(), this.lJ);
     }
   }
   
   final void i(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 != this.kP) || (paramInt2 != this.kQ))
+    if ((paramInt1 != this.lM) || (paramInt2 != this.lN))
     {
-      this.kP = paramInt1;
-      this.kQ = paramInt2;
-      q.O(this);
+      this.lM = paramInt1;
+      this.lN = paramInt2;
+      t.R(this);
     }
   }
   
   final void j(int paramInt1, int paramInt2)
   {
-    if ((this.kR != null) && (this.kR.isRunning())) {
-      this.kR.cancel();
+    if ((this.lO != null) && (this.lO.isRunning())) {
+      this.lO.cancel();
     }
     int i;
     Object localObject;
-    if (q.Q(this) == 1)
+    if (t.T(this) == 1)
     {
       i = 1;
       localObject = getChildAt(paramInt1);
       if (localObject != null) {
         break label56;
       }
-      aY();
+      bI();
     }
     for (;;)
     {
@@ -123,24 +133,24 @@ final class TabLayout$d
       int k = ((View)localObject).getLeft();
       int m = ((View)localObject).getRight();
       int j;
-      if (Math.abs(paramInt1 - this.kM) <= 1)
+      if (Math.abs(paramInt1 - this.lK) <= 1)
       {
-        i = this.kP;
-        j = this.kQ;
+        i = this.lM;
+        j = this.lN;
       }
       while ((i != k) || (j != m))
       {
         localObject = new ValueAnimator();
-        this.kR = ((ValueAnimator)localObject);
-        ((ValueAnimator)localObject).setInterpolator(a.el);
+        this.lO = ((ValueAnimator)localObject);
+        ((ValueAnimator)localObject).setInterpolator(a.fj);
         ((ValueAnimator)localObject).setDuration(paramInt2);
         ((ValueAnimator)localObject).setFloatValues(new float[] { 0.0F, 1.0F });
         ((ValueAnimator)localObject).addUpdateListener(new TabLayout.d.1(this, i, k, j, m));
         ((ValueAnimator)localObject).addListener(new TabLayout.d.2(this, paramInt1));
         ((ValueAnimator)localObject).start();
         return;
-        j = this.kI.M(24);
-        if (paramInt1 < this.kM)
+        j = this.lG.L(24);
+        if (paramInt1 < this.lK)
         {
           if (i == 0)
           {
@@ -163,16 +173,16 @@ final class TabLayout$d
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.kR != null) && (this.kR.isRunning()))
+    if ((this.lO != null) && (this.lO.isRunning()))
     {
-      this.kR.cancel();
-      long l = this.kR.getDuration();
-      paramInt1 = this.kM;
-      float f = this.kR.getAnimatedFraction();
+      this.lO.cancel();
+      long l = this.lO.getDuration();
+      paramInt1 = this.lK;
+      float f = this.lO.getAnimatedFraction();
       j(paramInt1, Math.round((float)l * (1.0F - f)));
       return;
     }
-    aY();
+    bI();
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
@@ -182,7 +192,7 @@ final class TabLayout$d
       break label15;
     }
     label15:
-    while ((this.kI.mMode != 1) || (this.kI.kw != 1)) {
+    while ((this.lG.mMode != 1) || (this.lG.lu != 1)) {
       return;
     }
     int n = getChildCount();
@@ -209,12 +219,12 @@ final class TabLayout$d
       if (j <= 0) {
         break;
       }
-      i = this.kI.M(16);
+      i = this.lG.L(16);
       int m;
       if (j * n <= getMeasuredWidth() - i * 2)
       {
-        k = 0;
         i = 0;
+        k = 0;
         m = i;
         if (k >= n) {
           break label219;
@@ -231,8 +241,8 @@ final class TabLayout$d
       {
         k += 1;
         break label132;
-        this.kI.kw = 0;
-        this.kI.s(false);
+        this.lG.lu = 0;
+        this.lG.r(false);
         m = 1;
         if (m == 0) {
           break;
@@ -246,16 +256,16 @@ final class TabLayout$d
   public final void onRtlPropertiesChanged(int paramInt)
   {
     super.onRtlPropertiesChanged(paramInt);
-    if ((Build.VERSION.SDK_INT < 23) && (this.kO != paramInt))
+    if ((Build.VERSION.SDK_INT < 23) && (this.mLayoutDirection != paramInt))
     {
       requestLayout();
-      this.kO = paramInt;
+      this.mLayoutDirection = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.widget.TabLayout.d
  * JD-Core Version:    0.7.0.1
  */

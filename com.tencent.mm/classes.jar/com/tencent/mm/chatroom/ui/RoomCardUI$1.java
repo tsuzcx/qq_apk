@@ -1,33 +1,42 @@
 package com.tencent.mm.chatroom.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.widget.MMEditText;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.tools.g;
 
 final class RoomCardUI$1
-  implements MenuItem.OnMenuItemClickListener
+  implements g
 {
   RoomCardUI$1(RoomCardUI paramRoomCardUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void u(int paramInt, boolean paramBoolean)
   {
-    if (paramMenuItem.getTitle().equals(this.dpS.getString(a.i.app_finish))) {
-      RoomCardUI.a(this.dpS);
+    AppMethodBeat.i(156631);
+    if (paramInt > 0)
+    {
+      localViewGroup = (ViewGroup)this.ehp.findViewById(2131824115);
+      localLayoutParams = localViewGroup.getLayoutParams();
+      if (-1 == localLayoutParams.height)
+      {
+        localLayoutParams.width = -1;
+        localLayoutParams.height = (localViewGroup.getHeight() - paramInt);
+        localViewGroup.requestLayout();
+      }
+      AppMethodBeat.o(156631);
+      return;
     }
-    RoomCardUI.b(this.dpS).setEnabled(true);
-    RoomCardUI.b(this.dpS).setFocusableInTouchMode(true);
-    RoomCardUI.b(this.dpS).setFocusable(true);
-    RoomCardUI.b(this.dpS).setCursorVisible(true);
-    this.dpS.updateOptionMenuText(0, this.dpS.getString(a.i.app_finish));
-    this.dpS.enableOptionMenu(false);
-    this.dpS.showVKB();
-    RoomCardUI.b(this.dpS).setSelection(RoomCardUI.b(this.dpS).getText().toString().length());
-    return true;
+    ViewGroup localViewGroup = (ViewGroup)this.ehp.findViewById(2131824115);
+    ViewGroup.LayoutParams localLayoutParams = localViewGroup.getLayoutParams();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = -1;
+    localViewGroup.requestLayout();
+    AppMethodBeat.o(156631);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.RoomCardUI.1
  * JD-Core Version:    0.7.0.1
  */

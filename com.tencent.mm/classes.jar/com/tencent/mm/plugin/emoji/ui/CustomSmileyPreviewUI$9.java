@@ -1,20 +1,17 @@
 package com.tencent.mm.plugin.emoji.ui;
 
-import com.tencent.mm.plugin.emoji.ui.widget.ScaleRelativeLayout;
-import com.tencent.mm.pluginsdk.ui.emoji.MMEmojiView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.db;
+import com.tencent.mm.sdk.b.c;
 
 final class CustomSmileyPreviewUI$9
-  implements Runnable
+  extends c<db>
 {
-  CustomSmileyPreviewUI$9(CustomSmileyPreviewUI paramCustomSmileyPreviewUI) {}
-  
-  public final void run()
+  CustomSmileyPreviewUI$9(CustomSmileyPreviewUI paramCustomSmileyPreviewUI)
   {
-    ScaleRelativeLayout localScaleRelativeLayout = CustomSmileyPreviewUI.g(this.jcf);
-    float f1 = CustomSmileyPreviewUI.f(this.jcf).getMeasuredWidth();
-    float f2 = CustomSmileyPreviewUI.f(this.jcf).getMeasuredHeight();
-    localScaleRelativeLayout.apq = Math.min(Math.min(localScaleRelativeLayout.getMeasuredWidth() / f1, localScaleRelativeLayout.getMeasuredHeight() / f2), 3.0F);
-    localScaleRelativeLayout.jjK = (localScaleRelativeLayout.apq * 1.5F);
+    AppMethodBeat.i(53230);
+    this.__eventId = db.class.getName().hashCode();
+    AppMethodBeat.o(53230);
   }
 }
 

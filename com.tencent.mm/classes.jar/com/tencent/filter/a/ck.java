@@ -1,13 +1,28 @@
 package com.tencent.filter.a;
 
+import com.tencent.filter.BaseFilter;
+import com.tencent.filter.GLSLRender;
 import com.tencent.filter.m.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ck
-  extends x
+  extends BaseFilter
 {
+  private BaseFilter bxk;
+  
   public ck()
   {
-    addParam(new m.o("inputImageTexture2", "sh/wuxia_lf.png", 33986));
+    super(GLSLRender.btg);
+  }
+  
+  public final void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(86543);
+    this.bxk = new ab();
+    this.bxk.addParam(new m.o("inputImageTexture2", "sh/tangguomeigui_lf.png", 33986));
+    setNextFilter(this.bxk, null);
+    super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.o(86543);
   }
 }
 

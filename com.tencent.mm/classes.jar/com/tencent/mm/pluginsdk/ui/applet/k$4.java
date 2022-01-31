@@ -3,6 +3,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class k$4
   implements View.OnLongClickListener
@@ -11,7 +12,10 @@ final class k$4
   
   public final boolean onLongClick(View paramView)
   {
-    return this.sdl.sdk.gk(this.kX);
+    AppMethodBeat.i(79783);
+    boolean bool = this.vUo.vUn.iz(this.lU);
+    AppMethodBeat.o(79783);
+    return bool;
   }
 }
 

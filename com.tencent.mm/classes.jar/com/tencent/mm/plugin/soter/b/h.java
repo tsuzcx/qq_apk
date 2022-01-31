@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.soter.b;
 
 public final class h
 {
-  a prM;
-  int prN = -3201;
+  a snO;
+  int snP = -3201;
   
   public h(a parama)
   {
-    this.prM = parama;
+    this.snO = parama;
   }
 }
 

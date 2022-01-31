@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import com.tencent.mm.h.a.cu;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cx;
 import com.tencent.mm.sdk.b.c;
 
 final class EmojiStoreV2TabView$2
-  extends c<cu>
+  extends c<cx>
 {
   EmojiStoreV2TabView$2(EmojiStoreV2TabView paramEmojiStoreV2TabView)
   {
-    this.udX = cu.class.getName().hashCode();
+    AppMethodBeat.i(53800);
+    this.__eventId = cx.class.getName().hashCode();
+    AppMethodBeat.o(53800);
   }
 }
 

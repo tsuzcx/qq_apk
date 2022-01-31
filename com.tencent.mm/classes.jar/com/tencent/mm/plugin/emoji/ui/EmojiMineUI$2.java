@@ -3,16 +3,12 @@ package com.tencent.mm.plugin.emoji.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.emoji.f.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.a;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,7 +20,8 @@ final class EmojiMineUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    Object localObject = i.getEmojiStorageMgr().uBc.cww();
+    AppMethodBeat.i(53374);
+    Object localObject = i.getEmojiStorageMgr().yNo.dzh();
     paramMenuItem = new ArrayList();
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
@@ -36,17 +33,20 @@ final class EmojiMineUI$2
     }
     if (paramMenuItem.size() <= 1)
     {
-      h.h(this.jdu.mController.uMN, f.h.emoji_cant_sort_tip, f.h.app_tip);
+      h.h(this.lmf.getContext(), 2131299102, 2131297087);
+      AppMethodBeat.o(53374);
       return true;
     }
-    if (!aq.isConnected(ae.getContext()))
+    if (!com.tencent.mm.sdk.platformtools.at.isConnected(ah.getContext()))
     {
-      EmojiMineUI.a(this.jdu);
+      EmojiMineUI.a(this.lmf);
+      AppMethodBeat.o(53374);
       return true;
     }
     paramMenuItem = new Intent();
-    paramMenuItem.setClass(this.jdu, EmojiSortUI.class);
-    this.jdu.startActivity(paramMenuItem);
+    paramMenuItem.setClass(this.lmf, EmojiSortUI.class);
+    this.lmf.startActivity(paramMenuItem);
+    AppMethodBeat.o(53374);
     return true;
   }
 }

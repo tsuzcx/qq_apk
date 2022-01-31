@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SimpleLoginUI$4
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class SimpleLoginUI$4
   
   public final void onClick(View paramView)
   {
-    SimpleLoginUI.b(this.fsR);
+    AppMethodBeat.i(125599);
+    SimpleLoginUI.b(this.gKt);
+    AppMethodBeat.o(125599);
   }
 }
 

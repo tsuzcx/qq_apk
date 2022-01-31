@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 abstract interface j$d
 {
-  public abstract void CZ(int paramInt);
+  public abstract void Cp(int paramInt);
   
-  public abstract void Da(int paramInt);
+  public abstract void KV(int paramInt);
   
   public abstract void onFail(int paramInt);
   

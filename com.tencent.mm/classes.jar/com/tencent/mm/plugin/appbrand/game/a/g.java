@@ -1,90 +1,166 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
+import a.aa;
+import a.f;
+import a.f.b.j;
+import a.l;
+import a.l.m;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
-import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.a.l;
-import com.tencent.mm.plugin.fts.a.c.d;
-import com.tencent.mm.plugin.fts.a.d.e.a;
-import com.tencent.mm.plugin.fts.a.d.e.b;
-import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ah;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mm.plugin.expt.a.a.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.as;
 
-public final class g
-  extends com.tencent.mm.plugin.fts.ui.a
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "T", "", "()V", "mConfigMemory", "Ljava/lang/Object;", "askRestart", "", "context", "Landroid/content/Context;", "message", "", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "", "enableKv", "getConfig", "()Ljava/lang/Object;", "getConfigDefaultValue", "getConfigImpl", "getConfigLocalStorage", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Object;", "onProcessConfigBoolean", "(Ljava/lang/String;)Ljava/lang/Boolean;", "onProcessConfigFloat", "", "(Ljava/lang/String;)Ljava/lang/Float;", "onProcessConfigInt", "", "(Ljava/lang/String;)Ljava/lang/Integer;", "onProcessConfigLong", "", "(Ljava/lang/String;)Ljava/lang/Long;", "processCommand", "value", "removeConfigLocalStorage", "setConfigLocalStorage", "(Ljava/lang/Object;)V", "Companion", "plugin-appbrand-integration_release"})
+public abstract class g<T>
 {
-  public g(Context paramContext, e.b paramb, int paramInt)
-  {
-    super(paramContext, paramb, paramInt);
-  }
+  private static final f hsv = a.g.j((a.f.a.a)g.b.hsx);
+  public static final g.a hsw = new g.a((byte)0);
+  private T hsu;
   
-  protected final com.tencent.mm.plugin.fts.a.a.a a(ah paramah, HashSet<String> paramHashSet)
+  protected static Boolean Bu(String paramString)
   {
-    i locali = new i();
-    locali.bVk = this.bVk;
-    locali.kxe = d.kxG;
-    locali.kxf = this;
-    locali.handler = paramah;
-    locali.kxd = paramHashSet;
-    locali.kxe = h.gaK;
-    return ((n)com.tencent.mm.kernel.g.t(n.class)).search(10, locali);
-  }
-  
-  protected final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
-  {
-    int i = paramInt - parama.kxK - 1;
-    l locall = null;
-    Object localObject = locall;
-    if (i < parama.kxO.size())
-    {
-      localObject = locall;
-      if (i >= 0)
-      {
-        locall = (l)parama.kxO.get(i);
-        localObject = new c(paramInt);
-        ((c)localObject).fYx = locall;
-        ((c)localObject).kwi = parama.kwi;
-        ((c)localObject).cU(locall.type, locall.kwf);
-      }
+    if (paramString == null) {
+      return null;
     }
+    if ("true".contentEquals((CharSequence)paramString)) {
+      return Boolean.TRUE;
+    }
+    if ("false".contentEquals((CharSequence)paramString)) {
+      return Boolean.FALSE;
+    }
+    paramString = m.azu(paramString);
+    if (paramString != null)
+    {
+      if (paramString.intValue() > 0) {
+        return Boolean.TRUE;
+      }
+      if ((paramString.intValue() == 0) || (paramString.intValue() == -1)) {
+        return Boolean.FALSE;
+      }
+      throw ((Throwable)new IllegalStateException("Ambiguity name"));
+    }
+    return null;
+  }
+  
+  private static void W(Context paramContext, String paramString)
+  {
+    new AlertDialog.Builder(paramContext).setTitle((CharSequence)"").setMessage((CharSequence)paramString).setNegativeButton((CharSequence)"cancel", null).setPositiveButton((CharSequence)"restart", (DialogInterface.OnClickListener)g.c.hsy).show();
+  }
+  
+  public static final void a(Context paramContext, String[] paramArrayOfString)
+  {
+    g.a.a(paramContext, paramArrayOfString);
+  }
+  
+  protected abstract T Bs(String paramString);
+  
+  public T Uw()
+  {
+    Object localObject = this.hsu;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).kxW = (i + 1);
+      return localObject;
     }
-    return localObject;
-  }
-  
-  protected final void a(j paramj, HashSet<String> paramHashSet)
-  {
-    if (bA(paramj.kxh))
+    if (aAs() != null)
     {
-      e.a locala = new e.a();
-      locala.businessType = -15;
-      locala.kxO = paramj.kxh;
-      locala.kwi = paramj.kwi;
-      paramj = paramj.kxh.iterator();
-      while (paramj.hasNext()) {
-        paramHashSet.add(((l)paramj.next()).kwg);
-      }
-      if (locala.kxO.size() > 3)
+      localObject = as.apq("WAGameDynamicConfig").decodeString("WAGameDynamicConfig" + aAs(), null);
+      if (localObject == null)
       {
-        locala.kxN = true;
-        locala.kxO = locala.kxO.subList(0, 3);
+        localObject = null;
+        if (localObject == null) {
+          break label80;
+        }
+        ab.i("WAGameDynamicConfig", "hit localstorage");
       }
-      this.kzW.add(locala);
+    }
+    for (;;)
+    {
+      this.hsu = localObject;
+      return localObject;
+      localObject = Bs((String)localObject);
+      break;
+      label80:
+      if (aAt() != null)
+      {
+        localObject = ((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(aAt(), "");
+        if (localObject != null)
+        {
+          localObject = Bs((String)localObject);
+          if (localObject != null)
+          {
+            ab.i("WAGameDynamicConfig", "hit ABTest");
+            continue;
+          }
+        }
+      }
+      localObject = aAv();
     }
   }
   
-  public final int getType()
+  public final void V(Context paramContext, String paramString)
   {
-    return 208;
+    int k = 1;
+    int j = 1;
+    j.q(paramContext, "context");
+    if (aAs() != null) {}
+    for (int i = 1; (aa.BMh) && (i == 0); i = 0) {
+      throw ((Throwable)new AssertionError("Assertion failed"));
+    }
+    Object localObject = Bs(paramString);
+    if (localObject == null)
+    {
+      if (aAs() != null) {}
+      for (i = 1; (aa.BMh) && (i == 0); i = 0) {
+        throw ((Throwable)new AssertionError("Assertion failed"));
+      }
+      paramString = as.apq("WAGameDynamicConfig");
+      paramString.remove("WAGameDynamicConfig" + aAs());
+      paramString.commit();
+      if (!paramString.containsKey("WAGameDynamicConfig" + aAs())) {}
+      for (i = j; (aa.BMh) && (i == 0); i = 0) {
+        throw ((Throwable)new AssertionError("Assertion failed"));
+      }
+      ab.i("WAGameDynamicConfig", "dl: remove localstorage config");
+      if (aAu()) {
+        W(paramContext, "config[" + aAs() + "] removed");
+      }
+    }
+    do
+    {
+      return;
+      if (aAs() != null) {}
+      for (i = k; (aa.BMh) && (i == 0); i = 0) {
+        throw ((Throwable)new AssertionError("Assertion failed"));
+      }
+      as localas = as.apq("WAGameDynamicConfig");
+      localas.encode("WAGameDynamicConfig" + aAs(), String.valueOf(localObject));
+      localas.commit();
+      ab.i("WAGameDynamicConfig", "dl: set localstorage config ".concat(String.valueOf(paramString)));
+    } while (!aAu());
+    W(paramContext, "config[" + aAs() + "] set to " + localObject);
   }
+  
+  protected String aAs()
+  {
+    return null;
+  }
+  
+  protected a.a aAt()
+  {
+    return null;
+  }
+  
+  protected boolean aAu()
+  {
+    return true;
+  }
+  
+  public abstract T aAv();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.g
  * JD-Core Version:    0.7.0.1
  */

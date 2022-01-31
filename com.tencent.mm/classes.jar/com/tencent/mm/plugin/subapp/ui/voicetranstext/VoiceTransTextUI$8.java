@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoiceTransTextUI$8
   implements Runnable
@@ -10,8 +11,10 @@ final class VoiceTransTextUI$8
   
   public final void run()
   {
-    VoiceTransTextUI.r(this.pyO).setPadding(0, 0, 0, 0);
-    VoiceTransTextUI.s(this.pyO).setGravity(17);
+    AppMethodBeat.i(25601);
+    VoiceTransTextUI.r(this.taB).setPadding(0, 0, 0, 0);
+    VoiceTransTextUI.s(this.taB).setGravity(17);
+    AppMethodBeat.o(25601);
   }
 }
 

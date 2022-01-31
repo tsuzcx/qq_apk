@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WxaWidgetDebugUI$4
   implements View.OnClickListener
@@ -13,11 +12,13 @@ final class WxaWidgetDebugUI$4
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.fXw.mController.uMN, WxaWidgetSettingsUI.class);
-    paramView.putExtra("app_id", this.fXw.appId);
-    paramView.putExtra("pkg_type", this.fXw.bOa);
-    paramView.putExtra("pkg_version", this.fXw.fEN);
-    this.fXw.startActivity(paramView);
+    AppMethodBeat.i(11014);
+    paramView = new Intent(this.hqW.getContext(), WxaWidgetSettingsUI.class);
+    paramView.putExtra("app_id", this.hqW.appId);
+    paramView.putExtra("pkg_type", this.hqW.cvs);
+    paramView.putExtra("pkg_version", this.hqW.gXf);
+    this.hqW.startActivity(paramView);
+    AppMethodBeat.o(11014);
   }
 }
 

@@ -1,223 +1,124 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.mm.R.l;
-import com.tencent.mm.as.o;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.a.cj;
-import com.tencent.mm.h.a.cj.b;
-import com.tencent.mm.h.a.pb;
-import com.tencent.mm.h.a.pb.a;
-import com.tencent.mm.h.a.pe;
-import com.tencent.mm.model.s;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.plugin.webview.model.c.a;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.snackbar.a.c;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
-import java.util.HashMap;
+import android.net.Uri;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.service.j;
+import com.tencent.mm.plugin.webview.fts.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ak
-  extends ax<e>
+  extends bi<com.tencent.mm.plugin.webview.luggage.e>
 {
-  private static int cfa;
+  public final void a(Context paramContext, String paramString, bh.a parama) {}
   
-  public static void BY(int paramInt)
+  public final void b(a<com.tencent.mm.plugin.webview.luggage.e>.a parama)
   {
-    cfa = paramInt;
-  }
-  
-  public static int cbx()
-  {
-    return cfa;
-  }
-  
-  public static void cby()
-  {
-    cfa = 0;
-  }
-  
-  public final void a(final Context paramContext, final String paramString, final aw.a parama)
-  {
-    y.d("MicroMsg.JsApiSendAppMessage", "invokeInMM");
-    Object localObject1;
-    do
+    int j = 1;
+    i = 0;
+    AppMethodBeat.i(153124);
+    ab.i("MicroMsg.JsApiOpenWeAppPage", "invokeInOwn %s", new Object[] { parama.byF.bxK });
+    String str3 = parama.byF.bxK.optString("userName");
+    String str2 = parama.byF.bxK.optString("relativeURL");
+    String str1 = str2;
+    if (str2.contains("render_data")) {
+      str1 = str2;
+    }
+    try
     {
-      try
+      new StringBuilder();
+      str1 = str2;
+      localObject = new JSONObject(Uri.parse(str2).getQueryParameter("widgetData"));
+      str1 = str2;
+      ((JSONObject)localObject).remove("render_data");
+      str1 = str2;
+      str2 = str2.replaceAll("(widgetData=.*&)|(widgetData=.*$)", "&");
+      str1 = str2;
+      str2 = str2 + "&widgetData=" + ((JSONObject)localObject).toString();
+      str1 = str2;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        paramString = new JSONObject(paramString);
-        if (paramString == null)
+        Object localObject;
+        int m;
+        int n;
+        int i1;
+        int k;
+        AppBrandStatObject localAppBrandStatObject;
+        String str4;
+        String str5;
+        String str6;
+        ab.printErrStackTrace("MicroMsg.JsApiOpenWeAppPage", localJSONException, "", new Object[0]);
+        continue;
+        if (i1 == 3)
         {
-          parama.e("data is null", null);
+          localAppBrandStatObject.scene = 1005;
+        }
+        else if (i1 == 16)
+        {
+          localAppBrandStatObject.scene = 1042;
+        }
+        else if (i1 == 20)
+        {
+          localAppBrandStatObject.scene = 1053;
+        }
+        else
+        {
+          localAppBrandStatObject.scene = 1000;
+          continue;
+          continue;
+          i = k;
+        }
+      }
+    }
+    m = parama.byF.bxK.optInt("appVersion", 0);
+    str2 = parama.byF.bxK.optString("searchId");
+    localObject = parama.byF.bxK.optString("docId");
+    n = parama.byF.bxK.optInt("position", 1);
+    i1 = parama.byF.bxK.optInt("scene", 1000);
+    k = parama.byF.bxK.optInt("debugMode", 0);
+    if (k < 0) {
+      if (com.tencent.mm.plugin.webview.modeltools.g.dcC().uIS != null)
+      {
+        i = j;
+        localAppBrandStatObject = new AppBrandStatObject();
+        if ((i1 == 201) || (i1 == 14) || (i1 == 22))
+        {
+          localAppBrandStatObject.scene = 1006;
+          str4 = parama.byF.bxK.optString("statSessionId");
+          str5 = parama.byF.bxK.optString("statKeywordId");
+          str6 = parama.byF.bxK.optString("subScene");
+          localAppBrandStatObject.cmF = (str4 + ":" + str5 + ":" + str2 + ":" + (String)localObject + ":" + n + ":" + str6);
+          ((j)com.tencent.mm.kernel.g.E(j.class)).a(((com.tencent.mm.plugin.webview.luggage.e)parama.byE).mContext, str3, null, i, m, str1, localAppBrandStatObject);
+          parama.a("", null);
+          AppMethodBeat.o(153124);
           return;
         }
       }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          paramString = null;
-        }
-        switch (paramString.optInt("sendAppMessageScene", 0))
-        {
-        default: 
-          localObject1 = new HashMap();
-          ((HashMap)localObject1).put("img_url", paramString.optString("img_url"));
-          ((HashMap)localObject1).put("desc", paramString.optString("desc"));
-          ((HashMap)localObject1).put("title", paramString.optString("title"));
-          ((HashMap)localObject1).put("url", paramString.optString("shareUrl"));
-          localObject2 = new Intent();
-          ((Intent)localObject2).putExtra("Select_Conv_Type", 3);
-          ((Intent)localObject2).putExtra("scene_from", 2);
-          ((Intent)localObject2).putExtra("mutil_select_is_ret", true);
-          ((Intent)localObject2).putExtra("webview_params", (Serializable)localObject1);
-          ((Intent)localObject2).putExtra("Retr_Msg_Type", 2);
-          d.a((MMActivity)paramContext, ".ui.transmit.SelectConversationUI", (Intent)localObject2, 1, new MMActivity.a()
-          {
-            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-            {
-              Object localObject1;
-              if (paramAnonymousInt1 == 1) {
-                localObject1 = paramString.optString("appid");
-              }
-              switch (paramAnonymousInt2)
-              {
-              default: 
-                parama.e("fail", null);
-                return;
-              case -1: 
-                if (paramAnonymousIntent == null) {}
-                for (String str = null; (str == null) || (str.length() == 0); str = paramAnonymousIntent.getStringExtra("Select_Conv_User"))
-                {
-                  y.e("MicroMsg.JsApiSendAppMessage", "mmOnActivityResult fail, toUser is null");
-                  parama.e("fail", null);
-                  return;
-                }
-                if (bk.bl(str))
-                {
-                  y.e("MicroMsg.JsApiSendAppMessage", "toUser is null");
-                  return;
-                }
-                o.OI();
-                Object localObject2 = com.tencent.mm.as.c.jK(paramString.optString("img_url"));
-                Object localObject3 = ak.az(paramString);
-                if ((localObject2 != null) && (!((Bitmap)localObject2).isRecycled()))
-                {
-                  y.i("MicroMsg.JsApiSendAppMessage", "thumb image is not null");
-                  localObject4 = new ByteArrayOutputStream();
-                  ((Bitmap)localObject2).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject4);
-                  ((WXMediaMessage)localObject3).thumbData = ((ByteArrayOutputStream)localObject4).toByteArray();
-                }
-                Object localObject4 = g.by((String)localObject1, true);
-                localObject2 = new pb();
-                ((pb)localObject2).bYE.bRd = ((WXMediaMessage)localObject3);
-                ((pb)localObject2).bYE.appId = ((String)localObject1);
-                localObject3 = ((pb)localObject2).bYE;
-                if (localObject4 == null)
-                {
-                  localObject1 = "";
-                  ((pb.a)localObject3).appName = ((String)localObject1);
-                  ((pb)localObject2).bYE.toUser = str;
-                  ((pb)localObject2).bYE.bYF = 2;
-                  if (!bk.bl(paramString.optString("src_username"))) {
-                    break label476;
-                  }
-                  ((pb)localObject2).bYE.bYI = null;
-                }
-                for (;;)
-                {
-                  ((pb)localObject2).bYE.bYJ = paramString.optString("shareUrl");
-                  ((pb)localObject2).bYE.bYK = paramString.optString("currentUrl");
-                  ((pb)localObject2).bYE.bYL = paramString.optString("preVerifyAppId");
-                  com.tencent.mm.sdk.b.a.udP.m((b)localObject2);
-                  paramAnonymousIntent = paramAnonymousIntent.getStringExtra("custom_send_text");
-                  if (!bk.bl(paramAnonymousIntent))
-                  {
-                    localObject1 = new pe();
-                    ((pe)localObject1).bYQ.bYR = str;
-                    ((pe)localObject1).bYQ.content = paramAnonymousIntent;
-                    ((pe)localObject1).bYQ.type = s.hW(str);
-                    ((pe)localObject1).bYQ.flags = 0;
-                    com.tencent.mm.sdk.b.a.udP.m((b)localObject1);
-                  }
-                  h.bC(paramContext, paramContext.getResources().getString(R.l.app_shared));
-                  parama.e(null, null);
-                  return;
-                  localObject1 = ((f)localObject4).field_appName;
-                  break;
-                  label476:
-                  ((pb)localObject2).bYE.bYG = paramString.optString("src_username");
-                  ((pb)localObject2).bYE.bYH = paramString.optString("src_displayname");
-                }
-              }
-              parama.e("cancel", null);
-            }
-          });
-          return;
-        }
-      }
-      y.i("MicroMsg.JsApiSendAppMessage", "favoriteUrl");
-      localObject1 = new cj();
-      Object localObject2 = new c.a();
-      ((c.a)localObject2).url = paramString.optString("shareUrl");
-      ((c.a)localObject2).thumbUrl = paramString.optString("img_url");
-      ((c.a)localObject2).title = paramString.optString("title");
-      ((c.a)localObject2).desc = paramString.optString("desc");
-      ((c.a)localObject2).bOL = paramString.optString("appid");
-      if ((paramContext != null) && ((paramContext instanceof MMActivity)))
-      {
-        ((cj)localObject1).bIw.activity = ((Activity)paramContext);
-        ((cj)localObject1).bIw.bID = 36;
-      }
-      ((cj)localObject1).bIw.bIF = new a.c()
-      {
-        public final void bSd() {}
-        
-        public final void onHide()
-        {
-          y.d("MicroMsg.JsApiSendAppMessage", "onHide");
-          parama.e(null, null);
-        }
-        
-        public final void onShow() {}
-      };
-      com.tencent.mm.plugin.webview.model.c.a((cj)localObject1, (c.a)localObject2);
-      com.tencent.mm.sdk.b.a.udP.m((b)localObject1);
-    } while (((cj)localObject1).bIx.ret == 0);
-    parama.e("fail", null);
+    }
   }
   
-  public final int aGj()
+  public final int bjL()
   {
-    return 2;
+    return 0;
   }
-  
-  public final void b(com.tencent.luggage.e.a<e>.a parama) {}
   
   public final String name()
   {
-    return "sendAppMessage";
+    return "openWeAppPage";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.ak
  * JD-Core Version:    0.7.0.1
  */

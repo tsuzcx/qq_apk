@@ -1,84 +1,36 @@
 package com.tencent.matrix.trace.a;
 
-import android.content.Context;
-import java.util.HashSet;
+import java.util.Set;
 
 public final class a
 {
-  public final long bqA;
-  public final long bqB;
-  public final long bqC;
-  public final long bqD;
-  public final long bqE;
-  public final long bqF;
-  private final float bqG;
-  public final String bqH;
-  public final boolean bqx;
-  public final boolean bqy;
-  public final HashSet<String> bqz;
-  private int mDeviceLevel = 0;
-  
-  private a(boolean paramBoolean1, boolean paramBoolean2, HashSet<String> paramHashSet, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, float paramFloat, long paramLong6, String paramString)
-  {
-    this.bqx = paramBoolean1;
-    this.bqy = paramBoolean2;
-    this.bqz = paramHashSet;
-    this.bqA = paramLong1;
-    this.bqE = (1000000L * paramLong2);
-    this.bqC = paramLong4;
-    this.bqD = paramLong5;
-    this.bqB = paramLong3;
-    this.bqF = paramLong6;
-    float f = paramFloat;
-    if (paramFloat == 0.0F) {
-      f = 16.666668F;
-    }
-    this.bqG = f;
-    this.bqH = paramString;
-  }
-  
-  public final int ai(Context paramContext)
-  {
-    if (this.mDeviceLevel == 0)
-    {
-      int i = com.tencent.matrix.trace.f.a.aj(paramContext).value;
-      this.mDeviceLevel = i;
-      return i;
-    }
-    return this.mDeviceLevel;
-  }
-  
-  public final boolean rm()
-  {
-    return (this.bqH != null) && (!this.bqH.equals(""));
-  }
+  public com.tencent.mrs.b.a bNO;
+  public boolean bQT;
+  public boolean bQU;
+  public boolean bQV;
+  public boolean bQW;
+  public boolean bQX;
+  public String bQY;
+  public Set<String> bQZ;
+  public boolean isDebug;
   
   public final String toString()
   {
-    int i = 0;
-    boolean bool1 = this.bqx;
-    boolean bool2 = this.bqy;
-    if (this.bqz == null) {}
-    for (;;)
-    {
-      return String.format("fpsEnable:%s,methodTraceEnable:%s,sceneSet size:%s,fpsTimeSliceMs:%s,EvilThresholdNano:%sns,frameRefreshRate:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(i), Long.valueOf(this.bqA), Long.valueOf(this.bqE), Float.valueOf(this.bqG) });
-      i = this.bqz.size();
-    }
+    StringBuilder localStringBuilder = new StringBuilder(" \n");
+    localStringBuilder.append("# TraceConfig\n");
+    localStringBuilder.append("* isDebug:\t").append(this.isDebug).append("\n");
+    localStringBuilder.append("* isDevEnv:\t").append(this.bQX).append("\n");
+    localStringBuilder.append("* defaultFpsEnable:\t").append(this.bQT).append("\n");
+    localStringBuilder.append("* defaultMethodTraceEnable:\t").append(this.bQU).append("\n");
+    localStringBuilder.append("* defaultStartupEnable:\t").append(this.bQV).append("\n");
+    localStringBuilder.append("* defaultAnrEnable:\t").append(this.bQW).append("\n");
+    localStringBuilder.append("* splashActivities:\t").append(this.bQY).append("\n");
+    return localStringBuilder.toString();
   }
   
   public static final class a
   {
-    public boolean bqI = false;
-    public boolean bqJ = false;
-    public float bqK = 16.666668F;
-    public HashSet<String> bqL;
-    public long bqM = 6000L;
-    public long bqN = 8000L;
-    public long bqO = 6000L;
-    public long bqP = 1000L;
-    public long bqQ = 3000L;
-    public String bqR;
-    public long bqS = 120000L;
+    public a bRa = new a((byte)0);
   }
 }
 

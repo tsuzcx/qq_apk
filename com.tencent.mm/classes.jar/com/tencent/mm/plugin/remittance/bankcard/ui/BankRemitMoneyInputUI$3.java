@@ -1,39 +1,36 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.bankcard.model.a;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.u;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.t;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 final class BankRemitMoneyInputUI$3
-  extends u
+  extends t
 {
   BankRemitMoneyInputUI$3(BankRemitMoneyInputUI paramBankRemitMoneyInputUI) {}
   
-  public final void aEI()
+  public final void bhX()
   {
-    y.d("MicroMsg.BankRemitMoneyInputUI", "on click next");
-    double d = a.ew(BankRemitMoneyInputUI.c(this.nxh).getText(), "100");
+    AppMethodBeat.i(44632);
+    ab.d("MicroMsg.BankRemitMoneyInputUI", "on click next");
+    double d = a.fW(BankRemitMoneyInputUI.c(this.qij).getText(), "100");
     if (d <= 0.0D)
     {
-      y.w("MicroMsg.BankRemitMoneyInputUI", "illegal money: %s", new Object[] { Double.valueOf(d) });
-      Toast.makeText(this.nxh, a.i.bank_remit_illegal_arg_text, 1).show();
+      ab.w("MicroMsg.BankRemitMoneyInputUI", "illegal money: %s", new Object[] { Double.valueOf(d) });
+      Toast.makeText(this.qij, 2131297496, 1).show();
+      AppMethodBeat.o(44632);
       return;
     }
-    if (d > BankRemitMoneyInputUI.d(this.nxh))
-    {
-      y.w("MicroMsg.BankRemitMoneyInputUI", "more than max: %s", new Object[] { Double.valueOf(d) });
-      Toast.makeText(this.nxh, this.nxh.getString(a.i.bank_remit_max_money_toast, new Object[] { a.ev(new StringBuilder().append(BankRemitMoneyInputUI.d(this.nxh)).toString(), "100") }), 0).show();
-      return;
-    }
-    BankRemitMoneyInputUI.e(this.nxh);
+    BankRemitMoneyInputUI.d(this.qij);
+    AppMethodBeat.o(44632);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitMoneyInputUI.3
  * JD-Core Version:    0.7.0.1
  */

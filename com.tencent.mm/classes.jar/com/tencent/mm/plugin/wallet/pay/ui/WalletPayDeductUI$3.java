@@ -1,33 +1,34 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.ui.h.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.wallet_core.ui.j.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 final class WalletPayDeductUI$3
-  implements h.a
+  implements j.a
 {
   WalletPayDeductUI$3(WalletPayDeductUI paramWalletPayDeductUI, List paramList) {}
   
   public final void onClick(View paramView)
   {
-    paramView = this.qng.mController.uMN;
-    Object localObject = this.qnh;
-    String str = WalletPayDeductUI.a(this.qng);
-    Bankcard localBankcard1 = WalletPayDeductUI.b(this.qng);
+    AppMethodBeat.i(46020);
+    paramView = this.tWw.getContext();
+    Object localObject = this.tWx;
+    String str = WalletPayDeductUI.a(this.tWw);
+    Bankcard localBankcard1 = WalletPayDeductUI.b(this.tWw);
     WalletPayDeductUI.3.1 local1 = new WalletPayDeductUI.3.1(this);
     LinkedList localLinkedList = new LinkedList();
-    if (((localObject == null) || (((List)localObject).size() == 0)) && (bk.bl(null)))
+    if (((localObject == null) || (((List)localObject).size() == 0)) && (bo.isNullOrNil(null)))
     {
-      y.w("MicroMsg.WalletDialogHelper", "hy: bankcard list is null and should not show new");
+      ab.w("MicroMsg.WalletDialogHelper", "hy: bankcard list is null and should not show new");
+      AppMethodBeat.o(46020);
       return;
     }
     int i;
@@ -50,7 +51,7 @@ final class WalletPayDeductUI$3
         i += 1;
       }
       k = j;
-      if (!bk.bl(null))
+      if (!bo.isNullOrNil(null))
       {
         localLinkedList.add(null);
         k = j;
@@ -60,15 +61,16 @@ final class WalletPayDeductUI$3
     for (int k = i;; k = 0)
     {
       h.a(paramView, str, localLinkedList, k, local1);
+      AppMethodBeat.o(46020);
       return;
-      y.i("MicroMsg.WalletDialogHelper", "hy: no bankcard show new only");
+      ab.i("MicroMsg.WalletDialogHelper", "hy: no bankcard show new only");
       localLinkedList.add(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletPayDeductUI.3
  * JD-Core Version:    0.7.0.1
  */

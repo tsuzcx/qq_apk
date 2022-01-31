@@ -1,15 +1,22 @@
 package com.tencent.smtt.sdk;
 
-import com.tencent.f.a.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.File;
+import java.io.FileFilter;
 
-class bf
-  implements a
+final class bf
+  implements FileFilter
 {
-  bf(be parambe) {}
-  
-  public void onUserStateChanged()
+  public final boolean accept(File paramFile)
   {
-    this.a.a.c();
+    AppMethodBeat.i(139381);
+    if (!paramFile.getName().endsWith(".dex"))
+    {
+      AppMethodBeat.o(139381);
+      return true;
+    }
+    AppMethodBeat.o(139381);
+    return false;
   }
 }
 

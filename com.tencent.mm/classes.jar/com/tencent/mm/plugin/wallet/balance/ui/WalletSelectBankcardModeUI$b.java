@@ -7,9 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 @SuppressLint({"ViewHolder"})
@@ -20,7 +18,10 @@ final class WalletSelectBankcardModeUI$b
   
   public final int getCount()
   {
-    return WalletSelectBankcardModeUI.b(this.qhE).size();
+    AppMethodBeat.i(45491);
+    int i = WalletSelectBankcardModeUI.b(this.tOZ).size();
+    AppMethodBeat.o(45491);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -30,30 +31,36 @@ final class WalletSelectBankcardModeUI$b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramView = View.inflate(this.qhE, a.g.wallet_select_bankcard_item, null);
-    paramViewGroup = (WalletSelectBankcardModeUI.a)WalletSelectBankcardModeUI.b(this.qhE).get(paramInt);
-    TextView localTextView1 = (TextView)paramView.findViewById(a.f.bankcard_title);
-    TextView localTextView2 = (TextView)paramView.findViewById(a.f.bankcard_tips);
-    ImageView localImageView = (ImageView)paramView.findViewById(a.f.selected_icon);
+    AppMethodBeat.i(45492);
+    paramView = View.inflate(this.tOZ, 2130971248, null);
+    paramViewGroup = (WalletSelectBankcardModeUI.a)WalletSelectBankcardModeUI.b(this.tOZ).get(paramInt);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131829391);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131829392);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131829393);
     localTextView1.setText(paramViewGroup.title);
-    if (!TextUtils.isEmpty(paramViewGroup.ioU))
+    if (!TextUtils.isEmpty(paramViewGroup.kqb))
     {
       localTextView2.setVisibility(0);
-      localTextView2.setText(paramViewGroup.ioU);
+      localTextView2.setText(paramViewGroup.kqb);
+      if (WalletSelectBankcardModeUI.c(this.tOZ) != paramInt) {
+        break label133;
+      }
+      localImageView.setImageResource(2131231906);
     }
-    while (WalletSelectBankcardModeUI.c(this.qhE) == paramInt)
+    for (;;)
     {
-      localImageView.setImageResource(a.h.radio_on);
+      AppMethodBeat.o(45492);
       return paramView;
       localTextView2.setVisibility(8);
+      break;
+      label133:
+      localImageView.setImageResource(2131231905);
     }
-    localImageView.setImageResource(a.h.radio_off);
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletSelectBankcardModeUI.b
  * JD-Core Version:    0.7.0.1
  */

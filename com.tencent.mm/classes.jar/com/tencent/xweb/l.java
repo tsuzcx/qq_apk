@@ -1,19 +1,19 @@
 package com.tencent.xweb;
 
-import android.net.Uri;
-import java.util.Map;
+import android.graphics.Bitmap;
+import java.io.File;
 
 public abstract interface l
 {
-  public abstract String getMethod();
+  public abstract File getCacheFileDir();
   
-  public abstract Map<String, String> getRequestHeaders();
+  public abstract int getMaxHeightSupported();
   
-  public abstract Uri getUrl();
+  public abstract File getResultFileDir();
   
-  public abstract boolean hasGesture();
+  public abstract void onLongScreenshotFinished(int paramInt, String paramString);
   
-  public abstract boolean isForMainFrame();
+  public abstract Bitmap overrideScreenshot(Bitmap paramBitmap);
 }
 
 

@@ -3,11 +3,12 @@ package android.support.design.widget;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.support.design.a.h;
-import android.support.v4.view.q;
+import android.support.v4.view.r;
+import android.support.v4.view.t;
+import android.support.v4.widget.q;
 import android.support.v7.app.ActionBar.a;
-import android.support.v7.c.a.b;
-import android.support.v7.widget.az;
+import android.support.v7.c.a.a;
+import android.support.v7.widget.bb;
 import android.text.Layout;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -26,25 +27,25 @@ import android.widget.TextView;
 final class TabLayout$g
   extends LinearLayout
 {
-  private View la;
-  private TabLayout.e lg;
-  private TextView lh;
-  private ImageView li;
-  private TextView lj;
-  private ImageView lk;
-  private int ll = 2;
+  private View lX;
+  private TabLayout.e mc;
+  private TextView md;
+  private ImageView me;
+  private TextView mf;
+  private ImageView mg;
+  private int mh = 2;
   
   public TabLayout$g(TabLayout paramTabLayout, Context paramContext)
   {
     super(paramContext);
-    if (paramTabLayout.kq != 0) {
-      q.a(this, b.g(paramContext, paramTabLayout.kq));
+    if (paramTabLayout.lo != 0) {
+      t.a(this, a.k(paramContext, paramTabLayout.lo));
     }
-    q.d(this, paramTabLayout.ki, paramTabLayout.kj, paramTabLayout.kk, paramTabLayout.kl);
+    t.d(this, paramTabLayout.lg, paramTabLayout.lh, paramTabLayout.li, paramTabLayout.lj);
     setGravity(17);
     setOrientation(1);
     setClickable(true);
-    q.a(this, android.support.v4.view.o.S(getContext()));
+    t.a(this, r.T(getContext()));
   }
   
   private void a(TextView paramTextView, ImageView paramImageView)
@@ -57,17 +58,17 @@ final class TabLayout$g
     label51:
     label76:
     int i;
-    if (this.lg != null)
+    if (this.mc != null)
     {
-      localDrawable = this.lg.kc;
-      if (this.lg == null) {
+      localDrawable = this.mc.la;
+      if (this.mc == null) {
         break label194;
       }
-      localCharSequence2 = this.lg.mText;
-      if (this.lg == null) {
+      localCharSequence2 = this.mc.mText;
+      if (this.mc == null) {
         break label200;
       }
-      localCharSequence1 = this.lg.kZ;
+      localCharSequence1 = this.mc.lW;
       if (paramImageView != null)
       {
         if (localDrawable == null) {
@@ -108,7 +109,7 @@ final class TabLayout$g
     label220:
     label225:
     label245:
-    for (int j = this.kI.M(8);; j = 0)
+    for (int j = this.lG.L(8);; j = 0)
     {
       if (j != paramTextView.bottomMargin)
       {
@@ -118,7 +119,7 @@ final class TabLayout$g
       if (i != 0) {}
       for (paramTextView = localObject;; paramTextView = localCharSequence1)
       {
-        az.a(this, paramTextView);
+        bb.a(this, paramTextView);
         return;
         localDrawable = null;
         break;
@@ -138,11 +139,11 @@ final class TabLayout$g
     }
   }
   
-  final void c(TabLayout.e parame)
+  final void i(TabLayout.e parame)
   {
-    if (parame != this.lg)
+    if (parame != this.mc)
     {
-      this.lg = parame;
+      this.mc = parame;
       update();
     }
   }
@@ -164,7 +165,7 @@ final class TabLayout$g
     int k = 1;
     int j = View.MeasureSpec.getSize(paramInt1);
     int m = View.MeasureSpec.getMode(paramInt1);
-    int n = this.kI.getTabMaxWidth();
+    int n = this.lG.getTabMaxWidth();
     int i = paramInt1;
     if (n > 0) {
       if (m != 0)
@@ -174,18 +175,18 @@ final class TabLayout$g
       }
       else
       {
-        i = View.MeasureSpec.makeMeasureSpec(this.kI.kr, -2147483648);
+        i = View.MeasureSpec.makeMeasureSpec(this.lG.lp, -2147483648);
       }
     }
     super.onMeasure(i, paramInt2);
     float f2;
     float f1;
-    if (this.lh != null)
+    if (this.md != null)
     {
       getResources();
-      f2 = this.kI.ko;
-      j = this.ll;
-      if ((this.li == null) || (this.li.getVisibility() != 0)) {
+      f2 = this.lG.lm;
+      j = this.mh;
+      if ((this.me == null) || (this.me.getVisibility() != 0)) {
         break label289;
       }
       paramInt1 = 1;
@@ -193,13 +194,13 @@ final class TabLayout$g
     }
     for (;;)
     {
-      f2 = this.lh.getTextSize();
-      m = this.lh.getLineCount();
-      j = android.support.v4.widget.o.b(this.lh);
+      f2 = this.md.getTextSize();
+      m = this.md.getLineCount();
+      j = q.b(this.md);
       if ((f1 != f2) || ((j >= 0) && (paramInt1 != j)))
       {
         j = k;
-        if (this.kI.mMode == 1)
+        if (this.lG.mMode == 1)
         {
           j = k;
           if (f1 > f2)
@@ -207,7 +208,7 @@ final class TabLayout$g
             j = k;
             if (m == 1)
             {
-              Layout localLayout = this.lh.getLayout();
+              Layout localLayout = this.md.getLayout();
               if (localLayout != null)
               {
                 f2 = localLayout.getLineWidth(0);
@@ -223,8 +224,8 @@ final class TabLayout$g
         }
         if (j != 0)
         {
-          this.lh.setTextSize(0, f1);
-          this.lh.setMaxLines(paramInt1);
+          this.md.setTextSize(0, f1);
+          this.md.setMaxLines(paramInt1);
           super.onMeasure(i, paramInt2);
         }
       }
@@ -232,13 +233,13 @@ final class TabLayout$g
       label289:
       paramInt1 = j;
       f1 = f2;
-      if (this.lh != null)
+      if (this.md != null)
       {
         paramInt1 = j;
         f1 = f2;
-        if (this.lh.getLineCount() > 1)
+        if (this.md.getLineCount() > 1)
         {
-          f1 = this.kI.kp;
+          f1 = this.lG.ln;
           paramInt1 = j;
         }
       }
@@ -249,12 +250,12 @@ final class TabLayout$g
   {
     boolean bool2 = super.performClick();
     boolean bool1 = bool2;
-    if (this.lg != null)
+    if (this.mc != null)
     {
       if (!bool2) {
         playSoundEffect(0);
       }
-      this.lg.select();
+      this.mc.select();
       bool1 = true;
     }
     return bool1;
@@ -269,14 +270,14 @@ final class TabLayout$g
       if ((i != 0) && (paramBoolean) && (Build.VERSION.SDK_INT < 16)) {
         sendAccessibilityEvent(4);
       }
-      if (this.lh != null) {
-        this.lh.setSelected(paramBoolean);
+      if (this.md != null) {
+        this.md.setSelected(paramBoolean);
       }
-      if (this.li != null) {
-        this.li.setSelected(paramBoolean);
+      if (this.me != null) {
+        this.me.setSelected(paramBoolean);
       }
-      if (this.la != null) {
-        this.la.setSelected(paramBoolean);
+      if (this.lX != null) {
+        this.lX.setSelected(paramBoolean);
       }
       return;
     }
@@ -284,13 +285,13 @@ final class TabLayout$g
   
   final void update()
   {
-    TabLayout.e locale = this.lg;
+    TabLayout.e locale = this.mc;
     Object localObject;
     if (locale != null)
     {
-      localObject = locale.la;
+      localObject = locale.lX;
       if (localObject == null) {
-        break label313;
+        break label305;
       }
       ViewParent localViewParent = ((View)localObject).getParent();
       if (localViewParent != this)
@@ -300,85 +301,69 @@ final class TabLayout$g
         }
         addView((View)localObject);
       }
-      this.la = ((View)localObject);
-      if (this.lh != null) {
-        this.lh.setVisibility(8);
+      this.lX = ((View)localObject);
+      if (this.md != null) {
+        this.md.setVisibility(8);
       }
-      if (this.li != null)
+      if (this.me != null)
       {
-        this.li.setVisibility(8);
-        this.li.setImageDrawable(null);
+        this.me.setVisibility(8);
+        this.me.setImageDrawable(null);
       }
-      this.lj = ((TextView)((View)localObject).findViewById(16908308));
-      if (this.lj != null) {
-        this.ll = android.support.v4.widget.o.b(this.lj);
+      this.mf = ((TextView)((View)localObject).findViewById(16908308));
+      if (this.mf != null) {
+        this.mh = q.b(this.mf);
       }
-      this.lk = ((ImageView)((View)localObject).findViewById(16908294));
-      label143:
-      if (this.la != null) {
-        break label346;
+      this.mg = ((ImageView)((View)localObject).findViewById(16908294));
+      label140:
+      if (this.lX != null) {
+        break label338;
       }
-      if (this.li == null)
+      if (this.me == null)
       {
-        localObject = (ImageView)LayoutInflater.from(getContext()).inflate(a.h.design_layout_tab_icon, this, false);
+        localObject = (ImageView)LayoutInflater.from(getContext()).inflate(2130969308, this, false);
         addView((View)localObject, 0);
-        this.li = ((ImageView)localObject);
+        this.me = ((ImageView)localObject);
       }
-      if (this.lh == null)
+      if (this.md == null)
       {
-        localObject = (TextView)LayoutInflater.from(getContext()).inflate(a.h.design_layout_tab_text, this, false);
+        localObject = (TextView)LayoutInflater.from(getContext()).inflate(2130969309, this, false);
         addView((View)localObject);
-        this.lh = ((TextView)localObject);
-        this.ll = android.support.v4.widget.o.b(this.lh);
+        this.md = ((TextView)localObject);
+        this.mh = q.b(this.md);
       }
-      android.support.v4.widget.o.b(this.lh, this.kI.km);
-      if (this.kI.kn != null) {
-        this.lh.setTextColor(this.kI.kn);
+      q.b(this.md, this.lG.lk);
+      if (this.lG.ll != null) {
+        this.md.setTextColor(this.lG.ll);
       }
-      a(this.lh, this.li);
-    }
-    label313:
-    label346:
-    int i;
-    for (;;)
-    {
-      if (locale != null)
-      {
-        if (locale.lb == null)
-        {
-          throw new IllegalArgumentException("Tab not attached to a TabLayout");
-          localObject = null;
-          break;
-          if (this.la != null)
-          {
-            removeView(this.la);
-            this.la = null;
-          }
-          this.lj = null;
-          this.lk = null;
-          break label143;
-          if ((this.lj == null) && (this.lk == null)) {
-            continue;
-          }
-          a(this.lj, this.lk);
-          continue;
-        }
-        if (locale.lb.getSelectedTabPosition() == locale.mPosition)
-        {
-          i = 1;
-          if (i == 0) {
-            break label410;
-          }
-        }
+      a(this.md, this.me);
+      label281:
+      if ((locale == null) || (!locale.isSelected())) {
+        break label367;
       }
     }
-    label410:
+    label305:
+    label338:
+    label367:
     for (boolean bool = true;; bool = false)
     {
       setSelected(bool);
       return;
-      i = 0;
+      localObject = null;
       break;
+      if (this.lX != null)
+      {
+        removeView(this.lX);
+        this.lX = null;
+      }
+      this.mf = null;
+      this.mg = null;
+      break label140;
+      if ((this.mf == null) && (this.mg == null)) {
+        break label281;
+      }
+      a(this.mf, this.mg);
+      break label281;
     }
   }
 }

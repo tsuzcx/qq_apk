@@ -5,45 +5,48 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.f.a;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recentview.ConversationAppBrandRecentView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$1
   implements RecyclerView.f.a
 {
   c$1(c paramc) {}
   
-  public final void hQ()
+  public final void jx()
   {
-    if (this.hpW.hpU != null)
+    AppMethodBeat.i(133774);
+    if (this.jed.jeb != null)
     {
-      ConversationAppBrandRecentView localConversationAppBrandRecentView = this.hpW.hpU;
-      this.hpW.hpU.getCurrentPage();
+      ConversationAppBrandRecentView localConversationAppBrandRecentView = this.jed.jeb;
+      this.jed.jeb.getCurrentPage();
       Object localObject = (LinearLayoutManager)localConversationAppBrandRecentView.getLayoutManager();
-      int i = ((LinearLayoutManager)localObject).gY();
-      int j = ((LinearLayoutManager)localObject).ha();
-      y.i("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo checkAlphaChange firstPos: %d, lastPos: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      int i = ((LinearLayoutManager)localObject).it();
+      int j = ((LinearLayoutManager)localObject).iv();
+      ab.i("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo checkAlphaChange firstPos: %d, lastPos: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       if (i <= j)
       {
-        localObject = localConversationAppBrandRecentView.bK(i);
-        if ((localObject != null) && (((RecyclerView.v)localObject).aie != null))
+        localObject = localConversationAppBrandRecentView.bQ(i);
+        if ((localObject != null) && (((RecyclerView.v)localObject).aku != null))
         {
-          ((RecyclerView.v)localObject).aie.setScaleX(1.0F);
-          ((RecyclerView.v)localObject).aie.setScaleY(1.0F);
+          ((RecyclerView.v)localObject).aku.setScaleX(1.0F);
+          ((RecyclerView.v)localObject).aku.setScaleY(1.0F);
           if (i != j) {
-            break label140;
+            break label145;
           }
-          ((RecyclerView.v)localObject).aie.setAlpha(0.3F);
+          ((RecyclerView.v)localObject).aku.setAlpha(0.3F);
         }
         for (;;)
         {
           i += 1;
           break;
-          label140:
-          ((RecyclerView.v)localObject).aie.setAlpha(1.0F);
+          label145:
+          ((RecyclerView.v)localObject).aku.setAlpha(1.0F);
         }
       }
     }
+    AppMethodBeat.o(133774);
   }
 }
 

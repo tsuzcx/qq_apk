@@ -10,13 +10,12 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.i;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.chatting.gallery.h;
 import com.tencent.mm.ui.chatting.gallery.h.a;
 import java.util.Date;
@@ -25,159 +24,224 @@ import java.util.List;
 public final class b
   extends RecyclerView.a
 {
-  private String drJ;
-  private com.tencent.mm.as.a.a.c drd = null;
-  public List<b.c> heL = null;
-  boolean kax = false;
-  private boolean khG = true;
-  public boolean khH;
-  public boolean khJ = false;
+  private com.tencent.mm.at.a.a.c eiK;
+  private String ejr;
+  public List<b.c> jfV;
+  private boolean kFs;
+  public boolean kFv;
   Context mContext;
-  long voj;
-  public b vok;
+  public boolean mCr;
+  boolean muT;
+  long zDF;
+  public b zDG;
   
   public b(Context paramContext, List<b.c> paramList, String paramString)
   {
-    this.heL = paramList;
-    this.drJ = paramString;
-    au.Hx();
-    this.khG = com.tencent.mm.model.c.isSDCardAvailable();
+    AppMethodBeat.i(31138);
+    this.jfV = null;
+    this.eiK = null;
+    this.kFs = true;
+    this.muT = false;
+    this.mCr = false;
+    this.jfV = paramList;
+    this.ejr = paramString;
+    aw.aaz();
+    this.kFs = com.tencent.mm.model.c.isSDCardAvailable();
     this.mContext = paramContext;
-    gR(paramContext);
+    im(paramContext);
+    AppMethodBeat.o(31138);
   }
   
   public b(Context paramContext, List<b.c> paramList, String paramString, long paramLong)
   {
-    this.heL = paramList;
-    this.voj = paramLong;
-    this.drJ = paramString;
-    au.Hx();
-    this.khG = com.tencent.mm.model.c.isSDCardAvailable();
-    this.kax = true;
+    AppMethodBeat.i(31139);
+    this.jfV = null;
+    this.eiK = null;
+    this.kFs = true;
+    this.muT = false;
+    this.mCr = false;
+    this.jfV = paramList;
+    this.zDF = paramLong;
+    this.ejr = paramString;
+    aw.aaz();
+    this.kFs = com.tencent.mm.model.c.isSDCardAvailable();
+    this.muT = true;
     this.mContext = paramContext;
-    gR(paramContext);
+    im(paramContext);
+    AppMethodBeat.o(31139);
   }
   
-  private static long eM(long paramLong)
+  private void im(Context paramContext)
   {
-    Date localDate = new Date(paramLong);
-    return com.tencent.mm.ui.gridviewheaders.a.cIz().b(localDate);
-  }
-  
-  private void gR(Context paramContext)
-  {
+    AppMethodBeat.i(31140);
     c.a locala = new c.a();
-    locala.erk = 1;
-    locala.erF = true;
-    locala.erm = (com.tencent.mm.cb.a.fj(paramContext) / 4);
-    locala.erl = (com.tencent.mm.cb.a.fj(paramContext) / 4);
-    locala.ery = R.e.pic_thum_bg_color;
-    this.drd = locala.OV();
+    locala.fHt = 1;
+    locala.eOf = true;
+    locala.eNT = (com.tencent.mm.cb.a.gw(paramContext) / 4);
+    locala.eNS = (com.tencent.mm.cb.a.gw(paramContext) / 4);
+    locala.eOa = 2131690341;
+    this.eiK = locala.ahY();
+    AppMethodBeat.o(31140);
   }
   
-  public final b.c GZ(int paramInt)
+  private static long io(long paramLong)
   {
-    return (b.c)this.heL.get(paramInt);
+    AppMethodBeat.i(31146);
+    Date localDate = new Date(paramLong);
+    paramLong = com.tencent.mm.ui.gridviewheaders.a.dNj().b(localDate);
+    AppMethodBeat.o(31146);
+    return paramLong;
+  }
+  
+  public final b.c PC(int paramInt)
+  {
+    AppMethodBeat.i(31148);
+    b.c localc = (b.c)this.jfV.get(paramInt);
+    AppMethodBeat.o(31148);
+    return localc;
   }
   
   public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramInt == 2147483647) {
-      return new b.a(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.gallery_date_item, paramViewGroup, false));
+    AppMethodBeat.i(31142);
+    if (paramInt == 2147483647)
+    {
+      paramViewGroup = new a(LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969685, paramViewGroup, false));
+      AppMethodBeat.o(31142);
+      return paramViewGroup;
     }
-    return new b.d(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.image_gallary_grid_item, paramViewGroup, false));
+    paramViewGroup = new b.d(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969882, paramViewGroup, false));
+    AppMethodBeat.o(31142);
+    return paramViewGroup;
   }
   
   public final void a(RecyclerView.v paramv, int paramInt)
   {
-    if (!this.khG)
+    AppMethodBeat.i(31144);
+    if (!this.kFs)
     {
-      y.e("MicroMsg.MediaHistoryGalleryAdapter", "[onBindViewHolder] isSDCardAvailable:%s", new Object[] { Boolean.valueOf(this.khG) });
+      ab.e("MicroMsg.MediaHistoryGalleryAdapter", "[onBindViewHolder] isSDCardAvailable:%s", new Object[] { Boolean.valueOf(this.kFs) });
+      AppMethodBeat.o(31144);
       return;
     }
-    b.c localc = GZ(paramInt);
-    if (paramv.aii == 2147483647)
+    b.c localc = PC(paramInt);
+    if (paramv.aky == 2147483647)
     {
-      if ((paramInt == getItemCount() - 1) || (eM(GZ(paramInt + 1).timeStamp) != eM(localc.timeStamp)))
+      if ((paramInt == getItemCount() - 1) || (io(PC(paramInt + 1).timeStamp) != io(localc.timeStamp)))
       {
-        ((b.a)paramv).eXs.setVisibility(8);
+        ((a)paramv).gpp.setVisibility(8);
+        AppMethodBeat.o(31144);
         return;
       }
-      ((b.a)paramv).eXs.setVisibility(0);
-      ((b.a)paramv).eXs.setText(eL(localc.timeStamp));
-      if (this.khH)
+      ((a)paramv).gpp.setVisibility(0);
+      ((a)paramv).gpp.setText(in(localc.timeStamp));
+      if (this.kFv)
       {
-        ((b.a)paramv).frw.setVisibility(0);
+        ((a)paramv).progressBar.setVisibility(0);
+        AppMethodBeat.o(31144);
         return;
       }
-      ((b.a)paramv).frw.setVisibility(8);
+      ((a)paramv).progressBar.setVisibility(8);
+      AppMethodBeat.o(31144);
       return;
     }
-    ((b.d)paramv).khQ.setTag(Integer.valueOf(paramInt));
-    ((b.d)paramv).khW.setTag(Integer.valueOf(paramInt));
-    o.ON().a(localc.imagePath, ((b.d)paramv).khQ, this.drd);
-    if (localc.khM)
+    ((b.d)paramv).mCy.setTag(Integer.valueOf(paramInt));
+    ((b.d)paramv).mCD.setTag(Integer.valueOf(paramInt));
+    o.ahG().a(localc.imagePath, ((b.d)paramv).mCy, this.eiK);
+    if (localc.mCu)
     {
-      ((b.d)paramv).khR.setVisibility(0);
-      ((b.d)paramv).khS.setVisibility(0);
-      ((b.d)paramv).khS.setText(bk.aM(localc.vom.khO, ""));
+      ((b.d)paramv).mCz.setVisibility(0);
+      ((b.d)paramv).kFj.setVisibility(0);
+      ((b.d)paramv).kFj.setText(bo.bf(localc.zDI.mCw, ""));
     }
-    while (this.khJ)
+    while (this.mCr)
     {
-      ((b.d)paramv).khW.setVisibility(0);
-      ((b.d)paramv).khV.setVisibility(0);
-      if (h.a.cGc().bx(localc.bWO))
+      ((b.d)paramv).mCD.setVisibility(0);
+      ((b.d)paramv).mCC.setVisibility(0);
+      if (h.a.dKg().bF(localc.cEE))
       {
-        ((b.d)paramv).khT.setVisibility(0);
-        ((b.d)paramv).khV.setChecked(true);
+        ((b.d)paramv).mCA.setVisibility(0);
+        ((b.d)paramv).mCC.setChecked(true);
+        AppMethodBeat.o(31144);
         return;
-        ((b.d)paramv).khS.setVisibility(8);
-        ((b.d)paramv).khR.setVisibility(8);
+        ((b.d)paramv).kFj.setVisibility(8);
+        ((b.d)paramv).mCz.setVisibility(8);
       }
       else
       {
-        ((b.d)paramv).khT.setVisibility(8);
-        ((b.d)paramv).khV.setChecked(false);
+        ((b.d)paramv).mCA.setVisibility(8);
+        ((b.d)paramv).mCC.setChecked(false);
+        AppMethodBeat.o(31144);
         return;
       }
     }
-    ((b.d)paramv).khW.setVisibility(8);
-    ((b.d)paramv).khV.setVisibility(8);
+    ((b.d)paramv).mCD.setVisibility(8);
+    ((b.d)paramv).mCC.setVisibility(8);
+    AppMethodBeat.o(31144);
   }
   
   public final void a(RecyclerView.v paramv, int paramInt, List paramList)
   {
+    AppMethodBeat.i(31143);
     if ((paramList != null) && (paramList.size() > 0) && ((paramv instanceof b.d)))
     {
       if (((Integer)paramList.get(0)).intValue() == 0)
       {
-        ((b.d)paramv).khV.setChecked(false);
-        ((b.d)paramv).khV.setVisibility(0);
-        ((b.d)paramv).khW.setVisibility(0);
+        ((b.d)paramv).mCC.setChecked(false);
+        ((b.d)paramv).mCC.setVisibility(0);
+        ((b.d)paramv).mCD.setVisibility(0);
+        AppMethodBeat.o(31143);
         return;
       }
-      ((b.d)paramv).khV.setChecked(false);
-      ((b.d)paramv).khV.setVisibility(8);
-      ((b.d)paramv).khW.setVisibility(8);
+      ((b.d)paramv).mCC.setChecked(false);
+      ((b.d)paramv).mCC.setVisibility(8);
+      ((b.d)paramv).mCD.setVisibility(8);
+      AppMethodBeat.o(31143);
       return;
     }
     super.a(paramv, paramInt, paramList);
-  }
-  
-  public final String eL(long paramLong)
-  {
-    Date localDate = new Date(paramLong);
-    return com.tencent.mm.ui.gridviewheaders.a.cIz().a(localDate, this.mContext);
+    AppMethodBeat.o(31143);
   }
   
   public final int getItemCount()
   {
-    return this.heL.size();
+    AppMethodBeat.i(31147);
+    int i = this.jfV.size();
+    AppMethodBeat.o(31147);
+    return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    return GZ(paramInt).type;
+    AppMethodBeat.i(31141);
+    paramInt = PC(paramInt).type;
+    AppMethodBeat.o(31141);
+    return paramInt;
+  }
+  
+  public final String in(long paramLong)
+  {
+    AppMethodBeat.i(31145);
+    Object localObject = new Date(paramLong);
+    localObject = com.tencent.mm.ui.gridviewheaders.a.dNj().a((Date)localObject, this.mContext);
+    AppMethodBeat.o(31145);
+    return localObject;
+  }
+  
+  public final class a
+    extends RecyclerView.v
+  {
+    TextView gpp;
+    ProgressBar progressBar;
+    
+    public a(View paramView)
+    {
+      super();
+      AppMethodBeat.i(31131);
+      this.gpp = ((TextView)paramView.findViewById(2131824015));
+      this.progressBar = ((ProgressBar)paramView.findViewById(2131824014));
+      AppMethodBeat.o(31131);
+    }
   }
   
   public static abstract interface b
@@ -187,7 +251,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,14 @@
 package com.tencent.mm.modelvideo;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.h.b.a.j;
+import com.tencent.mm.al.f;
+import com.tencent.mm.g.b.a.k;
 import com.tencent.mm.plugin.sight.base.d;
 import com.tencent.mm.plugin.video.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
 
 final class n$2
   implements Runnable
@@ -16,18 +17,20 @@ final class n$2
   
   public final void run()
   {
-    com.tencent.mm.plugin.sight.base.a locala = d.MH(this.dlh);
+    AppMethodBeat.i(50753);
+    com.tencent.mm.plugin.sight.base.a locala = d.Zo(this.val$path);
     if (locala == null)
     {
-      y.w("MicroMsg.SubCoreMediaRpt", "get media info is null. %s", new Object[] { this.dlh });
+      ab.w("MicroMsg.SubCoreMediaRpt", "get media info is null. %s", new Object[] { this.val$path });
+      AppMethodBeat.o(50753);
       return;
     }
-    int j = e.bJ(this.dlh);
+    int j = e.cM(this.val$path);
     Object localObject1 = null;
-    if (this.eGU != null)
+    if (this.fWK != null)
     {
       localObject1 = new StringBuffer();
-      localObject2 = this.eGU;
+      localObject2 = this.fWK;
       int k = localObject2.length;
       i = 0;
       while (i < k)
@@ -37,23 +40,24 @@ final class n$2
       }
       localObject1 = ((StringBuffer)localObject1).toString();
     }
-    int i = aq.fJ(ae.getContext());
-    f.Ne();
-    Object localObject2 = com.tencent.mm.ak.a.lH(this.dlh);
+    int i = at.gW(ah.getContext());
+    f.afP();
+    Object localObject2 = com.tencent.mm.al.a.sE(this.val$path);
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(this.dUz).append(",").append(this.eGV).append(",");
-    localStringBuffer.append(this.eGW).append(",").append(this.eGX).append(",");
-    localStringBuffer.append(this.eGY).append(",").append(i).append(",");
-    localStringBuffer.append((String)localObject2).append(",").append(this.eow).append(",");
-    localStringBuffer.append(this.eGZ).append(",").append(j).append(",");
-    localStringBuffer.append(locala.jlu).append(",").append(locala.videoBitrate / 1000).append(",");
-    localStringBuffer.append(locala.ejM / 1000).append(",").append(locala.eIM).append(",");
+    localStringBuffer.append(this.fkI).append(",").append(this.fWL).append(",");
+    localStringBuffer.append(this.fWM).append(",").append(this.fWN).append(",");
+    localStringBuffer.append(this.fWO).append(",").append(i).append(",");
+    localStringBuffer.append((String)localObject2).append(",").append(this.fET).append(",");
+    localStringBuffer.append(this.fWP).append(",").append(j).append(",");
+    localStringBuffer.append(locala.eVA).append(",").append(locala.videoBitrate / 1000).append(",");
+    localStringBuffer.append(locala.fzT / 1000).append(",").append(locala.eRw).append(",");
     localStringBuffer.append(locala.width).append(",").append(locala.height).append(",");
-    localStringBuffer.append((String)localObject1).append(",").append(locala.odX).append(",");
-    localStringBuffer.append(this.eHa).append(",").append(this.eHb).append(",");
-    localStringBuffer.append(c.PU(this.eHc));
-    y.i("MicroMsg.SubCoreMediaRpt", "download video rpt %s ", new Object[] { localStringBuffer.toString() });
-    new j(localStringBuffer.toString()).QX();
+    localStringBuffer.append((String)localObject1).append(",").append(locala.qSh).append(",");
+    localStringBuffer.append(this.fWQ).append(",").append(this.fWR).append(",");
+    localStringBuffer.append(c.aeA(this.fWS));
+    ab.i("MicroMsg.SubCoreMediaRpt", "download video rpt %s ", new Object[] { localStringBuffer.toString() });
+    new k(localStringBuffer.toString()).ake();
+    AppMethodBeat.o(50753);
   }
 }
 

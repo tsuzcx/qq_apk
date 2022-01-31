@@ -1,23 +1,27 @@
 package com.tencent.mm.pluginsdk.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvoiceaddr.g;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class VoiceInputLayout$4
-  implements am.a
+  implements ap.a
 {
   VoiceInputLayout$4(VoiceInputLayout paramVoiceInputLayout) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (VoiceInputLayout.b(this.sbr) == null) {}
-    int i;
-    do
+    AppMethodBeat.i(27585);
+    if (VoiceInputLayout.b(this.vSy) == null)
     {
+      AppMethodBeat.o(27585);
       return true;
-      i = VoiceInputLayout.b(this.sbr).getMaxAmplitudeRate();
-    } while (this.sbr.kFU != 2);
-    this.sbr.rH(i);
+    }
+    int i = VoiceInputLayout.b(this.vSy).getMaxAmplitudeRate();
+    if (this.vSy.currentState == 2) {
+      this.vSy.wF(i);
+    }
+    AppMethodBeat.o(27585);
     return true;
   }
 }

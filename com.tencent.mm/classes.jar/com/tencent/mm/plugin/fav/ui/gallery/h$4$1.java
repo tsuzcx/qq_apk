@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class h$4$1
   implements Runnable
 {
@@ -7,10 +9,12 @@ final class h$4$1
   
   public final void run()
   {
-    this.kim.kij.kie.khH = false;
-    if (this.kim.kij.kid != null) {
-      this.kim.kij.kid.k(this.kim.kik, this.kil);
+    AppMethodBeat.i(74593);
+    this.mCQ.mCP.mCL.kFv = false;
+    if (this.mCQ.mCP.mCK != null) {
+      this.mCQ.mCP.mCK.s(this.mCQ.kFC, this.kFN);
     }
+    AppMethodBeat.o(74593);
   }
 }
 

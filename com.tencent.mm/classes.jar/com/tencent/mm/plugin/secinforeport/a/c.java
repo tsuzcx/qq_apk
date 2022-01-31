@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.secinforeport.a;
 
 public abstract interface c
 {
-  public abstract boolean M(int paramInt, long paramLong);
+  public abstract void CU(int paramInt);
   
-  public abstract void dI(int paramInt1, int paramInt2);
+  public abstract boolean ac(int paramInt, long paramLong);
   
-  public abstract void o(int paramInt, byte[] paramArrayOfByte);
+  public abstract void fq(int paramInt1, int paramInt2);
   
-  public abstract void wZ(int paramInt);
+  public abstract void p(int paramInt, byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.secinforeport.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.mm.console;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$6$2$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class b$6$2$1
   
   public final void run()
   {
-    b.y(this.dAD.dAC.val$context, "RSA(base) fatal err, must recheck!!!");
+    AppMethodBeat.i(16084);
+    b.D(this.euf.eue.val$context, "RSA(base) fatal err, must recheck!!!");
+    AppMethodBeat.o(16084);
   }
 }
 

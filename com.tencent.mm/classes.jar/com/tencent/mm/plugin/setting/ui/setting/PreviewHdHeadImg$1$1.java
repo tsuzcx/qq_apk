@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.ag.b;
-import com.tencent.mm.ag.d;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.setting.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.b;
+import com.tencent.mm.ah.d;
+import com.tencent.mm.ah.o;
+import com.tencent.mm.model.r;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.vfs.e;
@@ -15,22 +15,24 @@ final class PreviewHdHeadImg$1$1
 {
   PreviewHdHeadImg$1$1(PreviewHdHeadImg.1 param1) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.fq(1, a.i.settings_avatar_select_from_album);
-    Bitmap localBitmap = b.a(PreviewHdHeadImg.a(this.nSr.nSq), true, -1);
-    o.JQ();
-    if (e.bK(d.A(q.Gj() + ".last", true))) {
-      paraml.fq(3, a.i.settings_see_last_avatar);
+    AppMethodBeat.i(126987);
+    paraml.hx(1, 2131303216);
+    Bitmap localBitmap = b.b(PreviewHdHeadImg.a(this.qGp.qGo), true, -1);
+    o.acQ();
+    if (e.cN(d.E(r.Zn() + ".last", true))) {
+      paraml.hx(3, 2131303413);
     }
     if (localBitmap != null) {
-      paraml.fq(2, a.i.get_hd_head_img_save_alert);
+      paraml.hx(2, 2131300526);
     }
+    AppMethodBeat.o(126987);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.PreviewHdHeadImg.1.1
  * JD-Core Version:    0.7.0.1
  */

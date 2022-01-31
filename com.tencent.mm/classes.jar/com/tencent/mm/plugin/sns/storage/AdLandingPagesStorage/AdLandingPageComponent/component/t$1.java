@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.j;
 
 final class t$1
   implements View.OnClickListener
@@ -11,9 +12,11 @@ final class t$1
   
   public final void onClick(View paramView)
   {
-    this.oHv.bFs();
-    paramView = (k)this.oHv.bFt();
-    this.oHv.b(this.oHv.context, paramView.oCx, paramView.oCy, paramView.oCz);
+    AppMethodBeat.i(37239);
+    this.rxl.crh();
+    paramView = (j)this.rxl.cri();
+    this.rxl.b(this.rxl.context, paramView.rrW, paramView.rrX, paramView.rrY);
+    AppMethodBeat.o(37239);
   }
 }
 

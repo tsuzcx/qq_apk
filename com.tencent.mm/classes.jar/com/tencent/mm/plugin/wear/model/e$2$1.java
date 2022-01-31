@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wear.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.e.j;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.f.c;
@@ -15,15 +16,20 @@ final class e$2$1
     return "SendMsgSyncTask";
   }
   
-  protected final void send()
+  public final void send()
   {
+    AppMethodBeat.i(26297);
     try
     {
-      a.bYL();
-      r.b(20007, a.bYL().qRu.qRM.qSB.getBytes("utf8"), false);
+      a.cYy();
+      r.a(20007, a.cYy().uGC.uGU.uHI.getBytes("utf8"), false);
+      AppMethodBeat.o(26297);
       return;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      AppMethodBeat.o(26297);
+    }
   }
 }
 

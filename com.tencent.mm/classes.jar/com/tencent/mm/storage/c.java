@@ -1,9 +1,10 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.h.c.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.d;
 import com.tencent.mm.model.c.a;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -12,78 +13,90 @@ public final class c
   extends d
   implements Serializable
 {
-  protected static c.a buS;
-  private Map<String, String> umO = null;
+  protected static c.a info;
+  private Map<String, String> ywu = null;
   
   static
   {
+    AppMethodBeat.i(118211);
     c.a locala = new c.a();
-    locala.ujL = new Field[9];
+    locala.yrK = new Field[9];
     locala.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "layerId";
-    locala.ujN.put("layerId", "TEXT PRIMARY KEY ");
+    locala.yrM.put("layerId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" layerId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "layerId";
+    locala.yrL = "layerId";
     locala.columns[1] = "business";
-    locala.ujN.put("business", "TEXT");
+    locala.yrM.put("business", "TEXT");
     localStringBuilder.append(" business TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "expId";
-    locala.ujN.put("expId", "TEXT");
+    locala.yrM.put("expId", "TEXT");
     localStringBuilder.append(" expId TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "sequence";
-    locala.ujN.put("sequence", "LONG");
+    locala.yrM.put("sequence", "LONG");
     localStringBuilder.append(" sequence LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "prioritylevel";
-    locala.ujN.put("prioritylevel", "INTEGER default '0' ");
+    locala.yrM.put("prioritylevel", "INTEGER default '0' ");
     localStringBuilder.append(" prioritylevel INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "startTime";
-    locala.ujN.put("startTime", "LONG");
+    locala.yrM.put("startTime", "LONG");
     localStringBuilder.append(" startTime LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "endTime";
-    locala.ujN.put("endTime", "LONG");
+    locala.yrM.put("endTime", "LONG");
     localStringBuilder.append(" endTime LONG");
     localStringBuilder.append(", ");
     locala.columns[7] = "needReport";
-    locala.ujN.put("needReport", "INTEGER");
+    locala.yrM.put("needReport", "INTEGER");
     localStringBuilder.append(" needReport INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "rawXML";
-    locala.ujN.put("rawXML", "TEXT default '' ");
+    locala.yrM.put("rawXML", "TEXT default '' ");
     localStringBuilder.append(" rawXML TEXT default '' ");
     locala.columns[9] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(118211);
   }
   
-  public final Map<String, String> ctr()
+  public final Map<String, String> dvN()
   {
-    if (this.umO == null) {
-      this.umO = a.jk(this.field_rawXML);
+    AppMethodBeat.i(118210);
+    if (this.ywu == null) {
+      this.ywu = a.pY(this.field_rawXML);
     }
-    return this.umO;
+    Map localMap = this.ywu;
+    AppMethodBeat.o(118210);
+    return localMap;
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return info;
   }
   
   public final boolean isValid()
   {
-    long l = bk.UX();
-    return (l >= this.field_startTime) && (l <= this.field_endTime);
-  }
-  
-  protected final c.a rM()
-  {
-    return buS;
+    AppMethodBeat.i(118209);
+    long l = bo.aox();
+    if ((l >= this.field_startTime) && (l <= this.field_endTime))
+    {
+      AppMethodBeat.o(118209);
+      return true;
+    }
+    AppMethodBeat.o(118209);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,410 +1,890 @@
 package android.support.v7.widget;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.database.DataSetObservable;
-import android.os.AsyncTask;
-import android.text.TextUtils;
+import android.support.v4.e.k.a;
+import android.support.v4.e.k.b;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-class d
-  extends DataSetObservable
+final class d
+  implements ai.a
 {
-  static final String LT = d.class.getSimpleName();
-  private static final Object Ys = new Object();
-  private static final Map<String, d> Yt = new HashMap();
-  boolean YA;
-  private boolean YB;
-  private boolean YC;
-  private boolean YD;
-  private d.d YE;
-  final Object Yu;
-  final List<d.a> Yv;
-  private final List<d.c> Yw;
-  final String Yx;
-  private d.b Yy;
-  private int Yz;
-  final Context mContext;
-  private Intent mIntent;
+  private k.a<d.b> ZO = new k.b(30);
+  final ArrayList<d.b> ZP = new ArrayList();
+  final ArrayList<d.b> ZQ = new ArrayList();
+  final d.a ZR;
+  Runnable ZS;
+  final boolean ZT;
+  final ai ZU;
+  int ZV = 0;
   
-  private boolean fR()
+  d(d.a parama)
   {
-    if ((this.Yy != null) && (this.mIntent != null) && (!this.Yv.isEmpty()) && (!this.Yw.isEmpty()))
-    {
-      Collections.unmodifiableList(this.Yw);
-      return true;
-    }
-    return false;
+    this(parama, (byte)0);
   }
   
-  private void fS()
+  private d(d.a parama, byte paramByte)
   {
-    int j = this.Yw.size() - this.Yz;
-    if (j <= 0) {}
-    for (;;)
-    {
-      return;
-      this.YC = true;
-      int i = 0;
-      while (i < j)
-      {
-        this.Yw.remove(0);
-        i += 1;
-      }
-    }
+    this.ZR = parama;
+    this.ZT = false;
+    this.ZU = new ai(this);
   }
   
-  /* Error */
-  private void fT()
+  private int I(int paramInt1, int paramInt2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 109	android/support/v7/widget/d:mContext	Landroid/content/Context;
-    //   4: aload_0
-    //   5: getfield 111	android/support/v7/widget/d:Yx	Ljava/lang/String;
-    //   8: invokevirtual 117	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
-    //   11: astore_2
-    //   12: invokestatic 123	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
-    //   15: astore_3
-    //   16: aload_3
-    //   17: aload_2
-    //   18: ldc 125
-    //   20: invokeinterface 131 3 0
-    //   25: iconst_0
-    //   26: istore_1
-    //   27: iload_1
-    //   28: iconst_1
-    //   29: if_icmpeq +18 -> 47
-    //   32: iload_1
-    //   33: iconst_2
-    //   34: if_icmpeq +13 -> 47
-    //   37: aload_3
-    //   38: invokeinterface 134 1 0
-    //   43: istore_1
-    //   44: goto -17 -> 27
-    //   47: ldc 136
-    //   49: aload_3
-    //   50: invokeinterface 139 1 0
-    //   55: invokevirtual 145	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   58: ifne +40 -> 98
-    //   61: new 105	org/xmlpull/v1/XmlPullParserException
-    //   64: dup
-    //   65: ldc 147
-    //   67: invokespecial 150	org/xmlpull/v1/XmlPullParserException:<init>	(Ljava/lang/String;)V
-    //   70: athrow
-    //   71: astore_3
-    //   72: new 152	java/lang/StringBuilder
-    //   75: dup
-    //   76: ldc 154
-    //   78: invokespecial 155	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   81: aload_0
-    //   82: getfield 111	android/support/v7/widget/d:Yx	Ljava/lang/String;
-    //   85: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: pop
-    //   89: aload_2
-    //   90: ifnull +7 -> 97
-    //   93: aload_2
-    //   94: invokevirtual 164	java/io/FileInputStream:close	()V
-    //   97: return
-    //   98: aload_0
-    //   99: getfield 81	android/support/v7/widget/d:Yw	Ljava/util/List;
-    //   102: astore 4
-    //   104: aload 4
-    //   106: invokeinterface 167 1 0
-    //   111: aload_3
-    //   112: invokeinterface 134 1 0
-    //   117: istore_1
-    //   118: iload_1
-    //   119: iconst_1
-    //   120: if_icmpeq +128 -> 248
-    //   123: iload_1
-    //   124: iconst_3
-    //   125: if_icmpeq -14 -> 111
-    //   128: iload_1
-    //   129: iconst_4
-    //   130: if_icmpeq -19 -> 111
-    //   133: ldc 169
-    //   135: aload_3
-    //   136: invokeinterface 139 1 0
-    //   141: invokevirtual 145	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   144: ifne +42 -> 186
-    //   147: new 105	org/xmlpull/v1/XmlPullParserException
-    //   150: dup
-    //   151: ldc 171
-    //   153: invokespecial 150	org/xmlpull/v1/XmlPullParserException:<init>	(Ljava/lang/String;)V
-    //   156: athrow
-    //   157: astore_3
-    //   158: new 152	java/lang/StringBuilder
-    //   161: dup
-    //   162: ldc 154
-    //   164: invokespecial 155	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   167: aload_0
-    //   168: getfield 111	android/support/v7/widget/d:Yx	Ljava/lang/String;
-    //   171: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: pop
-    //   175: aload_2
-    //   176: ifnull -79 -> 97
-    //   179: aload_2
-    //   180: invokevirtual 164	java/io/FileInputStream:close	()V
-    //   183: return
-    //   184: astore_2
-    //   185: return
-    //   186: aload 4
-    //   188: new 10	android/support/v7/widget/d$c
-    //   191: dup
-    //   192: aload_3
-    //   193: aconst_null
-    //   194: ldc 173
-    //   196: invokeinterface 177 3 0
-    //   201: aload_3
-    //   202: aconst_null
-    //   203: ldc 179
-    //   205: invokeinterface 177 3 0
-    //   210: invokestatic 185	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   213: aload_3
-    //   214: aconst_null
-    //   215: ldc 187
-    //   217: invokeinterface 177 3 0
-    //   222: invokestatic 193	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   225: invokespecial 196	android/support/v7/widget/d$c:<init>	(Ljava/lang/String;JF)V
-    //   228: invokeinterface 199 2 0
-    //   233: pop
-    //   234: goto -123 -> 111
-    //   237: astore_3
-    //   238: aload_2
-    //   239: ifnull +7 -> 246
-    //   242: aload_2
-    //   243: invokevirtual 164	java/io/FileInputStream:close	()V
-    //   246: aload_3
-    //   247: athrow
-    //   248: aload_2
-    //   249: ifnull -152 -> 97
-    //   252: aload_2
-    //   253: invokevirtual 164	java/io/FileInputStream:close	()V
-    //   256: return
-    //   257: astore_2
-    //   258: return
-    //   259: astore_2
-    //   260: return
-    //   261: astore_2
-    //   262: goto -16 -> 246
-    //   265: astore_2
-    //   266: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	267	0	this	d
-    //   26	105	1	i	int
-    //   11	169	2	localFileInputStream	java.io.FileInputStream
-    //   184	69	2	localIOException1	java.io.IOException
-    //   257	1	2	localIOException2	java.io.IOException
-    //   259	1	2	localIOException3	java.io.IOException
-    //   261	1	2	localIOException4	java.io.IOException
-    //   265	1	2	localFileNotFoundException	java.io.FileNotFoundException
-    //   15	35	3	localXmlPullParser	org.xmlpull.v1.XmlPullParser
-    //   71	65	3	localXmlPullParserException	org.xmlpull.v1.XmlPullParserException
-    //   157	57	3	localIOException5	java.io.IOException
-    //   237	10	3	localObject	Object
-    //   102	85	4	localList	List
-    // Exception table:
-    //   from	to	target	type
-    //   12	25	71	org/xmlpull/v1/XmlPullParserException
-    //   37	44	71	org/xmlpull/v1/XmlPullParserException
-    //   47	71	71	org/xmlpull/v1/XmlPullParserException
-    //   98	111	71	org/xmlpull/v1/XmlPullParserException
-    //   111	118	71	org/xmlpull/v1/XmlPullParserException
-    //   133	157	71	org/xmlpull/v1/XmlPullParserException
-    //   186	234	71	org/xmlpull/v1/XmlPullParserException
-    //   12	25	157	java/io/IOException
-    //   37	44	157	java/io/IOException
-    //   47	71	157	java/io/IOException
-    //   98	111	157	java/io/IOException
-    //   111	118	157	java/io/IOException
-    //   133	157	157	java/io/IOException
-    //   186	234	157	java/io/IOException
-    //   179	183	184	java/io/IOException
-    //   12	25	237	finally
-    //   37	44	237	finally
-    //   47	71	237	finally
-    //   72	89	237	finally
-    //   98	111	237	finally
-    //   111	118	237	finally
-    //   133	157	237	finally
-    //   158	175	237	finally
-    //   186	234	237	finally
-    //   252	256	257	java/io/IOException
-    //   93	97	259	java/io/IOException
-    //   242	246	261	java/io/IOException
-    //   0	12	265	java/io/FileNotFoundException
-  }
-  
-  public final int a(ResolveInfo paramResolveInfo)
-  {
-    for (;;)
+    int i = this.ZQ.size() - 1;
+    d.b localb;
+    if (i >= 0)
     {
-      int i;
-      synchronized (this.Yu)
-      {
-        fQ();
-        List localList = this.Yv;
-        int j = localList.size();
-        i = 0;
-        if (i < j)
+      localb = (d.b)this.ZQ.get(i);
+      int k;
+      int j;
+      if (localb.vA == 8) {
+        if (localb.ZW < localb.ZY)
         {
-          if (((d.a)localList.get(i)).resolveInfo == paramResolveInfo) {
-            return i;
+          k = localb.ZW;
+          j = localb.ZY;
+          label64:
+          if ((paramInt1 < k) || (paramInt1 > j)) {
+            break label195;
+          }
+          if (k != localb.ZW) {
+            break label151;
+          }
+          if (paramInt2 != 1) {
+            break label131;
+          }
+          localb.ZY += 1;
+          label103:
+          paramInt1 += 1;
+        }
+      }
+      for (;;)
+      {
+        i -= 1;
+        break;
+        k = localb.ZY;
+        j = localb.ZW;
+        break label64;
+        label131:
+        if (paramInt2 != 2) {
+          break label103;
+        }
+        localb.ZY -= 1;
+        break label103;
+        label151:
+        if (paramInt2 == 1) {
+          localb.ZW += 1;
+        }
+        for (;;)
+        {
+          paramInt1 -= 1;
+          break;
+          if (paramInt2 == 2) {
+            localb.ZW -= 1;
           }
         }
-        else {
-          return -1;
+        label195:
+        if (paramInt1 < localb.ZW)
+        {
+          if (paramInt2 == 1)
+          {
+            localb.ZW += 1;
+            localb.ZY += 1;
+            continue;
+          }
+          if (paramInt2 == 2)
+          {
+            localb.ZW -= 1;
+            localb.ZY -= 1;
+          }
+        }
+        continue;
+        if (localb.ZW <= paramInt1)
+        {
+          if (localb.vA == 1) {
+            paramInt1 -= localb.ZY;
+          } else if (localb.vA == 2) {
+            paramInt1 = localb.ZY + paramInt1;
+          }
+        }
+        else if (paramInt2 == 1) {
+          localb.ZW += 1;
+        } else if (paramInt2 == 2) {
+          localb.ZW -= 1;
+        }
+      }
+    }
+    paramInt2 = this.ZQ.size() - 1;
+    if (paramInt2 >= 0)
+    {
+      localb = (d.b)this.ZQ.get(paramInt2);
+      if (localb.vA == 8) {
+        if ((localb.ZY == localb.ZW) || (localb.ZY < 0))
+        {
+          this.ZQ.remove(paramInt2);
+          c(localb);
+        }
+      }
+      for (;;)
+      {
+        paramInt2 -= 1;
+        break;
+        if (localb.ZY <= 0)
+        {
+          this.ZQ.remove(paramInt2);
+          c(localb);
+        }
+      }
+    }
+    return paramInt1;
+  }
+  
+  private void a(d.b paramb)
+  {
+    if ((paramb.vA == 1) || (paramb.vA == 8)) {
+      throw new IllegalArgumentException("should not dispatch add or move for pre layout");
+    }
+    int i1 = I(paramb.ZW, paramb.vA);
+    int j = paramb.ZW;
+    int k;
+    int m;
+    int n;
+    label102:
+    int i2;
+    switch (paramb.vA)
+    {
+    case 3: 
+    default: 
+      throw new IllegalArgumentException("op should be remove or update.".concat(String.valueOf(paramb)));
+    case 4: 
+      k = 1;
+      m = 1;
+      n = 1;
+      if (m >= paramb.ZY) {
+        break label286;
+      }
+      i2 = I(paramb.ZW + k * m, paramb.vA);
+      switch (paramb.vA)
+      {
+      case 3: 
+      default: 
+        i = 0;
+        label162:
+        if (i == 0) {}
+        break;
+      }
+      break;
+    }
+    for (int i = n + 1;; i = n)
+    {
+      m += 1;
+      n = i;
+      break label102;
+      k = 0;
+      break;
+      if (i2 == i1 + 1)
+      {
+        i = 1;
+        break label162;
+      }
+      i = 0;
+      break label162;
+      if (i2 == i1)
+      {
+        i = 1;
+        break label162;
+      }
+      i = 0;
+      break label162;
+      localObject = b(paramb.vA, i1, n, paramb.ZX);
+      a((d.b)localObject, j);
+      c((d.b)localObject);
+      i = j;
+      if (paramb.vA == 4) {
+        i = j + n;
+      }
+      n = 1;
+      i1 = i2;
+      j = i;
+    }
+    label286:
+    Object localObject = paramb.ZX;
+    c(paramb);
+    if (n > 0)
+    {
+      paramb = b(paramb.vA, i1, n, localObject);
+      a(paramb, j);
+      c(paramb);
+    }
+  }
+  
+  private void a(d.b paramb, int paramInt)
+  {
+    this.ZR.d(paramb);
+    switch (paramb.vA)
+    {
+    case 3: 
+    default: 
+      throw new IllegalArgumentException("only remove and update ops can be dispatched in first pass");
+    case 2: 
+      this.ZR.K(paramInt, paramb.ZY);
+      return;
+    }
+    this.ZR.d(paramInt, paramb.ZY, paramb.ZX);
+  }
+  
+  private void b(d.b paramb)
+  {
+    this.ZQ.add(paramb);
+    switch (paramb.vA)
+    {
+    case 3: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      throw new IllegalArgumentException("Unknown update op type for ".concat(String.valueOf(paramb)));
+    case 1: 
+      this.ZR.M(paramb.ZW, paramb.ZY);
+      return;
+    case 8: 
+      this.ZR.N(paramb.ZW, paramb.ZY);
+      return;
+    case 2: 
+      this.ZR.L(paramb.ZW, paramb.ZY);
+      return;
+    }
+    this.ZR.d(paramb.ZW, paramb.ZY, paramb.ZX);
+  }
+  
+  private boolean bj(int paramInt)
+  {
+    int k = this.ZQ.size();
+    int i = 0;
+    while (i < k)
+    {
+      d.b localb = (d.b)this.ZQ.get(i);
+      if (localb.vA == 8)
+      {
+        if (J(localb.ZY, i + 1) == paramInt) {
+          return true;
+        }
+      }
+      else if (localb.vA == 1)
+      {
+        int m = localb.ZW;
+        int n = localb.ZY;
+        int j = localb.ZW;
+        while (j < m + n)
+        {
+          if (J(j, i + 1) == paramInt) {
+            return true;
+          }
+          j += 1;
         }
       }
       i += 1;
     }
+    return false;
   }
   
-  final boolean a(d.c paramc)
+  private void n(List<d.b> paramList)
   {
-    boolean bool = this.Yw.add(paramc);
-    if (bool)
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
     {
-      this.YC = true;
-      fS();
-      if (!this.YB) {
-        throw new IllegalStateException("No preceding call to #readHistoricalData");
-      }
-      if (this.YC)
-      {
-        this.YC = false;
-        if (!TextUtils.isEmpty(this.Yx)) {
-          new d.e(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Object[] { new ArrayList(this.Yw), this.Yx });
+      c((d.b)paramList.get(i));
+      i += 1;
+    }
+    paramList.clear();
+  }
+  
+  final int J(int paramInt1, int paramInt2)
+  {
+    int k = this.ZQ.size();
+    int j = paramInt2;
+    paramInt2 = paramInt1;
+    paramInt1 = paramInt2;
+    d.b localb;
+    if (j < k)
+    {
+      localb = (d.b)this.ZQ.get(j);
+      if (localb.vA == 8) {
+        if (localb.ZW == paramInt2) {
+          paramInt1 = localb.ZY;
         }
       }
-      fR();
-      notifyChanged();
-    }
-    return bool;
-  }
-  
-  public final ResolveInfo bh(int paramInt)
-  {
-    synchronized (this.Yu)
-    {
-      fQ();
-      ResolveInfo localResolveInfo = ((d.a)this.Yv.get(paramInt)).resolveInfo;
-      return localResolveInfo;
-    }
-  }
-  
-  public final Intent bi(int paramInt)
-  {
-    synchronized (this.Yu)
-    {
-      if (this.mIntent == null) {
-        return null;
-      }
-      fQ();
-      Object localObject2 = (d.a)this.Yv.get(paramInt);
-      localObject2 = new ComponentName(((d.a)localObject2).resolveInfo.activityInfo.packageName, ((d.a)localObject2).resolveInfo.activityInfo.name);
-      Intent localIntent = new Intent(this.mIntent);
-      localIntent.setComponent((ComponentName)localObject2);
-      if (this.YE != null)
-      {
-        new Intent(localIntent);
-        if (this.YE.fU()) {
-          return null;
-        }
-      }
-      a(new d.c((ComponentName)localObject2, System.currentTimeMillis(), 1.0F));
-      return localIntent;
-    }
-  }
-  
-  public final int fO()
-  {
-    synchronized (this.Yu)
-    {
-      fQ();
-      int i = this.Yv.size();
-      return i;
-    }
-  }
-  
-  public final ResolveInfo fP()
-  {
-    synchronized (this.Yu)
-    {
-      fQ();
-      if (!this.Yv.isEmpty())
-      {
-        ResolveInfo localResolveInfo = ((d.a)this.Yv.get(0)).resolveInfo;
-        return localResolveInfo;
-      }
-      return null;
-    }
-  }
-  
-  final void fQ()
-  {
-    int j = 1;
-    int i;
-    if ((this.YD) && (this.mIntent != null))
-    {
-      this.YD = false;
-      this.Yv.clear();
-      List localList = this.mContext.getPackageManager().queryIntentActivities(this.mIntent, 0);
-      int k = localList.size();
-      i = 0;
-      while (i < k)
-      {
-        ResolveInfo localResolveInfo = (ResolveInfo)localList.get(i);
-        this.Yv.add(new d.a(localResolveInfo));
-        i += 1;
-      }
-      i = 1;
-      if ((!this.YA) || (!this.YC) || (TextUtils.isEmpty(this.Yx))) {
-        break label166;
-      }
-      this.YA = false;
-      this.YB = true;
-      fT();
     }
     for (;;)
     {
-      fS();
-      if ((i | j) != 0)
-      {
-        fR();
-        notifyChanged();
-      }
-      return;
-      i = 0;
+      j += 1;
+      paramInt2 = paramInt1;
       break;
-      label166:
-      j = 0;
+      int i = paramInt2;
+      if (localb.ZW < paramInt2) {
+        i = paramInt2 - 1;
+      }
+      paramInt1 = i;
+      if (localb.ZY <= i)
+      {
+        paramInt1 = i + 1;
+        continue;
+        paramInt1 = paramInt2;
+        if (localb.ZW <= paramInt2) {
+          if (localb.vA == 2)
+          {
+            if (paramInt2 < localb.ZW + localb.ZY)
+            {
+              paramInt1 = -1;
+              return paramInt1;
+            }
+            paramInt1 = paramInt2 - localb.ZY;
+          }
+          else
+          {
+            paramInt1 = paramInt2;
+            if (localb.vA == 1) {
+              paramInt1 = paramInt2 + localb.ZY;
+            }
+          }
+        }
+      }
     }
   }
   
-  public final int getHistorySize()
+  public final d.b b(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    synchronized (this.Yu)
-    {
-      fQ();
-      int i = this.Yw.size();
-      return i;
+    d.b localb = (d.b)this.ZO.acquire();
+    if (localb == null) {
+      return new d.b(paramInt1, paramInt2, paramInt3, paramObject);
     }
+    localb.vA = paramInt1;
+    localb.ZW = paramInt2;
+    localb.ZY = paramInt3;
+    localb.ZX = paramObject;
+    return localb;
+  }
+  
+  final boolean bk(int paramInt)
+  {
+    return (this.ZV & paramInt) != 0;
+  }
+  
+  final int bl(int paramInt)
+  {
+    return J(paramInt, 0);
+  }
+  
+  public final int bm(int paramInt)
+  {
+    int m = this.ZP.size();
+    int k = 0;
+    int i = paramInt;
+    paramInt = i;
+    d.b localb;
+    if (k < m)
+    {
+      localb = (d.b)this.ZP.get(k);
+      switch (localb.vA)
+      {
+      default: 
+        paramInt = i;
+      }
+    }
+    for (;;)
+    {
+      k += 1;
+      i = paramInt;
+      break;
+      paramInt = i;
+      if (localb.ZW <= i)
+      {
+        paramInt = i + localb.ZY;
+        continue;
+        paramInt = i;
+        if (localb.ZW <= i)
+        {
+          if (localb.ZW + localb.ZY > i)
+          {
+            paramInt = -1;
+            return paramInt;
+          }
+          paramInt = i - localb.ZY;
+          continue;
+          if (localb.ZW == i)
+          {
+            paramInt = localb.ZY;
+          }
+          else
+          {
+            int j = i;
+            if (localb.ZW < i) {
+              j = i - 1;
+            }
+            paramInt = j;
+            if (localb.ZY <= j) {
+              paramInt = j + 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public final void c(d.b paramb)
+  {
+    if (!this.ZT)
+    {
+      paramb.ZX = null;
+      this.ZO.release(paramb);
+    }
+  }
+  
+  final void gW()
+  {
+    ai localai = this.ZU;
+    ArrayList localArrayList = this.ZP;
+    int i;
+    label24:
+    label53:
+    int i1;
+    d.b localb2;
+    d.b localb3;
+    int k;
+    for (;;)
+    {
+      j = 0;
+      i = localArrayList.size() - 1;
+      if (i < 0) {
+        break label268;
+      }
+      if (((d.b)localArrayList.get(i)).vA != 8) {
+        break;
+      }
+      if (j == 0) {
+        break label1840;
+      }
+      j = i;
+      if (j == -1) {
+        break label1251;
+      }
+      i1 = j + 1;
+      localb2 = (d.b)localArrayList.get(j);
+      localb3 = (d.b)localArrayList.get(i1);
+      switch (localb3.vA)
+      {
+      case 3: 
+      default: 
+        break;
+      case 1: 
+        i = 0;
+        if (localb2.ZY < localb3.ZW) {
+          i = -1;
+        }
+        k = i;
+        if (localb2.ZW < localb3.ZW) {
+          k = i + 1;
+        }
+        if (localb3.ZW <= localb2.ZW) {
+          localb2.ZW += localb3.ZY;
+        }
+        if (localb3.ZW <= localb2.ZY) {
+          localb2.ZY += localb3.ZY;
+        }
+        localb3.ZW = (k + localb3.ZW);
+        localArrayList.set(j, localb3);
+        localArrayList.set(i1, localb2);
+      }
+    }
+    int j = 1;
+    label268:
+    label655:
+    label1840:
+    for (;;)
+    {
+      i -= 1;
+      break label24;
+      j = -1;
+      break label53;
+      d.b localb1 = null;
+      int m = 0;
+      int n;
+      if (localb2.ZW < localb2.ZY)
+      {
+        n = 0;
+        k = n;
+        i = m;
+        if (localb3.ZW == localb2.ZW)
+        {
+          k = n;
+          i = m;
+          if (localb3.ZY == localb2.ZY - localb2.ZW)
+          {
+            i = 1;
+            k = n;
+          }
+        }
+        label344:
+        if (localb2.ZY >= localb3.ZW) {
+          break label491;
+        }
+        localb3.ZW -= 1;
+        label369:
+        if (localb2.ZW > localb3.ZW) {
+          break label567;
+        }
+        localb3.ZW += 1;
+      }
+      for (;;)
+      {
+        if (i == 0) {
+          break label655;
+        }
+        localArrayList.set(j, localb3);
+        localArrayList.remove(i1);
+        localai.ahA.c(localb2);
+        break;
+        n = 1;
+        k = n;
+        i = m;
+        if (localb3.ZW != localb2.ZY + 1) {
+          break label344;
+        }
+        k = n;
+        i = m;
+        if (localb3.ZY != localb2.ZW - localb2.ZY) {
+          break label344;
+        }
+        i = 1;
+        k = n;
+        break label344;
+        label491:
+        if (localb2.ZY >= localb3.ZW + localb3.ZY) {
+          break label369;
+        }
+        localb3.ZY -= 1;
+        localb2.vA = 2;
+        localb2.ZY = 1;
+        if (localb3.ZY != 0) {
+          break;
+        }
+        localArrayList.remove(i1);
+        localai.ahA.c(localb3);
+        break;
+        label567:
+        if (localb2.ZW < localb3.ZW + localb3.ZY)
+        {
+          m = localb3.ZW;
+          n = localb3.ZY;
+          i2 = localb2.ZW;
+          localb1 = localai.ahA.b(2, localb2.ZW + 1, m + n - i2, null);
+          localb3.ZY = (localb2.ZW - localb3.ZW);
+        }
+      }
+      if (k != 0)
+      {
+        if (localb1 != null)
+        {
+          if (localb2.ZW > localb1.ZW) {
+            localb2.ZW -= localb1.ZY;
+          }
+          if (localb2.ZY > localb1.ZW) {
+            localb2.ZY -= localb1.ZY;
+          }
+        }
+        if (localb2.ZW > localb3.ZW) {
+          localb2.ZW -= localb3.ZY;
+        }
+        if (localb2.ZY > localb3.ZW) {
+          localb2.ZY -= localb3.ZY;
+        }
+        localArrayList.set(j, localb3);
+        if (localb2.ZW == localb2.ZY) {
+          break label958;
+        }
+        localArrayList.set(i1, localb2);
+      }
+      while (localb1 != null)
+      {
+        localArrayList.add(j, localb1);
+        break;
+        if (localb1 != null)
+        {
+          if (localb2.ZW >= localb1.ZW) {
+            localb2.ZW -= localb1.ZY;
+          }
+          if (localb2.ZY >= localb1.ZW) {
+            localb2.ZY -= localb1.ZY;
+          }
+        }
+        if (localb2.ZW >= localb3.ZW) {
+          localb2.ZW -= localb3.ZY;
+        }
+        if (localb2.ZY < localb3.ZW) {
+          break label780;
+        }
+        localb2.ZY -= localb3.ZY;
+        break label780;
+        label958:
+        localArrayList.remove(i1);
+      }
+      localb1 = null;
+      Object localObject = null;
+      if (localb2.ZY < localb3.ZW)
+      {
+        localb3.ZW -= 1;
+        label1002:
+        if (localb2.ZW > localb3.ZW) {
+          break label1149;
+        }
+        localb3.ZW += 1;
+        localArrayList.set(i1, localb2);
+        if (localb3.ZY <= 0) {
+          break label1227;
+        }
+        localArrayList.set(j, localb3);
+      }
+      for (;;)
+      {
+        if (localb1 != null) {
+          localArrayList.add(j, localb1);
+        }
+        if (localObject == null) {
+          break;
+        }
+        localArrayList.add(j, localObject);
+        break;
+        if (localb2.ZY >= localb3.ZW + localb3.ZY) {
+          break label1002;
+        }
+        localb3.ZY -= 1;
+        localb1 = localai.ahA.b(4, localb2.ZW, 1, localb3.ZX);
+        break label1002;
+        label1149:
+        if (localb2.ZW >= localb3.ZW + localb3.ZY) {
+          break label1027;
+        }
+        i = localb3.ZW + localb3.ZY - localb2.ZW;
+        localObject = localai.ahA.b(4, localb2.ZW + 1, i, localb3.ZX);
+        localb3.ZY -= i;
+        break label1027;
+        label1227:
+        localArrayList.remove(j);
+        localai.ahA.c(localb3);
+      }
+      label1251:
+      int i4 = this.ZP.size();
+      int i2 = 0;
+      if (i2 < i4)
+      {
+        localb1 = (d.b)this.ZP.get(i2);
+        switch (localb1.vA)
+        {
+        }
+        for (;;)
+        {
+          if (this.ZS != null) {
+            this.ZS.run();
+          }
+          i2 += 1;
+          break;
+          b(localb1);
+          continue;
+          int i3 = localb1.ZW;
+          i = localb1.ZW;
+          j = localb1.ZY + i;
+          i1 = -1;
+          i = localb1.ZW;
+          n = 0;
+          if (i < j)
+          {
+            k = 0;
+            m = 0;
+            if ((this.ZR.bn(i) != null) || (bj(i)))
+            {
+              if (i1 == 0)
+              {
+                a(b(2, i3, n, null));
+                m = 1;
+              }
+              k = 1;
+              label1458:
+              if (m == 0) {
+                break label1528;
+              }
+              m = i - n;
+              j -= n;
+            }
+            for (i = 1;; i = n)
+            {
+              m += 1;
+              n = i;
+              i = m;
+              i1 = k;
+              break;
+              if (i1 == 1)
+              {
+                b(b(2, i3, n, null));
+                k = 1;
+              }
+              i1 = 0;
+              m = k;
+              k = i1;
+              break label1458;
+              label1528:
+              n += 1;
+              m = i;
+            }
+          }
+          localObject = localb1;
+          if (n != localb1.ZY)
+          {
+            c(localb1);
+            localObject = b(2, i3, n, null);
+          }
+          if (i1 == 0)
+          {
+            a((d.b)localObject);
+          }
+          else
+          {
+            b((d.b)localObject);
+            continue;
+            j = localb1.ZW;
+            k = 0;
+            int i5 = localb1.ZW;
+            int i6 = localb1.ZY;
+            i3 = -1;
+            i = localb1.ZW;
+            if (i < i5 + i6)
+            {
+              if ((this.ZR.bn(i) != null) || (bj(i)))
+              {
+                n = j;
+                i1 = k;
+                if (i3 == 0)
+                {
+                  a(b(4, j, k, localb1.ZX));
+                  i1 = 0;
+                  n = i;
+                }
+                m = 1;
+                j = n;
+              }
+              for (;;)
+              {
+                k = i1 + 1;
+                i += 1;
+                i3 = m;
+                break;
+                n = j;
+                m = k;
+                if (i3 == 1)
+                {
+                  b(b(4, j, k, localb1.ZX));
+                  m = 0;
+                  n = i;
+                }
+                k = 0;
+                j = n;
+                i1 = m;
+                m = k;
+              }
+            }
+            localObject = localb1;
+            if (k != localb1.ZY)
+            {
+              localObject = localb1.ZX;
+              c(localb1);
+              localObject = b(4, j, k, localObject);
+            }
+            if (i3 == 0)
+            {
+              a((d.b)localObject);
+            }
+            else
+            {
+              b((d.b)localObject);
+              continue;
+              b(localb1);
+            }
+          }
+        }
+      }
+      this.ZP.clear();
+      return;
+    }
+  }
+  
+  final void gX()
+  {
+    int j = this.ZQ.size();
+    int i = 0;
+    while (i < j)
+    {
+      this.ZR.e((d.b)this.ZQ.get(i));
+      i += 1;
+    }
+    n(this.ZQ);
+    this.ZV = 0;
+  }
+  
+  final boolean gY()
+  {
+    return this.ZP.size() > 0;
+  }
+  
+  final void gZ()
+  {
+    gX();
+    int j = this.ZP.size();
+    int i = 0;
+    if (i < j)
+    {
+      d.b localb = (d.b)this.ZP.get(i);
+      switch (localb.vA)
+      {
+      }
+      for (;;)
+      {
+        if (this.ZS != null) {
+          this.ZS.run();
+        }
+        i += 1;
+        break;
+        this.ZR.e(localb);
+        this.ZR.M(localb.ZW, localb.ZY);
+        continue;
+        this.ZR.e(localb);
+        this.ZR.K(localb.ZW, localb.ZY);
+        continue;
+        this.ZR.e(localb);
+        this.ZR.d(localb.ZW, localb.ZY, localb.ZX);
+        continue;
+        this.ZR.e(localb);
+        this.ZR.N(localb.ZW, localb.ZY);
+      }
+    }
+    n(this.ZP);
+    this.ZV = 0;
+  }
+  
+  final boolean ha()
+  {
+    return (!this.ZQ.isEmpty()) && (!this.ZP.isEmpty());
+  }
+  
+  final void reset()
+  {
+    n(this.ZP);
+    n(this.ZQ);
+    this.ZV = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v7.widget.d
  * JD-Core Version:    0.7.0.1
  */

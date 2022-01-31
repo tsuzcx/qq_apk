@@ -11,7 +11,9 @@ public final class MarkerOptions
   private float anchorU = 0.5F;
   private float anchorV = 1.0F;
   private BitmapDescriptor bitmapDescriptor;
+  private String contentDescription;
   private Animation hidingAnination;
+  private int iLevel = OverlayLevel.OverlayLevelAboveLabels;
   protected String id;
   private Animation infoWindowHideAnimation;
   private Animation infoWindowShowAnimation;
@@ -49,6 +51,12 @@ public final class MarkerOptions
     return this;
   }
   
+  public final MarkerOptions contentDescription(String paramString)
+  {
+    this.contentDescription = paramString;
+    return this;
+  }
+  
   public final MarkerOptions draggable(boolean paramBoolean)
   {
     this.isDraggable = paramBoolean;
@@ -74,6 +82,11 @@ public final class MarkerOptions
   public final float getAnchorV()
   {
     return this.anchorV;
+  }
+  
+  public final String getContentDescription()
+  {
+    return this.contentDescription;
   }
   
   public final Animation getHidingAnination()
@@ -109,6 +122,11 @@ public final class MarkerOptions
   public final int getInfowindowOffsetY()
   {
     return this.anchorOffsetY;
+  }
+  
+  public final int getLevel()
+  {
+    return this.iLevel;
   }
   
   public final View getMarkerView()
@@ -207,6 +225,15 @@ public final class MarkerOptions
     return this.isVisible;
   }
   
+  public final MarkerOptions level(int paramInt)
+  {
+    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
+      return this;
+    }
+    this.iLevel = paramInt;
+    return this;
+  }
+  
   public final MarkerOptions markerView(View paramView)
   {
     this.markerView = paramView;
@@ -269,7 +296,7 @@ public final class MarkerOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.MarkerOptions
  * JD-Core Version:    0.7.0.1
  */

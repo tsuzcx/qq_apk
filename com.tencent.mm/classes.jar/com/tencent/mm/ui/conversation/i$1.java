@@ -1,17 +1,20 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class i$1
-  implements am.a
+  implements ap.a
 {
   i$1(i parami) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (i.a(this.vSJ)) {
-      i.b(this.vSJ);
+    AppMethodBeat.i(34397);
+    if (i.a(this.AkC)) {
+      i.b(this.AkC);
     }
+    AppMethodBeat.o(34397);
     return false;
   }
 }

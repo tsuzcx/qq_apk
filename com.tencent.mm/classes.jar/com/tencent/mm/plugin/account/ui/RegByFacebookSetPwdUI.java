@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.widget.EditText;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.a.b.a.a;
@@ -16,81 +18,112 @@ import com.tencent.mm.ui.base.h;
 public class RegByFacebookSetPwdUI
   extends SetPwdUI
 {
-  protected final m XZ()
-  {
-    return new ak(this.fsy);
-  }
-  
-  protected final String Ya()
-  {
-    return ((EditText)findViewById(q.f.regbyfacebookreg_pass_et)).getText().toString();
-  }
-  
-  protected final String Yb()
-  {
-    return ((EditText)findViewById(q.f.regbyfacebookreg_pass_again_et)).getText().toString();
-  }
-  
-  protected final int Yc()
-  {
-    return 382;
-  }
-  
   protected final ProgressDialog a(Context paramContext, String paramString, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    return h.b(paramContext, getString(q.j.regbyfacebook_reg_setpwd_exiting), true, paramOnCancelListener);
+    AppMethodBeat.i(125328);
+    paramContext = h.b(paramContext, getString(2131302413), true, paramOnCancelListener);
+    AppMethodBeat.o(125328);
+    return paramContext;
   }
   
   protected final void a(a.a parama)
   {
-    switch (RegByFacebookSetPwdUI.2.fjL[parama.ordinal()])
+    AppMethodBeat.i(125332);
+    switch (RegByFacebookSetPwdUI.2.gBc[parama.ordinal()])
     {
-    default: 
-      return;
-    case 1: 
-      h.h(this, q.j.regbyfacebook_reg_setpwd_alert_diff, q.j.regbyfacebook_reg_setpwd_alert_title);
-      return;
-    case 2: 
-      h.h(this, q.j.regbyfacebook_reg_setpwd_alert_more_byte, q.j.regbyfacebook_reg_setpwd_alert_title);
-      return;
-    case 3: 
-      h.h(this, q.j.verify_password_all_num_tip, q.j.app_err_reg_title);
-      return;
     }
-    h.h(this, q.j.verify_password_tip, q.j.app_err_reg_title);
+    for (;;)
+    {
+      AppMethodBeat.o(125332);
+      return;
+      h.h(this, 2131302409, 2131302411);
+      AppMethodBeat.o(125332);
+      return;
+      h.h(this, 2131302410, 2131302411);
+      AppMethodBeat.o(125332);
+      return;
+      h.h(this, 2131304499, 2131296924);
+      AppMethodBeat.o(125332);
+      return;
+      h.h(this, 2131304501, 2131296924);
+    }
   }
   
-  protected final int getLayoutId()
+  protected final m arI()
   {
-    return q.g.regbyfacebooksetpwd_reg;
+    AppMethodBeat.i(125329);
+    ak localak = new ak(this.gKa);
+    AppMethodBeat.o(125329);
+    return localak;
   }
   
-  protected final boolean i(int paramInt1, int paramInt2, String paramString)
+  protected final String arJ()
   {
+    AppMethodBeat.i(125330);
+    String str = ((EditText)findViewById(2131827136)).getText().toString();
+    AppMethodBeat.o(125330);
+    return str;
+  }
+  
+  protected final String arK()
+  {
+    AppMethodBeat.i(125331);
+    String str = ((EditText)findViewById(2131827137)).getText().toString();
+    AppMethodBeat.o(125331);
+    return str;
+  }
+  
+  protected final int arL()
+  {
+    return 382;
+  }
+  
+  public int getLayoutId()
+  {
+    return 2130970555;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(138726);
+    setMMTitle(2131302422);
+    AppMethodBeat.o(138726);
+  }
+  
+  protected final boolean m(int paramInt1, int paramInt2, String paramString)
+  {
+    AppMethodBeat.i(125333);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      g.DP().Dz().o(57, Integer.valueOf(0));
-      paramString = (String)g.DP().Dz().get(5, null);
-      h.a(this, getString(q.j.regbyfacebook_reg_setpwd_success, new Object[] { paramString }), getString(q.j.regbyfacebook_reg_setpwd_alert_title), new RegByFacebookSetPwdUI.1(this));
+      g.RL().Ru().set(57, Integer.valueOf(0));
+      h.a(this, getString(2131302420, new Object[] { (String)g.RL().Ru().get(5, null) }), getString(2131302411), new RegByFacebookSetPwdUI.1(this));
+      AppMethodBeat.o(125333);
       return true;
     }
-    return h(paramInt1, paramInt2, paramString);
-  }
-  
-  protected final void initView()
-  {
-    setMMTitle(q.j.regbyfacebook_reg_setpwd_title);
+    boolean bool = l(paramInt1, paramInt2, paramString);
+    AppMethodBeat.o(125333);
+    return bool;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(125325);
     super.onCreate(paramBundle);
-    setMMTitle(q.j.regbyfacebook_reg_setpwd_title);
+    initView();
+    AppMethodBeat.o(125325);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(125326);
     super.onDestroy();
+    AppMethodBeat.o(125326);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

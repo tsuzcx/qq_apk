@@ -3,58 +3,62 @@ package com.tencent.mm.pluginsdk.ui.chat;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.d;
 
 final class i$3
   implements Runnable
 {
-  i$3(i parami, ah paramah) {}
+  i$3(i parami, ak paramak) {}
   
   public final void run()
   {
-    int m = 1;
-    i locali = this.sgB;
-    Object localObject = locali.cnN();
+    AppMethodBeat.i(27957);
+    i locali = this.vYT;
+    Object localObject = locali.doV();
     int i;
     int j;
-    int n;
+    int m;
     if (localObject == null)
     {
       i = 0;
-      if (i != 0) {
-        this.sgC.sendEmptyMessage(0);
+      if (i != 0)
+      {
+        this.vYU.sendEmptyMessage(0);
+        AppMethodBeat.o(27957);
       }
     }
     else
     {
-      i = (int)locali.Eo(70);
-      j = (int)locali.Eo(120);
-      n = BackwardSupportUtil.ExifHelper.YS((String)localObject);
-      if ((n != 90) && (n != 270)) {
-        break label185;
+      i = (int)locali.Mm(70);
+      j = (int)locali.Mm(120);
+      m = BackwardSupportUtil.ExifHelper.bY((String)localObject);
+      if ((m != 90) && (m != 270)) {
+        break label197;
       }
     }
     for (;;)
     {
-      int k = (int)locali.Eo(4);
-      localObject = c.a((String)localObject, i, j, true, null, 0);
+      int k = (int)locali.Mm(4);
+      localObject = d.d((String)localObject, i, j, true);
       if (localObject != null)
       {
-        locali.bitmap = c.a(c.b((Bitmap)localObject, n), true, k);
-        locali.dnD.edit().putString("chattingui_recent_shown_image_path", locali.sgw.sgu).commit();
-        y.d("MicroMsg.RecentImageBubble", "check ok");
-        i = m;
+        locali.bitmap = d.a(d.b((Bitmap)localObject, m), true, k);
+        locali.sp.edit().putString("chattingui_recent_shown_image_path", locali.vYO.vYL).commit();
+        ab.d("MicroMsg.RecentImageBubble", "check ok");
+        i = 1;
         break;
       }
-      y.e("MicroMsg.RecentImageBubble", "image hits hole.");
+      ab.e("MicroMsg.RecentImageBubble", "image hits hole.");
       i = 0;
       break;
-      y.d("MicroMsg.RecentImageBubble", "check false");
+      ab.d("MicroMsg.RecentImageBubble", "check false");
+      AppMethodBeat.o(27957);
       return;
-      label185:
+      label197:
       k = i;
       i = j;
       j = k;
@@ -63,7 +67,10 @@ final class i$3
   
   public final String toString()
   {
-    return super.toString() + "|checkIfShow";
+    AppMethodBeat.i(27958);
+    String str = super.toString() + "|checkIfShow";
+    AppMethodBeat.o(27958);
+    return str;
   }
 }
 

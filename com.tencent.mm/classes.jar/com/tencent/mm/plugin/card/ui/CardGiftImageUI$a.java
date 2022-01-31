@@ -6,11 +6,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
-import com.tencent.mm.plugin.card.a.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 
 final class CardGiftImageUI$a
@@ -35,10 +33,11 @@ final class CardGiftImageUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject = x.pg(CardGiftImageUI.b(this.itG));
+    AppMethodBeat.i(88402);
+    Object localObject = x.wx(CardGiftImageUI.b(this.kuL));
     if (localObject == null)
     {
-      y.w("MicroMsg.CardGiftImageUI", "get image fail");
+      ab.w("MicroMsg.CardGiftImageUI", "get image fail");
       if (paramView != null)
       {
         localObject = paramView;
@@ -46,10 +45,11 @@ final class CardGiftImageUI$a
       }
       else
       {
-        localObject = View.inflate(paramViewGroup.getContext(), a.e.card_image_ui_item, null);
-        ((ImageView)((View)localObject).findViewById(a.d.image_iv)).setImageResource(a.f.download_image_icon);
+        localObject = View.inflate(paramViewGroup.getContext(), 2130968957, null);
+        ((ImageView)((View)localObject).findViewById(2131822243)).setImageResource(2131231253);
         ((View)localObject).setLayoutParams(new Gallery.LayoutParams(-1, -1));
       }
+      AppMethodBeat.o(88402);
       return localObject;
     }
     paramViewGroup = paramViewGroup.getContext();
@@ -61,15 +61,16 @@ final class CardGiftImageUI$a
       paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
       paramView.setImageBitmap((Bitmap)localObject);
       paramView.setMaxZoomDoubleTab(true);
+      AppMethodBeat.o(88402);
       return paramView;
       paramView = (MultiTouchImageView)paramView;
-      paramView.fs(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      paramView.cb(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftImageUI.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,105 @@
 package com.google.android.exoplayer2.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 
 public class e
   extends a
 {
-  public final b ayC = new b();
-  public ByteBuffer ayD;
-  public long ayE;
-  public final int ayF;
+  public final b aAR;
+  public ByteBuffer aAS;
+  public long aAT;
+  public final int aAU;
   
   public e(int paramInt)
   {
-    this.ayF = paramInt;
+    AppMethodBeat.i(94739);
+    this.aAR = new b();
+    this.aAU = paramInt;
+    AppMethodBeat.o(94739);
   }
   
-  private ByteBuffer cJ(int paramInt)
+  private ByteBuffer de(int paramInt)
   {
-    if (this.ayF == 1) {
-      return ByteBuffer.allocate(paramInt);
-    }
-    if (this.ayF == 2) {
-      return ByteBuffer.allocateDirect(paramInt);
-    }
-    if (this.ayD == null) {}
-    for (int i = 0;; i = this.ayD.capacity()) {
-      throw new IllegalStateException("Buffer too small (" + i + " < " + paramInt + ")");
-    }
-  }
-  
-  public final void cI(int paramInt)
-  {
-    if (this.ayD == null) {
-      this.ayD = cJ(paramInt);
-    }
-    int i;
-    int j;
-    do
+    AppMethodBeat.i(94744);
+    Object localObject;
+    if (this.aAU == 1)
     {
-      return;
-      i = this.ayD.capacity();
-      j = this.ayD.position();
-      paramInt = j + paramInt;
-    } while (i >= paramInt);
-    ByteBuffer localByteBuffer = cJ(paramInt);
-    if (j > 0)
-    {
-      this.ayD.position(0);
-      this.ayD.limit(j);
-      localByteBuffer.put(this.ayD);
+      localObject = ByteBuffer.allocate(paramInt);
+      AppMethodBeat.o(94744);
+      return localObject;
     }
-    this.ayD = localByteBuffer;
+    if (this.aAU == 2)
+    {
+      localObject = ByteBuffer.allocateDirect(paramInt);
+      AppMethodBeat.o(94744);
+      return localObject;
+    }
+    if (this.aAS == null) {}
+    for (int i = 0;; i = this.aAS.capacity())
+    {
+      localObject = new IllegalStateException("Buffer too small (" + i + " < " + paramInt + ")");
+      AppMethodBeat.o(94744);
+      throw ((Throwable)localObject);
+    }
   }
   
   public final void clear()
   {
+    AppMethodBeat.i(94743);
     super.clear();
-    if (this.ayD != null) {
-      this.ayD.clear();
+    if (this.aAS != null) {
+      this.aAS.clear();
     }
+    AppMethodBeat.o(94743);
   }
   
-  public final boolean lE()
+  public final void dd(int paramInt)
   {
-    return cH(1073741824);
+    AppMethodBeat.i(94740);
+    if (this.aAS == null)
+    {
+      this.aAS = de(paramInt);
+      AppMethodBeat.o(94740);
+      return;
+    }
+    int i = this.aAS.capacity();
+    int j = this.aAS.position();
+    paramInt = j + paramInt;
+    if (i >= paramInt)
+    {
+      AppMethodBeat.o(94740);
+      return;
+    }
+    ByteBuffer localByteBuffer = de(paramInt);
+    if (j > 0)
+    {
+      this.aAS.position(0);
+      this.aAS.limit(j);
+      localByteBuffer.put(this.aAS);
+    }
+    this.aAS = localByteBuffer;
+    AppMethodBeat.o(94740);
   }
   
-  public final void lF()
+  public final boolean nI()
   {
-    this.ayD.flip();
+    AppMethodBeat.i(94741);
+    boolean bool = dc(1073741824);
+    AppMethodBeat.o(94741);
+    return bool;
+  }
+  
+  public final void nJ()
+  {
+    AppMethodBeat.i(94742);
+    this.aAS.flip();
+    AppMethodBeat.o(94742);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -2,62 +2,74 @@ package com.google.android.exoplayer2.source.b;
 
 import android.text.TextUtils;
 import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.c.d;
 import com.google.android.exoplayer2.c.e;
-import com.google.android.exoplayer2.c.j.a;
+import com.google.android.exoplayer2.c.g;
 import com.google.android.exoplayer2.c.k;
+import com.google.android.exoplayer2.c.l.a;
 import com.google.android.exoplayer2.f.g.h;
-import com.google.android.exoplayer2.i.j;
-import com.google.android.exoplayer2.i.q;
+import com.google.android.exoplayer2.i.u;
 import com.google.android.exoplayer2.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 final class l
-  implements d
+  implements e
 {
-  private static final Pattern aKO = Pattern.compile("LOCAL:([^,]+)");
-  private static final Pattern aKP = Pattern.compile("MPEGTS:(\\d+)");
-  private final q aBX;
-  private com.google.android.exoplayer2.c.f aFs;
-  private final j aKQ;
-  private byte[] aKR;
-  private final String auI;
+  private static final Pattern aSi;
+  private static final Pattern aSj;
+  private final u aGN;
+  private g aIN;
+  private final com.google.android.exoplayer2.i.m aSk;
+  private byte[] aSl;
+  private final String axa;
   private int sampleSize;
   
-  public l(String paramString, q paramq)
+  static
   {
-    this.auI = paramString;
-    this.aBX = paramq;
-    this.aKQ = new j();
-    this.aKR = new byte[1024];
+    AppMethodBeat.i(126008);
+    aSi = Pattern.compile("LOCAL:([^,]+)");
+    aSj = Pattern.compile("MPEGTS:(\\d+)");
+    AppMethodBeat.o(126008);
   }
   
-  private k Q(long paramLong)
+  public l(String paramString, u paramu)
   {
-    k localk = this.aFs.cQ(0);
-    localk.f(Format.a("text/vtt", this.auI, paramLong));
-    this.aFs.lV();
-    return localk;
+    AppMethodBeat.i(126002);
+    this.axa = paramString;
+    this.aGN = paramu;
+    this.aSk = new com.google.android.exoplayer2.i.m();
+    this.aSl = new byte[1024];
+    AppMethodBeat.o(126002);
   }
   
-  public final int a(e parame)
+  private com.google.android.exoplayer2.c.m Z(long paramLong)
   {
-    int j = (int)parame.getLength();
-    Object localObject;
-    if (this.sampleSize == this.aKR.length)
+    AppMethodBeat.i(126007);
+    com.google.android.exoplayer2.c.m localm = this.aIN.dm(0);
+    localm.f(Format.a("text/vtt", this.axa, paramLong));
+    this.aIN.nZ();
+    AppMethodBeat.o(126007);
+    return localm;
+  }
+  
+  public final int a(com.google.android.exoplayer2.c.f paramf, k paramk)
+  {
+    AppMethodBeat.i(126006);
+    int j = (int)paramf.getLength();
+    if (this.sampleSize == this.aSl.length)
     {
-      localObject = this.aKR;
+      paramk = this.aSl;
       if (j == -1) {
-        break label102;
+        break label115;
       }
     }
-    label102:
-    for (int i = j;; i = this.aKR.length)
+    label115:
+    for (int i = j;; i = this.aSl.length)
     {
-      this.aKR = Arrays.copyOf((byte[])localObject, i * 3 / 2);
-      i = parame.read(this.aKR, this.sampleSize, this.aKR.length - this.sampleSize);
+      this.aSl = Arrays.copyOf(paramk, i * 3 / 2);
+      i = paramf.read(this.aSl, this.sampleSize, this.aSl.length - this.sampleSize);
       if (i == -1) {
         break;
       }
@@ -65,62 +77,90 @@ final class l
       if ((j != -1) && (this.sampleSize == j)) {
         break;
       }
+      AppMethodBeat.o(126006);
       return 0;
     }
-    parame = new j(this.aKR);
-    long l1;
+    paramf = new com.google.android.exoplayer2.i.m(this.aSl);
     long l2;
+    long l1;
     for (;;)
     {
       Matcher localMatcher1;
       try
       {
-        h.k(parame);
-        l1 = 0L;
+        h.I(paramf);
         l2 = 0L;
-        localObject = parame.readLine();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
+        l1 = 0L;
+        paramk = paramf.readLine();
+        if (TextUtils.isEmpty(paramk)) {
           break;
         }
-        if (!((String)localObject).startsWith("X-TIMESTAMP-MAP")) {
+        if (!paramk.startsWith("X-TIMESTAMP-MAP")) {
           continue;
         }
-        localMatcher1 = aKO.matcher((CharSequence)localObject);
-        if (!localMatcher1.find()) {
-          throw new o("X-TIMESTAMP-MAP doesn't contain local timestamp: " + (String)localObject);
+        localMatcher1 = aSi.matcher(paramk);
+        if (!localMatcher1.find())
+        {
+          paramf = new o("X-TIMESTAMP-MAP doesn't contain local timestamp: ".concat(String.valueOf(paramk)));
+          AppMethodBeat.o(126006);
+          throw paramf;
         }
       }
-      catch (com.google.android.exoplayer2.f.f parame)
+      catch (com.google.android.exoplayer2.f.f paramf)
       {
-        throw new o(parame);
+        paramf = new o(paramf);
+        AppMethodBeat.o(126006);
+        throw paramf;
       }
-      Matcher localMatcher2 = aKP.matcher((CharSequence)localObject);
-      if (!localMatcher2.find()) {
-        throw new o("X-TIMESTAMP-MAP doesn't contain media timestamp: " + (String)localObject);
+      Matcher localMatcher2 = aSj.matcher(paramk);
+      if (!localMatcher2.find())
+      {
+        paramf = new o("X-TIMESTAMP-MAP doesn't contain media timestamp: ".concat(String.valueOf(paramk)));
+        AppMethodBeat.o(126006);
+        throw paramf;
       }
-      l2 = h.ar(localMatcher1.group(1));
-      l1 = q.Y(Long.parseLong(localMatcher2.group(1)));
+      l2 = h.aw(localMatcher1.group(1));
+      l1 = u.aj(Long.parseLong(localMatcher2.group(1)));
     }
-    parame = h.l(parame);
-    if (parame == null) {
-      Q(0L);
+    paramf = h.J(paramf);
+    if (paramf == null) {
+      Z(0L);
     }
     for (;;)
     {
+      AppMethodBeat.o(126006);
       return -1;
-      long l3 = h.ar(parame.group(1));
-      l1 = this.aBX.W(q.Z(l1 + l3 - l2));
-      parame = Q(l1 - l3);
-      this.aKQ.m(this.aKR, this.sampleSize);
-      parame.a(this.aKQ, this.sampleSize);
-      parame.a(l1, 1, this.sampleSize, 0, null);
+      long l3 = h.aw(paramf.group(1));
+      l1 = this.aGN.ah(u.ak(l1 + l3 - l2));
+      paramf = Z(l1 - l3);
+      this.aSk.l(this.aSl, this.sampleSize);
+      paramf.a(this.aSk, this.sampleSize);
+      paramf.a(l1, 1, this.sampleSize, 0, null);
     }
   }
   
-  public final void a(com.google.android.exoplayer2.c.f paramf)
+  public final void a(g paramg)
   {
-    this.aFs = paramf;
-    new j.a(-9223372036854775807L);
+    AppMethodBeat.i(126004);
+    this.aIN = paramg;
+    paramg.a(new l.a(-9223372036854775807L));
+    AppMethodBeat.o(126004);
+  }
+  
+  public final boolean a(com.google.android.exoplayer2.c.f paramf)
+  {
+    AppMethodBeat.i(126003);
+    paramf = new IllegalStateException();
+    AppMethodBeat.o(126003);
+    throw paramf;
+  }
+  
+  public final void g(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(126005);
+    IllegalStateException localIllegalStateException = new IllegalStateException();
+    AppMethodBeat.o(126005);
+    throw localIllegalStateException;
   }
 }
 

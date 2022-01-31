@@ -11,12 +11,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.i;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.tools.t;
+import com.tencent.mm.ui.w;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,190 +25,216 @@ public class AtContactWidget
   extends LinearLayout
 {
   private View contentView;
-  private Activity fyk;
-  private ImageView oNr;
-  private TextView oNs;
-  private TextView oNt;
-  private PreviewContactView oNu;
-  SnsUploadConfigView oNv;
-  private List<String> oNw = new LinkedList();
-  private boolean oNx = false;
+  private Activity gQx;
+  private TextView iEo;
+  private ImageView rFb;
+  private TextView rFc;
+  private PreviewContactView rFd;
+  SnsUploadConfigView rFe;
+  private List<String> rFf;
+  private boolean rFg;
   
   public AtContactWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(38153);
+    this.rFf = new LinkedList();
+    this.rFg = false;
     init(paramContext);
+    AppMethodBeat.o(38153);
   }
   
   @TargetApi(11)
   public AtContactWidget(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(38152);
+    this.rFf = new LinkedList();
+    this.rFg = false;
     init(paramContext);
+    AppMethodBeat.o(38152);
   }
   
-  private void bHl()
+  private void ctp()
   {
-    if (this.oNw.size() > 0)
+    AppMethodBeat.i(38158);
+    if (this.rFf.size() > 0)
     {
-      this.oNr.setImageResource(getWithDrawableId());
+      this.rFb.setImageDrawable(aj.g(this.gQx, getWithDrawableId(), getContext().getResources().getColor(2131690701)));
+      AppMethodBeat.o(38158);
       return;
     }
-    this.oNr.setImageResource(getWithEmptyDrawableId());
+    this.rFb.setImageDrawable(aj.g(this.gQx, getWithEmptyDrawableId(), -16777216));
+    AppMethodBeat.o(38158);
   }
   
   private void init(Context paramContext)
   {
-    this.fyk = ((Activity)paramContext);
-    this.contentView = com.tencent.mm.ui.y.gt(paramContext).inflate(getLayoutResource(), this);
-    this.oNu = ((PreviewContactView)this.contentView.findViewById(i.f.at_contact_avatar));
-    this.oNr = ((ImageView)this.contentView.findViewById(i.f.at_contact_iv));
-    this.oNs = ((TextView)this.contentView.findViewById(i.f.at_contact_num));
-    this.oNt = ((TextView)this.contentView.findViewById(i.f.at_contact_tips));
+    AppMethodBeat.i(38156);
+    this.gQx = ((Activity)paramContext);
+    this.contentView = w.hM(paramContext).inflate(getLayoutResource(), this);
+    this.rFd = ((PreviewContactView)this.contentView.findViewById(2131821554));
+    this.rFb = ((ImageView)this.contentView.findViewById(2131821552));
+    this.rFc = ((TextView)this.contentView.findViewById(2131827788));
+    this.iEo = ((TextView)this.contentView.findViewById(2131821553));
     this.contentView.setOnClickListener(new AtContactWidget.1(this));
     this.contentView.post(new AtContactWidget.2(this));
+    AppMethodBeat.o(38156);
   }
   
-  public final boolean U(Intent paramIntent)
+  public final boolean an(Intent paramIntent)
   {
+    AppMethodBeat.i(38157);
     paramIntent = paramIntent.getStringExtra("Select_Contact");
     new LinkedList();
     if ((paramIntent == null) || (paramIntent.equals(""))) {}
     Object localObject1;
     Object localObject2;
-    for (paramIntent = new LinkedList();; paramIntent = bk.G(paramIntent.split(",")))
+    for (paramIntent = new LinkedList();; paramIntent = bo.P(paramIntent.split(",")))
     {
-      if (this.oNw == null) {
-        this.oNw = new LinkedList();
+      if (this.rFf == null) {
+        this.rFf = new LinkedList();
       }
-      this.oNw.clear();
+      this.rFf.clear();
       localObject1 = paramIntent.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        if (!this.oNw.contains(localObject2)) {
-          this.oNw.add(localObject2);
+        if (!this.rFf.contains(localObject2)) {
+          this.rFf.add(localObject2);
         }
       }
     }
-    if (this.oNu != null) {
-      this.oNu.setList(this.oNw);
+    if (this.rFd != null) {
+      this.rFd.setList(this.rFf);
     }
     int i;
-    if (this.oNt != null)
+    if (this.iEo != null)
     {
-      localObject1 = this.oNt;
+      localObject1 = this.iEo;
       localObject2 = getResources();
       if (paramIntent.isEmpty())
       {
-        i = i.c.normal_text_color;
+        i = 2131690322;
         ((TextView)localObject1).setTextColor(((Resources)localObject2).getColor(i));
       }
     }
-    else if (this.oNx)
+    else if (this.rFg)
     {
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.AtContactWiget", "withList count " + this.oNw.size());
-      if ((!this.oNx) || (this.oNs == null) || (this.oNw.size() <= 0)) {
-        break label332;
+      ab.d("MicroMsg.AtContactWiget", "withList count " + this.rFf.size());
+      if ((!this.rFg) || (this.rFc == null) || (this.rFf.size() <= 0)) {
+        break label365;
       }
-      this.oNs.setVisibility(0);
-      if (this.oNw.size() >= 100) {
-        break label319;
+      this.rFc.setVisibility(0);
+      if (this.rFf.size() >= 100) {
+        break label343;
       }
-      this.oNs.setText(this.oNw.size());
+      this.rFc.setText(this.rFf.size());
+      this.rFc.setBackgroundResource(t.iF(getContext()));
     }
     for (;;)
     {
-      bHl();
+      ctp();
+      AppMethodBeat.o(38157);
       return true;
-      i = i.c.green_text_color;
+      i = 2131690139;
       break;
-      label319:
-      this.oNs.setText(i.j.unread_count_overt_100);
+      label343:
+      this.rFc.setText("");
+      this.rFc.setBackgroundResource(2131230963);
       continue;
-      label332:
-      this.oNs.setVisibility(8);
+      label365:
+      this.rFc.setVisibility(8);
     }
   }
   
-  public final void bHk()
+  public final void cto()
   {
-    if (this.oNw == null) {
-      this.oNw = new LinkedList();
+    AppMethodBeat.i(38155);
+    if (this.rFf == null) {
+      this.rFf = new LinkedList();
     }
-    this.oNw.clear();
-    if (this.oNu != null) {
-      this.oNu.setList(this.oNw);
+    this.rFf.clear();
+    if (this.rFd != null) {
+      this.rFd.setList(this.rFf);
     }
-    bHl();
-    if (this.oNs != null) {
-      this.oNs.setVisibility(8);
+    ctp();
+    if (this.rFc != null) {
+      this.rFc.setVisibility(8);
     }
-    if (this.oNt != null) {
-      this.oNt.setTextColor(getResources().getColor(i.c.normal_text_color));
+    if (this.iEo != null) {
+      this.iEo.setTextColor(getResources().getColor(2131690322));
     }
+    AppMethodBeat.o(38155);
   }
   
   public List<String> getAtList()
   {
-    if (this.oNw == null) {
-      this.oNw = new LinkedList();
+    AppMethodBeat.i(38154);
+    if (this.rFf == null) {
+      this.rFf = new LinkedList();
     }
-    return this.oNw;
+    List localList = this.rFf;
+    AppMethodBeat.o(38154);
+    return localList;
   }
   
   protected int getLayoutResource()
   {
-    return i.g.at_contact_widget;
+    return 2130968785;
   }
   
   protected int getWithDrawableId()
   {
-    return i.i.album_mention_icon_pressed;
+    return 2131230780;
   }
   
   protected int getWithEmptyDrawableId()
   {
-    return i.i.album_mention_icon_normal;
+    return 2131230779;
   }
   
   public void setShowAtList(boolean paramBoolean)
   {
+    AppMethodBeat.i(38159);
     PreviewContactView localPreviewContactView;
-    if (this.oNu != null)
+    if (this.rFd != null)
     {
-      localPreviewContactView = this.oNu;
+      localPreviewContactView = this.rFd;
       if (!paramBoolean) {
-        break label24;
+        break label36;
       }
     }
-    label24:
+    label36:
     for (int i = 0;; i = 8)
     {
       localPreviewContactView.setVisibility(i);
+      AppMethodBeat.o(38159);
       return;
     }
   }
   
   public void setShowAtNum(boolean paramBoolean)
   {
-    this.oNx = paramBoolean;
+    this.rFg = paramBoolean;
   }
   
   public void setShowAtTips(boolean paramBoolean)
   {
+    AppMethodBeat.i(38160);
     TextView localTextView;
-    if ((this.contentView != null) && (this.oNt != null))
+    if ((this.contentView != null) && (this.iEo != null))
     {
-      localTextView = this.oNt;
+      localTextView = this.iEo;
       if (!paramBoolean) {
-        break label31;
+        break label43;
       }
     }
-    label31:
+    label43:
     for (int i = 0;; i = 8)
     {
       localTextView.setVisibility(i);
+      AppMethodBeat.o(38160);
       return;
     }
   }

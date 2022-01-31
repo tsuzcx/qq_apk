@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.ui.OfflineVideoView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class x$5
-  implements f.a
+  implements View.OnClickListener
 {
   x$5(x paramx) {}
   
-  public final void Op(String paramString)
+  public final void onClick(View paramView)
   {
-    x.a(this.oHV).Ph(paramString);
+    AppMethodBeat.i(37282);
+    this.rxG.crq();
+    AppMethodBeat.o(37282);
   }
-  
-  public final void bCF() {}
-  
-  public final void bFl() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.x.5
  * JD-Core Version:    0.7.0.1
  */

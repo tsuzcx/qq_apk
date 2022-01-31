@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.facedetect.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.a.d;
 import com.tencent.mm.plugin.mmsight.model.f;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
@@ -11,10 +12,12 @@ final class a$10
   
   public final void run()
   {
-    SightVideoJNI.mirrorCameraData(this.val$data, a.i(this.jTm), a.j(this.jTm), false);
-    if (a.g(this.jTm).bjp() != null) {
-      a.g(this.jTm).bjp().M(this.val$data);
+    AppMethodBeat.i(555);
+    SightVideoJNI.mirrorCameraData(this.val$data, a.i(this.mnI), a.j(this.mnI), false);
+    if (a.g(this.mnI).getFrameDataCallback() != null) {
+      a.g(this.mnI).getFrameDataCallback().N(this.val$data);
     }
+    AppMethodBeat.o(555);
   }
 }
 

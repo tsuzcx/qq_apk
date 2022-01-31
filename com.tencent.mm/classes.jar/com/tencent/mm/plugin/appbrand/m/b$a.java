@@ -1,23 +1,16 @@
 package com.tencent.mm.plugin.appbrand.m;
 
-import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.p;
+import org.json.JSONObject;
 
-public final class b$a
-  extends a.c
+public abstract interface b$a
 {
-  private final n fzW;
+  public abstract void BE(String paramString);
   
-  private b$a(n paramn)
-  {
-    this.fzW = paramn;
-  }
+  public abstract void c(int paramInt1, String paramString1, String paramString2, int paramInt2);
   
-  public final void a(String paramString, boolean paramBoolean, a.b paramb, a.a parama)
-  {
-    this.fzW.aae().qJ("__APP__");
-    super.a(paramString, paramBoolean, paramb, parama);
-  }
+  public abstract void g(int paramInt, long paramLong1, long paramLong2);
+  
+  public abstract void v(JSONObject paramJSONObject);
 }
 
 

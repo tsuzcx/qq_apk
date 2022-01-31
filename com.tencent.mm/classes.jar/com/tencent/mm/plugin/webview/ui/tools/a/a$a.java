@@ -1,132 +1,170 @@
 package com.tencent.mm.plugin.webview.ui.tools.a;
 
 import android.os.Bundle;
-import com.tencent.mm.h.a.ds;
-import com.tencent.mm.h.a.ds.a;
-import com.tencent.mm.h.a.dt;
-import com.tencent.mm.h.a.dt.a;
-import com.tencent.mm.h.a.du;
-import com.tencent.mm.h.a.du.a;
-import com.tencent.mm.h.a.dv;
-import com.tencent.mm.h.a.dv.a;
-import com.tencent.mm.h.a.dy;
-import com.tencent.mm.h.a.dy.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.dv;
+import com.tencent.mm.g.a.dv.a;
+import com.tencent.mm.g.a.dw;
+import com.tencent.mm.g.a.dw.a;
+import com.tencent.mm.g.a.dx;
+import com.tencent.mm.g.a.dx.a;
+import com.tencent.mm.g.a.dy;
+import com.tencent.mm.g.a.dy.a;
+import com.tencent.mm.g.a.eb;
+import com.tencent.mm.g.a.eb.a;
 import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class a$a
 {
-  private String bJw = "";
-  private e rgh = null;
-  public c rte = new c() {};
-  public c rtf = new a.a.2(this);
-  public c rtg = new a.a.3(this);
-  public c rth = new a.a.4(this);
-  public c rti = new a.a.5(this);
+  private String cqQ;
+  private e uWu;
+  public c vjk;
+  public c vjl;
+  public c vjm;
+  public c vjn;
+  public c vjo;
   
   public a$a(e parame, String paramString)
   {
-    this.rgh = parame;
-    this.bJw = paramString;
+    AppMethodBeat.i(8313);
+    this.uWu = null;
+    this.cqQ = "";
+    this.vjk = new a.a.1(this);
+    this.vjl = new a.a.2(this);
+    this.vjm = new a.a.3(this);
+    this.vjn = new a.a.4(this);
+    this.vjo = new a.a.5(this);
+    this.uWu = parame;
+    this.cqQ = paramString;
+    AppMethodBeat.o(8313);
   }
   
-  final boolean h(b paramb)
+  final boolean g(b paramb)
   {
-    if (paramb == null) {
+    AppMethodBeat.i(8314);
+    if (paramb == null)
+    {
+      AppMethodBeat.o(8314);
       return false;
     }
-    if (this.rgh == null)
+    if (this.uWu == null)
     {
-      y.e("MicroMsg.webview.WebViewExDeviceLanMgr", "callbacker is null");
+      ab.e("MicroMsg.webview.WebViewExDeviceLanMgr", "callbacker is null");
+      AppMethodBeat.o(8314);
       return false;
     }
-    Bundle localBundle;
-    try
+    Object localObject;
+    for (;;)
     {
-      if ((paramb instanceof dy))
+      try
       {
-        y.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceOnDeviceBindStateChangeEvent");
-        paramb = (dy)paramb;
-        if (bk.bl(paramb.bKy.bwK)) {
+        if (!(paramb instanceof eb)) {
+          continue;
+        }
+        ab.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceOnDeviceBindStateChangeEvent");
+        paramb = (eb)paramb;
+        bool = bo.isNullOrNil(paramb.crS.bYu);
+        if (bool)
+        {
+          AppMethodBeat.o(8314);
           return true;
         }
-        localBundle = new Bundle();
-        localBundle.putString("exdevice_device_id", paramb.bKy.bwK);
-        localBundle.putBoolean("exdevice_is_bound", paramb.bKy.bJt);
-        this.rgh.b(17, localBundle);
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("exdevice_device_id", paramb.crS.bYu);
+        ((Bundle)localObject).putBoolean("exdevice_is_bound", paramb.crS.cqN);
+        this.uWu.e(17, (Bundle)localObject);
       }
-      else if ((paramb instanceof ds))
+      catch (Exception paramb)
       {
-        y.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceConnectStateEvent");
-        paramb = (ds)paramb;
-        if ((bk.bl(paramb.bKo.bwK)) || (!this.bJw.equals(paramb.bKo.bJw))) {
-          break label541;
+        boolean bool;
+        ab.w("MicroMsg.webview.WebViewExDeviceLanMgr", "exception in WVExDeviceEventListener callback, %s", new Object[] { paramb.getMessage() });
+        continue;
+        if (!(paramb instanceof dw)) {
+          continue;
         }
-        localBundle = new Bundle();
-        localBundle.putString("exdevice_device_id", paramb.bKo.bwK);
-        localBundle.putInt("exdevice_on_state_change_state", paramb.bKo.bKp);
-        localBundle.putString("exdevice_device_type", a.access$100());
-        this.rgh.b(1004, localBundle);
+        ab.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceRecvDataEvent");
+        paramb = (dw)paramb;
+        if ((bo.isNullOrNil(paramb.crK.bYu)) || (bo.isNullOrNil(paramb.crK.cqQ))) {
+          continue;
+        }
+        localObject = paramb.crK.data;
+        if (localObject != null) {
+          continue;
+        }
+        AppMethodBeat.o(8314);
+        return true;
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("exdevice_device_id", paramb.crK.bYu);
+        ((Bundle)localObject).putByteArray("exdevice_data", paramb.crK.data);
+        ((Bundle)localObject).putString("exdevice_brand_name", paramb.crK.cqQ);
+        ((Bundle)localObject).putString("exdevice_device_type", a.access$100());
+        this.uWu.e(16, (Bundle)localObject);
+        continue;
+        if (!(paramb instanceof dx)) {
+          continue;
+        }
+        ab.i("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceScanResultEvent");
+        paramb = (dx)paramb;
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("exdevice_device_id", paramb.crL.bYu);
+        ((Bundle)localObject).putByteArray("exdevice_broadcast_data", paramb.crL.crM);
+        ((Bundle)localObject).putBoolean("exdevice_is_complete", paramb.crL.aLC);
+        ((Bundle)localObject).putBoolean("exdevice_is_lan_device", true);
+        ((Bundle)localObject).putString("exdevice_device_type", a.access$100());
+        this.uWu.e(15, (Bundle)localObject);
+        continue;
+        if (!(paramb instanceof dy)) {
+          continue;
+        }
+        ab.i("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceStateChangeEvent");
+        paramb = (dy)paramb;
+        localObject = new Bundle();
+        if (paramb.crN.crO != true) {
+          break;
+        }
       }
-    }
-    catch (Exception paramb)
-    {
-      y.w("MicroMsg.webview.WebViewExDeviceLanMgr", "exception in WVExDeviceEventListener callback, %s", new Object[] { paramb.getMessage() });
-    }
-    if ((paramb instanceof dt))
-    {
-      y.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceRecvDataEvent");
-      paramb = (dt)paramb;
-      if ((bk.bl(paramb.bKq.bwK)) || (bk.bl(paramb.bKq.bJw)) || (paramb.bKq.data == null)) {
-        break label543;
-      }
-      localBundle = new Bundle();
-      localBundle.putString("exdevice_device_id", paramb.bKq.bwK);
-      localBundle.putByteArray("exdevice_data", paramb.bKq.data);
-      localBundle.putString("exdevice_brand_name", paramb.bKq.bJw);
-      localBundle.putString("exdevice_device_type", a.access$100());
-      this.rgh.b(16, localBundle);
-    }
-    else if ((paramb instanceof du))
-    {
-      y.i("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceScanResultEvent");
-      paramb = (du)paramb;
-      localBundle = new Bundle();
-      localBundle.putString("exdevice_device_id", paramb.bKr.bwK);
-      localBundle.putByteArray("exdevice_broadcast_data", paramb.bKr.bKs);
-      localBundle.putBoolean("exdevice_is_complete", paramb.bKr.aES);
-      localBundle.putBoolean("exdevice_is_lan_device", true);
-      localBundle.putString("exdevice_device_type", a.access$100());
-      this.rgh.b(15, localBundle);
-    }
-    else if ((paramb instanceof dv))
-    {
-      y.i("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceStateChangeEvent");
-      paramb = (dv)paramb;
-      localBundle = new Bundle();
-      if (paramb.bKt.bKu == true) {
-        localBundle.putBoolean("exdevice_lan_state", true);
-      }
-      for (;;)
+      AppMethodBeat.o(8314);
+      return true;
+      if ((paramb instanceof dv))
       {
-        this.rgh.b(47, localBundle);
-        break;
-        localBundle.putBoolean("exdevice_lan_state", false);
+        ab.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceConnectStateEvent");
+        paramb = (dv)paramb;
+        if (!bo.isNullOrNil(paramb.crI.bYu))
+        {
+          bool = this.cqQ.equals(paramb.crI.cqQ);
+          if (bool) {}
+        }
+        else
+        {
+          AppMethodBeat.o(8314);
+          return true;
+        }
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("exdevice_device_id", paramb.crI.bYu);
+        ((Bundle)localObject).putInt("exdevice_on_state_change_state", paramb.crI.crJ);
+        ((Bundle)localObject).putString("exdevice_device_type", a.access$100());
+        this.uWu.e(1004, (Bundle)localObject);
+      }
+      else
+      {
+        ((Bundle)localObject).putBoolean("exdevice_lan_state", true);
       }
     }
-    return true;
-    label541:
-    return true;
-    label543:
-    return true;
+    for (;;)
+    {
+      this.uWu.e(47, (Bundle)localObject);
+      break;
+      ((Bundle)localObject).putBoolean("exdevice_lan_state", false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.a.a.a
  * JD-Core Version:    0.7.0.1
  */

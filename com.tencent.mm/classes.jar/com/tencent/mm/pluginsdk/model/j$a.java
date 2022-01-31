@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.model;
 
 public abstract interface j$a
 {
-  public abstract void ckA();
+  public abstract void dlh();
 }
 
 

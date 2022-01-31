@@ -1,31 +1,43 @@
 package com.tencent.mm.protocal;
 
-import com.tencent.mm.protocal.c.azf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bga;
 
 public final class s$a
-  extends k.d
-  implements k.b
+  extends l.d
+  implements l.b
 {
-  public azf sqi = new azf();
+  public bga wiK;
   
-  public final byte[] HG()
+  public s$a()
   {
-    return this.sqi.toByteArray();
-  }
-  
-  public final int HH()
-  {
-    return 138;
+    AppMethodBeat.i(58852);
+    this.wiK = new bga();
+    AppMethodBeat.o(58852);
   }
   
   public final int getCmdId()
   {
-    return 121;
+    return 27;
+  }
+  
+  public final int getFuncId()
+  {
+    return 139;
+  }
+  
+  public final byte[] toProtoBuf()
+  {
+    AppMethodBeat.i(58853);
+    this.wiK.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.wiK.toByteArray();
+    AppMethodBeat.o(58853);
+    return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.s.a
  * JD-Core Version:    0.7.0.1
  */

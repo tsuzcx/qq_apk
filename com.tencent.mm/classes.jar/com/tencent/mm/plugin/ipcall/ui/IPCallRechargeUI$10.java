@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class IPCallRechargeUI$10
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class IPCallRechargeUI$10
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    IPCallRechargeUI.j(this.lxJ);
+    AppMethodBeat.i(22261);
+    IPCallRechargeUI.j(this.nUW);
+    AppMethodBeat.o(22261);
   }
 }
 

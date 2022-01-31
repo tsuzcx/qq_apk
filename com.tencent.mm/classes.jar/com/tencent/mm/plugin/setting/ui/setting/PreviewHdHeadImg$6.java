@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.ag.b;
-import com.tencent.mm.ag.d;
-import com.tencent.mm.ag.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.b;
+import com.tencent.mm.ah.d;
+import com.tencent.mm.ah.o;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.av;
+import com.tencent.mm.model.r;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class PreviewHdHeadImg$6
   implements Runnable
@@ -16,19 +17,21 @@ final class PreviewHdHeadImg$6
   
   public final void run()
   {
-    y.d("MicroMsg.PreviewHdHeadImg", "updateHeadImg hasUin:%b user:%s", new Object[] { Boolean.valueOf(g.DK()), q.Gj() });
-    if (g.DK())
+    AppMethodBeat.i(126994);
+    ab.d("MicroMsg.PreviewHdHeadImg", "updateHeadImg hasUin:%b user:%s", new Object[] { Boolean.valueOf(g.RG()), r.Zn() });
+    if (g.RG())
     {
-      if (this.ara != null)
+      if (this.val$bitmap != null)
       {
-        o.JQ();
-        str = d.A(q.Gj() + ".last", true);
-        PreviewHdHeadImg.e(this.ara, str);
+        o.acQ();
+        str = d.E(r.Zn() + ".last", true);
+        PreviewHdHeadImg.e(this.val$bitmap, str);
       }
-      String str = b.jZ(q.Gj());
-      at.dVC.iF(str);
+      String str = b.qS(r.Zn());
+      av.flM.po(str);
     }
-    PreviewHdHeadImg.d(this.nSq);
+    PreviewHdHeadImg.d(this.qGo);
+    AppMethodBeat.o(126994);
   }
 }
 

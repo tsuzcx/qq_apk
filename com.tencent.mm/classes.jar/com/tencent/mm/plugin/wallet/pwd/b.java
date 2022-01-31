@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet.pwd.ui.WalletPasswordSettingUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.c;
@@ -22,85 +22,109 @@ public class b
 {
   public final int a(MMActivity paramMMActivity, int paramInt)
   {
-    return a.i.wallet_set_password_finish_confirm;
+    return 2131305648;
   }
   
   public final c a(Activity paramActivity, Bundle paramBundle)
   {
-    y.d("MicroMsg.ProcessManager", "start Process : ModifyPwdProcess");
+    AppMethodBeat.i(46148);
+    ab.d("MicroMsg.ProcessManager", "start Process : ModifyPwdProcess");
     b(paramActivity, WalletCheckPwdUI.class, paramBundle);
+    AppMethodBeat.o(46148);
     return this;
   }
   
   public final g a(MMActivity paramMMActivity, i parami)
   {
-    if ((paramMMActivity instanceof WalletCheckPwdUI)) {
-      return new b.1(this, paramMMActivity, parami);
+    AppMethodBeat.i(46152);
+    if ((paramMMActivity instanceof WalletCheckPwdUI))
+    {
+      paramMMActivity = new b.1(this, paramMMActivity, parami);
+      AppMethodBeat.o(46152);
+      return paramMMActivity;
     }
-    if ((paramMMActivity instanceof WalletPwdConfirmUI)) {
-      return new b.2(this, paramMMActivity, parami);
+    if ((paramMMActivity instanceof WalletPwdConfirmUI))
+    {
+      paramMMActivity = new b.2(this, paramMMActivity, parami);
+      AppMethodBeat.o(46152);
+      return paramMMActivity;
     }
-    return super.a(paramMMActivity, parami);
+    paramMMActivity = super.a(paramMMActivity, parami);
+    AppMethodBeat.o(46152);
+    return paramMMActivity;
   }
   
   public final void a(Activity paramActivity, int paramInt, Bundle paramBundle)
   {
-    if ((paramActivity instanceof WalletCheckPwdUI)) {
-      b(paramActivity, WalletSetPasswordUI.class, paramBundle);
-    }
-    do
+    AppMethodBeat.i(46149);
+    if ((paramActivity instanceof WalletCheckPwdUI))
     {
+      b(paramActivity, WalletSetPasswordUI.class, paramBundle);
+      AppMethodBeat.o(46149);
       return;
-      if ((paramActivity instanceof WalletSetPasswordUI))
-      {
-        b(paramActivity, WalletPwdConfirmUI.class, paramBundle);
-        return;
-      }
-    } while (!(paramActivity instanceof WalletPwdConfirmUI));
-    b(paramActivity, paramBundle);
+    }
+    if ((paramActivity instanceof WalletSetPasswordUI))
+    {
+      b(paramActivity, WalletPwdConfirmUI.class, paramBundle);
+      AppMethodBeat.o(46149);
+      return;
+    }
+    if ((paramActivity instanceof WalletPwdConfirmUI)) {
+      b(paramActivity, paramBundle);
+    }
+    AppMethodBeat.o(46149);
   }
   
   public final boolean a(final WalletBaseUI paramWalletBaseUI, int paramInt, String paramString)
   {
+    AppMethodBeat.i(46153);
     switch (paramInt)
     {
     default: 
+      AppMethodBeat.o(46153);
       return false;
     }
-    h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(a.i.wallet_set_password_finish_confirm), false, new DialogInterface.OnClickListener()
+    h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(2131305648), false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
+        AppMethodBeat.i(46147);
         b.this.b(paramWalletBaseUI, b.c(b.this));
-        if (paramWalletBaseUI.aSk()) {
+        if (paramWalletBaseUI.isTransparent()) {
           paramWalletBaseUI.finish();
         }
-        WalletBaseUI.cNh();
+        paramWalletBaseUI.clearErr();
+        AppMethodBeat.o(46147);
       }
     });
+    AppMethodBeat.o(46153);
     return true;
-  }
-  
-  public final String aTh()
-  {
-    return "ModifyPwdProcess";
-  }
-  
-  public final void b(Activity paramActivity, int paramInt)
-  {
-    if ((paramActivity instanceof WalletPwdConfirmUI)) {
-      a(paramActivity, WalletSetPasswordUI.class, paramInt);
-    }
   }
   
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
+    AppMethodBeat.i(46151);
     a(paramActivity, WalletPasswordSettingUI.class, -1, false);
+    AppMethodBeat.o(46151);
+  }
+  
+  public final String bzC()
+  {
+    return "ModifyPwdProcess";
   }
   
   public final boolean c(Activity paramActivity, Bundle paramBundle)
   {
     return false;
+  }
+  
+  public final void e(Activity paramActivity, int paramInt)
+  {
+    AppMethodBeat.i(46150);
+    if ((paramActivity instanceof WalletPwdConfirmUI)) {
+      a(paramActivity, WalletSetPasswordUI.class, paramInt);
+    }
+    AppMethodBeat.o(46150);
   }
 }
 

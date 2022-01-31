@@ -1,17 +1,29 @@
 package com.tencent.mm.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 final class HomeUI$18
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   HomeUI$18(HomeUI paramHomeUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onClick(View paramView)
   {
-    HomeUI.d(this.uKu).startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.i(153779);
+    if (SystemClock.elapsedRealtime() - HomeUI.v(this.yYw) < 300L)
+    {
+      paramView = HomeUI.w(this.yYw).iterator();
+      while (paramView.hasNext()) {
+        ((Runnable)paramView.next()).run();
+      }
+    }
+    HomeUI.b(this.yYw, SystemClock.elapsedRealtime());
+    AppMethodBeat.o(153779);
   }
 }
 

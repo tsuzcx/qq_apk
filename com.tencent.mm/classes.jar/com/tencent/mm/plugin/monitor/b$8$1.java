@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.monitor;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$8$1
   implements Runnable
 {
@@ -7,13 +9,14 @@ final class b$8$1
   
   public final void run()
   {
-    b.a(this.msu.msl);
-    b.bku();
+    AppMethodBeat.i(84524);
+    b.a(this.oSf.oRW);
+    AppMethodBeat.o(84524);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.monitor.b.8.1
  * JD-Core Version:    0.7.0.1
  */

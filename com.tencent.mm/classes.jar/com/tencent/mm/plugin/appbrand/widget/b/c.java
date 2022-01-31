@@ -9,57 +9,56 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.modelappbrand.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.f;
-import com.tencent.mm.plugin.appbrand.y.e;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.protocal.c.bna;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.AuthorizeItemListView;
-import com.tencent.mm.ui.y;
 import java.util.LinkedList;
 
 public final class c
   extends b
 {
-  private final String fXS;
-  private AuthorizeItemListView fXT;
-  private LinearLayout fXV;
-  private c.b hsq;
+  private final String hDB;
+  private AuthorizeItemListView jiY;
+  private c.b jiZ;
+  private LinearLayout jja;
   private final String mAppName;
   private Context mContext;
   
-  public c(Context paramContext, LinkedList<bna> paramLinkedList, String paramString1, String paramString2, c.a parama)
+  public c(Context paramContext, LinkedList<c.c> paramLinkedList, String paramString1, String paramString2, c.a parama)
   {
     super(paramContext, (byte)0);
+    AppMethodBeat.i(102357);
     this.mContext = paramContext;
-    this.mAppName = bk.pm(paramString1);
-    this.fXS = paramString2;
-    if ((paramLinkedList == null) || (paramLinkedList.size() <= 0)) {
-      throw new IllegalArgumentException("scopeInfoList is empty or null");
+    this.mAppName = bo.nullAsNil(paramString1);
+    this.hDB = paramString2;
+    if ((paramLinkedList == null) || (paramLinkedList.size() <= 0))
+    {
+      paramContext = new IllegalArgumentException("scopeInfoList is empty or null");
+      AppMethodBeat.o(102357);
+      throw paramContext;
     }
-    paramContext = (ViewGroup)y.gt(this.mContext).inflate(y.h.app_brand_auth_dialog, null);
+    paramContext = (ViewGroup)LayoutInflater.from(this.mContext).inflate(2130968662, null);
     setContentView(paramContext);
-    paramString1 = (ImageView)paramContext.findViewById(y.g.app_icon_iv);
-    com.tencent.mm.modelappbrand.a.b.JD().a(paramString1, this.fXS, a.JC(), f.eaL);
-    ((TextView)paramContext.findViewById(y.g.app_name_tv)).setText(this.mContext.getString(y.j.login_auth_request_tips, new Object[] { this.mAppName }));
-    this.fXT = ((AuthorizeItemListView)paramContext.findViewById(y.g.auth_content_list));
-    this.hsq = new c.b(paramLinkedList);
-    this.fXT.setAdapter(this.hsq);
+    paramString1 = (ImageView)paramContext.findViewById(2131821155);
+    com.tencent.mm.modelappbrand.a.b.acD().a(paramString1, this.hDB, 2130839617, f.fqU);
+    ((TextView)paramContext.findViewById(2131821156)).setText(this.mContext.getString(2131301119, new Object[] { this.mAppName }));
+    this.jiY = ((AuthorizeItemListView)paramContext.findViewById(2131821158));
+    this.jiZ = new c.b(paramLinkedList);
+    this.jiY.setAdapter(this.jiZ);
     if (paramLinkedList.size() > 5)
     {
-      this.fXT.Zn = paramLinkedList.size();
-      this.fXV = ((LinearLayout)paramContext.findViewById(y.g.auth_scope_list_layout));
-      paramString1 = (LinearLayout.LayoutParams)this.fXV.getLayoutParams();
-      paramString1.height = this.mContext.getResources().getDimensionPixelSize(y.e.login_desc_list_height);
-      this.fXV.setLayoutParams(paramString1);
+      this.jiY.ZY = paramLinkedList.size();
+      this.jja = ((LinearLayout)paramContext.findViewById(2131821157));
+      paramString1 = (LinearLayout.LayoutParams)this.jja.getLayoutParams();
+      paramString1.height = this.mContext.getResources().getDimensionPixelSize(2131428498);
+      this.jja.setLayoutParams(paramString1);
     }
-    ((Button)paramContext.findViewById(y.g.login_accept)).setOnClickListener(new c.1(this, paramLinkedList, parama, this));
-    ((Button)paramContext.findViewById(y.g.login_reject)).setOnClickListener(new c.2(this, paramLinkedList, parama, this));
+    ((Button)paramContext.findViewById(2131821161)).setOnClickListener(new c.1(this, paramLinkedList, parama, this));
+    ((Button)paramContext.findViewById(2131821160)).setOnClickListener(new c.2(this, paramLinkedList, parama, this));
     setCanceledOnTouchOutside(false);
     setOnCancelListener(new c.3(this, parama));
+    AppMethodBeat.o(102357);
   }
 }
 

@@ -9,12 +9,12 @@ public final class f$b
   extends a.a
 {
   public View contentView;
-  public View kCO;
-  public TextView kCX;
-  public ImageView kCY;
-  public TextView kCZ;
-  public ImageView kDa;
-  public TextView kDb;
+  public View mYK;
+  public TextView mYT;
+  public ImageView mYU;
+  public TextView mYV;
+  public ImageView mYW;
+  public TextView mYX;
   
   public f$b(f paramf)
   {

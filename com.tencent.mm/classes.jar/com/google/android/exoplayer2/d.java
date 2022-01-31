@@ -6,9 +6,9 @@ import com.google.android.exoplayer2.drm.b;
 public final class d
   implements u
 {
-  private final b<com.google.android.exoplayer2.drm.d> asY;
-  private final int asZ;
-  private final long ata;
+  private final b<com.google.android.exoplayer2.drm.d> avq;
+  private final int avr;
+  private final long avs;
   private final Context context;
   
   public d(Context paramContext)
@@ -29,377 +29,399 @@ public final class d
   private d(Context paramContext, short paramShort)
   {
     this.context = paramContext;
-    this.asY = null;
-    this.asZ = 0;
-    this.ata = 5000L;
+    this.avq = null;
+    this.avr = 0;
+    this.avs = 5000L;
   }
   
   /* Error */
   public final r[] a(android.os.Handler paramHandler, com.google.android.exoplayer2.video.e parame, com.google.android.exoplayer2.a.e parame1, com.google.android.exoplayer2.f.j.a parama, com.google.android.exoplayer2.metadata.e.a parama1)
   {
     // Byte code:
-    //   0: new 49	java/util/ArrayList
-    //   3: dup
-    //   4: invokespecial 50	java/util/ArrayList:<init>	()V
-    //   7: astore 11
-    //   9: aload_0
-    //   10: getfield 33	com/google/android/exoplayer2/d:context	Landroid/content/Context;
-    //   13: astore 12
-    //   15: aload_0
-    //   16: getfield 35	com/google/android/exoplayer2/d:asY	Lcom/google/android/exoplayer2/drm/b;
-    //   19: astore 13
-    //   21: aload_0
-    //   22: getfield 41	com/google/android/exoplayer2/d:ata	J
-    //   25: lstore 9
-    //   27: aload_0
-    //   28: getfield 37	com/google/android/exoplayer2/d:asZ	I
-    //   31: istore 7
-    //   33: aload 11
-    //   35: new 52	com/google/android/exoplayer2/video/c
-    //   38: dup
-    //   39: aload 12
-    //   41: getstatic 58	com/google/android/exoplayer2/e/c:aGy	Lcom/google/android/exoplayer2/e/c;
-    //   44: lload 9
-    //   46: aload 13
-    //   48: aload_1
-    //   49: aload_2
-    //   50: invokespecial 61	com/google/android/exoplayer2/video/c:<init>	(Landroid/content/Context;Lcom/google/android/exoplayer2/e/c;JLcom/google/android/exoplayer2/drm/b;Landroid/os/Handler;Lcom/google/android/exoplayer2/video/e;)V
-    //   53: invokevirtual 65	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   56: pop
-    //   57: iload 7
-    //   59: ifeq +110 -> 169
-    //   62: aload 11
-    //   64: invokevirtual 69	java/util/ArrayList:size	()I
-    //   67: istore 6
-    //   69: iload 7
-    //   71: iconst_2
-    //   72: if_icmpne +501 -> 573
-    //   75: iload 6
-    //   77: iconst_1
-    //   78: isub
-    //   79: istore 6
-    //   81: aload 11
-    //   83: iload 6
-    //   85: ldc 71
-    //   87: invokestatic 77	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   90: iconst_5
-    //   91: anewarray 73	java/lang/Class
-    //   94: dup
-    //   95: iconst_0
-    //   96: getstatic 83	java/lang/Boolean:TYPE	Ljava/lang/Class;
-    //   99: aastore
-    //   100: dup
-    //   101: iconst_1
-    //   102: getstatic 86	java/lang/Long:TYPE	Ljava/lang/Class;
-    //   105: aastore
-    //   106: dup
-    //   107: iconst_2
-    //   108: ldc 88
-    //   110: aastore
-    //   111: dup
-    //   112: iconst_3
-    //   113: ldc 90
-    //   115: aastore
-    //   116: dup
-    //   117: iconst_4
-    //   118: getstatic 93	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   121: aastore
-    //   122: invokevirtual 97	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   125: iconst_5
-    //   126: anewarray 4	java/lang/Object
-    //   129: dup
-    //   130: iconst_0
-    //   131: iconst_1
-    //   132: invokestatic 101	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   135: aastore
+    //   0: ldc 48
+    //   2: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 56	java/util/ArrayList
+    //   8: dup
+    //   9: invokespecial 57	java/util/ArrayList:<init>	()V
+    //   12: astore 11
+    //   14: aload_0
+    //   15: getfield 33	com/google/android/exoplayer2/d:context	Landroid/content/Context;
+    //   18: astore 12
+    //   20: aload_0
+    //   21: getfield 35	com/google/android/exoplayer2/d:avq	Lcom/google/android/exoplayer2/drm/b;
+    //   24: astore 13
+    //   26: aload_0
+    //   27: getfield 41	com/google/android/exoplayer2/d:avs	J
+    //   30: lstore 9
+    //   32: aload_0
+    //   33: getfield 37	com/google/android/exoplayer2/d:avr	I
+    //   36: istore 7
+    //   38: aload 11
+    //   40: new 59	com/google/android/exoplayer2/video/c
+    //   43: dup
+    //   44: aload 12
+    //   46: getstatic 65	com/google/android/exoplayer2/e/c:aNt	Lcom/google/android/exoplayer2/e/c;
+    //   49: lload 9
+    //   51: aload 13
+    //   53: aload_1
+    //   54: aload_2
+    //   55: bipush 50
+    //   57: invokespecial 68	com/google/android/exoplayer2/video/c:<init>	(Landroid/content/Context;Lcom/google/android/exoplayer2/e/c;JLcom/google/android/exoplayer2/drm/b;Landroid/os/Handler;Lcom/google/android/exoplayer2/video/e;I)V
+    //   60: invokevirtual 72	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   63: pop
+    //   64: iload 7
+    //   66: ifeq +109 -> 175
+    //   69: aload 11
+    //   71: invokevirtual 76	java/util/ArrayList:size	()I
+    //   74: istore 6
+    //   76: iload 7
+    //   78: iconst_2
+    //   79: if_icmpne +535 -> 614
+    //   82: iload 6
+    //   84: iconst_1
+    //   85: isub
+    //   86: istore 6
+    //   88: aload 11
+    //   90: iload 6
+    //   92: ldc 78
+    //   94: invokestatic 84	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   97: iconst_5
+    //   98: anewarray 80	java/lang/Class
+    //   101: dup
+    //   102: iconst_0
+    //   103: getstatic 90	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   106: aastore
+    //   107: dup
+    //   108: iconst_1
+    //   109: getstatic 93	java/lang/Long:TYPE	Ljava/lang/Class;
+    //   112: aastore
+    //   113: dup
+    //   114: iconst_2
+    //   115: ldc 95
+    //   117: aastore
+    //   118: dup
+    //   119: iconst_3
+    //   120: ldc 97
+    //   122: aastore
+    //   123: dup
+    //   124: iconst_4
+    //   125: getstatic 100	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   128: aastore
+    //   129: invokevirtual 104	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   132: iconst_5
+    //   133: anewarray 4	java/lang/Object
     //   136: dup
-    //   137: iconst_1
-    //   138: lload 9
-    //   140: invokestatic 104	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   143: aastore
-    //   144: dup
-    //   145: iconst_2
-    //   146: aload_1
-    //   147: aastore
-    //   148: dup
-    //   149: iconst_3
-    //   150: aload_2
-    //   151: aastore
-    //   152: dup
-    //   153: iconst_4
-    //   154: bipush 50
-    //   156: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   159: aastore
-    //   160: invokevirtual 113	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   163: checkcast 115	com/google/android/exoplayer2/r
-    //   166: invokevirtual 118	java/util/ArrayList:add	(ILjava/lang/Object;)V
-    //   169: aload_0
-    //   170: getfield 33	com/google/android/exoplayer2/d:context	Landroid/content/Context;
-    //   173: astore 12
+    //   137: iconst_0
+    //   138: getstatic 108	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   141: aastore
+    //   142: dup
+    //   143: iconst_1
+    //   144: lload 9
+    //   146: invokestatic 112	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   149: aastore
+    //   150: dup
+    //   151: iconst_2
+    //   152: aload_1
+    //   153: aastore
+    //   154: dup
+    //   155: iconst_3
+    //   156: aload_2
+    //   157: aastore
+    //   158: dup
+    //   159: iconst_4
+    //   160: bipush 50
+    //   162: invokestatic 115	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   165: aastore
+    //   166: invokevirtual 121	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   169: checkcast 123	com/google/android/exoplayer2/r
+    //   172: invokevirtual 126	java/util/ArrayList:add	(ILjava/lang/Object;)V
     //   175: aload_0
-    //   176: getfield 35	com/google/android/exoplayer2/d:asY	Lcom/google/android/exoplayer2/drm/b;
-    //   179: astore 13
-    //   181: iconst_0
-    //   182: anewarray 120	com/google/android/exoplayer2/a/d
-    //   185: astore_2
-    //   186: aload_0
-    //   187: getfield 37	com/google/android/exoplayer2/d:asZ	I
-    //   190: istore 8
-    //   192: aload 11
-    //   194: new 122	com/google/android/exoplayer2/a/i
-    //   197: dup
-    //   198: getstatic 58	com/google/android/exoplayer2/e/c:aGy	Lcom/google/android/exoplayer2/e/c;
-    //   201: aload 13
-    //   203: aload_1
-    //   204: aload_3
-    //   205: aload 12
-    //   207: invokestatic 128	com/google/android/exoplayer2/a/c:Y	(Landroid/content/Context;)Lcom/google/android/exoplayer2/a/c;
-    //   210: aload_2
-    //   211: invokespecial 131	com/google/android/exoplayer2/a/i:<init>	(Lcom/google/android/exoplayer2/e/c;Lcom/google/android/exoplayer2/drm/b;Landroid/os/Handler;Lcom/google/android/exoplayer2/a/e;Lcom/google/android/exoplayer2/a/c;[Lcom/google/android/exoplayer2/a/d;)V
-    //   214: invokevirtual 65	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   217: pop
-    //   218: iload 8
-    //   220: ifeq +218 -> 438
-    //   223: aload 11
-    //   225: invokevirtual 69	java/util/ArrayList:size	()I
-    //   228: istore 7
-    //   230: iload 7
-    //   232: istore 6
-    //   234: iload 8
-    //   236: iconst_2
-    //   237: if_icmpne +9 -> 246
-    //   240: iload 7
-    //   242: iconst_1
-    //   243: isub
-    //   244: istore 6
-    //   246: ldc 133
-    //   248: invokestatic 77	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   251: iconst_3
-    //   252: anewarray 73	java/lang/Class
-    //   255: dup
-    //   256: iconst_0
-    //   257: ldc 88
-    //   259: aastore
-    //   260: dup
-    //   261: iconst_1
-    //   262: ldc 135
-    //   264: aastore
-    //   265: dup
-    //   266: iconst_2
-    //   267: ldc 137
-    //   269: aastore
-    //   270: invokevirtual 97	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   273: iconst_3
-    //   274: anewarray 4	java/lang/Object
-    //   277: dup
-    //   278: iconst_0
-    //   279: aload_1
-    //   280: aastore
-    //   281: dup
-    //   282: iconst_1
-    //   283: aload_3
-    //   284: aastore
-    //   285: dup
-    //   286: iconst_2
-    //   287: aload_2
-    //   288: aastore
-    //   289: invokevirtual 113	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   292: checkcast 115	com/google/android/exoplayer2/r
-    //   295: astore 12
-    //   297: iload 6
-    //   299: iconst_1
-    //   300: iadd
-    //   301: istore 7
-    //   303: aload 11
-    //   305: iload 6
-    //   307: aload 12
-    //   309: invokevirtual 118	java/util/ArrayList:add	(ILjava/lang/Object;)V
-    //   312: iload 7
-    //   314: istore 6
-    //   316: ldc 139
-    //   318: invokestatic 77	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   321: iconst_3
-    //   322: anewarray 73	java/lang/Class
-    //   325: dup
-    //   326: iconst_0
-    //   327: ldc 88
-    //   329: aastore
-    //   330: dup
-    //   331: iconst_1
-    //   332: ldc 135
-    //   334: aastore
-    //   335: dup
-    //   336: iconst_2
-    //   337: ldc 137
-    //   339: aastore
-    //   340: invokevirtual 97	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   343: iconst_3
-    //   344: anewarray 4	java/lang/Object
-    //   347: dup
-    //   348: iconst_0
-    //   349: aload_1
-    //   350: aastore
-    //   351: dup
-    //   352: iconst_1
-    //   353: aload_3
-    //   354: aastore
-    //   355: dup
-    //   356: iconst_2
-    //   357: aload_2
-    //   358: aastore
-    //   359: invokevirtual 113	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   362: checkcast 115	com/google/android/exoplayer2/r
-    //   365: astore 12
-    //   367: iload 6
-    //   369: iconst_1
-    //   370: iadd
-    //   371: istore 7
-    //   373: aload 11
-    //   375: iload 6
-    //   377: aload 12
-    //   379: invokevirtual 118	java/util/ArrayList:add	(ILjava/lang/Object;)V
-    //   382: aload 11
-    //   384: iload 7
-    //   386: ldc 141
-    //   388: invokestatic 77	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   391: iconst_3
-    //   392: anewarray 73	java/lang/Class
-    //   395: dup
-    //   396: iconst_0
-    //   397: ldc 88
-    //   399: aastore
-    //   400: dup
-    //   401: iconst_1
-    //   402: ldc 135
-    //   404: aastore
-    //   405: dup
-    //   406: iconst_2
-    //   407: ldc 137
-    //   409: aastore
-    //   410: invokevirtual 97	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   413: iconst_3
-    //   414: anewarray 4	java/lang/Object
-    //   417: dup
-    //   418: iconst_0
-    //   419: aload_1
-    //   420: aastore
-    //   421: dup
-    //   422: iconst_1
-    //   423: aload_3
-    //   424: aastore
-    //   425: dup
-    //   426: iconst_2
-    //   427: aload_2
-    //   428: aastore
-    //   429: invokevirtual 113	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   432: checkcast 115	com/google/android/exoplayer2/r
-    //   435: invokevirtual 118	java/util/ArrayList:add	(ILjava/lang/Object;)V
-    //   438: aload 11
-    //   440: new 143	com/google/android/exoplayer2/f/j
-    //   443: dup
-    //   444: aload 4
-    //   446: aload_1
-    //   447: invokevirtual 147	android/os/Handler:getLooper	()Landroid/os/Looper;
-    //   450: invokespecial 150	com/google/android/exoplayer2/f/j:<init>	(Lcom/google/android/exoplayer2/f/j$a;Landroid/os/Looper;)V
-    //   453: invokevirtual 65	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   456: pop
-    //   457: aload 11
-    //   459: new 152	com/google/android/exoplayer2/metadata/e
-    //   462: dup
-    //   463: aload 5
-    //   465: aload_1
-    //   466: invokevirtual 147	android/os/Handler:getLooper	()Landroid/os/Looper;
-    //   469: invokespecial 155	com/google/android/exoplayer2/metadata/e:<init>	(Lcom/google/android/exoplayer2/metadata/e$a;Landroid/os/Looper;)V
-    //   472: invokevirtual 65	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   475: pop
-    //   476: aload 11
-    //   478: aload 11
-    //   480: invokevirtual 69	java/util/ArrayList:size	()I
-    //   483: anewarray 115	com/google/android/exoplayer2/r
-    //   486: invokevirtual 159	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   489: checkcast 161	[Lcom/google/android/exoplayer2/r;
-    //   492: areturn
-    //   493: astore_1
-    //   494: new 163	java/lang/RuntimeException
-    //   497: dup
-    //   498: aload_1
-    //   499: invokespecial 166	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
-    //   502: athrow
-    //   503: astore 12
-    //   505: goto -189 -> 316
-    //   508: astore_1
-    //   509: new 163	java/lang/RuntimeException
-    //   512: dup
-    //   513: aload_1
-    //   514: invokespecial 166	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
-    //   517: athrow
-    //   518: astore 12
-    //   520: iload 6
-    //   522: istore 7
-    //   524: goto -142 -> 382
-    //   527: astore_1
-    //   528: new 163	java/lang/RuntimeException
-    //   531: dup
-    //   532: aload_1
-    //   533: invokespecial 166	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
-    //   536: athrow
+    //   176: getfield 33	com/google/android/exoplayer2/d:context	Landroid/content/Context;
+    //   179: astore 12
+    //   181: aload_0
+    //   182: getfield 35	com/google/android/exoplayer2/d:avq	Lcom/google/android/exoplayer2/drm/b;
+    //   185: astore 13
+    //   187: iconst_0
+    //   188: anewarray 128	com/google/android/exoplayer2/a/d
+    //   191: astore_2
+    //   192: aload_0
+    //   193: getfield 37	com/google/android/exoplayer2/d:avr	I
+    //   196: istore 8
+    //   198: aload 11
+    //   200: new 130	com/google/android/exoplayer2/a/i
+    //   203: dup
+    //   204: getstatic 65	com/google/android/exoplayer2/e/c:aNt	Lcom/google/android/exoplayer2/e/c;
+    //   207: aload 13
+    //   209: aload_1
+    //   210: aload_3
+    //   211: aload 12
+    //   213: invokestatic 136	com/google/android/exoplayer2/a/c:aa	(Landroid/content/Context;)Lcom/google/android/exoplayer2/a/c;
+    //   216: aload_2
+    //   217: invokespecial 139	com/google/android/exoplayer2/a/i:<init>	(Lcom/google/android/exoplayer2/e/c;Lcom/google/android/exoplayer2/drm/b;Landroid/os/Handler;Lcom/google/android/exoplayer2/a/e;Lcom/google/android/exoplayer2/a/c;[Lcom/google/android/exoplayer2/a/d;)V
+    //   220: invokevirtual 72	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   223: pop
+    //   224: iload 8
+    //   226: ifeq +218 -> 444
+    //   229: aload 11
+    //   231: invokevirtual 76	java/util/ArrayList:size	()I
+    //   234: istore 7
+    //   236: iload 7
+    //   238: istore 6
+    //   240: iload 8
+    //   242: iconst_2
+    //   243: if_icmpne +9 -> 252
+    //   246: iload 7
+    //   248: iconst_1
+    //   249: isub
+    //   250: istore 6
+    //   252: ldc 141
+    //   254: invokestatic 84	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   257: iconst_3
+    //   258: anewarray 80	java/lang/Class
+    //   261: dup
+    //   262: iconst_0
+    //   263: ldc 95
+    //   265: aastore
+    //   266: dup
+    //   267: iconst_1
+    //   268: ldc 143
+    //   270: aastore
+    //   271: dup
+    //   272: iconst_2
+    //   273: ldc 145
+    //   275: aastore
+    //   276: invokevirtual 104	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   279: iconst_3
+    //   280: anewarray 4	java/lang/Object
+    //   283: dup
+    //   284: iconst_0
+    //   285: aload_1
+    //   286: aastore
+    //   287: dup
+    //   288: iconst_1
+    //   289: aload_3
+    //   290: aastore
+    //   291: dup
+    //   292: iconst_2
+    //   293: aload_2
+    //   294: aastore
+    //   295: invokevirtual 121	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   298: checkcast 123	com/google/android/exoplayer2/r
+    //   301: astore 12
+    //   303: iload 6
+    //   305: iconst_1
+    //   306: iadd
+    //   307: istore 7
+    //   309: aload 11
+    //   311: iload 6
+    //   313: aload 12
+    //   315: invokevirtual 126	java/util/ArrayList:add	(ILjava/lang/Object;)V
+    //   318: iload 7
+    //   320: istore 6
+    //   322: ldc 147
+    //   324: invokestatic 84	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   327: iconst_3
+    //   328: anewarray 80	java/lang/Class
+    //   331: dup
+    //   332: iconst_0
+    //   333: ldc 95
+    //   335: aastore
+    //   336: dup
+    //   337: iconst_1
+    //   338: ldc 143
+    //   340: aastore
+    //   341: dup
+    //   342: iconst_2
+    //   343: ldc 145
+    //   345: aastore
+    //   346: invokevirtual 104	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   349: iconst_3
+    //   350: anewarray 4	java/lang/Object
+    //   353: dup
+    //   354: iconst_0
+    //   355: aload_1
+    //   356: aastore
+    //   357: dup
+    //   358: iconst_1
+    //   359: aload_3
+    //   360: aastore
+    //   361: dup
+    //   362: iconst_2
+    //   363: aload_2
+    //   364: aastore
+    //   365: invokevirtual 121	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   368: checkcast 123	com/google/android/exoplayer2/r
+    //   371: astore 12
+    //   373: iload 6
+    //   375: iconst_1
+    //   376: iadd
+    //   377: istore 7
+    //   379: aload 11
+    //   381: iload 6
+    //   383: aload 12
+    //   385: invokevirtual 126	java/util/ArrayList:add	(ILjava/lang/Object;)V
+    //   388: aload 11
+    //   390: iload 7
+    //   392: ldc 149
+    //   394: invokestatic 84	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   397: iconst_3
+    //   398: anewarray 80	java/lang/Class
+    //   401: dup
+    //   402: iconst_0
+    //   403: ldc 95
+    //   405: aastore
+    //   406: dup
+    //   407: iconst_1
+    //   408: ldc 143
+    //   410: aastore
+    //   411: dup
+    //   412: iconst_2
+    //   413: ldc 145
+    //   415: aastore
+    //   416: invokevirtual 104	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   419: iconst_3
+    //   420: anewarray 4	java/lang/Object
+    //   423: dup
+    //   424: iconst_0
+    //   425: aload_1
+    //   426: aastore
+    //   427: dup
+    //   428: iconst_1
+    //   429: aload_3
+    //   430: aastore
+    //   431: dup
+    //   432: iconst_2
+    //   433: aload_2
+    //   434: aastore
+    //   435: invokevirtual 121	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   438: checkcast 123	com/google/android/exoplayer2/r
+    //   441: invokevirtual 126	java/util/ArrayList:add	(ILjava/lang/Object;)V
+    //   444: aload 11
+    //   446: new 151	com/google/android/exoplayer2/f/j
+    //   449: dup
+    //   450: aload 4
+    //   452: aload_1
+    //   453: invokevirtual 155	android/os/Handler:getLooper	()Landroid/os/Looper;
+    //   456: invokespecial 158	com/google/android/exoplayer2/f/j:<init>	(Lcom/google/android/exoplayer2/f/j$a;Landroid/os/Looper;)V
+    //   459: invokevirtual 72	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   462: pop
+    //   463: aload 11
+    //   465: new 160	com/google/android/exoplayer2/metadata/e
+    //   468: dup
+    //   469: aload 5
+    //   471: aload_1
+    //   472: invokevirtual 155	android/os/Handler:getLooper	()Landroid/os/Looper;
+    //   475: invokespecial 163	com/google/android/exoplayer2/metadata/e:<init>	(Lcom/google/android/exoplayer2/metadata/e$a;Landroid/os/Looper;)V
+    //   478: invokevirtual 72	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   481: pop
+    //   482: aload 11
+    //   484: aload 11
+    //   486: invokevirtual 76	java/util/ArrayList:size	()I
+    //   489: anewarray 123	com/google/android/exoplayer2/r
+    //   492: invokevirtual 167	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   495: checkcast 169	[Lcom/google/android/exoplayer2/r;
+    //   498: astore_1
+    //   499: ldc 48
+    //   501: invokestatic 172	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   504: aload_1
+    //   505: areturn
+    //   506: astore_1
+    //   507: new 174	java/lang/RuntimeException
+    //   510: dup
+    //   511: aload_1
+    //   512: invokespecial 177	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
+    //   515: astore_1
+    //   516: ldc 48
+    //   518: invokestatic 172	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   521: aload_1
+    //   522: athrow
+    //   523: astore 12
+    //   525: goto -203 -> 322
+    //   528: astore_1
+    //   529: new 174	java/lang/RuntimeException
+    //   532: dup
+    //   533: aload_1
+    //   534: invokespecial 177	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
     //   537: astore_1
-    //   538: new 163	java/lang/RuntimeException
-    //   541: dup
-    //   542: aload_1
-    //   543: invokespecial 166	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
-    //   546: athrow
-    //   547: astore_2
-    //   548: goto -110 -> 438
-    //   551: astore 12
-    //   553: iload 7
-    //   555: istore 6
-    //   557: goto -37 -> 520
-    //   560: astore 12
-    //   562: iload 7
-    //   564: istore 6
-    //   566: goto -61 -> 505
-    //   569: astore_2
-    //   570: goto -401 -> 169
-    //   573: goto -492 -> 81
+    //   538: ldc 48
+    //   540: invokestatic 172	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   543: aload_1
+    //   544: athrow
+    //   545: astore 12
+    //   547: iload 6
+    //   549: istore 7
+    //   551: goto -163 -> 388
+    //   554: astore_1
+    //   555: new 174	java/lang/RuntimeException
+    //   558: dup
+    //   559: aload_1
+    //   560: invokespecial 177	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
+    //   563: astore_1
+    //   564: ldc 48
+    //   566: invokestatic 172	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   569: aload_1
+    //   570: athrow
+    //   571: astore_1
+    //   572: new 174	java/lang/RuntimeException
+    //   575: dup
+    //   576: aload_1
+    //   577: invokespecial 177	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
+    //   580: astore_1
+    //   581: ldc 48
+    //   583: invokestatic 172	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   586: aload_1
+    //   587: athrow
+    //   588: astore_2
+    //   589: goto -145 -> 444
+    //   592: astore 12
+    //   594: iload 7
+    //   596: istore 6
+    //   598: goto -51 -> 547
+    //   601: astore 12
+    //   603: iload 7
+    //   605: istore 6
+    //   607: goto -82 -> 525
+    //   610: astore_2
+    //   611: goto -436 -> 175
+    //   614: goto -526 -> 88
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	576	0	this	d
-    //   0	576	1	paramHandler	android.os.Handler
-    //   0	576	2	parame	com.google.android.exoplayer2.video.e
-    //   0	576	3	parame1	com.google.android.exoplayer2.a.e
-    //   0	576	4	parama	com.google.android.exoplayer2.f.j.a
-    //   0	576	5	parama1	com.google.android.exoplayer2.metadata.e.a
-    //   67	498	6	i	int
-    //   31	532	7	j	int
-    //   190	48	8	k	int
-    //   25	114	9	l	long
-    //   7	472	11	localArrayList	java.util.ArrayList
-    //   13	365	12	localObject	Object
-    //   503	1	12	localClassNotFoundException1	java.lang.ClassNotFoundException
-    //   518	1	12	localClassNotFoundException2	java.lang.ClassNotFoundException
-    //   551	1	12	localClassNotFoundException3	java.lang.ClassNotFoundException
-    //   560	1	12	localClassNotFoundException4	java.lang.ClassNotFoundException
-    //   19	183	13	localb	b
+    //   0	617	0	this	d
+    //   0	617	1	paramHandler	android.os.Handler
+    //   0	617	2	parame	com.google.android.exoplayer2.video.e
+    //   0	617	3	parame1	com.google.android.exoplayer2.a.e
+    //   0	617	4	parama	com.google.android.exoplayer2.f.j.a
+    //   0	617	5	parama1	com.google.android.exoplayer2.metadata.e.a
+    //   74	532	6	i	int
+    //   36	568	7	j	int
+    //   196	48	8	k	int
+    //   30	115	9	l	long
+    //   12	473	11	localArrayList	java.util.ArrayList
+    //   18	366	12	localObject	Object
+    //   523	1	12	localClassNotFoundException1	java.lang.ClassNotFoundException
+    //   545	1	12	localClassNotFoundException2	java.lang.ClassNotFoundException
+    //   592	1	12	localClassNotFoundException3	java.lang.ClassNotFoundException
+    //   601	1	12	localClassNotFoundException4	java.lang.ClassNotFoundException
+    //   24	184	13	localb	b
     // Exception table:
     //   from	to	target	type
-    //   81	169	493	java/lang/Exception
-    //   246	297	503	java/lang/ClassNotFoundException
-    //   246	297	508	java/lang/Exception
-    //   303	312	508	java/lang/Exception
-    //   316	367	518	java/lang/ClassNotFoundException
-    //   316	367	527	java/lang/Exception
-    //   373	382	527	java/lang/Exception
-    //   382	438	537	java/lang/Exception
-    //   382	438	547	java/lang/ClassNotFoundException
-    //   373	382	551	java/lang/ClassNotFoundException
-    //   303	312	560	java/lang/ClassNotFoundException
-    //   81	169	569	java/lang/ClassNotFoundException
+    //   88	175	506	java/lang/Exception
+    //   252	303	523	java/lang/ClassNotFoundException
+    //   252	303	528	java/lang/Exception
+    //   309	318	528	java/lang/Exception
+    //   322	373	545	java/lang/ClassNotFoundException
+    //   322	373	554	java/lang/Exception
+    //   379	388	554	java/lang/Exception
+    //   388	444	571	java/lang/Exception
+    //   388	444	588	java/lang/ClassNotFoundException
+    //   379	388	592	java/lang/ClassNotFoundException
+    //   309	318	601	java/lang/ClassNotFoundException
+    //   88	175	610	java/lang/ClassNotFoundException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.exoplayer2.d
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,19 @@ package com.tencent.mm.opensdk.utils;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c$b
   implements BaseColumns
 {
-  public static final Uri CONTENT_URI = Uri.parse("content://com.tencent.mm.sdk.plugin.provider/sharedpref");
+  public static final Uri CONTENT_URI;
+  
+  static
+  {
+    AppMethodBeat.i(128064);
+    CONTENT_URI = Uri.parse("content://com.tencent.mm.sdk.plugin.provider/sharedpref");
+    AppMethodBeat.o(128064);
+  }
 }
 
 

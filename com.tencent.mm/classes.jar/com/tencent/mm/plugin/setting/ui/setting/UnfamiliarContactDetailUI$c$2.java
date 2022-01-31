@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class UnfamiliarContactDetailUI$c$2
   implements View.OnClickListener
@@ -11,15 +12,17 @@ final class UnfamiliarContactDetailUI$c$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(127659);
     int i = ((Integer)paramView.getTag()).intValue();
-    paramView = UnfamiliarContactDetailUI.e(this.nXl.nWX).xi(i);
-    y.i("MicroMsg.UnfamiliarContactUI", "position:%s", new Object[] { Integer.valueOf(i), paramView.dtK });
-    UnfamiliarContactDetailUI.c.a(this.nXl, paramView, i);
+    paramView = UnfamiliarContactDetailUI.e(this.qLv.qLi).Dg(i);
+    ab.i("MicroMsg.UnfamiliarContactUI", "position:%s", new Object[] { Integer.valueOf(i), paramView.elx });
+    UnfamiliarContactDetailUI.c.a(this.qLv, paramView, i);
+    AppMethodBeat.o(127659);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.UnfamiliarContactDetailUI.c.2
  * JD-Core Version:    0.7.0.1
  */

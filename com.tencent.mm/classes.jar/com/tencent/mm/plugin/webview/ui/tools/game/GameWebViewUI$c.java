@@ -3,11 +3,12 @@ package com.tencent.mm.plugin.webview.ui.tools.game;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
 import com.tencent.mm.plugin.wepkg.c;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.l;
-import com.tencent.xweb.m;
+import com.tencent.xweb.r;
+import com.tencent.xweb.s;
 
 final class GameWebViewUI$c
   extends GameBaseWebViewUI.a
@@ -17,75 +18,100 @@ final class GameWebViewUI$c
     super(paramGameWebViewUI);
   }
   
-  public final m a(WebView paramWebView, l paraml)
+  public final s a(WebView paramWebView, r paramr)
   {
-    Object localObject;
-    if ((paraml == null) || (paraml.getUrl() == null)) {
-      localObject = super.a(paramWebView, paraml);
-    }
-    m localm;
-    do
+    AppMethodBeat.i(8738);
+    if ((paramr == null) || (paramr.getUrl() == null))
     {
-      return localObject;
-      localm = GameWebViewUI.F(this.rwB).UP(paraml.getUrl().toString());
-      localObject = localm;
-    } while (localm != null);
-    return super.a(paramWebView, paraml);
+      paramWebView = super.a(paramWebView, paramr);
+      AppMethodBeat.o(8738);
+      return paramWebView;
+    }
+    s locals = GameWebViewUI.j(this.vnt).akj(paramr.getUrl().toString());
+    if (locals != null)
+    {
+      AppMethodBeat.o(8738);
+      return locals;
+    }
+    paramWebView = super.a(paramWebView, paramr);
+    AppMethodBeat.o(8738);
+    return paramWebView;
   }
   
-  public final m a(WebView paramWebView, l paraml, Bundle paramBundle)
+  public final s a(WebView paramWebView, r paramr, Bundle paramBundle)
   {
-    Object localObject;
-    if ((paraml == null) || (paraml.getUrl() == null)) {
-      localObject = super.a(paramWebView, paraml);
-    }
-    m localm;
-    do
+    AppMethodBeat.i(8739);
+    if ((paramr == null) || (paramr.getUrl() == null))
     {
-      return localObject;
-      localm = GameWebViewUI.F(this.rwB).UP(paraml.getUrl().toString());
-      localObject = localm;
-    } while (localm != null);
-    return super.a(paramWebView, paraml, paramBundle);
+      paramWebView = super.a(paramWebView, paramr);
+      AppMethodBeat.o(8739);
+      return paramWebView;
+    }
+    s locals = GameWebViewUI.j(this.vnt).akj(paramr.getUrl().toString());
+    if (locals != null)
+    {
+      AppMethodBeat.o(8739);
+      return locals;
+    }
+    paramWebView = super.a(paramWebView, paramr, paramBundle);
+    AppMethodBeat.o(8739);
+    return paramWebView;
   }
   
   public final void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    GameWebViewUI.G(this.rwB);
+    AppMethodBeat.i(8736);
+    GameWebViewUI.G(this.vnt);
     super.a(paramWebView, paramInt, paramString1, paramString2);
+    AppMethodBeat.o(8736);
   }
   
-  public final void a(WebView paramWebView, String paramString)
+  public final void b(WebView paramWebView, String paramString)
   {
-    if (GameWebViewUI.E(this.rwB).dCR == 0L) {
-      GameWebViewUI.E(this.rwB).dCR = System.currentTimeMillis();
+    AppMethodBeat.i(8735);
+    if (GameWebViewUI.E(this.vnt).eAm == 0L) {
+      GameWebViewUI.E(this.vnt).eAm = System.currentTimeMillis();
     }
-    GameWebViewUI.G(this.rwB);
-    GameWebViewUI.F(this.rwB).h(paramWebView, paramString);
-    super.a(paramWebView, paramString);
+    if (GameWebViewUI.F(this.vnt).vmZ == 0L) {
+      GameWebViewUI.F(this.vnt).vmZ = System.currentTimeMillis();
+    }
+    GameWebViewUI.G(this.vnt);
+    GameWebViewUI.j(this.vnt).l(paramWebView, paramString);
+    super.b(paramWebView, paramString);
+    AppMethodBeat.o(8735);
   }
   
   public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if (GameWebViewUI.E(this.rwB).dCQ == 0L) {
-      GameWebViewUI.E(this.rwB).dCQ = System.currentTimeMillis();
+    AppMethodBeat.i(8734);
+    if (GameWebViewUI.E(this.vnt).eAl == 0L) {
+      GameWebViewUI.E(this.vnt).eAl = System.currentTimeMillis();
     }
-    GameWebViewUI.F(this.rwB).g(paramWebView, paramString);
+    if (GameWebViewUI.F(this.vnt).vmY == 0L) {
+      GameWebViewUI.F(this.vnt).vmY = System.currentTimeMillis();
+    }
+    GameWebViewUI.j(this.vnt).k(paramWebView, paramString);
     super.b(paramWebView, paramString, paramBitmap);
+    AppMethodBeat.o(8734);
   }
   
-  public final m c(WebView paramWebView, String paramString)
+  public final s c(WebView paramWebView, String paramString)
   {
-    m localm = GameWebViewUI.F(this.rwB).UP(paramString);
-    if (localm != null) {
-      return localm;
+    AppMethodBeat.i(8737);
+    s locals = GameWebViewUI.j(this.vnt).akj(paramString);
+    if (locals != null)
+    {
+      AppMethodBeat.o(8737);
+      return locals;
     }
-    return super.c(paramWebView, paramString);
+    paramWebView = super.c(paramWebView, paramString);
+    AppMethodBeat.o(8737);
+    return paramWebView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.game.GameWebViewUI.c
  * JD-Core Version:    0.7.0.1
  */

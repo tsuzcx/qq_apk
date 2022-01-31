@@ -1,27 +1,22 @@
 package com.tencent.mm.plugin.appbrand.game.c;
 
-import android.content.Context;
-import android.os.Looper;
-import android.support.v7.widget.AppCompatTextView;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.luggage.game.c.d;
+import com.tencent.magicbrush.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class c
-  extends AppCompatTextView
+  extends d
 {
-  StringBuilder aPG = new StringBuilder(100);
-  private String appId;
-  private am fjC = new am(Looper.getMainLooper(), new c.1(this), true);
-  
-  public c(Context paramContext, String paramString)
+  public final void uE()
   {
-    super(paramContext);
-    this.appId = paramString;
-    setTextSize(12.0F);
-    setTextColor(-65536);
-    setFocusable(false);
-    setClickable(false);
-    setOnClickListener(null);
-    this.fjC.S(500L, 500L);
+    AppMethodBeat.i(143131);
+    super.uE();
+    long l = bo.yB();
+    b.loadLibrary("gamelog_delegate");
+    ab.i("MicroMsg.MBLogDelegateRegistryWC", "dl: load gamelog_delegate [%d]ms", new Object[] { Long.valueOf(bo.av(l)) });
+    AppMethodBeat.o(143131);
   }
 }
 

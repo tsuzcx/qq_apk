@@ -1,11 +1,14 @@
 package com.tencent.mm.modelappbrand;
 
 import android.os.Bundle;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.h.a.rc;
-import com.tencent.mm.h.a.rc.a;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.g.a.so;
+import com.tencent.mm.g.a.so.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.d;
 import java.util.Map;
 import org.json.JSONException;
@@ -13,141 +16,162 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static boolean Jj()
+  private static void a(so paramso, j.b paramb)
   {
-    if (!g.DK()) {}
-    com.tencent.mm.storage.c localc;
-    do
-    {
-      return false;
-      localc = com.tencent.mm.model.c.c.IX().fJ("100360");
-    } while ((!localc.isValid()) || (!"1".equals(localc.ctr().get("isOpenFTSSearchMiniGameEntry"))));
-    return true;
-  }
-  
-  private static void a(rc paramrc, g.a parama)
-  {
-    paramrc.caq.appId = parama.dSZ;
-    paramrc.caq.userName = parama.dSY;
-    paramrc.caq.cas = parama.dSX;
-    paramrc.caq.cat = parama.dTf;
-    paramrc.caq.caw = parama.dTb;
-    paramrc.caq.cau = parama.dTg;
-    paramrc = paramrc.caq;
-    if (parama.dTf != 0) {}
+    paramso.cIQ.appId = paramb.fiY;
+    paramso.cIQ.userName = paramb.fiX;
+    paramso.cIQ.cIS = paramb.fiW;
+    paramso.cIQ.cIT = paramb.fjh;
+    paramso.cIQ.cIV = paramb.fja;
+    paramso.cIQ.bDc = paramb.fji;
+    paramso = paramso.cIQ;
+    if (paramb.fjh != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramrc.cax = bool;
+      paramso.cIW = bool;
       return;
     }
   }
   
-  public static void a(String paramString, int paramInt, g.a parama, Bundle paramBundle)
+  public static void a(String paramString, int paramInt, j.b paramb, Bundle paramBundle)
   {
-    rc localrc = new rc();
-    a(localrc, parama);
-    b(localrc, parama);
-    localrc.caq.scene = paramInt;
+    AppMethodBeat.i(51127);
+    so localso = new so();
+    a(localso, paramb);
+    b(localso, paramb);
+    localso.cIQ.scene = paramInt;
     if (paramInt == 1074) {
-      localrc.caq.bFv = paramString;
+      localso.cIQ.cmF = paramString;
     }
-    localrc.caq.bIo = paramBundle;
-    com.tencent.mm.sdk.b.a.udP.m(localrc);
+    localso.cIQ.cpJ = paramBundle;
+    com.tencent.mm.sdk.b.a.ymk.l(localso);
+    AppMethodBeat.o(51127);
   }
   
-  public static void a(String paramString1, String paramString2, boolean paramBoolean, g.a parama, Bundle paramBundle)
+  public static void a(String paramString1, String paramString2, boolean paramBoolean, j.b paramb, Bundle paramBundle)
   {
-    rc localrc = new rc();
-    a(localrc, parama);
-    b(localrc, parama);
-    rc.a locala = localrc.caq;
+    AppMethodBeat.i(51126);
+    so localso = new so();
+    a(localso, paramb);
+    b(localso, paramb);
+    so.a locala = localso.cIQ;
     int i;
     StringBuilder localStringBuilder;
     if (paramBoolean)
     {
       i = 1008;
       locala.scene = i;
-      locala = localrc.caq;
+      locala = localso.cIQ;
       localStringBuilder = new StringBuilder().append(paramString1);
       if (!paramBoolean) {
-        break label139;
+        break label142;
       }
     }
-    label139:
-    for (paramString1 = ":" + paramString2;; paramString1 = "")
+    label142:
+    for (paramString1 = ":".concat(String.valueOf(paramString2));; paramString1 = "")
     {
-      locala.bFv = (paramString1 + ":" + parama.dTd);
-      localrc.caq.bIo = paramBundle;
-      com.tencent.mm.sdk.b.a.udP.m(localrc);
+      locala.cmF = (paramString1 + ":" + paramb.fjc);
+      localso.cIQ.cpJ = paramBundle;
+      com.tencent.mm.sdk.b.a.ymk.l(localso);
+      AppMethodBeat.o(51126);
       return;
       i = 1007;
       break;
     }
   }
   
-  private static void b(rc paramrc, g.a parama)
+  public static boolean acg()
   {
-    if (parama != null)
+    AppMethodBeat.i(51130);
+    if (!g.RG())
     {
-      parama = (com.tencent.mm.ae.a)parama.A(com.tencent.mm.ae.a.class);
-      if ((parama != null) && (!bk.bl(parama.dPP))) {
-        paramrc.caq.caG = parama.dPP;
-      }
+      AppMethodBeat.o(51130);
+      return false;
     }
+    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.abU().me("100360");
+    if ((localc.isValid()) && ("1".equals(localc.dvN().get("isOpenFTSSearchMiniGameEntry"))))
+    {
+      AppMethodBeat.o(51130);
+      return true;
+    }
+    AppMethodBeat.o(51130);
+    return false;
   }
   
-  public static void b(String paramString1, String paramString2, boolean paramBoolean, g.a parama, Bundle paramBundle)
+  private static void b(so paramso, j.b paramb)
   {
-    rc localrc = new rc();
-    a(localrc, parama);
-    b(localrc, parama);
-    localrc.caq.scene = 1044;
-    localrc.caq.bFv = parama.dTd;
-    rc.a locala = localrc.caq;
-    int i;
-    if (paramBoolean)
+    AppMethodBeat.i(51129);
+    if (paramb != null)
     {
-      i = 2;
-      locala.caB = i;
-      locala = localrc.caq;
+      paramb = (com.tencent.mm.af.a)paramb.R(com.tencent.mm.af.a.class);
+      if ((paramb != null) && (!bo.isNullOrNil(paramb.ffo))) {
+        paramso.cIQ.cJg = paramb.ffo;
+      }
+    }
+    AppMethodBeat.o(51129);
+  }
+  
+  public static void b(String paramString1, String paramString2, boolean paramBoolean, j.b paramb, Bundle paramBundle)
+  {
+    int i = 2;
+    AppMethodBeat.i(51128);
+    if (TextUtils.isEmpty(paramb.fjd))
+    {
+      ab.e("MicroMsg.AppBrand.api-message.AppBrandCommonApi", "visitFromPageWithShareTicketAppMessage shareKey isEmpty, transform to normal visit, talkerUsername[%s] msgUsername[%s] groupChat[%b]", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+      a(paramString1, paramString2, paramBoolean, paramb, paramBundle);
+      AppMethodBeat.o(51128);
+      return;
+    }
+    so localso = new so();
+    a(localso, paramb);
+    b(localso, paramb);
+    localso.cIQ.scene = 1044;
+    localso.cIQ.cmF = paramb.fjc;
+    so.a locala = localso.cIQ;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      locala.cJb = i;
+      locala = localso.cIQ;
       if (paramBoolean) {
         paramString2 = paramString1;
       }
-      locala.caC = paramString2;
-      localrc.caq.caz.dTX = parama.dTe;
-      if (bk.bl(parama.dTe)) {
-        break label147;
-      }
-    }
-    label147:
-    for (localrc.caq.caz.dZN = paramString1;; localrc.caq.caz.dZN = null)
-    {
-      localrc.caq.bIo = paramBundle;
-      com.tencent.mm.sdk.b.a.udP.m(localrc);
+      locala.cJc = paramString2;
+      localso.cIQ.cIY.bCZ = paramb.fjd;
+      localso.cIQ.cIY.bCY = paramString1;
+      localso.cIQ.cpJ = paramBundle;
+      com.tencent.mm.sdk.b.a.ymk.l(localso);
+      AppMethodBeat.o(51128);
       return;
       i = 1;
-      break;
     }
   }
   
-  public static boolean jq(String paramString)
+  public static boolean qe(String paramString)
   {
-    if (bk.bl(paramString)) {}
-    for (;;)
+    AppMethodBeat.i(51125);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(51125);
       return false;
-      try
+    }
+    try
+    {
+      paramString = new JSONObject(paramString).optJSONObject("BindWxaInfo");
+      if (paramString != null)
       {
-        paramString = new JSONObject(paramString).optJSONObject("BindWxaInfo");
-        if (paramString != null)
+        if (paramString.optInt("openWxaByBizQRCode", 0) > 0)
         {
-          int i = paramString.optInt("openWxaByBizQRCode", 0);
-          if (i > 0) {
-            return true;
-          }
+          AppMethodBeat.o(51125);
+          return true;
         }
+        AppMethodBeat.o(51125);
+        return false;
       }
-      catch (JSONException paramString) {}
+    }
+    catch (JSONException paramString)
+    {
+      AppMethodBeat.o(51125);
     }
     return false;
   }

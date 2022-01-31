@@ -2,25 +2,35 @@ package com.google.android.exoplayer2.metadata.id3;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.google.android.exoplayer2.i.t;
+import com.google.android.exoplayer2.i.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 
 public final class GeobFrame
   extends Id3Frame
 {
-  public static final Parcelable.Creator<GeobFrame> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<GeobFrame> CREATOR;
   public final byte[] data;
   public final String description;
   public final String filename;
   public final String mimeType;
   
+  static
+  {
+    AppMethodBeat.i(95309);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(95309);
+  }
+  
   GeobFrame(Parcel paramParcel)
   {
     super("GEOB");
+    AppMethodBeat.i(95305);
     this.mimeType = paramParcel.readString();
     this.filename = paramParcel.readString();
     this.description = paramParcel.readString();
     this.data = paramParcel.createByteArray();
+    AppMethodBeat.o(95305);
   }
   
   public GeobFrame(String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte)
@@ -34,36 +44,48 @@ public final class GeobFrame
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(95306);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(95306);
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (GeobFrame)paramObject;
-    } while ((t.e(this.mimeType, paramObject.mimeType)) && (t.e(this.filename, paramObject.filename)) && (t.e(this.description, paramObject.description)) && (Arrays.equals(this.data, paramObject.data)));
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(95306);
+      return false;
+    }
+    paramObject = (GeobFrame)paramObject;
+    if ((x.e(this.mimeType, paramObject.mimeType)) && (x.e(this.filename, paramObject.filename)) && (x.e(this.description, paramObject.description)) && (Arrays.equals(this.data, paramObject.data)))
+    {
+      AppMethodBeat.o(95306);
+      return true;
+    }
+    AppMethodBeat.o(95306);
     return false;
   }
   
   public final int hashCode()
   {
     int k = 0;
+    AppMethodBeat.i(95307);
     int i;
     if (this.mimeType != null)
     {
       i = this.mimeType.hashCode();
       if (this.filename == null) {
-        break label79;
+        break label93;
       }
     }
-    label79:
+    label93:
     for (int j = this.filename.hashCode();; j = 0)
     {
       if (this.description != null) {
         k = this.description.hashCode();
       }
-      return ((j + (i + 527) * 31) * 31 + k) * 31 + Arrays.hashCode(this.data);
+      int m = Arrays.hashCode(this.data);
+      AppMethodBeat.o(95307);
+      return ((j + (i + 527) * 31) * 31 + k) * 31 + m;
       i = 0;
       break;
     }
@@ -71,10 +93,12 @@ public final class GeobFrame
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(95308);
     paramParcel.writeString(this.mimeType);
     paramParcel.writeString(this.filename);
     paramParcel.writeString(this.description);
     paramParcel.writeByteArray(this.data);
+    AppMethodBeat.o(95308);
   }
 }
 

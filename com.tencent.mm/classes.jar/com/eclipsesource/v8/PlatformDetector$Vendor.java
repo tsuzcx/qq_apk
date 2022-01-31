@@ -1,5 +1,6 @@
 package com.eclipsesource.v8;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
@@ -12,50 +13,76 @@ public class PlatformDetector$Vendor
   
   private static void closeQuietly(Closeable paramCloseable)
   {
+    AppMethodBeat.i(75017);
     if (paramCloseable != null) {}
     try
     {
       paramCloseable.close();
+      AppMethodBeat.o(75017);
       return;
     }
-    catch (IOException paramCloseable) {}
+    catch (IOException paramCloseable)
+    {
+      AppMethodBeat.o(75017);
+    }
   }
   
   private static String getLinuxOsReleaseId()
   {
+    AppMethodBeat.i(75014);
     Object localObject = LINUX_OS_RELEASE_FILES;
     int j = localObject.length;
     int i = 0;
     while (i < j)
     {
       File localFile = new File(localObject[i]);
-      if (localFile.exists()) {
-        return parseLinuxOsReleaseFile(localFile);
+      if (localFile.exists())
+      {
+        localObject = parseLinuxOsReleaseFile(localFile);
+        AppMethodBeat.o(75014);
+        return localObject;
       }
       i += 1;
     }
     localObject = new File("/etc/redhat-release");
-    if (((File)localObject).exists()) {
-      return parseLinuxRedhatReleaseFile((File)localObject);
+    if (((File)localObject).exists())
+    {
+      localObject = parseLinuxRedhatReleaseFile((File)localObject);
+      AppMethodBeat.o(75014);
+      return localObject;
     }
-    throw new UnsatisfiedLinkError("Unsupported linux vendor: " + getName());
+    localObject = new UnsatisfiedLinkError("Unsupported linux vendor: " + getName());
+    AppMethodBeat.o(75014);
+    throw ((Throwable)localObject);
   }
   
   public static String getName()
   {
-    if (PlatformDetector.OS.isWindows()) {
+    AppMethodBeat.i(75013);
+    if (PlatformDetector.OS.isWindows())
+    {
+      AppMethodBeat.o(75013);
       return "microsoft";
     }
-    if (PlatformDetector.OS.isMac()) {
+    if (PlatformDetector.OS.isMac())
+    {
+      AppMethodBeat.o(75013);
       return "apple";
     }
-    if (PlatformDetector.OS.isLinux()) {
-      return getLinuxOsReleaseId();
+    if (PlatformDetector.OS.isLinux())
+    {
+      localObject = getLinuxOsReleaseId();
+      AppMethodBeat.o(75013);
+      return localObject;
     }
-    if (PlatformDetector.OS.isAndroid()) {
+    if (PlatformDetector.OS.isAndroid())
+    {
+      AppMethodBeat.o(75013);
       return "google";
     }
-    throw new UnsatisfiedLinkError("Unsupported vendor: " + getName());
+    Object localObject = new UnsatisfiedLinkError("Unsupported vendor: " + getName());
+    AppMethodBeat.o(75013);
+    throw ((Throwable)localObject);
   }
   
   /* Error */
@@ -64,177 +91,194 @@ public class PlatformDetector$Vendor
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: new 101	java/io/BufferedReader
-    //   5: dup
-    //   6: new 103	java/io/InputStreamReader
-    //   9: dup
-    //   10: new 105	java/io/FileInputStream
-    //   13: dup
-    //   14: aload_0
-    //   15: invokespecial 108	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   18: ldc 110
-    //   20: invokespecial 113	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   23: invokespecial 116	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   26: astore_0
-    //   27: aload_0
-    //   28: invokevirtual 119	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   31: astore_3
-    //   32: aload_2
-    //   33: astore_1
-    //   34: aload_3
-    //   35: ifnull +21 -> 56
-    //   38: aload_3
-    //   39: ldc 11
-    //   41: invokevirtual 123	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   44: ifeq -17 -> 27
-    //   47: aload_3
-    //   48: iconst_3
-    //   49: invokevirtual 127	java/lang/String:substring	(I)Ljava/lang/String;
-    //   52: invokestatic 131	com/eclipsesource/v8/PlatformDetector:access$300	(Ljava/lang/String;)Ljava/lang/String;
-    //   55: astore_1
-    //   56: aload_0
-    //   57: invokestatic 133	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
-    //   60: aload_1
-    //   61: areturn
-    //   62: astore_0
-    //   63: aconst_null
-    //   64: astore_0
-    //   65: aload_0
-    //   66: invokestatic 133	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
-    //   69: aconst_null
-    //   70: areturn
-    //   71: astore_0
-    //   72: aconst_null
-    //   73: astore_1
-    //   74: aload_1
-    //   75: invokestatic 133	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
-    //   78: aload_0
-    //   79: athrow
-    //   80: astore_1
-    //   81: aload_0
-    //   82: astore_2
-    //   83: aload_1
-    //   84: astore_0
-    //   85: aload_2
-    //   86: astore_1
-    //   87: goto -13 -> 74
-    //   90: astore_1
-    //   91: goto -26 -> 65
+    //   2: ldc 112
+    //   4: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: new 114	java/io/BufferedReader
+    //   10: dup
+    //   11: new 116	java/io/InputStreamReader
+    //   14: dup
+    //   15: new 118	java/io/FileInputStream
+    //   18: dup
+    //   19: aload_0
+    //   20: invokespecial 121	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   23: ldc 123
+    //   25: invokespecial 126	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   28: invokespecial 129	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   31: astore_0
+    //   32: aload_0
+    //   33: invokevirtual 132	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   36: astore_3
+    //   37: aload_2
+    //   38: astore_1
+    //   39: aload_3
+    //   40: ifnull +21 -> 61
+    //   43: aload_3
+    //   44: ldc 11
+    //   46: invokevirtual 136	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   49: ifeq -17 -> 32
+    //   52: aload_3
+    //   53: iconst_3
+    //   54: invokevirtual 140	java/lang/String:substring	(I)Ljava/lang/String;
+    //   57: invokestatic 144	com/eclipsesource/v8/PlatformDetector:access$300	(Ljava/lang/String;)Ljava/lang/String;
+    //   60: astore_1
+    //   61: aload_0
+    //   62: invokestatic 146	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
+    //   65: ldc 112
+    //   67: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   70: aload_1
+    //   71: areturn
+    //   72: astore_0
+    //   73: aconst_null
+    //   74: astore_0
+    //   75: aload_0
+    //   76: invokestatic 146	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
+    //   79: ldc 112
+    //   81: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   84: aconst_null
+    //   85: areturn
+    //   86: astore_0
+    //   87: aconst_null
+    //   88: astore_1
+    //   89: aload_1
+    //   90: invokestatic 146	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
+    //   93: ldc 112
+    //   95: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: aload_0
+    //   99: athrow
+    //   100: astore_1
+    //   101: aload_0
+    //   102: astore_2
+    //   103: aload_1
+    //   104: astore_0
+    //   105: aload_2
+    //   106: astore_1
+    //   107: goto -18 -> 89
+    //   110: astore_1
+    //   111: goto -36 -> 75
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	94	0	paramFile	File
-    //   33	42	1	localObject1	Object
-    //   80	4	1	localObject2	Object
-    //   86	1	1	localFile1	File
-    //   90	1	1	localIOException	IOException
-    //   1	85	2	localFile2	File
-    //   31	17	3	str	String
+    //   0	114	0	paramFile	File
+    //   38	52	1	localObject1	Object
+    //   100	4	1	localObject2	Object
+    //   106	1	1	localFile1	File
+    //   110	1	1	localIOException	IOException
+    //   1	105	2	localFile2	File
+    //   36	17	3	str	String
     // Exception table:
     //   from	to	target	type
-    //   2	27	62	java/io/IOException
-    //   2	27	71	finally
-    //   27	32	80	finally
-    //   38	56	80	finally
-    //   27	32	90	java/io/IOException
-    //   38	56	90	java/io/IOException
+    //   7	32	72	java/io/IOException
+    //   7	32	86	finally
+    //   32	37	100	finally
+    //   43	61	100	finally
+    //   32	37	110	java/io/IOException
+    //   43	61	110	java/io/IOException
   }
   
   /* Error */
   private static String parseLinuxRedhatReleaseFile(File paramFile)
   {
     // Byte code:
-    //   0: new 101	java/io/BufferedReader
-    //   3: dup
-    //   4: new 103	java/io/InputStreamReader
-    //   7: dup
-    //   8: new 105	java/io/FileInputStream
-    //   11: dup
-    //   12: aload_0
-    //   13: invokespecial 108	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   16: ldc 110
-    //   18: invokespecial 113	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   21: invokespecial 116	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   24: astore_1
-    //   25: aload_1
-    //   26: invokevirtual 119	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   29: astore_0
-    //   30: aload_0
-    //   31: ifnull +65 -> 96
-    //   34: aload_0
-    //   35: getstatic 139	java/util/Locale:US	Ljava/util/Locale;
-    //   38: invokevirtual 143	java/lang/String:toLowerCase	(Ljava/util/Locale;)Ljava/lang/String;
-    //   41: astore_0
-    //   42: aload_0
-    //   43: ldc 145
-    //   45: invokevirtual 149	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   48: ifeq +12 -> 60
-    //   51: ldc 145
-    //   53: astore_0
-    //   54: aload_1
-    //   55: invokestatic 133	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
-    //   58: aload_0
-    //   59: areturn
-    //   60: aload_0
-    //   61: ldc 151
-    //   63: invokevirtual 149	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   66: ifeq +9 -> 75
-    //   69: ldc 151
-    //   71: astore_0
-    //   72: goto -18 -> 54
-    //   75: aload_0
-    //   76: ldc 153
-    //   78: invokevirtual 149	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   81: ifeq +9 -> 90
-    //   84: ldc 155
-    //   86: astore_0
-    //   87: goto -33 -> 54
-    //   90: aload_1
-    //   91: invokestatic 133	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
-    //   94: aconst_null
-    //   95: areturn
-    //   96: aload_1
-    //   97: invokestatic 133	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
-    //   100: aconst_null
-    //   101: areturn
-    //   102: astore_0
-    //   103: aconst_null
-    //   104: astore_1
-    //   105: aload_1
-    //   106: invokestatic 133	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
+    //   0: ldc 147
+    //   2: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 114	java/io/BufferedReader
+    //   8: dup
+    //   9: new 116	java/io/InputStreamReader
+    //   12: dup
+    //   13: new 118	java/io/FileInputStream
+    //   16: dup
+    //   17: aload_0
+    //   18: invokespecial 121	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   21: ldc 123
+    //   23: invokespecial 126	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   26: invokespecial 129	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   29: astore_1
+    //   30: aload_1
+    //   31: invokevirtual 132	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   34: astore_0
+    //   35: aload_0
+    //   36: ifnull +75 -> 111
+    //   39: aload_0
+    //   40: getstatic 153	java/util/Locale:US	Ljava/util/Locale;
+    //   43: invokevirtual 157	java/lang/String:toLowerCase	(Ljava/util/Locale;)Ljava/lang/String;
+    //   46: astore_0
+    //   47: aload_0
+    //   48: ldc 159
+    //   50: invokevirtual 163	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   53: ifeq +17 -> 70
+    //   56: ldc 159
+    //   58: astore_0
+    //   59: aload_1
+    //   60: invokestatic 146	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
+    //   63: ldc 147
+    //   65: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   68: aload_0
+    //   69: areturn
+    //   70: aload_0
+    //   71: ldc 165
+    //   73: invokevirtual 163	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   76: ifeq +9 -> 85
+    //   79: ldc 165
+    //   81: astore_0
+    //   82: goto -23 -> 59
+    //   85: aload_0
+    //   86: ldc 167
+    //   88: invokevirtual 163	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   91: ifeq +9 -> 100
+    //   94: ldc 169
+    //   96: astore_0
+    //   97: goto -38 -> 59
+    //   100: aload_1
+    //   101: invokestatic 146	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
+    //   104: ldc 147
+    //   106: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   109: aconst_null
     //   110: areturn
-    //   111: astore_0
-    //   112: aconst_null
-    //   113: astore_1
-    //   114: aload_1
-    //   115: invokestatic 133	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
-    //   118: aload_0
-    //   119: athrow
-    //   120: astore_0
-    //   121: goto -7 -> 114
-    //   124: astore_0
-    //   125: goto -20 -> 105
+    //   111: aload_1
+    //   112: invokestatic 146	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
+    //   115: ldc 147
+    //   117: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   120: aconst_null
+    //   121: areturn
+    //   122: astore_0
+    //   123: aconst_null
+    //   124: astore_1
+    //   125: aload_1
+    //   126: invokestatic 146	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
+    //   129: goto -14 -> 115
+    //   132: astore_0
+    //   133: aconst_null
+    //   134: astore_1
+    //   135: aload_1
+    //   136: invokestatic 146	com/eclipsesource/v8/PlatformDetector$Vendor:closeQuietly	(Ljava/io/Closeable;)V
+    //   139: ldc 147
+    //   141: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   144: aload_0
+    //   145: athrow
+    //   146: astore_0
+    //   147: goto -12 -> 135
+    //   150: astore_0
+    //   151: goto -26 -> 125
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	128	0	paramFile	File
-    //   24	91	1	localBufferedReader	java.io.BufferedReader
+    //   0	154	0	paramFile	File
+    //   29	107	1	localBufferedReader	java.io.BufferedReader
     // Exception table:
     //   from	to	target	type
-    //   0	25	102	java/io/IOException
-    //   0	25	111	finally
-    //   25	30	120	finally
-    //   34	51	120	finally
-    //   60	69	120	finally
-    //   75	84	120	finally
-    //   25	30	124	java/io/IOException
-    //   34	51	124	java/io/IOException
-    //   60	69	124	java/io/IOException
-    //   75	84	124	java/io/IOException
+    //   5	30	122	java/io/IOException
+    //   5	30	132	finally
+    //   30	35	146	finally
+    //   39	56	146	finally
+    //   70	79	146	finally
+    //   85	94	146	finally
+    //   30	35	150	java/io/IOException
+    //   39	56	150	java/io/IOException
+    //   70	79	150	java/io/IOException
+    //   85	94	150	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.eclipsesource.v8.PlatformDetector.Vendor
  * JD-Core Version:    0.7.0.1
  */

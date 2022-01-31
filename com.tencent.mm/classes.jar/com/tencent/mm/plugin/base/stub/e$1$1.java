@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.base.stub;
 
 import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$1$1
   implements Runnable
@@ -9,7 +10,9 @@ final class e$1$1
   
   public final void run()
   {
-    this.hSl.val$activity.finish();
+    AppMethodBeat.i(18157);
+    this.jLT.val$activity.finish();
+    AppMethodBeat.o(18157);
   }
 }
 

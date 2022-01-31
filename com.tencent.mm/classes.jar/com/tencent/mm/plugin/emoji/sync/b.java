@@ -4,15 +4,15 @@ import java.util.concurrent.Executor;
 
 public final class b
 {
-  public final int eqJ;
-  public final int jav;
-  public final Executor jaw;
+  public final int ePO;
+  public final int ljf;
+  public final Executor ljg;
   
   public b(b.a parama)
   {
-    this.jav = parama.jav;
-    this.eqJ = parama.eqJ;
-    this.jaw = parama.jax;
+    this.ljf = parama.ljf;
+    this.ePO = parama.ePO;
+    this.ljg = parama.ljg;
   }
 }
 

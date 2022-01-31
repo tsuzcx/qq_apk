@@ -1,62 +1,64 @@
 package com.tencent.mm.plugin.game.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.zu;
-import com.tencent.mm.protocal.c.zv;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.game.d.az;
+import com.tencent.mm.plugin.game.d.ba;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class am
   extends m
   implements k
 {
-  public String bGm;
-  private f dmL;
-  public final b jvQ;
+  private f callback;
+  public final b lFp;
   
-  public am(String paramString1, String paramString2, LinkedList<String> paramLinkedList)
+  public am(String paramString1, String paramString2, boolean paramBoolean)
   {
+    AppMethodBeat.i(111433);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new zu();
-    ((b.a)localObject).ecI = new zv();
-    ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/gamecentersearchrecommend";
-    ((b.a)localObject).ecG = 1329;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    if (paramString2 == null) {}
-    for (this.bGm = "";; this.bGm = paramString2.trim())
-    {
-      this.jvQ = ((b.a)localObject).Kt();
-      localObject = (zu)this.jvQ.ecE.ecN;
-      ((zu)localObject).kUa = paramString1;
-      ((zu)localObject).sYZ = paramString2;
-      ((zu)localObject).sZa = paramLinkedList;
-      return;
-    }
+    ((b.a)localObject).fsX = new az();
+    ((b.a)localObject).fsY = new ba();
+    ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/newgetgamedetail";
+    ((b.a)localObject).funcId = getType();
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.lFp = ((b.a)localObject).ado();
+    localObject = (az)this.lFp.fsV.fta;
+    ((az)localObject).nsa = paramString1;
+    ((az)localObject).npZ = paramString2;
+    ((az)localObject).nso = paramBoolean;
+    ((az)localObject).nsq = true;
+    AppMethodBeat.o(111433);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.jvQ, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneGameSearchRecmd", "errType = " + paramInt2 + ", errCode = " + paramInt3);
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(111434);
+    this.callback = paramf;
+    int i = dispatch(parame, this.lFp, this);
+    AppMethodBeat.o(111434);
+    return i;
   }
   
   public final int getType()
   {
-    return 1329;
+    return 1217;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(111435);
+    ab.i("MicroMsg.NetSceneGetGameDetailNew", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(111435);
   }
 }
 

@@ -2,25 +2,31 @@ package com.tencent.mm.ui.base;
 
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NoMeasuredTextView$b
 {
-  final Rect vaU = new Rect();
-  Drawable vaV;
-  Drawable vaW;
-  Drawable vaX;
-  Drawable vaY;
-  int vaZ;
-  int vba;
-  int vbb;
-  int vbc;
-  int vbd;
-  int vbe;
-  int vbf;
-  int vbg;
-  int vbh;
+  final Rect zpk;
+  Drawable zpl;
+  Drawable zpm;
+  Drawable zpn;
+  Drawable zpo;
+  int zpp;
+  int zpq;
+  int zpr;
+  int zps;
+  int zpt;
+  int zpu;
+  int zpv;
+  int zpw;
+  int zpx;
   
-  NoMeasuredTextView$b(NoMeasuredTextView paramNoMeasuredTextView) {}
+  NoMeasuredTextView$b(NoMeasuredTextView paramNoMeasuredTextView)
+  {
+    AppMethodBeat.i(107004);
+    this.zpk = new Rect();
+    AppMethodBeat.o(107004);
+  }
 }
 
 

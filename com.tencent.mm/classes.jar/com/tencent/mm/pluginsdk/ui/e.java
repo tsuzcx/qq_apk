@@ -1,50 +1,65 @@
 package com.tencent.mm.pluginsdk.ui;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.Map;
 
 public final class e
 {
-  public int rZj = -7829368;
-  public boolean rZk = false;
-  public int rZl = -1593835521;
-  public boolean rZm = false;
-  public boolean rZn = false;
-  public int rZo = -16777216;
-  public boolean rZp = false;
-  public int rZq = 0;
-  public boolean rZr = false;
-  private int version = 0;
+  public int vQa;
+  public boolean vQb;
+  public int vQc;
+  public boolean vQd;
+  public boolean vQe;
+  private int vQf;
+  public boolean vQg;
+  public int vQh;
+  public boolean vQi;
+  private int version;
   
   public e(String paramString)
   {
-    paramString = bn.s(paramString, "chatbg");
+    AppMethodBeat.i(105839);
+    this.version = 0;
+    this.vQa = -7829368;
+    this.vQb = false;
+    this.vQc = -1593835521;
+    this.vQd = false;
+    this.vQe = false;
+    this.vQf = -16777216;
+    this.vQg = false;
+    this.vQh = 0;
+    this.vQi = false;
+    paramString = br.F(paramString, "chatbg");
     if (paramString == null)
     {
-      y.e("MicroMsg.ChatBgAttr", "parse chatbgattr failed, values is null");
+      ab.e("MicroMsg.ChatBgAttr", "parse chatbgattr failed, values is null");
+      AppMethodBeat.o(105839);
       return;
     }
-    String str = "." + "chatbg";
+    String str = ".".concat(String.valueOf("chatbg"));
     try
     {
-      this.version = bk.g(Integer.valueOf((String)paramString.get(str + ".$version")));
-      this.rZj = ((int)bk.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$time_color"), 16)), -7829368L));
-      this.rZk = bk.d(Boolean.valueOf((String)paramString.get(str + ".$time_show_shadow_color")));
-      this.rZl = ((int)bk.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$time_shadow_color"), 16)), 0L));
-      this.rZm = bk.d(Boolean.valueOf((String)paramString.get(str + ".$time_show_background")));
-      this.rZn = bk.d(Boolean.valueOf((String)paramString.get(str + ".$time_light_background")));
-      this.rZo = ((int)bk.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$voice_second_color"), 16)), -16777216L));
-      this.rZp = bk.d(Boolean.valueOf((String)paramString.get(str + ".$voice_second_show_shadow_color")));
-      this.rZq = ((int)bk.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$voice_second_shadow_color"), 16)), 0L));
-      this.rZr = bk.d(Boolean.valueOf((String)paramString.get(str + ".$voice_second_show_background")));
+      this.version = bo.g(Integer.valueOf((String)paramString.get(str + ".$version")));
+      this.vQa = ((int)bo.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$time_color"), 16)), -7829368L));
+      this.vQb = bo.e(Boolean.valueOf((String)paramString.get(str + ".$time_show_shadow_color")));
+      this.vQc = ((int)bo.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$time_shadow_color"), 16)), 0L));
+      this.vQd = bo.e(Boolean.valueOf((String)paramString.get(str + ".$time_show_background")));
+      this.vQe = bo.e(Boolean.valueOf((String)paramString.get(str + ".$time_light_background")));
+      this.vQf = ((int)bo.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$voice_second_color"), 16)), -16777216L));
+      this.vQg = bo.e(Boolean.valueOf((String)paramString.get(str + ".$voice_second_show_shadow_color")));
+      this.vQh = ((int)bo.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$voice_second_shadow_color"), 16)), 0L));
+      this.vQi = bo.e(Boolean.valueOf((String)paramString.get(str + ".$voice_second_show_background")));
+      AppMethodBeat.o(105839);
       return;
     }
     catch (Exception paramString)
     {
-      y.e("MicroMsg.ChatBgAttr", "parse chatbgattr failed");
-      y.printErrStackTrace("MicroMsg.ChatBgAttr", paramString, "", new Object[0]);
+      ab.e("MicroMsg.ChatBgAttr", "parse chatbgattr failed");
+      ab.printErrStackTrace("MicroMsg.ChatBgAttr", paramString, "", new Object[0]);
+      AppMethodBeat.o(105839);
     }
   }
 }

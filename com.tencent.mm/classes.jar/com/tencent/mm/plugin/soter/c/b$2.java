@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.soter.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.a.d.a;
 
 final class b$2
@@ -9,8 +10,10 @@ final class b$2
   
   public final void run()
   {
-    this.psa.klx = new a();
-    b.a(this.psa);
+    AppMethodBeat.i(73865);
+    this.soc.mGl = new a();
+    b.a(this.soc);
+    AppMethodBeat.o(73865);
   }
 }
 

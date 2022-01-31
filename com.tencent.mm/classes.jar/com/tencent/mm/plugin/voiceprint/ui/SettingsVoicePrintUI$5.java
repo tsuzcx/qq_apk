@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.voiceprint.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.pluginsdk.permission.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SettingsVoicePrintUI$5
   implements View.OnClickListener
@@ -13,12 +14,16 @@ final class SettingsVoicePrintUI$5
   
   public final void onClick(View paramView)
   {
-    boolean bool = a.a(this.pMj, "android.permission.RECORD_AUDIO", 80, "", "");
-    y.i("MicroMsg.VoiceSettingsUI", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bk.csb(), this.pMj });
-    if (!bool) {
+    AppMethodBeat.i(26146);
+    boolean bool = b.a(this.tsf, "android.permission.RECORD_AUDIO", 80, "", "");
+    ab.i("MicroMsg.VoiceSettingsUI", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY(), this.tsf });
+    if (!bool)
+    {
+      AppMethodBeat.o(26146);
       return;
     }
-    SettingsVoicePrintUI.a(this.pMj);
+    SettingsVoicePrintUI.a(this.tsf);
+    AppMethodBeat.o(26146);
   }
 }
 

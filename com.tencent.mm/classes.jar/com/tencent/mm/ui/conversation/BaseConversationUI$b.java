@@ -1,70 +1,50 @@
 package com.tencent.mm.ui.conversation;
 
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.x;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
-public class BaseConversationUI$b
-  extends x
+final class BaseConversationUI$b
+  implements Runnable
 {
-  private BaseConversationUI.a fmStatus = BaseConversationUI.a.vPm;
-  public BaseConversationUI ui;
+  int bpE;
+  Intent cyu;
+  int requestCode;
+  int zep = 0;
   
-  public void finish()
-  {
-    thisActivity().finish();
-  }
+  private BaseConversationUI$b(BaseConversationUI paramBaseConversationUI) {}
   
-  public int getLayoutId()
+  public final void run()
   {
-    return 0;
-  }
-  
-  public String getUserName()
-  {
-    return null;
-  }
-  
-  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    this.fmStatus = BaseConversationUI.a.vPm;
-    this.ui = ((BaseConversationUI)thisActivity());
-    paramLayoutInflater = paramLayoutInflater.inflate(getLayoutId(), paramViewGroup, false);
-    setHasOptionsMenu(true);
-    return paramLayoutInflater;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.fmStatus != BaseConversationUI.a.vPo)
+    AppMethodBeat.i(34074);
+    if (aw.RG())
     {
-      y.w("MicroMsg.BaseConversationUI", "fmStatus != ActivityStatus.ACTIVITY_PAUSE when fm onDestroy");
-      onPause();
+      ab.i("MicroMsg.BaseConversationUI", "on post select image job, acc has ready, retry count %d", new Object[] { Integer.valueOf(this.zep) });
+      this.AgT.startChatting(BaseConversationUI.access$1500(this.AgT));
+      al.d(new BaseConversationUI.b.1(this));
+      AppMethodBeat.o(34074);
+      return;
     }
-    super.onDestroy();
-  }
-  
-  public void onPause()
-  {
-    super.onPause();
-    this.fmStatus = BaseConversationUI.a.vPo;
-  }
-  
-  public void onResume()
-  {
-    super.onResume();
-    this.fmStatus = BaseConversationUI.a.vPn;
-  }
-  
-  public void setMMTitle(String paramString)
-  {
-    if (this.ui != null) {
-      this.ui.setTitle(paramString);
+    if (this.zep >= 3)
+    {
+      ab.w("MicroMsg.BaseConversationUI", "on post select image job, match max retry count");
+      AppMethodBeat.o(34074);
+      return;
     }
+    ab.w("MicroMsg.BaseConversationUI", "on post select image job, acc not ready, cur retry count %d", new Object[] { Integer.valueOf(this.zep) });
+    this.zep += 1;
+    al.p(this, 300L);
+    AppMethodBeat.o(34074);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(34075);
+    String str = super.toString() + "|PostSelectImageJob";
+    AppMethodBeat.o(34075);
+    return str;
   }
 }
 

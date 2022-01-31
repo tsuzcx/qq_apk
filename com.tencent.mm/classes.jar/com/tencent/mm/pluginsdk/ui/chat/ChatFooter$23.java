@@ -1,16 +1,17 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.of;
+import com.tencent.mm.sdk.b.c;
 
 final class ChatFooter$23
-  implements Runnable
+  extends c<of>
 {
-  ChatFooter$23(ChatFooter paramChatFooter) {}
-  
-  public final void run()
+  ChatFooter$23(ChatFooter paramChatFooter)
   {
-    ChatFooter.n(this.sgd).setVisibility(0);
-    y.i("MicroMsg.ChatFooter", "bottom panel shows as expected");
+    AppMethodBeat.i(155432);
+    this.__eventId = of.class.getName().hashCode();
+    AppMethodBeat.o(155432);
   }
 }
 

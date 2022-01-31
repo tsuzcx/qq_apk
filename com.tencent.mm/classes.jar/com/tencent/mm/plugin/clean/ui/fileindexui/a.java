@@ -8,13 +8,13 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.model.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashSet;
 import java.util.List;
 
@@ -22,25 +22,32 @@ public final class a
   extends BaseAdapter
 {
   private List<c> dataList;
-  HashSet<Integer> hIR;
-  CleanChattingUI iCy;
+  HashSet<Integer> jCr;
+  CleanChattingUI kHF;
   
   public a(CleanChattingUI paramCleanChattingUI, List<c> paramList)
   {
-    this.iCy = paramCleanChattingUI;
-    this.hIR = new HashSet();
+    AppMethodBeat.i(18740);
+    this.kHF = paramCleanChattingUI;
+    this.jCr = new HashSet();
     this.dataList = paramList;
+    AppMethodBeat.o(18740);
   }
   
-  public final void aEe()
+  public final void bhf()
   {
-    this.hIR.clear();
-    this.iCy.a(this.hIR);
+    AppMethodBeat.i(18744);
+    this.jCr.clear();
+    this.kHF.a(this.jCr);
+    AppMethodBeat.o(18744);
   }
   
   public final int getCount()
   {
-    return this.dataList.size();
+    AppMethodBeat.i(18741);
+    int i = this.dataList.size();
+    AppMethodBeat.o(18741);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -50,46 +57,65 @@ public final class a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    c localc;
+    AppMethodBeat.i(18743);
+    c localc1;
     if (paramView == null)
     {
-      paramView = this.iCy.getLayoutInflater().inflate(R.i.clean_chatting_item, paramViewGroup, false);
+      paramView = this.kHF.getLayoutInflater().inflate(2130969161, paramViewGroup, false);
       paramViewGroup = new a.a(this);
-      paramViewGroup.doU = ((ImageView)paramView.findViewById(R.h.avatar_iv));
-      paramViewGroup.eXO = ((TextView)paramView.findViewById(R.h.title_tv));
-      paramViewGroup.eXP = ((TextView)paramView.findViewById(R.h.desc_tv));
-      paramViewGroup.eXQ = ((CheckBox)paramView.findViewById(R.h.select_cb));
-      paramViewGroup.hIU = ((RelativeLayout)paramView.findViewById(R.h.select_cb_click_layout));
+      paramViewGroup.egq = ((ImageView)paramView.findViewById(2131821210));
+      paramViewGroup.gpL = ((TextView)paramView.findViewById(2131821212));
+      paramViewGroup.gpM = ((TextView)paramView.findViewById(2131821007));
+      paramViewGroup.gpN = ((CheckBox)paramView.findViewById(2131821631));
+      paramViewGroup.jCu = ((RelativeLayout)paramView.findViewById(2131821630));
       paramView.setTag(paramViewGroup);
-      paramViewGroup.hIU.setOnClickListener(new a.1(this, paramInt));
-      localc = pk(paramInt);
-      a.b.a(paramViewGroup.doU, localc.username);
-      paramViewGroup.eXO.setText(bk.cm(localc.size));
-      if (!s.fn(localc.username)) {
-        break label234;
+      paramViewGroup.jCu.setOnClickListener(new a.1(this, paramInt));
+      c localc2 = tA(paramInt);
+      localc1 = localc2;
+      if (localc2 == null)
+      {
+        ab.e("MicroMsg.CleanChattingAdapter", "get item is null. [%d]", new Object[] { Integer.valueOf(paramInt) });
+        localc1 = new c();
+        localc1.size = 0L;
+        localc1.username = "";
       }
-      paramViewGroup.eXP.setText(j.a(this.iCy, r.getDisplayName(localc.username, localc.username), paramViewGroup.eXP.getTextSize()));
+      a.b.c(paramViewGroup.egq, localc1.username);
+      paramViewGroup.gpL.setText(bo.hk(localc1.size));
+      if (!t.lA(localc1.username)) {
+        break label289;
+      }
+      paramViewGroup.gpM.setText(j.b(this.kHF, s.getDisplayName(localc1.username, localc1.username), paramViewGroup.gpM.getTextSize()));
+      label248:
+      if (!this.jCr.contains(Integer.valueOf(paramInt))) {
+        break label321;
+      }
+      paramViewGroup.gpN.setChecked(true);
     }
     for (;;)
     {
-      if (!this.hIR.contains(Integer.valueOf(paramInt))) {
-        break label266;
-      }
-      paramViewGroup.eXQ.setChecked(true);
+      AppMethodBeat.o(18743);
       return paramView;
       paramViewGroup = (a.a)paramView.getTag();
       break;
-      label234:
-      paramViewGroup.eXP.setText(j.a(this.iCy, r.gV(localc.username), paramViewGroup.eXP.getTextSize()));
+      label289:
+      paramViewGroup.gpM.setText(j.b(this.kHF, s.nE(localc1.username), paramViewGroup.gpM.getTextSize()));
+      break label248;
+      label321:
+      paramViewGroup.gpN.setChecked(false);
     }
-    label266:
-    paramViewGroup.eXQ.setChecked(false);
-    return paramView;
   }
   
-  public final c pk(int paramInt)
+  public final c tA(int paramInt)
   {
-    return (c)this.dataList.get(paramInt);
+    AppMethodBeat.i(18742);
+    if ((paramInt < 0) || (paramInt >= this.dataList.size()))
+    {
+      AppMethodBeat.o(18742);
+      return null;
+    }
+    c localc = (c)this.dataList.get(paramInt);
+    AppMethodBeat.o(18742);
+    return localc;
   }
 }
 

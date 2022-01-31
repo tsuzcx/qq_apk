@@ -1,30 +1,15 @@
 package com.google.android.exoplayer2.g;
 
-import com.google.android.exoplayer2.source.m;
+import com.google.android.exoplayer2.s;
+import com.google.android.exoplayer2.source.p;
 
-public final class h
+public abstract class h
 {
-  public final m aQI;
-  public final f aQJ;
-  public final Object aQK;
-  public final com.google.android.exoplayer2.t[] aQL;
+  public h.a aYl;
   
-  public h(m paramm, f paramf, Object paramObject, com.google.android.exoplayer2.t[] paramArrayOft)
-  {
-    this.aQI = paramm;
-    this.aQJ = paramf;
-    this.aQK = paramObject;
-    this.aQL = paramArrayOft;
-  }
+  public abstract void Q(Object paramObject);
   
-  public final boolean a(h paramh, int paramInt)
-  {
-    if (paramh == null) {}
-    while ((!com.google.android.exoplayer2.i.t.e(this.aQJ.aQG[paramInt], paramh.aQJ.aQG[paramInt])) || (!com.google.android.exoplayer2.i.t.e(this.aQL[paramInt], paramh.aQL[paramInt]))) {
-      return false;
-    }
-    return true;
-  }
+  public abstract i a(s[] paramArrayOfs, p paramp);
 }
 
 

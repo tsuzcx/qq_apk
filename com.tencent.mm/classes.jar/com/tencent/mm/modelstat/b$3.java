@@ -1,5 +1,6 @@
 package com.tencent.mm.modelstat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.bi;
 
 final class b$3
@@ -9,12 +10,14 @@ final class b$3
   
   public final void run()
   {
-    b.a(this.eBG, this.dUH, 0);
+    AppMethodBeat.i(78626);
+    b.a(this.fRx, this.fkQ, 0);
+    AppMethodBeat.o(78626);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelstat.b.3
  * JD-Core Version:    0.7.0.1
  */

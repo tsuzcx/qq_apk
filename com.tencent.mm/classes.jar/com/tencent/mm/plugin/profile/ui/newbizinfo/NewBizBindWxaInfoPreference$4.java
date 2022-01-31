@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NewBizBindWxaInfoPreference$4
   implements Runnable
@@ -9,7 +10,9 @@ final class NewBizBindWxaInfoPreference$4
   
   public final void run()
   {
+    AppMethodBeat.i(23830);
     this.val$view.setVisibility(8);
+    AppMethodBeat.o(23830);
   }
 }
 

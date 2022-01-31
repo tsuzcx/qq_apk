@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
 public abstract interface h
 {
-  public abstract void G(float paramFloat1, float paramFloat2);
+  public abstract void N(float paramFloat1, float paramFloat2);
 }
 
 

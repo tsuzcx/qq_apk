@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.nfc_open.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class NfcWebViewUI$2
   implements Runnable
@@ -10,8 +11,10 @@ final class NfcWebViewUI$2
   
   public final void run()
   {
-    h.nFQ.f(12794, new Object[] { this.mGx, Integer.valueOf(0) });
-    y.d("MicroMsg.NfcWebViewUI", "doCardTypeReport url = " + this.mGx);
+    AppMethodBeat.i(23070);
+    h.qsU.e(12794, new Object[] { this.pgD, Integer.valueOf(0) });
+    ab.d("MicroMsg.NfcWebViewUI", "doCardTypeReport url = " + this.pgD);
+    AppMethodBeat.o(23070);
   }
 }
 

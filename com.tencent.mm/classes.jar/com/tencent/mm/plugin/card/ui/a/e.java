@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.card.ui.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.c.mg;
+import com.tencent.mm.protocal.protobuf.pg;
 import com.tencent.mm.ui.MMActivity;
 
 public final class e
@@ -14,44 +15,93 @@ public final class e
     super(paramMMActivity);
   }
   
-  public final boolean aCB()
+  public final boolean beD()
   {
-    return (!this.ikk.azf()) || (l.pg(this.isN.drX)) || (!this.ikk.isNormal()) || (this.ixx);
+    AppMethodBeat.i(88719);
+    if ((super.beD()) && (this.klk.isNormal()) && (!this.kyA) && (!beA()) && (!beB()))
+    {
+      AppMethodBeat.o(88719);
+      return true;
+    }
+    AppMethodBeat.o(88719);
+    return false;
   }
   
-  public final boolean aCF()
+  public final boolean beL()
   {
-    return (this.ikk.azf()) && (!l.pg(this.isN.drX)) && (this.ikk.isNormal()) && (!this.ixx);
+    AppMethodBeat.i(88714);
+    if ((this.klk.baL()) && (!l.tv(this.ktU.ejF)) && (this.klk.isNormal()) && (!this.kyA))
+    {
+      AppMethodBeat.o(88714);
+      return false;
+    }
+    AppMethodBeat.o(88714);
+    return true;
   }
   
-  public final boolean aCG()
+  public final boolean beP()
   {
-    return this.ixx;
+    AppMethodBeat.i(88715);
+    if ((this.klk.baL()) && (!l.tv(this.ktU.ejF)) && (this.klk.isNormal()) && (!this.kyA))
+    {
+      AppMethodBeat.o(88715);
+      return true;
+    }
+    AppMethodBeat.o(88715);
+    return false;
   }
   
-  public final boolean aCI()
+  public final boolean beQ()
   {
-    return (this.ikk.azx() != null) && (this.ikk.azx().sIW);
+    return this.kyA;
   }
   
-  public final boolean aCJ()
+  public final boolean beS()
   {
-    return (super.aCJ()) || ((this.ikk.isNormal()) && (!this.ixx) && ((aCq()) || (aCr())));
+    AppMethodBeat.i(88720);
+    if ((this.klk.bbd() != null) && (this.klk.bbd().wGF))
+    {
+      AppMethodBeat.o(88720);
+      return true;
+    }
+    AppMethodBeat.o(88720);
+    return false;
   }
   
-  public final boolean aCO()
+  public final boolean beT()
   {
-    return (this.ikk.isNormal()) && (super.aCO()) && (!aCI());
+    AppMethodBeat.i(88716);
+    if ((super.beT()) || ((this.klk.isNormal()) && (!this.kyA) && ((beA()) || (beB()))))
+    {
+      AppMethodBeat.o(88716);
+      return true;
+    }
+    AppMethodBeat.o(88716);
+    return false;
   }
   
-  public final boolean aCS()
+  public final boolean beY()
   {
-    return (this.ikk.azf()) && (this.ikk.azx().sII != null) && (this.ikk.isNormal()) && (!this.ixx) && (!aCq()) && (!aCr());
+    AppMethodBeat.i(88718);
+    if ((this.klk.isNormal()) && (super.beY()) && (!beS()))
+    {
+      AppMethodBeat.o(88718);
+      return true;
+    }
+    AppMethodBeat.o(88718);
+    return false;
   }
   
-  public final boolean aCt()
+  public final boolean bfc()
   {
-    return (super.aCt()) && (this.ikk.isNormal()) && (!this.ixx) && (!aCq()) && (!aCr());
+    AppMethodBeat.i(88717);
+    if ((this.klk.baL()) && (this.klk.bbd().wGr != null) && (this.klk.isNormal()) && (!this.kyA) && (!beA()) && (!beB()))
+    {
+      AppMethodBeat.o(88717);
+      return true;
+    }
+    AppMethodBeat.o(88717);
+    return false;
   }
 }
 

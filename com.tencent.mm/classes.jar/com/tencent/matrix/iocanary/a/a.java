@@ -2,45 +2,41 @@ package com.tencent.matrix.iocanary.a;
 
 public final class a
 {
-  public static final a boi;
-  public final int boj;
-  public final int bok;
-  private final int bol;
-  public final int bom;
-  private final int mask;
+  public final com.tencent.mrs.b.a bMc;
   
-  static
+  private a(com.tencent.mrs.b.a parama)
   {
-    a locala = new a();
-    boi = new a(locala.bmz, locala.bon, locala.boo, locala.bop, locala.boq, (byte)0);
-  }
-  
-  private a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    this.mask = paramInt1;
-    this.boj = paramInt2;
-    this.bol = paramInt4;
-    this.bok = paramInt3;
-    this.bom = paramInt5;
-  }
-  
-  public final boolean ed(int paramInt)
-  {
-    return (this.mask & paramInt) > 0;
+    this.bMc = parama;
   }
   
   public final String toString()
   {
-    return String.format("[IOCanary.IOConfig;mask=%d]", new Object[] { Integer.valueOf(this.mask) });
+    return String.format("[IOCanary.IOConfig], main_thread:%b, small_buffer:%b, repeat_read:%b, closeable_leak:%b", new Object[] { Boolean.valueOf(yU()), Boolean.valueOf(yW()), Boolean.valueOf(yV()), Boolean.valueOf(yX()) });
+  }
+  
+  public final boolean yU()
+  {
+    return this.bMc.get(com.tencent.mrs.b.a.a.Baz.name(), true);
+  }
+  
+  public final boolean yV()
+  {
+    return this.bMc.get(com.tencent.mrs.b.a.a.BaE.name(), true);
+  }
+  
+  public final boolean yW()
+  {
+    return this.bMc.get(com.tencent.mrs.b.a.a.BaB.name(), true);
+  }
+  
+  public final boolean yX()
+  {
+    return this.bMc.get(com.tencent.mrs.b.a.a.BaG.name(), true);
   }
   
   public static final class a
   {
-    int bmz = -1;
-    int bon = 500;
-    int boo = 4096;
-    int bop = 20;
-    int boq = 5;
+    public com.tencent.mrs.b.a bMc;
   }
 }
 

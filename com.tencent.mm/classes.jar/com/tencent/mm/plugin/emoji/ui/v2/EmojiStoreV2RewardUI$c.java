@@ -2,15 +2,17 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.plugin.emoji.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EmojiStoreV2RewardUI$c
 {
-  TextView jhP;
+  TextView lqL;
   
   public EmojiStoreV2RewardUI$c(EmojiStoreV2RewardUI paramEmojiStoreV2RewardUI, View paramView)
   {
-    this.jhP = ((TextView)paramView.findViewById(f.e.priece));
+    AppMethodBeat.i(53711);
+    this.lqL = ((TextView)paramView.findViewById(2131823689));
+    AppMethodBeat.o(53711);
   }
 }
 

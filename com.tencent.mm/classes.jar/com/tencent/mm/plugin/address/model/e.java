@@ -1,87 +1,95 @@
 package com.tencent.mm.plugin.address.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.address.a.a;
-import com.tencent.mm.protocal.c.biw;
-import com.tencent.mm.protocal.c.biy;
-import com.tencent.mm.protocal.c.biz;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bro;
+import com.tencent.mm.protocal.protobuf.brq;
+import com.tencent.mm.protocal.protobuf.brr;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 public final class e
   extends m
   implements k
 {
-  private b dmK;
-  private f dmL;
-  public boolean ftl;
+  private f callback;
+  public boolean gKN;
   public String nickname;
+  private b rr;
   public String username;
   
   public e(String paramString1, String paramString2, int paramInt)
   {
+    AppMethodBeat.i(16734);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new biy();
-    ((b.a)localObject).ecI = new biz();
+    ((b.a)localObject).fsX = new brq();
+    ((b.a)localObject).fsY = new brr();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/rcptinfoquery";
-    ((b.a)localObject).ecG = 417;
-    ((b.a)localObject).ecJ = 202;
-    ((b.a)localObject).ecK = 1000000202;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (biy)this.dmK.ecE.ecN;
-    ((biy)localObject).timestamp = 0;
-    ((biy)localObject).tDc = paramString1;
-    ((biy)localObject).bOL = paramString2;
-    ((biy)localObject).scene = paramInt;
+    ((b.a)localObject).funcId = 417;
+    ((b.a)localObject).reqCmdId = 202;
+    ((b.a)localObject).respCmdId = 1000000202;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (brq)this.rr.fsV.fta;
+    ((brq)localObject).timestamp = 0;
+    ((brq)localObject).xFs = paramString1;
+    ((brq)localObject).cwc = paramString2;
+    ((brq)localObject).scene = paramInt;
+    AppMethodBeat.o(16734);
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    boolean bool = true;
-    y.d("MicroMsg.NetSceneRcptInfoQuery", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      paramq = (biz)((b)paramq).ecF.ecN;
-      this.username = paramq.jFa;
-      this.nickname = paramq.tDf;
-      if (paramq.tDe != 1) {
-        break label186;
-      }
-    }
-    for (;;)
-    {
-      this.ftl = bool;
-      if (paramq.tCP.tCS != null)
-      {
-        y.d("MicroMsg.NetSceneRcptInfoQuery", "resp.rImpl.rcptinfolist.rcptinfolist " + paramq.tCP.tCS.size());
-        a.YB();
-        a.YD().s(paramq.tCP.tCS);
-        a.YB();
-        a.YD().YF();
-      }
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-      label186:
-      bool = false;
-    }
+    AppMethodBeat.i(16736);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(16736);
+    return i;
   }
   
   public final int getType()
   {
     return 417;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(16735);
+    ab.d("MicroMsg.NetSceneRcptInfoQuery", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      paramq = (brr)((b)paramq).fsW.fta;
+      this.username = paramq.lOy;
+      this.nickname = paramq.xFv;
+      if (paramq.xFu != 1) {
+        break label198;
+      }
+    }
+    for (;;)
+    {
+      this.gKN = bool;
+      if (paramq.xFf.xFi != null)
+      {
+        ab.d("MicroMsg.NetSceneRcptInfoQuery", "resp.rImpl.rcptinfolist.rcptinfolist " + paramq.xFf.xFi.size());
+        a.asl();
+        a.asn().s(paramq.xFf.xFi);
+        a.asl();
+        a.asn().asp();
+      }
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(16735);
+      return;
+      label198:
+      bool = false;
+    }
   }
 }
 

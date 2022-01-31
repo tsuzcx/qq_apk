@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.base.preference;
 
 import android.widget.RadioButton;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
@@ -15,8 +16,10 @@ final class b
   
   public final void a(RadioButton paramRadioButton)
   {
+    AppMethodBeat.i(107144);
     paramRadioButton.setText(this.text);
     paramRadioButton.setId(this.id);
+    AppMethodBeat.o(107144);
   }
 }
 

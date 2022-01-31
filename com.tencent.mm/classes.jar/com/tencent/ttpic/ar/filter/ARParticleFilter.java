@@ -5,6 +5,7 @@ import android.graphics.PointF;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.GLSLRender;
@@ -13,19 +14,18 @@ import com.tencent.filter.m.f;
 import com.tencent.filter.m.i;
 import com.tencent.filter.m.j;
 import com.tencent.filter.m.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.oscarcamera.particlesystem.ParticleSystemEx;
 import com.tencent.oscarcamera.particlesystem.Sprite;
 import com.tencent.ttpic.ar.util.ARMatrixUtil;
+import com.tencent.ttpic.baseutils.FileUtils;
 import com.tencent.ttpic.filter.VideoFilterBase;
 import com.tencent.ttpic.gles.AttributeParam;
-import com.tencent.ttpic.model.FaceActionCounter;
-import com.tencent.ttpic.model.HandActionCounter;
+import com.tencent.ttpic.gles.GlUtil.DRAW_MODE;
 import com.tencent.ttpic.model.Point3D;
-import com.tencent.ttpic.util.AudioUtils;
-import com.tencent.ttpic.util.AudioUtils.Player;
-import com.tencent.ttpic.util.VideoFileUtil;
-import com.tencent.ttpic.util.VideoFilterUtil.DRAW_MODE;
+import com.tencent.ttpic.util.PlayerUtil;
+import com.tencent.ttpic.util.PlayerUtil.Player;
 import com.tencent.ttpic.util.VideoGlobalContext;
-import com.tencent.ttpic.util.VideoUtil;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,44 +33,66 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class ARParticleFilter
   extends VideoFilterBase
 {
-  private static final String FRAGMENT_SHADER_COMMON = VideoFileUtil.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/ARParticleFragmentShader.dat");
-  private static final String VERTEX_SHADER_COMMON = VideoFileUtil.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/ARParticleVertexShader.dat");
-  private String TAG = ARParticleFilter.class.getSimpleName();
-  private float far = 2000.0F;
-  private FrameData[] frameDataBufferQueue = new FrameData[2];
-  private int frameDataBufferQueueIndex = 0;
+  private static final String FRAGMENT_SHADER_COMMON;
+  private static final String VERTEX_SHADER_COMMON;
+  private String TAG;
+  private float far;
+  private FrameData[] frameDataBufferQueue;
+  private int frameDataBufferQueueIndex;
   private float mCanvasHeight;
   private float mCanvasWidth;
-  private BaseFilter mCopyFilter = new BaseFilter(GLSLRender.bcE);
-  private h mCopyFrame = new h();
+  private BaseFilter mCopyFilter;
+  private h mCopyFrame;
   private FrameData mLastFrameData;
   private ARParticleFilter.ParticleCalculationHandler mParticleCalculationHandler;
   private List<String> mParticleDirList;
-  private Map<String, Integer> mPathToBitmapIndexMapping = new HashMap();
-  private Map<String, AudioUtils.Player> mPlayerMapping = new HashMap();
+  private ParticleSystemEx mParticleSystem;
+  private Map<String, Integer> mPathToBitmapIndexMapping;
+  private Map<String, PlayerUtil.Player> mPlayerMapping;
   private List<Sprite> mSpriteList;
-  private List<ArrayList<ARParticleFilter.TexCoord>> mTexCoords = new ArrayList();
+  private List<ArrayList<ARParticleFilter.TexCoord>> mTexCoords;
   private Bitmap[] mTextureBitmaps;
   private ARParticleFilter.Size[] mTextureSizes;
   private int[] mTextures;
   private float mViewDistance;
-  private float near = 100.0F;
+  private float near;
+  
+  static
+  {
+    AppMethodBeat.i(81676);
+    VERTEX_SHADER_COMMON = FileUtils.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/ARParticleVertexShader.dat");
+    FRAGMENT_SHADER_COMMON = FileUtils.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/ARParticleFragmentShader.dat");
+    AppMethodBeat.o(81676);
+  }
   
   public ARParticleFilter(List<String> paramList, String paramString)
   {
     super(VERTEX_SHADER_COMMON, FRAGMENT_SHADER_COMMON);
+    AppMethodBeat.i(81655);
+    this.TAG = ARParticleFilter.class.getSimpleName();
+    this.near = 100.0F;
+    this.far = 2000.0F;
+    this.mParticleSystem = new ParticleSystemEx(VideoGlobalContext.getContext());
+    this.mPathToBitmapIndexMapping = new HashMap();
+    this.mTexCoords = new ArrayList();
+    this.mPlayerMapping = new HashMap();
+    this.frameDataBufferQueue = new FrameData[2];
+    this.frameDataBufferQueueIndex = 0;
+    this.mCopyFilter = new BaseFilter(GLSLRender.btg);
+    this.mCopyFrame = new h();
     this.dataPath = paramString;
-    setDrawMode(VideoFilterUtil.DRAW_MODE.TRIANGLES);
+    setDrawMode(GlUtil.DRAW_MODE.TRIANGLES);
     initParticle(paramList);
+    AppMethodBeat.o(81655);
   }
   
   private void calTexCoordList(int paramInt1, int paramInt2, int paramInt3, float[] paramArrayOfFloat)
   {
+    AppMethodBeat.i(81668);
     if (paramInt1 < this.mTexCoords.size())
     {
       Object localObject = (ArrayList)this.mTexCoords.get(paramInt1);
@@ -96,11 +118,15 @@ public class ARParticleFilter
         }
       }
     }
+    AppMethodBeat.o(81668);
   }
   
   private boolean changeTexture(String paramString)
   {
-    if (!this.mPathToBitmapIndexMapping.containsKey(paramString)) {
+    AppMethodBeat.i(81666);
+    if (!this.mPathToBitmapIndexMapping.containsKey(paramString))
+    {
+      AppMethodBeat.o(81666);
       return false;
     }
     int i = ((Integer)this.mPathToBitmapIndexMapping.get(paramString)).intValue();
@@ -128,32 +154,40 @@ public class ARParticleFilter
         paramString.initialParams(getProgramIds());
         addParam(paramString);
         if ((this.mTextureSizes[i] == null) || (!this.mTextureSizes[i].isValid())) {
-          break label217;
+          break label246;
         }
+        AppMethodBeat.o(81666);
         return true;
       }
       catch (OutOfMemoryError paramString)
       {
+        AppMethodBeat.o(81666);
         return false;
       }
     }
+    AppMethodBeat.o(81666);
     return false;
-    label217:
+    label246:
+    AppMethodBeat.o(81666);
     return false;
   }
   
   private void initParticle(List<String> paramList)
   {
+    AppMethodBeat.i(81656);
     if (paramList != null)
     {
       this.mParticleDirList = new ArrayList();
+      paramList = new ArrayList(paramList);
       int i = 0;
       while (i < paramList.size())
       {
         this.mParticleDirList.add(((String)paramList.get(i)).substring(0, ((String)paramList.get(i)).lastIndexOf("/")));
-        paramList.set(i, VideoUtil.getRealPath(this.dataPath + File.separator + (String)paramList.get(i)));
+        paramList.set(i, FileUtils.getRealPath(this.dataPath + File.separator + (String)paramList.get(i)));
         i += 1;
       }
+      this.mParticleSystem.loadParticleData(paramList);
+      this.mSpriteList = this.mParticleSystem.getSprites();
       this.mTextureBitmaps = new Bitmap[this.mSpriteList.size()];
       this.mTextures = new int[this.mSpriteList.size()];
       this.mTextureSizes = new ARParticleFilter.Size[this.mSpriteList.size()];
@@ -170,15 +204,24 @@ public class ARParticleFilter
     paramList.start();
     this.mParticleCalculationHandler = new ARParticleFilter.ParticleCalculationHandler(this, paramList.getLooper());
     this.mParticleCalculationHandler.sendEmptyMessage(0);
+    AppMethodBeat.o(81656);
   }
   
   private boolean isBitmapLegal(Bitmap paramBitmap)
   {
-    return (paramBitmap != null) && (!paramBitmap.isRecycled());
+    AppMethodBeat.i(81667);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    {
+      AppMethodBeat.o(81667);
+      return true;
+    }
+    AppMethodBeat.o(81667);
+    return false;
   }
   
   private void playMusicIfNeeded(FrameData paramFrameData)
   {
+    AppMethodBeat.i(81661);
     if (paramFrameData.needPlayMusic)
     {
       Iterator localIterator = paramFrameData.frameParticleData.iterator();
@@ -190,23 +233,24 @@ public class ARParticleFilter
           String str = paramFrameData.audioPath;
           if (!this.mPlayerMapping.containsKey(str)) {
             if (!str.startsWith("assets://")) {
-              break label130;
+              break label136;
             }
           }
-          label130:
-          for (paramFrameData = AudioUtils.createPlayerFromAssets(VideoGlobalContext.getContext(), str.replace("assets://", ""), false);; paramFrameData = AudioUtils.createPlayerFromUri(VideoGlobalContext.getContext(), str, false))
+          label136:
+          for (paramFrameData = PlayerUtil.createPlayerFromAssets(VideoGlobalContext.getContext(), str.replace("assets://", ""), false);; paramFrameData = PlayerUtil.createPlayerFromUri(VideoGlobalContext.getContext(), str, false))
           {
             this.mPlayerMapping.put(str, paramFrameData);
-            paramFrameData = (AudioUtils.Player)this.mPlayerMapping.get(str);
+            paramFrameData = (PlayerUtil.Player)this.mPlayerMapping.get(str);
             if (paramFrameData == null) {
               break;
             }
-            AudioUtils.startPlayer(paramFrameData, true);
+            PlayerUtil.startPlayer(paramFrameData, true);
             break;
           }
         }
       }
     }
+    AppMethodBeat.o(81661);
   }
   
   private float pow2(float paramFloat)
@@ -216,20 +260,25 @@ public class ARParticleFilter
   
   private void vectorNormalization(float[] paramArrayOfFloat)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 3)) {}
-    float f;
-    do
+    AppMethodBeat.i(81659);
+    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 3))
     {
+      AppMethodBeat.o(81659);
       return;
-      f = (float)Math.sqrt(pow2(paramArrayOfFloat[0]) + pow2(paramArrayOfFloat[1]) + pow2(paramArrayOfFloat[2]));
-    } while (f <= 0.0F);
-    paramArrayOfFloat[0] /= f;
-    paramArrayOfFloat[1] /= f;
-    paramArrayOfFloat[2] /= f;
+    }
+    float f = (float)Math.sqrt(pow2(paramArrayOfFloat[0]) + pow2(paramArrayOfFloat[1]) + pow2(paramArrayOfFloat[2]));
+    if (f > 0.0F)
+    {
+      paramArrayOfFloat[0] /= f;
+      paramArrayOfFloat[1] /= f;
+      paramArrayOfFloat[2] /= f;
+    }
+    AppMethodBeat.o(81659);
   }
   
   public void addTouchPoint(PointF paramPointF)
   {
+    AppMethodBeat.i(81669);
     float f1 = ARMatrixUtil.nearRectHeight / ARMatrixUtil.nearRectWidth;
     float f2 = ARMatrixUtil.nearRectWidth;
     float f3 = this.mViewDistance / ARMatrixUtil.near;
@@ -281,10 +330,13 @@ public class ARParticleFilter
     ((Point3D)localObject1).y = (localPoint3D1.y + localObject2[1] + paramPointF[1]);
     f1 = localPoint3D1.z;
     ((Point3D)localObject1).z = (localObject2[2] + f1 + paramPointF[2]);
+    this.mParticleSystem.emitImmediately(((Point3D)localObject1).x, ((Point3D)localObject1).y, ((Point3D)localObject1).z);
+    AppMethodBeat.o(81669);
   }
   
   public void clear()
   {
+    AppMethodBeat.i(81673);
     super.clearGLSLSelf();
     ARMatrixUtil.stopOrientationSensor();
     Bitmap[] arrayOfBitmap = this.mTextureBitmaps;
@@ -302,20 +354,30 @@ public class ARParticleFilter
     this.mCopyFilter.ClearGLSL();
     this.mCopyFrame.clear();
     destroyAudioPlayer();
+    if (this.mParticleCalculationHandler != null)
+    {
+      this.mParticleCalculationHandler.isStopped = true;
+      this.mParticleCalculationHandler.getLooper().quit();
+    }
+    this.mParticleSystem.release();
     System.gc();
+    AppMethodBeat.o(81673);
   }
   
   public void destroyAudioPlayer()
   {
+    AppMethodBeat.i(81674);
     Iterator localIterator = this.mPlayerMapping.values().iterator();
     while (localIterator.hasNext()) {
-      AudioUtils.destroyPlayer((AudioUtils.Player)localIterator.next());
+      PlayerUtil.destroyPlayer((PlayerUtil.Player)localIterator.next());
     }
     this.mPlayerMapping.clear();
+    AppMethodBeat.o(81674);
   }
   
   public void initAttribParams()
   {
+    AppMethodBeat.i(81670);
     setTexCords(new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F });
     setCoordNum(4);
     addAttribParam(new AttributeParam("positionIndex", new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F }, 1));
@@ -323,10 +385,12 @@ public class ARParticleFilter
     addAttribParam(new AttributeParam("particleSize", new float[] { 0.0F, 0.0F }, 2));
     addAttribParam(new AttributeParam("particleColor", new float[] { 0.0F, 0.0F, 0.0F, 0.0F }, 4));
     initParams();
+    AppMethodBeat.o(81670);
   }
   
   public void initParams()
   {
+    AppMethodBeat.i(81657);
     this.mViewDistance = (this.near + (this.far - this.near) * 0.5F);
     addParam(new m.j("u_MVPMatrix", ARMatrixUtil.getMovedMVPMatrix(this.near, this.far)));
     addParam(new m.i("blendMode", 0));
@@ -335,21 +399,26 @@ public class ARParticleFilter
     addParam(new m.i("isFrontCamera", 0));
     ARMatrixUtil.startOrientationSensor();
     this.mCopyFilter.ApplyGLSLFilter();
+    AppMethodBeat.o(81657);
   }
   
   public boolean needCopyTex()
   {
+    AppMethodBeat.i(81671);
     if (this.mSpriteList != null)
     {
       Iterator localIterator = this.mSpriteList.iterator();
       while (localIterator.hasNext())
       {
         Sprite localSprite = (Sprite)localIterator.next();
-        if ((localSprite.blendMode >= 2) && (localSprite.blendMode <= 12)) {
+        if ((localSprite.blendMode >= 2) && (localSprite.blendMode <= 12))
+        {
+          AppMethodBeat.o(81671);
           return true;
         }
       }
     }
+    AppMethodBeat.o(81671);
     return false;
   }
   
@@ -360,6 +429,7 @@ public class ARParticleFilter
   
   public void render(h paramh)
   {
+    AppMethodBeat.i(81660);
     FrameData localFrameData = this.frameDataBufferQueue[this.frameDataBufferQueueIndex];
     if ((localFrameData == null) || (!localFrameData.ready)) {
       if (this.mLastFrameData != null) {
@@ -396,10 +466,10 @@ public class ARParticleFilter
           addParam(new m.f("canvasWidth", this.mCanvasWidth));
           addParam(new m.f("canvasHeight", this.mCanvasHeight));
           if (!ARMatrixUtil.isFrontCamera) {
-            break label428;
+            break label441;
           }
         }
-        label428:
+        label441:
         for (int k = 1;; k = 0)
         {
           addParam(new m.i("isFrontCamera", k));
@@ -407,60 +477,78 @@ public class ARParticleFilter
           super.renderTexture(j, this.width, this.height);
           i += 1;
           break;
+          AppMethodBeat.o(81660);
+          return;
         }
       }
       playMusicIfNeeded(localFrameData);
+      AppMethodBeat.o(81660);
       return;
     }
   }
   
   public boolean setParticleCenter(float[] paramArrayOfFloat)
   {
+    AppMethodBeat.i(81663);
     addAttribParam(new AttributeParam("particleCenter", paramArrayOfFloat, 3));
+    AppMethodBeat.o(81663);
     return true;
   }
   
   public boolean setParticleColor(float[] paramArrayOfFloat)
   {
+    AppMethodBeat.i(81665);
     addAttribParam(new AttributeParam("particleColor", paramArrayOfFloat, 4));
+    AppMethodBeat.o(81665);
     return true;
   }
   
   public boolean setParticleSize(float[] paramArrayOfFloat)
   {
+    AppMethodBeat.i(81664);
     addAttribParam(new AttributeParam("particleSize", paramArrayOfFloat, 2));
+    AppMethodBeat.o(81664);
     return true;
   }
   
   public boolean setPositionIndex(float[] paramArrayOfFloat)
   {
+    AppMethodBeat.i(81662);
     addAttribParam(new AttributeParam("positionIndex", paramArrayOfFloat, 1));
+    AppMethodBeat.o(81662);
     return true;
   }
   
   public void updateAndRender(h paramh)
   {
+    AppMethodBeat.i(81672);
     ARMatrixUtil.updateOrientation();
     render(paramh);
+    AppMethodBeat.o(81672);
   }
-  
-  public void updatePreview(List<PointF> paramList1, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap, List<PointF> paramList2, Map<Integer, HandActionCounter> paramMap1, Set<Integer> paramSet, float paramFloat, long paramLong) {}
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
+    AppMethodBeat.i(81658);
     super.updateVideoSize(paramInt1, paramInt2, paramDouble);
     this.mCanvasWidth = paramInt1;
     this.mCanvasHeight = paramInt2;
     ARMatrixUtil.updateRenderSize(paramInt1, paramInt2);
+    AppMethodBeat.o(81658);
   }
   
   class FrameData
   {
-    public List<ARParticleFilter.FrameParticleData> frameParticleData = new ArrayList();
+    public List<ARParticleFilter.FrameParticleData> frameParticleData;
     public boolean needPlayMusic;
     public boolean ready;
     
-    FrameData() {}
+    FrameData()
+    {
+      AppMethodBeat.i(81652);
+      this.frameParticleData = new ArrayList();
+      AppMethodBeat.o(81652);
+    }
   }
 }
 

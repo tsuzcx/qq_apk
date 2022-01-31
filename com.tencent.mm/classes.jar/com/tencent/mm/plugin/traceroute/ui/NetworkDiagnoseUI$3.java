@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.traceroute.ui;
 
 import android.widget.TextView;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMProgressBar.a;
 
 final class NetworkDiagnoseUI$3
@@ -9,24 +9,28 @@ final class NetworkDiagnoseUI$3
 {
   NetworkDiagnoseUI$3(NetworkDiagnoseUI paramNetworkDiagnoseUI) {}
   
-  public final void zG(int paramInt)
+  public final void GM(int paramInt)
   {
+    AppMethodBeat.i(26025);
     if (paramInt < 5)
     {
-      NetworkDiagnoseUI.f(this.pJy).setText(this.pJy.getString(R.l.connecting_server));
+      NetworkDiagnoseUI.f(this.tnM).setText(this.tnM.getString(2131298516));
+      AppMethodBeat.o(26025);
       return;
     }
     if ((paramInt >= 5) && (paramInt < 95))
     {
-      NetworkDiagnoseUI.f(this.pJy).setText(this.pJy.getString(R.l.getting_route_path));
+      NetworkDiagnoseUI.f(this.tnM).setText(this.tnM.getString(2131300533));
+      AppMethodBeat.o(26025);
       return;
     }
-    NetworkDiagnoseUI.f(this.pJy).setText(this.pJy.getString(R.l.uploading_report));
+    NetworkDiagnoseUI.f(this.tnM).setText(this.tnM.getString(2131304448));
+    AppMethodBeat.o(26025);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.ui.NetworkDiagnoseUI.3
  * JD-Core Version:    0.7.0.1
  */

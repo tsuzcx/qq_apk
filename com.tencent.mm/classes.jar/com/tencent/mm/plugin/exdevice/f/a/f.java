@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.exdevice.f.a;
 public abstract interface f {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.f.a.f
  * JD-Core Version:    0.7.0.1
  */

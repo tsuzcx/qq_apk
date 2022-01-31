@@ -2,17 +2,17 @@ package com.tencent.mm.compatible.e;
 
 public final class a
 {
-  public boolean duL = false;
-  public String duM = "";
+  public boolean emB = false;
+  public String emC = "";
   
-  public final void bq(boolean paramBoolean)
+  public final void bO(boolean paramBoolean)
   {
-    this.duL = paramBoolean;
+    this.emB = paramBoolean;
   }
   
-  public final void eX(String paramString)
+  public final void lh(String paramString)
   {
-    this.duM = paramString;
+    this.emC = paramString;
   }
 }
 

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.remittance.bankcard.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class BankRemitMoneyInputUI$8$2
   implements DialogInterface.OnClickListener
@@ -11,7 +12,9 @@ final class BankRemitMoneyInputUI$8$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ai.l(new BankRemitMoneyInputUI.8.2.1(this), 500L);
+    AppMethodBeat.i(44639);
+    al.p(new BankRemitMoneyInputUI.8.2.1(this), 500L);
+    AppMethodBeat.o(44639);
   }
 }
 

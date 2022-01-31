@@ -5,7 +5,7 @@ public final class c$au
 {
   public c$au()
   {
-    super("disablePullDownRefresh", "disablePullDownRefresh", 205, false);
+    super("consumedShareCard", "consumedShareCard", 177, true);
   }
 }
 

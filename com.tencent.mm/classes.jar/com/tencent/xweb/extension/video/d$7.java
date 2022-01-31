@@ -1,6 +1,7 @@
 package com.tencent.xweb.extension.video;
 
 import android.widget.ProgressBar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$7
   implements Runnable
@@ -9,12 +10,14 @@ final class d$7
   
   public final void run()
   {
-    d.p(this.xiF).setVisibility(0);
+    AppMethodBeat.i(84581);
+    d.p(this.BFR).setVisibility(0);
+    AppMethodBeat.o(84581);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.extension.video.d.7
  * JD-Core Version:    0.7.0.1
  */

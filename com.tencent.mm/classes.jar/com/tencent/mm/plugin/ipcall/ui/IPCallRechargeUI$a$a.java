@@ -5,11 +5,11 @@ import android.widget.TextView;
 
 final class IPCallRechargeUI$a$a
 {
-  TextView lwR;
-  TextView lxO;
-  TextView lxP;
-  TextView lxQ;
-  Button lxR;
+  TextView nUe;
+  TextView nVb;
+  TextView nVc;
+  TextView nVd;
+  Button nVe;
   
   private IPCallRechargeUI$a$a(IPCallRechargeUI.a parama) {}
 }

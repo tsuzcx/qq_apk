@@ -1,6 +1,6 @@
 package com.tencent.mars.smc;
 
-import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.plugin.report.e;
 import java.util.ArrayList;
 
 public class IPCSmcLogic
@@ -14,17 +14,17 @@ public class IPCSmcLogic
       localArrayList.add(new IDKey(paramArrayOfInt1[i], paramArrayOfInt2[i], paramArrayOfInt3[i]));
       i += 1;
     }
-    f.nEG.b(localArrayList, paramBoolean);
+    e.qrI.b(localArrayList, paramBoolean);
   }
   
   private static void reportIDKey(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
-    f.nEG.a(paramLong1, paramLong2, paramLong3, paramBoolean);
+    e.qrI.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
   }
   
   private static void reportKV(long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    f.nEG.a((int)paramLong, paramString, paramBoolean2, paramBoolean1);
+    e.qrI.a((int)paramLong, paramString, paramBoolean2, paramBoolean1);
   }
 }
 

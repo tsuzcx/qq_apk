@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.appbrand.wxawidget.console;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.ui.widget.picker.b;
 import java.util.ArrayList;
@@ -14,17 +15,19 @@ final class SettingsPanel$3
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(11191);
     paramView = new ArrayList();
     paramView.add("MHADrawableView");
     paramView.add("MTextureView");
     paramView.add("MSurfaceView");
     paramView.add("MCanvasView");
     paramView.add("MDrawableView");
-    paramView = new b(this.hEJ.getContext(), paramView);
-    paramView.IC(((Integer)SettingsPanel.b(this.hEJ).getTag()).intValue());
-    paramView.wov = new SettingsPanel.3.1(this, paramView);
-    paramView.IB(a.fromDPToPix(this.hEJ.getContext(), 288));
+    paramView = new b(this.jxW.getContext(), paramView);
+    paramView.Rw(((Integer)SettingsPanel.b(this.jxW).getTag()).intValue());
+    paramView.AIW = new SettingsPanel.3.1(this, paramView);
+    paramView.Rv(a.fromDPToPix(this.jxW.getContext(), 288));
     paramView.show();
+    AppMethodBeat.o(11191);
   }
 }
 

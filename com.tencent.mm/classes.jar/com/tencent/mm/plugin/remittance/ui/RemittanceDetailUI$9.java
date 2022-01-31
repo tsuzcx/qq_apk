@@ -1,21 +1,16 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.wallet_core.ui.e;
+import android.app.Dialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet.balance.a.a.r;
+import com.tencent.mm.protocal.protobuf.bpw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.vending.c.a;
 
 final class RemittanceDetailUI$9
-  implements MenuItem.OnMenuItemClickListener
+  implements a<Void, bpw>
 {
-  RemittanceDetailUI$9(RemittanceDetailUI paramRemittanceDetailUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
-  {
-    e.l(this.nDm.mController.uMN, RemittanceDetailUI.d(this.nDm), false);
-    return false;
-  }
+  RemittanceDetailUI$9(RemittanceDetailUI paramRemittanceDetailUI, r paramr, Dialog paramDialog, String paramString) {}
 }
 
 

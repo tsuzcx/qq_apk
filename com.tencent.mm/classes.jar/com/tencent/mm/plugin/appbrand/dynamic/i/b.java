@@ -1,20 +1,32 @@
 package com.tencent.mm.plugin.appbrand.dynamic.i;
 
 import com.tencent.mars.smc.IDKey;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public final class b
 {
-  private static b.a fXd = new b.a((byte)0);
-  private static b.a fXe = new b.a((byte)0);
+  private static b.a hqE;
+  private static b.a hqF;
+  
+  static
+  {
+    AppMethodBeat.i(10976);
+    hqE = new b.a((byte)0);
+    hqF = new b.a((byte)0);
+    AppMethodBeat.o(10976);
+  }
   
   private static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, b.a parama)
   {
+    AppMethodBeat.i(10975);
     int i = parama.count;
-    long l1 = parama.fXf;
-    long l2 = parama.fXg;
-    long l3 = parama.fXh;
-    if ((l1 <= 0L) || (l2 <= 0L) || (i <= 0) || (l3 <= 0L)) {
+    long l1 = parama.bCz;
+    long l2 = parama.hqG;
+    long l3 = parama.hqH;
+    if ((l1 <= 0L) || (l2 <= 0L) || (i <= 0) || (l3 <= 0L))
+    {
+      AppMethodBeat.o(10975);
       return;
     }
     parama = new ArrayList();
@@ -38,42 +50,50 @@ public final class b
     localIDKey.SetKey(paramInt4);
     localIDKey.SetValue(l3);
     parama.add(localIDKey);
-    com.tencent.mm.plugin.report.service.h.nFQ.b(parama, false);
+    com.tencent.mm.plugin.report.service.h.qsU.b(parama, false);
+    AppMethodBeat.o(10975);
   }
   
   private static void a(b.a parama, long paramLong, int paramInt)
   {
     try
     {
-      parama.fXf += paramLong / 1000L;
-      parama.fXg += paramInt;
-      parama.fXh += paramLong / paramInt;
+      parama.bCz += paramLong / 1000L;
+      parama.hqG += paramInt;
+      parama.hqH += paramLong / paramInt;
       parama.count += 1;
       return;
     }
     finally {}
   }
   
-  public static void afE()
+  public static void aAi()
   {
-    a(5, 6, 7, 8, fXe);
-    a(0, 1, 2, 3, fXd);
-    fXe.reset();
-    fXd.reset();
+    AppMethodBeat.i(10974);
+    a(5, 6, 7, 8, hqF);
+    a(0, 1, 2, 3, hqE);
+    hqF.reset();
+    hqE.reset();
+    AppMethodBeat.o(10974);
   }
   
-  public static void e(long paramLong, int paramInt)
+  public static void f(long paramLong, int paramInt)
   {
-    if ((paramLong <= 0L) || (paramInt <= 0)) {
+    AppMethodBeat.i(10973);
+    if ((paramLong <= 0L) || (paramInt <= 0))
+    {
+      AppMethodBeat.o(10973);
       return;
     }
-    switch (com.tencent.mm.ab.h.CJ())
+    switch (com.tencent.mm.aa.h.QB())
     {
     default: 
-      a(fXd, paramLong, paramInt);
+      a(hqE, paramLong, paramInt);
+      AppMethodBeat.o(10973);
       return;
     }
-    a(fXe, paramLong, paramInt);
+    a(hqF, paramLong, paramInt);
+    AppMethodBeat.o(10973);
   }
 }
 

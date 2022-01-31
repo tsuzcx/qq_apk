@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMWizardActivity;
 
 final class BindMContactIntroUI$26
@@ -12,7 +13,9 @@ final class BindMContactIntroUI$26
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MMWizardActivity.C(this.fbF, new Intent(this.fbF, BindMContactStatusUI.class));
+    AppMethodBeat.i(13436);
+    MMWizardActivity.J(this.gtw, new Intent(this.gtw, BindMContactStatusUI.class));
+    AppMethodBeat.o(13436);
   }
 }
 

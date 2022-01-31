@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.api;
 
 public abstract interface b$a
 {
-  public abstract b YV();
+  public abstract b asF();
 }
 
 

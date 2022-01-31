@@ -6,10 +6,10 @@ import android.widget.TextView;
 
 final class a$c
 {
-  TextView hrg;
-  ImageView jAT;
-  View jDU;
-  View jDW;
+  TextView jhF;
+  ImageView lKs;
+  View lNs;
+  View lNu;
   
   a$c(a parama) {}
 }

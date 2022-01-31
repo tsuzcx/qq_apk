@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.chatting;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.c;
 
 final class ChatFooterCustom$1
@@ -7,17 +8,21 @@ final class ChatFooterCustom$1
 {
   ChatFooterCustom$1(ChatFooterCustom paramChatFooterCustom) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(30463);
     switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      ChatFooterCustom.a(this.vit);
-      return;
     }
-    ChatFooterCustom.b(this.vit);
+    for (;;)
+    {
+      AppMethodBeat.o(30463);
+      return;
+      ChatFooterCustom.a(this.zxn);
+      AppMethodBeat.o(30463);
+      return;
+      ChatFooterCustom.b(this.zxn);
+    }
   }
 }
 

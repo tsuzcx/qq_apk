@@ -3,29 +3,32 @@ package com.tencent.mm.plugin.profile.ui;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.a;
 import com.tencent.mm.pluginsdk.ui.ProfileItemView;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class ProfileNormalItemView
   extends ProfileItemView
 {
-  private TextView haW;
-  private String mTitle;
-  TextView mTp;
-  CharSequence mYY;
-  View.OnClickListener mYZ;
+  private TextView iJG;
+  String mTitle;
+  View pCA;
+  CharSequence pCy;
+  View.OnClickListener pCz;
+  TextView pvv;
   
   public ProfileNormalItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.ProfileNormalItemView);
-    this.mTitle = paramContext.getString(R.n.ProfileNormalItemView_title);
+    AppMethodBeat.i(23753);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.ProfileNormalItemView);
+    this.mTitle = paramContext.getString(0);
     paramContext.recycle();
+    AppMethodBeat.o(23753);
   }
   
   public ProfileNormalItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -33,52 +36,64 @@ public class ProfileNormalItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean bsP()
+  public final ProfileNormalItemView BH(int paramInt)
   {
-    this.haW.setText(this.mTitle);
-    if (bk.L(this.mYY))
+    AppMethodBeat.i(23755);
+    this.mTitle = getContext().getString(paramInt);
+    AppMethodBeat.o(23755);
+    return this;
+  }
+  
+  public final ProfileNormalItemView BI(int paramInt)
+  {
+    AppMethodBeat.i(23756);
+    this.pCy = getContext().getString(paramInt);
+    AppMethodBeat.o(23756);
+    return this;
+  }
+  
+  public final ProfileNormalItemView BJ(int paramInt)
+  {
+    AppMethodBeat.i(23757);
+    this.pvv.setTextColor(paramInt);
+    AppMethodBeat.o(23757);
+    return this;
+  }
+  
+  public final boolean ccG()
+  {
+    AppMethodBeat.i(23760);
+    this.iJG.setText(this.mTitle);
+    if (bo.aa(this.pCy))
     {
       setVisibility(8);
+      AppMethodBeat.o(23760);
       return false;
     }
     setVisibility(0);
-    this.mTp.setText(this.mYY);
-    setOnClickListener(this.mYZ);
+    this.pvv.setText(this.pCy);
+    setOnClickListener(this.pCz);
+    AppMethodBeat.o(23760);
     return true;
   }
   
   public int getLayout()
   {
-    return R.i.profile_normal_item_layout;
+    return 2130970468;
   }
   
   public final void init()
   {
-    this.haW = ((TextView)findViewById(R.h.contact_normal_item_title));
-    this.mTp = ((TextView)findViewById(R.h.contact_normal_item_summary));
-  }
-  
-  public final ProfileNormalItemView wc(int paramInt)
-  {
-    this.mTitle = getContext().getString(paramInt);
-    return this;
-  }
-  
-  public final ProfileNormalItemView wd(int paramInt)
-  {
-    this.mYY = getContext().getString(paramInt);
-    return this;
-  }
-  
-  public final ProfileNormalItemView we(int paramInt)
-  {
-    this.mTp.setTextColor(paramInt);
-    return this;
+    AppMethodBeat.i(23754);
+    this.iJG = ((TextView)findViewById(2131826859));
+    this.pvv = ((TextView)findViewById(2131826860));
+    this.pCA = findViewById(2131821555);
+    AppMethodBeat.o(23754);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ProfileNormalItemView
  * JD-Core Version:    0.7.0.1
  */

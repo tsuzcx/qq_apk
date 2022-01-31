@@ -1,6 +1,7 @@
 package com.tencent.mm.cache;
 
-import com.tencent.mm.cj.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cl.a;
 import com.tencent.mm.compatible.util.e;
 
 final class ArtistCacheManager$2
@@ -10,7 +11,9 @@ final class ArtistCacheManager$2
   
   public final void run()
   {
-    a.aeI(e.dzC);
+    AppMethodBeat.i(116206);
+    a.avA(e.esI);
+    AppMethodBeat.o(116206);
   }
 }
 

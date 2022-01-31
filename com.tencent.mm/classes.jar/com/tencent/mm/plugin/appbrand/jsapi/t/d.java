@@ -1,11 +1,29 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import org.json.JSONObject;
+
 public final class d
-  implements c.a
+  extends a
 {
-  public final c.b a(c.c paramc)
+  public static final int CTRL_INDEX = 34;
+  public static final String NAME = "pauseVoice";
+  
+  protected final void a(c paramc, com.tencent.mm.plugin.appbrand.jsapi.c paramc1, JSONObject paramJSONObject, int paramInt)
   {
-    return new e(paramc);
+    AppMethodBeat.i(145916);
+    paramc = paramc.aFY();
+    ab.i("MicroMsg.JsApiPausePlayVoice", "pause:%s", new Object[] { paramc });
+    if (paramc.isSuccess())
+    {
+      paramc1.h(paramInt, "ok");
+      AppMethodBeat.o(145916);
+      return;
+    }
+    ab.e("MicroMsg.JsApiPausePlayVoice", "pause fail %s", new Object[] { paramc });
+    paramc1.h(paramInt, "fail:" + paramc.errMsg);
+    AppMethodBeat.o(145916);
   }
 }
 

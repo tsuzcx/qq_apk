@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/jr" android:background="@drawable/at6" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:background="@drawable/akz" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_height="wrap_content" android:minHeight="50.0dip" style="@style/kt">
-        <ImageButton android:id="@id/br2" android:background="@null" android:paddingTop="3.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/hj" android:minWidth="0.0dip" android:contentDescription="@string/afu" style="@style/ms" />
-    </LinearLayout>
+    <ScrollView style="@style/ni">
+        <LinearLayout style="@style/l0">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:paddingBottom="80.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:layout_gravity="center_horizontal" android:id="@id/eeq" android:layout_width="@dimen/l3" android:layout_height="@dimen/l3" android:src="@raw/success_icon" />
+                    <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" android:text="@string/d4b" />
+                    <TextView android:textSize="@dimen/l7" android:textColor="@color/w_" android:gravity="center" android:id="@id/os" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" />
+                </LinearLayout>
+                <Button android:id="@id/eer" android:visibility="gone" android:layout_marginBottom="@dimen/m1" android:text="@string/d4a" style="@style/nq" />
+                <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center" android:id="@id/lt" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

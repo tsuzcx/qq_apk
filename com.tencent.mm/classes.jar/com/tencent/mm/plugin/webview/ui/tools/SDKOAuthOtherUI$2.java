@@ -1,16 +1,21 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.f.a;
+import com.tencent.mm.plugin.webview.model.ai;
 
 final class SDKOAuthOtherUI$2
-  implements View.OnClickListener
+  implements Runnable
 {
-  SDKOAuthOtherUI$2(SDKOAuthOtherUI paramSDKOAuthOtherUI, int paramInt1, int paramInt2) {}
+  SDKOAuthOtherUI$2(SDKOAuthOtherUI paramSDKOAuthOtherUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    SDKOAuthOtherUI.a(this.rlU, this.rlP, this.rlV);
+    AppMethodBeat.i(153183);
+    a.vtM.a(SDKOAuthOtherUI.a(this.vbx), SDKOAuthOtherUI.b(this.vbx), 0, SDKOAuthOtherUI.c(this.vbx), 4, 1, 0);
+    SDKOAuthOtherUI.d(this.vbx).JU(-2);
+    this.vbx.finish();
+    AppMethodBeat.o(153183);
   }
 }
 

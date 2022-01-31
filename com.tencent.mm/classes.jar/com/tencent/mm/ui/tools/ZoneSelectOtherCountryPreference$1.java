@@ -2,6 +2,7 @@ package com.tencent.mm.ui.tools;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ZoneSelectOtherCountryPreference$1
   implements View.OnClickListener
@@ -10,9 +11,11 @@ final class ZoneSelectOtherCountryPreference$1
   
   public final void onClick(View paramView)
   {
-    if (ZoneSelectOtherCountryPreference.a(this.wfH) != null) {
-      ZoneSelectOtherCountryPreference.a(this.wfH).onClick();
+    AppMethodBeat.i(35019);
+    if (ZoneSelectOtherCountryPreference.a(this.Ayx) != null) {
+      ZoneSelectOtherCountryPreference.a(this.Ayx).onClick();
     }
+    AppMethodBeat.o(35019);
   }
 }
 

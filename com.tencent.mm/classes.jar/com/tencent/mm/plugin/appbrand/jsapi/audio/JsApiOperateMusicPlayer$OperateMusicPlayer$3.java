@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class JsApiOperateMusicPlayer$OperateMusicPlayer$3
   implements Runnable
@@ -9,16 +10,18 @@ final class JsApiOperateMusicPlayer$OperateMusicPlayer$3
   
   public final void run()
   {
-    y.i("MicroMsg.JsApiOperateMusicPlayer", "pause ok");
-    this.giR.action = -1;
-    this.giR.error = false;
-    this.giR.errorMsg = "";
-    JsApiOperateMusicPlayer.OperateMusicPlayer.e(this.giR);
+    AppMethodBeat.i(130721);
+    ab.i("MicroMsg.JsApiOperateMusicPlayer", "pause ok");
+    this.hCl.action = -1;
+    this.hCl.error = false;
+    this.hCl.errorMsg = "";
+    JsApiOperateMusicPlayer.OperateMusicPlayer.e(this.hCl);
+    AppMethodBeat.o(130721);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiOperateMusicPlayer.OperateMusicPlayer.3
  * JD-Core Version:    0.7.0.1
  */

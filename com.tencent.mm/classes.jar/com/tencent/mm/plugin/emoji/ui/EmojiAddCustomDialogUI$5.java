@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EmojiAddCustomDialogUI$5
   implements DialogInterface.OnClickListener
@@ -10,8 +11,10 @@ final class EmojiAddCustomDialogUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jcr.setResult(3);
-    this.jcr.finish();
+    AppMethodBeat.i(53274);
+    this.lld.setResult(3);
+    this.lld.finish();
+    AppMethodBeat.o(53274);
   }
 }
 

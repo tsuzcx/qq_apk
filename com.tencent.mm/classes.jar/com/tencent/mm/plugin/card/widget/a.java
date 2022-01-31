@@ -8,145 +8,146 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.b;
-import com.tencent.mm.plugin.card.a.c;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.m;
-import com.tencent.mm.protocal.c.mg;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public abstract class a
   implements g
 {
-  protected LayoutInflater Lu;
   private final String TAG = "MicroMsg.CardWidgetCouponBase";
-  protected View.OnClickListener fvj;
-  protected b ikk;
-  protected View izw;
-  protected ImageView izx;
-  protected TextView izy;
+  protected View.OnClickListener gMO;
+  protected TextView iVS;
+  protected View kCC;
+  protected ImageView kCD;
+  protected b klk;
   protected Context mContext;
+  protected LayoutInflater mInflater;
   
   public a(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private void aqU()
+  private void bfJ()
   {
-    if ((this.ikk == null) || (this.ikk.azx() == null))
-    {
-      y.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
-      return;
-    }
     int i;
-    if (!bk.bl(this.ikk.azx().ilp))
+    if (!bo.isNullOrNil(this.klk.bbd().kmm))
     {
-      i = this.mContext.getResources().getDimensionPixelSize(a.b.card_detail_ui_logo_height);
-      if ((!this.ikk.azd()) || (!this.ikk.azg())) {
-        break label167;
+      i = this.mContext.getResources().getDimensionPixelSize(2131428165);
+      if ((!this.klk.baJ()) || (!this.klk.baM())) {
+        break label133;
       }
-      i = this.mContext.getResources().getDimensionPixelSize(a.b.card_coupon_widget_logo_size);
+      i = this.mContext.getResources().getDimensionPixelSize(2131428163);
     }
     for (;;)
     {
       if (i > 0) {
-        m.a(this.izx, this.ikk.azx().ilp, i, a.c.my_card_package_defaultlogo, true);
+        m.a(this.kCD, this.klk.bbd().kmm, i, 2130839758, true);
       }
-      if (!bk.bl(this.ikk.azx().imA)) {
-        this.izy.setText(this.ikk.azx().imA);
+      if (!bo.isNullOrNil(this.klk.bbd().knw)) {
+        this.iVS.setText(this.klk.bbd().knw);
       }
-      aDl();
       return;
-      label167:
-      if ((this.ikk.azd()) && (this.ikk.azf())) {
-        i = this.mContext.getResources().getDimensionPixelSize(a.b.card_member_widget_logo_size);
-      } else if ((this.ikk.azd()) && (this.ikk.azh())) {
-        i = this.mContext.getResources().getDimensionPixelSize(a.b.card_ticket_widget_logo_size);
-      } else if (this.ikk.azj()) {
+      label133:
+      if ((this.klk.baJ()) && (this.klk.baL())) {
+        i = this.mContext.getResources().getDimensionPixelSize(2131428189);
+      } else if ((this.klk.baJ()) && (this.klk.baN())) {
+        i = this.mContext.getResources().getDimensionPixelSize(2131428201);
+      } else if (this.klk.baP()) {
         i = 0;
       }
     }
   }
   
-  public void a(ShapeDrawable paramShapeDrawable) {}
-  
-  protected final View aDj()
+  private void refreshView()
   {
-    return this.izw;
+    if ((this.klk == null) || (this.klk.bbd() == null))
+    {
+      ab.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
+      return;
+    }
+    bfJ();
+    bfI();
   }
   
-  protected abstract void aDk();
+  public void a(ShapeDrawable paramShapeDrawable) {}
   
-  protected abstract void aDl();
+  protected final View bfG()
+  {
+    return this.kCC;
+  }
+  
+  protected abstract void bfH();
+  
+  protected abstract void bfI();
   
   public final void d(b paramb)
   {
-    this.ikk = paramb;
-    aqU();
+    this.klk = paramb;
+    refreshView();
   }
   
-  public void eD(boolean paramBoolean) {}
+  public void gc(boolean paramBoolean) {}
   
-  public void eE(boolean paramBoolean) {}
+  public void gd(boolean paramBoolean) {}
   
-  public final View gv()
+  public final View hv()
   {
-    if ((this.ikk == null) || (this.ikk.azx() == null))
+    if ((this.klk == null) || (this.klk.bbd() == null))
     {
-      y.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
+      ab.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
       return null;
     }
-    this.Lu = ((LayoutInflater)this.mContext.getSystemService("layout_inflater"));
-    LayoutInflater localLayoutInflater = this.Lu;
+    this.mInflater = ((LayoutInflater)this.mContext.getSystemService("layout_inflater"));
+    LayoutInflater localLayoutInflater = this.mInflater;
     int i;
-    if (!this.ikk.azg()) {
-      if (this.ikk.azh()) {
-        i = a.e.card_ticket;
+    if (!this.klk.baM()) {
+      if (this.klk.baN()) {
+        i = 2130969008;
       }
     }
     for (;;)
     {
-      this.izw = localLayoutInflater.inflate(i, null);
-      this.izx = ((ImageView)this.izw.findViewById(a.d.app_logo));
-      this.izy = ((TextView)this.izw.findViewById(a.d.app_name));
-      aDk();
-      aqU();
-      return this.izw;
-      if (this.ikk.azf()) {
-        i = a.e.card_membership;
-      } else if (this.ikk.azi()) {
-        i = a.e.card_enterpricecash;
-      } else if (this.ikk.azj()) {
-        i = a.e.card_invoice;
+      this.kCC = localLayoutInflater.inflate(i, null);
+      this.kCD = ((ImageView)this.kCC.findViewById(2131822033));
+      this.iVS = ((TextView)this.kCC.findViewById(2131821472));
+      bfH();
+      refreshView();
+      return this.kCC;
+      if (this.klk.baL()) {
+        i = 2130968970;
+      } else if (this.klk.baO()) {
+        i = 2130968931;
+      } else if (this.klk.baP()) {
+        i = 2130968960;
       } else {
-        i = a.e.card_coupon;
+        i = 2130968924;
       }
     }
   }
   
   public final void i(b paramb)
   {
-    this.ikk = paramb;
+    this.klk = paramb;
   }
-  
-  public void ph(int paramInt) {}
   
   public final void release()
   {
-    this.fvj = null;
+    this.gMO = null;
     this.mContext = null;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.fvj = paramOnClickListener;
+    this.gMO = paramOnClickListener;
   }
   
-  public void w(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void tw(int paramInt) {}
+  
+  public void x(boolean paramBoolean1, boolean paramBoolean2) {}
 }
 
 

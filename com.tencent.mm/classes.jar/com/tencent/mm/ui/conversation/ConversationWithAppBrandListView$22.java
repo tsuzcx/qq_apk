@@ -3,6 +3,7 @@ package com.tencent.mm.ui.conversation;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ConversationWithAppBrandListView$22
   implements AdapterView.OnItemClickListener
@@ -11,19 +12,24 @@ final class ConversationWithAppBrandListView$22
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.vSc != null) {
-      this.vSc.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    AppMethodBeat.i(34290);
+    if (this.AjO != null) {
+      this.AjO.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
-    if (!ConversationWithAppBrandListView.b(this.vRV)) {}
-    while (this.vRV.getFirstVisiblePosition() != 0) {
+    if (!ConversationWithAppBrandListView.b(this.AjJ))
+    {
+      AppMethodBeat.o(34290);
       return;
     }
-    this.vRV.A(500L, 8);
+    if (this.AjJ.getFirstVisiblePosition() == 0) {
+      this.AjJ.L(500L, 8);
+    }
+    AppMethodBeat.o(34290);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.ConversationWithAppBrandListView.22
  * JD-Core Version:    0.7.0.1
  */

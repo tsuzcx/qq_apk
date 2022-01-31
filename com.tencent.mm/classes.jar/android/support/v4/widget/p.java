@@ -1,13 +1,35 @@
 package android.support.v4.widget;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
+import android.content.Context;
+import android.view.animation.Interpolator;
+import android.widget.OverScroller;
 
-public abstract interface p
+@Deprecated
+public final class p
 {
-  public abstract void setSupportButtonTintList(ColorStateList paramColorStateList);
+  public OverScroller jR;
   
-  public abstract void setSupportButtonTintMode(PorterDuff.Mode paramMode);
+  private p(Context paramContext, Interpolator paramInterpolator)
+  {
+    if (paramInterpolator != null) {}
+    for (paramContext = new OverScroller(paramContext, paramInterpolator);; paramContext = new OverScroller(paramContext))
+    {
+      this.jR = paramContext;
+      return;
+    }
+  }
+  
+  @Deprecated
+  public static p a(Context paramContext, Interpolator paramInterpolator)
+  {
+    return new p(paramContext, paramInterpolator);
+  }
+  
+  @Deprecated
+  public final void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    this.jR.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+  }
 }
 
 

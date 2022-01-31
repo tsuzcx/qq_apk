@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fav.a.b;
+
 final class FavoriteFileDetailUI$6
   implements Runnable
 {
@@ -7,7 +10,9 @@ final class FavoriteFileDetailUI$6
   
   public final void run()
   {
-    FavoriteFileDetailUI.r(this.kfu);
+    AppMethodBeat.i(74328);
+    b.o(FavoriteFileDetailUI.b(this.mAf));
+    AppMethodBeat.o(74328);
   }
 }
 

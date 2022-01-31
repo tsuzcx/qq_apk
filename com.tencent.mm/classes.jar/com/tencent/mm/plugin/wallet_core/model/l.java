@@ -1,33 +1,46 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.util.Base64;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
-import java.security.PublicKey;
-import javax.crypto.Cipher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class l
 {
-  static l qvW;
-  private PublicKey qvX = null;
+  public String content;
+  public String title;
+  public String uia;
+  public List<l.a> uib;
   
-  public final String aY(byte[] paramArrayOfByte)
+  public static l aD(JSONObject paramJSONObject)
   {
-    try
+    AppMethodBeat.i(46765);
+    if (paramJSONObject == null)
     {
-      this.qvX = com.tencent.mm.a.l.m(ae.getContext(), "lbs_rsa_public_key.pem");
-      y.i("MicroMsg.LocationEncrypt", "getPemPublickKeyFromAsset23 done2");
-      PublicKey localPublicKey = this.qvX;
-      Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-      localCipher.init(1, localPublicKey);
-      paramArrayOfByte = new String(Base64.encode(localCipher.doFinal(paramArrayOfByte), 0));
-      return paramArrayOfByte;
+      AppMethodBeat.o(46765);
+      return null;
     }
-    catch (Exception paramArrayOfByte)
+    l locall = new l();
+    locall.title = paramJSONObject.optString("title");
+    locall.content = paramJSONObject.optString("content");
+    locall.uia = paramJSONObject.optString("content_not_enough");
+    locall.uib = new ArrayList();
+    paramJSONObject = paramJSONObject.optJSONArray("show_infos");
+    if (paramJSONObject != null)
     {
-      y.e("MicroMsg.LocationEncrypt", "encry publicKey error %s", new Object[] { paramArrayOfByte.getMessage() });
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        l.a locala = l.a.aE(paramJSONObject.optJSONObject(i));
+        if (locala != null) {
+          locall.uib.add(locala);
+        }
+        i += 1;
+      }
     }
-    return "";
+    AppMethodBeat.o(46765);
+    return locall;
   }
 }
 

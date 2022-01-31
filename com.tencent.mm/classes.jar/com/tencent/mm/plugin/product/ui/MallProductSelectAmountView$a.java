@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.product.ui;
 
 public abstract interface MallProductSelectAmountView$a
 {
-  public abstract void dC(int paramInt1, int paramInt2);
+  public abstract void fi(int paramInt1, int paramInt2);
   
-  public abstract void ex(int paramInt);
+  public abstract void gz(int paramInt);
 }
 
 

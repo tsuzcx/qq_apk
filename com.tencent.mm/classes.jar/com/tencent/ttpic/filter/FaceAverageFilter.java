@@ -6,40 +6,48 @@ import com.tencent.filter.m.f;
 import com.tencent.filter.m.i;
 import com.tencent.filter.m.k;
 import com.tencent.filter.m.n;
-import com.tencent.ttpic.model.FaceActionCounter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.PTDetectInfo;
+import com.tencent.ttpic.gles.GlUtil.DRAW_MODE;
+import com.tencent.ttpic.model.FaceImageLayer;
 import com.tencent.ttpic.model.FaceItem;
-import com.tencent.ttpic.model.HandActionCounter;
-import com.tencent.ttpic.model.VideoMaterial.FaceImageLayer;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceDetectUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
-import com.tencent.ttpic.util.VideoFilterUtil.DRAW_MODE;
 import com.tencent.ttpic.util.VideoMaterialUtil;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class FaceAverageFilter
   extends VideoFilterBase
 {
   private static final String FRAGMENT_SHADER = " precision mediump float;\n varying lowp vec2 textureCoordinate;\n varying lowp vec2 textureCoordinate2;\n varying lowp vec2 textureCoordinate3;\n uniform sampler2D inputImageTexture;\n uniform sampler2D inputImageTexture2;\n uniform sampler2D inputImageTexture3;\n uniform sampler2D inputImageTexture4;\n \n uniform int drawTypeFragment;\n uniform float alphaBlend;\n \n void main(void) {\n     \n     vec4 modelColor = texture2D(inputImageTexture4, textureCoordinate);\n     vec4 userColor  = texture2D(inputImageTexture2, textureCoordinate2);\n     vec4 grayColor  = texture2D(inputImageTexture3, textureCoordinate3);\n     \n     \n     float xAlpha = alphaBlend + (1.0 - alphaBlend) * grayColor.r;\n     vec3 resultColor = userColor.rgb * (1.0 - xAlpha) + modelColor.rgb * xAlpha;\n     gl_FragColor = vec4(resultColor, 1.0);\n     \n }";
   private static final String VERTEX_SHADER = " attribute vec4 position;\n attribute vec4 inputTextureCoordinate;\n varying vec2 textureCoordinate;\n \n attribute vec4 inputTextureCoordinate2;\n varying vec2 textureCoordinate2;\n \n attribute vec4 inputTextureCoordinate3;\n varying vec2 textureCoordinate3;\n \n uniform int drawTypeVertex;\n \n void main(void) {\n     gl_Position = position;\n     textureCoordinate = inputTextureCoordinate.xy;\n     textureCoordinate2 = inputTextureCoordinate2.xy;\n     textureCoordinate3 = inputTextureCoordinate3.xy;\n }";
-  private float[] faceVertices = new float[1104];
-  private float[] grayVertices = new float[1104];
-  private VideoMaterial.FaceImageLayer mFaceLayer = null;
-  private FaceItem mItem = null;
-  private Bitmap maskBitmap = null;
-  private Bitmap materialBitmap = null;
-  private float[] positions = new float[1104];
-  private float[] texVertices = new float[1104];
-  private int userTex = 0;
+  private float[] faceVertices;
+  private float[] grayVertices;
+  private FaceImageLayer mFaceLayer;
+  private FaceItem mItem;
+  private Bitmap maskBitmap;
+  private Bitmap materialBitmap;
+  private float[] positions;
+  private float[] texVertices;
+  private int userTex;
   
-  public FaceAverageFilter(String paramString, VideoMaterial.FaceImageLayer paramFaceImageLayer)
+  public FaceAverageFilter(String paramString, FaceImageLayer paramFaceImageLayer)
   {
     super(" attribute vec4 position;\n attribute vec4 inputTextureCoordinate;\n varying vec2 textureCoordinate;\n \n attribute vec4 inputTextureCoordinate2;\n varying vec2 textureCoordinate2;\n \n attribute vec4 inputTextureCoordinate3;\n varying vec2 textureCoordinate3;\n \n uniform int drawTypeVertex;\n \n void main(void) {\n     gl_Position = position;\n     textureCoordinate = inputTextureCoordinate.xy;\n     textureCoordinate2 = inputTextureCoordinate2.xy;\n     textureCoordinate3 = inputTextureCoordinate3.xy;\n }", " precision mediump float;\n varying lowp vec2 textureCoordinate;\n varying lowp vec2 textureCoordinate2;\n varying lowp vec2 textureCoordinate3;\n uniform sampler2D inputImageTexture;\n uniform sampler2D inputImageTexture2;\n uniform sampler2D inputImageTexture3;\n uniform sampler2D inputImageTexture4;\n \n uniform int drawTypeFragment;\n uniform float alphaBlend;\n \n void main(void) {\n     \n     vec4 modelColor = texture2D(inputImageTexture4, textureCoordinate);\n     vec4 userColor  = texture2D(inputImageTexture2, textureCoordinate2);\n     vec4 grayColor  = texture2D(inputImageTexture3, textureCoordinate3);\n     \n     \n     float xAlpha = alphaBlend + (1.0 - alphaBlend) * grayColor.r;\n     vec3 resultColor = userColor.rgb * (1.0 - xAlpha) + modelColor.rgb * xAlpha;\n     gl_FragColor = vec4(resultColor, 1.0);\n     \n }");
+    AppMethodBeat.i(82311);
+    this.mItem = null;
+    this.mFaceLayer = null;
+    this.materialBitmap = null;
+    this.maskBitmap = null;
+    this.userTex = 0;
+    this.positions = new float[1104];
+    this.faceVertices = new float[1104];
+    this.texVertices = new float[1104];
+    this.grayVertices = new float[1104];
     this.dataPath = paramString;
     this.mFaceLayer = paramFaceImageLayer;
     this.materialBitmap = FaceOffUtil.getFaceBitmap(paramString + File.separator + this.mFaceLayer.imagePath);
@@ -47,12 +55,14 @@ public class FaceAverageFilter
     for (this.maskBitmap = FaceOffUtil.getFaceBitmap(paramString + File.separator + this.mFaceLayer.faceMaskImagePath);; this.maskBitmap = FaceOffUtil.getGrayBitmap(this.mFaceLayer.featureType))
     {
       initParams();
+      AppMethodBeat.o(82311);
       return;
     }
   }
   
   private List<PointF> getVertexCoords(List<PointF> paramList1, List<PointF> paramList2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, float[] paramArrayOfFloat)
   {
+    AppMethodBeat.i(82315);
     paramList1 = VideoMaterialUtil.copyList(paramList1);
     paramList2 = VideoMaterialUtil.copyList(paramList2);
     PointF localPointF1 = new PointF(((PointF)paramList2.get(64)).x, ((PointF)paramList2.get(64)).y);
@@ -161,21 +171,33 @@ public class FaceAverageFilter
       ((PointF)((List)localObject).get(paramInt1)).y = (((PointF)((List)localObject).get(paramInt1)).y * paramFloat + paramList1.y);
       paramInt1 += 1;
     }
+    AppMethodBeat.o(82315);
     return localObject;
   }
   
   float clampf(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return Math.max(paramFloat2, Math.min(paramFloat3, paramFloat1));
+    AppMethodBeat.i(82316);
+    paramFloat1 = Math.max(paramFloat2, Math.min(paramFloat3, paramFloat1));
+    AppMethodBeat.o(82316);
+    return paramFloat1;
   }
   
   public void initAttribParams()
   {
+    AppMethodBeat.i(82314);
     super.initAttribParams();
     List localList = FaceOffUtil.genPointsDouble(this.mFaceLayer.imageFacePoint);
     FaceDetectUtil.facePointf83to90(localList);
-    addAttribParam("inputTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(FaceOffUtil.getFullCoords(localList, 3.0F), this.materialBitmap.getWidth(), this.materialBitmap.getHeight(), this.texVertices));
-    if (this.mFaceLayer.faceMaskImagePath == null) {}
+    localList = FaceOffUtil.getFullCoords(localList, 3.0F);
+    if (this.materialBitmap != null)
+    {
+      addAttribParam("inputTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(localList, this.materialBitmap.getWidth(), this.materialBitmap.getHeight(), this.texVertices));
+      if (this.mFaceLayer.faceMaskImagePath != null) {
+        break label181;
+      }
+    }
+    label181:
     for (localList = FaceOffUtil.getGrayCoords(FaceOffUtil.FEATURE_TYPE.CRAZY_FACE);; localList = FaceOffUtil.genPointsDouble(this.mFaceLayer.faceMaskFacePoint))
     {
       FaceDetectUtil.facePointf83to90(localList);
@@ -184,20 +206,25 @@ public class FaceAverageFilter
         addAttribParam("inputTextureCoordinate3", FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(localList, this.maskBitmap.getWidth(), this.maskBitmap.getHeight(), this.grayVertices));
       }
       addAttribParam("inputTextureCoordinate2", this.faceVertices);
-      setDrawMode(VideoFilterUtil.DRAW_MODE.TRIANGLES);
+      setDrawMode(GlUtil.DRAW_MODE.TRIANGLES);
       setCoordNum(552);
+      AppMethodBeat.o(82314);
       return;
+      addAttribParam("inputTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(localList, -1, -1, this.texVertices));
+      break;
     }
   }
   
   public void initParams()
   {
+    AppMethodBeat.i(82312);
     addParam(new m.n("inputImageTexture2", this.userTex, 33986));
     addParam(new m.k("inputImageTexture3", this.maskBitmap, 33987, true));
     addParam(new m.k("inputImageTexture4", this.materialBitmap, 33988, true));
     addParam(new m.f("alphaBlend", (float)this.mFaceLayer.blendAlpha));
     addParam(new m.i("drawTypeFragment", 1));
     addParam(new m.i("drawTypeVertex", 1));
+    AppMethodBeat.o(82312);
   }
   
   public void setUserTexture(int paramInt)
@@ -207,22 +234,30 @@ public class FaceAverageFilter
   
   float smootherstep(float paramFloat1, float paramFloat2, float paramFloat3)
   {
+    AppMethodBeat.i(82317);
     paramFloat1 = clampf((paramFloat3 - paramFloat1) / (paramFloat2 - paramFloat1), 0.0F, 1.0F);
+    AppMethodBeat.o(82317);
     return (paramFloat1 * (6.0F * paramFloat1 - 15.0F) + 10.0F) * (paramFloat1 * paramFloat1 * paramFloat1);
   }
   
-  public void updatePreview(List<PointF> paramList1, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap, List<PointF> paramList2, Map<Integer, HandActionCounter> paramMap1, Set<Integer> paramSet, float paramFloat, long paramLong)
+  public void updatePreview(PTDetectInfo paramPTDetectInfo)
   {
-    if ((paramList1 == null) || (paramList1.size() == 0)) {
+    AppMethodBeat.i(82313);
+    if ((paramPTDetectInfo.facePoints == null) || (paramPTDetectInfo.facePoints.size() == 0))
+    {
+      AppMethodBeat.o(82313);
       return;
     }
     addParam(new m.n("inputImageTexture2", this.userTex, 33986));
-    paramMap = FaceOffUtil.genPointsDouble(this.mFaceLayer.imageFacePoint);
-    FaceDetectUtil.facePointf83to90(paramMap);
-    paramMap = FaceOffUtil.getFullCoords(paramMap, 3.0F);
-    paramList1 = FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramList1), 3.0F);
-    addAttribParam("inputTextureCoordinate2", FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(paramList1, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
-    addAttribParam("position", FaceOffUtil.initFacePositionsFaceAverage(getVertexCoords(paramMap, paramList1, this.materialBitmap.getWidth(), this.materialBitmap.getHeight(), this.width, this.height, (float)this.mFaceLayer.distortionAlpha, paramArrayOfFloat), this.width, this.height, this.positions));
+    List localList1 = FaceOffUtil.genPointsDouble(this.mFaceLayer.imageFacePoint);
+    FaceDetectUtil.facePointf83to90(localList1);
+    localList1 = FaceOffUtil.getFullCoords(localList1, 3.0F);
+    List localList2 = FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramPTDetectInfo.facePoints), 3.0F);
+    addAttribParam("inputTextureCoordinate2", FaceOffUtil.initMaterialFaceTexCoordsFaceAverage(localList2, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
+    if (this.materialBitmap != null) {
+      addAttribParam("position", FaceOffUtil.initFacePositionsFaceAverage(getVertexCoords(localList1, localList2, this.materialBitmap.getWidth(), this.materialBitmap.getHeight(), this.width, this.height, (float)this.mFaceLayer.distortionAlpha, paramPTDetectInfo.faceAngles), this.width, this.height, this.positions));
+    }
+    AppMethodBeat.o(82313);
   }
 }
 

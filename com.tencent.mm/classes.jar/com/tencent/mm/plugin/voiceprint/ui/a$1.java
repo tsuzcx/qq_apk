@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.voiceprint.ui;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$1
   implements Animation.AnimationListener
@@ -11,10 +12,12 @@ final class a$1
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.pNb != null) {
-      this.pNb.bPj();
+    AppMethodBeat.i(26249);
+    if (this.tsV != null) {
+      this.tsV.cLp();
     }
-    y.d("MicroMsg.VoiceViewAnimationHelper", "playTipAnim end");
+    ab.d("MicroMsg.VoiceViewAnimationHelper", "playTipAnim end");
+    AppMethodBeat.o(26249);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

@@ -7,13 +7,15 @@ abstract interface LauncherUI$b
 {
   public abstract void a(HomeUI.FitSystemWindowLayoutView paramFitSystemWindowLayoutView, Rect paramRect, ViewGroup paramViewGroup);
   
-  public abstract boolean cyH();
+  public abstract boolean dBP();
   
-  public abstract void cyJ();
+  public abstract void dBR();
+  
+  public abstract void dBS();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.LauncherUI.b
  * JD-Core Version:    0.7.0.1
  */

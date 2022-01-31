@@ -1,19 +1,16 @@
 package com.tencent.mm.plugin.appbrand.dynamic;
 
-import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mm.h.b.a.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.af;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.collector.CollectSession;
-import com.tencent.mm.plugin.appbrand.dynamic.f.f;
-import com.tencent.mm.plugin.appbrand.i.q;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.appbrand.dynamic.f.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.z.b.d;
 import java.util.Map;
 import junit.framework.Assert;
 
@@ -24,259 +21,230 @@ final class a$a$1
   
   public final void run()
   {
+    AppMethodBeat.i(10642);
     u.i("MicroMsg.IPCInvoke_AttachTo", "ui thread attach", new Object[0]);
-    c localc = this.fTt;
-    String str2 = this.BD;
-    Object localObject2 = this.val$appId;
-    Bundle localBundle = this.fTr;
-    Assert.assertNotNull(str2);
-    if ((!str2.equals(localc.dIX)) && (localc.dIU != null))
-    {
-      localc.cleanup();
-      localc.ahC = false;
-      localc.dIU = null;
-    }
-    localc.dIX = str2;
-    localc.appId = ((String)localObject2);
-    Object localObject1 = "";
+    c localc;
+    String str1;
+    Bundle localBundle;
     long l;
-    if (localBundle != null)
+    label278:
+    Object localObject3;
+    try
     {
+      localc = this.hmU;
+      str3 = this.val$id;
+      str1 = this.val$appId;
+      localBundle = this.hmS;
+      Assert.assertNotNull(str3);
+      if ((!str3.equals(localc.equ)) && (localc.eGt != null))
+      {
+        localc.cleanup();
+        localc.ajS = false;
+        localc.eGt = null;
+      }
+      localc.equ = str3;
+      localc.appId = str1;
+      if (localBundle == null) {
+        break label1155;
+      }
       localObject1 = localBundle.getString("cache_key", "");
-      localc.Db = localBundle.getString("query");
-      localc.fTD = localBundle.getBoolean("is_testing_ui");
+      localc.DK = localBundle.getString("query");
+      localc.hne = localBundle.getBoolean("is_testing_ui");
       localc.mUrl = localBundle.getString("url");
-      localc.fTC = localBundle.getInt("widget_type");
-      localc.fTF = localBundle.getString("search_id");
-      localc.fKV = localBundle.getString("__session_id");
+      localc.hnd = localBundle.getInt("widget_type");
+      localc.hng = localBundle.getString("search_id");
+      localc.mSessionId = localBundle.getString("__session_id");
       l = localBundle.getLong("__on_bind_nano_time");
-      if (!bk.bl(localc.fKV)) {
-        com.tencent.mm.plugin.appbrand.collector.c.a((CollectSession)localBundle.getParcelable("__cost_time_session"));
+      if (bo.isNullOrNil(localc.mSessionId)) {
+        break label1165;
+      }
+      com.tencent.mm.plugin.appbrand.collector.c.a((CollectSession)localBundle.getParcelable("__cost_time_session"));
+    }
+    catch (Exception localException)
+    {
+      String str3;
+      Object localObject1;
+      com.tencent.mm.z.c.e locale;
+      String str2;
+      int k;
+      com.tencent.mm.plugin.appbrand.dynamic.f.b localb;
+      ab.printErrStackTrace("MicroMsg.IPCInvoke_AttachTo", localException, "caught exception", new Object[0]);
+      AppMethodBeat.o(10642);
+      return;
+    }
+    u.i("MicroMsg.DynamicPageViewIPCProxy", "attach(%s, %s)", new Object[] { str3, str1 });
+    int i = 1;
+    int j;
+    if (localc.hnd == 1)
+    {
+      i = 0;
+      if (localc.hnf != null) {
+        break label1150;
+      }
+      localc.hnf = new com.tencent.mm.plugin.appbrand.widget.f();
+      j = 0;
+      localc.hnf.field_id = str3;
+      localc.hnf.field_cacheKey = ((String)localObject1);
+      localc.hnf.field_appId = u.qn(localc.equ);
+      if (localc.eGt != null) {
+        break label1018;
+      }
+      u.i("MicroMsg.DynamicPageViewIPCProxy", "jsbridge is null", new Object[0]);
+      com.tencent.mm.plugin.appbrand.collector.c.bH(localc.mSessionId, "before_init_js_engine");
+      localObject1 = localc.mContext;
+      str1 = localc.equ;
+      localObject3 = k.Bd(str1);
+      if ((localObject3 != null) && (localBundle != null)) {
+        break label953;
+      }
+      ab.w("MicroMsg.WxaWidgetInitializer", "FwContext is null(id : %s)", new Object[] { str1 });
+      localObject1 = null;
+      label394:
+      localc.eGt = ((com.tencent.mm.z.c.e)localObject1);
+      com.tencent.mm.plugin.appbrand.collector.c.bH(localc.mSessionId, "after_init_js_engine");
+      localc.eGt.equ = localc.equ;
+      if ((localc.eGt.eGy instanceof com.tencent.mm.plugin.appbrand.dynamic.e.a))
+      {
+        ((com.tencent.mm.plugin.appbrand.dynamic.e.a)localc.eGt.eGy).setJsExceptionHandler(new c.3(localc));
+        localc.eGt.eGy.a(new c.4(localc));
+      }
+      if (localBundle != null) {
+        localc.v(localBundle.getBundle("__env_args"));
+      }
+      localc.eGt.onStart();
+      if (!localc.hnh) {
+        break label1000;
+      }
+      localc.eGt.a(new com.tencent.mm.plugin.appbrand.dynamic.f.f());
+      label532:
+      u.i("MicroMsg.DynamicPageViewIPCProxy", "before dispatch onCanvasInsertJsEvent", new Object[0]);
+      locale = localc.eGt;
+      str1 = "";
+      localObject1 = "";
+      str2 = "";
+      localObject3 = null;
+      k = 0;
+      i = 0;
+      if (localBundle != null)
+      {
+        k = localBundle.getInt("view_init_width");
+        i = localBundle.getInt("view_init_height");
+        str1 = localBundle.getString("cache_key", "");
+        localObject1 = localBundle.getString("msg_title", "");
+        localObject3 = localBundle.getString("msg_path", "");
+        str2 = com.tencent.luggage.g.h.cg((String)localObject3);
+        localObject3 = com.tencent.luggage.g.h.ch((String)localObject3);
+      }
+      localb = new com.tencent.mm.plugin.appbrand.dynamic.f.b();
+      localb.cacheKey = str1;
+      localb.title = ((String)localObject1);
+      localb.path = str2;
+      localb.hpW = ((Map)localObject3);
+      localb.hpX = k;
+      localb.hpY = i;
+      locale.a(localb, new c.5(localc));
+      u.i("MicroMsg.DynamicPageViewIPCProxy", "after dispatch onCanvasInsertJsEvent", new Object[0]);
+      localObject1 = new af().fB(u.qn(str3));
+      ((af)localObject1).cUl = u.qm(str3);
+      ((af)localObject1).cUh = 8L;
+      localObject1 = ((af)localObject1).fA(str3);
+      ((af)localObject1).cUi = System.currentTimeMillis();
+      ((af)localObject1).fC(at.gU(ah.getContext())).ake();
+      if (l > 0L)
+      {
+        l = (System.nanoTime() - l) / 1000000L;
+        i = 22;
+        if (l > 50L) {
+          break label1168;
+        }
+        i = 0;
       }
     }
     for (;;)
     {
-      u.i("MicroMsg.DynamicPageViewIPCProxy", "attach(%s, %s)", new Object[] { str2, localObject2 });
-      int i = 1;
-      if (localc.fTC == 1)
-      {
-        i = 0;
-        if (localc.fTE != null) {
-          break label1392;
-        }
-        localc.fTE = new com.tencent.mm.plugin.appbrand.widget.g();
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(677L, i, 1L, false);
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(677L, 8L, 1L, false);
+      com.tencent.mm.plugin.appbrand.collector.c.bH(localc.mSessionId, "init_finish");
+      com.tencent.mm.plugin.appbrand.collector.c.print(localc.mSessionId);
+      u.i("MicroMsg.DynamicPageViewIPCProxy", "jsbridge init complete", new Object[0]);
+      label880:
+      localc.ajS = true;
+      if (j != 0) {
+        localc.a(localc.eGt, localc.hnf);
       }
-      label976:
-      label1392:
-      for (int j = 0;; j = i)
+      for (;;)
       {
-        localc.fTE.field_id = str2;
-        localc.fTE.field_cacheKey = ((String)localObject1);
-        localc.fTE.field_appId = u.jy(localc.dIX);
-        if (localc.dIU == null)
-        {
-          u.i("MicroMsg.DynamicPageViewIPCProxy", "jsbridge is null", new Object[0]);
-          com.tencent.mm.plugin.appbrand.collector.c.bf(localc.fKV, "before_init_js_engine");
-          localObject1 = localc.mContext;
-          localObject2 = localc.dIX;
-          Object localObject3 = k.tb((String)localObject2);
-          if ((localObject3 == null) || (localBundle == null)) {
-            y.w("MicroMsg.WxaWidgetInitializer", "FwContext is null(id : %s)", new Object[] { localObject2 });
-          }
-          for (localObject1 = null;; localObject1 = com.tencent.mm.plugin.appbrand.dynamic.h.e.a((Context)localObject1, (WxaWidgetContext)localObject3, new com.tencent.mm.plugin.appbrand.dynamic.d.c.a((String)localObject2, ((WxaWidgetContext)localObject3).afd()), localBundle))
-          {
-            localc.dIU = ((com.tencent.mm.aa.c.e)localObject1);
-            com.tencent.mm.plugin.appbrand.collector.c.bf(localc.fKV, "after_init_js_engine");
-            localc.dIU.dIX = localc.dIX;
-            if (!(localc.dIU.dJa instanceof com.tencent.mm.plugin.appbrand.dynamic.e.a)) {
-              break label631;
-            }
-            localObject1 = (com.tencent.mm.plugin.appbrand.dynamic.e.a)localc.dIU.dJa;
-            localObject2 = new c.3(localc);
-            if (((com.tencent.mm.plugin.appbrand.dynamic.e.a)localObject1).fWr != null) {
-              ((com.tencent.mm.plugin.appbrand.dynamic.e.a)localObject1).fWr.setJsExceptionHandler((com.tencent.mm.plugin.appbrand.i.e)localObject2);
-            }
-            localObject2 = (com.tencent.mm.plugin.appbrand.dynamic.e.a)localc.dIU.dJa;
-            localObject1 = new c.4(localc);
-            localObject2 = ((com.tencent.mm.plugin.appbrand.dynamic.e.a)localObject2).fWr;
-            if (((com.tencent.mm.plugin.appbrand.i.a)localObject2).gIp == null) {
-              break label631;
-            }
-            localObject2 = ((com.tencent.mm.plugin.appbrand.i.a)localObject2).gIp.bza.iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              localObject3 = (com.tencent.mm.d.a.c)((Iterator)localObject2).next();
-              if ((localObject3 instanceof com.tencent.mm.d.a.e)) {
-                ((com.tencent.mm.d.a.e)localObject3).bzl = ((q)localObject1);
-              }
-            }
-            localc.fTE = com.tencent.mm.plugin.appbrand.dynamic.j.b.tl(str2);
-            break;
-            y.i("MicroMsg.WxaWidgetInitializer", "initJsBridge(%s)", new Object[] { localObject2 });
-          }
-          label631:
-          if (localBundle != null) {
-            localc.m(localBundle.getBundle("__env_args"));
-          }
-          localc.dIU.onStart();
-          if (localc.fTG)
-          {
-            localObject1 = localc.dIU;
-            new f();
-            ((com.tencent.mm.aa.c.e)localObject1).CE();
-            u.i("MicroMsg.DynamicPageViewIPCProxy", "before dispatch onCanvasInsertJsEvent", new Object[0]);
-            com.tencent.mm.aa.c.e locale = localc.dIU;
-            localObject2 = "";
-            localObject1 = "";
-            String str1 = "";
-            localObject3 = null;
-            int k = 0;
-            i = 0;
-            if (localBundle != null)
-            {
-              k = localBundle.getInt("view_init_width");
-              i = localBundle.getInt("view_init_height");
-              localObject2 = localBundle.getString("cache_key", "");
-              localObject1 = localBundle.getString("msg_title", "");
-              localObject3 = localBundle.getString("msg_path", "");
-              str1 = com.tencent.luggage.j.g.bi((String)localObject3);
-              localObject3 = com.tencent.luggage.j.g.bj((String)localObject3);
-            }
-            com.tencent.mm.plugin.appbrand.dynamic.f.b localb = new com.tencent.mm.plugin.appbrand.dynamic.f.b();
-            localb.fWw = ((String)localObject2);
-            localb.title = ((String)localObject1);
-            localb.path = str1;
-            localb.fWv = ((Map)localObject3);
-            localb.fWx = k;
-            localb.fWy = i;
-            locale.a(localb, new c.5(localc));
-            u.i("MicroMsg.DynamicPageViewIPCProxy", "after dispatch onCanvasInsertJsEvent", new Object[0]);
-            localObject1 = new r();
-            ((r)localObject1).cjv = u.jy(str2);
-            ((r)localObject1).cjw = u.jx(str2);
-            ((r)localObject1).cjs = 8L;
-            ((r)localObject1).cjr = str2;
-            ((r)localObject1).cjt = System.currentTimeMillis();
-            ((r)localObject1).cjy = aq.fH(ae.getContext());
-            ((r)localObject1).QX();
-            if (l > 0L)
-            {
-              l = (System.nanoTime() - l) / 1000000L;
-              i = 22;
-              if (l > 50L) {
-                break label1089;
-              }
-              i = 0;
-              h.nFQ.a(677L, i, 1L, false);
-              h.nFQ.a(677L, 8L, 1L, false);
-            }
-            com.tencent.mm.plugin.appbrand.collector.c.bf(localc.fKV, "init_finish");
-            com.tencent.mm.plugin.appbrand.collector.c.print(localc.fKV);
-            u.i("MicroMsg.DynamicPageViewIPCProxy", "jsbridge init complete", new Object[0]);
-            localc.ahC = true;
-            if (j == 0) {
-              break label1350;
-            }
-            localc.a(localc.dIU, localc.fTE);
-          }
+        localc.azw();
+        AppMethodBeat.o(10642);
+        return;
+        localc.hnf = com.tencent.mm.plugin.appbrand.dynamic.j.b.Bp(str3);
+        break;
+        label953:
+        ab.i("MicroMsg.WxaWidgetInitializer", "initJsBridge(%s)", new Object[] { str1 });
+        localObject2 = com.tencent.mm.plugin.appbrand.dynamic.h.e.a(localException, (WxaWidgetContext)localObject3, new com.tencent.mm.plugin.appbrand.dynamic.d.c.a(str1, ((WxaWidgetContext)localObject3).azH()), localBundle);
+        break label394;
+        label1000:
+        localc.eGt.b(new g());
+        break label532;
+        label1018:
+        u.i("MicroMsg.DynamicPageViewIPCProxy", "jsbridge not null", new Object[0]);
+        com.tencent.mm.plugin.appbrand.collector.c.zK(localc.mSessionId);
+        if (localBundle != null) {
+          localc.v(localBundle.getBundle("__env_args"));
         }
-        for (;;)
+        localc.eGt.onStart();
+        if (localc.hnh)
         {
-          localc.aeT();
-          return;
-          localObject1 = localc.dIU;
-          new com.tencent.mm.plugin.appbrand.dynamic.f.g();
-          ((com.tencent.mm.aa.c.e)localObject1).CF();
-          break;
-          if (l <= 100L)
-          {
-            i = 1;
-            break label976;
-          }
-          if (l <= 200L)
-          {
-            i = 2;
-            break label976;
-          }
-          if (l <= 300L)
-          {
-            i = 3;
-            break label976;
-          }
-          if (l <= 400L)
-          {
-            i = 4;
-            break label976;
-          }
-          if (l <= 500L)
-          {
-            i = 5;
-            break label976;
-          }
-          if (l <= 600L)
-          {
-            i = 6;
-            break label976;
-          }
-          if (l <= 1000L)
-          {
-            i = 17;
-            break label976;
-          }
-          if (l <= 1500L)
-          {
-            i = 18;
-            break label976;
-          }
-          if (l <= 2000L)
-          {
-            i = 19;
-            break label976;
-          }
-          if (l <= 2500L)
-          {
-            i = 20;
-            break label976;
-          }
-          if (l > 3000L) {
-            break label976;
-          }
-          i = 21;
-          break label976;
-          u.i("MicroMsg.DynamicPageViewIPCProxy", "jsbridge not null", new Object[0]);
-          com.tencent.mm.plugin.appbrand.collector.c.rU(localc.fKV);
-          if (localBundle != null) {
-            localc.m(localBundle.getBundle("__env_args"));
-          }
-          localc.dIU.onStart();
-          if (localc.fTG)
-          {
-            localObject1 = localc.dIU;
-            new f();
-            ((com.tencent.mm.aa.c.e)localObject1).CE();
-            break label1035;
-          }
-          localObject1 = localc.dIU;
-          new com.tencent.mm.plugin.appbrand.dynamic.f.g();
-          ((com.tencent.mm.aa.c.e)localObject1).CF();
-          break label1035;
-          if (localc.fTD)
-          {
-            localc.fTE.field_data = localBundle.getString("init_data");
-            localc.a(localc.dIU, localc.fTE);
-          }
+          localc.eGt.a(new com.tencent.mm.plugin.appbrand.dynamic.f.f());
+          break label880;
+        }
+        localc.eGt.b(new g());
+        break label880;
+        if (localc.hne)
+        {
+          localc.hnf.field_data = localBundle.getString("init_data");
+          localc.a(localc.eGt, localc.hnf);
         }
       }
-      label1035:
-      label1089:
-      label1350:
+      label1150:
+      j = i;
+      break label278;
+      label1155:
       l = 0L;
+      Object localObject2 = "";
+      break;
+      label1165:
+      break;
+      label1168:
+      if (l <= 100L) {
+        i = 1;
+      } else if (l <= 200L) {
+        i = 2;
+      } else if (l <= 300L) {
+        i = 3;
+      } else if (l <= 400L) {
+        i = 4;
+      } else if (l <= 500L) {
+        i = 5;
+      } else if (l <= 600L) {
+        i = 6;
+      } else if (l <= 1000L) {
+        i = 17;
+      } else if (l <= 1500L) {
+        i = 18;
+      } else if (l <= 2000L) {
+        i = 19;
+      } else if (l <= 2500L) {
+        i = 20;
+      } else if (l <= 3000L) {
+        i = 21;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.a.a.1
  * JD-Core Version:    0.7.0.1
  */

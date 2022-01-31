@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoipBigIconButton$1
   implements View.OnTouchListener
@@ -13,19 +14,21 @@ final class VoipBigIconButton$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(4852);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(4852);
       return false;
-      VoipBigIconButton.b(this.pXm).setBackgroundDrawable(VoipBigIconButton.a(this.pXm));
-      VoipBigIconButton.b(this.pXm).setImageDrawable(VoipBigIconButton.c(this.pXm));
-      VoipBigIconButton.d(this.pXm).setTextColor(-855638017);
+      VoipBigIconButton.b(this.tCP).setBackgroundDrawable(VoipBigIconButton.a(this.tCP));
+      VoipBigIconButton.b(this.tCP).setImageDrawable(VoipBigIconButton.c(this.tCP));
+      VoipBigIconButton.d(this.tCP).setTextColor(-855638017);
       continue;
-      VoipBigIconButton.b(this.pXm).setBackgroundDrawable(VoipBigIconButton.e(this.pXm));
-      VoipBigIconButton.b(this.pXm).setImageDrawable(VoipBigIconButton.f(this.pXm));
-      VoipBigIconButton.d(this.pXm).setTextColor(-1);
+      VoipBigIconButton.b(this.tCP).setBackgroundDrawable(VoipBigIconButton.e(this.tCP));
+      VoipBigIconButton.b(this.tCP).setImageDrawable(VoipBigIconButton.f(this.tCP));
+      VoipBigIconButton.d(this.tCP).setTextColor(-1);
     }
   }
 }

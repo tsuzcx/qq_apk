@@ -6,12 +6,12 @@ import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 
 final class IPCallPackageUI$a$a
 {
-  TextView fdt;
-  TextView gaI;
-  CdnImageView lxk;
-  TextView lxl;
-  TextView lxm;
-  Button lxn;
+  TextView gve;
+  TextView hsI;
+  Button nUA;
+  CdnImageView nUx;
+  TextView nUy;
+  TextView nUz;
   
   private IPCallPackageUI$a$a(IPCallPackageUI.a parama) {}
 }

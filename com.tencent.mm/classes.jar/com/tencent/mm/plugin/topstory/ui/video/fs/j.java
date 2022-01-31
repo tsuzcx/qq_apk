@@ -4,6 +4,7 @@ import android.graphics.Point;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 
 public final class j
@@ -14,17 +15,19 @@ public final class j
     super(paramView, paramb);
   }
   
-  public final void bNY()
+  public final void cJL()
   {
-    if (this.pHp == null)
+    AppMethodBeat.i(2012);
+    if (this.tkK == null)
     {
-      this.pHp = new e(this.pEP.bfn(), this.pEP, this);
-      this.pHp.setOnlyFS(true);
-      this.pHq.removeAllViews();
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.pEP.bNz().x, this.pEP.bNz().y);
-      this.pHq.addView(this.pHp, localLayoutParams);
+      this.tkK = new k(this.tim.bMN(), this.tim, this);
+      this.tkK.setOnlyFS(true);
+      this.tkL.removeAllViews();
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.tim.cJi().x, this.tim.cJi().y);
+      this.tkL.addView(this.tkK, localLayoutParams);
     }
-    this.pHp.a(this.pDy, bNr());
+    this.tkK.a(this.tfm, cJb());
+    AppMethodBeat.o(2012);
   }
 }
 

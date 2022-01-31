@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.welab.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.welab.c.a.a;
-import com.tencent.mm.plugin.welab.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.welab.a.a.b;
+import com.tencent.mm.plugin.welab.d;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 final class WelabAppInfoUI$3
@@ -14,38 +15,40 @@ final class WelabAppInfoUI$3
   
   public final void onClick(View paramView)
   {
-    y.i("WelabAppInfoUI", "open func " + WelabAppInfoUI.b(this.rEL));
-    paramView = com.tencent.mm.plugin.welab.b.chc();
-    WelabAppInfoUI localWelabAppInfoUI = this.rEL;
-    String str = WelabAppInfoUI.b(this.rEL);
-    com.tencent.mm.plugin.welab.a.a.b localb = (com.tencent.mm.plugin.welab.a.a.b)paramView.rEs.get(str);
+    AppMethodBeat.i(80601);
+    ab.i("WelabAppInfoUI", "open func " + WelabAppInfoUI.b(this.vvu));
+    paramView = com.tencent.mm.plugin.welab.a.dhl();
+    WelabAppInfoUI localWelabAppInfoUI = this.vvu;
+    String str = WelabAppInfoUI.b(this.vvu);
+    b localb = (b)paramView.vuU.get(str);
     if (localb != null)
     {
-      y.i("WelabMgr", "use custome opener to open " + str);
-      localb.f(localWelabAppInfoUI, str);
+      ab.i("WelabMgr", "use custome opener to open ".concat(String.valueOf(str)));
+      localb.h(localWelabAppInfoUI, str);
     }
     for (;;)
     {
-      e.q(WelabAppInfoUI.b(this.rEL), 7, WelabAppInfoUI.c(this.rEL));
+      d.t(WelabAppInfoUI.b(this.vvu), 7, WelabAppInfoUI.c(this.vvu));
+      AppMethodBeat.o(80601);
       return;
-      y.i("WelabMgr", "use default opener open " + str);
-      if (paramView.Uf(str).field_Type == 2)
+      ab.i("WelabMgr", "use default opener open ".concat(String.valueOf(str)));
+      if (paramView.ajs(str).field_Type == 2)
       {
-        if (paramView.rEt != null) {
-          paramView.rEt.f(localWelabAppInfoUI, str);
+        if (paramView.vuV != null) {
+          paramView.vuV.h(localWelabAppInfoUI, str);
         } else {
-          y.e("WelabMgr", "defaultWeAppOpener is null!");
+          ab.e("WelabMgr", "defaultWeAppOpener is null!");
         }
       }
       else {
-        y.e("WelabMgr", "can not find opener for " + str);
+        ab.e("WelabMgr", "can not find opener for ".concat(String.valueOf(str)));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.ui.WelabAppInfoUI.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,43 @@
 package com.tencent.mm.plugin.masssend;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.plugin.masssend.a.h;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  private b hYb = new Plugin.1(this);
+  private b jRP;
   
-  public n createApplication()
+  public Plugin()
   {
-    return new a();
+    AppMethodBeat.i(22718);
+    this.jRP = new Plugin.1(this);
+    AppMethodBeat.o(22718);
   }
   
-  public ar createSubCore()
+  public o createApplication()
   {
-    return new h();
+    AppMethodBeat.i(22719);
+    a locala = new a();
+    AppMethodBeat.o(22719);
+    return locala;
+  }
+  
+  public at createSubCore()
+  {
+    AppMethodBeat.i(22720);
+    h localh = new h();
+    AppMethodBeat.o(22720);
+    return localh;
   }
   
   public b getContactWidgetFactory()
   {
-    return this.hYb;
+    return this.jRP;
   }
 }
 

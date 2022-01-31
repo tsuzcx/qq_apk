@@ -1,27 +1,29 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import com.tencent.mm.model.gdpr.b;
-import com.tencent.mm.plugin.webview.model.ad;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SDKOAuthUI$4
-  implements b
+  implements DialogInterface.OnCancelListener
 {
   SDKOAuthUI$4(SDKOAuthUI paramSDKOAuthUI) {}
   
-  public final void hX(int paramInt)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    y.i("MicroMsg.SdkOAuthUI", " MPGdprPolicyUtil.checkPolicy onPermissionReturn:%d", new Object[] { Integer.valueOf(paramInt) });
-    if (paramInt == 1)
+    AppMethodBeat.i(7527);
+    try
     {
-      SDKOAuthUI.a(this.rmk, -4);
-      this.rmk.finish();
+      paramDialogInterface.dismiss();
+      AppMethodBeat.o(7527);
       return;
     }
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add("snsapi_userinfo");
-    SDKOAuthUI.i(this.rmk).h(localLinkedList, SDKOAuthUI.b.a(SDKOAuthUI.d(this.rmk)));
+    catch (Exception paramDialogInterface)
+    {
+      ab.e("MicroMsg.SdkOAuthUI", "showProgressDlg onCancel exp: %s ", new Object[] { paramDialogInterface.getLocalizedMessage() });
+      AppMethodBeat.o(7527);
+    }
   }
 }
 

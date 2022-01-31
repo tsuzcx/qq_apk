@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class QRCodeIntroductionWebViewUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class QRCodeIntroductionWebViewUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    QRCodeIntroductionWebViewUI.a(this.rlJ);
+    AppMethodBeat.i(7471);
+    QRCodeIntroductionWebViewUI.a(this.vbl);
+    AppMethodBeat.o(7471);
     return true;
   }
 }

@@ -1,25 +1,57 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
+import com.google.android.gms.common.internal.Preconditions;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import javax.annotation.Nullable;
+import javax.annotation.concurrent.GuardedBy;
 
-public class zzbr
-  extends zza
+public final class zzbr
+  extends zzej
 {
-  public static final Parcelable.Creator<zzbr> CREATOR = new zzbs();
-  public final int statusCode;
-  public final zzcc zzbUH;
+  private final Object lock;
+  @Nullable
+  @GuardedBy("lock")
+  private zzav zzcw;
+  @Nullable
+  @GuardedBy("lock")
+  private zzbs zzda;
   
-  public zzbr(int paramInt, zzcc paramzzcc)
+  public zzbr()
   {
-    this.statusCode = paramInt;
-    this.zzbUH = paramzzcc;
+    AppMethodBeat.i(71102);
+    this.lock = new Object();
+    AppMethodBeat.o(71102);
   }
   
-  public void writeToParcel(Parcel paramParcel, int paramInt)
+  public final void zza(int paramInt1, int paramInt2)
   {
-    zzbs.zza(this, paramParcel, paramInt);
+    AppMethodBeat.i(71104);
+    synchronized (this.lock)
+    {
+      zzbs localzzbs = this.zzda;
+      zzav localzzav = new zzav(paramInt1, paramInt2);
+      this.zzcw = localzzav;
+      if (localzzbs != null) {
+        localzzbs.zzb(localzzav);
+      }
+      AppMethodBeat.o(71104);
+      return;
+    }
+  }
+  
+  public final void zza(zzbs paramzzbs)
+  {
+    AppMethodBeat.i(71103);
+    synchronized (this.lock)
+    {
+      this.zzda = ((zzbs)Preconditions.checkNotNull(paramzzbs));
+      zzav localzzav = this.zzcw;
+      if (localzzav != null) {
+        paramzzbs.zzb(localzzav);
+      }
+      AppMethodBeat.o(71103);
+      return;
+    }
   }
 }
 

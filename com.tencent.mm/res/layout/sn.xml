@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/b74" android:background="@color/a23" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/y5"
+<LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/b75" android:padding="@dimen/li" android:layout_width="@dimen/y7" android:layout_height="@dimen/y7" android:scaleType="fitXY" />
-    <ImageView android:id="@id/b95" android:background="@drawable/emoji_grid_item_fg" android:layout_width="@dimen/y7" android:layout_height="@dimen/y7" />
-    <ProgressBar android:layout_gravity="center_vertical" android:id="@id/b7e" android:visibility="gone" android:layout_width="@dimen/y7" android:layout_height="@dimen/y3" android:max="100" android:progress="0" android:layout_below="@id/b75" style="@style/ki" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="@dimen/y7" android:layout_height="@dimen/y3" android:layout_below="@id/b75">
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/b76" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_width="0.0dip" android:layout_height="@dimen/y3" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/mw" android:ellipsize="end" android:id="@id/b3y" android:layout_width="wrap_content" android:layout_height="0.0dip" android:text="{xxxxxx}" android:layout_weight="1.0" style="@style/ks" />
-            <TextView android:textSize="@dimen/n7" android:textColor="@color/pf" android:ellipsize="end" android:id="@id/b78" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{Y6.00}" android:singleLine="true" />
-            <TextView android:id="@id/b79" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/kr" />
-        </LinearLayout>
-        <FrameLayout android:gravity="center" android:id="@id/b77" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/y3">
-            <LinearLayout android:orientation="vertical" android:id="@id/b7_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <TextView android:textSize="14.0dip" android:textColor="@color/qj" android:gravity="center" android:id="@id/b7a" android:background="@drawable/emoji_download_item" android:paddingRight="@dimen/mq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:shadowRadius="1.2" />
-            </LinearLayout>
-            <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/b7b" android:paddingRight="@dimen/mq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/emoji_download_item" />
-            <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/b7c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/zh" />
-        </FrameLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/b__" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <NumberPicker android:id="@id/b_a" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
+        <NumberPicker android:id="@id/b_b" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
+        <NumberPicker android:id="@id/b_c" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
     </LinearLayout>
-</RelativeLayout>
+    <CalendarView android:id="@id/b_d" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="245.0dip" android:layout_height="280.0dip" android:layout_marginLeft="44.0dip" android:layout_weight="1.0" android:layout_marginStart="44.0dip" />
+</LinearLayout>

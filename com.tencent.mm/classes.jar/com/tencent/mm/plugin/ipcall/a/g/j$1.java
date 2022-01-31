@@ -1,29 +1,30 @@
 package com.tencent.mm.plugin.ipcall.a.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class j$1
-  extends m
+  extends n
 {
   j$1(j paramj) {}
   
-  protected final boolean WH()
+  public final boolean aqj()
   {
-    boolean bool = true;
-    if ((j.a(this.lsQ) == null) || (j.a(this.lsQ).csp())) {
-      if (j.a(this.lsQ) != null) {
-        break label59;
+    AppMethodBeat.i(21937);
+    if ((j.a(this.nQj) == null) || (j.a(this.nQj).dun()))
+    {
+      if (j.a(this.nQj) == null) {}
+      for (Object localObject = "null";; localObject = Boolean.valueOf(j.a(this.nQj).dun()))
+      {
+        ab.w("MicroMsg.IPCallPopularCountryStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
+        AppMethodBeat.o(21937);
+        return false;
       }
     }
-    label59:
-    for (Object localObject = "null";; localObject = Boolean.valueOf(j.a(this.lsQ).csp()))
-    {
-      y.w("MicroMsg.IPCallPopularCountryStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
-      bool = false;
-      return bool;
-    }
+    AppMethodBeat.o(21937);
+    return true;
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.wenote.model.a;
 public class l
   extends v
 {
-  public Boolean rGB = Boolean.valueOf(false);
-  public Boolean rGC = Boolean.valueOf(false);
+  public Boolean vxk = Boolean.FALSE;
+  public Boolean vxl = Boolean.FALSE;
   
-  public final String chB()
+  public final String dhR()
   {
-    return this.rGz;
+    return this.vxi;
   }
   
   public int getType()

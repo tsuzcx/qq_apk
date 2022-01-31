@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.card.ui.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.c.lv;
+import com.tencent.mm.protocal.protobuf.oj;
 import com.tencent.mm.ui.MMActivity;
 
 public final class d
@@ -12,19 +13,26 @@ public final class d
     super(paramMMActivity);
   }
   
-  public final boolean aCJ()
+  public final boolean beT()
   {
     return false;
   }
   
-  public final boolean aCL()
+  public final boolean beV()
   {
     return false;
   }
   
-  public final boolean aCM()
+  public final boolean beW()
   {
-    return (this.ikk.azy().sHH != null) && (this.ixx) && (aCn()) && (aCo());
+    AppMethodBeat.i(88713);
+    if ((this.klk.bbe().wEd != null) && (this.kyA) && (bex()) && (bey()))
+    {
+      AppMethodBeat.o(88713);
+      return true;
+    }
+    AppMethodBeat.o(88713);
+    return false;
   }
 }
 

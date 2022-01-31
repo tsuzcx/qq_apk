@@ -5,7 +5,7 @@ public final class c$hf
 {
   public c$hf()
   {
-    super("scanQRCode", "scanQRCode", 7, true);
+    super("querySimilarEmotion", "", 10000, false);
   }
 }
 

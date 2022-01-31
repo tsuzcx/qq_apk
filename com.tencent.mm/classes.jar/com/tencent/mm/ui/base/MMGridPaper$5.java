@@ -1,33 +1,36 @@
 package com.tencent.mm.ui.base;
 
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class MMGridPaper$5
   implements MMFlipper.b
 {
   MMGridPaper$5(MMGridPaper paramMMGridPaper) {}
   
-  public final void wS(int paramInt)
+  public final void CK(int paramInt)
   {
-    y.d("MicroMsg.MMGridPaper", "onScreenChanged:curScreen[%d], topEdge[%d], bottomEdge[%d], virtualPage[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.uVI.uVp), Integer.valueOf(this.uVI.uVq), Integer.valueOf(this.uVI.uVr) });
-    if ((paramInt <= this.uVI.uVp) && (this.uVI.uVp > 0)) {
-      this.uVI.ntK.post(new MMGridPaper.5.1(this, paramInt));
+    AppMethodBeat.i(106622);
+    ab.d("MicroMsg.MMGridPaper", "onScreenChanged:curScreen[%d], topEdge[%d], bottomEdge[%d], virtualPage[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.zkb.zjK), Integer.valueOf(this.zkb.zjL), Integer.valueOf(this.zkb.zjM) });
+    if ((paramInt <= this.zkb.zjK) && (this.zkb.zjK > 0)) {
+      this.zkb.mHV.post(new MMGridPaper.5.1(this, paramInt));
     }
     for (;;)
     {
-      this.uVI.uVn = paramInt;
-      this.uVI.hxP.setSelectedDot(paramInt);
+      this.zkb.zjI = paramInt;
+      this.zkb.jpZ.setSelectedDot(paramInt);
+      AppMethodBeat.o(106622);
       return;
-      if ((paramInt >= this.uVI.uVq) && (this.uVI.uVq < this.uVI.uVr - 1)) {
-        this.uVI.ntK.post(new MMGridPaper.5.2(this, paramInt));
+      if ((paramInt >= this.zkb.zjL) && (this.zkb.zjL < this.zkb.zjM - 1)) {
+        this.zkb.mHV.post(new MMGridPaper.5.2(this, paramInt));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMGridPaper.5
  * JD-Core Version:    0.7.0.1
  */

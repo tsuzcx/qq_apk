@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_gravity="center_horizontal" android:paddingTop="@dimen/m1" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/r7" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/aa9" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/bjv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-        <TextView android:textSize="@dimen/k9" android:textColor="@color/t7" android:gravity="right" android:id="@id/e5i" android:padding="@dimen/kl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:layout_below="@id/bjv" android:layout_alignParentRight="true" />
-        <ImageView android:id="@id/dxx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-        <TextView android:textColor="@color/a23" android:gravity="center" android:id="@id/bel" android:padding="@dimen/kl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kp" android:text="@string/e_u" android:layout_alignParentBottom="true" />
-        <ImageView android:id="@id/bjw" android:background="@color/iz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-        <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/dxy" android:visibility="gone" android:layout_width="@dimen/a47" android:layout_height="@dimen/a47" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/dxz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/app" android:scaleType="center" android:layout_centerInParent="true" />
-        <include layout="@layout/apx" />
-    </RelativeLayout>
-</LinearLayout>
+    <TextView android:id="@id/eda" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/nh" android:textColor="@color/z6" android:gravity="center" android:id="@id/edb" android:paddingTop="@dimen/n_" android:layout_width="64.0dip" android:layout_height="wrap_content" android:layout_below="@id/eda" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/edc" android:background="@drawable/a66" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/eda" android:layout_alignParentTop="true" />
+</RelativeLayout>

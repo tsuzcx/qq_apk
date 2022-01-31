@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.mm.plugin.appbrand.jsapi.version.a;
 
-public abstract interface AppBrandPrepareTask$b
+public abstract interface AppBrandPrepareTask$b<C extends AppBrandSysConfigLU>
+  extends j
 {
-  public abstract void a(AppBrandSysConfigWC paramAppBrandSysConfigWC, AppBrandLaunchErrorAction paramAppBrandLaunchErrorAction, AppStartupPerformanceReportBundle paramAppStartupPerformanceReportBundle);
+  public abstract void a(C paramC, AppBrandLaunchErrorAction paramAppBrandLaunchErrorAction, AppStartupPerformanceReportBundle paramAppStartupPerformanceReportBundle);
   
   public abstract void a(a parama);
   
-  public abstract void iG(long paramLong);
+  public abstract void aub();
   
-  public abstract void ko(int paramInt);
+  public abstract void ho(long paramLong);
+  
+  public abstract void nh(int paramInt);
 }
 
 

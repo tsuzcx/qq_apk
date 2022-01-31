@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.websearch.widget;
 
 import android.text.TextUtils;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.w;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.w;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.r.a;
+import com.tencent.mm.plugin.appbrand.service.e;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
 import com.tencent.mm.plugin.websearch.api.aa;
 import com.tencent.mm.plugin.websearch.api.o;
 import com.tencent.mm.plugin.websearch.api.p;
-import com.tencent.mm.protocal.c.atp;
-import com.tencent.mm.protocal.c.aug;
-import com.tencent.mm.protocal.c.auh;
-import com.tencent.mm.protocal.c.ckt;
-import com.tencent.mm.protocal.c.cmx;
-import com.tencent.mm.protocal.c.jr;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.d;
+import com.tencent.mm.protocal.protobuf.azu;
+import com.tencent.mm.protocal.protobuf.ban;
+import com.tencent.mm.protocal.protobuf.bao;
+import com.tencent.mm.protocal.protobuf.cyi;
+import com.tencent.mm.protocal.protobuf.dbf;
+import com.tencent.mm.protocal.protobuf.mc;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,131 +30,132 @@ import org.json.JSONObject;
 public final class c
   implements p
 {
-  private static List<WidgetData> RC(String paramString)
+  private static List<WidgetData> agD(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = Collections.emptyList();
-    }
-    for (;;)
+    AppMethodBeat.i(91433);
+    if (TextUtils.isEmpty(paramString))
     {
+      paramString = Collections.emptyList();
+      AppMethodBeat.o(91433);
       return paramString;
-      try
+    }
+    try
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramString = new JSONObject(paramString);
+      Object localObject = paramString.optJSONArray("data");
+      paramString = paramString.optString("searchID");
+      if ((localObject == null) || (((JSONArray)localObject).length() == 0))
       {
-        ArrayList localArrayList = new ArrayList();
-        Object localObject1 = new JSONObject(paramString);
-        paramString = ((JSONObject)localObject1).optJSONArray("data");
-        localObject1 = ((JSONObject)localObject1).optString("searchID");
-        if ((paramString == null) || (paramString.length() == 0)) {
-          return Collections.EMPTY_LIST;
-        }
-        Object localObject2 = paramString.optJSONObject(0);
-        paramString = localArrayList;
-        if (localObject2 == null) {
-          continue;
-        }
-        paramString = localArrayList;
-        if (!((JSONObject)localObject2).has("items")) {
-          continue;
-        }
-        localObject2 = ((JSONObject)localObject2).optJSONArray("items");
+        paramString = Collections.EMPTY_LIST;
+        AppMethodBeat.o(91433);
+        return paramString;
+      }
+      localObject = ((JSONArray)localObject).optJSONObject(0);
+      if ((localObject != null) && (((JSONObject)localObject).has("items")))
+      {
+        localObject = ((JSONObject)localObject).optJSONArray("items");
         int i = 0;
-        for (;;)
+        while (i < ((JSONArray)localObject).length())
         {
-          paramString = localArrayList;
-          if (i >= ((JSONArray)localObject2).length()) {
-            break;
-          }
-          paramString = WidgetData.m(((JSONArray)localObject2).optJSONObject(i), (String)localObject1);
-          if (paramString != null) {
-            localArrayList.add(paramString);
+          WidgetData localWidgetData = WidgetData.l(((JSONArray)localObject).optJSONObject(i), paramString);
+          if (localWidgetData != null) {
+            localArrayList.add(localWidgetData);
           }
           i += 1;
         }
-        return Collections.emptyList();
       }
-      catch (JSONException paramString)
-      {
-        y.printErrStackTrace("WidgetLocalSearchService", paramString, "", new Object[0]);
-      }
+      AppMethodBeat.o(91433);
+      return localArrayList;
     }
+    catch (JSONException paramString)
+    {
+      ab.printErrStackTrace("WidgetLocalSearchService", paramString, "", new Object[0]);
+      paramString = Collections.emptyList();
+      AppMethodBeat.o(91433);
+    }
+    return paramString;
   }
   
   public final void a(String paramString1, String paramString2, o paramo)
   {
     int i = 1;
+    AppMethodBeat.i(91432);
     if (!TextUtils.isEmpty(paramString1))
     {
-      localObject1 = com.tencent.mm.model.c.c.IX().fJ("100440");
+      localObject1 = com.tencent.mm.model.c.c.abU().me("100440");
       if (!((com.tencent.mm.storage.c)localObject1).isValid()) {
+        break label114;
+      }
+      localObject2 = ((com.tencent.mm.storage.c)localObject1).dvN();
+      if (localObject2 != null) {
         break label104;
       }
-      localObject2 = ((com.tencent.mm.storage.c)localObject1).ctr();
-      if (localObject2 != null) {
-        break label94;
-      }
       localObject1 = "";
-      y.i("WidgetLocalSearchService", "switch conf is %s", new Object[] { localObject1 });
+      ab.i("WidgetLocalSearchService", "switch conf is %s", new Object[] { localObject1 });
     }
-    label94:
     label104:
+    label114:
     for (boolean bool = "1".equals(((Map)localObject2).get("isOpen"));; bool = false)
     {
       if (bool) {
-        break label110;
+        break label120;
       }
       if (paramo != null) {
-        paramo.m(paramString1, null);
+        paramo.n(paramString1, null);
       }
+      AppMethodBeat.o(91432);
       return;
       localObject1 = localObject2.toString();
       break;
     }
-    label110:
+    label120:
     Object localObject1 = new b.a();
-    ((b.a)localObject1).ecG = 2782;
+    ((b.a)localObject1).funcId = 2782;
     ((b.a)localObject1).uri = "/cgi-bin/mmux-bin/wxaapp/wxaapp_weappsearch_localdata";
-    ((b.a)localObject1).ecH = new aug();
-    ((b.a)localObject1).ecI = new auh();
-    localObject1 = ((b.a)localObject1).Kt();
-    Object localObject2 = (aug)((com.tencent.mm.ah.b)localObject1).ecE.ecN;
-    ((aug)localObject2).tpM = paramString2;
-    ((aug)localObject2).tcJ = paramString1;
-    ((aug)localObject2).tpJ = 0;
-    ((aug)localObject2).tpI = aa.Bs(0);
-    paramString2 = new cmx();
-    paramString2.tZB = true;
-    paramString2.tZx = ((aug)localObject2).tpI;
-    ckt localckt = new ckt();
-    localckt.tYb = new jr();
-    atp localatp = aa.Jx();
-    if (localatp != null)
+    ((b.a)localObject1).fsX = new ban();
+    ((b.a)localObject1).fsY = new bao();
+    localObject1 = ((b.a)localObject1).ado();
+    Object localObject2 = (ban)((com.tencent.mm.ai.b)localObject1).fsV.fta;
+    ((ban)localObject2).xpJ = paramString2;
+    ((ban)localObject2).xba = paramString1;
+    ((ban)localObject2).xpG = 0;
+    ((ban)localObject2).xpF = aa.Jf(0);
+    paramString2 = new dbf();
+    paramString2.yhu = true;
+    paramString2.yhq = ((ban)localObject2).xpF;
+    cyi localcyi = new cyi();
+    localcyi.yft = new mc();
+    azu localazu = aa.acv();
+    if (localazu != null)
     {
-      jr localjr = localckt.tYb;
-      if (com.tencent.mm.modelgeo.c.Ob().Oe()) {
+      mc localmc = localcyi.yft;
+      if (com.tencent.mm.modelgeo.d.agQ().agT()) {
         i = 0;
       }
-      localjr.sEx = i;
-      ((aug)localObject2).tpK = localatp.sGK;
-      ((aug)localObject2).tpL = localatp.sGJ;
+      localmc.wAD = i;
+      ((ban)localObject2).xpH = localazu.wDi;
+      ((ban)localObject2).xpI = localazu.wDh;
     }
     for (;;)
     {
-      localckt.tYc = ((a)g.r(a.class)).aaM();
+      localcyi.yfu = ((e)g.E(e.class)).auy();
       try
       {
-        ((aug)localObject2).tpN = new com.tencent.mm.bv.b(localckt.toByteArray());
-        ((aug)localObject2).tpO = new com.tencent.mm.bv.b(paramString2.toByteArray());
-        w.a((com.tencent.mm.ah.b)localObject1, new c.1(this, paramo, paramString1));
+        ((ban)localObject2).xpK = new com.tencent.mm.bv.b(localcyi.toByteArray());
+        ((ban)localObject2).xpL = new com.tencent.mm.bv.b(paramString2.toByteArray());
+        w.a((com.tencent.mm.ai.b)localObject1, new c.1(this, paramo, paramString1));
+        AppMethodBeat.o(91432);
         return;
-        localckt.tYb.sEx = 1;
-        ((aug)localObject2).tpK = 0.0D;
-        ((aug)localObject2).tpL = 0.0D;
+        localcyi.yft.wAD = 1;
+        ((ban)localObject2).xpH = 0.0D;
+        ((ban)localObject2).xpI = 0.0D;
       }
       catch (IOException paramString2)
       {
         for (;;)
         {
-          y.printErrStackTrace("WidgetLocalSearchService", paramString2, "", new Object[0]);
+          ab.printErrStackTrace("WidgetLocalSearchService", paramString2, "", new Object[0]);
         }
       }
     }
@@ -162,7 +163,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.c
  * JD-Core Version:    0.7.0.1
  */

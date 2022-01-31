@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class g$12
   implements Runnable
 {
@@ -7,7 +9,13 @@ final class g$12
   
   public final void run()
   {
-    g.a(this.gNX, g.j(this.gNX));
+    AppMethodBeat.i(105613);
+    synchronized (g.f(this.ipI))
+    {
+      g.i(this.ipI);
+      AppMethodBeat.o(105613);
+      return;
+    }
   }
 }
 

@@ -1,50 +1,57 @@
 package com.tencent.soter.core.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class j
 {
+  private String BmA = "";
+  private String BmB = "";
+  private String BmC = "";
+  private String BmD = "";
+  private String BmE = "";
+  public int BmF = 20;
+  public String BmG = "";
+  private long Bmu = -1L;
+  private String Bmy = null;
+  public String Bmz = null;
   public String signature = "";
-  private long wOW = -1L;
-  private String wPa = null;
-  public String wPb = null;
-  private String wPc = "";
-  private String wPd = "";
-  private String wPe = "";
-  private String wPf = "";
-  private String wPg = "";
-  public int wPh = 20;
-  public String wPi = "";
   
-  public static j afT(String paramString)
+  public static j awO(String paramString)
   {
+    AppMethodBeat.i(73049);
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
       j localj = new j();
-      localj.wPi = paramString;
-      localj.wPa = localJSONObject.optString("raw");
-      localj.wPb = localJSONObject.optString("fid");
-      localj.wOW = localJSONObject.optLong("counter");
-      localj.wPc = localJSONObject.optString("tee_n");
-      localj.wPd = localJSONObject.optString("tee_v");
-      localj.wPe = localJSONObject.optString("fp_n");
-      localj.wPf = localJSONObject.optString("fp_v");
-      localj.wPg = localJSONObject.optString("cpu_id");
-      localj.wPh = localJSONObject.optInt("rsa_pss_saltlen", 20);
+      localj.BmG = paramString;
+      localj.Bmy = localJSONObject.optString("raw");
+      localj.Bmz = localJSONObject.optString("fid");
+      localj.Bmu = localJSONObject.optLong("counter");
+      localj.BmA = localJSONObject.optString("tee_n");
+      localj.BmB = localJSONObject.optString("tee_v");
+      localj.BmC = localJSONObject.optString("fp_n");
+      localj.BmD = localJSONObject.optString("fp_v");
+      localj.BmE = localJSONObject.optString("cpu_id");
+      localj.BmF = localJSONObject.optInt("rsa_pss_saltlen", 20);
+      AppMethodBeat.o(73049);
       return localj;
     }
     catch (JSONException paramString)
     {
       d.e("Soter.SoterSignatureResult", "soter: convert from json failed." + paramString.toString(), new Object[0]);
+      AppMethodBeat.o(73049);
     }
     return null;
   }
   
   public final String toString()
   {
-    return "SoterSignatureResult{rawValue='" + this.wPa + '\'' + ", fid='" + this.wPb + '\'' + ", counter=" + this.wOW + ", TEEName='" + this.wPc + '\'' + ", TEEVersion='" + this.wPd + '\'' + ", FpName='" + this.wPe + '\'' + ", FpVersion='" + this.wPf + '\'' + ", cpuId='" + this.wPg + '\'' + ", saltLen=" + this.wPh + ", jsonValue='" + this.wPi + '\'' + ", signature='" + this.signature + '\'' + '}';
+    AppMethodBeat.i(73048);
+    String str = "SoterSignatureResult{rawValue='" + this.Bmy + '\'' + ", fid='" + this.Bmz + '\'' + ", counter=" + this.Bmu + ", TEEName='" + this.BmA + '\'' + ", TEEVersion='" + this.BmB + '\'' + ", FpName='" + this.BmC + '\'' + ", FpVersion='" + this.BmD + '\'' + ", cpuId='" + this.BmE + '\'' + ", saltLen=" + this.BmF + ", jsonValue='" + this.BmG + '\'' + ", signature='" + this.signature + '\'' + '}';
+    AppMethodBeat.o(73048);
+    return str;
   }
 }
 

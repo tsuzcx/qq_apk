@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsTrustFriendUI$4
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class SettingsTrustFriendUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.nWp.finish();
+    AppMethodBeat.i(127535);
+    this.qKz.finish();
+    AppMethodBeat.o(127535);
   }
 }
 

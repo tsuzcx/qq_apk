@@ -1,34 +1,26 @@
 package com.tencent.mm.d.a;
 
-import android.util.Log;
-import com.tencent.mm.plugin.appbrand.i.e;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.eclipsesource.v8.MultiContextNodeJS.IGetTmpFileDirectory;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.j;
+import java.io.File;
 
 final class i$1
-  implements e
+  implements MultiContextNodeJS.IGetTmpFileDirectory
 {
-  i$1(i parami, b paramb) {}
-  
-  public final void x(String paramString1, String paramString2)
+  public final File getDirectory()
   {
-    y.e("MicroMsg.V8EngineWorkerManager", "handleException(%s), stackTrace : %s", new Object[] { paramString1, paramString2 });
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("message", paramString1);
-      localJSONObject.put("stack", paramString2);
-      this.bzK.a(String.format("WeixinWorker.errorHandler(%s)", new Object[] { localJSONObject }), null);
-      return;
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        y.e("MicroMsg.V8EngineWorkerManager", Log.getStackTraceString(paramString1));
-      }
-    }
+    AppMethodBeat.i(113812);
+    Object localObject = ah.getContext();
+    localObject = ((Context)localObject).getFilesDir().getParentFile().getAbsolutePath() + "/MicroMsg/tmp/";
+    j.akQ((String)localObject);
+    ab.i("MicroMsg.NodeJSRuntime", "tmpDir:%s", new Object[] { localObject });
+    localObject = new File((String)localObject);
+    AppMethodBeat.o(113812);
+    return localObject;
   }
 }
 

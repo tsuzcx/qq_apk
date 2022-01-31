@@ -6,45 +6,48 @@ import com.tencent.filter.GLSLRender;
 import com.tencent.filter.m.f;
 import com.tencent.filter.m.g;
 import com.tencent.filter.m.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 public final class f
   extends BaseFilter
 {
-  private float bgI = 1.0F;
+  private float bxj = 1.0F;
   private int type = 0;
   
   public f()
   {
-    super(GLSLRender.bcE);
+    super(GLSLRender.btg);
   }
   
   public final void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(86312);
     ClearGLSL();
     if (paramBoolean)
     {
-      this.glsl_programID = GLSLRender.bcE;
+      this.glsl_programID = GLSLRender.btg;
       setNextFilter(null, null);
       super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+      AppMethodBeat.o(86312);
       return;
     }
-    this.glsl_programID = GLSLRender.bee;
-    BaseFilter localBaseFilter2 = new BaseFilter(GLSLRender.bed);
+    this.glsl_programID = GLSLRender.buH;
+    BaseFilter localBaseFilter2 = new BaseFilter(GLSLRender.buG);
     setNextFilter(localBaseFilter2, null);
-    BaseFilter localBaseFilter1 = new BaseFilter(GLSLRender.bef);
+    BaseFilter localBaseFilter1 = new BaseFilter(GLSLRender.buI);
     localBaseFilter2.setNextFilter(localBaseFilter1, null);
-    localBaseFilter2 = new BaseFilter(GLSLRender.bdY);
+    localBaseFilter2 = new BaseFilter(GLSLRender.buB);
     localBaseFilter2.addParam(new m.f("threshold", 0.0F));
     localBaseFilter1.setNextFilter(localBaseFilter2, null);
-    localBaseFilter1 = new BaseFilter(GLSLRender.bej);
+    localBaseFilter1 = new BaseFilter(GLSLRender.buM);
     localBaseFilter2.setNextFilter(localBaseFilter1, null);
-    BaseFilter localBaseFilter3 = new BaseFilter(GLSLRender.bek);
+    BaseFilter localBaseFilter3 = new BaseFilter(GLSLRender.buN);
     localBaseFilter3.addParam(new m.f("inv_2sigma2", 127.00195F));
     localBaseFilter3.addParam(new m.f("inv_sigma_root_2pi", 0.0008F));
-    localBaseFilter3.addParam(new m.f("edge_factor", this.bgI));
+    localBaseFilter3.addParam(new m.f("edge_factor", this.bxj));
     localBaseFilter1.setNextFilter(localBaseFilter3, new int[] { 2 });
-    localBaseFilter2 = new BaseFilter(GLSLRender.bel);
+    localBaseFilter2 = new BaseFilter(GLSLRender.buO);
     localBaseFilter2.addParam(new m.f("par", 0.35F));
     localBaseFilter2.addParam(new m.f("par_b", 0.2F));
     if (this.type == 0)
@@ -91,31 +94,33 @@ public final class f
     }
     localBaseFilter3.setNextFilter(localBaseFilter2, new int[] { 4 });
     if (GLES20.glGetString(7937).indexOf("NVIDIA Tegra") != -1) {
-      localBaseFilter1 = new BaseFilter(GLSLRender.ben);
+      localBaseFilter1 = new BaseFilter(GLSLRender.buQ);
     }
     for (;;)
     {
       localBaseFilter1.addParam(new m.f("inv_2sigma", 4.4F));
       localBaseFilter2.setNextFilter(localBaseFilter1, new int[] { 4 });
       break;
-      localBaseFilter1 = new BaseFilter(GLSLRender.bem);
+      localBaseFilter1 = new BaseFilter(GLSLRender.buP);
       localBaseFilter1.addParam(new m.i("radius", 2));
     }
   }
   
   public final void setParameterDic(Map<String, Object> paramMap)
   {
+    AppMethodBeat.i(86311);
     if (paramMap.containsKey("effectIndex")) {
       this.type = ((Integer)paramMap.get("effectIndex")).intValue();
     }
     if (paramMap.containsKey("detail")) {
-      this.bgI = ((Float)paramMap.get("detail")).floatValue();
+      this.bxj = ((Float)paramMap.get("detail")).floatValue();
     }
+    AppMethodBeat.o(86311);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.filter.art.f
  * JD-Core Version:    0.7.0.1
  */

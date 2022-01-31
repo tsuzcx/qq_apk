@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 class a$a
@@ -21,6 +22,7 @@ class a$a
   
   public void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(66380);
     if (paramMessage.what == 1001) {
       try
       {
@@ -28,6 +30,7 @@ class a$a
         if (System.currentTimeMillis() < this.c)
         {
           sendEmptyMessageDelayed(1001, this.b);
+          AppMethodBeat.o(66380);
           return;
         }
         TXCLog.w(a.b(), "bkgpush:stop background publish when timeout");
@@ -38,16 +41,18 @@ class a$a
             paramMessage.a();
           }
           a.a(this.a, false);
-          return;
         }
+        AppMethodBeat.o(66380);
+        return;
       }
       catch (Exception paramMessage) {}
     }
+    AppMethodBeat.o(66380);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.a.a
  * JD-Core Version:    0.7.0.1
  */

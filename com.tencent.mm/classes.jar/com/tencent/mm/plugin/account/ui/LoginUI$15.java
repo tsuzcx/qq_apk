@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginUI$15
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   LoginUI$15(LoginUI paramLoginUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    LoginUI.l(this.fnM);
+    AppMethodBeat.i(152561);
+    LoginUI.j(this.gFf);
+    AppMethodBeat.o(152561);
   }
 }
 

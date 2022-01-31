@@ -1,31 +1,34 @@
 package com.tencent.mm.plugin.subapp.a;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.model.at;
 import java.util.HashMap;
 
 public class c
-  implements ar
+  implements at
 {
-  public final void bh(boolean paramBoolean)
-  {
-    com.tencent.mm.model.am.a.dVA = new b();
-  }
+  public void clearPluginData(int paramInt) {}
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease() {}
-  
-  public final HashMap<Integer, h.d> xe()
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
     return null;
   }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(25235);
+    com.tencent.mm.model.ao.a.flK = new b();
+    AppMethodBeat.o(25235);
+  }
+  
+  public void onAccountRelease() {}
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.a.c
  * JD-Core Version:    0.7.0.1
  */

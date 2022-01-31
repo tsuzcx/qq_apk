@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.wenote.model.nativenote.c;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.nativenote.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class e$2
   implements View.OnClickListener
@@ -12,27 +13,31 @@ public final class e$2
   
   public final void onClick(View paramView)
   {
-    y.i("NoteSelectManager", "delete");
-    if ((!e.ciX()) || (!e.k(this.rKn)))
+    AppMethodBeat.i(26859);
+    ab.i("NoteSelectManager", "delete");
+    if ((!e.djy()) || (!e.k(this.vAR)))
     {
-      y.e("NoteSelectManager", "delete: not init or not editable");
-      this.rKn.ciP();
-    }
-    do
-    {
+      ab.e("NoteSelectManager", "delete: not init or not editable");
+      this.vAR.dji();
+      AppMethodBeat.o(26859);
       return;
-      if (!e.l(this.rKn)) {
-        break;
+    }
+    if (e.l(this.vAR))
+    {
+      if (e.m(this.vAR) != null) {
+        e.m(this.vAR).dhZ();
       }
-    } while (e.m(this.rKn) == null);
-    e.m(this.rKn).chJ();
-    return;
-    if (e.m(this.rKn) != null)
-    {
-      e.m(this.rKn).chK();
+      AppMethodBeat.o(26859);
       return;
     }
-    this.rKn.ciW();
+    if (e.m(this.vAR) != null)
+    {
+      e.m(this.vAR).dia();
+      AppMethodBeat.o(26859);
+      return;
+    }
+    this.vAR.djq();
+    AppMethodBeat.o(26859);
   }
 }
 

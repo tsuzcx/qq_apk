@@ -1,5 +1,6 @@
 package com.tencent.smtt.export.external.interfaces;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.InputStream;
 import java.util.Map;
 
@@ -17,15 +18,19 @@ public class WebResourceResponse
   public WebResourceResponse(String paramString1, String paramString2, int paramInt, String paramString3, Map<String, String> paramMap, InputStream paramInputStream)
   {
     this(paramString1, paramString2, paramInputStream);
+    AppMethodBeat.i(63820);
     setStatusCodeAndReasonPhrase(paramInt, paramString3);
     setResponseHeaders(paramMap);
+    AppMethodBeat.o(63820);
   }
   
   public WebResourceResponse(String paramString1, String paramString2, InputStream paramInputStream)
   {
+    AppMethodBeat.i(63819);
     this.mMimeType = paramString1;
     this.mEncoding = paramString2;
     setData(paramInputStream);
+    AppMethodBeat.o(63819);
   }
   
   public InputStream getData()
@@ -86,7 +91,7 @@ public class WebResourceResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.interfaces.WebResourceResponse
  * JD-Core Version:    0.7.0.1
  */

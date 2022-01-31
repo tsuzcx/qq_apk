@@ -10,6 +10,7 @@ public final class TXRecordCommon$TXUGCCustomConfig
   public int maxDuration = 60000;
   public int minDuration = 5000;
   public boolean needEdit = true;
+  public boolean touchFocus = false;
   public int videoBitrate = 1800;
   public int videoFps = 20;
   public int videoGop = 3;
@@ -20,7 +21,7 @@ public final class TXRecordCommon$TXUGCCustomConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.ugc.TXRecordCommon.TXUGCCustomConfig
  * JD-Core Version:    0.7.0.1
  */

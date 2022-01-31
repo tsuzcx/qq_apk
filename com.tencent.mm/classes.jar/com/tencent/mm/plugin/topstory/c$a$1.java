@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.topstory;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.websearch.api.w;
-import com.tencent.mm.protocal.c.blf;
+import com.tencent.mm.protocal.protobuf.buo;
 
 final class c$a$1
   implements Runnable
 {
-  c$a$1(c.a parama, blf paramblf) {}
+  c$a$1(c.a parama, buo parambuo) {}
   
   public final void run()
   {
-    w localw = new w(this.pDa);
-    g.Dk().a(localw, 0);
+    AppMethodBeat.i(65493);
+    w localw = new w(this.teP);
+    g.Rc().a(localw, 0);
+    AppMethodBeat.o(65493);
   }
 }
 

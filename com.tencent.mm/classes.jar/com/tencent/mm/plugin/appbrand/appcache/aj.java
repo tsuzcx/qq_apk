@@ -1,43 +1,111 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import com.tencent.mm.pluginsdk.g.a.c.l;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.sdk.platformtools.y;
+import android.util.Pair;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.app.g;
+import com.tencent.mm.plugin.appbrand.task.h;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.protocal.protobuf.bor;
+import com.tencent.mm.protocal.protobuf.czn;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.bo;
 
-public final class aj
+public enum aj
 {
-  final aj.b fDH = new aj.b(this);
-  
-  public static String abZ()
+  public static void a(int paramInt, bor parambor)
   {
-    String str2 = g.DP().cachePath;
-    String str1 = str2;
-    if (!str2.endsWith("/")) {
-      str1 = str2 + "/";
+    AppMethodBeat.i(129421);
+    czn localczn;
+    if (parambor != null)
+    {
+      localczn = new czn();
+      localczn.url = parambor.url;
+      localczn.cqq = parambor.cqq;
+      localczn.version = parambor.version;
+      localczn.xCO = parambor.xCO;
+      if (!parambor.xCN) {
+        break label85;
+      }
     }
-    str1 = str1 + "appbrand/pkg/";
-    h.Vu(str1);
-    return str1;
+    label85:
+    for (int i = 1;; i = 0)
+    {
+      localczn.ygm = i;
+      localczn.cyc = parambor.cyc;
+      a(paramInt, localczn, aj.a.gVw);
+      AppMethodBeat.o(129421);
+      return;
+    }
   }
   
-  public final int b(a parama)
+  private static void a(int paramInt, czn paramczn, aj.a parama)
   {
-    if (this.fDH.Wj(parama.rVT))
+    AppMethodBeat.i(129420);
+    if (g.auM() != null)
     {
-      y.i("MicroMsg.AppBrandWxaPkgDownloadPerformer", "addRequestIfNotRunning, urlKey %s already in queue", new Object[] { parama.rVT });
-      return 0;
+      PInt localPInt = new PInt();
+      g.auM().a(paramczn, localPInt);
+      boolean bool;
+      if (g.auM().av("@LibraryAppId", 0) == paramczn.version) {
+        if (as.p(true, true).first == as.a.gWw)
+        {
+          bool = true;
+          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WxaCommLibVersionChecker", "onResp, requestUsingLibVersion %d, needDownload = %b, version = %d, forceUpdate = %d, md5 = %s, url = %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool), Integer.valueOf(paramczn.version), Integer.valueOf(paramczn.xCO), paramczn.cqq, paramczn.url });
+          if (bool)
+          {
+            if ((paramInt <= 0) || (bo.isNullOrNil(paramczn.cyc))) {
+              break label271;
+            }
+            t.gUT.H(paramInt, paramczn.cyc);
+          }
+        }
+      }
+      for (;;)
+      {
+        t.gUT.dF(true);
+        aa localaa = new aa();
+        localaa.field_key = "@LibraryAppId";
+        localaa.field_version = paramczn.version;
+        if (!g.auR().get(localaa, new String[] { "key", "version" }))
+        {
+          localaa.field_updateTime = bo.aox();
+          localaa.field_scene = (parama.ordinal() + 1);
+          g.auR().insert(localaa);
+        }
+        if ((paramczn.xCO > 0) && (localPInt.value > 0)) {
+          h.pA(2);
+        }
+        AppMethodBeat.o(129420);
+        return;
+        bool = false;
+        break;
+        bool = false;
+        break;
+        label271:
+        t.gUT.H(-1, null);
+      }
     }
-    int i = this.fDH.b(parama);
-    y.i("MicroMsg.AppBrandWxaPkgDownloadPerformer", "addRequestIfNotRunning, urlKey %s, addResult %d", new Object[] { parama.rVT, Integer.valueOf(i) });
-    return i;
+    com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WxaCommLibVersionChecker", "onResp, null storage");
+    AppMethodBeat.o(129420);
+  }
+  
+  public static void a(czn paramczn)
+  {
+    AppMethodBeat.i(129422);
+    a(-1, paramczn, aj.a.gVv);
+    AppMethodBeat.o(129422);
+  }
+  
+  public static void dJ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(129419);
+    d.post(new aj.1(paramBoolean), "WxaCommLibVersionChecker");
+    AppMethodBeat.o(129419);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.aj
  * JD-Core Version:    0.7.0.1
  */

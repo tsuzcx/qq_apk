@@ -1,50 +1,35 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import android.content.Context;
-import android.widget.Toast;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import android.content.res.Resources;
+import com.tencent.luggage.sdk.b.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.config.i;
+import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.performance.AppBrandPerformanceManager;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.ui.base.l;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class f
-  extends a
+  extends a<c>
 {
   public f()
   {
-    super(o.gPo.ordinal());
+    super(r.iqU.ordinal());
+    AppMethodBeat.i(102136);
+    AppMethodBeat.o(102136);
   }
   
-  public final void a(Context paramContext, q paramq, l paraml, String paramString)
+  public static void a(d paramd, String paramString, boolean paramBoolean)
   {
-    paramq = (AppBrandSysConfigWC)paramq.D(AppBrandSysConfigWC.class);
-    if (paramq.fPS.fEM == 1) {
-      if (!paramq.fPT) {
-        break label49;
-      }
-    }
-    label49:
-    for (paramContext = paramContext.getString(y.j.app_brand_performance_disable);; paramContext = paramContext.getString(y.j.app_brand_performance_enable))
+    AppMethodBeat.i(140851);
+    i.ab(paramString, paramBoolean);
+    if (paramBoolean) {}
+    for (paramString = paramd.getContext().getResources().getString(2131296606);; paramString = paramd.getContext().getResources().getString(2131296605))
     {
-      paraml.e(o.gPo.ordinal(), paramContext);
+      al.d(new f.1(paramd, paramString));
+      AppMethodBeat.o(140851);
       return;
     }
-  }
-  
-  public final void a(Context paramContext, q paramq, String paramString, n paramn)
-  {
-    if (!((AppBrandSysConfigWC)paramq.D(AppBrandSysConfigWC.class)).fPT) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppBrandPerformanceManager.vQ(paramString);
-      Toast.makeText(paramContext, y.j.app_brand_performance_enable_toast, 0).show();
-      return;
-    }
-    AppBrandPerformanceManager.vR(paramString);
-    Toast.makeText(paramContext, y.j.app_brand_performance_disable_toast, 0).show();
   }
 }
 

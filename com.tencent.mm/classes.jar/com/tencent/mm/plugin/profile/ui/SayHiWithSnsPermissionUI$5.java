@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SayHiWithSnsPermissionUI$5
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class SayHiWithSnsPermissionUI$5
   
   public final void onClick(View paramView)
   {
-    SayHiWithSnsPermissionUI.c(this.mZo);
+    AppMethodBeat.i(23770);
+    SayHiWithSnsPermissionUI.c(this.pCR);
+    AppMethodBeat.o(23770);
   }
 }
 

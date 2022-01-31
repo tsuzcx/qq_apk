@@ -1,18 +1,29 @@
 package com.tencent.mm.az;
 
-import com.tencent.mm.sdk.b.c;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
+import com.tencent.mm.protocal.protobuf.bjz;
 
+@Deprecated
 public final class l
+  extends j.b
 {
-  Map<Integer, Object<?>> ewP = new ConcurrentHashMap();
-  public c ewQ = new l.1(this);
-  public c ewR = new l.2(this);
+  private bjz fLV;
+  
+  public l(int paramInt, String paramString)
+  {
+    super(26);
+    AppMethodBeat.i(16521);
+    this.fLV = new bjz();
+    this.fLV.xyx = paramInt;
+    this.fLV.xyy = paramString;
+    this.oDZ = this.fLV;
+    AppMethodBeat.o(16521);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.az.l
  * JD-Core Version:    0.7.0.1
  */

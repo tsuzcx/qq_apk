@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.f;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.j;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 public abstract interface x
-  extends f
+  extends com.tencent.mm.sdk.e.g
 {
-  public static final String[] dXp = { i.a(g.buS, "FavItemInfo") };
+  public static final String[] SQL_CREATE = { j.getCreateSQLs(g.info, "FavItemInfo") };
   
-  public abstract g CO(String paramString);
+  public abstract g NQ(String paramString);
+  
+  public abstract void O(int paramInt, long paramLong);
   
   public abstract ArrayList<g> a(List<Long> paramList, List<g> paramList1, Set<Integer> paramSet, w paramw);
   
@@ -21,49 +22,47 @@ public abstract interface x
   
   public abstract boolean a(g paramg, String... paramVarArgs);
   
-  public abstract List<g> aQA();
-  
-  public abstract List<Long> aQB();
-  
-  public abstract void aQC();
-  
-  public abstract List<Long> aQD();
-  
-  public abstract e aQt();
-  
-  public abstract int aQu();
-  
-  public abstract List<g> aQv();
-  
-  public abstract List<g> aQw();
-  
-  public abstract List<g> aQx();
-  
-  public abstract List<g> aQy();
-  
-  public abstract List<g> aQz();
-  
   public abstract List<g> b(long paramLong, int paramInt, Set<Integer> paramSet, w paramw);
   
   public abstract boolean b(g paramg, String... paramVarArgs);
   
-  public abstract g eE(long paramLong);
+  public abstract e bwI();
   
-  public abstract g eF(long paramLong);
+  public abstract int bwJ();
+  
+  public abstract List<g> bwK();
+  
+  public abstract List<g> bwL();
+  
+  public abstract List<g> bwM();
+  
+  public abstract List<g> bwN();
+  
+  public abstract List<g> bwO();
+  
+  public abstract List<g> bwP();
+  
+  public abstract List<Long> bwQ();
+  
+  public abstract void bwR();
+  
+  public abstract List<Long> bwS();
   
   public abstract int getCount();
   
-  public abstract boolean q(long paramLong, int paramInt);
+  public abstract g kb(long paramLong);
   
-  public abstract int qZ(int paramInt);
+  public abstract g kc(long paramLong);
   
-  public abstract long r(long paramLong, int paramInt);
+  public abstract boolean v(long paramLong, int paramInt);
   
-  public abstract LinkedList<Integer> s(long paramLong, int paramInt);
+  public abstract int vU(int paramInt);
   
-  public abstract long t(long paramLong, int paramInt);
+  public abstract long w(long paramLong, int paramInt);
   
-  public abstract void x(int paramInt, long paramLong);
+  public abstract LinkedList<Integer> x(long paramLong, int paramInt);
+  
+  public abstract long y(long paramLong, int paramInt);
   
   public abstract boolean y(g paramg);
   

@@ -1,36 +1,44 @@
 package com.tencent.ttpic.filter;
 
 import android.graphics.Bitmap;
-import android.graphics.PointF;
 import com.tencent.filter.h;
 import com.tencent.filter.m.i;
 import com.tencent.filter.m.k;
-import com.tencent.ttpic.model.FaceActionCounter;
-import com.tencent.ttpic.model.HandActionCounter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.PTDetectInfo;
+import com.tencent.ttpic.gles.GlUtil;
+import com.tencent.ttpic.gles.GlUtil.DRAW_MODE;
 import com.tencent.ttpic.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
-import com.tencent.ttpic.util.VideoFilterUtil;
-import com.tencent.ttpic.util.VideoFilterUtil.DRAW_MODE;
 import com.tencent.ttpic.util.VideoMaterialUtil;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class HeadCropFilter
   extends VideoFilterBase
 {
-  private static final String TAG = HeadCropFilter.class.getSimpleName();
-  private float[] faceVertices = new float[1380];
+  private static final String TAG;
+  private float[] faceVertices;
   private int grayImageHeight;
   private int grayImageWidth;
-  private float[] grayVertices = new float[1380];
+  private float[] grayVertices;
   private h inputFrame;
+  
+  static
+  {
+    AppMethodBeat.i(82601);
+    TAG = HeadCropFilter.class.getSimpleName();
+    AppMethodBeat.o(82601);
+  }
   
   public HeadCropFilter()
   {
     super(ShaderCreateFactory.PROGRAM_TYPE.HEAD_CROP);
+    AppMethodBeat.i(82596);
+    this.faceVertices = new float[1380];
+    this.grayVertices = new float[1380];
     initParams();
+    AppMethodBeat.o(82596);
   }
   
   public h getInputFrame()
@@ -40,24 +48,31 @@ public class HeadCropFilter
   
   public void initAttribParams()
   {
+    AppMethodBeat.i(82599);
     super.initAttribParams();
     setGrayCords(FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getFullCoords(FaceOffUtil.getGrayCoords(FaceOffUtil.FEATURE_TYPE.FACE_HEAD_CROP), 3.0F), this.grayImageWidth, this.grayImageHeight, this.grayVertices));
-    setDrawMode(VideoFilterUtil.DRAW_MODE.TRIANGLES);
+    setDrawMode(GlUtil.DRAW_MODE.TRIANGLES);
     setCoordNum(690);
+    AppMethodBeat.o(82599);
   }
   
   public void initParams()
   {
+    AppMethodBeat.i(82597);
     Bitmap localBitmap = FaceOffUtil.getGrayBitmap(FaceOffUtil.FEATURE_TYPE.FACE_HEAD_CROP);
     this.grayImageWidth = localBitmap.getWidth();
     this.grayImageHeight = localBitmap.getHeight();
     addParam(new m.k("inputImageTexture2", localBitmap, 33986, true));
     addParam(new m.i("enableFaceOff", 1));
+    AppMethodBeat.o(82597);
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
-    return super.renderTexture(this.inputFrame.texture[0], this.inputFrame.width, this.inputFrame.height);
+    AppMethodBeat.i(82600);
+    boolean bool = super.renderTexture(this.inputFrame.texture[0], this.inputFrame.width, this.inputFrame.height);
+    AppMethodBeat.o(82600);
+    return bool;
   }
   
   public void setInputFrame(h paramh)
@@ -65,16 +80,19 @@ public class HeadCropFilter
     this.inputFrame = paramh;
   }
   
-  public void updatePreview(List<PointF> paramList1, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap, List<PointF> paramList2, Map<Integer, HandActionCounter> paramMap1, Set<Integer> paramSet, float paramFloat, long paramLong)
+  public void updatePreview(PTDetectInfo paramPTDetectInfo)
   {
-    if ((paramList1 == null) || (paramList1.size() < 90))
+    AppMethodBeat.i(82598);
+    if ((paramPTDetectInfo.facePoints == null) || (paramPTDetectInfo.facePoints.size() < 90))
     {
-      setPositions(VideoFilterUtil.EMPTY_POSITIONS);
+      setPositions(GlUtil.EMPTY_POSITIONS);
       setCoordNum(4);
+      AppMethodBeat.o(82598);
       return;
     }
-    setPositions(FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramList1), 3.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
+    setPositions(FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(VideoMaterialUtil.copyList(paramPTDetectInfo.facePoints), 3.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
     setCoordNum(690);
+    AppMethodBeat.o(82598);
   }
 }
 

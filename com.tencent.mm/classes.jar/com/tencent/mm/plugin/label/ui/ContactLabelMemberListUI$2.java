@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.label.ui;
 
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class ContactLabelMemberListUI$2
-  implements m.b
+  implements n.b
 {
   ContactLabelMemberListUI$2(ContactLabelMemberListUI paramContactLabelMemberListUI) {}
   
-  public final void a(int paramInt, m paramm, Object paramObject)
+  public final void a(int paramInt, n paramn, Object paramObject)
   {
-    y.d("MicroMsg.Label.ContactLabelMemberListUI", "event:%d, obj:%s", new Object[] { Integer.valueOf(paramInt), paramObject });
-    if (ContactLabelMemberListUI.b(this.lBO) != null)
+    AppMethodBeat.i(22640);
+    ab.d("MicroMsg.Label.ContactLabelMemberListUI", "event:%d, obj:%s", new Object[] { Integer.valueOf(paramInt), paramObject });
+    if (ContactLabelMemberListUI.b(this.nZa) != null)
     {
-      ContactLabelMemberListUI.b(this.lBO).removeMessages(5001);
-      ContactLabelMemberListUI.b(this.lBO).sendEmptyMessageDelayed(5001, 300L);
+      ContactLabelMemberListUI.b(this.nZa).removeMessages(5001);
+      ContactLabelMemberListUI.b(this.nZa).sendEmptyMessageDelayed(5001, 300L);
     }
+    AppMethodBeat.o(22640);
   }
 }
 

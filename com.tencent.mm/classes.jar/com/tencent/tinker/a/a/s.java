@@ -10,6 +10,25 @@ public final class s
     super(paramInt);
     this.value = paramString;
   }
+  
+  private int b(s params)
+  {
+    return this.value.compareTo(params.value);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof s)) {}
+    while (b((s)paramObject) != 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  public final int hashCode()
+  {
+    return this.value.hashCode();
+  }
 }
 
 

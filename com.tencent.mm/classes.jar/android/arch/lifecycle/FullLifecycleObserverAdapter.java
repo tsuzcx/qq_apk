@@ -3,36 +3,36 @@ package android.arch.lifecycle;
 class FullLifecycleObserverAdapter
   implements GenericLifecycleObserver
 {
-  private final FullLifecycleObserver cb;
+  private final FullLifecycleObserver cl;
   
   FullLifecycleObserverAdapter(FullLifecycleObserver paramFullLifecycleObserver)
   {
-    this.cb = paramFullLifecycleObserver;
+    this.cl = paramFullLifecycleObserver;
   }
   
   public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
-    switch (1.cc[paramEvent.ordinal()])
+    switch (1.cm[paramEvent.ordinal()])
     {
     default: 
       return;
     case 1: 
-      this.cb.onCreate(paramLifecycleOwner);
+      this.cl.onCreate(paramLifecycleOwner);
       return;
     case 2: 
-      this.cb.onStart(paramLifecycleOwner);
+      this.cl.onStart(paramLifecycleOwner);
       return;
     case 3: 
-      this.cb.onResume(paramLifecycleOwner);
+      this.cl.onResume(paramLifecycleOwner);
       return;
     case 4: 
-      this.cb.onPause(paramLifecycleOwner);
+      this.cl.onPause(paramLifecycleOwner);
       return;
     case 5: 
-      this.cb.onStop(paramLifecycleOwner);
+      this.cl.onStop(paramLifecycleOwner);
       return;
     case 6: 
-      this.cb.onDestroy(paramLifecycleOwner);
+      this.cl.onDestroy(paramLifecycleOwner);
       return;
     }
     throw new IllegalArgumentException("ON_ANY must not been send by anybody");

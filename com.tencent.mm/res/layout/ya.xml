@@ -1,9 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/wl" style="@style/p1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingTop="80.0dip" android:paddingBottom="@dimen/kp" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="20.0dip" android:textColor="#ffaaaaaa" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bmo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/brc" />
-        <TextView android:textSize="@dimen/k9" android:textColor="#ffaaaaaa" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bmp" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/l3" android:paddingRight="@dimen/li" android:paddingBottom="@dimen/ln" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bra" />
-        <ListView android:id="@id/bmq" android:background="@color/zm" android:focusable="true" android:transcriptMode="disabled" android:overScrollMode="never" style="@style/ls" />
-    </LinearLayout>
-</LinearLayout>
+<com.tencent.mm.plugin.facedetect.views.FaceNumberItemView style="@style/ie" />

@@ -2,9 +2,6 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 
 public class FileStructStat
 {
-  private static final int S_IFDIR = 16384;
-  private static final int S_IFLNK = 40960;
-  private static final int S_IFMT = 61440;
   public long st_atime;
   public long st_ctime;
   public int st_mode;

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 
 final class SettingsUI$19$1
@@ -10,8 +11,10 @@ final class SettingsUI$19$1
   
   public final void run()
   {
-    g.Dk().b(282, SettingsUI.w(this.nWE.nWB));
-    SettingsUI.z(this.nWE.nWB);
+    AppMethodBeat.i(127580);
+    g.Rc().b(282, SettingsUI.v(this.qKO.qKL));
+    SettingsUI.y(this.qKO.qKL);
+    AppMethodBeat.o(127580);
   }
 }
 

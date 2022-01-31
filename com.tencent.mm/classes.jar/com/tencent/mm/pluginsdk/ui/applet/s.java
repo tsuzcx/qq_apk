@@ -1,151 +1,216 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.openim.b.o;
-import com.tencent.mm.plugin.comm.a.e;
-import com.tencent.mm.plugin.comm.a.f;
-import com.tencent.mm.plugin.comm.a.h;
-import com.tencent.mm.protocal.c.bbd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.ui.widget.b.c;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import junit.framework.Assert;
 
 public final class s
   implements f
 {
-  String content = "";
+  public String chatroomName;
+  public String content;
   Context context;
-  View feu;
-  c few = null;
-  EditText nge;
-  LinkedList<Integer> nkB;
-  TextView nmd;
-  private LinkedList<String> sbH = new LinkedList();
-  String sbI;
-  s.a sdo;
-  LinkedList<String> sdp;
-  boolean sdq = true;
-  private boolean sdr = false;
+  View gwd;
+  c gwf;
+  EditText pLt;
+  private LinkedList<Integer> pPR;
+  TextView pRs;
+  public String scg;
+  public String sch;
   com.tencent.mm.ui.base.p tipDialog;
+  private LinkedList<String> vSO;
+  String vSP;
+  boolean vSU;
+  s.a vUr;
+  LinkedList<String> vUs;
+  public Map<String, Integer> vUt;
+  private boolean vUu;
+  private com.tencent.mm.pluginsdk.model.m vUv;
+  private boolean vUw;
   
   public s(Context paramContext, s.a parama)
   {
+    AppMethodBeat.i(79794);
+    this.gwf = null;
+    this.content = "";
+    this.vSU = true;
+    this.vUu = true;
+    this.vUw = false;
     this.context = paramContext;
-    this.sdo = parama;
+    this.vUr = parama;
+    AppMethodBeat.o(79794);
+  }
+  
+  private void onStart()
+  {
+    AppMethodBeat.i(79795);
+    com.tencent.mm.kernel.g.RK().eHt.a(30, this);
+    com.tencent.mm.kernel.g.RK().eHt.a(243, this);
+    AppMethodBeat.o(79795);
   }
   
   public final void a(LinkedList<String> paramLinkedList1, LinkedList<Integer> paramLinkedList, LinkedList<String> paramLinkedList2)
   {
+    AppMethodBeat.i(79798);
     boolean bool;
     if (paramLinkedList1.size() > 0)
     {
       bool = true;
       Assert.assertTrue(bool);
       if (paramLinkedList.size() <= 0) {
-        break label311;
+        break label316;
       }
       bool = true;
-      label25:
+      label30:
       Assert.assertTrue(bool);
       onStart();
-      this.sdp = paramLinkedList1;
-      this.nkB = paramLinkedList;
-      this.sbH = paramLinkedList2;
-      this.feu = View.inflate(this.context, a.f.sendrequest_dialog, null);
-      if (this.sbI != null) {
-        break label317;
+      this.vUs = paramLinkedList1;
+      this.pPR = paramLinkedList;
+      this.vSO = paramLinkedList2;
+      this.gwd = View.inflate(this.context, 2130970676, null);
+      if (this.vSP != null) {
+        break label322;
       }
       bool = true;
-      label74:
-      if (this.sbI != null) {
-        break label323;
+      label78:
+      if (this.vSP != null) {
+        break label328;
       }
     }
-    label311:
-    label317:
-    label323:
-    for (int i = 0;; i = this.sbI.length())
+    label316:
+    label322:
+    label328:
+    for (int i = 0;; i = this.vSP.length())
     {
-      y.i("MicroMsg.SendVerifyRequest", "verifyTip is null: %b, length : %d, value : [%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), this.sbI });
-      if (!bk.bl(this.sbI)) {
-        ((TextView)this.feu.findViewById(a.e.sendrequest_tip)).setText(this.sbI);
+      ab.i("MicroMsg.SendVerifyRequest", "verifyTip is null: %b, length : %d, value : [%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), this.vSP });
+      if (!bo.isNullOrNil(this.vSP)) {
+        ((TextView)this.gwd.findViewById(2131827574)).setText(this.vSP);
       }
-      this.nge = ((EditText)this.feu.findViewById(a.e.sendrequest_content));
-      this.nmd = ((TextView)this.feu.findViewById(a.e.wordcount));
-      this.nmd.setVisibility(0);
-      this.nge.setText(null);
-      this.nmd.setText("50");
-      this.nge.setFilters(com.tencent.mm.pluginsdk.ui.tools.h.smJ);
-      this.nge.addTextChangedListener(new s.1(this));
-      paramLinkedList1 = new s.2(this);
+      this.pLt = ((EditText)this.gwd.findViewById(2131827575));
+      this.pRs = ((TextView)this.gwd.findViewById(2131823234));
+      this.pRs.setVisibility(0);
+      this.pLt.setText(null);
+      this.pRs.setText("50");
+      this.pLt.setFilters(com.tencent.mm.pluginsdk.ui.tools.g.wfe);
+      this.pLt.addTextChangedListener(new s.1(this));
+      paramLinkedList1 = new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(79790);
+          if (s.this.gwf != null)
+          {
+            s.this.gwf.dismiss();
+            s.this.gwf = null;
+          }
+          new ap(new s.2.1(this), false).ag(500L, 500L);
+          AppMethodBeat.o(79790);
+        }
+      };
       paramLinkedList = new s.3(this);
-      this.few = com.tencent.mm.ui.base.h.a(this.context, this.context.getString(a.h.sendrequest_title), this.feu, paramLinkedList1, paramLinkedList);
-      if (this.few == null) {
+      this.gwf = com.tencent.mm.ui.base.h.a(this.context, this.context.getString(2131303132), this.gwd, paramLinkedList1, paramLinkedList);
+      if (this.gwf == null) {
         onStop();
       }
-      this.nge.post(new s.4(this));
+      this.pLt.post(new s.4(this));
+      AppMethodBeat.o(79798);
       return;
       bool = false;
       break;
       bool = false;
-      break label25;
+      break label30;
       bool = false;
-      break label74;
+      break label78;
     }
   }
   
-  final void cmS()
+  public final void dnJ()
   {
-    if (this.sbH.isEmpty())
+    AppMethodBeat.i(151628);
+    if (this.vUv != null) {
+      com.tencent.mm.kernel.g.Rc().a(this.vUv);
+    }
+    AppMethodBeat.o(151628);
+  }
+  
+  final void dnK()
+  {
+    AppMethodBeat.i(79799);
+    if ((this.vSO == null) || (this.vSO.isEmpty()))
     {
-      this.sdr = true;
-      g.DO().dJT.a(881, this);
-      g.DO().dJT.a(new com.tencent.mm.openim.b.h((String)this.sdp.getFirst(), "", ""), 0);
+      this.vUw = true;
+      com.tencent.mm.kernel.g.RK().eHt.a(881, this);
+      com.tencent.mm.kernel.g.RK().eHt.a(new com.tencent.mm.openim.b.h((String)this.vUs.getFirst(), "", ""), 0);
+      AppMethodBeat.o(79799);
       return;
     }
-    g.DO().dJT.a(new o((String)this.sdp.getFirst(), this.content, (String)this.sbH.getFirst()), 0);
+    com.tencent.mm.kernel.g.RK().eHt.a(new o((String)this.vUs.getFirst(), this.content, (String)this.vSO.getFirst()), 0);
+    AppMethodBeat.o(79799);
   }
   
-  public final void f(LinkedList<String> paramLinkedList, LinkedList<Integer> paramLinkedList1)
+  final void dnv()
   {
-    a(paramLinkedList, paramLinkedList1, new LinkedList());
+    AppMethodBeat.i(151630);
+    this.vUv = new com.tencent.mm.pluginsdk.model.m(this.vUs, this.pPR, this.content, "", this.vUt, this.chatroomName);
+    this.vUv.oY(this.vSU);
+    this.vUv.hR(this.scg, this.sch);
+    com.tencent.mm.kernel.g.RK().eHt.a(this.vUv, 0);
+    AppMethodBeat.o(151630);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
+    AppMethodBeat.i(79800);
     if (paramm.getType() == 881)
     {
-      g.DO().dJT.b(881, this);
+      com.tencent.mm.kernel.g.RK().eHt.b(881, this);
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        if (this.sdr)
+        if (this.vUw)
         {
-          paramString = ((com.tencent.mm.openim.b.h)paramm).ePS.svT;
-          g.DO().dJT.a(new o((String)this.sdp.getFirst(), this.content, paramString), 0);
+          paramString = ((com.tencent.mm.openim.b.h)paramm).gfN.wpd;
+          com.tencent.mm.kernel.g.RK().eHt.a(new o((String)this.vUs.getFirst(), this.content, paramString), 0);
         }
       }
       for (;;)
       {
-        this.sdr = false;
+        this.vUw = false;
+        AppMethodBeat.o(79800);
         return;
-        Toast.makeText(this.context, this.context.getString(a.h.sendrequest_send_fail), 1).show();
+        Toast.makeText(this.context, this.context.getString(2131303126), 1).show();
       }
     }
     if ((paramm.getType() != 30) && (paramm.getType() != 243))
     {
-      y.w("MicroMsg.SendVerifyRequest", "not expected scene,  type = " + paramm.getType());
+      ab.w("MicroMsg.SendVerifyRequest", "not expected scene,  type = " + paramm.getType());
+      AppMethodBeat.o(79800);
       return;
     }
-    y.d("MicroMsg.SendVerifyRequest", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    if (((paramm instanceof com.tencent.mm.pluginsdk.model.m)) && (((com.tencent.mm.pluginsdk.model.m)paramm).cut != 2))
+    {
+      ab.e("MicroMsg.SendVerifyRequest", "not opcode sendrequest!");
+      AppMethodBeat.o(79800);
+      return;
+    }
+    ab.d("MicroMsg.SendVerifyRequest", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
@@ -154,58 +219,97 @@ public final class s
     onStop();
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (this.sdq) {
-        com.tencent.mm.ui.base.h.bC(this.context, this.context.getString(a.h.sendrequest_send_success));
+      if (this.vUu) {
+        com.tencent.mm.ui.base.h.bO(this.context, this.context.getString(2131303127));
       }
-      this.sdo.bl(true);
-      return;
+      if (this.vUr != null)
+      {
+        this.vUr.bL(true);
+        AppMethodBeat.o(79800);
+      }
     }
-    if ((paramInt1 == 4) && (paramInt2 == -34)) {
-      paramm = this.context.getString(a.h.fmessage_request_too_offen);
+    else
+    {
+      if ((paramInt1 != 4) || (paramInt2 != -34)) {
+        break label402;
+      }
+      paramm = this.context.getString(2131300013);
     }
     for (;;)
     {
-      if (this.sdq) {
+      if ((this.vUu) && (!bo.isNullOrNil(paramm))) {
         Toast.makeText(this.context, paramm, 1).show();
       }
-      this.sdo.bl(false);
+      if (this.vUr != null) {
+        this.vUr.bL(false);
+      }
+      AppMethodBeat.o(79800);
       return;
+      label402:
       if ((paramInt1 == 4) && (paramInt2 == -94))
       {
-        paramm = this.context.getString(a.h.fmessage_user_not_support);
+        paramm = this.context.getString(2131300016);
       }
       else if ((paramInt1 == 4) && (paramInt2 == -24))
       {
         paramm = paramString;
-        if (!bk.bl(paramString)) {}
-      }
-      else if (paramInt1 == 4)
-      {
-        paramm = paramString;
-        if (!bk.bl(paramString)) {}
+        if (!bo.isNullOrNil(paramString)) {}
       }
       else
       {
-        paramm = this.context.getString(a.h.sendrequest_send_fail);
+        if (paramInt2 == -160)
+        {
+          if (!bo.isNullOrNil(paramString))
+          {
+            com.tencent.mm.ui.base.h.d(this.context, paramString, "", this.context.getResources().getString(2131296894), this.context.getResources().getString(2131296888), new s.6(this), null);
+            paramm = null;
+          }
+        }
+        else
+        {
+          if (paramInt1 == 4)
+          {
+            paramm = paramString;
+            if (!bo.isNullOrNil(paramString)) {
+              continue;
+            }
+          }
+          paramm = this.context.getString(2131303126);
+          continue;
+        }
+        paramm = null;
       }
     }
-  }
-  
-  final void onStart()
-  {
-    g.DO().dJT.a(30, this);
-    g.DO().dJT.a(243, this);
   }
   
   final void onStop()
   {
-    g.DO().dJT.b(30, this);
-    g.DO().dJT.b(243, this);
-    if (this.few != null)
+    AppMethodBeat.i(79796);
+    com.tencent.mm.kernel.g.RK().eHt.b(30, this);
+    com.tencent.mm.kernel.g.RK().eHt.b(243, this);
+    if (this.gwf != null)
     {
-      this.few.dismiss();
-      this.few = null;
+      this.gwf.dismiss();
+      this.gwf = null;
     }
+    AppMethodBeat.o(79796);
+  }
+  
+  public final void r(List<String> paramList, List<Integer> paramList1)
+  {
+    AppMethodBeat.i(151629);
+    this.vUu = false;
+    onStart();
+    this.vUs = new LinkedList(paramList);
+    this.pPR = new LinkedList(paramList1);
+    if ((paramList.size() == 1) && (ad.arf((String)this.vUs.getFirst())))
+    {
+      dnK();
+      AppMethodBeat.o(151629);
+      return;
+    }
+    dnv();
+    AppMethodBeat.o(151629);
   }
 }
 

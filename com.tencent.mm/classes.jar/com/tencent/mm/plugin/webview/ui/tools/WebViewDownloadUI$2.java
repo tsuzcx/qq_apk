@@ -1,40 +1,65 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.at;
 
 final class WebViewDownloadUI$2
   implements View.OnClickListener
 {
-  WebViewDownloadUI$2(WebViewDownloadUI paramWebViewDownloadUI, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
+  WebViewDownloadUI$2(WebViewDownloadUI paramWebViewDownloadUI, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt) {}
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.WebViewDownloadUI", "downloadOpBtn.onClick state=%s", new Object[] { WebViewDownloadUI.a(this.rmD) });
-    switch (WebViewDownloadUI.5.rmI[WebViewDownloadUI.a(this.rmD).ordinal()])
+    AppMethodBeat.i(7595);
+    ab.i("MicroMsg.WebViewDownloadUI", "downloadOpBtn.onClick state=%s", new Object[] { WebViewDownloadUI.a(this.vcl) });
+    switch (WebViewDownloadUI.5.vcp[WebViewDownloadUI.a(this.vcl).ordinal()])
     {
     default: 
-      y.e("MicroMsg.WebViewDownloadUI", "downloadOpBtn.onClick unexpected download state");
+      ab.e("MicroMsg.WebViewDownloadUI", "downloadOpBtn.onClick unexpected download state");
+      AppMethodBeat.o(7595);
       return;
     }
-    if (!aq.isNetworkConnected(WebViewDownloadUI.b(this.rmD)))
+    if (!at.isNetworkConnected(WebViewDownloadUI.b(this.vcl)))
     {
-      Toast.makeText(WebViewDownloadUI.b(this.rmD), this.rmD.getString(R.l.game_download_network_unavailable), 0).show();
-      y.i("MicroMsg.WebViewDownloadUI", "startDownload fail, network not ready");
+      Toast.makeText(WebViewDownloadUI.b(this.vcl), this.vcl.getString(2131300360), 0).show();
+      ab.i("MicroMsg.WebViewDownloadUI", "startDownload fail, network not ready");
+      AppMethodBeat.o(7595);
       return;
     }
-    if (aq.isWifi(WebViewDownloadUI.b(this.rmD)))
+    if (at.isWifi(WebViewDownloadUI.b(this.vcl)))
     {
-      WebViewDownloadUI.a(this.rmD, this.val$url, this.grU, this.ggg, this.val$appId, this.rmE, this.rmF, this.rmG, this.val$packageName);
+      WebViewDownloadUI.a(this.vcl, this.val$url, this.iiy, this.hyf, this.val$appId, this.vcm, this.uTj, this.hyt, this.val$packageName, this.vcn);
+      AppMethodBeat.o(7595);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.nFQ.f(14217, new Object[] { this.val$appId, Integer.valueOf(4), this.rmF, this.val$url, Integer.valueOf(0) });
-    com.tencent.mm.ui.base.h.a(this.rmD, this.rmD.getString(R.l.webview_download_ui_download_not_in_wifi_tips), this.rmD.getString(R.l.webview_download_ui_download_not_in_wifi_title), this.rmD.getString(R.l.webview_download_ui_btn_state_to_download), this.rmD.getString(R.l.app_cancel), false, new WebViewDownloadUI.2.1(this), new WebViewDownloadUI.2.2(this), R.e.wechat_green);
+    com.tencent.mm.plugin.report.service.h.qsU.e(14217, new Object[] { this.val$appId, Integer.valueOf(4), this.uTj, this.val$url, Integer.valueOf(0) });
+    com.tencent.mm.ui.base.h.a(this.vcl, this.vcl.getString(2131305852), this.vcl.getString(2131305853), this.vcl.getString(2131305847), this.vcl.getString(2131296888), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(7593);
+        com.tencent.mm.plugin.report.service.h.qsU.e(14217, new Object[] { WebViewDownloadUI.2.this.val$appId, Integer.valueOf(5), WebViewDownloadUI.2.this.uTj, WebViewDownloadUI.2.this.val$url, Integer.valueOf(0) });
+        WebViewDownloadUI.a(WebViewDownloadUI.2.this.vcl, WebViewDownloadUI.2.this.val$url, WebViewDownloadUI.2.this.iiy, WebViewDownloadUI.2.this.hyf, WebViewDownloadUI.2.this.val$appId, WebViewDownloadUI.2.this.vcm, WebViewDownloadUI.2.this.uTj, WebViewDownloadUI.2.this.hyt, WebViewDownloadUI.2.this.val$packageName, WebViewDownloadUI.2.this.vcn);
+        paramAnonymousDialogInterface.dismiss();
+        AppMethodBeat.o(7593);
+      }
+    }, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(7594);
+        com.tencent.mm.plugin.report.service.h.qsU.e(14217, new Object[] { WebViewDownloadUI.2.this.val$appId, Integer.valueOf(6), WebViewDownloadUI.2.this.uTj, WebViewDownloadUI.2.this.val$url, Integer.valueOf(0) });
+        paramAnonymousDialogInterface.dismiss();
+        AppMethodBeat.o(7594);
+      }
+    }, 2131690701);
+    AppMethodBeat.o(7595);
   }
 }
 

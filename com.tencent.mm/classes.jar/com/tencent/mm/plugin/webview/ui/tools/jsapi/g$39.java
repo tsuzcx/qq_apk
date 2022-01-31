@@ -1,29 +1,20 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.pluginsdk.wallet.b.a;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 final class g$39
-  implements b.a
+  implements DialogInterface.OnClickListener
 {
-  g$39(g paramg, i parami) {}
+  g$39(g paramg, i parami, Map paramMap) {}
   
-  public final void onSuccess(String paramString)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.MsgHandler", "secureTunnel callback success");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("respbuf", paramString);
-    g.a(this.rzi, this.rzk, "secureTunnel:ok", localHashMap);
-  }
-  
-  public final void uv(String paramString)
-  {
-    y.i("MicroMsg.MsgHandler", "secureTunnel callback fail");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("err_desc", paramString);
-    g.a(this.rzi, this.rzk, "secureTunnel:fail", localHashMap);
+    AppMethodBeat.i(153385);
+    this.vqm.a(this.uZa, this.uZa.vrQ + ":no", this.vqI);
+    AppMethodBeat.o(153385);
   }
 }
 

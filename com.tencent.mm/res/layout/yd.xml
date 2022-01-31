@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/bmu" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:singleLine="false" android:layout_weight="1.0" style="@style/kn" />
-    <Button android:id="@id/bmv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp" android:minHeight="25.0dip" android:text="@string/rm" style="@style/n2" />
+    <RelativeLayout android:id="@id/bpu" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/nh" android:textColor="@color/o7" android:gravity="center" android:id="@id/bpv" android:background="@drawable/ny" android:layout_width="@dimen/a27" android:layout_height="@dimen/a27" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/bpw" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <View android:background="@color/o7" android:layout_width="97.0dip" android:layout_height="1.0dip" />
+        <View android:id="@id/bpx" android:background="@android:color/white" android:visibility="gone" android:layout_width="97.0dip" android:layout_height="1.0dip" />
+    </RelativeLayout>
 </LinearLayout>

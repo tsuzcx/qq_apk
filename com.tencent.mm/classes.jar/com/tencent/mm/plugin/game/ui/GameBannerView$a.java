@@ -4,10 +4,10 @@ import com.tencent.mm.pluginsdk.model.app.f;
 
 public final class GameBannerView$a
 {
-  public String eaA;
+  public String fqJ;
   public int index;
-  public String kNZ;
-  public f kXm;
+  public String nlW;
+  public f nvo;
 }
 
 

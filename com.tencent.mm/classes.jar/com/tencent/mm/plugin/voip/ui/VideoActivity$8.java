@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.voip.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class VideoActivity$8
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class VideoActivity$8
   
   public final void run()
   {
-    VideoActivity.e(this.pWM);
+    AppMethodBeat.i(4794);
+    this.tCq.finish();
+    AppMethodBeat.o(4794);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VideoActivity.8
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v7.a.a.a;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RatingBar;
@@ -10,17 +9,17 @@ import android.widget.RatingBar;
 public class AppCompatRatingBar
   extends RatingBar
 {
-  private final k ZZ = new k(this);
+  private final j aaJ = new j(this);
   
   public AppCompatRatingBar(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, a.a.ratingBarStyle);
+    this(paramContext, paramAttributeSet, 2130772231);
   }
   
   public AppCompatRatingBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.ZZ.b(paramAttributeSet, paramInt);
+    this.aaJ.a(paramAttributeSet, paramInt);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -28,7 +27,7 @@ public class AppCompatRatingBar
     try
     {
       super.onMeasure(paramInt1, paramInt2);
-      Bitmap localBitmap = this.ZZ.ZY;
+      Bitmap localBitmap = this.aaJ.aaI;
       if (localBitmap != null) {
         setMeasuredDimension(View.resolveSizeAndState(localBitmap.getWidth() * getNumStars(), paramInt1, 0), getMeasuredHeight());
       }

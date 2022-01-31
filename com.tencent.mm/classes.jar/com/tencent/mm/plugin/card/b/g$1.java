@@ -1,36 +1,39 @@
 package com.tencent.mm.plugin.card.b;
 
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 final class g$1
-  implements am.a
+  implements ap.a
 {
   g$1(g paramg) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    y.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onTimerExpired, do refresh code!");
-    g localg = this.iku;
-    y.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onShowTimeExpired()");
-    if (localg.fKm != null)
+    AppMethodBeat.i(87680);
+    ab.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onTimerExpired, do refresh code!");
+    g localg = this.klt;
+    ab.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "onShowTimeExpired()");
+    if (localg.kkV != null)
     {
       int i = 0;
-      while (i < localg.fKm.size())
+      while (i < localg.kkV.size())
       {
-        Object localObject = (WeakReference)localg.fKm.get(i);
+        Object localObject = (WeakReference)localg.kkV.get(i);
         if (localObject != null)
         {
           localObject = (g.a)((WeakReference)localObject).get();
           if (localObject != null) {
-            ((g.a)localObject).azX();
+            ((g.a)localObject).bbI();
           }
         }
         i += 1;
       }
     }
+    AppMethodBeat.o(87680);
     return true;
   }
 }

@@ -1,44 +1,76 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import com.tencent.mm.sdk.platformtools.y;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoTextureView$4
-  implements MediaPlayer.OnSeekCompleteListener
+  implements MediaPlayer.OnPreparedListener
 {
   VideoTextureView$4(VideoTextureView paramVideoTextureView) {}
   
-  public final void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public final void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (paramMediaPlayer != null) {}
-    for (int i = paramMediaPlayer.getCurrentPosition();; i = -1)
+    AppMethodBeat.i(118011);
+    if ((paramMediaPlayer != VideoTextureView.a(this.wga)) && (paramMediaPlayer != null))
     {
-      y.i("MicroMsg.VideoTextureView", "video seek complete curPos[%d] mStartWhenPrepared[%b] pauseWhenUpdated[%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(VideoTextureView.g(this.snF)), Boolean.valueOf(VideoTextureView.j(this.snF)) });
-      if (!VideoTextureView.g(this.snF)) {
-        break label126;
-      }
-      if (!VideoTextureView.j(this.snF)) {
-        break;
-      }
+      ab.w("MicroMsg.VideoTextureView", "another player callback, release now.[%s, %s]", new Object[] { paramMediaPlayer, VideoTextureView.a(this.wga) });
+      VideoTextureView.a(this.wga, paramMediaPlayer);
+      AppMethodBeat.o(118011);
       return;
     }
-    this.snF.start();
+    VideoTextureView.f(this.wga);
+    VideoTextureView localVideoTextureView = this.wga;
+    int i;
+    if (paramMediaPlayer != null)
+    {
+      i = paramMediaPlayer.getVideoWidth();
+      VideoTextureView.a(localVideoTextureView, i);
+      localVideoTextureView = this.wga;
+      if (paramMediaPlayer == null) {
+        break label262;
+      }
+      i = paramMediaPlayer.getVideoHeight();
+      label101:
+      VideoTextureView.b(localVideoTextureView, i);
+      ab.i("MicroMsg.VideoTextureView", "on prepared. size [%d, %d] mStartWhenPrepared %b ", new Object[] { Integer.valueOf(VideoTextureView.b(this.wga)), Integer.valueOf(VideoTextureView.c(this.wga)), Boolean.valueOf(VideoTextureView.g(this.wga)) });
+      VideoTextureView.e(this.wga);
+      if ((VideoTextureView.b(this.wga) == 0) || (VideoTextureView.c(this.wga) == 0)) {
+        break label267;
+      }
+      if (VideoTextureView.g(this.wga))
+      {
+        VideoTextureView.a(this.wga).start();
+        VideoTextureView.a(this.wga).setLooping(VideoTextureView.h(this.wga));
+        VideoTextureView.i(this.wga);
+      }
+    }
     for (;;)
     {
-      if (VideoTextureView.k(this.snF) != null) {
-        VideoTextureView.k(this.snF).cd(VideoTextureView.g(this.snF));
+      if (VideoTextureView.d(this.wga) != null) {
+        VideoTextureView.d(this.wga).mG();
       }
-      VideoTextureView.a(this.snF, 0L);
+      AppMethodBeat.o(118011);
       return;
-      label126:
-      this.snF.pause();
+      i = 0;
+      break;
+      label262:
+      i = 0;
+      break label101;
+      label267:
+      if (VideoTextureView.g(this.wga))
+      {
+        VideoTextureView.a(this.wga).start();
+        VideoTextureView.i(this.wga);
+        VideoTextureView.a(this.wga).setLooping(VideoTextureView.h(this.wga));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.VideoTextureView.4
  * JD-Core Version:    0.7.0.1
  */

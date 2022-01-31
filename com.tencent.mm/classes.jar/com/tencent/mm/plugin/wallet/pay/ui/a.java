@@ -3,79 +3,56 @@ package com.tencent.mm.plugin.wallet.pay.ui;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Looper;
-import com.tencent.mm.h.a.hb;
-import com.tencent.mm.h.a.hb.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.he;
 import com.tencent.mm.wallet_core.ui.g;
 
 public final class a
 {
-  private Dialog ftk = null;
+  private Dialog gKM = null;
   private Context mContext;
-  a.a qms = null;
+  a.a tVH = null;
   
   public a(Context paramContext, a.a parama)
   {
     this.mContext = paramContext;
-    this.qms = parama;
+    this.tVH = parama;
   }
   
   public final void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    final hb localhb = new hb();
-    localhb.bOQ = null;
-    localhb.bOP.bOR = paramBoolean;
-    if ((paramBoolean) && ((this.ftk == null) || ((this.ftk != null) && (!this.ftk.isShowing()))))
+    AppMethodBeat.i(45954);
+    he localhe = new he();
+    localhe.cwh = null;
+    localhe.cwg.cwi = paramBoolean;
+    if ((paramBoolean) && ((this.gKM == null) || ((this.gKM != null) && (!this.gKM.isShowing()))))
     {
-      if (this.ftk != null) {
-        this.ftk.dismiss();
+      if (this.gKM != null) {
+        this.gKM.dismiss();
       }
-      this.ftk = g.a(this.mContext, false, new a.2(this));
+      this.gKM = g.a(this.mContext, false, new a.2(this));
     }
-    localhb.bOP.bOS = paramInt;
-    localhb.bOP.bOT = paramString;
-    localhb.bFJ = new Runnable()
-    {
-      public final void run()
-      {
-        y.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback");
-        hb.b localb = localhb.bOQ;
-        if ((localb != null) && (localb.bKQ))
-        {
-          y.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is true");
-          a.this.bTT();
-          if (a.this.qms != null) {
-            a.this.qms.b(localb.bKQ, localb.bOU, localb.bOV);
-          }
-          return;
-        }
-        if ((localb != null) && (!localb.bKQ))
-        {
-          a.this.bTT();
-          if (a.this.qms != null) {
-            a.this.qms.b(localb.bKQ, localb.bOU, localb.bOV);
-          }
-          y.e("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is false");
-          return;
-        }
-        y.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result == null");
-      }
-    };
-    com.tencent.mm.sdk.b.a.udP.a(localhb, Looper.getMainLooper());
+    localhe.cwg.cwj = paramInt;
+    localhe.cwg.cwk = paramString;
+    localhe.callback = new a.1(this, localhe);
+    com.tencent.mm.sdk.b.a.ymk.a(localhe, Looper.getMainLooper());
+    AppMethodBeat.o(45954);
   }
   
-  public final void bTT()
+  public final void cRP()
   {
-    if (this.ftk != null)
+    AppMethodBeat.i(45955);
+    if (this.gKM != null)
     {
-      this.ftk.dismiss();
-      this.ftk = null;
+      this.gKM.dismiss();
+      this.gKM = null;
     }
+    AppMethodBeat.o(45955);
   }
   
   public final void release()
   {
-    this.qms = null;
+    this.tVH = null;
     this.mContext = null;
   }
 }

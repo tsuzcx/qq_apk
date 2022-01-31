@@ -1,25 +1,30 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.a.c.a;
 
 final class VideoSegmentUI$3
   implements c.a
 {
-  private Runnable mnx;
+  private Runnable oMF;
   
   VideoSegmentUI$3(VideoSegmentUI paramVideoSegmentUI) {}
   
-  public final void ui(int paramInt)
+  public final void zx(int paramInt)
   {
-    if (VideoSegmentUI.j(this.mnw) == null) {
+    AppMethodBeat.i(55032);
+    if (VideoSegmentUI.j(this.oME) == null)
+    {
+      AppMethodBeat.o(55032);
       return;
     }
-    if (this.mnx != null) {
-      ((View)VideoSegmentUI.j(this.mnw)).removeCallbacks(this.mnx);
+    if (this.oMF != null) {
+      ((View)VideoSegmentUI.j(this.oME)).removeCallbacks(this.oMF);
     }
-    this.mnx = new VideoSegmentUI.c(VideoSegmentUI.j(this.mnw), paramInt, VideoSegmentUI.e(this.mnw));
-    ((View)VideoSegmentUI.j(this.mnw)).post(this.mnx);
+    this.oMF = new VideoSegmentUI.c(VideoSegmentUI.j(this.oME), paramInt, VideoSegmentUI.e(this.oME));
+    ((View)VideoSegmentUI.j(this.oME)).post(this.oMF);
+    AppMethodBeat.o(55032);
   }
 }
 

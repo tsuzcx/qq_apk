@@ -1,11 +1,19 @@
 package com.tencent.mm.plugin.report.a;
 
-import com.tencent.mm.sdk.e.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.j;
 
 public final class b
-  extends i<a>
+  extends j<a>
 {
-  public static final String[] dXp = { i.a(a.buS, "DuplicateKVLog") };
+  public static final String[] SQL_CREATE;
+  
+  static
+  {
+    AppMethodBeat.i(72664);
+    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "DuplicateKVLog") };
+    AppMethodBeat.o(72664);
+  }
 }
 
 

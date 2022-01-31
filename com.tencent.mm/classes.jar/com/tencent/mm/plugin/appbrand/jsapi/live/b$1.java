@@ -1,18 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
-import com.tencent.mm.plugin.appbrand.page.aj;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.f.d;
+import com.tencent.mm.plugin.appbrand.t.t;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$1
-  implements aj
+  implements f.d
 {
-  b$1(b paramb, AppBrandLivePlayerView paramAppBrandLivePlayerView) {}
+  b$1(b paramb, AppBrandLivePusherView paramAppBrandLivePusherView) {}
   
-  public final void ajc()
+  public final void onForeground()
   {
-    AppBrandLivePlayerView localAppBrandLivePlayerView = this.gsg;
-    y.i("MicroMsg.AppBrandLivePlayerView", "onExitFullScreen");
-    localAppBrandLivePlayerView.dd(false);
+    AppMethodBeat.i(96085);
+    AppBrandLivePusherView localAppBrandLivePusherView = this.hNI;
+    i locali = localAppBrandLivePusherView.hNx.aDl();
+    ab.i("MicroMsg.AppBrandLivePusherView", "onForeground code:%d info:%s", new Object[] { Integer.valueOf(locali.errorCode), locali.bFT });
+    localAppBrandLivePusherView.hNv.enable();
+    AppMethodBeat.o(96085);
   }
 }
 

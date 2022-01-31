@@ -1,31 +1,14 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.mm.sdk.f.c;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.concurrent.FutureTask;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.protocal.protobuf.ass;
+import com.tencent.mm.protocal.protobuf.ast;
+import com.tencent.mm.vending.c.a;
 
 final class w$1
-  implements c
+  implements a<Void, a.a<ast>>
 {
-  w$1(w paramw, FutureTask paramFutureTask) {}
-  
-  public final void A(Runnable paramRunnable)
-  {
-    if (this.gLe == paramRunnable)
-    {
-      this.gLf.gLc = bk.UY();
-      this.gLf.gLd = (this.gLf.gLc - this.gLf.gLb);
-      e.c(this);
-    }
-  }
-  
-  public final void z(Runnable paramRunnable)
-  {
-    if (this.gLe == paramRunnable) {
-      this.gLf.gLb = bk.UY();
-    }
-  }
+  w$1(w paramw, ass paramass) {}
 }
 
 

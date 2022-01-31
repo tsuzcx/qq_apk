@@ -1,12 +1,22 @@
 package com.tencent.mm.plugin.wenote.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public final class w
 {
-  public String rGZ = "";
-  public ArrayList<o> rHa = new ArrayList();
-  public boolean rHb = false;
+  public String vxH;
+  public ArrayList<o> vxI;
+  public boolean vxJ;
+  
+  public w()
+  {
+    AppMethodBeat.i(26685);
+    this.vxH = "";
+    this.vxI = new ArrayList();
+    this.vxJ = false;
+    AppMethodBeat.o(26685);
+  }
 }
 
 

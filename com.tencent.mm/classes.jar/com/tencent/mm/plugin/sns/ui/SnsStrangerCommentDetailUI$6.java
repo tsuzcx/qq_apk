@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.base.h.c;
 
@@ -11,23 +12,28 @@ final class SnsStrangerCommentDetailUI$6
 {
   SnsStrangerCommentDetailUI$6(SnsStrangerCommentDetailUI paramSnsStrangerCommentDetailUI) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(39316);
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    if (SnsStrangerCommentDetailUI.c(this.pdJ).Bg())
+    for (;;)
     {
-      s.j(SnsStrangerCommentDetailUI.c(this.pdJ));
-      SnsStrangerCommentDetailUI.c(this.pdJ).AK();
-      a.eUS.tk();
+      AppMethodBeat.o(39316);
       return;
+      if (SnsStrangerCommentDetailUI.c(this.rWw).NW())
+      {
+        t.j(SnsStrangerCommentDetailUI.c(this.rWw));
+        SnsStrangerCommentDetailUI.c(this.rWw).NA();
+        a.gmP.BO();
+        AppMethodBeat.o(39316);
+        return;
+      }
+      t.i(SnsStrangerCommentDetailUI.c(this.rWw));
+      SnsStrangerCommentDetailUI.c(this.rWw).Nz();
+      a.gmP.BO();
     }
-    s.i(SnsStrangerCommentDetailUI.c(this.pdJ));
-    SnsStrangerCommentDetailUI.c(this.pdJ).AJ();
-    a.eUS.tk();
   }
 }
 

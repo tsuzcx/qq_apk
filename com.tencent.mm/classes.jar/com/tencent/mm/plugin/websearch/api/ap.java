@@ -1,108 +1,102 @@
 package com.tencent.mm.plugin.websearch.api;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.text.TextUtils;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.vfs.j;
-import com.tencent.xweb.util.c;
-import java.util.Iterator;
-import java.util.Properties;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.ui.widget.MMWebView.a;
 
 public final class ap
 {
-  private String qUZ = "";
-  private int qVa = 1;
-  private long qVb;
-  private String qVc;
-  String qVd;
-  String qVe;
+  private static ap uKu;
+  private SharedPreferences uKq;
+  private volatile boolean uKr;
+  private long uKs;
+  private boolean uKt;
+  private long uKv;
   
-  public ap(String paramString1, String paramString2, String paramString3)
+  static
   {
-    this.qVc = paramString1;
-    this.qVd = paramString2;
-    this.qVe = paramString3;
+    AppMethodBeat.i(124257);
+    uKu = new ap();
+    AppMethodBeat.o(124257);
   }
   
-  private com.tencent.mm.vfs.b bZS()
+  public ap()
   {
-    return new com.tencent.mm.vfs.b(aoA(), "config.conf");
+    AppMethodBeat.i(124252);
+    this.uKq = ar.r(ah.getContext(), "com.tencent.mm.plugin.websearch.WebSearchXWeb", 4);
+    this.uKr = this.uKq.getBoolean("isUseSysWebview", false);
+    this.uKt = false;
+    cZQ();
+    AppMethodBeat.o(124252);
   }
   
-  public final int NA()
+  private void cZQ()
   {
-    if ((this.qVa <= 1) || (bZS().lastModified() > this.qVb)) {
-      bZR();
-    }
-    return this.qVa;
-  }
-  
-  public final String aoA()
-  {
-    com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(com.tencent.mm.loader.a.b.dOQ.replace("/data/user/0", "/data/data"), this.qVc);
-    if (!localb.exists()) {
-      localb.mkdirs();
-    }
-    return j.n(localb.cLr());
-  }
-  
-  public final String bZQ()
-  {
-    if ((bk.bl(this.qUZ)) || (bZS().lastModified() > this.qVb)) {
-      bZR();
-    }
-    return this.qUZ;
-  }
-  
-  public final void bZR()
-  {
-    Properties localProperties = aa.j(bZS());
-    this.qVa = Integer.valueOf(localProperties.getProperty("version", "1")).intValue();
-    this.qUZ = localProperties.getProperty("buildjsmd5", "");
-    this.qVb = System.currentTimeMillis();
-  }
-  
-  public final String bZT()
-  {
-    return j.n(new com.tencent.mm.vfs.b(aoA(), this.qVd).cLr());
-  }
-  
-  public final boolean bZU()
-  {
-    Object localObject = aa.j(bZS()).getProperty("jsmd5");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return true;
-    }
-    try
+    AppMethodBeat.i(124253);
+    if (System.currentTimeMillis() - this.uKv < 7200000L)
     {
-      localObject = new JSONArray((String)localObject);
-      int i = 0;
-      while (i < ((JSONArray)localObject).length())
-      {
-        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-        Iterator localIterator = localJSONObject.keys();
-        while (localIterator.hasNext())
-        {
-          String str1 = (String)localIterator.next();
-          String str2 = c.bQ(aoA() + "/dist/" + str1);
-          String str3 = localJSONObject.getString(str1);
-          if ((TextUtils.isEmpty(str2)) || (!str2.equals(str3)))
-          {
-            y.w("MicroMsg.WebSearch.WebSearchTemplate", "isMd5Valid fail, fileName %s, fileMd5 %s, expect md5 %s", new Object[] { str1, str2, str3 });
-            return false;
-          }
-        }
-        i += 1;
-      }
-      return true;
+      AppMethodBeat.o(124253);
+      return;
     }
-    catch (JSONException localJSONException)
+    this.uKv = System.currentTimeMillis();
+    d.post(new ap.1(this), "WebSearchXWeb-getSwitch");
+    AppMethodBeat.o(124253);
+  }
+  
+  public static ap cZR()
+  {
+    return uKu;
+  }
+  
+  private void cZT()
+  {
+    AppMethodBeat.i(124255);
+    d.post(new ap.2(this, MMWebView.a.iH(ah.getContext()), MMWebView.a.iI(ah.getContext())), "WebSearchXWeb.check");
+    AppMethodBeat.o(124255);
+  }
+  
+  public final boolean cZS()
+  {
+    AppMethodBeat.i(124254);
+    cZQ();
+    String str = Build.BRAND;
+    if (TextUtils.isEmpty(str))
     {
-      y.printErrStackTrace("MicroMsg.WebSearch.WebSearchTemplate", localJSONException, "", new Object[0]);
+      ab.i("WebSearchXWeb", "brand is empty");
+      AppMethodBeat.o(124254);
+      return false;
     }
+    if ((str.contains("huawei")) || (str.contains("honor")))
+    {
+      ab.i("WebSearchXWeb", "huawei not support sys webview");
+      AppMethodBeat.o(124254);
+      return false;
+    }
+    if (!this.uKt)
+    {
+      ab.i("WebSearchXWeb", "check use sys webview switch close");
+      AppMethodBeat.o(124254);
+      return false;
+    }
+    if (this.uKs == 0L) {
+      this.uKs = this.uKq.getLong("lastCheckTimestamp", 0L);
+    }
+    if (System.currentTimeMillis() - this.uKs > 86400000L)
+    {
+      cZT();
+      this.uKs = System.currentTimeMillis();
+      this.uKq.edit().putLong("lastCheckTimestamp", this.uKs).commit();
+    }
+    boolean bool = this.uKr;
+    AppMethodBeat.o(124254);
+    return bool;
   }
 }
 

@@ -4,181 +4,235 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.compat.a.a;
+import com.tencent.mm.plugin.appbrand.compat.a.a.a;
+import com.tencent.mm.plugin.appbrand.config.h;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.sport.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sport.a.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 
 class JsApiOpenWeRunSetting$OpenWeRunSetting
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<OpenWeRunSetting> CREATOR = new JsApiOpenWeRunSetting.OpenWeRunSetting.3();
-  private boolean cce = false;
-  private i gfG;
-  private int gfg;
-  private boolean ggP = false;
-  private boolean ggQ;
-  private c ggu;
+  public static final Parcelable.Creator<OpenWeRunSetting> CREATOR;
+  private boolean cKK;
+  private int hry;
+  private m hxs;
+  private c hyO;
+  private boolean hzp;
+  private boolean hzq;
+  
+  static
+  {
+    AppMethodBeat.i(130539);
+    CREATOR = new JsApiOpenWeRunSetting.OpenWeRunSetting.3();
+    AppMethodBeat.o(130539);
+  }
   
   public JsApiOpenWeRunSetting$OpenWeRunSetting(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(130532);
+    this.hzp = false;
+    this.cKK = false;
+    f(paramParcel);
+    AppMethodBeat.o(130532);
   }
   
-  public JsApiOpenWeRunSetting$OpenWeRunSetting(i parami, c paramc, int paramInt, boolean paramBoolean)
+  public JsApiOpenWeRunSetting$OpenWeRunSetting(m paramm, c paramc, int paramInt, boolean paramBoolean)
   {
-    y.i("MicroMsg.JsApiOpenWeRunSetting", "OpenWeRunSetting");
-    this.gfG = parami;
-    this.ggu = paramc;
-    this.gfg = paramInt;
-    this.ggQ = paramBoolean;
+    AppMethodBeat.i(130531);
+    this.hzp = false;
+    this.cKK = false;
+    ab.i("MicroMsg.JsApiOpenWeRunSetting", "OpenWeRunSetting");
+    this.hxs = paramm;
+    this.hyO = paramc;
+    this.hry = paramInt;
+    this.hzq = paramBoolean;
+    AppMethodBeat.o(130531);
   }
   
-  private void ahQ()
+  private void aBA()
   {
-    if ((!this.ggQ) || (this.ggP))
+    AppMethodBeat.i(130534);
+    if ((!this.hzq) || (this.hzp))
     {
-      this.cce = ((b)g.r(b.class)).bKY();
-      if ((this.ggQ) && (this.cce)) {
-        ((b)g.r(b.class)).bKX();
+      this.cKK = ((b)g.E(b.class)).cyu();
+      if ((this.hzq) && (this.cKK)) {
+        ((b)g.E(b.class)).cyt();
       }
     }
-    ahI();
+    aBp();
+    AppMethodBeat.o(130534);
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    this.ggP = ((b)g.r(b.class)).ej(ae.getContext());
-    if ((this.ggQ) && (!this.ggP))
+    AppMethodBeat.i(130533);
+    this.hzp = ((b)g.E(b.class)).fa(ah.getContext());
+    if ((this.hzq) && (!this.hzp))
     {
-      ((a)g.r(a.class)).a(new JsApiOpenWeRunSetting.OpenWeRunSetting.1(this));
+      ((a)g.E(a.class)).a(new a.a()
+      {
+        public final void q(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+        {
+          AppMethodBeat.i(130528);
+          JsApiOpenWeRunSetting.OpenWeRunSetting localOpenWeRunSetting = JsApiOpenWeRunSetting.OpenWeRunSetting.this;
+          if ((paramAnonymousBoolean1) && (paramAnonymousBoolean2)) {}
+          for (boolean bool = true;; bool = false)
+          {
+            JsApiOpenWeRunSetting.OpenWeRunSetting.a(localOpenWeRunSetting, bool);
+            ab.i("MicroMsg.JsApiOpenWeRunSetting", "After getUserState requestOk %b, hasStep %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean1), Boolean.valueOf(paramAnonymousBoolean2) });
+            JsApiOpenWeRunSetting.OpenWeRunSetting.a(JsApiOpenWeRunSetting.OpenWeRunSetting.this);
+            AppMethodBeat.o(130528);
+            return;
+          }
+        }
+      });
+      AppMethodBeat.o(130533);
       return;
     }
-    ahQ();
+    aBA();
+    AppMethodBeat.o(130533);
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    if ((this.ggQ) && (!this.ggP))
+    AppMethodBeat.i(130535);
+    if ((this.hzq) && (!this.hzp))
     {
-      this.ggu.C(this.gfg, this.gfG.h("fail device not support", null));
-      ahD();
+      this.hyO.h(this.hry, this.hxs.j("fail device not support", null));
+      aBk();
+      AppMethodBeat.o(130535);
       return;
     }
-    if (this.cce)
+    if (this.cKK)
     {
-      this.ggu.C(this.gfg, this.gfG.h("ok", null));
-      ahD();
+      this.hyO.h(this.hry, this.hxs.j("ok", null));
+      aBk();
+      AppMethodBeat.o(130535);
       return;
     }
-    Context localContext = this.ggu.getContext();
+    Context localContext = this.hyO.getContext();
     if ((localContext == null) || (!(localContext instanceof MMActivity)))
     {
-      this.ggu.C(this.gfg, this.gfG.h("fail", null));
-      ahD();
+      this.hyO.h(this.hry, this.hxs.j("fail", null));
+      aBk();
+      AppMethodBeat.o(130535);
       return;
     }
-    com.tencent.mm.plugin.appbrand.config.i locali = (com.tencent.mm.plugin.appbrand.config.i)this.ggu.D(com.tencent.mm.plugin.appbrand.config.i.class);
-    if ((locali == null) || (bk.bl(locali.bJw)))
+    h localh = (h)this.hyO.U(h.class);
+    if ((localh == null) || (bo.isNullOrNil(localh.cqQ)))
     {
-      this.ggu.C(this.gfg, this.gfG.h("fail", null));
-      ahD();
+      this.hyO.h(this.hry, this.hxs.j("fail", null));
+      aBk();
+      AppMethodBeat.o(130535);
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("OpenWeRunSettingName", locali.bJw);
-    ((MMActivity)localContext).gJb = new MMActivity.a()
+    localIntent.putExtra("OpenWeRunSettingName", localh.cqQ);
+    ((MMActivity)localContext).mmSetOnActivityResultCallback(new MMActivity.a()
     {
       public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
+        AppMethodBeat.i(130529);
         if (paramAnonymousInt1 != (JsApiOpenWeRunSetting.OpenWeRunSetting.this.hashCode() & 0xFFFF))
         {
-          JsApiOpenWeRunSetting.OpenWeRunSetting.this.ahD();
+          JsApiOpenWeRunSetting.OpenWeRunSetting.this.aBk();
+          AppMethodBeat.o(130529);
           return;
         }
         if (paramAnonymousInt2 == -1)
         {
-          JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this).C(JsApiOpenWeRunSetting.OpenWeRunSetting.b(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.c(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h("ok", null));
-          JsApiOpenWeRunSetting.OpenWeRunSetting.this.ahD();
+          JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h(JsApiOpenWeRunSetting.OpenWeRunSetting.b(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.c(JsApiOpenWeRunSetting.OpenWeRunSetting.this).j("ok", null));
+          JsApiOpenWeRunSetting.OpenWeRunSetting.this.aBk();
+          AppMethodBeat.o(130529);
           return;
         }
         if (paramAnonymousInt2 == 0)
         {
-          JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this).C(JsApiOpenWeRunSetting.OpenWeRunSetting.b(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.c(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h("cancel", null));
-          JsApiOpenWeRunSetting.OpenWeRunSetting.this.ahD();
+          JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h(JsApiOpenWeRunSetting.OpenWeRunSetting.b(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.c(JsApiOpenWeRunSetting.OpenWeRunSetting.this).j("cancel", null));
+          JsApiOpenWeRunSetting.OpenWeRunSetting.this.aBk();
+          AppMethodBeat.o(130529);
           return;
         }
-        JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this).C(JsApiOpenWeRunSetting.OpenWeRunSetting.b(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.c(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h("fail", null));
-        JsApiOpenWeRunSetting.OpenWeRunSetting.this.ahD();
+        JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h(JsApiOpenWeRunSetting.OpenWeRunSetting.b(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.c(JsApiOpenWeRunSetting.OpenWeRunSetting.this).j("fail", null));
+        JsApiOpenWeRunSetting.OpenWeRunSetting.this.aBk();
+        AppMethodBeat.o(130529);
       }
-    };
+    });
     d.a(localContext, "appbrand", ".ui.AppBrandOpenWeRunSettingUI", localIntent, hashCode() & 0xFFFF, false);
-    ahD();
+    aBk();
+    AppMethodBeat.o(130535);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     boolean bool2 = true;
+    AppMethodBeat.i(130536);
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.ggP = bool1;
+      this.hzp = bool1;
       if (paramParcel.readByte() == 0) {
-        break label50;
+        break label60;
       }
       bool1 = true;
-      label25:
-      this.cce = bool1;
+      label30:
+      this.cKK = bool1;
       if (paramParcel.readByte() == 0) {
-        break label55;
+        break label65;
       }
     }
-    label50:
-    label55:
+    label60:
+    label65:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.ggQ = bool1;
+      this.hzq = bool1;
+      AppMethodBeat.o(130536);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label25;
+      break label30;
     }
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     byte b2 = 1;
-    if (this.ggP)
+    AppMethodBeat.i(130537);
+    if (this.hzp)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.cce) {
-        break label52;
+      if (!this.cKK) {
+        break label62;
       }
       b1 = 1;
-      label26:
+      label31:
       paramParcel.writeByte(b1);
-      if (!this.ggQ) {
-        break label57;
+      if (!this.hzq) {
+        break label67;
       }
     }
-    label52:
-    label57:
+    label62:
+    label67:
     for (byte b1 = b2;; b1 = 0)
     {
       paramParcel.writeByte(b1);
+      AppMethodBeat.o(130537);
       return;
       b1 = 0;
       break;
       b1 = 0;
-      break label26;
+      break label31;
     }
   }
 }

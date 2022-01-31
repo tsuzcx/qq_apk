@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.chatting.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class a$2
   
   public final void run()
   {
-    this.voh.notifyDataSetChanged();
+    AppMethodBeat.i(31096);
+    this.zDD.notifyDataSetChanged();
+    AppMethodBeat.o(31096);
   }
 }
 

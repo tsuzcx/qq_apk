@@ -1,80 +1,103 @@
 package com.tencent.mm.plugin.game.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class cj
   extends com.tencent.mm.bv.a
 {
-  public String bGw;
-  public String kRN;
-  public String kRO;
+  public String Desc;
+  public String Title;
+  public String npQ;
+  public String ntG;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(111647);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.bGw != null) {
-        paramVarArgs.d(1, this.bGw);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.Title != null) {
+        paramVarArgs.e(1, this.Title);
       }
-      if (this.kRO != null) {
-        paramVarArgs.d(2, this.kRO);
+      if (this.Desc != null) {
+        paramVarArgs.e(2, this.Desc);
       }
-      if (this.kRN != null) {
-        paramVarArgs.d(3, this.kRN);
+      if (this.npQ != null) {
+        paramVarArgs.e(3, this.npQ);
       }
+      if (this.ntG != null) {
+        paramVarArgs.e(4, this.ntG);
+      }
+      AppMethodBeat.o(111647);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.bGw == null) {
-        break label289;
+      if (this.Title == null) {
+        break label394;
       }
     }
-    label289:
-    for (int i = d.a.a.b.b.a.e(1, this.bGw) + 0;; i = 0)
+    label394:
+    for (int i = e.a.a.b.b.a.f(1, this.Title) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.kRO != null) {
-        paramInt = i + d.a.a.b.b.a.e(2, this.kRO);
+      if (this.Desc != null) {
+        paramInt = i + e.a.a.b.b.a.f(2, this.Desc);
       }
       i = paramInt;
-      if (this.kRN != null) {
-        i = paramInt + d.a.a.b.b.a.e(3, this.kRN);
+      if (this.npQ != null) {
+        i = paramInt + e.a.a.b.b.a.f(3, this.npQ);
       }
-      return i;
+      paramInt = i;
+      if (this.ntG != null) {
+        paramInt = i + e.a.a.b.b.a.f(4, this.ntG);
+      }
+      AppMethodBeat.o(111647);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        AppMethodBeat.o(111647);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         cj localcj = (cj)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(111647);
           return -1;
         case 1: 
-          localcj.bGw = locala.xpH.readString();
+          localcj.Title = locala.CLY.readString();
+          AppMethodBeat.o(111647);
           return 0;
         case 2: 
-          localcj.kRO = locala.xpH.readString();
+          localcj.Desc = locala.CLY.readString();
+          AppMethodBeat.o(111647);
+          return 0;
+        case 3: 
+          localcj.npQ = locala.CLY.readString();
+          AppMethodBeat.o(111647);
           return 0;
         }
-        localcj.kRN = locala.xpH.readString();
+        localcj.ntG = locala.CLY.readString();
+        AppMethodBeat.o(111647);
         return 0;
       }
+      AppMethodBeat.o(111647);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.cj
  * JD-Core Version:    0.7.0.1
  */

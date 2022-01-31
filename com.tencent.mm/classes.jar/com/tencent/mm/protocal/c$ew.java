@@ -5,7 +5,7 @@ public final class c$ew
 {
   public c$ew()
   {
-    super("openEnterpriseChat", "openEnterpriseChat", 165, false);
+    super("nfcGetInfo", "nfcGetInfo", 148, false);
   }
 }
 

@@ -10,7 +10,7 @@ final class b$a$3
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    this.mBL.mBI = false;
+    this.pbP.pbN = false;
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
@@ -19,7 +19,7 @@ final class b$a$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.b.a.3
  * JD-Core Version:    0.7.0.1
  */

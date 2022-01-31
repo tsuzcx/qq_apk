@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceConnectWifiUI$11
   implements TextWatcher
@@ -11,14 +12,17 @@ final class ExdeviceConnectWifiUI$11
   
   public final void afterTextChanged(Editable paramEditable)
   {
+    AppMethodBeat.i(19887);
     if (paramEditable.length() > 31)
     {
-      ExdeviceConnectWifiUI.i(this.jCy).setVisibility(0);
-      ExdeviceConnectWifiUI.j(this.jCy).setEnabled(false);
+      ExdeviceConnectWifiUI.i(this.lLW).setVisibility(0);
+      ExdeviceConnectWifiUI.j(this.lLW).setEnabled(false);
+      AppMethodBeat.o(19887);
       return;
     }
-    ExdeviceConnectWifiUI.i(this.jCy).setVisibility(8);
-    ExdeviceConnectWifiUI.j(this.jCy).setEnabled(true);
+    ExdeviceConnectWifiUI.i(this.lLW).setVisibility(8);
+    ExdeviceConnectWifiUI.j(this.lLW).setEnabled(true);
+    AppMethodBeat.o(19887);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

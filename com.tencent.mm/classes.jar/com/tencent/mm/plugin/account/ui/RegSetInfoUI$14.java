@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RegSetInfoUI$14
   implements Runnable
@@ -9,8 +10,10 @@ final class RegSetInfoUI$14
   
   public final void run()
   {
-    RegSetInfoUI.a(this.fso).clearFocus();
-    RegSetInfoUI.a(this.fso).requestFocus();
+    AppMethodBeat.i(125520);
+    RegSetInfoUI.a(this.gJQ).clearFocus();
+    RegSetInfoUI.a(this.gJQ).requestFocus();
+    AppMethodBeat.o(125520);
   }
 }
 

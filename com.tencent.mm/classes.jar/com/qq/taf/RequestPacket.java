@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,12 +27,14 @@ public final class RequestPacket
   
   static
   {
+    AppMethodBeat.i(117036);
     if (!RequestPacket.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
       cache_sBuffer = null;
       cache_context = null;
+      AppMethodBeat.o(117036);
       return;
     }
   }
@@ -54,7 +57,8 @@ public final class RequestPacket
   
   public final Object clone()
   {
-    Object localObject1 = null;
+    AppMethodBeat.i(117038);
+    localObject1 = null;
     try
     {
       Object localObject2 = super.clone();
@@ -63,13 +67,17 @@ public final class RequestPacket
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
       while ($assertionsDisabled) {}
-      throw new AssertionError();
+      localObject1 = new AssertionError();
+      AppMethodBeat.o(117038);
+      throw ((Throwable)localObject1);
     }
+    AppMethodBeat.o(117038);
     return localObject1;
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
   {
+    AppMethodBeat.i(117041);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.display(this.iVersion, "iVersion");
     paramStringBuilder.display(this.cPacketType, "cPacketType");
@@ -81,16 +89,25 @@ public final class RequestPacket
     paramStringBuilder.display(this.iTimeout, "iTimeout");
     paramStringBuilder.display(this.context, "context");
     paramStringBuilder.display(this.status, "status");
+    AppMethodBeat.o(117041);
   }
   
   public final boolean equals(Object paramObject)
   {
+    AppMethodBeat.i(117037);
     paramObject = (RequestPacket)paramObject;
-    return (JceUtil.equals(1, paramObject.iVersion)) && (JceUtil.equals(1, paramObject.cPacketType)) && (JceUtil.equals(1, paramObject.iMessageType)) && (JceUtil.equals(1, paramObject.iRequestId)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sServantName)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sFuncName)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sBuffer)) && (JceUtil.equals(1, paramObject.iTimeout)) && (JceUtil.equals(Integer.valueOf(1), paramObject.context)) && (JceUtil.equals(Integer.valueOf(1), paramObject.status));
+    if ((JceUtil.equals(1, paramObject.iVersion)) && (JceUtil.equals(1, paramObject.cPacketType)) && (JceUtil.equals(1, paramObject.iMessageType)) && (JceUtil.equals(1, paramObject.iRequestId)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sServantName)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sFuncName)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sBuffer)) && (JceUtil.equals(1, paramObject.iTimeout)) && (JceUtil.equals(Integer.valueOf(1), paramObject.context)) && (JceUtil.equals(Integer.valueOf(1), paramObject.status)))
+    {
+      AppMethodBeat.o(117037);
+      return true;
+    }
+    AppMethodBeat.o(117037);
+    return false;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(117040);
     try
     {
       this.iVersion = paramJceInputStream.read(this.iVersion, 1, true);
@@ -119,16 +136,20 @@ public final class RequestPacket
         localHashMap.put("", "");
       }
       this.status = ((Map)paramJceInputStream.read(cache_context, 10, true));
+      AppMethodBeat.o(117040);
       return;
     }
     catch (Exception paramJceInputStream)
     {
-      throw new RuntimeException(paramJceInputStream);
+      paramJceInputStream = new RuntimeException(paramJceInputStream);
+      AppMethodBeat.o(117040);
+      throw paramJceInputStream;
     }
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(117039);
     paramJceOutputStream.write(this.iVersion, 1);
     paramJceOutputStream.write(this.cPacketType, 2);
     paramJceOutputStream.write(this.iMessageType, 3);
@@ -139,11 +160,12 @@ public final class RequestPacket
     paramJceOutputStream.write(this.iTimeout, 8);
     paramJceOutputStream.write(this.context, 9);
     paramJceOutputStream.write(this.status, 10);
+    AppMethodBeat.o(117039);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.taf.RequestPacket
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.normsg.b;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class b$1
@@ -10,11 +11,13 @@ final class b$1
   
   public final void run()
   {
-    b.b(this.mHC, this.mHy, this.mHz, this.mHA);
-    synchronized (this.mHB)
+    AppMethodBeat.i(10389);
+    b.b(this.phI, this.phE, this.phF, this.phG);
+    synchronized (this.phH)
     {
-      this.mHB[0] = true;
-      this.mHB.notifyAll();
+      this.phH[0] = true;
+      this.phH.notifyAll();
+      AppMethodBeat.o(10389);
       return;
     }
   }

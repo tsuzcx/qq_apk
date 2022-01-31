@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.topstory.ui.video;
 
 public abstract interface a
 {
-  public abstract void bNp();
+  public abstract void cIZ();
   
-  public abstract void bNq();
+  public abstract void cJa();
   
-  public abstract int bNr();
+  public abstract int cJb();
 }
 
 

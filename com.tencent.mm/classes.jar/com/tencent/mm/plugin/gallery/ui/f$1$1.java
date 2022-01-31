@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.gallery.ui;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class f$1$1
   implements Animation.AnimationListener
@@ -12,12 +13,14 @@ final class f$1$1
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.kKv == 2)
+    AppMethodBeat.i(21570);
+    if (this.ngV == 2)
     {
-      f.b(this.kKw.kKu, f.a(this.kKw.kKu, this.hsg.id()));
-      this.kKw.cbV = f.c(this.kKw.kKu);
-      y.i("MicroMsg.PreviewSelectedImageAdapter", "lastVisiblePos:%s", new Object[] { Integer.valueOf(this.kKw.cbV) });
+      f.b(this.ngW.ngU, f.a(this.ngW.ngU, this.jiE.jN()));
+      this.ngW.cKB = f.c(this.ngW.ngU);
+      ab.i("MicroMsg.PreviewSelectedImageAdapter", "lastVisiblePos:%s", new Object[] { Integer.valueOf(this.ngW.cKB) });
     }
+    AppMethodBeat.o(21570);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
@@ -26,7 +29,7 @@ final class f$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.f.1.1
  * JD-Core Version:    0.7.0.1
  */

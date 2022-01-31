@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools.fts;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$2
   implements ViewTreeObserver.OnPreDrawListener
@@ -11,8 +12,10 @@ final class d$2
   
   public final boolean onPreDraw()
   {
-    this.rvI.getViewTreeObserver().removeOnPreDrawListener(this);
-    this.rvK.rvi = 0;
+    AppMethodBeat.i(8599);
+    this.vlY.getViewTreeObserver().removeOnPreDrawListener(this);
+    this.vma.vlx = 0;
+    AppMethodBeat.o(8599);
     return true;
   }
 }

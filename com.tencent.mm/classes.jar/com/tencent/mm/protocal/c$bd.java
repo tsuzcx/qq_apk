@@ -5,12 +5,12 @@ public final class c$bd
 {
   public c$bd()
   {
-    super("enablePullDownRefresh", "enablePullDownRefresh", 199, false);
+    super("doExposePreparation", "doExposePreparation", 225, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.c.bd
  * JD-Core Version:    0.7.0.1
  */

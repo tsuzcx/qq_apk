@@ -9,12 +9,11 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.jsapi.base.g;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.u.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,16 +23,22 @@ public final class b
   public static final int CTRL_INDEX = 342;
   public static final String NAME = "animateCoverView";
   
-  protected final boolean a(e parame, int paramInt, View paramView, JSONObject paramJSONObject, g paramg)
+  public final boolean aCb()
   {
+    return true;
+  }
+  
+  public final boolean b(e parame, int paramInt, View paramView, JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.jsapi.base.g paramg)
+  {
+    AppMethodBeat.i(126292);
     for (;;)
     {
       String str;
       try
       {
         parame = paramJSONObject.getJSONObject("finalStyle");
-        float f1 = h.a(parame, "left", h.al(paramView.getX()));
-        float f2 = h.a(parame, "top", h.al(paramView.getY()));
+        float f1 = com.tencent.mm.plugin.appbrand.s.g.a(parame, "left", com.tencent.mm.plugin.appbrand.s.g.az(paramView.getX()));
+        float f2 = com.tencent.mm.plugin.appbrand.s.g.a(parame, "top", com.tencent.mm.plugin.appbrand.s.g.az(paramView.getY()));
         float f3 = (float)parame.optDouble("opacity", paramView.getAlpha());
         float f4 = (float)parame.optDouble("rotate", paramView.getRotation());
         float f5 = (float)parame.optDouble("scaleX", paramView.getScaleX());
@@ -67,13 +72,15 @@ public final class b
           localAnimatorSet.addListener(new b.1(this, paramg));
           localAnimatorSet.playTogether(new Animator[] { paramJSONObject, localObjectAnimator1, localObjectAnimator2, localObjectAnimator3, localObjectAnimator4, localObjectAnimator5 });
           localAnimatorSet.start();
+          AppMethodBeat.o(126292);
           return true;
         }
       }
       catch (JSONException parame)
       {
-        y.w("MicroMsg.JsApiAnimateCoverView", "get finalStyle error : %s", new Object[] { Log.getStackTraceString(parame) });
-        paramg.tT(h("fail:missing finalStyle", null));
+        ab.w("MicroMsg.JsApiAnimateCoverView", "get finalStyle error : %s", new Object[] { Log.getStackTraceString(parame) });
+        paramg.BS(j("fail:missing finalStyle", null));
+        AppMethodBeat.o(126292);
         return false;
       }
       if (str.equals("ease-in"))
@@ -90,14 +97,12 @@ public final class b
     }
   }
   
-  protected final boolean aik()
+  public final int w(JSONObject paramJSONObject)
   {
-    return true;
-  }
-  
-  protected final int p(JSONObject paramJSONObject)
-  {
-    return paramJSONObject.getInt("viewId");
+    AppMethodBeat.i(126291);
+    int i = paramJSONObject.getInt("viewId");
+    AppMethodBeat.o(126291);
+    return i;
   }
 }
 

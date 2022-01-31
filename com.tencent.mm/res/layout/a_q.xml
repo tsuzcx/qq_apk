@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" style="@style/p1"
+<RelativeLayout android:orientation="vertical" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <com.tencent.mm.ui.base.MMPullDownView android:id="@id/cu2" android:background="@color/i9" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ListView android:id="@id/cu3" android:paddingLeft="@dimen/kl" android:paddingRight="@dimen/kl" style="@style/ls" />
-        </com.tencent.mm.ui.base.MMPullDownView>
-        <ScrollView android:id="@id/cu4" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <ImageView android:layout_width="@dimen/kn" android:layout_height="@dimen/kn" android:layout_marginTop="@dimen/ke" android:src="@raw/mass_send_icon" />
-                <TextView android:gravity="center" android:layout_marginLeft="@dimen/mg" android:layout_marginTop="@dimen/ko" android:layout_marginRight="@dimen/mg" android:text="@string/cs9" android:lineSpacingExtra="4.0dip" style="@style/k6" />
-                <Button android:id="@id/cu5" android:layout_marginLeft="@dimen/mg" android:layout_marginTop="@dimen/kp" android:layout_marginRight="@dimen/mg" android:text="@string/cs3" style="@style/mu" />
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:id="@id/cu6" android:background="@drawable/at6" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@id/cu7" android:layout_margin="@dimen/mq" android:text="@string/cs3" style="@style/mw" />
-    </LinearLayout>
-</LinearLayout>
+    <ListView android:orientation="vertical" android:id="@id/csa" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/of" android:layout_marginRight="@dimen/of" android:overScrollMode="never" />
+    <RelativeLayout android:id="@id/csb" android:background="#fff7f7fa" android:paddingLeft="@dimen/la" android:paddingRight="@dimen/la" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/o5" android:textColor="@color/dj" android:id="@id/csc" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cod" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/o5" android:textColor="@color/h6" android:id="@id/csd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/coe" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/cse" android:background="#ffe64340" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:text="" android:layout_alignParentTop="true" />
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/b1e" />
+</RelativeLayout>

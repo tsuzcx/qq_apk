@@ -13,13 +13,13 @@ final class ChangeBounds$2
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    av.F(this.pE).remove(this.pF);
-    av.c(this.val$view, this.pG);
+    au.J(this.qB).remove(this.qC);
+    au.d(this.val$view, this.qD);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.transition.ChangeBounds.2
  * JD-Core Version:    0.7.0.1
  */

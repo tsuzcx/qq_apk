@@ -1,36 +1,24 @@
 package com.tencent.smtt.sdk;
 
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.smtt.utils.Apn;
+import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.export.external.interfaces.IconListener;
 
 class bn
-  extends Thread
+  implements IconListener
 {
-  bn(WebView paramWebView, Context paramContext) {}
+  bn(WebIconDatabase paramWebIconDatabase, WebIconDatabase.a parama) {}
   
-  public void run()
+  public void onReceivedIcon(String paramString, Bitmap paramBitmap)
   {
-    try
-    {
-      if (Apn.getApnType(this.a) == 3) {}
-      for (boolean bool = true;; bool = false)
-      {
-        QbSdk.e = bool;
-        QbSdk.f = System.currentTimeMillis();
-        IntentFilter localIntentFilter = new IntentFilter();
-        localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-        this.a.getApplicationContext().registerReceiver(WebView.e(), localIntentFilter);
-        return;
-      }
-      return;
-    }
-    catch (Throwable localThrowable) {}
+    AppMethodBeat.i(139416);
+    this.a.a(paramString, paramBitmap);
+    AppMethodBeat.o(139416);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.bn
  * JD-Core Version:    0.7.0.1
  */

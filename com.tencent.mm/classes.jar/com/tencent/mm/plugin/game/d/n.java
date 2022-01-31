@@ -1,89 +1,103 @@
 package com.tencent.mm.plugin.game.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class n
   extends com.tencent.mm.bv.a
 {
-  public String kRN;
-  public String kRP;
-  public String kRZ;
-  public String kSF;
-  public int kSG;
+  public String Desc;
+  public String Name;
+  public String npR;
+  public String nqE;
+  public int nqF;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(111553);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.kSF != null) {
-        paramVarArgs.d(1, this.kSF);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.nqE != null) {
+        paramVarArgs.e(1, this.nqE);
       }
-      if (this.kRZ != null) {
-        paramVarArgs.d(2, this.kRZ);
+      if (this.Name != null) {
+        paramVarArgs.e(2, this.Name);
       }
-      if (this.kRN != null) {
-        paramVarArgs.d(3, this.kRN);
+      if (this.Desc != null) {
+        paramVarArgs.e(3, this.Desc);
       }
-      if (this.kRP != null) {
-        paramVarArgs.d(4, this.kRP);
+      if (this.npR != null) {
+        paramVarArgs.e(4, this.npR);
       }
-      paramVarArgs.gB(5, this.kSG);
+      paramVarArgs.aO(5, this.nqF);
+      AppMethodBeat.o(111553);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.kSF == null) {
-        break label379;
+      if (this.nqE == null) {
+        break label438;
       }
     }
-    label379:
-    for (int i = d.a.a.b.b.a.e(1, this.kSF) + 0;; i = 0)
+    label438:
+    for (int i = e.a.a.b.b.a.f(1, this.nqE) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.kRZ != null) {
-        paramInt = i + d.a.a.b.b.a.e(2, this.kRZ);
+      if (this.Name != null) {
+        paramInt = i + e.a.a.b.b.a.f(2, this.Name);
       }
       i = paramInt;
-      if (this.kRN != null) {
-        i = paramInt + d.a.a.b.b.a.e(3, this.kRN);
+      if (this.Desc != null) {
+        i = paramInt + e.a.a.b.b.a.f(3, this.Desc);
       }
       paramInt = i;
-      if (this.kRP != null) {
-        paramInt = i + d.a.a.b.b.a.e(4, this.kRP);
+      if (this.npR != null) {
+        paramInt = i + e.a.a.b.b.a.f(4, this.npR);
       }
-      return paramInt + d.a.a.a.gy(5, this.kSG);
+      i = e.a.a.b.b.a.bl(5, this.nqF);
+      AppMethodBeat.o(111553);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        AppMethodBeat.o(111553);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         n localn = (n)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(111553);
           return -1;
         case 1: 
-          localn.kSF = locala.xpH.readString();
+          localn.nqE = locala.CLY.readString();
+          AppMethodBeat.o(111553);
           return 0;
         case 2: 
-          localn.kRZ = locala.xpH.readString();
+          localn.Name = locala.CLY.readString();
+          AppMethodBeat.o(111553);
           return 0;
         case 3: 
-          localn.kRN = locala.xpH.readString();
+          localn.Desc = locala.CLY.readString();
+          AppMethodBeat.o(111553);
           return 0;
         case 4: 
-          localn.kRP = locala.xpH.readString();
+          localn.npR = locala.CLY.readString();
+          AppMethodBeat.o(111553);
           return 0;
         }
-        localn.kSG = locala.xpH.oD();
+        localn.nqF = locala.CLY.sl();
+        AppMethodBeat.o(111553);
         return 0;
       }
+      AppMethodBeat.o(111553);
       return -1;
     }
   }

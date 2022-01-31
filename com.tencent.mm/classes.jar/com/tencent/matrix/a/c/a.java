@@ -7,29 +7,17 @@ import java.util.ListIterator;
 
 public final class a
 {
-  private static String bnW = null;
-  private static String bnX = null;
-  
-  public static void ag(Context paramContext)
-  {
-    if (bnW == null) {
-      bnW = paramContext.getPackageName();
-    }
-  }
-  
-  public static void bw(String paramString)
-  {
-    bnX = paramString;
-  }
+  private static String bNv = null;
+  private static String sPackageName = null;
   
   public static String getPackageName()
   {
-    return bnW;
+    return sPackageName;
   }
   
   public static String getProcessName()
   {
-    return bnX;
+    return bNv;
   }
   
   public static String getThrowableStack(Throwable paramThrowable)
@@ -48,7 +36,7 @@ public final class a
       }
       i += 1;
     }
-    if ((paramThrowable.size() > 10) && (bnW != null))
+    if ((paramThrowable.size() > 10) && (sPackageName != null))
     {
       localObject = paramThrowable.listIterator(paramThrowable.size());
       do
@@ -56,7 +44,7 @@ public final class a
         if (!((ListIterator)localObject).hasPrevious()) {
           break;
         }
-        if (!((StackTraceElement)((ListIterator)localObject).previous()).getClassName().contains(bnW)) {
+        if (!((StackTraceElement)((ListIterator)localObject).previous()).getClassName().contains(sPackageName)) {
           ((ListIterator)localObject).remove();
         }
       } while (paramThrowable.size() > 10);
@@ -67,6 +55,18 @@ public final class a
       ((StringBuffer)localObject).append((StackTraceElement)paramThrowable.next()).append('\n');
     }
     return ((StringBuffer)localObject).toString();
+  }
+  
+  public static void setPackageName(Context paramContext)
+  {
+    if (sPackageName == null) {
+      sPackageName = paramContext.getPackageName();
+    }
+  }
+  
+  public static void setProcessName(String paramString)
+  {
+    bNv = paramString;
   }
 }
 

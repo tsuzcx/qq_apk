@@ -1,117 +1,130 @@
 package com.tencent.mm.plugin.appbrand.ui.collection;
 
-import a.d.b.g;
+import a.f.b.j;
+import a.l;
+import a.v;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.widget.ListAdapter;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI.a;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.plugin.appbrand.y.i;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s.b;
-import com.tencent.mm.ui.widget.sortlist.DragSortListView;
-import com.tencent.mm.ui.widget.sortlist.DragSortListView.h;
-import com.tencent.mm.ui.widget.sortlist.DragSortListView.l;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView.a;
+import android.support.v7.widget.RecyclerView.v;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.desktop.DragFeatureView;
+import com.tencent.mm.plugin.appbrand.widget.desktop.a.c;
+import com.tencent.mm.plugin.appbrand.widget.desktop.a.e;
+import com.tencent.mm.plugin.appbrand.widget.desktop.a.f;
+import java.util.List;
 
-public final class b
-  extends AppBrandLauncherUI.a
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionDragFeatureView;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/DragFeatureView;", "context", "Landroid/content/Context;", "recyclerView", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;)V", "mFloatViewHolder", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionViewHolder;", "getRecyclerView", "()Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;", "animateFloatViewHolderAppearance", "", "floatHolder", "attachDragCallback", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/ItemDragCallback;", "viewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "createFloatViewForCallback", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "holder", "getOffsetOfFloatAnimation", "", "onBindFloatViewHolder", "originHolder", "onCreateFloatViewHolder", "Landroid/view/ViewGroup;", "onListMayChanged", "onListMayChanged$plugin_appbrand_integration_release", "onViewAdded", "child", "resetFloatViewHolder", "setRubbishViewVisible", "visibility", "", "plugin-appbrand-integration_release"})
+@SuppressLint({"ViewConstructor"})
+public class b
+  extends DragFeatureView
 {
-  public static final b.a hgs = new b.a((byte)0);
-  private DragSortListView hgq;
-  private c hgr;
+  private m iRU;
+  private final h iRV;
   
-  public final int getLayoutId()
+  public b(Context paramContext, h paramh)
   {
-    return y.h.app_brand_collection_sort_list;
+    super(paramContext);
+    AppMethodBeat.i(135086);
+    this.iRV = paramh;
+    AppMethodBeat.o(135086);
   }
   
-  public final void initView()
+  public final c<?> N(RecyclerView.v paramv)
   {
-    this.hgq = ((DragSortListView)aoW());
-    Object localObject1 = this.hgq;
-    if (localObject1 != null) {
-      ((DragSortListView)localObject1).setDropListener((DragSortListView.h)new b.b(this));
-    }
-    localObject1 = this.hgq;
-    if (localObject1 != null) {
-      ((DragSortListView)localObject1).setRemoveListener((DragSortListView.l)new c(this));
-    }
-    localObject1 = getActivity();
-    if (localObject1 == null) {
-      g.cUk();
-    }
-    g.j(localObject1, "activity!!");
-    localObject1 = (Context)localObject1;
-    Object localObject2 = getArguments();
-    if (localObject2 == null) {
-      g.cUk();
-    }
-    localObject2 = ((Bundle)localObject2).getParcelableArrayList("KEY_SORT_DATA_LIST");
-    if (localObject2 == null) {
-      g.cUk();
-    }
-    this.hgr = new c((Context)localObject1, (ArrayList)localObject2);
-    localObject1 = this.hgr;
-    if (localObject1 == null) {
-      g.cUk();
-    }
-    localObject2 = this.hgq;
-    if (localObject2 == null) {
-      g.cUk();
-    }
-    g.k(localObject2, "list");
-    ((c)localObject1).hgq = ((DragSortListView)localObject2);
-    localObject2 = ((c)localObject1).hgq;
-    if (localObject2 == null) {
-      g.cUk();
-    }
-    ((DragSortListView)localObject2).setAdapter((ListAdapter)localObject1);
-  }
-  
-  public final void onActivityCreated(Bundle paramBundle)
-  {
-    super.onActivityCreated(paramBundle);
-    FragmentActivity localFragmentActivity = getActivity();
-    paramBundle = localFragmentActivity;
-    if (!(localFragmentActivity instanceof MMActivity)) {
-      paramBundle = null;
-    }
-    paramBundle = (MMActivity)paramBundle;
-    if (paramBundle != null) {
-      paramBundle.a(0, getString(y.j.app_brand_star_sort_finish), (MenuItem.OnMenuItemClickListener)new b.d(this), s.b.uNz);
-    }
-    localFragmentActivity = getActivity();
-    paramBundle = localFragmentActivity;
-    if (!(localFragmentActivity instanceof MMActivity)) {
-      paramBundle = null;
-    }
-    paramBundle = (MMActivity)paramBundle;
-    if (paramBundle != null) {
-      paramBundle.setBackBtn((MenuItem.OnMenuItemClickListener)new b.e(this), y.i.actionbar_icon_dark_close);
-    }
-  }
-  
-  static final class c
-    implements DragSortListView.l
-  {
-    c(b paramb) {}
-    
-    public final void remove(int paramInt)
+    AppMethodBeat.i(135083);
+    if ((paramv != null) && (paramv.jO() == 1))
     {
-      c localc = b.a(this.hgt);
-      if (localc != null) {
-        localc.mq(paramInt);
+      paramv = (FrameLayout)this;
+      RecyclerView.a locala = this.iRV.getAdapter();
+      if (locala == null)
+      {
+        paramv = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.ui.collection.CollectionAdapter");
+        AppMethodBeat.o(135083);
+        throw paramv;
+      }
+      paramv = new e(paramv, (List)((a)locala).iRT, (f)new b.b());
+      paramv.a((com.tencent.mm.plugin.appbrand.widget.desktop.a.a)new b.a(this));
+      paramv = (c)paramv;
+      AppMethodBeat.o(135083);
+      return paramv;
+    }
+    AppMethodBeat.o(135083);
+    return null;
+  }
+  
+  public void aMV() {}
+  
+  public final h getRecyclerView()
+  {
+    return this.iRV;
+  }
+  
+  public final void onViewAdded(View paramView)
+  {
+    AppMethodBeat.i(135085);
+    super.onViewAdded(paramView);
+    Object localObject = this.iRU;
+    m localm;
+    ViewPropertyAnimator localViewPropertyAnimator;
+    float f2;
+    float f1;
+    if (localObject != null)
+    {
+      localObject = ((m)localObject).aku;
+      if (j.e(paramView, localObject))
+      {
+        localm = this.iRU;
+        if (localm == null) {
+          j.ebi();
+        }
+        localViewPropertyAnimator = localm.aku.animate();
+        paramView = localm.aku;
+        j.p(paramView, "floatHolder.itemView");
+        f2 = paramView.getTranslationY();
+        TextView localTextView = localm.iSf;
+        localObject = localTextView.getLayoutParams();
+        paramView = (View)localObject;
+        if (!(localObject instanceof RelativeLayout.LayoutParams)) {
+          paramView = null;
+        }
+        paramView = (RelativeLayout.LayoutParams)paramView;
+        f1 = localTextView.getHeight();
+        if (paramView == null) {
+          break label235;
+        }
+        int i = paramView.topMargin;
+        f1 = paramView.bottomMargin + i + f1;
       }
     }
+    label235:
+    for (;;)
+    {
+      localViewPropertyAnimator.translationY(f1 / 2.0F + f2).setDuration(1L).start();
+      localm.aku.animate().scaleX(1.3F).scaleY(1.3F).setDuration(200L).setListener(null).setUpdateListener(null).start();
+      localm.aku.animate().alpha(0.6F).setDuration(200L).setListener(null).setUpdateListener(null).start();
+      AppMethodBeat.o(135085);
+      return;
+      localObject = null;
+      break;
+    }
+  }
+  
+  public final void setRubbishViewVisible(int paramInt)
+  {
+    AppMethodBeat.i(135084);
+    super.setRubbishViewVisible(paramInt);
+    AppMethodBeat.o(135084);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.b
  * JD-Core Version:    0.7.0.1
  */

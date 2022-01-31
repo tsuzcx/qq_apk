@@ -1,8 +1,12 @@
 package com.tencent.mm.plugin.w;
 
-public abstract interface a
+public abstract class a
+  implements b
 {
-  public abstract void update(int paramInt);
+  public int getType()
+  {
+    return 0;
+  }
 }
 
 

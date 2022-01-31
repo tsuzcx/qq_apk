@@ -9,13 +9,9 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.l;
 import com.tencent.mm.plugin.fav.a.l.a;
-import com.tencent.mm.plugin.fav.ui.n.b;
-import com.tencent.mm.plugin.fav.ui.n.d;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.plugin.fav.ui.n.f;
 import com.tencent.mm.plugin.fav.ui.widget.FavTagPanel;
-import com.tencent.mm.protocal.c.yt;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ada;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMTagPanel.a;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -28,74 +24,74 @@ public abstract class c
   implements l.a, MMTagPanel.a
 {
   private Context context;
-  private int keS = n.b.normal_text_color;
-  private int keT = n.d.fav_tag_white_tab_selector;
-  private Set<String> keU = new HashSet();
+  private int mzB = 2131690322;
+  private int mzC = 2130838830;
+  private Set<String> mzD = new HashSet();
   
   public c(Context paramContext)
   {
     this.context = paramContext;
   }
   
-  public final void Bc(String paramString)
+  public final void Le(String paramString)
   {
-    Db(paramString);
-    CX(paramString);
+    Od(paramString);
+    NZ(paramString);
   }
   
-  public final void Bd(String paramString)
+  public final void Lf(String paramString)
   {
-    Da(paramString);
-    CW(paramString);
+    Oc(paramString);
+    NY(paramString);
   }
   
-  public final void Be(String paramString) {}
+  public final void Lg(String paramString) {}
   
-  public final void Bf(String paramString) {}
+  public final void Lh(String paramString) {}
   
-  public final void Bg(String paramString) {}
+  public final void Li(String paramString) {}
   
-  public abstract void CW(String paramString);
+  protected abstract void NY(String paramString);
   
-  public abstract void CX(String paramString);
+  protected abstract void NZ(String paramString);
   
-  public final void Da(String paramString)
+  public final void Oc(String paramString)
   {
-    this.keU.add(paramString);
+    this.mzD.add(paramString);
     notifyDataSetChanged();
   }
   
-  public final void Db(String paramString)
+  public final void Od(String paramString)
   {
-    this.keU.remove(paramString);
+    this.mzD.remove(paramString);
     notifyDataSetChanged();
   }
   
-  public final void aJI() {}
-  
-  public final void aQi()
+  public final void bN(List<String> paramList)
   {
-    y.d("MicroMsg.FavoriteTagPanelAdapter", "on addtag callback");
-    notifyDataSetChanged();
-  }
-  
-  public final void aQj()
-  {
-    y.d("MicroMsg.FavoriteTagPanelAdapter", "on removetag callback");
-    notifyDataSetChanged();
-  }
-  
-  public final void bt(List<String> paramList)
-  {
-    this.keU.clear();
+    this.mzD.clear();
     if (paramList != null) {
-      this.keU.addAll(paramList);
+      this.mzD.addAll(paramList);
     }
+  }
+  
+  public final void bnq() {}
+  
+  public final void bwx()
+  {
+    ab.d("MicroMsg.FavoriteTagPanelAdapter", "on addtag callback");
+    notifyDataSetChanged();
+  }
+  
+  public final void bwy()
+  {
+    ab.d("MicroMsg.FavoriteTagPanelAdapter", "on removetag callback");
+    notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    ((ae)g.t(ae.class)).getFavTagSetMgr();
+    ((ae)g.G(ae.class)).getFavTagSetMgr();
     return 1;
   }
   
@@ -109,44 +105,44 @@ public abstract class c
     Set localSet;
     if (paramView == null)
     {
-      paramView = View.inflate(this.context, n.f.fav_tag_panel_item, null);
+      paramView = View.inflate(this.context, 2130969563, null);
       paramViewGroup = new c.a();
-      paramViewGroup.icl = ((TextView)paramView.findViewById(n.e.fav_panel_catalog));
-      paramViewGroup.keV = ((FavTagPanel)paramView.findViewById(n.e.fav_tag_panel));
-      paramViewGroup.keV.setCallBack(this);
-      paramViewGroup.keV.setTagNormalBG(this.keT);
-      paramViewGroup.keV.setTagNormalTextColorRes(this.keS);
+      paramViewGroup.jTb = ((TextView)paramView.findViewById(2131824094));
+      paramViewGroup.mzE = ((FavTagPanel)paramView.findViewById(2131824095));
+      paramViewGroup.mzE.setCallBack(this);
+      paramViewGroup.mzE.setTagNormalBG(this.mzC);
+      paramViewGroup.mzE.setTagNormalTextColorRes(this.mzB);
       paramView.setTag(paramViewGroup);
-      paramViewGroup = paramViewGroup.keV;
-      localSet = this.keU;
-      localObject = ((ae)g.t(ae.class)).getFavTagSetMgr().qY(paramInt);
+      paramViewGroup = paramViewGroup.mzE;
+      localSet = this.mzD;
+      localObject = ((ae)g.G(ae.class)).getFavTagSetMgr().vT(paramInt);
       if ((localObject != null) && (!((List)localObject).isEmpty())) {
-        break label178;
+        break label175;
       }
       if (localObject != null) {
-        break label172;
+        break label169;
       }
     }
-    label172:
+    label169:
     for (boolean bool = true;; bool = false)
     {
-      y.e("MicroMsg.FavTagPanel", "setTagListByTagInfo,null == tags ?%B,", new Object[] { Boolean.valueOf(bool) });
+      ab.e("MicroMsg.FavTagPanel", "setTagListByTagInfo,null == tags ?%B,", new Object[] { Boolean.valueOf(bool) });
       return paramView;
       paramViewGroup = (c.a)paramView.getTag();
       break;
     }
-    label178:
-    y.i("MicroMsg.FavTagPanel", "setTagListByTagInfo,tags.size = %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
+    label175:
+    ab.i("MicroMsg.FavTagPanel", "setTagListByTagInfo,tags.size = %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
     LinkedList localLinkedList = new LinkedList();
     Object localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      localLinkedList.add(((yt)((Iterator)localObject).next()).rtH);
+      localLinkedList.add(((ada)((Iterator)localObject).next()).smP);
     }
     paramViewGroup.a(localSet, localLinkedList);
     return paramView;
   }
   
-  public final void i(boolean paramBoolean, int paramInt) {}
+  public final void t(boolean paramBoolean, int paramInt) {}
 }
 
 

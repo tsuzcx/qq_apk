@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class p$b$1
-  extends ah
+  extends ak
 {
   p$b$1(p.b paramb, p paramp) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    if (p.b(this.pLN.pLL) <= 0) {
+    AppMethodBeat.i(26123);
+    if (p.b(this.trJ.trH) <= 0)
+    {
+      AppMethodBeat.o(26123);
       return;
     }
-    p.c(this.pLN.pLL);
+    p.c(this.trJ.trH);
+    AppMethodBeat.o(26123);
   }
 }
 

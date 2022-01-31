@@ -1,81 +1,101 @@
 package com.tencent.mm.plugin.fingerprint.ui;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.soter.d.a;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.pluginsdk.wallet.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.wallet.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.lang.ref.WeakReference;
 
 public final class FingerPrintAuthUI$a
-  implements c
+  implements d
 {
-  private WeakReference<FingerPrintAuthUI> kmj = null;
+  private WeakReference<FingerPrintAuthUI> mGZ;
   
   public FingerPrintAuthUI$a(FingerPrintAuthUI paramFingerPrintAuthUI1, FingerPrintAuthUI paramFingerPrintAuthUI2)
   {
-    this.kmj = new WeakReference(paramFingerPrintAuthUI2);
+    AppMethodBeat.i(41638);
+    this.mGZ = null;
+    this.mGZ = new WeakReference(paramFingerPrintAuthUI2);
+    AppMethodBeat.o(41638);
   }
   
-  private FingerPrintAuthUI aTk()
+  private FingerPrintAuthUI bzG()
   {
-    if (this.kmj != null) {
-      return (FingerPrintAuthUI)this.kmj.get();
+    AppMethodBeat.i(41639);
+    if (this.mGZ != null)
+    {
+      FingerPrintAuthUI localFingerPrintAuthUI = (FingerPrintAuthUI)this.mGZ.get();
+      AppMethodBeat.o(41639);
+      return localFingerPrintAuthUI;
     }
+    AppMethodBeat.o(41639);
     return null;
   }
   
-  public final void aR(int paramInt1, int paramInt2)
+  public final void bC(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(41640);
     switch (paramInt1)
     {
     }
-    String str;
-    do
+    for (;;)
     {
-      for (;;)
+      AppMethodBeat.o(41640);
+      return;
+      ab.i("MicroMsg.FingerPrintAuthUI", "identify success");
+      if (bzG() != null)
       {
+        FingerPrintAuthUI.a(bzG(), paramInt2);
+        AppMethodBeat.o(41640);
         return;
-        y.i("MicroMsg.FingerPrintAuthUI", "identify success");
-        if (aTk() != null)
+        ab.i("MicroMsg.FingerPrintAuthUI", "identify FingerPrintConst.RESULT_NO_MATCH");
+        if (bzG() != null)
         {
-          FingerPrintAuthUI.a(aTk(), paramInt2);
+          FingerPrintAuthUI.a(bzG());
+          FingerPrintAuthUI.a(this.mGW, true);
+          AppMethodBeat.o(41640);
           return;
-          y.i("MicroMsg.FingerPrintAuthUI", "identify FingerPrintConst.RESULT_NO_MATCH");
-          if (aTk() != null)
+          ab.i("MicroMsg.FingerPrintAuthUI", "identify timeout");
+          if (bzG() != null)
           {
-            FingerPrintAuthUI.a(aTk());
-            FingerPrintAuthUI.a(this.kmg, true);
+            FingerPrintAuthUI.a(this.mGW, false);
+            AppMethodBeat.o(41640);
             return;
-            y.i("MicroMsg.FingerPrintAuthUI", "identify timeout");
-            if (aTk() != null)
+            String str = ah.getContext().getString(2131304074);
+            a.d(1000, -1000223, paramInt1, "fingerprint error");
+            if (bzG() != null)
             {
-              FingerPrintAuthUI.a(this.kmg, false);
+              FingerPrintAuthUI.a(bzG(), str, -1);
+              AppMethodBeat.o(41640);
               return;
-              y.i("MicroMsg.FingerPrintAuthUI", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
-              str = ae.getContext().getString(a.i.soter_on_error_common);
+              ab.i("MicroMsg.FingerPrintAuthUI", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
+              str = ah.getContext().getString(2131304072);
               if (paramInt1 == 10308)
               {
-                str = ae.getContext().getString(a.i.soter_on_error_max_trial);
-                a.c(6, -1000223, -1, "too many trial");
+                str = ah.getContext().getString(2131304073);
+                a.d(6, -1000223, -1, "too many trial");
               }
-              while (aTk() != null)
+              while (bzG() != null)
               {
-                FingerPrintAuthUI.a(aTk(), str, -1);
+                FingerPrintAuthUI.a(bzG(), str, -1);
+                AppMethodBeat.o(41640);
                 return;
-                a.c(1000, -1000223, paramInt1, "fingerprint error");
+                a.d(1000, -1000223, paramInt1, "fingerprint error");
+              }
+              ab.i("MicroMsg.FingerPrintAuthUI", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
+              str = ah.getContext().getString(2131304072);
+              a.d(1000, -1000223, paramInt1, "fingerprint error");
+              a.Fw(2);
+              if (bzG() != null) {
+                FingerPrintAuthUI.a(bzG(), str, -1);
               }
             }
           }
         }
       }
-      y.i("MicroMsg.FingerPrintAuthUI", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
-      str = ae.getContext().getString(a.i.soter_on_error_common);
-      a.c(1000, -1000223, paramInt1, "fingerprint error");
-      a.zk(2);
-    } while (aTk() == null);
-    FingerPrintAuthUI.a(aTk(), str, -1);
+    }
   }
 }
 

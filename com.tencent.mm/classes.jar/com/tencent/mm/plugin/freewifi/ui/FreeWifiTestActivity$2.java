@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class FreeWifiTestActivity$2
@@ -13,10 +14,12 @@ final class FreeWifiTestActivity$2
   
   public final void onClick(View paramView)
   {
-    h.a(this.ktb, "t12345", "t54331", new DialogInterface.OnClickListener()
+    AppMethodBeat.i(21109);
+    h.a(this.mOP, "t12345", "t54331", new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     }, null);
+    AppMethodBeat.o(21109);
   }
 }
 

@@ -1,26 +1,116 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
-import com.google.android.gms.wearable.ConnectionConfiguration;
+import com.google.android.gms.common.internal.Preconditions;
+import com.google.android.gms.wearable.ChannelIOException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.InputStream;
+import javax.annotation.Nullable;
 
-public class zzbj
-  extends zza
+public final class zzbj
+  extends InputStream
 {
-  public static final Parcelable.Creator<zzbj> CREATOR = new zzbk();
-  public final int statusCode;
-  public final ConnectionConfiguration[] zzbUE;
+  private final InputStream zzcv;
+  @Nullable
+  private volatile zzav zzcw;
   
-  public zzbj(int paramInt, ConnectionConfiguration[] paramArrayOfConnectionConfiguration)
+  public zzbj(InputStream paramInputStream)
   {
-    this.statusCode = paramInt;
-    this.zzbUE = paramArrayOfConnectionConfiguration;
+    AppMethodBeat.i(71075);
+    this.zzcv = ((InputStream)Preconditions.checkNotNull(paramInputStream));
+    AppMethodBeat.o(71075);
   }
   
-  public void writeToParcel(Parcel paramParcel, int paramInt)
+  private final int zza(int paramInt)
   {
-    zzbk.zza(this, paramParcel, paramInt);
+    AppMethodBeat.i(71086);
+    if (paramInt == -1)
+    {
+      Object localObject = this.zzcw;
+      if (localObject != null)
+      {
+        localObject = new ChannelIOException("Channel closed unexpectedly before stream was finished", ((zzav)localObject).zzg, ((zzav)localObject).zzcj);
+        AppMethodBeat.o(71086);
+        throw ((Throwable)localObject);
+      }
+    }
+    AppMethodBeat.o(71086);
+    return paramInt;
+  }
+  
+  public final int available()
+  {
+    AppMethodBeat.i(71077);
+    int i = this.zzcv.available();
+    AppMethodBeat.o(71077);
+    return i;
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(71078);
+    this.zzcv.close();
+    AppMethodBeat.o(71078);
+  }
+  
+  public final void mark(int paramInt)
+  {
+    AppMethodBeat.i(71079);
+    this.zzcv.mark(paramInt);
+    AppMethodBeat.o(71079);
+  }
+  
+  public final boolean markSupported()
+  {
+    AppMethodBeat.i(71080);
+    boolean bool = this.zzcv.markSupported();
+    AppMethodBeat.o(71080);
+    return bool;
+  }
+  
+  public final int read()
+  {
+    AppMethodBeat.i(71081);
+    int i = zza(this.zzcv.read());
+    AppMethodBeat.o(71081);
+    return i;
+  }
+  
+  public final int read(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(71082);
+    int i = zza(this.zzcv.read(paramArrayOfByte));
+    AppMethodBeat.o(71082);
+    return i;
+  }
+  
+  public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(71083);
+    paramInt1 = zza(this.zzcv.read(paramArrayOfByte, paramInt1, paramInt2));
+    AppMethodBeat.o(71083);
+    return paramInt1;
+  }
+  
+  public final void reset()
+  {
+    AppMethodBeat.i(71084);
+    this.zzcv.reset();
+    AppMethodBeat.o(71084);
+  }
+  
+  public final long skip(long paramLong)
+  {
+    AppMethodBeat.i(71085);
+    paramLong = this.zzcv.skip(paramLong);
+    AppMethodBeat.o(71085);
+    return paramLong;
+  }
+  
+  final void zza(zzav paramzzav)
+  {
+    AppMethodBeat.i(71076);
+    this.zzcw = ((zzav)Preconditions.checkNotNull(paramzzav));
+    AppMethodBeat.o(71076);
   }
 }
 

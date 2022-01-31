@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.walletlock.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.soter.d.m;
 import com.tencent.mm.plugin.walletlock.gesture.a.b;
 import com.tencent.mm.plugin.walletlock.gesture.a.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import com.tencent.soter.core.c.j;
@@ -12,105 +13,160 @@ import com.tencent.soter.core.c.j;
 public enum g
 {
   int mType = -1;
-  public String qRa;
-  public j qRb;
+  public String uGi;
+  public j uGj;
+  
+  static
+  {
+    AppMethodBeat.i(51731);
+    uGh = new g("instance");
+    uGk = new g[] { uGh };
+    AppMethodBeat.o(51731);
+  }
   
   private g() {}
   
-  public static boolean bXQ()
+  public static void cXB()
   {
-    boolean bool = com.tencent.mm.plugin.walletlock.fingerprint.a.a.bXQ();
-    y.i("MicroMsg.WalletLockManager", "isUserSetFingerprintLock: %b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.i(51728);
+    d.cXB();
+    com.tencent.mm.plugin.walletlock.fingerprint.a.a.cXB();
+    AppMethodBeat.o(51728);
+  }
+  
+  public static boolean cXK()
+  {
+    AppMethodBeat.i(51719);
+    boolean bool = b.cXK();
+    AppMethodBeat.o(51719);
     return bool;
   }
   
-  public static boolean bXR()
+  public static boolean cXy()
   {
-    return com.tencent.mm.plugin.walletlock.fingerprint.a.a.bXR();
+    AppMethodBeat.i(51721);
+    boolean bool = com.tencent.mm.plugin.walletlock.fingerprint.a.a.cXy();
+    ab.i("MicroMsg.WalletLockManager", "isUserSetFingerprintLock: %b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(51721);
+    return bool;
   }
   
-  public static void bXT()
+  public static boolean cXz()
   {
-    d.bXT();
-    com.tencent.mm.plugin.walletlock.fingerprint.a.a.bXT();
+    AppMethodBeat.i(51723);
+    boolean bool = com.tencent.mm.plugin.walletlock.fingerprint.a.a.cXz();
+    AppMethodBeat.o(51723);
+    return bool;
   }
   
-  public static boolean bYA()
+  public static void cYh()
   {
-    return ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.zero.b.a.class)).AA().getInt("TouchLockFunction", 0) != 1;
+    AppMethodBeat.i(51722);
+    com.tencent.mm.plugin.walletlock.fingerprint.a.a.nX(true);
+    AppMethodBeat.o(51722);
   }
   
-  public static boolean bYc()
+  public static void cYi()
   {
-    return b.bYc();
+    AppMethodBeat.i(51724);
+    com.tencent.mm.plugin.walletlock.fingerprint.a.a.nY(true);
+    AppMethodBeat.o(51724);
   }
   
-  public static void bYx()
+  public static boolean cYj()
   {
-    com.tencent.mm.plugin.walletlock.fingerprint.a.a.kO(true);
-  }
-  
-  public static void bYy()
-  {
-    com.tencent.mm.plugin.walletlock.fingerprint.a.a.kP(true);
-  }
-  
-  public static boolean bYz()
-  {
-    return (bYA()) && (m.bKV()) && (com.tencent.soter.core.a.hF(ae.getContext()));
-  }
-  
-  public static void kR(boolean paramBoolean)
-  {
-    b.kR(paramBoolean);
-  }
-  
-  public static void kS(boolean paramBoolean)
-  {
-    y.i("MicroMsg.WalletLockManager", "alvinluo closeAllWalletLock");
-    kT(paramBoolean);
-    b.kR(false);
-    com.tencent.mm.plugin.walletlock.fingerprint.a.a.kP(false);
-    if (paramBoolean) {
-      com.tencent.mm.plugin.walletlock.fingerprint.a.a.bXP();
+    AppMethodBeat.i(51729);
+    if ((cYk()) && (m.cyg()) && (com.tencent.soter.core.a.jg(ah.getContext())))
+    {
+      AppMethodBeat.o(51729);
+      return true;
     }
+    AppMethodBeat.o(51729);
+    return false;
   }
   
-  public static void kT(boolean paramBoolean)
+  public static boolean cYk()
   {
-    com.tencent.mm.plugin.walletlock.fingerprint.a.a.kO(false);
-    if (paramBoolean) {
-      com.tencent.mm.plugin.walletlock.fingerprint.a.a.bXP();
+    AppMethodBeat.i(51730);
+    if (((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getInt("TouchLockFunction", 0) != 1)
+    {
+      AppMethodBeat.o(51730);
+      return true;
     }
+    AppMethodBeat.o(51730);
+    return false;
   }
   
-  public final void Be(int paramInt)
+  public static void oa(boolean paramBoolean)
   {
-    y.i("MicroMsg.WalletLockManager", "alvinluo old wallet lock type: %d, new type: %d", new Object[] { Integer.valueOf(this.mType), Integer.valueOf(paramInt) });
+    AppMethodBeat.i(51720);
+    b.oa(paramBoolean);
+    AppMethodBeat.o(51720);
+  }
+  
+  public static void ob(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51725);
+    ab.i("MicroMsg.WalletLockManager", "alvinluo closeAllWalletLock");
+    oc(paramBoolean);
+    b.oa(false);
+    com.tencent.mm.plugin.walletlock.fingerprint.a.a.nY(false);
+    if (paramBoolean) {
+      com.tencent.mm.plugin.walletlock.fingerprint.a.a.cXx();
+    }
+    AppMethodBeat.o(51725);
+  }
+  
+  public static void oc(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51726);
+    com.tencent.mm.plugin.walletlock.fingerprint.a.a.nX(false);
+    if (paramBoolean) {
+      com.tencent.mm.plugin.walletlock.fingerprint.a.a.cXx();
+    }
+    AppMethodBeat.o(51726);
+  }
+  
+  public final void IQ(int paramInt)
+  {
+    AppMethodBeat.i(51717);
+    ab.i("MicroMsg.WalletLockManager", "alvinluo old wallet lock type: %d, new type: %d", new Object[] { Integer.valueOf(this.mType), Integer.valueOf(paramInt) });
     this.mType = paramInt;
-    com.tencent.mm.kernel.g.DP().Dz().c(ac.a.uxM, Integer.valueOf(paramInt));
-    com.tencent.mm.kernel.g.DP().Dz().mC(true);
+    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yHW, Integer.valueOf(paramInt));
+    com.tencent.mm.kernel.g.RL().Ru().dww();
+    AppMethodBeat.o(51717);
   }
   
-  public final boolean bXN()
+  public final boolean cXv()
   {
-    boolean bool = false;
-    if (this.mType == 1) {
-      bool = b.bYd();
-    }
-    while (this.mType != 2) {
+    AppMethodBeat.i(51727);
+    boolean bool;
+    if (this.mType == 1)
+    {
+      bool = b.cXL();
+      AppMethodBeat.o(51727);
       return bool;
     }
-    y.i("MicroMsg.WalletLockManager", "alvinluo isUserBlockedInFingerprint: %b", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.walletlock.fingerprint.a.a.bXS()) });
-    return com.tencent.mm.plugin.walletlock.fingerprint.a.a.bXS();
+    if (this.mType == 2)
+    {
+      ab.i("MicroMsg.WalletLockManager", "alvinluo isUserBlockedInFingerprint: %b", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.walletlock.fingerprint.a.a.cXA()) });
+      bool = com.tencent.mm.plugin.walletlock.fingerprint.a.a.cXA();
+      AppMethodBeat.o(51727);
+      return bool;
+    }
+    AppMethodBeat.o(51727);
+    return false;
   }
   
-  public final int bYw()
+  public final int cYg()
   {
+    AppMethodBeat.i(51718);
     if (this.mType == -1) {
-      this.mType = ((Integer)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uxM, Integer.valueOf(0))).intValue();
+      this.mType = ((Integer)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yHW, Integer.valueOf(0))).intValue();
     }
-    return this.mType;
+    int i = this.mType;
+    AppMethodBeat.o(51718);
+    return i;
   }
 }
 

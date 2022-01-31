@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/ov" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/am2" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/asw" android:key="contact_info_plugin_view" android:layout="@layout/ab8" />
-    <Preference android:title="@string/aso" android:key="contact_info_plugin_outsize" android:layout="@layout/ab8" />
-    <Preference android:title="@string/asn" android:key="contact_info_plugin_black" android:layout="@layout/ab8" />
+    <Preference android:title="@string/ayq" android:key="contact_info_lbs_go_lbs" android:layout="@layout/afi" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/e2p" android:key="contact_info_plugin_install" android:layout="@layout/a5v" />
-    <Preference android:title="@string/e2v" android:key="contact_info_plugin_uninstall" android:layout="@layout/a84" />
+    <Preference android:title="@string/ayp" android:key="contact_info_lbs_clear_info" android:layout="@layout/akj" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/eda" android:key="contact_info_lbs_install" android:layout="@layout/a95" />
+    <Preference android:title="@string/edg" android:key="contact_info_lbs_uninstall" android:layout="@layout/aap" />
     <PreferenceCategory />
 </PreferenceScreen>

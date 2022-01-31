@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class w
   implements View.OnTouchListener
@@ -16,6 +17,8 @@ public final class w
   public w()
   {
     this(Color.argb(221, 136, 136, 136));
+    AppMethodBeat.i(112218);
+    AppMethodBeat.o(112218);
   }
   
   private w(int paramInt)
@@ -25,6 +28,7 @@ public final class w
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(112219);
     int i = paramMotionEvent.getAction();
     if (i == 0) {
       if ((paramView instanceof ImageView))
@@ -40,6 +44,7 @@ public final class w
     }
     for (;;)
     {
+      AppMethodBeat.o(112219);
       return false;
       if (paramView.getBackground() != null)
       {

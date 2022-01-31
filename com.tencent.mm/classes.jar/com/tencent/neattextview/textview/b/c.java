@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.RectF;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.neattextview.textview.layout.d;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,32 +13,34 @@ import java.util.List;
 public class c
   extends b<ClickableSpan>
 {
-  public boolean mmZ;
+  public boolean isPressed;
   
   public c(int paramInt1, int paramInt2, ClickableSpan paramClickableSpan)
   {
     super(paramInt1, paramInt2, paramClickableSpan);
   }
   
-  public final void a(Canvas paramCanvas, TextPaint paramTextPaint, List<com.tencent.neattextview.textview.layout.c> paramList)
+  public final void a(Canvas paramCanvas, TextPaint paramTextPaint, List<d> paramList)
   {
-    ev(paramList);
-    if (this.mmZ)
+    AppMethodBeat.i(3242);
+    fH(paramList);
+    if (this.isPressed)
     {
       int i = paramTextPaint.getColor();
       int j = paramTextPaint.bgColor;
       boolean bool = paramTextPaint.isUnderlineText();
-      ((ClickableSpan)this.wDz).updateDrawState(paramTextPaint);
+      ((ClickableSpan)this.Bbj).updateDrawState(paramTextPaint);
       paramTextPaint.setColor(paramTextPaint.bgColor);
-      paramList = this.wDy.iterator();
+      paramList = this.Bbi.iterator();
       while (paramList.hasNext()) {
         paramCanvas.drawRect((RectF)paramList.next(), paramTextPaint);
       }
       paramTextPaint.setColor(i);
       paramTextPaint.setUnderlineText(bool);
       paramTextPaint.bgColor = j;
-      this.mmZ = false;
+      this.isPressed = false;
     }
+    AppMethodBeat.o(3242);
   }
 }
 

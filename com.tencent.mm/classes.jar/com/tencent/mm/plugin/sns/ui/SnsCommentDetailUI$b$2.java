@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SnsCommentDetailUI$b$2
   implements View.OnClickListener
@@ -11,7 +12,9 @@ final class SnsCommentDetailUI$b$2
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.SnsCommentDetailUI", "onClick nickTv");
+    AppMethodBeat.i(38830);
+    ab.i("MicroMsg.SnsCommentDetailUI", "onClick nickTv");
+    AppMethodBeat.o(38830);
   }
 }
 

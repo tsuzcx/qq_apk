@@ -47,14 +47,14 @@ public abstract class b$a
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
-    l(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
+    s(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
     paramParcel2.writeNoException();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.a.b.a
  * JD-Core Version:    0.7.0.1
  */

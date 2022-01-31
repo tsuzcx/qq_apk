@@ -1,5 +1,6 @@
 package com.tencent.view.raw;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.InputStream;
 
 public class FilterRawGet
@@ -13,16 +14,21 @@ public class FilterRawGet
   
   public InputStream getInpuStream(String paramString)
   {
+    AppMethodBeat.i(86638);
     try
     {
-      if (mGetInputStream != null) {
-        return mGetInputStream.getInputStream(paramString);
+      if (mGetInputStream != null) {}
+      for (paramString = mGetInputStream.getInputStream(paramString);; paramString = getClass().getResourceAsStream(paramString))
+      {
+        AppMethodBeat.o(86638);
+        return paramString;
       }
-      paramString = getClass().getResourceAsStream(paramString);
-      return paramString;
+      return null;
     }
-    catch (Exception paramString) {}
-    return null;
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(86638);
+    }
   }
   
   public static abstract interface GetInputStream

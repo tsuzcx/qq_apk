@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.input;
 
 public abstract interface e$a
 {
-  public abstract boolean a(z paramz);
+  public abstract boolean a(aa paramaa);
 }
 
 

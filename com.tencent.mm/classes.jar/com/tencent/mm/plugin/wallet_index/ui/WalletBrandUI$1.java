@@ -2,21 +2,23 @@ package com.tencent.mm.plugin.wallet_index.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 
 final class WalletBrandUI$1
   implements DialogInterface.OnCancelListener
 {
-  WalletBrandUI$1(WalletBrandUI paramWalletBrandUI, m paramm) {}
+  WalletBrandUI$1(WalletBrandUI paramWalletBrandUI) {}
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.DQ();
-    g.DO().dJT.c(this.bEe);
-    this.qLY.finish();
+    AppMethodBeat.i(48244);
+    g.RM();
+    g.RK().eHt.a(WalletBrandUI.a(this.uBc));
+    this.uBc.finish();
+    AppMethodBeat.o(48244);
   }
 }
 

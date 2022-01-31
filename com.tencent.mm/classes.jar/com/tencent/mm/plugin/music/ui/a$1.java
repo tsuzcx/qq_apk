@@ -5,10 +5,11 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.av.e;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.e;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 
 final class a$1
@@ -18,20 +19,23 @@ final class a$1
   
   public final void onClick(View paramView)
   {
-    paramView = com.tencent.mm.av.a.Pw();
-    if ((paramView != null) && (paramView.euW) && (!TextUtils.isEmpty(paramView.euX)))
+    AppMethodBeat.i(105055);
+    paramView = com.tencent.mm.aw.a.aiz();
+    if ((paramView != null) && (paramView.fKI) && (!TextUtils.isEmpty(paramView.fKJ)))
     {
-      paramView = paramView.euX;
-      y.i("MusicBanner", "barBackToWebView is true, start to jump Url:%s", new Object[] { paramView });
+      paramView = paramView.fKJ;
+      ab.i("MusicBanner", "barBackToWebView is true, start to jump Url:%s", new Object[] { paramView });
       Intent localIntent = new Intent();
       localIntent.putExtra("rawUrl", paramView);
-      d.b((Context)this.mBr.sdy.get(), "webview", ".ui.tools.WebViewUI", localIntent);
+      d.b((Context)this.pbw.vUD.get(), "webview", ".ui.tools.WebViewUI", localIntent);
+      AppMethodBeat.o(105055);
       return;
     }
     paramView = new Intent();
-    h.nFQ.f(11992, new Object[] { Integer.valueOf(1) });
+    h.qsU.e(11992, new Object[] { Integer.valueOf(1) });
     paramView.putExtra("key_scene", 1);
-    d.b((Context)this.mBr.sdy.get(), "music", ".ui.MusicMainUI", paramView);
+    d.b((Context)this.pbw.vUD.get(), "music", ".ui.MusicMainUI", paramView);
+    AppMethodBeat.o(105055);
   }
 }
 

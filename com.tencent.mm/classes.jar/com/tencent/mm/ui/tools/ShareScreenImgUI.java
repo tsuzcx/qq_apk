@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.tools;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -7,20 +8,19 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.jg.JgClassChecked;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.NotifyReceiver;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
-import com.tencent.mm.sdk.platformtools.MMBitmapFactory.DecodeResultLogger;
-import com.tencent.mm.sdk.platformtools.MMBitmapFactory.KVStatHelper;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.o;
-import com.tencent.mm.sdk.platformtools.t;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.r;
+import com.tencent.mm.sdk.platformtools.w;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.a;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.transmit.MsgRetransmitUI;
 import java.io.File;
 
@@ -29,45 +29,57 @@ import java.io.File;
 public class ShareScreenImgUI
   extends MMActivity
 {
-  private ProgressDialog dnm = null;
-  String filePath = null;
-  private ah handler = new ShareScreenImgUI.1(this);
-  private Intent intent = null;
-  Uri uri = null;
+  private ProgressDialog eeN;
+  String filePath;
+  private ak handler;
+  private Intent intent;
+  Uri uri;
   
-  private void cIO()
+  public ShareScreenImgUI()
   {
-    Toast.makeText(this, R.l.shareimg_get_res_fail, 1).show();
+    AppMethodBeat.i(34967);
+    this.eeN = null;
+    this.intent = null;
+    this.filePath = null;
+    this.uri = null;
+    this.handler = new ShareScreenImgUI.1(this);
+    AppMethodBeat.o(34967);
   }
   
-  private void cJk()
+  private static int auN(String paramString)
   {
-    y.i("MicroMsg.ShareScreenImgUI", "filepath:[%s]", new Object[] { this.filePath });
+    AppMethodBeat.i(34971);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      ab.e("MicroMsg.ShareScreenImgUI", "map : mimeType is null");
+      AppMethodBeat.o(34971);
+      return -1;
+    }
+    paramString = paramString.toLowerCase();
+    if ((paramString.contains("image")) || ((Build.VERSION.SDK_INT >= 28) && (paramString.contains("heic"))))
+    {
+      AppMethodBeat.o(34971);
+      return 0;
+    }
+    ab.d("MicroMsg.ShareScreenImgUI", "map : unknown mimetype, send as file");
+    AppMethodBeat.o(34971);
+    return 3;
+  }
+  
+  private void dNZ()
+  {
+    AppMethodBeat.i(34970);
+    ab.i("MicroMsg.ShareScreenImgUI", "filepath:[%s]", new Object[] { this.filePath });
     Intent localIntent = getIntent();
-    String str = localIntent.resolveType(this);
-    int i;
-    if ((str == null) || (str.length() == 0))
+    int i = auN(localIntent.resolveType(this));
+    if (i == -1)
     {
-      y.e("MicroMsg.ShareScreenImgUI", "map : mimeType is null");
-      i = -1;
-    }
-    while (i == -1)
-    {
-      y.e("MicroMsg.ShareScreenImgUI", "launch, msgType is invalid");
+      ab.e("MicroMsg.ShareScreenImgUI", "launch, msgType is invalid");
       finish();
+      AppMethodBeat.o(34970);
       return;
-      str = str.toLowerCase();
-      if ((str.contains("image")) || ((Build.VERSION.SDK_INT >= 28) && (str.contains("heic"))))
-      {
-        i = 0;
-      }
-      else
-      {
-        y.d("MicroMsg.ShareScreenImgUI", "map : unknown mimetype, send as file");
-        i = 3;
-      }
     }
-    if ((!t.a(getIntent(), "Intro_Switch", false)) && (au.Hz()) && (!au.CW()))
+    if ((!w.a(getIntent(), "Intro_Switch", false)) && (aw.aaB()) && (!aw.QP()))
     {
       localIntent.setData(this.uri);
       localIntent.setClass(this, MsgRetransmitUI.class);
@@ -81,8 +93,9 @@ public class ShareScreenImgUI
     for (;;)
     {
       finish();
+      AppMethodBeat.o(34970);
       return;
-      if (!bk.bl(this.filePath))
+      if (!bo.isNullOrNil(this.filePath))
       {
         localIntent = new Intent(this, ShareImgUI.class);
         localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(this.filePath)));
@@ -93,98 +106,110 @@ public class ShareScreenImgUI
       }
       else
       {
-        cIO();
+        dOa();
       }
     }
   }
   
-  protected final int getLayoutId()
+  private void dOa()
+  {
+    AppMethodBeat.i(34972);
+    Toast.makeText(this, 2131303677, 1).show();
+    AppMethodBeat.o(34972);
+  }
+  
+  public int getLayoutId()
   {
     return -1;
   }
   
-  protected final void initView()
+  public void initView()
   {
+    AppMethodBeat.i(34969);
     this.intent = getIntent();
     if (this.intent == null)
     {
-      y.e("MicroMsg.ShareScreenImgUI", "launch : fail, intent is null");
-      cIO();
+      ab.e("MicroMsg.ShareScreenImgUI", "launch : fail, intent is null");
+      dOa();
       finish();
+      AppMethodBeat.o(34969);
       return;
     }
-    y.i("MicroMsg.ShareScreenImgUI", "intent = " + this.intent);
+    ab.i("MicroMsg.ShareScreenImgUI", "intent = " + this.intent);
     String str = this.intent.getAction();
     this.uri = this.intent.getData();
-    if (bk.bl(str))
+    if (bo.isNullOrNil(str))
     {
-      y.e("MicroMsg.ShareScreenImgUI", "launch : fail, action is null");
-      cIO();
+      ab.e("MicroMsg.ShareScreenImgUI", "launch : fail, action is null");
+      dOa();
       finish();
+      AppMethodBeat.o(34969);
       return;
     }
     if (str.equals("android.intent.action.VIEW"))
     {
-      y.i("MicroMsg.ShareScreenImgUI", "send signal: " + str);
-      if ((this.uri == null) || (!bk.m(this.uri)))
+      ab.i("MicroMsg.ShareScreenImgUI", "send signal: ".concat(String.valueOf(str)));
+      if ((this.uri == null) || (!bo.o(this.uri)))
       {
-        y.e("MicroMsg.ShareScreenImgUI", "launch : fail, not accepted: %s", new Object[] { this.uri });
-        cIO();
+        ab.e("MicroMsg.ShareScreenImgUI", "launch : fail, not accepted: %s", new Object[] { this.uri });
+        dOa();
         finish();
+        AppMethodBeat.o(34969);
         return;
       }
-      getString(R.l.app_tip);
-      this.dnm = com.tencent.mm.ui.base.h.b(this, getString(R.l.app_waiting), true, new ShareScreenImgUI.2(this));
-      this.filePath = bk.h(this, this.uri);
-      if (!bk.bl(this.filePath))
+      getString(2131297087);
+      this.eeN = h.b(this, getString(2131297112), true, new ShareScreenImgUI.2(this));
+      this.filePath = bo.h(this, this.uri);
+      if ((bo.isNullOrNil(this.filePath)) || (!r.aoX(this.filePath)))
       {
-        str = this.filePath;
-        MMBitmapFactory.DecodeResultLogger localDecodeResultLogger = new MMBitmapFactory.DecodeResultLogger();
-        boolean bool = o.a(str, localDecodeResultLogger);
-        if ((!bool) && (localDecodeResultLogger.getDecodeResult() >= 2000))
-        {
-          str = MMBitmapFactory.KVStatHelper.getKVStatString(str, 3, localDecodeResultLogger);
-          com.tencent.mm.plugin.report.service.h.nFQ.aC(12712, str);
-        }
-        if (bool) {}
-      }
-      else
-      {
-        y.e("MicroMsg.ShareScreenImgUI", "launch : fail, filePath is null");
-        cIO();
+        ab.e("MicroMsg.ShareScreenImgUI", "launch : fail, filePath is null");
+        dOa();
         finish();
+        AppMethodBeat.o(34969);
         return;
       }
-      cJk();
+      dNZ();
+      AppMethodBeat.o(34969);
       return;
     }
-    y.e("MicroMsg.ShareScreenImgUI", "launch : fail, uri is null");
-    cIO();
+    ab.e("MicroMsg.ShareScreenImgUI", "launch : fail, uri is null");
+    dOa();
     finish();
+    AppMethodBeat.o(34969);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(34968);
     super.onCreate(paramBundle);
     setMMTitle("");
-    int i = t.a(getIntent(), "wizard_activity_result_code", 0);
+    int i = w.a(getIntent(), "wizard_activity_result_code", 0);
     switch (i)
     {
     default: 
-      y.e("MicroMsg.ShareScreenImgUI", "onCreate, should not reach here, resultCode = " + i);
+      ab.e("MicroMsg.ShareScreenImgUI", "onCreate, should not reach here, resultCode = ".concat(String.valueOf(i)));
       finish();
+      AppMethodBeat.o(34968);
       return;
     case 1: 
       finish();
+      AppMethodBeat.o(34968);
       return;
     }
-    NotifyReceiver.vY();
+    NotifyReceiver.In();
     initView();
+    AppMethodBeat.o(34968);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ShareScreenImgUI
  * JD-Core Version:    0.7.0.1
  */

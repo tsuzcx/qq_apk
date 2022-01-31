@@ -1,7 +1,9 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -10,301 +12,329 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.R.m;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.compatible.e.u;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.compatible.e.ac;
+import com.tencent.mm.compatible.e.x;
 import com.tencent.mm.plugin.freewifi.e.f;
 import com.tencent.mm.plugin.freewifi.k;
 import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.k.b;
 import com.tencent.mm.plugin.freewifi.l;
-import com.tencent.mm.protocal.c.fd;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.freewifi.m;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.protocal.protobuf.gm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.e.c;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.e.d;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class FreeWifiFrontPageUI
   extends MMActivity
 {
-  protected String bHI;
-  protected String bOL;
-  protected int bvj;
+  protected int bWu;
   protected String className;
-  private ah dPi = new FreeWifiFrontPageUI.1(this);
-  private final com.tencent.mm.as.a.a.c eqR;
+  protected String coX;
+  protected int cpt;
+  protected String cwc;
+  private final com.tencent.mm.at.a.a.c fHh;
+  private ak faV;
+  protected String hAq;
   protected Intent intent;
-  protected String kpt;
-  protected int kpu;
-  protected String kpv;
-  protected ImageView krB;
-  protected TextView krC;
-  protected TextView krD;
-  protected Button krE;
-  protected Button krF;
-  protected Dialog krG;
-  protected View krH;
-  protected String krI;
-  protected String krJ;
-  protected String krK;
-  protected String krL;
-  protected com.tencent.mm.plugin.freewifi.e.a krM;
-  private Lock krN;
-  private FreeWifiFrontPageUI.d krO;
-  protected TextView kro;
-  protected TextView krp;
-  protected TextView krq;
-  protected int source;
+  protected String kdt;
+  protected int mLg;
+  protected String mLh;
+  private boolean mMF;
+  protected com.tencent.mm.plugin.freewifi.e.a mNA;
+  private Lock mNB;
+  private FreeWifiFrontPageUI.d mNC;
+  protected TextView mNb;
+  protected TextView mNc;
+  protected TextView mNd;
+  protected ImageView mNq;
+  protected TextView mNr;
+  protected TextView mNs;
+  protected Button mNt;
+  protected Button mNu;
+  protected Dialog mNv;
+  protected View mNw;
+  protected String mNx;
+  protected String mNy;
+  protected String mNz;
   protected String ssid;
   
   public FreeWifiFrontPageUI()
   {
+    AppMethodBeat.i(20974);
+    this.mMF = true;
+    this.faV = new FreeWifiFrontPageUI.1(this);
     c.a locala = new c.a();
-    locala.erd = true;
-    locala.ere = true;
-    locala.eru = R.g.free_wifi_icon_default;
-    locala.erD = true;
-    locala.erE = 0.0F;
-    this.eqR = locala.OV();
+    locala.eNK = true;
+    locala.eNL = true;
+    locala.eNY = 2130838889;
+    locala.eOk = true;
+    locala.eOl = 0.0F;
+    this.fHh = locala.ahY();
+    AppMethodBeat.o(20974);
   }
   
-  private FreeWifiFrontPageUI.d aUW()
+  private static Dialog b(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
   {
+    AppMethodBeat.i(20983);
+    View localView = View.inflate(paramContext, 2130969634, null);
+    paramContext = new com.tencent.mm.ui.base.i(paramContext, 2131493268);
+    paramContext.setCancelable(true);
+    paramContext.setContentView(localView);
+    paramContext.setOnCancelListener(paramOnCancelListener);
+    AppMethodBeat.o(20983);
+    return paramContext;
+  }
+  
+  private FreeWifiFrontPageUI.d bBv()
+  {
+    AppMethodBeat.i(20975);
     try
     {
-      this.krN.lock();
-      FreeWifiFrontPageUI.d locald = this.krO;
+      this.mNB.lock();
+      FreeWifiFrontPageUI.d locald = this.mNC;
       return locald;
     }
     finally
     {
-      this.krN.unlock();
+      this.mNB.unlock();
+      AppMethodBeat.o(20975);
     }
   }
   
-  private void aUX()
+  private void bBw()
   {
-    l.u(com.tencent.mm.plugin.freewifi.model.d.aTZ(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
-    FreeWifiFrontPageUI.d locald = aUW();
-    y.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, class=%s, desc=User click the connect button and starts the connect wifi process. uiState=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.B(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(getIntent())), this.className, locald.name() });
-    if ((aUW() == FreeWifiFrontPageUI.d.krT) || (aUW() == FreeWifiFrontPageUI.d.krV))
+    AppMethodBeat.i(20980);
+    l.B(com.tencent.mm.plugin.freewifi.model.d.bAB(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
+    FreeWifiFrontPageUI.d locald = bBv();
+    ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, class=%s, desc=User click the connect button and starts the connect wifi process. uiState=%s", new Object[] { m.U(getIntent()), Integer.valueOf(m.V(getIntent())), this.className, locald.name() });
+    if ((bBv() == FreeWifiFrontPageUI.d.mNH) || (bBv() == FreeWifiFrontPageUI.d.mNJ))
     {
       boolean bool = this.intent.getBooleanExtra("ConstantsFreeWifi.FREE_WIFI_SHOULD_BIND_PHONE", false);
-      int i = com.tencent.mm.plugin.freewifi.m.aTD();
-      y.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, class=%s, desc=It makes a decision whether to bind phone number. shoudBindPhone=%b, userPhoneState=%d(0 means no phone number. 1 means having a china phone number. 2 means having a foreign number.)", new Object[] { com.tencent.mm.plugin.freewifi.m.B(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(getIntent())), this.className, Boolean.valueOf(bool), Integer.valueOf(i) });
-      if ((bool) && (i == 1) && (this.kpu != 33)) {
-        com.tencent.mm.ui.base.h.a(this, R.l.free_wifi_bind_phone_msg, R.l.free_wifi_bind_phone_title, new FreeWifiFrontPageUI.5(this), null);
+      int i = m.bAh();
+      ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, class=%s, desc=It makes a decision whether to bind phone number. shoudBindPhone=%b, userPhoneState=%d(0 means no phone number. 1 means having a china phone number. 2 means having a foreign number.)", new Object[] { m.U(getIntent()), Integer.valueOf(m.V(getIntent())), this.className, Boolean.valueOf(bool), Integer.valueOf(i) });
+      if ((bool) && (i == 1) && (this.mLg != 33))
+      {
+        com.tencent.mm.ui.base.h.a(this, 2131300136, 2131300137, new FreeWifiFrontPageUI.8(this), null);
+        AppMethodBeat.o(20980);
+        return;
       }
+      this.mNC = FreeWifiFrontPageUI.d.mNI;
+      bBy();
+      this.mNA.connect();
     }
-    else
-    {
-      return;
-    }
-    this.krO = FreeWifiFrontPageUI.d.krU;
-    aUZ();
-    this.krM.connect();
+    AppMethodBeat.o(20980);
   }
   
   private void goBack()
   {
-    l.v(com.tencent.mm.plugin.freewifi.model.d.aTZ(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
-    Object localObject = k.aTx();
-    ((k.a)localObject).bHI = this.bHI;
-    ((k.a)localObject).iGw = com.tencent.mm.plugin.freewifi.m.B(this.intent);
-    ((k.a)localObject).kmS = k.b.knq.knD;
-    ((k.a)localObject).kmT = k.b.knq.name;
-    ((k.a)localObject).bUR = com.tencent.mm.plugin.freewifi.m.E(this.intent);
-    ((k.a)localObject).kmR = com.tencent.mm.plugin.freewifi.m.D(this.intent);
+    AppMethodBeat.i(20988);
+    l.C(com.tencent.mm.plugin.freewifi.model.d.bAB(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
+    Object localObject = k.bAc();
+    ((k.a)localObject).coX = this.coX;
+    ((k.a)localObject).kMp = m.U(this.intent);
+    ((k.a)localObject).mIF = k.b.mJd.mJq;
+    ((k.a)localObject).mIG = k.b.mJd.name;
+    ((k.a)localObject).cCy = m.X(this.intent);
+    ((k.a)localObject).mIE = m.W(this.intent);
     ((k.a)localObject).result = 0;
-    ((k.a)localObject).dmU = "";
-    ((k.a)localObject).aTz().b(this.intent, true).aTy();
+    ((k.a)localObject).eev = "";
+    ((k.a)localObject).bAe().c(this.intent, true).bAd();
     localObject = new Intent();
-    com.tencent.mm.plugin.freewifi.g.eUR.i((Intent)localObject, this);
+    com.tencent.mm.plugin.freewifi.g.gmO.h((Intent)localObject, this);
     finish();
+    AppMethodBeat.o(20988);
   }
   
   public final void a(FreeWifiFrontPageUI.d paramd, Object paramObject)
   {
+    AppMethodBeat.i(20976);
     try
     {
-      this.krN.lock();
-      this.krO = paramd;
+      this.mNB.lock();
+      this.mNC = paramd;
       Message localMessage = Message.obtain();
       localMessage.obj = new FreeWifiFrontPageUI.c(paramd, paramObject);
-      this.dPi.sendMessage(localMessage);
+      this.faV.sendMessage(localMessage);
       return;
     }
     finally
     {
-      this.krN.unlock();
+      this.mNB.unlock();
+      AppMethodBeat.o(20976);
     }
   }
   
-  protected final void aUY()
+  protected final void bBx()
   {
-    this.kro.setVisibility(4);
-    if (this.kpu == 31)
+    AppMethodBeat.i(20981);
+    this.mNb.setVisibility(4);
+    if (this.mLg == 31)
     {
-      this.krE.setVisibility(8);
-      if ((com.tencent.mm.plugin.freewifi.m.E(getIntent()) == 10) && (!com.tencent.mm.plugin.freewifi.m.isEmpty(q.dyi.dyE)) && (!com.tencent.mm.plugin.freewifi.m.isEmpty(q.bc(this.mController.uMN)))) {
-        this.krE.setText(String.format(getString(R.l.free_wifi_connect_btn_manu_wording), new Object[] { q.bc(this.mController.uMN) }));
+      this.mNt.setVisibility(8);
+      if ((m.X(getIntent()) == 10) && (!m.isEmpty(ac.erz.ere)) && (!m.isEmpty(ac.bH(getContext())))) {
+        this.mNt.setText(String.format(getString(2131300138), new Object[] { ac.bH(getContext()) }));
       }
-      if (!bk.bl(this.krK)) {
-        break label292;
+      if (!bo.isNullOrNil(this.mNy)) {
+        break label298;
       }
-      if (this.kpu != 33) {
-        break label275;
+      if (this.mLg != 33) {
+        break label281;
       }
-      this.krD.setText(getString(R.l.connect_state_connecting_default_tips) + ": " + this.ssid);
+      this.mNs.setText(getString(2131298511) + ": " + this.ssid);
     }
     for (;;)
     {
-      if (!bk.bl(this.bOL))
+      if (!bo.isNullOrNil(this.cwc))
       {
-        if (!bk.bl(this.kpv)) {
-          this.krC.setText(this.kpv);
+        if (!bo.isNullOrNil(this.mLh)) {
+          this.mNr.setText(this.mLh);
         }
-        if (!bk.bl(this.krI)) {
-          o.ON().a(this.krI, this.krB, this.eqR);
+        if (!bo.isNullOrNil(this.hAq)) {
+          o.ahG().a(this.hAq, this.mNq, this.fHh);
         }
       }
-      y.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=Protocol.toConnectStart, desc=it initializes the connect front page.", new Object[] { com.tencent.mm.plugin.freewifi.m.B(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(getIntent())) });
+      ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=Protocol.toConnectStart, desc=it initializes the connect front page.", new Object[] { m.U(getIntent()), Integer.valueOf(m.V(getIntent())) });
+      AppMethodBeat.o(20981);
       return;
-      this.krE.setVisibility(0);
-      this.krE.setText(R.l.connect_state_wating);
+      this.mNt.setVisibility(0);
+      this.mNt.setText(2131298515);
       break;
-      label275:
-      this.krD.setText(getString(R.l.connect_state_connecting_default_tips));
+      label281:
+      this.mNs.setText(getString(2131298511));
       continue;
-      label292:
-      this.krD.setText(this.krK);
+      label298:
+      this.mNs.setText(this.mNy);
     }
   }
   
-  protected final void aUZ()
+  protected final void bBy()
   {
-    this.kro.setVisibility(4);
-    this.krp.setVisibility(4);
-    this.krq.setVisibility(4);
-    this.krE.setText(R.l.connect_state_connecting_ing);
-    Object localObject = this.mController.uMN;
-    FreeWifiFrontPageUI.6 local6 = new FreeWifiFrontPageUI.6(this);
-    View localView = View.inflate((Context)localObject, R.i.free_wifi_progress_dialog, null);
-    localObject = new com.tencent.mm.ui.base.i((Context)localObject, R.m.FreeWifiProgressDialogStyle);
-    ((Dialog)localObject).setCancelable(true);
-    ((Dialog)localObject).setContentView(localView);
-    ((Dialog)localObject).setOnCancelListener(local6);
-    this.krG = ((Dialog)localObject);
-    y.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=Protocol.toConnecting, desc=it adds a loading ui on the connect front page.", new Object[] { com.tencent.mm.plugin.freewifi.m.B(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(getIntent())) });
-    this.krG.show();
+    AppMethodBeat.i(20982);
+    this.mNb.setVisibility(4);
+    this.mNc.setVisibility(4);
+    this.mNd.setVisibility(4);
+    this.mNt.setText(2131298512);
+    this.mNv = b(getContext(), new FreeWifiFrontPageUI.9(this));
+    ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=Protocol.toConnecting, desc=it adds a loading ui on the connect front page.", new Object[] { m.U(getIntent()), Integer.valueOf(m.V(getIntent())) });
+    this.mNv.show();
+    AppMethodBeat.o(20982);
   }
   
-  protected final void bk(Object paramObject)
+  protected final void bL(Object paramObject)
   {
-    if (!(paramObject instanceof FreeWifiFrontPageUI.a)) {
+    AppMethodBeat.i(20984);
+    if (!(paramObject instanceof FreeWifiFrontPageUI.a))
+    {
+      AppMethodBeat.o(20984);
       return;
     }
     FreeWifiFrontPageUI.a locala = (FreeWifiFrontPageUI.a)paramObject;
-    y.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, desc=Connect failed. errcode=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.B(this.intent), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(this.intent)), FreeWifiFrontPageUI.a.a(locala) });
-    if (this.krG != null) {
-      this.krG.dismiss();
+    ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, desc=Connect failed. errcode=%s", new Object[] { m.U(this.intent), Integer.valueOf(m.V(this.intent)), FreeWifiFrontPageUI.a.a(locala) });
+    if (this.mNv != null) {
+      this.mNv.dismiss();
     }
-    this.kro.setVisibility(0);
-    if (!com.tencent.mm.plugin.freewifi.m.isEmpty(FreeWifiFrontPageUI.a.b(locala))) {}
+    this.mNb.setVisibility(0);
+    if (!m.isEmpty(FreeWifiFrontPageUI.a.b(locala))) {}
     for (paramObject = FreeWifiFrontPageUI.a.b(locala);; paramObject = getString(FreeWifiFrontPageUI.a.c(locala)))
     {
-      this.kro.setText(paramObject);
-      this.kro.setVisibility(0);
-      this.krp.setVisibility(0);
-      this.krq.setVisibility(0);
-      paramObject = getString(R.l.free_wifi_errorcode_type) + ": " + FreeWifiFrontPageUI.a.a(locala);
-      this.krq.setOnClickListener(new FreeWifiFrontPageUI.7(this, paramObject));
-      this.krE.setVisibility(0);
-      this.krE.setText(R.l.free_wifi_re_connect);
-      y.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=Protocol.toFail, desc=connect failed.", new Object[] { com.tencent.mm.plugin.freewifi.m.B(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(getIntent())) });
+      this.mNb.setText(paramObject);
+      this.mNb.setVisibility(0);
+      this.mNc.setVisibility(0);
+      this.mNd.setVisibility(0);
+      paramObject = getString(2131300157) + ": " + FreeWifiFrontPageUI.a.a(locala);
+      this.mNd.setOnClickListener(new FreeWifiFrontPageUI.10(this, paramObject));
+      this.mNt.setVisibility(0);
+      this.mNt.setText(2131300177);
+      ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=Protocol.toFail, desc=connect failed.", new Object[] { m.U(getIntent()), Integer.valueOf(m.V(getIntent())) });
+      AppMethodBeat.o(20984);
       return;
       if (FreeWifiFrontPageUI.a.c(locala) == 0) {
-        FreeWifiFrontPageUI.a.a(locala, R.l.free_wifi_connect_fail_tips);
+        FreeWifiFrontPageUI.a.d(locala);
       }
     }
   }
   
-  protected final void bl(Object paramObject)
+  protected final void bM(Object paramObject)
   {
-    if (!(paramObject instanceof FreeWifiFrontPageUI.b)) {
+    AppMethodBeat.i(20985);
+    if (!(paramObject instanceof FreeWifiFrontPageUI.b))
+    {
+      AppMethodBeat.o(20985);
       return;
     }
-    Object localObject = ((FreeWifiFrontPageUI.b)paramObject).krS;
-    if ((this.kpu != 31) && (this.krG != null)) {
-      this.krG.dismiss();
+    Object localObject = ((FreeWifiFrontPageUI.b)paramObject).mNG;
+    if ((this.mLg != 31) && (this.mNv != null)) {
+      this.mNv.dismiss();
     }
-    this.krE.setText(R.l.connect_state_connected);
-    this.krE.setClickable(false);
+    this.mNt.setText(2131298509);
+    this.mNt.setClickable(false);
     paramObject = getIntent();
-    paramObject.putExtra("free_wifi_appid", ((fd)localObject).svu);
-    paramObject.putExtra("free_wifi_app_nickname", ((fd)localObject).hRf);
-    paramObject.putExtra("free_wifi_app_username", ((fd)localObject).hPY);
-    paramObject.putExtra("free_wifi_signature", ((fd)localObject).ffk);
-    paramObject.putExtra("free_wifi_finish_actioncode", ((fd)localObject).syP);
-    paramObject.putExtra("free_wifi_finish_url", ((fd)localObject).syQ);
-    paramObject.putExtra(e.c.uHQ, ((fd)localObject).ksV);
-    if (((fd)localObject).syP == 2)
+    paramObject.putExtra("free_wifi_appid", ((gm)localObject).woB);
+    paramObject.putExtra("free_wifi_app_nickname", ((gm)localObject).jKG);
+    paramObject.putExtra("free_wifi_app_username", ((gm)localObject).jJA);
+    paramObject.putExtra("free_wifi_signature", ((gm)localObject).gwS);
+    paramObject.putExtra("free_wifi_finish_actioncode", ((gm)localObject).wsQ);
+    paramObject.putExtra("free_wifi_finish_url", ((gm)localObject).wsR);
+    paramObject.putExtra(e.d.yVb, ((gm)localObject).mOJ);
+    if (((gm)localObject).wsQ == 2)
     {
-      if (!bk.bl(((fd)localObject).hPY))
+      if (!bo.isNullOrNil(((gm)localObject).jJA))
       {
         Intent localIntent = new Intent();
-        localIntent.putExtra("Contact_User", ((fd)localObject).hPY);
-        com.tencent.mm.br.d.b(this, "profile", ".ui.ContactInfoUI", localIntent);
-        d.wn();
-        y.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=toSuccess, desc=connect succeeded.", new Object[] { com.tencent.mm.plugin.freewifi.m.B(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(getIntent())) });
-        localObject = k.aTx();
-        ((k.a)localObject).bHI = this.bHI;
-        ((k.a)localObject).iGw = com.tencent.mm.plugin.freewifi.m.B(paramObject);
-        ((k.a)localObject).kmS = k.b.kns.knD;
-        ((k.a)localObject).kmT = k.b.kns.name;
-        ((k.a)localObject).bUR = com.tencent.mm.plugin.freewifi.m.E(paramObject);
-        ((k.a)localObject).kmR = com.tencent.mm.plugin.freewifi.m.D(paramObject);
+        localIntent.putExtra("Contact_User", ((gm)localObject).jJA);
+        com.tencent.mm.bq.d.b(this, "profile", ".ui.ContactInfoUI", localIntent);
+        d.IE();
+        ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=toSuccess, desc=connect succeeded.", new Object[] { m.U(getIntent()), Integer.valueOf(m.V(getIntent())) });
+        localObject = k.bAc();
+        ((k.a)localObject).coX = this.coX;
+        ((k.a)localObject).kMp = m.U(paramObject);
+        ((k.a)localObject).mIF = k.b.mJf.mJq;
+        ((k.a)localObject).mIG = k.b.mJf.name;
+        ((k.a)localObject).cCy = m.X(paramObject);
+        ((k.a)localObject).mIE = m.W(paramObject);
         ((k.a)localObject).result = 0;
-        ((k.a)localObject).dmU = "";
-        ((k.a)localObject).aTz().b(paramObject, true).aTy();
+        ((k.a)localObject).eev = "";
+        ((k.a)localObject).bAe().c(paramObject, true).bAd();
+        AppMethodBeat.o(20985);
         return;
       }
       paramObject.setClass(this, FreeWifiSuccUI.class);
     }
     for (;;)
     {
-      localObject = k.aTx();
-      ((k.a)localObject).bHI = this.bHI;
-      ((k.a)localObject).iGw = com.tencent.mm.plugin.freewifi.m.B(paramObject);
-      ((k.a)localObject).kmS = k.b.knr.knD;
-      ((k.a)localObject).kmT = k.b.knr.name;
-      ((k.a)localObject).bUR = com.tencent.mm.plugin.freewifi.m.E(paramObject);
-      ((k.a)localObject).kmR = com.tencent.mm.plugin.freewifi.m.D(paramObject);
+      localObject = k.bAc();
+      ((k.a)localObject).coX = this.coX;
+      ((k.a)localObject).kMp = m.U(paramObject);
+      ((k.a)localObject).mIF = k.b.mJe.mJq;
+      ((k.a)localObject).mIG = k.b.mJe.name;
+      ((k.a)localObject).cCy = m.X(paramObject);
+      ((k.a)localObject).mIE = m.W(paramObject);
       ((k.a)localObject).result = 0;
-      ((k.a)localObject).dmU = "";
-      ((k.a)localObject).aTz().b(paramObject, true).aTy();
+      ((k.a)localObject).eev = "";
+      ((k.a)localObject).bAe().c(paramObject, true).bAd();
       finish();
       startActivity(paramObject);
-      d.wn();
-      y.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=toSuccess, desc=connect succeeded.", new Object[] { com.tencent.mm.plugin.freewifi.m.B(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(getIntent())) });
+      d.IE();
+      ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=toSuccess, desc=connect succeeded.", new Object[] { m.U(getIntent()), Integer.valueOf(m.V(getIntent())) });
+      AppMethodBeat.o(20985);
       return;
-      if (com.tencent.mm.plugin.freewifi.m.isEmpty(((fd)localObject).syR))
+      if (m.isEmpty(((gm)localObject).wsS))
       {
         paramObject.setClass(this, FreeWifiSuccUI.class);
       }
       else
       {
-        paramObject.putExtra("free_wifi_qinghuai_url", ((fd)localObject).syR);
+        paramObject.putExtra("free_wifi_qinghuai_url", ((gm)localObject).wsS);
         paramObject.setClass(this, FreeWifiSuccWebViewUI.class);
       }
     }
@@ -312,112 +342,190 @@ public class FreeWifiFrontPageUI
   
   public void finish()
   {
+    AppMethodBeat.i(20986);
     super.finish();
-    k.a locala = k.aTx();
-    locala.bHI = this.bHI;
-    locala.iGw = com.tencent.mm.plugin.freewifi.m.B(this.intent);
-    locala.kmS = k.b.knp.knD;
-    locala.kmT = k.b.knp.name;
-    locala.bUR = com.tencent.mm.plugin.freewifi.m.E(this.intent);
-    locala.kmR = com.tencent.mm.plugin.freewifi.m.D(this.intent);
+    k.a locala = k.bAc();
+    locala.coX = this.coX;
+    locala.kMp = m.U(this.intent);
+    locala.mIF = k.b.mJc.mJq;
+    locala.mIG = k.b.mJc.name;
+    locala.cCy = m.X(this.intent);
+    locala.mIE = m.W(this.intent);
     locala.result = 0;
-    locala.dmU = "";
-    locala.aTz().b(this.intent, true).aTy();
+    locala.eev = "";
+    locala.bAe().c(this.intent, true).bAd();
+    AppMethodBeat.o(20986);
   }
   
-  protected final int getForceOrientation()
+  public int getForceOrientation()
   {
     return 1;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.free_wifi_front_page;
+    return 2130969628;
   }
   
-  public final void initView()
+  public void initView()
   {
-    setBackBtn(new FreeWifiFrontPageUI.2(this));
-    if (this.krG != null) {
-      this.krG.dismiss();
+    AppMethodBeat.i(20978);
+    setBackBtn(new FreeWifiFrontPageUI.4(this));
+    if (this.mNv != null) {
+      this.mNv.dismiss();
     }
-    this.krN = new ReentrantLock();
+    this.mNB = new ReentrantLock();
     this.className = getClass().getSimpleName();
     this.intent = getIntent();
     this.ssid = getIntent().getStringExtra("free_wifi_ssid");
-    this.kpt = getIntent().getStringExtra("free_wifi_url");
-    this.bHI = getIntent().getStringExtra("free_wifi_ap_key");
-    this.source = getIntent().getIntExtra("free_wifi_source", 1);
-    this.bvj = getIntent().getIntExtra("free_wifi_channel_id", 0);
-    this.kpu = this.intent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 0);
-    this.bOL = getIntent().getStringExtra("free_wifi_appid");
-    this.krI = getIntent().getStringExtra("free_wifi_head_img_url");
-    this.krJ = getIntent().getStringExtra("free_wifi_welcome_msg");
-    this.krK = getIntent().getStringExtra("free_wifi_welcome_sub_title");
-    this.krL = getIntent().getStringExtra("free_wifi_privacy_url");
-    this.kpv = getIntent().getStringExtra("free_wifi_app_nickname");
-    y.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=%s.initView, desc=Initializing the view. ssid=%s, fullUrl=%s, apKey=%s, source=%d, channel=%d, protocolNumber=%d, appid=%s, headImgUrl=%s, welcomeMsg=%s, privacyUrl=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.B(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(getIntent())), this.className, this.ssid, this.kpt, this.bHI, Integer.valueOf(this.source), Integer.valueOf(this.bvj), Integer.valueOf(this.kpu), this.bOL, this.krI, this.krJ, this.krL });
-    this.krH = findViewById(R.h.user_protocol_phone_text);
-    this.krB = ((ImageView)findViewById(R.h.free_wifi_app_logo_iv));
-    this.krC = ((TextView)findViewById(R.h.free_wifi_welcomemsg_tv));
-    this.krD = ((TextView)findViewById(R.h.free_wifi_ssidname_tv));
-    this.kro = ((TextView)findViewById(R.h.free_wifi_connectfail_tv));
-    this.krp = ((TextView)findViewById(R.h.free_wifi_connectfail_mark_tv));
-    this.krq = ((TextView)findViewById(R.h.free_wifi_connectfail_open_detail_tv));
-    this.krE = ((Button)findViewById(R.h.connect_wifi_btn));
-    this.krE.setOnClickListener(new FreeWifiFrontPageUI.3(this));
-    this.krF = ((Button)findViewById(R.h.user_protocol_privacy_btn));
-    this.krF.setOnClickListener(new FreeWifiFrontPageUI.4(this));
-    if (bk.bl(this.ssid))
+    this.kdt = getIntent().getStringExtra("free_wifi_url");
+    this.coX = getIntent().getStringExtra("free_wifi_ap_key");
+    this.cpt = getIntent().getIntExtra("free_wifi_source", 1);
+    this.bWu = getIntent().getIntExtra("free_wifi_channel_id", 0);
+    this.mLg = this.intent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 0);
+    this.cwc = getIntent().getStringExtra("free_wifi_appid");
+    this.hAq = getIntent().getStringExtra("free_wifi_head_img_url");
+    this.mNx = getIntent().getStringExtra("free_wifi_welcome_msg");
+    this.mNy = getIntent().getStringExtra("free_wifi_welcome_sub_title");
+    this.mNz = getIntent().getStringExtra("free_wifi_privacy_url");
+    this.mLh = getIntent().getStringExtra("free_wifi_app_nickname");
+    ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=%s.initView, desc=Initializing the view. ssid=%s, fullUrl=%s, apKey=%s, source=%d, channel=%d, protocolNumber=%d, appid=%s, headImgUrl=%s, welcomeMsg=%s, privacyUrl=%s", new Object[] { m.U(getIntent()), Integer.valueOf(m.V(getIntent())), this.className, this.ssid, this.kdt, this.coX, Integer.valueOf(this.cpt), Integer.valueOf(this.bWu), Integer.valueOf(this.mLg), this.cwc, this.hAq, this.mNx, this.mNz });
+    this.mNw = findViewById(2131824262);
+    this.mNq = ((ImageView)findViewById(2131824254));
+    this.mNr = ((TextView)findViewById(2131824255));
+    this.mNs = ((TextView)findViewById(2131824256));
+    this.mNb = ((TextView)findViewById(2131824257));
+    this.mNc = ((TextView)findViewById(2131824258));
+    this.mNd = ((TextView)findViewById(2131824259));
+    this.mNt = ((Button)findViewById(2131824260));
+    this.mNt.setOnClickListener(new FreeWifiFrontPageUI.5(this));
+    this.mNu = ((Button)findViewById(2131824261));
+    this.mNu.setOnClickListener(new FreeWifiFrontPageUI.6(this));
+    if (bo.isNullOrNil(this.ssid))
     {
-      this.krD.setText(getString(R.l.free_wifi_ssid_empty_tips));
-      this.krE.setVisibility(4);
+      this.mNs.setText(getString(2131300179));
+      this.mNt.setVisibility(4);
     }
-    setMMTitle(getString(R.l.free_wifi_title));
-    a(FreeWifiFrontPageUI.d.krT, null);
+    setMMTitle(getString(2131300181));
+    a(FreeWifiFrontPageUI.d.mNH, null);
+    AppMethodBeat.o(20978);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(20977);
     super.onCreate(paramBundle);
     initView();
-    switch (this.kpu)
-    {
-    }
-    for (;;)
-    {
-      y.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=%s.onCreate, desc=it goes into connect frontpage. apKey=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.B(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(getIntent())), this.className, this.bHI });
-      l.t(com.tencent.mm.plugin.freewifi.model.d.aTZ(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
-      return;
-      this.krM = new f(this);
-      continue;
-      this.krM = new com.tencent.mm.plugin.freewifi.e.g(this);
-      continue;
-      this.krM = new com.tencent.mm.plugin.freewifi.e.h(this);
-      this.krH.setVisibility(0);
-      aUX();
-      continue;
-      this.krM = new com.tencent.mm.plugin.freewifi.e.j(this);
-      this.krH.setVisibility(0);
-      continue;
-      this.krM = new com.tencent.mm.plugin.freewifi.e.i(this);
-    }
+    AppMethodBeat.o(20977);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(20989);
     super.onDestroy();
-    com.tencent.mm.plugin.freewifi.model.j.aUl().release();
+    com.tencent.mm.plugin.freewifi.model.j.bAN().release();
+    AppMethodBeat.o(20989);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(20987);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       goBack();
+      AppMethodBeat.o(20987);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(20987);
+    return bool;
+  }
+  
+  public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(20990);
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
+    {
+      ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      AppMethodBeat.o(20990);
+      return;
+    }
+    ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(20990);
+      return;
+      if ((paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == -1))
+      {
+        this.mMF = false;
+        com.tencent.mm.ui.base.h.a(this, getString(2131302073), getString(2131302083), getString(2131300996), getString(2131297837), false, new FreeWifiFrontPageUI.11(this), new FreeWifiFrontPageUI.2(this));
+      }
+    }
+  }
+  
+  public void onResume()
+  {
+    AppMethodBeat.i(20979);
+    super.onResume();
+    int i;
+    if (this.mMF)
+    {
+      boolean bool = b.a(this, "android.permission.ACCESS_COARSE_LOCATION", 77, null, null);
+      ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "summerper checkPermission checkLocation [%b]", new Object[] { Boolean.valueOf(bool) });
+      if (!bool) {
+        i = 0;
+      }
+    }
+    while (i == 0)
+    {
+      ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "check permission not passed!");
+      AppMethodBeat.o(20979);
+      return;
+      if (!b.o(this, "android.permission.ACCESS_COARSE_LOCATION"))
+      {
+        i = 0;
+      }
+      else if (!com.tencent.mm.modelgeo.d.agR())
+      {
+        com.tencent.mm.ui.base.h.a(this, getString(2131300538), getString(2131297087), getString(2131300996), getString(2131296888), false, new FreeWifiFrontPageUI.7(this), null);
+        i = 0;
+      }
+      else
+      {
+        i = 1;
+      }
+    }
+    switch (this.mLg)
+    {
+    }
+    for (;;)
+    {
+      ab.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=%s.onCreate, desc=it goes into connect frontpage. apKey=%s", new Object[] { m.U(getIntent()), Integer.valueOf(m.V(getIntent())), this.className, this.coX });
+      l.A(com.tencent.mm.plugin.freewifi.model.d.bAB(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
+      AppMethodBeat.o(20979);
+      return;
+      this.mNA = new f(this);
+      continue;
+      this.mNA = new com.tencent.mm.plugin.freewifi.e.g(this);
+      continue;
+      this.mNA = new com.tencent.mm.plugin.freewifi.e.h(this);
+      this.mNw.setVisibility(0);
+      bBw();
+      continue;
+      this.mNA = new com.tencent.mm.plugin.freewifi.e.j(this);
+      this.mNw.setVisibility(0);
+      continue;
+      this.mNA = new com.tencent.mm.plugin.freewifi.e.i(this);
+    }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

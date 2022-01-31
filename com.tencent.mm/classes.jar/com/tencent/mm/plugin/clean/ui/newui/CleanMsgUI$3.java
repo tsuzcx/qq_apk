@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.clean.ui.newui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class CleanMsgUI$3
@@ -12,8 +13,10 @@ final class CleanMsgUI$3
   
   public final void onClick(View paramView)
   {
-    this.iEh.startActivityForResult(new Intent(this.iEh, CleanChattingUI.class), 0);
-    h.nFQ.a(282L, 4L, 1L, false);
+    AppMethodBeat.i(18890);
+    this.kJo.startActivityForResult(new Intent(this.kJo, CleanChattingUI.class), 0);
+    h.qsU.idkeyStat(282L, 4L, 1L, false);
+    AppMethodBeat.o(18890);
   }
 }
 

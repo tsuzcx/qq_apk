@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.backup.backuppcui;
 import android.content.res.Resources;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.b.f.b;
 import com.tencent.mm.plugin.backup.c.b.a;
 import java.util.LinkedList;
@@ -14,30 +13,36 @@ final class BackupPcChooseUI$5
 {
   BackupPcChooseUI$5(BackupPcChooseUI paramBackupPcChooseUI) {}
   
-  public final void A(LinkedList<f.b> paramLinkedList)
+  public final void B(LinkedList<f.b> paramLinkedList)
   {
-    if (paramLinkedList == null) {
+    AppMethodBeat.i(17578);
+    if (paramLinkedList == null)
+    {
+      AppMethodBeat.o(17578);
       return;
     }
     if (paramLinkedList.size() == 0)
     {
-      BackupPcChooseUI.b(this.hLh).setVisibility(8);
-      BackupPcChooseUI.c(this.hLh).setVisibility(0);
+      BackupPcChooseUI.b(this.jEK).setVisibility(8);
+      BackupPcChooseUI.c(this.jEK).setVisibility(0);
       switch (BackupPcChooseUI.access$100())
       {
-      default: 
-        return;
-      case 0: 
-        BackupPcChooseUI.c(this.hLh).setText(R.l.backup_pc_choose_empty_records);
-        return;
       }
-      BackupPcChooseUI.c(this.hLh).setText(R.l.backup_select_empty_records_in_select_time);
-      return;
+      for (;;)
+      {
+        AppMethodBeat.o(17578);
+        return;
+        BackupPcChooseUI.c(this.jEK).setText(2131297309);
+        AppMethodBeat.o(17578);
+        return;
+        BackupPcChooseUI.c(this.jEK).setText(2131297379);
+      }
     }
-    BackupPcChooseUI.d(this.hLh).setClickable(true);
-    BackupPcChooseUI.d(this.hLh).setTextColor(this.hLh.getResources().getColor(R.e.backup_green));
-    BackupPcChooseUI.b(this.hLh).setVisibility(8);
-    BackupPcChooseUI.a(this.hLh).notifyDataSetChanged();
+    BackupPcChooseUI.d(this.jEK).setClickable(true);
+    BackupPcChooseUI.d(this.jEK).setTextColor(this.jEK.getResources().getColor(2131689739));
+    BackupPcChooseUI.b(this.jEK).setVisibility(8);
+    BackupPcChooseUI.a(this.jEK).notifyDataSetChanged();
+    AppMethodBeat.o(17578);
   }
 }
 

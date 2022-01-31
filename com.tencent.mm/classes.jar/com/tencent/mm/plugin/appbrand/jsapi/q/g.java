@@ -1,43 +1,27 @@
 package com.tencent.mm.plugin.appbrand.jsapi.q;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.t.t.a;
+import java.util.HashMap;
+import java.util.Map;
 
-public class g<CONTEXT extends c>
-  extends a<CONTEXT>
+final class g
+  extends ai
 {
-  public static final int CTRL_INDEX = 168;
-  public static final String NAME = "setClipboardData";
+  static final int CTRL_INDEX = 473;
+  static final String NAME = "onDeviceOrientationChange";
   
-  public final void a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt)
+  final void a(t.a parama)
   {
-    paramJSONObject = paramJSONObject.optString("data");
-    if (bk.bl(paramJSONObject))
-    {
-      paramCONTEXT.C(paramInt, h("fail", null));
-      return;
-    }
-    y.d("MicroMsg.JsApiSetClipboardData", "stevyang dataStr %s", new Object[] { paramJSONObject });
-    ClipboardManager localClipboardManager = (ClipboardManager)paramCONTEXT.getContext().getSystemService("clipboard");
-    if (localClipboardManager == null)
-    {
-      y.i("MicroMsg.JsApiSetClipboardData", "getSystemService(CLIPBOARD_SERVICE) failed.");
-      paramCONTEXT.C(paramInt, h("fail", null));
-      return;
-    }
-    localClipboardManager.setPrimaryClip(ClipData.newPlainText("text", paramJSONObject));
-    paramCONTEXT.C(paramInt, h("ok", null));
-    c(paramCONTEXT, paramJSONObject);
+    AppMethodBeat.i(126385);
+    parama = parama.name().replace("_", "");
+    HashMap localHashMap = new HashMap(2);
+    localHashMap.put("errMsg", "ok");
+    localHashMap.put("value", parama);
+    x(localHashMap).aBz();
+    AppMethodBeat.o(126385);
   }
-  
-  public void c(CONTEXT paramCONTEXT, String paramString) {}
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.wallet_core.model.Bankcard;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
+import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletCardElementUI$4
   implements View.OnClickListener
@@ -13,17 +13,9 @@ final class WalletCardElementUI$4
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent("com.tencent.mm.action.GET_ADRESS").putExtra("GetAddress", true).putExtra("ShowSelectedLocation", false);
-    if (Bankcard.AM(WalletCardElementUI.n(this.qCj).qqY)) {
-      paramView.putExtra("IsAutoPosition", false);
-    }
-    for (;;)
-    {
-      this.qCj.startActivityForResult(paramView, 2);
-      return;
-      paramView.putExtra("IsRealNameVerifyScene", true);
-      paramView.putExtra("IsNeedShowSearchBar", true);
-    }
+    AppMethodBeat.i(47214);
+    e.a(this.uoW, WalletCardElementUI.o(this.uoW).poq, WalletCardElementUI.o(this.uoW).nLq, false, WalletCardElementUI.o(this.uoW).uhP);
+    AppMethodBeat.o(47214);
   }
 }
 

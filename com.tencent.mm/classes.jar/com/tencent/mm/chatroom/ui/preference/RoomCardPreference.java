@@ -6,74 +6,81 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.chatroom.ui.a.e;
-import com.tencent.mm.chatroom.ui.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RoomCardPreference
   extends Preference
 {
-  public boolean bHj = false;
-  private TextView dtC;
-  public CharSequence dtD;
-  public CharSequence dtE;
-  private LinearLayout dtF;
+  public boolean coy;
+  private TextView elg;
+  public CharSequence elh;
+  public CharSequence eli;
+  private LinearLayout elj;
   private View mView;
   
   public RoomCardPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.coy = false;
   }
   
   public RoomCardPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(a.f.mm_preference);
+    AppMethodBeat.i(104468);
+    this.coy = false;
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(104468);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(104470);
     super.onBindView(paramView);
-    paramView = (ViewGroup)paramView.findViewById(a.e.content).findViewById(a.e.real_content);
-    if (this.dtF == null) {
-      this.dtF = ((LinearLayout)paramView.getChildAt(1));
+    paramView = (ViewGroup)paramView.findViewById(2131820946).findViewById(2131820997);
+    if (this.elj == null) {
+      this.elj = ((LinearLayout)paramView.getChildAt(1));
     }
-    if (this.dtC == null) {
-      this.dtC = ((TextView)paramView.findViewById(a.e.room_info_notice));
+    if (this.elg == null) {
+      this.elg = ((TextView)paramView.findViewById(2131826256));
     }
-    if (this.bHj)
+    if (this.coy)
     {
-      this.dtF.setVisibility(0);
-      this.dtC.setVisibility(0);
+      this.elj.setVisibility(0);
+      this.elg.setVisibility(0);
     }
     for (;;)
     {
-      if (this.dtE != null) {
-        this.dtC.setText(this.dtE);
+      if (this.eli != null) {
+        this.elg.setText(this.eli);
       }
+      AppMethodBeat.o(104470);
       return;
-      this.dtF.setVisibility(8);
-      this.dtC.setVisibility(8);
+      this.elj.setVisibility(8);
+      this.elg.setVisibility(8);
     }
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(104469);
     if (this.mView == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.e.content);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
       localViewGroup.removeAllViews();
-      localViewGroup.setPadding(0, 0, 0, 0);
-      View.inflate(this.mContext, a.f.mm_preference_roominfo, localViewGroup);
+      View.inflate(this.mContext, 2130970251, localViewGroup);
       this.mView = paramViewGroup;
     }
-    return this.mView;
+    paramViewGroup = this.mView;
+    AppMethodBeat.o(104469);
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.preference.RoomCardPreference
  * JD-Core Version:    0.7.0.1
  */

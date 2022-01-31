@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.nearby.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NearbyFriendShowSayHiUI$2
   implements View.OnClickListener
@@ -11,7 +12,9 @@ final class NearbyFriendShowSayHiUI$2
   
   public final void onClick(View paramView)
   {
-    this.mCY.startActivity(new Intent(this.mCY, NearbyFriendsUI.class));
+    AppMethodBeat.i(55427);
+    this.pcS.startActivity(new Intent(this.pcS, NearbyFriendsUI.class));
+    AppMethodBeat.o(55427);
   }
 }
 

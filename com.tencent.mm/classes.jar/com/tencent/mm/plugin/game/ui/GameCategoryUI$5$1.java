@@ -2,27 +2,30 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.app.Dialog;
 import android.view.View;
-import com.tencent.mm.plugin.game.model.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.y;
 
 final class GameCategoryUI$5$1
   implements Runnable
 {
-  GameCategoryUI$5$1(GameCategoryUI.5 param5, z paramz) {}
+  GameCategoryUI$5$1(GameCategoryUI.5 param5, y paramy) {}
   
   public final void run()
   {
-    GameCategoryUI localGameCategoryUI = this.kXU.kXR;
-    z localz = this.kXT;
-    if (GameCategoryUI.h(this.kXU.kXR) != 0) {}
+    AppMethodBeat.i(111749);
+    GameCategoryUI localGameCategoryUI = this.nvW.nvT;
+    y localy = this.nvV;
+    if (GameCategoryUI.h(this.nvW.nvT) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      GameCategoryUI.a(localGameCategoryUI, localz, bool);
-      GameCategoryUI.i(this.kXU.kXR);
-      GameCategoryUI.f(this.kXU.kXR).setVisibility(8);
-      GameCategoryUI.a(this.kXU.kXR, GameCategoryUI.h(this.kXU.kXR) + 15);
-      if (GameCategoryUI.j(this.kXU.kXR) != null) {
-        GameCategoryUI.j(this.kXU.kXR).dismiss();
+      GameCategoryUI.a(localGameCategoryUI, localy, bool);
+      GameCategoryUI.i(this.nvW.nvT);
+      GameCategoryUI.f(this.nvW.nvT).setVisibility(8);
+      GameCategoryUI.a(this.nvW.nvT, GameCategoryUI.h(this.nvW.nvT) + 15);
+      if (GameCategoryUI.j(this.nvW.nvT) != null) {
+        GameCategoryUI.j(this.nvW.nvT).dismiss();
       }
+      AppMethodBeat.o(111749);
       return;
     }
   }

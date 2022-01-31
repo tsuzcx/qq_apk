@@ -86,7 +86,17 @@ public class ShareReflectUtil
     throw new NoSuchMethodException("Method " + paramString + " with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramObject.getClass());
   }
   
-  public static Object c(Context paramContext, Class<?> paramClass)
+  public static void b(Object paramObject, String paramString, Object[] paramArrayOfObject)
+  {
+    paramString = b(paramObject, paramString);
+    Object[] arrayOfObject1 = (Object[])paramString.get(paramObject);
+    Object[] arrayOfObject2 = (Object[])Array.newInstance(arrayOfObject1.getClass().getComponentType(), arrayOfObject1.length + paramArrayOfObject.length);
+    System.arraycopy(paramArrayOfObject, 0, arrayOfObject2, 0, paramArrayOfObject.length);
+    System.arraycopy(arrayOfObject1, 0, arrayOfObject2, paramArrayOfObject.length, arrayOfObject1.length);
+    paramString.set(paramObject, arrayOfObject2);
+  }
+  
+  public static Object d(Context paramContext, Class<?> paramClass)
   {
     Object localObject = paramClass;
     if (paramClass == null) {}
@@ -116,7 +126,7 @@ public class ShareReflectUtil
     return null;
   }
   
-  public static Method c(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
+  public static Method d(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
     while (paramClass != null) {
       try
@@ -135,17 +145,7 @@ public class ShareReflectUtil
     throw new NoSuchMethodException("Method " + paramString + " with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramClass);
   }
   
-  public static void c(Object paramObject, String paramString, Object[] paramArrayOfObject)
-  {
-    paramString = b(paramObject, paramString);
-    Object[] arrayOfObject1 = (Object[])paramString.get(paramObject);
-    Object[] arrayOfObject2 = (Object[])Array.newInstance(arrayOfObject1.getClass().getComponentType(), arrayOfObject1.length + paramArrayOfObject.length);
-    System.arraycopy(paramArrayOfObject, 0, arrayOfObject2, 0, paramArrayOfObject.length);
-    System.arraycopy(arrayOfObject1, 0, arrayOfObject2, paramArrayOfObject.length, arrayOfObject1.length);
-    paramString.set(paramObject, arrayOfObject2);
-  }
-  
-  public static Field d(Class<?> paramClass, String paramString)
+  public static Field g(Class<?> paramClass, String paramString)
   {
     Object localObject = paramClass;
     while (localObject != null) {
@@ -165,11 +165,11 @@ public class ShareReflectUtil
     throw new NoSuchFieldException("Field " + paramString + " not found in " + paramClass);
   }
   
-  public static int e(Class<?> paramClass, String paramString)
+  public static int h(Class<?> paramClass, String paramString)
   {
     try
     {
-      int i = d(paramClass, paramString).getInt(null);
+      int i = g(paramClass, paramString).getInt(null);
       return i;
     }
     catch (Throwable paramClass) {}

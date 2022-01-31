@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.walletlock.gesture.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class GestureGuardLogicUI$25$1
   implements Runnable
@@ -10,16 +11,18 @@ final class GestureGuardLogicUI$25$1
   
   public final void run()
   {
-    GestureGuardLogicUI.f(this.qQc.qPX).removeCallbacks(this);
-    this.qQc.qQb.qQf.bYt();
-    GestureGuardLogicUI.a(this.qQc.qPX, 16);
-    GestureGuardLogicUI.g(this.qQc.qPX);
-    GestureGuardLogicUI.h(this.qQc.qPX);
+    AppMethodBeat.i(51610);
+    GestureGuardLogicUI.f(this.uFk.uFf).removeCallbacks(this);
+    this.uFk.uFj.uFn.cYe();
+    GestureGuardLogicUI.a(this.uFk.uFf, 16);
+    GestureGuardLogicUI.g(this.uFk.uFf);
+    GestureGuardLogicUI.h(this.uFk.uFf);
+    AppMethodBeat.o(51610);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.ui.GestureGuardLogicUI.25.1
  * JD-Core Version:    0.7.0.1
  */

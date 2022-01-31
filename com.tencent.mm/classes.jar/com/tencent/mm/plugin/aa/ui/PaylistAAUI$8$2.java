@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import com.tencent.mm.ui.widget.a.e.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.e.c;
 
 final class PaylistAAUI$8$2
-  implements e.d
+  implements e.c
 {
   PaylistAAUI$8$2(PaylistAAUI.8 param8) {}
   
-  public final void b(boolean paramBoolean, String paramString)
+  public final void d(boolean paramBoolean, String paramString)
   {
-    PaylistAAUI.b(this.eZP.eZM);
+    AppMethodBeat.i(40872);
+    PaylistAAUI.b(this.grI.grF);
+    AppMethodBeat.o(40872);
   }
 }
 

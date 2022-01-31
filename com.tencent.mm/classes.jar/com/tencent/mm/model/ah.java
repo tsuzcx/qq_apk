@@ -1,14 +1,24 @@
 package com.tencent.mm.model;
 
-public abstract class ah
+public abstract interface ah
 {
-  public long dVx = 0L;
+  public abstract void al(String paramString1, String paramString2);
   
-  public abstract String getTag();
+  public abstract void pc(String paramString);
   
-  public abstract boolean hJ(int paramInt);
+  public abstract void pd(String paramString);
   
-  public abstract void transfer(int paramInt);
+  public abstract void pe(String paramString);
+  
+  public abstract void pf(String paramString);
+  
+  public abstract void pg(String paramString);
+  
+  public abstract void ph(String paramString);
+  
+  public abstract void pi(String paramString);
+  
+  public abstract void pj(String paramString);
 }
 
 

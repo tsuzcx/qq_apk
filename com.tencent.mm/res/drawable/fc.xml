@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/avm" />
-    <item android:state_pressed="true" android:drawable="@drawable/avm" />
-    <item android:drawable="@drawable/avl" />
-</selector>
+    <item>
+        <shape>
+            <solid android:color="@color/gs" />
+            <corners android:bottomLeftRadius="@dimen/uc" android:bottomRightRadius="@dimen/uc" />
+        </shape>
+    </item>
+</layer-list>

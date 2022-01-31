@@ -4,9 +4,9 @@ import java.util.List;
 
 final class j$a
 {
-  String hjn;
-  Integer hjo;
-  List<String> hjp;
+  String iUU;
+  Integer iUV;
+  List<String> iUW;
 }
 
 

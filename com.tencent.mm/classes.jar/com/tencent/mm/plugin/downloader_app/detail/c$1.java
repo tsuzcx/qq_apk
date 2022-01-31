@@ -1,20 +1,33 @@
 package com.tencent.mm.plugin.downloader_app.detail;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONObject;
 
 final class c$1
-  extends com.tencent.luggage.e.c
+  extends com.tencent.luggage.d.c
 {
-  c$1(c paramc) {}
+  c$1(c paramc, String paramString) {}
   
   public final String name()
   {
-    return "onJsApiReady";
+    return "activity:state_change";
   }
   
-  public final JSONObject pV()
+  public final JSONObject tY()
   {
-    return null;
+    AppMethodBeat.i(136043);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("state", this.lai);
+      label24:
+      AppMethodBeat.o(136043);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label24;
+    }
   }
 }
 

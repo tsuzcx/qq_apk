@@ -1,67 +1,17 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mm.plugin.mmsight.SightParams;
-import com.tencent.mm.plugin.mmsight.model.a.d;
-import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SightCaptureUI$14
-  implements a.a
+  implements Runnable
 {
   SightCaptureUI$14(SightCaptureUI paramSightCaptureUI) {}
   
-  public final void bjP()
+  public final void run()
   {
-    y.i("MicroMsg.SightCaptureUI", "on video edit finish");
-    if (SightCaptureUI.O(this.mqB) != null)
-    {
-      SightCaptureUI.a(this.mqB, bk.aM(SightCaptureUI.O(this.mqB).bIW, ""));
-      SightCaptureUI.O(this.mqB).k(false, SightCaptureUI.a(this.mqB).mfz);
-      SightCaptureUI.O(this.mqB).release();
-      SightCaptureUI.P(this.mqB);
-    }
-    SightCaptureUI.G(this.mqB).setVisibility(0);
-    SightCaptureUI.Q(this.mqB).setVisibility(0);
-    SightCaptureUI.R(this.mqB).setVisibility(0);
-    SightCaptureUI.S(this.mqB).stop();
-    SightCaptureUI.S(this.mqB).setVideoPath(SightCaptureUI.n(this.mqB).bjl());
-    SightCaptureUI.S(this.mqB).setLoop(true);
-    SightCaptureUI.S(this.mqB).setForceScaleFullScreen(true);
-    SightCaptureUI.S(this.mqB).setVideoCallback(SightCaptureUI.T(this.mqB));
-    this.mqB.FS(8);
-    e.post(new SightCaptureUI.14.1(this), "SightCaptureUI_edit_finish_save_new_thumb");
-    SightCaptureUI.V(this.mqB);
-  }
-  
-  public final void bjQ()
-  {
-    y.i("MicroMsg.SightCaptureUI", "on video edit exit");
-    if (SightCaptureUI.O(this.mqB) != null)
-    {
-      SightCaptureUI.O(this.mqB).k(true, SightCaptureUI.a(this.mqB).mfz);
-      SightCaptureUI.O(this.mqB).release();
-      SightCaptureUI.P(this.mqB);
-    }
-    this.mqB.FS(8);
-    SightCaptureUI.G(this.mqB).setVisibility(0);
-    SightCaptureUI.Q(this.mqB).setVisibility(0);
-    SightCaptureUI.R(this.mqB).setVisibility(0);
-  }
-  
-  public final void onError()
-  {
-    y.i("MicroMsg.SightCaptureUI", "on video edit error");
-    if (SightCaptureUI.O(this.mqB) != null)
-    {
-      SightCaptureUI.O(this.mqB).release();
-      SightCaptureUI.P(this.mqB);
-    }
-    ai.d(new SightCaptureUI.14.2(this));
+    AppMethodBeat.i(55201);
+    SightCaptureUI.O(this.oQf);
+    AppMethodBeat.o(55201);
   }
 }
 

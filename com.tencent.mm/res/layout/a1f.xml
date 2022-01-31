@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameRankHeadView android:orientation="vertical" android:id="@id/bwd" android:background="@drawable/ac8" android:layout_width="fill_parent" android:layout_height="190.0dip">
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/bwe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp" android:src="@drawable/acp" android:scaleType="centerCrop" />
-        <TextView android:textSize="20.0dip" android:textColor="#ff333333" android:layout_gravity="center_horizontal" android:id="@id/bwf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dl" />
-        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/k9" android:textColor="#ffb2b2b2" android:layout_gravity="center_horizontal" android:id="@id/bwg" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dp" />
-            <TextView android:textSize="@dimen/k9" android:textColor="#ff576b95" android:layout_gravity="center_horizontal" android:id="@id/bwh" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dl" />
-            <ImageView android:id="@id/bwi" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/abu" />
+<LinearLayout android:orientation="horizontal" android:background="@color/a3x" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/k6" android:background="@drawable/pi" android:paddingLeft="@dimen/g2" android:paddingRight="@dimen/g2" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/gb" android:layout_marginLeft="@dimen/fx" android:layout_marginTop="@dimen/fx" android:layout_marginRight="@dimen/fx">
+        <ViewStub android:id="@id/byp" android:layout="@layout/a1g" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/byq" android:layout="@layout/a1h" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/ln" android:id="@id/byr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/fx" android:maxWidth="130.0dip" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/bys" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0dip" android:textColor="@color/cv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/gc" android:layout_marginRight="@dimen/gc" android:maxWidth="@dimen/fw" android:text="重新设置" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/byt" android:background="@raw/refresh" android:layout_width="17.0dip" android:layout_height="17.0dip" app:iconColor="@color/y7" />
         </LinearLayout>
-    </com.tencent.mm.plugin.game.ui.GameRankHeadView>
+    </LinearLayout>
 </LinearLayout>

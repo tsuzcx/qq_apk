@@ -1,53 +1,28 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.util.Pair;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
+import org.json.JSONArray;
 
-public final class u
+final class u
 {
-  public String appId;
-  public int bFB;
-  public String efZ;
-  public int fPB;
-  public List<WxaAttributes.WxaEntryInfo> fQZ;
-  private String fRA = null;
-  public List<Pair<String, String>> fRl;
-  public String fRz;
-  public String nickname;
-  public String signature;
-  public String username;
-  
-  public final String aet()
+  static LinkedList<String> m(JSONArray paramJSONArray)
   {
-    if ((bk.bl(this.fRA)) && (!bk.dk(this.fRl)))
+    AppMethodBeat.i(96178);
+    if (paramJSONArray == null)
     {
-      Object localObject2 = new StringBuilder();
-      Iterator localIterator = this.fRl.iterator();
-      label110:
-      while (localIterator.hasNext())
-      {
-        localObject1 = (Pair)localIterator.next();
-        if (bk.bl((String)((Pair)localObject1).second)) {}
-        for (localObject1 = (String)((Pair)localObject1).first;; localObject1 = (String)((Pair)localObject1).second)
-        {
-          if (bk.bl((String)localObject1)) {
-            break label110;
-          }
-          ((StringBuilder)localObject2).append("、");
-          ((StringBuilder)localObject2).append((String)localObject1);
-          break;
-        }
-      }
-      localObject2 = ((StringBuilder)localObject2).toString();
-      Object localObject1 = localObject2;
-      if (!bk.bl((String)localObject2)) {
-        localObject1 = ((String)localObject2).replaceFirst("、", "");
-      }
-      this.fRA = ((String)localObject1);
+      AppMethodBeat.o(96178);
+      return null;
     }
-    return bk.pm(this.fRA);
+    LinkedList localLinkedList = new LinkedList();
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      localLinkedList.add(paramJSONArray.optString(i));
+      i += 1;
+    }
+    AppMethodBeat.o(96178);
+    return localLinkedList;
   }
 }
 

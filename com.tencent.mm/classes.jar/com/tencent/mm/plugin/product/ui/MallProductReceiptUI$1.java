@@ -4,11 +4,11 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.b.c;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.c.bjm;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.protocal.protobuf.bse;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.t;
 
 final class MallProductReceiptUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -18,24 +18,28 @@ final class MallProductReceiptUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     int i = 0;
-    paramMenuItem = MallProductReceiptUI.a(this.mUe).getText().toString();
-    if (!bk.bl(paramMenuItem))
+    AppMethodBeat.i(44090);
+    paramMenuItem = MallProductReceiptUI.a(this.pwk).getText().toString();
+    if (!bo.isNullOrNil(paramMenuItem))
     {
-      c localc = MallProductReceiptUI.b(this.mUe);
-      localc.mRW = new bjm();
-      bjm localbjm = localc.mRW;
-      if (bk.bl(paramMenuItem)) {}
-      for (;;)
+      c localc = MallProductReceiptUI.b(this.pwk);
+      localc.pud = new bse();
+      bse localbse = localc.pud;
+      if (bo.isNullOrNil(paramMenuItem))
       {
-        localbjm.tDr = i;
-        localc.mRW.kSY = paramMenuItem;
-        this.mUe.finish();
-        return true;
-        i = 1;
+        localbse.xFH = i;
+        localc.pud.nqY = paramMenuItem;
+        this.pwk.finish();
       }
     }
-    s.makeText(this.mUe, a.i.mall_product_receipt_empty_tips, 0).show();
-    return true;
+    for (;;)
+    {
+      AppMethodBeat.o(44090);
+      return true;
+      i = 1;
+      break;
+      t.makeText(this.pwk, 2131301476, 0).show();
+    }
   }
 }
 

@@ -5,7 +5,7 @@ public final class c$ah
 {
   public c$ah()
   {
-    super("clickSnsMusicPlayButton", "", 10000, false);
+    super("clearBounceBackground", "clearBounceBackground", 189, false);
   }
 }
 

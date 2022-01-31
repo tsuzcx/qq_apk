@@ -9,83 +9,112 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import com.tencent.mm.modelgeo.b;
-import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.plugin.map.a.a;
-import com.tencent.mm.plugin.map.a.e;
-import com.tencent.mm.plugin.map.a.f;
-import com.tencent.mm.plugin.map.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.c;
+import com.tencent.mm.modelgeo.c.a;
 
 public class PickPoi
   extends RelativeLayout
 {
   private Context context;
-  View lEI;
-  protected b lIe;
-  public b.a lIl = new PickPoi.1(this);
-  private double lJs;
-  private double lJt;
-  private f lJu = new f();
-  boolean lJv = true;
-  private e lJw = null;
-  Animation wb;
+  View obW;
+  protected c ofr;
+  public c.a ofy;
+  private double ogH;
+  private double ogI;
+  private f ogJ;
+  boolean ogK;
+  private e ogL;
+  Animation wq;
   
   public PickPoi(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(113649);
+    this.ogJ = new f();
+    this.ogK = true;
+    this.ogL = null;
+    this.ofy = new PickPoi.1(this);
     this.context = paramContext;
     init();
+    AppMethodBeat.o(113649);
   }
   
   public PickPoi(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(113650);
+    this.ogJ = new f();
+    this.ogK = true;
+    this.ogL = null;
+    this.ofy = new PickPoi.1(this);
     this.context = paramContext;
     init();
+    AppMethodBeat.o(113650);
   }
   
   public PickPoi(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(113651);
+    this.ogJ = new f();
+    this.ogK = true;
+    this.ogL = null;
+    this.ofy = new PickPoi.1(this);
     this.context = paramContext;
     init();
+    AppMethodBeat.o(113651);
   }
   
   private void init()
   {
-    this.lIe = b.NZ();
-    this.wb = AnimationUtils.loadAnimation(this.context, a.a.translate_map);
-    this.lEI = LayoutInflater.from(this.context).inflate(a.f.location_poi_pick, this, true).findViewById(a.e.location_here);
+    AppMethodBeat.i(113652);
+    this.ofr = c.agN();
+    this.wq = AnimationUtils.loadAnimation(this.context, 2131034284);
+    this.obW = LayoutInflater.from(this.context).inflate(2130969993, this, true).findViewById(2131825436);
+    AppMethodBeat.o(113652);
   }
   
   public f getPoi()
   {
-    return this.lJu;
+    return this.ogJ;
   }
   
-  public final void j(double paramDouble1, double paramDouble2)
+  public final void l(double paramDouble1, double paramDouble2)
   {
-    this.lJs = paramDouble1;
-    this.lJt = paramDouble2;
-    this.lJu = new f();
-    this.lJu.type = 3;
-    this.lJu.mName = this.context.getResources().getString(a.h.location_selected);
-    this.lJu.aWE = paramDouble1;
-    this.lJu.aWF = paramDouble2;
-    this.lJu.lJE = "";
-    this.lIe.a(this.lIl);
-    this.lIe.a(paramDouble1, paramDouble2, this.lIl);
-    this.lJv = true;
+    AppMethodBeat.i(113653);
+    this.ogH = paramDouble1;
+    this.ogI = paramDouble2;
+    this.ogJ = new f();
+    this.ogJ.type = 3;
+    this.ogJ.mName = this.context.getResources().getString(2131301105);
+    this.ogJ.bnl = paramDouble1;
+    this.ogJ.bnm = paramDouble2;
+    this.ogJ.ogS = "";
+    this.ofr.a(this.ofy);
+    this.ofr.a(paramDouble1, paramDouble2, this.ofy);
+    this.ogK = true;
+    AppMethodBeat.o(113653);
+  }
+  
+  public final void m(double paramDouble1, double paramDouble2)
+  {
+    AppMethodBeat.i(113654);
+    l(paramDouble1, paramDouble2);
+    this.ogK = false;
+    AppMethodBeat.o(113654);
   }
   
   public void setAdapter(e parame)
   {
-    this.lJw = parame;
+    this.ogL = parame;
   }
   
   public void setLocationArrow(int paramInt)
   {
-    ((ImageView)this.lEI).setImageResource(paramInt);
+    AppMethodBeat.i(113655);
+    ((ImageView)this.obW).setImageResource(paramInt);
+    AppMethodBeat.o(113655);
   }
 }
 

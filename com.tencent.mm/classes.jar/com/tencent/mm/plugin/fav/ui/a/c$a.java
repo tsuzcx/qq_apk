@@ -5,8 +5,8 @@ import com.tencent.mm.plugin.fav.ui.widget.FavTagPanel;
 
 public final class c$a
 {
-  TextView icl;
-  FavTagPanel keV;
+  TextView jTb;
+  FavTagPanel mzE;
 }
 
 

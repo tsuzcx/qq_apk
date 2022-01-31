@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceBindDeviceUI$2
   extends ClickableSpan
@@ -11,13 +12,17 @@ final class ExdeviceBindDeviceUI$2
   
   public final void onClick(View paramView)
   {
-    this.jBw.finish();
+    AppMethodBeat.i(19825);
+    this.lKV.finish();
+    AppMethodBeat.o(19825);
   }
   
   public final void updateDrawState(TextPaint paramTextPaint)
   {
+    AppMethodBeat.i(19826);
     paramTextPaint.setColor(paramTextPaint.linkColor);
     paramTextPaint.setUnderlineText(false);
+    AppMethodBeat.o(19826);
   }
 }
 

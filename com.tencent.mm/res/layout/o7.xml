@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate android:orientation="vertical" android:id="@id/avf" android:background="@drawable/ju" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/lb" android:layout_marginRight="5.0dip" android:minHeight="@dimen/eg"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/kl">
-        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/auh" android:layout_width="@dimen/ff" android:layout_height="@dimen/ff" />
-            <ProgressBar android:layout_gravity="center" android:id="@id/xj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/yo" />
-        </FrameLayout>
-        <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <com.tencent.mm.ui.widget.edittext.PasterEditText android:textSize="@dimen/lj" android:textColor="@color/qm" android:ellipsize="end" android:id="@id/aui" android:background="@drawable/k3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mq" android:layout_marginTop="0.0dip" android:maxLines="3" />
-        </ScrollView>
+    <ProgressBar android:gravity="center" android:layout_gravity="center|left" android:id="@id/avg" android:padding="@dimen/ll" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" style="@style/a0t" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/avh" android:paddingLeft="@dimen/ll" android:paddingTop="8.0dip" android:paddingRight="@dimen/ll" android:paddingBottom="4.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:lineSpacingExtra="2.0dip" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/avi" android:paddingBottom="8.0dip" android:visibility="gone" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/avh" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/avj" android:paddingLeft="@dimen/ll" android:paddingRight="@dimen/lb" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a6o" />
+        <TextView android:textSize="11.0dip" android:textColor="@color/t7" android:gravity="center_vertical" android:id="@id/avk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f_5" android:includeFontPadding="false" />
     </LinearLayout>
-</LinearLayout>
+</com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate>

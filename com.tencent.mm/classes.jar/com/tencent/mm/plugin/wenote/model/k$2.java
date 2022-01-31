@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.wenote.model;
 
-import com.tencent.mm.f.b.j.a;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.j.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class k$2
   implements j.a
@@ -11,8 +12,10 @@ public final class k$2
   
   public final void onError()
   {
-    y.e("MicroMsg.WNNoteVoiceLogic", "SimpleVoiceRecorder,Record Failed");
-    k.a(this.rGm).stopTimer();
+    AppMethodBeat.i(26665);
+    ab.e("MicroMsg.WNNoteVoiceLogic", "SimpleVoiceRecorder,Record Failed");
+    k.a(this.vwV).stopTimer();
+    AppMethodBeat.o(26665);
   }
 }
 

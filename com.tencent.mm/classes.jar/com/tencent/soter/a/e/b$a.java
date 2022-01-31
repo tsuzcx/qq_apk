@@ -1,16 +1,29 @@
 package com.tencent.soter.a.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class b$a
 {
-  public int wPC = 0;
-  public String wPD = "";
-  public boolean wPE = false;
-  public boolean wPF = false;
-  public a wPG = null;
+  public int Bnc = 0;
+  private String Bnd = "";
+  public boolean Bne = false;
+  private boolean Bnf = false;
+  public a Bng = null;
   
-  public final b cPD()
+  public final a cv(String paramString, boolean paramBoolean)
   {
-    return new b(this.wPC, this.wPD, this.wPE, this.wPF, this.wPG, (byte)0);
+    this.Bnd = paramString;
+    this.Bnf = paramBoolean;
+    this.Bnc |= 0x2;
+    return this;
+  }
+  
+  public final b dVz()
+  {
+    AppMethodBeat.i(10474);
+    b localb = new b(this.Bnc, this.Bnd, this.Bne, this.Bnf, this.Bng, (byte)0);
+    AppMethodBeat.o(10474);
+    return localb;
   }
 }
 

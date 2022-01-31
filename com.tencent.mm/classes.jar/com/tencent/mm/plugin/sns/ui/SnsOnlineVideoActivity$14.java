@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SnsOnlineVideoActivity$14
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class SnsOnlineVideoActivity$14
   
   public final void run()
   {
-    this.pbr.finish();
+    AppMethodBeat.i(39161);
+    this.rUf.finish();
+    AppMethodBeat.o(39161);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsOnlineVideoActivity.14
  * JD-Core Version:    0.7.0.1
  */

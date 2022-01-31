@@ -5,15 +5,15 @@ public final class v
 {
   public v()
   {
-    this.xqq = 287;
+    this.CMD = 287;
   }
   
-  public final Boolean cUG()
+  public final Boolean erf()
   {
-    if (this.xra < 8) {
-      return Boolean.valueOf(false);
+    if (this.CNn < 8) {
+      return Boolean.FALSE;
     }
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMLoadScrollView.a;
 
 final class EmojiStoreV2RewardDetailUI$2
@@ -8,10 +9,12 @@ final class EmojiStoreV2RewardDetailUI$2
 {
   EmojiStoreV2RewardDetailUI$2(EmojiStoreV2RewardDetailUI paramEmojiStoreV2RewardDetailUI) {}
   
-  public final void aJC()
+  public final void bnl()
   {
-    y.i("MicroMsg.emoji.EmojiStoreV2RewardDetailUI", "onBottom");
-    EmojiStoreV2RewardDetailUI.b(this.jhl);
+    AppMethodBeat.i(53670);
+    ab.i("MicroMsg.emoji.EmojiStoreV2RewardDetailUI", "onBottom");
+    EmojiStoreV2RewardDetailUI.b(this.lqe);
+    AppMethodBeat.o(53670);
   }
 }
 

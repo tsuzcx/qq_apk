@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletSecuritySettingUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,13 +11,15 @@ final class WalletSecuritySettingUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.qqb.finish();
+    AppMethodBeat.i(46393);
+    this.uaz.finish();
+    AppMethodBeat.o(46393);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletSecuritySettingUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,15 +5,16 @@ import android.opengl.GLU;
 import android.view.MotionEvent;
 import com.tencent.map.lib.basemap.data.DoublePoint;
 import com.tencent.map.lib.gl.c;
-import com.tencent.tencentmap.mapsdk.a.hu;
-import com.tencent.tencentmap.mapsdk.a.hv;
-import com.tencent.tencentmap.mapsdk.a.hy;
-import com.tencent.tencentmap.mapsdk.a.ic;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.gv;
+import com.tencent.tencentmap.mapsdk.maps.a.gw;
+import com.tencent.tencentmap.mapsdk.maps.a.gz;
+import com.tencent.tencentmap.mapsdk.maps.a.hd;
 import javax.microedition.khronos.opengles.GL10;
 
 public class a
   extends b
-  implements hu
+  implements gv
 {
   public static final int ELEMENT_ANIMATOR_ALPHA = 1;
   public static final int ELEMENT_ANIMATOR_ROTATE = 4;
@@ -34,6 +35,7 @@ public class a
   
   private void drawTexture(GL10 paramGL10, com.tencent.map.lib.gl.b paramb)
   {
+    AppMethodBeat.i(98141);
     String str = getIdByState();
     int j = paramb.a(str);
     int i = j;
@@ -53,54 +55,74 @@ public class a
     if (i != 0) {
       super.drawWithTexture(paramGL10, i);
     }
+    AppMethodBeat.o(98141);
   }
   
   private String getIdByState()
   {
-    return this.mAdapter.getTextureUID() + "_" + this.mState;
+    AppMethodBeat.i(98140);
+    String str = this.mAdapter.getTextureUID() + "_" + this.mState;
+    AppMethodBeat.o(98140);
+    return str;
   }
   
   private void performDraw(GL10 paramGL10, com.tencent.map.lib.gl.b paramb)
   {
+    AppMethodBeat.i(98138);
     paramGL10.glPushMatrix();
     if (prepareDraw(paramGL10))
     {
       if (!this.mAdapter.hasTexture()) {
-        break label39;
+        break label49;
       }
       drawTexture(paramGL10, paramb);
     }
     for (;;)
     {
       paramGL10.glPopMatrix();
+      AppMethodBeat.o(98138);
       return;
-      label39:
+      label49:
       super.drawWithTexture(paramGL10, 0);
     }
   }
   
-  public hv animator(int paramInt, Object paramObject1, Object paramObject2)
+  public gw animator(int paramInt, Object paramObject1, Object paramObject2)
   {
+    AppMethodBeat.i(147035);
     switch (paramInt)
     {
     default: 
+      AppMethodBeat.o(147035);
       return null;
     case 1: 
-      return ic.a(this, 1, new double[] { ((Number)paramObject1).doubleValue(), ((Number)paramObject2).doubleValue() });
+      paramObject1 = hd.a(this, 1, new double[] { ((Number)paramObject1).doubleValue(), ((Number)paramObject2).doubleValue() });
+      AppMethodBeat.o(147035);
+      return paramObject1;
     case 2: 
-      return ic.a(this, 2, new hy(), new Object[] { paramObject1, paramObject2 });
+      paramObject1 = hd.a(this, 2, new gz(), new Object[] { paramObject1, paramObject2 });
+      AppMethodBeat.o(147035);
+      return paramObject1;
     case 3: 
-      return ic.a(this, 3, new hy(), new Object[] { paramObject1, paramObject2 });
+      paramObject1 = hd.a(this, 3, new gz(), new Object[] { paramObject1, paramObject2 });
+      AppMethodBeat.o(147035);
+      return paramObject1;
     }
-    return ic.a(this, 4, new double[] { ((Number)paramObject1).doubleValue(), ((Number)paramObject2).doubleValue() });
+    paramObject1 = hd.a(this, 4, new double[] { ((Number)paramObject1).doubleValue(), ((Number)paramObject2).doubleValue() });
+    AppMethodBeat.o(147035);
+    return paramObject1;
   }
   
   public void draw(GL10 paramGL10, com.tencent.map.lib.gl.b paramb)
   {
     try
     {
-      if (this.mAdapter == null) {
-        throw new RuntimeException("please setAdapter first");
+      AppMethodBeat.i(98136);
+      if (this.mAdapter == null)
+      {
+        paramGL10 = new RuntimeException("please setAdapter first");
+        AppMethodBeat.o(98136);
+        throw paramGL10;
       }
     }
     finally {}
@@ -110,10 +132,12 @@ public class a
     paramGL10.glRotatef(this.rotate, 0.0F, 0.0F, 1.0F);
     performDraw(paramGL10, paramb);
     paramGL10.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+    AppMethodBeat.o(98136);
   }
   
   public void drawWithOrthogo(GL10 paramGL10, com.tencent.map.lib.gl.b paramb, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(98139);
     paramGL10.glMatrixMode(5889);
     paramGL10.glPushMatrix();
     paramGL10.glLoadIdentity();
@@ -121,6 +145,7 @@ public class a
     draw(paramGL10, paramb);
     paramGL10.glPopMatrix();
     paramGL10.glMatrixMode(5888);
+    AppMethodBeat.o(98139);
   }
   
   public int getState()
@@ -147,9 +172,11 @@ public class a
   {
     try
     {
+      AppMethodBeat.i(98137);
       setVertices(paramArrayOfFloat1);
       setIndices(paramArrayOfShort);
       setTextureCoordinates(paramArrayOfFloat2);
+      AppMethodBeat.o(98137);
       return;
     }
     finally
@@ -175,25 +202,29 @@ public class a
   
   public void setPropertyValue(int paramInt, Object paramObject)
   {
+    AppMethodBeat.i(98143);
     switch (paramInt)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(98143);
       return;
-    case 1: 
       this.alpha = ((Number)paramObject).floatValue();
+      AppMethodBeat.o(98143);
       return;
-    case 2: 
       paramObject = (DoublePoint)paramObject;
       this.scaleX = ((float)paramObject.x);
       this.scaleY = ((float)paramObject.y);
+      AppMethodBeat.o(98143);
       return;
-    case 3: 
       paramObject = (DoublePoint)paramObject;
       this.translateX = ((float)paramObject.x);
       this.translateY = ((float)paramObject.y);
+      AppMethodBeat.o(98143);
       return;
+      this.rotate = ((Number)paramObject).floatValue();
     }
-    this.rotate = ((Number)paramObject).floatValue();
   }
   
   public void setState(int paramInt)

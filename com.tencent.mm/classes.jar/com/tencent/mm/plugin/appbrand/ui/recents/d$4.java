@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
 
 final class d$4
-  implements j.a
+  implements k.a
 {
   d$4(d paramd) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
-    d.f(this.hgW);
-    paramString = this.hgW.apM();
-    d.a(this.hgW, paramString);
+    AppMethodBeat.i(133328);
+    d.e(this.iSy);
+    paramString = this.iSy.aNg();
+    d.a(this.iSy, paramString);
+    AppMethodBeat.o(133328);
   }
 }
 

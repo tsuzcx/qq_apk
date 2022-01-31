@@ -14,29 +14,29 @@ public abstract class f
   extends BaseAdapter
   implements g.a, Filterable
 {
-  protected boolean JK = false;
-  protected boolean JL = true;
-  public Cursor JM = null;
-  protected int JN;
-  protected f.a JO;
-  protected DataSetObserver JP;
-  protected g JQ;
-  protected FilterQueryProvider JR;
-  public Context mContext;
+  protected boolean Jq = false;
+  protected boolean Jr = true;
+  protected Cursor Js = null;
+  protected int Jt;
+  protected f.a Ju;
+  protected DataSetObserver Jv;
+  protected g Jw;
+  protected FilterQueryProvider Jx;
+  protected Context mContext;
   
   public f(Context paramContext)
   {
     this.mContext = paramContext;
-    this.JN = -1;
-    this.JO = new f.a(this);
-    this.JP = new f.b(this);
+    this.Jt = -1;
+    this.Ju = new f.a(this);
+    this.Jv = new f.b(this);
   }
   
   public abstract void a(View paramView, Cursor paramCursor);
   
   public void changeCursor(Cursor paramCursor)
   {
-    if (paramCursor == this.JM) {
+    if (paramCursor == this.Js) {
       paramCursor = null;
     }
     for (;;)
@@ -45,34 +45,34 @@ public abstract class f
         paramCursor.close();
       }
       return;
-      Cursor localCursor = this.JM;
+      Cursor localCursor = this.Js;
       if (localCursor != null)
       {
-        if (this.JO != null) {
-          localCursor.unregisterContentObserver(this.JO);
+        if (this.Ju != null) {
+          localCursor.unregisterContentObserver(this.Ju);
         }
-        if (this.JP != null) {
-          localCursor.unregisterDataSetObserver(this.JP);
+        if (this.Jv != null) {
+          localCursor.unregisterDataSetObserver(this.Jv);
         }
       }
-      this.JM = paramCursor;
+      this.Js = paramCursor;
       if (paramCursor != null)
       {
-        if (this.JO != null) {
-          paramCursor.registerContentObserver(this.JO);
+        if (this.Ju != null) {
+          paramCursor.registerContentObserver(this.Ju);
         }
-        if (this.JP != null) {
-          paramCursor.registerDataSetObserver(this.JP);
+        if (this.Jv != null) {
+          paramCursor.registerDataSetObserver(this.Jv);
         }
-        this.JN = paramCursor.getColumnIndexOrThrow("_id");
-        this.JK = true;
+        this.Jt = paramCursor.getColumnIndexOrThrow("_id");
+        this.Jq = true;
         notifyDataSetChanged();
         paramCursor = localCursor;
       }
       else
       {
-        this.JN = -1;
-        this.JK = false;
+        this.Jt = -1;
+        this.Jq = false;
         notifyDataSetInvalidated();
         paramCursor = localCursor;
       }
@@ -89,27 +89,27 @@ public abstract class f
   
   public int getCount()
   {
-    if ((this.JK) && (this.JM != null)) {
-      return this.JM.getCount();
+    if ((this.Jq) && (this.Js != null)) {
+      return this.Js.getCount();
     }
     return 0;
   }
   
   public final Cursor getCursor()
   {
-    return this.JM;
+    return this.Js;
   }
   
   public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.JK)
+    if (this.Jq)
     {
-      this.JM.moveToPosition(paramInt);
+      this.Js.moveToPosition(paramInt);
       View localView = paramView;
       if (paramView == null) {
-        localView = newDropDownView(this.mContext, this.JM, paramViewGroup);
+        localView = newDropDownView(this.mContext, this.Js, paramViewGroup);
       }
-      a(localView, this.JM);
+      a(localView, this.Js);
       return localView;
     }
     return null;
@@ -117,18 +117,18 @@ public abstract class f
   
   public Filter getFilter()
   {
-    if (this.JQ == null) {
-      this.JQ = new g(this);
+    if (this.Jw == null) {
+      this.Jw = new g(this);
     }
-    return this.JQ;
+    return this.Jw;
   }
   
   public Object getItem(int paramInt)
   {
-    if ((this.JK) && (this.JM != null))
+    if ((this.Jq) && (this.Js != null))
     {
-      this.JM.moveToPosition(paramInt);
-      return this.JM;
+      this.Js.moveToPosition(paramInt);
+      return this.Js;
     }
     return null;
   }
@@ -137,14 +137,14 @@ public abstract class f
   {
     long l2 = 0L;
     long l1 = l2;
-    if (this.JK)
+    if (this.Jq)
     {
       l1 = l2;
-      if (this.JM != null)
+      if (this.Js != null)
       {
         l1 = l2;
-        if (this.JM.moveToPosition(paramInt)) {
-          l1 = this.JM.getLong(this.JN);
+        if (this.Js.moveToPosition(paramInt)) {
+          l1 = this.Js.getLong(this.Jt);
         }
       }
     }
@@ -153,17 +153,17 @@ public abstract class f
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (!this.JK) {
+    if (!this.Jq) {
       throw new IllegalStateException("this should only be called when the cursor is valid");
     }
-    if (!this.JM.moveToPosition(paramInt)) {
-      throw new IllegalStateException("couldn't move cursor to position " + paramInt);
+    if (!this.Js.moveToPosition(paramInt)) {
+      throw new IllegalStateException("couldn't move cursor to position ".concat(String.valueOf(paramInt)));
     }
     View localView = paramView;
     if (paramView == null) {
-      localView = newView(this.mContext, this.JM, paramViewGroup);
+      localView = newView(this.mContext, this.Js, paramViewGroup);
     }
-    a(localView, this.JM);
+    a(localView, this.Js);
     return localView;
   }
   
@@ -181,17 +181,17 @@ public abstract class f
   
   protected final void onContentChanged()
   {
-    if ((this.JL) && (this.JM != null) && (!this.JM.isClosed())) {
-      this.JK = this.JM.requery();
+    if ((this.Jr) && (this.Js != null) && (!this.Js.isClosed())) {
+      this.Jq = this.Js.requery();
     }
   }
   
   public Cursor runQueryOnBackgroundThread(CharSequence paramCharSequence)
   {
-    if (this.JR != null) {
-      return this.JR.runQuery(paramCharSequence);
+    if (this.Jx != null) {
+      return this.Jx.runQuery(paramCharSequence);
     }
-    return this.JM;
+    return this.Js;
   }
 }
 

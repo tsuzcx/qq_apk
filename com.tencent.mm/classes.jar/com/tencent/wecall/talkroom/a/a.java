@@ -1,6 +1,7 @@
 package com.tencent.wecall.talkroom.a;
 
 import com.google.a.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.ag;
 import com.tencent.pb.common.b.a.a.al;
 import com.tencent.pb.common.b.a.a.ba;
@@ -11,65 +12,75 @@ import com.tencent.pb.common.c.c;
 public final class a
   extends d
 {
-  public String kWU = null;
-  public int lvU = 0;
-  public int wFA;
-  public long xdR = 0L;
-  public int xfN;
+  public int BCu;
+  public int Bda;
+  public int nTj;
+  public String nuW;
+  public long tFh;
   
   public a(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(128007);
+    this.nuW = null;
+    this.nTj = 0;
+    this.tFh = 0L;
     c.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneAckVoiceGroup" });
     a.j localj = new a.j();
     try
     {
       localj.groupId = paramString;
-      this.kWU = paramString;
-      localj.pRI = paramInt1;
-      this.lvU = paramInt1;
-      localj.pRJ = paramLong;
-      this.xdR = paramLong;
-      this.xfN = paramInt3;
-      this.wFA = paramInt2;
+      this.nuW = paramString;
+      localj.twP = paramInt1;
+      this.nTj = paramInt1;
+      localj.twQ = paramLong;
+      this.tFh = paramLong;
+      this.BCu = paramInt3;
+      this.Bda = paramInt2;
       paramString = new a.al();
-      paramString.tFK = 0;
+      paramString.iLen = 0;
       a.ba localba = new a.ba();
       localba.type = 3;
-      localba.wJw = paramString;
-      localj.wGj = localba;
-      this.wFz = 3;
-      this.wFA = paramInt2;
+      localba.BgW = paramString;
+      localj.BdK = localba;
+      this.mNetType = 3;
+      this.Bda = paramInt2;
       c(189, localj);
+      AppMethodBeat.o(128007);
       return;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        c.x(this.TAG2, new Object[] { "NetSceneAckVoiceGroup constructor", paramString });
+        c.w(this.TAG2, new Object[] { "NetSceneAckVoiceGroup constructor", paramString });
       }
     }
   }
   
-  protected final Object bK(byte[] paramArrayOfByte)
+  public final Object ck(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(128008);
     c.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
-    if (paramArrayOfByte != null) {
+    if (paramArrayOfByte != null) {}
+    for (;;)
+    {
       try
       {
         paramArrayOfByte = (a.ag)e.a(new a.ag(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(128008);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
       {
-        c.x(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
-        return null;
+        c.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
+        paramArrayOfByte = null;
+        continue;
       }
+      paramArrayOfByte = null;
     }
-    return null;
   }
   
-  protected final String cNR()
+  public final String dTD()
   {
     return "CsCmd.Cmd_V_CSVoiceAckReq";
   }

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.card.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.mm.plugin.card.a.e;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
@@ -13,24 +13,34 @@ import com.tencent.mm.ui.base.h;
 public class CardShowWaringTransparentUI
   extends MMActivity
 {
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.e.card_show_warning_transparent_ui;
+    return 2130969001;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(88652);
     super.onCreate(paramBundle);
-    paramBundle = getIntent().getStringExtra("KEY_BRAND_NAME");
-    h.a(this, getString(a.g.card_third_party_disclaimer_content, new Object[] { paramBundle }), getString(a.g.card_third_party_disclaimer_title), getString(a.g.card_iknow), new CardShowWaringTransparentUI.1(this));
+    h.a(this, getString(2131298071, new Object[] { getIntent().getStringExtra("KEY_BRAND_NAME") }), getString(2131298072), getString(2131297952), new CardShowWaringTransparentUI.1(this));
+    AppMethodBeat.o(88652);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(88653);
     if (paramInt == 4) {
       finish();
     }
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.o(88653);
+    return bool;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

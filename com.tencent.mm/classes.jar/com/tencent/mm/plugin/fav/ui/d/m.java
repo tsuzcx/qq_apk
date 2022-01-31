@@ -3,13 +3,12 @@ package com.tencent.mm.plugin.fav.ui.d;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.plugin.fav.ui.n.f;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.protocal.c.yl;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.acs;
 
 public final class m
   extends a
@@ -21,13 +20,14 @@ public final class m
   
   public final View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg)
   {
+    AppMethodBeat.i(74651);
     paramViewGroup = paramViewGroup.getContext();
     View localView;
     if (paramView == null)
     {
       paramView = new a();
-      localView = a(View.inflate(paramViewGroup, n.f.fav_listitem_text, null), paramView, paramg);
-      paramView.dsy = ((TextView)localView.findViewById(n.e.fav_text));
+      localView = a(View.inflate(paramViewGroup, 2130969548, null), paramView, paramg);
+      paramView.ekg = ((TextView)localView.findViewById(2131824042));
       paramViewGroup = paramView;
     }
     for (;;)
@@ -36,31 +36,35 @@ public final class m
       if ((paramg.field_favProto.desc != null) && (paramg.field_favProto.desc.length() > 0)) {
         break;
       }
-      paramViewGroup.dsy.setText("");
+      paramViewGroup.ekg.setText("");
+      AppMethodBeat.o(74651);
       return localView;
       paramViewGroup = (a)paramView.getTag();
       localView = paramView;
     }
-    paramViewGroup.dsy.setText(j.a(paramViewGroup.dsy.getContext(), paramg.field_favProto.desc, paramViewGroup.dsy.getTextSize()));
+    paramViewGroup.ekg.setText(j.b(paramViewGroup.ekg.getContext(), paramg.field_favProto.desc, paramViewGroup.ekg.getTextSize()));
+    AppMethodBeat.o(74651);
     return localView;
   }
   
-  public final void a(View paramView, yl paramyl)
+  public final void a(View paramView, acs paramacs)
   {
+    AppMethodBeat.i(74652);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.r(y.class)).a(paramView, locala.jZN, paramyl);
+    ((y)com.tencent.mm.kernel.g.E(y.class)).a(paramView, locala.muk, paramacs);
+    AppMethodBeat.o(74652);
   }
   
   public static final class a
     extends a.b
   {
-    TextView dsy;
+    TextView ekg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.d.m
  * JD-Core Version:    0.7.0.1
  */

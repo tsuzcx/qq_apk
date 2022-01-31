@@ -1,42 +1,53 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class a
 {
-  public static boolean QU(String paramString)
+  public static boolean hd(String paramString1, String paramString2)
   {
-    if (bk.bl(paramString)) {}
-    int i;
-    do
+    AppMethodBeat.i(48174);
+    if (bo.isNullOrNil(paramString1))
     {
+      AppMethodBeat.o(48174);
       return false;
-      Object localObject = null;
-      String[] arrayOfString = paramString.split("&");
-      int j = arrayOfString.length;
-      i = 0;
-      paramString = localObject;
+    }
+    Object localObject = null;
+    String[] arrayOfString = paramString1.split("&");
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      paramString1 = localObject;
       if (i < j)
       {
-        paramString = arrayOfString[i].split("=");
-        if ((paramString.length <= 1) || (!paramString[0].equals("prepay_id"))) {
+        paramString1 = arrayOfString[i].split("=");
+        if ((paramString1.length > 1) && (paramString1[0].equals("prepay_id"))) {
+          paramString1 = paramString1[1];
+        }
+      }
+      else
+      {
+        if (!bo.isNullOrNil(paramString1)) {
           break;
         }
-        paramString = paramString[1];
+        AppMethodBeat.o(48174);
+        return false;
       }
-    } while (bk.bl(paramString));
-    if (paramString.startsWith("up_")) {}
+      i += 1;
+    }
+    if (paramString1.startsWith(paramString2)) {}
     for (boolean bool = true;; bool = false)
     {
+      AppMethodBeat.o(48174);
       return bool;
-      i += 1;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,10 @@ public class MediaConfig
   public static int BPS_HIGH = 0;
   public static int BPS_LOW = 0;
   public static int BPS_MEDIUM = 0;
-  public static int GIF_OUTPUT_HEIGHT = 0;
   public static int GIF_OUTPUT_TEX_HEIGHT = 0;
   public static int GIF_OUTPUT_TEX_WIDTH = 0;
   public static int GIF_OUTPUT_WATERMARK_HEIGHT = 50;
   public static int GIF_OUTPUT_WATERMARK_WIDTH = 0;
-  public static int GIF_OUTPUT_WIDTH = 0;
   public static float GIF_PLAY_RATE = 0.0F;
   public static long GIF_SAMPLE_TIME_MS = 0L;
   public static int INTERMIDIATE_IMAGE_WIDTH_HIGH = 0;
@@ -47,8 +45,6 @@ public class MediaConfig
     BPS_LOW = 5242880;
     GIF_OUTPUT_TEX_WIDTH = 720;
     GIF_OUTPUT_TEX_HEIGHT = 720;
-    GIF_OUTPUT_WIDTH = 240;
-    GIF_OUTPUT_HEIGHT = 240;
     GIF_PLAY_RATE = 0.5F;
     GIF_SAMPLE_TIME_MS = 200L;
     GIF_OUTPUT_WATERMARK_WIDTH = 180;
@@ -70,7 +66,7 @@ public class MediaConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.ttpic.config.MediaConfig
  * JD-Core Version:    0.7.0.1
  */

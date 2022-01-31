@@ -1,5 +1,6 @@
 package com.tencent.mm.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.PrintStream;
 import java.io.RandomAccessFile;
@@ -8,10 +9,39 @@ import java.util.zip.ZipException;
 
 public final class c
 {
-  private static final k bvr = new k(84298576L);
-  private static final k bvs = new k(50613072L);
-  private static int bvt = 0;
-  private static final k bvu = new k(101010256L);
+  private static final k bWC;
+  private static final k bWD;
+  private static int bWE;
+  private static final k bWF;
+  
+  static
+  {
+    AppMethodBeat.i(125713);
+    bWC = new k(84298576L);
+    bWD = new k(50613072L);
+    bWE = 0;
+    bWF = new k(101010256L);
+    AppMethodBeat.o(125713);
+  }
+  
+  private static String C(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(125717);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    for (;;)
+    {
+      if (i >= 2)
+      {
+        paramArrayOfByte = localStringBuilder.toString();
+        AppMethodBeat.o(125717);
+        return paramArrayOfByte;
+      }
+      localStringBuilder.append(paramArrayOfByte[i]);
+      localStringBuilder.append(",");
+      i += 1;
+    }
+  }
   
   /* Error */
   public static void c(File paramFile, String paramString)
@@ -19,170 +49,174 @@ public final class c
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: new 39	java/io/RandomAccessFile
-    //   6: dup
-    //   7: aload_0
-    //   8: ldc 41
-    //   10: invokespecial 43	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   13: astore_3
-    //   14: aload_3
-    //   15: invokestatic 46	com/tencent/mm/c/c:c	(Ljava/io/RandomAccessFile;)[B
-    //   18: astore_0
-    //   19: aload_0
-    //   20: ifnonnull +122 -> 142
-    //   23: aload 4
-    //   25: astore_0
-    //   26: new 6	com/tencent/mm/c/c$a
-    //   29: dup
-    //   30: iconst_0
-    //   31: invokespecial 49	com/tencent/mm/c/c$a:<init>	(B)V
-    //   34: astore 4
-    //   36: aload 4
-    //   38: aload_0
-    //   39: invokevirtual 53	com/tencent/mm/c/c$a:u	([B)V
-    //   42: aload 4
-    //   44: getfield 57	com/tencent/mm/c/c$a:bvv	Ljava/util/Properties;
-    //   47: ldc 59
-    //   49: aload_1
-    //   50: invokevirtual 65	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
-    //   53: pop
-    //   54: aload 4
-    //   56: invokevirtual 69	com/tencent/mm/c/c$a:ss	()[B
-    //   59: astore_0
-    //   60: aload_3
-    //   61: getstatic 30	com/tencent/mm/c/c:bvt	I
-    //   64: i2l
-    //   65: invokevirtual 72	java/io/RandomAccessFile:seek	(J)V
-    //   68: aload_3
-    //   69: new 74	com/tencent/mm/c/l
-    //   72: dup
-    //   73: aload_0
-    //   74: arraylength
-    //   75: invokespecial 77	com/tencent/mm/c/l:<init>	(I)V
-    //   78: invokevirtual 80	com/tencent/mm/c/l:getBytes	()[B
-    //   81: invokevirtual 83	java/io/RandomAccessFile:write	([B)V
-    //   84: aload_3
-    //   85: aload_0
-    //   86: invokevirtual 83	java/io/RandomAccessFile:write	([B)V
-    //   89: getstatic 30	com/tencent/mm/c/c:bvt	I
-    //   92: istore_2
-    //   93: aload_3
-    //   94: aload_0
-    //   95: arraylength
-    //   96: iload_2
-    //   97: iadd
-    //   98: iconst_2
-    //   99: iadd
-    //   100: i2l
-    //   101: invokevirtual 86	java/io/RandomAccessFile:setLength	(J)V
-    //   104: getstatic 92	java/lang/System:err	Ljava/io/PrintStream;
-    //   107: new 94	java/lang/StringBuilder
-    //   110: dup
-    //   111: ldc 96
-    //   113: invokespecial 99	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   116: aload_3
-    //   117: invokevirtual 103	java/io/RandomAccessFile:length	()J
-    //   120: invokevirtual 107	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   123: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   126: invokevirtual 116	java/io/PrintStream:println	(Ljava/lang/String;)V
-    //   129: aload_3
-    //   130: invokevirtual 119	java/io/RandomAccessFile:close	()V
-    //   133: getstatic 92	java/lang/System:err	Ljava/io/PrintStream;
-    //   136: ldc 121
-    //   138: invokevirtual 116	java/io/PrintStream:println	(Ljava/lang/String;)V
-    //   141: return
-    //   142: aload_0
-    //   143: invokestatic 127	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   146: astore 4
-    //   148: getstatic 24	com/tencent/mm/c/c:bvr	Lcom/tencent/mm/c/k;
-    //   151: invokevirtual 128	com/tencent/mm/c/k:getBytes	()[B
-    //   154: pop
-    //   155: iconst_4
-    //   156: newarray byte
-    //   158: astore 5
-    //   160: aload 4
-    //   162: aload 5
-    //   164: invokevirtual 131	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   167: pop
-    //   168: getstatic 24	com/tencent/mm/c/c:bvr	Lcom/tencent/mm/c/k;
-    //   171: new 16	com/tencent/mm/c/k
-    //   174: dup
-    //   175: aload 5
-    //   177: invokespecial 133	com/tencent/mm/c/k:<init>	([B)V
-    //   180: invokevirtual 137	com/tencent/mm/c/k:equals	(Ljava/lang/Object;)Z
-    //   183: ifeq +6 -> 189
-    //   186: goto -160 -> 26
-    //   189: getstatic 28	com/tencent/mm/c/c:bvs	Lcom/tencent/mm/c/k;
-    //   192: new 16	com/tencent/mm/c/k
-    //   195: dup
-    //   196: aload 5
-    //   198: invokespecial 133	com/tencent/mm/c/k:<init>	([B)V
-    //   201: invokevirtual 137	com/tencent/mm/c/k:equals	(Ljava/lang/Object;)Z
-    //   204: ifeq +6 -> 210
-    //   207: goto -181 -> 26
-    //   210: new 139	java/io/ByteArrayOutputStream
-    //   213: dup
-    //   214: invokespecial 141	java/io/ByteArrayOutputStream:<init>	()V
-    //   217: astore 4
-    //   219: aload 4
-    //   221: getstatic 28	com/tencent/mm/c/c:bvs	Lcom/tencent/mm/c/k;
-    //   224: invokevirtual 128	com/tencent/mm/c/k:getBytes	()[B
-    //   227: invokevirtual 142	java/io/ByteArrayOutputStream:write	([B)V
-    //   230: aload 4
-    //   232: new 74	com/tencent/mm/c/l
-    //   235: dup
-    //   236: aload_0
-    //   237: arraylength
-    //   238: invokespecial 77	com/tencent/mm/c/l:<init>	(I)V
-    //   241: invokevirtual 80	com/tencent/mm/c/l:getBytes	()[B
-    //   244: invokevirtual 142	java/io/ByteArrayOutputStream:write	([B)V
-    //   247: aload 4
-    //   249: aload_0
-    //   250: invokevirtual 142	java/io/ByteArrayOutputStream:write	([B)V
-    //   253: aload 4
-    //   255: invokevirtual 145	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   258: astore_0
-    //   259: goto -233 -> 26
-    //   262: astore_0
-    //   263: aconst_null
-    //   264: astore_1
-    //   265: aload_1
-    //   266: ifnull +7 -> 273
-    //   269: aload_1
-    //   270: invokevirtual 119	java/io/RandomAccessFile:close	()V
-    //   273: getstatic 92	java/lang/System:err	Ljava/io/PrintStream;
-    //   276: ldc 121
-    //   278: invokevirtual 116	java/io/PrintStream:println	(Ljava/lang/String;)V
-    //   281: aload_0
-    //   282: athrow
-    //   283: astore_0
-    //   284: aload_3
-    //   285: astore_1
-    //   286: goto -21 -> 265
+    //   3: ldc 71
+    //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: new 73	java/io/RandomAccessFile
+    //   11: dup
+    //   12: aload_0
+    //   13: ldc 75
+    //   15: invokespecial 77	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   18: astore_3
+    //   19: aload_3
+    //   20: invokestatic 80	com/tencent/mm/c/c:c	(Ljava/io/RandomAccessFile;)[B
+    //   23: astore_0
+    //   24: aload_0
+    //   25: ifnonnull +127 -> 152
+    //   28: aload 4
+    //   30: astore_0
+    //   31: new 6	com/tencent/mm/c/c$a
+    //   34: dup
+    //   35: iconst_0
+    //   36: invokespecial 83	com/tencent/mm/c/c$a:<init>	(B)V
+    //   39: astore 4
+    //   41: aload 4
+    //   43: aload_0
+    //   44: invokevirtual 87	com/tencent/mm/c/c$a:D	([B)V
+    //   47: aload 4
+    //   49: getfield 91	com/tencent/mm/c/c$a:bWG	Ljava/util/Properties;
+    //   52: ldc 93
+    //   54: aload_1
+    //   55: invokevirtual 99	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   58: pop
+    //   59: aload 4
+    //   61: invokevirtual 103	com/tencent/mm/c/c$a:AJ	()[B
+    //   64: astore_0
+    //   65: aload_3
+    //   66: getstatic 37	com/tencent/mm/c/c:bWE	I
+    //   69: i2l
+    //   70: invokevirtual 106	java/io/RandomAccessFile:seek	(J)V
+    //   73: aload_3
+    //   74: new 108	com/tencent/mm/c/l
+    //   77: dup
+    //   78: aload_0
+    //   79: arraylength
+    //   80: invokespecial 110	com/tencent/mm/c/l:<init>	(I)V
+    //   83: invokevirtual 113	com/tencent/mm/c/l:getBytes	()[B
+    //   86: invokevirtual 116	java/io/RandomAccessFile:write	([B)V
+    //   89: aload_3
+    //   90: aload_0
+    //   91: invokevirtual 116	java/io/RandomAccessFile:write	([B)V
+    //   94: getstatic 37	com/tencent/mm/c/c:bWE	I
+    //   97: istore_2
+    //   98: aload_3
+    //   99: aload_0
+    //   100: arraylength
+    //   101: iload_2
+    //   102: iadd
+    //   103: iconst_2
+    //   104: iadd
+    //   105: i2l
+    //   106: invokevirtual 119	java/io/RandomAccessFile:setLength	(J)V
+    //   109: getstatic 125	java/lang/System:err	Ljava/io/PrintStream;
+    //   112: new 53	java/lang/StringBuilder
+    //   115: dup
+    //   116: ldc 127
+    //   118: invokespecial 130	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   121: aload_3
+    //   122: invokevirtual 134	java/io/RandomAccessFile:length	()J
+    //   125: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   128: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   131: invokevirtual 142	java/io/PrintStream:println	(Ljava/lang/String;)V
+    //   134: aload_3
+    //   135: invokevirtual 145	java/io/RandomAccessFile:close	()V
+    //   138: getstatic 125	java/lang/System:err	Ljava/io/PrintStream;
+    //   141: ldc 147
+    //   143: invokevirtual 142	java/io/PrintStream:println	(Ljava/lang/String;)V
+    //   146: ldc 71
+    //   148: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   151: return
+    //   152: aload_0
+    //   153: invokestatic 153	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   156: astore 4
+    //   158: iconst_4
+    //   159: newarray byte
+    //   161: astore 5
+    //   163: aload 4
+    //   165: aload 5
+    //   167: invokevirtual 156	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   170: pop
+    //   171: getstatic 31	com/tencent/mm/c/c:bWC	Lcom/tencent/mm/c/k;
+    //   174: new 23	com/tencent/mm/c/k
+    //   177: dup
+    //   178: aload 5
+    //   180: invokespecial 158	com/tencent/mm/c/k:<init>	([B)V
+    //   183: invokevirtual 162	com/tencent/mm/c/k:equals	(Ljava/lang/Object;)Z
+    //   186: ifeq +6 -> 192
+    //   189: goto -158 -> 31
+    //   192: getstatic 35	com/tencent/mm/c/c:bWD	Lcom/tencent/mm/c/k;
+    //   195: new 23	com/tencent/mm/c/k
+    //   198: dup
+    //   199: aload 5
+    //   201: invokespecial 158	com/tencent/mm/c/k:<init>	([B)V
+    //   204: invokevirtual 162	com/tencent/mm/c/k:equals	(Ljava/lang/Object;)Z
+    //   207: ifeq +6 -> 213
+    //   210: goto -179 -> 31
+    //   213: new 164	java/io/ByteArrayOutputStream
+    //   216: dup
+    //   217: invokespecial 165	java/io/ByteArrayOutputStream:<init>	()V
+    //   220: astore 4
+    //   222: aload 4
+    //   224: getstatic 35	com/tencent/mm/c/c:bWD	Lcom/tencent/mm/c/k;
+    //   227: invokevirtual 166	com/tencent/mm/c/k:getBytes	()[B
+    //   230: invokevirtual 167	java/io/ByteArrayOutputStream:write	([B)V
+    //   233: aload 4
+    //   235: new 108	com/tencent/mm/c/l
+    //   238: dup
+    //   239: aload_0
+    //   240: arraylength
+    //   241: invokespecial 110	com/tencent/mm/c/l:<init>	(I)V
+    //   244: invokevirtual 113	com/tencent/mm/c/l:getBytes	()[B
+    //   247: invokevirtual 167	java/io/ByteArrayOutputStream:write	([B)V
+    //   250: aload 4
+    //   252: aload_0
+    //   253: invokevirtual 167	java/io/ByteArrayOutputStream:write	([B)V
+    //   256: aload 4
+    //   258: invokevirtual 170	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   261: astore_0
+    //   262: goto -231 -> 31
+    //   265: astore_0
+    //   266: aconst_null
+    //   267: astore_1
+    //   268: aload_1
+    //   269: ifnull +7 -> 276
+    //   272: aload_1
+    //   273: invokevirtual 145	java/io/RandomAccessFile:close	()V
+    //   276: getstatic 125	java/lang/System:err	Ljava/io/PrintStream;
+    //   279: ldc 147
+    //   281: invokevirtual 142	java/io/PrintStream:println	(Ljava/lang/String;)V
+    //   284: ldc 71
+    //   286: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   289: aload_0
+    //   290: athrow
+    //   291: astore_0
+    //   292: aload_3
+    //   293: astore_1
+    //   294: goto -26 -> 268
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	289	0	paramFile	File
-    //   0	289	1	paramString	String
-    //   92	6	2	i	int
-    //   13	272	3	localRandomAccessFile	RandomAccessFile
-    //   1	253	4	localObject	Object
-    //   158	39	5	arrayOfByte	byte[]
+    //   0	297	0	paramFile	File
+    //   0	297	1	paramString	String
+    //   97	6	2	i	int
+    //   18	275	3	localRandomAccessFile	RandomAccessFile
+    //   1	256	4	localObject	Object
+    //   161	39	5	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   3	14	262	finally
-    //   14	19	283	finally
-    //   26	129	283	finally
-    //   142	186	283	finally
-    //   189	207	283	finally
-    //   210	259	283	finally
+    //   8	19	265	finally
+    //   19	24	291	finally
+    //   31	134	291	finally
+    //   152	189	291	finally
+    //   192	210	291	finally
+    //   213	262	291	finally
   }
   
   private static byte[] c(RandomAccessFile paramRandomAccessFile)
   {
     int j = 1;
+    AppMethodBeat.i(125714);
     long l = paramRandomAccessFile.length() - 22L;
     paramRandomAccessFile.seek(l);
-    byte[] arrayOfByte = bvu.getBytes();
+    byte[] arrayOfByte = bWF.getBytes();
     for (int i = paramRandomAccessFile.read();; i = paramRandomAccessFile.read())
     {
       if (i == -1) {
@@ -191,10 +225,12 @@ public final class c
       do
       {
         if (i != 0) {
-          break label118;
+          break label130;
         }
         System.err.println("archive is not a ZIP archive");
-        throw new ZipException("archive is not a ZIP archive");
+        paramRandomAccessFile = new ZipException("archive is not a ZIP archive");
+        AppMethodBeat.o(125714);
+        throw paramRandomAccessFile;
         if ((i != arrayOfByte[0]) || (paramRandomAccessFile.read() != arrayOfByte[1]) || (paramRandomAccessFile.read() != arrayOfByte[2])) {
           break;
         }
@@ -203,25 +239,29 @@ public final class c
       l -= 1L;
       paramRandomAccessFile.seek(l);
     }
-    label118:
+    label130:
     paramRandomAccessFile.seek(l + 16L + 4L);
-    if (bvt != l + 16L + 4L) {
-      bvt = (int)(l + 16L + 4L);
+    if (bWE != l + 16L + 4L) {
+      bWE = (int)(l + 16L + 4L);
     }
     arrayOfByte = new byte[2];
     paramRandomAccessFile.readFully(arrayOfByte);
-    System.err.println("readComment:length bytes data = " + t(arrayOfByte));
+    System.err.println("readComment:length bytes data = " + C(arrayOfByte));
     i = new l(arrayOfByte).value;
-    if (i == 0) {
+    if (i == 0)
+    {
+      AppMethodBeat.o(125714);
       return null;
     }
     arrayOfByte = new byte[i];
     paramRandomAccessFile.read(arrayOfByte);
+    AppMethodBeat.o(125714);
     return arrayOfByte;
   }
   
-  public static String p(File paramFile)
+  public static String u(File paramFile)
   {
+    AppMethodBeat.i(125716);
     System.err.println("enter getSecurityCode");
     System.err.println("apkFile filename:" + paramFile.getName());
     try
@@ -229,7 +269,7 @@ public final class c
       localRandomAccessFile = new RandomAccessFile(paramFile, "r");
       c.a locala;
       if (localRandomAccessFile == null) {
-        break label132;
+        break label147;
       }
     }
     finally
@@ -243,48 +283,36 @@ public final class c
           System.err.println("exit");
           localRandomAccessFile.close();
           System.err.println("exit getSecurityCode");
+          AppMethodBeat.o(125716);
           return null;
         }
         locala = new c.a((byte)0);
-        locala.u(paramFile);
-        paramFile = locala.bvv.getProperty("apkSecurityCode");
+        locala.D(paramFile);
+        paramFile = locala.bWG.getProperty("apkSecurityCode");
         localRandomAccessFile.close();
         System.err.println("exit getSecurityCode");
+        AppMethodBeat.o(125716);
         return paramFile;
       }
       finally
       {
         RandomAccessFile localRandomAccessFile;
-        break label124;
+        break label139;
       }
       paramFile = finally;
       localRandomAccessFile = null;
     }
-    label124:
+    label139:
     localRandomAccessFile.close();
-    label132:
+    label147:
     System.err.println("exit getSecurityCode");
+    AppMethodBeat.o(125716);
     throw paramFile;
-  }
-  
-  private static String t(byte[] paramArrayOfByte)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    for (;;)
-    {
-      if (i >= 2) {
-        return localStringBuilder.toString();
-      }
-      localStringBuilder.append(paramArrayOfByte[i]);
-      localStringBuilder.append(",");
-      i += 1;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.c.c
  * JD-Core Version:    0.7.0.1
  */

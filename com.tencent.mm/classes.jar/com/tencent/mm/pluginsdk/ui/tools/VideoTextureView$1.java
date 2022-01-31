@@ -1,7 +1,8 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.media.MediaPlayer;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoTextureView$1
   extends Thread
@@ -10,17 +11,22 @@ final class VideoTextureView$1
   
   public final void run()
   {
+    AppMethodBeat.i(118009);
     try
     {
-      if (this.iHc != null)
+      if (this.kNg != null)
       {
-        y.i("MicroMsg.VideoTextureView", "%d another thread to release player[%s]", new Object[] { Integer.valueOf(this.snF.hashCode()), this.iHc });
-        this.iHc.stop();
-        this.iHc.release();
+        ab.i("MicroMsg.VideoTextureView", "%d another thread to release player[%s]", new Object[] { Integer.valueOf(this.wga.hashCode()), this.kNg });
+        this.kNg.stop();
+        this.kNg.release();
       }
+      AppMethodBeat.o(118009);
       return;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(118009);
+    }
   }
 }
 

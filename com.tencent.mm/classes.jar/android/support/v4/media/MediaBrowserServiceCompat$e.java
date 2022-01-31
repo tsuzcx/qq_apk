@@ -13,11 +13,11 @@ abstract interface MediaBrowserServiceCompat$e
   
   public abstract IBinder asBinder();
   
-  public abstract void cD();
+  public abstract void dg();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.media.MediaBrowserServiceCompat.e
  * JD-Core Version:    0.7.0.1
  */

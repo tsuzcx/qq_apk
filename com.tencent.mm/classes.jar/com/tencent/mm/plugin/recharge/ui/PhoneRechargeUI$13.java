@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.recharge.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recharge.model.a;
 import com.tencent.mm.plugin.recharge.ui.form.c.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h.a;
 import java.util.List;
 
@@ -11,11 +12,13 @@ final class PhoneRechargeUI$13
 {
   PhoneRechargeUI$13(PhoneRechargeUI paramPhoneRechargeUI, List paramList, String paramString) {}
   
-  public final void wv(int paramInt)
+  public final void Ch(int paramInt)
   {
-    y.d("MicroMsg.PhoneRechargeUI", "choose: %d", new Object[] { Integer.valueOf(paramInt) });
-    PhoneRechargeUI.b(this.nrb).setInput(new a((String)this.nrf.get(paramInt), this.nrg, 1));
-    PhoneRechargeUI.n(this.nrb);
+    AppMethodBeat.i(44266);
+    ab.d("MicroMsg.PhoneRechargeUI", "choose: %d", new Object[] { Integer.valueOf(paramInt) });
+    PhoneRechargeUI.b(this.pWp).setInput(new a((String)this.pWt.get(paramInt), this.pWu, 1));
+    PhoneRechargeUI.n(this.pWp);
+    AppMethodBeat.o(44266);
   }
 }
 

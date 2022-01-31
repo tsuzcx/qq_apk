@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/azj" android:layout_width="fill_parent" android:layout_height="@dimen/kk" android:baselineAligned="false" android:minHeight="@dimen/kk"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="@dimen/lb" android:layout_height="@dimen/lb" android:layout_marginLeft="@dimen/du" android:layout_marginRight="@dimen/dl">
-        <ImageView android:id="@id/ok" android:layout_width="@dimen/l_" android:layout_height="@dimen/l_" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-        <TextView android:id="@id/lu" android:visibility="gone" android:layout_marginRight="@dimen/mv" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/u1" />
-        <ImageView android:id="@id/azk" android:visibility="gone" android:layout_marginTop="@dimen/ll" android:layout_marginRight="@dimen/dl" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/u2" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/du">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="23.0dip">
-            <LinearLayout android:gravity="top" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:gravity="center|left" android:id="@id/azl" android:tag="nickname_tv" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ks" />
-            </LinearLayout>
-            <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/k9" android:textColor="@color/qi" android:gravity="center|right" android:id="@id/azm" android:tag="update_time_tv" android:layout_width="@dimen/f2" android:layout_height="wrap_content" style="@style/kq" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:minHeight="21.0dip">
-            <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <ImageView android:gravity="center|left" android:id="@id/azt" android:layout_width="14.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/kv" />
-                <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/mw" android:textColor="@color/q_" android:ellipsize="end" android:gravity="center|left" android:id="@id/azn" android:tag="last_msg_tv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{lastmsg}" style="@style/kr" />
-            </LinearLayout>
-            <LinearLayout android:gravity="bottom|center|right" android:layout_width="40.0dip" android:layout_height="fill_parent">
-                <ImageView android:gravity="right" android:layout_gravity="center|right" android:id="@id/azo" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/chatlist_multitalk_icon" android:contentDescription="@string/f5" />
-                <ImageView android:gravity="right" android:layout_gravity="center|right" android:id="@id/azp" android:paddingLeft="@dimen/mv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chat_mute_notify_normal" />
-                <ImageView android:gravity="center|right" android:layout_gravity="center_vertical" android:id="@id/azq" android:paddingLeft="@dimen/mv" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/talk_room_mic_idle" android:contentDescription="@string/f5" />
-                <ImageView android:gravity="center|right" android:layout_gravity="center|right" android:id="@id/azr" android:paddingLeft="@dimen/mv" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/location_share_icon" android:contentDescription="@string/f5" />
-            </LinearLayout>
-        </LinearLayout>
+<android.support.v7.widget.CardView android:layout_width="wrap_content" android:layout_height="wrap_content" app:cardBackgroundColor="@android:color/transparent" app:cardElevation="10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/kx" android:layout_width="300.0dip" android:layout_height="wrap_content"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <RelativeLayout android:orientation="horizontal" android:background="@drawable/kz" android:layout_width="fill_parent" android:layout_height="100.0dip">
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <android.support.v7.widget.AppCompatImageView android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="11.0dip" android:layout_marginBottom="11.0dip" android:scaleType="fitXY" android:adjustViewBounds="false" app:srcCompat="@drawable/l6" />
+            </FrameLayout>
+            <TextView android:textSize="30.0sp" android:typeface="sans" android:textColor="@color/ko" android:gravity="center" android:id="@id/b1c" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:fontFamily="roboto_condensed" />
+            <ProgressBar android:id="@id/ou" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignTop="@id/b1c" android:layout_alignBottom="@id/b1c" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <TextView android:textSize="12.0sp" android:typeface="sans" android:textColor="@color/kz" android:gravity="center" android:id="@id/b1d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:singleLine="false" android:fontFamily="roboto_condensed" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_marginBottom="17.0dip">
+            <Button android:textSize="10.0sp" android:typeface="sans" android:textStyle="bold" android:textColor="@color/kz" android:layout_gravity="center_horizontal" android:id="@id/b1e" android:background="@drawable/ky" android:focusable="true" android:clickable="true" android:layout_width="84.0dip" android:layout_height="27.0dip" android:text="@android:string/cancel" android:textAllCaps="true" android:fontFamily="roboto_condensed">
+                <requestFocus />
+            </Button>
+        </FrameLayout>
     </LinearLayout>
-</LinearLayout>
+</android.support.v7.widget.CardView>

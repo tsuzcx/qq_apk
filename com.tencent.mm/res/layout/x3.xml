@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/kl" android:paddingRight="@dimen/kl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/k9" android:textColor="@color/ta" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/bjj" android:background="@drawable/lb" android:layout_width="fill_parent" android:layout_height="@dimen/ky" android:singleLine="true" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/nw" android:background="@drawable/l8" android:padding="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/bme" android:visibility="gone" android:layout_width="@dimen/n8" android:layout_height="@dimen/n8" android:layout_marginRight="@dimen/n_" android:src="@drawable/cv" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/bl_" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:src="@drawable/afm" android:layout_toRightOf="@id/bme" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="left" android:id="@id/bla" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_toRightOf="@id/bl_" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </LinearLayout>

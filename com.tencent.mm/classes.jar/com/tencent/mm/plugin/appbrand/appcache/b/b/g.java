@@ -1,67 +1,77 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
 import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.b;
-import com.tencent.mm.protocal.c.ati;
-import com.tencent.mm.protocal.c.cmy;
-import com.tencent.mm.protocal.c.cnf;
-import com.tencent.mm.protocal.c.pc;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.appcache.b.e.e;
+import com.tencent.mm.protocal.protobuf.azn;
+import com.tencent.mm.protocal.protobuf.dbg;
+import com.tencent.mm.protocal.protobuf.dbn;
+import com.tencent.mm.protocal.protobuf.se;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class g
-  extends a<Boolean, cnf>
+  extends a<Boolean, dbn>
 {
-  private static Boolean a(String paramString1, String paramString2, cnf paramcnf)
+  private static Boolean a(String paramString1, String paramString2, dbn paramdbn)
   {
-    Object localObject = paramcnf.tZW;
-    if (bk.bl((String)localObject))
+    AppMethodBeat.i(129474);
+    Object localObject = paramdbn.yhP;
+    if (bo.isNullOrNil((String)localObject))
     {
-      y.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], empty base64", new Object[] { paramString1, paramString2 });
-      return Boolean.FALSE;
+      ab.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], empty base64", new Object[] { paramString1, paramString2 });
+      paramString1 = Boolean.FALSE;
+      AppMethodBeat.o(129474);
+      return paramString1;
     }
-    if (bk.dk(paramcnf.tSb))
+    if (bo.es(paramdbn.xYZ))
     {
-      y.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], empty sceneList", new Object[] { paramString1, paramString2 });
-      return Boolean.FALSE;
+      ab.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], empty sceneList", new Object[] { paramString1, paramString2 });
+      paramString1 = Boolean.FALSE;
+      AppMethodBeat.o(129474);
+      return paramString1;
     }
     for (;;)
     {
       try
       {
         byte[] arrayOfByte = Base64.decode((String)localObject, 0);
-        localObject = new ati();
-        ((ati)localObject).aH(arrayOfByte);
-        if (((ati)localObject).toW.sMN.oY.length == 0)
+        localObject = new azn();
+        ((azn)localObject).parseFrom(arrayOfByte);
+        if (((azn)localObject).xoU.wKA.pW.length == 0)
         {
-          y.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], parse pb, invalid foreground control bytes", new Object[] { paramString1, paramString2 });
-          localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.fFB;
-          com.tencent.mm.plugin.appbrand.appcache.b.c.a.s(paramcnf.tZH.tZF, 105L);
-          return Boolean.FALSE;
+          ab.e("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s | %s], parse pb, invalid foreground control bytes", new Object[] { paramString1, paramString2 });
+          localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
+          com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(paramdbn.yhA.yhy, 105L);
+          paramdbn = Boolean.FALSE;
+          AppMethodBeat.o(129474);
+          return paramdbn;
         }
-        localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.fFB;
-        com.tencent.mm.plugin.appbrand.appcache.b.c.a.s(paramcnf.tZH.tZF, 104L);
-        LinkedList localLinkedList = paramcnf.tSb;
-        l1 = paramcnf.tZX & 0xFFFFFFFF;
-        long l2 = paramcnf.tZY & 0xFFFFFFFF;
+        localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
+        com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(paramdbn.yhA.yhy, 104L);
+        LinkedList localLinkedList = paramdbn.xYZ;
+        long l1 = paramdbn.yhQ & 0xFFFFFFFF;
+        long l2 = paramdbn.yhR & 0xFFFFFFFF;
         if (localLinkedList == null)
         {
           localObject = "null";
-          y.i("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s| %s] WriteToStorage, sceneList %s, time[%d, %d]", new Object[] { paramString1, paramString2, localObject, Long.valueOf(l1), Long.valueOf(l2) });
-          boolean bool = ((com.tencent.mm.plugin.appbrand.appcache.b.d.e)com.tencent.mm.plugin.appbrand.app.e.G(com.tencent.mm.plugin.appbrand.appcache.b.d.e.class)).a(arrayOfByte, paramString2, localLinkedList, l1, l2);
-          localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.fFB;
-          l2 = paramcnf.tZH.tZF;
+          ab.i("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", "call[%s| %s] WriteToStorage, sceneList %s, time[%d, %d]", new Object[] { paramString1, paramString2, localObject, Long.valueOf(l1), Long.valueOf(l2) });
+          boolean bool = ((e)com.tencent.mm.plugin.appbrand.app.g.w(e.class)).a(arrayOfByte, paramString2, localLinkedList, l1, l2);
+          localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
+          int j = paramdbn.yhA.yhy;
           if (!bool) {
-            break label415;
+            break label456;
           }
-          l1 = 107L;
-          com.tencent.mm.plugin.appbrand.appcache.b.c.a.s(l2, l1);
+          i = 107;
+          com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(j, i);
+          AppMethodBeat.o(129474);
           return Boolean.valueOf(bool);
         }
-        if (bk.dk(localLinkedList))
+        if (bo.es(localLinkedList))
         {
           localObject = "{}";
           continue;
@@ -75,19 +85,21 @@ public class g
         }
         ((StringBuilder)localObject).append("}");
       }
-      catch (Exception paramcnf)
+      catch (Exception paramdbn)
       {
-        y.printErrStackTrace("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", paramcnf, "call[%s | %s], decode base64", new Object[] { paramString1, paramString2 });
-        return Boolean.FALSE;
+        ab.printErrStackTrace("MicroMsg.AppBrand.Predownload.CmdIssueLaunch", paramdbn, "call[%s | %s], decode base64", new Object[] { paramString1, paramString2 });
+        paramString1 = Boolean.FALSE;
+        AppMethodBeat.o(129474);
+        return paramString1;
       }
       localObject = ((StringBuilder)localObject).toString();
       continue;
-      label415:
-      long l1 = 108L;
+      label456:
+      int i = 108;
     }
   }
   
-  final String act()
+  final String awm()
   {
     return "CmdIssueLaunch";
   }

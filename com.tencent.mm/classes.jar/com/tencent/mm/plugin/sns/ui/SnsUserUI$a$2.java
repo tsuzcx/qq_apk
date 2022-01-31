@@ -1,7 +1,10 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.cb;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.sns.data.i;
 import com.tencent.mm.ui.base.n.d;
 
 final class SnsUserUI$a$2
@@ -11,17 +14,23 @@ final class SnsUserUI$a$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(39809);
+    long l = cb.abq();
+    String str = i.ls(l);
     switch (paramMenuItem.getItemId())
     {
-    default: 
-      return;
-    case 0: 
-      h.nFQ.f(13822, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
-      SnsUserUI.o(this.pjC.pjB);
-      return;
     }
-    h.nFQ.f(13822, new Object[] { Integer.valueOf(2), Integer.valueOf(2) });
-    SnsUserUI.p(this.pjC.pjB).yW(1);
+    for (;;)
+    {
+      AppMethodBeat.o(39809);
+      return;
+      h.qsU.e(13822, new Object[] { Integer.valueOf(1), Integer.valueOf(2), str, Long.valueOf(l) });
+      SnsUserUI.o(this.scf.sce);
+      AppMethodBeat.o(39809);
+      return;
+      h.qsU.e(13822, new Object[] { Integer.valueOf(2), Integer.valueOf(2), str, Long.valueOf(l) });
+      SnsUserUI.p(this.scf.sce).Fd(1);
+    }
   }
 }
 

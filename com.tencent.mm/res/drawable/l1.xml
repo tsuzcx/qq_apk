@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="67" android:drawable="@drawable/az4" />
-    <item android:duration="67" android:drawable="@drawable/az8" />
-    <item android:duration="67" android:drawable="@drawable/az9" />
-    <item android:duration="67" android:drawable="@drawable/az_" />
-    <item android:duration="67" android:drawable="@drawable/aza" />
-    <item android:duration="67" android:drawable="@drawable/azb" />
-    <item android:duration="67" android:drawable="@drawable/azc" />
-    <item android:duration="67" android:drawable="@drawable/azd" />
-    <item android:duration="67" android:drawable="@drawable/aze" />
-    <item android:duration="67" android:drawable="@drawable/az5" />
-    <item android:duration="67" android:drawable="@drawable/az6" />
-    <item android:duration="67" android:drawable="@drawable/az7" />
-</animation-list>
+    <item android:state_focused="true" android:state_enabled="true" android:drawable="@drawable/ab1" />
+    <item android:drawable="@drawable/ab2" />
+</selector>

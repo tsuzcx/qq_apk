@@ -7,162 +7,176 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.VoiceInputLayout.b;
-import com.tencent.mm.pluginsdk.ui.m;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.ui.l;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.MMEditText;
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.List;
 
 final class n$3
   implements VoiceInputLayout.b
 {
   n$3(n paramn) {}
   
-  public final void aWL()
+  public final void at(int paramInt1, int paramInt2, int paramInt3)
   {
-    n.a(this.shE, System.currentTimeMillis());
-    y.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectStart time %s", new Object[] { Long.valueOf(n.p(this.shE)) });
-    y.d("VOICEDEBUG", "Start Record Time = %s", new Object[] { Long.valueOf(n.p(this.shE)) });
-    n.d(this.shE, false);
-    n.b(this.shE, true);
-    n.c(this.shE, true);
-    n.b(this.shE, 0L);
-    n.q(this.shE);
-    n.m(this.shE);
-    n.r(this.shE).setVisibility(8);
-    n.b(this.shE, false);
-    n.l(this.shE).sbm = 3;
-    n.l(this.shE).b(n.i(this.shE));
-    n.cVt();
-    if (n.i(this.shE) != null)
-    {
-      if ((n.i(this.shE).getText() != null) && (n.i(this.shE).getText().length() > 0)) {
-        n.i(this.shE).setCursorVisible(true);
-      }
-      n.i(this.shE).requestFocus();
-      bk.hideVKB(n.h(this.shE));
+    AppMethodBeat.i(27974);
+    ab.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectError localerrorType = %s errorType = %s errCode = %s time %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(System.currentTimeMillis()) });
+    n.v(this.vZW);
+    n.k(this.vZW).a(n.h(this.vZW));
+    n.l(this.vZW);
+    if ((n.r(this.vZW) instanceof Activity)) {
+      ((Activity)n.r(this.vZW)).getWindow().clearFlags(128);
     }
-    if ((n.s(this.shE) instanceof Activity)) {
-      ((Activity)n.s(this.shE)).getWindow().addFlags(128);
-    }
-    n.t(this.shE).setVisibility(4);
-    n.u(this.shE).setVisibility(4);
-    n.v(this.shE).setVisibility(8);
-    n.i(this.shE).setHint(this.shE.getResources().getString(R.l.voice_input_panel_hint_content));
-    n.o(this.shE).lr(true);
-    n.f(this.shE).setVisibility(8);
-    this.shE.Eq(1);
-  }
-  
-  public final void aWM()
-  {
-    int i = 0;
-    n.o(this.shE).lr(false);
-    n.i(this.shE).setHint(null);
-    TextView localTextView = n.f(this.shE);
-    if ((n.g(this.shE).size() < 2) || (n.i(this.shE).getText().length() > 0)) {
-      i = 8;
-    }
-    localTextView.setVisibility(i);
-  }
-  
-  public final void aWN()
-  {
-    y.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectCancel time " + System.currentTimeMillis());
-    n.w(this.shE);
-    n.l(this.shE).a(n.i(this.shE));
-    n.m(this.shE);
-    if ((n.s(this.shE) instanceof Activity)) {
-      ((Activity)n.s(this.shE)).getWindow().clearFlags(128);
-    }
-    n.KT(2);
-    n.o(this.shE).lr(false);
-    n.i(this.shE).setHint(null);
-    TextView localTextView = n.f(this.shE);
-    if ((n.g(this.shE).size() < 2) || (n.i(this.shE).getText().length() > 0)) {}
-    for (int i = 8;; i = 0)
-    {
-      localTextView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public final void aWO()
-  {
-    y.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onStateReset time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-    n.l(this.shE).a(n.i(this.shE));
-    n.m(this.shE);
-    if ((n.s(this.shE) instanceof Activity)) {
-      ((Activity)n.s(this.shE)).getWindow().clearFlags(128);
-    }
-    n.KT(3);
-    n.o(this.shE).lr(false);
-    n.i(this.shE).setHint(null);
-  }
-  
-  public final void aWP()
-  {
-    y.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectFinish  time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-    n.w(this.shE);
-    n.l(this.shE).a(n.i(this.shE));
-    n.m(this.shE);
-    if ((n.s(this.shE) instanceof Activity)) {
-      ((Activity)n.s(this.shE)).getWindow().clearFlags(128);
-    }
-    n.Er(1);
-    n.o(this.shE).lr(false);
-    n.i(this.shE).setHint(null);
-  }
-  
-  public final void ag(int paramInt1, int paramInt2, int paramInt3)
-  {
-    y.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectError localerrorType = %s errorType = %s errCode = %s time %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(System.currentTimeMillis()) });
-    n.w(this.shE);
-    n.l(this.shE).a(n.i(this.shE));
-    n.m(this.shE);
-    if ((n.s(this.shE) instanceof Activity)) {
-      ((Activity)n.s(this.shE)).getWindow().clearFlags(128);
-    }
-    n.Er(paramInt1);
+    n.Mq(paramInt1);
     if (paramInt1 == 12) {
-      n.c(this.shE, R.l.voice_input_please_check_network);
+      n.c(this.vZW, 2131304555);
     }
     for (;;)
     {
-      n.o(this.shE).lr(false);
-      n.i(this.shE).setHint(null);
+      n.n(this.vZW).pd(false);
+      n.h(this.vZW).setHint(null);
+      AppMethodBeat.o(27974);
       return;
-      n.c(this.shE, R.l.app_err_system_busy_tip);
+      n.c(this.vZW, 2131296926);
     }
   }
   
-  public final void b(String[] paramArrayOfString, Set<String> paramSet)
+  public final void bDq()
   {
+    AppMethodBeat.i(27968);
+    n.a(this.vZW, System.currentTimeMillis());
+    ab.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectStart time %s", new Object[] { Long.valueOf(n.o(this.vZW)) });
+    ab.d("VOICEDEBUG", "Start Record Time = %s", new Object[] { Long.valueOf(n.o(this.vZW)) });
+    n.b(this.vZW, false);
+    n.c(this.vZW, true);
+    n.d(this.vZW, true);
+    n.b(this.vZW, 0L);
+    n.p(this.vZW);
+    n.l(this.vZW);
+    n.q(this.vZW).setVisibility(8);
+    n.c(this.vZW, false);
+    n.k(this.vZW).vSt = 3;
+    n.k(this.vZW).b(n.h(this.vZW));
+    n.doZ();
+    if (n.h(this.vZW) != null)
+    {
+      if ((n.h(this.vZW).getText() != null) && (n.h(this.vZW).getText().length() > 0)) {
+        n.h(this.vZW).setCursorVisible(true);
+      }
+      n.h(this.vZW).requestFocus();
+      bo.hideVKB(n.f(this.vZW));
+    }
+    if ((n.r(this.vZW) instanceof Activity)) {
+      ((Activity)n.r(this.vZW)).getWindow().addFlags(128);
+    }
+    n.s(this.vZW).setVisibility(4);
+    n.t(this.vZW).setVisibility(4);
+    n.u(this.vZW).setVisibility(8);
+    n.h(this.vZW).setHint(this.vZW.getResources().getString(2131304554));
+    n.n(this.vZW).pd(true);
+    n.e(this.vZW).setVisibility(8);
+    this.vZW.Mo(1);
+    AppMethodBeat.o(27968);
+  }
+  
+  public final void bDt()
+  {
+    int i = 0;
+    AppMethodBeat.i(27969);
+    n.n(this.vZW).pd(false);
+    n.h(this.vZW).setHint(null);
+    TextView localTextView = n.e(this.vZW);
+    if ((n.g(this.vZW).size() < 2) || (n.h(this.vZW).getText().length() > 0)) {
+      i = 8;
+    }
+    localTextView.setVisibility(i);
+    AppMethodBeat.o(27969);
+  }
+  
+  public final void bDu()
+  {
+    AppMethodBeat.i(27970);
+    ab.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectCancel time " + System.currentTimeMillis());
+    n.v(this.vZW);
+    n.k(this.vZW).a(n.h(this.vZW));
+    n.l(this.vZW);
+    if ((n.r(this.vZW) instanceof Activity)) {
+      ((Activity)n.r(this.vZW)).getWindow().clearFlags(128);
+    }
+    n.Mp(2);
+    n.n(this.vZW).pd(false);
+    n.h(this.vZW).setHint(null);
+    TextView localTextView = n.e(this.vZW);
+    if ((n.g(this.vZW).size() < 2) || (n.h(this.vZW).getText().length() > 0)) {}
+    for (int i = 8;; i = 0)
+    {
+      localTextView.setVisibility(i);
+      AppMethodBeat.o(27970);
+      return;
+    }
+  }
+  
+  public final void bDv()
+  {
+    AppMethodBeat.i(27971);
+    ab.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onStateReset time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+    n.k(this.vZW).a(n.h(this.vZW));
+    n.l(this.vZW);
+    if ((n.r(this.vZW) instanceof Activity)) {
+      ((Activity)n.r(this.vZW)).getWindow().clearFlags(128);
+    }
+    n.Mp(3);
+    n.n(this.vZW).pd(false);
+    n.h(this.vZW).setHint(null);
+    AppMethodBeat.o(27971);
+  }
+  
+  public final void bDw()
+  {
+    AppMethodBeat.i(27972);
+    ab.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectFinish  time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+    n.v(this.vZW);
+    n.k(this.vZW).a(n.h(this.vZW));
+    n.l(this.vZW);
+    if ((n.r(this.vZW) instanceof Activity)) {
+      ((Activity)n.r(this.vZW)).getWindow().clearFlags(128);
+    }
+    n.Mq(1);
+    n.n(this.vZW).pd(false);
+    n.h(this.vZW).setHint(null);
+    AppMethodBeat.o(27972);
+  }
+  
+  public final void c(String[] paramArrayOfString, List<String> paramList)
+  {
+    AppMethodBeat.i(138174);
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0].length() > 0))
     {
-      if (n.x(this.shE))
+      if (n.w(this.vZW))
       {
-        n.c(this.shE, false);
-        n.y(this.shE);
+        n.d(this.vZW, false);
+        n.x(this.vZW);
       }
-      n.l(this.shE).a(n.i(this.shE), paramArrayOfString[0], true);
-      if (n.i(this.shE).getText().length() != 0)
+      n.k(this.vZW).a(n.h(this.vZW), paramArrayOfString[0], true);
+      if (n.h(this.vZW).getText().length() != 0)
       {
-        n.i(this.shE).setCursorVisible(true);
-        n.i(this.shE).requestFocus();
-        bk.hideVKB(n.h(this.shE));
+        n.h(this.vZW).setCursorVisible(true);
+        n.h(this.vZW).requestFocus();
+        bo.hideVKB(n.f(this.vZW));
       }
-      if ((!n.z(this.shE)) && (paramArrayOfString[0].length() != 0))
+      if ((!n.y(this.vZW)) && (paramArrayOfString[0].length() != 0))
       {
-        n.d(this.shE, true);
-        n.b(this.shE, System.currentTimeMillis());
-        y.d("VOICEDEBUG", "First Text Time = %s Corss Time = %s", new Object[] { Long.valueOf(System.currentTimeMillis()), Long.valueOf(n.A(this.shE) - n.p(this.shE)) });
+        n.b(this.vZW, true);
+        n.b(this.vZW, System.currentTimeMillis());
+        ab.d("VOICEDEBUG", "First Text Time = %s Corss Time = %s", new Object[] { Long.valueOf(System.currentTimeMillis()), Long.valueOf(n.z(this.vZW) - n.o(this.vZW)) });
       }
-      n.B(this.shE).addAll(paramSet);
+      n.A(this.vZW).addAll(paramList);
     }
+    AppMethodBeat.o(138174);
   }
 }
 

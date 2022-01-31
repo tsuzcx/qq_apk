@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.exdevice.service;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$2
   implements Runnable
@@ -9,9 +10,11 @@ final class b$2
   
   public final void run()
   {
-    if (!b.a(this.jyO, this.jtO, this.jyP, this.jyQ)) {
-      y.e("MicroMsg.exdevice.BluetoothSDKAdapter", "instance.scanImp failed!!!");
+    AppMethodBeat.i(19540);
+    if (!b.a(this.lIn, this.lDn, this.lIo, this.lIp)) {
+      ab.e("MicroMsg.exdevice.BluetoothSDKAdapter", "instance.scanImp failed!!!");
     }
+    AppMethodBeat.o(19540);
   }
 }
 

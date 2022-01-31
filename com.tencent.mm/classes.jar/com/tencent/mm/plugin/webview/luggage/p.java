@@ -1,41 +1,28 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import com.tencent.mm.ui.base.n.c;
-import com.tencent.mm.ui.widget.c;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.sdk.platformtools.bo;
 
-public class p
+public final class p
 {
-  com.tencent.mm.plugin.webview.luggage.b.l rcH;
-  c rcQ;
-  e rcp;
-  
-  public p(e parame, com.tencent.mm.plugin.webview.luggage.b.l paraml)
+  public static void C(Context paramContext, Intent paramIntent)
   {
-    this.rcp = parame;
-    this.rcH = paraml;
-    this.rcQ = new c(this.rcp.mContext, 0, false);
-    this.rcQ.phH = new n.c()
+    AppMethodBeat.i(6223);
+    if (bo.isNullOrNil(paramIntent.getStringExtra("rawUrl")))
     {
-      public final void a(com.tencent.mm.ui.base.l paramAnonymousl)
-      {
-        p localp = p.this;
-        localp.rcH.b(localp.rcp.mContext, localp.rcp, paramAnonymousl);
-      }
-    };
-    this.rcQ.phI = new p.2(this);
-    this.rcQ.cfU();
-  }
-  
-  public final void cbq()
-  {
-    if (this.rcQ != null) {
-      this.rcQ.bFp();
+      AppMethodBeat.o(6223);
+      return;
     }
+    d.b(paramContext, "game", ".luggage.LuggageGameWebViewUI", paramIntent);
+    AppMethodBeat.o(6223);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.p
  * JD-Core Version:    0.7.0.1
  */

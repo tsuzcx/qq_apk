@@ -1,33 +1,38 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WalletPayUI$9
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
   WalletPayUI$9(WalletPayUI paramWalletPayUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void onClick(View paramView)
   {
-    y.i("MicroMsg.WalletPayUI", "WalletPwdDialog event2 %s", new Object[] { bk.csb().toString() });
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    AppMethodBeat.i(46044);
+    ab.i(this.tXq.TAG, "WalletPwdDialog event1 %s", new Object[] { bo.dtY().toString() });
+    this.tXq.tVQ = ((FavorPayInfo)paramView.getTag());
+    if (this.tXq.tVQ != null) {
+      this.tXq.tVQ.uhY = "";
     }
-    this.qnV.frT = null;
-    this.qnV.qgo = null;
-    if (this.qnV.aSk()) {
-      this.qnV.finish();
-    }
-    this.qnV.qmC = null;
+    this.tXq.c(false, 0, "");
+    this.tXq.tWX.dismiss();
+    this.tXq.gJv = null;
+    this.tXq.tWX = null;
+    this.tXq.tVS = null;
+    AppMethodBeat.o(46044);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletPayUI.9
  * JD-Core Version:    0.7.0.1
  */

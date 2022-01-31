@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.fav.b.e;
 
 import android.os.HandlerThread;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.compatible.util.g.a;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.aj;
-import com.tencent.mm.plugin.fav.a.al;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.c;
 import com.tencent.mm.plugin.fav.a.q;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.a.z;
-import com.tencent.mm.protocal.c.axi;
-import com.tencent.mm.protocal.c.axl;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.bdy;
+import com.tencent.mm.protocal.protobuf.beb;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -30,104 +29,136 @@ import java.util.Queue;
 public final class d
   implements f, z
 {
-  private static Map<Integer, g.a> bDU = new HashMap();
-  private static Map<Integer, Integer> kaO = new HashMap();
-  private Queue<com.tencent.mm.plugin.fav.a.g> bDS = new LinkedList();
-  private boolean bDW = false;
-  private boolean bDX = false;
-  public int bDY = 0;
-  private long bDZ = 0L;
-  public am bEd = new am(com.tencent.mm.kernel.g.DS().mnU.getLooper(), new d.3(this), false);
+  private static Map<Integer, g.a> ckJ;
+  private static Map<Integer, Integer> mvk;
+  private Queue<com.tencent.mm.plugin.fav.a.g> ckH;
+  private boolean ckL;
+  public int ckM;
+  private long ckN;
+  public ap ckR;
+  private boolean running;
+  
+  static
+  {
+    AppMethodBeat.i(5387);
+    ckJ = new HashMap();
+    mvk = new HashMap();
+    AppMethodBeat.o(5387);
+  }
   
   public d()
   {
-    com.tencent.mm.kernel.g.Dk().a(426, this);
+    AppMethodBeat.i(5378);
+    this.running = false;
+    this.ckM = 0;
+    this.ckN = 0L;
+    this.ckL = false;
+    this.ckH = new LinkedList();
+    this.ckR = new ap(com.tencent.mm.kernel.g.RO().oNc.getLooper(), new d.3(this), false);
+    com.tencent.mm.kernel.g.Rc().a(426, this);
+    AppMethodBeat.o(5378);
   }
   
-  private static void a(long paramLong, LinkedList<axi> paramLinkedList, LinkedList<axl> paramLinkedList1)
+  private static void a(long paramLong, LinkedList<bdy> paramLinkedList, LinkedList<beb> paramLinkedList1)
   {
-    Object localObject1 = new axi();
-    ((axi)localObject1).ttL = 4;
-    ((axi)localObject1).ttM = 0;
+    AppMethodBeat.i(5383);
+    Object localObject1 = new bdy();
+    ((bdy)localObject1).xtK = 4;
+    ((bdy)localObject1).xtL = 0;
     paramLinkedList.add(localObject1);
-    paramLinkedList = ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavCdnStorage().eA(paramLong);
-    y.i("MicroMsg.Fav.FavModService", "setModAfterClientUpload %d modcdnlistsize %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramLinkedList.size()) });
+    paramLinkedList = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavCdnStorage().jX(paramLong);
+    ab.i("MicroMsg.Fav.FavModService", "setModAfterClientUpload %d modcdnlistsize %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramLinkedList.size()) });
     paramLinkedList = paramLinkedList.iterator();
-    label472:
+    label478:
     while (paramLinkedList.hasNext())
     {
       localObject1 = (c)paramLinkedList.next();
-      boolean bool = b.Cx(((c)localObject1).field_dataId);
-      if ((bk.bl(((c)localObject1).field_cdnUrl)) || (bool))
+      boolean bool = b.Nz(((c)localObject1).field_dataId);
+      if ((bo.isNullOrNil(((c)localObject1).field_cdnUrl)) || (bool))
       {
-        y.e("MicroMsg.Fav.FavModService", "setModAfterClientUpload cdnUrl:%s, isThumb:%b,  favLocalId:%d", new Object[] { ((c)localObject1).field_cdnUrl, Boolean.valueOf(bool), Long.valueOf(paramLong) });
+        ab.e("MicroMsg.Fav.FavModService", "setModAfterClientUpload cdnUrl:%s, isThumb:%b,  favLocalId:%d", new Object[] { ((c)localObject1).field_cdnUrl, Boolean.valueOf(bool), Long.valueOf(paramLong) });
       }
       else
       {
-        Object localObject2 = new axl();
-        ((axl)localObject2).kVl = ("dataitem." + ((c)localObject1).field_dataId + ".cdn_dataurl");
-        ((axl)localObject2).nFs = ((c)localObject1).field_cdnUrl;
+        Object localObject2 = new beb();
+        ((beb)localObject2).ntn = ("dataitem." + ((c)localObject1).field_dataId + ".cdn_dataurl");
+        ((beb)localObject2).qsu = ((c)localObject1).field_cdnUrl;
         paramLinkedList1.add(localObject2);
-        localObject2 = new axl();
-        ((axl)localObject2).kVl = ("dataitem." + ((c)localObject1).field_dataId + ".cdn_datakey");
-        ((axl)localObject2).nFs = ((c)localObject1).field_cdnKey;
+        localObject2 = new beb();
+        ((beb)localObject2).ntn = ("dataitem." + ((c)localObject1).field_dataId + ".cdn_datakey");
+        ((beb)localObject2).qsu = ((c)localObject1).field_cdnKey;
         paramLinkedList1.add(localObject2);
-        localObject2 = new axl();
-        ((axl)localObject2).kVl = ("dataitem." + ((c)localObject1).field_dataId);
-        ((axl)localObject2).ttR = "datastatus";
-        ((axl)localObject2).nFs = "0";
+        localObject2 = new beb();
+        ((beb)localObject2).ntn = ("dataitem." + ((c)localObject1).field_dataId);
+        ((beb)localObject2).xtQ = "datastatus";
+        ((beb)localObject2).qsu = "0";
         paramLinkedList1.add(localObject2);
-        localObject2 = ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().eE(((c)localObject1).field_favLocalId);
+        localObject2 = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kb(((c)localObject1).field_favLocalId);
         if (localObject2 != null)
         {
           if (((com.tencent.mm.plugin.fav.a.g)localObject2).field_type == 4) {}
           for (int i = 1;; i = 0)
           {
             if (i == 0) {
-              break label472;
+              break label478;
             }
             localObject2 = b.a((com.tencent.mm.plugin.fav.a.g)localObject2, ((c)localObject1).field_dataId);
             if (localObject2 == null) {
               break;
             }
-            axl localaxl = new axl();
-            localaxl.kVl = ("dataitem." + ((c)localObject1).field_dataId + ".stream_videoid");
-            localaxl.nFs = ((xv)localObject2).sVq;
-            paramLinkedList1.add(localaxl);
+            beb localbeb = new beb();
+            localbeb.ntn = ("dataitem." + ((c)localObject1).field_dataId + ".stream_videoid");
+            localbeb.qsu = ((aca)localObject2).wTm;
+            paramLinkedList1.add(localbeb);
             break;
           }
         }
       }
     }
+    AppMethodBeat.o(5383);
   }
   
   public static void startSync()
   {
+    AppMethodBeat.i(5382);
     aj localaj = new aj();
-    com.tencent.mm.kernel.g.Dk().a(localaj, 0);
+    com.tencent.mm.kernel.g.Rc().a(localaj, 0);
+    AppMethodBeat.o(5382);
+  }
+  
+  public final void ET()
+  {
+    AppMethodBeat.i(5381);
+    this.ckH.clear();
+    ckJ.clear();
+    this.running = false;
+    this.ckL = false;
+    mvk.clear();
+    AppMethodBeat.o(5381);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (paramm.getType() != 426) {}
-    while (!(paramm instanceof al)) {
+    AppMethodBeat.i(5379);
+    if (paramm.getType() != 426)
+    {
+      AppMethodBeat.o(5379);
       return;
     }
-    com.tencent.mm.kernel.g.DS().O(new d.1(this, paramm, paramInt2, paramInt1));
+    if (!(paramm instanceof com.tencent.mm.plugin.fav.a.al))
+    {
+      AppMethodBeat.o(5379);
+      return;
+    }
+    com.tencent.mm.kernel.g.RO().ac(new d.1(this, paramm, paramInt2, paramInt1));
+    AppMethodBeat.o(5379);
   }
   
   public final void run()
   {
-    com.tencent.mm.kernel.g.DS().O(new d.2(this));
-  }
-  
-  public final void uB()
-  {
-    this.bDS.clear();
-    bDU.clear();
-    this.bDX = false;
-    this.bDW = false;
-    kaO.clear();
+    AppMethodBeat.i(5380);
+    com.tencent.mm.kernel.g.RO().ac(new d.2(this));
+    AppMethodBeat.o(5380);
   }
 }
 

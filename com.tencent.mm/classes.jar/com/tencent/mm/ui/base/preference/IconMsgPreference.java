@@ -9,28 +9,26 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.e;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class IconMsgPreference
   extends Preference
 {
   private Context context;
   private Drawable drawable;
-  private int height = -1;
-  private String nSg = "";
-  private int nSh = -1;
-  private int nSi = 8;
-  private int vck = 8;
-  private int vcl = 0;
-  private int vcm = 8;
-  private ImageView vcn = null;
-  private ViewGroup vco = null;
-  private TextView vcp;
-  private String vcq = "";
+  private int height;
+  private String pAS;
+  private int qGe;
+  private int qGf;
+  private int zqL;
+  private int zqM;
+  private int zqN;
+  private ImageView zqO;
+  private ViewGroup zqP;
+  private TextView zqQ;
+  private String zqR;
   
   public IconMsgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,52 +38,66 @@ public class IconMsgPreference
   public IconMsgPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(107163);
+    this.pAS = "";
+    this.qGe = -1;
+    this.qGf = 8;
+    this.zqL = 8;
+    this.zqM = 0;
+    this.zqN = 8;
+    this.zqO = null;
+    this.zqP = null;
+    this.height = -1;
+    this.zqR = "";
     this.context = paramContext;
-    setLayoutResource(a.h.mm_preference);
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(107163);
   }
   
   protected final void onBindView(View paramView)
   {
+    AppMethodBeat.i(107165);
     super.onBindView(paramView);
-    Object localObject = (ImageView)paramView.findViewById(a.g.image_iv);
+    Object localObject = (ImageView)paramView.findViewById(2131822243);
     if (localObject != null)
     {
       if (this.drawable == null) {
-        break label212;
+        break label216;
       }
       ((ImageView)localObject).setImageDrawable(this.drawable);
       ((ImageView)localObject).setVisibility(0);
     }
     for (;;)
     {
-      localObject = (LinearLayout)paramView.findViewById(a.g.mm_preference_ll_id);
+      localObject = (LinearLayout)paramView.findViewById(2131822408);
       if (this.height != -1) {
         ((LinearLayout)localObject).setMinimumHeight(this.height);
       }
-      localObject = (TextView)paramView.findViewById(a.g.text_tv_one);
+      localObject = (TextView)paramView.findViewById(2131822409);
       if (localObject != null)
       {
-        ((TextView)localObject).setVisibility(this.nSi);
-        ((TextView)localObject).setText(this.nSg);
-        if (this.nSh != -1) {
-          ((TextView)localObject).setBackgroundDrawable(a.g(this.context, this.nSh));
+        ((TextView)localObject).setVisibility(this.qGf);
+        ((TextView)localObject).setText(this.pAS);
+        if (this.qGe != -1) {
+          ((TextView)localObject).setBackgroundDrawable(a.k(this.context, this.qGe));
         }
       }
-      this.vcn = ((ImageView)paramView.findViewById(a.g.text_prospect));
-      this.vcn.setVisibility(this.vck);
-      this.vco = ((ViewGroup)paramView.findViewById(a.g.right_rl));
-      this.vco.setVisibility(this.vcl);
-      this.vcp = ((TextView)paramView.findViewById(16908310));
-      paramView = (TextView)paramView.findViewById(a.g.text_tv_right);
-      if (!bk.bl(this.vcq)) {
+      this.zqO = ((ImageView)paramView.findViewById(2131822410));
+      this.zqO.setVisibility(this.zqL);
+      this.zqP = ((ViewGroup)paramView.findViewById(2131822412));
+      this.zqP.setVisibility(this.zqM);
+      this.zqQ = ((TextView)paramView.findViewById(16908310));
+      paramView = (TextView)paramView.findViewById(2131826240);
+      if (!bo.isNullOrNil(this.zqR)) {
         break;
       }
       paramView.setVisibility(8);
+      AppMethodBeat.o(107165);
       return;
-      label212:
-      if (this.Ub != 0)
+      label216:
+      if (this.UM != 0)
       {
-        ((ImageView)localObject).setImageResource(this.Ub);
+        ((ImageView)localObject).setImageResource(this.UM);
         ((ImageView)localObject).setVisibility(0);
       }
       else
@@ -94,16 +106,19 @@ public class IconMsgPreference
       }
     }
     paramView.setVisibility(0);
-    paramView.setText(this.vcq);
+    paramView.setText(this.zqR);
+    AppMethodBeat.o(107165);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(107164);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, a.h.mm_preference_icon_msg, localViewGroup);
-    paramViewGroup.setMinimumHeight(paramViewGroup.getResources().getDimensionPixelSize(a.e.SmallListHeight));
+    View.inflate(this.mContext, 2130970231, localViewGroup);
+    paramViewGroup.setMinimumHeight(paramViewGroup.getResources().getDimensionPixelSize(2131427853));
+    AppMethodBeat.o(107164);
     return paramViewGroup;
   }
 }

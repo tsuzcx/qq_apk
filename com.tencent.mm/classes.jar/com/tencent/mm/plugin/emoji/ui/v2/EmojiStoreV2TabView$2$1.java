@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import com.tencent.mm.plugin.emoji.f.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.at;
 import com.tencent.mm.ui.MMTabView;
 
@@ -13,22 +13,26 @@ final class EmojiStoreV2TabView$2$1
   
   public final void run()
   {
+    AppMethodBeat.i(53799);
     try
     {
-      if (EmojiStoreV2TabView.b(this.jje.jjd) != null)
+      if (EmojiStoreV2TabView.b(this.lrV.lrU) != null)
       {
-        if (i.getEmojiStorageMgr().cuS())
+        if (i.getEmojiStorageMgr().dxv())
         {
-          EmojiStoreV2TabView.b(this.jje.jjd).setText(f.h.emoji_store_main_tab_friends);
+          EmojiStoreV2TabView.b(this.lrV.lrU).setText(2131299208);
+          AppMethodBeat.o(53799);
           return;
         }
-        EmojiStoreV2TabView.b(this.jje.jjd).setText(f.h.emoji_store_main_tab);
-        return;
+        EmojiStoreV2TabView.b(this.lrV.lrU).setText(2131299207);
       }
+      AppMethodBeat.o(53799);
+      return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.emoji.EmojiStoreV2TabView", localException, "event update error", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.emoji.EmojiStoreV2TabView", localException, "event update error", new Object[0]);
+      AppMethodBeat.o(53799);
     }
   }
 }

@@ -5,43 +5,51 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class e
   extends Preference
 {
-  public View.OnClickListener mOnClickListener = null;
-  public String mRp;
-  private View mView = null;
+  public View.OnClickListener mOnClickListener;
+  private View mView;
+  public String prC;
   
   public e(Context paramContext)
   {
     super(paramContext);
-    setLayoutResource(a.g.mall_order_button_pref);
+    AppMethodBeat.i(43904);
+    this.mView = null;
+    this.mOnClickListener = null;
+    setLayoutResource(2130970094);
+    AppMethodBeat.o(43904);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(43905);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
-    return this.mView;
+    paramView = this.mView;
+    AppMethodBeat.o(43905);
+    return paramView;
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(43906);
     super.onBindView(paramView);
-    paramView = (TextView)paramView.findViewById(a.f.mall_order_button_pref_btn);
-    paramView.setText(this.mRp);
+    paramView = (TextView)paramView.findViewById(2131825976);
+    paramView.setText(this.prC);
     paramView.setOnClickListener(this.mOnClickListener);
+    AppMethodBeat.o(43906);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.e
  * JD-Core Version:    0.7.0.1
  */

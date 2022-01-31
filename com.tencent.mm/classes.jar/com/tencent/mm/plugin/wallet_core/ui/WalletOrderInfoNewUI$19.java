@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.wallet_core.model.Orders.ShowInfo;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletOrderInfoNewUI$19
   implements View.OnClickListener
 {
-  WalletOrderInfoNewUI$19(WalletOrderInfoNewUI paramWalletOrderInfoNewUI, Orders.ShowInfo paramShowInfo) {}
+  WalletOrderInfoNewUI$19(WalletOrderInfoNewUI paramWalletOrderInfoNewUI) {}
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.WalletOrderInfoNewUI", "onClick showInfo, jump url: %s", new Object[] { this.qEs.qxW });
-    this.qEr.QK(this.qEs.qxW);
+    AppMethodBeat.i(47441);
+    this.ury.done();
+    AppMethodBeat.o(47441);
   }
 }
 

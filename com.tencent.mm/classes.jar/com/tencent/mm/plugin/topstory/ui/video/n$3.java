@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.topstory.a.c.c;
+import com.tencent.mm.plugin.topstory.a.c.j;
 import com.tencent.mm.plugin.websearch.api.a.a;
-import com.tencent.mm.protocal.c.byf;
-import com.tencent.mm.protocal.c.cks;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ckw;
+import com.tencent.mm.protocal.protobuf.cyh;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class n$3
   implements f
@@ -19,39 +20,42 @@ final class n$3
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     boolean bool = true;
-    y.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "onSceneEnd, errType: %s, errCode: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramm });
-    if (paramm.equals(this.pGd.pFZ))
+    AppMethodBeat.i(1760);
+    ab.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "onSceneEnd, errType: %s, errCode: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramm });
+    if (paramm.equals(this.tjA.tjw))
     {
-      g.Dk().b(1943, this.pGd.eeo);
-      this.pGd.pFZ = null;
-      paramm = (c)paramm;
+      g.Rc().b(1943, this.tjA.fur);
+      this.tjA.tjw = null;
+      paramm = (j)paramm;
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        y.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "fetch page failed!, response json: %s", new Object[] { paramm.bNh().sEb });
-        a.jdMethod_if(2);
-        this.pGd.pEp.PL(paramString);
-        this.pGd.pFX = false;
+        ab.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "fetch page failed!, response json: %s", new Object[] { paramm.cID().wAa });
+        a.kS(2);
+        this.tjA.thM.aen(paramString);
+        this.tjA.tju = false;
+        AppMethodBeat.o(1760);
+        return;
+      }
+      paramString = new n.a(this.tjA, (byte)0);
+      n.a.a(paramString, paramm.cID().wAa);
+      if (paramm.tfp.offset != 0) {
+        break label204;
       }
     }
-    else
-    {
-      return;
-    }
-    paramString = new n.a(this.pGd, (byte)0);
-    n.a.a(paramString, paramm.bNh().sEb);
-    if (paramm.pDB.offset == 0) {}
     for (;;)
     {
       n.a.a(paramString, bool);
-      e.post(paramString, "TopStory.DecodeRecommendResultTask");
+      d.post(paramString, "TopStory.DecodeRecommendResultTask");
+      AppMethodBeat.o(1760);
       return;
+      label204:
       bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.n.3
  * JD-Core Version:    0.7.0.1
  */

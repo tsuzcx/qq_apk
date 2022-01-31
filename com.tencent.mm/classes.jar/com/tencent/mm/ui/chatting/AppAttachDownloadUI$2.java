@@ -1,17 +1,20 @@
 package com.tencent.mm.ui.chatting;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppAttachDownloadUI$2
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnClickListener
 {
   AppAttachDownloadUI$2(AppAttachDownloadUI paramAppAttachDownloadUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(View paramView)
   {
-    AppAttachDownloadUI.a(this.vgK, AppAttachDownloadUI.b(this.vgK));
-    return false;
+    AppMethodBeat.i(30265);
+    AppAttachDownloadUI.x(this.zvM);
+    AppAttachDownloadUI.y(this.zvM);
+    AppMethodBeat.o(30265);
   }
 }
 

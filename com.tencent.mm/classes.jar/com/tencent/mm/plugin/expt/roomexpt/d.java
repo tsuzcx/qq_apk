@@ -9,11 +9,11 @@ public abstract interface d
 {
   public abstract void a(String paramString1, String paramString2, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean);
   
-  public abstract void ax(String paramString, boolean paramBoolean);
+  public abstract void aK(String paramString, boolean paramBoolean);
   
-  public abstract void fG(boolean paramBoolean);
+  public abstract void hj(boolean paramBoolean);
   
-  public abstract void q(Context paramContext, Intent paramIntent);
+  public abstract void t(Context paramContext, Intent paramIntent);
 }
 
 

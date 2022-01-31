@@ -1,8 +1,15 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
-import com.tencent.mm.plugin.qqmail.b.j;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.qqmail.b.ac;
+import com.tencent.mm.plugin.qqmail.b.i;
+import com.tencent.mm.plugin.qqmail.b.k;
+import com.tencent.mm.plugin.qqmail.b.v;
 import com.tencent.mm.plugin.qqmail.b.v.a;
 import com.tencent.mm.ui.base.h;
+import java.io.File;
 import java.util.Map;
 
 final class ComposeUI$15
@@ -12,29 +19,52 @@ final class ComposeUI$15
   
   public final void onComplete()
   {
-    if (ComposeUI.G(this.ngJ) != null)
+    AppMethodBeat.i(68193);
+    if (ComposeUI.G(this.pLX) != null)
     {
-      ComposeUI.G(this.ngJ).dismiss();
-      ComposeUI.a(this.ngJ, null);
+      ComposeUI.G(this.pLX).dismiss();
+      ComposeUI.a(this.pLX, null);
     }
+    AppMethodBeat.o(68193);
   }
   
   public final void onError(int paramInt, String paramString)
   {
+    AppMethodBeat.i(68192);
     if (paramInt == -5)
     {
-      this.ngJ.ngi.a(new ComposeUI.15.2(this));
+      this.pLX.pLx.a(new ComposeUI.15.2(this));
+      AppMethodBeat.o(68192);
       return;
     }
-    h.a(this.ngJ, paramString, this.ngJ.getString(b.j.plugin_qqmail_compose_send_error), null);
+    h.a(this.pLX, paramString, this.pLX.getString(2131302113), null);
+    AppMethodBeat.o(68192);
   }
   
   public final void onSuccess(String paramString, Map<String, String> paramMap)
   {
-    h.a(this.ngJ, b.j.plugin_qqmail_compose_send_success, b.j.app_tip, new ComposeUI.15.1(this));
-    ComposeUI.d(this.ngJ).ca(this.ngJ.nfP.getMailAddrs());
-    ComposeUI.d(this.ngJ).ca(ComposeUI.e(this.ngJ).getMailAddrs());
-    ComposeUI.d(this.ngJ).ca(ComposeUI.f(this.ngJ).getMailAddrs());
+    AppMethodBeat.i(68191);
+    h.a(this.pLX, 2131302115, 2131297087, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(68189);
+        paramAnonymousDialogInterface = ac.cdQ().pJD;
+        String str = ComposeUI.J(ComposeUI.15.this.pLX);
+        paramAnonymousInt = ComposeUI.K(ComposeUI.15.this.pLX);
+        paramAnonymousDialogInterface = new File(paramAnonymousDialogInterface.pIH.pIR + i.db(str, paramAnonymousInt));
+        if (paramAnonymousDialogInterface.exists()) {
+          paramAnonymousDialogInterface.delete();
+        }
+        ComposeUI.15.this.pLX.setResult(-1);
+        ComposeUI.15.this.pLX.finish();
+        AppMethodBeat.o(68189);
+      }
+    });
+    ComposeUI.d(this.pLX).cC(this.pLX.pLe.getMailAddrs());
+    ComposeUI.d(this.pLX).cC(ComposeUI.e(this.pLX).getMailAddrs());
+    ComposeUI.d(this.pLX).cC(ComposeUI.f(this.pLX).getMailAddrs());
+    AppMethodBeat.o(68191);
   }
 }
 

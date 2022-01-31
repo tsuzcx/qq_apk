@@ -1,35 +1,44 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
-import com.tencent.mapsdk.raster.model.LatLng;
-import com.tencent.mapsdk.raster.model.Marker;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapClickListener;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s.m;
+import com.tencent.mm.plugin.appbrand.t.b.a.a;
+import com.tencent.mm.plugin.appbrand.t.b.a.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$15
-  implements TencentMap.OnMapClickListener
+  implements a.b
 {
   a$15(a parama) {}
   
-  public final void onMapClick(LatLng paramLatLng)
+  public final void a(int paramInt, String paramString, a.a parama)
   {
-    paramLatLng = this.gtW.gtO.values().iterator();
-    while (paramLatLng.hasNext())
+    AppMethodBeat.i(138423);
+    if (paramInt != 0)
     {
-      a.d locald = (a.d)paramLatLng.next();
-      if ((locald.gux != null) && (locald.gux.guA != null) && (locald.gux.guA.guH == b.p.a.guI) && (locald.guj.isInfoWindowShown())) {
-        locald.guj.hideInfoWindow();
-      }
+      ab.e("MicroMsg.DefaultTencentMapView", "errCode:%d, errStr:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+      AppMethodBeat.o(138423);
+      return;
     }
-    if (this.gtW.gtG != null) {
-      this.gtW.gtG.ajf();
+    ab.d("MicroMsg.DefaultTencentMapView", "refresh location latitude = %f, longitude = %f", new Object[] { Double.valueOf(parama.latitude), Double.valueOf(parama.longitude) });
+    if (!a.aDH())
+    {
+      ab.w("MicroMsg.DefaultTencentMapView", "refresh location fail, no perrmission");
+      AppMethodBeat.o(138423);
+      return;
     }
+    if ((!a.l(this.hOM)) || (a.m(this.hOM)))
+    {
+      AppMethodBeat.o(138423);
+      return;
+    }
+    m.runOnUiThread(new a.15.1(this, parama));
+    AppMethodBeat.o(138423);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.a.a.15
  * JD-Core Version:    0.7.0.1
  */

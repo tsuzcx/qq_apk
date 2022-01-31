@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.h.a.fy;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gb;
 import com.tencent.mm.sdk.b.c;
 
 public final class f
-  extends c<fy>
+  extends c<gb>
 {
   public f()
   {
-    this.udX = fy.class.getName().hashCode();
+    AppMethodBeat.i(108329);
+    this.__eventId = gb.class.getName().hashCode();
+    AppMethodBeat.o(108329);
   }
 }
 

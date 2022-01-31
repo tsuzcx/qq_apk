@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.aa;
 
-import com.tencent.mm.ah.a.a;
-import com.tencent.mm.h.a.br;
-import com.tencent.mm.protocal.c.c;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.g.a.bt;
+import com.tencent.mm.protocal.protobuf.c;
 import com.tencent.mm.vending.c.a;
 
 final class b$4$1
   implements a<Void, a.a<c>>
 {
-  b$4$1(b.4 param4, br parambr) {}
+  b$4$1(b.4 param4, bt parambt) {}
 }
 
 

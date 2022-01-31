@@ -1,16 +1,14 @@
 package com.tencent.liteav.audio;
 
-import com.tencent.liteav.basic.f.a;
-
 public abstract interface d
 {
-  public abstract void onPlayAudioInfoChanged(a parama1, a parama2);
+  public abstract void a(int paramInt, String paramString);
   
-  public abstract void onPlayError(int paramInt, String paramString);
+  public abstract void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void onPlayJitterStateNotify(int paramInt);
+  public abstract void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean);
   
-  public abstract void onPlayPcmData(byte[] paramArrayOfByte, long paramLong);
+  public abstract void b(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3);
 }
 
 

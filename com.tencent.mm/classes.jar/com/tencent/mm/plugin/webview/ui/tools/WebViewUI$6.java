@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.view.View;
 import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebViewUI$6
   implements View.OnSystemUiVisibilityChangeListener
@@ -10,9 +11,11 @@ final class WebViewUI$6
   
   public final void onSystemUiVisibilityChange(int paramInt)
   {
-    if (((paramInt & 0x4) == 0) && (this.rpH.rnA)) {
-      WebViewUI.dr(this.rpT);
+    AppMethodBeat.i(7814);
+    if (((paramInt & 0x4) == 0) && (this.vgz.ven)) {
+      WebViewUI.ex(this.jaM);
     }
+    AppMethodBeat.o(7814);
   }
 }
 

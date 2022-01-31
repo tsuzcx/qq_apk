@@ -3,260 +3,276 @@ package com.tencent.mm.plugin.fav.ui;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
 import com.tencent.mm.platformtools.v;
 import com.tencent.mm.platformtools.v.a;
 import com.tencent.mm.platformtools.v.b;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class d
   implements v
 {
   private int height;
-  private String kbQ;
+  private String mwm;
   private String url;
   private int width;
   
   public d(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.kbQ = paramString1;
+    this.mwm = paramString1;
     this.url = paramString2;
     this.width = paramInt1;
     this.height = paramInt2;
   }
   
-  public final void S(String paramString, boolean paramBoolean) {}
-  
-  public final v.b UN()
-  {
-    return null;
-  }
-  
-  public final String UO()
-  {
-    return b.aPI() + g.o(this.url.getBytes());
-  }
-  
-  public final String UP()
-  {
-    return this.url;
-  }
-  
-  public final String UQ()
-  {
-    return this.kbQ;
-  }
-  
-  public final boolean UR()
-  {
-    return true;
-  }
-  
-  public final boolean US()
-  {
-    return false;
-  }
-  
-  public final Bitmap UT()
-  {
-    return BitmapFactory.decodeResource(ae.getContext().getResources(), n.d.nosdcard_headimg);
-  }
-  
-  public final void UU() {}
+  public final void W(String paramString, boolean paramBoolean) {}
   
   /* Error */
   public final Bitmap a(Bitmap paramBitmap, v.a parama, String paramString)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: astore_3
-    //   2: getstatic 102	com/tencent/mm/platformtools/v$a:eRD	Lcom/tencent/mm/platformtools/v$a;
-    //   5: aload_2
-    //   6: if_acmpne +147 -> 153
-    //   9: aload_1
-    //   10: astore_3
-    //   11: ldc 104
-    //   13: ldc 106
-    //   15: iconst_1
-    //   16: anewarray 4	java/lang/Object
-    //   19: dup
-    //   20: iconst_0
-    //   21: aload_0
-    //   22: getfield 21	com/tencent/mm/plugin/fav/ui/d:url	Ljava/lang/String;
-    //   25: aastore
-    //   26: invokestatic 112	com/tencent/mm/sdk/platformtools/y:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   29: aload_1
-    //   30: astore_3
-    //   31: new 114	com/tencent/mm/vfs/b
-    //   34: dup
-    //   35: invokestatic 40	com/tencent/mm/plugin/fav/a/b:aPI	()Ljava/lang/String;
-    //   38: invokespecial 117	com/tencent/mm/vfs/b:<init>	(Ljava/lang/String;)V
-    //   41: astore_2
-    //   42: aload_1
-    //   43: astore_3
-    //   44: aload_2
-    //   45: invokevirtual 120	com/tencent/mm/vfs/b:exists	()Z
-    //   48: ifne +10 -> 58
-    //   51: aload_1
-    //   52: astore_3
-    //   53: aload_2
-    //   54: invokevirtual 123	com/tencent/mm/vfs/b:mkdirs	()Z
-    //   57: pop
-    //   58: aload_1
-    //   59: astore_2
-    //   60: aload_1
-    //   61: astore_3
-    //   62: aload_0
-    //   63: getfield 23	com/tencent/mm/plugin/fav/ui/d:width	I
-    //   66: ifle +30 -> 96
-    //   69: aload_1
-    //   70: astore_2
-    //   71: aload_1
-    //   72: astore_3
-    //   73: aload_0
-    //   74: getfield 25	com/tencent/mm/plugin/fav/ui/d:height	I
-    //   77: ifle +19 -> 96
-    //   80: aload_1
-    //   81: astore_3
-    //   82: aload_1
-    //   83: aload_0
-    //   84: getfield 23	com/tencent/mm/plugin/fav/ui/d:width	I
-    //   87: aload_0
-    //   88: getfield 25	com/tencent/mm/plugin/fav/ui/d:height	I
-    //   91: iconst_1
-    //   92: invokestatic 128	com/tencent/mm/sdk/platformtools/c:a	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   95: astore_2
-    //   96: aload_2
-    //   97: astore_3
-    //   98: new 114	com/tencent/mm/vfs/b
-    //   101: dup
-    //   102: aload_0
-    //   103: invokevirtual 130	com/tencent/mm/plugin/fav/ui/d:UO	()Ljava/lang/String;
-    //   106: invokespecial 117	com/tencent/mm/vfs/b:<init>	(Ljava/lang/String;)V
-    //   109: astore_1
-    //   110: aload_2
-    //   111: astore_3
-    //   112: aload_1
-    //   113: invokevirtual 133	com/tencent/mm/vfs/b:createNewFile	()Z
-    //   116: pop
-    //   117: new 135	com/tencent/mm/vfs/f
-    //   120: dup
-    //   121: aload_1
-    //   122: invokespecial 138	com/tencent/mm/vfs/f:<init>	(Lcom/tencent/mm/vfs/b;)V
-    //   125: astore_1
+    //   0: ldc 35
+    //   2: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_1
+    //   6: astore_3
+    //   7: getstatic 47	com/tencent/mm/platformtools/v$a:gjx	Lcom/tencent/mm/platformtools/v$a;
+    //   10: aload_2
+    //   11: if_acmpne +147 -> 158
+    //   14: aload_1
+    //   15: astore_3
+    //   16: ldc 49
+    //   18: ldc 51
+    //   20: iconst_1
+    //   21: anewarray 4	java/lang/Object
+    //   24: dup
+    //   25: iconst_0
+    //   26: aload_0
+    //   27: getfield 21	com/tencent/mm/plugin/fav/ui/d:url	Ljava/lang/String;
+    //   30: aastore
+    //   31: invokestatic 57	com/tencent/mm/sdk/platformtools/ab:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   34: aload_1
+    //   35: astore_3
+    //   36: new 59	com/tencent/mm/vfs/b
+    //   39: dup
+    //   40: invokestatic 65	com/tencent/mm/plugin/fav/a/b:bvW	()Ljava/lang/String;
+    //   43: invokespecial 68	com/tencent/mm/vfs/b:<init>	(Ljava/lang/String;)V
+    //   46: astore_2
+    //   47: aload_1
+    //   48: astore_3
+    //   49: aload_2
+    //   50: invokevirtual 72	com/tencent/mm/vfs/b:exists	()Z
+    //   53: ifne +10 -> 63
+    //   56: aload_1
+    //   57: astore_3
+    //   58: aload_2
+    //   59: invokevirtual 75	com/tencent/mm/vfs/b:mkdirs	()Z
+    //   62: pop
+    //   63: aload_1
+    //   64: astore_2
+    //   65: aload_1
+    //   66: astore_3
+    //   67: aload_0
+    //   68: getfield 23	com/tencent/mm/plugin/fav/ui/d:width	I
+    //   71: ifle +30 -> 101
+    //   74: aload_1
+    //   75: astore_2
+    //   76: aload_1
+    //   77: astore_3
+    //   78: aload_0
+    //   79: getfield 25	com/tencent/mm/plugin/fav/ui/d:height	I
+    //   82: ifle +19 -> 101
+    //   85: aload_1
+    //   86: astore_3
+    //   87: aload_1
+    //   88: aload_0
+    //   89: getfield 23	com/tencent/mm/plugin/fav/ui/d:width	I
+    //   92: aload_0
+    //   93: getfield 25	com/tencent/mm/plugin/fav/ui/d:height	I
+    //   96: iconst_1
+    //   97: invokestatic 81	com/tencent/mm/sdk/platformtools/d:b	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   100: astore_2
+    //   101: aload_2
+    //   102: astore_3
+    //   103: new 59	com/tencent/mm/vfs/b
+    //   106: dup
+    //   107: aload_0
+    //   108: invokevirtual 84	com/tencent/mm/plugin/fav/ui/d:aon	()Ljava/lang/String;
+    //   111: invokespecial 68	com/tencent/mm/vfs/b:<init>	(Ljava/lang/String;)V
+    //   114: astore_1
+    //   115: aload_2
+    //   116: astore_3
+    //   117: aload_1
+    //   118: invokevirtual 87	com/tencent/mm/vfs/b:createNewFile	()Z
+    //   121: pop
+    //   122: new 89	com/tencent/mm/vfs/f
+    //   125: dup
     //   126: aload_1
-    //   127: astore_3
-    //   128: aload_2
-    //   129: getstatic 144	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   132: bipush 100
-    //   134: aload_1
-    //   135: invokevirtual 150	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   138: pop
+    //   127: invokespecial 92	com/tencent/mm/vfs/f:<init>	(Lcom/tencent/mm/vfs/b;)V
+    //   130: astore_1
+    //   131: aload_1
+    //   132: astore_3
+    //   133: aload_2
+    //   134: getstatic 98	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   137: bipush 100
     //   139: aload_1
-    //   140: astore_3
-    //   141: aload_1
-    //   142: invokevirtual 153	com/tencent/mm/vfs/f:flush	()V
-    //   145: aload_2
-    //   146: astore_3
-    //   147: aload_1
-    //   148: invokevirtual 156	com/tencent/mm/vfs/f:close	()V
-    //   151: aload_2
-    //   152: astore_3
-    //   153: aload_3
-    //   154: areturn
-    //   155: astore 4
-    //   157: aconst_null
-    //   158: astore_1
-    //   159: aload_1
-    //   160: astore_3
-    //   161: ldc 104
-    //   163: aload 4
-    //   165: ldc 158
-    //   167: iconst_0
-    //   168: anewarray 4	java/lang/Object
-    //   171: invokestatic 162	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   174: aload_2
-    //   175: astore_3
-    //   176: aload_1
-    //   177: ifnull -24 -> 153
-    //   180: aload_2
-    //   181: astore_3
-    //   182: aload_1
-    //   183: invokevirtual 156	com/tencent/mm/vfs/f:close	()V
-    //   186: aload_2
-    //   187: areturn
-    //   188: astore_1
-    //   189: ldc 104
-    //   191: aload_1
-    //   192: ldc 158
-    //   194: iconst_0
-    //   195: anewarray 4	java/lang/Object
-    //   198: invokestatic 162	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   201: aload_3
-    //   202: areturn
-    //   203: astore_1
-    //   204: aconst_null
-    //   205: astore 4
-    //   207: aload 4
-    //   209: ifnull +10 -> 219
-    //   212: aload_2
-    //   213: astore_3
-    //   214: aload 4
-    //   216: invokevirtual 156	com/tencent/mm/vfs/f:close	()V
-    //   219: aload_2
-    //   220: astore_3
-    //   221: aload_1
-    //   222: athrow
-    //   223: astore_1
-    //   224: aload_3
-    //   225: astore 4
-    //   227: goto -20 -> 207
-    //   230: astore 4
-    //   232: goto -73 -> 159
+    //   140: invokevirtual 104	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   143: pop
+    //   144: aload_1
+    //   145: astore_3
+    //   146: aload_1
+    //   147: invokevirtual 107	com/tencent/mm/vfs/f:flush	()V
+    //   150: aload_2
+    //   151: astore_3
+    //   152: aload_1
+    //   153: invokevirtual 110	com/tencent/mm/vfs/f:close	()V
+    //   156: aload_2
+    //   157: astore_3
+    //   158: ldc 35
+    //   160: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   163: aload_3
+    //   164: areturn
+    //   165: astore 4
+    //   167: aconst_null
+    //   168: astore_1
+    //   169: aload_1
+    //   170: astore_3
+    //   171: ldc 49
+    //   173: aload 4
+    //   175: ldc 115
+    //   177: iconst_0
+    //   178: anewarray 4	java/lang/Object
+    //   181: invokestatic 119	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   184: aload_2
+    //   185: astore_3
+    //   186: aload_1
+    //   187: ifnull -29 -> 158
+    //   190: aload_2
+    //   191: astore_3
+    //   192: aload_1
+    //   193: invokevirtual 110	com/tencent/mm/vfs/f:close	()V
+    //   196: aload_2
+    //   197: astore_3
+    //   198: goto -40 -> 158
+    //   201: astore_1
+    //   202: ldc 49
+    //   204: aload_1
+    //   205: ldc 115
+    //   207: iconst_0
+    //   208: anewarray 4	java/lang/Object
+    //   211: invokestatic 119	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   214: goto -56 -> 158
+    //   217: astore_1
+    //   218: aconst_null
+    //   219: astore 4
+    //   221: aload 4
+    //   223: ifnull +10 -> 233
+    //   226: aload_2
+    //   227: astore_3
+    //   228: aload 4
+    //   230: invokevirtual 110	com/tencent/mm/vfs/f:close	()V
+    //   233: aload_2
+    //   234: astore_3
+    //   235: ldc 35
+    //   237: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   240: aload_2
+    //   241: astore_3
+    //   242: aload_1
+    //   243: athrow
+    //   244: astore_1
+    //   245: aload_3
+    //   246: astore 4
+    //   248: goto -27 -> 221
+    //   251: astore 4
+    //   253: goto -84 -> 169
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	235	0	this	d
-    //   0	235	1	paramBitmap	Bitmap
-    //   0	235	2	parama	v.a
-    //   0	235	3	paramString	String
-    //   155	9	4	localFileNotFoundException1	java.io.FileNotFoundException
-    //   205	21	4	str	String
-    //   230	1	4	localFileNotFoundException2	java.io.FileNotFoundException
+    //   0	256	0	this	d
+    //   0	256	1	paramBitmap	Bitmap
+    //   0	256	2	parama	v.a
+    //   0	256	3	paramString	String
+    //   165	9	4	localFileNotFoundException1	java.io.FileNotFoundException
+    //   219	28	4	str	String
+    //   251	1	4	localFileNotFoundException2	java.io.FileNotFoundException
     // Exception table:
     //   from	to	target	type
-    //   117	126	155	java/io/FileNotFoundException
-    //   11	29	188	java/io/IOException
-    //   31	42	188	java/io/IOException
-    //   44	51	188	java/io/IOException
-    //   53	58	188	java/io/IOException
-    //   62	69	188	java/io/IOException
-    //   73	80	188	java/io/IOException
-    //   82	96	188	java/io/IOException
-    //   98	110	188	java/io/IOException
-    //   112	117	188	java/io/IOException
-    //   147	151	188	java/io/IOException
-    //   182	186	188	java/io/IOException
-    //   214	219	188	java/io/IOException
-    //   221	223	188	java/io/IOException
-    //   117	126	203	finally
-    //   128	139	223	finally
-    //   141	145	223	finally
-    //   161	174	223	finally
-    //   128	139	230	java/io/FileNotFoundException
-    //   141	145	230	java/io/FileNotFoundException
+    //   122	131	165	java/io/FileNotFoundException
+    //   16	34	201	java/io/IOException
+    //   36	47	201	java/io/IOException
+    //   49	56	201	java/io/IOException
+    //   58	63	201	java/io/IOException
+    //   67	74	201	java/io/IOException
+    //   78	85	201	java/io/IOException
+    //   87	101	201	java/io/IOException
+    //   103	115	201	java/io/IOException
+    //   117	122	201	java/io/IOException
+    //   152	156	201	java/io/IOException
+    //   192	196	201	java/io/IOException
+    //   228	233	201	java/io/IOException
+    //   235	240	201	java/io/IOException
+    //   242	244	201	java/io/IOException
+    //   122	131	217	finally
+    //   133	144	244	finally
+    //   146	150	244	finally
+    //   171	184	244	finally
+    //   133	144	251	java/io/FileNotFoundException
+    //   146	150	251	java/io/FileNotFoundException
   }
   
   public final void a(v.a parama, String paramString) {}
   
+  public final v.b aom()
+  {
+    return null;
+  }
+  
+  public final String aon()
+  {
+    AppMethodBeat.i(73997);
+    String str = b.bvW() + g.w(this.url.getBytes());
+    AppMethodBeat.o(73997);
+    return str;
+  }
+  
+  public final String aoo()
+  {
+    return this.url;
+  }
+  
+  public final String aop()
+  {
+    return this.mwm;
+  }
+  
+  public final boolean aoq()
+  {
+    return true;
+  }
+  
+  public final boolean aor()
+  {
+    return false;
+  }
+  
+  public final Bitmap aos()
+  {
+    AppMethodBeat.i(73998);
+    Bitmap localBitmap = BitmapFactory.decodeResource(ah.getContext().getResources(), 2130839823);
+    AppMethodBeat.o(73998);
+    return localBitmap;
+  }
+  
+  public final void aot() {}
+  
   public final String getCacheKey()
   {
-    return this.kbQ;
+    return this.mwm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.d
  * JD-Core Version:    0.7.0.1
  */

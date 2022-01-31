@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.talkroom.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class TalkRoomUI$15
   implements View.OnTouchListener
@@ -12,25 +13,29 @@ final class TalkRoomUI$15
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = this.pCn;
+    AppMethodBeat.i(25922);
+    paramView = this.tdX;
     int i = paramMotionEvent.getAction();
     if (i == 0)
     {
-      paramView.fSy = paramMotionEvent.getX();
-      paramView.fSz = paramMotionEvent.getY();
-      paramView.pCo = bk.UZ();
+      paramView.bTE = paramMotionEvent.getX();
+      paramView.bTF = paramMotionEvent.getY();
+      paramView.tdY = bo.yB();
+      AppMethodBeat.o(25922);
       return true;
     }
     if ((i == 1) || (i == 3))
     {
-      float f1 = Math.abs(paramMotionEvent.getX() - paramView.fSy);
-      float f2 = paramView.fSz - paramMotionEvent.getY();
-      if ((f2 >= 100.0F) && (f2 / f1 > 2.0F) && (f2 / (float)bk.cp(paramView.pCo) > 0.6F))
+      float f1 = Math.abs(paramMotionEvent.getX() - paramView.bTE);
+      float f2 = paramView.bTF - paramMotionEvent.getY();
+      if ((f2 >= 100.0F) && (f2 / f1 > 2.0F) && (f2 / (float)bo.av(paramView.tdY) > 0.6F))
       {
-        paramView.bMS();
+        paramView.cHV();
+        AppMethodBeat.o(25922);
         return true;
       }
     }
+    AppMethodBeat.o(25922);
     return false;
   }
 }

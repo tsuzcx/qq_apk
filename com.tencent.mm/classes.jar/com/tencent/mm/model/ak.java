@@ -1,20 +1,19 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.storage.be.b;
+import com.tencent.mm.kernel.c.a;
 
-@Deprecated
 public abstract interface ak
+  extends a
 {
-  @Deprecated
-  public abstract al getNotification();
+  public abstract void gu(long paramLong);
   
-  public abstract be.b tt();
+  public abstract void pk(String paramString);
   
-  public abstract ad tu();
+  public abstract void v(String paramString, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.ak
  * JD-Core Version:    0.7.0.1
  */

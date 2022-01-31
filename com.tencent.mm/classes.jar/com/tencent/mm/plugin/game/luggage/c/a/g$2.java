@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.game.luggage.c.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.webview.luggage.FavUrlTask;
-import com.tencent.mm.plugin.webview.luggage.ipc.LuggageMainProcessService;
 import com.tencent.mm.ui.widget.snackbar.a.b;
 
 final class g$2
@@ -9,11 +10,13 @@ final class g$2
 {
   g$2(g paramg) {}
   
-  public final void amw()
+  public final void aVA()
   {
+    AppMethodBeat.i(135905);
     FavUrlTask localFavUrlTask = new FavUrlTask();
     localFavUrlTask.actionType = 2;
-    LuggageMainProcessService.a(localFavUrlTask);
+    AppBrandMainProcessService.a(localFavUrlTask);
+    AppMethodBeat.o(135905);
   }
 }
 

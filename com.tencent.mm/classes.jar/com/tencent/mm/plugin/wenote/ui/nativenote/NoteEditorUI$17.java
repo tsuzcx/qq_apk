@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.nativenote.c.e;
 
 final class NoteEditorUI$17
@@ -11,7 +12,9 @@ final class NoteEditorUI$17
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    e.ciJ().ciW();
+    AppMethodBeat.i(27013);
+    e.djc().djq();
+    AppMethodBeat.o(27013);
   }
 }
 

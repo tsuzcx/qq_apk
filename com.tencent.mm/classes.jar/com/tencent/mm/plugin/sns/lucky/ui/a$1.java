@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.sns.lucky.ui;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$1
   implements DialogInterface.OnCancelListener
@@ -12,10 +13,12 @@ final class a$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    y.i("MicroMsg.SnsLuckyCommentAlertUI", "showTipsDialog onCancel");
-    if ((this.oof != null) && (this.oof.isShowing())) {
-      this.oof.dismiss();
+    AppMethodBeat.i(35900);
+    ab.i("MicroMsg.SnsLuckyCommentAlertUI", "showTipsDialog onCancel");
+    if ((this.rcw != null) && (this.rcw.isShowing())) {
+      this.rcw.dismiss();
     }
+    AppMethodBeat.o(35900);
   }
 }
 

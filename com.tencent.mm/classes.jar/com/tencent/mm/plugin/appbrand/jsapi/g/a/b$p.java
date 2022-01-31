@@ -2,26 +2,11 @@ package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
 public final class b$p
 {
-  public float aWt;
-  public float aWu;
-  public float alpha;
-  public String data;
-  public b.p.a guA;
-  public b.p.b guB;
-  public String gum;
-  public float guy;
-  public float guz;
+  public String buildingId;
+  public String floorName;
   public double latitude;
   public double longitude;
-  public float rotate;
-  public String title;
-  public int zIndex;
-  
-  public final void H(float paramFloat1, float paramFloat2)
-  {
-    this.aWt = paramFloat1;
-    this.aWu = paramFloat2;
-  }
+  public String name;
 }
 
 

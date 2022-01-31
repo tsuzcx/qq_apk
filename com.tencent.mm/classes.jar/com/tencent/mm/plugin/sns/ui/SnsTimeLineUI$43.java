@@ -1,40 +1,33 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.MenuItem;
-import com.tencent.mm.modelsns.b;
-import com.tencent.mm.plugin.sns.h.f;
-import com.tencent.mm.ui.base.n.d;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.k.c.b;
+import com.tencent.mm.plugin.sns.model.av;
+import com.tencent.mm.vending.app.a;
 
 final class SnsTimeLineUI$43
-  implements n.d
+  implements View.OnClickListener
 {
-  SnsTimeLineUI$43(SnsTimeLineUI paramSnsTimeLineUI, b paramb) {}
+  SnsTimeLineUI$43(SnsTimeLineUI paramSnsTimeLineUI) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final void onClick(View paramView)
   {
-    switch (paramMenuItem.getItemId())
-    {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      com.tencent.mm.plugin.report.service.h.nFQ.f(13822, new Object[] { Integer.valueOf(2), Integer.valueOf(2) });
-      f.ozP.b(this.pfM);
-      this.pfM.QX();
-      SnsTimeLineUI.h(this.pfC).piE = this.pfM;
-      SnsTimeLineUI.h(this.pfC).yW(1);
-      SnsTimeLineUI.J(this.pfC).yQ(2);
-      SnsTimeLineUI.b(SnsTimeLineUI.J(this.pfC));
-      return;
-    case 3: 
-      SnsTimeLineUI.J(this.pfC).yQ(1);
-      SnsTimeLineUI.b(SnsTimeLineUI.J(this.pfC));
-      SnsTimeLineUI.K(this.pfC);
-      return;
+    AppMethodBeat.i(155755);
+    if ((SnsTimeLineUI.i(this.rYv) != null) && (SnsTimeLineUI.i(this.rYv).rFl != null)) {
+      SnsTimeLineUI.i(this.rYv).rFl.rhS.lf(true);
     }
-    SnsTimeLineUI.J(this.pfC).yQ(3);
-    SnsTimeLineUI.b(SnsTimeLineUI.J(this.pfC));
-    SnsTimeLineUI.L(this.pfC);
+    paramView = (c.b)this.rYv.SF().m(c.b.class);
+    com.tencent.mm.modelsns.b localb = com.tencent.mm.modelsns.b.lV(725);
+    localb.lY(paramView.snz);
+    localb.ake();
+    paramView = new Intent();
+    paramView.setClass(this.rYv, SnsMsgUI.class);
+    paramView.putExtra("sns_msg_comment_list_scene", 1);
+    this.rYv.startActivityForResult(paramView, 13);
+    AppMethodBeat.o(155755);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 import android.annotation.TargetApi;
 import android.media.MediaCodec.BufferInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import java.nio.ByteBuffer;
 
@@ -9,34 +10,39 @@ import java.nio.ByteBuffer;
 public final class g
   extends h
 {
-  private int eIz = -1;
+  private int eRm = -1;
   
-  public g(int paramInt1, int paramInt2)
+  public g(int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramInt1, paramInt2);
+    super(paramInt1, paramInt2, paramInt3);
   }
   
-  public final int au(int paramInt, String paramString)
-  {
-    this.eIz = paramInt;
-    return super.au(paramInt, paramString);
-  }
-  
-  protected final boolean bjz()
+  protected final boolean Xp()
   {
     return true;
   }
   
-  protected final void e(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
+  protected final void g(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
-    if ((this.eIz >= 0) && (paramByteBuffer != null) && (paramBufferInfo != null) && (!this.miW)) {
-      SightVideoJNI.writeAACDataLock(this.eIz, paramByteBuffer, paramBufferInfo.size);
+    AppMethodBeat.i(76572);
+    if ((this.eRm >= 0) && (paramByteBuffer != null) && (paramBufferInfo != null) && (!this.oJd)) {
+      SightVideoJNI.writeAACDataLock(this.eRm, paramByteBuffer, paramBufferInfo.size);
     }
+    AppMethodBeat.o(76572);
+  }
+  
+  public final int t(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(76571);
+    this.eRm = paramInt;
+    paramInt = super.t(paramInt, paramString);
+    AppMethodBeat.o(76571);
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.g
  * JD-Core Version:    0.7.0.1
  */

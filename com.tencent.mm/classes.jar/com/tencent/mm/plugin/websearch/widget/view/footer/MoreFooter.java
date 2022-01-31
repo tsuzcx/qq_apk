@@ -8,34 +8,39 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.websearch.a.a;
-import com.tencent.mm.plugin.websearch.a.b;
-import com.tencent.mm.ui.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.w;
 
 public class MoreFooter
   extends LinearLayout
 {
   private Context context;
-  private TextView fcy;
-  private View khn;
+  private TextView gui;
+  private View kgr;
   
   public MoreFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(91584);
     this.context = paramContext;
-    paramContext = (ViewGroup)y.gt(this.context).inflate(a.b.widget_footer_more, this);
-    this.fcy = ((TextView)paramContext.findViewById(a.a.tip_tv));
-    this.khn = paramContext.findViewById(a.a.root);
+    paramContext = (ViewGroup)w.hM(this.context).inflate(2130971325, this);
+    this.gui = ((TextView)paramContext.findViewById(2131821071));
+    this.kgr = paramContext.findViewById(2131821003);
+    AppMethodBeat.o(91584);
   }
   
   public void setOnClickLsn(View.OnClickListener paramOnClickListener)
   {
-    this.khn.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.i(91586);
+    this.kgr.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(91586);
   }
   
   public void setTitle(String paramString)
   {
-    this.fcy.setText(paramString);
+    AppMethodBeat.i(91585);
+    this.gui.setText(paramString);
+    AppMethodBeat.o(91585);
   }
 }
 

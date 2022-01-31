@@ -6,11 +6,10 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.collect.b.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.plugin.collect.model.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CollectBillUI$3
   implements AdapterView.OnItemClickListener
@@ -19,22 +18,26 @@ final class CollectBillUI$3
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(41213);
     if ((paramInt < 0) || (paramInt >= paramAdapterView.getAdapter().getCount()))
     {
-      y.i("MicroMsg.CollectBillUI", "illegal position: %s, count: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramAdapterView.getAdapter().getCount()) });
+      ab.i("MicroMsg.CollectBillUI", "illegal position: %s, count: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramAdapterView.getAdapter().getCount()) });
+      AppMethodBeat.o(41213);
       return;
     }
-    paramAdapterView = (a)CollectBillUI.b(this.iKD).getItemAtPosition(paramInt);
+    paramAdapterView = (a)CollectBillUI.b(this.kRi).getItemAtPosition(paramInt);
     if (paramAdapterView == null)
     {
-      y.w("MicroMsg.CollectBillUI", "invalid position: %d", new Object[] { Integer.valueOf(paramInt) });
+      ab.w("MicroMsg.CollectBillUI", "invalid position: %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(41213);
       return;
     }
     paramView = new Intent();
     paramView.putExtra("scene", 2);
-    paramView.putExtra("trans_id", paramAdapterView.iGK);
-    paramView.putExtra("bill_id", paramAdapterView.iGJ);
-    d.b(this.iKD.mController.uMN, "order", ".ui.MallOrderTransactionInfoUI", paramView);
+    paramView.putExtra("trans_id", paramAdapterView.kMN);
+    paramView.putExtra("bill_id", paramAdapterView.kMM);
+    d.b(this.kRi.getContext(), "order", ".ui.MallOrderTransactionInfoUI", paramView);
+    AppMethodBeat.o(41213);
   }
 }
 

@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.c;
 
 import android.annotation.TargetApi;
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -15,23 +17,25 @@ public final class d
   private static final int CTRL_INDEX = 222;
   private static final String NAME = "stopBeaconDiscovery";
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    com.tencent.luggage.j.c.i("MicroMsg.JsApiStopBeaconDiscovery", "stopBeaconDiscovery!");
-    paramJSONObject = a.ub(paramc.getAppId());
+    AppMethodBeat.i(94366);
+    com.tencent.luggage.g.d.i("MicroMsg.JsApiStopBeaconDiscovery", "stopBeaconDiscovery!");
+    paramJSONObject = a.Ca(paramc.getAppId());
     if (paramJSONObject == null)
     {
-      com.tencent.luggage.j.c.e("MicroMsg.JsApiStopBeaconDiscovery", "beaconWorker is null");
+      com.tencent.luggage.g.d.e("MicroMsg.JsApiStopBeaconDiscovery", "beaconWorker is null");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(11004));
-      paramc.C(paramInt, h("fail:not start", paramJSONObject));
+      paramc.h(paramInt, j("fail:not start", paramJSONObject));
+      AppMethodBeat.o(94366);
       return;
     }
-    if (paramJSONObject.un())
+    if (paramJSONObject.Ez())
     {
       a.remove(paramc.getAppId());
       new HashMap().put("errCode", Integer.valueOf(0));
-      paramc.C(paramInt, h("ok", null));
+      paramc.h(paramInt, j("ok", null));
     }
     for (;;)
     {
@@ -39,20 +43,21 @@ public final class d
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("available", a.glv);
+        localJSONObject.put("available", a.hFu);
         localJSONObject.put("discovering", false);
-        com.tencent.luggage.j.c.i("MicroMsg.JsApiStopBeaconDiscovery", "OnBeaconServiceChangedEvent %s", new Object[] { localJSONObject.toString() });
-        paramJSONObject.b(paramc, paramc.ahJ()).tM(localJSONObject.toString()).dispatch();
+        com.tencent.luggage.g.d.i("MicroMsg.JsApiStopBeaconDiscovery", "OnBeaconServiceChangedEvent %s", new Object[] { localJSONObject.toString() });
+        paramJSONObject.b(paramc, paramc.aAN()).BN(localJSONObject.toString()).aBz();
+        AppMethodBeat.o(94366);
         return;
         paramJSONObject = new HashMap();
         paramJSONObject.put("errCode", Integer.valueOf(11004));
-        paramc.C(paramInt, h("fail:not start", paramJSONObject));
+        paramc.h(paramInt, j("fail:not start", paramJSONObject));
       }
       catch (JSONException localJSONException)
       {
         for (;;)
         {
-          com.tencent.luggage.j.c.e("MicroMsg.JsApiStopBeaconDiscovery", "put JSON data error : %s", new Object[] { localJSONException });
+          com.tencent.luggage.g.d.e("MicroMsg.JsApiStopBeaconDiscovery", "put JSON data error : %s", new Object[] { localJSONException });
         }
       }
     }

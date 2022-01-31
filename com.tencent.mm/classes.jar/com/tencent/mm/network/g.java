@@ -4,11 +4,12 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface g
   extends IInterface
 {
-  public abstract void eq(int paramInt);
+  public abstract void gd(int paramInt);
   
   public static abstract class a
     extends Binder
@@ -35,12 +36,12 @@ public abstract interface g
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.network.IIpxxCallback_AIDL");
-      eq(paramParcel1.readInt());
+      gd(paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
     }
     
-    private static final class a
+    static final class a
       implements g
     {
       private IBinder mRemote;
@@ -55,8 +56,9 @@ public abstract interface g
         return this.mRemote;
       }
       
-      public final void eq(int paramInt)
+      public final void gd(int paramInt)
       {
+        AppMethodBeat.i(58517);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -71,6 +73,7 @@ public abstract interface g
         {
           localParcel2.recycle();
           localParcel1.recycle();
+          AppMethodBeat.o(58517);
         }
       }
     }

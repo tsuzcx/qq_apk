@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.ext;
 
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.n.a;
 import com.tencent.mm.pluginsdk.model.i;
 import com.tencent.mm.pluginsdk.model.i.a;
 import com.tencent.mm.pluginsdk.model.i.b;
 import com.tencent.mm.pluginsdk.model.l;
-import com.tencent.mm.protocal.c.alt;
-import com.tencent.mm.protocal.c.ccc;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.protocal.protobuf.cpi;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.bz;
@@ -26,61 +26,52 @@ final class b$6
   
   public final void a(l paraml)
   {
-    if (paraml == null) {}
-    int i;
-    label267:
-    do
+    AppMethodBeat.i(20264);
+    if (paraml == null)
     {
+      AppMethodBeat.o(20264);
       return;
-      Object localObject1;
-      if (paraml.jvQ == null)
+    }
+    Iterator localIterator = paraml.dlj().xgx.iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      Object localObject1 = (cpi)localIterator.next();
+      ab.v("MicroMsg.SubCoreExt", "AppId[%s], UserName[%s], Xml[%s]", new Object[] { paraml.hAf, ((cpi)localObject1).jJA, ((cpi)localObject1).xYu });
+      if ((!bo.isNullOrNil(((cpi)localObject1).jJA)) && (!bo.isNullOrNil(((cpi)localObject1).xYu)))
       {
-        localObject1 = null;
-        localObject1 = ((alt)localObject1).thJ.iterator();
-        i = 0;
-      }
-      for (;;)
-      {
-        if (!((Iterator)localObject1).hasNext()) {
-          break label267;
-        }
-        Object localObject2 = (ccc)((Iterator)localObject1).next();
-        y.v("MicroMsg.SubCoreExt", "AppId[%s], UserName[%s], Xml[%s]", new Object[] { paraml.rTu, ((ccc)localObject2).hPY, ((ccc)localObject2).tRy });
-        if ((!bk.bl(((ccc)localObject2).hPY)) && (!bk.bl(((ccc)localObject2).tRy)))
+        aw.aaz();
+        Object localObject2 = c.YA().aru(((cpi)localObject1).jJA);
+        if ((localObject2 == null) || ((int)((a)localObject2).euF <= 0))
         {
-          au.Hx();
-          Object localObject3 = c.Fw().abj(((ccc)localObject2).hPY);
-          if ((localObject3 == null) || ((int)((a)localObject3).dBe <= 0))
+          ab.e("MicroMsg.SubCoreExt", "contact is null");
+        }
+        else if (((ad)localObject2).dwz())
+        {
+          ab.w("MicroMsg.SubCoreExt", "isBizContact");
+        }
+        else
+        {
+          localObject2 = i.alj(((cpi)localObject1).xYu);
+          if ((localObject2 != null) && (!bo.isNullOrNil(((i.b)localObject2).vKl)))
           {
-            y.e("MicroMsg.SubCoreExt", "contact is null");
-            continue;
-            localObject1 = (alt)paraml.jvQ.ecF.ecN;
-            break;
-          }
-          if (((ad)localObject3).cua())
-          {
-            y.w("MicroMsg.SubCoreExt", "isBizContact");
-          }
-          else
-          {
-            localObject3 = i.VL(((ccc)localObject2).tRy);
-            if ((localObject3 != null) && (!bk.bl(((i.b)localObject3).rTn)))
-            {
-              y.v("MicroMsg.SubCoreExt", "AppId[%s], openId[%s]", new Object[] { paraml.rTu, ((i.b)localObject3).rTn });
-              localObject2 = new bz(paraml.rTu, ((ccc)localObject2).hPY, ((i.b)localObject3).rTn);
-              b.aNq().a((bz)localObject2);
-              i = 1;
-            }
+            ab.v("MicroMsg.SubCoreExt", "AppId[%s], openId[%s]", new Object[] { paraml.hAf, ((i.b)localObject2).vKl });
+            localObject1 = new bz(paraml.hAf, ((cpi)localObject1).jJA, ((i.b)localObject2).vKl);
+            b.btt().a((bz)localObject1);
+            i = 1;
           }
         }
       }
-    } while (i == 0);
-    this.jJF.aNu();
+    }
+    if (i != 0) {
+      this.mdJ.btx();
+    }
+    AppMethodBeat.o(20264);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.b.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,31 @@
 package com.tencent.mm.booter;
 
-import com.tencent.mm.sdk.platformtools.at.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ax.a;
 
 final class a$1
-  implements at.a
+  implements ax.a
 {
   a$1(a parama) {}
   
-  public final void fQ(int paramInt)
+  public final void ie(int paramInt)
   {
+    AppMethodBeat.i(77618);
     switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      y.v("MicroMsg.BackgroundPlayer", "call end");
-      this.dho.vS();
-      return;
     }
-    y.v("MicroMsg.BackgroundPlayer", "call start");
-    this.dho.vT();
+    for (;;)
+    {
+      AppMethodBeat.o(77618);
+      return;
+      ab.v("MicroMsg.BackgroundPlayer", "call end");
+      this.dYz.Ib();
+      AppMethodBeat.o(77618);
+      return;
+      ab.v("MicroMsg.BackgroundPlayer", "call start");
+      this.dYz.Ic();
+    }
   }
 }
 

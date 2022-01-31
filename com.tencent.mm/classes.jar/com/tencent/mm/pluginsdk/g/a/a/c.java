@@ -1,46 +1,55 @@
 package com.tencent.mm.pluginsdk.g.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.g.a.c.l;
 import com.tencent.mm.pluginsdk.g.a.c.s;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class c
   extends l
 {
-  private final boolean bHB;
-  final String bIW;
+  private final boolean coQ;
+  final String cqq;
   final long fileSize;
-  volatile boolean qZj;
-  final long rWb;
-  volatile byte[] rWy;
+  volatile boolean uOQ;
+  final long vMR;
+  volatile byte[] vNq;
   
   private c(String paramString1, int paramInt1, String paramString2, boolean paramBoolean, long paramLong1, String paramString3, int paramInt2, long paramLong2, int paramInt3, int paramInt4)
   {
-    super(paramString1, i.Wg(paramString1), String.valueOf(paramInt1), "CheckResUpdate", paramString3, "GET", paramInt2, paramInt3, paramInt4);
-    this.bIW = paramString2;
-    this.rWb = paramLong1;
-    this.bHB = paramBoolean;
+    super(paramString1, i.alH(paramString1), String.valueOf(paramInt1), "CheckResUpdate", paramString3, "GET", paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.i(79500);
+    this.cqq = paramString2;
+    this.vMR = paramLong1;
+    this.coQ = paramBoolean;
     this.fileSize = paramLong2;
+    AppMethodBeat.o(79500);
   }
   
-  static c c(s params)
+  static c d(s params)
   {
-    return new c(params.field_urlKey, bk.getInt(params.field_fileVersion, 0), params.field_md5, bk.pm(params.field_groupId2).equals("NewXml"), params.field_reportId, params.field_url, params.field_maxRetryTimes, params.field_fileSize, params.field_networkType, params.field_priority);
+    AppMethodBeat.i(79502);
+    params = new c(params.field_urlKey, bo.getInt(params.field_fileVersion, 0), params.field_md5, bo.nullAsNil(params.field_groupId2).equals("NewXml"), params.field_reportId, params.field_url, params.field_maxRetryTimes, params.field_fileSize, params.field_networkType, params.field_priority);
+    AppMethodBeat.o(79502);
+    return params;
   }
   
-  public final String acb()
+  public final String avS()
   {
     return "CheckResUpdate";
   }
   
-  public final String bjl()
-  {
-    return i.Wg(this.rVT);
-  }
-  
-  public final boolean clw()
+  public final boolean dmh()
   {
     return true;
+  }
+  
+  public final String getFilePath()
+  {
+    AppMethodBeat.i(79501);
+    String str = i.alH(this.vMK);
+    AppMethodBeat.o(79501);
+    return str;
   }
 }
 

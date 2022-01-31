@@ -1,21 +1,29 @@
 package com.tencent.mm.plugin.collect.ui;
 
-import android.content.Intent;
-import com.tencent.mm.plugin.wallet_core.ui.m.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.ui.o.a;
 
 final class CollectMainUI$16
-  implements m.a
+  implements o.a
 {
   CollectMainUI$16(CollectMainUI paramCollectMainUI) {}
   
-  public final void aEP()
+  public final void dj(View paramView)
   {
-    Intent localIntent = new Intent();
-    localIntent.setClass(this.iLP.mController.uMN, CollectCreateQRCodeUI.class);
-    localIntent.putExtra("key_currency_unit", this.iLP.iLk);
-    this.iLP.startActivityForResult(localIntent, 4096);
+    AppMethodBeat.i(41270);
+    if (CollectMainUI.b(this.kSz) == 1)
+    {
+      CollectMainUI.c(this.kSz);
+      com.tencent.mm.ui.base.h.a(this.kSz.getContext(), this.kSz.getString(2131298473), "", this.kSz.getString(2131298472), this.kSz.getString(2131296888), true, new CollectMainUI.16.1(this), new CollectMainUI.16.2(this));
+    }
+    for (;;)
+    {
+      com.tencent.mm.plugin.report.service.h.qsU.e(13944, new Object[] { Integer.valueOf(5) });
+      AppMethodBeat.o(41270);
+      return;
+      CollectMainUI.e(this.kSz);
+    }
   }
 }
 

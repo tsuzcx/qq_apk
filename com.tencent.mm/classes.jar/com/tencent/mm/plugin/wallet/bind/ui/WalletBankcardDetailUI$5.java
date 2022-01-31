@@ -2,10 +2,9 @@ package com.tencent.mm.plugin.wallet.bind.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.wallet.a.p;
-import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet.a.s;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.ui.base.h;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,16 +16,17 @@ final class WalletBankcardDetailUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    p.bTK();
-    paramMenuItem = p.bTL().bVZ();
+    AppMethodBeat.i(45745);
+    s.cRG();
+    paramMenuItem = s.cRH().cUF();
     if ((paramMenuItem != null) && (paramMenuItem.size() > 1))
     {
-      p.bTK();
-      p.bTL();
-      paramMenuItem = this.qjV.qhv.field_bindSerial;
+      s.cRG();
+      s.cRH();
     }
     paramMenuItem = new ArrayList();
-    h.a(this.qjV, null, (String[])paramMenuItem.toArray(new String[paramMenuItem.size()]), this.qjV.getString(a.i.wallet_index_ui_unbind_bankcard), false, new WalletBankcardDetailUI.5.1(this));
+    h.a(this.tSV, null, (String[])paramMenuItem.toArray(new String[paramMenuItem.size()]), this.tSV.getString(2131305127), false, new WalletBankcardDetailUI.5.1(this));
+    AppMethodBeat.o(45745);
     return true;
   }
 }

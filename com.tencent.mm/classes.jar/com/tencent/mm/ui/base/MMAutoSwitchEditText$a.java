@@ -6,29 +6,31 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class MMAutoSwitchEditText$a
   implements TextWatcher, View.OnKeyListener
 {
-  private String hnV;
-  private EditText ln;
+  private EditText mEditText;
   int mIndex = 0;
-  MMAutoSwitchEditText.c uUn;
-  MMAutoSwitchEditText.b uUo;
-  MMAutoSwitchEditText.d uUp;
-  int uUq = 4;
+  private String mText;
+  MMAutoSwitchEditText.c ziO;
+  MMAutoSwitchEditText.b ziP;
+  MMAutoSwitchEditText.d ziQ;
+  int ziR = 4;
   
   public MMAutoSwitchEditText$a(EditText paramEditText)
   {
-    this.ln = paramEditText;
+    this.mEditText = paramEditText;
   }
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    this.hnV = paramEditable.toString();
+    AppMethodBeat.i(106495);
+    this.mText = paramEditable.toString();
     paramEditable = "";
-    if (this.uUp != null) {
-      this.uUp.cAC();
+    if (this.ziQ != null) {
+      this.ziQ.dDN();
     }
     int j = 0;
     int i = 0;
@@ -36,34 +38,37 @@ public final class MMAutoSwitchEditText$a
     for (;;)
     {
       k = i;
-      if (j >= this.hnV.length()) {
+      if (j >= this.mText.length()) {
         break;
       }
       i += 1;
       k = i;
-      if (i > this.uUq) {
+      if (i > this.ziR) {
         break;
       }
-      paramEditable = paramEditable + this.hnV.charAt(j);
+      paramEditable = paramEditable + this.mText.charAt(j);
       j += 1;
     }
-    if (k > this.uUq)
+    if (k > this.ziR)
     {
-      this.ln.setText(paramEditable);
-      this.ln.setSelection(paramEditable.length());
+      this.mEditText.setText(paramEditable);
+      this.mEditText.setSelection(paramEditable.length());
     }
-    if ((k >= this.uUq) && (this.uUn != null)) {
-      this.uUn.Gn(this.mIndex);
+    if ((k >= this.ziR) && (this.ziO != null)) {
+      this.ziO.OE(this.mIndex);
     }
+    AppMethodBeat.o(106495);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
   public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 67) && (this.ln.getText().toString().trim().length() == 0) && (this.uUo != null)) {
-      this.uUo.Gm(this.mIndex);
+    AppMethodBeat.i(106496);
+    if ((paramInt == 67) && (this.mEditText.getText().toString().trim().length() == 0) && (this.ziP != null)) {
+      this.ziP.OD(this.mIndex);
     }
+    AppMethodBeat.o(106496);
     return false;
   }
   
@@ -71,7 +76,7 @@ public final class MMAutoSwitchEditText$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMAutoSwitchEditText.a
  * JD-Core Version:    0.7.0.1
  */

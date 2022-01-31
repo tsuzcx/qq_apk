@@ -1,7 +1,7 @@
 package android.support.v4.content;
 
 import android.content.Context;
-import android.support.v4.f.d;
+import android.support.v4.e.d;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
@@ -55,6 +55,7 @@ public class c<D>
     }
   }
   
+  @Deprecated
   public void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
     paramPrintWriter.print(paramString);
@@ -133,7 +134,7 @@ public class c<D>
   
   protected void onReset() {}
   
-  public void onStartLoading() {}
+  protected void onStartLoading() {}
   
   protected void onStopLoading() {}
   

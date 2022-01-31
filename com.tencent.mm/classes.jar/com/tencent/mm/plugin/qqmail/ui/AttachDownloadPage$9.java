@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
 import android.widget.Toast;
-import com.tencent.mm.plugin.qqmail.b.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.v.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vfs.e;
 import java.util.Map;
 
@@ -16,29 +16,36 @@ final class AttachDownloadPage$9
   
   public final void onError(int paramInt, String paramString)
   {
-    AttachDownloadPage.a(this.nfL, 4);
-    if (AttachDownloadPage.m(this.nfL) < 5)
+    AppMethodBeat.i(68141);
+    AttachDownloadPage.a(this.pLa, 4);
+    if (AttachDownloadPage.m(this.pLa) < 5)
     {
-      AttachDownloadPage.n(this.nfL);
-      AttachDownloadPage.f(this.nfL);
+      AttachDownloadPage.n(this.pLa);
+      AttachDownloadPage.f(this.pLa);
+      AppMethodBeat.o(68141);
       return;
     }
-    AttachDownloadPage.d(this.nfL);
+    AttachDownloadPage.d(this.pLa);
+    AppMethodBeat.o(68141);
   }
   
   public final void onProgress(int paramInt)
   {
-    y.d("MicroMsg.AttachDownloadPage", "download progress : " + paramInt);
-    AttachDownloadPage.j(this.nfL);
-    AttachDownloadPage.a(this.nfL, 1);
+    AppMethodBeat.i(68139);
+    ab.d("MicroMsg.AttachDownloadPage", "download progress : ".concat(String.valueOf(paramInt)));
+    AttachDownloadPage.j(this.pLa);
+    AttachDownloadPage.a(this.pLa, 1);
+    AppMethodBeat.o(68139);
   }
   
   public final void onSuccess(String paramString, Map<String, String> paramMap)
   {
-    e.f(AttachDownloadPage.k(this.nfL), AttachDownloadPage.l(this.nfL) + ".temp", AttachDownloadPage.l(this.nfL));
-    AttachDownloadPage.a(this.nfL, 3);
-    Toast.makeText(this.nfL, this.nfL.getString(b.j.download_success) + " : " + AttachDownloadPage.a(this.nfL), 5000).show();
-    AttachDownloadPage.d(this.nfL);
+    AppMethodBeat.i(68140);
+    e.h(AttachDownloadPage.k(this.pLa), AttachDownloadPage.l(this.pLa) + ".temp", AttachDownloadPage.l(this.pLa));
+    AttachDownloadPage.a(this.pLa, 3);
+    Toast.makeText(this.pLa, this.pLa.getString(2131299017) + " : " + AttachDownloadPage.a(this.pLa), 5000).show();
+    AttachDownloadPage.d(this.pLa);
+    AppMethodBeat.o(68140);
   }
 }
 

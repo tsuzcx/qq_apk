@@ -2,9 +2,11 @@ package com.tencent.mm.plugin.fav.a;
 
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import java.util.ArrayList;
@@ -12,37 +14,54 @@ import java.util.Iterator;
 
 public final class d
 {
-  private static d jYy = null;
-  private long endTime = -1L;
-  private boolean gDQ = false;
-  private Runnable jYA = new d.1(this);
-  public ArrayList<d.a> jYx = new ArrayList();
-  private Object jYz = new Object();
-  ah mHandler = new ah(Looper.getMainLooper())
-  {
-    public final void handleMessage(Message paramAnonymousMessage)
-    {
-      paramAnonymousMessage = d.this.jYx.iterator();
-      while (paramAnonymousMessage.hasNext())
-      {
-        d.a locala = (d.a)paramAnonymousMessage.next();
-        if (locala != null) {
-          locala.onFinish();
-        }
-      }
-      d.this.jYx.clear();
-    }
-  };
-  private long startTime = -1L;
+  private static d msS = null;
+  private long endTime;
+  private boolean icT;
+  private Object iiG;
+  ak mHandler;
+  public ArrayList<d.a> msR;
+  private Runnable msT;
+  private long startTime;
   
-  public static d aPV()
+  private d()
+  {
+    AppMethodBeat.i(102625);
+    this.icT = false;
+    this.msR = new ArrayList();
+    this.startTime = -1L;
+    this.endTime = -1L;
+    this.iiG = new Object();
+    this.msT = new d.1(this);
+    this.mHandler = new ak(Looper.getMainLooper())
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(102624);
+        paramAnonymousMessage = d.this.msR.iterator();
+        while (paramAnonymousMessage.hasNext())
+        {
+          d.a locala = (d.a)paramAnonymousMessage.next();
+          if (locala != null) {
+            locala.onFinish();
+          }
+        }
+        d.this.msR.clear();
+        AppMethodBeat.o(102624);
+      }
+    };
+    AppMethodBeat.o(102625);
+  }
+  
+  public static d bwj()
   {
     try
     {
-      if (jYy == null) {
-        jYy = new d();
+      AppMethodBeat.i(102626);
+      if (msS == null) {
+        msS = new d();
       }
-      d locald = jYy;
+      d locald = msS;
+      AppMethodBeat.o(102626);
       return locald;
     }
     finally {}
@@ -50,32 +69,37 @@ public final class d
   
   public final void a(d.a parama)
   {
-    synchronized (this.jYz)
+    AppMethodBeat.i(102627);
+    synchronized (this.iiG)
     {
-      if (((Boolean)g.DP().Dz().get(ac.a.uqz, Boolean.valueOf(false))).booleanValue())
+      if (((Boolean)g.RL().Ru().get(ac.a.yAz, Boolean.FALSE)).booleanValue())
       {
         if (parama != null) {
           parama.onFinish();
         }
+        AppMethodBeat.o(102627);
         return;
       }
       if (parama != null) {
-        this.jYx.add(parama);
+        this.msR.add(parama);
       }
-      if (this.gDQ)
+      if (this.icT)
       {
-        y.i("MicroMsg.FavCleanFirstLoader", "isLoading is true, ignore");
+        ab.i("MicroMsg.FavCleanFirstLoader", "isLoading is true, ignore");
+        AppMethodBeat.o(102627);
         return;
       }
+      this.icT = true;
+      this.startTime = System.currentTimeMillis();
+      com.tencent.mm.sdk.g.d.post(this.msT, "FavCleanFirstLoader_CalFavDataLength");
+      AppMethodBeat.o(102627);
+      return;
     }
-    this.gDQ = true;
-    this.startTime = System.currentTimeMillis();
-    com.tencent.mm.sdk.f.e.post(this.jYA, "FavCleanFirstLoader_CalFavDataLength");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.d
  * JD-Core Version:    0.7.0.1
  */

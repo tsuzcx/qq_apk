@@ -3,10 +3,11 @@ package com.tencent.mm.plugin.profile.ui;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.r;
 import com.tencent.mm.n.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 
 final class NormalUserFooterPreference$b
@@ -17,56 +18,63 @@ final class NormalUserFooterPreference$b
     super(paramNormalUserFooterPreference);
   }
   
-  protected final void bsI()
+  protected final void ccx()
   {
-    NormalUserFooterPreference.r(this.mYC).setVisibility(8);
-    if ((!a.gR(NormalUserFooterPreference.a(this.mYC).field_type)) || ((a.gR(NormalUserFooterPreference.a(this.mYC).field_type)) && (ad.hd(NormalUserFooterPreference.a(this.mYC).field_username))))
+    AppMethodBeat.i(23698);
+    NormalUserFooterPreference.r(this.pCe).setVisibility(8);
+    if ((!a.je(NormalUserFooterPreference.a(this.pCe).field_type)) || ((a.je(NormalUserFooterPreference.a(this.pCe).field_type)) && (ad.nM(NormalUserFooterPreference.a(this.pCe).field_username))))
     {
-      NormalUserFooterPreference.s(this.mYC).setVisibility(0);
-      NormalUserFooterPreference.f(this.mYC).setVisibility(8);
-      NormalUserFooterPreference.g(this.mYC).setVisibility(8);
-      NormalUserFooterPreference.h(this.mYC).setVisibility(8);
+      NormalUserFooterPreference.s(this.pCe).setVisibility(0);
+      NormalUserFooterPreference.f(this.pCe).setVisibility(8);
+      NormalUserFooterPreference.g(this.pCe).setVisibility(8);
+      NormalUserFooterPreference.h(this.pCe).setVisibility(8);
     }
     for (;;)
     {
-      NormalUserFooterPreference.t(this.mYC).setVisibility(8);
-      NormalUserFooterPreference.k(this.mYC).setVisibility(8);
-      NormalUserFooterPreference.q(this.mYC).setVisibility(8);
-      if (NormalUserFooterPreference.B(this.mYC))
+      NormalUserFooterPreference.t(this.pCe).setVisibility(8);
+      NormalUserFooterPreference.k(this.pCe).setVisibility(8);
+      NormalUserFooterPreference.q(this.pCe).setVisibility(8);
+      if (NormalUserFooterPreference.B(this.pCe))
       {
-        NormalUserFooterPreference.s(this.mYC).setVisibility(8);
-        NormalUserFooterPreference.t(this.mYC).setVisibility(0);
-        NormalUserFooterPreference.t(this.mYC).setOnClickListener(new NormalUserFooterPreference.b.1(this));
+        NormalUserFooterPreference.s(this.pCe).setVisibility(8);
+        NormalUserFooterPreference.t(this.pCe).setVisibility(0);
+        NormalUserFooterPreference.t(this.pCe).setOnClickListener(new NormalUserFooterPreference.b.1(this));
       }
-      NormalUserFooterPreference.A(this.mYC).setOnClickListener(new NormalUserFooterPreference.b.2(this));
+      NormalUserFooterPreference.A(this.pCe).setOnClickListener(new NormalUserFooterPreference.b.2(this));
+      AppMethodBeat.o(23698);
       return;
-      NormalUserFooterPreference.s(this.mYC).setVisibility(8);
-      NormalUserFooterPreference.f(this.mYC).setVisibility(0);
-      if ((this.mYC.bsF()) || (NormalUserFooterPreference.a(this.mYC).field_username.equals(q.Gj()))) {
+      NormalUserFooterPreference.s(this.pCe).setVisibility(8);
+      NormalUserFooterPreference.f(this.pCe).setVisibility(0);
+      if ((this.pCe.ccu()) || (NormalUserFooterPreference.a(this.pCe).field_username.equals(r.Zn()))) {
         break;
       }
-      NormalUserFooterPreference.h(this.mYC).setVisibility(0);
+      NormalUserFooterPreference.h(this.pCe).setVisibility(0);
     }
   }
   
-  protected final void bsK()
+  protected final void ccz()
   {
-    if (NormalUserFooterPreference.a(this.mYC) == null)
+    AppMethodBeat.i(23697);
+    if (NormalUserFooterPreference.a(this.pCe) == null)
     {
-      y.e("MicroMsg.NormalUserFooterPreference", "contact is null in NearByFriendHandler");
+      ab.e("MicroMsg.NormalUserFooterPreference", "contact is null in NearByFriendHandler");
+      AppMethodBeat.o(23697);
       return;
     }
-    if ((!a.gR(NormalUserFooterPreference.a(this.mYC).field_type)) || ((a.gR(NormalUserFooterPreference.a(this.mYC).field_type)) && (ad.hd(NormalUserFooterPreference.a(this.mYC).field_username))))
+    if ((!a.je(NormalUserFooterPreference.a(this.pCe).field_type)) || ((a.je(NormalUserFooterPreference.a(this.pCe).field_type)) && (ad.nM(NormalUserFooterPreference.a(this.pCe).field_username))))
     {
-      if (ad.hd(NormalUserFooterPreference.a(this.mYC).field_username))
+      if (ad.nM(NormalUserFooterPreference.a(this.pCe).field_username))
       {
-        B(true, true);
+        F(true, true);
+        AppMethodBeat.o(23697);
         return;
       }
-      B(false, true);
+      F(false, true);
+      AppMethodBeat.o(23697);
       return;
     }
-    bsJ();
+    ccy();
+    AppMethodBeat.o(23697);
   }
 }
 

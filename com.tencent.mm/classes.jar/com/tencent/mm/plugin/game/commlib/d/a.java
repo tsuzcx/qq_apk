@@ -1,27 +1,39 @@
 package com.tencent.mm.plugin.game.commlib.d;
 
 import android.os.HandlerThread;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.vending.h.g;
 
 public final class a
 {
-  private static volatile ai edy;
-  private static final Object hkZ = new Object();
+  private static volatile al ftB;
+  private static final Object iXt;
   
-  public static void aqp()
+  static
   {
-    if (edy == null) {
+    AppMethodBeat.i(59425);
+    iXt = new Object();
+    AppMethodBeat.o(59425);
+  }
+  
+  public static void aNR()
+  {
+    AppMethodBeat.i(59424);
+    if (ftB == null)
+    {
+      AppMethodBeat.o(59424);
       return;
     }
-    synchronized (hkZ)
+    synchronized (iXt)
     {
-      if (edy != null)
+      if (ftB != null)
       {
-        g.aeK("GameCommLib#WorkThread");
-        edy.mnU.quit();
-        edy = null;
+        g.avC("GameCommLib#WorkThread");
+        ftB.oNc.quit();
+        ftB = null;
       }
+      AppMethodBeat.o(59424);
       return;
     }
   }

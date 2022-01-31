@@ -1,27 +1,24 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.mm.plugin.wxpay.a.f;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletOrderInfoNewUI$14
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  WalletOrderInfoNewUI$14(WalletOrderInfoNewUI paramWalletOrderInfoNewUI, ImageView paramImageView) {}
+  WalletOrderInfoNewUI$14(WalletOrderInfoNewUI paramWalletOrderInfoNewUI) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ViewGroup localViewGroup = (ViewGroup)this.qEr.findViewById(a.f.root_layout);
-    ViewGroup.LayoutParams localLayoutParams = this.nBy.getLayoutParams();
-    localLayoutParams.width = localViewGroup.getWidth();
-    localLayoutParams.height = localViewGroup.getHeight();
-    this.nBy.setLayoutParams(localLayoutParams);
+    AppMethodBeat.i(142516);
+    this.ury.cVN();
+    AppMethodBeat.o(142516);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoNewUI.14
  * JD-Core Version:    0.7.0.1
  */

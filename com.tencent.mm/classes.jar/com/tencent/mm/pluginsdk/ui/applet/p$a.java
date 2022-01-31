@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 public final class p$a
 {
-  public static p sdn = null;
+  public static p vUq = null;
 }
 
 

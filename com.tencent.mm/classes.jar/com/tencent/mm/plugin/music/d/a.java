@@ -5,358 +5,560 @@ import android.os.Looper;
 import android.os.SystemClock;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.h.d.a;
-import com.google.android.exoplayer2.h.f.a;
-import com.google.android.exoplayer2.h.i;
+import com.google.android.exoplayer2.h.j;
+import com.google.android.exoplayer2.h.l;
 import com.google.android.exoplayer2.metadata.Metadata;
 import com.google.android.exoplayer2.metadata.e.a;
 import com.google.android.exoplayer2.source.b.h;
-import com.google.android.exoplayer2.source.f;
+import com.google.android.exoplayer2.source.i;
 import com.google.android.exoplayer2.v;
-import com.tencent.mm.av.c;
-import com.tencent.mm.av.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.e;
+import com.tencent.mm.g.a.ki;
 import com.tencent.mm.plugin.music.e.d;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.music.e.k;
+import com.tencent.mm.plugin.music.f.c.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.io.IOException;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public final class a
   extends com.tencent.mm.plugin.music.f.a
   implements d.a, e.a
 {
-  boolean aLc = false;
-  protected String aRC;
-  private long aRW;
-  int aRY = 0;
-  public Handler gmh = new a.1(this, Looper.myLooper());
-  boolean mxr;
-  private String mxv = "";
-  private long mxx = 0L;
-  e myB;
-  private c myC;
-  int myD = 0;
-  public v myE;
-  public com.google.android.exoplayer2.g.b myF;
-  private com.google.android.exoplayer2.h.k myG;
-  public f.a myH;
-  public f myI;
-  a.f myJ = new a.f((byte)0);
-  public a.a myK = new a.a(this, (byte)0);
-  a.e myL = new a.e(this, (byte)0);
-  d myM = new d((byte)0);
-  a.b myN = new a.c(this);
-  public boolean myO = false;
-  int startTime = 0;
+  boolean aSw;
+  private long aZw;
+  int aZy;
+  Handler bTu;
+  private String ceU;
+  boolean oXo;
+  private long oXt;
+  e oYI;
+  private com.tencent.mm.aw.c oYJ;
+  int oYK;
+  v oYL;
+  private com.google.android.exoplayer2.g.c oYM;
+  private l oYN;
+  private com.google.android.exoplayer2.h.g.a oYO;
+  private i oYP;
+  a.f oYQ;
+  a.a oYR;
+  a.e oYS;
+  d oYT;
+  a.b oYU;
+  public boolean oYV;
+  int startTime;
+  protected String userAgent;
   
   public a()
   {
-    com.tencent.mm.plugin.music.f.b.a.bnN();
+    AppMethodBeat.i(137502);
+    this.oYK = 0;
+    this.ceU = "";
+    this.aZy = 0;
+    this.startTime = 0;
+    this.oXt = 0L;
+    this.aSw = false;
+    this.oYQ = new a.f((byte)0);
+    this.oYR = new a.a(this, (byte)0);
+    this.oYS = new a.e(this, (byte)0);
+    this.oYT = new d((byte)0);
+    this.oYU = new a.c(this);
+    this.bTu = new a.1(this, Looper.myLooper());
+    this.oYV = false;
+    com.tencent.mm.plugin.music.f.b.a.bWk();
+    AppMethodBeat.o(137502);
   }
   
-  private boolean bmy()
+  private void b(e parame, int paramInt1, int paramInt2)
   {
-    if (this.myE != null) {
-      return this.myE.isLoading();
+    AppMethodBeat.i(137524);
+    if (this.paA != null) {
+      this.paA.d(parame, paramInt1, paramInt2);
     }
+    AppMethodBeat.o(137524);
+  }
+  
+  private boolean bUB()
+  {
+    AppMethodBeat.i(137510);
+    if (this.oYL != null)
+    {
+      boolean bool = this.oYL.isLoading();
+      AppMethodBeat.o(137510);
+      return bool;
+    }
+    AppMethodBeat.o(137510);
     return false;
   }
   
-  public final boolean Pu()
+  public final void a(e parame, int paramInt1, int paramInt2)
   {
-    if (this.myE == null) {
+    int i = 0;
+    AppMethodBeat.i(137519);
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "onErrorEvent with extra:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.paz = "error";
+    ki localki = new ki();
+    localki.cAc.action = 4;
+    localki.cAc.czW = parame;
+    localki.cAc.state = "error";
+    localki.cAc.duration = getDuration();
+    localki.cAc.cAe = true;
+    parame = localki.cAc;
+    ab.i("MicroMsg.Music.ExoPlayerErrorHandler", "getErrCodeType, errType: %d", new Object[] { Integer.valueOf(paramInt1) });
+    StringBuilder localStringBuilder;
+    switch (paramInt1)
+    {
+    default: 
+      paramInt1 = i;
+      parame.errCode = paramInt1;
+      parame = localki.cAc;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("errCode:" + paramInt2 + ", err:");
+      switch (paramInt2)
+      {
+      }
+      break;
+    }
+    for (;;)
+    {
+      parame.errMsg = localStringBuilder.toString();
+      com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
+      AppMethodBeat.o(137519);
+      return;
+      paramInt1 = 10002;
+      break;
+      paramInt1 = 10004;
+      break;
+      paramInt1 = 10001;
+      break;
+      paramInt1 = -1;
+      break;
+      localStringBuilder.append(" no network");
+      continue;
+      localStringBuilder.append("connect fail");
+      continue;
+      localStringBuilder.append(" network respCode 403");
+      continue;
+      localStringBuilder.append(" network respCode 404");
+      continue;
+      localStringBuilder.append(" network respCode 500");
+      continue;
+      localStringBuilder.append(" network respCode 502");
+      continue;
+      localStringBuilder.append(" network error");
+      continue;
+      localStringBuilder.append("UnrecognizedInputFormatException");
+      continue;
+      localStringBuilder.append("illegal state exception");
+      continue;
+      localStringBuilder.append("MediaCodec decoder init exception");
+      continue;
+      localStringBuilder.append("load error");
+      continue;
+      localStringBuilder.append("prepare error");
+      continue;
+      localStringBuilder.append("stop error");
+      continue;
+      localStringBuilder.append("error url format");
+      continue;
+      localStringBuilder.append("unknow exception");
+    }
+  }
+  
+  public final boolean aiw()
+  {
+    AppMethodBeat.i(137509);
+    if (this.oYL == null)
+    {
+      AppMethodBeat.o(137509);
       return false;
     }
-    switch (this.myE.kD())
+    switch (this.oYL.mJ())
     {
     case 2: 
     default: 
+      AppMethodBeat.o(137509);
       return false;
     }
-    return this.myE.kE();
+    boolean bool = this.oYL.mK();
+    AppMethodBeat.o(137509);
+    return bool;
   }
   
-  public final boolean Pv()
+  public final boolean aix()
   {
-    return (this.mxr) && (!bmy());
+    return (this.oXo) && (this.oYV);
   }
   
-  public final void a(Metadata paramMetadata)
+  public final boolean aiy()
   {
-    y.i("MicroMsg.Music.ExoMusicPlayer", "onMetadata [");
+    AppMethodBeat.i(137511);
+    if ((this.oXo) && (!bUB()))
+    {
+      AppMethodBeat.o(137511);
+      return true;
+    }
+    AppMethodBeat.o(137511);
+    return false;
+  }
+  
+  public final void b(Metadata paramMetadata)
+  {
+    AppMethodBeat.i(137522);
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "onMetadata [");
     com.tencent.mm.plugin.music.f.b.a.a(paramMetadata, "  ");
-    y.i("MicroMsg.Music.ExoMusicPlayer", "]");
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "]");
+    AppMethodBeat.o(137522);
   }
   
-  final void a(e parame, int paramInt1, int paramInt2)
+  public final void bUA()
   {
-    if (this.mAu != null) {
-      this.mAu.c(parame, paramInt1, paramInt2);
-    }
+    AppMethodBeat.i(137507);
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "pauseAndAbandonFocus");
+    pause();
+    k.bVJ().bUj();
+    AppMethodBeat.o(137507);
   }
   
-  public final int bmA()
+  public final int bUH()
   {
-    if (this.myE != null) {
-      return (int)this.myE.getCurrentPosition();
+    AppMethodBeat.i(137513);
+    if (this.oYL != null)
+    {
+      int i = (int)this.oYL.getCurrentPosition();
+      AppMethodBeat.o(137513);
+      return i;
     }
+    AppMethodBeat.o(137513);
     return 0;
   }
   
-  protected final void bmO()
+  public final void bUm()
   {
-    this.mAu = ((d)com.tencent.mm.plugin.music.f.c.b.Q(d.class));
-    this.mAv = com.tencent.mm.plugin.music.e.k.bnl().myY;
-  }
-  
-  final String bmP()
-  {
-    return com.tencent.mm.plugin.music.f.b.a.fm(SystemClock.elapsedRealtime() - this.aRW);
-  }
-  
-  public final void bmi()
-  {
-    this.myO = true;
-    y.i("MicroMsg.Music.ExoMusicPlayer", "passivePause");
-    if (this.myE != null)
+    AppMethodBeat.i(137506);
+    this.oYV = true;
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "passivePause");
+    if (this.oYL != null)
     {
-      this.myD = 2;
-      this.myE.at(false);
+      this.oYK = 2;
+      this.oYL.aC(false);
     }
+    AppMethodBeat.o(137506);
   }
   
-  public final boolean bmj()
-  {
-    return (this.mxr) && (this.myO);
-  }
-  
-  public final boolean bmk()
+  public final boolean bUn()
   {
     return true;
   }
   
-  public final c bml()
+  public final com.tencent.mm.aw.c bUo()
   {
     int m = 0;
     int k = 0;
+    AppMethodBeat.i(137517);
     int n = getDuration();
-    int i1 = bmA();
-    boolean bool = Pu();
+    int i1 = bUH();
+    boolean bool = aiw();
     int j = getDownloadPercent();
     int i = j;
     if (j < 0) {
       i = 0;
     }
     j = n;
-    if ((this.myI instanceof h))
+    if ((this.oYP instanceof h))
     {
       j = n;
-      if (!this.aLc) {
+      if (!this.aSw) {
         j = 0;
       }
     }
-    if (this.myC != null)
+    com.tencent.mm.aw.c localc;
+    if (this.oYJ != null)
     {
-      c localc = this.myC;
+      localc = this.oYJ;
       if (bool) {
         k = 1;
       }
-      localc.l(j, i1, k, i);
+      localc.t(j, i1, k, i);
     }
     for (;;)
     {
-      this.myC.bSC = true;
-      this.myC.euu = this.mAt;
-      return this.myC;
+      this.oYJ.cAe = true;
+      this.oYJ.fKg = bWa();
+      localc = this.oYJ;
+      AppMethodBeat.o(137517);
+      return localc;
       k = m;
       if (bool) {
         k = 1;
       }
-      this.myC = new c(j, i1, k, i);
+      this.oYJ = new com.tencent.mm.aw.c(j, i1, k, i);
     }
   }
   
-  public final void bmw()
+  public final void bVk()
   {
-    y.i("MicroMsg.Music.ExoMusicPlayer", "pauseAndAbandonFocus");
-    pause();
-    com.tencent.mm.plugin.music.e.k.bnn().bmh();
+    AppMethodBeat.i(137504);
+    this.paA = ((d)b.am(d.class));
+    this.paB = k.bVH().oZe;
+    AppMethodBeat.o(137504);
   }
   
-  final void jdMethod_do(int paramInt1, int paramInt2)
+  final String bVl()
   {
-    y.i("MicroMsg.Music.ExoMusicPlayer", "notifyOnError what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.myN != null) {
-      this.myN.dq(paramInt1, paramInt2);
-    }
+    AppMethodBeat.i(137523);
+    String str = com.tencent.mm.plugin.music.f.b.a.kK(SystemClock.elapsedRealtime() - this.aZw);
+    AppMethodBeat.o(137523);
+    return str;
   }
   
-  final void dp(int paramInt1, int paramInt2)
+  final void eO(int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.Music.ExoMusicPlayer", "notifyOnInfo [" + paramInt1 + "," + paramInt2 + "]");
-    if ((this.myN != null) && ((paramInt1 == 701) || (paramInt1 == 702))) {
-      this.myN.uI(paramInt2);
+    AppMethodBeat.i(137520);
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "notifyOnError what:%d, extra:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.oYU != null) {
+      this.oYU.eQ(paramInt1, paramInt2);
     }
+    AppMethodBeat.o(137520);
+  }
+  
+  final void eP(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(137521);
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "notifyOnInfo [" + paramInt1 + "," + paramInt2 + "]");
+    if ((this.oYU != null) && ((paramInt1 == 701) || (paramInt1 == 702))) {
+      this.oYU.Ae(paramInt2);
+    }
+    AppMethodBeat.o(137521);
   }
   
   public final void f(e parame)
   {
+    AppMethodBeat.i(137503);
     super.f(parame);
     long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.mxx;
-    if ((this.myB != null) && (this.myB.e(parame)) && (l2 <= 1000L))
+    long l2 = l1 - this.oXt;
+    if ((this.oYI != null) && (this.oYI.e(parame)) && (l2 <= 1000L))
     {
-      this.myB = parame;
-      y.e("MicroMsg.Music.ExoMusicPlayer", "startPlay, is playing for music src:%s, don't play again in 3 second, interval:%d", new Object[] { this.mxv, Long.valueOf(l2) });
+      this.oYI = parame;
+      ab.e("MicroMsg.Music.ExoMusicPlayer", "startPlay, is playing for music src:%s, don't play again in 3 second, interval:%d", new Object[] { this.ceU, Long.valueOf(l2) });
+      AppMethodBeat.o(137503);
       return;
     }
     if (parame == null)
     {
-      y.e("MicroMsg.Music.ExoMusicPlayer", "music is null");
+      ab.e("MicroMsg.Music.ExoMusicPlayer", "music is null");
+      AppMethodBeat.o(137503);
       return;
     }
-    if (this.mAu != null) {
-      this.mAu.s(parame);
+    if (this.paA != null) {
+      this.paA.s(parame);
     }
-    this.mxx = l1;
-    y.i("MicroMsg.Music.ExoMusicPlayer", "startPlay, currentTime:%d, startTime:%d", new Object[] { Long.valueOf(l1), Integer.valueOf(parame.startTime) });
-    if ((this.myE != null) && (Pu())) {
-      this.myE.stop();
+    this.oXt = l1;
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "startPlay, currentTime:%d, startTime:%d", new Object[] { Long.valueOf(l1), Integer.valueOf(parame.startTime) });
+    if ((this.oYL != null) && (aiw())) {
+      this.oYL.stop();
     }
-    this.aRY = 0;
+    this.aZy = 0;
     this.startTime = parame.startTime;
-    this.aRW = SystemClock.elapsedRealtime();
-    this.myB = parame;
-    y(this.myB);
-    y.i("MicroMsg.Music.ExoMusicPlayer", "startPlay startTime:%d", new Object[] { Integer.valueOf(this.startTime) });
-    ai.d(new a.2(this));
+    this.aZw = SystemClock.elapsedRealtime();
+    this.oYI = parame;
+    y(this.oYI);
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "startPlay startTime:%d", new Object[] { Integer.valueOf(this.startTime) });
+    al.d(new a.2(this));
+    AppMethodBeat.o(137503);
   }
   
   public final int getDownloadPercent()
   {
-    if (this.myE != null) {
-      return this.myE.getBufferedPercentage();
+    AppMethodBeat.i(137515);
+    if (this.oYL != null)
+    {
+      int i = this.oYL.getBufferedPercentage();
+      AppMethodBeat.o(137515);
+      return i;
     }
+    AppMethodBeat.o(137515);
     return 0;
   }
   
   public final int getDuration()
   {
-    if (this.myE != null) {
-      return (int)this.myE.getDuration();
+    AppMethodBeat.i(137514);
+    if (this.oYL != null)
+    {
+      int i = (int)this.oYL.getDuration();
+      AppMethodBeat.o(137514);
+      return i;
     }
+    AppMethodBeat.o(137514);
     return 0;
   }
   
-  public final boolean iV(int paramInt)
+  public final boolean lN(int paramInt)
   {
-    boolean bool1 = true;
-    boolean bool2 = false;
+    boolean bool = false;
+    AppMethodBeat.i(137516);
     int i = getDuration();
-    y.i("MicroMsg.Music.ExoMusicPlayer", "seekToMusic pos:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "seekToMusic pos:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
     if ((i < 0) || (paramInt > i))
     {
-      y.e("MicroMsg.Music.ExoMusicPlayer", "position is invalid, position:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      bool1 = false;
+      ab.e("MicroMsg.Music.ExoMusicPlayer", "position is invalid, position:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      AppMethodBeat.o(137516);
+      return false;
     }
-    while (this.myE == null) {
-      return bool1;
+    if (this.oYL != null)
+    {
+      F(this.oYI);
+      a.f localf = this.oYQ;
+      if ((this.oYQ.bIR[3] & 0xF0000000) != 0) {
+        bool = true;
+      }
+      localf.d(bool, 100);
+      this.oYK = 4;
+      this.oYL.seekTo(paramInt);
     }
-    F(this.myB);
-    a.f localf = this.myJ;
-    bool1 = bool2;
-    if ((this.myJ.myQ[3] & 0xF0000000) != 0) {
-      bool1 = true;
-    }
-    localf.s(bool1, 100);
-    this.myD = 4;
-    this.myE.seekTo(paramInt);
+    AppMethodBeat.o(137516);
     return true;
   }
   
   public final void pause()
   {
-    this.myO = false;
-    y.i("MicroMsg.Music.ExoMusicPlayer", "pause");
-    if (this.myE != null)
+    AppMethodBeat.i(137505);
+    this.oYV = false;
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "pause");
+    if (this.oYL != null)
     {
-      this.myD = 2;
-      this.myE.at(false);
+      this.oYK = 2;
+      this.oYL.aC(false);
     }
+    AppMethodBeat.o(137505);
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(137518);
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "release");
+    this.bTu.removeMessages(100);
+    bUl();
+    if (this.oYL != null)
+    {
+      this.oYL.b(this.oYR);
+      this.oYL.axr.remove(this);
+      this.oYL.release();
+      this.oYL = null;
+    }
+    if (this.oYP != null)
+    {
+      this.oYP.oZ();
+      this.oYP = null;
+    }
+    this.oYM = null;
+    this.oYO = null;
+    AppMethodBeat.o(137518);
   }
   
   public final void resume()
   {
-    this.aRY = 0;
-    y.i("MicroMsg.Music.ExoMusicPlayer", "resume, isPreparing:%b, isPlayingMusic:%b", new Object[] { Boolean.valueOf(bmy()), Boolean.valueOf(Pu()) });
-    if (this.myE != null)
+    AppMethodBeat.i(137508);
+    this.aZy = 0;
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "resume, isPreparing:%b, isPlayingMusic:%b", new Object[] { Boolean.valueOf(bUB()), Boolean.valueOf(aiw()) });
+    if (this.oYL != null)
     {
-      if (!com.tencent.mm.plugin.music.e.k.bnn().requestFocus()) {
-        break label80;
+      if (!k.bVJ().requestFocus()) {
+        break label92;
       }
-      this.myD = 1;
-      this.myE.at(true);
-      B(this.myB);
+      this.oYK = 1;
+      this.oYL.aC(true);
+      B(this.oYI);
     }
     for (;;)
     {
-      this.mxr = true;
+      this.oXo = true;
+      AppMethodBeat.o(137508);
       return;
-      label80:
-      y.e("MicroMsg.Music.ExoMusicPlayer", "request focus error");
+      label92:
+      ab.e("MicroMsg.Music.ExoMusicPlayer", "request focus error");
     }
   }
   
   public final void stopPlay()
   {
-    y.i("MicroMsg.Music.ExoMusicPlayer", "stopPlay");
+    AppMethodBeat.i(137512);
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "stopPlay");
     try
     {
-      if (this.myE != null)
+      if (this.oYL != null)
       {
-        this.myD = 3;
-        this.myE.at(false);
-        this.myE.stop();
-        D(this.myB);
+        this.oYK = 3;
+        this.oYL.aC(false);
+        this.oYL.stop();
+        D(this.oYI);
       }
-      com.tencent.mm.plugin.music.e.k.bnn().bmh();
-      this.mxr = false;
-      this.myO = false;
-      this.gmh.removeMessages(100);
+      k.bVJ().bUj();
+      this.oXo = false;
+      this.oYV = false;
+      this.bTu.removeMessages(100);
+      AppMethodBeat.o(137512);
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.Music.ExoMusicPlayer", localException, "stopPlay", new Object[0]);
-        d(this.myB, 504);
-        a(this.myB, -4005, -42);
+        ab.printErrStackTrace("MicroMsg.Music.ExoMusicPlayer", localException, "stopPlay", new Object[0]);
+        d(this.oYI, 504);
+        b(this.oYI, -4005, -42);
       }
     }
   }
   
-  private final class d
-    implements com.google.android.exoplayer2.source.a
+  final class d
+    implements com.google.android.exoplayer2.source.a, com.google.android.exoplayer2.source.g.a
   {
     private d() {}
     
-    public final void a(i parami, Format paramFormat, IOException paramIOException)
+    public final void a(j paramj, Format paramFormat, IOException paramIOException)
     {
+      AppMethodBeat.i(137490);
       a.a(a.this, "loadError", paramIOException);
-      if ((parami != null) && (paramFormat != null)) {
-        y.e("MicroMsg.Music.ExoMusicPlayer", "uri:%s, Format:%s", new Object[] { parami.uri, paramFormat.toString() });
+      if ((paramj != null) && (paramFormat != null)) {
+        ab.e("MicroMsg.Music.ExoMusicPlayer", "uri:%s, Format:%s", new Object[] { paramj.uri, paramFormat.toString() });
       }
-      a.this.jdMethod_do(-4004, -40);
+      a.b(a.this);
+      AppMethodBeat.o(137490);
     }
     
-    public final void mv()
+    public final void oM() {}
+    
+    public final void oN()
     {
-      y.i("MicroMsg.Music.ExoMusicPlayer", "onLoadCompleted");
+      AppMethodBeat.i(137491);
+      ab.i("MicroMsg.Music.ExoMusicPlayer", "onLoadCompleted");
+      AppMethodBeat.o(137491);
     }
     
-    public final void mw()
+    public final void oO() {}
+    
+    public final void oP() {}
+    
+    public final void oQ()
     {
-      y.i("MicroMsg.Music.ExoMusicPlayer", "onHasEndTag");
-      a.this.aLc = true;
+      AppMethodBeat.i(137493);
+      ab.i("MicroMsg.Music.ExoMusicPlayer", "onHasEndTag");
+      a.this.aSw = true;
+      AppMethodBeat.o(137493);
+    }
+    
+    public final void onLoadError(IOException paramIOException)
+    {
+      AppMethodBeat.i(137492);
+      a.a(a.this, "loadError", paramIOException);
+      ab.printErrStackTrace("MicroMsg.Music.ExoMusicPlayer", paramIOException, "onLoadError", new Object[0]);
+      a.b(a.this);
+      AppMethodBeat.o(137492);
     }
   }
 }

@@ -3,6 +3,7 @@ package com.tencent.mm.booter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelstat.c;
 
 public class ClickFlowReceiver
@@ -10,7 +11,9 @@ public class ClickFlowReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    c.Rn().j(paramIntent);
+    AppMethodBeat.i(15838);
+    c.akw().x(paramIntent);
+    AppMethodBeat.o(15838);
   }
 }
 

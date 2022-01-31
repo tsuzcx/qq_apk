@@ -5,12 +5,12 @@ public final class c$hh
 {
   public c$hh()
   {
-    super("secureTunnel", "", 329, false);
+    super("realtimeReport", "realtimeReport", 171, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.c.hh
  * JD-Core Version:    0.7.0.1
  */

@@ -2,437 +2,493 @@ package com.google.android.gms.ads.identifier;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.os.Bundle;
+import android.os.RemoteException;
+import android.os.SystemClock;
+import com.google.android.gms.common.BlockingServiceConnection;
+import com.google.android.gms.common.GoogleApiAvailabilityLight;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.internal.zzac;
-import com.google.android.gms.common.zze;
-import com.google.android.gms.common.zzg;
-import com.google.android.gms.internal.zzcq;
-import com.google.android.gms.internal.zzcq.zza;
+import com.google.android.gms.common.annotation.KeepForSdk;
+import com.google.android.gms.common.internal.Preconditions;
+import com.google.android.gms.common.stats.ConnectionTracker;
+import com.google.android.gms.common.util.VisibleForTesting;
+import com.google.android.gms.internal.ads_identifier.zze;
+import com.google.android.gms.internal.ads_identifier.zzf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.concurrent.GuardedBy;
 
+@ParametersAreNonnullByDefault
+@KeepForSdk
 public class AdvertisingIdClient
 {
+  @GuardedBy("this")
   private final Context mContext;
-  com.google.android.gms.common.zza zzsa;
-  zzcq zzsb;
-  boolean zzsc;
-  Object zzsd = new Object();
-  AdvertisingIdClient.zza zzse;
-  final long zzsf;
+  @GuardedBy("this")
+  private BlockingServiceConnection zze;
+  @GuardedBy("this")
+  private zze zzf;
+  @GuardedBy("this")
+  private boolean zzg;
+  private final Object zzh;
+  @GuardedBy("mAutoDisconnectTaskLock")
+  private AdvertisingIdClient.zza zzi;
+  private final boolean zzj;
+  private final long zzk;
   
+  @KeepForSdk
   public AdvertisingIdClient(Context paramContext)
   {
-    this(paramContext, 30000L, false);
+    this(paramContext, 30000L, false, false);
   }
   
-  public AdvertisingIdClient(Context paramContext, long paramLong, boolean paramBoolean)
+  @VisibleForTesting
+  private AdvertisingIdClient(Context paramContext, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    zzac.zzw(paramContext);
+    AppMethodBeat.i(115326);
+    this.zzh = new Object();
+    Preconditions.checkNotNull(paramContext);
     Context localContext;
-    if (paramBoolean)
+    if (paramBoolean1)
     {
       localContext = paramContext.getApplicationContext();
       if (localContext != null) {}
     }
     for (this.mContext = paramContext;; this.mContext = paramContext)
     {
-      this.zzsc = false;
-      this.zzsf = paramLong;
+      this.zzg = false;
+      this.zzk = paramLong;
+      this.zzj = paramBoolean2;
+      AppMethodBeat.o(115326);
       return;
       paramContext = localContext;
       break;
     }
   }
   
+  @KeepForSdk
   public static AdvertisingIdClient.Info getAdvertisingIdInfo(Context paramContext)
   {
-    f2 = 0.0F;
-    boolean bool2 = false;
-    boolean bool3 = false;
-    boolean bool1 = bool2;
+    AppMethodBeat.i(115335);
+    Object localObject2 = new zzb(paramContext);
+    boolean bool = ((zzb)localObject2).getBoolean("gads:ad_id_app_context:enabled", false);
+    float f = ((zzb)localObject2).getFloat("gads:ad_id_app_context:ping_ratio", 0.0F);
+    String str = ((zzb)localObject2).getString("gads:ad_id_use_shared_preference:experiment_id", "");
+    paramContext = new AdvertisingIdClient(paramContext, -1L, bool, ((zzb)localObject2).getBoolean("gads:ad_id_use_persistent_service:enabled", false));
     try
     {
-      localObject1 = zzg.getRemoteContext(paramContext);
-      f1 = f2;
-      bool1 = bool3;
-      if (localObject1 != null)
-      {
-        bool1 = bool2;
-        localObject1 = ((Context)localObject1).getSharedPreferences("google_ads_flags", 1);
-        bool1 = bool2;
-        bool2 = ((SharedPreferences)localObject1).getBoolean("gads:ad_id_app_context:enabled", false);
-        bool1 = bool2;
-        f1 = ((SharedPreferences)localObject1).getFloat("gads:ad_id_app_context:ping_ratio", 0.0F);
-        bool1 = bool2;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject1;
-        float f1 = f2;
-      }
-    }
-    paramContext = new AdvertisingIdClient(paramContext, -1L, bool1);
-    try
-    {
-      paramContext.zze(false);
-      localObject1 = paramContext.getInfo();
-      paramContext.zza((AdvertisingIdClient.Info)localObject1, bool1, f1, null);
-      return localObject1;
+      long l = SystemClock.elapsedRealtime();
+      paramContext.zza(false);
+      localObject2 = paramContext.getInfo();
+      paramContext.zza((AdvertisingIdClient.Info)localObject2, bool, f, SystemClock.elapsedRealtime() - l, str, null);
+      return localObject2;
     }
     catch (Throwable localThrowable)
     {
-      paramContext.zza(null, bool1, f1, localThrowable);
-      return null;
+      paramContext.zza(null, bool, f, -1L, str, localThrowable);
+      AppMethodBeat.o(115335);
+      throw localThrowable;
     }
     finally
     {
       paramContext.finish();
+      AppMethodBeat.o(115335);
     }
   }
   
+  @KeepForSdk
+  public static boolean getIsAdIdFakeForDebugLogging(Context paramContext)
+  {
+    AppMethodBeat.i(115336);
+    zzb localzzb = new zzb(paramContext);
+    paramContext = new AdvertisingIdClient(paramContext, -1L, localzzb.getBoolean("gads:ad_id_app_context:enabled", false), localzzb.getBoolean("com.google.android.gms.ads.identifier.service.PERSISTENT_START", false));
+    try
+    {
+      paramContext.zza(false);
+      boolean bool = paramContext.zzb();
+      return bool;
+    }
+    finally
+    {
+      paramContext.finish();
+      AppMethodBeat.o(115336);
+    }
+  }
+  
+  @KeepForSdk
   public static void setShouldSkipGmsCoreVersionCheck(boolean paramBoolean) {}
   
-  static zzcq zza(Context paramContext, com.google.android.gms.common.zza paramzza)
+  private static BlockingServiceConnection zza(Context paramContext, boolean paramBoolean)
   {
-    try
-    {
-      paramContext = zzcq.zza.zzf(paramzza.zza(10000L, TimeUnit.MILLISECONDS));
-      return paramContext;
-    }
-    catch (InterruptedException paramContext)
-    {
-      throw new IOException("Interrupted exception");
-    }
-    catch (Throwable paramContext)
-    {
-      throw new IOException(paramContext);
-    }
-  }
-  
-  private void zza(AdvertisingIdClient.Info paramInfo, boolean paramBoolean, float paramFloat, Throwable paramThrowable)
-  {
-    if (Math.random() > paramFloat) {
-      return;
-    }
-    new AdvertisingIdClient.1(this, zza(paramInfo, paramBoolean, paramThrowable).toString()).start();
-  }
-  
-  private void zzbw()
-  {
-    synchronized (this.zzsd)
-    {
-      if (this.zzse != null) {
-        this.zzse.cancel();
-      }
-    }
-    try
-    {
-      this.zzse.join();
-      label28:
-      if (this.zzsf > 0L) {
-        this.zzse = new AdvertisingIdClient.zza(this, this.zzsf);
-      }
-      return;
-      localObject2 = finally;
-      throw localObject2;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label28;
-    }
-  }
-  
-  static com.google.android.gms.common.zza zzf(Context paramContext)
-  {
+    AppMethodBeat.i(115334);
     try
     {
       paramContext.getPackageManager().getPackageInfo("com.android.vending", 0);
-      switch (zze.zzuY().isGooglePlayServicesAvailable(paramContext))
+      switch (GoogleApiAvailabilityLight.getInstance().isGooglePlayServicesAvailable(paramContext, 12451000))
       {
       case 1: 
       default: 
-        throw new IOException("Google Play services not available");
+        paramContext = new IOException("Google Play services not available");
+        AppMethodBeat.o(115334);
+        throw paramContext;
       }
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      throw new GooglePlayServicesNotAvailableException(9);
+      paramContext = new GooglePlayServicesNotAvailableException(9);
+      AppMethodBeat.o(115334);
+      throw paramContext;
     }
-    com.google.android.gms.common.zza localzza = new com.google.android.gms.common.zza();
-    Intent localIntent = new Intent("com.google.android.gms.ads.identifier.service.START");
-    localIntent.setPackage("com.google.android.gms");
+    if (paramBoolean) {}
+    for (Object localObject = "com.google.android.gms.ads.identifier.service.PERSISTENT_START";; localObject = "com.google.android.gms.ads.identifier.service.START")
+    {
+      BlockingServiceConnection localBlockingServiceConnection = new BlockingServiceConnection();
+      localObject = new Intent((String)localObject);
+      ((Intent)localObject).setPackage("com.google.android.gms");
+      try
+      {
+        paramBoolean = ConnectionTracker.getInstance().bindService(paramContext, (Intent)localObject, localBlockingServiceConnection, 1);
+        if (!paramBoolean) {
+          break;
+        }
+        AppMethodBeat.o(115334);
+        return localBlockingServiceConnection;
+      }
+      catch (Throwable paramContext)
+      {
+        paramContext = new IOException(paramContext);
+        AppMethodBeat.o(115334);
+        throw paramContext;
+      }
+    }
+    paramContext = new IOException("Connection failure");
+    AppMethodBeat.o(115334);
+    throw paramContext;
+  }
+  
+  @VisibleForTesting
+  private static zze zza(Context paramContext, BlockingServiceConnection paramBlockingServiceConnection)
+  {
+    AppMethodBeat.i(115338);
     try
     {
-      boolean bool = com.google.android.gms.common.stats.zza.zzyJ().zza(paramContext, localIntent, localzza, 1);
-      if (bool) {
-        return localzza;
-      }
+      paramContext = zzf.zza(paramBlockingServiceConnection.getServiceWithTimeout(10000L, TimeUnit.MILLISECONDS));
+      AppMethodBeat.o(115338);
+      return paramContext;
+    }
+    catch (InterruptedException paramContext)
+    {
+      paramContext = new IOException("Interrupted exception");
+      AppMethodBeat.o(115338);
+      throw paramContext;
     }
     catch (Throwable paramContext)
     {
-      throw new IOException(paramContext);
+      paramContext = new IOException(paramContext);
+      AppMethodBeat.o(115338);
+      throw paramContext;
     }
-    throw new IOException("Connection failure");
+  }
+  
+  private final void zza()
+  {
+    AppMethodBeat.i(115329);
+    synchronized (this.zzh)
+    {
+      if (this.zzi != null) {
+        this.zzi.zzo.countDown();
+      }
+    }
+    try
+    {
+      this.zzi.join();
+      label36:
+      if (this.zzk > 0L) {
+        this.zzi = new AdvertisingIdClient.zza(this, this.zzk);
+      }
+      AppMethodBeat.o(115329);
+      return;
+      localObject2 = finally;
+      AppMethodBeat.o(115329);
+      throw localObject2;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      break label36;
+    }
+  }
+  
+  @VisibleForTesting
+  private final void zza(boolean paramBoolean)
+  {
+    AppMethodBeat.i(115328);
+    Preconditions.checkNotMainThread("Calling this from your main thread can lead to deadlock");
+    try
+    {
+      if (this.zzg) {
+        finish();
+      }
+      this.zze = zza(this.mContext, this.zzj);
+      this.zzf = zza(this.mContext, this.zze);
+      this.zzg = true;
+      if (paramBoolean) {
+        zza();
+      }
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(115328);
+    }
+  }
+  
+  @VisibleForTesting
+  private final boolean zza(AdvertisingIdClient.Info paramInfo, boolean paramBoolean, float paramFloat, long paramLong, String paramString, Throwable paramThrowable)
+  {
+    AppMethodBeat.i(115337);
+    if (Math.random() > paramFloat)
+    {
+      AppMethodBeat.o(115337);
+      return false;
+    }
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean)
+    {
+      str = "1";
+      localHashMap.put("app_context", str);
+      if (paramInfo != null) {
+        if (!paramInfo.isLimitAdTrackingEnabled()) {
+          break label224;
+        }
+      }
+    }
+    label224:
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("limit_ad_tracking", str);
+      if ((paramInfo != null) && (paramInfo.getId() != null)) {
+        localHashMap.put("ad_id_size", Integer.toString(paramInfo.getId().length()));
+      }
+      if (paramThrowable != null) {
+        localHashMap.put("error", paramThrowable.getClass().getName());
+      }
+      if ((paramString != null) && (!paramString.isEmpty())) {
+        localHashMap.put("experiment_id", paramString);
+      }
+      localHashMap.put("tag", "AdvertisingIdClient");
+      localHashMap.put("time_spent", Long.toString(paramLong));
+      new zza(this, localHashMap).start();
+      AppMethodBeat.o(115337);
+      return true;
+      str = "0";
+      break;
+    }
+  }
+  
+  private final boolean zzb()
+  {
+    AppMethodBeat.i(115331);
+    Preconditions.checkNotMainThread("Calling this from your main thread can lead to deadlock");
+    try
+    {
+      if (this.zzg) {
+        break label139;
+      }
+      synchronized (this.zzh)
+      {
+        if ((this.zzi == null) || (!this.zzi.zzp))
+        {
+          IOException localIOException4 = new IOException("AdvertisingIdClient is not connected.");
+          AppMethodBeat.o(115331);
+          throw localIOException4;
+        }
+      }
+    }
+    finally
+    {
+      AppMethodBeat.o(115331);
+    }
+    try
+    {
+      zza(false);
+      if (!this.zzg)
+      {
+        IOException localIOException1 = new IOException("AdvertisingIdClient cannot reconnect.");
+        AppMethodBeat.o(115331);
+        throw localIOException1;
+      }
+    }
+    catch (Exception localException)
+    {
+      IOException localIOException2 = new IOException("AdvertisingIdClient cannot reconnect.", localException);
+      AppMethodBeat.o(115331);
+      throw localIOException2;
+    }
+    label139:
+    Preconditions.checkNotNull(this.zze);
+    Preconditions.checkNotNull(this.zzf);
+    try
+    {
+      boolean bool = this.zzf.zzc();
+      zza();
+      AppMethodBeat.o(115331);
+      return bool;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      IOException localIOException3 = new IOException("Remote exception");
+      AppMethodBeat.o(115331);
+      throw localIOException3;
+    }
   }
   
   protected void finalize()
   {
+    AppMethodBeat.i(115333);
     finish();
     super.finalize();
+    AppMethodBeat.o(115333);
   }
   
   /* Error */
-  public void finish()
+  public final void finish()
   {
     // Byte code:
-    //   0: ldc 232
-    //   2: invokestatic 235	com/google/android/gms/common/internal/zzac:zzdk	(Ljava/lang/String;)V
-    //   5: aload_0
-    //   6: monitorenter
-    //   7: aload_0
-    //   8: getfield 49	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
-    //   11: ifnull +10 -> 21
-    //   14: aload_0
-    //   15: getfield 237	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsa	Lcom/google/android/gms/common/zza;
-    //   18: ifnonnull +6 -> 24
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: return
-    //   24: aload_0
-    //   25: getfield 51	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsc	Z
-    //   28: ifeq +17 -> 45
-    //   31: invokestatic 220	com/google/android/gms/common/stats/zza:zzyJ	()Lcom/google/android/gms/common/stats/zza;
-    //   34: aload_0
-    //   35: getfield 49	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
-    //   38: aload_0
-    //   39: getfield 237	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsa	Lcom/google/android/gms/common/zza;
-    //   42: invokevirtual 240	com/google/android/gms/common/stats/zza:zza	(Landroid/content/Context;Landroid/content/ServiceConnection;)V
-    //   45: aload_0
-    //   46: iconst_0
-    //   47: putfield 51	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsc	Z
+    //   0: ldc_w 367
+    //   3: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 247
+    //   8: invokestatic 250	com/google/android/gms/common/internal/Preconditions:checkNotMainThread	(Ljava/lang/String;)V
+    //   11: aload_0
+    //   12: monitorenter
+    //   13: aload_0
+    //   14: getfield 65	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
+    //   17: ifnull +10 -> 27
+    //   20: aload_0
+    //   21: getfield 254	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
+    //   24: ifnonnull +12 -> 36
+    //   27: aload_0
+    //   28: monitorexit
+    //   29: ldc_w 367
+    //   32: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   35: return
+    //   36: aload_0
+    //   37: getfield 67	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzg	Z
+    //   40: ifeq +17 -> 57
+    //   43: invokestatic 192	com/google/android/gms/common/stats/ConnectionTracker:getInstance	()Lcom/google/android/gms/common/stats/ConnectionTracker;
+    //   46: aload_0
+    //   47: getfield 65	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
     //   50: aload_0
-    //   51: aconst_null
-    //   52: putfield 242	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsb	Lcom/google/android/gms/internal/zzcq;
-    //   55: aload_0
-    //   56: aconst_null
-    //   57: putfield 237	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsa	Lcom/google/android/gms/common/zza;
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: return
-    //   63: astore_1
-    //   64: aload_0
-    //   65: monitorexit
-    //   66: aload_1
-    //   67: athrow
-    //   68: astore_1
-    //   69: goto -24 -> 45
-    //   72: astore_1
-    //   73: goto -28 -> 45
+    //   51: getfield 254	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
+    //   54: invokevirtual 371	com/google/android/gms/common/stats/ConnectionTracker:unbindService	(Landroid/content/Context;Landroid/content/ServiceConnection;)V
+    //   57: aload_0
+    //   58: iconst_0
+    //   59: putfield 67	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzg	Z
+    //   62: aload_0
+    //   63: aconst_null
+    //   64: putfield 258	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzf	Lcom/google/android/gms/internal/ads_identifier/zze;
+    //   67: aload_0
+    //   68: aconst_null
+    //   69: putfield 254	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
+    //   72: aload_0
+    //   73: monitorexit
+    //   74: ldc_w 367
+    //   77: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: return
+    //   81: astore_1
+    //   82: aload_0
+    //   83: monitorexit
+    //   84: ldc_w 367
+    //   87: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   90: aload_1
+    //   91: athrow
+    //   92: astore_1
+    //   93: goto -36 -> 57
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	76	0	this	AdvertisingIdClient
-    //   63	4	1	localObject	Object
-    //   68	1	1	localThrowable	Throwable
-    //   72	1	1	localIllegalArgumentException	java.lang.IllegalArgumentException
+    //   0	96	0	this	AdvertisingIdClient
+    //   81	10	1	localObject	Object
+    //   92	1	1	localThrowable	Throwable
     // Exception table:
     //   from	to	target	type
-    //   7	21	63	finally
-    //   21	23	63	finally
-    //   24	45	63	finally
-    //   45	62	63	finally
-    //   64	66	63	finally
-    //   24	45	68	java/lang/Throwable
-    //   24	45	72	java/lang/IllegalArgumentException
+    //   13	27	81	finally
+    //   27	29	81	finally
+    //   36	57	81	finally
+    //   57	74	81	finally
+    //   82	84	81	finally
+    //   36	57	92	java/lang/Throwable
   }
   
-  /* Error */
+  @KeepForSdk
   public AdvertisingIdClient.Info getInfo()
   {
-    // Byte code:
-    //   0: ldc 232
-    //   2: invokestatic 235	com/google/android/gms/common/internal/zzac:zzdk	(Ljava/lang/String;)V
-    //   5: aload_0
-    //   6: monitorenter
-    //   7: aload_0
-    //   8: getfield 51	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsc	Z
-    //   11: ifne +83 -> 94
-    //   14: aload_0
-    //   15: getfield 35	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsd	Ljava/lang/Object;
-    //   18: astore_1
-    //   19: aload_1
-    //   20: monitorenter
-    //   21: aload_0
-    //   22: getfield 161	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzse	Lcom/google/android/gms/ads/identifier/AdvertisingIdClient$zza;
-    //   25: ifnull +13 -> 38
-    //   28: aload_0
-    //   29: getfield 161	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzse	Lcom/google/android/gms/ads/identifier/AdvertisingIdClient$zza;
-    //   32: invokevirtual 248	com/google/android/gms/ads/identifier/AdvertisingIdClient$zza:zzbx	()Z
-    //   35: ifne +23 -> 58
-    //   38: new 127	java/io/IOException
-    //   41: dup
-    //   42: ldc 250
-    //   44: invokespecial 132	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   47: athrow
-    //   48: astore_2
-    //   49: aload_1
-    //   50: monitorexit
-    //   51: aload_2
-    //   52: athrow
-    //   53: astore_1
-    //   54: aload_0
-    //   55: monitorexit
-    //   56: aload_1
-    //   57: athrow
-    //   58: aload_1
-    //   59: monitorexit
-    //   60: aload_0
-    //   61: iconst_0
-    //   62: invokevirtual 91	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	(Z)V
-    //   65: aload_0
-    //   66: getfield 51	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsc	Z
-    //   69: ifne +25 -> 94
-    //   72: new 127	java/io/IOException
-    //   75: dup
-    //   76: ldc 252
-    //   78: invokespecial 132	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   81: athrow
-    //   82: astore_1
-    //   83: new 127	java/io/IOException
-    //   86: dup
-    //   87: ldc 252
-    //   89: aload_1
-    //   90: invokespecial 255	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   93: athrow
-    //   94: aload_0
-    //   95: getfield 237	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsa	Lcom/google/android/gms/common/zza;
-    //   98: invokestatic 41	com/google/android/gms/common/internal/zzac:zzw	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   101: pop
-    //   102: aload_0
-    //   103: getfield 242	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsb	Lcom/google/android/gms/internal/zzcq;
-    //   106: invokestatic 41	com/google/android/gms/common/internal/zzac:zzw	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   109: pop
-    //   110: new 6	com/google/android/gms/ads/identifier/AdvertisingIdClient$Info
-    //   113: dup
-    //   114: aload_0
-    //   115: getfield 242	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsb	Lcom/google/android/gms/internal/zzcq;
-    //   118: invokeinterface 260 1 0
-    //   123: aload_0
-    //   124: getfield 242	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzsb	Lcom/google/android/gms/internal/zzcq;
-    //   127: iconst_1
-    //   128: invokeinterface 263 2 0
-    //   133: invokespecial 266	com/google/android/gms/ads/identifier/AdvertisingIdClient$Info:<init>	(Ljava/lang/String;Z)V
-    //   136: astore_1
-    //   137: aload_0
-    //   138: monitorexit
-    //   139: aload_0
-    //   140: invokespecial 268	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzbw	()V
-    //   143: aload_1
-    //   144: areturn
-    //   145: astore_1
-    //   146: new 127	java/io/IOException
-    //   149: dup
-    //   150: ldc_w 270
-    //   153: invokespecial 132	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   156: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	157	0	this	AdvertisingIdClient
-    //   18	32	1	localObject1	Object
-    //   53	6	1	localObject2	Object
-    //   82	8	1	localException	Exception
-    //   136	8	1	localInfo	AdvertisingIdClient.Info
-    //   145	1	1	localRemoteException	android.os.RemoteException
-    //   48	4	2	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   21	38	48	finally
-    //   38	48	48	finally
-    //   49	51	48	finally
-    //   58	60	48	finally
-    //   7	21	53	finally
-    //   51	53	53	finally
-    //   54	56	53	finally
-    //   60	65	53	finally
-    //   65	82	53	finally
-    //   83	94	53	finally
-    //   94	110	53	finally
-    //   110	137	53	finally
-    //   137	139	53	finally
-    //   146	157	53	finally
-    //   60	65	82	java/lang/Exception
-    //   110	137	145	android/os/RemoteException
-  }
-  
-  public void start()
-  {
-    zze(true);
-  }
-  
-  Uri zza(AdvertisingIdClient.Info paramInfo, boolean paramBoolean, Throwable paramThrowable)
-  {
-    Bundle localBundle = new Bundle();
-    if (paramBoolean)
+    AppMethodBeat.i(115330);
+    Preconditions.checkNotMainThread("Calling this from your main thread can lead to deadlock");
+    try
     {
-      str = "1";
-      localBundle.putString("app_context", str);
-      if (paramInfo != null) {
-        if (!paramInfo.isLimitAdTrackingEnabled()) {
-          break label168;
+      if (this.zzg) {
+        break label139;
+      }
+      synchronized (this.zzh)
+      {
+        if ((this.zzi == null) || (!this.zzi.zzp))
+        {
+          IOException localIOException3 = new IOException("AdvertisingIdClient is not connected.");
+          AppMethodBeat.o(115330);
+          throw localIOException3;
         }
       }
     }
-    label168:
-    for (String str = "1";; str = "0")
+    finally
     {
-      localBundle.putString("limit_ad_tracking", str);
-      if ((paramInfo != null) && (paramInfo.getId() != null)) {
-        localBundle.putString("ad_id_size", Integer.toString(paramInfo.getId().length()));
-      }
-      if (paramThrowable != null) {
-        localBundle.putString("error", paramThrowable.getClass().getName());
-      }
-      paramInfo = Uri.parse("https://pagead2.googlesyndication.com/pagead/gen_204?id=gmob-apps").buildUpon();
-      paramThrowable = localBundle.keySet().iterator();
-      while (paramThrowable.hasNext())
-      {
-        str = (String)paramThrowable.next();
-        paramInfo.appendQueryParameter(str, localBundle.getString(str));
-      }
-      str = "0";
-      break;
+      AppMethodBeat.o(115330);
     }
-    return paramInfo.build();
-  }
-  
-  protected void zze(boolean paramBoolean)
-  {
-    zzac.zzdk("Calling this from your main thread can lead to deadlock");
+    Object localObject3;
     try
     {
-      if (this.zzsc) {
-        finish();
+      zza(false);
+      if (!this.zzg)
+      {
+        IOException localIOException1 = new IOException("AdvertisingIdClient cannot reconnect.");
+        AppMethodBeat.o(115330);
+        throw localIOException1;
       }
-      this.zzsa = zzf(this.mContext);
-      this.zzsb = zza(this.mContext, this.zzsa);
-      this.zzsc = true;
-      if (paramBoolean) {
-        zzbw();
-      }
-      return;
     }
-    finally {}
+    catch (Exception localException)
+    {
+      localObject3 = new IOException("AdvertisingIdClient cannot reconnect.", localException);
+      AppMethodBeat.o(115330);
+      throw ((Throwable)localObject3);
+    }
+    label139:
+    Preconditions.checkNotNull(this.zze);
+    Preconditions.checkNotNull(this.zzf);
+    try
+    {
+      localObject3 = new AdvertisingIdClient.Info(this.zzf.getId(), this.zzf.zzb(true));
+      zza();
+      AppMethodBeat.o(115330);
+      return localObject3;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      IOException localIOException2 = new IOException("Remote exception");
+      AppMethodBeat.o(115330);
+      throw localIOException2;
+    }
+  }
+  
+  @KeepForSdk
+  public void start()
+  {
+    AppMethodBeat.i(115327);
+    zza(true);
+    AppMethodBeat.o(115327);
   }
 }
 

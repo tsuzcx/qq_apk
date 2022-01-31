@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 public abstract class MailAddrsViewControl$c
 {
-  public void ij(boolean paramBoolean) {}
+  public void kk(boolean paramBoolean) {}
 }
 
 

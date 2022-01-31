@@ -3,6 +3,7 @@ package com.tencent.mm.ui.base;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class h$10
   implements DialogInterface.OnCancelListener
@@ -11,9 +12,11 @@ final class h$10
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.rkq != null) {
-      this.rkq.onClick(paramDialogInterface, 0);
+    AppMethodBeat.i(106412);
+    if (this.uZK != null) {
+      this.uZK.onClick(paramDialogInterface, 0);
     }
+    AppMethodBeat.o(106412);
   }
 }
 

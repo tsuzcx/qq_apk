@@ -1,43 +1,28 @@
 package com.tencent.mm.wallet_core.ui.formview;
 
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.a.a;
-import com.tencent.mm.wallet_core.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
 public final class c$a
 {
   public static String a(int paramInt, TenpaySecureEditText paramTenpaySecureEditText)
   {
-    if (q.Gw())
+    AppMethodBeat.i(49407);
+    if (r.ZB())
     {
-      y.v("MicroMsg.IEncryptDelegate", "hy: is payu. encrypt with payu");
+      ab.v("MicroMsg.IEncryptDelegate", "hy: is payu. encrypt with payu");
       new c.b();
-      paramTenpaySecureEditText.setSecureEncrypt(new a(paramInt));
-      return paramTenpaySecureEditText.get3DesEncrptData();
+      paramTenpaySecureEditText = c.b.b(paramInt, paramTenpaySecureEditText);
+      AppMethodBeat.o(49407);
+      return paramTenpaySecureEditText;
     }
-    y.v("MicroMsg.IEncryptDelegate", "hy: is tenpay. encrypt with tenpay");
+    ab.v("MicroMsg.IEncryptDelegate", "hy: is tenpay. encrypt with tenpay");
     new c.c();
-    switch (paramInt)
-    {
-    default: 
-      if (paramTenpaySecureEditText.getText().toString() == null) {
-        return "";
-      }
-      break;
-    case 2: 
-      return paramTenpaySecureEditText.get3DesEncrptData();
-    case 1: 
-      b.cMj();
-      return paramTenpaySecureEditText.getEncryptDataWithHash(true, b.cMk());
-    case 0: 
-      b.cMj();
-      return paramTenpaySecureEditText.getEncryptDataWithHash(false, b.cMk());
-    case 3: 
-      return paramTenpaySecureEditText.get3DesVerifyCode();
-    }
-    return paramTenpaySecureEditText.getText().toString();
+    paramTenpaySecureEditText = c.c.b(paramInt, paramTenpaySecureEditText);
+    AppMethodBeat.o(49407);
+    return paramTenpaySecureEditText;
   }
 }
 

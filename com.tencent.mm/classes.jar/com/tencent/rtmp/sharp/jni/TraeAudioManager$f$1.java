@@ -1,5 +1,7 @@
 package com.tencent.rtmp.sharp.jni;
 
+import com.tencent.d.a.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 
 class TraeAudioManager$f$1
@@ -9,18 +11,19 @@ class TraeAudioManager$f$1
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, "_ringPlayer onCompletion _activeMode:" + this.a.p._activeMode + " _preRingMode:" + this.a.k);
-    }
+    AppMethodBeat.i(65660);
+    a.dUd();
+    a.iP("TRAE", "_ringPlayer onCompletion _activeMode:" + this.a.p._activeMode + " _preRingMode:" + this.a.k);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("PARAM_ISHOSTSIDE", Boolean.valueOf(true));
+    localHashMap.put("PARAM_ISHOSTSIDE", Boolean.TRUE);
     this.a.a(32783, localHashMap);
-    this.a.j();
+    this.a.k();
+    AppMethodBeat.o(65660);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.f.1
  * JD-Core Version:    0.7.0.1
  */

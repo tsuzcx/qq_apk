@@ -1,393 +1,218 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.os.Looper;
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.plugin.appbrand.jsapi.container.AppBrandNativeContainerView;
-import com.tencent.mm.plugin.appbrand.jsapi.container.WrapperNativeContainerView;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.o;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.p;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bf;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.luggage.sdk.b.a.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.mm.plugin.appbrand.jsapi.q;
+import com.tencent.mm.plugin.appbrand.n;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.page.b.f;
+import com.tencent.mm.plugin.appbrand.performance.AppBrandPerformanceManager;
+import com.tencent.mm.plugin.appbrand.performance.c;
+import com.tencent.mm.plugin.appbrand.report.e;
+import com.tencent.mm.plugin.appbrand.report.quality.b;
+import com.tencent.mm.plugin.appbrand.weishi.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.widget.MMWebView;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class y
+  extends av<z>
 {
-  b gTQ;
-  public ViewGroup gVj;
-  List<y.b> gVk;
-  int gVl = -1;
-  float[] gVm;
-  View gVn;
-  aj gVo;
-  int gVp = -1;
-  ah mHandler;
+  private long ixA;
+  private long ixB;
+  private long ixz;
   
-  public y(ViewGroup paramViewGroup)
+  public y(z paramz)
   {
-    this.gVj = paramViewGroup;
-    this.mHandler = new ah(Looper.getMainLooper());
-    this.gVk = new LinkedList();
-    this.gVn = new View(paramViewGroup.getContext());
+    super(paramz);
   }
   
-  private void a(y.b paramb)
+  public final void Ed(String paramString)
   {
-    this.gVk.removeAll(b(paramb));
+    AppMethodBeat.i(143491);
+    super.Ed(paramString);
+    e.bq(getAppId(), 27);
+    AppMethodBeat.o(143491);
   }
   
-  private List<y.b> b(y.b paramb)
+  public final void a(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.gVk.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(143493);
+    if (TextUtils.isEmpty(paramString1))
     {
-      y.b localb = (y.b)localIterator.next();
-      if (localb.gVA == paramb.id) {
-        localLinkedList.addAll(b(localb));
-      }
+      AppMethodBeat.o(143493);
+      return;
     }
-    localLinkedList.add(paramb);
-    return localLinkedList;
-  }
-  
-  private int cd(int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.gVk.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
+    if (!paramBoolean) {
+      ab.e("MicroMsg.AppBrandPageViewRendererWC", "onScriptInjectResult !succeed appID = %s, name = %s", new Object[] { getAppId(), paramString1 });
+    }
+    int i = -1;
+    switch (paramString1.hashCode())
     {
-      y.b localb = (y.b)localIterator.next();
-      if ((paramInt1 != localb.gVA) || (paramInt2 < localb.z)) {
-        break label62;
-      }
-      i += 1;
     }
-    label62:
     for (;;)
     {
-      break;
-      return i;
-    }
-  }
-  
-  public final u.b F(int paramInt, boolean paramBoolean)
-  {
-    return u.Hc().v(hashCode() + "#" + paramInt, paramBoolean);
-  }
-  
-  public final boolean a(int paramInt1, aj paramaj, int paramInt2)
-  {
-    paramaj = new y.6(this, Boolean.valueOf(false), paramInt1, paramaj, paramInt2);
-    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-      return ((Boolean)paramaj.b(null)).booleanValue();
-    }
-    return ((Boolean)paramaj.b(this.mHandler)).booleanValue();
-  }
-  
-  public final boolean a(int paramInt1, float[] paramArrayOfFloat, int paramInt2, Boolean paramBoolean)
-  {
-    paramArrayOfFloat = new y.5(this, Boolean.valueOf(false), paramInt1, paramArrayOfFloat, paramInt2, paramBoolean);
-    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-      return ((Boolean)paramArrayOfFloat.b(null)).booleanValue();
-    }
-    return ((Boolean)paramArrayOfFloat.b(this.mHandler)).booleanValue();
-  }
-  
-  public final boolean a(View paramView, int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3, boolean paramBoolean)
-  {
-    paramView = new y.2(this, Boolean.valueOf(false), paramView, paramInt1, paramInt2, paramArrayOfFloat, paramInt3, paramBoolean);
-    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-      return ((Boolean)paramView.b(null)).booleanValue();
-    }
-    return ((Boolean)paramView.b(this.mHandler)).booleanValue();
-  }
-  
-  final boolean b(int paramInt1, float[] paramArrayOfFloat, int paramInt2, Boolean paramBoolean)
-  {
-    if (mi(paramInt1)) {
-      return true;
-    }
-    y.b localb = me(paramInt1);
-    if (localb == null) {
-      return false;
-    }
-    View localView = (View)localb.gVz.get();
-    ViewGroup localViewGroup = mb(localb.gVA);
-    if (localViewGroup == null) {
-      return false;
-    }
-    if (paramInt2 >= 0) {
-      if (paramInt2 != 0) {
-        break label85;
-      }
-    }
-    label85:
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length >= 5)) {
-        break;
-      }
-      return true;
-    }
-    float f2 = paramArrayOfFloat[0];
-    float f1 = paramArrayOfFloat[1];
-    float f3 = paramArrayOfFloat[2];
-    float f4 = paramArrayOfFloat[3];
-    i = (int)paramArrayOfFloat[4];
-    boolean bool;
-    if (paramBoolean != null) {
-      bool = paramBoolean.booleanValue();
-    }
-    while (localb.z != i)
-    {
-      this.gVk.remove(localb);
-      localViewGroup.removeView(localView);
-      if (b(localView, paramInt1, localb.gVA, paramArrayOfFloat, paramInt2, bool))
+      switch (i)
       {
-        return true;
-        bool = localb.gVB;
-      }
-      else
-      {
-        a(localb);
-        return false;
-      }
-    }
-    paramBoolean = localb.gVC;
-    if ((localb.gVA == 0) && ((localViewGroup instanceof ak)) && (bool != localb.gVB)) {
-      if (bool)
-      {
-        paramArrayOfFloat = paramBoolean;
-        if (paramBoolean == null)
+      default: 
+        AppMethodBeat.o(143493);
+        return;
+        if (paramString1.equals("WAWebview.js"))
         {
-          paramArrayOfFloat = new y.a((byte)0);
-          paramArrayOfFloat.view = localView;
-          localb.gVC = paramArrayOfFloat;
-        }
-        ((ak)localViewGroup).a(paramArrayOfFloat);
-        if (paramArrayOfFloat == null) {
-          break label438;
-        }
-        paramArrayOfFloat.x = f2;
-        paramArrayOfFloat.y = f1;
-        paramArrayOfFloat.gVx = this.gVj.getScrollX();
-        paramArrayOfFloat.gVy = this.gVj.getScrollY();
-        f2 = paramArrayOfFloat.gVx + f2;
-        f1 = paramArrayOfFloat.gVy + f1;
-      }
-    }
-    label438:
-    for (;;)
-    {
-      paramArrayOfFloat = localView.getLayoutParams();
-      paramArrayOfFloat.width = ((int)f3);
-      paramArrayOfFloat.height = ((int)f4);
-      localView.setX(f2);
-      localView.setY(f1);
-      localView.requestLayout();
-      paramInt1 = localViewGroup.indexOfChild(this.gVn);
-      if ((localViewGroup.indexOfChild(localView) == -1) && (paramInt1 != -1))
-      {
-        localViewGroup.addView(localView, paramInt1);
-        localViewGroup.removeView(this.gVn);
-      }
-      return true;
-      ((ak)localViewGroup).b(localb.gVC);
-      paramArrayOfFloat = paramBoolean;
-      break;
-    }
-  }
-  
-  final boolean b(View paramView, int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3, boolean paramBoolean)
-  {
-    if ((paramView == null) || (paramArrayOfFloat == null) || (paramArrayOfFloat.length < 5)) {
-      return false;
-    }
-    ViewGroup localViewGroup = mb(paramInt2);
-    if (localViewGroup == null) {
-      return false;
-    }
-    if (mg(paramInt1) != null) {
-      return false;
-    }
-    float f2 = paramArrayOfFloat[0];
-    float f1 = paramArrayOfFloat[1];
-    float f3 = paramArrayOfFloat[2];
-    float f4 = paramArrayOfFloat[3];
-    int m = (int)paramArrayOfFloat[4];
-    paramArrayOfFloat = new ViewGroup.LayoutParams((int)f3, (int)f4);
-    int i = cd(paramInt2, m);
-    if (i < 0) {
-      i = 0;
-    }
-    for (;;)
-    {
-      int j;
-      if ((localViewGroup instanceof o))
-      {
-        j = ((o)localViewGroup).getTargetViewChildCount();
-        int k = i;
-        if (i > j) {
-          k = j;
-        }
-        if (paramInt3 >= 0)
-        {
-          if (paramInt3 != 0) {
-            break label337;
+          i = 0;
+          continue;
+          if (paramString1.equals("WAVConsole.js")) {
+            i = 1;
           }
-          paramInt3 = 0;
-          label153:
-          paramView.setVisibility(paramInt3);
         }
-        localViewGroup.addView(paramView, k, paramArrayOfFloat);
-        paramArrayOfFloat = new y.b(paramView, paramInt1, paramInt2, m, paramBoolean);
-        this.gVk.add(paramArrayOfFloat);
-        if ((paramInt2 != 0) || (!(localViewGroup instanceof ak)) || (!paramBoolean)) {
-          break label343;
-        }
-        y.a locala = new y.a((byte)0);
-        locala.view = paramView;
-        locala.x = f2;
-        locala.y = f1;
-        locala.gVx = this.gVj.getScrollX();
-        locala.gVy = this.gVj.getScrollY();
-        f2 += locala.gVx;
-        f3 = locala.gVy;
-        ((ak)localViewGroup).a(locala);
-        paramArrayOfFloat.gVC = locala;
-        f1 = f3 + f1;
-      }
-      label337:
-      label343:
-      for (;;)
-      {
-        paramView.setX(f2);
-        paramView.setY(f1);
-        return true;
-        j = localViewGroup.getChildCount();
         break;
-        paramInt3 = 4;
-        break label153;
       }
     }
-  }
-  
-  final ViewGroup mb(int paramInt)
-  {
-    if (paramInt == 0) {
-      return this.gVj;
-    }
-    Object localObject = me(paramInt);
-    if (localObject == null) {
-      return null;
-    }
-    localObject = (View)((y.b)localObject).gVz.get();
-    if (((localObject instanceof WrapperNativeContainerView)) && ((localObject instanceof p)) && ((localObject instanceof ViewGroup))) {
-      return (ViewGroup)((WrapperNativeContainerView)localObject).K(AppBrandNativeContainerView.class);
-    }
-    if (((localObject instanceof p)) && ((localObject instanceof ViewGroup))) {
-      return (ViewGroup)localObject;
-    }
-    return null;
-  }
-  
-  public final boolean mc(int paramInt)
-  {
-    y.3 local3 = new y.3(this, Boolean.valueOf(false), paramInt);
-    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-      return ((Boolean)local3.b(null)).booleanValue();
-    }
-    return ((Boolean)local3.b(this.mHandler)).booleanValue();
-  }
-  
-  final boolean md(int paramInt)
-  {
-    y.b localb = me(paramInt);
-    if (localb == null) {}
-    ViewGroup localViewGroup;
-    do
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(370L, 1L, 1L, false);
+    if (paramBoolean)
     {
+      if ((aJP()) || (isRunning()))
+      {
+        com.tencent.mm.plugin.appbrand.report.quality.a.aLt();
+        b.a(aJP(), getAppId(), paramLong1, paramString1, bo.nullAsNil(paramString2).length());
+      }
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(370L, 3L, 1L, false);
+      AppMethodBeat.o(143493);
+      return;
+    }
+    ab.e("MicroMsg.AppBrandPageViewRendererWC", "Inject SDK Page Script Failed   appId = %s", new Object[] { getAppId() });
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(370L, 2L, 1L, false);
+    e.bq(getAppId(), 24);
+    int j = 0;
+    paramString1 = ((z)this.bDN).getRuntime();
+    if (paramString1 != null) {
+      j = paramString1.atR().hiX.gXf;
+    }
+    for (i = paramString1.atR().hiX.gXe;; i = -1)
+    {
+      e.b(getAppId(), j, i, 370, 2);
+      AppMethodBeat.o(143493);
+      return;
+      if ((!aJP()) && (!isRunning())) {
+        break;
+      }
+      com.tencent.mm.plugin.appbrand.report.quality.a.aLt();
+      b.a(aJP(), getAppId(), paramLong1, paramString1, bo.nullAsNil(paramString2).length());
+      break;
+    }
+  }
+  
+  protected final boolean aIE()
+  {
+    AppMethodBeat.i(154348);
+    if ("wxfe02ecfe70800f46".equalsIgnoreCase(getAppId()))
+    {
+      AppMethodBeat.o(154348);
       return false;
-      mk(paramInt);
-      a(localb);
-      localViewGroup = mb(localb.gVA);
-    } while (localViewGroup == null);
-    this.gVk.remove(localb);
-    localViewGroup.removeView((View)localb.gVz.get());
-    if ((localb.gVA == 0) && ((localViewGroup instanceof ak)) && (localb.gVB)) {
-      ((ak)localViewGroup).b(localb.gVC);
     }
-    return true;
+    boolean bool = super.aIE();
+    AppMethodBeat.o(154348);
+    return bool;
   }
   
-  public final y.b me(int paramInt)
+  public final boolean bX(String paramString)
   {
-    Iterator localIterator = this.gVk.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(143490);
+    this.ixB = System.currentTimeMillis();
+    aJN().J(new y.3(this));
+    if (((o)super.wj()).gRj) {
+      ((z)this.bDN).hmw.setContentDescription(com.tencent.luggage.g.h.cg(paramString));
+    }
+    aJN().ap(((z)this.bDN).getContext());
+    boolean bool = super.bX(paramString);
+    AppMethodBeat.o(143490);
+    return bool;
+  }
+  
+  public final aq cY(Context paramContext)
+  {
+    AppMethodBeat.i(143488);
+    this.ixz = bo.yB();
+    paramContext = new ad(paramContext, (byte)0);
+    AppMethodBeat.o(143488);
+    return paramContext;
+  }
+  
+  public final void ce(View paramView)
+  {
+    AppMethodBeat.i(143485);
+    super.ce(paramView);
+    if ((aJN() instanceof ak)) {}
+    for (paramView = ((ak)aJN()).iuy;; paramView = aJN())
     {
-      y.b localb = (y.b)localIterator.next();
-      if (localb.id == paramInt) {
-        return localb;
+      if ((paramView instanceof MMWebView)) {
+        ((MMWebView)paramView).getIsX5Kernel();
+      }
+      ((z)this.bDN).getFullscreenImpl().a(new y.1(this));
+      AppMethodBeat.o(143485);
+      return;
+    }
+  }
+  
+  public final void dispatchStart()
+  {
+    AppMethodBeat.i(143489);
+    super.dispatchStart();
+    ap localap;
+    if ((this.iuy instanceof ak))
+    {
+      localap = ((ak)this.iuy).iuy;
+      if ((!(localap instanceof MMWebView)) || (!((MMWebView)localap).getIsX5Kernel())) {
+        break label137;
       }
     }
-    return null;
-  }
-  
-  public final boolean mf(int paramInt)
-  {
-    return me(paramInt) != null;
-  }
-  
-  public final View mg(int paramInt)
-  {
-    y.b localb = me(paramInt);
-    if (localb == null) {
-      return null;
+    label137:
+    for (boolean bool = true;; bool = false)
+    {
+      n.yd(getAppId()).gQX.set(bool);
+      e.eL(bool);
+      aJN().J(new y.2(this));
+      if (g.J(((z)this.bDN).getRuntime())) {
+        super.b(f.class, new com.tencent.mm.plugin.appbrand.weishi.d((v)this.bDN));
+      }
+      AppMethodBeat.o(143489);
+      return;
+      localap = this.iuy;
+      break;
     }
-    return (View)localb.gVz.get();
   }
   
-  public final u.b mh(int paramInt)
+  public final o getRuntime()
   {
-    return u.Hc().ii(hashCode() + "#" + paramInt);
+    AppMethodBeat.i(143486);
+    o localo = (o)super.wj();
+    AppMethodBeat.o(143486);
+    return localo;
   }
   
-  public final boolean mi(int paramInt)
+  public final Map<String, com.tencent.mm.plugin.appbrand.jsapi.m> vF()
   {
-    return (this.gVp == paramInt) || (this.gVl == paramInt);
+    AppMethodBeat.i(143487);
+    Map localMap = q.aBy();
+    AppMethodBeat.o(143487);
+    return localMap;
   }
   
-  public final boolean mj(int paramInt)
+  public final void vG()
   {
-    y.7 local7 = new y.7(this, Boolean.valueOf(false), paramInt);
-    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-      return ((Boolean)local7.b(null)).booleanValue();
-    }
-    return ((Boolean)local7.b(this.mHandler)).booleanValue();
-  }
-  
-  final boolean mk(int paramInt)
-  {
-    if (paramInt != this.gVl) {}
-    while (me(paramInt) == null) {
-      return false;
-    }
-    this.gTQ.amQ();
-    return true;
-  }
-  
-  public final void setFullscreenImpl(b paramb)
-  {
-    this.gTQ = paramb;
-    this.gTQ.a(new y.1(this));
+    AppMethodBeat.i(143492);
+    super.vG();
+    ((o)super.wj()).gRn.C(4, bo.av(this.ixA));
+    AppBrandPerformanceManager.a((o)super.wj(), 203, System.currentTimeMillis() - this.ixB);
+    c.a(getAppId(), "Native", "PageLoad", this.ixB, System.currentTimeMillis(), "");
+    AppMethodBeat.o(143492);
   }
 }
 

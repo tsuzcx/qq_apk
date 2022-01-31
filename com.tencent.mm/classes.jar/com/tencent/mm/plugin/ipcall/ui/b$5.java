@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$5
   implements View.OnLongClickListener
@@ -11,17 +12,19 @@ final class b$5
   
   public final boolean onLongClick(View paramView)
   {
-    if (this.ltx.ltr)
+    AppMethodBeat.i(21975);
+    if (this.nQQ.nQK)
     {
-      this.ltx.ltm = "+";
-      this.ltx.lte.setText(this.ltx.ltm);
+      this.nQQ.nQF = "+";
+      this.nQQ.nQx.setText(this.nQQ.nQF);
     }
     for (;;)
     {
+      AppMethodBeat.o(21975);
       return true;
-      this.ltx.eYn.setText("");
-      this.ltx.ltn = "";
-      this.ltx.bL("", -1);
+      this.nQQ.gqe.setText("");
+      this.nQQ.nQG = "";
+      this.nQQ.cy("", -1);
     }
   }
 }

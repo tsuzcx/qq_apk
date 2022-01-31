@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 
 final class ReadMailUI$a$4
@@ -9,7 +10,9 @@ final class ReadMailUI$a$4
   
   public final void run()
   {
-    ReadMailUI.a(this.njU.njK, new HashMap());
+    AppMethodBeat.i(68442);
+    ReadMailUI.a(this.pPh.pOX, new HashMap());
+    AppMethodBeat.o(68442);
   }
 }
 

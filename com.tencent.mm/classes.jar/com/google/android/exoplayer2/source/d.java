@@ -1,86 +1,103 @@
 package com.google.android.exoplayer2.source;
 
+import com.google.android.exoplayer2.f;
+import com.google.android.exoplayer2.h.b;
+import com.google.android.exoplayer2.i.a;
+import com.google.android.exoplayer2.w;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+
 public final class d
-  implements j
+  implements i, i.a
 {
-  private final j[] aIk;
+  private final long aOY;
+  private final long aOZ;
+  private final boolean aPe;
+  private final ArrayList<c> aPf;
+  private i.a aPg;
+  private d.a aPh;
+  private final i awb;
   
-  public d(j[] paramArrayOfj)
+  public d(i parami, long paramLong1, long paramLong2)
   {
-    this.aIk = paramArrayOfj;
+    this(parami, paramLong1, paramLong2, (byte)0);
   }
   
-  public final boolean J(long paramLong)
+  private d(i parami, long paramLong1, long paramLong2, byte paramByte)
   {
-    boolean bool3 = false;
-    boolean bool4;
-    boolean bool1;
-    do
+    AppMethodBeat.i(95467);
+    if (paramLong1 >= 0L) {}
+    for (boolean bool = true;; bool = false)
     {
-      long l = mC();
-      bool4 = bool3;
-      if (l == -9223372036854775808L) {
-        break;
-      }
-      j[] arrayOfj = this.aIk;
-      int j = arrayOfj.length;
+      a.checkArgument(bool);
+      this.awb = ((i)a.checkNotNull(parami));
+      this.aOY = paramLong1;
+      this.aOZ = paramLong2;
+      this.aPe = true;
+      this.aPf = new ArrayList();
+      AppMethodBeat.o(95467);
+      return;
+    }
+  }
+  
+  public final h a(i.b paramb, b paramb1)
+  {
+    AppMethodBeat.i(95470);
+    paramb = new c(this.awb.a(paramb, paramb1), this.aPe);
+    this.aPf.add(paramb);
+    paramb.i(d.a.a(this.aPh), d.a.b(this.aPh));
+    AppMethodBeat.o(95470);
+    return paramb;
+  }
+  
+  public final void a(f paramf, i.a parama)
+  {
+    AppMethodBeat.i(95468);
+    this.aPg = parama;
+    this.awb.a(paramf, this);
+    AppMethodBeat.o(95468);
+  }
+  
+  public final void a(w paramw, Object paramObject)
+  {
+    AppMethodBeat.i(95473);
+    this.aPh = new d.a(paramw, this.aOY, this.aOZ);
+    this.aPg.a(this.aPh, paramObject);
+    long l2 = d.a.a(this.aPh);
+    if (d.a.b(this.aPh) == -9223372036854775807L) {}
+    for (long l1 = -9223372036854775808L;; l1 = d.a.b(this.aPh))
+    {
+      int j = this.aPf.size();
       int i = 0;
-      boolean bool2;
-      for (bool1 = false; i < j; bool1 = bool2)
+      while (i < j)
       {
-        j localj = arrayOfj[i];
-        bool2 = bool1;
-        if (localj.mC() == l) {
-          bool2 = bool1 | localj.J(paramLong);
-        }
+        ((c)this.aPf.get(i)).i(l2, l1);
         i += 1;
       }
-      bool4 = bool3 | bool1;
-      bool3 = bool4;
-    } while (bool1);
-    return bool4;
+    }
+    AppMethodBeat.o(95473);
   }
   
-  public final long mB()
+  public final void b(h paramh)
   {
-    j[] arrayOfj = this.aIk;
-    int j = arrayOfj.length;
-    int i = 0;
-    for (long l1 = 9223372036854775807L; i < j; l1 = l2)
-    {
-      long l3 = arrayOfj[i].mB();
-      l2 = l1;
-      if (l3 != -9223372036854775808L) {
-        l2 = Math.min(l1, l3);
-      }
-      i += 1;
-    }
-    long l2 = l1;
-    if (l1 == 9223372036854775807L) {
-      l2 = -9223372036854775808L;
-    }
-    return l2;
+    AppMethodBeat.i(95471);
+    a.checkState(this.aPf.remove(paramh));
+    this.awb.b(((c)paramh).awn);
+    AppMethodBeat.o(95471);
   }
   
-  public final long mC()
+  public final void oY()
   {
-    j[] arrayOfj = this.aIk;
-    int j = arrayOfj.length;
-    int i = 0;
-    for (long l1 = 9223372036854775807L; i < j; l1 = l2)
-    {
-      long l3 = arrayOfj[i].mC();
-      l2 = l1;
-      if (l3 != -9223372036854775808L) {
-        l2 = Math.min(l1, l3);
-      }
-      i += 1;
-    }
-    long l2 = l1;
-    if (l1 == 9223372036854775807L) {
-      l2 = -9223372036854775808L;
-    }
-    return l2;
+    AppMethodBeat.i(95469);
+    this.awb.oY();
+    AppMethodBeat.o(95469);
+  }
+  
+  public final void oZ()
+  {
+    AppMethodBeat.i(95472);
+    this.awb.oZ();
+    AppMethodBeat.o(95472);
   }
 }
 

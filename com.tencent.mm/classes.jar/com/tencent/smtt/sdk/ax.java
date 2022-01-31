@@ -1,34 +1,20 @@
 package com.tencent.smtt.sdk;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.File;
+import java.io.FileFilter;
 
 class ax
-  extends Handler
+  implements FileFilter
 {
-  ax(TbsLogReport paramTbsLogReport, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ax(ao paramao) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean accept(File paramFile)
   {
-    if (paramMessage.what == 600) {
-      if ((paramMessage.obj instanceof TbsLogReport.TbsLogInfo))
-      {
-        localTbsLogInfo = (TbsLogReport.TbsLogInfo)paramMessage.obj;
-        i = paramMessage.arg1;
-        TbsLogReport.a(this.a, i, localTbsLogInfo);
-      }
-    }
-    while (paramMessage.what != 601)
-    {
-      TbsLogReport.TbsLogInfo localTbsLogInfo;
-      int i;
-      return;
-    }
-    TbsLogReport.a(this.a);
+    AppMethodBeat.i(139274);
+    boolean bool = paramFile.getName().endsWith(".jar");
+    AppMethodBeat.o(139274);
+    return bool;
   }
 }
 

@@ -1,26 +1,34 @@
 package com.tencent.mm.wallet_core.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.d.g;
-import com.tencent.mm.wallet_core.d.i;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.wallet_core.a;
+import com.tencent.mm.wallet_core.c;
 
 final class WalletBaseUI$10
-  extends g
+  implements DialogInterface.OnClickListener
 {
-  WalletBaseUI$10(WalletBaseUI paramWalletBaseUI, MMActivity paramMMActivity, i parami)
-  {
-    super(paramMMActivity, parami);
-  }
+  WalletBaseUI$10(WalletBaseUI paramWalletBaseUI) {}
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
-  }
-  
-  public final boolean m(Object... paramVarArgs)
-  {
-    return false;
+    AppMethodBeat.i(49246);
+    this.AYz.cancelQRPay();
+    paramDialogInterface = a.aM(this.AYz);
+    this.AYz.mPayResultType = 4;
+    if (paramDialogInterface != null)
+    {
+      if (!paramDialogInterface.h(this.AYz, this.AYz.getInput()))
+      {
+        paramDialogInterface.b(this.AYz, this.AYz.getInput());
+        AppMethodBeat.o(49246);
+      }
+    }
+    else {
+      this.AYz.finish();
+    }
+    AppMethodBeat.o(49246);
   }
 }
 

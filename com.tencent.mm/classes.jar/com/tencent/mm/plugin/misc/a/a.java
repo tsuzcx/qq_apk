@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.misc.a;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract int bih();
+  public abstract int bQj();
   
-  public abstract int bii();
+  public abstract int yW(int paramInt);
 }
 
 

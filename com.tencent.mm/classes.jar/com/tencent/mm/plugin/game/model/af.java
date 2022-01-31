@@ -1,192 +1,220 @@
 package com.tencent.mm.plugin.game.model;
 
-import com.tencent.mm.bv.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.d.b;
-import com.tencent.mm.plugin.game.d.bl;
+import com.tencent.mm.plugin.game.d.aq;
+import com.tencent.mm.plugin.game.d.ar;
+import com.tencent.mm.plugin.game.d.at;
+import com.tencent.mm.plugin.game.d.bk;
+import com.tencent.mm.plugin.game.d.cc;
+import com.tencent.mm.plugin.game.d.cd;
 import com.tencent.mm.plugin.game.d.cg;
-import com.tencent.mm.plugin.game.d.cp;
-import com.tencent.mm.plugin.game.d.cq;
-import com.tencent.mm.plugin.game.d.db;
 import com.tencent.mm.plugin.game.d.e;
-import com.tencent.mm.plugin.game.d.l;
-import com.tencent.mm.plugin.game.ui.GameLibraryCategoriesView.a;
+import com.tencent.mm.plugin.game.d.h;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.pluginsdk.model.app.f;
+import com.tencent.mm.pluginsdk.model.app.i;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.bd;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 public final class af
-  extends y
+  extends x
 {
-  public bl kQI;
-  public LinkedList<d> kQJ;
-  public LinkedList<d> kQK;
-  private int kQn = 0;
+  public bk noP;
+  private boolean noQ;
+  public LinkedList<c> noR;
+  public HashMap<String, Integer> noS;
   
-  public af(a parama, boolean paramBoolean, int paramInt)
+  public af(com.tencent.mm.bv.a parama)
   {
+    AppMethodBeat.i(111384);
+    this.noS = new HashMap();
     if (parama == null)
     {
-      this.kQI = new bl();
+      this.noP = new bk();
+      AppMethodBeat.o(111384);
       return;
     }
-    this.kQI = ((bl)parama);
-    this.kQn = paramInt;
-    this.kQJ = aZJ();
-    this.kQK = aZK();
-    if (paramBoolean) {
-      ((com.tencent.mm.plugin.game.a.c)g.r(com.tencent.mm.plugin.game.a.c.class)).aYg().b("pb_library", parama);
-    }
-    com.tencent.mm.plugin.game.f.d.Y(this.kQJ);
-    com.tencent.mm.plugin.game.f.d.Y(this.kQK);
+    this.noP = ((bk)parama);
+    this.noQ = true;
+    Kc();
+    AppMethodBeat.o(111384);
   }
   
   public af(byte[] paramArrayOfByte)
   {
-    this.kQI = new bl();
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+    AppMethodBeat.i(111385);
+    this.noS = new HashMap();
+    this.noP = new bk();
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      AppMethodBeat.o(111385);
       return;
     }
     try
     {
-      this.kQI.aH(paramArrayOfByte);
-      this.kQJ = aZJ();
-      this.kQK = aZK();
-      com.tencent.mm.plugin.game.f.d.Y(this.kQJ);
-      com.tencent.mm.plugin.game.f.d.Y(this.kQK);
+      this.noP.parseFrom(paramArrayOfByte);
+      this.noQ = false;
+      Kc();
+      AppMethodBeat.o(111385);
       return;
     }
     catch (IOException paramArrayOfByte)
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.GamePBDataLibrary", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+        ab.e("MicroMsg.GamePBDataOverSea", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
       }
     }
   }
   
-  private LinkedList<d> aZJ()
+  private void Kc()
   {
+    AppMethodBeat.i(111386);
+    this.noR = bGR();
+    if (this.noQ)
+    {
+      com.tencent.mm.plugin.game.f.d.ag(this.noR);
+      bGS();
+      ((com.tencent.mm.plugin.game.api.d)g.E(com.tencent.mm.plugin.game.api.d.class)).bEP().init(ah.getContext());
+    }
+    AppMethodBeat.o(111386);
+  }
+  
+  private LinkedList<c> bGR()
+  {
+    AppMethodBeat.i(111387);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.kQI.kUX == null) || (this.kQI.kUX.kVB == null) || (this.kQI.kUX.kVB.kVQ == null)) {
+    if ((this.noP.nsS == null) || (this.noP.nsS.nqs == null))
+    {
+      AppMethodBeat.o(111387);
       return localLinkedList;
     }
-    Iterator localIterator = this.kQI.kUX.kVB.kVQ.iterator();
+    Iterator localIterator = this.noP.nsS.nqs.iterator();
     int i = 1;
     while (localIterator.hasNext())
     {
-      cq localcq = (cq)localIterator.next();
-      d locald = a(localcq.kRQ);
-      if (locald != null)
+      Object localObject = (aq)localIterator.next();
+      if (((aq)localObject).npS != null)
       {
-        locald.kOh = localcq.kRQ.kSg;
-        locald.scene = 11;
-        locald.bXn = 1110;
-        locald.position = i;
-        localLinkedList.add(locald);
-        i += 1;
-      }
-    }
-    return localLinkedList;
-  }
-  
-  private LinkedList<d> aZK()
-  {
-    LinkedList localLinkedList = new LinkedList();
-    if (this.kQI.kUY == null) {
-      return localLinkedList;
-    }
-    int j = this.kQn + 1;
-    int i = this.kQn / 15;
-    Iterator localIterator = this.kQI.kUY.iterator();
-    i += 901;
-    label259:
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        com.tencent.mm.plugin.game.d.c localc = (com.tencent.mm.plugin.game.d.c)localIterator.next();
-        Object localObject = null;
-        switch (localc.hQR)
+        c localc = a(((aq)localObject).npS);
+        if (localc != null)
         {
-        }
-        for (;;)
-        {
-          if (localObject == null) {
-            break label259;
-          }
-          localObject.scene = 11;
-          localObject.bXn = 1111;
-          localLinkedList.add(localObject);
-          break;
-          d locald = a(localc.kRQ);
-          localObject = locald;
-          if (locald != null)
-          {
-            locald.position = j;
-            j += 1;
-            localObject = locald;
-            continue;
-            if (localc.kRT != null)
+          ar localar;
+          StringBuilder localStringBuilder;
+          int j;
+          if (((aq)localObject).npS.nqm != null) {
+            if ((((aq)localObject).npS.nqm.Name != null) && (((aq)localObject).npS.nqm.ntA != null))
             {
-              locald = a(localc.kRT.kRQ);
-              localObject = locald;
-              if (locald != null)
-              {
-                locald.type = 1;
-                locald.kNZ = localc.kRT.kRS;
-                locald.kOa = localc.kRT.kRR;
-                int k = i + 1;
-                locald.position = i;
-                i = k;
-                localObject = locald;
+              localc.nmh = ((aq)localObject).npS.nqm.Name;
+              localc.nmi = ((aq)localObject).npS.nqm.ntA;
+              localc.nml = com.tencent.mm.plugin.game.e.a.V(((aq)localObject).nqt, "label", localc.nmh);
+              if (((aq)localObject).nrO == null) {
+                break label476;
               }
+              localObject = ((aq)localObject).nrO.iterator();
+              do
+              {
+                if (!((Iterator)localObject).hasNext()) {
+                  break;
+                }
+                localar = (ar)((Iterator)localObject).next();
+              } while (localar == null);
+              if ((localar.nrP == null) || (localar.nrP.size() == 0)) {
+                break label462;
+              }
+              localStringBuilder = new StringBuilder();
+              j = 0;
+              label271:
+              if (j >= localar.nrP.size()) {
+                break label423;
+              }
+              ad localad = ((j)g.E(j.class)).YA().arw((String)localar.nrP.get(j));
+              if ((localad == null) || (localad.euF == 0L)) {
+                break label402;
+              }
+              localStringBuilder.append(localad.Of());
             }
           }
+          for (;;)
+          {
+            if (j < localar.nrP.size() - 1) {
+              localStringBuilder.append("、");
+            }
+            j += 1;
+            break label271;
+            localc.nml = com.tencent.mm.plugin.game.e.a.lR(((aq)localObject).nqt);
+            break;
+            localc.nml = com.tencent.mm.plugin.game.e.a.lR(((aq)localObject).nqt);
+            break;
+            label402:
+            localStringBuilder.append((String)localar.nrP.get(j));
+          }
+          label423:
+          localStringBuilder.append(" ");
+          localc.nmc.add(localStringBuilder.toString());
+          for (;;)
+          {
+            localc.nmc.add(localar.nqY);
+            break;
+            label462:
+            localc.nmc.add("");
+          }
+          label476:
+          localc.scene = 10;
+          localc.cFj = 1004;
+          localc.position = i;
+          localLinkedList.add(localc);
+          i += 1;
         }
       }
-      return localLinkedList;
     }
-  }
-  
-  public final HashMap<Integer, String> aZL()
-  {
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    if ((this.kQI.kUX == null) || (this.kQI.kUX.kVE == null)) {
-      return localLinkedHashMap;
-    }
-    Iterator localIterator = this.kQI.kUX.kVE.iterator();
-    while (localIterator.hasNext())
-    {
-      db localdb = (db)localIterator.next();
-      localLinkedHashMap.put(Integer.valueOf(localdb.kUV), localdb.kRZ);
-    }
-    return localLinkedHashMap;
-  }
-  
-  public final LinkedList<GameLibraryCategoriesView.a> aZM()
-  {
-    if ((this.kQI.kUX == null) || (this.kQI.kUX.kVC == null)) {
-      return null;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.kQI.kUX.kVC.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      l locall = (l)localIterator.next();
-      GameLibraryCategoriesView.a locala = new GameLibraryCategoriesView.a();
-      locala.lcw = locall.kSD;
-      locala.lcx = locall.kRZ;
-      locala.lcy = locall.kRS;
-      locala.fJY = locall.kRY;
-      i += 1;
-      locala.position = i;
-      localLinkedList.add(locala);
-    }
+    AppMethodBeat.o(111387);
     return localLinkedList;
+  }
+  
+  private void bGS()
+  {
+    AppMethodBeat.i(111388);
+    this.noS = new HashMap();
+    if ((this.noP.nsT == null) || (this.noP.nsT.ntx == null))
+    {
+      AppMethodBeat.o(111388);
+      return;
+    }
+    Iterator localIterator = this.noP.nsT.ntx.iterator();
+    while (localIterator.hasNext())
+    {
+      cd localcd = (cd)localIterator.next();
+      Object localObject = a(localcd.npS);
+      if (localObject != null)
+      {
+        this.noS.put(((c)localObject).field_appId, Integer.valueOf(((c)localObject).versionCode));
+        localObject = com.tencent.mm.plugin.s.a.cac().als(((c)localObject).field_appId);
+        if (localObject != null)
+        {
+          ((f)localObject).iX(localcd.ntz);
+          if (!com.tencent.mm.plugin.s.a.cac().a((f)localObject, new String[0])) {
+            ab.e("MicroMsg.GamePBDataOverSea", "Store rank info failed, AppID: %s", new Object[] { ((f)localObject).field_appId });
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(111388);
+  }
+  
+  public final at bGT()
+  {
+    if (this.noP != null) {
+      return this.noP.nsQ;
+    }
+    return null;
   }
 }
 

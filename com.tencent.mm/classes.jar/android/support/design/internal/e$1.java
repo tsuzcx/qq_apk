@@ -12,13 +12,13 @@ final class e$1
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.ei.setScaleX(f);
-    this.ei.setScaleY(f);
+    this.fg.setScaleX(f);
+    this.fg.setScaleY(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.design.internal.e.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsAliasResultUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,13 +11,15 @@ final class SettingsAliasResultUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.nTV.finish();
+    AppMethodBeat.i(127177);
+    this.qHV.finish();
+    AppMethodBeat.o(127177);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsAliasResultUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,73 +3,91 @@ package com.tencent.mm.plugin.appbrand.jsapi.contact;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import com.tencent.mm.ag.h;
-import com.tencent.mm.ag.i;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.h;
+import com.tencent.mm.ah.i;
+import com.tencent.mm.ah.o;
 import com.tencent.mm.model.r;
+import com.tencent.mm.model.s;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 class JsApiChooseWeChatContact$GetUserDataTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<GetUserDataTask> CREATOR = new JsApiChooseWeChatContact.GetUserDataTask.1();
-  String aVr;
-  String aVs;
-  String foS = "";
-  public String gpK;
+  public static final Parcelable.Creator<GetUserDataTask> CREATOR;
+  String blZ;
+  String bma;
+  String gGm;
+  public String hKt;
   public String userName;
+  
+  static
+  {
+    AppMethodBeat.i(130997);
+    CREATOR = new JsApiChooseWeChatContact.GetUserDataTask.1();
+    AppMethodBeat.o(130997);
+  }
   
   public JsApiChooseWeChatContact$GetUserDataTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(130993);
+    this.gGm = "";
+    f(paramParcel);
+    AppMethodBeat.o(130993);
   }
   
   public JsApiChooseWeChatContact$GetUserDataTask(String paramString)
   {
+    this.gGm = "";
     this.userName = paramString;
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    this.gpK = q.Gj();
+    AppMethodBeat.i(130994);
+    this.hKt = r.Zn();
     if (!TextUtils.isEmpty(this.userName))
     {
-      this.aVr = r.gU(this.userName);
-      this.aVs = r.gW(this.userName);
-      h localh = o.Kh().kp(this.userName);
+      this.blZ = s.nD(this.userName);
+      this.bma = s.nF(this.userName);
+      h localh = o.adg().rj(this.userName);
       if (localh != null)
       {
-        this.foS = localh.JX();
-        if (bk.bl(this.foS)) {
-          this.foS = localh.JY();
+        this.gGm = localh.acX();
+        if (bo.isNullOrNil(this.gGm)) {
+          this.gGm = localh.acY();
         }
       }
     }
+    AppMethodBeat.o(130994);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
-    this.gpK = paramParcel.readString();
+    AppMethodBeat.i(130995);
+    this.hKt = paramParcel.readString();
     this.userName = paramParcel.readString();
-    this.aVr = paramParcel.readString();
-    this.aVs = paramParcel.readString();
-    this.foS = paramParcel.readString();
+    this.blZ = paramParcel.readString();
+    this.bma = paramParcel.readString();
+    this.gGm = paramParcel.readString();
+    AppMethodBeat.o(130995);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.gpK);
+    AppMethodBeat.i(130996);
+    paramParcel.writeString(this.hKt);
     paramParcel.writeString(this.userName);
-    paramParcel.writeString(this.aVr);
-    paramParcel.writeString(this.aVs);
-    paramParcel.writeString(this.foS);
+    paramParcel.writeString(this.blZ);
+    paramParcel.writeString(this.bma);
+    paramParcel.writeString(this.gGm);
+    AppMethodBeat.o(130996);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.JsApiChooseWeChatContact.GetUserDataTask
  * JD-Core Version:    0.7.0.1
  */

@@ -14,30 +14,30 @@ final class d$2
   
   public final void onAnimationRepeat(Animator paramAnimator)
   {
-    d.a(this.Jk, 1.0F, this.Jj, true);
-    this.Jj.dB();
-    d.a locala = this.Jj;
-    locala.aG(locala.dz());
-    if (d.a(this.Jk))
+    this.IT.a(1.0F, this.IS, true);
+    this.IS.dS();
+    d.a locala = this.IS;
+    locala.aD(locala.dQ());
+    if (this.IT.IR)
     {
-      d.b(this.Jk);
+      this.IT.IR = false;
       paramAnimator.cancel();
       paramAnimator.setDuration(1332L);
       paramAnimator.start();
-      this.Jj.J(false);
+      this.IS.I(false);
       return;
     }
-    d.a(this.Jk, d.c(this.Jk) + 1.0F);
+    this.IT.IQ += 1.0F;
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    d.a(this.Jk, 0.0F);
+    this.IT.IQ = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v4.widget.d.2
  * JD-Core Version:    0.7.0.1
  */

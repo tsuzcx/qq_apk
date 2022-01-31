@@ -1,14 +1,17 @@
 package com.tencent.mm.app;
 
-import com.tencent.mm.h.a.rh;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jb;
 import com.tencent.mm.sdk.b.c;
 
 final class WorkerProfile$4
-  extends c<rh>
+  extends c<jb>
 {
   WorkerProfile$4(WorkerProfile paramWorkerProfile)
   {
-    this.udX = rh.class.getName().hashCode();
+    AppMethodBeat.i(15469);
+    this.__eventId = jb.class.getName().hashCode();
+    AppMethodBeat.o(15469);
   }
 }
 

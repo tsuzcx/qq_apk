@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.a.b;
 
-import com.tencent.mm.protocal.c.btm;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.cec;
 import java.util.LinkedList;
 
 final class i$3
@@ -10,13 +11,15 @@ final class i$3
   
   public final void run()
   {
-    if ((System.currentTimeMillis() - i.b(this.olO) >= 60000L) || (i.a(this.olO).sve.size() > 1000))
+    AppMethodBeat.i(35752);
+    if ((System.currentTimeMillis() - i.b(this.raa) >= 60000L) || (i.a(this.raa).wok.size() > 1000))
     {
-      if ((i.a(this.olO) != null) && (i.a(this.olO).sve.size() > 0)) {
-        i.d(this.olO);
+      if ((i.a(this.raa) != null) && (i.a(this.raa).wok.size() > 0)) {
+        i.d(this.raa);
       }
-      i.a(this.olO, 0L);
+      i.a(this.raa, 0L);
     }
+    AppMethodBeat.o(35752);
   }
 }
 

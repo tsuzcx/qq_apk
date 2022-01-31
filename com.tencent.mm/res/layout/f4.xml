@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/f6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:paddingTop="@dimen/a4n" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/za" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" style="@style/lv" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/a13" android:paddingRight="@dimen/ll" android:layout_width="22.0dip" android:layout_height="@dimen/u2" android:src="@raw/login_auth_state_default_select" android:cropToPadding="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/fl" android:id="@id/a14" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/a13" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </LinearLayout>

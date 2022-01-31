@@ -14,14 +14,14 @@ public final class MediaSessionCompat$QueueItem
   implements Parcelable
 {
   public static final Parcelable.Creator<QueueItem> CREATOR = new MediaSessionCompat.QueueItem.1();
-  private final MediaDescriptionCompat AY;
-  private final long Cx;
-  private Object Cy;
+  private final MediaDescriptionCompat BK;
+  private final long Dg;
+  private Object Dh;
   
   MediaSessionCompat$QueueItem(Parcel paramParcel)
   {
-    this.AY = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
-    this.Cx = paramParcel.readLong();
+    this.BK = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
+    this.Dg = paramParcel.readLong();
   }
   
   private MediaSessionCompat$QueueItem(Object paramObject, MediaDescriptionCompat paramMediaDescriptionCompat, long paramLong)
@@ -32,9 +32,9 @@ public final class MediaSessionCompat$QueueItem
     if (paramLong == -1L) {
       throw new IllegalArgumentException("Id cannot be QueueItem.UNKNOWN_ID");
     }
-    this.AY = paramMediaDescriptionCompat;
-    this.Cx = paramLong;
-    this.Cy = paramObject;
+    this.BK = paramMediaDescriptionCompat;
+    this.Dg = paramLong;
+    this.Dh = paramObject;
   }
   
   public static List<QueueItem> m(List<?> paramList)
@@ -64,13 +64,13 @@ public final class MediaSessionCompat$QueueItem
   
   public final String toString()
   {
-    return "MediaSession.QueueItem {Description=" + this.AY + ", Id=" + this.Cx + " }";
+    return "MediaSession.QueueItem {Description=" + this.BK + ", Id=" + this.Dg + " }";
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    this.AY.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeLong(this.Cx);
+    this.BK.writeToParcel(paramParcel, paramInt);
+    paramParcel.writeLong(this.Dg);
   }
 }
 

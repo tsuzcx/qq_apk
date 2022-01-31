@@ -3,43 +3,60 @@ package com.tencent.mm.plugin.gallery.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class GalleryItem$AlbumItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<AlbumItem> CREATOR = new GalleryItem.AlbumItem.1();
-  public int bLO;
-  public String kGT;
-  public GalleryItem.MediaItem kGU;
+  public static final Parcelable.Creator<AlbumItem> CREATOR;
+  public int cti;
+  public String ndl;
+  public GalleryItem.MediaItem ndm;
+  
+  static
+  {
+    AppMethodBeat.i(21287);
+    CREATOR = new GalleryItem.AlbumItem.1();
+    AppMethodBeat.o(21287);
+  }
   
   protected GalleryItem$AlbumItem(Parcel paramParcel)
   {
-    this.kGT = paramParcel.readString();
-    this.bLO = paramParcel.readInt();
-    this.kGU = ((GalleryItem.MediaItem)paramParcel.readParcelable(GalleryItem.MediaItem.class.getClassLoader()));
+    AppMethodBeat.i(21284);
+    this.ndl = paramParcel.readString();
+    this.cti = paramParcel.readInt();
+    this.ndm = ((GalleryItem.MediaItem)paramParcel.readParcelable(GalleryItem.MediaItem.class.getClassLoader()));
+    AppMethodBeat.o(21284);
   }
   
   public GalleryItem$AlbumItem(String paramString, int paramInt)
   {
-    this.kGT = bk.pm(paramString);
-    this.bLO = paramInt;
+    AppMethodBeat.i(21283);
+    this.ndl = bo.nullAsNil(paramString);
+    this.cti = paramInt;
+    AppMethodBeat.o(21283);
   }
   
-  public final String aXs()
+  public final String Xi()
   {
-    if (this.kGU == null) {
+    AppMethodBeat.i(21285);
+    if (this.ndm == null)
+    {
+      AppMethodBeat.o(21285);
       return null;
     }
-    return this.kGU.aXs();
+    String str = this.ndm.Xi();
+    AppMethodBeat.o(21285);
+    return str;
   }
   
-  public final long aXt()
+  public final long dbW()
   {
-    if (this.kGU == null) {
+    if (this.ndm == null) {
       return -1L;
     }
-    return this.kGU.kGX;
+    return this.ndm.ndp;
   }
   
   public int describeContents()
@@ -49,14 +66,16 @@ public class GalleryItem$AlbumItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.kGT);
-    paramParcel.writeInt(this.bLO);
-    paramParcel.writeParcelable(this.kGU, paramInt);
+    AppMethodBeat.i(21286);
+    paramParcel.writeString(this.ndl);
+    paramParcel.writeInt(this.cti);
+    paramParcel.writeParcelable(this.ndm, paramInt);
+    AppMethodBeat.o(21286);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.GalleryItem.AlbumItem
  * JD-Core Version:    0.7.0.1
  */

@@ -2,20 +2,25 @@ package com.tencent.soter.core.a;
 
 import android.content.Context;
 import android.os.CancellationSignal;
-import com.tencent.soter.core.c.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@Deprecated
 public final class a
 {
-  static final a.e wOs = new a.f();
+  static final a.e BlQ;
   private Context mContext;
   
   static
   {
-    if (com.tencent.soter.core.a.cPh())
+    AppMethodBeat.i(72987);
+    if (com.tencent.soter.core.a.dVc())
     {
-      wOs = new a.a();
+      BlQ = new a.a();
+      AppMethodBeat.o(72987);
       return;
     }
+    BlQ = new a.f();
+    AppMethodBeat.o(72987);
   }
   
   private a(Context paramContext)
@@ -23,24 +28,35 @@ public final class a
     this.mContext = paramContext;
   }
   
-  public static a hK(Context paramContext)
+  public static a jl(Context paramContext)
   {
-    return new a(paramContext);
+    AppMethodBeat.i(72983);
+    paramContext = new a(paramContext);
+    AppMethodBeat.o(72983);
+    return paramContext;
   }
   
   public final void a(a.d paramd, CancellationSignal paramCancellationSignal, a.b paramb)
   {
-    wOs.a(this.mContext, paramd, paramCancellationSignal, paramb);
+    AppMethodBeat.i(72986);
+    BlQ.a(this.mContext, paramd, paramCancellationSignal, paramb);
+    AppMethodBeat.o(72986);
   }
   
   public final boolean hasEnrolledFingerprints()
   {
-    return wOs.hasEnrolledFingerprints(this.mContext);
+    AppMethodBeat.i(72984);
+    boolean bool = BlQ.hasEnrolledFingerprints(this.mContext);
+    AppMethodBeat.o(72984);
+    return bool;
   }
   
   public final boolean isHardwareDetected()
   {
-    return wOs.isHardwareDetected(this.mContext);
+    AppMethodBeat.i(72985);
+    boolean bool = BlQ.isHardwareDetected(this.mContext);
+    AppMethodBeat.o(72985);
+    return bool;
   }
 }
 

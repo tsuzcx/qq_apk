@@ -1,53 +1,21 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
-import com.tencent.mm.plugin.sns.model.ae;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SnsCommentDetailUI$2
-  extends com.tencent.mm.plugin.sns.ui.d.b
+  implements View.OnClickListener
 {
-  SnsCommentDetailUI$2(SnsCommentDetailUI paramSnsCommentDetailUI, int paramInt, Activity paramActivity, ae paramae)
+  SnsCommentDetailUI$2(SnsCommentDetailUI paramSnsCommentDetailUI) {}
+  
+  public final void onClick(View paramView)
   {
-    super(paramInt, paramActivity, paramae);
-  }
-  
-  public final void b(View paramView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void bE(Object paramObject)
-  {
-    SnsCommentDetailUI.g(this.oWW);
-    SnsCommentDetailUI.p(this.oWW).l((View)paramObject, 2, SnsCommentDetailUI.f(this.oWW));
-  }
-  
-  public final void bHo() {}
-  
-  public final void bHp()
-  {
-    SnsCommentDetailUI.q(this.oWW).bHf();
-  }
-  
-  public final void cT(View paramView) {}
-  
-  public final void cU(View paramView) {}
-  
-  public final void cV(View paramView) {}
-  
-  public final void cW(View paramView) {}
-  
-  public final void cX(View paramView)
-  {
-    SnsCommentDetailUI.q(this.oWW).cS(paramView);
-  }
-  
-  public final void cY(View paramView)
-  {
-    SnsCommentDetailUI.q(this.oWW).bEx();
-    paramView = new Intent();
-    paramView.putExtra("result_finish", true);
-    this.oWW.setResult(-1, paramView);
-    this.oWW.finish();
+    AppMethodBeat.i(38774);
+    ab.e("MicroMsg.SnsCommentDetailUI", "scrollTopClickListener");
+    SnsCommentDetailUI.a(this.rPu, paramView);
+    AppMethodBeat.o(38774);
   }
 }
 

@@ -1,15 +1,28 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.webkit.ValueCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.f;
 
 final class h$2
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  h$2(h paramh, String paramString, ValueCallback paramValueCallback) {}
+  h$2(h paramh) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    h.a(this.rcn, this.bhZ, this.rco);
+    AppMethodBeat.i(6121);
+    if (this.uSc.iha != null)
+    {
+      paramDialogInterface = new Bundle();
+      paramDialogInterface.putInt("type", 2);
+      paramDialogInterface.putString("img_path", this.uSc.iha.uYi);
+      f.a("com.tencent.mm", paramDialogInterface, h.c.class, null);
+      this.uSc.iha.dcJ();
+    }
+    AppMethodBeat.o(6121);
   }
 }
 

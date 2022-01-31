@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="@dimen/fa"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/p6" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="@dimen/l2" android:layout_alignParentLeft="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/p7" android:background="@drawable/am" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@id/p8" android:background="@null" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/p9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/p_" android:background="@drawable/bt" android:clickable="true" android:layout_width="wrap_content" android:layout_height="@dimen/qt" android:layout_marginRight="9.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton android:id="@id/pa" android:background="@drawable/bq" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/pb" android:background="@null" android:layout_width="@dimen/ut" android:layout_height="@dimen/qs" android:src="@color/ex" />
+            <com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleHomeButton android:id="@id/pc" android:background="@drawable/br" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <com.tencent.mm.plugin.appbrand.widget.AppBrandActionBarCustomImageView android:layout_gravity="center_vertical" android:id="@id/pd" android:visibility="gone" android:layout_width="@dimen/qn" android:layout_height="@dimen/qn" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/pe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/p9" android:layout_toRightOf="@id/p6">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/pf" android:paddingRight="24.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/di" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/pg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+            <TextView android:textSize="@dimen/ko" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ph" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+        </LinearLayout>
+        <ProgressBar android:id="@id/pi" android:padding="3.0dip" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_alignRight="@id/pf" android:layout_centerInParent="true" style="@style/a00" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.tencent.mm.pluginsdk.ui.d;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.ui.base.h.c;
 
@@ -11,33 +12,38 @@ final class l$7$1
 {
   l$7$1(l.7 param7, String paramString) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
-    if (this.sjQ.sjL != null) {
-      this.sjQ.sjL.onDismiss(null);
+    AppMethodBeat.i(28137);
+    if (this.wcx.wcs != null) {
+      this.wcx.wcs.onDismiss(null);
     }
     switch (paramInt)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(28137);
       return;
-    case 0: 
-      if (l.coc())
+      if (l.dpp())
       {
-        Context localContext = this.sjQ.val$context;
-        String str = this.ixq;
+        Context localContext = this.wcx.val$context;
+        String str = this.kyt;
         Intent localIntent = new Intent("android.intent.action.INSERT");
         localIntent.setType("vnd.android.cursor.dir/contact");
         localIntent.putExtra("phone", str);
         localContext.startActivity(localIntent);
-        h.nFQ.aC(10113, "1");
+        h.qsU.kvStat(10113, "1");
+        AppMethodBeat.o(28137);
         return;
       }
-      l.bp(this.sjQ.val$context, this.ixq);
-      h.nFQ.aC(10114, "1");
+      l.bB(this.wcx.val$context, this.kyt);
+      h.qsU.kvStat(10114, "1");
+      AppMethodBeat.o(28137);
       return;
+      l.bB(this.wcx.val$context, this.kyt);
+      h.qsU.kvStat(10114, "1");
     }
-    l.bp(this.sjQ.val$context, this.ixq);
-    h.nFQ.aC(10114, "1");
   }
 }
 

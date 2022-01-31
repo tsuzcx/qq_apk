@@ -1,5 +1,6 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
 final class s$4
@@ -9,14 +10,16 @@ final class s$4
   
   public final void run()
   {
-    if ((this.sds.context instanceof MMActivity)) {
-      ((MMActivity)this.sds.context).showVKB();
+    AppMethodBeat.i(79792);
+    if ((this.vUx.context instanceof MMActivity)) {
+      ((MMActivity)this.vUx.context).showVKB();
     }
+    AppMethodBeat.o(79792);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.s.4
  * JD-Core Version:    0.7.0.1
  */

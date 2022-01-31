@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class AudioFormat
 {
   private static final String EXTENSION_AAC = "aac";
@@ -26,23 +28,35 @@ public class AudioFormat
   
   public static AudioFormat.AudioType getAudioType(int paramInt)
   {
-    AudioFormat.AudioType[] arrayOfAudioType = AudioFormat.AudioType.values();
-    int j = arrayOfAudioType.length;
+    AppMethodBeat.i(105563);
+    Object localObject = AudioFormat.AudioType.values();
+    int j = localObject.length;
     int i = 0;
     while (i < j)
     {
-      AudioFormat.AudioType localAudioType = arrayOfAudioType[i];
-      if (AudioFormat.AudioType.access$000(localAudioType) == paramInt) {
+      AudioFormat.AudioType localAudioType = localObject[i];
+      if (AudioFormat.AudioType.access$000(localAudioType) == paramInt)
+      {
+        AppMethodBeat.o(105563);
         return localAudioType;
       }
       i += 1;
     }
-    return AudioFormat.AudioType.UNSUPPORT;
+    localObject = AudioFormat.AudioType.UNSUPPORT;
+    AppMethodBeat.o(105563);
+    return localObject;
   }
   
   public static boolean isAudioType(AudioFormat.AudioType paramAudioType)
   {
-    return (paramAudioType != null) && (!AudioFormat.AudioType.UNSUPPORT.equals(paramAudioType));
+    AppMethodBeat.i(105562);
+    if ((paramAudioType != null) && (!AudioFormat.AudioType.UNSUPPORT.equals(paramAudioType)))
+    {
+      AppMethodBeat.o(105562);
+      return true;
+    }
+    AppMethodBeat.o(105562);
+    return false;
   }
 }
 

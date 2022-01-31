@@ -1,57 +1,14 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.LinearLayout;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.as.a.c.g;
-import com.tencent.mm.as.a.d.b;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.ui.chatting.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 final class d$e$3
-  implements g
+  implements DialogInterface.OnClickListener
 {
-  d$e$3(d.e parame, d.c paramc, com.tencent.mm.ui.chatting.c.a parama) {}
+  d$e$3(d.e parame) {}
   
-  public final Bitmap a(String paramString, View paramView, b paramb)
-  {
-    return null;
-  }
-  
-  public final void b(final String paramString, View paramView, b paramb)
-  {
-    if (paramb.bitmap != null)
-    {
-      paramString = paramb.bitmap;
-      this.vCh.vBI.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
-      {
-        public final boolean onPreDraw()
-        {
-          d.e.3.this.vCh.vBI.getViewTreeObserver().removeOnPreDrawListener(this);
-          int j = d.e.3.this.vCh.vBI.getHeight();
-          int k = d.e.3.this.vCh.vBI.getWidth();
-          int i = j;
-          if (j == 0) {
-            i = com.tencent.mm.cb.a.aa(d.e.3.this.vBl.vtz.getContext(), R.f.chatting_music_item_height);
-          }
-          j = k;
-          if (k == 0) {
-            j = com.tencent.mm.cb.a.aa(d.e.3.this.vBl.vtz.getContext(), R.f.chatting_music_item_width);
-          }
-          BitmapDrawable localBitmapDrawable = new BitmapDrawable(c.a(paramString, R.g.chat_to_content_bg_mask, j, i));
-          d.e.3.this.vCh.vBI.setBackgroundDrawable(localBitmapDrawable);
-          return true;
-        }
-      });
-    }
-  }
-  
-  public final void mv(String paramString) {}
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

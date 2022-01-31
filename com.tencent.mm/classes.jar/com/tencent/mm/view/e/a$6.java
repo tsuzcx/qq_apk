@@ -1,20 +1,25 @@
 package com.tencent.mm.view.e;
 
-import com.tencent.mm.view.SmileyPanelViewPager;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ab;
 
-public final class a$6
-  implements Runnable
+final class a$6
+  implements k.a
 {
-  public a$6(a parama, String paramString) {}
+  a$6(a parama) {}
   
-  public final void run()
+  public final void a(String paramString, m paramm)
   {
-    if ((a.c(this.wzg) == null) || (a.d(this.wzg) == null) || (a.d(this.wzg).afc(this.iXv) == null)) {
-      return;
+    AppMethodBeat.i(63028);
+    if ((!TextUtils.isEmpty(paramString)) && ((paramString.equals("event_update_group")) || (paramString.equalsIgnoreCase("productID"))))
+    {
+      ab.d("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "modify emoji group .");
+      this.AUz.dRo();
     }
-    a.a(this.wzg, a.d(this.wzg).afc(this.iXv).hxB);
-    a.c(this.wzg).setCurrentItem(a.e(this.wzg));
-    a.d(this.wzg).wzE = 0;
+    AppMethodBeat.o(63028);
   }
 }
 

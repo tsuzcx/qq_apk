@@ -6,120 +6,137 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.a.a;
 import com.tencent.mm.plugin.account.friend.a.x;
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.av;
 import com.tencent.mm.ui.base.MMFormInputView;
 import com.tencent.mm.ui.base.h;
 
 public final class j
   implements f, MobileInputUI.b
 {
-  protected String dqS = null;
-  protected String fcQ = "";
-  protected int fcR = 2;
-  private MobileInputUI fnW;
+  protected String eiu = null;
+  private MobileInputUI gFq;
+  protected String guB = "";
+  protected int guC = 2;
   
   public final void a(MobileInputUI.a parama)
   {
-    switch (j.2.fob[parama.ordinal()])
+    AppMethodBeat.i(125112);
+    switch (j.2.gFv[parama.ordinal()])
     {
-    default: 
-      return;
     }
-    this.fnW.foC = ar.Zv(this.fnW.countryCode);
-    this.fnW.foD = this.fnW.foo.getText().toString();
-    parama = this.fnW.foC + this.fnW.foD;
-    if (this.fnW.fev != null)
+    for (;;)
     {
-      y.d("MicroMsg.MobileInputRegLogic", "already checking ");
+      AppMethodBeat.o(125112);
       return;
+      this.gFq.gFW = av.apA(this.gFq.countryCode);
+      this.gFq.gFX = this.gFq.gFJ.getText().toString();
+      parama = this.gFq.gFW + this.gFq.gFX;
+      if (this.gFq.gwe != null)
+      {
+        ab.d("MicroMsg.MobileInputRegLogic", "already checking ");
+        AppMethodBeat.o(125112);
+        return;
+      }
+      MobileInputUI localMobileInputUI1 = this.gFq;
+      MobileInputUI localMobileInputUI2 = this.gFq;
+      this.gFq.getString(2131297087);
+      localMobileInputUI1.gwe = h.b(localMobileInputUI2, this.gFq.getString(2131302413), true, new j.1(this));
+      parama = new x(parama, 1, "", 0, "");
+      g.Rc().a(parama, 0);
     }
-    MobileInputUI localMobileInputUI1 = this.fnW;
-    MobileInputUI localMobileInputUI2 = this.fnW;
-    this.fnW.getString(q.j.app_tip);
-    localMobileInputUI1.fev = h.b(localMobileInputUI2, this.fnW.getString(q.j.regbyfacebook_reg_setpwd_exiting), true, new j.1(this));
-    parama = new x(parama, 1, "", 0, "");
-    g.Dk().a(parama, 0);
   }
   
   public final void a(MobileInputUI paramMobileInputUI)
   {
-    this.fnW = paramMobileInputUI;
-    paramMobileInputUI.fop.requestFocus();
+    AppMethodBeat.i(125109);
+    this.gFq = paramMobileInputUI;
+    paramMobileInputUI.gFK.requestFocus();
     paramMobileInputUI.showVKB();
-    this.dqS = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_ticket");
-    this.fcQ = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_NextStep");
-    this.fcR = paramMobileInputUI.getIntent().getIntExtra("regsetinfo_NextStyle", 2);
-    String str2 = paramMobileInputUI.getString(q.j.regbymoile_reg_title);
+    this.eiu = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_ticket");
+    this.guB = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_NextStep");
+    this.guC = paramMobileInputUI.getIntent().getIntExtra("regsetinfo_NextStyle", 2);
+    String str2 = paramMobileInputUI.getString(2131302468);
     String str1 = str2;
-    if (d.spd) {
-      str1 = str2 + paramMobileInputUI.getString(q.j.alpha_version_alpha);
+    if (d.whK) {
+      str1 = str2 + paramMobileInputUI.getString(2131296529);
     }
     paramMobileInputUI.setMMTitle(str1);
-    paramMobileInputUI.fbR.setVisibility(0);
-    paramMobileInputUI.foo.setVisibility(0);
-    paramMobileInputUI.fop.requestFocus();
-    paramMobileInputUI.jdField_for.setVisibility(0);
-    paramMobileInputUI.fou.setVisibility(0);
-    paramMobileInputUI.fou.setText(q.j.loginby_new_mobile_reg_ok);
+    paramMobileInputUI.gtI.setVisibility(0);
+    paramMobileInputUI.gFJ.setVisibility(0);
+    paramMobileInputUI.gFK.requestFocus();
+    paramMobileInputUI.gFM.setVisibility(0);
+    paramMobileInputUI.gFP.setVisibility(0);
+    paramMobileInputUI.gFP.setText(2131301166);
+    AppMethodBeat.o(125109);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    y.i("MicroMsg.MobileInputRegLogic", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.fnW.fev != null)
+    AppMethodBeat.i(125113);
+    ab.i("MicroMsg.MobileInputRegLogic", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.gFq.gwe != null)
     {
-      this.fnW.fev.dismiss();
-      this.fnW.fev = null;
+      this.gFq.gwe.dismiss();
+      this.gFq.gwe = null;
     }
     if (paramm.getType() == 132)
     {
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label275;
-      }
-      if (((x)paramm).rN() == 1)
+      if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = new Intent();
-        paramString.putExtra("bindmcontact_mobile", this.fnW.foC + " " + this.fnW.foo.getText().toString());
-        paramString.putExtra("bindmcontact_shortmobile", this.fnW.foo.getText().toString());
-        paramString.putExtra("country_name", this.fnW.esg);
-        paramString.putExtra("couttry_code", this.fnW.countryCode);
-        paramString.putExtra("mobile_verify_purpose", 4);
-        paramString.putExtra("regsetinfo_ticket", this.dqS);
-        paramString.putExtra("regsetinfo_NextStep", this.fcQ);
-        paramString.putExtra("regsetinfo_NextStyle", this.fcR);
-        paramString.setClass(this.fnW, MobileVerifyUI.class);
-        this.fnW.startActivity(paramString);
-        this.fnW.finish();
+        if (((x)paramm).Ac() == 1)
+        {
+          paramString = new Intent();
+          paramString.putExtra("bindmcontact_mobile", this.gFq.gFW + " " + this.gFq.gFJ.getText().toString());
+          paramString.putExtra("bindmcontact_shortmobile", this.gFq.gFJ.getText().toString());
+          paramString.putExtra("country_name", this.gFq.fHT);
+          paramString.putExtra("couttry_code", this.gFq.countryCode);
+          paramString.putExtra("mobile_verify_purpose", 4);
+          paramString.putExtra("regsetinfo_ticket", this.eiu);
+          paramString.putExtra("regsetinfo_NextStep", this.guB);
+          paramString.putExtra("regsetinfo_NextStyle", this.guC);
+          paramString.setClass(this.gFq, MobileVerifyUI.class);
+          this.gFq.startActivity(paramString);
+          this.gFq.finish();
+        }
+        AppMethodBeat.o(125113);
+        return;
       }
-    }
-    label275:
-    while (a.eUS.a(this.fnW, paramInt1, paramInt2, paramString)) {
+      if (a.gmP.a(this.gFq, paramInt1, paramInt2, paramString))
+      {
+        AppMethodBeat.o(125113);
+        return;
+      }
+      Toast.makeText(this.gFq, this.gFq.getString(2131297614, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      AppMethodBeat.o(125113);
       return;
     }
-    Toast.makeText(this.fnW, this.fnW.getString(q.j.bind_mcontact_verify_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    AppMethodBeat.o(125113);
   }
   
   public final void start()
   {
-    g.Dk().a(132, this);
+    AppMethodBeat.i(125110);
+    g.Rc().a(132, this);
+    AppMethodBeat.o(125110);
   }
   
   public final void stop()
   {
-    g.Dk().b(132, this);
+    AppMethodBeat.i(125111);
+    g.Rc().b(132, this);
+    AppMethodBeat.o(125111);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.j
  * JD-Core Version:    0.7.0.1
  */

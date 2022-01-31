@@ -5,104 +5,106 @@ import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.c.byg;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.protocal.protobuf.ckx;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.b.d;
 
 public abstract class h
   extends RecyclerView.v
   implements a
 {
-  public View.OnClickListener nuB = new h.1(this);
-  public byg pDy;
-  public b pEP;
-  private boolean pEQ;
+  protected View.OnClickListener qaq = new h.1(this);
+  public ckx tfm;
+  public b tim;
+  private boolean tin;
   
   public h(View paramView, b paramb)
   {
     super(paramView);
-    this.pEP = paramb;
-    dm(paramView);
+    this.tim = paramb;
+    ep(paramView);
   }
   
-  public final void a(b paramb, Context paramContext, f paramf, int paramInt)
+  protected final void a(b paramb, Context paramContext, f paramf, int paramInt)
   {
-    byg localbyg = paramb.bNJ().Es(paramInt);
-    if (localbyg != null)
+    ckx localckx = paramb.cJs().GI(paramInt);
+    ((com.tencent.mm.plugin.topstory.a.b)g.G(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.cJf(), localckx, paramInt, 5, "");
+    if (localckx != null)
     {
-      if (this.pEP.bNx().bOu())
+      if (this.tim.cJh().cKj())
       {
-        this.pEP.bNx().bFy();
-        this.pEQ = true;
+        this.tim.cJh().crn();
+        this.tin = true;
       }
       d locald = new d(paramContext, 1, false);
-      locald.phH = new h.2(this);
-      locald.phI = new h.3(this, paramf, paramContext, localbyg, paramb);
-      locald.wmU = new h.4(this);
-      locald.cfU();
+      locald.sao = new h.2(this);
+      locald.sap = new h.3(this, paramf, paramContext, localckx, paramb, paramInt);
+      locald.AGQ = new h.4(this);
+      locald.crd();
     }
   }
   
-  public final void a(byg parambyg)
+  public void cIZ()
   {
-    this.pDy = parambyg;
-    y.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "onBindItemHolder %s", new Object[] { parambyg.title });
-    bNY();
+    this.tim.cIZ();
   }
   
-  public boolean bNX()
+  public boolean cJK()
   {
     return false;
   }
   
-  public abstract void bNY();
+  public abstract void cJL();
   
-  public abstract f bNZ();
+  public abstract f cJM();
   
-  public void bNp()
+  public void cJa()
   {
-    this.pEP.bNp();
+    this.tim.cJa();
   }
   
-  public void bNq()
+  public int cJb()
   {
-    this.pEP.bNq();
+    return jN() - this.tim.cJm().getHeadersCount();
   }
   
-  public int bNr()
+  public final void d(ckx paramckx)
   {
-    return id() - this.pEP.bND().pEn.size();
+    this.tfm = paramckx;
+    ab.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "onBindItemHolder %s", new Object[] { paramckx.title });
+    cJL();
   }
   
-  public void dm(View paramView) {}
+  public void ep(View paramView) {}
   
-  public void dn(View paramView)
+  protected void eq(View paramView)
   {
-    if (this.pEP.bNB() != bNr())
+    if (this.tim.cJk() != cJb())
     {
-      this.pEP.bNt().pGp = 2;
-      this.pEP.zw(bNr());
-      com.tencent.mm.plugin.websearch.api.a.a.jdMethod_if(4);
-      this.pEP.bNt().c(this.pDy);
-      ((com.tencent.mm.plugin.topstory.a.b)g.t(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.pEP.bNv(), this.pDy, bNr(), 2, "");
-      return;
+      this.tim.cJd().tjK = 2;
+      this.tim.Gz(cJb());
+      com.tencent.mm.plugin.websearch.api.a.a.kS(4);
+      this.tim.cJd().g(this.tfm);
+      ((com.tencent.mm.plugin.topstory.a.b)g.G(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.tim.cJf(), this.tfm, cJb(), 2, "");
     }
-    if (bNX())
+    do
     {
-      bNq();
-      this.pEP.bNq();
-      bNp();
-      this.pEP.bNp();
       return;
-    }
-    jdMethod_do(paramView);
+      er(paramView);
+    } while (!cJK());
+    cJa();
+    this.tim.cJa();
+    cIZ();
+    this.tim.cIZ();
   }
   
-  public void jdMethod_do(View paramView) {}
+  public void er(View paramView) {}
   
-  public void jJ(boolean paramBoolean)
+  public abstract View getWowView();
+  
+  public void mA(boolean paramBoolean)
   {
-    this.pEP.bNH();
+    this.tim.cJq();
   }
 }
 

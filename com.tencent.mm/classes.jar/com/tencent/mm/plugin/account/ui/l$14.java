@@ -1,24 +1,21 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.q;
+import android.app.ProgressDialog;
+import com.tencent.mm.ui.base.p;
 
 final class l$14
-  implements DialogInterface.OnCancelListener
+  implements g.a
 {
-  l$14(l paraml, q paramq) {}
+  l$14(l paraml) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void a(ProgressDialog paramProgressDialog)
   {
-    g.Dk().c(this.fmo);
+    this.gFF.gFq.gwe = ((p)paramProgressDialog);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.l.14
  * JD-Core Version:    0.7.0.1
  */

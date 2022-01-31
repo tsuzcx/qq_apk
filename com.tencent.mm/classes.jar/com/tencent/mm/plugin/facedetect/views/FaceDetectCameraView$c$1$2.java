@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.facedetect.views;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FaceDetectCameraView$c$1$2
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class FaceDetectCameraView$c$1$2
   
   public final void run()
   {
-    FaceDetectCameraView.i(this.jUj.jUi.jUa).qT(0);
+    AppMethodBeat.i(577);
+    FaceDetectCameraView.i(this.moC.moB.mot).vO(0);
+    AppMethodBeat.o(577);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceDetectCameraView.c.1.2
  * JD-Core Version:    0.7.0.1
  */

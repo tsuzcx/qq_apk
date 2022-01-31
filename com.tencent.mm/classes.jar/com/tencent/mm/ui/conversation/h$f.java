@@ -7,18 +7,21 @@ import com.tencent.mm.ui.base.NoMeasuredTextView;
 
 public final class h$f
 {
-  public ImageView doU;
-  public TextView hZk;
-  public ImageView vQz;
-  public ImageView vSF;
-  public ImageView vSG;
-  public h.c vSH;
-  public NoMeasuredTextView veJ;
-  public NoMeasuredTextView veK;
-  public NoMeasuredTextView veL;
-  public ImageView veM;
-  public ImageView veN;
-  public View veO;
+  public ImageView Aij;
+  public h.c AkA;
+  public ImageView Aky;
+  public ImageView Akz;
+  public ImageView egq;
+  public TextView jSi;
+  public int position;
+  public String username;
+  public boolean ztf;
+  public NoMeasuredTextView zti;
+  public NoMeasuredTextView ztj;
+  public NoMeasuredTextView ztk;
+  public ImageView ztl;
+  public ImageView ztm;
+  public View ztn;
 }
 
 

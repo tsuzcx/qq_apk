@@ -2,19 +2,22 @@ package com.tencent.mm.plugin.brandservice.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.profile.a.c;
+import com.tencent.mm.plugin.profile.b.d;
 
 final class EnterpriseBizContactListView$a$3$1
   implements DialogInterface.OnCancelListener
 {
-  EnterpriseBizContactListView$a$3$1(EnterpriseBizContactListView.a.3 param3, c paramc) {}
+  EnterpriseBizContactListView$a$3$1(EnterpriseBizContactListView.a.3 param3, d paramd) {}
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.Dk().c(this.idF);
-    g.Dk().b(1394, this.idG.idE);
+    AppMethodBeat.i(13960);
+    g.Rc().a(this.jUt);
+    g.Rc().b(1394, this.jUu.jUs);
+    AppMethodBeat.o(13960);
   }
 }
 

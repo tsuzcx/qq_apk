@@ -1,128 +1,199 @@
 package com.tencent.mm.ui.chatting;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.s;
-import com.tencent.mm.modelappbrand.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.g.a.oa;
+import com.tencent.mm.g.a.oa.b;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bi;
-import java.io.ByteArrayOutputStream;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.bizchat.BizChatSelectConversationUI;
+import com.tencent.mm.ui.chatting.c.b.i;
+import com.tencent.mm.ui.tools.l;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class m
 {
-  public static g.a a(String paramString, com.tencent.mm.ae.m paramm)
+  private static com.tencent.mm.ui.base.p zya = null;
+  private static m.a zyv;
+  
+  public static void a(com.tencent.mm.ui.chatting.d.a parama, String paramString, long paramLong)
   {
-    g.a locala = new g.a();
-    locala.title = paramm.title;
-    locala.description = paramm.dTF;
-    locala.type = 33;
-    locala.dSY = paramm.dTI;
-    locala.dSX = paramm.dTJ;
-    locala.dSZ = paramm.dTM;
-    locala.dTf = paramm.dTL;
-    locala.dTg = paramm.dTK;
-    locala.dTb = "";
-    locala.dTa = 2;
-    locala.url = paramm.url;
-    locala.dTh = paramm.dTO;
-    locala.bYM = ("wxapp_" + paramm.dTM + paramm.dTJ);
-    locala.bYG = paramm.dTI;
-    locala.bYH = paramm.dTP;
-    paramm = new com.tencent.mm.ae.a();
-    paramm.dPD = false;
-    paramm.dPE = "";
-    locala.a(paramm);
-    if (bk.bl(locala.thumburl))
+    AppMethodBeat.i(30616);
+    Activity localActivity = parama.zJz.getContext();
+    if ((!ah.isNullOrNil(paramString)) && (paramString.length() > 0))
     {
-      paramString = o.Kh().kp(paramString);
-      if (paramString != null) {
-        locala.thumburl = paramString.JX();
-      }
+      localActivity.getString(2131297087);
+      zya = h.b(localActivity, localActivity.getString(2131303124), false, null);
+      com.tencent.mm.ui.chatting.c.j.zEQ.e(new m.b(parama, localActivity, paramString, paramLong, zyv));
     }
-    return locala;
+    ((i)parama.ay(i.class)).dHU();
+    AppMethodBeat.o(30616);
   }
   
-  public static void b(String paramString1, g.a parama, String paramString2)
+  public static void a(com.tencent.mm.ui.chatting.d.a parama, List<bi> paramList, boolean paramBoolean, com.tencent.mm.ui.chatting.c.j paramj, ad paramad)
   {
-    Object localObject2 = null;
+    AppMethodBeat.i(30612);
+    if (parama == null)
+    {
+      ab.w("MicroMsg.ChattingEditModeSendToBrand", "do send to brand fail, fragment is null");
+      AppMethodBeat.o(30612);
+      return;
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      ab.w("MicroMsg.ChattingEditModeSendToBrand", "do send to brand fail, select item empty");
+      AppMethodBeat.o(30612);
+      return;
+    }
+    Object localObject = new m.a((byte)0);
+    zyv = (m.a)localObject;
+    ((m.a)localObject).zyt = new LinkedList(paramList);
+    zyv.zvB = paramBoolean;
+    zyv.cEG = paramad.field_username;
+    zyv.zyC = true;
+    Activity localActivity = parama.zJz.getContext();
+    if (localActivity == null)
+    {
+      AppMethodBeat.o(30612);
+      return;
+    }
+    l locall = new l(localActivity);
+    locall.AvY = new m.1();
+    locall.AvZ = new m.2(localActivity);
+    if (com.tencent.mm.pluginsdk.model.app.p.u(localActivity, "com.tencent.wework")) {}
+    for (localObject = j.dGl();; localObject = j.dGk())
+    {
+      locall.sao = new m.3((List)localObject);
+      locall.sap = new m.4(paramList, localActivity, parama, paramad, paramj);
+      locall.cwt();
+      AppMethodBeat.o(30612);
+      return;
+    }
+  }
+  
+  public static void a(String paramString, com.tencent.mm.ui.chatting.d.a parama)
+  {
+    AppMethodBeat.i(30614);
+    Object localObject = f.rS(paramString);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(30614);
+      return;
+    }
+    if (((com.tencent.mm.aj.d)localObject).aei())
+    {
+      localObject = new Intent(parama.zJz.getContext(), BizChatSelectConversationUI.class);
+      ((Intent)localObject).putExtra("enterprise_biz_name", paramString);
+      ((Intent)localObject).putExtra("biz_chat_scene", 2);
+      ((Intent)localObject).putExtra("enterprise_extra_params", zyv.zyC);
+      parama.a((Intent)localObject, 225, new m.6(parama));
+      AppMethodBeat.o(30614);
+      return;
+    }
+    if (((com.tencent.mm.aj.d)localObject).aeg())
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("enterprise_biz_name", paramString);
+      ((Intent)localObject).putExtra("enterprise_scene", 1);
+      com.tencent.mm.bq.d.a(parama.zJz, "brandservice", ".ui.EnterpriseBizContactPlainListUI", (Intent)localObject, 225);
+    }
+    AppMethodBeat.o(30614);
+  }
+  
+  public static void a(String paramString, com.tencent.mm.ui.chatting.d.a parama, List<bi> paramList)
+  {
+    AppMethodBeat.i(30613);
+    Activity localActivity = parama.zJz.getContext();
+    if (localActivity == null)
+    {
+      AppMethodBeat.o(30613);
+      return;
+    }
+    Object localObject = f.rS(paramString);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(30613);
+      return;
+    }
+    boolean bool1 = ((com.tencent.mm.aj.d)localObject).aei();
+    boolean bool2;
+    int i;
+    if (zyv.zyC)
+    {
+      bool2 = j.eX(paramList);
+      if (bool1) {
+        if ((paramList == null) || (paramList.isEmpty()))
+        {
+          ab.w("MicroMsg.ChattingEditModeLogic", "check contain invalid send to bizchat msg error, selected item empty");
+          i = 1;
+          zyv.zyt = new LinkedList(paramList);
+          if ((!bool2) && (i == 0)) {
+            break label268;
+          }
+          paramList = localActivity.getString(2131299314);
+        }
+      }
+    }
     for (;;)
     {
-      try
+      if (paramList != null)
       {
-        byte[] arrayOfByte = new byte[0];
-        Object localObject1 = localObject2;
-        if (!bk.bl(paramString2)) {
-          if (!paramString2.startsWith("http://"))
-          {
-            localObject1 = localObject2;
-            if (!paramString2.startsWith("https://")) {}
-          }
-          else
-          {
-            localObject1 = b.JD().a(paramString2, null);
-          }
-        }
-        if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
-        {
-          y.i("MicroMsg.ChattingEditModeSendToAppBrand", "thumb image is not null ");
-          paramString2 = new ByteArrayOutputStream();
-          ((Bitmap)localObject1).compress(Bitmap.CompressFormat.PNG, 100, paramString2);
-          paramString2 = paramString2.toByteArray();
-          if (s.fn(paramString1))
-          {
-            i = 1;
-            com.tencent.mm.pluginsdk.model.app.l.a(parama, parama.dSZ, parama.title, paramString1, null, paramString2);
-            com.tencent.mm.plugin.report.service.h.nFQ.f(14127, new Object[] { parama.dSZ, parama.dSY, parama.dSX, parama.title, parama.description, "", parama.url, Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(i), paramString1 });
-          }
-        }
-        else
-        {
-          y.e("MicroMsg.ChattingEditModeSendToAppBrand", "thumb image is null");
-          paramString2 = arrayOfByte;
-          continue;
-        }
-        int i = 0;
-      }
-      catch (Exception paramString1)
-      {
-        y.printErrStackTrace("MicroMsg.ChattingEditModeSendToAppBrand", paramString1, "", new Object[0]);
-        y.e("MicroMsg.ChattingEditModeSendToAppBrand", "retransmit sigle app msg error : %s", new Object[] { paramString1.getLocalizedMessage() });
+        h.a(localActivity, paramList, "", new m.5(paramString, parama), null);
+        AppMethodBeat.o(30613);
         return;
+        localObject = paramList.iterator();
+        for (;;)
+        {
+          if (((Iterator)localObject).hasNext())
+          {
+            bi localbi = (bi)((Iterator)localObject).next();
+            if ((!localbi.isText()) && (!localbi.dvW()) && (!localbi.dvX()) && (!localbi.bCp()) && (!j.aE(localbi)))
+            {
+              i = 1;
+              break;
+            }
+          }
+        }
+        i = 0;
+        break;
+        if (!bool2) {
+          break label268;
+        }
+        paramList = localActivity.getString(2131299315);
+        continue;
       }
+      a(paramString, parama);
+      AppMethodBeat.o(30613);
+      return;
+      label268:
+      paramList = null;
     }
   }
   
-  public static boolean e(bi parambi, int paramInt)
+  public static oa bQ(Context paramContext, String paramString)
   {
-    if (parambi == null) {}
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!parambi.ctz());
-        parambi = ((com.tencent.mm.plugin.biz.a.a)g.r(com.tencent.mm.plugin.biz.a.a.class)).d(parambi.field_msgId, parambi.field_content).dTx;
-      } while (bk.dk(parambi));
-      if (paramInt >= 0)
-      {
-        i = paramInt;
-        if (paramInt < parambi.size()) {}
-      }
-      else
-      {
-        i = 0;
-      }
-    } while (!com.tencent.mm.ae.i.gr(((com.tencent.mm.ae.m)parambi.get(i)).dTI));
-    return true;
+    AppMethodBeat.i(30615);
+    oa localoa = new oa();
+    localoa.cEz.type = 6;
+    localoa.cEz.cEF = zyv.zyt;
+    localoa.cEz.toUser = paramString;
+    localoa.cEz.cEG = zyv.cEG;
+    localoa.cEz.context = paramContext;
+    com.tencent.mm.sdk.b.a.ymk.l(localoa);
+    zyv.cDZ = localoa.cEA.cDZ;
+    zyv.zyu = localoa.cEA.cEI;
+    AppMethodBeat.o(30615);
+    return localoa;
   }
 }
 

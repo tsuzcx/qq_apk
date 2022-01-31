@@ -5,12 +5,12 @@ public final class c$cc
 {
   public c$cc()
   {
-    super("getMsgProofItems", "getMsgProofItems", 226, true);
+    super("getHeadingAndPitch", "get_heading_and_pitch", 33, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.c.cc
  * JD-Core Version:    0.7.0.1
  */

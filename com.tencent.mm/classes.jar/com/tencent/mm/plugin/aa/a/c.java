@@ -1,24 +1,31 @@
 package com.tencent.mm.plugin.aa.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class c
   implements com.tencent.mm.vending.c.b<b>
 {
-  protected b eVH;
-  public final c.a eVI = new c.a(this);
+  protected b gnE;
+  public final c.a gnF;
   
   public c()
   {
     this(new b());
+    AppMethodBeat.i(40596);
+    AppMethodBeat.o(40596);
   }
   
   private c(b paramb)
   {
-    this.eVH = paramb;
+    AppMethodBeat.i(40597);
+    this.gnF = new c.a(this);
+    this.gnE = paramb;
+    AppMethodBeat.o(40597);
   }
   
-  public final b Vl()
+  public final b aoJ()
   {
-    return this.eVH;
+    return this.gnE;
   }
 }
 

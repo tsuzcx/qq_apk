@@ -5,7 +5,9 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.ui.widget.textview.b;
 
 final class TextPreviewUI$8
   implements View.OnCreateContextMenuListener
@@ -14,10 +16,15 @@ final class TextPreviewUI$8
   
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
+    AppMethodBeat.i(31051);
     paramContextMenu.clear();
-    paramContextMenu.add(0, 0, 0, this.vnn.getResources().getString(R.l.app_copy));
-    paramContextMenu.add(1, 1, 0, this.vnn.getResources().getString(R.l.menu_select_all));
-    paramContextMenu.add(1, 2, 0, this.vnn.getResources().getString(R.l.menu_retransmits));
+    paramContextMenu.add(0, 0, 0, this.zCJ.getResources().getString(2131296895));
+    int i = bh.t(TextPreviewUI.b(this.zCJ));
+    if ((i <= 0) || (i >= b.fz(TextPreviewUI.a(this.zCJ)).length())) {
+      paramContextMenu.add(1, 1, 0, this.zCJ.getResources().getString(2131301554));
+    }
+    paramContextMenu.add(1, 2, 0, this.zCJ.getResources().getString(2131301553));
+    AppMethodBeat.o(31051);
   }
 }
 

@@ -7,6 +7,8 @@ public class CdnLogic$C2CUploadResult
   public int connectCostTime = 0;
   public boolean crossNet = false;
   public int delayTime = 0;
+  public int detailErrorCode = 0;
+  public int detailErrorType = 0;
   public int errorCode = 0;
   public boolean existOnSvr = false;
   public int fileCrc32 = 0;
@@ -24,6 +26,7 @@ public class CdnLogic$C2CUploadResult
   public boolean sendmsgFromCDN = false;
   public String serverIP = "";
   public byte[] skeyrespbuf = null;
+  public String systemErrorDescribe = "";
   public int thumbfileSize = 0;
   public String thumbfileUrl = "";
   public String thumbfilemd5 = "";

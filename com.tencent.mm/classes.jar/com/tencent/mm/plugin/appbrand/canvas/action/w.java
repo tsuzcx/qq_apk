@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetGlobalCompositeOperationActionArg;
@@ -15,201 +16,220 @@ public final class w
 {
   private static boolean b(com.tencent.mm.plugin.appbrand.canvas.d paramd, String paramString)
   {
-    paramd = paramd.fLq;
+    AppMethodBeat.i(103256);
+    paramd = paramd.heC;
     int i = -1;
     switch (paramString.hashCode())
     {
+    default: 
+      switch (i)
+      {
+      }
+      break;
     }
     for (;;)
     {
-      switch (i)
-      {
-      default: 
-        return true;
-        if (paramString.equals("source-over"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("source-in"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("source-out"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("source-atop"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("destination-over"))
-                {
-                  i = 4;
-                  continue;
-                  if (paramString.equals("destination-in"))
-                  {
-                    i = 5;
-                    continue;
-                    if (paramString.equals("destination-out"))
-                    {
-                      i = 6;
-                      continue;
-                      if (paramString.equals("destination-atop"))
-                      {
-                        i = 7;
-                        continue;
-                        if (paramString.equals("lighter"))
-                        {
-                          i = 8;
-                          continue;
-                          if (paramString.equals("copy"))
-                          {
-                            i = 9;
-                            continue;
-                            if (paramString.equals("xor"))
-                            {
-                              i = 10;
-                              continue;
-                              if (paramString.equals("multiply"))
-                              {
-                                i = 11;
-                                continue;
-                                if (paramString.equals("overlay"))
-                                {
-                                  i = 12;
-                                  continue;
-                                  if (paramString.equals("darken"))
-                                  {
-                                    i = 13;
-                                    continue;
-                                    if (paramString.equals("lighten"))
-                                    {
-                                      i = 14;
-                                      continue;
-                                      if (paramString.equals("color-dodge"))
-                                      {
-                                        i = 15;
-                                        continue;
-                                        if (paramString.equals("color-burn"))
-                                        {
-                                          i = 16;
-                                          continue;
-                                          if (paramString.equals("hard-light"))
-                                          {
-                                            i = 17;
-                                            continue;
-                                            if (paramString.equals("soft-light"))
-                                            {
-                                              i = 18;
-                                              continue;
-                                              if (paramString.equals("difference"))
-                                              {
-                                                i = 19;
-                                                continue;
-                                                if (paramString.equals("exclusion"))
-                                                {
-                                                  i = 20;
-                                                  continue;
-                                                  if (paramString.equals("hue"))
-                                                  {
-                                                    i = 21;
-                                                    continue;
-                                                    if (paramString.equals("saturation"))
-                                                    {
-                                                      i = 22;
-                                                      continue;
-                                                      if (paramString.equals("color"))
-                                                      {
-                                                        i = 23;
-                                                        continue;
-                                                        if (paramString.equals("luminosity")) {
-                                                          i = 24;
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+      AppMethodBeat.o(103256);
+      return true;
+      if (!paramString.equals("source-over")) {
         break;
       }
+      i = 0;
+      break;
+      if (!paramString.equals("source-in")) {
+        break;
+      }
+      i = 1;
+      break;
+      if (!paramString.equals("source-out")) {
+        break;
+      }
+      i = 2;
+      break;
+      if (!paramString.equals("source-atop")) {
+        break;
+      }
+      i = 3;
+      break;
+      if (!paramString.equals("destination-over")) {
+        break;
+      }
+      i = 4;
+      break;
+      if (!paramString.equals("destination-in")) {
+        break;
+      }
+      i = 5;
+      break;
+      if (!paramString.equals("destination-out")) {
+        break;
+      }
+      i = 6;
+      break;
+      if (!paramString.equals("destination-atop")) {
+        break;
+      }
+      i = 7;
+      break;
+      if (!paramString.equals("lighter")) {
+        break;
+      }
+      i = 8;
+      break;
+      if (!paramString.equals("copy")) {
+        break;
+      }
+      i = 9;
+      break;
+      if (!paramString.equals("xor")) {
+        break;
+      }
+      i = 10;
+      break;
+      if (!paramString.equals("multiply")) {
+        break;
+      }
+      i = 11;
+      break;
+      if (!paramString.equals("overlay")) {
+        break;
+      }
+      i = 12;
+      break;
+      if (!paramString.equals("darken")) {
+        break;
+      }
+      i = 13;
+      break;
+      if (!paramString.equals("lighten")) {
+        break;
+      }
+      i = 14;
+      break;
+      if (!paramString.equals("color-dodge")) {
+        break;
+      }
+      i = 15;
+      break;
+      if (!paramString.equals("color-burn")) {
+        break;
+      }
+      i = 16;
+      break;
+      if (!paramString.equals("hard-light")) {
+        break;
+      }
+      i = 17;
+      break;
+      if (!paramString.equals("soft-light")) {
+        break;
+      }
+      i = 18;
+      break;
+      if (!paramString.equals("difference")) {
+        break;
+      }
+      i = 19;
+      break;
+      if (!paramString.equals("exclusion")) {
+        break;
+      }
+      i = 20;
+      break;
+      if (!paramString.equals("hue")) {
+        break;
+      }
+      i = 21;
+      break;
+      if (!paramString.equals("saturation")) {
+        break;
+      }
+      i = 22;
+      break;
+      if (!paramString.equals("color")) {
+        break;
+      }
+      i = 23;
+      break;
+      if (!paramString.equals("luminosity")) {
+        break;
+      }
+      i = 24;
+      break;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_ATOP));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.LIGHTEN));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.ADD));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.XOR));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.MULTIPLY));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.OVERLAY));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DARKEN));
+      continue;
+      paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.LIGHTEN));
     }
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_ATOP));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.LIGHTEN));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.ADD));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.XOR));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.MULTIPLY));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.OVERLAY));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DARKEN));
-    return true;
-    paramd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.LIGHTEN));
-    return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
+    AppMethodBeat.i(103257);
     paramCanvas = (SetGlobalCompositeOperationActionArg)paramDrawActionArg;
-    if (paramCanvas == null) {
+    if (paramCanvas == null)
+    {
+      AppMethodBeat.o(103257);
       return false;
     }
-    return b(paramd, paramCanvas.type);
+    boolean bool = b(paramd, paramCanvas.type);
+    AppMethodBeat.o(103257);
+    return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    if (paramJSONArray.length() <= 0) {
+    AppMethodBeat.i(103255);
+    if (paramJSONArray.length() <= 0)
+    {
+      AppMethodBeat.o(103255);
       return false;
     }
     try
     {
       paramCanvas = paramJSONArray.getString(0);
-      return b(paramd, paramCanvas);
+      boolean bool = b(paramd, paramCanvas);
+      AppMethodBeat.o(103255);
+      return bool;
     }
-    catch (JSONException paramd) {}
+    catch (JSONException paramd)
+    {
+      AppMethodBeat.o(103255);
+    }
     return false;
   }
   
-  public final BaseDrawActionArg adE()
+  public final BaseDrawActionArg axW()
   {
-    return new SetGlobalCompositeOperationActionArg();
+    AppMethodBeat.i(103254);
+    SetGlobalCompositeOperationActionArg localSetGlobalCompositeOperationActionArg = new SetGlobalCompositeOperationActionArg();
+    AppMethodBeat.o(103254);
+    return localSetGlobalCompositeOperationActionArg;
   }
   
   public final String getMethod()
@@ -219,7 +239,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.w
  * JD-Core Version:    0.7.0.1
  */

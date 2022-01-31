@@ -1,26 +1,36 @@
 package com.tencent.mm.ui.conversation;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.ai.a.e;
-import com.tencent.mm.model.bd.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.a.e;
+import com.tencent.mm.model.bf.a;
 import com.tencent.mm.pointers.PBool;
 
 final class c$11$1
-  implements bd.a
+  implements bf.a
 {
   c$11$1(c.11 param11) {}
   
-  public final void xA()
+  public final boolean JS()
   {
-    e.D(this.vPC.uII, false);
-    if (this.vPC.doh != null) {
-      this.vPC.doh.dismiss();
+    AppMethodBeat.i(34164);
+    if ((this.Ahn.Ahi.value) || (this.Ahn.efE == null) || (!this.Ahn.efE.isShowing()))
+    {
+      AppMethodBeat.o(34164);
+      return true;
     }
+    AppMethodBeat.o(34164);
+    return false;
   }
   
-  public final boolean xz()
+  public final void JT()
   {
-    return (this.vPC.vPx.value) || (this.vPC.doh == null) || (!this.vPC.doh.isShowing());
+    AppMethodBeat.i(34165);
+    e.H(this.Ahn.yWh, false);
+    if (this.Ahn.efE != null) {
+      this.Ahn.efE.dismiss();
+    }
+    AppMethodBeat.o(34165);
   }
 }
 

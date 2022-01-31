@@ -2,24 +2,27 @@ package com.tencent.mm.plugin.fav.ui;
 
 import android.os.Message;
 import android.widget.Button;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class FavPostVoiceUI$6
-  extends ah
+  extends ak
 {
   FavPostVoiceUI$6(FavPostVoiceUI paramFavPostVoiceUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(74046);
     super.handleMessage(paramMessage);
-    this.kcp.aRj();
-    FavPostVoiceUI.g(this.kcp).setBackgroundResource(n.d.record_shape_press);
-    FavPostVoiceUI.g(this.kcp).setEnabled(true);
+    this.mxa.bxy();
+    FavPostVoiceUI.g(this.mxa).setBackgroundResource(2130840130);
+    FavPostVoiceUI.g(this.mxa).setEnabled(true);
+    AppMethodBeat.o(74046);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavPostVoiceUI.6
  * JD-Core Version:    0.7.0.1
  */

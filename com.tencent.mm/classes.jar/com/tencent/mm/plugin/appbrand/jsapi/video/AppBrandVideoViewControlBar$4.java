@@ -1,15 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class AppBrandVideoViewControlBar$4
-  implements am.a
+  implements ap.a
 {
   AppBrandVideoViewControlBar$4(AppBrandVideoViewControlBar paramAppBrandVideoViewControlBar) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    return AppBrandVideoViewControlBar.d(this.gEr);
+    AppMethodBeat.i(131537);
+    if (!AppBrandVideoViewControlBar.d(this.idw))
+    {
+      AppMethodBeat.o(131537);
+      return false;
+    }
+    AppMethodBeat.o(131537);
+    return true;
   }
 }
 

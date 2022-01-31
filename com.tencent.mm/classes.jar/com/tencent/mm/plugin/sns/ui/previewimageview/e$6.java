@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.ui.previewimageview;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class e$6
@@ -9,13 +10,15 @@ final class e$6
   
   public final void run()
   {
-    this.ppV.zb(this.ppX.size());
-    this.ppV.ppK.notifyDataSetChanged();
+    AppMethodBeat.i(40326);
+    this.skN.Fm(this.skP.size());
+    this.skN.skC.notifyDataSetChanged();
+    AppMethodBeat.o(40326);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.e.6
  * JD-Core Version:    0.7.0.1
  */

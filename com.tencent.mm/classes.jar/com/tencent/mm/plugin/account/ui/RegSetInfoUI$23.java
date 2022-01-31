@@ -4,77 +4,86 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.widget.EditText;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.compatible.util.f;
 import com.tencent.mm.platformtools.i;
-import com.tencent.mm.sdk.platformtools.ai.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al.a;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.d;
 
 final class RegSetInfoUI$23
-  implements ai.a
+  implements al.a
 {
-  String fsv;
+  String gJX;
   Bitmap mBitmap;
   
   RegSetInfoUI$23(RegSetInfoUI paramRegSetInfoUI) {}
   
-  public final boolean JS()
+  public final boolean acS()
   {
+    AppMethodBeat.i(125529);
     try
     {
-      this.fsv = i.bI(this.fso);
-      this.mBitmap = i.bJ(this.fso);
+      this.gJX = i.cp(this.gJQ);
+      this.mBitmap = i.cq(this.gJQ);
       if ((this.mBitmap == null) || (this.mBitmap.isRecycled())) {}
     }
     catch (Exception localException1)
     {
       try
       {
-        c.a(this.mBitmap, 100, Bitmap.CompressFormat.PNG, e.dzK + "temp.avatar", false);
+        d.a(this.mBitmap, 100, Bitmap.CompressFormat.PNG, e.esy + "temp.avatar", false);
+        AppMethodBeat.o(125529);
         return true;
         localException1 = localException1;
-        y.e("MiroMsg.RegSetInfoUI", "getName or getBitmap err : " + localException1.getMessage());
+        ab.e("MiroMsg.RegSetInfoUI", "getName or getBitmap err : " + localException1.getMessage());
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          y.e("MiroMsg.RegSetInfoUI", "save avatar fail." + localException2.getMessage());
-          y.printErrStackTrace("MiroMsg.RegSetInfoUI", localException2, "", new Object[0]);
+          ab.e("MiroMsg.RegSetInfoUI", "save avatar fail." + localException2.getMessage());
+          ab.printErrStackTrace("MiroMsg.RegSetInfoUI", localException2, "", new Object[0]);
         }
       }
     }
   }
   
-  public final boolean JT()
+  public final boolean acT()
   {
-    if ((!bk.bl(this.fsv)) && (bk.bl(RegSetInfoUI.b(this.fso).getText().trim()))) {
-      RegSetInfoUI.b(this.fso).setText(this.fsv);
+    AppMethodBeat.i(125528);
+    if ((!bo.isNullOrNil(this.gJX)) && (bo.isNullOrNil(RegSetInfoUI.b(this.gJQ).getText().trim()))) {
+      RegSetInfoUI.b(this.gJQ).setText(this.gJX);
     }
-    if (!f.zF())
+    if (!f.Mi())
     {
-      y.e("MiroMsg.RegSetInfoUI", "SDcard is not available");
+      ab.e("MiroMsg.RegSetInfoUI", "SDcard is not available");
+      AppMethodBeat.o(125528);
       return false;
     }
-    if ((this.mBitmap != null) && (!this.mBitmap.isRecycled()) && (!RegSetInfoUI.j(this.fso)))
+    if ((this.mBitmap != null) && (!this.mBitmap.isRecycled()) && (!RegSetInfoUI.j(this.gJQ)))
     {
-      RegSetInfoUI.i(this.fso).setImageBitmap(this.mBitmap);
-      RegSetInfoUI.k(this.fso);
-      RegSetInfoUI.l(this.fso).setVisibility(0);
+      RegSetInfoUI.i(this.gJQ).setImageBitmap(this.mBitmap);
+      RegSetInfoUI.k(this.gJQ);
+      RegSetInfoUI.l(this.gJQ).setVisibility(0);
     }
+    AppMethodBeat.o(125528);
     return true;
   }
   
   public final String toString()
   {
-    return super.toString() + "|initView";
+    AppMethodBeat.i(125530);
+    String str = super.toString() + "|initView";
+    AppMethodBeat.o(125530);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegSetInfoUI.23
  * JD-Core Version:    0.7.0.1
  */

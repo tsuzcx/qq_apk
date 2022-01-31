@@ -1,15 +1,22 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.vending.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.rr;
+import com.tencent.mm.sdk.b.c;
 
 final class SnsTimeLineUI$10
-  implements a<Void, Void>
+  extends c<rr>
 {
-  SnsTimeLineUI$10(SnsTimeLineUI paramSnsTimeLineUI, boolean paramBoolean1, boolean paramBoolean2) {}
+  SnsTimeLineUI$10(SnsTimeLineUI paramSnsTimeLineUI)
+  {
+    AppMethodBeat.i(39459);
+    this.__eventId = rr.class.getName().hashCode();
+    AppMethodBeat.o(39459);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTimeLineUI.10
  * JD-Core Version:    0.7.0.1
  */

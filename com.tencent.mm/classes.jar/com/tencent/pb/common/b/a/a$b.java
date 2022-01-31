@@ -6,35 +6,35 @@ import com.google.a.a.e;
 public final class a$b
   extends e
 {
-  public int aQw = 0;
-  public String wGf = "";
+  public String BdG = "";
+  public int aXG = 0;
   
   public a$b()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
-    if (!this.wGf.equals("")) {
-      paramb.d(1, this.wGf);
+    if (!this.BdG.equals("")) {
+      paramb.e(1, this.BdG);
     }
-    if (this.aQw != 0) {
-      paramb.aL(2, this.aQw);
+    if (this.aXG != 0) {
+      paramb.bj(2, this.aXG);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
-    if (!this.wGf.equals("")) {
-      i = j + b.e(1, this.wGf);
+    if (!this.BdG.equals("")) {
+      i = j + b.f(1, this.BdG);
     }
     j = i;
-    if (this.aQw != 0) {
-      j = i + b.aN(2, this.aQw);
+    if (this.aXG != 0) {
+      j = i + b.bl(2, this.aXG);
     }
     return j;
   }

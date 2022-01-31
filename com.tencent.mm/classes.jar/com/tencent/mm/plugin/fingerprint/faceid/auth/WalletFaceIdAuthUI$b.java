@@ -2,8 +2,7 @@ package com.tencent.mm.plugin.fingerprint.faceid.auth;
 
 import android.os.Bundle;
 import android.widget.Toast;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.wallet_core.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class WalletFaceIdAuthUI$b
   extends WalletFaceIdAuthUI.c
@@ -11,54 +10,70 @@ public final class WalletFaceIdAuthUI$b
   public WalletFaceIdAuthUI$b(WalletFaceIdAuthUI paramWalletFaceIdAuthUI)
   {
     super(paramWalletFaceIdAuthUI);
+    AppMethodBeat.i(41378);
+    com.tencent.mm.plugin.soter.d.a.Ft(1);
+    AppMethodBeat.o(41378);
   }
   
-  private void aSr()
+  private void byK()
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.WalletFaceIdAuthUI", "do end process");
-    a.b(this.kkD, new Bundle(), 0);
+    AppMethodBeat.i(41383);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletFaceIdAuthUI", "do end process");
+    com.tencent.mm.wallet_core.a.b(this.mFs, new Bundle(), 0);
+    AppMethodBeat.o(41383);
   }
   
-  protected final boolean aSk()
+  protected final void byF()
   {
-    return false;
+    AppMethodBeat.i(41379);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletFaceIdAuthUI", "do prepare ");
+    this.mFs.showProgress();
+    this.mFr.a(this.mFs, new WalletFaceIdAuthUI.b.1(this), this.gJv);
+    AppMethodBeat.o(41379);
   }
   
-  protected final void aSm()
+  public final void byG()
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.WalletFaceIdAuthUI", "do prepare ");
-    this.kkD.aEg();
-    this.kkC.a(this.kkD, new WalletFaceIdAuthUI.b.1(this), this.frT);
+    AppMethodBeat.i(41382);
+    byK();
+    AppMethodBeat.o(41382);
   }
   
-  public final void aSn()
+  public final void byH()
   {
-    aSr();
+    AppMethodBeat.i(41381);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletFaceIdAuthUI", "do verify face id");
+    byL();
+    AppMethodBeat.o(41381);
   }
   
-  public final void aSo()
-  {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.WalletFaceIdAuthUI", "do verify face id");
-    aSs();
-  }
-  
-  protected final int aSp()
+  protected final int byI()
   {
     return 0;
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  protected final boolean isTransparent()
   {
-    if (this.kkC.c(paramInt1, paramInt2, paramString, paramm)) {
-      return true;
-    }
-    if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.y))
+    return false;
+  }
+  
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  {
+    AppMethodBeat.i(41380);
+    if (this.mFr.onSceneEnd(paramInt1, paramInt2, paramString, paramm))
     {
-      this.kkD.bka();
-      aSr();
-      Toast.makeText(this.kkD, a.i.fingerprint_open_success, 0).show();
+      AppMethodBeat.o(41380);
       return true;
     }
+    if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.ab))
+    {
+      this.mFs.hideProgress();
+      byK();
+      Toast.makeText(this.mFs, 2131299969, 0).show();
+      AppMethodBeat.o(41380);
+      return true;
+    }
+    AppMethodBeat.o(41380);
     return false;
   }
 }

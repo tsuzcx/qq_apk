@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fts.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.a;
 
 final class c$3$1
@@ -9,7 +10,9 @@ final class c$3$1
   
   public final boolean execute()
   {
-    this.kzf.kze.kyW.A(-200L, 9223372036854775807L);
+    AppMethodBeat.i(136737);
+    this.mUV.mUU.mUM.M(-200L, 9223372036854775807L);
+    AppMethodBeat.o(136737);
     return true;
   }
   

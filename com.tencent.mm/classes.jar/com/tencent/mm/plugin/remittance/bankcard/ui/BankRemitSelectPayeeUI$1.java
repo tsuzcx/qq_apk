@@ -5,8 +5,9 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.bankcard.model.TransferRecordParcel;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class BankRemitSelectPayeeUI$1
   implements AdapterView.OnItemClickListener
@@ -15,14 +16,16 @@ final class BankRemitSelectPayeeUI$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    y.d("MicroMsg.BankRemitSelectPayeeUI", "item click: %s", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(44671);
+    ab.d("MicroMsg.BankRemitSelectPayeeUI", "item click: %s", new Object[] { Integer.valueOf(paramInt) });
     paramAdapterView = (TransferRecordParcel)paramAdapterView.getAdapter().getItem(paramInt);
     if (paramAdapterView != null)
     {
-      BankRemitSelectPayeeUI.a(this.nxC).putExtra("key_bank_card_seqno", paramAdapterView.nvy);
-      this.nxC.setResult(-1, BankRemitSelectPayeeUI.a(this.nxC));
-      this.nxC.finish();
+      BankRemitSelectPayeeUI.a(this.qiD).putExtra("key_bank_card_seqno", paramAdapterView.qgu);
+      this.qiD.setResult(-1, BankRemitSelectPayeeUI.a(this.qiD));
+      this.qiD.finish();
     }
+    AppMethodBeat.o(44671);
   }
 }
 

@@ -1,17 +1,39 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.ao.a;
+import com.tencent.mm.model.ao.f;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.record.b.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.bi;
+import com.tencent.mm.ui.chatting.c.b.aj;
+import com.tencent.mm.ui.chatting.d;
+import com.tencent.mm.ui.chatting.d.a;
 
 final class ar$1
-  implements View.OnClickListener
+  implements f
 {
-  ar$1(ar paramar) {}
+  ar$1(ar paramar, bi parambi, String paramString, int paramInt) {}
   
-  public final void onClick(View paramView)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.d("MicroMsg.ChattingItemWxaSubscribeSysImpl", "hy: textview clicked");
+    AppMethodBeat.i(33401);
+    ab.d("MicroMsg.ChattingItemVoiceRemindSys", "errType " + paramInt1 + " errCode " + paramInt2 + "  scene " + paramm.getType());
+    boolean bool = false;
+    if (ao.a.flL != null) {
+      bool = ao.a.flL.gv(this.zYi.field_msgId);
+    }
+    if ((!bool) && (paramInt1 == 0) && (paramInt2 == 0) && (((e)paramm).getMediaId().equals(this.Cq))) {
+      ((aj)ar.a(this.zYk).ay(aj.class)).dJv().a(this.zYj, this.zYi);
+    }
+    aw.Rc().b(221, ar.b(this.zYk));
+    ar.c(this.zYk);
+    AppMethodBeat.o(33401);
   }
 }
 

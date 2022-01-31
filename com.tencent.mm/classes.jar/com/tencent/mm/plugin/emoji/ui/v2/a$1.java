@@ -1,52 +1,21 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mm.plugin.emoji.ui.EmojiStoreVpHeader;
-import com.tencent.mm.sdk.platformtools.ah;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
-  extends ah
+  implements View.OnClickListener
 {
-  a$1(a parama) {}
+  a$1(a parama, PaddingImageView paramPaddingImageView, int paramInt) {}
   
-  public final void handleMessage(Message paramMessage)
+  public final void onClick(View paramView)
   {
-    a locala = this.jgg;
-    switch (paramMessage.what)
-    {
+    AppMethodBeat.i(53840);
+    if (a.a(this.lsn) != null) {
+      a.a(this.lsn).uk(this.jwn);
     }
-    do
-    {
-      String str;
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-              } while (locala.iYq == null);
-              locala.iYq.notifyDataSetChanged();
-              return;
-            } while ((locala.iYq == null) || (paramMessage.getData() == null));
-            str = paramMessage.getData().getString("product_id");
-          } while (str == null);
-          i = paramMessage.getData().getInt("progress");
-          locala.iYq.bu(str, i);
-          return;
-        } while ((locala.iYq == null) || (paramMessage.getData() == null));
-        str = paramMessage.getData().getString("product_id");
-      } while (str == null);
-      int i = paramMessage.getData().getInt("status");
-      locala.iYq.bt(str, i);
-      return;
-    } while (locala.jbh == null);
-    locala.jbh.aJr();
+    AppMethodBeat.o(53840);
   }
 }
 

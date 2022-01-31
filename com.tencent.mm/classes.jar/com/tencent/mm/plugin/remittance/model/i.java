@@ -1,118 +1,180 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import android.net.wifi.WifiInfo;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.h.a.fu;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.soter.d.d;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.protocal.c.kd;
-import com.tencent.mm.protocal.c.ke;
-import com.tencent.mm.protocal.c.yz;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.g.a.fx;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.network.k;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.protocal.protobuf.adg;
+import com.tencent.mm.protocal.protobuf.mj;
+import com.tencent.mm.protocal.protobuf.mp;
+import com.tencent.mm.protocal.protobuf.mq;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
 import java.net.URLDecoder;
+import org.json.JSONObject;
 
 public final class i
   extends m
-  implements com.tencent.mm.network.k, com.tencent.mm.wallet_core.c.g
+  implements k, com.tencent.mm.wallet_core.c.i
 {
-  private f dmL;
-  public b eWr;
-  public ke nyh;
-  public String nyi;
-  public fu nyj = null;
+  private f callback;
+  public b goo;
+  public mq qji;
+  public String qjj;
+  public fx qjk;
   
-  public i(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, int paramInt3, String paramString5, String paramString6, int paramInt4, int paramInt5, String paramString7, yz paramyz, String paramString8, int paramInt6, String paramString9, String paramString10, String paramString11, String paramString12)
+  public i(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, int paramInt3, String paramString5, String paramString6, int paramInt4, int paramInt5, String paramString7, adg paramadg, String paramString8, int paramInt6, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, int paramInt7, int paramInt8)
   {
+    AppMethodBeat.i(44738);
+    this.qjk = null;
     Object localObject2 = new b.a();
-    ((b.a)localObject2).ecH = new kd();
-    ((b.a)localObject2).ecI = new ke();
-    ((b.a)localObject2).ecG = 1633;
+    ((b.a)localObject2).fsX = new mp();
+    ((b.a)localObject2).fsY = new mq();
+    ((b.a)localObject2).funcId = 1633;
     ((b.a)localObject2).uri = "/cgi-bin/mmpay-bin/busif2fplaceorder";
-    ((b.a)localObject2).ecJ = 0;
-    ((b.a)localObject2).ecK = 0;
-    Object localObject1 = d.bKR();
-    String str = ((com.tencent.mm.plugin.soter.d.e)localObject1).psl;
-    localObject1 = ((com.tencent.mm.plugin.soter.d.e)localObject1).psm;
-    this.nyi = paramString9;
-    this.eWr = ((b.a)localObject2).Kt();
-    localObject2 = (kd)this.eWr.ecE.ecN;
-    ((kd)localObject2).nzl = paramString1;
-    ((kd)localObject2).sES = URLDecoder.decode(paramString2);
-    ((kd)localObject2).scene = paramInt1;
-    ((kd)localObject2).sET = paramString3;
-    ((kd)localObject2).nzf = paramString4;
-    ((kd)localObject2).swh = paramInt2;
-    ((kd)localObject2).bUR = paramInt3;
-    ((kd)localObject2).nzg = paramString5;
-    ((kd)localObject2).nzm = paramString6;
-    ((kd)localObject2).nzk = paramInt4;
-    ((kd)localObject2).swg = paramString7;
-    if (paramyz != null) {
-      ((kd)localObject2).swf = paramyz;
+    ((b.a)localObject2).reqCmdId = 0;
+    ((b.a)localObject2).respCmdId = 0;
+    Object localObject1 = com.tencent.mm.plugin.soter.d.d.cyc();
+    String str = ((com.tencent.mm.plugin.soter.d.e)localObject1).son;
+    localObject1 = ((com.tencent.mm.plugin.soter.d.e)localObject1).kbP;
+    this.qjj = paramString9;
+    this.goo = ((b.a)localObject2).ado();
+    localObject2 = (mp)this.goo.fsV.fta;
+    ((mp)localObject2).qkn = paramString1;
+    ((mp)localObject2).wBb = URLDecoder.decode(paramString2);
+    ((mp)localObject2).scene = paramInt1;
+    ((mp)localObject2).wBc = paramString3;
+    ((mp)localObject2).qkh = paramString4;
+    ((mp)localObject2).wpu = paramInt2;
+    ((mp)localObject2).cCy = paramInt3;
+    ((mp)localObject2).qki = paramString5;
+    ((mp)localObject2).qko = paramString6;
+    ((mp)localObject2).qkm = paramInt4;
+    ((mp)localObject2).wBj = paramString13;
+    ((mp)localObject2).wBl = paramInt8;
+    ((mp)localObject2).wpt = paramString7;
+    if (paramadg != null) {
+      ((mp)localObject2).wps = paramadg;
     }
-    ((kd)localObject2).sEM = paramString8;
-    ((kd)localObject2).nxO = paramInt6;
+    ((mp)localObject2).wAV = paramString8;
+    ((mp)localObject2).qiP = paramInt6;
     if (paramInt5 == 1)
     {
-      paramString1 = aq.getWifiInfo(ae.getContext());
+      paramString1 = at.getWifiInfo(ah.getContext());
       if (paramString1 == null) {
-        break label396;
+        break label451;
       }
-      ((kd)localObject2).sEU = paramString1.getBSSID();
+      ((mp)localObject2).wBd = paramString1.getBSSID();
     }
     for (;;)
     {
-      ((kd)localObject2).sEV = 0;
-      ((kd)localObject2).psl = str;
-      ((kd)localObject2).psm = ((String)localObject1);
-      ((kd)localObject2).sEX = o.bVs().bVP();
-      com.tencent.mm.kernel.g.r(com.tencent.mm.pluginsdk.k.class);
-      ((kd)localObject2).sEW = false;
-      ((kd)localObject2).sEY = paramString9;
-      ((kd)localObject2).nzi = paramString10;
-      ((kd)localObject2).nickname = paramString11;
-      ((kd)localObject2).nyK = paramString12;
-      y.i("MicroMsg.NetSceneBusiF2fPlaceOrder", "dycodeurl: %s", new Object[] { paramString9 });
-      y.i("MicroMsg.NetSceneBusiF2fPlaceOrder", "NetSceneBusiF2fPlaceOrder, scene: %s, channel: %s, total: %s, qrcode: %s, getPayWifi: %s favor_compose_info %s dynamicCodeUrl %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt2), paramString2, Integer.valueOf(paramInt5), a.a(paramyz), paramString9 });
+      ((mp)localObject2).wBe = 0;
+      ((mp)localObject2).son = str;
+      ((mp)localObject2).kbP = ((String)localObject1);
+      ((mp)localObject2).wBg = t.cTN().cUp();
+      g.E(l.class);
+      ((mp)localObject2).wBf = false;
+      ((mp)localObject2).wBh = paramString9;
+      ((mp)localObject2).qkk = paramString10;
+      ((mp)localObject2).nickname = paramString11;
+      ((mp)localObject2).wBk = paramInt7;
+      ((mp)localObject2).qjK = paramString12;
+      ab.i("MicroMsg.NetSceneBusiF2fPlaceOrder", "dycodeurl: %s", new Object[] { paramString9 });
+      ab.i("MicroMsg.NetSceneBusiF2fPlaceOrder", "NetSceneBusiF2fPlaceOrder, scene: %s, channel: %s, total: %s, qrcode: %s, getPayWifi: %s favor_compose_info %s dynamicCodeUrl %s cancel_f2fid:%s cancel_reason:%s unpayType:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt2), paramString2, Integer.valueOf(paramInt5), a.a(paramadg), paramString9, paramString13, Integer.valueOf(paramInt8), Integer.valueOf(paramInt7) });
+      AppMethodBeat.o(44738);
       return;
-      label396:
-      y.w("MicroMsg.NetSceneBusiF2fPlaceOrder", "wifi info is null");
+      label451:
+      ab.w("MicroMsg.NetSceneBusiF2fPlaceOrder", "wifi info is null");
     }
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public static mj Yf(String paramString)
   {
-    this.dmL = paramf;
-    return a(parame, this.eWr, this);
+    AppMethodBeat.i(142130);
+    mj localmj = new mj();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      localmj.bsY = paramString.optInt("flag");
+      localmj.wAP = paramString.optInt("succpage_first_delay_ms");
+      localmj.wAQ = paramString.optInt("succpage_max_retry_cnt");
+      localmj.wAR = paramString.optInt("succpage_retry_waiting_ms");
+      AppMethodBeat.o(142130);
+      return localmj;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        ab.e("MicroMsg.NetSceneBusiF2fPlaceOrder", "createBusiF2FFaultConfigFromJSONObject() Exception: %s", new Object[] { paramString.getMessage() });
+      }
+    }
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public static JSONObject a(mj parammj)
   {
-    y.i("MicroMsg.NetSceneBusiF2fPlaceOrder", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.nyh = ((ke)((b)paramq).ecF.ecN);
-    paramq = new StringBuffer();
-    paramq.append(String.format("trans_id: %s,", new Object[] { this.nyh.swd }));
-    paramq.append(String.format("zero_pay_flag: %s,", new Object[] { Integer.valueOf(this.nyh.sFf) }));
-    paramq.append(String.format("can_use_fingerprint: %s,", new Object[] { Integer.valueOf(this.nyh.sFl) }));
-    paramq.append(String.format("payer_need_auth_flag: %s,", new Object[] { Integer.valueOf(this.nyh.sFg) }));
-    y.i("MicroMsg.NetSceneBusiF2fPlaceOrder", "ret_code: %s, ret_msg: %s trans_id: %s f2f_id: %s re_getfavor: %s payok_checksign: %s reqKey %s ret:%s", new Object[] { Integer.valueOf(this.nyh.ino), this.nyh.inp, this.nyh.swd, this.nyh.swc, Integer.valueOf(this.nyh.sFe), this.nyh.swe, this.nyh.bOT, paramq.toString() });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(142129);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("flag", parammj.bsY);
+      localJSONObject.put("succpage_first_delay_ms", parammj.wAP);
+      localJSONObject.put("succpage_max_retry_cnt", parammj.wAQ);
+      localJSONObject.put("succpage_retry_waiting_ms", parammj.wAR);
+      AppMethodBeat.o(142129);
+      return localJSONObject;
     }
+    catch (Exception parammj)
+    {
+      for (;;)
+      {
+        ab.e("MicroMsg.NetSceneBusiF2fPlaceOrder", "getBusiF2FFaultConfigJSONObject() Exception: %s", new Object[] { parammj.getMessage() });
+      }
+    }
+  }
+  
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  {
+    AppMethodBeat.i(44739);
+    this.callback = paramf;
+    int i = dispatch(parame, this.goo, this);
+    AppMethodBeat.o(44739);
+    return i;
   }
   
   public final int getType()
   {
     return 1633;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(44740);
+    ab.i("MicroMsg.NetSceneBusiF2fPlaceOrder", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.qji = ((mq)((b)paramq).fsW.fta);
+    paramq = new StringBuffer();
+    paramq.append(String.format("trans_id: %s,", new Object[] { this.qji.wpq }));
+    paramq.append(String.format("zero_pay_flag: %s,", new Object[] { Integer.valueOf(this.qji.wBr) }));
+    paramq.append(String.format("can_use_fingerprint: %s,", new Object[] { Integer.valueOf(this.qji.wBx) }));
+    paramq.append(String.format("payer_need_auth_flag: %s,", new Object[] { Integer.valueOf(this.qji.wBs) }));
+    paramArrayOfByte = new com.tencent.mm.wallet_core.c.d(paramInt2, paramInt3, paramString);
+    com.tencent.mm.wallet_core.c.q.getRetModel(paramInt2, paramInt3, paramString, paramArrayOfByte);
+    ab.i("MicroMsg.NetSceneBusiF2fPlaceOrder", "ret_code: %s, ret_msg: %s trans_id: %s f2f_id: %s re_getfavor: %s payok_checksign: %s reqKey %s ret:%s", new Object[] { Integer.valueOf(this.qji.koj), this.qji.kok, this.qji.wpq, this.qji.wpp, Integer.valueOf(this.qji.wBq), this.qji.wpr, this.qji.cwk, paramq.toString() });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramArrayOfByte.errType, paramArrayOfByte.errCode, paramArrayOfByte.errMsg, this);
+    }
+    AppMethodBeat.o(44740);
   }
 }
 

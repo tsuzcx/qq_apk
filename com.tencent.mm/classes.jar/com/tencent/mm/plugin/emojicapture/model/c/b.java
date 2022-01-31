@@ -1,14 +1,11 @@
 package com.tencent.mm.plugin.emojicapture.model.c;
 
-import a.d.a.a;
+import a.l;
 
-final class b
-  implements Runnable
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"TAG", "", "plugin-emojicapture_release"})
+public final class b
 {
-  b(a parama)
-  {
-    this.jlN = parama;
-  }
+  private static final String TAG = "MicroMsg.EmoticonLensConfig";
 }
 
 

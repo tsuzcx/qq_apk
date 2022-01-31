@@ -5,8 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseAAPresenterActivity$2
   implements View.OnClickListener
@@ -15,17 +14,21 @@ final class BaseAAPresenterActivity$2
   
   public final void onClick(View paramView)
   {
-    if ((!BaseAAPresenterActivity.h(this.eYl).isShown()) && (!this.eYg))
+    AppMethodBeat.i(40778);
+    if ((!BaseAAPresenterActivity.h(this.gqc).isShown()) && (!this.val$isShowSysKB))
     {
-      this.eYl.cNi();
-      BaseAAPresenterActivity.a(this.eYl, this.eYi);
-      BaseAAPresenterActivity.b(this.eYl, this.eYk);
-    }
-    while (!this.eYg) {
+      this.gqc.showTenpayKB();
+      BaseAAPresenterActivity.a(this.gqc, this.val$hintTv);
+      BaseAAPresenterActivity.b(this.gqc, this.val$editMode);
+      AppMethodBeat.o(40778);
       return;
     }
-    this.eYl.VH();
-    ((InputMethodManager)this.eYl.mController.uMN.getSystemService("input_method")).showSoftInput(this.eYi, 0);
+    if (this.val$isShowSysKB)
+    {
+      this.gqc.hideTenpayKB();
+      ((InputMethodManager)this.gqc.getContext().getSystemService("input_method")).showSoftInput(this.val$hintTv, 0);
+    }
+    AppMethodBeat.o(40778);
   }
 }
 

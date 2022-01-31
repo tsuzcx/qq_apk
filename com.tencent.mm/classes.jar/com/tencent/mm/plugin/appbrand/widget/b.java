@@ -1,30 +1,17 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.widget.ImageView;
-import com.tencent.mm.plugin.appbrand.jsapi.base.e;
+import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SuppressLint({"AppCompatCustomView"})
-public class b
-  extends ImageView
-  implements e
+public final class b
 {
-  private boolean hnD;
-  
-  public b(Context paramContext)
+  public static int di(Context paramContext)
   {
-    super(paramContext);
-  }
-  
-  public final boolean ail()
-  {
-    return this.hnD;
-  }
-  
-  public void setInterceptEvent(boolean paramBoolean)
-  {
-    this.hnD = paramBoolean;
+    AppMethodBeat.i(87439);
+    int i = paramContext.getResources().getDimensionPixelSize(2131427557);
+    AppMethodBeat.o(87439);
+    return i;
   }
 }
 

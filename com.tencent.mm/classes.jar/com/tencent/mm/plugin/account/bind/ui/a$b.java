@@ -4,28 +4,30 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.plugin.account.bind.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$b
 {
-  ImageView dpY;
-  TextView eXu;
-  String fds;
-  TextView fdt;
-  TextView fdu;
-  View fdv;
-  ProgressBar fdw;
+  ImageView ehv;
+  TextView gpr;
+  String gvd;
+  TextView gve;
+  TextView gvf;
+  View gvg;
+  ProgressBar gvh;
   int position;
   
   public a$b(a parama, View paramView)
   {
-    this.dpY = ((ImageView)paramView.findViewById(a.e.gcontact_avatar_iv));
-    this.fdt = ((TextView)paramView.findViewById(a.e.gcontact_name_tv));
-    this.fdv = paramView.findViewById(a.e.gcontact_operation_view);
-    this.eXu = ((TextView)paramView.findViewById(a.e.gcontact_status_tv));
-    this.fdw = ((ProgressBar)paramView.findViewById(a.e.gcontact_invita_pb));
-    this.fdu = ((TextView)paramView.findViewById(a.e.gcontact_email_tv));
-    this.fdv.setOnClickListener(new a.b.1(this, parama));
+    AppMethodBeat.i(13643);
+    this.ehv = ((ImageView)paramView.findViewById(2131824794));
+    this.gve = ((TextView)paramView.findViewById(2131824795));
+    this.gvg = paramView.findViewById(2131824797);
+    this.gpr = ((TextView)paramView.findViewById(2131824798));
+    this.gvh = ((ProgressBar)paramView.findViewById(2131824799));
+    this.gvf = ((TextView)paramView.findViewById(2131824796));
+    this.gvg.setOnClickListener(new a.b.1(this, parama));
+    AppMethodBeat.o(13643);
   }
 }
 

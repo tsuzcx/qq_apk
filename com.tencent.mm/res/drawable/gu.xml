@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:drawable="@drawable/a9_" />
-    <item android:state_pressed="true" android:drawable="@drawable/a9b" />
-    <item android:state_selected="true" android:drawable="@drawable/a9_" />
-    <item android:drawable="@drawable/a9a" />
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/e3" />
+            <solid android:color="@color/i9" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/e3" />
+            <solid android:color="@color/ia" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/e3" />
+            <solid android:color="@color/i_" />
+        </shape>
+    </item>
 </selector>

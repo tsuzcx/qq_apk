@@ -1,11 +1,20 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.spans;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class c
   extends o<Boolean, d>
 {
-  private p rKr = new p();
+  private p vAV;
   
-  public final int ciY()
+  public c()
+  {
+    AppMethodBeat.i(26935);
+    this.vAV = new p();
+    AppMethodBeat.o(26935);
+  }
+  
+  public final int djz()
   {
     return 1;
   }

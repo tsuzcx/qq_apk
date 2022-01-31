@@ -1,36 +1,27 @@
 package com.tencent.mm.plugin.sns.ui.b.a;
 
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.mm.plugin.sns.ui.widget.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.ui.c.a.b;
 
 final class d$2
-  implements Animation.AnimationListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  d$2(d paramd, View paramView1, View paramView2, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2) {}
+  d$2(d paramd) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.pms.setVisibility(0);
-    this.pmt.setVisibility(8);
-    this.pmr.yY(this.pmu);
-    paramAnimation = new a(this.pmr.context, this.pmv, 0.0F, this.bAT, this.bAU, false);
-    paramAnimation.setDuration(187L);
-    paramAnimation.setInterpolator(new DecelerateInterpolator());
-    this.pmr.contentView.startAnimation(paramAnimation);
-    this.pmr.pgy = false;
-    this.pmr.aqU();
+    AppMethodBeat.i(40017);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.sfh.seU.sfR.setAlpha(f);
+    AppMethodBeat.o(40017);
   }
-  
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.a.d.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,161 +1,183 @@
 package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.modelvoice.g;
+import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.cbr;
-import com.tencent.mm.protocal.c.cbs;
-import com.tencent.mm.protocal.c.cbt;
-import com.tencent.mm.protocal.c.cds;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.cox;
+import com.tencent.mm.protocal.protobuf.coy;
+import com.tencent.mm.protocal.protobuf.coz;
+import com.tencent.mm.protocal.protobuf.crd;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import junit.framework.Assert;
 
 public final class c
   extends m
   implements k
 {
-  private final String TAG = "MicroMsg.NetSceneUploadVoiceForTrans";
-  private String bYR;
-  private com.tencent.mm.ah.b ecz;
-  private f mEe;
+  private int Scene;
+  private final String TAG;
+  private String cGY;
+  private com.tencent.mm.ai.b fsQ;
   private String mFileName;
-  private String pyk;
-  private cds pym;
-  private int pyo;
-  private String pyp;
-  public cbr pyu;
+  private f peg;
+  private String sZY;
+  private crd taa;
+  private String tac;
+  public cox tai;
   
   public c(c paramc)
   {
-    this.pyk = paramc.pyk;
-    this.pym = paramc.pym;
-    this.pyu = paramc.pyu;
+    AppMethodBeat.i(25584);
+    this.TAG = "MicroMsg.NetSceneUploadVoiceForTrans";
+    this.sZY = paramc.sZY;
+    this.taa = paramc.taa;
+    this.tai = paramc.tai;
     this.mFileName = paramc.mFileName;
-    this.pyo = paramc.pyo;
-    this.pyp = paramc.pyp;
-    this.bYR = paramc.bYR;
-    y.d("MicroMsg.NetSceneUploadVoiceForTrans", "alvinluo voiceTrans constructor scene: %d, fromUser: %s, toUser: %s", new Object[] { Integer.valueOf(paramc.pyo), paramc.pyp, paramc.bYR });
-    bMg();
+    this.Scene = paramc.Scene;
+    this.tac = paramc.tac;
+    this.cGY = paramc.cGY;
+    ab.d("MicroMsg.NetSceneUploadVoiceForTrans", "alvinluo voiceTrans constructor scene: %d, fromUser: %s, toUser: %s", new Object[] { Integer.valueOf(paramc.Scene), paramc.tac, paramc.cGY });
+    cHe();
+    AppMethodBeat.o(25584);
   }
   
-  public c(String paramString1, cbr paramcbr, int paramInt, String paramString2)
+  public c(String paramString1, cox paramcox, int paramInt, String paramString2)
   {
+    AppMethodBeat.i(25585);
+    this.TAG = "MicroMsg.NetSceneUploadVoiceForTrans";
     if (paramString2 != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.pyk = paramString1;
-      this.pyu = paramcbr;
-      this.pym = d.aK(paramInt, paramString2);
+      this.sZY = paramString1;
+      this.tai = paramcox;
+      this.taa = d.bm(paramInt, paramString2);
       this.mFileName = paramString2;
-      bMg();
+      cHe();
+      AppMethodBeat.o(25585);
       return;
     }
   }
   
-  public c(String paramString1, cbr paramcbr, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4)
+  public c(String paramString1, cox paramcox, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4)
   {
+    AppMethodBeat.i(25586);
+    this.TAG = "MicroMsg.NetSceneUploadVoiceForTrans";
     if (paramString2 != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      y.d("MicroMsg.NetSceneUploadVoiceForTrans", "alvinluo voiceTrans scene: %d, fromUser: %s, toUser: %s", new Object[] { Integer.valueOf(paramInt2), paramString3, paramString4 });
-      this.pyk = paramString1;
-      this.pyu = paramcbr;
-      this.pym = d.aK(paramInt1, paramString2);
+      ab.d("MicroMsg.NetSceneUploadVoiceForTrans", "alvinluo voiceTrans scene: %d, fromUser: %s, toUser: %s", new Object[] { Integer.valueOf(paramInt2), paramString3, paramString4 });
+      this.sZY = paramString1;
+      this.tai = paramcox;
+      this.taa = d.bm(paramInt1, paramString2);
       this.mFileName = paramString2;
-      this.pyo = paramInt2;
-      this.pyp = paramString3;
-      this.bYR = paramString4;
-      bMg();
+      this.Scene = paramInt2;
+      this.tac = paramString3;
+      this.cGY = paramString4;
+      cHe();
+      AppMethodBeat.o(25586);
       return;
     }
   }
   
-  private void bMg()
+  private void cHe()
   {
+    AppMethodBeat.i(25589);
     b.a locala = new b.a();
-    locala.ecH = new cbs();
-    locala.ecI = new cbt();
+    locala.fsX = new coy();
+    locala.fsY = new coz();
     locala.uri = "/cgi-bin/micromsg-bin/uploadvoicefortrans";
-    locala.ecG = 547;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.ecz = locala.Kt();
+    locala.funcId = 547;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.fsQ = locala.ado();
+    AppMethodBeat.o(25589);
   }
   
-  public final int a(e parame, f paramf)
+  public final boolean cHf()
   {
-    this.mEe = paramf;
-    if ((!bk.bl(this.mFileName)) && (!bk.bl(this.pyk)) && (this.pyu != null) && (this.pym != null)) {}
+    return (this.tai == null) || (this.tai.pIz <= 0);
+  }
+  
+  public final int doScene(e parame, f paramf)
+  {
+    AppMethodBeat.i(25587);
+    this.peg = paramf;
+    if ((!bo.isNullOrNil(this.mFileName)) && (!bo.isNullOrNil(this.sZY)) && (this.tai != null) && (this.taa != null)) {}
     for (int i = 1; i == 0; i = 0)
     {
-      y.e("MicroMsg.NetSceneUploadVoiceForTrans", "doScene: Value not Valid, so, do nothing.");
+      ab.e("MicroMsg.NetSceneUploadVoiceForTrans", "doScene: Value not Valid, so, do nothing.");
+      AppMethodBeat.o(25587);
       return -1;
     }
-    cbs localcbs = (cbs)this.ecz.ecE.ecN;
-    localcbs.sNM = this.pyk;
-    localcbs.sNN = this.pym;
-    localcbs.sNP = this.pyu;
+    coy localcoy = (coy)this.fsQ.fsV.fta;
+    localcoy.wAs = this.sZY;
+    localcoy.wLH = this.taa;
+    localcoy.wLJ = this.tai;
     Object localObject = this.mFileName;
-    i = this.pyu.ndg;
-    int j = this.pyu.ndh;
-    paramf = new bmk();
-    localObject = com.tencent.mm.modelvoice.q.ox((String)localObject);
+    i = this.tai.pIy;
+    int j = this.tai.pIz;
+    paramf = new SKBuiltinBuffer_t();
+    localObject = s.vK((String)localObject);
     if (localObject != null) {
-      paramf = aa.I(((com.tencent.mm.modelvoice.b)localObject).bz(i, j).buf);
+      paramf = aa.ac(((com.tencent.mm.modelvoice.b)localObject).cJ(i, j).buf);
     }
-    localcbs.ndi = paramf;
-    localcbs.pyo = this.pyo;
-    localcbs.kWn = this.pyp;
-    localcbs.kWm = this.bYR;
-    return a(parame, this.ecz, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    bMh();
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      this.pyu = ((cbt)this.ecz.ecF.ecN).sNP;
-      this.mEe.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      if (bMh()) {
-        if (this.pyu == null) {
-          break label115;
-        }
-      }
-    }
-    label115:
-    for (boolean bool = true;; bool = false)
-    {
-      y.i("MicroMsg.NetSceneUploadVoiceForTrans", "succeeed finish: %B", new Object[] { Boolean.valueOf(bool) });
-      return;
-      y.d("MicroMsg.NetSceneUploadVoiceForTrans", "error upload: errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      break;
-    }
-  }
-  
-  public final boolean bMh()
-  {
-    return (this.pyu == null) || (this.pyu.ndh <= 0);
+    localcoy.pIA = paramf;
+    localcoy.Scene = this.Scene;
+    localcoy.num = this.tac;
+    localcoy.nul = this.cGY;
+    i = dispatch(parame, this.fsQ, this);
+    AppMethodBeat.o(25587);
+    return i;
   }
   
   public final int getType()
   {
     return 547;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(25588);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      this.tai = ((coz)this.fsQ.fsW.fta).wLJ;
+      this.peg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      if (!cHf()) {
+        break label128;
+      }
+      if (this.tai == null) {
+        break label122;
+      }
+    }
+    label122:
+    for (boolean bool = true;; bool = false)
+    {
+      ab.i("MicroMsg.NetSceneUploadVoiceForTrans", "succeeed finish: %B", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(25588);
+      return;
+      ab.d("MicroMsg.NetSceneUploadVoiceForTrans", "error upload: errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      break;
+    }
+    label128:
+    AppMethodBeat.o(25588);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.c
  * JD-Core Version:    0.7.0.1
  */

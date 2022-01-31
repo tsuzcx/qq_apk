@@ -13,14 +13,14 @@ final class i$f
   
   public final int size()
   {
-    return i.a(this.wSL).wSX.size;
+    return i.a(this.Bps).BpE.size;
   }
   
-  public final String ul(int paramInt)
+  public final String zC(int paramInt)
   {
-    i.gg(paramInt, i.a(this.wSL).wSX.size);
-    paramInt = this.wSL.Jw(i.a(this.wSL).wSX.off + paramInt * 4).ayD.getInt();
-    return this.wSL.Jw(paramInt).cPZ().value;
+    i.io(paramInt, i.a(this.Bps).BpE.size);
+    paramInt = this.Bps.Sr(i.a(this.Bps).BpE.off + paramInt * 4).aAS.getInt();
+    return this.Bps.Sr(paramInt).dVN().value;
   }
 }
 

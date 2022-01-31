@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.exdevice.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.service.c.a;
 
 final class d$7
@@ -12,13 +13,15 @@ final class d$7
   
   public final void onServiceConnected()
   {
-    d.a(this.jtE).jyW = null;
-    this.jtE.b(this.jtL, this.jtM, this.bKF, this.geV);
+    AppMethodBeat.i(19105);
+    d.a(this.lDd).lIv = null;
+    this.lDd.c(this.lDj, this.lDk, this.crZ, this.lDl);
+    AppMethodBeat.o(19105);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.d.7
  * JD-Core Version:    0.7.0.1
  */

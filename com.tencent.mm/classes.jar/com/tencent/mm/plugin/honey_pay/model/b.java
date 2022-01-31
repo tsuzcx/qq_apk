@@ -1,19 +1,28 @@
 package com.tencent.mm.plugin.honey_pay.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.j;
 
 public final class b
-  extends i<a>
+  extends j<a>
 {
-  public static final String[] dXp = { i.a(a.buS, "HoneyPayMsgRecord") };
-  private static final String[] eWE = { "*", "rowid" };
-  private e dXw;
+  public static final String[] SQL_CREATE;
+  private static final String[] goC;
+  private e db;
+  
+  static
+  {
+    AppMethodBeat.i(41751);
+    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "HoneyPayMsgRecord") };
+    goC = new String[] { "*", "rowid" };
+    AppMethodBeat.o(41751);
+  }
   
   public b(e parame)
   {
-    super(parame, a.buS, "HoneyPayMsgRecord", null);
-    this.dXw = parame;
+    super(parame, a.info, "HoneyPayMsgRecord", null);
+    this.db = parame;
   }
 }
 

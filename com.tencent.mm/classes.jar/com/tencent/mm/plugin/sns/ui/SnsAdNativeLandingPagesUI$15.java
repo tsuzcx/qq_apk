@@ -1,26 +1,34 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.support.v7.widget.RecyclerView;
+import android.view.ViewTreeObserver;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.adapter.ContentFragment;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.adapter.ContentFragment.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.adapter.ContentFragment.b;
 
 final class SnsAdNativeLandingPagesUI$15
-  implements View.OnClickListener
+  implements ContentFragment.a
 {
   SnsAdNativeLandingPagesUI$15(SnsAdNativeLandingPagesUI paramSnsAdNativeLandingPagesUI) {}
   
-  public final void onClick(View paramView)
+  public final void n(ContentFragment paramContentFragment)
   {
-    if (this.oUU.mController.uNh == 1) {
-      this.oUU.XM();
+    AppMethodBeat.i(38643);
+    if (paramContentFragment.rzs != null) {}
+    for (paramContentFragment = paramContentFragment.rzs.iQe;; paramContentFragment = null)
+    {
+      if (paramContentFragment != null) {
+        paramContentFragment.getViewTreeObserver().addOnPreDrawListener(new SnsAdNativeLandingPagesUI.15.1(this, paramContentFragment));
+      }
+      AppMethodBeat.o(38643);
+      return;
     }
-    this.oUU.aBR();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI.15
  * JD-Core Version:    0.7.0.1
  */

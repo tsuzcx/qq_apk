@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.remittance.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RemittanceBusiUI$15
   implements DialogInterface.OnClickListener
@@ -10,12 +11,13 @@ final class RemittanceBusiUI$15
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RemittanceBusiUI.F(this.nCA);
+    AppMethodBeat.i(44906);
+    AppMethodBeat.o(44906);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceBusiUI.15
  * JD-Core Version:    0.7.0.1
  */

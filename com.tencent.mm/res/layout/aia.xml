@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:paddingLeft="@dimen/du" android:paddingRight="@dimen/du" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/mp" style="@style/l2"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:id="@id/kl" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/mp" android:layout_weight="1.0">
-        <LinearLayout android:gravity="center_vertical" android:id="@id/lr" android:paddingTop="@dimen/mq" android:paddingBottom="@dimen/mq" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/kv">
-                <TextView android:gravity="left" android:id="@id/db5" android:layout_width="@dimen/hr" android:layout_height="0.0dip" android:text="@string/atd" android:singleLine="true" android:layout_weight="1.0" style="@style/kl" />
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:id="@id/cx_" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <TextView android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/db6" android:maxLines="2" android:singleLine="false" style="@style/ko" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    <TextView android:textSize="@dimen/e1" android:textColor="@color/hg" android:gravity="center_horizontal" android:id="@id/b2k" android:paddingLeft="@dimen/uy" android:paddingRight="@dimen/uy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="5.0dip" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/e1" android:textColor="@color/hg" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/cc8" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:paddingBottom="9.0dip" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" />
 </LinearLayout>

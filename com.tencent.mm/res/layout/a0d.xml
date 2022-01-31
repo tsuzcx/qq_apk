@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bs9" android:padding="@dimen/jd" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/vn" android:layout_width="@dimen/jn" android:layout_height="@dimen/jn" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <com.tencent.mm.plugin.game.ui.GameDownloadView android:id="@id/bs_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/nx" android:ellipsize="end" android:id="@id/vp" android:paddingLeft="@dimen/ji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/vn" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/mr" android:textColor="@color/nw" android:ellipsize="end" android:id="@id/bsa" android:paddingLeft="@dimen/ji" android:paddingRight="@dimen/ji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:layout_toLeftOf="@id/bs_" android:layout_toRightOf="@id/vp" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <ImageView android:id="@id/as" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/aew" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/p7" android:ellipsize="end" android:id="@id/b4" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="{name}" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/p8" android:ellipsize="end" android:gravity="center|right|top" android:id="@id/ba" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{time}" android:singleLine="true" />
+</LinearLayout>

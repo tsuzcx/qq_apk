@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class OpenFileChooserUI$3
   implements DialogInterface.OnClickListener
@@ -11,7 +12,9 @@ final class OpenFileChooserUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.rlE.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.i(7444);
+    this.vbg.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.o(7444);
   }
 }
 

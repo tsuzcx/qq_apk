@@ -6,12 +6,13 @@ import android.hardware.Camera.Parameters;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$a
   extends Handler
 {
-  int ghE = 0;
-  boolean mgx = false;
+  boolean eZZ = false;
+  int hAu = 0;
   
   public b$a(Looper paramLooper)
   {
@@ -21,10 +22,11 @@ final class b$a
   @TargetApi(8)
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(27464);
     Camera localCamera = (Camera)paramMessage.obj;
     Camera.Parameters localParameters = localCamera.getParameters();
-    int i = localParameters.getZoom() + this.ghE;
-    if (this.mgx) {
+    int i = localParameters.getZoom() + this.hAu;
+    if (this.eZZ) {
       if (i >= localParameters.getMaxZoom() / 2) {
         i = localParameters.getMaxZoom() / 2;
       }
@@ -33,6 +35,7 @@ final class b$a
     {
       localParameters.setZoom(i);
       localCamera.setParameters(localParameters);
+      AppMethodBeat.o(27464);
       return;
       sendMessageDelayed(Message.obtain(this, 4353, 0, 0, paramMessage.obj), 20L);
       continue;
@@ -46,7 +49,7 @@ final class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.i.b.a
  * JD-Core Version:    0.7.0.1
  */

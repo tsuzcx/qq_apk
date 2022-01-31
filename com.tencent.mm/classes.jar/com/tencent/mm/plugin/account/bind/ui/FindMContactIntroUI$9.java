@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.account.bind.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.widget.Toast;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.bind.a.i;
 import com.tencent.mm.plugin.account.friend.a.ag;
 import com.tencent.mm.plugin.account.friend.ui.FindMContactAddUI;
-import com.tencent.mm.protocal.c.auc;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bai;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMWizardActivity;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,32 +23,33 @@ final class FindMContactIntroUI$9
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (FindMContactIntroUI.g(this.fdm) != null)
+    AppMethodBeat.i(13605);
+    if (FindMContactIntroUI.g(this.guX) != null)
     {
-      FindMContactIntroUI.g(this.fdm).dismiss();
-      FindMContactIntroUI.h(this.fdm);
+      FindMContactIntroUI.g(this.guX).dismiss();
+      FindMContactIntroUI.h(this.guX);
     }
-    if (FindMContactIntroUI.i(this.fdm) != null)
+    if (FindMContactIntroUI.i(this.guX) != null)
     {
-      g.Dk().b(431, FindMContactIntroUI.i(this.fdm));
-      FindMContactIntroUI.j(this.fdm);
+      g.Rc().b(431, FindMContactIntroUI.i(this.guX));
+      FindMContactIntroUI.j(this.guX);
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = ((ag)paramm).Xd();
-      ((com.tencent.mm.plugin.account.a.a.a)g.t(com.tencent.mm.plugin.account.a.a.a.class)).setFriendData(paramString);
+      paramString = ((ag)paramm).aqH();
+      ((com.tencent.mm.plugin.account.a.a.a)g.G(com.tencent.mm.plugin.account.a.a.a.class)).setFriendData(paramString);
       if ((paramString == null) || (paramString.size() <= 0)) {
-        break label366;
+        break label389;
       }
       paramm = paramString.iterator();
       paramInt1 = 0;
       while (paramm.hasNext())
       {
-        auc localauc = (auc)paramm.next();
-        if (localauc != null)
+        bai localbai = (bai)paramm.next();
+        if (localbai != null)
         {
-          if (localauc.hQq != 1) {
-            break label363;
+          if (localbai.jJS != 1) {
+            break label386;
           }
           paramInt1 += 1;
         }
@@ -62,29 +63,32 @@ final class FindMContactIntroUI$9
       if (paramString == null) {}
       for (int i = 0;; i = paramString.size())
       {
-        y.d("MicroMsg.FindMContactIntroUI", "tigerreg data size=%d, addcount=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1) });
-        if ((FindMContactIntroUI.d(this.fdm) == null) || (!FindMContactIntroUI.d(this.fdm).contains("1")) || (paramInt2 == 0)) {
-          break label315;
+        ab.d("MicroMsg.FindMContactIntroUI", "tigerreg data size=%d, addcount=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1) });
+        if ((FindMContactIntroUI.d(this.guX) == null) || (!FindMContactIntroUI.d(this.guX).contains("1")) || (paramInt2 == 0)) {
+          break label327;
         }
-        com.tencent.mm.plugin.b.a.qj("R300_300_phone");
-        paramString = new Intent(this.fdm, FindMContactAddUI.class);
-        paramString.putExtra("regsetinfo_ticket", FindMContactIntroUI.c(this.fdm));
-        paramString.putExtra("regsetinfo_NextStep", FindMContactIntroUI.d(this.fdm));
-        paramString.putExtra("regsetinfo_NextStyle", FindMContactIntroUI.e(this.fdm));
+        com.tencent.mm.plugin.b.a.xD("R300_300_phone");
+        paramString = new Intent(this.guX, FindMContactAddUI.class);
+        paramString.putExtra("regsetinfo_ticket", FindMContactIntroUI.c(this.guX));
+        paramString.putExtra("regsetinfo_NextStep", FindMContactIntroUI.d(this.guX));
+        paramString.putExtra("regsetinfo_NextStyle", FindMContactIntroUI.e(this.guX));
         paramString.putExtra("login_type", 0);
-        MMWizardActivity.C(this.fdm, paramString);
+        MMWizardActivity.J(this.guX, paramString);
+        AppMethodBeat.o(13605);
         return;
         paramInt2 = 0;
         break;
       }
-      label315:
-      FindMContactIntroUI.b(this.fdm);
+      label327:
+      FindMContactIntroUI.b(this.guX);
+      AppMethodBeat.o(13605);
       return;
-      Toast.makeText(this.fdm, this.fdm.getString(a.i.app_err_system_busy_tip, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      Toast.makeText(this.guX, this.guX.getString(2131296926, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      AppMethodBeat.o(13605);
       return;
-      label363:
+      label386:
       break;
-      label366:
+      label389:
       paramInt2 = 0;
       paramInt1 = 0;
     }

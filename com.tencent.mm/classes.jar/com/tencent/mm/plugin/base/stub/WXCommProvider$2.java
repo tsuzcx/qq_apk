@@ -1,32 +1,36 @@
 package com.tencent.mm.plugin.base.stub;
 
-import com.tencent.mm.h.a.fa;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fd;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class WXCommProvider$2
-  implements am.a
+  implements ap.a
 {
   WXCommProvider$2(WXCommProvider paramWXCommProvider) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if ((a.udP != null) && (a.udP.T(fa.class))) {
-      synchronized (WXCommProvider.awe())
+    AppMethodBeat.i(18163);
+    if ((a.ymk != null) && (a.ymk.aq(fd.class))) {
+      synchronized (WXCommProvider.access$000())
       {
-        y.i("MicroMsg.WXCommProvider", "The lock was released.");
-        WXCommProvider.asL();
-        WXCommProvider.awe().notifyAll();
+        ab.i("MicroMsg.WXCommProvider", "The lock was released.");
+        WXCommProvider.aMv();
+        WXCommProvider.access$000().notifyAll();
+        AppMethodBeat.o(18163);
         return false;
       }
     }
+    AppMethodBeat.o(18163);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.WXCommProvider.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,32 @@
 package com.tencent.mm.plugin.emoji.ui;
 
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.plugin.emoji.sync.a;
-import com.tencent.mm.plugin.emoji.sync.c.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.sync.EmojiSyncManager.b;
+import com.tencent.mm.emoji.sync.c;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class EmojiCustomUI$15
-  extends c.a
+  implements c
 {
   EmojiCustomUI$15(EmojiCustomUI paramEmojiCustomUI) {}
   
-  public final void aIr()
+  public final void a(EmojiSyncManager.b paramb)
   {
-    EmojiCustomUI.a(this.jcS, i.aHQ().aIm());
-    if (EmojiCustomUI.f(this.jcS) != null) {
-      EmojiCustomUI.f(this.jcS).sendEmptyMessage(1001);
+    AppMethodBeat.i(53314);
+    EmojiCustomUI.a(this.llF, paramb);
+    if (EmojiCustomUI.g(this.llF) != null) {
+      EmojiCustomUI.g(this.llF).sendEmptyMessage(1001);
     }
+    AppMethodBeat.o(53314);
   }
   
-  public final void aIs()
+  public final void ye()
   {
-    if (EmojiCustomUI.f(this.jcS) != null) {
-      EmojiCustomUI.f(this.jcS).sendEmptyMessage(1002);
+    AppMethodBeat.i(53313);
+    if (EmojiCustomUI.g(this.llF) != null) {
+      EmojiCustomUI.g(this.llF).sendEmptyMessage(1002);
     }
+    AppMethodBeat.o(53313);
   }
 }
 

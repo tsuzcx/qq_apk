@@ -1,60 +1,36 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.s;
-import com.tencent.mm.sdk.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appcache.j.a;
 
-public abstract class o
-  implements j
+public abstract interface o
 {
-  public volatile j.c gKD;
-  private volatile j.b gKE;
-  final s gKF;
+  public abstract void a(o.b paramb);
   
-  o(s params)
+  public abstract void a(o.c paramc);
+  
+  public abstract void prepareAsync();
+  
+  public static final class a
   {
-    this.gKF = params;
-  }
-  
-  public final void a(j.b paramb)
-  {
-    this.gKE = paramb;
-  }
-  
-  public final void a(j.c paramc)
-  {
-    this.gKD = paramc;
-  }
-  
-  public abstract String alK();
-  
-  final void c(WxaPkgLoadProgress paramWxaPkgLoadProgress)
-  {
-    j.b localb = this.gKE;
-    if (localb != null) {
-      localb.a(paramWxaPkgLoadProgress);
+    static o f(String paramString1, String paramString2, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(131817);
+      if (j.a.nk(paramInt1))
+      {
+        paramString1 = new w(paramString1, paramString2, paramInt2);
+        AppMethodBeat.o(131817);
+        return paramString1;
+      }
+      paramString1 = new x(paramString1, paramString2, paramInt1);
+      AppMethodBeat.o(131817);
+      return paramString1;
     }
-  }
-  
-  final void d(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
-  {
-    j.c localc = this.gKD;
-    if (localc != null) {
-      localc.b(paramWxaPkgWrappingInfo);
-    }
-  }
-  
-  public abstract void prepare();
-  
-  public final void prepareAsync()
-  {
-    e.post(new o.1(this), "AppBrandLaunchPrepareJob#" + alK());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.o
  * JD-Core Version:    0.7.0.1
  */

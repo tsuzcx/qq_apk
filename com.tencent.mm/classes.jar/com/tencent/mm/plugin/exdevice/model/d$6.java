@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.exdevice.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.service.c.a;
 
 final class d$6
@@ -12,8 +13,10 @@ final class d$6
   
   public final void onServiceConnected()
   {
-    d.a(this.jtE).jyW = null;
-    this.jtE.b(this.jtL, this.jtM, this.bKF, this.geV);
+    AppMethodBeat.i(19104);
+    d.a(this.lDd).lIv = null;
+    this.lDd.c(this.lDj, this.lDk, this.crZ, this.lDl);
+    AppMethodBeat.o(19104);
   }
 }
 

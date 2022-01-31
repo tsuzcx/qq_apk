@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.emoji.f.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emoji.f.g;
 
 final class EmojiStoreDetailUI$10
   implements DialogInterface.OnClickListener
@@ -11,10 +12,12 @@ final class EmojiStoreDetailUI$10
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EmojiStoreDetailUI.a(this.jeK, new h(EmojiStoreDetailUI.a(this.jeK), EmojiStoreDetailUI.y(this.jeK), EmojiStoreDetailUI.z(this.jeK)));
-    EmojiStoreDetailUI.A(this.jeK);
-    EmojiStoreDetailUI.a(this.jeK, 6);
-    EmojiStoreDetailUI.g(this.jeK);
+    AppMethodBeat.i(53428);
+    EmojiStoreDetailUI.a(this.lnA, new g(EmojiStoreDetailUI.a(this.lnA), EmojiStoreDetailUI.y(this.lnA), EmojiStoreDetailUI.z(this.lnA)));
+    EmojiStoreDetailUI.A(this.lnA);
+    EmojiStoreDetailUI.a(this.lnA, 6);
+    EmojiStoreDetailUI.g(this.lnA);
+    AppMethodBeat.o(53428);
   }
 }
 

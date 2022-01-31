@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.plugin.wallet_core.model.Orders.a;
@@ -15,7 +16,9 @@ final class WalletOrderInfoOldUI$10
   
   public final void onClick(View paramView)
   {
-    e.l(this.qEN, ((Orders.Commodity)this.qEN.qmc.qwN.get(0)).qxp.url, false);
+    AppMethodBeat.i(47483);
+    e.m(this.urV, ((Orders.Commodity)this.urV.tVr.ujl.get(0)).ujX.url, false);
+    AppMethodBeat.o(47483);
   }
 }
 

@@ -1,29 +1,29 @@
 package android.support.design.widget;
 
-import android.support.v4.f.i;
-import android.support.v4.view.m;
-import android.support.v4.view.q;
-import android.support.v4.view.y;
+import android.support.v4.e.i;
+import android.support.v4.view.ab;
+import android.support.v4.view.p;
+import android.support.v4.view.t;
 import android.view.View;
 
 final class AppBarLayout$1
-  implements m
+  implements p
 {
   AppBarLayout$1(AppBarLayout paramAppBarLayout) {}
   
-  public final y a(View paramView, y paramy)
+  public final ab a(View paramView, ab paramab)
   {
-    AppBarLayout localAppBarLayout = this.ez;
+    AppBarLayout localAppBarLayout = this.fz;
     paramView = null;
-    if (q.ae(localAppBarLayout)) {
-      paramView = paramy;
+    if (t.al(localAppBarLayout)) {
+      paramView = paramab;
     }
-    if (!i.equals(localAppBarLayout.ev, paramView))
+    if (!i.equals(localAppBarLayout.fu, paramView))
     {
-      localAppBarLayout.ev = paramView;
-      localAppBarLayout.aa();
+      localAppBarLayout.fu = paramView;
+      localAppBarLayout.aL();
     }
-    return paramy;
+    return paramab;
   }
 }
 

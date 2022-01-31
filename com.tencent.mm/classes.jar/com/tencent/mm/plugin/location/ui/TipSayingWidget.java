@@ -7,53 +7,58 @@ import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.map.a.e;
-import com.tencent.mm.plugin.map.a.f;
-import com.tencent.mm.plugin.map.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class TipSayingWidget
   extends LinearLayout
 {
   private Context context;
-  private String diG;
-  private TextView dqa;
-  private ImageView lGW;
-  private Chronometer lGX;
-  private int lGY = 0;
+  private String dZZ;
+  private TextView ehx;
+  private ImageView oej;
+  private Chronometer oek;
+  private int oel;
   
   public TipSayingWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(113552);
+    this.oel = 0;
     this.context = paramContext;
-    paramContext = View.inflate(this.context, a.f.tips_saying, this);
-    this.lGW = ((ImageView)paramContext.findViewById(a.e.saying_iv));
-    this.dqa = ((TextView)paramContext.findViewById(a.e.sayint_tips));
-    this.lGX = ((Chronometer)findViewById(a.e.chronometer));
+    paramContext = View.inflate(this.context, 2130970997, this);
+    this.oej = ((ImageView)paramContext.findViewById(2131828497));
+    this.ehx = ((TextView)paramContext.findViewById(2131828498));
+    this.oek = ((Chronometer)findViewById(2131826636));
+    AppMethodBeat.o(113552);
   }
   
   public void setCurSaying(String paramString)
   {
-    if (bk.bl(paramString))
+    AppMethodBeat.i(113553);
+    if (bo.isNullOrNil(paramString))
     {
       setVisibility(8);
+      AppMethodBeat.o(113553);
       return;
     }
     setVisibility(0);
-    a.b.p(this.lGW, paramString);
-    if (bk.bl(this.diG)) {
-      this.diG = q.Gj();
+    a.b.u(this.oej, paramString);
+    if (bo.isNullOrNil(this.dZZ)) {
+      this.dZZ = r.Zn();
     }
-    if (this.diG.equals(paramString))
+    if (this.dZZ.equals(paramString))
     {
-      this.dqa.setText(this.context.getString(a.h.track_somebody_saying, new Object[] { paramString }));
-      this.lGX.setVisibility(0);
+      this.ehx.setText(this.context.getString(2131304390, new Object[] { paramString }));
+      this.oek.setVisibility(0);
+      AppMethodBeat.o(113553);
       return;
     }
-    this.dqa.setText(this.context.getString(a.h.track_somebody_saying, new Object[] { paramString }));
-    this.lGX.setVisibility(8);
+    this.ehx.setText(this.context.getString(2131304390, new Object[] { paramString }));
+    this.oek.setVisibility(8);
+    AppMethodBeat.o(113553);
   }
 }
 

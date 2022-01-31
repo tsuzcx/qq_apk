@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RegByMobileSendSmsUI$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class RegByMobileSendSmsUI$1
   
   public final void onClick(View paramView)
   {
-    RegByMobileSendSmsUI.a(this.fqR);
+    AppMethodBeat.i(125398);
+    RegByMobileSendSmsUI.a(this.gIu);
+    AppMethodBeat.o(125398);
   }
 }
 

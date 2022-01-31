@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare;
 
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.picker.b;
 import com.tencent.mm.ui.widget.picker.b.a;
 
@@ -9,13 +10,15 @@ final class WxaLuckyMoneyPrepareUI$16$1
 {
   WxaLuckyMoneyPrepareUI$16$1(WxaLuckyMoneyPrepareUI.16 param16, b paramb) {}
   
-  public final void f(boolean paramBoolean, Object paramObject)
+  public final void onResult(boolean paramBoolean, Object paramObject1, Object paramObject2)
   {
-    this.hEL.hide();
+    AppMethodBeat.i(142021);
+    this.jxY.hide();
     if (paramBoolean) {
-      WxaLuckyMoneyPrepareUI.h(this.lME.lMx).setText((CharSequence)paramObject);
+      WxaLuckyMoneyPrepareUI.h(this.ojX.ojQ).setText((CharSequence)paramObject1);
     }
-    WxaLuckyMoneyPrepareUI.a(this.lME.lMx, this.hEL.cKk());
+    WxaLuckyMoneyPrepareUI.a(this.ojX.ojQ, this.jxY.dPp());
+    AppMethodBeat.o(142021);
   }
 }
 

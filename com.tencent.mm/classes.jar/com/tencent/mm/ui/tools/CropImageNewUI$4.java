@@ -4,7 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CropImageNewUI$4
   implements View.OnClickListener
@@ -13,20 +14,23 @@ final class CropImageNewUI$4
   
   public final void onClick(View paramView)
   {
-    paramView = CropImageNewUI.j(this.vYH);
-    if (paramView.kJz == null)
+    AppMethodBeat.i(34817);
+    paramView = CropImageNewUI.j(this.AqU);
+    if (paramView.nfX == null)
     {
-      y.w("MicroMsg.CropImageView", "rotate not done! cause: btmp is null!");
+      ab.w("MicroMsg.CropImageView", "rotate not done! cause: btmp is null!");
+      AppMethodBeat.o(34817);
       return;
     }
     float[] arrayOfFloat = new float[2];
-    arrayOfFloat[0] = (paramView.kJz.getWidth() / 2);
-    arrayOfFloat[1] = (paramView.kJz.getHeight() / 2);
+    arrayOfFloat[0] = (paramView.nfX.getWidth() / 2);
+    arrayOfFloat[1] = (paramView.nfX.getHeight() / 2);
     paramView.getImageMatrix().mapPoints(arrayOfFloat);
     paramView.getImageMatrix().postRotate(90.0F, arrayOfFloat[0], arrayOfFloat[1]);
-    paramView.setImageBitmap(paramView.kJz);
+    paramView.setImageBitmap(paramView.nfX);
     paramView.invalidate();
-    paramView.bQN += 1;
+    paramView.cyn += 1;
+    AppMethodBeat.o(34817);
   }
 }
 

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class d$1$2
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class d$1$2
   
   public final void run()
   {
-    d.a(this.oKm.oKl).Op(d.b(this.oKm.oKl));
+    AppMethodBeat.i(37687);
+    d.a(this.rBV.rBU).abi(d.b(this.rBV.rBU));
+    AppMethodBeat.o(37687);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.d.1.2
  * JD-Core Version:    0.7.0.1
  */

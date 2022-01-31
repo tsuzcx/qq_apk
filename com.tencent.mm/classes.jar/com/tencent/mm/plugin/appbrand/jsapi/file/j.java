@@ -1,14 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class j
-  extends c<an>
+  extends e<ao>
 {
-  private static final int CTRL_INDEX = 462;
-  private static final String NAME = "fs_appendFileSync";
+  private static final int CTRL_INDEX = 383;
+  private static final String NAME = "accessSync";
   
   public j()
   {
-    super(new an());
+    super(new ao());
+    AppMethodBeat.i(102777);
+    AppMethodBeat.o(102777);
   }
 }
 

@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.game;
 
-import com.tencent.mm.h.a.jn;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jw;
 
 final class c$8
-  extends com.tencent.mm.sdk.b.c<jn>
+  extends com.tencent.mm.sdk.b.c<jw>
 {
   c$8(c paramc)
   {
-    this.udX = jn.class.getName().hashCode();
+    AppMethodBeat.i(111146);
+    this.__eventId = jw.class.getName().hashCode();
+    AppMethodBeat.o(111146);
   }
 }
 

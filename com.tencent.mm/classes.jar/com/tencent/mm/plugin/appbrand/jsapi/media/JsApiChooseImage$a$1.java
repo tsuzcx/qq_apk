@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class JsApiChooseImage$a$1
   implements DialogInterface.OnCancelListener
@@ -10,8 +11,10 @@ final class JsApiChooseImage$a$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.gvv.gvs.aYY = 0;
-    JsApiChooseImage.a.a(this.gvv, this.gvv.gvs);
+    AppMethodBeat.i(131135);
+    this.hQM.hQJ.bpE = 0;
+    JsApiChooseImage.a.a(this.hQM, this.hQM.hQJ);
+    AppMethodBeat.o(131135);
   }
 }
 

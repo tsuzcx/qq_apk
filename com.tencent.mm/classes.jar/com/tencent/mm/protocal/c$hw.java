@@ -5,7 +5,7 @@ final class c$hw
 {
   c$hw()
   {
-    super("setWCPayPassword", "setWCPayPassword", 289, true);
+    super("requestWxVoicePrintVerifyInternal", "requestWxVoicePrintVerifyInternal", 292, true);
   }
 }
 

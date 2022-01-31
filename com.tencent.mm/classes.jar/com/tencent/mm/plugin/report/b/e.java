@@ -2,41 +2,52 @@ package com.tencent.mm.plugin.report.b;
 
 import com.tencent.mars.smc.SmcLogic;
 import com.tencent.mars.smc.SmcProtoBufUtil;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.a.a.h;
 import com.tencent.mm.protocal.a.a.i;
 import com.tencent.mm.protocal.a.a.j;
-import com.tencent.mm.protocal.c.apa;
-import com.tencent.mm.protocal.c.qh;
-import com.tencent.mm.protocal.c.qi;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.aa;
+import com.tencent.mm.protocal.protobuf.auv;
+import com.tencent.mm.protocal.protobuf.tm;
+import com.tencent.mm.protocal.protobuf.tn;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class e
   extends m
   implements k
 {
-  int bUR = 0;
-  private com.tencent.mm.ah.b dmK;
-  private f dmL;
-  private boolean jMp = false;
-  private qh nEW = null;
-  private a nEX = new a();
+  int cCy;
+  private f callback;
+  private boolean mgv;
+  private tm qrY;
+  private a qrZ;
+  private com.tencent.mm.ai.b rr;
   
   public e(byte[] paramArrayOfByte, int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      throw new NullPointerException("data must not be null");
+    AppMethodBeat.i(72675);
+    this.mgv = false;
+    this.qrY = null;
+    this.cCy = 0;
+    this.qrZ = new a();
+    if (paramArrayOfByte == null)
+    {
+      paramArrayOfByte = new NullPointerException("data must not be null");
+      AppMethodBeat.o(72675);
+      throw paramArrayOfByte;
     }
-    this.bUR = paramInt;
-    com.tencent.mm.kernel.g.DN();
-    this.jMp = com.tencent.mm.kernel.a.Db();
+    this.cCy = paramInt;
+    com.tencent.mm.kernel.g.RJ();
+    this.mgv = com.tencent.mm.kernel.a.QT();
     if (paramInt == 1) {}
     for (;;)
     {
@@ -44,136 +55,156 @@ public final class e
       try
       {
         localObject = new i();
-        ((i)localObject).aH(paramArrayOfByte);
-        this.nEW = SmcProtoBufUtil.toMMReportKvReq((i)localObject);
-        if (this.nEW == null) {
+        ((i)localObject).parseFrom(paramArrayOfByte);
+        this.qrY = SmcProtoBufUtil.toMMReportKvReq((i)localObject);
+        if (this.qrY == null) {
           break;
         }
-        this.nEW.sOa = new apa();
-        this.nEW.sOa.tkU = a.wG(this.bUR);
+        this.qrY.wLU = new auv();
+        this.qrY.wLU.xkc = a.Cw(this.cCy);
+        AppMethodBeat.o(72675);
         return;
       }
       catch (Exception paramArrayOfByte)
       {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.NetSceneCliReportKV", "parse data error");
-        com.tencent.mm.kernel.g.DQ();
-        com.tencent.mm.kernel.g.DS().O(new e.1(this));
+        ab.e("MicroMsg.NetSceneCliReportKV", "parse data error");
+        com.tencent.mm.kernel.g.RM();
+        com.tencent.mm.kernel.g.RO().ac(new e.1(this));
         continue;
       }
       if (paramInt == 2) {
         try
         {
           localObject = new com.tencent.mm.protocal.a.a.g();
-          ((com.tencent.mm.protocal.a.a.g)localObject).aH(paramArrayOfByte);
-          this.nEW = SmcProtoBufUtil.toMMReportIdkeyReq((com.tencent.mm.protocal.a.a.g)localObject);
+          ((com.tencent.mm.protocal.a.a.g)localObject).parseFrom(paramArrayOfByte);
+          this.qrY = SmcProtoBufUtil.toMMReportIdkeyReq((com.tencent.mm.protocal.a.a.g)localObject);
         }
         catch (Exception paramArrayOfByte)
         {
-          com.tencent.mm.sdk.platformtools.y.e("MicroMsg.NetSceneCliReportKV", "parse data error");
-          com.tencent.mm.kernel.g.DQ();
-          com.tencent.mm.kernel.g.DS().O(new e.2(this));
+          ab.e("MicroMsg.NetSceneCliReportKV", "parse data error");
+          com.tencent.mm.kernel.g.RM();
+          com.tencent.mm.kernel.g.RO().ac(new e.2(this));
         }
       }
     }
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.NetSceneCliReportKV", "NetSceneCliReportKV parse req is null, stack[%s]", new Object[] { bk.csb() });
+    ab.i("MicroMsg.NetSceneCliReportKV", "NetSceneCliReportKV parse req is null, stack[%s]", new Object[] { bo.dtY() });
+    AppMethodBeat.o(72675);
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    this.dmL = paramf;
-    int i;
-    if (this.nEW == null)
+    AppMethodBeat.i(72677);
+    this.callback = paramf;
+    if (this.qrY == null)
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.NetSceneCliReportKV", "do scene but req is null!");
-      i = -2;
-      return i;
+      ab.e("MicroMsg.NetSceneCliReportKV", "do scene but req is null!");
+      AppMethodBeat.o(72677);
+      return -2;
     }
-    if (!this.jMp) {
-      this.nEW.sNZ = com.tencent.mm.bv.b.bk(bk.crT());
+    if (!this.mgv) {
+      this.qrY.wLT = com.tencent.mm.bv.b.bL(bo.dtR());
     }
     b.a locala = new b.a();
-    locala.ecL = false;
-    locala.ecH = this.nEW;
-    locala.ecI = new qi();
-    label91:
-    String str;
-    if (1 == this.bUR)
-    {
+    locala.fsZ = false;
+    locala.fsX = this.qrY;
+    locala.fsY = new tn();
+    if (1 == this.cCy) {
       paramf = "/cgi-bin/micromsg-bin/newreportkvcomm";
-      if (1 != this.bUR) {
-        break label249;
-      }
-      str = "/cgi-bin/micromsg-bin/newreportkvcommrsa";
-      label103:
-      if (!this.jMp) {
-        break label256;
-      }
     }
     for (;;)
     {
-      locala.uri = paramf;
-      locala.ecG = getType();
-      this.dmK = locala.Kt();
-      if (!this.jMp)
+      String str;
+      label111:
+      int i;
+      if (1 == this.cCy)
       {
-        this.dmK.a(com.tencent.mm.protocal.y.cpi());
-        this.dmK.ccs = 1;
+        str = "/cgi-bin/micromsg-bin/newreportkvcommrsa";
+        if (!this.mgv) {
+          break label230;
+        }
+        locala.uri = paramf;
+        locala.funcId = getType();
+        this.rr = locala.ado();
+        if (!this.mgv)
+        {
+          this.rr.setRsaInfo(aa.dqF());
+          this.rr.option = 1;
+        }
+        i = dispatch(parame, this.rr, this);
+        if (i < 0) {
+          ab.i("MicroMsg.NetSceneCliReportKV", "mark all failed. do scene %d", new Object[] { Integer.valueOf(i) });
+        }
       }
-      int j = a(parame, this.dmK, this);
-      i = j;
-      if (j >= 0) {
-        break;
-      }
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.NetSceneCliReportKV", "mark all failed. do scene %d", new Object[] { Integer.valueOf(j) });
       try
       {
-        SmcLogic.OnReportResp(3, -1, null, this.bUR);
-        return j;
+        SmcLogic.OnReportResp(3, -1, null, this.cCy);
+        AppMethodBeat.o(72677);
+        return i;
+        paramf = "/cgi-bin/micromsg-bin/newreportidkey";
+        continue;
+        str = "/cgi-bin/micromsg-bin/newreportidkeyrsa";
+        break label111;
+        label230:
+        paramf = str;
       }
       catch (Exception parame)
       {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.NetSceneCliReportKV", "updateReportStrategy failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), bk.j(parame) });
-        return j;
+        for (;;)
+        {
+          ab.e("MicroMsg.NetSceneCliReportKV", "updateReportStrategy failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), bo.l(parame) });
+        }
       }
-      paramf = "/cgi-bin/micromsg-bin/newreportidkey";
-      break label91;
-      label249:
-      str = "/cgi-bin/micromsg-bin/newreportidkeyrsa";
-      break label103;
-      label256:
-      paramf = str;
     }
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final int getType()
   {
-    if ((com.tencent.mm.kernel.g.DO().dJT == null) || (com.tencent.mm.kernel.g.DO().dJT.edx == null))
+    if (!this.mgv)
     {
-      com.tencent.mm.sdk.platformtools.y.f("MicroMsg.NetSceneCliReportKV", "null == MMCore.getNetSceneQueue().getDispatcher(), can't give response to kvcomm.");
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      if (1 == this.cCy) {
+        return 997;
+      }
+      return 987;
+    }
+    if (1 == this.cCy) {
+      return 996;
+    }
+    return 986;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(72676);
+    if ((com.tencent.mm.kernel.g.RK().eHt == null) || (com.tencent.mm.kernel.g.RK().eHt.ftA == null))
+    {
+      ab.f("MicroMsg.NetSceneCliReportKV", "null == MMCore.getNetSceneQueue().getDispatcher(), can't give response to kvcomm.");
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(72676);
       return;
     }
     if (paramInt2 != 0)
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.NetSceneCliReportKV", "get cli_report_kv strategy err, errType:" + paramInt2 + ", errCode:" + paramInt3);
-      SmcLogic.OnReportResp(paramInt2, paramInt3, null, this.bUR);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      ab.e("MicroMsg.NetSceneCliReportKV", "get cli_report_kv strategy err, errType:" + paramInt2 + ", errCode:" + paramInt3);
+      SmcLogic.OnReportResp(paramInt2, paramInt3, null, this.cCy);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(72676);
       return;
     }
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.NetSceneCliReportKV", "get cli_report_kv strategy ok, channel:" + this.bUR);
-    paramq = (qi)this.dmK.ecF.ecN;
-    this.nEX.a(paramq.sOk, this.bUR);
+    ab.d("MicroMsg.NetSceneCliReportKV", "get cli_report_kv strategy ok, channel:" + this.cCy);
+    paramq = (tn)this.rr.fsW.fta;
+    this.qrZ.a(paramq.wMe, this.cCy);
     try
     {
-      if (this.bUR == 1) {
-        SmcLogic.OnReportResp(0, 0, SmcProtoBufUtil.toSmcReportKvResp(paramq).toByteArray(), this.bUR);
+      if (this.cCy == 1) {
+        SmcLogic.OnReportResp(0, 0, SmcProtoBufUtil.toSmcReportKvResp(paramq).toByteArray(), this.cCy);
       }
       for (;;)
       {
-        this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        AppMethodBeat.o(72676);
         return;
-        if (this.bUR == 2) {
-          SmcLogic.OnReportResp(0, 0, SmcProtoBufUtil.toSmcReportIdkeyResp(paramq).toByteArray(), this.bUR);
+        if (this.cCy == 2) {
+          SmcLogic.OnReportResp(0, 0, SmcProtoBufUtil.toSmcReportIdkeyResp(paramq).toByteArray(), this.cCy);
         }
       }
     }
@@ -181,29 +212,14 @@ public final class e
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.NetSceneCliReportKV", "updateReportStrategy failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), bk.j(paramq) });
+        ab.e("MicroMsg.NetSceneCliReportKV", "updateReportStrategy failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), bo.l(paramq) });
       }
     }
-  }
-  
-  public final int getType()
-  {
-    if (!this.jMp)
-    {
-      if (1 == this.bUR) {
-        return 997;
-      }
-      return 987;
-    }
-    if (1 == this.bUR) {
-      return 996;
-    }
-    return 986;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.report.b.e
  * JD-Core Version:    0.7.0.1
  */

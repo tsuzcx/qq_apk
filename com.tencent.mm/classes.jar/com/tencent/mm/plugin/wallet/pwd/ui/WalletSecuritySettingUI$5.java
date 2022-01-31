@@ -1,23 +1,32 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.app.AppCompatActivity;
-import com.tencent.mm.as.p.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.preference.IconPreference;
-import com.tencent.mm.ui.s;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletSecuritySettingUI$5
-  implements p.a
+  implements DialogInterface.OnClickListener
 {
-  WalletSecuritySettingUI$5(WalletSecuritySettingUI paramWalletSecuritySettingUI, IconPreference paramIconPreference) {}
+  WalletSecuritySettingUI$5(WalletSecuritySettingUI paramWalletSecuritySettingUI, WalletSecuritySettingUI.e parame) {}
   
-  public final void h(String paramString, Bitmap paramBitmap)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.WalletSecuritySettingUI", "alvinluo icon url: %s", new Object[] { paramString });
-    this.qqc.drawable = new BitmapDrawable(this.qqb.mController.uMN.getResources(), paramBitmap);
+    AppMethodBeat.i(46397);
+    if (this.uaA.uaM.pdt == 1)
+    {
+      e.m(this.uaz.getContext(), this.uaA.uaM.uaJ, true);
+      AppMethodBeat.o(46397);
+      return;
+    }
+    if (this.uaA.uaM.pdt == 2)
+    {
+      e.q(this.uaA.uaM.uaK, this.uaA.uaM.uaL, 0, 1000);
+      AppMethodBeat.o(46397);
+      return;
+    }
+    paramDialogInterface.dismiss();
+    AppMethodBeat.o(46397);
   }
 }
 

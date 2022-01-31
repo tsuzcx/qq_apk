@@ -1,12 +1,10 @@
 package com.tencent.mm.plugin.q;
 
-import com.tencent.mm.protocal.c.bmk;
-
-public final class a$a
+public abstract interface a$a
 {
-  public String hcm;
-  public int lKK;
-  public bmk lKL;
+  public abstract void a(d paramd, String paramString, int paramInt);
+  
+  public abstract void onCancel();
 }
 
 

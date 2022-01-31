@@ -1,60 +1,92 @@
 package com.tencent.qqpinyin.voicerecoapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a
 {
   public static int MAX_FRAME_SIZE = 2000;
-  private byte[] wKh = null;
-  public byte[] wKi = null;
-  private int wKj = 0;
-  public int wKk = 0;
-  public TRSpeexNative wKl = new TRSpeexNative();
+  private byte[] BhI;
+  public byte[] BhJ;
+  private int BhK;
+  public int BhL;
+  public TRSpeexNative BhM;
   
-  public final byte[] X(byte[] paramArrayOfByte, int paramInt)
+  public a()
   {
-    if (this.wKj == 0) {
-      throw new b(-102);
+    AppMethodBeat.i(35432);
+    this.BhI = null;
+    this.BhJ = null;
+    this.BhK = 0;
+    this.BhL = 0;
+    this.BhM = new TRSpeexNative();
+    AppMethodBeat.o(35432);
+  }
+  
+  public final byte[] Y(byte[] paramArrayOfByte, int paramInt)
+  {
+    AppMethodBeat.i(35434);
+    if (this.BhK == 0)
+    {
+      paramArrayOfByte = new b(-102);
+      AppMethodBeat.o(35434);
+      throw paramArrayOfByte;
     }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      throw new b(-104);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      paramArrayOfByte = new b(-104);
+      AppMethodBeat.o(35434);
+      throw paramArrayOfByte;
     }
-    paramInt = this.wKl.nativeTRSpeexEncode(this.wKj, paramArrayOfByte, 0, paramInt, this.wKh);
-    if (paramInt < 0) {
-      throw new b(paramInt);
+    paramInt = this.BhM.nativeTRSpeexEncode(this.BhK, paramArrayOfByte, 0, paramInt, this.BhI);
+    if (paramInt < 0)
+    {
+      paramArrayOfByte = new b(paramInt);
+      AppMethodBeat.o(35434);
+      throw paramArrayOfByte;
     }
-    if (paramInt == 0) {
+    if (paramInt == 0)
+    {
+      AppMethodBeat.o(35434);
       return null;
     }
     paramArrayOfByte = new byte[paramInt];
-    System.arraycopy(this.wKh, 0, paramArrayOfByte, 0, paramInt);
+    System.arraycopy(this.BhI, 0, paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.o(35434);
     return paramArrayOfByte;
   }
   
-  public final int cOq()
+  public final int dUe()
   {
-    int i;
-    if (this.wKj != 0) {
-      i = -103;
-    }
-    int j;
-    do
+    AppMethodBeat.i(35433);
+    if (this.BhK != 0)
     {
+      AppMethodBeat.o(35433);
+      return -103;
+    }
+    int i = this.BhM.nativeTRSpeexInit();
+    if (i == -1)
+    {
+      AppMethodBeat.o(35433);
       return i;
-      j = this.wKl.nativeTRSpeexInit();
-      i = j;
-    } while (j == -1);
-    this.wKj = j;
-    this.wKh = new byte[MAX_FRAME_SIZE * 10];
+    }
+    this.BhK = i;
+    this.BhI = new byte[MAX_FRAME_SIZE * 10];
+    AppMethodBeat.o(35433);
     return 0;
   }
   
-  public final int cOr()
+  public final int dUf()
   {
-    if (this.wKj == 0) {
+    AppMethodBeat.i(35435);
+    if (this.BhK == 0)
+    {
+      AppMethodBeat.o(35435);
       return -102;
     }
-    this.wKh = null;
-    int i = this.wKl.nativeTRSpeexRelease(this.wKj);
-    this.wKj = 0;
+    this.BhI = null;
+    int i = this.BhM.nativeTRSpeexRelease(this.BhK);
+    this.BhK = 0;
+    AppMethodBeat.o(35435);
     return i;
   }
 }

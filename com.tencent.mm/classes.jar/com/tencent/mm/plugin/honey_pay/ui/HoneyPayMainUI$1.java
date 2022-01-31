@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.honey_pay.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class HoneyPayMainUI$1
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class HoneyPayMainUI$1
   
   public final void onClick(View paramView)
   {
-    y.d(this.llJ.TAG, "click add friend");
-    HoneyPayMainUI.a(this.llJ);
+    AppMethodBeat.i(41882);
+    ab.d(this.nJe.TAG, "click add friend");
+    HoneyPayMainUI.a(this.nJe);
+    AppMethodBeat.o(41882);
   }
 }
 

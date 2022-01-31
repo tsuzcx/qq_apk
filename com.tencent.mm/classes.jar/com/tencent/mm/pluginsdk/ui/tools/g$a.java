@@ -1,33 +1,26 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.os.Looper;
-import com.tencent.mm.sdk.platformtools.ah;
-import java.util.LinkedList;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.MMEditText.b;
 
-abstract class g$a<T>
+public final class g$a
+  implements TextWatcher
 {
-  private ah handler;
-  final int sms = Math.max(1, 16);
-  LinkedList<T> smt = new LinkedList();
+  public MMEditText.b wff = null;
   
-  public g$a(g paramg, Looper paramLooper)
+  public final void afterTextChanged(Editable paramEditable) {}
+  
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.handler = new g.a.1(this, paramLooper, paramg);
-  }
-  
-  public final void bO(T paramT)
-  {
-    this.handler.sendMessage(this.handler.obtainMessage(1, paramT));
-  }
-  
-  protected abstract T coj();
-  
-  public final T cok()
-  {
-    if (this.smt.isEmpty()) {
-      return coj();
+    AppMethodBeat.i(105867);
+    if (this.wff != null) {
+      this.wff.are();
     }
-    return this.smt.removeFirst();
+    AppMethodBeat.o(105867);
   }
 }
 

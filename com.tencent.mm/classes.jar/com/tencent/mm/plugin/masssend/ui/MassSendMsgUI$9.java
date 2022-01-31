@@ -1,110 +1,51 @@
 package com.tencent.mm.plugin.masssend.ui;
 
-import android.content.Intent;
-import android.widget.Toast;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.ui.chat.AppPanel.a;
-import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.vfs.b;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.sdk.platformtools.r;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.widget.b.c;
 
 final class MassSendMsgUI$9
-  implements AppPanel.a
+  implements TextWatcher
 {
   MassSendMsgUI$9(MassSendMsgUI paramMassSendMsgUI) {}
   
-  public final void b(f paramf) {}
+  public final void afterTextChanged(Editable paramEditable) {}
   
-  public final void bhm()
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    Toast.makeText(this.mbI, this.mbI.getString(R.l.mass_send_voip_not_support), 0).show();
-  }
-  
-  public final void bhn()
-  {
-    Toast.makeText(this.mbI, this.mbI.getString(R.l.mass_send_card_not_support), 0).show();
-  }
-  
-  public final void bho()
-  {
-    Toast.makeText(this.mbI, this.mbI.getString(R.l.mass_send_talkroom_not_support), 0).show();
-  }
-  
-  public final void bhp()
-  {
-    Toast.makeText(this.mbI, this.mbI.getString(R.l.mass_send_location_not_support), 0).show();
-  }
-  
-  public final void bhq()
-  {
-    Toast.makeText(this.mbI, this.mbI.getString(R.l.mass_send_card_not_support), 0).show();
-  }
-  
-  public final void bhr()
-  {
-    com.tencent.mm.plugin.masssend.a.eUR.aP(this.mbI);
-  }
-  
-  public final void bhs()
-  {
-    Toast.makeText(this.mbI, this.mbI.getString(R.l.mass_send_card_not_support), 0).show();
-  }
-  
-  public final void bht() {}
-  
-  public final void bhu()
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("preceding_scence", 13);
-    d.b(this.mbI, "emoji", ".ui.v2.EmojiStoreV2UI", localIntent);
-  }
-  
-  public final void bhv()
-  {
-    Toast.makeText(this.mbI, this.mbI.getString(R.l.mass_send_lucky_money_not_support), 0).show();
-  }
-  
-  public final void bhw() {}
-  
-  public final void bhx() {}
-  
-  public final void bhy() {}
-  
-  public final void bhz() {}
-  
-  public final void tA(int paramInt)
-  {
-    switch (paramInt)
+    AppMethodBeat.i(22833);
+    paramCharSequence = String.valueOf(paramCharSequence);
+    String str = paramCharSequence.substring(paramInt1, paramInt1 + paramInt3);
+    if (((MassSendMsgUI.a(this.oCj) == null) || (!MassSendMsgUI.a(this.oCj).isShowing())) && (r.aoX(str)))
     {
-    }
-    boolean bool;
-    do
-    {
-      return;
-      l.a(this.mbI, 1, 1, 0, 3, false, null);
-      return;
-      b localb = new b(e.dzD);
-      if ((!localb.exists()) && (!localb.mkdirs()))
+      Bitmap localBitmap = d.d(str, 300, 300, false);
+      if (localBitmap == null)
       {
-        Toast.makeText(this.mbI, this.mbI.getString(R.l.chatting_toast_sdk_fail), 1).show();
+        ab.e("MicroMsg.MassSendMsgUI", "showAlert fail, bmp is null");
+        AppMethodBeat.o(22833);
         return;
       }
-      bool = com.tencent.mm.pluginsdk.permission.a.a(this.mbI.mController.uMN, "android.permission.CAMERA", 16, "", "");
-      y.i("MicroMsg.MassSendMsgUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bk.csb(), this.mbI.mController.uMN });
-    } while (!bool);
-    MassSendMsgUI.c(this.mbI);
-  }
-  
-  public final void tB(int paramInt)
-  {
-    MassSendMsgUI.d(this.mbI);
+      ImageView localImageView = new ImageView(this.oCj);
+      localImageView.setImageBitmap(localBitmap);
+      paramInt2 = this.oCj.getResources().getDimensionPixelSize(2131427772);
+      localImageView.setPadding(paramInt2, paramInt2, paramInt2, paramInt2);
+      MassSendMsgUI.a(this.oCj, h.a(this.oCj, this.oCj.getString(2131298319), localImageView, this.oCj.getString(2131297018), this.oCj.getString(2131296888), new MassSendMsgUI.9.1(this, str), null));
+      paramCharSequence = paramCharSequence.substring(0, paramInt1) + paramCharSequence.substring(paramInt1 + paramInt3);
+      MassSendMsgUI.b(this.oCj).u(paramCharSequence, -1, false);
+      MassSendMsgUI.Qd(paramCharSequence);
+    }
+    AppMethodBeat.o(22833);
   }
 }
 

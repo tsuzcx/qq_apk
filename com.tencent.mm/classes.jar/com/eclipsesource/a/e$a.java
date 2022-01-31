@@ -1,40 +1,65 @@
 package com.eclipsesource.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class e$a
 {
-  final byte[] arI = new byte[32];
+  private final byte[] aua;
   
-  final int N(Object paramObject)
+  public e$a()
   {
-    return paramObject.hashCode() & this.arI.length - 1;
+    AppMethodBeat.i(70533);
+    this.aua = new byte[32];
+    AppMethodBeat.o(70533);
   }
   
-  final void h(String paramString, int paramInt)
+  private int N(Object paramObject)
   {
+    AppMethodBeat.i(70536);
+    int i = paramObject.hashCode();
+    int j = this.aua.length;
+    AppMethodBeat.o(70536);
+    return i & j - 1;
+  }
+  
+  final void g(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(70534);
     int i = N(paramString);
     if (paramInt < 255)
     {
-      this.arI[i] = ((byte)(paramInt + 1));
+      this.aua[i] = ((byte)(paramInt + 1));
+      AppMethodBeat.o(70534);
       return;
     }
-    this.arI[i] = 0;
+    this.aua[i] = 0;
+    AppMethodBeat.o(70534);
+  }
+  
+  final int get(Object paramObject)
+  {
+    AppMethodBeat.i(70535);
+    int i = N(paramObject);
+    i = this.aua[i];
+    AppMethodBeat.o(70535);
+    return (i & 0xFF) - 1;
   }
   
   public final void remove(int paramInt)
   {
     int i = 0;
-    if (i < this.arI.length)
+    if (i < this.aua.length)
     {
-      if (this.arI[i] == paramInt + 1) {
-        this.arI[i] = 0;
+      if (this.aua[i] == paramInt + 1) {
+        this.aua[i] = 0;
       }
       for (;;)
       {
         i += 1;
         break;
-        if (this.arI[i] > paramInt + 1)
+        if (this.aua[i] > paramInt + 1)
         {
-          byte[] arrayOfByte = this.arI;
+          byte[] arrayOfByte = this.aua;
           arrayOfByte[i] = ((byte)(arrayOfByte[i] - 1));
         }
       }
@@ -43,7 +68,7 @@ public final class e$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.eclipsesource.a.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.shake.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.bu;
 
 final class ShakeSayHiListUI$3$1
@@ -14,12 +13,14 @@ final class ShakeSayHiListUI$3$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShakeSayHiListUI.e(this.odw.odv).aUK();
-    ShakeSayHiListUI.b(this.odw.odv).yc();
-    paramDialogInterface = (TextView)this.odw.odv.findViewById(R.h.empty_msg_tip_tv);
-    paramDialogInterface.setText(R.l.say_hi_non);
+    AppMethodBeat.i(24875);
+    ShakeSayHiListUI.e(this.qRD.qRC).axH();
+    ShakeSayHiListUI.b(this.qRD.qRC).Ku();
+    paramDialogInterface = (TextView)this.qRD.qRC.findViewById(2131821852);
+    paramDialogInterface.setText(2131302880);
     paramDialogInterface.setVisibility(0);
-    this.odw.odv.enableOptionMenu(false);
+    this.qRD.qRC.enableOptionMenu(false);
+    AppMethodBeat.o(24875);
   }
 }
 

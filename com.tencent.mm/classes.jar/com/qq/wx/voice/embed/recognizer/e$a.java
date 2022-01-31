@@ -1,6 +1,7 @@
 package com.qq.wx.voice.embed.recognizer;
 
 import android.os.Handler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$a
   implements Runnable
@@ -9,32 +10,37 @@ final class e$a
   
   public final void run()
   {
-    if (this.aVp.aVw.begin() != 0)
+    AppMethodBeat.i(123210);
+    if (this.blX.bme.begin() != 0)
     {
-      this.aVp.aVx.a(-102);
+      this.blX.bmf.a(-102);
+      AppMethodBeat.o(123210);
       return;
     }
-    if (this.aVp.aVw.recognize(this.aVp.c, this.aVp.c.length) != 0)
+    if (this.blX.bme.recognize(this.blX.c, this.blX.c.length) != 0)
     {
-      this.aVp.aVx.a(-103);
+      this.blX.bmf.a(-103);
+      AppMethodBeat.o(123210);
       return;
     }
-    if (this.aVp.aVw.end() != 0)
+    if (this.blX.bme.end() != 0)
     {
-      this.aVp.aVx.a(-104);
+      this.blX.bmf.a(-104);
+      AppMethodBeat.o(123210);
       return;
     }
     a locala = new a();
-    if (this.aVp.aVw.getResult(locala) != 0) {
-      this.aVp.aVx.a(-105);
+    if (this.blX.bme.getResult(locala) != 0) {
+      this.blX.bmf.a(-105);
     }
-    g localg = this.aVp.aVx;
+    g localg = this.blX.bmf;
     localg.b.sendMessage(localg.b.obtainMessage(200, locala));
+    AppMethodBeat.o(123210);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.qq.wx.voice.embed.recognizer.e.a
  * JD-Core Version:    0.7.0.1
  */

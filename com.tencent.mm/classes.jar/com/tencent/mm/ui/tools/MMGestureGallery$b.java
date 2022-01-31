@@ -2,9 +2,9 @@ package com.tencent.mm.ui.tools;
 
 public abstract interface MMGestureGallery$b
 {
-  public abstract void X(float paramFloat1, float paramFloat2);
+  public abstract void ae(float paramFloat1, float paramFloat2);
   
-  public abstract void Y(float paramFloat1, float paramFloat2);
+  public abstract void af(float paramFloat1, float paramFloat2);
 }
 
 

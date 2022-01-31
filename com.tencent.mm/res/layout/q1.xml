@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/b0_" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/p1"
+<LinearLayout android:gravity="right" android:orientation="horizontal" android:paddingLeft="@dimen/la" android:paddingRight="@dimen/l2" android:paddingBottom="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.tools.CropImageView android:gravity="center" android:layout_gravity="center" android:id="@id/b0a" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:scaleType="matrix" />
-    <View android:gravity="center" android:layout_gravity="center" android:id="@id/b07" android:layout_width="312.0dip" android:layout_height="312.0dip" />
-    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/b08" android:background="@drawable/aeh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
-    <LinearLayout android:orientation="vertical" android:id="@id/b0b" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/b0c" android:paddingLeft="8.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:id="@id/b0d" style="@style/q2" />
-            <View android:layout_width="8.0dip" style="@style/n3" />
-            <Button android:id="@id/b0e" style="@style/y1" />
-            <Button android:id="@id/b0f" style="@style/y0" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/b0g" android:background="@drawable/b8t" android:padding="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:layout_gravity="center_vertical" android:id="@id/b0h" android:minWidth="@dimen/le" android:text="@string/azr" style="@style/mw" />
-        </LinearLayout>
-    </LinearLayout>
-    <com.tencent.mm.ui.tools.FilterImageView android:id="@id/b0i" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <Button android:textSize="@dimen/m2" android:textColor="@color/io" android:id="@id/b1x" android:background="@drawable/b_" android:layout_width="wrap_content" android:minWidth="@dimen/ex" android:text="@string/av2" style="@style/ny" />
+    <Button android:textSize="@dimen/m2" android:textColor="@color/hk" android:id="@id/b1y" android:background="@drawable/b_" android:layout_width="wrap_content" android:minWidth="@dimen/ex" android:text="@string/av6" style="@style/ny" />
+</LinearLayout>

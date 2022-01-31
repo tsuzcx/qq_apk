@@ -2,19 +2,16 @@ package com.tencent.mm.plugin.sns.ui.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.PLTextView;
 import com.tencent.mm.kiss.widget.textview.a.a;
 
 public class SnsCommentPreloadTextView
   extends PLTextView
 {
-  private static a prk = null;
-  private static int prl = 0;
-  
-  public SnsCommentPreloadTextView(Context paramContext)
-  {
-    super(paramContext);
-  }
+  private static a smU = null;
+  private static int smV = 0;
+  private boolean smW = false;
   
   public SnsCommentPreloadTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,41 +25,56 @@ public class SnsCommentPreloadTextView
   
   public static a getTextViewConfig()
   {
-    if (prk == null) {
-      prk = b.bKA().getTextViewConfig();
+    AppMethodBeat.i(40495);
+    if (smU == null) {
+      smU = c.cxK().getTextViewConfig();
     }
-    return prk;
+    a locala = smU;
+    AppMethodBeat.o(40495);
+    return locala;
   }
   
   public static int getViewWidth()
   {
-    if (prl == 0) {
-      prl = b.bKA().getViewWidth();
+    AppMethodBeat.i(40498);
+    if (smV == 0) {
+      smV = c.cxK().getViewWidth();
     }
-    return prl;
+    int i = smV;
+    AppMethodBeat.o(40498);
+    return i;
   }
   
-  protected final a EH()
+  public final a SM()
   {
-    if (prk == null) {
-      prk = b.bKA().getTextViewConfig();
+    AppMethodBeat.i(40494);
+    if (smU == null) {
+      smU = c.cxK().getTextViewConfig();
     }
-    return prk;
+    a locala = smU;
+    AppMethodBeat.o(40494);
+    return locala;
   }
   
-  protected final void o(CharSequence paramCharSequence)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
-    super.o(paramCharSequence);
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
+    AppMethodBeat.i(40499);
     super.onMeasure(paramInt1, paramInt2);
+    AppMethodBeat.o(40499);
   }
   
-  protected final void p(CharSequence paramCharSequence)
+  public final void t(CharSequence paramCharSequence)
   {
-    super.p(paramCharSequence);
+    AppMethodBeat.i(40497);
+    super.t(paramCharSequence);
+    AppMethodBeat.o(40497);
+  }
+  
+  public final void u(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(40496);
+    super.u(paramCharSequence);
+    AppMethodBeat.o(40496);
   }
 }
 

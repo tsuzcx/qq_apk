@@ -1,6 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.downstream.FileDataSink;
 import com.tencent.qqmusic.mediaplayer.downstream.IDataSink;
 import com.tencent.qqmusic.mediaplayer.network.DefaultMediaHTTPService;
@@ -16,17 +17,23 @@ class CacheDataSource$Factory$2$1
   
   protected IDataSink createCacheSink(StreamingRequest paramStreamingRequest)
   {
-    return new FileDataSink(this.this$0.val$bufferFile.getAbsolutePath());
+    AppMethodBeat.i(104516);
+    paramStreamingRequest = new FileDataSink(this.this$0.val$bufferFile.getAbsolutePath());
+    AppMethodBeat.o(104516);
+    return paramStreamingRequest;
   }
   
   protected IDataSource createUpStream(StreamingRequest paramStreamingRequest)
   {
-    return new HttpDataSource(paramStreamingRequest.uri, paramStreamingRequest.headers, new DefaultMediaHTTPService());
+    AppMethodBeat.i(104515);
+    paramStreamingRequest = new HttpDataSource(paramStreamingRequest.uri, paramStreamingRequest.headers, new DefaultMediaHTTPService());
+    AppMethodBeat.o(104515);
+    return paramStreamingRequest;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.CacheDataSource.Factory.2.1
  * JD-Core Version:    0.7.0.1
  */

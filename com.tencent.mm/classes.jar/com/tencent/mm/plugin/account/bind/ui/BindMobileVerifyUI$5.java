@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.TimerTask;
 
 final class BindMobileVerifyUI$5
@@ -9,9 +10,11 @@ final class BindMobileVerifyUI$5
   
   public final void run()
   {
-    if (BindMobileVerifyUI.c(this.fcM) != null) {
-      BindMobileVerifyUI.d(this.fcM);
+    AppMethodBeat.i(13533);
+    if (BindMobileVerifyUI.c(this.guw) != null) {
+      BindMobileVerifyUI.d(this.guw);
     }
+    AppMethodBeat.o(13533);
   }
 }
 

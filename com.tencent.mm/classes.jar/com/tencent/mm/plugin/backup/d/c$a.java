@@ -1,17 +1,22 @@
 package com.tencent.mm.plugin.backup.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class c$a
 {
   byte[] buf;
-  int eAK;
-  boolean gEA = false;
+  int fQD;
+  boolean idE;
   int type;
   
   c$a(c paramc, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    this.eAK = paramInt1;
+    AppMethodBeat.i(17259);
+    this.idE = false;
+    this.fQD = paramInt1;
     this.type = paramInt2;
     this.buf = ((byte[])paramArrayOfByte.clone());
+    AppMethodBeat.o(17259);
   }
 }
 

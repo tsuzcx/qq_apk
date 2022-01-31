@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContactsSource
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.profile" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.plugin.sns.timeline" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip.video" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-</ContactsSource>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:persistent="false" android:title="@string/bk0" android:key="join_rank" android:defaultValue="true" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:persistent="false" android:title="@string/bk2" android:key="notify_rank" android:defaultValue="true" android:layout="@layout/afi" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/bk1" android:key="notify_like" android:defaultValue="true" />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/bj6" android:key="black_contact_list" android:layout="@layout/afi" />
+</PreferenceScreen>

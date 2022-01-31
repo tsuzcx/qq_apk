@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.report;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -7,40 +8,56 @@ import java.util.Set;
 
 public final class b
 {
-  private int mID = 463;
-  private long mInterval = 300000L;
-  private long nED;
-  private HashMap<Integer, Long> nEE = new HashMap();
+  private int mID;
+  private long mInterval;
+  private long qrF;
+  private HashMap<Integer, Long> qrG;
   
-  private void I(int paramInt, long paramLong)
+  public b()
   {
-    Long localLong = (Long)this.nEE.get(Integer.valueOf(paramInt));
+    AppMethodBeat.i(115098);
+    this.qrG = new HashMap();
+    this.mID = 463;
+    this.mInterval = 300000L;
+    AppMethodBeat.o(115098);
+  }
+  
+  private void Y(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(115100);
+    Long localLong = (Long)this.qrG.get(Integer.valueOf(paramInt));
     long l = paramLong;
     if (localLong != null) {
       l = paramLong + localLong.longValue();
     }
-    this.nEE.put(Integer.valueOf(paramInt), Long.valueOf(l));
+    this.qrG.put(Integer.valueOf(paramInt), Long.valueOf(l));
+    AppMethodBeat.o(115100);
   }
   
-  public final void g(int paramInt1, int paramInt2, long paramLong)
+  public final void h(int paramInt1, int paramInt2, long paramLong)
   {
+    AppMethodBeat.i(115099);
     try
     {
-      I(paramInt1, paramLong);
-      I(paramInt2, 1L);
+      Y(paramInt1, paramLong);
+      Y(paramInt2, 1L);
       paramLong = System.currentTimeMillis();
-      if (paramLong - this.nED > this.mInterval)
+      if (paramLong - this.qrF > this.mInterval)
       {
-        Iterator localIterator = this.nEE.entrySet().iterator();
+        Iterator localIterator = this.qrG.entrySet().iterator();
         while (localIterator.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)localIterator.next();
-          f.nEG.a(this.mID, ((Integer)localEntry.getKey()).intValue(), ((Long)localEntry.getValue()).longValue(), false);
+          e.qrI.idkeyStat(this.mID, ((Integer)localEntry.getKey()).intValue(), ((Long)localEntry.getValue()).longValue(), false);
         }
-        this.nED = paramLong;
+        this.qrF = paramLong;
       }
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(115099);
+    }
+    AppMethodBeat.o(115099);
   }
 }
 

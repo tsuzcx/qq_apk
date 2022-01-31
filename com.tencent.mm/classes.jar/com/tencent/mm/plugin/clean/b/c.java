@@ -7,7 +7,7 @@ public abstract interface c
 {
   public abstract void a(long paramLong1, long paramLong2, long paramLong3, HashSet<String> paramHashSet, HashMap<String, Long> paramHashMap);
   
-  public abstract void cy(int paramInt1, int paramInt2);
+  public abstract void dW(int paramInt1, int paramInt2);
 }
 
 

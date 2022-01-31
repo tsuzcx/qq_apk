@@ -1,18 +1,13 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.protocal.protobuf.qa;
+import com.tencent.mm.vending.c.a;
 
 final class WalletBalanceFetchUI$8
-  implements DialogInterface.OnClickListener
+  implements a<Object, a.a<qa>>
 {
   WalletBalanceFetchUI$8(WalletBalanceFetchUI paramWalletBalanceFetchUI) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    WalletBalanceFetchUI.k(this.qgO);
-  }
 }
 
 

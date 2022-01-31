@@ -3,14 +3,13 @@ package com.tencent.mm.plugin.offline.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.y.a;
-import com.tencent.mm.y.c;
+import com.tencent.mm.x.a;
+import com.tencent.mm.x.c;
 
 final class WalletOfflineCoinPurseUI$9
   implements View.OnClickListener
@@ -19,20 +18,22 @@ final class WalletOfflineCoinPurseUI$9
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.WalletOfflineCoinPurseUI", "click f2f lucky");
-    h.nFQ.f(14021, new Object[] { Integer.valueOf(4), Integer.valueOf(WalletOfflineCoinPurseUI.p(this.mNj)) });
-    d.x(this.mNj.mController.uMN, "luckymoney", ".f2f.ui.LuckyMoneyF2FQRCodeUI");
-    if (c.BS().b(ac.a.uys, ac.a.uxr))
+    AppMethodBeat.i(43513);
+    ab.i("MicroMsg.WalletOfflineCoinPurseUI", "click f2f lucky");
+    h.qsU.e(14021, new Object[] { Integer.valueOf(4), Integer.valueOf(WalletOfflineCoinPurseUI.p(this.pny)) });
+    d.H(this.pny.getContext(), "luckymoney", ".f2f.ui.LuckyMoneyF2FQRCodeUI");
+    if (c.PJ().b(ac.a.yIC, ac.a.yHA))
     {
-      c.BS().c(ac.a.uys, ac.a.uxr);
-      this.mNu.setVisibility(8);
-      h.nFQ.f(14396, new Object[] { Integer.valueOf(5) });
+      c.PJ().c(ac.a.yIC, ac.a.yHA);
+      this.pnJ.setVisibility(8);
+      h.qsU.e(14396, new Object[] { Integer.valueOf(5) });
     }
+    AppMethodBeat.o(43513);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.9
  * JD-Core Version:    0.7.0.1
  */

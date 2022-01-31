@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.exdevice.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.service.c.a;
 import com.tencent.mm.plugin.exdevice.service.k;
 import com.tencent.mm.plugin.exdevice.service.m;
 import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class d$3
   extends c.a
@@ -16,9 +17,11 @@ final class d$3
   
   public final void onServiceConnected()
   {
-    if (!u.aMn().jtr.a(this.hUK, this.jtG)) {
-      y.e("MicroMsg.exdevice.ExdeviceConnectManager", "connect failed!!!");
+    AppMethodBeat.i(19099);
+    if (!u.bqA().lCQ.a(this.jOE, this.lDf)) {
+      ab.e("MicroMsg.exdevice.ExdeviceConnectManager", "connect failed!!!");
     }
+    AppMethodBeat.o(19099);
   }
 }
 

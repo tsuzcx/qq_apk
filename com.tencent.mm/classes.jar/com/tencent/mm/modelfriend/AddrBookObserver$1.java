@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Random;
 
 final class AddrBookObserver$1
-  extends ah
+  extends ak
 {
   AddrBookObserver$1(Looper paramLooper)
   {
@@ -18,24 +20,27 @@ final class AddrBookObserver$1
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(124497);
     super.handleMessage(paramMessage);
     paramMessage = (Context)paramMessage.obj;
-    if (AddrBookObserver.NH() == null)
+    if (AddrBookObserver.agv() == null)
     {
-      AddrBookObserver.h(new Intent());
-      AddrBookObserver.NH().setClass(paramMessage, AddrBookObserver.AddrBookService.class);
+      AddrBookObserver.v(new Intent());
+      AddrBookObserver.agv().setClass(paramMessage, AddrBookObserver.AddrBookService.class);
     }
     float f = new Random(System.currentTimeMillis()).nextFloat();
-    AddrBookObserver.NH().putExtra(AddrBookObserver.AddrBookService.ekQ, f);
+    AddrBookObserver.agv().putExtra(AddrBookObserver.AddrBookService.fBh, f);
     try
     {
-      y.i("MicroMsg.AddrBookObserver", "time's up, start AddrBookObserver, session:%f", new Object[] { Float.valueOf(f) });
-      paramMessage.startService(AddrBookObserver.NH());
+      ab.i("MicroMsg.AddrBookObserver", "time's up, start AddrBookObserver, session:%f", new Object[] { Float.valueOf(f) });
+      d.aG(AddrBookObserver.agv());
+      AppMethodBeat.o(124497);
       return;
     }
     catch (Exception paramMessage)
     {
-      y.printErrStackTrace("MicroMsg.AddrBookObserver", paramMessage, "startService failed", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.AddrBookObserver", paramMessage, "startService failed", new Object[0]);
+      AppMethodBeat.o(124497);
     }
   }
 }

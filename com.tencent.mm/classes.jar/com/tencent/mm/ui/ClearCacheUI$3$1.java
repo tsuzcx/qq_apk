@@ -2,8 +2,8 @@ package com.tencent.mm.ui;
 
 import android.content.Context;
 import android.widget.Toast;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class ClearCacheUI$3$1
   implements Runnable
@@ -12,7 +12,9 @@ final class ClearCacheUI$3$1
   
   public final void run()
   {
-    Toast.makeText(ae.getContext(), ae.getContext().getString(R.l.clear_cache_finish), 0).show();
+    AppMethodBeat.i(29167);
+    Toast.makeText(ah.getContext(), ah.getContext().getString(2131298410), 0).show();
+    AppMethodBeat.o(29167);
   }
 }
 

@@ -3,18 +3,30 @@ package com.tencent.mm.pluginsdk.nfc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class NfcAID
   implements Parcelable
 {
-  public static final Parcelable.Creator<NfcAID> CREATOR = new NfcAID.1();
-  public String mURL = null;
-  public String rVC = null;
+  public static final Parcelable.Creator<NfcAID> CREATOR;
+  public String mURL;
+  public String vMq;
+  
+  static
+  {
+    AppMethodBeat.i(27436);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(27436);
+  }
   
   public NfcAID(Parcel paramParcel)
   {
-    this.rVC = paramParcel.readString();
+    AppMethodBeat.i(27434);
+    this.vMq = null;
+    this.mURL = null;
+    this.vMq = paramParcel.readString();
     this.mURL = paramParcel.readString();
+    AppMethodBeat.o(27434);
   }
   
   public int describeContents()
@@ -24,8 +36,10 @@ public class NfcAID
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.rVC);
+    AppMethodBeat.i(27435);
+    paramParcel.writeString(this.vMq);
     paramParcel.writeString(this.mURL);
+    AppMethodBeat.o(27435);
   }
 }
 

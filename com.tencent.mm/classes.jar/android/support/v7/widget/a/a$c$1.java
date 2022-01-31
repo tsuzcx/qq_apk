@@ -10,7 +10,7 @@ final class a$c$1
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.aou.aot = paramValueAnimator.getAnimatedFraction();
+    this.aqJ.aqI = paramValueAnimator.getAnimatedFraction();
   }
 }
 

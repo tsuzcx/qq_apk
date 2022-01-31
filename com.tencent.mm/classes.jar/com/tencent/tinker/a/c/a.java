@@ -3,11 +3,11 @@ package com.tencent.tinker.a.c;
 public final class a
   implements Cloneable
 {
-  private static final int[] aUJ = new int[0];
-  private static final boolean[] wTO = new boolean[0];
-  private int[] Ew = new int[10];
+  private static final boolean[] Bqs = new boolean[0];
+  private static final int[] bgZ = new int[0];
+  private boolean[] Bqt = new boolean[10];
+  private int[] Fk = new int[10];
   private int mSize = 0;
-  private boolean[] wTP = new boolean[10];
   
   public a()
   {
@@ -16,7 +16,15 @@ public final class a
   
   private a(byte paramByte) {}
   
-  private static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  private static int ad(int paramInt)
+  {
+    if (paramInt <= 4) {
+      return 8;
+    }
+    return (paramInt >> 1) + paramInt;
+  }
+  
+  private static int b(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     int i = paramInt1 - 1;
     paramInt1 = 0;
@@ -41,15 +49,7 @@ public final class a
     return i;
   }
   
-  private static int aY(int paramInt)
-  {
-    if (paramInt <= 4) {
-      return 8;
-    }
-    return (paramInt >> 1) + paramInt;
-  }
-  
-  private a cQD()
+  private a dWt()
   {
     try
     {
@@ -60,8 +60,8 @@ public final class a
     {
       try
       {
-        locala.Ew = ((int[])this.Ew.clone());
-        locala.wTP = ((boolean[])this.wTP.clone());
+        locala.Fk = ((int[])this.Fk.clone());
+        locala.Bqt = ((boolean[])this.Bqt.clone());
         return locala;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
@@ -70,16 +70,16 @@ public final class a
     }
   }
   
-  public final void JS(int paramInt)
+  public final void SN(int paramInt)
   {
-    int i = a(this.Ew, this.mSize, paramInt);
+    int i = b(this.Fk, this.mSize, paramInt);
     if (i >= 0)
     {
-      this.wTP[i] = true;
+      this.Bqt[i] = true;
       return;
     }
     i ^= 0xFFFFFFFF;
-    Object localObject1 = this.Ew;
+    Object localObject1 = this.Fk;
     int j = this.mSize;
     if (j > localObject1.length) {
       throw new IllegalArgumentException("Bad currentSize, originalSize: " + localObject1.length + " currentSize: " + j);
@@ -92,14 +92,14 @@ public final class a
     Object localObject2;
     for (;;)
     {
-      this.Ew = ((int[])localObject1);
-      localObject1 = this.wTP;
+      this.Fk = ((int[])localObject1);
+      localObject1 = this.Bqt;
       paramInt = this.mSize;
       if (paramInt <= localObject1.length) {
         break;
       }
       throw new IllegalArgumentException("Bad currentSize, originalSize: " + localObject1.length + " currentSize: " + paramInt);
-      localObject2 = new int[aY(j)];
+      localObject2 = new int[ad(j)];
       System.arraycopy(localObject1, 0, localObject2, 0, i);
       localObject2[i] = paramInt;
       System.arraycopy(localObject1, i, localObject2, i + 1, localObject1.length - i);
@@ -112,10 +112,10 @@ public final class a
     }
     for (;;)
     {
-      this.wTP = ((boolean[])localObject1);
+      this.Bqt = ((boolean[])localObject1);
       this.mSize += 1;
       return;
-      localObject2 = new boolean[aY(paramInt)];
+      localObject2 = new boolean[ad(paramInt)];
       System.arraycopy(localObject1, 0, localObject2, 0, i);
       localObject2[i] = 1;
       System.arraycopy(localObject1, i, localObject2, i + 1, localObject1.length - i);
@@ -123,9 +123,9 @@ public final class a
     }
   }
   
-  public final boolean JT(int paramInt)
+  public final boolean fs(int paramInt)
   {
-    return a(this.Ew, this.mSize, paramInt) >= 0;
+    return b(this.Fk, this.mSize, paramInt) >= 0;
   }
   
   public final String toString()
@@ -141,9 +141,9 @@ public final class a
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      localStringBuilder.append(this.Ew[i]);
+      localStringBuilder.append(this.Fk[i]);
       localStringBuilder.append('=');
-      localStringBuilder.append(this.wTP[i]);
+      localStringBuilder.append(this.Bqt[i]);
       i += 1;
     }
     localStringBuilder.append('}');
@@ -152,7 +152,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tinker.a.c.a
  * JD-Core Version:    0.7.0.1
  */

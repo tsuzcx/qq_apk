@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.downloader_app.detail.a;
 
-import com.tencent.mm.plugin.webview.luggage.jsapi.aw.a;
-import com.tencent.mm.pluginsdk.model.app.am;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
+import com.tencent.mm.pluginsdk.model.app.ai;
 
 final class c$1
-  implements am
+  implements ai
 {
-  c$1(c paramc, aw.a parama) {}
+  c$1(c paramc, bh.a parama) {}
   
-  public final void cW(boolean paramBoolean)
+  public final void dZ(boolean paramBoolean)
   {
-    this.iRN.e(null, null);
+    AppMethodBeat.i(136070);
+    this.lax.c(null, null);
+    AppMethodBeat.o(136070);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.detail.a.c.1
  * JD-Core Version:    0.7.0.1
  */

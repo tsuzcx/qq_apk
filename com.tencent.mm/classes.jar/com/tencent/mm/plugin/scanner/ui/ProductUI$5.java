@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import com.tencent.mm.h.a.jy;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ki;
 import com.tencent.mm.sdk.b.c;
 
 final class ProductUI$5
-  extends c<jy>
+  extends c<ki>
 {
   ProductUI$5(ProductUI paramProductUI)
   {
-    this.udX = jy.class.getName().hashCode();
+    AppMethodBeat.i(81083);
+    this.__eventId = ki.class.getName().hashCode();
+    AppMethodBeat.o(81083);
   }
 }
 

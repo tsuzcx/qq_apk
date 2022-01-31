@@ -1,31 +1,22 @@
 package com.tencent.mm.plugin.card.model;
 
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.model.bx.a;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.pi;
+import com.tencent.mm.sdk.b.c;
 
 final class am$5
-  implements bx.a
+  extends c<pi>
 {
-  am$5(am paramam) {}
-  
-  public final void a(e.a parama)
+  am$5(am paramam)
   {
-    String str = aa.a(parama.dBs.svH);
-    if ((str == null) || (str.length() == 0))
-    {
-      y.e("MicroMsg.SubCoreCard.CardMsgListener", "onReceiveMsg, msgContent is null");
-      return;
-    }
-    am.a(this.ior).post(new am.5.1(this, str, parama));
+    AppMethodBeat.i(87936);
+    this.__eventId = pi.class.getName().hashCode();
+    AppMethodBeat.o(87936);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.am.5
  * JD-Core Version:    0.7.0.1
  */

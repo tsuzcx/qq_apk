@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ComposeUI$3
   implements View.OnClickListener
@@ -12,8 +13,10 @@ final class ComposeUI$3
   
   public final void onClick(View paramView)
   {
-    ComposeUI.j(this.ngJ).getText().clear();
-    ComposeUI.j(this.ngJ).requestFocus();
+    AppMethodBeat.i(68169);
+    ComposeUI.j(this.pLX).getText().clear();
+    ComposeUI.j(this.pLX).requestFocus();
+    AppMethodBeat.o(68169);
   }
 }
 

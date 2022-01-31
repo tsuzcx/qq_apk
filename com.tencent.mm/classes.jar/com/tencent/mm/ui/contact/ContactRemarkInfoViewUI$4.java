@@ -1,16 +1,19 @@
 package com.tencent.mm.ui.contact;
 
 import android.widget.ImageView;
-import com.tencent.mm.bb.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bc.c.a;
 
 final class ContactRemarkInfoViewUI$4
   implements c.a
 {
   ContactRemarkInfoViewUI$4(ContactRemarkInfoViewUI paramContactRemarkInfoViewUI) {}
   
-  public final void bY(boolean paramBoolean)
+  public final void db(boolean paramBoolean)
   {
-    ContactRemarkInfoViewUI.f(this.vKY).post(new ContactRemarkInfoViewUI.4.1(this, paramBoolean));
+    AppMethodBeat.i(33691);
+    ContactRemarkInfoViewUI.f(this.AcA).post(new ContactRemarkInfoViewUI.4.1(this, paramBoolean));
+    AppMethodBeat.o(33691);
   }
 }
 

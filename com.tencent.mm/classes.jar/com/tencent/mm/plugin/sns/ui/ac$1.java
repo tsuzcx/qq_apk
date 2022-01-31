@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.h.a.pv;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.rd;
 import com.tencent.mm.sdk.b.c;
 
 final class ac$1
-  extends c<pv>
+  extends c<rd>
 {
   ac$1(ac paramac)
   {
-    this.udX = pv.class.getName().hashCode();
+    AppMethodBeat.i(38335);
+    this.__eventId = rd.class.getName().hashCode();
+    AppMethodBeat.o(38335);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ac.1
  * JD-Core Version:    0.7.0.1
  */

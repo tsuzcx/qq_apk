@@ -6,196 +6,306 @@ import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.os.Build;
 import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.e.m;
-import com.tencent.mm.protocal.c.ceq;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.csb;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class d
 {
   public static int MOBILE_NETWORK_DISCONNECT = 2;
-  public static int qdb = 0;
-  public static int qdc = 1;
-  public int aYU = 0;
-  public int channelStrategy = 1;
-  public int cpuFlag0 = m.yR();
-  public String deviceModel = "";
-  public long lpE = 0L;
-  public long lqV = 0L;
-  public String lre = "";
-  public String lrf = "";
-  public int networkType = 0;
-  public int pUM = 0;
-  public int pUR = 0;
-  public int pUS = 0;
-  public int pUT = 0;
-  public int pUy = 0;
-  public int pWh = 0;
-  public int qdA = 0;
-  public int qdB = 0;
-  public long qdC = 0L;
-  public int qdD;
-  public long qdE = 0L;
-  public long qdF = 0L;
-  public long qdG = 0L;
-  public int qdH;
-  public int qdI;
-  public int qdJ = -1;
-  public int qdK = 0;
-  public String qdL = "";
-  public String qdM = "";
-  public String qdN = "";
-  public int qdO = 0;
-  public int qdP = 0;
-  public int qdQ = 0;
-  public int qdR = 0;
-  public int qdS = 0;
-  public int qdT = 0;
-  public int qdd = 0;
-  public int qde = 0;
-  public int qdf = 0;
-  public int qdg = 0;
-  public int qdh = 0;
-  public int qdi = 0;
-  public int qdj = 0;
-  public int qdk = 0;
-  public int qdl = 0;
-  public int qdm = 0;
-  public int qdn;
-  public int qdo = 0;
-  public long qdp = 0L;
-  public String qdq = "";
-  public int qdr;
-  public int qds = 0;
-  public int qdt = 0;
-  public int qdu = 0;
-  public int qdv = 0;
-  public int qdw = 0;
-  public int qdx = 1;
-  public int qdy = 0;
-  public int qdz = 0;
-  public int videoFps = 0;
+  public static int tJO = 0;
+  public static int tJP = 1;
+  public int channelStrategy;
+  public int cpuFlag0;
+  public int dataType;
+  public String deviceModel;
+  public long nNa;
+  public String nOA;
+  public String nOB;
+  public long nOr;
+  public int networkType;
+  public int tAo;
+  public int tAt;
+  public int tAu;
+  public int tAv;
+  public int tBM;
+  public int tJQ;
+  public int tJR;
+  public int tJS;
+  public int tJT;
+  public int tJU;
+  public int tJV;
+  public int tJW;
+  public int tJX;
+  public int tJY;
+  public int tJZ;
+  public String tKA;
+  public int tKB;
+  public int tKC;
+  public int tKD;
+  public int tKE;
+  public int tKF;
+  public int tKG;
+  public int tKa;
+  public int tKb;
+  public long tKc;
+  public String tKd;
+  public int tKe;
+  public int tKf;
+  public int tKg;
+  public int tKh;
+  public int tKi;
+  public int tKj;
+  public int tKk;
+  public int tKl;
+  public int tKm;
+  public int tKn;
+  public int tKo;
+  public long tKp;
+  public int tKq;
+  public long tKr;
+  public long tKs;
+  public long tKt;
+  public int tKu;
+  public int tKv;
+  public int tKw;
+  public int tKx;
+  public String tKy;
+  public String tKz;
+  public int tzZ;
+  public int videoFps;
   
   public d()
   {
-    if (this.qdL.contains(",")) {
-      this.qdL = this.qdL.replace(',', ' ');
+    AppMethodBeat.i(135297);
+    this.dataType = 0;
+    this.tJQ = 0;
+    this.tJR = 0;
+    this.tJS = 0;
+    this.videoFps = 0;
+    this.tJT = 0;
+    this.tJU = 0;
+    this.tJV = 0;
+    this.tJW = 0;
+    this.tJX = 0;
+    this.tJY = 0;
+    this.networkType = 0;
+    this.tJZ = 0;
+    this.tKb = 0;
+    this.tAo = 0;
+    this.tKc = 0L;
+    this.nNa = 0L;
+    this.tKd = "";
+    this.tzZ = 0;
+    this.tKf = 0;
+    this.tKg = 0;
+    this.tKh = 0;
+    this.tKi = 0;
+    this.tAu = 0;
+    this.tAt = 0;
+    this.tKj = 0;
+    this.tKk = 1;
+    this.tKl = 0;
+    this.tKm = 0;
+    this.tKn = 0;
+    this.tKo = 0;
+    this.tKp = 0L;
+    this.tKr = 0L;
+    this.tKs = 0L;
+    this.tKt = 0L;
+    this.nOr = 0L;
+    this.channelStrategy = 1;
+    this.tBM = 0;
+    this.tAv = 0;
+    this.tKw = -1;
+    this.tKx = 0;
+    this.tKy = "";
+    this.deviceModel = "";
+    this.tKz = "";
+    this.tKA = "";
+    this.tKB = 0;
+    this.tKC = 0;
+    this.tKD = 0;
+    this.tKE = 0;
+    this.tKF = 0;
+    this.tKG = 0;
+    this.cpuFlag0 = m.Lo();
+    this.nOB = "";
+    this.nOA = "";
+    this.tKy = Build.MANUFACTURER;
+    if (this.tKy.contains(",")) {
+      this.tKy = this.tKy.replace(',', ' ');
     }
     this.deviceModel = Build.MODEL;
     if (this.deviceModel.contains(",")) {
       this.deviceModel = this.deviceModel.replace(',', ' ');
     }
-    this.qdM = Build.VERSION.SDK;
-    if (this.qdM.contains(",")) {
-      this.qdM = this.qdM.replace(',', ' ');
+    this.tKz = Build.VERSION.SDK;
+    if (this.tKz.contains(",")) {
+      this.tKz = this.tKz.replace(',', ' ');
     }
-    this.qdN = Build.VERSION.RELEASE;
-    if (this.qdN.contains(",")) {
-      this.qdN = this.qdN.replace(',', ' ');
+    this.tKA = Build.VERSION.RELEASE;
+    if (this.tKA.contains(",")) {
+      this.tKA = this.tKA.replace(',', ' ');
     }
+    AppMethodBeat.o(135297);
   }
   
-  public static int bST()
+  public static int cQs()
   {
+    AppMethodBeat.i(135302);
+    int i;
     try
     {
-      Object localObject = (ConnectivityManager)ae.getContext().getSystemService("connectivity");
+      Object localObject = (ConnectivityManager)ah.getContext().getSystemService("connectivity");
       if (localObject != null)
       {
         localObject = ((ConnectivityManager)localObject).getNetworkInfo(0);
-        if (localObject == null) {
-          return qdb;
+        if (localObject == null)
+        {
+          i = tJO;
+          AppMethodBeat.o(135302);
+          return i;
         }
-        if (((NetworkInfo)localObject).getState() == NetworkInfo.State.CONNECTED) {
-          return qdc;
+        if (((NetworkInfo)localObject).getState() == NetworkInfo.State.CONNECTED)
+        {
+          i = tJP;
+          AppMethodBeat.o(135302);
+          return i;
         }
-        int i = MOBILE_NETWORK_DISCONNECT;
+        i = MOBILE_NETWORK_DISCONNECT;
+        AppMethodBeat.o(135302);
         return i;
       }
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.VoipCSReportHelper", "isMobileNetworkAvailable fail!");
+      ab.e("MicroMsg.VoipCSReportHelper", "isMobileNetworkAvailable fail!");
+      i = tJO;
+      AppMethodBeat.o(135302);
     }
-    return qdb;
+    return i;
   }
   
   public static int getNetType(Context paramContext)
   {
+    AppMethodBeat.i(135303);
     try
     {
       paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if (paramContext == null) {
+      if (paramContext == null)
+      {
+        AppMethodBeat.o(135303);
         return 0;
       }
-      if (paramContext.getType() == 1) {
+      int i = paramContext.getType();
+      if (i == 1)
+      {
+        AppMethodBeat.o(135303);
         return 1;
       }
-      if (paramContext.getType() != 0) {
+      i = paramContext.getType();
+      if (i != 0)
+      {
+        AppMethodBeat.o(135303);
         return 0;
       }
-      if (paramContext.getSubtype() == 1) {
+      i = paramContext.getSubtype();
+      if (i == 1)
+      {
+        AppMethodBeat.o(135303);
         return 2;
       }
-      if (paramContext.getSubtype() == 2) {
+      i = paramContext.getSubtype();
+      if (i == 2)
+      {
+        AppMethodBeat.o(135303);
         return 2;
       }
-      if (paramContext.getSubtype() == 13) {
+      i = paramContext.getSubtype();
+      if (i == 13)
+      {
+        AppMethodBeat.o(135303);
         return 4;
       }
       if ((paramContext.getSubtype() < 3) || (paramContext.getSubtype() >= 13))
       {
-        int i = paramContext.getSubtype();
+        i = paramContext.getSubtype();
         if (i <= 13) {}
       }
       else
       {
+        AppMethodBeat.o(135303);
         return 3;
       }
+      AppMethodBeat.o(135303);
       return 2;
     }
     catch (NullPointerException paramContext)
     {
-      y.printErrStackTrace("MicroMsg.VoipCSReportHelper", paramContext, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.VoipCSReportHelper", paramContext, "", new Object[0]);
+      AppMethodBeat.o(135303);
     }
     return 0;
   }
   
-  public final void AC(int paramInt)
+  public final void Id(int paramInt)
   {
-    this.pUR = Math.abs(paramInt);
+    AppMethodBeat.i(135298);
+    this.tAt = Math.abs(paramInt);
+    AppMethodBeat.o(135298);
   }
   
-  public final void bSR()
+  public final void cQp()
   {
-    y.d("MicroMsg.VoipCSReportHelper", "markEndTalk");
-    if ((this.qdS == 0) && (this.qdR != 0))
+    AppMethodBeat.i(135299);
+    ab.d("MicroMsg.VoipCSReportHelper", "markEndTalk");
+    if ((this.tKF == 0) && (this.tKE != 0))
     {
-      this.qdS = ((int)(System.currentTimeMillis() / 1000L));
-      this.lqV = (this.qdS - this.qdR);
+      this.tKF = ((int)(System.currentTimeMillis() / 1000L));
+      this.nOr = (this.tKF - this.tKE);
     }
+    AppMethodBeat.o(135299);
   }
   
-  public final ceq bSS()
+  public final void cQq()
   {
-    ceq localceq = new ceq();
-    localceq.hQR = 2;
-    localceq.tTD = this.lre;
-    y.i("MicroMsg.VoipCSReportHelper", "getVoipCSEngineReportData, result: %s", new Object[] { localceq.tTD });
-    String[] arrayOfString = this.lre.split(",");
+    AppMethodBeat.i(135300);
+    ab.d("MicroMsg.VoipCSReportHelper", "markUserAccept");
+    if (this.tKr == 0L)
+    {
+      this.tKD = ((int)(System.currentTimeMillis() / 1000L));
+      this.tKr = (this.tKD - this.tKB);
+    }
+    AppMethodBeat.o(135300);
+  }
+  
+  public final csb cQr()
+  {
+    AppMethodBeat.i(135301);
+    csb localcsb = new csb();
+    localcsb.jKs = 2;
+    localcsb.yaU = this.nOA;
+    ab.i("MicroMsg.VoipCSReportHelper", "getVoipCSEngineReportData, result: %s", new Object[] { localcsb.yaU });
+    String[] arrayOfString = this.nOA.split(",");
     if ((arrayOfString != null) && (arrayOfString.length > 0)) {}
     try
     {
-      this.videoFps = bk.getInt(arrayOfString[8], 0);
-      this.qdg = bk.getInt(arrayOfString[10], 0);
-      return localceq;
+      this.videoFps = bo.getInt(arrayOfString[8], 0);
+      this.tJT = bo.getInt(arrayOfString[10], 0);
+      AppMethodBeat.o(135301);
+      return localcsb;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.VoipCSReportHelper", "get videoFps and rate fail!!");
+      for (;;)
+      {
+        ab.e("MicroMsg.VoipCSReportHelper", "get videoFps and rate fail!!");
+      }
     }
-    return localceq;
   }
 }
 

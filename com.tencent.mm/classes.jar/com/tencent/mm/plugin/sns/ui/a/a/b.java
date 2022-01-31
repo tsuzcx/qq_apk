@@ -1,19 +1,11 @@
 package com.tencent.mm.plugin.sns.ui.a.a;
 
-import com.tencent.mm.plugin.sns.ui.a.b.b.a;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.sns.k.a;
 
-public abstract class b
+public final class b
 {
-  protected MMActivity gfb;
-  protected b.a pli;
-  
-  public final void a(b.a parama)
-  {
-    this.pli = parama;
-  }
-  
-  public abstract void gA(long paramLong);
+  public com.tencent.mm.plugin.sns.k.b rXk = null;
+  public a rXl = null;
 }
 
 

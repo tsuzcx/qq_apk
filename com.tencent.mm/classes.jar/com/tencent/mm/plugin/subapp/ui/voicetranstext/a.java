@@ -1,140 +1,169 @@
 package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bhy;
-import com.tencent.mm.protocal.c.cbr;
-import com.tencent.mm.protocal.c.cds;
-import com.tencent.mm.protocal.c.cdx;
-import com.tencent.mm.protocal.c.qc;
-import com.tencent.mm.protocal.c.qd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bqi;
+import com.tencent.mm.protocal.protobuf.cox;
+import com.tencent.mm.protocal.protobuf.crd;
+import com.tencent.mm.protocal.protobuf.cri;
+import com.tencent.mm.protocal.protobuf.th;
+import com.tencent.mm.protocal.protobuf.ti;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class a
   extends m
   implements k
 {
-  public static int pyq = 1;
-  public static int pyr = 2;
-  public static int pys = 3;
-  private String bYR;
-  private b ecz;
-  private f mEe;
+  public static int tad = 1;
+  public static int tae = 2;
+  public static int taf = 3;
+  private int Scene;
+  private String cGY;
+  private b fsQ;
   private String mFileName;
-  public int mState = -1;
-  private String pyk;
-  private int pyl;
-  private cds pym;
-  private long pyn;
-  private int pyo;
-  private String pyp;
-  public cdx pyt;
-  public cbr pyu;
-  public bhy pyv;
-  int pyw;
+  public int mState;
+  private f peg;
+  private String sZY;
+  private int sZZ;
+  private crd taa;
+  private long tab;
+  private String tac;
+  public cri tah;
+  public cox tai;
+  public bqi taj;
+  int tak;
   
   public a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2)
   {
+    AppMethodBeat.i(25573);
+    this.mState = -1;
     a(paramString1, paramInt1, paramInt2, paramLong, paramString2, 0, "", "");
+    AppMethodBeat.o(25573);
   }
   
   public a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2, int paramInt3, String paramString3, String paramString4)
   {
+    AppMethodBeat.i(25575);
+    this.mState = -1;
     a(paramString1, paramInt1, paramInt2, paramLong, paramString2, paramInt3, paramString3, paramString4);
+    AppMethodBeat.o(25575);
   }
   
   public a(String paramString1, int paramInt, String paramString2)
   {
+    AppMethodBeat.i(25572);
+    this.mState = -1;
     a(paramString1, paramInt, -1, -1L, paramString2, 0, "", "");
+    AppMethodBeat.o(25572);
   }
   
   public a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4)
   {
+    AppMethodBeat.i(25574);
+    this.mState = -1;
     a(paramString1, paramInt1, -1, -1L, paramString2, paramInt2, paramString3, paramString4);
+    AppMethodBeat.o(25574);
   }
   
   private void a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2, int paramInt3, String paramString3, String paramString4)
   {
+    AppMethodBeat.i(25576);
     b.a locala = new b.a();
-    locala.ecH = new qc();
-    locala.ecI = new qd();
+    locala.fsX = new th();
+    locala.fsY = new ti();
     locala.uri = "/cgi-bin/micromsg-bin/checkvoicetrans";
-    locala.ecG = 546;
-    locala.ecJ = 0;
-    locala.ecK = 0;
+    locala.funcId = 546;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
     this.mFileName = paramString2;
-    this.ecz = locala.Kt();
-    y.i("MicroMsg.NetSceneCheckVoiceTrans", "voiceId:%s, totalLen:%d, encodeType: %d, svrMsgId: %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
+    this.fsQ = locala.ado();
+    ab.i("MicroMsg.NetSceneCheckVoiceTrans", "voiceId:%s, totalLen:%d, encodeType: %d, svrMsgId: %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
     if (paramInt2 >= 0) {
-      this.pym = d.aK(paramInt2, paramString2);
+      this.taa = d.bm(paramInt2, paramString2);
     }
     if (paramLong > 0L) {
-      this.pyn = paramLong;
+      this.tab = paramLong;
     }
-    this.pyk = paramString1;
-    this.pyl = paramInt1;
-    this.pyo = paramInt3;
-    this.pyp = paramString3;
-    this.bYR = paramString4;
+    this.sZY = paramString1;
+    this.sZZ = paramInt1;
+    this.Scene = paramInt3;
+    this.tac = paramString3;
+    this.cGY = paramString4;
+    AppMethodBeat.o(25576);
   }
   
-  public final int a(e parame, f paramf)
+  public final boolean cHd()
   {
-    this.mEe = paramf;
-    paramf = (qc)this.ecz.ecE.ecN;
-    paramf.sNM = this.pyk;
-    paramf.ndf = this.pyl;
-    paramf.sNN = this.pym;
-    paramf.ndp = this.pyn;
-    paramf.pyo = this.pyo;
-    paramf.kWn = this.pyp;
-    paramf.kWm = this.bYR;
-    return a(parame, this.ecz, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    AppMethodBeat.i(25579);
+    if ((this.tah != null) && (!bo.isNullOrNil(this.tah.xZS)))
     {
-      paramq = (qd)this.ecz.ecF.ecN;
-      if (paramq == null) {
-        return;
-      }
-      this.pyt = paramq.sNO;
-      this.mState = paramq.hQq;
-      this.pyu = paramq.sNP;
-      this.pyv = paramq.sNQ;
-      this.pyw = paramq.sNR;
+      AppMethodBeat.o(25579);
+      return true;
     }
-    for (;;)
-    {
-      this.mEe.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-      y.i("MicroMsg.NetSceneCheckVoiceTrans", "end checkVoiceTrans, & errType:%d, errCode:%d, voiceId: %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this.pyk });
-    }
+    AppMethodBeat.o(25579);
+    return false;
   }
   
-  public final boolean bMf()
+  public final int doScene(e parame, f paramf)
   {
-    return (this.pyt != null) && (!bk.bl(this.pyt.tSA));
+    AppMethodBeat.i(25577);
+    this.peg = paramf;
+    paramf = (th)this.fsQ.fsV.fta;
+    paramf.wAs = this.sZY;
+    paramf.pIx = this.sZZ;
+    paramf.wLH = this.taa;
+    paramf.pIG = this.tab;
+    paramf.Scene = this.Scene;
+    paramf.num = this.tac;
+    paramf.nul = this.cGY;
+    int i = dispatch(parame, this.fsQ, this);
+    AppMethodBeat.o(25577);
+    return i;
   }
   
   public final int getType()
   {
     return 546;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(25578);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      paramq = (ti)this.fsQ.fsW.fta;
+      if (paramq == null)
+      {
+        AppMethodBeat.o(25578);
+        return;
+      }
+      this.tah = paramq.wLI;
+      this.mState = paramq.jJS;
+      this.tai = paramq.wLJ;
+      this.taj = paramq.wLK;
+      this.tak = paramq.wLL;
+    }
+    for (;;)
+    {
+      this.peg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(25578);
+      return;
+      ab.i("MicroMsg.NetSceneCheckVoiceTrans", "end checkVoiceTrans, & errType:%d, errCode:%d, voiceId: %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this.sZY });
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.a
  * JD-Core Version:    0.7.0.1
  */

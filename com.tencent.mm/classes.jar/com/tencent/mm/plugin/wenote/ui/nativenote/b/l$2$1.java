@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote.b;
 
 import android.text.Editable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.i;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.e;
@@ -13,33 +14,35 @@ final class l$2$1
   
   public final void run()
   {
-    if (this.rNy.rNx.rGw != 0)
+    AppMethodBeat.i(27176);
+    if (this.vEc.vEb.vxf != 0)
     {
-      int i = l.a(this.rNy.rNv).getSelection().aiH;
-      if (i == this.rNy.rNx.content.length())
+      int i = l.a(this.vEc.vDZ).getSelection().akX;
+      if (i == this.vEc.vEb.content.length())
       {
-        l.a(this.rNy.rNv).civ();
-        l.a(this.rNy.rNv).getText().append("\n");
-        l.a(this.rNy.rNv).ciw();
-        l.a(this.rNy.rNv).setSelection(i);
+        l.a(this.vEc.vDZ).diM();
+        l.a(this.vEc.vDZ).getText().append("\n");
+        l.a(this.vEc.vDZ).diN();
+        l.a(this.vEc.vDZ).setSelection(i);
       }
-      this.rNy.rNx.rGw = 0;
-      if (this.rNy.rNx.rGx != 1) {
-        break label154;
-      }
-      l.a(this.rNy.rNv).a(u.rLa, Boolean.valueOf(true));
-    }
-    label154:
-    do
-    {
-      return;
-      if (this.rNy.rNx.rGx == 3)
+      this.vEc.vEb.vxf = 0;
+      if (this.vEc.vEb.vxg == 1)
       {
-        l.a(this.rNy.rNv).a(u.rKZ, Boolean.valueOf(true));
+        l.a(this.vEc.vDZ).a(u.vBE, Boolean.TRUE);
+        AppMethodBeat.o(27176);
         return;
       }
-    } while (this.rNy.rNx.rGx != 2);
-    l.a(this.rNy.rNv).a(u.rLb, Boolean.valueOf(true));
+      if (this.vEc.vEb.vxg == 3)
+      {
+        l.a(this.vEc.vDZ).a(u.vBD, Boolean.TRUE);
+        AppMethodBeat.o(27176);
+        return;
+      }
+      if (this.vEc.vEb.vxg == 2) {
+        l.a(this.vEc.vDZ).a(u.vBF, Boolean.TRUE);
+      }
+    }
+    AppMethodBeat.o(27176);
   }
 }
 

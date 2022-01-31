@@ -1,6 +1,7 @@
 package com.tencent.mm.console.a.b;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$2
   implements Runnable
@@ -9,13 +10,15 @@ final class a$2
   
   public final void run()
   {
-    a.gP(this.dAU);
-    a.a(this.dAT, this.val$context);
+    AppMethodBeat.i(16155);
+    a.jc(this.euv);
+    a.a(this.euu, this.val$context);
+    AppMethodBeat.o(16155);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.console.a.b.a.2
  * JD-Core Version:    0.7.0.1
  */

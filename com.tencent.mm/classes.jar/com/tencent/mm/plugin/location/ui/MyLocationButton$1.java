@@ -3,31 +3,36 @@ package com.tencent.mm.plugin.location.ui;
 import android.os.Looper;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import com.tencent.mm.modelgeo.a.a;
-import com.tencent.mm.plugin.p.b;
-import com.tencent.mm.plugin.p.d;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b.a;
+import com.tencent.mm.plugin.k.b;
+import com.tencent.mm.plugin.k.d;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class MyLocationButton$1
-  implements a.a
+  implements b.a
 {
   MyLocationButton$1(MyLocationButton paramMyLocationButton) {}
   
   public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    if (!paramBoolean) {
+    AppMethodBeat.i(113448);
+    if (!paramBoolean)
+    {
+      AppMethodBeat.o(113448);
       return false;
     }
-    MyLocationButton.a(this.lEW).setVisibility(8);
-    MyLocationButton.b(this.lEW).setVisibility(0);
-    if ((MyLocationButton.c(this.lEW) != null) && (MyLocationButton.d(this.lEW)))
+    MyLocationButton.a(this.ock).setVisibility(8);
+    MyLocationButton.b(this.ock).setVisibility(0);
+    if ((MyLocationButton.c(this.ock) != null) && (MyLocationButton.d(this.ock)))
     {
-      MyLocationButton.c(this.lEW).getIController().setCenter(paramFloat2, paramFloat1);
-      if (MyLocationButton.c(this.lEW).getZoomLevel() < 16) {
-        MyLocationButton.c(this.lEW).getIController().setZoom(16);
+      MyLocationButton.c(this.ock).getIController().setCenter(paramFloat2, paramFloat1);
+      if (MyLocationButton.c(this.ock).getZoomLevel() < 16) {
+        MyLocationButton.c(this.ock).getIController().setZoom(16);
       }
     }
-    new ah(Looper.getMainLooper()).post(new MyLocationButton.1.1(this));
+    new ak(Looper.getMainLooper()).post(new MyLocationButton.1.1(this));
+    AppMethodBeat.o(113448);
     return false;
   }
 }

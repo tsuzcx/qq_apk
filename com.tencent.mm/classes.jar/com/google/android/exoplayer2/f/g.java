@@ -4,7 +4,7 @@ import com.google.android.exoplayer2.Format;
 
 public abstract interface g
 {
-  public static final g aMq = new g.1();
+  public static final g aTK = new g.1();
   
   public abstract boolean g(Format paramFormat);
   
@@ -12,7 +12,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,46 @@
 package com.tencent.mm.wallet_core.c;
 
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.UUID;
 
 public final class x
 {
-  public String tNl = "";
-  public String tVv = "";
-  public String wAO = "";
-  public String wAP = "";
-  public int wAQ = 0;
+  private static boolean AXg = false;
+  private static int AXh = -1;
+  private static String AXi = "";
   
-  public x() {}
-  
-  public x(JSONObject paramJSONObject)
+  public static void RT(int paramInt)
   {
-    this.wAO = paramJSONObject.optString("device_id");
-    this.tVv = paramJSONObject.optString("device_name");
-    this.wAP = paramJSONObject.optString("device_os");
-    this.wAQ = paramJSONObject.optInt("Is_cur_device");
-    this.tNl = paramJSONObject.optString("crt_no");
+    AppMethodBeat.i(49086);
+    if (!AXg)
+    {
+      AXg = true;
+      AXh = paramInt;
+      AXi = UUID.randomUUID().toString();
+    }
+    AppMethodBeat.o(49086);
+  }
+  
+  public static boolean dSp()
+  {
+    return AXg;
+  }
+  
+  public static int dSq()
+  {
+    return AXh;
+  }
+  
+  public static String dSr()
+  {
+    return AXi;
+  }
+  
+  public static void dSs()
+  {
+    AXg = false;
+    AXh = -1;
+    AXi = "";
   }
 }
 

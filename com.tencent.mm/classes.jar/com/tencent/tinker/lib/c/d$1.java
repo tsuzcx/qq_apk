@@ -12,7 +12,7 @@ final class d$1
   
   d$1(List paramList, Throwable[] paramArrayOfThrowable) {}
   
-  public final void X(File paramFile)
+  public final void ag(File paramFile)
   {
     this.startTime = System.currentTimeMillis();
     a.i("Tinker.DexDiffPatchInternal", "start to parallel optimize dex %s, size: %d", new Object[] { paramFile.getPath(), Long.valueOf(paramFile.length()) });
@@ -21,8 +21,8 @@ final class d$1
   public final void b(File paramFile, Throwable paramThrowable)
   {
     a.i("Tinker.DexDiffPatchInternal", "fail to parallel optimize dex %s use time %d", new Object[] { paramFile.getPath(), Long.valueOf(System.currentTimeMillis() - this.startTime) });
-    this.wVX.add(paramFile);
-    this.wVY[0] = paramThrowable;
+    this.BsC.add(paramFile);
+    this.BsD[0] = paramThrowable;
   }
   
   public final void i(File paramFile1, File paramFile2)
@@ -32,7 +32,7 @@ final class d$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tinker.lib.c.d.1
  * JD-Core Version:    0.7.0.1
  */

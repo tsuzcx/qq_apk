@@ -2,15 +2,18 @@ package com.tencent.mm.plugin.expt.roomexpt;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.h.b.a.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.ae;
 import com.tencent.mm.kernel.api.c;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.a.a.a;
+import com.tencent.mm.plugin.messenger.foundation.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.t;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import java.text.SimpleDateFormat;
@@ -18,27 +21,45 @@ import java.text.SimpleDateFormat;
 public final class a
   implements c, d
 {
-  private static final float[] jIA = { 0.0F, 0.35F, 0.5F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
-  private static a jIC;
-  private static final float[] jIs = { 0.0F, 0.3F, 0.45F, 0.55F, 0.67F, 0.75F, 0.85F, 1.0F };
-  private static final float[] jIt = { 0.0F, 0.0F, 0.0F, 0.0F, 0.1F, 0.2F, 0.3F, 0.4F };
-  private static final float[] jIu = { 0.0F, 0.1F, 0.2F, 0.3F, 0.4F, 0.5F, 0.6F, 0.7F, 0.8F, 0.9F, 1.0F };
-  private static final int[] jIv = { 15, 35, 83, 140, 209, 297, 417, 599, 926, 1720 };
-  private static final float[] jIw = { 0.0F, 0.3F, 0.5F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
-  private static final float[] jIx = { 0.0F, 0.3F, 0.45F, 0.55F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
-  private static final float[] jIy = { 0.1F, 0.2F, 0.3F, 0.4F, 0.5F, 0.6F, 0.7F, 0.8F, 0.9F, 1.0F };
-  private static final int[] jIz = { 2400, 7500, 13000, 21500, 41000, 65000, 116000, 215000, 455000 };
-  private SimpleDateFormat jIB = null;
-  public b jID;
-  q jIE;
-  private String[] jIF;
-  private boolean jIG = false;
-  int jIH = 0;
+  private static a mcB;
+  private static final float[] mcr = { 0.0F, 0.3F, 0.45F, 0.55F, 0.67F, 0.75F, 0.85F, 1.0F };
+  private static final float[] mcs = { 0.0F, 0.0F, 0.0F, 0.0F, 0.1F, 0.2F, 0.3F, 0.4F };
+  private static final float[] mct = { 0.0F, 0.1F, 0.2F, 0.3F, 0.4F, 0.5F, 0.6F, 0.7F, 0.8F, 0.9F, 1.0F };
+  private static final int[] mcu = { 15, 35, 83, 140, 209, 297, 417, 599, 926, 1720 };
+  private static final float[] mcv = { 0.0F, 0.3F, 0.5F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
+  private static final float[] mcw = { 0.0F, 0.3F, 0.45F, 0.55F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
+  private static final float[] mcx = { 0.1F, 0.2F, 0.3F, 0.4F, 0.5F, 0.6F, 0.7F, 0.8F, 0.9F, 1.0F };
+  private static final int[] mcy = { 2400, 7500, 13000, 21500, 41000, 65000, 116000, 215000, 455000 };
+  private static final float[] mcz = { 0.0F, 0.35F, 0.5F, 0.6F, 0.7F, 0.7F, 0.8F, 0.8F, 0.8F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 0.9F, 1.0F };
+  private SimpleDateFormat mcA;
+  public b mcC;
+  private ae mcD;
+  private String[] mcE;
+  private boolean mcF;
+  int mcG;
+  private t mcH;
+  
+  public a()
+  {
+    AppMethodBeat.i(152437);
+    this.mcA = null;
+    this.mcF = false;
+    this.mcG = 0;
+    this.mcH = new a.5(this);
+    AppMethodBeat.o(152437);
+  }
   
   private static float a(float[] paramArrayOfFloat, int[] paramArrayOfInt, long paramLong)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length <= 0)) {}
-    while ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
+    AppMethodBeat.i(73571);
+    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length <= 0))
+    {
+      AppMethodBeat.o(73571);
+      return 0.0F;
+    }
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
+    {
+      AppMethodBeat.o(73571);
       return 0.0F;
     }
     int j = paramArrayOfFloat.length;
@@ -49,67 +70,38 @@ public final class a
     }
     for (;;)
     {
-      return paramArrayOfFloat[i];
+      float f = paramArrayOfFloat[i];
+      AppMethodBeat.o(73571);
+      return f;
       i += 1;
       break;
       i = j - 1;
     }
   }
   
-  public static a aNc()
+  public static a bsU()
   {
-    if (jIC == null) {
-      jIC = new a();
+    AppMethodBeat.i(73564);
+    if (mcB == null) {
+      mcB = new a();
     }
-    return jIC;
+    a locala = mcB;
+    AppMethodBeat.o(73564);
+    return locala;
   }
   
-  private void aNd()
+  private void bsV()
   {
-    if (this.jIE == null) {
+    AppMethodBeat.i(73565);
+    if (this.mcD == null)
+    {
+      AppMethodBeat.o(73565);
       return;
     }
-    String str = this.jIE.uI();
-    g.DP().Dz().c(ac.a.uzs, str);
-    y.i("MicroMsg.ChatRoomExptService", "save expt info[%s]", new Object[] { this.jIE.uJ() });
-  }
-  
-  private static float b(float paramFloat, int paramInt1, int paramInt2)
-  {
-    float f1 = 0.0F;
-    if (paramInt1 <= 0) {
-      return 0.0F;
-    }
-    int i;
-    if (paramInt2 == 1)
-    {
-      i = 1;
-      if (i == 0) {
-        break label127;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        f2 = c(jIt, paramInt1);
-        f1 = f2;
-        f2 = (paramFloat / paramInt1 + paramFloat / 7.0F) / 2.0F - f2;
-        f1 = f2;
-        y.d("MicroMsg.ChatRoomExptService", "calc finish score result[%f] day[%d] isMute[%d] score[%f]", new Object[] { Float.valueOf(f2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(paramFloat) });
-        return f2;
-      }
-      catch (Exception localException)
-      {
-        y.e("MicroMsg.ChatRoomExptService", "calc finish score error[%s]", new Object[] { localException.toString() });
-        return f1;
-      }
-      i = 0;
-      break;
-      label127:
-      float f2 = c(jIs, paramInt1);
-      f2 += (paramFloat / paramInt1 + paramFloat / 7.0F) / 2.0F;
-    }
+    String str = this.mcD.Ff();
+    g.RL().Ru().set(ac.a.yKg, str);
+    ab.i("MicroMsg.ChatRoomExptService", "save expt info[%s]", new Object[] { this.mcD.Fg() });
+    AppMethodBeat.o(73565);
   }
   
   private static float c(float[] paramArrayOfFloat, int paramInt)
@@ -126,34 +118,80 @@ public final class a
     return paramArrayOfFloat[paramInt];
   }
   
+  private static float d(float paramFloat, int paramInt1, int paramInt2)
+  {
+    float f1 = 0.0F;
+    AppMethodBeat.i(73572);
+    if (paramInt1 <= 0)
+    {
+      AppMethodBeat.o(73572);
+      return 0.0F;
+    }
+    int i;
+    if (paramInt2 == 1)
+    {
+      i = 1;
+      if (i == 0) {
+        break label123;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        f2 = c(mcs, paramInt1);
+        f1 = f2;
+        f2 = (paramFloat / paramInt1 + paramFloat / 7.0F) / 2.0F - f2;
+        f1 = f2;
+        ab.d("MicroMsg.ChatRoomExptService", "calc finish score result[%f] day[%d] isMute[%d] score[%f]", new Object[] { Float.valueOf(f2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(paramFloat) });
+        f1 = f2;
+      }
+      catch (Exception localException)
+      {
+        float f2;
+        label123:
+        ab.e("MicroMsg.ChatRoomExptService", "calc finish score error[%s]", new Object[] { localException.toString() });
+        continue;
+      }
+      AppMethodBeat.o(73572);
+      return f1;
+      i = 0;
+      break;
+      f2 = c(mcr, paramInt1);
+      f2 += (paramFloat / paramInt1 + paramFloat / 7.0F) / 2.0F;
+    }
+  }
+  
   public final void a(String paramString1, String paramString2, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    com.tencent.mm.plugin.expt.a.a locala = (com.tencent.mm.plugin.expt.a.a)g.r(com.tencent.mm.plugin.expt.a.a.class);
-    a.a locala1 = a.a.jHZ;
+    AppMethodBeat.i(73569);
+    com.tencent.mm.plugin.expt.a.a locala = (com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class);
+    a.a locala1 = a.a.lRx;
     boolean bool;
     int i;
-    if (this.jIE != null)
+    if (this.mcD != null)
     {
-      bool = this.jIE.cjq;
+      bool = this.mcD.cUf;
       if (locala.a(locala1, bool)) {
-        break label61;
+        break label73;
       }
       i = 0;
     }
     for (;;)
     {
       if (i != 0) {
-        break label226;
+        break label234;
       }
+      AppMethodBeat.o(73569);
       return;
       bool = false;
       break;
-      label61:
-      h.nFQ.h(869L, 1L, 1L);
-      long l = this.jIE.cjn;
+      label73:
+      h.qsU.cT(869, 1);
+      long l = this.mcD.cUc;
       if (l >= 3L)
       {
-        y.d("MicroMsg.ChatRoomExptService", "room expt already finish");
+        ab.d("MicroMsg.ChatRoomExptService", "room expt already finish");
         i = 0;
       }
       else
@@ -161,584 +199,642 @@ public final class a
         if (l == 0L)
         {
           i = 1;
-          label114:
+          label125:
           if (!paramBoolean) {
-            break label180;
+            break label188;
           }
         }
-        label180:
+        label188:
         for (l = 1L | l;; l = 0x2 | l)
         {
-          this.jIE.cjn = l;
+          this.mcD.cUc = l;
           if (l < 3L) {
-            break label191;
+            break label199;
           }
-          y.d("MicroMsg.ChatRoomExptService", "user already enter mute room and unmute room, don't expt");
-          h.nFQ.h(869L, 2L, 1L);
-          aNd();
+          ab.d("MicroMsg.ChatRoomExptService", "user already enter mute room and unmute room, don't expt");
+          h.qsU.cT(869, 2);
+          bsV();
           i = 0;
           break;
           i = 0;
-          break label114;
+          break label125;
         }
-        label191:
+        label199:
         if (i != 0)
         {
-          if (this.jIE.cjo <= 0L) {
-            this.jIE.uP();
+          if (this.mcD.cUd <= 0L) {
+            this.mcD.Fm();
           }
-          aNd();
+          bsV();
         }
         i = 1;
       }
     }
-    label226:
-    g.DS().O(new a.4(this, paramLong, paramInt2, paramString1, paramInt1, paramBoolean, paramString2));
+    label234:
+    g.RO().ac(new a.4(this, paramLong, paramInt2, paramString1, paramInt1, paramBoolean, paramString2));
+    AppMethodBeat.o(73569);
+  }
+  
+  public final void aK(final String paramString, final boolean paramBoolean)
+  {
+    AppMethodBeat.i(73568);
+    ab.d("MicroMsg.ChatRoomExptService", "enter chat room [%s] isMute[%b]", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    if (this.mcG > 0)
+    {
+      this.mcG -= 1;
+      g.RO().ac(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(73561);
+          a.aL(paramString, paramBoolean);
+          AppMethodBeat.o(73561);
+        }
+      });
+      AppMethodBeat.o(73568);
+      return;
+    }
+    if ((this.mcE == null) || (this.mcE.length <= 0))
+    {
+      ab.d("MicroMsg.ChatRoomExptService", "roomname list is null");
+      AppMethodBeat.o(73568);
+      return;
+    }
+    if (this.mcD == null)
+    {
+      AppMethodBeat.o(73568);
+      return;
+    }
+    if (this.mcD.cUc >= 5L)
+    {
+      ab.d("MicroMsg.ChatRoomExptService", "exptInfo is finish [%d]", new Object[] { Long.valueOf(this.mcD.cUc) });
+      AppMethodBeat.o(73568);
+      return;
+    }
+    g.RO().ac(new a.3(this, paramString, paramBoolean));
+    AppMethodBeat.o(73568);
   }
   
   /* Error */
-  final java.util.List<c> aNe()
+  final java.util.List<c> bsW()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   4: ifnonnull +13 -> 17
-    //   7: ldc 179
-    //   9: ldc_w 446
-    //   12: invokestatic 449	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   15: aconst_null
-    //   16: areturn
-    //   17: aload_0
-    //   18: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   21: getfield 411	com/tencent/mm/h/b/a/q:cjn	J
-    //   24: ldc2_w 412
-    //   27: lcmp
-    //   28: iflt +30 -> 58
-    //   31: ldc 179
-    //   33: ldc_w 451
-    //   36: iconst_1
-    //   37: anewarray 4	java/lang/Object
-    //   40: dup
-    //   41: iconst_0
-    //   42: aload_0
-    //   43: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   46: getfield 411	com/tencent/mm/h/b/a/q:cjn	J
-    //   49: invokestatic 456	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   52: aastore
-    //   53: invokestatic 230	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   56: aconst_null
-    //   57: areturn
-    //   58: ldc_w 392
-    //   61: invokestatic 396	com/tencent/mm/kernel/g:r	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   64: checkcast 392	com/tencent/mm/plugin/expt/a/a
-    //   67: astore 8
-    //   69: getstatic 402	com/tencent/mm/plugin/expt/a/a$a:jHZ	Lcom/tencent/mm/plugin/expt/a/a$a;
-    //   72: astore 9
-    //   74: aload_0
-    //   75: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   78: ifnull +36 -> 114
-    //   81: aload_0
-    //   82: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   85: getfield 405	com/tencent/mm/h/b/a/q:cjq	Z
-    //   88: istore 5
-    //   90: aload 8
-    //   92: aload 9
-    //   94: iload 5
-    //   96: invokeinterface 408 3 0
-    //   101: ifne +19 -> 120
-    //   104: ldc 179
-    //   106: ldc_w 458
-    //   109: invokestatic 460	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   112: aconst_null
-    //   113: areturn
-    //   114: iconst_0
-    //   115: istore 5
-    //   117: goto -27 -> 90
-    //   120: aload_0
-    //   121: getfield 353	com/tencent/mm/plugin/expt/roomexpt/a:jIF	[Ljava/lang/String;
-    //   124: ifnull +21 -> 145
-    //   127: aload_0
-    //   128: getfield 353	com/tencent/mm/plugin/expt/roomexpt/a:jIF	[Ljava/lang/String;
-    //   131: arraylength
-    //   132: ifle +13 -> 145
-    //   135: ldc 179
-    //   137: ldc_w 462
-    //   140: invokestatic 460	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   143: aconst_null
-    //   144: areturn
-    //   145: aload_0
-    //   146: getfield 83	com/tencent/mm/plugin/expt/roomexpt/a:jIG	Z
-    //   149: ifeq +13 -> 162
-    //   152: ldc 179
-    //   154: ldc_w 464
-    //   157: invokestatic 418	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   160: aconst_null
-    //   161: areturn
-    //   162: invokestatic 467	com/tencent/mm/sdk/platformtools/bk:UZ	()J
-    //   165: lstore 6
-    //   167: aload_0
-    //   168: iconst_1
-    //   169: putfield 83	com/tencent/mm/plugin/expt/roomexpt/a:jIG	Z
-    //   172: getstatic 314	com/tencent/mm/plugin/report/service/h:nFQ	Lcom/tencent/mm/plugin/report/service/h;
-    //   175: ldc2_w 317
-    //   178: ldc2_w 468
-    //   181: lconst_1
-    //   182: invokevirtual 321	com/tencent/mm/plugin/report/service/h:h	(JJJ)V
-    //   185: aload_0
-    //   186: getfield 385	com/tencent/mm/plugin/expt/roomexpt/a:jID	Lcom/tencent/mm/plugin/expt/roomexpt/b;
-    //   189: invokevirtual 475	com/tencent/mm/plugin/expt/roomexpt/b:aNh	()Landroid/database/Cursor;
-    //   192: astore 9
-    //   194: fconst_0
-    //   195: fstore_2
-    //   196: fconst_0
-    //   197: fstore_1
-    //   198: new 477	java/util/ArrayList
-    //   201: dup
-    //   202: invokespecial 478	java/util/ArrayList:<init>	()V
-    //   205: astore 11
-    //   207: aload 9
-    //   209: ifnull +612 -> 821
-    //   212: fload_1
-    //   213: fstore_2
-    //   214: aload 9
-    //   216: invokeinterface 483 1 0
-    //   221: ifeq +600 -> 821
-    //   224: aload 9
-    //   226: invokeinterface 487 1 0
-    //   231: iconst_5
-    //   232: if_icmpge +186 -> 418
-    //   235: ldc 179
-    //   237: ldc_w 489
-    //   240: invokestatic 449	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   243: aload 11
-    //   245: invokestatic 495	java/util/Collections:sort	(Ljava/util/List;)V
-    //   248: fconst_0
-    //   249: fstore_2
-    //   250: aload 11
-    //   252: invokeinterface 500 1 0
-    //   257: ifle +14 -> 271
-    //   260: fload_1
-    //   261: aload 11
-    //   263: invokeinterface 500 1 0
-    //   268: i2f
-    //   269: fdiv
-    //   270: fstore_2
-    //   271: fload_2
-    //   272: fconst_0
-    //   273: invokestatic 504	java/lang/Math:max	(FF)F
-    //   276: fstore_1
-    //   277: new 506	com/tencent/mm/h/b/a/g
-    //   280: dup
-    //   281: invokespecial 507	com/tencent/mm/h/b/a/g:<init>	()V
-    //   284: astore 12
-    //   286: aconst_null
-    //   287: astore 8
-    //   289: aload 11
-    //   291: invokeinterface 500 1 0
-    //   296: iconst_5
-    //   297: invokestatic 93	java/lang/Math:min	(II)I
-    //   300: istore 4
-    //   302: iconst_0
-    //   303: istore_3
-    //   304: iload_3
-    //   305: iload 4
-    //   307: if_icmpge +280 -> 587
-    //   310: aload 11
-    //   312: iload_3
-    //   313: invokeinterface 511 2 0
-    //   318: checkcast 513	com/tencent/mm/plugin/expt/roomexpt/c
-    //   321: astore 13
-    //   323: aload 8
-    //   325: astore 10
-    //   327: aload 13
-    //   329: getfield 516	com/tencent/mm/plugin/expt/roomexpt/c:jIO	F
-    //   332: fload_1
-    //   333: fcmpl
-    //   334: ifle +492 -> 826
-    //   337: aload 8
-    //   339: ifnull +179 -> 518
-    //   342: aload 8
-    //   344: ldc_w 518
-    //   347: invokevirtual 260	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   350: aload 13
-    //   352: getfield 521	com/tencent/mm/plugin/expt/roomexpt/c:bHQ	Ljava/lang/String;
-    //   355: invokevirtual 260	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   358: pop
-    //   359: aload 12
-    //   361: aload 13
-    //   363: getfield 521	com/tencent/mm/plugin/expt/roomexpt/c:bHQ	Ljava/lang/String;
-    //   366: putfield 522	com/tencent/mm/h/b/a/g:chm	Ljava/lang/String;
-    //   369: aload 12
-    //   371: new 161	java/lang/StringBuilder
-    //   374: dup
-    //   375: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   378: aload 13
-    //   380: getfield 516	com/tencent/mm/plugin/expt/roomexpt/c:jIO	F
-    //   383: invokevirtual 166	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   386: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   389: putfield 525	com/tencent/mm/h/b/a/g:chn	Ljava/lang/String;
-    //   392: aload 12
-    //   394: aload_0
-    //   395: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   398: getfield 411	com/tencent/mm/h/b/a/q:cjn	J
-    //   401: l2i
-    //   402: putfield 528	com/tencent/mm/h/b/a/g:cho	I
-    //   405: aload 12
-    //   407: invokevirtual 529	com/tencent/mm/h/b/a/g:QX	()Z
-    //   410: pop
-    //   411: aload 8
-    //   413: astore 10
-    //   415: goto +411 -> 826
-    //   418: aload 9
-    //   420: iconst_0
-    //   421: invokeinterface 530 2 0
-    //   426: astore 8
-    //   428: aload 9
-    //   430: iconst_1
-    //   431: invokeinterface 530 2 0
-    //   436: astore 10
-    //   438: aload 9
-    //   440: iconst_2
-    //   441: invokeinterface 534 2 0
-    //   446: istore_3
-    //   447: aload 9
-    //   449: iconst_3
-    //   450: invokeinterface 534 2 0
-    //   455: istore 4
-    //   457: aload 9
-    //   459: iconst_4
-    //   460: invokeinterface 538 2 0
-    //   465: iload 4
-    //   467: iload_3
-    //   468: invokestatic 540	com/tencent/mm/plugin/expt/roomexpt/a:b	(FII)F
-    //   471: fstore_2
-    //   472: new 513	com/tencent/mm/plugin/expt/roomexpt/c
-    //   475: dup
-    //   476: invokespecial 541	com/tencent/mm/plugin/expt/roomexpt/c:<init>	()V
-    //   479: astore 12
-    //   481: aload 12
-    //   483: aload 8
-    //   485: putfield 521	com/tencent/mm/plugin/expt/roomexpt/c:bHQ	Ljava/lang/String;
-    //   488: aload 12
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: ldc_w 485
+    //   5: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   12: ifnonnull +19 -> 31
+    //   15: ldc 203
+    //   17: ldc_w 487
+    //   20: invokestatic 490	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: ldc_w 485
+    //   26: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   29: aconst_null
+    //   30: areturn
+    //   31: aload_0
+    //   32: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   35: getfield 426	com/tencent/mm/g/b/a/ae:cUc	J
+    //   38: ldc2_w 427
+    //   41: lcmp
+    //   42: iflt +36 -> 78
+    //   45: ldc 203
+    //   47: ldc_w 492
+    //   50: iconst_1
+    //   51: anewarray 4	java/lang/Object
+    //   54: dup
+    //   55: iconst_0
+    //   56: aload_0
+    //   57: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   60: getfield 426	com/tencent/mm/g/b/a/ae:cUc	J
+    //   63: invokestatic 481	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   66: aastore
+    //   67: invokestatic 344	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   70: ldc_w 485
+    //   73: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: aconst_null
+    //   77: areturn
+    //   78: ldc_w 407
+    //   81: invokestatic 411	com/tencent/mm/kernel/g:E	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   84: checkcast 407	com/tencent/mm/plugin/expt/a/a
+    //   87: astore 9
+    //   89: getstatic 417	com/tencent/mm/plugin/expt/a/a$a:lRx	Lcom/tencent/mm/plugin/expt/a/a$a;
+    //   92: astore 10
+    //   94: aload_0
+    //   95: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   98: ifnull +42 -> 140
+    //   101: aload_0
+    //   102: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   105: getfield 420	com/tencent/mm/g/b/a/ae:cUf	Z
+    //   108: istore 6
+    //   110: aload 9
+    //   112: aload 10
+    //   114: iload 6
+    //   116: invokeinterface 423 3 0
+    //   121: ifne +25 -> 146
+    //   124: ldc 203
+    //   126: ldc_w 494
+    //   129: invokestatic 496	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   132: ldc_w 485
+    //   135: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   138: aconst_null
+    //   139: areturn
+    //   140: iconst_0
+    //   141: istore 6
+    //   143: goto -33 -> 110
+    //   146: aload_0
+    //   147: getfield 300	com/tencent/mm/plugin/expt/roomexpt/a:mcE	[Ljava/lang/String;
+    //   150: ifnull +27 -> 177
+    //   153: aload_0
+    //   154: getfield 300	com/tencent/mm/plugin/expt/roomexpt/a:mcE	[Ljava/lang/String;
+    //   157: arraylength
+    //   158: ifle +19 -> 177
+    //   161: ldc 203
+    //   163: ldc_w 498
+    //   166: invokestatic 496	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   169: ldc_w 485
+    //   172: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   175: aconst_null
+    //   176: areturn
+    //   177: aload_0
+    //   178: getfield 94	com/tencent/mm/plugin/expt/roomexpt/a:mcF	Z
+    //   181: ifeq +19 -> 200
+    //   184: ldc 203
+    //   186: ldc_w 500
+    //   189: invokestatic 433	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   192: ldc_w 485
+    //   195: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   198: aconst_null
+    //   199: areturn
+    //   200: invokestatic 503	com/tencent/mm/sdk/platformtools/bo:yB	()J
+    //   203: lstore 7
+    //   205: aload_0
+    //   206: iconst_1
+    //   207: putfield 94	com/tencent/mm/plugin/expt/roomexpt/a:mcF	Z
+    //   210: getstatic 290	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   213: sipush 869
+    //   216: bipush 21
+    //   218: invokevirtual 294	com/tencent/mm/plugin/report/service/h:cT	(II)V
+    //   221: aload_0
+    //   222: getfield 399	com/tencent/mm/plugin/expt/roomexpt/a:mcC	Lcom/tencent/mm/plugin/expt/roomexpt/b;
+    //   225: invokevirtual 509	com/tencent/mm/plugin/expt/roomexpt/b:bta	()Landroid/database/Cursor;
+    //   228: astore 10
+    //   230: new 511	java/util/ArrayList
+    //   233: dup
+    //   234: invokespecial 512	java/util/ArrayList:<init>	()V
+    //   237: astore 12
+    //   239: aload 10
+    //   241: ifnull +635 -> 876
+    //   244: fconst_0
+    //   245: fstore_1
+    //   246: fload_1
+    //   247: fstore_2
+    //   248: aload 10
+    //   250: invokeinterface 517 1 0
+    //   255: ifeq +24 -> 279
+    //   258: aload 10
+    //   260: invokeinterface 521 1 0
+    //   265: iconst_5
+    //   266: if_icmpge +184 -> 450
+    //   269: ldc 203
+    //   271: ldc_w 523
+    //   274: invokestatic 490	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   277: fload_1
+    //   278: fstore_2
+    //   279: aload 12
+    //   281: invokestatic 529	java/util/Collections:sort	(Ljava/util/List;)V
+    //   284: aload 12
+    //   286: invokeinterface 534 1 0
+    //   291: ifle +580 -> 871
+    //   294: fload_2
+    //   295: aload 12
+    //   297: invokeinterface 534 1 0
+    //   302: i2f
+    //   303: fdiv
+    //   304: fstore_1
+    //   305: fload_1
+    //   306: fconst_0
+    //   307: invokestatic 538	java/lang/Math:max	(FF)F
+    //   310: fstore_1
+    //   311: new 540	com/tencent/mm/g/b/a/h
+    //   314: dup
+    //   315: invokespecial 541	com/tencent/mm/g/b/a/h:<init>	()V
+    //   318: astore 13
+    //   320: aload 12
+    //   322: invokeinterface 534 1 0
+    //   327: iconst_5
+    //   328: invokestatic 115	java/lang/Math:min	(II)I
+    //   331: istore 4
+    //   333: aconst_null
+    //   334: astore 9
+    //   336: iload_3
+    //   337: iload 4
+    //   339: if_icmpge +288 -> 627
+    //   342: aload 12
+    //   344: iload_3
+    //   345: invokeinterface 545 2 0
+    //   350: checkcast 547	com/tencent/mm/plugin/expt/roomexpt/c
+    //   353: astore 14
+    //   355: aload 9
+    //   357: astore 11
+    //   359: aload 14
+    //   361: getfield 550	com/tencent/mm/plugin/expt/roomexpt/c:mcQ	F
+    //   364: fload_1
+    //   365: fcmpl
+    //   366: ifle +515 -> 881
+    //   369: aload 9
+    //   371: ifnull +181 -> 552
+    //   374: aload 9
+    //   376: ldc_w 552
+    //   379: invokevirtual 237	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   382: aload 14
+    //   384: getfield 555	com/tencent/mm/plugin/expt/roomexpt/c:cpf	Ljava/lang/String;
+    //   387: invokevirtual 237	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   390: pop
+    //   391: aload 13
+    //   393: aload 14
+    //   395: getfield 555	com/tencent/mm/plugin/expt/roomexpt/c:cpf	Ljava/lang/String;
+    //   398: invokevirtual 559	com/tencent/mm/g/b/a/h:eT	(Ljava/lang/String;)Lcom/tencent/mm/g/b/a/h;
+    //   401: new 185	java/lang/StringBuilder
+    //   404: dup
+    //   405: invokespecial 186	java/lang/StringBuilder:<init>	()V
+    //   408: aload 14
+    //   410: getfield 550	com/tencent/mm/plugin/expt/roomexpt/c:mcQ	F
+    //   413: invokevirtual 190	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   416: invokevirtual 194	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   419: invokevirtual 562	com/tencent/mm/g/b/a/h:eU	(Ljava/lang/String;)Lcom/tencent/mm/g/b/a/h;
+    //   422: astore 11
+    //   424: aload 11
+    //   426: aload_0
+    //   427: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   430: getfield 426	com/tencent/mm/g/b/a/ae:cUc	J
+    //   433: l2i
+    //   434: putfield 565	com/tencent/mm/g/b/a/h:cQe	I
+    //   437: aload 11
+    //   439: invokevirtual 566	com/tencent/mm/g/b/a/h:ake	()Z
+    //   442: pop
+    //   443: aload 9
+    //   445: astore 11
+    //   447: goto +434 -> 881
+    //   450: aload 10
+    //   452: iconst_0
+    //   453: invokeinterface 567 2 0
+    //   458: astore 9
+    //   460: aload 10
+    //   462: iconst_1
+    //   463: invokeinterface 567 2 0
+    //   468: astore 11
+    //   470: aload 10
+    //   472: iconst_2
+    //   473: invokeinterface 571 2 0
+    //   478: istore 4
+    //   480: aload 10
+    //   482: iconst_3
+    //   483: invokeinterface 571 2 0
+    //   488: istore 5
     //   490: aload 10
-    //   492: putfield 544	com/tencent/mm/plugin/expt/roomexpt/c:nickname	Ljava/lang/String;
-    //   495: aload 12
-    //   497: fload_2
-    //   498: putfield 516	com/tencent/mm/plugin/expt/roomexpt/c:jIO	F
-    //   501: aload 11
-    //   503: aload 12
-    //   505: invokeinterface 548 2 0
-    //   510: pop
-    //   511: fload_1
-    //   512: fload_2
-    //   513: fadd
-    //   514: fstore_1
-    //   515: goto -303 -> 212
-    //   518: new 254	java/lang/StringBuffer
-    //   521: dup
-    //   522: invokespecial 255	java/lang/StringBuffer:<init>	()V
-    //   525: astore 8
-    //   527: aload 8
+    //   492: iconst_4
+    //   493: invokeinterface 575 2 0
+    //   498: iload 5
+    //   500: iload 4
+    //   502: invokestatic 577	com/tencent/mm/plugin/expt/roomexpt/a:d	(FII)F
+    //   505: fstore_2
+    //   506: new 547	com/tencent/mm/plugin/expt/roomexpt/c
+    //   509: dup
+    //   510: invokespecial 578	com/tencent/mm/plugin/expt/roomexpt/c:<init>	()V
+    //   513: astore 13
+    //   515: aload 13
+    //   517: aload 9
+    //   519: putfield 555	com/tencent/mm/plugin/expt/roomexpt/c:cpf	Ljava/lang/String;
+    //   522: aload 13
+    //   524: aload 11
+    //   526: putfield 581	com/tencent/mm/plugin/expt/roomexpt/c:nickname	Ljava/lang/String;
     //   529: aload 13
-    //   531: getfield 521	com/tencent/mm/plugin/expt/roomexpt/c:bHQ	Ljava/lang/String;
-    //   534: invokevirtual 260	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   537: pop
-    //   538: goto -179 -> 359
-    //   541: astore 10
-    //   543: aload 9
-    //   545: astore 8
-    //   547: aload 10
-    //   549: astore 9
-    //   551: ldc 179
-    //   553: aload 9
-    //   555: ldc_w 550
-    //   558: iconst_0
-    //   559: anewarray 4	java/lang/Object
-    //   562: invokestatic 554	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   565: aload 8
-    //   567: ifnull +10 -> 577
-    //   570: aload 8
-    //   572: invokeinterface 557 1 0
-    //   577: ldc 179
-    //   579: ldc_w 559
-    //   582: invokestatic 449	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   585: aconst_null
-    //   586: areturn
-    //   587: aload 8
-    //   589: ifnull +137 -> 726
-    //   592: aload_0
-    //   593: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   596: aload 8
-    //   598: invokevirtual 301	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   601: putfield 562	com/tencent/mm/h/b/a/q:cjp	Ljava/lang/String;
-    //   604: aload_0
-    //   605: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   608: ldc2_w 563
-    //   611: putfield 411	com/tencent/mm/h/b/a/q:cjn	J
-    //   614: aload_0
-    //   615: aload_0
-    //   616: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   619: getfield 562	com/tencent/mm/h/b/a/q:cjp	Ljava/lang/String;
-    //   622: ldc_w 518
-    //   625: invokevirtual 570	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   628: putfield 353	com/tencent/mm/plugin/expt/roomexpt/a:jIF	[Ljava/lang/String;
-    //   631: getstatic 314	com/tencent/mm/plugin/report/service/h:nFQ	Lcom/tencent/mm/plugin/report/service/h;
-    //   634: ldc2_w 317
-    //   637: ldc2_w 571
-    //   640: lconst_1
-    //   641: invokevirtual 321	com/tencent/mm/plugin/report/service/h:h	(JJJ)V
-    //   644: aload_0
-    //   645: invokespecial 356	com/tencent/mm/plugin/expt/roomexpt/a:aNd	()V
-    //   648: aload_0
-    //   649: iconst_0
-    //   650: putfield 83	com/tencent/mm/plugin/expt/roomexpt/a:jIG	Z
-    //   653: aload_0
-    //   654: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   657: invokevirtual 227	com/tencent/mm/h/b/a/q:uJ	()Ljava/lang/String;
-    //   660: astore 10
-    //   662: aload_0
-    //   663: getfield 353	com/tencent/mm/plugin/expt/roomexpt/a:jIF	[Ljava/lang/String;
-    //   666: ifnull +118 -> 784
-    //   669: aload_0
-    //   670: getfield 353	com/tencent/mm/plugin/expt/roomexpt/a:jIF	[Ljava/lang/String;
-    //   673: invokestatic 577	java/util/Arrays:toString	([Ljava/lang/Object;)Ljava/lang/String;
-    //   676: astore 8
-    //   678: ldc 179
-    //   680: ldc_w 579
-    //   683: iconst_3
-    //   684: anewarray 4	java/lang/Object
-    //   687: dup
+    //   531: fload_2
+    //   532: putfield 550	com/tencent/mm/plugin/expt/roomexpt/c:mcQ	F
+    //   535: aload 12
+    //   537: aload 13
+    //   539: invokeinterface 585 2 0
+    //   544: pop
+    //   545: fload_1
+    //   546: fload_2
+    //   547: fadd
+    //   548: fstore_1
+    //   549: goto -303 -> 246
+    //   552: new 231	java/lang/StringBuffer
+    //   555: dup
+    //   556: invokespecial 232	java/lang/StringBuffer:<init>	()V
+    //   559: astore 9
+    //   561: aload 9
+    //   563: aload 14
+    //   565: getfield 555	com/tencent/mm/plugin/expt/roomexpt/c:cpf	Ljava/lang/String;
+    //   568: invokevirtual 237	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   571: pop
+    //   572: goto -181 -> 391
+    //   575: astore 11
+    //   577: aload 10
+    //   579: astore 9
+    //   581: aload 11
+    //   583: astore 10
+    //   585: ldc 203
+    //   587: aload 10
+    //   589: ldc_w 587
+    //   592: iconst_0
+    //   593: anewarray 4	java/lang/Object
+    //   596: invokestatic 591	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   599: aload 9
+    //   601: ifnull +10 -> 611
+    //   604: aload 9
+    //   606: invokeinterface 594 1 0
+    //   611: ldc 203
+    //   613: ldc_w 596
+    //   616: invokestatic 490	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   619: ldc_w 485
+    //   622: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   625: aconst_null
+    //   626: areturn
+    //   627: aload 9
+    //   629: ifnull +142 -> 771
+    //   632: aload_0
+    //   633: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   636: aload 9
+    //   638: invokevirtual 277	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   641: invokevirtual 600	com/tencent/mm/g/b/a/ae:fz	(Ljava/lang/String;)Lcom/tencent/mm/g/b/a/ae;
+    //   644: pop
+    //   645: aload_0
+    //   646: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   649: ldc2_w 601
+    //   652: putfield 426	com/tencent/mm/g/b/a/ae:cUc	J
+    //   655: aload_0
+    //   656: aload_0
+    //   657: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   660: getfield 605	com/tencent/mm/g/b/a/ae:cUe	Ljava/lang/String;
+    //   663: ldc_w 552
+    //   666: invokevirtual 611	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   669: putfield 300	com/tencent/mm/plugin/expt/roomexpt/a:mcE	[Ljava/lang/String;
+    //   672: getstatic 290	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   675: sipush 869
+    //   678: bipush 22
+    //   680: invokevirtual 294	com/tencent/mm/plugin/report/service/h:cT	(II)V
+    //   683: aload_0
+    //   684: invokespecial 347	com/tencent/mm/plugin/expt/roomexpt/a:bsV	()V
+    //   687: aload_0
     //   688: iconst_0
-    //   689: aload 10
-    //   691: aastore
-    //   692: dup
-    //   693: iconst_1
-    //   694: aload 8
-    //   696: aastore
-    //   697: dup
-    //   698: iconst_2
-    //   699: lload 6
-    //   701: invokestatic 583	com/tencent/mm/sdk/platformtools/bk:cp	(J)J
-    //   704: invokestatic 456	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   707: aastore
-    //   708: invokestatic 230	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   711: aload 9
-    //   713: ifnull +10 -> 723
-    //   716: aload 9
-    //   718: invokeinterface 557 1 0
-    //   723: aload 11
-    //   725: areturn
-    //   726: aload_0
-    //   727: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   730: ldc2_w 584
-    //   733: putfield 411	com/tencent/mm/h/b/a/q:cjn	J
-    //   736: aload_0
-    //   737: getfield 96	com/tencent/mm/plugin/expt/roomexpt/a:jIE	Lcom/tencent/mm/h/b/a/q;
-    //   740: ldc_w 587
-    //   743: putfield 562	com/tencent/mm/h/b/a/q:cjp	Ljava/lang/String;
-    //   746: aload_0
-    //   747: aconst_null
-    //   748: putfield 353	com/tencent/mm/plugin/expt/roomexpt/a:jIF	[Ljava/lang/String;
-    //   751: getstatic 314	com/tencent/mm/plugin/report/service/h:nFQ	Lcom/tencent/mm/plugin/report/service/h;
-    //   754: ldc2_w 317
-    //   757: ldc2_w 588
-    //   760: lconst_1
-    //   761: invokevirtual 321	com/tencent/mm/plugin/report/service/h:h	(JJJ)V
-    //   764: goto -120 -> 644
-    //   767: astore 8
-    //   769: aload 9
-    //   771: ifnull +10 -> 781
-    //   774: aload 9
-    //   776: invokeinterface 557 1 0
-    //   781: aload 8
-    //   783: athrow
-    //   784: ldc_w 591
-    //   787: astore 8
-    //   789: goto -111 -> 678
-    //   792: astore 8
-    //   794: aconst_null
-    //   795: astore 9
-    //   797: goto -28 -> 769
-    //   800: astore 10
-    //   802: aload 8
-    //   804: astore 9
-    //   806: aload 10
-    //   808: astore 8
-    //   810: goto -41 -> 769
-    //   813: astore 9
-    //   815: aconst_null
-    //   816: astore 8
-    //   818: goto -267 -> 551
-    //   821: fload_2
-    //   822: fstore_1
-    //   823: goto -580 -> 243
-    //   826: iload_3
-    //   827: iconst_1
-    //   828: iadd
-    //   829: istore_3
-    //   830: aload 10
-    //   832: astore 8
-    //   834: goto -530 -> 304
+    //   689: putfield 94	com/tencent/mm/plugin/expt/roomexpt/a:mcF	Z
+    //   692: aload_0
+    //   693: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   696: invokevirtual 342	com/tencent/mm/g/b/a/ae:Fg	()Ljava/lang/String;
+    //   699: astore 11
+    //   701: aload_0
+    //   702: getfield 300	com/tencent/mm/plugin/expt/roomexpt/a:mcE	[Ljava/lang/String;
+    //   705: ifnull +129 -> 834
+    //   708: aload_0
+    //   709: getfield 300	com/tencent/mm/plugin/expt/roomexpt/a:mcE	[Ljava/lang/String;
+    //   712: invokestatic 616	java/util/Arrays:toString	([Ljava/lang/Object;)Ljava/lang/String;
+    //   715: astore 9
+    //   717: ldc 203
+    //   719: ldc_w 618
+    //   722: iconst_3
+    //   723: anewarray 4	java/lang/Object
+    //   726: dup
+    //   727: iconst_0
+    //   728: aload 11
+    //   730: aastore
+    //   731: dup
+    //   732: iconst_1
+    //   733: aload 9
+    //   735: aastore
+    //   736: dup
+    //   737: iconst_2
+    //   738: lload 7
+    //   740: invokestatic 622	com/tencent/mm/sdk/platformtools/bo:av	(J)J
+    //   743: invokestatic 481	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   746: aastore
+    //   747: invokestatic 344	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   750: aload 10
+    //   752: ifnull +10 -> 762
+    //   755: aload 10
+    //   757: invokeinterface 594 1 0
+    //   762: ldc_w 485
+    //   765: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   768: aload 12
+    //   770: areturn
+    //   771: aload_0
+    //   772: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   775: ldc2_w 473
+    //   778: putfield 426	com/tencent/mm/g/b/a/ae:cUc	J
+    //   781: aload_0
+    //   782: getfield 118	com/tencent/mm/plugin/expt/roomexpt/a:mcD	Lcom/tencent/mm/g/b/a/ae;
+    //   785: ldc_w 624
+    //   788: invokevirtual 600	com/tencent/mm/g/b/a/ae:fz	(Ljava/lang/String;)Lcom/tencent/mm/g/b/a/ae;
+    //   791: pop
+    //   792: aload_0
+    //   793: aconst_null
+    //   794: putfield 300	com/tencent/mm/plugin/expt/roomexpt/a:mcE	[Ljava/lang/String;
+    //   797: getstatic 290	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   800: sipush 869
+    //   803: bipush 23
+    //   805: invokevirtual 294	com/tencent/mm/plugin/report/service/h:cT	(II)V
+    //   808: goto -125 -> 683
+    //   811: astore 9
+    //   813: aload 10
+    //   815: ifnull +10 -> 825
+    //   818: aload 10
+    //   820: invokeinterface 594 1 0
+    //   825: ldc_w 485
+    //   828: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   831: aload 9
+    //   833: athrow
+    //   834: ldc_w 626
+    //   837: astore 9
+    //   839: goto -122 -> 717
+    //   842: astore 9
+    //   844: aconst_null
+    //   845: astore 10
+    //   847: goto -34 -> 813
+    //   850: astore 11
+    //   852: aload 9
+    //   854: astore 10
+    //   856: aload 11
+    //   858: astore 9
+    //   860: goto -47 -> 813
+    //   863: astore 10
+    //   865: aconst_null
+    //   866: astore 9
+    //   868: goto -283 -> 585
+    //   871: fconst_0
+    //   872: fstore_1
+    //   873: goto -568 -> 305
+    //   876: fconst_0
+    //   877: fstore_2
+    //   878: goto -599 -> 279
+    //   881: iload_3
+    //   882: iconst_1
+    //   883: iadd
+    //   884: istore_3
+    //   885: aload 11
+    //   887: astore 9
+    //   889: goto -553 -> 336
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	837	0	this	a
-    //   197	626	1	f1	float
-    //   195	627	2	f2	float
-    //   303	527	3	i	int
-    //   300	166	4	j	int
-    //   88	28	5	bool	boolean
-    //   165	535	6	l	long
-    //   67	628	8	localObject1	Object
-    //   767	15	8	localObject2	Object
-    //   787	1	8	str1	String
-    //   792	11	8	localObject3	Object
-    //   808	25	8	localObject4	Object
-    //   72	733	9	localObject5	Object
-    //   813	1	9	localException1	Exception
-    //   325	166	10	localObject6	Object
-    //   541	7	10	localException2	Exception
-    //   660	30	10	str2	String
-    //   800	31	10	localObject7	Object
-    //   205	519	11	localArrayList	java.util.ArrayList
-    //   284	220	12	localObject8	Object
-    //   321	209	13	localc	c
+    //   0	892	0	this	a
+    //   245	628	1	f1	float
+    //   247	631	2	f2	float
+    //   1	884	3	i	int
+    //   331	170	4	j	int
+    //   488	11	5	k	int
+    //   108	34	6	bool	boolean
+    //   203	536	7	l	long
+    //   87	647	9	localObject1	Object
+    //   811	21	9	localObject2	Object
+    //   837	1	9	str1	String
+    //   842	11	9	localObject3	Object
+    //   858	30	9	localObject4	Object
+    //   92	763	10	localObject5	Object
+    //   863	1	10	localException1	Exception
+    //   357	168	11	localObject6	Object
+    //   575	7	11	localException2	Exception
+    //   699	30	11	str2	String
+    //   850	36	11	localObject7	Object
+    //   237	532	12	localArrayList	java.util.ArrayList
+    //   318	220	13	localObject8	Object
+    //   353	211	14	localc	c
     // Exception table:
     //   from	to	target	type
-    //   198	207	541	java/lang/Exception
-    //   214	243	541	java/lang/Exception
-    //   243	248	541	java/lang/Exception
-    //   250	271	541	java/lang/Exception
-    //   271	286	541	java/lang/Exception
-    //   289	302	541	java/lang/Exception
-    //   310	323	541	java/lang/Exception
-    //   327	337	541	java/lang/Exception
-    //   342	359	541	java/lang/Exception
-    //   359	411	541	java/lang/Exception
-    //   418	511	541	java/lang/Exception
-    //   518	538	541	java/lang/Exception
-    //   592	644	541	java/lang/Exception
-    //   644	678	541	java/lang/Exception
-    //   678	711	541	java/lang/Exception
-    //   726	764	541	java/lang/Exception
-    //   198	207	767	finally
-    //   214	243	767	finally
-    //   243	248	767	finally
-    //   250	271	767	finally
-    //   271	286	767	finally
-    //   289	302	767	finally
-    //   310	323	767	finally
-    //   327	337	767	finally
-    //   342	359	767	finally
-    //   359	411	767	finally
-    //   418	511	767	finally
-    //   518	538	767	finally
-    //   592	644	767	finally
-    //   644	678	767	finally
-    //   678	711	767	finally
-    //   726	764	767	finally
-    //   172	194	792	finally
-    //   551	565	800	finally
-    //   172	194	813	java/lang/Exception
+    //   230	239	575	java/lang/Exception
+    //   248	277	575	java/lang/Exception
+    //   279	305	575	java/lang/Exception
+    //   305	333	575	java/lang/Exception
+    //   342	355	575	java/lang/Exception
+    //   359	369	575	java/lang/Exception
+    //   374	391	575	java/lang/Exception
+    //   391	443	575	java/lang/Exception
+    //   450	545	575	java/lang/Exception
+    //   552	572	575	java/lang/Exception
+    //   632	683	575	java/lang/Exception
+    //   683	717	575	java/lang/Exception
+    //   717	750	575	java/lang/Exception
+    //   771	808	575	java/lang/Exception
+    //   230	239	811	finally
+    //   248	277	811	finally
+    //   279	305	811	finally
+    //   305	333	811	finally
+    //   342	355	811	finally
+    //   359	369	811	finally
+    //   374	391	811	finally
+    //   391	443	811	finally
+    //   450	545	811	finally
+    //   552	572	811	finally
+    //   632	683	811	finally
+    //   683	717	811	finally
+    //   717	750	811	finally
+    //   771	808	811	finally
+    //   210	230	842	finally
+    //   585	599	850	finally
+    //   210	230	863	java/lang/Exception
   }
   
-  protected final void aNf()
+  protected final void bsX()
   {
-    b localb = this.jID;
+    AppMethodBeat.i(73574);
+    b localb = this.mcC;
     try
     {
-      localb.dXw.delete("RoomMuteExpt", null, null);
-      aNg();
+      localb.db.delete("RoomMuteExpt", null, null);
+      bsY();
+      AppMethodBeat.o(73574);
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.ChatRoomExptStorage", localException, "deleteAll", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.ChatRoomExptStorage", localException, "deleteAll", new Object[0]);
       }
     }
   }
   
-  protected final void aNg()
+  protected final void bsY()
   {
-    if (this.jIE != null)
+    AppMethodBeat.i(73575);
+    if (this.mcD != null)
     {
-      this.jIE = new q();
-      this.jIE.cjq = true;
-      aNd();
+      this.mcD = new ae();
+      this.mcD.cUf = true;
+      bsV();
     }
-    this.jIF = null;
+    this.mcE = null;
+    AppMethodBeat.o(73575);
   }
   
-  public final void ax(final String paramString, final boolean paramBoolean)
+  protected final String bsZ()
   {
-    y.d("MicroMsg.ChatRoomExptService", "enter chat room [%s] isMute[%b]", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    if (this.jIH > 0)
+    AppMethodBeat.i(73576);
+    if (this.mcD != null)
     {
-      this.jIH -= 1;
-      g.DS().O(new Runnable()
-      {
-        public final void run()
-        {
-          a.ay(paramString, paramBoolean);
-        }
-      });
+      String str = this.mcD.Fg();
+      AppMethodBeat.o(73576);
+      return str;
     }
-    do
-    {
-      return;
-      if ((this.jIF == null) || (this.jIF.length <= 0))
-      {
-        y.d("MicroMsg.ChatRoomExptService", "roomname list is null");
-        return;
-      }
-    } while (this.jIE == null);
-    if (this.jIE.cjn >= 5L)
-    {
-      y.d("MicroMsg.ChatRoomExptService", "exptInfo is finish [%d]", new Object[] { Long.valueOf(this.jIE.cjn) });
-      return;
-    }
-    g.DS().O(new a.3(this, paramString, paramBoolean));
+    AppMethodBeat.o(73576);
+    return "";
   }
   
-  public final void fG(boolean paramBoolean)
+  public final void hj(boolean paramBoolean)
   {
-    com.tencent.mm.sdk.f.e.post(new a.1(this, paramBoolean), "click_room_mute_msg");
+    AppMethodBeat.i(73567);
+    com.tencent.mm.sdk.g.d.post(new a.1(this, paramBoolean), "click_room_mute_msg");
+    AppMethodBeat.o(73567);
   }
   
   public final void onAccountInitialized(e.c paramc)
   {
-    if (this.jIE == null)
+    AppMethodBeat.i(73570);
+    if (this.mcD == null)
     {
-      paramc = (String)g.DP().Dz().get(ac.a.uzs, "");
-      if (!bk.bl(paramc)) {
-        break label82;
+      paramc = (String)g.RL().Ru().get(ac.a.yKg, "");
+      if (!bo.isNullOrNil(paramc)) {
+        break label118;
       }
-      this.jIE = new q();
-      this.jIE.cjq = false;
+      this.mcD = new ae();
+      this.mcD.cUf = false;
     }
     for (;;)
     {
-      y.i("MicroMsg.ChatRoomExptService", "load expt roomnameList[%s] info[%s]", new Object[] { this.jIF, this.jIE.uJ() });
+      ab.i("MicroMsg.ChatRoomExptService", "load expt roomnameList[%s] info[%s]", new Object[] { this.mcE, this.mcD.Fg() });
+      paramc = (i)g.E(i.class);
+      if (paramc != null) {
+        paramc.a(this.mcH);
+      }
+      AppMethodBeat.o(73570);
       return;
-      label82:
-      this.jIE = new q(paramc);
-      if (!bk.bl(this.jIE.cjp)) {
-        this.jIF = this.jIE.cjp.split(";");
+      label118:
+      this.mcD = new ae(paramc);
+      if (!bo.isNullOrNil(this.mcD.cUe)) {
+        this.mcE = this.mcD.cUe.split(";");
       }
     }
   }
   
   public final void onAccountRelease()
   {
-    this.jIE = null;
-    this.jID = null;
+    AppMethodBeat.i(152438);
+    this.mcD = null;
+    this.mcC = null;
+    i locali = (i)g.E(i.class);
+    if (locali != null) {
+      locali.b(this.mcH);
+    }
+    AppMethodBeat.o(152438);
   }
   
-  public final void q(Context paramContext, Intent paramIntent)
+  public final void t(Context paramContext, Intent paramIntent)
   {
+    AppMethodBeat.i(73566);
     paramIntent.setClass(paramContext, RoomExptDebugUI.class);
     paramContext.startActivity(paramIntent);
+    AppMethodBeat.o(73566);
   }
 }
 

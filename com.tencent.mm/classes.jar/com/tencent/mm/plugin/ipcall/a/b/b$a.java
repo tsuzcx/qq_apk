@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.ipcall.a.b;
 
 public abstract interface b$a
 {
-  public abstract void gX(boolean paramBoolean);
+  public abstract void iH(boolean paramBoolean);
   
-  public abstract void gY(boolean paramBoolean);
+  public abstract void iI(boolean paramBoolean);
 }
 
 

@@ -11,7 +11,7 @@ final class i$h
   
   public final int size()
   {
-    return i.a(this.wSL).wSY.size;
+    return i.a(this.Bps).BpF.size;
   }
 }
 

@@ -1,16 +1,13 @@
 package com.tencent.mm.sdk.e;
 
-import android.os.Looper;
-
 public abstract interface f
+  extends e
 {
-  public abstract void a(j.a parama, Looper paramLooper);
+  public abstract void close();
   
-  public abstract void aam(String paramString);
+  public abstract long kr(long paramLong);
   
-  public abstract void c(j.a parama);
-  
-  public abstract void d(j.a parama);
+  public abstract int nY(long paramLong);
 }
 
 

@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.fts.a.d.a.a.a;
 public final class c$a
   extends a.a
 {
-  public TextView kCF;
-  public ImageView kCG;
+  public TextView mYB;
+  public ImageView mYC;
   
   public c$a(c paramc)
   {
@@ -17,7 +17,7 @@ public final class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.c.a
  * JD-Core Version:    0.7.0.1
  */

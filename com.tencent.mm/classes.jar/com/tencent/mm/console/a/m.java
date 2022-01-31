@@ -1,76 +1,86 @@
 package com.tencent.mm.console.a;
 
 import android.content.Context;
-import android.widget.Toast;
-import com.tencent.mm.h.a.bo;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.pluginsdk.p.c.a;
+import com.tencent.mm.pluginsdk.p.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.h;
 
 public final class m
-  implements com.tencent.mm.pluginsdk.cmd.a
+  implements a
 {
   static
   {
-    b.a(new m(), new String[] { "//cleanwx", "//showfile", "//hidefile" });
+    AppMethodBeat.i(16149);
+    b.a(new m(), new String[] { "//wear" });
+    AppMethodBeat.o(16149);
   }
   
   public static void init() {}
   
-  public final boolean a(Context paramContext, String[] paramArrayOfString)
+  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    paramArrayOfString = paramArrayOfString[0];
-    int i = -1;
+    int i = 0;
+    AppMethodBeat.i(16148);
+    if (ab.getLogLevel() > 1)
+    {
+      AppMethodBeat.o(16148);
+      return false;
+    }
+    if (paramArrayOfString.length < 2)
+    {
+      AppMethodBeat.o(16148);
+      return true;
+    }
+    paramArrayOfString = paramArrayOfString[1];
     switch (paramArrayOfString.hashCode())
     {
+    default: 
+      i = -1;
+      label83:
+      switch (i)
+      {
+      }
+      break;
     }
     for (;;)
     {
-      switch (i)
-      {
-      default: 
-        return false;
-        if (paramArrayOfString.equals("//cleanwx"))
-        {
-          i = 0;
-          continue;
-          if (paramArrayOfString.equals("//showfile"))
-          {
-            i = 1;
-            continue;
-            if (paramArrayOfString.equals("//hidefile")) {
-              i = 2;
-            }
-          }
-        }
+      AppMethodBeat.o(16148);
+      return true;
+      if (!paramArrayOfString.equals("log")) {
         break;
       }
+      break label83;
+      if (!paramArrayOfString.equals("version")) {
+        break;
+      }
+      i = 1;
+      break label83;
+      if (!paramArrayOfString.equals("reconnect")) {
+        break;
+      }
+      i = 2;
+      break label83;
+      p.e.vJC.cYB();
+      continue;
+      paramArrayOfString = new TextView(paramContext);
+      paramArrayOfString.setText(p.e.vJC.cYA());
+      paramArrayOfString.setGravity(19);
+      paramArrayOfString.setTextSize(1, 10.0F);
+      paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+      paramArrayOfString.setTextColor(-16711936);
+      paramArrayOfString.setTypeface(Typeface.MONOSPACE);
+      i = paramContext.getResources().getDimensionPixelSize(2131427772);
+      paramArrayOfString.setPadding(i, i, i, i);
+      h.a(paramContext, null, paramArrayOfString, null);
     }
-    paramArrayOfString = new bo();
-    com.tencent.mm.sdk.b.a.udP.m(paramArrayOfString);
-    s.makeText(paramContext, "clean wx file index now.", 0).show();
-    return true;
-    try
-    {
-      g.DP().Dz().c(ac.a.uxA, Integer.valueOf(1));
-      s.makeText(paramContext, "show file now.", 0).show();
-      return true;
-    }
-    catch (Exception paramContext)
-    {
-      return true;
-    }
-    try
-    {
-      g.DP().Dz().c(ac.a.uxA, Integer.valueOf(0));
-      s.makeText(paramContext, "hide file now.", 0).show();
-      return true;
-    }
-    catch (Exception paramContext) {}
-    return true;
   }
 }
 

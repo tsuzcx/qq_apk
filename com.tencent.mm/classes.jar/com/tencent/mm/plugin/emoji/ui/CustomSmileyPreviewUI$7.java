@@ -1,14 +1,29 @@
 package com.tencent.mm.plugin.emoji.ui;
 
-import com.tencent.mm.h.a.ok;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emoji.a.a.a;
+import com.tencent.mm.plugin.emoji.a.f;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class CustomSmileyPreviewUI$7
-  extends c<ok>
+  implements Runnable
 {
-  CustomSmileyPreviewUI$7(CustomSmileyPreviewUI paramCustomSmileyPreviewUI)
+  CustomSmileyPreviewUI$7(CustomSmileyPreviewUI paramCustomSmileyPreviewUI, String paramString, int paramInt) {}
+  
+  public final void run()
   {
-    this.udX = ok.class.getName().hashCode();
+    AppMethodBeat.i(53227);
+    if (bo.isNullOrNil(this.lgI))
+    {
+      ab.w("MicroMsg.emoji.CustomSmileyPreviewUI", "product id is null.");
+      AppMethodBeat.o(53227);
+      return;
+    }
+    if ((CustomSmileyPreviewUI.q(this.lkP) != null) && (CustomSmileyPreviewUI.q(this.lkP).leO != null)) {
+      CustomSmileyPreviewUI.q(this.lkP).bX(this.lgI, this.fUa);
+    }
+    AppMethodBeat.o(53227);
   }
 }
 

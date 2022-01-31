@@ -5,8 +5,9 @@ import android.widget.TextView;
 
 final class SeeAccessVerifyInfoUI$c
 {
-  public ImageView doU;
-  public TextView drf;
+  public ImageView egq;
+  public TextView eiM;
+  public TextView eiN;
   
   SeeAccessVerifyInfoUI$c(SeeAccessVerifyInfoUI paramSeeAccessVerifyInfoUI) {}
 }

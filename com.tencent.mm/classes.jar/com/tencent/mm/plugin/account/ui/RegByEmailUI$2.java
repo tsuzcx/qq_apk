@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.b.a;
 
 final class RegByEmailUI$2
@@ -11,9 +12,11 @@ final class RegByEmailUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a.qj(RegByEmailUI.f(this.fqk));
-    this.fqk.XM();
-    this.fqk.finish();
+    AppMethodBeat.i(125302);
+    a.xD(RegByEmailUI.f(this.gHH));
+    this.gHH.hideVKB();
+    this.gHH.finish();
+    AppMethodBeat.o(125302);
   }
 }
 

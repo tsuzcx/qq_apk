@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.exdevice.ui;
 import android.text.Editable;
 import android.text.Selection;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.d.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class ExdeviceConnectWifiUI$1
   implements Runnable
@@ -14,17 +15,19 @@ final class ExdeviceConnectWifiUI$1
   
   public final void run()
   {
-    if (!bk.bl(ExdeviceConnectWifiUI.a(this.jCy))) {
-      y.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "User has input password.");
-    }
-    Editable localEditable;
-    do
+    AppMethodBeat.i(19871);
+    if (!bo.isNullOrNil(ExdeviceConnectWifiUI.a(this.lLW)))
     {
+      ab.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "User has input password.");
+      AppMethodBeat.o(19871);
       return;
-      ExdeviceConnectWifiUI.c(this.jCy).setText(ExdeviceConnectWifiUI.b(this.jCy).jwZ);
-      localEditable = ExdeviceConnectWifiUI.c(this.jCy).getText();
-    } while (localEditable == null);
-    Selection.setSelection(localEditable, localEditable.length());
+    }
+    ExdeviceConnectWifiUI.c(this.lLW).setText(ExdeviceConnectWifiUI.b(this.lLW).lGy);
+    Editable localEditable = ExdeviceConnectWifiUI.c(this.lLW).getText();
+    if (localEditable != null) {
+      Selection.setSelection(localEditable, localEditable.length());
+    }
+    AppMethodBeat.o(19871);
   }
 }
 

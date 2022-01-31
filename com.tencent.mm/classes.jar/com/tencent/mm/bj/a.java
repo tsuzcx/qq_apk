@@ -1,30 +1,22 @@
 package com.tencent.mm.bj;
 
-import android.content.Context;
-import com.tencent.mm.R.l;
+import android.graphics.Point;
 
-public final class a
+public abstract interface a
 {
-  public static float ck(long paramLong)
-  {
-    float f1 = 1.0F;
-    float f2 = (float)paramLong / 1000.0F;
-    if (f2 < 1.0F) {}
-    for (;;)
-    {
-      return Math.round(f1);
-      f1 = f2;
-    }
-  }
+  public abstract void a(a.a parama);
   
-  public static CharSequence x(Context paramContext, int paramInt)
-  {
-    if (paramInt <= 0) {
-      return paramContext.getString(R.l.favorite_second_format, new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
-    }
-    int i = paramInt / 60;
-    return paramContext.getString(R.l.favorite_second_format, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt % 60) });
-  }
+  public abstract Point amc();
+  
+  public abstract int amd();
+  
+  public abstract void mm(int paramInt);
+  
+  public abstract int p(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract void stop();
+  
+  public abstract void y(Runnable paramRunnable);
 }
 
 

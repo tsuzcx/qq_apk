@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:width="2.0px" android:color="#ffcfcfcf" android:dashGap="0.0dip" />
-    <solid android:color="@color/id" />
-    <corners android:radius="3.0dip" />
-</shape>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/a0a" />
+            <corners android:topLeftRadius="8.0dip" android:bottomLeftRadius="8.0dip" />
+        </shape>
+    </item>
+    <item android:drawable="@color/a3x" />
+</selector>

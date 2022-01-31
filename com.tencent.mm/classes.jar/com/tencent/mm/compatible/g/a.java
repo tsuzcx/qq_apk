@@ -4,11 +4,12 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
   extends BitmapFactory
 {
-  private static a dzo = null;
+  private static a esd = null;
   
   /* Error */
   private static Bitmap a(Resources paramResources, int paramInt, BitmapFactory.Options paramOptions)
@@ -16,141 +17,155 @@ public final class a
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: aload_2
-    //   4: invokestatic 25	com/tencent/mm/sdk/platformtools/c:c	(Landroid/graphics/BitmapFactory$Options;)V
-    //   7: new 27	android/util/TypedValue
-    //   10: dup
-    //   11: invokespecial 30	android/util/TypedValue:<init>	()V
-    //   14: astore 5
-    //   16: aload_0
-    //   17: iload_1
-    //   18: aload 5
-    //   20: invokevirtual 36	android/content/res/Resources:openRawResource	(ILandroid/util/TypedValue;)Ljava/io/InputStream;
-    //   23: astore_3
-    //   24: aload_0
-    //   25: aload 5
-    //   27: aload_3
-    //   28: aconst_null
-    //   29: aload_2
-    //   30: invokestatic 40	com/tencent/mm/compatible/g/a:decodeResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   33: astore_0
-    //   34: aload_0
-    //   35: ifnonnull +126 -> 161
-    //   38: aload_3
-    //   39: invokestatic 44	com/tencent/mm/compatible/g/a:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   42: astore 4
-    //   44: aload 4
-    //   46: astore_0
-    //   47: aload_0
-    //   48: astore 4
-    //   50: aload_3
-    //   51: ifnull +10 -> 61
+    //   3: ldc 20
+    //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: invokestatic 31	com/tencent/mm/sdk/platformtools/d:dsm	()V
+    //   11: new 33	android/util/TypedValue
+    //   14: dup
+    //   15: invokespecial 36	android/util/TypedValue:<init>	()V
+    //   18: astore 5
+    //   20: aload_0
+    //   21: iload_1
+    //   22: aload 5
+    //   24: invokevirtual 42	android/content/res/Resources:openRawResource	(ILandroid/util/TypedValue;)Ljava/io/InputStream;
+    //   27: astore_3
+    //   28: aload_0
+    //   29: aload 5
+    //   31: aload_3
+    //   32: aconst_null
+    //   33: aload_2
+    //   34: invokestatic 46	com/tencent/mm/compatible/g/a:decodeResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   37: astore_0
+    //   38: aload_0
+    //   39: ifnonnull +136 -> 175
+    //   42: aload_3
+    //   43: invokestatic 50	com/tencent/mm/compatible/g/a:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   46: astore 4
+    //   48: aload 4
+    //   50: astore_0
+    //   51: aload_0
+    //   52: astore 4
     //   54: aload_3
-    //   55: invokevirtual 49	java/io/InputStream:close	()V
-    //   58: aload_0
-    //   59: astore 4
-    //   61: aload 4
-    //   63: ifnonnull +59 -> 122
-    //   66: aload_2
-    //   67: ifnull +55 -> 122
-    //   70: new 51	java/lang/IllegalArgumentException
-    //   73: dup
-    //   74: ldc 53
-    //   76: invokespecial 56	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
-    //   79: athrow
-    //   80: astore_0
-    //   81: aconst_null
-    //   82: astore_3
-    //   83: aconst_null
-    //   84: astore_0
-    //   85: aload_0
-    //   86: astore 4
-    //   88: aload_3
-    //   89: ifnull -28 -> 61
-    //   92: aload_3
-    //   93: invokevirtual 49	java/io/InputStream:close	()V
+    //   55: ifnull +10 -> 65
+    //   58: aload_3
+    //   59: invokevirtual 55	java/io/InputStream:close	()V
+    //   62: aload_0
+    //   63: astore 4
+    //   65: aload 4
+    //   67: ifnonnull +71 -> 138
+    //   70: aload_2
+    //   71: ifnull +67 -> 138
+    //   74: new 57	java/lang/IllegalArgumentException
+    //   77: dup
+    //   78: ldc 59
+    //   80: invokespecial 62	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   83: astore_0
+    //   84: ldc 20
+    //   86: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   89: aload_0
+    //   90: athrow
+    //   91: astore_0
+    //   92: aconst_null
+    //   93: astore_3
+    //   94: aconst_null
+    //   95: astore_0
     //   96: aload_0
     //   97: astore 4
-    //   99: goto -38 -> 61
-    //   102: astore_3
-    //   103: aload_0
-    //   104: astore 4
-    //   106: goto -45 -> 61
-    //   109: astore_0
-    //   110: aconst_null
-    //   111: astore_2
-    //   112: aload_2
-    //   113: ifnull +7 -> 120
-    //   116: aload_2
-    //   117: invokevirtual 49	java/io/InputStream:close	()V
-    //   120: aload_0
-    //   121: athrow
-    //   122: getstatic 62	com/tencent/mm/sdk/platformtools/an:ufL	Lcom/tencent/mm/sdk/platformtools/an;
-    //   125: astore_0
-    //   126: invokestatic 65	com/tencent/mm/sdk/platformtools/an:crm	()V
-    //   129: aload 4
-    //   131: areturn
-    //   132: astore_0
-    //   133: aload 4
-    //   135: astore_0
-    //   136: goto -102 -> 34
-    //   139: astore_3
-    //   140: aload_0
-    //   141: astore 4
-    //   143: goto -82 -> 61
-    //   146: astore_2
-    //   147: goto -27 -> 120
-    //   150: astore_0
-    //   151: aload_3
-    //   152: astore_2
-    //   153: goto -41 -> 112
-    //   156: astore 4
-    //   158: goto -73 -> 85
-    //   161: goto -114 -> 47
+    //   99: aload_3
+    //   100: ifnull -35 -> 65
+    //   103: aload_3
+    //   104: invokevirtual 55	java/io/InputStream:close	()V
+    //   107: aload_0
+    //   108: astore 4
+    //   110: goto -45 -> 65
+    //   113: astore_3
+    //   114: aload_0
+    //   115: astore 4
+    //   117: goto -52 -> 65
+    //   120: astore_0
+    //   121: aconst_null
+    //   122: astore_2
+    //   123: aload_2
+    //   124: ifnull +7 -> 131
+    //   127: aload_2
+    //   128: invokevirtual 55	java/io/InputStream:close	()V
+    //   131: ldc 20
+    //   133: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   136: aload_0
+    //   137: athrow
+    //   138: ldc 20
+    //   140: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   143: aload 4
+    //   145: areturn
+    //   146: astore_0
+    //   147: aload 4
+    //   149: astore_0
+    //   150: goto -112 -> 38
+    //   153: astore_3
+    //   154: aload_0
+    //   155: astore 4
+    //   157: goto -92 -> 65
+    //   160: astore_2
+    //   161: goto -30 -> 131
+    //   164: astore_0
+    //   165: aload_3
+    //   166: astore_2
+    //   167: goto -44 -> 123
+    //   170: astore 4
+    //   172: goto -76 -> 96
+    //   175: goto -124 -> 51
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	164	0	paramResources	Resources
-    //   0	164	1	paramInt	int
-    //   0	164	2	paramOptions	BitmapFactory.Options
-    //   23	70	3	localInputStream	java.io.InputStream
-    //   102	1	3	localIOException1	java.io.IOException
-    //   139	13	3	localIOException2	java.io.IOException
-    //   1	141	4	localObject	Object
-    //   156	1	4	localException	java.lang.Exception
-    //   14	12	5	localTypedValue	android.util.TypedValue
+    //   0	178	0	paramResources	Resources
+    //   0	178	1	paramInt	int
+    //   0	178	2	paramOptions	BitmapFactory.Options
+    //   27	77	3	localInputStream	java.io.InputStream
+    //   113	1	3	localIOException1	java.io.IOException
+    //   153	13	3	localIOException2	java.io.IOException
+    //   1	155	4	localObject	Object
+    //   170	1	4	localException	java.lang.Exception
+    //   18	12	5	localTypedValue	android.util.TypedValue
     // Exception table:
     //   from	to	target	type
-    //   7	24	80	java/lang/Exception
-    //   92	96	102	java/io/IOException
-    //   7	24	109	finally
-    //   24	34	132	java/lang/Exception
-    //   54	58	139	java/io/IOException
-    //   116	120	146	java/io/IOException
-    //   24	34	150	finally
-    //   38	44	150	finally
-    //   38	44	156	java/lang/Exception
+    //   11	28	91	java/lang/Exception
+    //   103	107	113	java/io/IOException
+    //   11	28	120	finally
+    //   28	38	146	java/lang/Exception
+    //   58	62	153	java/io/IOException
+    //   127	131	160	java/io/IOException
+    //   28	38	164	finally
+    //   42	48	164	finally
+    //   42	48	170	java/lang/Exception
   }
   
   public static void a(a parama)
   {
-    dzo = parama;
+    esd = parama;
   }
   
   public static Bitmap decodeResource(Resources paramResources, int paramInt)
   {
-    return decodeResource(paramResources, paramInt, null);
+    AppMethodBeat.i(93049);
+    paramResources = decodeResource(paramResources, paramInt, null);
+    AppMethodBeat.o(93049);
+    return paramResources;
   }
   
   public static Bitmap decodeResource(Resources paramResources, int paramInt, BitmapFactory.Options paramOptions)
   {
-    if (dzo != null)
+    AppMethodBeat.i(93050);
+    if (esd != null)
     {
-      Bitmap localBitmap = dzo.decodeResource(paramResources, paramInt, paramOptions);
-      if (localBitmap != null) {
+      Bitmap localBitmap = esd.decodeResource(paramResources, paramInt, paramOptions);
+      if (localBitmap != null)
+      {
+        AppMethodBeat.o(93050);
         return localBitmap;
       }
     }
-    return a(paramResources, paramInt, paramOptions);
+    paramResources = a(paramResources, paramInt, paramOptions);
+    AppMethodBeat.o(93050);
+    return paramResources;
   }
   
   public static abstract interface a

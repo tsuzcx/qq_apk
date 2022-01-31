@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
 import com.tencent.mm.plugin.appbrand.canvas.widget.a.a;
 
@@ -10,13 +11,17 @@ final class b$a$2
   
   public final void a(DrawCanvasArg paramDrawCanvasArg)
   {
-    if (com.tencent.mm.ipcinvoker.e.fE(this.fWc)) {
-      a.aJ(this.fVX, this.fVY).w(new b.a.2.1(this, paramDrawCanvasArg));
-    }
-    while (paramDrawCanvasArg == null) {
+    AppMethodBeat.i(10887);
+    if (com.tencent.mm.ipcinvoker.e.lZ(this.hpF))
+    {
+      a.bb(this.hpA, this.hpB).E(new b.a.2.1(this, paramDrawCanvasArg));
+      AppMethodBeat.o(10887);
       return;
     }
-    paramDrawCanvasArg.reset();
+    if (paramDrawCanvasArg != null) {
+      paramDrawCanvasArg.reset();
+    }
+    AppMethodBeat.o(10887);
   }
 }
 

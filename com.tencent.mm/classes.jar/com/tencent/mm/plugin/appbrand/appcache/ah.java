@@ -1,116 +1,39 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.content.Context;
-import android.content.res.AssetManager;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.vfs.b;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.j;
-import java.io.InputStream;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.r.c;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
 
-public final class ah
+public class ah
+  extends c<ag>
 {
-  public static final int VERSION;
-  public static final String[] fDn;
-  static final ah.a fDo;
-  private static Boolean fDp;
+  public static final String[] fkl;
   
   static
   {
-    j = -1;
-    i = j;
-    try
-    {
-      if (ae.cqV())
-      {
-        String str = abU();
-        i = j;
-        if (!bk.bl(str))
-        {
-          i = j;
-          if (e.bK(str)) {
-            i = new JSONObject(e.bP(str)).optInt("version");
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        i = j;
-      }
-    }
-    if (i > 0)
-    {
-      VERSION = i;
-      fDn = com.tencent.luggage.k.a.bjW;
-    }
-    for (fDo = ah.a.fDt;; fDo = ah.a.fDt)
-    {
-      fDp = null;
-      return;
-      VERSION = 170;
-      fDn = com.tencent.luggage.k.a.bjW;
-    }
+    AppMethodBeat.i(59453);
+    fkl = new String[] { j.getCreateSQLs(ag.fkk, "PushWxaPkgDecryptKeyTable") };
+    AppMethodBeat.o(59453);
   }
   
-  public static void abT()
+  public ah(e parame)
   {
-    e.deleteFile(abU());
+    super(parame, ag.fkk, "PushWxaPkgDecryptKeyTable", ag.INDEX_CREATE);
   }
   
-  static String abU()
+  public final ag aq(String paramString, int paramInt)
   {
-    return j.n(new b(aj.abZ() + "/MockLibInfo.json").cLr());
-  }
-  
-  public static boolean abV()
-  {
-    if (fDp == null)
+    AppMethodBeat.i(59452);
+    ag localag = new ag();
+    localag.field_appId = paramString;
+    localag.field_appVersion = paramInt;
+    if (get(localag, new String[0]))
     {
-      ae.cqS();
-      fDp = Boolean.valueOf(false);
+      AppMethodBeat.o(59452);
+      return localag;
     }
-    return fDp.booleanValue();
-  }
-  
-  public static WxaPkgWrappingInfo abW()
-  {
-    WxaPkgWrappingInfo localWxaPkgWrappingInfo = new WxaPkgWrappingInfo();
-    localWxaPkgWrappingInfo.fEN = VERSION;
-    localWxaPkgWrappingInfo.fEP = true;
-    return localWxaPkgWrappingInfo;
-  }
-  
-  public static InputStream openRead(String paramString)
-  {
-    paramString = a.qR(paramString);
-    switch (ah.1.fDq[fDo.ordinal()])
-    {
-    default: 
-      return qZ("wxa_library" + paramString);
-    case 1: 
-      return qZ("wxa_library/local" + paramString);
-    }
-    return qZ("wxa_library/develop" + paramString);
-  }
-  
-  private static InputStream qZ(String paramString)
-  {
-    Object localObject = ae.getContext().getAssets();
-    try
-    {
-      localObject = ((AssetManager)localObject).open(paramString);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      y.v("MicroMsg.AppBrand.WxaLocalLibPkg", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, localException });
-    }
+    AppMethodBeat.o(59452);
     return null;
   }
 }

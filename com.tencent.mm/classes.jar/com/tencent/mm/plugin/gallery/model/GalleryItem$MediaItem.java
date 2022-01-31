@@ -5,13 +5,17 @@ import android.os.Parcelable;
 public abstract class GalleryItem$MediaItem
   implements Parcelable, Comparable<MediaItem>
 {
-  public String eAu;
-  public String jSX;
-  public String kGV;
-  public String kGW;
-  public long kGX;
-  public long kGY;
+  public double bnl = 181.0D;
+  public double bnm = 91.0D;
+  public String fQn;
   public String mMimeType;
+  public String mnt;
+  public String ndn;
+  public String ndo;
+  public long ndp;
+  public long ndq;
+  public long ndr;
+  public String nds;
   
   public GalleryItem$MediaItem()
   {
@@ -25,13 +29,13 @@ public abstract class GalleryItem$MediaItem
   
   public GalleryItem$MediaItem(long paramLong, String paramString1, String paramString2, String paramString3)
   {
-    this.kGX = paramLong;
-    this.eAu = paramString1;
-    this.jSX = paramString2;
+    this.ndp = paramLong;
+    this.fQn = paramString1;
+    this.mnt = paramString2;
     this.mMimeType = paramString3;
   }
   
-  public static MediaItem B(int paramInt, long paramLong)
+  public static MediaItem S(int paramInt, long paramLong)
   {
     if (paramInt == 1) {
       return new GalleryItem.ImageMediaItem(paramLong);
@@ -47,19 +51,7 @@ public abstract class GalleryItem$MediaItem
     return new GalleryItem.VideoMediaItem(paramLong, paramString1, paramString2, paramString3);
   }
   
-  public final int a(MediaItem paramMediaItem)
-  {
-    int i = -1;
-    if (this.kGY > paramMediaItem.kGY) {
-      i = 1;
-    }
-    while (this.kGY >= paramMediaItem.kGY) {
-      return i;
-    }
-    return -1;
-  }
-  
-  public abstract String aXs();
+  public abstract String Xi();
   
   public boolean equals(Object paramObject)
   {
@@ -72,10 +64,10 @@ public abstract class GalleryItem$MediaItem
       {
         paramObject = (MediaItem)paramObject;
         bool1 = bool2;
-        if (this.eAu != null)
+        if (this.fQn != null)
         {
           bool1 = bool2;
-          if (this.eAu.equals(paramObject.eAu)) {
+          if (this.fQn.equals(paramObject.fQn)) {
             bool1 = true;
           }
         }
@@ -88,12 +80,12 @@ public abstract class GalleryItem$MediaItem
   
   public String toString()
   {
-    return "MediaItem{mOrignalPath='" + this.eAu + '\'' + ", mThumbPath='" + this.jSX + '\'' + ", origId=" + this.kGX + ", addDate=" + this.kGY + ", mMimeType='" + this.mMimeType + '\'' + '}';
+    return "MediaItem{mOrignalPath='" + this.fQn + '\'' + ", mThumbPath='" + this.mnt + '\'' + ", origId=" + this.ndp + ", generateDate=" + this.ndq + ", mMimeType='" + this.mMimeType + '\'' + ", mLongitude='" + this.bnm + '\'' + ", mLatitude='" + this.bnl + '\'' + ", mBusinessTag='" + this.nds + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem
  * JD-Core Version:    0.7.0.1
  */

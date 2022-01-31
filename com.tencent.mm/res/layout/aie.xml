@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/w3" android:paddingLeft="@dimen/c_" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dba" android:background="@drawable/a58" android:layout_width="fill_parent" android:layout_height="@dimen/mp">
-        <TextView android:textSize="@dimen/ca" android:textColor="@color/fc" android:gravity="center|left" android:id="@id/dbb" android:layout_width="@dimen/ce" android:layout_height="wrap_content" android:singleLine="false" />
-        <TextView android:textSize="@dimen/ca" android:textColor="@color/qm" android:gravity="center_vertical" android:id="@id/cbj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cc" android:singleLine="true" />
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="@dimen/lj" android:id="@id/dg9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <com.tencent.mm.plugin.mmsight.api.MMSightRecordView android:id="@id/dg_" android:layout_width="300.0dip" android:layout_height="450.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/ahw" android:layout_width="125.0dip" android:layout_height="78.0dip" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <Button android:id="@id/dga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="take picture" android:layout_below="@id/dg_" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/dgb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="start record" android:layout_below="@id/dga" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/dgc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="switch camera" android:layout_below="@id/dgb" android:layout_centerHorizontal="true" />
+</RelativeLayout>

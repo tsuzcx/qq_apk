@@ -1,39 +1,45 @@
 package com.tencent.mm.plugin.trafficmonitor;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public abstract class c
 {
   private final String TAG = "MicroMsg.TrafficInspector";
   int currentIndex;
-  long dFf;
   int id;
-  d pKf;
-  c.a pKg;
+  long interval;
+  d tot;
+  c.a tou;
   int type;
   
-  abstract void bOQ();
-  
-  final long i(long paramLong1, long paramLong2, long paramLong3)
+  static boolean ne(long paramLong)
   {
-    long l2 = TrafficClickFlowReceiver.P(paramLong1 - this.dFf, paramLong1);
-    y.i("MicroMsg.TrafficInspector", "downloadDuration : %d", new Object[] { Long.valueOf(l2) });
-    long l1 = paramLong2;
-    if (l2 > 0L)
+    if (TrafficClickFlowReceiver.nb(paramLong))
     {
-      l1 = paramLong2;
-      if (TrafficClickFlowReceiver.gH(paramLong1 - this.dFf))
-      {
-        l1 = paramLong2 - l2 / 1000L * paramLong3;
-        y.i("MicroMsg.TrafficInspector", "hasDownload and it is normal");
-      }
+      boolean bool = TrafficClickFlowReceiver.nc(paramLong);
+      ab.i("MicroMsg.TrafficInspector", "hasDownload");
+      return bool;
     }
-    return l1;
+    return false;
+  }
+  
+  abstract void cKM();
+  
+  final void cKO()
+  {
+    e.cKP();
+    int i = e.cKS();
+    if (this.id == i)
+    {
+      TrafficClickFlowReceiver.cKN();
+      e.cKP();
+      e.cKR();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.c
  * JD-Core Version:    0.7.0.1
  */

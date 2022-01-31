@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.remittance.bankcard.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class BankRemitDetailUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -11,8 +12,10 @@ final class BankRemitDetailUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    y.i("MicroMsg.BankRemitDetailUI", "back press");
-    this.nwC.finish();
+    AppMethodBeat.i(44594);
+    ab.i("MicroMsg.BankRemitDetailUI", "back press");
+    this.qhE.finish();
+    AppMethodBeat.o(44594);
     return false;
   }
 }

@@ -1,17 +1,22 @@
 package com.tencent.mm.ui.contact;
 
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mm.ui.AddressView;
 
 public final class a$b
 {
-  public AddressView lBJ;
-  public TextView lvb;
-  public TextView lvc;
-  public TextView vIO;
-  public View vIP;
-  public TextView vIQ;
+  public TextView Aai;
+  public View Aaj;
+  public TextView Aak;
+  public CategoryTipView Aal;
+  public ViewGroup Aam;
+  public ImageView ehv;
+  public TextView nSs;
+  public TextView nSt;
+  public AddressView nYV;
 }
 
 

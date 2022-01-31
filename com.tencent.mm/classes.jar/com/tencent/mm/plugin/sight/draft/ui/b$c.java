@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.sight.draft.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.l;
 import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$c
   implements View.OnClickListener
@@ -13,19 +14,27 @@ final class b$c
   
   public final void onClick(View paramView)
   {
-    if (!(paramView.getTag() instanceof b.e)) {
-      return;
-    }
-    b.f(this.ogK).bBw();
-    paramView = (b.e)paramView.getTag();
-    if (paramView.ogR == null)
+    AppMethodBeat.i(25000);
+    if (!(paramView.getTag() instanceof b.e))
     {
-      y.e("MicroMsg.SightDraftContainerAdapter", "draftInfo is NULL");
+      AppMethodBeat.o(25000);
       return;
     }
-    paramView.ogR.field_fileStatus = 6;
-    o.Sv().c(paramView.ogR, new String[] { "localId" });
-    this.ogK.a(null, null);
+    b.f(this.qUZ).cmW();
+    paramView = (b.e)paramView.getTag();
+    if (paramView.qVg == null)
+    {
+      ab.e("MicroMsg.SightDraftContainerAdapter", "draftInfo is NULL");
+      AppMethodBeat.o(25000);
+      return;
+    }
+    paramView.qVg.field_fileStatus = 6;
+    o.alI().update(paramView.qVg, new String[] { "localId" });
+    this.qUZ.a(null, null);
+    if (b.d(this.qUZ) != null) {
+      b.d(this.qUZ);
+    }
+    AppMethodBeat.o(25000);
   }
 }
 

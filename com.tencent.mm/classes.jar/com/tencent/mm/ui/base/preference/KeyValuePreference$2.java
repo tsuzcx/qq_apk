@@ -2,6 +2,7 @@ package com.tencent.mm.ui.base.preference;
 
 import android.view.View;
 import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class KeyValuePreference$2
   implements View.OnLongClickListener
@@ -10,7 +11,10 @@ final class KeyValuePreference$2
   
   public final boolean onLongClick(View paramView)
   {
-    return this.vdc.vdD.bsU();
+    AppMethodBeat.i(107200);
+    boolean bool = this.zrD.zsd.ccS();
+    AppMethodBeat.o(107200);
+    return bool;
   }
 }
 

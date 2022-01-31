@@ -1,32 +1,14 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.b;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-
-final class WebViewUI$o
-  implements b
+public final class WebViewUI$o
 {
-  private WebViewUI$o(WebViewUI paramWebViewUI) {}
+  int vgV = 0;
   
-  public final boolean Tq(String paramString)
-  {
-    if (!bk.bl(paramString))
-    {
-      paramString = paramString.substring(17);
-      y.i("MicroMsg.WebViewUI", "[oneliang]get html content :" + paramString);
-      this.rpH.cen();
-    }
-    return false;
-  }
+  protected WebViewUI$o(WebViewUI paramWebViewUI) {}
   
-  public final boolean Ty(String paramString)
+  public final boolean deS()
   {
-    if (bk.bl(paramString)) {
-      return false;
-    }
-    return s.n(paramString, "weixin://gethtml/");
+    return this.vgV > 0;
   }
 }
 

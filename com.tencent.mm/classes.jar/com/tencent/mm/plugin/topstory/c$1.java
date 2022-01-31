@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.topstory;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class c$1
-  extends ah
+  extends ak
 {
   c$1(c paramc, Looper paramLooper)
   {
@@ -14,12 +15,16 @@ final class c$1
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(65492);
     switch (paramMessage.what)
     {
-    default: 
-      return;
     }
-    ((c.a)paramMessage.obj).run();
+    for (;;)
+    {
+      AppMethodBeat.o(65492);
+      return;
+      ((c.a)paramMessage.obj).run();
+    }
   }
 }
 

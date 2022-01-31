@@ -4,8 +4,9 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.tools.l;
 
 final class CollectBillUI$4
   implements AdapterView.OnItemLongClickListener
@@ -14,12 +15,15 @@ final class CollectBillUI$4
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(41214);
     if ((paramInt < 0) || (paramInt >= paramAdapterView.getAdapter().getCount()))
     {
-      y.i("MicroMsg.CollectBillUI", "illegal position: %s, count: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramAdapterView.getAdapter().getCount()) });
+      ab.i("MicroMsg.CollectBillUI", "illegal position: %s, count: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramAdapterView.getAdapter().getCount()) });
+      AppMethodBeat.o(41214);
       return false;
     }
-    CollectBillUI.i(this.iKD).a(paramView, paramInt, paramLong, this.iKD, CollectBillUI.h(this.iKD));
+    CollectBillUI.i(this.kRi).a(paramView, paramInt, paramLong, this.kRi, CollectBillUI.h(this.kRi));
+    AppMethodBeat.o(41214);
     return true;
   }
 }

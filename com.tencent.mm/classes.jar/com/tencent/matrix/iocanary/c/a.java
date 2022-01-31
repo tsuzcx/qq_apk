@@ -1,7 +1,7 @@
 package com.tencent.matrix.iocanary.c;
 
 import android.content.Context;
-import com.tencent.matrix.c.b;
+import com.tencent.matrix.e.b;
 import com.tencent.matrix.iocanary.core.IOIssue;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public final class a
 {
-  private static String bnW = null;
+  private static String sPackageName = null;
   
   public static b a(IOIssue paramIOIssue)
   {
@@ -33,19 +33,12 @@ public final class a
       localJSONObject.put("stack", paramIOIssue.stack);
       localJSONObject.put("repeat", paramIOIssue.repeatReadCnt);
       label136:
-      localb.boK = localJSONObject;
+      localb.bOx = localJSONObject;
       return localb;
     }
     catch (JSONException paramIOIssue)
     {
       break label136;
-    }
-  }
-  
-  public static void ag(Context paramContext)
-  {
-    if (bnW == null) {
-      bnW = paramContext.getPackageName();
     }
   }
   
@@ -68,7 +61,7 @@ public final class a
       }
       i += 1;
     }
-    if ((paramThrowable.size() > 10) && (bnW != null))
+    if ((paramThrowable.size() > 10) && (sPackageName != null))
     {
       localObject = paramThrowable.listIterator(paramThrowable.size());
       do
@@ -76,7 +69,7 @@ public final class a
         if (!((ListIterator)localObject).hasPrevious()) {
           break;
         }
-        if (!((StackTraceElement)((ListIterator)localObject).previous()).getClassName().contains(bnW)) {
+        if (!((StackTraceElement)((ListIterator)localObject).previous()).getClassName().contains(sPackageName)) {
           ((ListIterator)localObject).remove();
         }
       } while (paramThrowable.size() > 10);
@@ -87,6 +80,13 @@ public final class a
       ((StringBuffer)localObject).append((StackTraceElement)paramThrowable.next()).append('\n');
     }
     return ((StringBuffer)localObject).toString();
+  }
+  
+  public static void setPackageName(Context paramContext)
+  {
+    if (sPackageName == null) {
+      sPackageName = paramContext.getPackageName();
+    }
   }
 }
 

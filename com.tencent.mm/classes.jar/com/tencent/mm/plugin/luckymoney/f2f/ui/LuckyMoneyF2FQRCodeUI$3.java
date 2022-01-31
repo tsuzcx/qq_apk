@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.luckymoney.f2f.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class LuckyMoneyF2FQRCodeUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -11,10 +12,12 @@ final class LuckyMoneyF2FQRCodeUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    LuckyMoneyF2FQRCodeUI.a(this.lOE, new d(this.lOE, 1, false));
-    LuckyMoneyF2FQRCodeUI.y(this.lOE).phH = LuckyMoneyF2FQRCodeUI.x(this.lOE);
-    LuckyMoneyF2FQRCodeUI.y(this.lOE).phI = LuckyMoneyF2FQRCodeUI.z(this.lOE);
-    LuckyMoneyF2FQRCodeUI.y(this.lOE).cfU();
+    AppMethodBeat.i(42172);
+    LuckyMoneyF2FQRCodeUI.a(this.olY, new d(this.olY, 1, false));
+    LuckyMoneyF2FQRCodeUI.y(this.olY).sao = LuckyMoneyF2FQRCodeUI.x(this.olY);
+    LuckyMoneyF2FQRCodeUI.y(this.olY).sap = LuckyMoneyF2FQRCodeUI.z(this.olY);
+    LuckyMoneyF2FQRCodeUI.y(this.olY).crd();
+    AppMethodBeat.o(42172);
     return true;
   }
 }

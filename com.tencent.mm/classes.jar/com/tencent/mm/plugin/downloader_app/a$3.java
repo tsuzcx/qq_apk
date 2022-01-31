@@ -1,19 +1,25 @@
 package com.tencent.mm.plugin.downloader_app;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.downloader_app.b.i;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pointers.PBool;
 
 final class a$3
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  a$3(a parama, i parami) {}
+  a$3(a parama, DialogInterface.OnCancelListener paramOnCancelListener, PBool paramPBool, String paramString) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.iRu != null) {
-      this.iRu.aGo();
+    AppMethodBeat.i(136007);
+    if (this.kZU != null) {
+      this.kZU.onCancel(paramDialogInterface);
     }
+    if (!this.kZR.value) {
+      com.tencent.mm.plugin.downloader_app.c.a.a(15, 1501, 1, 2, this.val$appId, "", "");
+    }
+    AppMethodBeat.o(136007);
   }
 }
 

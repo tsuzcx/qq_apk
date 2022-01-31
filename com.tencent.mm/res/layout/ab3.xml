@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/a5u" android:baselineAligned="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/kl" android:layout_marginRight="@dimen/kl" android:minWidth="@dimen/l6" style="@style/p9">
-        <ListView android:id="@id/jq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@drawable/rn" android:cacheColorHint="#00000000" android:divider="@null" />
-    </LinearLayout>
+    <RelativeLayout android:id="@id/cx3" android:layout_width="@dimen/a5y" android:layout_height="@dimen/a5u">
+        <ImageView android:id="@id/cx2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bey" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/cx4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/cx5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bbc" android:scaleType="fitXY" />
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bbb" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ImageView android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginBottom="3.0dip" android:src="@drawable/bex" />
+    <RelativeLayout android:id="@id/cx6" android:layout_width="@dimen/a5y" android:layout_height="@dimen/a5u" android:layout_marginLeft="@dimen/dl">
+        <ImageView android:id="@id/cx7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bey" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/cx8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/cx9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bbc" android:scaleType="fitXY" />
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bbb" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/cx_" android:layout_width="@dimen/a5y" android:layout_height="@dimen/a5u" android:layout_marginLeft="@dimen/dl">
+        <ImageView android:id="@id/cxa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bey" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/cxb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/cxc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bbc" android:scaleType="fitXY" />
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bbb" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>

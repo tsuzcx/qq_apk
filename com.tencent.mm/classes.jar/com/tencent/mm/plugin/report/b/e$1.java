@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.report.b;
 
 import com.tencent.mars.smc.SmcLogic;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$1
   implements Runnable
@@ -9,7 +10,9 @@ final class e$1
   
   public final void run()
   {
-    SmcLogic.OnReportResp(3, -1, null, this.nEY.bUR);
+    AppMethodBeat.i(72673);
+    SmcLogic.OnReportResp(3, -1, null, this.qsa.cCy);
+    AppMethodBeat.o(72673);
   }
 }
 

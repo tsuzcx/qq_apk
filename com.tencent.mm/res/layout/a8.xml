@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textAppearance="@style/q" android:textColor="?ek" android:ellipsize="end" android:id="@id/iy" android:background="?ej" android:paddingLeft="@dimen/a6o" android:paddingTop="@dimen/a6s" android:paddingRight="@dimen/a6o" android:paddingBottom="@dimen/a6s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/a6p" android:maxWidth="256.0dip" android:maxLines="3" android:paddingStart="@dimen/a6o" android:paddingEnd="@dimen/a6o" />
-</LinearLayout>
+<view android:id="@id/ku" android:scrollbars="vertical" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@null" android:divider="?en" android:overScrollMode="ifContentScrolls" android:textAlignment="viewStart" app:paddingBottomNoButtons="@dimen/pk" app:paddingTopNoTitle="@dimen/pl" style="@style/y_" class="android.support.v7.app.AlertController$RecycleListView"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

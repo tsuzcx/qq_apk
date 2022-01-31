@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.sight.encode.ui;
 
 import android.view.View;
-import com.tencent.mm.ui.contact.a.d.a;
+import com.tencent.mm.ui.contact.a.e.a;
 
 public final class c$a$a
-  extends d.a
+  extends e.a
 {
-  public View ogQ;
-  public View ohX;
+  public View qVf;
+  public View qWk;
   
   public c$a$a(c.a parama)
   {

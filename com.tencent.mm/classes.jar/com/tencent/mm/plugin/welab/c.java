@@ -1,38 +1,34 @@
 package com.tencent.mm.plugin.welab;
 
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.model.bx.a;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.cv;
+import com.tencent.mm.plugin.welab.a.a.b;
+import com.tencent.mm.plugin.welab.a.a.d;
+import java.util.Map;
 
 public final class c
-  implements bx.a
+  implements d
 {
-  public final void a(e.a parama)
+  public final void a(b paramb)
   {
-    if ((parama == null) || (parama.dBs == null) || (parama.dBs.svH == null)) {
-      y.i("MicroMsg.WelabNewMsgLsn", "recv null msg");
-    }
-    do
-    {
-      return;
-      parama = aa.a(parama.dBs.svH);
-      y.i("MicroMsg.WelabNewMsgLsn", "recv addMsg " + parama);
-      parama = g.Uh(parama);
-    } while ((parama == null) || (!parama.isValid()));
-    if (parama.field_status == 1) {
-      b.chc().rEr.a(parama, new String[] { "expId" });
-    }
-    for (;;)
-    {
-      e.q(parama.field_LabsAppId, 6, false);
-      return;
-      b.chc().rEr.c(parama);
-      com.tencent.mm.plugin.welab.d.b.chq().f(parama);
-      h.nFQ.a(parama.field_idkey, parama.field_idkeyValue, 1L, false);
-    }
+    AppMethodBeat.i(80538);
+    a.dhl().vuV = paramb;
+    AppMethodBeat.o(80538);
+  }
+  
+  public final void a(String paramString, b paramb)
+  {
+    AppMethodBeat.i(80537);
+    a.dhl().vuU.put(paramString, paramb);
+    AppMethodBeat.o(80537);
+  }
+  
+  public final cv ajt(String paramString)
+  {
+    AppMethodBeat.i(80539);
+    paramString = a.dhl().ajs(paramString);
+    AppMethodBeat.o(80539);
+    return paramString;
   }
 }
 

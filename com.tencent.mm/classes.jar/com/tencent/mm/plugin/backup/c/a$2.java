@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.backup.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.lan_cs.Client.a;
 import java.io.IOException;
 
@@ -8,23 +9,28 @@ final class a$2
 {
   a$2(a parama) {}
   
-  public final void EL()
+  public final void ST()
   {
-    a.a(this.hFP, 10011, "client onDisconnect".getBytes());
+    AppMethodBeat.i(17154);
+    a.a(this.jzm, 10011, "client onDisconnect".getBytes());
+    AppMethodBeat.o(17154);
   }
   
   public final void onRecv(String paramString, int paramInt, byte[] paramArrayOfByte)
   {
-    a.a(this.hFP, paramString);
-    a.a(this.hFP, paramInt);
+    AppMethodBeat.i(17153);
+    a.a(this.jzm, paramString);
+    a.a(this.jzm, paramInt);
     try
     {
-      a.a(this.hFP, paramArrayOfByte);
+      a.a(this.jzm, paramArrayOfByte);
+      AppMethodBeat.o(17153);
       return;
     }
     catch (IOException paramString)
     {
-      a.a(this.hFP, 10006, ("client readErr:" + paramString.toString()).getBytes());
+      a.a(this.jzm, 10006, ("client readErr:" + paramString.toString()).getBytes());
+      AppMethodBeat.o(17153);
     }
   }
 }

@@ -2,7 +2,7 @@ package android.support.design.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.design.a.k;
+import android.support.design.a.a;
 import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
@@ -10,8 +10,8 @@ import android.widget.FrameLayout.LayoutParams;
 public class CollapsingToolbarLayout$LayoutParams
   extends FrameLayout.LayoutParams
 {
-  int hq = 0;
-  float hr = 0.5F;
+  int ik = 0;
+  float il = 0.5F;
   
   public CollapsingToolbarLayout$LayoutParams()
   {
@@ -21,9 +21,9 @@ public class CollapsingToolbarLayout$LayoutParams
   public CollapsingToolbarLayout$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.CollapsingToolbarLayout_Layout);
-    this.hq = paramContext.getInt(a.k.CollapsingToolbarLayout_Layout_layout_collapseMode, 0);
-    this.hr = paramContext.getFloat(a.k.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier, 0.5F);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.CollapsingToolbarLayout_Layout);
+    this.ik = paramContext.getInt(0, 0);
+    this.il = paramContext.getFloat(1, 0.5F);
     paramContext.recycle();
   }
   
@@ -34,7 +34,7 @@ public class CollapsingToolbarLayout$LayoutParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.design.widget.CollapsingToolbarLayout.LayoutParams
  * JD-Core Version:    0.7.0.1
  */

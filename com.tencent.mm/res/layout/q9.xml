@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/b28" android:background="@color/zc" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:gravity="center" android:layout_width="fill_parent" android:layout_height="120.0dip" android:layout_marginTop="40.0dip" android:src="@raw/fix_tools_recover" />
-        <LinearLayout android:orientation="vertical" android:id="@id/b0v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
-            <TextView android:textSize="18.0dip" android:textColor="@color/fc" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" android:text="@string/b05" />
-            <Button android:id="@id/b0w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/fo" android:layout_marginTop="32.0dip" android:layout_marginRight="@dimen/fo" android:text="@string/b06" style="@style/mu" />
+    <LinearLayout android:orientation="vertical" style="@style/h1">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:minHeight="@dimen/lm" android:layout_weight="1.0">
+            <com.tencent.mm.ui.MMImageView android:id="@id/b25" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/m1" android:src="@drawable/aes" style="@style/h6" />
+            <TextView android:id="@id/b26" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" android:layout_marginBottom="@dimen/l2" android:text="message" android:maxLines="6" style="@style/h7" />
         </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/b0x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
-            <TextView android:textSize="18.0dip" android:textColor="@color/fc" android:gravity="center" android:id="@id/b0y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" />
-            <ProgressBar android:id="@id/mm" android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:progress="0" style="@style/mf" />
-            <Button android:id="@id/as3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/fo" android:layout_marginTop="32.0dip" android:layout_marginRight="@dimen/fo" android:text="@string/b08" style="@style/mx" />
-        </LinearLayout>
+        <ImageView android:id="@id/b2e" android:background="@color/a0a" android:layout_width="fill_parent" android:layout_height="@dimen/fs" />
+        <Button android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/b1y" android:background="@drawable/ba" android:layout_width="fill_parent" android:layout_height="@dimen/lw" android:text="@string/st" />
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

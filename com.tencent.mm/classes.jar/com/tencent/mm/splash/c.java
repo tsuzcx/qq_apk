@@ -8,7 +8,7 @@ public abstract interface c
   
   public abstract void c(String paramString1, String paramString2, Object... paramVarArgs);
   
-  public abstract void l(Activity paramActivity);
+  public abstract void m(Activity paramActivity);
 }
 
 

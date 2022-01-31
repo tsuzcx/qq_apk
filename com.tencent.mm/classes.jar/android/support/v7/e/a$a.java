@@ -2,32 +2,12 @@ package android.support.v7.e;
 
 public final class a$a
 {
-  public static final int compat_button_inset_horizontal_material = 2131428162;
-  public static final int compat_button_inset_vertical_material = 2131428163;
-  public static final int compat_button_padding_horizontal_material = 2131428164;
-  public static final int compat_button_padding_vertical_material = 2131428165;
-  public static final int compat_control_corner_material = 2131428166;
-  public static final int fastscroll_default_thickness = 2131428310;
-  public static final int fastscroll_margin = 2131428311;
-  public static final int fastscroll_minimum_range = 2131428312;
-  public static final int item_touch_helper_max_drag_scroll_per_frame = 2131428369;
-  public static final int item_touch_helper_swipe_escape_max_velocity = 2131428370;
-  public static final int item_touch_helper_swipe_escape_velocity = 2131428371;
-  public static final int notification_action_icon_size = 2131428464;
-  public static final int notification_action_text_size = 2131428465;
-  public static final int notification_big_circle_margin = 2131428466;
-  public static final int notification_content_margin_start = 2131427395;
-  public static final int notification_large_icon_height = 2131428467;
-  public static final int notification_large_icon_width = 2131428468;
-  public static final int notification_main_column_padding_top = 2131427396;
-  public static final int notification_media_narrow_margin = 2131427397;
-  public static final int notification_right_icon_size = 2131428469;
-  public static final int notification_right_side_padding_top = 2131427393;
-  public static final int notification_small_icon_background_padding = 2131428470;
-  public static final int notification_small_icon_size_as_large = 2131428471;
-  public static final int notification_subtext_size = 2131428472;
-  public static final int notification_top_pad = 2131428473;
-  public static final int notification_top_pad_large_text = 2131428474;
+  public static final int[] CoordinatorLayout = { 2130772310, 2130772311 };
+  public static final int[] CoordinatorLayout_Layout = { 16842931, 2130772312, 2130772313, 2130772314, 2130772315, 2130772316, 2130772317 };
+  public static final int[] FontFamily = { 2130772436, 2130772437, 2130772438, 2130772439, 2130772440, 2130772441 };
+  public static final int[] FontFamilyFont = { 16844082, 16844083, 16844095, 16844143, 16844144, 2130772442, 2130772443, 2130772444, 2130772445, 2130772446 };
+  public static final int[] GridLayout = { 2130772452, 2130772453, 2130772454, 2130772455, 2130772456, 2130772457, 2130772458 };
+  public static final int[] GridLayout_Layout = { 16842996, 16842997, 16842998, 16842999, 16843000, 16843001, 16843002, 2130772459, 2130772460, 2130772461, 2130772462, 2130772463, 2130772464, 2130772465 };
 }
 
 

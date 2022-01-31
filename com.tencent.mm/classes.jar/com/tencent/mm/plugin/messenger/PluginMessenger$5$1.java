@@ -1,19 +1,21 @@
 package com.tencent.mm.plugin.messenger;
 
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mm.plugin.messenger.a.a;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.g;
 
 final class PluginMessenger$5$1
-  extends a
+  implements DialogInterface.OnCancelListener
 {
-  PluginMessenger$5$1(PluginMessenger.5 param5, Map paramMap, String paramString1, Bundle paramBundle, WeakReference paramWeakReference, String paramString2) {}
+  PluginMessenger$5$1(PluginMessenger.5 param5) {}
   
-  public final void onClickImp(View paramView)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    PluginMessenger.access$000(this.mcn.mci, this.mcl, this.mcm, this.dmH, this.dmG, this.gPG, true);
+    AppMethodBeat.i(136879);
+    g.Rc().a(PluginMessenger.access$200(this.oCM.oCK));
+    AppMethodBeat.o(136879);
   }
 }
 

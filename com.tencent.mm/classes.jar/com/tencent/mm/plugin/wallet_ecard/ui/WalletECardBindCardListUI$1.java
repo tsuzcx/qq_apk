@@ -4,8 +4,9 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.protocal.c.fv;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.hg;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.d.g;
 
 final class WalletECardBindCardListUI$1
@@ -15,22 +16,26 @@ final class WalletECardBindCardListUI$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    y.i("MicroMsg.WalletECardBindCardListUI", "position: %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(48115);
+    ab.i("MicroMsg.WalletECardBindCardListUI", "position: %d", new Object[] { Integer.valueOf(paramInt) });
     int i = paramAdapterView.getAdapter().getItemViewType(paramInt);
-    WalletECardBindCardListUI.a(this.qKH).getClass();
+    WalletECardBindCardListUI.a(this.uzF).getClass();
     if (i == 1)
     {
-      y.d("MicroMsg.WalletECardBindCardListUI", "click add item: %s", new Object[] { Integer.valueOf(WalletECardBindCardListUI.b(this.qKH)) });
-      WalletECardBindCardListUI.c(this.qKH);
+      ab.d("MicroMsg.WalletECardBindCardListUI", "click add item: %s", new Object[] { Integer.valueOf(WalletECardBindCardListUI.b(this.uzF)) });
+      this.uzF.cXc();
+      AppMethodBeat.o(48115);
       return;
     }
-    paramAdapterView = (fv)paramAdapterView.getAdapter().getItem(paramInt);
+    paramAdapterView = (hg)paramAdapterView.getAdapter().getItem(paramInt);
     if (paramAdapterView == null)
     {
-      y.w("MicroMsg.WalletECardBindCardListUI", "empty item");
+      ab.w("MicroMsg.WalletECardBindCardListUI", "empty item");
+      AppMethodBeat.o(48115);
       return;
     }
-    this.qKH.cNk().m(new Object[] { paramAdapterView });
+    this.uzF.getNetController().p(new Object[] { paramAdapterView });
+    AppMethodBeat.o(48115);
   }
 }
 

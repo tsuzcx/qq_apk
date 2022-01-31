@@ -5,71 +5,87 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.preference.PreferenceManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class i
 {
-  private static i btw = null;
-  static f btx = null;
-  public static volatile long bty = 0L;
-  static h btz = null;
+  private static i bUG = null;
+  static f bUH = null;
+  public static volatile long bUI = 0L;
+  static h bUJ = null;
   public static Context mContext = null;
   public static Handler mHandler = null;
-  private g btA = null;
+  private g bUK;
   
   private i(Context paramContext)
   {
+    AppMethodBeat.i(125771);
+    this.bUK = null;
     HandlerThread localHandlerThread = new HandlerThread(i.class.getSimpleName());
     localHandlerThread.start();
     mHandler = new Handler(localHandlerThread.getLooper());
     paramContext = paramContext.getApplicationContext();
     mContext = paramContext;
-    bty = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("__MID_LAST_CHECK_TIME__", 0L);
+    bUI = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("__MID_LAST_CHECK_TIME__", 0L);
+    AppMethodBeat.o(125771);
   }
   
   public static void a(f paramf)
   {
-    btx = paramf;
+    bUH = paramf;
   }
   
-  public static i an(Context paramContext)
+  public static i aL(Context paramContext)
   {
-    if (btw == null) {}
+    AppMethodBeat.i(125772);
+    if (bUG == null) {}
     try
     {
-      if (btw == null) {
-        btw = new i(paramContext);
+      if (bUG == null) {
+        bUG = new i(paramContext);
       }
-      return btw;
+      paramContext = bUG;
+      AppMethodBeat.o(125772);
+      return paramContext;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(125772);
+    }
   }
   
-  public final String ry()
+  public final String zO()
   {
-    if ((this.btA == null) || (!s.bG(this.btA.btu)))
+    AppMethodBeat.i(125773);
+    if ((this.bUK == null) || (!s.cJ(this.bUK.bUE)))
     {
-      this.btA = r.ap(mContext).rD();
-      if (!s.bG(this.btA.btu)) {
-        break label100;
+      this.bUK = r.aN(mContext).zS();
+      if (!s.cJ(this.bUK.bUE)) {
+        break label112;
       }
     }
-    label100:
+    label112:
     for (int i = 2;; i = 1)
     {
       if (mHandler != null) {
         mHandler.post(new n(mContext, i));
       }
-      new StringBuilder("wx get mid:").append(this.btA.btu);
-      return this.btA.btu;
+      new StringBuilder("wx get mid:").append(this.bUK.bUE);
+      String str = this.bUK.bUE;
+      AppMethodBeat.o(125773);
+      return str;
     }
   }
   
-  public final String rz()
+  public final String zP()
   {
-    if ((this.btA == null) || (!s.bG(this.btA.btu))) {
-      this.btA = r.ap(mContext).rD();
+    AppMethodBeat.i(125774);
+    if ((this.bUK == null) || (!s.cJ(this.bUK.bUE))) {
+      this.bUK = r.aN(mContext).zS();
     }
-    return this.btA.btu;
+    String str = this.bUK.bUE;
+    AppMethodBeat.o(125774);
+    return str;
   }
 }
 

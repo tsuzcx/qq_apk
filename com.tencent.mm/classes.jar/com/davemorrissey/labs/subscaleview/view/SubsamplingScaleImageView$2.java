@@ -2,6 +2,7 @@ package com.davemorrissey.labs.subscaleview.view;
 
 import android.os.Handler.Callback;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SubsamplingScaleImageView$2
   implements Handler.Callback
@@ -10,13 +11,15 @@ final class SubsamplingScaleImageView$2
   
   public final boolean handleMessage(Message paramMessage)
   {
-    if ((paramMessage.what == 1) && (SubsamplingScaleImageView.b(this.aqZ) != null))
+    AppMethodBeat.i(115640);
+    if ((paramMessage.what == 1) && (SubsamplingScaleImageView.b(this.ats) != null))
     {
-      SubsamplingScaleImageView.c(this.aqZ);
-      SubsamplingScaleImageView.a(this.aqZ, SubsamplingScaleImageView.b(this.aqZ));
-      this.aqZ.performLongClick();
-      SubsamplingScaleImageView.d(this.aqZ);
+      SubsamplingScaleImageView.c(this.ats);
+      SubsamplingScaleImageView.a(this.ats, SubsamplingScaleImageView.b(this.ats));
+      this.ats.performLongClick();
+      SubsamplingScaleImageView.d(this.ats);
     }
+    AppMethodBeat.o(115640);
     return true;
   }
 }

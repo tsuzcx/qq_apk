@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.wear.model.f;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public abstract class d
   implements Runnable
 {
   public d()
   {
-    y.i("MicroMsg.WearBaseWorkerTask", "Create %s", new Object[] { getName() });
+    ab.i("MicroMsg.WearBaseWorkerTask", "Create %s", new Object[] { getName() });
   }
   
-  public abstract void execute();
+  protected abstract void execute();
   
   public abstract String getName();
   
@@ -21,21 +21,21 @@ public abstract class d
     {
       execute();
       long l2 = System.currentTimeMillis();
-      y.i("MicroMsg.WearBaseWorkerTask", "execute %s | use time %d", new Object[] { getName(), Long.valueOf(l2 - l1) });
+      ab.i("MicroMsg.WearBaseWorkerTask", "execute %s | use time %d", new Object[] { getName(), Long.valueOf(l2 - l1) });
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.WearBaseWorkerTask", localException, "run task %s occur exception: %s", new Object[] { getName(), localException.getMessage() });
+        ab.printErrStackTrace("MicroMsg.WearBaseWorkerTask", localException, "run task %s occur exception: %s", new Object[] { getName(), localException.getMessage() });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.d
  * JD-Core Version:    0.7.0.1
  */

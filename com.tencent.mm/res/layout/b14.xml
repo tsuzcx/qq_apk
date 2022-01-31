@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/jr" android:background="@null" android:layout_width="@dimen/a83" android:layout_height="@dimen/a83"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.webview.ui.tools.bag.WebViewBagBgView android:id="@id/eu2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/hu" android:layout_width="@dimen/a7x" android:layout_height="@dimen/a7x" android:layout_centerInParent="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

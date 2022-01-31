@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public class XWalkDialogManager
@@ -42,293 +43,372 @@ public class XWalkDialogManager
   
   private AlertDialog buildAlertDialog()
   {
+    AppMethodBeat.i(85617);
     AlertDialog localAlertDialog = new AlertDialog.Builder(this.mContext).create();
     localAlertDialog.setIcon(17301543);
     localAlertDialog.setCancelable(false);
     localAlertDialog.setCanceledOnTouchOutside(false);
+    AppMethodBeat.o(85617);
     return localAlertDialog;
   }
   
   private ProgressDialog buildProgressDialog()
   {
+    AppMethodBeat.i(85618);
     ProgressDialog localProgressDialog = new ProgressDialog(this.mContext);
     localProgressDialog.setIndeterminate(true);
     localProgressDialog.setCancelable(false);
     localProgressDialog.setCanceledOnTouchOutside(false);
+    AppMethodBeat.o(85618);
     return localProgressDialog;
   }
   
   private void setMessage(AlertDialog paramAlertDialog, int paramInt)
   {
+    AppMethodBeat.i(85620);
     setMessage(paramAlertDialog, this.mContext.getString(paramInt));
+    AppMethodBeat.o(85620);
   }
   
   private void setMessage(AlertDialog paramAlertDialog, String paramString)
   {
+    AppMethodBeat.i(85621);
     String str = paramString.replaceAll("APP_NAME", XWalkEnvironment.getApplicationName());
     paramString = str;
     if (str.startsWith("this")) {
       paramString = str.replaceFirst("this", "This");
     }
     paramAlertDialog.setMessage(paramString);
+    AppMethodBeat.o(85621);
   }
   
   private void setNegativeButton(AlertDialog paramAlertDialog, int paramInt)
   {
+    AppMethodBeat.i(85623);
     paramAlertDialog.setButton(-2, this.mContext.getString(paramInt), null);
+    AppMethodBeat.o(85623);
   }
   
   private void setPositiveButton(AlertDialog paramAlertDialog, int paramInt)
   {
+    AppMethodBeat.i(85622);
     paramAlertDialog.setButton(-1, this.mContext.getString(paramInt), null);
+    AppMethodBeat.o(85622);
   }
   
   private void setTitle(AlertDialog paramAlertDialog, int paramInt)
   {
+    AppMethodBeat.i(85619);
     paramAlertDialog.setTitle(this.mContext.getString(paramInt));
+    AppMethodBeat.o(85619);
   }
   
   private void showDialog(AlertDialog paramAlertDialog, ArrayList<XWalkDialogManager.ButtonAction> paramArrayList)
   {
+    AppMethodBeat.i(85624);
     paramAlertDialog.setOnShowListener(new XWalkDialogManager.1(this, paramArrayList, paramAlertDialog));
     this.mActiveDialog = paramAlertDialog;
     this.mActiveDialog.show();
+    AppMethodBeat.o(85624);
   }
   
   void dismissDialog()
   {
+    AppMethodBeat.i(85614);
     this.mActiveDialog.dismiss();
     this.mActiveDialog = null;
+    AppMethodBeat.o(85614);
   }
   
   public AlertDialog getAlertDialog(int paramInt)
   {
+    AppMethodBeat.i(85606);
     if (paramInt == 1)
     {
       if (this.mNotFoundDialog == null)
       {
         this.mNotFoundDialog = buildAlertDialog();
-        setTitle(this.mNotFoundDialog, R.string.startup_not_found_title);
-        setMessage(this.mNotFoundDialog, R.string.startup_not_found_message);
-        setPositiveButton(this.mNotFoundDialog, R.string.xwalk_get_crosswalk);
-        setNegativeButton(this.mNotFoundDialog, R.string.xwalk_close);
+        setTitle(this.mNotFoundDialog, 2131306236);
+        setMessage(this.mNotFoundDialog, 2131306235);
+        setPositiveButton(this.mNotFoundDialog, 2131306276);
+        setNegativeButton(this.mNotFoundDialog, 2131306274);
       }
-      return this.mNotFoundDialog;
+      localObject = this.mNotFoundDialog;
+      AppMethodBeat.o(85606);
+      return localObject;
     }
     if (paramInt == 2)
     {
       if (this.mOlderVersionDialog == null)
       {
         this.mOlderVersionDialog = buildAlertDialog();
-        setTitle(this.mOlderVersionDialog, R.string.startup_older_version_title);
-        setMessage(this.mOlderVersionDialog, R.string.startup_older_version_message);
-        setPositiveButton(this.mOlderVersionDialog, R.string.xwalk_get_crosswalk);
-        setNegativeButton(this.mOlderVersionDialog, R.string.xwalk_close);
+        setTitle(this.mOlderVersionDialog, 2131306238);
+        setMessage(this.mOlderVersionDialog, 2131306237);
+        setPositiveButton(this.mOlderVersionDialog, 2131306276);
+        setNegativeButton(this.mOlderVersionDialog, 2131306274);
       }
-      return this.mOlderVersionDialog;
+      localObject = this.mOlderVersionDialog;
+      AppMethodBeat.o(85606);
+      return localObject;
     }
     if (paramInt == 3)
     {
       if (this.mNewerVersionDialog == null)
       {
         this.mNewerVersionDialog = buildAlertDialog();
-        setTitle(this.mNewerVersionDialog, R.string.startup_newer_version_title);
-        setMessage(this.mNewerVersionDialog, R.string.startup_newer_version_message);
-        setNegativeButton(this.mNewerVersionDialog, R.string.xwalk_close);
+        setTitle(this.mNewerVersionDialog, 2131306234);
+        setMessage(this.mNewerVersionDialog, 2131306233);
+        setNegativeButton(this.mNewerVersionDialog, 2131306274);
       }
-      return this.mNewerVersionDialog;
+      localObject = this.mNewerVersionDialog;
+      AppMethodBeat.o(85606);
+      return localObject;
     }
     if (paramInt == 4)
     {
       if (this.mArchitectureMismatchDialog == null)
       {
         this.mArchitectureMismatchDialog = buildAlertDialog();
-        setTitle(this.mArchitectureMismatchDialog, R.string.startup_architecture_mismatch_title);
-        setMessage(this.mArchitectureMismatchDialog, R.string.startup_architecture_mismatch_message);
-        setPositiveButton(this.mArchitectureMismatchDialog, R.string.xwalk_get_crosswalk);
-        setNegativeButton(this.mArchitectureMismatchDialog, R.string.xwalk_close);
+        setTitle(this.mArchitectureMismatchDialog, 2131306232);
+        setMessage(this.mArchitectureMismatchDialog, 2131306231);
+        setPositiveButton(this.mArchitectureMismatchDialog, 2131306276);
+        setNegativeButton(this.mArchitectureMismatchDialog, 2131306274);
       }
-      return this.mArchitectureMismatchDialog;
+      localObject = this.mArchitectureMismatchDialog;
+      AppMethodBeat.o(85606);
+      return localObject;
     }
     if (paramInt == 5)
     {
       if (this.mSignatureCheckErrorDialog == null)
       {
         this.mSignatureCheckErrorDialog = buildAlertDialog();
-        setTitle(this.mSignatureCheckErrorDialog, R.string.startup_signature_check_error_title);
-        setMessage(this.mSignatureCheckErrorDialog, R.string.startup_signature_check_error_message);
-        setNegativeButton(this.mSignatureCheckErrorDialog, R.string.xwalk_close);
+        setTitle(this.mSignatureCheckErrorDialog, 2131306240);
+        setMessage(this.mSignatureCheckErrorDialog, 2131306239);
+        setNegativeButton(this.mSignatureCheckErrorDialog, 2131306274);
       }
-      return this.mSignatureCheckErrorDialog;
+      localObject = this.mSignatureCheckErrorDialog;
+      AppMethodBeat.o(85606);
+      return localObject;
     }
     if (paramInt == 6)
     {
       if (this.mDownloadErrorDialog == null)
       {
         this.mDownloadErrorDialog = buildAlertDialog();
-        setTitle(this.mDownloadErrorDialog, R.string.crosswalk_install_title);
-        setMessage(this.mDownloadErrorDialog, R.string.download_failed_message);
-        setPositiveButton(this.mDownloadErrorDialog, R.string.xwalk_retry);
-        setNegativeButton(this.mDownloadErrorDialog, R.string.xwalk_cancel);
+        setTitle(this.mDownloadErrorDialog, 2131306143);
+        setMessage(this.mDownloadErrorDialog, 2131306153);
+        setPositiveButton(this.mDownloadErrorDialog, 2131306277);
+        setNegativeButton(this.mDownloadErrorDialog, 2131306273);
       }
-      return this.mDownloadErrorDialog;
+      localObject = this.mDownloadErrorDialog;
+      AppMethodBeat.o(85606);
+      return localObject;
     }
     if (paramInt == 7)
     {
       if (this.mSelectStoreDialog == null)
       {
         this.mSelectStoreDialog = buildAlertDialog();
-        setTitle(this.mSelectStoreDialog, R.string.crosswalk_install_title);
-        setPositiveButton(this.mSelectStoreDialog, R.string.xwalk_continue);
+        setTitle(this.mSelectStoreDialog, 2131306143);
+        setPositiveButton(this.mSelectStoreDialog, 2131306275);
       }
-      return this.mSelectStoreDialog;
+      localObject = this.mSelectStoreDialog;
+      AppMethodBeat.o(85606);
+      return localObject;
     }
     if (paramInt == 8)
     {
       if (this.mUnsupportedStoreDialog == null)
       {
         this.mUnsupportedStoreDialog = buildAlertDialog();
-        setTitle(this.mUnsupportedStoreDialog, R.string.crosswalk_install_title);
-        setMessage(this.mUnsupportedStoreDialog, R.string.unsupported_store_message);
-        setNegativeButton(this.mUnsupportedStoreDialog, R.string.xwalk_close);
+        setTitle(this.mUnsupportedStoreDialog, 2131306143);
+        setMessage(this.mUnsupportedStoreDialog, 2131306243);
+        setNegativeButton(this.mUnsupportedStoreDialog, 2131306274);
       }
-      return this.mUnsupportedStoreDialog;
+      localObject = this.mUnsupportedStoreDialog;
+      AppMethodBeat.o(85606);
+      return localObject;
     }
-    throw new IllegalArgumentException("Invalid dialog id " + paramInt);
+    Object localObject = new IllegalArgumentException("Invalid dialog id ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(85606);
+    throw ((Throwable)localObject);
   }
   
   public ProgressDialog getProgressDialog(int paramInt)
   {
+    AppMethodBeat.i(85607);
     if (paramInt == 11)
     {
       if (this.mDecompressingDialog == null)
       {
         this.mDecompressingDialog = buildProgressDialog();
-        setTitle(this.mDecompressingDialog, R.string.crosswalk_install_title);
-        setMessage(this.mDecompressingDialog, R.string.decompression_progress_message);
-        setNegativeButton(this.mDecompressingDialog, R.string.xwalk_cancel);
+        setTitle(this.mDecompressingDialog, 2131306143);
+        setMessage(this.mDecompressingDialog, 2131306144);
+        setNegativeButton(this.mDecompressingDialog, 2131306273);
         this.mDecompressingDialog.setProgressStyle(0);
       }
-      return this.mDecompressingDialog;
+      localObject = this.mDecompressingDialog;
+      AppMethodBeat.o(85607);
+      return localObject;
     }
     if (paramInt == 12)
     {
       if (this.mDownloadingDialog == null)
       {
         this.mDownloadingDialog = buildProgressDialog();
-        setTitle(this.mDownloadingDialog, R.string.crosswalk_install_title);
-        setMessage(this.mDownloadingDialog, R.string.download_progress_message);
-        setNegativeButton(this.mDownloadingDialog, R.string.xwalk_cancel);
+        setTitle(this.mDownloadingDialog, 2131306143);
+        setMessage(this.mDownloadingDialog, 2131306154);
+        setNegativeButton(this.mDownloadingDialog, 2131306273);
         this.mDownloadingDialog.setProgressStyle(1);
       }
-      return this.mDownloadingDialog;
+      localObject = this.mDownloadingDialog;
+      AppMethodBeat.o(85607);
+      return localObject;
     }
-    throw new IllegalArgumentException("Invalid dialog id " + paramInt);
+    Object localObject = new IllegalArgumentException("Invalid dialog id ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(85607);
+    throw ((Throwable)localObject);
   }
   
   boolean isShowingDialog()
   {
-    return (this.mActiveDialog != null) && (this.mActiveDialog.isShowing());
+    AppMethodBeat.i(85616);
+    if ((this.mActiveDialog != null) && (this.mActiveDialog.isShowing()))
+    {
+      AppMethodBeat.o(85616);
+      return true;
+    }
+    AppMethodBeat.o(85616);
+    return false;
   }
   
   public void setAlertDialog(int paramInt, AlertDialog paramAlertDialog)
   {
-    if (((paramAlertDialog instanceof ProgressDialog)) || ((paramAlertDialog instanceof DatePickerDialog)) || ((paramAlertDialog instanceof TimePickerDialog))) {
-      throw new IllegalArgumentException("The type of dialog must be AlertDialog");
+    AppMethodBeat.i(85604);
+    if (((paramAlertDialog instanceof ProgressDialog)) || ((paramAlertDialog instanceof DatePickerDialog)) || ((paramAlertDialog instanceof TimePickerDialog)))
+    {
+      paramAlertDialog = new IllegalArgumentException("The type of dialog must be AlertDialog");
+      AppMethodBeat.o(85604);
+      throw paramAlertDialog;
     }
     if (paramInt == 1)
     {
       this.mNotFoundDialog = paramAlertDialog;
+      AppMethodBeat.o(85604);
       return;
     }
     if (paramInt == 2)
     {
       this.mOlderVersionDialog = paramAlertDialog;
+      AppMethodBeat.o(85604);
       return;
     }
     if (paramInt == 3)
     {
       this.mNewerVersionDialog = paramAlertDialog;
+      AppMethodBeat.o(85604);
       return;
     }
     if (paramInt == 4)
     {
       this.mArchitectureMismatchDialog = paramAlertDialog;
+      AppMethodBeat.o(85604);
       return;
     }
     if (paramInt == 5)
     {
       this.mSignatureCheckErrorDialog = paramAlertDialog;
+      AppMethodBeat.o(85604);
       return;
     }
     if (paramInt == 6)
     {
       this.mDownloadErrorDialog = paramAlertDialog;
+      AppMethodBeat.o(85604);
       return;
     }
     if (paramInt == 7)
     {
       this.mSelectStoreDialog = paramAlertDialog;
+      AppMethodBeat.o(85604);
       return;
     }
     if (paramInt == 8)
     {
       this.mUnsupportedStoreDialog = paramAlertDialog;
+      AppMethodBeat.o(85604);
       return;
     }
-    throw new IllegalArgumentException("Invalid dialog id " + paramInt);
+    paramAlertDialog = new IllegalArgumentException("Invalid dialog id ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(85604);
+    throw paramAlertDialog;
   }
   
   void setProgress(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(85615);
     ProgressDialog localProgressDialog = (ProgressDialog)this.mActiveDialog;
     localProgressDialog.setIndeterminate(false);
     localProgressDialog.setMax(paramInt2);
     localProgressDialog.setProgress(paramInt1);
+    AppMethodBeat.o(85615);
   }
   
   public void setProgressDialog(int paramInt, ProgressDialog paramProgressDialog)
   {
+    AppMethodBeat.i(85605);
     if (paramInt == 11)
     {
       this.mDecompressingDialog = paramProgressDialog;
+      AppMethodBeat.o(85605);
       return;
     }
     if (paramInt == 12)
     {
       this.mDownloadingDialog = paramProgressDialog;
+      AppMethodBeat.o(85605);
       return;
     }
-    throw new IllegalArgumentException("Invalid dialog id " + paramInt);
+    paramProgressDialog = new IllegalArgumentException("Invalid dialog id ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(85605);
+    throw paramProgressDialog;
   }
   
   void showDecompressProgress(Runnable paramRunnable)
   {
+    AppMethodBeat.i(85612);
     ProgressDialog localProgressDialog = getProgressDialog(11);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new XWalkDialogManager.ButtonAction(-2, paramRunnable, false));
     showDialog(localProgressDialog, localArrayList);
+    AppMethodBeat.o(85612);
   }
   
   void showDownloadError(Runnable paramRunnable1, Runnable paramRunnable2)
   {
+    AppMethodBeat.i(85609);
     AlertDialog localAlertDialog = getAlertDialog(6);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new XWalkDialogManager.ButtonAction(-1, paramRunnable2, true));
     localArrayList.add(new XWalkDialogManager.ButtonAction(-2, paramRunnable1, false));
     showDialog(localAlertDialog, localArrayList);
+    AppMethodBeat.o(85609);
   }
   
   void showDownloadProgress(Runnable paramRunnable)
   {
+    AppMethodBeat.i(85613);
     ProgressDialog localProgressDialog = getProgressDialog(12);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new XWalkDialogManager.ButtonAction(-2, paramRunnable, false));
     showDialog(localProgressDialog, localArrayList);
+    AppMethodBeat.o(85613);
   }
   
   void showInitializationError(int paramInt, Runnable paramRunnable1, Runnable paramRunnable2)
   {
+    AppMethodBeat.i(85608);
     ArrayList localArrayList = new ArrayList();
     AlertDialog localAlertDialog;
     if (paramInt == 2)
@@ -341,6 +421,7 @@ public class XWalkDialogManager
     for (;;)
     {
       showDialog(paramRunnable1, localArrayList);
+      AppMethodBeat.o(85608);
       return;
       if (paramInt == 3)
       {
@@ -372,29 +453,35 @@ public class XWalkDialogManager
         paramRunnable1 = paramRunnable2;
       }
     }
-    throw new IllegalArgumentException("Invalid status " + paramInt);
+    paramRunnable1 = new IllegalArgumentException("Invalid status ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(85608);
+    throw paramRunnable1;
   }
   
   void showSelectStore(Runnable paramRunnable, String paramString)
   {
+    AppMethodBeat.i(85610);
     AlertDialog localAlertDialog = getAlertDialog(7);
-    setMessage(localAlertDialog, this.mContext.getString(R.string.select_store_message).replace("STORE_NAME", paramString));
+    setMessage(localAlertDialog, this.mContext.getString(2131306212).replace("STORE_NAME", paramString));
     paramString = new ArrayList();
     paramString.add(new XWalkDialogManager.ButtonAction(-1, paramRunnable, true));
     showDialog(localAlertDialog, paramString);
+    AppMethodBeat.o(85610);
   }
   
   void showUnsupportedStore(Runnable paramRunnable)
   {
+    AppMethodBeat.i(85611);
     AlertDialog localAlertDialog = getAlertDialog(8);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new XWalkDialogManager.ButtonAction(-2, paramRunnable, true));
     showDialog(localAlertDialog, localArrayList);
+    AppMethodBeat.o(85611);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.xwalk.core.XWalkDialogManager
  * JD-Core Version:    0.7.0.1
  */

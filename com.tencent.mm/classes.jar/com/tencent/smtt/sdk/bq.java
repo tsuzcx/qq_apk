@@ -1,28 +1,18 @@
 package com.tencent.smtt.sdk;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import com.tencent.smtt.sdk.a.d;
+import android.webkit.WebView.VisualStateCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class bq
-  implements android.webkit.DownloadListener
+  extends WebView.VisualStateCallback
 {
-  bq(WebView paramWebView, DownloadListener paramDownloadListener) {}
+  bq(WebView paramWebView, WebView.c paramc) {}
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void onComplete(long paramLong)
   {
-    if (this.a == null)
-    {
-      if (WebView.a(this.b) == null) {}
-      for (paramString2 = null;; paramString2 = WebView.a(this.b).getApplicationInfo())
-      {
-        if ((paramString2 == null) || (!"com.tencent.mm".equals(paramString2.packageName))) {
-          d.a(WebView.a(this.b), paramString1, null, null);
-        }
-        return;
-      }
-    }
-    this.a.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
+    AppMethodBeat.i(139425);
+    this.a.a(paramLong);
+    AppMethodBeat.o(139425);
   }
 }
 

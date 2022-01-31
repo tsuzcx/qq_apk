@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.d;
 
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.e.ac;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
 
 final class c$1
-  implements j.a
+  implements k.a
 {
   c$1(c paramc) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
-    q.fa(paramString);
+    AppMethodBeat.i(18022);
+    ac.ll(paramString);
+    AppMethodBeat.o(18022);
   }
 }
 

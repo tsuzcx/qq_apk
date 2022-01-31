@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.base.stub;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WXEntryActivity$EntryReceiver$2
   implements Runnable
@@ -11,9 +12,11 @@ final class WXEntryActivity$EntryReceiver$2
   
   public final void run()
   {
+    AppMethodBeat.i(18195);
     long l = System.currentTimeMillis();
-    WXEntryActivity.EntryReceiver.a(this.hSG, this.val$context, this.hSF);
-    y.i("MicroMsg.WXEntryActivity", "cost:%s", new Object[] { System.currentTimeMillis() - l });
+    WXEntryActivity.EntryReceiver.a(this.jMs, this.val$context, this.val$data);
+    ab.i("MicroMsg.WXEntryActivity", "cost:%s", new Object[] { System.currentTimeMillis() - l });
+    AppMethodBeat.o(18195);
   }
 }
 

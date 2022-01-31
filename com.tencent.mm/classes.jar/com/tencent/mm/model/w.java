@@ -1,88 +1,92 @@
 package com.tencent.mm.model;
 
-import android.os.HandlerThread;
-import com.tencent.mm.plugin.n.c;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.File;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.ai.e.b;
+import com.tencent.mm.ai.e.c;
+import com.tencent.mm.g.a.cj;
+import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 public final class w
+  implements e
 {
-  public w.a dVj = null;
-  boolean dVk = false;
-  String dVl = "";
-  BlockingQueue<w.c> dVm = new ArrayBlockingQueue(80);
-  public w.b dVn = null;
-  ah handler;
+  public final void a(e.c paramc) {}
   
-  public w(boolean paramBoolean, String paramString)
+  public final e.b b(e.a parama)
   {
-    com.tencent.mm.kernel.g.DQ();
-    this.handler = new w.1(this, com.tencent.mm.kernel.g.DS().mnU.getLooper());
-    this.dVj = null;
-    this.dVk = paramBoolean;
-    this.dVl = paramString;
-    y.d("MicroMsg.GetPicService", "getPicService, isFromWebView:%b isFromWebViewReffer:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
-  }
-  
-  public final String c(String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    Object localObject;
-    if (paramString1 == null) {
-      localObject = null;
+    AppMethodBeat.i(77798);
+    parama = parama.eyJ;
+    if ((parama == null) || (parama.woR == null))
+    {
+      ab.f("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension failed, invalid cmdAM");
+      AppMethodBeat.o(77798);
+      return null;
     }
+    ab.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension start");
+    parama = aa.a(parama.woR);
+    Object localObject = DocumentBuilderFactory.newInstance();
     for (;;)
     {
-      y.d("MicroMsg.GetPicService", "getPicfileByUrl type:" + paramInt1 + " url:" + paramString1);
+      int i;
       try
       {
-        boolean bool = com.tencent.mm.a.e.bK((String)localObject);
-        if (!bool) {
-          break label235;
+        parama = ((DocumentBuilderFactory)localObject).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(parama.getBytes("utf-8"))));
+        parama.normalize();
+        parama = parama.getDocumentElement().getElementsByTagName("deletepackage");
+        if ((parama != null) && (parama.getLength() == 1))
+        {
+          parama = parama.item(0).getChildNodes();
+          int j = parama.getLength();
+          i = 0;
+          if (i < j)
+          {
+            localObject = parama.item(i);
+            if ((localObject == null) || (((Node)localObject).getNodeName() == null) || (!((Node)localObject).getNodeName().equals("pack"))) {
+              break label298;
+            }
+            localObject = ((Node)localObject).getAttributes();
+            if (localObject == null) {
+              break label298;
+            }
+            localObject = ((NamedNodeMap)localObject).getNamedItem("type");
+            if (localObject == null) {
+              break label298;
+            }
+            int k = bo.getInt(((Node)localObject).getNodeValue(), 0);
+            localObject = new cj();
+            ((cj)localObject).cpP.cpQ = k;
+            a.ymk.l((b)localObject);
+            break label298;
+          }
         }
-        return localObject;
+        ab.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension end");
+        AppMethodBeat.o(77798);
+        return null;
       }
-      catch (Exception localException)
+      catch (Exception parama)
       {
-        y.e("MicroMsg.GetPicService", "exception:%s", new Object[] { bk.j(localException) });
+        ab.e("MicroMsg.DeletePackageMsgExtension", "exception:%s", new Object[] { bo.l(parama) });
+        AppMethodBeat.o(77798);
+        return null;
       }
-      if (!com.tencent.mm.kernel.g.DK())
-      {
-        y.i("MicroMsg.GetPicService", "genFileName, account not ready");
-        localObject = new File(com.tencent.mm.kernel.g.DP().dKs + "/imagecache");
-        if (!((File)localObject).exists()) {
-          ((File)localObject).mkdirs();
-        }
-        localObject = ((File)localObject).getAbsolutePath() + "/reader_" + paramInt1 + "_" + com.tencent.mm.a.g.o(paramString1.getBytes()) + ".jpg";
-      }
-      else
-      {
-        localObject = c.FG() + "/reader_" + paramInt1 + "_" + com.tencent.mm.a.g.o(paramString1.getBytes()) + ".jpg";
-      }
+      label298:
+      i += 1;
     }
-    try
-    {
-      label235:
-      this.dVm.add(new w.c(this, paramString1, (String)localObject, paramInt2, paramString2));
-      if ((this.dVj == null) || (!com.tencent.mm.sdk.f.e.ad(this.dVj)))
-      {
-        com.tencent.mm.sdk.f.e.remove(this.dVj);
-        this.dVj = new w.a(this);
-        com.tencent.mm.sdk.f.e.post(this.dVj, "GetPicService_getPic");
-      }
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        y.e("MicroMsg.GetPicService", "exception:%s", new Object[] { bk.j(paramString1) });
-      }
-    }
-    return null;
   }
 }
 

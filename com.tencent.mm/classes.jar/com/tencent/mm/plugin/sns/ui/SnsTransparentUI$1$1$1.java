@@ -5,14 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
-import com.tencent.mm.h.a.pb;
-import com.tencent.mm.h.a.pe;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.qg;
+import com.tencent.mm.g.a.qj;
+import com.tencent.mm.model.t;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
@@ -22,54 +22,59 @@ final class SnsTransparentUI$1$1$1
 {
   SnsTransparentUI$1$1$1(SnsTransparentUI.1.1 param1, WXMediaMessage paramWXMediaMessage, String paramString) {}
   
-  public final void Op(String paramString)
+  public final void abi(String paramString)
   {
+    AppMethodBeat.i(39631);
     try
     {
       paramString = BitmapFactory.decodeFile(paramString);
-      SnsTransparentUI.a(this.pij.pih.pif).put(this.pij.pih.pia, paramString);
+      SnsTransparentUI.a(this.saN.saL.saK).put(this.saN.saL.saG, paramString);
       if ((paramString != null) && (!paramString.isRecycled()))
       {
-        y.i("SnsTransparentUI", "thumb image is not null");
+        ab.i("SnsTransparentUI", "thumb image is not null");
         ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
         paramString.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-        this.pii.thumbData = localByteArrayOutputStream.toByteArray();
+        this.saM.thumbData = localByteArrayOutputStream.toByteArray();
       }
-      paramString = new pb();
-      paramString.bYE.bRd = this.pii;
-      paramString.bYE.toUser = this.pij.bxX;
-      paramString.bYE.bYF = 49;
-      paramString.bYE.bYG = "";
-      paramString.bYE.bYH = "";
-      paramString.bYE.bYN = this.pij.pih.pie;
-      a.udP.m(paramString);
-      if (!TextUtils.isEmpty(this.dAG))
+      paramString = new qg();
+      paramString.cGL.cyF = this.saM;
+      paramString.cGL.toUser = this.saN.bZZ;
+      paramString.cGL.cGM = 49;
+      paramString.cGL.cGN = "";
+      paramString.cGL.cGO = "";
+      paramString.cGL.cGU = this.saN.saL.saJ;
+      a.ymk.l(paramString);
+      if (!TextUtils.isEmpty(this.val$text))
       {
-        paramString = new pe();
-        paramString.bYQ.bYR = this.pij.bxX;
-        paramString.bYQ.content = this.dAG;
-        paramString.bYQ.type = s.hW(this.pij.bxX);
-        paramString.bYQ.flags = 0;
-        a.udP.m(paramString);
+        paramString = new qj();
+        paramString.cGX.cGY = this.saN.bZZ;
+        paramString.cGX.content = this.val$text;
+        paramString.cGX.type = t.oF(this.saN.bZZ);
+        paramString.cGX.flags = 0;
+        a.ymk.l(paramString);
       }
-      h.bC(this.pij.val$context, this.pij.val$context.getString(i.j.app_shared));
-      this.pij.pih.pif.finish();
+      h.bO(this.saN.val$context, this.saN.val$context.getString(2131297076));
+      this.saN.saL.saK.finish();
+      AppMethodBeat.o(39631);
       return;
     }
     catch (Exception paramString)
     {
-      y.e("SnsTransparentUI", "this has a error : " + paramString.toString());
-      this.pij.pih.pif.finish();
+      ab.e("SnsTransparentUI", "this has a error : " + paramString.toString());
+      this.saN.saL.saK.finish();
+      AppMethodBeat.o(39631);
     }
   }
   
-  public final void bCF()
+  public final void coe()
   {
-    h.bC(this.pij.val$context, this.pij.val$context.getString(i.j.share_err));
-    this.pij.pih.pif.finish();
+    AppMethodBeat.i(39630);
+    h.bO(this.saN.val$context, this.saN.val$context.getString(2131303663));
+    this.saN.saL.saK.finish();
+    AppMethodBeat.o(39630);
   }
   
-  public final void bFl() {}
+  public final void cqU() {}
 }
 
 

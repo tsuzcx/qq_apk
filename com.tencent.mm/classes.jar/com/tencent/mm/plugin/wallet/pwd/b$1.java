@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.wallet.pwd;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet_core.c.r;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet_core.c.u;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
@@ -15,29 +15,38 @@ final class b$1
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final CharSequence getTips(int paramInt)
+  {
+    AppMethodBeat.i(46143);
+    switch (paramInt)
+    {
+    default: 
+      localObject = super.getTips(paramInt);
+      AppMethodBeat.o(46143);
+      return localObject;
+    case 0: 
+      localObject = this.hwZ.getString(2131305008);
+      AppMethodBeat.o(46143);
+      return localObject;
+    }
+    Object localObject = this.hwZ.getString(2131305429);
+    AppMethodBeat.o(46143);
+    return localObject;
+  }
+  
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
+    AppMethodBeat.i(46142);
     String str = (String)paramVarArgs[0];
     paramVarArgs = (String)paramVarArgs[1];
-    this.wBd.a(new r(str, 3, paramVarArgs), true, 1);
+    this.AXB.a(new u(str, 3, paramVarArgs), true, 1);
+    AppMethodBeat.o(46142);
     return true;
-  }
-  
-  public final CharSequence vy(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return super.vy(paramInt);
-    case 0: 
-      return this.gfb.getString(a.i.wallet_check_pwd_modify_pwd_tip);
-    }
-    return this.gfb.getString(a.i.wallet_password_setting_ui_modify);
   }
 }
 

@@ -2,12 +2,14 @@ package com.tencent.mm.plugin.base.stub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil.ReportArgs;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.chatting.ChattingUI;
 
 final class UIEntryStub$3
@@ -15,26 +17,31 @@ final class UIEntryStub$3
 {
   UIEntryStub$3(UIEntryStub paramUIEntryStub, Bundle paramBundle, SendMessageToWX.Req paramReq) {}
   
-  public final void em(boolean paramBoolean)
+  public final void fH(boolean paramBoolean)
   {
-    boolean bool = this.hRY.isFinishing();
-    Object localObject = this.byv.getString("SendAppMessageWrapper_UserName", "");
-    y.i("MicroMsg.UIEntryStub", "onCheckEnd, isPass = " + paramBoolean + ", isFinishing = " + bool + ", username = " + (String)localObject);
-    if ((paramBoolean) && (!bool) && (!bk.bl((String)localObject)))
+    AppMethodBeat.i(18130);
+    boolean bool = this.jLD.isFinishing();
+    Object localObject = this.cax.getString("SendAppMessageWrapper_UserName", "");
+    ab.i("MicroMsg.UIEntryStub", "onCheckEnd, isPass = " + paramBoolean + ", isFinishing = " + bool + ", username = " + (String)localObject);
+    if ((paramBoolean) && (!bool) && (!bo.isNullOrNil((String)localObject)))
     {
-      Intent localIntent = new Intent(this.hRY, ChattingUI.class);
-      localIntent.putExtras(this.byv);
+      Intent localIntent = new Intent(this.jLD, ChattingUI.class);
+      localIntent.putExtras(this.cax);
       localIntent.putExtra("finish_direct", false);
       localIntent.putExtra("Chat_User", (String)localObject);
-      localIntent.putExtra("SendAppMessageWrapper_Scene", this.hRZ.scene);
-      this.hRY.startActivity(localIntent);
+      localIntent.putExtra("SendAppMessageWrapper_Scene", this.jLE.scene);
+      if (this.jLE.message.getType() == 45) {
+        localIntent.putExtra("Select_Send_Card", true);
+      }
+      this.jLD.startActivity(localIntent);
     }
     for (;;)
     {
-      new ah().postDelayed(new UIEntryStub.3.1(this), 1000L);
+      new ak().postDelayed(new UIEntryStub.3.1(this), 1000L);
+      AppMethodBeat.o(18130);
       return;
-      localObject = ReportUtil.c(this.hRY.getIntent().getExtras(), -3);
-      ReportUtil.a(this.hRY, (ReportUtil.ReportArgs)localObject, false);
+      localObject = ReportUtil.c(this.jLD.getIntent().getExtras(), -3);
+      ReportUtil.a(this.jLD, (ReportUtil.ReportArgs)localObject, false);
     }
   }
 }

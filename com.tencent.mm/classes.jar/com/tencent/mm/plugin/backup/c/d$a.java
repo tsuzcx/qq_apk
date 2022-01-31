@@ -1,53 +1,60 @@
 package com.tencent.mm.plugin.backup.c;
 
-import com.tencent.mm.cf.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
 import com.tencent.mm.plugin.backup.h.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class d$a
 {
   private long beginTime;
-  private long hHf = -1L;
-  boolean hHg = false;
+  private long jAB = -1L;
+  boolean jAC = false;
   
   private d$a(d paramd) {}
   
-  public final void atL()
+  public final void aTj()
   {
-    if (bk.co(this.beginTime) > 500L) {
+    AppMethodBeat.i(17201);
+    if (bo.hl(this.beginTime) > 500L) {
       end();
     }
     try
     {
       Thread.sleep(5L);
-      label24:
+      label30:
       begin();
-      this.beginTime = bk.UY();
+      this.beginTime = bo.aoy();
+      AppMethodBeat.o(17201);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      break label24;
+      break label30;
     }
   }
   
   public final void begin()
   {
-    if (com.tencent.mm.plugin.backup.h.d.avi().avj().dKu != null)
+    AppMethodBeat.i(17199);
+    if (com.tencent.mm.plugin.backup.h.d.aUK().aUL().eHS != null)
     {
-      this.hHf = com.tencent.mm.plugin.backup.h.d.avi().avj().dKu.eV(Thread.currentThread().getId());
-      this.hHg = true;
-      this.beginTime = bk.UY();
+      this.jAB = com.tencent.mm.plugin.backup.h.d.aUK().aUL().eHS.kr(Thread.currentThread().getId());
+      this.jAC = true;
+      this.beginTime = bo.aoy();
     }
+    AppMethodBeat.o(17199);
   }
   
   public final void end()
   {
-    if ((this.hHg) && (com.tencent.mm.plugin.backup.h.d.avi().avj().dKu != null))
+    AppMethodBeat.i(17200);
+    if ((this.jAC) && (com.tencent.mm.plugin.backup.h.d.aUK().aUL().eHS != null))
     {
-      com.tencent.mm.plugin.backup.h.d.avi().avj().dKu.hI(this.hHf);
-      this.hHg = false;
+      com.tencent.mm.plugin.backup.h.d.aUK().aUL().eHS.nY(this.jAB);
+      this.jAC = false;
     }
+    AppMethodBeat.o(17200);
   }
 }
 

@@ -6,9 +6,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMVerticalTextView;
 import com.tencent.mm.ui.base.o;
@@ -16,23 +15,23 @@ import java.util.ArrayList;
 
 public final class c
 {
-  public o fvf = null;
-  private ImageView fvg;
-  private View fvh;
-  private View.OnClickListener fvj = new c.1(this);
-  private MMActivity hxN;
-  public boolean isF = true;
-  private Bitmap iwA = null;
-  private View iwD;
-  private ImageView iwE;
-  private MMVerticalTextView iwF;
-  private ArrayList<Bitmap> iwH = new ArrayList();
-  private String mKk = "";
-  private String mMK = "";
-  public Bitmap mMn = null;
-  public Bitmap mMo = null;
-  ViewGroup wCd;
-  private boolean wCe = false;
+  ViewGroup AYw;
+  private boolean AYx;
+  public o gMK;
+  private ImageView gML;
+  private View gMM;
+  private View.OnClickListener gMO;
+  private MMActivity jpX;
+  public boolean ktM;
+  private Bitmap kxE;
+  private View kxH;
+  private ImageView kxI;
+  private MMVerticalTextView kxJ;
+  private ArrayList<Bitmap> kxL;
+  private String pkz;
+  public Bitmap pmD;
+  public Bitmap pmE;
+  private String pmZ;
   
   public c(MMActivity paramMMActivity)
   {
@@ -41,148 +40,182 @@ public final class c
   
   public c(MMActivity paramMMActivity, boolean paramBoolean)
   {
-    this.hxN = paramMMActivity;
-    this.wCe = paramBoolean;
+    AppMethodBeat.i(49231);
+    this.pmD = null;
+    this.pmE = null;
+    this.kxE = null;
+    this.pmZ = "";
+    this.pkz = "";
+    this.ktM = true;
+    this.kxL = new ArrayList();
+    this.gMK = null;
+    this.AYx = false;
+    this.gMO = new c.1(this);
+    this.jpX = paramMMActivity;
+    this.AYx = paramBoolean;
+    AppMethodBeat.o(49231);
   }
   
-  private void cNf()
+  private void ber()
   {
-    if (this.isF)
+    AppMethodBeat.i(49238);
+    if (this.kxL.size() >= 2)
     {
-      this.iwE.setOnClickListener(this.fvj);
-      Bitmap localBitmap = this.iwA;
-      if (this.mMo != null)
+      int i = this.kxL.size() - 1;
+      while (i > 1)
       {
-        this.iwA = e.v(this.mMo);
-        y.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp != null");
+        e.I((Bitmap)this.kxL.remove(i));
+        i -= 1;
+      }
+    }
+    AppMethodBeat.o(49238);
+  }
+  
+  private void dSR()
+  {
+    AppMethodBeat.i(49237);
+    if (this.ktM)
+    {
+      this.kxI.setOnClickListener(this.gMO);
+      Bitmap localBitmap = this.kxE;
+      if (this.pmE != null)
+      {
+        this.kxE = e.H(this.pmE);
+        ab.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp != null");
       }
       for (;;)
       {
-        this.iwE.setImageBitmap(this.iwA);
-        this.iwH.add(0, localBitmap);
-        if (this.iwH.size() < 2) {
-          break;
-        }
-        int i = this.iwH.size() - 1;
-        while (i > 1)
-        {
-          e.w((Bitmap)this.iwH.remove(i));
-          i -= 1;
-        }
-        this.iwA = null;
-        y.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp == null");
+        this.kxI.setImageBitmap(this.kxE);
+        this.kxL.add(0, localBitmap);
+        ber();
+        this.gMM.setVisibility(8);
+        this.kxH.setVisibility(0);
+        this.kxJ.setText(e.awh(this.pkz));
+        this.gMK.update();
+        AppMethodBeat.o(49237);
+        return;
+        this.kxE = null;
+        ab.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp == null");
       }
-      this.fvh.setVisibility(8);
-      this.iwD.setVisibility(0);
-      this.iwF.setText(e.afo(this.mKk));
-      this.fvf.update();
-      return;
     }
-    this.fvg.setOnClickListener(this.fvj);
-    this.fvg.setImageBitmap(this.mMn);
-    if (this.mMn != null) {
-      y.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp != null");
+    this.gML.setOnClickListener(this.gMO);
+    this.gML.setImageBitmap(this.pmD);
+    if (this.pmD != null) {
+      ab.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp != null");
     }
     for (;;)
     {
-      this.fvh.setVisibility(0);
-      this.iwD.setVisibility(8);
+      this.gMM.setVisibility(0);
+      this.kxH.setVisibility(8);
       break;
-      y.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp == null");
+      ab.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp == null");
     }
   }
   
-  public final void cNd()
+  public final void H(View paramView, boolean paramBoolean)
   {
-    if ((this.fvf != null) && (this.fvf.isShowing())) {
-      cNf();
-    }
-  }
-  
-  public final void cNe()
-  {
-    if (this.wCd != null) {
-      this.wCd.setVisibility(0);
-    }
-  }
-  
-  public final void dismiss()
-  {
-    if ((this.fvf != null) && (this.fvf.isShowing())) {
-      this.fvf.dismiss();
-    }
-  }
-  
-  public final void gG(String paramString1, String paramString2)
-  {
-    this.mMK = paramString1;
-    this.mKk = paramString2;
-  }
-  
-  public final void init()
-  {
-    View localView;
-    if (this.fvf == null)
+    AppMethodBeat.i(49234);
+    this.ktM = paramBoolean;
+    if ((this.gMK != null) && (!this.gMK.isShowing()))
     {
-      if (!this.wCe) {
-        break label207;
+      this.gMK.showAtLocation(paramView.getRootView(), 17, 0, 0);
+      this.gMK.setFocusable(true);
+      this.gMK.setTouchable(true);
+      this.gMK.setBackgroundDrawable(new ColorDrawable(16777215));
+      this.gMK.setOutsideTouchable(true);
+      if (this.ktM) {
+        dSQ();
       }
-      localView = View.inflate(this.hxN, a.g.wallet_offline_new_popupwindow_layout, null);
-      MMVerticalTextView localMMVerticalTextView = (MMVerticalTextView)localView.findViewById(a.f.mask_i_know_btn);
-      this.wCd = ((ViewGroup)localView.findViewById(a.f.popupwd_mask_layout));
+      dSR();
+    }
+    AppMethodBeat.o(49234);
+  }
+  
+  public final void dSO()
+  {
+    AppMethodBeat.i(49233);
+    if (this.gMK != null)
+    {
+      AppMethodBeat.o(49233);
+      return;
+    }
+    View localView;
+    if (this.AYx)
+    {
+      localView = View.inflate(this.jpX, 2130971214, null);
+      MMVerticalTextView localMMVerticalTextView = (MMVerticalTextView)localView.findViewById(2131829248);
+      this.AYw = ((ViewGroup)localView.findViewById(2131829247));
       localMMVerticalTextView.setOnClickListener(new c.2(this));
-      localView.findViewById(a.f.popupwd_content_layout).setOnClickListener(new c.3(this));
+      localView.findViewById(2131829245).setOnClickListener(new c.3(this));
     }
     for (;;)
     {
-      this.fvh = localView.findViewById(a.f.popupwd_qrcode_layout);
-      this.fvg = ((ImageView)localView.findViewById(a.f.popupwd_qrcode_iv));
-      this.iwD = localView.findViewById(a.f.popupwd_barcode_layout);
-      this.iwE = ((ImageView)localView.findViewById(a.f.popupwd_barcode_iv));
-      this.iwF = ((MMVerticalTextView)localView.findViewById(a.f.vertical_barcode_text));
-      this.fvf = new o(localView, -1, -1, true);
-      this.fvf.setClippingEnabled(false);
-      this.fvf.update();
-      this.fvf.setBackgroundDrawable(new ColorDrawable(16777215));
-      this.fvf.setOnDismissListener(new c.5(this));
+      this.gMM = localView.findViewById(2131822317);
+      this.gML = ((ImageView)localView.findViewById(2131822318));
+      this.kxH = localView.findViewById(2131822321);
+      this.kxI = ((ImageView)localView.findViewById(2131822324));
+      this.kxJ = ((MMVerticalTextView)localView.findViewById(2131822323));
+      this.gMK = new o(localView, -1, -1, true);
+      this.gMK.setClippingEnabled(false);
+      this.gMK.update();
+      this.gMK.setBackgroundDrawable(new ColorDrawable(16777215));
+      this.gMK.setOnDismissListener(new c.5(this));
+      AppMethodBeat.o(49233);
       return;
-      label207:
-      localView = View.inflate(this.hxN, a.g.wallet_offline_popup_window, null);
+      localView = View.inflate(this.jpX, 2130971217, null);
       localView.setOnClickListener(new c.4(this));
     }
   }
   
-  public final void release()
+  public final void dSP()
   {
-    if ((this.fvf != null) && (this.fvf.isShowing())) {
-      this.fvf.dismiss();
+    AppMethodBeat.i(49235);
+    if ((this.gMK != null) && (this.gMK.isShowing())) {
+      dSR();
     }
-    e.w(this.iwA);
-    e.ak(this.iwH);
-    this.iwH.clear();
-    this.hxN = null;
+    AppMethodBeat.o(49235);
   }
   
-  public final void y(View paramView, boolean paramBoolean)
+  public final void dSQ()
   {
-    this.isF = paramBoolean;
-    if ((this.fvf != null) && (!this.fvf.isShowing()))
-    {
-      this.fvf.showAtLocation(paramView.getRootView(), 17, 0, 0);
-      this.fvf.setFocusable(true);
-      this.fvf.setTouchable(true);
-      this.fvf.setBackgroundDrawable(new ColorDrawable(16777215));
-      this.fvf.setOutsideTouchable(true);
-      if (this.isF) {
-        cNe();
-      }
-      cNf();
+    AppMethodBeat.i(49236);
+    if (this.AYw != null) {
+      this.AYw.setVisibility(0);
     }
+    AppMethodBeat.o(49236);
+  }
+  
+  public final void dismiss()
+  {
+    AppMethodBeat.i(49239);
+    if ((this.gMK != null) && (this.gMK.isShowing())) {
+      this.gMK.dismiss();
+    }
+    AppMethodBeat.o(49239);
+  }
+  
+  public final void iJ(String paramString1, String paramString2)
+  {
+    this.pmZ = paramString1;
+    this.pkz = paramString2;
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(49232);
+    if ((this.gMK != null) && (this.gMK.isShowing())) {
+      this.gMK.dismiss();
+    }
+    e.I(this.kxE);
+    e.at(this.kxL);
+    this.kxL.clear();
+    this.jpX = null;
+    AppMethodBeat.o(49232);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.c
  * JD-Core Version:    0.7.0.1
  */

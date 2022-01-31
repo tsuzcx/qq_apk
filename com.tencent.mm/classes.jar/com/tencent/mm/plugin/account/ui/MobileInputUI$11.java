@@ -1,7 +1,11 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.a.a;
+import com.tencent.mm.pluginsdk.n;
 
 final class MobileInputUI$11
   implements View.OnClickListener
@@ -10,7 +14,13 @@ final class MobileInputUI$11
   
   public final void onClick(View paramView)
   {
-    MobileInputUI.g(this.foH);
+    AppMethodBeat.i(125171);
+    paramView = new Intent();
+    paramView.putExtra("country_name", this.gGb.fHT);
+    paramView.putExtra("couttry_code", this.gGb.countryCode);
+    paramView.putExtra("iso_code", this.gGb.gDF);
+    a.gmO.b(paramView, this.gGb);
+    AppMethodBeat.o(125171);
   }
 }
 

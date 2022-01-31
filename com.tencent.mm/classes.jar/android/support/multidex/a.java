@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
-import dalvik.system.DexFile;
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -14,17 +12,15 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.zip.ZipFile;
 
 public final class a
 {
-  private static final String pd = "code_cache" + File.separator + "secondary-dexes";
-  private static final Set<String> pe = new HashSet();
-  private static final boolean pg = D(System.getProperty("java.vm.version"));
+  private static final String qb = "code_cache" + File.separator + "secondary-dexes";
+  private static final Set<String> qc = new HashSet();
+  private static final boolean qd = D(System.getProperty("java.vm.version"));
   
   private static boolean D(String paramString)
   {
@@ -70,9 +66,9 @@ public final class a
     }
   }
   
-  public static void H(Context paramContext)
+  public static void G(Context paramContext)
   {
-    if (pg) {}
+    if (qd) {}
     ApplicationInfo localApplicationInfo;
     Object localObject;
     for (;;)
@@ -83,17 +79,17 @@ public final class a
       }
       try
       {
-        localApplicationInfo = I(paramContext);
+        localApplicationInfo = H(paramContext);
         if (localApplicationInfo != null)
         {
-          synchronized (pe)
+          synchronized (qc)
           {
             localObject = localApplicationInfo.sourceDir;
-            if (pe.contains(localObject)) {
+            if (qc.contains(localObject)) {
               return;
             }
           }
-          pe.add(localObject);
+          qc.add(localObject);
         }
       }
       catch (Exception paramContext)
@@ -117,9 +113,9 @@ public final class a
     }
     try
     {
-      J(paramContext);
+      I(paramContext);
       label190:
-      File localFile = new File(localApplicationInfo.dataDir, pd);
+      File localFile = new File(localApplicationInfo.dataDir, qb);
       List localList = b.a(paramContext, localApplicationInfo, localFile, false);
       if (g(localList)) {
         a((ClassLoader)localObject, localFile, localList);
@@ -141,7 +137,7 @@ public final class a
     }
   }
   
-  private static ApplicationInfo I(Context paramContext)
+  private static ApplicationInfo H(Context paramContext)
   {
     try
     {
@@ -156,7 +152,7 @@ public final class a
     return null;
   }
   
-  private static void J(Context paramContext)
+  private static void I(Context paramContext)
   {
     paramContext = new File(paramContext.getFilesDir(), "secondary-dexes");
     File[] arrayOfFile;
@@ -198,49 +194,21 @@ public final class a
   
   private static void a(ClassLoader paramClassLoader, File paramFile, List<File> paramList)
   {
-    Object localObject;
-    ArrayList localArrayList;
     if (!paramList.isEmpty())
     {
-      if (Build.VERSION.SDK_INT < 19) {
-        break label222;
-      }
-      localObject = b(paramClassLoader, "pathList").get(paramClassLoader);
-      localArrayList = new ArrayList();
-      paramList = new ArrayList(paramList);
-      a(localObject, "dexElements", (Object[])b(localObject, "makeDexElements", new Class[] { ArrayList.class, File.class, ArrayList.class }).invoke(localObject, new Object[] { paramList, paramFile, localArrayList }));
-      if (localArrayList.size() > 0)
-      {
-        paramFile = localArrayList.iterator();
-        while (paramFile.hasNext()) {
-          paramFile.next();
-        }
-        paramList = b(paramClassLoader, "dexElementsSuppressedExceptions");
-        localObject = (IOException[])paramList.get(paramClassLoader);
-        if (localObject != null) {
-          break label187;
-        }
-        paramFile = (IOException[])localArrayList.toArray(new IOException[localArrayList.size()]);
+      if (Build.VERSION.SDK_INT >= 19) {
+        a.b.a(paramClassLoader, paramList, paramFile);
       }
     }
-    for (;;)
-    {
-      paramList.set(paramClassLoader, paramFile);
+    else {
       return;
-      label187:
-      paramFile = new IOException[localArrayList.size() + localObject.length];
-      localArrayList.toArray(paramFile);
-      System.arraycopy(localObject, 0, paramFile, localArrayList.size(), localObject.length);
     }
-    label222:
     if (Build.VERSION.SDK_INT >= 14)
     {
-      paramClassLoader = b(paramClassLoader, "pathList").get(paramClassLoader);
-      paramList = new ArrayList(paramList);
-      a(paramClassLoader, "dexElements", (Object[])b(paramClassLoader, "makeDexElements", new Class[] { ArrayList.class, File.class }).invoke(paramClassLoader, new Object[] { paramList, paramFile }));
+      a.a(paramClassLoader, paramList, paramFile);
       return;
     }
-    a.a(paramClassLoader, paramList);
+    a.c.a(paramClassLoader, paramList);
   }
   
   private static Field b(Object paramObject, String paramString)
@@ -294,34 +262,13 @@ public final class a
     return true;
   }
   
-  private static final class a
+  static final class a
   {
-    static void a(ClassLoader paramClassLoader, List<File> paramList)
+    static void a(ClassLoader paramClassLoader, List<File> paramList, File paramFile)
     {
-      int i = paramList.size();
-      Field localField = a.c(paramClassLoader, "path");
-      StringBuilder localStringBuilder = new StringBuilder((String)localField.get(paramClassLoader));
-      String[] arrayOfString = new String[i];
-      File[] arrayOfFile = new File[i];
-      ZipFile[] arrayOfZipFile = new ZipFile[i];
-      DexFile[] arrayOfDexFile = new DexFile[i];
-      paramList = paramList.listIterator();
-      while (paramList.hasNext())
-      {
-        File localFile = (File)paramList.next();
-        String str = localFile.getAbsolutePath();
-        localStringBuilder.append(':').append(str);
-        i = paramList.previousIndex();
-        arrayOfString[i] = str;
-        arrayOfFile[i] = localFile;
-        arrayOfZipFile[i] = new ZipFile(localFile);
-        arrayOfDexFile[i] = DexFile.loadDex(str, str + ".dex", 0);
-      }
-      localField.set(paramClassLoader, localStringBuilder.toString());
-      a.a(paramClassLoader, "mPaths", arrayOfString);
-      a.a(paramClassLoader, "mFiles", arrayOfFile);
-      a.a(paramClassLoader, "mZips", arrayOfZipFile);
-      a.a(paramClassLoader, "mDexs", arrayOfDexFile);
+      paramClassLoader = a.c(paramClassLoader, "pathList").get(paramClassLoader);
+      paramList = new ArrayList(paramList);
+      a.a(paramClassLoader, "dexElements", (Object[])a.c(paramClassLoader, "makeDexElements", new Class[] { ArrayList.class, File.class }).invoke(paramClassLoader, new Object[] { paramList, paramFile }));
     }
   }
 }

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.aa.ui;
 import android.app.Dialog;
 import android.widget.ListView;
 import android.widget.Toast;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vending.g.d.a;
 
 final class AAQueryListUI$5
@@ -12,24 +12,27 @@ final class AAQueryListUI$5
 {
   AAQueryListUI$5(AAQueryListUI paramAAQueryListUI) {}
   
-  public final void aE(Object paramObject)
+  public final void aX(Object paramObject)
   {
-    y.i("MicroMsg.AAQueryListUI", "getNexPage failed: %s", new Object[] { paramObject });
-    if (AAQueryListUI.g(this.eXG) != null)
+    AppMethodBeat.i(40734);
+    ab.i("MicroMsg.AAQueryListUI", "getNexPage failed: %s", new Object[] { paramObject });
+    if (AAQueryListUI.g(this.gpD) != null)
     {
-      AAQueryListUI.g(this.eXG).dismiss();
-      AAQueryListUI.h(this.eXG);
+      AAQueryListUI.g(this.gpD).dismiss();
+      AAQueryListUI.h(this.gpD);
     }
-    AAQueryListUI.i(this.eXG);
-    if (AAQueryListUI.a(this.eXG).getFooterViewsCount() > 0) {
-      AAQueryListUI.a(this.eXG).removeFooterView(AAQueryListUI.d(this.eXG));
+    AAQueryListUI.i(this.gpD);
+    if (AAQueryListUI.a(this.gpD).getFooterViewsCount() > 0) {
+      AAQueryListUI.a(this.gpD).removeFooterView(AAQueryListUI.d(this.gpD));
     }
     if ((paramObject instanceof String))
     {
-      Toast.makeText(this.eXG, paramObject.toString(), 1).show();
+      Toast.makeText(this.gpD, paramObject.toString(), 1).show();
+      AppMethodBeat.o(40734);
       return;
     }
-    Toast.makeText(this.eXG, a.i.get_aa_list_record_failed, 1).show();
+    Toast.makeText(this.gpD, 2131300525, 1).show();
+    AppMethodBeat.o(40734);
   }
 }
 

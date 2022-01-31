@@ -11,14 +11,14 @@ final class d$1
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    d.b(f, this.Jj);
-    d.a(this.Jk, f, this.Jj, false);
-    this.Jk.invalidateSelf();
+    d.a(f, this.IS);
+    this.IT.a(f, this.IS, false);
+    this.IT.invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.widget.d.1
  * JD-Core Version:    0.7.0.1
  */

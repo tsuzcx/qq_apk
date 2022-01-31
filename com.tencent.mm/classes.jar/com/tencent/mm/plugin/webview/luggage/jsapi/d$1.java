@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity.a;
 
 final class d$1
   implements MMActivity.a
 {
-  d$1(d paramd, aw.a parama) {}
+  d$1(d paramd, bh.a parama) {}
   
   public final void c(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt1 == (this.rdw.hashCode() & 0xFFFF))
+    AppMethodBeat.i(6282);
+    if (paramInt1 == (this.uTr.hashCode() & 0xFFFF))
     {
-      if (paramInt2 == -1) {
-        this.iRN.e(null, null);
+      if (paramInt2 == -1)
+      {
+        this.lax.c(null, null);
+        AppMethodBeat.o(6282);
+        return;
       }
+      this.lax.c("fail", null);
     }
-    else {
-      return;
-    }
-    this.iRN.e("fail", null);
+    AppMethodBeat.o(6282);
   }
 }
 

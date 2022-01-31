@@ -2,21 +2,24 @@ package com.tencent.mm.plugin.appbrand.ui.recents;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.protocal.c.cmt;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.dap;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class j$3
   implements View.OnClickListener
 {
-  j$3(j paramj, cmt paramcmt) {}
+  j$3(j paramj, dap paramdap) {}
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.AppBrandListRecentsListWAGameHeader", "Invoke WxApp click listener, invoke wxapp");
+    AppMethodBeat.i(133472);
+    ab.i("MicroMsg.AppBrandListRecentsListWAGameHeader", "Invoke WxApp click listener, invoke wxapp");
     paramView = new AppBrandStatObject();
-    AppBrandLaunchProxyUI.a(this.hjk.fyk, this.hjm.username, this.hjm.path, 0, this.hjm.sEs, paramView, null, null);
+    AppBrandLaunchProxyUI.a(this.iUR.gQx, this.iUT.username, this.iUT.path, 0, this.iUT.wAy, paramView, null, null);
+    AppMethodBeat.o(133472);
   }
 }
 

@@ -1,43 +1,45 @@
 package com.tencent.mm.plugin.qqmail.b;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.sdk.platformtools.y;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 final class ab$7
-  implements com.tencent.mm.ah.g
+  implements com.tencent.mm.ai.g
 {
   ab$7(ab paramab) {}
   
   public final void a(int paramInt1, int paramInt2, m paramm)
   {
-    y.i("MicroMsg.ShareModeMailAppService", "currentSendFile: %s, offset: %d, totalLen: %d, filesInfo.size: %d", new Object[] { this.nfi.nfb, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.nfi.nfa.size()) });
+    AppMethodBeat.i(68043);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ShareModeMailAppService", "currentSendFile: %s, offset: %d, totalLen: %d, filesInfo.size: %d", new Object[] { this.pKx.pKq, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.pKx.pKp.size()) });
     if (paramInt1 >= paramInt2)
     {
-      this.nfi.nfd.put(this.nfi.nfc, ((u)paramm).bty().ndn);
-      paramm = ((u)paramm).bty();
-      if (this.nfi.nff != null) {
-        this.nfi.nff.e(this.nfi.nfg - this.nfi.nfa.size(), this.nfi.nfg, this.nfi.nfc, paramm.ndn);
+      this.pKx.pKs.put(this.pKx.pKr, ((u)paramm).cdJ().pIF);
+      paramm = ((u)paramm).cdJ();
+      if (this.pKx.pKu != null) {
+        this.pKx.pKu.e(this.pKx.pKv - this.pKx.pKp.size(), this.pKx.pKv, this.pKx.pKr, paramm.pIF);
       }
-      if (!this.nfi.nfa.isEmpty()) {
-        break label193;
+      if (this.pKx.pKp.isEmpty())
+      {
+        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ShareModeMailAppService", "finished send all files");
+        if (this.pKx.pKt != null) {
+          this.pKx.pKt.cdN();
+        }
+        AppMethodBeat.o(68043);
+        return;
       }
-      y.i("MicroMsg.ShareModeMailAppService", "finished send all files");
-      if (this.nfi.nfe != null) {
-        this.nfi.nfe.btC();
-      }
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ShareModeMailAppService", "finished send one file, continue to send another one");
+      paramm = (ab.g)this.pKx.pKp.remove(0);
+      this.pKx.pKq = paramm.fileId;
+      this.pKx.pKr = paramm.fileName;
+      paramm = new u(this.pKx.pKr, this.pKx.pKq, this);
+      com.tencent.mm.kernel.g.RK().eHt.a(paramm, 0);
     }
-    return;
-    label193:
-    y.i("MicroMsg.ShareModeMailAppService", "finished send one file, continue to send another one");
-    paramm = (ab.g)this.nfi.nfa.remove(0);
-    this.nfi.nfb = paramm.fileId;
-    this.nfi.nfc = paramm.fileName;
-    paramm = new u(this.nfi.nfc, this.nfi.nfb, this);
-    com.tencent.mm.kernel.g.DO().dJT.a(paramm, 0);
+    AppMethodBeat.o(68043);
   }
 }
 

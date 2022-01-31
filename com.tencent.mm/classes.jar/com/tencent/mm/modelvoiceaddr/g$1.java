@@ -1,55 +1,61 @@
 package com.tencent.mm.modelvoiceaddr;
 
-import com.tencent.mm.f.b.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.c.a;
 import com.tencent.mm.modelvoiceaddr.a.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class g$1
   implements c.a
 {
-  short[] eMa;
+  short[] gbH;
   
   g$1(g paramg) {}
   
-  public final void aU(int paramInt1, int paramInt2)
+  public final void bS(int paramInt1, int paramInt2)
   {
-    y.e("MicroMsg.SceneVoiceInputAddr", "onRecError state = %s detailState = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.eMb.bA(10, -1);
+    AppMethodBeat.i(116705);
+    ab.e("MicroMsg.SceneVoiceInputAddr", "onRecError state = %s detailState = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.gbI.cL(10, -1);
+    AppMethodBeat.o(116705);
   }
   
-  public final void r(byte[] paramArrayOfByte, int paramInt)
+  public final void s(byte[] paramArrayOfByte, int paramInt)
   {
     int j = 0;
-    y.d("MicroMsg.SceneVoiceInputAddr", "OnRecPcmDataReady len: %s time: %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()) });
+    AppMethodBeat.i(116704);
+    ab.d("MicroMsg.SceneVoiceInputAddr", "OnRecPcmDataReady len: %s time: %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()) });
     int i;
-    if (this.eMa != null)
+    if (this.gbH != null)
     {
       i = j;
-      if (this.eMa.length >= paramInt / 2) {}
+      if (this.gbH.length >= paramInt / 2) {}
     }
     else
     {
-      this.eMa = new short[paramInt / 2];
+      this.gbH = new short[paramInt / 2];
       i = j;
     }
     while (i < paramInt / 2)
     {
-      this.eMa[i] = ((short)(paramArrayOfByte[(i * 2)] & 0xFF | paramArrayOfByte[(i * 2 + 1)] << 8));
+      this.gbH[i] = ((short)(paramArrayOfByte[(i * 2)] & 0xFF | paramArrayOfByte[(i * 2 + 1)] << 8));
       i += 1;
     }
-    g.a(this.eMb, this.eMa, paramInt / 2);
-    if (g.d(this.eMb) != null)
+    g.a(this.gbI, this.gbH, paramInt / 2);
+    if (g.d(this.gbI) != null)
     {
-      g.d(this.eMb).d(this.eMa, paramInt / 2);
+      g.d(this.gbI).f(this.gbH, paramInt / 2);
+      AppMethodBeat.o(116704);
       return;
     }
-    this.eMb.bA(9, -1);
-    y.e("MicroMsg.SceneVoiceInputAddr", "mVoiceSilentDetectAPI is null");
+    this.gbI.cL(9, -1);
+    ab.e("MicroMsg.SceneVoiceInputAddr", "mVoiceSilentDetectAPI is null");
+    AppMethodBeat.o(116704);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.g.1
  * JD-Core Version:    0.7.0.1
  */

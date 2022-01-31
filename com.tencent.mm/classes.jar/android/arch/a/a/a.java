@@ -5,40 +5,57 @@ import java.util.concurrent.Executor;
 public class a
   extends c
 {
-  private static volatile a bC;
-  private static final Executor bF = new a.1();
-  private static final Executor bG = new a.2();
-  public c bD = this.bE;
-  private c bE = new b();
-  
-  public static a M()
+  private static volatile a bG;
+  private static final Executor bJ = new Executor()
   {
-    if (bC != null) {
-      return bC;
+    public final void execute(Runnable paramAnonymousRunnable)
+    {
+      a.aa().d(paramAnonymousRunnable);
+    }
+  };
+  private static final Executor bK = new Executor()
+  {
+    public final void execute(Runnable paramAnonymousRunnable)
+    {
+      a.aa().c(paramAnonymousRunnable);
+    }
+  };
+  public c bH = this.bI;
+  private c bI = new b();
+  
+  public static a aa()
+  {
+    if (bG != null) {
+      return bG;
     }
     try
     {
-      if (bC == null) {
-        bC = new a();
+      if (bG == null) {
+        bG = new a();
       }
-      return bC;
+      return bG;
     }
     finally {}
   }
   
+  public static Executor ad()
+  {
+    return bK;
+  }
+  
   public final void c(Runnable paramRunnable)
   {
-    this.bD.c(paramRunnable);
+    this.bH.c(paramRunnable);
   }
   
   public final void d(Runnable paramRunnable)
   {
-    this.bD.d(paramRunnable);
+    this.bH.d(paramRunnable);
   }
   
   public final boolean isMainThread()
   {
-    return this.bD.isMainThread();
+    return this.bH.isMainThread();
   }
 }
 

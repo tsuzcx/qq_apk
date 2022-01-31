@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<ScrollView android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameInstalledView android:orientation="vertical" android:id="@id/bue" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:text="@string/c0h" style="@style/lk" />
-        <com.tencent.mm.plugin.game.widget.BouncyHScrollView android:id="@id/buf" android:background="@color/a23" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/li" android:paddingRight="@dimen/li" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="false" android:overScrollMode="never">
-            <LinearLayout android:orientation="horizontal" android:id="@id/bug" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </com.tencent.mm.plugin.game.widget.BouncyHScrollView>
-    </com.tencent.mm.plugin.game.ui.GameInstalledView>
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:gravity="center" android:layout_width="fill_parent" android:layout_height="120.0dip" android:layout_marginTop="40.0dip" android:src="@raw/fix_tools_uplog" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/h6" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="27.0dip" android:layout_marginRight="25.0dip" android:text="@string/by2" />
+        <LinearLayout android:id="@id/bx8" android:background="@drawable/pe" android:paddingLeft="@dimen/ft" android:paddingRight="@dimen/ft" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:baselineAligned="false" android:minHeight="@dimen/n9">
+            <LinearLayout android:gravity="center|left" android:paddingLeft="@dimen/lr" android:layout_width="0.0dip" android:layout_height="fill_parent" android:minHeight="@dimen/n9" android:layout_weight="1.0">
+                <TextView android:id="@id/bx9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bxw" android:singleLine="true" android:layout_weight="1.0" style="@style/lg" />
+                <TextView android:id="@id/bx_" android:paddingTop="@dimen/n_" android:paddingRight="@dimen/lr" android:paddingBottom="@dimen/n_" android:singleLine="true" style="@style/lj" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center|right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <Button android:id="@id/bxa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ft" android:layout_marginTop="40.0dip" android:layout_marginRight="@dimen/ft" android:text="@string/by0" style="@style/nq" />
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:gravity="center_vertical" android:paddingLeft="@dimen/dv" android:paddingRight="@dimen/n0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/bxz" />
+    </LinearLayout>
+</ScrollView>

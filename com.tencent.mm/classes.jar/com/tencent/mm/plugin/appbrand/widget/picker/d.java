@@ -12,180 +12,209 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.luggage.c.c.a.a;
-import com.tencent.luggage.c.c.a.c;
-import com.tencent.luggage.c.c.a.d;
-import com.tencent.luggage.c.c.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m.b;
+import com.tencent.mm.plugin.appbrand.jsapi.n.b;
 
 public class d
   extends RelativeLayout
 {
-  private static final int hAm = Color.parseColor("#F9F9F9");
-  private final int hAf;
-  private final int hAg;
-  private b hAh;
-  private FrameLayout hAi;
-  private d.a hAj;
-  private boolean hAk;
-  d.b hAl;
+  private static final int jsB;
+  d.b jsA;
+  private final int jsu;
+  private final int jsv;
+  private b jsw;
+  private FrameLayout jsx;
+  private d.a jsy;
+  private boolean jsz;
+  
+  static
+  {
+    AppMethodBeat.i(126740);
+    jsB = Color.parseColor("#F9F9F9");
+    AppMethodBeat.o(126740);
+  }
   
   public d(Context paramContext)
   {
     super(paramContext);
-    this.hAf = a.fromDPToPix(paramContext, 48);
-    this.hAg = a.fromDPToPix(paramContext, 240);
+    AppMethodBeat.i(126730);
+    this.jsu = a.fromDPToPix(paramContext, 48);
+    this.jsv = a.fromDPToPix(paramContext, 240);
     setClickable(true);
     setLongClickable(true);
-    paramContext = new RelativeLayout.LayoutParams(-1, this.hAg);
+    paramContext = new RelativeLayout.LayoutParams(-1, this.jsv);
     paramContext.addRule(12);
     Object localObject = new FrameLayout(getContext());
-    ((FrameLayout)localObject).setId(a.c.app_brand_picker_panel_internal_picker);
+    ((FrameLayout)localObject).setId(2131820572);
     ((FrameLayout)localObject).setOnClickListener(new d.4(this));
-    ((FrameLayout)localObject).setBackgroundColor(hAm);
-    this.hAi = ((FrameLayout)localObject);
+    ((FrameLayout)localObject).setBackgroundColor(jsB);
+    this.jsx = ((FrameLayout)localObject);
     addView((View)localObject, paramContext);
-    paramContext = new RelativeLayout.LayoutParams(-1, this.hAf);
-    paramContext.addRule(2, a.c.app_brand_picker_panel_internal_picker);
+    paramContext = new RelativeLayout.LayoutParams(-1, this.jsu);
+    paramContext.addRule(2, 2131820572);
     localObject = new RelativeLayout(getContext());
-    View localView = cm(a.d.luggage_confirm_dialog_ok, a.a.green_text_color);
+    View localView = dA(2131301359, 2131690139);
     localView.setOnClickListener(new d.1(this));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
     localLayoutParams.addRule(11);
     ((RelativeLayout)localObject).addView(localView, localLayoutParams);
-    localView = cm(a.d.luggage_confirm_dialog_cancel, a.a.cancel_btn_color);
+    localView = dA(2131301358, 2131689819);
     localView.setOnClickListener(new d.2(this));
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
     localLayoutParams.addRule(9);
     ((RelativeLayout)localObject).addView(localView, localLayoutParams);
     ((RelativeLayout)localObject).setOnClickListener(new d.3(this));
-    ((RelativeLayout)localObject).setBackgroundColor(hAm);
+    ((RelativeLayout)localObject).setBackgroundColor(jsB);
     addView((View)localObject, paramContext);
+    AppMethodBeat.o(126730);
   }
   
-  private void asQ()
+  private void aRS()
   {
-    this.hAj = null;
-    this.hAl = null;
+    this.jsy = null;
+    this.jsA = null;
   }
   
-  private View cm(int paramInt1, int paramInt2)
+  private void c(boolean paramBoolean, Object paramObject)
   {
-    TextView localTextView = new TextView(new ContextThemeWrapper(getContext(), a.e.AppBrandPickerPanelTextButton));
+    AppMethodBeat.i(126729);
+    if ((!this.jsz) && (this.jsy != null))
+    {
+      this.jsz = true;
+      this.jsy.b(paramBoolean, paramObject);
+      this.jsz = false;
+    }
+    AppMethodBeat.o(126729);
+  }
+  
+  private View dA(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(126737);
+    TextView localTextView = new TextView(new ContextThemeWrapper(getContext(), 2131493044));
     localTextView.setTextColor(getResources().getColor(paramInt2));
     localTextView.setText(paramInt1);
     localTextView.setGravity(17);
+    AppMethodBeat.o(126737);
     return localTextView;
   }
   
-  private void e(boolean paramBoolean, Object paramObject)
-  {
-    if ((!this.hAk) && (this.hAj != null))
-    {
-      this.hAk = true;
-      this.hAj.d(paramBoolean, paramObject);
-      this.hAk = false;
-    }
-  }
-  
   @SuppressLint({"WrongCall"})
-  protected final void cl(int paramInt1, int paramInt2)
+  protected final void dz(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(126735);
     super.onMeasure(paramInt1, paramInt2);
+    AppMethodBeat.o(126735);
   }
   
   protected final int getPanelContentHeight()
   {
-    return this.hAf + this.hAg;
+    return this.jsu + this.jsv;
   }
   
   public b getPicker()
   {
-    return this.hAh;
+    return this.jsw;
   }
   
   public void hide()
   {
+    AppMethodBeat.i(126733);
     super.setVisibility(8);
-    e(false, null);
-    if (this.hAh != null) {
-      this.hAh.ajP();
+    c(false, null);
+    if (this.jsw != null) {
+      this.jsw.aEs();
     }
+    AppMethodBeat.o(126733);
   }
   
   protected void onDetachedFromWindow()
   {
+    AppMethodBeat.i(126738);
     super.onDetachedFromWindow();
-    asQ();
+    aRS();
     removeAllViews();
+    AppMethodBeat.o(126738);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(126736);
     if (!isShown())
     {
       super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(0, -2147483648));
+      AppMethodBeat.o(126736);
       return;
     }
-    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.hAf + this.hAg, 1073741824));
+    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.jsu + this.jsv, 1073741824));
+    AppMethodBeat.o(126736);
   }
   
   public void setOnResultListener(d.a parama)
   {
-    this.hAj = parama;
+    this.jsy = parama;
   }
   
   public void setOnValueUpdateListener(d.b paramb)
   {
-    this.hAl = paramb;
+    this.jsA = paramb;
   }
   
   protected void setPickerImpl(b paramb)
   {
-    if (this.hAh != null) {
-      this.hAh.ajQ();
+    AppMethodBeat.i(126731);
+    if (this.jsw != null) {
+      this.jsw.aEt();
     }
-    this.hAh = paramb;
-    if (this.hAh != null) {
-      this.hAh.b(this);
+    this.jsw = paramb;
+    if (this.jsw != null) {
+      this.jsw.b(this);
     }
-    if ((this.hAi == null) || (this.hAh == null) || (this.hAh.getView() == null)) {
+    if ((this.jsx == null) || (this.jsw == null) || (this.jsw.getView() == null))
+    {
+      AppMethodBeat.o(126731);
       return;
     }
-    this.hAi.removeAllViews();
-    asQ();
+    this.jsx.removeAllViews();
+    aRS();
     paramb = new FrameLayout.LayoutParams(-1, -2);
     paramb.gravity = 17;
-    this.hAi.addView(this.hAh.getView(), paramb);
+    this.jsx.addView(this.jsw.getView(), paramb);
+    AppMethodBeat.o(126731);
   }
   
   public void setVisibility(int paramInt)
   {
+    AppMethodBeat.i(126734);
     if (paramInt != 0)
     {
       hide();
+      AppMethodBeat.o(126734);
       return;
     }
     super.setVisibility(paramInt);
+    AppMethodBeat.o(126734);
   }
   
   public void show()
   {
-    if (this.hAh == null) {
-      setVisibility(8);
-    }
-    do
+    AppMethodBeat.i(126732);
+    if (this.jsw == null)
     {
+      setVisibility(8);
+      AppMethodBeat.o(126732);
       return;
-      setVisibility(0);
-    } while (this.hAh == null);
-    this.hAh.a(this);
+    }
+    setVisibility(0);
+    if (this.jsw != null) {
+      this.jsw.a(this);
+    }
+    AppMethodBeat.o(126732);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.d
  * JD-Core Version:    0.7.0.1
  */

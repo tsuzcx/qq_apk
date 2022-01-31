@@ -1,6 +1,7 @@
 package com.tencent.mm.insane_statistic;
 
-import com.tencent.mm.ae.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.k;
 import com.tencent.mm.modelstat.b;
 import com.tencent.mm.modelstat.r.a;
 import com.tencent.mm.storage.bi;
@@ -8,14 +9,17 @@ import com.tencent.mm.storage.bi;
 public final class a
   implements r.a
 {
-  public final void f(bi parambi)
+  public final void j(bi parambi)
   {
-    if (parambi.aVK())
+    AppMethodBeat.i(16174);
+    if (parambi.bCn())
     {
-      b.eBD.a(parambi, h.g(parambi));
+      b.fRu.a(parambi, k.k(parambi));
+      AppMethodBeat.o(16174);
       return;
     }
-    b.eBD.f(parambi);
+    b.fRu.j(parambi);
+    AppMethodBeat.o(16174);
   }
 }
 

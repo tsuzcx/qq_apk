@@ -1,34 +1,47 @@
 package a.c;
 
-import a.b.b;
-import a.b.c;
-import a.d.b.g;
-import java.io.Closeable;
+import a.f.a.m;
+import a.f.b.j;
+import a.l;
 
-public final class a
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlin/coroutines/CoroutineContext$Element;", "key", "Lkotlin/coroutines/CoroutineContext$Key;", "(Lkotlin/coroutines/CoroutineContext$Key;)V", "getKey", "()Lkotlin/coroutines/CoroutineContext$Key;", "kotlin-stdlib"})
+public abstract class a
+  implements e.b
 {
-  public static final void a(Closeable paramCloseable, Throwable paramThrowable)
+  private final e.c<?> key;
+  
+  public a(e.c<?> paramc)
   {
-    if (paramCloseable != null)
-    {
-      if (paramThrowable == null) {
-        paramCloseable.close();
-      }
-    }
-    else {
-      return;
-    }
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (Throwable paramCloseable)
-    {
-      g.k(paramThrowable, "$receiver");
-      g.k(paramCloseable, "exception");
-      c.xom.a(paramThrowable, paramCloseable);
-    }
+    this.key = paramc;
+  }
+  
+  public <R> R fold(R paramR, m<? super R, ? super e.b, ? extends R> paramm)
+  {
+    j.q(paramm, "operation");
+    return e.b.a.a(this, paramR, paramm);
+  }
+  
+  public <E extends e.b> E get(e.c<E> paramc)
+  {
+    j.q(paramc, "key");
+    return e.b.a.a(this, paramc);
+  }
+  
+  public e.c<?> getKey()
+  {
+    return this.key;
+  }
+  
+  public e minusKey(e.c<?> paramc)
+  {
+    j.q(paramc, "key");
+    return e.b.a.b(this, paramc);
+  }
+  
+  public e plus(e parame)
+  {
+    j.q(parame, "context");
+    return e.b.a.a(this, parame);
   }
 }
 

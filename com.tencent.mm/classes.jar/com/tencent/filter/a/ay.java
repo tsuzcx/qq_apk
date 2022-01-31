@@ -2,40 +2,47 @@ package com.tencent.filter.a;
 
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.GLSLRender;
+import com.tencent.filter.k;
 import com.tencent.filter.m.f;
 import com.tencent.filter.m.g;
-import com.tencent.filter.m.i;
 import com.tencent.filter.m.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ay
   extends BaseFilter
 {
   public ay()
   {
-    super(GLSLRender.bcE);
+    super(GLSLRender.btg);
   }
   
   public final void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    BaseFilter localBaseFilter2 = new BaseFilter(GLSLRender.bdJ);
-    localBaseFilter2.addParam(new m.g("shadowsShift", new float[] { -0.05381961F, 0.02061177F, 0.0F }));
-    localBaseFilter2.addParam(new m.g("midtonesShift", new float[] { -0.07059216F, 0.02703529F, 0.01960784F }));
-    localBaseFilter2.addParam(new m.g("highlightsShift", new float[] { 0.0627451F, -0.09411765F, 0.0F }));
-    localBaseFilter2.addParam(new m.i("preserveLuminosity", 1));
-    setNextFilter(localBaseFilter2, null);
-    BaseFilter localBaseFilter1 = new BaseFilter(GLSLRender.bdM);
-    localBaseFilter1.addParam(new m.f("inputH", 1.0F));
-    localBaseFilter1.addParam(new m.f("inputS", 1.0F));
-    localBaseFilter1.addParam(new m.f("inputV", 1.146F));
-    localBaseFilter2.setNextFilter(localBaseFilter1, null);
-    localBaseFilter2 = new BaseFilter(GLSLRender.bdG);
-    localBaseFilter2.addParam(new m.o("inputImageTexture2", "sh/molv_curve1.png", 33986));
-    localBaseFilter1.setNextFilter(localBaseFilter2, null);
-    localBaseFilter1 = new BaseFilter(GLSLRender.beH);
-    localBaseFilter1.addParam(new m.o("inputImageTexture2", "sh/molv_curve2.png", 33986));
-    localBaseFilter1.addParam(new m.o("inputImageTexture3", "sh/molv_curve2mask.png", 33987));
-    localBaseFilter2.setNextFilter(localBaseFilter1, null);
+    AppMethodBeat.i(86506);
+    Object localObject2 = new BaseFilter(GLSLRender.bus);
+    ((BaseFilter)localObject2).addParam(new m.g("color2", new float[] { 0.9333333F, 0.6705883F, 0.8941177F, 1.0F }));
+    ((BaseFilter)localObject2).addParam(new m.f("transparency", 0.3F));
+    setNextFilter((BaseFilter)localObject2, null);
+    Object localObject1 = new BaseFilter(GLSLRender.bvF);
+    ((BaseFilter)localObject1).addParam(new m.g("color2", new float[] { 0.8941177F, 0.6352941F, 0.2235294F, 1.0F }));
+    ((BaseFilter)localObject1).addParam(new m.f("transparency", 0.1F));
+    ((BaseFilter)localObject2).setNextFilter((BaseFilter)localObject1, null);
+    localObject2 = new k();
+    ((k)localObject2).a(0.0F, 5.0F, 1.0F, 310.0F, 340.0F, 10.0F, 40.0F);
+    ((BaseFilter)localObject1).setNextFilter((BaseFilter)localObject2, null);
+    localObject1 = new k();
+    ((k)localObject1).a(0.0F, -22.0F, 15.0F, 355.0F, 18.0F, 58.0F, 79.0F);
+    ((BaseFilter)localObject2).setNextFilter((BaseFilter)localObject1, null);
+    localObject2 = new BaseFilter(GLSLRender.bum);
+    ((BaseFilter)localObject2).addParam(new m.g("shadowsShift", new float[] { -0.02745098F, -0.05490196F, 0.0F }));
+    ((BaseFilter)localObject2).addParam(new m.g("midtonesShift", new float[] { 0.0F, 0.0F, 0.0F }));
+    ((BaseFilter)localObject2).addParam(new m.g("highlightsShift", new float[] { 0.0F, -0.04705882F, -0.04705882F }));
+    ((BaseFilter)localObject1).setNextFilter((BaseFilter)localObject2, null);
+    localObject1 = new BaseFilter(GLSLRender.buj);
+    ((BaseFilter)localObject1).addParam(new m.o("inputImageTexture2", "sh/maplered_curve.png", 33986));
+    ((BaseFilter)localObject2).setNextFilter((BaseFilter)localObject1, null);
     super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.o(86506);
   }
 }
 

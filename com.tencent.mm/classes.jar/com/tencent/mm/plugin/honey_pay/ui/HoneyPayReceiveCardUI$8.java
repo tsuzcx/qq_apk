@@ -1,35 +1,38 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.honey_pay.a.e;
 import com.tencent.mm.plugin.honey_pay.model.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.ago;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.protocal.protobuf.alj;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class HoneyPayReceiveCardUI$8
-  implements n.a
+  implements p.a
 {
   HoneyPayReceiveCardUI$8(HoneyPayReceiveCardUI paramHoneyPayReceiveCardUI, e parame) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (this.lmk.ljJ.sMv != null)
+    AppMethodBeat.i(41940);
+    if (this.nJG.nHf.wKi != null)
     {
-      y.i(this.lmj.TAG, "do real name");
+      ab.i(this.nJF.TAG, "do real name");
       paramString = new Bundle();
       paramString.putString("realname_verify_process_jump_activity", ".ui.HoneyPayReceiveCardUI");
-      c.a(this.lmj, paramString, this.lmk.ljJ.sMv, false);
+      c.a(this.nJF, paramString, this.nJG.nHf.wKi, false);
     }
     for (;;)
     {
-      h.nFQ.h(875L, 4L, 1L);
+      h.qsU.j(875L, 4L, 1L);
+      AppMethodBeat.o(41940);
       return;
-      HoneyPayReceiveCardUI.b(this.lmj);
-      c.Fo(HoneyPayReceiveCardUI.c(this.lmj));
-      this.lmj.finish();
+      HoneyPayReceiveCardUI.b(this.nJF);
+      c.QL(HoneyPayReceiveCardUI.c(this.nJF));
+      this.nJF.finish();
     }
   }
 }

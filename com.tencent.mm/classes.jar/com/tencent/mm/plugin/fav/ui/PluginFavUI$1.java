@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fav.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fav.ui.b.b;
 import com.tencent.mm.plugin.fts.a.a.a;
@@ -12,10 +13,12 @@ final class PluginFavUI$1
   
   public final boolean execute()
   {
+    AppMethodBeat.i(74288);
     Object localObject = new com.tencent.mm.plugin.fav.ui.b.d();
-    ((n)g.t(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)g.G(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new b();
-    ((n)g.t(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)g.G(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    AppMethodBeat.o(74288);
     return true;
   }
   

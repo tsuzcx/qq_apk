@@ -1,234 +1,311 @@
 package com.tencent.mm.plugin.base.stub;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import com.tencent.mm.R.i;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.u;
-import com.tencent.mm.modelsimple.aa;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.v;
+import com.tencent.mm.opensdk.channel.MMessageActV2;
+import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
+import com.tencent.mm.pluginsdk.e;
+import com.tencent.mm.pluginsdk.e.a;
 import com.tencent.mm.pluginsdk.model.app.f;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity.a;
-import com.tencent.mm.protocal.c.cw;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.clr;
+import com.tencent.mm.protocal.protobuf.df;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.h;
 import java.util.LinkedList;
 
 public class WXBizEntryActivity
   extends AutoLoginActivity
 {
-  private int hSc;
+  private int jLH;
   
-  private static void cn(String paramString1, String paramString2)
+  private static void a(Bundle paramBundle, BaseResp paramBaseResp, f paramf)
   {
-    paramString1 = g.by(paramString1, true);
-    if (paramString1 == null) {
+    AppMethodBeat.i(18150);
+    paramBaseResp.toBundle(paramBundle);
+    paramBaseResp = new MMessageActV2.Args();
+    paramBaseResp.targetPkgName = paramf.field_packageName;
+    paramBaseResp.bundle = paramBundle;
+    com.tencent.mm.pluginsdk.model.app.p.aC(paramBundle);
+    com.tencent.mm.pluginsdk.model.app.p.aD(paramBundle);
+    MMessageActV2.send(ah.getContext(), paramBaseResp);
+    AppMethodBeat.o(18150);
+  }
+  
+  private static void dg(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(18151);
+    paramString1 = g.ca(paramString1, true);
+    if (paramString1 == null)
+    {
+      AppMethodBeat.o(18151);
       return;
     }
     Object localObject = new WXAppExtendObject();
     ((WXAppExtendObject)localObject).extInfo = paramString2;
     localObject = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject);
-    ((WXMediaMessage)localObject).sdkVer = 620824064;
+    ((WXMediaMessage)localObject).sdkVer = 620954624;
     ((WXMediaMessage)localObject).messageExt = paramString2;
-    g.a(ae.getContext(), paramString1.field_appId, (WXMediaMessage)localObject, 2, null, null);
+    g.a(ah.getContext(), paramString1.field_appId, (WXMediaMessage)localObject, 2, null, null);
+    AppMethodBeat.o(18151);
   }
   
-  protected final void a(AutoLoginActivity.a parama, Intent paramIntent)
+  public final boolean O(Intent paramIntent)
+  {
+    return true;
+  }
+  
+  public final void a(AutoLoginActivity.a parama, final Intent paramIntent)
   {
     String str1 = null;
     String str2 = null;
+    LinkedList localLinkedList = null;
     paramIntent = null;
-    y.i("MicroMsg.WXBizEntryActivity", "postLogin, loginResult = " + parama);
+    AppMethodBeat.i(18149);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WXBizEntryActivity", "postLogin, loginResult = ".concat(String.valueOf(parama)));
     if (getIntent() != null) {
-      this.hSc = getIntent().getIntExtra("key_command_id", 0);
+      this.jLH = getIntent().getIntExtra("key_command_id", 0);
     }
-    switch (WXBizEntryActivity.7.hSj[parama.ordinal()])
+    switch (8.jLR[parama.ordinal()])
     {
     default: 
-      y.e("MicroMsg.WXBizEntryActivity", "postLogin, unknown login result = " + parama);
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WXBizEntryActivity", "postLogin, unknown login result = ".concat(String.valueOf(parama)));
     }
     for (;;)
     {
       finish();
+      AppMethodBeat.o(18149);
+      return;
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WXBizEntryActivity", "req type = %d", new Object[] { Integer.valueOf(this.jLH) });
+      switch (this.jLH)
+      {
+      case 10: 
+      case 18: 
+      case 20: 
+      case 21: 
+      case 22: 
+      case 23: 
+      default: 
+        finish();
+      }
       for (;;)
       {
+        AppMethodBeat.o(18149);
         return;
-        y.i("MicroMsg.WXBizEntryActivity", "req type = %d", new Object[] { Integer.valueOf(this.hSc) });
-        switch (this.hSc)
+        d.c(this, "card", ".ui.CardAddEntranceUI", getIntent());
+        finish();
+        AppMethodBeat.o(18149);
+        return;
+        d.c(this, "card", ".ui.CardListSelectedUI", getIntent());
+        finish();
+        AppMethodBeat.o(18149);
+        return;
+        parama = getIntent();
+        parama.setClassName(this, "com.tencent.mm.ui.CheckCanSubscribeBizUI");
+        startActivity(parama);
+        finish();
+        AppMethodBeat.o(18149);
+        return;
+        parama = getIntent();
+        parama.putExtra("device_type", 1);
+        d.c(this, "exdevice", ".ui.ExdeviceRankInfoUI", parama);
+        finish();
+        AppMethodBeat.o(18149);
+        return;
+        parama = getIntent();
+        parama.putExtra("key_static_from_scene", 100001);
+        d.c(this, "luckymoney", ".ui.LuckyMoneyBusiReceiveUI", parama);
+        finish();
+        AppMethodBeat.o(18149);
+        return;
+        new a(this, getIntent().getStringExtra("key_app_id"), getIntent().getStringExtra("open_id"), new WXBizEntryActivity.1(this)).aVE();
+        AppMethodBeat.o(18149);
+        return;
+        int i;
+        try
         {
-        case 10: 
-        case 18: 
-        case 20: 
-        case 21: 
-        case 22: 
-        case 23: 
-        default: 
-          finish();
-          return;
-        case 9: 
-          com.tencent.mm.br.d.c(this, "card", ".ui.CardAddEntranceUI", getIntent());
-          finish();
-          return;
-        case 16: 
-          com.tencent.mm.br.d.c(this, "card", ".ui.CardListSelectedUI", getIntent());
-          finish();
-          return;
-        case 7: 
-        case 8: 
-          parama = getIntent();
-          parama.setClassName(this, "com.tencent.mm.ui.CheckCanSubscribeBizUI");
-          startActivity(parama);
-          finish();
-          return;
-        case 11: 
-          parama = getIntent();
-          parama.putExtra("device_type", 1);
-          com.tencent.mm.br.d.c(this, "exdevice", ".ui.ExdeviceRankInfoUI", parama);
-          finish();
-          return;
-        case 13: 
-          parama = getIntent();
-          parama.putExtra("key_static_from_scene", 100001);
-          com.tencent.mm.br.d.c(this, "luckymoney", ".ui.LuckyMoneyBusiReceiveUI", parama);
-          finish();
-          return;
-        case 14: 
-        case 15: 
-          new a(this, getIntent().getStringExtra("key_app_id"), getIntent().getStringExtra("open_id"), new WXBizEntryActivity.1(this)).awa();
-          return;
-        case 17: 
-          int i;
-          try
+          paramIntent = getIntent().getData();
+          parama = new WXBizEntryActivity.2(this);
+          str1 = getIntent().getStringExtra("key_package_name");
+          str2 = getIntent().getStringExtra("key_package_signature");
+          i = getIntent().getIntExtra("translate_link_scene", 1);
+          com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WXBizLogic", "dealWithHandleScanResult: callPackage=%s, packageSignature=%s", new Object[] { str1, str2 });
+          if ((bo.isNullOrNil(str1)) || (bo.isNullOrNil(str2)))
           {
-            paramIntent = getIntent().getData();
-            parama = new WXBizEntryActivity.2(this);
-            str1 = getIntent().getStringExtra("key_package_name");
-            str2 = getIntent().getStringExtra("key_package_signature");
-            i = getIntent().getIntExtra("translate_link_scene", 1);
-            y.d("MicroMsg.WXBizLogic", "dealWithHandleScanResult: callPackage=%s, packageSignature=%s", new Object[] { str1, str2 });
-            if ((bk.bl(str1)) || (bk.bl(str2)))
-            {
-              y.e("MicroMsg.WXBizLogic", "dealWithHandleScanResult:packageName or signature null");
-              return;
-            }
-          }
-          catch (Exception parama)
-          {
-            y.e("MicroMsg.WXBizEntryActivity", "get url from intent failed : %s", new Object[] { parama.getMessage() });
+            com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WXBizLogic", "dealWithHandleScanResult:packageName or signature null");
+            AppMethodBeat.o(18149);
             return;
           }
-          LinkedList localLinkedList = new LinkedList();
-          cw localcw = new cw();
-          y.i("MicroMsg.WXBizLogic", "dealWithHandleScanResult package name = %s", new Object[] { str1 });
-          localcw.iQe = str1;
-          localcw.signature = str2;
-          localLinkedList.add(localcw);
-          paramIntent = new aa(paramIntent.toString(), i, localLinkedList);
-          parama = new e.1(this, parama);
-          au.Dk().a(1200, parama);
-          au.Dk().a(paramIntent, 0);
+        }
+        catch (Exception parama)
+        {
+          com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WXBizEntryActivity", "get url from intent failed : %s", new Object[] { parama.getMessage() });
+          AppMethodBeat.o(18149);
           return;
-        case 12: 
-          try
-          {
-            parama = getIntent().getData();
-            if ((parama != null) && (com.tencent.mm.pluginsdk.d.VA(parama.toString())))
-            {
-              u.Hc().ii("key_data_center_session_id");
-              com.tencent.mm.pluginsdk.d.a(this, parama.toString(), getIntent().getIntExtra("translate_link_scene", 1), new WXBizEntryActivity.3(this), getIntent().getStringExtra("key_package_name"), getIntent().getStringExtra("key_package_signature"));
-              return;
-            }
+        }
+        localLinkedList = new LinkedList();
+        df localdf = new df();
+        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WXBizLogic", "dealWithHandleScanResult package name = %s", new Object[] { str1 });
+        localdf.kWn = str1;
+        localdf.signature = str2;
+        localLinkedList.add(localdf);
+        paramIntent = new com.tencent.mm.modelsimple.ab(paramIntent.toString(), i, localLinkedList);
+        parama = new e.1(this, parama);
+        aw.Rc().a(1200, parama);
+        aw.Rc().a(paramIntent, 0);
+        AppMethodBeat.o(18149);
+        return;
+        try
+        {
+          parama = getIntent().getData();
+          if ((parama == null) || (!e.akW(parama.toString()))) {
+            continue;
           }
-          catch (Exception parama)
+          v.aae().oP("key_data_center_session_id");
+          e.a(this, parama.toString(), getIntent().getIntExtra("translate_link_scene", 1), new WXBizEntryActivity.3(this), getIntent().getStringExtra("key_package_name"), getIntent().getStringExtra("key_package_signature"));
+          AppMethodBeat.o(18149);
+          return;
+        }
+        catch (Exception parama)
+        {
+          for (;;)
           {
-            for (;;)
-            {
-              y.e("MicroMsg.WXBizEntryActivity", "post login get url from intent failed : %s", new Object[] { parama.getMessage() });
-              parama = paramIntent;
-            }
+            com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WXBizEntryActivity", "post login get url from intent failed : %s", new Object[] { parama.getMessage() });
+            parama = paramIntent;
           }
-        case 25: 
-          try
-          {
-            parama = getIntent().getData();
-            if ((parama != null) && (com.tencent.mm.pluginsdk.d.VB(parama.toString())))
-            {
-              u.Hc().ii("key_data_center_session_id");
-              com.tencent.mm.pluginsdk.d.a(this, parama.toString(), getIntent().getIntExtra("translate_link_scene", 1), new WXBizEntryActivity.4(this), getIntent().getStringExtra("key_package_name"), getIntent().getStringExtra("key_package_signature"));
-              return;
-            }
+        }
+        try
+        {
+          parama = getIntent().getData();
+          if ((parama == null) || (!e.akX(parama.toString()))) {
+            continue;
           }
-          catch (Exception parama)
+          v.aae().oP("key_data_center_session_id");
+          e.a(this, parama.toString(), getIntent().getIntExtra("translate_link_scene", 1), new WXBizEntryActivity.4(this), getIntent().getStringExtra("key_package_name"), getIntent().getStringExtra("key_package_signature"));
+          AppMethodBeat.o(18149);
+          return;
+        }
+        catch (Exception parama)
+        {
+          for (;;)
           {
-            for (;;)
-            {
-              y.e("MicroMsg.WXBizEntryActivity", "post login get url from intent failed : %s", new Object[] { parama.getMessage() });
-              parama = str1;
-            }
+            com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WXBizEntryActivity", "post login get url from intent failed : %s", new Object[] { parama.getMessage() });
+            parama = str1;
           }
-        case 19: 
-          try
-          {
-            parama = getIntent().getData();
-            if (parama != null)
-            {
-              com.tencent.mm.pluginsdk.d.a(this, parama.toString(), getIntent().getIntExtra("translate_link_scene", 1), new WXBizEntryActivity.5(this), getIntent().getStringExtra("key_package_name"), getIntent().getStringExtra("key_package_signature"));
-              return;
-            }
+        }
+        try
+        {
+          parama = getIntent().getData();
+          if (parama == null) {
+            continue;
           }
-          catch (Exception parama)
+          paramIntent = parama.getQueryParameter("invokeData");
+          e.a(this, parama.toString(), getIntent().getIntExtra("translate_link_scene", 1), new e.a()
           {
-            for (;;)
+            public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm, boolean paramAnonymousBoolean)
             {
-              y.e("MicroMsg.WXBizEntryActivity", "get data from intent for launch wxminiprogram failed : %s", new Object[] { parama.getMessage() });
-              parama = str2;
+              AppMethodBeat.i(18142);
+              com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WXBizEntryActivity", "launchWXMiniprogram, DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
+              if ((paramAnonymousm != null) && (paramAnonymousInt1 != 0) && (paramAnonymousInt2 != 0) && ((paramAnonymousm instanceof com.tencent.mm.modelsimple.ab)))
+              {
+                paramAnonymousString = ((com.tencent.mm.modelsimple.ab)paramAnonymousm).ajY();
+                if ((paramAnonymousString != null) && (!WXBizEntryActivity.this.isFinishing()))
+                {
+                  h.a(WXBizEntryActivity.this, bo.nullAsNil(paramAnonymousString.xVH), WXBizEntryActivity.this.getString(2131297087), WXBizEntryActivity.this.getString(2131297018), false, new WXBizEntryActivity.5.1(this, paramAnonymousString));
+                  AppMethodBeat.o(18142);
+                  return;
+                }
+                WXBizEntryActivity.this.finish();
+                AppMethodBeat.o(18142);
+                return;
+              }
+              WXBizEntryActivity.this.finish();
+              AppMethodBeat.o(18142);
             }
+          }, getIntent().getStringExtra("key_package_name"), getIntent().getStringExtra("key_package_signature"));
+          AppMethodBeat.o(18149);
+          return;
+        }
+        catch (Exception parama)
+        {
+          for (;;)
+          {
+            com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WXBizEntryActivity", "get data from intent for launch wxminiprogram failed : %s", new Object[] { parama.getMessage() });
+            parama = str2;
           }
-        case 24: 
-          try
-          {
-            parama = getIntent().getData();
-            if (parama != null)
-            {
-              com.tencent.mm.pluginsdk.d.a(this, parama.toString(), getIntent().getIntExtra("translate_link_scene", 1), new WXBizEntryActivity.6(this), getIntent().getStringExtra("key_package_name"), getIntent().getStringExtra("key_package_signature"));
-              return;
-            }
+        }
+        try
+        {
+          parama = getIntent().getData();
+          if (parama == null) {
+            continue;
           }
-          catch (Exception parama)
+          e.a(this, parama.toString(), getIntent().getIntExtra("translate_link_scene", 1), new WXBizEntryActivity.6(this), getIntent().getStringExtra("key_package_name"), getIntent().getStringExtra("key_package_signature"));
+          AppMethodBeat.o(18149);
+          return;
+        }
+        catch (Exception parama)
+        {
+          for (;;)
           {
-            for (;;)
-            {
-              y.e("MicroMsg.WXBizEntryActivity", "get data from intent for offline pay failed : %s", new Object[] { parama.getMessage() });
-              parama = null;
-            }
+            com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WXBizEntryActivity", "get data from intent for launch fake native miniprogram failed : %s", new Object[] { parama.getMessage() });
+            parama = localLinkedList;
+          }
+        }
+        try
+        {
+          parama = getIntent().getData();
+          if (parama != null)
+          {
+            e.a(this, parama.toString(), getIntent().getIntExtra("translate_link_scene", 1), new WXBizEntryActivity.7(this), getIntent().getStringExtra("key_package_name"), getIntent().getStringExtra("key_package_signature"));
+            AppMethodBeat.o(18149);
+            return;
+          }
+        }
+        catch (Exception parama)
+        {
+          for (;;)
+          {
+            com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WXBizEntryActivity", "get data from intent for offline pay failed : %s", new Object[] { parama.getMessage() });
+            parama = null;
           }
         }
       }
-      y.e("MicroMsg.WXBizEntryActivity", "postLogin fail, loginResult = " + parama);
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WXBizEntryActivity", "postLogin fail, loginResult = ".concat(String.valueOf(parama)));
     }
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.biz_share_check;
+    return 2130968865;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(18148);
     super.onCreate(paramBundle);
     setTitleVisibility(0);
+    AppMethodBeat.o(18148);
   }
   
-  protected final boolean w(Intent paramIntent)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return true;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

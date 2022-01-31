@@ -5,11 +5,11 @@ import android.widget.TextView;
 
 final class b$a
 {
-  ImageView iIS;
-  TextView lLL;
-  TextView lLM;
-  TextView lLQ;
-  TextView lbC;
+  ImageView kPy;
+  TextView nzx;
+  TextView ojf;
+  TextView ojg;
+  TextView ojk;
   
   b$a(b paramb) {}
 }

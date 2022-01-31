@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.view.ViewGroup;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.qqmail.b.ac;
 import com.tencent.mm.plugin.qqmail.b.ai;
@@ -18,41 +19,43 @@ final class b$3$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(68284);
     ai localai;
-    if ((this.nhM.nhK.state == 0) || (this.nhM.nhK.state == 1))
+    if ((this.pMZ.pMX.state == 0) || (this.pMZ.pMX.state == 1))
     {
-      paramDialogInterface = this.nhM.nhJ;
-      localai = this.nhM.nhK;
+      paramDialogInterface = this.pMZ.pMW;
+      localai = this.pMZ.pMX;
       if (paramDialogInterface.mode != 5) {
-        break label196;
+        break label206;
       }
-      ac.btF().cancel(localai.nfq);
+      ac.cdQ().cancel(localai.pKF);
     }
     for (;;)
     {
-      this.nhM.nhJ.nhC.remove(this.nhM.nhK.path);
-      this.nhM.nhJ.nhD.remove(this.nhM.nhK.path);
-      this.nhM.nhJ.nhE.remove(this.nhM.nhK.path);
-      this.nhM.nhJ.nhF.remove(this.nhM.nhK.path);
-      this.nhM.nhJ.nhB.removeView(this.nhM.nhL);
-      this.nhM.nhJ.bue();
+      this.pMZ.pMW.pMP.remove(this.pMZ.pMX.path);
+      this.pMZ.pMW.pMQ.remove(this.pMZ.pMX.path);
+      this.pMZ.pMW.pMR.remove(this.pMZ.pMX.path);
+      this.pMZ.pMW.pMS.remove(this.pMZ.pMX.path);
+      this.pMZ.pMW.pMO.removeView(this.pMZ.pMY);
+      this.pMZ.pMW.ceq();
+      AppMethodBeat.o(68284);
       return;
-      label196:
+      label206:
       if (paramDialogInterface.mode == 6)
       {
-        u localu = (u)paramDialogInterface.nhD.get(localai.path);
+        u localu = (u)paramDialogInterface.pMQ.get(localai.path);
         if (localu != null) {
-          g.DO().dJT.c(localu);
+          g.RK().eHt.a(localu);
         }
-        paramDialogInterface.nhE.remove(localai.path);
-        paramDialogInterface.nhF.remove(localai.path);
+        paramDialogInterface.pMR.remove(localai.path);
+        paramDialogInterface.pMS.remove(localai.path);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.b.3.1
  * JD-Core Version:    0.7.0.1
  */

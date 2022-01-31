@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.freewifi.model;
 
-import com.tencent.mm.h.a.bj;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.bl;
 import com.tencent.mm.sdk.b.c;
 
 final class j$8
-  extends c<bj>
+  extends c<bl>
 {
   j$8(j paramj)
   {
-    this.udX = bj.class.getName().hashCode();
+    AppMethodBeat.i(20745);
+    this.__eventId = bl.class.getName().hashCode();
+    AppMethodBeat.o(20745);
   }
 }
 

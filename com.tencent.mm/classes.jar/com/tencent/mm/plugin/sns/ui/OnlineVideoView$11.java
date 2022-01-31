@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class OnlineVideoView$11
   implements Runnable
@@ -12,27 +13,35 @@ final class OnlineVideoView$11
   
   public final void run()
   {
-    y.i("MicroMsg.OnlineVideoView", "%d switch video model isVideoPlay %b %f", new Object[] { Integer.valueOf(this.oRM.hashCode()), Boolean.valueOf(this.iuL), Float.valueOf(this.oRq) });
-    View localView = (View)OnlineVideoView.d(this.oRM);
-    if (this.iuL)
+    AppMethodBeat.i(38400);
+    ab.i("MicroMsg.OnlineVideoView", "%d switch video model isVideoPlay %b %f", new Object[] { Integer.valueOf(this.rJD.hashCode()), Boolean.valueOf(this.kvP), Float.valueOf(this.rJc) });
+    View localView = (View)this.rJD.kvG;
+    if (this.kvP)
     {
-      OnlineVideoView.f(this.oRM).setAlpha(this.oRq);
-      OnlineVideoView.f(this.oRM).setVisibility(0);
-      localView.setAlpha(this.oRq);
+      OnlineVideoView.d(this.rJD).setAlpha(this.rJc);
+      OnlineVideoView.d(this.rJD).setVisibility(0);
+      localView.setAlpha(this.rJc);
       localView.setVisibility(0);
-      if (this.oRq >= 1.0D) {
-        OnlineVideoView.g(this.oRM).setVisibility(8);
+      if (this.rJc >= 1.0D)
+      {
+        OnlineVideoView.e(this.rJD).setVisibility(8);
+        AppMethodBeat.o(38400);
       }
-      return;
     }
-    OnlineVideoView.f(this.oRM).setVisibility(8);
-    localView.setVisibility(8);
-    OnlineVideoView.g(this.oRM).setVisibility(0);
+    else
+    {
+      OnlineVideoView.d(this.rJD).setVisibility(8);
+      localView.setVisibility(8);
+      if (OnlineVideoView.f(this.rJD)) {
+        OnlineVideoView.e(this.rJD).setVisibility(0);
+      }
+    }
+    AppMethodBeat.o(38400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.OnlineVideoView.11
  * JD-Core Version:    0.7.0.1
  */

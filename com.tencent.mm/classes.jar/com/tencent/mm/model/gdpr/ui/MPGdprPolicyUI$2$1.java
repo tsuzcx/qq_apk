@@ -1,5 +1,7 @@
 package com.tencent.mm.model.gdpr.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MPGdprPolicyUI$2$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class MPGdprPolicyUI$2$1
   
   public final void run()
   {
-    this.dYL.dYI.setMMTitle(this.dYK);
+    AppMethodBeat.i(1502);
+    this.foO.foM.setMMTitle(this.cbK);
+    AppMethodBeat.o(1502);
   }
 }
 

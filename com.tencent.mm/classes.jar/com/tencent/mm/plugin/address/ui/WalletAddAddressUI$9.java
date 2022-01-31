@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.address.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletAddAddressUI$9
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class WalletAddAddressUI$9
   
   public final void onClick(View paramView)
   {
-    WalletAddAddressUI.c(this.fvu);
+    AppMethodBeat.i(16938);
+    WalletAddAddressUI.c(this.gMZ);
+    AppMethodBeat.o(16938);
   }
 }
 

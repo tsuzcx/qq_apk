@@ -1,17 +1,20 @@
 package com.tencent.mm.svg;
 
 import android.graphics.Canvas;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.svg.b.b;
 
 public class WeChatSVG
 {
   static
   {
-    if (b.cxs())
+    AppMethodBeat.i(70063);
+    if (b.dAk())
     {
       System.loadLibrary("wechatsvg");
       nativeInit();
     }
+    AppMethodBeat.o(70063);
   }
   
   public static native float[] getViewPort(long paramLong);

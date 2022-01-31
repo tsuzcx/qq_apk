@@ -5,12 +5,12 @@ import java.util.List;
 
 public final class ao
 {
-  public String bMB;
+  public String ctV;
   public int index;
-  public boolean oTK;
-  public boolean oVB;
-  public List<View> oYz;
   public int position;
+  public boolean rLI;
+  public boolean rNW;
+  public List<View> rQS;
 }
 
 

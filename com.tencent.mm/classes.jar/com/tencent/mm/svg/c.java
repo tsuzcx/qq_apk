@@ -1,5 +1,6 @@
 package com.tencent.mm.svg;
 
+import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -7,12 +8,22 @@ import android.os.Looper;
 
 public abstract class c
 {
-  public static Paint a(Paint paramPaint, Looper paramLooper)
+  public static int a(c paramc)
+  {
+    return paramc.a(0, new Object[0]);
+  }
+  
+  protected static Paint a(Paint paramPaint, Looper paramLooper)
   {
     return b.a(paramLooper, paramPaint);
   }
   
-  public static float[] a(float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public static void a(c paramc, Canvas paramCanvas, Looper paramLooper)
+  {
+    paramc.a(2, new Object[] { paramCanvas, paramLooper });
+  }
+  
+  protected static float[] a(float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
     if (paramArrayOfFloat != null)
     {
@@ -29,34 +40,39 @@ public abstract class c
     return paramArrayOfFloat;
   }
   
-  public static float[] e(Looper paramLooper)
+  public static int b(c paramc)
   {
-    return b.e(paramLooper);
+    return paramc.a(1, new Object[0]);
   }
   
-  public static Matrix f(Looper paramLooper)
-  {
-    return b.f(paramLooper);
-  }
-  
-  public static void h(Looper paramLooper)
-  {
-    if (paramLooper != null) {
-      b.d(paramLooper);
-    }
-  }
-  
-  public static Paint i(Looper paramLooper)
-  {
-    return b.a(paramLooper, null);
-  }
-  
-  public static Path j(Looper paramLooper)
+  protected static float[] g(Looper paramLooper)
   {
     return b.g(paramLooper);
   }
   
-  public abstract int b(int paramInt, Object... paramVarArgs);
+  protected static Matrix h(Looper paramLooper)
+  {
+    return b.h(paramLooper);
+  }
+  
+  protected static void j(Looper paramLooper)
+  {
+    if (paramLooper != null) {
+      b.f(paramLooper);
+    }
+  }
+  
+  protected static Paint k(Looper paramLooper)
+  {
+    return b.a(paramLooper, null);
+  }
+  
+  protected static Path l(Looper paramLooper)
+  {
+    return b.i(paramLooper);
+  }
+  
+  protected abstract int a(int paramInt, Object... paramVarArgs);
 }
 
 

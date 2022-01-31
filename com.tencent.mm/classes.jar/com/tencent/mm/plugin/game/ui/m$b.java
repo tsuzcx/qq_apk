@@ -9,18 +9,18 @@ import com.tencent.mm.plugin.game.widget.TextProgressBar;
 
 public final class m$b
 {
-  public ViewGroup kXG;
-  public TextView lcg;
-  public TextView lde;
-  public ImageView ldf;
-  public TextView ldg;
-  public TextView ldh;
-  public TextView ldi;
-  public Button ldj;
-  public TextProgressBar ldk;
-  public GameListSocialView ldl;
-  public ViewGroup ldm;
-  public LinearLayout ldn;
+  public TextView nAZ;
+  public TextView nAb;
+  public ImageView nBa;
+  public TextView nBb;
+  public TextView nBc;
+  public TextView nBd;
+  public Button nBe;
+  public TextProgressBar nBf;
+  public GameListSocialView nBg;
+  public ViewGroup nBh;
+  public LinearLayout nBi;
+  public ViewGroup nvI;
 }
 
 

@@ -6,58 +6,61 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import com.tencent.mm.ci.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMListPopupWindow$a
   extends ListView
 {
-  private boolean acj;
-  private boolean ack;
+  private boolean acV;
+  private boolean acW;
   
   private MMListPopupWindow$a(Context paramContext, boolean paramBoolean)
   {
-    super(paramContext, null, a.b.dropDownListViewStyle);
-    this.ack = paramBoolean;
+    super(paramContext, null, 2130772197);
+    AppMethodBeat.i(112507);
+    this.acW = paramBoolean;
     setCacheColorHint(0);
+    AppMethodBeat.o(112507);
   }
   
-  final int ck(int paramInt1, int paramInt2)
+  final int dy(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(112512);
     int i = getListPaddingTop();
     int j = getListPaddingBottom();
     int m = getDividerHeight();
     Object localObject = getDivider();
     ListAdapter localListAdapter = getAdapter();
-    int k;
     if (localListAdapter == null)
     {
-      k = i + j;
-      return k;
+      AppMethodBeat.o(112512);
+      return i + j;
     }
     i += j;
-    label58:
     int n;
+    label82:
+    int k;
     if ((m > 0) && (localObject != null))
     {
       int i1 = localListAdapter.getCount();
       n = 0;
       j = 0;
       localObject = null;
-      label76:
       if (n >= i1) {
-        break label234;
+        break label244;
       }
       k = localListAdapter.getItemViewType(n);
       if (k == j) {
-        break label236;
+        break label251;
       }
       localObject = null;
       j = k;
     }
-    label130:
-    label224:
-    label234:
-    label236:
+    label136:
+    label225:
+    label235:
+    label244:
+    label251:
     for (;;)
     {
       localObject = localListAdapter.getView(n, (View)localObject, this);
@@ -65,7 +68,7 @@ final class MMListPopupWindow$a
       {
         k = 0;
         if (k <= 0) {
-          break label224;
+          break label225;
         }
       }
       for (k = View.MeasureSpec.makeMeasureSpec(k, 1073741824);; k = View.MeasureSpec.makeMeasureSpec(0, 0))
@@ -81,44 +84,74 @@ final class MMListPopupWindow$a
         if (localObject != null) {
           i = k + ((View)localObject).getMeasuredHeight();
         }
-        k = paramInt2;
-        if (i >= paramInt2) {
-          break;
+        if (i < paramInt2) {
+          break label235;
         }
-        n += 1;
-        break label76;
+        AppMethodBeat.o(112512);
+        return paramInt2;
         m = 0;
-        break label58;
+        break;
         k = ((View)localObject).getLayoutParams().height;
-        break label130;
+        break label136;
       }
+      n += 1;
+      break label82;
+      AppMethodBeat.o(112512);
       return i;
     }
   }
   
   public final boolean hasFocus()
   {
-    return (this.ack) || (super.hasFocus());
+    AppMethodBeat.i(112511);
+    if ((this.acW) || (super.hasFocus()))
+    {
+      AppMethodBeat.o(112511);
+      return true;
+    }
+    AppMethodBeat.o(112511);
+    return false;
   }
   
   public final boolean hasWindowFocus()
   {
-    return (this.ack) || (super.hasWindowFocus());
+    AppMethodBeat.i(112509);
+    if ((this.acW) || (super.hasWindowFocus()))
+    {
+      AppMethodBeat.o(112509);
+      return true;
+    }
+    AppMethodBeat.o(112509);
+    return false;
   }
   
   public final boolean isFocused()
   {
-    return (this.ack) || (super.isFocused());
+    AppMethodBeat.i(112510);
+    if ((this.acW) || (super.isFocused()))
+    {
+      AppMethodBeat.o(112510);
+      return true;
+    }
+    AppMethodBeat.o(112510);
+    return false;
   }
   
   public final boolean isInTouchMode()
   {
-    return ((this.ack) && (this.acj)) || (super.isInTouchMode());
+    AppMethodBeat.i(112508);
+    if (((this.acW) && (this.acV)) || (super.isInTouchMode()))
+    {
+      AppMethodBeat.o(112508);
+      return true;
+    }
+    AppMethodBeat.o(112508);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMListPopupWindow.a
  * JD-Core Version:    0.7.0.1
  */

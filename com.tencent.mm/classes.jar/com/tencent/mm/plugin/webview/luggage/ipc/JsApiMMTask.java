@@ -2,73 +2,97 @@ package com.tencent.mm.plugin.webview.luggage.ipc;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.luggage.e.a.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.aw;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh;
+import com.tencent.mm.sdk.platformtools.ah;
 import org.json.JSONObject;
 
 public class JsApiMMTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<JsApiMMTask> CREATOR = new JsApiMMTask.2();
-  public String aox;
-  public String giZ;
-  public a.a rdg;
-  public String rdh;
-  public String rdi;
+  public static final Parcelable.Creator<JsApiMMTask> CREATOR;
+  public String errMsg;
+  public String hCt;
+  public a.a uTe;
+  public String uTf;
+  public String uTg;
+  
+  static
+  {
+    AppMethodBeat.i(6263);
+    CREATOR = new JsApiMMTask.2();
+    AppMethodBeat.o(6263);
+  }
   
   public JsApiMMTask() {}
   
   private JsApiMMTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(6261);
+    f(paramParcel);
+    AppMethodBeat.o(6261);
   }
   
-  public final void Zu()
+  public final void ata()
   {
+    AppMethodBeat.i(6257);
     try
     {
-      ((aw)Class.forName(this.rdh).newInstance()).a(ae.getContext(), this.giZ, new JsApiMMTask.1(this));
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public final void Zv()
-  {
-    ahD();
-    if (this.rdg != null) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(this.rdi);
-      this.rdg.a(this.aox, localJSONObject);
+      ((bh)Class.forName(this.uTf).newInstance()).a(ah.getContext(), this.hCt, new JsApiMMTask.1(this));
+      AppMethodBeat.o(6257);
       return;
     }
     catch (Exception localException)
     {
-      this.rdg.a(this.aox, null);
+      AppMethodBeat.o(6257);
     }
   }
   
-  public final void e(Parcel paramParcel)
+  public final void atb()
   {
-    this.giZ = paramParcel.readString();
-    this.rdh = paramParcel.readString();
-    this.aox = paramParcel.readString();
-    this.rdi = paramParcel.readString();
+    AppMethodBeat.i(6258);
+    aBk();
+    if (this.uTe != null) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(this.uTg);
+        this.uTe.a(this.errMsg, localJSONObject);
+        AppMethodBeat.o(6258);
+        return;
+      }
+      catch (Exception localException)
+      {
+        this.uTe.a(this.errMsg, null);
+      }
+    }
+    AppMethodBeat.o(6258);
+  }
+  
+  public final void f(Parcel paramParcel)
+  {
+    AppMethodBeat.i(6259);
+    this.hCt = paramParcel.readString();
+    this.uTf = paramParcel.readString();
+    this.errMsg = paramParcel.readString();
+    this.uTg = paramParcel.readString();
+    AppMethodBeat.o(6259);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.giZ);
-    paramParcel.writeString(this.rdh);
-    paramParcel.writeString(this.aox);
-    paramParcel.writeString(this.rdi);
+    AppMethodBeat.i(6260);
+    paramParcel.writeString(this.hCt);
+    paramParcel.writeString(this.uTf);
+    paramParcel.writeString(this.errMsg);
+    paramParcel.writeString(this.uTg);
+    AppMethodBeat.o(6260);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.ipc.JsApiMMTask
  * JD-Core Version:    0.7.0.1
  */

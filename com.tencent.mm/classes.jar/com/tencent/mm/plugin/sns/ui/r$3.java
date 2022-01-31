@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.sns.data.i;
 import com.tencent.mm.plugin.sns.storage.n;
@@ -17,20 +18,24 @@ final class r$3
   
   public final void onClick(View paramView)
   {
-    if (r.a(this.oPe) == null) {
+    AppMethodBeat.i(38237);
+    if (r.a(this.rGQ) == null)
+    {
+      AppMethodBeat.o(38237);
       return;
     }
-    if (r.a(this.oPe).field_snsId == 0L) {}
-    for (paramView = "";; paramView = i.fN(r.a(this.oPe).field_snsId))
+    if (r.a(this.rGQ).field_snsId == 0L) {}
+    for (paramView = "";; paramView = i.lq(r.a(this.rGQ).field_snsId))
     {
-      h.nFQ.f(11989, new Object[] { Integer.valueOf(3), paramView, Integer.valueOf(0) });
-      int i = r.a(this.oPe).oLk;
+      h.qsU.e(11989, new Object[] { Integer.valueOf(3), paramView, Integer.valueOf(0) });
+      int i = r.a(this.rGQ).rCV;
       paramView = new Intent();
       paramView.setClass(this.val$context, SnsCommentDetailUI.class);
-      paramView.putExtra("INTENT_TALKER", r.a(this.oPe).field_userName);
-      paramView.putExtra("INTENT_SNS_LOCAL_ID", v.al("sns_table_", i));
+      paramView.putExtra("INTENT_TALKER", r.a(this.rGQ).field_userName);
+      paramView.putExtra("INTENT_SNS_LOCAL_ID", v.aF("sns_table_", i));
       paramView.putExtra("INTENT_FROMGALLERY", true);
       ((MMActivity)this.val$context).startActivityForResult(paramView, 1);
+      AppMethodBeat.o(38237);
       return;
     }
   }

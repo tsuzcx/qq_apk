@@ -1,41 +1,76 @@
 package com.tencent.mm.plugin.music.model.a.a;
 
-import android.content.ContentValues;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
 import com.tencent.mm.ipcinvoker.i;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.plugin.music.h.b;
+import com.tencent.mm.plugin.music.model.e;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a$l
-  implements i<IPCAudioParamRequest, IPCVoid>
+  implements i<IPCString, IPCString>
 {
-  private static IPCVoid a(IPCAudioParamRequest paramIPCAudioParamRequest)
+  private static IPCString d(IPCString paramIPCString)
   {
-    try
+    int i = 1;
+    AppMethodBeat.i(104957);
+    for (;;)
     {
-      y.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileCacheComplete Task, musicId:%s, complete:%d", new Object[] { paramIPCAudioParamRequest.bSB, Integer.valueOf(paramIPCAudioParamRequest.myn) });
-      String str = paramIPCAudioParamRequest.bSB;
-      int i = paramIPCAudioParamRequest.myn;
-      paramIPCAudioParamRequest = com.tencent.mm.plugin.music.model.e.bns();
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("fileCacheComplete", Integer.valueOf(i));
-      y.i("MicroMsg.Music.PieceMusicInfoStorage", "updateMusicFileCacheComplete raw=%d musicId=%s fileCacheComplete=%d", new Object[] { Integer.valueOf(paramIPCAudioParamRequest.dXw.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { str })), str, Integer.valueOf(i) });
-      paramIPCAudioParamRequest = (c)paramIPCAudioParamRequest.mAr.get(str);
-      if (paramIPCAudioParamRequest != null) {
-        paramIPCAudioParamRequest.field_fileCacheComplete = i;
-      }
-    }
-    catch (Exception paramIPCAudioParamRequest)
-    {
-      for (;;)
+      d locald;
+      try
       {
-        y.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc updateMusicFileCacheComplete task", new Object[0]);
+        ab.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updatePieceMusicInfo Task, src:%s", new Object[] { paramIPCString });
+        String str1 = paramIPCString.value;
+        locald = e.bVO();
+        if (TextUtils.isEmpty(str1))
+        {
+          ab.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceMusicByUrl url is empty!");
+          paramIPCString = null;
+          if (paramIPCString == null) {
+            break label231;
+          }
+          paramIPCString = paramIPCString.field_musicId;
+          paramIPCString = new IPCString(paramIPCString);
+          AppMethodBeat.o(104957);
+          return paramIPCString;
+        }
+        String str2 = b.VH(str1);
+        c localc = locald.VD(str2);
+        paramIPCString = localc;
+        if (localc == null)
+        {
+          paramIPCString = new c();
+          i = 0;
+        }
+        paramIPCString.field_musicId = str2;
+        paramIPCString.field_musicUrl = str1;
+        paramIPCString.field_fileName = b.VI(str1);
+        ab.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceMusicByUrl musicId:%s, field_fileName:%s", new Object[] { str2, paramIPCString.field_fileName });
+        if (i != 0)
+        {
+          ab.i("MicroMsg.Music.PieceMusicInfoStorage", "update PieceMusicInfo");
+          locald.update(paramIPCString, new String[0]);
+          locald.pax.put(str2, paramIPCString);
+          continue;
+        }
+        ab.i("MicroMsg.Music.PieceMusicInfoStorage", "insert PieceMusicInfo");
       }
+      catch (Exception paramIPCString)
+      {
+        ab.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc updatePieceMusicInfo task", new Object[0]);
+        paramIPCString = new IPCString("");
+        AppMethodBeat.o(104957);
+        return paramIPCString;
+      }
+      locald.insert(paramIPCString);
+      continue;
+      label231:
+      paramIPCString = null;
     }
-    return new IPCVoid();
   }
 }
 

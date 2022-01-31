@@ -4,11 +4,11 @@ import com.tencent.mm.plugin.card.d.c;
 
 public abstract interface g$a
 {
-  public abstract void V(int paramInt, String paramString);
-  
-  public abstract void azX();
+  public abstract void ap(int paramInt, String paramString);
   
   public abstract void b(c paramc);
+  
+  public abstract void bbI();
   
   public abstract void c(c paramc);
 }

@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.api.recordView;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
 import android.opengl.Matrix;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -15,142 +16,169 @@ import javax.microedition.khronos.opengles.GL10;
 final class a
   implements GLSurfaceView.Renderer
 {
-  static float[] fvS = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-  static float[] fvT = { -1.0F, -0.5F, 1.0F, -0.5F, -1.0F, 0.5F, 1.0F, 0.5F };
-  private static final float[] fvU = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-  boolean brU = false;
-  private int fvV = 0;
-  private int fvW = 0;
-  byte[] fvX = null;
-  int fvY = 0;
-  int fvZ = 0;
-  ByteBuffer fwa;
-  ByteBuffer fwb;
-  private int fwc;
-  private int fwd;
-  private int fwe;
-  private int fwf;
-  private int fwg;
-  private int fwh;
-  private int fwi;
-  private int fwj;
-  FloatBuffer fwk;
-  private FloatBuffer fwl;
-  private float[] fwm = new float[16];
-  private boolean fwn = false;
-  float[] fwo = fvS;
-  private float[] fwp = Arrays.copyOf(fvU, fvU.length);
-  boolean fwq = false;
-  int fwr = 0;
-  int rotate = 0;
+  static float[] eZq = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+  private static final float[] eZr = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+  static float[] gNy = { -1.0F, -0.5F, 1.0F, -0.5F, -1.0F, 0.5F, 1.0F, 0.5F };
+  private int eYZ;
+  private FloatBuffer eYu;
+  FloatBuffer eYv;
+  private int eZa;
+  private int eZb;
+  private int eZe;
+  private int eZf;
+  private int eZj;
+  private int eZk;
+  ByteBuffer eZm;
+  ByteBuffer eZn;
+  private int fbH;
+  private int fbI;
+  boolean fcx;
+  byte[] frameData;
+  int gNA;
+  int gNB;
+  private int gNC;
+  private float[] gND;
+  private boolean gNE;
+  float[] gNF;
+  private float[] gNG;
+  int gNH;
+  boolean gNz;
+  int rotate;
+  
+  public a()
+  {
+    AppMethodBeat.i(76308);
+    this.fbH = 0;
+    this.fbI = 0;
+    this.gNz = false;
+    this.frameData = null;
+    this.gNA = 0;
+    this.gNB = 0;
+    this.rotate = 0;
+    this.gND = new float[16];
+    this.gNE = false;
+    this.gNF = eZq;
+    float[] arrayOfFloat = eZr;
+    this.gNG = Arrays.copyOf(arrayOfFloat, arrayOfFloat.length);
+    this.fcx = false;
+    this.gNH = 0;
+    AppMethodBeat.o(76308);
+  }
   
   public final void onDrawFrame(GL10 paramGL10)
   {
-    bk.UZ();
-    this.brU = true;
+    AppMethodBeat.i(76311);
+    bo.yB();
+    this.gNz = true;
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     GLES20.glClear(16640);
-    if (this.fwn)
+    if (this.gNE)
     {
-      y.i("MicroMsg.MMSightCameraGLRenderer", "clearFrameRequest");
-      this.fwn = false;
-      this.brU = false;
-      this.fvX = null;
-      this.fvY = -1;
-      this.fvZ = -1;
+      ab.i("MicroMsg.MMSightCameraGLRenderer", "clearFrameRequest");
+      this.gNE = false;
+      this.gNz = false;
+      this.frameData = null;
+      this.gNA = -1;
+      this.gNB = -1;
+      AppMethodBeat.o(76311);
       return;
     }
     int i;
-    if ((this.fwe != 0) && (this.fwc != -1) && (this.fwd != -1) && (this.fvY > 0) && (this.fvZ > 0) && (this.fvX != null))
+    if ((this.eYZ != 0) && (this.eZe != -1) && (this.eZf != -1) && (this.gNA > 0) && (this.gNB > 0) && (this.frameData != null))
     {
-      GLES20.glUseProgram(this.fwe);
+      GLES20.glUseProgram(this.eYZ);
       GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.fwc);
-      GLES20.glTexImage2D(3553, 0, 6409, this.fvY, this.fvZ, 0, 6409, 5121, this.fwa);
+      GLES20.glBindTexture(3553, this.eZe);
+      GLES20.glTexImage2D(3553, 0, 6409, this.gNA, this.gNB, 0, 6409, 5121, this.eZm);
       GLES20.glTexParameterf(3553, 10241, 9729.0F);
       GLES20.glTexParameterf(3553, 10240, 9729.0F);
       GLES20.glTexParameterf(3553, 10242, 33071.0F);
       GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glUniform1i(this.fwh, 0);
+      GLES20.glUniform1i(this.eZj, 0);
       GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, this.fwd);
-      GLES20.glTexImage2D(3553, 0, 6410, this.fvY / 2, this.fvZ / 2, 0, 6410, 5121, this.fwb);
+      GLES20.glBindTexture(3553, this.eZf);
+      GLES20.glTexImage2D(3553, 0, 6410, this.gNA / 2, this.gNB / 2, 0, 6410, 5121, this.eZn);
       GLES20.glTexParameterf(3553, 10241, 9729.0F);
       GLES20.glTexParameterf(3553, 10240, 9729.0F);
       GLES20.glTexParameterf(3553, 10242, 33071.0F);
       GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glUniform1i(this.fwi, 1);
-      Matrix.setIdentityM(this.fwm, 0);
+      GLES20.glUniform1i(this.eZk, 1);
+      Matrix.setIdentityM(this.gND, 0);
       i = this.rotate;
-      if ((this.fwr != 90) && (this.fwr != 270)) {
-        break label490;
+      if ((this.gNH != 90) && (this.gNH != 270)) {
+        break label505;
       }
-      i = (this.rotate - this.fwr + 360) % 360;
+      i = (this.rotate - this.gNH + 360) % 360;
     }
-    label490:
+    label505:
     for (;;)
     {
       if (i > 0) {
-        Matrix.setRotateM(this.fwm, 0, i, 0.0F, 0.0F, -1.0F);
+        Matrix.setRotateM(this.gND, 0, i, 0.0F, 0.0F, -1.0F);
       }
-      GLES20.glUniformMatrix4fv(this.fwj, 1, false, this.fwm, 0);
-      this.fwk.position(0);
-      GLES20.glVertexAttribPointer(this.fwg, 2, 5126, false, 0, this.fwk);
-      GLES20.glEnableVertexAttribArray(this.fwg);
-      this.fwl.position(0);
-      GLES20.glVertexAttribPointer(this.fwf, 2, 5126, false, 0, this.fwl);
-      GLES20.glEnableVertexAttribArray(this.fwf);
+      GLES20.glUniformMatrix4fv(this.gNC, 1, false, this.gND, 0);
+      this.eYv.position(0);
+      GLES20.glVertexAttribPointer(this.eZa, 2, 5126, false, 0, this.eYv);
+      GLES20.glEnableVertexAttribArray(this.eZa);
+      this.eYu.position(0);
+      GLES20.glVertexAttribPointer(this.eZb, 2, 5126, false, 0, this.eYu);
+      GLES20.glEnableVertexAttribArray(this.eZb);
       GLES20.glDrawArrays(5, 0, 4);
-      GLES20.glDisableVertexAttribArray(this.fwg);
-      GLES20.glDisableVertexAttribArray(this.fwf);
+      GLES20.glDisableVertexAttribArray(this.eZa);
+      GLES20.glDisableVertexAttribArray(this.eZb);
       GLES20.glBindTexture(3553, 0);
-      this.brU = false;
+      this.gNz = false;
+      AppMethodBeat.o(76311);
       return;
     }
   }
   
   public final void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceChanged, surfaceWidth: %s, height: %s this %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this });
-    if ((paramInt1 != this.fvV) || (paramInt2 != this.fvW))
+    AppMethodBeat.i(76310);
+    ab.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceChanged, surfaceWidth: %s, height: %s this %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this });
+    if ((paramInt1 != this.fbH) || (paramInt2 != this.fbI))
     {
-      y.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceChanged change viewpoint");
+      ab.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceChanged change viewpoint");
       GLES20.glViewport(0, 0, paramInt1, paramInt2);
-      this.fvV = paramInt1;
-      this.fvW = paramInt2;
-      float f = this.fvV / this.fvW / 2.0F;
-      fvT = new float[] { -1.0F, -f, 1.0F, -f, -1.0F, f, 1.0F, f };
+      this.fbH = paramInt1;
+      this.fbI = paramInt2;
+      float f = this.fbH / this.fbI / 2.0F;
+      gNy = new float[] { -1.0F, -f, 1.0F, -f, -1.0F, f, 1.0F, f };
     }
+    AppMethodBeat.o(76310);
   }
   
   public final void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    y.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated this %s", new Object[] { this });
+    AppMethodBeat.i(76309);
+    ab.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated this %s", new Object[] { this });
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
     GLES20.glDisable(2929);
-    this.fwe = b.aW("attribute vec4 a_position;                         \nattribute vec2 a_texCoord;                         \nvarying vec2 v_texCoord;                           \nuniform mat4 uMatrix;                              \nvoid main() {                                      \n   gl_Position = uMatrix * a_position;             \n   v_texCoord = a_texCoord;                        \n}                                                  \n", "#ifdef GL_ES                                       \nprecision highp float;                             \n#endif                                             \nvarying vec2 v_texCoord;                           \nuniform sampler2D y_texture;                       \nuniform sampler2D uv_texture;                      \nvoid main (void) {                                 \n   float r, g, b, y, u, v;                         \n   y = texture2D(y_texture, v_texCoord).r;         \n   u = texture2D(uv_texture, v_texCoord).a;        \n   v = texture2D(uv_texture, v_texCoord).r;        \n   u = u - 0.5;                                    \n   v = v - 0.5;                                    \n   r = y + 1.370705 * v;                           \n   g = y - 0.337633 * u - 0.698001 * v;            \n   b = y + 1.732446 * u;                           \n   gl_FragColor = vec4(r, g, b, 1.0);              \n}                                                  \n");
-    if (this.fwe == 0) {
-      y.e("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated, load program failed!");
+    this.eYZ = b.Z("attribute vec4 a_position;                         \nattribute vec2 a_texCoord;                         \nvarying vec2 v_texCoord;                           \nuniform mat4 uMatrix;                              \nvoid main() {                                      \n   gl_Position = uMatrix * a_position;             \n   v_texCoord = a_texCoord;                        \n}                                                  \n", "#ifdef GL_ES                                       \nprecision highp float;                             \n#endif                                             \nvarying vec2 v_texCoord;                           \nuniform sampler2D y_texture;                       \nuniform sampler2D uv_texture;                      \nvoid main (void) {                                 \n   float r, g, b, y, u, v;                         \n   y = texture2D(y_texture, v_texCoord).r;         \n   u = texture2D(uv_texture, v_texCoord).a;        \n   v = texture2D(uv_texture, v_texCoord).r;        \n   u = u - 0.5;                                    \n   v = v - 0.5;                                    \n   r = y + 1.370705 * v;                           \n   g = y - 0.337633 * u - 0.698001 * v;            \n   b = y + 1.732446 * u;                           \n   gl_FragColor = vec4(r, g, b, 1.0);              \n}                                                  \n");
+    if (this.eYZ == 0) {
+      ab.e("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated, load program failed!");
     }
-    this.fwg = GLES20.glGetAttribLocation(this.fwe, "a_position");
-    this.fwf = GLES20.glGetAttribLocation(this.fwe, "a_texCoord");
-    this.fwh = GLES20.glGetUniformLocation(this.fwe, "y_texture");
-    this.fwi = GLES20.glGetUniformLocation(this.fwe, "uv_texture");
-    this.fwj = GLES20.glGetUniformLocation(this.fwe, "uMatrix");
-    this.fwc = b.YW();
-    this.fwd = b.YW();
-    this.fwk = ByteBuffer.allocateDirect(this.fwo.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.fwk.put(this.fwo);
-    this.fwk.position(0);
-    this.fwl = ByteBuffer.allocateDirect(fvU.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.fwl.put(fvU);
-    this.fwl.position(0);
-    y.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated, yTextureId: %s, uvTextureId: %s this %s", new Object[] { Integer.valueOf(this.fwc), Integer.valueOf(this.fwd), this });
+    this.eZa = GLES20.glGetAttribLocation(this.eYZ, "a_position");
+    this.eZb = GLES20.glGetAttribLocation(this.eYZ, "a_texCoord");
+    this.eZj = GLES20.glGetUniformLocation(this.eYZ, "y_texture");
+    this.eZk = GLES20.glGetUniformLocation(this.eYZ, "uv_texture");
+    this.gNC = GLES20.glGetUniformLocation(this.eYZ, "uMatrix");
+    this.eZe = b.Vm();
+    this.eZf = b.Vm();
+    this.eYv = ByteBuffer.allocateDirect(this.gNF.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.eYv.put(this.gNF);
+    this.eYv.position(0);
+    this.eYu = ByteBuffer.allocateDirect(eZr.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.eYu.put(eZr);
+    this.eYu.position(0);
+    ab.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated, yTextureId: %s, uvTextureId: %s this %s", new Object[] { Integer.valueOf(this.eZe), Integer.valueOf(this.eZf), this });
+    AppMethodBeat.o(76309);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.api.recordView.a
  * JD-Core Version:    0.7.0.1
  */

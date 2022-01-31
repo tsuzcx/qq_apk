@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.aa.a.c;
 
-import com.tencent.mm.protocal.c.o;
+import com.tencent.mm.protocal.protobuf.o;
 import com.tencent.mm.vending.h.e;
 
 public final class g$a
@@ -8,7 +8,7 @@ public final class g$a
 {
   public g$a(g paramg) {}
   
-  public final String vP()
+  public final String HY()
   {
     return "Vending.LOGIC";
   }

@@ -3,9 +3,8 @@ package com.tencent.mm.plugin.record.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class RecordMsgFileUI$8
   implements View.OnClickListener
@@ -14,9 +13,11 @@ final class RecordMsgFileUI$8
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(24260);
     paramView = new Intent();
-    paramView.putExtra("rawUrl", this.kfx);
-    d.b(this.nue.mController.uMN, "webview", ".ui.tools.WebViewUI", paramView);
+    paramView.putExtra("rawUrl", this.mAj);
+    d.b(this.pZN.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+    AppMethodBeat.o(24260);
   }
 }
 

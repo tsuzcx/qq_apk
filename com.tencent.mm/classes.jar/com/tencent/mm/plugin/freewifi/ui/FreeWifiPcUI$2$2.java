@@ -1,40 +1,42 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.plugin.freewifi.k;
 import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.k.b;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class FreeWifiPcUI$2$2
   implements f
 {
-  FreeWifiPcUI$2$2(FreeWifiPcUI.2 param2, am paramam) {}
+  FreeWifiPcUI$2$2(FreeWifiPcUI.2 param2, ap paramap) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    this.ksI.stopTimer();
+    AppMethodBeat.i(21063);
+    this.mOx.stopTimer();
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      this.ksG.ksF.finish();
+      this.mOv.mOu.finish();
     }
     for (;;)
     {
-      paramString = k.aTx();
-      paramString.kmP = String.valueOf(FreeWifiPcUI.e(this.ksG.ksF));
-      paramString.kmQ = FreeWifiPcUI.d(this.ksG.ksF);
-      paramString.iGw = FreeWifiPcUI.c(this.ksG.ksF);
-      paramString.kmS = k.b.knA.knD;
-      paramString.kmT = k.b.knA.name;
+      paramString = k.bAc();
+      paramString.mIB = String.valueOf(FreeWifiPcUI.e(this.mOv.mOu));
+      paramString.mIC = FreeWifiPcUI.d(this.mOv.mOu);
+      paramString.kMp = FreeWifiPcUI.c(this.mOv.mOu);
+      paramString.mIF = k.b.mJn.mJq;
+      paramString.mIG = k.b.mJn.name;
       paramString.result = paramInt2;
-      paramString.aTz().aTy();
-      y.i("MicroMsg.FreeWifi.FreeWifiPcUI", "sessionKey=%s, step=%d, method=setOnClickListener, desc=NetSceneSetPcLoginUserInfo returns.shopid=%d, appid=%s, ticket=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.B(this.ksG.ksF.getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.C(this.ksG.ksF.getIntent())), Integer.valueOf(FreeWifiPcUI.e(this.ksG.ksF)), FreeWifiPcUI.d(this.ksG.ksF), FreeWifiPcUI.c(this.ksG.ksF) });
+      paramString.bAe().bAd();
+      ab.i("MicroMsg.FreeWifi.FreeWifiPcUI", "sessionKey=%s, step=%d, method=setOnClickListener, desc=NetSceneSetPcLoginUserInfo returns.shopid=%d, appid=%s, ticket=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.U(this.mOv.mOu.getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(this.mOv.mOu.getIntent())), Integer.valueOf(FreeWifiPcUI.e(this.mOv.mOu)), FreeWifiPcUI.d(this.mOv.mOu), FreeWifiPcUI.c(this.mOv.mOu) });
+      AppMethodBeat.o(21063);
       return;
-      if ((com.tencent.mm.plugin.freewifi.m.cS(paramInt1, paramInt2)) && (!com.tencent.mm.plugin.freewifi.m.isEmpty(paramString))) {
-        FreeWifiPcUI.a(this.ksG.ksF, paramString + "(" + com.tencent.mm.plugin.freewifi.m.a(com.tencent.mm.plugin.freewifi.m.D(this.ksG.ksF.getIntent()), k.b.knA, paramInt2) + ")", "");
+      if ((com.tencent.mm.plugin.freewifi.m.eq(paramInt1, paramInt2)) && (!com.tencent.mm.plugin.freewifi.m.isEmpty(paramString))) {
+        FreeWifiPcUI.a(this.mOv.mOu, paramString + "(" + com.tencent.mm.plugin.freewifi.m.a(com.tencent.mm.plugin.freewifi.m.W(this.mOv.mOu.getIntent()), k.b.mJn, paramInt2) + ")", "");
       } else {
-        FreeWifiPcUI.a(this.ksG.ksF, this.ksG.ksF.getString(R.l.free_wifi_errmsg_cannot_set_pc_login_user_info), this.ksG.ksF.getString(R.l.free_wifi_errmsg_cannot_set_pc_login_user_info2));
+        FreeWifiPcUI.a(this.mOv.mOu, this.mOv.mOu.getString(2131300149), this.mOv.mOu.getString(2131300150));
       }
     }
   }

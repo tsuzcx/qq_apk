@@ -1,6 +1,7 @@
 package com.eclipsesource.v8.debug.mirror;
 
 import com.eclipsesource.v8.V8Object;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class NumberMirror
   extends ValueMirror
@@ -17,12 +18,15 @@ public class NumberMirror
   
   public String toString()
   {
-    return this.v8Object.executeStringFunction("toText", null);
+    AppMethodBeat.i(74886);
+    String str = this.v8Object.executeStringFunction("toText", null);
+    AppMethodBeat.o(74886);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.NumberMirror
  * JD-Core Version:    0.7.0.1
  */

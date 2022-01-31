@@ -3,65 +3,75 @@ package com.tencent.mm.plugin.game.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class GameTabData$TabItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<TabItem> CREATOR = new GameTabData.TabItem.1();
-  public int bXn;
+  public static final Parcelable.Creator<TabItem> CREATOR;
+  public int cFj;
   public String jumpUrl;
-  public String kOo;
-  public String kQT;
-  public boolean kQU;
-  public boolean kQV;
-  public int kQW;
-  public int kQX;
-  public String kQY;
-  public String kQZ;
-  public String kRa;
-  public boolean kRb;
-  public int kRc;
+  public String nml;
+  public String noX;
+  public boolean noY;
+  public boolean noZ;
+  public int npa;
+  public int npb;
+  public String npc;
+  public String npd;
+  public String npe;
+  public boolean npf;
+  public int npg;
   public String title;
+  
+  static
+  {
+    AppMethodBeat.i(111398);
+    CREATOR = new GameTabData.TabItem.1();
+    AppMethodBeat.o(111398);
+  }
   
   public GameTabData$TabItem() {}
   
   public GameTabData$TabItem(Parcel paramParcel)
   {
-    this.kQT = paramParcel.readString();
+    AppMethodBeat.i(111396);
+    this.noX = paramParcel.readString();
     this.title = paramParcel.readString();
     this.jumpUrl = paramParcel.readString();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.kQU = bool1;
+      this.noY = bool1;
       if (paramParcel.readByte() == 0) {
-        break label142;
+        break label152;
       }
       bool1 = true;
-      label53:
-      this.kQV = bool1;
-      this.kQW = paramParcel.readInt();
-      this.kQX = paramParcel.readInt();
-      this.kQY = paramParcel.readString();
-      this.kQZ = paramParcel.readString();
-      this.kRa = paramParcel.readString();
+      label58:
+      this.noZ = bool1;
+      this.npa = paramParcel.readInt();
+      this.npb = paramParcel.readInt();
+      this.npc = paramParcel.readString();
+      this.npd = paramParcel.readString();
+      this.npe = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
-        break label147;
+        break label157;
       }
     }
-    label142:
-    label147:
+    label152:
+    label157:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.kRb = bool1;
-      this.bXn = paramParcel.readInt();
-      this.kRc = paramParcel.readInt();
-      this.kOo = paramParcel.readString();
+      this.npf = bool1;
+      this.cFj = paramParcel.readInt();
+      this.npg = paramParcel.readInt();
+      this.nml = paramParcel.readString();
+      AppMethodBeat.o(111396);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label53;
+      break label58;
     }
   }
   
@@ -73,47 +83,49 @@ public class GameTabData$TabItem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    paramParcel.writeString(this.kQT);
+    AppMethodBeat.i(111397);
+    paramParcel.writeString(this.noX);
     paramParcel.writeString(this.title);
     paramParcel.writeString(this.jumpUrl);
-    if (this.kQU)
+    if (this.noY)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.kQV) {
-        break label141;
+      if (!this.noZ) {
+        break label151;
       }
       paramInt = 1;
-      label50:
+      label55:
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.kQW);
-      paramParcel.writeInt(this.kQX);
-      paramParcel.writeString(this.kQY);
-      paramParcel.writeString(this.kQZ);
-      paramParcel.writeString(this.kRa);
-      if (!this.kRb) {
-        break label146;
+      paramParcel.writeInt(this.npa);
+      paramParcel.writeInt(this.npb);
+      paramParcel.writeString(this.npc);
+      paramParcel.writeString(this.npd);
+      paramParcel.writeString(this.npe);
+      if (!this.npf) {
+        break label156;
       }
     }
-    label141:
-    label146:
+    label151:
+    label156:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.bXn);
-      paramParcel.writeInt(this.kRc);
-      paramParcel.writeString(this.kOo);
+      paramParcel.writeInt(this.cFj);
+      paramParcel.writeInt(this.npg);
+      paramParcel.writeString(this.nml);
+      AppMethodBeat.o(111397);
       return;
       paramInt = 0;
       break;
       paramInt = 0;
-      break label50;
+      break label55;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.GameTabData.TabItem
  * JD-Core Version:    0.7.0.1
  */

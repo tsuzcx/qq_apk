@@ -1,51 +1,55 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bq.a;
-
-public final class y
+public class y
 {
-  public static x T(String paramString1, String paramString2)
+  private final String cDs;
+  private final String ejd;
+  public final boolean enable;
+  private boolean flD;
+  private final String name;
+  private final String type;
+  
+  public y()
   {
-    if ((paramString1 == null) || (paramString1.length() <= 0)) {
-      return null;
-    }
-    bq localbq = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).FE().Ic(paramString1);
-    if (localbq != null) {
-      if (localbq.uCK != 1) {
-        break label56;
-      }
-    }
-    label56:
-    for (int i = 1; i == 0; i = 0) {
-      return null;
-    }
-    String str2 = localbq.name;
-    String str1 = localbq.uCJ.aco("");
-    paramString1 = "";
-    if (str1 != null) {
-      paramString1 = "" + str1.replace("@", "");
-    }
-    str1 = paramString1;
-    if (paramString2 != null) {
-      str1 = paramString1 + paramString2;
-    }
-    return new x("@domain.android", str2, str1, localbq.uCJ.aco(""), localbq.isEnable(), true);
+    this.type = "";
+    this.name = "";
+    this.cDs = "";
+    this.ejd = "";
+    this.enable = true;
   }
   
-  public static x il(String paramString)
+  public y(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new x("@black.android", null, paramString, null, true, true);
+    this.type = paramString1;
+    this.name = paramString2;
+    this.cDs = paramString3;
+    this.ejd = paramString4;
+    this.enable = paramBoolean1;
+    this.flD = paramBoolean2;
   }
   
-  public static x im(String paramString)
+  public final String Oe()
   {
-    bq localbq = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).FE().Ic("@t.qq.com");
-    if (localbq == null) {
-      return null;
+    if (this.cDs == null) {
+      return "";
     }
-    return new x("@t.qq.com", null, paramString, null, localbq.isEnable(), localbq.cvY());
+    return this.cDs;
+  }
+  
+  public final String aaf()
+  {
+    if (this.ejd == null) {
+      return "";
+    }
+    return this.ejd;
+  }
+  
+  public final String getType()
+  {
+    if (this.type == null) {
+      return "";
+    }
+    return this.type;
   }
 }
 

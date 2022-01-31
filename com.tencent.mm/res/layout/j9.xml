@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@color/a6q" android:paddingLeft="16.0dip" android:paddingTop="24.0dip" android:paddingRight="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="89.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@color/gu" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:id="@id/a7v" layout="@layout/j_" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.card.ui.v2.CardCdnImageView android:id="@id/agu" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@raw/card_default_merchant_icon" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/agv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:id="@id/agw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
+                <com.tencent.mm.plugin.card.ui.v2.CardLabelTextView android:textSize="12.0dip" android:textColor="@color/a6q" android:gravity="center" android:id="@id/agx" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginLeft="10.0dip" android:text="" />
+            </LinearLayout>
+            <TextView android:textSize="12.0dip" android:textColor="#ffb2b2b2" android:id="@id/agy" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

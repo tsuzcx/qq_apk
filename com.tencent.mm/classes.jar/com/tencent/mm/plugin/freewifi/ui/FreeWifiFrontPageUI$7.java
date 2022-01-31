@@ -1,23 +1,20 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.d;
 
 final class FreeWifiFrontPageUI$7
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  FreeWifiFrontPageUI$7(FreeWifiFrontPageUI paramFreeWifiFrontPageUI, String paramString) {}
+  FreeWifiFrontPageUI$7(FreeWifiFrontPageUI paramFreeWifiFrontPageUI) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent();
-    paramView.putExtra("free_wifi_show_detail_error", 1);
-    paramView.putExtra("free_wifi_error_ui_error_msg", this.krP.getString(R.l.free_wifi_connect_fail_msg));
-    paramView.putExtra("free_wifi_error_ui_error_msg_detail1", this.krs);
-    paramView.setClass(this.krP, FreeWifiErrorUI.class);
-    this.krP.startActivity(paramView);
+    AppMethodBeat.i(20965);
+    d.cc(this.mND);
+    AppMethodBeat.o(20965);
   }
 }
 

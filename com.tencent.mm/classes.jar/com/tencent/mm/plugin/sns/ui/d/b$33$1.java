@@ -1,7 +1,10 @@
 package com.tencent.mm.plugin.sns.ui.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.SnsTimeLineUI;
-import com.tencent.mm.plugin.sns.ui.a.b.a;
+import com.tencent.mm.plugin.sns.ui.b.b.a;
+import com.tencent.mm.plugin.sns.ui.b.b.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$33$1
   implements Runnable
@@ -10,11 +13,23 @@ final class b$33$1
   
   public final void run()
   {
-    if ((this.ppx.ppl.activity instanceof SnsTimeLineUI)) {
-      ((SnsTimeLineUI)this.ppx.ppl.activity).jz(true);
+    AppMethodBeat.i(40291);
+    if ((this.skp.skd.activity instanceof SnsTimeLineUI)) {
+      ((SnsTimeLineUI)this.skp.skd.activity).lF(true);
     }
-    this.ppx.ppl.pow.gA(this.lnn);
-    this.ppx.ppl.pow.a(new b.33.1.1(this));
+    this.skp.skd.sjo.mi(this.nKE);
+    this.skp.skd.sjo.a(new b.a()
+    {
+      public final void onAnimationEnd()
+      {
+        AppMethodBeat.i(40290);
+        ab.i("MicroMsg.TimelineClickListener", "timeline back animation end");
+        b.33.1.this.skp.skd.sjo = null;
+        ((SnsTimeLineUI)b.33.1.this.skp.skd.activity).lF(false);
+        AppMethodBeat.o(40290);
+      }
+    });
+    AppMethodBeat.o(40291);
   }
 }
 

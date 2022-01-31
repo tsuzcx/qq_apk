@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.recharge.ui;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RechargeUI$9
   implements Runnable
@@ -10,12 +11,14 @@ final class RechargeUI$9
   
   public final void run()
   {
-    RechargeUI.o(this.nrE).setImageBitmap(this.ara);
+    AppMethodBeat.i(44314);
+    RechargeUI.o(this.pWS).setImageBitmap(this.val$bitmap);
+    AppMethodBeat.o(44314);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.RechargeUI.9
  * JD-Core Version:    0.7.0.1
  */

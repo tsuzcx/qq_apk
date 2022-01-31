@@ -2,6 +2,7 @@ package com.tencent.ttpic.recorder;
 
 import android.media.MediaCodec;
 import android.media.MediaExtractor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class ActVideoDecoder$3
   implements Runnable
@@ -10,6 +11,7 @@ class ActVideoDecoder$3
   
   public void run()
   {
+    AppMethodBeat.i(83679);
     if (ActVideoDecoder.access$900(this.this$0) != null) {
       ActVideoDecoder.access$900(this.this$0).seekTo(0L, 0);
     }
@@ -19,6 +21,7 @@ class ActVideoDecoder$3
     ActVideoDecoder.access$1102(this.this$0, false);
     ActVideoDecoder.access$1202(this.this$0, -1L);
     ActVideoDecoder.access$1302(this.this$0, -1L);
+    AppMethodBeat.o(83679);
   }
 }
 

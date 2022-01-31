@@ -1,81 +1,108 @@
 package com.tencent.mm.plugin.facedetect.b;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.atb;
-import com.tencent.mm.protocal.c.bfr;
-import com.tencent.mm.protocal.c.xj;
-import com.tencent.mm.protocal.c.xk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.abp;
+import com.tencent.mm.protocal.protobuf.azd;
+import com.tencent.mm.protocal.protobuf.bnw;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 public final class l
   extends m
   implements k
 {
-  private b dmK;
-  private f dmL;
-  private LinkedList<atb> jMM = null;
-  public bfr jMN = null;
-  public String jMO = null;
-  public String jMP = null;
-  public String jMQ = null;
-  public float jMR;
-  public int jMS;
+  private f callback;
+  private LinkedList<azd> mgS;
+  public bnw mgT;
+  public String mgU;
+  public String mgV;
+  public String mgW;
+  public String mgX;
+  public String mgY;
+  public float mgZ;
+  public int mha;
+  public String mhb;
+  private b rr;
   
   public l(String paramString1, String paramString2, int paramInt)
   {
+    AppMethodBeat.i(78);
+    this.mgS = null;
+    this.mgT = null;
+    this.mgW = null;
+    this.mgX = null;
+    this.mgY = null;
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new xj();
-    ((b.a)localObject).ecI = new xk();
+    ((b.a)localObject).fsX = new abo();
+    ((b.a)localObject).fsY = new abp();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/faceidentifyprepage";
-    ((b.a)localObject).ecG = 1147;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (xj)this.dmK.ecE.ecN;
-    ((xj)localObject).bOL = paramString1;
-    ((xj)localObject).sTW = paramString2;
-    ((xj)localObject).jMS = paramInt;
+    ((b.a)localObject).funcId = getType();
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (abo)this.rr.fsV.fta;
+    ((abo)localObject).cwc = paramString1;
+    ((abo)localObject).wRS = paramString2;
+    ((abo)localObject).mha = paramInt;
+    AppMethodBeat.o(78);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneFaceGetConfirmPageInfo", "alvinluo errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (xk)((b)paramq).ecF.ecN;
-    if (paramq != null)
-    {
-      this.jMM = paramq.sKO;
-      this.jMN = paramq.sTX;
-      this.jMO = paramq.sTZ;
-      this.jMP = paramq.sUa;
-      this.jMQ = paramq.sUb;
-      this.jMR = paramq.sUc;
-      this.jMS = paramq.jMS;
-      y.d("MicroMsg.NetSceneFaceGetConfirmPageInfo", "Light threshold is A : " + this.jMR);
-      y.d("MicroMsg.NetSceneFaceGetConfirmPageInfo", "check_alive_type is  : " + this.jMS);
-      if (this.dmL != null) {
-        this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      }
-    }
+    AppMethodBeat.i(79);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(79);
+    return i;
   }
   
   public final int getType()
   {
     return 1147;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(80);
+    ab.i("MicroMsg.NetSceneFaceGetConfirmPageInfo", "alvinluo errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = (abp)((b)paramq).fsW.fta;
+    if (paramq != null)
+    {
+      this.mgS = paramq.wID;
+      this.mgT = paramq.wRT;
+      this.mgW = paramq.wRV;
+      this.mgX = paramq.wRW;
+      this.mgY = paramq.wRX;
+      this.mgZ = paramq.wRY;
+      this.mha = paramq.mha;
+      this.mhb = paramq.mhb;
+      this.mgU = paramq.wRZ;
+      this.mgV = paramq.wRU;
+      ab.d("MicroMsg.NetSceneFaceGetConfirmPageInfo", "Light threshold is A : " + this.mgZ);
+      ab.d("MicroMsg.NetSceneFaceGetConfirmPageInfo", "check_alive_type is  : " + this.mha);
+      if (this.callback != null) {
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      }
+    }
+    AppMethodBeat.o(80);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(81);
+    String str = "NetSceneFaceGetConfirmPageInfo{callback=" + this.callback + ", rr=" + this.rr + ", mFaceConfirmInfoList=" + this.mgS + ", mPromptButtonInfo=" + this.mgT + ", bizHeadUrl='" + this.mgU + '\'' + ", bizNickName='" + this.mgV + '\'' + ", mHeaderPrompt='" + this.mgW + '\'' + ", mFeedbackUrl='" + this.mgX + '\'' + ", mComplainUrl='" + this.mgY + '\'' + ", mLight_threshold=" + this.mgZ + ", check_alive_type=" + this.mha + ", business_tips='" + this.mhb + '\'' + '}';
+    AppMethodBeat.o(81);
+    return str;
   }
 }
 

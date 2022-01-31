@@ -4,28 +4,38 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import com.jg.JgClassChecked;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140422", reviewer=20, vComment={com.jg.EType.SERVICESCHECK})
 public class AccountAuthenticatorService
   extends Service
 {
-  private static AccountAuthenticatorService.a fji = null;
+  private static AccountAuthenticatorService.a gAA = null;
   
   public IBinder onBind(Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    while ((paramIntent.getAction() == null) || (!paramIntent.getAction().equals("android.accounts.AccountAuthenticator"))) {
+    AppMethodBeat.i(124652);
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(124652);
       return null;
     }
-    if (fji == null) {
-      fji = new AccountAuthenticatorService.a(this);
+    if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("android.accounts.AccountAuthenticator")))
+    {
+      if (gAA == null) {
+        gAA = new AccountAuthenticatorService.a(this);
+      }
+      paramIntent = gAA.getIBinder();
+      AppMethodBeat.o(124652);
+      return paramIntent;
     }
-    return fji.getIBinder();
+    AppMethodBeat.o(124652);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.AccountAuthenticatorService
  * JD-Core Version:    0.7.0.1
  */

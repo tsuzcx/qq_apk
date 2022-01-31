@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.modelsimple.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelsimple.k;
 
 final class h$1
   implements Runnable
@@ -10,7 +10,9 @@ final class h$1
   
   public final void run()
   {
-    new i().a(this.pLq.edc, new h.1.1(this));
+    AppMethodBeat.i(26096);
+    new k().doScene(this.trm.dispatcher(), new h.1.1(this));
+    AppMethodBeat.o(26096);
   }
 }
 

@@ -1,14 +1,13 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.protocal.protobuf.cmi;
+import com.tencent.mm.vending.c.a;
 
 final class WalletOrderInfoNewUI$12
-  implements DialogInterface.OnClickListener
+  implements a<Object, a.a<cmi>>
 {
   WalletOrderInfoNewUI$12(WalletOrderInfoNewUI paramWalletOrderInfoNewUI) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -4,11 +4,10 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mm.at.b.a;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.au.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView.a;
 import com.tenpay.android.wechat.TenpaySecureEditText;
@@ -21,38 +20,42 @@ final class WalletPhoneInputView$4
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    if (bk.bl(paramEditable.toString()))
+    AppMethodBeat.i(47911);
+    if (bo.isNullOrNil(paramEditable.toString()))
     {
-      WalletPhoneInputView.d(this.qIp).setText("");
-      WalletPhoneInputView.d(this.qIp).setContentTextColorRes(a.c.normal_text_color);
-      WalletPhoneInputView.e(this.qIp).setTextColor(this.qIp.getResources().getColor(a.c.normal_text_color));
+      WalletPhoneInputView.d(this.uwX).setText("");
+      WalletPhoneInputView.d(this.uwX).setContentTextColorRes(2131690322);
+      WalletPhoneInputView.e(this.uwX).setTextColor(this.uwX.getResources().getColor(2131690322));
+      AppMethodBeat.o(47911);
       return;
     }
-    if (!WalletPhoneInputView.f(this.qIp))
+    if (!WalletPhoneInputView.f(this.uwX))
     {
-      y.i("MicroMsg.WalletPhoneInputView", "manual pick don't search");
-      WalletPhoneInputView.d(this.qIp).setContentTextColorRes(a.c.normal_text_color);
-      WalletPhoneInputView.e(this.qIp).setTextColor(this.qIp.getResources().getColor(a.c.normal_text_color));
-      WalletPhoneInputView.g(this.qIp);
+      ab.i("MicroMsg.WalletPhoneInputView", "manual pick don't search");
+      WalletPhoneInputView.d(this.uwX).setContentTextColorRes(2131690322);
+      WalletPhoneInputView.e(this.uwX).setTextColor(this.uwX.getResources().getColor(2131690322));
+      WalletPhoneInputView.g(this.uwX);
+      AppMethodBeat.o(47911);
       return;
     }
-    b.a locala = (b.a)WalletPhoneInputView.h(this.qIp).get(paramEditable.toString());
-    y.d("MicroMsg.WalletPhoneInputView", "cCode: %s, s: %s", new Object[] { locala, paramEditable.toString() });
+    b.a locala = (b.a)WalletPhoneInputView.h(this.uwX).get(paramEditable.toString());
+    ab.d("MicroMsg.WalletPhoneInputView", "cCode: %s, s: %s", new Object[] { locala, paramEditable.toString() });
     if (locala != null)
     {
-      WalletPhoneInputView.a(this.qIp, locala.esf);
-      WalletPhoneInputView.b(this.qIp, locala.esg);
-      WalletPhoneInputView.d(this.qIp).setText(locala.esg);
-      WalletPhoneInputView.d(this.qIp).setContentTextColorRes(a.c.normal_text_color);
-      WalletPhoneInputView.e(this.qIp).setTextColor(this.qIp.getResources().getColor(a.c.normal_text_color));
+      WalletPhoneInputView.a(this.uwX, locala.fHS);
+      WalletPhoneInputView.b(this.uwX, locala.fHT);
+      WalletPhoneInputView.d(this.uwX).setText(locala.fHT);
+      WalletPhoneInputView.d(this.uwX).setContentTextColorRes(2131690322);
+      WalletPhoneInputView.e(this.uwX).setTextColor(this.uwX.getResources().getColor(2131690322));
     }
     for (;;)
     {
-      WalletPhoneInputView.c(this.qIp).getInputValidChangeListener().gG(WalletPhoneInputView.c(this.qIp).YL());
+      WalletPhoneInputView.c(this.uwX).getInputValidChangeListener().onInputValidChange(WalletPhoneInputView.c(this.uwX).asv());
+      AppMethodBeat.o(47911);
       return;
-      WalletPhoneInputView.a(this.qIp, "");
-      WalletPhoneInputView.b(this.qIp, "");
-      WalletPhoneInputView.d(this.qIp).setText(this.qIp.getContext().getString(a.i.wallet_phone_invalid_country_code));
+      WalletPhoneInputView.a(this.uwX, "");
+      WalletPhoneInputView.b(this.uwX, "");
+      WalletPhoneInputView.d(this.uwX).setText(this.uwX.getContext().getString(2131305521));
     }
   }
   

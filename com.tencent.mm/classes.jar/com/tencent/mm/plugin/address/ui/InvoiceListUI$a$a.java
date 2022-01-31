@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 final class InvoiceListUI$a$a
 {
-  TextView fdt;
-  TextView fuN;
-  ImageView fuO;
+  TextView gMp;
+  ImageView gMq;
+  TextView gve;
   
   InvoiceListUI$a$a(InvoiceListUI.a parama) {}
 }

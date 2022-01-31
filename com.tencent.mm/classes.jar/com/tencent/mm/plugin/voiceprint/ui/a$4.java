@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.voiceprint.ui;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$4
   implements Animation.AnimationListener
@@ -10,9 +11,11 @@ final class a$4
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.pNb != null) {
-      this.pNb.bPj();
+    AppMethodBeat.i(26253);
+    if (this.tsV != null) {
+      this.tsV.cLp();
     }
+    AppMethodBeat.o(26253);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

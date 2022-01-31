@@ -1,28 +1,27 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import com.tencent.mm.model.gdpr.b;
-import com.tencent.mm.protocal.c.bnf;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bgs;
 
 final class SDKOAuthUI$12
-  implements b
+  implements AdapterView.OnItemClickListener
 {
-  SDKOAuthUI$12(SDKOAuthUI paramSDKOAuthUI, bnf parambnf) {}
+  SDKOAuthUI$12(SDKOAuthUI paramSDKOAuthUI) {}
   
-  public final void hX(int paramInt)
+  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    y.i("MicroMsg.SdkOAuthUI", " MPGdprPolicyUtil.checkPolicy onPermissionReturn:%d", new Object[] { Integer.valueOf(paramInt) });
-    if (paramInt == 1)
-    {
-      SDKOAuthUI.a(this.rmk, -4);
-      return;
-    }
-    SDKOAuthUI.a(this.rmk, this.rml.sLy);
+    AppMethodBeat.i(7535);
+    SDKOAuthUI.b.a(SDKOAuthUI.h(this.vbR), SDKOAuthUI.h(this.vbR).Kt(paramInt).id);
+    SDKOAuthUI.h(this.vbR).notifyDataSetChanged();
+    AppMethodBeat.o(7535);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.SDKOAuthUI.12
  * JD-Core Version:    0.7.0.1
  */

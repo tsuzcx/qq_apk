@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView android:id="@id/f8r" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/a5k" android:background="@drawable/wb" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginBottom="@dimen/a6x" android:src="@raw/photo_edit_navbar_icon_mark" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/f8s" android:background="@drawable/wb" android:visibility="invisible" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginLeft="@dimen/a6x" android:layout_marginBottom="@dimen/a6x" android:src="@raw/mmsight_camera_preview_icon_back" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/f8t" android:background="@drawable/wc" android:visibility="invisible" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginRight="@dimen/a6x" android:layout_marginBottom="@dimen/a6x" android:src="@raw/mmsight_camera_preview_icon_done" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <TextView android:textColor="@color/y5" android:id="@id/a5l" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+</merge>

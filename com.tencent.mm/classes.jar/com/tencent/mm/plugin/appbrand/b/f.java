@@ -6,19 +6,19 @@ import java.lang.ref.WeakReference;
 
 public abstract class f
 {
-  final WeakReference<Activity> fGd;
-  public final BroadcastReceiver fGh = new f.1(this);
+  private final WeakReference<Activity> gYJ;
+  public final BroadcastReceiver gYO = new f.1(this);
   
   public f(Activity paramActivity)
   {
-    this.fGd = new WeakReference(paramActivity);
+    this.gYJ = new WeakReference(paramActivity);
   }
   
-  public abstract void acE();
+  protected abstract void awv();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -6,58 +6,75 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$a
   implements Handler.Callback, Choreographer.FrameCallback
 {
-  private static final a aUg = new a();
-  public volatile long aUf;
-  private final HandlerThread aUh = new HandlerThread("ChoreographerOwner:Handler");
-  private Choreographer aUi;
-  private int aUj;
+  private static final a bcE;
+  public volatile long bcD;
+  private final HandlerThread bcF;
+  private int bcG;
+  private Choreographer choreographer;
   final Handler handler;
+  
+  static
+  {
+    AppMethodBeat.i(96034);
+    bcE = new a();
+    AppMethodBeat.o(96034);
+  }
   
   private d$a()
   {
-    this.aUh.start();
-    this.handler = new Handler(this.aUh.getLooper(), this);
+    AppMethodBeat.i(96031);
+    this.bcF = new HandlerThread("ChoreographerOwner:Handler");
+    this.bcF.start();
+    this.handler = new Handler(this.bcF.getLooper(), this);
     this.handler.sendEmptyMessage(0);
+    AppMethodBeat.o(96031);
   }
   
-  public static a oy()
+  public static a rk()
   {
-    return aUg;
+    return bcE;
   }
   
   public final void doFrame(long paramLong)
   {
-    this.aUf = paramLong;
-    this.aUi.postFrameCallbackDelayed(this, 500L);
+    AppMethodBeat.i(96032);
+    this.bcD = paramLong;
+    this.choreographer.postFrameCallbackDelayed(this, 500L);
+    AppMethodBeat.o(96032);
   }
   
   public final boolean handleMessage(Message paramMessage)
   {
-    boolean bool = true;
+    AppMethodBeat.i(96033);
     switch (paramMessage.what)
     {
     default: 
-      bool = false;
-    }
-    do
-    {
-      do
-      {
-        return bool;
-        this.aUi = Choreographer.getInstance();
-        return true;
-        this.aUj += 1;
-      } while (this.aUj != 1);
-      this.aUi.postFrameCallback(this);
+      AppMethodBeat.o(96033);
+      return false;
+    case 0: 
+      this.choreographer = Choreographer.getInstance();
+      AppMethodBeat.o(96033);
       return true;
-      this.aUj -= 1;
-    } while (this.aUj != 0);
-    this.aUi.removeFrameCallback(this);
-    this.aUf = 0L;
+    case 1: 
+      this.bcG += 1;
+      if (this.bcG == 1) {
+        this.choreographer.postFrameCallback(this);
+      }
+      AppMethodBeat.o(96033);
+      return true;
+    }
+    this.bcG -= 1;
+    if (this.bcG == 0)
+    {
+      this.choreographer.removeFrameCallback(this);
+      this.bcD = 0L;
+    }
+    AppMethodBeat.o(96033);
     return true;
   }
 }

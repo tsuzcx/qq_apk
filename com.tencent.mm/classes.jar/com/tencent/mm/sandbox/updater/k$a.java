@@ -1,8 +1,17 @@
 package com.tencent.mm.sandbox.updater;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class k$a
 {
-  public static final k udI = new k((byte)0);
+  public static final k ylX;
+  
+  static
+  {
+    AppMethodBeat.i(28996);
+    ylX = new k((byte)0);
+    AppMethodBeat.o(28996);
+  }
 }
 
 

@@ -1,110 +1,111 @@
 package com.tencent.mm.plugin.fingerprint;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.c.e;
-import com.tencent.mm.model.ar;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.q;
 import com.tencent.mm.plugin.fingerprint.b.b;
 import com.tencent.mm.plugin.fingerprint.b.c;
-import com.tencent.mm.plugin.fingerprint.b.d;
 import com.tencent.mm.plugin.fingerprint.b.f;
 import com.tencent.mm.plugin.fingerprint.b.i;
 import com.tencent.mm.plugin.fingerprint.b.j;
-import com.tencent.mm.plugin.fingerprint.b.l;
+import com.tencent.mm.plugin.fingerprint.b.k;
+import com.tencent.mm.plugin.fingerprint.b.p;
 import com.tencent.mm.plugin.fingerprint.b.r;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
 import java.util.HashMap;
 
 public class a
-  implements ar
+  implements at
 {
-  private com.tencent.mm.plugin.fingerprint.b.p kkk = new com.tencent.mm.plugin.fingerprint.b.p();
-  private j kkl = new j();
-  private com.tencent.mm.plugin.fingerprint.b.k kkm = new com.tencent.mm.plugin.fingerprint.b.k();
-  private b kkn = new b();
-  private f kko = new f();
-  private com.tencent.mm.plugin.fingerprint.b.g kkp = new com.tencent.mm.plugin.fingerprint.b.g();
-  private c kkq;
+  private p mEY;
+  private j mEZ;
+  private k mFa;
+  private b mFb;
+  private f mFc;
+  private com.tencent.mm.plugin.fingerprint.b.g mFd;
+  private c mFe;
   
   static
   {
-    com.tencent.mm.wallet_core.a.i("FingerprintAuth", com.tencent.mm.plugin.fingerprint.ui.a.class);
+    AppMethodBeat.i(41353);
+    com.tencent.mm.wallet_core.a.h("FingerprintAuth", com.tencent.mm.plugin.fingerprint.ui.a.class);
+    AppMethodBeat.o(41353);
   }
   
-  public static a aSf()
+  public a()
   {
-    return (a)com.tencent.mm.model.p.B(a.class);
+    AppMethodBeat.i(41348);
+    this.mEY = new p();
+    this.mEZ = new j();
+    this.mFa = new k();
+    this.mFb = new b();
+    this.mFc = new f();
+    this.mFd = new com.tencent.mm.plugin.fingerprint.b.g();
+    AppMethodBeat.o(41348);
   }
   
-  public static c aSg()
+  public static a byD()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (aSf().kkq == null) {
-      aSf().kkq = new c();
-    }
-    return aSf().kkq;
+    AppMethodBeat.i(41349);
+    a locala = (a)q.S(a.class);
+    AppMethodBeat.o(41349);
+    return locala;
   }
   
-  private static void aSh()
+  public static c byE()
   {
-    if (com.tencent.soter.a.a.cPw()) {}
-    for (Object localObject = new l();; localObject = new d())
-    {
-      ((com.tencent.mm.pluginsdk.k)localObject).aSH();
-      com.tencent.mm.kernel.g.a(com.tencent.mm.pluginsdk.k.class, (com.tencent.mm.kernel.c.a)localObject);
-      return;
+    AppMethodBeat.i(41352);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    if (byD().mFe == null) {
+      byD().mFe = new c();
     }
+    c localc = byD().mFe;
+    AppMethodBeat.o(41352);
+    return localc;
   }
   
-  public final void bh(boolean paramBoolean)
-  {
-    y.i("MicroMsg.SubCoreFingerPrint", "alvinluo SoterWrapperApi isInit: %b in SubCoreFingerprint initTA", new Object[] { Boolean.valueOf(com.tencent.soter.a.c.a.cPy().isInit()) });
-    if (!com.tencent.soter.a.c.a.cPy().isInit())
-    {
-      y.i("MicroMsg.SubCoreFingerPrint", "alvinluo soter is not initialized, do init");
-      com.tencent.mm.kernel.g.a(com.tencent.mm.pluginsdk.k.class, new d());
-      com.tencent.mm.kernel.g.DS().k(new a.1(this), 1500L);
-    }
-    for (;;)
-    {
-      com.tencent.mm.sdk.b.a.udP.c(this.kkk);
-      com.tencent.mm.sdk.b.a.udP.c(this.kkl);
-      com.tencent.mm.sdk.b.a.udP.c(this.kkm);
-      com.tencent.mm.sdk.b.a.udP.c(this.kkn);
-      com.tencent.mm.sdk.b.a.udP.c(this.kko);
-      com.tencent.mm.sdk.b.a.udP.c(this.kkp);
-      com.tencent.mm.kernel.g.a(i.class, new e(new r()));
-      return;
-      aSh();
-    }
-  }
+  public void clearPluginData(int paramInt) {}
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
-  {
-    com.tencent.mm.sdk.b.a.udP.d(this.kkk);
-    this.kkl.release();
-    com.tencent.mm.sdk.b.a.udP.d(this.kkl);
-    com.tencent.mm.sdk.b.a.udP.d(this.kkm);
-    com.tencent.mm.sdk.b.a.udP.d(this.kkn);
-    com.tencent.mm.sdk.b.a.udP.d(this.kko);
-    if (this.kkq != null)
-    {
-      c.abort();
-      c.release();
-      this.kkq = null;
-    }
-    com.tencent.mm.sdk.b.a.udP.d(this.kkp);
-    com.tencent.mm.kernel.g.s(i.class);
-  }
-  
-  public final HashMap<Integer, h.d> xe()
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
     return null;
   }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(41350);
+    com.tencent.mm.sdk.b.a.ymk.c(this.mEY);
+    com.tencent.mm.sdk.b.a.ymk.c(this.mEZ);
+    com.tencent.mm.sdk.b.a.ymk.c(this.mFa);
+    com.tencent.mm.sdk.b.a.ymk.c(this.mFb);
+    com.tencent.mm.sdk.b.a.ymk.c(this.mFc);
+    com.tencent.mm.sdk.b.a.ymk.c(this.mFd);
+    com.tencent.mm.kernel.g.a(i.class, new e(new r()));
+    AppMethodBeat.o(41350);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(41351);
+    com.tencent.mm.sdk.b.a.ymk.d(this.mEY);
+    this.mEZ.release();
+    com.tencent.mm.sdk.b.a.ymk.d(this.mEZ);
+    com.tencent.mm.sdk.b.a.ymk.d(this.mFa);
+    com.tencent.mm.sdk.b.a.ymk.d(this.mFb);
+    com.tencent.mm.sdk.b.a.ymk.d(this.mFc);
+    if (this.mFe != null)
+    {
+      c.abort();
+      c.release();
+      this.mFe = null;
+    }
+    com.tencent.mm.sdk.b.a.ymk.d(this.mFd);
+    com.tencent.mm.kernel.g.F(i.class);
+    AppMethodBeat.o(41351);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

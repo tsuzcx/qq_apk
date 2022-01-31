@@ -1,13 +1,29 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.service.c;
+import java.util.HashMap;
+import java.util.Map;
+
 final class i$1
-  implements Runnable
+  implements b.b
 {
-  i$1(i parami) {}
+  i$1(i parami, c paramc, int paramInt) {}
   
-  public final void run()
+  public final void j(boolean paramBoolean, String paramString)
   {
-    i.a(this.gzS);
+    AppMethodBeat.i(131423);
+    if (paramBoolean)
+    {
+      HashMap localHashMap = new HashMap(1);
+      localHashMap.put("token", paramString);
+      this.hxC.h(this.bAX, this.hWv.j("ok", localHashMap));
+      AppMethodBeat.o(131423);
+      return;
+    }
+    this.hxC.h(this.bAX, this.hWv.j("fail", null));
+    AppMethodBeat.o(131423);
   }
 }
 

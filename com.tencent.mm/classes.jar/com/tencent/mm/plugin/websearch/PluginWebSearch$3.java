@@ -1,6 +1,12 @@
 package com.tencent.mm.plugin.websearch;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.websearch.api.aa;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
 
 final class PluginWebSearch$3
   implements Runnable
@@ -9,7 +15,16 @@ final class PluginWebSearch$3
   
   public final void run()
   {
-    aa.gN(5000L);
+    AppMethodBeat.i(91307);
+    aa.nj(5000L);
+    long l = aa.Jn(1);
+    if (((Long)g.RL().Ru().get(ac.a.yKP, Long.valueOf(0L))).longValue() != l)
+    {
+      h.qsU.e(17040, new Object[] { Integer.valueOf(2), Long.valueOf(l) });
+      g.RL().Ru().set(ac.a.yKP, Long.valueOf(l));
+      g.RL().Ru().dww();
+    }
+    AppMethodBeat.o(91307);
   }
 }
 

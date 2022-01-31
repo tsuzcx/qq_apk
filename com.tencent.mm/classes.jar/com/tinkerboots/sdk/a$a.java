@@ -1,31 +1,37 @@
 package com.tinkerboots.sdk;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tinker.entry.ApplicationLike;
 import com.tencent.tinker.lib.c.a;
 import com.tencent.tinker.lib.d.c;
 import com.tencent.tinker.lib.d.d;
 import com.tencent.tinker.lib.service.AbstractResultService;
 import com.tencent.tinker.loader.TinkerRuntimeException;
-import com.tencent.tinker.loader.app.ApplicationLike;
 
 public final class a$a
 {
-  public final ApplicationLike applicationLike;
+  public a BLD;
+  public Class<? extends AbstractResultService> BLE;
+  public com.tinkerboots.sdk.a.a.b BLF;
+  public com.tencent.tinker.lib.b.b BsN;
+  public c BsO;
+  public d BsP;
+  public final ApplicationLike bXD;
   public final Context context;
-  public com.tencent.tinker.lib.b.b wWk;
-  public c wWl;
-  public d wWm;
-  public a xnH;
-  public Class<? extends AbstractResultService> xnI;
-  public com.tinkerboots.sdk.a.a.b xnJ;
   
   public a$a(ApplicationLike paramApplicationLike)
   {
-    if (paramApplicationLike == null) {
-      throw new TinkerRuntimeException("applicationLike must not be null.");
+    AppMethodBeat.i(65519);
+    if (paramApplicationLike == null)
+    {
+      paramApplicationLike = new TinkerRuntimeException("applicationLike must not be null.");
+      AppMethodBeat.o(65519);
+      throw paramApplicationLike;
     }
     this.context = paramApplicationLike.getApplication();
-    this.applicationLike = paramApplicationLike;
+    this.bXD = paramApplicationLike;
+    AppMethodBeat.o(65519);
   }
 }
 

@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.wallet_core.b;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.wallet_core.b.a.a;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.ui.MMActivity;
@@ -17,47 +18,55 @@ final class b$2
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(46469);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if ((paramm instanceof a))
       {
         paramString = (a)paramm;
-        b.a(this.qqt).putString("kreq_token", paramString.token);
-        if (this.qqt.c(this.gfb, b.b(this.qqt)))
+        b.a(this.ubp).putString("kreq_token", paramString.getToken());
+        if (this.ubp.c(this.hwZ, b.b(this.ubp)))
         {
-          com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BindCardProcess", "need update bankcardlist");
-          this.wBd.a(new com.tencent.mm.plugin.wallet_core.c.y(null, 12), false);
-          return true;
+          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.BindCardProcess", "need update bankcardlist");
+          this.AXB.a(new com.tencent.mm.plugin.wallet_core.c.ab(null, 12), false);
         }
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BindCardProcess", "not need update bankcardlist");
-        this.qqt.a(this.gfb, 0, b.c(this.qqt));
-        return true;
+        for (;;)
+        {
+          AppMethodBeat.o(46469);
+          return true;
+          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.BindCardProcess", "not need update bankcardlist");
+          this.ubp.a(this.hwZ, 0, b.c(this.ubp));
+        }
       }
-      if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.y))
+      if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.ab))
       {
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BindCardProcess", "update bankcardlist success!");
-        this.qqt.a(this.gfb, 0, b.d(this.qqt));
+        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.BindCardProcess", "update bankcardlist success!");
+        this.ubp.a(this.hwZ, 0, b.d(this.ubp));
+        AppMethodBeat.o(46469);
         return true;
       }
     }
+    AppMethodBeat.o(46469);
     return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
-    this.qqt.A(new Object[] { "onNext", paramVarArgs });
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BindCardProcess", "onNext, do bind bank card!");
+    AppMethodBeat.i(46470);
+    this.ubp.G(new Object[] { "onNext", paramVarArgs });
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.BindCardProcess", "onNext, do bind bank card!");
     paramVarArgs = (Authen)paramVarArgs[0];
-    paramVarArgs.bcw = b.e(this.qqt);
-    this.wBd.a(new a(paramVarArgs), true, 1);
+    paramVarArgs.bsY = this.ubp.cSV();
+    this.AXB.a(new a(paramVarArgs), true, 1);
+    AppMethodBeat.o(46470);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.b.b.2
  * JD-Core Version:    0.7.0.1
  */

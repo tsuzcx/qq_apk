@@ -1,53 +1,19 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.graphics.Bitmap;
-import android.view.MenuItem;
-import android.widget.ImageView;
-import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.n.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class WebViewUI$35
-  implements n.a
+  implements ap.a
 {
   WebViewUI$35(WebViewUI paramWebViewUI) {}
   
-  public final void a(ImageView paramImageView, MenuItem paramMenuItem)
+  public final boolean onTimerExpired()
   {
-    if (WebViewUI.g(paramMenuItem)) {
-      paramImageView.setVisibility(8);
-    }
-    for (;;)
-    {
-      return;
-      paramMenuItem = paramMenuItem.getTitle();
-      if ((WebViewUI.Q(this.rpH).get(paramMenuItem) != null) && (!((Bitmap)WebViewUI.Q(this.rpH).get(paramMenuItem)).isRecycled()))
-      {
-        paramImageView.setImageBitmap((Bitmap)WebViewUI.Q(this.rpH).get(paramMenuItem));
-        return;
-      }
-      y.w("MicroMsg.WebViewUI", "on attach icon, load from cache fail");
-      try
-      {
-        Object localObject = this.rpH.gGn.SL(paramMenuItem);
-        if (!bk.bl((String)localObject))
-        {
-          localObject = e.Td((String)localObject);
-          if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
-          {
-            paramImageView.setImageBitmap((Bitmap)localObject);
-            WebViewUI.Q(this.rpH).put(paramMenuItem, localObject);
-            return;
-          }
-        }
-      }
-      catch (Exception paramImageView)
-      {
-        y.w("MicroMsg.WebViewUI", "getheadimg, ex = " + paramImageView.getMessage());
-      }
-    }
+    AppMethodBeat.i(153245);
+    WebViewUI.n(this.vgz);
+    AppMethodBeat.o(153245);
+    return false;
   }
 }
 

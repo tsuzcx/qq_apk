@@ -1,6 +1,7 @@
 package com.eclipsesource.v8.debug.mirror;
 
 import com.eclipsesource.v8.V8Object;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FunctionMirror
   extends ObjectMirror
@@ -15,11 +16,15 @@ public class FunctionMirror
   
   public String getName()
   {
-    return this.v8Object.executeStringFunction("name", null);
+    AppMethodBeat.i(74868);
+    String str = this.v8Object.executeStringFunction("name", null);
+    AppMethodBeat.o(74868);
+    return str;
   }
   
   public String getScriptName()
   {
+    AppMethodBeat.i(74869);
     V8Object localV8Object = this.v8Object.executeObjectFunction("script", null);
     try
     {
@@ -29,6 +34,7 @@ public class FunctionMirror
     finally
     {
       localV8Object.release();
+      AppMethodBeat.o(74869);
     }
   }
   

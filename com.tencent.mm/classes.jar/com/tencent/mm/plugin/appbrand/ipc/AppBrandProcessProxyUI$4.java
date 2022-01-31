@@ -1,14 +1,30 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
+
 final class AppBrandProcessProxyUI$4
-  implements Runnable
+  implements DialogInterface.OnKeyListener
 {
-  AppBrandProcessProxyUI$4(AppBrandProcessProxyUI paramAppBrandProcessProxyUI, AppBrandProxyUIProcessTask.ProcessResult paramProcessResult) {}
+  AppBrandProcessProxyUI$4(AppBrandProcessProxyUI paramAppBrandProcessProxyUI, String paramString) {}
   
-  public final void run()
+  public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.geg.finish();
-    this.geg.b(this.geh);
+    AppMethodBeat.i(73127);
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
+    {
+      if (!bo.isNullOrNil(this.hwf))
+      {
+        AppBrandProcessProxyUI.b(this.hwg).onClick(AppBrandProcessProxyUI.a(this.hwg), -3);
+        paramDialogInterface.dismiss();
+      }
+      this.hwg.a(null);
+    }
+    AppMethodBeat.o(73127);
+    return false;
   }
 }
 

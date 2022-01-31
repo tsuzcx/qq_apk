@@ -5,7 +5,7 @@ public final class c$fj
 {
   public c$fj()
   {
-    super("openProductView", "open_product_view", 59, true);
+    super("openEmoticonTopicList", "openEmoticonTopicList", 212, true);
   }
 }
 

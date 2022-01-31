@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import com.tencent.mm.R.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.b;
 import com.tencent.mm.ui.widget.MMWebView;
@@ -14,74 +14,103 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 public final class q
   implements g
 {
-  private final MMWebView dYF;
-  private final MMActivity hxN;
+  private final MMWebView foJ;
+  private final MMActivity jpX;
   
   public q(MMActivity paramMMActivity, MMWebView paramMMWebView)
   {
-    this.hxN = paramMMActivity;
-    this.dYF = paramMMWebView;
+    this.jpX = paramMMActivity;
+    this.foJ = paramMMWebView;
   }
   
   public final void a(g.a parama)
   {
-    if (this.hxN.getSwipeBackLayout() == null) {
+    AppMethodBeat.i(8285);
+    if (this.jpX.getSwipeBackLayout() == null)
+    {
+      AppMethodBeat.o(8285);
       return;
     }
-    this.hxN.getSwipeBackLayout().setSwipeBackListener(new q.1(this, parama));
+    this.jpX.getSwipeBackLayout().setSwipeBackListener(new q.1(this, parama));
+    AppMethodBeat.o(8285);
   }
   
   public final void a(g.b paramb)
   {
-    b.a(this.hxN, new q.2(this, paramb));
+    AppMethodBeat.i(8287);
+    b.a(this.jpX, new q.2(this, paramb));
+    AppMethodBeat.o(8287);
   }
   
-  public final ViewGroup cbn()
+  public final ViewGroup bTL()
   {
-    return (ViewGroup)this.hxN.getWindow().getDecorView();
+    AppMethodBeat.i(8282);
+    ViewGroup localViewGroup = (ViewGroup)this.jpX.getWindow().getDecorView();
+    AppMethodBeat.o(8282);
+    return localViewGroup;
   }
   
-  public final boolean cbo()
+  public final boolean dbs()
   {
-    return this.hxN.getSwipeBackLayout() != null;
+    AppMethodBeat.i(8284);
+    if (this.jpX.getSwipeBackLayout() != null)
+    {
+      AppMethodBeat.o(8284);
+      return true;
+    }
+    AppMethodBeat.o(8284);
+    return false;
   }
   
   public final Activity getActivity()
   {
-    return this.hxN;
+    return this.jpX;
   }
   
   public final View getContentView()
   {
-    if (this.hxN.getSwipeBackLayout() == null) {
+    AppMethodBeat.i(8283);
+    if (this.jpX.getSwipeBackLayout() == null)
+    {
+      AppMethodBeat.o(8283);
       return null;
     }
-    return this.hxN.getSwipeBackLayout().getTargetContentView();
+    View localView = this.jpX.getSwipeBackLayout().getTargetContentView();
+    AppMethodBeat.o(8283);
+    return localView;
   }
   
   public final Intent getIntent()
   {
-    return this.hxN.getIntent();
+    AppMethodBeat.i(8280);
+    Intent localIntent = this.jpX.getIntent();
+    AppMethodBeat.o(8280);
+    return localIntent;
   }
   
   public final String getUrl()
   {
-    return this.dYF.getUrl();
+    AppMethodBeat.i(8281);
+    String str = this.foJ.getUrl();
+    AppMethodBeat.o(8281);
+    return str;
   }
   
-  public final void jW(boolean paramBoolean)
+  public final void mU(boolean paramBoolean)
   {
+    AppMethodBeat.i(8286);
     if (paramBoolean)
     {
-      this.hxN.getIntent().putExtra("MMActivity.OverrideExitAnimation", R.a.pop_out);
-      this.hxN.getIntent().putExtra("MMActivity.OverrideEnterAnimation", R.a.anim_not_change);
+      this.jpX.getIntent().putExtra("MMActivity.OverrideExitAnimation", 2131034222);
+      this.jpX.getIntent().putExtra("MMActivity.OverrideEnterAnimation", 2131034130);
     }
     for (;;)
     {
-      this.hxN.finish();
+      this.jpX.finish();
+      AppMethodBeat.o(8286);
       return;
-      this.hxN.getIntent().putExtra("MMActivity.OverrideExitAnimation", 0);
-      this.hxN.getIntent().putExtra("MMActivity.OverrideEnterAnimation", 0);
+      this.jpX.getIntent().putExtra("MMActivity.OverrideExitAnimation", 0);
+      this.jpX.getIntent().putExtra("MMActivity.OverrideEnterAnimation", 0);
     }
   }
 }

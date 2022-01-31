@@ -11,46 +11,54 @@ import android.view.GestureDetector;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
-import com.tencent.mm.plugin.scanner.a.m;
+import com.tencent.mm.plugin.scanner.model.n;
 import com.tencent.mm.plugin.scanner.util.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public abstract class i
 {
-  protected ProgressDialog dnm = null;
-  protected TextView gSy;
-  GestureDetector jEK;
-  protected Point jOD;
-  protected boolean miw;
-  protected int nLA = 20;
-  protected i.b nLB;
-  protected int nLC;
-  protected boolean nLD;
-  protected ah nLE = new i.1(this);
-  protected long nLt;
-  protected Rect nLu;
-  protected b nLv;
-  protected Point nLw;
-  protected int nLx;
-  protected int nLy;
-  protected int nLz = 40;
+  protected ProgressDialog eeN = null;
+  protected TextView ivt;
+  GestureDetector lOj;
+  protected Point miT;
+  protected boolean oIC;
+  protected int qwn = 0;
+  protected long qyY;
+  protected Rect qyZ;
+  protected b qza;
+  protected Point qzb;
+  protected int qzc;
+  protected int qzd;
+  protected int qze = 40;
+  protected int qzf = 20;
+  protected i.b qzg;
+  protected int qzh;
+  protected boolean qzi;
+  protected boolean qzj = false;
+  protected ak qzk = new i.1(this);
+  protected String typeName = "";
   
   public i(i.b paramb, Point paramPoint)
   {
-    this.nLB = paramb;
-    this.nLw = paramPoint;
+    this.qzg = paramb;
+    this.qzb = paramPoint;
   }
   
   public i(i.b paramb, Point paramPoint, byte paramByte)
   {
-    this.nLB = paramb;
-    this.nLw = paramPoint;
-    this.nLz = 50;
+    this.qzg = paramb;
+    this.qzb = paramPoint;
+    this.qze = 50;
   }
   
-  protected Rect D(boolean paramBoolean1, boolean paramBoolean2)
+  public final void CI(int paramInt)
+  {
+    this.qwn = paramInt;
+  }
+  
+  protected Rect H(boolean paramBoolean1, boolean paramBoolean2)
   {
     int n;
     int i1;
@@ -58,87 +66,98 @@ public abstract class i
     int k;
     int j;
     int i;
-    if ((this.nLu == null) || (paramBoolean1))
+    if ((this.qyZ == null) || (paramBoolean1))
     {
-      n = this.nLw.x;
-      i1 = this.nLw.y;
+      n = this.qzb.x;
+      i1 = this.qzb.y;
       if (paramBoolean2) {
         break label162;
       }
-      m = n / 2 - this.nLx / 2;
-      k = n / 2 + this.nLx / 2;
-      j = i1 / 2 - this.nLy / 2;
-      i = this.nLy + j;
+      m = n / 2 - this.qzc / 2;
+      k = n / 2 + this.qzc / 2;
+      j = i1 / 2 - this.qzd / 2;
+      i = this.qzd + j;
     }
     for (;;)
     {
-      y.d("MicroMsg.scanner.ScanMode", "framingRect: width = %s, height = %s; left = %s, right = %s, top = %s, bottom = %s", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) });
-      this.nLu = new Rect(m, j, k, i);
-      return this.nLu;
+      ab.d("MicroMsg.scanner.ScanMode", "framingRect: width = %s, height = %s; left = %s, right = %s, top = %s, bottom = %s", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) });
+      this.qyZ = new Rect(m, j, k, i);
+      return this.qyZ;
       label162:
       if (n < i1)
       {
-        m = i1 / 2 - this.nLx / 2;
-        k = i1 / 2 + this.nLx / 2;
-        j = BackwardSupportUtil.b.b(this.nLB.getContext(), this.nLA);
-        i = this.nLy + j;
+        m = i1 / 2 - this.qzc / 2;
+        k = i1 / 2 + this.qzc / 2;
+        j = BackwardSupportUtil.b.b(this.qzg.getContext(), this.qzf);
+        i = this.qzd + j;
       }
       else
       {
-        m = n / 2 - this.nLx / 2;
-        k = n / 2 + this.nLx / 2;
-        j = BackwardSupportUtil.b.b(this.nLB.getContext(), this.nLA);
-        i = this.nLy + j;
+        m = n / 2 - this.qzc / 2;
+        k = n / 2 + this.qzc / 2;
+        j = BackwardSupportUtil.b.b(this.qzg.getContext(), this.qzf);
+        i = this.qzd + j;
       }
     }
   }
   
   protected void a(byte[] paramArrayOfByte, Point paramPoint, int paramInt, Rect paramRect)
   {
-    y.i("MicroMsg.scanner.ScanMode", "decode count:" + m.nHb.nHe);
-    if (bxp() != null)
+    ab.i("MicroMsg.scanner.ScanMode", "decode count:" + n.qux.quA);
+    if (cim() != null)
     {
-      bxp().a(paramArrayOfByte, paramPoint, paramInt, paramRect);
-      if (m.nHb.nHe == 30) {
-        this.nLB.bxH();
+      cim().a(paramArrayOfByte, paramPoint, paramInt, paramRect);
+      if (n.qux.quA == 30) {
+        this.qzg.ciI();
       }
     }
   }
   
-  public final i.b bxQ()
+  public final int ciR()
   {
-    return this.nLB;
+    return this.qwn;
   }
   
-  protected abstract void bxo();
+  protected abstract void cil();
   
-  protected abstract b bxp();
+  protected abstract b cim();
   
-  protected abstract int bxq();
+  protected abstract int cin();
   
-  protected abstract int bxr();
+  protected abstract int cio();
   
-  protected abstract void bxs();
+  protected abstract void cip();
   
-  protected abstract boolean bxt();
+  protected abstract boolean ciq();
   
-  protected abstract boolean bxu();
+  protected abstract boolean cir();
   
-  protected void cK(View paramView) {}
-  
-  protected final double dG(int paramInt1, int paramInt2)
+  protected final void dA(View paramView)
   {
-    Activity localActivity = this.nLB.getContext();
+    this.lOj = new GestureDetector(new i.2(this));
+    paramView.setOnTouchListener(new i.3(this));
+  }
+  
+  protected void dz(View paramView) {}
+  
+  public final void f(Point paramPoint)
+  {
+    this.qzb = paramPoint;
+  }
+  
+  protected final double fo(int paramInt1, int paramInt2)
+  {
+    Activity localActivity = this.qzg.getContext();
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     ((WindowManager)localActivity.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
     double d = localDisplayMetrics.densityDpi / 160.0D;
-    y.d("MicroMsg.scanner.ScanMode", "dpiLevel [%s]", new Object[] { Double.valueOf(d) });
-    int j = (int)(this.nLw.x * 0.85F);
-    int i = (int)(this.nLw.y * 0.85F);
+    ab.d("MicroMsg.scanner.ScanMode", "dpiLevel [%s]", new Object[] { Double.valueOf(d) });
+    int j = (int)(this.qzb.x * 0.85F);
+    int i = (int)(this.qzb.y * 0.85F);
     if (((this instanceof j)) || ((this instanceof c)))
     {
-      j = (int)(this.nLw.y * 0.85F);
-      i = (int)(this.nLw.x * 0.85F);
+      j = (int)(this.qzb.y * 0.85F);
+      i = (int)(this.qzb.x * 0.85F);
     }
     for (;;)
     {
@@ -147,7 +166,7 @@ public abstract class i
       if (d > 1.2D)
       {
         f1 = f2;
-        if (this.nLw.x + this.nLw.y > 3000)
+        if (this.qzb.x + this.qzb.y > 3000)
         {
           f1 = f2;
           if (d < 2.4D) {
@@ -157,66 +176,78 @@ public abstract class i
       }
       for (;;)
       {
-        this.nLx = BackwardSupportUtil.b.b(this.nLB.getContext(), paramInt1 * f1);
-        this.nLy = BackwardSupportUtil.b.b(this.nLB.getContext(), paramInt2 * f1);
+        this.qzc = BackwardSupportUtil.b.b(this.qzg.getContext(), paramInt1 * f1);
+        this.qzd = BackwardSupportUtil.b.b(this.qzg.getContext(), paramInt2 * f1);
         f2 = f1;
-        if (this.nLx <= j) {
-          if (this.nLy <= i) {
+        if (this.qzc <= j) {
+          if (this.qzd <= i) {
             break label425;
           }
         }
-        for (f2 = f1; (this.nLx > j) || (this.nLy > i); f2 -= 0.1F)
+        for (f2 = f1; (this.qzc > j) || (this.qzd > i); f2 -= 0.1F)
         {
-          this.nLx = BackwardSupportUtil.b.b(this.nLB.getContext(), paramInt1 * f2);
-          this.nLy = BackwardSupportUtil.b.b(this.nLB.getContext(), paramInt2 * f2);
+          this.qzc = BackwardSupportUtil.b.b(this.qzg.getContext(), paramInt1 * f2);
+          this.qzd = BackwardSupportUtil.b.b(this.qzg.getContext(), paramInt2 * f2);
         }
-        if ((this.nLw != null) && (this.nLw.x + this.nLw.y > 1560)) {
+        if ((this.qzb != null) && (this.qzb.x + this.qzb.y > 1560)) {
           f1 = 1.7F;
-        } else if ((this.nLw != null) && (this.nLw.x + this.nLw.y > 1460)) {
+        } else if ((this.qzb != null) && (this.qzb.x + this.qzb.y > 1460)) {
           f1 = 1.1F;
         } else {
           f1 = 0.9F;
         }
       }
-      y.i("MicroMsg.scanner.ScanMode", "final adjust ratio: %s", new Object[] { Float.valueOf(f2) });
+      ab.i("MicroMsg.scanner.ScanMode", "final adjust ratio: %s", new Object[] { Float.valueOf(f2) });
       label425:
-      if (this.nLx % 2 == 1) {
-        this.nLx += 1;
+      if (this.qzc % 2 == 1) {
+        this.qzc += 1;
       }
-      if (this.nLy % 2 == 1) {
-        this.nLy += 1;
+      if (this.qzd % 2 == 1) {
+        this.qzd += 1;
       }
-      y.d("MicroMsg.scanner.ScanMode", "frame, width:%d, height:%d, visDisplayFrameRes:%s", new Object[] { Integer.valueOf(this.nLx), Integer.valueOf(this.nLy), this.nLw });
+      ab.d("MicroMsg.scanner.ScanMode", "frame, width:%d, height:%d, visDisplayFrameRes:%s", new Object[] { Integer.valueOf(this.qzc), Integer.valueOf(this.qzd), this.qzb });
       return d;
     }
   }
   
-  public final void g(Point paramPoint)
+  protected void g(Point paramPoint)
   {
-    this.nLw = paramPoint;
+    this.miT = paramPoint;
   }
   
-  protected void h(Point paramPoint)
+  protected abstract void k(Rect paramRect);
+  
+  protected final void kC(boolean paramBoolean)
   {
-    this.jOD = paramPoint;
+    if (this.ivt == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.ivt.setVisibility(4);
+      this.qzk.sendEmptyMessageDelayed(1, 210L);
+      return;
+    }
+    this.qzk.removeMessages(1);
+    this.ivt.setVisibility(4);
   }
   
-  protected Rect iA(boolean paramBoolean)
+  protected Rect kD(boolean paramBoolean)
   {
-    return D(true, paramBoolean);
+    return H(true, paramBoolean);
   }
   
-  protected void iB(boolean paramBoolean)
+  protected void kE(boolean paramBoolean)
   {
-    this.miw = paramBoolean;
+    this.oIC = paramBoolean;
   }
   
-  public final void iC(boolean paramBoolean)
+  public final void kF(boolean paramBoolean)
   {
     TextView localTextView;
-    if (this.gSy != null)
+    if (this.ivt != null)
     {
-      localTextView = this.gSy;
+      localTextView = this.ivt;
       if (!paramBoolean) {
         break label24;
       }
@@ -229,29 +260,17 @@ public abstract class i
     }
   }
   
-  protected final void iz(boolean paramBoolean)
+  public final void kG(boolean paramBoolean)
   {
-    if (this.gSy == null) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.gSy.setVisibility(4);
-      this.nLE.sendEmptyMessageDelayed(1, 210L);
-      return;
-    }
-    this.nLE.removeMessages(1);
-    this.gSy.setVisibility(4);
+    this.qzj = paramBoolean;
   }
-  
-  protected abstract void j(Rect paramRect);
   
   protected abstract void onDestroy();
   
   protected void onPause()
   {
-    if ((this.dnm != null) && (this.dnm.isShowing())) {
-      this.dnm.dismiss();
+    if ((this.eeN != null) && (this.eeN.isShowing())) {
+      this.eeN.dismiss();
     }
   }
   

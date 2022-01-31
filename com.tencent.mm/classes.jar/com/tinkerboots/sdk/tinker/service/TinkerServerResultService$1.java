@@ -1,13 +1,19 @@
 package com.tinkerboots.sdk.tinker.service;
 
-import com.tinkerboots.sdk.b.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tinkerboots.sdk.b.d.a;
 
 final class TinkerServerResultService$1
-  implements c.a
+  implements d.a
 {
   TinkerServerResultService$1(TinkerServerResultService paramTinkerServerResultService) {}
   
-  public final void acE() {}
+  public final void awv()
+  {
+    AppMethodBeat.i(65549);
+    TinkerServerResultService.restartProcess();
+    AppMethodBeat.o(65549);
+  }
 }
 
 

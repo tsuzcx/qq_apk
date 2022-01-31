@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.product.ui;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.b.c;
 
 final class MallProductSubmitUI$8
@@ -12,9 +13,11 @@ final class MallProductSubmitUI$8
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.mUW.dismissDialog(1);
-    MallProductSubmitUI.b(this.mUW).vM(paramInt);
-    MallProductSubmitUI.a(this.mUW);
+    AppMethodBeat.i(44146);
+    this.pxb.dismissDialog(1);
+    MallProductSubmitUI.b(this.pxb).Bm(paramInt);
+    MallProductSubmitUI.a(this.pxb);
+    AppMethodBeat.o(44146);
   }
 }
 

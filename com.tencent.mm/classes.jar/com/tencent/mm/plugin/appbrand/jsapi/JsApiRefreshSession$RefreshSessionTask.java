@@ -2,157 +2,134 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w;
-import com.tencent.mm.ah.w.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.w;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.protocal.c.aqz;
-import com.tencent.mm.protocal.c.arv;
-import com.tencent.mm.protocal.c.arw;
-import com.tencent.mm.protocal.c.cms;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aya;
+import com.tencent.mm.protocal.protobuf.ayb;
+import com.tencent.mm.protocal.protobuf.dam;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.Map;
 
 public class JsApiRefreshSession$RefreshSessionTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<RefreshSessionTask> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<RefreshSessionTask> CREATOR;
   String appId;
   private String errorMsg;
-  private int fJy;
-  int gfg;
-  i gfh;
-  c ggu;
-  private int ghj;
-  private int ghk;
-  private int ghl;
-  int ghm;
+  private int hcr;
+  int hry;
+  m hrz;
+  c hyO;
+  private int hzA;
+  int hzB;
+  private int hzy;
+  private int hzz;
+  
+  static
+  {
+    AppMethodBeat.i(130552);
+    CREATOR = new JsApiRefreshSession.RefreshSessionTask.2();
+    AppMethodBeat.o(130552);
+  }
   
   public JsApiRefreshSession$RefreshSessionTask() {}
   
   public JsApiRefreshSession$RefreshSessionTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(130543);
+    f(paramParcel);
+    AppMethodBeat.o(130543);
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    ahC();
+    AppMethodBeat.i(130544);
+    aBj();
     b.a locala = new b.a();
-    locala.ecH = new arv();
-    locala.ecI = new arw();
+    locala.fsX = new aya();
+    locala.fsY = new ayb();
     locala.uri = "/cgi-bin/mmbiz-bin/js-refreshsession";
-    locala.ecG = 1196;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    arv localarv = new arv();
-    localarv.euK = this.appId;
-    localarv.tmZ = this.fJy;
-    locala.ecH = localarv;
-    if (this.ghm > 0)
+    locala.funcId = 1196;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    aya localaya = new aya();
+    localaya.fKw = this.appId;
+    localaya.xmQ = this.hcr;
+    locala.fsX = localaya;
+    if (this.hzB > 0)
     {
-      localarv.tna = new cms();
-      localarv.tna.scene = this.ghm;
+      localaya.xmR = new dam();
+      localaya.xmR.scene = this.hzB;
     }
-    y.i("MicroMsg.JsApiRefreshSession", "refreshSession appId %s, versionType, statScene %d", new Object[] { this.appId, Integer.valueOf(this.fJy), Integer.valueOf(this.ghm) });
-    w.a(locala.Kt(), new w.a()
-    {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, m paramAnonymousm)
-      {
-        y.d("MicroMsg.JsApiRefreshSession", "JSRefreshSessionRequest errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
-        {
-          JsApiRefreshSession.RefreshSessionTask.b(JsApiRefreshSession.RefreshSessionTask.this, 0);
-          JsApiRefreshSession.RefreshSessionTask.a(JsApiRefreshSession.RefreshSessionTask.this, "cgi fail");
-          JsApiRefreshSession.RefreshSessionTask.a(JsApiRefreshSession.RefreshSessionTask.this);
-          return 0;
-        }
-        paramAnonymousb = (arw)paramAnonymousb.ecF.ecN;
-        if (paramAnonymousb == null)
-        {
-          JsApiRefreshSession.RefreshSessionTask.b(JsApiRefreshSession.RefreshSessionTask.this, 0);
-          y.e("MicroMsg.JsApiRefreshSession", "JSRefreshSessionRequest failed, response is null!");
-          JsApiRefreshSession.RefreshSessionTask.b(JsApiRefreshSession.RefreshSessionTask.this);
-          return 0;
-        }
-        JsApiRefreshSession.RefreshSessionTask.c(JsApiRefreshSession.RefreshSessionTask.this, paramAnonymousb.tnb.bLB);
-        JsApiRefreshSession.RefreshSessionTask.a(JsApiRefreshSession.RefreshSessionTask.this, paramAnonymousb.tnb.bLC);
-        if (JsApiRefreshSession.RefreshSessionTask.c(JsApiRefreshSession.RefreshSessionTask.this) == 0)
-        {
-          JsApiRefreshSession.RefreshSessionTask.d(JsApiRefreshSession.RefreshSessionTask.this, paramAnonymousb.tnj);
-          JsApiRefreshSession.RefreshSessionTask.c(JsApiRefreshSession.RefreshSessionTask.this, paramAnonymousb.tnb.bLB);
-          JsApiRefreshSession.RefreshSessionTask.b(JsApiRefreshSession.RefreshSessionTask.this, 1);
-          JsApiRefreshSession.RefreshSessionTask.d(JsApiRefreshSession.RefreshSessionTask.this);
-          return 0;
-        }
-        JsApiRefreshSession.RefreshSessionTask.c(JsApiRefreshSession.RefreshSessionTask.this, paramAnonymousb.tnb.bLB);
-        JsApiRefreshSession.RefreshSessionTask.b(JsApiRefreshSession.RefreshSessionTask.this, 2);
-        y.e("MicroMsg.JsApiRefreshSession", "JSRefreshSessionRequest ERROR %s", new Object[] { paramAnonymousString });
-        JsApiRefreshSession.RefreshSessionTask.e(JsApiRefreshSession.RefreshSessionTask.this);
-        return 0;
-      }
-    }, true);
+    ab.i("MicroMsg.JsApiRefreshSession", "refreshSession appId %s, versionType, statScene %d", new Object[] { this.appId, Integer.valueOf(this.hcr), Integer.valueOf(this.hzB) });
+    w.a(locala.ado(), new JsApiRefreshSession.RefreshSessionTask.1(this), true);
+    AppMethodBeat.o(130544);
   }
   
-  public final void Zv()
+  public final void atb()
   {
+    AppMethodBeat.i(130545);
     HashMap localHashMap = new HashMap();
-    switch (this.ghl)
+    switch (this.hzA)
     {
     default: 
-      if (!bk.bl(this.errorMsg)) {
+      if (!bo.isNullOrNil(this.errorMsg)) {
         break;
       }
     }
     for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.errorMsg }))
     {
       localHashMap.put("errCode", "-1");
-      this.ggu.C(this.gfg, this.gfh.h(str, localHashMap));
+      this.hyO.h(this.hry, this.hrz.j(str, localHashMap));
       for (;;)
       {
-        ahD();
+        aBk();
+        AppMethodBeat.o(130545);
         return;
-        localHashMap.put("expireIn", this.ghj);
-        localHashMap.put("errCode", this.ghk);
-        this.ggu.C(this.gfg, this.gfh.h("ok", localHashMap));
+        localHashMap.put("expireIn", this.hzy);
+        localHashMap.put("errCode", this.hzz);
+        this.hyO.h(this.hry, this.hrz.j("ok", localHashMap));
       }
-      if (bk.bl(this.errorMsg)) {}
+      if (bo.isNullOrNil(this.errorMsg)) {}
       for (str = "fail";; str = String.format("fail:%s", new Object[] { this.errorMsg }))
       {
-        localHashMap.put("errCode", this.ghk);
-        this.ggu.C(this.gfg, this.gfh.h(str, localHashMap));
+        localHashMap.put("errCode", this.hzz);
+        this.hyO.h(this.hry, this.hrz.j(str, localHashMap));
         break;
       }
     }
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
-    this.ghj = paramParcel.readInt();
-    this.ghk = paramParcel.readInt();
-    this.ghl = paramParcel.readInt();
-    this.gfg = paramParcel.readInt();
+    AppMethodBeat.i(130546);
+    this.hzy = paramParcel.readInt();
+    this.hzz = paramParcel.readInt();
+    this.hzA = paramParcel.readInt();
+    this.hry = paramParcel.readInt();
     this.appId = paramParcel.readString();
-    this.fJy = paramParcel.readInt();
-    this.ghm = paramParcel.readInt();
+    this.hcr = paramParcel.readInt();
+    this.hzB = paramParcel.readInt();
     this.errorMsg = paramParcel.readString();
+    AppMethodBeat.o(130546);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.ghj);
-    paramParcel.writeInt(this.ghk);
-    paramParcel.writeInt(this.ghl);
-    paramParcel.writeInt(this.gfg);
+    AppMethodBeat.i(130547);
+    paramParcel.writeInt(this.hzy);
+    paramParcel.writeInt(this.hzz);
+    paramParcel.writeInt(this.hzA);
+    paramParcel.writeInt(this.hry);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.fJy);
-    paramParcel.writeInt(this.ghm);
+    paramParcel.writeInt(this.hcr);
+    paramParcel.writeInt(this.hzB);
     paramParcel.writeString(this.errorMsg);
+    AppMethodBeat.o(130547);
   }
 }
 

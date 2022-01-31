@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.shake.ui;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShakeReportUI$2
   implements DialogInterface.OnClickListener
@@ -11,9 +12,11 @@ final class ShakeReportUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ShakeReportUI.r(this.odm) != null) {
-      ShakeReportUI.r(this.odm).cancel();
+    AppMethodBeat.i(24776);
+    if (ShakeReportUI.s(this.qRs) != null) {
+      ShakeReportUI.s(this.qRs).cancel();
     }
+    AppMethodBeat.o(24776);
   }
 }
 

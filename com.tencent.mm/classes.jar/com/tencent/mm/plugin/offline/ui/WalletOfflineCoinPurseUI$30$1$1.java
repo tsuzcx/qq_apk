@@ -4,11 +4,9 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.MenuItem;
-import com.tencent.mm.plugin.wxpay.a.d;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.widget.a.d;
 import java.util.HashMap;
 
 final class WalletOfflineCoinPurseUI$30$1$1
@@ -18,21 +16,23 @@ final class WalletOfflineCoinPurseUI$30$1$1
   
   public final void run()
   {
-    y.i("MicroMsg.WalletOfflineCoinPurseUI", "dancy test get picture finish, notifyKey:%s, finalIconUrl:%s", new Object[] { this.mNE, this.mNF.mNB });
-    if (WalletOfflineCoinPurseUI.L(this.mNF.mND.mNj).containsKey(this.mNE))
+    AppMethodBeat.i(43537);
+    ab.i("MicroMsg.WalletOfflineCoinPurseUI", "dancy test get picture finish, notifyKey:%s, finalIconUrl:%s", new Object[] { this.pnT, this.pnU.pnQ });
+    if (WalletOfflineCoinPurseUI.K(this.pnU.pnS.pny).containsKey(this.pnT))
     {
-      int i = ((Integer)WalletOfflineCoinPurseUI.L(this.mNF.mND.mNj).get(this.mNE)).intValue();
-      if (this.mNF.mNC.getItem(i) != null)
+      int i = ((Integer)WalletOfflineCoinPurseUI.K(this.pnU.pnS.pny).get(this.pnT)).intValue();
+      if (this.pnU.pnR.getItem(i) != null)
       {
-        this.mNF.mNC.getItem(i).setIcon(new BitmapDrawable(c.a(this.ara, this.mNF.mND.mNj.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), this.mNF.mND.mNj.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), true, false)));
-        this.mNF.mND.fnd.cKf();
+        this.pnU.pnR.getItem(i).setIcon(new BitmapDrawable(com.tencent.mm.sdk.platformtools.d.a(this.val$bitmap, this.pnU.pnS.pny.getResources().getDimensionPixelOffset(2131428824), this.pnU.pnS.pny.getResources().getDimensionPixelOffset(2131428824), true, false)));
+        this.pnU.pnS.gEx.dPa();
       }
     }
+    AppMethodBeat.o(43537);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.30.1.1
  * JD-Core Version:    0.7.0.1
  */

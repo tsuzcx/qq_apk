@@ -1,105 +1,123 @@
 package com.tencent.mm.plugin.backup.backuppcmodel;
 
-import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.IBinder;
 import com.jg.JgClassChecked;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.backup.b.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService;
 import com.tencent.mm.plugin.backup.g.e;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.service.MMService;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140422", reviewer=20, vComment={com.jg.EType.SERVICESCHECK})
 public class BackupPcService
-  extends Service
+  extends MMService
 {
-  private boolean guU = false;
-  private boolean hKZ = false;
+  private boolean hPP = false;
+  private boolean jEC = false;
   
-  public IBinder onBind(Intent paramIntent)
+  public final IBinder It()
   {
     return null;
   }
   
-  public void onCreate()
+  public final String getTag()
   {
-    y.i("MicroMsg.BackupPcService", "onCreate.");
+    return "MicroMsg.BackupPcService";
+  }
+  
+  public final void onCreate()
+  {
+    AppMethodBeat.i(17564);
+    ab.i("MicroMsg.BackupPcService", "onCreate.");
     super.onCreate();
+    AppMethodBeat.o(17564);
   }
   
-  public void onDestroy()
+  public final void onDestroy()
   {
+    AppMethodBeat.i(17566);
     super.onDestroy();
-    y.i("MicroMsg.BackupPcService", "onDestroy thread:" + Thread.currentThread().getName());
+    ab.i("MicroMsg.BackupPcService", "onDestroy thread:" + Thread.currentThread().getName());
+    AppMethodBeat.o(17566);
   }
   
-  public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
+  public final int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.BackupPcService", "onStartCommand.");
+    AppMethodBeat.i(17565);
+    ab.i("MicroMsg.BackupPcService", "onStartCommand.");
     if (paramIntent == null)
     {
-      y.w("MicroMsg.BackupPcService", "onStartCommand intent is null");
+      ab.w("MicroMsg.BackupPcService", "onStartCommand intent is null");
+      AppMethodBeat.o(17565);
       return 2;
     }
     final String str = paramIntent.getStringExtra("url");
-    if (bk.bl(str))
+    if (bo.isNullOrNil(str))
     {
-      y.e("MicroMsg.BackupPcService", "onStartCommand url is null");
+      ab.e("MicroMsg.BackupPcService", "onStartCommand url is null");
       stopSelf();
+      AppMethodBeat.o(17565);
       return 2;
     }
     if (str.contains("mm.gj.qq.com"))
     {
-      y.i("MicroMsg.BackupPcService", "onStartCommand url from gj stop and start BakOldUSBService");
-      startService(new Intent(this, BakOldUSBService.class).putExtra("url", paramIntent.getStringExtra("url")).putExtra("isFromWifi", true));
+      ab.i("MicroMsg.BackupPcService", "onStartCommand url from gj stop and start BakOldUSBService");
+      com.tencent.mm.bq.d.aG(new Intent(ah.getContext(), BakOldUSBService.class).putExtra("url", paramIntent.getStringExtra("url")).putExtra("isFromWifi", true));
       stopSelf();
+      AppMethodBeat.o(17565);
       return 2;
     }
-    this.hKZ = paramIntent.getBooleanExtra("isFromWifi", false);
-    this.guU = paramIntent.getBooleanExtra("isMove", false);
-    y.i("MicroMsg.BackupPcService", "onStartCommand Broadcast url:%s, isFromWifi:%b, isMove:%b", new Object[] { str, Boolean.valueOf(this.hKZ), Boolean.valueOf(this.guU) });
-    if ((!this.guU) && (!au.Hz()))
+    this.jEC = paramIntent.getBooleanExtra("isFromWifi", false);
+    this.hPP = paramIntent.getBooleanExtra("isMove", false);
+    ab.i("MicroMsg.BackupPcService", "onStartCommand Broadcast url:%s, isFromWifi:%b, isMove:%b", new Object[] { str, Boolean.valueOf(this.jEC), Boolean.valueOf(this.hPP) });
+    if ((!this.hPP) && (!aw.aaB()))
     {
-      y.e("MicroMsg.BackupPcService", "onStartCommand onStartCommand not in Login state");
-      paramIntent = new Intent().setClassName(this, "com.tencent.mm.ui.LauncherUI");
+      ab.e("MicroMsg.BackupPcService", "onStartCommand onStartCommand not in Login state");
+      paramIntent = new Intent().setClassName(ah.getContext(), "com.tencent.mm.ui.LauncherUI");
       paramIntent.addFlags(335544320);
       paramIntent.putExtra("nofification_type", "back_to_pcmgr_notification");
       startActivity(paramIntent);
+      AppMethodBeat.o(17565);
       return 2;
     }
-    ai.d(new Runnable()
+    al.d(new Runnable()
     {
       public final void run()
       {
-        Object localObject = b.auw().aux();
+        AppMethodBeat.i(17563);
+        Object localObject = b.aTX().aTY();
         String str = str;
-        y.w("MicroMsg.BackupPcProcessMgr", "~~~~~~~~~~~~  start by url:%s", new Object[] { str });
-        d.nu(1);
-        com.tencent.mm.plugin.backup.g.b.auQ();
-        au.Hx();
-        ((c)localObject).hKD = ((Integer)com.tencent.mm.model.c.Dz().get(ac.a.uul, Integer.valueOf(0))).intValue();
-        b.auw();
-        SharedPreferences.Editor localEditor = b.ats().edit();
+        ab.w("MicroMsg.BackupPcProcessMgr", "~~~~~~~~~~~~  start by url:%s", new Object[] { str });
+        com.tencent.mm.plugin.backup.b.d.rg(1);
+        com.tencent.mm.plugin.backup.g.b.aUs();
+        aw.aaz();
+        ((c)localObject).jEg = ((Integer)com.tencent.mm.model.c.Ru().get(ac.a.yEo, Integer.valueOf(0))).intValue();
+        b.aTX();
+        SharedPreferences.Editor localEditor = b.aSQ().edit();
         localEditor.putInt("BACKUP_PC_CHOOSE_SELECT_TIME_MODE", 0);
         localEditor.putInt("BACKUP_PC_CHOOSE_SELECT_CONTENT_TYPE", 0);
         localEditor.putLong("BACKUP_PC_CHOOSE_SELECT_START_TIME", 0L);
         localEditor.putLong("BACKUP_PC_CHOOSE_SELECT_END_TIME", 0L);
         localEditor.commit();
-        ((c)localObject).hKE = true;
-        au.Dk().a(595, ((c)localObject).hIg);
+        ((c)localObject).jEh = true;
+        aw.Rc().a(595, ((c)localObject).jBE);
         localObject = new e(str);
-        au.Dk().a((m)localObject, 0);
+        aw.Rc().a((m)localObject, 0);
+        AppMethodBeat.o(17563);
       }
     });
+    AppMethodBeat.o(17565);
     return 2;
   }
 }

@@ -9,140 +9,150 @@ import android.view.SurfaceHolder;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import com.tencent.mm.R.g;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 public class TalkRoomVolumeMeter
   extends FrameLayout
 {
-  private TalkRoomVolumeMeter.a pCp;
-  private ImageView pCq;
-  private ImageView pCr;
-  private ImageView pCs;
-  private FrameLayout pCt;
+  private TalkRoomVolumeMeter.a tdZ;
+  private ImageView tea;
+  private ImageView teb;
+  private ImageView tec;
+  private FrameLayout ted;
   
   public TalkRoomVolumeMeter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(25967);
     initView();
+    AppMethodBeat.o(25967);
   }
   
   public TalkRoomVolumeMeter(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(25966);
     initView();
+    AppMethodBeat.o(25966);
   }
   
   private void initView()
   {
-    this.pCp = new TalkRoomVolumeMeter.a(this, getContext());
-    this.pCq = new ImageView(getContext());
-    this.pCq.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.pCq.setImageResource(R.g.talk_room_volume_net);
-    this.pCq.setVisibility(0);
-    this.pCr = new ImageView(getContext());
-    this.pCr.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.pCr.setImageResource(R.g.talk_room_volume_mask);
-    this.pCr.setVisibility(8);
-    this.pCs = new ImageView(getContext());
-    this.pCs.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.pCs.setImageResource(R.g.talk_room_volume_err);
-    this.pCs.setVisibility(8);
-    this.pCt = new FrameLayout(getContext());
-    this.pCt.addView(this.pCp);
-    this.pCt.addView(this.pCr);
-    this.pCt.setVisibility(8);
-    addView(this.pCt);
-    addView(this.pCs);
-    addView(this.pCq);
+    AppMethodBeat.i(25968);
+    this.tdZ = new TalkRoomVolumeMeter.a(this, getContext());
+    this.tea = new ImageView(getContext());
+    this.tea.setScaleType(ImageView.ScaleType.FIT_XY);
+    this.tea.setImageResource(2130840542);
+    this.tea.setVisibility(0);
+    this.teb = new ImageView(getContext());
+    this.teb.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.teb.setImageResource(2130840541);
+    this.teb.setVisibility(8);
+    this.tec = new ImageView(getContext());
+    this.tec.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.tec.setImageResource(2130840538);
+    this.tec.setVisibility(8);
+    this.ted = new FrameLayout(getContext());
+    this.ted.addView(this.tdZ);
+    this.ted.addView(this.teb);
+    this.ted.setVisibility(8);
+    addView(this.ted);
+    addView(this.tec);
+    addView(this.tea);
     setBackgroundColor(-16777216);
-    bringChildToFront(this.pCq);
+    bringChildToFront(this.tea);
+    AppMethodBeat.o(25968);
   }
   
   private void setShowErr(boolean paramBoolean)
   {
-    ImageView localImageView = this.pCs;
+    AppMethodBeat.i(25969);
+    ImageView localImageView = this.tec;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
       localImageView.setVisibility(i);
+      AppMethodBeat.o(25969);
       return;
     }
   }
   
   private void setShowRed(boolean paramBoolean)
   {
-    this.pCp.pCI = paramBoolean;
+    this.tdZ.ter = paramBoolean;
   }
   
   public void setMax(int paramInt)
   {
-    this.pCp.max = paramInt;
+    this.tdZ.max = paramInt;
   }
   
   public void setMaxPos(int paramInt)
   {
-    this.pCp.pCv = paramInt;
+    this.tdZ.tef = paramInt;
   }
   
   public void setMinPos(int paramInt)
   {
-    this.pCp.pCu = paramInt;
+    this.tdZ.tee = paramInt;
   }
   
   public void setShowFlame(boolean paramBoolean)
   {
-    Object localObject = this.pCt;
-    int i;
-    if (paramBoolean)
+    AppMethodBeat.i(25970);
+    Object localObject = this.ted;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      i = 0;
       ((FrameLayout)localObject).setVisibility(i);
       if (!paramBoolean) {
-        break label57;
+        break;
       }
-      localObject = this.pCp;
+      localObject = this.tdZ;
       if (!((TalkRoomVolumeMeter.a)localObject).started)
       {
         ((TalkRoomVolumeMeter.a)localObject).started = true;
-        ((TalkRoomVolumeMeter.a)localObject).pCD.S(100L, 100L);
+        ((TalkRoomVolumeMeter.a)localObject).ten.ag(100L, 100L);
+      }
+      AppMethodBeat.o(25970);
+      return;
+    }
+    TalkRoomVolumeMeter.a locala = this.tdZ;
+    if (locala.started)
+    {
+      locala.started = false;
+      if ((locala.tep >= locala.tee) && (locala.tep <= locala.tef)) {
+        break label132;
       }
     }
-    label57:
-    TalkRoomVolumeMeter.a locala;
-    do
-    {
-      return;
-      i = 8;
-      break;
-      locala = this.pCp;
-    } while (!locala.started);
-    locala.started = false;
-    if ((locala.pCG < locala.pCu) || (locala.pCG > locala.pCv)) {}
+    label132:
     Canvas localCanvas;
     do
     {
       do
       {
-        locala.pCD.stopTimer();
+        locala.ten.stopTimer();
+        AppMethodBeat.o(25970);
         return;
-      } while ((locala.pCy == null) || (locala.pCx == null));
-      localCanvas = locala.pCw.lockCanvas();
-    } while ((localCanvas == null) || (locala.pCA == null));
-    localCanvas.setDrawFilter(locala.pCH);
-    locala.pCA.set(0, 0, locala.pCC, locala.pCB + 0);
-    if (locala.pCI) {}
-    for (localObject = locala.pCy;; localObject = locala.pCx)
+      } while ((locala.tei == null) || (locala.teh == null));
+      localCanvas = locala.teg.lockCanvas();
+    } while ((localCanvas == null) || (locala.tek == null));
+    localCanvas.setDrawFilter(locala.teq);
+    locala.tek.set(0, 0, locala.tem, locala.tel + 0);
+    if (locala.ter) {}
+    for (localObject = locala.tei;; localObject = locala.teh)
     {
-      localCanvas.drawBitmap((Bitmap)localObject, null, locala.pCA, locala.gaZ);
-      locala.pCw.unlockCanvasAndPost(localCanvas);
+      localCanvas.drawBitmap((Bitmap)localObject, null, locala.tek, locala.paint);
+      locala.teg.unlockCanvasAndPost(localCanvas);
       break;
     }
   }
   
   public void setValue(int paramInt)
   {
-    TalkRoomVolumeMeter.a locala = this.pCp;
+    TalkRoomVolumeMeter.a locala = this.tdZ;
     int i;
     if (paramInt < 0) {
       i = 0;
@@ -150,7 +160,7 @@ public class TalkRoomVolumeMeter
     for (;;)
     {
       locala.value = i;
-      locala.pCG = (locala.pCv - (locala.pCv - locala.pCu) * (locala.value * 1.0F / locala.max));
+      locala.tep = (locala.tef - (locala.tef - locala.tee) * (locala.value * 1.0F / locala.max));
       return;
       i = paramInt;
       if (paramInt > locala.max) {
@@ -161,7 +171,7 @@ public class TalkRoomVolumeMeter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomVolumeMeter
  * JD-Core Version:    0.7.0.1
  */

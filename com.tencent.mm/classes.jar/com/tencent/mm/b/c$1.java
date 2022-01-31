@@ -3,8 +3,10 @@ package com.tencent.mm.b;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.graphics.PointF;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cache.d;
 import com.tencent.mm.e.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ListIterator;
 
 public final class c$1
@@ -14,25 +16,35 @@ public final class c$1
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
+    AppMethodBeat.i(116141);
     float f1 = ((Float)paramValueAnimator.getAnimatedValue("deltaY")).floatValue();
     float f2 = ((Float)paramValueAnimator.getAnimatedValue("deltaX")).floatValue();
-    y.d("MicroMsg.StickBackAnim", "animatorValueY:%s  %s", new Object[] { Float.valueOf(f1), Float.valueOf(f1 - this.buy.buw) });
-    paramValueAnimator = this.buy.but;
-    float f3 = this.buy.bux;
-    float f4 = this.buy.buw;
-    String str = this.buy.buv;
-    ListIterator localListIterator = ((com.tencent.mm.cache.c)paramValueAnimator.tI()).wS();
-    while (localListIterator.hasPrevious())
+    ab.d("MicroMsg.StickBackAnim", "animatorValueY:%s  %s", new Object[] { Float.valueOf(f1), Float.valueOf(f1 - this.bVJ.bVH) });
+    paramValueAnimator = this.bVJ.bVE;
+    float f3 = this.bVJ.bVI;
+    float f4 = this.bVJ.bVH;
+    String str = this.bVJ.bVG;
+    Object localObject = (d)paramValueAnimator.CB();
+    if (localObject == null) {
+      ab.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
+    }
+    for (;;)
     {
-      com.tencent.mm.z.c localc = (com.tencent.mm.z.c)localListIterator.previous();
-      if (localc.dHK.equals(str))
+      this.bVJ.bVH = f1;
+      this.bVJ.bVI = f2;
+      AppMethodBeat.o(116141);
+      return;
+      localObject = ((d)localObject).Jk();
+      if (((ListIterator)localObject).hasPrevious())
       {
-        localc.dHN.offset(f2 - f3, f1 - f4);
-        paramValueAnimator.tQ();
+        com.tencent.mm.y.c localc = (com.tencent.mm.y.c)((ListIterator)localObject).previous();
+        if (!localc.eFp.equals(str)) {
+          break;
+        }
+        localc.eFs.offset(f2 - f3, f1 - f4);
+        paramValueAnimator.CI();
       }
     }
-    this.buy.buw = f1;
-    this.buy.bux = f2;
   }
 }
 

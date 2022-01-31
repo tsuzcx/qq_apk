@@ -1,66 +1,75 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
-  LinearLayout nXC;
-  LinearLayout nXD;
-  LinearLayout nXE;
-  LinearLayout nXF;
-  LinearLayout nXG;
+  LinearLayout qLM;
+  LinearLayout qLN;
+  LinearLayout qLO;
+  LinearLayout qLP;
+  LinearLayout qLQ;
   
-  public final void Mt(String paramString)
+  public final void YY(String paramString)
   {
+    AppMethodBeat.i(127689);
     if (paramString.equals("downloading"))
     {
-      this.nXC.setVisibility(0);
-      this.nXD.setVisibility(8);
-      this.nXE.setVisibility(8);
-      this.nXF.setVisibility(8);
-      this.nXG.setVisibility(8);
-    }
-    do
-    {
+      this.qLM.setVisibility(0);
+      this.qLN.setVisibility(8);
+      this.qLO.setVisibility(8);
+      this.qLP.setVisibility(8);
+      this.qLQ.setVisibility(8);
+      AppMethodBeat.o(127689);
       return;
-      if (paramString.equals("downloaded"))
-      {
-        this.nXC.setVisibility(8);
-        this.nXD.setVisibility(0);
-        this.nXE.setVisibility(8);
-        this.nXF.setVisibility(8);
-        this.nXG.setVisibility(8);
-        return;
-      }
-      if (paramString.equals("undownloaded"))
-      {
-        this.nXC.setVisibility(8);
-        this.nXD.setVisibility(8);
-        this.nXE.setVisibility(0);
-        this.nXF.setVisibility(8);
-        this.nXG.setVisibility(8);
-        return;
-      }
-      if (paramString.equals("using"))
-      {
-        this.nXC.setVisibility(8);
-        this.nXD.setVisibility(8);
-        this.nXE.setVisibility(8);
-        this.nXF.setVisibility(0);
-        this.nXG.setVisibility(8);
-        return;
-      }
-    } while (!paramString.equals("canceling"));
-    this.nXC.setVisibility(8);
-    this.nXD.setVisibility(8);
-    this.nXE.setVisibility(8);
-    this.nXF.setVisibility(8);
-    this.nXG.setVisibility(0);
+    }
+    if (paramString.equals("downloaded"))
+    {
+      this.qLM.setVisibility(8);
+      this.qLN.setVisibility(0);
+      this.qLO.setVisibility(8);
+      this.qLP.setVisibility(8);
+      this.qLQ.setVisibility(8);
+      AppMethodBeat.o(127689);
+      return;
+    }
+    if (paramString.equals("undownloaded"))
+    {
+      this.qLM.setVisibility(8);
+      this.qLN.setVisibility(8);
+      this.qLO.setVisibility(0);
+      this.qLP.setVisibility(8);
+      this.qLQ.setVisibility(8);
+      AppMethodBeat.o(127689);
+      return;
+    }
+    if (paramString.equals("using"))
+    {
+      this.qLM.setVisibility(8);
+      this.qLN.setVisibility(8);
+      this.qLO.setVisibility(8);
+      this.qLP.setVisibility(0);
+      this.qLQ.setVisibility(8);
+      AppMethodBeat.o(127689);
+      return;
+    }
+    if (paramString.equals("canceling"))
+    {
+      this.qLM.setVisibility(8);
+      this.qLN.setVisibility(8);
+      this.qLO.setVisibility(8);
+      this.qLP.setVisibility(8);
+      this.qLQ.setVisibility(0);
+      AppMethodBeat.o(127689);
+      return;
+    }
+    AppMethodBeat.o(127689);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.b
  * JD-Core Version:    0.7.0.1
  */

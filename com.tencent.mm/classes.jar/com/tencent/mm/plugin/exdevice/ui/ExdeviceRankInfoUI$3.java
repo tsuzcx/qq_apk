@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMPullDownView.b;
 
 final class ExdeviceRankInfoUI$3
@@ -7,9 +8,11 @@ final class ExdeviceRankInfoUI$3
 {
   ExdeviceRankInfoUI$3(ExdeviceRankInfoUI paramExdeviceRankInfoUI) {}
   
-  public final void aMI()
+  public final void bqW()
   {
-    ExdeviceRankInfoUI.r(this.jFV);
+    AppMethodBeat.i(20136);
+    ExdeviceRankInfoUI.r(this.lPt);
+    AppMethodBeat.o(20136);
   }
 }
 

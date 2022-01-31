@@ -13,222 +13,255 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.compatible.b.b.a;
-import com.tencent.mm.f.b.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.j;
+import com.tencent.mm.compatible.b.c.a;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMBaseActivity;
+import com.tencent.mm.ui.w;
 import java.util.LinkedList;
 
 public class FavPostVoiceUI
   extends MMBaseActivity
 {
-  private static final int[] eMV = { n.d.amp1, n.d.amp2, n.d.amp3, n.d.amp4, n.d.amp5, n.d.amp6, n.d.amp7 };
-  private static final int[] ibm = { 0, 15, 30, 45, 60, 75, 90, 100 };
+  private static final int[] gcA = { 2130837689, 2130837690, 2130837691, 2130837692, 2130837693, 2130837694, 2130837695 };
+  private static final int[] mwW = { 0, 15, 30, 45, 60, 75, 90, 100 };
   private long duration;
-  private final am eNb = new am(new am.a()
-  {
-    public final boolean tC()
-    {
-      int j = 0;
-      j localj = FavPostVoiceUI.a(FavPostVoiceUI.this);
-      int i;
-      if (localj.status == 1)
-      {
-        i = localj.bEj.getMaxAmplitude();
-        if (i > j.bEl) {
-          j.bEl = i;
-        }
-        i = i * 100 / j.bEl;
-      }
-      for (;;)
-      {
-        if (j < FavPostVoiceUI.eMV.length)
-        {
-          if ((i >= FavPostVoiceUI.aRm()[j]) && (i < FavPostVoiceUI.aRm()[(j + 1)])) {
-            FavPostVoiceUI.b(FavPostVoiceUI.this).setBackgroundResource(FavPostVoiceUI.eMV[j]);
-          }
-        }
-        else
-        {
-          return true;
-          i = 0;
-          continue;
-        }
-        j += 1;
-      }
-    }
-  }, true);
-  private int gHS;
-  private boolean ibC;
-  private boolean ibD;
-  private final am ibI = new am(new FavPostVoiceUI.7(this), true);
-  private final ah ibJ = new FavPostVoiceUI.6(this);
-  private long ibp = -1L;
-  private Toast ibq;
-  private ImageView ibu;
-  private long jlU;
-  private Button kcg;
-  private View kch;
-  private View kci;
-  private View kcj;
-  private View kck;
-  private TextView kcl;
-  private View kcm;
-  private j kcn;
-  boolean kco = false;
+  private final ap gcG;
+  private int iiX;
+  private long lvI;
+  private Button mwJ;
+  private boolean mwK;
+  private boolean mwL;
+  private long mwM;
+  private Toast mwN;
+  private View mwO;
+  private View mwP;
+  private ImageView mwQ;
+  private View mwR;
+  private View mwS;
+  private TextView mwT;
+  private View mwU;
+  private j mwV;
+  private final ak mwX;
+  private final ap mwY;
+  boolean mwZ;
   private String path;
   
-  private j aRh()
+  public FavPostVoiceUI()
   {
-    Object localObject = b.a.dub;
+    AppMethodBeat.i(74050);
+    this.mwM = -1L;
+    this.gcG = new ap(new ap.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        int j = 0;
+        AppMethodBeat.i(74041);
+        j localj = FavPostVoiceUI.a(FavPostVoiceUI.this);
+        int i;
+        if (localj.status == 1)
+        {
+          i = localj.ckV.getMaxAmplitude();
+          if (i > j.ckX) {
+            j.ckX = i;
+          }
+          i = i * 100 / j.ckX;
+        }
+        for (;;)
+        {
+          if (j < FavPostVoiceUI.gcA.length)
+          {
+            if ((i >= FavPostVoiceUI.bxB()[j]) && (i < FavPostVoiceUI.bxB()[(j + 1)])) {
+              FavPostVoiceUI.b(FavPostVoiceUI.this).setBackgroundResource(FavPostVoiceUI.gcA[j]);
+            }
+          }
+          else
+          {
+            AppMethodBeat.o(74041);
+            return true;
+            i = 0;
+            continue;
+          }
+          j += 1;
+        }
+      }
+    }, true);
+    this.mwX = new FavPostVoiceUI.6(this);
+    this.mwY = new ap(new FavPostVoiceUI.7(this), true);
+    this.mwZ = false;
+    AppMethodBeat.o(74050);
+  }
+  
+  private void bxA()
+  {
+    AppMethodBeat.i(74060);
+    if (this.mwZ)
+    {
+      AppMethodBeat.o(74060);
+      return;
+    }
+    this.mwZ = true;
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
+    localTranslateAnimation.setDuration(300L);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(300L);
+    localTranslateAnimation.setAnimationListener(new FavPostVoiceUI.8(this));
+    findViewById(2131824070).setVisibility(8);
+    findViewById(2131824080).setVisibility(8);
+    this.mwU.setVisibility(8);
+    this.mwU.startAnimation(localAlphaAnimation);
+    findViewById(2131824070).startAnimation(localAlphaAnimation);
+    findViewById(2131824080).startAnimation(localTranslateAnimation);
+    AppMethodBeat.o(74060);
+  }
+  
+  private j bxw()
+  {
+    AppMethodBeat.i(74052);
+    Object localObject = c.a.elP;
     localObject = new j();
-    ((j)localObject).bEk = new FavPostVoiceUI.4(this);
+    ((j)localObject).ckW = new FavPostVoiceUI.4(this);
+    AppMethodBeat.o(74052);
     return localObject;
   }
   
-  private void aRi()
+  private void bxx()
   {
     long l = 0L;
-    if (!this.ibC) {
+    AppMethodBeat.i(74053);
+    if (!this.mwK)
+    {
+      AppMethodBeat.o(74053);
       return;
     }
-    this.kcg.setKeepScreenOn(true);
-    this.kcg.setBackgroundResource(n.d.record_shape_normal);
-    this.kcg.setText(n.i.favorite_press_talk_to_fav);
-    this.kcn.uh();
+    this.mwJ.setKeepScreenOn(true);
+    this.mwJ.setBackgroundResource(2130840129);
+    this.mwJ.setText(2131299781);
+    this.mwV.Et();
     int i;
-    label73:
+    label81:
     String str;
-    if (this.jlU == 0L)
+    if (this.lvI == 0L)
     {
       this.duration = l;
       if (this.duration >= 800L) {
-        break label150;
+        break label163;
       }
       i = 1;
-      this.eNb.stopTimer();
-      this.ibI.stopTimer();
+      this.gcG.stopTimer();
+      this.mwY.stopTimer();
       if (i != 0) {
-        break label281;
+        break label295;
       }
       str = this.path;
       i = (int)this.duration;
-      if (!bk.bl(str)) {
-        break label155;
+      if (!bo.isNullOrNil(str)) {
+        break label168;
       }
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.FavPostLogic", "postVoice path null");
-      label118:
+      ab.e("MicroMsg.FavPostLogic", "postVoice path null");
+      label126:
       setResult(-1);
       finish();
       overridePendingTransition(0, 0);
     }
     for (;;)
     {
-      this.ibC = false;
+      this.mwK = false;
+      AppMethodBeat.o(74053);
       return;
-      l = bk.cp(this.jlU);
+      l = bo.av(this.lvI);
       break;
-      label150:
+      label163:
       i = 0;
-      break label73;
-      label155:
+      break label81;
+      label168:
       g localg = new g();
       localg.field_type = 3;
       localg.field_sourceType = 6;
-      h.D(localg);
-      xv localxv = new xv();
-      localxv.XI(str);
-      localxv.EG(i);
-      localxv.mk(true);
-      localxv.EH(localg.field_type);
-      localxv.XE("amr");
-      localg.field_favProto.sXc.add(localxv);
+      h.E(localg);
+      aca localaca = new aca();
+      localaca.anE(str);
+      localaca.MH(i);
+      localaca.pz(true);
+      localaca.MI(localg.field_type);
+      localaca.anA("amr");
+      localg.field_favProto.wVc.add(localaca);
       b.B(localg);
-      com.tencent.mm.plugin.report.service.h.nFQ.f(10648, new Object[] { Integer.valueOf(1), Integer.valueOf(0) });
-      break label118;
-      label281:
-      aRk();
-      this.kcg.setEnabled(false);
-      this.kcg.setBackgroundResource(n.d.record_shape_disable);
-      this.kci.setVisibility(0);
-      this.kch.setVisibility(8);
-      this.ibJ.sendEmptyMessageDelayed(0, 500L);
+      com.tencent.mm.plugin.report.service.h.qsU.e(10648, new Object[] { Integer.valueOf(1), Integer.valueOf(0) });
+      break label126;
+      label295:
+      bxz();
+      this.mwJ.setEnabled(false);
+      this.mwJ.setBackgroundResource(2130840128);
+      this.mwP.setVisibility(0);
+      this.mwO.setVisibility(8);
+      this.mwX.sendEmptyMessageDelayed(0, 500L);
     }
   }
   
-  private void aRk()
+  private void bxz()
   {
+    AppMethodBeat.i(74055);
     com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(this.path);
     if (localb.exists()) {
       localb.delete();
     }
+    AppMethodBeat.o(74055);
   }
   
-  private void aRl()
+  public final void bxy()
   {
-    if (this.kco) {
-      return;
-    }
-    this.kco = true;
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
-    localTranslateAnimation.setDuration(300L);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(300L);
-    localTranslateAnimation.setAnimationListener(new FavPostVoiceUI.8(this));
-    findViewById(n.e.voice_rcd_hint).setVisibility(8);
-    findViewById(n.e.fav_post_voice_footer).setVisibility(8);
-    this.kcm.setVisibility(8);
-    this.kcm.startAnimation(localAlphaAnimation);
-    findViewById(n.e.voice_rcd_hint).startAnimation(localAlphaAnimation);
-    findViewById(n.e.fav_post_voice_footer).startAnimation(localTranslateAnimation);
-  }
-  
-  public final void aRj()
-  {
-    this.kch.setVisibility(0);
-    this.kci.setVisibility(8);
-    this.kck.setVisibility(8);
-    this.kcj.setVisibility(0);
-    this.kcl.setText(n.i.fav_press_talk_start_record);
-    this.kcg.setBackgroundResource(n.d.record_shape_press);
-    this.kcg.setText(n.i.favorite_press_talk_to_fav);
-    this.ibu.setVisibility(4);
-    this.ibC = false;
+    AppMethodBeat.i(74054);
+    this.mwO.setVisibility(0);
+    this.mwP.setVisibility(8);
+    this.mwS.setVisibility(8);
+    this.mwR.setVisibility(0);
+    this.mwT.setText(2131299676);
+    this.mwJ.setBackgroundResource(2130840130);
+    this.mwJ.setText(2131299781);
+    this.mwQ.setVisibility(4);
+    this.mwK = false;
+    AppMethodBeat.o(74054);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(74051);
     super.onCreate(paramBundle);
-    setContentView(com.tencent.mm.ui.y.gt(this).inflate(n.f.fav_post_voice, null));
-    this.ibu = ((ImageView)findViewById(n.e.voice_rcd_hint_anim));
-    this.kcj = findViewById(n.e.voice_rcd_hint_anim_area);
-    this.kck = findViewById(n.e.voice_rcd_hint_cancel_area);
-    this.kch = findViewById(n.e.voice_rcd_hint_rcding);
-    this.kci = findViewById(n.e.voice_rcd_hint_tooshort);
-    this.kcl = ((TextView)findViewById(n.e.voice_rcd_hint_word));
-    this.kcm = findViewById(n.e.voice_rcd_hint_bg);
-    findViewById(n.e.voice_rcd_hint).setVisibility(8);
-    this.kcm.setVisibility(8);
-    findViewById(n.e.voice_rcd_hint).setOnTouchListener(new View.OnTouchListener()
+    setContentView(w.hM(this).inflate(2130969556, null));
+    this.mwQ = ((ImageView)findViewById(2131824074));
+    this.mwR = findViewById(2131824072);
+    this.mwS = findViewById(2131824076);
+    this.mwO = findViewById(2131824071);
+    this.mwP = findViewById(2131824079);
+    this.mwT = ((TextView)findViewById(2131824075));
+    this.mwU = findViewById(2131824069);
+    findViewById(2131824070).setVisibility(8);
+    this.mwU.setVisibility(8);
+    findViewById(2131824070).setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
+        AppMethodBeat.i(74042);
         FavPostVoiceUI.c(FavPostVoiceUI.this);
+        AppMethodBeat.o(74042);
         return false;
       }
     });
-    findViewById(n.e.fav_post_voice_footer).setVisibility(8);
-    this.kcn = aRh();
-    this.kcg = ((Button)findViewById(n.e.fav_post_voice_btn));
-    this.kcg.setOnTouchListener(new FavPostVoiceUI.5(this));
-    aRj();
-    paramBundle = com.tencent.mm.plugin.fav.a.b.aPR();
+    findViewById(2131824080).setVisibility(8);
+    this.mwV = bxw();
+    this.mwJ = ((Button)findViewById(2131824081));
+    this.mwJ.setOnTouchListener(new FavPostVoiceUI.5(this));
+    bxy();
+    paramBundle = com.tencent.mm.plugin.fav.a.b.bwf();
     Object localObject = new com.tencent.mm.vfs.b(paramBundle);
     if (!((com.tencent.mm.vfs.b)localObject).exists()) {
       ((com.tencent.mm.vfs.b)localObject).mkdirs();
@@ -238,33 +271,50 @@ public class FavPostVoiceUI
       localObject = paramBundle + "/" + System.currentTimeMillis();
     } while (new com.tencent.mm.vfs.b((String)localObject).exists());
     this.path = ((String)localObject);
-    this.kcl.post(new FavPostVoiceUI.3(this));
+    this.mwT.post(new FavPostVoiceUI.3(this));
+    AppMethodBeat.o(74051);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(74056);
     super.onDestroy();
+    AppMethodBeat.o(74056);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(74059);
     if (4 == paramInt)
     {
-      aRl();
+      bxA();
+      AppMethodBeat.o(74059);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(74059);
+    return bool;
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(74058);
     super.onPause();
-    aRi();
+    bxx();
+    AppMethodBeat.o(74058);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(74057);
     super.onResume();
+    AppMethodBeat.o(74057);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

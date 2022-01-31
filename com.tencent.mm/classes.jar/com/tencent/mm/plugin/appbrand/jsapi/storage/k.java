@@ -1,36 +1,42 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.sdk.g.d;
 
 public class k
-  extends a
+  extends a<h>
 {
   public static final int CTRL_INDEX = 98;
   public static final String NAME = "removeStorage";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  private void a(h paramh, String paramString, int paramInt)
   {
-    paramJSONObject = paramJSONObject.optString("key");
-    if (bk.bl(paramJSONObject))
-    {
-      paramc.C(paramInt, h("fail", null));
-      return;
-    }
+    AppMethodBeat.i(102061);
     JsApiRemoveStorageTask localJsApiRemoveStorageTask = new JsApiRemoveStorageTask();
-    localJsApiRemoveStorageTask.appId = o(paramc);
-    localJsApiRemoveStorageTask.key = paramJSONObject;
+    localJsApiRemoveStorageTask.appId = w(paramh);
+    localJsApiRemoveStorageTask.ias = paramInt;
+    localJsApiRemoveStorageTask.key = paramString;
     AppBrandMainProcessService.a(localJsApiRemoveStorageTask);
-    paramc.C(paramInt, h("ok", null));
+    AppMethodBeat.o(102061);
   }
   
-  protected String o(c paramc)
+  private void b(h paramh, String paramString, int paramInt)
   {
-    return paramc.getAppId();
+    AppMethodBeat.i(102062);
+    d.post(new k.1(this, paramh, paramInt, paramString), "JsApiRemoveStorage");
+    AppMethodBeat.o(102062);
+  }
+  
+  protected String w(c paramc)
+  {
+    AppMethodBeat.i(102063);
+    paramc = paramc.getAppId();
+    AppMethodBeat.o(102063);
+    return paramc;
   }
 }
 

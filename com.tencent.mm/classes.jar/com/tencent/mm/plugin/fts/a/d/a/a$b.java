@@ -11,9 +11,9 @@ public abstract class a$b
 {
   public a$b(a parama) {}
   
-  public static void a(String paramString, l paraml)
+  protected static void a(String paramString, l paraml)
   {
-    ((n)g.t(n.class)).updateTopHitsRank(paramString, paraml, 0);
+    ((n)g.G(n.class)).updateTopHitsRank(paramString, paraml, 0);
   }
   
   public abstract View a(Context paramContext, ViewGroup paramViewGroup);
@@ -24,7 +24,7 @@ public abstract class a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.d.a.a.b
  * JD-Core Version:    0.7.0.1
  */

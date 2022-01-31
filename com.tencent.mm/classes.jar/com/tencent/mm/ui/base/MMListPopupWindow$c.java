@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.base;
 
 import android.database.DataSetObserver;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMListPopupWindow$c
   extends DataSetObserver
@@ -9,14 +10,18 @@ final class MMListPopupWindow$c
   
   public final void onChanged()
   {
-    if (this.uWx.fvf.isShowing()) {
-      this.uWx.show();
+    AppMethodBeat.i(112514);
+    if (this.zkQ.gMK.isShowing()) {
+      this.zkQ.show();
     }
+    AppMethodBeat.o(112514);
   }
   
   public final void onInvalidated()
   {
-    this.uWx.dismiss();
+    AppMethodBeat.i(112515);
+    this.zkQ.dismiss();
+    AppMethodBeat.o(112515);
   }
 }
 

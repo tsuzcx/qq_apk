@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wallet_core.ui.view;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import com.tencent.mm.at.b.a;
-import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.au.b.a;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.util.Map;
@@ -16,19 +16,20 @@ final class WalletPhoneInputView$5
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
+    AppMethodBeat.i(47912);
     if (!paramBoolean)
     {
-      if ((b.a)WalletPhoneInputView.h(this.qIp).get(WalletPhoneInputView.e(this.qIp).getText().toString()) == null)
+      if ((b.a)WalletPhoneInputView.h(this.uwX).get(WalletPhoneInputView.e(this.uwX).getText().toString()) == null)
       {
-        WalletPhoneInputView.d(this.qIp).setContentTextColorRes(a.c.red_text_color);
-        WalletPhoneInputView.e(this.qIp).setTextColor(this.qIp.getResources().getColor(a.c.red_text_color));
+        WalletPhoneInputView.d(this.uwX).setContentTextColorRes(2131690393);
+        WalletPhoneInputView.e(this.uwX).setTextColor(this.uwX.getResources().getColor(2131690393));
+        AppMethodBeat.o(47912);
+        return;
       }
+      WalletPhoneInputView.d(this.uwX).setContentTextColorRes(2131690322);
+      WalletPhoneInputView.e(this.uwX).setTextColor(this.uwX.getResources().getColor(2131690322));
     }
-    else {
-      return;
-    }
-    WalletPhoneInputView.d(this.qIp).setContentTextColorRes(a.c.normal_text_color);
-    WalletPhoneInputView.e(this.qIp).setTextColor(this.qIp.getResources().getColor(a.c.normal_text_color));
+    AppMethodBeat.o(47912);
   }
 }
 

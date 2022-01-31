@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import com.tencent.mm.protocal.c.o;
+import com.tencent.mm.protocal.protobuf.o;
 import com.tencent.mm.vending.c.a;
 
 final class PaylistAAUI$2

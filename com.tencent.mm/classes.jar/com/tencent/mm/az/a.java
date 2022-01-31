@@ -1,94 +1,64 @@
 package com.tencent.mm.az;
 
-import android.content.ContentValues;
-import android.database.Cursor;
+import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.plugin.messenger.foundation.a.a.g.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class a
+  implements com.tencent.mm.plugin.messenger.foundation.a.a.g
 {
-  int bcw = -1;
-  private String ebN = "";
-  private String ebO = "";
-  private int ebP = 0;
-  private int ebQ = 0;
-  public int ewu = 0;
-  private String path = "";
-  public String username = "";
+  SparseArray<LinkedList<g.a>> fLD;
   
-  public final void d(Cursor paramCursor)
+  public a()
   {
-    this.username = paramCursor.getString(0);
-    this.ewu = paramCursor.getInt(1);
-    this.path = paramCursor.getString(2);
-    this.ebN = paramCursor.getString(3);
-    this.ebO = paramCursor.getString(4);
-    this.ebP = paramCursor.getInt(5);
-    this.ebQ = paramCursor.getInt(6);
+    AppMethodBeat.i(984);
+    this.fLD = new SparseArray();
+    AppMethodBeat.o(984);
   }
   
-  public final String getUsername()
+  public final void a(int paramInt, g.a parama)
   {
-    if (this.username == null) {
-      return "";
+    AppMethodBeat.i(986);
+    if (this.fLD.indexOfKey(paramInt) < 0) {
+      this.fLD.put(paramInt, new LinkedList());
     }
-    return this.username;
+    ((LinkedList)this.fLD.get(paramInt)).add(parama);
+    AppMethodBeat.o(986);
   }
   
-  public final ContentValues vf()
+  public final void a(j.b paramb)
   {
-    ContentValues localContentValues = new ContentValues();
-    if ((this.bcw & 0x1) != 0) {
-      localContentValues.put("username", getUsername());
-    }
-    if ((this.bcw & 0x2) != 0) {
-      localContentValues.put("bgflag", Integer.valueOf(this.ewu));
-    }
-    if ((this.bcw & 0x4) != 0)
+    AppMethodBeat.i(985);
+    if ((com.tencent.mm.kernel.g.RK().eHt == null) || (com.tencent.mm.kernel.g.RK().eHt.ftA == null))
     {
-      if (this.path == null)
-      {
-        str = "";
-        localContentValues.put("path", str);
-      }
+      AppMethodBeat.o(985);
+      return;
     }
-    else
-    {
-      if ((this.bcw & 0x8) != 0)
-      {
-        if (this.ebN != null) {
-          break label185;
-        }
-        str = "";
-        label95:
-        localContentValues.put("reserved1", str);
-      }
-      if ((this.bcw & 0x10) != 0) {
-        if (this.ebO != null) {
-          break label193;
-        }
-      }
+    Object localObject = new ArrayList(1);
+    ((ArrayList)localObject).add(paramb);
+    localObject = new b((List)localObject);
+    com.tencent.mm.kernel.g.RM();
+    ((b)localObject).doScene(com.tencent.mm.kernel.g.RK().eHt.ftA, new a.1(this, paramb));
+    AppMethodBeat.o(985);
+  }
+  
+  public final void b(int paramInt, g.a parama)
+  {
+    AppMethodBeat.i(987);
+    if (this.fLD.indexOfKey(paramInt) >= 0) {
+      ((LinkedList)this.fLD.get(paramInt)).remove(parama);
     }
-    label185:
-    label193:
-    for (String str = "";; str = this.ebO)
-    {
-      localContentValues.put("reserved2", str);
-      if ((this.bcw & 0x20) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.ebP));
-      }
-      if ((this.bcw & 0x40) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.ebQ));
-      }
-      return localContentValues;
-      str = this.path;
-      break;
-      str = this.ebN;
-      break label95;
-    }
+    AppMethodBeat.o(987);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.az.a
  * JD-Core Version:    0.7.0.1
  */

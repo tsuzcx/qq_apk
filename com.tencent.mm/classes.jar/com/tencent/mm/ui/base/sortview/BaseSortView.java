@@ -8,9 +8,8 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.VerticalScrollBar.a;
 import java.util.ArrayList;
@@ -21,39 +20,39 @@ public abstract class BaseSortView
   extends LinearLayout
   implements VerticalScrollBar.a
 {
-  private AdapterView.OnItemSelectedListener Ot;
-  private AdapterView.OnItemClickListener ajR;
-  private ListView ier;
+  private AdapterView.OnItemSelectedListener Oh;
+  private AdapterView.OnItemClickListener amh;
+  private ListView jVf;
   private int mMode;
-  private VerticalScrollBar vdZ;
-  private View vea;
-  private c veb = new c(getItemViewCreator());
-  private AdapterView.OnItemLongClickListener vec;
-  private List<d> ved = new ArrayList();
-  public boolean vee;
-  public boolean vef;
-  private BaseSortView.a veg;
+  private View zsA;
+  private c zsB = new c(getItemViewCreator());
+  private AdapterView.OnItemLongClickListener zsC;
+  private List<d> zsD = new ArrayList();
+  public boolean zsE;
+  public boolean zsF;
+  private BaseSortView.a zsG;
+  private VerticalScrollBar zsz;
   
   public BaseSortView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     inflate();
-    this.vdZ = getScrollBar();
-    this.ier = getListView();
-    this.vea = getNoResultView();
-    this.vee = true;
-    ng(true);
-    this.ier.setAdapter(this.veb);
-    if (this.vdZ != null) {
-      this.vdZ.setOnScrollBarTouchListener(this);
+    this.zsz = getScrollBar();
+    this.jVf = getListView();
+    this.zsA = getNoResultView();
+    this.zsE = true;
+    qM(true);
+    this.jVf.setAdapter(this.zsB);
+    if (this.zsz != null) {
+      this.zsz.setOnScrollBarTouchListener(this);
     }
-    this.veb.registerDataSetObserver(new BaseSortView.1(this));
-    this.ier.setOnItemClickListener(new BaseSortView.2(this));
-    this.ier.setOnItemLongClickListener(new BaseSortView.3(this));
-    this.ier.setOnItemSelectedListener(new BaseSortView.4(this));
+    this.zsB.registerDataSetObserver(new BaseSortView.1(this));
+    this.jVf.setOnItemClickListener(new BaseSortView.2(this));
+    this.jVf.setOnItemLongClickListener(new BaseSortView.3(this));
+    this.jVf.setOnItemSelectedListener(new BaseSortView.4(this));
   }
   
-  public static void q(View paramView, boolean paramBoolean)
+  protected static void y(View paramView, boolean paramBoolean)
   {
     if (paramView != null) {
       if (!paramBoolean) {
@@ -70,19 +69,19 @@ public abstract class BaseSortView
   
   public abstract boolean a(String paramString, d paramd);
   
-  public final void adg(String paramString)
+  public final void atB(String paramString)
   {
     boolean bool2 = true;
     if (this.mMode != 1)
     {
-      y.w("MicroMsg.BaseSortView", "Can't doFilter successfully out of the search mode.");
+      ab.w("MicroMsg.BaseSortView", "Can't doFilter successfully out of the search mode.");
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    if (!bk.bl(paramString))
+    if (!bo.isNullOrNil(paramString))
     {
       localArrayList.clear();
-      Iterator localIterator = this.ved.iterator();
+      Iterator localIterator = this.zsD.iterator();
       while (localIterator.hasNext())
       {
         d locald = (d)localIterator.next();
@@ -93,12 +92,12 @@ public abstract class BaseSortView
     }
     for (int i = 1;; i = 0)
     {
-      paramString = this.ier;
+      paramString = this.jVf;
       if ((i != 0) && (localArrayList.size() > 0))
       {
         bool1 = true;
-        q(paramString, bool1);
-        paramString = this.vea;
+        y(paramString, bool1);
+        paramString = this.zsA;
         if ((i == 0) || (localArrayList.size() > 0)) {
           break label165;
         }
@@ -106,8 +105,8 @@ public abstract class BaseSortView
       label165:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        q(paramString, bool1);
-        dM(localArrayList);
+        y(paramString, bool1);
+        dI(localArrayList);
         return;
         bool1 = false;
         break;
@@ -115,45 +114,37 @@ public abstract class BaseSortView
     }
   }
   
-  public final void cBz()
+  public final void dES()
   {
-    this.vee = false;
-    ai.d(this.veb.vek);
+    this.zsE = false;
+    this.zsB.refresh();
   }
   
-  public final void dM(List<d> paramList)
+  public final void dI(List<d> paramList)
   {
-    if ((this.mMode == 0) && (this.ved != paramList))
+    if ((this.mMode == 0) && (this.zsD != paramList))
     {
-      this.ved.clear();
+      this.zsD.clear();
       if (paramList != null) {
-        this.ved.addAll(paramList);
+        this.zsD.addAll(paramList);
       }
     }
-    this.veb.dM(paramList);
-  }
-  
-  public final void eU(String paramString)
-  {
-    int i = this.veb.adh(paramString);
-    if (i >= 0) {
-      this.ier.setSelection(i);
-    }
+    this.zsB.dI(paramList);
   }
   
   public c getAdapter()
   {
-    return this.veb;
+    return this.zsB;
   }
   
   public BaseSortView.a getDataSetObserver()
   {
-    return this.veg;
+    return this.zsG;
   }
   
   public List<d> getDatas()
   {
-    return this.veb.ved;
+    return this.zsB.zsD;
   }
   
   public abstract c.a getItemViewCreator();
@@ -169,30 +160,38 @@ public abstract class BaseSortView
   
   public AdapterView.OnItemClickListener getOnItemClickListener()
   {
-    return this.ajR;
+    return this.amh;
   }
   
   public AdapterView.OnItemLongClickListener getOnItemLongClickListener()
   {
-    return this.vec;
+    return this.zsC;
   }
   
   public AdapterView.OnItemSelectedListener getOnItemSelectedListener()
   {
-    return this.Ot;
+    return this.Oh;
   }
   
   public abstract VerticalScrollBar getScrollBar();
   
   public abstract View inflate();
   
-  public final void ng(boolean paramBoolean)
+  public final void lf(String paramString)
   {
-    this.vef = paramBoolean;
+    int i = this.zsB.atC(paramString);
+    if (i >= 0) {
+      this.jVf.setSelection(i);
+    }
+  }
+  
+  public final void qM(boolean paramBoolean)
+  {
+    this.zsF = paramBoolean;
     VerticalScrollBar localVerticalScrollBar;
-    if (this.vdZ != null)
+    if (this.zsz != null)
     {
-      localVerticalScrollBar = this.vdZ;
+      localVerticalScrollBar = this.zsz;
       if (!paramBoolean) {
         break label29;
       }
@@ -207,12 +206,12 @@ public abstract class BaseSortView
   
   public void refresh()
   {
-    ai.d(this.veb.vek);
+    this.zsB.refresh();
   }
   
   public void setDataSetObserver(BaseSortView.a parama)
   {
-    this.veg = parama;
+    this.zsG = parama;
   }
   
   public void setMode(int paramInt)
@@ -220,33 +219,33 @@ public abstract class BaseSortView
     if (paramInt == 1)
     {
       this.mMode = 1;
-      adg("");
+      atB("");
       return;
     }
     this.mMode = 0;
-    q(this.vea, false);
-    q(this.ier, true);
-    dM(this.ved);
+    y(this.zsA, false);
+    y(this.jVf, true);
+    dI(this.zsD);
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.ajR = paramOnItemClickListener;
+    this.amh = paramOnItemClickListener;
   }
   
   public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener paramOnItemLongClickListener)
   {
-    this.vec = paramOnItemLongClickListener;
+    this.zsC = paramOnItemLongClickListener;
   }
   
   public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.Ot = paramOnItemSelectedListener;
+    this.Oh = paramOnItemSelectedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.sortview.BaseSortView
  * JD-Core Version:    0.7.0.1
  */

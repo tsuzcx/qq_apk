@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.facedetect.d;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class d$7
   implements Runnable
@@ -9,22 +10,24 @@ final class d$7
   
   public final void run()
   {
-    synchronized (this.jPM.jPG)
+    AppMethodBeat.i(317);
+    synchronized (this.mkc.mjW)
     {
-      if (!this.jPM.jPA)
+      if (!this.mkc.mjQ)
       {
-        y.w("MicroMsg.NumberFaceMotion", "hy: not triggered symbol. auto start");
-        this.jPM.jPA = true;
-        d.b(this.jPM);
+        ab.w("MicroMsg.NumberFaceMotion", "hy: not triggered symbol. auto start");
+        this.mkc.mjQ = true;
+        d.b(this.mkc);
+        AppMethodBeat.o(317);
         return;
       }
-      y.i("MicroMsg.NumberFaceMotion", "hy: user already start. do nothing");
+      ab.i("MicroMsg.NumberFaceMotion", "hy: user already start. do nothing");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.d.7
  * JD-Core Version:    0.7.0.1
  */

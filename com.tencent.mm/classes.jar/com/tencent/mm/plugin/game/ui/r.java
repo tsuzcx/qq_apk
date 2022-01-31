@@ -11,17 +11,12 @@ import android.view.ViewTreeObserver;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.f.b;
 import com.tencent.mm.plugin.game.f.e;
 import com.tencent.mm.plugin.game.f.e.a.a;
-import com.tencent.mm.plugin.game.g.b;
-import com.tencent.mm.plugin.game.g.c;
-import com.tencent.mm.plugin.game.g.d;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.h;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -30,80 +25,111 @@ import java.util.List;
 public final class r
   extends BaseAdapter
 {
-  boolean bGq = false;
+  boolean cnz;
   Context context;
-  ArrayList<r.b> iBu;
-  int kQn = 0;
-  int lcn = 0;
-  boolean leG = false;
-  int leH = 0;
-  int leI = 0;
-  int leJ = 0;
-  int leK = 0;
-  private int leL;
-  boolean leM = false;
-  boolean leN = false;
-  private ArrayList<r.d> leO;
+  ArrayList<r.b> kGB;
+  int nAi;
+  boolean nCB;
+  int nCC;
+  int nCD;
+  int nCE;
+  int nCF;
+  private int nCG;
+  boolean nCH;
+  boolean nCI;
+  private ArrayList<r.d> nCJ;
+  int nor;
   
   public r(Context paramContext)
   {
+    AppMethodBeat.i(112175);
+    this.cnz = false;
+    this.nCB = false;
+    this.nAi = 0;
+    this.nCC = 0;
+    this.nCD = 0;
+    this.nCE = 0;
+    this.nCF = 0;
+    this.nor = 0;
+    this.nCH = false;
+    this.nCI = false;
     this.context = paramContext;
-    this.iBu = null;
-    this.leL = paramContext.getResources().getColor(g.b.gc_search_recmd_keyword_match);
+    this.kGB = null;
+    this.nCG = paramContext.getResources().getColor(2131690127);
+    AppMethodBeat.o(112175);
+  }
+  
+  private String Qv(String paramString)
+  {
+    AppMethodBeat.i(112180);
+    if (this.nCJ == null) {
+      this.nCJ = new ArrayList();
+    }
+    for (;;)
+    {
+      paramString = new StringBuilder(paramString);
+      r.d locald = new r.d(this, (byte)0);
+      for (int i = paramString.indexOf("<em>"); i >= 0; i = paramString.indexOf("<em>"))
+      {
+        locald.start = i;
+        paramString.delete(i, i + 4);
+        i = paramString.indexOf("</em>");
+        if (i < 0) {
+          break;
+        }
+        locald.end = i;
+        paramString.delete(i, i + 5);
+        this.nCJ.add(locald);
+      }
+      this.nCJ.clear();
+    }
+    paramString = paramString.toString();
+    AppMethodBeat.o(112180);
+    return paramString;
   }
   
   private void a(TextView paramTextView, String paramString)
   {
-    if (!bk.bl(paramString))
+    AppMethodBeat.i(112181);
+    if (!bo.isNullOrNil(paramString))
     {
-      if (this.leO == null) {
-        this.leO = new ArrayList();
-      }
-      for (;;)
+      paramString = new SpannableString(Qv(paramString));
+      Iterator localIterator = this.nCJ.iterator();
+      while (localIterator.hasNext())
       {
-        paramString = new StringBuilder(paramString);
-        localObject = new r.d(this, (byte)0);
-        for (int i = paramString.indexOf("<em>"); i >= 0; i = paramString.indexOf("<em>"))
-        {
-          ((r.d)localObject).start = i;
-          paramString.delete(i, i + 4);
-          i = paramString.indexOf("</em>");
-          if (i < 0) {
-            break;
-          }
-          ((r.d)localObject).end = i;
-          paramString.delete(i, i + 5);
-          this.leO.add(localObject);
-        }
-        this.leO.clear();
-      }
-      paramString = new SpannableString(paramString.toString());
-      Object localObject = this.leO.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        r.d locald = (r.d)((Iterator)localObject).next();
+        r.d locald = (r.d)localIterator.next();
         if (locald.start < locald.end) {
-          paramString.setSpan(new ForegroundColorSpan(this.leL), locald.start, locald.end, 33);
+          paramString.setSpan(new ForegroundColorSpan(this.nCG), locald.start, locald.end, 33);
         }
       }
       paramTextView.setText(paramString);
       paramTextView.setVisibility(0);
+      AppMethodBeat.o(112181);
       return;
     }
     paramTextView.setVisibility(8);
+    AppMethodBeat.o(112181);
   }
   
   public final int getCount()
   {
-    if (this.iBu == null) {
+    AppMethodBeat.i(112176);
+    if (this.kGB == null)
+    {
+      AppMethodBeat.o(112176);
       return 0;
     }
-    return this.iBu.size();
+    int i = this.kGB.size();
+    AppMethodBeat.o(112176);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.iBu.get(paramInt);
+    AppMethodBeat.i(112177);
+    Object localObject = this.kGB.get(paramInt);
+    AppMethodBeat.o(112177);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -113,14 +139,17 @@ public final class r
   
   public final int getItemViewType(int paramInt)
   {
-    return ((r.b)getItem(paramInt)).type;
+    AppMethodBeat.i(112178);
+    paramInt = ((r.b)getItem(paramInt)).type;
+    AppMethodBeat.o(112178);
+    return paramInt;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(112179);
     r.b localb = (r.b)getItem(paramInt);
     Object localObject1;
-    label78:
     Object localObject2;
     if (paramView == null)
     {
@@ -132,163 +161,168 @@ public final class r
       default: 
         paramInt = 0;
         localObject2 = View.inflate(paramView, paramInt, null);
-        ((r.a)localObject1).contentView = ((View)localObject2).findViewById(g.e.game_item_content_layout);
-        ((r.a)localObject1).leS = ((ImageView)((View)localObject2).findViewById(g.e.game_item_icon));
-        ((r.a)localObject1).leT = ((TextView)((View)localObject2).findViewById(g.e.game_item_name));
-        ((r.a)localObject1).leU = ((TextView)((View)localObject2).findViewById(g.e.game_item_brief));
-        ((r.a)localObject1).leV = ((TextView)((View)localObject2).findViewById(g.e.game_item_desc));
-        ((r.a)localObject1).leW = ((TextView)((View)localObject2).findViewById(g.e.game_item_play));
-        ((r.a)localObject1).leX = ((View)localObject2).findViewById(g.e.game_item_divide_view);
-        ((r.a)localObject1).leY = ((TextView)((View)localObject2).findViewById(g.e.source_name));
-        ((r.a)localObject1).leZ = ((TextView)((View)localObject2).findViewById(g.e.create_time));
+        ((r.a)localObject1).contentView = ((View)localObject2).findViewById(2131824747);
+        ((r.a)localObject1).nCN = ((ImageView)((View)localObject2).findViewById(2131824748));
+        ((r.a)localObject1).nCO = ((TextView)((View)localObject2).findViewById(2131824750));
+        ((r.a)localObject1).nCP = ((TextView)((View)localObject2).findViewById(2131824749));
+        ((r.a)localObject1).nCQ = ((TextView)((View)localObject2).findViewById(2131824751));
+        ((r.a)localObject1).nCR = ((TextView)((View)localObject2).findViewById(2131824757));
+        ((r.a)localObject1).nCS = ((View)localObject2).findViewById(2131824758);
+        ((r.a)localObject1).nCT = ((TextView)((View)localObject2).findViewById(2131824759));
+        ((r.a)localObject1).nCU = ((TextView)((View)localObject2).findViewById(2131824760));
         ((View)localObject2).setTag(localObject1);
         paramViewGroup = (ViewGroup)localObject1;
         paramView = (View)localObject2;
-        if (((r.a)localObject1).leT != null)
+        if (((r.a)localObject1).nCO != null)
         {
           paramViewGroup = (ViewGroup)localObject1;
           paramView = (View)localObject2;
-          if (((r.a)localObject1).leV != null)
+          if (((r.a)localObject1).nCQ != null)
           {
-            paramView = ((r.a)localObject1).leT;
-            paramViewGroup = ((r.a)localObject1).leV;
+            paramView = ((r.a)localObject1).nCO;
+            paramViewGroup = ((r.a)localObject1).nCQ;
             paramView.getViewTreeObserver().addOnGlobalLayoutListener(new r.1(this, paramView, paramViewGroup));
             paramView = (View)localObject2;
             paramViewGroup = (ViewGroup)localObject1;
           }
         }
-        label294:
+        label290:
         switch (localb.type)
         {
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      switch (localb.type)
-      {
-      case 4: 
-      default: 
-        return paramView;
-        paramInt = g.f.game_search_game_item_layout;
-        break label78;
-        paramInt = g.f.game_search_web_item_layout;
-        break label78;
-        paramInt = g.f.game_search_title_item_layout;
-        break label78;
-        paramInt = g.f.game_search_more_item_layout;
-        break label78;
-        paramInt = g.f.game_search_nores_item_layout;
-        break label78;
-        paramInt = g.f.game_search_similar_game_item_layout;
-        break label78;
-        paramViewGroup = (r.a)paramView.getTag();
-        break label294;
-        if (!bk.bl(localb.iconUrl))
-        {
-          localObject1 = new e.a.a();
-          ((e.a.a)localObject1).erd = false;
-          ((e.a.a)localObject1).erf = false;
-          e.baw().a(paramViewGroup.leS, localb.iconUrl, ((e.a.a)localObject1).bax());
-        }
-        a(paramViewGroup.leT, localb.name);
-        a(paramViewGroup.leU, localb.lfa);
-        a(paramViewGroup.leV, localb.fGK);
-        continue;
-        if (!bk.bl(localb.iconUrl))
-        {
-          localObject1 = new e.a.a();
-          ((e.a.a)localObject1).erd = false;
-          ((e.a.a)localObject1).erf = false;
-          ((e.a.a)localObject1).lgz = true;
-          e.baw().a(paramViewGroup.leS, localb.iconUrl, ((e.a.a)localObject1).bax());
-          paramViewGroup.leS.setVisibility(0);
-          label599:
-          a(paramViewGroup.leT, localb.name);
-          a(paramViewGroup.leV, localb.fGK);
-          if (bk.bl(localb.dXh)) {
-            break label719;
-          }
-          paramViewGroup.leY.setText(j.b(this.context, localb.dXh));
-          paramViewGroup.leY.setVisibility(0);
-        }
-        for (;;)
-        {
-          if (localb.createTime <= 0L) {
-            break label731;
-          }
-          paramViewGroup.leZ.setText(b.g(this.context, localb.createTime * 1000L));
-          paramViewGroup.leZ.setVisibility(0);
-          break;
-          paramViewGroup.leS.setVisibility(8);
-          break label599;
-          label719:
-          paramViewGroup.leY.setVisibility(8);
-        }
-        label731:
-        paramViewGroup.leZ.setVisibility(8);
-        continue;
-        if (!bk.bl(localb.iconUrl))
-        {
-          localObject1 = new e.a.a();
-          ((e.a.a)localObject1).erd = false;
-          ((e.a.a)localObject1).erf = false;
-          e.baw().a(paramViewGroup.leS, localb.iconUrl, ((e.a.a)localObject1).bax());
-        }
-        a(paramViewGroup.leT, localb.name);
-        a(paramViewGroup.leU, localb.lfa);
-        a(paramViewGroup.leV, localb.fGK);
-        localObject1 = paramViewGroup.leW;
-        localObject2 = localb.lfd;
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (!bk.dk((List)localObject2))
-        {
-          int i = ((LinkedList)localObject2).size();
-          paramInt = 0;
-          while (paramInt < i - 1)
+        case 4: 
+        default: 
+          label336:
+          switch (localb.type)
           {
-            localStringBuilder.append((String)((LinkedList)localObject2).get(paramInt) + "\n");
-            paramInt += 1;
           }
-          localStringBuilder.append((String)((LinkedList)localObject2).get(i - 1));
-          ((TextView)localObject1).setVisibility(0);
-          ((TextView)localObject1).setText(localStringBuilder.toString());
-        }
-        else
-        {
-          ((TextView)localObject1).setVisibility(8);
-          continue;
-          paramViewGroup.leV.setText(localb.name);
-          continue;
-          paramViewGroup.leS.setImageResource(g.h.search_more_button_icon);
-          paramViewGroup.leT.setText(localb.name);
+          break;
         }
         break;
       }
     }
-    if (localb.lfh) {
-      paramViewGroup.contentView.setBackgroundResource(g.d.comm_list_item_selector_no_divider);
-    }
     for (;;)
     {
-      paramInt = this.context.getResources().getDimensionPixelSize(g.c.SearchNormalPadding);
-      paramViewGroup.contentView.setPadding(0, paramInt, 0, paramInt);
+      AppMethodBeat.o(112179);
       return paramView;
-      paramViewGroup.contentView.setBackgroundResource(g.d.comm_list_item_selector);
+      paramInt = 2130969812;
+      break;
+      paramInt = 2130969819;
+      break;
+      paramInt = 2130969818;
+      break;
+      paramInt = 2130969814;
+      break;
+      paramInt = 2130969815;
+      break;
+      paramInt = 2130969817;
+      break;
+      paramViewGroup = (r.a)paramView.getTag();
+      break label290;
+      if (!bo.isNullOrNil(localb.iconUrl))
+      {
+        localObject1 = new e.a.a();
+        ((e.a.a)localObject1).eNK = false;
+        ((e.a.a)localObject1).eNM = false;
+        e.bHE().a(paramViewGroup.nCN, localb.iconUrl, ((e.a.a)localObject1).bHF());
+      }
+      a(paramViewGroup.nCO, localb.name);
+      a(paramViewGroup.nCP, localb.nCV);
+      a(paramViewGroup.nCQ, localb.hKa);
+      break label336;
+      if (!bo.isNullOrNil(localb.iconUrl))
+      {
+        localObject1 = new e.a.a();
+        ((e.a.a)localObject1).eNK = false;
+        ((e.a.a)localObject1).eNM = false;
+        ((e.a.a)localObject1).nEu = true;
+        e.bHE().a(paramViewGroup.nCN, localb.iconUrl, ((e.a.a)localObject1).bHF());
+        paramViewGroup.nCN.setVisibility(0);
+        label600:
+        a(paramViewGroup.nCO, localb.name);
+        a(paramViewGroup.nCQ, localb.hKa);
+        if (bo.isNullOrNil(localb.fnp)) {
+          break label720;
+        }
+        paramViewGroup.nCT.setText(j.b(this.context, localb.fnp));
+        paramViewGroup.nCT.setVisibility(0);
+      }
+      for (;;)
+      {
+        if (localb.createTime <= 0L) {
+          break label732;
+        }
+        paramViewGroup.nCU.setText(b.h(this.context, localb.createTime * 1000L));
+        paramViewGroup.nCU.setVisibility(0);
+        break;
+        paramViewGroup.nCN.setVisibility(8);
+        break label600;
+        label720:
+        paramViewGroup.nCT.setVisibility(8);
+      }
+      label732:
+      paramViewGroup.nCU.setVisibility(8);
+      break label336;
+      if (!bo.isNullOrNil(localb.iconUrl))
+      {
+        localObject1 = new e.a.a();
+        ((e.a.a)localObject1).eNK = false;
+        ((e.a.a)localObject1).eNM = false;
+        e.bHE().a(paramViewGroup.nCN, localb.iconUrl, ((e.a.a)localObject1).bHF());
+      }
+      a(paramViewGroup.nCO, localb.name);
+      a(paramViewGroup.nCP, localb.nCV);
+      a(paramViewGroup.nCQ, localb.hKa);
+      localObject1 = paramViewGroup.nCR;
+      localObject2 = localb.nCY;
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (!bo.es((List)localObject2))
+      {
+        int i = ((LinkedList)localObject2).size();
+        paramInt = 0;
+        while (paramInt < i - 1)
+        {
+          localStringBuilder.append((String)((LinkedList)localObject2).get(paramInt) + "\n");
+          paramInt += 1;
+        }
+        localStringBuilder.append((String)((LinkedList)localObject2).get(i - 1));
+        ((TextView)localObject1).setVisibility(0);
+        ((TextView)localObject1).setText(localStringBuilder.toString());
+        break label336;
+      }
+      ((TextView)localObject1).setVisibility(8);
+      break label336;
+      paramViewGroup.nCQ.setText(localb.name);
+      break label336;
+      paramViewGroup.nCN.setImageResource(2131231954);
+      paramViewGroup.nCO.setText(localb.name);
+      break label336;
+      if (localb.nDc) {
+        paramViewGroup.contentView.setBackgroundResource(2130838447);
+      }
+      for (;;)
+      {
+        paramInt = this.context.getResources().getDimensionPixelSize(2131427839);
+        paramViewGroup.contentView.setPadding(0, paramInt, 0, paramInt);
+        break;
+        paramViewGroup.contentView.setBackgroundResource(2130838445);
+      }
+      if (localb.nDb) {
+        paramViewGroup.nCS.setVisibility(8);
+      } else {
+        paramViewGroup.nCS.setVisibility(0);
+      }
     }
-    if (localb.lfg)
-    {
-      paramViewGroup.leX.setVisibility(8);
-      return paramView;
-    }
-    paramViewGroup.leX.setVisibility(0);
-    return paramView;
   }
   
   public final int getViewTypeCount()
   {
     return 7;
+  }
+  
+  public final void reset()
+  {
+    this.nor = 0;
+    this.nCH = false;
   }
 }
 

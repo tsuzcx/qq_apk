@@ -1,7 +1,9 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class h$1
   implements Runnable
@@ -10,21 +12,25 @@ final class h$1
   
   public final void run()
   {
-    h localh = this.mlT;
-    y.i("MicroMsg.MediaCodecFFMpegTranscoder", "waitEncoderFinish: %s %s", new Object[] { localh.mlQ, localh.mlg });
-    if ((localh.mlQ != null) && (localh.mlg != null)) {
-      localh.mlQ.eJM = true;
-    }
-    try
+    AppMethodBeat.i(3653);
+    h localh = this.oLa;
+    ab.i("MicroMsg.MediaCodecFFMpegTranscoder", "waitEncoderFinish: %s %s", new Object[] { localh.oKX, localh.eUH });
+    if ((localh.oKX != null) && (localh.eUH != null))
     {
-      localh.mlg.join();
-      e.remove(localh.mlQ);
-      return;
+      localh.oKX.fZn = true;
+      try
+      {
+        localh.eUH.join();
+        d.ysm.remove(localh.oKX);
+        AppMethodBeat.o(3653);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ab.printErrStackTrace("MicroMsg.MediaCodecFFMpegTranscoder", localException, "waitEncoderFinish, join error: %s", new Object[] { localException.getMessage() });
+      }
     }
-    catch (Exception localException)
-    {
-      y.printErrStackTrace("MicroMsg.MediaCodecFFMpegTranscoder", localException, "waitEncoderFinish, join error: %s", new Object[] { localException.getMessage() });
-    }
+    AppMethodBeat.o(3653);
   }
 }
 

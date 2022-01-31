@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.masssend.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.masssend.a.f;
 
 final class b$5
@@ -12,12 +13,14 @@ final class b$5
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    au.Dk().c(this.mbc);
-    if (this.mbb.tipDialog != null)
+    AppMethodBeat.i(22771);
+    aw.Rc().a(this.oBE);
+    if (this.oBD.tipDialog != null)
     {
-      this.mbb.tipDialog.dismiss();
-      this.mbb.tipDialog = null;
+      this.oBD.tipDialog.dismiss();
+      this.oBD.tipDialog = null;
     }
+    AppMethodBeat.o(22771);
   }
 }
 

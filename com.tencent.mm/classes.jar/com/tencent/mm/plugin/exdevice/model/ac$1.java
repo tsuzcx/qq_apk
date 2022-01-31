@@ -10,12 +10,12 @@ final class ac$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jww.edT = true;
+    this.lFV.eUJ = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.ac.1
  * JD-Core Version:    0.7.0.1
  */

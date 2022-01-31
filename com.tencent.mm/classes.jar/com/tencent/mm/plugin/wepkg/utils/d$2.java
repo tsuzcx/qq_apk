@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.wepkg.utils;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wepkg.model.WepkgCrossProcessTask;
 import com.tencent.mm.plugin.wepkg.model.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class d$2
   implements Runnable
@@ -11,11 +12,13 @@ final class d$2
   
   public final void run()
   {
-    y.i("MicroMsg.Wepkg.WepkgUtil", "bind service time:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.rQs) });
-    if (this.rPE != null) {
-      this.rPE.a(this.rPw);
+    AppMethodBeat.i(63650);
+    ab.i("MicroMsg.Wepkg.WepkgUtil", "bind service time:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.vHk) });
+    if (this.vGw != null) {
+      this.vGw.a(this.vGn);
     }
-    this.rPw.ahD();
+    this.vGn.aBk();
+    AppMethodBeat.o(63650);
   }
 }
 

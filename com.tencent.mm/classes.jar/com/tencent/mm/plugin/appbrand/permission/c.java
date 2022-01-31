@@ -1,50 +1,84 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.HashMap;
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.HashSet;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class c
 {
-  private static final LinkedList<Runnable> gWF = new LinkedList();
-  private static final c.a gWG = new c.a((byte)0);
-  private static boolean gWH = false;
-  private final c.b gWD;
-  private final String gWE;
-  private final String mAppId;
+  private static Set<String> iBm;
   
-  private c(c.b paramb, String paramString1, String paramString2)
+  static
   {
-    this.gWD = paramb;
-    this.mAppId = paramString1;
-    this.gWE = paramString2;
+    AppMethodBeat.i(102245);
+    HashSet localHashSet = new HashSet();
+    iBm = localHashSet;
+    localHashSet.add("operateLivePlayer");
+    iBm.add("operateLivePusher");
+    AppMethodBeat.o(102245);
   }
   
-  public static void a(String paramString1, String paramString2, c.b paramb)
+  static int c(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2)
   {
-    if ((bk.bl(paramString1)) || (bk.bl(paramString2))) {
-      return;
+    AppMethodBeat.i(102244);
+    if ((paramc instanceof v)) {}
+    for (boolean bool = true; !bool; bool = iBm.contains(paramString1))
+    {
+      AppMethodBeat.o(102244);
+      return -2147483648;
     }
-    paramb = new c.4(paramString1, paramString2, paramb);
-    com.tencent.mm.plugin.appbrand.v.c.DS().O(new c.5(paramb, paramString1, paramString2));
-  }
-  
-  public static boolean bZ(String paramString1, String paramString2)
-  {
-    return gWG.ca(paramString1, paramString2);
-  }
-  
-  public static void vW(String paramString)
-  {
-    c.a locala = gWG;
-    if (!bk.bl(paramString)) {
-      try
+    if (bo.isNullOrNil(paramString2))
+    {
+      AppMethodBeat.o(102244);
+      return -2147483648;
+    }
+    try
+    {
+      paramString2 = new JSONObject(paramString2);
+      bool = paramString2.has("permissionBytes");
+      if (!bool)
       {
-        locala.gWQ.remove(paramString);
-        return;
+        AppMethodBeat.o(102244);
+        return -2147483648;
       }
-      finally {}
+      paramString2 = paramString2.getJSONArray("permissionBytes");
+      if (paramString2.length() < 3)
+      {
+        ab.w("MicroMsg.AppRuntimeApiPermissionController", "permissionBytes length:%d invalid", new Object[] { Integer.valueOf(paramString2.length()) });
+        AppMethodBeat.o(102244);
+        return -2147483648;
+      }
+    }
+    catch (Exception paramc)
+    {
+      ab.e("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy exp:%s", new Object[] { paramc.getMessage() });
+      AppMethodBeat.o(102244);
+      return -2147483648;
+    }
+    int i;
+    if ((paramc instanceof r)) {
+      switch (c.1.gYx[((r)paramc).getRuntime().gPL.gYj.awr().ordinal()])
+      {
+      default: 
+        i = paramString2.optInt(0, -2147483648);
+      }
+    }
+    for (;;)
+    {
+      ab.i("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy api:%s checkRet:%d", new Object[] { paramString1, Integer.valueOf(i) });
+      AppMethodBeat.o(102244);
+      return i;
+      i = paramString2.optInt(2, -2147483648);
+      continue;
+      i = paramString2.optInt(1, -2147483648);
+      continue;
+      i = paramString2.optInt(0, -2147483648);
     }
   }
 }

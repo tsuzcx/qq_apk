@@ -5,7 +5,7 @@ public final class c$dq
 {
   public c$dq()
   {
-    super("jumpToWXWallet", "jumpToWXWallet", 147, true);
+    super("hideOptionMenu", "", 14, false);
   }
 }
 

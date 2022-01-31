@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import android.support.v4.view.f;
 import android.support.v7.widget.Toolbar.LayoutParams;
+import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView;
 
 final class FavSearchUI$6
@@ -11,22 +12,24 @@ final class FavSearchUI$6
   
   public final void run()
   {
-    if (FavSearchUI.c(this.kcM) != null)
+    AppMethodBeat.i(74070);
+    if (FavSearchUI.c(this.mxx) != null)
     {
-      f.b(FavSearchUI.c(this.kcM));
-      Toolbar.LayoutParams localLayoutParams = (Toolbar.LayoutParams)FavSearchUI.b(this.kcM).getLayoutParams();
+      FavSearchUI.c(this.mxx).expandActionView();
+      Toolbar.LayoutParams localLayoutParams = (Toolbar.LayoutParams)FavSearchUI.b(this.mxx).getLayoutParams();
       if (localLayoutParams != null)
       {
         localLayoutParams.height = -1;
         localLayoutParams.width = -1;
       }
-      FavSearchUI.b(this.kcM).setLayoutParams(localLayoutParams);
+      FavSearchUI.b(this.mxx).setLayoutParams(localLayoutParams);
     }
+    AppMethodBeat.o(74070);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavSearchUI.6
  * JD-Core Version:    0.7.0.1
  */

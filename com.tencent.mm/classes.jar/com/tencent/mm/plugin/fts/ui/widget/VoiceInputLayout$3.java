@@ -2,25 +2,30 @@ package com.tencent.mm.plugin.fts.ui.widget;
 
 import android.os.Bundle;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class VoiceInputLayout$3
-  extends ah
+  extends ak
 {
   VoiceInputLayout$3(VoiceInputLayout paramVoiceInputLayout) {}
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(62212);
     switch (paramMessage.what)
     {
-    default: 
-      return;
-    case 0: 
-      this.kGd.aWX();
-      return;
     }
-    paramMessage = paramMessage.getData();
-    this.kGd.I(paramMessage.getInt("localCode"), paramMessage.getInt("errType"), paramMessage.getInt("errCode"));
+    for (;;)
+    {
+      AppMethodBeat.o(62212);
+      return;
+      this.ncq.bDH();
+      AppMethodBeat.o(62212);
+      return;
+      paramMessage = paramMessage.getData();
+      this.ncq.U(paramMessage.getInt("localCode"), paramMessage.getInt("errType"), paramMessage.getInt("errCode"));
+    }
   }
 }
 

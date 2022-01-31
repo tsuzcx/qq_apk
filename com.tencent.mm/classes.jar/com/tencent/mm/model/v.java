@@ -1,87 +1,133 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.ah.e;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
-import com.tencent.mm.ah.e.c;
-import com.tencent.mm.h.a.cg;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public final class v
-  implements e
+public class v
 {
-  public final void a(e.c paramc) {}
+  private static volatile v fln;
+  private Map<String, v.c> flo;
   
-  public final e.b b(e.a parama)
+  private v()
   {
-    parama = parama.dBs;
-    if ((parama == null) || (parama.svH == null))
+    AppMethodBeat.i(115091);
+    this.flo = new v.a((byte)0);
+    AppMethodBeat.o(115091);
+  }
+  
+  public static v aae()
+  {
+    AppMethodBeat.i(115090);
+    if (fln == null) {}
+    try
     {
-      y.f("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension failed, invalid cmdAM");
-      return null;
+      if (fln == null) {
+        fln = new v();
+      }
+      v localv = fln;
+      AppMethodBeat.o(115090);
+      return localv;
     }
-    y.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension start");
-    parama = aa.a(parama.svH);
-    Object localObject = DocumentBuilderFactory.newInstance();
-    for (;;)
+    finally
     {
-      int i;
-      try
+      AppMethodBeat.o(115090);
+    }
+  }
+  
+  private v.c oN(String paramString)
+  {
+    AppMethodBeat.i(115092);
+    v.c localc = new v.c();
+    this.flo.put(paramString, localc);
+    AppMethodBeat.o(115092);
+    return localc;
+  }
+  
+  public static String oQ(String paramString)
+  {
+    AppMethodBeat.i(115096);
+    paramString = "SessionId@" + paramString + "#" + System.nanoTime();
+    AppMethodBeat.o(115096);
+    return paramString;
+  }
+  
+  public final v.b oO(String paramString)
+  {
+    AppMethodBeat.i(115093);
+    paramString = (v.c)this.flo.get(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.flq;
+      AppMethodBeat.o(115093);
+      return paramString;
+    }
+    AppMethodBeat.o(115093);
+    return null;
+  }
+  
+  public final v.b oP(String paramString)
+  {
+    AppMethodBeat.i(115095);
+    paramString = (v.c)this.flo.remove(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.flq;
+      AppMethodBeat.o(115095);
+      return paramString;
+    }
+    AppMethodBeat.o(115095);
+    return null;
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(115097);
+    long l = System.currentTimeMillis();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("DataCenter \nDataStore size : ").append(this.flo.size());
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet(this.flo.entrySet());
+    Iterator localIterator = localLinkedHashSet.iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (localEntry != null)
       {
-        parama = ((DocumentBuilderFactory)localObject).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(parama.getBytes("utf-8"))));
-        parama.normalize();
-        parama = parama.getDocumentElement().getElementsByTagName("deletepackage");
-        if ((parama != null) && (parama.getLength() == 1))
+        v.c localc = (v.c)localEntry.getValue();
+        if (localc != null)
         {
-          parama = parama.item(0).getChildNodes();
-          int j = parama.getLength();
-          i = 0;
-          if (i < j)
-          {
-            localObject = parama.item(i);
-            if ((localObject == null) || (((Node)localObject).getNodeName() == null) || (!((Node)localObject).getNodeName().equals("pack"))) {
-              break label278;
-            }
-            localObject = ((Node)localObject).getAttributes();
-            if (localObject == null) {
-              break label278;
-            }
-            localObject = ((NamedNodeMap)localObject).getNamedItem("type");
-            if (localObject == null) {
-              break label278;
-            }
-            int k = bk.getInt(((Node)localObject).getNodeValue(), 0);
-            localObject = new cg();
-            ((cg)localObject).bIu.bIv = k;
-            a.udP.m((b)localObject);
-            break label278;
-          }
+          ((StringBuilder)localObject).append("\nDataStore id : ").append((String)localEntry.getKey());
+          ((StringBuilder)localObject).append(", CT : ").append(localc.flr).append("ms");
+          ((StringBuilder)localObject).append(", TTL : ").append((l - localc.flr) / 1000L).append("s");
         }
-        y.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension end");
-        return null;
       }
-      catch (Exception parama)
-      {
-        y.e("MicroMsg.DeletePackageMsgExtension", "exception:%s", new Object[] { bk.j(parama) });
-        return null;
-      }
-      label278:
-      i += 1;
     }
+    localLinkedHashSet.clear();
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(115097);
+    return localObject;
+  }
+  
+  public final v.b z(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(115094);
+    v.c localc2 = (v.c)this.flo.get(paramString);
+    v.c localc1 = localc2;
+    if (localc2 == null)
+    {
+      if (!paramBoolean)
+      {
+        AppMethodBeat.o(115094);
+        return null;
+      }
+      localc1 = oN(paramString);
+    }
+    paramString = localc1.flq;
+    AppMethodBeat.o(115094);
+    return paramString;
   }
 }
 

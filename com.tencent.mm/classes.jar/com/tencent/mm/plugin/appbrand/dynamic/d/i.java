@@ -1,11 +1,10 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
-import android.os.Parcel;
-import com.tencent.mm.aa.b.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.extension.f;
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.model.v.b;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.z.b.b.a;
 import org.json.JSONObject;
 
 public final class i
@@ -16,32 +15,15 @@ public final class i
     super("openApp", 326);
   }
   
-  protected final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.z.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
-    parama = parama.CD();
-    b localb = new b();
+    AppMethodBeat.i(10850);
+    parama = parama.Qx();
+    i.b localb = new i.b();
     localb.id = parama.getString("__page_view_id", "");
     localb.url = paramJSONObject.optString("url", "");
-    XIPCInvoker.a(parama.getString("__process_name", ae.getProcessName()), localb, i.a.class, new i.1(this, parama1));
-  }
-  
-  public static final class b
-    implements f
-  {
-    String id;
-    String url;
-    
-    public final void d(Parcel paramParcel)
-    {
-      paramParcel.writeString(this.id);
-      paramParcel.writeString(this.url);
-    }
-    
-    public final void readFromParcel(Parcel paramParcel)
-    {
-      this.id = paramParcel.readString();
-      this.url = paramParcel.readString();
-    }
+    XIPCInvoker.a(parama.getString("__process_name", ah.getProcessName()), localb, i.a.class, new i.1(this, parama1));
+    AppMethodBeat.o(10850);
   }
 }
 

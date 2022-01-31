@@ -1,23 +1,31 @@
 package com.tencent.mm.plugin.websearch.widget.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.j;
 
-public final class b
-  extends i<a>
+public class b
+  extends j<a>
 {
-  public static final String[] dXp = { i.a(a.buS, "WidgetSafeMode") };
-  private e dXw;
+  public static final String[] SQL_CREATE;
+  private e db;
+  
+  static
+  {
+    AppMethodBeat.i(91458);
+    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "WidgetSafeMode") };
+    AppMethodBeat.o(91458);
+  }
   
   public b(e parame)
   {
-    super(parame, a.buS, "WidgetSafeMode", null);
-    this.dXw = parame;
+    super(parame, a.info, "WidgetSafeMode", null);
+    this.db = parame;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.a.b
  * JD-Core Version:    0.7.0.1
  */

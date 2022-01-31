@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class o$a$2
   implements Animation.AnimationListener
@@ -12,7 +13,9 @@ final class o$a$2
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    new ah().postDelayed(new o.a.2.1(this), 200L);
+    AppMethodBeat.i(37168);
+    new ak().postDelayed(new o.a.2.1(this), 200L);
+    AppMethodBeat.o(37168);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

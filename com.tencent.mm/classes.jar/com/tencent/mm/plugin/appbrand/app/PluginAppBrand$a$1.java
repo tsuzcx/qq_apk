@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.mm.h.a.ad;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ae;
 import com.tencent.mm.sdk.b.c;
 
 final class PluginAppBrand$a$1
-  extends c<ad>
+  extends c<ae>
 {
   PluginAppBrand$a$1(PluginAppBrand.a parama)
   {
-    this.udX = ad.class.getName().hashCode();
+    AppMethodBeat.i(129220);
+    this.__eventId = ae.class.getName().hashCode();
+    AppMethodBeat.o(129220);
   }
 }
 

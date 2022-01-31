@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mm.plugin.account.bind.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BindLinkedInUI$12
   extends ClickableSpan
@@ -15,8 +15,10 @@ final class BindLinkedInUI$12
   
   public final void updateDrawState(TextPaint paramTextPaint)
   {
-    paramTextPaint.setColor(this.fbn.getResources().getColor(a.b.link_color));
+    AppMethodBeat.i(13399);
+    paramTextPaint.setColor(this.gtf.getResources().getColor(2131690214));
     paramTextPaint.setUnderlineText(false);
+    AppMethodBeat.o(13399);
   }
 }
 

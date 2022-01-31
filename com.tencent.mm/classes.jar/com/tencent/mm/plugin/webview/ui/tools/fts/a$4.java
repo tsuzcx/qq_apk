@@ -4,6 +4,7 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$4
   implements ValueAnimator.AnimatorUpdateListener
@@ -12,19 +13,21 @@ final class a$4
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
+    AppMethodBeat.i(8564);
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.rvA.rvk.setAlpha(f);
-    this.rvA.rvk.setX(this.rvA.rvs[1][1]);
-    this.rvA.rvk.setY(this.rvA.rvs[0][1]);
-    this.rvA.rvk.setPadding(this.rvA.rvj, 0, 0, 0);
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.rvA.rvk.getLayoutParams();
+    this.vlQ.vlz.setAlpha(f);
+    this.vlQ.vlz.setX(this.vlQ.vlI[1][1]);
+    this.vlQ.vlz.setY(this.vlQ.vlI[0][1]);
+    this.vlQ.vlz.setPadding(this.vlQ.vly, 0, 0, 0);
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.vlQ.vlz.getLayoutParams();
     if (paramValueAnimator.leftMargin != 0)
     {
       paramValueAnimator.leftMargin = 0;
       paramValueAnimator.rightMargin = 0;
-      paramValueAnimator.width = ((int)this.rvA.rvs[2][0] + this.rvA.rvg * 2);
-      this.rvA.rvk.setLayoutParams(paramValueAnimator);
+      paramValueAnimator.width = ((int)this.vlQ.vlI[2][0] + this.vlQ.vlv * 2);
+      this.vlQ.vlz.setLayoutParams(paramValueAnimator);
     }
+    AppMethodBeat.o(8564);
   }
 }
 

@@ -4,17 +4,33 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
-import com.google.android.gms.auth.api.signin.internal.zzl;
+import com.google.android.gms.auth.api.signin.internal.zzx;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class RevocationBoundService
   extends Service
 {
   public final IBinder onBind(Intent paramIntent)
   {
-    if ("com.google.android.gms.auth.api.signin.RevocationBoundService.disconnect".equals(paramIntent.getAction()))
+    AppMethodBeat.i(50398);
+    if (("com.google.android.gms.auth.api.signin.RevocationBoundService.disconnect".equals(paramIntent.getAction())) || ("com.google.android.gms.auth.api.signin.RevocationBoundService.clearClientState".equals(paramIntent.getAction())))
     {
-      Log.isLoggable("RevocationService", 2);
-      return new zzl(this);
+      if (Log.isLoggable("RevocationService", 2))
+      {
+        paramIntent = String.valueOf(paramIntent.getAction());
+        if (paramIntent.length() == 0) {
+          break label76;
+        }
+        "RevocationBoundService handling ".concat(paramIntent);
+      }
+      for (;;)
+      {
+        paramIntent = new zzx(this);
+        AppMethodBeat.o(50398);
+        return paramIntent;
+        label76:
+        new String("RevocationBoundService handling ");
+      }
     }
     paramIntent = String.valueOf(paramIntent.getAction());
     if (paramIntent.length() != 0) {
@@ -22,6 +38,7 @@ public final class RevocationBoundService
     }
     for (;;)
     {
+      AppMethodBeat.o(50398);
       return null;
       new String("Unknown action sent to RevocationBoundService: ");
     }

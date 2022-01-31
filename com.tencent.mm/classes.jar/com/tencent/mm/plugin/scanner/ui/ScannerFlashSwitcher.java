@@ -9,60 +9,74 @@ import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.w;
 
 public class ScannerFlashSwitcher
   extends LinearLayout
 {
-  ImageView nNq;
-  TextView nNr;
-  boolean nNs = false;
+  ImageView qBb;
+  TextView qBc;
+  boolean qBd;
   
   public ScannerFlashSwitcher(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(81322);
+    this.qBd = false;
     init();
+    AppMethodBeat.o(81322);
   }
   
   public ScannerFlashSwitcher(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(81323);
+    this.qBd = false;
     init();
+    AppMethodBeat.o(81323);
   }
   
   private void init()
   {
-    com.tencent.mm.ui.y.gt(getContext()).inflate(R.i.scanner_flash_switcher, this, true);
-    this.nNq = ((ImageView)findViewById(R.h.flash_switcher));
-    this.nNr = ((TextView)findViewById(R.h.flash_open_hint));
-    this.nNs = true;
+    AppMethodBeat.i(81324);
+    w.hM(getContext()).inflate(2130970613, this, true);
+    this.qBb = ((ImageView)findViewById(2131827449));
+    this.qBc = ((TextView)findViewById(2131827450));
+    this.qBd = true;
+    AppMethodBeat.o(81324);
   }
   
-  public final void byd()
+  public final void cji()
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.ScannerFlashSwitcher", "closeFlashStatus");
-    this.nNq.setImageResource(R.k.scanner_flash_open_normal);
+    AppMethodBeat.i(81326);
+    ab.i("MicroMsg.ScannerFlashSwitcher", "closeFlashStatus");
+    this.qBb.setImageResource(2131231942);
+    AppMethodBeat.o(81326);
   }
   
   public final void hide()
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.ScannerFlashSwitcher", "hide");
+    AppMethodBeat.i(81325);
+    ab.i("MicroMsg.ScannerFlashSwitcher", "hide");
     setEnabled(false);
-    this.nNq.animate().alpha(0.0F).setDuration(500L);
-    this.nNr.animate().alpha(0.0F).setDuration(500L).setListener(new AnimatorListenerAdapter()
+    this.qBb.animate().alpha(0.0F).setDuration(500L);
+    this.qBc.animate().alpha(0.0F).setDuration(500L).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
+        AppMethodBeat.i(81321);
         ScannerFlashSwitcher.this.setVisibility(8);
+        AppMethodBeat.o(81321);
       }
     });
+    AppMethodBeat.o(81325);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ScannerFlashSwitcher
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,17 @@
 package com.tencent.mm.plugin.game.model;
 
+import java.io.Serializable;
+
 public final class aa$a
+  implements Serializable
 {
-  public String desc;
-  public String title;
-  public String url;
+  public String cDt;
+  public long mSY;
+  public String noA;
+  public int nox;
+  public int noy;
+  public boolean noz;
+  public String tag;
 }
 
 

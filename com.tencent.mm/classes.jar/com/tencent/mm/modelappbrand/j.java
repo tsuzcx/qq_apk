@@ -2,14 +2,14 @@ package com.tencent.mm.modelappbrand;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.widget.TextView;
 import com.tencent.mm.kernel.c.a;
+import com.tencent.neattextview.textview.view.NeatTextView;
 import java.lang.ref.WeakReference;
 
 public abstract interface j
   extends a
 {
-  public abstract CharSequence a(String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference, WeakReference<TextView> paramWeakReference1);
+  public abstract CharSequence a(String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference, WeakReference<NeatTextView> paramWeakReference1);
 }
 
 

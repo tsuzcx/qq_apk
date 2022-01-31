@@ -7,15 +7,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,50 +20,72 @@ final class b
   extends BaseAdapter
 {
   private Context context;
-  private c jAJ;
-  private List<ab> vho;
-  boolean vhp = false;
+  private c lKi;
+  private List<y> zwi;
+  boolean zwj;
   
   public b(Context paramContext)
   {
+    AppMethodBeat.i(30370);
+    this.zwj = false;
     this.context = paramContext;
-    this.vho = new ArrayList();
+    this.zwi = new ArrayList();
     paramContext = new c.a();
-    paramContext.eru = R.g.my_device_default_icon;
-    this.jAJ = paramContext.OV();
-    bc(null);
+    paramContext.eNY = 2130839759;
+    this.lKi = paramContext.ahY();
+    bt(null);
+    AppMethodBeat.o(30370);
   }
   
-  private ab GH(int paramInt)
+  private y Pg(int paramInt)
   {
-    return (ab)this.vho.get(paramInt);
+    AppMethodBeat.i(30375);
+    y localy = (y)this.zwi.get(paramInt);
+    AppMethodBeat.o(30375);
+    return localy;
   }
   
-  public final void bc(List<ab> paramList)
+  private y dFG()
   {
-    this.vho.clear();
+    AppMethodBeat.i(30372);
+    y localy = new y();
+    localy.resId = 2130840235;
+    localy.elx = this.context.getString(2131303475);
+    AppMethodBeat.o(30372);
+    return localy;
+  }
+  
+  private y dFH()
+  {
+    AppMethodBeat.i(30373);
+    y localy = new y();
+    localy.resId = 2130840236;
+    localy.elx = this.context.getString(2131298322);
+    AppMethodBeat.o(30373);
+    return localy;
+  }
+  
+  public final void bt(List<y> paramList)
+  {
+    AppMethodBeat.i(30371);
+    this.zwi.clear();
     if ((paramList != null) && (paramList.size() != 0)) {
-      this.vho.addAll(paramList);
+      this.zwi.addAll(paramList);
     }
-    if (this.vhp)
-    {
-      paramList = this.vho;
-      localab = new ab();
-      localab.kCB = R.g.send_data_system_open;
-      localab.dtK = this.context.getString(R.l.chatting_send_system_open);
-      paramList.add(localab);
+    if (this.zwj) {
+      this.zwi.add(dFH());
     }
-    paramList = this.vho;
-    ab localab = new ab();
-    localab.kCB = R.g.send_data_settings;
-    localab.dtK = this.context.getString(R.l.settings_title);
-    paramList.add(localab);
-    y.d("MicroMsg.AppInfoListAdapter", "updateData mDeviceInfoList.size() = %d.", new Object[] { Integer.valueOf(this.vho.size()) });
+    this.zwi.add(dFG());
+    ab.d("MicroMsg.AppInfoListAdapter", "updateData mDeviceInfoList.size() = %d.", new Object[] { Integer.valueOf(this.zwi.size()) });
+    AppMethodBeat.o(30371);
   }
   
   public final int getCount()
   {
-    return this.vho.size();
+    AppMethodBeat.i(30374);
+    int i = this.zwi.size();
+    AppMethodBeat.o(30374);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -76,40 +95,42 @@ final class b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    ab localab = GH(paramInt);
+    AppMethodBeat.i(30376);
+    y localy = Pg(paramInt);
     Object localObject;
     if (paramView == null)
     {
-      paramView = new as();
-      localObject = View.inflate(paramViewGroup.getContext(), R.i.send_data_to_device_item, null);
-      paramView.jDJ = ((View)localObject).findViewById(R.h.container);
-      paramView.fhD = ((TextView)((View)localObject).findViewById(R.h.nameTV));
-      paramView.gSx = ((ImageView)((View)localObject).findViewById(R.h.iconIV));
-      paramView.vlE = ((TextView)((View)localObject).findViewById(R.h.sendStateTV));
-      paramView.vnu = ((SendDataToDeviceProgressBar)((View)localObject).findViewById(R.h.sendProgress));
-      paramView.vnu.setVisibility(4);
+      paramView = new ap();
+      localObject = View.inflate(paramViewGroup.getContext(), 2130970673, null);
+      paramView.lNh = ((View)localObject).findViewById(2131821084);
+      paramView.gzk = ((TextView)((View)localObject).findViewById(2131823741));
+      paramView.ivs = ((ImageView)((View)localObject).findViewById(2131823740));
+      paramView.zBd = ((TextView)((View)localObject).findViewById(2131827568));
+      paramView.zCQ = ((SendDataToDeviceProgressBar)((View)localObject).findViewById(2131827567));
+      paramView.zCQ.setVisibility(4);
       ((View)localObject).setTag(paramView);
       paramViewGroup = paramView;
       paramView = (View)localObject;
-      paramViewGroup.fhD.setText(localab.dtK);
-      y.v("MicroMsg.AppInfoListAdapter", "position(%s), name(%s).", new Object[] { Integer.valueOf(paramInt), localab.dtK });
-      if (localab.kCB == 0) {
-        break label205;
+      paramViewGroup.gzk.setText(localy.elx);
+      ab.v("MicroMsg.AppInfoListAdapter", "position(%s), name(%s).", new Object[] { Integer.valueOf(paramInt), localy.elx });
+      if (localy.resId == 0) {
+        break label211;
       }
-      paramViewGroup.gSx.setImageResource(localab.kCB);
+      paramViewGroup.ivs.setImageResource(localy.resId);
     }
     for (;;)
     {
-      paramViewGroup.jDJ.setTag(Integer.valueOf(paramInt));
+      paramViewGroup.lNh.setTag(Integer.valueOf(paramInt));
+      AppMethodBeat.o(30376);
       return paramView;
-      paramViewGroup = (as)paramView.getTag();
+      paramViewGroup = (ap)paramView.getTag();
       break;
-      label205:
-      localObject = g.b(localab.appId, 1, com.tencent.mm.cb.a.getDensity(this.context));
+      label211:
+      localObject = g.b(localy.appId, 1, com.tencent.mm.cb.a.getDensity(this.context));
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-        paramViewGroup.gSx.setImageBitmap((Bitmap)localObject);
+        paramViewGroup.ivs.setImageBitmap((Bitmap)localObject);
       } else {
-        o.ON().a(localab.iconUrl, paramViewGroup.gSx, this.jAJ);
+        o.ahG().a(localy.iconUrl, paramViewGroup.ivs, this.lKi);
       }
     }
   }

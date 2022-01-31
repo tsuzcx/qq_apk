@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.messenger.b;
 
-import com.tencent.mm.ah.e.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
 import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 final class a$1
@@ -12,8 +13,10 @@ final class a$1
   
   public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, e.a parama)
   {
-    y.i("MicroMsg.SysMsgTemplateImp", "hy: on new xml received: %s", new Object[] { paramMap.toString() });
-    a.a(this.mdK, paramString, paramMap, parama);
+    AppMethodBeat.i(136919);
+    ab.i("MicroMsg.SysMsgTemplateImp", "hy: on new xml received: %s", new Object[] { paramMap.toString() });
+    a.a(this.oEg, paramString, paramMap, parama);
+    AppMethodBeat.o(136919);
   }
 }
 

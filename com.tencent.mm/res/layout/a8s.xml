@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/rd" style="@style/p1"
+<LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/cle" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMLoadMoreListView android:id="@id/cmb" android:background="@color/rd" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scrollingCache="false" android:transcriptMode="disabled" android:divider="@drawable/pu" android:dividerHeight="@dimen/fn" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
-    <TextView android:textSize="@dimen/lj" android:textColor="@color/pf" android:gravity="center" android:id="@id/cmc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/li" android:layout_marginRight="@dimen/li" android:text="@string/cls" />
+    <com.tencent.mm.ui.base.MultiTouchImageView android:id="@id/clh" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="150.0dip" />
+    <ProgressBar android:id="@id/ats" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_marginBottom="3.0dip" style="?android:attr/progressBarStyleHorizontal" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:gravity="center" android:id="@id/cli" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/cg_" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:gravity="center" android:id="@id/bt1" android:background="@color/h6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

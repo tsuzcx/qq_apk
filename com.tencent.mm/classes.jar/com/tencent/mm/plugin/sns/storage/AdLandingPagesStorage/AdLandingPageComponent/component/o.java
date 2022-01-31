@@ -3,291 +3,337 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.view.ViewPager;
-import android.view.Display;
+import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingControlView;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.l;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.m;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.p;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.u;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.w;
-import java.util.HashMap;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.WeakHashMap;
 import org.json.JSONObject;
 
 public final class o
-  extends i
+  extends a
 {
-  private static final Map<String, Bitmap> oGt = new WeakHashMap();
-  ViewPager oGu;
-  o.a oGv;
-  AdLandingControlView oGw;
-  private int oGx = 0;
-  private int oGy = 0;
-  boolean oGz = true;
+  private static final Map<String, Bitmap> rwi;
+  ViewPager rwj;
+  o.a rwk;
+  AdLandingControlView rwl;
+  private int rwm;
+  private int rwn;
   
-  public o(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n paramn, ViewGroup paramViewGroup)
+  static
   {
-    super(paramContext, paramn, paramViewGroup);
-    this.oGw = new AdLandingControlView(paramContext);
+    AppMethodBeat.i(37191);
+    rwi = new WeakHashMap();
+    AppMethodBeat.o(37191);
   }
   
-  public final void L(Map<String, Object> paramMap)
+  public o(Context paramContext, z paramz, ViewGroup paramViewGroup)
   {
-    super.L(paramMap);
-    if (paramMap.containsKey("startIndex")) {}
-    try
-    {
-      this.oGx = ((Integer)paramMap.get("startIndex")).intValue();
-      this.oGu.m(this.oGx, false);
-      return;
-    }
-    catch (Exception paramMap) {}
+    super(paramContext, paramz, paramViewGroup);
+    AppMethodBeat.i(37181);
+    this.rwm = 0;
+    this.rwn = 0;
+    this.rwl = new AdLandingControlView(paramContext);
+    AppMethodBeat.o(37181);
   }
   
-  public final boolean ah(JSONObject paramJSONObject)
+  public final void ae(Map<String, Object> paramMap)
   {
-    return super.ah(paramJSONObject);
-  }
-  
-  public final void bET()
-  {
-    int i = this.oGu.getCurrentItem();
-    this.oGv.yd(i);
-    if (this.oGz)
-    {
-      this.oGv.ye(0);
-      this.oGz = false;
-    }
-    for (;;)
-    {
-      super.bET();
-      return;
-      this.oGv.ye(this.oGy);
-    }
-  }
-  
-  public final void bEU()
-  {
-    this.oGv.ye(-1);
-    super.bEU();
-  }
-  
-  public final View bFf()
-  {
-    View localView = this.contentView;
-    this.oGu = ((ViewPager)localView.findViewById(i.f.sns_ad_native_landing_pages_items_turnimages_viewpager));
-    this.oGw = ((AdLandingControlView)localView.findViewById(i.f.sns_ad_native_lading_pages_turnimages_indicator));
-    return localView;
-  }
-  
-  protected final void bFj()
-  {
-    Object localObject1 = (WindowManager)this.context.getSystemService("window");
-    int j = ((WindowManager)localObject1).getDefaultDisplay().getWidth() - (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)this.oFE).oDk - (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)this.oFE).oDl;
-    int k = ((WindowManager)localObject1).getDefaultDisplay().getHeight();
-    Object localObject2 = (LayoutInflater)this.context.getSystemService("layout_inflater");
-    if (this.oGu.getAdapter() == null)
-    {
-      localObject1 = new o.a(this.context, (LayoutInflater)localObject2, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)this.oFE, this.backgroundColor);
-      this.oGu.setOnPageChangeListener(new o.1(this, (o.a)localObject1));
-      this.oGu.setAdapter((android.support.v4.view.n)localObject1);
-      this.oGw.fr(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)this.oFE).oCS.size(), 0);
-      if (!((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)this.oFE).hqp) {
-        break label229;
+    AppMethodBeat.i(37185);
+    super.ae(paramMap);
+    if (paramMap.containsKey("startIndex")) {
+      try
+      {
+        this.rwm = ((Integer)paramMap.get("startIndex")).intValue();
+        this.rwj.setCurrentItem(this.rwm, false);
+        AppMethodBeat.o(37185);
+        return;
       }
-      this.oGu.setLayoutParams(new RelativeLayout.LayoutParams(j, k));
+      catch (Exception paramMap) {}
     }
-    label229:
-    while (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)this.oFE).oCS.size() <= 0)
+    AppMethodBeat.o(37185);
+  }
+  
+  public final boolean aq(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(37189);
+    if (!super.aq(paramJSONObject))
     {
-      this.oGv = ((o.a)localObject1);
-      ((o.a)localObject1).notifyDataSetChanged();
+      AppMethodBeat.o(37189);
+      return false;
+    }
+    AppMethodBeat.o(37189);
+    return true;
+  }
+  
+  public final void cqA()
+  {
+    AppMethodBeat.i(37182);
+    this.rwk.Ec(this.rwn);
+    this.rwk.Ed(this.rwn);
+    super.cqA();
+    AppMethodBeat.o(37182);
+  }
+  
+  public final void cqB()
+  {
+    AppMethodBeat.i(37183);
+    this.rwk.Ed(-1);
+    super.cqB();
+    AppMethodBeat.o(37183);
+  }
+  
+  public final void cqK()
+  {
+    AppMethodBeat.i(37188);
+    View localView = this.contentView;
+    this.rwj = ((ViewPager)localView.findViewById(2131827878));
+    this.rwl = ((AdLandingControlView)localView.findViewById(2131827879));
+    AppMethodBeat.o(37188);
+  }
+  
+  protected final void cqP()
+  {
+    AppMethodBeat.i(37187);
+    int k = this.iiW - (int)((z)this.rve).paddingLeft - (int)((z)this.rve).paddingRight;
+    int m = this.iiX;
+    Object localObject1 = (LayoutInflater)this.context.getSystemService("layout_inflater");
+    o.a locala;
+    if (this.rwj.getAdapter() == null)
+    {
+      locala = new o.a(this.context, (LayoutInflater)localObject1, (z)this.rve, this.backgroundColor);
+      this.rwj.setOnPageChangeListener(new o.1(this, locala));
+      this.rwj.setAdapter(locala);
+      this.rwl.hy(((z)this.rve).rsu.size(), 0);
+      if (!((z)this.rve).jew) {
+        break label213;
+      }
+      this.rwj.setLayoutParams(new RelativeLayout.LayoutParams(k, m));
+    }
+    label213:
+    while (((z)this.rve).rsu.size() <= 0)
+    {
+      this.rwk = locala;
+      locala.notifyDataSetChanged();
+      AppMethodBeat.o(37187);
       return;
-      localObject1 = (o.a)this.oGu.getAdapter();
-      ((o.a)localObject1).oGC = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)this.oFE);
+      locala = (o.a)this.rwj.getAdapter();
+      locala.rwq = ((z)this.rve);
       break;
     }
-    Object localObject3 = (m)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)this.oFE).oCS.get(0);
+    Object localObject2 = (m)((z)this.rve).rsu.get(0);
     new LinearLayout(this.context).setOrientation(1);
     int i = 0;
-    localObject3 = ((m)localObject3).oCS.iterator();
-    label292:
-    s locals;
+    localObject2 = ((m)localObject2).rsu.iterator();
+    label276:
+    t localt;
+    int j;
+    w localw;
     Object localObject4;
-    if (((Iterator)localObject3).hasNext())
+    if (((Iterator)localObject2).hasNext())
     {
-      locals = (s)((Iterator)localObject3).next();
-      i = (int)(i + locals.oDi);
-      if ((locals instanceof u))
+      localt = (t)((Iterator)localObject2).next();
+      j = (int)(i + localt.paddingTop);
+      if ((localt instanceof w))
       {
-        localObject4 = (u)locals;
-        View localView = ((LayoutInflater)localObject2).inflate(i.g.sns_ad_native_landing_pages_item_text, null);
-        localView.setBackgroundColor(this.backgroundColor);
-        ((TextView)localView.findViewById(i.f.sns_ad_landingpage_text_wordTitle)).setText(((u)localObject4).oDD);
-        int m = View.MeasureSpec.makeMeasureSpec(0, 0);
-        int n = View.MeasureSpec.makeMeasureSpec(0, 0);
-        ((TextView)localView.findViewById(i.f.sns_ad_landingpage_text_wordTitle)).measure(m, n);
-        m = ((TextView)localView.findViewById(i.f.sns_ad_landingpage_text_wordTitle)).getPaddingTop();
-        n = ((TextView)localView.findViewById(i.f.sns_ad_landingpage_text_wordTitle)).getHeight();
-        i = ((TextView)localView.findViewById(i.f.sns_ad_landingpage_text_wordTitle)).getPaddingBottom() + (i + m + n);
+        localw = (w)localt;
+        localObject4 = ((LayoutInflater)localObject1).inflate(2130970790, null);
+        ((View)localObject4).setBackgroundColor(this.backgroundColor);
+        i = j;
       }
     }
     for (;;)
     {
-      float f1 = i;
-      i = (int)(locals.oDj + f1);
-      break label292;
-      if ((locals instanceof l))
+      try
       {
-        localObject4 = (Button)((LayoutInflater)localObject2).inflate(i.g.sns_ad_native_landing_pages_item_btn, null).findViewById(i.f.sns_ad_native_landing_pages_item_btn_btn);
-        ((Button)localObject4).setText(((l)locals).title);
-        ((Button)localObject4).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-        i = ((Button)localObject4).getPaddingTop() + i;
-        if ((locals.oDn > 0.0F) && ((int)locals.oDn != 2147483647)) {
-          i = (int)(i + locals.oDn);
+        localObject4 = (TextView)((View)localObject4).findViewById(2131827874);
+        i = j;
+        ((TextView)localObject4).setText(localw.rta);
+        i = j;
+        if (localw.textSize > 0.0F)
+        {
+          i = j;
+          ((TextView)localObject4).setTextSize(0, localw.textSize);
+        }
+        i = j;
+        if (localw.rte > 0.0F)
+        {
+          i = j;
+          ((TextView)localObject4).setLineSpacing(0.0F, localw.rte + 1.0F);
+        }
+        i = j;
+        if (localw.rtb)
+        {
+          i = j;
+          ((TextView)localObject4).getPaint().setFakeBoldText(true);
+        }
+        i = j;
+        ((TextView)localObject4).measure(View.MeasureSpec.makeMeasureSpec((int)(k - localw.paddingLeft - localw.paddingRight), -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
+        i = j;
+        j += ((TextView)localObject4).getPaddingTop();
+        i = j;
+        j += ((TextView)localObject4).getMeasuredHeight();
+        i = j;
+        int n = ((TextView)localObject4).getPaddingBottom();
+        i = n + j;
+      }
+      catch (Exception localException)
+      {
+        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.Sns.AdLandingPageGroupListComponent", "txtComp measure exp=" + localException.toString());
+        continue;
+      }
+      float f1 = i;
+      i = (int)(localt.paddingBottom + f1);
+      break label276;
+      Object localObject3;
+      if ((localt instanceof l))
+      {
+        localObject3 = (Button)((LayoutInflater)localObject1).inflate(2130970779, null).findViewById(2131827851);
+        ((Button)localObject3).setText(((l)localt).title);
+        ((Button)localObject3).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
+        i = ((Button)localObject3).getPaddingTop() + j;
+        if ((localt.rsL > 0.0F) && ((int)localt.rsL != 2147483647)) {
+          i = (int)(i + localt.rsL);
         }
         for (;;)
         {
-          i = ((Button)localObject4).getPaddingBottom() + i;
+          i = ((Button)localObject3).getPaddingBottom() + i;
           break;
-          if ((locals.height > 0.0F) && ((int)locals.height != 2147483647)) {
-            i = (int)(i + locals.height);
+          if ((localt.height > 0.0F) && ((int)localt.height != 2147483647)) {
+            i = (int)(i + localt.height);
           } else {
-            i += ((Button)localObject4).getHeight();
+            i += ((Button)localObject3).getMeasuredHeight();
           }
         }
       }
-      if ((locals instanceof p))
+      if ((localt instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.o))
       {
         float f2 = 0.0F;
         f1 = 0.0F;
-        float f3 = locals.oDi;
-        float f4 = locals.oDj;
-        if ((locals instanceof p))
+        float f3 = localt.paddingTop;
+        float f4 = localt.paddingBottom;
+        if ((localt instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.o))
         {
-          localObject4 = (p)locals;
-          f2 = ((p)localObject4).height;
-          f1 = ((p)localObject4).width;
+          localObject3 = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.o)localt;
+          f2 = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.o)localObject3).height;
+          f1 = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.o)localObject3).width;
         }
-        if (((int)f2 != 0) && ((int)f1 != 0))
-        {
-          float f5 = i;
-          i = (int)(f2 * j / f1 + f5);
+        float f5;
+        if (((int)f2 != 0) && ((int)f1 != 0)) {
+          f5 = j;
         }
-        for (;;)
+        for (i = (int)(f2 * k / f1 + f5);; i = j + m)
         {
           i = (int)((int)(i + f3) + f4);
           break;
-          i += k;
         }
       }
-      if ((locals instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.o))
+      if ((localt instanceof n))
       {
-        i += k;
+        i = j + m;
       }
-      else if ((locals instanceof q))
+      else if ((localt instanceof q))
       {
-        localObject4 = (q)locals;
-        if (((q)localObject4).oDd == 1)
+        localObject3 = (q)localt;
+        if (((q)localObject3).rsF == 1)
         {
-          i += k;
+          i = j + m;
         }
-        else if ((int)((q)localObject4).width > 0)
+        else if ((int)((q)localObject3).width > 0)
         {
-          i = (int)((q)localObject4).height * j / (int)((q)localObject4).width + i;
+          i = (int)((q)localObject3).height * k / (int)((q)localObject3).width + j;
         }
         else
         {
-          f1 = i;
-          i = (int)(((q)localObject4).height + f1);
+          f1 = j;
+          i = (int)(((q)localObject3).height + f1);
         }
       }
-      else if ((locals instanceof w))
+      else if ((localt instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab))
       {
-        localObject4 = (w)locals;
-        if (((w)localObject4).oDL == 1)
+        localObject3 = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab)localt;
+        if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab)localObject3).rtm == 1)
         {
-          if ((int)((w)localObject4).width > 0)
+          if ((int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab)localObject3).width > 0)
           {
-            i = (int)((w)localObject4).height * j / (int)((w)localObject4).width + i;
+            i = (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab)localObject3).height * k / (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab)localObject3).width + j;
           }
           else
           {
-            f1 = i;
-            i = (int)(((w)localObject4).height + f1);
+            f1 = j;
+            i = (int)(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab)localObject3).height + f1);
           }
         }
         else {
-          i += k;
+          i = j + m;
         }
       }
-      else if ((locals instanceof v))
+      else
       {
-        i += k;
-        continue;
-        localObject2 = new RelativeLayout.LayoutParams(j, i);
-        ((RelativeLayout.LayoutParams)localObject2).leftMargin = ((int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)this.oFE).oDk);
-        ((RelativeLayout.LayoutParams)localObject2).rightMargin = ((int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n)this.oFE).oDl);
-        this.oGu.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        break;
-      }
-    }
-  }
-  
-  public final void bFo()
-  {
-    super.bFo();
-    this.oGu.m(this.oGx, false);
-  }
-  
-  public final LinkedList<JSONObject> bFx()
-  {
-    o.a locala = this.oGv;
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = locala.oGH.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (o.a.a)locala.oGH.get(localObject);
-      if ((localObject != null) && (((o.a.a)localObject).oGN.size() != 0))
-      {
-        int i = 0;
-        while (i < ((o.a.a)localObject).oGN.size())
+        if ((localt instanceof aa))
         {
-          i locali = (i)((o.a.a)localObject).oGN.get(i);
-          JSONObject localJSONObject = new JSONObject();
-          if (locali.ah(localJSONObject)) {
-            localLinkedList.add(localJSONObject);
-          }
-          i += 1;
+          i = j + m;
+          continue;
+          localObject1 = new RelativeLayout.LayoutParams(k, i);
+          ((RelativeLayout.LayoutParams)localObject1).leftMargin = ((int)((z)this.rve).paddingLeft);
+          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)((z)this.rve).paddingRight);
+          this.rwj.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          break;
         }
+        i = j;
       }
     }
-    return localLinkedList;
+  }
+  
+  public final void cqS()
+  {
+    AppMethodBeat.i(37184);
+    this.rwk.Ed(this.rwn);
+    AppMethodBeat.o(37184);
+  }
+  
+  public final List<h> cqT()
+  {
+    AppMethodBeat.i(37190);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(((o.a)this.rwj.getAdapter()).crm());
+    AppMethodBeat.o(37190);
+    return localArrayList;
+  }
+  
+  public final void cra()
+  {
+    AppMethodBeat.i(37186);
+    super.cra();
+    this.rwj.setCurrentItem(this.rwm, false);
+    AppMethodBeat.o(37186);
   }
   
   protected final int getLayout()
   {
-    return i.g.sns_ad_native_landing_pages_item_turnimages;
+    return 2130970792;
   }
 }
 

@@ -1,70 +1,90 @@
 package com.tencent.mm.ui.tools;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.a;
-import com.tencent.mm.ui.base.n.b;
-import com.tencent.mm.ui.base.n.c;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.y;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class k
-  extends o
+  implements GestureDetector.OnGestureListener
 {
-  private LayoutInflater Lu;
-  private boolean oVw = true;
-  public n.c phH;
-  public n.d phI;
-  private l phJ;
-  private n.a wdr;
-  private n.b wds;
-  private k.a wdw;
+  public k.a AvD;
+  private final float AvE;
+  private final float AvF;
+  private final int Fv;
+  private final int Fw;
+  public final GestureDetector asq;
+  private final Context context;
   
   public k(Context paramContext)
   {
-    super(paramContext);
-    this.Lu = y.gt(paramContext);
-    this.phJ = new l(paramContext);
+    AppMethodBeat.i(107656);
+    this.context = paramContext;
+    this.asq = new GestureDetector(this.context, this);
+    ViewConfiguration localViewConfiguration = ViewConfiguration.get(paramContext);
+    this.Fv = localViewConfiguration.getScaledMinimumFlingVelocity();
+    this.Fw = localViewConfiguration.getScaledMaximumFlingVelocity();
+    this.AvE = BackwardSupportUtil.b.b(paramContext, 70.0F);
+    this.AvF = BackwardSupportUtil.b.b(paramContext, 50.0F);
+    AppMethodBeat.o(107656);
   }
   
-  public final boolean fy()
+  public final boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (this.phH != null) {
-      this.phH.a(this.phJ);
-    }
-    if ((this.phJ.VF != null) && (this.phJ.VF.length() > 0)) {}
-    for (boolean bool = true;; bool = false)
+    return false;
+  }
+  
+  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(107657);
+    if (this.AvD == null)
     {
-      this.oVw = bool;
-      return super.fy();
+      AppMethodBeat.o(107657);
+      return true;
     }
+    ab.v("MicroMsg.MMGestureDetector", "lastX:%f, curX:%f, lastY:%f, curY:%f, vX:%f, vY:%f", new Object[] { Float.valueOf(paramMotionEvent1.getX()), Float.valueOf(paramMotionEvent2.getX()), Float.valueOf(paramMotionEvent1.getY()), Float.valueOf(paramMotionEvent2.getY()), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+    float f1 = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
+    float f2 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
+    if ((f1 < this.AvF) && (paramFloat1 > 800.0F) && (f2 > this.AvE))
+    {
+      AppMethodBeat.o(107657);
+      return true;
+    }
+    if ((f1 < this.AvF) && (paramFloat1 < -800.0F) && (f2 < -this.AvE))
+    {
+      AppMethodBeat.o(107657);
+      return true;
+    }
+    if ((f2 < this.AvF) && (paramFloat2 > 800.0F))
+    {
+      AppMethodBeat.o(107657);
+      return true;
+    }
+    if ((f2 < this.AvF) && (paramFloat2 < -800.0F))
+    {
+      AppMethodBeat.o(107657);
+      return true;
+    }
+    AppMethodBeat.o(107657);
+    return false;
   }
   
-  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((this.oVw) && (paramInt == 0)) {
-      return;
-    }
-    int i = paramInt;
-    if (this.oVw) {
-      i = paramInt - 1;
-    }
-    if (this.phI != null) {
-      this.phI.onMMMenuItemSelected(this.phJ.getItem(i), i);
-    }
-    dismiss();
+    return false;
   }
   
-  protected final BaseAdapter xX()
+  public final void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (this.wdw == null) {
-      this.wdw = new k.a(this, (byte)0);
-    }
-    return this.wdw;
+    return false;
   }
 }
 

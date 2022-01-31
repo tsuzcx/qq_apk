@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.exdevice.service;
 
 final class y$e
 {
-  public long jvT;
-  public int jzF;
-  public k jzG;
+  public long lFs;
+  public int lJe;
+  public k lJf;
 }
 
 

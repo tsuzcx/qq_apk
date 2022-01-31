@@ -8,17 +8,17 @@ import android.widget.TextView;
 
 final class SnsInfoFlip$d
 {
-  ImageView bQf;
-  TextView lAx;
-  View oZr;
-  ProgressBar oZs;
-  FrameLayout oZt;
+  ImageView cxy;
+  TextView nXJ;
   int position;
+  View rRK;
+  ProgressBar rRL;
+  FrameLayout rRM;
   String videoPath = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsInfoFlip.d
  * JD-Core Version:    0.7.0.1
  */

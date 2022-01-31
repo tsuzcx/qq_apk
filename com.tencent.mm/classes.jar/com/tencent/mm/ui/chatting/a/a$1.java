@@ -1,20 +1,23 @@
 package com.tencent.mm.ui.chatting.a;
 
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class a$1
-  implements am.a
+  implements ap.a
 {
   a$1(a parama) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if ((a.a(this.voh) != null) && (a.a(this.voh).euf))
+    AppMethodBeat.i(31095);
+    if ((a.a(this.zDD) != null) && (a.a(this.zDD).bSe))
     {
-      y.i("MicroMsg.ChattingDataAdapter", "[onTimerExpired]");
-      this.voh.cDo();
+      ab.i("MicroMsg.ChattingDataAdapter", "[onTimerExpired]");
+      this.zDD.dHc();
     }
+    AppMethodBeat.o(31095);
     return true;
   }
 }

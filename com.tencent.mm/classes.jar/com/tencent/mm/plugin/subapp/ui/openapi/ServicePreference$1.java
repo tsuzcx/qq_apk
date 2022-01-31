@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.subapp.ui.openapi;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ServicePreference$1
   implements AdapterView.OnItemClickListener
@@ -11,22 +12,25 @@ final class ServicePreference$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (ServicePreference.a(this.pxu).sk(paramInt)) {
-      ServicePreference.a(this.pxu).jD(false);
-    }
-    do
+    AppMethodBeat.i(25483);
+    if (ServicePreference.a(this.sZi).xj(paramInt))
     {
-      do
-      {
-        return;
-        if (!ServicePreference.a(this.pxu).pwV) {
-          break;
-        }
-      } while (ServicePreference.b(this.pxu) == null);
-      ServicePreference.b(this.pxu).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      ServicePreference.a(this.sZi).mv(false);
+      AppMethodBeat.o(25483);
       return;
-    } while (ServicePreference.c(this.pxu) == null);
-    ServicePreference.c(this.pxu).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    }
+    if (ServicePreference.a(this.sZi).sYK)
+    {
+      if (ServicePreference.b(this.sZi) != null)
+      {
+        ServicePreference.b(this.sZi).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+        AppMethodBeat.o(25483);
+      }
+    }
+    else if (ServicePreference.c(this.sZi) != null) {
+      ServicePreference.c(this.sZi).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    }
+    AppMethodBeat.o(25483);
   }
 }
 

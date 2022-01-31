@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.webview.fts;
 
-import com.tencent.mm.av.a;
-import com.tencent.mm.av.e;
-import com.tencent.mm.h.a.jy;
-import com.tencent.mm.h.a.jy.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.a;
+import com.tencent.mm.aw.e;
+import com.tencent.mm.g.a.ki;
+import com.tencent.mm.g.a.ki.a;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.h;
 import com.tencent.mm.sdk.b.c;
@@ -11,31 +12,35 @@ import java.util.Iterator;
 import java.util.Set;
 
 final class b$3
-  extends c<jy>
+  extends c<ki>
 {
   b$3(b paramb)
   {
-    this.udX = jy.class.getName().hashCode();
+    AppMethodBeat.i(5675);
+    this.__eventId = ki.class.getName().hashCode();
+    AppMethodBeat.o(5675);
   }
   
-  private boolean a(jy paramjy)
+  private boolean a(ki paramki)
   {
-    e locale = paramjy.bSA.bSu;
+    AppMethodBeat.i(5676);
+    e locale = paramki.cAc.czW;
     if ((locale != null) && (a.d(locale))) {
-      switch (paramjy.bSA.action)
+      switch (paramki.cAc.action)
       {
       }
     }
     for (;;)
     {
+      AppMethodBeat.o(5676);
       return false;
-      paramjy = this.qZb.qYR.iterator();
-      while (paramjy.hasNext()) {
-        h.Db(((Integer)paramjy.next()).intValue()).db(locale.eux, 0);
+      paramki = this.uOI.uOx.iterator();
+      while (paramki.hasNext()) {
+        h.KW(((Integer)paramki.next()).intValue()).ec(locale.fKj, 0);
       }
-      paramjy = this.qZb.qYR.iterator();
-      while (paramjy.hasNext()) {
-        h.Db(((Integer)paramjy.next()).intValue()).db(locale.eux, 1);
+      paramki = this.uOI.uOx.iterator();
+      while (paramki.hasNext()) {
+        h.KW(((Integer)paramki.next()).intValue()).ec(locale.fKj, 1);
       }
     }
   }

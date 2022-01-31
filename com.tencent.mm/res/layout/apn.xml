@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sight.encode.ui.SightVideoTextureView android:id="@id/cpm" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView style="@style/ni">
+        <LinearLayout style="@style/l0">
+            <TextView android:text="@string/dot" android:layout_weight="1.0" style="@style/mm" />
+            <EditText android:id="@id/e33" android:hint="@string/dom" style="@style/mk" />
+            <View style="@style/nz" />
+            <EditText android:id="@id/e34" android:hint="@string/don" style="@style/mk" />
+            <View style="@style/nz" />
+            <TextView android:text="@string/doo" android:layout_weight="1.0" style="@style/mm" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

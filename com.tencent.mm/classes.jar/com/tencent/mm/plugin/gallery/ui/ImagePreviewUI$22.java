@@ -1,47 +1,26 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import java.util.ArrayList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ImagePreviewUI$22
-  implements View.OnClickListener
+  implements Runnable
 {
   ImagePreviewUI$22(ImagePreviewUI paramImagePreviewUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    paramView = this.kKb;
-    boolean bool;
-    if (!ImagePreviewUI.b(this.kKb))
+    AppMethodBeat.i(21520);
+    if (this.ngC.isFinishing())
     {
-      bool = true;
-      ImagePreviewUI.b(paramView, bool);
-      if (!ImagePreviewUI.b(this.kKb)) {
-        break label138;
-      }
-      ImagePreviewUI.c(this.kKb).setImageResource(R.k.radio_on);
-      if (ImagePreviewUI.d(this.kKb).size() == 0) {
-        ImagePreviewUI.e(this.kKb).performClick();
-      }
-    }
-    for (;;)
-    {
-      ImagePreviewUI.f(this.kKb).setText(this.kKb.mController.uMN.getString(R.l.gallery_pic_orignal) + ImagePreviewUI.aXU());
-      ImagePreviewUI.a(this.kKb, ImagePreviewUI.g(this.kKb).intValue());
+      ab.i("MicroMsg.ImagePreviewUI", "image-preview is finished");
+      AppMethodBeat.o(21520);
       return;
-      bool = false;
-      break;
-      label138:
-      ImagePreviewUI.c(this.kKb).setImageResource(R.k.radio_off);
     }
+    ImagePreviewUI.b(this.ngC, CaptureMMProxy.getInstance().useMediaRecordNew());
+    this.ngC.initView();
+    AppMethodBeat.o(21520);
   }
 }
 

@@ -4,12 +4,13 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.d.a.a.t;
+import com.b.a.a.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.b.j.b;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.c.mg;
-import com.tencent.mm.protocal.c.ra;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.protocal.protobuf.uo;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 
 final class h$2
@@ -19,48 +20,48 @@ final class h$2
   
   public final void onClick(View paramView)
   {
-    if (this.ixY.azr())
+    AppMethodBeat.i(88746);
+    if (this.kBf.baX())
     {
       paramView = new j.b();
-      com.tencent.mm.plugin.card.d.b.a(this.ixZ.ixX.hxN, paramView.ild, paramView.ile, false, this.ixY);
+      com.tencent.mm.plugin.card.d.b.a(this.kBg.kBe.jpX, paramView.kmb, paramView.kmc, false, this.kBf);
     }
     for (;;)
     {
       t.finish();
+      AppMethodBeat.o(88746);
       return;
-      paramView = this.ixY.azx().sIU;
-      if ((paramView != null) && (!bk.bl(paramView.sIg)) && (!bk.bl(paramView.sIf)))
+      paramView = this.kBf.bbd().wGD;
+      if ((paramView != null) && (!bo.isNullOrNil(paramView.wFM)) && (!bo.isNullOrNil(paramView.wFL)))
       {
         int i;
-        if (this.ixZ.hxN.getIntent() != null)
+        if (this.kBg.jpX.getIntent() != null)
         {
-          i = this.ixZ.hxN.getIntent().getIntExtra("key_from_scene", 3);
-          label117:
-          if (this.ixZ.hxN.getIntent() == null) {
-            break label228;
+          i = this.kBg.jpX.getIntent().getIntExtra("key_from_scene", 3);
+          label127:
+          if (this.kBg.jpX.getIntent() == null) {
+            break label238;
           }
         }
-        label228:
-        for (int j = this.ixZ.hxN.getIntent().getIntExtra("key_from_appbrand_type", 0);; j = 0)
+        label238:
+        for (int j = this.kBg.jpX.getIntent().getIntExtra("key_from_appbrand_type", 0);; j = 0)
         {
-          com.tencent.mm.plugin.card.d.b.a(this.ixY.azB(), paramView, i, j);
-          com.tencent.mm.plugin.report.service.h.nFQ.f(11941, new Object[] { Integer.valueOf(20), this.ixY.azB(), this.ixY.azC(), "", paramView.title });
+          com.tencent.mm.plugin.card.d.b.a(this.kBf.bbh(), paramView, i, j);
+          com.tencent.mm.plugin.report.service.h.qsU.e(11941, new Object[] { Integer.valueOf(20), this.kBf.bbh(), this.kBf.bbi(), "", paramView.title });
           break;
           i = 3;
-          break label117;
+          break label127;
         }
       }
       if ((paramView != null) && (!TextUtils.isEmpty(paramView.url)))
       {
-        String str = l.y(paramView.url, paramView.sJq);
-        com.tencent.mm.plugin.card.d.b.a(this.ixZ.ixX.hxN, str, 1);
-        com.tencent.mm.plugin.report.service.h.nFQ.f(11941, new Object[] { Integer.valueOf(9), this.ixY.azB(), this.ixY.azC(), "", paramView.title });
-        if (l.a(paramView, this.ixY.azB()))
+        String str = l.H(paramView.url, paramView.wGZ);
+        com.tencent.mm.plugin.card.d.b.a(this.kBg.kBe.jpX, str, 1);
+        com.tencent.mm.plugin.report.service.h.qsU.e(11941, new Object[] { Integer.valueOf(9), this.kBf.bbh(), this.kBf.bbi(), "", paramView.title });
+        if (l.a(paramView, this.kBf.bbh()))
         {
-          str = this.ixY.azB();
-          paramView = paramView.title;
-          l.yX(str);
-          com.tencent.mm.plugin.card.d.b.a(this.ixZ.ixX.hxN, this.ixY.azx().imA);
+          l.IG(this.kBf.bbh());
+          com.tencent.mm.plugin.card.d.b.b(this.kBg.kBe.jpX, this.kBf.bbd().knw);
         }
       }
     }

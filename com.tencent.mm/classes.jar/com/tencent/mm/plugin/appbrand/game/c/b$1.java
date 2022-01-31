@@ -1,29 +1,16 @@
 package com.tencent.mm.plugin.appbrand.game.c;
 
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.magicbrush.a.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$1
-  implements View.OnClickListener
+  implements b.a
 {
-  b$1(b paramb) {}
-  
-  public final void onClick(View paramView)
+  public final void loadLibrary(String paramString)
   {
-    paramView = this.gbg;
-    if (paramView.gbc)
-    {
-      localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      localValueAnimator.addUpdateListener(new b.3(paramView));
-      localValueAnimator.start();
-      paramView.gbc = false;
-      return;
-    }
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-    localValueAnimator.addUpdateListener(new b.4(paramView));
-    localValueAnimator.start();
-    paramView.gbc = true;
+    AppMethodBeat.i(143124);
+    b.By(paramString);
+    AppMethodBeat.o(143124);
   }
 }
 

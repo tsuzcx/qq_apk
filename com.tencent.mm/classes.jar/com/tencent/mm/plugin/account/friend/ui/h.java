@@ -5,31 +5,32 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.text.TextUtils;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.friend.a.h;
 import com.tencent.mm.plugin.account.friend.a.ae;
 import com.tencent.mm.plugin.account.friend.a.n;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 
 public final class h
   implements f
 {
   private Context context;
-  private ProgressDialog ecf;
-  a fiH;
+  private ProgressDialog fsw;
+  a gAo;
   
   public h(Context paramContext, a parama)
   {
     this.context = paramContext;
-    this.fiH = parama;
+    this.gAo = parama;
   }
   
-  final void e(Cursor paramCursor)
+  final void c(Cursor paramCursor)
   {
+    AppMethodBeat.i(108655);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList3 = new ArrayList();
@@ -41,7 +42,7 @@ public final class h
       while (i < j)
       {
         localObject = new n();
-        ((n)localObject).d(paramCursor);
+        ((n)localObject).convertFrom(paramCursor);
         localArrayList1.add(((n)localObject).field_googlegmail);
         localArrayList2.add(Integer.valueOf(i));
         localArrayList3.add(localObject);
@@ -51,56 +52,64 @@ public final class h
       localArrayList2.add(Integer.valueOf(-1));
     }
     paramCursor = this.context;
-    Object localObject = this.context.getResources().getString(a.h.gcontact_select_email);
-    this.context.getResources().getString(a.h.app_cancel);
+    Object localObject = this.context.getResources().getString(2131300492);
+    this.context.getResources().getString(2131296888);
     com.tencent.mm.ui.base.h.a(paramCursor, (String)localObject, localArrayList1, localArrayList2, new h.1(this, localArrayList3));
+    AppMethodBeat.o(108655);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(108657);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "";
     }
-    y.i("MicroMsg.SendInviteGoogleContact", "[onSceneEnd] errType:%d,errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
-    if (paramm.getType() != 489) {
+    ab.i("MicroMsg.SendInviteGoogleContact", "[onSceneEnd] errType:%d,errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
+    if (paramm.getType() != 489)
+    {
+      AppMethodBeat.o(108657);
       return;
     }
-    if (this.ecf != null)
+    if (this.fsw != null)
     {
-      this.ecf.dismiss();
-      this.ecf = null;
+      this.fsw.dismiss();
+      this.fsw = null;
     }
-    g.Dk().b(489, this);
+    g.Rc().b(489, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      y.i("MicroMsg.SendInviteGoogleContact", "dealSendInviteSuccess");
-      com.tencent.mm.ui.base.h.a(this.context, a.h.inviteqqfriends_invite_success, a.h.app_tip, new h.3(this));
+      ab.i("MicroMsg.SendInviteGoogleContact", "dealSendInviteSuccess");
+      com.tencent.mm.ui.base.h.a(this.context, 2131300774, 2131297087, new h.3(this));
+      AppMethodBeat.o(108657);
       return;
     }
-    y.i("MicroMsg.SendInviteGoogleContact", "dealSendInviteFail");
-    this.fiH.cw(false);
+    ab.i("MicroMsg.SendInviteGoogleContact", "dealSendInviteFail");
+    this.gAo.dz(false);
+    AppMethodBeat.o(108657);
   }
   
-  final void pU(String paramString)
+  final void xq(String paramString)
   {
+    AppMethodBeat.i(108656);
     Object localObject = new ArrayList();
     ((ArrayList)localObject).add(paramString);
     paramString = new ae((ArrayList)localObject);
-    g.Dk().a(paramString, 0);
+    g.Rc().a(paramString, 0);
     localObject = this.context;
-    this.context.getString(a.h.inviteqqfriends_title);
-    this.ecf = com.tencent.mm.ui.base.h.b((Context)localObject, this.context.getString(a.h.inviteqqfriends_inviting), true, new h.2(this, paramString));
+    this.context.getString(2131300777);
+    this.fsw = com.tencent.mm.ui.base.h.b((Context)localObject, this.context.getString(2131300775), true, new h.2(this, paramString));
+    AppMethodBeat.o(108656);
   }
   
   public static abstract interface a
   {
-    public abstract void cw(boolean paramBoolean);
+    public abstract void dz(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.h
  * JD-Core Version:    0.7.0.1
  */

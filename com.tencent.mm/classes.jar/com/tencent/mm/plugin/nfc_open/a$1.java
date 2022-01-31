@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.nfc_open;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.e.q;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class a$1
   implements Runnable
@@ -17,30 +18,32 @@ final class a$1
   
   public final void run()
   {
-    Object localObject = MultiProcessSharedPreferences.getSharedPreferences(ae.getContext(), "system_config_prefs", 4);
+    AppMethodBeat.i(23053);
+    Object localObject = MultiProcessSharedPreferences.getSharedPreferences(ah.getContext(), "system_config_prefs", 4);
     int k;
     int i;
-    if (bk.cp(((SharedPreferences)localObject).getLong("NFC_REPORT_TIME", 0L)) > 86400000L)
+    if (bo.av(((SharedPreferences)localObject).getLong("NFC_REPORT_TIME", 0L)) > 86400000L)
     {
-      k = com.tencent.mm.plugin.nfc.b.a.a.boy().dV(ae.getContext());
+      k = com.tencent.mm.plugin.nfc.b.a.a.bWY().eJ(ah.getContext());
       if (k != 0) {
-        break label165;
+        break label171;
       }
       i = 0;
-      if (!d.ajL()) {
-        break label170;
+      if (!d.aEk()) {
+        break label176;
       }
     }
-    label165:
-    label170:
+    label171:
+    label176:
     for (int j = 1;; j = 0)
     {
-      y.i("MicroMsg.SubCoreCpuCard", "alvinluo NFC report isSupportNFC: %d, isSupportHCE: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-      h.nFQ.f(12779, new Object[] { q.zf(), Integer.valueOf(i), Integer.valueOf(j) });
+      ab.i("MicroMsg.SubCoreCpuCard", "alvinluo NFC report isSupportNFC: %d, isSupportHCE: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      h.qsU.e(12779, new Object[] { q.bP(true), Integer.valueOf(i), Integer.valueOf(j) });
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("NFC_REPORT_TIME", bk.UZ());
+      ((SharedPreferences.Editor)localObject).putLong("NFC_REPORT_TIME", bo.yB());
       ((SharedPreferences.Editor)localObject).commit();
-      y.i("MicroMsg.SubCoreCpuCard", "doNFCReport status = " + k);
+      ab.i("MicroMsg.SubCoreCpuCard", "doNFCReport status = ".concat(String.valueOf(k)));
+      AppMethodBeat.o(23053);
       return;
       i = 1;
       break;

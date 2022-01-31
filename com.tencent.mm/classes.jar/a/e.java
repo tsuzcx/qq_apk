@@ -1,23 +1,12 @@
 package a;
 
-public enum e
-{
-  static
-  {
-    e locale1 = new e("SYNCHRONIZED", 0);
-    xnX = locale1;
-    e locale2 = new e("PUBLICATION", 1);
-    xnY = locale2;
-    e locale3 = new e("NONE", 2);
-    xnZ = locale3;
-    xoa = new e[] { locale1, locale2, locale3 };
-  }
-  
-  private e() {}
-}
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlin/KotlinNullPointerException;", "Ljava/lang/NullPointerException;", "Lkotlin/NullPointerException;", "()V", "message", "", "(Ljava/lang/String;)V", "kotlin-stdlib"})
+public final class e
+  extends NullPointerException
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     a.e
  * JD-Core Version:    0.7.0.1
  */

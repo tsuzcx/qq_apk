@@ -1,101 +1,108 @@
 package android.support.v4.app;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentSender;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.LayoutInflater;
+import android.os.Parcelable;
+import android.support.v4.view.q;
 import android.view.View;
-import java.io.PrintWriter;
+import android.view.ViewGroup;
 
-public abstract class i<E>
-  extends g
+public abstract class i
+  extends q
 {
-  final Activity mActivity;
-  final Context mContext;
-  final k mFragmentManager = new k();
-  final Handler mHandler;
-  final int vm;
+  private k mCurTransaction = null;
+  private Fragment mCurrentPrimaryItem = null;
+  private final g mFragmentManager;
   
-  private i(Activity paramActivity, Context paramContext, Handler paramHandler)
+  public i(g paramg)
   {
-    this.mActivity = paramActivity;
-    this.mContext = paramContext;
-    this.mHandler = paramHandler;
-    this.vm = 0;
+    this.mFragmentManager = paramg;
   }
   
-  i(FragmentActivity paramFragmentActivity)
+  private static String b(int paramInt, long paramLong)
   {
-    this(paramFragmentActivity, paramFragmentActivity, paramFragmentActivity.mHandler);
+    return "android:switcher:" + paramInt + ":" + paramLong;
   }
   
-  public boolean F(String paramString)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    return false;
-  }
-  
-  public void a(Fragment paramFragment, Intent paramIntent, int paramInt, Bundle paramBundle)
-  {
-    if (paramInt != -1) {
-      throw new IllegalStateException("Starting activity with a requestCode requires a FragmentActivity host");
+    if (this.mCurTransaction == null) {
+      this.mCurTransaction = this.mFragmentManager.beginTransaction();
     }
-    this.mContext.startActivity(paramIntent);
+    this.mCurTransaction.d((Fragment)paramObject);
   }
   
-  public void a(Fragment paramFragment, IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
+  public void finishUpdate(ViewGroup paramViewGroup)
   {
-    if (paramInt1 != -1) {
-      throw new IllegalStateException("Starting intent sender with a requestCode requires a FragmentActivity host");
+    if (this.mCurTransaction != null)
+    {
+      this.mCurTransaction.commitNowAllowingStateLoss();
+      this.mCurTransaction = null;
     }
-    a.a(this.mActivity, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
   }
   
-  public void a(Fragment paramFragment, String[] paramArrayOfString, int paramInt) {}
+  public abstract Fragment getItem(int paramInt);
   
-  public void a(String paramString, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
-  
-  public boolean bN()
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    return true;
+    if (this.mCurTransaction == null) {
+      this.mCurTransaction = this.mFragmentManager.beginTransaction();
+    }
+    long l = paramInt;
+    Object localObject = b(paramViewGroup.getId(), l);
+    localObject = this.mFragmentManager.findFragmentByTag((String)localObject);
+    if (localObject != null) {
+      this.mCurTransaction.e((Fragment)localObject);
+    }
+    for (paramViewGroup = (ViewGroup)localObject;; paramViewGroup = (ViewGroup)localObject)
+    {
+      if (paramViewGroup != this.mCurrentPrimaryItem)
+      {
+        paramViewGroup.setMenuVisibility(false);
+        paramViewGroup.setUserVisibleHint(false);
+      }
+      return paramViewGroup;
+      localObject = getItem(paramInt);
+      this.mCurTransaction.a(paramViewGroup.getId(), (Fragment)localObject, b(paramViewGroup.getId(), l));
+    }
   }
   
-  public void bO() {}
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return ((Fragment)paramObject).getView() == paramView;
+  }
   
-  void onAttachFragment(Fragment paramFragment) {}
+  public void restoreState(Parcelable paramParcelable, ClassLoader paramClassLoader) {}
   
-  public View onFindViewById(int paramInt)
+  public Parcelable saveState()
   {
     return null;
   }
   
-  public abstract E onGetHost();
-  
-  public LayoutInflater onGetLayoutInflater()
+  public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    return LayoutInflater.from(this.mContext);
+    paramViewGroup = (Fragment)paramObject;
+    if (paramViewGroup != this.mCurrentPrimaryItem)
+    {
+      if (this.mCurrentPrimaryItem != null)
+      {
+        this.mCurrentPrimaryItem.setMenuVisibility(false);
+        this.mCurrentPrimaryItem.setUserVisibleHint(false);
+      }
+      paramViewGroup.setMenuVisibility(true);
+      paramViewGroup.setUserVisibleHint(true);
+      this.mCurrentPrimaryItem = paramViewGroup;
+    }
   }
   
-  public int onGetWindowAnimations()
+  public void startUpdate(ViewGroup paramViewGroup)
   {
-    return this.vm;
-  }
-  
-  public boolean onHasView()
-  {
-    return true;
-  }
-  
-  public boolean onHasWindowAnimations()
-  {
-    return true;
+    if (paramViewGroup.getId() == -1) {
+      throw new IllegalStateException("ViewPager with adapter " + this + " requires a view id");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.app.i
  * JD-Core Version:    0.7.0.1
  */

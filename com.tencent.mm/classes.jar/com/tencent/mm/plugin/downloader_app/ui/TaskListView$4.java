@@ -1,15 +1,21 @@
 package com.tencent.mm.plugin.downloader_app.ui;
 
-import com.tencent.mm.plugin.downloader_app.b.d.f;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader_app.b.d.b;
+import com.tencent.mm.ui.base.h;
 
 final class TaskListView$4
-  implements d.f
+  implements d.b
 {
   TaskListView$4(TaskListView paramTaskListView) {}
   
-  public final void Ac(String paramString)
+  public final void onClick()
   {
-    TaskListView.a(this.iUe, paramString);
+    AppMethodBeat.i(136294);
+    TaskListView localTaskListView = this.ldh;
+    h.d(localTaskListView.getContext(), localTaskListView.getContext().getString(2131298952), "", localTaskListView.getContext().getString(2131304263), localTaskListView.getContext().getString(2131304262), new TaskListView.10(localTaskListView), new TaskListView.2(localTaskListView));
+    AppMethodBeat.o(136294);
   }
 }
 

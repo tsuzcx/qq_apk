@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui.previewimageview;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class c$d
 {
   public Object data;
@@ -14,7 +16,10 @@ final class c$d
   
   public final String toString()
   {
-    return this.data.toString();
+    AppMethodBeat.i(40305);
+    String str = this.data.toString();
+    AppMethodBeat.o(40305);
+    return str;
   }
 }
 

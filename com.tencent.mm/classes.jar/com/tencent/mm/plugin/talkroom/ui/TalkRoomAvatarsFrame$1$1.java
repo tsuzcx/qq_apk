@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.talkroom.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class TalkRoomAvatarsFrame$1$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class TalkRoomAvatarsFrame$1$1
   
   public final void run()
   {
-    TalkRoomAvatarsFrame.b(this.pBS.pBR).notifyDataSetChanged();
+    AppMethodBeat.i(25890);
+    TalkRoomAvatarsFrame.b(this.tdB.tdA).notifyDataSetChanged();
+    AppMethodBeat.o(25890);
   }
 }
 

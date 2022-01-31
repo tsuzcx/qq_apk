@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.walletlock.gesture.ui;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
 import com.tencent.mm.plugin.walletlock.c.g;
 import com.tencent.mm.plugin.walletlock.gesture.a.d;
-import com.tencent.mm.protocal.c.bal;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bho;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class GestureGuardLogicUI$11
   implements w.a
@@ -16,19 +17,24 @@ final class GestureGuardLogicUI$11
   
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
-    y.i("MicroMsg.GestureGuardLogicUI", String.format("Scene doSwitchOff, errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }));
-    GestureGuardLogicUI.o(this.qPX);
+    AppMethodBeat.i(51596);
+    ab.i("MicroMsg.GestureGuardLogicUI", String.format("Scene doSwitchOff, errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }));
+    GestureGuardLogicUI.o(this.uFf);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      d.a(((bal)paramb.ecF.ecN).twt);
-      g localg = g.qQZ;
-      g.kR(false);
-      GestureGuardLogicUI.i(this.qPX);
-      GestureGuardLogicUI.bYq();
+      d.a(((bho)paramb.fsW.fta).xwH);
+      g localg = g.uGh;
+      g.oa(false);
+      GestureGuardLogicUI.i(this.uFf);
+      GestureGuardLogicUI.cYb();
     }
-    if (this.eeu != null) {
-      return this.eeu.a(paramInt1, paramInt2, paramString, paramb, paramm);
+    if (this.fux != null)
+    {
+      paramInt1 = this.fux.a(paramInt1, paramInt2, paramString, paramb, paramm);
+      AppMethodBeat.o(51596);
+      return paramInt1;
     }
+    AppMethodBeat.o(51596);
     return 0;
   }
 }

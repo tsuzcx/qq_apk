@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.clean.c;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.clean.c.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vfs.b;
 import com.tencent.mm.vfs.e;
 
@@ -11,7 +12,7 @@ final class c$b
 {
   private String filePath;
   private long fileSize;
-  int iBJ = 0;
+  int kGQ = 0;
   
   public c$b(c paramc, String paramString)
   {
@@ -20,8 +21,9 @@ final class c$b
     this.fileSize = 0L;
   }
   
-  private void deleteFile(String paramString)
+  private void Jg(String paramString)
   {
+    AppMethodBeat.i(18674);
     b localb = new b(paramString);
     if (localb.isDirectory())
     {
@@ -33,66 +35,52 @@ final class c$b
         while (i < j)
         {
           String str = arrayOfString[i];
-          deleteFile(paramString + "/" + str);
+          Jg(paramString + "/" + str);
           i += 1;
         }
       }
-      y.v("MicroMsg.CleanController", "delete file rootFile: %s", new Object[] { paramString });
+      ab.v("MicroMsg.CleanController", "delete file rootFile: %s", new Object[] { paramString });
       localb.delete();
+      AppMethodBeat.o(18674);
       return;
     }
-    y.v("MicroMsg.CleanController", "delete file rootFile: %s", new Object[] { paramString });
-    c.c(this.iBI, c.a(this.iBI) + localb.length());
+    ab.v("MicroMsg.CleanController", "delete file rootFile: %s", new Object[] { paramString });
+    c.c(this.kGP, c.a(this.kGP) + localb.length());
     localb.delete();
+    AppMethodBeat.o(18674);
   }
   
-  private static boolean zq(String paramString)
+  private static boolean Jh(String paramString)
   {
-    return (paramString.length() > c.aDL()) && (paramString.substring(c.aDL()).indexOf("temp") == 0);
+    AppMethodBeat.i(18675);
+    if ((paramString.length() > c.access$1600()) && (paramString.substring(c.access$1600()).indexOf("temp") == 0))
+    {
+      AppMethodBeat.o(18675);
+      return true;
+    }
+    AppMethodBeat.o(18675);
+    return false;
   }
   
-  private void zr(String paramString)
+  private void Ji(String paramString)
   {
     int i = 0;
-    this.iBJ += 1;
+    AppMethodBeat.i(18676);
+    this.kGQ += 1;
     if (paramString.endsWith("/sns"))
     {
-      y.i("MicroMsg.CleanController", "Scan sns folder: rootPath=%s", new Object[] { paramString });
-      zs(paramString);
-    }
-    for (;;)
-    {
+      ab.i("MicroMsg.CleanController", "Scan sns folder: rootPath=%s", new Object[] { paramString });
+      Jj(paramString);
+      AppMethodBeat.o(18676);
       return;
-      if (paramString.endsWith("/music"))
-      {
-        y.i("MicroMsg.CleanController", "Scan music folder: rootPath=%s", new Object[] { paramString });
-        zt(paramString);
-        return;
-      }
-      Object localObject = new b(paramString);
-      if (!((b)localObject).isDirectory()) {
-        break;
-      }
-      localObject = ((b)localObject).list();
-      if (localObject != null)
-      {
-        int j = localObject.length;
-        while (i < j)
-        {
-          String str = localObject[i];
-          zr(paramString + "/" + str);
-          i += 1;
-        }
-      }
     }
-    long l = e.aeQ(paramString);
-    c.d(this.iBI, l);
-    this.fileSize = (l + this.fileSize);
-  }
-  
-  private void zs(String paramString)
-  {
-    int i = 0;
+    if (paramString.endsWith("/music"))
+    {
+      ab.i("MicroMsg.CleanController", "Scan music folder: rootPath=%s", new Object[] { paramString });
+      Jk(paramString);
+      AppMethodBeat.o(18676);
+      return;
+    }
     Object localObject = new b(paramString);
     if (((b)localObject).isDirectory())
     {
@@ -103,29 +91,23 @@ final class c$b
         while (i < j)
         {
           String str = localObject[i];
-          zs(paramString + "/" + str);
+          Ji(paramString + "/" + str);
           i += 1;
         }
       }
+      AppMethodBeat.o(18676);
+      return;
     }
-    else
-    {
-      if ((System.currentTimeMillis() - ((b)localObject).lastModified() <= c.aDM().longValue()) || (!c.k(this.iBI))) {
-        break label133;
-      }
-      y.v("MicroMsg.CleanController", "Clean 7 days file in sns rootPath=%s", new Object[] { paramString });
-      ((b)localObject).delete();
-    }
-    return;
-    label133:
-    long l = e.aeQ(paramString);
-    c.d(this.iBI, l);
+    long l = e.avI(paramString);
+    c.d(this.kGP, l);
     this.fileSize = (l + this.fileSize);
+    AppMethodBeat.o(18676);
   }
   
-  private void zt(String paramString)
+  private void Jj(String paramString)
   {
     int i = 0;
+    AppMethodBeat.i(18677);
     Object localObject = new b(paramString);
     if (((b)localObject).isDirectory())
     {
@@ -136,112 +118,151 @@ final class c$b
         while (i < j)
         {
           String str = localObject[i];
-          zt(paramString + "/" + str);
+          Jj(paramString + "/" + str);
           i += 1;
         }
       }
+      AppMethodBeat.o(18677);
+      return;
     }
-    else
+    if ((System.currentTimeMillis() - ((b)localObject).lastModified() > c.bgM().longValue()) && (c.k(this.kGP)))
     {
-      if ((System.currentTimeMillis() - ((b)localObject).lastModified() <= c.aDN().longValue()) || (!c.k(this.iBI))) {
-        break label133;
-      }
-      y.v("MicroMsg.CleanController", "Clean 90 days file in music rootPath=%s", new Object[] { paramString });
+      ab.v("MicroMsg.CleanController", "Clean 7 days file in sns rootPath=%s", new Object[] { paramString });
       ((b)localObject).delete();
+      AppMethodBeat.o(18677);
+      return;
     }
-    return;
-    label133:
-    long l = e.aeQ(paramString);
-    c.d(this.iBI, l);
+    long l = e.avI(paramString);
+    c.d(this.kGP, l);
     this.fileSize = (l + this.fileSize);
+    AppMethodBeat.o(18677);
   }
   
-  public final String Sj()
+  private void Jk(String paramString)
   {
-    return "filePath[" + this.filePath + "] scanCount[" + this.iBJ + "]" + super.Sj();
+    int i = 0;
+    AppMethodBeat.i(18678);
+    Object localObject = new b(paramString);
+    if (((b)localObject).isDirectory())
+    {
+      localObject = ((b)localObject).list();
+      if (localObject != null)
+      {
+        int j = localObject.length;
+        while (i < j)
+        {
+          String str = localObject[i];
+          Jk(paramString + "/" + str);
+          i += 1;
+        }
+      }
+      AppMethodBeat.o(18678);
+      return;
+    }
+    if ((System.currentTimeMillis() - ((b)localObject).lastModified() > c.bgN().longValue()) && (c.k(this.kGP)))
+    {
+      ab.v("MicroMsg.CleanController", "Clean 90 days file in music rootPath=%s", new Object[] { paramString });
+      ((b)localObject).delete();
+      AppMethodBeat.o(18678);
+      return;
+    }
+    long l = e.avI(paramString);
+    c.d(this.kGP, l);
+    this.fileSize = (l + this.fileSize);
+    AppMethodBeat.o(18678);
+  }
+  
+  public final String alu()
+  {
+    AppMethodBeat.i(18672);
+    String str = "filePath[" + this.filePath + "] scanCount[" + this.kGQ + "]" + super.alu();
+    AppMethodBeat.o(18672);
+    return str;
   }
   
   public final void execute()
   {
+    AppMethodBeat.i(18673);
     Object localObject;
-    if ((zq(this.filePath)) && (c.k(this.iBI)))
+    if ((Jh(this.filePath)) && (c.k(this.kGP)))
     {
-      y.i("MicroMsg.CleanController", "Delete[%b] temp folder: %s ", new Object[] { Boolean.valueOf(c.k(this.iBI)), this.filePath });
-      deleteFile(this.filePath);
-      localObject = new b(this.filePath).cLq();
+      ab.i("MicroMsg.CleanController", "Delete[%b] temp folder: %s ", new Object[] { Boolean.valueOf(c.k(this.kGP)), this.filePath });
+      Jg(this.filePath);
+      localObject = new b(this.filePath).dQI();
       if ((((b)localObject).list() == null) || (((b)localObject).list().length == 0)) {
         ((b)localObject).delete();
       }
-      if (!c.a(this.iBI, this.filePath)) {
-        break label410;
+      if (!c.a(this.kGP, this.filePath)) {
+        break label422;
       }
-      c.a(this.iBI, c.d(this.iBI) + this.fileSize);
-      label128:
-      if (!zq(this.filePath)) {
-        break label452;
+      c.a(this.kGP, c.d(this.kGP) + this.fileSize);
+      label134:
+      if (!Jh(this.filePath)) {
+        break label464;
       }
-      localObject = c.l(this.iBI);
+      localObject = c.l(this.kGP);
       localObject[1] = ((int)(localObject[1] + this.fileSize));
     }
     for (;;)
     {
       if (this.filePath.endsWith("/image2"))
       {
-        localObject = c.l(this.iBI);
+        localObject = c.l(this.kGP);
         localObject[3] = ((int)(localObject[3] + this.fileSize));
       }
       if (this.filePath.endsWith("/image"))
       {
-        localObject = c.l(this.iBI);
+        localObject = c.l(this.kGP);
         localObject[4] = ((int)(localObject[4] + this.fileSize));
       }
       if (this.filePath.endsWith("/video"))
       {
-        localObject = c.l(this.iBI);
+        localObject = c.l(this.kGP);
         localObject[5] = ((int)(localObject[5] + this.fileSize));
       }
       if (this.filePath.endsWith("/voice2"))
       {
-        localObject = c.l(this.iBI);
+        localObject = c.l(this.kGP);
         localObject[6] = ((int)(localObject[6] + this.fileSize));
       }
       if (this.filePath.endsWith("/WeiXin"))
       {
-        localObject = c.l(this.iBI);
+        localObject = c.l(this.kGP);
         localObject[7] = ((int)(localObject[7] + this.fileSize));
       }
       if (this.filePath.endsWith("/WeChat"))
       {
-        localObject = c.l(this.iBI);
+        localObject = c.l(this.kGP);
         localObject[8] = ((int)(localObject[8] + this.fileSize));
       }
       if (this.filePath.endsWith("/xlog"))
       {
-        localObject = c.l(this.iBI);
+        localObject = c.l(this.kGP);
         localObject[9] = ((int)(localObject[9] + this.fileSize));
       }
+      AppMethodBeat.o(18673);
       return;
-      zr(this.filePath);
+      Ji(this.filePath);
       break;
-      label410:
+      label422:
       localObject = this.filePath;
-      au.Hx();
-      if (!((String)localObject).startsWith(com.tencent.mm.model.c.FU())) {
-        break label128;
+      aw.aaz();
+      if (!((String)localObject).startsWith(com.tencent.mm.model.c.getAccPath())) {
+        break label134;
       }
-      c.b(this.iBI, c.c(this.iBI) + this.fileSize);
-      break label128;
-      label452:
+      c.b(this.kGP, c.c(this.kGP) + this.fileSize);
+      break label134;
+      label464:
       localObject = this.filePath;
-      au.Hx();
-      if (((String)localObject).startsWith(com.tencent.mm.model.c.FU()))
+      aw.aaz();
+      if (((String)localObject).startsWith(com.tencent.mm.model.c.getAccPath()))
       {
-        localObject = c.l(this.iBI);
+        localObject = c.l(this.kGP);
         localObject[0] = ((int)(localObject[0] + this.fileSize));
       }
       else
       {
-        localObject = c.l(this.iBI);
+        localObject = c.l(this.kGP);
         localObject[2] = ((int)(localObject[2] + this.fileSize));
       }
     }

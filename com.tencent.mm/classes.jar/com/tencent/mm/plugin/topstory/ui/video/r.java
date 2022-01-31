@@ -2,484 +2,333 @@ package com.tencent.mm.plugin.topstory.ui.video;
 
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import com.tencent.mm.j.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.d;
 import com.tencent.mm.model.d.a;
-import com.tencent.mm.plugin.topstory.a.a.a;
-import com.tencent.mm.pluginsdk.ui.h.c;
+import com.tencent.mm.plugin.topstory.ui.PluginTopStoryUI;
 import com.tencent.mm.pluginsdk.ui.h.d;
-import com.tencent.mm.protocal.c.byg;
-import com.tencent.mm.protocal.c.byh;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
+import com.tencent.mm.protocal.protobuf.ckx;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public final class r
 {
-  b pEp;
-  private int pFU = 0;
-  private d.a pGA = new r.1(this);
-  private boolean pGB;
-  private boolean pGC;
-  private com.tencent.mm.model.d pGt = new com.tencent.mm.model.d();
-  q pGu;
-  public f pGv;
-  byg pGw;
-  public boolean pGx;
-  public boolean pGy;
-  public boolean pGz = false;
+  private int smh;
+  b thM;
+  private d tjO;
+  q tjP;
+  public f tjQ;
+  public ckx tjR;
+  public boolean tjS;
+  public boolean tjT;
+  public boolean tjU;
+  private d.a tjV;
+  private boolean tjW;
+  private boolean tjX;
   
-  public static boolean O(long paramLong1, long paramLong2)
+  public r()
+  {
+    AppMethodBeat.i(1838);
+    this.smh = 0;
+    this.tjU = false;
+    this.tjV = new r.1(this);
+    this.tjO = new d();
+    AppMethodBeat.o(1838);
+  }
+  
+  public static boolean ad(long paramLong1, long paramLong2)
   {
     return (paramLong1 >= 50L) || (paramLong2 > 5242880L);
   }
   
-  private void bOt()
+  private void cKh()
   {
-    this.pGt.bH(false);
+    AppMethodBeat.i(1841);
+    if (this.tjP.getParent() != null) {
+      ((ViewGroup)this.tjP.getParent()).removeView(this.tjP);
+    }
+    AppMethodBeat.o(1841);
   }
   
-  public final void PO(String paramString)
+  private q cKi()
   {
-    com.tencent.mm.plugin.topstory.a.b.a locala = this.pEp.bNt().pGq;
-    if (locala != null) {
-      locala.pDi = 1L;
-    }
-    if ((this.pGu != null) && (this.pGu.getSessionId().equals(paramString))) {
-      stopPlay();
-    }
-    com.tencent.mm.plugin.websearch.api.a.a.jdMethod_if(26);
+    AppMethodBeat.i(1842);
+    q localq = new q(this.thM.bMN(), this.thM);
+    localq.setRootPath(this.thM.cJe());
+    localq.setIOnlineVideoProxy(new r.b(this, (byte)0));
+    localq.setReporter(new r.c(this, (byte)0));
+    AppMethodBeat.o(1842);
+    return localq;
   }
   
-  public final void Se()
+  private void cnu()
   {
-    if (this.pGu != null) {
-      this.pGu.Se();
-    }
+    AppMethodBeat.i(1843);
+    this.tjO.a(this.tjV);
+    AppMethodBeat.o(1843);
   }
   
-  public final void Sf()
+  private void ctQ()
   {
-    if (this.pGu != null)
-    {
-      this.pGu.Sf();
-      if (this.pGv != null) {
-        this.pGv.bNR();
-      }
-    }
+    AppMethodBeat.i(1844);
+    this.tjO.cJ(false);
+    AppMethodBeat.o(1844);
   }
   
-  public final void a(b paramb, byg parambyg, String paramString, int paramInt)
+  public final void a(b paramb, ckx paramckx, String paramString, int paramInt)
   {
-    y.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "replay video %s %s %s", new Object[] { parambyg.tOx, parambyg.title, paramString });
-    paramb.bNt().b(paramb.bNv());
-    paramb.bNt().bOp();
-    paramb.bNt().a(parambyg, paramInt, paramString);
-    this.pGu.setKeepScreenOn(true);
-    this.pGu.bOs();
-    this.pGu.PN(paramString);
-    this.pGw = parambyg;
-    this.pGx = true;
-    this.pGy = false;
+    AppMethodBeat.i(1840);
+    ab.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "replay video %s %s %s", new Object[] { paramckx.xVa, paramckx.title, paramString });
+    paramb.cJd().b(paramb.cJf());
+    paramb.cJd().cKd();
+    paramb.cJd().a(paramckx, paramInt, paramString);
+    this.tjP.setKeepScreenOn(true);
+    this.tjP.cKg();
+    this.tjP.aep(paramString);
+    this.tjR = paramckx;
+    this.tjS = true;
+    this.tjT = false;
+    ((PluginTopStoryUI)g.G(PluginTopStoryUI.class)).getVideoPlayProgressMap().put(paramckx.xVa, Integer.valueOf(0));
+    AppMethodBeat.o(1840);
   }
   
   public final void a(f paramf, h.d paramd)
   {
-    if (this.pGu == null)
+    AppMethodBeat.i(1839);
+    if ((paramf == this.tjQ) || (this.thM == null))
     {
-      q localq = new q(this.pEp.bfn(), this.pEp);
-      localq.setRootPath(this.pEp.bNu());
-      localq.setIOnlineVideoProxy(new r.b(this, (byte)0));
-      localq.setReporter(new c((byte)0));
-      this.pGu = localq;
+      AppMethodBeat.o(1839);
+      return;
     }
-    if (this.pGu.getParent() != null) {
-      ((ViewGroup)this.pGu.getParent()).removeView(this.pGu);
+    if (this.tjP == null) {
+      this.tjP = cKi();
     }
-    paramf.getVideoViewParent().addView(this.pGu);
-    this.pGu.setVideoFooterView(paramf.getControlBar());
-    this.pGu.setScaleType(paramd);
-    this.pGu.setIMMVideoViewCallback(paramf.getVideoViewCallback());
-    this.pGt.a(this.pGA);
-    this.pGv = paramf;
+    cKh();
+    paramf.getVideoViewParent().addView(this.tjP);
+    this.tjP.setVideoFooterView(paramf.getControlBar());
+    this.tjP.setScaleType(paramd);
+    this.tjP.setIMMVideoViewCallback(paramf.getVideoViewCallback());
+    this.tjO.a(this.tjV);
+    this.tjQ = paramf;
+    AppMethodBeat.o(1839);
   }
   
-  public final void akT()
+  public final void aEM()
   {
-    this.pFU -= 1;
-    y.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "onUIDestroy %d", new Object[] { Integer.valueOf(this.pFU) });
-    if (this.pFU <= 0)
+    AppMethodBeat.i(1852);
+    this.smh -= 1;
+    ab.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "onUIDestroy %d", new Object[] { Integer.valueOf(this.smh) });
+    if (this.smh <= 0)
     {
-      if (this.pGu != null)
+      if (this.tjP != null)
       {
         stopPlay();
-        this.pGu.akT();
+        this.tjP.aEM();
       }
-      this.pEp = null;
+      this.thM = null;
     }
+    AppMethodBeat.o(1852);
   }
   
-  public final void bFy()
+  public final void aeq(String paramString)
   {
-    if (this.pGu != null)
+    AppMethodBeat.i(1855);
+    com.tencent.mm.plugin.topstory.a.b.a locala = this.thM.cJd().tjL;
+    if (locala != null) {
+      locala.teX = 1L;
+    }
+    if ((this.tjP != null) && (this.tjP.getSessionId().equals(paramString)))
     {
-      bOt();
-      this.pGu.setKeepScreenOn(false);
-      this.pGu.pause();
-      this.pGy = true;
+      ((PluginTopStoryUI)g.G(PluginTopStoryUI.class)).getVideoPlayProgressMap().remove(this.tjR.xVa);
+      stopPlay();
     }
+    com.tencent.mm.plugin.websearch.api.a.a.kS(26);
+    AppMethodBeat.o(1855);
   }
   
-  public final void bMs()
+  public final void alo()
   {
-    if (this.pGu != null)
+    AppMethodBeat.i(1851);
+    if (this.tjP != null) {
+      this.tjP.alo();
+    }
+    AppMethodBeat.o(1851);
+  }
+  
+  public final void alp()
+  {
+    AppMethodBeat.i(1850);
+    if (this.tjP != null)
     {
-      this.pGt.a(this.pGA);
-      this.pGu.setKeepScreenOn(true);
-      this.pGu.play();
-      this.pGy = false;
+      this.tjP.alp();
+      if (this.tjQ != null) {
+        this.tjQ.cJE();
+      }
     }
+    AppMethodBeat.o(1850);
   }
   
-  public final boolean bOu()
+  public final boolean cKj()
   {
-    if (this.pGu != null) {
-      return this.pGu.isPlaying();
+    AppMethodBeat.i(1845);
+    if (this.tjP != null)
+    {
+      boolean bool = this.tjP.isPlaying();
+      AppMethodBeat.o(1845);
+      return bool;
     }
+    AppMethodBeat.o(1845);
     return false;
+  }
+  
+  public final void crn()
+  {
+    AppMethodBeat.i(1848);
+    if (this.tjP != null)
+    {
+      ctQ();
+      this.tjP.setKeepScreenOn(false);
+      this.tjP.pause();
+      this.tjT = true;
+    }
+    AppMethodBeat.o(1848);
+  }
+  
+  public final void ctY()
+  {
+    AppMethodBeat.i(1847);
+    if (this.tjP != null)
+    {
+      cnu();
+      this.tjP.setKeepScreenOn(true);
+      this.tjP.play();
+      this.tjT = false;
+    }
+    AppMethodBeat.o(1847);
   }
   
   public final void d(b paramb)
   {
-    this.pFU += 1;
-    this.pEp = paramb;
-  }
-  
-  public final void ek(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 0) {
-      if ((this.pGx) && (this.pGC))
-      {
-        this.pGC = false;
-        bMs();
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (paramInt2 != 0) {
-            break;
-          }
-        } while ((!this.pGx) || (!bOu()));
-        this.pGC = true;
-        bFy();
-        return;
-        if (paramInt2 != 2) {
-          break;
-        }
-      } while ((!this.pGx) || (this.pEp.bNs().pFL));
-      if (bOu())
-      {
-        this.pGB = true;
-        bFy();
-      }
-      this.pGv.bNT();
-      return;
-    } while ((paramInt2 != 1) || (!this.pGB) || (!this.pGx) || (!this.pGy));
-    this.pGB = false;
-    bMs();
-    this.pGv.bNN();
+    this.smh += 1;
+    this.thM = paramb;
   }
   
   public final int getCurrPosMs()
   {
-    if (this.pGu != null) {
-      return this.pGu.getCurrPosMs();
+    AppMethodBeat.i(1858);
+    if (this.tjP != null)
+    {
+      int i = this.tjP.getCurrPosMs();
+      AppMethodBeat.o(1858);
+      return i;
     }
+    AppMethodBeat.o(1858);
     return 0;
   }
   
   public final int getCurrPosSec()
   {
-    if (this.pGu != null) {
-      return this.pGu.getCurrPosSec();
+    AppMethodBeat.i(1856);
+    if (this.tjP != null)
+    {
+      int i = this.tjP.getCurrPosSec();
+      AppMethodBeat.o(1856);
+      return i;
     }
+    AppMethodBeat.o(1856);
     return 0;
   }
   
   public final int getVideoDurationSec()
   {
-    if (this.pGu != null) {
-      return this.pGu.getVideoDurationSec();
+    AppMethodBeat.i(1857);
+    if (this.tjP != null)
+    {
+      int i = this.tjP.getVideoDurationSec();
+      AppMethodBeat.o(1857);
+      return i;
     }
+    AppMethodBeat.o(1857);
     return 0;
+  }
+  
+  public final void gi(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(1854);
+    if (paramInt1 == 0)
+    {
+      if ((this.tjS) && (this.tjX))
+      {
+        this.tjX = false;
+        ctY();
+        AppMethodBeat.o(1854);
+      }
+    }
+    else if (paramInt2 == 0)
+    {
+      if ((this.tjS) && (cKj()))
+      {
+        this.tjX = true;
+        crn();
+        AppMethodBeat.o(1854);
+      }
+    }
+    else if ((paramInt2 == 1) && (this.tjW) && (this.tjS) && (this.tjT))
+    {
+      this.tjW = false;
+      ctY();
+      this.tjQ.cJB();
+    }
+    AppMethodBeat.o(1854);
   }
   
   public final void onError(String paramString)
   {
-    if ((this.pGu != null) && (this.pGu.getSessionId().equals(paramString))) {
+    AppMethodBeat.i(1853);
+    if ((this.tjP != null) && (this.tjP.getSessionId().equals(paramString))) {
       stopPlay();
     }
+    AppMethodBeat.o(1853);
   }
   
   public final void setMute(boolean paramBoolean)
   {
-    if (this.pGu != null) {
-      this.pGu.setMute(paramBoolean);
+    AppMethodBeat.i(1846);
+    if (this.tjP != null) {
+      this.tjP.setMute(paramBoolean);
     }
+    AppMethodBeat.o(1846);
   }
   
   public final void stopPlay()
   {
-    if (this.pGu != null)
+    AppMethodBeat.i(1849);
+    if (this.tjP != null)
     {
-      y.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "stop play");
-      bOt();
-      ((TopStoryVideoPlayTextureView)this.pGu.iuC).setAlpha(0.0F);
-      this.pGu.setKeepScreenOn(false);
-      this.pGu.stop();
-      this.pGw = null;
-      this.pGx = false;
-      this.pGy = false;
-      if (this.pEp != null)
+      ab.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "stop play");
+      ctQ();
+      this.tjP.cKf();
+      this.tjP.setKeepScreenOn(false);
+      this.tjP.stop();
+      this.tjR = null;
+      this.tjS = false;
+      this.tjT = false;
+      if (this.thM != null)
       {
-        this.pEp.bNt().b(this.pEp.bNv());
-        this.pEp.bNt().bOp();
+        this.thM.cJd().b(this.thM.cJf());
+        this.thM.cJd().cKd();
       }
-      if (this.pGv != null) {
-        this.pGv.bNS();
-      }
-    }
-  }
-  
-  private final class a
-    implements g.a
-  {
-    boolean pGE;
-    private boolean pGF;
-    
-    private a() {}
-    
-    public final void bOv()
-    {
-      m localm;
-      Object localObject3;
-      Object localObject1;
-      Object localObject4;
-      if ((!this.pGF) && (r.this.pGw != null) && (r.this.pEp != null) && ((r.this.pEp.bNs().aIq()) || (com.tencent.mm.plugin.topstory.a.g.bNg())))
-      {
-        y.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "startPreload");
-        this.pGF = true;
-        localm = r.this.pEp.bNw();
-        localObject3 = r.this.pGw;
-        localObject1 = localm.pEp.bNJ();
-        localObject4 = new ArrayList();
-      }
-      for (;;)
-      {
-        int j;
-        int i;
-        try
-        {
-          j = ((n)localObject1).cnS().size();
-          i = 0;
-          if (i >= j) {
-            break label647;
-          }
-          if (!((byg)localObject3).tOx.equals(((byg)((n)localObject1).cnS().get(i)).tOx)) {
-            break label667;
-          }
-        }
-        finally {}
-        if (i < j)
-        {
-          ((List)localObject4).add(((n)localObject1).cnS().get(i));
-          i += 1;
-        }
-        else
-        {
-          localObject3 = new HashMap();
-          localObject4 = ((List)localObject4).iterator();
-          Object localObject5;
-          String str1;
-          if (((Iterator)localObject4).hasNext())
-          {
-            localObject5 = (byg)((Iterator)localObject4).next();
-            str1 = com.tencent.mm.plugin.topstory.ui.d.an(((byg)localObject5).tOx, ((byg)localObject5).tOy);
-            if (localm.pFS.containsKey(str1))
-            {
-              localObject1 = (byh)localm.pFS.get(str1);
-              ((HashMap)localObject3).put(str1, localObject1);
-              j = (int)m.N(a.a.pDd.longValue(), ((byg)localObject5).tOF);
-              if (j >= 20) {
-                break label602;
-              }
-              i = 20;
-              if (((byh)localObject1).tOM >= i) {
-                break label616;
-              }
-              String str2 = localm.pEp.bNu() + str1 + ".mp4";
-              localObject5 = ((byg)localObject5).videoUrl;
-              com.tencent.mm.j.g localg = new com.tencent.mm.j.g();
-              localg.field_mediaId = str1;
-              localg.url = ((String)localObject5);
-              localg.dma = 2;
-              localg.dmg = 2;
-              localg.dmb = 3;
-              localg.dml = i;
-              localg.field_preloadRatio = i;
-              localg.concurrentCount = 4;
-              localg.field_fullpath = str2;
-              localg.dlP = new m.d(localm, (byte)0);
-              localg.dmc = new m.c(localm, (byte)0);
-              com.tencent.mm.ak.f.Nd().b(localg, -1);
-              y.i("MicroMsg.TopStory.TopStoryPreloadMgr", "Preload video %s from %s to %s", new Object[] { str1, Long.valueOf(((byh)localObject1).tOM), Integer.valueOf(i) });
-              if (((HashMap)localObject3).size() != 6) {
-                break label645;
-              }
-            }
-          }
-          else
-          {
-            localm.pFT.clear();
-            localm.pFT.addAll(((HashMap)localObject3).keySet());
-            localm.pFS.putAll((Map)localObject3);
-            e.post(new m.a(localm, localm.pFR), "TopStory.DeleteVideoCacheTask");
-            return;
-          }
-          localObject1 = new byh();
-          ((byh)localObject1).bUi = str1;
-          ((byh)localObject1).tOF = ((byg)localObject5).tOF;
-          continue;
-          label602:
-          i = j;
-          if (j > 100)
-          {
-            i = 100;
-            continue;
-            label616:
-            y.i("MicroMsg.TopStory.TopStoryPreloadMgr", "Already Preload video %s %s", new Object[] { str1, Long.valueOf(((byh)localObject1).tOM) });
-            continue;
-            label645:
-            continue;
-            label647:
-            i = -1;
-            if ((i >= 0) && (i + 1 < j))
-            {
-              i += 1;
-              continue;
-              label667:
-              i += 1;
-            }
-          }
-        }
+      if (this.tjQ != null) {
+        this.tjQ.cJF();
       }
     }
-    
-    public final void e(String paramString, int paramInt1, int paramInt2)
-    {
-      if (r.this.pEp != null)
-      {
-        m localm = r.this.pEp.bNw();
-        long l1 = paramInt1;
-        long l2 = paramInt2;
-        if (localm.pFS.containsKey(paramString))
-        {
-          byh localbyh = (byh)localm.pFS.get(paramString);
-          localbyh.bUi = paramString;
-          localbyh.tOF = l2;
-          localbyh.tOL = l1;
-          localbyh.tOM = m.N(localbyh.tOL, localbyh.tOF);
-          localm.pFS.put(paramString, localbyh);
-        }
-      }
-      ai.d(new r.a.3(this, paramString, paramInt1, paramInt2));
-    }
-    
-    public final void onDataAvailable(final String paramString, final int paramInt1, final int paramInt2)
-    {
-      ai.d(new Runnable()
-      {
-        public final void run()
-        {
-          if (r.this.pGu != null) {
-            r.this.pGu.onDataAvailable(paramString, paramInt1, paramInt2);
-          }
-        }
-      });
-    }
-    
-    public final void onMoovReady(String paramString, int paramInt1, int paramInt2)
-    {
-      if (!this.pGE)
-      {
-        this.pGE = true;
-        ai.d(new r.a.1(this, paramInt1, paramInt2, paramString));
-      }
-    }
-    
-    public final void x(String paramString, int paramInt)
-    {
-      int i = paramInt;
-      if (com.tencent.mm.plugin.topstory.a.g.bNd())
-      {
-        i = paramInt;
-        if (r.this.pGz)
-        {
-          r.this.pGz = false;
-          i = 403;
-        }
-      }
-      y.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "onFinish %s %d", new Object[] { paramString, Integer.valueOf(i) });
-      if (r.this.pEp != null)
-      {
-        m localm = r.this.pEp.bNw();
-        if (localm.pFS.containsKey(paramString))
-        {
-          byh localbyh = (byh)localm.pFS.get(paramString);
-          if (i == 0)
-          {
-            localbyh.bUi = paramString;
-            localbyh.tOL = localbyh.tOF;
-            localbyh.tOM = m.N(localbyh.tOL, localbyh.tOF);
-            localm.pFS.put(paramString, localbyh);
-          }
-          y.i("MicroMsg.TopStory.TopStoryPreloadMgr", "onCurrentVideoDownloadFinish onFinish %s %d %s %d", new Object[] { paramString, Long.valueOf(localbyh.tOM), bk.a(localbyh.tOL, 100.0D), Integer.valueOf(i) });
-        }
-      }
-      ai.d(new r.a.4(this, paramString, i));
-    }
-  }
-  
-  private final class c
-    implements h.c
-  {
-    private c() {}
-    
-    public final void cB(long paramLong)
-    {
-      com.tencent.mm.plugin.report.f.nEG.a(600L, paramLong, 1L, false);
-    }
-    
-    public final void qk(String paramString)
-    {
-      com.tencent.mm.plugin.report.f.nEG.aC(14349, paramString);
-    }
+    AppMethodBeat.o(1849);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.r
  * JD-Core Version:    0.7.0.1
  */

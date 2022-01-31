@@ -1,203 +1,113 @@
 package com.tencent.mm.plugin.emoji.e;
 
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.h.b;
-import com.tencent.mm.plugin.emoji.model.EmojiLogic;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public final class e
+public class e
 {
-  private static final c iWG;
+  public static e lfI;
+  public boolean lfJ;
+  private Pattern lfK;
   
-  static
+  public e()
   {
-    c.a locala = new c.a();
-    locala.erd = true;
-    locala.erk = 1;
-    locala.erC = false;
-    iWG = locala.OV();
+    AppMethodBeat.i(52860);
+    this.lfJ = false;
+    this.lfK = Pattern.compile("_\\d");
+    AppMethodBeat.o(52860);
   }
   
-  public static c a(String paramString, int paramInt, Object... paramVarArgs)
+  public static e bkP()
   {
-    if (!bk.bl(paramString))
+    AppMethodBeat.i(52861);
+    if (lfI == null) {}
+    try
     {
-      c.a locala = new c.a();
-      locala.erf = true;
-      locala.erh = paramString;
-      locala.erm = paramInt;
-      locala.erl = paramInt;
-      locala.erJ = paramVarArgs;
-      return locala.OV();
+      lfI = new e();
+      e locale = lfI;
+      AppMethodBeat.o(52861);
+      return locale;
     }
-    y.w("MicroMsg.emoji.EmojiImageLoaderManager", "get emoji loader options failed. path is null.");
-    return null;
-  }
-  
-  public static c aHe()
-  {
-    c.a locala = new c.a();
-    locala.erd = true;
-    locala.erf = false;
-    locala.erk = 3;
-    return locala.OV();
-  }
-  
-  public static c cJ(String paramString1, String paramString2)
-  {
-    return g(paramString1, paramString2, new Object[0]);
-  }
-  
-  public static c cK(String paramString1, String paramString2)
-  {
-    paramString1 = EmojiLogic.I(b.FL(), paramString1, paramString2);
-    if (!bk.bl(paramString1))
+    finally
     {
-      paramString2 = new c.a();
-      paramString2.erd = true;
-      paramString2.erf = true;
-      paramString2.erh = paramString1;
-      paramString2.erD = true;
-      return paramString2.OV();
+      AppMethodBeat.o(52861);
     }
-    y.w("MicroMsg.emoji.EmojiImageLoaderManager", "get emoji loader options failed. path is null.");
-    return null;
   }
   
-  public static c cL(String paramString1, String paramString2)
+  public final void Kr(String paramString)
   {
-    paramString1 = EmojiLogic.I(b.FL(), paramString1, paramString2);
-    if (!bk.bl(paramString1))
+    AppMethodBeat.i(52862);
+    paramString = new File(paramString);
+    if ((paramString.exists()) && (paramString.isDirectory()))
     {
-      paramString2 = new c.a();
-      paramString2.erd = true;
-      paramString2.erf = true;
-      paramString2.erh = paramString1;
-      paramString2.erD = false;
-      return paramString2.OV();
+      paramString = paramString.listFiles();
+      if ((paramString != null) && (paramString.length > 0))
+      {
+        int j = paramString.length;
+        int i = 0;
+        if (i < j)
+        {
+          Object localObject = paramString[i];
+          if (this.lfJ)
+          {
+            if (localObject.isDirectory()) {
+              Kr(localObject.getPath());
+            }
+            for (;;)
+            {
+              i += 1;
+              break;
+              String str = localObject.getName();
+              if ((this.lfK.matcher(str).find()) || (str.startsWith("temp"))) {
+                localObject.delete();
+              }
+            }
+          }
+          ab.i("MicroMsg.emoji.EmojiFileCleanTaskManager", "stop run");
+          AppMethodBeat.o(52862);
+          return;
+        }
+      }
     }
-    y.w("MicroMsg.emoji.EmojiImageLoaderManager", "get emoji loader options failed. path is null.");
-    return null;
+    AppMethodBeat.o(52862);
   }
   
-  public static c g(String paramString1, String paramString2, Object... paramVarArgs)
+  public final void Ks(String paramString)
   {
-    paramString1 = EmojiLogic.I(b.FL(), paramString1, paramString2);
-    if (!bk.bl(paramString1))
+    AppMethodBeat.i(52863);
+    paramString = new File(paramString);
+    if ((paramString.exists()) && (paramString.isDirectory()))
     {
-      paramString2 = new c.a();
-      paramString2.erd = true;
-      paramString2.erf = true;
-      paramString2.erh = paramString1;
-      paramString2.erJ = paramVarArgs;
-      return paramString2.OV();
+      paramString = paramString.listFiles();
+      if ((paramString != null) && (paramString.length > 0))
+      {
+        int j = paramString.length;
+        int i = 0;
+        if (i < j)
+        {
+          Object localObject = paramString[i];
+          if (localObject.isDirectory()) {
+            Ks(localObject.getPath());
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            localObject.getName();
+            localObject.delete();
+          }
+        }
+      }
     }
-    y.w("MicroMsg.emoji.EmojiImageLoaderManager", "get emoji loader options failed. path is null.");
-    return null;
-  }
-  
-  public static c h(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    String str = g.DP().dKt;
-    paramString1 = EmojiLogic.I(b.FL(), paramString1, paramString2);
-    if (!bk.bl(paramString1))
-    {
-      paramString2 = new c.a();
-      paramString2.erd = true;
-      paramString2.erf = true;
-      paramString2.erh = paramString1;
-      paramString2.eri = str;
-      paramString2.erJ = paramVarArgs;
-      return paramString2.OV();
-    }
-    y.w("MicroMsg.emoji.EmojiImageLoaderManager", "get emoji loader options failed. path is null.");
-    return null;
-  }
-  
-  public static c j(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    paramString1 = EmojiLogic.I(b.FL(), paramString1, paramString2);
-    if (!bk.bl(paramString1))
-    {
-      paramString2 = new c.a();
-      paramString2.erd = false;
-      paramString2.erf = true;
-      paramString2.erh = paramString1;
-      paramString2.erJ = paramVarArgs;
-      return paramString2.OV();
-    }
-    y.w("MicroMsg.emoji.EmojiImageLoaderManager", "get emoji loader options failed. path is null.");
-    return null;
-  }
-  
-  public static c k(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    paramString1 = EmojiLogic.I(b.FL(), paramString1, paramString2);
-    if (!bk.bl(paramString1))
-    {
-      paramString2 = new c.a();
-      paramString2.erd = true;
-      paramString2.erf = true;
-      paramString2.erh = paramString1;
-      paramString2.erJ = paramVarArgs;
-      return paramString2.OV();
-    }
-    y.w("MicroMsg.emoji.EmojiImageLoaderManager", "get emoji loader options failed. path is null.");
-    return null;
-  }
-  
-  public static c o(String paramString, Object... paramVarArgs)
-  {
-    if (!bk.bl(paramString))
-    {
-      c.a locala = new c.a();
-      locala.erf = true;
-      locala.erh = paramString;
-      locala.erJ = paramVarArgs;
-      return locala.OV();
-    }
-    y.w("MicroMsg.emoji.EmojiImageLoaderManager", "get emoji loader options failed. path is null.");
-    return null;
-  }
-  
-  public static c p(String paramString, Object... paramVarArgs)
-  {
-    if (!bk.bl(paramString))
-    {
-      c.a locala = new c.a();
-      locala.erf = true;
-      locala.erh = paramString;
-      locala.erG = false;
-      locala.erJ = paramVarArgs;
-      return locala.OV();
-    }
-    y.w("MicroMsg.emoji.EmojiImageLoaderManager", "get emoji loader options failed. path is null.");
-    return null;
-  }
-  
-  public static c s(String paramString1, String paramString2, int paramInt)
-  {
-    paramString1 = EmojiLogic.I(b.FL(), paramString1, paramString2);
-    if (!bk.bl(paramString1))
-    {
-      paramString2 = new c.a();
-      paramString2.erd = true;
-      paramString2.erf = true;
-      paramString2.erh = paramString1;
-      paramString2.erm = paramInt;
-      paramString2.erl = paramInt;
-      return paramString2.OV();
-    }
-    y.w("MicroMsg.emoji.EmojiImageLoaderManager", "get emoji loader options failed. path is null.");
-    return null;
+    AppMethodBeat.o(52863);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.e
  * JD-Core Version:    0.7.0.1
  */

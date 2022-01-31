@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.widget;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.plugin.appbrand.dynamic.a.e;
 import com.tencent.mm.plugin.appbrand.dynamic.i;
@@ -12,11 +13,13 @@ final class IPCDynamicPageView$6
   
   public final void run()
   {
-    IPCDynamicPageView.f(this.fXO);
-    String str = IPCDynamicPageView.e(this.fXO);
+    AppMethodBeat.i(11042);
+    IPCDynamicPageView.f(this.hro);
+    String str = IPCDynamicPageView.e(this.hro);
     Bundle localBundle = new Bundle();
     localBundle.putString("id", str);
-    f.a(i.aeX().sX(str), localBundle, a.e.class, null);
+    f.a(i.azB().AY(str), localBundle, a.e.class, null);
+    AppMethodBeat.o(11042);
   }
 }
 

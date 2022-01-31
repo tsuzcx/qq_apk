@@ -7,27 +7,28 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class MovingImageButton
   extends ImageView
 {
-  private int gHR;
-  private int gHS;
-  private int gUJ;
-  private int gUK;
-  private int kYl;
+  private int iiW;
+  private int iiX;
+  private int ixS;
+  private int ixT;
   private Context mContext;
-  private int rCI;
-  private int rCJ;
-  private int rCK = 0;
-  private int rCL = 0;
-  private ViewGroup.MarginLayoutParams rCM;
-  private final int rCN = 100;
-  private int rCO;
-  private boolean rCP = false;
-  private boolean rCQ = true;
+  private int nwj;
+  private int vsU;
+  private int vsV;
+  private int vsW = 0;
+  private int vsX = 0;
+  private ViewGroup.MarginLayoutParams vsY;
+  private final int vsZ = 100;
+  private int vta;
+  private boolean vtb = false;
+  private boolean vtc = true;
   private int x;
   private int y;
   
@@ -45,25 +46,31 @@ public class MovingImageButton
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(10056);
     super.onFinishInflate();
-    this.rCO = a.fromDPToPix(this.mContext, 100);
-    this.gHR = a.fj(this.mContext);
-    this.gHS = a.fk(this.mContext);
-    this.kYl = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
+    this.vta = a.fromDPToPix(this.mContext, 100);
+    this.iiW = a.gw(this.mContext);
+    this.iiX = a.gx(this.mContext);
+    this.nwj = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
+    AppMethodBeat.o(10056);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.rCQ) {
-      return super.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.i(10057);
+    if (!this.vtc)
+    {
+      boolean bool = super.onTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(10057);
+      return bool;
     }
-    if ((this.rCK == 0) || (this.rCL == 0))
+    if ((this.vsW == 0) || (this.vsX == 0))
     {
       Rect localRect = new Rect();
       getWindowVisibleDisplayFrame(localRect);
-      this.rCK = (localRect.right - localRect.left);
-      this.rCL = (localRect.bottom - localRect.top);
-      y.d("MicroMsg.MovingImageButton", "right = %d, top = %d, left = %d, bottom = %d, screenX = %d, screenY = %d", new Object[] { Integer.valueOf(localRect.right), Integer.valueOf(localRect.top), Integer.valueOf(localRect.left), Integer.valueOf(localRect.bottom), Integer.valueOf(this.rCK), Integer.valueOf(this.rCL) });
+      this.vsW = (localRect.right - localRect.left);
+      this.vsX = (localRect.bottom - localRect.top);
+      ab.d("MicroMsg.MovingImageButton", "right = %d, top = %d, left = %d, bottom = %d, screenX = %d, screenY = %d", new Object[] { Integer.valueOf(localRect.right), Integer.valueOf(localRect.top), Integer.valueOf(localRect.left), Integer.valueOf(localRect.bottom), Integer.valueOf(this.vsW), Integer.valueOf(this.vsX) });
     }
     this.x = ((int)paramMotionEvent.getRawX());
     this.y = ((int)paramMotionEvent.getRawY());
@@ -72,60 +79,61 @@ public class MovingImageButton
     }
     for (;;)
     {
-      this.gUJ = this.x;
-      this.gUK = this.y;
+      this.ixS = this.x;
+      this.ixT = this.y;
+      AppMethodBeat.o(10057);
       return true;
-      this.rCI = this.x;
-      this.rCJ = this.y;
+      this.vsU = this.x;
+      this.vsV = this.y;
       continue;
-      int i = this.x - this.gUJ;
-      int j = this.y - this.gUK;
+      int i = this.x - this.ixS;
+      int j = this.y - this.ixT;
       if ((i != 0) || (j != 0))
       {
-        this.rCM = ((ViewGroup.MarginLayoutParams)getLayoutParams());
-        paramMotionEvent = this.rCM;
+        this.vsY = ((ViewGroup.MarginLayoutParams)getLayoutParams());
+        paramMotionEvent = this.vsY;
         int k = paramMotionEvent.rightMargin;
         paramMotionEvent.rightMargin = (-i + k);
-        paramMotionEvent = this.rCM;
+        paramMotionEvent = this.vsY;
         paramMotionEvent.topMargin += j;
-        if (this.rCM.rightMargin < 0)
+        if (this.vsY.rightMargin < 0)
         {
-          this.rCM.rightMargin = 0;
-          label325:
-          if (this.rCM.topMargin >= 0) {
-            break label388;
+          this.vsY.rightMargin = 0;
+          label347:
+          if (this.vsY.topMargin >= 0) {
+            break label410;
           }
-          this.rCM.topMargin = 0;
+          this.vsY.topMargin = 0;
         }
         for (;;)
         {
           requestLayout();
           break;
-          if (this.rCM.rightMargin <= this.rCK - getWidth()) {
-            break label325;
+          if (this.vsY.rightMargin <= this.vsW - getWidth()) {
+            break label347;
           }
-          this.rCM.rightMargin = (this.rCK - getWidth());
-          break label325;
-          label388:
-          if (this.rCM.topMargin > this.rCL - getHeight()) {
-            this.rCM.topMargin = (this.rCL - getHeight());
+          this.vsY.rightMargin = (this.vsW - getWidth());
+          break label347;
+          label410:
+          if (this.vsY.topMargin > this.vsX - getHeight()) {
+            this.vsY.topMargin = (this.vsX - getHeight());
           }
         }
-        if (Math.abs(this.rCI - this.x) + Math.abs(this.rCJ - this.y) > this.kYl)
+        if (Math.abs(this.vsU - this.x) + Math.abs(this.vsV - this.y) > this.nwj)
         {
-          if (this.y < this.rCO) {
-            this.rCM.topMargin = 0;
+          if (this.y < this.vta) {
+            this.vsY.topMargin = 0;
           }
           for (;;)
           {
             requestLayout();
             break;
-            if (this.y > this.rCL - this.rCO) {
-              this.rCM.topMargin = (this.rCL - getHeight());
-            } else if (this.x > this.rCK / 2) {
-              this.rCM.rightMargin = 0;
+            if (this.y > this.vsX - this.vta) {
+              this.vsY.topMargin = (this.vsX - getHeight());
+            } else if (this.x > this.vsW / 2) {
+              this.vsY.rightMargin = 0;
             } else {
-              this.rCM.rightMargin = (this.rCK - getWidth());
+              this.vsY.rightMargin = (this.vsW - getWidth());
             }
           }
         }
@@ -136,7 +144,7 @@ public class MovingImageButton
   
   public void setCanMove(boolean paramBoolean)
   {
-    this.rCQ = paramBoolean;
+    this.vtc = paramBoolean;
   }
 }
 

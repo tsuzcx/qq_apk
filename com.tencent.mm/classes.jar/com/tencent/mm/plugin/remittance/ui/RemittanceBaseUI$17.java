@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.remittance.model.v;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.ui.widget.b.e.c;
 
 final class RemittanceBaseUI$17
-  implements DialogInterface.OnClickListener
+  implements e.c
 {
-  RemittanceBaseUI$17(RemittanceBaseUI paramRemittanceBaseUI, String paramString, v paramv) {}
+  RemittanceBaseUI$17(RemittanceBaseUI paramRemittanceBaseUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void d(boolean paramBoolean, String paramString)
   {
-    this.nAH.a(this.nAJ, this.nAH.djD, this.nAH.nAo, this.nzN);
+    AppMethodBeat.i(142150);
+    al.p(new RemittanceBaseUI.17.1(this), 500L);
+    AppMethodBeat.o(142150);
   }
 }
 

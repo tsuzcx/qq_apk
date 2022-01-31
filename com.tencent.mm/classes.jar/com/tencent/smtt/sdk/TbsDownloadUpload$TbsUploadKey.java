@@ -2,6 +2,7 @@ package com.tencent.smtt.sdk;
 
 public abstract interface TbsDownloadUpload$TbsUploadKey
 {
+  public static final String KEY_LOCAL_CORE_VERSION = "tbs_local_core_version";
   public static final String KEY_NEEDDOWNLOAD_CODE = "tbs_needdownload_code";
   public static final String KEY_NEEDDOWNLOAD_RETURN = "tbs_needdownload_return";
   public static final String KEY_NEEDDOWNLOAD_SENT = "tbs_needdownload_sent";

@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.aa.a.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.vending.g.c;
+import com.tencent.mm.vending.g.f;
 import com.tencent.mm.vending.h.e;
 import com.tencent.mm.vending.j.d;
 
@@ -8,9 +11,17 @@ public final class g$c
 {
   public g$c(g paramg) {}
   
-  public final String vP()
+  public final String HY()
   {
     return "Vending.LOGIC";
+  }
+  
+  public final c<Void> a(long paramLong, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(141974);
+    paramString1 = f.h(Long.valueOf(paramLong), paramString1, paramString2).c(this);
+    AppMethodBeat.o(141974);
+    return paramString1;
   }
 }
 

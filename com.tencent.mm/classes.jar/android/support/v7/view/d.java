@@ -7,15 +7,14 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.os.Build.VERSION;
-import android.support.v7.a.a.i;
 import android.view.LayoutInflater;
 
 public final class d
   extends ContextWrapper
 {
-  private LayoutInflater Lu;
-  public int ST;
-  private Configuration SU;
+  public int TD;
+  private Configuration TE;
+  private LayoutInflater mInflater;
   private Resources mResources;
   private Resources.Theme mTheme;
   
@@ -27,10 +26,10 @@ public final class d
   public d(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.ST = paramInt;
+    this.TD = paramInt;
   }
   
-  private void eO()
+  private void fB()
   {
     if (this.mTheme == null) {}
     for (int i = 1;; i = 0)
@@ -43,7 +42,7 @@ public final class d
           this.mTheme.setTo(localTheme);
         }
       }
-      this.mTheme.applyStyle(this.ST, true);
+      this.mTheme.applyStyle(this.TD, true);
       return;
     }
   }
@@ -62,7 +61,7 @@ public final class d
   {
     if (this.mResources == null)
     {
-      if (this.SU != null) {
+      if (this.TE != null) {
         break label27;
       }
       this.mResources = super.getResources();
@@ -72,7 +71,7 @@ public final class d
       return this.mResources;
       label27:
       if (Build.VERSION.SDK_INT >= 17) {
-        this.mResources = createConfigurationContext(this.SU).getResources();
+        this.mResources = createConfigurationContext(this.TE).getResources();
       }
     }
   }
@@ -81,10 +80,10 @@ public final class d
   {
     if ("layout_inflater".equals(paramString))
     {
-      if (this.Lu == null) {
-        this.Lu = LayoutInflater.from(getBaseContext()).cloneInContext(this);
+      if (this.mInflater == null) {
+        this.mInflater = LayoutInflater.from(getBaseContext()).cloneInContext(this);
       }
-      return this.Lu;
+      return this.mInflater;
     }
     return getBaseContext().getSystemService(paramString);
   }
@@ -94,19 +93,19 @@ public final class d
     if (this.mTheme != null) {
       return this.mTheme;
     }
-    if (this.ST == 0) {
-      this.ST = a.i.Theme_AppCompat_Light;
+    if (this.TD == 0) {
+      this.TD = 2131493669;
     }
-    eO();
+    fB();
     return this.mTheme;
   }
   
   public final void setTheme(int paramInt)
   {
-    if (this.ST != paramInt)
+    if (this.TD != paramInt)
     {
-      this.ST = paramInt;
-      eO();
+      this.TD = paramInt;
+      fB();
     }
   }
 }

@@ -10,10 +10,10 @@ final class SwipeRefreshLayout$8
   
   public final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    float f1 = this.MA.Mk;
-    float f2 = -this.MA.Mk;
-    this.MA.setAnimationProgress(f1 + f2 * paramFloat);
-    this.MA.J(paramFloat);
+    float f1 = this.Mk.LS;
+    float f2 = -this.Mk.LS;
+    this.Mk.setAnimationProgress(f1 + f2 * paramFloat);
+    this.Mk.K(paramFloat);
   }
 }
 

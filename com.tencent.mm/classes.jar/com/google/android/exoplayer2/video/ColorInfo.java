@@ -3,35 +3,53 @@ package com.google.android.exoplayer2.video;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 
 public final class ColorInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ColorInfo> CREATOR = new ColorInfo.1();
-  public final int aSY;
-  public final int aSZ;
-  public final int aTa;
-  public final byte[] aTb;
-  private int auK;
+  public static final Parcelable.Creator<ColorInfo> CREATOR;
+  public final int aDC;
+  public final int aDD;
+  public final int aDE;
+  private int axc;
+  public final byte[] bbz;
+  
+  static
+  {
+    AppMethodBeat.i(95987);
+    CREATOR = new ColorInfo.1();
+    AppMethodBeat.o(95987);
+  }
+  
+  public ColorInfo(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
+  {
+    this.aDC = paramInt1;
+    this.aDE = paramInt2;
+    this.aDD = paramInt3;
+    this.bbz = paramArrayOfByte;
+  }
   
   ColorInfo(Parcel paramParcel)
   {
-    this.aSY = paramParcel.readInt();
-    this.aSZ = paramParcel.readInt();
-    this.aTa = paramParcel.readInt();
+    AppMethodBeat.i(95982);
+    this.aDC = paramParcel.readInt();
+    this.aDE = paramParcel.readInt();
+    this.aDD = paramParcel.readInt();
     int i;
     if (paramParcel.readInt() != 0)
     {
       i = 1;
       if (i == 0) {
-        break label57;
+        break label67;
       }
     }
-    label57:
+    label67:
     for (paramParcel = paramParcel.createByteArray();; paramParcel = null)
     {
-      this.aTb = paramParcel;
+      this.bbz = paramParcel;
+      AppMethodBeat.o(95982);
       return;
       i = 0;
       break;
@@ -45,54 +63,72 @@ public final class ColorInfo
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(95983);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(95983);
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (ColorInfo)paramObject;
-    } while ((this.aSY == paramObject.aSY) && (this.aSZ == paramObject.aSZ) && (this.aTa == paramObject.aTa) && (Arrays.equals(this.aTb, paramObject.aTb)));
-    return false;
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(95983);
+      return false;
+    }
+    paramObject = (ColorInfo)paramObject;
+    if ((this.aDC != paramObject.aDC) || (this.aDE != paramObject.aDE) || (this.aDD != paramObject.aDD) || (!Arrays.equals(this.bbz, paramObject.bbz)))
+    {
+      AppMethodBeat.o(95983);
+      return false;
+    }
+    AppMethodBeat.o(95983);
+    return true;
   }
   
   public final int hashCode()
   {
-    if (this.auK == 0) {
-      this.auK = ((((this.aSY + 527) * 31 + this.aSZ) * 31 + this.aTa) * 31 + Arrays.hashCode(this.aTb));
+    AppMethodBeat.i(95985);
+    if (this.axc == 0) {
+      this.axc = ((((this.aDC + 527) * 31 + this.aDE) * 31 + this.aDD) * 31 + Arrays.hashCode(this.bbz));
     }
-    return this.auK;
+    int i = this.axc;
+    AppMethodBeat.o(95985);
+    return i;
   }
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("ColorInfo(").append(this.aSY).append(", ").append(this.aSZ).append(", ").append(this.aTa).append(", ");
-    if (this.aTb != null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool + ")";
+    AppMethodBeat.i(95984);
+    Object localObject = new StringBuilder("ColorInfo(").append(this.aDC).append(", ").append(this.aDE).append(", ").append(this.aDD).append(", ");
+    if (this.bbz != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localObject = bool + ")";
+      AppMethodBeat.o(95984);
+      return localObject;
     }
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.aSY);
-    paramParcel.writeInt(this.aSZ);
-    paramParcel.writeInt(this.aTa);
-    if (this.aTb != null) {}
+    AppMethodBeat.i(95986);
+    paramParcel.writeInt(this.aDC);
+    paramParcel.writeInt(this.aDE);
+    paramParcel.writeInt(this.aDD);
+    if (this.bbz != null) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      if (this.aTb != null) {
-        paramParcel.writeByteArray(this.aTb);
+      if (this.bbz != null) {
+        paramParcel.writeByteArray(this.bbz);
       }
+      AppMethodBeat.o(95986);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.video.ColorInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,50 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class k
-  extends i<b>
+  extends j<b>
 {
-  public static final String[] dUb = { i.a(b.dUa, "AppBrandAppLaunchUsernameDuplicateRecord") };
-  public final e fCV;
+  public static final String[] fkl;
+  public final e gVl;
+  
+  static
+  {
+    AppMethodBeat.i(129556);
+    fkl = new String[] { j.getCreateSQLs(b.fkk, "AppBrandAppLaunchUsernameDuplicateRecord") };
+    AppMethodBeat.o(129556);
+  }
   
   public k(e parame)
   {
-    super(parame, b.dUa, "AppBrandAppLaunchUsernameDuplicateRecord", b.cqY);
-    this.fCV = parame;
+    super(parame, b.fkk, "AppBrandAppLaunchUsernameDuplicateRecord", b.INDEX_CREATE);
+    this.gVl = parame;
   }
   
-  public final boolean v(String paramString, long paramLong)
+  public final boolean E(String paramString, long paramLong)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(129555);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(129555);
       return false;
     }
     b localb = new b();
     localb.field_username = paramString;
-    boolean bool = b(localb, new String[0]);
+    boolean bool = get(localb, new String[0]);
     localb.field_updateTime = paramLong;
-    if (bool) {
-      return c(localb, new String[0]);
+    if (bool)
+    {
+      bool = update(localb, new String[0]);
+      AppMethodBeat.o(129555);
+      return bool;
     }
-    return b(localb);
+    bool = insert(localb);
+    AppMethodBeat.o(129555);
+    return bool;
   }
 }
 

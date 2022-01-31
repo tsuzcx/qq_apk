@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet.bind.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.c.a;
 
 final class WalletUnbindBankCardProxyUI$1
@@ -9,19 +10,21 @@ final class WalletUnbindBankCardProxyUI$1
 {
   WalletUnbindBankCardProxyUI$1(WalletUnbindBankCardProxyUI paramWalletUnbindBankCardProxyUI) {}
   
-  public final Intent m(int paramInt, Bundle paramBundle)
+  public final Intent p(int paramInt, Bundle paramBundle)
   {
+    AppMethodBeat.i(45830);
     switch (paramInt)
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(45830);
       return null;
-      this.qkJ.setResult(0);
+      this.tTJ.setResult(0);
       continue;
-      this.qkJ.setResult(-1);
+      this.tTJ.setResult(-1);
       continue;
-      this.qkJ.setResult(1);
+      this.tTJ.setResult(1);
     }
   }
 }

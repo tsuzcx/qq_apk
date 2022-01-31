@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.openSDK.param.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class OperateDownloadTaskRequest
   extends JceStruct
@@ -27,6 +28,7 @@ public final class OperateDownloadTaskRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(76003);
     this.requestType = paramJceInputStream.read(this.requestType, 0, true);
     if (cache_baseParam == null) {
       cache_baseParam = new IPCBaseParam();
@@ -35,10 +37,12 @@ public final class OperateDownloadTaskRequest
     this.opList = paramJceInputStream.readString(2, false);
     this.actionFlag = paramJceInputStream.readString(3, false);
     this.verifyType = paramJceInputStream.readString(4, false);
+    AppMethodBeat.o(76003);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(76002);
     paramJceOutputStream.write(this.requestType, 0);
     paramJceOutputStream.write(this.baseParam, 1);
     if (this.opList != null) {
@@ -50,6 +54,7 @@ public final class OperateDownloadTaskRequest
     if (this.verifyType != null) {
       paramJceOutputStream.write(this.verifyType, 4);
     }
+    AppMethodBeat.o(76002);
   }
 }
 

@@ -4,29 +4,37 @@ import android.content.res.Resources;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class MultiTalkRoomPopupNav$a
+final class MultiTalkRoomPopupNav$a
 {
-  private Button jRz;
+  private Button mlV;
   TextView titleView;
-  LinearLayout uPD;
+  LinearLayout zdQ;
   
   private MultiTalkRoomPopupNav$a(MultiTalkRoomPopupNav paramMultiTalkRoomPopupNav, boolean paramBoolean)
   {
-    this.jRz = ((Button)paramMultiTalkRoomPopupNav.findViewById(R.h.multitalk_alert_cancel_btn));
-    this.titleView = ((TextView)paramMultiTalkRoomPopupNav.findViewById(R.h.multitalk_tv_dialog_title));
-    this.uPD = ((LinearLayout)paramMultiTalkRoomPopupNav.findViewById(R.h.multitalk_dialog_layout));
+    AppMethodBeat.i(29772);
+    this.mlV = ((Button)paramMultiTalkRoomPopupNav.findViewById(2131826438));
+    this.titleView = ((TextView)paramMultiTalkRoomPopupNav.findViewById(2131826434));
+    this.zdQ = ((LinearLayout)paramMultiTalkRoomPopupNav.findViewById(2131826433));
     if (paramBoolean)
     {
-      this.uPD.setBackgroundResource(R.g.multitalk_talking_banner_shape);
-      this.jRz.setTextColor(paramMultiTalkRoomPopupNav.getResources().getColor(R.e.multitalk_popup_nav_black_text_color));
+      this.zdQ.setBackgroundResource(2130839747);
+      this.mlV.setTextColor(paramMultiTalkRoomPopupNav.getResources().getColor(2131690300));
+      AppMethodBeat.o(29772);
       return;
     }
-    this.uPD.setBackgroundResource(R.g.multitalk_default_banner_shape);
-    this.jRz.setTextColor(paramMultiTalkRoomPopupNav.getResources().getColor(R.e.cancel_btn_color));
+    this.zdQ.setBackgroundResource(2130839739);
+    this.mlV.setTextColor(paramMultiTalkRoomPopupNav.getResources().getColor(2131689819));
+    AppMethodBeat.o(29772);
+  }
+  
+  final void close()
+  {
+    AppMethodBeat.i(29773);
+    this.zdQ.setVisibility(8);
+    AppMethodBeat.o(29773);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.music.ui;
 
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MusicViewPager$b
   extends GestureDetector.SimpleOnGestureListener
@@ -10,7 +11,14 @@ final class MusicViewPager$b
   
   public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    return Math.abs(paramFloat2) < Math.abs(paramFloat1);
+    AppMethodBeat.i(105141);
+    if (Math.abs(paramFloat2) < Math.abs(paramFloat1))
+    {
+      AppMethodBeat.o(105141);
+      return true;
+    }
+    AppMethodBeat.o(105141);
+    return false;
   }
 }
 

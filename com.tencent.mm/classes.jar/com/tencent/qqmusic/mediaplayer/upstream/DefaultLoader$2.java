@@ -2,6 +2,7 @@ package com.tencent.qqmusic.mediaplayer.upstream;
 
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.downstream.IDataSink;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 import java.io.IOException;
@@ -13,16 +14,21 @@ class DefaultLoader$2
   
   public void onCancelled()
   {
+    AppMethodBeat.i(104548);
     DefaultLoader.access$300(this.this$0).obtainMessage(5).sendToTarget();
+    AppMethodBeat.o(104548);
   }
   
   public void onFailed(Throwable paramThrowable)
   {
+    AppMethodBeat.i(104547);
     DefaultLoader.access$300(this.this$0).obtainMessage(4, new IOException("failed to load uri", paramThrowable)).sendToTarget();
+    AppMethodBeat.o(104547);
   }
   
   public void onSucceed(StreamingRequest paramStreamingRequest)
   {
+    AppMethodBeat.i(104546);
     Logger.i("DefaultLoader", "[startLoading] uriLoader.startLoading onSucceed");
     IDataSource localIDataSource = this.this$0.createUpStream(paramStreamingRequest);
     try
@@ -39,6 +45,7 @@ class DefaultLoader$2
         DefaultLoader.access$402(this.this$0, paramStreamingRequest);
         DefaultLoader.access$502(this.this$0, localIDataSource);
         this.this$0.start();
+        AppMethodBeat.o(104546);
         return;
         localIOException1 = localIOException1;
         DefaultLoader.access$300(this.this$0).obtainMessage(4, localIOException1).sendToTarget();

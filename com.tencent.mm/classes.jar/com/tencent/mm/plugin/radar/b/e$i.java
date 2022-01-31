@@ -1,42 +1,52 @@
 package com.tencent.mm.plugin.radar.b;
 
-import com.tencent.mm.modelgeo.a.a;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelstat.o;
 import com.tencent.mm.pluginsdk.model.lbs.Location;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "<anonymous parameter 4>", "", "maccuracy", "<anonymous parameter 6>", "onGetLocation"})
 final class e$i
-  implements a.a
+  implements b.a
 {
   e$i(e parame) {}
   
   public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    e.b localb;
-    if (e.a(this.nlG))
+    AppMethodBeat.i(102920);
+    if (e.a(this.pQV))
     {
-      localb = e.nlp;
-      y.d(e.access$getTAG$cp(), "cancel location");
+      ab.d(e.access$getTAG$cp(), "cancel location");
+      AppMethodBeat.o(102920);
       return false;
     }
-    if (e.c(this.nlG) != null) {
+    if (e.c(this.pQV) != null)
+    {
+      AppMethodBeat.o(102920);
       return false;
     }
+    e locale;
     if (paramBoolean)
     {
+      locale = this.pQV;
+      e.c(this.pQV);
+      e.a(locale, true);
       o.a(2006, paramFloat1, paramFloat2, (int)paramDouble2);
-      localb = e.nlp;
-      y.d(e.access$getTAG$cp(), "lat:%f lng:%f accuracy:%f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1), Double.valueOf(paramDouble2) });
-      e.a(this.nlG, new Location(paramFloat2, paramFloat1, (int)paramDouble2, paramInt, "", ""));
-      e.e(this.nlG).hq(0L);
+      ab.d(e.access$getTAG$cp(), "lat:%f lng:%f accuracy:%f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1), Double.valueOf(paramDouble2) });
+      e.a(this.pQV, new Location(paramFloat2, paramFloat1, (int)paramDouble2, paramInt, "", ""));
+      e.e(this.pQV).nP(0L);
     }
     for (;;)
     {
-      e.c(this.nlG);
-      e.buB();
+      AppMethodBeat.o(102920);
       return false;
-      e.f(this.nlG);
+      locale = this.pQV;
+      e.c(this.pQV);
+      e.a(locale, false);
+      e.f(this.pQV);
     }
   }
 }

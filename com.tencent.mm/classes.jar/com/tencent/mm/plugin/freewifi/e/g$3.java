@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.freewifi.e;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.freewifi.d.a;
 import com.tencent.mm.plugin.freewifi.model.c;
 import com.tencent.mm.plugin.freewifi.model.j;
-import com.tencent.mm.protocal.c.fd;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.gm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class g$3
   implements f
@@ -16,24 +17,28 @@ final class g$3
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.FreeWifi.ProtocolOne", "errType : %d, errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(20815);
+    ab.i("MicroMsg.FreeWifi.ProtocolOne", "errType : %d, errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       paramm = (a)paramm;
-      paramString = paramm.aUq();
-      y.i("MicroMsg.FreeWifi.ProtocolOne", "authUrl : %s", new Object[] { paramString });
-      paramm = paramm.aUw();
+      paramString = paramm.bAS();
+      ab.i("MicroMsg.FreeWifi.ProtocolOne", "authUrl : %s", new Object[] { paramString });
+      paramm = paramm.bAW();
       if (paramm != null)
       {
-        y.i("MicroMsg.FreeWifi.ProtocolOne", "backPageInfo appid: %s, nickName: %s, userName: %s, finishActionCode: %d, finishUrl: %s, signature: %s", new Object[] { paramm.svu, paramm.hRf, paramm.hPY, Integer.valueOf(paramm.syP), paramm.syQ, paramm.ffk });
-        g localg = this.kpB;
-        j.aUl().aTT().post(new g.4(localg, paramString, paramm));
+        ab.i("MicroMsg.FreeWifi.ProtocolOne", "backPageInfo appid: %s, nickName: %s, userName: %s, finishActionCode: %d, finishUrl: %s, signature: %s", new Object[] { paramm.woB, paramm.jKG, paramm.jJA, Integer.valueOf(paramm.wsQ), paramm.wsR, paramm.gwS });
+        g localg = this.mLn;
+        j.bAN().bAw().post(new g.4(localg, paramString, paramm));
+        AppMethodBeat.o(20815);
         return;
       }
-      g.c(this.kpB);
+      g.c(this.mLn);
+      AppMethodBeat.o(20815);
       return;
     }
-    g.c(this.kpB);
+    g.c(this.mLn);
+    AppMethodBeat.o(20815);
   }
 }
 

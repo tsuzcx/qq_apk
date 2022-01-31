@@ -3,19 +3,37 @@ package com.tencent.mapsdk.raster.model;
 import android.graphics.DashPathEffect;
 import android.os.Bundle;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class CircleOptions
 {
-  private DashPathEffect dashPathEffect = null;
-  private int fillColor = 0;
+  private DashPathEffect dashPathEffect;
+  private int fillColor;
+  private int iLevel;
   private String id;
-  private boolean isVisible = true;
-  private LatLng point = new LatLng(39.908287999999999D, 116.397572D);
-  private double radius = 0.0D;
-  private int strokeColor = -16777216;
-  private boolean strokeDash = false;
-  private float strokeWidth = 10.0F;
-  private float zIndex = 0.0F;
+  private boolean isVisible;
+  private LatLng point;
+  private double radius;
+  private int strokeColor;
+  private boolean strokeDash;
+  private float strokeWidth;
+  private float zIndex;
+  
+  public CircleOptions()
+  {
+    AppMethodBeat.i(101174);
+    this.strokeColor = -16777216;
+    this.strokeWidth = 10.0F;
+    this.isVisible = true;
+    this.radius = 0.0D;
+    this.zIndex = 0.0F;
+    this.point = new LatLng(39.908287999999999D, 116.397572D);
+    this.fillColor = 0;
+    this.strokeDash = false;
+    this.dashPathEffect = null;
+    this.iLevel = OverlayLevel.OverlayLevelAboveLabels;
+    AppMethodBeat.o(101174);
+  }
   
   public final CircleOptions center(LatLng paramLatLng)
   {
@@ -42,6 +60,11 @@ public final class CircleOptions
   public final int getFillColor()
   {
     return this.fillColor;
+  }
+  
+  public final int getLevel()
+  {
+    return this.iLevel;
   }
   
   public final double getRadius()
@@ -77,6 +100,15 @@ public final class CircleOptions
   public final boolean isVisible()
   {
     return this.isVisible;
+  }
+  
+  public final CircleOptions level(int paramInt)
+  {
+    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
+      return this;
+    }
+    this.iLevel = paramInt;
+    return this;
   }
   
   public final CircleOptions radius(double paramDouble)
@@ -121,6 +153,7 @@ public final class CircleOptions
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(101175);
     Bundle localBundle = new Bundle();
     if (this.point != null)
     {
@@ -138,6 +171,7 @@ public final class CircleOptions
     {
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeString(this.id);
+      AppMethodBeat.o(101175);
       return;
     }
   }
@@ -150,7 +184,7 @@ public final class CircleOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.CircleOptions
  * JD-Core Version:    0.7.0.1
  */

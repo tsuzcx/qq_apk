@@ -1,18 +1,21 @@
 package com.tencent.mm.console;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bi.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bk.a;
 import com.tencent.mm.network.e;
 
 final class b$1
-  implements bi.a
+  implements bk.a
 {
   b$1(String paramString, int paramInt) {}
   
   public final void a(e parame)
   {
-    au.Dk().a(3, this.dAr, this.dAs, au.DK());
+    AppMethodBeat.i(16072);
+    aw.Rc().a(3, this.etT, this.etU, aw.RG());
+    AppMethodBeat.o(16072);
   }
 }
 

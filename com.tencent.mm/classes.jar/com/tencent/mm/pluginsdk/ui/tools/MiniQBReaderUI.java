@@ -1,78 +1,90 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.ValueCallback;
-import com.tencent.mm.pluginsdk.model.p;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.a;
-import com.tencent.xweb.x5.sdk.d;
+import com.tencent.xweb.d.a;
 
-@a(3)
+@com.tencent.mm.ui.base.a(3)
 public class MiniQBReaderUI
   extends MMActivity
 {
-  private int ret = -1;
-  private String smL = Integer.toString(hashCode());
+  private String elt;
+  private String fileName;
+  private String filePath;
+  private String token;
   
-  protected final int getLayoutId()
+  public MiniQBReaderUI()
+  {
+    AppMethodBeat.i(28171);
+    this.filePath = "";
+    this.elt = "";
+    this.fileName = "";
+    this.token = Integer.toString(hashCode());
+    AppMethodBeat.o(28171);
+  }
+  
+  public int getLayoutId()
   {
     return -1;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    boolean bool = true;
+    AppMethodBeat.i(28172);
     super.onCreate(paramBundle);
-    y.i("MicroMsg.MiniQBReaderUI", "onCreate");
-    Object localObject1 = getIntent();
-    paramBundle = ((Intent)localObject1).getStringExtra("file_path");
-    localObject1 = ((Intent)localObject1).getStringExtra("file_ext");
-    Object localObject2 = new MiniQBReaderUI.1(this);
-    this.ret = p.a(this, paramBundle, (String)localObject1, this.smL, (ValueCallback)localObject2);
-    y.i("MicroMsg.MiniQBReaderUI", "tryOpenByQbSdk , ret:%b", new Object[] { Integer.valueOf(this.ret) });
-    new StringBuilder("tryOpenByQbSdk , ret:").append(this.ret);
-    localObject2 = new Intent();
-    ((Intent)localObject2).setAction("MINIQB_OPEN_RET");
-    ((Intent)localObject2).putExtra("file_path", paramBundle);
-    ((Intent)localObject2).putExtra("file_ext", (String)localObject1);
-    if (this.ret == 0) {}
-    for (;;)
-    {
-      ((Intent)localObject2).putExtra("MINIQB_OPEN_RET_VAL", bool);
-      sendBroadcast((Intent)localObject2, "com.tencent.mm.permission.MM_MESSAGE");
-      if (this.ret != 0) {
-        finish();
-      }
-      return;
-      bool = false;
-    }
-  }
-  
-  protected void onDestroy()
-  {
-    y.i("MicroMsg.MiniQBReaderUI", "onDestroy");
-    if (this.ret == 0) {}
+    ab.i("MicroMsg.MiniQBReaderUI", "onCreate");
+    this.filePath = getIntent().getStringExtra("file_path");
+    this.elt = getIntent().getStringExtra("file_ext");
     try
     {
-      d.closeFileReader(this);
-      super.onDestroy();
-      return;
+      int j = this.filePath.lastIndexOf('/') + 1;
+      if (j < 0) {
+        break label175;
+      }
+      i = j;
+      if (j != this.filePath.length()) {}
     }
-    catch (Exception localException)
+    catch (Exception paramBundle)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.MiniQBReaderUI", localException, "", new Object[0]);
+        ab.e("MicroMsg.MiniQBReaderUI", "get file name error " + paramBundle.getMessage());
+        this.fileName = " ";
+        continue;
+        int i = 0;
       }
     }
+    this.fileName = this.filePath.substring(i, this.filePath.length());
+    com.tencent.mm.cn.a.a(this, this.filePath, this.fileName, this.elt, this.token, d.a.BDa, new MiniQBReaderUI.1(this), new ValueCallback() {});
+    AppMethodBeat.o(28172);
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onDestroy()
   {
+    AppMethodBeat.i(28174);
+    ab.i("MicroMsg.MiniQBReaderUI", "onDestroy");
+    com.tencent.mm.cn.a.M(this, this.token, this.filePath);
+    super.onDestroy();
+    AppMethodBeat.o(28174);
+  }
+  
+  public void onNewIntent(Intent paramIntent)
+  {
+    AppMethodBeat.i(28173);
     super.onNewIntent(paramIntent);
-    y.i("MicroMsg.MiniQBReaderUI", "onNewIntent");
+    ab.i("MicroMsg.MiniQBReaderUI", "onNewIntent");
+    AppMethodBeat.o(28173);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

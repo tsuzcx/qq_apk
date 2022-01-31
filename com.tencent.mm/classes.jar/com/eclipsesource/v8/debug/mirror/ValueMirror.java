@@ -1,6 +1,7 @@
 package com.eclipsesource.v8.debug.mirror;
 
 import com.eclipsesource.v8.V8Object;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class ValueMirror
   extends Mirror
@@ -14,7 +15,10 @@ public class ValueMirror
   
   public Object getValue()
   {
-    return this.v8Object.executeFunction("value", null);
+    AppMethodBeat.i(74911);
+    Object localObject = this.v8Object.executeFunction("value", null);
+    AppMethodBeat.o(74911);
+    return localObject;
   }
   
   public boolean isValue()
@@ -24,7 +28,7 @@ public class ValueMirror
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.ValueMirror
  * JD-Core Version:    0.7.0.1
  */

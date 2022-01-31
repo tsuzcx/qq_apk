@@ -1,37 +1,40 @@
 package com.tencent.mm.plugin.product.ui;
 
-import com.tencent.mm.h.a.mp;
-import com.tencent.mm.h.a.mp.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.nk;
+import com.tencent.mm.g.a.nk.b;
 import com.tencent.mm.plugin.product.b.c;
-import com.tencent.mm.protocal.c.cm;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cx;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class f$2
   implements Runnable
 {
-  f$2(f paramf, mp parammp) {}
+  f$2(f paramf, nk paramnk) {}
   
   public final void run()
   {
-    y.d("MicroMsg.MallProductUI", "JSOAUTH errCode[%s], isAccept[%s]", new Object[] { Integer.valueOf(this.mTQ.bWa.errCode), Boolean.valueOf(this.mTQ.bWa.bWb) });
-    if (this.mTQ.bWa.errCode == 0)
+    AppMethodBeat.i(44057);
+    ab.d("MicroMsg.MallProductUI", "JSOAUTH errCode[%s], isAccept[%s]", new Object[] { Integer.valueOf(this.pvW.cDN.errCode), Boolean.valueOf(this.pvW.cDN.cDO) });
+    if (this.pvW.cDN.errCode == 0)
     {
-      c localc = f.c(this.mTP);
-      mp localmp = this.mTQ;
-      cm localcm = new cm();
-      localcm.hPY = localmp.bWa.userName;
-      localcm.svW = localmp.bWa.bWd;
-      localcm.svX = localmp.bWa.bWe;
-      localcm.ffi = localmp.bWa.bWf;
-      localcm.ffj = localmp.bWa.bWg;
-      localcm.ffq = localmp.bWa.bWh;
-      localcm.kSY = localmp.bWa.bWi;
-      if ((!bk.bl(localcm.hPY)) && (!bk.bl(localcm.svW))) {
-        localc.mRV = localcm;
+      c localc = f.c(this.pvV);
+      nk localnk = this.pvW;
+      cx localcx = new cx();
+      localcx.jJA = localnk.cDN.userName;
+      localcx.wpj = localnk.cDN.cDQ;
+      localcx.wpk = localnk.cDN.cDR;
+      localcx.gwQ = localnk.cDN.cDS;
+      localcx.gwR = localnk.cDN.cDT;
+      localcx.gwY = localnk.cDN.cDU;
+      localcx.nqY = localnk.cDN.cDV;
+      if ((!bo.isNullOrNil(localcx.jJA)) && (!bo.isNullOrNil(localcx.wpj))) {
+        localc.puc = localcx;
       }
     }
-    f.d(this.mTP);
+    f.d(this.pvV);
+    AppMethodBeat.o(44057);
   }
 }
 

@@ -1,29 +1,25 @@
 package com.tencent.mm.plugin.fingerprint.ui;
 
-import com.tencent.mm.pluginsdk.wallet.a;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FingerPrintAuthTransparentUI$11
-  implements a
+  implements DialogInterface.OnClickListener
 {
-  FingerPrintAuthTransparentUI$11(FingerPrintAuthTransparentUI paramFingerPrintAuthTransparentUI) {}
+  FingerPrintAuthTransparentUI$11(FingerPrintAuthTransparentUI paramFingerPrintAuthTransparentUI, CheckBox paramCheckBox) {}
   
-  public final void ai(int paramInt, String paramString)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.kma.ew(false);
-    if (paramInt == 0)
-    {
-      y.i("MicroMsg.FingerPrintAuthTransparentUI", "cert ready and do openFP");
-      FingerPrintAuthTransparentUI.d(this.kma);
-      FingerPrintAuthTransparentUI.a(this.kma, false);
-      return;
-    }
-    FingerPrintAuthTransparentUI.a(this.kma, paramString);
+    AppMethodBeat.i(41606);
+    FingerPrintAuthTransparentUI.b(this.mGQ, this.mGz.isChecked());
+    AppMethodBeat.o(41606);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.ui.FingerPrintAuthTransparentUI.11
  * JD-Core Version:    0.7.0.1
  */

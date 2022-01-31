@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.music.f;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnSeekCompleteListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$2
   implements MediaPlayer.OnSeekCompleteListener
@@ -11,18 +12,22 @@ final class b$2
   
   public final void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    if ((this.mAy.eLh != null) && (this.mAy.eLh.isPlaying())) {
-      y.i("MicroMsg.Music.MMMediaPlayer", "onSeekComplete");
-    }
-    try
+    AppMethodBeat.i(137549);
+    if ((this.paE.gaO != null) && (this.paE.gaO.isPlaying()))
     {
-      this.mAy.eLh.start();
-      return;
+      ab.i("MicroMsg.Music.MMMediaPlayer", "onSeekComplete");
+      try
+      {
+        this.paE.gaO.start();
+        AppMethodBeat.o(137549);
+        return;
+      }
+      catch (Exception paramMediaPlayer)
+      {
+        ab.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", paramMediaPlayer, "start", new Object[0]);
+      }
     }
-    catch (Exception paramMediaPlayer)
-    {
-      y.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", paramMediaPlayer, "start", new Object[0]);
-    }
+    AppMethodBeat.o(137549);
   }
 }
 

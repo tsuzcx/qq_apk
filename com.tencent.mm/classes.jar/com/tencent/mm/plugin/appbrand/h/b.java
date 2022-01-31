@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.h;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.InputStream;
 
@@ -8,7 +9,10 @@ public final class b
 {
   public static void a(InputStream paramInputStream, String paramString)
   {
-    if ((paramInputStream == null) || (!bK(paramString))) {
+    AppMethodBeat.i(65354);
+    if ((paramInputStream == null) || (!cN(paramString)))
+    {
+      AppMethodBeat.o(65354);
       return;
     }
     paramString = new android.support.d.a(paramString);
@@ -17,16 +21,15 @@ public final class b
     paramString.setAttribute("ImageWidth", null);
     paramString.setAttribute("ThumbnailImageWidth", null);
     paramString.saveAttributes();
+    AppMethodBeat.o(65354);
   }
   
-  private static boolean bK(String paramString)
+  public static void bZ(String paramString1, String paramString2)
   {
-    return (!TextUtils.isEmpty(paramString)) && (new File(paramString).exists());
-  }
-  
-  public static void bv(String paramString1, String paramString2)
-  {
-    if ((!bK(paramString1)) || (!bK(paramString2))) {
+    AppMethodBeat.i(65353);
+    if ((!cN(paramString1)) || (!cN(paramString2)))
+    {
+      AppMethodBeat.o(65353);
       return;
     }
     paramString2 = new android.support.d.a(paramString2);
@@ -35,19 +38,39 @@ public final class b
     paramString2.setAttribute("ImageWidth", null);
     paramString2.setAttribute("ThumbnailImageWidth", null);
     paramString2.saveAttributes();
+    AppMethodBeat.o(65353);
   }
   
-  public static int v(InputStream paramInputStream)
+  private static boolean cN(String paramString)
   {
-    if (paramInputStream == null) {
+    AppMethodBeat.i(65355);
+    if ((!TextUtils.isEmpty(paramString)) && (new File(paramString).exists()))
+    {
+      AppMethodBeat.o(65355);
+      return true;
+    }
+    AppMethodBeat.o(65355);
+    return false;
+  }
+  
+  public static int f(InputStream paramInputStream)
+  {
+    AppMethodBeat.i(65352);
+    if (paramInputStream == null)
+    {
+      AppMethodBeat.o(65352);
       return 0;
     }
     try
     {
       int i = new android.support.d.a(paramInputStream).getAttributeInt("Orientation", 1);
+      AppMethodBeat.o(65352);
       return i;
     }
-    catch (Exception paramInputStream) {}
+    catch (Exception paramInputStream)
+    {
+      AppMethodBeat.o(65352);
+    }
     return 0;
   }
 }

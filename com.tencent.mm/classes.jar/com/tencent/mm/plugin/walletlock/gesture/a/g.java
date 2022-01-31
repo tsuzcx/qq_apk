@@ -1,57 +1,66 @@
 package com.tencent.mm.plugin.walletlock.gesture.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 public final class g
 {
-  public long qPE = -1L;
-  public long qPF = 0L;
+  public long uEM = -1L;
+  public long uEN = 0L;
   
-  public final g bb(byte[] paramArrayOfByte)
+  public final g bC(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(51585);
     paramArrayOfByte = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte));
     try
     {
-      this.qPE = paramArrayOfByte.readLong();
-      this.qPF = paramArrayOfByte.readLong();
+      this.uEM = paramArrayOfByte.readLong();
+      this.uEN = paramArrayOfByte.readLong();
       paramArrayOfByte.close();
+      AppMethodBeat.o(51585);
       return this;
     }
     catch (IOException paramArrayOfByte)
     {
-      y.printErrStackTrace("MicroMsg.TimeInfo", paramArrayOfByte, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.TimeInfo", paramArrayOfByte, "", new Object[0]);
+      }
     }
-    return this;
   }
   
   public final byte[] toByteArray()
   {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
+    AppMethodBeat.i(51584);
+    Object localObject = new ByteArrayOutputStream();
+    DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
     try
     {
-      localDataOutputStream.writeLong(this.qPE);
-      localDataOutputStream.writeLong(this.qPF);
+      localDataOutputStream.writeLong(this.uEM);
+      localDataOutputStream.writeLong(this.uEN);
       localDataOutputStream.close();
-      return localByteArrayOutputStream.toByteArray();
+      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
+      AppMethodBeat.o(51584);
+      return localObject;
     }
     catch (IOException localIOException)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.TimeInfo", localIOException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.TimeInfo", localIOException, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.a.g
  * JD-Core Version:    0.7.0.1
  */

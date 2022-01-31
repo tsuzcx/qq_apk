@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.appbrand.wxawidget.console;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ConsolePanel$8
   implements View.OnClickListener
@@ -11,23 +12,25 @@ final class ConsolePanel$8
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(11144);
     int i = 0;
-    if (i < this.hEq.hEk.length)
+    if (i < this.jxD.jxx.length)
     {
-      Button localButton = this.hEq.hEk[i];
+      Button localButton = this.jxD.jxx[i];
       if (localButton == paramView) {}
       for (boolean bool = true;; bool = false)
       {
         localButton.setSelected(bool);
-        if ((bool) && (this.hEq.hEo != i))
+        if ((bool) && (this.jxD.jxB != i))
         {
-          this.hEq.hEo = i;
-          ConsolePanel.a(this.hEq);
+          this.jxD.jxB = i;
+          ConsolePanel.a(this.jxD);
         }
         i += 1;
         break;
       }
     }
+    AppMethodBeat.o(11144);
   }
 }
 

@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.freewifi;
 
 import android.app.Activity;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c$1
   implements c.a
@@ -10,14 +11,18 @@ public final class c$1
   
   public final void onFail(int paramInt)
   {
-    y.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "sessionKey=%s, step=%d, desc=Connect ssid failed. errorcode=%d", new Object[] { m.B(this.kmw.activity.getIntent()), Integer.valueOf(m.C(this.kmw.activity.getIntent())), Integer.valueOf(paramInt) });
-    this.kmv.onFail(paramInt);
+    AppMethodBeat.i(20565);
+    ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "sessionKey=%s, step=%d, desc=Connect ssid failed. errorcode=%d", new Object[] { m.U(this.mIi.activity.getIntent()), Integer.valueOf(m.V(this.mIi.activity.getIntent())), Integer.valueOf(paramInt) });
+    this.mIh.onFail(paramInt);
+    AppMethodBeat.o(20565);
   }
   
   public final void onSuccess()
   {
-    y.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "sessionKey=%s, step=%d, desc=Connect ssid succeeded. ", new Object[] { m.B(this.kmw.activity.getIntent()), Integer.valueOf(m.C(this.kmw.activity.getIntent())) });
-    this.kmv.onSuccess();
+    AppMethodBeat.i(20564);
+    ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "sessionKey=%s, step=%d, desc=Connect ssid succeeded. ", new Object[] { m.U(this.mIi.activity.getIntent()), Integer.valueOf(m.V(this.mIi.activity.getIntent())) });
+    this.mIh.onSuccess();
+    AppMethodBeat.o(20564);
   }
 }
 

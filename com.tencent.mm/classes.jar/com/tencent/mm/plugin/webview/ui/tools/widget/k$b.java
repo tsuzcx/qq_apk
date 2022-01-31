@@ -1,10 +1,22 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class k$b
 {
-  int rqP = 0;
+  int vgU = 0;
   
   protected k$b(k paramk) {}
+  
+  public final void deQ()
+  {
+    AppMethodBeat.i(9966);
+    if (this.vgU == 0) {
+      k.b(this.vsH);
+    }
+    this.vgU += 1;
+    AppMethodBeat.o(9966);
+  }
 }
 
 

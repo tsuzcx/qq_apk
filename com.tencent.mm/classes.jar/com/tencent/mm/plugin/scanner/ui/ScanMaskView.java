@@ -14,177 +14,265 @@ import android.graphics.Rect;
 import android.graphics.Region.Op;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.g.a;
 import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class ScanMaskView
   extends View
 {
-  private Path jkG = new Path();
+  private Path lwd;
   private Paint mPaint;
-  private Bitmap nKO = null;
-  private Bitmap nKP = null;
-  private Bitmap nKQ = null;
-  private Bitmap nKR = null;
-  int nKS = 0;
-  int nKT = 0;
-  private boolean nKU = false;
-  private Rect nKV = new Rect();
-  private Rect nKW = new Rect();
-  private Rect nKX = new Rect();
-  private Rect nKY = new Rect();
-  private Rect nKZ = new Rect();
-  private Rect nLa = new Rect();
-  private Rect nLb = new Rect();
-  private Rect nLc = new Rect();
-  private Rect nLd = new Rect();
-  Rect nLe;
-  private PorterDuffXfermode nLf;
-  private int nLg = R.e.scan_mask_bg_color;
-  private long nLh = 0L;
-  boolean nLi = false;
-  Rect nLj;
-  int nLk = 300;
-  float nLl = 0.0F;
-  float nLm = 0.0F;
-  float nLn = 0.0F;
-  float nLo = 0.0F;
-  private Paint nLp;
-  ValueAnimator nLq = null;
-  private ScanMaskView.a nLr;
+  private Rect qyA;
+  private Rect qyB;
+  private Rect qyC;
+  private Rect qyD;
+  private Rect qyE;
+  private Rect qyF;
+  private Rect qyG;
+  private Rect qyH;
+  private Rect qyI;
+  private Rect qyJ;
+  private PorterDuffXfermode qyK;
+  private int qyL;
+  private long qyM;
+  private boolean qyN;
+  private Rect qyO;
+  private int qyP;
+  private float qyQ;
+  private float qyR;
+  private float qyS;
+  private float qyT;
+  private Paint qyU;
+  private ValueAnimator qyV;
+  private ScanMaskView.a qyW;
+  private Bitmap qyt;
+  private Bitmap qyu;
+  private Bitmap qyv;
+  private Bitmap qyw;
+  int qyx;
+  int qyy;
+  private boolean qyz;
   
   public ScanMaskView(Context paramContext, Rect paramRect)
   {
     super(paramContext);
-    this.nLe = paramRect;
-    getDrawingRect(this.nKV);
+    AppMethodBeat.i(81150);
+    this.qyt = null;
+    this.qyu = null;
+    this.qyv = null;
+    this.qyw = null;
+    this.qyx = 0;
+    this.qyy = 0;
+    this.qyz = false;
+    this.qyA = new Rect();
+    this.qyB = new Rect();
+    this.qyC = new Rect();
+    this.qyD = new Rect();
+    this.qyE = new Rect();
+    this.qyF = new Rect();
+    this.qyG = new Rect();
+    this.qyH = new Rect();
+    this.qyI = new Rect();
+    this.lwd = new Path();
+    this.qyL = 2131690409;
+    this.qyM = 0L;
+    this.qyN = false;
+    this.qyP = 300;
+    this.qyQ = 0.0F;
+    this.qyR = 0.0F;
+    this.qyS = 0.0F;
+    this.qyT = 0.0F;
+    this.qyV = null;
+    this.qyJ = paramRect;
+    getDrawingRect(this.qyA);
     this.mPaint = new Paint();
-    this.nKO = a.decodeResource(getResources(), R.g.scanqr1);
-    this.nKP = a.decodeResource(getResources(), R.g.scanqr2);
-    this.nKQ = a.decodeResource(getResources(), R.g.scanqr3);
-    this.nKR = a.decodeResource(getResources(), R.g.scanqr4);
-    this.nKS = this.nKO.getWidth();
-    this.nKT = this.nKO.getHeight();
-    this.nLp = new Paint();
-    this.nLf = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    this.qyt = a.decodeResource(getResources(), 2130840208);
+    this.qyu = a.decodeResource(getResources(), 2130840209);
+    this.qyv = a.decodeResource(getResources(), 2130840210);
+    this.qyw = a.decodeResource(getResources(), 2130840211);
+    this.qyx = this.qyt.getWidth();
+    this.qyy = this.qyt.getHeight();
+    this.qyU = new Paint();
+    this.qyK = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    AppMethodBeat.o(81150);
   }
   
   public ScanMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(81149);
+    this.qyt = null;
+    this.qyu = null;
+    this.qyv = null;
+    this.qyw = null;
+    this.qyx = 0;
+    this.qyy = 0;
+    this.qyz = false;
+    this.qyA = new Rect();
+    this.qyB = new Rect();
+    this.qyC = new Rect();
+    this.qyD = new Rect();
+    this.qyE = new Rect();
+    this.qyF = new Rect();
+    this.qyG = new Rect();
+    this.qyH = new Rect();
+    this.qyI = new Rect();
+    this.lwd = new Path();
+    this.qyL = 2131690409;
+    this.qyM = 0L;
+    this.qyN = false;
+    this.qyP = 300;
+    this.qyQ = 0.0F;
+    this.qyR = 0.0F;
+    this.qyS = 0.0F;
+    this.qyT = 0.0F;
+    this.qyV = null;
+    AppMethodBeat.o(81149);
   }
   
-  public final void bxP()
+  public final void ciQ()
   {
-    this.nKU = true;
-    if (this.nKO != null)
+    AppMethodBeat.i(81151);
+    this.qyz = true;
+    if (this.qyt != null)
     {
-      this.nKO.recycle();
-      this.nKO = null;
+      ab.i("ScanMaskView", "bitmap recycle %s", new Object[] { this.qyt.toString() });
+      this.qyt.recycle();
+      this.qyt = null;
     }
-    if (this.nKP != null)
+    if (this.qyu != null)
     {
-      this.nKP.recycle();
-      this.nKP = null;
+      ab.i("ScanMaskView", "bitmap recycle %s", new Object[] { this.qyu.toString() });
+      this.qyu.recycle();
+      this.qyu = null;
     }
-    if (this.nKQ != null)
+    if (this.qyv != null)
     {
-      this.nKQ.recycle();
-      this.nKQ = null;
+      ab.i("ScanMaskView", "bitmap recycle %s", new Object[] { this.qyv.toString() });
+      this.qyv.recycle();
+      this.qyv = null;
     }
-    if (this.nKR != null)
+    if (this.qyw != null)
     {
-      this.nKR.recycle();
-      this.nKR = null;
+      ab.i("ScanMaskView", "bitmap recycle %s", new Object[] { this.qyw.toString() });
+      this.qyw.recycle();
+      this.qyw = null;
     }
+    AppMethodBeat.o(81151);
   }
   
   public int getMaskAnimDuration()
   {
-    return this.nLk;
+    return this.qyP;
   }
   
   public Rect getMaskRect()
   {
-    return this.nLe;
+    return this.qyJ;
+  }
+  
+  public final void l(Rect paramRect)
+  {
+    AppMethodBeat.i(81152);
+    if ((paramRect.left == this.qyJ.left) && (paramRect.right == this.qyJ.right) && (paramRect.top == this.qyJ.top) && (paramRect.bottom == this.qyJ.bottom))
+    {
+      AppMethodBeat.o(81152);
+      return;
+    }
+    this.qyQ = (paramRect.left - this.qyJ.left);
+    this.qyR = (paramRect.right - this.qyJ.right);
+    this.qyS = (paramRect.top - this.qyJ.top);
+    this.qyT = (paramRect.bottom - this.qyJ.bottom);
+    this.qyO = new Rect(this.qyJ.left, this.qyJ.top, this.qyJ.right, this.qyJ.bottom);
+    this.qyN = true;
+    this.qyV = new ValueAnimator();
+    this.qyV.setFloatValues(new float[] { 0.0F, 1.0F });
+    this.qyV.setDuration(this.qyP);
+    this.qyV.addUpdateListener(new ScanMaskView.1(this));
+    this.qyV.start();
+    this.qyV.addListener(new ScanMaskView.2(this));
+    AppMethodBeat.o(81152);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.nLe == null) || (this.nKU)) {
+    AppMethodBeat.i(81153);
+    if ((this.qyJ == null) || (this.qyz))
+    {
+      AppMethodBeat.o(81153);
       return;
     }
     System.currentTimeMillis();
     System.currentTimeMillis();
     int i = paramCanvas.save();
     this.mPaint.reset();
-    if (d.gG(18))
+    if (d.fw(18))
     {
-      this.nLa.left = 0;
-      this.nLa.top = this.nLe.top;
-      this.nLa.right = this.nLe.left;
-      this.nLa.bottom = this.nLe.bottom;
-      this.nLb.left = this.nLe.left;
-      this.nLb.top = 0;
-      this.nLb.right = this.nLe.right;
-      this.nLb.bottom = this.nLe.top;
-      this.nLc.left = this.nLe.right;
-      this.nLc.top = this.nLe.top;
-      this.nLc.right = getWidth();
-      this.nLc.bottom = this.nLe.bottom;
-      this.nLd.left = this.nLe.left;
-      this.nLd.top = this.nLe.bottom;
-      this.nLd.right = this.nLe.right;
-      this.nLd.bottom = getHeight();
-      this.nKW.left = 0;
-      this.nKW.top = 0;
-      this.nKW.right = this.nLe.left;
-      this.nKW.bottom = this.nLe.top;
-      this.nKX.left = this.nLe.right;
-      this.nKX.top = 0;
-      this.nKX.right = getWidth();
-      this.nKX.bottom = this.nLe.top;
-      this.nKY.left = 0;
-      this.nKY.top = this.nLe.bottom;
-      this.nKY.right = this.nLe.left;
-      this.nKY.bottom = getHeight();
-      this.nKZ.left = this.nLe.right;
-      this.nKZ.top = this.nLe.bottom;
-      this.nKZ.right = getWidth();
-      this.nKZ.bottom = getHeight();
+      this.qyF.left = 0;
+      this.qyF.top = this.qyJ.top;
+      this.qyF.right = this.qyJ.left;
+      this.qyF.bottom = this.qyJ.bottom;
+      this.qyG.left = this.qyJ.left;
+      this.qyG.top = 0;
+      this.qyG.right = this.qyJ.right;
+      this.qyG.bottom = this.qyJ.top;
+      this.qyH.left = this.qyJ.right;
+      this.qyH.top = this.qyJ.top;
+      this.qyH.right = getWidth();
+      this.qyH.bottom = this.qyJ.bottom;
+      this.qyI.left = this.qyJ.left;
+      this.qyI.top = this.qyJ.bottom;
+      this.qyI.right = this.qyJ.right;
+      this.qyI.bottom = getHeight();
+      this.qyB.left = 0;
+      this.qyB.top = 0;
+      this.qyB.right = this.qyJ.left;
+      this.qyB.bottom = this.qyJ.top;
+      this.qyC.left = this.qyJ.right;
+      this.qyC.top = 0;
+      this.qyC.right = getWidth();
+      this.qyC.bottom = this.qyJ.top;
+      this.qyD.left = 0;
+      this.qyD.top = this.qyJ.bottom;
+      this.qyD.right = this.qyJ.left;
+      this.qyD.bottom = getHeight();
+      this.qyE.left = this.qyJ.right;
+      this.qyE.top = this.qyJ.bottom;
+      this.qyE.right = getWidth();
+      this.qyE.bottom = getHeight();
       paramCanvas.save();
-      paramCanvas.clipRect(this.nLa, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.nLg));
+      paramCanvas.clipRect(this.qyF, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.qyL));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.nLb, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.nLg));
+      paramCanvas.clipRect(this.qyG, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.qyL));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.nLc, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.nLg));
+      paramCanvas.clipRect(this.qyH, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.qyL));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.nLd, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.nLg));
+      paramCanvas.clipRect(this.qyI, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.qyL));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.nKW, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.nLg));
+      paramCanvas.clipRect(this.qyB, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.qyL));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.nKX, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.nLg));
+      paramCanvas.clipRect(this.qyC, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.qyL));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.nKY, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.nLg));
+      paramCanvas.clipRect(this.qyD, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.qyL));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.nKZ, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.nLg));
+      paramCanvas.clipRect(this.qyE, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.qyL));
       paramCanvas.restore();
     }
     for (;;)
@@ -197,35 +285,36 @@ public class ScanMaskView
       this.mPaint.setStrokeWidth(1.0F);
       this.mPaint.setColor(-3355444);
       this.mPaint.setAntiAlias(true);
-      paramCanvas.drawRect(this.nLe, this.mPaint);
+      paramCanvas.drawRect(this.qyJ, this.mPaint);
       System.currentTimeMillis();
       System.currentTimeMillis();
-      paramCanvas.drawBitmap(this.nKO, this.nLe.left, this.nLe.top, this.nLp);
-      paramCanvas.drawBitmap(this.nKP, this.nLe.right - this.nKS, this.nLe.top, this.nLp);
-      paramCanvas.drawBitmap(this.nKQ, this.nLe.left, this.nLe.bottom - this.nKT, this.nLp);
-      paramCanvas.drawBitmap(this.nKR, this.nLe.right - this.nKS, this.nLe.bottom - this.nKT, this.nLp);
+      paramCanvas.drawBitmap(this.qyt, this.qyJ.left, this.qyJ.top, this.qyU);
+      paramCanvas.drawBitmap(this.qyu, this.qyJ.right - this.qyx, this.qyJ.top, this.qyU);
+      paramCanvas.drawBitmap(this.qyv, this.qyJ.left, this.qyJ.bottom - this.qyy, this.qyU);
+      paramCanvas.drawBitmap(this.qyw, this.qyJ.right - this.qyx, this.qyJ.bottom - this.qyy, this.qyU);
       System.currentTimeMillis();
       super.onDraw(paramCanvas);
       System.currentTimeMillis();
+      AppMethodBeat.o(81153);
       return;
-      paramCanvas.clipRect(this.nLe, Region.Op.DIFFERENCE);
-      paramCanvas.drawColor(getResources().getColor(this.nLg));
+      paramCanvas.clipRect(this.qyJ, Region.Op.DIFFERENCE);
+      paramCanvas.drawColor(getResources().getColor(this.qyL));
     }
   }
   
   public void setMaskAnimaListener(ScanMaskView.a parama)
   {
-    this.nLr = parama;
+    this.qyW = parama;
   }
   
   public void setMaskColorRsid(int paramInt)
   {
-    this.nLg = paramInt;
+    this.qyL = paramInt;
   }
   
   public void setMastAnimaDuration(int paramInt)
   {
-    this.nLk = paramInt;
+    this.qyP = paramInt;
   }
 }
 

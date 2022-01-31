@@ -1,23 +1,35 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.view.View;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.order.c.a.a;
-import com.tencent.mm.pluginsdk.wallet.h;
+import android.app.Dialog;
+import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.vending.g.d.a;
 
 final class RemittanceDetailUI$8
-  implements a.a
+  implements d.a
 {
-  RemittanceDetailUI$8(RemittanceDetailUI paramRemittanceDetailUI, boolean paramBoolean) {}
+  RemittanceDetailUI$8(RemittanceDetailUI paramRemittanceDetailUI, Dialog paramDialog) {}
   
-  public final void onClick(View paramView)
+  public final void aX(Object paramObject)
   {
-    if (this.nDt)
+    AppMethodBeat.i(45003);
+    if (this.mwd != null) {
+      this.mwd.dismiss();
+    }
+    ab.i("MicroMsg.RemittanceDetailUI", "fetch detail failed: %s", new Object[] { paramObject });
+    if (paramObject != null) {
+      if (!(paramObject instanceof String)) {
+        break label68;
+      }
+    }
+    label68:
+    for (paramObject = paramObject.toString();; paramObject = this.qpY.getString(2131305218))
     {
-      d.x(this.nDm, "wallet", ".balance.ui.lqt.WalletLqtDetailUI");
+      Toast.makeText(this.qpY, paramObject, 1).show();
+      AppMethodBeat.o(45003);
       return;
     }
-    h.Z(this.nDm, 0);
   }
 }
 

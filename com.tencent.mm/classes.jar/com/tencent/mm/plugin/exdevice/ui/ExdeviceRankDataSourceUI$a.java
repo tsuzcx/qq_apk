@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import com.tencent.mm.plugin.exdevice.h.b;
-import com.tencent.mm.protocal.c.cch;
+import com.tencent.mm.protocal.protobuf.cpn;
 
 final class ExdeviceRankDataSourceUI$a
 {
-  cch jFv;
-  b jFw;
+  cpn lOT;
+  b lOU;
   String mac;
 }
 

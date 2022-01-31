@@ -4,9 +4,9 @@ import android.widget.TextView;
 
 final class IPCallAllRecordUI$a$a
 {
-  TextView eXu;
-  TextView luF;
-  TextView luG;
+  TextView gpr;
+  TextView nRX;
+  TextView nRY;
   
   IPCallAllRecordUI$a$a(IPCallAllRecordUI.a parama) {}
 }

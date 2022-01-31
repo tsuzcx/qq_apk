@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.canvas.widget;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MSurfaceView$2
   implements Runnable
@@ -10,16 +11,22 @@ final class MSurfaceView$2
   
   public final void run()
   {
-    if (MSurfaceView.a(this.fMW)) {}
-    Canvas localCanvas;
-    do
+    AppMethodBeat.i(103783);
+    if (MSurfaceView.a(this.hgg))
     {
+      AppMethodBeat.o(103783);
       return;
-      localCanvas = MSurfaceView.b(this.fMW).lockCanvas();
-    } while (localCanvas == null);
+    }
+    Canvas localCanvas = MSurfaceView.b(this.hgg).lockCanvas();
+    if (localCanvas == null)
+    {
+      AppMethodBeat.o(103783);
+      return;
+    }
     localCanvas.drawColor(-1);
-    this.fMW.f(localCanvas);
-    MSurfaceView.b(this.fMW).unlockCanvasAndPost(localCanvas);
+    this.hgg.f(localCanvas);
+    MSurfaceView.b(this.hgg).unlockCanvasAndPost(localCanvas);
+    AppMethodBeat.o(103783);
   }
 }
 

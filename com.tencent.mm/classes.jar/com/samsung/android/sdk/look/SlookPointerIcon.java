@@ -4,25 +4,46 @@ import android.graphics.drawable.Drawable;
 import android.os.RemoteException;
 import android.view.PointerIcon;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SlookPointerIcon
 {
   private static final String TAG = "SlookPointerIcon";
   private Drawable mDrawable;
-  private Slook mSlook = new Slook();
+  private Slook mSlook;
+  
+  public SlookPointerIcon()
+  {
+    AppMethodBeat.i(117272);
+    this.mSlook = new Slook();
+    AppMethodBeat.o(117272);
+  }
   
   private boolean isSupport(int paramInt)
   {
-    return this.mSlook.isFeatureEnabled(4);
+    AppMethodBeat.i(117274);
+    if (this.mSlook.isFeatureEnabled(4))
+    {
+      AppMethodBeat.o(117274);
+      return true;
+    }
+    AppMethodBeat.o(117274);
+    return false;
   }
   
   public void setHoverIcon(View paramView, Drawable paramDrawable)
   {
-    if (!isSupport(1)) {
+    AppMethodBeat.i(117273);
+    if (!isSupport(1))
+    {
+      AppMethodBeat.o(117273);
       return;
     }
-    if (paramView == null) {
-      throw new IllegalArgumentException("view is null.");
+    if (paramView == null)
+    {
+      paramView = new IllegalArgumentException("view is null.");
+      AppMethodBeat.o(117273);
+      throw paramView;
     }
     if (paramDrawable == null)
     {
@@ -30,15 +51,18 @@ public class SlookPointerIcon
       try
       {
         PointerIcon.setHoveringSpenIcon(1, -1);
+        AppMethodBeat.o(117273);
         return;
       }
       catch (RemoteException paramView)
       {
+        AppMethodBeat.o(117273);
         return;
       }
     }
     this.mDrawable = paramDrawable;
     paramView.setOnHoverListener(new SlookPointerIcon.1(this));
+    AppMethodBeat.o(117273);
   }
 }
 

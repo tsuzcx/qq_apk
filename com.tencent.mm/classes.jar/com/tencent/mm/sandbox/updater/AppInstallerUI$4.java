@@ -2,9 +2,10 @@ package com.tencent.mm.sandbox.updater;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.b.c;
 
 final class AppInstallerUI$4
   implements DialogInterface.OnClickListener
@@ -13,17 +14,19 @@ final class AppInstallerUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.d("MicroMsg.AppInstallerUI", "install dialog had been canceled");
-    if ((AppInstallerUI.e(this.ubZ) != null) && (AppInstallerUI.e(this.ubZ).isShowing())) {
-      AppInstallerUI.e(this.ubZ).dismiss();
+    AppMethodBeat.i(28800);
+    ab.d("MicroMsg.AppInstallerUI", "install dialog had been canceled");
+    if ((AppInstallerUI.e(this.yko) != null) && (AppInstallerUI.e(this.yko).isShowing())) {
+      AppInstallerUI.e(this.yko).dismiss();
     }
-    j.a.udB.an(2, true);
-    if (AppInstallerUI.b(this.ubZ) == 2) {
-      i.af(this.ubZ, 4);
+    j.a.ylQ.aE(2, true);
+    if (AppInstallerUI.b(this.yko) == 2) {
+      i.at(this.yko, 4);
     }
-    h.nFQ.a(405L, 74L, 1L, true);
-    i.cpW();
-    AppInstallerUI.d(this.ubZ);
+    h.qsU.idkeyStat(405L, 74L, 1L, true);
+    i.drM();
+    AppInstallerUI.d(this.yko);
+    AppMethodBeat.o(28800);
   }
 }
 

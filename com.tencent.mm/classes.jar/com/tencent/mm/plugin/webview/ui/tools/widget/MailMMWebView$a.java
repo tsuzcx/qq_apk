@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MailMMWebView$a
   extends FrameLayout
@@ -14,7 +15,10 @@ final class MailMMWebView$a
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!MailMMWebView.b(this.rCH)) && (!MailMMWebView.c(this.rCH))) {
+    AppMethodBeat.i(10037);
+    if ((!MailMMWebView.b(this.vsT)) && (!MailMMWebView.c(this.vsT)))
+    {
+      AppMethodBeat.o(10037);
       return false;
     }
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -23,22 +27,27 @@ final class MailMMWebView$a
     for (;;)
     {
       super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(10037);
       return true;
-      MailMMWebView.d(this.rCH);
-      MailMMWebView.e(this.rCH);
+      MailMMWebView.d(this.vsT);
+      MailMMWebView.e(this.vsT);
     }
   }
   
   protected final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(10038);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this == MailMMWebView.f(this.rCH)) && (this.rCH.getTitleHeight() > 0)) {
-      this.rCH.cgN();
-    }
-    while ((this != MailMMWebView.g(this.rCH)) || (this.rCH.getBottomHeight() <= 0)) {
+    if ((this == MailMMWebView.f(this.vsT)) && (this.vsT.getTitleHeight() > 0))
+    {
+      this.vsT.dgU();
+      AppMethodBeat.o(10038);
       return;
     }
-    this.rCH.cgO();
+    if ((this == MailMMWebView.g(this.vsT)) && (this.vsT.getBottomHeight() > 0)) {
+      this.vsT.dgV();
+    }
+    AppMethodBeat.o(10038);
   }
 }
 

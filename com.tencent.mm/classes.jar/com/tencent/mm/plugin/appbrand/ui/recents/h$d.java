@@ -8,13 +8,14 @@ import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 
 final class h$d
 {
-  View aie;
-  TextView hiM;
-  View hiN;
-  AppBrandNearbyShowcaseView hiO;
-  TextView hiP;
-  ImageView hiQ;
-  ThreeDotsLoadingView him;
+  View aku;
+  ThreeDotsLoadingView iTR;
+  TextView iUs;
+  View iUt;
+  AppBrandNearbyShowcaseView iUu;
+  TextView iUv;
+  ImageView iUw;
+  ImageView iUx;
 }
 
 

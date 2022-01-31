@@ -1,7 +1,8 @@
 package com.tencent.mm.ui.conversation;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelstat.d;
-import com.tencent.mm.ui.chatting.y;
+import com.tencent.mm.ui.chatting.ChattingUIFragment;
 
 final class BaseConversationUI$8$1
   implements Runnable
@@ -10,13 +11,18 @@ final class BaseConversationUI$8$1
   
   public final void run()
   {
-    d.b(4, this.vPl.vPi.getLocalClassName(), this.vPl.vPi.hashCode());
-    d.b(3, "ChattingUI" + BaseConversationUI.access$100(this.vPl.vPi).getIdentityString(), BaseConversationUI.access$100(this.vPl.vPi).hashCode());
+    AppMethodBeat.i(34057);
+    if (BaseConversationUI.access$100(this.AgW.AgT) != null)
+    {
+      d.b(4, this.AgW.AgT.getLocalClassName(), this.AgW.AgT.hashCode());
+      d.b(3, "ChattingUI" + BaseConversationUI.access$100(this.AgW.AgT).getIdentityString(), BaseConversationUI.access$100(this.AgW.AgT).hashCode());
+    }
+    AppMethodBeat.o(34057);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.BaseConversationUI.8.1
  * JD-Core Version:    0.7.0.1
  */

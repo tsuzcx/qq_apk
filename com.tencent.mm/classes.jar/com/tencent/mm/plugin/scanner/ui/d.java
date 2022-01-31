@@ -10,17 +10,15 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.platformtools.x.a;
-import com.tencent.mm.plugin.scanner.util.q;
+import com.tencent.mm.plugin.scanner.util.s;
 import com.tencent.mm.pluginsdk.ui.d.j;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import java.io.IOException;
@@ -29,99 +27,112 @@ public final class d
   extends Preference
   implements x.a
 {
-  private f dnn;
-  private TextView haW = null;
-  private ImageView iIS = null;
-  String kPW;
-  private View mView = null;
-  private TextView nJn = null;
-  String nJo;
-  String nzW;
+  private TextView iJG;
+  String kEW;
+  private ImageView kPy;
+  String mContent;
+  private View mView;
+  private TextView qwP;
+  String qwQ;
+  private f screen;
   
   public d(Context paramContext)
   {
     super(paramContext);
-    setLayoutResource(R.i.product_comment_preference);
+    AppMethodBeat.i(81006);
+    this.mView = null;
+    this.kPy = null;
+    this.iJG = null;
+    this.qwP = null;
+    setLayoutResource(2130970437);
     x.a(this);
+    AppMethodBeat.o(81006);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(81007);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
-    return this.mView;
+    paramView = this.mView;
+    AppMethodBeat.o(81007);
+    return paramView;
   }
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void m(String paramString, Bitmap paramBitmap)
   {
-    if ((!bk.bl(paramString)) && (paramString.equals(this.nJo)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    AppMethodBeat.i(81009);
+    if ((!bo.isNullOrNil(paramString)) && (paramString.equals(this.qwQ)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.iIS.setImageBitmap(paramBitmap);
-      this.iIS.setBackgroundColor(0);
-      if (this.dnn != null) {
-        this.dnn.notifyDataSetChanged();
+      this.kPy.setImageBitmap(paramBitmap);
+      this.kPy.setBackgroundColor(0);
+      if (this.screen != null) {
+        this.screen.notifyDataSetChanged();
       }
     }
+    AppMethodBeat.o(81009);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(81008);
     super.onBindView(paramView);
-    this.iIS = ((ImageView)paramView.findViewById(R.h.comment_avatar));
-    this.haW = ((TextView)paramView.findViewById(R.h.comment_nickname));
-    this.nJn = ((TextView)paramView.findViewById(R.h.comment_content));
+    this.kPy = ((ImageView)paramView.findViewById(2131826768));
+    this.iJG = ((TextView)paramView.findViewById(2131826769));
+    this.qwP = ((TextView)paramView.findViewById(2131826770));
     Object localObject;
-    if (!bk.bl(this.nJo))
+    if (!bo.isNullOrNil(this.qwQ))
     {
-      localObject = x.a(new q(this.nJo));
+      localObject = x.a(new s(this.qwQ));
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        this.iIS.setImageBitmap((Bitmap)localObject);
-        this.iIS.setBackgroundColor(0);
-        if (bk.bl(this.nzW)) {
-          break label284;
+        this.kPy.setImageBitmap((Bitmap)localObject);
+        this.kPy.setBackgroundColor(0);
+        if (bo.isNullOrNil(this.kEW)) {
+          break label289;
         }
-        this.haW.setText(j.a(this.mContext, this.nzW, this.haW.getTextSize()));
-        label134:
-        if (bk.bl(this.kPW)) {
-          break label296;
+        this.iJG.setText(j.b(this.mContext, this.kEW, this.iJG.getTextSize()));
+        label136:
+        if (bo.isNullOrNil(this.mContent)) {
+          break label301;
         }
-        this.nJn.setText(this.kPW);
+        this.qwP.setText(this.mContent);
       }
     }
     for (;;)
     {
       for (;;)
       {
-        if ((bk.bl(this.nzW)) && (bk.bl(this.nJo)))
+        if ((bo.isNullOrNil(this.kEW)) && (bo.isNullOrNil(this.qwQ)))
         {
-          paramView = (LinearLayout)paramView.findViewById(R.h.comment_container);
+          paramView = (LinearLayout)paramView.findViewById(2131826767);
           localObject = paramView.getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject).height = this.mContext.getResources().getDimensionPixelSize(R.f.product_common_pref_height);
+          ((ViewGroup.LayoutParams)localObject).height = this.mContext.getResources().getDimensionPixelSize(2131428623);
           paramView.setPadding(BackwardSupportUtil.b.b(this.mContext, 9.0F), 0, 0, 0);
           paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
+        AppMethodBeat.o(81008);
         return;
         try
         {
-          localObject = BackwardSupportUtil.b.a(ae.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
-          this.iIS.setImageBitmap((Bitmap)localObject);
+          localObject = BackwardSupportUtil.b.b(ah.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
+          this.kPy.setImageBitmap((Bitmap)localObject);
         }
         catch (IOException localIOException)
         {
-          this.iIS.setImageBitmap(null);
+          this.kPy.setImageBitmap(null);
         }
       }
       break;
-      this.iIS.setVisibility(8);
+      this.kPy.setVisibility(8);
       break;
-      label284:
-      this.haW.setVisibility(8);
-      break label134;
-      label296:
-      this.nJn.setVisibility(8);
+      label289:
+      this.iJG.setVisibility(8);
+      break label136;
+      label301:
+      this.qwP.setVisibility(8);
     }
   }
 }

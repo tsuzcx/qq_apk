@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.ac.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class BigIconSummaryPreference
   extends IconSummaryPreference
@@ -22,14 +22,16 @@ public class BigIconSummaryPreference
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(107130);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    paramViewGroup.setMinimumHeight(paramViewGroup.getResources().getDimensionPixelSize(a.e.MediumListHeight));
+    paramViewGroup.setMinimumHeight(paramViewGroup.getResources().getDimensionPixelSize(2131427786));
+    AppMethodBeat.o(107130);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.BigIconSummaryPreference
  * JD-Core Version:    0.7.0.1
  */

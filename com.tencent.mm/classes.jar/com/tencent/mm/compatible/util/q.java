@@ -1,5 +1,6 @@
 package com.tencent.mm.compatible.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.CharArrayWriter;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
@@ -10,54 +11,70 @@ import java.util.BitSet;
 
 public final class q
 {
-  static BitSet dAb;
-  static String dAc = (String)AccessController.doPrivileged(new i("file.encoding"));
+  static BitSet etn;
+  static String eto;
   
   static
   {
-    dAb = new BitSet(256);
+    AppMethodBeat.i(93112);
+    eto = null;
+    etn = new BitSet(256);
     int i = 97;
     while (i <= 122)
     {
-      dAb.set(i);
+      etn.set(i);
       i += 1;
     }
     i = 65;
     while (i <= 90)
     {
-      dAb.set(i);
+      etn.set(i);
       i += 1;
     }
     i = 48;
     while (i <= 57)
     {
-      dAb.set(i);
+      etn.set(i);
       i += 1;
     }
-    dAb.set(45);
-    dAb.set(95);
-    dAb.set(46);
-    dAb.set(42);
+    etn.set(45);
+    etn.set(95);
+    etn.set(46);
+    etn.set(42);
+    eto = (String)AccessController.doPrivileged(new i("file.encoding"));
+    AppMethodBeat.o(93112);
   }
   
   @Deprecated
   public static String encode(String paramString)
   {
+    AppMethodBeat.i(93110);
+    Object localObject = null;
     try
     {
-      paramString = encode(paramString, dAc);
+      paramString = encode(paramString, eto);
+      AppMethodBeat.o(93110);
       return paramString;
     }
-    catch (UnsupportedEncodingException paramString) {}
-    return null;
+    catch (UnsupportedEncodingException paramString)
+    {
+      for (;;)
+      {
+        paramString = localObject;
+      }
+    }
   }
   
   public static String encode(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(93111);
     StringBuffer localStringBuffer = new StringBuffer(paramString1.length());
     CharArrayWriter localCharArrayWriter = new CharArrayWriter();
-    if (paramString2 == null) {
-      throw new NullPointerException("charsetName");
+    if (paramString2 == null)
+    {
+      paramString1 = new NullPointerException("charsetName");
+      AppMethodBeat.o(93111);
+      throw paramString1;
     }
     int j;
     for (;;)
@@ -73,7 +90,7 @@ public final class q
           break;
         }
         k = paramString1.charAt(i);
-        if (dAb.get(k))
+        if (etn.get(k))
         {
           if (k == 32) {
             j = 1;
@@ -86,11 +103,15 @@ public final class q
       }
       catch (IllegalCharsetNameException paramString1)
       {
-        throw new UnsupportedEncodingException(paramString2);
+        paramString1 = new UnsupportedEncodingException(paramString2);
+        AppMethodBeat.o(93111);
+        throw paramString1;
       }
       catch (UnsupportedCharsetException paramString1)
       {
-        throw new UnsupportedEncodingException(paramString2);
+        paramString1 = new UnsupportedEncodingException(paramString2);
+        AppMethodBeat.o(93111);
+        throw paramString1;
       }
       int m;
       do
@@ -123,7 +144,7 @@ public final class q
         if (k >= paramString1.length()) {
           break;
         }
-        paramString2 = dAb;
+        paramString2 = etn;
         m = paramString1.charAt(k);
         j = m;
         i = k;
@@ -158,15 +179,19 @@ public final class q
       j = 1;
       i = k;
     }
-    if (j != 0) {
+    if (j != 0)
+    {
       paramString1 = localStringBuffer.toString();
+      AppMethodBeat.o(93111);
+      return paramString1;
     }
+    AppMethodBeat.o(93111);
     return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.util.q
  * JD-Core Version:    0.7.0.1
  */

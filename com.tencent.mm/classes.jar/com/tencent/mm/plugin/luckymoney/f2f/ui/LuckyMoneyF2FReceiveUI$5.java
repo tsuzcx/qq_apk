@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.luckymoney.f2f.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyF2FReceiveUI$5
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class LuckyMoneyF2FReceiveUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.lOW.finish();
+    AppMethodBeat.i(42215);
+    this.omq.finish();
+    AppMethodBeat.o(42215);
   }
 }
 

@@ -1,14 +1,52 @@
 package com.google.android.gms.tasks;
 
-abstract interface zzf<TResult>
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class zzf
+  implements Runnable
 {
-  public abstract void cancel();
+  zzf(zze paramzze, Task paramTask) {}
   
-  public abstract void onComplete(Task<TResult> paramTask);
+  public final void run()
+  {
+    AppMethodBeat.i(57389);
+    try
+    {
+      Task localTask = (Task)zze.zza(this.zzafp).then(this.zzafn);
+      if (localTask == null)
+      {
+        this.zzafp.onFailure(new NullPointerException("Continuation returned null"));
+        AppMethodBeat.o(57389);
+        return;
+      }
+    }
+    catch (RuntimeExecutionException localRuntimeExecutionException)
+    {
+      if ((localRuntimeExecutionException.getCause() instanceof Exception))
+      {
+        zze.zzb(this.zzafp).setException((Exception)localRuntimeExecutionException.getCause());
+        AppMethodBeat.o(57389);
+        return;
+      }
+      zze.zzb(this.zzafp).setException(localRuntimeExecutionException);
+      AppMethodBeat.o(57389);
+      return;
+    }
+    catch (Exception localException)
+    {
+      zze.zzb(this.zzafp).setException(localException);
+      AppMethodBeat.o(57389);
+      return;
+    }
+    localException.addOnSuccessListener(TaskExecutors.zzagd, this.zzafp);
+    localException.addOnFailureListener(TaskExecutors.zzagd, this.zzafp);
+    localException.addOnCanceledListener(TaskExecutors.zzagd, this.zzafp);
+    AppMethodBeat.o(57389);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.tasks.zzf
  * JD-Core Version:    0.7.0.1
  */

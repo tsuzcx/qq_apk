@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.transmit;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -12,10 +13,9 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.plugin.sight.encode.ui.MainSightForwardContainerView;
@@ -25,7 +25,7 @@ import com.tencent.mm.plugin.sight.encode.ui.MainSightForwardContainerView.3;
 import com.tencent.mm.plugin.sight.encode.ui.MainSightSelectContactView;
 import com.tencent.mm.plugin.sight.encode.ui.SightCameraView;
 import com.tencent.mm.plugin.sight.encode.ui.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.vfs.e;
@@ -34,121 +34,136 @@ import java.util.HashSet;
 public class SightForwardUI
   extends MMActivity
 {
+  private MainSightForwardContainerView AAW;
   private String mPath;
-  private MainSightForwardContainerView whZ;
   
-  protected final int getForceOrientation()
+  public int getForceOrientation()
   {
     return 1;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.main_sight_forward_view;
+    return 2130970068;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(35276);
     super.onCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
     getSupportActionBar().hide();
     this.mPath = getIntent().getStringExtra("sight_local_path");
-    if (!com.tencent.mm.plugin.sight.base.d.MG(this.mPath))
+    if (!com.tencent.mm.plugin.sight.base.d.Zn(this.mPath))
     {
-      y.e("MicroMsg.SightForwardUI", "Path:%s, NOT SIGHT!", new Object[] { this.mPath });
+      ab.e("MicroMsg.SightForwardUI", "Path:%s, NOT SIGHT!", new Object[] { this.mPath });
       finish();
+      AppMethodBeat.o(35276);
       return;
     }
-    if (!au.DK())
+    if (!aw.RG())
     {
-      y.e("MicroMsg.SightForwardUI", "acc not ready");
+      ab.e("MicroMsg.SightForwardUI", "acc not ready");
       finish();
+      AppMethodBeat.o(35276);
       return;
     }
-    paramBundle = t.nR(String.valueOf(SystemClock.elapsedRealtime()));
-    o.Sr();
-    paramBundle = t.nS(paramBundle);
-    if (e.r(this.mPath, paramBundle) <= 0L)
+    paramBundle = t.ve(String.valueOf(SystemClock.elapsedRealtime()));
+    o.alE();
+    paramBundle = t.vf(paramBundle);
+    if (e.C(this.mPath, paramBundle) <= 0L)
     {
-      y.e("MicroMsg.SightForwardUI", "Copy File %s to %s FAIL!", new Object[] { this.mPath, paramBundle });
+      ab.e("MicroMsg.SightForwardUI", "Copy File %s to %s FAIL!", new Object[] { this.mPath, paramBundle });
       finish();
+      AppMethodBeat.o(35276);
       return;
     }
     this.mPath = paramBundle;
-    y.i("MicroMsg.SightForwardUI", "Doing Forward Sight, path %s", new Object[] { this.mPath });
-    this.whZ = ((MainSightForwardContainerView)findViewById(R.h.forward_view));
-    this.whZ.setIMainSightViewCallback(new SightForwardUI.1(this));
-    paramBundle = this.whZ;
+    ab.i("MicroMsg.SightForwardUI", "Doing Forward Sight, path %s", new Object[] { this.mPath });
+    this.AAW = ((MainSightForwardContainerView)findViewById(2131825889));
+    this.AAW.setIMainSightViewCallback(new SightForwardUI.1(this));
+    paramBundle = this.AAW;
     Object localObject = this.mPath;
-    paramBundle.ohK = this;
-    paramBundle.ohG = ((String)localObject);
-    paramBundle.ohE = g.bQ((String)localObject);
+    paramBundle.jdB = this;
+    paramBundle.qVU = ((String)localObject);
+    paramBundle.qVS = g.getMD5((String)localObject);
     long l = System.currentTimeMillis();
-    paramBundle.ohH = 1.333333F;
-    paramBundle.ohx = ((SightCameraView)((ViewStub)paramBundle.findViewById(R.h.camera_video_view)).inflate());
-    paramBundle.ohx.setTargetWidth(com.tencent.mm.pluginsdk.i.a.mhQ);
-    paramBundle.ohx.setFixPreviewRate(paramBundle.ohH);
-    paramBundle.ohx.setVisibility(0);
-    paramBundle.ohB = paramBundle.findViewById(R.h.top_virtual_actionbar);
-    paramBundle.ohB.setLayoutParams(new RelativeLayout.LayoutParams(-1, getSupportActionBar().getHeight()));
-    paramBundle.ohA = paramBundle.findViewById(R.h.main_sight_close);
-    paramBundle.lWx = paramBundle.findViewById(R.h.main_sight_send);
-    paramBundle.ohz = paramBundle.findViewById(R.h.camera_shadow);
-    paramBundle.ohA.setOnClickListener(new MainSightForwardContainerView.1(paramBundle));
-    paramBundle.lWx.setOnClickListener(new MainSightForwardContainerView.2(paramBundle));
-    paramBundle.bBG();
-    y.d("MicroMsg.MainSightContainerView", "init concrol view use %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    this.whZ.bBF();
-    paramBundle = this.whZ;
-    if (paramBundle.ohw == null)
+    paramBundle.qVV = 1.333333F;
+    paramBundle.qVL = ((SightCameraView)((ViewStub)paramBundle.findViewById(2131825890)).inflate());
+    paramBundle.qVL.setTargetWidth(com.tencent.mm.pluginsdk.i.a.oHW);
+    paramBundle.qVL.setFixPreviewRate(paramBundle.qVV);
+    paramBundle.qVL.setVisibility(0);
+    paramBundle.qVP = paramBundle.findViewById(2131825895);
+    paramBundle.qVP.setLayoutParams(new RelativeLayout.LayoutParams(-1, getSupportActionBar().getHeight()));
+    paramBundle.qVO = paramBundle.findViewById(2131825896);
+    paramBundle.ouI = paramBundle.findViewById(2131825897);
+    paramBundle.qVN = paramBundle.findViewById(2131825891);
+    paramBundle.qVO.setOnClickListener(new MainSightForwardContainerView.1(paramBundle));
+    paramBundle.ouI.setOnClickListener(new MainSightForwardContainerView.2(paramBundle));
+    paramBundle.cnf();
+    ab.d("MicroMsg.MainSightContainerView", "init concrol view use %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    this.AAW.cne();
+    paramBundle = this.AAW;
+    if (paramBundle.qVK == null)
     {
       localObject = paramBundle.getResources().getDisplayMetrics();
-      float f = ((DisplayMetrics)localObject).widthPixels / paramBundle.ohH;
-      paramBundle.ohw = ((MainSightSelectContactView)paramBundle.findViewById(R.h.select_contact_root));
-      MainSightSelectContactView localMainSightSelectContactView = paramBundle.ohw;
-      MMFragmentActivity localMMFragmentActivity = paramBundle.ohK;
+      float f = ((DisplayMetrics)localObject).widthPixels / paramBundle.qVV;
+      paramBundle.qVK = ((MainSightSelectContactView)paramBundle.findViewById(2131825894));
+      MainSightSelectContactView localMainSightSelectContactView = paramBundle.qVK;
+      MMFragmentActivity localMMFragmentActivity = paramBundle.jdB;
       int i = (int)(((DisplayMetrics)localObject).heightPixels - f);
       int j = ((DisplayMetrics)localObject).heightPixels;
-      localMainSightSelectContactView.ohK = localMMFragmentActivity;
-      localMainSightSelectContactView.oij = i;
+      localMainSightSelectContactView.jdB = localMMFragmentActivity;
+      localMainSightSelectContactView.qWw = i;
       localMainSightSelectContactView.setMainSightContentView(paramBundle);
-      localMainSightSelectContactView.addView(View.inflate(localMainSightSelectContactView.getContext(), R.i.main_sight_select_contact_view, null), -1, -2);
-      localMainSightSelectContactView.Nn = ((ListView)localMainSightSelectContactView.findViewById(R.h.select_contact_lv));
-      localMainSightSelectContactView.oim = new c(localMainSightSelectContactView);
-      localMainSightSelectContactView.oip = new LinearLayout(localMainSightSelectContactView.getContext());
-      localMainSightSelectContactView.oip.addView(new View(localMainSightSelectContactView.getContext()), -1, localMainSightSelectContactView.oio.getViewHeight() - localMainSightSelectContactView.oij);
-      localMainSightSelectContactView.oip.getChildAt(0).setBackgroundColor(0);
-      localMainSightSelectContactView.Nn.addHeaderView(localMainSightSelectContactView.oip);
-      localMainSightSelectContactView.Nn.setAdapter(localMainSightSelectContactView.oim);
-      localMainSightSelectContactView.Nn.setOnItemClickListener(paramBundle);
-      localMainSightSelectContactView.oit = new HashSet();
-      localMainSightSelectContactView.oiu = new HashSet();
-      localMainSightSelectContactView.Nn.setOnScrollListener(localMainSightSelectContactView);
-      localMainSightSelectContactView.oik = new com.tencent.mm.plugin.sight.encode.ui.d();
-      localMainSightSelectContactView.oik.oif = localMainSightSelectContactView;
-      paramBundle.ohw.setSearchView(paramBundle.findViewById(R.h.search_view));
-      paramBundle.ohw.setEmptyBgView(paramBundle.findViewById(R.h.empty_bg));
-      paramBundle.ohw.setMainSightContentView(paramBundle);
+      localMainSightSelectContactView.addView(View.inflate(localMainSightSelectContactView.getContext(), 2130970069, null), -1, -2);
+      localMainSightSelectContactView.mListView = ((ListView)localMainSightSelectContactView.findViewById(2131820911));
+      localMainSightSelectContactView.qWz = new c(localMainSightSelectContactView);
+      localMainSightSelectContactView.qWC = new LinearLayout(localMainSightSelectContactView.getContext());
+      localMainSightSelectContactView.qWC.addView(new View(localMainSightSelectContactView.getContext()), -1, localMainSightSelectContactView.qWB.getViewHeight() - localMainSightSelectContactView.qWw);
+      localMainSightSelectContactView.qWC.getChildAt(0).setBackgroundColor(0);
+      localMainSightSelectContactView.mListView.addHeaderView(localMainSightSelectContactView.qWC);
+      localMainSightSelectContactView.mListView.setAdapter(localMainSightSelectContactView.qWz);
+      localMainSightSelectContactView.mListView.setOnItemClickListener(paramBundle);
+      localMainSightSelectContactView.qWG = new HashSet();
+      localMainSightSelectContactView.qWH = new HashSet();
+      localMainSightSelectContactView.mListView.setOnScrollListener(localMainSightSelectContactView);
+      localMainSightSelectContactView.qWx = new com.tencent.mm.plugin.sight.encode.ui.d();
+      localMainSightSelectContactView.qWx.qWs = localMainSightSelectContactView;
+      paramBundle.qVK.setSearchView(paramBundle.findViewById(2131823242));
+      paramBundle.qVK.setEmptyBgView(paramBundle.findViewById(2131825892));
+      paramBundle.qVK.setMainSightContentView(paramBundle);
     }
-    paramBundle.iT(true);
-    paramBundle.ohx.postDelayed(new MainSightForwardContainerView.3(paramBundle), 50L);
+    paramBundle.kX(true);
+    paramBundle.qVL.postDelayed(new MainSightForwardContainerView.3(paramBundle), 50L);
+    AppMethodBeat.o(35276);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(35278);
     super.onPause();
-    this.whZ.onPause();
+    this.AAW.onPause();
+    AppMethodBeat.o(35278);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(35277);
     super.onResume();
-    this.whZ.onResume();
+    this.AAW.onResume();
+    AppMethodBeat.o(35277);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.SightForwardUI
  * JD-Core Version:    0.7.0.1
  */

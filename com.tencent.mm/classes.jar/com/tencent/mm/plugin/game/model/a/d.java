@@ -1,107 +1,105 @@
 package com.tencent.mm.plugin.game.model.a;
 
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.cc;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class d
+  extends cc
 {
-  private static int iPW = -1;
-  private static d.b kRE;
-  private static d.a kRF;
-  private static b kRG;
-  private static c kRH = new d.1();
-  private static c kRI = new d.2();
+  protected static c.a info;
   
-  public static void aFI()
+  static
   {
-    try
-    {
-      if (kRE == null) {
-        kRE = new d.b((byte)0);
-      }
-      localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
-      localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
-      localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-      ae.getContext().registerReceiver(kRE, localIntentFilter);
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        IntentFilter localIntentFilter;
-        label102:
-        y.i("MicroMsg.GameSilentDownloadListener", "registerNetChange err:%s", new Object[] { localException1.getMessage() });
-      }
-    }
-    try
-    {
-      if (kRF == null) {
-        kRF = new d.a((byte)0);
-      }
-      localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.BATTERY_OKAY");
-      localIntentFilter.addAction("android.intent.action.BATTERY_LOW");
-      ae.getContext().registerReceiver(kRF, localIntentFilter);
-    }
-    catch (Exception localException2)
-    {
-      y.i("MicroMsg.GameSilentDownloadListener", "registerBatteryChange err:%s", new Object[] { localException2.getMessage() });
-      break label102;
-    }
-    a.udP.c(kRH);
-    a.udP.c(kRI);
-    if (kRG == null) {
-      kRG = new b();
-    }
-    com.tencent.mm.plugin.downloader.model.d.aFP();
-    com.tencent.mm.plugin.downloader.model.b.a(kRG);
+    AppMethodBeat.i(111507);
+    c.a locala = new c.a();
+    locala.yrK = new Field[17];
+    locala.columns = new String[18];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "appId";
+    locala.yrM.put("appId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" appId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.yrL = "appId";
+    locala.columns[1] = "downloadUrl";
+    locala.yrM.put("downloadUrl", "TEXT");
+    localStringBuilder.append(" downloadUrl TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "size";
+    locala.yrM.put("size", "LONG default '0' ");
+    localStringBuilder.append(" size LONG default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "md5";
+    locala.yrM.put("md5", "TEXT");
+    localStringBuilder.append(" md5 TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "packageName";
+    locala.yrM.put("packageName", "TEXT");
+    localStringBuilder.append(" packageName TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "expireTime";
+    locala.yrM.put("expireTime", "LONG default '0' ");
+    localStringBuilder.append(" expireTime LONG default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "randomTime";
+    locala.yrM.put("randomTime", "LONG default '0' ");
+    localStringBuilder.append(" randomTime LONG default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "isFirst";
+    locala.yrM.put("isFirst", "INTEGER default 'true' ");
+    localStringBuilder.append(" isFirst INTEGER default 'true' ");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "nextCheckTime";
+    locala.yrM.put("nextCheckTime", "LONG default '0' ");
+    localStringBuilder.append(" nextCheckTime LONG default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "isRunning";
+    locala.yrM.put("isRunning", "INTEGER default 'false' ");
+    localStringBuilder.append(" isRunning INTEGER default 'false' ");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "noWifi";
+    locala.yrM.put("noWifi", "INTEGER default 'true' ");
+    localStringBuilder.append(" noWifi INTEGER default 'true' ");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "noSdcard";
+    locala.yrM.put("noSdcard", "INTEGER default 'true' ");
+    localStringBuilder.append(" noSdcard INTEGER default 'true' ");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "noEnoughSpace";
+    locala.yrM.put("noEnoughSpace", "INTEGER default 'true' ");
+    localStringBuilder.append(" noEnoughSpace INTEGER default 'true' ");
+    localStringBuilder.append(", ");
+    locala.columns[13] = "lowBattery";
+    locala.yrM.put("lowBattery", "INTEGER default 'true' ");
+    localStringBuilder.append(" lowBattery INTEGER default 'true' ");
+    localStringBuilder.append(", ");
+    locala.columns[14] = "continueDelay";
+    locala.yrM.put("continueDelay", "INTEGER default 'true' ");
+    localStringBuilder.append(" continueDelay INTEGER default 'true' ");
+    localStringBuilder.append(", ");
+    locala.columns[15] = "SecondaryUrl";
+    locala.yrM.put("SecondaryUrl", "TEXT");
+    localStringBuilder.append(" SecondaryUrl TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[16] = "downloadInWidget";
+    locala.yrM.put("downloadInWidget", "INTEGER");
+    localStringBuilder.append(" downloadInWidget INTEGER");
+    locala.columns[17] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(111507);
   }
   
-  public static void aFJ()
+  public final c.a getDBInfo()
   {
-    if (kRE != null) {}
-    try
-    {
-      ae.getContext().unregisterReceiver(kRE);
-      kRE = null;
-      if (kRF == null) {}
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        ae.getContext().unregisterReceiver(kRF);
-        kRF = null;
-        a.udP.d(kRH);
-        a.udP.d(kRI);
-        if (kRG != null)
-        {
-          com.tencent.mm.plugin.downloader.model.d.aFP();
-          com.tencent.mm.plugin.downloader.model.b.b(kRG);
-          kRG = null;
-        }
-        return;
-        localException1 = localException1;
-        y.i("MicroMsg.GameSilentDownloadListener", "unregisterNetChange err:%s", new Object[] { localException1.getMessage() });
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          y.i("MicroMsg.GameSilentDownloadListener", "unregisterBatteryChange err:%s", new Object[] { localException2.getMessage() });
-        }
-      }
-    }
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.a.d
  * JD-Core Version:    0.7.0.1
  */

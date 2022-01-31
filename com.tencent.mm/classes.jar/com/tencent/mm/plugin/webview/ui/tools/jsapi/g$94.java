@@ -1,25 +1,23 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ui.base.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fl;
+import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
+import com.tencent.mm.sdk.b.a;
 
 final class g$94
   implements Runnable
 {
-  g$94(g paramg, i parami) {}
+  g$94(g paramg, WebViewJSSDKFileItem paramWebViewJSSDKFileItem) {}
   
   public final void run()
   {
-    h.a(g.i(this.rzi), g.i(this.rzi).getString(R.l.nfc_mmsetting_off_title), "", g.i(this.rzi).getString(R.l.nfc_open_title), g.i(this.rzi).getString(R.l.app_cancel), new g.94.1(this), new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        g.a(g.94.this.rzi, g.94.this.rzk, "nfcCheckState:nfc_wechat_setting_off", null);
-      }
-    });
+    AppMethodBeat.i(9162);
+    fl localfl = new fl();
+    localfl.ctw.op = 4;
+    localfl.ctw.fileName = this.vrl.fileName;
+    a.ymk.l(localfl);
+    AppMethodBeat.o(9162);
   }
 }
 

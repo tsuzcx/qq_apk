@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.collect.reward.b;
 
-import com.tencent.mm.j.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.i.d;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 final class a$1
@@ -12,31 +13,36 @@ final class a$1
   
   public final void run()
   {
-    a.a locala = (a.a)a.a(this.iIl).get(this.BF);
+    AppMethodBeat.i(41054);
+    a.a locala = (a.a)a.a(this.kOQ).get(this.Cq);
     if (locala != null)
     {
-      if (this.eiR != null)
+      if (this.fyV != null)
       {
-        int i = this.eiR.field_retCode;
-        locala.L(this.BF, this.iIk, i);
-        a.a(this.iIl).remove(this.BF);
-        if (this.eiR.field_retCode == 0)
+        int i = this.fyV.field_retCode;
+        locala.Z(this.Cq, this.kOP, i);
+        a.a(this.kOQ).remove(this.Cq);
+        if (this.fyV.field_retCode == 0)
         {
-          h.nFQ.a(724L, 8L, 1L, false);
+          h.qsU.idkeyStat(724L, 8L, 1L, false);
+          AppMethodBeat.o(41054);
           return;
         }
-        h.nFQ.a(724L, 9L, 1L, false);
+        h.qsU.idkeyStat(724L, 9L, 1L, false);
+        AppMethodBeat.o(41054);
         return;
       }
-      y.v("MicroMsg.QrRewardCdnDownloadHelper", "download is not end");
+      ab.v("MicroMsg.QrRewardCdnDownloadHelper", "download is not end");
+      AppMethodBeat.o(41054);
       return;
     }
-    y.w("MicroMsg.QrRewardCdnDownloadHelper", "no callback");
+    ab.w("MicroMsg.QrRewardCdnDownloadHelper", "no callback");
+    AppMethodBeat.o(41054);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.reward.b.a.1
  * JD-Core Version:    0.7.0.1
  */

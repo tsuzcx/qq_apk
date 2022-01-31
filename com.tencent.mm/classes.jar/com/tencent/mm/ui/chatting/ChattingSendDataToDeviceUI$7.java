@@ -2,20 +2,21 @@ package com.tencent.mm.ui.chatting;
 
 import android.content.res.Resources;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChattingSendDataToDeviceUI$7
   implements Runnable
 {
-  ChattingSendDataToDeviceUI$7(ChattingSendDataToDeviceUI paramChattingSendDataToDeviceUI, as paramas, ChattingSendDataToDeviceUI.c paramc) {}
+  ChattingSendDataToDeviceUI$7(ChattingSendDataToDeviceUI paramChattingSendDataToDeviceUI, ap paramap, ChattingSendDataToDeviceUI.c paramc) {}
   
   public final void run()
   {
-    this.vlz.vnu.setVisibility(0);
-    this.vlz.vlE.setTextColor(this.vlx.getResources().getColor(R.e.send_data_sending));
-    this.vlz.vlE.setText(this.vlx.getText(R.l.chatting_sending));
-    this.vlA.bKT = "send_data_sending";
+    AppMethodBeat.i(30768);
+    this.zAY.zCQ.setVisibility(0);
+    this.zAY.zBd.setTextColor(this.zAW.getResources().getColor(2131690440));
+    this.zAY.zBd.setText(this.zAW.getText(2131298323));
+    this.zAZ.csn = "send_data_sending";
+    AppMethodBeat.o(30768);
   }
 }
 

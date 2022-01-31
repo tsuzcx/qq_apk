@@ -1,47 +1,56 @@
 package com.tencent.mm.plugin.music.model.e;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.j;
 
 public final class d
-  extends i<c>
+  extends j<c>
 {
-  public e dXw;
-  public f<String, c> mAr;
+  public e db;
+  public f<String, c> pax;
   
   public d(e parame)
   {
-    super(parame, c.buS, "PieceMusicInfo", null);
-    this.dXw = parame;
-    this.mAr = new f(20);
+    super(parame, c.info, "PieceMusicInfo", null);
+    AppMethodBeat.i(105041);
+    this.db = parame;
+    this.pax = new com.tencent.mm.memory.a.c(20);
+    AppMethodBeat.o(105041);
   }
   
-  public final c JF(String paramString)
+  public final c VD(String paramString)
   {
-    if (this.mAr.get(paramString) != null) {
-      return (c)this.mAr.get(paramString);
+    AppMethodBeat.i(105042);
+    if (this.pax.get(paramString) != null)
+    {
+      paramString = (c)this.pax.get(paramString);
+      AppMethodBeat.o(105042);
+      return paramString;
     }
     Object localObject = String.format("Select * From PieceMusicInfo Where musicId=?", new Object[0]);
-    localObject = this.dXw.a((String)localObject, new String[] { paramString }, 2);
+    localObject = this.db.a((String)localObject, new String[] { paramString }, 2);
     if ((localObject != null) && (((Cursor)localObject).moveToFirst()))
     {
       c localc = new c();
-      localc.d((Cursor)localObject);
+      localc.convertFrom((Cursor)localObject);
       ((Cursor)localObject).close();
-      this.mAr.put(paramString, localc);
+      this.pax.put(paramString, localc);
+      AppMethodBeat.o(105042);
       return localc;
     }
     if (localObject != null) {
       ((Cursor)localObject).close();
     }
+    AppMethodBeat.o(105042);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.e.d
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.az.n;
-import com.tencent.mm.az.r;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.protocal.c.awd;
-import com.tencent.mm.protocal.c.el;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ba.n;
+import com.tencent.mm.ba.r;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.protocal.protobuf.fo;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.storage.az;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,48 +25,75 @@ import java.util.Map;
 public final class f
   extends BaseAdapter
 {
-  private final Activity bMV;
-  private final ah handler = new ah();
-  private String lCN = "";
-  final List<awd> list = new ArrayList();
-  final Map<Integer, Integer> oMs = new HashMap();
-  final Map<Integer, Integer> oMt = new HashMap();
-  int oMu = 0;
-  int oMv = 0;
-  private final f.b oMw;
-  private final g oMx;
-  final a oMy;
-  el oMz;
+  private final Activity cup;
+  private final ak handler;
+  final List<bcs> list;
+  private String nZZ;
+  final Map<Integer, Integer> rEd;
+  final Map<Integer, Integer> rEe;
+  int rEf;
+  int rEg;
+  private final f.b rEh;
+  private final g rEi;
+  final f.a rEj;
+  fo rEk;
   
-  public f(Activity paramActivity, String paramString, f.b paramb, a parama)
+  public f(Activity paramActivity, String paramString, f.b paramb, f.a parama)
   {
-    this.bMV = paramActivity;
-    this.lCN = paramString;
-    this.oMw = paramb;
-    this.oMy = parama;
-    this.oMx = new g(new f.1(this));
-    yc();
+    AppMethodBeat.i(38086);
+    this.list = new ArrayList();
+    this.rEd = new HashMap();
+    this.rEe = new HashMap();
+    this.rEf = 0;
+    this.rEg = 0;
+    this.handler = new ak();
+    this.nZZ = "";
+    this.cup = paramActivity;
+    this.nZZ = paramString;
+    this.rEh = paramb;
+    this.rEj = parama;
+    this.rEi = new g(new f.1(this));
+    Ku();
+    AppMethodBeat.o(38086);
   }
   
   private void a(int paramInt, ImageView paramImageView)
   {
-    awd localawd = (awd)getItem(paramInt);
+    AppMethodBeat.i(38090);
+    bcs localbcs = (bcs)getItem(paramInt);
     paramImageView.setVisibility(0);
     f.b.a locala = new f.b.a();
-    locala.bRV = "";
+    locala.czw = "";
     locala.position = paramInt;
     paramImageView.setTag(locala);
-    af.bDC().b(localawd, paramImageView, this.bMV.hashCode(), az.uBK);
+    ag.cpc().b(localbcs, paramImageView, this.cup.hashCode(), az.yNU);
+    AppMethodBeat.o(38090);
+  }
+  
+  public final void Ku()
+  {
+    AppMethodBeat.i(38087);
+    if (this.rEi != null)
+    {
+      r.aiP();
+      String str = n.aiM();
+      ab.d("MicroMsg.ArtistAdapter", "packgePath: ".concat(String.valueOf(str)));
+      this.rEi.gH(this.nZZ, str);
+    }
+    AppMethodBeat.o(38087);
   }
   
   public final int getCount()
   {
-    return this.oMu;
+    return this.rEf;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.list.get(paramInt);
+    AppMethodBeat.i(38088);
+    Object localObject = this.list.get(paramInt);
+    AppMethodBeat.o(38088);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -77,112 +103,94 @@ public final class f
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(38089);
     if (paramView == null)
     {
       paramViewGroup = new f.c(this);
-      paramView = View.inflate(this.bMV, i.g.sns_artist_item, null);
-      paramViewGroup.fcy = ((TextView)paramView.findViewById(i.f.sns_title));
-      paramViewGroup.oMG = ((TextView)paramView.findViewById(i.f.sns_title_en));
-      paramViewGroup.oMH = ((ImageView)paramView.findViewById(i.f.img1));
-      paramViewGroup.oMI = ((ImageView)paramView.findViewById(i.f.img2));
-      paramViewGroup.oMJ = ((ImageView)paramView.findViewById(i.f.img3));
-      paramViewGroup.oMK = ((LinearLayout)paramView.findViewById(i.f.listener_keeper));
-      paramViewGroup.oML = paramView.findViewById(i.f.line_add);
-      paramViewGroup.oMH.setOnClickListener(this.oMw.oMB);
-      paramViewGroup.oMI.setOnClickListener(this.oMw.oMC);
-      paramViewGroup.oMJ.setOnClickListener(this.oMw.oMD);
+      paramView = View.inflate(this.cup, 2130970808, null);
+      paramViewGroup.gui = ((TextView)paramView.findViewById(2131827911));
+      paramViewGroup.rEr = ((TextView)paramView.findViewById(2131827912));
+      paramViewGroup.rEs = ((ImageView)paramView.findViewById(2131827913));
+      paramViewGroup.rEt = ((ImageView)paramView.findViewById(2131827914));
+      paramViewGroup.rEu = ((ImageView)paramView.findViewById(2131827915));
+      paramViewGroup.rEv = ((LinearLayout)paramView.findViewById(2131827910));
+      paramViewGroup.rEw = paramView.findViewById(2131827909);
+      paramViewGroup.rEs.setOnClickListener(this.rEh.rEm);
+      paramViewGroup.rEt.setOnClickListener(this.rEh.rEn);
+      paramViewGroup.rEu.setOnClickListener(this.rEh.rEo);
       paramView.setTag(paramViewGroup);
-      if (this.oMs.get(Integer.valueOf(paramInt)) == null) {
-        break label633;
+      if (this.rEd.get(Integer.valueOf(paramInt)) == null) {
+        break label638;
       }
     }
-    label339:
-    label633:
-    for (int i = ((Integer)this.oMs.get(Integer.valueOf(paramInt))).intValue();; i = -1)
+    label342:
+    label638:
+    for (int i = ((Integer)this.rEd.get(Integer.valueOf(paramInt))).intValue();; i = -1)
     {
-      paramViewGroup.oMH.setVisibility(8);
-      paramViewGroup.oMI.setVisibility(8);
-      paramViewGroup.oMJ.setVisibility(8);
-      paramViewGroup.oML.setVisibility(8);
-      if (paramViewGroup.oMA.lCN.equals("en"))
+      paramViewGroup.rEs.setVisibility(8);
+      paramViewGroup.rEt.setVisibility(8);
+      paramViewGroup.rEu.setVisibility(8);
+      paramViewGroup.rEw.setVisibility(8);
+      if (paramViewGroup.rEl.nZZ.equals("en"))
       {
-        paramViewGroup.fcy.setVisibility(8);
-        paramViewGroup.oMG.setVisibility(4);
+        paramViewGroup.gui.setVisibility(8);
+        paramViewGroup.rEr.setVisibility(4);
       }
       for (;;)
       {
-        if ((i < this.oMv) && (i != -1)) {
-          break label339;
+        if ((i < this.rEg) && (i != -1)) {
+          break label342;
         }
         paramView.setLayoutParams(new AbsListView.LayoutParams(-1, 1));
         paramView.setVisibility(8);
+        AppMethodBeat.o(38089);
         return paramView;
         paramViewGroup = (f.c)paramView.getTag();
         break;
-        paramViewGroup.fcy.setVisibility(4);
-        paramViewGroup.oMG.setVisibility(8);
+        paramViewGroup.gui.setVisibility(4);
+        paramViewGroup.rEr.setVisibility(8);
       }
       if (i - 1 >= 0) {}
-      for (String str = ((awd)getItem(i - 1)).kRN;; str = "")
+      for (String str = ((bcs)getItem(i - 1)).Desc;; str = "")
       {
         paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
         paramView.setVisibility(0);
-        if (this.oMt.get(Integer.valueOf(paramInt)) != null) {}
-        for (paramInt = ((Integer)this.oMt.get(Integer.valueOf(paramInt))).intValue();; paramInt = 1)
+        if (this.rEe.get(Integer.valueOf(paramInt)) != null) {}
+        for (paramInt = ((Integer)this.rEe.get(Integer.valueOf(paramInt))).intValue();; paramInt = 1)
         {
-          awd localawd = (awd)getItem(i);
-          if ((localawd.kRN.equals("")) || (!localawd.kRN.equals(str)))
+          bcs localbcs = (bcs)getItem(i);
+          if ((localbcs.Desc.equals("")) || (!localbcs.Desc.equals(str)))
           {
-            if (!this.lCN.equals("en")) {
-              break label577;
+            if (!this.nZZ.equals("en")) {
+              break label582;
             }
-            paramViewGroup.oMG.setVisibility(0);
-            paramViewGroup.oMG.setText(localawd.kRN);
-            paramViewGroup.oML.setVisibility(0);
+            paramViewGroup.rEr.setVisibility(0);
+            paramViewGroup.rEr.setText(localbcs.Desc);
+            paramViewGroup.rEw.setVisibility(0);
           }
           for (;;)
           {
             if (paramInt > 0) {
-              a(i, paramViewGroup.oMH);
+              a(i, paramViewGroup.rEs);
             }
             if (paramInt >= 2) {
-              a(i + 1, paramViewGroup.oMI);
+              a(i + 1, paramViewGroup.rEt);
             }
             if (paramInt >= 3) {
-              a(i + 2, paramViewGroup.oMJ);
+              a(i + 2, paramViewGroup.rEu);
             }
-            if (this.oMy == null) {
+            if (this.rEj == null) {
               break;
             }
-            this.oMy.b(this.oMz);
-            return paramView;
-            paramViewGroup.fcy.setVisibility(0);
-            paramViewGroup.fcy.setText(localawd.kRN);
-            paramViewGroup.oML.setVisibility(0);
+            this.rEj.b(this.rEk);
+            break;
+            paramViewGroup.gui.setVisibility(0);
+            paramViewGroup.gui.setText(localbcs.Desc);
+            paramViewGroup.rEw.setVisibility(0);
           }
         }
       }
     }
-  }
-  
-  public final void yc()
-  {
-    if (this.oMx != null)
-    {
-      r.PK();
-      String str = n.PH();
-      y.d("MicroMsg.ArtistAdapter", "packgePath: " + str);
-      this.oMx.eZ(this.lCN, str);
-    }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(el paramel);
-    
-    public abstract void b(el paramel);
-    
-    public abstract void bHh();
   }
 }
 

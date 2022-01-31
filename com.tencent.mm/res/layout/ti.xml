@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_height="fill_parent" style="@style/p1"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/b_p" android:background="@color/a23" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/ls" />
-    <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:ellipsize="none" android:gravity="center" android:id="@id/b_q" android:padding="@dimen/kl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/b_6" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/kl" />
+    <RadioGroup android:orientation="vertical" android:id="@id/bcn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

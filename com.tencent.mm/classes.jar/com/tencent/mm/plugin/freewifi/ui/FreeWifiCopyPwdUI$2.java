@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.freewifi.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FreeWifiCopyPwdUI$2
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class FreeWifiCopyPwdUI$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(20937);
     paramView = new Intent("android.settings.WIFI_SETTINGS");
-    this.krr.startActivityForResult(paramView, FreeWifiCopyPwdUI.krl);
+    this.mNe.startActivityForResult(paramView, FreeWifiCopyPwdUI.mMY);
+    AppMethodBeat.o(20937);
   }
 }
 

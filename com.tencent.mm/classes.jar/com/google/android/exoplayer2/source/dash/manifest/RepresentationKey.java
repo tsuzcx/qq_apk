@@ -3,20 +3,28 @@ package com.google.android.exoplayer2.source.dash.manifest;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class RepresentationKey
   implements Parcelable, Comparable<RepresentationKey>
 {
-  public static final Parcelable.Creator<RepresentationKey> CREATOR = new RepresentationKey.1();
-  public final int aIm;
-  public final int aJi;
-  public final int aJj;
+  public static final Parcelable.Creator<RepresentationKey> CREATOR;
+  public final int aPX;
+  public final int aQP;
+  public final int aQQ;
+  
+  static
+  {
+    AppMethodBeat.i(94136);
+    CREATOR = new RepresentationKey.1();
+    AppMethodBeat.o(94136);
+  }
   
   public RepresentationKey(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.aIm = paramInt1;
-    this.aJi = paramInt2;
-    this.aJj = paramInt3;
+    this.aPX = paramInt1;
+    this.aQP = paramInt2;
+    this.aQQ = paramInt3;
   }
   
   public final int describeContents()
@@ -26,14 +34,19 @@ public final class RepresentationKey
   
   public final String toString()
   {
-    return this.aIm + "." + this.aJi + "." + this.aJj;
+    AppMethodBeat.i(94134);
+    String str = this.aPX + "." + this.aQP + "." + this.aQQ;
+    AppMethodBeat.o(94134);
+    return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.aIm);
-    paramParcel.writeInt(this.aJi);
-    paramParcel.writeInt(this.aJj);
+    AppMethodBeat.i(94135);
+    paramParcel.writeInt(this.aPX);
+    paramParcel.writeInt(this.aQP);
+    paramParcel.writeInt(this.aQQ);
+    AppMethodBeat.o(94135);
   }
 }
 

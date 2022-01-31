@@ -1,12 +1,13 @@
 package com.tencent.ttpic.gles;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.FloatBuffer;
 
 public class Drawable2d
 {
-  private static final FloatBuffer FULL_RECTANGLE_BUF = GlUtil.createFloatBuffer(FULL_RECTANGLE_COORDS);
+  private static final FloatBuffer FULL_RECTANGLE_BUF;
   private static final float[] FULL_RECTANGLE_COORDS;
-  private static final FloatBuffer FULL_RECTANGLE_TEX_BUF = GlUtil.createFloatBuffer(FULL_RECTANGLE_TEX_COORDS);
+  private static final FloatBuffer FULL_RECTANGLE_TEX_BUF;
   private static final float[] FULL_RECTANGLE_TEX_COORDS;
   private static final FloatBuffer RECTANGLE_BUF;
   private static final float[] RECTANGLE_COORDS;
@@ -14,9 +15,9 @@ public class Drawable2d
   private static final float[] RECTANGLE_TEX_COORDS;
   private static final int SIZEOF_FLOAT = 4;
   private static final FloatBuffer TRIANGLE_BUF;
-  private static final float[] TRIANGLE_COORDS = { 0.0F, 0.5773503F, -0.5F, -0.2886751F, 0.5F, -0.2886751F };
+  private static final float[] TRIANGLE_COORDS;
   private static final FloatBuffer TRIANGLE_TEX_BUF;
-  private static final float[] TRIANGLE_TEX_COORDS = { 0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  private static final float[] TRIANGLE_TEX_COORDS;
   private int mCoordsPerVertex;
   private Drawable2d.Prefab mPrefab;
   private FloatBuffer mTexCoordArray;
@@ -27,6 +28,9 @@ public class Drawable2d
   
   static
   {
+    AppMethodBeat.i(49954);
+    TRIANGLE_COORDS = new float[] { 0.0F, 0.5773503F, -0.5F, -0.2886751F, 0.5F, -0.2886751F };
+    TRIANGLE_TEX_COORDS = new float[] { 0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
     TRIANGLE_BUF = GlUtil.createFloatBuffer(TRIANGLE_COORDS);
     TRIANGLE_TEX_BUF = GlUtil.createFloatBuffer(TRIANGLE_TEX_COORDS);
     RECTANGLE_COORDS = new float[] { -0.5F, -0.5F, 0.5F, -0.5F, -0.5F, 0.5F, 0.5F, 0.5F };
@@ -35,14 +39,20 @@ public class Drawable2d
     RECTANGLE_TEX_BUF = GlUtil.createFloatBuffer(RECTANGLE_TEX_COORDS);
     FULL_RECTANGLE_COORDS = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
     FULL_RECTANGLE_TEX_COORDS = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+    FULL_RECTANGLE_BUF = GlUtil.createFloatBuffer(FULL_RECTANGLE_COORDS);
+    FULL_RECTANGLE_TEX_BUF = GlUtil.createFloatBuffer(FULL_RECTANGLE_TEX_COORDS);
+    AppMethodBeat.o(49954);
   }
   
   public Drawable2d(Drawable2d.Prefab paramPrefab)
   {
+    AppMethodBeat.i(49952);
     switch (Drawable2d.1.$SwitchMap$com$tencent$ttpic$gles$Drawable2d$Prefab[paramPrefab.ordinal()])
     {
     default: 
-      throw new RuntimeException("Unknown shape " + paramPrefab);
+      paramPrefab = new RuntimeException("Unknown shape ".concat(String.valueOf(paramPrefab)));
+      AppMethodBeat.o(49952);
+      throw paramPrefab;
     case 1: 
       this.mVertexArray = TRIANGLE_BUF;
       this.mTexCoordArray = TRIANGLE_TEX_BUF;
@@ -54,6 +64,7 @@ public class Drawable2d
     {
       this.mTexCoordStride = 8;
       this.mPrefab = paramPrefab;
+      AppMethodBeat.o(49952);
       return;
       this.mVertexArray = RECTANGLE_BUF;
       this.mTexCoordArray = RECTANGLE_TEX_BUF;
@@ -101,9 +112,14 @@ public class Drawable2d
   
   public String toString()
   {
-    if (this.mPrefab != null) {
-      return "[Drawable2d: " + this.mPrefab + "]";
+    AppMethodBeat.i(49953);
+    if (this.mPrefab != null)
+    {
+      String str = "[Drawable2d: " + this.mPrefab + "]";
+      AppMethodBeat.o(49953);
+      return str;
     }
+    AppMethodBeat.o(49953);
     return "[Drawable2d: ...]";
   }
 }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 abstract interface LuckyMoneyAutoScrollItem$b
 {
-  public abstract void arA();
+  public abstract void aQl();
 }
 
 

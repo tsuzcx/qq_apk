@@ -2,8 +2,9 @@ package com.tencent.ttpic.filter;
 
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.GLSLRender;
-import com.tencent.filter.a.ae;
+import com.tencent.filter.a.aj;
 import com.tencent.filter.m.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 public class GPUImageUnsharpMaskFilter
@@ -18,11 +19,12 @@ public class GPUImageUnsharpMaskFilter
   
   public GPUImageUnsharpMaskFilter()
   {
-    super(GLSLRender.bcE);
+    super(GLSLRender.btg);
   }
   
   public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(82556);
     int i = 0;
     float f = Math.round(this.blurRadius);
     if (f >= 1.0F)
@@ -30,18 +32,20 @@ public class GPUImageUnsharpMaskFilter
       i = (int)Math.floor(Math.sqrt(-2.0D * Math.pow(f, 2.0D) * Math.log(0.00390625D * Math.sqrt(6.283185307179586D * Math.pow(f, 2.0D)))));
       i += i % 2;
     }
-    this.horizontal = new BaseFilter(ae.b(i, f, true));
-    this.vertical = new BaseFilter(ae.b(i, f, false));
+    this.horizontal = new BaseFilter(aj.b(i, f, true));
+    this.vertical = new BaseFilter(aj.b(i, f, false));
     setNextFilter(this.horizontal, null);
     this.horizontal.setNextFilter(this.vertical, null);
     this.unsharpMask = new BaseFilter(SHARP_FRAGMENT);
     this.unsharpMask.addParam(new m.f("intensity", this.intensity));
     this.vertical.setNextFilter(this.unsharpMask, new int[] { 0 });
     super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.o(82556);
   }
   
   public void setParameterDic(Map<String, Object> paramMap)
   {
+    AppMethodBeat.i(82555);
     if (paramMap.containsKey("blurRadius")) {
       this.blurRadius = ((Float)paramMap.get("blurRadius")).floatValue();
     }
@@ -52,6 +56,7 @@ public class GPUImageUnsharpMaskFilter
         this.unsharpMask.addParam(new m.f("intensity", this.intensity));
       }
     }
+    AppMethodBeat.o(82555);
   }
 }
 

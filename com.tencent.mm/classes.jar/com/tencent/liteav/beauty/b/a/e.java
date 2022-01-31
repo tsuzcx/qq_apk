@@ -5,10 +5,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.beauty.NativeLoad;
-import com.tencent.liteav.beauty.b.r;
+import com.tencent.liteav.beauty.b.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class e
-  extends r
+  extends t
 {
   private String A = "SmoothVertical";
   private int r = -1;
@@ -25,13 +26,16 @@ public class e
   
   public void a(float paramFloat)
   {
+    AppMethodBeat.i(66962);
     this.z = paramFloat;
-    TXCLog.i(this.A, "setBeautyLevel " + paramFloat);
+    TXCLog.i(this.A, "setBeautyLevel ".concat(String.valueOf(paramFloat)));
     a(this.t, paramFloat);
+    AppMethodBeat.o(66962);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(66964);
     super.a(paramInt1, paramInt2);
     if (paramInt1 > paramInt2) {
       if (paramInt2 < 540) {
@@ -43,6 +47,7 @@ public class e
       TXCLog.i(this.A, "m_textureRation " + this.y);
       a(this.r, this.y / paramInt1);
       a(this.s, this.y / paramInt2);
+      AppMethodBeat.o(66964);
       return;
       this.y = 4.0F;
       continue;
@@ -56,19 +61,22 @@ public class e
   
   public boolean a()
   {
+    AppMethodBeat.i(66960);
     if ((Build.BRAND.equals("samsung")) && (Build.MODEL.equals("GT-I9500")) && (Build.VERSION.RELEASE.equals("4.3")))
     {
       NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(15);
       if ((this.a == 0) || (!b())) {
-        break label89;
+        break label101;
       }
     }
-    label89:
+    label101:
     for (this.g = true;; this.g = false)
     {
       c();
-      return this.g;
+      boolean bool = this.g;
+      AppMethodBeat.o(66960);
+      return bool;
       NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(5);
       break;
@@ -77,21 +85,25 @@ public class e
   
   public boolean b()
   {
+    AppMethodBeat.i(66961);
     super.b();
     q();
+    AppMethodBeat.o(66961);
     return true;
   }
   
   public void q()
   {
+    AppMethodBeat.i(66963);
     this.r = GLES20.glGetUniformLocation(p(), "texelWidthOffset");
     this.s = GLES20.glGetUniformLocation(p(), "texelHeightOffset");
     this.t = GLES20.glGetUniformLocation(p(), "smoothDegree");
+    AppMethodBeat.o(66963);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.e
  * JD-Core Version:    0.7.0.1
  */

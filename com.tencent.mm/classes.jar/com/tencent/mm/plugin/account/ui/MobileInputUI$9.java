@@ -1,20 +1,46 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.normsg.a.b;
 
 final class MobileInputUI$9
-  implements View.OnKeyListener
+  implements View.OnTouchListener
 {
-  MobileInputUI$9(MobileInputUI paramMobileInputUI) {}
+  MobileInputUI$9(MobileInputUI paramMobileInputUI, boolean[] paramArrayOfBoolean) {}
   
-  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0)) {
-      return MobileInputUI.f(this.foH);
+    AppMethodBeat.i(125169);
+    switch (paramMotionEvent.getAction())
+    {
     }
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(125169);
+      return false;
+      this.gFg[0] = true;
+      if (MobileInputUI.e(this.gGb)) {
+        b.pgQ.fD("ce_reg_eu", "<Reg>");
+      }
+      if (MobileInputUI.f(this.gGb))
+      {
+        b.pgQ.fD("ce_login", "<Login>");
+        continue;
+        if (MobileInputUI.e(this.gGb))
+        {
+          b.pgQ.a("ce_reg_eu", paramMotionEvent);
+          b.pgQ.Wa("ce_reg_eu");
+        }
+        if (MobileInputUI.f(this.gGb))
+        {
+          b.pgQ.a("ce_login", paramMotionEvent);
+          b.pgQ.Wa("ce_login");
+        }
+      }
+    }
   }
 }
 

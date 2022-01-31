@@ -8,61 +8,61 @@ import java.util.List;
 final class MediaControllerCompat$a$b
   implements c.a
 {
-  private final WeakReference<MediaControllerCompat.a> Ck;
+  private final WeakReference<MediaControllerCompat.a> CT;
   
   MediaControllerCompat$a$b(MediaControllerCompat.a parama)
   {
-    this.Ck = new WeakReference(parama);
+    this.CT = new WeakReference(parama);
   }
   
   public final void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if ((MediaControllerCompat.a)this.Ck.get() != null) {
+    if ((MediaControllerCompat.a)this.CT.get() != null) {
       new MediaControllerCompat.f(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     }
   }
   
-  public final void cP()
+  public final void dr()
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
-    if ((locala != null) && (locala.Ci)) {
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
+    if ((locala != null) && (locala.CR)) {
       int i = Build.VERSION.SDK_INT;
     }
   }
   
-  public final void cQ()
+  public final void ds()
   {
-    this.Ck.get();
+    this.CT.get();
   }
   
-  public final void cR()
+  public final void dt()
   {
-    this.Ck.get();
+    this.CT.get();
   }
   
   public final void onQueueChanged(List<?> paramList)
   {
-    if ((MediaControllerCompat.a)this.Ck.get() != null) {
+    if ((MediaControllerCompat.a)this.CT.get() != null) {
       MediaSessionCompat.QueueItem.m(paramList);
     }
   }
   
   public final void onSessionDestroyed()
   {
-    this.Ck.get();
+    this.CT.get();
   }
   
   public final void v(Object paramObject)
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
-    if ((locala != null) && (!locala.Ci)) {
-      PlaybackStateCompat.y(paramObject);
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
+    if ((locala != null) && (!locala.CR)) {
+      PlaybackStateCompat.z(paramObject);
     }
   }
   
   public final void w(Object paramObject)
   {
-    if ((MediaControllerCompat.a)this.Ck.get() != null) {
+    if ((MediaControllerCompat.a)this.CT.get() != null) {
       MediaMetadataCompat.u(paramObject);
     }
   }

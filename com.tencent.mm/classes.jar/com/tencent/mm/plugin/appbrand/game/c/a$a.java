@@ -1,52 +1,72 @@
 package com.tencent.mm.plugin.appbrand.game.c;
 
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.cd.c;
+import com.tencent.mm.plugin.appbrand.s.j;
 
 final class a$a
-  extends Drawable
+  implements com.tencent.magicbrush.a.a.a
 {
-  Paint gaZ = new Paint(1);
-  RectF gba = new RectF();
-  
-  private a$a(a parama)
+  private static int a(String paramString, int paramInt, j<c> paramj)
   {
-    this.gaZ.setColor(-12748166);
-    this.gaZ.setStyle(Paint.Style.FILL);
+    AppMethodBeat.i(143120);
+    if ((paramString == null) || (paramInt < 0) || (paramInt >= paramString.length()))
+    {
+      AppMethodBeat.o(143120);
+      return 0;
+    }
+    int k = paramString.codePointAt(paramInt);
+    c localc = b.duW().Nn(k);
+    if (localc != null)
+    {
+      if (paramj != null) {
+        paramj.value = localc;
+      }
+      paramInt = Character.charCount(k);
+      AppMethodBeat.o(143120);
+      return paramInt;
+    }
+    int j = paramInt + Character.charCount(k);
+    if (j < paramString.length()) {}
+    for (int i = paramString.codePointAt(j);; i = 0)
+    {
+      paramString = b.duW().hn(k, i);
+      if (paramString != null) {
+        break;
+      }
+      AppMethodBeat.o(143120);
+      return 0;
+    }
+    if (paramString.jpE != 0) {}
+    for (i = Character.charCount(i) + j;; i = j)
+    {
+      if (paramj != null) {
+        paramj.value = paramString;
+      }
+      AppMethodBeat.o(143120);
+      return i - paramInt;
+    }
   }
   
-  public final void draw(Canvas paramCanvas)
+  public final int n(String paramString, int paramInt)
   {
-    float f1 = paramCanvas.getHeight() / 2.0F;
-    RectF localRectF1 = this.gba;
-    this.gba.top = 0.0F;
-    localRectF1.left = 0.0F;
-    localRectF1 = this.gba;
-    RectF localRectF2 = this.gba;
-    float f2 = f1 * 2.0F;
-    localRectF2.bottom = f2;
-    localRectF1.right = f2;
-    paramCanvas.drawArc(this.gba, 90.0F, 180.0F, false, this.gaZ);
-    this.gba.left = (paramCanvas.getWidth() - f1 * 2.0F);
-    this.gba.top = 0.0F;
-    this.gba.right = paramCanvas.getWidth();
-    this.gba.bottom = paramCanvas.getHeight();
-    paramCanvas.drawArc(this.gba, -90.0F, 180.0F, false, this.gaZ);
-    paramCanvas.drawRect(f1 - 1.0F, 0.0F, this.gbb.getWidth() - f1 + 1.0F, this.gbb.getHeight(), this.gaZ);
+    AppMethodBeat.i(143118);
+    paramInt = a(paramString, paramInt, null);
+    AppMethodBeat.o(143118);
+    return paramInt;
   }
   
-  public final int getOpacity()
+  public final Drawable o(String paramString, int paramInt)
   {
-    return -1;
+    AppMethodBeat.i(143119);
+    j localj = new j();
+    a(paramString, paramInt, localj);
+    paramString = b.duW().a((c)localj.value, true);
+    AppMethodBeat.o(143119);
+    return paramString;
   }
-  
-  public final void setAlpha(int paramInt) {}
-  
-  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

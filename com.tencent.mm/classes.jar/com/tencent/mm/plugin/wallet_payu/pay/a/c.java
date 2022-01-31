@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wallet_payu.pay.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.HashMap;
@@ -9,8 +10,8 @@ import org.json.JSONObject;
 public final class c
   extends a
 {
-  public Orders nEh = null;
-  private String qmm = null;
+  private String mReqKey;
+  public Orders qrf;
   
   public c(String paramString)
   {
@@ -19,24 +20,30 @@ public final class c
   
   public c(String paramString, int paramInt)
   {
-    this.qmm = paramString;
+    AppMethodBeat.i(48443);
+    this.qrf = null;
+    this.mReqKey = null;
+    this.mReqKey = paramString;
     paramString = new HashMap();
-    paramString.put("req_key", this.qmm);
+    paramString.put("req_key", this.mReqKey);
     paramString.put("query_scene", String.valueOf(paramInt));
-    D(paramString);
+    setRequestData(paramString);
+    AppMethodBeat.o(48443);
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    this.nEh = Orders.ak(paramJSONObject);
-    if (this.nEh != null) {
-      this.nEh.bMX = this.qmm;
-    }
-  }
-  
-  public final int bUM()
+  public final int cTa()
   {
     return 8;
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(48444);
+    this.qrf = Orders.au(paramJSONObject);
+    if (this.qrf != null) {
+      this.qrf.cnI = this.mReqKey;
+    }
+    AppMethodBeat.o(48444);
   }
 }
 

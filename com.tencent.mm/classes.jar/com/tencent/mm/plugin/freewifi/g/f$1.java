@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.freewifi.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedHashMap;
 
 final class f$1
@@ -7,10 +8,12 @@ final class f$1
 {
   f$1()
   {
+    AppMethodBeat.i(20886);
     put("id", String.class);
     put("protocolNumber", Integer.TYPE);
     put("logContent", String.class);
     put("createTime", Long.TYPE);
+    AppMethodBeat.o(20886);
   }
 }
 

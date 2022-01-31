@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import com.tencent.mm.R.l;
-import com.tencent.mm.ai.d;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.d;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.t;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -12,29 +12,33 @@ final class c$19
 {
   c$19(c paramc) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    if ((this.mWY.mVy != null) && (this.mWY.mVy.Ly()))
+    AppMethodBeat.i(23474);
+    if ((this.pzT.pyd != null) && (this.pzT.pyd.aeg()))
     {
-      paraml.fq(1, R.l.contact_info_send_card_biz);
-      paraml.fq(3, R.l.biz_report_text);
-      paraml.fq(4, R.l.contact_info_biz_remove);
-      paraml.fq(5, R.l.contact_info_add_shortcut);
+      paraml.hx(1, 2131298744);
+      paraml.hx(3, 2131297684);
+      paraml.hx(4, 2131298561);
+      paraml.hx(5, 2131298519);
+      AppMethodBeat.o(23474);
       return;
     }
-    if ((this.mWY.mVy != null) && (this.mWY.mVy.Lz()))
+    if ((this.pzT.pyd != null) && (this.pzT.pyd.aeh()))
     {
-      paraml.fq(5, R.l.contact_info_add_shortcut);
+      paraml.hx(5, 2131298519);
+      AppMethodBeat.o(23474);
       return;
     }
-    paraml.fq(1, R.l.contact_info_send_card_biz);
-    paraml.fq(2, R.l.contact_info_biz_clear_msg);
-    if (!s.ic(this.mWY.dnp.field_username))
+    paraml.hx(1, 2131298744);
+    paraml.hx(2, 2131298538);
+    if (!t.oL(this.pzT.contact.field_username))
     {
-      paraml.fq(3, R.l.biz_report_text);
-      paraml.fq(4, R.l.contact_info_biz_remove);
+      paraml.hx(3, 2131297684);
+      paraml.hx(4, 2131298561);
     }
-    paraml.fq(5, R.l.contact_info_add_shortcut);
+    paraml.hx(5, 2131298519);
+    AppMethodBeat.o(23474);
   }
 }
 

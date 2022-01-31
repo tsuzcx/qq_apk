@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 
 final class k$5$5
@@ -10,11 +11,13 @@ final class k$5$5
   
   public final void run()
   {
-    if (this.rCx.rCv.rvZ != null)
+    AppMethodBeat.i(9929);
+    if (this.vsJ.vsH.vmp != null)
     {
-      String str = this.byv.getString("webview_network_type");
-      this.rCx.rCv.rvZ.TR(str);
+      String str = this.cax.getString("webview_network_type");
+      this.vsJ.vsH.vmp.ajb(str);
     }
+    AppMethodBeat.o(9929);
   }
 }
 

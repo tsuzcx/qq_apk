@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.freewifi.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ProtocolThreeThreeUI$9
   implements DialogInterface.OnCancelListener
@@ -13,8 +14,10 @@ final class ProtocolThreeThreeUI$9
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    d.a(this.ktl.ssid, 4, this.ktl.getIntent());
-    y.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.toConnecting.ProgressDlg.onCancel, desc=it changes the connect state of the model to CONNECT_STATE_WAIT_START because the user cancles the connect process in progress. state=%d", new Object[] { m.B(this.ktl.getIntent()), Integer.valueOf(m.C(this.ktl.getIntent())), Integer.valueOf(4) });
+    AppMethodBeat.i(21159);
+    d.a(this.mOZ.ssid, 4, this.mOZ.getIntent());
+    ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.toConnecting.ProgressDlg.onCancel, desc=it changes the connect state of the model to CONNECT_STATE_WAIT_START because the user cancles the connect process in progress. state=%d", new Object[] { m.U(this.mOZ.getIntent()), Integer.valueOf(m.V(this.mOZ.getIntent())), Integer.valueOf(4) });
+    AppMethodBeat.o(21159);
   }
 }
 

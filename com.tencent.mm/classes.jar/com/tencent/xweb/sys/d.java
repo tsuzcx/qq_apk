@@ -6,33 +6,38 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebChromeClient.CustomViewCallback;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import com.tencent.xweb.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.c.f;
+import com.tencent.xweb.i;
+import com.tencent.xweb.j;
 
 public final class d
-  implements com.tencent.xweb.c.f
+  implements f
 {
-  WebViewClient xjL;
-  WebChromeClient xjM;
-  WebView xjN;
+  WebViewClient BHp;
+  WebChromeClient BHq;
+  WebView BHr;
   
   public d(WebView paramWebView)
   {
-    this.xjN = paramWebView;
-    this.xjL = new WebViewClient();
-    this.xjM = new WebChromeClient();
+    AppMethodBeat.i(84660);
+    this.BHr = paramWebView;
+    this.BHp = new WebViewClient();
+    this.BHq = new WebChromeClient();
+    AppMethodBeat.o(84660);
   }
   
-  public final boolean a(String paramString1, String paramString2, com.tencent.xweb.f paramf)
+  public final boolean a(String paramString1, String paramString2, j paramj)
   {
     return false;
   }
   
-  public final boolean a(String paramString1, String paramString2, String paramString3, e parame)
+  public final boolean a(String paramString1, String paramString2, String paramString3, i parami)
   {
     return false;
   }
   
-  public final boolean b(String paramString1, String paramString2, com.tencent.xweb.f paramf)
+  public final boolean b(String paramString1, String paramString2, j paramj)
   {
     return false;
   }
@@ -41,9 +46,11 @@ public final class d
   
   public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback) {}
   
-  public final void u(String paramString, Bitmap paramBitmap)
+  public final void w(String paramString, Bitmap paramBitmap)
   {
-    this.xjL.onPageStarted(this.xjN, paramString, paramBitmap);
+    AppMethodBeat.i(84661);
+    this.BHp.onPageStarted(this.BHr, paramString, paramBitmap);
+    AppMethodBeat.o(84661);
   }
 }
 

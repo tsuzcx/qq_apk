@@ -6,15 +6,15 @@ public abstract interface b
   
   public abstract void a(a[] paramArrayOfa);
   
-  public abstract a nM();
+  public abstract a qk();
   
-  public abstract void nN();
+  public abstract int ql();
   
-  public abstract int nO();
+  public abstract void trim();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.h.b
  * JD-Core Version:    0.7.0.1
  */

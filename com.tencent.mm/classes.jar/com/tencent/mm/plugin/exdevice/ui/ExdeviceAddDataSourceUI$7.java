@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import com.tencent.mm.h.a.rj;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.sv;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ExdeviceAddDataSourceUI$7
   implements Runnable
@@ -11,9 +12,11 @@ final class ExdeviceAddDataSourceUI$7
   
   public final void run()
   {
-    y.d("MicroMsg.ExdeviceAddDataSourceUI", "stopAllChannelEvent! ");
-    rj localrj = new rj();
-    a.udP.m(localrj);
+    AppMethodBeat.i(19781);
+    ab.d("MicroMsg.ExdeviceAddDataSourceUI", "stopAllChannelEvent! ");
+    sv localsv = new sv();
+    a.ymk.l(localsv);
+    AppMethodBeat.o(19781);
   }
 }
 

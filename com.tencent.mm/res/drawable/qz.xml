@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/media_download_in_gallery_pressed" />
-    <item android:drawable="@raw/media_download_in_gallery_noraml" />
-</selector>
+    <solid android:color="@color/a6i" />
+    <corners android:radius="5.0dip" />
+</shape>

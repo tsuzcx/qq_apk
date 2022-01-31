@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.collect.ui;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CollectBillUI$2
   implements AbsListView.OnScrollListener
@@ -11,11 +12,13 @@ final class CollectBillUI$2
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((CollectBillUI.b(this.iKD).getLastVisiblePosition() == CollectBillUI.c(this.iKD).getCount()) && (CollectBillUI.c(this.iKD).getCount() > 0) && (!CollectBillUI.d(this.iKD)) && (!CollectBillUI.e(this.iKD)))
+    AppMethodBeat.i(41212);
+    if ((CollectBillUI.b(this.kRi).getLastVisiblePosition() == CollectBillUI.c(this.kRi).getCount()) && (CollectBillUI.c(this.kRi).getCount() > 0) && (!CollectBillUI.d(this.kRi)) && (!CollectBillUI.e(this.kRi)))
     {
-      CollectBillUI.f(this.iKD);
-      CollectBillUI.g(this.iKD);
+      CollectBillUI.f(this.kRi);
+      CollectBillUI.g(this.kRi);
     }
+    AppMethodBeat.o(41212);
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}

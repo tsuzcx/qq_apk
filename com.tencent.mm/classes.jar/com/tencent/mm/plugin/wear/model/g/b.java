@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.wear.model.g;
 
-import com.tencent.mm.ah.e;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
-import com.tencent.mm.ah.e.c;
-import com.tencent.mm.h.a.ud;
-import com.tencent.mm.h.a.ud.b;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.ai.e.b;
+import com.tencent.mm.ai.e.c;
+import com.tencent.mm.g.a.vz;
+import com.tencent.mm.g.a.vz.b;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import java.util.LinkedHashMap;
 
@@ -22,43 +23,48 @@ public final class b
   
   public final e.b b(e.a parama)
   {
-    ??? = parama.dBs;
-    au.Hx();
-    if (bk.bl((String)c.Dz().get(2, ""))) {
+    AppMethodBeat.i(26456);
+    ??? = parama.eyJ;
+    aw.aaz();
+    if (bo.isNullOrNil((String)c.Ru().get(2, "")))
+    {
+      AppMethodBeat.o(26456);
       return null;
     }
-    parama = aa.a(((cd)???).svF);
-    Object localObject2 = aa.a(((cd)???).svG);
-    if ((bk.bl(parama)) || (bk.bl((String)localObject2)))
+    parama = aa.a(((cm)???).woP);
+    Object localObject2 = aa.a(((cm)???).woQ);
+    if ((bo.isNullOrNil(parama)) || (bo.isNullOrNil((String)localObject2)))
     {
-      y.e("MicroMsg.YoExtension", "neither from-user nor to-user can be empty");
+      ab.e("MicroMsg.YoExtension", "neither from-user nor to-user can be empty");
+      AppMethodBeat.o(26456);
       return null;
     }
-    Object localObject3 = aa.a(((cd)???).svH);
-    y.i("MicroMsg.YoExtension", "from  " + parama + "content " + (String)localObject3);
-    localObject2 = com.tencent.mm.plugin.wear.model.a.bYL().qRB;
-    synchronized (((a)localObject2).qSP)
+    Object localObject3 = aa.a(((cm)???).woR);
+    ab.i("MicroMsg.YoExtension", "from  " + parama + "content " + (String)localObject3);
+    localObject2 = com.tencent.mm.plugin.wear.model.a.cYy().uGJ;
+    synchronized (((a)localObject2).uHW)
     {
-      ud localud = a.Rl(parama);
-      if ((!((a)localObject2).qSP.containsKey(parama)) && (localud.ceC.ceD != 1))
+      vz localvz = a.agi(parama);
+      if ((!((a)localObject2).uHW.containsKey(parama)) && (localvz.cNp.cNq != 1))
       {
-        y.i("MicroMsg.wear.WearYoLogic", "Can add Yo Message %s", new Object[] { parama });
+        ab.i("MicroMsg.wear.WearYoLogic", "Can add Yo Message %s", new Object[] { parama });
         localObject3 = new a.a((a)localObject2, parama, (String)localObject3);
-        ((a)localObject2).qSP.put(parama, localObject3);
-        com.tencent.mm.plugin.wear.model.a.bYL().qRB.bZb();
+        ((a)localObject2).uHW.put(parama, localObject3);
+        com.tencent.mm.plugin.wear.model.a.cYy().uGJ.cYO();
+        AppMethodBeat.o(26456);
         return null;
       }
-      y.i("MicroMsg.wear.WearYoLogic", "Can not add Yo Message %s", new Object[] { parama });
-      localObject2 = new ud();
-      ((ud)localObject2).ceB.bHz = 2;
-      ((ud)localObject2).ceB.username = parama;
-      com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject2);
+      ab.i("MicroMsg.wear.WearYoLogic", "Can not add Yo Message %s", new Object[] { parama });
+      localObject2 = new vz();
+      ((vz)localObject2).cNo.coO = 2;
+      ((vz)localObject2).cNo.username = parama;
+      com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.g.b
  * JD-Core Version:    0.7.0.1
  */

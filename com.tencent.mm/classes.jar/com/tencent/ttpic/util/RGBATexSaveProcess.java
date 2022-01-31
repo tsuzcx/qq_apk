@@ -3,14 +3,23 @@ package com.tencent.ttpic.util;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.GLSLRender;
 import com.tencent.filter.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.gles.GlUtil;
 
 public class RGBATexSaveProcess
   implements TexSaveProcess
 {
   private byte[] mData;
-  private BaseFilter mFilter = new BaseFilter(GLSLRender.bcE);
-  private h mRenderFrame = new h();
+  private BaseFilter mFilter;
+  private h mRenderFrame;
+  
+  public RGBATexSaveProcess()
+  {
+    AppMethodBeat.i(83942);
+    this.mFilter = new BaseFilter(GLSLRender.btg);
+    this.mRenderFrame = new h();
+    AppMethodBeat.o(83942);
+  }
   
   private void initData(int paramInt1, int paramInt2)
   {
@@ -22,26 +31,23 @@ public class RGBATexSaveProcess
   
   public void clear()
   {
+    AppMethodBeat.i(83945);
     this.mFilter.clearGLSLSelf();
     this.mRenderFrame.clear();
     this.mData = null;
+    AppMethodBeat.o(83945);
   }
   
   public void init()
   {
+    AppMethodBeat.i(83943);
     this.mFilter.ApplyGLSLFilter(true, 0.0F, 0.0F);
-  }
-  
-  public boolean retrieveData(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
-  {
-    init();
-    this.mFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, this.mRenderFrame);
-    GlUtil.saveTextureToRgbaBuffer(this.mRenderFrame.texture[0], paramInt2, paramInt3, paramArrayOfByte, this.mRenderFrame.bcC[0]);
-    return true;
+    AppMethodBeat.o(83943);
   }
   
   public byte[] retrieveData(int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(83944);
     init();
     initData(paramInt2, paramInt3);
     BenchUtil.benchStart("scale");
@@ -49,9 +55,11 @@ public class RGBATexSaveProcess
     this.mFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, this.mRenderFrame);
     BenchUtil.benchEnd("scale");
     BenchUtil.benchStart("saveTextureToRgbaBuffer");
-    GlUtil.saveTextureToRgbaBuffer(this.mRenderFrame.texture[0], paramInt2, paramInt3, this.mData, this.mRenderFrame.bcC[0]);
+    GlUtil.saveTextureToRgbaBuffer(this.mRenderFrame.texture[0], paramInt2, paramInt3, this.mData, this.mRenderFrame.bte[0]);
     BenchUtil.benchEnd("saveTextureToRgbaBuffer");
-    return this.mData;
+    byte[] arrayOfByte = this.mData;
+    AppMethodBeat.o(83944);
+    return arrayOfByte;
   }
 }
 

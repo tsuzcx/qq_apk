@@ -1,31 +1,42 @@
 package com.tencent.wework.api.model;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WWMediaLocation
   extends WWMediaMessage.WWMediaObject
 {
-  public String ekZ;
+  public double BCL;
+  public String fBq;
   public double latitude;
   public double longitude;
-  public double xge;
   
   public final boolean checkArgs()
   {
-    if (!super.checkArgs()) {}
-    while ((this.ekZ == null) || (this.ekZ.length() == 0) || (this.ekZ.length() > 10240)) {
+    AppMethodBeat.i(80503);
+    if (!super.checkArgs())
+    {
+      AppMethodBeat.o(80503);
       return false;
     }
-    return true;
+    if ((this.fBq != null) && (this.fBq.length() != 0) && (this.fBq.length() <= 10240))
+    {
+      AppMethodBeat.o(80503);
+      return true;
+    }
+    AppMethodBeat.o(80503);
+    return false;
   }
   
   public final void toBundle(Bundle paramBundle)
   {
-    paramBundle.putString("_wwlocobject_address", this.ekZ);
+    AppMethodBeat.i(80504);
+    paramBundle.putString("_wwlocobject_address", this.fBq);
     paramBundle.putDouble("_wwlocobject_longitude", this.longitude);
     paramBundle.putDouble("_wwlocobject_latitude", this.latitude);
-    paramBundle.putDouble("_wwlocobject_zoom", this.xge);
+    paramBundle.putDouble("_wwlocobject_zoom", this.BCL);
     super.toBundle(paramBundle);
+    AppMethodBeat.o(80504);
   }
 }
 

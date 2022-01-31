@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.walletlock.gesture.ui;
 
 import android.os.SystemClock;
 import android.widget.Toast;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.plugin.walletlock.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
 import com.tencent.mm.plugin.walletlock.gesture.a.d;
 
 final class GestureGuardLogicUI$24
@@ -15,18 +15,20 @@ final class GestureGuardLogicUI$24
   
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
+    AppMethodBeat.i(51609);
     if (paramInt2 == 0)
     {
-      d.gM(SystemClock.elapsedRealtime());
-      Toast.makeText(this.qPX, this.qPX.getString(a.g.gesture_pwd_toast_modified), 0).show();
-      GestureGuardLogicUI.e(this.qPX);
+      d.ni(SystemClock.elapsedRealtime());
+      Toast.makeText(this.uFf, this.uFf.getString(2131300524), 0).show();
+      GestureGuardLogicUI.e(this.uFf);
     }
     for (;;)
     {
-      GestureGuardLogicUI.b(this.qPX);
-      GestureGuardLogicUI.d(this.qPX);
+      GestureGuardLogicUI.b(this.uFf);
+      GestureGuardLogicUI.d(this.uFf);
+      AppMethodBeat.o(51609);
       return 0;
-      Toast.makeText(this.qPX, this.qPX.getString(a.g.gesture_pwd_err_runtime), 0).show();
+      Toast.makeText(this.uFf, this.uFf.getString(2131300504), 0).show();
     }
   }
 }

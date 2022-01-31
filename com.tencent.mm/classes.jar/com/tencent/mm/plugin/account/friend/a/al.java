@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.m.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.m.b;
+import com.tencent.mm.model.r;
 import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
 import com.tencent.mm.pluginsdk.a;
-import com.tencent.mm.protocal.c.auq;
-import com.tencent.mm.protocal.c.awt;
-import com.tencent.mm.protocal.c.cbb;
-import com.tencent.mm.protocal.c.cbc;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bba;
+import com.tencent.mm.protocal.protobuf.bdj;
+import com.tencent.mm.protocal.protobuf.coh;
+import com.tencent.mm.protocal.protobuf.coi;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,82 +26,85 @@ public final class al
   extends m
   implements k
 {
-  private int bNb;
-  private f dmL;
-  public final List<String> fgJ;
-  public final List<String> fgK;
-  private final String fgL = (String)com.tencent.mm.kernel.g.DP().Dz().get(6, null);
-  private int fgM = 0;
-  private int fgN = 0;
+  private f callback;
+  private int cut;
+  public final List<String> gyr;
+  public final List<String> gys;
+  private final String gyt;
+  private int gyu;
+  private int gyv;
   
   public al(List<String> paramList1, List<String> paramList2)
   {
-    this.fgJ = paramList1;
-    this.fgK = paramList2;
-    this.bNb = 1;
+    AppMethodBeat.i(108487);
+    this.gyt = ((String)com.tencent.mm.kernel.g.RL().Ru().get(6, null));
+    this.gyv = 0;
+    this.gyu = 0;
+    this.gyr = paramList1;
+    this.gys = paramList2;
+    this.cut = 1;
+    AppMethodBeat.o(108487);
   }
   
-  private static List<String> al(List<auq> paramList)
+  private static List<String> at(List<bba> paramList)
   {
+    AppMethodBeat.i(108491);
     ArrayList localArrayList = new ArrayList();
     if ((paramList == null) || (paramList.size() == 0))
     {
-      y.i("MicroMsg.NetSceneUploadMContact", "the req emai list is empty");
+      ab.i("MicroMsg.NetSceneUploadMContact", "the req emai list is empty");
+      AppMethodBeat.o(108491);
       return localArrayList;
     }
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      localArrayList.add(((auq)paramList.next()).v);
+      localArrayList.add(((bba)paramList.next()).v);
     }
+    AppMethodBeat.o(108491);
     return localArrayList;
   }
   
-  private static List<String> am(List<awt> paramList)
+  private static List<String> au(List<bdj> paramList)
   {
+    AppMethodBeat.i(108492);
     ArrayList localArrayList = new ArrayList();
     if ((paramList == null) || (paramList.size() == 0))
     {
-      y.i("MicroMsg.NetSceneUploadMContact", "the req mobile list is empty");
+      ab.i("MicroMsg.NetSceneUploadMContact", "the req mobile list is empty");
+      AppMethodBeat.o(108492);
       return localArrayList;
     }
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      localArrayList.add(com.tencent.mm.a.g.o(a.qa(((awt)paramList.next()).v).getBytes()));
+      localArrayList.add(com.tencent.mm.a.g.w(a.xw(((bdj)paramList.next()).v).getBytes()));
     }
+    AppMethodBeat.o(108492);
     return localArrayList;
   }
   
-  protected final int Ka()
-  {
-    return 10;
-  }
-  
-  public final boolean Kx()
-  {
-    return true;
-  }
-  
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     int m = 0;
-    this.dmL = paramf;
-    if (((this.fgJ == null) || (this.fgJ.size() == 0)) && ((this.fgK == null) || (this.fgK.size() == 0)))
+    AppMethodBeat.i(108488);
+    this.callback = paramf;
+    if (((this.gyr == null) || (this.gyr.size() == 0)) && ((this.gys == null) || (this.gys.size() == 0)))
     {
-      y.i("MicroMsg.NetSceneUploadMContact", "listMobile or listEmile is null or zero");
+      ab.i("MicroMsg.NetSceneUploadMContact", "listMobile or listEmile is null or zero");
+      AppMethodBeat.o(108488);
       return -1;
     }
     paramf = new b.a();
-    paramf.ecH = new cbb();
-    paramf.ecI = new cbc();
+    paramf.fsX = new coh();
+    paramf.fsY = new coi();
     paramf.uri = "/cgi-bin/micromsg-bin/uploadmcontact";
-    paramf.ecG = 133;
-    paramf.ecJ = 0;
-    paramf.ecK = 0;
-    paramf = paramf.Kt();
-    cbb localcbb = (cbb)paramf.ecE.ecN;
-    localcbb.sBm = this.fgL;
-    localcbb.hPY = com.tencent.mm.model.q.Gj();
-    localcbb.syV = this.bNb;
+    paramf.funcId = 133;
+    paramf.reqCmdId = 0;
+    paramf.respCmdId = 0;
+    paramf = paramf.ado();
+    coh localcoh = (coh)paramf.fsV.fta;
+    localcoh.wvG = this.gyt;
+    localcoh.jJA = r.Zn();
+    localcoh.wsW = this.cut;
     int i = 200;
     Object localObject1 = new LinkedList();
     LinkedList localLinkedList = new LinkedList();
@@ -108,128 +114,153 @@ public final class al
       do
       {
         if (i <= 0) {
-          break label428;
+          break label438;
         }
         int j = i;
         Object localObject2;
-        if (this.fgJ != null)
+        if (this.gyr != null)
         {
           j = i;
-          if (this.fgM < this.fgJ.size())
+          if (this.gyu < this.gyr.size())
           {
-            if (this.fgJ.get(this.fgM) != null)
+            if (this.gyr.get(this.gyu) != null)
             {
-              localObject2 = new awt();
-              ((awt)localObject2).v = ((String)this.fgJ.get(this.fgM));
+              localObject2 = new bdj();
+              ((bdj)localObject2).v = ((String)this.gyr.get(this.gyu));
               ((LinkedList)localObject1).add(localObject2);
             }
-            this.fgM += 1;
+            this.gyu += 1;
             j = i - 1;
           }
         }
         k = j;
-        if (this.fgK != null)
+        if (this.gys != null)
         {
           k = j;
-          if (this.fgN < this.fgK.size())
+          if (this.gyv < this.gys.size())
           {
-            if (this.fgK.get(this.fgN) != null)
+            if (this.gys.get(this.gyv) != null)
             {
-              localObject2 = new auq();
-              ((auq)localObject2).v = ((String)this.fgK.get(this.fgN));
+              localObject2 = new bba();
+              ((bba)localObject2).v = ((String)this.gys.get(this.gyv));
               localLinkedList.add(localObject2);
             }
-            this.fgN += 1;
+            this.gyv += 1;
             k = j - 1;
           }
         }
-        if (this.fgK == null) {
+        if (this.gys == null) {
           break;
         }
         i = k;
-      } while (this.fgN < this.fgK.size());
-      if (this.fgJ == null) {
+      } while (this.gyv < this.gys.size());
+      if (this.gyr == null) {
         break;
       }
       i = k;
-    } while (this.fgM < this.fgJ.size());
-    label428:
-    localcbb.tpC = ((LinkedList)localObject1);
-    localcbb.tQf = ((LinkedList)localObject1).size();
-    localcbb.tQh = localLinkedList;
-    localcbb.tQg = localLinkedList.size();
+    } while (this.gyu < this.gyr.size());
+    label438:
+    localcoh.xpz = ((LinkedList)localObject1);
+    localcoh.xXa = ((LinkedList)localObject1).size();
+    localcoh.xXc = localLinkedList;
+    localcoh.xXb = localLinkedList.size();
     localObject1 = new StringBuilder("doscene in:[");
-    if (this.fgK == null)
+    if (this.gys == null)
     {
       i = 0;
       localObject1 = ((StringBuilder)localObject1).append(i).append(",");
-      if (this.fgJ != null) {
-        break label601;
+      if (this.gyr != null) {
+        break label618;
       }
     }
-    label601:
-    for (i = m;; i = this.fgJ.size())
+    label618:
+    for (i = m;; i = this.gyr.size())
     {
-      y.v("MicroMsg.NetSceneUploadMContact", i + "] index:[" + this.fgN + "," + this.fgM + "] req:[" + localcbb.tQh.size() + "," + localcbb.tpC.size() + "]");
-      return a(parame, paramf, this);
-      i = this.fgK.size();
+      ab.v("MicroMsg.NetSceneUploadMContact", i + "] index:[" + this.gyv + "," + this.gyu + "] req:[" + localcoh.xXc.size() + "," + localcoh.xpz.size() + "]");
+      i = dispatch(parame, paramf, this);
+      AppMethodBeat.o(108488);
+      return i;
+      i = this.gys.size();
       break;
     }
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneUploadMContact", "onSceneEnd: errType = " + paramInt2 + " errCode = " + paramInt3 + " errMsg = " + paramString);
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      y.e("MicroMsg.NetSceneUploadMContact", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    do
-    {
-      return;
-      paramq = (cbb)((b)paramq).ecE.ecN;
-      l.aj(al(paramq.tQh));
-      l.aj(am(paramq.tpC));
-      if (((this.fgK == null) || (this.fgN >= this.fgK.size())) && ((this.fgJ == null) || (this.fgM >= this.fgJ.size())))
-      {
-        this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        return;
-      }
-    } while (a(this.edc, this.dmL) >= 0);
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-  }
-  
-  protected final m.b b(com.tencent.mm.network.q paramq)
-  {
-    paramq = (cbb)((b)paramq).ecE.ecN;
-    int i = paramq.tQh.size() + paramq.tpC.size();
-    if ((i == 0) || (i > 200))
-    {
-      y.e("MicroMsg.NetSceneUploadMContact", "security checked failed : exceed max send count");
-      return m.b.eds;
-    }
-    if ((paramq.sBm == null) || (paramq.sBm.length() <= 0))
-    {
-      y.e("MicroMsg.NetSceneUploadMContact", "security checked failed : moblie null");
-      return m.b.eds;
-    }
-    if ((paramq.hPY == null) || (paramq.hPY.length() <= 0))
-    {
-      y.e("MicroMsg.NetSceneUploadMContact", "security checked failed : username null");
-      return m.b.eds;
-    }
-    return m.b.edr;
   }
   
   public final int getType()
   {
     return 133;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(108490);
+    ab.i("MicroMsg.NetSceneUploadMContact", "onSceneEnd: errType = " + paramInt2 + " errCode = " + paramInt3 + " errMsg = " + paramString);
+    updateDispatchId(paramInt1);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      ab.e("MicroMsg.NetSceneUploadMContact", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(108490);
+      return;
+    }
+    paramq = (coh)((b)paramq).fsV.fta;
+    l.ar(at(paramq.xXc));
+    l.ar(au(paramq.xpz));
+    if (((this.gys == null) || (this.gyv >= this.gys.size())) && ((this.gyr == null) || (this.gyu >= this.gyr.size())))
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(108490);
+      return;
+    }
+    if (doScene(dispatcher(), this.callback) < 0) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(108490);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 10;
+  }
+  
+  public final m.b securityVerificationChecked(q paramq)
+  {
+    AppMethodBeat.i(108489);
+    paramq = (coh)((b)paramq).fsV.fta;
+    int i = paramq.xXc.size() + paramq.xpz.size();
+    if ((i == 0) || (i > 200))
+    {
+      ab.e("MicroMsg.NetSceneUploadMContact", "security checked failed : exceed max send count");
+      paramq = m.b.ftv;
+      AppMethodBeat.o(108489);
+      return paramq;
+    }
+    if ((paramq.wvG == null) || (paramq.wvG.length() <= 0))
+    {
+      ab.e("MicroMsg.NetSceneUploadMContact", "security checked failed : moblie null");
+      paramq = m.b.ftv;
+      AppMethodBeat.o(108489);
+      return paramq;
+    }
+    if ((paramq.jJA == null) || (paramq.jJA.length() <= 0))
+    {
+      ab.e("MicroMsg.NetSceneUploadMContact", "security checked failed : username null");
+      paramq = m.b.ftv;
+      AppMethodBeat.o(108489);
+      return paramq;
+    }
+    paramq = m.b.ftu;
+    AppMethodBeat.o(108489);
+    return paramq;
+  }
+  
+  public final boolean uniqueInNetsceneQueue()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.al
  * JD-Core Version:    0.7.0.1
  */

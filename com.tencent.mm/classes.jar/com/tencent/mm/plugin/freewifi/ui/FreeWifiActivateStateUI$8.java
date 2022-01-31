@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FreeWifiActivateStateUI$8
   implements Runnable
@@ -9,13 +10,15 @@ final class FreeWifiActivateStateUI$8
   
   public final void run()
   {
-    y.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now network ssid is not wechat freewifi :%s", new Object[] { this.kqR.ssid });
-    this.kqR.aUN();
+    AppMethodBeat.i(20906);
+    ab.i("MicroMsg.FreeWifi.FreeWifiActivateStateUI", "now network ssid is not wechat freewifi :%s", new Object[] { this.mMD.ssid });
+    this.mMD.bBl();
+    AppMethodBeat.o(20906);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiActivateStateUI.8
  * JD-Core Version:    0.7.0.1
  */

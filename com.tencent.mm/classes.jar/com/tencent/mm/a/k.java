@@ -2,73 +2,294 @@ package com.tencent.mm.a;
 
 public final class k
 {
-  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static char a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, int paramInt1, byte[] paramArrayOfByte3, int paramInt2)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return null;
-    }
-    return c(paramArrayOfByte1, paramArrayOfByte2);
-  }
-  
-  public static byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return null;
-    }
-    return c(paramArrayOfByte1, paramArrayOfByte2);
-  }
-  
-  private static byte[] c(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    byte[] arrayOfByte2 = new byte[256];
-    int j = 0;
-    while (j < 256)
+    paramArrayOfByte1 = new j(paramArrayOfByte1);
+    paramArrayOfByte2 = new j(paramArrayOfByte2);
+    j[] arrayOfj = new j[16];
+    int i = 0;
+    while (i < 16)
     {
-      arrayOfByte2[j] = ((byte)j);
-      j += 1;
+      arrayOfj[i] = new j(new byte[48]);
+      i += 1;
     }
-    byte[] arrayOfByte1;
-    int k;
-    int m;
-    if ((paramArrayOfByte2 == null) || (paramArrayOfByte2.length == 0))
+    j localj1 = new j(new byte[256]);
+    j localj2 = new j(new byte[24]);
+    j localj3 = new j(new byte[64]);
+    j localj4 = new j();
+    j localj5 = new j();
+    j localj6 = new j();
+    j localj7 = new j();
+    j localj8 = new j(new byte[64]);
+    j localj9 = new j(new byte[48]);
+    j localj10 = new j(new byte[32]);
+    j localj11 = new j(new byte[9]);
+    j localj12 = new j(new byte[8]);
+    long l;
+    if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length > 0))
     {
-      arrayOfByte1 = null;
-      paramArrayOfByte2 = new byte[paramArrayOfByte1.length];
-      j = 0;
-      k = 0;
-      m = 0;
+      l = 7L + paramLong & 0xFFFFFFF8;
+      if (l != 0L) {}
     }
-    while (j < paramArrayOfByte1.length)
+    else
     {
-      m = m + 1 & 0xFF;
-      k = (arrayOfByte1[m] & 0xFF) + k & 0xFF;
-      int i = arrayOfByte1[m];
-      arrayOfByte1[m] = arrayOfByte1[k];
-      arrayOfByte1[k] = i;
-      int n = arrayOfByte1[m];
-      int i1 = arrayOfByte1[k];
-      int i2 = paramArrayOfByte1[j];
-      paramArrayOfByte2[j] = ((byte)(arrayOfByte1[((n & 0xFF) + (i1 & 0xFF) & 0xFF)] ^ i2));
-      j += 1;
-      continue;
-      k = 0;
-      m = 0;
-      j = 0;
-      for (;;)
+      return '\000';
+    }
+    a(localj8, localj3, localj4, localj5, localj6, localj7);
+    a(arrayOfj, localj2, paramArrayOfByte3, paramInt1, localj3, localj4, localj5, localj1);
+    paramInt1 = paramArrayOfByte2.bVp;
+    i = paramArrayOfByte1.bVp;
+    if (paramInt2 == 0)
+    {
+      a(paramArrayOfByte1, localj11, arrayOfj, paramInt2, localj8, localj9, localj10, localj6, localj7, localj1);
+      d(localj12, paramArrayOfByte1, 8);
+      paramArrayOfByte1.bVp += 8;
+      paramLong = 0L;
+      while (paramLong < l >> 3)
       {
-        arrayOfByte1 = arrayOfByte2;
-        if (k >= 256) {
-          break;
-        }
-        m = m + ((paramArrayOfByte2[j] & 0xFF) + (arrayOfByte2[k] & 0xFF)) & 0xFF;
-        i = arrayOfByte2[k];
-        arrayOfByte2[k] = arrayOfByte2[m];
-        arrayOfByte2[m] = i;
-        j = (j + 1) % paramArrayOfByte2.length;
-        k += 1;
+        a(localj12, localj12, paramArrayOfByte2);
+        a(paramArrayOfByte1, localj12, arrayOfj, paramInt2, localj8, localj9, localj10, localj6, localj7, localj1);
+        d(localj12, paramArrayOfByte1, 8);
+        paramLong += 1L;
+        paramArrayOfByte1.bVp += 8;
+        paramArrayOfByte2.bVp += 8;
       }
     }
-    return paramArrayOfByte2;
+    d(localj11, paramArrayOfByte2, 8);
+    paramArrayOfByte2.bVp += 8;
+    paramLong = 1L;
+    while (paramLong < l >> 3)
+    {
+      a(localj12, paramArrayOfByte2, arrayOfj, paramInt2, localj8, localj9, localj10, localj6, localj7, localj1);
+      a(paramArrayOfByte1, localj12, localj11);
+      d(localj11, paramArrayOfByte2, 8);
+      paramLong += 1L;
+      paramArrayOfByte1.bVp += 8;
+      paramArrayOfByte2.bVp += 8;
+    }
+    paramArrayOfByte2.bVp = paramInt1;
+    paramArrayOfByte1.bVp = i;
+    return '\001';
+  }
+  
+  private static void a(j paramj, int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      paramj.bVo[(paramj.bVp + i)] = 0;
+      i += 1;
+    }
+  }
+  
+  private static void a(j paramj1, j paramj2, int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      byte[] arrayOfByte = paramj1.bVo;
+      int j = paramj1.bVp + i;
+      arrayOfByte[j] = ((byte)(arrayOfByte[j] ^ paramj2.bVo[(paramj2.bVp + i)]));
+      i += 1;
+    }
+  }
+  
+  private static void a(j paramj1, j paramj2, j paramj3)
+  {
+    int i = 0;
+    while (i < 8)
+    {
+      paramj1.bVo[(paramj1.bVp + i)] = ((byte)(paramj2.bVo[(paramj2.bVp + i)] ^ paramj3.bVo[(paramj3.bVp + i)]));
+      i += 1;
+    }
+  }
+  
+  private static void a(j paramj1, j paramj2, j paramj3, j paramj4)
+  {
+    int i = 0;
+    a(paramj3, paramj1, new byte[] { 32, 1, 2, 3, 4, 5, 4, 5, 6, 7, 8, 9, 8, 9, 10, 11, 12, 13, 12, 13, 14, 15, 16, 17, 16, 17, 18, 19, 20, 21, 20, 21, 22, 23, 24, 25, 24, 25, 26, 27, 28, 29, 28, 29, 30, 31, 32, 1 }, 48, paramj4);
+    a(paramj3, paramj2, 48);
+    byte[] arrayOfByte2 = { 10, 0, 9, 14, 6, 3, 15, 5, 1, 13, 12, 7, 11, 4, 2, 8 };
+    paramj2 = new byte[] { 13, 8, 11, 5, 6, 15, 0, 3, 4, 7, 2, 12, 1, 10, 14, 9 };
+    byte[] arrayOfByte1 = { 11, 8, 12, 7, 1, 14, 2, 13, 6, 15, 0, 9, 10, 4, 5, 3 };
+    byte[] arrayOfByte6 = { 12, 1, 10, 15, 9, 2, 6, 8, 0, 13, 3, 4, 14, 7, 5, 11 };
+    byte[] arrayOfByte7 = { 4, 3, 2, 12, 9, 5, 15, 10, 11, 14, 1, 7, 6, 0, 8, 13 };
+    byte[] arrayOfByte8 = { 13, 0, 11, 7, 4, 9, 1, 10, 14, 3, 5, 12, 2, 15, 8, 6 };
+    byte[] arrayOfByte9 = { 6, 11, 13, 8, 1, 4, 10, 7, 9, 5, 0, 15, 14, 2, 3, 12 };
+    byte[] arrayOfByte3 = { 13, 2, 8, 4, 6, 15, 11, 1, 10, 9, 3, 14, 5, 0, 12, 7 };
+    byte[] arrayOfByte4 = { 1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 0, 14, 9, 2 };
+    byte[] arrayOfByte5 = { 2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11 };
+    int j = paramj3.bVp;
+    int k = paramj1.bVp;
+    while (i < 8)
+    {
+      int m = (byte)((paramj3.bVo[(paramj3.bVp + 0)] << 1) + paramj3.bVo[(paramj3.bVp + 5)]);
+      int n = (byte)((paramj3.bVo[(paramj3.bVp + 1)] << 3) + (paramj3.bVo[(paramj3.bVp + 2)] << 2) + (paramj3.bVo[(paramj3.bVp + 3)] << 1) + paramj3.bVo[(paramj3.bVp + 4)]);
+      b(paramj1, new j(new byte[][][] { { { 14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7 }, { 0, 15, 7, 4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8 }, { 4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0 }, { 15, 12, 8, 2, 4, 9, 1, 7, 5, 11, 3, 14, 10, 0, 6, 13 } }, { { 15, 1, 8, 14, 6, 11, 3, 4, 9, 7, 2, 13, 12, 0, 5, 10 }, { 3, 13, 4, 7, 15, 2, 8, 14, 12, 0, 1, 10, 6, 9, 11, 5 }, { 0, 14, 7, 11, 10, 4, 13, 1, 5, 8, 12, 6, 9, 3, 2, 15 }, { 13, 8, 10, 1, 3, 15, 4, 2, 11, 6, 7, 12, 0, 5, 14, 9 } }, { arrayOfByte2, { 13, 7, 0, 9, 3, 4, 6, 10, 2, 8, 5, 14, 12, 11, 15, 1 }, { 13, 6, 4, 9, 8, 15, 3, 0, 11, 1, 2, 12, 5, 10, 14, 7 }, { 1, 10, 13, 0, 6, 9, 8, 7, 4, 15, 14, 3, 11, 5, 2, 12 } }, { { 7, 13, 14, 3, 0, 6, 9, 10, 1, 2, 8, 5, 11, 12, 4, 15 }, paramj2, { 10, 6, 9, 0, 12, 11, 7, 13, 15, 1, 3, 14, 5, 2, 8, 4 }, { 3, 15, 0, 6, 10, 1, 13, 8, 9, 4, 5, 11, 12, 7, 2, 14 } }, { { 2, 12, 4, 1, 7, 10, 11, 6, 8, 5, 3, 15, 13, 0, 14, 9 }, { 14, 11, 2, 12, 4, 7, 13, 1, 5, 0, 15, 10, 3, 9, 8, 6 }, { 4, 2, 1, 11, 10, 13, 7, 8, 15, 9, 12, 5, 6, 3, 0, 14 }, arrayOfByte1 }, { arrayOfByte6, { 10, 15, 4, 2, 7, 12, 9, 5, 6, 1, 13, 14, 0, 11, 3, 8 }, { 9, 14, 15, 5, 2, 8, 12, 3, 7, 0, 4, 10, 1, 13, 11, 6 }, arrayOfByte7 }, { { 4, 11, 2, 14, 15, 0, 8, 13, 3, 12, 9, 7, 5, 10, 6, 1 }, arrayOfByte8, { 1, 4, 11, 13, 12, 3, 7, 14, 10, 15, 6, 8, 0, 5, 9, 2 }, arrayOfByte9 }, { arrayOfByte3, arrayOfByte4, { 7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 13, 15, 3, 5, 8 }, arrayOfByte5 } }[i][m][n]), 4);
+      i = (byte)(i + 1);
+      paramj3.bVp += 6;
+      paramj1.bVp += 4;
+    }
+    paramj3.bVp = j;
+    paramj1.bVp = k;
+    a(paramj1, paramj1, new byte[] { 16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18, 31, 10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25 }, 32, paramj4);
+  }
+  
+  private static void a(j paramj1, j paramj2, j paramj3, j paramj4, j paramj5, j paramj6)
+  {
+    paramj3.bVp = 0;
+    paramj3.bVo = paramj2.bVo;
+    paramj4.bVp = 28;
+    paramj4.bVo = paramj2.bVo;
+    paramj5.bVp = 0;
+    paramj5.bVo = paramj1.bVo;
+    paramj6.bVp = 32;
+    paramj6.bVo = paramj1.bVo;
+  }
+  
+  private static void a(j paramj1, j paramj2, byte[] paramArrayOfByte, int paramInt, j paramj3)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      paramj3.bVo[(paramj3.bVp + i)] = paramj2.bVo[(paramj2.bVp + paramArrayOfByte[i] - 1)];
+      i += 1;
+    }
+    d(paramj1, paramj3, paramInt);
+  }
+  
+  private static void a(j paramj1, j paramj2, j[] paramArrayOfj, int paramInt, j paramj3, j paramj4, j paramj5, j paramj6, j paramj7, j paramj8)
+  {
+    b(paramj3, paramj2, 64);
+    a(paramj3, paramj3, new byte[] { 58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20, 12, 4, 62, 54, 46, 38, 30, 22, 14, 6, 64, 56, 48, 40, 32, 24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19, 11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7 }, 64, paramj8);
+    if (paramInt == 0)
+    {
+      paramInt = 0;
+      while (paramInt < 16)
+      {
+        d(paramj5, paramj7, 32);
+        a(paramj7, paramArrayOfj[paramInt], paramj4, paramj8);
+        a(paramj7, paramj6, 32);
+        d(paramj6, paramj5, 32);
+        paramInt += 1;
+      }
+    }
+    paramInt = 15;
+    while (paramInt >= 0)
+    {
+      d(paramj5, paramj6, 32);
+      a(paramj6, paramArrayOfj[paramInt], paramj4, paramj8);
+      a(paramj6, paramj7, 32);
+      d(paramj7, paramj5, 32);
+      paramInt -= 1;
+    }
+    a(paramj3, paramj3, new byte[] { 40, 8, 48, 16, 56, 24, 64, 32, 39, 7, 47, 15, 55, 23, 63, 31, 38, 6, 46, 14, 54, 22, 62, 30, 37, 5, 45, 13, 53, 21, 61, 29, 36, 4, 44, 12, 52, 20, 60, 28, 35, 3, 43, 11, 51, 19, 59, 27, 34, 2, 42, 10, 50, 18, 58, 26, 33, 1, 41, 9, 49, 17, 57, 25 }, 64, paramj8);
+    a(paramj1, 8);
+    paramInt = 0;
+    while (paramInt < 64)
+    {
+      paramj2 = paramj1.bVo;
+      int i = paramj1.bVp + (paramInt >> 3);
+      paramj2[i] = ((byte)(paramj2[i] | paramj3.bVo[(paramj3.bVp + paramInt)] << (paramInt & 0x7)));
+      paramInt += 1;
+    }
+  }
+  
+  private static void a(j[] paramArrayOfj, j paramj1, byte[] paramArrayOfByte, int paramInt, j paramj2, j paramj3, j paramj4, j paramj5)
+  {
+    a(paramj1, 24);
+    paramArrayOfByte = new j(paramArrayOfByte);
+    int i = paramInt;
+    if (paramInt > 24) {
+      i = 24;
+    }
+    d(paramj1, paramArrayOfByte, i);
+    paramArrayOfByte = new byte[16];
+    byte[] tmp41_40 = paramArrayOfByte;
+    tmp41_40[0] = 1;
+    byte[] tmp46_41 = tmp41_40;
+    tmp46_41[1] = 1;
+    byte[] tmp51_46 = tmp46_41;
+    tmp51_46[2] = 2;
+    byte[] tmp56_51 = tmp51_46;
+    tmp56_51[3] = 2;
+    byte[] tmp61_56 = tmp56_51;
+    tmp61_56[4] = 2;
+    byte[] tmp66_61 = tmp61_56;
+    tmp66_61[5] = 2;
+    byte[] tmp71_66 = tmp66_61;
+    tmp71_66[6] = 2;
+    byte[] tmp77_71 = tmp71_66;
+    tmp77_71[7] = 2;
+    byte[] tmp83_77 = tmp77_71;
+    tmp83_77[8] = 1;
+    byte[] tmp89_83 = tmp83_77;
+    tmp89_83[9] = 2;
+    byte[] tmp95_89 = tmp89_83;
+    tmp95_89[10] = 2;
+    byte[] tmp101_95 = tmp95_89;
+    tmp101_95[11] = 2;
+    byte[] tmp107_101 = tmp101_95;
+    tmp107_101[12] = 2;
+    byte[] tmp113_107 = tmp107_101;
+    tmp113_107[13] = 2;
+    byte[] tmp119_113 = tmp113_107;
+    tmp119_113[14] = 2;
+    byte[] tmp125_119 = tmp119_113;
+    tmp125_119[15] = 1;
+    tmp125_119;
+    b(paramj2, paramj1, 64);
+    a(paramj2, paramj2, new byte[] { 57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34, 26, 18, 10, 2, 59, 51, 43, 35, 27, 19, 11, 3, 60, 52, 44, 36, 63, 55, 47, 39, 31, 23, 15, 7, 62, 54, 46, 38, 30, 22, 14, 6, 61, 53, 45, 37, 29, 21, 13, 5, 28, 20, 12, 4 }, 56, paramj5);
+    paramInt = 0;
+    while (paramInt < 16)
+    {
+      c(paramj3, paramj5, paramArrayOfByte[paramInt]);
+      c(paramj4, paramj5, paramArrayOfByte[paramInt]);
+      a(paramArrayOfj[paramInt], paramj2, new byte[] { 14, 17, 11, 24, 1, 5, 3, 28, 15, 6, 21, 10, 23, 19, 12, 4, 26, 8, 16, 7, 27, 20, 13, 2, 41, 52, 31, 37, 47, 55, 30, 40, 51, 45, 33, 48, 44, 49, 39, 56, 34, 53, 46, 42, 50, 36, 29, 32 }, 48, paramj5);
+      paramInt += 1;
+    }
+  }
+  
+  private static void b(j paramj1, j paramj2, int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      paramj1.bVo[(paramj1.bVp + i)] = ((byte)(paramj2.bVo[((i >> 3) + paramj2.bVp)] >> (i & 0x7) & 0x1));
+      i += 1;
+    }
+  }
+  
+  private static void c(j paramj1, j paramj2, int paramInt)
+  {
+    int k = 0;
+    d(paramj2, paramj1, paramInt);
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= 28 - paramInt) {
+        break;
+      }
+      paramj1.bVo[(paramj1.bVp + i)] = paramj1.bVo[(paramj1.bVp + i + paramInt)];
+      i += 1;
+    }
+    while (j < paramInt)
+    {
+      paramj1.bVo[(paramj1.bVp + j + 28 - paramInt)] = paramj2.bVo[(paramj2.bVp + j)];
+      j += 1;
+    }
+  }
+  
+  private static void d(j paramj1, j paramj2, int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      paramj1.bVo[(paramj1.bVp + i)] = paramj2.bVo[(paramj2.bVp + i)];
+      i += 1;
+    }
   }
 }
 

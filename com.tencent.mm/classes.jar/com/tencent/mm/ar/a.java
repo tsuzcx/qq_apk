@@ -1,91 +1,61 @@
 package com.tencent.mm.ar;
 
-import android.os.HandlerThread;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class a
-  implements ar
+public final class a
 {
-  private static HandlerThread emI = null;
-  private static ah emJ = null;
+  int bsY;
+  long fCI;
+  int fCJ;
+  int fCK;
+  int fns;
+  String fnu;
+  String fnv;
+  int type;
+  String username;
   
-  public static boolean f(Runnable paramRunnable, long paramLong)
+  public a()
   {
-    boolean bool2 = false;
-    if (paramRunnable == null) {
-      return false;
-    }
-    boolean bool1;
-    if ((emJ == null) || (emI == null))
-    {
-      if (emJ != null)
-      {
-        bool1 = true;
-        if (emI != null) {
-          bool2 = true;
-        }
-        y.w("MicroMsg.GIF.SubCoreGIF", "check decoder thread available fail, handler[%B] thread[%B] stack[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), bk.csb() });
-        if (emJ != null) {
-          emJ.removeCallbacksAndMessages(null);
-        }
-        if (emI != null) {
-          emI.quit();
-        }
-        HandlerThread localHandlerThread = e.aap("GIF-Decoder");
-        emI = localHandlerThread;
-        localHandlerThread.start();
-        emJ = new ah(emI.getLooper());
-      }
-    }
-    else
-    {
-      if (paramLong <= 0L) {
-        break label151;
-      }
-      emJ.postDelayed(paramRunnable, paramLong);
-    }
-    for (;;)
-    {
-      return true;
-      bool1 = false;
-      break;
-      label151:
-      emJ.post(paramRunnable);
-    }
+    AppMethodBeat.i(16467);
+    this.bsY = -1;
+    this.username = "";
+    this.fCI = 0L;
+    this.type = 0;
+    this.fCJ = 0;
+    this.fns = 0;
+    this.fCK = 0;
+    this.fnu = "";
+    this.fnv = "";
+    AppMethodBeat.o(16467);
   }
   
-  public final void bh(boolean paramBoolean)
+  public final String agY()
   {
-    if (emJ != null) {
-      emJ.removeCallbacksAndMessages(null);
+    if (this.fnu == null) {
+      return "";
     }
+    return this.fnu;
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
+  public final String agZ()
   {
-    if (emJ != null) {
-      emJ.removeCallbacksAndMessages(null);
+    if (this.fnv == null) {
+      return "";
     }
+    return this.fnv;
   }
   
-  public final HashMap<Integer, h.d> xe()
+  public final String getUsername()
   {
-    return null;
+    if (this.username == null) {
+      return "";
+    }
+    return this.username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ar.a
  * JD-Core Version:    0.7.0.1
  */

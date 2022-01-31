@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
-import com.tencent.mm.ah.m;
+import com.tencent.mm.ai.m;
 
 public abstract interface a$a
 {
-  public abstract void i(m paramm);
+  public abstract void h(m paramm);
 }
 
 

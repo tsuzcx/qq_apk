@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/evs" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="13.0sp" android:textColor="#ff888888" android:ellipsize="end" android:id="@id/evt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginRight="14.0dip" android:text="由**小程序提供" android:layout_toRightOf="@id/evs" />
-    <TextView android:textSize="13.0sp" android:textColor="#ff576b95" android:id="@id/evu" android:paddingLeft="13.0dip" android:paddingRight="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="调试" android:layout_toLeftOf="@id/evv" />
-    <TextView android:textSize="13.0sp" android:textColor="#ff576b95" android:id="@id/evv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fuc" android:layout_alignParentRight="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="328.0dip" android:layout_height="wrap_content" android:layout_marginRight="13.0dip">
+        <ImageView android:id="@id/f3c" android:layout_width="12.0dip" android:layout_height="7.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/a5k" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/f3d" android:background="@drawable/a5m" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/f3e" android:background="@drawable/a5q" android:layout_width="88.0dip" android:layout_height="34.0dip" android:text="@string/f2w" android:layout_alignParentRight="true" />
+                <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f2z" android:layout_alignBaseline="@id/f3e" />
+                <TextView android:textSize="12.0sp" android:textColor="#ffcccccc" android:id="@id/oq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/f2y" android:layout_below="@id/cz" />
+            </RelativeLayout>
+            <View android:background="#1f000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <com.tencent.mm.ui.base.FlowLayout android:id="@id/f3f" android:paddingTop="15.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="10.0dip" flowlayout:verticalSpacing="10.0dip" />
+        </LinearLayout>
+        <View android:id="@id/f3g" android:layout_width="fill_parent" android:layout_height="5.0dip" android:src="@drawable/a5l" android:layout_below="@id/f3d" />
+        <ImageView android:id="@id/f3h" android:layout_width="12.0dip" android:layout_height="7.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/a5l" android:layout_alignBottom="@id/f3g" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</LinearLayout>

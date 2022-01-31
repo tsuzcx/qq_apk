@@ -5,7 +5,7 @@ import android.database.CharArrayBuffer;
 public abstract class AbstractWindowedCursor
   extends AbstractCursor
 {
-  public CursorWindow mWindow;
+  protected CursorWindow mWindow;
   
   protected void checkPosition()
   {
@@ -15,7 +15,7 @@ public abstract class AbstractWindowedCursor
     }
   }
   
-  public void clearOrCreateWindow(String paramString)
+  protected void clearOrCreateWindow(String paramString)
   {
     if (this.mWindow == null)
     {
@@ -25,7 +25,7 @@ public abstract class AbstractWindowedCursor
     this.mWindow.clear();
   }
   
-  public void closeWindow()
+  protected void closeWindow()
   {
     if (this.mWindow != null)
     {

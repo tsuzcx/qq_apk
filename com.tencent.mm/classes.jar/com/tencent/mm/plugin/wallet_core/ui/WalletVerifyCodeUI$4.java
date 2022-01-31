@@ -1,14 +1,26 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletVerifyCodeUI$4
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   WalletVerifyCodeUI$4(WalletVerifyCodeUI paramWalletVerifyCodeUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(47692);
+    this.uul.hideVKB();
+    if (WalletVerifyCodeUI.a(this.uul, WalletVerifyCodeUI.c(this.uul)))
+    {
+      AppMethodBeat.o(47692);
+      return;
+    }
+    this.uul.cWc();
+    AppMethodBeat.o(47692);
+  }
 }
 
 

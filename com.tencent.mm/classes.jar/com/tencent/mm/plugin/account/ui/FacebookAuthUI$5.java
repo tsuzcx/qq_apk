@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.friend.a.y;
+import android.content.Intent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FacebookAuthUI$5
-  implements DialogInterface.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   FacebookAuthUI$5(FacebookAuthUI paramFacebookAuthUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramDialogInterface = this.flI.getString(q.j.app_tip);
-    String str = this.flI.getString(q.j.facebook_auth_unbinding);
-    FacebookAuthUI.a(this.flI, ProgressDialog.show(this.flI, paramDialogInterface, str, true));
-    FacebookAuthUI.d(this.flI).setOnCancelListener(FacebookAuthUI.c(this.flI));
-    paramDialogInterface = new y(y.fgr);
-    g.Dk().a(paramDialogInterface, 0);
+    AppMethodBeat.i(124778);
+    paramMenuItem = this.gDa.getIntent();
+    paramMenuItem.putExtra("bind_facebook_succ", FacebookAuthUI.b(this.gDa));
+    this.gDa.setResult(-1, paramMenuItem);
+    this.gDa.finish();
+    AppMethodBeat.o(124778);
+    return true;
   }
 }
 

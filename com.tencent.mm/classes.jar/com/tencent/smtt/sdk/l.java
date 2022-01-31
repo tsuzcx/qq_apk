@@ -1,6 +1,7 @@
 package com.tencent.smtt.sdk;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class l
   implements TbsListener
@@ -13,7 +14,9 @@ final class l
   
   public final void onInstallFinish(int paramInt)
   {
+    AppMethodBeat.i(63989);
     QbSdk.preInit(this.a, this.b);
+    AppMethodBeat.o(63989);
   }
 }
 

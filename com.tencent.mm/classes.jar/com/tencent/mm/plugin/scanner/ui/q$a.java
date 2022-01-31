@@ -3,12 +3,11 @@ package com.tencent.mm.plugin.scanner.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.plugin.scanner.b;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.ui.tools.e;
-import com.tencent.mm.pluginsdk.ui.tools.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.c;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.ui.tools.d;
+import com.tencent.mm.pluginsdk.ui.tools.t;
 
 final class q$a
   implements Runnable
@@ -19,23 +18,27 @@ final class q$a
   
   public final void run()
   {
-    if ((this.nMN.nLB == null) || (q.e(this.nMN))) {
+    AppMethodBeat.i(81241);
+    if ((this.qAv.qzg == null) || (q.g(this.qAv)))
+    {
+      AppMethodBeat.o(81241);
       return;
     }
-    r.a(new e());
+    t.a(new d());
     Intent localIntent = new Intent();
     Bundle localBundle = new Bundle();
     localBundle.putString("jsapi_args_appid", "wx751a1acca5688ba3");
     localIntent.putExtra("jsapiargs", localBundle);
     localIntent.putExtra("rawUrl", this.url);
     localIntent.putExtra("show_bottom", false);
-    localIntent.putExtra("title", R.l.scan_entry_street);
-    localIntent.putExtra("webview_bg_color_rsID", R.e.black);
+    localIntent.putExtra("title", 2131302898);
+    localIntent.putExtra("webview_bg_color_rsID", 2131689763);
     localIntent.putExtra("geta8key_scene", 13);
     localIntent.setFlags(65536);
-    b.eUR.j(localIntent, this.nMN.nLB.getContext());
-    this.nMN.nLB.getContext().finish();
-    this.nMN.nLB.getContext().overridePendingTransition(0, 0);
+    c.gmO.i(localIntent, this.qAv.qzg.getContext());
+    this.qAv.qzg.getContext().finish();
+    this.qAv.qzg.getContext().overridePendingTransition(0, 0);
+    AppMethodBeat.o(81241);
   }
 }
 

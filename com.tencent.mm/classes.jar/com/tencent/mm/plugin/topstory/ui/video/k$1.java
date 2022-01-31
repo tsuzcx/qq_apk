@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class k$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class k$1
   
   public final void run()
   {
-    this.pFF.pFC.akl();
+    AppMethodBeat.i(1732);
+    this.tje.tjb.aEX();
+    AppMethodBeat.o(1732);
   }
 }
 

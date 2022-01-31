@@ -7,27 +7,27 @@ import android.graphics.Rect;
 import android.graphics.Region;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.support.v4.a.a.a;
-import android.support.v4.a.a.e;
+import android.support.v4.graphics.drawable.a;
+import android.support.v4.graphics.drawable.e;
 
 abstract class h
   extends Drawable
   implements e
 {
-  Drawable mN;
+  Drawable nK;
   
   public void applyTheme(Resources.Theme paramTheme)
   {
-    if (this.mN != null) {
-      a.a(this.mN, paramTheme);
+    if (this.nK != null) {
+      a.a(this.nK, paramTheme);
     }
   }
   
   public void clearColorFilter()
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      this.mN.clearColorFilter();
+      this.nK.clearColorFilter();
       return;
     }
     super.clearColorFilter();
@@ -37,9 +37,9 @@ abstract class h
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      Drawable localDrawable = this.mN;
+      Drawable localDrawable = this.nK;
       localObject1 = localObject2;
       if (Build.VERSION.SDK_INT >= 21) {
         localObject1 = localDrawable.getColorFilter();
@@ -50,64 +50,64 @@ abstract class h
   
   public Drawable getCurrent()
   {
-    if (this.mN != null) {
-      return this.mN.getCurrent();
+    if (this.nK != null) {
+      return this.nK.getCurrent();
     }
     return super.getCurrent();
   }
   
   public int getMinimumHeight()
   {
-    if (this.mN != null) {
-      return this.mN.getMinimumHeight();
+    if (this.nK != null) {
+      return this.nK.getMinimumHeight();
     }
     return super.getMinimumHeight();
   }
   
   public int getMinimumWidth()
   {
-    if (this.mN != null) {
-      return this.mN.getMinimumWidth();
+    if (this.nK != null) {
+      return this.nK.getMinimumWidth();
     }
     return super.getMinimumWidth();
   }
   
   public boolean getPadding(Rect paramRect)
   {
-    if (this.mN != null) {
-      return this.mN.getPadding(paramRect);
+    if (this.nK != null) {
+      return this.nK.getPadding(paramRect);
     }
     return super.getPadding(paramRect);
   }
   
   public int[] getState()
   {
-    if (this.mN != null) {
-      return this.mN.getState();
+    if (this.nK != null) {
+      return this.nK.getState();
     }
     return super.getState();
   }
   
   public Region getTransparentRegion()
   {
-    if (this.mN != null) {
-      return this.mN.getTransparentRegion();
+    if (this.nK != null) {
+      return this.nK.getTransparentRegion();
     }
     return super.getTransparentRegion();
   }
   
   public void jumpToCurrentState()
   {
-    if (this.mN != null) {
-      this.mN.jumpToCurrentState();
+    if (this.nK != null) {
+      this.nK.jumpToCurrentState();
     }
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      this.mN.setBounds(paramRect);
+      this.nK.setBounds(paramRect);
       return;
     }
     super.onBoundsChange(paramRect);
@@ -115,17 +115,17 @@ abstract class h
   
   protected boolean onLevelChange(int paramInt)
   {
-    if (this.mN != null) {
-      return this.mN.setLevel(paramInt);
+    if (this.nK != null) {
+      return this.nK.setLevel(paramInt);
     }
     return super.onLevelChange(paramInt);
   }
   
   public void setChangingConfigurations(int paramInt)
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      this.mN.setChangingConfigurations(paramInt);
+      this.nK.setChangingConfigurations(paramInt);
       return;
     }
     super.setChangingConfigurations(paramInt);
@@ -133,9 +133,9 @@ abstract class h
   
   public void setColorFilter(int paramInt, PorterDuff.Mode paramMode)
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      this.mN.setColorFilter(paramInt, paramMode);
+      this.nK.setColorFilter(paramInt, paramMode);
       return;
     }
     super.setColorFilter(paramInt, paramMode);
@@ -143,29 +143,29 @@ abstract class h
   
   public void setFilterBitmap(boolean paramBoolean)
   {
-    if (this.mN != null) {
-      this.mN.setFilterBitmap(paramBoolean);
+    if (this.nK != null) {
+      this.nK.setFilterBitmap(paramBoolean);
     }
   }
   
   public void setHotspot(float paramFloat1, float paramFloat2)
   {
-    if (this.mN != null) {
-      a.a(this.mN, paramFloat1, paramFloat2);
+    if (this.nK != null) {
+      a.a(this.nK, paramFloat1, paramFloat2);
     }
   }
   
   public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.mN != null) {
-      a.a(this.mN, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.nK != null) {
+      a.a(this.nK, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
   public boolean setState(int[] paramArrayOfInt)
   {
-    if (this.mN != null) {
-      return this.mN.setState(paramArrayOfInt);
+    if (this.nK != null) {
+      return this.nK.setState(paramArrayOfInt);
     }
     return super.setState(paramArrayOfInt);
   }

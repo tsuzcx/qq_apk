@@ -2,8 +2,8 @@ package com.tencent.mm.sdk;
 
 public final class a
 {
-  public static String udJ = "wechatmm";
-  public static String udK = "matrixmrs";
+  public static String ylY = "wechatmm";
+  public static String ylZ = "matrixmrs";
 }
 
 

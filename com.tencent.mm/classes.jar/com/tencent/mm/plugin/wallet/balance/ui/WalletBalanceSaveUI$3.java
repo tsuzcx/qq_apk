@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.ui.a;
 
 final class WalletBalanceSaveUI$3
@@ -8,14 +9,17 @@ final class WalletBalanceSaveUI$3
 {
   WalletBalanceSaveUI$3(WalletBalanceSaveUI paramWalletBalanceSaveUI) {}
   
-  public final void gK(boolean paramBoolean)
+  public final void onVisibleStateChange(boolean paramBoolean)
   {
+    AppMethodBeat.i(45471);
     if (paramBoolean)
     {
-      WalletBalanceSaveUI.b(this.qhx);
+      WalletBalanceSaveUI.b(this.tOS);
+      AppMethodBeat.o(45471);
       return;
     }
-    WalletBalanceSaveUI.c(this.qhx).scrollTo(0, 0);
+    WalletBalanceSaveUI.c(this.tOS).scrollTo(0, 0);
+    AppMethodBeat.o(45471);
   }
 }
 

@@ -1,30 +1,14 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.mm.plugin.websearch.api.a;
-import com.tencent.mm.plugin.websearch.api.s;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 public final class g$a
   implements Comparable
 {
-  public a qZK;
-  private ThreadPoolExecutor qZX = new ThreadPoolExecutor(0, 10, 120L, TimeUnit.SECONDS, new ArrayBlockingQueue(32));
-  public g.a.a qZY;
+  public a uPs;
+  public g.a.a uPt;
   
   private g$a(g paramg) {}
-  
-  public final void b(s params)
-  {
-    if (this.qZY != null) {
-      this.qZY.hMo = true;
-    }
-    this.qZY = new g.a.a(this, (byte)0);
-    this.qZY.dZR = params;
-    g.a(this.qZU, params);
-    this.qZX.execute(this.qZY);
-  }
   
   public final int compareTo(Object paramObject)
   {

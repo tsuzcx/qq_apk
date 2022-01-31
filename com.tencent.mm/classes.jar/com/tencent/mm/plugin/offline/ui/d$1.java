@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import com.tencent.mm.h.a.rp;
-import com.tencent.mm.h.a.rp.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.tg;
+import com.tencent.mm.g.a.tg.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.offline.i;
 import com.tencent.mm.plugin.offline.k;
@@ -9,30 +10,31 @@ import com.tencent.mm.plugin.offline.k;
 final class d$1
   implements Runnable
 {
-  d$1(d paramd, rp paramrp, boolean paramBoolean) {}
+  d$1(d paramd, tg paramtg, boolean paramBoolean) {}
   
   public final void run()
   {
-    if (g.DK())
+    AppMethodBeat.i(43500);
+    if (g.RG())
     {
-      if (this.mMi.cbe.cbg)
+      if (this.pmy.cJH.cJJ)
       {
-        k.bpX();
-        i locali = k.bqa();
-        int i = this.mMi.cbe.cbh;
-        locali.dx(i, i);
+        k.bYF();
+        i locali = k.bYI();
+        int i = this.pmy.cJH.cJK;
+        locali.eX(i, i);
+        AppMethodBeat.o(43500);
+        return;
       }
+      k.bYF();
+      k.bYI().jV(this.pmz);
     }
-    else {
-      return;
-    }
-    k.bpX();
-    k.bqa().hZ(this.mMj);
+    AppMethodBeat.o(43500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.d.1
  * JD-Core Version:    0.7.0.1
  */

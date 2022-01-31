@@ -3,114 +3,118 @@ package com.tencent.mm.plugin.sns.ui.previewimageview;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DynamicGridView$2
   implements AbsListView.OnScrollListener
 {
-  private int doE;
-  private int pqM = -1;
-  private int pqN = -1;
-  private int pqO;
-  private int pqP;
+  private int ega;
+  private int slE = -1;
+  private int slF = -1;
+  private int slG;
+  private int slH;
   
   DynamicGridView$2(DynamicGridView paramDynamicGridView) {}
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.pqO = paramInt1;
-    this.pqP = paramInt2;
+    AppMethodBeat.i(40344);
+    this.slG = paramInt1;
+    this.slH = paramInt2;
     int i;
-    label44:
-    label207:
+    label49:
+    label212:
     View localView;
-    if (this.pqM == -1)
+    if (this.slE == -1)
     {
-      i = this.pqO;
-      this.pqM = i;
-      if (this.pqN != -1) {
-        break label303;
+      i = this.slG;
+      this.slE = i;
+      if (this.slF != -1) {
+        break label305;
       }
-      i = this.pqP;
-      this.pqN = i;
-      if ((this.pqO != this.pqM) && (DynamicGridView.k(this.pqL)) && (DynamicGridView.h(this.pqL) != -1L))
+      i = this.slH;
+      this.slF = i;
+      if ((this.slG != this.slE) && (DynamicGridView.k(this.slD)) && (DynamicGridView.h(this.slD) != -1L))
       {
-        DynamicGridView.a(this.pqL, DynamicGridView.h(this.pqL));
-        DynamicGridView.p(this.pqL);
+        DynamicGridView.a(this.slD, DynamicGridView.h(this.slD));
+        DynamicGridView.p(this.slD);
       }
-      if ((this.pqO + this.pqP != this.pqM + this.pqN) && (DynamicGridView.k(this.pqL)) && (DynamicGridView.h(this.pqL) != -1L))
+      if ((this.slG + this.slH != this.slE + this.slF) && (DynamicGridView.k(this.slD)) && (DynamicGridView.h(this.slD) != -1L))
       {
-        DynamicGridView.a(this.pqL, DynamicGridView.h(this.pqL));
-        DynamicGridView.p(this.pqL);
+        DynamicGridView.a(this.slD, DynamicGridView.h(this.slD));
+        DynamicGridView.p(this.slD);
       }
-      this.pqM = this.pqO;
-      this.pqN = this.pqP;
-      if ((!DynamicGridView.bKz()) || (!DynamicGridView.i(this.pqL))) {
+      this.slE = this.slG;
+      this.slF = this.slH;
+      if ((!DynamicGridView.cxn()) || (!DynamicGridView.i(this.slD))) {
         break label369;
       }
       i = 0;
       if (i >= paramInt2) {
         break label369;
       }
-      localView = this.pqL.getChildAt(i);
+      localView = this.slD.getChildAt(i);
       if (localView != null)
       {
-        if ((DynamicGridView.h(this.pqL) == -1L) || (Boolean.TRUE == localView.getTag(i.f.dgv_wobble_tag))) {
-          break label324;
+        if ((DynamicGridView.h(this.slD) == -1L) || (Boolean.TRUE == localView.getTag(2131820591))) {
+          break label326;
         }
         if (i % 2 != 0) {
-          break label312;
+          break label314;
         }
-        DynamicGridView.c(this.pqL, localView);
-        label273:
-        localView.setTag(i.f.dgv_wobble_tag, Boolean.valueOf(true));
+        DynamicGridView.c(this.slD, localView);
+        label277:
+        localView.setTag(2131820591, Boolean.TRUE);
       }
     }
     for (;;)
     {
       i += 1;
-      break label207;
-      i = this.pqM;
+      break label212;
+      i = this.slE;
       break;
-      label303:
-      i = this.pqN;
-      break label44;
-      label312:
-      DynamicGridView.d(this.pqL, localView);
-      break label273;
-      label324:
-      if ((DynamicGridView.h(this.pqL) == -1L) && (localView.getRotation() != 0.0F))
+      label305:
+      i = this.slF;
+      break label49;
+      label314:
+      DynamicGridView.d(this.slD, localView);
+      break label277;
+      label326:
+      if ((DynamicGridView.h(this.slD) == -1L) && (localView.getRotation() != 0.0F))
       {
         localView.setRotation(0.0F);
-        localView.setTag(i.f.dgv_wobble_tag, Boolean.valueOf(false));
+        localView.setTag(2131820591, Boolean.FALSE);
       }
     }
     label369:
-    if (DynamicGridView.j(this.pqL) != null) {
-      DynamicGridView.j(this.pqL).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (DynamicGridView.j(this.slD) != null) {
+      DynamicGridView.j(this.slD).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
+    AppMethodBeat.o(40344);
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.doE = paramInt;
-    DynamicGridView.c(this.pqL, paramInt);
-    if ((this.pqP > 0) && (this.doE == 0))
+    AppMethodBeat.i(40345);
+    this.ega = paramInt;
+    DynamicGridView.c(this.slD, paramInt);
+    if ((this.slH > 0) && (this.ega == 0))
     {
-      if ((!DynamicGridView.k(this.pqL)) || (!DynamicGridView.l(this.pqL))) {
-        break label80;
+      if ((!DynamicGridView.k(this.slD)) || (!DynamicGridView.l(this.slD))) {
+        break label90;
       }
-      DynamicGridView.m(this.pqL);
+      DynamicGridView.m(this.slD);
     }
     for (;;)
     {
-      if (DynamicGridView.j(this.pqL) != null) {
-        DynamicGridView.j(this.pqL).onScrollStateChanged(paramAbsListView, paramInt);
+      if (DynamicGridView.j(this.slD) != null) {
+        DynamicGridView.j(this.slD).onScrollStateChanged(paramAbsListView, paramInt);
       }
+      AppMethodBeat.o(40345);
       return;
-      label80:
-      if (DynamicGridView.n(this.pqL)) {
-        DynamicGridView.o(this.pqL);
+      label90:
+      if (DynamicGridView.n(this.slD)) {
+        DynamicGridView.o(this.slD);
       }
     }
   }

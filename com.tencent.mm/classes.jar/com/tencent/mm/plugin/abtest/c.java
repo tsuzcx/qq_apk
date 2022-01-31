@@ -1,33 +1,38 @@
 package com.tencent.mm.plugin.abtest;
 
-import com.tencent.mm.model.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.q;
 
 public final class c
-  extends p
+  extends q
 {
-  private static c eZY;
+  private static c grR;
   
   private c()
   {
     super(com.tencent.mm.model.c.c.class);
   }
   
-  public static c VT()
+  public static c app()
   {
     try
     {
-      if (eZY == null) {
-        eZY = new c();
+      AppMethodBeat.i(118192);
+      if (grR == null) {
+        grR = new c();
       }
-      c localc = eZY;
+      c localc = grR;
+      AppMethodBeat.o(118192);
       return localc;
     }
     finally {}
   }
   
-  public final void gj(String paramString)
+  public final void mE(String paramString)
   {
-    super.gj(paramString);
+    AppMethodBeat.i(118193);
+    super.mE(paramString);
+    AppMethodBeat.o(118193);
   }
 }
 

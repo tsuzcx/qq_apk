@@ -1,5 +1,6 @@
 package org.xwalk.core;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Field;
 import java.util.concurrent.RejectedExecutionException;
 
@@ -14,40 +15,55 @@ public class ReflectField
   
   public ReflectField(Class<?> paramClass, String paramString)
   {
+    AppMethodBeat.i(4195);
     init(null, paramClass, paramString);
+    AppMethodBeat.o(4195);
   }
   
   public ReflectField(Object paramObject, String paramString)
   {
+    AppMethodBeat.i(4194);
     init(paramObject, null, paramString);
+    AppMethodBeat.o(4194);
   }
   
   public Object get()
   {
-    if (this.mField == null) {
-      throw new UnsupportedOperationException(toString());
+    AppMethodBeat.i(4197);
+    Object localObject;
+    if (this.mField == null)
+    {
+      localObject = new UnsupportedOperationException(toString());
+      AppMethodBeat.o(4197);
+      throw ((Throwable)localObject);
     }
     try
     {
-      Object localObject = this.mField.get(this.mInstance);
+      localObject = this.mField.get(this.mInstance);
+      AppMethodBeat.o(4197);
       return localObject;
     }
     catch (NullPointerException localNullPointerException)
     {
-      throw new RejectedExecutionException(localNullPointerException);
+      RejectedExecutionException localRejectedExecutionException = new RejectedExecutionException(localNullPointerException);
+      AppMethodBeat.o(4197);
+      throw localRejectedExecutionException;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
+      AppMethodBeat.o(4197);
       throw localIllegalArgumentException;
     }
     catch (ExceptionInInitializerError localExceptionInInitializerError)
     {
-      throw new RuntimeException(localExceptionInInitializerError);
+      RuntimeException localRuntimeException = new RuntimeException(localExceptionInInitializerError);
+      AppMethodBeat.o(4197);
+      throw localRuntimeException;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      label34:
-      break label34;
+      label54:
+      break label54;
     }
   }
   
@@ -63,6 +79,7 @@ public class ReflectField
   
   public boolean init(Object paramObject, Class<?> paramClass, String paramString)
   {
+    AppMethodBeat.i(4196);
     this.mInstance = paramObject;
     if (paramClass != null) {}
     for (;;)
@@ -73,6 +90,7 @@ public class ReflectField
       if (this.mClass != null) {
         break;
       }
+      AppMethodBeat.o(4196);
       return false;
       if (paramObject != null) {
         paramClass = paramObject.getClass();
@@ -83,7 +101,9 @@ public class ReflectField
     try
     {
       this.mField = this.mClass.getField(this.mName);
-      if (this.mField != null) {
+      if (this.mField != null)
+      {
+        AppMethodBeat.o(4196);
         return true;
       }
     }
@@ -101,6 +121,7 @@ public class ReflectField
           paramObject = paramObject.getSuperclass();
         }
       }
+      AppMethodBeat.o(4196);
     }
     return false;
   }
@@ -112,26 +133,28 @@ public class ReflectField
   
   public String toString()
   {
-    Object localObject;
-    if (this.mField != null) {
-      localObject = this.mField.toString();
-    }
-    String str;
-    do
+    AppMethodBeat.i(4198);
+    if (this.mField != null)
     {
-      return localObject;
-      str = "";
-      if (this.mClass != null) {
-        str = "" + this.mClass.toString() + ".";
-      }
-      localObject = str;
-    } while (this.mName == null);
-    return str + this.mName;
+      str1 = this.mField.toString();
+      AppMethodBeat.o(4198);
+      return str1;
+    }
+    String str1 = "";
+    if (this.mClass != null) {
+      str1 = "" + this.mClass.toString() + ".";
+    }
+    String str2 = str1;
+    if (this.mName != null) {
+      str2 = str1 + this.mName;
+    }
+    AppMethodBeat.o(4198);
+    return str2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.ReflectField
  * JD-Core Version:    0.7.0.1
  */

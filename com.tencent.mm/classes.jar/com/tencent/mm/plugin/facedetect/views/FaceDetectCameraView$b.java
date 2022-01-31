@@ -6,19 +6,19 @@ public abstract interface FaceDetectCameraView$b
 {
   public abstract void a(c paramc);
   
-  public abstract void aPr();
+  public abstract void bvj();
   
-  public abstract void aPs();
+  public abstract void bvx();
   
-  public abstract Point aPt();
-  
-  public abstract void em(long paramLong);
+  public abstract Point bvy();
   
   public abstract int getPreviewHeight();
   
   public abstract int getPreviewWidth();
   
   public abstract int getRotation();
+  
+  public abstract void jJ(long paramLong);
   
   public abstract void stopPreview();
 }

@@ -3,10 +3,8 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class SettingsAliasResultUI$2
   implements View.OnClickListener
@@ -15,9 +13,11 @@ final class SettingsAliasResultUI$2
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.nTV.mController.uMN, RegByMobileSetPwdUI.class);
-    paramView.putExtra("kintent_hint", this.nTV.getString(a.i.regbymobile_reg_setpwd_tip_after_set_alias));
-    this.nTV.startActivityForResult(paramView, 0);
+    AppMethodBeat.i(127178);
+    paramView = new Intent(this.qHV.getContext(), RegByMobileSetPwdUI.class);
+    paramView.putExtra("kintent_hint", this.qHV.getString(2131302455));
+    this.qHV.startActivityForResult(paramView, 0);
+    AppMethodBeat.o(127178);
   }
 }
 

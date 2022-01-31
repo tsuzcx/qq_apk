@@ -7,20 +7,20 @@ import com.tencent.mm.ui.base.NoMeasuredTextView;
 
 public final class e$g
 {
-  public ImageView doU;
-  public TextView hZk;
-  public NoMeasuredTextView vQy;
-  public ImageView vQz;
-  public NoMeasuredTextView veJ;
-  public NoMeasuredTextView veK;
-  public NoMeasuredTextView veL;
-  public ImageView veM;
-  public ImageView veN;
-  public View veO;
+  public NoMeasuredTextView Aii;
+  public ImageView Aij;
+  public ImageView egq;
+  public TextView jSi;
+  public NoMeasuredTextView zti;
+  public NoMeasuredTextView ztj;
+  public NoMeasuredTextView ztk;
+  public ImageView ztl;
+  public ImageView ztm;
+  public View ztn;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.e.g
  * JD-Core Version:    0.7.0.1
  */

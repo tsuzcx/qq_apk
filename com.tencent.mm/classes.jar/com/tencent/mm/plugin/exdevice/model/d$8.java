@@ -1,22 +1,25 @@
 package com.tencent.mm.plugin.exdevice.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.service.f;
 import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import java.util.HashMap;
 
 final class d$8
-  implements am.a
+  implements ap.a
 {
   d$8(d paramd, long paramLong, String paramString, int paramInt) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    int i = u.aMm().dS(this.jtM);
-    y.i("MicroMsg.exdevice.ExdeviceConnectManager", "now it is time to check the sync connect state, brand name = %s, deviceid = %d, bluetooth version = %d, connect state = %d", new Object[] { this.jtL, Long.valueOf(this.jtM), Integer.valueOf(this.jtN), Integer.valueOf(i) });
-    d.dH(this.jtM);
-    d.c(this.jtE).remove(Long.valueOf(this.jtM));
+    AppMethodBeat.i(19106);
+    int i = u.bqz().jk(this.lDk);
+    ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "now it is time to check the sync connect state, brand name = %s, deviceid = %d, bluetooth version = %d, connect state = %d", new Object[] { this.lDj, Long.valueOf(this.lDk), Integer.valueOf(this.lDm), Integer.valueOf(i) });
+    d.iZ(this.lDk);
+    d.b(this.lDd).remove(Long.valueOf(this.lDk));
+    AppMethodBeat.o(19106);
     return false;
   }
 }

@@ -9,39 +9,45 @@ import android.view.TextureView;
 import com.google.android.exoplayer2.a.b;
 import com.google.android.exoplayer2.b.d;
 import com.google.android.exoplayer2.f.j.a;
-import com.google.android.exoplayer2.g.g;
 import com.google.android.exoplayer2.metadata.e.a;
+import com.google.android.exoplayer2.source.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 @TargetApi(16)
 public final class v
   implements f
 {
-  private final f atF;
-  protected final r[] atf;
-  private final v.a auX = new v.a(this, (byte)0);
-  final CopyOnWriteArraySet<Object> auY = new CopyOnWriteArraySet();
-  final CopyOnWriteArraySet<j.a> auZ = new CopyOnWriteArraySet();
-  public final CopyOnWriteArraySet<e.a> ava = new CopyOnWriteArraySet();
-  private final int avb;
-  private final int avc;
-  Format avd;
-  Format ave;
-  Surface avf;
-  private boolean avh;
-  private int avi;
-  private SurfaceHolder avj;
-  private TextureView avk;
-  public com.google.android.exoplayer2.a.e avl;
-  com.google.android.exoplayer2.video.e avm;
-  d avn;
-  d avo;
-  int avp;
-  private b avq;
-  private float avr;
+  private final f avX;
+  protected final r[] avx;
+  private TextureView axA;
+  public com.google.android.exoplayer2.a.e axB;
+  com.google.android.exoplayer2.video.e axC;
+  d axD;
+  d axE;
+  int axF;
+  private b axG;
+  private float axH;
+  private final v.a axo;
+  final CopyOnWriteArraySet<Object> axp;
+  final CopyOnWriteArraySet<j.a> axq;
+  public final CopyOnWriteArraySet<e.a> axr;
+  private final int axs;
+  private final int axt;
+  Format axu;
+  Format axv;
+  Surface axw;
+  private boolean axx;
+  private int axy;
+  private SurfaceHolder axz;
   
-  protected v(u paramu, g paramg, m paramm)
+  protected v(u paramu, com.google.android.exoplayer2.g.h paramh, m paramm)
   {
+    AppMethodBeat.i(95410);
+    this.axo = new v.a(this, (byte)0);
+    this.axp = new CopyOnWriteArraySet();
+    this.axq = new CopyOnWriteArraySet();
+    this.axr = new CopyOnWriteArraySet();
     Looper localLooper;
     int i;
     int k;
@@ -49,15 +55,15 @@ public final class v
     if (Looper.myLooper() != null)
     {
       localLooper = Looper.myLooper();
-      this.atf = paramu.a(new Handler(localLooper), this.auX, this.auX, this.auX, this.auX);
-      paramu = this.atf;
+      this.avx = paramu.a(new Handler(localLooper), this.axo, this.axo, this.axo, this.axo);
+      paramu = this.avx;
       int m = paramu.length;
       i = 0;
       k = 0;
       j = 0;
-      label114:
+      label119:
       if (i >= m) {
-        break label187;
+        break label191;
       }
       switch (paramu[i].getTrackType())
       {
@@ -66,125 +72,179 @@ public final class v
     for (;;)
     {
       i += 1;
-      break label114;
+      break label119;
       localLooper = Looper.getMainLooper();
       break;
       j += 1;
       continue;
       k += 1;
     }
-    label187:
-    this.avb = j;
-    this.avc = k;
-    this.avr = 1.0F;
-    this.avp = 0;
-    this.avq = b.avR;
-    this.avi = 1;
-    this.atF = new h(this.atf, paramg, paramm);
+    label191:
+    this.axs = j;
+    this.axt = k;
+    this.axH = 1.0F;
+    this.axF = 0;
+    this.axG = b.ayh;
+    this.axy = 1;
+    this.avX = new h(this.avx, paramh, paramm);
+    AppMethodBeat.o(95410);
+  }
+  
+  public final void a(p paramp)
+  {
+    AppMethodBeat.i(151939);
+    this.avX.a(paramp);
+    AppMethodBeat.o(151939);
   }
   
   public final void a(q.a parama)
   {
-    this.atF.a(parama);
+    AppMethodBeat.i(95411);
+    this.avX.a(parama);
+    AppMethodBeat.o(95411);
   }
   
-  public final void a(com.google.android.exoplayer2.source.f paramf)
+  public final void a(i parami)
   {
-    this.atF.a(paramf);
+    AppMethodBeat.i(95414);
+    this.avX.a(parami);
+    AppMethodBeat.o(95414);
   }
   
   public final void a(f.c... paramVarArgs)
   {
-    this.atF.a(paramVarArgs);
+    AppMethodBeat.i(95422);
+    this.avX.a(paramVarArgs);
+    AppMethodBeat.o(95422);
   }
   
-  public final void at(boolean paramBoolean)
+  public final void aC(boolean paramBoolean)
   {
-    this.atF.at(paramBoolean);
+    AppMethodBeat.i(95415);
+    this.avX.aC(paramBoolean);
+    AppMethodBeat.o(95415);
   }
   
   public final void b(q.a parama)
   {
-    this.atF.b(parama);
+    AppMethodBeat.i(95412);
+    this.avX.b(parama);
+    AppMethodBeat.o(95412);
   }
   
   public final void b(f.c... paramVarArgs)
   {
-    this.atF.b(paramVarArgs);
+    AppMethodBeat.i(95423);
+    this.avX.b(paramVarArgs);
+    AppMethodBeat.o(95423);
   }
   
   public final int getBufferedPercentage()
   {
-    return this.atF.getBufferedPercentage();
+    AppMethodBeat.i(95427);
+    int i = this.avX.getBufferedPercentage();
+    AppMethodBeat.o(95427);
+    return i;
   }
   
   public final long getBufferedPosition()
   {
-    return this.atF.getBufferedPosition();
+    AppMethodBeat.i(95426);
+    long l = this.avX.getBufferedPosition();
+    AppMethodBeat.o(95426);
+    return l;
   }
   
   public final long getCurrentPosition()
   {
-    return this.atF.getCurrentPosition();
+    AppMethodBeat.i(95425);
+    long l = this.avX.getCurrentPosition();
+    AppMethodBeat.o(95425);
+    return l;
   }
   
   public final long getDuration()
   {
-    return this.atF.getDuration();
+    AppMethodBeat.i(95424);
+    long l = this.avX.getDuration();
+    AppMethodBeat.o(95424);
+    return l;
   }
   
   public final boolean isLoading()
   {
-    return this.atF.isLoading();
+    AppMethodBeat.i(95418);
+    boolean bool = this.avX.isLoading();
+    AppMethodBeat.o(95418);
+    return bool;
   }
   
-  public final int kD()
+  public final int mJ()
   {
-    return this.atF.kD();
+    AppMethodBeat.i(95413);
+    int i = this.avX.mJ();
+    AppMethodBeat.o(95413);
+    return i;
   }
   
-  public final boolean kE()
+  public final boolean mK()
   {
-    return this.atF.kE();
+    AppMethodBeat.i(95416);
+    boolean bool = this.avX.mK();
+    AppMethodBeat.o(95416);
+    return bool;
   }
   
   public final void release()
   {
-    this.atF.release();
-    if (this.avk != null)
+    AppMethodBeat.i(95421);
+    this.avX.release();
+    if (this.axA != null)
     {
-      if (this.avk.getSurfaceTextureListener() == this.auX) {
-        this.avk.setSurfaceTextureListener(null);
+      if (this.axA.getSurfaceTextureListener() == this.axo) {
+        this.axA.setSurfaceTextureListener(null);
       }
-      this.avk = null;
+      this.axA = null;
     }
-    if (this.avj != null)
+    if (this.axz != null)
     {
-      this.avj.removeCallback(this.auX);
-      this.avj = null;
+      this.axz.removeCallback(this.axo);
+      this.axz = null;
     }
-    if (this.avf != null)
+    if (this.axw != null)
     {
-      if (this.avh) {
-        this.avf.release();
+      if (this.axx) {
+        this.axw.release();
       }
-      this.avf = null;
+      this.axw = null;
     }
+    AppMethodBeat.o(95421);
   }
   
   public final void seekTo(long paramLong)
   {
-    this.atF.seekTo(paramLong);
+    AppMethodBeat.i(95419);
+    this.avX.seekTo(paramLong);
+    AppMethodBeat.o(95419);
+  }
+  
+  public final void setRepeatMode(int paramInt)
+  {
+    AppMethodBeat.i(95417);
+    this.avX.setRepeatMode(paramInt);
+    AppMethodBeat.o(95417);
   }
   
   public final void stop()
   {
-    this.atF.stop();
+    AppMethodBeat.i(95420);
+    this.avX.stop();
+    AppMethodBeat.o(95420);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.v
  * JD-Core Version:    0.7.0.1
  */

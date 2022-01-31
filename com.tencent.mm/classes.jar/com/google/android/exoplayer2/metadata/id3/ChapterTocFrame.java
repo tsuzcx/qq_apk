@@ -2,69 +2,88 @@ package com.google.android.exoplayer2.metadata.id3;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.google.android.exoplayer2.i.t;
+import com.google.android.exoplayer2.i.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 
 public final class ChapterTocFrame
   extends Id3Frame
 {
-  public static final Parcelable.Creator<ChapterTocFrame> CREATOR = new ChapterTocFrame.1();
-  private final Id3Frame[] aHd;
-  public final String aHe;
-  public final boolean aHf;
-  public final boolean aHg;
-  public final String[] aHh;
+  public static final Parcelable.Creator<ChapterTocFrame> CREATOR;
+  public final boolean aJB;
+  private final Id3Frame[] aNY;
+  public final String aNZ;
+  public final boolean aOa;
+  public final String[] aOb;
+  
+  static
+  {
+    AppMethodBeat.i(95297);
+    CREATOR = new ChapterTocFrame.1();
+    AppMethodBeat.o(95297);
+  }
   
   ChapterTocFrame(Parcel paramParcel)
   {
     super("CTOC");
-    this.aHe = paramParcel.readString();
+    AppMethodBeat.i(95293);
+    this.aNZ = paramParcel.readString();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.aHf = bool1;
+      this.aOa = bool1;
       if (paramParcel.readByte() == 0) {
-        break label109;
+        break label114;
       }
     }
-    label109:
+    label114:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.aHg = bool1;
-      this.aHh = paramParcel.createStringArray();
+      this.aJB = bool1;
+      this.aOb = paramParcel.createStringArray();
       int j = paramParcel.readInt();
-      this.aHd = new Id3Frame[j];
+      this.aNY = new Id3Frame[j];
       while (i < j)
       {
-        this.aHd[i] = ((Id3Frame)paramParcel.readParcelable(Id3Frame.class.getClassLoader()));
+        this.aNY[i] = ((Id3Frame)paramParcel.readParcelable(Id3Frame.class.getClassLoader()));
         i += 1;
       }
       bool1 = false;
       break;
     }
+    AppMethodBeat.o(95293);
   }
   
   public ChapterTocFrame(String paramString, boolean paramBoolean1, boolean paramBoolean2, String[] paramArrayOfString, Id3Frame[] paramArrayOfId3Frame)
   {
     super("CTOC");
-    this.aHe = paramString;
-    this.aHf = paramBoolean1;
-    this.aHg = paramBoolean2;
-    this.aHh = paramArrayOfString;
-    this.aHd = paramArrayOfId3Frame;
+    this.aNZ = paramString;
+    this.aOa = paramBoolean1;
+    this.aJB = paramBoolean2;
+    this.aOb = paramArrayOfString;
+    this.aNY = paramArrayOfId3Frame;
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(95294);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(95294);
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (ChapterTocFrame)paramObject;
-    } while ((this.aHf == paramObject.aHf) && (this.aHg == paramObject.aHg) && (t.e(this.aHe, paramObject.aHe)) && (Arrays.equals(this.aHh, paramObject.aHh)) && (Arrays.equals(this.aHd, paramObject.aHd)));
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(95294);
+      return false;
+    }
+    paramObject = (ChapterTocFrame)paramObject;
+    if ((this.aOa == paramObject.aOa) && (this.aJB == paramObject.aJB) && (x.e(this.aNZ, paramObject.aNZ)) && (Arrays.equals(this.aOb, paramObject.aOb)) && (Arrays.equals(this.aNY, paramObject.aNY)))
+    {
+      AppMethodBeat.o(95294);
+      return true;
+    }
+    AppMethodBeat.o(95294);
     return false;
   }
   
@@ -72,23 +91,25 @@ public final class ChapterTocFrame
   {
     int j = 1;
     int k = 0;
+    AppMethodBeat.i(95295);
     int i;
-    if (this.aHf)
+    if (this.aOa)
     {
       i = 1;
-      if (!this.aHg) {
-        break label56;
+      if (!this.aJB) {
+        break label66;
       }
     }
     for (;;)
     {
-      if (this.aHe != null) {
-        k = this.aHe.hashCode();
+      if (this.aNZ != null) {
+        k = this.aNZ.hashCode();
       }
+      AppMethodBeat.o(95295);
       return ((i + 527) * 31 + j) * 31 + k;
       i = 0;
       break;
-      label56:
+      label66:
       j = 0;
     }
   }
@@ -96,30 +117,32 @@ public final class ChapterTocFrame
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    paramParcel.writeString(this.aHe);
-    if (this.aHf)
+    AppMethodBeat.i(95296);
+    paramParcel.writeString(this.aNZ);
+    if (this.aOa)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.aHg) {
-        break label91;
+      if (!this.aJB) {
+        break label96;
       }
     }
-    label91:
+    label96:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeStringArray(this.aHh);
-      paramParcel.writeInt(this.aHd.length);
+      paramParcel.writeStringArray(this.aOb);
+      paramParcel.writeInt(this.aNY.length);
       paramInt = 0;
-      while (paramInt < this.aHd.length)
+      while (paramInt < this.aNY.length)
       {
-        paramParcel.writeParcelable(this.aHd[paramInt], 0);
+        paramParcel.writeParcelable(this.aNY[paramInt], 0);
         paramInt += 1;
       }
       paramInt = 0;
       break;
     }
+    AppMethodBeat.o(95296);
   }
 }
 

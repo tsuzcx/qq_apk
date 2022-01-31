@@ -1,7 +1,20 @@
 package com.tencent.mm.plugin.appbrand.canvas.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public enum a$a
 {
+  static
+  {
+    AppMethodBeat.i(103652);
+    hfI = new a("NORMAL", 0);
+    hfJ = new a("TOP", 1);
+    hfK = new a("BOTTOM", 2);
+    hfL = new a("MIDDLE", 3);
+    hfM = new a[] { hfI, hfJ, hfK, hfL };
+    AppMethodBeat.o(103652);
+  }
+  
   private a$a() {}
 }
 

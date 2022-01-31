@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.backup.backuppcui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.backuppcmodel.b;
 
 final class BackupPcUI$3$14
@@ -11,8 +12,10 @@ final class BackupPcUI$3$14
   
   public final void onClick(View paramView)
   {
-    b.auw().atn().hFu = 25;
-    BackupPcUI.i(this.hLn.hLm);
+    AppMethodBeat.i(17608);
+    b.aTX().aSL().jyN = 25;
+    BackupPcUI.i(this.jEQ.jEP);
+    AppMethodBeat.o(17608);
   }
 }
 

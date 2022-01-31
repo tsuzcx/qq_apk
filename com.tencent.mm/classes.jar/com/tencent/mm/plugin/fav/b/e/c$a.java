@@ -4,8 +4,8 @@ import com.tencent.mm.plugin.fav.a.f;
 
 final class c$a
 {
-  int jZY;
-  f jZZ;
+  int muu;
+  f muv;
   int retryCount;
   long time;
 }

@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
@@ -12,19 +13,20 @@ public class CharsetDetector
 {
   private static final List<CharsetDetector.CSRecognizerInfo> ALL_CS_RECOGNIZERS;
   private static final int kBufSize = 8000;
-  short[] fByteStats = new short[256];
-  boolean fC1Bytes = false;
+  short[] fByteStats;
+  boolean fC1Bytes;
   String fDeclaredEncoding;
   private boolean[] fEnabledRecognizers;
-  byte[] fInputBytes = new byte[8000];
+  byte[] fInputBytes;
   int fInputLen;
   InputStream fInputStream;
   byte[] fRawInput;
   int fRawLength;
-  private boolean fStripTags = false;
+  private boolean fStripTags;
   
   static
   {
+    AppMethodBeat.i(104757);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_UTF8(), true));
     localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_Unicode.CharsetRecog_UTF_16_BE(), true));
@@ -55,22 +57,34 @@ public class CharsetDetector
     localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_IBM420_ar_rtl(), false));
     localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_IBM420_ar_ltr(), false));
     ALL_CS_RECOGNIZERS = Collections.unmodifiableList(localArrayList);
+    AppMethodBeat.o(104757);
+  }
+  
+  public CharsetDetector()
+  {
+    AppMethodBeat.i(104747);
+    this.fInputBytes = new byte[8000];
+    this.fByteStats = new short[256];
+    this.fC1Bytes = false;
+    this.fStripTags = false;
+    AppMethodBeat.o(104747);
   }
   
   private void MungeInput()
   {
+    AppMethodBeat.i(104754);
     int j;
     int k;
     if (this.fStripTags)
     {
+      int i3 = 0;
       j = 0;
       k = 0;
       int m = 0;
-      int i3 = 0;
-      int i2 = 0;
-      while ((i2 < this.fRawLength) && (i3 < this.fInputBytes.length))
+      int i5;
+      for (int i2 = 0; (i3 < this.fRawLength) && (i2 < this.fInputBytes.length); i2 = i5)
       {
-        int i = this.fRawInput[i2];
+        int i = this.fRawInput[i3];
         int i1 = j;
         int i4 = k;
         int n = m;
@@ -83,22 +97,21 @@ public class CharsetDetector
           i4 = k + 1;
           n = 1;
         }
-        int i5 = i3;
+        i5 = i2;
         if (n == 0)
         {
-          this.fInputBytes[i3] = i;
-          i5 = i3 + 1;
+          this.fInputBytes[i2] = i;
+          i5 = i2 + 1;
         }
         m = n;
         if (i == 62) {
           m = 0;
         }
-        i2 += 1;
+        i3 += 1;
         j = i1;
         k = i4;
-        i3 = i5;
       }
-      this.fInputLen = i3;
+      this.fInputLen = i2;
     }
     for (;;)
     {
@@ -128,19 +141,18 @@ public class CharsetDetector
       }
       this.fC1Bytes = false;
       j = 128;
-      for (;;)
+      while (j <= 159)
       {
-        if (j <= 159)
+        if (this.fByteStats[j] != 0)
         {
-          if (this.fByteStats[j] != 0) {
-            this.fC1Bytes = true;
-          }
-        }
-        else {
+          this.fC1Bytes = true;
+          AppMethodBeat.o(104754);
           return;
         }
         j += 1;
       }
+      AppMethodBeat.o(104754);
+      return;
       j = 0;
       k = 0;
     }
@@ -148,6 +160,7 @@ public class CharsetDetector
   
   public static String[] getAllDetectableCharsets()
   {
+    AppMethodBeat.i(104753);
     String[] arrayOfString = new String[ALL_CS_RECOGNIZERS.size()];
     int i = 0;
     while (i < arrayOfString.length)
@@ -155,44 +168,53 @@ public class CharsetDetector
       arrayOfString[i] = ((CharsetDetector.CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(i)).recognizer.getName();
       i += 1;
     }
+    AppMethodBeat.o(104753);
     return arrayOfString;
   }
   
   public CharsetMatch detect()
   {
-    CharsetMatch[] arrayOfCharsetMatch = detectAll();
-    if ((arrayOfCharsetMatch == null) || (arrayOfCharsetMatch.length == 0)) {
+    AppMethodBeat.i(104749);
+    Object localObject = detectAll();
+    if ((localObject == null) || (localObject.length == 0))
+    {
+      AppMethodBeat.o(104749);
       return null;
     }
-    return arrayOfCharsetMatch[0];
+    localObject = localObject[0];
+    AppMethodBeat.o(104749);
+    return localObject;
   }
   
   public CharsetMatch[] detectAll()
   {
-    ArrayList localArrayList = new ArrayList();
+    AppMethodBeat.i(104750);
+    Object localObject1 = new ArrayList();
     MungeInput();
     int i = 0;
     if (i < ALL_CS_RECOGNIZERS.size())
     {
-      Object localObject = (CharsetDetector.CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(i);
+      Object localObject2 = (CharsetDetector.CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(i);
       if (this.fEnabledRecognizers != null) {}
       boolean bool;
-      for (int j = this.fEnabledRecognizers[i];; bool = ((CharsetDetector.CSRecognizerInfo)localObject).isDefaultEnabled)
+      for (int j = this.fEnabledRecognizers[i];; bool = ((CharsetDetector.CSRecognizerInfo)localObject2).isDefaultEnabled)
       {
         if (j != 0)
         {
-          localObject = ((CharsetDetector.CSRecognizerInfo)localObject).recognizer.match(this);
-          if (localObject != null) {
-            localArrayList.add(localObject);
+          localObject2 = ((CharsetDetector.CSRecognizerInfo)localObject2).recognizer.match(this);
+          if (localObject2 != null) {
+            ((ArrayList)localObject1).add(localObject2);
           }
         }
         i += 1;
         break;
       }
     }
-    Collections.sort(localArrayList);
-    Collections.reverse(localArrayList);
-    return (CharsetMatch[])localArrayList.toArray(new CharsetMatch[localArrayList.size()]);
+    Collections.sort((List)localObject1);
+    Collections.reverse((List)localObject1);
+    localObject1 = (CharsetMatch[])((ArrayList)localObject1).toArray(new CharsetMatch[((ArrayList)localObject1).size()]);
+    AppMethodBeat.o(104750);
+    return localObject1;
   }
   
   public boolean enableInputFilter(boolean paramBoolean)
@@ -205,7 +227,8 @@ public class CharsetDetector
   @Deprecated
   public String[] getDetectableCharsets()
   {
-    ArrayList localArrayList = new ArrayList(ALL_CS_RECOGNIZERS.size());
+    AppMethodBeat.i(104755);
+    Object localObject = new ArrayList(ALL_CS_RECOGNIZERS.size());
     int i = 0;
     if (i < ALL_CS_RECOGNIZERS.size())
     {
@@ -215,46 +238,62 @@ public class CharsetDetector
       for (boolean bool = localCSRecognizerInfo.isDefaultEnabled;; j = this.fEnabledRecognizers[i])
       {
         if (bool) {
-          localArrayList.add(localCSRecognizerInfo.recognizer.getName());
+          ((List)localObject).add(localCSRecognizerInfo.recognizer.getName());
         }
         i += 1;
         break;
       }
     }
-    return (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    localObject = (String[])((List)localObject).toArray(new String[((List)localObject).size()]);
+    AppMethodBeat.o(104755);
+    return localObject;
   }
   
   public Reader getReader(InputStream paramInputStream, String paramString)
   {
+    AppMethodBeat.i(104751);
     this.fDeclaredEncoding = paramString;
     try
     {
       setText(paramInputStream);
       paramInputStream = detect();
-      if (paramInputStream == null) {
+      if (paramInputStream == null)
+      {
+        AppMethodBeat.o(104751);
         return null;
       }
       paramInputStream = paramInputStream.getReader();
+      AppMethodBeat.o(104751);
       return paramInputStream;
     }
-    catch (IOException paramInputStream) {}
+    catch (IOException paramInputStream)
+    {
+      AppMethodBeat.o(104751);
+    }
     return null;
   }
   
   public String getString(byte[] paramArrayOfByte, String paramString)
   {
+    AppMethodBeat.i(104752);
     this.fDeclaredEncoding = paramString;
     try
     {
       setText(paramArrayOfByte);
       paramArrayOfByte = detect();
-      if (paramArrayOfByte == null) {
+      if (paramArrayOfByte == null)
+      {
+        AppMethodBeat.o(104752);
         return null;
       }
       paramArrayOfByte = paramArrayOfByte.getString(-1);
+      AppMethodBeat.o(104752);
       return paramArrayOfByte;
     }
-    catch (IOException paramArrayOfByte) {}
+    catch (IOException paramArrayOfByte)
+    {
+      AppMethodBeat.o(104752);
+    }
     return null;
   }
   
@@ -273,6 +312,7 @@ public class CharsetDetector
   public CharsetDetector setDetectableCharset(String paramString, boolean paramBoolean)
   {
     int k = 0;
+    AppMethodBeat.i(104756);
     int i = 0;
     int j;
     if (i < ALL_CS_RECOGNIZERS.size())
@@ -288,7 +328,9 @@ public class CharsetDetector
     {
       if (i < 0)
       {
-        throw new IllegalArgumentException("Invalid encoding: \"" + paramString + "\"");
+        paramString = new IllegalArgumentException("Invalid encoding: \"" + paramString + "\"");
+        AppMethodBeat.o(104756);
+        throw paramString;
         j = 0;
         continue;
         i += 1;
@@ -307,6 +349,7 @@ public class CharsetDetector
       if (this.fEnabledRecognizers != null) {
         this.fEnabledRecognizers[i] = paramBoolean;
       }
+      AppMethodBeat.o(104756);
       return this;
       j = 0;
       i = -1;
@@ -316,6 +359,7 @@ public class CharsetDetector
   public CharsetDetector setText(InputStream paramInputStream)
   {
     int i = 8000;
+    AppMethodBeat.i(104748);
     this.fInputStream = paramInputStream;
     this.fInputStream.mark(8000);
     this.fRawInput = new byte[8000];
@@ -330,6 +374,7 @@ public class CharsetDetector
       i -= j;
     }
     this.fInputStream.reset();
+    AppMethodBeat.o(104748);
     return this;
   }
   
@@ -342,7 +387,7 @@ public class CharsetDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector.CharsetDetector
  * JD-Core Version:    0.7.0.1
  */

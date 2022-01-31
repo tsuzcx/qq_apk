@@ -1,29 +1,33 @@
 package com.tencent.mm.modelappbrand.a;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 final class b$1
   implements Runnable
 {
-  b$1(b paramb, String paramString1, b.h paramh, String paramString2, b.k paramk) {}
+  b$1(b paramb, String paramString1, b.i parami, String paramString2, b.l paraml) {}
   
   public final void run()
   {
-    Object localObject = this.eao.jG(this.eal);
+    AppMethodBeat.i(77315);
+    Object localObject = this.fqv.qw(this.cbQ);
     if (localObject != null)
     {
-      this.eam.p((Bitmap)localObject);
-      y.d("MicroMsg.AppBrandSimpleImageLoader", "load already cached, url %s, bitmap %s", new Object[] { this.val$url, localObject });
+      this.fqt.w((Bitmap)localObject);
+      ab.d("MicroMsg.AppBrandSimpleImageLoader", "load already cached, url %s, bitmap %s", new Object[] { this.val$url, localObject });
+      AppMethodBeat.o(77315);
       return;
     }
-    localObject = this.ean.JL();
-    b.a(this.eao).put(this.eam, localObject);
-    b.b(this.eao).put(localObject, this.eam);
-    this.eam.JG();
-    localObject = this.ean;
-    b.d(((b.k)localObject).eay).f(new b.k.2((b.k)localObject));
+    localObject = this.fqu.acL();
+    b.a(this.fqv).put(this.fqt, localObject);
+    b.b(this.fqv).put(localObject, this.fqt);
+    this.fqt.acG();
+    localObject = this.fqu;
+    b.d(((b.l)localObject).fqH).post(new b.l.2((b.l)localObject));
+    AppMethodBeat.o(77315);
   }
 }
 

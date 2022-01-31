@@ -2,7 +2,7 @@ package com.tencent.map.lib.gl;
 
 public abstract interface JNICallback$f
 {
-  public abstract int getGLContext();
+  public abstract int getEGLContextHash();
 }
 
 

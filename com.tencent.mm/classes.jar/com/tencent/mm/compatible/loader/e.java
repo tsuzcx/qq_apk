@@ -6,7 +6,12 @@ import android.content.res.Configuration;
 @Deprecated
 public abstract class e
 {
-  public Application app;
+  protected Application app;
+  
+  public final void b(Application paramApplication)
+  {
+    this.app = paramApplication;
+  }
   
   public abstract void onConfigurationChanged(Configuration paramConfiguration);
   

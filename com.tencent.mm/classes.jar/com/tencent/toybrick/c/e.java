@@ -4,37 +4,41 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.view.View;
-import com.tencent.mm.ci.a.d;
-import com.tencent.mm.ci.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.toybrick.f.a;
 
 public final class e
   extends g<e, a>
 {
-  public static final int xau = a.g.space_toybrick;
-  private int xaX;
+  public static final int Bxa = 2130970910;
+  private int BxD;
   
   public final void a(a parama)
   {
-    if (this.xaX == 0) {
-      this.xaX = ((int)this.xaY.getResources().getDimension(a.d.Edge_2A));
+    AppMethodBeat.i(113215);
+    if (this.BxD == 0) {
+      this.BxD = ((int)this.BxE.getResources().getDimension(2131427587));
     }
-    parama.aie.setLayoutParams(new RecyclerView.LayoutParams(-1, this.xaX));
+    parama.aku.setLayoutParams(new RecyclerView.LayoutParams(-1, this.BxD));
+    AppMethodBeat.o(113215);
   }
   
-  public final g.b cQZ()
+  public final g.b dWO()
   {
-    return g.b.xbm;
+    return g.b.BxS;
   }
   
-  public final a er(View paramView)
+  public final a fF(View paramView)
   {
-    return new a(paramView);
+    AppMethodBeat.i(113216);
+    paramView = new a(paramView);
+    AppMethodBeat.o(113216);
+    return paramView;
   }
   
   public final int getLayoutResource()
   {
-    return xau;
+    return Bxa;
   }
 }
 

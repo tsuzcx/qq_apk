@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@raw/sns_shoot_addphoto_button_pressed" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@raw/sns_shoot_addphoto_button_pressed" />
-    <item android:state_focused="false" android:drawable="@raw/sns_shoot_addphoto_button_normal" />
-</selector>
+    <solid android:color="@android:color/transparent" />
+    <size android:height="@dimen/z9" android:width="@dimen/z9" />
+</shape>

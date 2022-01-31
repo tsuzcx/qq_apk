@@ -2,19 +2,20 @@ package com.tencent.mm.plugin.sysvideo.ui.video;
 
 import android.os.Message;
 import android.view.Window;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class VideoRecorderPreviewUI$2
-  extends ah
+  extends ak
 {
   VideoRecorderPreviewUI$2(VideoRecorderPreviewUI paramVideoRecorderPreviewUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    this.pzh.getWindow().setFlags(1024, 1024);
-    this.pzh.mController.hideTitleView();
+    AppMethodBeat.i(25631);
+    this.taU.getWindow().setFlags(1024, 1024);
+    this.taU.hideTitleView();
+    AppMethodBeat.o(25631);
   }
 }
 

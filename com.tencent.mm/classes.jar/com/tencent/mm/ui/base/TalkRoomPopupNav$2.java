@@ -2,6 +2,7 @@ package com.tencent.mm.ui.base;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class TalkRoomPopupNav$2
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class TalkRoomPopupNav$2
   
   public final void onClick(View paramView)
   {
-    TalkRoomPopupNav.b(this.vbD);
+    AppMethodBeat.i(30007);
+    TalkRoomPopupNav.b(this.zpT);
+    AppMethodBeat.o(30007);
   }
 }
 

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WalletForgotPwdVerifyIdUI$7
   implements View.OnFocusChangeListener
@@ -11,18 +12,21 @@ final class WalletForgotPwdVerifyIdUI$7
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
+    AppMethodBeat.i(46312);
     if (paramBoolean)
     {
-      y.i("MicroMsg.WalletForgotPwdVerifyIdUI", " has focus");
-      WalletForgotPwdVerifyIdUI.i(this.qpj);
+      ab.i("MicroMsg.WalletForgotPwdVerifyIdUI", " has focus");
+      WalletForgotPwdVerifyIdUI.i(this.tZw);
+      AppMethodBeat.o(46312);
       return;
     }
-    y.i("MicroMsg.WalletForgotPwdVerifyIdUI", " lose focus");
+    ab.i("MicroMsg.WalletForgotPwdVerifyIdUI", " lose focus");
+    AppMethodBeat.o(46312);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletForgotPwdVerifyIdUI.7
  * JD-Core Version:    0.7.0.1
  */

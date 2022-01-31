@@ -1,12 +1,8 @@
 package com.tencent.mm.pluginsdk.model;
 
-public final class s$a
+public abstract interface s$a
 {
-  public int rTL;
-  public int rTM;
-  public String rTN;
-  public int rTO;
-  public String rTP;
+  public abstract void cuT();
 }
 
 

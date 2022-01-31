@@ -1,31 +1,37 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
 import android.view.MenuItem;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.plugin.profile.ui.newbizinfo.b.c;
-import com.tencent.mm.plugin.profile.ui.newbizinfo.b.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.plugin.profile.ui.newbizinfo.b.g;
 import com.tencent.mm.plugin.profile.ui.newbizinfo.c.b;
+import com.tencent.mm.protocal.protobuf.lv;
 import com.tencent.mm.ui.base.n.d;
+import java.util.LinkedList;
 import java.util.List;
 
 final class NewBizInfoMenuPreference$3
   implements n.d
 {
-  NewBizInfoMenuPreference$3(NewBizInfoMenuPreference paramNewBizInfoMenuPreference, e parame) {}
+  NewBizInfoMenuPreference$3(NewBizInfoMenuPreference paramNewBizInfoMenuPreference, lv paramlv) {}
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    paramMenuItem = (e)this.mZO.nap.get(paramInt);
+    AppMethodBeat.i(23872);
+    paramMenuItem = (lv)this.pDJ.wAq.get(paramInt);
     if (paramMenuItem.type == 2)
     {
-      c.a(paramMenuItem, NewBizInfoMenuPreference.b(this.mZP));
-      b.a(NewBizInfoMenuPreference.a(this.mZP).field_username, this.mZO.id, this.mZO.key, b.nat, this.mZO.name, b.dD(NewBizInfoMenuPreference.c(this.mZP).indexOf(this.mZO), paramInt), this.mZO.ceb);
-    }
-    while (paramMenuItem.type != 5) {
+      g.a(paramMenuItem, NewBizInfoMenuPreference.b(this.pDK), NewBizInfoMenuPreference.a(this.pDK).field_username);
+      b.b(NewBizInfoMenuPreference.a(this.pDK).field_username, String.valueOf(this.pDJ.id), this.pDJ.key, b.pFE, this.pDJ.name, b.fj(NewBizInfoMenuPreference.c(this.pDK).indexOf(this.pDJ), paramInt), this.pDJ.ugX);
+      AppMethodBeat.o(23872);
       return;
     }
-    c.a(paramMenuItem, NewBizInfoMenuPreference.b(this.mZP), NewBizInfoMenuPreference.a(this.mZP).field_username);
-    b.a(NewBizInfoMenuPreference.a(this.mZP).field_username, this.mZO.id, this.mZO.key, b.nat, this.mZO.name, b.dD(NewBizInfoMenuPreference.c(this.mZP).indexOf(this.mZO), paramInt), this.mZO.value);
+    if (paramMenuItem.type == 5)
+    {
+      g.b(paramMenuItem, NewBizInfoMenuPreference.b(this.pDK), NewBizInfoMenuPreference.a(this.pDK).field_username);
+      b.b(NewBizInfoMenuPreference.a(this.pDK).field_username, String.valueOf(this.pDJ.id), this.pDJ.key, b.pFE, this.pDJ.name, b.fj(NewBizInfoMenuPreference.c(this.pDK).indexOf(this.pDJ), paramInt), this.pDJ.value);
+    }
+    AppMethodBeat.o(23872);
   }
 }
 

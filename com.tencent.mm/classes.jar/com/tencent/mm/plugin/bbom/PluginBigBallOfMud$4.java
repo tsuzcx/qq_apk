@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.ae.b;
-import com.tencent.mm.ck.c;
+import com.tencent.mm.af.b;
+import com.tencent.mm.cm.c;
 
 final class PluginBigBallOfMud$4
   implements c<b>

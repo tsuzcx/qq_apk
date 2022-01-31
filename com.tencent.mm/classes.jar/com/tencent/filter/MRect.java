@@ -1,6 +1,7 @@
 package com.tencent.filter;
 
 import android.graphics.Rect;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MRect
 {
@@ -21,7 +22,10 @@ public class MRect
   
   public static MRect toMRect(Rect paramRect)
   {
-    return new MRect(paramRect.left, paramRect.top, paramRect.width(), paramRect.height());
+    AppMethodBeat.i(86385);
+    paramRect = new MRect(paramRect.left, paramRect.top, paramRect.width(), paramRect.height());
+    AppMethodBeat.o(86385);
+    return paramRect;
   }
 }
 

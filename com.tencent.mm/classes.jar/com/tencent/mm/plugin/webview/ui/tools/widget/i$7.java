@@ -2,16 +2,19 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.xweb.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.j;
 
 final class i$7
   implements DialogInterface.OnClickListener
 {
-  i$7(i parami, f paramf) {}
+  i$7(i parami, j paramj) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.rqL.confirm();
+    AppMethodBeat.i(9909);
+    this.vgP.confirm();
+    AppMethodBeat.o(9909);
   }
 }
 

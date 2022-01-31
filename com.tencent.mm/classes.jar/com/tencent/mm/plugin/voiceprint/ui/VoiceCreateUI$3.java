@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class VoiceCreateUI$3
@@ -7,15 +8,17 @@ final class VoiceCreateUI$3
 {
   VoiceCreateUI$3(VoiceCreateUI paramVoiceCreateUI) {}
   
-  public final void bPl()
+  public final void cLr()
   {
-    h.nFQ.f(11390, new Object[] { Integer.valueOf(5) });
-    VoiceCreateUI.d(this.pMr);
+    AppMethodBeat.i(26163);
+    h.qsU.e(11390, new Object[] { Integer.valueOf(5) });
+    VoiceCreateUI.d(this.tsm);
+    AppMethodBeat.o(26163);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoiceCreateUI.3
  * JD-Core Version:    0.7.0.1
  */

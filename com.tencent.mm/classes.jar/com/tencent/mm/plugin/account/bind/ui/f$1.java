@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.EditText;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.ab;
-import com.tencent.mm.plugin.account.bind.a.i;
+import com.tencent.mm.modelsimple.ac;
 import com.tencent.mm.ui.base.h;
 
 final class f$1
@@ -17,15 +17,17 @@ final class f$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.feE.few = null;
-    paramDialogInterface = this.feE;
-    Object localObject = this.feD.getText().toString().trim();
-    paramDialogInterface.Fj();
-    paramDialogInterface.fey = ((String)localObject);
+    AppMethodBeat.i(13750);
+    this.gwn.gwf = null;
+    paramDialogInterface = this.gwn;
+    Object localObject = this.gwm.getText().toString().trim();
+    paramDialogInterface.Yj();
+    paramDialogInterface.gwh = ((String)localObject);
     localObject = paramDialogInterface.context;
-    paramDialogInterface.context.getString(a.i.app_tip);
-    paramDialogInterface.fev = h.b((Context)localObject, paramDialogInterface.context.getString(a.i.sendrequest_sending), true, new f.3(paramDialogInterface));
-    g.Dk().a(new ab(5, paramDialogInterface.fey, "", "", "", false, 1), 0);
+    paramDialogInterface.context.getString(2131297087);
+    paramDialogInterface.gwe = h.b((Context)localObject, paramDialogInterface.context.getString(2131303128), true, new f.3(paramDialogInterface));
+    g.Rc().a(new ac(5, paramDialogInterface.gwh, "", "", "", false, 1), 0);
+    AppMethodBeat.o(13750);
   }
 }
 

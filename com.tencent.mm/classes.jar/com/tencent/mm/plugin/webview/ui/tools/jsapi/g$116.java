@@ -1,26 +1,18 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.emoji.model.EmojiLogic;
-import com.tencent.mm.vfs.b;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.applet.o;
 
 final class g$116
   implements Runnable
 {
-  g$116(g paramg, b paramb, String paramString) {}
+  g$116(g paramg, o paramo) {}
   
   public final void run()
   {
-    String str1 = e.aeY(j.n(this.rAB.mUri));
-    au.Hx();
-    String str2 = EmojiLogic.J(c.FL(), "", str1);
-    if (!e.bK(str2)) {
-      e.r(j.n(this.rAB.cLr()), str2);
-    }
-    g.a(this.rzi, str1, this.rAA);
+    AppMethodBeat.i(155036);
+    this.vrB.show();
+    AppMethodBeat.o(155036);
   }
 }
 

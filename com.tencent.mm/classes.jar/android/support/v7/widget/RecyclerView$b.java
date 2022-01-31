@@ -6,47 +6,47 @@ import java.util.ArrayList;
 public final class RecyclerView$b
   extends Observable<RecyclerView.c>
 {
-  public final void ah(int paramInt1, int paramInt2)
+  public final void an(int paramInt1, int paramInt2)
   {
-    c(paramInt1, paramInt2, null);
+    e(paramInt1, paramInt2, null);
   }
   
-  public final void ai(int paramInt1, int paramInt2)
+  public final void ao(int paramInt1, int paramInt2)
   {
     int i = this.mObservers.size() - 1;
     while (i >= 0)
     {
-      ((RecyclerView.c)this.mObservers.get(i)).ao(paramInt1, paramInt2);
+      ((RecyclerView.c)this.mObservers.get(i)).au(paramInt1, paramInt2);
       i -= 1;
     }
   }
   
-  public final void aj(int paramInt1, int paramInt2)
+  public final void ap(int paramInt1, int paramInt2)
   {
     int i = this.mObservers.size() - 1;
     while (i >= 0)
     {
-      ((RecyclerView.c)this.mObservers.get(i)).am(paramInt1, paramInt2);
+      ((RecyclerView.c)this.mObservers.get(i)).as(paramInt1, paramInt2);
       i -= 1;
     }
   }
   
-  public final void ak(int paramInt1, int paramInt2)
+  public final void aq(int paramInt1, int paramInt2)
   {
     int i = this.mObservers.size() - 1;
     while (i >= 0)
     {
-      ((RecyclerView.c)this.mObservers.get(i)).an(paramInt1, paramInt2);
+      ((RecyclerView.c)this.mObservers.get(i)).at(paramInt1, paramInt2);
       i -= 1;
     }
   }
   
-  public final void c(int paramInt1, int paramInt2, Object paramObject)
+  public final void e(int paramInt1, int paramInt2, Object paramObject)
   {
     int i = this.mObservers.size() - 1;
     while (i >= 0)
     {
-      ((RecyclerView.c)this.mObservers.get(i)).d(paramInt1, paramInt2, paramObject);
+      ((RecyclerView.c)this.mObservers.get(i)).f(paramInt1, paramInt2, paramObject);
       i -= 1;
     }
   }

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.sns.ui;
 
 final class SnsInfoFlip$a
 {
-  int dTT;
+  int fjZ;
   int networkType;
-  int oZk = -1;
-  long oZl = -1L;
-  long oZm = -1L;
-  String oZn;
-  long otX = -1L;
+  int rRD = -1;
+  long rRE = -1L;
+  long rRF = -1L;
+  String rRG;
+  long riP = -1L;
   
   SnsInfoFlip$a(SnsInfoFlip paramSnsInfoFlip) {}
 }

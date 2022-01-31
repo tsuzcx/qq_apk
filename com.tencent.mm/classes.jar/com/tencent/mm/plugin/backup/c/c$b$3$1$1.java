@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.backup.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.f.h.a;
 import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Vector;
@@ -15,38 +16,40 @@ final class c$b$3$1$1
   
   public final void run()
   {
+    AppMethodBeat.i(17180);
     int i = 0;
-    if ((this.hGE != null) && (i < this.hGE.size()))
+    if ((this.jAa != null) && (i < this.jAa.size()))
     {
-      Long localLong = (Long)this.hGE.get(i);
-      h.a locala = (h.a)this.hGF.hGD.hGz.hGu.get(localLong);
-      String str3 = this.hGF.hGD.hGz.TAG;
-      int j = this.hGE.size();
+      Long localLong = (Long)this.jAa.get(i);
+      h.a locala = (h.a)this.jAb.jzZ.jzV.jzQ.get(localLong);
+      String str3 = this.jAb.jzZ.jzV.TAG;
+      int j = this.jAa.size();
       String str1;
       if (locala == null)
       {
         str1 = "null";
-        label87:
+        label93:
         if (locala != null) {
-          break label214;
+          break label220;
         }
       }
-      label214:
-      for (String str2 = "null";; str2 = locala.hJV.path)
+      label220:
+      for (String str2 = "null";; str2 = locala.jDy.path)
       {
-        y.i(str3, "backupBigDataFiles svrIdIndex:%d(%d), svrId:%d media:%s item:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), localLong, str1, str2 });
+        ab.i(str3, "backupBigDataFiles svrIdIndex:%d(%d), svrId:%d media:%s item:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), localLong, str1, str2 });
         if (locala != null)
         {
-          this.hGF.hGD.hGz.hGs.add(locala.hJV.bUi);
-          this.hGF.hGD.hGz.k(locala.hJV.bUi, locala.hJV.path, true);
+          this.jAb.jzZ.jzV.jzO.add(locala.jDy.cBO);
+          this.jAb.jzZ.jzV.m(locala.jDy.cBO, locala.jDy.path, true);
         }
         i += 1;
         break;
-        str1 = locala.hJV.bUi;
-        break label87;
+        str1 = locala.jDy.cBO;
+        break label93;
       }
     }
-    this.hGF.hGD.hGz.hGo.offer(this.hGF.hGD.hGz.hGy);
+    this.jAb.jzZ.jzV.jzK.offer(this.jAb.jzZ.jzV.jzU);
+    AppMethodBeat.o(17180);
   }
 }
 

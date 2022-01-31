@@ -10,206 +10,266 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mm.plugin.l.a.c;
-import com.tencent.mm.plugin.l.a.d;
-import com.tencent.mm.plugin.l.a.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class SmileyPanelScrollView
   extends View
 {
   private static boolean DEBUG = false;
-  private int STATE_NONE = 0;
+  private SmileyPanelScrollView.b AQT;
+  private com.tencent.mm.view.f.a AQU;
+  private Drawable AQV;
+  private Drawable AQW;
+  private Drawable AQX;
+  private Drawable AQY;
+  private int AQZ;
+  public int ARa;
+  private int ARb;
+  private Paint ARc;
+  private int ARd;
+  private int ARe;
+  private int ARf;
+  private int ARg;
+  private int ARh;
+  private int ARi;
+  private int ARj;
+  private boolean ARk;
+  private boolean ARl;
+  public int ARm;
+  public int ARn;
+  public float ARo;
+  public boolean ARp;
+  private boolean ARq;
+  public int ARr;
+  private int ARs;
+  private SmileyPanelScrollView.a ARt;
+  private int STATE_NONE;
   private Context mContext;
   private int mHeight;
-  private int mState = this.STATE_NONE;
+  private int mState;
   private int mWidth;
-  private int pR;
-  private int pT;
-  private b wvR;
-  private com.tencent.mm.view.f.a wvS;
-  private Drawable wvT;
-  private Drawable wvU;
-  private Drawable wvV;
-  private Drawable wvW;
-  public int wvX;
-  public int wvY;
-  private int wvZ;
-  private Paint wwa;
-  private int wwb;
-  private int wwc;
-  private int wwd;
-  private int wwe;
-  private int wwf;
-  private int wwg;
-  private int wwh;
-  private boolean wwi = false;
-  private boolean wwj = false;
-  public int wwk = -1;
-  public int wwl = -1;
-  public float wwm;
-  public boolean wwn = false;
-  public boolean wwo = false;
-  public int wwp = 0;
-  private int wwq = 1;
-  private SmileyPanelScrollView.a wwr = new SmileyPanelScrollView.a(this);
+  private int qO;
+  private int qQ;
   
   public SmileyPanelScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(62944);
+    this.ARk = false;
+    this.ARl = false;
+    this.ARm = -1;
+    this.ARn = -1;
+    this.ARp = false;
+    this.ARq = false;
+    this.ARr = 0;
+    this.ARs = 1;
+    this.STATE_NONE = 0;
+    this.mState = this.STATE_NONE;
+    this.ARt = new SmileyPanelScrollView.a(this);
     init(paramContext);
+    AppMethodBeat.o(62944);
   }
   
   public SmileyPanelScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(62945);
+    this.ARk = false;
+    this.ARl = false;
+    this.ARm = -1;
+    this.ARn = -1;
+    this.ARp = false;
+    this.ARq = false;
+    this.ARr = 0;
+    this.ARs = 1;
+    this.STATE_NONE = 0;
+    this.mState = this.STATE_NONE;
+    this.ARt = new SmileyPanelScrollView.a(this);
     init(paramContext);
+    AppMethodBeat.o(62945);
   }
   
   private void init(Context paramContext)
   {
+    AppMethodBeat.i(62946);
     this.mContext = paramContext;
-    this.wvT = com.tencent.mm.svg.a.a.e(getResources(), a.g.smiley_recent_dot);
-    this.wvV = this.mContext.getResources().getDrawable(a.d.smiley_panel_scroll_thumb_selected);
-    this.wvU = this.mContext.getResources().getDrawable(a.d.smiley_panel_scroll_thumb_pressed);
-    this.wvW = this.mContext.getResources().getDrawable(a.d.smiley_panel_scroll_track_pressed);
-    this.wwb = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 12);
-    this.wwc = this.wvU.getIntrinsicHeight();
-    this.wwd = this.wvU.getIntrinsicWidth();
-    this.wwe = this.wvW.getIntrinsicHeight();
-    this.wwg = this.wvV.getIntrinsicHeight();
-    this.wwh = this.wvV.getIntrinsicWidth();
-    y.d("MicroMsg.SmileyPanelScrollView", "init mDotPadding:%d mDotHeight:%d mDotWidth:%d", new Object[] { Integer.valueOf(this.wwb), Integer.valueOf(this.wwc), Integer.valueOf(this.wwd) });
-    this.wwa = new Paint();
-    this.wwa.setColor(-65536);
-    this.wwa.setAntiAlias(true);
-    this.wwa.setTextAlign(Paint.Align.CENTER);
+    this.AQV = com.tencent.mm.svg.a.a.g(getResources(), 2131232001);
+    this.AQX = this.mContext.getResources().getDrawable(2130840362);
+    this.AQW = this.mContext.getResources().getDrawable(2130840361);
+    this.AQY = this.mContext.getResources().getDrawable(2130840364);
+    this.ARd = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 12);
+    this.ARe = this.AQW.getIntrinsicHeight();
+    this.ARf = this.AQW.getIntrinsicWidth();
+    this.ARg = this.AQY.getIntrinsicHeight();
+    this.ARi = this.AQX.getIntrinsicHeight();
+    this.ARj = this.AQX.getIntrinsicWidth();
+    ab.d("MicroMsg.SmileyPanelScrollView", "init mDotPadding:%d mDotHeight:%d mDotWidth:%d", new Object[] { Integer.valueOf(this.ARd), Integer.valueOf(this.ARe), Integer.valueOf(this.ARf) });
+    this.ARc = new Paint();
+    this.ARc.setColor(-65536);
+    this.ARc.setAntiAlias(true);
+    this.ARc.setTextAlign(Paint.Align.CENTER);
     this.mWidth = getMeasuredWidth();
     this.mHeight = getMeasuredHeight();
-    this.wvZ = (this.wwf / (this.wwd + this.wwb));
-    y.d("MicroMsg.SmileyPanelScrollView", "init mWidth:%d mHeight:%d mTrackWidth:%d mMaxDot:%d", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight), Integer.valueOf(this.wwf), Integer.valueOf(this.wvZ) });
+    this.ARb = (this.ARh / (this.ARf + this.ARd));
+    ab.d("MicroMsg.SmileyPanelScrollView", "init mWidth:%d mHeight:%d mTrackWidth:%d mMaxDot:%d", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight), Integer.valueOf(this.ARh), Integer.valueOf(this.ARb) });
+    AppMethodBeat.o(62946);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    int i = 102;
-    int m = 0;
+    AppMethodBeat.i(62948);
     super.draw(paramCanvas);
-    SmileyPanelScrollView.a locala = this.wwr;
+    SmileyPanelScrollView.a locala = this.ARt;
     int j;
-    if (locala.wwt.getState() != locala.wwt.wwq)
+    if (locala.ARv.getState() != locala.ARv.ARs)
     {
       j = 102;
-      if (this.wvX <= this.wvZ) {
-        break label484;
+      if (this.AQZ <= this.ARb) {
+        break label491;
       }
-      this.wwi = true;
-      k = (this.mHeight - this.wwe) / 2;
-      i = (this.mWidth - this.wwf) / 2;
-      this.pR = (i - this.wwh / 2);
-      this.pT = (this.pR + this.wwf + this.wwh);
+      this.ARk = true;
+      k = (this.mHeight - this.ARg) / 2;
+      i = (this.mWidth - this.ARh) / 2;
+      this.qO = (i - this.ARj / 2);
+      this.qQ = (this.qO + this.ARh + this.ARj);
       if (DEBUG)
       {
-        paramCanvas.drawLine(this.pR, 0.0F, this.pR, this.mHeight, this.wwa);
-        paramCanvas.drawLine(this.pT, 0.0F, this.pT, this.mHeight, this.wwa);
+        paramCanvas.drawLine(this.qO, 0.0F, this.qO, this.mHeight, this.ARc);
+        paramCanvas.drawLine(this.qQ, 0.0F, this.qQ, this.mHeight, this.ARc);
       }
-      this.wvW.setBounds(i, k, this.wwf + i, this.wwe + k);
-      this.wvW.setAlpha(j);
-      this.wvW.draw(paramCanvas);
-      k = (this.mHeight - this.wwg) / 2;
-      if ((!this.wwj) && (!this.wwn)) {
-        break label375;
+      this.AQY.setBounds(i, k, this.ARh + i, this.ARg + k);
+      this.AQY.setAlpha(j);
+      this.AQY.draw(paramCanvas);
+      k = (this.mHeight - this.ARi) / 2;
+      if ((!this.ARl) && (!this.ARp)) {
+        break label382;
       }
-      i = this.wwf / (this.wvX - 1) * this.wvY + i - this.wwh / 2;
+      i = this.ARh / (this.AQZ - 1) * this.ARa + i - this.ARj / 2;
     }
     for (;;)
     {
-      this.wvV.setBounds(i, k, this.wwh + i, this.wwg + k);
-      this.wvV.draw(paramCanvas);
-      if ((getState() == this.wwq) && (j < 255)) {
+      this.AQX.setBounds(i, k, this.ARj + i, this.ARi + k);
+      this.AQX.draw(paramCanvas);
+      if ((getState() == this.ARs) && (j < 255)) {
         invalidate();
       }
+      AppMethodBeat.o(62948);
       return;
       long l = SystemClock.uptimeMillis();
-      if (l > locala.mStartTime + locala.wws) {
+      if (l > locala.mStartTime + locala.ARu) {
         i = 255;
       }
       for (;;)
       {
         j = i;
         break;
-        j = (int)((l - locala.mStartTime) * 153L / locala.wws) + 102;
-        if (j >= 102) {
-          i = j;
+        j = (int)((l - locala.mStartTime) * 153L / locala.ARu) + 102;
+        i = j;
+        if (j < 102) {
+          i = 102;
         }
       }
-      label375:
-      if (this.wwl == this.wwk) {
-        i = this.wwf / (this.wvX - 1) * this.wwk + i - this.wwh / 2 + (int)(this.wwf / (this.wvX - 1) * this.wwm);
+      label382:
+      if (this.ARn == this.ARm) {
+        i = this.ARh / (this.AQZ - 1) * this.ARm + i - this.ARj / 2 + (int)(this.ARh / (this.AQZ - 1) * this.ARo);
       } else {
-        i = this.wwf / (this.wvX - 1) * this.wwk + i - this.wwh / 2 - (int)(this.wwf / (this.wvX - 1) * (1.0F - this.wwm));
+        i = this.ARh / (this.AQZ - 1) * this.ARm + i - this.ARj / 2 - (int)(this.ARh / (this.AQZ - 1) * (1.0F - this.ARo));
       }
     }
-    label484:
-    this.wwi = false;
-    int k = (this.mHeight - this.wwc) / 2;
-    i = (this.mWidth - ((this.wwb + this.wwd) * (this.wvX - 1) + this.wwd)) / 2;
-    this.pR = (i - (this.wwh - this.wwd) / 2);
-    this.pT = (this.pR + this.wwd * this.wvX + this.wwb * (this.wvX - 1) + (this.wwh - this.wwd));
+    label491:
+    this.ARk = false;
+    int k = (this.mHeight - this.ARe) / 2;
+    int i = (this.mWidth - ((this.ARd + this.ARf) * (this.AQZ - 1) + this.ARf)) / 2;
+    this.qO = (i - (this.ARj - this.ARf) / 2);
+    this.qQ = (this.qO + this.ARf * this.AQZ + this.ARd * (this.AQZ - 1) + (this.ARj - this.ARf));
     if (DEBUG)
     {
-      paramCanvas.drawLine(this.pR, 0.0F, this.pR, this.mHeight, this.wwa);
-      paramCanvas.drawLine(this.pT, 0.0F, this.pT, this.mHeight, this.wwa);
+      paramCanvas.drawLine(this.qO, 0.0F, this.qO, this.mHeight, this.ARc);
+      paramCanvas.drawLine(this.qQ, 0.0F, this.qQ, this.mHeight, this.ARc);
     }
-    this.wvU.setBounds(i, k, this.wwd + i, this.wwc + k);
-    int n = (this.wvT.getIntrinsicWidth() - this.wwd) / 2;
-    int i1 = (this.wvT.getIntrinsicHeight() - this.wwc) / 2;
-    this.wvT.setBounds(i - n, k - i1, n + (this.wwd + i), i1 + (k + this.wwc));
-    k = (this.mHeight - this.wwg) / 2;
-    if ((this.wwj) || (this.wwn))
+    this.AQW.setBounds(i, k, this.ARf + i, this.ARe + k);
+    int m = (this.AQV.getIntrinsicWidth() - this.ARf) / 2;
+    int n = (this.AQV.getIntrinsicHeight() - this.ARe) / 2;
+    this.AQV.setBounds(i - m, k - n, m + (this.ARf + i), n + (this.ARe + k));
+    k = (this.mHeight - this.ARi) / 2;
+    if ((this.ARl) || (this.ARp))
     {
-      i -= (this.wwh - this.wwd) / 2;
-      this.wvV.setBounds(i, k, this.wwh + i, this.wwg + k);
+      i -= (this.ARj - this.ARf) / 2;
+      this.AQX.setBounds(i, k, this.ARj + i, this.ARi + k);
       k = 0;
-      label799:
-      if (k >= this.wvX) {
-        break label933;
+      label806:
+      if (k >= this.AQZ) {
+        break label940;
       }
       paramCanvas.save();
       if (k > 0) {
-        paramCanvas.translate((this.wwd + this.wwb) * k, 0.0F);
+        paramCanvas.translate((this.ARf + this.ARd) * k, 0.0F);
       }
-      if ((k != 0) || (!this.wwo)) {
-        break label914;
+      if ((k != 0) || (!this.ARq)) {
+        break label921;
       }
-      this.wvT.draw(paramCanvas);
+      this.AQV.draw(paramCanvas);
     }
     for (;;)
     {
       paramCanvas.restore();
       k += 1;
-      break label799;
-      i = i - (this.wwh - this.wwd) / 2 + (int)((this.wwd + this.wwb) * (this.wwl - this.wwk + this.wwm));
+      break label806;
+      i = i - (this.ARj - this.ARf) / 2 + (int)((this.ARf + this.ARd) * (this.ARn - this.ARm + this.ARo));
       break;
-      label914:
-      this.wvU.setAlpha(j);
-      this.wvU.draw(paramCanvas);
+      label921:
+      this.AQW.setAlpha(j);
+      this.AQW.draw(paramCanvas);
     }
-    label933:
-    if (this.wwk > this.wvX - 1) {
-      this.wwk = (this.wvX - 1);
+    label940:
+    if (this.ARm > this.AQZ - 1) {
+      this.ARm = (this.AQZ - 1);
     }
-    k = (this.wwd + this.wwb) * this.wwk;
-    if (i + k > this.pT) {
-      y.i("MicroMsg.SmileyPanelScrollView", "over right.");
+    k = (this.ARf + this.ARd) * this.ARm;
+    if (i + k > this.qQ)
+    {
+      i = 0;
+      ab.i("MicroMsg.SmileyPanelScrollView", "over right.");
     }
-    for (i = m;; i = k)
+    for (;;)
     {
       paramCanvas.save();
       paramCanvas.translate(i, 0.0F);
-      this.wvV.draw(paramCanvas);
+      this.AQX.draw(paramCanvas);
       paramCanvas.restore();
       break;
+      i = k;
+    }
+  }
+  
+  public final void f(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(62947);
+    ab.d("MicroMsg.SmileyPanelScrollView", "setDot dotCount:%d selectDot:%d force:%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean1) });
+    this.AQZ = paramInt1;
+    if (paramInt2 < 0) {
+      paramInt1 = 0;
+    }
+    for (;;)
+    {
+      this.ARa = paramInt1;
+      if ((this.ARn == -1) || (paramBoolean1) || (this.ARr == 0)) {
+        this.ARn = this.ARa;
+      }
+      if ((this.ARm == -1) || (paramBoolean1) || (this.ARr == 0))
+      {
+        this.ARm = this.ARa;
+        this.ARo = 0.0F;
+      }
+      this.ARq = paramBoolean2;
+      invalidate();
+      AppMethodBeat.o(62947);
+      return;
+      paramInt1 = paramInt2;
+      if (paramInt2 > this.AQZ) {
+        paramInt1 = this.AQZ;
+      }
     }
   }
   
@@ -220,31 +280,37 @@ public class SmileyPanelScrollView
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(62949);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramInt1 != this.mWidth)
     {
       this.mWidth = getMeasuredWidth();
       this.mHeight = getMeasuredHeight();
-      this.wwf = (this.mWidth - (this.wvS.getColumnWidth() - this.wvS.wzr) - com.tencent.mm.cb.a.aa(this.mContext, a.c.SmallerPadding) * 2);
-      this.wvZ = (this.wwf / (this.wwd + this.wwb));
-      y.d("MicroMsg.SmileyPanelScrollView", "onSizeChanged mWidth:%d mHeight:%d mTrackWidth:%d mMaxDot:%d", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight), Integer.valueOf(this.wwf), Integer.valueOf(this.wvZ) });
+      this.ARh = (this.mWidth - (this.AQU.getColumnWidth() - this.AQU.AUM) - com.tencent.mm.cb.a.ao(this.mContext, 2131427859) * 2);
+      this.ARb = (this.ARh / (this.ARf + this.ARd));
+      ab.d("MicroMsg.SmileyPanelScrollView", "onSizeChanged mWidth:%d mHeight:%d mTrackWidth:%d mMaxDot:%d", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight), Integer.valueOf(this.ARh), Integer.valueOf(this.ARb) });
       if (this.mHeight == 0)
       {
-        y.i("MicroMsg.SmileyPanelScrollView", "user default height");
+        ab.i("MicroMsg.SmileyPanelScrollView", "user default height");
         this.mHeight = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 16);
       }
     }
+    AppMethodBeat.o(62949);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(62950);
     int m = paramMotionEvent.getAction();
     int k = (int)paramMotionEvent.getX();
-    if ((k < this.pR - this.wwb) || (k > this.pT + this.wwb))
+    if ((k < this.qO - this.ARd) || (k > this.qQ + this.ARd))
     {
-      y.d("MicroMsg.SmileyPanelScrollView", "over x :%d mLeft:%d mRight:%d ", new Object[] { Integer.valueOf(k), Integer.valueOf(this.pR), Integer.valueOf(this.pT) });
-      if (m == 0) {
-        return super.onTouchEvent(paramMotionEvent);
+      ab.d("MicroMsg.SmileyPanelScrollView", "over x :%d mLeft:%d mRight:%d ", new Object[] { Integer.valueOf(k), Integer.valueOf(this.qO), Integer.valueOf(this.qQ) });
+      if (m == 0)
+      {
+        boolean bool = super.onTouchEvent(paramMotionEvent);
+        AppMethodBeat.o(62950);
+        return bool;
       }
     }
     for (int j = 1;; j = 0)
@@ -253,24 +319,24 @@ public class SmileyPanelScrollView
       if (j == 0)
       {
         i = k;
-        if (k < this.pR) {
-          i = this.pR;
+        if (k < this.qO) {
+          i = this.qO;
         }
         k = i;
-        if (i > this.pT) {
-          k = this.pT;
+        if (i > this.qQ) {
+          k = this.qQ;
         }
-        if (this.wwi)
+        if (this.ARk)
         {
-          i = this.wwf / (this.wvX - 1);
-          i = (k - this.pR) / i;
+          i = this.ARh / (this.AQZ - 1);
+          i = (k - this.qO) / i;
           k = i;
-          if (i > this.wvX - 1) {
-            k = this.wvX - 1;
+          if (i > this.AQZ - 1) {
+            k = this.AQZ - 1;
           }
-          this.wvR.IM(k);
-          this.wwk = k;
-          this.wwl = k;
+          this.AQT.RF(k);
+          this.ARm = k;
+          this.ARn = k;
         }
       }
       else
@@ -281,25 +347,26 @@ public class SmileyPanelScrollView
       }
       for (;;)
       {
+        AppMethodBeat.o(62950);
         return true;
-        i = (k - this.pR + this.wwb) / (this.wwd + this.wwb);
+        i = (k - this.qO + this.ARd) / (this.ARf + this.ARd);
         break;
         if (j == 0)
         {
-          this.wwj = true;
-          this.wwn = true;
-          setState(this.wwq);
-          this.wwr.cLx();
+          this.ARl = true;
+          this.ARp = true;
+          setState(this.ARs);
+          this.ARt.dQP();
           invalidate();
           continue;
-          if ((j == 0) && (getState() != this.wwq))
+          if ((j == 0) && (getState() != this.ARs))
           {
-            setState(this.wwq);
-            this.wwr.cLx();
+            setState(this.ARs);
+            this.ARt.dQP();
             invalidate();
             continue;
             setState(this.STATE_NONE);
-            this.wwj = false;
+            this.ARl = false;
             invalidate();
           }
         }
@@ -307,29 +374,24 @@ public class SmileyPanelScrollView
     }
   }
   
-  public void setOnPageSelectListener(b paramb)
+  public void setOnPageSelectListener(SmileyPanelScrollView.b paramb)
   {
-    this.wvR = paramb;
+    this.AQT = paramb;
   }
   
   public void setSmileyPanelStg(com.tencent.mm.view.f.a parama)
   {
-    this.wvS = parama;
+    this.AQU = parama;
   }
   
   public void setState(int paramInt)
   {
     this.mState = paramInt;
   }
-  
-  public static abstract interface b
-  {
-    public abstract void IM(int paramInt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.view.SmileyPanelScrollView
  * JD-Core Version:    0.7.0.1
  */

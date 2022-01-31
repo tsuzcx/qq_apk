@@ -6,10 +6,9 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,74 +16,88 @@ import java.util.Map;
 public final class k$b
   extends c.a
 {
-  public static Map<String, WeakReference<b>> vCU = new HashMap();
-  ProgressBar nhQ;
-  ImageView vBN;
-  RTChattingEmojiView vCP;
-  ImageView vCQ;
-  ProgressBar vCR;
-  ImageView vCS;
-  TextView vCT;
+  public static Map<String, WeakReference<b>> zTX;
+  ProgressBar pNd;
+  ImageView zSm;
+  RTChattingEmojiView zTS;
+  ImageView zTT;
+  ProgressBar zTU;
+  ImageView zTV;
+  TextView zTW;
   
-  public static void l(String paramString, int paramInt1, int paramInt2)
+  static
   {
-    if (!vCU.containsKey(paramString)) {
-      y.i("AppMsgEmojiItemHolder", "no contain attchid:%s");
-    }
-    do
-    {
-      return;
-      paramString = (b)((WeakReference)vCU.get(paramString)).get();
-    } while (paramString == null);
-    switch (paramInt2)
-    {
-    default: 
-      return;
-    case 0: 
-      paramString.vCR.setVisibility(0);
-      paramString.vCT.setVisibility(8);
-      paramString.vCS.setVisibility(8);
-      paramString.vCR.setProgress(0);
-      return;
-    case 1: 
-      paramString.vCR.setVisibility(8);
-      paramString.vCT.setVisibility(8);
-      paramString.vCS.setVisibility(8);
-      return;
-    }
-    paramString.vCR.setVisibility(8);
-    paramString.vCT.setVisibility(8);
-    paramString.vCS.setVisibility(0);
-    paramString.vCR.setProgress(paramInt1);
-    paramString.vCS.setImageResource(R.g.emoji_download_failed_btn);
+    AppMethodBeat.i(32939);
+    zTX = new HashMap();
+    AppMethodBeat.o(32939);
   }
   
-  public final c.a s(View paramView, boolean paramBoolean)
+  public static void v(String paramString, int paramInt1, int paramInt2)
   {
-    super.dN(paramView);
-    this.dsz = ((TextView)paramView.findViewById(R.h.chatting_time_tv));
-    this.vCP = ((RTChattingEmojiView)paramView.findViewById(R.h.chatting_content_iv));
-    this.khV = ((CheckBox)paramView.findViewById(R.h.chatting_checkbox));
-    this.hoY = paramView.findViewById(R.h.chatting_maskview);
-    this.vCR = ((ProgressBar)paramView.findViewById(R.h.chatting_download_progress));
-    this.vCS = ((ImageView)paramView.findViewById(R.h.chatting_status_btn));
-    this.vCT = ((TextView)paramView.findViewById(R.h.chatting_size_iv));
+    AppMethodBeat.i(32938);
+    if (!zTX.containsKey(paramString))
+    {
+      ab.i("AppMsgEmojiItemHolder", "no contain attchid:%s");
+      AppMethodBeat.o(32938);
+      return;
+    }
+    paramString = (b)((WeakReference)zTX.get(paramString)).get();
+    if (paramString != null) {
+      switch (paramInt2)
+      {
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(32938);
+      return;
+      paramString.zTU.setVisibility(8);
+      paramString.zTW.setVisibility(8);
+      paramString.zTV.setVisibility(8);
+      AppMethodBeat.o(32938);
+      return;
+      paramString.zTU.setVisibility(8);
+      paramString.zTW.setVisibility(8);
+      paramString.zTV.setVisibility(0);
+      paramString.zTU.setProgress(paramInt1);
+      paramString.zTV.setImageResource(2130838613);
+      AppMethodBeat.o(32938);
+      return;
+      paramString.zTU.setVisibility(0);
+      paramString.zTW.setVisibility(8);
+      paramString.zTV.setVisibility(8);
+      paramString.zTU.setProgress(0);
+    }
+  }
+  
+  public final c.a A(View paramView, boolean paramBoolean)
+  {
+    AppMethodBeat.i(32937);
+    super.eV(paramView);
+    this.ekh = ((TextView)paramView.findViewById(2131820587));
+    this.zTS = ((RTChattingEmojiView)paramView.findViewById(2131822642));
+    this.mCC = ((CheckBox)paramView.findViewById(2131820579));
+    this.jbK = paramView.findViewById(2131820586);
+    this.zTU = ((ProgressBar)paramView.findViewById(2131822643));
+    this.zTV = ((ImageView)paramView.findViewById(2131822645));
+    this.zTW = ((TextView)paramView.findViewById(2131822644));
     if (!paramBoolean)
     {
-      this.nhQ = ((ProgressBar)paramView.findViewById(R.h.uploading_pb));
-      this.vBa = ((ImageView)paramView.findViewById(R.h.chatting_state_iv));
-      this.vBN = ((ImageView)paramView.findViewById(R.h.chatting_status_tick));
+      this.pNd = ((ProgressBar)paramView.findViewById(2131822728));
+      this.zRC = ((ImageView)paramView.findViewById(2131822695));
+      this.zSm = ((ImageView)paramView.findViewById(2131822729));
     }
-    if (this.vCQ != null) {
-      ((ViewGroup)this.vCQ.getParent()).setBackgroundDrawable(null);
+    if (this.zTT != null) {
+      ((ViewGroup)this.zTT.getParent()).setBackgroundDrawable(null);
     }
-    this.nSa = ((TextView)paramView.findViewById(R.h.chatting_user_tv));
+    this.qFY = ((TextView)paramView.findViewById(2131821122));
+    AppMethodBeat.o(32937);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.k.b
  * JD-Core Version:    0.7.0.1
  */

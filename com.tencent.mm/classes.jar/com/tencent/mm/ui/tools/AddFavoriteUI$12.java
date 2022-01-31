@@ -1,26 +1,30 @@
 package com.tencent.mm.ui.tools;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class AddFavoriteUI$12
-  extends ah
+  extends ak
 {
   AddFavoriteUI$12(AddFavoriteUI paramAddFavoriteUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    AddFavoriteUI.d(this.vYd);
-    if ((bk.bl(this.vYd.filePath)) || ((bk.aae(this.vYd.filePath)) && (!AddFavoriteUI.aeh(this.vYd.filePath))))
+    AppMethodBeat.i(34754);
+    AddFavoriteUI.d(this.Aqp);
+    if ((bo.isNullOrNil(this.Aqp.filePath)) || ((bo.aqi(this.Aqp.filePath)) && (!AddFavoriteUI.auO(this.Aqp.filePath))))
     {
-      y.e("MicroMsg.AddFavoriteUI", "launch : fail, filePath is null or file is not a valid img.");
-      AddFavoriteUI.g(this.vYd);
-      this.vYd.finish();
+      ab.e("MicroMsg.AddFavoriteUI", "launch : fail, filePath is null or file is not a valid img.");
+      AddFavoriteUI.g(this.Aqp);
+      this.Aqp.finish();
+      AppMethodBeat.o(34754);
       return;
     }
-    AddFavoriteUI.h(this.vYd);
+    AddFavoriteUI.h(this.Aqp);
+    AppMethodBeat.o(34754);
   }
 }
 

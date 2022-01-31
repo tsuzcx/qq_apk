@@ -4,13 +4,13 @@ import com.tencent.mm.pointers.PString;
 
 public abstract interface OfflineVideoView$a
 {
+  public abstract void Ef(int paramInt);
+  
+  public abstract void Es();
+  
   public abstract boolean a(PString paramPString);
   
   public abstract void onStart(int paramInt);
-  
-  public abstract void ug();
-  
-  public abstract void yg(int paramInt);
 }
 
 

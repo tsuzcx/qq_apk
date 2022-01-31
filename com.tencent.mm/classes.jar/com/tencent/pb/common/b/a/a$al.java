@@ -8,28 +8,28 @@ import java.util.Arrays;
 public final class a$al
   extends e
 {
-  public byte[] buffer = g.aUP;
-  public int tFK = 0;
+  public byte[] buffer = g.bhf;
+  public int iLen = 0;
   
   public a$al()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
-    paramb.aM(1, this.tFK);
-    if (!Arrays.equals(this.buffer, g.aUP)) {
+    paramb.bk(1, this.iLen);
+    if (!Arrays.equals(this.buffer, g.bhf)) {
       paramb.b(2, this.buffer);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ() + b.aO(1, this.tFK);
+    int j = super.sz() + b.bm(1, this.iLen);
     int i = j;
-    if (!Arrays.equals(this.buffer, g.aUP)) {
+    if (!Arrays.equals(this.buffer, g.bhf)) {
       i = j + b.c(2, this.buffer);
     }
     return i;
@@ -37,7 +37,7 @@ public final class a$al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.al
  * JD-Core Version:    0.7.0.1
  */

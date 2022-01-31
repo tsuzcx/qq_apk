@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.backup.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.c.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 public final class a$1
@@ -11,15 +12,17 @@ public final class a$1
   
   public final void run()
   {
-    if (this.hHz.hHr != null) {
-      this.hHz.hHr.cancel();
+    AppMethodBeat.i(17221);
+    if (this.jAV.jAN != null) {
+      this.jAV.jAN.cancel();
     }
-    this.hHz.hHr = new b();
-    if ((this.hHz.atO() == null) || (this.hHz.atO().size() == 0))
+    this.jAV.jAN = new b();
+    if ((this.jAV.aTm() == null) || (this.jAV.aTm().size() == 0))
     {
-      y.e("MicroMsg.BackupMoveChooseServer", "backupSessionInfo is null or nill!");
-      this.hHz.hHr.a(this.hHz);
+      ab.e("MicroMsg.BackupMoveChooseServer", "backupSessionInfo is null or nill!");
+      this.jAV.jAN.a(this.jAV);
     }
+    AppMethodBeat.o(17221);
   }
 }
 

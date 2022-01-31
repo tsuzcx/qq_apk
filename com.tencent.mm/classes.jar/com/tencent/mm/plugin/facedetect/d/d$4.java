@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.facedetect.d;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class d$4
   implements Animation.AnimationListener
@@ -11,7 +12,9 @@ final class d$4
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    ai.l(new d.4.1(this), 500L);
+    AppMethodBeat.i(314);
+    al.p(new d.4.1(this), 500L);
+    AppMethodBeat.o(314);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +23,7 @@ final class d$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.d.4
  * JD-Core Version:    0.7.0.1
  */

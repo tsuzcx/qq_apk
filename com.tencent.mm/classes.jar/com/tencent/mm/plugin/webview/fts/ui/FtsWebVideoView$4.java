@@ -1,29 +1,34 @@
 package com.tencent.mm.plugin.webview.fts.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.ui.b;
 import com.tencent.mm.plugin.websearch.ui.WebSearchWebVideoViewControlBar;
 import com.tencent.mm.plugin.webview.fts.c.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FtsWebVideoView$4
   implements b
 {
   FtsWebVideoView$4(FtsWebVideoView paramFtsWebVideoView) {}
   
-  public final void akz()
+  public final void aFf()
   {
-    y.i("MicroMsg.FtsWebVideoView", "onSeekPre");
-    FtsWebVideoView.c(this.raW).bOy();
+    AppMethodBeat.i(5826);
+    ab.i("MicroMsg.FtsWebVideoView", "onSeekPre");
+    FtsWebVideoView.c(this.uQE).baj();
+    AppMethodBeat.o(5826);
   }
   
-  public final void lE(int paramInt)
+  public final void on(int paramInt)
   {
-    y.i("MicroMsg.FtsWebVideoView", "onSeekTo %d", new Object[] { Integer.valueOf(paramInt) });
-    this.raW.D(paramInt, false);
-    FtsWebVideoView.c(this.raW).akG();
-    if (FtsWebVideoView.h(this.raW) != null) {
-      FtsWebVideoView.h(this.raW).caP();
+    AppMethodBeat.i(5827);
+    ab.i("MicroMsg.FtsWebVideoView", "onSeekTo %d", new Object[] { Integer.valueOf(paramInt) });
+    this.uQE.at(paramInt, false);
+    FtsWebVideoView.c(this.uQE).aFn();
+    if (FtsWebVideoView.h(this.uQE) != null) {
+      FtsWebVideoView.h(this.uQE).daP();
     }
+    AppMethodBeat.o(5827);
   }
 }
 

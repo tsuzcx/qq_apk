@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class OnlineVideoView$15
   implements Runnable
@@ -10,12 +11,14 @@ final class OnlineVideoView$15
   
   public final void run()
   {
-    if ((OnlineVideoView.d(this.oRM) != null) && (OnlineVideoView.k(this.oRM) != null))
+    AppMethodBeat.i(38404);
+    if ((this.rJD.kvG != null) && (this.rJD.rJi != null))
     {
-      int i = OnlineVideoView.d(this.oRM).getCurrentPosition() / 1000;
-      OnlineVideoView.k(this.oRM).jr(i);
+      int i = this.rJD.kvG.getCurrentPosition() / 1000;
+      this.rJD.rJi.mj(i);
     }
-    OnlineVideoView.l(this.oRM).S(500L, 500L);
+    OnlineVideoView.j(this.rJD).ag(500L, 500L);
+    AppMethodBeat.o(38404);
   }
 }
 

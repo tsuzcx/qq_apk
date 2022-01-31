@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 public final class g$a
 {
-  public static g rCa;
+  public static g vsm;
 }
 
 

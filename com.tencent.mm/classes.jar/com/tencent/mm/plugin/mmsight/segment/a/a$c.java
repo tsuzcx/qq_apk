@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.segment.a;
 
 public abstract interface a$c
 {
-  public abstract void bt(Object paramObject);
+  public abstract void bX(Object paramObject);
 }
 
 

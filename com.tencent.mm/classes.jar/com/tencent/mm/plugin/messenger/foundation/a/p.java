@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
 import com.tencent.mm.kernel.b.a;
-import com.tencent.mm.model.ai;
-import com.tencent.mm.model.bx;
+import com.tencent.mm.model.aj;
+import com.tencent.mm.model.bz;
 
 public abstract interface p
   extends a
 {
-  public abstract bx getSysCmdMsgExtension();
+  public abstract bz getSysCmdMsgExtension();
   
-  public abstract void setIDataTransferFactoryDelegate(ai paramai);
+  public abstract void setIDataTransferFactoryDelegate(aj paramaj);
 }
 
 

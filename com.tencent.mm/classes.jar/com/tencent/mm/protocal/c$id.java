@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$id
+final class c$id
   extends c.g
 {
-  public c$id()
+  c$id()
   {
-    super("setGameDebugConfig", "setGameDebugConfig", 1111111, false);
+    super("selectContact", "selectContact", 10000, true);
   }
 }
 

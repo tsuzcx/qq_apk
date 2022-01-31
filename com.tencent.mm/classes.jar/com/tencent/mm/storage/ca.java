@@ -2,57 +2,75 @@ package com.tencent.mm.storage;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class ca
-  extends i<bz>
+  extends j<bz>
 {
-  public static final String[] dXp = { i.a(bz.buS, "UserOpenIdInApp") };
-  public e dXw;
+  public static final String[] SQL_CREATE;
+  public e db;
+  
+  static
+  {
+    AppMethodBeat.i(29075);
+    SQL_CREATE = new String[] { j.getCreateSQLs(bz.info, "UserOpenIdInApp") };
+    AppMethodBeat.o(29075);
+  }
   
   public ca(e parame)
   {
-    super(parame, bz.buS, "UserOpenIdInApp", null);
-    this.dXw = parame;
-    parame.gk("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppAppIdUsernameIndex ON UserOpenIdInApp ( appId,username )");
-    parame.gk("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppOpenIdIndex ON UserOpenIdInApp ( openId )");
+    super(parame, bz.info, "UserOpenIdInApp", null);
+    AppMethodBeat.i(29071);
+    this.db = parame;
+    parame.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppAppIdUsernameIndex ON UserOpenIdInApp ( appId,username )");
+    parame.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppOpenIdIndex ON UserOpenIdInApp ( openId )");
+    AppMethodBeat.o(29071);
   }
   
   public final boolean a(bz parambz)
   {
-    if ((parambz == null) || (bk.bl(parambz.field_appId)) || (bk.bl(parambz.field_openId)) || (bk.bl(parambz.field_username)))
+    AppMethodBeat.i(29073);
+    if ((parambz == null) || (bo.isNullOrNil(parambz.field_appId)) || (bo.isNullOrNil(parambz.field_openId)) || (bo.isNullOrNil(parambz.field_username)))
     {
-      y.w("MicroMsg.scanner.UserOpenIdInAppStorage", "wrong argument");
+      ab.w("MicroMsg.scanner.UserOpenIdInAppStorage", "wrong argument");
+      AppMethodBeat.o(29073);
       return false;
     }
-    ContentValues localContentValues = parambz.vf();
-    if (this.dXw.replace("UserOpenIdInApp", bz.buS.ujM, localContentValues) > 0L) {}
+    ContentValues localContentValues = parambz.convertTo();
+    if (this.db.replace("UserOpenIdInApp", bz.info.yrL, localContentValues) > 0L) {}
     for (boolean bool = true;; bool = false)
     {
-      y.d("MicroMsg.scanner.UserOpenIdInAppStorage", "replace: appId=%s, username=%s, ret=%s ", new Object[] { parambz.field_appId, parambz.field_username, Boolean.valueOf(bool) });
+      ab.d("MicroMsg.scanner.UserOpenIdInAppStorage", "replace: appId=%s, username=%s, ret=%s ", new Object[] { parambz.field_appId, parambz.field_username, Boolean.valueOf(bool) });
+      AppMethodBeat.o(29073);
       return bool;
     }
   }
   
-  public final bz acu(String paramString)
+  public final bz asG(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {
+    AppMethodBeat.i(29072);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(29072);
       return null;
     }
-    Cursor localCursor = this.dXw.a("UserOpenIdInApp", null, "openId=?", new String[] { bk.pl(paramString) }, null, null, null, 2);
+    Cursor localCursor = this.db.a("UserOpenIdInApp", null, "openId=?", new String[] { bo.wC(paramString) }, null, null, null, 2);
     if (!localCursor.moveToFirst())
     {
-      y.w("MicroMsg.scanner.UserOpenIdInAppStorage", "get null with openId:" + paramString);
+      ab.w("MicroMsg.scanner.UserOpenIdInAppStorage", "get null with openId:".concat(String.valueOf(paramString)));
       localCursor.close();
+      AppMethodBeat.o(29072);
       return null;
     }
     paramString = new bz();
-    paramString.d(localCursor);
+    paramString.convertFrom(localCursor);
     localCursor.close();
+    AppMethodBeat.o(29072);
     return paramString;
   }
 }

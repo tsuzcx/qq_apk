@@ -2,10 +2,10 @@ package com.tencent.xweb;
 
 public final class XWebCoreContentProvider$d
 {
-  public int gKH = 0;
+  public String BEA = "";
+  public String BEz = "";
+  public int ilI = 0;
   public int opType = -1;
-  public String xhw = "";
-  public String xhx = "";
 }
 
 

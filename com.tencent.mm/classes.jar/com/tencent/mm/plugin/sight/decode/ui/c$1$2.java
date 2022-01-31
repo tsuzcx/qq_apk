@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sight.decode.ui;
 
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import com.tencent.mm.plugin.ai.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$1$2
   implements Runnable
@@ -11,8 +11,10 @@ final class c$1$2
   
   public final void run()
   {
-    c.d(this.ofX.ofW).setVisibility(0);
-    c.d(this.ofX.ofW).startAnimation(AnimationUtils.loadAnimation(this.ofX.ofW.getContext(), a.a.fast_faded_in));
+    AppMethodBeat.i(70278);
+    c.d(this.qUm.qUl).setVisibility(0);
+    c.d(this.qUm.qUl).startAnimation(AnimationUtils.loadAnimation(this.qUm.qUl.getContext(), 2131034181));
+    AppMethodBeat.o(70278);
   }
 }
 

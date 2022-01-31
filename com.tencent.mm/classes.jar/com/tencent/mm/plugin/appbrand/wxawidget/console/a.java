@@ -6,8 +6,8 @@ import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.LogInfo;
-import com.tencent.mm.plugin.appbrand.wxawidget.b.c;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -16,40 +16,60 @@ import java.util.List;
 final class a
   extends RecyclerView.a
 {
-  private static final SimpleDateFormat hEc = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
-  LayoutInflater Lu;
-  List<LogInfo> hEd;
+  private static final SimpleDateFormat jxp;
+  List<LogInfo> jxq;
+  LayoutInflater mInflater;
+  
+  static
+  {
+    AppMethodBeat.i(11131);
+    jxp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+    AppMethodBeat.o(11131);
+  }
   
   a(Context paramContext)
   {
-    this.Lu = LayoutInflater.from(paramContext);
-    this.hEd = new LinkedList();
+    AppMethodBeat.i(11126);
+    this.mInflater = LayoutInflater.from(paramContext);
+    this.jxq = new LinkedList();
+    AppMethodBeat.o(11126);
   }
   
   public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new a.a(this.Lu.inflate(b.c.console_log_item, paramViewGroup, false), paramInt);
+    AppMethodBeat.i(11127);
+    paramViewGroup = new a.a(this.mInflater.inflate(2130969211, paramViewGroup, false), paramInt);
+    AppMethodBeat.o(11127);
+    return paramViewGroup;
   }
   
   public final void a(RecyclerView.v paramv, int paramInt)
   {
-    LogInfo localLogInfo = (LogInfo)this.hEd.get(paramInt);
-    ((a.a)paramv).fuN.setText(String.format("[%s] %s", new Object[] { hEc.format(new Date(localLogInfo.ts)), localLogInfo.message }));
+    AppMethodBeat.i(11128);
+    LogInfo localLogInfo = (LogInfo)this.jxq.get(paramInt);
+    ((a.a)paramv).gMp.setText(String.format("[%s] %s", new Object[] { jxp.format(new Date(localLogInfo.ts)), localLogInfo.message }));
+    AppMethodBeat.o(11128);
   }
   
   public final int getItemCount()
   {
-    return this.hEd.size();
+    AppMethodBeat.i(11129);
+    int i = this.jxq.size();
+    AppMethodBeat.o(11129);
+    return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    return ((LogInfo)this.hEd.get(paramInt)).level;
+    AppMethodBeat.i(11130);
+    paramInt = ((LogInfo)this.jxq.get(paramInt)).level;
+    AppMethodBeat.o(11130);
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.kernel.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.account.friend.a.l;
 
 final class FindMContactAlertUI$4
   implements DialogInterface.OnClickListener
@@ -13,13 +13,15 @@ final class FindMContactAlertUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    g.DP().Dz().o(12322, Boolean.valueOf(false));
+    AppMethodBeat.i(13566);
+    l.dx(false);
     paramDialogInterface = new StringBuilder();
-    g.DN();
-    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.Df()).append(",").append(this.fdg.getClass().getName()).append(",R300_200_phone,");
-    g.DN();
-    com.tencent.mm.plugin.b.a.qk(com.tencent.mm.kernel.a.gd("R300_200_phone") + ",2");
-    FindMContactAlertUI.d(this.fdg);
+    g.RJ();
+    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.QX()).append(",").append(this.guR.getClass().getName()).append(",R300_200_phone,");
+    g.RJ();
+    com.tencent.mm.plugin.b.a.xE(com.tencent.mm.kernel.a.mx("R300_200_phone") + ",2");
+    FindMContactAlertUI.d(this.guR);
+    AppMethodBeat.o(13566);
   }
 }
 

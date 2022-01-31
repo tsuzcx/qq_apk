@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.wear.model.f;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.c.cjv;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cxi;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -11,18 +12,18 @@ import java.util.LinkedList;
 public final class i
   extends c
 {
-  private ArrayList<Integer> qSO;
-  private boolean yB;
+  private ArrayList<Integer> uHV;
+  private boolean zd;
   
   public i()
   {
-    this.yB = true;
+    this.zd = true;
   }
   
   public i(ArrayList<Integer> paramArrayList)
   {
-    this.qSO = paramArrayList;
-    this.yB = false;
+    this.uHV = paramArrayList;
+    this.zd = false;
   }
   
   public final String getName()
@@ -32,19 +33,24 @@ public final class i
   
   protected final void send()
   {
-    y.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.qSO });
-    cjv localcjv = new cjv();
-    if (this.qSO != null) {
-      localcjv.tXz.addAll(this.qSO);
+    AppMethodBeat.i(26447);
+    ab.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.uHV });
+    cxi localcxi = new cxi();
+    if (this.uHV != null) {
+      localcxi.yeQ.addAll(this.uHV);
     }
-    localcjv.tXA = this.yB;
+    localcxi.yeR = this.zd;
     try
     {
-      a.bYL();
-      r.b(20004, localcjv.toByteArray(), false);
+      a.cYy();
+      r.a(20004, localcxi.toByteArray(), false);
+      AppMethodBeat.o(26447);
       return;
     }
-    catch (IOException localIOException) {}
+    catch (IOException localIOException)
+    {
+      AppMethodBeat.o(26447);
+    }
   }
 }
 

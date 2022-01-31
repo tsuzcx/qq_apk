@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
-import com.tencent.mm.protocal.c.baa;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bhd;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,61 +12,63 @@ final class BizTimeLineHotListView$1
   
   public final void run()
   {
-    int m = this.ihu.getCurrentPage();
-    int j = f.nn(m);
-    int k = f.no(m);
+    AppMethodBeat.i(14280);
+    int m = this.jZc.getCurrentPage();
+    int j = f.qU(m);
+    int k = f.qV(m);
     int i = j;
     if (m == 0) {
       i = j + 1;
     }
-    if ((i <= k) && (i < this.iht.size()))
+    if ((i <= k) && (i < this.jZb.size()))
     {
-      b localb = (b)this.iht.get(i);
+      b localb = (b)this.jZb.get(i);
       e locale;
-      baa localbaa;
+      bhd localbhd;
       if (localb != null)
       {
-        locale = BizTimeLineHotListView.a(this.ihu);
+        locale = BizTimeLineHotListView.a(this.jZc);
         if (localb != null)
         {
-          localbaa = (baa)locale.ihI.get(localb.sxi);
-          if (localbaa != null) {
-            break label201;
+          localbhd = (bhd)locale.jZv.get(localb.wqR);
+          if (localbhd != null) {
+            break label207;
           }
-          localbaa = new baa();
-          localbaa.sDq = localb.sxi;
-          if (!localb.ihG) {
-            break label196;
+          localbhd = new bhd();
+          localbhd.wyW = localb.wqR;
+          if (!localb.jZt) {
+            break label202;
           }
         }
       }
-      label196:
+      label202:
       for (j = 1;; j = 0)
       {
-        localbaa.tvT = j;
-        localbaa.tvU = ((int)(System.currentTimeMillis() / 1000L));
-        localbaa.kQt = (localb.position - 1);
-        localbaa.ijY = 1;
-        locale.ihI.put(localb.sxi, localbaa);
+        localbhd.xwe = j;
+        localbhd.xwf = ((int)(System.currentTimeMillis() / 1000L));
+        localbhd.nox = (localb.position - 1);
+        localbhd.kkY = 1;
+        locale.jZv.put(localb.wqR, localbhd);
         i += 1;
         break;
       }
-      label201:
-      if (localb.ihG) {}
+      label207:
+      if (localb.jZt) {}
       for (j = 1;; j = 0)
       {
-        localbaa.tvT = j;
-        localbaa.tvU = ((int)(System.currentTimeMillis() / 1000L));
-        localbaa.kQt = (localb.position - 1);
-        localbaa.ijY += 1;
+        localbhd.xwe = j;
+        localbhd.xwf = ((int)(System.currentTimeMillis() / 1000L));
+        localbhd.nox = (localb.position - 1);
+        localbhd.kkY += 1;
         break;
       }
     }
+    AppMethodBeat.o(14280);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotListView.1
  * JD-Core Version:    0.7.0.1
  */

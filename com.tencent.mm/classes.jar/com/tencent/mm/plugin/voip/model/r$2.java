@@ -1,39 +1,26 @@
 package com.tencent.mm.plugin.voip.model;
 
-import com.tencent.mm.m.f;
-import com.tencent.mm.plugin.voip.model.a.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class r$2
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  r$2(r paramr, int paramInt, long paramLong) {}
+  r$2(Context paramContext) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.Voip.VoipService", "onDelayInvite, roomId:%s, roomKey:%s", new Object[] { Integer.valueOf(this.pzR), Long.valueOf(this.pzS) });
-    if ((!f.zR()) && (!r.em(ae.getContext()))) {
-      y.i("MicroMsg.Voip.VoipService", "background now and notification Is closed.");
-    }
-    do
-    {
-      return;
-      if (!this.pTG.pTq.bRp()) {
-        break;
-      }
-      y.i("MicroMsg.Voip.VoipService", "room is ready, ingore the msg and ack busy");
-    } while ((this.pTG.pTq.pNq.pQe.lpD == this.pzR) || (this.pTG.pTq.pNq.pQe.lpE == this.pzS));
-    y.i("MicroMsg.Voip.VoipService", "not match current room id and roomkey: %s %s %s %s", new Object[] { Integer.valueOf(this.pzR), Long.valueOf(this.pzS), Integer.valueOf(this.pTG.pTq.pNq.pQe.lpD), Long.valueOf(this.pTG.pTq.pNq.pQe.lpE) });
-    s locals = this.pTG.pTq;
-    s.a(this.pzR, this.pzS, 2, null, null, r.b(this.pTG));
-    return;
-    new e(this.pzR, this.pzS, "").bRB();
+    AppMethodBeat.i(4577);
+    r.fh(this.val$context);
+    r.access$000();
+    AppMethodBeat.o(4577);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.r.2
  * JD-Core Version:    0.7.0.1
  */

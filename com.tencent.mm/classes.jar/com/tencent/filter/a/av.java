@@ -3,39 +3,36 @@ package com.tencent.filter.a;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.GLSLRender;
 import com.tencent.filter.k;
-import com.tencent.filter.m.f;
-import com.tencent.filter.m.g;
 import com.tencent.filter.m.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class av
   extends BaseFilter
 {
   public av()
   {
-    super(GLSLRender.bcE);
+    super(GLSLRender.btg);
   }
   
   public final void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    Object localObject2 = new k();
-    ((k)localObject2).a(-3.0F, 40.0F, 10.0F, 316.0F, 348.0F, 10.0F, 45.0F);
-    setNextFilter((BaseFilter)localObject2, null);
-    Object localObject1 = new k();
-    ((k)localObject1).a(0.0F, 5.0F, 25.0F, 0.0F, 32.0F, 52.0F, 82.0F);
-    ((BaseFilter)localObject2).setNextFilter((BaseFilter)localObject1, null);
-    localObject2 = new BaseFilter(GLSLRender.bdG);
-    ((BaseFilter)localObject2).addParam(new m.o("inputImageTexture2", "sh/milkblue_curve.png", 33986));
-    ((BaseFilter)localObject1).setNextFilter((BaseFilter)localObject2, null);
-    localObject1 = new BaseFilter(GLSLRender.bdP);
-    ((BaseFilter)localObject1).addParam(new m.g("color2", new float[] { 0.7294118F, 0.8901961F, 0.9960784F, 1.0F }));
-    ((BaseFilter)localObject1).addParam(new m.f("transparency", 0.1F));
-    ((BaseFilter)localObject2).setNextFilter((BaseFilter)localObject1, null);
+    AppMethodBeat.i(86503);
+    Object localObject = new k();
+    ((k)localObject).a(4.0F, 9.0F, -2.0F, 309.0F, 334.0F, 6.0F, 32.0F);
+    setNextFilter((BaseFilter)localObject, null);
+    k localk = new k();
+    ((k)localk).a(0.0F, -17.0F, 4.0F, 338.0F, 16.0F, 61.0F, 93.0F);
+    ((BaseFilter)localObject).setNextFilter(localk, null);
+    localObject = new BaseFilter(GLSLRender.buj);
+    ((BaseFilter)localObject).addParam(new m.o("inputImageTexture2", "sh/lightred_curve.png", 33986));
+    localk.setNextFilter((BaseFilter)localObject, null);
     super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.o(86503);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.filter.a.av
  * JD-Core Version:    0.7.0.1
  */

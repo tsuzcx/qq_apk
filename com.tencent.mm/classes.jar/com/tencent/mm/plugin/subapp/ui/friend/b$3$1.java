@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.subapp.ui.friend;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.ax;
 
 final class b$3$1
@@ -11,7 +12,9 @@ final class b$3$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a.a(b.a(this.pwm.pwh), this.pwl, false);
+    AppMethodBeat.i(25348);
+    a.b(b.a(this.sXS.sXN), this.sXR);
+    AppMethodBeat.o(25348);
   }
 }
 

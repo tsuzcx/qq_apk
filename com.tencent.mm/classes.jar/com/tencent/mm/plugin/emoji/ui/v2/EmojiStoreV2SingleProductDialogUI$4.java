@@ -1,29 +1,25 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mm.as.a.c.i;
-import com.tencent.mm.protocal.c.ut;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EmojiStoreV2SingleProductDialogUI$4
-  implements i
+  implements DialogInterface.OnDismissListener
 {
   EmojiStoreV2SingleProductDialogUI$4(EmojiStoreV2SingleProductDialogUI paramEmojiStoreV2SingleProductDialogUI) {}
   
-  public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramBitmap != null) && (paramVarArgs != null) && (paramVarArgs.length > 0) && (EmojiStoreV2SingleProductDialogUI.e(this.jif) != null) && (paramVarArgs[0] != null) && ((paramVarArgs[0] instanceof ut)))
-    {
-      paramString = (ut)paramVarArgs[0];
-      if ((EmojiStoreV2SingleProductDialogUI.a(this.jif) != null) && (paramString != null) && (paramString.jnU.equals(EmojiStoreV2SingleProductDialogUI.a(this.jif).jnU))) {
-        EmojiStoreV2SingleProductDialogUI.f(this.jif);
-      }
-    }
+    AppMethodBeat.i(53733);
+    this.lqW.setResult(0);
+    this.lqW.finish();
+    AppMethodBeat.o(53733);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2SingleProductDialogUI.4
  * JD-Core Version:    0.7.0.1
  */

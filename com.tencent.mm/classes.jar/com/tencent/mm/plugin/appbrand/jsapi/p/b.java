@@ -1,25 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.l;
+import a.l;
 
-public final class b
-  extends a<f>
-{
-  public static final int CTRL_INDEX = 94;
-  public static final String NAME = "enableCompass";
-  
-  public static final class a
-    extends l
-  {
-    private static final int CTRL_INDEX = 95;
-    private static final String NAME = "onCompassChange";
-  }
-}
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/AppBrandJsApiReporterKt;", "", "()V", "getPermissionValue", "", "info", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiInfo;", "plugin-appbrand-integration_release"})
+public class b {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.b
  * JD-Core Version:    0.7.0.1
  */

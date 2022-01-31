@@ -2,19 +2,7 @@ package com.tencent.mm.pluginsdk.f;
 
 public abstract interface f$a
 {
-  public abstract boolean aiS();
-  
-  public abstract boolean bLD();
-  
-  public abstract String bLF();
-  
-  public abstract String bLG();
-  
-  public abstract boolean bLH();
-  
-  public abstract String bLI();
-  
-  public abstract String bLJ();
+  public abstract boolean cGM();
 }
 
 

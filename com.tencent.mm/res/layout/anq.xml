@@ -1,31 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/p1"
+<ScrollView android:scrollbarAlwaysDrawVerticalTrack="false" android:id="@id/dwp" android:background="@color/vy" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:fadeScrollbars="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:id="@id/dsc" android:background="@color/cm" android:scrollbars="none" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:background="@color/a23" android:padding="@dimen/kl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/ko">
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/l7" android:background="@drawable/sj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kl">
-                <RelativeLayout android:layout_width="@dimen/dm" android:layout_height="@dimen/dm">
-                    <ImageView android:id="@id/l8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/afw" />
-                    <View android:id="@id/l9" android:background="@drawable/vz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-                </RelativeLayout>
-                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/li" android:layout_weight="3.0">
-                    <TextView android:textSize="@dimen/lj" android:textColor="@color/ta" android:ellipsize="end" android:id="@id/l_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:drawableRight="@raw/ic_sex_male" android:drawablePadding="4.0dip" />
-                    <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/la" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dl" android:singleLine="true" />
-                </LinearLayout>
-            </LinearLayout>
-            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <ImageView android:layout_gravity="center" android:id="@id/lb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-                <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/lc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <TextView android:textSize="@dimen/lj" android:gravity="center" android:paddingTop="@dimen/a4v" android:paddingBottom="@dimen/a4v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dvm" />
-                    <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:ellipsize="end" android:gravity="center" android:paddingLeft="@dimen/a4v" android:paddingRight="@dimen/a4v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dvo" android:maxLines="3" />
-                    <TextView android:textSize="@dimen/lj" android:textColor="@color/fi" android:id="@id/ld" android:paddingTop="@dimen/l3" android:paddingBottom="@dimen/du" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dvn" />
-                </LinearLayout>
-            </FrameLayout>
-            <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:gravity="center" android:id="@id/le" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kl" android:text="@string/dv9" />
+    <LinearLayout android:orientation="vertical" android:id="@id/a9a" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:id="@id/dwq" style="@style/a0o">
+            <TextView android:id="@id/dwr" android:text="@string/dh6" style="@style/d" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/dws" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+            <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/dwt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <AutoCompleteTextView style="@style/a0n" />
+                </FrameLayout>
+            </com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl>
+            <ImageView android:id="@id/dwu" style="@style/b" />
         </LinearLayout>
-    </ScrollView>
-    <RelativeLayout android:background="@drawable/za" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/a6k">
-        <ImageView android:id="@id/dsd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@raw/tipsbar_icon_arrow_dark" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/a6m" android:textColor="@color/fd" android:ellipsize="end" android:gravity="left" android:id="@id/dse" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="4.0dip" android:layout_toLeftOf="@id/dsd" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</FrameLayout>
+        <LinearLayout android:id="@id/dwv" style="@style/a0o">
+            <TextView android:text="@string/dgz" style="@style/d" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/dww" android:visibility="gone" style="@style/a0o">
+            <TextView android:text="@string/dgx" style="@style/d" />
+            <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/dwx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <AutoCompleteTextView style="@style/a0n" />
+                </FrameLayout>
+            </com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl>
+            <ImageView android:id="@id/dwy" android:visibility="invisible" style="@style/b" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/dwz" android:visibility="gone" style="@style/a0o">
+            <TextView android:text="@string/dgv" style="@style/d" />
+            <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/dx0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <AutoCompleteTextView style="@style/a0n" />
+                </FrameLayout>
+            </com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl>
+            <ImageView android:id="@id/dx1" android:visibility="invisible" style="@style/b" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/dx2" style="@style/a0o">
+            <TextView android:text="@string/dh4" style="@style/d" />
+            <EditText android:id="@id/dx3" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <ImageView android:id="@id/dx4" android:visibility="gone" android:src="@drawable/ut" style="@style/e" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dx5" android:background="@drawable/z8" android:focusable="true" style="@style/a0o">
+            <TextView android:textSize="@dimen/dq" android:textColor="@color/wv" android:id="@id/dx6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dgp" android:layout_weight="1.0" />
+            <ImageView android:id="@id/dx7" android:src="@raw/qqmail_attach_icon_normal" style="@style/a0m" />
+        </LinearLayout>
+        <LinearLayout android:visibility="gone" style="@style/c">
+            <LinearLayout android:orientation="vertical" android:id="@id/dx8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView android:id="@id/dx9" android:background="@drawable/aq6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/dh3" />
+        <EditText android:textSize="@dimen/ko" android:gravity="center|left|top" android:id="@id/dx_" android:background="@null" android:padding="5.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="100.0dip" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.MMWebView android:layout_gravity="center|left|top" android:id="@id/dxa" android:background="@null" android:padding="5.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="100.0dip" />
+        <LinearLayout android:gravity="center|top" android:orientation="vertical" android:id="@id/dxb" android:background="@drawable/n3" android:padding="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="20.0dip" android:layout_marginBottom="15.0dip" android:minHeight="100.0dip">
+            <TextView android:textSize="20.0sp" android:textColor="@color/h6" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/dxt" />
+            <TextView android:textSize="15.0sp" android:textColor="#ff454545" android:id="@id/dxc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/dxv" android:maxLines="6" android:singleLine="false" />
+            <ImageView android:id="@id/dxd" android:layout_width="220.0dip" android:layout_height="220.0dip" android:layout_marginTop="23.0dip" android:src="@drawable/ac4" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff888888" android:gravity="center" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="33.0dip" android:text="@string/dxu" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,179 +1,188 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
 import android.content.Context;
-import android.support.v4.view.q;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.support.v4.view.t;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.luggage.l.a.a.c;
-import com.tencent.luggage.l.a.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.d.a;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.x;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public final class u
-  extends LinearLayout
-  implements ab
+  implements a
 {
-  private static final int gdr = a.d.app_brand_keyboard_number;
-  private boolean huF = false;
-  private u.a huG;
-  private AppBrandNumberKeyboardView huH;
-  EditText ln;
+  private static Integer jmK = null;
+  private int jmE;
+  private final int[] jmF;
+  private final Rect jmG;
+  private boolean jmH;
+  private View jmI;
+  b jmJ;
+  private final Set<u.c> jmL;
   
-  private u(Context paramContext)
+  public u()
   {
-    super(paramContext);
-    super.setId(gdr);
-    setOrientation(1);
-    setBackgroundColor(-1);
-    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cb.a.fromDPToPix(getContext(), 30));
-    Object localObject = new RelativeLayout(getContext());
-    ((RelativeLayout)localObject).setOnClickListener(new u.1(this));
-    ((RelativeLayout)localObject).setBackgroundResource(a.c.tenpay_push_down_bg);
-    ImageView localImageView = new ImageView(getContext());
-    localImageView.setImageResource(a.c.tenpay_push_down);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(13);
-    ((RelativeLayout)localObject).addView(localImageView, localLayoutParams);
-    addView((View)localObject, paramContext);
-    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cb.a.fromDPToPix(getContext(), 240));
-    localObject = new AppBrandNumberKeyboardView(getContext());
-    this.huH = ((AppBrandNumberKeyboardView)localObject);
-    addView((View)localObject, paramContext);
+    AppMethodBeat.i(77430);
+    this.jmE = 0;
+    this.jmF = new int[2];
+    this.jmG = new Rect();
+    this.jmH = false;
+    this.jmL = new LinkedHashSet();
+    AppMethodBeat.o(77430);
   }
   
-  public static u cl(View paramView)
+  private void a(u.a parama)
   {
-    return (u)paramView.getRootView().findViewById(gdr);
+    AppMethodBeat.i(77435);
+    Iterator localIterator = this.jmL.iterator();
+    while (localIterator.hasNext()) {
+      parama.c((u.c)localIterator.next());
+    }
+    AppMethodBeat.o(77435);
   }
   
-  public static u cm(View paramView)
+  private Context getContext()
   {
-    u localu = cl(paramView);
-    Object localObject = localu;
-    if (localu == null)
+    AppMethodBeat.i(77432);
+    if (this.jmI == null)
     {
-      localObject = m.ch(paramView);
-      if (localObject == null) {
-        localObject = null;
+      localContext = ah.getContext();
+      AppMethodBeat.o(77432);
+      return localContext;
+    }
+    Context localContext = this.jmI.getContext();
+    AppMethodBeat.o(77432);
+    return localContext;
+  }
+  
+  private int getFrameHeight()
+  {
+    AppMethodBeat.i(77433);
+    if (this.jmI == null) {}
+    for (Object localObject = null; localObject == null; localObject = this.jmI.getRootView())
+    {
+      AppMethodBeat.o(77433);
+      return 0;
+    }
+    localObject = this.jmG;
+    getWindowVisibleDisplayFrame((Rect)localObject);
+    if (t.as(this.jmI)) {}
+    for (int i = this.jmI.getMeasuredHeight();; i = getContext().getResources().getDisplayMetrics().heightPixels)
+    {
+      int j = ((Rect)localObject).top;
+      AppMethodBeat.o(77433);
+      return i - j;
+    }
+  }
+  
+  private void getWindowVisibleDisplayFrame(Rect paramRect)
+  {
+    AppMethodBeat.i(77431);
+    if (this.jmI != null)
+    {
+      this.jmI.getWindowVisibleDisplayFrame(paramRect);
+      this.jmI.getLocationInWindow(this.jmF);
+      paramRect.top = this.jmF[1];
+    }
+    AppMethodBeat.o(77431);
+  }
+  
+  public final void a(u.c paramc)
+  {
+    AppMethodBeat.i(77436);
+    if (paramc != null) {
+      this.jmL.add(paramc);
+    }
+    AppMethodBeat.o(77436);
+  }
+  
+  public final void b(u.c paramc)
+  {
+    AppMethodBeat.i(77437);
+    if (paramc != null) {
+      this.jmL.remove(paramc);
+    }
+    AppMethodBeat.o(77437);
+  }
+  
+  public final void cN(View paramView)
+  {
+    int j = 1;
+    AppMethodBeat.i(77434);
+    this.jmI = paramView;
+    paramView = this.jmG;
+    getWindowVisibleDisplayFrame(paramView);
+    int k = paramView.height();
+    boolean bool;
+    if (this.jmE == 0)
+    {
+      this.jmE = k;
+      if (getFrameHeight() <= k) {
+        break label242;
+      }
+      bool = true;
+      label53:
+      if (this.jmH == bool) {
+        break label248;
       }
     }
-    else
+    label242:
+    label248:
+    for (int i = j;; i = 0)
     {
-      return localObject;
-    }
-    paramView = new u(paramView.getContext());
-    ((m)localObject).i(paramView, false);
-    return paramView;
-  }
-  
-  private void onDone()
-  {
-    if ((!this.huF) && (this.huG != null))
-    {
-      this.huF = true;
-      this.huG.onDone();
-      this.huF = false;
-    }
-  }
-  
-  public final boolean arZ()
-  {
-    return q.al(this);
-  }
-  
-  final void asa()
-  {
-    if (this.ln != null)
-    {
-      this.ln.clearFocus();
-      this.ln = null;
-      this.huG = null;
-      this.huF = false;
-    }
-  }
-  
-  public final EditText getAttachedEditText()
-  {
-    return this.ln;
-  }
-  
-  public final int getPanelHeight()
-  {
-    return com.tencent.mm.cb.a.fromDPToPix(getContext(), 270);
-  }
-  
-  protected final void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    removeAllViews();
-  }
-  
-  protected final void onMeasure(int paramInt1, int paramInt2)
-  {
-    if (isShown()) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(getPanelHeight(), 1073741824);
-    }
-    super.onMeasure(paramInt1, paramInt2);
-  }
-  
-  public final void setId(int paramInt) {}
-  
-  public final <_Input extends EditText,  extends com.tencent.mm.plugin.appbrand.widget.input.numberpad.a> void setInputEditText(_Input param_Input)
-  {
-    this.ln = param_Input;
-    AppBrandNumberKeyboardView localAppBrandNumberKeyboardView = this.huH;
-    param_Input = (com.tencent.mm.plugin.appbrand.widget.input.numberpad.a)param_Input;
-    if (localAppBrandNumberKeyboardView.huM != param_Input)
-    {
-      if (param_Input == null) {
-        localAppBrandNumberKeyboardView.huL = null;
+      if (i != 0)
+      {
+        if (this.jmJ != null) {
+          this.jmJ.bc(bool);
+        }
+        a(new u.2(this, bool));
       }
-    }
-    else {
+      this.jmH = bool;
+      this.jmE = k;
+      this.jmI = null;
+      AppMethodBeat.o(77434);
       return;
+      int m = getFrameHeight() - k;
+      if (m <= 0) {
+        break;
+      }
+      paramView = getContext();
+      if (m > 0)
+      {
+        if (jmK == null) {
+          jmK = Integer.valueOf(x.gL(paramView));
+        }
+        if (jmK.intValue() != m) {
+          jmK = Integer.valueOf(m);
+        }
+      }
+      for (i = 1;; i = 0)
+      {
+        a(new u.1(this, m));
+        if ((this.jmJ == null) || ((i == 0) && (this.jmJ.getHeight() == m))) {
+          break;
+        }
+        this.jmJ.fu(m);
+        break;
+      }
+      bool = false;
+      break label53;
     }
-    if ((param_Input instanceof View)) {
-      ((View)param_Input).requestFocus();
-    }
-    if ((param_Input instanceof EditText))
-    {
-      ai.a.setNoSystemInputOnEditText((EditText)param_Input);
-      ai.a.c((EditText)param_Input);
-    }
-    localAppBrandNumberKeyboardView.huL = param_Input.arY();
   }
   
-  public final void setOnDoneListener(u.a parama)
-  {
-    this.huG = parama;
-  }
-  
-  public final void setVisibility(int paramInt)
-  {
-    if ((getVisibility() == paramInt) && ((getVisibility() == 0) || (getVisibility() == 8))) {
-      return;
-    }
-    if (paramInt != 0)
-    {
-      super.setVisibility(8);
-      onDone();
-      return;
-    }
-    super.setVisibility(paramInt);
-  }
-  
-  public final void setXMode(int paramInt)
-  {
-    this.huH.setXMode(paramInt);
-  }
+  static abstract interface b
+    extends u.c
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.u
  * JD-Core Version:    0.7.0.1
  */

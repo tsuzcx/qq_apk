@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recentview.BaseAppBrandRecentView.c;
 
 final class c$10
@@ -13,7 +14,9 @@ final class c$10
   
   public final void run()
   {
-    ((BaseAppBrandRecentView.c)this.abK).hCT.animate().scaleX(1.0F).scaleY(1.0F).setDuration(150L).setListener(new c.10.1(this)).start();
+    AppMethodBeat.i(133791);
+    ((BaseAppBrandRecentView.c)this.acv).jft.animate().scaleX(1.0F).scaleY(1.0F).setDuration(150L).setListener(new c.10.1(this)).start();
+    AppMethodBeat.o(133791);
   }
 }
 

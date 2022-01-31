@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -13,151 +14,146 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.remittance.bankcard.a.l;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.c.bhr;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.wallet_core.c.n;
-import com.tencent.mm.wallet_core.c.n.a;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.wallet_core.c.p;
 
 @a(19)
 public class BankRemitDetailUI
   extends BankRemitBaseUI
 {
-  private int faB;
-  private LinearLayout llG;
-  private Button llQ;
+  private int gst;
+  private LinearLayout iCt;
   private int mState;
-  private ViewGroup nwA;
-  private String nwB;
-  private ImageView nwp;
-  private ImageView nwq;
-  private ImageView nwr;
-  private TextView nws;
-  private TextView nwt;
-  private TextView nwu;
-  private TextView nwv;
-  private TextView nww;
-  private TextView nwx;
-  private View nwy;
-  private View nwz;
+  private Button nJm;
+  private View qhA;
+  private View qhB;
+  private ViewGroup qhC;
+  private String qhD;
+  private ImageView qhr;
+  private ImageView qhs;
+  private ImageView qht;
+  private TextView qhu;
+  private TextView qhv;
+  private TextView qhw;
+  private TextView qhx;
+  private TextView qhy;
+  private TextView qhz;
   
-  protected final void baU()
+  protected final void bHV()
   {
-    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(a.c.white)));
+    AppMethodBeat.i(44601);
+    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131690709)));
     Object localObject = getSupportActionBar().getCustomView();
     if (localObject != null)
     {
-      View localView = ((View)localObject).findViewById(a.f.divider);
+      View localView = ((View)localObject).findViewById(2131821148);
       if (localView != null) {
-        localView.setBackgroundColor(getResources().getColor(a.c.half_alpha_white));
+        localView.setBackgroundColor(getResources().getColor(2131690161));
       }
       localObject = ((View)localObject).findViewById(16908308);
       if ((localObject != null) && ((localObject instanceof TextView))) {
-        ((TextView)localObject).setTextColor(getResources().getColor(a.c.black));
+        ((TextView)localObject).setTextColor(getResources().getColor(2131689763));
       }
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
       localObject = getWindow();
       ((Window)localObject).addFlags(-2147483648);
-      ((Window)localObject).setStatusBarColor(getResources().getColor(a.c.white));
+      ((Window)localObject).setStatusBarColor(getResources().getColor(2131690709));
     }
-    BankRemitBaseUI.J(this);
-    this.mController.contentView.setFitsSystemWindows(true);
+    BankRemitBaseUI.ae(this);
+    getContentView().setFitsSystemWindows(true);
+    AppMethodBeat.o(44601);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, final String paramString, m paramm)
+  public int getLayoutId()
   {
-    if ((paramm instanceof l))
+    return 2130968821;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(44600);
+    this.qhr = ((ImageView)findViewById(2131821685));
+    this.qhs = ((ImageView)findViewById(2131821689));
+    this.qht = ((ImageView)findViewById(2131821693));
+    this.qhu = ((TextView)findViewById(2131821686));
+    this.qhv = ((TextView)findViewById(2131821690));
+    this.qhw = ((TextView)findViewById(2131821694));
+    this.qhx = ((TextView)findViewById(2131821687));
+    this.qhy = ((TextView)findViewById(2131821691));
+    this.qhz = ((TextView)findViewById(2131821695));
+    this.qhA = findViewById(2131821682);
+    this.qhB = findViewById(2131821683);
+    this.iCt = ((LinearLayout)findViewById(2131821698));
+    this.qhC = ((ViewGroup)findViewById(2131821680));
+    if (this.gst == 1)
     {
-      paramString = (l)paramm;
-      paramString.a(new BankRemitDetailUI.5(this, paramString)).b(new n.a()
-      {
-        public final void f(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm)
-        {
-          y.e("MicroMsg.BankRemitDetailUI", "detail reponse error: %s, %s", new Object[] { Integer.valueOf(paramString.nvb.iHq), paramString.nvb.iHr });
-          if (!bk.bl(paramString.nvb.iHr))
-          {
-            Toast.makeText(BankRemitDetailUI.this, paramString.nvb.iHr, 1).show();
-            return;
-          }
-          Toast.makeText(BankRemitDetailUI.this, a.i.bank_remit_detail_fetch_fail_text, 1).show();
-        }
-      }).c(new BankRemitDetailUI.3(this));
-    }
-    return true;
-  }
-  
-  protected final int getLayoutId()
-  {
-    return a.g.bank_remit_detail_ui;
-  }
-  
-  public final void initView()
-  {
-    this.nwp = ((ImageView)findViewById(a.f.brdu_state_iv_1));
-    this.nwq = ((ImageView)findViewById(a.f.brdu_state_iv_2));
-    this.nwr = ((ImageView)findViewById(a.f.brdu_state_iv_3));
-    this.nws = ((TextView)findViewById(a.f.brdu_state_title_tv_1));
-    this.nwt = ((TextView)findViewById(a.f.brdu_state_title_tv_2));
-    this.nwu = ((TextView)findViewById(a.f.brdu_state_title_tv_3));
-    this.nwv = ((TextView)findViewById(a.f.brdu_state_desc_tv_1));
-    this.nww = ((TextView)findViewById(a.f.brdu_state_desc_tv_2));
-    this.nwx = ((TextView)findViewById(a.f.brdu_state_desc_tv_3));
-    this.nwy = findViewById(a.f.brdu_state_line_1);
-    this.nwz = findViewById(a.f.brdu_state_line_2);
-    this.llG = ((LinearLayout)findViewById(a.f.brdu_content_layout));
-    this.nwA = ((ViewGroup)findViewById(a.f.brdu_root_layout));
-    if (this.faB == 1)
-    {
-      findViewById(a.f.brdu_finish_layout).setVisibility(8);
+      findViewById(2131821700).setVisibility(8);
+      AppMethodBeat.o(44600);
       return;
     }
-    this.llQ = ((Button)findViewById(a.f.brdu_finish_btn));
-    this.llQ.setOnClickListener(new BankRemitDetailUI.2(this));
+    this.nJm = ((Button)findViewById(2131821701));
+    this.nJm.setOnClickListener(new BankRemitDetailUI.2(this));
+    AppMethodBeat.o(44600);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(44599);
     super.onCreate(paramBundle);
-    kh(1579);
-    this.nwB = getIntent().getStringExtra("key_transfer_bill_id");
-    this.faB = getIntent().getIntExtra("key_enter_scene", 0);
-    y.i("MicroMsg.BankRemitDetailUI", "billId: %s, enterScene: %s", new Object[] { this.nwB, Integer.valueOf(this.faB) });
+    addSceneEndListener(1579);
+    this.qhD = getIntent().getStringExtra("key_transfer_bill_id");
+    this.gst = getIntent().getIntExtra("key_enter_scene", 0);
+    ab.i("MicroMsg.BankRemitDetailUI", "billId: %s, enterScene: %s", new Object[] { this.qhD, Integer.valueOf(this.gst) });
     initView();
-    y.i("MicroMsg.BankRemitDetailUI", "do query detail");
-    a(new l(this.nwB), true, true);
-    if (this.faB == 0)
+    ab.i("MicroMsg.BankRemitDetailUI", "do query detail");
+    doSceneProgress(new l(this.qhD));
+    if (this.gst == 0)
     {
       showHomeBtn(false);
       enableBackMenu(false);
-      setMMTitle(a.i.bank_remit_detail_title_2);
+      setMMTitle(2131297491);
     }
     for (;;)
     {
       setBackBtn(new BankRemitDetailUI.1(this));
+      AppMethodBeat.o(44599);
       return;
       showHomeBtn(true);
       enableBackMenu(true);
-      setMMTitle(a.i.bank_remit_detail_title_1);
+      setMMTitle(2131297490);
     }
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(44603);
     super.onDestroy();
-    ki(1579);
+    removeSceneEndListener(1579);
+    AppMethodBeat.o(44603);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(44602);
+    if ((paramm instanceof l))
+    {
+      paramString = (l)paramm;
+      paramString.a(new BankRemitDetailUI.5(this, paramString)).b(new BankRemitDetailUI.4(this, paramString)).c(new BankRemitDetailUI.3(this));
+    }
+    AppMethodBeat.o(44602);
+    return true;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

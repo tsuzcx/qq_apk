@@ -1,13 +1,14 @@
 package com.tencent.mm.chatroom.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.af;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.ag;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.u;
 
 final class ChatroomInfoUI$37
@@ -17,31 +18,38 @@ final class ChatroomInfoUI$37
   
   public final void run()
   {
-    ChatroomInfoUI.a(this.dod, ((c)g.r(c.class)).FF().in(ChatroomInfoUI.b(this.dod)));
-    if (ChatroomInfoUI.c(this.dod) == null)
+    AppMethodBeat.i(104005);
+    ChatroomInfoUI.a(this.efA, ((c)g.E(c.class)).YJ().oU(ChatroomInfoUI.b(this.efA)));
+    if (ChatroomInfoUI.c(this.efA) == null)
     {
-      y.e("MicroMsg.ChatroomInfoUI", "member is null");
+      ab.e("MicroMsg.ChatroomInfoUI", "member is null");
+      AppMethodBeat.o(104005);
       return;
     }
-    if (bk.bl(ChatroomInfoUI.c(this.dod).field_roomowner))
+    if (bo.isNullOrNil(ChatroomInfoUI.c(this.efA).field_roomowner))
     {
-      y.e("MicroMsg.ChatroomInfoUI", "roomowner is null");
+      ab.e("MicroMsg.ChatroomInfoUI", "roomowner is null");
+      AppMethodBeat.o(104005);
       return;
     }
-    ChatroomInfoUI.A(this.dod).sendEmptyMessage(0);
-    ChatroomInfoUI.c(this.dod, ChatroomInfoUI.c(this.dod).field_roomowner.equals(q.Gj()));
-    ChatroomInfoUI.d(this.dod, ChatroomInfoUI.c(this.dod).aaM(q.Gj()));
-    ChatroomInfoUI.m(this.dod).WI(ChatroomInfoUI.c(this.dod).field_roomowner);
+    ChatroomInfoUI.A(this.efA).sendEmptyMessage(0);
+    ChatroomInfoUI.c(this.efA, ChatroomInfoUI.c(this.efA).field_roomowner.equals(r.Zn()));
+    ChatroomInfoUI.d(this.efA, ChatroomInfoUI.c(this.efA).aqW(r.Zn()));
+    ChatroomInfoUI.m(this.efA).amp(ChatroomInfoUI.c(this.efA).field_roomowner);
+    AppMethodBeat.o(104005);
   }
   
   public final String toString()
   {
-    return super.toString() + "|onNotifyChange";
+    AppMethodBeat.i(104006);
+    String str = super.toString() + "|onNotifyChange";
+    AppMethodBeat.o(104006);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ChatroomInfoUI.37
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.dbbackup;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class c$1$1
@@ -11,25 +11,27 @@ final class c$1$1
   
   public final void run()
   {
-    if (this.iMs.iMq != null) {
-      this.iMs.iMq.dismiss();
+    AppMethodBeat.i(18927);
+    if (this.kTq.kTo != null) {
+      this.kTq.kTo.dismiss();
     }
     int i;
-    switch (this.ewr)
+    switch (this.fMh)
     {
     case -1: 
     default: 
-      i = R.l.recover_db_fail;
+      i = 2131302367;
     }
     for (;;)
     {
-      h.h(this.iMs.val$context, i, R.l.app_tip);
+      h.h(this.kTq.val$context, i, 2131297087);
+      AppMethodBeat.o(18927);
       return;
-      i = R.l.recover_db_success;
+      i = 2131302371;
       continue;
-      i = R.l.recover_db_no_enough_space;
+      i = 2131302370;
       continue;
-      i = R.l.recover_db_no_datafile;
+      i = 2131302369;
     }
   }
 }

@@ -10,12 +10,12 @@ final class f$6
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.feE.fex = null;
+    this.gwn.gwg = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.f.6
  * JD-Core Version:    0.7.0.1
  */

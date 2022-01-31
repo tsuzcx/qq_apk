@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsUploadUI$6
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   SnsUploadUI$6(SnsUploadUI paramSnsUploadUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    AppMethodBeat.i(145656);
+    SnsUploadUI.F(this.sbR);
+    AppMethodBeat.o(145656);
   }
 }
 

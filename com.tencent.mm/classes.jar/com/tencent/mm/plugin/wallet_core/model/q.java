@@ -1,71 +1,49 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.content.Context;
-import android.util.SparseArray;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
-import java.util.List;
+import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import java.security.PublicKey;
+import javax.crypto.Cipher;
 
 public final class q
 {
-  public List<ElementQuery> qqW = null;
-  public SparseArray<String> qyy = null;
+  private static q uiv;
+  private PublicKey uiw = null;
   
-  public final String O(Context paramContext, int paramInt)
+  public static q cTG()
   {
-    if (this.qyy != null)
-    {
-      String str = (String)this.qyy.get(paramInt);
-      if (!bk.bl(str)) {
-        return str;
-      }
+    AppMethodBeat.i(142485);
+    if (uiv == null) {
+      uiv = new q();
     }
-    return paramContext.getString(a.i.wallet_card_cre_type_default);
+    q localq = uiv;
+    AppMethodBeat.o(142485);
+    return localq;
   }
   
-  public final ElementQuery Qp(String paramString)
+  public final String bz(byte[] paramArrayOfByte)
   {
-    if ((this.qqW != null) && (this.qqW.size() != 0))
+    AppMethodBeat.i(46785);
+    try
     {
-      Iterator localIterator = this.qqW.iterator();
-      while (localIterator.hasNext())
-      {
-        ElementQuery localElementQuery = (ElementQuery)localIterator.next();
-        if ((localElementQuery.mOb != null) && (localElementQuery.mOb.equals(paramString))) {
-          return localElementQuery;
-        }
-      }
-      y.w("MicroMsg.WalletBankElementManager", "hy: not found given banktype: %s", new Object[] { paramString });
-      return null;
+      this.uiw = m.r(ah.getContext(), "lbs_rsa_public_key.pem");
+      ab.i("MicroMsg.LocationEncrypt", "getPemPublickKeyFromAsset23 done2");
+      PublicKey localPublicKey = this.uiw;
+      Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+      localCipher.init(1, localPublicKey);
+      paramArrayOfByte = new String(Base64.encode(localCipher.doFinal(paramArrayOfByte), 0));
+      AppMethodBeat.o(46785);
+      return paramArrayOfByte;
     }
-    y.w("MicroMsg.WalletBankElementManager", "hy: no element from given banktype");
-    return null;
-  }
-  
-  public final ElementQuery Qq(String paramString)
-  {
-    if (bk.bl(paramString))
+    catch (Exception paramArrayOfByte)
     {
-      y.w("MicroMsg.WalletBankElementManager", "hy: bindSerail given is null");
-      return null;
+      ab.e("MicroMsg.LocationEncrypt", "encry publicKey error %s", new Object[] { paramArrayOfByte.getMessage() });
+      AppMethodBeat.o(46785);
     }
-    if ((this.qqW != null) && (this.qqW.size() != 0))
-    {
-      Iterator localIterator = this.qqW.iterator();
-      while (localIterator.hasNext())
-      {
-        ElementQuery localElementQuery = (ElementQuery)localIterator.next();
-        if (paramString.equals(localElementQuery.mOc)) {
-          return localElementQuery;
-        }
-      }
-      y.w("MicroMsg.WalletBankElementManager", "hy: not found given element query");
-      return null;
-    }
-    y.w("MicroMsg.WalletBankElementManager", "hy: element list is null. get element failed");
-    return null;
+    return "";
   }
 }
 

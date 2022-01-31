@@ -1,5 +1,6 @@
 package com.tencent.youtu.ytfacetrace.manager;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytfacetrace.jni.YTFaceTraceJNIInterface.FaceStatus;
 import java.util.concurrent.Callable;
 
@@ -10,7 +11,10 @@ class FaceTraceProcessManager$1
   
   public YTFaceTraceJNIInterface.FaceStatus call()
   {
-    return FaceTraceProcessManager.access$000(this.this$0, this.val$data, this.this$0.mDesiredPreviewWidth, this.this$0.mDesiredPreviewHeight);
+    AppMethodBeat.i(117808);
+    YTFaceTraceJNIInterface.FaceStatus localFaceStatus = FaceTraceProcessManager.access$000(this.this$0, this.val$data, this.this$0.mDesiredPreviewWidth, this.this$0.mDesiredPreviewHeight);
+    AppMethodBeat.o(117808);
+    return localFaceStatus;
   }
 }
 

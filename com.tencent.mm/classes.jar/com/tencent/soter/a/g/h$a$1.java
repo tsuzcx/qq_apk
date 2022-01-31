@@ -1,5 +1,6 @@
 package com.tencent.soter.a.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.a.d.b;
 
 final class h$a$1
@@ -9,9 +10,11 @@ final class h$a$1
   
   public final void run()
   {
-    if (this.wQA.wQw.wQq != null) {
-      this.wQA.wQw.wQq.onAuthenticationError(this.wQy, this.wQz);
+    AppMethodBeat.i(10498);
+    if (this.Boa.BnW.BnQ != null) {
+      this.Boa.BnW.BnQ.onAuthenticationError(this.BnY, this.BnZ);
     }
+    AppMethodBeat.o(10498);
   }
 }
 

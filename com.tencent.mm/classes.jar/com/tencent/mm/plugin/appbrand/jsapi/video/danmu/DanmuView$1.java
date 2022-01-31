@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.danmu;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class DanmuView$1
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class DanmuView$1
   
   public final void run()
   {
-    DanmuView.a(this.gFJ, true);
+    AppMethodBeat.i(126599);
+    DanmuView.a(this.ieM, true);
+    AppMethodBeat.o(126599);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.danmu.DanmuView.1
  * JD-Core Version:    0.7.0.1
  */

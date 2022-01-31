@@ -1,6 +1,7 @@
 package org.xwalk.core;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class WebViewExtensionInterface
 {
@@ -29,6 +30,8 @@ public abstract class WebViewExtensionInterface
   {
     return this.bridge;
   }
+  
+  public abstract int getHostByName(String paramString, List<String> paramList);
   
   public abstract Object onMiscCallBack(String paramString, Object... paramVarArgs);
   
@@ -86,7 +89,7 @@ public abstract class WebViewExtensionInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.xwalk.core.WebViewExtensionInterface
  * JD-Core Version:    0.7.0.1
  */

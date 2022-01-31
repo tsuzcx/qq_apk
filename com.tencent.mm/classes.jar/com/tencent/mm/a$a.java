@@ -1,14 +1,18 @@
 package com.tencent.mm;
 
-import com.tencent.mm.api.q;
-import com.tencent.mm.api.q.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.s;
+import com.tencent.mm.api.s.b;
 
 public final class a$a
-  implements q.b
+  implements s.b
 {
-  public final q rJ()
+  public final s Ab()
   {
-    return new a();
+    AppMethodBeat.i(116127);
+    a locala = new a();
+    AppMethodBeat.o(116127);
+    return locala;
   }
 }
 

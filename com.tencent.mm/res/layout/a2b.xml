@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.game.ui.GameLibraryCategoriesView android:orientation="vertical" android:id="@id/byh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.widget.BouncyHScrollView android:background="@color/a23" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp" android:fillViewport="false" android:overScrollMode="never">
-        <LinearLayout android:orientation="horizontal" android:id="@id/byi" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </com.tencent.mm.plugin.game.widget.BouncyHScrollView>
-</com.tencent.mm.plugin.game.ui.GameLibraryCategoriesView>
+    <View android:id="@id/j7" android:background="@color/zm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="14.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/r_" android:layout_below="@id/j7" android:layout_alignParentBottom="true" style="@style/ia">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/sg" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/hm" />
+        <TextView android:layout_gravity="center_vertical" android:id="@id/nj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hh" android:text="{tip}" style="@style/ln" />
+    </LinearLayout>
+</RelativeLayout>

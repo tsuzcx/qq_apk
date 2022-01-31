@@ -9,41 +9,41 @@ public abstract class a
   extends BaseAdapter
   implements AdapterView.OnItemClickListener
 {
-  protected a.a keA;
-  protected Set<Integer> kex;
-  protected w kez;
   protected long lastUpdateTime;
+  protected Set<Integer> mzh;
+  protected w mzi;
+  protected a.a mzj;
   protected int type;
   
   public final void a(w paramw)
   {
-    this.kez = paramw;
+    this.mzi = paramw;
   }
   
   public final void a(a.a parama)
   {
-    this.keA = parama;
+    this.mzj = parama;
   }
   
-  public abstract void aRA();
-  
-  public final long aRx()
+  public final long bxM()
   {
     return this.lastUpdateTime;
   }
   
-  public final void aRy()
+  public final void bxN()
   {
-    if (this.keA != null) {
-      this.keA.aRw();
+    if (this.mzj != null) {
+      this.mzj.bxL();
     }
   }
   
-  public abstract void aRz();
+  public abstract void bxO();
   
-  public final void f(Set<Integer> paramSet)
+  public abstract void bxP();
+  
+  public final void e(Set<Integer> paramSet)
   {
-    this.kex = paramSet;
+    this.mzh = paramSet;
   }
   
   public final int getType()

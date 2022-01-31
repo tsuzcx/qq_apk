@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class DataRangeTracker$Range
 {
   private final long first;
@@ -13,7 +15,10 @@ class DataRangeTracker$Range
   
   public String toString()
   {
-    return "[" + this.first + ", " + this.second + ']';
+    AppMethodBeat.i(104787);
+    String str = "[" + this.first + ", " + this.second + ']';
+    AppMethodBeat.o(104787);
+    return str;
   }
 }
 

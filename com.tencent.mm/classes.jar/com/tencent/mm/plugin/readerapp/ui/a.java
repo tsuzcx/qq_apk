@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.readerapp.ui;
 import android.content.Context;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.p;
 
 public abstract class a<T>
-  extends r<T>
+  extends p<T>
   implements AbsListView.OnScrollListener
 {
   private static final String TAG = "MicroMsg." + a.class.getName();
-  protected boolean dCs;
+  protected boolean ezJ;
   
   public a(Context paramContext, T paramT)
   {
     super(paramContext, paramT);
-    mR(true);
+    qp(true);
   }
   
-  public abstract boolean aCc();
+  public abstract boolean bem();
   
-  public abstract int aCd();
+  public abstract int ben();
   
   public abstract int getShowCount();
   
@@ -28,12 +28,12 @@ public abstract class a<T>
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.dCs = false;
+    this.ezJ = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wxcredit;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
@@ -14,20 +15,22 @@ final class d$1
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
     return false;
   }
   
-  public final boolean s(Object... paramVarArgs)
+  public final boolean x(Object... paramVarArgs)
   {
+    AppMethodBeat.i(48616);
     paramVarArgs = (Bankcard)paramVarArgs[0];
-    this.wBd.a(new com.tencent.mm.plugin.wxcredit.a.d(paramVarArgs.field_bindSerial, paramVarArgs.field_bankcardType), true, 1);
+    this.AXB.a(new com.tencent.mm.plugin.wxcredit.a.d(paramVarArgs.field_bindSerial, paramVarArgs.field_bankcardType), true, 1);
+    AppMethodBeat.o(48616);
     return true;
   }
 }

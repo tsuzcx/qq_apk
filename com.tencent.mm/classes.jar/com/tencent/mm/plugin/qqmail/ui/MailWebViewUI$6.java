@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class MailWebViewUI$6
@@ -10,24 +11,26 @@ final class MailWebViewUI$6
   
   public final void run()
   {
-    View localView = (View)MailWebViewUI.c(this.niS).getParent();
+    AppMethodBeat.i(68400);
+    View localView = (View)MailWebViewUI.c(this.pOf).getParent();
     if (localView != null)
     {
       int j = localView.getWidth();
-      if (this.niV > j)
+      if (this.pOi > j)
       {
         int i = 10;
-        float f = j / this.niV;
-        while (f < MailWebViewUI.c(this.niS).getScale())
+        float f = j / this.pOi;
+        while (f < MailWebViewUI.c(this.pOf).getScale())
         {
           i -= 1;
           if (i <= 0) {
             break;
           }
-          MailWebViewUI.c(this.niS).zoomOut();
+          MailWebViewUI.c(this.pOf).zoomOut();
         }
       }
     }
+    AppMethodBeat.o(68400);
   }
 }
 

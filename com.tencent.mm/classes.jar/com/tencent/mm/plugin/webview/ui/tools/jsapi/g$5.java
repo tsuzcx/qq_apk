@@ -1,20 +1,30 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.plugin.webview.modelcache.q;
-import com.tencent.mm.plugin.webview.modelcache.q.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$5
-  implements g.a
+  implements Runnable
 {
-  public final void aib()
+  g$5(g paramg, i parami) {}
+  
+  public final void run()
   {
-    q.a.ccy().DS().O(new g.5.1(this));
+    AppMethodBeat.i(154925);
+    if (this.uZa.vrQ.equals("login"))
+    {
+      g.a(this.vqm, this.uZa, g.dgO());
+      AppMethodBeat.o(154925);
+      return;
+    }
+    if (this.uZa.vrQ.equals("authorize")) {
+      g.b(this.vqm, this.uZa, g.dgO());
+    }
+    AppMethodBeat.o(154925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.5
  * JD-Core Version:    0.7.0.1
  */

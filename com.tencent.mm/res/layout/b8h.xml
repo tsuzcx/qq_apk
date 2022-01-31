@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:background="#ffededed" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/n0" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/nh" android:textColor="@color/w6" android:gravity="bottom|center|left" android:id="@android:id/title" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/dl" android:minHeight="@dimen/fo" android:text="@string/fmk" style="@style/l1" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="64.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/fqd" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/l2" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/h9" android:id="@id/fqe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="@dimen/ko" android:textColor="@color/rf" android:ellipsize="middle" android:id="@id/fqf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_marginRight="@dimen/l5" android:text="" android:maxLines="2" />
+        </LinearLayout>
+        <ImageView android:id="@id/fqg" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="@dimen/l5" android:src="@raw/radio_off" />
+    </LinearLayout>
+    <View android:background="@color/hj" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

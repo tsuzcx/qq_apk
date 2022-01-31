@@ -1,9 +1,11 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.gallery.model.c;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AlbumPreviewUI$14
   implements View.OnClickListener
@@ -12,15 +14,30 @@ final class AlbumPreviewUI$14
   
   public final void onClick(View paramView)
   {
-    AlbumPreviewUI.h(this.kIF);
-    paramView = new Intent(this.kIF, ImagePreviewUI.class);
-    c.y(AlbumPreviewUI.a(this.kIF).kHC);
-    paramView.putStringArrayListExtra("preview_image_list", AlbumPreviewUI.a(this.kIF).aXJ());
-    paramView.putExtra("max_select_count", AlbumPreviewUI.i(this.kIF));
-    paramView.putExtra("send_raw_img", AlbumPreviewUI.d(this.kIF));
-    paramView.putExtra("GalleryUI_FromUser", AlbumPreviewUI.j(this.kIF));
-    paramView.putExtra("GalleryUI_ToUser", AlbumPreviewUI.k(this.kIF));
-    this.kIF.startActivityForResult(paramView, 0);
+    AppMethodBeat.i(21409);
+    paramView = this.neV;
+    boolean bool;
+    if (!AlbumPreviewUI.d(this.neV))
+    {
+      bool = true;
+      AlbumPreviewUI.a(paramView, bool);
+      AlbumPreviewUI.e(this.neV);
+      AlbumPreviewUI.f(this.neV).setText(this.neV.getContext().getString(2131300289) + AlbumPreviewUI.bEs());
+      if (!AlbumPreviewUI.d(this.neV)) {
+        break label118;
+      }
+      AlbumPreviewUI.c(this.neV).setImageResource(2131231906);
+    }
+    for (;;)
+    {
+      AlbumPreviewUI.g(this.neV);
+      AppMethodBeat.o(21409);
+      return;
+      bool = false;
+      break;
+      label118:
+      AlbumPreviewUI.c(this.neV).setImageResource(2131231905);
+    }
   }
 }
 

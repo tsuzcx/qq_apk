@@ -1,59 +1,73 @@
 package com.tencent.mm.plugin.wepkg.model;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.xweb.m;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wepkg.b;
+import com.tencent.mm.plugin.wepkg.utils.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.xweb.s;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public final class d
 {
-  private String charset = "UTF-8";
-  public WepkgVersion rPj;
-  private c rPt;
-  public Map<String, WepkgPreloadFile> rPu;
+  private Map<String, f> vFP;
+  private int vFQ;
   
-  public d(WepkgVersion paramWepkgVersion, c paramc, Map<String, WepkgPreloadFile> paramMap)
+  public d()
   {
-    this.rPj = paramWepkgVersion;
-    this.rPt = paramc;
-    this.rPu = paramMap;
-    if ((paramWepkgVersion != null) && (!bk.bl(paramWepkgVersion.charset))) {
-      this.charset = paramWepkgVersion.charset;
-    }
+    AppMethodBeat.i(63520);
+    this.vFP = new HashMap();
+    this.vFQ = 1;
+    AppMethodBeat.o(63520);
   }
   
-  public final m Vd(String paramString)
+  public final void akA(String paramString)
   {
-    if (bk.bl(paramString)) {
-      return null;
-    }
-    if ((this.rPu != null) && (this.rPu.get(paramString) != null))
+    AppMethodBeat.i(63521);
+    if (this.vFQ > 3)
     {
-      Object localObject1 = (WepkgPreloadFile)this.rPu.get(paramString);
-      if (!bk.bl(((WepkgPreloadFile)localObject1).filePath))
+      ab.i("MicroMsg.Wepkg.SupportIframe", "more than 3 wepkgs");
+      AppMethodBeat.o(63521);
+      return;
+    }
+    String str = com.tencent.mm.plugin.wepkg.utils.d.akM(paramString);
+    if ((!bo.isNullOrNil(str)) && (this.vFP.get(str) == null) && (!b.akf(str)))
+    {
+      this.vFQ += 1;
+      f localf = b.bU(paramString, true);
+      if ((localf != null) && (localf.vGb != null))
       {
-        Object localObject2 = new File(((WepkgPreloadFile)localObject1).filePath);
-        if ((((File)localObject2).exists()) && (((File)localObject2).isFile()) && (((File)localObject2).length() == ((WepkgPreloadFile)localObject1).size)) {
-          try
-          {
-            y.i("MicroMsg.Wepkg.WepkgInterceptor", "rid hit preload file. rid:%s", new Object[] { paramString });
-            localObject2 = new FileInputStream((File)localObject2);
-            localObject1 = new m(((WepkgPreloadFile)localObject1).mimeType, this.charset, (InputStream)localObject2);
-            return localObject1;
-          }
-          catch (FileNotFoundException localFileNotFoundException) {}
-        }
+        this.vFP.put(str, localf);
+        a.b("EnterWeb", paramString, localf.vGb.ezY, localf.vGb.version, 1L, 0L, null);
+        ab.i("MicroMsg.Wepkg.SupportIframe", "load wepkg: %s", new Object[] { str });
       }
     }
-    if (this.rPt != null)
+    AppMethodBeat.o(63521);
+  }
+  
+  public final s akB(String paramString)
+  {
+    AppMethodBeat.i(63522);
+    if (bo.isNullOrNil(paramString))
     {
-      y.i("MicroMsg.Wepkg.WepkgInterceptor", "hit big package, rid: " + paramString);
-      return this.rPt.fL(paramString, this.charset);
+      AppMethodBeat.o(63522);
+      return null;
     }
+    Iterator localIterator = this.vFP.values().iterator();
+    while (localIterator.hasNext())
+    {
+      s locals = ((f)localIterator.next()).akB(paramString);
+      if (locals != null)
+      {
+        ab.i("MicroMsg.Wepkg.SupportIframe", "hit rid: %s", new Object[] { paramString });
+        AppMethodBeat.o(63522);
+        return locals;
+      }
+    }
+    AppMethodBeat.o(63522);
     return null;
   }
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/s7" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="11.0dip" android:layout_marginBottom="11.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:id="@id/cz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <TextView android:textSize="14.0dip" android:textColor="#ffb2b2b2" android:id="@id/k6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/s8" android:background="@drawable/a4b" android:clickable="true" android:layout_width="52.0dip" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="center" android:clickable="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/axx" android:scaleType="fitXY" />
+        </FrameLayout>
+    </LinearLayout>
+    <View android:layout_gravity="bottom" android:id="@id/pm" android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="15.0dip" />
+</LinearLayout>

@@ -4,34 +4,34 @@ public abstract class a
 {
   public int flags;
   
-  public final void cG(int paramInt)
-  {
-    this.flags |= paramInt;
-  }
-  
-  protected final boolean cH(int paramInt)
-  {
-    return (this.flags & paramInt) == paramInt;
-  }
-  
   public void clear()
   {
     this.flags = 0;
   }
   
-  public final boolean lA()
+  public final void db(int paramInt)
   {
-    return cH(1);
+    this.flags |= paramInt;
   }
   
-  public final boolean ly()
+  protected final boolean dc(int paramInt)
   {
-    return cH(-2147483648);
+    return (this.flags & paramInt) == paramInt;
   }
   
-  public final boolean lz()
+  public final boolean nD()
   {
-    return cH(4);
+    return dc(-2147483648);
+  }
+  
+  public final boolean nE()
+  {
+    return dc(4);
+  }
+  
+  public final boolean nF()
+  {
+    return dc(1);
   }
 }
 

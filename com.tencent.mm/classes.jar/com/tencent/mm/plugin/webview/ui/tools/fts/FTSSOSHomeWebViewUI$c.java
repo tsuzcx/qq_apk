@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FTSSOSHomeWebViewUI$c
 {
   String content;
   int icon;
   int position;
-  int ruS;
   int type;
+  int vlh;
   
   private FTSSOSHomeWebViewUI$c(FTSSOSHomeWebViewUI paramFTSSOSHomeWebViewUI) {}
   
   public final boolean equals(Object paramObject)
   {
+    AppMethodBeat.i(8474);
     paramObject = (c)paramObject;
-    return this.content.equals(paramObject.content);
+    boolean bool = this.content.equals(paramObject.content);
+    AppMethodBeat.o(8474);
+    return bool;
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.tmassistantsdk.aidl;
 
 import android.os.IBinder;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
@@ -21,6 +22,7 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
   
   public void cancelDownloadTask(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(75604);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -36,6 +38,7 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(75604);
     }
   }
   
@@ -43,63 +46,69 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
   public com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo getDownloadTaskInfo(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore 4
-    //   9: aload_3
-    //   10: ldc 31
-    //   12: invokevirtual 35	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   15: aload_3
-    //   16: aload_1
-    //   17: invokevirtual 38	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   0: ldc 63
+    //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   8: astore_3
+    //   9: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   12: astore 4
+    //   14: aload_3
+    //   15: ldc 38
+    //   17: invokevirtual 42	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
     //   20: aload_3
-    //   21: aload_2
-    //   22: invokevirtual 38	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   25: aload_0
-    //   26: getfield 18	com/tencent/tmassistantsdk/aidl/ITMAssistantDownloadSDKServiceInterface$Stub$Proxy:mRemote	Landroid/os/IBinder;
-    //   29: bipush 6
-    //   31: aload_3
-    //   32: aload 4
-    //   34: iconst_0
-    //   35: invokeinterface 44 5 0
-    //   40: pop
-    //   41: aload 4
-    //   43: invokevirtual 47	android/os/Parcel:readException	()V
+    //   21: aload_1
+    //   22: invokevirtual 45	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   25: aload_3
+    //   26: aload_2
+    //   27: invokevirtual 45	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   30: aload_0
+    //   31: getfield 18	com/tencent/tmassistantsdk/aidl/ITMAssistantDownloadSDKServiceInterface$Stub$Proxy:mRemote	Landroid/os/IBinder;
+    //   34: bipush 6
+    //   36: aload_3
+    //   37: aload 4
+    //   39: iconst_0
+    //   40: invokeinterface 51 5 0
+    //   45: pop
     //   46: aload 4
-    //   48: invokevirtual 56	android/os/Parcel:readInt	()I
-    //   51: ifeq +28 -> 79
-    //   54: getstatic 62	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadTaskInfo:CREATOR	Landroid/os/Parcelable$Creator;
-    //   57: aload 4
-    //   59: invokeinterface 68 2 0
-    //   64: checkcast 58	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadTaskInfo
-    //   67: astore_1
-    //   68: aload 4
-    //   70: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   73: aload_3
-    //   74: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   77: aload_1
-    //   78: areturn
-    //   79: aconst_null
-    //   80: astore_1
-    //   81: goto -13 -> 68
-    //   84: astore_1
-    //   85: aload 4
-    //   87: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   90: aload_3
-    //   91: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   94: aload_1
-    //   95: athrow
+    //   48: invokevirtual 54	android/os/Parcel:readException	()V
+    //   51: aload 4
+    //   53: invokevirtual 67	android/os/Parcel:readInt	()I
+    //   56: ifeq +33 -> 89
+    //   59: getstatic 73	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadTaskInfo:CREATOR	Landroid/os/Parcelable$Creator;
+    //   62: aload 4
+    //   64: invokeinterface 79 2 0
+    //   69: checkcast 69	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadTaskInfo
+    //   72: astore_1
+    //   73: aload 4
+    //   75: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   78: aload_3
+    //   79: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   82: ldc 63
+    //   84: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: aload_1
+    //   88: areturn
+    //   89: aconst_null
+    //   90: astore_1
+    //   91: goto -18 -> 73
+    //   94: astore_1
+    //   95: aload 4
+    //   97: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   100: aload_3
+    //   101: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   104: ldc 63
+    //   106: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: aload_1
+    //   110: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	96	0	this	Proxy
-    //   0	96	1	paramString1	String
-    //   0	96	2	paramString2	String
-    //   3	88	3	localParcel1	Parcel
-    //   7	79	4	localParcel2	Parcel
+    //   0	111	0	this	Proxy
+    //   0	111	1	paramString1	String
+    //   0	111	2	paramString2	String
+    //   8	93	3	localParcel1	Parcel
+    //   12	84	4	localParcel2	Parcel
     // Exception table:
     //   from	to	target	type
-    //   9	68	84	finally
+    //   14	73	94	finally
   }
   
   public String getInterfaceDescriptor()
@@ -109,6 +118,7 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
   
   public int getServiceVersion()
   {
+    AppMethodBeat.i(75596);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -123,12 +133,14 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(75596);
     }
   }
   
   public boolean isAllDownloadFinished()
   {
     boolean bool = false;
+    AppMethodBeat.i(75600);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -146,11 +158,13 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(75600);
     }
   }
   
   public void pauseDownloadTask(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(75603);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -166,6 +180,7 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(75603);
     }
   }
   
@@ -173,66 +188,73 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
   public void registerDownloadTaskCallback(String paramString, ITMAssistantDownloadSDKServiceCallback paramITMAssistantDownloadSDKServiceCallback)
   {
     // Byte code:
-    //   0: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore 4
-    //   9: aload_3
-    //   10: ldc 31
-    //   12: invokevirtual 35	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   15: aload_3
-    //   16: aload_1
-    //   17: invokevirtual 38	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   20: aload_2
-    //   21: ifnull +46 -> 67
-    //   24: aload_2
-    //   25: invokeinterface 80 1 0
-    //   30: astore_1
-    //   31: aload_3
-    //   32: aload_1
-    //   33: invokevirtual 83	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
-    //   36: aload_0
-    //   37: getfield 18	com/tencent/tmassistantsdk/aidl/ITMAssistantDownloadSDKServiceInterface$Stub$Proxy:mRemote	Landroid/os/IBinder;
-    //   40: bipush 10
-    //   42: aload_3
-    //   43: aload 4
-    //   45: iconst_0
-    //   46: invokeinterface 44 5 0
-    //   51: pop
-    //   52: aload 4
-    //   54: invokevirtual 47	android/os/Parcel:readException	()V
+    //   0: ldc 91
+    //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   8: astore_3
+    //   9: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   12: astore 4
+    //   14: aload_3
+    //   15: ldc 38
+    //   17: invokevirtual 42	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   20: aload_3
+    //   21: aload_1
+    //   22: invokevirtual 45	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   25: aload_2
+    //   26: ifnull +51 -> 77
+    //   29: aload_2
+    //   30: invokeinterface 95 1 0
+    //   35: astore_1
+    //   36: aload_3
+    //   37: aload_1
+    //   38: invokevirtual 98	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+    //   41: aload_0
+    //   42: getfield 18	com/tencent/tmassistantsdk/aidl/ITMAssistantDownloadSDKServiceInterface$Stub$Proxy:mRemote	Landroid/os/IBinder;
+    //   45: bipush 10
+    //   47: aload_3
+    //   48: aload 4
+    //   50: iconst_0
+    //   51: invokeinterface 51 5 0
+    //   56: pop
     //   57: aload 4
-    //   59: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   62: aload_3
-    //   63: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   66: return
-    //   67: aconst_null
-    //   68: astore_1
-    //   69: goto -38 -> 31
-    //   72: astore_1
-    //   73: aload 4
-    //   75: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   78: aload_3
-    //   79: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   82: aload_1
-    //   83: athrow
+    //   59: invokevirtual 54	android/os/Parcel:readException	()V
+    //   62: aload 4
+    //   64: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   67: aload_3
+    //   68: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   71: ldc 91
+    //   73: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: return
+    //   77: aconst_null
+    //   78: astore_1
+    //   79: goto -43 -> 36
+    //   82: astore_1
+    //   83: aload 4
+    //   85: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   88: aload_3
+    //   89: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   92: ldc 91
+    //   94: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: aload_1
+    //   98: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	84	0	this	Proxy
-    //   0	84	1	paramString	String
-    //   0	84	2	paramITMAssistantDownloadSDKServiceCallback	ITMAssistantDownloadSDKServiceCallback
-    //   3	76	3	localParcel1	Parcel
-    //   7	67	4	localParcel2	Parcel
+    //   0	99	0	this	Proxy
+    //   0	99	1	paramString	String
+    //   0	99	2	paramITMAssistantDownloadSDKServiceCallback	ITMAssistantDownloadSDKServiceCallback
+    //   8	81	3	localParcel1	Parcel
+    //   12	72	4	localParcel2	Parcel
     // Exception table:
     //   from	to	target	type
-    //   9	20	72	finally
-    //   24	31	72	finally
-    //   31	57	72	finally
+    //   14	25	82	finally
+    //   29	36	82	finally
+    //   36	62	82	finally
   }
   
   public void setServiceSetingIsDownloadWifiOnly(boolean paramBoolean)
   {
     int i = 0;
+    AppMethodBeat.i(75598);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -250,12 +272,14 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(75598);
     }
   }
   
   public void setServiceSetingIsTaskAutoResume(boolean paramBoolean)
   {
     int i = 0;
+    AppMethodBeat.i(75597);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -273,11 +297,13 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(75597);
     }
   }
   
   public void setServiceSetingMaxTaskNum(int paramInt)
   {
+    AppMethodBeat.i(75599);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -292,11 +318,13 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(75599);
     }
   }
   
   public int startDownloadTask(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, String paramString4, String paramString5, Map paramMap)
   {
+    AppMethodBeat.i(75602);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -319,6 +347,7 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(75602);
     }
   }
   
@@ -326,66 +355,72 @@ class ITMAssistantDownloadSDKServiceInterface$Stub$Proxy
   public void unregisterDownloadTaskCallback(String paramString, ITMAssistantDownloadSDKServiceCallback paramITMAssistantDownloadSDKServiceCallback)
   {
     // Byte code:
-    //   0: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore 4
-    //   9: aload_3
-    //   10: ldc 31
-    //   12: invokevirtual 35	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   15: aload_3
-    //   16: aload_1
-    //   17: invokevirtual 38	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   20: aload_2
-    //   21: ifnull +46 -> 67
-    //   24: aload_2
-    //   25: invokeinterface 80 1 0
-    //   30: astore_1
-    //   31: aload_3
-    //   32: aload_1
-    //   33: invokevirtual 83	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
-    //   36: aload_0
-    //   37: getfield 18	com/tencent/tmassistantsdk/aidl/ITMAssistantDownloadSDKServiceInterface$Stub$Proxy:mRemote	Landroid/os/IBinder;
-    //   40: bipush 11
-    //   42: aload_3
-    //   43: aload 4
-    //   45: iconst_0
-    //   46: invokeinterface 44 5 0
-    //   51: pop
-    //   52: aload 4
-    //   54: invokevirtual 47	android/os/Parcel:readException	()V
+    //   0: ldc 121
+    //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   8: astore_3
+    //   9: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   12: astore 4
+    //   14: aload_3
+    //   15: ldc 38
+    //   17: invokevirtual 42	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   20: aload_3
+    //   21: aload_1
+    //   22: invokevirtual 45	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   25: aload_2
+    //   26: ifnull +51 -> 77
+    //   29: aload_2
+    //   30: invokeinterface 95 1 0
+    //   35: astore_1
+    //   36: aload_3
+    //   37: aload_1
+    //   38: invokevirtual 98	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+    //   41: aload_0
+    //   42: getfield 18	com/tencent/tmassistantsdk/aidl/ITMAssistantDownloadSDKServiceInterface$Stub$Proxy:mRemote	Landroid/os/IBinder;
+    //   45: bipush 11
+    //   47: aload_3
+    //   48: aload 4
+    //   50: iconst_0
+    //   51: invokeinterface 51 5 0
+    //   56: pop
     //   57: aload 4
-    //   59: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   62: aload_3
-    //   63: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   66: return
-    //   67: aconst_null
-    //   68: astore_1
-    //   69: goto -38 -> 31
-    //   72: astore_1
-    //   73: aload 4
-    //   75: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   78: aload_3
-    //   79: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   82: aload_1
-    //   83: athrow
+    //   59: invokevirtual 54	android/os/Parcel:readException	()V
+    //   62: aload 4
+    //   64: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   67: aload_3
+    //   68: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   71: ldc 121
+    //   73: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: return
+    //   77: aconst_null
+    //   78: astore_1
+    //   79: goto -43 -> 36
+    //   82: astore_1
+    //   83: aload 4
+    //   85: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   88: aload_3
+    //   89: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   92: ldc 121
+    //   94: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: aload_1
+    //   98: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	84	0	this	Proxy
-    //   0	84	1	paramString	String
-    //   0	84	2	paramITMAssistantDownloadSDKServiceCallback	ITMAssistantDownloadSDKServiceCallback
-    //   3	76	3	localParcel1	Parcel
-    //   7	67	4	localParcel2	Parcel
+    //   0	99	0	this	Proxy
+    //   0	99	1	paramString	String
+    //   0	99	2	paramITMAssistantDownloadSDKServiceCallback	ITMAssistantDownloadSDKServiceCallback
+    //   8	81	3	localParcel1	Parcel
+    //   12	72	4	localParcel2	Parcel
     // Exception table:
     //   from	to	target	type
-    //   9	20	72	finally
-    //   24	31	72	finally
-    //   31	57	72	finally
+    //   14	25	82	finally
+    //   29	36	82	finally
+    //   36	62	82	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.aidl.ITMAssistantDownloadSDKServiceInterface.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

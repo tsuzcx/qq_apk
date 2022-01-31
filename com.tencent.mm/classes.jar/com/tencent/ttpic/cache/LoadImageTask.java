@@ -3,7 +3,8 @@ package com.tencent.ttpic.cache;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.text.TextUtils;
-import com.tencent.ttpic.util.VideoBitmapUtil;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.BitmapUtils;
 import com.tencent.ttpic.util.VideoGlobalContext;
 import java.io.File;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class LoadImageTask
   
   public LoadImageTask(Map<String, Bitmap> paramMap, List<String> paramList, String paramString1, String paramString2, int paramInt)
   {
+    AppMethodBeat.i(81793);
     this.cache = paramMap;
     this.resourceList = paramList;
     if (this.resourceList == null) {
@@ -30,45 +32,55 @@ public class LoadImageTask
     this.dataPath = paramString1;
     this.materialId = paramString2;
     this.sampleSize = paramInt;
+    AppMethodBeat.o(81793);
   }
   
   protected Boolean doInBackground(Void... paramVarArgs)
   {
-    if (this.cache == null) {
-      return Boolean.valueOf(false);
+    AppMethodBeat.i(81794);
+    if (this.cache == null)
+    {
+      paramVarArgs = Boolean.FALSE;
+      AppMethodBeat.o(81794);
+      return paramVarArgs;
     }
     Iterator localIterator = this.resourceList.iterator();
     paramVarArgs = null;
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (isCancelled()) {
-        return Boolean.valueOf(false);
+      if (isCancelled())
+      {
+        paramVarArgs = Boolean.FALSE;
+        AppMethodBeat.o(81794);
+        return paramVarArgs;
       }
       Object localObject = this.dataPath + File.separator + str;
-      localObject = VideoBitmapUtil.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject, this.sampleSize);
+      localObject = BitmapUtils.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject, this.sampleSize);
       if (TextUtils.isEmpty(this.materialId)) {}
       for (;;)
       {
-        if (!VideoBitmapUtil.isLegal((Bitmap)localObject)) {
-          break label163;
+        if (!BitmapUtils.isLegal((Bitmap)localObject)) {
+          break label180;
         }
         this.cache.put(str, localObject);
         paramVarArgs = (Void[])localObject;
         break;
         str = this.materialId + File.separator + str;
       }
-      label163:
-      if (VideoBitmapUtil.isLegal(paramVarArgs)) {
+      label180:
+      if (BitmapUtils.isLegal(paramVarArgs)) {
         this.cache.put(str, paramVarArgs);
       }
     }
-    return Boolean.valueOf(true);
+    paramVarArgs = Boolean.TRUE;
+    AppMethodBeat.o(81794);
+    return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadImageTask
  * JD-Core Version:    0.7.0.1
  */

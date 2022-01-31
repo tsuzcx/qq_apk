@@ -1,38 +1,33 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
-import android.widget.FrameLayout;
-import com.tencent.mm.plugin.appbrand.task.h;
-import com.tencent.mm.plugin.appbrand.task.h.a;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AppBrandUI$3
-  implements h
+  implements ViewTreeObserver.OnPreDrawListener
 {
   AppBrandUI$3(AppBrandUI paramAppBrandUI) {}
   
-  public final void a(h.a parama)
+  public final boolean onPreDraw()
   {
-    AppBrandUI.a(this.hep, parama);
-  }
-  
-  public final FrameLayout aoN()
-  {
-    return (FrameLayout)AppBrandUI.b(this.hep);
-  }
-  
-  public final boolean aoO()
-  {
-    return this.hep.aoO();
-  }
-  
-  public final void finish()
-  {
-    this.hep.finish();
-  }
-  
-  public final Activity getContext()
-  {
-    return this.hep;
+    AppMethodBeat.i(133120);
+    try
+    {
+      AppBrandUI.c(this.iPh).getViewTreeObserver().removeOnPreDrawListener(this);
+      this.iPh.onEnterAnimationComplete();
+      AppMethodBeat.o(133120);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ab.w("MicroMsg.AppBrandUI", "first onPreDraw after onResume, remove listener failed, e=%s", new Object[] { localException });
+      }
+    }
   }
 }
 

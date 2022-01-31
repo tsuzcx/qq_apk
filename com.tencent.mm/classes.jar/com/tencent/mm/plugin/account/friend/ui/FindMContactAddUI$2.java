@@ -3,14 +3,13 @@ package com.tencent.mm.plugin.account.friend.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.widget.Toast;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.s;
 
 final class FindMContactAddUI$2
   implements f
@@ -19,36 +18,40 @@ final class FindMContactAddUI$2
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (FindMContactAddUI.a(this.fhv) != null)
+    AppMethodBeat.i(108514);
+    if (FindMContactAddUI.a(this.gzd) != null)
     {
-      FindMContactAddUI.a(this.fhv).dismiss();
-      FindMContactAddUI.b(this.fhv);
+      FindMContactAddUI.a(this.gzd).dismiss();
+      FindMContactAddUI.b(this.gzd);
     }
-    if (FindMContactAddUI.o(this.fhv) != null)
+    if (FindMContactAddUI.o(this.gzd) != null)
     {
-      g.Dk().b(30, FindMContactAddUI.o(this.fhv));
-      FindMContactAddUI.p(this.fhv);
+      g.Rc().b(30, FindMContactAddUI.o(this.gzd));
+      FindMContactAddUI.p(this.gzd);
     }
-    if ((paramInt1 == 4) && (paramInt2 == -24) && (!bk.bl(paramString)))
+    if ((paramInt1 == 4) && (paramInt2 == -24) && (!bo.isNullOrNil(paramString)))
     {
-      Toast.makeText(this.fhv.mController.uMN, paramString, 1).show();
+      Toast.makeText(this.gzd.getContext(), paramString, 1).show();
+      AppMethodBeat.o(108514);
       return;
     }
-    if ((FindMContactAddUI.k(this.fhv) != null) && (FindMContactAddUI.k(this.fhv).contains("2")))
+    if ((FindMContactAddUI.k(this.gzd) != null) && (FindMContactAddUI.k(this.gzd).contains("2")))
     {
-      paramString = new Intent(this.fhv, FindMContactInviteUI.class);
-      paramString.putExtra("regsetinfo_ticket", FindMContactAddUI.l(this.fhv));
-      paramString.putExtra("login_type", FindMContactAddUI.m(this.fhv));
-      paramString.putExtra("regsetinfo_NextStyle", FindMContactAddUI.e(this.fhv));
-      MMWizardActivity.C(this.fhv, paramString);
+      paramString = new Intent(this.gzd, FindMContactInviteUI.class);
+      paramString.putExtra("regsetinfo_ticket", FindMContactAddUI.l(this.gzd));
+      paramString.putExtra("login_type", FindMContactAddUI.m(this.gzd));
+      paramString.putExtra("regsetinfo_NextStyle", FindMContactAddUI.e(this.gzd));
+      MMWizardActivity.J(this.gzd, paramString);
+      AppMethodBeat.o(108514);
       return;
     }
-    FindMContactAddUI.n(this.fhv);
+    FindMContactAddUI.n(this.gzd);
+    AppMethodBeat.o(108514);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.FindMContactAddUI.2
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aa;
 
 final class MobileInputUI$17
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class MobileInputUI$17
   
   public final void onClick(View paramView)
   {
-    paramView = this.foH.getString(q.j.login_forget_password_help) + x.cqJ();
-    MobileInputUI.O(this.foH, paramView);
+    AppMethodBeat.i(125177);
+    paramView = this.gGb.getString(2131306168, new Object[] { aa.dsG() });
+    MobileInputUI.S(this.gGb, paramView);
+    AppMethodBeat.o(125177);
   }
 }
 

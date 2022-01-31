@@ -1,8 +1,9 @@
 package com.tencent.mm.modelvoiceaddr;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$1
   implements Runnable
@@ -11,8 +12,10 @@ final class c$1
   
   public final void run()
   {
-    y.i("MicroMsg.NetSceneNewVoiceInput", "real doLastScene voiceId:%s, voiceFileMarkEnd:%s,hashCode:%s", new Object[] { this.eLy.eMn, Integer.valueOf(this.eLy.eMq), Integer.valueOf(this.eLz.hashCode()) });
-    g.Dk().a(this.eLz, 0);
+    AppMethodBeat.i(116672);
+    ab.i("MicroMsg.NetSceneNewVoiceInput", "real doLastScene voiceId:%s, voiceFileMarkEnd:%s,hashCode:%s", new Object[] { this.gbf.gbT, Integer.valueOf(this.gbf.gbW), Integer.valueOf(this.gbg.hashCode()) });
+    g.Rc().a(this.gbg, 0);
+    AppMethodBeat.o(116672);
   }
 }
 

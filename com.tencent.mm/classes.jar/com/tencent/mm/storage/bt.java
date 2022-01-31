@@ -1,80 +1,83 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.h.c.dw;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class bt
-  extends dw
+  extends ei
 {
-  public static c.a buS;
-  protected static Field[] ujL = c.V(bt.class).ujL;
+  public static c.a info;
+  protected static Field[] yrK;
   
   static
   {
+    AppMethodBeat.i(60234);
+    yrK = ei.getValidFields(bt.class);
     c.a locala = new c.a();
-    locala.ujL = new Field[11];
+    locala.yrK = new Field[11];
     locala.columns = new String[12];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "svrid";
-    locala.ujN.put("svrid", "LONG default '0'  PRIMARY KEY ");
+    locala.yrM.put("svrid", "LONG default '0'  PRIMARY KEY ");
     localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "svrid";
+    locala.yrL = "svrid";
     locala.columns[1] = "status";
-    locala.ujN.put("status", "INTEGER");
+    locala.yrM.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "type";
-    locala.ujN.put("type", "INTEGER");
+    locala.yrM.put("type", "INTEGER");
     localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "scene";
-    locala.ujN.put("scene", "INTEGER");
+    locala.yrM.put("scene", "INTEGER");
     localStringBuilder.append(" scene INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "createtime";
-    locala.ujN.put("createtime", "LONG");
+    locala.yrM.put("createtime", "LONG");
     localStringBuilder.append(" createtime LONG");
     localStringBuilder.append(", ");
     locala.columns[5] = "talker";
-    locala.ujN.put("talker", "TEXT");
+    locala.yrM.put("talker", "TEXT");
     localStringBuilder.append(" talker TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "content";
-    locala.ujN.put("content", "TEXT");
+    locala.yrM.put("content", "TEXT");
     localStringBuilder.append(" content TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "sayhiuser";
-    locala.ujN.put("sayhiuser", "TEXT");
+    locala.yrM.put("sayhiuser", "TEXT");
     localStringBuilder.append(" sayhiuser TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "sayhicontent";
-    locala.ujN.put("sayhicontent", "TEXT");
+    locala.yrM.put("sayhicontent", "TEXT");
     localStringBuilder.append(" sayhicontent TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "imgpath";
-    locala.ujN.put("imgpath", "TEXT");
+    locala.yrM.put("imgpath", "TEXT");
     localStringBuilder.append(" imgpath TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "isSend";
-    locala.ujN.put("isSend", "INTEGER");
+    locala.yrM.put("isSend", "INTEGER");
     localStringBuilder.append(" isSend INTEGER");
     locala.columns[11] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(60234);
   }
   
-  protected final c.a rM()
+  public c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.bt
  * JD-Core Version:    0.7.0.1
  */

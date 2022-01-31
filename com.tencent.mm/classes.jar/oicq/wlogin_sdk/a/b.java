@@ -1,42 +1,53 @@
 package oicq.wlogin_sdk.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import oicq.wlogin_sdk.tools.util;
 
 public final class b
   extends a
 {
-  int xrb = 4;
-  int xrc = 14;
-  int xrd = 1;
-  int xre = 20;
-  byte[] xrf = new byte[2];
+  int CNo;
+  int CNp;
+  int CNq;
+  int CNr;
+  byte[] CNs;
   
   public b()
   {
-    this.xqq = 1;
+    AppMethodBeat.i(96498);
+    this.CNo = 4;
+    this.CNp = 14;
+    this.CNq = 1;
+    this.CNr = 20;
+    this.CNs = new byte[2];
+    this.CMD = 1;
+    AppMethodBeat.o(96498);
   }
   
-  public final Boolean cUG()
+  public final Boolean erf()
   {
-    if (this.xra < 20) {
-      return Boolean.valueOf(false);
+    if (this.CNn < 20) {
+      return Boolean.FALSE;
     }
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
   
   public final byte[] g(long paramLong, byte[] paramArrayOfByte)
   {
-    byte[] arrayOfByte = new byte[this.xre];
-    util.D(arrayOfByte, 0, this.xrd);
-    util.E(arrayOfByte, 2, util.cUM());
-    util.E(arrayOfByte, 6, (int)paramLong);
-    util.d(arrayOfByte, 10, util.cUO());
+    AppMethodBeat.i(96499);
+    byte[] arrayOfByte = new byte[this.CNr];
+    util.O(arrayOfByte, 0, this.CNq);
+    util.P(arrayOfByte, 2, util.erl());
+    util.P(arrayOfByte, 6, (int)paramLong);
+    util.d(arrayOfByte, 10, util.ern());
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 14, paramArrayOfByte.length);
-    util.D(arrayOfByte, paramArrayOfByte.length + 14, 0);
-    super.KP(this.xqq);
-    super.aa(arrayOfByte, this.xre);
-    super.cUF();
-    return super.cUB();
+    util.O(arrayOfByte, paramArrayOfByte.length + 14, 0);
+    super.Wr(this.CMD);
+    super.ab(arrayOfByte, this.CNr);
+    super.ere();
+    paramArrayOfByte = super.era();
+    AppMethodBeat.o(96499);
+    return paramArrayOfByte;
   }
 }
 

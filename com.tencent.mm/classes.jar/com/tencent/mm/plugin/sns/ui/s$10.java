@@ -1,14 +1,28 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.h.a.nb;
-import com.tencent.mm.sdk.b.c;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.sns.model.r;
 
 final class s$10
-  extends c<nb>
+  implements DialogInterface.OnCancelListener
 {
-  s$10(s params)
+  s$10(s params, r paramr) {}
+  
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.udX = nb.class.getName().hashCode();
+    AppMethodBeat.i(38258);
+    if (this.rHr.jKp != 0)
+    {
+      g.RM();
+      g.RK().eHt.a(this.rHu);
+      this.rHr.jKp = 0;
+    }
+    AppMethodBeat.o(38258);
   }
 }
 

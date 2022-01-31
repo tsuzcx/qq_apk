@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.vending.j.a;
+import a.l;
+import com.tencent.mm.vending.c.a;
 
-abstract interface c$b
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+final class c$b<_Ret, _Var>
+  implements a<_Ret, _Var>
 {
-  public abstract a h(i parami, String paramString);
+  c$b(c paramc) {}
 }
 
 

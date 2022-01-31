@@ -2,15 +2,15 @@ package com.tencent.mm.ui;
 
 public abstract interface c
 {
-  public abstract void FH(int paramInt);
+  public abstract void NU(int paramInt);
   
-  public abstract void FI(int paramInt);
+  public abstract void NV(int paramInt);
   
-  public abstract void FJ(int paramInt);
+  public abstract void NW(int paramInt);
   
-  public abstract void FK(int paramInt);
+  public abstract void NX(int paramInt);
   
-  public abstract void cxS();
+  public abstract void dAP();
   
   public abstract int getContactTabUnread();
   
@@ -26,11 +26,11 @@ public abstract interface c
   
   public abstract boolean getShowFriendPoint();
   
-  public abstract void i(int paramInt, float paramFloat);
+  public abstract void k(int paramInt, float paramFloat);
   
-  public abstract void mH(boolean paramBoolean);
+  public abstract void qa(boolean paramBoolean);
   
-  public abstract void mI(boolean paramBoolean);
+  public abstract void qb(boolean paramBoolean);
   
   public abstract void setOnTabClickListener(c.a parama);
   

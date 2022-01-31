@@ -1,85 +1,88 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.h.c.cn;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.cu;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class bf
-  extends cn
+  extends cu
 {
-  public static c.a buS;
+  public static c.a info;
   
   static
   {
+    AppMethodBeat.i(60139);
     c.a locala = new c.a();
-    locala.ujL = new Field[14];
+    locala.yrK = new Field[14];
     locala.columns = new String[15];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "svrid";
-    locala.ujN.put("svrid", "LONG default '0'  PRIMARY KEY ");
+    locala.yrM.put("svrid", "LONG default '0'  PRIMARY KEY ");
     localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "svrid";
+    locala.yrL = "svrid";
     locala.columns[1] = "status";
-    locala.ujN.put("status", "INTEGER");
+    locala.yrM.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "type";
-    locala.ujN.put("type", "INTEGER");
+    locala.yrM.put("type", "INTEGER");
     localStringBuilder.append(" type INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "scene";
-    locala.ujN.put("scene", "INTEGER");
+    locala.yrM.put("scene", "INTEGER");
     localStringBuilder.append(" scene INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "createtime";
-    locala.ujN.put("createtime", "LONG");
+    locala.yrM.put("createtime", "LONG");
     localStringBuilder.append(" createtime LONG");
     localStringBuilder.append(", ");
     locala.columns[5] = "talker";
-    locala.ujN.put("talker", "TEXT");
+    locala.yrM.put("talker", "TEXT");
     localStringBuilder.append(" talker TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "content";
-    locala.ujN.put("content", "TEXT");
+    locala.yrM.put("content", "TEXT");
     localStringBuilder.append(" content TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "sayhiuser";
-    locala.ujN.put("sayhiuser", "TEXT");
+    locala.yrM.put("sayhiuser", "TEXT");
     localStringBuilder.append(" sayhiuser TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "sayhicontent";
-    locala.ujN.put("sayhicontent", "TEXT");
+    locala.yrM.put("sayhicontent", "TEXT");
     localStringBuilder.append(" sayhicontent TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "imgpath";
-    locala.ujN.put("imgpath", "TEXT");
+    locala.yrM.put("imgpath", "TEXT");
     localStringBuilder.append(" imgpath TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "isSend";
-    locala.ujN.put("isSend", "INTEGER");
+    locala.yrM.put("isSend", "INTEGER");
     localStringBuilder.append(" isSend INTEGER");
     localStringBuilder.append(", ");
     locala.columns[11] = "sayhiencryptuser";
-    locala.ujN.put("sayhiencryptuser", "TEXT");
+    locala.yrM.put("sayhiencryptuser", "TEXT");
     localStringBuilder.append(" sayhiencryptuser TEXT");
     localStringBuilder.append(", ");
     locala.columns[12] = "ticket";
-    locala.ujN.put("ticket", "TEXT");
+    locala.yrM.put("ticket", "TEXT");
     localStringBuilder.append(" ticket TEXT");
     localStringBuilder.append(", ");
     locala.columns[13] = "flag";
-    locala.ujN.put("flag", "INTEGER");
+    locala.yrM.put("flag", "INTEGER");
     localStringBuilder.append(" flag INTEGER");
     locala.columns[14] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(60139);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

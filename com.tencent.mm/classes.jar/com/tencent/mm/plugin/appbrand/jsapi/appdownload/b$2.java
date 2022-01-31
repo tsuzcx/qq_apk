@@ -1,23 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.appdownload;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.b.c.a;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.r;
 
 final class b$2
   implements c.a
 {
-  b$2(b paramb, o paramo) {}
+  b$2(b paramb, r paramr) {}
   
   public final void a(String paramString, com.tencent.mm.plugin.appbrand.b.b paramb)
   {
-    if (paramb == com.tencent.mm.plugin.appbrand.b.b.fFL)
+    AppMethodBeat.i(143271);
+    if (paramb == com.tencent.mm.plugin.appbrand.b.b.gYh)
     {
-      y.d("MicroMsg.DownloadAppStateChangeEvent", "destroyed");
-      MMToClientEvent.b(this.gcp.mAppId, b.a(this.ghN));
-      b.d(this.gcp);
+      MMToClientEvent.b(this.bAW.getAppId(), b.a(this.hAT));
+      b.k(this.bAW);
     }
+    AppMethodBeat.o(143271);
   }
 }
 

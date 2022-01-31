@@ -2,42 +2,44 @@ package com.tencent.mm.plugin.voip_cs.b.a;
 
 import android.content.Context;
 import android.widget.TextView;
-import com.tencent.mm.plugin.voip_cs.a.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class b$2
-  implements am.a
+  implements ap.a
 {
   b$2(b paramb) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    b.a(this.qeI).setText(ae.getContext().getString(a.e.voip_cs_waiting));
-    b.b(this.qeI).setVisibility(0);
-    com.tencent.mm.plugin.voip_cs.c.b localb = b.c(this.qeI);
-    TextView localTextView = b.b(this.qeI);
-    Object localObject = b.pWP;
+    AppMethodBeat.i(135319);
+    b.a(this.tLv).setText(ah.getContext().getString(2131304672));
+    b.b(this.tLv).setVisibility(0);
+    com.tencent.mm.plugin.voip_cs.c.b localb = b.c(this.tLv);
+    TextView localTextView = b.b(this.tLv);
+    Object localObject = b.tCt;
     if ((localObject == null) || (localTextView == null)) {
-      y.e("MicroMsg.DynamicTextWrap", "textList or tv is null");
+      ab.e("MicroMsg.DynamicTextWrap", "textList or tv is null");
     }
     for (;;)
     {
+      AppMethodBeat.o(135319);
       return true;
-      localb.bSc();
-      localb.pXf = 0;
-      localb.pXd = ((int[])localObject);
-      localb.lh = localTextView;
-      localb.pXe = 500;
-      if (localb.fjC != null)
+      localb.cOZ();
+      localb.tCJ = 0;
+      localb.tCH = ((int[])localObject);
+      localb.md = localTextView;
+      localb.tCI = 500;
+      if (localb.bAz != null)
       {
-        localObject = localb.fjC;
-        long l = localb.pXe;
-        ((am)localObject).S(l, l);
+        localObject = localb.bAz;
+        long l = localb.tCI;
+        ((ap)localObject).ag(l, l);
       }
-      y.b("MicroMsg.DynamicTextWrap", "start textview:" + localTextView, new Object[0]);
+      ab.a("MicroMsg.DynamicTextWrap", "start textview:".concat(String.valueOf(localTextView)), new Object[0]);
     }
   }
 }

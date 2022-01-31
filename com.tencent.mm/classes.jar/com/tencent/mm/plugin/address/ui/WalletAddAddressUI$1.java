@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.address.ui;
 
-import com.tencent.mm.pluginsdk.permission.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WalletAddAddressUI$1
   implements AddrEditView.a
@@ -11,12 +12,16 @@ final class WalletAddAddressUI$1
   
   public final void onClick()
   {
-    boolean bool = a.a(this.fvu, "android.permission.READ_CONTACTS", 48, null, null);
-    y.i("MicroMsg.WalletAddAddressUI", "summerper checkPermission checkContacts[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bk.csb() });
-    if (!bool) {
+    AppMethodBeat.i(16932);
+    boolean bool = b.a(this.gMZ, "android.permission.READ_CONTACTS", 48, null, null);
+    ab.i("MicroMsg.WalletAddAddressUI", "summerper checkPermission checkContacts[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY() });
+    if (!bool)
+    {
+      AppMethodBeat.o(16932);
       return;
     }
-    WalletAddAddressUI.a(this.fvu);
+    WalletAddAddressUI.a(this.gMZ);
+    AppMethodBeat.o(16932);
   }
 }
 

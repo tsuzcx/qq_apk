@@ -2,51 +2,53 @@ package com.tencent.mm.plugin.masssend.ui;
 
 import android.content.res.Resources;
 import android.widget.Toast;
-import com.tencent.mm.R.j;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class b$4
-  implements am.a
+  implements ap.a
 {
   b$4(b paramb) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (this.mbb.ibp == -1L) {
-      this.mbb.ibp = bk.UZ();
+    AppMethodBeat.i(22770);
+    if (this.oBD.mwM == -1L) {
+      this.oBD.mwM = bo.yB();
     }
-    long l = bk.cp(this.mbb.ibp);
+    long l = bo.av(this.oBD.mwM);
     int i;
     if ((l >= 50000L) && (l <= 60000L))
     {
-      if (this.mbb.ibq != null) {
-        break label188;
+      if (this.oBD.mwN != null) {
+        break label198;
       }
       i = (int)((60000L - l) / 1000L);
-      this.mbb.ibq = Toast.makeText(this.mbb.maU, this.mbb.maU.getResources().getQuantityString(R.j.chatting_rcd_time_limit, i, new Object[] { Integer.valueOf(i) }), 0);
+      this.oBD.mwN = Toast.makeText(this.oBD.oBv, this.oBD.oBv.getResources().getQuantityString(2131361794, i, new Object[] { Integer.valueOf(i) }), 0);
     }
     for (;;)
     {
-      this.mbb.ibq.show();
+      this.oBD.mwN.show();
       if (l < 60000L) {
         break;
       }
-      y.v("MicroMsg.MassSendFooterEventImpl", "record stop on countdown");
-      if (this.mbb.maW.un()) {
-        this.mbb.bhg();
+      ab.v("MicroMsg.MassSendFooterEventImpl", "record stop on countdown");
+      if (this.oBD.oBx.Ez()) {
+        this.oBD.bPg();
       }
-      this.mbb.maV.aRj();
-      au.G(this.mbb.maU, R.l.time_limit);
+      this.oBD.oBw.bxy();
+      ay.ax(this.oBD.oBv, 2131304298);
+      AppMethodBeat.o(22770);
       return false;
-      label188:
+      label198:
       i = (int)((60000L - l) / 1000L);
-      this.mbb.ibq.setText(this.mbb.maU.getResources().getQuantityString(R.j.chatting_rcd_time_limit, i, new Object[] { Integer.valueOf(i) }));
+      this.oBD.mwN.setText(this.oBD.oBv.getResources().getQuantityString(2131361794, i, new Object[] { Integer.valueOf(i) }));
     }
+    AppMethodBeat.o(22770);
     return true;
   }
 }

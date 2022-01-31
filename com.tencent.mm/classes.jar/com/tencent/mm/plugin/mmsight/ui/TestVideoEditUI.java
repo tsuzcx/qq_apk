@@ -1,82 +1,99 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
+import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mm.api.b;
-import com.tencent.mm.api.f;
-import com.tencent.mm.api.q;
-import com.tencent.mm.api.q.a.a;
-import com.tencent.mm.api.q.b;
-import com.tencent.mm.api.q.c;
-import com.tencent.mm.plugin.u.a.e;
-import com.tencent.mm.plugin.u.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.c;
+import com.tencent.mm.api.g;
+import com.tencent.mm.api.s;
+import com.tencent.mm.api.s.a.a;
+import com.tencent.mm.api.s.b;
+import com.tencent.mm.api.s.c;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 public class TestVideoEditUI
   extends MMActivity
-  implements f
+  implements g
 {
-  private q mqU;
+  private s oQJ;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.f.test_video_edit_ui;
+    return 2130970993;
   }
   
   public void onBackPressed()
   {
-    if (!this.mqU.rG()) {
+    AppMethodBeat.i(55298);
+    if (!this.oQJ.zY()) {
       finish();
     }
+    AppMethodBeat.o(55298);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(55296);
     super.onCreate(paramBundle);
     fullScreenNoTitleBar(true);
-    paramBundle = (FrameLayout)findViewById(a.e.content);
-    this.mqU = q.buU.rJ();
-    Object localObject = this.mqU;
-    q.a.a locala = new q.a.a();
-    locala.buW = false;
-    locala.buY = true;
-    locala.buZ = new Rect(0, 0, 1080, 1080);
-    locala.buV = q.c.bva;
-    ((q)localObject).a(locala.sh());
-    localObject = this.mqU.ax(this.mController.uMN);
-    ((b)localObject).setActionBarCallback(this);
+    paramBundle = (FrameLayout)findViewById(2131820946);
+    this.oQJ = s.bWe.Ab();
+    Object localObject = this.oQJ;
+    s.a.a locala = new s.a.a();
+    locala.bWg = false;
+    locala.bWj = true;
+    locala.bWk = new Rect(0, 0, 1080, 1080);
+    locala.bWf = s.c.bWl;
+    ((s)localObject).a(locala.Ax());
+    localObject = this.oQJ.aV(getContext());
+    ((c)localObject).setActionBarCallback(this);
     paramBundle.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    ((b)localObject).setSelectedFeatureListener(new TestVideoEditUI.1(this));
+    ((c)localObject).setSelectedFeatureListener(new TestVideoEditUI.1(this));
+    AppMethodBeat.o(55296);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(55297);
     super.onDestroy();
-    this.mqU.onDestroy();
+    this.oQJ.onDestroy();
+    AppMethodBeat.o(55297);
+  }
+  
+  public final void onExit()
+  {
+    AppMethodBeat.i(55301);
+    finish();
+    AppMethodBeat.o(55301);
   }
   
   public final void onFinish()
   {
-    this.mqU.a(new TestVideoEditUI.2(this));
+    AppMethodBeat.i(55300);
+    this.oQJ.a(new TestVideoEditUI.2(this));
+    AppMethodBeat.o(55300);
   }
   
   public void onSwipeBack()
   {
+    AppMethodBeat.i(55299);
     super.onSwipeBack();
+    AppMethodBeat.o(55299);
   }
   
-  public final void rX()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    finish();
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.TestVideoEditUI
  * JD-Core Version:    0.7.0.1
  */

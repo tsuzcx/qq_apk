@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.webview.stub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.a.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 final class WebViewStubService$1$2
   implements Runnable
@@ -12,12 +13,14 @@ final class WebViewStubService$1$2
   
   public final void run()
   {
+    AppMethodBeat.i(7106);
     Intent localIntent = new Intent();
     localIntent.addFlags(268435456);
-    localIntent.putExtras(this.byv);
+    localIntent.putExtras(this.cax);
     localIntent.putExtra("isFromWebView", true);
-    localIntent.putExtra("_stat_obj", this.ggd);
-    a.eUR.r(localIntent, this.rkj.rkg);
+    localIntent.putExtra("_stat_obj", this.hyb);
+    a.gmO.q(localIntent, this.uZB.uZy);
+    AppMethodBeat.o(7106);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$1
   implements Runnable
@@ -9,7 +10,9 @@ final class b$1
   
   public final void run()
   {
-    b.a(this.oMj, this.val$view, this.ovP);
+    AppMethodBeat.i(38065);
+    b.a(this.rDU, this.val$view, this.rkK);
+    AppMethodBeat.o(38065);
   }
 }
 

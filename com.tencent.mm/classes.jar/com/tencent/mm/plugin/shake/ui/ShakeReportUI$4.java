@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Looper;
 import android.os.MessageQueue;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShakeReportUI$4
   implements DialogInterface.OnCancelListener
@@ -12,7 +13,9 @@ final class ShakeReportUI$4
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
+    AppMethodBeat.i(24779);
     Looper.myQueue().addIdleHandler(new ShakeReportUI.4.1(this));
+    AppMethodBeat.o(24779);
   }
 }
 

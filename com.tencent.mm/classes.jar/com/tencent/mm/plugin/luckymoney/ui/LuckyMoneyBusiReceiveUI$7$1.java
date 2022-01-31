@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.luckymoney.b.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.x;
 import com.tencent.mm.plugin.report.service.h;
 
 final class LuckyMoneyBusiReceiveUI$7$1
@@ -12,8 +13,10 @@ final class LuckyMoneyBusiReceiveUI$7$1
   
   public final void onClick(View paramView)
   {
-    h.nFQ.f(11701, new Object[] { Integer.valueOf(12), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
-    o.a(this.lVc.lUZ, 1, false);
+    AppMethodBeat.i(42622);
+    h.qsU.e(11701, new Object[] { Integer.valueOf(12), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
+    x.a(this.osl.osi, 1, false);
+    AppMethodBeat.o(42622);
   }
 }
 

@@ -1,26 +1,32 @@
 package com.tencent.mm.plugin.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class PluginFTS$8$1
   extends a
 {
-  String kuz = "";
+  String mQn = "";
   
   PluginFTS$8$1(PluginFTS.8 param8) {}
   
   public final boolean execute()
   {
-    this.kuz = x.fB(ae.getContext());
-    PluginFTS.access$200(this.kuA.kuy).A(-3L, this.kuz.hashCode());
+    AppMethodBeat.i(136589);
+    this.mQn = aa.gP(ah.getContext());
+    PluginFTS.access$100(this.mQo.mQm).M(-3L, this.mQn.hashCode());
+    AppMethodBeat.o(136589);
     return true;
   }
   
   public final String toString()
   {
-    return "LanguageUpdate(\"" + this.kuz + "\")";
+    AppMethodBeat.i(136590);
+    String str = "LanguageUpdate(\"" + this.mQn + "\")";
+    AppMethodBeat.o(136590);
+    return str;
   }
 }
 

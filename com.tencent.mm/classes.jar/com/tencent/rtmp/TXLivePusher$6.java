@@ -1,25 +1,26 @@
 package com.tencent.rtmp;
 
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ugc.TXRecordCommon.ITXVideoRecordListener;
 import com.tencent.ugc.TXRecordCommon.TXRecordResult;
 
 class TXLivePusher$6
   implements Runnable
 {
-  TXLivePusher$6(TXLivePusher paramTXLivePusher, String paramString1, String paramString2) {}
+  TXLivePusher$6(TXLivePusher paramTXLivePusher) {}
   
   public void run()
   {
+    AppMethodBeat.i(65933);
     TXRecordCommon.TXRecordResult localTXRecordResult = new TXRecordCommon.TXRecordResult();
-    localTXRecordResult.retCode = 0;
-    localTXRecordResult.descMsg = "record success";
-    localTXRecordResult.videoPath = this.val$videoFilePath;
-    localTXRecordResult.coverPath = this.val$coverPath;
+    localTXRecordResult.retCode = -1;
+    localTXRecordResult.descMsg = "record video failed";
     if (TXLivePusher.access$600(this.this$0) != null) {
       TXLivePusher.access$600(this.this$0).onRecordComplete(localTXRecordResult);
     }
-    TXCLog.w(TXLivePusher.access$700(), "record complete success");
+    TXCLog.w(TXLivePusher.access$700(), "record complete fail");
+    AppMethodBeat.o(65933);
   }
 }
 

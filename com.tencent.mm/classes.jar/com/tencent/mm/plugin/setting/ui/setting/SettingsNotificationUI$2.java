@@ -1,54 +1,45 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
-import com.tencent.mm.kernel.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.m.f;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.model.au;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.storage.ak;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.pluginsdk.permission.d;
+import com.tencent.mm.ui.widget.b.e.c;
 
 final class SettingsNotificationUI$2
-  implements DialogInterface.OnClickListener
+  implements e.c
 {
   SettingsNotificationUI$2(SettingsNotificationUI paramSettingsNotificationUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void d(boolean paramBoolean, String paramString)
   {
-    f.bv(false);
-    paramDialogInterface = new bi();
-    paramDialogInterface.fA(2);
-    paramDialogInterface.bg(System.currentTimeMillis());
-    paramDialogInterface.setType(1);
-    paramDialogInterface.ec("weixin");
-    paramDialogInterface.setContent(this.nVj.mController.uMN.getString(a.i.settings_new_voip_msg_weixin_close_tips, new Object[] { Build.MODEL }));
-    bd.h(paramDialogInterface);
-    paramDialogInterface = ((j)g.r(j.class)).FB().abv("weixin");
-    if (paramDialogInterface != null)
+    AppMethodBeat.i(127353);
+    if (paramBoolean)
     {
-      paramDialogInterface.setContent(this.nVj.mController.uMN.getString(a.i.settings_new_voip_msg_weixin_close_tips, new Object[] { Build.MODEL }));
-      paramDialogInterface.fy(paramDialogInterface.field_unReadCount + 1);
-      ((j)g.r(j.class)).FB().a(paramDialogInterface, "weixin");
-    }
-    for (;;)
-    {
-      h.nFQ.a(500L, 3L, 1L, false);
-      com.tencent.mm.model.as.j(false, true);
+      SettingsNotificationUI.a(this.qJo, new d()
+      {
+        public final void De(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(127352);
+          if (!f.My())
+          {
+            SettingsNotificationUI.2.this.qJo.initView();
+            AppMethodBeat.o(127352);
+            return;
+          }
+          f.bT(true);
+          SettingsNotificationUI.2.this.qJo.initView();
+          h.qsU.idkeyStat(500L, 0L, 1L, false);
+          au.k(true, false);
+          AppMethodBeat.o(127352);
+        }
+      });
+      AppMethodBeat.o(127353);
       return;
-      paramDialogInterface = new ak();
-      paramDialogInterface.setContent(this.nVj.mController.uMN.getString(a.i.settings_new_voip_msg_weixin_close_tips, new Object[] { Build.MODEL }));
-      paramDialogInterface.setUsername("weixin");
-      paramDialogInterface.fy(1);
-      ((j)g.r(j.class)).FB().d(paramDialogInterface);
     }
+    this.qJo.initView();
+    AppMethodBeat.o(127353);
   }
 }
 

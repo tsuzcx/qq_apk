@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.sharecard.a;
 
 public final class c$a
 {
-  public String bZc;
-  public int ioG;
+  public String cHn;
+  public int kpN;
   public String username;
   
   public c$a(c paramc) {}

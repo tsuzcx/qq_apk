@@ -1,13 +1,33 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
-public final class t
-  extends s
+import java.util.Collections;
+import java.util.List;
+
+public abstract class t
 {
-  public String fNR;
-  public float fontSize;
-  public String label;
-  public String oDx;
-  public float value;
+  public float height;
+  public float paddingBottom;
+  public float paddingLeft;
+  public float paddingRight;
+  public float paddingTop;
+  public String rsI;
+  public int rsJ;
+  public float rsK = -2.0F;
+  public float rsL = -2.0F;
+  public boolean rsM;
+  public String rsN = "";
+  public int rsO;
+  public int rsP;
+  public boolean rsQ;
+  public boolean rsR;
+  public int subType;
+  public int type;
+  public float width;
+  
+  protected List<t> cqF()
+  {
+    return Collections.emptyList();
+  }
 }
 
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.config;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,15 +11,17 @@ public final class s$2
   
   public final void run()
   {
-    Iterator localIterator = this.fQO.iterator();
+    AppMethodBeat.i(129906);
+    Iterator localIterator = this.hjA.iterator();
     while (localIterator.hasNext()) {
-      s.W((String)localIterator.next(), true);
+      s.ac((String)localIterator.next(), true);
     }
+    AppMethodBeat.o(129906);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.s.2
  * JD-Core Version:    0.7.0.1
  */

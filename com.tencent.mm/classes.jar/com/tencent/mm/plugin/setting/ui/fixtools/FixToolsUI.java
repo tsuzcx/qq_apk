@@ -1,72 +1,90 @@
 package com.tencent.mm.plugin.setting.ui.fixtools;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.plugin.setting.a.k;
 import com.tencent.mm.plugin.setting.ui.setting.SettingsAboutMMHeaderPreference;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.e;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.g;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.s;
 
 @com.tencent.mm.ui.base.a(3)
 public class FixToolsUI
   extends MMPreference
 {
-  private f dnn;
+  private f screen;
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
   {
-    if (paramPreference.mKey.equals("fix_tools_uplog"))
-    {
-      if (com.tencent.mm.plugin.setting.model.a.byG().eAp)
-      {
-        MMWizardActivity.C(this, new Intent(this.mController.uMN, FixToolsUpLogUploadingUI.class));
-        return true;
-      }
-      paramf = new Intent(this.mController.uMN, FixToolsUplogUI.class);
-      paramf.putExtra("entry_fix_tools_uplog", 9);
-      MMWizardActivity.C(this, paramf);
-      return true;
-    }
-    if (paramPreference.mKey.equals("fix_tools_db_recover"))
-    {
-      paramf = new Intent().setClassName(this.mController.uMN, "com.tencent.mm.plugin.dbbackup.DBRecoveryUI");
-      paramf.putExtra("scene", 2);
-      this.mController.uMN.startActivity(paramf);
-      return true;
-    }
-    return false;
+    return 2131165241;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(126884);
     super.onCreate(paramBundle);
-    this.dnn = this.vdd;
-    setMMTitle(a.i.fix_tools);
-    SettingsAboutMMHeaderPreference localSettingsAboutMMHeaderPreference = (SettingsAboutMMHeaderPreference)this.dnn.add("fix_tools_micromsg_header");
-    String str = e.ag(this.mController.uMN, d.spa);
+    this.screen = getPreferenceScreen();
+    setMMTitle(2131299980);
+    SettingsAboutMMHeaderPreference localSettingsAboutMMHeaderPreference = (SettingsAboutMMHeaderPreference)this.screen.atx("fix_tools_micromsg_header");
+    String str = g.au(getContext(), d.whH);
     paramBundle = str;
-    if (d.spd) {
-      paramBundle = str + " " + getString(a.i.alpha_version_alpha);
+    if (d.whK) {
+      paramBundle = str + " " + getString(2131296529);
     }
-    localSettingsAboutMMHeaderPreference.nSW = paramBundle;
+    localSettingsAboutMMHeaderPreference.qGW = paramBundle;
     int i = getIntent().getIntExtra("entry_fix_tools", 2);
-    h.nFQ.a(873L, i, 1L, false);
-    h.nFQ.a(873L, 0L, 1L, false);
+    h.qsU.idkeyStat(873L, i, 1L, false);
+    h.qsU.idkeyStat(873L, 0L, 1L, false);
     setBackBtn(new FixToolsUI.1(this));
+    this.screen.cl("fix_tools_fts_recover", true);
+    AppMethodBeat.o(126884);
   }
   
-  public final int xj()
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    return a.k.fix_tools;
+    AppMethodBeat.i(126885);
+    if (paramPreference.mKey.equals("fix_tools_uplog"))
+    {
+      if (com.tencent.mm.plugin.setting.model.a.cjQ().fQi) {
+        MMWizardActivity.J(this, new Intent(getContext(), FixToolsUpLogUploadingUI.class));
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(126885);
+        return true;
+        paramf = new Intent(getContext(), FixToolsUplogUI.class);
+        paramf.putExtra("entry_fix_tools_uplog", 9);
+        MMWizardActivity.J(this, paramf);
+      }
+    }
+    if (paramPreference.mKey.equals("fix_tools_db_recover"))
+    {
+      paramf = new Intent().setClassName(getContext(), "com.tencent.mm.plugin.dbbackup.DBRecoveryUI");
+      paramf.putExtra("scene", 2);
+      getContext().startActivity(paramf);
+      AppMethodBeat.o(126885);
+      return true;
+    }
+    if (paramPreference.mKey.endsWith("fix_tools_fts_recover"))
+    {
+      startActivity(new Intent(this, FixToolsFTSUI.class));
+      AppMethodBeat.o(126885);
+      return true;
+    }
+    AppMethodBeat.o(126885);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

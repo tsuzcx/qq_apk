@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class r$c$1$1
   implements w.a
@@ -12,7 +13,9 @@ final class r$c$1$1
   
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
-    y.d("MicroMsg.AppBrandPushNewOrRedDotLogic", "locationReport, errType %d, errCode %d, errMsg %s, longitude %f, latitude %f, accuracy %f", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Float.valueOf(this.fJf), Float.valueOf(this.fJg), Double.valueOf(this.elS) });
+    AppMethodBeat.i(129626);
+    ab.d("MicroMsg.AppBrandPushNewOrRedDotLogic", "locationReport, errType %d, errCode %d, errMsg %s, longitude %f, latitude %f, accuracy %f", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Float.valueOf(this.hbX), Float.valueOf(this.hbY), Double.valueOf(this.fCk) });
+    AppMethodBeat.o(129626);
     return 0;
   }
 }

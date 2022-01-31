@@ -1,12 +1,10 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
-import com.tencent.mm.plugin.setting.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -17,7 +15,8 @@ final class UnfamiliarContactDetailUI$9
   
   public final void onClick(View paramView)
   {
-    paramView = (CheckBox)UnfamiliarContactDetailUI.i(this.nWX).findViewById(a.f.checkbox);
+    AppMethodBeat.i(127646);
+    paramView = (CheckBox)UnfamiliarContactDetailUI.i(this.qLi).findViewById(2131820950);
     if (!paramView.isChecked()) {}
     for (boolean bool = true;; bool = false)
     {
@@ -26,30 +25,25 @@ final class UnfamiliarContactDetailUI$9
         break;
       }
       int i = 0;
-      while (i < UnfamiliarContactDetailUI.f(this.nWX).size())
+      while (i < UnfamiliarContactDetailUI.f(this.qLi).size())
       {
-        UnfamiliarContactDetailUI.b(this.nWX).add(Integer.valueOf(i));
+        UnfamiliarContactDetailUI.b(this.qLi).add(Integer.valueOf(i));
         i += 1;
       }
     }
-    UnfamiliarContactDetailUI.b(this.nWX).clear();
-    if (UnfamiliarContactDetailUI.b(this.nWX).size() > 0)
+    UnfamiliarContactDetailUI.b(this.qLi).clear();
+    if (UnfamiliarContactDetailUI.b(this.qLi).size() > 0)
     {
-      UnfamiliarContactDetailUI.d(this.nWX).setEnabled(true);
-      UnfamiliarContactDetailUI.c(this.nWX).setEnabled(true);
+      UnfamiliarContactDetailUI.d(this.qLi).setEnabled(true);
+      UnfamiliarContactDetailUI.c(this.qLi).setEnabled(true);
     }
     for (;;)
     {
-      UnfamiliarContactDetailUI.j(this.nWX).post(new Runnable()
-      {
-        public final void run()
-        {
-          UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.9.this.nWX).agL.notifyChanged();
-        }
-      });
+      UnfamiliarContactDetailUI.j(this.qLi).post(new UnfamiliarContactDetailUI.9.1(this));
+      AppMethodBeat.o(127646);
       return;
-      UnfamiliarContactDetailUI.d(this.nWX).setEnabled(false);
-      UnfamiliarContactDetailUI.c(this.nWX).setEnabled(false);
+      UnfamiliarContactDetailUI.d(this.qLi).setEnabled(false);
+      UnfamiliarContactDetailUI.c(this.qLi).setEnabled(false);
     }
   }
 }

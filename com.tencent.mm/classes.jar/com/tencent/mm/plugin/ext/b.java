@@ -5,26 +5,27 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Looper;
-import com.tencent.mm.cf.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.compatible.e.m;
 import com.tencent.mm.compatible.util.k;
-import com.tencent.mm.h.a.ez;
+import com.tencent.mm.g.a.fc;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bu;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.a;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bw;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
 import com.tencent.mm.pluginsdk.model.app.d;
 import com.tencent.mm.pluginsdk.model.app.t;
 import com.tencent.mm.pluginsdk.model.i.a;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
@@ -37,140 +38,177 @@ import java.util.LinkedList;
 import junit.framework.Assert;
 
 public class b
-  implements ar
+  implements at
 {
-  private static HashMap<Integer, h.d> dgp;
-  private static boolean jJE;
-  private ah jJA = new b.8(this, Looper.getMainLooper());
-  private j.a jJB = new b.9(this);
-  private boolean jJC = true;
-  private boolean jJD = false;
-  private final long jJo = 1600L;
-  private z jJp;
-  private bp jJq;
-  private ca jJr;
-  private b.a jJs;
-  private b.b jJt;
-  private HashMap<String, Integer> jJu = new HashMap();
-  private g.a jJv = new b.5(this);
-  i.a jJw = new b.6(this);
-  private ah jJx = new b.7(this, Looper.getMainLooper());
-  private LinkedList<String> jJy = new LinkedList();
-  private final long jJz = 60L;
-  m.b jwR = new b.10(this);
+  private static HashMap<Integer, h.d> baseDBFactories;
+  private static boolean mdI;
+  n.b lGq;
+  i.a mdA;
+  private ak mdB;
+  private LinkedList<String> mdC;
+  private final long mdD;
+  private ak mdE;
+  private k.a mdF;
+  private boolean mdG;
+  private boolean mdH;
+  private final long mds;
+  private z mdt;
+  private bp mdu;
+  private ca mdv;
+  private b.a mdw;
+  private b.b mdx;
+  private HashMap<String, Integer> mdy;
+  private h.a mdz;
   
   static
   {
-    int i = m.yR();
+    AppMethodBeat.i(20290);
+    int i = m.Lo();
     try
     {
       if (!Build.CPU_ABI.contains("armeabi")) {
-        y.e("hakon SilkCodec", "x86 machines not supported.");
+        ab.e("hakon SilkCodec", "x86 machines not supported.");
       }
       for (;;)
       {
         HashMap localHashMap = new HashMap();
-        dgp = localHashMap;
+        baseDBFactories = localHashMap;
         localHashMap.put(Integer.valueOf("OPENMSGLISTENER_TABLE".hashCode()), new b.1());
-        dgp.put(Integer.valueOf("USEROPENIDINAPP_TABLE".hashCode()), new b.3());
-        jJE = false;
+        baseDBFactories.put(Integer.valueOf("USEROPENIDINAPP_TABLE".hashCode()), new b.3());
+        mdI = false;
+        AppMethodBeat.o(20290);
         return;
         if ((i & 0x400) == 0) {
           break;
         }
-        k.b("wechatvoicesilk_v7a", b.class.getClassLoader());
+        k.a("wechatvoicesilk_v7a", b.class.getClassLoader());
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.e("hakon SilkCodec", "load library failed!");
+        ab.e("hakon SilkCodec", "load library failed!");
         continue;
         if ((i & 0x200) != 0)
         {
-          k.b("wechatvoicesilk", b.class.getClassLoader());
+          k.a("wechatvoicesilk", b.class.getClassLoader());
           Assert.assertTrue("Can't remove libwechatvoicesilk.so yet.", false);
         }
         else
         {
-          y.e("hakon SilkCodec", "load library failed! silk don't support armv5!!!!");
+          ab.e("hakon SilkCodec", "load library failed! silk don't support armv5!!!!");
         }
       }
     }
   }
   
-  public static b aNn()
+  public b()
   {
-    au.Hq();
-    b localb2 = (b)bu.iR("plugin.ext");
+    AppMethodBeat.i(20274);
+    this.mds = 1600L;
+    this.mdy = new HashMap();
+    this.mdz = new b.5(this);
+    this.mdA = new b.6(this);
+    this.mdB = new b.7(this, Looper.getMainLooper());
+    this.mdC = new LinkedList();
+    this.mdD = 60L;
+    this.mdE = new b.8(this, Looper.getMainLooper());
+    this.mdF = new b.9(this);
+    this.lGq = new b.10(this);
+    this.mdG = true;
+    this.mdH = false;
+    AppMethodBeat.o(20274);
+  }
+  
+  public static b btq()
+  {
+    AppMethodBeat.i(20275);
+    aw.aat();
+    b localb2 = (b)bw.pF("plugin.ext");
     b localb1 = localb2;
     if (localb2 == null)
     {
       localb1 = new b();
-      au.Hq().a("plugin.ext", localb1);
+      aw.aat().a("plugin.ext", localb1);
     }
+    AppMethodBeat.o(20275);
     return localb1;
   }
   
-  public static z aNo()
+  public static z btr()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (aNn().jJp == null)
+    AppMethodBeat.i(20276);
+    g.RJ().QQ();
+    if (btq().mdt == null)
     {
-      b localb = aNn();
-      au.Hx();
-      localb.jJp = new z(com.tencent.mm.model.c.Dv());
+      localObject = btq();
+      aw.aaz();
+      ((b)localObject).mdt = new z(com.tencent.mm.model.c.Rq());
     }
-    return aNn().jJp;
+    Object localObject = btq().mdt;
+    AppMethodBeat.o(20276);
+    return localObject;
   }
   
-  public static bp aNp()
+  public static bp bts()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (aNn().jJq == null)
+    AppMethodBeat.i(20277);
+    g.RJ().QQ();
+    if (btq().mdu == null)
     {
-      b localb = aNn();
-      au.Hx();
-      localb.jJq = new bp(com.tencent.mm.model.c.Dv());
+      localObject = btq();
+      aw.aaz();
+      ((b)localObject).mdu = new bp(com.tencent.mm.model.c.Rq());
     }
-    return aNn().jJq;
+    Object localObject = btq().mdu;
+    AppMethodBeat.o(20277);
+    return localObject;
   }
   
-  public static ca aNq()
+  public static ca btt()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (aNn().jJr == null)
+    AppMethodBeat.i(20278);
+    g.RJ().QQ();
+    if (btq().mdv == null)
     {
-      b localb = aNn();
-      au.Hx();
-      localb.jJr = new ca(com.tencent.mm.model.c.Dv());
+      localObject = btq();
+      aw.aaz();
+      ((b)localObject).mdv = new ca(com.tencent.mm.model.c.Rq());
     }
-    return aNn().jJr;
+    Object localObject = btq().mdv;
+    AppMethodBeat.o(20278);
+    return localObject;
   }
   
-  private static void aNr()
+  private static void btu()
   {
-    File localFile = new File(com.tencent.mm.kernel.g.DP().dKt);
+    AppMethodBeat.i(20280);
+    File localFile = new File(g.RL().eHR);
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
-    localFile = new File(com.tencent.mm.kernel.g.DP().dKt + "image/ext/pcm");
+    localFile = new File(g.RL().eHR + "image/ext/pcm");
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
-    y.i("MicroMsg.SubCoreExt", "summerpcm accPath[%s] [%s]", new Object[] { com.tencent.mm.kernel.g.DP().dKt, bk.csb() });
+    ab.i("MicroMsg.SubCoreExt", "summerpcm accPath[%s] [%s]", new Object[] { g.RL().eHR, bo.dtY() });
+    AppMethodBeat.o(20280);
   }
   
-  public static String aNs()
+  public static String btv()
   {
-    return com.tencent.mm.kernel.g.DP().dKt + "image/ext/pcm";
+    AppMethodBeat.i(20283);
+    String str = g.RL().eHR + "image/ext/pcm";
+    AppMethodBeat.o(20283);
+    return str;
   }
   
-  public static void aNt()
+  public static void btw()
   {
-    Object localObject = (String)aNo().get(ac.a.uto, null);
-    y.i("MicroMsg.SubCoreExt", "sendSportBroadcast pkgNames = " + (String)localObject);
+    AppMethodBeat.i(20284);
+    Object localObject = (String)btr().get(ac.a.yDq, null);
+    ab.i("MicroMsg.SubCoreExt", "sendSportBroadcast pkgNames = ".concat(String.valueOf(localObject)));
     if (localObject != null)
     {
       localObject = ((String)localObject).split(";");
@@ -183,146 +221,176 @@ public class b
         localIntent.setPackage(str);
         com.tencent.mm.compatible.a.a.a(12, new b.4(localIntent));
         localIntent.putExtra("EXTRA_EXT_OPEN_NOTIFY_TYPE", "SPORT_MESSAGE");
-        ae.getContext().sendBroadcast(localIntent);
+        ah.getContext().sendBroadcast(localIntent);
         i += 1;
       }
     }
+    AppMethodBeat.o(20284);
   }
   
-  public static ad eg(long paramLong)
+  private void hk(boolean paramBoolean)
   {
-    if ((au.DK()) && (paramLong > 0L))
+    AppMethodBeat.i(20288);
+    if (!this.mdG)
     {
-      au.Hx();
-      return com.tencent.mm.model.c.Fw().hE(paramLong);
+      AppMethodBeat.o(20288);
+      return;
     }
+    if ((paramBoolean) && (this.mdH))
+    {
+      ab.i("MicroMsg.SubCoreExt", "fromStartApp and already try to init");
+      AppMethodBeat.o(20288);
+      return;
+    }
+    if ((!paramBoolean) && (!mdI))
+    {
+      AppMethodBeat.o(20288);
+      return;
+    }
+    ab.i("MicroMsg.SubCoreExt", "initLocalVoiceControl,fromStartApp:%s,hasTryToInit:%s,hasCallApi:%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.mdH), Boolean.valueOf(mdI) });
+    this.mdG = false;
+    aw.RO().o(new b.2(this), 10000L);
+    AppMethodBeat.o(20288);
+  }
+  
+  public static ad jD(long paramLong)
+  {
+    AppMethodBeat.i(20285);
+    if ((aw.RG()) && (paramLong > 0L))
+    {
+      aw.aaz();
+      ad localad = com.tencent.mm.model.c.YA().on(paramLong);
+      AppMethodBeat.o(20285);
+      return localad;
+    }
+    AppMethodBeat.o(20285);
     return null;
   }
   
-  public static void eh(long paramLong)
+  public static void jE(long paramLong)
   {
-    if (paramLong <= 0L) {
+    AppMethodBeat.i(20286);
+    if (paramLong <= 0L)
+    {
+      AppMethodBeat.o(20286);
       return;
     }
     try
     {
-      au.Hx();
-      if (com.tencent.mm.model.c.Fy().fg(paramLong))
+      aw.aaz();
+      if (com.tencent.mm.model.c.YC().kE(paramLong))
       {
-        au.Hx();
-        com.tencent.mm.plugin.messenger.foundation.a.a.g localg = com.tencent.mm.model.c.Fy();
-        au.Hx();
-        localg.U(com.tencent.mm.model.c.Fy().fd(paramLong));
+        aw.aaz();
+        h localh = com.tencent.mm.model.c.YC();
+        aw.aaz();
+        localh.aa(com.tencent.mm.model.c.YC().kB(paramLong));
+        AppMethodBeat.o(20286);
         return;
       }
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.SubCoreExt", localException.getMessage());
-      y.printErrStackTrace("MicroMsg.SubCoreExt", localException, "", new Object[0]);
+      ab.e("MicroMsg.SubCoreExt", localException.getMessage());
+      ab.printErrStackTrace("MicroMsg.SubCoreExt", localException, "", new Object[0]);
+      AppMethodBeat.o(20286);
       return;
     }
-    y.e("MicroMsg.SubCoreExt", "msgId is out of range, " + paramLong);
+    ab.e("MicroMsg.SubCoreExt", "msgId is out of range, ".concat(String.valueOf(paramLong)));
+    AppMethodBeat.o(20286);
   }
   
-  private void fH(boolean paramBoolean)
+  public final void btx()
   {
-    if (!this.jJC) {}
-    do
-    {
-      return;
-      if ((paramBoolean) && (this.jJD))
-      {
-        y.i("MicroMsg.SubCoreExt", "fromStartApp and already try to init");
-        return;
-      }
-    } while ((!paramBoolean) && (!jJE));
-    y.i("MicroMsg.SubCoreExt", "initLocalVoiceControl,fromStartApp:%s,hasTryToInit:%s,hasCallApi:%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.jJD), Boolean.valueOf(jJE) });
-    this.jJC = false;
-    au.DS().k(new b.2(this), 10000L);
+    AppMethodBeat.i(20287);
+    this.mdB.removeMessages(0);
+    this.mdB.sendEmptyMessageDelayed(0, 1600L);
+    AppMethodBeat.o(20287);
   }
   
-  public final void aNu()
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    this.jJx.removeMessages(0);
-    this.jJx.sendEmptyMessageDelayed(0, 1600L);
+    return baseDBFactories;
   }
   
-  public final void bh(boolean paramBoolean)
+  public void onAccountPostReset(boolean paramBoolean)
   {
-    Object localObject = new ez();
-    ((ez)localObject).bLq.op = 1;
-    if (!com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject)) {
-      y.e("MicroMsg.SubCoreExt", "ExtAgentLifeEvent event fail in onAccountPostReset");
+    AppMethodBeat.i(20281);
+    Object localObject = new fc();
+    ((fc)localObject).csK.op = 1;
+    if (!com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject)) {
+      ab.e("MicroMsg.SubCoreExt", "ExtAgentLifeEvent event fail in onAccountPostReset");
     }
-    com.tencent.mm.pluginsdk.model.i.cku().ckv();
-    au.Hx();
-    com.tencent.mm.model.c.Fy().a(this.jJv, null);
-    if (this.jJs == null) {
-      this.jJs = new b.a();
+    com.tencent.mm.pluginsdk.model.i.dkZ().dla();
+    aw.aaz();
+    com.tencent.mm.model.c.YC().a(this.mdz, null);
+    if (this.mdw == null) {
+      this.mdw = new b.a();
     }
-    com.tencent.mm.sdk.b.a.udP.c(this.jJs);
-    if (this.jJt == null) {
-      this.jJt = new b.b();
+    com.tencent.mm.sdk.b.a.ymk.c(this.mdw);
+    if (this.mdx == null) {
+      this.mdx = new b.b();
     }
-    com.tencent.mm.sdk.b.a.udP.c(this.jJt);
-    localObject = ap.brn();
+    com.tencent.mm.sdk.b.a.ymk.c(this.mdx);
+    localObject = com.tencent.mm.pluginsdk.model.app.al.cac();
     if (localObject != null) {
-      ((com.tencent.mm.pluginsdk.model.app.i)localObject).c(this.jJB);
+      ((com.tencent.mm.pluginsdk.model.app.i)localObject).add(this.mdF);
     }
-    localObject = ae.cqS();
-    this.jJD = ((SharedPreferences)localObject).getBoolean("hasTryToInitVoiceControlData", false);
-    jJE = ((SharedPreferences)localObject).getBoolean("hasCallVoiceControlApi", false);
-    y.i("MicroMsg.SubCoreExt", "onAccountPostReset,hasTryToInit:%s,hasCallApi:%s", new Object[] { Boolean.valueOf(this.jJD), Boolean.valueOf(jJE) });
-    au.Hx();
-    com.tencent.mm.model.c.Fw().a(this.jwR);
-    fH(true);
-    com.tencent.mm.plugin.ext.c.c.aNI();
-    aNr();
+    localObject = ah.dsQ();
+    this.mdH = ((SharedPreferences)localObject).getBoolean("hasTryToInitVoiceControlData", false);
+    mdI = ((SharedPreferences)localObject).getBoolean("hasCallVoiceControlApi", false);
+    ab.i("MicroMsg.SubCoreExt", "onAccountPostReset,hasTryToInit:%s,hasCallApi:%s", new Object[] { Boolean.valueOf(this.mdH), Boolean.valueOf(mdI) });
+    aw.aaz();
+    com.tencent.mm.model.c.YA().a(this.lGq);
+    hk(true);
+    com.tencent.mm.plugin.ext.c.c.btL();
+    btu();
+    AppMethodBeat.o(20281);
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
+  public void onAccountRelease()
   {
-    if (this.jJs != null) {
-      com.tencent.mm.sdk.b.a.udP.d(this.jJs);
+    AppMethodBeat.i(20282);
+    if (this.mdw != null) {
+      com.tencent.mm.sdk.b.a.ymk.d(this.mdw);
     }
-    if (this.jJt != null) {
-      com.tencent.mm.sdk.b.a.udP.d(this.jJt);
+    if (this.mdx != null) {
+      com.tencent.mm.sdk.b.a.ymk.d(this.mdx);
     }
-    Object localObject = ap.brn();
+    Object localObject = com.tencent.mm.pluginsdk.model.app.al.cac();
     if (localObject != null) {
-      ((com.tencent.mm.pluginsdk.model.app.i)localObject).d(this.jJB);
+      ((com.tencent.mm.pluginsdk.model.app.i)localObject).remove(this.mdF);
     }
-    au.Hx();
-    com.tencent.mm.model.c.Fy().a(this.jJv);
-    localObject = new ez();
-    ((ez)localObject).bLq.op = 2;
-    if (!com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject)) {
-      y.e("MicroMsg.SubCoreExt", "ExtAgentLifeEvent event fail in onAccountRelease");
+    aw.aaz();
+    com.tencent.mm.model.c.YC().a(this.mdz);
+    localObject = new fc();
+    ((fc)localObject).csK.op = 2;
+    if (!com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject)) {
+      ab.e("MicroMsg.SubCoreExt", "ExtAgentLifeEvent event fail in onAccountRelease");
     }
-    localObject = com.tencent.mm.pluginsdk.model.i.cku();
-    if (au.DK())
+    localObject = com.tencent.mm.pluginsdk.model.i.dkZ();
+    if (aw.RG())
     {
-      com.tencent.mm.pluginsdk.model.i.rTk = false;
-      ap.brq().b(14, (t)localObject);
+      com.tencent.mm.pluginsdk.model.i.vKi = false;
+      com.tencent.mm.pluginsdk.model.app.al.caf().b(14, (t)localObject);
     }
-    au.Hx();
-    com.tencent.mm.model.c.Fw().b(this.jwR);
-    com.tencent.mm.plugin.ext.c.c.aNJ();
+    aw.aaz();
+    com.tencent.mm.model.c.YA().b(this.lGq);
+    com.tencent.mm.plugin.ext.c.c.btM();
+    AppMethodBeat.o(20282);
   }
   
-  public final HashMap<Integer, h.d> xe()
+  public void onSdcardMount(boolean paramBoolean)
   {
-    return dgp;
+    AppMethodBeat.i(20279);
+    btu();
+    AppMethodBeat.o(20279);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.b
  * JD-Core Version:    0.7.0.1
  */

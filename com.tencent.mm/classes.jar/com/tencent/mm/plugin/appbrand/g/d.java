@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.g;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.plugin.fts.a.a.l;
@@ -12,32 +13,40 @@ import com.tencent.mm.plugin.fts.a.f;
 public final class d
   extends a
 {
-  public CharSequence dtD;
-  d.a fYA = new d.a(this);
-  public l fYx;
-  public AppBrandRecentTaskInfo fYy;
-  private d.b fYz = new d.b(this);
+  public CharSequence elh;
+  public l hrL;
+  public AppBrandRecentTaskInfo hrM;
+  private d.b hrN;
+  d.a hrO;
   
   public d(int paramInt)
   {
     super(16, paramInt);
+    AppMethodBeat.i(129973);
+    this.hrN = new d.b(this);
+    this.hrO = new d.a(this);
+    AppMethodBeat.o(129973);
   }
   
-  public final a.b BD()
+  public final a.b Pr()
   {
-    return this.fYz;
+    return this.hrN;
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     boolean bool3 = true;
     boolean bool1 = false;
-    this.fYy = i.tm(this.fYx.kwg);
-    if (this.fYy == null) {
+    AppMethodBeat.i(129974);
+    super.a(paramContext, parama, paramVarArgs);
+    this.hrM = i.Bq(this.hrL.mRV);
+    if (this.hrM == null)
+    {
+      AppMethodBeat.o(129974);
       return;
     }
     boolean bool2;
-    switch (this.fYx.kwf)
+    switch (this.hrL.mRU)
     {
     default: 
       bool1 = false;
@@ -45,8 +54,9 @@ public final class d
     }
     for (;;)
     {
-      this.dtD = f.a(com.tencent.mm.plugin.fts.a.a.d.a(this.fYy.appName, this.kwi, bool1, bool2)).kwz;
-      this.info = this.fYy.bFn;
+      this.elh = f.a(com.tencent.mm.plugin.fts.a.a.d.a(this.hrM.appName, this.mRX, bool1, bool2)).mSp;
+      this.info = this.hrM.cmx;
+      AppMethodBeat.o(129974);
       return;
       bool1 = true;
       bool2 = bool1;
@@ -54,24 +64,19 @@ public final class d
     }
   }
   
-  protected final a.a afK()
+  public final String aAo()
   {
-    return this.fYA;
+    return this.hrM.appName;
   }
   
-  public final String afL()
+  public final int aAp()
   {
-    return this.fYy.appName;
-  }
-  
-  public final int afM()
-  {
-    return this.fYx.kxt;
+    return this.hrL.mTi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.d
  * JD-Core Version:    0.7.0.1
  */

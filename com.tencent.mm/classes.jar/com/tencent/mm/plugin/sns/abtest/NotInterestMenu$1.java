@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.abtest;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NotInterestMenu$1
   implements AdapterView.OnItemClickListener
@@ -11,22 +12,27 @@ final class NotInterestMenu$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (NotInterestMenu.a(this.ojC) != null) {
-      NotInterestMenu.a(this.ojC).bBY();
+    AppMethodBeat.i(35663);
+    if (NotInterestMenu.a(this.qXN) != null) {
+      NotInterestMenu.a(this.qXN).cnz();
     }
-    if (NotInterestMenu.b(this.ojC) != null) {}
-    switch (paramInt)
+    if (NotInterestMenu.b(this.qXN) != null) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
     {
-    default: 
+      AppMethodBeat.o(35663);
       return;
-    case 0: 
-      NotInterestMenu.b(this.ojC).c(NotInterestMenu.c(this.ojC));
+      NotInterestMenu.b(this.qXN).c(NotInterestMenu.c(this.qXN));
+      AppMethodBeat.o(35663);
       return;
-    case 1: 
-      NotInterestMenu.b(this.ojC).d(NotInterestMenu.c(this.ojC));
+      NotInterestMenu.b(this.qXN).d(NotInterestMenu.c(this.qXN));
+      AppMethodBeat.o(35663);
       return;
+      NotInterestMenu.b(this.qXN).e(NotInterestMenu.c(this.qXN));
     }
-    NotInterestMenu.b(this.ojC).e(NotInterestMenu.c(this.ojC));
   }
 }
 

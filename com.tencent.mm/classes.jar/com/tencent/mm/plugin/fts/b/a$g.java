@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fts.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,31 +10,35 @@ import java.util.List;
 final class a$g
   extends com.tencent.mm.plugin.fts.a.a.a
 {
-  private int kih = 0;
-  private int[] kyK;
-  private int kyL = 0;
+  private int mCN = 0;
+  private int[] mUy;
+  private int mUz = 0;
   
   public a$g(a parama, int[] paramArrayOfInt)
   {
-    this.kyK = paramArrayOfInt;
+    this.mUy = paramArrayOfInt;
   }
   
-  public final String afJ()
+  public final String aAn()
   {
-    return String.format("{touched: %d users: %d}", new Object[] { Integer.valueOf(this.kih), Integer.valueOf(this.kyL) });
+    AppMethodBeat.i(136677);
+    String str = String.format("{touched: %d users: %d}", new Object[] { Integer.valueOf(this.mCN), Integer.valueOf(this.mUz) });
+    AppMethodBeat.o(136677);
+    return str;
   }
   
   public final boolean execute()
   {
-    Object localObject = a.a(this.kyt).f(this.kyK, 1);
-    this.kih = ((List)localObject).size();
+    AppMethodBeat.i(136676);
+    Object localObject = a.a(this.mUg).g(this.mUy, 1);
+    this.mCN = ((List)localObject).size();
     HashMap localHashMap = new HashMap();
     Iterator localIterator = ((List)localObject).iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      String str = localb.kwg;
-      if (!a.b(this.kyt).containsKey(str))
+      String str = localb.mRV;
+      if (!a.b(this.mUg).containsKey(str))
       {
         List localList = (List)localHashMap.get(str);
         localObject = localList;
@@ -42,11 +47,12 @@ final class a$g
           localObject = new ArrayList(16);
           localHashMap.put(str, localObject);
         }
-        ((List)localObject).add(Long.valueOf(localb.kwe));
+        ((List)localObject).add(Long.valueOf(localb.mRT));
       }
     }
-    a.b(this.kyt).putAll(localHashMap);
-    this.kyL = localHashMap.size();
+    a.b(this.mUg).putAll(localHashMap);
+    this.mUz = localHashMap.size();
+    AppMethodBeat.o(136676);
     return true;
   }
   
@@ -57,7 +63,7 @@ final class a$g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.a.g
  * JD-Core Version:    0.7.0.1
  */

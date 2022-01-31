@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class Chunk
 {
   public final int bufferSize;
@@ -15,14 +17,23 @@ public class Chunk
   
   public boolean contains(long paramLong)
   {
-    if (isEndless()) {
-      if (paramLong < this.start) {}
-    }
-    while ((paramLong >= this.start) && (paramLong <= this.start + this.size))
+    AppMethodBeat.i(104563);
+    if (isEndless())
     {
-      return true;
+      if (paramLong >= this.start)
+      {
+        AppMethodBeat.o(104563);
+        return true;
+      }
+      AppMethodBeat.o(104563);
       return false;
     }
+    if ((paramLong >= this.start) && (paramLong <= this.start + this.size))
+    {
+      AppMethodBeat.o(104563);
+      return true;
+    }
+    AppMethodBeat.o(104563);
     return false;
   }
   
@@ -33,7 +44,10 @@ public class Chunk
   
   public String toString()
   {
-    return "Chunk{bufferSize=" + this.bufferSize + ", start=" + this.start + ", size=" + this.size + '}';
+    AppMethodBeat.i(104564);
+    String str = "Chunk{bufferSize=" + this.bufferSize + ", start=" + this.start + ", size=" + this.size + '}';
+    AppMethodBeat.o(104564);
+    return str;
   }
 }
 

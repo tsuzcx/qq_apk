@@ -1,5 +1,6 @@
 package com.tencent.wecall.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.TimerTask;
 
 final class f$7
@@ -9,26 +10,25 @@ final class f$7
   
   public final void run()
   {
-    if (!this.xeA.xev)
+    AppMethodBeat.i(127876);
+    if (!this.BBh.BBc)
     {
-      f.a(this.xeA, f.n(this.xeA) + 1);
-      if (f.o(this.xeA)) {
-        f.b(this.xeA, f.p(this.xeA) + 1);
+      f.a(this.BBh, f.n(this.BBh) + 1);
+      if (f.o(this.BBh)) {
+        f.b(this.BBh, f.p(this.BBh) + 1);
       }
-      if ((f.q(this.xeA) == 3) || (f.q(this.xeA) == 2))
+      if ((f.q(this.BBh) == 3) || (f.q(this.BBh) == 2))
       {
-        f.c(this.xeA, f.r(this.xeA) + 1);
-        this.xeA.xdZ.qdI = f.r(this.xeA);
+        f.c(this.BBh, f.r(this.BBh) + 1);
+        this.BBh.BAG.tKv = f.r(this.BBh);
       }
-      this.xeA.xdZ.xfs = (f.n(this.xeA) * 1000);
-      this.xeA.xdZ.qdH = f.n(this.xeA);
+      this.BBh.BAG.BBZ = (f.n(this.BBh) * 1000);
+      this.BBh.BAG.tKu = f.n(this.BBh);
     }
-    if (this.xeA.xdE != null)
-    {
-      f.f localf = this.xeA.xdE;
-      boolean bool = this.xeA.xev;
-      f.n(this.xeA);
+    if (this.BBh.BAm != null) {
+      f.n(this.BBh);
     }
+    AppMethodBeat.o(127876);
   }
 }
 

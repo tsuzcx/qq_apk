@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.collect.reward.ui;
 
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -9,22 +9,24 @@ final class QrRewardMainUI$4
 {
   QrRewardMainUI$4(QrRewardMainUI paramQrRewardMainUI) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    String str2 = this.iJi.getString(a.i.qr_reward_menu_avatar);
-    if (QrRewardMainUI.k(this.iJi))
+    AppMethodBeat.i(41086);
+    String str2 = this.kPN.getString(2131302218);
+    if (QrRewardMainUI.o(this.kPN))
     {
-      str1 = this.iJi.getString(a.i.qr_reward_select_menu);
+      str1 = this.kPN.getString(2131302224);
       paraml.a(1, str2, str1);
-      str2 = this.iJi.getString(a.i.qr_reward_menu_wording);
-      if (QrRewardMainUI.k(this.iJi)) {
-        break label87;
+      str2 = this.kPN.getString(2131302219);
+      if (QrRewardMainUI.o(this.kPN)) {
+        break label93;
       }
     }
-    label87:
-    for (String str1 = this.iJi.getString(a.i.qr_reward_select_menu);; str1 = "")
+    label93:
+    for (String str1 = this.kPN.getString(2131302224);; str1 = "")
     {
       paraml.a(2, str2, str1);
+      AppMethodBeat.o(41086);
       return;
       str1 = "";
       break;

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RegByEmailUI$1
   implements Runnable
@@ -9,7 +10,9 @@ final class RegByEmailUI$1
   
   public final void run()
   {
-    RegByEmailUI.a(this.fqk).requestFocus();
+    AppMethodBeat.i(125301);
+    RegByEmailUI.a(this.gHH).requestFocus();
+    AppMethodBeat.o(125301);
   }
 }
 

@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.brandservice.ui;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BizSearchResultItemContainer$1
   implements AbsListView.OnScrollListener
 {
-  boolean icY = false;
+  boolean jTN = false;
   
   BizSearchResultItemContainer$1(BizSearchResultItemContainer paramBizSearchResultItemContainer) {}
   
@@ -14,17 +15,19 @@ final class BizSearchResultItemContainer$1
   {
     if (paramInt1 + paramInt2 == paramInt3)
     {
-      this.icY = true;
+      this.jTN = true;
       return;
     }
-    this.icY = false;
+    this.jTN = false;
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (this.icY) && (BizSearchResultItemContainer.a(this.icZ))) {
-      BizSearchResultItemContainer.a(this.icZ, BizSearchResultItemContainer.b(this.icZ).bGm, BizSearchResultItemContainer.b(this.icZ).offset, BizSearchResultItemContainer.c(this.icZ)[(BizSearchResultItemContainer.c(this.icZ).length - 1)]);
+    AppMethodBeat.i(13898);
+    if ((paramInt == 0) && (this.jTN) && (BizSearchResultItemContainer.a(this.jTO))) {
+      BizSearchResultItemContainer.a(this.jTO, BizSearchResultItemContainer.b(this.jTO).cnv, BizSearchResultItemContainer.b(this.jTO).offset, BizSearchResultItemContainer.c(this.jTO)[(BizSearchResultItemContainer.c(this.jTO).length - 1)]);
     }
+    AppMethodBeat.o(13898);
   }
 }
 

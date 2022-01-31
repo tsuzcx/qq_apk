@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -12,19 +13,21 @@ final class CleanChattingDetailUI$2
   
   public final void onClick(View paramView)
   {
-    paramView = CleanChattingDetailUI.a(this.iCT);
-    if (paramView.hIR.size() == paramView.hgv.size()) {
-      paramView.hIR.clear();
+    AppMethodBeat.i(18767);
+    paramView = CleanChattingDetailUI.a(this.kIa);
+    if (paramView.jCr.size() == paramView.iRT.size()) {
+      paramView.jCr.clear();
     }
     for (;;)
     {
-      paramView.aEf();
-      CleanChattingDetailUI.a(this.iCT).notifyDataSetChanged();
+      paramView.bhg();
+      CleanChattingDetailUI.a(this.kIa).notifyDataSetChanged();
+      AppMethodBeat.o(18767);
       return;
       int i = 0;
-      while (i < paramView.hgv.size())
+      while (i < paramView.iRT.size())
       {
-        paramView.hIR.add(Integer.valueOf(i));
+        paramView.jCr.add(Integer.valueOf(i));
         i += 1;
       }
     }
@@ -32,7 +35,7 @@ final class CleanChattingDetailUI$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.CleanChattingDetailUI.2
  * JD-Core Version:    0.7.0.1
  */

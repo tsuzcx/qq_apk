@@ -1,48 +1,26 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.app.ProgressDialog;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.webview.model.u;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.plugin.webview.model.x;
 
 final class g$18
-  implements f
+  implements DialogInterface.OnCancelListener
 {
-  g$18(g paramg) {}
+  g$18(g paramg, x paramx) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((g.k(this.rzi) != null) && (g.k(this.rzi).isShowing()))
-    {
-      g.k(this.rzi).dismiss();
-      g.a(this.rzi, null);
-    }
-    au.Dk().b(1177, this);
-    if ((paramInt1 != 0) || (paramInt2 != 0))
-    {
-      y.e("MicroMsg.MsgHandler", "mmOnActivityResult, MMFunc_Biz_Jsapi_Getuseropendid fail");
-      g.a(this.rzi, g.j(this.rzi), "selectSingleContact:fail", null);
-      return;
-    }
-    y.i("MicroMsg.MsgHandler", "mmOnActivityResult, MMFunc_Biz_Jsapi_Getuseropendid success");
-    paramString = (u)paramm;
-    paramm = new HashMap();
-    paramm.put("package", paramString.rfx);
-    paramm.put("sign", paramString.sign);
-    paramm.put("headImgUrl", paramString.iQT);
-    paramm.put("nickName", paramString.iQS);
-    paramm.put("friendRelation", Integer.valueOf(paramString.rfy));
-    y.d("MicroMsg.MsgHandler", "select single contact : opnid:%s, sign:%s, nick_name:%s, friend_relation:%d", new Object[] { paramString.rfx, paramString.sign, paramString.iQS, Integer.valueOf(paramString.rfy) });
-    g.a(this.rzi, g.j(this.rzi), "selectSingleContact:ok", paramm);
+    AppMethodBeat.i(9062);
+    com.tencent.mm.kernel.g.Rc().a(this.vqC);
+    AppMethodBeat.o(9062);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.18
  * JD-Core Version:    0.7.0.1
  */

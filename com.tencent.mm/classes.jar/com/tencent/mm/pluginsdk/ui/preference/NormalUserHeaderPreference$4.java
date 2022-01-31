@@ -3,8 +3,9 @@ package com.tencent.mm.pluginsdk.ui.preference;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.aq;
 
 final class NormalUserHeaderPreference$4
   implements View.OnClickListener
@@ -13,11 +14,13 @@ final class NormalUserHeaderPreference$4
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(28074);
     paramView = new Intent();
-    paramView.putExtra("sns_permission_userName", NormalUserHeaderPreference.b(this.siZ).field_username);
+    paramView.putExtra("sns_permission_userName", NormalUserHeaderPreference.a(this.wbA).field_username);
     paramView.putExtra("sns_permission_anim", true);
     paramView.putExtra("sns_permission_block_scene", 3);
-    d.b(NormalUserHeaderPreference.a(this.siZ), "sns", ".ui.SnsPermissionUI", paramView);
+    d.b(NormalUserHeaderPreference.b(this.wbA), "sns", ".ui.SnsPermissionUI", paramView);
+    AppMethodBeat.o(28074);
   }
 }
 

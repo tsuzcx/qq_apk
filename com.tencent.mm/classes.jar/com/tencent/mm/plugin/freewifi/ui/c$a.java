@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.freewifi.ui;
 
 public abstract interface c$a
 {
-  public abstract void Q(float paramFloat1, float paramFloat2);
+  public abstract void U(float paramFloat1, float paramFloat2);
 }
 
 

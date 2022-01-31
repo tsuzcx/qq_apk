@@ -5,166 +5,183 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.a;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class VoiceTipInfoView
   extends LinearLayout
 {
-  public ProgressBar fsc;
-  TextView haW;
-  boolean pMU = false;
-  private boolean pMV = false;
-  private TextView pMW;
-  private boolean pMX = false;
-  private float pMY = 0.0F;
-  TextView pMv;
+  public ProgressBar gJE;
+  TextView iJG;
+  TextView pBu;
+  boolean tsO;
+  private boolean tsP;
+  private TextView tsQ;
+  private boolean tsR;
+  private float tsS;
   
   public VoiceTipInfoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = LayoutInflater.from(paramContext).inflate(R.i.voice_tip_info_view, this, true);
-    this.fsc = ((ProgressBar)paramContext.findViewById(R.h.load_progress));
-    bPr();
-    this.haW = ((TextView)paramContext.findViewById(R.h.voice_print_title));
-    this.pMv = ((TextView)paramContext.findViewById(R.h.voice_print_title_tip));
-    this.pMW = ((TextView)paramContext.findViewById(R.h.voice_print_title_error));
+    AppMethodBeat.i(26227);
+    this.tsO = false;
+    this.tsP = false;
+    this.tsR = false;
+    this.tsS = 0.0F;
+    paramContext = LayoutInflater.from(paramContext).inflate(2130971104, this, true);
+    this.gJE = ((ProgressBar)paramContext.findViewById(2131824014));
+    bRO();
+    this.iJG = ((TextView)paramContext.findViewById(2131828763));
+    this.pBu = ((TextView)paramContext.findViewById(2131823889));
+    this.tsQ = ((TextView)paramContext.findViewById(2131828806));
     reset();
+    AppMethodBeat.o(26227);
   }
   
-  public final void bPq()
+  public final void bRN()
   {
-    y.d("MicroMsg.VoiceTipInfoView", "mProgressBar show");
-    this.fsc.setVisibility(0);
+    AppMethodBeat.i(26229);
+    ab.d("MicroMsg.VoiceTipInfoView", "mProgressBar show");
+    this.gJE.setVisibility(0);
+    AppMethodBeat.o(26229);
   }
   
-  public final void bPr()
+  public final void bRO()
   {
-    y.d("MicroMsg.VoiceTipInfoView", "mProgressBar hide");
-    this.fsc.setVisibility(8);
+    AppMethodBeat.i(26230);
+    ab.d("MicroMsg.VoiceTipInfoView", "mProgressBar hide");
+    this.gJE.setVisibility(8);
+    AppMethodBeat.o(26230);
   }
   
-  public final void bPs()
+  public final void cLA()
   {
-    y.d("MicroMsg.VoiceTipInfoView", "showTitle, titleTv.getVisibility:%d, mAnimingTitle:%b", new Object[] { Integer.valueOf(this.haW.getVisibility()), Boolean.valueOf(this.pMU) });
-    if (((this.haW.getVisibility() == 4) || (this.haW.getVisibility() == 8)) && (!this.pMU))
+    AppMethodBeat.i(26238);
+    if ((this.tsQ.getVisibility() == 0) && (!this.tsR))
     {
-      this.haW.clearAnimation();
-      this.pMU = true;
-      TextView localTextView = this.haW;
-      Object localObject = getContext();
-      VoiceTipInfoView.2 local2 = new VoiceTipInfoView.2(this);
-      localObject = AnimationUtils.loadAnimation((Context)localObject, R.a.fast_faded_in);
-      ((Animation)localObject).setDuration(300L);
-      ((Animation)localObject).setFillAfter(true);
-      ((Animation)localObject).setRepeatCount(0);
-      ((Animation)localObject).setAnimationListener(new a.4(local2));
-      localTextView.startAnimation((Animation)localObject);
-      return;
-    }
-    y.d("MicroMsg.VoiceTipInfoView", "showTitle, directly set to VISIBLE");
-    this.haW.clearAnimation();
-    this.haW.setVisibility(0);
-    this.haW.invalidate();
-  }
-  
-  public final void bPt()
-  {
-    this.pMv.setVisibility(8);
-  }
-  
-  public final void bPu()
-  {
-    if ((this.pMW.getVisibility() == 4) && (!this.pMX))
-    {
-      this.pMW.clearAnimation();
-      this.pMX = true;
-      TextView localTextView = this.pMW;
-      getContext();
-      VoiceTipInfoView.4 local4 = new VoiceTipInfoView.4(this);
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -1.0F, 1, 0.0F, 1, 0.0F, 1, 0.0F);
-      localTranslateAnimation.setDuration(200L);
-      localTranslateAnimation.setFillAfter(true);
-      localTranslateAnimation.setRepeatCount(0);
-      localTranslateAnimation.setAnimationListener(new a.5(local4));
-      localTextView.startAnimation(localTranslateAnimation);
-      return;
-    }
-    this.pMW.clearAnimation();
-    this.pMW.setVisibility(0);
-  }
-  
-  public final void bPv()
-  {
-    if ((this.pMW.getVisibility() == 0) && (!this.pMX))
-    {
-      this.pMW.clearAnimation();
-      this.pMX = true;
-      a.a(this.pMW, getContext(), new a.a()
+      this.tsQ.clearAnimation();
+      this.tsR = true;
+      a.a(this.tsQ, getContext(), new a.a()
       {
-        public final void bPi() {}
+        public final void cLo() {}
         
-        public final void bPj()
+        public final void cLp()
         {
+          AppMethodBeat.i(26226);
           VoiceTipInfoView.c(VoiceTipInfoView.this).setVisibility(4);
           VoiceTipInfoView.d(VoiceTipInfoView.this);
+          AppMethodBeat.o(26226);
         }
       });
+      AppMethodBeat.o(26238);
       return;
     }
-    this.pMW.clearAnimation();
-    this.pMW.setVisibility(4);
+    this.tsQ.clearAnimation();
+    this.tsQ.setVisibility(4);
+    AppMethodBeat.o(26238);
+  }
+  
+  public final void cLx()
+  {
+    AppMethodBeat.i(26235);
+    ab.d("MicroMsg.VoiceTipInfoView", "showTitle, titleTv.getVisibility:%d, mAnimingTitle:%b", new Object[] { Integer.valueOf(this.iJG.getVisibility()), Boolean.valueOf(this.tsO) });
+    if (((this.iJG.getVisibility() == 4) || (this.iJG.getVisibility() == 8)) && (!this.tsO))
+    {
+      this.iJG.clearAnimation();
+      this.tsO = true;
+      a.b(this.iJG, getContext(), new VoiceTipInfoView.2(this));
+      AppMethodBeat.o(26235);
+      return;
+    }
+    ab.d("MicroMsg.VoiceTipInfoView", "showTitle, directly set to VISIBLE");
+    this.iJG.clearAnimation();
+    this.iJG.setVisibility(0);
+    this.iJG.invalidate();
+    AppMethodBeat.o(26235);
+  }
+  
+  public final void cLy()
+  {
+    AppMethodBeat.i(26236);
+    this.pBu.setVisibility(8);
+    AppMethodBeat.o(26236);
+  }
+  
+  public final void cLz()
+  {
+    AppMethodBeat.i(26237);
+    if ((this.tsQ.getVisibility() == 4) && (!this.tsR))
+    {
+      this.tsQ.clearAnimation();
+      this.tsR = true;
+      TextView localTextView = this.tsQ;
+      getContext();
+      a.b(localTextView, new VoiceTipInfoView.4(this));
+      AppMethodBeat.o(26237);
+      return;
+    }
+    this.tsQ.clearAnimation();
+    this.tsQ.setVisibility(0);
+    AppMethodBeat.o(26237);
   }
   
   public final void reset()
   {
-    this.pMv.setTextSize(0, getContext().getResources().getDimension(R.f.voice_print_tip_normal_size));
-    this.pMY = this.pMv.getTextSize();
-    this.pMv.clearAnimation();
-    y.d("MicroMsg.VoiceTipInfoView", "mTipSize %f", new Object[] { Float.valueOf(this.pMY) });
+    AppMethodBeat.i(26228);
+    this.pBu.setTextSize(0, getContext().getResources().getDimension(2131428816));
+    this.tsS = this.pBu.getTextSize();
+    this.pBu.clearAnimation();
+    ab.d("MicroMsg.VoiceTipInfoView", "mTipSize %f", new Object[] { Float.valueOf(this.tsS) });
+    AppMethodBeat.o(26228);
   }
   
   public void setErr(int paramInt)
   {
-    this.pMW.setText(paramInt);
+    AppMethodBeat.i(26240);
+    this.tsQ.setText(paramInt);
+    AppMethodBeat.o(26240);
   }
   
   public void setErr(String paramString)
   {
-    this.pMW.setText(paramString);
+    AppMethodBeat.i(26239);
+    this.tsQ.setText(paramString);
+    AppMethodBeat.o(26239);
   }
   
   public void setTipText(int paramInt)
   {
-    this.pMv.setText(paramInt);
-    this.pMv.setVisibility(0);
+    AppMethodBeat.i(26232);
+    this.pBu.setText(paramInt);
+    this.pBu.setVisibility(0);
+    AppMethodBeat.o(26232);
   }
   
   public void setTipText(String paramString)
   {
-    this.pMv.setText(paramString);
-    this.pMv.setVisibility(0);
+    AppMethodBeat.i(26231);
+    this.pBu.setText(paramString);
+    this.pBu.setVisibility(0);
+    AppMethodBeat.o(26231);
   }
   
   public void setTitleText(int paramInt)
   {
-    this.haW.setText(paramInt);
-    this.haW.setVisibility(0);
+    AppMethodBeat.i(26234);
+    this.iJG.setText(paramInt);
+    this.iJG.setVisibility(0);
+    AppMethodBeat.o(26234);
   }
   
   public void setTitleText(String paramString)
   {
-    this.haW.setText(paramString);
-    this.haW.setVisibility(0);
+    AppMethodBeat.i(26233);
+    this.iJG.setText(paramString);
+    this.iJG.setVisibility(0);
+    AppMethodBeat.o(26233);
   }
 }
 

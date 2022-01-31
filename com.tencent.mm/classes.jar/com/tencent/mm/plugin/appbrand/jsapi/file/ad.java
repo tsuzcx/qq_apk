@@ -1,14 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class ad
-  extends c<au>
+  extends e<av>
 {
-  private static final int CTRL_INDEX = 381;
-  private static final String NAME = "rmdirSync";
+  private static final int CTRL_INDEX = 398;
+  private static final String NAME = "fs_renameSync";
   
   public ad()
   {
-    super(new au());
+    super(new av());
+    AppMethodBeat.i(102801);
+    AppMethodBeat.o(102801);
   }
 }
 

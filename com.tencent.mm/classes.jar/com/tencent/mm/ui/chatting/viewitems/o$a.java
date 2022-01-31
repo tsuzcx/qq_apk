@@ -2,32 +2,27 @@ package com.tencent.mm.ui.chatting.viewitems;
 
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.ui.widget.MMNeatTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class o$a
   extends c.a
 {
-  protected TextView kiv;
-  protected ProgressBar nhQ;
-  protected ImageView vBa;
-  protected TextView vBz;
-  protected MMNeatTextView vDk;
+  TextView zUl;
+  RelativeLayout zUm;
   
-  public final a dV(View paramView)
+  o$a(o paramo) {}
+  
+  final a ff(View paramView)
   {
-    super.dN(paramView);
-    this.vDk = ((MMNeatTextView)paramView.findViewById(R.h.chatting_content_itv));
-    this.nhQ = ((ProgressBar)paramView.findViewById(R.h.uploading_pb));
-    this.vBa = ((ImageView)paramView.findViewById(R.h.chatting_state_iv));
-    this.kiv = ((TextView)paramView.findViewById(R.h.chatting_appmsg_source_tv));
-    this.vBz = ((TextView)paramView.findViewById(R.h.chatting_appmsg_comment_tv));
-    this.nSa = ((TextView)paramView.findViewById(R.h.chatting_user_tv));
-    this.khV = ((CheckBox)paramView.findViewById(R.h.chatting_checkbox));
-    this.hoY = paramView.findViewById(R.h.chatting_maskview);
+    AppMethodBeat.i(153944);
+    super.eV(paramView);
+    this.mCC = ((CheckBox)paramView.findViewById(2131820579));
+    this.jYu = paramView.findViewById(2131822580);
+    this.zUl = ((TextView)paramView.findViewById(2131822724));
+    this.zUm = ((RelativeLayout)paramView.findViewById(2131822725));
+    AppMethodBeat.o(153944);
     return this;
   }
 }

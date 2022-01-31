@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseVoicePrintUI$9
   implements a.a
 {
   BaseVoicePrintUI$9(BaseVoicePrintUI paramBaseVoicePrintUI) {}
   
-  public final void bPi() {}
+  public final void cLo() {}
   
-  public final void bPj()
+  public final void cLp()
   {
-    BaseVoicePrintUI.j(this.pMb).setVisibility(4);
-    BaseVoicePrintUI.k(this.pMb);
+    AppMethodBeat.i(26139);
+    BaseVoicePrintUI.j(this.trX).setVisibility(4);
+    BaseVoicePrintUI.k(this.trX);
+    AppMethodBeat.o(26139);
   }
 }
 

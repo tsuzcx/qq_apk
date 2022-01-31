@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.record.ui;
 
 import android.widget.ImageView;
-import com.tencent.mm.protocal.c.xv;
+import com.tencent.mm.protocal.protobuf.aca;
 
 public final class h$a$a
 {
-  public xv bNt;
-  public ImageView bNu;
-  public int bNv;
+  public aca cuL;
+  public ImageView cuM;
+  public int cuN;
   public int height;
-  public long ntR;
+  public long pZy;
   public int width;
 }
 

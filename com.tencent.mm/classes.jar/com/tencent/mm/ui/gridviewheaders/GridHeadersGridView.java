@@ -20,7 +20,8 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.GridView;
 import android.widget.ListAdapter;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,39 +29,39 @@ public class GridHeadersGridView
   extends GridView
   implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, AdapterView.OnItemSelectedListener
 {
-  private DataSetObserver JP = new GridHeadersGridView.1(this);
-  private AdapterView.OnItemSelectedListener Ot;
-  private AdapterView.OnItemClickListener ajR;
-  protected int alA;
-  private int jb;
-  private int lf = 0;
-  private ah mHandler = new ah();
+  public GridHeadersGridView.a AoL;
+  public GridHeadersGridView.b AoM;
+  private boolean AoN;
+  private final Rect AoO;
+  private boolean AoP;
+  private boolean AoQ;
+  private int AoR;
+  private long AoS;
+  private int AoT;
+  private float AoU;
+  private boolean AoV;
+  private int AoW;
+  GridHeadersGridView.c AoX;
+  GridHeadersGridView.d AoY;
+  private GridHeadersGridView.e AoZ;
+  private View Apa;
+  protected c Apb;
+  protected int Apc;
+  private boolean Apd;
+  private DataSetObserver Jv;
+  private AdapterView.OnItemSelectedListener Oh;
+  private AdapterView.OnItemClickListener amh;
+  protected int anS;
+  private ak mHandler;
   private int mNumColumns;
-  private AbsListView.OnScrollListener pqK;
-  private int uSV;
-  private int uSW;
-  protected boolean uTo;
-  private Runnable uXO;
-  public a vWD;
-  public GridHeadersGridView.b vWE;
-  private boolean vWF = true;
-  private final Rect vWG = new Rect();
-  private boolean vWH;
-  private boolean vWI;
-  private int vWJ;
-  private long vWK = -1L;
-  private int vWL;
-  private float vWM;
-  private boolean vWN;
-  private int vWO = 1;
-  GridHeadersGridView.c vWP;
-  GridHeadersGridView.d vWQ;
-  private GridHeadersGridView.e vWR;
-  private View vWS;
-  protected c vWT;
-  protected int vWU;
-  private boolean vWV = true;
-  private AdapterView.OnItemLongClickListener vec;
+  private int mScrollState;
+  private int mTouchSlop;
+  private AbsListView.OnScrollListener slC;
+  protected boolean zhO;
+  private int zhv;
+  private int zhw;
+  private Runnable zmf;
+  private AdapterView.OnItemLongClickListener zsC;
   
   public GridHeadersGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -70,184 +71,220 @@ public class GridHeadersGridView
   public GridHeadersGridView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(107373);
+    this.mHandler = new ak();
+    this.AoN = true;
+    this.AoO = new Rect();
+    this.AoS = -1L;
+    this.Jv = new GridHeadersGridView.1(this);
+    this.AoW = 1;
+    this.mScrollState = 0;
+    this.Apd = true;
     super.setOnScrollListener(this);
     setVerticalFadingEdgeEnabled(false);
-    if (!this.vWN) {
+    if (!this.AoV) {
       this.mNumColumns = -1;
     }
-    this.jb = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    AppMethodBeat.o(107373);
   }
   
-  private void HZ(int paramInt)
+  private void QL(int paramInt)
   {
-    if ((this.vWT == null) || (this.vWT.getCount() == 0) || (!this.vWF)) {}
-    int j;
+    AppMethodBeat.i(107397);
+    if ((this.Apb == null) || (this.Apb.getCount() == 0) || (!this.AoN))
+    {
+      AppMethodBeat.o(107397);
+      return;
+    }
+    if ((c.d)getChildAt(0) == null)
+    {
+      AppMethodBeat.o(107397);
+      return;
+    }
+    int j = paramInt - this.AoW;
+    int i = j;
+    if (j < 0) {
+      i = paramInt;
+    }
+    int k = this.AoW + paramInt;
+    j = k;
+    if (k >= this.Apb.getCount()) {
+      j = paramInt;
+    }
     long l;
-    label125:
-    int m;
-    do
-    {
-      do
-      {
-        return;
-      } while ((c.d)getChildAt(0) == null);
-      j = paramInt - this.vWO;
-      i = j;
-      if (j < 0) {
-        i = paramInt;
-      }
-      k = this.vWO + paramInt;
-      j = k;
-      if (k >= this.vWT.getCount()) {
-        j = paramInt;
-      }
-      if (this.uSW == 0) {
-        break label305;
-      }
-      if (this.uSW >= 0) {
-        break label271;
-      }
-      this.vWT.pm(paramInt);
-      if (getChildAt(this.vWO).getTop() > 0) {
-        break;
-      }
-      l = this.vWT.pm(j);
-      i = j;
-      if (this.vWK != l)
-      {
-        this.vWS = this.vWT.a(i, this.vWS, this);
-        cIB();
-        this.vWK = l;
-      }
-      m = getChildCount();
-    } while (m == 0);
-    Object localObject = null;
-    int i = 99999;
-    int k = 0;
-    label182:
+    Object localObject;
+    label198:
     c.d locald;
-    if (k < m)
-    {
-      locald = (c.d)super.getChildAt(k);
-      if (this.vWH)
+    if (this.zhw != 0) {
+      if (this.zhw < 0)
       {
-        j = locald.getTop() - getPaddingTop();
-        label218:
-        if ((j < 0) || (!(locald.getView() instanceof c.b)) || (j >= i)) {
-          break label486;
+        this.Apb.tC(paramInt);
+        if (getChildAt(this.AoW).getTop() <= 0)
+        {
+          l = this.Apb.tC(j);
+          i = j;
+          if (this.AoS != l)
+          {
+            this.Apa = this.Apb.a(i, this.Apa, this);
+            dNl();
+            this.AoS = l;
+          }
+          int m = getChildCount();
+          if (m == 0) {
+            break label516;
+          }
+          localObject = null;
+          i = 99999;
+          k = 0;
+          if (k >= m) {
+            break label345;
+          }
+          locald = (c.d)super.getChildAt(k);
+          if (!this.AoP) {
+            break label336;
+          }
+          j = locald.getTop() - getPaddingTop();
+          label234:
+          if ((j < 0) || (!(locald.getView() instanceof c.b)) || (j >= i)) {
+            break label522;
+          }
+          localObject = locald;
         }
-        localObject = locald;
       }
     }
     for (;;)
     {
-      k += this.vWO;
+      k += this.AoW;
       i = j;
-      break label182;
-      l = this.vWT.pm(paramInt);
+      break label198;
+      l = this.Apb.tC(paramInt);
       i = paramInt;
-      break label125;
-      label271:
+      break;
       j = getChildAt(0).getTop();
-      if ((j > 0) && (j < this.uSW))
+      if ((j > 0) && (j < this.zhw))
       {
-        l = this.vWT.pm(i);
-        break label125;
+        l = this.Apb.tC(i);
+        break;
       }
-      label305:
-      l = this.vWT.pm(paramInt);
+      l = this.Apb.tC(paramInt);
       i = paramInt;
-      break label125;
+      break;
+      label336:
       j = locald.getTop();
-      break label218;
+      break label234;
+      label345:
       i = getHeaderHeight();
       if (localObject != null)
       {
-        if ((paramInt == 0) && (super.getChildAt(0).getTop() > 0) && (!this.vWH))
+        if ((paramInt == 0) && (super.getChildAt(0).getTop() > 0) && (!this.AoP))
         {
-          this.vWL = 0;
+          this.AoT = 0;
+          AppMethodBeat.o(107397);
           return;
         }
-        if (this.vWH)
+        if (this.AoP)
         {
-          this.vWL = Math.min(localObject.getTop(), getPaddingTop() + i);
-          if (this.vWL < getPaddingTop()) {}
-          for (paramInt = i + getPaddingTop();; paramInt = this.vWL)
+          this.AoT = Math.min(localObject.getTop(), getPaddingTop() + i);
+          if (this.AoT < getPaddingTop()) {}
+          for (paramInt = i + getPaddingTop();; paramInt = this.AoT)
           {
-            this.vWL = paramInt;
+            this.AoT = paramInt;
+            AppMethodBeat.o(107397);
             return;
           }
         }
-        this.vWL = Math.min(localObject.getTop(), i);
-        if (this.vWL < 0) {}
-        for (paramInt = i;; paramInt = this.vWL)
+        this.AoT = Math.min(localObject.getTop(), i);
+        if (this.AoT < 0) {}
+        for (paramInt = i;; paramInt = this.AoT)
         {
-          this.vWL = paramInt;
+          this.AoT = paramInt;
+          AppMethodBeat.o(107397);
           return;
         }
       }
-      this.vWL = i;
-      if (!this.vWH) {
-        break;
+      this.AoT = i;
+      if (this.AoP) {
+        this.AoT += getPaddingTop();
       }
-      this.vWL += getPaddingTop();
+      label516:
+      AppMethodBeat.o(107397);
       return;
-      label486:
+      label522:
       j = i;
     }
   }
   
-  private void cIB()
+  private void dNl()
   {
-    if (this.vWS == null) {
+    AppMethodBeat.i(107396);
+    if (this.Apa == null)
+    {
+      AppMethodBeat.o(107396);
       return;
     }
     int j = View.MeasureSpec.makeMeasureSpec(getWidth() - getPaddingLeft() - getPaddingRight(), 1073741824);
-    ViewGroup.LayoutParams localLayoutParams = this.vWS.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.Apa.getLayoutParams();
     if ((localLayoutParams != null) && (localLayoutParams.height > 0)) {}
     for (int i = View.MeasureSpec.makeMeasureSpec(localLayoutParams.height, 1073741824);; i = View.MeasureSpec.makeMeasureSpec(0, 0))
     {
-      this.vWS.measure(j, i);
-      this.vWS.layout(getLeft() + getPaddingLeft(), 0, getRight() - getPaddingRight(), this.vWS.getMeasuredHeight());
+      this.Apa.measure(j, i);
+      this.Apa.layout(getLeft() + getPaddingLeft(), 0, getRight() - getPaddingRight(), this.Apa.getMeasuredHeight());
+      AppMethodBeat.o(107396);
       return;
     }
   }
   
   private int getHeaderHeight()
   {
-    if (this.vWS != null) {
-      return this.vWS.getMeasuredHeight();
+    AppMethodBeat.i(107395);
+    if (this.Apa != null)
+    {
+      int i = this.Apa.getMeasuredHeight();
+      AppMethodBeat.o(107395);
+      return i;
     }
+    AppMethodBeat.o(107395);
     return 0;
   }
   
   private void reset()
   {
-    this.vWL = 0;
-    this.vWS = null;
-    this.vWK = -9223372036854775808L;
+    this.AoT = 0;
+    this.Apa = null;
+    this.AoS = -9223372036854775808L;
   }
   
-  public final View HY(int paramInt)
+  public final View QK(int paramInt)
   {
-    if (paramInt == -2) {
-      return this.vWS;
+    AppMethodBeat.i(107374);
+    View localView;
+    if (paramInt == -2)
+    {
+      localView = this.Apa;
+      AppMethodBeat.o(107374);
+      return localView;
     }
     try
     {
-      View localView = (View)getChildAt(paramInt).getTag();
+      localView = (View)getChildAt(paramInt).getTag();
+      AppMethodBeat.o(107374);
       return localView;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(107374);
+    }
     return null;
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(107398);
     if (Build.VERSION.SDK_INT < 8) {
-      HZ(getFirstVisiblePosition());
+      QL(getFirstVisiblePosition());
     }
-    if ((this.vWS != null) && (this.vWF) && (this.vWS.getVisibility() == 0)) {}
+    if ((this.Apa != null) && (this.AoN) && (this.Apa.getVisibility() == 0)) {}
     int m;
     int n;
     ArrayList localArrayList;
@@ -255,15 +292,15 @@ public class GridHeadersGridView
     for (int i = 1;; i = 0)
     {
       m = getHeaderHeight();
-      n = this.vWL - m;
-      if ((i != 0) && (this.vWV))
+      n = this.AoT - m;
+      if ((i != 0) && (this.Apd))
       {
-        this.vWG.left = getPaddingLeft();
-        this.vWG.right = (getWidth() - getPaddingRight());
-        this.vWG.top = this.vWL;
-        this.vWG.bottom = getHeight();
+        this.AoO.left = getPaddingLeft();
+        this.AoO.right = (getWidth() - getPaddingRight());
+        this.AoO.top = this.AoT;
+        this.AoO.bottom = getHeight();
         paramCanvas.save();
-        paramCanvas.clipRect(this.vWG);
+        paramCanvas.clipRect(this.AoO);
       }
       super.dispatchDraw(paramCanvas);
       localArrayList = new ArrayList();
@@ -274,82 +311,88 @@ public class GridHeadersGridView
         if (getItemIdAtPosition(k) == -1L) {
           localArrayList.add(Integer.valueOf(j));
         }
-        k += this.vWO;
-        j += this.vWO;
+        k += this.AoW;
+        j += this.AoW;
       }
     }
     int j = 0;
-    for (;;)
+    if (j < localArrayList.size())
     {
-      c.d locald;
-      if (j < localArrayList.size()) {
-        locald = (c.d)getChildAt(((Integer)localArrayList.get(j)).intValue());
-      }
-      try
+      c.d locald = (c.d)getChildAt(((Integer)localArrayList.get(j)).intValue());
+      for (;;)
       {
-        View localView = (View)locald.getTag();
-        if ((((c.b)locald.getChildAt(0)).getHeaderId() == this.vWK) && (locald.getTop() < 0) && (this.vWF)) {}
-        for (k = 1;; k = 0)
+        try
         {
-          if ((localView.getVisibility() == 0) && (k == 0))
+          View localView = (View)locald.getTag();
+          if ((((c.b)locald.getChildAt(0)).getHeaderId() == this.AoS) && (locald.getTop() < 0) && (this.AoN))
           {
-            localView.measure(View.MeasureSpec.makeMeasureSpec(getWidth(), 1073741824 - getPaddingLeft() - getPaddingRight()), View.MeasureSpec.makeMeasureSpec(0, 0));
-            localView.layout(getLeft() + getPaddingLeft(), 0, getRight() - getPaddingRight(), locald.getHeight());
-            this.vWG.left = getPaddingLeft();
-            this.vWG.right = (getWidth() - getPaddingRight());
-            this.vWG.bottom = locald.getBottom();
-            this.vWG.top = locald.getTop();
-            paramCanvas.save();
-            paramCanvas.clipRect(this.vWG);
-            paramCanvas.translate(getPaddingLeft(), locald.getTop());
-            localView.draw(paramCanvas);
-            paramCanvas.restore();
-          }
-          j += 1;
-          break;
-        }
-        if ((i != 0) && (this.vWV))
-        {
-          paramCanvas.restore();
-          if (this.vWS.getWidth() != getWidth() - getPaddingLeft() - getPaddingRight())
-          {
-            i = View.MeasureSpec.makeMeasureSpec(getWidth(), 1073741824 - getPaddingLeft() - getPaddingRight());
-            j = View.MeasureSpec.makeMeasureSpec(0, 0);
-            this.vWS.measure(i, j);
-            this.vWS.layout(getLeft() + getPaddingLeft(), 0, getRight() - getPaddingRight(), this.vWS.getHeight());
-          }
-          this.vWG.left = getPaddingLeft();
-          this.vWG.right = (getWidth() - getPaddingRight());
-          this.vWG.bottom = (n + m);
-          if (!this.vWH) {
-            break label714;
+            k = 1;
+            if ((localView.getVisibility() == 0) && (k == 0))
+            {
+              localView.measure(View.MeasureSpec.makeMeasureSpec(getWidth(), 1073741824 - getPaddingLeft() - getPaddingRight()), View.MeasureSpec.makeMeasureSpec(0, 0));
+              localView.layout(getLeft() + getPaddingLeft(), 0, getRight() - getPaddingRight(), locald.getHeight());
+              this.AoO.left = getPaddingLeft();
+              this.AoO.right = (getWidth() - getPaddingRight());
+              this.AoO.bottom = locald.getBottom();
+              this.AoO.top = locald.getTop();
+              paramCanvas.save();
+              paramCanvas.clipRect(this.AoO);
+              paramCanvas.translate(getPaddingLeft(), locald.getTop());
+              localView.draw(paramCanvas);
+              paramCanvas.restore();
+            }
+            j += 1;
           }
         }
-        label714:
-        for (this.vWG.top = getPaddingTop();; this.vWG.top = 0)
+        catch (Exception paramCanvas)
         {
-          paramCanvas.save();
-          paramCanvas.clipRect(this.vWG);
-          paramCanvas.translate(getPaddingLeft(), n);
-          paramCanvas.saveLayerAlpha(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), (int)(255.0F * this.vWL / m), 4);
-          this.vWS.draw(paramCanvas);
-          paramCanvas.restore();
-          paramCanvas.restore();
-          return;
-          if (i != 0) {
-            break;
-          }
+          AppMethodBeat.o(107398);
           return;
         }
-        return;
+        k = 0;
       }
-      catch (Exception paramCanvas) {}
+    }
+    if ((i != 0) && (this.Apd))
+    {
+      paramCanvas.restore();
+      if (this.Apa.getWidth() != getWidth() - getPaddingLeft() - getPaddingRight())
+      {
+        i = View.MeasureSpec.makeMeasureSpec(getWidth(), 1073741824 - getPaddingLeft() - getPaddingRight());
+        j = View.MeasureSpec.makeMeasureSpec(0, 0);
+        this.Apa.measure(i, j);
+        this.Apa.layout(getLeft() + getPaddingLeft(), 0, getRight() - getPaddingRight(), this.Apa.getHeight());
+      }
+      this.AoO.left = getPaddingLeft();
+      this.AoO.right = (getWidth() - getPaddingRight());
+      this.AoO.bottom = (n + m);
+      if (!this.AoP) {
+        break label741;
+      }
+    }
+    label741:
+    for (this.AoO.top = getPaddingTop();; this.AoO.top = 0)
+    {
+      paramCanvas.save();
+      paramCanvas.clipRect(this.AoO);
+      paramCanvas.translate(getPaddingLeft(), n);
+      paramCanvas.saveLayerAlpha(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), (int)(255.0F * this.AoT / m), 31);
+      this.Apa.draw(paramCanvas);
+      paramCanvas.restore();
+      paramCanvas.restore();
+      AppMethodBeat.o(107398);
+      return;
+      if (i != 0) {
+        break;
+      }
+      AppMethodBeat.o(107398);
+      return;
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     int j = -2;
+    AppMethodBeat.i(107383);
     int i;
     switch (paramMotionEvent.getAction() & 0xFF)
     {
@@ -359,31 +402,32 @@ public class GridHeadersGridView
     for (;;)
     {
       if (i == 0) {
-        break label581;
+        break label591;
       }
+      AppMethodBeat.o(107383);
       return false;
-      if (this.vWE == null) {
-        this.vWE = new GridHeadersGridView.b(this);
+      if (this.AoM == null) {
+        this.AoM = new GridHeadersGridView.b(this);
       }
-      this.mHandler.postDelayed(this.vWD, ViewConfiguration.getTapTimeout());
+      this.mHandler.postDelayed(this.AoL, ViewConfiguration.getTapTimeout());
       i = (int)paramMotionEvent.getY();
-      this.vWM = i;
+      this.AoU = i;
       float f = i;
-      if ((this.vWS != null) && (f <= this.vWS.getBottom())) {}
+      if ((this.Apa != null) && (f <= this.Apa.getBottom())) {}
       for (;;)
       {
-        this.vWU = j;
-        if ((this.vWU == -1) || (this.lf == 2)) {
+        this.Apc = j;
+        if ((this.Apc == -1) || (this.mScrollState == 2)) {
           break;
         }
-        this.alA = 0;
+        this.anS = 0;
         break;
         int k = getFirstVisiblePosition();
         i = 0;
         for (;;)
         {
           if (k > getLastVisiblePosition()) {
-            break label237;
+            break label247;
           }
           if (getItemIdAtPosition(k) == -1L)
           {
@@ -398,117 +442,127 @@ public class GridHeadersGridView
               }
             }
           }
-          k += this.vWO;
-          i += this.vWO;
+          k += this.AoW;
+          i += this.AoW;
         }
-        label237:
+        label247:
         j = -1;
       }
-      if ((this.vWU == -1) || (Math.abs(paramMotionEvent.getY() - this.vWM) <= this.jb)) {
+      if ((this.Apc == -1) || (Math.abs(paramMotionEvent.getY() - this.AoU) <= this.mTouchSlop)) {
         break;
       }
-      this.alA = -1;
-      Object localObject = HY(this.vWU);
+      this.anS = -1;
+      Object localObject = QK(this.Apc);
       if (localObject != null) {
         ((View)localObject).setPressed(false);
       }
-      if (this.vWD != null) {
-        this.mHandler.removeCallbacks(this.vWD);
+      if (this.AoL != null) {
+        this.mHandler.removeCallbacks(this.AoL);
       }
-      this.vWU = -1;
+      this.Apc = -1;
       break;
-      if ((this.alA == -2) || (this.alA == -1) || (this.vWU == -1)) {
+      if ((this.anS == -2) || (this.anS == -1) || (this.Apc == -1)) {
         break;
       }
-      View localView = HY(this.vWU);
+      View localView = QK(this.Apc);
       GridHeadersGridView.e locale;
       if ((localView != null) && (!localView.hasFocusable()))
       {
-        if (this.alA != 0) {
+        if (this.anS != 0) {
           localView.setPressed(false);
         }
-        if (this.vWR == null) {
-          this.vWR = new GridHeadersGridView.e(this, (byte)0);
+        if (this.AoZ == null) {
+          this.AoZ = new GridHeadersGridView.e(this, (byte)0);
         }
-        locale = this.vWR;
-        locale.vWZ = this.vWU;
-        locale.cID();
-        if ((this.alA == 0) && (this.alA == 1)) {
-          break label564;
+        locale = this.AoZ;
+        locale.Aph = this.Apc;
+        locale.dNn();
+        if ((this.anS == 0) && (this.anS == 1)) {
+          break label574;
         }
-        localah = this.mHandler;
-        if (this.alA == 0) {}
-        for (localObject = this.vWE;; localObject = this.vWD)
+        localak = this.mHandler;
+        if (this.anS == 0) {}
+        for (localObject = this.AoM;; localObject = this.AoL)
         {
-          localah.removeCallbacks((Runnable)localObject);
-          if (this.uTo) {
-            break label551;
+          localak.removeCallbacks((Runnable)localObject);
+          if (this.zhO) {
+            break label561;
           }
-          this.alA = 1;
+          this.anS = 1;
           localView.setPressed(true);
           setPressed(true);
-          if (this.uXO != null) {
-            removeCallbacks(this.uXO);
+          if (this.zmf != null) {
+            removeCallbacks(this.zmf);
           }
-          this.uXO = new GridHeadersGridView.2(this, localView, locale);
-          this.mHandler.postDelayed(this.uXO, ViewConfiguration.getPressedStateDuration());
+          this.zmf = new GridHeadersGridView.2(this, localView, locale);
+          this.mHandler.postDelayed(this.zmf, ViewConfiguration.getPressedStateDuration());
           i = 1;
           break;
         }
-        label551:
-        this.alA = -1;
+        label561:
+        this.anS = -1;
       }
-      label564:
-      while (this.uTo)
+      label574:
+      while (this.zhO)
       {
-        ah localah;
-        this.alA = -1;
+        ak localak;
+        this.anS = -1;
         break;
       }
       locale.run();
       i = 1;
     }
-    label581:
-    return super.dispatchTouchEvent(paramMotionEvent);
+    label591:
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(107383);
+    return bool;
   }
   
   public View getStickiedHeader()
   {
-    return this.vWS;
+    return this.Apa;
   }
   
   public boolean getStickyHeaderIsTranscluent()
   {
-    return !this.vWV;
+    return !this.Apd;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.ajR.onItemClick(paramAdapterView, paramView, this.vWT.HX(paramInt).mPosition, paramLong);
+    AppMethodBeat.i(107375);
+    this.amh.onItemClick(paramAdapterView, paramView, this.Apb.QJ(paramInt).mPosition, paramLong);
+    AppMethodBeat.o(107375);
   }
   
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return this.vec.onItemLongClick(paramAdapterView, paramView, this.vWT.HX(paramInt).mPosition, paramLong);
+    AppMethodBeat.i(107376);
+    boolean bool = this.zsC.onItemLongClick(paramAdapterView, paramView, this.Apb.QJ(paramInt).mPosition, paramLong);
+    AppMethodBeat.o(107376);
+    return bool;
   }
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.Ot.onItemSelected(paramAdapterView, paramView, this.vWT.HX(paramInt).mPosition, paramLong);
+    AppMethodBeat.i(107377);
+    this.Oh.onItemSelected(paramAdapterView, paramView, this.Apb.QJ(paramInt).mPosition, paramLong);
+    AppMethodBeat.o(107377);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = 1;
+    AppMethodBeat.i(107399);
     if (this.mNumColumns == -1) {
-      if (this.vWJ > 0)
+      if (this.AoR > 0)
       {
         int k = Math.max(View.MeasureSpec.getSize(paramInt1) - getPaddingLeft() - getPaddingRight(), 0);
-        int j = k / this.vWJ;
+        int j = k / this.AoR;
         if (j > 0)
         {
           i = j;
-          while ((i != 1) && (this.vWJ * i + (i - 1) * this.uSV > k)) {
+          while ((i != 1) && (this.AoR * i + (i - 1) * this.zhv > k)) {
             i -= 1;
           }
         }
@@ -520,13 +574,14 @@ public class GridHeadersGridView
     }
     for (;;)
     {
-      for (this.vWO = i;; this.vWO = this.mNumColumns)
+      for (this.AoW = i;; this.AoW = this.mNumColumns)
       {
-        if (this.vWT != null) {
-          this.vWT.setNumColumns(this.vWO);
+        if (this.Apb != null) {
+          this.Apb.setNumColumns(this.AoW);
         }
-        cIB();
+        dNl();
         super.onMeasure(paramInt1, paramInt2);
+        AppMethodBeat.o(107399);
         return;
       }
     }
@@ -534,59 +589,71 @@ public class GridHeadersGridView
   
   public void onNothingSelected(AdapterView<?> paramAdapterView)
   {
-    this.Ot.onNothingSelected(paramAdapterView);
+    AppMethodBeat.i(107378);
+    this.Oh.onNothingSelected(paramAdapterView);
+    AppMethodBeat.o(107378);
   }
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
   {
+    AppMethodBeat.i(107379);
     paramParcelable = (GridHeadersGridView.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.vWF = paramParcelable.vXa;
+    this.AoN = paramParcelable.Api;
     requestLayout();
+    AppMethodBeat.o(107379);
   }
   
   public Parcelable onSaveInstanceState()
   {
+    AppMethodBeat.i(107380);
     GridHeadersGridView.SavedState localSavedState = new GridHeadersGridView.SavedState(super.onSaveInstanceState());
-    localSavedState.vXa = this.vWF;
+    localSavedState.Api = this.AoN;
+    AppMethodBeat.o(107380);
     return localSavedState;
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.pqK != null) {
-      this.pqK.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.i(107381);
+    if (this.slC != null) {
+      this.slC.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
     if (Build.VERSION.SDK_INT >= 8) {
-      HZ(paramInt1);
+      QL(paramInt1);
     }
+    AppMethodBeat.o(107381);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.pqK != null) {
-      this.pqK.onScrollStateChanged(paramAbsListView, paramInt);
+    AppMethodBeat.i(107382);
+    if (this.slC != null) {
+      this.slC.onScrollStateChanged(paramAbsListView, paramInt);
     }
-    this.lf = paramInt;
+    this.mScrollState = paramInt;
+    AppMethodBeat.o(107382);
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if ((this.vWT != null) && (this.JP != null)) {
-      this.vWT.unregisterDataSetObserver(this.JP);
+    AppMethodBeat.i(107384);
+    if ((this.Apb != null) && (this.Jv != null)) {
+      this.Apb.unregisterDataSetObserver(this.Jv);
     }
-    if (!this.vWI) {
-      this.vWH = true;
+    if (!this.AoQ) {
+      this.AoP = true;
     }
     if ((paramListAdapter instanceof b)) {
       paramListAdapter = (b)paramListAdapter;
     }
     for (;;)
     {
-      this.vWT = new c(getContext(), this, paramListAdapter);
-      this.vWT.registerDataSetObserver(this.JP);
+      this.Apb = new c(getContext(), this, paramListAdapter);
+      this.Apb.registerDataSetObserver(this.Jv);
       reset();
-      super.setAdapter(this.vWT);
+      super.setAdapter(this.Apb);
+      AppMethodBeat.o(107384);
       return;
       if ((paramListAdapter instanceof e)) {
         paramListAdapter = new f((e)paramListAdapter);
@@ -598,76 +665,94 @@ public class GridHeadersGridView
   
   public void setAreHeadersSticky(boolean paramBoolean)
   {
-    if (paramBoolean != this.vWF)
+    AppMethodBeat.i(107385);
+    if (paramBoolean != this.AoN)
     {
-      this.vWF = paramBoolean;
+      this.AoN = paramBoolean;
       requestLayout();
     }
+    AppMethodBeat.o(107385);
   }
   
   public void setClipToPadding(boolean paramBoolean)
   {
+    AppMethodBeat.i(107386);
     super.setClipToPadding(paramBoolean);
-    this.vWH = paramBoolean;
-    this.vWI = true;
+    this.AoP = paramBoolean;
+    this.AoQ = true;
+    AppMethodBeat.o(107386);
   }
   
   public void setColumnWidth(int paramInt)
   {
+    AppMethodBeat.i(107387);
     super.setColumnWidth(paramInt);
-    this.vWJ = paramInt;
+    this.AoR = paramInt;
+    AppMethodBeat.o(107387);
   }
   
   public void setHorizontalSpacing(int paramInt)
   {
+    AppMethodBeat.i(107388);
     super.setHorizontalSpacing(paramInt);
-    this.uSV = paramInt;
+    this.zhv = paramInt;
+    AppMethodBeat.o(107388);
   }
   
   public void setNumColumns(int paramInt)
   {
+    AppMethodBeat.i(107389);
     super.setNumColumns(paramInt);
-    this.vWN = true;
+    this.AoV = true;
     this.mNumColumns = paramInt;
-    if ((paramInt != -1) && (this.vWT != null)) {
-      this.vWT.setNumColumns(paramInt);
+    if ((paramInt != -1) && (this.Apb != null)) {
+      this.Apb.setNumColumns(paramInt);
     }
+    AppMethodBeat.o(107389);
   }
   
   public void setOnHeaderClickListener(GridHeadersGridView.c paramc)
   {
-    this.vWP = paramc;
+    this.AoX = paramc;
   }
   
   public void setOnHeaderLongClickListener(GridHeadersGridView.d paramd)
   {
+    AppMethodBeat.i(107390);
     if (!isLongClickable()) {
       setLongClickable(true);
     }
-    this.vWQ = paramd;
+    this.AoY = paramd;
+    AppMethodBeat.o(107390);
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.ajR = paramOnItemClickListener;
+    AppMethodBeat.i(107391);
+    this.amh = paramOnItemClickListener;
     super.setOnItemClickListener(this);
+    AppMethodBeat.o(107391);
   }
   
   public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener paramOnItemLongClickListener)
   {
-    this.vec = paramOnItemLongClickListener;
+    AppMethodBeat.i(107392);
+    this.zsC = paramOnItemLongClickListener;
     super.setOnItemLongClickListener(this);
+    AppMethodBeat.o(107392);
   }
   
   public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.Ot = paramOnItemSelectedListener;
+    AppMethodBeat.i(107393);
+    this.Oh = paramOnItemSelectedListener;
     super.setOnItemSelectedListener(this);
+    AppMethodBeat.o(107393);
   }
   
   public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.pqK = paramOnScrollListener;
+    this.slC = paramOnScrollListener;
   }
   
   public void setStickyHeaderIsTranscluent(boolean paramBoolean)
@@ -675,72 +760,22 @@ public class GridHeadersGridView
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      this.vWV = paramBoolean;
+      this.Apd = paramBoolean;
       return;
     }
   }
   
   public void setVerticalSpacing(int paramInt)
   {
+    AppMethodBeat.i(107394);
     super.setVerticalSpacing(paramInt);
-    this.uSW = paramInt;
-  }
-  
-  private final class a
-    extends GridHeadersGridView.f
-    implements Runnable
-  {
-    private a()
-    {
-      super((byte)0);
-    }
-    
-    public final void run()
-    {
-      View localView = GridHeadersGridView.this.HY(GridHeadersGridView.this.vWU);
-      boolean bool1;
-      if (localView != null)
-      {
-        GridHeadersGridView.a(GridHeadersGridView.this, GridHeadersGridView.this.vWU);
-        if ((!cIE()) || (GridHeadersGridView.this.uTo)) {
-          break label141;
-        }
-        GridHeadersGridView localGridHeadersGridView = GridHeadersGridView.this;
-        if (localGridHeadersGridView.vWQ == null) {
-          break label136;
-        }
-        bool1 = localGridHeadersGridView.vWQ.cIC();
-        bool2 = bool1;
-        if (bool1)
-        {
-          if (localView != null) {
-            localView.sendAccessibilityEvent(2);
-          }
-          localGridHeadersGridView.performHapticFeedback(0);
-        }
-      }
-      label136:
-      label141:
-      for (boolean bool2 = bool1;; bool2 = false)
-      {
-        if (bool2)
-        {
-          GridHeadersGridView.this.alA = -2;
-          GridHeadersGridView.this.setPressed(false);
-          localView.setPressed(false);
-          return;
-        }
-        GridHeadersGridView.this.alA = 2;
-        return;
-        bool1 = false;
-        break;
-      }
-    }
+    this.zhw = paramInt;
+    AppMethodBeat.o(107394);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.GridHeadersGridView
  * JD-Core Version:    0.7.0.1
  */

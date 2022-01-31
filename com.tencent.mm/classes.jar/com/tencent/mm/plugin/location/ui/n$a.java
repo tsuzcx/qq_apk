@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.location.ui;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.mapsdk.raster.model.Marker;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.tencentmap.mapsdk.map.TencentMap.InfoWindowAdapter;
 
 public final class n$a
@@ -13,10 +14,15 @@ public final class n$a
   
   public final View getInfoWindow(Marker paramMarker)
   {
-    y.i("ZItemOverlay", "get info window: %s", new Object[] { Integer.valueOf(this.lHT.lHQ.getVisibility()) });
-    if ("info_window_tag".equals(paramMarker.getTag())) {
-      return this.lHT.lHQ;
+    AppMethodBeat.i(113586);
+    ab.i("ZItemOverlay", "get info window: %s", new Object[] { Integer.valueOf(this.ofg.ofc.getVisibility()) });
+    if ("info_window_tag".equals(paramMarker.getTag()))
+    {
+      paramMarker = this.ofg.ofc;
+      AppMethodBeat.o(113586);
+      return paramMarker;
     }
+    AppMethodBeat.o(113586);
     return null;
   }
   

@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <Preference android:title="@string/fbq" android:key="wallet_modify_password" android:layout="@layout/ab8" />
-    <Preference android:title="@string/fbk" android:key="wallet_forget_password" android:layout="@layout/ab8" />
-    <PreferenceCategory />
-    <CheckBoxPreference android:title="@string/fbr" android:key="wallet_open_gesture_password" android:layout="@layout/ab8" />
-    <Preference android:title="@string/fbp" android:key="wallet_modify_gesture_password" android:layout="@layout/ab8" />
+    <com.tencent.mm.plugin.scanner.ui.VcardContactUserHeaderPreference android:key="v_contact_info_header" android:layout="@layout/b37" />
+    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:title="@string/f6w" android:key="v_contact_info_photo_uri" android:layout="@layout/afi" />
+    <PreferenceCategory android:key="v_category_photo_uri" />
+    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:title="@string/f6o" android:key="v_contact_info_email" android:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/f6v" android:key="v_contact_info_org" android:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/f6l" android:key="v_contact_info_agent" android:layout="@layout/afi" />
+    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:title="@string/f71" android:key="c_contact_info_wx_id" android:layout="@layout/afi" />
+    <PreferenceCategory android:key="v_category_main" />
+    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:title="@string/f6q" android:key="v_contact_info_home_page" android:layout="@layout/afi" />
+    <PreferenceCategory android:key="v_category_home_page" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/f6m" android:key="v_contact_info_birthday" android:layout="@layout/afi" />
+    <PreferenceCategory android:key="v_category_birthday" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/f6x" android:key="v_contact_info_remark" android:layout="@layout/afi" />
+    <PreferenceCategory android:key="v_category_remark" />
+    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:title="@string/f6s" android:key="v_contact_info_logo" android:layout="@layout/afi" />
+    <PreferenceCategory android:key="v_category_logo" />
+    <Preference android:title="@string/f6h" android:key="add_vcard_contact" android:layout="@layout/ay" />
     <PreferenceCategory />
 </PreferenceScreen>

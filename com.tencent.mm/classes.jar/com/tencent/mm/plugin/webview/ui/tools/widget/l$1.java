@@ -1,26 +1,37 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class l$1
   extends m
 {
   l$1(l paraml) {}
   
-  public final void N(Bundle paramBundle)
+  public final void af(Bundle paramBundle)
   {
-    if (((this.rCA.rCy instanceof e)) && (((e)this.rCA.rCy).IP())) {
+    AppMethodBeat.i(10022);
+    if (((this.vsM.vsK instanceof e)) && (((e)this.vsM.vsK).abM()))
+    {
+      AppMethodBeat.o(10022);
       return;
     }
-    super.N(paramBundle);
+    super.af(paramBundle);
+    AppMethodBeat.o(10022);
   }
   
-  public final boolean b(int paramInt, Bundle paramBundle)
+  public final boolean e(int paramInt, Bundle paramBundle)
   {
-    if (this.rCA.rCy != null) {
-      return this.rCA.rCy.b(paramInt, paramBundle);
+    AppMethodBeat.i(10021);
+    if (this.vsM.vsK != null)
+    {
+      bool = this.vsM.vsK.e(paramInt, paramBundle);
+      AppMethodBeat.o(10021);
+      return bool;
     }
-    return super.b(paramInt, paramBundle);
+    boolean bool = super.e(paramInt, paramBundle);
+    AppMethodBeat.o(10021);
+    return bool;
   }
 }
 

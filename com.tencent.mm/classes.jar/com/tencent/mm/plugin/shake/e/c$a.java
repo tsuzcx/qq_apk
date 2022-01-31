@@ -14,11 +14,11 @@ public final class c$a
   public String field_title;
   public String field_topic;
   public String field_xml;
-  public LinkedList<a> nPR;
+  public LinkedList<a> qDK;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.e.c.a
  * JD-Core Version:    0.7.0.1
  */

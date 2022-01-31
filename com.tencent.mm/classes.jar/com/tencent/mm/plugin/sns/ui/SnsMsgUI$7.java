@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsMsgUI$7
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class SnsMsgUI$7
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SnsMsgUI.a(this.paq, true);
+    AppMethodBeat.i(39071);
+    SnsMsgUI.a(this.rSU, true);
+    AppMethodBeat.o(39071);
   }
 }
 

@@ -8,9 +8,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class b<_Struct, _Change>
   extends Vending<_Struct, Integer, _Change>
 {
+  private b.a ANU = new b.a((byte)0);
   public int a = 5;
   public int c = 0;
-  private b.a wsZ = new b.a((byte)0);
   
   private void a(int paramInt1, int paramInt2)
   {
@@ -25,9 +25,9 @@ public abstract class b<_Struct, _Change>
     for (;;)
     {
       int k;
-      synchronized (this.wsZ)
+      synchronized (this.ANU)
       {
-        Object localObject1 = this.wsZ;
+        Object localObject1 = this.ANU;
         if (!((b.a)localObject1).c)
         {
           ((b.a)localObject1).b(j, paramInt1);
@@ -96,12 +96,12 @@ public abstract class b<_Struct, _Change>
           j = m - paramInt2;
           localc = a();
           localInteger = Integer.valueOf(j);
-          if (localc.wtc.get()) {}
+          if (localc.ANX.get()) {}
         }
         synchronized (localc.b)
         {
           Vending.c.b localb = (Vending.c.b)localc.a.get(localInteger);
-          if ((localb != null) && (localb != Vending.c.b.wte))
+          if ((localb != null) && (localb != Vending.c.b.ANZ))
           {
             paramInt2 += 1;
             break label295;
@@ -115,7 +115,7 @@ public abstract class b<_Struct, _Change>
             j = k + paramInt2;
             break label311;
           }
-          localc.a.put(localInteger, Vending.c.b.wtf);
+          localc.a.put(localInteger, Vending.c.b.AOa);
           localc.e.sendMessage(localc.e.obtainMessage(0, localInteger));
         }
         label455:
@@ -140,17 +140,9 @@ public abstract class b<_Struct, _Change>
     }
   }
   
-  public final void IK(int paramInt)
-  {
-    if (this.c == 0)
-    {
-      a.e("Vending.ForwardVending", "the count is 0, why call null?", new Object[0]);
-      return;
-    }
-    super.request(Integer.valueOf(paramInt));
-  }
+  protected abstract _Struct Fh(int paramInt);
   
-  public abstract int cKO();
+  protected abstract int dQe();
   
   public final <T> T get(int paramInt)
   {
@@ -164,9 +156,9 @@ public abstract class b<_Struct, _Change>
   
   protected void loaderClear()
   {
-    synchronized (this.wsZ)
+    synchronized (this.ANU)
     {
-      b.a locala2 = this.wsZ;
+      b.a locala2 = this.ANU;
       locala2.a = -1;
       locala2.b = -1;
       locala2.c = false;
@@ -176,11 +168,9 @@ public abstract class b<_Struct, _Change>
   
   protected void synchronizing(int paramInt, Object paramObject)
   {
-    this.c = cKO();
+    this.c = dQe();
     a.i("Vending.ForwardVending", "the count %s", new Object[] { Integer.valueOf(this.c) });
   }
-  
-  public abstract _Struct yU(int paramInt);
 }
 
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.widget.sortlist;
 
 import android.database.DataSetObserver;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DragSortListView$a$1
   extends DataSetObserver
@@ -9,12 +10,16 @@ final class DragSortListView$a$1
   
   public final void onChanged()
   {
-    this.wrF.notifyDataSetChanged();
+    AppMethodBeat.i(113028);
+    this.AMj.notifyDataSetChanged();
+    AppMethodBeat.o(113028);
   }
   
   public final void onInvalidated()
   {
-    this.wrF.notifyDataSetInvalidated();
+    AppMethodBeat.i(113029);
+    this.AMj.notifyDataSetInvalidated();
+    AppMethodBeat.o(113029);
   }
 }
 

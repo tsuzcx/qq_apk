@@ -1,25 +1,30 @@
 package com.tencent.mm.plugin.account.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bi.a;
+import com.tencent.mm.model.bk.a;
 import com.tencent.mm.network.c;
 import com.tencent.mm.network.e;
 
 final class LoginHistoryUI$9
-  implements bi.a
+  implements bk.a
 {
   LoginHistoryUI$9(LoginHistoryUI paramLoginHistoryUI) {}
   
   public final void a(e parame)
   {
-    if (parame == null) {
+    AppMethodBeat.i(124920);
+    if (parame == null)
+    {
+      AppMethodBeat.o(124920);
       return;
     }
-    parame = parame.KR();
-    g.DN();
-    int i = a.CK();
-    parame.w(new byte[0], i);
+    parame = parame.adI();
+    g.RJ();
+    int i = a.getUin();
+    parame.a(new byte[0], new byte[0], new byte[0], i);
+    AppMethodBeat.o(124920);
   }
 }
 

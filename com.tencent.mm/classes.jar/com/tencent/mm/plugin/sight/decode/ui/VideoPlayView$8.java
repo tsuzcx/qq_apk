@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sight.decode.ui;
 
-import com.tencent.mm.pluginsdk.ui.tools.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.e;
 
 final class VideoPlayView$8
   implements Runnable
@@ -9,9 +10,11 @@ final class VideoPlayView$8
   
   public final void run()
   {
-    if (!VideoPlayView.a(this.ogv).isPlaying()) {
-      ((AdVideoPlayerLoadingBar)VideoPlayView.c(this.ogv)).akP();
+    AppMethodBeat.i(70323);
+    if (!VideoPlayView.a(this.qUK).isPlaying()) {
+      ((AdVideoPlayerLoadingBar)VideoPlayView.c(this.qUK)).aFy();
     }
+    AppMethodBeat.o(70323);
   }
 }
 

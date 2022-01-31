@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMEditText android:id="@id/of" android:background="@drawable/bf" android:paddingLeft="@dimen/mq" android:layout_width="fill_parent" android:layout_height="@dimen/qb" android:hint="@string/gx" android:drawableLeft="@drawable/ars" android:drawablePadding="@dimen/dl" android:textCursorDrawable="@drawable/nu" style="@style/kg" />
+    <TextView android:textSize="@dimen/qz" android:textColor="@color/ff" android:gravity="center" android:background="@drawable/bg" android:layout_width="fill_parent" android:layout_height="@dimen/qu" android:text="@string/id" />
 </LinearLayout>

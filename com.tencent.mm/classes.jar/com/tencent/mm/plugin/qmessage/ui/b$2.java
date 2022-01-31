@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qmessage.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 
 final class b$2
@@ -11,8 +12,10 @@ final class b$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.ncL.rHo = true;
-    this.ncK.awY();
+    AppMethodBeat.i(24104);
+    this.pId.vxW = true;
+    this.pIc.bkc();
+    AppMethodBeat.o(24104);
   }
 }
 

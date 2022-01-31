@@ -3,28 +3,46 @@ package com.tencent.mm.modelsimple;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class BindWordingContent
   implements Parcelable
 {
-  public static final Parcelable.Creator<BindWordingContent> CREATOR = new BindWordingContent.1();
-  public Integer boJ = Integer.valueOf(0);
-  public String content = "";
-  public String title = "";
+  public static final Parcelable.Creator<BindWordingContent> CREATOR;
+  public Integer bOw;
+  public String content;
+  public String title;
+  
+  static
+  {
+    AppMethodBeat.i(123428);
+    CREATOR = new BindWordingContent.1();
+    AppMethodBeat.o(123428);
+  }
   
   public BindWordingContent(Parcel paramParcel)
   {
+    AppMethodBeat.i(123426);
+    this.title = "";
+    this.content = "";
+    this.bOw = Integer.valueOf(0);
     String[] arrayOfString = new String[2];
     paramParcel.readStringArray(arrayOfString);
     this.title = arrayOfString[0];
     this.content = arrayOfString[1];
-    this.boJ = Integer.valueOf(paramParcel.readInt());
+    this.bOw = Integer.valueOf(paramParcel.readInt());
+    AppMethodBeat.o(123426);
   }
   
   public BindWordingContent(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(123425);
+    this.title = "";
+    this.content = "";
+    this.bOw = Integer.valueOf(0);
     this.title = paramString1;
     this.content = paramString2;
+    AppMethodBeat.o(123425);
   }
   
   public int describeContents()
@@ -34,8 +52,10 @@ public class BindWordingContent
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(123427);
     paramParcel.writeStringArray(new String[] { this.title, this.content });
-    paramParcel.writeInt(this.boJ.intValue());
+    paramParcel.writeInt(this.bOw.intValue());
+    AppMethodBeat.o(123427);
   }
 }
 

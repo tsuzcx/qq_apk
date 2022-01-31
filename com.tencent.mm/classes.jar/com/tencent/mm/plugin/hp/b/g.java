@@ -2,33 +2,55 @@ package com.tencent.mm.plugin.hp.b;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.protocal.c.blu;
-import com.tencent.mm.protocal.c.bxr;
-import com.tencent.mm.protocal.c.bxt;
-import com.tencent.mm.protocal.c.bxv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.plugin.boots.a.c;
+import com.tencent.mm.plugin.hp.d.d;
+import com.tencent.mm.plugin.hp.tinker.h;
+import com.tencent.mm.protocal.protobuf.bjt;
+import com.tencent.mm.protocal.protobuf.bjw;
+import com.tencent.mm.protocal.protobuf.bjy;
+import com.tencent.mm.protocal.protobuf.bvg;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 public final class g
   implements com.tencent.mm.pluginsdk.cmd.a
 {
-  public final boolean a(Context paramContext, String[] paramArrayOfString)
+  private static void bIi()
   {
+    AppMethodBeat.i(90612);
+    Object localObject = ((c)com.tencent.mm.kernel.g.E(c.class)).aWg();
+    if (!((List)localObject).isEmpty())
+    {
+      ab.e("MicroMsg.Tinker.TinkerBootsCommand", "start day active keys");
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        com.tencent.mm.plugin.boots.a.a locala = (com.tencent.mm.plugin.boots.a.a)((Iterator)localObject).next();
+        ab.i("MicroMsg.Tinker.TinkerBootsCommand", "key:%s active:%d", new Object[] { Integer.toHexString(locala.field_key), Integer.valueOf(locala.field_dau) });
+      }
+    }
+    AppMethodBeat.o(90612);
+  }
+  
+  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
+  {
+    AppMethodBeat.i(90611);
     if (paramArrayOfString.length < 2)
     {
-      y.d("MicroMsg.Tinker.TinkerBootsCommand", "no args input.");
+      ab.d("MicroMsg.Tinker.TinkerBootsCommand", "no args input.");
+      AppMethodBeat.o(90611);
       return false;
     }
     paramContext = paramArrayOfString[1];
     int i;
-    if (com.tencent.mm.sdk.a.b.cqk())
+    if (com.tencent.mm.sdk.a.b.dsf())
     {
       i = -1;
       switch (paramContext.hashCode())
@@ -40,7 +62,7 @@ public final class g
       switch (i)
       {
       default: 
-        y.d("MicroMsg.Tinker.TinkerBootsCommand", "%s is not a debugger command.", new Object[] { paramContext });
+        ab.d("MicroMsg.Tinker.TinkerBootsCommand", "%s is not a debugger command.", new Object[] { paramContext });
         i = -1;
         switch (paramContext.hashCode())
         {
@@ -48,7 +70,8 @@ public final class g
           switch (i)
           {
           default: 
-            y.d("MicroMsg.Tinker.TinkerBootsCommand", "%s is not a release command.", new Object[] { paramContext });
+            ab.d("MicroMsg.Tinker.TinkerBootsCommand", "%s is not a release command.", new Object[] { paramContext });
+            AppMethodBeat.o(90611);
             return false;
             if (paramContext.equals("update"))
             {
@@ -74,8 +97,13 @@ public final class g
                       {
                         i = 5;
                         continue;
-                        if (paramContext.equals("process")) {
+                        if (paramContext.equals("process"))
+                        {
                           i = 6;
+                          continue;
+                          if (paramContext.equals("showall")) {
+                            i = 7;
+                          }
                         }
                       }
                     }
@@ -90,21 +118,21 @@ public final class g
         break;
       }
     }
-    y.d("MicroMsg.Tinker.TinkerBootsCommand", "command checkout update.");
+    ab.d("MicroMsg.Tinker.TinkerBootsCommand", "command checkout update.");
     LinkedList localLinkedList = new LinkedList();
-    String str = "";
+    paramString = "";
     if (paramArrayOfString.length >= 3) {}
     for (paramContext = paramArrayOfString[2];; paramContext = "tinker_id_d1ddc930233f0ec33f573e365038b6d979b6ebde")
     {
       if (paramArrayOfString.length >= 4) {
-        str = paramArrayOfString[3];
+        paramString = paramArrayOfString[3];
       }
       Object localObject;
       if (paramArrayOfString.length >= 5)
       {
-        localObject = new bxr();
-        ((bxr)localObject).key = "sdk";
-        ((bxr)localObject).value = paramArrayOfString[4];
+        localObject = new bjt();
+        ((bjt)localObject).key = "sdk";
+        ((bjt)localObject).value = paramArrayOfString[4];
         localLinkedList.add(localObject);
       }
       for (;;)
@@ -113,76 +141,87 @@ public final class g
         localObject = localLinkedList.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          bxr localbxr = (bxr)((Iterator)localObject).next();
-          paramArrayOfString.append(localbxr.key).append(":").append(localbxr.value).append("\n");
+          bjt localbjt = (bjt)((Iterator)localObject).next();
+          paramArrayOfString.append(localbjt.key).append(":").append(localbjt.value).append("\n");
         }
-        paramArrayOfString = new bxr();
+        paramArrayOfString = new bjt();
         paramArrayOfString.key = "sdk";
         paramArrayOfString.value = String.valueOf(Build.VERSION.SDK_INT);
         localLinkedList.add(paramArrayOfString);
       }
-      y.d("MicroMsg.Tinker.TinkerBootsCommand", "BaseID:%s PatchID:%s %s", new Object[] { paramContext, str, paramArrayOfString.toString() });
-      paramContext = new com.tencent.mm.plugin.hp.c.a(paramContext, str, localLinkedList);
-      au.Dk().a(paramContext, 0);
+      ab.d("MicroMsg.Tinker.TinkerBootsCommand", "BaseID:%s PatchID:%s %s", new Object[] { paramContext, paramString, paramArrayOfString.toString() });
+      paramContext = new com.tencent.mm.plugin.hp.c.b(paramContext, paramString, localLinkedList);
+      com.tencent.mm.kernel.g.Rc().a(paramContext, 0);
+      AppMethodBeat.o(90611);
       return true;
-      i.a(ae.getContext().getString(R.l.fmt_update), ae.getContext().getString(R.l.fmt_update), ae.getContext().getString(R.l.install_now), new g.1(this), ae.getContext().getString(R.l.update_cancel), null);
+      i.a(ah.getContext().getString(2131300104), ah.getContext().getString(2131300104), ah.getContext().getString(2131300742), new g.1(this), ah.getContext().getString(2131304423), null);
+      AppMethodBeat.o(90611);
       return true;
-      au.DS().O(new g.2(this, paramArrayOfString));
+      com.tencent.mm.kernel.g.RO().ac(new g.2(this, paramArrayOfString));
+      AppMethodBeat.o(90611);
       return true;
-      paramContext = new bxv();
-      paramContext.tNR = 1000;
-      paramContext.tNO = 2;
-      paramContext.tNP = 2;
+      paramContext = new bjy();
+      paramContext.xyt = 1000;
+      paramContext.xyp = 2;
+      paramContext.xyq = 2;
       paramContext.state = 2;
-      paramContext.sNz = "android_tinker_id_123123131231231";
-      paramArrayOfString = new blu();
-      paramArrayOfString.sRE = "c3282ad2467fad9561227bc9b5b6712c";
-      paramArrayOfString.ndo = 118617;
-      paramArrayOfString.kSC = "http://dldir1.qq.com/weixin/checkresupdate/0x2605136d.3144f5.0x26051334.bf52fb_1510754399.apk";
-      paramContext.tNO = 3;
-      paramArrayOfString.sRE = "3ba62fdbd98df2bdf5da7d726010d867";
-      paramArrayOfString.ndo = 33338711;
-      paramArrayOfString.kSC = "http://dldir1.qq.com/weixin/checkresupdate/0x26051363.6cc887.0x26051087.a44d04_1510750804.apk";
-      paramContext.tNQ = paramArrayOfString;
-      new e(new com.tencent.mm.plugin.hp.d.b(paramContext)).gN(false);
+      paramContext.pqD = "android_tinker_id_123123131231231";
+      paramArrayOfString = new bvg();
+      paramArrayOfString.wQr = "c3282ad2467fad9561227bc9b5b6712c";
+      paramArrayOfString.FileSize = 118617;
+      paramArrayOfString.Url = "http://dldir1.qq.com/weixin/checkresupdate/0x2605136d.3144f5.0x26051334.bf52fb_1510754399.apk";
+      paramContext.xyp = 3;
+      paramArrayOfString.wQr = "3ba62fdbd98df2bdf5da7d726010d867";
+      paramArrayOfString.FileSize = 33338711;
+      paramArrayOfString.Url = "http://dldir1.qq.com/weixin/checkresupdate/0x26051363.6cc887.0x26051087.a44d04_1510750804.apk";
+      paramContext.xyr = paramArrayOfString;
+      new e(new com.tencent.mm.plugin.hp.d.b(paramContext)).iv(false);
+      AppMethodBeat.o(90611);
       return true;
       if (paramArrayOfString.length >= 6) {
-        bk.ZS(paramArrayOfString[5]);
+        bo.apW(paramArrayOfString[5]);
       }
+      AppMethodBeat.o(90611);
       return true;
-      com.tencent.mm.plugin.hp.tinker.g.as(ae.getContext(), "");
-      com.tencent.mm.plugin.hp.tinker.g.at(ae.getContext(), "");
-      com.tencent.mm.plugin.hp.tinker.g.E(ae.getContext(), 0);
-      com.tencent.mm.pluginsdk.f.i.clp();
+      h.aA(ah.getContext(), "");
+      h.aB(ah.getContext(), "");
+      h.Q(ah.getContext(), 0);
+      ah.getContext();
+      d.bIx();
+      AppMethodBeat.o(90611);
       return true;
-      paramContext = new bxv();
-      paramContext.tNR = 1000;
-      paramContext.tNO = 3;
-      paramContext.tNP = 2;
+      paramContext = new bjy();
+      paramContext.xyt = 1000;
+      paramContext.xyp = 3;
+      paramContext.xyq = 2;
       paramContext.state = 2;
-      paramContext.sNz = "android_tinker_id_123123131231231";
-      paramArrayOfString = new blu();
-      paramArrayOfString.sRE = "3ba62fdbd98df2bdf5da7d726010d867";
-      paramArrayOfString.ndo = 33338711;
-      paramArrayOfString.kSC = "http://dldir1.qq.com/weixin/checkresupdate/0x26051363.6cc887.0x26051087.a44d04_1510750804.apk";
-      paramContext.tNQ = paramArrayOfString;
-      paramArrayOfString = new bxt();
+      paramContext.pqD = "android_tinker_id_123123131231231";
+      paramArrayOfString = new bvg();
+      paramArrayOfString.wQr = "3ba62fdbd98df2bdf5da7d726010d867";
+      paramArrayOfString.FileSize = 33338711;
+      paramArrayOfString.Url = "http://dldir1.qq.com/weixin/checkresupdate/0x26051363.6cc887.0x26051087.a44d04_1510750804.apk";
+      paramContext.xyr = paramArrayOfString;
+      paramArrayOfString = new bjw();
       paramArrayOfString.key = "clientVersion";
       paramArrayOfString.value = "0x26060510";
-      paramContext.tNS.add(paramArrayOfString);
-      paramArrayOfString = new bxt();
+      paramContext.xyu.add(paramArrayOfString);
+      paramArrayOfString = new bjw();
       paramArrayOfString.key = "alphaTitle";
       paramArrayOfString.value = "叫你更新你就更新";
-      paramContext.tNS.add(paramArrayOfString);
-      paramArrayOfString = new bxt();
+      paramContext.xyu.add(paramArrayOfString);
+      paramArrayOfString = new bjw();
       paramArrayOfString.key = "alphaContent";
       paramArrayOfString.value = "这个包可以抢到的红包最大，抢红包速度最快。";
-      paramContext.tNS.add(paramArrayOfString);
-      paramArrayOfString = new bxt();
+      paramContext.xyu.add(paramArrayOfString);
+      paramArrayOfString = new bjw();
       paramArrayOfString.key = "alphaUrl";
       paramArrayOfString.value = "www.qq.com";
-      paramContext.tNS.add(paramArrayOfString);
-      new e(new com.tencent.mm.plugin.hp.d.b(paramContext)).gN(true);
+      paramContext.xyu.add(paramArrayOfString);
+      new e(new com.tencent.mm.plugin.hp.d.b(paramContext)).iv(true);
+      AppMethodBeat.o(90611);
+      return true;
+      bIi();
+      AppMethodBeat.o(90611);
       return true;
       if (!paramContext.equals("check")) {
         break;
@@ -191,14 +230,15 @@ public final class g
       break;
       try
       {
-        com.tinkerboots.sdk.a.cTY().oy(true);
+        com.tinkerboots.sdk.a.eaJ().sm(true);
+        AppMethodBeat.o(90611);
         return true;
       }
       catch (Exception paramContext)
       {
         for (;;)
         {
-          y.printErrStackTrace("MicroMsg.Tinker.TinkerBootsCommand", paramContext, "", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.Tinker.TinkerBootsCommand", paramContext, "", new Object[0]);
         }
       }
     }
@@ -206,7 +246,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.g
  * JD-Core Version:    0.7.0.1
  */

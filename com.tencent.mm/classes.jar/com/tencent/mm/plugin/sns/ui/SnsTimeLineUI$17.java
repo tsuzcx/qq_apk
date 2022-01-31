@@ -1,9 +1,8 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.widget.ListView;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.model.g;
-import com.tencent.mm.sdk.platformtools.y;
 
 final class SnsTimeLineUI$17
   implements Runnable
@@ -12,13 +11,16 @@ final class SnsTimeLineUI$17
   
   public final void run()
   {
-    if (SnsTimeLineUI.a(this.pfC) == null) {}
-    while (SnsTimeLineUI.n(this.pfC)) {
+    AppMethodBeat.i(39469);
+    if (SnsTimeLineUI.a(this.rYv) == null)
+    {
+      AppMethodBeat.o(39469);
       return;
     }
-    y.v("MicroMsg.SnsTimeLineUI", "zeustest update onFling notify resume %s", new Object[] { Integer.valueOf(SnsTimeLineUI.h(this.pfC).lwE.getFirstVisiblePosition() - SnsTimeLineUI.h(this.pfC).lwE.getHeaderViewsCount()) });
-    af.bDC().start();
-    SnsTimeLineUI.a(this.pfC).pgw.bJu();
+    if (SnsTimeLineUI.u(this.rYv)) {
+      ag.cpc().pause();
+    }
+    AppMethodBeat.o(39469);
   }
 }
 

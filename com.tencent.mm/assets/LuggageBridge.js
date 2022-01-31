@@ -1,6 +1,9 @@
 (function (global) {
 	if (global.luggageBridge) return;
 
+	var TAG = "LuggageBridge";
+	var ERR_TAG = "luggage_err";
+
 	var MAGIC_PREFIX = '<<//+//>>';
 
 	var MessageType = {
@@ -174,9 +177,13 @@
 				return data.data;
 			}
 		} else {
-			invokeCallbacks[data.callbackId](data.error, data.data);
-			if (!data.keepCallback) {
-				delete invokeCallbacks[data.callbackId];
+		    if (typeof invokeCallbacks[data.callbackId] === 'function') {
+                invokeCallbacks[data.callbackId](data.error, data.data);
+                if (!data.keepCallback) {
+                    delete invokeCallbacks[data.callbackId];
+                }
+			} else {
+			    console.log(TAG + " " + ERR_TAG + "invoke callback not function: " + data.callbackId);
 			}
 			return;
 		}
@@ -257,4 +264,5 @@
 	if (global.document && global.Event) {
 		global.document.dispatchEvent(new Event('LuggageBridgeReady'));
 	}
+	console.log(TAG + "ready");
 })(this);

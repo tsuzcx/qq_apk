@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.order.ui.a;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.c.a.a;
 
 final class f$1
@@ -11,9 +12,11 @@ final class f$1
   
   public final void onClick(View paramView)
   {
-    if (f.a(this.mRt) != null) {
-      f.a(this.mRt).onClick(paramView);
+    AppMethodBeat.i(43907);
+    if (f.a(this.prG) != null) {
+      f.a(this.prG).onClick(paramView);
     }
+    AppMethodBeat.o(43907);
   }
 }
 

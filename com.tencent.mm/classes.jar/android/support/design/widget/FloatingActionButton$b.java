@@ -8,25 +8,26 @@ final class FloatingActionButton$b
 {
   FloatingActionButton$b(FloatingActionButton paramFloatingActionButton) {}
   
-  public final boolean aI()
+  public final boolean br()
   {
-    return this.iz.is;
+    return this.js.jm;
   }
   
-  public final void d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void e(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.iz.it.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.iz.setPadding(this.iz.iq + paramInt1, this.iz.iq + paramInt2, this.iz.iq + paramInt3, this.iz.iq + paramInt4);
+    this.js.jn.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    FloatingActionButton localFloatingActionButton = this.js;
+    localFloatingActionButton.setPadding(localFloatingActionButton.jk + paramInt1, this.js.jk + paramInt2, this.js.jk + paramInt3, this.js.jk + paramInt4);
   }
   
   public final float getRadius()
   {
-    return this.iz.getSizeDimension() / 2.0F;
+    return this.js.getSizeDimension() / 2.0F;
   }
   
   public final void setBackgroundDrawable(Drawable paramDrawable)
   {
-    FloatingActionButton.a(this.iz, paramDrawable);
+    FloatingActionButton.a(this.js, paramDrawable);
   }
 }
 

@@ -10,85 +10,84 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
+import com.tencent.mm.plugin.game.model.c;
+import com.tencent.mm.plugin.game.model.j;
+import com.tencent.mm.plugin.game.model.j.a;
 import com.tencent.mm.plugin.game.model.k;
-import com.tencent.mm.plugin.game.model.k.a;
-import com.tencent.mm.plugin.game.model.l;
 import com.tencent.mm.plugin.game.widget.TextProgressBar;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
 abstract class m
-  extends a<com.tencent.mm.plugin.game.model.d>
+  extends a<c>
 {
-  protected int kQh = 0;
-  private m.a kXP;
-  protected int kZu = 14;
-  private k.a kZy = new m.3(this);
-  protected d kZz;
-  private DialogInterface.OnClickListener laj = new m.5(this);
-  protected View.OnClickListener lak = new m.4(this);
-  protected int lcT;
-  protected boolean lcU = true;
-  protected boolean lcV = false;
-  protected boolean lcW = false;
-  protected int lcX;
-  protected ConcurrentHashMap<String, l> lcY;
-  protected SparseArray<View> lcZ;
   protected Context mContext;
+  protected int nAO;
+  protected boolean nAP = true;
+  protected boolean nAQ = false;
+  protected boolean nAR = false;
+  protected int nAS;
+  protected ConcurrentHashMap<String, k> nAT;
+  protected SparseArray<View> nAU;
+  protected int nok = 0;
+  private m.a nvR;
+  protected int nxr = 14;
+  private j.a nxv = new m.3(this);
+  protected d nxw;
+  private DialogInterface.OnClickListener nyg = new m.5(this);
+  protected View.OnClickListener nyh = new m.4(this);
   
   public m(Context paramContext)
   {
     super(paramContext);
     this.mContext = paramContext;
-    this.lcY = new ConcurrentHashMap();
-    k.a(this.kZy);
-    this.lcZ = new SparseArray();
-    this.kZz = new d(paramContext);
-    this.kZz.kXd = this.laj;
+    this.nAT = new ConcurrentHashMap();
+    j.a(this.nxv);
+    this.nAU = new SparseArray();
+    this.nxw = new d(paramContext);
+    this.nxw.nvf = this.nyg;
   }
   
-  public void EY(String paramString)
+  public void Qq(String paramString)
   {
-    if (bk.bl(paramString)) {}
+    if (bo.isNullOrNil(paramString)) {}
     do
     {
       do
       {
         return;
-      } while (!this.lcY.containsKey(paramString));
-      paramString = (l)this.lcY.get(paramString);
+      } while (!this.nAT.containsKey(paramString));
+      paramString = (k)this.nAT.get(paramString);
     } while (paramString == null);
-    paramString.aZk();
+    paramString.bGk();
   }
   
-  public void EZ(String paramString)
+  public void Qr(String paramString)
   {
-    if (bk.bl(paramString)) {}
+    if (bo.isNullOrNil(paramString)) {}
     do
     {
       do
       {
         return;
-      } while (!this.lcY.containsKey(paramString));
-      paramString = (l)this.lcY.get(paramString);
+      } while (!this.nAT.containsKey(paramString));
+      paramString = (k)this.nAT.get(paramString);
     } while (paramString == null);
-    paramString.aGu();
+    paramString.bjZ();
   }
   
-  public void Fa(String paramString)
+  public void Qs(String paramString)
   {
     int i = 0;
-    if (i < this.kQN.size()) {
-      if (!((com.tencent.mm.plugin.game.model.d)this.kQN.get(i)).field_appId.equals(paramString)) {}
+    if (i < this.noR.size()) {
+      if (!((c)this.noR.get(i)).field_appId.equals(paramString)) {}
     }
-    for (paramString = (com.tencent.mm.plugin.game.model.d)this.kQN.get(i);; paramString = null)
+    for (paramString = (c)this.noR.get(i);; paramString = null)
     {
       if (paramString != null) {
         break label63;
@@ -98,62 +97,71 @@ abstract class m
       break;
     }
     label63:
-    if (!this.lcY.containsKey(paramString.field_appId))
+    if (!this.nAT.containsKey(paramString.field_appId))
     {
-      y.e("MicroMsg.GameListAdapter", "No DownloadInfo found");
+      ab.e("MicroMsg.GameListAdapter", "No DownloadInfo found");
       return;
     }
-    l locall = (l)this.lcY.get(paramString.field_appId);
-    this.kZz.a(paramString, locall);
+    k localk = (k)this.nAT.get(paramString.field_appId);
+    this.nxw.a(paramString, localk);
   }
   
-  public void I(View paramView, int paramInt)
+  public void Y(View paramView, int paramInt)
   {
     paramView = (m.b)paramView.getTag();
-    com.tencent.mm.plugin.game.model.d locald = (com.tencent.mm.plugin.game.model.d)this.kQN.get(paramInt);
+    c localc = (c)this.noR.get(paramInt);
     if (paramView != null)
     {
-      this.kZz.a(paramView.ldk, paramView.ldj, locald, (l)this.lcY.get(locald.field_appId));
+      this.nxw.a(paramView.nBf, paramView.nBe, localc, (k)this.nAT.get(localc.field_appId));
       return;
     }
-    y.e("MicroMsg.GameListAdapter", "holder should not be null, %d", new Object[] { Integer.valueOf(paramInt) });
+    ab.e("MicroMsg.GameListAdapter", "holder should not be null, %d", new Object[] { Integer.valueOf(paramInt) });
   }
   
-  public void U(LinkedList<com.tencent.mm.plugin.game.model.d> paramLinkedList)
-  {
-    if (paramLinkedList == null) {
-      return;
-    }
-    g.DS().O(new m.1(this, paramLinkedList));
-  }
+  abstract void a(c paramc, m.b paramb);
   
-  public void V(LinkedList<com.tencent.mm.plugin.game.model.d> paramLinkedList)
-  {
-    if (paramLinkedList == null) {
-      return;
-    }
-    e.post(new m.2(this, paramLinkedList), "game_get_download_info");
-  }
-  
-  abstract void a(com.tencent.mm.plugin.game.model.d paramd, m.b paramb);
-  
-  abstract void a(com.tencent.mm.plugin.game.model.d paramd, m.b paramb, int paramInt);
+  abstract void a(c paramc, m.b paramb, int paramInt);
   
   public void a(m.a parama)
   {
-    this.kXP = parama;
+    this.nvR = parama;
+  }
+  
+  public void ab(final LinkedList<c> paramLinkedList)
+  {
+    if (paramLinkedList == null) {
+      return;
+    }
+    g.RO().ac(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(112057);
+        m.a(m.this, paramLinkedList);
+        al.d(new m.1.1(this));
+        AppMethodBeat.o(112057);
+      }
+    });
+  }
+  
+  public void ac(LinkedList<c> paramLinkedList)
+  {
+    if (paramLinkedList == null) {
+      return;
+    }
+    com.tencent.mm.sdk.g.d.post(new m.2(this, paramLinkedList), "game_get_download_info");
   }
   
   public void clear()
   {
     super.clear();
-    k.b(this.kZy);
+    j.b(this.nxv);
   }
   
-  public void d(SparseArray<View> paramSparseArray)
+  public void e(SparseArray<View> paramSparseArray)
   {
     if (paramSparseArray != null) {}
-    for (this.lcZ = paramSparseArray;; this.lcZ = new SparseArray())
+    for (this.nAU = paramSparseArray;; this.nAU = new SparseArray())
     {
       notifyDataSetChanged();
       return;
@@ -162,39 +170,39 @@ abstract class m
   
   public int getItemViewType(int paramInt)
   {
-    return ((com.tencent.mm.plugin.game.model.d)getItem(paramInt)).type;
+    return ((c)getItem(paramInt)).type;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    com.tencent.mm.plugin.game.model.d locald = (com.tencent.mm.plugin.game.model.d)getItem(paramInt);
+    c localc = (c)getItem(paramInt);
     int i;
     View localView;
     if (paramView == null)
     {
       paramView = this.mContext;
-      switch (locald.type)
+      switch (localc.type)
       {
       default: 
         i = 0;
         localView = View.inflate(paramView, i, null);
         paramView = new m.b();
-        paramView.kXG = ((ViewGroup)localView.findViewById(g.e.main_view));
-        paramView.lde = ((TextView)localView.findViewById(g.e.game_num));
-        paramView.ldf = ((ImageView)localView.findViewById(g.e.game_icon));
-        paramView.lcg = ((TextView)localView.findViewById(g.e.game_name));
-        paramView.ldg = ((TextView)localView.findViewById(g.e.new_game_label));
-        paramView.ldh = ((TextView)localView.findViewById(g.e.game_info));
-        paramView.ldi = ((TextView)localView.findViewById(g.e.game_desc));
-        paramView.ldj = ((Button)localView.findViewById(g.e.game_download_btn));
-        paramView.ldk = ((TextProgressBar)localView.findViewById(g.e.game_download_progress));
-        paramView.ldn = ((LinearLayout)localView.findViewById(g.e.game_ad_list));
-        paramView.ldl = ((GameListSocialView)localView.findViewById(g.e.game_social));
-        paramView.ldm = ((ViewGroup)localView.findViewById(g.e.custom_view));
+        paramView.nvI = ((ViewGroup)localView.findViewById(2131824445));
+        paramView.nAZ = ((TextView)localView.findViewById(2131824424));
+        paramView.nBa = ((ImageView)localView.findViewById(2131821573));
+        paramView.nAb = ((TextView)localView.findViewById(2131821575));
+        paramView.nBb = ((TextView)localView.findViewById(2131824528));
+        paramView.nBc = ((TextView)localView.findViewById(2131824537));
+        paramView.nBd = ((TextView)localView.findViewById(2131824447));
+        paramView.nBe = ((Button)localView.findViewById(2131824529));
+        paramView.nBf = ((TextProgressBar)localView.findViewById(2131824530));
+        paramView.nBi = ((LinearLayout)localView.findViewById(2131824419));
+        paramView.nBg = ((GameListSocialView)localView.findViewById(2131824531));
+        paramView.nBh = ((ViewGroup)localView.findViewById(2131824682));
         localView.setTag(paramView);
         paramViewGroup = paramView;
         label256:
-        switch (locald.type)
+        switch (localc.type)
         {
         }
         break;
@@ -203,19 +211,19 @@ abstract class m
     do
     {
       return localView;
-      i = this.lcT;
+      i = this.nAO;
       break;
-      i = g.f.game_ad_list;
+      i = 2130969687;
       break;
       paramViewGroup = (m.b)paramView.getTag();
       localView = paramView;
       break label256;
-      a(locald, paramViewGroup, paramInt);
-    } while ((this.lcX != 2) || (locald.kOp));
-    com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1004, locald.position, locald.field_appId, this.kQh, locald.kOo);
-    locald.kOp = true;
+      a(localc, paramViewGroup, paramInt);
+    } while ((this.nAS != 2) || (localc.nmm));
+    com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1004, localc.position, localc.field_appId, this.nok, localc.nml);
+    localc.nmm = true;
     return localView;
-    a(locald, paramViewGroup);
+    a(localc, paramViewGroup);
     return localView;
   }
   
@@ -231,17 +239,17 @@ abstract class m
   
   public void setSourceScene(int paramInt)
   {
-    this.kQh = paramInt;
+    this.nok = paramInt;
   }
   
-  public void sg(int paramInt)
+  public void xf(int paramInt)
   {
-    this.lcX = paramInt;
+    this.nAS = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.m
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,11 @@ package com.tencent.soter.a.f;
 
 public final class e$b
 {
-  public boolean wPM;
+  public boolean Bnm;
   
   public e$b(boolean paramBoolean)
   {
-    this.wPM = paramBoolean;
+    this.Bnm = paramBoolean;
   }
 }
 

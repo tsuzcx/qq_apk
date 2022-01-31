@@ -1,27 +1,33 @@
 package com.tencent.mm.plugin.fts.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.m;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class a$8
-  implements am.a
+  implements ap.a
 {
   a$8(a parama) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    a.e(this.kyt).a(131093, new a.u(this.kyt, (byte)0));
+    AppMethodBeat.i(136660);
+    a.e(this.mUg).a(131093, new a.u(this.mUg, (byte)0));
+    AppMethodBeat.o(136660);
     return false;
   }
   
   public final String toString()
   {
-    return super.toString() + "|atOnceIndexTimer";
+    AppMethodBeat.i(136661);
+    String str = super.toString() + "|atOnceIndexTimer";
+    AppMethodBeat.o(136661);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.a.8
  * JD-Core Version:    0.7.0.1
  */

@@ -10,128 +10,164 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.h;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.pluginsdk.i.c;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.i.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.w;
 
 public class WalletAwardShakeAnimView
   extends RelativeLayout
 {
-  long iam;
-  c mBT;
-  private View qHV;
-  private TextView qHW;
-  private boolean qHX = false;
-  private boolean qHY = false;
-  private String qHZ;
-  private int qIa = 0;
-  private String qIb;
-  private int qIc = 0;
-  private ValueAnimator qId;
-  private WalletAwardShakeAnimView.a qIe;
-  Runnable qIf = new WalletAwardShakeAnimView.1(this);
+  private Runnable delayNofiyRunnable;
+  private boolean isInvokeCallback;
+  private boolean isStartShake;
+  private long lastShakeTime;
+  private d shakeSensor;
+  private View uwG;
+  private TextView uwH;
+  private String uwI;
+  private int uwJ;
+  private String uwK;
+  private int uwL;
+  private ValueAnimator uwM;
+  private WalletAwardShakeAnimView.a uwN;
   
   public WalletAwardShakeAnimView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(47893);
+    this.isStartShake = false;
+    this.isInvokeCallback = false;
+    this.uwJ = 0;
+    this.uwL = 0;
+    this.delayNofiyRunnable = new WalletAwardShakeAnimView.1(this);
     init();
+    AppMethodBeat.o(47893);
   }
   
   public WalletAwardShakeAnimView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(47894);
+    this.isStartShake = false;
+    this.isInvokeCallback = false;
+    this.uwJ = 0;
+    this.uwL = 0;
+    this.delayNofiyRunnable = new WalletAwardShakeAnimView.1(this);
     init();
+    AppMethodBeat.o(47894);
   }
   
-  private void bXf()
+  private void cWG()
   {
-    if (this.qId != null) {
-      this.qId.cancel();
+    AppMethodBeat.i(47899);
+    if (this.uwM != null) {
+      this.uwM.cancel();
     }
-    this.qId = ValueAnimator.ofFloat(new float[] { -30.0F, 30.0F });
-    this.qId.setInterpolator(new LinearInterpolator());
-    this.qId.setRepeatMode(2);
-    this.qId.setRepeatCount(-1);
-    this.qId.setDuration(300L);
-    this.qId.addUpdateListener(new WalletAwardShakeAnimView.4(this));
-    this.qId.start();
+    this.uwM = ValueAnimator.ofFloat(new float[] { -30.0F, 30.0F });
+    this.uwM.setInterpolator(new LinearInterpolator());
+    this.uwM.setRepeatMode(2);
+    this.uwM.setRepeatCount(-1);
+    this.uwM.setDuration(300L);
+    this.uwM.addUpdateListener(new WalletAwardShakeAnimView.4(this));
+    this.uwM.start();
+    AppMethodBeat.o(47899);
   }
   
   private void init()
   {
-    y.gt(getContext()).inflate(a.g.wallet_award_shake_anim_view, this);
-    findViewById(a.f.background).setBackground(getResources().getDrawable(a.h.wallet_new_shakea_anim_view_bg));
-    this.qHV = findViewById(a.f.shake_icon);
-    this.qHW = ((TextView)findViewById(a.f.shake_hint_wording));
+    AppMethodBeat.i(47895);
+    w.hM(getContext()).inflate(2130971125, this);
+    findViewById(2131824152).setBackground(getResources().getDrawable(2131232195));
+    this.uwG = findViewById(2131828927);
+    this.uwH = ((TextView)findViewById(2131828928));
+    AppMethodBeat.o(47895);
+  }
+  
+  public final void cWF()
+  {
+    AppMethodBeat.i(47898);
+    ab.i("MicroMsg.WalletAwardShakeAnimView", "startShake");
+    getContext();
+    this.shakeSensor = new d();
+    this.shakeSensor.a(new WalletAwardShakeAnimView.2(this));
+    this.lastShakeTime = bo.yB();
+    setOnClickListener(new WalletAwardShakeAnimView.3(this));
+    al.ae(this.delayNofiyRunnable);
+    al.p(this.delayNofiyRunnable, 3000L);
+    AppMethodBeat.o(47898);
   }
   
   public final void destroy()
   {
-    if (this.mBT != null)
+    AppMethodBeat.i(47900);
+    if (this.shakeSensor != null)
     {
-      this.mBT.aFJ();
-      this.mBT = null;
+      this.shakeSensor.bjf();
+      this.shakeSensor = null;
     }
-    this.qHY = false;
-    this.qHX = false;
-    if (this.qId != null) {
-      this.qId.cancel();
+    this.isInvokeCallback = false;
+    this.isStartShake = false;
+    if (this.uwM != null) {
+      this.uwM.cancel();
     }
-    this.qHV.setRotation(0.0F);
-    if (!bk.bl(this.qHZ))
+    this.uwG.setRotation(0.0F);
+    if (!bo.isNullOrNil(this.uwI))
     {
-      this.qHW.setText(this.qHZ);
-      if (this.qIa == 0) {
-        break label118;
+      this.uwH.setText(this.uwI);
+      if (this.uwJ == 0) {
+        break label130;
       }
-      this.qHW.setTextColor(this.qIa);
+      this.uwH.setTextColor(this.uwJ);
     }
     for (;;)
     {
-      ai.S(this.qIf);
+      al.ae(this.delayNofiyRunnable);
+      AppMethodBeat.o(47900);
       return;
-      this.qHW.setText(getResources().getText(a.i.wallet_shake_award_hint_wording));
+      this.uwH.setText(getResources().getText(2131305661));
       break;
-      label118:
-      this.qHW.setTextColor(Color.parseColor("#E24C4C"));
+      label130:
+      this.uwH.setTextColor(Color.parseColor("#E24C4C"));
     }
   }
   
   public void setAfterHintWording(String paramString)
   {
-    this.qIb = paramString;
+    this.uwK = paramString;
   }
   
   public void setAfterHintWordingColor(int paramInt)
   {
-    this.qIc = paramInt;
+    this.uwL = paramInt;
   }
   
   public void setShakeHintWording(String paramString)
   {
-    this.qHZ = paramString;
-    this.qHW.setText(paramString);
+    AppMethodBeat.i(47896);
+    this.uwI = paramString;
+    this.uwH.setText(paramString);
+    AppMethodBeat.o(47896);
   }
   
   public void setShakeHintWordingColor(int paramInt)
   {
-    this.qIa = paramInt;
-    this.qHW.setTextColor(paramInt);
+    AppMethodBeat.i(47897);
+    this.uwJ = paramInt;
+    this.uwH.setTextColor(paramInt);
+    AppMethodBeat.o(47897);
   }
   
   public void setShakeOrClickCallback(WalletAwardShakeAnimView.a parama)
   {
-    this.qIe = parama;
+    this.uwN = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.WalletAwardShakeAnimView
  * JD-Core Version:    0.7.0.1
  */

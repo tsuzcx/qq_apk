@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingTop="@dimen/ko" android:paddingBottom="@dimen/ko" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="@dimen/l6" android:minHeight="@dimen/l4" style="@style/p9"
+<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minWidth="274.0dip" android:minHeight="229.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/confirm_dialog_successful_icon" />
-    <TextView android:textSize="@dimen/mw" android:textColor="@color/fc" android:gravity="center" android:id="@id/bl5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/li" android:layout_marginTop="@dimen/li" android:layout_marginRight="@dimen/li" android:text="@string/bqd" />
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/bo_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="38.0dip" android:src="@raw/connect_mac_popup" />
+    <TextView android:textSize="@dimen/ko" android:textColor="@color/h9" android:layout_gravity="center_horizontal" android:id="@id/boa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+    <TextView android:textSize="@dimen/ko" android:textColor="@color/h9" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="14.0dip" android:text="@string/g87" />
+    <TextView android:textSize="@dimen/lj" android:textColor="@color/i0" android:gravity="center" android:id="@id/bob" android:background="@drawable/a4w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip" android:text="@string/g85" android:layout_weight="1.0" />
 </LinearLayout>

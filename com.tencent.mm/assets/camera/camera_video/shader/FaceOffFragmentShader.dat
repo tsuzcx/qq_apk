@@ -118,12 +118,18 @@ vec4 blendColor(vec4 texColor, vec4 canvasColor)
              float _x = (curPos.x - center1.x) / radius1 / 2.0;
              float _y = (curPos.y - center1.y) / radius1 / 2.0;
              vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));
+             if (irisColor.a > 0.0) {
+                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);
+             }
              resultFore = irisColor.rgb;
              texColor.a = texColor.a * irisColor.a;
          } else if (dist2 < radius2) {
              float _x = (curPos.x - center2.x) / radius2 / 2.0;
              float _y = (curPos.y - center2.y) / radius2 / 2.0;
              vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));
+             if (irisColor.a > 0.0) {
+                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);
+             }
              resultFore = irisColor.rgb;
              texColor.a = texColor.a * irisColor.a;
          } else {

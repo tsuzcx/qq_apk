@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/a0" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/bri" android:background="@color/a23" android:padding="@dimen/du" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/brj" android:layout_width="fill_parent" android:layout_height="1.0px" android:src="@color/nz" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ListView android:id="@id/bv6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/w6" android:scrollingCache="false" android:divider="@color/oz" android:dividerHeight="@dimen/hv" />
+        <ViewStub android:id="@id/bv7" android:layout="@layout/w5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:id="@id/bs_" android:layout="@layout/w6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <include layout="@layout/z2" />
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.modelbiz;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.utils.Log;
 import java.util.Iterator;
@@ -20,16 +21,26 @@ public class AddCardToWXCardPackage$Resp
   
   public AddCardToWXCardPackage$Resp(Bundle paramBundle)
   {
+    AppMethodBeat.i(128185);
     fromBundle(paramBundle);
+    AppMethodBeat.o(128185);
   }
   
   public boolean checkArgs()
   {
-    return (this.cardArrary != null) && (this.cardArrary.size() != 0);
+    AppMethodBeat.i(128186);
+    if ((this.cardArrary == null) || (this.cardArrary.size() == 0))
+    {
+      AppMethodBeat.o(128186);
+      return false;
+    }
+    AppMethodBeat.o(128186);
+    return true;
   }
   
   public void fromBundle(Bundle paramBundle)
   {
+    AppMethodBeat.i(128188);
     super.fromBundle(paramBundle);
     if (this.cardArrary == null) {
       this.cardArrary = new LinkedList();
@@ -50,10 +61,12 @@ public class AddCardToWXCardPackage$Resp
           this.cardArrary.add(localWXCardItem);
           i += 1;
         }
+        AppMethodBeat.o(128188);
         return;
       }
       catch (Exception paramBundle) {}
     }
+    AppMethodBeat.o(128188);
   }
   
   public int getType()
@@ -63,6 +76,7 @@ public class AddCardToWXCardPackage$Resp
   
   public void toBundle(Bundle paramBundle)
   {
+    AppMethodBeat.i(128187);
     super.toBundle(paramBundle);
     JSONStringer localJSONStringer = new JSONStringer();
     AddCardToWXCardPackage.WXCardItem localWXCardItem;
@@ -100,6 +114,7 @@ public class AddCardToWXCardPackage$Resp
     }
     for (;;)
     {
+      AppMethodBeat.o(128187);
       return;
       String str2 = localWXCardItem.cardExtMsg;
       break;

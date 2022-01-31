@@ -1,54 +1,38 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.view.KeyEvent;
-import com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter;
-import com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout;
+import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.KeyboardLinearLayout.a;
 
 final class e$5
-  implements WebViewSearchContentInputFooter.a
+  implements KeyboardLinearLayout.a
 {
   e$5(e parame) {}
   
-  public final void a(WebViewSearchContentInputFooter paramWebViewSearchContentInputFooter)
+  public final void sJ(int paramInt)
   {
-    if (paramWebViewSearchContentInputFooter.getVisibility() == 0) {
-      b(paramWebViewSearchContentInputFooter);
+    AppMethodBeat.i(153087);
+    ab.i("MicroMsg.LuggageMMWebPage", "onKeyBoardStateChange, state = ".concat(String.valueOf(paramInt)));
+    if (!e.e(this.uRQ))
+    {
+      ab.i("MicroMsg.LuggageMMWebPage", "background ignored");
+      AppMethodBeat.o(153087);
+      return;
     }
-  }
-  
-  public final void b(WebViewSearchContentInputFooter paramWebViewSearchContentInputFooter)
-  {
-    this.rca.rbA.clearMatches();
-    paramWebViewSearchContentInputFooter.reset();
-    e.d(this.rca).q(0, 0, true);
-    this.rca.rbA.findAllAsync(paramWebViewSearchContentInputFooter.getSearchContent());
-  }
-  
-  public final boolean c(int paramInt, KeyEvent paramKeyEvent)
-  {
-    return false;
-  }
-  
-  public final void cbg()
-  {
-    e.a(this.rca, 0);
-    this.rca.rbA.clearMatches();
-    e.d(this.rca).cgS();
-  }
-  
-  public final void cbh()
-  {
-    this.rca.rbA.findNext(false);
-  }
-  
-  public final void cbi()
-  {
-    this.rca.rbA.findNext(true);
-  }
-  
-  public final void onShow()
-  {
-    e.a(this.rca, e.d(this.rca).getHeight());
+    e.a(this.uRQ, e.c(this.uRQ), paramInt);
+    if (paramInt == -3)
+    {
+      if ((e.b(this.uRQ) != null) && (e.b(this.uRQ).getVisibility() == 0)) {
+        e.b(this.uRQ).dhc();
+      }
+      e.a(this.uRQ, e.c(this.uRQ).getKeyBoardHeight());
+      AppMethodBeat.o(153087);
+      return;
+    }
+    e.a(this.uRQ, 0);
+    AppMethodBeat.o(153087);
   }
 }
 

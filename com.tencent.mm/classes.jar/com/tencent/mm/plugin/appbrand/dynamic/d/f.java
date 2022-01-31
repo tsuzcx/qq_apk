@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
-import com.tencent.mm.aa.b.b.a;
-import com.tencent.mm.model.u.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v.b;
 import com.tencent.mm.modelappbrand.LogInfo;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.z.b.b.a;
 import com.tencent.recovery.util.Util;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -18,8 +19,9 @@ public final class f
     super("log", paramInt);
   }
   
-  protected final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.z.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
+    AppMethodBeat.i(10832);
     for (;;)
     {
       int i;
@@ -38,19 +40,21 @@ public final class f
             localLogInfo.level = (localJSONObject.optInt("level") + 1);
             localLogInfo.message = localJSONObject.optString("msg");
             localArrayList.add(localLogInfo);
-            y.d("MicroMsg.JsApiFunc_Log", "ts : %s, level : %d, msg : %s", new Object[] { Util.ik(localLogInfo.ts), Integer.valueOf(localLogInfo.level), localLogInfo.message });
+            ab.d("MicroMsg.JsApiFunc_Log", "ts : %s, level : %d, msg : %s", new Object[] { Util.oW(localLogInfo.ts), Integer.valueOf(localLogInfo.level), localLogInfo.message });
           }
         }
         else
         {
-          com.tencent.mm.plugin.appbrand.dynamic.debugger.a.a(parama.CD().getString("__page_view_id", null), localArrayList);
-          parama1.ab(a(true, "", null));
+          com.tencent.mm.plugin.appbrand.dynamic.debugger.a.c(parama.Qx().getString("__page_view_id", null), localArrayList);
+          parama1.aj(a(true, "", null));
+          AppMethodBeat.o(10832);
           return;
         }
       }
       catch (JSONException parama)
       {
-        parama1.ab(a(false, "dataArray is null", null));
+        parama1.aj(a(false, "dataArray is null", null));
+        AppMethodBeat.o(10832);
         return;
       }
       i += 1;

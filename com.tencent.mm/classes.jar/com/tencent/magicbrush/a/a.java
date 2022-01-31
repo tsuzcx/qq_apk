@@ -1,32 +1,43 @@
 package com.tencent.magicbrush.a;
 
-import com.github.henryye.nativeiv.bitmap.IBitmap;
-import com.github.henryye.nativeiv.bitmap.NativeBitmapStruct;
-import java.io.InputStream;
+import android.graphics.drawable.Drawable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a.a bki = new a.a()
+  private static a.a bJs;
+  
+  static
   {
-    public final IBitmap<NativeBitmapStruct> a(String paramAnonymousString, InputStream paramAnonymousInputStream)
+    AppMethodBeat.i(115854);
+    bJs = new a.a()
     {
-      return null;
-    }
-  };
+      public final int n(String paramAnonymousString, int paramAnonymousInt)
+      {
+        return 0;
+      }
+      
+      public final Drawable o(String paramAnonymousString, int paramAnonymousInt)
+      {
+        return null;
+      }
+    };
+    AppMethodBeat.o(115854);
+  }
   
   public static void a(a.a parama)
   {
-    bki = parama;
+    bJs = parama;
   }
   
-  public static a.a qE()
+  public static a.a yp()
   {
-    return bki;
+    return bJs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.magicbrush.a.a
  * JD-Core Version:    0.7.0.1
  */

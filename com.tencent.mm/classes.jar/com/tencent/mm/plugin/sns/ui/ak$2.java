@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.ui.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vfs.e;
 
 final class ak$2
@@ -13,27 +14,30 @@ final class ak$2
   
   public final void onClick(View paramView)
   {
-    if (!e.bK(this.oTO.videoPath))
+    AppMethodBeat.i(38599);
+    if (!e.cN(this.rLM.videoPath))
     {
-      y.i("MicroMsg.SightWidget", "click videopath is not exist " + this.oTO.videoPath);
+      ab.i("MicroMsg.SightWidget", "click videopath is not exist " + this.rLM.videoPath);
+      AppMethodBeat.o(38599);
       return;
     }
-    if (this.oTO.oTN != null)
+    if (this.rLM.rLL != null)
     {
-      this.oTO.oTN.dismiss();
-      this.oTO.oTN = null;
+      this.rLM.rLL.dismiss();
+      this.rLM.rLL = null;
     }
-    this.oTO.oTN = new c(this.oTO.bER);
-    paramView = this.oTO.oTN;
-    String str1 = this.oTO.videoPath;
-    String str2 = this.oTO.thumbPath;
-    paramView.erh = str1;
+    this.rLM.rLL = new c(this.rLM.cmc);
+    paramView = this.rLM.rLL;
+    String str1 = this.rLM.videoPath;
+    String str2 = this.rLM.thumbPath;
+    paramView.eNO = str1;
     paramView.imagePath = str2;
-    paramView = this.oTO.oTN;
-    paramView.cbW = 0;
-    paramView.ofb = 0;
-    paramView.hkH = 1;
-    this.oTO.oTN.show();
+    paramView = this.rLM.rLL;
+    paramView.cKC = 0;
+    paramView.qTq = 0;
+    paramView.mwo = 1;
+    this.rLM.rLL.show();
+    AppMethodBeat.o(38599);
   }
 }
 

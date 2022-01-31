@@ -5,7 +5,7 @@ import java.util.List;
 public final class c$d
 {
   public String appId;
-  public List<String> rxz;
+  public List<String> vos;
 }
 
 

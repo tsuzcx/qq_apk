@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_payu.remittance.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class PayURemittanceDetailUI$2
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class PayURemittanceDetailUI$2
   
   public final void onClick(View paramView)
   {
-    this.qOI.bwG();
+    AppMethodBeat.i(48544);
+    this.uDP.chx();
+    AppMethodBeat.o(48544);
   }
 }
 

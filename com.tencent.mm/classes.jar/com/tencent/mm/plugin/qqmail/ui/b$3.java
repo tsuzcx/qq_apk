@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import com.tencent.mm.plugin.qqmail.b.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.ai;
 import com.tencent.mm.ui.base.h;
 
@@ -14,7 +14,9 @@ final class b$3
   
   public final void onClick(View paramView)
   {
-    h.a(this.nhJ.nhA, b.j.plugin_qqmail_attachment_delete_confirm, b.j.app_tip, new b.3.1(this), null);
+    AppMethodBeat.i(68285);
+    h.a(this.pMW.pMN, 2131302112, 2131297087, new b.3.1(this), null);
+    AppMethodBeat.o(68285);
   }
 }
 

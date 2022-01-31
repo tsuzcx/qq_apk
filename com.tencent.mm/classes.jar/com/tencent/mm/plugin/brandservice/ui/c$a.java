@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
-import com.tencent.mm.protocal.c.kq;
-import com.tencent.mm.protocal.c.kw;
+import com.tencent.mm.protocal.protobuf.nc;
+import com.tencent.mm.protocal.protobuf.ni;
 import java.util.List;
 
 public final class c$a
 {
-  public long bGn;
+  public long cnw;
   public int count;
-  public List<kw> drc;
-  public int icI;
-  public List<String> icJ;
-  public boolean icK;
-  public boolean icL;
-  public List<kq> icM;
+  public List<ni> eiJ;
+  public boolean jTA;
+  public List<nc> jTB;
+  public int jTx;
+  public List<String> jTy;
+  public boolean jTz;
 }
 
 

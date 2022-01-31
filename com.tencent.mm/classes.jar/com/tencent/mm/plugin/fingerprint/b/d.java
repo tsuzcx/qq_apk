@@ -6,167 +6,174 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.e.ac;
 import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.compatible.e.s;
-import com.tencent.mm.compatible.e.x;
-import com.tencent.mm.h.a.ll;
-import com.tencent.mm.h.a.ll.a;
-import com.tencent.mm.h.a.ll.b;
+import com.tencent.mm.g.a.ma;
+import com.tencent.mm.g.a.ma.a;
+import com.tencent.mm.g.a.ma.b;
 import com.tencent.mm.plugin.fingerprint.FingerPrintAuth;
 import com.tencent.mm.plugin.soter.e.b;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.pluginsdk.wallet.j;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.pluginsdk.wallet.k;
+import com.tencent.mm.pluginsdk.wallet.l;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.u;
+import com.tencent.mm.wallet_core.c.w;
 import java.util.Map;
 
 public final class d
   extends a
 {
-  private com.c.a.a kkY = null;
-  private d.a kkZ = new d.a(this, (byte)0);
-  private com.tencent.mm.pluginsdk.wallet.c kla = null;
+  private com.a.a.a mFL;
+  private d.a mFM;
+  private com.tencent.mm.pluginsdk.wallet.d mFN;
   
-  public static void aSI()
+  public d()
   {
-    y.i("MicroMsg.FingerPrintMgrImpl", "initRsaKey");
-    if (!e.aSK())
+    AppMethodBeat.i(41442);
+    this.mFL = null;
+    this.mFM = new d.a(this, (byte)0);
+    this.mFN = null;
+    AppMethodBeat.o(41442);
+  }
+  
+  public static void bzd()
+  {
+    AppMethodBeat.i(41448);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "initRsaKey");
+    if (!e.bzf())
     {
-      y.e("MicroMsg.FingerPrintMgrImpl", "device is not support");
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "device is not support");
+      AppMethodBeat.o(41448);
       return;
     }
-    if ((o.bVs().bVK()) || (o.bVs().bVO()))
+    if ((com.tencent.mm.plugin.wallet_core.model.t.cTN().cUn()) || (com.tencent.mm.plugin.wallet_core.model.t.cTN().cUm()))
     {
-      y.e("MicroMsg.FingerPrintMgrImpl", "user had not reg wxpay or is isSimpleReg");
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "user had not reg wxpay or is isSimpleReg");
+      AppMethodBeat.o(41448);
       return;
     }
     try
     {
       Object localObject = e.getUserId();
-      y.i("MicroMsg.FingerPrintMgrImpl", "initRsaKey userId:" + (String)localObject);
-      String str = q.zg();
-      str = FingerPrintAuth.getRsaKey(e.dj(com.tencent.mm.sdk.platformtools.ae.getContext()), (String)localObject, str);
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "initRsaKey userId:".concat(String.valueOf(localObject)));
+      String str = q.LK();
+      str = FingerPrintAuth.getRsaKey(e.dU(ah.getContext()), (String)localObject, str);
       localObject = str;
       if (TextUtils.isEmpty(str))
       {
-        y.e("MicroMsg.FingerPrintMgrImpl", "FingerPrintAuth.getRsaKey() is null");
-        localObject = FingerPrintAuth.genRsaKey(e.dj(com.tencent.mm.sdk.platformtools.ae.getContext()), e.getUserId(), q.zg());
+        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "FingerPrintAuth.getRsaKey() is null");
+        localObject = FingerPrintAuth.genRsaKey(e.dU(ah.getContext()), e.getUserId(), q.LK());
       }
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        y.e("MicroMsg.FingerPrintMgrImpl", "FingerPrintAuth.genRsaKey() return null");
+        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "FingerPrintAuth.genRsaKey() return null");
+        AppMethodBeat.o(41448);
         return;
       }
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      y.e("MicroMsg.FingerPrintMgrImpl", "can not LoadLibrary fingerprintauth.so e:=" + localUnsatisfiedLinkError.getMessage());
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "can not LoadLibrary fingerprintauth.so e:=" + localUnsatisfiedLinkError.getMessage());
+      AppMethodBeat.o(41448);
       return;
-      y.e("MicroMsg.FingerPrintMgrImpl", "initRsaKey success!");
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "initRsaKey success!");
+      AppMethodBeat.o(41448);
       return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.FingerPrintMgrImpl", localException, "", new Object[0]);
-      y.e("MicroMsg.FingerPrintMgrImpl", "can not LoadLibrary fingerprintauth.so e:=" + localException.getMessage());
+      com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.FingerPrintMgrImpl", localException, "", new Object[0]);
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "can not LoadLibrary fingerprintauth.so e:=" + localException.getMessage());
+      AppMethodBeat.o(41448);
     }
   }
   
-  public static void di(Context paramContext)
+  private int[] sW()
   {
-    y.i("MicroMsg.FingerPrintMgrImpl", "initTASecureWorld");
-    if (!c.aSB())
+    AppMethodBeat.i(41445);
+    if (this.mFL != null)
     {
-      y.e("MicroMsg.FingerPrintMgrImpl", "device is not support");
-      return;
+      int[] arrayOfInt = this.mFL.sW();
+      AppMethodBeat.o(41445);
+      return arrayOfInt;
     }
-    if (e.dk(paramContext) != 0)
-    {
-      e.gi(false);
-      y.e("MicroMsg.FingerPrintMgrImpl", "copyTAFromAssets failed!");
-      return;
-    }
-    e.gi(true);
-    y.e("MicroMsg.FingerPrintMgrImpl", "copyTAFromAssets success!");
-  }
-  
-  private int[] oS()
-  {
-    if (this.kkY != null) {
-      return this.kkY.oS();
-    }
-    y.i("MicroMsg.FingerPrintMgrImpl", "getIds auth == null");
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "getIds auth == null");
+    AppMethodBeat.o(41445);
     return null;
   }
   
-  public final int a(com.tencent.mm.pluginsdk.wallet.c paramc)
+  public final int a(com.tencent.mm.pluginsdk.wallet.d paramd)
   {
     return 0;
   }
   
-  public final int a(com.tencent.mm.pluginsdk.wallet.c paramc, boolean paramBoolean)
+  public final int a(com.tencent.mm.pluginsdk.wallet.d paramd, boolean paramBoolean)
   {
-    if (this.kkY == null) {
-      this.kkY = com.c.a.a.oR();
+    AppMethodBeat.i(41451);
+    if (this.mFL == null) {
+      this.mFL = com.a.a.a.sV();
     }
-    if (this.kkY != null)
+    if (this.mFL != null)
     {
-      this.kla = paramc;
-      this.kkY = com.c.a.a.oR();
-      paramc = oS();
-      return this.kkY.a(this.kkZ, paramc);
+      this.mFN = paramd;
+      this.mFL = com.a.a.a.sV();
+      paramd = sW();
+      int i = this.mFL.a(this.mFM, paramd);
+      AppMethodBeat.o(41451);
+      return i;
     }
+    AppMethodBeat.o(41451);
     return -1;
   }
   
-  public final void a(ll paramll, int paramInt)
+  public final void a(ma paramma, int paramInt)
   {
+    AppMethodBeat.i(41454);
     String str1;
     String str2;
     Object localObject;
-    if (paramll != null)
+    if (paramma != null)
     {
-      str1 = paramll.bUv.bOT;
+      str1 = paramma.cCa.cwk;
       str2 = e.getUserId();
-      localObject = q.zg();
-      String str3 = u.cMz();
-      str1 = FingerPrintAuth.genPayFPEncrypt(e.dj(com.tencent.mm.sdk.platformtools.ae.getContext()), str2, (String)localObject, String.valueOf(paramInt), str3, str1, Build.MODEL);
-      str2 = FingerPrintAuth.genOpenFPSign(e.dj(com.tencent.mm.sdk.platformtools.ae.getContext()), e.getUserId(), q.zg(), str1);
+      localObject = q.LK();
+      String str3 = w.dSo();
+      str1 = FingerPrintAuth.genPayFPEncrypt(e.dU(ah.getContext()), str2, (String)localObject, String.valueOf(paramInt), str3, str1, Build.MODEL);
+      str2 = FingerPrintAuth.genOpenFPSign(e.dU(ah.getContext()), e.getUserId(), q.LK(), str1);
       if (TextUtils.isEmpty(str1)) {
-        break label184;
-      }
-      y.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_info!");
-      label83:
-      if (TextUtils.isEmpty(str2)) {
         break label194;
       }
-      y.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_sign!");
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_info!");
+      label88:
+      if (TextUtils.isEmpty(str2)) {
+        break label204;
+      }
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_sign!");
     }
     for (;;)
     {
-      y.i("MicroMsg.FingerPrintMgrImpl", "callback FingerPrintAuthEvent onSuccess()");
-      if ((paramll != null) && (paramll.bUv.bUz != null))
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "callback FingerPrintAuthEvent onSuccess()");
+      if ((paramma != null) && (paramma.cCa.cCe != null))
       {
-        localObject = new ll.b();
-        ((ll.b)localObject).bUB = 1;
-        ((ll.b)localObject).errCode = 0;
-        ((ll.b)localObject).bOU = str1;
-        ((ll.b)localObject).bOV = str2;
-        ((ll.b)localObject).bOS = paramInt;
-        paramll.bUw = ((ll.b)localObject);
-        paramll.bUv.bUz.run();
+        localObject = new ma.b();
+        ((ma.b)localObject).cCg = 1;
+        ((ma.b)localObject).errCode = 0;
+        ((ma.b)localObject).cwl = str1;
+        ((ma.b)localObject).cwm = str2;
+        ((ma.b)localObject).cwj = paramInt;
+        paramma.cCb = ((ma.b)localObject);
+        paramma.cCa.cCe.run();
       }
+      AppMethodBeat.o(41454);
       return;
       str1 = "";
       break;
-      label184:
-      y.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_info!");
-      break label83;
       label194:
-      y.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_sign!");
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_info!");
+      break label88;
+      label204:
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_sign!");
     }
   }
   
@@ -175,22 +182,20 @@ public final class d
     return false;
   }
   
-  public final void aSC()
+  public final k byZ()
   {
-    aSM();
-    aSL();
+    AppMethodBeat.i(41456);
+    h localh = new h();
+    AppMethodBeat.o(41456);
+    return localh;
   }
   
-  public final j aSE()
+  public final boolean bza()
   {
-    return new h();
-  }
-  
-  public final boolean aSF()
-  {
-    int[] arrayOfInt = com.c.a.a.oT();
+    AppMethodBeat.i(41443);
+    int[] arrayOfInt = com.a.a.a.sX();
     boolean bool1;
-    label29:
+    label35:
     boolean bool2;
     if (arrayOfInt != null)
     {
@@ -199,208 +204,183 @@ public final class d
         if (1 == arrayOfInt[i])
         {
           bool1 = true;
-          if (q.dyh.dyq != 1) {
-            break label112;
+          if (ac.ery.eqB != 1) {
+            break label122;
           }
           bool2 = true;
-          label41:
-          if ((q.dyj == null) || (q.dyj.dyQ != 11)) {
-            break label117;
+          label47:
+          if ((ac.erA == null) || (!ac.erA.ers)) {
+            break label127;
           }
         }
       }
     }
-    label112:
-    label117:
+    label122:
+    label127:
     for (int i = 1;; i = 0)
     {
-      y.i("MicroMsg.FingerPrintMgrImpl", "hy: is hardware support: %b, is config support : %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "hy: is hardware support: %b, is config support : %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       if ((!bool1) || (!bool2) || (i != 0)) {
-        break label122;
+        break label132;
       }
+      AppMethodBeat.o(41443);
       return true;
       i += 1;
       break;
       bool1 = false;
-      break label29;
+      break label35;
       bool2 = false;
-      break label41;
+      break label47;
     }
-    label122:
+    label132:
+    AppMethodBeat.o(41443);
     return false;
   }
   
-  public final boolean aSG()
+  public final boolean bzb()
   {
-    this.kkY = com.c.a.a.oR();
-    int[] arrayOfInt = oS();
+    AppMethodBeat.i(41444);
+    this.mFL = com.a.a.a.sV();
+    int[] arrayOfInt = sW();
     if ((arrayOfInt == null) || (arrayOfInt.length <= 0)) {
-      y.e("MicroMsg.FingerPrintMgrImpl", "ids is null");
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "ids is null");
     }
-    aSL();
-    return (arrayOfInt != null) && (arrayOfInt.length > 0);
+    bzg();
+    if ((arrayOfInt != null) && (arrayOfInt.length > 0))
+    {
+      AppMethodBeat.o(41444);
+      return true;
+    }
+    AppMethodBeat.o(41444);
+    return false;
   }
   
-  public final void aSH()
+  public final void bzc()
   {
-    y.i("MicroMsg.FingerPrintMgrImpl", "initFP");
-    if (q.dyj.cbb)
+    AppMethodBeat.i(41447);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "initFP");
+    if (ac.erA.cJE)
     {
-      y.i("MicroMsg.FingerPrintMgrImpl", "IFingerPrintMgr is not SoterAuthMgrImp but the device is in white list of SOTER, recheck it!");
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "IFingerPrintMgr is not SoterAuthMgrImp but the device is in white list of SOTER, recheck it!");
+      com.tencent.mm.plugin.report.service.h.qsU.cT(1104, 0);
       b.a(false, false, new d.1(this));
     }
-    if (!aSF())
+    if (!bza())
     {
-      y.e("MicroMsg.FingerPrintMgrImpl", "device is not support fingerprintAuth");
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "device is not support fingerprintAuth");
+      AppMethodBeat.o(41447);
       return;
     }
-    Object localObject = o.bVs().bVR();
-    if ((localObject != null) && (!((com.tencent.mm.plugin.wallet_core.model.ae)localObject).bVH()))
+    Object localObject = com.tencent.mm.plugin.wallet_core.model.t.cTN().cUt();
+    if ((localObject != null) && (!((com.tencent.mm.plugin.wallet_core.model.ak)localObject).cUd()))
     {
-      y.e("MicroMsg.FingerPrintMgrImpl", "isSupportTouchPay is false");
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "isSupportTouchPay is false");
+      AppMethodBeat.o(41447);
       return;
     }
-    localObject = new ah(Looper.myLooper());
-    y.i("MicroMsg.FingerPrintMgrImpl", "device is support fingerprintAuth");
-    com.tencent.mm.sdk.f.e.post(new d.2(this, (ah)localObject), getClass().getName());
+    localObject = new com.tencent.mm.sdk.platformtools.ak(Looper.myLooper());
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "device is support fingerprintAuth");
+    com.tencent.mm.sdk.g.d.post(new d.2(this, (com.tencent.mm.sdk.platformtools.ak)localObject), getClass().getName());
+    AppMethodBeat.o(41447);
   }
   
-  public final boolean aSJ()
+  public final boolean bze()
   {
     return true;
   }
   
-  public final boolean aSK()
+  public final boolean bzf()
   {
-    return e.aSK();
+    AppMethodBeat.i(41450);
+    boolean bool = e.bzf();
+    AppMethodBeat.o(41450);
+    return bool;
   }
   
-  /* Error */
-  public final void aSL()
+  public final void bzg()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aconst_null
-    //   2: putfield 25	com/tencent/mm/plugin/fingerprint/b/d:kla	Lcom/tencent/mm/pluginsdk/wallet/c;
-    //   5: aload_0
-    //   6: getfield 18	com/tencent/mm/plugin/fingerprint/b/d:kkY	Lcom/c/a/a;
-    //   9: ifnull +104 -> 113
-    //   12: aload_0
-    //   13: getfield 18	com/tencent/mm/plugin/fingerprint/b/d:kkY	Lcom/c/a/a;
-    //   16: astore_1
-    //   17: aload_1
-    //   18: getfield 378	com/c/a/a:aUS	Lcom/c/a/a$a;
-    //   21: ifnull +12 -> 33
-    //   24: aload_1
-    //   25: getfield 378	com/c/a/a:aUS	Lcom/c/a/a$a;
-    //   28: bipush 8
-    //   30: invokevirtual 384	com/c/a/a$a:removeMessages	(I)V
-    //   33: aload_1
-    //   34: getfield 388	com/c/a/a:aUQ	Lcom/c/a/c;
-    //   37: aload_1
-    //   38: getfield 392	com/c/a/a:aUR	Lcom/c/a/b;
-    //   41: invokeinterface 398 2 0
-    //   46: aload_1
-    //   47: getfield 388	com/c/a/a:aUQ	Lcom/c/a/c;
-    //   50: invokeinterface 402 1 0
-    //   55: aload_1
-    //   56: getfield 406	com/c/a/a:aUW	Landroid/os/IBinder$DeathRecipient;
-    //   59: iconst_0
-    //   60: invokeinterface 412 3 0
-    //   65: pop
-    //   66: aload_0
-    //   67: aconst_null
-    //   68: putfield 18	com/tencent/mm/plugin/fingerprint/b/d:kkY	Lcom/c/a/a;
-    //   71: return
-    //   72: astore_1
-    //   73: ldc 35
-    //   75: aload_1
-    //   76: ldc 131
-    //   78: iconst_0
-    //   79: anewarray 133	java/lang/Object
-    //   82: invokestatic 137	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   85: ldc 35
-    //   87: new 76	java/lang/StringBuilder
-    //   90: dup
-    //   91: ldc_w 414
-    //   94: invokespecial 81	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   97: aload_1
-    //   98: invokevirtual 138	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   101: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 43	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   110: goto -44 -> 66
-    //   113: ldc 35
-    //   115: ldc_w 416
-    //   118: invokestatic 43	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   121: return
-    //   122: astore_1
-    //   123: goto -57 -> 66
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	126	0	this	d
-    //   16	40	1	locala	com.c.a.a
-    //   72	26	1	localException	Exception
-    //   122	1	1	localRemoteException	android.os.RemoteException
-    // Exception table:
-    //   from	to	target	type
-    //   12	33	72	java/lang/Exception
-    //   33	66	72	java/lang/Exception
-    //   33	66	122	android/os/RemoteException
-  }
-  
-  public final void aSM()
-  {
-    if (this.kkY != null) {}
-    try
-    {
-      this.kkY.abort();
-      return;
+    AppMethodBeat.i(41452);
+    this.mFN = null;
+    if (this.mFL != null) {
+      try
+      {
+        this.mFL.release();
+        this.mFL = null;
+        AppMethodBeat.o(41452);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.FingerPrintMgrImpl", localException, "", new Object[0]);
+          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "auth systemRelease occur exception e:" + localException.getMessage());
+        }
+      }
     }
-    catch (Exception localException)
-    {
-      y.printErrStackTrace("MicroMsg.FingerPrintMgrImpl", localException, "", new Object[0]);
-      y.i("MicroMsg.FingerPrintMgrImpl", "auth systemAbort occur exception e:" + localException.getMessage());
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "systemRelease auth == null");
+    AppMethodBeat.o(41452);
+  }
+  
+  public final void bzh()
+  {
+    AppMethodBeat.i(41453);
+    if (this.mFL != null) {
+      try
+      {
+        this.mFL.abort();
+        AppMethodBeat.o(41453);
+        return;
+      }
+      catch (Exception localException)
+      {
+        com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.FingerPrintMgrImpl", localException, "", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "auth systemAbort occur exception e:" + localException.getMessage());
+      }
     }
+    AppMethodBeat.o(41453);
   }
   
-  public final void aSN()
+  public final void bzi()
   {
-    y.e("MicroMsg.FingerPrintMgrImpl", "hy: param incorrect");
+    AppMethodBeat.i(41455);
+    com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "hy: param incorrect");
+    AppMethodBeat.o(41455);
   }
   
-  public final Map<String, String> aSO()
-  {
-    return null;
-  }
-  
-  public final k aSP()
+  public final Map<String, String> bzj()
   {
     return null;
   }
   
-  public final Map<String, String> aSQ()
+  public final l bzk()
   {
     return null;
   }
   
-  public final boolean aSR()
+  public final Map<String, String> bzl()
+  {
+    return null;
+  }
+  
+  public final boolean bzm()
   {
     return true;
   }
   
-  public final boolean aSS()
+  public final boolean bzn()
   {
     return false;
   }
   
-  public final boolean aST()
+  public final boolean bzo()
   {
     return false;
   }
   
-  public final void dh(Context paramContext)
+  public final void dS(Context paramContext)
   {
+    AppMethodBeat.i(41446);
     if (paramContext != null)
     {
       Intent localIntent = new Intent();
@@ -409,11 +389,42 @@ public final class d
       localIntent.setFlags(268435456);
       paramContext.startActivity(localIntent);
     }
+    AppMethodBeat.o(41446);
+  }
+  
+  public final void dT(Context paramContext)
+  {
+    AppMethodBeat.i(41449);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FingerPrintMgrImpl", "initTASecureWorld");
+    if (!c.byX())
+    {
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "device is not support");
+      AppMethodBeat.o(41449);
+      return;
+    }
+    if (e.dV(paramContext) != 0)
+    {
+      e.hK(false);
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "copyTAFromAssets failed!");
+      AppMethodBeat.o(41449);
+      return;
+    }
+    e.hK(true);
+    com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.FingerPrintMgrImpl", "copyTAFromAssets success!");
+    AppMethodBeat.o(41449);
   }
   
   public final int type()
   {
     return 1;
+  }
+  
+  public final void userCancel()
+  {
+    AppMethodBeat.i(41457);
+    bzh();
+    bzg();
+    AppMethodBeat.o(41457);
   }
 }
 

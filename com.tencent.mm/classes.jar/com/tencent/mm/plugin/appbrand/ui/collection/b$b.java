@@ -1,27 +1,41 @@
 package com.tencent.mm.plugin.appbrand.ui.collection;
 
-import com.tencent.mm.ui.widget.sortlist.DragSortListView.h;
+import a.f.b.j;
+import a.l;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.desktop.a.f;
 
-final class b$b
-  implements DragSortListView.h
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/appbrand/ui/collection/CollectionDragFeatureView$attachDragCallback$1", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/OnDragCallback;", "getDragViewTransX", "", "getDragViewTransY", "getScaleView", "Landroid/view/View;", "floatView", "onDragObject", "", "o", "onPositionChanged", "", "dragObject", "targetPosition", "", "plugin-appbrand-integration_release"})
+public final class b$b
+  implements f
 {
-  b$b(b paramb) {}
-  
-  public final void cg(int paramInt1, int paramInt2)
+  public final float aMW()
   {
-    Object localObject = b.a(this.hgt);
-    if (localObject != null)
-    {
-      localObject = ((c)localObject).mq(paramInt1);
-      if (localObject != null)
-      {
-        c localc = b.a(this.hgt);
-        if (localc != null) {
-          localc.insert(localObject, paramInt2);
-        }
-      }
-    }
+    return 0.0F;
   }
+  
+  public final float aMX()
+  {
+    return 0.0F;
+  }
+  
+  public final Object bo(Object paramObject)
+  {
+    AppMethodBeat.i(135082);
+    if (paramObject == null) {
+      j.ebi();
+    }
+    AppMethodBeat.o(135082);
+    return paramObject;
+  }
+  
+  public final View cA(View paramView)
+  {
+    return null;
+  }
+  
+  public final void e(Object paramObject, int paramInt) {}
 }
 
 

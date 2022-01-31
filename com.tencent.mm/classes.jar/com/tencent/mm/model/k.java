@@ -1,40 +1,54 @@
 package com.tencent.mm.model;
 
-import android.database.Cursor;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.be;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ay.a;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.storage.bi;
+import java.util.LinkedList;
+import java.util.Map;
 
 public final class k
+  extends a
 {
-  public static int Gf()
+  public k(Map<String, String> paramMap, bi parambi)
   {
-    int j;
-    if (!g.DK())
+    super(paramMap, parambi);
+  }
+  
+  public static void Zi()
+  {
+    AppMethodBeat.i(11236);
+    a.a.a("biz_services_mute", new k.1());
+    AppMethodBeat.o(11236);
+  }
+  
+  public final boolean Zh()
+  {
+    AppMethodBeat.i(11235);
+    if (this.values == null)
     {
-      y.w("MicroMsg.BottleConversationLogic", "get Bottle Total Conversation Unread, but has not set uin");
-      j = 0;
-      return j;
+      AppMethodBeat.o(11235);
+      return false;
     }
-    Cursor localCursor = ((j)g.r(j.class)).FB().cuM();
-    if ((localCursor != null) && (localCursor.getCount() > 0)) {
-      localCursor.moveToFirst();
-    }
-    for (int i = localCursor.getInt(0);; i = 0)
+    if (!this.TYPE.equals("biz_services_mute"))
     {
-      j = i;
-      if (localCursor == null) {
-        break;
-      }
-      localCursor.close();
-      return i;
+      AppMethodBeat.o(11235);
+      return false;
     }
+    String str2 = (String)this.values.get(".sysmsg.biz_services_mute.text");
+    String str1 = (String)this.values.get(".sysmsg.biz_services_mute.link.text");
+    str2 = str2 + str1;
+    this.fLn.add(str1);
+    this.fLo.addFirst(Integer.valueOf(str2.length() - str1.length()));
+    this.fLp.add(Integer.valueOf(str2.length()));
+    this.fLl = str2;
+    AppMethodBeat.o(11235);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.k
  * JD-Core Version:    0.7.0.1
  */

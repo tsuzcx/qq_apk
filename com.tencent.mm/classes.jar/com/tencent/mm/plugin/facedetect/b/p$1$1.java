@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.facedetect.b;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class p$1$1
   implements f
@@ -11,16 +12,19 @@ final class p$1$1
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(93);
+    ab.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      y.e("MicroMsg.NetSceneFaceRsaBase", "hy: do scene err in rsa when get cert. clear ticket");
-      p.aNX();
-      this.jNb.jNa.Cl(p.NJ());
-      this.jNb.jNa.dmL.onSceneEnd(paramInt1, paramInt2, "", this.jNb.jNa);
+      ab.e("MicroMsg.NetSceneFaceRsaBase", "hy: do scene err in rsa when get cert. clear ticket");
+      p.bua();
+      this.mhk.mhj.Nm(p.agx());
+      this.mhk.mhj.callback.onSceneEnd(paramInt1, paramInt2, "", this.mhk.mhj);
+      AppMethodBeat.o(93);
       return;
     }
-    this.jNb.jNa.g(p.b(this.jNb.jNa));
+    this.mhk.mhj.f(p.b(this.mhk.mhj));
+    AppMethodBeat.o(93);
   }
 }
 

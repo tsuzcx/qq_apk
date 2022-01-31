@@ -1,84 +1,91 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.k;
 import com.tencent.mm.plugin.fingerprint.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class d$2
   implements Runnable
 {
-  d$2(d paramd, ah paramah) {}
+  d$2(d paramd, ak paramak) {}
   
   public final void run()
   {
-    if (!e.aSZ()) {}
+    AppMethodBeat.i(41439);
+    if (!e.bzu()) {}
     try
     {
-      d.di(ae.getContext());
-      if (e.aTa()) {}
+      this.mFO.dT(ah.getContext());
+      if (e.bzv()) {}
     }
-    catch (Exception localException1)
+    catch (Exception localException)
     {
       try
       {
         ClassLoader localClassLoader = a.class.getClassLoader();
-        if (!TextUtils.isEmpty(k.fe("teec")))
+        if (!TextUtils.isEmpty(k.lq("teec")))
         {
-          y.i("MicroMsg.FingerPrintMgrImpl", "LoadLibrary fingerprintauth.so, find the libteec so");
-          k.b("fingerprintauth", localClassLoader);
-          e.gj(true);
+          ab.i("MicroMsg.FingerPrintMgrImpl", "LoadLibrary fingerprintauth.so, find the libteec so");
+          k.a("fingerprintauth", localClassLoader);
+          e.hL(true);
         }
         for (;;)
         {
-          this.hZR.post(new Runnable()
+          this.mFP.post(new Runnable()
           {
             public final void run()
             {
+              AppMethodBeat.i(41438);
               try
               {
-                d.aSI();
+                d.bzd();
+                AppMethodBeat.o(41438);
                 return;
               }
               catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
               {
-                y.e("MicroMsg.FingerPrintMgrImpl", "can not LoadLibrary fingerprintauth.so e:=" + localUnsatisfiedLinkError.getMessage());
+                ab.e("MicroMsg.FingerPrintMgrImpl", "can not LoadLibrary fingerprintauth.so e:=" + localUnsatisfiedLinkError.getMessage());
+                AppMethodBeat.o(41438);
                 return;
               }
               catch (Exception localException)
               {
-                y.printErrStackTrace("MicroMsg.FingerPrintMgrImpl", localException, "", new Object[0]);
-                y.e("MicroMsg.FingerPrintMgrImpl", "init rsa key is occur exception e=" + localException.getMessage());
+                ab.printErrStackTrace("MicroMsg.FingerPrintMgrImpl", localException, "", new Object[0]);
+                ab.e("MicroMsg.FingerPrintMgrImpl", "init rsa key is occur exception e=" + localException.getMessage());
+                AppMethodBeat.o(41438);
               }
             }
           });
+          AppMethodBeat.o(41439);
           return;
-          localException1 = localException1;
-          y.printErrStackTrace("MicroMsg.FingerPrintMgrImpl", localException1, "", new Object[0]);
-          y.e("MicroMsg.FingerPrintMgrImpl", "init wechat ta secure world is occur exception e=" + localException1.getMessage());
-          e.gi(false);
+          localException = localException;
+          ab.printErrStackTrace("MicroMsg.FingerPrintMgrImpl", localException, "", new Object[0]);
+          ab.e("MicroMsg.FingerPrintMgrImpl", "init wechat ta secure world is occur exception e=" + localException.getMessage());
+          e.hK(false);
           break;
-          y.e("MicroMsg.FingerPrintMgrImpl", "can not LoadLibrary fingerprintauth.so, because can not find the libteec");
-          e.gj(false);
+          ab.e("MicroMsg.FingerPrintMgrImpl", "can not LoadLibrary fingerprintauth.so, because can not find the libteec");
+          e.hL(false);
         }
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
         for (;;)
         {
-          y.e("MicroMsg.FingerPrintMgrImpl", "can not LoadLibrary fingerprintauth.so e:=" + localUnsatisfiedLinkError.getMessage());
-          e.gj(false);
+          ab.e("MicroMsg.FingerPrintMgrImpl", "can not LoadLibrary fingerprintauth.so e:=" + localUnsatisfiedLinkError.getMessage());
+          e.hL(false);
         }
       }
-      catch (Exception localException2)
+      catch (Throwable localThrowable)
       {
         for (;;)
         {
-          y.printErrStackTrace("MicroMsg.FingerPrintMgrImpl", localException2, "", new Object[0]);
-          y.e("MicroMsg.FingerPrintMgrImpl", "init rsa key is occur exception e=" + localException2.getMessage());
-          e.gj(false);
+          ab.printErrStackTrace("MicroMsg.FingerPrintMgrImpl", localThrowable, "", new Object[0]);
+          ab.e("MicroMsg.FingerPrintMgrImpl", "init rsa key is occur exception e=" + localThrowable.getMessage());
+          e.hL(false);
         }
       }
     }

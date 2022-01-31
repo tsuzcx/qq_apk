@@ -1,52 +1,64 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
-import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.luggage.a.e;
+import com.tencent.luggage.sdk.customize.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.f;
+import com.tencent.mm.plugin.appbrand.appstorage.q;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.jsapi.s;
-import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.sdk.platformtools.bk;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.u;
 
 public final class o
-  extends s<p>
+  extends u<h>
 {
   public static final int CTRL_INDEX = 16;
   public static final String NAME = "setStorageSync";
   
-  private String a(p paramp, JSONObject paramJSONObject)
+  private static String a(h paramh, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    String str1 = paramJSONObject.optString("key");
-    String str2 = paramJSONObject.optString("data");
-    String str3 = paramJSONObject.optString("dataType");
-    if (bk.bl(str1)) {
-      return h("fail:key is empty", null);
+    AppMethodBeat.i(102081);
+    long l = System.currentTimeMillis();
+    try
+    {
+      JsApiSetStorageTask localJsApiSetStorageTask = new JsApiSetStorageTask();
+      localJsApiSetStorageTask.appId = paramh.getAppId();
+      localJsApiSetStorageTask.ias = paramInt;
+      localJsApiSetStorageTask.E(paramString1, paramString2, paramString3);
+      if (AppBrandMainProcessService.b(localJsApiSetStorageTask))
+      {
+        paramString3 = localJsApiSetStorageTask.result;
+        return paramString3;
+      }
+      return "fail";
     }
-    if (bk.bl(paramp.mAppId)) {
-      return h("fail:appID is empty", null);
+    finally
+    {
+      q.a(1, 1, r.bB(paramString1, paramString2), 1, System.currentTimeMillis() - l, paramh);
+      AppMethodBeat.o(102081);
     }
-    int j = paramp.getRuntime().aaa().fQq.fOE;
-    int k = str1.length();
-    if (str2 == null) {}
-    for (int i = 0; i + k > j; i = str2.length()) {
-      return h("fail:entry size limit reached", null);
+  }
+  
+  private static String b(h paramh, String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    AppMethodBeat.i(102082);
+    long l = System.currentTimeMillis();
+    try
+    {
+      paramString3 = p.a(((b)e.q(b.class)).cc(paramh.getAppId()).b(paramInt, paramh.getAppId(), paramString1, paramString2, paramString3));
+      return paramString3;
     }
-    paramJSONObject = "fail";
-    JsApiSetStorageTask localJsApiSetStorageTask = new JsApiSetStorageTask();
-    localJsApiSetStorageTask.appId = paramp.mAppId;
-    localJsApiSetStorageTask.B(str1, str2, str3);
-    paramp = paramJSONObject;
-    if (AppBrandMainProcessService.b(localJsApiSetStorageTask)) {
-      paramp = localJsApiSetStorageTask.result;
+    finally
+    {
+      q.a(2, 1, r.bB(paramString1, paramString2), 1, System.currentTimeMillis() - l, paramh);
+      AppMethodBeat.o(102082);
     }
-    return h(paramp, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.o
  * JD-Core Version:    0.7.0.1
  */

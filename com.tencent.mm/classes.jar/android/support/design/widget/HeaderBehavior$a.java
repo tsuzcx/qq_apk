@@ -1,35 +1,35 @@
 package android.support.design.widget;
 
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.widget.OverScroller;
 
 final class HeaderBehavior$a
   implements Runnable
 {
-  private final CoordinatorLayout jc;
-  private final V jd;
+  private final CoordinatorLayout jT;
+  private final V jU;
   
   HeaderBehavior$a(CoordinatorLayout paramCoordinatorLayout, V paramV)
   {
-    this.jc = paramV;
+    this.jT = paramV;
     Object localObject;
-    this.jd = localObject;
+    this.jU = localObject;
   }
   
   public final void run()
   {
-    if ((this.jd != null) && (this.je.iY != null))
+    if ((this.jU != null) && (this.jV.jR != null))
     {
-      if (this.je.iY.computeScrollOffset())
+      if (this.jV.jR.computeScrollOffset())
       {
-        this.je.c(this.jc, this.jd, this.je.iY.getCurrY());
-        q.b(this.jd, this);
+        this.jV.c(this.jT, this.jU, this.jV.jR.getCurrY());
+        t.b(this.jU, this);
       }
     }
     else {
       return;
     }
-    this.je.a(this.jc, this.jd);
+    this.jV.a(this.jT, this.jU);
   }
 }
 

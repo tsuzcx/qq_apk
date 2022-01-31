@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.honey_pay;
 
-import com.tencent.mm.ck.c;
+import com.tencent.mm.cm.c;
 import com.tencent.mm.plugin.honey_pay.model.b;
 
 final class a$2

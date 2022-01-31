@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.readerapp.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class b$2
@@ -11,8 +12,10 @@ final class b$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    h.nFQ.f(15413, new Object[] { Integer.valueOf(4), "", "" });
-    b.o(this.noB.context, false);
+    AppMethodBeat.i(76786);
+    h.qsU.e(15413, new Object[] { Integer.valueOf(4), "", "" });
+    b.u(this.pTP.context, false);
+    AppMethodBeat.o(76786);
   }
 }
 

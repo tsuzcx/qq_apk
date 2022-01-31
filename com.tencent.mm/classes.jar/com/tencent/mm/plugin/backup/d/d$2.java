@@ -1,18 +1,36 @@
 package com.tencent.mm.plugin.backup.d;
 
-import com.tencent.mm.plugin.backup.g.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.backup.b.b.b;
+import com.tencent.mm.plugin.backup.g.b;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class d$2
-  implements b.c
+  implements b.b
 {
   d$2(d paramd) {}
   
-  public final void auf()
+  public final void aSH()
   {
-    y.i("MicroMsg.BackupMoveServer", "stopCallback ");
-    com.tencent.mm.plugin.backup.g.b.auM();
-    b.atS().atp();
+    AppMethodBeat.i(153492);
+    b.ru(21);
+    AppMethodBeat.o(153492);
+  }
+  
+  public final void aSI()
+  {
+    AppMethodBeat.i(153493);
+    this.jCb.cancel(false);
+    AppMethodBeat.o(153493);
+  }
+  
+  public final void rf(int paramInt)
+  {
+    AppMethodBeat.i(153491);
+    if (d.c(this.jCb) != null) {
+      al.d(new d.2.1(this, paramInt));
+    }
+    AppMethodBeat.o(153491);
   }
 }
 

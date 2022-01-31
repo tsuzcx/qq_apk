@@ -1,19 +1,22 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import com.tencent.mm.ui.base.o;
 
 final class i$4
-  implements am.a
+  implements ap.a
 {
   i$4(i parami) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    i locali = this.sgB;
-    if (locali.sgx != null) {
-      locali.sgx.dismiss();
+    AppMethodBeat.i(27959);
+    i locali = this.vYT;
+    if (locali.vYP != null) {
+      locali.vYP.dismiss();
     }
+    AppMethodBeat.o(27959);
     return false;
   }
 }

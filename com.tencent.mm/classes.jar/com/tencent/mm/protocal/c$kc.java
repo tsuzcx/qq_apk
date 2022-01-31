@@ -5,7 +5,7 @@ public final class c$kc
 {
   public c$kc()
   {
-    super("uploadImage", "uploadImage", 105, true);
+    super("startRecord", "startRecord", 96, false);
   }
 }
 

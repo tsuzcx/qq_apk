@@ -2,7 +2,7 @@ package com.tencent.mm.ui.transmit;
 
 abstract interface e$a
 {
-  public abstract void t(boolean paramBoolean, String paramString);
+  public abstract void B(boolean paramBoolean, String paramString);
 }
 
 

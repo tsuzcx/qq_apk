@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.welab.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WelabAppInfoUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,14 +11,16 @@ final class WelabAppInfoUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.rEL.XM();
-    this.rEL.finish();
+    AppMethodBeat.i(80599);
+    this.vvu.hideVKB();
+    this.vvu.finish();
+    AppMethodBeat.o(80599);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.ui.WelabAppInfoUI.1
  * JD-Core Version:    0.7.0.1
  */

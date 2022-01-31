@@ -1,10 +1,22 @@
 package com.github.henryye.nativeiv.bitmap;
 
-public abstract interface a<T>
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public final class a<ConfType>
 {
-  public abstract boolean a(b paramb);
+  public boolean auG;
+  public ConfType auH;
+  public long auI;
+  public int height;
+  public int width;
   
-  public abstract IBitmap<T> km();
+  public final String toString()
+  {
+    AppMethodBeat.i(115757);
+    String str = "DumpInfo{width=" + this.width + ", height=" + this.height + ", isNative=" + this.auG + ", config=" + this.auH + ", decodeUsingInMs=" + this.auI + '}';
+    AppMethodBeat.o(115757);
+    return str;
+  }
 }
 
 

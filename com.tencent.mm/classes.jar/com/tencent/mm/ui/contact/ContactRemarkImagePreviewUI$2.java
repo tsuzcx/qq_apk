@@ -2,6 +2,7 @@ package com.tencent.mm.ui.contact;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactRemarkImagePreviewUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class ContactRemarkImagePreviewUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    ContactRemarkImagePreviewUI.a(this.vKp, false);
+    AppMethodBeat.i(33616);
+    ContactRemarkImagePreviewUI.a(this.AbP, false);
+    AppMethodBeat.o(33616);
     return false;
   }
 }

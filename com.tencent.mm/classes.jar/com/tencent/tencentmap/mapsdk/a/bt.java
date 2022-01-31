@@ -1,12 +1,16 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-public class bt
-  extends bo
+import android.location.Location;
+
+abstract class bt
 {
-  public bt(int paramInt)
-  {
-    super(paramInt);
-  }
+  abstract void a();
+  
+  abstract void b();
+  
+  abstract boolean c();
+  
+  abstract Location d();
 }
 
 

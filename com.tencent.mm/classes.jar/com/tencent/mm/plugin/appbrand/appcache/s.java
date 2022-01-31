@@ -1,46 +1,45 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appcache.a.a;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class s
+  implements z.b
 {
-  private final String appId;
-  private final String fCQ;
-  private volatile String fCR;
+  private static final ConcurrentHashMap<String, Boolean> gUC;
   
-  public s(String paramString)
+  static
   {
-    this.appId = paramString;
-    this.fCQ = null;
+    AppMethodBeat.i(129390);
+    gUC = new ConcurrentHashMap();
+    AppMethodBeat.o(129390);
   }
   
-  public s(String paramString1, String paramString2)
+  public static void yp(String paramString)
   {
-    this.appId = paramString1;
-    if ((bk.bl(paramString2)) || ("__APP__".equals(paramString2)))
+    AppMethodBeat.i(129388);
+    if (bo.isNullOrNil(paramString))
     {
-      this.fCQ = paramString2;
+      AppMethodBeat.o(129388);
       return;
     }
-    this.fCQ = a.qR(paramString2);
+    gUC.put(paramString, Boolean.TRUE);
+    AppMethodBeat.o(129388);
   }
   
-  public final String toString()
+  public final z.a a(a parama)
   {
-    StringBuilder localStringBuilder;
-    if (bk.bl(this.fCR))
+    AppMethodBeat.i(129387);
+    if ((aq.class == parama.getClass()) || (ak.class == parama.getClass()) || (al.class == parama.getClass()) || (bd.class == parama.getClass()))
     {
-      localStringBuilder = new StringBuilder().append(this.appId);
-      if (!bk.bl(this.fCQ)) {
-        break label55;
-      }
+      parama = new s.a(parama, (byte)0);
+      AppMethodBeat.o(129387);
+      return parama;
     }
-    label55:
-    for (String str = "";; str = "$" + this.fCQ)
-    {
-      this.fCR = str;
-      return this.fCR;
-    }
+    AppMethodBeat.o(129387);
+    return null;
   }
 }
 

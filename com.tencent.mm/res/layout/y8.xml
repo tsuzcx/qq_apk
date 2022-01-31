@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/bmb" style="@style/lu">
-        <com.tencent.mm.ui.base.MaskLayout android:id="@id/bmc" android:layout_width="@dimen/lc" android:layout_height="@dimen/lc" android:layout_marginLeft="@dimen/mq" android:layout_marginRight="@dimen/mq" android:layout_centerVertical="true">
-            <ImageView android:id="@id/kl" android:layout_width="@dimen/la" android:layout_height="@dimen/la" android:layout_centerInParent="true" />
-        </com.tencent.mm.ui.base.MaskLayout>
-        <RelativeLayout android:id="@id/bmd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/mq" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-            <Button android:id="@id/bme" android:focusable="false" android:focusableInTouchMode="false" android:text="@string/br2" style="@style/n2" />
-            <Button android:id="@id/bmf" android:focusable="false" android:focusableInTouchMode="false" android:text="@string/brh" style="@style/mw" />
-            <TextView android:id="@id/bmg" android:visibility="gone" android:text="@string/dc" style="@style/kr" />
-            <TextView android:id="@id/bmh" android:background="@null" android:visibility="gone" android:text="@string/da" style="@style/gn" />
-        </RelativeLayout>
-        <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/bmd" android:layout_toRightOf="@id/bmc" android:layout_centerHorizontal="true">
-            <TextView android:id="@id/bmi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick}" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/ks" />
-            <TextView android:id="@id/bmj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{lastmsg}" android:singleLine="true" android:layout_below="@id/bmi" android:layout_alignParentLeft="true" style="@style/kr" />
-        </RelativeLayout>
-    </RelativeLayout>
-</RelativeLayout>
+    <com.tencent.mm.plugin.gif.MMAnimateView android:layout_gravity="center_horizontal" android:id="@id/bpl" android:layout_width="173.0dip" android:layout_height="253.0dip" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/ok" android:layout_gravity="center_horizontal" android:id="@id/bpm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/bng" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/on" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/bpn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/bnh" />
+    <Button android:textSize="18.0dip" android:layout_gravity="center_horizontal" android:id="@id/bpo" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_marginLeft="27.0dip" android:layout_marginTop="53.0dip" android:layout_marginRight="27.0dip" android:text="@string/blv" android:layout_centerHorizontal="true" style="@style/nq" />
+</merge>

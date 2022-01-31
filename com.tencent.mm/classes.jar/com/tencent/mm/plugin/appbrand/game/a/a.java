@@ -1,38 +1,18 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameCliCfg;", "", "()V", "get", "T", "key", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "defaultValue", "log", "", "(Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;Ljava/lang/Object;Z)Ljava/lang/Object;", "plugin-appbrand-integration_release"})
 public final class a
-  extends com.tencent.mm.plugin.fts.a.a
 {
-  protected final boolean BA()
-  {
-    return !cT(-108, 1);
-  }
+  public static final a hsc;
   
-  protected final void Bz()
+  static
   {
-    if (BA()) {
-      A(-108L, 1L);
-    }
-  }
-  
-  public final String getName()
-  {
-    return "FTS5MiniGameStorage";
-  }
-  
-  public final int getPriority()
-  {
-    return 8;
-  }
-  
-  protected final String getTableName()
-  {
-    return "MiniGame";
-  }
-  
-  public final int getType()
-  {
-    return 8;
+    AppMethodBeat.i(134603);
+    hsc = new a();
+    AppMethodBeat.o(134603);
   }
 }
 

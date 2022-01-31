@@ -3,10 +3,10 @@ package com.tencent.tinker.a.c;
 public final class b
   implements Cloneable
 {
-  private static final int[] aUJ = new int[0];
-  public int[] Ew = new int[10];
+  private static final int[] bgZ = new int[0];
+  public int[] Bqu = new int[this.Fk.length];
+  public int[] Fk = new int[10];
   public int mSize = 0;
-  public int[] wTQ = new int[this.Ew.length];
   
   public b()
   {
@@ -15,7 +15,15 @@ public final class b
   
   private b(byte paramByte) {}
   
-  private static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  private static int ad(int paramInt)
+  {
+    if (paramInt <= 4) {
+      return 8;
+    }
+    return (paramInt >> 1) + paramInt;
+  }
+  
+  private static int b(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     int i = paramInt1 - 1;
     paramInt1 = 0;
@@ -40,14 +48,6 @@ public final class b
     return i;
   }
   
-  private static int aY(int paramInt)
-  {
-    if (paramInt <= 4) {
-      return 8;
-    }
-    return (paramInt >> 1) + paramInt;
-  }
-  
   private static int[] c(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt1 > paramArrayOfInt.length) {
@@ -59,14 +59,14 @@ public final class b
       paramArrayOfInt[paramInt2] = paramInt3;
       return paramArrayOfInt;
     }
-    int[] arrayOfInt = new int[aY(paramInt1)];
+    int[] arrayOfInt = new int[ad(paramInt1)];
     System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt2);
     arrayOfInt[paramInt2] = paramInt3;
     System.arraycopy(paramArrayOfInt, paramInt2, arrayOfInt, paramInt2 + 1, paramArrayOfInt.length - paramInt2);
     return arrayOfInt;
   }
   
-  private b cQE()
+  private b dWu()
   {
     try
     {
@@ -77,8 +77,8 @@ public final class b
     {
       try
       {
-        localb.Ew = ((int[])this.Ew.clone());
-        localb.wTQ = ((int[])this.wTQ.clone());
+        localb.Fk = ((int[])this.Fk.clone());
+        localb.Bqu = ((int[])this.Bqu.clone());
         return localb;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
@@ -87,7 +87,7 @@ public final class b
     }
   }
   
-  public static int[] f(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  public static int[] h(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     if (paramInt1 > paramArrayOfInt.length) {
       throw new IllegalArgumentException("Bad currentSize, originalSize: " + paramArrayOfInt.length + " currentSize: " + paramInt1);
@@ -95,7 +95,7 @@ public final class b
     int[] arrayOfInt = paramArrayOfInt;
     if (paramInt1 + 1 > paramArrayOfInt.length)
     {
-      arrayOfInt = new int[aY(paramInt1)];
+      arrayOfInt = new int[ad(paramInt1)];
       System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt1);
     }
     arrayOfInt[paramInt1] = paramInt2;
@@ -104,20 +104,20 @@ public final class b
   
   public final int indexOfKey(int paramInt)
   {
-    return a(this.Ew, this.mSize, paramInt);
+    return b(this.Fk, this.mSize, paramInt);
   }
   
   public final void put(int paramInt1, int paramInt2)
   {
-    int i = a(this.Ew, this.mSize, paramInt1);
+    int i = b(this.Fk, this.mSize, paramInt1);
     if (i >= 0)
     {
-      this.wTQ[i] = paramInt2;
+      this.Bqu[i] = paramInt2;
       return;
     }
     i ^= 0xFFFFFFFF;
-    this.Ew = c(this.Ew, this.mSize, i, paramInt1);
-    this.wTQ = c(this.wTQ, this.mSize, i, paramInt2);
+    this.Fk = c(this.Fk, this.mSize, i, paramInt1);
+    this.Bqu = c(this.Bqu, this.mSize, i, paramInt2);
     this.mSize += 1;
   }
   
@@ -134,9 +134,9 @@ public final class b
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      localStringBuilder.append(this.Ew[i]);
+      localStringBuilder.append(this.Fk[i]);
       localStringBuilder.append('=');
-      localStringBuilder.append(this.wTQ[i]);
+      localStringBuilder.append(this.Bqu[i]);
       i += 1;
     }
     localStringBuilder.append('}');
@@ -145,7 +145,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tinker.a.c.b
  * JD-Core Version:    0.7.0.1
  */

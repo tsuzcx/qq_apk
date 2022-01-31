@@ -3,288 +3,328 @@ package com.tencent.mm.sdk.d;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public final class d$c
   extends Handler
 {
-  private static final Object ujr = new Object();
-  private boolean gXR = false;
-  private d.c.b ujA = new d.c.b(this, (byte)0);
-  private HashMap<c, d.c.c> ujB = new HashMap();
-  private c ujC;
-  private c ujD;
-  private ArrayList<Message> ujE = new ArrayList();
-  private d ujf;
-  private boolean ujq = false;
-  private Message ujs;
-  private d.b ujt = new d.b((byte)0);
-  private boolean uju;
-  private d.c.c[] ujv;
-  private int ujw = -1;
-  private d.c.c[] ujx;
-  private int ujy;
-  private d.c.a ujz = new d.c.a(this, (byte)0);
+  private static final Object yrr;
+  private boolean iGk;
+  private d.c.b yrA;
+  private HashMap<c, d.c.c> yrB;
+  private c yrC;
+  private c yrD;
+  private ArrayList<Message> yrE;
+  private d yrf;
+  private boolean yrq;
+  private Message yrs;
+  private d.b yrt;
+  private boolean yru;
+  private d.c.c[] yrv;
+  private int yrw;
+  private d.c.c[] yrx;
+  private int yry;
+  private d.c.a yrz;
+  
+  static
+  {
+    AppMethodBeat.i(52472);
+    yrr = new Object();
+    AppMethodBeat.o(52472);
+  }
   
   private d$c(Looper paramLooper, d paramd)
   {
     super(paramLooper);
-    this.ujf = paramd;
-    c(this.ujz);
-    c(this.ujA);
+    AppMethodBeat.i(52464);
+    this.iGk = false;
+    this.yrq = false;
+    this.yrt = new d.b((byte)0);
+    this.yrw = -1;
+    this.yrz = new d.c.a(this, (byte)0);
+    this.yrA = new d.c.b(this, (byte)0);
+    this.yrB = new HashMap();
+    this.yrE = new ArrayList();
+    this.yrf = paramd;
+    c(this.yrz);
+    c(this.yrA);
+    AppMethodBeat.o(52464);
   }
   
-  private final void Fh(int paramInt)
+  private final void Ni(int paramInt)
   {
-    while (paramInt <= this.ujw)
+    AppMethodBeat.i(52460);
+    while (paramInt <= this.yrw)
     {
-      if (this.ujq) {
-        new StringBuilder("invokeEnterMethods: ").append(this.ujv[paramInt].ujG.getName());
+      if (this.yrq) {
+        this.yrf.log("invokeEnterMethods: " + this.yrv[paramInt].yrG.getName());
       }
-      this.ujv[paramInt].ujG.enter();
-      this.ujv[paramInt].axD = true;
+      this.yrv[paramInt].yrG.enter();
+      this.yrv[paramInt].active = true;
       paramInt += 1;
     }
+    AppMethodBeat.o(52460);
   }
   
   private void a(c paramc, Message paramMessage)
   {
-    Object localObject = this.ujv[this.ujw].ujG;
+    AppMethodBeat.i(52457);
+    Object localObject = this.yrv[this.yrw].yrG;
     int i;
-    if ((this.ujf.e(this.ujs)) && (paramMessage.obj != ujr))
+    if ((this.yrf.i(this.yrs)) && (paramMessage.obj != yrr))
     {
       i = 1;
-      if (!this.ujt.csm()) {
-        break label225;
+      if (!this.yrt.duk()) {
+        break label255;
       }
-      if (this.ujD != null) {
-        this.ujt.b(this.ujf, this.ujs, "", paramc, (a)localObject, this.ujD);
+      if (this.yrD != null) {
+        this.yrt.b(this.yrf, this.yrs, "", paramc, (a)localObject, this.yrD);
       }
     }
     for (;;)
     {
-      paramc = this.ujD;
+      paramc = this.yrD;
       if (paramc == null) {
-        break label370;
+        break label405;
       }
       for (;;)
       {
-        this.ujy = 0;
-        paramMessage = (d.c.c)this.ujB.get(paramc);
+        if (this.yrq) {
+          this.yrf.log("handleMessage: new destination call exit/enter");
+        }
+        this.yry = 0;
+        paramMessage = (d.c.c)this.yrB.get(paramc);
         do
         {
-          localObject = this.ujx;
-          i = this.ujy;
-          this.ujy = (i + 1);
+          localObject = this.yrx;
+          i = this.yry;
+          this.yry = (i + 1);
           localObject[i] = paramMessage;
-          localObject = paramMessage.ujH;
+          localObject = paramMessage.yrH;
           if (localObject == null) {
             break;
           }
           paramMessage = (Message)localObject;
-        } while (!((d.c.c)localObject).axD);
-        if (this.ujq) {
-          new StringBuilder("setupTempStateStackWithStatesToEnter: X mTempStateStackCount=").append(this.ujy).append(",curStateInfo: ").append(localObject);
+        } while (!((d.c.c)localObject).active);
+        if (this.yrq) {
+          this.yrf.log("setupTempStateStackWithStatesToEnter: X mTempStateStackCount=" + this.yry + ",curStateInfo: " + localObject);
         }
         a((d.c.c)localObject);
-        Fh(cso());
-        csn();
-        if (paramc == this.ujD) {
+        Ni(dum());
+        dul();
+        if (paramc == this.yrD) {
           break;
         }
-        paramc = this.ujD;
+        paramc = this.yrD;
       }
       i = 0;
       break;
-      label225:
+      label255:
       if (i != 0) {
-        this.ujt.b(this.ujf, this.ujs, "", paramc, (a)localObject, this.ujD);
+        this.yrt.b(this.yrf, this.yrs, "", paramc, (a)localObject, this.yrD);
       }
     }
-    this.ujD = null;
-    label370:
+    this.yrD = null;
+    label405:
     for (;;)
     {
-      if ((paramc != null) && (paramc == this.ujA))
+      if ((paramc != null) && (paramc == this.yrA))
       {
-        this.ujf.abD();
-        if (this.ujf.uje != null)
+        this.yrf.avu();
+        if (this.yrf.yre != null)
         {
           getLooper().quit();
-          this.ujf.uje = null;
+          this.yrf.yre = null;
         }
-        this.ujf.ujd = null;
-        this.ujf = null;
-        this.ujs = null;
-        this.ujt.cleanup();
-        this.ujv = null;
-        this.ujx = null;
-        this.ujB.clear();
-        this.ujC = null;
-        this.ujD = null;
-        this.ujE.clear();
-        this.gXR = true;
+        this.yrf.yrd = null;
+        this.yrf = null;
+        this.yrs = null;
+        this.yrt.cleanup();
+        this.yrv = null;
+        this.yrx = null;
+        this.yrB.clear();
+        this.yrC = null;
+        this.yrD = null;
+        this.yrE.clear();
+        this.iGk = true;
       }
+      AppMethodBeat.o(52457);
       return;
     }
   }
   
   private final void a(d.c.c paramc)
   {
-    while ((this.ujw >= 0) && (this.ujv[this.ujw] != paramc))
+    AppMethodBeat.i(52459);
+    while ((this.yrw >= 0) && (this.yrv[this.yrw] != paramc))
     {
-      c localc = this.ujv[this.ujw].ujG;
-      if (this.ujq) {
-        new StringBuilder("invokeExitMethods: ").append(localc.getName());
+      c localc = this.yrv[this.yrw].yrG;
+      if (this.yrq) {
+        this.yrf.log("invokeExitMethods: " + localc.getName());
       }
       localc.exit();
-      this.ujv[this.ujw].axD = false;
-      this.ujw -= 1;
+      this.yrv[this.yrw].active = false;
+      this.yrw -= 1;
     }
+    AppMethodBeat.o(52459);
   }
   
   private final void b(a parama)
   {
-    this.ujD = ((c)parama);
-    if (this.ujq) {
-      new StringBuilder("transitionTo: destState=").append(this.ujD.getName());
+    AppMethodBeat.i(52465);
+    this.yrD = ((c)parama);
+    if (this.yrq) {
+      this.yrf.log("transitionTo: destState=" + this.yrD.getName());
     }
+    AppMethodBeat.o(52465);
   }
   
   private final d.c.c c(c paramc)
   {
-    if (this.ujq) {
-      new StringBuilder("addStateInternal: E state=").append(paramc.getName()).append(",parent=");
+    AppMethodBeat.i(52463);
+    if (this.yrq) {
+      this.yrf.log("addStateInternal: E state=" + paramc.getName() + ",parent=");
     }
-    d.c.c localc2 = (d.c.c)this.ujB.get(paramc);
+    d.c.c localc2 = (d.c.c)this.yrB.get(paramc);
     d.c.c localc1 = localc2;
     if (localc2 == null)
     {
       localc1 = new d.c.c(this, (byte)0);
-      this.ujB.put(paramc, localc1);
+      this.yrB.put(paramc, localc1);
     }
-    if ((localc1.ujH != null) && (localc1.ujH != null)) {
-      throw new RuntimeException("state already added");
+    if ((localc1.yrH != null) && (localc1.yrH != null))
+    {
+      paramc = new RuntimeException("state already added");
+      AppMethodBeat.o(52463);
+      throw paramc;
     }
-    localc1.ujG = paramc;
-    localc1.ujH = null;
-    localc1.axD = false;
-    if (this.ujq) {
-      new StringBuilder("addStateInternal: X stateInfo: ").append(localc1);
+    localc1.yrG = paramc;
+    localc1.yrH = null;
+    localc1.active = false;
+    if (this.yrq) {
+      this.yrf.log("addStateInternal: X stateInfo: ".concat(String.valueOf(localc1)));
     }
+    AppMethodBeat.o(52463);
     return localc1;
   }
   
-  private final void csn()
+  private final void dul()
   {
-    int i = this.ujE.size() - 1;
+    AppMethodBeat.i(52461);
+    int i = this.yrE.size() - 1;
     while (i >= 0)
     {
-      Message localMessage = (Message)this.ujE.get(i);
-      if (this.ujq) {
-        new StringBuilder("moveDeferredMessageAtFrontOfQueue; what=").append(localMessage.what);
+      Message localMessage = (Message)this.yrE.get(i);
+      if (this.yrq) {
+        this.yrf.log("moveDeferredMessageAtFrontOfQueue; what=" + localMessage.what);
       }
       sendMessageAtFrontOfQueue(localMessage);
       i -= 1;
     }
-    this.ujE.clear();
+    this.yrE.clear();
+    AppMethodBeat.o(52461);
   }
   
-  private final int cso()
+  private final int dum()
   {
-    int k = this.ujw + 1;
-    int i = this.ujy - 1;
+    AppMethodBeat.i(52462);
+    int k = this.yrw + 1;
+    int i = this.yry - 1;
     int j = k;
     while (i >= 0)
     {
-      if (this.ujq) {
-        new StringBuilder("moveTempStackToStateStack: i=").append(i).append(",j=").append(j);
+      if (this.yrq) {
+        this.yrf.log("moveTempStackToStateStack: i=" + i + ",j=" + j);
       }
-      this.ujv[j] = this.ujx[i];
+      this.yrv[j] = this.yrx[i];
       j += 1;
       i -= 1;
     }
-    this.ujw = (j - 1);
-    if (this.ujq) {
-      new StringBuilder("moveTempStackToStateStack: X mStateStackTop=").append(this.ujw).append(",startingIndex=").append(k).append(",Top=").append(this.ujv[this.ujw].ujG.getName());
+    this.yrw = (j - 1);
+    if (this.yrq) {
+      this.yrf.log("moveTempStackToStateStack: X mStateStackTop=" + this.yrw + ",startingIndex=" + k + ",Top=" + this.yrv[this.yrw].yrG.getName());
     }
+    AppMethodBeat.o(52462);
     return k;
   }
   
-  private final c o(Message paramMessage)
+  private final c u(Message paramMessage)
   {
-    Object localObject2 = this.ujv[this.ujw];
-    if (this.ujq) {
-      new StringBuilder("processMsg: ").append(((d.c.c)localObject2).ujG.getName());
+    AppMethodBeat.i(52458);
+    Object localObject2 = this.yrv[this.yrw];
+    if (this.yrq) {
+      this.yrf.log("processMsg: " + ((d.c.c)localObject2).yrG.getName());
     }
-    int i;
-    Object localObject1;
-    if ((paramMessage.what == -1) && (paramMessage.obj == ujr))
-    {
-      i = 1;
-      localObject1 = localObject2;
-      if (i == 0) {
-        break label126;
-      }
-      b(this.ujA);
+    Object localObject1 = localObject2;
+    if (v(paramMessage)) {
+      b(this.yrA);
     }
-    for (;;)
+    while (localObject2 != null)
     {
-      if (localObject2 == null) {
-        break label162;
-      }
-      return ((d.c.c)localObject2).ujG;
-      i = 0;
-      break;
-      label126:
+      paramMessage = ((d.c.c)localObject2).yrG;
+      AppMethodBeat.o(52458);
+      return paramMessage;
       do
       {
         localObject1 = localObject2;
-        if (this.ujq)
+        if (this.yrq)
         {
-          new StringBuilder("processMsg: ").append(((d.c.c)localObject2).ujG.getName());
+          this.yrf.log("processMsg: " + ((d.c.c)localObject2).yrG.getName());
           localObject1 = localObject2;
         }
         localObject2 = localObject1;
-        if (localObject1.ujG.g(paramMessage)) {
+        if (localObject1.yrG.k(paramMessage)) {
           break;
         }
-        localObject2 = localObject1.ujH;
+        localObject2 = localObject1.yrH;
       } while (localObject2 != null);
-      this.ujf.f(paramMessage);
+      this.yrf.j(paramMessage);
     }
-    label162:
+    AppMethodBeat.o(52458);
     return null;
+  }
+  
+  private static boolean v(Message paramMessage)
+  {
+    return (paramMessage.what == -1) && (paramMessage.obj == yrr);
   }
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(52456);
     c localc;
-    if (!this.gXR)
+    if (!this.iGk)
     {
-      if (this.ujq) {
-        new StringBuilder("handleMessage: E msg.what=").append(paramMessage.what);
+      if (this.yrq) {
+        this.yrf.log("handleMessage: E msg.what=" + paramMessage.what);
       }
-      this.ujs = paramMessage;
+      this.yrs = paramMessage;
       localc = null;
-      if (!this.uju) {
-        break label59;
+      if (!this.yru) {
+        break label104;
       }
-      localc = o(paramMessage);
+      localc = u(paramMessage);
     }
     for (;;)
     {
       a(localc, paramMessage);
+      if ((this.yrq) && (this.yrf != null)) {
+        this.yrf.log("handleMessage: X");
+      }
+      AppMethodBeat.o(52456);
       return;
-      label59:
-      if ((this.uju) || (this.ujs.what != -2) || (this.ujs.obj != ujr)) {
+      label104:
+      if ((this.yru) || (this.yrs.what != -2) || (this.yrs.obj != yrr)) {
         break;
       }
-      this.uju = true;
-      Fh(0);
+      this.yru = true;
+      Ni(0);
     }
-    throw new RuntimeException("StateMachine.handleMessage: The start method not called, received msg: " + paramMessage);
+    paramMessage = new RuntimeException("StateMachine.handleMessage: The start method not called, received msg: ".concat(String.valueOf(paramMessage)));
+    AppMethodBeat.o(52456);
+    throw paramMessage;
   }
 }
 

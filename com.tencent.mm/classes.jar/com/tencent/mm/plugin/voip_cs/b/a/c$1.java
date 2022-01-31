@@ -1,28 +1,33 @@
 package com.tencent.mm.plugin.voip_cs.b.a;
 
-import com.tencent.mm.f.b.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.c.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$1
   implements c.a
 {
   c$1(c paramc) {}
   
-  public final void aU(int paramInt1, int paramInt2)
+  public final void bS(int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.cs.VoipCsAudioManager", "OnPcmRecListener onRecError %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(135361);
+    ab.i("MicroMsg.cs.VoipCsAudioManager", "OnPcmRecListener onRecError %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(135361);
   }
   
-  public final void r(byte[] paramArrayOfByte, int paramInt)
+  public final void s(byte[] paramArrayOfByte, int paramInt)
   {
+    AppMethodBeat.i(135360);
     if (paramInt <= 0)
     {
-      y.e("MicroMsg.cs.VoipCsAudioManager", "pcm data len <= 0");
+      ab.e("MicroMsg.cs.VoipCsAudioManager", "pcm data len <= 0");
+      AppMethodBeat.o(135360);
       return;
     }
-    y.d("MicroMsg.cs.VoipCsAudioManager", "onRecPcmDataReady,pcm data len:" + paramArrayOfByte.length);
-    paramInt = com.tencent.mm.plugin.voip_cs.b.c.bSO().qeL.recordCallback(paramArrayOfByte, paramInt, 200);
-    y.d("MicroMsg.cs.VoipCsAudioManager", "recordCallback,ret:" + paramInt);
+    ab.d("MicroMsg.cs.VoipCsAudioManager", "onRecPcmDataReady,pcm data len:" + paramArrayOfByte.length);
+    ab.d("MicroMsg.cs.VoipCsAudioManager", "recordCallback,ret:".concat(String.valueOf(com.tencent.mm.plugin.voip_cs.b.c.cQm().tLy.recordCallback(paramArrayOfByte, paramInt, 200))));
+    AppMethodBeat.o(135360);
   }
 }
 

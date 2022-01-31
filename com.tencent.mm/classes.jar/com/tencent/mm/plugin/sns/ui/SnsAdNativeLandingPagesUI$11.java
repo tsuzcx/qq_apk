@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.ViewTreeObserver;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.a.b;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.a.b.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.a.b.b;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ae;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SnsAdNativeLandingPagesUI$11
-  implements b.a
+  extends BroadcastReceiver
 {
   SnsAdNativeLandingPagesUI$11(SnsAdNativeLandingPagesUI paramSnsAdNativeLandingPagesUI) {}
   
-  public final void onResume()
+  public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    y.i("MicroMsg.SnsAdNativeLandingPagesUI", "on Resume");
-  }
-  
-  public final void p(b paramb)
-  {
-    if (paramb.oJw != null) {}
-    for (paramb = paramb.oJw.heQ;; paramb = null)
+    AppMethodBeat.i(154491);
+    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
     {
-      if (paramb != null) {
-        paramb.getViewTreeObserver().addOnPreDrawListener(new SnsAdNativeLandingPagesUI.11.1(this, paramb));
-      }
+      ab.d("MicroMsg.SnsAdNativeLandingPagesUI", "android.intent.action.SCREEN_OFF");
+      AppMethodBeat.o(154491);
       return;
     }
+    if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
+    {
+      ab.d("MicroMsg.SnsAdNativeLandingPagesUI", "android.intent.action.SCREEN_ON");
+      ae.ai(this.rMW);
+    }
+    AppMethodBeat.o(154491);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI.11
  * JD-Core Version:    0.7.0.1
  */

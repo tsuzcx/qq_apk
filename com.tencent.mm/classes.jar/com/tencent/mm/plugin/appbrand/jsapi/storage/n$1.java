@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
 
 final class n$1
-  implements Runnable
+  implements n.a
 {
-  n$1(n paramn, c paramc, int paramInt, JsApiSetStorageTask paramJsApiSetStorageTask) {}
+  n$1(n paramn) {}
   
-  public final void run()
+  public final void a(String paramString, h paramh, int paramInt)
   {
-    this.ggE.C(this.dIS, this.gCh.h(this.gCg.result, null));
-    this.gCg.ahD();
+    AppMethodBeat.i(102072);
+    paramh.h(paramInt, this.iaE.j(paramString, null));
+    AppMethodBeat.o(102072);
   }
 }
 

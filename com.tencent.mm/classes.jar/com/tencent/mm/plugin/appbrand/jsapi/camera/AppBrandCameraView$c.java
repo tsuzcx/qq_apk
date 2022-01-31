@@ -1,84 +1,110 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.camera.a.c;
 import com.tencent.mm.plugin.appbrand.jsapi.camera.a.c.a;
 import com.tencent.mm.plugin.appbrand.jsapi.camera.a.d;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 final class AppBrandCameraView$c
   implements AppBrandCameraView.a, c.a
 {
-  private int duration = this.goW;
-  private c goU;
-  AtomicBoolean goV = new AtomicBoolean(false);
-  private int goW = 200;
+  private int duration;
+  private c hIU;
+  AtomicBoolean hIV;
+  private int hIW;
   
-  private AppBrandCameraView$c(AppBrandCameraView paramAppBrandCameraView) {}
-  
-  public final void aiF()
+  private AppBrandCameraView$c(AppBrandCameraView paramAppBrandCameraView)
   {
-    y.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, takePicture err");
+    AppMethodBeat.i(130928);
+    this.hIV = new AtomicBoolean(false);
+    this.hIW = 200;
+    this.duration = this.hIW;
+    AppMethodBeat.o(130928);
   }
   
-  public final void aiN()
+  public final void aCA()
   {
-    y.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, safeStopRecord err");
+    AppMethodBeat.i(130932);
+    ab.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, takePicture err");
+    AppMethodBeat.o(130932);
+  }
+  
+  public final void aCJ()
+  {
+    AppMethodBeat.i(130933);
+    ab.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, startRecord err");
+    AppMethodBeat.o(130933);
+  }
+  
+  public final void aCK()
+  {
+    AppMethodBeat.i(130934);
+    ab.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, safeStopRecord err");
+    AppMethodBeat.o(130934);
   }
   
   public final void b(int paramInt, String paramString, byte[] paramArrayOfByte)
   {
-    if (this.goV.compareAndSet(false, true))
+    AppMethodBeat.i(130931);
+    if (this.hIV.compareAndSet(false, true))
     {
-      ai.l(new AppBrandCameraView.c.1(this), this.duration);
-      y.d("MicroMsg.AppBrandCameraView", "resultText:%s, resultType:%d", new Object[] { paramString, Integer.valueOf(paramInt) });
+      al.p(new AppBrandCameraView.c.1(this), this.duration);
+      ab.d("MicroMsg.AppBrandCameraView", "resultText:%s, resultType:%d", new Object[] { paramString, Integer.valueOf(paramInt) });
     }
     switch (paramInt)
     {
     default: 
-      y.w("MicroMsg.AppBrandCameraView", "resultType:%d is not support, ignore");
+      ab.w("MicroMsg.AppBrandCameraView", "resultType:%d is not support, ignore");
+      AppMethodBeat.o(130931);
       return;
     case 1: 
-      f.a(AppBrandCameraView.b(this.goS), this.goS.getCameraId(), "qrcode", paramString, paramArrayOfByte);
+      h.a(AppBrandCameraView.b(this.hIQ), this.hIQ.getCameraId(), "qrcode", paramString, paramArrayOfByte);
+      AppMethodBeat.o(130931);
       return;
     }
-    f.a(AppBrandCameraView.b(this.goS), this.goS.getCameraId(), "barcode", paramString, paramArrayOfByte);
+    h.a(AppBrandCameraView.b(this.hIQ), this.hIQ.getCameraId(), "barcode", paramString, paramArrayOfByte);
+    AppMethodBeat.o(130931);
   }
   
   public final void init()
   {
-    this.goU = new d();
-    this.goU.init();
-    this.goU.gpx = this;
-    AppBrandCameraView.a(this.goS, 4);
-    if (AppBrandCameraView.v(this.goS) > 0) {
-      this.duration = (1000 / AppBrandCameraView.v(this.goS));
+    AppMethodBeat.i(130929);
+    this.hIU = new d();
+    this.hIU.init();
+    this.hIU.hJB = this;
+    AppBrandCameraView.a(this.hIQ, 4);
+    if (AppBrandCameraView.y(this.hIQ) > 0) {
+      this.duration = (1000 / AppBrandCameraView.y(this.hIQ));
     }
+    AppMethodBeat.o(130929);
   }
   
-  public final void n(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void q(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.goV.get()) {
-      y.d("MicroMsg.AppBrandCameraView", "[onFrameData] isScanPause, return");
-    }
-    while ((this.goU == null) || (AppBrandCameraView.e(this.goS) == null)) {
+    AppMethodBeat.i(130930);
+    if (this.hIV.get())
+    {
+      ab.d("MicroMsg.AppBrandCameraView", "[onFrameData] isScanPause, return");
+      AppMethodBeat.o(130930);
       return;
     }
-    this.goU.a(paramArrayOfByte, paramInt1, paramInt2, AppBrandCameraView.w(this.goS), AppBrandCameraView.e(this.goS).getCameraRotation());
+    if ((this.hIU != null) && (AppBrandCameraView.f(this.hIQ) != null)) {
+      this.hIU.a(paramArrayOfByte, paramInt1, paramInt2, AppBrandCameraView.z(this.hIQ), AppBrandCameraView.f(this.hIQ).getCameraRotation());
+    }
+    AppMethodBeat.o(130930);
   }
   
   public final void release()
   {
-    if (this.goU != null) {
-      this.goU.release();
+    AppMethodBeat.i(130935);
+    if (this.hIU != null) {
+      this.hIU.release();
     }
-  }
-  
-  public final void startRecord()
-  {
-    y.e("MicroMsg.AppBrandCameraView", "ScanCodeMode, startRecord err");
+    AppMethodBeat.o(130935);
   }
 }
 

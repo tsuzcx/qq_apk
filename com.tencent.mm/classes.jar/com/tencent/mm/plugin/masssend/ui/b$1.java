@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.masssend.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class b$1
-  implements am.a
+  implements ap.a
 {
   b$1(b paramb) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    this.mbb.maV.Ek(this.mbb.maW.getMaxAmplitude());
+    AppMethodBeat.i(22767);
+    this.oBD.oBw.Mj(this.oBD.oBx.getMaxAmplitude());
+    AppMethodBeat.o(22767);
     return true;
   }
 }

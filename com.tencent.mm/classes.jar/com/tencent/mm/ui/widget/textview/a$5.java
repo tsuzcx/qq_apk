@@ -1,32 +1,26 @@
 package com.tencent.mm.ui.widget.textview;
 
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewTreeObserver;
-import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ak;
 
 final class a$5
-  implements View.OnAttachStateChangeListener
+  implements Runnable
 {
   a$5(a parama) {}
   
-  public final void onViewAttachedToWindow(View paramView) {}
-  
-  public final void onViewDetachedFromWindow(View paramView)
+  public final void run()
   {
-    paramView = this.wsy;
-    paramView.lh.getViewTreeObserver().removeOnScrollChangedListener(paramView.wsj);
-    paramView.lh.getViewTreeObserver().removeOnPreDrawListener(paramView.qS);
-    paramView.cKJ();
-    paramView.cKI();
-    paramView.wsk = null;
-    paramView.wsl = null;
-    paramView.wsp = null;
+    AppMethodBeat.i(113121);
+    ak.d("SelectableTextHelper", "dismiss all runnable.", new Object[0]);
+    if (this.ANs.ANq != null) {
+      this.ANs.ANq.dLu();
+    }
+    AppMethodBeat.o(113121);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.textview.a.5
  * JD-Core Version:    0.7.0.1
  */

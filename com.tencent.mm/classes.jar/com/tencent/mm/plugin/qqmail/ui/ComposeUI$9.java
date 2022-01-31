@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ComposeUI$9
   implements DialogInterface.OnClickListener
@@ -11,7 +12,9 @@ final class ComposeUI$9
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.ngJ.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.i(68177);
+    this.pLX.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.o(68177);
   }
 }
 

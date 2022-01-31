@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.expt.roomexpt;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class RoomExptDebugUI$1$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class RoomExptDebugUI$1$1
   
   public final void run()
   {
-    RoomExptDebugUI.a(this.jIX.jIW);
+    AppMethodBeat.i(73589);
+    RoomExptDebugUI.a(this.mcZ.mcY);
+    AppMethodBeat.o(73589);
   }
 }
 

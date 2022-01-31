@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.luckymoney.sns;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.luckymoney.b.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.x;
 import com.tencent.mm.plugin.report.service.h;
 
 final class SnsLuckyMoneyPrepareUI$8
@@ -12,16 +13,11 @@ final class SnsLuckyMoneyPrepareUI$8
   
   public final void onClick(View paramView)
   {
-    h.nFQ.f(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(SnsLuckyMoneyPrepareUI.d(this.lTI)), Integer.valueOf(6) });
-    o.a(this.lTI, SnsLuckyMoneyPrepareUI.a(this.lTI), SnsLuckyMoneyPrepareUI.m(this.lTI), false);
-    SnsLuckyMoneyPrepareUI.l(this.lTI).postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        SnsLuckyMoneyPrepareUI.l(SnsLuckyMoneyPrepareUI.8.this.lTI).setVisibility(8);
-        SnsLuckyMoneyPrepareUI.n(SnsLuckyMoneyPrepareUI.8.this.lTI);
-      }
-    }, 100L);
+    AppMethodBeat.i(42515);
+    h.qsU.e(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(SnsLuckyMoneyPrepareUI.d(this.oqN)), Integer.valueOf(6) });
+    x.a(this.oqN, SnsLuckyMoneyPrepareUI.a(this.oqN), SnsLuckyMoneyPrepareUI.m(this.oqN), false);
+    SnsLuckyMoneyPrepareUI.l(this.oqN).postDelayed(new SnsLuckyMoneyPrepareUI.8.1(this), 100L);
+    AppMethodBeat.o(42515);
   }
 }
 

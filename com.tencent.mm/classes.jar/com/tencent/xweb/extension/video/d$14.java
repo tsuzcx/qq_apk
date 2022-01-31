@@ -5,6 +5,7 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
 
 final class d$14
@@ -14,7 +15,10 @@ final class d$14
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!d.c(this.xiF)) {
+    AppMethodBeat.i(84589);
+    if (!d.c(this.BFR))
+    {
+      AppMethodBeat.o(84589);
       return false;
     }
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -22,32 +26,36 @@ final class d$14
     }
     for (;;)
     {
-      if ((paramMotionEvent.getAction() == 1) && (d.d(this.xiF) == 3))
+      if ((paramMotionEvent.getAction() == 1) && (d.d(this.BFR) == 3))
       {
-        double d = d.a(this.xiF) * d.e(this.xiF) / 100.0D;
-        this.xiF.e(d, true);
-        d.b(this.xiF).evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_Seek(%f);", new Object[] { Double.valueOf(d) }), new d.14.1(this));
-        d.f(this.xiF);
+        double d = d.a(this.BFR) * d.e(this.BFR) / 100.0D;
+        this.BFR.f(d, true);
+        d.b(this.BFR).evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_Seek(%f);", new Object[] { Double.valueOf(d) }), new d.14.1(this));
+        d.f(this.BFR);
       }
-      if (d.g(this.xiF) != 1) {
+      if (d.g(this.BFR) != 1) {
         break;
       }
-      return d.h(this.xiF).onTouchEvent(paramMotionEvent);
+      bool = d.h(this.BFR).onTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(84589);
+      return bool;
       if (paramMotionEvent.getPointerCount() == 2)
       {
-        d.a(this.xiF, 1);
+        d.a(this.BFR, 1);
         continue;
-        d.a(this.xiF, 0);
+        d.a(this.BFR, 0);
         continue;
-        d.a(this.xiF, 0);
+        d.a(this.BFR, 0);
       }
     }
-    return d.i(this.xiF).onTouchEvent(paramMotionEvent);
+    boolean bool = d.i(this.BFR).onTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(84589);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.xweb.extension.video.d.14
  * JD-Core Version:    0.7.0.1
  */

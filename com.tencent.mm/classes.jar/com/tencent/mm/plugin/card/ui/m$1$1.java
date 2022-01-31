@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class m$1$1
   implements DialogInterface.OnClickListener
@@ -13,10 +14,12 @@ final class m$1$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(88682);
     paramDialogInterface = new Intent("android.intent.action.DIAL");
     paramDialogInterface.setFlags(268435456);
-    paramDialogInterface.setData(Uri.parse("tel:" + this.ixq));
-    m.a(this.ixr.ixp).startActivity(paramDialogInterface);
+    paramDialogInterface.setData(Uri.parse("tel:" + this.kyt));
+    m.a(this.kyu.kys).startActivity(paramDialogInterface);
+    AppMethodBeat.o(88682);
   }
 }
 

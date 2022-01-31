@@ -1,45 +1,60 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 final class b$a
 {
-  List<String> nUB = new ArrayList();
+  List<String> qIG;
   
-  final void LX(String paramString)
+  private b$a()
   {
-    this.nUB = new ArrayList();
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    for (;;)
-    {
-      return;
-      paramString = paramString.split(";");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramString[i];
-        this.nUB.add(localObject);
-        i += 1;
-      }
-    }
+    AppMethodBeat.i(79908);
+    this.qIG = new ArrayList();
+    AppMethodBeat.o(79908);
   }
   
-  final String cof()
+  final void Yy(String paramString)
   {
-    if ((this.nUB == null) || (this.nUB.size() == 0)) {
+    AppMethodBeat.i(79910);
+    this.qIG = new ArrayList();
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(79910);
+      return;
+    }
+    paramString = paramString.split(";");
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = paramString[i];
+      this.qIG.add(localObject);
+      i += 1;
+    }
+    AppMethodBeat.o(79910);
+  }
+  
+  final String dpu()
+  {
+    AppMethodBeat.i(79909);
+    if ((this.qIG == null) || (this.qIG.size() == 0))
+    {
+      AppMethodBeat.o(79909);
       return "";
     }
-    StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.nUB.iterator();
+    Object localObject = new StringBuffer();
+    Iterator localIterator = this.qIG.iterator();
     while (localIterator.hasNext())
     {
-      localStringBuffer.append((String)localIterator.next());
-      localStringBuffer.append(";");
+      ((StringBuffer)localObject).append((String)localIterator.next());
+      ((StringBuffer)localObject).append(";");
     }
-    return localStringBuffer.toString();
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(79909);
+    return localObject;
   }
 }
 

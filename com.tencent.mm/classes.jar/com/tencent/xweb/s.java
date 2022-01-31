@@ -1,101 +1,41 @@
 package com.tencent.xweb;
 
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.xweb.c.j;
-import com.tencent.xweb.c.j.a;
-import java.util.HashMap;
-import org.xwalk.core.Log;
-import org.xwalk.core.XWalkEnvironment;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.InputStream;
+import java.util.Map;
 
 public final class s
 {
-  public static void clearAllWebViewCache(Context paramContext, boolean paramBoolean)
+  public boolean BDU = false;
+  public String mEncoding;
+  public InputStream mInputStream;
+  public String mMimeType;
+  public String mReasonPhrase;
+  public Map<String, String> mResponseHeaders;
+  public int mStatusCode = 200;
+  
+  public s(String paramString1, String paramString2, int paramInt, String paramString3, Map<String, String> paramMap, InputStream paramInputStream)
   {
-    Context localContext = paramContext;
-    if (paramContext == null) {}
-    while (localContext != null)
-    {
-      try
-      {
-        localContext = XWalkEnvironment.getApplicationContext();
-      }
-      catch (Exception paramContext)
-      {
-        Log.e("XWebSdk", "clearAllWebViewCache failed: " + paramContext.getMessage());
-        return;
-      }
-      j.c(WebView.getCurWebType()).clearAllWebViewCache(localContext, paramBoolean);
-      return;
-    }
+    this(paramString1, paramString2, paramInputStream);
+    AppMethodBeat.i(3833);
+    this.mStatusCode = paramInt;
+    this.mReasonPhrase = paramString3;
+    this.mResponseHeaders = paramMap;
+    this.BDU = true;
+    AppMethodBeat.o(3833);
   }
   
-  public static s.a q(String paramString, Object paramObject)
+  public s(String paramString1, String paramString2, InputStream paramInputStream)
   {
-    int i = 0;
-    s.a locala = new s.a();
-    if ((!(paramObject instanceof Bundle)) && ((paramObject instanceof HashMap))) {}
-    for (HashMap localHashMap = (HashMap)paramObject;; localHashMap = null)
-    {
-      switch (paramString.hashCode())
-      {
-      default: 
-        i = -1;
-        switch (i)
-        {
-        default: 
-          label62:
-          locala.errorCode = -1;
-        }
-        break;
-      }
-      label200:
-      for (;;)
-      {
-        return locala;
-        if (!paramString.equals("SET_INIT_ARG")) {
-          break;
-        }
-        break label62;
-        if (!paramString.equals("BASE_CONTEXT_CHANGED")) {
-          break;
-        }
-        i = 1;
-        break label62;
-        XWalkEnvironment.setXWebInitArgs(localHashMap);
-        return locala;
-        locala.errorCode = -2;
-        if ((paramObject instanceof Context)) {}
-        for (paramString = (Context)paramObject;; paramString = null) {
-          for (;;)
-          {
-            if (paramString == null) {
-              break label200;
-            }
-            try
-            {
-              paramObject = j.c(WebView.d.xho);
-              if (paramObject == null) {
-                break;
-              }
-              paramObject.excute("BASE_CONTEXT_CHANGED", new Object[] { paramString });
-              locala.errorCode = 0;
-              return locala;
-            }
-            catch (Exception paramString)
-            {
-              Log.e("XWebSdk", "excute context changed failed");
-              return locala;
-            }
-          }
-        }
-      }
-    }
+    this.mMimeType = paramString1;
+    this.mEncoding = paramString2;
+    this.mInputStream = paramInputStream;
+    this.BDU = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.s
  * JD-Core Version:    0.7.0.1
  */

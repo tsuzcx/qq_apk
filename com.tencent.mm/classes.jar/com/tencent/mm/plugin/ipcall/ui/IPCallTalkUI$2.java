@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class IPCallTalkUI$2
   implements DialogInterface.OnClickListener
@@ -11,9 +12,11 @@ final class IPCallTalkUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(22361);
     paramDialogInterface.dismiss();
-    this.lzn.finish();
-    this.lzn.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    this.nWz.finish();
+    this.nWz.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.o(22361);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.voip_cs.b.a;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.TimerTask;
 
 final class b$7
@@ -10,7 +11,9 @@ final class b$7
   
   public final void run()
   {
-    b.p(this.qeI).post(new b.7.1(this));
+    AppMethodBeat.i(135325);
+    b.p(this.tLv).post(new b.7.1(this));
+    AppMethodBeat.o(135325);
   }
 }
 

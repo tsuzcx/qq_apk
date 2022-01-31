@@ -1,30 +1,33 @@
 package com.tencent.mm.network;
 
 import android.os.RemoteException;
-import com.tencent.mm.sdk.platformtools.bf;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bj;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class t$a$1
-  extends bf<Object>
+  extends bj<Object>
 {
   t$a$1(t.a parama, r paramr, int paramInt1, int paramInt2, String paramString)
   {
     super(1000L, null, (byte)0);
   }
   
-  protected final Object run()
+  public final Object run()
   {
+    AppMethodBeat.i(58565);
     try
     {
-      t.a(t.a.a(this.eOt), this.eOr, this.eOs);
+      t.a(t.a.a(this.geh), this.gef, this.geg);
+      AppMethodBeat.o(58565);
       return null;
     }
     catch (RemoteException localRemoteException)
     {
       for (;;)
       {
-        y.e("MicroMsg.AutoAuth", "exception:%s", new Object[] { bk.j(localRemoteException) });
+        ab.e("MicroMsg.MMAutoAuth", "exception:%s", new Object[] { bo.l(localRemoteException) });
       }
     }
   }

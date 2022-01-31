@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 public abstract interface f
 {
-  public abstract void aJ(float paramFloat);
+  public abstract void bm(float paramFloat);
   
-  public abstract void c(float paramFloat, int paramInt);
+  public abstract void f(float paramFloat, int paramInt);
 }
 
 

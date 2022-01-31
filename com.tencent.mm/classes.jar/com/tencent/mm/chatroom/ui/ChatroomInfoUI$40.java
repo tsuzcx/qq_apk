@@ -6,8 +6,8 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.preference.MMPreference;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ChatroomInfoUI$40
   implements Animation.AnimationListener
@@ -17,15 +17,17 @@ final class ChatroomInfoUI$40
   public final void onAnimationEnd(Animation paramAnimation)
   {
     boolean bool = true;
-    paramAnimation = (ViewGroup)this.dod.getWindow().findViewById(16908290);
+    AppMethodBeat.i(104009);
+    paramAnimation = (ViewGroup)this.efA.getWindow().findViewById(16908290);
     if (paramAnimation == null) {}
     for (;;)
     {
-      y.i("MicroMsg.ChatroomInfoUI", "remove cover view now. contentView is null [%b]", new Object[] { Boolean.valueOf(bool) });
+      ab.i("MicroMsg.ChatroomInfoUI", "remove cover view now. contentView is null [%b]", new Object[] { Boolean.valueOf(bool) });
       if (paramAnimation != null) {
-        paramAnimation.removeView(this.doA);
+        paramAnimation.removeView(this.efW);
       }
-      this.dod.lwE.setTranscriptMode(ChatroomInfoUI.C(this.dod));
+      this.efA.getListView().setTranscriptMode(ChatroomInfoUI.C(this.efA));
+      AppMethodBeat.o(104009);
       return;
       bool = false;
     }
@@ -37,7 +39,7 @@ final class ChatroomInfoUI$40
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ChatroomInfoUI.40
  * JD-Core Version:    0.7.0.1
  */

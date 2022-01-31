@@ -1,14 +1,18 @@
 package com.tencent.smtt.sdk;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build.VERSION;
 import android.os.Message;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
 import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
 import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.utils.TbsLog;
 
 public class WebChromeClient
 {
@@ -38,14 +42,18 @@ public class WebChromeClient
   
   public void onExceededDatabaseQuota(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, WebStorage.QuotaUpdater paramQuotaUpdater)
   {
+    AppMethodBeat.i(64689);
     paramQuotaUpdater.updateQuota(paramLong2);
+    AppMethodBeat.o(64689);
   }
   
   public void onGeolocationPermissionsHidePrompt() {}
   
   public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
+    AppMethodBeat.i(64690);
     paramGeolocationPermissionsCallback.invoke(paramString, true, true);
+    AppMethodBeat.o(64690);
   }
   
   public void onHideCustomView() {}
@@ -79,7 +87,9 @@ public class WebChromeClient
   
   public void onReachedMaxAppCacheSize(long paramLong1, long paramLong2, WebStorage.QuotaUpdater paramQuotaUpdater)
   {
+    AppMethodBeat.i(64691);
     paramQuotaUpdater.updateQuota(paramLong2);
+    AppMethodBeat.o(64691);
   }
   
   public void onReceivedIcon(WebView paramWebView, Bitmap paramBitmap) {}
@@ -94,14 +104,57 @@ public class WebChromeClient
   
   public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback) {}
   
-  public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
+  public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, FileChooserParams paramFileChooserParams)
   {
     return false;
   }
   
   public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
+    AppMethodBeat.i(64692);
     paramValueCallback.onReceiveValue(null);
+    AppMethodBeat.o(64692);
+  }
+  
+  public static abstract class FileChooserParams
+  {
+    public static final int MODE_OPEN = 0;
+    public static final int MODE_OPEN_FOLDER = 2;
+    public static final int MODE_OPEN_MULTIPLE = 1;
+    public static final int MODE_SAVE = 3;
+    
+    public static Uri[] parseResult(int paramInt, Intent paramIntent)
+    {
+      try
+      {
+        bz localbz = bz.a();
+        if ((localbz != null) && (localbz.b())) {
+          return localbz.c().a(paramInt, paramIntent);
+        }
+        if (Build.VERSION.SDK_INT >= 21)
+        {
+          paramIntent = android.webkit.WebChromeClient.FileChooserParams.parseResult(paramInt, paramIntent);
+          return paramIntent;
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        TbsLog.i("WebChromeClient", "parseResult:" + paramIntent.toString());
+      }
+      return null;
+    }
+    
+    public abstract Intent createIntent();
+    
+    public abstract String[] getAcceptTypes();
+    
+    public abstract String getFilenameHint();
+    
+    public abstract int getMode();
+    
+    public abstract CharSequence getTitle();
+    
+    public abstract boolean isCaptureEnabled();
   }
 }
 

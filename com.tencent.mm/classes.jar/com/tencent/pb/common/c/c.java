@@ -5,11 +5,11 @@ import com.tencent.wecall.talkroom.model.f;
 
 public final class c
 {
+  private static int Bhc = 2;
+  private static boolean Bhd = false;
   public static int level = 0;
-  private static int wJC = 2;
-  private static boolean wJD = false;
   
-  private static String D(Object[] paramArrayOfObject)
+  private static String K(Object[] paramArrayOfObject)
   {
     if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
       return "";
@@ -39,56 +39,52 @@ public final class c
     return localStringBuffer.toString();
   }
   
-  private static void D(int paramInt, String paramString1, String paramString2)
+  private static void L(int paramInt, String paramString1, String paramString2)
   {
-    e locale = f.cRT();
+    e locale = f.dXO();
     if (locale != null) {
-      locale.o(paramInt, "MTSDK" + paramString1, paramString2);
+      locale.y(paramInt, "MTSDK".concat(String.valueOf(paramString1)), paramString2);
     }
-  }
-  
-  public static void cOi()
-  {
-    wJC = 0;
-    wJD = true;
   }
   
   public static void d(String paramString, Object... paramVarArgs)
   {
-    if ((!wJD) || (wJC > 1)) {}
+    if ((!Bhd) || (Bhc > 1)) {}
     while (paramString == null) {
       return;
     }
-    paramVarArgs = D(paramVarArgs);
-    D(1, paramString, " " + paramVarArgs);
+    L(1, paramString, " ".concat(String.valueOf(K(paramVarArgs))));
+  }
+  
+  public static void dTU()
+  {
+    Bhc = 0;
+    Bhd = true;
   }
   
   public static void e(String paramString, Object... paramVarArgs)
   {
-    if ((!wJD) || (wJC > 4)) {
+    if ((!Bhd) || (Bhc > 4)) {
       return;
     }
-    paramVarArgs = D(paramVarArgs);
-    D(4, paramString, " " + paramVarArgs);
+    L(4, paramString, " ".concat(String.valueOf(K(paramVarArgs))));
+  }
+  
+  public static void i(String paramString, Object... paramVarArgs)
+  {
+    if ((!Bhd) || (Bhc > 2)) {
+      return;
+    }
+    L(2, paramString, " ".concat(String.valueOf(K(paramVarArgs))));
   }
   
   public static void w(String paramString, Object... paramVarArgs)
   {
-    if ((!wJD) || (wJC > 2)) {
-      return;
-    }
-    paramVarArgs = D(paramVarArgs);
-    D(2, paramString, " " + paramVarArgs);
-  }
-  
-  public static void x(String paramString, Object... paramVarArgs)
-  {
-    if ((!wJD) || (wJC > 3)) {}
+    if ((!Bhd) || (Bhc > 3)) {}
     while (paramString == null) {
       return;
     }
-    paramVarArgs = D(paramVarArgs);
-    D(3, paramString, " " + paramVarArgs);
+    L(3, paramString, " ".concat(String.valueOf(K(paramVarArgs))));
   }
 }
 

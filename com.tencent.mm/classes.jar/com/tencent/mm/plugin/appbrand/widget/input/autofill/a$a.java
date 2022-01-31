@@ -3,58 +3,59 @@ package com.tencent.mm.plugin.appbrand.widget.input.autofill;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.luggage.l.a.a.c;
-import com.tencent.luggage.l.a.a.d;
-import com.tencent.mm.plugin.appbrand.widget.input.aa;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.input.ab;
 import com.tencent.mm.plugin.appbrand.widget.input.d.a.b;
 
 final class a$a
   implements View.OnClickListener
 {
-  View aie;
-  View eYp;
-  TextView hwG;
-  TextView hwH;
-  View hwI;
-  a.b hwJ;
+  View aku;
+  View gqg;
+  TextView joQ;
+  TextView joR;
+  View joS;
+  a.b joT;
   
   a$a(a parama, View paramView)
   {
-    this.aie = paramView;
-    this.hwG = ((TextView)paramView.findViewById(a.d.title));
-    this.hwH = ((TextView)paramView.findViewById(a.d.content));
-    this.hwI = paramView.findViewById(a.d.close);
-    this.eYp = paramView.findViewById(a.d.divider);
-    paramView.setBackgroundResource(a.c.popup_menu_selector);
+    AppMethodBeat.i(123873);
+    this.aku = paramView;
+    this.joQ = ((TextView)paramView.findViewById(2131820680));
+    this.joR = ((TextView)paramView.findViewById(2131820946));
+    this.joS = paramView.findViewById(2131821244);
+    this.gqg = paramView.findViewById(2131821148);
+    paramView.setBackgroundResource(2130839962);
     paramView.setOnClickListener(this);
-    this.hwI.setOnClickListener(this);
+    this.joS.setOnClickListener(this);
+    AppMethodBeat.o(123873);
   }
   
   public final void onClick(View paramView)
   {
-    if (this.hwJ != null)
-    {
-      if (paramView.getId() != a.d.close) {
-        break label61;
+    AppMethodBeat.i(123874);
+    if (this.joT != null) {
+      if (paramView.getId() == 2131821244)
+      {
+        this.joP.remove(this.joT);
+        if (a.a(this.joP) != null)
+        {
+          a.a(this.joP).a(this.joT.id, h.a.jpz);
+          AppMethodBeat.o(123874);
+        }
       }
-      this.hwF.remove(this.hwJ);
-      if (a.a(this.hwF) != null) {
-        a.a(this.hwF).a(this.hwJ.id, h.a.hxp);
+      else if ((paramView == this.aku) && (a.a(this.joP) != null))
+      {
+        if (this.joT != null) {
+          a.a(this.joP).a(this.joT.id, h.a.jpA);
+        }
+        a.c(this.joP);
+        if (a.d(this.joP) != null) {
+          a.d(this.joP).joU.getView().clearFocus();
+        }
       }
     }
-    label61:
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramView != this.aie) || (a.a(this.hwF) == null));
-      if (this.hwJ != null) {
-        a.a(this.hwF).a(this.hwJ.id, h.a.hxq);
-      }
-      a.c(this.hwF);
-    } while (a.d(this.hwF) == null);
-    a.d(this.hwF).hwK.getView().clearFocus();
+    AppMethodBeat.o(123874);
   }
 }
 

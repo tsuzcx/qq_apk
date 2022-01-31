@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.ext.b;
 
-import com.tencent.mm.protocal.c.bnk;
-import com.tencent.mm.protocal.c.bnm;
+import com.tencent.mm.protocal.protobuf.bxf;
+import com.tencent.mm.protocal.protobuf.bxh;
 
 final class c$a
 {
-  bnm jJM = null;
-  bnk jJN = null;
+  bxh mdQ = null;
+  bxf mdR = null;
   String userName = "";
   
-  public c$a(c paramc, String paramString, bnm parambnm, bnk parambnk)
+  public c$a(c paramc, String paramString, bxh parambxh, bxf parambxf)
   {
     this.userName = paramString;
-    this.jJM = parambnm;
-    this.jJN = parambnk;
+    this.mdQ = parambxh;
+    this.mdR = parambxf;
   }
 }
 

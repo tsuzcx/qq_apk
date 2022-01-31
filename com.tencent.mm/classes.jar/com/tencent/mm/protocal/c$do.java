@@ -5,12 +5,12 @@ public final class c$do
 {
   public c$do()
   {
-    super("jumpToBizProfile", "jump_to_biz_profile", 61, true);
+    super("hideMenuItems", "hideMenuItems", 85, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.c.do
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.record.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.record.b.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.record.b.n;
 
 final class RecordMsgFileUI$7
   implements View.OnClickListener
@@ -12,15 +13,18 @@ final class RecordMsgFileUI$7
   
   public final void onClick(View paramView)
   {
-    paramView = h.c(RecordMsgFileUI.a(this.nue), RecordMsgFileUI.b(this.nue));
+    AppMethodBeat.i(24259);
+    paramView = n.c(RecordMsgFileUI.a(this.pZN), RecordMsgFileUI.b(this.pZN));
     new Intent().setAction("android.intent.action.VIEW");
-    if (4 == RecordMsgFileUI.c(this.nue))
+    if (4 == RecordMsgFileUI.c(this.pZN))
     {
-      RecordMsgFileUI.d(this.nue);
-      RecordMsgFileUI.e(this.nue);
+      RecordMsgFileUI.d(this.pZN);
+      RecordMsgFileUI.e(this.pZN);
+      AppMethodBeat.o(24259);
       return;
     }
-    RecordMsgFileUI.a(this.nue, paramView);
+    RecordMsgFileUI.a(this.pZN, paramView);
+    AppMethodBeat.o(24259);
   }
 }
 

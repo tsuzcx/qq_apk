@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,23 +13,20 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.friend.a.d;
-import com.tencent.mm.plugin.account.friend.a.e;
-import com.tencent.mm.plugin.account.friend.a.h;
 import com.tencent.mm.plugin.account.friend.a.aa;
-import com.tencent.mm.protocal.c.ayw;
-import com.tencent.mm.protocal.c.ayz;
-import com.tencent.mm.protocal.c.zn;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aee;
+import com.tencent.mm.protocal.protobuf.bfz;
+import com.tencent.mm.protocal.protobuf.bgc;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 import java.util.LinkedList;
 import junit.framework.Assert;
 
@@ -36,224 +34,273 @@ public class RecommendFriendUI
   extends MMActivity
   implements f
 {
-  private ProgressDialog dnm = null;
-  private LinkedList<zn> fhA = new LinkedList();
-  private boolean fhB;
-  private b fit;
-  private ListView fiu;
-  private TextView fiv;
-  private LinkedList<ayz> fiw = new LinkedList();
-  private int fix = -1;
-  private boolean fiy = false;
+  private ProgressDialog eeN;
+  private b gAa;
+  private ListView gAb;
+  private TextView gAc;
+  private LinkedList<bgc> gAd;
+  private int gAe;
+  private boolean gAf;
+  private LinkedList<aee> gzh;
+  private boolean gzi;
   
-  private void Xr()
+  public RecommendFriendUI()
   {
-    this.fiv.setVisibility(0);
-    this.fiu.setVisibility(8);
+    AppMethodBeat.i(108634);
+    this.eeN = null;
+    this.gAd = new LinkedList();
+    this.gzh = new LinkedList();
+    this.gAe = -1;
+    this.gAf = false;
+    AppMethodBeat.o(108634);
   }
   
-  private void Xs()
+  private void aqV()
   {
-    if (this.fix == 0) {}
+    AppMethodBeat.i(108642);
+    this.gAc.setVisibility(0);
+    this.gAb.setVisibility(8);
+    AppMethodBeat.o(108642);
+  }
+  
+  private void aqW()
+  {
+    AppMethodBeat.i(108644);
+    if (this.gAe == 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("dealGetInviteFriendGroupSuccess just only qq", bool);
-      y.i("MicroMsg.RecommendFriendUI", "dealGetInviteFriendGroupSuccess  respList.size:" + this.fhA.size());
-      this.fit.fhA = this.fhA;
-      this.fiu.setAdapter(this.fit);
+      ab.i("MicroMsg.RecommendFriendUI", "dealGetInviteFriendGroupSuccess  respList.size:" + this.gzh.size());
+      this.gAa.gzh = this.gzh;
+      this.gAb.setAdapter(this.gAa);
       showOptionMenu(false);
-      this.fhB = true;
-      setMMTitle(a.h.settings_invite_qq_friends);
-      this.fit.fhB = this.fhB;
-      this.fit.notifyDataSetChanged();
+      this.gzi = true;
+      setMMTitle(2131303279);
+      this.gAa.gzi = this.gzi;
+      this.gAa.notifyDataSetChanged();
+      AppMethodBeat.o(108644);
       return;
     }
   }
   
   private void goBack()
   {
-    if (this.fix != 0)
+    AppMethodBeat.i(108637);
+    if (this.gAe != 0)
     {
       finish();
+      AppMethodBeat.o(108637);
       return;
     }
-    if ((this.fhB) || (this.fiy))
+    if ((this.gzi) || (this.gAf))
     {
       finish();
+      AppMethodBeat.o(108637);
       return;
     }
-    Xs();
+    aqW();
+    AppMethodBeat.o(108637);
   }
   
-  private void kc(int paramInt)
+  private void mX(int paramInt)
   {
-    y.i("MicroMsg.RecommendFriendUI", "dealGetInviteFriendSuccess  respList.size:" + this.fiw.size());
-    this.fit.a(this.fiw, paramInt);
-    this.fiu.setAdapter(this.fit);
-    this.fhB = false;
+    AppMethodBeat.i(108643);
+    ab.i("MicroMsg.RecommendFriendUI", "dealGetInviteFriendSuccess  respList.size:" + this.gAd.size());
+    this.gAa.a(this.gAd, paramInt);
+    this.gAb.setAdapter(this.gAa);
+    this.gzi = false;
     String str;
     int i;
-    if (this.fix == 0)
+    if (this.gAe == 0)
     {
       str = "";
       i = 0;
-      if (i < this.fhA.size())
+      if (i < this.gzh.size())
       {
-        if (paramInt != ((zn)this.fhA.get(i)).sTj) {
-          break label142;
+        if (paramInt != ((aee)this.gzh.get(i)).wRe) {
+          break label152;
         }
-        str = ((zn)this.fhA.get(i)).sYM;
+        str = ((aee)this.gzh.get(i)).wXb;
       }
     }
-    label142:
+    label152:
     for (;;)
     {
       i += 1;
       break;
       setMMTitle(str);
-      this.fit.fhB = this.fhB;
-      this.fit.notifyDataSetChanged();
+      this.gAa.gzi = this.gzi;
+      this.gAa.notifyDataSetChanged();
+      AppMethodBeat.o(108643);
       return;
     }
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.e.inviteqqfriends;
+    return 2130969912;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.fiv = ((TextView)findViewById(a.d.empty_tip_tv));
-    if (this.fix == 1)
+    AppMethodBeat.i(108640);
+    this.gAc = ((TextView)findViewById(2131825157));
+    if (this.gAe == 1)
     {
-      setMMTitle(a.h.settings_recommend_by_mb);
-      this.fiv.setText(a.h.settings_recommend_no_mb_contact);
+      setMMTitle(2131303394);
+      this.gAc.setText(2131303398);
     }
     for (;;)
     {
-      this.fit = new b(getLayoutInflater());
-      this.fiu = ((ListView)findViewById(a.d.inviteqqfriends_friend_lv));
-      this.fiu.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.gAa = new b(getLayoutInflater());
+      this.gAb = ((ListView)findViewById(2131825156));
+      this.gAb.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           int i = 0;
+          AppMethodBeat.i(108627);
           if (!RecommendFriendUI.a(RecommendFriendUI.this))
           {
-            RecommendFriendUI.b(RecommendFriendUI.this).kb(paramAnonymousInt);
-            if (RecommendFriendUI.b(RecommendFriendUI.this).Xq().length > 0)
+            RecommendFriendUI.b(RecommendFriendUI.this).mW(paramAnonymousInt);
+            if (RecommendFriendUI.b(RecommendFriendUI.this).aqU().length > 0)
             {
               RecommendFriendUI.this.showOptionMenu(true);
+              AppMethodBeat.o(108627);
               return;
             }
             RecommendFriendUI.this.showOptionMenu(false);
+            AppMethodBeat.o(108627);
             return;
           }
           paramAnonymousAdapterView = RecommendFriendUI.this;
           paramAnonymousView = RecommendFriendUI.b(RecommendFriendUI.this);
-          if (!paramAnonymousView.fhB) {}
-          for (paramAnonymousInt = i;; paramAnonymousInt = ((zn)paramAnonymousView.fhA.get(paramAnonymousInt)).sTj)
+          if (!paramAnonymousView.gzi) {}
+          for (paramAnonymousInt = i;; paramAnonymousInt = ((aee)paramAnonymousView.gzh.get(paramAnonymousInt)).wRe)
           {
             RecommendFriendUI.a(paramAnonymousAdapterView, paramAnonymousInt);
+            AppMethodBeat.o(108627);
             return;
           }
         }
       });
-      this.fiu.setAdapter(this.fit);
-      addTextOptionMenu(0, getString(a.h.inviteqqfriends_invite), new RecommendFriendUI.2(this));
+      this.gAb.setAdapter(this.gAa);
+      addTextOptionMenu(0, getString(2131300773), new RecommendFriendUI.2(this));
       showOptionMenu(false);
-      this.fiy = true;
-      aa localaa = new aa(this.fix);
-      g.Dk().a(localaa, 0);
-      AppCompatActivity localAppCompatActivity = this.mController.uMN;
-      getString(a.h.app_tip);
-      this.dnm = h.b(localAppCompatActivity, getString(a.h.inviteqqfriends_loading_friends_info), true, new RecommendFriendUI.5(this, localaa));
+      this.gAf = true;
+      aa localaa = new aa(this.gAe);
+      g.Rc().a(localaa, 0);
+      AppCompatActivity localAppCompatActivity = getContext();
+      getString(2131297087);
+      this.eeN = h.b(localAppCompatActivity, getString(2131300776), true, new RecommendFriendUI.5(this, localaa));
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
+          AppMethodBeat.i(108630);
           RecommendFriendUI.d(RecommendFriendUI.this);
+          AppMethodBeat.o(108630);
           return true;
         }
       });
-      new RecommendFriendUI.4(this);
+      setToTop(new RecommendFriendUI.4(this));
+      AppMethodBeat.o(108640);
       return;
-      if (this.fix == 2)
+      if (this.gAe == 2)
       {
-        setMMTitle(a.h.settings_recommend_by_mail);
-        this.fiv.setText(a.h.settings_recommend_no_mail_contact);
+        setMMTitle(2131303393);
+        this.gAc.setText(2131303397);
       }
       else
       {
-        setMMTitle(a.h.settings_invite_qq_friends);
-        this.fiv.setText(a.h.settings_recommend_no_qq_contact);
+        setMMTitle(2131303279);
+        this.gAc.setText(2131303399);
       }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(108635);
     super.onCreate(paramBundle);
-    this.fix = bk.getInt(getIntent().getStringExtra("recommend_type"), 0);
-    this.fhB = false;
-    g.Dk().a(135, this);
+    this.gAe = bo.getInt(getIntent().getStringExtra("recommend_type"), 0);
+    this.gzi = false;
+    g.Rc().a(135, this);
     initView();
+    AppMethodBeat.o(108635);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    g.Dk().b(135, this);
+    AppMethodBeat.i(108639);
+    g.Rc().b(135, this);
     super.onDestroy();
+    AppMethodBeat.o(108639);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(108638);
     if (paramInt == 4)
     {
       goBack();
+      AppMethodBeat.o(108638);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(108638);
+    return bool;
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.RecommendFriendUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.dnm != null)
+    AppMethodBeat.i(108641);
+    ab.i("MicroMsg.RecommendFriendUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.eeN != null)
     {
-      this.dnm.dismiss();
-      this.dnm = null;
+      this.eeN.dismiss();
+      this.eeN = null;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0) || (paramm.getType() != 135))
     {
-      Xr();
+      aqV();
+      AppMethodBeat.o(108641);
       return;
     }
-    this.fiw = ((ayw)((aa)paramm).dmK.ecF.ecN).kVS;
-    this.fhA = ((ayw)((aa)paramm).dmK.ecF.ecN).swl;
-    this.fiy = false;
-    if (this.fiw.size() <= 0)
+    this.gAd = ((bfz)((aa)paramm).rr.fsW.fta).ntS;
+    this.gzh = ((bfz)((aa)paramm).rr.fsW.fta).GroupList;
+    this.gAf = false;
+    if (this.gAd.size() <= 0)
     {
-      Xr();
+      aqV();
+      AppMethodBeat.o(108641);
       return;
     }
-    if ((this.fix == 0) && (this.fhA.size() <= 0))
+    if ((this.gAe == 0) && (this.gzh.size() <= 0))
     {
-      Xr();
+      aqV();
+      AppMethodBeat.o(108641);
       return;
     }
-    if (this.fix != 0)
+    if (this.gAe != 0)
     {
-      kc(-1);
+      mX(-1);
+      AppMethodBeat.o(108641);
       return;
     }
-    Xs();
+    aqW();
+    AppMethodBeat.o(108641);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.RecommendFriendUI
  * JD-Core Version:    0.7.0.1
  */

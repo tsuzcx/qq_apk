@@ -7,12 +7,12 @@ final class g$4
 {
   g$4(g paramg, Rect paramRect) {}
   
-  public final Rect bu()
+  public final Rect ci()
   {
-    if ((this.qD == null) || (this.qD.isEmpty())) {
+    if ((this.rA == null) || (this.rA.isEmpty())) {
       return null;
     }
-    return this.qD;
+    return this.rA;
   }
 }
 

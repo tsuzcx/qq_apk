@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera.a;
 
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.qbar.QbarNative;
 import com.tencent.qbar.QbarNative.QBarResult;
 import java.util.Arrays;
@@ -14,141 +15,134 @@ import java.util.Set;
 public final class a
   extends b
 {
-  private Object bjn = new Object();
-  private QbarNative gpf;
-  private volatile boolean gpg = false;
-  private byte[] gph;
-  byte[] gpi;
+  private Object ceY;
+  private QbarNative hJj;
+  private volatile boolean hJk;
+  private byte[] hJl;
+  byte[] hJm;
   private String type;
   
   public a(b.a parama, String paramString)
   {
     super(parama);
+    AppMethodBeat.i(130973);
+    this.ceY = new Object();
+    this.hJk = false;
     this.type = paramString;
+    AppMethodBeat.o(130973);
   }
   
-  private void nm()
+  private void pJ()
   {
-    synchronized (this.bjn)
+    AppMethodBeat.i(130977);
+    synchronized (this.ceY)
     {
-      if (this.gpg)
+      if (this.hJk)
       {
-        int i = this.gpf.release();
-        this.gpf = null;
-        this.gpg = false;
-        y.d("MicroMsg.appbrand.ScanQBarDecoder", "QbarNative.Release():%d", new Object[] { Integer.valueOf(i) });
+        int i = this.hJj.release();
+        this.hJj = null;
+        this.hJk = false;
+        ab.d("MicroMsg.appbrand.ScanQBarDecoder", "QbarNative.Release():%d", new Object[] { Integer.valueOf(i) });
       }
+      AppMethodBeat.o(130977);
       return;
     }
   }
   
-  public final boolean b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public final boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject1;
-    for (;;)
+    AppMethodBeat.i(130975);
+    Object localObject2;
+    synchronized (this.ceY)
     {
-      synchronized (this.bjn)
+      if (!this.hJk)
       {
-        if (!this.gpg)
-        {
-          y.e("MicroMsg.appbrand.ScanQBarDecoder", "not init");
-          return false;
-        }
-        y.d("MicroMsg.appbrand.ScanQBarDecoder", "decode start");
-        localObject1 = new int[2];
-        localObject1[0] = paramInt1;
-        localObject1[1] = paramInt2;
-        if (this.gph == null)
-        {
-          this.gph = new byte[paramInt1 * paramInt2 * 3 / 2];
-          this.gpi = new byte[paramInt1 * paramInt2];
-          y.d("MicroMsg.appbrand.ScanQBarDecoder", "tempOutBytes = null, new byte[%s]", new Object[] { Integer.valueOf(paramInt1 * paramInt2 * 3 / 2) });
-          y.d("MicroMsg.appbrand.ScanQBarDecoder", "onFrameData: %s, width: %s, height: %s cameraRotation:%d", new Object[] { paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-          paramInt1 = QbarNative.a(this.gph, (int[])localObject1, paramArrayOfByte, paramInt1, paramInt2, 0, 0, paramInt1, paramInt2, paramInt3);
-          if (paramInt1 == 0) {
-            break;
-          }
-          y.e("MicroMsg.appbrand.ScanQBarDecoder", "decode isProOk %s", new Object[] { Integer.valueOf(paramInt1) });
-          return false;
-        }
-      }
-      if (this.gph.length != paramInt1 * paramInt2 * 3 / 2)
-      {
-        this.gph = null;
-        this.gph = new byte[paramInt1 * paramInt2 * 3 / 2];
-        this.gpi = null;
-        this.gpi = new byte[paramInt1 * paramInt2];
-        y.d("MicroMsg.appbrand.ScanQBarDecoder", "tempOutBytes size change, new byte[%s]", new Object[] { Integer.valueOf(paramInt1 * paramInt2 * 3 / 2) });
-      }
-    }
-    System.arraycopy(this.gph, 0, this.gpi, 0, this.gpi.length);
-    if (this.gpi != null) {
-      y.d("MicroMsg.appbrand.ScanQBarDecoder", "tempGrayData.len: %d, width: %d, height: %d", new Object[] { Integer.valueOf(this.gpi.length), Integer.valueOf(localObject1[0]), Integer.valueOf(localObject1[1]) });
-    }
-    if (this.gpi != null)
-    {
-      paramInt1 = this.gpf.w(this.gpi, localObject1[0], localObject1[1]);
-      y.i("MicroMsg.appbrand.ScanQBarDecoder", "after scanImage, result:%d", new Object[] { Integer.valueOf(paramInt1) });
-    }
-    for (;;)
-    {
-      if (paramInt1 != 0) {
+        ab.e("MicroMsg.appbrand.ScanQBarDecoder", "not init");
+        AppMethodBeat.o(130975);
         return false;
       }
-      List localList = this.gpf.cOp();
-      if (localList.size() == 0) {
-        return false;
-      }
-      y.i("MicroMsg.appbrand.ScanQBarDecoder", "GetResults size %d", new Object[] { Integer.valueOf(localList.size()) });
-      localObject1 = localList.iterator();
-      do
+      ab.d("MicroMsg.appbrand.ScanQBarDecoder", "decode start");
+      localObject2 = new int[2];
+      localObject2[0] = paramInt1;
+      localObject2[1] = paramInt2;
+      if (this.hJl == null)
       {
-        if (!((Iterator)localObject1).hasNext()) {
+        this.hJl = new byte[paramInt1 * paramInt2 * 3 / 2];
+        this.hJm = new byte[paramInt1 * paramInt2];
+        ab.d("MicroMsg.appbrand.ScanQBarDecoder", "tempOutBytes = null, new byte[%s]", new Object[] { Integer.valueOf(paramInt1 * paramInt2 * 3 / 2) });
+      }
+      while (this.hJl.length == paramInt1 * paramInt2 * 3 / 2)
+      {
+        ab.d("MicroMsg.appbrand.ScanQBarDecoder", "onFrameData: %s, width: %s, height: %s cameraRotation:%d", new Object[] { paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+        paramInt1 = QbarNative.a(this.hJl, (int[])localObject2, paramArrayOfByte, paramInt1, paramInt2, 0, 0, paramInt1, paramInt2, paramInt3);
+        if (paramInt1 == 0) {
           break;
         }
-        paramArrayOfByte = (QbarNative.QBarResult)((Iterator)localObject1).next();
-        y.i("MicroMsg.appbrand.ScanQBarDecoder", "decode type:%s, sCharset: %s, data:%s", new Object[] { paramArrayOfByte.typeName, paramArrayOfByte.charset, paramArrayOfByte.data });
-      } while (!com.tencent.qbar.a.afx(paramArrayOfByte.data));
-      for (;;)
-      {
-        localObject1 = paramArrayOfByte;
-        if (paramArrayOfByte == null)
-        {
-          localObject1 = paramArrayOfByte;
-          if (localList.size() > 0) {
-            localObject1 = (QbarNative.QBarResult)localList.get(0);
-          }
-        }
-        if ((localObject1 != null) && (!bk.bl(((QbarNative.QBarResult)localObject1).data)))
-        {
-          paramArrayOfByte = ((QbarNative.QBarResult)localObject1).typeName;
-          if ((paramArrayOfByte.equals("QR_CODE")) || (paramArrayOfByte.equals("WX_CODE")))
-          {
-            b(((QbarNative.QBarResult)localObject1).data, 1, ((QbarNative.QBarResult)localObject1).rawData);
-            return true;
-          }
-          b(((QbarNative.QBarResult)localObject1).data, 2, null);
-          return true;
-        }
+        ab.e("MicroMsg.appbrand.ScanQBarDecoder", "decode isProOk %s", new Object[] { Integer.valueOf(paramInt1) });
+        AppMethodBeat.o(130975);
         return false;
-        paramArrayOfByte = null;
       }
+      this.hJl = null;
+      this.hJl = new byte[paramInt1 * paramInt2 * 3 / 2];
+      this.hJm = null;
+      this.hJm = new byte[paramInt1 * paramInt2];
+      ab.d("MicroMsg.appbrand.ScanQBarDecoder", "tempOutBytes size change, new byte[%s]", new Object[] { Integer.valueOf(paramInt1 * paramInt2 * 3 / 2) });
+    }
+    System.arraycopy(this.hJl, 0, this.hJm, 0, this.hJm.length);
+    if (this.hJm != null) {
+      ab.d("MicroMsg.appbrand.ScanQBarDecoder", "tempGrayData.len: %d, width: %d, height: %d", new Object[] { Integer.valueOf(this.hJm.length), Integer.valueOf(localObject2[0]), Integer.valueOf(localObject2[1]) });
+    }
+    if (this.hJm != null)
+    {
+      paramInt1 = this.hJj.A(this.hJm, localObject2[0], localObject2[1]);
+      ab.i("MicroMsg.appbrand.ScanQBarDecoder", "after scanImage, result:%d", new Object[] { Integer.valueOf(paramInt1) });
+    }
+    while (paramInt1 != 0)
+    {
+      AppMethodBeat.o(130975);
+      return false;
       paramInt1 = -1;
     }
+    paramArrayOfByte = this.hJj.dUc();
+    if (paramArrayOfByte.size() == 0)
+    {
+      AppMethodBeat.o(130975);
+      return false;
+    }
+    ab.i("MicroMsg.appbrand.ScanQBarDecoder", "GetResults size %d", new Object[] { Integer.valueOf(paramArrayOfByte.size()) });
+    paramArrayOfByte = (QbarNative.QBarResult)paramArrayOfByte.get(0);
+    ab.i("MicroMsg.appbrand.ScanQBarDecoder", "decode type:%s, sCharset: %s, data:%s", new Object[] { paramArrayOfByte.typeName, paramArrayOfByte.charset, paramArrayOfByte.data });
+    if ((paramArrayOfByte != null) && (!bo.isNullOrNil(paramArrayOfByte.data)))
+    {
+      localObject2 = paramArrayOfByte.typeName;
+      if ((((String)localObject2).equals("QR_CODE")) || (((String)localObject2).equals("WX_CODE")))
+      {
+        b(paramArrayOfByte.data, 1, paramArrayOfByte.rawData);
+        AppMethodBeat.o(130975);
+        return true;
+      }
+      b(paramArrayOfByte.data, 2, null);
+      AppMethodBeat.o(130975);
+      return true;
+    }
+    AppMethodBeat.o(130975);
+    return false;
   }
   
   public final void init()
   {
-    y.i("MicroMsg.appbrand.ScanQBarDecoder", "init");
+    AppMethodBeat.i(130974);
+    ab.i("MicroMsg.appbrand.ScanQBarDecoder", "init");
     Object localObject1 = this.type;
-    synchronized (this.bjn)
+    synchronized (this.ceY)
     {
-      if (this.gpg)
+      if (this.hJk)
       {
-        y.i("MicroMsg.appbrand.ScanQBarDecoder", "the QbarDecoder is already init");
+        ab.i("MicroMsg.appbrand.ScanQBarDecoder", "the QbarDecoder is already init");
+        AppMethodBeat.o(130974);
         return;
       }
-      this.gpf = new QbarNative();
+      this.hJj = new QbarNative();
       ??? = new HashSet();
       if (((String)localObject1).contains("barcode")) {
         ((Set)???).add(Integer.valueOf(1));
@@ -170,26 +164,31 @@ public final class a
         }
       }
     }
-    int i = this.gpf.a(0, "ANY", "UTF-8", com.tencent.qbar.a.hp(ae.getContext()));
-    int j = this.gpf.h(arrayOfInt, arrayOfInt.length);
-    y.i("MicroMsg.appbrand.ScanQBarDecoder", "QbarNative.Init = [%d], SetReaders = [%d], version = [%s], readers: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), QbarNative.getVersion(), Arrays.toString(arrayOfInt) });
+    int i = this.hJj.a(0, "ANY", "UTF-8", com.tencent.qbar.a.iQ(ah.getContext()));
+    com.tencent.qbar.a.a(this.hJj);
+    int j = this.hJj.i(arrayOfInt, arrayOfInt.length);
+    ab.i("MicroMsg.appbrand.ScanQBarDecoder", "QbarNative.Init = [%d], SetReaders = [%d], version = [%s], readers: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), QbarNative.getVersion(), Arrays.toString(arrayOfInt) });
     if ((i != 0) || (j != 0))
     {
-      y.e("MicroMsg.appbrand.ScanQBarDecoder", "QbarNative failed");
-      nm();
+      ab.e("MicroMsg.appbrand.ScanQBarDecoder", "QbarNative failed");
+      pJ();
+      AppMethodBeat.o(130974);
       return;
     }
-    synchronized (this.bjn)
+    synchronized (this.ceY)
     {
-      this.gpg = true;
+      this.hJk = true;
+      AppMethodBeat.o(130974);
       return;
     }
   }
   
   public final void release()
   {
-    y.i("MicroMsg.appbrand.ScanQBarDecoder", "release");
-    nm();
+    AppMethodBeat.i(130976);
+    ab.i("MicroMsg.appbrand.ScanQBarDecoder", "release");
+    pJ();
+    AppMethodBeat.o(130976);
   }
 }
 

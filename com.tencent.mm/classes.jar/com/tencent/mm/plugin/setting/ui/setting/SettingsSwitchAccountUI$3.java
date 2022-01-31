@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class SettingsSwitchAccountUI$3
-  implements View.OnClickListener
+  implements ap.a
 {
   SettingsSwitchAccountUI$3(SettingsSwitchAccountUI paramSettingsSwitchAccountUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onTimerExpired()
   {
-    SettingsSwitchAccountUI.b(this.nWi);
+    AppMethodBeat.i(127499);
+    SettingsSwitchAccountUI.j(this.qKt);
+    AppMethodBeat.o(127499);
+    return false;
   }
 }
 

@@ -1,47 +1,56 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.model.bx.a;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.appbrand.debugger.b;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.appcache.a.a;
+import com.tencent.mm.pluginsdk.g.a.c.l;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.j;
 
 public final class ap
-  implements bx.a
 {
-  public static final Map<String, ap.c> fEo;
+  final ap.b gVX;
   
-  static
+  ap()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("AppBrandNotify", new ap.b((byte)0));
-    localHashMap.put("AppPublicLibraryNotify", new ap.d((byte)0));
-    localHashMap.put("mmbizwxaconfig", new ap.a((byte)0));
-    localHashMap.put("ForceOpenAppNotify", new com.tencent.mm.plugin.appbrand.debugger.c());
-    localHashMap.put("AppBrandForceKill", new b());
-    fEo = Collections.unmodifiableMap(localHashMap);
+    AppMethodBeat.i(59507);
+    this.gVX = new ap.b(this);
+    AppMethodBeat.o(59507);
   }
   
-  public final void a(e.a parama)
+  public static String avQ()
   {
-    parama = aa.a(parama.dBs.svH);
-    if (bk.bl(parama))
-    {
-      y.w("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "msg content is null");
-      return;
+    AppMethodBeat.i(59508);
+    String str2 = g.RL().cachePath;
+    String str1 = str2;
+    if (!str2.endsWith("/")) {
+      str1 = str2 + "/";
     }
-    com.tencent.mm.plugin.appbrand.v.c.DS().O(new ap.1(this, parama));
+    str1 = str1 + "appbrand/pkg/";
+    j.akQ(str1);
+    AppMethodBeat.o(59508);
+    return str1;
+  }
+  
+  public final int b(a parama)
+  {
+    AppMethodBeat.i(59509);
+    if (this.gVX.alN(parama.vMK))
+    {
+      ab.i("MicroMsg.AppBrandWxaPkgDownloadPerformer", "addRequestIfNotRunning, urlKey %s already in queue", new Object[] { parama.vMK });
+      AppMethodBeat.o(59509);
+      return 0;
+    }
+    int i = this.gVX.b(parama);
+    ab.i("MicroMsg.AppBrandWxaPkgDownloadPerformer", "addRequestIfNotRunning, urlKey %s, addResult %d", new Object[] { parama.vMK, Integer.valueOf(i) });
+    AppMethodBeat.o(59509);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ap
  * JD-Core Version:    0.7.0.1
  */

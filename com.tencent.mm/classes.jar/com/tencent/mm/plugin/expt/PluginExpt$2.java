@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.expt;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.plugin.expt.c.c;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.plugin.expt.e.b;
 
 final class PluginExpt$2
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return c.dXp;
+    return b.SQL_CREATE;
   }
 }
 

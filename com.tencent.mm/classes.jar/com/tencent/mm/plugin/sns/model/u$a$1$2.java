@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.protocal.c.qv;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.ud;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class u$a$1$2
   implements Runnable
 {
-  u$a$1$2(u.a.1 param1, qv paramqv) {}
+  u$a$1$2(u.a.1 param1, ud paramud) {}
   
   public final void run()
   {
-    if (!this.oqD.oqB.oqy.b(this.oqC, this.oqD.oqB.jZV)) {
-      this.oqD.oqB.jZV.sendEmptyMessage(0);
+    AppMethodBeat.i(36302);
+    if (!this.rfn.rfl.rfi.b(this.rfm, this.rfn.rfl.mur)) {
+      this.rfn.rfl.mur.sendEmptyMessage(0);
     }
+    AppMethodBeat.o(36302);
   }
 }
 

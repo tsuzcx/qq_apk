@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.shake.ui;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class c$1
-  implements am.a
+  implements ap.a
 {
   c$1(c paramc) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    this.obm.bAB();
+    AppMethodBeat.i(24707);
+    this.qPu.clU();
+    AppMethodBeat.o(24707);
     return false;
   }
 }

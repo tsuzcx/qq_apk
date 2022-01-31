@@ -1,195 +1,195 @@
 package com.tencent.mm.plugin.cdndownloader.c;
 
-import com.tencent.mars.cdn.CdnLogic;
-import com.tencent.mm.j.f;
-import com.tencent.mm.j.f.a;
-import com.tencent.mm.j.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.i.g;
+import com.tencent.mm.i.g.a;
+import com.tencent.mm.i.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Map;
 import java.util.Queue;
 
 final class a$1
   implements Runnable
 {
-  a$1(a parama, f paramf) {}
+  a$1(a parama, g paramg) {}
   
   public final void run()
   {
-    if (this.eiO != -1) {
-      a.a(this.iAt).put(this.eiP.field_mediaId, Integer.valueOf(this.eiO));
+    AppMethodBeat.i(874);
+    if (this.fyS != -1) {
+      a.a(this.kDz).put(this.fyT.field_mediaId, Integer.valueOf(this.fyS));
     }
-    a.b(this.iAt).add(this.eiP.field_mediaId);
-    a.c(this.iAt).put(this.eiP.field_mediaId, this.eiP);
-    a locala = this.iAt;
-    y.i("MicroMsg.CdnDownloadNativeService", "summersafecdn tryStart queue:%d", new Object[] { Integer.valueOf(locala.eiG.size()) });
+    a.b(this.kDz).add(this.fyT.field_mediaId);
+    a.c(this.kDz).put(this.fyT.field_mediaId, this.fyT);
+    a locala = this.kDz;
+    ab.i("MicroMsg.CdnDownloadNativeService", "summersafecdn tryStart queue:%d", new Object[] { Integer.valueOf(locala.fyK.size()) });
     Object localObject;
-    f localf;
-    label237:
+    g localg;
+    int i;
+    label249:
     int j;
     for (;;)
     {
-      if (!locala.eiG.isEmpty())
+      if (!locala.fyK.isEmpty())
       {
-        localObject = (String)locala.eiG.poll();
-        localf = (f)locala.eiH.remove(localObject);
-        if (localf == null) {
-          y.e("MicroMsg.CdnDownloadNativeService", "summersafecdn task queue is empty , maybe bug here");
-        }
-      }
-      else
-      {
-        return;
-      }
-      y.i("MicroMsg.CdnDownloadNativeService", "summersafecdn id:%s cdnautostart :%s chatroom:%s", new Object[] { localf.field_mediaId, Boolean.valueOf(localf.field_autostart), Integer.valueOf(localf.field_chattype) });
-      localf.field_startTime = bk.UY();
-      if (!localf.ceg) {
-        break;
-      }
-      if (localf.field_fullpath == null)
-      {
-        i = -1;
-        if (localf.field_thumbpath != null) {
-          break label445;
-        }
-      }
-      label445:
-      for (j = -1;; j = localf.field_thumbpath.length())
-      {
-        y.i("MicroMsg.CdnDownloadNativeService", "summersafecdn tryStart send file:%d thumb:%d, field_svr_signature[%s], field_aesKey[%s], field_fileType[%d], field_mediaId[%s], onlycheckexist[%b]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), bk.aac(localf.field_svr_signature), bk.aac(localf.field_aesKey), Integer.valueOf(localf.field_fileType), localf.field_mediaId, Boolean.valueOf(localf.field_onlycheckexist) });
-        if (localf.field_fullpath == null) {
-          localf.field_fullpath = "";
-        }
-        if (localf.field_thumbpath == null) {
-          localf.field_thumbpath = "";
-        }
-        locala.Ne();
-        i = com.tencent.mm.ak.a.b(localf);
-        if (i == 0) {
-          break label457;
-        }
-        y.e("MicroMsg.CdnDownloadNativeService", "summersafecdn startupUploadMedia error:%d clientid:%s", new Object[] { Integer.valueOf(i), localf.field_mediaId });
-        if (localf.dlP == null) {
-          break;
-        }
-        localf.dlP.a(localf.field_mediaId, i, null, null, localf.field_onlycheckexist);
-        break;
-        i = localf.field_fullpath.length();
-        break label237;
-      }
-      label457:
-      y.i("MicroMsg.CdnDownloadNativeService", "summersafecdn startupUploadMedia ok, field_mediaId[%s]", new Object[] { localf.field_mediaId });
-      locala.eiI.put(localf.field_mediaId, localf);
-    }
-    int i = -1;
-    if ((localf.field_fileType == com.tencent.mm.j.a.dlx) || (localf.field_fileType == com.tencent.mm.j.a.dlz) || (localf.field_fileType == com.tencent.mm.j.a.dlA) || (localf.field_fileType == com.tencent.mm.j.a.dlB) || (localf.field_fileType == com.tencent.mm.j.a.dlC) || (localf.field_fileType == com.tencent.mm.j.a.dlD))
-    {
-      j = i;
-      if (localf.field_fullpath != null)
-      {
-        j = i;
-        if (!localf.field_fullpath.isEmpty())
+        localObject = (String)locala.fyK.poll();
+        localg = (g)locala.fyL.remove(localObject);
+        if (localg == null)
         {
-          locala.Ne();
-          j = com.tencent.mm.ak.a.a(localf.field_mediaId, localf.dlQ, localf.field_fullpath, localf.field_fileType, localf.dlR, localf.dlS, localf.dlT, localf.dlU);
+          ab.e("MicroMsg.CdnDownloadNativeService", "summersafecdn task queue is empty , maybe bug here");
+          AppMethodBeat.o(874);
+          return;
         }
-      }
-      if (localf.field_fullpath == null)
-      {
-        i = -1;
-        label648:
-        y.i("MicroMsg.CdnDownloadNativeService", "url download tryStart recv file:%d field_mediaId[%s], download_url[%s], filetype:[%d], ret:%d", new Object[] { Integer.valueOf(i), localf.field_mediaId, localf.dlQ, Integer.valueOf(localf.field_fileType), Integer.valueOf(j) });
-        i = j;
+        ab.i("MicroMsg.CdnDownloadNativeService", "summersafecdn id:%s cdnautostart :%s chatroom:%s", new Object[] { localg.field_mediaId, Boolean.valueOf(localg.field_autostart), Integer.valueOf(localg.field_chattype) });
+        localg.field_startTime = bo.aoy();
+        if (localg.cMU)
+        {
+          if (localg.field_fullpath == null)
+          {
+            i = -1;
+            if (localg.field_thumbpath != null) {
+              break label456;
+            }
+          }
+          label456:
+          for (j = -1;; j = localg.field_thumbpath.length())
+          {
+            ab.i("MicroMsg.CdnDownloadNativeService", "summersafecdn tryStart send file:%d thumb:%d, field_svr_signature[%s], field_aesKey[%s], field_fileType[%d], field_mediaId[%s], onlycheckexist[%b]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), bo.aqg(localg.field_svr_signature), bo.aqg(localg.field_aesKey), Integer.valueOf(localg.field_fileType), localg.field_mediaId, Boolean.valueOf(localg.field_onlycheckexist) });
+            if (localg.field_fullpath == null) {
+              localg.field_fullpath = "";
+            }
+            if (localg.field_thumbpath == null) {
+              localg.field_thumbpath = "";
+            }
+            i = locala.afP().b(localg);
+            if (i == 0) {
+              break label468;
+            }
+            ab.e("MicroMsg.CdnDownloadNativeService", "summersafecdn startupUploadMedia error:%d clientid:%s", new Object[] { Integer.valueOf(i), localg.field_mediaId });
+            if (localg.edp == null) {
+              break;
+            }
+            localg.edp.a(localg.field_mediaId, i, null, null, localg.field_onlycheckexist);
+            break;
+            i = localg.field_fullpath.length();
+            break label249;
+          }
+          label468:
+          ab.i("MicroMsg.CdnDownloadNativeService", "summersafecdn startupUploadMedia ok, field_mediaId[%s]", new Object[] { localg.field_mediaId });
+          locala.fyM.put(localg.field_mediaId, localg);
+        }
+        else
+        {
+          i = -1;
+          if ((localg.field_fileType == com.tencent.mm.i.a.ecS) || (localg.field_fileType == com.tencent.mm.i.a.ecU) || (localg.field_fileType == com.tencent.mm.i.a.ecV) || (localg.field_fileType == com.tencent.mm.i.a.ecW) || (localg.field_fileType == com.tencent.mm.i.a.ecX) || (localg.field_fileType == com.tencent.mm.i.a.ecY))
+          {
+            j = i;
+            if (localg.field_fullpath != null)
+            {
+              j = i;
+              if (!localg.field_fullpath.isEmpty()) {
+                j = locala.afP().a(localg.field_mediaId, localg.eds, localg.field_fullpath, localg.field_fileType, localg.edt, localg.edu, localg.edv, localg.edw);
+              }
+            }
+            if (localg.field_fullpath == null)
+            {
+              i = -1;
+              label658:
+              ab.i("MicroMsg.CdnDownloadNativeService", "url download tryStart recv file:%d field_mediaId[%s], download_url[%s], filetype:[%d], ret:%d", new Object[] { Integer.valueOf(i), localg.field_mediaId, localg.eds, Integer.valueOf(localg.field_fileType), Integer.valueOf(j) });
+              i = j;
+            }
+          }
+        }
       }
     }
     for (;;)
     {
       if (i != 0)
       {
-        y.e("MicroMsg.CdnDownloadNativeService", "summersafecdn startupDownloadMedia error:%d clientid:%s", new Object[] { Integer.valueOf(i), localf.field_mediaId });
-        if (localf.dlP == null) {
+        ab.e("MicroMsg.CdnDownloadNativeService", "summersafecdn startupDownloadMedia error:%d clientid:%s", new Object[] { Integer.valueOf(i), localg.field_mediaId });
+        if (localg.edp == null) {
           break;
         }
-        localf.dlP.a(localf.field_mediaId, i, null, null, localf.field_onlycheckexist);
+        localg.edp.a(localg.field_mediaId, i, null, null, localg.field_onlycheckexist);
         break;
-        i = localf.field_fullpath.length();
-        break label648;
-        if (localf.dlW)
+        i = localg.field_fullpath.length();
+        break label658;
+        if (localg.edy)
         {
           j = i;
-          if (localf.field_fullpath != null)
+          if (localg.field_fullpath != null)
           {
             j = i;
-            if (!localf.field_fullpath.isEmpty())
-            {
-              locala.Ne();
-              j = com.tencent.mm.ak.a.a(localf.field_mediaId, localf.field_fullpath, localf.dlQ, localf.dlX, localf.dlY, localf.allow_mobile_net_download, localf.dlR, localf.dlS, localf.is_resume_task, localf.dlV, localf.dlT);
+            if (!localg.field_fullpath.isEmpty()) {
+              j = locala.afP().a(localg.field_mediaId, localg.field_fullpath, localg.eds, localg.edz, localg.edA, localg.allow_mobile_net_download, localg.edt, localg.edu, localg.is_resume_task, localg.edx, localg.edv);
             }
           }
-          if (localf.field_fullpath == null) {}
-          for (localObject = "";; localObject = localf.field_fullpath)
+          if (localg.field_fullpath == null) {}
+          for (localObject = "";; localObject = localg.field_fullpath)
           {
-            y.i("MicroMsg.CdnDownloadNativeService", "game package download tryStart recv file:%s field_mediaId[%s], download_url[%s] https url[%s]", new Object[] { localObject, localf.field_mediaId, localf.dlQ, localf.dlX });
+            ab.i("MicroMsg.CdnDownloadNativeService", "game package download tryStart recv file:%s field_mediaId[%s], download_url[%s] https url[%s]", new Object[] { localObject, localg.field_mediaId, localg.eds, localg.edz });
             i = j;
             break;
           }
         }
-        if (localf.field_fullpath == null)
+        if (localg.field_fullpath == null)
         {
           j = -1;
-          label952:
-          if (localf.field_thumbpath != null) {
-            break label1096;
+          label962:
+          if (localg.field_thumbpath != null) {
+            break label1105;
           }
         }
-        label1096:
-        for (int k = -1;; k = localf.field_thumbpath.length())
+        label1105:
+        for (int k = -1;; k = localg.field_thumbpath.length())
         {
-          y.i("MicroMsg.CdnDownloadNativeService", "summersafecdn tryStart recv file:%d thumb:%d, field_svr_signature[%s], field_aesKey[%s], field_fileType[%d], field_mediaId[%s], onlycheckexist[%b]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), localf.field_svr_signature, localf.field_aesKey, Integer.valueOf(localf.field_fileType), localf.field_mediaId, Boolean.valueOf(localf.field_onlycheckexist) });
-          if (localf.dma != 2) {
+          ab.i("MicroMsg.CdnDownloadNativeService", "summersafecdn tryStart recv file:%d thumb:%d, field_svr_signature[%s], field_aesKey[%s], field_fileType[%d], field_mediaId[%s], onlycheckexist[%b]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), localg.field_svr_signature, localg.field_aesKey, Integer.valueOf(localg.field_fileType), localg.field_mediaId, Boolean.valueOf(localg.field_onlycheckexist) });
+          if (localg.edD != 2) {
             break label1194;
           }
-          if (!(localf instanceof g)) {
-            break label1253;
+          if (!(localg instanceof h)) {
+            break label1256;
           }
-          localObject = (g)localf;
-          if (!((g)localObject).wZ()) {
-            break label1108;
+          localObject = (h)localg;
+          if (!((h)localObject).Jr()) {
+            break label1117;
           }
-          locala.Ne();
-          i = com.tencent.mm.ak.a.a(localf, 2);
+          i = locala.afP().a(localg, 2);
           break;
-          j = localf.field_fullpath.length();
-          break label952;
+          j = localg.field_fullpath.length();
+          break label962;
         }
-        label1108:
-        if (((g)localObject).wX())
-        {
-          locala.Ne();
-          i = com.tencent.mm.ak.a.a(((g)localObject).field_mediaId, ((g)localObject).url, ((g)localObject).referer, ((g)localObject).field_fullpath, ((g)localObject).dmg, ((g)localObject).dlK, ((g)localObject).initialDownloadOffset, ((g)localObject).initialDownloadLength, ((g)localObject).isColdSnsData, ((g)localObject).signalQuality, ((g)localObject).snsScene, ((g)localObject).field_preloadRatio, ((g)localObject).field_requestVideoFormat);
+        label1117:
+        if (((h)localObject).Jp()) {
+          i = locala.afP().a(((h)localObject).field_mediaId, ((h)localObject).url, ((h)localObject).referer, ((h)localObject).field_fullpath, ((h)localObject).edJ, ((h)localObject).edh, ((h)localObject).isColdSnsData, ((h)localObject).signalQuality, ((h)localObject).snsScene, ((h)localObject).field_preloadRatio, ((h)localObject).field_requestVideoFormat, 1, 1);
         }
         continue;
         label1194:
-        locala.Ne();
-        i = CdnLogic.startC2CDownload(com.tencent.mm.ak.a.a(localf));
+        i = locala.afP().c(localg);
         continue;
       }
-      y.i("MicroMsg.CdnDownloadNativeService", "summersafecdn startupDownloadMedia ok, field_mediaId[%s]", new Object[] { localf.field_mediaId });
-      locala.eiI.put(localf.field_mediaId, localf);
+      ab.i("MicroMsg.CdnDownloadNativeService", "summersafecdn startupDownloadMedia ok, field_mediaId[%s]", new Object[] { localg.field_mediaId });
+      locala.fyM.put(localg.field_mediaId, localg);
       break;
-      label1253:
+      AppMethodBeat.o(874);
+      return;
+      label1256:
       i = -1;
     }
   }
   
   public final String toString()
   {
-    return super.toString() + "|addRecvTask";
+    AppMethodBeat.i(875);
+    String str = super.toString() + "|addRecvTask";
+    AppMethodBeat.o(875);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.c.a.1
  * JD-Core Version:    0.7.0.1
  */

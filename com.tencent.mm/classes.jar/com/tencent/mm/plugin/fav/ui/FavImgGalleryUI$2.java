@@ -1,14 +1,20 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import com.tencent.mm.h.a.nb;
-import com.tencent.mm.sdk.b.c;
+import android.app.Dialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.snackbar.b;
 
 final class FavImgGalleryUI$2
-  extends c<nb>
+  implements Runnable
 {
-  FavImgGalleryUI$2(FavImgGalleryUI paramFavImgGalleryUI)
+  FavImgGalleryUI$2(FavImgGalleryUI paramFavImgGalleryUI, Dialog paramDialog) {}
+  
+  public final void run()
   {
-    this.udX = nb.class.getName().hashCode();
+    AppMethodBeat.i(151519);
+    this.mwd.dismiss();
+    b.l(this.mwu, this.mwu.getString(2131299674));
+    AppMethodBeat.o(151519);
   }
 }
 

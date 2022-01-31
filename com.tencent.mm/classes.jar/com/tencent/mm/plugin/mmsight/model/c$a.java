@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.model;
 
 public abstract interface c$a
 {
-  public abstract void tX(int paramInt);
+  public abstract void zr(int paramInt);
 }
 
 

@@ -1,18 +1,22 @@
 package com.tencent.mm.plugin.emojicapture.model;
 
-import android.content.Context;
+import a.l;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emojicapture.api.b.a;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
 final class PluginEmojiCapture$b
   implements DialogInterface.OnDismissListener
 {
-  PluginEmojiCapture$b(Context paramContext, Intent paramIntent) {}
+  PluginEmojiCapture$b(b.a parama) {}
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jkr.startActivity(this.jks);
+    AppMethodBeat.i(2617);
+    this.ltD.gR(true);
+    AppMethodBeat.o(2617);
   }
 }
 

@@ -5,12 +5,12 @@ public final class c$dc
 {
   public c$dc()
   {
-    super("hideAllNonBaseMenuItem", "hideAllNonBaseMenuItem", 93, false);
+    super("getTransferMoneyRequest", "get_transfer_money_request", 74, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.protocal.c.dc
  * JD-Core Version:    0.7.0.1
  */

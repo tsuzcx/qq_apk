@@ -1,129 +1,194 @@
 package com.tencent.mm.plugin.topstory.ui.webview;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.mm.plugin.topstory.ui.d;
-import com.tencent.mm.protocal.c.byb;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.l;
-import com.tencent.xweb.m;
-import com.tencent.xweb.p;
-import java.io.ByteArrayInputStream;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.topstory.a.e;
+import com.tencent.mm.plugin.topstory.a.h;
+import com.tencent.mm.plugin.topstory.ui.PluginTopStoryUI;
+import com.tencent.mm.plugin.topstory.ui.home.a;
+import com.tencent.mm.protocal.protobuf.bsb;
+import com.tencent.mm.protocal.protobuf.cko;
+import com.tencent.mm.protocal.protobuf.cyh;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class c
-  extends p
+  implements f
 {
-  private byb cbF;
-  private b pIo;
+  private com.tencent.mm.plugin.topstory.a.c.b teF;
+  public f tiS;
+  public a tlT;
+  private boolean tlU;
+  public c.b tlV;
+  public byte[] tlW;
+  byte[] tlX;
+  byte[] tlY;
+  public f tlZ;
+  public f tma;
   
-  public c(byb parambyb, b paramb)
+  public c()
   {
-    this.cbF = parambyb;
-    this.pIo = paramb;
+    AppMethodBeat.i(2153);
+    this.tlZ = new c.1(this);
+    this.tiS = new c.2(this);
+    this.tma = new c.3(this);
+    AppMethodBeat.o(2153);
   }
   
-  private m PP(String paramString)
+  private void a(cko paramcko, String paramString, boolean paramBoolean)
   {
-    m localm = null;
-    byte[] arrayOfByte;
-    boolean bool;
-    if (paramString.startsWith("file:///data/data/com.tencent.mm/files/public/fts_browse/res/app.html"))
+    AppMethodBeat.i(2158);
+    if (this.tlU)
     {
-      arrayOfByte = this.pIo.pIh;
-      this.pIo.pIh = null;
-      if (arrayOfByte == null) {
-        break label198;
+      if (this.tlT != null) {
+        this.tlT.aej(paramString);
       }
-      localm = new m("text/html", "utf8", new ByteArrayInputStream(arrayOfByte));
-      bool = true;
+      this.tlU = false;
+      AppMethodBeat.o(2158);
+      return;
+    }
+    if ((!paramBoolean) && (paramcko.bWu == 100))
+    {
+      this.tlV = new c.b(this, (byte)0);
+      this.tlV.tme = paramcko;
+      this.tlV.jSQ = System.currentTimeMillis();
+      this.tlV.tmd = paramString;
+      AppMethodBeat.o(2158);
+      return;
+    }
+    this.tlV = null;
+    AppMethodBeat.o(2158);
+  }
+  
+  private static String cKx()
+  {
+    AppMethodBeat.i(2159);
+    Object localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("ret", -1);
+      label22:
+      localObject = ((JSONObject)localObject).toString();
+      AppMethodBeat.o(2159);
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      break label22;
+    }
+  }
+  
+  public final void a(cko paramcko, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    AppMethodBeat.i(2156);
+    a(paramcko, paramBoolean1, paramBoolean2, paramInt, "");
+    AppMethodBeat.o(2156);
+  }
+  
+  public final void a(cko paramcko, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  {
+    AppMethodBeat.i(155125);
+    ab.i("MicroMsg.TopStory.TopStoryWebData", "loadDataFromServer directRequest:%s", new Object[] { Boolean.valueOf(paramBoolean2) });
+    if ((!paramBoolean2) && (this.teF != null) && (paramcko.cpW.equals(this.teF.cKi.cpW)))
+    {
+      this.tlU = paramBoolean1;
+      ab.i("MicroMsg.TopStory.TopStoryWebData", "Wait current net scene");
+      h.a(paramcko, "WaitCurrentNetScene", System.currentTimeMillis());
+      AppMethodBeat.o(155125);
+      return;
+    }
+    this.teF = new com.tencent.mm.plugin.topstory.a.c.b(paramcko, paramInt, paramString);
+    g.Rc().a(1943, this);
+    g.Rc().a(this.teF, 0);
+    this.tlU = paramBoolean1;
+    ab.i("MicroMsg.TopStory.TopStoryWebData", "Start new net scene");
+    AppMethodBeat.o(155125);
+  }
+  
+  public final void cKw()
+  {
+    AppMethodBeat.i(2154);
+    d.post(new c.a(this, (byte)0), "TopStory.LoadHtmlDataFromSdcardTask");
+    AppMethodBeat.o(2154);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(2157);
+    if (paramm.equals(this.teF))
+    {
+      g.Rc().b(1943, this);
+      this.teF = null;
+      paramString = (com.tencent.mm.plugin.topstory.a.c.b)paramm;
+      if ((paramInt1 != 0) || (paramInt2 != 0))
+      {
+        ab.i("MicroMsg.TopStory.TopStoryWebData", "netscene topstory error");
+        a(paramString.cKi, cKx(), true);
+        AppMethodBeat.o(2157);
+        return;
+      }
+      paramm = paramString.cID();
+      String str = paramm.wAa;
+      ((com.tencent.mm.plugin.topstory.a.b)g.G(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().na(paramm.yfr);
+      a(paramString.cKi, str, false);
+      if ((paramString.cID().yfq != null) && ((paramString.cID().yfq.xFz == 1) || (((PluginTopStoryUI)g.G(PluginTopStoryUI.class)).getTopStoryCommand().tfC))) {
+        d.post(new c.4(this, paramm, str), "TopStory.CacheHomeData");
+      }
+    }
+    AppMethodBeat.o(2157);
+  }
+  
+  public final void y(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(2155);
+    if (bo.isNullOrNil(paramString1))
+    {
+      AppMethodBeat.o(2155);
+      return;
+    }
+    JSONObject localJSONObject;
+    if (this.tlW != null) {
+      localJSONObject = new JSONObject();
     }
     for (;;)
     {
-      if (bool) {
-        y.i("MicroMsg.TopStory.TopStoryWebViewClient", "tryToGetResourceFromCache useMemoryCache: %b url: %s", new Object[] { Boolean.valueOf(bool), paramString });
-      }
-      return localm;
-      if (paramString.startsWith("file:///data/data/com.tencent.mm/files/public/fts_browse/res/dist/style.css"))
+      try
       {
-        arrayOfByte = this.pIo.pIj;
-        this.pIo.pIj = null;
-        if (arrayOfByte != null)
-        {
-          localm = new m("text/css", "utf8", new ByteArrayInputStream(arrayOfByte));
-          bool = true;
-        }
-      }
-      else if (paramString.startsWith("file:///data/data/com.tencent.mm/files/public/fts_browse/res/dist/build.js"))
-      {
-        arrayOfByte = this.pIo.pIi;
-        this.pIo.pIi = null;
-        if (arrayOfByte != null)
-        {
-          localm = new m("application/x-javascript", "utf8", new ByteArrayInputStream(arrayOfByte));
-          bool = true;
+        localJSONObject.put("json", paramString1);
+        localJSONObject.put("newQuery", true);
+        localJSONObject.put("isCache", true);
+        if (!paramBoolean) {
           continue;
         }
+        i = 1;
+        localJSONObject.put("recType", i);
+        if (!bo.isNullOrNil(paramString2)) {
+          localJSONObject.put("filterDocidList", new JSONArray(paramString2));
+        }
       }
-      label198:
-      bool = false;
+      catch (Exception paramString1)
+      {
+        int i;
+        continue;
+      }
+      this.tlW = new String(this.tlW).replace("'###preloadObjFeedsData###'", localJSONObject.toString() + "\n").getBytes();
+      ab.i("MicroMsg.TopStory.TopStoryWebData", "attachDataToHtml htmlBytes:%s", new Object[] { Integer.valueOf(this.tlW.length) });
+      AppMethodBeat.o(2155);
+      return;
+      i = 0;
     }
-  }
-  
-  public final m a(WebView paramWebView, l paraml)
-  {
-    m localm2 = PP(paraml.getUrl().toString());
-    m localm1 = localm2;
-    if (localm2 == null) {
-      localm1 = super.a(paramWebView, paraml);
-    }
-    return localm1;
-  }
-  
-  public final m a(WebView paramWebView, l paraml, Bundle paramBundle)
-  {
-    m localm2 = PP(paraml.getUrl().toString());
-    m localm1 = localm2;
-    if (localm2 == null) {
-      localm1 = super.a(paramWebView, paraml, paramBundle);
-    }
-    return localm1;
-  }
-  
-  public final void a(WebView paramWebView, String paramString)
-  {
-    y.i("MicroMsg.TopStory.TopStoryWebViewClient", "onPageFinished %s  %d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
-    super.a(paramWebView, paramString);
-    d.c(this.cbF, "pageFinish", System.currentTimeMillis());
-  }
-  
-  public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    d.c(this.cbF, "pageStart", System.currentTimeMillis());
-    y.i("MicroMsg.TopStory.TopStoryWebViewClient", "onPageStarted %s %d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
-    super.b(paramWebView, paramString, paramBitmap);
-  }
-  
-  public final boolean b(WebView paramWebView, String paramString)
-  {
-    y.i("MicroMsg.TopStory.TopStoryWebViewClient", "shouldOverrideUrlLoading %s", new Object[] { paramString });
-    return super.b(paramWebView, paramString);
-  }
-  
-  public final m c(WebView paramWebView, String paramString)
-  {
-    m localm2 = PP(paramString);
-    m localm1 = localm2;
-    if (localm2 == null) {
-      localm1 = super.c(paramWebView, paramString);
-    }
-    return localm1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.webview.c
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import java.util.List;
 
 final class MsgRetransmitUI$b
 {
-  boolean bIe = true;
-  public List<String> wgX = null;
+  public List<String> AzO = null;
+  boolean cpz = true;
 }
 
 

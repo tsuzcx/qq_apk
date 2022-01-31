@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.ext.voicecontrol;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.d.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class ExtControlProviderVoiceControl$1
   implements Runnable
@@ -11,20 +12,22 @@ final class ExtControlProviderVoiceControl$1
   
   public final void run()
   {
-    int i = bk.getInt(this.jLy, 4);
+    AppMethodBeat.i(20440);
+    int i = bo.getInt(this.mfC, 4);
     if (i == 1) {
-      ExtControlProviderVoiceControl.a(this.jLC, this.val$filePath);
+      ExtControlProviderVoiceControl.a(this.mfG, this.val$filePath);
     }
     for (;;)
     {
-      if (!ExtControlProviderVoiceControl.b(ExtControlProviderVoiceControl.a(this.jLC), i, bk.getInt(this.jLz, 4), bk.getInt(this.jLA, 16000), bk.getInt(this.jLB, 16), this.val$filePath))
+      if (!ExtControlProviderVoiceControl.b(ExtControlProviderVoiceControl.a(this.mfG), i, bo.getInt(this.mfD, 4), bo.getInt(this.mfE, 16000), bo.getInt(this.mfF, 16), this.val$filePath))
       {
-        y.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] !ok countDown");
-        ExtControlProviderVoiceControl.b(this.jLC);
-        this.jLC.jLu.countDown();
+        ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] !ok countDown");
+        ExtControlProviderVoiceControl.b(this.mfG);
+        this.mfG.mfy.countDown();
       }
+      AppMethodBeat.o(20440);
       return;
-      y.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] not pcm, don't run localVoiceControl");
+      ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] not pcm, don't run localVoiceControl");
     }
   }
 }

@@ -1,18 +1,22 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.chat.e.b;
-import com.tencent.mm.view.SmileyPanelImpl;
+import com.tencent.mm.view.c;
 
 final class i$5
   implements e.b
 {
   i$5(i parami) {}
   
-  public final ChatFooterPanel cX(Context paramContext)
+  public final ChatFooterPanel dK(Context paramContext)
   {
-    return new SmileyPanelImpl(paramContext);
+    AppMethodBeat.i(53060);
+    paramContext = new c(paramContext, false);
+    AppMethodBeat.o(53060);
+    return paramContext;
   }
 }
 

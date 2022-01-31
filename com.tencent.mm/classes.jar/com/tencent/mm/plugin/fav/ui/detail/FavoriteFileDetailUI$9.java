@@ -1,24 +1,17 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.fav.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavoriteFileDetailUI$9
-  implements View.OnClickListener
+  implements Runnable
 {
   FavoriteFileDetailUI$9(FavoriteFileDetailUI paramFavoriteFileDetailUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    paramView = b.b(FavoriteFileDetailUI.a(this.kfu));
-    if (4 == FavoriteFileDetailUI.c(this.kfu))
-    {
-      FavoriteFileDetailUI.d(this.kfu);
-      FavoriteFileDetailUI.e(this.kfu);
-      return;
-    }
-    FavoriteFileDetailUI.a(this.kfu, paramView);
+    AppMethodBeat.i(74331);
+    FavoriteFileDetailUI.v(this.mAf);
+    AppMethodBeat.o(74331);
   }
 }
 

@@ -1,23 +1,17 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChatFooter$30
-  implements View.OnTouchListener
+  implements Runnable
 {
   ChatFooter$30(ChatFooter paramChatFooter) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final void run()
   {
-    this.sgd.setToSendTextColor(true);
-    ChatFooter.a(this.sgd, 3);
-    if (ChatFooter.j(this.sgd) != null) {
-      ChatFooter.j(this.sgd).D(paramMotionEvent);
-    }
-    ChatFooter.k(this.sgd);
-    return false;
+    AppMethodBeat.i(155436);
+    ChatFooter.ar(this.vXU);
+    AppMethodBeat.o(155436);
   }
 }
 

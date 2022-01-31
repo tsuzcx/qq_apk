@@ -1,54 +1,61 @@
 package com.tencent.mm.modelvoiceaddr.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvoiceaddr.f.b;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class VoiceSearchLayout$4
   implements f.b
 {
   VoiceSearchLayout$4(VoiceSearchLayout paramVoiceSearchLayout) {}
   
-  public final void Tx()
-  {
-    this.eNc.reset();
-    VoiceSearchLayout.n(this.eNc).a(false, null, -1L);
-  }
-  
-  public final void Ty()
-  {
-    VoiceSearchLayout.k(this.eNc);
-    VoiceSearchLayout.l(this.eNc);
-    if (VoiceSearchLayout.m(this.eNc) != null) {
-      VoiceSearchLayout.m(this.eNc).stopTimer();
-    }
-  }
-  
   public final void a(String[] paramArrayOfString, long paramLong)
   {
+    AppMethodBeat.i(116767);
     try
     {
-      y.d("MicroMsg.VoiceSearchLayout", "dkaddr onRes ");
+      ab.d("MicroMsg.VoiceSearchLayout", "dkaddr onRes ");
       if (paramArrayOfString != null)
       {
-        y.d("MicroMsg.VoiceSearchLayout", "dkaddr onRes size:" + paramArrayOfString.length + " " + paramArrayOfString.toString());
+        ab.d("MicroMsg.VoiceSearchLayout", "dkaddr onRes size:" + paramArrayOfString.length + " " + paramArrayOfString.toString());
         int j = paramArrayOfString.length;
         int i = 0;
         while (i < j)
         {
-          String str = paramArrayOfString[i];
-          y.d("MicroMsg.VoiceSearchLayout", "search username  :" + str);
+          ab.d("MicroMsg.VoiceSearchLayout", "search username  :".concat(String.valueOf(paramArrayOfString[i])));
           i += 1;
         }
       }
-      this.eNc.reset();
-      VoiceSearchLayout.n(this.eNc).a(true, paramArrayOfString, paramLong);
+      this.gcH.reset();
+      VoiceSearchLayout.n(this.gcH).a(true, paramArrayOfString, paramLong);
+      AppMethodBeat.o(116767);
       return;
     }
     catch (Exception paramArrayOfString)
     {
-      y.printErrStackTrace("MicroMsg.VoiceSearchLayout", paramArrayOfString, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.VoiceSearchLayout", paramArrayOfString, "", new Object[0]);
+      AppMethodBeat.o(116767);
     }
+  }
+  
+  public final void amJ()
+  {
+    AppMethodBeat.i(116768);
+    this.gcH.reset();
+    VoiceSearchLayout.n(this.gcH).a(false, null, -1L);
+    AppMethodBeat.o(116768);
+  }
+  
+  public final void amK()
+  {
+    AppMethodBeat.i(116766);
+    VoiceSearchLayout.k(this.gcH);
+    VoiceSearchLayout.l(this.gcH);
+    if (VoiceSearchLayout.m(this.gcH) != null) {
+      VoiceSearchLayout.m(this.gcH).stopTimer();
+    }
+    AppMethodBeat.o(116766);
   }
 }
 

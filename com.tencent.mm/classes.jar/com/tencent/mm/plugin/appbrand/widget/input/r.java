@@ -1,95 +1,46 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
 import android.content.Context;
-import android.graphics.Rect;
-import android.text.InputFilter;
-import android.text.InputFilter.AllCaps;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputConnection;
-import com.tencent.mm.plugin.appbrand.widget.input.numberpad.a;
 
-public final class r
-  extends q
-  implements a
+abstract class r
+  extends y
 {
-  private InputConnection huw;
-  
   public r(Context paramContext)
   {
     super(paramContext);
-    super.setKeyListener(new r.1(this));
+    super.setHorizontallyScrolling(true);
   }
   
-  public final void arV()
+  public final boolean aQX()
   {
-    ((u)getInputPanel()).setInputEditText(this);
+    return false;
   }
   
-  public final InputConnection arY()
+  public boolean aRb()
   {
-    InputConnection localInputConnection = super.onCreateInputConnection(new EditorInfo());
-    this.huw = localInputConnection;
-    return localInputConnection;
+    return false;
   }
   
-  public final void clearFocus()
+  public boolean canScrollVertically(int paramInt)
   {
-    asq();
+    return false;
   }
   
-  public final View getInputPanel()
+  public void setGravity(int paramInt)
   {
-    return u.cl(this);
+    super.setGravity(paramInt & 0xFFFFFFAF & 0xFFFFFFCF | 0x10);
   }
   
-  public final InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
+  public final void setInputType(int paramInt)
   {
-    return null;
+    super.setInputType(0xFFFDFFFF & paramInt);
   }
   
-  public final boolean requestFocus(int paramInt, Rect paramRect)
-  {
-    return a(paramInt, paramRect);
-  }
-  
-  public final void setFilters(InputFilter[] paramArrayOfInputFilter)
-  {
-    int i = 0;
-    InputFilter[] arrayOfInputFilter = paramArrayOfInputFilter;
-    if (paramArrayOfInputFilter == null) {
-      arrayOfInputFilter = new InputFilter[0];
-    }
-    paramArrayOfInputFilter = new InputFilter[arrayOfInputFilter.length + 1];
-    while (i < arrayOfInputFilter.length)
-    {
-      paramArrayOfInputFilter[i] = arrayOfInputFilter[i];
-      i += 1;
-    }
-    paramArrayOfInputFilter[i] = new InputFilter.AllCaps();
-    super.setFilters(paramArrayOfInputFilter);
-  }
-  
-  public final void setPasswordMode(boolean paramBoolean)
-  {
-    aso();
-    int i = getInputType() | 0x2;
-    if (paramBoolean) {
-      i |= 0x10;
-    }
-    for (;;)
-    {
-      setInputType(i);
-      super.setPasswordMode(paramBoolean);
-      asp();
-      return;
-      i &= 0xFFFFFFEF;
-    }
-  }
+  public final void setSingleLine(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.r
  * JD-Core Version:    0.7.0.1
  */

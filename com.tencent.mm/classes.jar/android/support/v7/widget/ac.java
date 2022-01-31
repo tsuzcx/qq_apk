@@ -1,230 +1,407 @@
 package android.support.v7.widget;
 
-import android.os.SystemClock;
-import android.support.v7.view.menu.s;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
-import android.view.ViewParent;
+import android.support.v4.os.e;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.concurrent.TimeUnit;
 
-public abstract class ac
-  implements View.OnAttachStateChangeListener, View.OnTouchListener
+final class ac
+  implements Runnable
 {
-  private final float acT;
-  private final int acU;
-  private final int acV;
-  final View acW;
-  private Runnable acX;
-  private Runnable acY;
-  boolean acZ;
-  private final int[] ada = new int[2];
-  private int fC;
+  static final ThreadLocal<ac> adM = new ThreadLocal();
+  static Comparator<ac.b> adR = new ac.1();
+  ArrayList<RecyclerView> adN = new ArrayList();
+  long adO;
+  long adP;
+  private ArrayList<ac.b> adQ = new ArrayList();
   
-  public ac(View paramView)
+  /* Error */
+  private static RecyclerView.v a(RecyclerView paramRecyclerView, int paramInt, long paramLong)
   {
-    this.acW = paramView;
-    paramView.setLongClickable(true);
-    paramView.addOnAttachStateChangeListener(this);
-    this.acT = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
-    this.acU = ViewConfiguration.getTapTimeout();
-    this.acV = ((this.acU + ViewConfiguration.getLongPressTimeout()) / 2);
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 55	android/support/v7/widget/RecyclerView:ahR	Landroid/support/v7/widget/s;
+    //   4: invokevirtual 61	android/support/v7/widget/s:hx	()I
+    //   7: istore 5
+    //   9: iconst_0
+    //   10: istore 4
+    //   12: iload 4
+    //   14: iload 5
+    //   16: if_icmpge +53 -> 69
+    //   19: aload_0
+    //   20: getfield 55	android/support/v7/widget/RecyclerView:ahR	Landroid/support/v7/widget/s;
+    //   23: iload 4
+    //   25: invokevirtual 65	android/support/v7/widget/s:bt	(I)Landroid/view/View;
+    //   28: invokestatic 69	android/support/v7/widget/RecyclerView:bp	(Landroid/view/View;)Landroid/support/v7/widget/RecyclerView$v;
+    //   31: astore 6
+    //   33: aload 6
+    //   35: getfield 75	android/support/v7/widget/RecyclerView$v:mPosition	I
+    //   38: iload_1
+    //   39: if_icmpne +21 -> 60
+    //   42: aload 6
+    //   44: invokevirtual 79	android/support/v7/widget/RecyclerView$v:jU	()Z
+    //   47: ifne +13 -> 60
+    //   50: iconst_1
+    //   51: istore 4
+    //   53: iload 4
+    //   55: ifeq +20 -> 75
+    //   58: aconst_null
+    //   59: areturn
+    //   60: iload 4
+    //   62: iconst_1
+    //   63: iadd
+    //   64: istore 4
+    //   66: goto -54 -> 12
+    //   69: iconst_0
+    //   70: istore 4
+    //   72: goto -19 -> 53
+    //   75: aload_0
+    //   76: getfield 83	android/support/v7/widget/RecyclerView:ahO	Landroid/support/v7/widget/RecyclerView$o;
+    //   79: astore 6
+    //   81: aload_0
+    //   82: invokevirtual 86	android/support/v7/widget/RecyclerView:ja	()V
+    //   85: aload 6
+    //   87: iload_1
+    //   88: lload_2
+    //   89: invokevirtual 92	android/support/v7/widget/RecyclerView$o:e	(IJ)Landroid/support/v7/widget/RecyclerView$v;
+    //   92: astore 7
+    //   94: aload 7
+    //   96: ifnull +29 -> 125
+    //   99: aload 7
+    //   101: invokevirtual 95	android/support/v7/widget/RecyclerView$v:isBound	()Z
+    //   104: ifeq +29 -> 133
+    //   107: aload 7
+    //   109: invokevirtual 79	android/support/v7/widget/RecyclerView$v:jU	()Z
+    //   112: ifne +21 -> 133
+    //   115: aload 6
+    //   117: aload 7
+    //   119: getfield 99	android/support/v7/widget/RecyclerView$v:aku	Landroid/view/View;
+    //   122: invokevirtual 103	android/support/v7/widget/RecyclerView$o:bK	(Landroid/view/View;)V
+    //   125: aload_0
+    //   126: iconst_0
+    //   127: invokevirtual 107	android/support/v7/widget/RecyclerView:am	(Z)V
+    //   130: aload 7
+    //   132: areturn
+    //   133: aload 6
+    //   135: aload 7
+    //   137: iconst_0
+    //   138: invokevirtual 110	android/support/v7/widget/RecyclerView$o:a	(Landroid/support/v7/widget/RecyclerView$v;Z)V
+    //   141: goto -16 -> 125
+    //   144: astore 6
+    //   146: aload_0
+    //   147: iconst_0
+    //   148: invokevirtual 107	android/support/v7/widget/RecyclerView:am	(Z)V
+    //   151: aload 6
+    //   153: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	154	0	paramRecyclerView	RecyclerView
+    //   0	154	1	paramInt	int
+    //   0	154	2	paramLong	long
+    //   10	61	4	i	int
+    //   7	10	5	j	int
+    //   31	103	6	localObject1	Object
+    //   144	8	6	localObject2	Object
+    //   92	44	7	localv	RecyclerView.v
+    // Exception table:
+    //   from	to	target	type
+    //   81	94	144	finally
+    //   99	125	144	finally
+    //   133	141	144	finally
   }
   
-  public abstract s eX();
-  
-  public boolean eY()
+  final void b(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    s locals = eX();
-    if ((locals != null) && (!locals.isShowing())) {
-      locals.show();
-    }
-    return true;
-  }
-  
-  protected boolean fK()
-  {
-    s locals = eX();
-    if ((locals != null) && (locals.isShowing())) {
-      locals.dismiss();
-    }
-    return true;
-  }
-  
-  final void gG()
-  {
-    if (this.acY != null) {
-      this.acW.removeCallbacks(this.acY);
-    }
-    if (this.acX != null) {
-      this.acW.removeCallbacks(this.acX);
-    }
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = false;
-    boolean bool3 = this.acZ;
-    int i;
-    if (bool3)
+    if ((paramRecyclerView.isAttachedToWindow()) && (this.adO == 0L))
     {
-      paramView = this.acW;
-      Object localObject = eX();
-      if ((localObject == null) || (!((s)localObject).isShowing()))
+      this.adO = paramRecyclerView.getNanoTime();
+      paramRecyclerView.post(this);
+    }
+    paramRecyclerView = paramRecyclerView.aiJ;
+    paramRecyclerView.adS = paramInt1;
+    paramRecyclerView.adT = paramInt2;
+  }
+  
+  public final void run()
+  {
+    for (;;)
+    {
+      int j;
+      try
       {
-        i = 0;
-        if ((i == 0) && (fK())) {
-          break label241;
+        e.beginSection("RV Prefetch");
+        bool = this.adN.isEmpty();
+        if (bool) {
+          return;
         }
-      }
-      label235:
-      label241:
-      for (bool1 = true;; bool1 = false)
-      {
-        this.acZ = bool1;
-        if (!bool1)
+        j = this.adN.size();
+        long l1 = 0L;
+        int i = 0;
+        Object localObject1;
+        if (i < j)
         {
-          bool1 = bool2;
-          if (!bool3) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-        return bool1;
-        localObject = (z)((s)localObject).getListView();
-        if ((localObject == null) || (!((z)localObject).isShown()))
-        {
-          i = 0;
-          break;
-        }
-        MotionEvent localMotionEvent = MotionEvent.obtainNoHistory(paramMotionEvent);
-        int[] arrayOfInt = this.ada;
-        paramView.getLocationOnScreen(arrayOfInt);
-        localMotionEvent.offsetLocation(arrayOfInt[0], arrayOfInt[1]);
-        paramView = this.ada;
-        ((View)localObject).getLocationOnScreen(paramView);
-        localMotionEvent.offsetLocation(-paramView[0], -paramView[1]);
-        bool1 = ((z)localObject).b(localMotionEvent, this.fC);
-        localMotionEvent.recycle();
-        i = paramMotionEvent.getActionMasked();
-        if ((i != 1) && (i != 3)) {}
-        for (i = 1;; i = 0)
-        {
-          if ((!bool1) || (i == 0)) {
-            break label235;
+          localObject1 = (RecyclerView)this.adN.get(i);
+          if (((RecyclerView)localObject1).getWindowVisibility() != 0) {
+            break label719;
           }
-          i = 1;
-          break;
+          l1 = Math.max(((RecyclerView)localObject1).getDrawingTime(), l1);
+          i += 1;
+          continue;
         }
+        if (l1 == 0L) {
+          return;
+        }
+        long l2 = TimeUnit.MILLISECONDS.toNanos(l1) + this.adP;
+        int m = this.adN.size();
         i = 0;
-        break;
+        j = 0;
+        if (j < m)
+        {
+          localObject1 = (RecyclerView)this.adN.get(j);
+          if (((RecyclerView)localObject1).getWindowVisibility() != 0) {
+            break label716;
+          }
+          ((RecyclerView)localObject1).aiJ.a((RecyclerView)localObject1, false);
+          i = ((RecyclerView)localObject1).aiJ.mCount + i;
+          break label722;
+        }
+        this.adQ.ensureCapacity(i);
+        i = 0;
+        j = 0;
+        Object localObject4;
+        a locala;
+        if (j < m)
+        {
+          localObject4 = (RecyclerView)this.adN.get(j);
+          if (((RecyclerView)localObject4).getWindowVisibility() != 0) {
+            break label713;
+          }
+          locala = ((RecyclerView)localObject4).aiJ;
+          int n = Math.abs(locala.adS) + Math.abs(locala.adT);
+          int k = 0;
+          if (k >= locala.mCount * 2) {
+            break label735;
+          }
+          if (i >= this.adQ.size())
+          {
+            localObject1 = new ac.b();
+            this.adQ.add(localObject1);
+            int i1 = locala.adU[(k + 1)];
+            if (i1 > n) {
+              break label729;
+            }
+            bool = true;
+            ((ac.b)localObject1).adV = bool;
+            ((ac.b)localObject1).adW = n;
+            ((ac.b)localObject1).adX = i1;
+            ((ac.b)localObject1).adY = ((RecyclerView)localObject4);
+            ((ac.b)localObject1).position = locala.adU[k];
+            i += 1;
+            k += 2;
+            continue;
+          }
+          localObject1 = (ac.b)this.adQ.get(i);
+          continue;
+        }
+        Collections.sort(this.adQ, adR);
+        i = 0;
+        if (i < this.adQ.size())
+        {
+          localObject1 = (ac.b)this.adQ.get(i);
+          if (((ac.b)localObject1).adY != null)
+          {
+            if (((ac.b)localObject1).adV)
+            {
+              l1 = 9223372036854775807L;
+              localObject4 = a(((ac.b)localObject1).adY, ((ac.b)localObject1).position, l1);
+              if ((localObject4 == null) || (((RecyclerView.v)localObject4).akv == null) || (!((RecyclerView.v)localObject4).isBound()) || (((RecyclerView.v)localObject4).jU())) {
+                continue;
+              }
+              localObject4 = (RecyclerView)((RecyclerView.v)localObject4).akv.get();
+              if (localObject4 == null) {
+                continue;
+              }
+              if ((((RecyclerView)localObject4).aim) && (((RecyclerView)localObject4).ahR.hx() != 0)) {
+                ((RecyclerView)localObject4).iN();
+              }
+              locala = ((RecyclerView)localObject4).aiJ;
+              locala.a((RecyclerView)localObject4, true);
+              j = locala.mCount;
+              if (j == 0) {
+                continue;
+              }
+            }
+            try
+            {
+              e.beginSection("RV Nested Prefetch");
+              RecyclerView.s locals = ((RecyclerView)localObject4).aiK;
+              RecyclerView.a locala1 = ((RecyclerView)localObject4).Tg;
+              locals.akd = 1;
+              locals.ake = locala1.getItemCount();
+              locals.akg = false;
+              locals.akh = false;
+              locals.aki = false;
+              j = 0;
+              if (j < locala.mCount * 2)
+              {
+                a((RecyclerView)localObject4, locala.adU[j], l2);
+                j += 2;
+                continue;
+                l1 = l2;
+                continue;
+              }
+              e.endSection();
+              ((ac.b)localObject1).adV = false;
+              ((ac.b)localObject1).adW = 0;
+              ((ac.b)localObject1).adX = 0;
+              ((ac.b)localObject1).adY = null;
+              ((ac.b)localObject1).position = 0;
+              i += 1;
+              continue;
+            }
+            finally
+            {
+              e.endSection();
+            }
+          }
+        }
+        this.adO = 0L;
       }
-    }
-    paramView = this.acW;
-    if (paramView.isEnabled()) {}
-    switch (paramMotionEvent.getActionMasked())
-    {
-    default: 
-      label292:
-      i = 0;
-      label295:
-      if ((i == 0) || (!eY())) {
-        break;
-      }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (bool1)
+      finally
       {
-        long l = SystemClock.uptimeMillis();
-        paramView = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-        this.acW.onTouchEvent(paramView);
-        paramView.recycle();
+        this.adO = 0L;
+        e.endSection();
       }
-      break;
-      this.fC = paramMotionEvent.getPointerId(0);
-      if (this.acX == null) {
-        this.acX = new a();
+      e.endSection();
+      return;
+      label713:
+      break label735;
+      label716:
+      break label722;
+      label719:
+      continue;
+      label722:
+      j += 1;
+      continue;
+      label729:
+      boolean bool = false;
+      continue;
+      label735:
+      j += 1;
+    }
+  }
+  
+  static final class a
+    implements RecyclerView.i.a
+  {
+    int adS;
+    int adT;
+    int[] adU;
+    int mCount;
+    
+    public final void P(int paramInt1, int paramInt2)
+    {
+      if (paramInt1 < 0) {
+        throw new IllegalArgumentException("Layout positions must be non-negative");
       }
-      paramView.postDelayed(this.acX, this.acU);
-      if (this.acY == null) {
-        this.acY = new b();
+      if (paramInt2 < 0) {
+        throw new IllegalArgumentException("Pixel distance must be non-negative");
       }
-      paramView.postDelayed(this.acY, this.acV);
-      break label292;
-      i = paramMotionEvent.findPointerIndex(this.fC);
-      if (i < 0) {
-        break label292;
-      }
-      float f1 = paramMotionEvent.getX(i);
-      float f2 = paramMotionEvent.getY(i);
-      float f3 = this.acT;
-      if ((f1 >= -f3) && (f2 >= -f3) && (f1 < paramView.getRight() - paramView.getLeft() + f3) && (f2 < paramView.getBottom() - paramView.getTop() + f3)) {}
-      for (i = 1; i == 0; i = 0)
+      int i = this.mCount * 2;
+      if (this.adU == null)
       {
-        gG();
-        paramView.getParent().requestDisallowInterceptTouchEvent(true);
-        i = 1;
-        break label295;
+        this.adU = new int[4];
+        Arrays.fill(this.adU, -1);
       }
-      gG();
-      break label292;
-    }
-  }
-  
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
-  {
-    this.acZ = false;
-    this.fC = -1;
-    if (this.acX != null) {
-      this.acW.removeCallbacks(this.acX);
-    }
-  }
-  
-  private final class a
-    implements Runnable
-  {
-    a() {}
-    
-    public final void run()
-    {
-      ViewParent localViewParent = ac.this.acW.getParent();
-      if (localViewParent != null) {
-        localViewParent.requestDisallowInterceptTouchEvent(true);
-      }
-    }
-  }
-  
-  private final class b
-    implements Runnable
-  {
-    b() {}
-    
-    public final void run()
-    {
-      ac localac = ac.this;
-      localac.gG();
-      View localView = localac.acW;
-      if ((!localView.isEnabled()) || (localView.isLongClickable())) {}
-      while (!localac.eY()) {
+      for (;;)
+      {
+        this.adU[i] = paramInt1;
+        this.adU[(i + 1)] = paramInt2;
+        this.mCount += 1;
         return;
+        if (i >= this.adU.length)
+        {
+          int[] arrayOfInt = this.adU;
+          this.adU = new int[i * 2];
+          System.arraycopy(arrayOfInt, 0, this.adU, 0, arrayOfInt.length);
+        }
       }
-      localView.getParent().requestDisallowInterceptTouchEvent(true);
-      long l = SystemClock.uptimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-      localView.onTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      localac.acZ = true;
+    }
+    
+    final void a(RecyclerView paramRecyclerView, boolean paramBoolean)
+    {
+      this.mCount = 0;
+      if (this.adU != null) {
+        Arrays.fill(this.adU, -1);
+      }
+      RecyclerView.i locali = paramRecyclerView.ahW;
+      if ((paramRecyclerView.Tg != null) && (locali != null) && (locali.ajs))
+      {
+        if (!paramBoolean) {
+          break label101;
+        }
+        if (!paramRecyclerView.ahQ.gY()) {
+          locali.a(paramRecyclerView.Tg.getItemCount(), this);
+        }
+      }
+      for (;;)
+      {
+        if (this.mCount > locali.ajt)
+        {
+          locali.ajt = this.mCount;
+          locali.aju = paramBoolean;
+          paramRecyclerView.ahO.jF();
+        }
+        return;
+        label101:
+        if (!paramRecyclerView.js()) {
+          locali.a(this.adS, this.adT, paramRecyclerView.aiK, this);
+        }
+      }
+    }
+    
+    final boolean bx(int paramInt)
+    {
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      int j;
+      int i;
+      if (this.adU != null)
+      {
+        j = this.mCount;
+        i = 0;
+      }
+      for (;;)
+      {
+        bool1 = bool2;
+        if (i < j * 2)
+        {
+          if (this.adU[i] == paramInt) {
+            bool1 = true;
+          }
+        }
+        else {
+          return bool1;
+        }
+        i += 2;
+      }
+    }
+    
+    final void hI()
+    {
+      if (this.adU != null) {
+        Arrays.fill(this.adU, -1);
+      }
+      this.mCount = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v7.widget.ac
  * JD-Core Version:    0.7.0.1
  */

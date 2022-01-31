@@ -5,12 +5,13 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.n;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.a;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.f;
 import com.tencent.mm.pluginsdk.model.app.i;
 import com.tencent.mm.ui.base.MMGridView;
@@ -20,14 +21,14 @@ public class AppPreference
   extends Preference
 {
   private Context context;
-  int pwW = 0;
-  a pwY;
-  AdapterView.OnItemClickListener pwZ = null;
-  AdapterView.OnItemClickListener pxa = null;
-  private View.OnClickListener pxb = null;
-  private int pxc;
-  private boolean pxd = false;
-  private int pxe = 0;
+  private boolean ovS;
+  int sYL;
+  a sYN;
+  AdapterView.OnItemClickListener sYO;
+  AdapterView.OnItemClickListener sYP;
+  private View.OnClickListener sYQ;
+  private int sYR;
+  private int sYS;
   
   public AppPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,36 +38,83 @@ public class AppPreference
   public AppPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(25443);
+    this.sYO = null;
+    this.sYP = null;
+    this.sYQ = null;
+    this.sYL = 0;
+    this.ovS = false;
+    this.sYS = 0;
     this.context = paramContext;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.AppPreference);
-    this.pxc = paramContext.getInt(R.n.AppPreference_btn_visibility, 8);
-    this.pxd = paramContext.getBoolean(R.n.AppPreference_can_delete, false);
-    this.pxe = paramContext.getResourceId(R.n.AppPreference_empty_wording, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.AppPreference);
+    this.sYR = paramContext.getInt(0, 8);
+    this.ovS = paramContext.getBoolean(1, false);
+    this.sYS = paramContext.getResourceId(2, 0);
     paramContext.recycle();
+    AppMethodBeat.o(25443);
   }
   
-  protected final void onBindView(View paramView)
+  public final f Gn(int paramInt)
   {
+    AppMethodBeat.i(25445);
+    if ((paramInt < 0) || (paramInt >= this.sYN.getCount()))
+    {
+      AppMethodBeat.o(25445);
+      return null;
+    }
+    f localf = (f)this.sYN.getItem(paramInt);
+    AppMethodBeat.o(25445);
+    return localf;
+  }
+  
+  public final void onBindView(View paramView)
+  {
+    AppMethodBeat.i(25444);
     super.onBindView(paramView);
-    MMGridView localMMGridView = (MMGridView)paramView.findViewById(R.h.gridview);
-    this.pwY = new a(this.context, this.pwW);
-    localMMGridView.setAdapter(this.pwY);
-    localMMGridView.setOnItemClickListener(new AppPreference.1(this));
-    if (this.pxd) {
+    MMGridView localMMGridView = (MMGridView)paramView.findViewById(2131821494);
+    this.sYN = new a(this.context, this.sYL);
+    localMMGridView.setAdapter(this.sYN);
+    localMMGridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(25441);
+        if (AppPreference.a(AppPreference.this).xj(paramAnonymousInt))
+        {
+          AppPreference.a(AppPreference.this).mv(false);
+          AppMethodBeat.o(25441);
+          return;
+        }
+        if (AppPreference.a(AppPreference.this).sYK)
+        {
+          if (AppPreference.b(AppPreference.this) != null)
+          {
+            AppPreference.b(AppPreference.this).onItemClick(paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
+            AppMethodBeat.o(25441);
+          }
+        }
+        else if (AppPreference.c(AppPreference.this) != null) {
+          AppPreference.c(AppPreference.this).onItemClick(paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
+        }
+        AppMethodBeat.o(25441);
+      }
+    });
+    if (this.ovS) {
       localMMGridView.setOnItemLongClickListener(new AppPreference.2(this));
     }
-    TextView localTextView = (TextView)paramView.findViewById(R.h.empty_tv);
-    if (this.pwY.getCount() == 0)
+    TextView localTextView = (TextView)paramView.findViewById(2131821495);
+    if (this.sYN.getCount() == 0)
     {
       localTextView.setVisibility(0);
-      localTextView.setText(this.pxe);
+      localTextView.setText(this.sYS);
       localMMGridView.setVisibility(8);
     }
     for (;;)
     {
-      paramView = (Button)paramView.findViewById(R.h.btn);
-      paramView.setVisibility(this.pxc);
-      paramView.setOnClickListener(this.pxb);
+      paramView = (Button)paramView.findViewById(2131821496);
+      paramView.setVisibility(this.sYR);
+      paramView.setOnClickListener(this.sYQ);
+      AppMethodBeat.o(25444);
       return;
       localTextView.setVisibility(8);
       localMMGridView.setVisibility(0);
@@ -75,24 +123,20 @@ public class AppPreference
   
   public final void onPause()
   {
-    if (this.pwY != null) {
-      ap.brn().d(this.pwY);
+    AppMethodBeat.i(25447);
+    if (this.sYN != null) {
+      al.cac().remove(this.sYN);
     }
+    AppMethodBeat.o(25447);
   }
   
   public final void onResume()
   {
-    if (this.pwY != null) {
-      ap.brn().c(this.pwY);
+    AppMethodBeat.i(25446);
+    if (this.sYN != null) {
+      al.cac().add(this.sYN);
     }
-  }
-  
-  public final f zn(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.pwY.getCount())) {
-      return null;
-    }
-    return (f)this.pwY.getItem(paramInt);
+    AppMethodBeat.o(25446);
   }
 }
 

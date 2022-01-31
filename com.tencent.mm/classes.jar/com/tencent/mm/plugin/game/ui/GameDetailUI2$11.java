@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mm.plugin.game.g.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameDetailUI2$11
   implements View.OnClickListener
@@ -13,16 +13,19 @@ final class GameDetailUI2$11
   
   public final void onClick(View paramView)
   {
-    if (!GameDetailUI2.d(this.laq))
+    AppMethodBeat.i(111850);
+    if (!GameDetailUI2.d(this.nyn))
     {
-      GameDetailUI2.b(this.laq).setMaxLines(100);
-      GameDetailUI2.c(this.laq).setText(this.laq.getResources().getText(g.i.game_desc_toggle_less));
-      GameDetailUI2.a(this.laq, true);
+      GameDetailUI2.b(this.nyn).setMaxLines(100);
+      GameDetailUI2.c(this.nyn).setText(this.nyn.getResources().getText(2131300341));
+      GameDetailUI2.a(this.nyn, true);
+      AppMethodBeat.o(111850);
       return;
     }
-    GameDetailUI2.b(this.laq).setMaxLines(3);
-    GameDetailUI2.c(this.laq).setText(this.laq.getResources().getText(g.i.game_desc_toggle_all));
-    GameDetailUI2.a(this.laq, false);
+    GameDetailUI2.b(this.nyn).setMaxLines(3);
+    GameDetailUI2.c(this.nyn).setText(this.nyn.getResources().getText(2131300340));
+    GameDetailUI2.a(this.nyn, false);
+    AppMethodBeat.o(111850);
   }
 }
 

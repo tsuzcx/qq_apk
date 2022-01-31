@@ -2,76 +2,96 @@ package com.tencent.mm.r;
 
 import android.content.Context;
 import android.widget.Toast;
-import com.tencent.mm.h.a.jw;
-import com.tencent.mm.h.a.jw.b;
-import com.tencent.mm.h.a.tc;
-import com.tencent.mm.h.a.tc.a;
-import com.tencent.mm.model.ad;
-import com.tencent.mm.plugin.comm.a.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.kf;
+import com.tencent.mm.g.a.kf.b;
+import com.tencent.mm.g.a.uw;
+import com.tencent.mm.g.a.uw.a;
+import com.tencent.mm.model.ae;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
 {
-  private static ad bxA;
+  private static ae bZC;
   
-  public static boolean Bv()
+  public static ae BY()
   {
-    jw localjw = new jw();
-    localjw.bSp.action = 1;
-    com.tencent.mm.sdk.b.a.udP.m(localjw);
-    return localjw.bSq.bSr;
+    AppMethodBeat.i(77700);
+    if (bZC == null) {
+      bZC = com.tencent.mm.booter.a.Ia();
+    }
+    ae localae = bZC;
+    AppMethodBeat.o(77700);
+    return localae;
   }
   
-  public static boolean bi(Context paramContext)
+  public static boolean Ok()
   {
-    boolean bool = false;
-    if (Bv())
-    {
-      y.i("MicroMsg.DeviceOccupy", "isMultiTalking");
-      Toast.makeText(paramContext, a.h.multitalk_in_toast, 0).show();
-      bool = true;
-    }
+    AppMethodBeat.i(77696);
+    kf localkf = new kf();
+    localkf.czQ.action = 1;
+    com.tencent.mm.sdk.b.a.ymk.l(localkf);
+    boolean bool = localkf.czR.isStart;
+    AppMethodBeat.o(77696);
     return bool;
   }
   
-  public static boolean bj(Context paramContext)
+  public static boolean bM(Context paramContext)
   {
-    tc localtc = new tc();
-    com.tencent.mm.sdk.b.a.udP.m(localtc);
-    if (localtc.ccF.ccH)
+    AppMethodBeat.i(77695);
+    if (Ok())
     {
-      y.i("MicroMsg.DeviceOccupy", "isCameraUsing");
-      Toast.makeText(paramContext, j(paramContext, localtc.ccF.ccG), 0).show();
+      ab.i("MicroMsg.DeviceOccupy", "isMultiTalking");
+      Toast.makeText(paramContext, 2131301680, 0).show();
+      AppMethodBeat.o(77695);
+      return true;
     }
-    return localtc.ccF.ccH;
+    AppMethodBeat.o(77695);
+    return false;
   }
   
-  public static boolean bk(Context paramContext)
+  public static boolean bN(Context paramContext)
   {
-    tc localtc = new tc();
-    com.tencent.mm.sdk.b.a.udP.m(localtc);
-    if (localtc.ccF.ccI)
+    AppMethodBeat.i(77697);
+    uw localuw = new uw();
+    com.tencent.mm.sdk.b.a.ymk.l(localuw);
+    if (localuw.cLo.cLq)
     {
-      y.i("MicroMsg.DeviceOccupy", "isVoiceUsing");
-      Toast.makeText(paramContext, j(paramContext, localtc.ccF.ccG), 0).show();
+      ab.i("MicroMsg.DeviceOccupy", "isCameraUsing");
+      Toast.makeText(paramContext, m(paramContext, localuw.cLo.cLp), 0).show();
     }
-    return localtc.ccF.ccI;
+    boolean bool = localuw.cLo.cLq;
+    AppMethodBeat.o(77697);
+    return bool;
   }
   
-  private static String j(Context paramContext, boolean paramBoolean)
+  public static boolean bO(Context paramContext)
   {
-    if (paramBoolean) {
-      return paramContext.getString(a.h.cannot_use_feature_bcz_camera_using);
+    AppMethodBeat.i(77698);
+    uw localuw = new uw();
+    com.tencent.mm.sdk.b.a.ymk.l(localuw);
+    if (localuw.cLo.cLr)
+    {
+      ab.i("MicroMsg.DeviceOccupy", "isVoiceUsing");
+      Toast.makeText(paramContext, m(paramContext, localuw.cLo.cLp), 0).show();
     }
-    return paramContext.getString(a.h.cannot_use_feature_bcz_voice_using);
+    boolean bool = localuw.cLo.cLr;
+    AppMethodBeat.o(77698);
+    return bool;
   }
   
-  public static ad tu()
+  private static String m(Context paramContext, boolean paramBoolean)
   {
-    if (bxA == null) {
-      bxA = com.tencent.mm.booter.a.vR();
+    AppMethodBeat.i(77699);
+    if (paramBoolean)
+    {
+      paramContext = paramContext.getString(2131297844);
+      AppMethodBeat.o(77699);
+      return paramContext;
     }
-    return bxA;
+    paramContext = paramContext.getString(2131297845);
+    AppMethodBeat.o(77699);
+    return paramContext;
   }
 }
 

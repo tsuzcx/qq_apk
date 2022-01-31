@@ -1,38 +1,41 @@
 package com.tencent.mm.plugin.masssend.ui;
 
 import android.os.Message;
-import com.tencent.mm.ay.j;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.az.k;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.p;
 
 final class a$3
-  extends ah
+  extends ak
 {
   a$3(boolean paramBoolean) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    int i = q.Gu();
-    if (this.hZO) {
+    AppMethodBeat.i(22756);
+    int i = r.Zy();
+    if (this.ldm) {
       i &= 0xFFFEFFFF;
     }
     for (;;)
     {
-      au.Hx();
-      c.Dz().o(34, Integer.valueOf(i));
-      au.Hx();
-      c.Fv().b(new j("", "", "", "", "", "", "", "", i, "", ""));
-      if (!this.hZO) {
-        a.adg();
+      aw.aaz();
+      c.Ru().set(34, Integer.valueOf(i));
+      aw.aaz();
+      c.Yz().c(new k("", "", "", "", "", "", "", "", i, "", ""));
+      if (!this.ldm) {
+        a.clearData();
       }
-      if (this.hZP != null) {
-        this.hZP.a(null, null);
+      if (this.oBt != null) {
+        this.oBt.a(null, null);
       }
+      AppMethodBeat.o(22756);
       return;
       i |= 0x10000;
     }
@@ -40,7 +43,7 @@ final class a$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.a.3
  * JD-Core Version:    0.7.0.1
  */

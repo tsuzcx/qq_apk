@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsOnlineVideoActivity$7
   implements View.OnTouchListener
@@ -11,7 +12,9 @@ final class SnsOnlineVideoActivity$7
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.pbr.aBR();
+    AppMethodBeat.i(39150);
+    this.rUf.bdV();
+    AppMethodBeat.o(39150);
     return true;
   }
 }

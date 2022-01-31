@@ -1,92 +1,93 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.j;
-import android.support.v4.app.o;
-import com.tencent.mm.plugin.appbrand.appusage.i;
-import com.tencent.mm.plugin.appbrand.appusage.l;
-import com.tencent.mm.plugin.appbrand.appusage.q;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI.a;
-import com.tencent.mm.plugin.appbrand.ui.a.a;
-import com.tencent.mm.plugin.appbrand.ui.c;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.ui.MMActivity;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class n
-  extends a
+final class n
+  extends r<Object>
 {
-  private int gdS = 0;
-  private int hjt;
-  private String hju;
-  
-  public n(MMActivity paramMMActivity)
+  n(ArrayList<?> paramArrayList1, ArrayList<?> paramArrayList2)
   {
-    super(paramMMActivity);
+    super(paramArrayList1, paramArrayList2);
   }
   
-  public final void dC(boolean paramBoolean)
+  public final boolean F(int paramInt1, int paramInt2)
   {
-    if (paramBoolean)
+    AppMethodBeat.i(133497);
+    if (!this.iVE.get(paramInt1).getClass().equals(this.iVF.get(paramInt2).getClass()))
     {
-      localObject1 = e.class;
-      localObject2 = ((MMActivity)getBaseContext()).getSupportFragmentManager().Z(16908290);
-      if ((localObject2 == null) || (!((Class)localObject1).isInstance(localObject2))) {
-        break label42;
-      }
+      AppMethodBeat.o(133497);
+      return false;
     }
-    label42:
-    while ((((MMActivity)getBaseContext()).isFinishing()) || (((MMActivity)getBaseContext()).uMr))
+    if ((this.iVE.get(paramInt1) instanceof AppBrandRecentTaskInfo))
     {
-      return;
-      localObject1 = c.class;
-      break;
-    }
-    Object localObject2 = ((MMActivity)getBaseContext()).getSupportFragmentManager().bP();
-    if (paramBoolean) {}
-    for (Object localObject1 = new e((MMActivity)getBaseContext() instanceof AppBrandLauncherUI);; localObject1 = c.ce(getString(y.j.app_brand_entrance), getString(y.j.app_brand_launcher_recents_blank_tip)))
-    {
-      ((AppBrandLauncherUI.a)localObject1).setScene(this.hjt);
-      ((AppBrandLauncherUI.a)localObject1).hda = this.hju;
-      ((o)localObject2).b(16908290, (Fragment)localObject1);
-      ((o)localObject2).commit();
-      return;
-    }
-  }
-  
-  public final void onActivityDidResume()
-  {
-    boolean bool;
-    if (((MMActivity)getBaseContext() instanceof AppBrandLauncherUI)) {
-      if ((!i.acR()) && (!i.acS()) && (!q.acZ()))
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.iVE.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.iVF.get(paramInt2);
+      if ((localAppBrandRecentTaskInfo1.gXd == localAppBrandRecentTaskInfo2.gXd) && (localAppBrandRecentTaskInfo1.cmx.equals(localAppBrandRecentTaskInfo2.cmx)))
       {
-        l.acW();
-        if (!l.enabled()) {}
+        AppMethodBeat.o(133497);
+        return true;
       }
-      else
-      {
-        bool = true;
-        dC(bool);
-      }
+      AppMethodBeat.o(133497);
+      return false;
     }
-    int i;
-    do
-    {
-      return;
-      bool = false;
-      break;
-      ((MMActivity)getBaseContext()).setMMTitle(y.j.app_brand_launcher_header_section_text_recent);
-      i = this.gdS + 1;
-      this.gdS = i;
-    } while (i != 1);
-    dC(true);
+    AppMethodBeat.o(133497);
+    return false;
   }
   
-  public final void v(Intent paramIntent)
+  public final boolean G(int paramInt1, int paramInt2)
   {
-    this.hjt = paramIntent.getIntExtra("extra_enter_scene", 1);
-    this.hju = paramIntent.getStringExtra("extra_enter_scene_note");
+    AppMethodBeat.i(133498);
+    if ((this.iVE.get(paramInt1) instanceof AppBrandRecentTaskInfo))
+    {
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.iVE.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.iVF.get(paramInt2);
+      if ((localAppBrandRecentTaskInfo1.hcd == localAppBrandRecentTaskInfo2.hcd) && (bo.nullAsNil(localAppBrandRecentTaskInfo1.hcc).equals(localAppBrandRecentTaskInfo2.hcc)) && (bo.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(localAppBrandRecentTaskInfo2.appName)))
+      {
+        AppMethodBeat.o(133498);
+        return true;
+      }
+      AppMethodBeat.o(133498);
+      return false;
+    }
+    AppMethodBeat.o(133498);
+    return true;
+  }
+  
+  public final Object H(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(133499);
+    if (paramInt1 >= this.iVE.size())
+    {
+      AppMethodBeat.o(133499);
+      return null;
+    }
+    Bundle localBundle = new Bundle();
+    if ((this.iVE.get(paramInt1) instanceof AppBrandRecentTaskInfo))
+    {
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.iVE.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.iVF.get(paramInt2);
+      if (localAppBrandRecentTaskInfo1.hcd != localAppBrandRecentTaskInfo2.hcd) {
+        localBundle.putBoolean("star", localAppBrandRecentTaskInfo2.hcd);
+      }
+      if (!bo.nullAsNil(localAppBrandRecentTaskInfo1.hcc).equals(localAppBrandRecentTaskInfo2.hcc)) {
+        localBundle.putString("icon", localAppBrandRecentTaskInfo2.hcc);
+      }
+      if (!bo.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(localAppBrandRecentTaskInfo2.appName)) {
+        localBundle.putString("nick_name", localAppBrandRecentTaskInfo2.appName);
+      }
+    }
+    if (localBundle.size() <= 0)
+    {
+      AppMethodBeat.o(133499);
+      return null;
+    }
+    AppMethodBeat.o(133499);
+    return localBundle;
   }
 }
 

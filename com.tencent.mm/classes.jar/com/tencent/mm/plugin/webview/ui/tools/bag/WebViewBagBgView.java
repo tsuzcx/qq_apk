@@ -10,122 +10,139 @@ import android.graphics.Shader.TileMode;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class WebViewBagBgView
   extends View
 {
-  private RectF fS;
+  private RectF gM;
   int mDuration;
-  private Paint mPaint = new Paint();
+  private Paint mPaint;
   long mStartTime;
-  int pyx;
-  private int rsi = -7829368;
-  private int rsj = -65536;
-  private float rsk = 0.0F;
-  private float rsl;
-  private float rsm;
-  private int rsn;
-  private int rso;
-  boolean rsp;
+  int tal;
+  private int vin;
+  private int vio;
+  private float vip;
+  private float viq;
+  private float vir;
+  private int vis;
+  private int vit;
+  boolean viu;
   
   public WebViewBagBgView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(8198);
+    this.vin = -7829368;
+    this.vio = -65536;
+    this.vip = 0.0F;
+    this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
-    this.rso = -1;
+    this.vit = -1;
+    AppMethodBeat.o(8198);
   }
   
-  final void gT(long paramLong)
+  final void nq(long paramLong)
   {
-    if (this.rso < 0)
+    AppMethodBeat.i(8201);
+    if (this.vit < 0)
     {
-      y.i("MicroMsg.WebViewBagBgView", "doUpdateAngryInfo not measured, mDiameter:%d", new Object[] { Integer.valueOf(this.rso) });
+      ab.i("MicroMsg.WebViewBagBgView", "doUpdateAngryInfo not measured, mDiameter:%d", new Object[] { Integer.valueOf(this.vit) });
+      AppMethodBeat.o(8201);
       return;
     }
-    this.rsk = (this.rso * 2 / (this.mDuration / this.pyx));
+    this.vip = (this.vit * 2 / (this.mDuration / this.tal));
     if (paramLong - this.mStartTime <= 0L)
     {
-      f = this.rso;
-      this.rsl = f;
-      if (this.rso - this.rsl >= this.rsn) {
-        break label173;
+      f = this.vit;
+      this.viq = f;
+      if (this.vit - this.viq >= this.vis) {
+        break label191;
       }
     }
-    label173:
-    for (float f = this.rso;; f = this.rsl + this.rsn)
+    label191:
+    for (float f = this.vit;; f = this.viq + this.vis)
     {
-      this.rsm = f;
+      this.vir = f;
+      AppMethodBeat.o(8201);
       return;
-      int i = (int)((float)(paramLong - this.mStartTime) / this.pyx);
-      this.rsl = (this.rso - (i + 1) * this.rsk);
-      if (this.rsl < -this.rsn)
+      int i = (int)((float)(paramLong - this.mStartTime) / this.tal);
+      this.viq = (this.vit - (i + 1) * this.vip);
+      if (this.viq < -this.vis)
       {
-        f = -this.rsn;
+        f = -this.vis;
         break;
       }
-      f = this.rsl;
+      f = this.viq;
       break;
     }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(8199);
     super.onDraw(paramCanvas);
-    float f1 = this.rsl;
-    float f2 = this.rsm;
-    int i = this.rsi;
-    int j = this.rsj;
+    if (this.vir == this.viq) {
+      this.viq -= 0.001F;
+    }
+    float f1 = this.viq;
+    float f2 = this.vir;
+    int i = this.vin;
+    int j = this.vio;
     Object localObject = Shader.TileMode.CLAMP;
     localObject = new LinearGradient(0.0F, f1, 0.0F, f2, new int[] { i, j }, null, (Shader.TileMode)localObject);
     this.mPaint.setShader((Shader)localObject);
-    paramCanvas.drawOval(this.fS, this.mPaint);
-    if ((this.rsp) && (this.rsm > 0.0F))
+    paramCanvas.drawOval(this.gM, this.mPaint);
+    if ((this.viu) && (this.vir > 0.0F))
     {
-      this.rsl -= this.rsk;
-      if (this.rsl >= -this.rsn) {
-        break label178;
+      this.viq -= this.vip;
+      if (this.viq >= -this.vis) {
+        break label213;
       }
-      f1 = -this.rsn;
-      this.rsl = f1;
-      if (this.rso - this.rsl >= this.rsn) {
-        break label186;
+      f1 = -this.vis;
+      this.viq = f1;
+      if (this.vit - this.viq >= this.vis) {
+        break label221;
       }
     }
-    label178:
-    label186:
-    for (f1 = this.rso;; f1 = this.rsl + this.rsn)
+    label213:
+    label221:
+    for (f1 = this.vit;; f1 = this.viq + this.vis)
     {
-      this.rsm = f1;
-      postInvalidateDelayed(this.pyx);
+      this.vir = f1;
+      postInvalidateDelayed(this.tal);
+      AppMethodBeat.o(8199);
       return;
-      f1 = this.rsl;
+      f1 = this.viq;
       break;
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(8200);
     super.onMeasure(paramInt1, paramInt2);
-    this.rso = View.MeasureSpec.getSize(paramInt1);
-    this.fS = new RectF(0.0F, 0.0F, this.rso, this.rso);
-    this.rsn = (this.rso / 2);
-    gT(System.currentTimeMillis());
+    this.vit = View.MeasureSpec.getSize(paramInt1);
+    this.gM = new RectF(0.0F, 0.0F, this.vit, this.vit);
+    this.vis = (this.vit / 2);
+    nq(System.currentTimeMillis());
+    AppMethodBeat.o(8200);
   }
   
   public void setAngryColor(int paramInt)
   {
-    this.rsj = paramInt;
+    this.vio = paramInt;
   }
   
   public void setStartColor(int paramInt)
   {
-    this.rsi = paramInt;
+    this.vin = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.bag.WebViewBagBgView
  * JD-Core Version:    0.7.0.1
  */

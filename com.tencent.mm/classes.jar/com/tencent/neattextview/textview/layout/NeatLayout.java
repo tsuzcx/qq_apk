@@ -1,17 +1,20 @@
 package com.tencent.neattextview.textview.layout;
 
 import android.text.TextPaint;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.neattextview.textview.a.a;
 import java.util.ArrayList;
 
 public class NeatLayout
-  extends b
+  extends c
 {
-  private int wEu = 0;
+  private int BbY = 0;
   
   static
   {
+    AppMethodBeat.i(3257);
     System.loadLibrary("linebreak");
+    AppMethodBeat.o(3257);
   }
   
   public NeatLayout(CharSequence paramCharSequence, float[] paramArrayOfFloat)
@@ -23,90 +26,123 @@ public class NeatLayout
   
   public final void a(TextPaint paramTextPaint, float paramFloat, int paramInt, boolean paramBoolean)
   {
-    float f3 = paramTextPaint.getTextSize() / 2.0F;
-    float f1;
+    AppMethodBeat.i(3256);
+    float f6 = paramTextPaint.getTextSize() / 2.0F;
+    float f2;
     int i;
-    float[] arrayOfFloat;
-    int k;
-    int i2;
-    int n;
-    int m;
+    float[] arrayOfFloat1;
+    boolean[] arrayOfBoolean;
+    int i3;
+    float f1;
+    label110:
+    float f3;
     if (paramBoolean)
     {
-      f1 = paramTextPaint.getTextSize() / 6.0F;
-      i = this.wDC.length();
+      f2 = paramTextPaint.getTextSize() / 6.0F;
+      i = this.Bbm.length();
       paramTextPaint = new int[i];
-      arrayOfFloat = new float[i];
-      boolean[] arrayOfBoolean = new boolean[i];
-      int i3 = nComputeBreak(this.wDC, this.wDE, 0.0F, paramFloat + f3, paramTextPaint, arrayOfFloat, f1, arrayOfBoolean, a.wDx, this.wDH, a.wDw, this.wDG, this.wEb);
-      this.wEu = i3;
-      i = 0;
-      k = 0;
-      if ((k >= i3) || (k >= paramInt)) {
-        return;
-      }
-      i2 = paramTextPaint[k];
-      paramBoolean = arrayOfBoolean[k];
-      n = i2 - i;
+      arrayOfFloat1 = new float[i];
+      arrayOfBoolean = new boolean[i];
+      i3 = nComputeBreak(this.Bbm, this.Bbo, 0.0F, paramFloat + f6, paramTextPaint, arrayOfFloat1, f2, arrayOfBoolean, a.Bbh, this.Bbr, a.Bbg, this.Bbq, this.BbJ);
+      this.BbY = i3;
       f1 = 0.0F;
-      f2 = paramFloat - arrayOfFloat[k];
-      if (Math.abs(f2) > f3) {
-        break label271;
+      i = 0;
+      if ((i >= i3) || (i >= paramInt)) {
+        break label157;
       }
-      m = 1;
+      f3 = arrayOfFloat1[i];
+      if (f1 >= f3) {
+        break label450;
+      }
+      f1 = f3;
     }
-    label271:
+    label157:
+    label436:
+    label450:
     for (;;)
     {
-      label163:
-      if (m != 0)
+      i += 1;
+      break label110;
+      f2 = 0.0F;
+      break;
+      float f5 = Math.min(f1, paramFloat);
+      i = 0;
+      int k = 0;
+      if ((k < i3) && (k < paramInt))
       {
-        int j = n;
-        if (i2 - 1 >= 0)
+        int i2 = paramTextPaint[k];
+        paramBoolean = arrayOfBoolean[k];
+        int n = i2 - i;
+        f1 = 0.0F;
+        f3 = paramFloat - arrayOfFloat1[k];
+        int m;
+        if (Math.abs(f3) <= f6) {
+          m = 1;
+        }
+        int j;
+        while (m != 0)
         {
           j = n;
-          if (this.wDD[(i2 - 1)] == '\n') {
-            j = n - 1;
-          }
-        }
-        n = i;
-        for (;;)
-        {
-          if (n < i2)
+          if (i2 - 1 >= 0)
           {
-            int i1 = j;
-            if (this.wDD[n] != '\n')
-            {
-              i1 = j;
-              if (this.wDE[n] == 0.0F) {
-                i1 = j - 1;
-              }
+            j = n;
+            if (this.Bbn[(i2 - 1)] == '\n') {
+              j = n - 1;
             }
-            n += 1;
-            j = i1;
-            continue;
-            f1 = 0.0F;
-            break;
-            m = 0;
-            break label163;
+          }
+          n = i;
+          for (;;)
+          {
+            if (n < i2)
+            {
+              int i1 = j;
+              if (this.Bbn[n] != '\n')
+              {
+                i1 = j;
+                if (this.Bbo[n] == 0.0F) {
+                  i1 = j - 1;
+                }
+              }
+              n += 1;
+              j = i1;
+              continue;
+              m = 0;
+              break;
+            }
+          }
+          f1 = f3 / (Math.max(2, j) - 1);
+        }
+        label360:
+        char[] arrayOfChar;
+        float[] arrayOfFloat2;
+        if (m != 0)
+        {
+          f3 = paramFloat;
+          arrayOfChar = this.Bbn;
+          arrayOfFloat2 = this.Bbo;
+          j = this.Bbt.size();
+          if (m == 0) {
+            break label436;
           }
         }
-        f1 = f2 / (Math.max(2, j) - 1);
+        for (float f4 = paramFloat;; f4 = f5)
+        {
+          a(arrayOfChar, i, i2, f3, arrayOfFloat2, j, f1, paramBoolean, f2, f4);
+          k += 1;
+          i = i2;
+          break;
+          f3 = arrayOfFloat1[k];
+          break label360;
+        }
       }
-    }
-    if (m != 0) {}
-    for (float f2 = paramFloat;; f2 = arrayOfFloat[k])
-    {
-      a(this.wDD, i, i2, f2, this.wDE, this.wDJ.size(), f1, paramBoolean);
-      k += 1;
-      i = i2;
-      break;
+      AppMethodBeat.o(3256);
+      return;
     }
   }
   
-  public final int cNL()
+  public final int dTo()
   {
-    return this.wEu;
+    return this.BbY;
   }
 }
 

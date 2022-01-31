@@ -1,14 +1,14 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.storage.au;
 
 final class c$5
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return au.dXp;
+    return au.SQL_CREATE;
   }
 }
 

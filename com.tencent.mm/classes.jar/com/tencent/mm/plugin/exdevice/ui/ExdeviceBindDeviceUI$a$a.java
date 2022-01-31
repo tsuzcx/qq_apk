@@ -5,8 +5,8 @@ import android.widget.TextView;
 
 final class ExdeviceBindDeviceUI$a$a
 {
-  TextView fhD;
-  ImageView gSx;
+  TextView gzk;
+  ImageView ivs;
 }
 
 

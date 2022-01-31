@@ -4,9 +4,9 @@ import java.nio.ByteBuffer;
 
 public final class g
 {
-  public String bUi;
   private ByteBuffer buffer = null;
-  private boolean inQ = false;
+  public String cBO;
+  private boolean eRq = false;
   public int requestType;
 }
 

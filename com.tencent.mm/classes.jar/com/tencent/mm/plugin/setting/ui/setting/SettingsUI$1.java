@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.y.a.a;
+import com.tencent.mm.x.a.a;
 
 final class SettingsUI$1
   implements a.a
@@ -10,19 +11,21 @@ final class SettingsUI$1
   
   public final void b(ac.a parama)
   {
-    if ((parama != null) && (parama == ac.a.uyT)) {
-      SettingsUI.b(this.nWB);
+    AppMethodBeat.i(127560);
+    if ((parama != null) && (parama == ac.a.yJH)) {
+      SettingsUI.b(this.qKL);
     }
+    AppMethodBeat.o(127560);
   }
   
-  public final void gZ(int paramInt)
+  public final void s(int paramInt, String paramString)
   {
+    AppMethodBeat.i(127559);
     if ((paramInt == 262145) || (paramInt == 262157) || (paramInt == 262158)) {
-      SettingsUI.a(this.nWB);
+      SettingsUI.a(this.qKL);
     }
+    AppMethodBeat.o(127559);
   }
-  
-  public final void ha(int paramInt) {}
 }
 
 

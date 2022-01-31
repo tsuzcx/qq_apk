@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class OfflineVideoView$4
   implements Runnable
@@ -12,23 +13,29 @@ final class OfflineVideoView$4
   
   public final void run()
   {
-    y.i("MicroMsg.OfflineVideoView", "%d switch video model isVideoPlay %b %f", new Object[] { Integer.valueOf(this.oRp.hashCode()), Boolean.valueOf(this.iuL), Float.valueOf(this.oRq) });
-    View localView = (View)OfflineVideoView.b(this.oRp);
-    if (this.iuL)
+    AppMethodBeat.i(38363);
+    ab.i("MicroMsg.OfflineVideoView", "%d switch video model isVideoPlay %b %f", new Object[] { Integer.valueOf(this.rJb.hashCode()), Boolean.valueOf(this.kvP), Float.valueOf(this.rJc) });
+    View localView = (View)OfflineVideoView.b(this.rJb);
+    if (this.kvP)
     {
-      localView.setAlpha(this.oRq);
+      localView.setAlpha(this.rJc);
       localView.setVisibility(0);
-      OfflineVideoView.c(this.oRp).setVisibility(0);
-      OfflineVideoView.c(this.oRp).setAlpha(this.oRq);
-      if (this.oRq >= 1.0D) {
-        OfflineVideoView.a(this.oRp).setVisibility(8);
+      OfflineVideoView.c(this.rJb).setVisibility(0);
+      OfflineVideoView.c(this.rJb).setAlpha(this.rJc);
+      if (this.rJc >= 1.0D)
+      {
+        OfflineVideoView.a(this.rJb).setVisibility(8);
+        AppMethodBeat.o(38363);
       }
-      return;
     }
-    localView.setVisibility(0);
-    OfflineVideoView.c(this.oRp).setVisibility(0);
-    OfflineVideoView.c(this.oRp).setAlpha(0.0F);
-    OfflineVideoView.a(this.oRp).setVisibility(0);
+    else
+    {
+      localView.setVisibility(0);
+      OfflineVideoView.c(this.rJb).setVisibility(0);
+      OfflineVideoView.c(this.rJb).setAlpha(0.0F);
+      OfflineVideoView.a(this.rJb).setVisibility(0);
+    }
+    AppMethodBeat.o(38363);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.game;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.plugin.wepkg.b.d;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.plugin.wepkg.b.f;
 
 final class e$4
   implements h.d
 {
   e$4(e parame) {}
   
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return d.dXp;
+    return f.SQL_CREATE;
   }
 }
 

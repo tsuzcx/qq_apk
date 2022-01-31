@@ -1,31 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.bc;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class f$1
-  implements b
+  implements bc
 {
-  f$1(f paramf, c paramc) {}
+  f$1(f paramf, AppBrandVideoView paramAppBrandVideoView) {}
   
-  public final void aS(String paramString, int paramInt)
+  public final void aDk()
   {
-    y.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo onPreLoadFail err_code = %s, url = %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    f.a(this.ggE, paramString, -5, paramInt);
-  }
-  
-  public final void bN(String paramString1, String paramString2)
-  {
-    y.i("MicroMsg.JsApiLoadVideoResource", "leonlad downloadVideo onPreLoadSucc save_path = %s, url = %s", new Object[] { paramString2, paramString1 });
-    paramString2 = this.ggE;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("resource", paramString1);
-    paramString1 = new JSONObject(localHashMap).toString();
-    new j.j().e(paramString2).tM(paramString1).dispatch();
+    AppMethodBeat.i(126549);
+    AppBrandVideoView localAppBrandVideoView = this.idM;
+    ab.i("MicroMsg.AppBrandVideoView", "onExitFullScreen");
+    if (localAppBrandVideoView.ico.aFq()) {
+      localAppBrandVideoView.ico.aDh();
+    }
+    localAppBrandVideoView.ey(false);
+    AppMethodBeat.o(126549);
   }
 }
 

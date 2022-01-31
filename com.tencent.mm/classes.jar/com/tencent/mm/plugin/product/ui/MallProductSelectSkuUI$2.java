@@ -4,9 +4,10 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.b.c;
 import com.tencent.mm.plugin.product.b.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 final class MallProductSelectSkuUI$2
@@ -17,35 +18,37 @@ final class MallProductSelectSkuUI$2
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     paramAdapterView = null;
+    AppMethodBeat.i(44106);
     Object localObject = (Pair)paramView.getTag();
-    paramView = this.mUv;
-    c localc = MallProductSelectSkuUI.b(this.mUv);
+    paramView = this.pwB;
+    c localc = MallProductSelectSkuUI.b(this.pwB);
     String str = (String)((Pair)localObject).first;
     localObject = (String)((Pair)localObject).second;
-    y.d("MicroMsg.MallProductManager", "selectSkuInfo (" + str + " , " + (String)localObject + ")");
-    if ((localc.mSb.containsKey(str)) && (((String)localc.mSb.get(str)).equals(localObject)))
+    ab.d("MicroMsg.MallProductManager", "selectSkuInfo (" + str + " , " + (String)localObject + ")");
+    if ((localc.pui.containsKey(str)) && (((String)localc.pui.get(str)).equals(localObject)))
     {
-      localc.mSb.remove(str);
-      localc.mRT = c.G(localc.mSb);
-      if (localc.mSa != null) {
-        paramAdapterView = (e)localc.mSa.get(localc.mRT);
+      localc.pui.remove(str);
+      localc.pua = c.V(localc.pui);
+      if (localc.puh != null) {
+        paramAdapterView = (e)localc.puh.get(localc.pua);
       }
     }
-    for (localc.mSe = paramAdapterView;; localc.mSe = ((e)localc.mSa.get(localc.mRT)))
+    for (localc.pul = paramAdapterView;; localc.pul = ((e)localc.puh.get(localc.pua)))
     {
-      localc.bsf();
-      paramAdapterView = localc.mSe;
+      localc.cbl();
+      paramAdapterView = localc.pul;
       do
       {
         MallProductSelectSkuUI.a(paramView, paramAdapterView);
-        MallProductSelectSkuUI.a(this.mUv);
+        MallProductSelectSkuUI.a(this.pwB);
+        AppMethodBeat.o(44106);
         return;
         paramAdapterView = null;
         break;
-        localc.mSb.put(str, localObject);
-        localc.mRT = c.G(localc.mSb);
-        y.d("MicroMsg.MallProductManager", "getSkuInfoId (" + localc.mRT + ")");
-      } while (localc.mSa == null);
+        localc.pui.put(str, localObject);
+        localc.pua = c.V(localc.pui);
+        ab.d("MicroMsg.MallProductManager", "getSkuInfoId (" + localc.pua + ")");
+      } while (localc.puh == null);
     }
   }
 }

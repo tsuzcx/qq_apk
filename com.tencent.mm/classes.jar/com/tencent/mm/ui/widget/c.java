@@ -1,16 +1,16 @@
 package com.tencent.mm.ui.widget;
 
-import android.content.Context;
-import com.tencent.mm.ui.widget.a.d;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-@Deprecated
-public final class c
-  extends d
+public abstract class c
+  implements Animation.AnimationListener
 {
-  public c(Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramInt, paramBoolean);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

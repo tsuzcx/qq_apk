@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.ui;
 
 import android.widget.Toast;
-import com.tencent.mm.plugin.appbrand.wxawidget.b.e;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WxaWidgetDebugUI$3$1
   implements Runnable
@@ -12,7 +10,9 @@ final class WxaWidgetDebugUI$3$1
   
   public final void run()
   {
-    Toast.makeText(this.fXx.fXw.mController.uMN, b.e.wxa_widget_restart_support_process_succ, 1).show();
+    AppMethodBeat.i(11012);
+    Toast.makeText(this.hqX.hqW.getContext(), 2131306067, 1).show();
+    AppMethodBeat.o(11012);
   }
 }
 

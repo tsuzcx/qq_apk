@@ -1,12 +1,12 @@
 package com.tencent.ttpic.face;
 
-import com.tencent.ttpic.model.StickerItem.FeatureStatValueRange;
+import com.tencent.ttpic.model.StickerItem.ValueRange;
 
 public abstract interface FaceStatusChecker
 {
-  public abstract float getLevel(FaceRangeStatus paramFaceRangeStatus, StickerItem.FeatureStatValueRange paramFeatureStatValueRange);
+  public abstract float getLevel(FaceRangeStatus paramFaceRangeStatus, StickerItem.ValueRange paramValueRange);
   
-  public abstract boolean isInRange(FaceRangeStatus paramFaceRangeStatus, StickerItem.FeatureStatValueRange paramFeatureStatValueRange);
+  public abstract boolean isInRange(FaceRangeStatus paramFaceRangeStatus, StickerItem.ValueRange paramValueRange);
 }
 
 

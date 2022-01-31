@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 final class SeeRoomMemberUI$c
 {
-  public ImageView doU;
-  public TextView drB;
-  public TextView drC;
+  public ImageView egq;
+  public TextView ejj;
+  public TextView ejk;
 }
 
 

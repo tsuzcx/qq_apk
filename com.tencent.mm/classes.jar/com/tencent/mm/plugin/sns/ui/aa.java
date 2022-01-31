@@ -7,32 +7,36 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.PLSysTextView;
 import com.tencent.mm.kiss.widget.textview.SysTextView;
 import com.tencent.mm.pluginsdk.ui.d.e;
 import com.tencent.mm.pluginsdk.ui.d.o;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class aa
   implements View.OnTouchListener
 {
-  private static o oQB;
-  private static TextView oQC;
+  private static o rIn;
+  private static TextView rIo;
   
-  public static void bHF()
+  public static void ctL()
   {
-    if (oQB != null)
+    AppMethodBeat.i(38306);
+    if (rIn != null)
     {
-      oQB.mmZ = false;
-      oQC.invalidate();
-      oQC = null;
-      oQB = null;
+      rIn.setIsPressed(false);
+      rIo.invalidate();
+      rIo = null;
+      rIn = null;
     }
+    AppMethodBeat.o(38306);
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(38305);
     TextView localTextView = (TextView)paramView;
     localTextView.getTag();
     CharSequence localCharSequence = localTextView.getText();
@@ -52,18 +56,17 @@ public final class aa
       i = paramMotionEvent.getAction();
       paramView = localTextView.getLayout();
       if ((paramView != null) || (!(localTextView instanceof SysTextView))) {
-        break label597;
+        break label642;
       }
       paramView = ((SysTextView)localTextView).getTvLayout();
     }
-    label535:
-    label582:
-    label590:
-    label597:
+    label642:
     for (;;)
     {
       localTextView.invalidate();
-      if ((localTextView != null) && (localObject != null) && (e.a(localTextView, (Spanned)localObject))) {
+      if ((localTextView != null) && (localObject != null) && (e.a(localTextView, (Spanned)localObject)))
+      {
+        AppMethodBeat.o(38305);
         return false;
       }
       if ((i == 1) || (i == 0) || (i == 2))
@@ -80,6 +83,7 @@ public final class aa
           }
           else
           {
+            AppMethodBeat.o(38305);
             return false;
           }
           if (i >= ((PLSysTextView)localTextView).getVerticalDrawOffset())
@@ -89,15 +93,20 @@ public final class aa
           }
           else
           {
+            AppMethodBeat.o(38305);
             return false;
           }
         }
         else if ((localTextView instanceof TextView))
         {
-          if ((j < localTextView.getTotalPaddingLeft()) || (j > paramView.getWidth() + localTextView.getTotalPaddingLeft())) {
+          if ((j < localTextView.getTotalPaddingLeft()) || (j > paramView.getWidth() + localTextView.getTotalPaddingLeft()))
+          {
+            AppMethodBeat.o(38305);
             return false;
           }
-          if ((i < localTextView.getTotalPaddingTop()) || (i > paramView.getHeight() + localTextView.getTotalPaddingTop())) {
+          if ((i < localTextView.getTotalPaddingTop()) || (i > paramView.getHeight() + localTextView.getTotalPaddingTop()))
+          {
+            AppMethodBeat.o(38305);
             return false;
           }
         }
@@ -110,25 +119,26 @@ public final class aa
           i = paramMotionEvent.getAction();
           paramView = (o[])((Spannable)localObject).getSpans(j, j, o.class);
           j = paramView.length - 1;
-          y.d("MicroMsg.MMOnTouchListener", " action span Len: " + paramView.length);
+          ab.d("MicroMsg.MMOnTouchListener", " action span Len: " + paramView.length);
           if ((localTextView.getLayout() == null) && ((localTextView instanceof SysTextView))) {
             ((SysTextView)localTextView).getTvLayout();
           }
           if (paramView.length == 0) {
-            break label582;
+            break label617;
           }
           if (i != 1) {
-            break label535;
+            break label570;
           }
           paramView[j].onClick(localTextView);
-          new ah().postDelayed(new aa.1(this), 300L);
+          new ak().postDelayed(new aa.1(this), 300L);
           i = 1;
         }
         for (;;)
         {
           if (i == 0) {
-            break label590;
+            break label625;
           }
+          AppMethodBeat.o(38305);
           return true;
           if ((localTextView instanceof TextView))
           {
@@ -139,16 +149,18 @@ public final class aa
           j -= localTextView.getPaddingLeft();
           i -= localTextView.getPaddingTop();
           break;
+          label570:
           if ((i == 0) || (i == 2) || (i == 3))
           {
-            bHF();
-            oQB = paramView[j];
-            oQC = localTextView;
-            paramView[j].mmZ = true;
+            ctL();
+            rIn = paramView[j];
+            rIo = localTextView;
+            paramView[j].setIsPressed(true);
             localTextView.invalidate();
             i = 1;
             continue;
-            bHF();
+            label617:
+            ctL();
           }
           else
           {
@@ -156,15 +168,18 @@ public final class aa
           }
         }
       }
-      bHF();
+      label625:
+      ctL();
+      AppMethodBeat.o(38305);
       return false;
+      AppMethodBeat.o(38305);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.aa
  * JD-Core Version:    0.7.0.1
  */

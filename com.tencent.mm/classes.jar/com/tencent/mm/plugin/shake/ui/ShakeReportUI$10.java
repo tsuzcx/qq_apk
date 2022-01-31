@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.mm.av.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.a;
 import com.tencent.mm.plugin.shake.b.l;
 import com.tencent.mm.plugin.shake.b.l.b;
 import com.tencent.mm.plugin.shake.d.a.h;
@@ -16,33 +17,35 @@ final class ShakeReportUI$10
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    ShakeReportUI.f(this.odm, true);
-    ShakeReportUI.g(this.odm, false);
-    if (!ShakeReportUI.A(this.odm))
+    AppMethodBeat.i(24788);
+    ShakeReportUI.f(this.qRs, true);
+    ShakeReportUI.g(this.qRs, false);
+    if (!ShakeReportUI.C(this.qRs))
     {
-      ShakeReportUI.a(this.odm, true);
-      ShakeReportUI.d(this.odm, true);
-      ShakeReportUI.B(this.odm);
-      if (ShakeReportUI.C(this.odm).nYS != 3) {
-        break label91;
+      ShakeReportUI.a(this.qRs, true);
+      ShakeReportUI.d(this.qRs, true);
+      ShakeReportUI.D(this.qRs);
+      if (ShakeReportUI.E(this.qRs).qNc != 3) {
+        break label103;
       }
-      a.Ps();
+      a.aiu();
     }
     for (;;)
     {
-      ShakeReportUI.C(this.odm).nYT.start();
-      ShakeReportUI.e(this.odm, false);
+      ShakeReportUI.E(this.qRs).qNd.start();
+      ShakeReportUI.e(this.qRs, false);
+      AppMethodBeat.o(24788);
       return;
-      label91:
-      if (ShakeReportUI.C(this.odm).nYS == 5)
+      label103:
+      if (ShakeReportUI.E(this.qRs).qNc == 5)
       {
-        paramAnimation = ShakeReportUI.C(this.odm).nYT;
+        paramAnimation = ShakeReportUI.E(this.qRs).qNd;
         if ((paramAnimation != null) && ((paramAnimation instanceof h)))
         {
           paramAnimation = (h)paramAnimation;
           ArrayList localArrayList = new ArrayList();
-          localArrayList.addAll(ShakeReportUI.bAR());
-          paramAnimation.oaN = localArrayList;
+          localArrayList.addAll(ShakeReportUI.cmn());
+          paramAnimation.qOW = localArrayList;
         }
       }
     }
@@ -52,11 +55,13 @@ final class ShakeReportUI$10
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    ShakeReportUI.c(this.odm, false);
-    ShakeReportUI.e(this.odm, true);
-    ShakeReportUI.f(this.odm, false);
-    ShakeReportUI.g(this.odm, true);
-    ShakeReportUI.z(this.odm);
+    AppMethodBeat.i(24787);
+    ShakeReportUI.c(this.qRs, false);
+    ShakeReportUI.e(this.qRs, true);
+    ShakeReportUI.f(this.qRs, false);
+    ShakeReportUI.g(this.qRs, true);
+    ShakeReportUI.B(this.qRs);
+    AppMethodBeat.o(24787);
   }
 }
 

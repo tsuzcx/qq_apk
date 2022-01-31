@@ -1,61 +1,73 @@
 package com.tencent.mm.d.a;
 
-import com.eclipsesource.v8.JavaVoidCallback;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.eclipsesource.v8.MultiContextNodeJS;
+import com.eclipsesource.v8.MultiContextV8;
+import com.eclipsesource.v8.V8Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
-public class i
+public final class i
+  extends a
 {
-  private final AtomicInteger bzF = new AtomicInteger(0);
-  public final HashMap<Integer, b> bzG = new HashMap();
-  j bzH;
-  private k bzI;
-  private a bzJ = new i.4(this);
+  private MultiContextNodeJS cbq;
+  public volatile l cbr;
   
-  public i(j paramj)
+  static
   {
-    this.bzH = paramj;
+    AppMethodBeat.i(113821);
+    MultiContextNodeJS.setGetTmpFileDirectoryDelegate(new i.1());
+    AppMethodBeat.o(113821);
   }
   
-  public void a(b paramb, i.a parama)
+  private i() {}
+  
+  private i(String paramString, byte[] paramArrayOfByte)
   {
-    y.i("MicroMsg.V8EngineWorkerManager", "hy: evaluating %s", new Object[] { parama.filePath });
-    paramb.a(parama.filePath, parama.script, null);
+    super(paramString, paramArrayOfByte);
   }
   
-  public final int d(ArrayList<i.a> paramArrayList)
+  static i j(String paramString, byte[] paramArrayOfByte)
   {
-    int j = this.bzF.addAndGet(1);
-    this.bzI = k.tF();
-    this.bzI.byZ = this.bzJ;
-    b localb = this.bzI.ev(1);
-    Object localObject = new i.2(this, j);
-    localb.byY.i(new b.5(localb, (JavaVoidCallback)localObject, "postMessage"));
-    localb.a(1, new i.1(this, localb));
-    paramArrayList = paramArrayList.iterator();
-    label157:
-    while (paramArrayList.hasNext())
+    AppMethodBeat.i(113817);
+    paramString = new i(paramString, paramArrayOfByte);
+    AppMethodBeat.o(113817);
+    return paramString;
+  }
+  
+  final MultiContextV8 Ch()
+  {
+    AppMethodBeat.i(113818);
+    this.cbq = MultiContextNodeJS.createMultiContextNodeJS(1, this.cbg, this.cbh);
+    this.cbh = null;
+    MultiContextV8 localMultiContextV8 = this.cbq.getRuntime();
+    AppMethodBeat.o(113818);
+    return localMultiContextV8;
+  }
+  
+  final d Ci()
+  {
+    AppMethodBeat.i(113819);
+    j localj = j.a(new i.2(this));
+    AppMethodBeat.o(113819);
+    return localj;
+  }
+  
+  final void Cj()
+  {
+    AppMethodBeat.i(113820);
+    ab.i("MicroMsg.NodeJSRuntime", "cleanUpRuntimeWhenThreadEnd");
+    try
     {
-      localObject = (i.a)paramArrayList.next();
-      if (localObject != null)
-      {
-        if ((!bk.bl(((i.a)localObject).script)) || (!bk.bl(((i.a)localObject).filePath))) {}
-        for (int i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label157;
-          }
-          a(localb, (i.a)localObject);
-          break;
-        }
-      }
+      this.cbq.release();
+      ab.i("MicroMsg.NodeJSRuntime", "cleanUpRuntimeWhenThreadEnd done");
+      AppMethodBeat.o(113820);
+      return;
     }
-    this.bzG.put(Integer.valueOf(j), localb);
-    return j;
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.NodeJSRuntime", "cleanUpWhenThreadEnd exp = %s", new Object[] { localException });
+      AppMethodBeat.o(113820);
+    }
   }
 }
 

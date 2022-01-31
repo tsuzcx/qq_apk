@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.zero.a;
 
-import com.tencent.mm.protocal.k.d;
+import com.tencent.mm.protocal.l.d;
 
 @Deprecated
 public abstract interface e
 {
-  public abstract byte[] a(k.d paramd, int paramInt);
+  public abstract byte[] a(l.d paramd, int paramInt);
 }
 
 

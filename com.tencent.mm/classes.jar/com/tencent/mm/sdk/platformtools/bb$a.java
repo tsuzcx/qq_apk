@@ -1,49 +1,48 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.hardware.SensorListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class bb$a
-  implements SensorListener
+final class bb$a<V>
 {
-  private Runnable bFJ;
-  private float[] rYr = { 0.0F, 0.0F, 0.0F };
+  final V ypP;
   
-  public bb$a(Runnable paramRunnable)
+  bb$a(V paramV)
   {
-    this.bFJ = paramRunnable;
+    this.ypP = paramV;
   }
   
-  public final void onAccuracyChanged(int paramInt1, int paramInt2) {}
-  
-  public final void onSensorChanged(int paramInt, float[] paramArrayOfFloat)
+  public final boolean equals(Object paramObject)
   {
-    float[] arrayOfFloat = new float[3];
-    paramInt = 0;
-    int j;
-    for (int i = 0; paramInt < 3; i = j)
+    AppMethodBeat.i(52241);
+    if (paramObject == null)
     {
-      arrayOfFloat[paramInt] = Math.abs(paramArrayOfFloat[paramInt] - this.rYr[paramInt]);
-      j = i;
-      if (this.rYr[paramInt] != 0.0F)
+      AppMethodBeat.o(52241);
+      return false;
+    }
+    if (!(paramObject instanceof a))
+    {
+      AppMethodBeat.o(52241);
+      return false;
+    }
+    paramObject = (a)paramObject;
+    if (this.ypP == null)
+    {
+      if (paramObject.ypP == null)
       {
-        j = i;
-        if (arrayOfFloat[paramInt] > 1.0F)
-        {
-          j = 1;
-          y.d("MicroMsg.ShakeManager", "isONShake:" + arrayOfFloat[paramInt]);
-        }
+        AppMethodBeat.o(52241);
+        return true;
       }
-      this.rYr[paramInt] = paramArrayOfFloat[paramInt];
-      paramInt += 1;
+      AppMethodBeat.o(52241);
+      return false;
     }
-    if (i != 0) {
-      this.bFJ.run();
-    }
+    boolean bool = this.ypP.equals(paramObject.ypP);
+    AppMethodBeat.o(52241);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.bb.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mm.pluginsdk.model;
 
 public final class o$a
 {
-  public int rTG = -1;
-  public String rTH = "";
+  public int vKD = -1;
+  public String vKE = "";
   public int ver = -1;
 }
 

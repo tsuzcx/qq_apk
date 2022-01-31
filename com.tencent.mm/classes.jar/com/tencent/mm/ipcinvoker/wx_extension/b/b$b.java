@@ -1,5 +1,6 @@
 package com.tencent.mm.ipcinvoker.wx_extension.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 final class b$b<T>
@@ -12,17 +13,25 @@ final class b$b<T>
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    Object localObject;
-    do
+    AppMethodBeat.i(126213);
+    if (paramObject == this)
     {
+      AppMethodBeat.o(126213);
       return true;
-      if (!(paramObject instanceof b)) {
-        return false;
-      }
-      paramObject = ((b)paramObject).get();
-      localObject = get();
-    } while ((paramObject == localObject) || ((localObject != null) && (localObject.equals(paramObject))));
+    }
+    if (!(paramObject instanceof b))
+    {
+      AppMethodBeat.o(126213);
+      return false;
+    }
+    paramObject = ((b)paramObject).get();
+    Object localObject = get();
+    if ((paramObject == localObject) || ((localObject != null) && (localObject.equals(paramObject))))
+    {
+      AppMethodBeat.o(126213);
+      return true;
+    }
+    AppMethodBeat.o(126213);
     return false;
   }
 }

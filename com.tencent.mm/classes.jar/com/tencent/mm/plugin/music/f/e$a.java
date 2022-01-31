@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.music.f;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$a
   implements Runnable
@@ -11,14 +12,15 @@ final class e$a
   
   public final void run()
   {
-    y.i("MicroMsg.Music.QQMusicPlayer", "start run play progress task");
+    AppMethodBeat.i(137610);
+    ab.i("MicroMsg.Music.QQMusicPlayer", "start run play progress task");
     for (;;)
     {
       if (!this.isStop) {
         try
         {
-          if ((this.mAN.mxp != null) && (this.mAN.Pu())) {
-            this.mAN.bmC();
+          if ((this.paR.oXm != null) && (this.paR.aiw())) {
+            this.paR.bUJ();
           }
           try
           {
@@ -30,16 +32,17 @@ final class e$a
         {
           for (;;)
           {
-            y.e("MicroMsg.Music.QQMusicPlayer", "PlayProgressTask run exception:" + localException.getMessage());
+            ab.e("MicroMsg.Music.QQMusicPlayer", "PlayProgressTask run exception:" + localException.getMessage());
           }
         }
       }
     }
+    AppMethodBeat.o(137610);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.google.android.exoplayer2;
 
 final class i$c
 {
-  public final w atr;
-  public final int auk;
-  public final long aul;
+  public final w avJ;
+  public final int awC;
+  public final long awD;
   
   public i$c(w paramw, int paramInt, long paramLong)
   {
-    this.atr = paramw;
-    this.auk = paramInt;
-    this.aul = paramLong;
+    this.avJ = paramw;
+    this.awC = paramInt;
+    this.awD = paramLong;
   }
 }
 

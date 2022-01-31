@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.bizchat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class BizChatFavUI$5
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class BizChatFavUI$5
   
   public final void run()
   {
-    this.vfa.finish();
+    AppMethodBeat.i(30111);
+    this.ztz.finish();
+    AppMethodBeat.o(30111);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.BizChatFavUI.5
  * JD-Core Version:    0.7.0.1
  */

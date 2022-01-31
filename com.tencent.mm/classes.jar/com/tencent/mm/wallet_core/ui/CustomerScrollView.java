@@ -4,14 +4,15 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class CustomerScrollView
   extends ScrollView
 {
-  private float wBH;
-  private float wBI;
-  private float wBJ;
-  private float wBK;
+  private float AYa;
+  private float AYb;
+  private float AYc;
+  private float AYd;
   
   public CustomerScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,6 +26,7 @@ public class CustomerScrollView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(49180);
     switch (paramMotionEvent.getAction())
     {
     }
@@ -32,25 +34,28 @@ public class CustomerScrollView
     {
       for (;;)
       {
-        return super.onInterceptTouchEvent(paramMotionEvent);
-        this.wBI = 0.0F;
-        this.wBH = 0.0F;
-        this.wBJ = paramMotionEvent.getX();
-        this.wBK = paramMotionEvent.getY();
+        boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+        AppMethodBeat.o(49180);
+        return bool;
+        this.AYb = 0.0F;
+        this.AYa = 0.0F;
+        this.AYc = paramMotionEvent.getX();
+        this.AYd = paramMotionEvent.getY();
       }
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      this.wBH += Math.abs(f1 - this.wBJ);
-      this.wBI += Math.abs(f2 - this.wBK);
-      this.wBJ = f1;
-      this.wBK = f2;
-    } while (this.wBH <= this.wBI);
+      this.AYa += Math.abs(f1 - this.AYc);
+      this.AYb += Math.abs(f2 - this.AYd);
+      this.AYc = f1;
+      this.AYd = f2;
+    } while (this.AYa <= this.AYb);
+    AppMethodBeat.o(49180);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.CustomerScrollView
  * JD-Core Version:    0.7.0.1
  */

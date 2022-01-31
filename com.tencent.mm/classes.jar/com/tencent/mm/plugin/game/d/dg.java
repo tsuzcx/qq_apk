@@ -1,91 +1,98 @@
 package com.tencent.mm.plugin.game.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class dg
   extends com.tencent.mm.bv.a
 {
-  public String bGw;
-  public String kRP;
-  public String kSs;
-  public String kSy;
+  public String npQ;
+  public String npR;
+  public String nqt;
+  public int nuk;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(111673);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.kSy != null) {
-        paramVarArgs.d(1, this.kSy);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.npQ != null) {
+        paramVarArgs.e(1, this.npQ);
       }
-      if (this.bGw != null) {
-        paramVarArgs.d(2, this.bGw);
+      if (this.npR != null) {
+        paramVarArgs.e(2, this.npR);
       }
-      if (this.kRP != null) {
-        paramVarArgs.d(3, this.kRP);
+      paramVarArgs.aO(3, this.nuk);
+      if (this.nqt != null) {
+        paramVarArgs.e(4, this.nqt);
       }
-      if (this.kSs != null) {
-        paramVarArgs.d(4, this.kSs);
-      }
+      AppMethodBeat.o(111673);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.kSy == null) {
-        break label344;
+      if (this.npQ == null) {
+        break label378;
       }
     }
-    label344:
-    for (int i = d.a.a.b.b.a.e(1, this.kSy) + 0;; i = 0)
+    label378:
+    for (paramInt = e.a.a.b.b.a.f(1, this.npQ) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.npR != null) {
+        i = paramInt + e.a.a.b.b.a.f(2, this.npR);
+      }
+      i += e.a.a.b.b.a.bl(3, this.nuk);
       paramInt = i;
-      if (this.bGw != null) {
-        paramInt = i + d.a.a.b.b.a.e(2, this.bGw);
+      if (this.nqt != null) {
+        paramInt = i + e.a.a.b.b.a.f(4, this.nqt);
       }
-      i = paramInt;
-      if (this.kRP != null) {
-        i = paramInt + d.a.a.b.b.a.e(3, this.kRP);
-      }
-      paramInt = i;
-      if (this.kSs != null) {
-        paramInt = i + d.a.a.b.b.a.e(4, this.kSs);
-      }
+      AppMethodBeat.o(111673);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        AppMethodBeat.o(111673);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         dg localdg = (dg)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(111673);
           return -1;
         case 1: 
-          localdg.kSy = locala.xpH.readString();
+          localdg.npQ = locala.CLY.readString();
+          AppMethodBeat.o(111673);
           return 0;
         case 2: 
-          localdg.bGw = locala.xpH.readString();
+          localdg.npR = locala.CLY.readString();
+          AppMethodBeat.o(111673);
           return 0;
         case 3: 
-          localdg.kRP = locala.xpH.readString();
+          localdg.nuk = locala.CLY.sl();
+          AppMethodBeat.o(111673);
           return 0;
         }
-        localdg.kSs = locala.xpH.readString();
+        localdg.nqt = locala.CLY.readString();
+        AppMethodBeat.o(111673);
         return 0;
       }
+      AppMethodBeat.o(111673);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.dg
  * JD-Core Version:    0.7.0.1
  */

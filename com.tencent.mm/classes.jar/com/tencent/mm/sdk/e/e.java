@@ -9,11 +9,11 @@ public abstract interface e
   
   public abstract Cursor a(String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4, String paramString5, int paramInt);
   
-  public abstract boolean csp();
-  
   public abstract int delete(String paramString1, String paramString2, String[] paramArrayOfString);
   
-  public abstract boolean gk(String paramString1, String paramString2);
+  public abstract boolean dun();
+  
+  public abstract boolean execSQL(String paramString1, String paramString2);
   
   public abstract long insert(String paramString1, String paramString2, ContentValues paramContentValues);
   

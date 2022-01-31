@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.ipcall.a.b;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
-public final class d$1
+final class d$1
   implements Runnable
 {
-  public d$1(d paramd) {}
+  d$1(d paramd) {}
   
   public final void run()
   {
-    this.lqE.iam = bk.UZ();
+    AppMethodBeat.i(21818);
+    this.nOa.lastShakeTime = bo.yB();
+    AppMethodBeat.o(21818);
   }
 }
 

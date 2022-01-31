@@ -1,23 +1,27 @@
 package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 import android.graphics.Point;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class i$1
   implements g.b
 {
   i$1(e parame, g paramg, Point paramPoint, float paramFloat) {}
   
-  public final void ld(boolean paramBoolean)
+  public final void iX(boolean paramBoolean)
   {
+    AppMethodBeat.i(8174);
     if (!paramBoolean)
     {
-      y.i("MicroMsg.TransformToBagAniHelper", "convertToTranslucent not drawComplete");
-      ai.d(new i.1.1(this));
+      ab.i("MicroMsg.TransformToBagAniHelper", "convertToTranslucent not drawComplete");
+      al.d(new i.1.1(this));
+      AppMethodBeat.o(8174);
       return;
     }
-    ai.d(new i.1.2(this));
+    al.d(new i.1.2(this));
+    AppMethodBeat.o(8174);
   }
 }
 

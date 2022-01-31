@@ -1,17 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
-import java.util.List;
-
-public final class b$h
+public class b$h
 {
-  public int borderWidth;
-  public int color;
-  public List<b.f> gus;
-  public boolean gut;
-  public int guu;
-  public boolean guv;
-  public String guw;
-  public int width;
+  public double latitude;
+  public double longitude;
+  
+  public b$h(double paramDouble1, double paramDouble2)
+  {
+    this.latitude = paramDouble1;
+    this.longitude = paramDouble2;
+  }
 }
 
 

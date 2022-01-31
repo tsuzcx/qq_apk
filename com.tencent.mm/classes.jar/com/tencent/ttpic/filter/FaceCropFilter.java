@@ -2,27 +2,25 @@ package com.tencent.ttpic.filter;
 
 import android.graphics.Matrix;
 import android.graphics.PointF;
-import com.tencent.ttpic.model.FaceActionCounter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.PTDetectInfo;
+import com.tencent.ttpic.baseutils.BaseUtils;
+import com.tencent.ttpic.gles.GlUtil.DRAW_MODE;
 import com.tencent.ttpic.model.FaceCropItem;
 import com.tencent.ttpic.model.FaceCropItem.CropFrame;
-import com.tencent.ttpic.model.HandActionCounter;
 import com.tencent.ttpic.model.VideoMaterial;
 import com.tencent.ttpic.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.VideoFilterUtil.DRAW_MODE;
 import com.tencent.ttpic.util.VideoMaterialUtil;
-import com.tencent.ttpic.util.VideoUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class FaceCropFilter
   extends VideoFilterBase
 {
-  private float[] attrPositions = new float[8];
-  private float[] attrTexCoords = new float[8];
+  private float[] attrPositions;
+  private float[] attrTexCoords;
   private FaceCropItem faceCropItem;
   private boolean needRender;
   private List<NormalVideoFilter> normalFilters;
@@ -30,11 +28,16 @@ public class FaceCropFilter
   public FaceCropFilter(VideoMaterial paramVideoMaterial)
   {
     super(ShaderCreateFactory.PROGRAM_TYPE.FACE_CROP);
+    AppMethodBeat.i(82337);
+    this.attrPositions = new float[8];
+    this.attrTexCoords = new float[8];
     this.faceCropItem = paramVideoMaterial.getFaceCropItem();
+    AppMethodBeat.o(82337);
   }
   
   private void updateParams(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat, int paramInt)
   {
+    AppMethodBeat.i(82339);
     Object localObject1 = (FaceCropItem.CropFrame)this.faceCropItem.frameList.get(paramInt);
     float f2 = (float)Math.min(((FaceCropItem.CropFrame)localObject1).width / this.width, ((FaceCropItem.CropFrame)localObject1).height / this.height);
     paramFloat = (float)(((FaceCropItem.CropFrame)localObject1).width / f2);
@@ -88,16 +91,20 @@ public class FaceCropFilter
       i += 2;
       paramInt += 1;
     }
-    setDrawMode(VideoFilterUtil.DRAW_MODE.TRIANGLE_STRIP);
+    setDrawMode(GlUtil.DRAW_MODE.TRIANGLE_STRIP);
     setPositions(this.attrPositions);
     setTexCords(this.attrTexCoords);
+    AppMethodBeat.o(82339);
   }
   
   final float DISTANCE_OF(PointF paramPointF1, PointF paramPointF2)
   {
+    AppMethodBeat.i(82340);
     float f1 = paramPointF2.x - paramPointF1.x;
     float f2 = paramPointF2.y - paramPointF1.y;
-    return (float)Math.sqrt(f1 * f1 + f2 * f2);
+    f1 = (float)Math.sqrt(f1 * f1 + f2 * f2);
+    AppMethodBeat.o(82340);
+    return f1;
   }
   
   final float RADIANS2DEGREES(float paramFloat)
@@ -117,48 +124,54 @@ public class FaceCropFilter
     this.normalFilters = paramList;
   }
   
-  public void updatePreview(List<PointF> paramList1, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap, List<PointF> paramList2, Map<Integer, HandActionCounter> paramMap1, Set<Integer> paramSet, float paramFloat, long paramLong)
+  public void updatePreview(PTDetectInfo paramPTDetectInfo)
   {
-    if ((this.faceCropItem == null) || (paramList1 == null) || (paramList1.size() < 90) || (paramArrayOfFloat == null) || (paramArrayOfFloat.length < 3)) {
-      this.needRender = false;
-    }
-    int i;
-    label85:
-    do
+    AppMethodBeat.i(82338);
+    if ((this.faceCropItem == null) || (paramPTDetectInfo.facePoints == null) || (paramPTDetectInfo.facePoints.size() < 90) || (paramPTDetectInfo.faceAngles == null) || (paramPTDetectInfo.faceAngles.length < 3))
     {
+      this.needRender = false;
+      AppMethodBeat.o(82338);
       return;
-      NormalVideoFilter localNormalVideoFilter;
-      if (!VideoUtil.isEmpty(this.normalFilters))
-      {
-        bool = true;
-        this.needRender = bool;
-        i = 0;
-        int j = 0;
-        if (this.normalFilters == null) {
-          continue;
-        }
-        Iterator localIterator = this.normalFilters.iterator();
-        i = j;
-        if (!localIterator.hasNext()) {
-          continue;
-        }
-        localNormalVideoFilter = (NormalVideoFilter)localIterator.next();
-        localNormalVideoFilter.updatePreview(paramList1, paramArrayOfFloat, paramMap, paramList2, paramMap1, paramSet, paramFloat, paramLong);
-        if ((!this.needRender) || (!localNormalVideoFilter.isRenderReady())) {
-          break label165;
-        }
+    }
+    label97:
+    NormalVideoFilter localNormalVideoFilter;
+    if (!BaseUtils.isEmpty(this.normalFilters))
+    {
+      bool = true;
+      this.needRender = bool;
+      if (this.normalFilters == null) {
+        break label166;
       }
-      for (boolean bool = true;; bool = false)
-      {
-        this.needRender = bool;
-        i = localNormalVideoFilter.getLastFrameIndex();
-        break label85;
-        bool = false;
-        break;
+      Iterator localIterator = this.normalFilters.iterator();
+      i = 0;
+      if (!localIterator.hasNext()) {
+        break label168;
       }
-    } while ((!this.needRender) || (VideoUtil.indexOutOfBounds(this.faceCropItem.frameList, i)));
-    label165:
-    updateParams(VideoMaterialUtil.copyList(paramList1), paramArrayOfFloat, paramFloat, i);
+      localNormalVideoFilter = (NormalVideoFilter)localIterator.next();
+      localNormalVideoFilter.updatePreview(paramPTDetectInfo);
+      if ((!this.needRender) || (!localNormalVideoFilter.isRenderReady())) {
+        break label161;
+      }
+    }
+    label161:
+    for (boolean bool = true;; bool = false)
+    {
+      this.needRender = bool;
+      i = localNormalVideoFilter.getLastFrameIndex();
+      break label97;
+      bool = false;
+      break;
+    }
+    label166:
+    int i = 0;
+    label168:
+    if ((!this.needRender) || (BaseUtils.indexOutOfBounds(this.faceCropItem.frameList, i)))
+    {
+      AppMethodBeat.o(82338);
+      return;
+    }
+    updateParams(VideoMaterialUtil.copyList(paramPTDetectInfo.facePoints), paramPTDetectInfo.faceAngles, paramPTDetectInfo.phoneAngle, i);
+    AppMethodBeat.o(82338);
   }
 }
 

@@ -5,7 +5,7 @@ public final class c$dr
 {
   public c$dr()
   {
-    super("kvReport", "kvReport", 170, false);
+    super("hideSearchLoading", "hideSearchLoading", 10000, false);
   }
 }
 

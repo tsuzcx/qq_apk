@@ -3,6 +3,7 @@ package com.tencent.liteav.beauty;
 import android.content.Context;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
 {
@@ -25,14 +26,18 @@ public class a
   
   public static a a()
   {
+    AppMethodBeat.i(66895);
     if (a == null) {
       a = new a();
     }
-    return a;
+    a locala = a;
+    AppMethodBeat.o(66895);
+    return locala;
   }
   
   private void f()
   {
+    AppMethodBeat.i(66901);
     TXCLog.i(this.p, "resetReportState");
     c = false;
     d = false;
@@ -47,10 +52,12 @@ public class a
     m = false;
     n = false;
     o = false;
+    AppMethodBeat.o(66901);
   }
   
   public void a(Context paramContext)
   {
+    AppMethodBeat.i(66896);
     f();
     b = paramContext.getApplicationContext();
     if (!c)
@@ -59,51 +66,60 @@ public class a
       TXCDRApi.txReportDAU(b, 1201, 0, "reportSDKInit!");
     }
     c = true;
+    AppMethodBeat.o(66896);
   }
   
   public void b()
   {
+    AppMethodBeat.i(66897);
     if (!d)
     {
       TXCLog.i(this.p, "reportBeautyDua");
       TXCDRApi.txReportDAU(b, 1202, 0, "reportBeautyDua");
     }
     d = true;
+    AppMethodBeat.o(66897);
   }
   
   public void c()
   {
+    AppMethodBeat.i(66898);
     if (!e)
     {
       TXCLog.i(this.p, "reportWhiteDua");
       TXCDRApi.txReportDAU(b, 1203, 0, "reportWhiteDua");
     }
     e = true;
+    AppMethodBeat.o(66898);
   }
   
   public void d()
   {
+    AppMethodBeat.i(66899);
     if (!j)
     {
       TXCLog.i(this.p, "reportFilterImageDua");
       TXCDRApi.txReportDAU(b, 1208, 0, "reportFilterImageDua");
     }
     j = true;
+    AppMethodBeat.o(66899);
   }
   
   public void e()
   {
+    AppMethodBeat.i(66900);
     if (!n)
     {
       TXCLog.i(this.p, "reportWarterMarkDua");
       TXCDRApi.txReportDAU(b, 1212, 0, "reportWarterMarkDua");
     }
     n = true;
+    AppMethodBeat.o(66900);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.a
  * JD-Core Version:    0.7.0.1
  */

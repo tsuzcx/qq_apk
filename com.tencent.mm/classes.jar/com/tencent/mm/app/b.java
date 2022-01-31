@@ -1,12 +1,12 @@
 package com.tencent.mm.app;
 
-import com.tencent.tinker.loader.app.ApplicationLike;
+import com.tencent.tinker.entry.ApplicationLike;
 
 public final class b
 {
-  public static ApplicationLike applicationLike;
-  public static String bnX;
-  public static long bvZ;
+  public static String bNv;
+  public static ApplicationLike bXD;
+  public static long bXE;
 }
 
 

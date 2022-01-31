@@ -1,50 +1,32 @@
 package com.tencent.smtt.sdk;
 
-import com.tencent.smtt.utils.TbsLog;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.sdk.a.d;
 
-final class bu
-  extends Thread
+class bu
+  implements android.webkit.DownloadListener
 {
-  public final void run()
+  bu(WebView paramWebView, DownloadListener paramDownloadListener) {}
+  
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    if (WebView.h() == null) {
-      TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--mAppContext == null");
-    }
-    o localo;
-    int i;
-    int j;
-    do
+    AppMethodBeat.i(139429);
+    if (this.a == null)
     {
-      return;
-      localo = o.a(true);
-      if (o.a)
+      if (WebView.a(this.b) == null) {}
+      for (paramString2 = null;; paramString2 = WebView.a(this.b).getApplicationInfo())
       {
-        TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--needReboot = true");
+        if ((paramString2 == null) || (!"com.tencent.mm".equals(paramString2.packageName))) {
+          d.a(WebView.a(this.b), paramString1, null, null);
+        }
+        AppMethodBeat.o(139429);
         return;
       }
-      ai localai = ai.a(WebView.h());
-      i = localai.c();
-      TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--installStatus = " + i);
-      if (i == 2)
-      {
-        TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--install setTbsNeedReboot true");
-        localo.a(String.valueOf(localai.b()));
-        localo.b(true);
-        return;
-      }
-      j = localai.b("copy_status");
-      TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--copyStatus = " + j);
-      if (j == 1)
-      {
-        TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--copy setTbsNeedReboot true");
-        localo.a(String.valueOf(localai.c("copy_core_ver")));
-        localo.b(true);
-        return;
-      }
-    } while ((bv.a().b()) || ((i != 3) && (j != 3)));
-    TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--setTbsNeedReboot true");
-    localo.a(String.valueOf(o.d()));
-    localo.b(true);
+    }
+    this.a.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
+    AppMethodBeat.o(139429);
   }
 }
 

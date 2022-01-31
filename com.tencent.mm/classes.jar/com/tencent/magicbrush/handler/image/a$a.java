@@ -1,12 +1,13 @@
 package com.tencent.magicbrush.handler.image;
 
+import com.github.henryye.nativeiv.bitmap.IBitmap;
 import java.io.InputStream;
 
-public abstract class a$a
+public abstract interface a$a
 {
-  public abstract boolean bs(String paramString);
+  public abstract IBitmap a(String paramString, InputStream paramInputStream);
   
-  public abstract InputStream bt(String paramString);
+  public abstract void destroy();
 }
 
 

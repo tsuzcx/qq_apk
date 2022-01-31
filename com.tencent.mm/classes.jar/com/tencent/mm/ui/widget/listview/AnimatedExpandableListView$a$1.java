@@ -2,6 +2,7 @@ package com.tencent.mm.ui.widget.listview;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AnimatedExpandableListView$a$1
   implements Animation.AnimationListener
@@ -10,9 +11,11 @@ final class AnimatedExpandableListView$a$1
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    AnimatedExpandableListView.a.b(this.wnN, this.oZO);
-    this.wnN.notifyDataSetChanged();
-    this.wnM.setTag(Integer.valueOf(0));
+    AppMethodBeat.i(112710);
+    AnimatedExpandableListView.a.b(this.AHG, this.rSi);
+    this.AHG.notifyDataSetChanged();
+    this.AHF.setTag(Integer.valueOf(0));
+    AppMethodBeat.o(112710);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

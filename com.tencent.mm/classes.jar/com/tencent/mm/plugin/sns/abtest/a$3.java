@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.abtest;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.n;
 
 final class a$3
@@ -9,11 +10,13 @@ final class a$3
 {
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(35646);
     if ((paramView.getTag() instanceof n))
     {
       n localn = (n)paramView.getTag();
       a.a(paramView, paramView.getContext(), localn);
     }
+    AppMethodBeat.o(35646);
   }
 }
 

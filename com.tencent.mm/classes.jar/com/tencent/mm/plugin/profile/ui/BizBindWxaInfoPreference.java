@@ -11,154 +11,217 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ai.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.d;
 import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.modelappbrand.a.f;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.Preference;
+import java.util.LinkedList;
 import java.util.List;
 
 public class BizBindWxaInfoPreference
   extends Preference
 {
-  private static DisplayMetrics hkX = ae.getContext().getResources().getDisplayMetrics();
-  private static int hop = com.tencent.mm.cb.a.fromDPToPix(ae.getContext(), 15);
-  private static int hoq = ae.getResources().getDimensionPixelSize(R.f.NormalIconSize);
-  d ftp;
-  private TextView haW;
-  List<WxaAttributes.WxaEntryInfo> hoi;
-  private View hoj;
-  private ImageView hok;
-  private TextView hol;
-  private LinearLayout hom;
-  private ViewGroup hon;
-  private View hoo;
-  private View.OnClickListener jDE;
-  private volatile boolean mVl;
-  volatile boolean mVm;
-  private View.OnClickListener mVn;
+  private static DisplayMetrics iXq;
+  private static int jaT;
+  private static int jaU;
+  private d gKR;
+  private ImageView iCl;
+  private TextView iJG;
+  private List<WxaAttributes.WxaEntryInfo> jaN;
+  private View jaO;
+  private TextView jaP;
+  private LinearLayout jaQ;
+  private ViewGroup jaR;
+  private View jaS;
+  private View.OnClickListener lNc;
+  private volatile boolean pxQ;
+  private volatile boolean pxR;
+  private View.OnClickListener pxS;
+  
+  static
+  {
+    AppMethodBeat.i(23305);
+    iXq = ah.getContext().getResources().getDisplayMetrics();
+    jaT = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 15);
+    jaU = ah.getResources().getDimensionPixelSize(2131427806);
+    AppMethodBeat.o(23305);
+  }
   
   public BizBindWxaInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(23297);
     init();
+    AppMethodBeat.o(23297);
   }
   
   public BizBindWxaInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(23296);
     init();
+    AppMethodBeat.o(23296);
+  }
+  
+  private void a(WxaAttributes.WxaEntryInfo paramWxaEntryInfo)
+  {
+    AppMethodBeat.i(23303);
+    ImageView localImageView = new ImageView(this.mContext);
+    localImageView.setLayoutParams(new ViewGroup.LayoutParams(jaU + jaT, jaU));
+    localImageView.setPadding(0, 0, jaT, 0);
+    this.jaQ.addView(localImageView);
+    a(paramWxaEntryInfo, localImageView, null);
+    AppMethodBeat.o(23303);
   }
   
   private static void a(WxaAttributes.WxaEntryInfo paramWxaEntryInfo, ImageView paramImageView, TextView paramTextView)
   {
-    if (paramWxaEntryInfo == null) {}
-    do
+    AppMethodBeat.i(23304);
+    if (paramWxaEntryInfo == null)
     {
+      AppMethodBeat.o(23304);
       return;
-      String str = paramWxaEntryInfo.username;
-      if (paramImageView != null)
-      {
-        paramImageView.setTag(str);
-        b.JD().a(paramImageView, paramWxaEntryInfo.iconUrl, com.tencent.mm.modelappbrand.a.a.JC(), f.eaL);
+    }
+    String str = paramWxaEntryInfo.username;
+    if (paramImageView != null)
+    {
+      paramImageView.setTag(str);
+      b.acD().a(paramImageView, paramWxaEntryInfo.iconUrl, com.tencent.mm.modelappbrand.a.a.acC(), f.fqU);
+    }
+    if (paramTextView != null) {
+      paramTextView.setText(bo.nullAsNil(paramWxaEntryInfo.title));
+    }
+    AppMethodBeat.o(23304);
+  }
+  
+  private void azw()
+  {
+    AppMethodBeat.i(23301);
+    if ((!this.pxQ) || (this.jaN == null))
+    {
+      AppMethodBeat.o(23301);
+      return;
+    }
+    if (!this.pxR)
+    {
+      AppMethodBeat.o(23301);
+      return;
+    }
+    this.pxR = false;
+    if (!this.jaN.isEmpty()) {}
+    for (WxaAttributes.WxaEntryInfo localWxaEntryInfo = (WxaAttributes.WxaEntryInfo)this.jaN.get(0);; localWxaEntryInfo = null)
+    {
+      if (localWxaEntryInfo != null) {
+        a(localWxaEntryInfo, this.iCl, this.iJG);
       }
-    } while (paramTextView == null);
-    paramTextView.setText(bk.pm(paramWxaEntryInfo.title));
+      this.jaP.setText(this.mContext.getString(2131298529, new Object[] { Integer.valueOf(this.jaN.size()) }));
+      cz(this.jaN);
+      if (this.jaN.size() == 1)
+      {
+        this.jaO.setVisibility(0);
+        this.jaR.setTag(((WxaAttributes.WxaEntryInfo)this.jaN.get(0)).username);
+        this.jaR.setOnClickListener(this.lNc);
+        AppMethodBeat.o(23301);
+        return;
+      }
+      this.jaO.setVisibility(8);
+      this.jaR.setTag(null);
+      this.jaR.setOnClickListener(this.pxS);
+      AppMethodBeat.o(23301);
+      return;
+    }
+  }
+  
+  private void cz(List<WxaAttributes.WxaEntryInfo> paramList)
+  {
+    AppMethodBeat.i(23302);
+    this.jaQ.removeAllViews();
+    if (paramList.isEmpty())
+    {
+      AppMethodBeat.o(23302);
+      return;
+    }
+    int k = paramList.size();
+    int j = this.jaR.getMeasuredWidth();
+    int i = j;
+    if (j == 0) {
+      i = iXq.widthPixels;
+    }
+    j = i - this.jaR.getPaddingLeft() - this.jaR.getPaddingRight();
+    i = j / (jaU + jaT);
+    if (i > k) {
+      this.jaS.setVisibility(8);
+    }
+    for (;;)
+    {
+      j = Math.min(i, k);
+      if (j <= 1) {
+        break;
+      }
+      i = 0;
+      while (i < j)
+      {
+        a((WxaAttributes.WxaEntryInfo)paramList.get(i));
+        i += 1;
+      }
+      this.jaS.setVisibility(0);
+      i = (j - this.jaS.getMeasuredWidth()) / (jaU + jaT);
+    }
+    ab.i("MicroMsg.BizBindWxaInfoPreference", "attachItemToContainer(size : %s)", new Object[] { Integer.valueOf(paramList.size()) });
+    AppMethodBeat.o(23302);
   }
   
   private void init()
   {
-    this.jDE = new BizBindWxaInfoPreference.1(this);
-    this.mVn = new BizBindWxaInfoPreference.2(this);
+    AppMethodBeat.i(23300);
+    this.lNc = new BizBindWxaInfoPreference.1(this);
+    this.pxS = new BizBindWxaInfoPreference.2(this);
+    AppMethodBeat.o(23300);
   }
   
-  final void aeT()
+  public final void a(d paramd, List<WxaAttributes.WxaEntryInfo> paramList)
   {
-    if ((!this.mVl) || (this.hoi == null)) {}
-    while (!this.mVm) {
-      return;
+    AppMethodBeat.i(23299);
+    this.pxR = true;
+    this.gKR = paramd;
+    if (this.jaN == null) {
+      this.jaN = new LinkedList();
     }
-    this.mVm = false;
-    if (!this.hoi.isEmpty()) {}
-    for (Object localObject = (WxaAttributes.WxaEntryInfo)this.hoi.get(0);; localObject = null)
+    for (;;)
     {
-      if (localObject != null) {
-        a((WxaAttributes.WxaEntryInfo)localObject, this.hok, this.haW);
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        this.jaN.addAll(paramList);
       }
-      this.hol.setText(this.mContext.getString(R.l.contact_info_bind_weapp_count, new Object[] { Integer.valueOf(this.hoi.size()) }));
-      localObject = this.hoi;
-      this.hom.removeAllViews();
-      if (!((List)localObject).isEmpty())
-      {
-        int k = ((List)localObject).size();
-        int j = this.hon.getMeasuredWidth();
-        int i = j;
-        if (j == 0) {
-          i = hkX.widthPixels;
-        }
-        j = i - this.hon.getPaddingLeft() - this.hon.getPaddingRight();
-        i = j / (hoq + hop);
-        if (i > k) {
-          this.hoo.setVisibility(8);
-        }
-        for (;;)
-        {
-          j = Math.min(i, k);
-          if (j <= 1) {
-            break;
-          }
-          i = 0;
-          while (i < j)
-          {
-            WxaAttributes.WxaEntryInfo localWxaEntryInfo = (WxaAttributes.WxaEntryInfo)((List)localObject).get(i);
-            ImageView localImageView = new ImageView(this.mContext);
-            localImageView.setLayoutParams(new ViewGroup.LayoutParams(hoq + hop, hoq));
-            localImageView.setPadding(0, 0, hop, 0);
-            this.hom.addView(localImageView);
-            a(localWxaEntryInfo, localImageView, null);
-            i += 1;
-          }
-          this.hoo.setVisibility(0);
-          i = (j - this.hoo.getMeasuredWidth()) / (hoq + hop);
-        }
-        y.i("MicroMsg.BizBindWxaInfoPreference", "attachItemToContainer(size : %s)", new Object[] { Integer.valueOf(((List)localObject).size()) });
-      }
-      if (this.hoi.size() == 1)
-      {
-        this.hoj.setVisibility(0);
-        this.hon.setTag(((WxaAttributes.WxaEntryInfo)this.hoi.get(0)).username);
-        this.hon.setOnClickListener(this.jDE);
-        return;
-      }
-      this.hoj.setVisibility(8);
-      this.hon.setTag(null);
-      this.hon.setOnClickListener(this.mVn);
+      azw();
+      AppMethodBeat.o(23299);
       return;
+      this.jaN.clear();
     }
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
-    this.hoj = paramView.findViewById(R.h.firstItemV);
-    this.hok = ((ImageView)paramView.findViewById(R.h.iconIv));
-    this.haW = ((TextView)paramView.findViewById(R.h.titleTv));
-    this.hol = ((TextView)paramView.findViewById(R.h.countTv));
-    this.hoo = paramView.findViewById(R.h.moreV);
-    this.hom = ((LinearLayout)paramView.findViewById(R.h.containerV));
-    this.hon = ((ViewGroup)paramView.findViewById(R.h.itemContainerV));
-    this.mVl = true;
-    if (this.hoi != null) {}
+    AppMethodBeat.i(23298);
+    this.jaO = paramView.findViewById(2131821333);
+    this.iCl = ((ImageView)paramView.findViewById(2131821334));
+    this.iJG = ((TextView)paramView.findViewById(2131821335));
+    this.jaP = ((TextView)paramView.findViewById(2131821338));
+    this.jaS = paramView.findViewById(2131821337);
+    this.jaQ = ((LinearLayout)paramView.findViewById(2131821336));
+    this.jaR = ((ViewGroup)paramView.findViewById(2131821332));
+    this.pxQ = true;
+    if (this.jaN != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.mVm = bool;
-      aeT();
+      this.pxR = bool;
+      azw();
       super.onBindView(paramView);
+      AppMethodBeat.o(23298);
       return;
     }
   }

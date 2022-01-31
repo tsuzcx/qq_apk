@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.d.a.a;
-import a.d.b.g;
-import a.d.b.h;
+import a.f.a.a;
+import a.f.b.j;
+import a.f.b.k;
+import a.l;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
 final class RadarStateView$b
-  extends h
+  extends k
   implements a<Animation>
 {
   RadarStateView$b(RadarStateView paramRadarStateView)
@@ -15,6 +18,7 @@ final class RadarStateView$b
     super(0);
   }
   
+  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/radar/ui/RadarStateView$slideInAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
   public static final class a
     implements Animation.AnimationListener
   {
@@ -22,19 +26,25 @@ final class RadarStateView$b
     
     public final void onAnimationEnd(Animation paramAnimation)
     {
-      g.k(paramAnimation, "animation");
-      RadarStateView.b(this.nmQ.nmP);
-      this.nmQ.nmP.setVisibility(8);
+      AppMethodBeat.i(103034);
+      j.q(paramAnimation, "animation");
+      RadarStateView.b(this.pSe.pSd);
+      this.pSe.pSd.setVisibility(8);
+      AppMethodBeat.o(103034);
     }
     
     public final void onAnimationRepeat(Animation paramAnimation)
     {
-      g.k(paramAnimation, "animation");
+      AppMethodBeat.i(103035);
+      j.q(paramAnimation, "animation");
+      AppMethodBeat.o(103035);
     }
     
     public final void onAnimationStart(Animation paramAnimation)
     {
-      g.k(paramAnimation, "animation");
+      AppMethodBeat.i(103033);
+      j.q(paramAnimation, "animation");
+      AppMethodBeat.o(103033);
     }
   }
 }

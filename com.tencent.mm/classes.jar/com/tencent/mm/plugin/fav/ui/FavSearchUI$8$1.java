@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.fav.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.ui.a.b;
 import com.tencent.mm.plugin.fav.ui.a.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.List;
 
 final class FavSearchUI$8$1
@@ -12,20 +13,23 @@ final class FavSearchUI$8$1
   
   public final void run()
   {
-    if ((this.kcN.isEmpty()) && (this.kcO.isEmpty()) && (FavSearchUI.e(this.kcQ.kcM)))
+    AppMethodBeat.i(74072);
+    if ((this.mxy.isEmpty()) && (this.mxz.isEmpty()) && (FavSearchUI.e(this.mxB.mxx)))
     {
-      FavSearchUI.a(this.kcQ.kcM, false);
-      FavSearchUI.a(this.kcQ.kcM, this.kcN, this.kcO);
+      FavSearchUI.a(this.mxB.mxx, false);
+      FavSearchUI.a(this.mxB.mxx, this.mxy, this.mxz);
+      AppMethodBeat.o(74072);
       return;
     }
-    FavSearchUI.a(this.kcQ.kcM, this.kcN, this.kcO);
-    y.d("MicroMsg.FavSearchUI", "on text changed, types %s keys %s tags %s", new Object[] { this.kcP, this.kcN, this.kcO });
-    FavSearchUI.b(this.kcQ.kcM, this.kcN);
-    FavSearchUI.c(this.kcQ.kcM, this.kcO);
-    FavSearchUI.d(this.kcQ.kcM, this.kcP);
-    FavSearchUI.f(this.kcQ.kcM).bt(this.kcO);
-    FavSearchUI.g(this.kcQ.kcM).b(this.kcP, this.kcN, this.kcO);
-    FavSearchUI.b(this.kcQ.kcM, false);
+    FavSearchUI.a(this.mxB.mxx, this.mxy, this.mxz);
+    ab.d("MicroMsg.FavSearchUI", "on text changed, types %s keys %s tags %s", new Object[] { this.mxA, this.mxy, this.mxz });
+    FavSearchUI.b(this.mxB.mxx, this.mxy);
+    FavSearchUI.c(this.mxB.mxx, this.mxz);
+    FavSearchUI.d(this.mxB.mxx, this.mxA);
+    FavSearchUI.f(this.mxB.mxx).bN(this.mxz);
+    FavSearchUI.g(this.mxB.mxx).c(this.mxA, this.mxy, this.mxz);
+    FavSearchUI.b(this.mxB.mxx, false);
+    AppMethodBeat.o(74072);
   }
 }
 

@@ -1,69 +1,55 @@
 package com.tencent.mm.ce;
 
-import java.util.HashSet;
-import java.util.Iterator;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.TextPaint;
+import android.text.style.ReplacementSpan;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class a<T>
-  implements b.a<T>
+public final class a
+  extends ReplacementSpan
 {
-  private final String mName;
-  private T mValue;
-  private HashSet<Object<T>> umI;
-  private final Object umJ = new Object();
+  private int yuY;
   
-  private a(String paramString)
+  public a(int paramInt)
   {
-    this.mName = paramString;
-    this.umI = new HashSet();
+    this.yuY = paramInt;
   }
   
-  a(String paramString, T paramT)
+  private TextPaint c(Paint paramPaint)
   {
-    this(paramString);
-    this.mValue = paramT;
+    AppMethodBeat.i(156600);
+    paramPaint = new TextPaint(paramPaint);
+    paramPaint.setTextSize(this.yuY);
+    AppMethodBeat.o(156600);
+    return paramPaint;
   }
   
-  public final T get()
+  public final void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    return this.mValue;
+    AppMethodBeat.i(156599);
+    paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
+    paramPaint = c(paramPaint);
+    Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
+    paramCharSequence = paramCharSequence.toString();
+    paramInt1 = localFontMetricsInt.descent;
+    paramCanvas.drawText(paramCharSequence, paramFloat, paramInt4 - ((localFontMetricsInt.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2 - (paramInt5 + paramInt3) / 2), paramPaint);
+    AppMethodBeat.o(156599);
   }
   
-  public final String name()
+  public final int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    return this.mName;
-  }
-  
-  final void set(T arg1)
-  {
-    Object localObject1 = this.mValue;
-    int i;
-    if ((??? == localObject1) || ((??? != null) && (???.equals(localObject1)))) {
-      i = 1;
-    }
-    label77:
-    while (i == 0)
-    {
-      this.mValue = ???;
-      synchronized (this.umJ)
-      {
-        localObject1 = this.umI.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label77;
-        }
-        ((Iterator)localObject1).next();
-      }
-      i = 0;
-    }
-  }
-  
-  public final String toString()
-  {
-    return "Status: " + this.mName;
+    AppMethodBeat.i(156598);
+    paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
+    paramInt1 = (int)c(paramPaint).measureText(paramCharSequence.toString());
+    AppMethodBeat.o(156598);
+    return paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ce.a
  * JD-Core Version:    0.7.0.1
  */

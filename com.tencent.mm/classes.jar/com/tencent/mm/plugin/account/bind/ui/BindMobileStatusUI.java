@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,24 +9,25 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.r;
 import com.tencent.mm.modelsimple.BindWordingContent;
-import com.tencent.mm.plugin.account.bind.a.d;
-import com.tencent.mm.plugin.account.bind.a.e;
-import com.tencent.mm.plugin.account.bind.a.f;
-import com.tencent.mm.plugin.account.bind.a.i;
+import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.zr;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.protocal.protobuf.aek;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMWizardActivity;
 import java.util.HashMap;
@@ -36,69 +38,41 @@ import java.util.Set;
 public class BindMobileStatusUI
   extends MMWizardActivity
 {
-  private SharedPreferences dnD;
-  private TextView fbN;
-  private Button fbO;
-  private ImageView fbt;
-  private TextView fck;
-  private ImageView fcl;
-  private ImageView fcm;
-  private Boolean fcn = Boolean.valueOf(true);
-  private Boolean fco = Boolean.valueOf(true);
-  private RelativeLayout fcp;
-  private RelativeLayout fcq;
-  private BindWordingContent fcr;
-  private int fcs;
-  private boolean fct;
-  private boolean fcu;
+  private TextView gtE;
+  private Button gtF;
+  private TextView gtU;
+  private ImageView gtV;
+  private ImageView gtW;
+  private Boolean gtX;
+  private Boolean gtY;
+  private RelativeLayout gtZ;
+  private ImageView gtl;
+  private RelativeLayout gua;
+  private BindWordingContent gub;
+  private int guc;
+  private boolean gud;
+  private boolean gue;
   @SuppressLint({"UseSparseArrays"})
-  private HashMap<Integer, Integer> fcv = new HashMap();
-  private SparseArray<String> fcw = new SparseArray(3);
+  private HashMap<Integer, Integer> guf;
+  private SparseArray<String> gug;
+  private SharedPreferences sp;
   private int status;
   
-  private boolean a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public BindMobileStatusUI()
   {
-    y.d("MicroMsg.BindMobileStatusUI", "switch change : open = " + paramBoolean + " item value = " + paramInt1 + " functionId = " + paramInt2);
-    label59:
-    String str;
-    Boolean localBoolean;
-    if (paramBoolean)
-    {
-      this.status |= paramInt1;
-      if (!paramBoolean) {
-        break label182;
-      }
-      paramInt1 = 1;
-      this.fcv.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
-      str = (String)this.fcw.get(paramInt2);
-      if ((this.dnD != null) && (str != null) && (str.length() > 0))
-      {
-        localBoolean = Boolean.valueOf(paramBoolean);
-        if ((paramInt2 == 8) || (paramInt2 == 7)) {
-          if (paramBoolean) {
-            break label187;
-          }
-        }
-      }
-    }
-    label182:
-    label187:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localBoolean = Boolean.valueOf(paramBoolean);
-      this.dnD.edit().putBoolean(str, localBoolean.booleanValue()).commit();
-      return true;
-      this.status &= (paramInt1 ^ 0xFFFFFFFF);
-      break;
-      paramInt1 = 2;
-      break label59;
-    }
+    AppMethodBeat.i(13499);
+    this.gtX = Boolean.TRUE;
+    this.gtY = Boolean.TRUE;
+    this.guf = new HashMap();
+    this.gug = new SparseArray(3);
+    AppMethodBeat.o(13499);
   }
   
   public static void c(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool2 = false;
     int j = 1;
+    AppMethodBeat.i(13505);
     paramContext = paramContext.getSharedPreferences(paramContext.getPackageName() + "_preferences", 0);
     Object localObject = paramContext.edit();
     boolean bool1;
@@ -112,88 +86,131 @@ public class BindMobileStatusUI
         bool1 = true;
       }
       paramContext.putBoolean("settings_recommend_mobilefriends_to_me", bool1).commit();
-      i = q.Gn();
+      i = r.Zr();
       if (!paramBoolean1) {
-        break label264;
+        break label276;
       }
       i |= 0x200;
-      label114:
+      label120:
       if (!paramBoolean2) {
-        break label273;
+        break label285;
       }
       i |= 0x100;
-      label124:
-      g.DP().Dz().o(7, Integer.valueOf(i));
-      paramContext = new zr();
-      paramContext.sYS = 8;
+      label130:
+      g.RL().Ru().set(7, Integer.valueOf(i));
+      paramContext = new aek();
+      paramContext.wXn = 8;
       if (!paramBoolean2) {
-        break label282;
+        break label294;
       }
       i = 1;
-      label159:
-      paramContext.nfn = i;
-      ((j)g.r(j.class)).Fv().b(new i.a(23, paramContext));
-      localObject = new zr();
-      ((zr)localObject).sYS = 7;
+      label165:
+      paramContext.pKC = i;
+      ((j)g.E(j.class)).Yz().c(new j.a(23, paramContext));
+      localObject = new aek();
+      ((aek)localObject).wXn = 7;
       if (!paramBoolean1) {
-        break label287;
+        break label299;
       }
     }
-    label264:
-    label273:
-    label282:
-    label287:
+    label276:
+    label285:
+    label294:
+    label299:
     for (int i = j;; i = 2)
     {
-      paramContext.nfn = i;
-      ((j)g.r(j.class)).Fv().b(new i.a(23, (com.tencent.mm.bv.a)localObject));
-      com.tencent.mm.plugin.account.a.a.eUS.tk();
+      paramContext.pKC = i;
+      ((j)g.E(j.class)).Yz().c(new j.a(23, (com.tencent.mm.bv.a)localObject));
+      com.tencent.mm.plugin.account.a.a.gmP.BO();
+      AppMethodBeat.o(13505);
       return;
       bool1 = false;
       break;
       i &= 0xFFFFFDFF;
-      break label114;
+      break label120;
       i &= 0xFFFFFEFF;
-      break label124;
+      break label130;
       i = 2;
-      break label159;
+      break label165;
     }
   }
   
-  protected final int getLayoutId()
+  private boolean c(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    return a.f.bind_mobile_status;
+    AppMethodBeat.i(13502);
+    ab.d("MicroMsg.BindMobileStatusUI", "switch change : open = " + paramBoolean + " item value = " + paramInt1 + " functionId = " + paramInt2);
+    label65:
+    String str;
+    Boolean localBoolean;
+    if (paramBoolean)
+    {
+      this.status |= paramInt1;
+      if (!paramBoolean) {
+        break label194;
+      }
+      paramInt1 = 1;
+      this.guf.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
+      str = (String)this.gug.get(paramInt2);
+      if ((this.sp != null) && (str != null) && (str.length() > 0))
+      {
+        localBoolean = Boolean.valueOf(paramBoolean);
+        if ((paramInt2 == 8) || (paramInt2 == 7)) {
+          if (paramBoolean) {
+            break label199;
+          }
+        }
+      }
+    }
+    label194:
+    label199:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localBoolean = Boolean.valueOf(paramBoolean);
+      this.sp.edit().putBoolean(str, localBoolean.booleanValue()).commit();
+      AppMethodBeat.o(13502);
+      return true;
+      this.status &= (paramInt1 ^ 0xFFFFFFFF);
+      break;
+      paramInt1 = 2;
+      break label65;
+    }
   }
   
-  protected final void initView()
+  public int getLayoutId()
+  {
+    return 2130968842;
+  }
+  
+  public void initView()
   {
     boolean bool2 = true;
-    this.fbt = ((ImageView)findViewById(a.e.bind_m_contact_status_state_icon));
-    this.fck = ((TextView)findViewById(a.e.bind_m_contact_status_bind_state_title));
-    this.fbN = ((TextView)findViewById(a.e.bind_m_contact_status_bind_state_hint));
-    this.fbO = ((Button)findViewById(a.e.bind_m_contact_status_ok_btn));
-    this.fcl = ((ImageView)findViewById(a.e.bind_setttings_find_me_by_mobile));
-    this.fcm = ((ImageView)findViewById(a.e.bind_settings_recommend_friends_with_contacts));
-    this.fcp = ((RelativeLayout)findViewById(a.e.bind_m_contact_status_RL));
-    this.fcq = ((RelativeLayout)findViewById(a.e.bind_m_contact_status_RL1));
-    switch (this.fcs)
+    AppMethodBeat.i(13503);
+    this.gtl = ((ImageView)findViewById(2131821776));
+    this.gtU = ((TextView)findViewById(2131821777));
+    this.gtE = ((TextView)findViewById(2131821778));
+    this.gtF = ((Button)findViewById(2131821779));
+    this.gtV = ((ImageView)findViewById(2131821781));
+    this.gtW = ((ImageView)findViewById(2131821783));
+    this.gtZ = ((RelativeLayout)findViewById(2131821780));
+    this.gua = ((RelativeLayout)findViewById(2131821782));
+    switch (this.guc)
     {
     default: 
-      if (this.fcr != null) {}
-      switch (this.fcr.boJ.intValue())
+      if (this.gub != null) {}
+      switch (this.gub.bOw.intValue())
       {
       case 0: 
       case 1: 
       default: 
-        label184:
-        this.fbO.setVisibility(8);
-        addTextOptionMenu(0, getString(a.i.app_finish), new BindMobileStatusUI.1(this));
-        if ((com.tencent.mm.plugin.account.friend.a.l.WP() == l.a.ffT) || (com.tencent.mm.plugin.account.friend.a.l.WP() == l.a.ffU))
+        label192:
+        this.gtF.setVisibility(8);
+        addTextOptionMenu(0, getString(2131296964), new BindMobileStatusUI.1(this));
+        if ((l.aqq() == l.a.gxB) || (l.aqq() == l.a.gxC))
         {
-          this.fbt.setImageResource(a.d.bind_mcontact_success);
-          String str = (String)g.DP().Dz().get(6, null);
+          this.gtl.setImageResource(2130837904);
+          String str = (String)g.RL().Ru().get(6, null);
           if ((str == null) || (str.equals(""))) {
-            g.DP().Dz().get(4097, null);
+            g.RL().Ru().get(4097, null);
           }
         }
         break;
@@ -202,91 +219,143 @@ public class BindMobileStatusUI
     }
     for (;;)
     {
-      this.fcl.setOnClickListener(new BindMobileStatusUI.2(this));
-      this.fcm.setOnClickListener(new BindMobileStatusUI.3(this));
-      this.fbO.setOnClickListener(new BindMobileStatusUI.4(this));
+      this.gtV.setOnClickListener(new BindMobileStatusUI.2(this));
+      this.gtW.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          boolean bool2 = true;
+          AppMethodBeat.i(13497);
+          paramAnonymousView = BindMobileStatusUI.this;
+          if (!BindMobileStatusUI.d(BindMobileStatusUI.this).booleanValue())
+          {
+            bool1 = true;
+            BindMobileStatusUI.b(paramAnonymousView, Boolean.valueOf(bool1));
+            if (!BindMobileStatusUI.d(BindMobileStatusUI.this).booleanValue()) {
+              break label131;
+            }
+            BindMobileStatusUI.e(BindMobileStatusUI.this).setImageResource(2131231137);
+            label62:
+            paramAnonymousView = BindMobileStatusUI.this;
+            if (BindMobileStatusUI.d(BindMobileStatusUI.this).booleanValue()) {
+              break label146;
+            }
+          }
+          label131:
+          label146:
+          for (boolean bool1 = bool2;; bool1 = false)
+          {
+            BindMobileStatusUI.a(paramAnonymousView, bool1, 256, 7);
+            if (!BindMobileStatusUI.d(BindMobileStatusUI.this).booleanValue()) {
+              BindMobileStatusUI.a(BindMobileStatusUI.this, false, 2097152, 32);
+            }
+            AppMethodBeat.o(13497);
+            return;
+            bool1 = false;
+            break;
+            BindMobileStatusUI.e(BindMobileStatusUI.this).setImageResource(2131231142);
+            break label62;
+          }
+        }
+      });
+      this.gtF.setOnClickListener(new BindMobileStatusUI.4(this));
+      AppMethodBeat.o(13503);
       return;
-      this.fcp.setVisibility(8);
-      this.fcq.setVisibility(8);
-      if (!this.fct)
+      this.gtZ.setVisibility(8);
+      this.gua.setVisibility(8);
+      if (!this.gud)
       {
         bool1 = true;
-        label358:
-        a(bool1, 512, 8);
-        if (this.fcu) {
-          break label397;
+        label372:
+        c(bool1, 512, 8);
+        if (this.gue) {
+          break label411;
         }
       }
-      label397:
+      label411:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        a(bool1, 256, 7);
+        c(bool1, 256, 7);
         break;
         bool1 = false;
-        break label358;
+        break label372;
       }
-      this.fcp.setVisibility(0);
-      this.fcp.setBackgroundResource(a.d.bind_preference_one_item);
-      this.fcq.setVisibility(8);
+      this.gtZ.setVisibility(0);
+      this.gtZ.setBackgroundResource(2130837908);
+      this.gua.setVisibility(8);
       break;
-      this.fbN.setVisibility(8);
-      break label184;
-      this.fbt.setImageResource(a.d.bind_mcontact_error);
-      this.fbN.setVisibility(8);
-      this.fck.setText(getString(a.i.bind_mcontact_bind_error));
+      this.gtE.setVisibility(8);
+      break label192;
+      this.gtl.setImageResource(2130837901);
+      this.gtE.setVisibility(8);
+      this.gtU.setText(getString(2131297555));
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(13500);
     super.onCreate(paramBundle);
-    this.dnD = getSharedPreferences(getPackageName() + "_preferences", 0);
-    this.status = q.Gn();
-    this.fcw.put(8, "settings_find_me_by_mobile");
-    this.fcw.put(7, "settings_recommend_mobilefriends_to_me");
-    this.fcw.put(32, "settings_autoadd_mobilefriends");
-    a(false, 512, 8);
-    a(false, 256, 7);
-    setMMTitle(a.i.bind_mcontact_title_bind_finish);
-    this.fcr = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
-    this.fcs = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
-    this.fct = getIntent().getBooleanExtra("Kfind_friend_by_mobile_flag", false);
-    this.fcu = getIntent().getBooleanExtra("Krecom_friends_by_mobile_flag", false);
+    this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
+    this.status = r.Zr();
+    this.gug.put(8, "settings_find_me_by_mobile");
+    this.gug.put(7, "settings_recommend_mobilefriends_to_me");
+    this.gug.put(32, "settings_autoadd_mobilefriends");
+    c(false, 512, 8);
+    c(false, 256, 7);
+    setMMTitle(2131297596);
+    this.gub = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
+    this.guc = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
+    this.gud = getIntent().getBooleanExtra("Kfind_friend_by_mobile_flag", false);
+    this.gue = getIntent().getBooleanExtra("Krecom_friends_by_mobile_flag", false);
     initView();
+    AppMethodBeat.o(13500);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(13504);
     if (paramInt == 4)
     {
-      FW(1);
+      Oi(1);
+      AppMethodBeat.o(13504);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(13504);
+    return bool;
   }
   
-  protected void onPause()
+  public void onPause()
   {
-    g.DP().Dz().o(7, Integer.valueOf(this.status));
-    Iterator localIterator = this.fcv.entrySet().iterator();
+    AppMethodBeat.i(13501);
+    g.RL().Ru().set(7, Integer.valueOf(this.status));
+    Iterator localIterator = this.guf.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
       int i = ((Integer)((Map.Entry)localObject).getKey()).intValue();
       int j = ((Integer)((Map.Entry)localObject).getValue()).intValue();
-      localObject = new zr();
-      ((zr)localObject).sYS = i;
-      ((zr)localObject).nfn = j;
-      ((j)g.r(j.class)).Fv().b(new i.a(23, (com.tencent.mm.bv.a)localObject));
-      y.d("MicroMsg.BindMobileStatusUI", "switch  " + i + " " + j);
+      localObject = new aek();
+      ((aek)localObject).wXn = i;
+      ((aek)localObject).pKC = j;
+      ((j)g.E(j.class)).Yz().c(new j.a(23, (com.tencent.mm.bv.a)localObject));
+      ab.d("MicroMsg.BindMobileStatusUI", "switch  " + i + " " + j);
     }
-    this.fcv.clear();
+    this.guf.clear();
     super.onPause();
+    AppMethodBeat.o(13501);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMobileStatusUI
  * JD-Core Version:    0.7.0.1
  */

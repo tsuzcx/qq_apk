@@ -1,170 +1,195 @@
 package com.tencent.mm.plugin.hp.tinker;
 
-import android.os.Build.VERSION;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.tinker.loader.TinkerRuntimeException;
-import com.tencent.tinker.loader.app.ApplicationLike;
-import com.tinkerboots.sdk.a.a;
-import com.tinkerboots.sdk.tinker.service.TinkerServerResultService;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.hp.b.b;
+import com.tencent.mm.plugin.hp.b.b.a;
+import com.tencent.mm.plugin.hp.b.b.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
+import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
+import java.io.File;
+import java.util.HashMap;
 
 public final class d
+  extends com.tencent.tinker.lib.d.a
 {
-  private static boolean lnq = false;
-  
-  public static void Fs(String paramString)
+  public d(Context paramContext)
   {
-    if (!lnq) {
-      throw new RuntimeException("upgrade patch but tinker is not installed");
-    }
-    com.tencent.tinker.lib.e.c.bR(com.tencent.mm.app.b.applicationLike.getApplication(), paramString);
+    super(paramContext);
   }
   
-  public static void b(ApplicationLike paramApplicationLike)
+  private void bIm()
   {
-    y.i("Tinker.TinkerPatchManager", "try installing tinker");
-    if (lnq)
-    {
-      y.w("Tinker.TinkerPatchManager", "install tinker, but has installed, ignore");
-      return;
-    }
-    long l1 = 0L;
-    long l2;
-    try
-    {
-      l2 = com.tencent.mm.kernel.a.De() & 0xFFFFFFFF;
-      l1 = l2;
-      y.i("Tinker.TinkerPatchManager", "uin is %s", new Object[] { bk.aac(String.valueOf(l2)) });
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        a.a locala;
-        y.printErrStackTrace("Tinker.TinkerPatchManager", localException, "tinker patch manager get uin failed.", new Object[0]);
-        l2 = l1;
-      }
-      localException.wWl = ((com.tencent.tinker.lib.d.c)localObject);
-      Object localObject = new e(paramApplicationLike.getApplication());
-      if (localException.wWm == null) {
-        break label158;
-      }
-      throw new TinkerRuntimeException("patchReporter is already set.");
-      localException.wWm = ((com.tencent.tinker.lib.d.d)localObject);
-      paramApplicationLike = new b(paramApplicationLike.getApplication());
-      if (localException.wWk == null) {
-        break label195;
-      }
-      throw new TinkerRuntimeException("listener is already set.");
-      localException.wWk = paramApplicationLike;
-      if (localException.xnI == null) {
-        break label219;
-      }
-      throw new TinkerRuntimeException("resultServiceClass is already set.");
-      localException.xnI = TinkerPatchResultService.class;
-      if (localException.wWl != null) {
-        break label251;
-      }
-      localException.wWl = new com.tinkerboots.sdk.tinker.b.a(localException.context);
-      if (localException.wWm != null) {
-        break label276;
-      }
-      localException.wWm = new com.tinkerboots.sdk.tinker.b.c(localException.context);
-      if (localException.wWk != null) {
-        break label301;
-      }
-      localException.wWk = new com.tinkerboots.sdk.tinker.b.b(localException.context);
-      if (localException.xnH != null) {
-        break label321;
-      }
-      localException.xnH = new com.tencent.tinker.lib.c.f();
-      if (localException.xnI != null) {
-        break label336;
-      }
-      localException.xnI = TinkerServerResultService.class;
-      if (localException.xnJ != null) {
-        break label356;
-      }
-      localException.xnJ = new com.tinkerboots.sdk.a.a.a();
-      paramApplicationLike = new com.tinkerboots.sdk.a(localException.context, localException.applicationLike, localException.wWl, localException.wWm, localException.wWk, localException.xnH, localException.xnI, localException.xnJ);
-      if (com.tinkerboots.sdk.a.xnC == null) {
-        break label420;
-      }
-      throw new TinkerRuntimeException("TinkerClient instance is already set.");
-      com.tinkerboots.sdk.a.xnC = paramApplicationLike;
-      paramApplicationLike = com.tinkerboots.sdk.a.cTY().KL(g.dF(ae.getContext()));
-      bool = com.tencent.mm.sdk.a.b.cqk();
-      if (paramApplicationLike.xnE == null) {
-        break label456;
-      }
-    }
-    locala = new a.a(paramApplicationLike);
-    localObject = new c(paramApplicationLike.getApplication());
-    if (locala.wWl != null) {
-      throw new TinkerRuntimeException("loadReporter is already set.");
-    }
-    label158:
-    label195:
-    label219:
-    label251:
-    boolean bool;
-    label276:
-    label301:
-    label321:
-    label336:
-    label356:
+    AppMethodBeat.i(90641);
+    new a(this.context, new d.1(this));
+    AppMethodBeat.o(90641);
+  }
+  
+  public final void a(File paramFile, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(90639);
+    super.a(paramFile, paramInt, paramLong);
+    label56:
+    Object localObject1;
+    Object localObject2;
     int i;
-    label420:
-    label456:
-    label510:
-    f localf;
-    if (paramApplicationLike.xnD == null)
+    switch (paramInt)
     {
-      com.tencent.tinker.lib.f.a.e("Tinker.TinkerClient", "setDebugger, tinkerServerClient or tinkerClient is null, just return", new Object[0]);
-      paramApplicationLike = com.tinkerboots.sdk.a.xnC;
-      paramApplicationLike = paramApplicationLike.gV("uin", String.valueOf(l2)).gV("code-version", com.tencent.mm.sdk.platformtools.d.CLIENT_VERSION).gV("code-reversion", com.tencent.mm.sdk.platformtools.d.REV);
-      if (!aq.isWifi(ae.getContext())) {
-        break label643;
+    default: 
+      if (!com.tencent.tinker.lib.e.a.jo(this.context).snC)
+      {
+        com.tencent.tinker.lib.f.a.w("Tinker.TinkerPatchLoadReporter", "onPatchRetryLoad retry is not main process, just return", new Object[0]);
+        ab.d("Tinker.TinkerPatchLoadReporter", "onLoadResult loadcode:%d icost:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+        if (paramInt == 0)
+        {
+          localObject1 = com.tencent.tinker.lib.e.a.jo(this.context).BsT;
+          ab.i("Tinker.TinkerPatchLoadReporter", "onLoadResult currentVersion:%s", new Object[] { ((com.tencent.tinker.lib.e.d)localObject1).BsY });
+          if (!TextUtils.isEmpty(((com.tencent.tinker.lib.e.d)localObject1).BsY))
+          {
+            paramFile = this.context;
+            localObject1 = ((com.tencent.tinker.lib.e.d)localObject1).BsY;
+            paramFile.getSharedPreferences("tinker_patch_share_config", 4).edit().putString("tinker_patch_version_key", (String)localObject1).apply();
+          }
+        }
+        localObject2 = com.tencent.tinker.lib.e.a.jo(this.context);
+        if ((((com.tencent.tinker.lib.e.a)localObject2).BsT == null) || (((com.tencent.tinker.lib.e.a)localObject2).BsT.Btl == null)) {
+          break label375;
+        }
+        paramFile = f.CLIENT_VERSION;
+        localObject1 = (String)((com.tencent.tinker.lib.e.a)localObject2).BsT.Btl.get("patch.client.ver");
+        localObject2 = (String)((com.tencent.tinker.lib.e.a)localObject2).BsT.Btl.get("NEW_TINKER_ID");
+        i = b.b.nKb.value;
+        if (paramInt != 0) {
+          break label365;
+        }
       }
-      i = 3;
-      paramApplicationLike = paramApplicationLike.gV("network", String.valueOf(i)).gV("sdk", String.valueOf(Build.VERSION.SDK_INT)).gV("os-name", com.tencent.mm.protocal.d.soX).gV("device-brand", com.tencent.mm.protocal.d.soU).gV("device-name", com.tencent.mm.protocal.d.DEVICE_NAME);
-      localf = new f();
-      if ((paramApplicationLike.xnE != null) && (paramApplicationLike.xnD != null)) {
-        break label648;
+      break;
+    }
+    label365:
+    for (paramInt = b.a.nJY.value;; paramInt = b.a.nJX.value)
+    {
+      b.e(paramFile, (String)localObject1, (String)localObject2, i, paramInt);
+      AppMethodBeat.o(90639);
+      return;
+      b.t(paramLong, com.tencent.tinker.lib.e.a.jo(this.context).snC);
+      break;
+      paramFile = new File(SharePatchFileUtil.jz(this.context), "temp.apk").getAbsolutePath();
+      if ((paramFile == null) || (!new File(paramFile).exists()))
+      {
+        com.tencent.tinker.lib.f.a.w("Tinker.TinkerPatchLoadReporter", "onPatchRetryLoad patch file: %s is not exist, just return", new Object[] { paramFile });
+        break label56;
       }
-      com.tencent.tinker.lib.f.a.e("Tinker.TinkerClient", "setPatchRequestCallback, tinkerServerClient or tinkerClient is null, just return", new Object[0]);
+      new a(this.context, new d.2(this));
+      break label56;
+    }
+    label375:
+    ab.i("Tinker.TinkerPatchLoadReporter", "patchCheck properties is null.");
+    AppMethodBeat.o(90639);
+  }
+  
+  public final void a(File paramFile, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(90634);
+    com.tencent.tinker.lib.f.a.i("Tinker.TinkerPatchLoadReporter", "patch loadReporter onLoadFileNotFound: patch file not found: %s, fileType:%d, isDirectory:%b", new Object[] { paramFile.getAbsolutePath(), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if (paramInt == 4) {
+      bIm();
     }
     for (;;)
     {
-      y.i("Tinker.TinkerPatchManager", "try installing end");
-      lnq = true;
+      if (paramInt == 1)
+      {
+        paramFile = com.tencent.tinker.lib.e.a.jo(this.context).BsT;
+        if ((paramFile.BsY != null) && ("00000000000000000000000000000000".equals(paramFile.BsY)))
+        {
+          com.tencent.tinker.lib.f.a.e("Tinker.TinkerPatchLoadReporter", "Roll back patch when restarting main process, restart all other process also!", new Object[0]);
+          ShareTinkerInternals.jJ(this.context);
+        }
+      }
+      b.xA(paramInt);
+      AppMethodBeat.o(90634);
       return;
-      com.tencent.tinker.lib.f.a.i("Tinker.TinkerClient", "set debugger to %b", new Object[] { Boolean.valueOf(bool) });
-      paramApplicationLike.xnE.isDebug = bool;
-      paramApplicationLike = com.tinkerboots.sdk.a.xnC;
-      break;
-      label643:
-      i = 2;
-      break label510;
-      label648:
-      com.tencent.tinker.lib.f.a.i("Tinker.TinkerClient", "setPatchRequestCallback with hashcode %d", new Object[] { Integer.valueOf(localf.hashCode()) });
-      paramApplicationLike.xnE.xnJ = localf;
+      dWv();
     }
   }
   
-  public static void bbi()
+  public final void a(String paramString1, String paramString2, File paramFile)
   {
-    com.tencent.tinker.lib.f.a.a(new d.1());
+    AppMethodBeat.i(90637);
+    super.a(paramString1, paramString2, paramFile);
+    b.bIe();
+    AppMethodBeat.o(90637);
   }
   
-  public static void bbj()
+  public final void a(String paramString1, String paramString2, File paramFile, String paramString3)
   {
-    if (!lnq) {
-      throw new RuntimeException("cleanPatch but tinker is not installed");
+    AppMethodBeat.i(90638);
+    super.a(paramString1, paramString2, paramFile, paramString3);
+    b.bIf();
+    AppMethodBeat.o(90638);
+  }
+  
+  public final void a(Throwable paramThrowable, int paramInt)
+  {
+    AppMethodBeat.i(90632);
+    super.a(paramThrowable, paramInt);
+    b.a(paramThrowable, paramInt);
+    AppMethodBeat.o(90632);
+  }
+  
+  public final void b(int paramInt, Throwable paramThrowable)
+  {
+    AppMethodBeat.i(90635);
+    com.tencent.tinker.lib.f.a.i("Tinker.TinkerPatchLoadReporter", "patch loadReporter onLoadInterpret: type: %d, throwable: %s", new Object[] { Integer.valueOf(paramInt), paramThrowable });
+    switch (paramInt)
+    {
     }
-    com.tencent.tinker.lib.e.a.hN(com.tencent.mm.app.b.applicationLike.getApplication()).bbj();
+    for (;;)
+    {
+      bIm();
+      b.a(paramInt, paramThrowable);
+      AppMethodBeat.o(90635);
+      return;
+      com.tencent.tinker.lib.f.a.e("Tinker.TinkerPatchLoadReporter", "patch loadReporter onLoadInterpret fail, can get instruction set from existed oat file", new Object[0]);
+      continue;
+      com.tencent.tinker.lib.f.a.e("Tinker.TinkerPatchLoadReporter", "patch loadReporter onLoadInterpret fail, command line to interpret return error", new Object[0]);
+      continue;
+      com.tencent.tinker.lib.f.a.i("Tinker.TinkerPatchLoadReporter", "patch loadReporter onLoadInterpret ok", new Object[0]);
+    }
+  }
+  
+  public final void b(File paramFile, int paramInt)
+  {
+    AppMethodBeat.i(90633);
+    super.b(paramFile, paramInt);
+    b.xB(paramInt);
+    AppMethodBeat.o(90633);
+  }
+  
+  public final void c(File paramFile, int paramInt)
+  {
+    AppMethodBeat.i(90636);
+    super.c(paramFile, paramInt);
+    b.w(ah.ynK, paramInt);
+    AppMethodBeat.o(90636);
+  }
+  
+  public final void d(File paramFile, int paramInt)
+  {
+    AppMethodBeat.i(90640);
+    super.d(paramFile, paramInt);
+    if ((paramInt == -26) || (paramInt == -5))
+    {
+      ShareTinkerInternals.jD(this.context);
+      com.tencent.tinker.lib.e.a.jo(this.context).tinkerFlags = 0;
+    }
+    b.xx(paramInt);
+    AppMethodBeat.o(90640);
   }
 }
 

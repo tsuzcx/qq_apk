@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.webview.luggage.d;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.webkit.URLUtil;
-import com.tencent.mm.plugin.appbrand.u.q;
-import com.tencent.mm.plugin.appbrand.u.q.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.e;
-import org.json.JSONObject;
+import android.net.Uri;
+import android.webkit.WebResourceRequest;
+import java.util.Map;
 
 public final class b
+  implements WebResourceRequest
 {
-  private static q.a rfd = null;
+  private String bxW;
+  private boolean mIsRedirect;
+  private Uri mUri;
+  private boolean uVa;
+  private boolean uVb;
+  private Map<String, String> uVc;
   
-  public static String aX(Context paramContext, String paramString)
+  public b(Uri paramUri, boolean paramBoolean1, boolean paramBoolean2, String paramString, Map<String, String> paramMap)
   {
-    if (rfd == null) {
-      rfd = new q.a()
-      {
-        private String version;
-        
-        public final String pJ()
-        {
-          return " MicroMessenger/";
-        }
-        
-        public final String pK()
-        {
-          return this.version;
-        }
-      };
-    }
-    return q.a(paramContext, paramString, rfd);
+    this.mUri = paramUri;
+    this.uVa = paramBoolean1;
+    this.mIsRedirect = false;
+    this.uVb = paramBoolean2;
+    this.bxW = paramString;
+    this.uVc = paramMap;
   }
   
-  public static JSONObject tJ(String paramString)
+  public final String getMethod()
   {
-    if (bk.bl(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return null;
+    return this.bxW;
   }
   
-  public static boolean wD(String paramString)
+  public final Map<String, String> getRequestHeaders()
   {
-    return (!bk.bl(paramString)) && ((URLUtil.isHttpsUrl(paramString)) || (URLUtil.isHttpUrl(paramString)));
+    return this.uVc;
+  }
+  
+  public final Uri getUrl()
+  {
+    return this.mUri;
+  }
+  
+  public final boolean hasGesture()
+  {
+    return this.uVb;
+  }
+  
+  public final boolean isForMainFrame()
+  {
+    return this.uVa;
+  }
+  
+  public final boolean isRedirect()
+  {
+    return this.mIsRedirect;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <size android:width="2.0dip" />
-    <padding android:bottom="2.0dip" />
-    <solid android:color="#ff5d5d5d" />
-</shape>
+    <item android:state_focused="true" android:drawable="@drawable/ae4" />
+    <item android:state_pressed="true" android:drawable="@drawable/ae6" />
+    <item android:state_selected="true" android:drawable="@drawable/ae4" />
+    <item android:drawable="@drawable/ae5" />
+</selector>

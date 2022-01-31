@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ScanTranslationCaptureUI$13
   implements DialogInterface.OnClickListener
@@ -11,9 +11,11 @@ final class ScanTranslationCaptureUI$13
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.nNm.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
-    ScanTranslationCaptureUI.A(this.nNm);
-    this.nNm.finish();
+    AppMethodBeat.i(138496);
+    ScanTranslationCaptureUI.z(this.qAW);
+    this.qAW.finish();
+    this.qAW.overridePendingTransition(0, 0);
+    AppMethodBeat.o(138496);
   }
 }
 

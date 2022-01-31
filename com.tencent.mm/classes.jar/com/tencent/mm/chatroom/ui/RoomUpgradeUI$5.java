@@ -2,7 +2,8 @@ package com.tencent.mm.chatroom.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 
@@ -13,17 +14,19 @@ final class RoomUpgradeUI$5
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (RoomUpgradeUI.h(this.dqG) != null)
+    AppMethodBeat.i(104240);
+    if (RoomUpgradeUI.h(this.eie) != null)
     {
-      g.DO().dJT.c(RoomUpgradeUI.h(this.dqG));
-      RoomUpgradeUI.i(this.dqG);
+      g.RK().eHt.a(RoomUpgradeUI.h(this.eie));
+      RoomUpgradeUI.i(this.eie);
     }
-    this.dqG.finish();
+    this.eie.finish();
+    AppMethodBeat.o(104240);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.RoomUpgradeUI.5
  * JD-Core Version:    0.7.0.1
  */

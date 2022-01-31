@@ -1,26 +1,29 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import com.tencent.mm.model.am.b.a;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ao.b.a;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 
 final class k$3
-  implements am.b.a
+  implements ao.b.a
 {
   k$3(k paramk) {}
   
-  public final void m(String paramString, boolean paramBoolean)
+  public final void p(String paramString, boolean paramBoolean)
   {
-    y.i("MicroMsg.ContactWidgetNormal", "username:%s mRoomId:%s succ:%s", new Object[] { paramString, this.mXC.dpj, Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.i(23568);
+    ab.i("MicroMsg.ContactWidgetNormal", "username:%s mRoomId:%s succ:%s", new Object[] { paramString, this.pAx.egF, Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      au.Hx();
-      paramString = c.Fw().abl(paramString).Bp();
-      this.mXC.eo(this.mXC.bGR, paramString);
+      aw.aaz();
+      paramString = c.YA().arw(paramString).Oe();
+      this.pAx.fM(this.pAx.cog, paramString);
     }
+    AppMethodBeat.o(23568);
   }
 }
 

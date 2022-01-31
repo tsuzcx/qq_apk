@@ -1,22 +1,27 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tenpay.android.wechat.MyKeyboardWindow;
 
 final class LuckyMoneyPrepareUI$14
-  implements Runnable
+  implements View.OnClickListener
 {
-  LuckyMoneyPrepareUI$14(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
+  LuckyMoneyPrepareUI$14(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI, EditText paramEditText1, EditText paramEditText2) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    Intent localIntent = new Intent();
-    localIntent.setClass(this.lXg.mController.uMN, LuckyMoneyIndexUI.class);
-    localIntent.addFlags(67108864);
-    this.lXg.mController.uMN.startActivity(localIntent);
-    this.lXg.finish();
+    AppMethodBeat.i(42954);
+    this.val$hintTv.setOnClickListener(null);
+    this.ojR.setOnClickListener(null);
+    this.owL.Z(LuckyMoneyPrepareUI.c(this.owL), 2);
+    this.owL.Z(LuckyMoneyPrepareUI.b(this.owL), 0);
+    this.owL.mKeyboard.setXMode(2);
+    this.owL.mKeyboard.setInputEditText((EditText)paramView);
+    this.owL.mKBLayout.setVisibility(0);
+    AppMethodBeat.o(42954);
   }
 }
 

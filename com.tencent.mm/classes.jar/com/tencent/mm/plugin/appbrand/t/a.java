@@ -1,69 +1,55 @@
 package com.tencent.mm.plugin.appbrand.t;
 
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import a.f.b.j;
+import a.l;
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
+import java.lang.Class<+Landroid.app.Activity;>;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/utils/AndroidComponentUtil;", "", "()V", "isActivityHasSpecificTaskAffinity", "", "clazz", "Ljava/lang/Class;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
 public final class a
-  extends i<a.a>
 {
-  public static final String[] dUb = { i.a(a.a.fCU, "AppBrandCommonKVBinaryData") };
+  public static final a iXu;
   
-  public a(e parame)
+  static
   {
-    super(parame, a.a.fCU, "AppBrandCommonKVBinaryData", null);
+    AppMethodBeat.i(135218);
+    iXu = new a();
+    AppMethodBeat.o(135218);
   }
   
-  public final void clear(String paramString)
+  public static final boolean af(Class<? extends Activity> paramClass)
   {
-    a.a locala = new a.a();
-    locala.field_key = paramString;
-    locala.field_value = new byte[0];
-    super.a(locala);
-  }
-  
-  public final <T extends com.tencent.mm.bv.a> T g(String paramString, Class<T> paramClass)
-  {
-    paramString = wh(paramString);
-    if (bk.bE(paramString)) {
-      return null;
-    }
-    try
+    AppMethodBeat.i(135217);
+    j.q(paramClass, "clazz");
+    Context localContext = ah.getContext();
+    if (localContext != null)
     {
-      com.tencent.mm.bv.a locala = (com.tencent.mm.bv.a)paramClass.newInstance();
-      locala.aH(paramString);
-      return locala;
+      Object localObject = localContext.getPackageManager();
+      if (localObject != null)
+      {
+        paramClass = ((PackageManager)localObject).getActivityInfo(new ComponentName(localContext, paramClass), 128);
+        if (paramClass != null)
+        {
+          localObject = paramClass.taskAffinity;
+          paramClass = (Class<? extends Activity>)localObject;
+          if (localObject != null) {
+            break label71;
+          }
+        }
+      }
     }
-    catch (Exception paramString)
-    {
-      y.e("MicroMsg.AppBrandCommonKVBinaryDataStorage", "getProto class[%s] e = %s", new Object[] { paramClass.getSimpleName(), paramString });
-    }
-    return null;
-  }
-  
-  public final void l(String paramString, byte[] paramArrayOfByte)
-  {
-    if (bk.bl(paramString)) {
-      return;
-    }
-    a.a locala = new a.a();
-    locala.field_key = paramString;
-    locala.field_value = paramArrayOfByte;
-    super.a(locala);
-  }
-  
-  public final byte[] wh(String paramString)
-  {
-    if (bk.bl(paramString)) {}
-    a.a locala;
-    do
-    {
-      return null;
-      locala = new a.a();
-      locala.field_key = paramString;
-    } while (!super.b(locala, new String[0]));
-    return locala.field_value;
+    j.p(localContext, "appContext");
+    paramClass = localContext.getPackageName();
+    label71:
+    boolean bool = j.e(paramClass, localContext.getPackageName());
+    AppMethodBeat.o(135217);
+    return bool ^ true;
   }
 }
 

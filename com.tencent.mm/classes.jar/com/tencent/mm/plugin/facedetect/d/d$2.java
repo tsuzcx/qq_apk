@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.facedetect.d;
 
 import android.os.CountDownTimer;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class d$2
   extends CountDownTimer
@@ -15,36 +16,43 @@ final class d$2
   
   public final void onFinish()
   {
-    y.i("MicroMsg.NumberFaceMotion", "hy: on count number finished");
+    AppMethodBeat.i(311);
+    ab.i("MicroMsg.NumberFaceMotion", "hy: on count number finished");
+    AppMethodBeat.o(311);
   }
   
   public final void onTick(long paramLong)
   {
-    y.i("MicroMsg.NumberFaceMotion", "hy: on ticked");
-    if (this.jPM.inQ)
+    AppMethodBeat.i(310);
+    ab.i("MicroMsg.NumberFaceMotion", "hy: on ticked");
+    if (this.mkc.eRq)
     {
-      y.w("MicroMsg.NumberFaceMotion", "hy: isEnd. trigger cancel");
+      ab.w("MicroMsg.NumberFaceMotion", "hy: isEnd. trigger cancel");
       cancel();
+      AppMethodBeat.o(310);
       return;
     }
-    if (this.jPM.jPz)
+    if (this.mkc.mjP)
     {
-      y.i("MicroMsg.NumberFaceMotion", "hy: suspend.");
+      ab.i("MicroMsg.NumberFaceMotion", "hy: suspend.");
+      AppMethodBeat.o(310);
       return;
     }
-    y.i("MicroMsg.NumberFaceMotion", "hy: mCurrentShowedIndexInItem: %d, mItemDatas[mCurrentGroupDataIndex].length() - 1: %d, mCurrentGroupDataIndex: %d, mItemDatas.length - 1 : %d", new Object[] { Integer.valueOf(this.jPM.jPu), Integer.valueOf(this.jPM.jPs[this.jPM.jPt].length() - 1), Integer.valueOf(this.jPM.jPt), Integer.valueOf(this.jPM.jPs.length - 1) });
-    if (this.jPM.jPu < this.jPM.jPs[this.jPM.jPt].length() - 1)
+    ab.i("MicroMsg.NumberFaceMotion", "hy: mCurrentShowedIndexInItem: %d, mItemDatas[mCurrentGroupDataIndex].length() - 1: %d, mCurrentGroupDataIndex: %d, mItemDatas.length - 1 : %d", new Object[] { Integer.valueOf(this.mkc.mjK), Integer.valueOf(this.mkc.mjI[this.mkc.mjJ].length() - 1), Integer.valueOf(this.mkc.mjJ), Integer.valueOf(this.mkc.mjI.length - 1) });
+    if (this.mkc.mjK < this.mkc.mjI[this.mkc.mjJ].length() - 1)
     {
-      d locald = this.jPM;
-      locald.jPu += 1;
-      this.jPM.jPJ.sendEmptyMessage(0);
+      d locald = this.mkc;
+      locald.mjK += 1;
+      this.mkc.mjZ.sendEmptyMessage(0);
+      AppMethodBeat.o(310);
       return;
     }
-    y.i("MicroMsg.NumberFaceMotion", "hy: last number in group");
-    ai.l(this.jPM.jPL, 1500L);
-    this.jPM.inQ = true;
+    ab.i("MicroMsg.NumberFaceMotion", "hy: last number in group");
+    al.p(this.mkc.mkb, 1500L);
+    this.mkc.eRq = true;
     cancel();
-    this.jPM.inQ = true;
+    this.mkc.eRq = true;
+    AppMethodBeat.o(310);
   }
 }
 

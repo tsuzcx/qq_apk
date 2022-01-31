@@ -3,17 +3,18 @@ package com.tencent.mm.plugin.gallery.model;
 import android.annotation.TargetApi;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 @TargetApi(16)
 public final class m
   implements Runnable
 {
-  public MediaFormat kHt;
-  public MediaFormat kHu;
-  public GalleryItem.VideoMediaItem kHv;
-  public m.a kHw;
+  public MediaFormat ndD;
+  public MediaFormat ndE;
+  public GalleryItem.VideoMediaItem ndF;
+  public m.a ndG;
   public String path;
   public int position;
   
@@ -21,17 +22,25 @@ public final class m
   {
     this.path = paramString;
     this.position = paramInt;
-    this.kHv = paramVideoMediaItem;
-    this.kHw = parama;
+    this.ndF = paramVideoMediaItem;
+    this.ndG = parama;
   }
   
   public final boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof m)) && ((this == paramObject) || (this.position == ((m)paramObject).position) || ((this.path != null) && (this.path.equals(((m)paramObject).path))));
+    AppMethodBeat.i(21332);
+    if (((paramObject instanceof m)) && ((this == paramObject) || (this.position == ((m)paramObject).position) || ((this.path != null) && (this.path.equals(((m)paramObject).path)))))
+    {
+      AppMethodBeat.o(21332);
+      return true;
+    }
+    AppMethodBeat.o(21332);
+    return false;
   }
   
   public final void run()
   {
+    AppMethodBeat.i(21331);
     MediaExtractor localMediaExtractor = new MediaExtractor();
     for (;;)
     {
@@ -46,32 +55,32 @@ public final class m
           localObject1 = localMediaExtractor.getTrackFormat(i);
           if (!((MediaFormat)localObject1).containsKey("mime"))
           {
-            y.d("VideoAnalysisTask", "find video mime : not found.");
-            break label570;
+            ab.d("VideoAnalysisTask", "find video mime : not found.");
+            break label594;
           }
           localObject3 = ((MediaFormat)localObject1).getString("mime");
-          y.d("VideoAnalysisTask", "find video mime : %s", new Object[] { localObject3 });
+          ab.d("VideoAnalysisTask", "find video mime : %s", new Object[] { localObject3 });
           if (localObject3 == null) {
-            break label570;
+            break label594;
           }
           if (!((String)localObject3).startsWith("video/")) {
             continue;
           }
-          if (this.kHt == null) {
-            this.kHt = ((MediaFormat)localObject1);
+          if (this.ndD == null) {
+            this.ndD = ((MediaFormat)localObject1);
           }
-          if ((this.kHu == null) || (this.kHt == null)) {
-            break label570;
+          if ((this.ndE == null) || (this.ndD == null)) {
+            break label594;
           }
         }
-        if (this.kHv == null) {
+        if (this.ndF == null) {
           continue;
         }
-        if (this.kHt == null) {
+        if (this.ndD == null) {
           continue;
         }
-        localObject1 = this.kHv;
-        if (this.kHt.containsKey("durationUs")) {
+        localObject1 = this.ndF;
+        if (this.ndD.containsKey("durationUs")) {
           continue;
         }
         i = 0;
@@ -80,90 +89,103 @@ public final class m
       {
         Object localObject1;
         Object localObject3;
-        y.d("VideoAnalysisTask", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { this.path, localException.getMessage() });
+        ab.d("VideoAnalysisTask", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { this.path, localException.getMessage() });
         localMediaExtractor.release();
         continue;
-        i = (int)(this.kHt.getLong("durationUs") / 1000L);
+        i = (int)(this.ndD.getLong("durationUs") / 1000L);
         continue;
-        i = this.kHt.getInteger("height");
+        i = this.ndD.getInteger("height");
         continue;
-        i = this.kHt.getInteger("width");
+        i = this.ndD.getInteger("width");
         continue;
-        String str = this.kHt.getString("mime");
+        String str = this.ndD.getString("mime");
         continue;
-        i = this.kHt.getInteger("bitrate");
+        i = this.ndD.getInteger("bitrate");
         continue;
-        i = this.kHt.getInteger("i-frame-interval");
+        i = this.ndD.getInteger("i-frame-interval");
         continue;
-        i = this.kHt.getInteger("frame-rate");
+        i = this.ndD.getInteger("frame-rate");
         continue;
-        str = this.kHu.getString("mime");
+        str = this.ndE.getString("mime");
         continue;
       }
       finally
       {
         localMediaExtractor.release();
+        AppMethodBeat.o(21331);
       }
-      ((GalleryItem.VideoMediaItem)localObject1).eAx = i;
-      localObject1 = this.kHv;
-      if (!this.kHt.containsKey("height"))
+      ((GalleryItem.VideoMediaItem)localObject1).fQq = i;
+      localObject1 = this.ndF;
+      if (!this.ndD.containsKey("height"))
       {
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoHeight = i;
-        localObject1 = this.kHv;
-        if (this.kHt.containsKey("width")) {
+        localObject1 = this.ndF;
+        if (this.ndD.containsKey("width")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoWidth = i;
-        localObject3 = this.kHv;
-        if (this.kHt.containsKey("mime")) {
+        localObject3 = this.ndF;
+        if (this.ndD.containsKey("mime")) {
           continue;
         }
         localObject1 = "";
-        ((GalleryItem.VideoMediaItem)localObject3).eAv = ((String)localObject1);
-        localObject1 = this.kHv;
-        if (this.kHt.containsKey("bitrate")) {
+        ((GalleryItem.VideoMediaItem)localObject3).fQo = ((String)localObject1);
+        localObject1 = this.ndF;
+        if (this.ndD.containsKey("bitrate")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoBitRate = i;
-        localObject1 = this.kHv;
-        if (this.kHt.containsKey("i-frame-interval")) {
+        localObject1 = this.ndF;
+        if (this.ndD.containsKey("i-frame-interval")) {
           continue;
         }
         i = 0;
-        ((GalleryItem.VideoMediaItem)localObject1).eAy = i;
-        localObject1 = this.kHv;
-        if (this.kHt.containsKey("frame-rate")) {
+        ((GalleryItem.VideoMediaItem)localObject1).fQr = i;
+        localObject1 = this.ndF;
+        if (this.ndD.containsKey("frame-rate")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoFrameRate = i;
-        if (this.kHu != null)
+        if (this.ndE != null)
         {
-          localObject3 = this.kHv;
-          if (this.kHu.containsKey("mime")) {
+          localObject3 = this.ndF;
+          if (this.ndE.containsKey("mime")) {
             continue;
           }
           localObject1 = "";
-          ((GalleryItem.VideoMediaItem)localObject3).eAw = ((String)localObject1);
+          ((GalleryItem.VideoMediaItem)localObject3).fQp = ((String)localObject1);
         }
         localMediaExtractor.release();
-        if (this.kHw != null) {
-          break label558;
+        if (this.ndG != null) {
+          break label576;
         }
-        y.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.kHv });
+        ab.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.ndF });
+        AppMethodBeat.o(21331);
         return;
-        if ((!((String)localObject3).startsWith("audio/")) || (this.kHu != null)) {
+        if ((!((String)localObject3).startsWith("audio/")) || (this.ndE != null)) {
           continue;
         }
-        this.kHu = ((MediaFormat)localObject1);
+        this.ndE = ((MediaFormat)localObject1);
       }
-      label558:
-      ai.d(new m.1(this));
+      label576:
+      al.d(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(21330);
+          if (m.this.ndG != null) {
+            m.this.ndG.a(m.this);
+          }
+          AppMethodBeat.o(21330);
+        }
+      });
+      AppMethodBeat.o(21331);
       return;
-      label570:
+      label594:
       i += 1;
     }
   }

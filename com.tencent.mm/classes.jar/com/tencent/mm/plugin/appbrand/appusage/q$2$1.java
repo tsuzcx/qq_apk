@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.protocal.c.ang;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
+import com.tencent.mm.protocal.protobuf.asv;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class q$2$1
   implements w.a
@@ -14,14 +15,17 @@ final class q$2$1
   
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
-    if ((paramInt1 == 0) && (paramInt2 == 0) && (paramb != null) && (paramb.ecF.ecN != null) && ((paramb.ecF.ecN instanceof ang)))
-    {
-      q.a((ang)paramb.ecF.ecN);
-      return 0;
+    AppMethodBeat.i(129599);
+    if ((paramInt1 == 0) && (paramInt2 == 0) && (paramb != null) && (paramb.fsW.fta != null) && ((paramb.fsW.fta instanceof asv))) {
+      q.a((asv)paramb.fsW.fta);
     }
-    y.e("MicroMsg.AppBrandNearbyLogic", "refresh() cgi return errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    q.a(null);
-    return 0;
+    for (;;)
+    {
+      AppMethodBeat.o(129599);
+      return 0;
+      ab.e("MicroMsg.AppBrandNearbyLogic", "refresh() cgi return errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      q.a(null);
+    }
   }
 }
 

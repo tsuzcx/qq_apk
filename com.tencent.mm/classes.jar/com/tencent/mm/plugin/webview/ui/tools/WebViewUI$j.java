@@ -1,50 +1,54 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.os.Bundle;
-import com.tencent.mm.R.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.b;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.webview.ui.tools.widget.FontChooserView.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WebViewUI$j
-  implements b
+  implements FontChooserView.a
 {
-  private final String rqN = "weixin://feedback/";
-  
   private WebViewUI$j(WebViewUI paramWebViewUI) {}
   
-  public final boolean Tq(String paramString)
+  public final void Da(int paramInt)
   {
-    paramString = new Bundle();
-    paramString.putInt("MMActivity.OverrideEnterAnimation", 0);
-    paramString.putInt("MMActivity.OverrideExitAnimation", R.a.push_down_out);
-    try
+    int j = 2;
+    AppMethodBeat.i(7948);
+    int i = j;
+    switch (paramInt)
     {
-      this.rpH.gGn.a(7, paramString, this.rpH.hashCode());
-      return true;
+    default: 
+      i = j;
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      for (;;)
+      WebViewUI.c(this.vgz, i);
+      try
       {
-        y.w("MicroMsg.WebViewUI", "FeedbackJumpHandler, ex = " + paramString.getMessage());
+        if (this.vgz.igU.ddb())
+        {
+          this.vgz.igU.gN(16384, i);
+          this.vgz.igU.gN(16388, i);
+        }
+        AppMethodBeat.o(7948);
+        return;
       }
+      catch (Exception localException)
+      {
+        ab.w("MicroMsg.WebViewUI", "onCheckedChanged, ex = " + localException.getMessage());
+        AppMethodBeat.o(7948);
+      }
+      i = 1;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
     }
-  }
-  
-  public final boolean Ty(String paramString)
-  {
-    if (bk.bl(paramString)) {
-      return false;
-    }
-    return s.n(paramString, "weixin://feedback/");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.WebViewUI.j
  * JD-Core Version:    0.7.0.1
  */

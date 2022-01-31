@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.h.a.qv;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.sh;
 import com.tencent.mm.sdk.b.c;
 
 final class SnsSingleTextViewUI$2
-  extends c<qv>
+  extends c<sh>
 {
   SnsSingleTextViewUI$2(SnsSingleTextViewUI paramSnsSingleTextViewUI)
   {
     super(0);
-    this.udX = qv.class.getName().hashCode();
+    AppMethodBeat.i(39300);
+    this.__eventId = sh.class.getName().hashCode();
+    AppMethodBeat.o(39300);
   }
 }
 

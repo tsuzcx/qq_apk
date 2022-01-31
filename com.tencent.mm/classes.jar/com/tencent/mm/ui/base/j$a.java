@@ -2,7 +2,7 @@ package com.tencent.mm.ui.base;
 
 public abstract interface j$a
 {
-  public abstract void axW();
+  public abstract void aWN();
 }
 
 

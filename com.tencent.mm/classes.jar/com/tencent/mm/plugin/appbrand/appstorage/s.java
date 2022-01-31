@@ -1,206 +1,323 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import com.tencent.mm.plugin.appbrand.appcache.ai;
-import com.tencent.mm.plugin.appbrand.appcache.ai.a;
-import com.tencent.mm.plugin.appbrand.u.k;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.os.Environment;
+import com.tencent.luggage.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.vfs.b;
 import java.io.File;
 import java.io.InputStream;
-import java.util.Collection;
+import java.nio.ByteBuffer;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.regex.Pattern;
 
-public final class s
-  extends e
+public class s
+  implements o
 {
-  public final ai fDd;
+  public final LinkedList<o> had;
+  private final o hae;
   
-  public s(ai paramai)
+  public s(String paramString)
   {
-    this.fDd = paramai;
+    AppMethodBeat.i(105390);
+    this.hae = new g();
+    this.had = new LinkedList();
+    Object localObject1 = new File(Environment.getExternalStorageDirectory(), "luggage/".concat(String.valueOf(paramString)));
+    paramString = this.had;
+    Object localObject2 = ((File)localObject1).getAbsolutePath();
+    localObject1 = new l(new File((String)localObject2, "objects/").getAbsolutePath(), "default_obfuscation_key", "wxfile://");
+    localObject2 = new w(new File((String)localObject2, "files/").getAbsolutePath());
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(localObject1);
+    localLinkedList.add(localObject2);
+    paramString.addAll(localLinkedList);
+    AppMethodBeat.o(105390);
   }
   
-  public final h a(String paramString, FileStructStat paramFileStructStat)
+  public final j Y(String paramString, boolean paramBoolean)
   {
-    InputStream localInputStream = this.fDd.rb(paramString);
-    if (localInputStream == null) {
-      return h.fHa;
-    }
-    ai localai = this.fDd;
-    FileStructStat localFileStructStat2 = localai.fDD;
-    FileStructStat localFileStructStat1 = localFileStructStat2;
-    if (localFileStructStat2 == null)
-    {
-      localFileStructStat1 = new FileStructStat();
-      FileStat.stat(localai.fDw.getAbsolutePath(), localFileStructStat1);
-      localai.fDD = localFileStructStat1;
-    }
-    localFileStructStat1.fillAnother(paramFileStructStat);
-    try
-    {
-      paramFileStructStat.st_size = localInputStream.available();
-      bk.b(localInputStream);
-      return h.fGU;
-    }
-    catch (Exception paramFileStructStat)
-    {
-      for (;;)
-      {
-        y.e("MicroMsg.WxaPkgFileSystem", "stat(), %s stream.available fail", new Object[] { paramString });
-      }
-    }
+    AppMethodBeat.i(105396);
+    paramString = zn(paramString).Y(paramString, paramBoolean);
+    AppMethodBeat.o(105396);
+    return paramString;
   }
   
-  public final h a(String paramString, k<List<f>> paramk)
+  public final <T extends o> T Y(Class<T> paramClass)
   {
-    if (ru(paramString) == h.fGU) {
-      return h.fHc;
-    }
-    String str = i.rA(paramString);
-    Object localObject = this.fDd;
-    paramString = new LinkedList();
-    localObject = ((ai)localObject).fDC.values().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      paramString.add((ai.a)((Iterator)localObject).next());
-    }
-    localObject = Pattern.quote(str);
-    Iterator localIterator = paramString.iterator();
+    AppMethodBeat.i(105392);
+    Iterator localIterator = this.had.iterator();
     while (localIterator.hasNext())
     {
-      paramString = (ai.a)localIterator.next();
-      if (paramString.fileName.startsWith(str))
+      o localo = (o)localIterator.next();
+      if (paramClass.isInstance(localo))
       {
-        paramString = paramString.fileName.replaceFirst((String)localObject, "");
-        if (paramString.split("/").length <= 1)
-        {
-          f localf = new f();
-          localf.fileName = paramString;
-          if (paramk.value == null) {}
-          for (paramString = new LinkedList();; paramString = (List)paramk.value)
-          {
-            paramk.value = paramString;
-            ((List)paramk.value).add(localf);
-            break;
-          }
-        }
+        AppMethodBeat.o(105392);
+        return localo;
       }
     }
-    if (paramk.value == null) {
-      return h.fHa;
+    AppMethodBeat.o(105392);
+    return null;
+  }
+  
+  public final j Z(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(105397);
+    paramString = zn(paramString).Z(paramString, paramBoolean);
+    AppMethodBeat.o(105397);
+    return paramString;
+  }
+  
+  public final j a(com.tencent.mm.plugin.appbrand.s.j<String> paramj)
+  {
+    AppMethodBeat.i(105412);
+    Iterator localIterator = this.had.iterator();
+    while (localIterator.hasNext())
+    {
+      j localj = ((o)localIterator.next()).a(paramj);
+      if (localj != j.gZO)
+      {
+        AppMethodBeat.o(105412);
+        return localj;
+      }
     }
-    return h.fGU;
+    paramj = j.gZO;
+    AppMethodBeat.o(105412);
+    return paramj;
   }
   
-  /* Error */
-  public final h b(String paramString, k<java.nio.ByteBuffer> paramk)
+  public final j a(File paramFile, String paramString, com.tencent.mm.plugin.appbrand.s.j<String> paramj)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 13	com/tencent/mm/plugin/appbrand/appstorage/s:fDd	Lcom/tencent/mm/plugin/appbrand/appcache/ai;
-    //   4: aload_1
-    //   5: invokevirtual 24	com/tencent/mm/plugin/appbrand/appcache/ai:rb	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   8: astore_1
-    //   9: aload_1
-    //   10: ifnonnull +7 -> 17
-    //   13: getstatic 30	com/tencent/mm/plugin/appbrand/appstorage/h:fHa	Lcom/tencent/mm/plugin/appbrand/appstorage/h;
-    //   16: areturn
-    //   17: aload_1
-    //   18: invokevirtual 63	java/io/InputStream:available	()I
-    //   21: invokestatic 185	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
-    //   24: astore_3
-    //   25: aload_1
-    //   26: instanceof 187
-    //   29: ifeq +35 -> 64
-    //   32: aload_3
-    //   33: aload_1
-    //   34: checkcast 187	com/tencent/luggage/j/a
-    //   37: getfield 191	com/tencent/luggage/j/a:bjB	Ljava/nio/ByteBuffer;
-    //   40: invokevirtual 195	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
-    //   43: pop
-    //   44: aload_3
-    //   45: invokevirtual 199	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
-    //   48: pop
-    //   49: aload_2
-    //   50: aload_3
-    //   51: putfield 177	com/tencent/mm/plugin/appbrand/u/k:value	Ljava/lang/Object;
-    //   54: getstatic 76	com/tencent/mm/plugin/appbrand/appstorage/h:fGU	Lcom/tencent/mm/plugin/appbrand/appstorage/h;
-    //   57: astore_2
-    //   58: aload_1
-    //   59: invokestatic 73	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   62: aload_2
-    //   63: areturn
-    //   64: aload_3
-    //   65: aload_1
-    //   66: invokestatic 205	com/tencent/mm/plugin/appbrand/u/d:w	(Ljava/io/InputStream;)[B
-    //   69: invokestatic 209	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   72: invokevirtual 195	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
-    //   75: pop
-    //   76: goto -32 -> 44
-    //   79: astore_2
-    //   80: ldc 78
-    //   82: aload_2
-    //   83: ldc 211
-    //   85: iconst_0
-    //   86: anewarray 82	java/lang/Object
-    //   89: invokestatic 215	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   92: aload_1
-    //   93: invokestatic 73	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   96: getstatic 218	com/tencent/mm/plugin/appbrand/appstorage/h:fGV	Lcom/tencent/mm/plugin/appbrand/appstorage/h;
-    //   99: areturn
-    //   100: astore_2
-    //   101: aload_1
-    //   102: invokestatic 73	com/tencent/mm/sdk/platformtools/bk:b	(Ljava/io/Closeable;)V
-    //   105: aload_2
-    //   106: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	107	0	this	s
-    //   0	107	1	paramString	String
-    //   0	107	2	paramk	k<java.nio.ByteBuffer>
-    //   24	41	3	localByteBuffer	java.nio.ByteBuffer
-    // Exception table:
-    //   from	to	target	type
-    //   17	44	79	java/lang/Exception
-    //   44	58	79	java/lang/Exception
-    //   64	76	79	java/lang/Exception
-    //   17	44	100	finally
-    //   44	58	100	finally
-    //   64	76	100	finally
-    //   80	92	100	finally
+    AppMethodBeat.i(105414);
+    Iterator localIterator = this.had.iterator();
+    while (localIterator.hasNext())
+    {
+      j localj = ((o)localIterator.next()).a(paramFile, paramString, paramj);
+      if (localj != j.gZO)
+      {
+        AppMethodBeat.o(105414);
+        return localj;
+      }
+    }
+    paramFile = j.gZO;
+    AppMethodBeat.o(105414);
+    return paramFile;
   }
   
-  public final boolean bs(String paramString)
+  public j a(File paramFile, String paramString, boolean paramBoolean, com.tencent.mm.plugin.appbrand.s.j<String> paramj)
   {
+    AppMethodBeat.i(105413);
+    Iterator localIterator = this.had.iterator();
+    while (localIterator.hasNext())
+    {
+      j localj = ((o)localIterator.next()).a(paramFile, paramString, paramBoolean, paramj);
+      if (localj != j.gZO)
+      {
+        AppMethodBeat.o(105413);
+        return localj;
+      }
+    }
+    paramFile = j.gZO;
+    AppMethodBeat.o(105413);
+    return paramFile;
+  }
+  
+  public final j a(String paramString, FileStructStat paramFileStructStat)
+  {
+    AppMethodBeat.i(105402);
+    paramString = zn(paramString).a(paramString, paramFileStructStat);
+    AppMethodBeat.o(105402);
+    return paramString;
+  }
+  
+  public j a(String paramString, com.tencent.mm.plugin.appbrand.s.j<List<h>> paramj)
+  {
+    AppMethodBeat.i(105398);
+    paramString = zn(paramString).a(paramString, paramj);
+    AppMethodBeat.o(105398);
+    return paramString;
+  }
+  
+  public final j a(String paramString, File paramFile, boolean paramBoolean)
+  {
+    AppMethodBeat.i(105404);
+    paramString = zn(paramString).a(paramString, paramFile, paramBoolean);
+    AppMethodBeat.o(105404);
+    return paramString;
+  }
+  
+  public final j a(String paramString, InputStream paramInputStream, boolean paramBoolean)
+  {
+    AppMethodBeat.i(105400);
+    paramString = zn(paramString).a(paramString, paramInputStream, paramBoolean);
+    AppMethodBeat.o(105400);
+    return paramString;
+  }
+  
+  public final File aa(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(105406);
+    paramString = zn(paramString).aa(paramString, paramBoolean);
+    AppMethodBeat.o(105406);
+    return paramString;
+  }
+  
+  public List<? extends o.a> awJ()
+  {
+    AppMethodBeat.i(105415);
+    List localList = ((l)Y(l.class)).gZT.awK();
+    AppMethodBeat.o(105415);
+    return localList;
+  }
+  
+  public final j b(String paramString, com.tencent.mm.plugin.appbrand.s.j<ByteBuffer> paramj)
+  {
+    AppMethodBeat.i(105399);
+    paramString = zn(paramString).b(paramString, paramj);
+    AppMethodBeat.o(105399);
+    return paramString;
+  }
+  
+  public final j b(String paramString, File paramFile)
+  {
+    AppMethodBeat.i(105407);
+    paramString = zn(paramString).b(paramString, paramFile);
+    AppMethodBeat.o(105407);
+    return paramString;
+  }
+  
+  public final boolean bL(String paramString)
+  {
+    AppMethodBeat.i(105408);
+    int i = 0;
+    while (i < 3)
+    {
+      if (com.tencent.luggage.g.h.x(paramString, new String[] { "file://", "http://", "https://" }[i]))
+      {
+        AppMethodBeat.o(105408);
+        return false;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(105408);
     return true;
+  }
+  
+  public final j h(String paramString, List<u> paramList)
+  {
+    AppMethodBeat.i(105403);
+    paramString = zn(paramString).h(paramString, paramList);
+    AppMethodBeat.o(105403);
+    return paramString;
   }
   
   public final void initialize()
   {
-    this.fDd.abX();
+    AppMethodBeat.i(105409);
+    Iterator localIterator = this.had.iterator();
+    while (localIterator.hasNext()) {
+      ((o)localIterator.next()).initialize();
+    }
+    this.hae.initialize();
+    AppMethodBeat.o(105409);
   }
   
   public final void release()
   {
-    this.fDd.close();
-  }
-  
-  public final h ru(String paramString)
-  {
-    paramString = this.fDd.rb(paramString);
-    if (paramString == null) {
-      return h.fHa;
+    AppMethodBeat.i(105410);
+    Iterator localIterator = this.had.iterator();
+    while (localIterator.hasNext()) {
+      ((o)localIterator.next()).release();
     }
-    bk.b(paramString);
-    return h.fGU;
+    this.had.clear();
+    this.hae.release();
+    AppMethodBeat.o(105410);
   }
   
-  public final h rv(String paramString)
+  public final j zd(String paramString)
   {
-    return a(paramString, new k());
+    AppMethodBeat.i(105394);
+    paramString = zn(paramString).zd(paramString);
+    AppMethodBeat.o(105394);
+    return paramString;
+  }
+  
+  public final j ze(String paramString)
+  {
+    AppMethodBeat.i(105395);
+    paramString = zn(paramString).ze(paramString);
+    AppMethodBeat.o(105395);
+    return paramString;
+  }
+  
+  public final j zf(String paramString)
+  {
+    AppMethodBeat.i(105401);
+    paramString = zn(paramString).zf(paramString);
+    AppMethodBeat.o(105401);
+    return paramString;
+  }
+  
+  public final File zg(String paramString)
+  {
+    AppMethodBeat.i(105405);
+    paramString = aa(paramString, false);
+    AppMethodBeat.o(105405);
+    return paramString;
+  }
+  
+  public b zh(String paramString)
+  {
+    AppMethodBeat.i(105411);
+    paramString = ((l)Y(l.class)).zh(paramString);
+    AppMethodBeat.o(105411);
+    return paramString;
+  }
+  
+  public final boolean zi(String paramString)
+  {
+    AppMethodBeat.i(105416);
+    boolean bool = ((l)Y(l.class)).zi(paramString);
+    AppMethodBeat.o(105416);
+    return bool;
+  }
+  
+  public final InputStream zj(String paramString)
+  {
+    AppMethodBeat.i(105391);
+    com.tencent.mm.plugin.appbrand.s.j localj = new com.tencent.mm.plugin.appbrand.s.j();
+    if (b(paramString, localj) == j.gZA)
+    {
+      paramString = new a((ByteBuffer)localj.value);
+      AppMethodBeat.o(105391);
+      return paramString;
+    }
+    AppMethodBeat.o(105391);
+    return null;
+  }
+  
+  public final o zn(String paramString)
+  {
+    AppMethodBeat.i(105393);
+    if (bo.isNullOrNil(paramString))
+    {
+      paramString = this.hae;
+      AppMethodBeat.o(105393);
+      return paramString;
+    }
+    Iterator localIterator = this.had.iterator();
+    while (localIterator.hasNext())
+    {
+      o localo = (o)localIterator.next();
+      if (localo.bL(paramString))
+      {
+        AppMethodBeat.o(105393);
+        return localo;
+      }
+    }
+    paramString = this.hae;
+    AppMethodBeat.o(105393);
+    return paramString;
   }
 }
 

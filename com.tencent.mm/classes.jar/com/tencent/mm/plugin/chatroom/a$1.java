@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.chatroom;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.storage.v;
 
 final class a$1
@@ -8,14 +8,14 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return v.dXp;
+    return v.SQL_CREATE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.chatroom.a.1
  * JD-Core Version:    0.7.0.1
  */

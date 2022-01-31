@@ -5,12 +5,12 @@ public final class s
 {
   public s()
   {
-    this.xqq = 281;
+    this.CMD = 281;
   }
   
-  public final Boolean cUG()
+  public final Boolean erf()
   {
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

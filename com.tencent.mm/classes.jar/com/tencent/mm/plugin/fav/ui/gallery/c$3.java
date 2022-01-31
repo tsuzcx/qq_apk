@@ -7,58 +7,73 @@ import android.support.v7.widget.RecyclerView.m;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.at.o;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
-import com.tencent.mm.plugin.fav.ui.n.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class c$3
   extends RecyclerView.m
 {
-  private Runnable khx = new c.3.1(this);
+  private Runnable kGn;
   
-  c$3(c paramc) {}
-  
-  private void gc(boolean paramBoolean)
+  c$3(c paramc)
   {
+    AppMethodBeat.i(74543);
+    this.kGn = new c.3.1(this);
+    AppMethodBeat.o(74543);
+  }
+  
+  private void gh(boolean paramBoolean)
+  {
+    AppMethodBeat.i(74544);
     if (paramBoolean)
     {
-      this.khw.khi.removeCallbacks(this.khx);
-      if (this.khw.khi.getVisibility() != 0)
+      this.mCh.mBX.removeCallbacks(this.kGn);
+      if (this.mCh.mBX.getVisibility() != 0)
       {
-        this.khw.khi.clearAnimation();
-        Animation localAnimation = AnimationUtils.loadAnimation(this.khw.bMV, n.a.fast_faded_in);
-        this.khw.khi.setVisibility(0);
-        this.khw.khi.startAnimation(localAnimation);
+        this.mCh.mBX.clearAnimation();
+        Animation localAnimation = AnimationUtils.loadAnimation(this.mCh.cup, 2131034181);
+        this.mCh.mBX.setVisibility(0);
+        this.mCh.mBX.startAnimation(localAnimation);
+        AppMethodBeat.o(74544);
       }
-      return;
     }
-    this.khw.khi.removeCallbacks(this.khx);
-    this.khw.khi.postDelayed(this.khx, 256L);
+    else
+    {
+      this.mCh.mBX.removeCallbacks(this.kGn);
+      this.mCh.mBX.postDelayed(this.kGn, 256L);
+    }
+    AppMethodBeat.o(74544);
   }
   
   public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(74545);
     super.a(paramRecyclerView, paramInt1, paramInt2);
-    Object localObject = (LinearLayoutManager)this.khw.khh.aRV();
-    paramRecyclerView = (f)this.khw.khh.aRX();
-    localObject = paramRecyclerView.rf(((LinearLayoutManager)localObject).gY());
-    if (localObject == null) {
+    Object localObject = (LinearLayoutManager)this.mCh.mBW.bgA();
+    paramRecyclerView = (f)this.mCh.mBW.byo();
+    localObject = paramRecyclerView.wb(((LinearLayoutManager)localObject).it());
+    if (localObject == null)
+    {
+      AppMethodBeat.o(74545);
       return;
     }
-    paramRecyclerView = paramRecyclerView.eL(((f.c)localObject).timeStamp);
-    this.khw.khi.setText(bk.aM(paramRecyclerView, ""));
+    paramRecyclerView = paramRecyclerView.in(((f.c)localObject).timeStamp);
+    this.mCh.mBX.setText(bo.bf(paramRecyclerView, ""));
+    AppMethodBeat.o(74545);
   }
   
   public final void c(RecyclerView paramRecyclerView, int paramInt)
   {
+    AppMethodBeat.i(74546);
     int i;
     if (1 == paramInt)
     {
-      gc(true);
-      WXHardCoderJNI.stopPerformace(WXHardCoderJNI.hcMediaGalleryScrollEnable, this.khw.dmY);
-      c localc = this.khw;
+      gh(true);
+      WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcMediaGalleryScrollEnable, this.mCh.eez);
+      c localc = this.mCh;
       boolean bool = WXHardCoderJNI.hcMediaGalleryScrollEnable;
       int j = WXHardCoderJNI.hcMediaGalleryScrollDelay;
       int k = WXHardCoderJNI.hcMediaGalleryScrollCPU;
@@ -66,24 +81,25 @@ final class c$3
       if (WXHardCoderJNI.hcMediaGalleryScrollThr)
       {
         i = Process.myTid();
-        localc.dmY = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcMediaGalleryScrollTimeout, 703, WXHardCoderJNI.hcMediaGalleryScrollAction, "MicroMsg.MediaHistoryGalleryUI");
+        localc.eez = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcMediaGalleryScrollTimeout, 703, WXHardCoderJNI.hcMediaGalleryScrollAction, "MicroMsg.MediaHistoryGalleryUI");
       }
     }
     for (;;)
     {
       if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager))
       {
-        if ((((LinearLayoutManager)paramRecyclerView.getLayoutManager()).gY() == 0) && (!this.khw.khm)) {
-          this.khw.khh.l(false, -1);
+        if ((((LinearLayoutManager)paramRecyclerView.getLayoutManager()).it() == 0) && (!this.mCh.kGk)) {
+          this.mCh.mBW.v(false, -1);
         }
-        this.khw.khm = false;
-        o.ON().bR(paramInt);
+        this.mCh.kGk = false;
+        o.ahG().bX(paramInt);
       }
+      AppMethodBeat.o(74546);
       return;
       i = 0;
       break;
       if (paramInt == 0) {
-        gc(false);
+        gh(false);
       }
     }
   }

@@ -4,11 +4,15 @@ import java.util.List;
 
 public abstract interface d
 {
-  public abstract boolean C(String paramString1, int paramInt, String paramString2);
+  public abstract boolean A(String paramString1, int paramInt, String paramString2);
   
-  public abstract boolean IH(String paramString);
+  public abstract boolean D(String paramString, List<String> paramList);
   
-  public abstract boolean Iy(String paramString);
+  public abstract f G(int[] paramArrayOfInt);
+  
+  public abstract boolean Un(String paramString);
+  
+  public abstract boolean Uw(String paramString);
   
   public abstract int a(byte[] paramArrayOfByte, short paramShort, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -18,37 +22,33 @@ public abstract interface d
   
   public abstract boolean a(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2);
   
-  public abstract List<String> afw(String paramString);
+  public abstract List<String> awu(String paramString);
   
-  public abstract boolean bN(byte[] paramArrayOfByte);
+  public abstract void bQ(int paramInt, String paramString);
   
-  public abstract void bk(int paramInt, String paramString);
+  public abstract boolean cn(byte[] paramArrayOfByte);
   
-  public abstract boolean c(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte);
+  public abstract boolean dUa();
   
-  public abstract boolean cOn();
+  public abstract String dUb();
   
-  public abstract String cOo();
+  public abstract boolean e(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte);
   
-  public abstract boolean f(String paramString1, String paramString2, List<String> paramList);
+  public abstract boolean g(String paramString1, String paramString2, List<String> paramList);
   
-  public abstract void hM(boolean paramBoolean);
+  public abstract void jF(boolean paramBoolean);
   
-  public abstract void og(boolean paramBoolean);
+  public abstract void rS(boolean paramBoolean);
   
-  public abstract boolean oh(boolean paramBoolean);
+  public abstract boolean rT(boolean paramBoolean);
   
   public abstract int setAppCmd(int paramInt1, byte[] paramArrayOfByte, int paramInt2);
   
-  public abstract boolean up(int paramInt);
-  
-  public abstract f w(int[] paramArrayOfInt);
-  
-  public abstract boolean y(String paramString, List<String> paramList);
+  public abstract boolean zF(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.pb.talkroom.sdk.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,131 @@
 package com.tencent.mm.ui.contact;
 
-import java.util.List;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.contact.a.a;
+import com.tencent.mm.ui.contact.a.a.a;
+import com.tencent.mm.ui.contact.a.a.b;
+import junit.framework.Assert;
 
 public abstract class o
-  extends n
+  extends BaseAdapter
 {
-  public List<String> dru;
-  public boolean vLZ;
+  public m Adk;
+  private boolean Adl;
+  boolean Adm;
+  protected int scene;
+  private SparseArray<a> ywy;
   
-  public o(l paraml, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  public o(m paramm, boolean paramBoolean, int paramInt)
   {
-    this(paraml, paramList, paramBoolean1, paramBoolean2, 0);
+    this(paramm, paramBoolean, paramInt, false);
   }
   
-  public o(l paraml, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public o(m paramm, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    this(paraml, paramList, paramBoolean1, paramBoolean2, paramInt, false);
+    this.Adk = paramm;
+    this.Adl = paramBoolean1;
+    this.ywy = new SparseArray();
+    this.scene = paramInt;
+    this.Adm = paramBoolean2;
   }
   
-  private o(l paraml, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
+  public final a Qt(int paramInt)
   {
-    super(paraml, paramBoolean2, paramInt, paramBoolean3);
-    this.dru = paramList;
-    this.vLZ = paramBoolean1;
+    if (this.ywy.indexOfKey(paramInt) >= 0) {
+      return (a)this.ywy.get(paramInt);
+    }
+    if ((paramInt >= 0) && (paramInt < getCount()))
+    {
+      a locala = mM(paramInt);
+      if (locala != null)
+      {
+        locala.jTN = c(locala);
+        this.ywy.put(paramInt, locala);
+        ab.d("MicroMsg.MMSelectContactAdapter", "put item to cache viewType=%d|position=%d", new Object[] { Integer.valueOf(locala.kwo), Integer.valueOf(paramInt) });
+        return locala;
+      }
+      ab.e("MicroMsg.MMSelectContactAdapter", "createDataItem Occur error !!!!!!!!! position = %d", new Object[] { Integer.valueOf(paramInt) });
+      return locala;
+    }
+    ab.e("MicroMsg.MMSelectContactAdapter", "getItem Occur error !!!!!!!!! position = %d", new Object[] { Integer.valueOf(paramInt) });
+    return null;
   }
   
-  public o(l paraml, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public boolean Qu(int paramInt)
   {
-    this(paraml, paramList, paramBoolean1, paramBoolean2, 0, paramBoolean3);
+    return false;
   }
   
-  public int adP(String paramString)
+  protected boolean c(a parama)
   {
+    return false;
+  }
+  
+  public final void clearCache()
+  {
+    if (this.ywy != null) {
+      this.ywy.clear();
+    }
+  }
+  
+  public boolean cni()
+  {
+    return this.Adl;
+  }
+  
+  public void finish()
+  {
+    clearCache();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return -1L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (Qt(paramInt) != null) {
+      return Qt(paramInt).kwo;
+    }
+    ab.e("MicroMsg.MMSelectContactAdapter", "getItemViewType: get data item fail, return unkown Type, totalCount=%d | position = %s", new Object[] { Integer.valueOf(getCount()), Integer.valueOf(paramInt) });
     return -1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    a locala = Qt(paramInt);
+    View localView = paramView;
+    if (paramView == null) {
+      localView = locala.aoY().a(this.Adk.getActivity(), paramViewGroup);
+    }
+    paramView = (a.a)localView.getTag();
+    Assert.assertNotNull(paramView);
+    if (!locala.AfQ)
+    {
+      locala.a(this.Adk.getActivity(), paramView);
+      locala.AfQ = true;
+    }
+    locala.Adl = cni();
+    locala.aoY().a(this.Adk.getActivity(), paramView, locala, this.Adk.b(locala), this.Adk.a(locala));
+    return localView;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 8;
+  }
+  
+  protected abstract a mM(int paramInt);
+  
+  public final void ri(boolean paramBoolean)
+  {
+    this.Adl = paramBoolean;
+    notifyDataSetChanged();
   }
 }
 

@@ -1,50 +1,57 @@
 package com.tencent.mm.plugin.music.model.a.a;
 
-import com.tencent.mm.av.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.h;
 import com.tencent.mm.ipcinvoker.i;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamResponse;
 import com.tencent.mm.plugin.music.model.e;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a$e
   implements i<IPCString, IPCAudioParamResponse>
 {
-  private static IPCAudioParamResponse c(IPCString paramIPCString)
+  private static IPCAudioParamResponse e(IPCString paramIPCString)
   {
+    AppMethodBeat.i(104943);
     try
     {
-      y.d("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getPieceMusicInfo Task, src:%s", new Object[] { paramIPCString });
+      ab.d("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getPieceMusicInfo Task, src:%s", new Object[] { paramIPCString });
       paramIPCString = paramIPCString.value;
-      c localc = e.bns().JF(paramIPCString);
+      c localc = e.bVO().VD(paramIPCString);
       if (localc == null)
       {
-        y.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "initData pMusic is null!'");
+        ab.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "initData pMusic is null!'");
         paramIPCString = null;
       }
       while (paramIPCString != null)
       {
-        return new IPCAudioParamResponse(paramIPCString);
+        paramIPCString = new IPCAudioParamResponse(paramIPCString);
+        AppMethodBeat.o(104943);
+        return paramIPCString;
         paramIPCString = new h();
-        paramIPCString.bSB = localc.field_musicId;
+        paramIPCString.cAd = localc.field_musicId;
         paramIPCString.musicUrl = localc.field_musicUrl;
         paramIPCString.fileName = localc.field_fileName;
-        paramIPCString.euZ = localc.field_fileCacheComplete;
-        paramIPCString.eva = localc.field_pieceFileMIMEType;
-        paramIPCString.euY = localc.field_indexBitData;
+        paramIPCString.fKL = localc.field_fileCacheComplete;
+        paramIPCString.fKM = localc.field_pieceFileMIMEType;
+        paramIPCString.fKK = localc.field_indexBitData;
+        paramIPCString.fKN = localc.field_removeDirtyBit;
       }
-      y.e("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "pmInfo is null");
+      ab.e("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "pmInfo is null");
     }
     catch (Exception paramIPCString)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc getPieceMusicInfo task", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc getPieceMusicInfo task", new Object[0]);
       }
     }
-    return new IPCAudioParamResponse();
+    paramIPCString = new IPCAudioParamResponse();
+    AppMethodBeat.o(104943);
+    return paramIPCString;
   }
 }
 

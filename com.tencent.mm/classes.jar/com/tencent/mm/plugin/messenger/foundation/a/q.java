@@ -6,13 +6,13 @@ import com.tencent.mm.storage.bi;
 public abstract interface q
   extends a
 {
-  public abstract m Pk();
+  public abstract String B(bi parambi);
   
   public abstract void a(g paramg);
   
   public abstract void a(m paramm);
   
-  public abstract String v(bi parambi);
+  public abstract m aim();
 }
 
 

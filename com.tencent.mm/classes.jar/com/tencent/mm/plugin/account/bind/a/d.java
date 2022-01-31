@@ -1,50 +1,59 @@
 package com.tencent.mm.plugin.account.bind.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bzi;
-import com.tencent.mm.protocal.c.bzj;
+import com.tencent.mm.protocal.protobuf.cmb;
+import com.tencent.mm.protocal.protobuf.cmc;
 
 public final class d
   extends m
   implements k
 {
-  private b dmK;
-  private f dmL;
+  private f callback;
+  private b rr;
   
   public d(String paramString)
   {
+    AppMethodBeat.i(13327);
     b.a locala = new b.a();
-    locala.ecH = new bzi();
-    locala.ecI = new bzj();
+    locala.fsX = new cmb();
+    locala.fsY = new cmc();
     locala.uri = "/cgi-bin/micromsg-bin/unbindqq";
-    locala.ecG = 253;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    ((bzi)this.dmK.ecE.ecN).sRr = paramString;
+    locala.funcId = 253;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ((cmb)this.rr.fsV.fta).wQf = paramString;
+    AppMethodBeat.o(13327);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(13328);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(13328);
+    return i;
   }
   
   public final int getType()
   {
     return 253;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(13329);
+    updateDispatchId(paramInt1);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(13329);
   }
 }
 

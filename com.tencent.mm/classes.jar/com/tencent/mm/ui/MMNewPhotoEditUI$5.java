@@ -4,83 +4,98 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.widget.Toast;
-import com.tencent.mm.api.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.n;
+import com.tencent.mm.api.p;
+import com.tencent.mm.api.s;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.platformtools.q;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.f.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.d;
 import java.io.IOException;
 
 final class MMNewPhotoEditUI$5
-  implements m
+  implements n
 {
   MMNewPhotoEditUI$5(MMNewPhotoEditUI paramMMNewPhotoEditUI, int paramInt) {}
   
-  public final void a(Bitmap paramBitmap, boolean paramBoolean)
+  public final void b(Bitmap paramBitmap, boolean paramBoolean)
   {
-    y.i("MicroMsg.MMNewPhotoEditUI", "[onSuccess] w:%s h:%s", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
+    AppMethodBeat.i(11926);
+    ab.i("MicroMsg.MMNewPhotoEditUI", "[onSuccess] w:%s h:%s", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
     String str;
     try
     {
-      str = q.pd("jpg");
-      c.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, str, true);
-      y.i("MicroMsg.MMNewPhotoEditUI", "[onSuccess] photoPath:%s", new Object[] { str });
-      if ((MMNewPhotoEditUI.c(this.uOz)) || (this.val$index == 2)) {
-        q.a(str, this.uOz);
+      str = b.TY("jpg");
+      d.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, str, true);
+      ab.i("MicroMsg.MMNewPhotoEditUI", "[onSuccess] photoPath:%s", new Object[] { str });
+      MMNewPhotoEditUI.f(this.zcs).recordImage(MMNewPhotoEditUI.c(this.zcs), str, MMNewPhotoEditUI.d(this.zcs), MMNewPhotoEditUI.e(this.zcs).zZ().Au(), MMNewPhotoEditUI.e(this.zcs).zZ().Av());
+      if ((MMNewPhotoEditUI.g(this.zcs)) || (this.val$index == 2)) {
+        b.a(str, this.zcs);
       }
-      if ((this.val$index != 0) && (!paramBitmap.isRecycled())) {
+      if ((this.val$index != 0) && (!paramBitmap.isRecycled()))
+      {
+        ab.i("MicroMsg.MMNewPhotoEditUI", "bitmap recycle %s", new Object[] { paramBitmap.toString() });
         paramBitmap.recycle();
       }
-      MMNewPhotoEditUI.a(this.uOz, str);
-      if ((MMNewPhotoEditUI.d(this.uOz) != 291) && (MMNewPhotoEditUI.d(this.uOz) != 293)) {
-        break label314;
+      MMNewPhotoEditUI.a(this.zcs, str);
+      if ((MMNewPhotoEditUI.h(this.zcs) != 291) && (MMNewPhotoEditUI.h(this.zcs) != 293)) {
+        break label401;
       }
       if (this.val$index == 0)
       {
-        MMNewPhotoEditUI.b(this.uOz, str);
-        MMNewPhotoEditUI.b(this.uOz);
-        MMNewPhotoEditUI.b(this.uOz, 1);
+        MMNewPhotoEditUI.b(this.zcs, str);
+        MMNewPhotoEditUI.b(this.zcs);
+        MMNewPhotoEditUI.b(this.zcs, 1);
+        AppMethodBeat.o(11926);
         return;
       }
       if (this.val$index == 1)
       {
-        MMNewPhotoEditUI.c(this.uOz, str);
-        MMNewPhotoEditUI.b(this.uOz, 2);
-        Toast.makeText(this.uOz.mController.uMN, this.uOz.getString(ag.d.fav_edit_photo_successfully), 1).show();
-        MMNewPhotoEditUI.b(this.uOz);
-        this.uOz.finish();
+        MMNewPhotoEditUI.c(this.zcs, str);
+        MMNewPhotoEditUI.b(this.zcs, 2);
+        Toast.makeText(ah.getContext(), this.zcs.getString(2131306165), 1).show();
+        MMNewPhotoEditUI.b(this.zcs);
+        this.zcs.finish();
+        AppMethodBeat.o(11926);
         return;
       }
     }
     catch (IOException paramBitmap)
     {
-      b(paramBitmap);
+      onError(paramBitmap);
+      AppMethodBeat.o(11926);
       return;
     }
     if (this.val$index == 2)
     {
-      Toast.makeText(this.uOz.mController.uMN, this.uOz.getString(ag.d.exports_saved, new Object[] { e.dzD }), 1).show();
-      MMNewPhotoEditUI.b(this.uOz, 3);
-      MMNewPhotoEditUI.b(this.uOz);
-      this.uOz.finish();
+      Toast.makeText(ah.getContext(), this.zcs.getString(2131306161, new Object[] { e.esr }), 1).show();
+      MMNewPhotoEditUI.b(this.zcs, 3);
+      MMNewPhotoEditUI.b(this.zcs);
+      this.zcs.finish();
+      AppMethodBeat.o(11926);
       return;
-      label314:
-      MMNewPhotoEditUI.d(this.uOz, str);
+      label401:
+      MMNewPhotoEditUI.d(this.zcs, str);
     }
+    AppMethodBeat.o(11926);
   }
   
-  public final void b(Exception paramException)
+  public final void onError(Exception paramException)
   {
-    MMNewPhotoEditUI.b(this.uOz);
-    y.e("MicroMsg.MMNewPhotoEditUI", "[onRefreshed] %s", new Object[] { paramException });
-    Toast.makeText(this.uOz, this.uOz.getResources().getString(ag.d.err_save_edit_photo), 1).show();
-    this.uOz.setResult(0);
-    this.uOz.finish();
+    AppMethodBeat.i(11925);
+    MMNewPhotoEditUI.b(this.zcs);
+    ab.e("MicroMsg.MMNewPhotoEditUI", "[onRefreshed] %s", new Object[] { paramException });
+    Toast.makeText(ah.getContext(), this.zcs.getResources().getString(2131306158), 1).show();
+    this.zcs.setResult(0);
+    this.zcs.finish();
+    AppMethodBeat.o(11925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.MMNewPhotoEditUI.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sight.decode.a;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$b$1
   implements Runnable
@@ -9,7 +10,9 @@ final class b$b$1
   
   public final void run()
   {
-    b.q(this.ofe.oeY).bBi().setVisibility(8);
+    AppMethodBeat.i(70232);
+    b.r(this.qTt.qTn).cmI().setVisibility(8);
+    AppMethodBeat.o(70232);
   }
 }
 

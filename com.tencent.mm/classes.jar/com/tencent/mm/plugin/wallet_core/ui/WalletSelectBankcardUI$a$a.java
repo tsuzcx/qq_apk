@@ -4,7 +4,7 @@ import android.widget.TextView;
 
 final class WalletSelectBankcardUI$a$a
 {
-  TextView qGB;
+  TextView utH;
   
   WalletSelectBankcardUI$a$a(WalletSelectBankcardUI.a parama) {}
 }

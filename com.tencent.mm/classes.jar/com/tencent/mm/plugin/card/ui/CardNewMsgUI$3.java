@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.card.ui;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CardNewMsgUI$3
   implements AdapterView.OnItemLongClickListener
@@ -11,7 +12,9 @@ final class CardNewMsgUI$3
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    CardNewMsgUI.b(this.iwh, paramInt);
+    AppMethodBeat.i(88594);
+    CardNewMsgUI.b(this.kxl, paramInt);
+    AppMethodBeat.o(88594);
     return true;
   }
 }

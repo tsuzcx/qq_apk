@@ -1,14 +1,22 @@
 package com.tencent.mm.app;
 
-import com.tencent.mm.h.a.jf;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.model.bz.a;
+import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.plugin.report.service.i;
+import com.tencent.mm.protocal.protobuf.cm;
 
 final class WorkerProfile$23
-  extends c<jf>
+  implements bz.a
 {
-  WorkerProfile$23(WorkerProfile paramWorkerProfile)
+  WorkerProfile$23(WorkerProfile paramWorkerProfile) {}
+  
+  public final void a(e.a parama)
   {
-    this.udX = jf.class.getName().hashCode();
+    AppMethodBeat.i(15512);
+    i.Yt(aa.a(parama.eyJ.woR));
+    AppMethodBeat.o(15512);
   }
 }
 

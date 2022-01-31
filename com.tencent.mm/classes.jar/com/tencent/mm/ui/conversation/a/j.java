@@ -2,34 +2,57 @@ package com.tencent.mm.ui.conversation.a;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bc.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.m.e;
+import com.tencent.mm.m.g;
+import com.tencent.mm.platformtools.ah;
 import com.tencent.mm.pluginsdk.ui.b.b;
+import com.tencent.mm.sdk.b.c;
 
 public final class j
   extends b
 {
-  LinearLayout vUL = null;
+  View AmJ;
+  int dqG;
+  private c yWz;
   
   public j(Context paramContext)
   {
     super(paramContext);
-    this.vUL = new LinearLayout(paramContext);
-    this.vUL.setVisibility(8);
-    bc.HI().dWg = new j.1(this, paramContext);
-    bc.HI().dWg.HL();
+    AppMethodBeat.i(34668);
+    this.AmJ = View.inflate(paramContext, 2130969910, null);
+    if (this.AmJ == null)
+    {
+      AppMethodBeat.o(34668);
+      return;
+    }
+    this.dqG = ah.getInt(g.Nq().getValue("InviteFriendsControlFlags"), 0);
+    this.AmJ.setVisibility(8);
+    this.AmJ.setPadding(0, -com.tencent.mm.cb.a.fromDPToPix(paramContext, 2131427807), 0, 0);
+    if ((this.dqG & 0x1) > 0)
+    {
+      this.AmJ.setVisibility(0);
+      this.AmJ.setPadding(0, 0, 0, 0);
+    }
+    this.AmJ.setOnClickListener(new j.1(this, paramContext));
+    this.yWz = new j.2(this);
+    AppMethodBeat.o(34668);
   }
   
-  public final boolean apu()
+  public final boolean aMK()
   {
-    return (this.vUL != null) && (this.vUL.getVisibility() == 0);
+    AppMethodBeat.i(34669);
+    com.tencent.mm.sdk.b.a.ymk.c(this.yWz);
+    if ((this.AmJ != null) && (this.AmJ.getVisibility() == 0))
+    {
+      AppMethodBeat.o(34669);
+      return true;
+    }
+    AppMethodBeat.o(34669);
+    return false;
   }
   
-  public final void destroy()
-  {
-    bc.HI().dWg = null;
-  }
+  public final void destroy() {}
   
   public final int getLayoutId()
   {
@@ -38,7 +61,14 @@ public final class j
   
   public final View getView()
   {
-    return this.vUL;
+    return this.AmJ;
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(34670);
+    com.tencent.mm.sdk.b.a.ymk.d(this.yWz);
+    AppMethodBeat.o(34670);
   }
 }
 

@@ -10,9 +10,9 @@ import java.util.Map;
 public final class c
 {
   public Context context;
-  public Map<String, d> gmk;
-  public h gml;
-  public g gmm;
+  public Map<String, d> hGi;
+  public h hGj;
+  public g hGk;
   
   public c(Context paramContext)
   {

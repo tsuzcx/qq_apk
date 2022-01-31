@@ -1,6 +1,8 @@
 package com.tencent.soter.a.g;
 
 import android.annotation.SuppressLint;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.soter.a.a.b;
 import com.tencent.soter.core.biometric.BiometricManagerCompat.AuthenticationCallback;
 import com.tencent.soter.core.biometric.BiometricManagerCompat.AuthenticationResult;
 import com.tencent.soter.core.c.d;
@@ -9,90 +11,118 @@ import java.security.Signature;
 final class i$a
   extends BiometricManagerCompat.AuthenticationCallback
 {
-  private long wPs;
-  private Signature wQx = null;
+  private long BmR;
+  private Signature BnX = null;
   
   private i$a(i parami, Signature paramSignature)
   {
-    this.wQx = paramSignature;
+    this.BnX = paramSignature;
   }
   
-  private static String V(CharSequence paramCharSequence)
+  private static String am(CharSequence paramCharSequence)
   {
-    if (paramCharSequence == null) {
+    AppMethodBeat.i(10533);
+    if (paramCharSequence == null)
+    {
+      AppMethodBeat.o(10533);
       return "unknown error";
     }
-    return paramCharSequence.toString();
+    paramCharSequence = paramCharSequence.toString();
+    AppMethodBeat.o(10533);
+    return paramCharSequence;
   }
   
   @SuppressLint({"NewApi"})
-  private void cPO()
+  private void dVK()
   {
-    if ((this.wQG.wQu) || (this.wQG.wPS == 2))
+    AppMethodBeat.i(10539);
+    if ((this.Bog.BnU) || (this.Bog.Bns == 2))
     {
-      this.wQG.wQD.oj(false);
-      this.wQG.wQv = true;
+      this.Bog.Bod.rV(false);
+      this.Bog.BnV = true;
     }
+    AppMethodBeat.o(10539);
   }
   
   public final void onAuthenticationCancelled()
   {
+    AppMethodBeat.i(10538);
     d.i("Soter.TaskBiometricAuthentication", "soter: called onAuthenticationCancelled", new Object[0]);
-    if (this.wQG.wQv)
+    if (this.Bog.BnV)
     {
       d.v("Soter.TaskBiometricAuthentication", "soter: during ignore cancel period", new Object[0]);
+      AppMethodBeat.o(10538);
       return;
     }
-    g.cPK().d(new i.a.6(this));
-    this.wQG.b(new com.tencent.soter.a.b.a(24, "user cancelled authentication"));
-    cPO();
+    g.dVG().d(new i.a.6(this));
+    this.Bog.b(new com.tencent.soter.a.b.a(24, "user cancelled authentication"));
+    dVK();
+    AppMethodBeat.o(10538);
   }
   
   public final void onAuthenticationError(int paramInt, CharSequence paramCharSequence)
   {
+    AppMethodBeat.i(10534);
     d.e("Soter.TaskBiometricAuthentication", "soter: on authentication fatal error: %d, %s", new Object[] { Integer.valueOf(paramInt), paramCharSequence });
-    g.cPK().d(new i.a.1(this, paramInt, paramCharSequence));
+    g.dVG().d(new i.a.1(this, paramInt, paramCharSequence));
     if (paramInt == 10308) {
-      this.wQG.b(new com.tencent.soter.a.b.a(25, V(paramCharSequence)));
+      this.Bog.b(new com.tencent.soter.a.b.a(25, am(paramCharSequence)));
     }
     for (;;)
     {
-      cPO();
+      dVK();
+      AppMethodBeat.o(10534);
       return;
-      this.wQG.b(new com.tencent.soter.a.b.a(21, V(paramCharSequence)));
+      this.Bog.b(new com.tencent.soter.a.b.a(21, am(paramCharSequence)));
     }
   }
   
   public final void onAuthenticationFailed()
   {
+    AppMethodBeat.i(10537);
     d.w("Soter.TaskBiometricAuthentication", "soter: authentication failed once", new Object[0]);
-    g.cPK().d(new i.a.5(this));
-    if (this.wQG.wQt)
+    g.dVG().d(new i.a.5(this));
+    if (this.Bog.BnT)
     {
       d.i("Soter.TaskBiometricAuthentication", "soter: should compat lower android version logic.", new Object[0]);
-      this.wQG.wQD.oj(false);
-      g.cPK().H(new i.a.7(this));
-      g.cPK().m(new i.a.8(this), 1000L);
+      this.Bog.Bod.rV(false);
+      g.dVG().O(new i.a.7(this));
+      g.dVG().t(new i.a.8(this), 1000L);
     }
-    if (this.wQG.wPS == 2)
+    if (this.Bog.Bns == 2)
     {
       d.i("Soter.TaskBiometricAuthentication", "soter: should compat faceid logic.", new Object[0]);
-      this.wQG.b(new com.tencent.soter.a.b.a(21, "faceid not match"));
+      this.Bog.b(new com.tencent.soter.a.b.a(21, "faceid not match"));
     }
+    AppMethodBeat.o(10537);
   }
   
-  public final void onAuthenticationHelp(int paramInt, CharSequence paramCharSequence)
+  public final void onAuthenticationHelp(final int paramInt, final CharSequence paramCharSequence)
   {
+    AppMethodBeat.i(10535);
     d.w("Soter.TaskBiometricAuthentication", "soter: on authentication help. you do not need to cancel the authentication: %d, %s", new Object[] { Integer.valueOf(paramInt), paramCharSequence });
-    g.cPK().d(new i.a.2(this, paramInt, paramCharSequence));
+    g.dVG().d(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(10526);
+        if (i.a.this.Bog.Boe != null) {
+          i.a.this.Bog.Boe.onAuthenticationHelp(paramInt, i.a.an(paramCharSequence));
+        }
+        AppMethodBeat.o(10526);
+      }
+    });
+    AppMethodBeat.o(10535);
   }
   
   public final void onAuthenticationSucceeded(BiometricManagerCompat.AuthenticationResult paramAuthenticationResult)
   {
+    AppMethodBeat.i(10536);
     d.i("Soter.TaskBiometricAuthentication", "soter: authentication succeed. start sign and upload upload signature", new Object[0]);
-    g.cPK().d(new i.a.3(this));
-    g.cPK().H(new i.a.4(this));
-    cPO();
+    g.dVG().d(new i.a.3(this));
+    g.dVG().O(new i.a.4(this));
+    dVK();
+    AppMethodBeat.o(10536);
   }
 }
 

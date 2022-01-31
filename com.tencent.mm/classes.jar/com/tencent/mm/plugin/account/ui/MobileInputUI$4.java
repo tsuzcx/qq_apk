@@ -1,17 +1,31 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.ui.widget.a.d;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.normsg.a.b;
 
 final class MobileInputUI$4
-  implements View.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  MobileInputUI$4(MobileInputUI paramMobileInputUI) {}
+  MobileInputUI$4(MobileInputUI paramMobileInputUI, boolean[] paramArrayOfBoolean) {}
   
-  public final void onClick(View paramView)
+  public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    MobileInputUI.e(this.foH).cfU();
+    AppMethodBeat.i(125163);
+    if (paramBoolean)
+    {
+      this.gGc[0] = true;
+      AppMethodBeat.o(125163);
+      return;
+    }
+    if (MobileInputUI.e(this.gGb)) {
+      b.pgQ.VX("ie_reg_eu");
+    }
+    if (MobileInputUI.f(this.gGb)) {
+      b.pgQ.VX("ie_login");
+    }
+    AppMethodBeat.o(125163);
   }
 }
 

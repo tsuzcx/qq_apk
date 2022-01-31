@@ -2,39 +2,46 @@ package com.tencent.mm.ui.chatting.viewitems;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.plugin.appbrand.u.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelappbrand.a.b.i;
+import java.util.Locale;
 
 final class d$d$2
-  implements b.h
+  implements b.i
 {
   d$d$2(d.d paramd, d.c paramc) {}
   
-  public final void JG() {}
+  public final void acG() {}
   
-  public final void JH() {}
+  public final void acH() {}
   
-  public final void p(Bitmap paramBitmap)
+  public final String tX()
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
-    {
-      this.vCh.vBW.setImageBitmap(paramBitmap);
-      this.vCh.vBW.setVisibility(0);
-      this.vCh.vBX.setVisibility(4);
-      return;
-    }
-    this.vCh.vBW.setVisibility(4);
-    this.vCh.vBX.setVisibility(0);
+    AppMethodBeat.i(32824);
+    String str = String.format(Locale.ENGLISH, "CHATTING_ITEM_APPMSG_APPBRAND_COVER[%d %d]", new Object[] { Integer.valueOf(240), Integer.valueOf(192) });
+    AppMethodBeat.o(32824);
+    return str;
   }
   
-  public final String pU()
+  public final void w(Bitmap paramBitmap)
   {
-    return "CHAT#" + o.aX(this);
+    AppMethodBeat.i(32823);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    {
+      this.zSV.zSu.setImageBitmap(paramBitmap);
+      this.zSV.zSu.setVisibility(0);
+      this.zSV.zSv.setVisibility(4);
+      AppMethodBeat.o(32823);
+      return;
+    }
+    this.zSV.zSu.setVisibility(4);
+    this.zSV.zSv.setVisibility(0);
+    AppMethodBeat.o(32823);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.d.d.2
  * JD-Core Version:    0.7.0.1
  */

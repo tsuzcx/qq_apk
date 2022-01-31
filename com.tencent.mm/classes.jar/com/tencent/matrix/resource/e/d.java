@@ -2,13 +2,13 @@ package com.tencent.matrix.resource.e;
 
 import android.content.Context;
 import android.os.Environment;
-import com.tencent.matrix.d.b;
+import com.tencent.matrix.g.c;
 import java.io.File;
 import java.io.FilenameFilter;
 
 public final class d
 {
-  protected final int bqh;
+  protected final int bQl;
   protected final Context mContext;
   
   public d(Context paramContext)
@@ -19,20 +19,20 @@ public final class d
   private d(Context paramContext, byte paramByte)
   {
     this.mContext = paramContext;
-    this.bqh = 5;
+    this.bQl = 5;
   }
   
-  final File rl()
+  final File zo()
   {
     if ("mounted".equals(Environment.getExternalStorageState())) {}
     for (File localFile1 = this.mContext.getExternalCacheDir();; localFile1 = this.mContext.getCacheDir())
     {
       localFile1 = new File(localFile1, "matrix_resource");
-      b.i("Matrix.DumpStorageManager", "path to store hprof and result: %s", new Object[] { localFile1.getAbsolutePath() });
+      c.i("Matrix.DumpStorageManager", "path to store hprof and result: %s", new Object[] { localFile1.getAbsolutePath() });
       if ((localFile1.exists()) || ((localFile1.mkdirs()) && (localFile1.canWrite()))) {
         break;
       }
-      b.w("Matrix.DumpStorageManager", "failed to allocate new hprof file since path: %s is not writable.", new Object[] { localFile1.getAbsolutePath() });
+      c.w("Matrix.DumpStorageManager", "failed to allocate new hprof file since path: %s is not writable.", new Object[] { localFile1.getAbsolutePath() });
       return null;
     }
     File[] arrayOfFile = localFile1.listFiles(new FilenameFilter()
@@ -42,7 +42,7 @@ public final class d
         return paramAnonymousString.endsWith(".hprof");
       }
     });
-    if ((arrayOfFile != null) && (arrayOfFile.length > this.bqh))
+    if ((arrayOfFile != null) && (arrayOfFile.length > this.bQl))
     {
       int j = arrayOfFile.length;
       int i = 0;
@@ -50,7 +50,7 @@ public final class d
       {
         File localFile2 = arrayOfFile[i];
         if ((localFile2.exists()) && (!localFile2.delete())) {
-          b.w("Matrix.DumpStorageManager", "faile to delete hprof file: " + localFile2.getAbsolutePath(), new Object[0]);
+          c.w("Matrix.DumpStorageManager", "faile to delete hprof file: " + localFile2.getAbsolutePath(), new Object[0]);
         }
         i += 1;
       }

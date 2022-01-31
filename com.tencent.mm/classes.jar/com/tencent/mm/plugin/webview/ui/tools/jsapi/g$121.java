@@ -1,44 +1,56 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.ui.applet.q.a;
-import com.tencent.mm.ui.base.h;
+import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emoji.h.b;
+import com.tencent.mm.plugin.emoji.model.EmojiLogic;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.vfs.e;
 
 final class g$121
-  implements q.a
+  implements Runnable
 {
-  g$121(g paramg, f paramf, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
+  g$121(g paramg, String paramString1, i parami, String paramString2, String paramString3) {}
   
-  public final void a(boolean paramBoolean, String paramString, int paramInt)
+  public final void run()
   {
-    if (paramBoolean)
+    AppMethodBeat.i(9198);
+    ab.i("MicroMsg.MsgHandler", "doAddToEmoticon use base64DataString");
+    int i = this.vrC.indexOf(";base64,");
+    Object localObject = "";
+    if (i != -1) {
+      localObject = this.vrC.substring(i + 8, this.vrC.length());
+    }
+    try
     {
-      g.a(this.rzi, this.rzw, this.gge, this.bxX, this.eoz, this.rzx, this.rzy, paramString, this.rzz);
-      if (this.rAD) {
-        d.e(g.i(this.rzi), ".ui.chatting.ChattingUI", new Intent().putExtra("Chat_User", this.bxX));
-      }
-      for (;;)
+      localObject = Base64.decode((String)localObject, 0);
+      if (bo.ce((byte[])localObject))
       {
-        this.rzi.eL(1, 1);
-        g.a(this.rzi, g.j(this.rzi), this.rAE, null);
+        this.vqm.a(this.uZa, "addToEmoticon:fail", null);
+        AppMethodBeat.o(9198);
         return;
-        if (g.i(this.rzi) != null) {
-          h.bC(g.i(this.rzi), g.i(this.rzi).getResources().getString(R.l.app_shared));
-        }
       }
     }
-    this.rzi.eL(1, 3);
-    g.a(this.rzi, g.j(this.rzi), this.rAF, null);
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.MsgHandler", "doAddToEmoticon error:" + localException.getMessage());
+      this.vqm.a(this.uZa, "addToEmoticon:fail_" + localException.getMessage(), null);
+      AppMethodBeat.o(9198);
+      return;
+    }
+    String str1 = com.tencent.mm.a.g.w(localException);
+    String str2 = EmojiLogic.M(b.YP(), "", str1);
+    if ((!e.cN(str2)) || (!e.avP(str2).equalsIgnoreCase(str1))) {
+      e.b(str2, localException, localException.length);
+    }
+    g.a(this.vqm, str1, this.fEW, this.vrD);
+    AppMethodBeat.o(9198);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.121
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.graphics.Bitmap.Config;
 import android.opengl.EGL14;
 import android.opengl.EGLSurface;
 import android.opengl.GLES20;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,60 +30,92 @@ public class EglSurfaceBase
   
   public void createOffscreenSurface(int paramInt1, int paramInt2)
   {
-    if (this.mEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
+    AppMethodBeat.i(49973);
+    if (this.mEGLSurface != EGL14.EGL_NO_SURFACE)
+    {
+      IllegalStateException localIllegalStateException = new IllegalStateException("surface already created");
+      AppMethodBeat.o(49973);
+      throw localIllegalStateException;
     }
     this.mEGLSurface = this.mEglCore.createOffscreenSurface(paramInt1, paramInt2);
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
+    AppMethodBeat.o(49973);
   }
   
   public void createWindowSurface(Object paramObject)
   {
-    if (this.mEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
+    AppMethodBeat.i(49972);
+    if (this.mEGLSurface != EGL14.EGL_NO_SURFACE)
+    {
+      paramObject = new IllegalStateException("surface already created");
+      AppMethodBeat.o(49972);
+      throw paramObject;
     }
     this.mEGLSurface = this.mEglCore.createWindowSurface(paramObject);
+    AppMethodBeat.o(49972);
   }
   
   public int getHeight()
   {
-    if (this.mHeight < 0) {
-      return this.mEglCore.querySurface(this.mEGLSurface, 12374);
+    AppMethodBeat.i(49975);
+    if (this.mHeight < 0)
+    {
+      i = this.mEglCore.querySurface(this.mEGLSurface, 12374);
+      AppMethodBeat.o(49975);
+      return i;
     }
-    return this.mHeight;
+    int i = this.mHeight;
+    AppMethodBeat.o(49975);
+    return i;
   }
   
   public int getWidth()
   {
-    if (this.mWidth < 0) {
-      return this.mEglCore.querySurface(this.mEGLSurface, 12375);
+    AppMethodBeat.i(49974);
+    if (this.mWidth < 0)
+    {
+      i = this.mEglCore.querySurface(this.mEGLSurface, 12375);
+      AppMethodBeat.o(49974);
+      return i;
     }
-    return this.mWidth;
+    int i = this.mWidth;
+    AppMethodBeat.o(49974);
+    return i;
   }
   
   public void makeCurrent()
   {
+    AppMethodBeat.i(49977);
     this.mEglCore.makeCurrent(this.mEGLSurface);
+    AppMethodBeat.o(49977);
   }
   
   public void makeCurrentReadFrom(EglSurfaceBase paramEglSurfaceBase)
   {
+    AppMethodBeat.i(49978);
     this.mEglCore.makeCurrent(this.mEGLSurface, paramEglSurfaceBase.mEGLSurface);
+    AppMethodBeat.o(49978);
   }
   
   public void releaseEglSurface()
   {
+    AppMethodBeat.i(49976);
     this.mEglCore.releaseSurface(this.mEGLSurface);
     this.mEGLSurface = EGL14.EGL_NO_SURFACE;
     this.mHeight = -1;
     this.mWidth = -1;
+    AppMethodBeat.o(49976);
   }
   
   public void saveFrame(File paramFile)
   {
-    if (!this.mEglCore.isCurrent(this.mEGLSurface)) {
-      throw new RuntimeException("Expected EGL context/surface is not current");
+    AppMethodBeat.i(49981);
+    if (!this.mEglCore.isCurrent(this.mEGLSurface))
+    {
+      paramFile = new RuntimeException("Expected EGL context/surface is not current");
+      AppMethodBeat.o(49981);
+      throw paramFile;
     }
     paramFile = paramFile.toString();
     int i = getWidth();
@@ -98,7 +131,7 @@ public class EglSurfaceBase
       localBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(paramFile));
       Bitmap localBitmap;
       if (localBufferedOutputStream == null) {
-        break label193;
+        break label210;
       }
     }
     finally
@@ -111,6 +144,7 @@ public class EglSurfaceBase
         localBitmap.recycle();
         localBufferedOutputStream.close();
         new StringBuilder("Saved ").append(i).append("x").append(j).append(" frame as '").append(paramFile).append("'");
+        AppMethodBeat.o(49981);
         return;
       }
       finally {}
@@ -118,18 +152,24 @@ public class EglSurfaceBase
       localBufferedOutputStream = null;
     }
     localBufferedOutputStream.close();
-    label193:
+    label210:
+    AppMethodBeat.o(49981);
     throw paramFile;
   }
   
   public void setPresentationTime(long paramLong)
   {
+    AppMethodBeat.i(49980);
     this.mEglCore.setPresentationTime(this.mEGLSurface, paramLong);
+    AppMethodBeat.o(49980);
   }
   
   public boolean swapBuffers()
   {
-    return this.mEglCore.swapBuffers(this.mEGLSurface);
+    AppMethodBeat.i(49979);
+    boolean bool = this.mEglCore.swapBuffers(this.mEGLSurface);
+    AppMethodBeat.o(49979);
+    return bool;
   }
 }
 

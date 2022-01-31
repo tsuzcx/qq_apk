@@ -4,57 +4,60 @@ import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.n.a;
 import com.tencent.mm.plugin.card.sharecard.model.ShareCardInfo;
 import com.tencent.mm.plugin.card.sharecard.model.k;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.p;
 
 public final class c
-  extends r<ShareCardInfo>
+  extends p<ShareCardInfo>
 {
-  private final String TAG = "MicroMsg.ShareCardAdatper";
-  long beginTime = 0L;
-  long endTime = 0L;
-  private int iqc = 0;
-  com.tencent.mm.plugin.card.base.c iqd;
-  int iqe = -1;
+  private final String TAG;
+  long beginTime;
+  long endTime;
+  private int krk;
+  com.tencent.mm.plugin.card.base.c krl;
+  private int krm;
   
   public c(Context paramContext)
   {
     super(paramContext, new ShareCardInfo());
-    mR(true);
-    this.iqd = new j(paramContext, this);
+    AppMethodBeat.i(88140);
+    this.TAG = "MicroMsg.ShareCardAdatper";
+    this.krk = 0;
+    this.krm = -1;
+    this.beginTime = 0L;
+    this.endTime = 0L;
+    qp(true);
+    this.krl = new j(paramContext, this);
+    AppMethodBeat.o(88140);
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public final void Ku()
   {
-    paramViewGroup = (ShareCardInfo)getItem(paramInt);
-    return this.iqd.a(paramInt, paramView, paramViewGroup);
-  }
-  
-  public final void yc()
-  {
+    AppMethodBeat.i(88142);
     this.beginTime = System.currentTimeMillis();
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    if (this.iqe == -1)
+    if (this.krm == -1)
     {
-      localObject1 = am.aAA();
-      localObject2 = n.a.inf;
+      localObject1 = am.bcl();
+      localObject2 = n.a.koa;
       localObject3 = new StringBuilder();
-      switch (com.tencent.mm.plugin.card.sharecard.model.k.1.imx[localObject2.ordinal()])
+      switch (com.tencent.mm.plugin.card.sharecard.model.k.1.knt[localObject2.ordinal()])
       {
       default: 
         localObject2 = "select * from ShareCardInfo" + ((StringBuilder)localObject3).toString() + " order by status asc , share_time desc";
-        localObject1 = ((k)localObject1).dXw.rawQuery((String)localObject2, null);
+        localObject1 = ((k)localObject1).db.rawQuery((String)localObject2, null);
         if (localObject1 != null)
         {
-          this.iqc = ((Cursor)localObject1).getCount();
-          y.i("MicroMsg.ShareCardAdatper", "resetCursor showType %s, card count:%s", new Object[] { Integer.valueOf(this.iqe), Integer.valueOf(this.iqc) });
+          this.krk = ((Cursor)localObject1).getCount();
+          ab.i("MicroMsg.ShareCardAdatper", "resetCursor showType %s, card count:%s", new Object[] { Integer.valueOf(this.krm), Integer.valueOf(this.krk) });
         }
         break;
       }
@@ -64,6 +67,7 @@ public final class c
       setCursor((Cursor)localObject1);
       this.endTime = System.currentTimeMillis();
       notifyDataSetChanged();
+      AppMethodBeat.o(88142);
       return;
       ((StringBuilder)localObject3).append(" where (status=0 OR status=5)");
       break;
@@ -71,8 +75,8 @@ public final class c
       break;
       ((StringBuilder)localObject3).append(" where (status=0 OR status=5) and (block_mask= '1' OR block_mask= '0' )");
       break;
-      localObject3 = am.aAA();
-      int i = this.iqe;
+      localObject3 = am.bcl();
+      int i = this.krm;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" where ( status=0) ");
       localObject2 = "";
@@ -85,15 +89,15 @@ public final class c
       for (;;)
       {
         localObject1 = "select * from ShareCardInfo" + localStringBuilder.toString() + (String)localObject1;
-        localObject1 = ((k)localObject3).dXw.rawQuery((String)localObject1, null);
+        localObject1 = ((k)localObject3).db.rawQuery((String)localObject1, null);
         break;
         localStringBuilder.append(" AND (");
         localStringBuilder.append(" (");
-        localStringBuilder.append(k.oR(1));
+        localStringBuilder.append(k.tb(1));
         localStringBuilder.append(" categoryType= '10' ");
         localStringBuilder.append(") ");
         localStringBuilder.append(" OR (");
-        localStringBuilder.append(k.oR(2));
+        localStringBuilder.append(k.tb(2));
         localStringBuilder.append(" categoryType= '0' ");
         localStringBuilder.append(") ");
         localStringBuilder.append(" )");
@@ -101,14 +105,14 @@ public final class c
         continue;
         localStringBuilder.append(" AND ");
         localStringBuilder.append(" (");
-        localStringBuilder.append(k.oR(1));
+        localStringBuilder.append(k.tb(1));
         localStringBuilder.append(" categoryType= '10' ");
         localStringBuilder.append(") ");
         localObject1 = " order by categoryType desc , itemIndex asc";
         continue;
         localStringBuilder.append(" AND ");
         localStringBuilder.append(" (");
-        localStringBuilder.append(k.oR(2));
+        localStringBuilder.append(k.tb(2));
         localStringBuilder.append(" categoryType= '0' ");
         localStringBuilder.append(") ");
         localObject1 = " order by categoryType desc , itemIndex asc";
@@ -116,14 +120,33 @@ public final class c
         localStringBuilder.append(" AND 1 != 1 ");
         localObject1 = localObject2;
       }
-      y.e("MicroMsg.ShareCardAdatper", "resetCursor cursor is null, showType %s", new Object[] { Integer.valueOf(this.iqe) });
+      ab.e("MicroMsg.ShareCardAdatper", "resetCursor cursor is null, showType %s", new Object[] { Integer.valueOf(this.krm) });
     }
   }
   
-  protected final void yd()
+  public final void Kv()
   {
-    bcS();
-    yc();
+    AppMethodBeat.i(88143);
+    bKb();
+    Ku();
+    AppMethodBeat.o(88143);
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(88141);
+    paramViewGroup = (ShareCardInfo)getItem(paramInt);
+    paramView = this.krl.a(paramInt, paramView, paramViewGroup);
+    AppMethodBeat.o(88141);
+    return paramView;
+  }
+  
+  public final void tf(int paramInt)
+  {
+    AppMethodBeat.i(88144);
+    this.krm = paramInt;
+    a(null, null);
+    AppMethodBeat.o(88144);
   }
 }
 

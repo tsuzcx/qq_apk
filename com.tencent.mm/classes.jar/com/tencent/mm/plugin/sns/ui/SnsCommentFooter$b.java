@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 abstract interface SnsCommentFooter$b
 {
-  public abstract void bIH();
+  public abstract void abT(String paramString);
 }
 
 

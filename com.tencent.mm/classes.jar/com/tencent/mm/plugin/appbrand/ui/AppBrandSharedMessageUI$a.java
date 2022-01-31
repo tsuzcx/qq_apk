@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.appbrand.ui;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class AppBrandSharedMessageUI$a
   extends RecyclerView.a
@@ -21,12 +22,15 @@ public final class AppBrandSharedMessageUI$a
   
   public final int getItemViewType(int paramInt)
   {
-    return super.getItemViewType(paramInt);
+    AppMethodBeat.i(133095);
+    paramInt = super.getItemViewType(paramInt);
+    AppMethodBeat.o(133095);
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandSharedMessageUI.a
  * JD-Core Version:    0.7.0.1
  */

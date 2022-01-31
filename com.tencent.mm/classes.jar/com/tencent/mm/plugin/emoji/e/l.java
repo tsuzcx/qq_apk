@@ -1,217 +1,133 @@
 package com.tencent.mm.plugin.emoji.e;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.mm.m.e;
-import com.tencent.mm.m.g;
-import com.tencent.mm.plugin.gif.MMWXGFJNI;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.d;
-import java.util.Map;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.c;
+import com.tencent.mm.at.o;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.a.qg;
+import com.tencent.mm.g.a.qj;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.t;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.v.b;
+import com.tencent.mm.opensdk.modelmsg.WXEmojiPageSharedObject;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.pluginsdk.i;
+import com.tencent.mm.pluginsdk.ui.applet.q.a;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 
 public final class l
 {
-  private static boolean iXK = false;
-  private static boolean iXL = false;
-  private static boolean iXM = false;
-  private static boolean iXN = false;
-  private static boolean iXO = false;
-  private static boolean iXP = false;
-  
-  public static boolean aHA()
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    return (g.AA().getInt("EmotionRewardOption", 0) & 0x2) != 2;
+    AppMethodBeat.i(52985);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("Ksnsupload_title", paramString1);
+    localIntent.putExtra("KContentObjDesc", paramString2);
+    localIntent.putExtra("Ksnsupload_imgurl", paramString3);
+    localIntent.putExtra("Ksnsupload_link", paramString4);
+    localIntent.putExtra("KUploadProduct_UserData", paramString5);
+    localIntent.putExtra("Ksnsupload_type", paramInt);
+    paramString1 = v.oQ("emoje_stroe");
+    v.aae().z(paramString1, true).i("prePublishId", "emoje_stroe");
+    localIntent.putExtra("reportSessionId", paramString1);
+    d.c(paramContext, "sns", ".ui.SnsUploadUI", localIntent);
+    AppMethodBeat.o(52985);
   }
   
-  public static boolean aHB()
+  public static void a(final MMActivity paramMMActivity, String paramString1, final int paramInt1, final int paramInt2, final String paramString2, final String paramString3, final String paramString4, final String paramString5, final int paramInt3, final String paramString6)
   {
-    boolean bool = false;
-    if ((g.AA().getInt("EmotionRewardOption", 0) & 0x4) == 4) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static int aHC()
-  {
-    return bk.getInt(g.AA().getValue("CustomEmojiMaxSize"), 150);
-  }
-  
-  public static String aHD()
-  {
-    return g.AA().getValue("C2CEmojiNotAutoDownloadTimeRange");
-  }
-  
-  public static String aHE()
-  {
-    return g.AA().getValue("EmotionPanelConfigName");
-  }
-  
-  public static boolean aHF()
-  {
-    com.tencent.mm.storage.c localc;
-    if (!iXK)
+    AppMethodBeat.i(52987);
+    ((i)g.E(i.class)).b(paramMMActivity.getController(), paramString2, paramString4, paramString3, "", paramMMActivity.getString(2131297067), new q.a()
     {
-      localc = com.tencent.mm.model.c.c.IX().fJ("100296");
-      if (!localc.isValid()) {
-        break label276;
-      }
-    }
-    label276:
-    for (int i = bk.getInt((String)localc.ctr().get("EnableEmoticonExternUrl"), 0);; i = 0)
-    {
-      int j = g.AA().getInt("EnableEmoticonExternUrl", 0);
-      int k = MMWXGFJNI.getErrorCode();
-      if (((j & 0x1) == 1) || ((i & 0x1) == 1)) {
-        if ((!aHI()) && (!aHJ()))
+      public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(52984);
+        if (paramAnonymousBoolean)
         {
-          iXN = true;
-          if (k < 0)
+          String str1 = this.lgH;
+          paramAnonymousInt = paramInt1;
+          int i = paramInt2;
+          Object localObject2 = paramString2;
+          Object localObject3 = paramString3;
+          String str2 = paramString4;
+          String str3 = paramString5;
+          int j = paramInt3;
+          String str4 = paramString6;
+          ab.d("MicroMsg.emoji.EmojiSharedMgr", "doSharedToFriend");
+          Object localObject1 = new WXMediaMessage();
+          ((WXMediaMessage)localObject1).title = ((String)localObject2);
+          ((WXMediaMessage)localObject1).description = ((String)localObject3);
+          WXEmojiPageSharedObject localWXEmojiPageSharedObject = new WXEmojiPageSharedObject();
+          localWXEmojiPageSharedObject.type = paramAnonymousInt;
+          localWXEmojiPageSharedObject.tid = i;
+          localWXEmojiPageSharedObject.title = ((String)localObject2);
+          localWXEmojiPageSharedObject.desc = ((String)localObject3);
+          localWXEmojiPageSharedObject.iconUrl = str2;
+          localWXEmojiPageSharedObject.secondUrl = str3;
+          localWXEmojiPageSharedObject.pageType = j;
+          localWXEmojiPageSharedObject.url = str4;
+          ((WXMediaMessage)localObject1).mediaObject = localWXEmojiPageSharedObject;
+          o.ahB();
+          localObject2 = c.lK(str2);
+          if ((localObject2 != null) && (!((Bitmap)localObject2).isRecycled()))
           {
-            iXN = false;
-            switch (k)
-            {
-            }
+            ab.i("MicroMsg.emoji.EmojiSharedMgr", "thumb image is not null");
+            localObject3 = new ByteArrayOutputStream();
+            ((Bitmap)localObject2).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject3);
+            ((WXMediaMessage)localObject1).thumbData = ((ByteArrayOutputStream)localObject3).toByteArray();
           }
+          localObject2 = new qg();
+          ((qg)localObject2).cGL.cyF = ((WXMediaMessage)localObject1);
+          ((qg)localObject2).cGL.toUser = str1;
+          ((qg)localObject2).cGL.cGM = 49;
+          ((qg)localObject2).cGL.cGN = str1;
+          ((qg)localObject2).cGL.cGO = "";
+          a.ymk.l((b)localObject2);
+          if (!TextUtils.isEmpty(paramAnonymousString))
+          {
+            localObject1 = new qj();
+            ((qj)localObject1).cGX.cGY = str1;
+            ((qj)localObject1).cGX.content = paramAnonymousString;
+            ((qj)localObject1).cGX.type = t.oF(str1);
+            ((qj)localObject1).cGX.flags = 0;
+            a.ymk.l((b)localObject1);
+          }
+          h.bO(paramMMActivity, paramMMActivity.getString(2131297076));
+          AppMethodBeat.o(52984);
+          return;
         }
+        AppMethodBeat.o(52984);
       }
-      for (;;)
-      {
-        iXK = true;
-        y.i("MicroMsg.emoji.EmotionDynamicConfigMgr", "isEnableHevcDownload:%b", new Object[] { Boolean.valueOf(iXN) });
-        return iXN;
-        iXN = false;
-        break;
-        iXN = false;
-        break;
-        h.nFQ.a(711L, 5L, 1L, false);
-        continue;
-        h.nFQ.a(711L, 6L, 1L, false);
-        continue;
-        h.nFQ.a(711L, 7L, 1L, false);
-        continue;
-        h.nFQ.a(711L, 8L, 1L, false);
-        continue;
-        h.nFQ.a(711L, 9L, 1L, false);
-        continue;
-        h.nFQ.a(711L, 10L, 1L, false);
-      }
-    }
+    });
+    AppMethodBeat.o(52987);
   }
   
-  public static boolean aHG()
+  public static void dJ(Context paramContext)
   {
-    int k;
-    if (!iXL)
-    {
-      int i = 0;
-      com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.IX().fJ("100296");
-      if (localc.isValid()) {
-        i = bk.getInt((String)localc.ctr().get("EnableEmoticonExternUrl"), 0);
-      }
-      int j = g.AA().getInt("EnableEmoticonExternUrl", 0);
-      k = MMWXGFJNI.getErrorCode();
-      if (((j & 0x2) != 2) && ((i & 0x2) != 2)) {
-        break label147;
-      }
-      if ((aHI()) || (aHJ())) {
-        break label135;
-      }
-      iXO = true;
-      h.nFQ.a(711L, 1L, 1L, false);
-    }
-    for (;;)
-    {
-      if (k < 0) {
-        iXO = false;
-      }
-      iXL = true;
-      y.i("MicroMsg.emoji.EmotionDynamicConfigMgr", "isEnableHevcDecode:%b", new Object[] { Boolean.valueOf(iXO) });
-      return iXO;
-      label135:
-      h.nFQ.a(711L, 0L, 1L, false);
-      label147:
-      iXO = false;
-    }
-  }
-  
-  public static boolean aHH()
-  {
-    boolean bool = false;
-    if ((g.AA().getInt("ShowEmoticonCameraEntrance", 0) & 0x2) > 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  private static boolean aHI()
-  {
-    PackageManager localPackageManager = ae.getContext().getPackageManager();
-    try
-    {
-      localPackageManager.getPackageInfo("com.google.android.wearable.app.cn", 1);
-      return true;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
-    return false;
-  }
-  
-  private static boolean aHJ()
-  {
-    PackageManager localPackageManager = ae.getContext().getPackageManager();
-    try
-    {
-      localPackageManager.getPackageInfo("com.google.android.wearable.app", 1);
-      return true;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
-    return false;
-  }
-  
-  public static boolean aHt()
-  {
-    com.tencent.mm.storage.c localc;
-    if (!iXM)
-    {
-      localc = com.tencent.mm.model.c.c.IX().fJ("100296");
-      if (!localc.isValid()) {
-        break label104;
-      }
-    }
-    label104:
-    for (int i = bk.getInt((String)localc.ctr().get("EnableEmoticonExternUrl"), 0);; i = 0)
-    {
-      if (((g.AA().getInt("EnableEmoticonExternUrl", 0) & 0x4) == 4) || ((i & 0x4) == 4)) {}
-      for (iXP = aHG();; iXP = false)
-      {
-        iXM = true;
-        y.i("MicroMsg.emoji.EmotionDynamicConfigMgr", "isEnableHevcUpload:%b", new Object[] { Boolean.valueOf(iXP) });
-        return iXP;
-      }
-    }
-  }
-  
-  public static boolean aHu()
-  {
-    boolean bool = false;
-    if ((g.AA().getInt("ShowEmoticonCameraEntrance", 0) & 0x1) > 0) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static boolean aHz()
-  {
-    return (g.AA().getInt("EmotionRewardOption", 0) & 0x1) != 1;
+    AppMethodBeat.i(52986);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("Select_Conv_Type", 3);
+    localIntent.putExtra("MMActivity.OverrideEnterAnimation", 2131034181);
+    localIntent.putExtra("MMActivity.OverrideExitAnimation", 2131034228);
+    d.b(paramContext, ".ui.transmit.SelectConversationUI", localIntent, 2002);
+    AppMethodBeat.o(52986);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.l
  * JD-Core Version:    0.7.0.1
  */

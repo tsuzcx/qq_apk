@@ -7,84 +7,102 @@ import android.view.View.OnClickListener;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.h.c.r;
-import com.tencent.mm.plugin.game.d.bw;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.model.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.t;
+import com.tencent.mm.plugin.game.d.bx;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class k
   implements View.OnClickListener, AdapterView.OnItemClickListener
 {
-  protected int kQh = 0;
+  protected int nok = 0;
   
-  private void a(Context paramContext, d paramd)
+  private void a(Context paramContext, com.tencent.mm.plugin.game.model.c paramc)
   {
+    AppMethodBeat.i(112008);
     int i = 0;
-    if (paramd.type == 1) {
-      i = c.an(paramContext, paramd.kNZ);
+    if (paramc.type == 1) {
+      i = com.tencent.mm.plugin.game.f.c.ax(paramContext, paramc.nlW);
     }
     for (;;)
     {
-      b.a(paramContext, paramd.scene, paramd.bXn, paramd.position, i, paramd.field_appId, this.kQh, paramd.bGy, paramd.kOo);
+      a(paramContext, paramc, i);
+      AppMethodBeat.o(112008);
       return;
-      if (paramd.type == 0) {
-        if ((paramd.aYR()) && (!bk.bl(paramd.kOs.kRP)) && (!g.a(paramContext, paramd)))
+      if (paramc.type == 0) {
+        if ((paramc.bFQ()) && (!bo.isNullOrNil(paramc.nmp.npR)) && (!g.a(paramContext, paramc)))
         {
-          i = c.an(paramContext, paramd.kOs.kRP);
+          i = com.tencent.mm.plugin.game.f.c.ax(paramContext, paramc.nmp.npR);
         }
         else
         {
-          if ((bk.bl(paramd.cvE)) || (paramd.cvH != 4)) {
+          if ((bo.isNullOrNil(paramc.djP)) || (paramc.djS != 4)) {
             break;
           }
-          y.i("MicroMsg.GameItemClickListener", "Download via Google Play");
-          q.bk(paramContext, paramd.cvE);
+          ab.i("MicroMsg.GameItemClickListener", "Download via Google Play");
+          q.bw(paramContext, paramc.djP);
           i = 25;
         }
       }
     }
     Bundle localBundle = new Bundle();
-    localBundle.putCharSequence("game_app_id", paramd.field_appId);
-    if (paramd.bXn == 1601) {
-      localBundle.putInt("game_report_from_scene", this.kQh);
+    localBundle.putCharSequence("game_app_id", paramc.field_appId);
+    if (paramc.cFj == 1601) {
+      localBundle.putInt("game_report_from_scene", this.nok);
     }
     for (;;)
     {
-      i = c.b(paramContext, paramd.field_appId, paramd.kNZ, localBundle);
+      i = com.tencent.mm.plugin.game.f.c.b(paramContext, paramc.field_appId, paramc.nlW, localBundle);
       break;
-      localBundle.putInt("game_report_from_scene", paramd.bXn);
+      localBundle.putInt("game_report_from_scene", paramc.cFj);
     }
+  }
+  
+  private void a(Context paramContext, com.tencent.mm.plugin.game.model.c paramc, int paramInt)
+  {
+    AppMethodBeat.i(112009);
+    com.tencent.mm.game.report.c.a(paramContext, paramc.scene, paramc.cFj, paramc.position, paramInt, paramc.field_appId, this.nok, paramc.cnG, paramc.nml);
+    AppMethodBeat.o(112009);
   }
   
   public final void onClick(View paramView)
   {
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof d))) {
+    AppMethodBeat.i(112007);
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof com.tencent.mm.plugin.game.model.c)))
+    {
+      AppMethodBeat.o(112007);
       return;
     }
-    d locald = (d)paramView.getTag();
-    a(paramView.getContext(), locald);
+    com.tencent.mm.plugin.game.model.c localc = (com.tencent.mm.plugin.game.model.c)paramView.getTag();
+    a(paramView.getContext(), localc);
+    AppMethodBeat.o(112007);
   }
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(112006);
     paramAdapterView = paramAdapterView.getAdapter().getItem(paramInt);
-    if ((paramAdapterView == null) || (!(paramAdapterView instanceof d))) {}
-    do
+    if ((paramAdapterView == null) || (!(paramAdapterView instanceof com.tencent.mm.plugin.game.model.c)))
     {
+      AppMethodBeat.o(112006);
       return;
-      paramAdapterView = (d)paramAdapterView;
-    } while (bk.bl(paramAdapterView.field_appId));
+    }
+    paramAdapterView = (com.tencent.mm.plugin.game.model.c)paramAdapterView;
+    if (bo.isNullOrNil(paramAdapterView.field_appId))
+    {
+      AppMethodBeat.o(112006);
+      return;
+    }
     a(paramView.getContext(), paramAdapterView);
+    AppMethodBeat.o(112006);
   }
   
   public final void setSourceScene(int paramInt)
   {
-    this.kQh = paramInt;
+    this.nok = paramInt;
   }
 }
 

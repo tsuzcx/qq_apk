@@ -1,627 +1,658 @@
 package com.tencent.mm.sandbox.updater;
 
 import android.os.AsyncTask;
-import com.tencent.mm.network.u;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.network.v;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.c.alm;
-import com.tencent.mm.protocal.c.aln;
-import com.tencent.mm.sdk.platformtools.y;
-import java.net.HttpURLConnection;
+import com.tencent.mm.protocal.protobuf.aqz;
+import com.tencent.mm.protocal.protobuf.ara;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$a
-  extends AsyncTask<alm, Integer, aln>
+  extends AsyncTask<aqz, Integer, ara>
 {
-  private String host = null;
-  private u nfp = null;
-  private com.tencent.mm.sandbox.b.a ucm = null;
-  private int ucq = 200;
-  private PInt ucr = new PInt();
+  private String host;
+  private v pKE;
+  private com.tencent.mm.sandbox.b.a ykB;
+  private int ykF;
+  private PInt ykG;
   
   public b$a(b paramb, String paramString, com.tencent.mm.sandbox.b.a parama)
   {
+    AppMethodBeat.i(28846);
+    this.pKE = null;
+    this.ykF = 200;
+    this.ykG = new PInt();
+    this.host = null;
+    this.ykB = null;
     this.host = paramString;
-    this.ucm = parama;
+    this.ykB = parama;
+    AppMethodBeat.o(28846);
   }
   
   /* Error */
-  private aln a(alm... paramVarArgs)
+  private ara a(aqz... paramVarArgs)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: arraylength
-    //   2: ifeq +9 -> 11
-    //   5: aload_1
-    //   6: iconst_0
-    //   7: aaload
-    //   8: ifnonnull +12 -> 20
-    //   11: aload_0
-    //   12: iconst_m1
-    //   13: putfield 31	com/tencent/mm/sandbox/updater/b$a:ucq	I
-    //   16: aconst_null
-    //   17: astore_1
-    //   18: aload_1
-    //   19: areturn
-    //   20: ldc 48
-    //   22: new 50	java/lang/StringBuilder
-    //   25: dup
-    //   26: ldc 52
-    //   28: invokespecial 55	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   31: aload_1
-    //   32: iconst_0
-    //   33: aaload
-    //   34: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   37: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokestatic 69	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   43: aload_1
-    //   44: iconst_0
-    //   45: aaload
-    //   46: astore_1
-    //   47: new 71	com/tencent/mm/pointers/PByteArray
-    //   50: dup
-    //   51: invokespecial 72	com/tencent/mm/pointers/PByteArray:<init>	()V
-    //   54: astore 9
-    //   56: bipush 6
-    //   58: istore_2
-    //   59: getstatic 78	com/tencent/mm/sdk/a/b:foreground	Z
-    //   62: ifeq +6 -> 68
-    //   65: bipush 7
-    //   67: istore_2
-    //   68: aload_1
-    //   69: invokevirtual 84	com/tencent/mm/protocal/c/alm:toByteArray	()[B
-    //   72: astore_1
-    //   73: aload_0
-    //   74: getfield 24	com/tencent/mm/sandbox/updater/b$a:ucp	Lcom/tencent/mm/sandbox/updater/b;
-    //   77: invokestatic 88	com/tencent/mm/sandbox/updater/b:j	(Lcom/tencent/mm/sandbox/updater/b;)[B
-    //   80: astore 6
-    //   82: aload_0
-    //   83: getfield 24	com/tencent/mm/sandbox/updater/b$a:ucp	Lcom/tencent/mm/sandbox/updater/b;
-    //   86: invokestatic 91	com/tencent/mm/sandbox/updater/b:k	(Lcom/tencent/mm/sandbox/updater/b;)[B
-    //   89: astore 7
-    //   91: invokestatic 96	com/tencent/mm/compatible/e/q:zg	()Ljava/lang/String;
-    //   94: astore 8
-    //   96: aload_0
-    //   97: getfield 24	com/tencent/mm/sandbox/updater/b$a:ucp	Lcom/tencent/mm/sandbox/updater/b;
-    //   100: invokestatic 100	com/tencent/mm/sandbox/updater/b:l	(Lcom/tencent/mm/sandbox/updater/b;)I
-    //   103: istore_3
-    //   104: aload_0
-    //   105: getfield 24	com/tencent/mm/sandbox/updater/b$a:ucp	Lcom/tencent/mm/sandbox/updater/b;
-    //   108: invokestatic 103	com/tencent/mm/sandbox/updater/b:m	(Lcom/tencent/mm/sandbox/updater/b;)[B
-    //   111: astore 10
-    //   113: aload_1
-    //   114: aload 9
-    //   116: aload 6
-    //   118: aload 7
-    //   120: aload 8
-    //   122: iload_3
-    //   123: bipush 113
-    //   125: iconst_0
-    //   126: iconst_0
-    //   127: newarray byte
-    //   129: iconst_0
-    //   130: newarray byte
+    //   0: sipush 28847
+    //   3: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_1
+    //   7: arraylength
+    //   8: ifeq +9 -> 17
+    //   11: aload_1
+    //   12: iconst_0
+    //   13: aaload
+    //   14: ifnonnull +16 -> 30
+    //   17: aload_0
+    //   18: iconst_m1
+    //   19: putfield 37	com/tencent/mm/sandbox/updater/b$a:ykF	I
+    //   22: sipush 28847
+    //   25: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   28: aconst_null
+    //   29: areturn
+    //   30: ldc 57
+    //   32: new 59	java/lang/StringBuilder
+    //   35: dup
+    //   36: ldc 61
+    //   38: invokespecial 64	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   41: aload_1
+    //   42: iconst_0
+    //   43: aaload
+    //   44: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokestatic 78	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   53: aload_1
+    //   54: iconst_0
+    //   55: aaload
+    //   56: astore_1
+    //   57: new 80	com/tencent/mm/pointers/PByteArray
+    //   60: dup
+    //   61: invokespecial 81	com/tencent/mm/pointers/PByteArray:<init>	()V
+    //   64: astore 10
+    //   66: bipush 6
+    //   68: istore_2
+    //   69: getstatic 87	com/tencent/mm/sdk/a/b:foreground	Z
+    //   72: ifeq +6 -> 78
+    //   75: bipush 7
+    //   77: istore_2
+    //   78: aload_1
+    //   79: invokevirtual 93	com/tencent/mm/protocal/protobuf/aqz:toByteArray	()[B
+    //   82: astore_1
+    //   83: iconst_0
+    //   84: istore 4
+    //   86: iload 4
+    //   88: istore_3
+    //   89: aload_0
+    //   90: getfield 24	com/tencent/mm/sandbox/updater/b$a:ykE	Lcom/tencent/mm/sandbox/updater/b;
+    //   93: invokestatic 97	com/tencent/mm/sandbox/updater/b:j	(Lcom/tencent/mm/sandbox/updater/b;)[B
+    //   96: invokestatic 103	com/tencent/mm/sdk/platformtools/bo:ce	([B)Z
+    //   99: ifne +32 -> 131
+    //   102: iload 4
+    //   104: istore_3
+    //   105: aload_1
+    //   106: invokestatic 103	com/tencent/mm/sdk/platformtools/bo:ce	([B)Z
+    //   109: ifne +22 -> 131
+    //   112: aload_0
+    //   113: getfield 24	com/tencent/mm/sandbox/updater/b$a:ykE	Lcom/tencent/mm/sandbox/updater/b;
+    //   116: invokestatic 107	com/tencent/mm/sandbox/updater/b:k	(Lcom/tencent/mm/sandbox/updater/b;)I
+    //   119: aload_0
+    //   120: getfield 24	com/tencent/mm/sandbox/updater/b$a:ykE	Lcom/tencent/mm/sandbox/updater/b;
+    //   123: invokestatic 97	com/tencent/mm/sandbox/updater/b:j	(Lcom/tencent/mm/sandbox/updater/b;)[B
+    //   126: aload_1
+    //   127: invokestatic 113	com/tencent/mm/protocal/MMProtocalJni:genSignature	(I[B[B)I
+    //   130: istore_3
+    //   131: aload_1
     //   132: aload 10
-    //   134: iload_2
-    //   135: iconst_0
-    //   136: invokestatic 109	com/tencent/mm/protocal/MMProtocalJni:pack	([BLcom/tencent/mm/pointers/PByteArray;[B[BLjava/lang/String;III[B[B[BII)Z
-    //   139: pop
-    //   140: aconst_null
-    //   141: astore 8
-    //   143: aconst_null
-    //   144: astore 6
-    //   146: aconst_null
-    //   147: astore 7
-    //   149: aload_0
-    //   150: new 50	java/lang/StringBuilder
-    //   153: dup
-    //   154: ldc 111
-    //   156: invokespecial 55	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   159: aload_0
-    //   160: getfield 38	com/tencent/mm/sandbox/updater/b$a:host	Ljava/lang/String;
-    //   163: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   166: ldc 116
-    //   168: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   174: aconst_null
-    //   175: invokestatic 121	com/tencent/mm/network/b:a	(Ljava/lang/String;Lcom/tencent/mm/network/b$b;)Lcom/tencent/mm/network/u;
-    //   178: putfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   181: aload_0
-    //   182: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   185: ldc 123
-    //   187: invokevirtual 128	com/tencent/mm/network/u:setRequestMethod	(Ljava/lang/String;)V
-    //   190: aload_0
-    //   191: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   194: invokevirtual 131	com/tencent/mm/network/u:Ud	()V
-    //   197: aload_0
-    //   198: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   201: invokevirtual 134	com/tencent/mm/network/u:Ue	()V
-    //   204: aload_0
-    //   205: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   208: iconst_0
-    //   209: invokevirtual 138	com/tencent/mm/network/u:setUseCaches	(Z)V
-    //   212: aload_0
-    //   213: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   216: ldc 140
-    //   218: ldc 142
-    //   220: invokevirtual 145	com/tencent/mm/network/u:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   223: aload_0
-    //   224: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   227: ldc 147
-    //   229: ldc 149
-    //   231: invokevirtual 145	com/tencent/mm/network/u:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   234: aload_0
-    //   235: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   238: ldc 151
-    //   240: ldc 153
-    //   242: invokevirtual 145	com/tencent/mm/network/u:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   245: aload_0
-    //   246: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   249: ldc 155
-    //   251: ldc 157
-    //   253: invokevirtual 145	com/tencent/mm/network/u:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   256: aload_0
-    //   257: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   260: ldc 159
-    //   262: ldc 161
-    //   264: invokevirtual 145	com/tencent/mm/network/u:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   267: aload_0
-    //   268: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   271: ldc 163
-    //   273: ldc 165
-    //   275: invokevirtual 145	com/tencent/mm/network/u:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   278: aload_0
-    //   279: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   282: sipush 15000
-    //   285: invokevirtual 169	com/tencent/mm/network/u:setConnectTimeout	(I)V
-    //   288: aload_0
-    //   289: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   292: invokevirtual 172	com/tencent/mm/network/u:connect	()V
-    //   295: aload_0
-    //   296: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   299: invokevirtual 176	com/tencent/mm/network/u:getOutputStream	()Ljava/io/OutputStream;
-    //   302: astore_1
-    //   303: aload_1
-    //   304: aload 9
-    //   306: getfield 180	com/tencent/mm/pointers/PByteArray:value	[B
-    //   309: invokevirtual 186	java/io/OutputStream:write	([B)V
-    //   312: aload_1
-    //   313: invokevirtual 189	java/io/OutputStream:flush	()V
-    //   316: aload_0
-    //   317: getfield 40	com/tencent/mm/sandbox/updater/b$a:ucm	Lcom/tencent/mm/sandbox/b$a;
-    //   320: ldc2_w 190
-    //   323: aload 9
-    //   325: getfield 180	com/tencent/mm/pointers/PByteArray:value	[B
-    //   328: arraylength
-    //   329: i2l
-    //   330: ladd
-    //   331: invokeinterface 197 3 0
-    //   336: aload_0
-    //   337: aload_0
-    //   338: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   341: invokevirtual 201	com/tencent/mm/network/u:getResponseCode	()I
-    //   344: putfield 31	com/tencent/mm/sandbox/updater/b$a:ucq	I
-    //   347: aload_0
-    //   348: getfield 31	com/tencent/mm/sandbox/updater/b$a:ucq	I
-    //   351: istore_2
-    //   352: iload_2
-    //   353: sipush 200
-    //   356: if_icmpeq +84 -> 440
-    //   359: aload_1
-    //   360: ifnull +7 -> 367
-    //   363: aload_1
-    //   364: invokevirtual 204	java/io/OutputStream:close	()V
-    //   367: aload_0
-    //   368: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   371: ifnull +18 -> 389
-    //   374: aload_0
-    //   375: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   378: getfield 208	com/tencent/mm/network/u:aRG	Ljava/net/HttpURLConnection;
-    //   381: invokevirtual 213	java/net/HttpURLConnection:disconnect	()V
-    //   384: aload_0
-    //   385: aconst_null
-    //   386: putfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   389: aconst_null
-    //   390: areturn
-    //   391: astore_1
-    //   392: ldc 48
-    //   394: ldc 215
-    //   396: iconst_1
-    //   397: anewarray 217	java/lang/Object
-    //   400: dup
-    //   401: iconst_0
-    //   402: aload_1
-    //   403: invokevirtual 220	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   406: aastore
-    //   407: invokestatic 224	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   410: ldc 48
-    //   412: aload_1
-    //   413: ldc 226
-    //   415: iconst_0
-    //   416: anewarray 217	java/lang/Object
-    //   419: invokestatic 230	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   422: aconst_null
-    //   423: areturn
-    //   424: astore_1
-    //   425: ldc 48
-    //   427: aload_1
-    //   428: ldc 226
-    //   430: iconst_0
-    //   431: anewarray 217	java/lang/Object
-    //   434: invokestatic 230	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   437: goto -70 -> 367
-    //   440: aload_0
-    //   441: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   444: ldc 232
-    //   446: invokevirtual 236	com/tencent/mm/network/u:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   449: astore 6
-    //   451: aload_0
-    //   452: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   455: invokevirtual 240	com/tencent/mm/network/u:getInputStream	()Ljava/io/InputStream;
-    //   458: astore 8
-    //   460: ldc2_w 190
-    //   463: lstore 4
-    //   465: aload 6
-    //   467: ifnull +597 -> 1064
-    //   470: aload 6
-    //   472: ldc 242
-    //   474: invokevirtual 248	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   477: ifeq +587 -> 1064
-    //   480: new 250	java/util/zip/GZIPInputStream
-    //   483: dup
-    //   484: aload 8
-    //   486: invokespecial 253	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
-    //   489: astore 6
-    //   491: iconst_1
-    //   492: istore_2
-    //   493: new 255	java/io/ByteArrayOutputStream
-    //   496: dup
-    //   497: invokespecial 256	java/io/ByteArrayOutputStream:<init>	()V
-    //   500: astore 7
-    //   502: sipush 1024
-    //   505: newarray byte
-    //   507: astore 9
-    //   509: aload 6
-    //   511: aload 9
-    //   513: invokevirtual 262	java/io/InputStream:read	([B)I
-    //   516: istore_3
-    //   517: iload_3
-    //   518: ifle +22 -> 540
-    //   521: aload 7
-    //   523: aload 9
-    //   525: iconst_0
-    //   526: iload_3
-    //   527: invokevirtual 265	java/io/ByteArrayOutputStream:write	([BII)V
-    //   530: lload 4
-    //   532: iload_3
-    //   533: i2l
-    //   534: ladd
-    //   535: lstore 4
-    //   537: goto -28 -> 509
-    //   540: iload_2
-    //   541: ifeq +200 -> 741
-    //   544: aload 8
-    //   546: invokevirtual 269	java/io/InputStream:markSupported	()Z
-    //   549: ifeq +192 -> 741
-    //   552: aload 8
-    //   554: iconst_1
-    //   555: invokevirtual 272	java/io/InputStream:mark	(I)V
-    //   558: ldc2_w 190
-    //   561: lstore 4
-    //   563: aload 8
-    //   565: aload 9
-    //   567: invokevirtual 262	java/io/InputStream:read	([B)I
-    //   570: istore_2
-    //   571: iload_2
-    //   572: ifle +13 -> 585
-    //   575: lload 4
-    //   577: iload_2
-    //   578: i2l
-    //   579: ladd
-    //   580: lstore 4
-    //   582: goto -19 -> 563
-    //   585: aload_0
-    //   586: getfield 40	com/tencent/mm/sandbox/updater/b$a:ucm	Lcom/tencent/mm/sandbox/b$a;
-    //   589: lload 4
-    //   591: invokeinterface 275 3 0
-    //   596: new 71	com/tencent/mm/pointers/PByteArray
-    //   599: dup
-    //   600: invokespecial 72	com/tencent/mm/pointers/PByteArray:<init>	()V
-    //   603: astore 8
-    //   605: new 71	com/tencent/mm/pointers/PByteArray
-    //   608: dup
-    //   609: invokespecial 72	com/tencent/mm/pointers/PByteArray:<init>	()V
-    //   612: astore 9
-    //   614: new 33	com/tencent/mm/pointers/PInt
-    //   617: dup
-    //   618: invokespecial 34	com/tencent/mm/pointers/PInt:<init>	()V
-    //   621: astore 10
-    //   623: new 33	com/tencent/mm/pointers/PInt
-    //   626: dup
-    //   627: iconst_0
-    //   628: invokespecial 277	com/tencent/mm/pointers/PInt:<init>	(I)V
-    //   631: astore 11
-    //   633: new 33	com/tencent/mm/pointers/PInt
-    //   636: dup
-    //   637: sipush 255
-    //   640: invokespecial 277	com/tencent/mm/pointers/PInt:<init>	(I)V
-    //   643: astore 12
-    //   645: aload 8
-    //   647: aload 7
-    //   649: invokevirtual 278	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   652: aload_0
-    //   653: getfield 24	com/tencent/mm/sandbox/updater/b$a:ucp	Lcom/tencent/mm/sandbox/updater/b;
-    //   656: invokestatic 88	com/tencent/mm/sandbox/updater/b:j	(Lcom/tencent/mm/sandbox/updater/b;)[B
-    //   659: aload 9
-    //   661: aload_0
-    //   662: getfield 36	com/tencent/mm/sandbox/updater/b$a:ucr	Lcom/tencent/mm/pointers/PInt;
-    //   665: aload 10
-    //   667: aload 11
-    //   669: aload 12
-    //   671: invokestatic 282	com/tencent/mm/protocal/MMProtocalJni:unpack	(Lcom/tencent/mm/pointers/PByteArray;[B[BLcom/tencent/mm/pointers/PByteArray;Lcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;)Z
-    //   674: pop
-    //   675: new 284	com/tencent/mm/protocal/c/aln
-    //   678: dup
-    //   679: invokespecial 285	com/tencent/mm/protocal/c/aln:<init>	()V
-    //   682: aload 8
-    //   684: getfield 180	com/tencent/mm/pointers/PByteArray:value	[B
-    //   687: invokevirtual 289	com/tencent/mm/protocal/c/aln:aH	([B)Lcom/tencent/mm/bv/a;
-    //   690: checkcast 284	com/tencent/mm/protocal/c/aln
-    //   693: astore 7
-    //   695: aload_1
-    //   696: ifnull +7 -> 703
-    //   699: aload_1
-    //   700: invokevirtual 204	java/io/OutputStream:close	()V
-    //   703: aload 6
-    //   705: ifnull +8 -> 713
-    //   708: aload 6
-    //   710: invokevirtual 290	java/io/InputStream:close	()V
-    //   713: aload 7
-    //   715: astore_1
-    //   716: aload_0
-    //   717: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   720: ifnull -702 -> 18
-    //   723: aload_0
-    //   724: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   727: getfield 208	com/tencent/mm/network/u:aRG	Ljava/net/HttpURLConnection;
-    //   730: invokevirtual 213	java/net/HttpURLConnection:disconnect	()V
-    //   733: aload_0
-    //   734: aconst_null
-    //   735: putfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   738: aload 7
-    //   740: areturn
-    //   741: aload_0
-    //   742: getfield 40	com/tencent/mm/sandbox/updater/b$a:ucm	Lcom/tencent/mm/sandbox/b$a;
-    //   745: lload 4
-    //   747: invokeinterface 275 3 0
-    //   752: goto -156 -> 596
-    //   755: astore 8
-    //   757: aload 6
-    //   759: astore 7
-    //   761: aload_1
-    //   762: astore 6
-    //   764: aload 7
-    //   766: astore_1
-    //   767: aload 8
-    //   769: astore 7
-    //   771: ldc 48
-    //   773: ldc_w 292
-    //   776: iconst_1
-    //   777: anewarray 217	java/lang/Object
-    //   780: dup
-    //   781: iconst_0
-    //   782: aload 7
-    //   784: invokevirtual 220	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   787: aastore
-    //   788: invokestatic 224	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   791: ldc 48
-    //   793: aload 7
-    //   795: ldc 226
-    //   797: iconst_0
-    //   798: anewarray 217	java/lang/Object
-    //   801: invokestatic 230	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   804: aload_0
-    //   805: iconst_m1
-    //   806: putfield 31	com/tencent/mm/sandbox/updater/b$a:ucq	I
-    //   809: aload 6
-    //   811: ifnull +8 -> 819
-    //   814: aload 6
-    //   816: invokevirtual 204	java/io/OutputStream:close	()V
-    //   819: aload_1
-    //   820: ifnull +7 -> 827
-    //   823: aload_1
-    //   824: invokevirtual 290	java/io/InputStream:close	()V
-    //   827: aload_0
-    //   828: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   831: ifnull +18 -> 849
-    //   834: aload_0
-    //   835: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   838: getfield 208	com/tencent/mm/network/u:aRG	Ljava/net/HttpURLConnection;
-    //   841: invokevirtual 213	java/net/HttpURLConnection:disconnect	()V
-    //   844: aload_0
-    //   845: aconst_null
-    //   846: putfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   849: aconst_null
-    //   850: areturn
-    //   851: astore_1
-    //   852: ldc 48
-    //   854: aload_1
-    //   855: ldc 226
-    //   857: iconst_0
-    //   858: anewarray 217	java/lang/Object
-    //   861: invokestatic 230	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   864: goto -161 -> 703
-    //   867: astore_1
-    //   868: ldc 48
-    //   870: aload_1
-    //   871: ldc 226
-    //   873: iconst_0
-    //   874: anewarray 217	java/lang/Object
-    //   877: invokestatic 230	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   880: goto -167 -> 713
-    //   883: astore 6
-    //   885: ldc 48
-    //   887: aload 6
-    //   889: ldc 226
-    //   891: iconst_0
-    //   892: anewarray 217	java/lang/Object
-    //   895: invokestatic 230	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   898: goto -79 -> 819
-    //   901: astore_1
-    //   902: ldc 48
-    //   904: aload_1
-    //   905: ldc 226
-    //   907: iconst_0
-    //   908: anewarray 217	java/lang/Object
-    //   911: invokestatic 230	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   914: goto -87 -> 827
-    //   917: astore_1
-    //   918: aload 8
-    //   920: astore 6
-    //   922: aload 6
-    //   924: ifnull +8 -> 932
-    //   927: aload 6
-    //   929: invokevirtual 204	java/io/OutputStream:close	()V
-    //   932: aload 7
-    //   934: ifnull +8 -> 942
-    //   937: aload 7
-    //   939: invokevirtual 290	java/io/InputStream:close	()V
-    //   942: aload_0
-    //   943: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   946: ifnull +18 -> 964
-    //   949: aload_0
-    //   950: getfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   953: getfield 208	com/tencent/mm/network/u:aRG	Ljava/net/HttpURLConnection;
-    //   956: invokevirtual 213	java/net/HttpURLConnection:disconnect	()V
-    //   959: aload_0
-    //   960: aconst_null
-    //   961: putfield 29	com/tencent/mm/sandbox/updater/b$a:nfp	Lcom/tencent/mm/network/u;
-    //   964: aload_1
-    //   965: athrow
-    //   966: astore 6
-    //   968: ldc 48
-    //   970: aload 6
-    //   972: ldc 226
-    //   974: iconst_0
-    //   975: anewarray 217	java/lang/Object
-    //   978: invokestatic 230	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   981: goto -49 -> 932
-    //   984: astore 6
-    //   986: ldc 48
-    //   988: aload 6
-    //   990: ldc 226
-    //   992: iconst_0
-    //   993: anewarray 217	java/lang/Object
-    //   996: invokestatic 230	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   999: goto -57 -> 942
-    //   1002: astore 8
-    //   1004: aload_1
-    //   1005: astore 6
-    //   1007: aload 8
-    //   1009: astore_1
-    //   1010: goto -88 -> 922
-    //   1013: astore 7
-    //   1015: aload_1
-    //   1016: astore 8
-    //   1018: aload 7
-    //   1020: astore_1
-    //   1021: aload 6
-    //   1023: astore 7
-    //   1025: aload 8
-    //   1027: astore 6
-    //   1029: goto -107 -> 922
-    //   1032: astore 8
-    //   1034: aload_1
-    //   1035: astore 7
-    //   1037: aload 8
-    //   1039: astore_1
-    //   1040: goto -118 -> 922
-    //   1043: astore 7
-    //   1045: aconst_null
-    //   1046: astore_1
-    //   1047: goto -276 -> 771
-    //   1050: astore 7
-    //   1052: aconst_null
-    //   1053: astore 8
-    //   1055: aload_1
-    //   1056: astore 6
-    //   1058: aload 8
-    //   1060: astore_1
-    //   1061: goto -290 -> 771
-    //   1064: iconst_0
-    //   1065: istore_2
-    //   1066: aload 8
-    //   1068: astore 6
-    //   1070: goto -577 -> 493
+    //   134: aload_0
+    //   135: getfield 24	com/tencent/mm/sandbox/updater/b$a:ykE	Lcom/tencent/mm/sandbox/updater/b;
+    //   138: invokestatic 116	com/tencent/mm/sandbox/updater/b:l	(Lcom/tencent/mm/sandbox/updater/b;)[B
+    //   141: iconst_0
+    //   142: aload_0
+    //   143: getfield 24	com/tencent/mm/sandbox/updater/b$a:ykE	Lcom/tencent/mm/sandbox/updater/b;
+    //   146: invokestatic 119	com/tencent/mm/sandbox/updater/b:m	(Lcom/tencent/mm/sandbox/updater/b;)[B
+    //   149: invokestatic 124	com/tencent/mm/compatible/e/q:LK	()Ljava/lang/String;
+    //   152: aload_0
+    //   153: getfield 24	com/tencent/mm/sandbox/updater/b$a:ykE	Lcom/tencent/mm/sandbox/updater/b;
+    //   156: invokestatic 107	com/tencent/mm/sandbox/updater/b:k	(Lcom/tencent/mm/sandbox/updater/b;)I
+    //   159: bipush 113
+    //   161: iconst_0
+    //   162: iconst_0
+    //   163: newarray byte
+    //   165: iconst_0
+    //   166: newarray byte
+    //   168: iload_3
+    //   169: iload_2
+    //   170: iconst_0
+    //   171: invokestatic 128	com/tencent/mm/protocal/MMProtocalJni:pack	([BLcom/tencent/mm/pointers/PByteArray;[BI[BLjava/lang/String;III[B[BIII)Z
+    //   174: pop
+    //   175: aconst_null
+    //   176: astore 9
+    //   178: aconst_null
+    //   179: astore 7
+    //   181: aconst_null
+    //   182: astore 8
+    //   184: aload_0
+    //   185: new 59	java/lang/StringBuilder
+    //   188: dup
+    //   189: ldc 130
+    //   191: invokespecial 64	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   194: aload_0
+    //   195: getfield 44	com/tencent/mm/sandbox/updater/b$a:host	Ljava/lang/String;
+    //   198: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   201: ldc 135
+    //   203: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   206: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   209: aconst_null
+    //   210: invokestatic 140	com/tencent/mm/network/b:a	(Ljava/lang/String;Lcom/tencent/mm/network/b$b;)Lcom/tencent/mm/network/v;
+    //   213: putfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   216: aload_0
+    //   217: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   220: ldc 142
+    //   222: invokevirtual 147	com/tencent/mm/network/v:setRequestMethod	(Ljava/lang/String;)V
+    //   225: aload_0
+    //   226: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   229: invokevirtual 150	com/tencent/mm/network/v:anq	()V
+    //   232: aload_0
+    //   233: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   236: invokevirtual 153	com/tencent/mm/network/v:anr	()V
+    //   239: aload_0
+    //   240: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   243: iconst_0
+    //   244: invokevirtual 157	com/tencent/mm/network/v:setUseCaches	(Z)V
+    //   247: aload_0
+    //   248: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   251: ldc 159
+    //   253: ldc 161
+    //   255: invokevirtual 164	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   258: aload_0
+    //   259: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   262: ldc 166
+    //   264: ldc 168
+    //   266: invokevirtual 164	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   269: aload_0
+    //   270: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   273: ldc 170
+    //   275: ldc 172
+    //   277: invokevirtual 164	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   280: aload_0
+    //   281: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   284: ldc 174
+    //   286: ldc 176
+    //   288: invokevirtual 164	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   291: aload_0
+    //   292: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   295: ldc 178
+    //   297: ldc 180
+    //   299: invokevirtual 164	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   302: aload_0
+    //   303: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   306: ldc 182
+    //   308: ldc 184
+    //   310: invokevirtual 164	com/tencent/mm/network/v:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   313: aload_0
+    //   314: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   317: sipush 15000
+    //   320: invokevirtual 187	com/tencent/mm/network/v:setConnectTimeout	(I)V
+    //   323: aload_0
+    //   324: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   327: invokevirtual 190	com/tencent/mm/network/v:connect	()V
+    //   330: aload_0
+    //   331: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   334: invokevirtual 194	com/tencent/mm/network/v:getOutputStream	()Ljava/io/OutputStream;
+    //   337: astore_1
+    //   338: aload_1
+    //   339: aload 10
+    //   341: getfield 198	com/tencent/mm/pointers/PByteArray:value	[B
+    //   344: invokevirtual 204	java/io/OutputStream:write	([B)V
+    //   347: aload_1
+    //   348: invokevirtual 207	java/io/OutputStream:flush	()V
+    //   351: aload_0
+    //   352: getfield 46	com/tencent/mm/sandbox/updater/b$a:ykB	Lcom/tencent/mm/sandbox/b$a;
+    //   355: ldc2_w 208
+    //   358: aload 10
+    //   360: getfield 198	com/tencent/mm/pointers/PByteArray:value	[B
+    //   363: arraylength
+    //   364: i2l
+    //   365: ladd
+    //   366: invokeinterface 215 3 0
+    //   371: aload_0
+    //   372: aload_0
+    //   373: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   376: invokevirtual 219	com/tencent/mm/network/v:getResponseCode	()I
+    //   379: putfield 37	com/tencent/mm/sandbox/updater/b$a:ykF	I
+    //   382: aload_0
+    //   383: getfield 37	com/tencent/mm/sandbox/updater/b$a:ykF	I
+    //   386: istore_2
+    //   387: iload_2
+    //   388: sipush 200
+    //   391: if_icmpeq +93 -> 484
+    //   394: aload_1
+    //   395: ifnull +7 -> 402
+    //   398: aload_1
+    //   399: invokevirtual 222	java/io/OutputStream:close	()V
+    //   402: aload_0
+    //   403: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   406: ifnull +15 -> 421
+    //   409: aload_0
+    //   410: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   413: invokevirtual 225	com/tencent/mm/network/v:disconnect	()V
+    //   416: aload_0
+    //   417: aconst_null
+    //   418: putfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   421: sipush 28847
+    //   424: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   427: aconst_null
+    //   428: areturn
+    //   429: astore_1
+    //   430: ldc 57
+    //   432: ldc 227
+    //   434: iconst_1
+    //   435: anewarray 229	java/lang/Object
+    //   438: dup
+    //   439: iconst_0
+    //   440: aload_1
+    //   441: invokevirtual 232	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   444: aastore
+    //   445: invokestatic 236	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   448: ldc 57
+    //   450: aload_1
+    //   451: ldc 238
+    //   453: iconst_0
+    //   454: anewarray 229	java/lang/Object
+    //   457: invokestatic 242	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   460: sipush 28847
+    //   463: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   466: aconst_null
+    //   467: areturn
+    //   468: astore_1
+    //   469: ldc 57
+    //   471: aload_1
+    //   472: ldc 238
+    //   474: iconst_0
+    //   475: anewarray 229	java/lang/Object
+    //   478: invokestatic 242	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   481: goto -79 -> 402
+    //   484: aload_0
+    //   485: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   488: ldc 244
+    //   490: invokevirtual 248	com/tencent/mm/network/v:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   493: astore 7
+    //   495: aload_0
+    //   496: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   499: invokevirtual 252	com/tencent/mm/network/v:getInputStream	()Ljava/io/InputStream;
+    //   502: astore 9
+    //   504: ldc2_w 208
+    //   507: lstore 5
+    //   509: aload 7
+    //   511: ifnull +603 -> 1114
+    //   514: aload 7
+    //   516: ldc 254
+    //   518: invokevirtual 260	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   521: ifeq +593 -> 1114
+    //   524: new 262	java/util/zip/GZIPInputStream
+    //   527: dup
+    //   528: aload 9
+    //   530: invokespecial 265	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   533: astore 7
+    //   535: iconst_1
+    //   536: istore_2
+    //   537: new 267	java/io/ByteArrayOutputStream
+    //   540: dup
+    //   541: invokespecial 268	java/io/ByteArrayOutputStream:<init>	()V
+    //   544: astore 8
+    //   546: sipush 1024
+    //   549: newarray byte
+    //   551: astore 10
+    //   553: aload 7
+    //   555: aload 10
+    //   557: invokevirtual 274	java/io/InputStream:read	([B)I
+    //   560: istore_3
+    //   561: iload_3
+    //   562: ifle +22 -> 584
+    //   565: aload 8
+    //   567: aload 10
+    //   569: iconst_0
+    //   570: iload_3
+    //   571: invokevirtual 277	java/io/ByteArrayOutputStream:write	([BII)V
+    //   574: lload 5
+    //   576: iload_3
+    //   577: i2l
+    //   578: ladd
+    //   579: lstore 5
+    //   581: goto -28 -> 553
+    //   584: iload_2
+    //   585: ifeq +200 -> 785
+    //   588: aload 9
+    //   590: invokevirtual 281	java/io/InputStream:markSupported	()Z
+    //   593: ifeq +192 -> 785
+    //   596: aload 9
+    //   598: iconst_1
+    //   599: invokevirtual 284	java/io/InputStream:mark	(I)V
+    //   602: ldc2_w 208
+    //   605: lstore 5
+    //   607: aload 9
+    //   609: aload 10
+    //   611: invokevirtual 274	java/io/InputStream:read	([B)I
+    //   614: istore_2
+    //   615: iload_2
+    //   616: ifle +13 -> 629
+    //   619: lload 5
+    //   621: iload_2
+    //   622: i2l
+    //   623: ladd
+    //   624: lstore 5
+    //   626: goto -19 -> 607
+    //   629: aload_0
+    //   630: getfield 46	com/tencent/mm/sandbox/updater/b$a:ykB	Lcom/tencent/mm/sandbox/b$a;
+    //   633: lload 5
+    //   635: invokeinterface 287 3 0
+    //   640: new 80	com/tencent/mm/pointers/PByteArray
+    //   643: dup
+    //   644: invokespecial 81	com/tencent/mm/pointers/PByteArray:<init>	()V
+    //   647: astore 9
+    //   649: new 80	com/tencent/mm/pointers/PByteArray
+    //   652: dup
+    //   653: invokespecial 81	com/tencent/mm/pointers/PByteArray:<init>	()V
+    //   656: astore 10
+    //   658: new 39	com/tencent/mm/pointers/PInt
+    //   661: dup
+    //   662: invokespecial 40	com/tencent/mm/pointers/PInt:<init>	()V
+    //   665: astore 11
+    //   667: new 39	com/tencent/mm/pointers/PInt
+    //   670: dup
+    //   671: iconst_0
+    //   672: invokespecial 289	com/tencent/mm/pointers/PInt:<init>	(I)V
+    //   675: astore 12
+    //   677: new 39	com/tencent/mm/pointers/PInt
+    //   680: dup
+    //   681: sipush 255
+    //   684: invokespecial 289	com/tencent/mm/pointers/PInt:<init>	(I)V
+    //   687: astore 13
+    //   689: aload 9
+    //   691: aload 8
+    //   693: invokevirtual 290	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   696: aload_0
+    //   697: getfield 24	com/tencent/mm/sandbox/updater/b$a:ykE	Lcom/tencent/mm/sandbox/updater/b;
+    //   700: invokestatic 116	com/tencent/mm/sandbox/updater/b:l	(Lcom/tencent/mm/sandbox/updater/b;)[B
+    //   703: aload 10
+    //   705: aload_0
+    //   706: getfield 42	com/tencent/mm/sandbox/updater/b$a:ykG	Lcom/tencent/mm/pointers/PInt;
+    //   709: aload 11
+    //   711: aload 12
+    //   713: aload 13
+    //   715: invokestatic 294	com/tencent/mm/protocal/MMProtocalJni:unpack	(Lcom/tencent/mm/pointers/PByteArray;[B[BLcom/tencent/mm/pointers/PByteArray;Lcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;)Z
+    //   718: pop
+    //   719: new 296	com/tencent/mm/protocal/protobuf/ara
+    //   722: dup
+    //   723: invokespecial 297	com/tencent/mm/protocal/protobuf/ara:<init>	()V
+    //   726: aload 9
+    //   728: getfield 198	com/tencent/mm/pointers/PByteArray:value	[B
+    //   731: invokevirtual 301	com/tencent/mm/protocal/protobuf/ara:parseFrom	([B)Lcom/tencent/mm/bv/a;
+    //   734: checkcast 296	com/tencent/mm/protocal/protobuf/ara
+    //   737: astore 8
+    //   739: aload_1
+    //   740: ifnull +7 -> 747
+    //   743: aload_1
+    //   744: invokevirtual 222	java/io/OutputStream:close	()V
+    //   747: aload 7
+    //   749: ifnull +8 -> 757
+    //   752: aload 7
+    //   754: invokevirtual 302	java/io/InputStream:close	()V
+    //   757: aload_0
+    //   758: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   761: ifnull +15 -> 776
+    //   764: aload_0
+    //   765: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   768: invokevirtual 225	com/tencent/mm/network/v:disconnect	()V
+    //   771: aload_0
+    //   772: aconst_null
+    //   773: putfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   776: sipush 28847
+    //   779: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   782: aload 8
+    //   784: areturn
+    //   785: aload_0
+    //   786: getfield 46	com/tencent/mm/sandbox/updater/b$a:ykB	Lcom/tencent/mm/sandbox/b$a;
+    //   789: lload 5
+    //   791: invokeinterface 287 3 0
+    //   796: goto -156 -> 640
+    //   799: astore 9
+    //   801: aload 7
+    //   803: astore 8
+    //   805: aload_1
+    //   806: astore 7
+    //   808: aload 8
+    //   810: astore_1
+    //   811: aload 9
+    //   813: astore 8
+    //   815: ldc 57
+    //   817: ldc_w 304
+    //   820: iconst_1
+    //   821: anewarray 229	java/lang/Object
+    //   824: dup
+    //   825: iconst_0
+    //   826: aload 8
+    //   828: invokevirtual 232	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   831: aastore
+    //   832: invokestatic 236	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   835: ldc 57
+    //   837: aload 8
+    //   839: ldc 238
+    //   841: iconst_0
+    //   842: anewarray 229	java/lang/Object
+    //   845: invokestatic 242	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   848: aload_0
+    //   849: iconst_m1
+    //   850: putfield 37	com/tencent/mm/sandbox/updater/b$a:ykF	I
+    //   853: aload 7
+    //   855: ifnull +8 -> 863
+    //   858: aload 7
+    //   860: invokevirtual 222	java/io/OutputStream:close	()V
+    //   863: aload_1
+    //   864: ifnull +7 -> 871
+    //   867: aload_1
+    //   868: invokevirtual 302	java/io/InputStream:close	()V
+    //   871: aload_0
+    //   872: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   875: ifnull +15 -> 890
+    //   878: aload_0
+    //   879: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   882: invokevirtual 225	com/tencent/mm/network/v:disconnect	()V
+    //   885: aload_0
+    //   886: aconst_null
+    //   887: putfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   890: sipush 28847
+    //   893: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   896: aconst_null
+    //   897: areturn
+    //   898: astore_1
+    //   899: ldc 57
+    //   901: aload_1
+    //   902: ldc 238
+    //   904: iconst_0
+    //   905: anewarray 229	java/lang/Object
+    //   908: invokestatic 242	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   911: goto -164 -> 747
+    //   914: astore_1
+    //   915: ldc 57
+    //   917: aload_1
+    //   918: ldc 238
+    //   920: iconst_0
+    //   921: anewarray 229	java/lang/Object
+    //   924: invokestatic 242	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   927: goto -170 -> 757
+    //   930: astore 7
+    //   932: ldc 57
+    //   934: aload 7
+    //   936: ldc 238
+    //   938: iconst_0
+    //   939: anewarray 229	java/lang/Object
+    //   942: invokestatic 242	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   945: goto -82 -> 863
+    //   948: astore_1
+    //   949: ldc 57
+    //   951: aload_1
+    //   952: ldc 238
+    //   954: iconst_0
+    //   955: anewarray 229	java/lang/Object
+    //   958: invokestatic 242	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   961: goto -90 -> 871
+    //   964: astore_1
+    //   965: aload 9
+    //   967: astore 7
+    //   969: aload 7
+    //   971: ifnull +8 -> 979
+    //   974: aload 7
+    //   976: invokevirtual 222	java/io/OutputStream:close	()V
+    //   979: aload 8
+    //   981: ifnull +8 -> 989
+    //   984: aload 8
+    //   986: invokevirtual 302	java/io/InputStream:close	()V
+    //   989: aload_0
+    //   990: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   993: ifnull +15 -> 1008
+    //   996: aload_0
+    //   997: getfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   1000: invokevirtual 225	com/tencent/mm/network/v:disconnect	()V
+    //   1003: aload_0
+    //   1004: aconst_null
+    //   1005: putfield 35	com/tencent/mm/sandbox/updater/b$a:pKE	Lcom/tencent/mm/network/v;
+    //   1008: sipush 28847
+    //   1011: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1014: aload_1
+    //   1015: athrow
+    //   1016: astore 7
+    //   1018: ldc 57
+    //   1020: aload 7
+    //   1022: ldc 238
+    //   1024: iconst_0
+    //   1025: anewarray 229	java/lang/Object
+    //   1028: invokestatic 242	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1031: goto -52 -> 979
+    //   1034: astore 7
+    //   1036: ldc 57
+    //   1038: aload 7
+    //   1040: ldc 238
+    //   1042: iconst_0
+    //   1043: anewarray 229	java/lang/Object
+    //   1046: invokestatic 242	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1049: goto -60 -> 989
+    //   1052: astore 9
+    //   1054: aload_1
+    //   1055: astore 7
+    //   1057: aload 9
+    //   1059: astore_1
+    //   1060: goto -91 -> 969
+    //   1063: astore 8
+    //   1065: aload_1
+    //   1066: astore 9
+    //   1068: aload 8
+    //   1070: astore_1
+    //   1071: aload 7
+    //   1073: astore 8
+    //   1075: aload 9
+    //   1077: astore 7
+    //   1079: goto -110 -> 969
+    //   1082: astore 9
+    //   1084: aload_1
+    //   1085: astore 8
+    //   1087: aload 9
+    //   1089: astore_1
+    //   1090: goto -121 -> 969
+    //   1093: astore 8
+    //   1095: aconst_null
+    //   1096: astore_1
+    //   1097: goto -282 -> 815
+    //   1100: astore 8
+    //   1102: aconst_null
+    //   1103: astore 9
+    //   1105: aload_1
+    //   1106: astore 7
+    //   1108: aload 9
+    //   1110: astore_1
+    //   1111: goto -296 -> 815
+    //   1114: iconst_0
+    //   1115: istore_2
+    //   1116: aload 9
+    //   1118: astore 7
+    //   1120: goto -583 -> 537
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1073	0	this	a
-    //   0	1073	1	paramVarArgs	alm[]
-    //   58	1008	2	i	int
-    //   103	430	3	j	int
-    //   463	283	4	l	long
-    //   80	735	6	localObject1	java.lang.Object
-    //   883	5	6	localIOException1	java.io.IOException
-    //   920	8	6	localObject2	java.lang.Object
-    //   966	5	6	localIOException2	java.io.IOException
-    //   984	5	6	localIOException3	java.io.IOException
-    //   1005	64	6	localObject3	java.lang.Object
-    //   89	849	7	localObject4	java.lang.Object
-    //   1013	6	7	localObject5	java.lang.Object
-    //   1023	13	7	localObject6	java.lang.Object
-    //   1043	1	7	localException1	java.lang.Exception
-    //   1050	1	7	localException2	java.lang.Exception
-    //   94	589	8	localObject7	java.lang.Object
-    //   755	164	8	localException3	java.lang.Exception
-    //   1002	6	8	localObject8	java.lang.Object
-    //   1016	10	8	arrayOfalm	alm[]
-    //   1032	6	8	localObject9	java.lang.Object
-    //   1053	14	8	localObject10	java.lang.Object
-    //   54	606	9	localObject11	java.lang.Object
-    //   111	555	10	localObject12	java.lang.Object
-    //   631	37	11	localPInt1	PInt
-    //   643	27	12	localPInt2	PInt
+    //   0	1123	0	this	a
+    //   0	1123	1	paramVarArgs	aqz[]
+    //   68	1048	2	i	int
+    //   88	489	3	j	int
+    //   84	19	4	k	int
+    //   507	283	5	l	long
+    //   179	680	7	localObject1	java.lang.Object
+    //   930	5	7	localIOException1	java.io.IOException
+    //   967	8	7	localException1	java.lang.Exception
+    //   1016	5	7	localIOException2	java.io.IOException
+    //   1034	5	7	localIOException3	java.io.IOException
+    //   1055	64	7	localObject2	java.lang.Object
+    //   182	803	8	localObject3	java.lang.Object
+    //   1063	6	8	localObject4	java.lang.Object
+    //   1073	13	8	localObject5	java.lang.Object
+    //   1093	1	8	localException2	java.lang.Exception
+    //   1100	1	8	localException3	java.lang.Exception
+    //   176	551	9	localObject6	java.lang.Object
+    //   799	167	9	localException4	java.lang.Exception
+    //   1052	6	9	localObject7	java.lang.Object
+    //   1066	10	9	arrayOfaqz	aqz[]
+    //   1082	6	9	localObject8	java.lang.Object
+    //   1103	14	9	localObject9	java.lang.Object
+    //   64	640	10	localObject10	java.lang.Object
+    //   665	45	11	localPInt1	PInt
+    //   675	37	12	localPInt2	PInt
+    //   687	27	13	localPInt3	PInt
     // Exception table:
     //   from	to	target	type
-    //   68	140	391	java/lang/Exception
-    //   363	367	424	java/io/IOException
-    //   493	509	755	java/lang/Exception
-    //   509	517	755	java/lang/Exception
-    //   521	530	755	java/lang/Exception
-    //   544	558	755	java/lang/Exception
-    //   563	571	755	java/lang/Exception
-    //   585	596	755	java/lang/Exception
-    //   596	695	755	java/lang/Exception
-    //   741	752	755	java/lang/Exception
-    //   699	703	851	java/io/IOException
-    //   708	713	867	java/io/IOException
-    //   814	819	883	java/io/IOException
-    //   823	827	901	java/io/IOException
-    //   149	303	917	finally
-    //   927	932	966	java/io/IOException
-    //   937	942	984	java/io/IOException
-    //   303	352	1002	finally
-    //   440	460	1002	finally
-    //   470	491	1002	finally
-    //   493	509	1013	finally
-    //   509	517	1013	finally
-    //   521	530	1013	finally
-    //   544	558	1013	finally
-    //   563	571	1013	finally
-    //   585	596	1013	finally
-    //   596	695	1013	finally
-    //   741	752	1013	finally
-    //   771	809	1032	finally
-    //   149	303	1043	java/lang/Exception
-    //   303	352	1050	java/lang/Exception
-    //   440	460	1050	java/lang/Exception
-    //   470	491	1050	java/lang/Exception
+    //   78	83	429	java/lang/Exception
+    //   89	102	429	java/lang/Exception
+    //   105	131	429	java/lang/Exception
+    //   131	175	429	java/lang/Exception
+    //   398	402	468	java/io/IOException
+    //   537	553	799	java/lang/Exception
+    //   553	561	799	java/lang/Exception
+    //   565	574	799	java/lang/Exception
+    //   588	602	799	java/lang/Exception
+    //   607	615	799	java/lang/Exception
+    //   629	640	799	java/lang/Exception
+    //   640	739	799	java/lang/Exception
+    //   785	796	799	java/lang/Exception
+    //   743	747	898	java/io/IOException
+    //   752	757	914	java/io/IOException
+    //   858	863	930	java/io/IOException
+    //   867	871	948	java/io/IOException
+    //   184	338	964	finally
+    //   974	979	1016	java/io/IOException
+    //   984	989	1034	java/io/IOException
+    //   338	387	1052	finally
+    //   484	504	1052	finally
+    //   514	535	1052	finally
+    //   537	553	1063	finally
+    //   553	561	1063	finally
+    //   565	574	1063	finally
+    //   588	602	1063	finally
+    //   607	615	1063	finally
+    //   629	640	1063	finally
+    //   640	739	1063	finally
+    //   785	796	1063	finally
+    //   815	853	1082	finally
+    //   184	338	1093	java/lang/Exception
+    //   338	387	1100	java/lang/Exception
+    //   484	504	1100	java/lang/Exception
+    //   514	535	1100	java/lang/Exception
   }
   
   protected final void onCancelled()
   {
-    y.d("MicroMsg.NetSceneGetUpdatePack", "task had been cancelled.");
-    if (this.nfp != null) {
-      this.nfp.aRG.disconnect();
+    AppMethodBeat.i(28848);
+    ab.d("MicroMsg.NetSceneGetUpdatePack", "task had been cancelled.");
+    if (this.pKE != null) {
+      this.pKE.disconnect();
     }
+    AppMethodBeat.o(28848);
   }
 }
 

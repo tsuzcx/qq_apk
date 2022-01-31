@@ -1,5 +1,6 @@
 package com.tencent.mm.vending.h;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vending.f.a;
 
 public final class c
@@ -7,26 +8,35 @@ public final class c
 {
   public c()
   {
+    AppMethodBeat.i(126127);
     a.printErrStackTrace("Vending.NoLooperScheduler", new Exception("This is not a handler thread!"), "This is not a handler thread!", new Object[0]);
+    AppMethodBeat.o(126127);
   }
   
   public final void cancel() {}
   
   public final String getType()
   {
-    return Thread.currentThread().toString();
+    AppMethodBeat.i(126130);
+    String str = Thread.currentThread().toString();
+    AppMethodBeat.o(126130);
+    return str;
   }
   
-  public final void j(Runnable paramRunnable, long paramLong)
+  public final void n(Runnable paramRunnable, long paramLong)
   {
+    AppMethodBeat.i(126129);
     a.w("Vending.NoLooperScheduler", "This is not a handler thread!", new Object[0]);
     paramRunnable.run();
+    AppMethodBeat.o(126129);
   }
   
-  public final void k(Runnable paramRunnable)
+  public final void o(Runnable paramRunnable)
   {
+    AppMethodBeat.i(126128);
     a.w("Vending.NoLooperScheduler", "This is not a handler thread!", new Object[0]);
     paramRunnable.run();
+    AppMethodBeat.o(126128);
   }
 }
 

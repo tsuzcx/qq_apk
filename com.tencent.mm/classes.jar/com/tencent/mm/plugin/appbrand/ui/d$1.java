@@ -3,20 +3,23 @@ package com.tencent.mm.plugin.appbrand.ui;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.i;
 
-final class d$1
+public final class d$1
   implements DialogInterface.OnCancelListener
 {
-  d$1(Context paramContext, i parami) {}
+  public d$1(Context paramContext, i parami) {}
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
+    AppMethodBeat.i(132988);
     if ((this.val$context instanceof MMActivity)) {
       ((MMActivity)this.val$context).finish();
     }
-    this.hde.setOnCancelListener(null);
+    this.iMU.setOnCancelListener(null);
+    AppMethodBeat.o(132988);
   }
 }
 

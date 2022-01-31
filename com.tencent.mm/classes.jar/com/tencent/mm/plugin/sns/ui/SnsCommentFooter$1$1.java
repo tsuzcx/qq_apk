@@ -1,23 +1,31 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mm.plugin.sns.i.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.tools.b.c.a;
+import com.tencent.mm.ui.widget.MMEditText;
 
 final class SnsCommentFooter$1$1
-  implements Animation.AnimationListener
+  implements c.a
 {
   SnsCommentFooter$1$1(SnsCommentFooter.1 param1) {}
   
-  public final void onAnimationEnd(Animation paramAnimation)
+  public final void JU() {}
+  
+  public final void kY(String paramString)
   {
-    SnsCommentFooter.q(this.oXR.oXQ).setImageResource(i.e.chatting_setmode_heart_btn);
+    AppMethodBeat.i(38873);
+    this.rQl.rQj.abT(SnsCommentFooter.b(this.rQl.rQk).getText().toString());
+    SnsCommentFooter.b(this.rQl.rQk).setText("");
+    AppMethodBeat.o(38873);
   }
   
-  public final void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public final void onAnimationStart(Animation paramAnimation) {}
+  public final void vn()
+  {
+    AppMethodBeat.i(38874);
+    h.h(SnsCommentFooter.h(this.rQl.rQk), 2131304037, 2131304038);
+    AppMethodBeat.o(38874);
+  }
 }
 
 

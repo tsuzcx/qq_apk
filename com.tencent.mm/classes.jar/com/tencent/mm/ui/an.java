@@ -1,50 +1,81 @@
 package com.tencent.mm.ui;
 
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.Drawable;
+import android.graphics.Point;
+import android.os.Build.VERSION;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Method;
 
 public final class an
 {
-  public static boolean Gf(int paramInt)
+  @TargetApi(17)
+  public static boolean hO(Context paramContext)
   {
-    return 1.0D - (0.299D * Color.red(paramInt) + 0.587D * Color.green(paramInt) + 0.114D * Color.blue(paramInt)) / 255.0D >= 0.3D;
-  }
-  
-  public static Drawable an(Context paramContext, int paramInt)
-  {
-    paramContext = paramContext.getResources().getDrawable(paramInt);
-    paramContext.setColorFilter(new PorterDuffColorFilter(-1, PorterDuff.Mode.SRC_ATOP));
-    return paramContext;
-  }
-  
-  private static int b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    if (paramInt5 == 0) {
-      return 0;
-    }
-    return (paramInt1 * 255 * paramInt2 + paramInt3 * paramInt4 * (255 - paramInt2)) / (paramInt5 * 255);
-  }
-  
-  public static int fm(int paramInt1, int paramInt2)
-  {
-    if ((paramInt2 < 0) || (paramInt2 > 100))
+    AppMethodBeat.i(112500);
+    Display localDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    Point localPoint = new Point();
+    localDisplay.getSize(localPoint);
+    paramContext = hQ(paramContext);
+    int i = Math.max(localPoint.y, localPoint.x);
+    if (Math.max(paramContext.y, paramContext.x) > i)
     {
-      ao.v("alpha must be between 0 and 100", new Object[0]);
-      return paramInt1;
+      AppMethodBeat.o(112500);
+      return true;
     }
-    return 0xFFFFFF & paramInt1 | (int)(paramInt2 * 0.01D * 255.0D) << 24;
+    AppMethodBeat.o(112500);
+    return false;
   }
   
-  public static int n(int paramInt1, int paramInt2)
+  public static Point hQ(Context paramContext)
   {
-    int i = Color.alpha(paramInt2);
-    int j = Color.alpha(paramInt1);
-    int k = 255 - (255 - i) * (255 - j) / 255;
-    return Color.argb(k, b(Color.red(paramInt1), j, Color.red(paramInt2), i, k), b(Color.green(paramInt1), j, Color.green(paramInt2), i, k), b(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
+    AppMethodBeat.i(112499);
+    Point localPoint = new Point();
+    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    if (Build.VERSION.SDK_INT >= 17) {
+      paramContext.getRealSize(localPoint);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(112499);
+      return localPoint;
+      if (Build.VERSION.SDK_INT >= 14) {
+        try
+        {
+          Method localMethod = Display.class.getMethod("getRawHeight", new Class[0]);
+          localPoint.x = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
+          localPoint.y = ((Integer)localMethod.invoke(paramContext, new Object[0])).intValue();
+        }
+        catch (Exception localException) {}
+      } else {
+        paramContext.getSize(localPoint);
+      }
+    }
+  }
+  
+  public static int lT(String paramString)
+  {
+    AppMethodBeat.i(112501);
+    if (paramString != null) {}
+    try
+    {
+      if (paramString.length() <= 0)
+      {
+        AppMethodBeat.o(112501);
+        return 0;
+      }
+      int i = Integer.decode(paramString).intValue();
+      AppMethodBeat.o(112501);
+      return i;
+    }
+    catch (NumberFormatException paramString)
+    {
+      ak.printErrStackTrace("WeUIUtil", paramString, "", new Object[0]);
+      AppMethodBeat.o(112501);
+    }
+    return 0;
   }
 }
 

@@ -1,20 +1,26 @@
 package com.tencent.mm.ui.base;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class MMViewPager$j
   extends MMViewPager.a
 {
-  float[] kLk = new float[9];
+  float[] nhN;
   
   public MMViewPager$j(MMViewPager paramMMViewPager)
   {
     super(paramMMViewPager);
+    AppMethodBeat.i(106918);
+    this.nhN = new float[9];
+    AppMethodBeat.o(106918);
   }
   
   public final void play()
   {
-    MMViewPager.c(this.uZn).post(new MMViewPager.j.1(this));
+    AppMethodBeat.i(106919);
+    MMViewPager.c(this.znE).post(new MMViewPager.j.1(this));
+    AppMethodBeat.o(106919);
   }
 }
 

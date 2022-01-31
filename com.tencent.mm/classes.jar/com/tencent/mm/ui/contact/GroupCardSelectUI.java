@@ -1,36 +1,24 @@
 package com.tencent.mm.ui.contact;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.m;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.t;
+import com.tencent.mm.n.a;
 import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.q.b;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -39,33 +27,58 @@ import java.util.List;
 public class GroupCardSelectUI
   extends MMActivity
 {
+  private List<String> AcR = null;
+  private boolean AcS = false;
+  private boolean AcT = true;
+  private boolean AcU;
+  private int AcV;
+  private ListView AcW;
+  private l AcX;
+  private HashMap<String, Long> AcY;
   private TextView emptyTipTv;
-  private List<ad> maY;
-  private boolean vLp = true;
-  private boolean vLq;
-  private boolean vLr = false;
-  private List<String> vLs = null;
-  private int vLt;
-  private ListView vLu;
-  private a vLv;
-  private HashMap<String, Long> vLw;
+  private List<ad> oBz;
+  
+  private void Km()
+  {
+    AppMethodBeat.i(33741);
+    StringBuilder localStringBuilder;
+    if (this.AcS)
+    {
+      localStringBuilder = new StringBuilder().append(getString(2131297018));
+      if (this.AcR.size() <= 0) {
+        break label85;
+      }
+    }
+    label85:
+    for (String str = String.format("(%s)", new Object[] { Integer.valueOf(this.AcR.size()) });; str = "")
+    {
+      updateOptionMenuText(1, str);
+      AppMethodBeat.o(33741);
+      return;
+    }
+  }
   
   private void a(int paramInt, ad paramad, long paramLong)
   {
+    AppMethodBeat.i(33740);
     int i = 0;
-    while ((i < paramInt) && (paramLong <= ((Long)this.vLw.get(((ad)this.maY.get(i)).field_username)).longValue())) {
+    while ((i < paramInt) && (paramLong <= ((Long)this.AcY.get(((ad)this.oBz.get(i)).field_username)).longValue())) {
       i += 1;
     }
-    this.maY.add(i, paramad);
+    this.oBz.add(i, paramad);
+    AppMethodBeat.o(33740);
   }
   
-  private void cHC()
+  private void dLU()
   {
-    au.Hx();
-    this.vLw = c.FB().cuE();
-    this.maY = new LinkedList();
-    List localList = com.tencent.mm.model.s.GV();
-    if (localList.size() == 0) {
+    AppMethodBeat.i(33739);
+    aw.aaz();
+    this.AcY = c.YF().dxe();
+    this.oBz = new LinkedList();
+    List localList = t.ZX();
+    if (localList.size() == 0)
+    {
+      AppMethodBeat.o(33739);
       return;
     }
     Iterator localIterator = localList.iterator();
@@ -73,64 +86,49 @@ public class GroupCardSelectUI
     while (localIterator.hasNext())
     {
       ad localad = (ad)localIterator.next();
-      if (!this.vLw.containsKey(localad.field_username))
+      if (!this.AcY.containsKey(localad.field_username))
       {
-        if (!com.tencent.mm.n.a.gR(localad.field_type)) {
-          break label150;
+        if (!a.je(localad.field_type)) {
+          break label165;
         }
-        this.maY.add(localad);
+        this.oBz.add(localad);
       }
       else
       {
-        a(i, localad, ((Long)this.vLw.get(localad.field_username)).longValue());
+        a(i, localad, ((Long)this.AcY.get(localad.field_username)).longValue());
         i += 1;
       }
     }
-    label150:
+    label165:
     for (;;)
     {
       break;
       localList.clear();
+      AppMethodBeat.o(33739);
       return;
     }
   }
   
-  private void xU()
+  public int getLayoutId()
   {
-    StringBuilder localStringBuilder;
-    if (this.vLr)
-    {
-      localStringBuilder = new StringBuilder().append(getString(R.l.app_ok));
-      if (this.vLs.size() <= 0) {
-        break label77;
-      }
-    }
-    label77:
-    for (String str = String.format("(%s)", new Object[] { Integer.valueOf(this.vLs.size()) });; str = "")
-    {
-      updateOptionMenuText(1, str);
-      return;
-    }
+    return 2130969850;
   }
   
-  protected final int getLayoutId()
+  public void initView()
   {
-    return R.i.group_card_select;
-  }
-  
-  protected final void initView()
-  {
-    this.vLu = ((ListView)findViewById(R.h.group_card_select_list));
-    this.vLv = new a();
-    this.vLu.setAdapter(this.vLv);
-    this.vLu.setOnItemClickListener(new GroupCardSelectUI.1(this));
-    this.emptyTipTv = ((TextView)findViewById(R.h.group_card_empty_tip_tv));
-    if (this.vLv.getCount() <= 0) {
+    AppMethodBeat.i(33738);
+    this.AcW = ((ListView)findViewById(2131824831));
+    this.AcX = new l(getApplicationContext(), this.oBz, this.AcR, this.AcS);
+    this.AcW.setAdapter(this.AcX);
+    this.AcW.setOnItemClickListener(new GroupCardSelectUI.1(this));
+    this.emptyTipTv = ((TextView)findViewById(2131824832));
+    if (this.AcX.getCount() <= 0) {
       this.emptyTipTv.setVisibility(0);
     }
     for (;;)
     {
       setBackBtn(new GroupCardSelectUI.2(this));
+      AppMethodBeat.o(33738);
       return;
       this.emptyTipTv.setVisibility(8);
     }
@@ -138,121 +136,69 @@ public class GroupCardSelectUI
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(33734);
     super.onCreate(paramBundle);
-    setMMTitle(getString(R.l.address_select_group_card));
-    this.vLp = getIntent().getBooleanExtra("group_select_type", true);
-    this.vLq = getIntent().getBooleanExtra("group_select_need_result", false);
-    this.vLr = getIntent().getBooleanExtra("group_multi_select", false);
-    if (this.vLr)
+    setMMTitle(getString(2131296493));
+    this.AcT = getIntent().getBooleanExtra("group_select_type", true);
+    this.AcU = getIntent().getBooleanExtra("group_select_need_result", false);
+    this.AcS = getIntent().getBooleanExtra("group_multi_select", false);
+    if (this.AcS)
     {
       paramBundle = getIntent().getStringExtra("already_select_contact");
-      if (!bk.bl(paramBundle)) {
-        break label161;
+      if (!bo.isNullOrNil(paramBundle)) {
+        break label173;
       }
     }
-    label161:
-    for (this.vLs = new LinkedList();; this.vLs = ah.h(paramBundle.split(",")))
+    label173:
+    for (this.AcR = new LinkedList();; this.AcR = ah.h(paramBundle.split(",")))
     {
-      this.vLt = getIntent().getIntExtra("max_limit_num", 0);
-      cHC();
+      this.AcV = getIntent().getIntExtra("max_limit_num", 0);
+      dLU();
       initView();
-      if (this.vLr)
+      if (this.AcS)
       {
-        a(1, getString(R.l.app_ok), new MenuItem.OnMenuItemClickListener()
-        {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            paramAnonymousMenuItem = new Intent();
-            paramAnonymousMenuItem.putExtra("Select_Conv_User", bk.c(GroupCardSelectUI.e(GroupCardSelectUI.this), ","));
-            GroupCardSelectUI.this.setResult(-1, paramAnonymousMenuItem);
-            GroupCardSelectUI.this.finish();
-            return true;
-          }
-        }, s.b.uNx);
+        addTextOptionMenu(1, getString(2131297018), new GroupCardSelectUI.3(this), null, q.b.zby);
         enableOptionMenu(1, true);
-        xU();
+        Km();
       }
+      AppMethodBeat.o(33734);
       return;
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(33735);
     super.onDestroy();
+    AppMethodBeat.o(33735);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(33737);
     super.onPause();
+    AppMethodBeat.o(33737);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(33736);
     super.onResume();
+    AppMethodBeat.o(33736);
   }
   
-  final class a
-    extends BaseAdapter
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    public a() {}
-    
-    public final int getCount()
-    {
-      return GroupCardSelectUI.c(GroupCardSelectUI.this).size();
-    }
-    
-    public final Object getItem(int paramInt)
-    {
-      return GroupCardSelectUI.c(GroupCardSelectUI.this).get(paramInt);
-    }
-    
-    public final long getItemId(int paramInt)
-    {
-      return 0L;
-    }
-    
-    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-    {
-      ad localad = (ad)GroupCardSelectUI.c(GroupCardSelectUI.this).get(paramInt);
-      if (paramView == null)
-      {
-        paramViewGroup = new GroupCardSelectUI.b(GroupCardSelectUI.this);
-        paramView = View.inflate(GroupCardSelectUI.this, R.i.group_card_select_item, null);
-        paramViewGroup.lCr = ((TextView)paramView.findViewById(R.h.group_card_item_count_tv));
-        paramViewGroup.vLy = ((TextView)paramView.findViewById(R.h.group_card_item_nick));
-        paramViewGroup.ffK = ((ImageView)paramView.findViewById(R.h.group_card_item_avatar_iv));
-        paramViewGroup.mTF = ((CheckBox)paramView.findViewById(R.h.select_cb));
-        paramView.setTag(paramViewGroup);
-        a.b.a(paramViewGroup.ffK, localad.field_username);
-        paramViewGroup.vLy.setText(j.b(GroupCardSelectUI.this, r.gV(localad.field_username), com.tencent.mm.cb.a.aa(GroupCardSelectUI.this.mController.uMN, R.f.NormalTextSize)));
-        paramViewGroup.lCr.setText("(" + m.gM(localad.field_username) + ")");
-        if (!com.tencent.mm.model.s.hb(localad.field_username)) {
-          break label306;
-        }
-        Drawable localDrawable = GroupCardSelectUI.this.getResources().getDrawable(R.k.open_im_main_logo);
-        localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-        paramViewGroup.vLy.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
-      }
-      for (;;)
-      {
-        if (GroupCardSelectUI.d(GroupCardSelectUI.this))
-        {
-          paramViewGroup.mTF.setVisibility(0);
-          if (!GroupCardSelectUI.e(GroupCardSelectUI.this).contains(localad.field_username)) {
-            break label320;
-          }
-          paramViewGroup.mTF.setChecked(true);
-        }
-        return paramView;
-        paramViewGroup = (GroupCardSelectUI.b)paramView.getTag();
-        break;
-        label306:
-        paramViewGroup.vLy.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      }
-      label320:
-      paramViewGroup.mTF.setChecked(false);
-      return paramView;
-    }
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  static final class a
+  {
+    TextView Ada;
+    ImageView gxs;
+    TextView nZD;
+    CheckBox pvL;
   }
 }
 

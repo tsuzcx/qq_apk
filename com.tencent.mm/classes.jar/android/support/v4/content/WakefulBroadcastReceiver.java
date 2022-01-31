@@ -50,7 +50,7 @@ public abstract class WakefulBroadcastReceiver
       if (paramIntent == null) {
         return null;
       }
-      paramContext = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(1, "wake:" + paramIntent.flattenToShortString());
+      paramContext = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(1, "androidx.core:wake:" + paramIntent.flattenToShortString());
       paramContext.setReferenceCounted(false);
       paramContext.acquire(60000L);
       sActiveWakeLocks.put(i, paramContext);
@@ -60,7 +60,7 @@ public abstract class WakefulBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v4.content.WakefulBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

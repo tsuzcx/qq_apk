@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wallet.pay.a.d;
 
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.p;
+import com.tencent.mm.plugin.wallet_core.model.u;
 
 public final class a
-  extends e
+  extends f
 {
-  public a(p paramp, Orders paramOrders)
+  public a(u paramu, Orders paramOrders)
   {
-    super(paramp, paramOrders);
+    super(paramu, paramOrders);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
     return 1675;
   }
@@ -23,7 +23,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.d.a
  * JD-Core Version:    0.7.0.1
  */

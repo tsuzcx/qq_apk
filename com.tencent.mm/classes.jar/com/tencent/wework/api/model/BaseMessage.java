@@ -21,7 +21,7 @@ public abstract class BaseMessage
     return localBundle;
   }
   
-  public static BaseMessage o(Uri paramUri)
+  public static BaseMessage q(Uri paramUri)
   {
     try
     {

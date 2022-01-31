@@ -8,15 +8,16 @@ import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+@Deprecated
 public abstract interface DataApi
 {
   public static final String ACTION_DATA_CHANGED = "com.google.android.gms.wearable.DATA_CHANGED";
   public static final int FILTER_LITERAL = 0;
   public static final int FILTER_PREFIX = 1;
   
-  public abstract PendingResult<Status> addListener(GoogleApiClient paramGoogleApiClient, DataListener paramDataListener);
+  public abstract PendingResult<Status> addListener(GoogleApiClient paramGoogleApiClient, DataApi.DataListener paramDataListener);
   
-  public abstract PendingResult<Status> addListener(GoogleApiClient paramGoogleApiClient, DataListener paramDataListener, Uri paramUri, int paramInt);
+  public abstract PendingResult<Status> addListener(GoogleApiClient paramGoogleApiClient, DataApi.DataListener paramDataListener, Uri paramUri, int paramInt);
   
   public abstract PendingResult<DataApi.DeleteDataItemsResult> deleteDataItems(GoogleApiClient paramGoogleApiClient, Uri paramUri);
   
@@ -36,12 +37,7 @@ public abstract interface DataApi
   
   public abstract PendingResult<DataApi.DataItemResult> putDataItem(GoogleApiClient paramGoogleApiClient, PutDataRequest paramPutDataRequest);
   
-  public abstract PendingResult<Status> removeListener(GoogleApiClient paramGoogleApiClient, DataListener paramDataListener);
-  
-  public static abstract interface DataListener
-  {
-    public abstract void onDataChanged(DataEventBuffer paramDataEventBuffer);
-  }
+  public abstract PendingResult<Status> removeListener(GoogleApiClient paramGoogleApiClient, DataApi.DataListener paramDataListener);
   
   @Retention(RetentionPolicy.SOURCE)
   public static @interface FilterType {}

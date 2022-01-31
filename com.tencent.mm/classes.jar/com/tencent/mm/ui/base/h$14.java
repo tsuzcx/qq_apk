@@ -4,8 +4,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class h$14
   implements View.OnClickListener
@@ -14,22 +13,24 @@ final class h$14
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(106418);
     int i = 0;
-    while (i < this.nTq.getChildCount())
+    while (i < this.qHq.getChildCount())
     {
-      TextView localTextView = (TextView)this.nTq.getChildAt(i);
-      if (localTextView.getId() != a.g.tips_tv) {
-        localTextView.setCompoundDrawablesWithIntrinsicBounds(a.j.radio_off, 0, 0, 0);
+      TextView localTextView = (TextView)this.qHq.getChildAt(i);
+      if (localTextView.getId() != 2131823916) {
+        localTextView.setCompoundDrawablesWithIntrinsicBounds(2131231905, 0, 0, 0);
       }
       i += 1;
     }
-    ((TextView)paramView).setCompoundDrawablesWithIntrinsicBounds(a.j.radio_on, 0, 0, 0);
+    ((TextView)paramView).setCompoundDrawablesWithIntrinsicBounds(2131231906, 0, 0, 0);
     paramView.post(new h.14.1(this, ((Integer)paramView.getTag()).intValue()));
+    AppMethodBeat.o(106418);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.h.14
  * JD-Core Version:    0.7.0.1
  */

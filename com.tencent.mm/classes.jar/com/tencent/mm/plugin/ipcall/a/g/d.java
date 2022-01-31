@@ -1,120 +1,158 @@
 package com.tencent.mm.plugin.ipcall.a.g;
 
 import android.database.Cursor;
-import com.tencent.mm.cf.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
 import com.tencent.mm.plugin.ipcall.b.a;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class d
-  extends i<c>
+  extends j<c>
 {
-  public static final String[] dXp = { i.a(c.buS, "IPCallAddressItem") };
-  public static final String[] lsJ = { "*", "rowid" };
-  public e dXw;
+  public static final String[] SQL_CREATE;
+  private static final String[] nQd;
+  public e db;
+  
+  static
+  {
+    AppMethodBeat.i(21932);
+    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "IPCallAddressItem") };
+    nQd = new String[] { "*", "rowid" };
+    AppMethodBeat.o(21932);
+  }
   
   public d(e parame)
   {
-    super(parame, c.buS, "IPCallAddressItem", null);
-    this.dXw = parame;
+    super(parame, c.info, "IPCallAddressItem", null);
+    this.db = parame;
   }
   
-  private Cursor FD(String paramString)
+  private Cursor Rd(String paramString)
   {
-    return this.dXw.query("IPCallAddressItem", lsJ, "systemAddressBookUsername LIKE ? or sortKey LIKE ?", new String[] { "%" + paramString + "%", "%" + paramString + "%" }, null, null, "upper(sortKey) asc");
+    AppMethodBeat.i(21929);
+    paramString = this.db.query("IPCallAddressItem", nQd, "systemAddressBookUsername LIKE ? or sortKey LIKE ?", new String[] { "%" + paramString + "%", "%" + paramString + "%" }, null, null, "upper(sortKey) asc");
+    AppMethodBeat.o(21929);
+    return paramString;
   }
   
-  public final c FA(String paramString)
+  public final c Ra(String paramString)
   {
-    if (bk.bl(paramString)) {}
-    for (;;)
+    AppMethodBeat.i(21923);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(21923);
       return null;
-      paramString = this.dXw.a("IPCallAddressItem", lsJ, "contactId=?", new String[] { paramString }, null, null, null, 2);
-      try
+    }
+    paramString = this.db.a("IPCallAddressItem", nQd, "contactId=?", new String[] { paramString }, null, null, null, 2);
+    try
+    {
+      if (paramString.moveToFirst())
       {
-        if (paramString.moveToFirst())
-        {
-          c localc = new c();
-          localc.d(paramString);
-          return localc;
-        }
-        return null;
+        c localc = new c();
+        localc.convertFrom(paramString);
+        return localc;
       }
-      catch (Exception localException)
-      {
-        y.e("MicroMsg.IPCallAddressStorage", "getByContactId error: %s", new Object[] { localException.getMessage() });
-        return null;
+      if (paramString != null) {
+        paramString.close();
       }
-      finally
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
+        ab.e("MicroMsg.IPCallAddressStorage", "getByContactId error: %s", new Object[] { localException.getMessage() });
         if (paramString != null) {
           paramString.close();
         }
       }
     }
+    finally
+    {
+      if (paramString == null) {
+        break label151;
+      }
+      paramString.close();
+      AppMethodBeat.o(21923);
+    }
+    AppMethodBeat.o(21923);
+    return null;
   }
   
-  public final c FB(String paramString)
+  public final c Rb(String paramString)
   {
-    if (bk.bl(paramString)) {}
-    for (;;)
+    AppMethodBeat.i(21924);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(21924);
       return null;
-      paramString = this.dXw.a("IPCallAddressItem", lsJ, "systemAddressBookUsername=?", new String[] { paramString }, null, null, null, 2);
-      try
+    }
+    paramString = this.db.a("IPCallAddressItem", nQd, "systemAddressBookUsername=?", new String[] { paramString }, null, null, null, 2);
+    try
+    {
+      if (paramString.moveToFirst())
       {
-        if (paramString.moveToFirst())
-        {
-          c localc = new c();
-          localc.d(paramString);
-          return localc;
-        }
-        return null;
+        c localc = new c();
+        localc.convertFrom(paramString);
+        return localc;
       }
-      catch (Exception localException)
-      {
-        y.d("MicroMsg.IPCallAddressStorage", "getByContactName error: %s", new Object[] { localException.getMessage() });
-        return null;
+      if (paramString != null) {
+        paramString.close();
       }
-      finally
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
+        ab.d("MicroMsg.IPCallAddressStorage", "getByContactName error: %s", new Object[] { localException.getMessage() });
         if (paramString != null) {
           paramString.close();
         }
       }
     }
+    finally
+    {
+      if (paramString == null) {
+        break label151;
+      }
+      paramString.close();
+      AppMethodBeat.o(21924);
+    }
+    AppMethodBeat.o(21924);
+    return null;
   }
   
-  public final Cursor FC(String paramString)
+  public final Cursor Rc(String paramString)
   {
+    AppMethodBeat.i(21928);
     System.currentTimeMillis();
     int i = 0;
     if (i < paramString.length()) {
       if (!Character.isDigit(paramString.charAt(i)))
       {
         i = 0;
-        label27:
+        label33:
         if (i != 0) {
-          break label55;
+          break label67;
         }
       }
     }
-    for (paramString = FD(paramString);; paramString = this.dXw.query("IPCallAddressItem", lsJ, "contactId IN " + paramString, null, null, null, "upper(sortKey) asc"))
+    for (paramString = Rd(paramString);; paramString = this.db.query("IPCallAddressItem", nQd, "contactId IN ".concat(String.valueOf(paramString)), null, null, null, "upper(sortKey) asc"))
     {
       System.currentTimeMillis();
+      AppMethodBeat.o(21928);
       return paramString;
       i += 1;
       break;
       i = 1;
-      break label27;
-      label55:
-      Object localObject1 = a.Gg(paramString);
-      paramString = FD(paramString);
+      break label33;
+      label67:
+      Object localObject1 = a.RI(paramString);
+      paramString = Rd(paramString);
       try
       {
         if (paramString.moveToFirst()) {
@@ -129,7 +167,7 @@ public final class d
       }
       catch (Exception localException)
       {
-        y.e("MicroMsg.IPCallAddressStorage", "getContactIdList error: %s", new Object[] { localException.getMessage() });
+        ab.e("MicroMsg.IPCallAddressStorage", "getContactIdList error: %s", new Object[] { localException.getMessage() });
         if (paramString != null) {
           paramString.close();
         }
@@ -149,6 +187,7 @@ public final class d
         if (paramString != null) {
           paramString.close();
         }
+        AppMethodBeat.o(21928);
       }
       String str1;
       if (paramString.lastIndexOf(",") >= 0) {
@@ -158,104 +197,113 @@ public final class d
     }
   }
   
-  public final ArrayList<c> bcN()
+  public final ArrayList<c> bJU()
   {
-    Object localObject1 = null;
-    localCursor = this.dXw.a("IPCallAddressItem", lsJ, null, null, null, null, null, 2);
+    AppMethodBeat.i(21926);
+    Cursor localCursor = this.db.a("IPCallAddressItem", nQd, null, null, null, null, null, 2);
     if (localCursor != null) {}
-    while (localCursor == null)
+    try
     {
-      try
+      if (localCursor.moveToFirst())
       {
-        if (!localCursor.moveToFirst()) {
-          continue;
-        }
         ArrayList localArrayList = new ArrayList();
         boolean bool;
         do
         {
           c localc = new c();
-          localc.d(localCursor);
+          localc.convertFrom(localCursor);
           localArrayList.add(localc);
           bool = localCursor.moveToNext();
         } while (bool);
-        if (localCursor != null) {
-          localCursor.close();
-        }
-        localObject1 = localArrayList;
+        return localArrayList;
       }
-      catch (Exception localException)
-      {
-        y.e("MicroMsg.IPCallAddressStorage", "getAllAddress, error: %s", new Object[] { localException.getMessage() });
-        return null;
-      }
-      finally
-      {
-        if (localCursor == null) {
-          break;
-        }
-        localCursor.close();
-      }
-      return localObject1;
+      return null;
     }
-    localCursor.close();
-    return null;
-  }
-  
-  public final c eU(long paramLong)
-  {
-    Object localObject1 = null;
-    localCursor = this.dXw.a("IPCallAddressItem", lsJ, "rowid=?", new String[] { String.valueOf(paramLong) }, null, null, null, 2);
-    do
+    catch (Exception localException)
     {
-      try
+      ab.e("MicroMsg.IPCallAddressStorage", "getAllAddress, error: %s", new Object[] { localException.getMessage() });
+      return null;
+    }
+    finally
+    {
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      AppMethodBeat.o(21926);
+    }
+  }
+  
+  public final Cursor bJV()
+  {
+    AppMethodBeat.i(21927);
+    Cursor localCursor = this.db.query("IPCallAddressItem", nQd, null, null, null, null, "upper(sortKey) asc");
+    AppMethodBeat.o(21927);
+    return localCursor;
+  }
+  
+  public final c kq(long paramLong)
+  {
+    AppMethodBeat.i(21925);
+    localCursor = this.db.a("IPCallAddressItem", nQd, "rowid=?", new String[] { String.valueOf(paramLong) }, null, null, null, 2);
+    try
+    {
+      if (localCursor.moveToFirst())
       {
-        if (!localCursor.moveToFirst()) {
-          continue;
-        }
         c localc = new c();
-        localc.d(localCursor);
+        localc.convertFrom(localCursor);
+        return localc;
+      }
+      if (localCursor != null) {
+        localCursor.close();
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ab.d("MicroMsg.IPCallAddressStorage", "getByLocalId error: %s", new Object[] { localException.getMessage() });
         if (localCursor != null) {
           localCursor.close();
         }
-        localObject1 = localc;
       }
-      catch (Exception localException)
-      {
-        y.d("MicroMsg.IPCallAddressStorage", "getByLocalId error: %s", new Object[] { localException.getMessage() });
-        return null;
+    }
+    finally
+    {
+      if (localCursor == null) {
+        break label145;
       }
-      finally
-      {
-        if (localCursor == null) {
-          break;
-        }
-        localCursor.close();
-      }
-      return localObject1;
-    } while (localCursor == null);
-    localCursor.close();
+      localCursor.close();
+      AppMethodBeat.o(21925);
+    }
+    AppMethodBeat.o(21925);
     return null;
   }
   
-  public final long eV(long paramLong)
+  public final long kr(long paramLong)
   {
-    if ((this.dXw instanceof h)) {
-      return ((h)this.dXw).eV(paramLong);
+    AppMethodBeat.i(21930);
+    if ((this.db instanceof h))
+    {
+      paramLong = ((h)this.db).kr(paramLong);
+      AppMethodBeat.o(21930);
+      return paramLong;
     }
+    AppMethodBeat.o(21930);
     return -1L;
   }
   
-  public final void eW(long paramLong)
+  public final void ks(long paramLong)
   {
-    if (((this.dXw instanceof h)) && (paramLong != -1L)) {
-      ((h)this.dXw).hI(paramLong);
+    AppMethodBeat.i(21931);
+    if (((this.db instanceof h)) && (paramLong != -1L)) {
+      ((h)this.db).nY(paramLong);
     }
+    AppMethodBeat.o(21931);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.g.d
  * JD-Core Version:    0.7.0.1
  */

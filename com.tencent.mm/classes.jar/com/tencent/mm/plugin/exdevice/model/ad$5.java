@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.exdevice.model;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.plugin.exdevice.f.b.b.e;
 
 final class ad$5
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return e.dXp;
+    return e.SQL_CREATE;
   }
 }
 

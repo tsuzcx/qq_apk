@@ -1,17 +1,29 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
-import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 final class AppBrandCameraView$3
-  implements MMSightRecordView.a
+  implements MMSightRecordView.c
 {
   AppBrandCameraView$3(AppBrandCameraView paramAppBrandCameraView) {}
   
-  public final void n(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void aCM()
   {
-    if (AppBrandCameraView.c(this.goS) != null) {
-      AppBrandCameraView.c(this.goS).n(paramArrayOfByte, paramInt1, paramInt2);
-    }
+    AppMethodBeat.i(130911);
+    AppBrandCameraView.c(this.hIQ);
+    ab.i("MicroMsg.AppBrandCameraView", "InitDoneCallback");
+    f localf = new f();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cameraId", Integer.valueOf(AppBrandCameraView.a(this.hIQ)));
+    localf.BN(new JSONObject(localHashMap).toString());
+    AppBrandCameraView.b(this.hIQ).b(localf);
+    AppMethodBeat.o(130911);
   }
 }
 

@@ -1,39 +1,41 @@
 package com.tencent.mm.plugin.base.stub;
 
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.modelsimple.aa;
-import com.tencent.mm.pluginsdk.d.a;
-import com.tencent.mm.protocal.c.byy;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.pluginsdk.e.a;
+import com.tencent.mm.protocal.protobuf.clr;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 
 final class WXBizEntryActivity$4
-  implements d.a
+  implements e.a
 {
   WXBizEntryActivity$4(WXBizEntryActivity paramWXBizEntryActivity) {}
   
   public final void a(int paramInt1, int paramInt2, String paramString, m paramm, boolean paramBoolean)
   {
-    y.i("MicroMsg.WXBizEntryActivity", "DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean) });
-    if ((paramm != null) && (paramInt1 != 0) && (paramInt2 != 0) && ((paramm instanceof aa)))
+    AppMethodBeat.i(18140);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WXBizEntryActivity", "DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean) });
+    if ((paramm != null) && (paramInt1 != 0) && (paramInt2 != 0) && ((paramm instanceof com.tencent.mm.modelsimple.ab)))
     {
-      paramString = ((aa)paramm).QR();
-      if ((paramString != null) && (!this.hSd.isFinishing()))
+      paramString = ((com.tencent.mm.modelsimple.ab)paramm).ajY();
+      if ((paramString != null) && (!this.jLI.isFinishing()))
       {
-        h.a(this.hSd, bk.pm(paramString.tOY), this.hSd.getString(R.l.app_tip), this.hSd.getString(R.l.app_ok), false, new WXBizEntryActivity.4.1(this));
+        h.a(this.jLI, bo.nullAsNil(paramString.xVH), this.jLI.getString(2131297087), this.jLI.getString(2131297018), false, new WXBizEntryActivity.4.1(this));
+        AppMethodBeat.o(18140);
         return;
       }
-      this.hSd.finish();
+      this.jLI.finish();
+      AppMethodBeat.o(18140);
       return;
     }
-    this.hSd.finish();
+    this.jLI.finish();
+    AppMethodBeat.o(18140);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.WXBizEntryActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.eclipsesource.v8.debug.mirror;
 
 import com.eclipsesource.v8.V8Object;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class StringMirror
   extends ValueMirror
@@ -17,7 +18,10 @@ public class StringMirror
   
   public String toString()
   {
-    return this.v8Object.executeStringFunction("toText", null);
+    AppMethodBeat.i(74910);
+    String str = this.v8Object.executeStringFunction("toText", null);
+    AppMethodBeat.o(74910);
+    return str;
   }
 }
 

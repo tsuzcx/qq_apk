@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.b.c;
 import com.tencent.mm.plugin.product.c.h;
 import com.tencent.mm.plugin.product.c.m;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -25,27 +24,37 @@ public final class i
   extends BaseAdapter
 {
   private Context mContext;
-  private c mTL;
-  LinkedList<m> mUw;
-  AdapterView.OnItemClickListener mUx;
+  private c pvR;
+  LinkedList<m> pwC;
+  AdapterView.OnItemClickListener pwD;
   
   public i(Context paramContext)
   {
+    AppMethodBeat.i(44119);
     this.mContext = paramContext;
-    com.tencent.mm.plugin.product.a.a.brN();
-    this.mTL = com.tencent.mm.plugin.product.a.a.brO();
+    com.tencent.mm.plugin.product.a.a.caT();
+    this.pvR = com.tencent.mm.plugin.product.a.a.caU();
+    AppMethodBeat.o(44119);
   }
   
-  private m vP(int paramInt)
+  private m Bo(int paramInt)
   {
-    return (m)this.mUw.get(paramInt);
+    AppMethodBeat.i(44121);
+    m localm = (m)this.pwC.get(paramInt);
+    AppMethodBeat.o(44121);
+    return localm;
   }
   
   public final int getCount()
   {
-    if (this.mUw != null) {
-      return this.mUw.size();
+    AppMethodBeat.i(44120);
+    if (this.pwC != null)
+    {
+      int i = this.pwC.size();
+      AppMethodBeat.o(44120);
+      return i;
     }
+    AppMethodBeat.o(44120);
     return 0;
   }
   
@@ -56,57 +65,58 @@ public final class i
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    m localm = vP(paramInt);
+    AppMethodBeat.i(44122);
+    m localm = Bo(paramInt);
     Object localObject2;
     Object localObject1;
-    label161:
+    label163:
     int i;
     float f1;
     if ((paramView == null) || (paramView.getTag() == null))
     {
       paramViewGroup = new i.a(this);
-      paramView = View.inflate(this.mContext, a.g.product_select_sku_item, null);
-      paramViewGroup.mUy = ((TextView)paramView.findViewById(a.f.mall_product_sku_title_tv));
-      paramViewGroup.mUz = ((MaxGridView)paramView.findViewById(a.f.mall_product_sku_gv));
-      paramViewGroup.mUB = new j(this.mContext);
+      paramView = View.inflate(this.mContext, 2130970454, null);
+      paramViewGroup.pwE = ((TextView)paramView.findViewById(2131826802));
+      paramViewGroup.pwF = ((MaxGridView)paramView.findViewById(2131826803));
+      paramViewGroup.pwG = new j(this.mContext);
       paramView.setTag(paramViewGroup);
-      paramViewGroup.mUy.setText(localm.mTa);
-      paramViewGroup.mUz.setOnItemClickListener(this.mUx);
-      localObject2 = paramViewGroup.mUB;
-      localObject1 = this.mTL;
-      Object localObject3 = localm.mSZ;
-      if (!((c)localObject1).mSb.containsKey(localObject3)) {
-        break label302;
+      paramViewGroup.pwE.setText(localm.pvg);
+      paramViewGroup.pwF.setOnItemClickListener(this.pwD);
+      localObject2 = paramViewGroup.pwG;
+      localObject1 = this.pvR;
+      Object localObject3 = localm.pvf;
+      if (!((c)localObject1).pui.containsKey(localObject3)) {
+        break label303;
       }
-      localObject1 = (String)((c)localObject1).mSb.get(localObject3);
-      ((j)localObject2).mUD = localm;
-      ((j)localObject2).mUE = ((String)localObject1);
+      localObject1 = (String)((c)localObject1).pui.get(localObject3);
+      ((j)localObject2).pwI = localm;
+      ((j)localObject2).pwJ = ((String)localObject1);
       localObject1 = this.mContext;
-      localObject3 = localm.mTb;
+      localObject3 = localm.pvh;
       i = ((Context)localObject1).getResources().getDisplayMetrics().widthPixels - com.tencent.mm.cb.a.fromDPToPix((Context)localObject1, 16) * 2;
-      localObject2 = ((TextView)((LayoutInflater)((Context)localObject1).getSystemService("layout_inflater")).inflate(a.g.product_select_sku_cell, null)).getPaint();
+      localObject2 = ((TextView)((LayoutInflater)((Context)localObject1).getSystemService("layout_inflater")).inflate(2130970453, null)).getPaint();
       f1 = 0.0F;
       localObject3 = ((LinkedList)localObject3).iterator();
-      label246:
+      label247:
       if (!((Iterator)localObject3).hasNext()) {
-        break label308;
+        break label309;
       }
       float f2 = ((TextPaint)localObject2).measureText(((h)((Iterator)localObject3).next()).name);
       if (f1 >= f2) {
-        break label508;
+        break label514;
       }
       f1 = f2;
     }
-    label302:
-    label308:
-    label508:
+    label514:
     for (;;)
     {
-      break label246;
+      break label247;
       paramViewGroup = (i.a)paramView.getTag();
       break;
+      label303:
       localObject1 = null;
-      break label161;
+      break label163;
+      label309:
       int j = (int)f1;
       int k = com.tencent.mm.cb.a.fromDPToPix((Context)localObject1, 10);
       localObject2 = new int[4];
@@ -123,10 +133,11 @@ public final class i
       }
       for (localObject1 = new Pair(Integer.valueOf(paramInt), Integer.valueOf(localObject2[(paramInt - 1)]));; localObject1 = new Pair(Integer.valueOf(1), Integer.valueOf(i)))
       {
-        y.d("MicroMsg.MallProductImageAdapter", localm.mTa + " numColumns = " + localObject1);
-        paramViewGroup.mUz.setColumnWidth(((Integer)((Pair)localObject1).second).intValue());
-        paramViewGroup.mUB.notifyDataSetChanged();
-        paramViewGroup.mUz.setAdapter(paramViewGroup.mUB);
+        ab.d("MicroMsg.MallProductImageAdapter", localm.pvg + " numColumns = " + localObject1);
+        paramViewGroup.pwF.setColumnWidth(((Integer)((Pair)localObject1).second).intValue());
+        paramViewGroup.pwG.notifyDataSetChanged();
+        paramViewGroup.pwF.setAdapter(paramViewGroup.pwG);
+        AppMethodBeat.o(44122);
         return paramView;
         paramInt -= 1;
         break;

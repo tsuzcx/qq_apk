@@ -1,7 +1,8 @@
 package com.tencent.mm.booter.notification.queue;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -14,6 +15,7 @@ public final class c
 {
   public static String a(Serializable paramSerializable)
   {
+    AppMethodBeat.i(16002);
     long l = System.currentTimeMillis();
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
@@ -21,13 +23,17 @@ public final class c
     paramSerializable = URLEncoder.encode(localByteArrayOutputStream.toString("ISO-8859-1"), "UTF-8");
     localObjectOutputStream.close();
     localByteArrayOutputStream.close();
-    y.d("MicroMsg.NotificationQueueTool", "serialize consume: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ab.d("MicroMsg.NotificationQueueTool", "serialize consume: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(16002);
     return paramSerializable;
   }
   
-  public static Serializable eA(String paramString)
+  public static Serializable kF(String paramString)
   {
-    if (ah.bl(paramString)) {
+    AppMethodBeat.i(16003);
+    if (ah.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(16003);
       return null;
     }
     long l = System.currentTimeMillis();
@@ -36,13 +42,14 @@ public final class c
     Serializable localSerializable = (Serializable)localObjectInputStream.readObject();
     localObjectInputStream.close();
     paramString.close();
-    y.d("MicroMsg.NotificationQueueTool", "de serialize consume: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ab.d("MicroMsg.NotificationQueueTool", "de serialize consume: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(16003);
     return localSerializable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.notification.queue.c
  * JD-Core Version:    0.7.0.1
  */

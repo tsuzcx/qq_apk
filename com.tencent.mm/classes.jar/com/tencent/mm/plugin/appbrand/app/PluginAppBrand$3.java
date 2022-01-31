@@ -1,23 +1,22 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.mm.modelappbrand.d;
-import com.tencent.mm.modelappbrand.e;
+import android.content.ComponentCallbacks;
+import android.content.res.Configuration;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class PluginAppBrand$3
-  implements com.tencent.mm.kernel.api.g
+  implements ComponentCallbacks
 {
   PluginAppBrand$3(PluginAppBrand paramPluginAppBrand) {}
   
-  public final void aP(boolean paramBoolean)
+  public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    ((e)com.tencent.mm.kernel.g.r(e.class)).shutdown();
-    ((e)com.tencent.mm.kernel.g.r(e.class)).Jm().exit();
+    AppMethodBeat.i(154847);
+    PluginAppBrand.access$000();
+    AppMethodBeat.o(154847);
   }
   
-  public final void tj()
-  {
-    ((e)com.tencent.mm.kernel.g.r(e.class)).initialize();
-  }
+  public final void onLowMemory() {}
 }
 
 

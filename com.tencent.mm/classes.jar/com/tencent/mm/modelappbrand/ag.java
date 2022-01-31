@@ -3,11 +3,11 @@ package com.tencent.mm.modelappbrand;
 public abstract class ag
   implements m
 {
-  public abstract void a(int paramInt, t paramt);
+  public abstract void acB();
   
   public final String getName()
   {
-    return "setWidgetSize";
+    return "onUiUpdate";
   }
 }
 

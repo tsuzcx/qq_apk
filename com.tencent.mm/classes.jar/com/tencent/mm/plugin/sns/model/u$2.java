@@ -1,30 +1,33 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.model.ap;
-import com.tencent.mm.protocal.c.bsx;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ar;
+import com.tencent.mm.protocal.protobuf.cdm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Iterator;
 import java.util.List;
 
 final class u$2
   implements Runnable
 {
-  u$2(u paramu, boolean paramBoolean, bsx parambsx, ah paramah) {}
+  u$2(u paramu, boolean paramBoolean, cdm paramcdm, ak paramak) {}
   
   public final void run()
   {
-    if (this.oqz)
+    AppMethodBeat.i(36300);
+    if (this.rfj)
     {
-      Iterator localIterator = u.bDc().iterator();
+      Iterator localIterator = u.coC().iterator();
       while (localIterator.hasNext())
       {
-        ap localap = (ap)localIterator.next();
-        y.i("MicroMsg.NetSceneNewSyncAlbum", "notify list ");
-        localap.a(this.oqA);
+        ar localar = (ar)localIterator.next();
+        ab.i("MicroMsg.NetSceneNewSyncAlbum", "notify list ");
+        localar.aam();
       }
     }
-    this.oqx.sendEmptyMessage(0);
+    this.rfh.sendEmptyMessage(0);
+    AppMethodBeat.o(36300);
   }
 }
 

@@ -1,28 +1,34 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 import org.json.JSONObject;
 
 public final class WxaAttributes$a
 {
-  public String dTW;
-  public int dWx;
-  public long fKa = 0L;
-  public String fRb;
-  public int fRc;
-  public List<String> fRd;
-  public List<String> fRe;
-  public List<String> fRf;
-  public List<String> fRg;
-  public String fRh;
+  public long bDL = 0L;
+  public int fmF;
+  public long hcP = 0L;
+  public int hix;
+  public String hiy;
+  public String hjM;
+  public int hjN;
+  public List<String> hjO;
+  public List<String> hjP;
+  public List<String> hjQ;
+  public List<String> hjR;
+  public List<String> hjS;
+  public String hjT;
   
-  public static a sH(String paramString)
+  public static a AB(String paramString)
   {
-    if (bk.bl(paramString))
+    AppMethodBeat.i(96159);
+    if (bo.isNullOrNil(paramString))
     {
-      y.e("MicroMsg.AppBrand.WxaAttributes", "getAppInfo, json is EMPTY");
+      ab.e("MicroMsg.AppBrand.WxaAttributes", "getAppInfo, json is EMPTY");
+      AppMethodBeat.o(96159);
       return null;
     }
     try
@@ -32,37 +38,51 @@ public final class WxaAttributes$a
       JSONObject localJSONObject2 = localJSONObject1.optJSONObject("RunningFlagInfo");
       if (localJSONObject2 != null)
       {
-        locala.fKa = localJSONObject2.optLong("RunningFlag");
-        locala.fRb = localJSONObject2.optString("AppOpenForbiddenUrl");
+        locala.bDL = localJSONObject2.optLong("RunningFlag");
+        locala.hjM = localJSONObject2.optString("AppOpenForbiddenUrl");
+        locala.hcP = localJSONObject2.optLong("CanNotStarWxaBeforeTime", 0L);
       }
       localJSONObject2 = localJSONObject1.optJSONObject("Network");
       if (localJSONObject2 != null)
       {
-        locala.fRd = t.j(localJSONObject2.optJSONArray("RequestDomain"));
-        locala.fRe = t.j(localJSONObject2.optJSONArray("WsRequestDomain"));
-        locala.fRf = t.j(localJSONObject2.optJSONArray("UploadDomain"));
-        locala.fRg = t.j(localJSONObject2.optJSONArray("DownloadDomain"));
+        locala.hjO = u.m(localJSONObject2.optJSONArray("RequestDomain"));
+        locala.hjP = u.m(localJSONObject2.optJSONArray("WsRequestDomain"));
+        locala.hjQ = u.m(localJSONObject2.optJSONArray("UploadDomain"));
+        locala.hjR = u.m(localJSONObject2.optJSONArray("DownloadDomain"));
+        locala.hjS = u.m(localJSONObject2.optJSONArray("UDPDomain"));
       }
-      locala.dTW = localJSONObject1.optString("Template");
-      locala.fRc = localJSONObject1.optInt("WechatPluginApp", 0);
-      locala.dWx = localJSONObject1.optInt("AppServiceType", 0);
-      locala.fRh = localJSONObject1.optString("fromBusinessUsername");
+      locala.hjN = localJSONObject1.optInt("WechatPluginApp", 0);
+      locala.fmF = localJSONObject1.optInt("AppServiceType", 0);
+      locala.hjT = localJSONObject1.optString("fromBusinessUsername");
+      locala.hix = localJSONObject1.optInt("OriginalFlag", 0);
+      locala.hiy = localJSONObject1.optString("OriginalRedirectUrl");
       paramString = locala;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.e("MicroMsg.AppBrand.WxaAttributes", "getAppInfo, json(%s) parse failed ex = %s", new Object[] { paramString, localException });
+        ab.e("MicroMsg.AppBrand.WxaAttributes", "getAppInfo, json(%s) parse failed ex = %s", new Object[] { paramString, localException });
         paramString = null;
       }
     }
+    AppMethodBeat.o(96159);
     return paramString;
+  }
+  
+  public final boolean ayH()
+  {
+    return this.hjN > 0;
+  }
+  
+  public final boolean vY()
+  {
+    return this.fmF == 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.WxaAttributes.a
  * JD-Core Version:    0.7.0.1
  */

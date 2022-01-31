@@ -1,132 +1,183 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.h.a.ps;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.qz;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandGuideUI.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
 public enum i
 {
-  public static final c<ps> fIi = new i.1();
+  public static final c<qz> hba;
   
-  public static boolean acO()
+  static
   {
-    if (!com.tencent.mm.kernel.g.DK()) {}
-    do
-    {
-      return false;
-      if (com.tencent.mm.m.g.AA().getInt("WeAppForbiddenSwitch", 0) == 1)
-      {
-        y.i("MicroMsg.AppBrandEntranceLogic", "showInFindMore, WeAppForbiddenSwitch == 1, not show");
-        return false;
-      }
-    } while ((!acT()) && (!r.adi()));
-    return true;
+    AppMethodBeat.i(129546);
+    hbb = new i[0];
+    hba = new i.1();
+    AppMethodBeat.o(129546);
   }
   
-  public static void acP()
+  public static boolean awU()
   {
-    if (!com.tencent.mm.kernel.g.DK()) {
+    AppMethodBeat.i(129537);
+    if (!com.tencent.mm.kernel.g.RG())
+    {
+      AppMethodBeat.o(129537);
+      return false;
+    }
+    if (com.tencent.mm.m.g.Nq().getInt("WeAppForbiddenSwitch", 0) == 1)
+    {
+      ab.i("MicroMsg.AppBrandEntranceLogic", "showInFindMore, WeAppForbiddenSwitch == 1, not show");
+      AppMethodBeat.o(129537);
+      return false;
+    }
+    if ((awZ()) || (r.axm()))
+    {
+      AppMethodBeat.o(129537);
+      return true;
+    }
+    AppMethodBeat.o(129537);
+    return false;
+  }
+  
+  public static void awV()
+  {
+    AppMethodBeat.i(129538);
+    if (!com.tencent.mm.kernel.g.RG())
+    {
+      AppMethodBeat.o(129538);
       return;
     }
-    if (acQ())
+    if (awW())
     {
-      r.e locale = r.e.fJj;
+      r.e locale = r.e.hcb;
       r.e.a("", 0L, 2, 1);
     }
-    com.tencent.mm.kernel.g.DP().Dz().c(ac.a.usY, Boolean.valueOf(false));
+    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yCY, Boolean.FALSE);
+    AppMethodBeat.o(129538);
   }
   
-  static boolean acQ()
+  static boolean awW()
   {
-    if (!com.tencent.mm.kernel.g.DK()) {
+    AppMethodBeat.i(129539);
+    if (!com.tencent.mm.kernel.g.RG())
+    {
+      AppMethodBeat.o(129539);
       return false;
     }
-    return ((Boolean)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.usY, Boolean.valueOf(false))).booleanValue();
+    boolean bool = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yCY, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(129539);
+    return bool;
   }
   
-  public static boolean acR()
+  public static boolean awX()
   {
-    if (!com.tencent.mm.kernel.g.DK()) {
+    AppMethodBeat.i(129543);
+    if (!com.tencent.mm.kernel.g.RG())
+    {
+      AppMethodBeat.o(129543);
       return false;
     }
-    return ((Boolean)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.usN, Boolean.valueOf(false))).booleanValue();
+    boolean bool = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yCN, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(129543);
+    return bool;
   }
   
-  public static boolean acS()
+  public static boolean awY()
   {
-    t.adq();
-    if (!com.tencent.mm.kernel.g.DK()) {
+    AppMethodBeat.i(129544);
+    t.axy();
+    if (!com.tencent.mm.kernel.g.RG())
+    {
+      AppMethodBeat.o(129544);
       return false;
     }
-    return ((Boolean)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.usM, Boolean.valueOf(false))).booleanValue();
+    boolean bool = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yCM, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(129544);
+    return bool;
   }
   
-  public static boolean acT()
+  public static boolean awZ()
   {
-    return (acS()) || (acR());
+    AppMethodBeat.i(129545);
+    if ((awY()) || (awX()))
+    {
+      AppMethodBeat.o(129545);
+      return true;
+    }
+    AppMethodBeat.o(129545);
+    return false;
   }
   
-  private static void e(boolean paramBoolean, String paramString)
+  private static void h(boolean paramBoolean, String paramString)
   {
-    if (!com.tencent.mm.kernel.g.DK()) {
+    AppMethodBeat.i(129541);
+    if (!com.tencent.mm.kernel.g.RG())
+    {
+      AppMethodBeat.o(129541);
       return;
     }
-    Object localObject = (Boolean)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.usN, null);
+    Object localObject = (Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yCN, null);
     if ((localObject != null) && (!((Boolean)localObject).booleanValue()) && (paramBoolean))
     {
-      com.tencent.mm.kernel.g.DP().Dz().c(ac.a.usY, Boolean.valueOf(true));
-      localObject = r.e.fJj;
-      r.e.a("", 0L, 1, 1);
+      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yCY, Boolean.TRUE);
+      localObject = r.e.hcb;
+      r.e.axv();
     }
     for (int i = 1;; i = 0)
     {
-      com.tencent.mm.kernel.g.DP().Dz().c(ac.a.usN, Boolean.valueOf(paramBoolean));
-      if (i == 0) {
-        break;
+      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yCN, Boolean.valueOf(paramBoolean));
+      if (i != 0)
+      {
+        localObject = com.tencent.mm.plugin.appbrand.app.g.auE();
+        if (localObject != null) {
+          ((AppBrandGuideUI.a)localObject).Fd(paramString);
+        }
       }
-      localObject = com.tencent.mm.plugin.appbrand.app.e.aaR();
-      if (localObject == null) {
-        break;
-      }
-      ((AppBrandGuideUI.a)localObject).hcN = true;
-      ((AppBrandGuideUI.a)localObject).hcO = paramString;
+      AppMethodBeat.o(129541);
       return;
     }
   }
   
-  static void kw(int paramInt)
+  static void nr(int paramInt)
   {
     boolean bool2 = true;
-    if (!com.tencent.mm.kernel.g.DK()) {
+    AppMethodBeat.i(129540);
+    if (!com.tencent.mm.kernel.g.RG())
+    {
+      AppMethodBeat.o(129540);
       return;
     }
-    z localz = com.tencent.mm.kernel.g.DP().Dz();
+    z localz = com.tencent.mm.kernel.g.RL().Ru();
     ac.a locala;
     if ((paramInt & 0x2) > 0)
     {
       bool1 = true;
-      e(bool1, "");
-      locala = ac.a.usM;
+      h(bool1, "");
+      locala = ac.a.yCM;
       if ((paramInt & 0x1) <= 0) {
-        break label59;
+        break label74;
       }
     }
-    label59:
+    label74:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localz.c(locala, Boolean.valueOf(bool1));
+      localz.set(locala, Boolean.valueOf(bool1));
+      AppMethodBeat.o(129540);
       return;
       bool1 = false;
       break;
     }
   }
   
-  static void rF(String paramString)
+  static void zu(String paramString)
   {
-    e(true, paramString);
+    AppMethodBeat.i(129542);
+    h(true, paramString);
+    AppMethodBeat.o(129542);
   }
 }
 

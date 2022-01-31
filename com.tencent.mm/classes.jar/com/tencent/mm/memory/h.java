@@ -1,17 +1,19 @@
 package com.tencent.mm.memory;
 
-import com.tencent.mm.sdk.b;
-import com.tencent.mm.sdk.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 
 public final class h
-  extends b<ByteBuffer>
+  extends com.tencent.mm.sdk.d<ByteBuffer>
 {
-  public static h dPc = new h();
+  public static h fdJ;
   
   static
   {
-    e.post(new h.1(), "DecodeTempStorage_preload");
+    AppMethodBeat.i(115379);
+    fdJ = new h();
+    com.tencent.mm.sdk.g.d.post(new h.1(), "DecodeTempStorage_preload");
+    AppMethodBeat.o(115379);
   }
   
   private h()

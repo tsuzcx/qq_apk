@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.location.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class m$1
   implements View.OnTouchListener
@@ -11,25 +12,28 @@ final class m$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(113560);
     switch (paramMotionEvent.getAction())
     {
     }
-    do
+    for (;;)
     {
-      do
+      AppMethodBeat.o(113560);
+      return false;
+      if ((Math.abs(paramMotionEvent.getX() - this.oeH.nvl) > 10.0F) || (Math.abs(paramMotionEvent.getY() - this.oeH.nvm) > 10.0F))
       {
-        return false;
-      } while ((Math.abs(paramMotionEvent.getX() - this.lHu.kXk) <= 10.0F) && (Math.abs(paramMotionEvent.getY() - this.lHu.hZz) <= 10.0F));
-      m.a(this.lHu, true);
-      return false;
-      this.lHu.kXk = paramMotionEvent.getX();
-      this.lHu.hZz = paramMotionEvent.getY();
-      m.a(this.lHu, System.currentTimeMillis());
-      m.a(this.lHu, false);
-      return false;
-    } while ((m.a(this.lHu)) || (System.currentTimeMillis() - m.b(this.lHu) >= 200L));
-    m.c(this.lHu);
-    return false;
+        m.a(this.oeH, true);
+        continue;
+        this.oeH.nvl = paramMotionEvent.getX();
+        this.oeH.nvm = paramMotionEvent.getY();
+        m.a(this.oeH, System.currentTimeMillis());
+        m.a(this.oeH, false);
+        continue;
+        if ((!m.a(this.oeH)) && (System.currentTimeMillis() - m.b(this.oeH) < 200L)) {
+          m.c(this.oeH);
+        }
+      }
+    }
   }
 }
 

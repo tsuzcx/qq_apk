@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashSet;
 
 final class UnfamiliarContactDetailUI$d$1
@@ -9,11 +10,13 @@ final class UnfamiliarContactDetailUI$d$1
   
   public final void run()
   {
-    if (this.nXr.nXm != null)
+    AppMethodBeat.i(127662);
+    if (this.qLB.qLw != null)
     {
-      this.nXr.nXm.dK(UnfamiliarContactDetailUI.b(this.nXr.nWX).size(), this.nXr.nXo);
-      UnfamiliarContactDetailUI.b(this.nXr.nWX).clear();
+      this.qLB.qLw.fs(UnfamiliarContactDetailUI.b(this.qLB.qLi).size(), this.qLB.qLy);
+      UnfamiliarContactDetailUI.b(this.qLB.qLi).clear();
     }
+    AppMethodBeat.o(127662);
   }
 }
 

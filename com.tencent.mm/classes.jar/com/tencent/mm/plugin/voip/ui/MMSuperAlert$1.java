@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.voip.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class MMSuperAlert$1
@@ -11,26 +10,22 @@ final class MMSuperAlert$1
   
   public final void run()
   {
+    AppMethodBeat.i(4782);
     String str1;
-    if (this.pWt == 0)
+    if (this.tBW == 0)
     {
       str1 = "";
-      if (this.pWu != 0) {
-        break label66;
+      if (this.tBX != 0) {
+        break label78;
       }
     }
-    label66:
-    for (String str2 = "";; str2 = this.pWw.getString(this.pWu))
+    label78:
+    for (String str2 = "";; str2 = this.tBZ.getString(this.tBX))
     {
-      h.a(this.pWw, str1, str2, this.pWv, new DialogInterface.OnClickListener()new MMSuperAlert.1.2
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          MMSuperAlert.1.this.pWw.finish();
-        }
-      }, new MMSuperAlert.1.2(this));
+      h.a(this.tBZ, str1, str2, this.tBY, new MMSuperAlert.1.1(this), new MMSuperAlert.1.2(this));
+      AppMethodBeat.o(4782);
       return;
-      str1 = this.pWw.getString(this.pWt);
+      str1 = this.tBZ.getString(this.tBW);
       break;
     }
   }

@@ -1,681 +1,798 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-import android.text.method.LinkMovementMethod;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.at.b.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.au.b.a;
+import com.tencent.mm.g.b.a.bj;
+import com.tencent.mm.model.r;
+import com.tencent.mm.network.q;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.chk;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.account.friend.a.l;
+import com.tencent.mm.protocal.n.a;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.btb;
+import com.tencent.mm.protocal.protobuf.cjy;
+import com.tencent.mm.protocal.protobuf.cuv;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMFormInputView;
+import java.io.IOException;
+import java.util.TimeZone;
 
 public class RegByMobileRegAIOUI
   extends MMActivity
   implements f
 {
-  private String countryCode = null;
-  private ImageView doU;
-  private String esg = null;
-  private LinearLayout fbR;
-  private TextView fbT;
-  private String fbX = null;
-  private String fcX;
-  private com.tencent.mm.ui.base.p fev;
-  private int fhr;
-  private com.tencent.mm.ui.widget.a.c fiN = null;
-  private ProgressBar fiX;
-  private ah fjc = new RegByMobileRegAIOUI.15(this);
-  private com.tencent.mm.sdk.b.c flH = new RegByMobileRegAIOUI.1(this);
-  private ResizeLayout fmH;
-  private String fml = null;
-  private final int fnL = 128;
-  private String fnX;
-  private String fnY;
-  private int fnZ = 0;
-  private boolean foB = true;
-  private String foD = null;
-  private String fog;
-  private TextView fos;
-  private Button fou;
-  private s.a fqA = new RegByMobileRegAIOUI.16(this);
-  private int fqB;
-  private int fqC;
-  private boolean fqD;
-  private boolean fqE;
-  private EditText fqm;
-  private MMFormInputView fqn;
-  private String fqo = null;
-  private MMFormInputView fqp;
-  private boolean fqq = false;
-  private ImageView fqr;
-  private MMFormInputView fqs;
-  private boolean fqt;
-  private boolean fqu;
-  private ScrollView fqv;
-  private boolean fqw = false;
-  private boolean fqx = true;
-  private s fqy;
-  private boolean fqz = false;
-  private int progress = 0;
+  private String countryCode;
+  private ImageView egq;
+  private String fHT;
+  private com.tencent.mm.sdk.b.c gCZ;
+  private String gDF;
+  private bj gDn;
+  private ResizeLayout gEb;
+  private String gFA;
+  private TextView gFO;
+  private Button gFP;
+  private boolean gFV;
+  private String gFX;
+  private final int gFe;
+  private String gFr;
+  private String gFs;
+  private int gFt;
+  private int gGv;
+  private EditText gHJ;
+  private TextView gHK;
+  private MMFormInputView gHL;
+  private String gHM;
+  private View gHN;
+  private CheckBox gHO;
+  private MMFormInputView gHP;
+  private boolean gHQ;
+  private ImageView gHR;
+  private MMFormInputView gHS;
+  private Bitmap gHT;
+  private ScrollView gHU;
+  private String gHV;
+  private String gHW;
+  private String gHX;
+  private String gHY;
+  private String gHZ;
+  private boolean gIa;
+  private com.tencent.mm.ui.widget.b.c gIb;
+  private boolean gIc;
+  private int gId;
+  private int gIe;
+  private boolean gIf;
+  private boolean gIg;
+  private LinearLayout gtI;
+  private TextView gtK;
+  private String gtM;
+  private String guI;
+  private com.tencent.mm.ui.base.p gwe;
   
-  private void Wc()
+  public RegByMobileRegAIOUI()
   {
-    com.tencent.mm.plugin.b.a.qj(this.fcX);
-    StringBuilder localStringBuilder = new StringBuilder();
-    g.DN();
-    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.Df()).append(",").append(getClass().getName()).append(",RE200_100,");
-    g.DN();
-    com.tencent.mm.plugin.b.a.d(false, com.tencent.mm.kernel.a.gd("RE200_100") + ",2");
-    finish();
-    overridePendingTransition(q.a.anim_not_change, q.a.anim_not_change);
-  }
-  
-  private void XU()
-  {
-    if ((!bk.bl(this.esg)) && (!bk.bl(this.countryCode)))
-    {
-      this.fbT.setText(ar.gf(this.esg, this.countryCode));
-      return;
-    }
-    this.fbT.setText(getString(q.j.mobile_code_error));
-  }
-  
-  private void Yd()
-  {
-    getString(q.j.app_tip);
-    this.fev = com.tencent.mm.ui.base.h.b(this, getString(q.j.regbyfacebook_reg_setpwd_exiting), true, new RegByMobileRegAIOUI.14(this));
-    com.tencent.mm.modelfriend.a locala = new com.tencent.mm.modelfriend.a(this.fqo + this.foD, 14, "", 0, "");
-    locala.lS(this.fog);
-    g.Dk().a(locala, 0);
-  }
-  
-  private boolean Ye()
-  {
-    if (bk.bl(this.countryCode)) {}
-    for (int i = 0;; i = 1)
-    {
-      if (this.fqu) {}
-      for (boolean bool = i & a(new Editable[] { this.fqm.getText(), this.fqp.getText(), this.fqs.getText() }); bool; bool = i & a(new Editable[] { this.fqm.getText(), this.fqs.getText() }))
-      {
-        this.fou.setEnabled(true);
-        return bool;
-      }
-      this.fou.setEnabled(false);
-      return bool;
-    }
+    AppMethodBeat.i(125373);
+    this.gtM = null;
+    this.fHT = null;
+    this.countryCode = null;
+    this.gDF = null;
+    this.gFV = true;
+    this.gHM = null;
+    this.gFX = null;
+    this.gHQ = false;
+    this.gFt = 0;
+    this.gIa = true;
+    this.gDn = new bj();
+    this.gCZ = new RegByMobileRegAIOUI.1(this);
+    this.gIb = null;
+    this.gIc = false;
+    this.gFe = 128;
+    AppMethodBeat.o(125373);
   }
   
   private boolean a(Editable... paramVarArgs)
   {
-    int j = paramVarArgs.length;
+    AppMethodBeat.i(125390);
     int i = 0;
-    if (i < j)
+    if (i < 3)
     {
       Editable localEditable = paramVarArgs[i];
       if ((localEditable != null) && (localEditable.toString().length() != 0)) {}
     }
     for (i = 0;; i = 1)
     {
-      if ((i != 0) && (this.foB))
+      if ((i != 0) && (this.gFV))
       {
+        AppMethodBeat.o(125390);
         return true;
         i += 1;
         break;
       }
+      AppMethodBeat.o(125390);
       return false;
     }
   }
   
-  private void qc(String paramString)
+  private void apB()
   {
-    if ((this.fqu) && (!com.tencent.mm.plugin.account.a.b.a.K(this, this.fqp.getText().toString()))) {
-      return;
-    }
-    if (this.fev != null) {
-      this.fev.dismiss();
-    }
-    getString(q.j.app_tip);
-    this.fev = com.tencent.mm.ui.base.h.b(this, getString(q.j.regbyfacebook_reg_setpwd_exiting), true, new RegByMobileRegAIOUI.10(this));
-    if (this.fhr == 0)
+    AppMethodBeat.i(125380);
+    com.tencent.mm.plugin.b.a.xD(this.guI);
+    StringBuilder localStringBuilder = new StringBuilder();
+    com.tencent.mm.kernel.g.RJ();
+    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",RE200_100,");
+    com.tencent.mm.kernel.g.RJ();
+    com.tencent.mm.plugin.b.a.g(false, com.tencent.mm.kernel.a.mx("RE200_100") + ",2");
+    finish();
+    overridePendingTransition(2131034130, 2131034130);
+    AppMethodBeat.o(125380);
+  }
+  
+  private boolean arB()
+  {
+    AppMethodBeat.i(125389);
+    if (bo.isNullOrNil(this.countryCode)) {}
+    for (int i = 0;; i = 1)
     {
-      Object localObject = ar.Zt(this.fqm.getText().toString().trim());
-      int i;
-      if ((this.fnX != null) && (this.fnY != null) && (!((String)localObject).equals(this.fnX)) && (((String)localObject).equals(this.fnY))) {
-        i = 1;
+      boolean bool = i & a(new Editable[] { this.gHJ.getText(), this.gHP.getText(), this.gHS.getText() });
+      if (bool) {
+        this.gFP.setEnabled(true);
       }
       for (;;)
       {
-        paramString = new com.tencent.mm.modelfriend.a(paramString, 12, "", 0, "");
-        paramString.ix(this.fnZ);
-        paramString.iy(i);
-        if (com.tencent.mm.plugin.normsg.a.b.mGK.JY("ie_reg")) {
-          com.tencent.mm.plugin.normsg.a.b.mGK.JX("ie_reg");
-        }
-        localObject = new chk();
-        ((chk)localObject).tWg = new bmk().bs(com.tencent.mm.plugin.normsg.a.b.mGK.JZ("ie_reg"));
-        ((chk)localObject).tWh = new bmk().bs(com.tencent.mm.plugin.normsg.a.b.mGK.Kc("ce_reg"));
-        ((chk)localObject).tWi = new bmk().bs(com.tencent.mm.plugin.normsg.a.b.mGK.vq(6));
-        paramString.a((chk)localObject);
-        g.Dk().a(paramString, 0);
-        this.fnX = ar.Zt(this.fqm.getText().toString().trim());
-        this.fnZ += 1;
-        return;
-        if ((this.fnX != null) && (this.fnY != null) && (!this.fnY.equals(this.fnX)) && (!((String)localObject).equals(this.fnY))) {
-          i = 2;
-        } else {
-          i = 0;
-        }
+        AppMethodBeat.o(125389);
+        return bool;
+        this.gFP.setEnabled(false);
       }
     }
-    throw new IllegalArgumentException("NO IMPLEMENT");
   }
   
-  private void qd(String paramString)
+  private void arD()
+  {
+    AppMethodBeat.i(125383);
+    if ((!bo.isNullOrNil(this.fHT)) && (!bo.isNullOrNil(this.countryCode)))
+    {
+      this.gtK.setText(av.ig(this.fHT, this.countryCode));
+      AppMethodBeat.o(125383);
+      return;
+    }
+    this.gtK.setText(getString(2131301573));
+    AppMethodBeat.o(125383);
+  }
+  
+  private void arM()
+  {
+    AppMethodBeat.i(125381);
+    if (!bo.isNullOrNil(this.gHW))
+    {
+      if (this.gwe != null) {
+        this.gwe.dismiss();
+      }
+      getString(2131297087);
+      this.gwe = com.tencent.mm.ui.base.h.b(this, getString(2131297112), true, null);
+      com.tencent.mm.plugin.account.model.g localg = new com.tencent.mm.plugin.account.model.g(this.gHW);
+      com.tencent.mm.kernel.g.Rc().a(localg, 0);
+    }
+    AppMethodBeat.o(125381);
+  }
+  
+  private void arN()
+  {
+    AppMethodBeat.i(125386);
+    getString(2131297087);
+    this.gwe = com.tencent.mm.ui.base.h.b(this, getString(2131302413), true, new RegByMobileRegAIOUI.15(this));
+    com.tencent.mm.modelfriend.a locala = new com.tencent.mm.modelfriend.a(this.gHM + this.gFX, 14, "", 0, "");
+    locala.sQ(this.gFA);
+    com.tencent.mm.kernel.g.Rc().a(locala, 0);
+    AppMethodBeat.o(125386);
+  }
+  
+  private void arO()
   {
     try
     {
-      if (this.fqy != null)
+      AppMethodBeat.i(125388);
+      if (!this.gIc)
       {
-        this.fqy.Yy();
-        this.fqy = null;
-      }
-      if (!this.fqz)
-      {
-        this.fqz = true;
+        this.gIc = true;
         finish();
         Intent localIntent = new Intent();
-        localIntent.putExtra("bindmcontact_mobile", this.fqo + " " + this.fqm.getText().toString());
-        localIntent.putExtra("bindmcontact_shortmobile", this.foD);
-        localIntent.putExtra("country_name", this.esg);
+        localIntent.putExtra("bindmcontact_mobile", this.gHM + " " + this.gHJ.getText().toString());
+        localIntent.putExtra("bindmcontact_shortmobile", this.gFX);
+        localIntent.putExtra("country_name", this.fHT);
         localIntent.putExtra("couttry_code", this.countryCode);
-        localIntent.putExtra("login_type", this.fhr);
-        localIntent.putExtra("mobileverify_countdownsec", this.fqB);
-        localIntent.putExtra("mobileverify_countdownstyle", this.fqC);
-        localIntent.putExtra("mobileverify_fb", this.fqD);
-        localIntent.putExtra("mobileverify_reg_qq", this.fqE);
-        localIntent.putExtra("kintent_nickname", this.fqs.getText().toString());
-        localIntent.putExtra("kintent_password", this.fqp.getText().toString());
-        localIntent.putExtra("kintent_hasavatar", this.fqq);
+        localIntent.putExtra("mobileverify_countdownsec", this.gId);
+        localIntent.putExtra("mobileverify_countdownstyle", this.gIe);
+        localIntent.putExtra("mobileverify_fb", this.gIf);
+        localIntent.putExtra("mobileverify_reg_qq", this.gIg);
+        localIntent.putExtra("kintent_nickname", this.gHS.getText().toString());
+        localIntent.putExtra("kintent_password", this.gHP.getText().toString());
+        localIntent.putExtra("kintent_hasavatar", this.gHQ);
         localIntent.putExtra("key_reg_style", 1);
-        localIntent.putExtra("regsession_id", this.fog);
+        localIntent.putExtra("regsession_id", this.gFA);
+        localIntent.putExtra("reg_3d_app_ticket", this.gHX);
+        localIntent.putExtra("reg_3d_app_type", this.gGv);
         localIntent.putExtra("mobile_verify_purpose", 2);
-        if ((paramString != null) && (paramString.length() > 0)) {
-          localIntent.putExtra("MicroMsg.MobileVerifyUIIntent_sms_code", paramString);
-        }
-        a(MobileVerifyUI.class, localIntent);
+        startActivity(MobileVerifyUI.class, localIntent);
       }
+      AppMethodBeat.o(125388);
       return;
     }
     finally {}
   }
   
-  protected final int getLayoutId()
+  private void xy(String paramString)
   {
-    return q.g.regbymobile_reg_aio;
-  }
-  
-  protected final void initView()
-  {
-    this.fbR = ((LinearLayout)findViewById(q.f.country_code_ll));
-    this.fbT = ((TextView)findViewById(q.f.country_name));
-    this.fqn = ((MMFormInputView)findViewById(q.f.regbymobilereg_mobile_input_view));
-    this.fqn.setInputType(3);
-    this.fqm = this.fqn.getContentEditText();
-    this.fos = ((TextView)findViewById(q.f.agree_text));
-    this.fou = ((Button)findViewById(q.f.reg_next));
-    this.doU = ((ImageView)findViewById(q.f.setinfo_avatar));
-    this.fqr = ((ImageView)findViewById(q.f.setinfo_camera));
-    this.fqp = ((MMFormInputView)findViewById(q.f.regbymobile_setpassword_container));
-    com.tencent.mm.ui.tools.a.c.d(this.fqp.getContentEditText()).Ig(16).a(null);
-    this.fqv = ((ScrollView)findViewById(q.f.scrollView));
-    this.fmH = ((ResizeLayout)findViewById(q.f.resize_lv));
-    this.fqs = ((MMFormInputView)findViewById(q.f.reg_nick_input_view));
-    this.fmH.setOnSizeChanged(new RegByMobileRegAIOUI.12(this));
-    this.fqu = true;
-    this.fqt = true;
-    Object localObject = getString(q.j.license_agree_text);
-    String str1;
-    String str2;
-    String str3;
-    Spannable localSpannable;
-    if (x.cqG())
+    AppMethodBeat.i(125382);
+    if (!com.tencent.mm.plugin.account.a.b.a.O(this, this.gHP.getText().toString()))
     {
-      str1 = getString(q.j.license_detail);
-      str2 = getString(q.j.privacy_detail);
-      str3 = getString(q.j.and);
-      localSpannable = Spannable.Factory.getInstance().newSpannable((String)localObject + "  " + str1 + str3 + str2);
-      localSpannable.setSpan(new RegByMobileRegAIOUI.18(this), ((String)localObject).length() + "  ".length(), ((String)localObject).length() + str1.length() + "  ".length(), 33);
-      localSpannable.setSpan(new RegByMobileRegAIOUI.19(this), ((String)localObject).length() + "  ".length() + str1.length() + str3.length(), ((String)localObject).length() + "  ".length() + str1.length() + str3.length() + str2.length(), 33);
-      this.fos.setText(localSpannable);
-      this.fos.setMovementMethod(LinkMovementMethod.getInstance());
-      localObject = new boolean[1];
-      localObject[0] = 1;
-      this.fqm.addTextChangedListener(new RegByMobileRegAIOUI.22(this, (boolean[])localObject));
-      this.fqm.setOnFocusChangeListener(new RegByMobileRegAIOUI.23(this, (boolean[])localObject));
-      this.fqp.addTextChangedListener(new RegByMobileRegAIOUI.24(this));
-      this.fqs.addTextChangedListener(new RegByMobileRegAIOUI.2(this));
-      this.fou.setOnTouchListener(new View.OnTouchListener()
-      {
-        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-        {
-          switch (paramAnonymousMotionEvent.getAction())
-          {
-          }
-          for (;;)
-          {
-            return false;
-            com.tencent.mm.plugin.normsg.a.b.mGK.ei("ce_reg", "<Reg>");
-            continue;
-            com.tencent.mm.plugin.normsg.a.b.mGK.a("ce_reg", paramAnonymousMotionEvent);
-            com.tencent.mm.plugin.normsg.a.b.mGK.Ka("ce_reg");
-          }
-        }
-      });
-      this.fou.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          paramAnonymousView = com.tencent.mm.ui.tools.a.c.d(RegByMobileRegAIOUI.i(RegByMobileRegAIOUI.this).getContentEditText()).fJ(1, 32);
-          paramAnonymousView.wfM = true;
-          paramAnonymousView.a(new RegByMobileRegAIOUI.4.1(this));
-        }
-      });
-      this.fou.setEnabled(false);
-      if (!bk.bl(this.countryCode)) {
-        break label1026;
-      }
-      this.esg = getString(q.j.country_normal_name);
-      this.countryCode = ar.Zu(getString(q.j.country_normal_code));
-      label569:
-      if ((bk.bl(this.esg)) || (bk.bl(this.countryCode)))
-      {
-        this.fml = ((TelephonyManager)getSystemService("phone")).getSimCountryIso();
-        y.i("MicroMsg.RegByMobileRegAIOUI", "tm.getSimCountryIso()" + this.fml);
-        if (!bk.bl(this.fml)) {
-          break label1048;
-        }
-        y.e("MicroMsg.RegByMobileRegAIOUI", "getDefaultCountryInfo error");
-      }
-      label651:
-      XU();
-      if ((this.fbX == null) || (this.fbX.equals(""))) {
-        break label1099;
-      }
-      this.fqm.setText(this.fbX);
+      AppMethodBeat.o(125382);
+      return;
+    }
+    if (this.gwe != null) {
+      this.gwe.dismiss();
+    }
+    getString(2131297087);
+    this.gwe = com.tencent.mm.ui.base.h.b(this, getString(2131297112), true, null);
+    Object localObject1 = av.apy(this.gHJ.getText().toString().trim());
+    int i;
+    if ((this.gFr != null) && (this.gFs != null) && (!((String)localObject1).equals(this.gFr)) && (((String)localObject1).equals(this.gFs))) {
+      i = 1;
     }
     for (;;)
     {
-      this.fbR.setOnClickListener(new RegByMobileRegAIOUI.6(this));
-      setBackBtn(new RegByMobileRegAIOUI.7(this), q.i.actionbar_icon_close_black);
-      this.doU.setOnClickListener(new RegByMobileRegAIOUI.8(this));
-      g.DS().a(new RegByMobileRegAIOUI.9(this));
-      localObject = "";
-      if (com.tencent.mm.protocal.d.spd) {
-        localObject = getString(q.j.app_name) + getString(q.j.alpha_version_alpha);
-      }
-      setMMTitle((String)localObject);
-      ta(getResources().getColor(q.c.normal_actionbar_color));
-      czo();
-      if (com.tencent.mm.compatible.util.d.gF(23))
+      localObject1 = new com.tencent.mm.modelfriend.a(paramString, 12, "", 0, "");
+      ((com.tencent.mm.modelfriend.a)localObject1).ll(this.gFt);
+      ((com.tencent.mm.modelfriend.a)localObject1).lm(i);
+      if (!bo.isNullOrNil(this.gHX))
       {
-        getWindow().setStatusBarColor(getResources().getColor(q.c.navpage));
-        czk();
+        localObject2 = this.gHX;
+        ((n.a)((com.tencent.mm.modelfriend.a)localObject1).ftU.getReqObj()).wiw.wvT = ((String)localObject2);
       }
-      return;
-      str1 = getString(q.j.license_terms_of_service);
-      str2 = getString(q.j.license_privacy_policy);
-      str3 = getString(q.j.and);
-      localSpannable = Spannable.Factory.getInstance().newSpannable((String)localObject + "  " + str1 + str3 + str2);
-      localSpannable.setSpan(new RegByMobileRegAIOUI.20(this), ((String)localObject).length() + "  ".length(), ((String)localObject).length() + "  ".length() + str1.length(), 33);
-      localSpannable.setSpan(new RegByMobileRegAIOUI.21(this), ((String)localObject).length() + str1.length() + "  ".length() + str3.length(), ((String)localObject).length() + str1.length() + "  ".length() + str3.length() + str2.length(), 33);
-      this.fos.setText(localSpannable);
-      break;
-      label1026:
-      this.esg = com.tencent.mm.at.b.j(this, this.countryCode, getString(q.j.country_code));
-      break label569;
-      label1048:
-      localObject = com.tencent.mm.at.b.i(this, this.fml, getString(q.j.country_code));
-      if (localObject == null)
+      if (com.tencent.mm.plugin.normsg.a.b.pgQ.VY("ie_reg")) {
+        com.tencent.mm.plugin.normsg.a.b.pgQ.VX("ie_reg");
+      }
+      Object localObject2 = new btb();
+      ((btb)localObject2).jKG = this.gHS.getText().toString();
+      if ((this.gHQ) && (this.gHT != null) && (!this.gHT.isRecycled())) {
+        ((btb)localObject2).xtt = ag.v(com.tencent.mm.sdk.platformtools.d.ai(this.gHT));
+      }
+      ((btb)localObject2).xGF = paramString;
+      ((btb)localObject2).xGE = ag.cE(this.gHP.getText().toString());
+      ((btb)localObject2).lGG = bo.dtS();
+      ((btb)localObject2).xGG = TimeZone.getDefault().getID();
+      ab.i("MicroMsg.RegByMobileRegAIOUI", "%s,%s", new Object[] { ((btb)localObject2).lGG, ((btb)localObject2).xGG });
+      paramString = new cuv();
+      paramString.ydw = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.pgQ.VZ("ie_reg"));
+      paramString.ydx = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.pgQ.Wc("ce_reg"));
+      paramString.ydy = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.b.pgQ.AO(6));
+      try
       {
-        y.e("MicroMsg.RegByMobileRegAIOUI", "getDefaultCountryInfo error");
-        break label651;
+        paramString.ydz = new SKBuiltinBuffer_t().setBuffer(((btb)localObject2).toByteArray());
+        ((com.tencent.mm.modelfriend.a)localObject1).a(paramString);
+        com.tencent.mm.kernel.g.Rc().a((com.tencent.mm.ai.m)localObject1, 0);
+        this.gFr = av.apy(this.gHJ.getText().toString().trim());
+        this.gFt += 1;
+        AppMethodBeat.o(125382);
+        return;
+        if ((this.gFr != null) && (this.gFs != null) && (!this.gFs.equals(this.gFr)) && (!((String)localObject1).equals(this.gFs)))
+        {
+          i = 2;
+          continue;
+        }
+        i = 0;
       }
-      this.esg = ((b.a)localObject).esg;
-      this.countryCode = ((b.a)localObject).esf;
-      break label651;
-      label1099:
-      g.DS().a(new RegByMobileRegAIOUI.5(this));
+      catch (IOException localIOException)
+      {
+        for (;;)
+        {
+          ab.printErrStackTrace("MicroMsg.RegByMobileRegAIOUI", localIOException, "convert to byte error ! %s", new Object[] { localIOException.getMessage() });
+        }
+      }
     }
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public int getLayoutId()
   {
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 30846) {
-      if ((paramInt2 == -1) && (Ye()))
-      {
-        Yd();
-        com.tencent.mm.plugin.b.a.qj("RE200_250");
-        this.fqw = false;
-      }
-    }
-    do
+    return 2130970556;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(125377);
+    this.gtI = ((LinearLayout)findViewById(2131821765));
+    this.gtK = ((TextView)findViewById(2131821767));
+    this.gHK = ((TextView)findViewById(2131827138));
+    this.gHL = ((MMFormInputView)findViewById(2131827144));
+    this.gHL.setInputType(3);
+    this.gHJ = this.gHL.getContentEditText();
+    this.gHN = findViewById(2131827146);
+    this.gHO = ((CheckBox)findViewById(2131826308));
+    this.gFO = ((TextView)findViewById(2131826309));
+    this.gFP = ((Button)findViewById(2131827147));
+    this.egq = ((ImageView)findViewById(2131827142));
+    this.gHR = ((ImageView)findViewById(2131827143));
+    this.gHP = ((MMFormInputView)findViewById(2131827145));
+    com.tencent.mm.ui.tools.b.c.d(this.gHP.getContentEditText()).QS(16).a(null);
+    this.gHU = ((ScrollView)findViewById(2131820935));
+    this.gEb = ((ResizeLayout)findViewById(2131825451));
+    this.gHS = ((MMFormInputView)findViewById(2131827140));
+    this.gEb.setOnSizeChanged(new RegByMobileRegAIOUI.12(this));
+    this.gHO.setOnCheckedChangeListener(new RegByMobileRegAIOUI.17(this));
+    this.gFO.setOnClickListener(new RegByMobileRegAIOUI.18(this));
+    Object localObject = new boolean[1];
+    localObject[0] = 1;
+    this.gHJ.addTextChangedListener(new RegByMobileRegAIOUI.19(this, (boolean[])localObject));
+    this.gHJ.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
-      return;
-      if (paramInt1 == 30847)
+      public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
-        Bundle localBundle = null;
-        if (paramIntent != null) {
-          localBundle = paramIntent.getBundleExtra("result_data");
-        }
-        if ((localBundle != null) && (localBundle.getString("go_next", "").equals("agree_privacy")))
+        AppMethodBeat.i(152602);
+        if (paramAnonymousBoolean)
         {
-          com.tencent.mm.plugin.report.service.h.nFQ.a(712L, 2L, 1L, false);
-          this.fqx = false;
-          qc(this.fqo + this.foD);
+          this.gIl[0] = true;
+          AppMethodBeat.o(152602);
           return;
         }
-        com.tencent.mm.plugin.report.service.h.nFQ.a(712L, 1L, 1L, false);
+        com.tencent.mm.plugin.normsg.a.b.pgQ.VX("ie_reg");
+        AppMethodBeat.o(152602);
+      }
+    });
+    this.gHP.addTextChangedListener(new RegByMobileRegAIOUI.21(this));
+    this.gHS.addTextChangedListener(new RegByMobileRegAIOUI.22(this));
+    localObject = new boolean[1];
+    localObject[0] = 0;
+    this.gFP.setOnTouchListener(new RegByMobileRegAIOUI.23(this, (boolean[])localObject));
+    this.gFP.setOnClickListener(new RegByMobileRegAIOUI.2(this, (boolean[])localObject));
+    this.gFP.setEnabled(false);
+    if (bo.isNullOrNil(this.countryCode))
+    {
+      this.fHT = getString(2131298873);
+      this.countryCode = av.apz(getString(2131298872));
+      if (!bo.isNullOrNil(this.gHV)) {
+        this.gHK.setText(this.gHV);
+      }
+      if ((bo.isNullOrNil(this.fHT)) || (bo.isNullOrNil(this.countryCode)))
+      {
+        this.gDF = ((TelephonyManager)getSystemService("phone")).getSimCountryIso();
+        ab.i("MicroMsg.RegByMobileRegAIOUI", "tm.getSimCountryIso()" + this.gDF);
+        if (!bo.isNullOrNil(this.gDF)) {
+          break label765;
+        }
+        ab.e("MicroMsg.RegByMobileRegAIOUI", "getDefaultCountryInfo error");
+      }
+      label538:
+      arD();
+      if ((this.gtM == null) || (this.gtM.equals(""))) {
+        break label816;
+      }
+      this.gHJ.setText(this.gtM);
+      label573:
+      this.gtI.setOnClickListener(new RegByMobileRegAIOUI.4(this));
+      setBackBtn(new RegByMobileRegAIOUI.5(this), 2131230735);
+      this.egq.setOnClickListener(new RegByMobileRegAIOUI.6(this));
+      if (!bo.isNullOrNil(this.gHW)) {
+        break label834;
+      }
+      com.tencent.mm.kernel.g.RO().a(new RegByMobileRegAIOUI.7(this));
+    }
+    for (;;)
+    {
+      localObject = "";
+      if (com.tencent.mm.protocal.d.whK) {
+        localObject = getString(2131297005) + getString(2131296529);
+      }
+      setMMTitle((String)localObject);
+      setActionbarColor(getResources().getColor(2131690316));
+      hideActionbarLine();
+      if (com.tencent.mm.compatible.util.d.fv(23))
+      {
+        getWindow().setStatusBarColor(getResources().getColor(2131690310));
+        supportLightStatusBar();
+      }
+      AppMethodBeat.o(125377);
+      return;
+      this.fHT = com.tencent.mm.au.b.l(this, this.countryCode, getString(2131298871));
+      break;
+      label765:
+      localObject = com.tencent.mm.au.b.k(this, this.gDF, getString(2131298871));
+      if (localObject == null)
+      {
+        ab.e("MicroMsg.RegByMobileRegAIOUI", "getDefaultCountryInfo error");
+        break label538;
+      }
+      this.fHT = ((b.a)localObject).fHT;
+      this.countryCode = ((b.a)localObject).fHS;
+      break label538;
+      label816:
+      com.tencent.mm.kernel.g.RO().a(new RegByMobileRegAIOUI.3(this));
+      break label573;
+      label834:
+      this.gHS.setText(this.gHY);
+      com.tencent.mm.kernel.g.RO().a(new RegByMobileRegAIOUI.8(this));
+    }
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(125384);
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (paramInt1 == 30846)
+    {
+      if ((paramInt2 == -1) && (arB()))
+      {
+        arN();
+        com.tencent.mm.plugin.b.a.xD("RE200_250");
+        AppMethodBeat.o(125384);
+      }
+    }
+    else if (paramInt1 == 30847)
+    {
+      Bundle localBundle = null;
+      if (paramIntent != null) {
+        localBundle = paramIntent.getBundleExtra("result_data");
+      }
+      if ((localBundle != null) && (localBundle.getString("go_next", "").equals("agree_privacy")))
+      {
+        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(712L, 2L, 1L, false);
+        this.gIa = false;
+        if (!bo.isNullOrNil(this.gHW))
+        {
+          arM();
+          AppMethodBeat.o(125384);
+          return;
+        }
+        xy(this.gHM + this.gFX);
+        AppMethodBeat.o(125384);
         return;
       }
-      switch (paramInt2)
-      {
-      default: 
-        paramIntent = com.tencent.mm.plugin.account.a.a.eUS.a(this, paramInt1, paramInt2, paramIntent);
-      }
-    } while (paramIntent == null);
-    this.doU.setImageBitmap(paramIntent);
-    this.fqq = true;
-    this.fqr.setVisibility(8);
-    return;
-    this.esg = bk.aM(paramIntent.getStringExtra("country_name"), "");
-    this.countryCode = bk.aM(paramIntent.getStringExtra("couttry_code"), "");
-    this.fml = bk.aM(paramIntent.getStringExtra("iso_code"), "");
-    if (com.tencent.mm.at.b.mD(this.countryCode))
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(712L, 1L, 1L, false);
+      AppMethodBeat.o(125384);
+      return;
+    }
+    switch (paramInt2)
     {
+    default: 
+      this.gHT = com.tencent.mm.plugin.account.a.a.gmP.a(this, paramInt1, paramInt2, paramIntent);
+      if (this.gHT != null)
+      {
+        this.egq.setImageBitmap(this.gHT);
+        this.gHQ = true;
+        this.gHR.setVisibility(8);
+      }
+      AppMethodBeat.o(125384);
+      return;
+    }
+    this.fHT = bo.bf(paramIntent.getStringExtra("country_name"), "");
+    this.countryCode = bo.bf(paramIntent.getStringExtra("couttry_code"), "");
+    this.gDF = bo.bf(paramIntent.getStringExtra("iso_code"), "");
+    if (com.tencent.mm.au.b.tN(this.countryCode))
+    {
+      if ((!bo.isNullOrNil(this.gHW)) && (!bo.isNullOrNil(this.gHY)) && (!bo.isNullOrNil(this.gHZ)))
+      {
+        arD();
+        AppMethodBeat.o(125384);
+        return;
+      }
       paramIntent = new Intent(this, MobileInputUI.class);
       paramIntent.putExtra("mobile_input_purpose", 2);
       paramIntent.putExtra("couttry_code", this.countryCode);
-      paramIntent.putExtra("country_name", this.esg);
+      paramIntent.putExtra("country_name", this.fHT);
       startActivity(paramIntent);
       finish();
-      overridePendingTransition(q.a.anim_not_change, q.a.anim_not_change);
+      overridePendingTransition(2131034130, 2131034130);
+      AppMethodBeat.o(125384);
       return;
     }
-    XU();
+    arD();
+    AppMethodBeat.o(125384);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(125374);
     super.onCreate(paramBundle);
-    this.esg = bk.aM(getIntent().getStringExtra("country_name"), "");
-    this.countryCode = ar.Zu(bk.aM(getIntent().getStringExtra("couttry_code"), ""));
-    this.fml = bk.pm(getIntent().getStringExtra("iso_code"));
-    this.fbX = bk.aM(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
-    this.fhr = getIntent().getIntExtra("login_type", 0);
+    this.fHT = bo.bf(getIntent().getStringExtra("country_name"), "");
+    this.countryCode = av.apz(bo.bf(getIntent().getStringExtra("couttry_code"), ""));
+    this.gDF = bo.nullAsNil(getIntent().getStringExtra("iso_code"));
+    this.gtM = bo.bf(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
+    this.gHV = getIntent().getStringExtra("register_title");
+    this.gHY = getIntent().getStringExtra("register_nick_name");
+    this.gHZ = getIntent().getStringExtra("register_avatar");
+    this.gHW = getIntent().getStringExtra("third_app_token");
+    this.gGv = getIntent().getIntExtra("reg_3d_app_type", 0);
     initView();
+    AppMethodBeat.o(125374);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    com.tencent.mm.plugin.normsg.a.b.mGK.JX("ie_reg");
-    if (this.fqy != null)
-    {
-      this.fqy.Yy();
-      this.fqy = null;
+    AppMethodBeat.i(125387);
+    com.tencent.mm.plugin.normsg.a.b.pgQ.VX("ie_reg");
+    if (this.gIb != null) {
+      this.gIb.dismiss();
     }
-    if (this.fiN != null) {
-      this.fiN.dismiss();
-    }
+    this.gDn.ake();
     super.onDestroy();
+    AppMethodBeat.o(125387);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(125379);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      Wc();
+      apB();
+      AppMethodBeat.o(125379);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(125379);
+    return bool;
   }
   
   public void onPause()
   {
+    AppMethodBeat.i(125376);
     super.onPause();
-    if (this.fev != null) {
-      this.fev.dismiss();
+    if (this.gwe != null) {
+      this.gwe.dismiss();
     }
-    com.tencent.mm.sdk.b.a.udP.d(this.flH);
-    g.Dk().b(701, this);
-    g.Dk().b(145, this);
-    g.Dk().b(132, this);
-    com.tencent.mm.plugin.b.a.qi("RE200_100");
-  }
-  
-  public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    int i;
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
-      if (paramArrayOfInt == null)
-      {
-        i = -1;
-        y.w("MicroMsg.RegByMobileRegAIOUI", "summerper onRequestPermissionsResult, grantResults length is:%d requestCode:%d, permissions:%s, stack:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), paramArrayOfString, bk.csb() });
-      }
-    }
-    do
-    {
-      return;
-      i = paramArrayOfInt.length;
-      break;
-      y.i("MicroMsg.RegByMobileRegAIOUI", "summerper onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
-      switch (paramInt)
-      {
-      default: 
-        return;
-      }
-    } while ((paramArrayOfInt[0] != 0) || (this.fqy == null));
-    this.fqy.Xt();
+    com.tencent.mm.sdk.b.a.ymk.d(this.gCZ);
+    com.tencent.mm.kernel.g.Rc().b(701, this);
+    com.tencent.mm.kernel.g.Rc().b(252, this);
+    com.tencent.mm.kernel.g.Rc().b(145, this);
+    com.tencent.mm.kernel.g.Rc().b(132, this);
+    com.tencent.mm.kernel.g.Rc().b(755, this);
+    com.tencent.mm.kernel.g.Rc().b(252, this);
+    com.tencent.mm.kernel.g.Rc().b(701, this);
+    com.tencent.mm.plugin.b.a.xC("RE200_100");
+    AppMethodBeat.o(125376);
   }
   
   public void onResume()
   {
-    com.tencent.mm.sdk.b.a.udP.c(this.flH);
+    AppMethodBeat.i(125375);
+    com.tencent.mm.sdk.b.a.ymk.c(this.gCZ);
     super.onResume();
-    g.Dk().a(701, this);
-    g.Dk().a(145, this);
-    g.Dk().a(132, this);
+    com.tencent.mm.kernel.g.Rc().a(701, this);
+    com.tencent.mm.kernel.g.Rc().a(252, this);
+    com.tencent.mm.kernel.g.Rc().a(145, this);
+    com.tencent.mm.kernel.g.Rc().a(132, this);
+    com.tencent.mm.kernel.g.Rc().a(755, this);
+    com.tencent.mm.kernel.g.Rc().a(252, this);
+    com.tencent.mm.kernel.g.Rc().a(701, this);
     StringBuilder localStringBuilder = new StringBuilder();
-    g.DN();
-    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.Df()).append(",").append(getClass().getName()).append(",RE200_100,");
-    g.DN();
-    com.tencent.mm.plugin.b.a.d(true, com.tencent.mm.kernel.a.gd("RE200_100") + ",1");
-    this.fnZ = 0;
+    com.tencent.mm.kernel.g.RJ();
+    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",RE200_100,");
+    com.tencent.mm.kernel.g.RJ();
+    com.tencent.mm.plugin.b.a.g(true, com.tencent.mm.kernel.a.mx("RE200_100") + ",1");
+    this.gFt = 0;
+    AppMethodBeat.o(125375);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    y.i("MicroMsg.RegByMobileRegAIOUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.fev != null)
+    AppMethodBeat.i(125385);
+    ab.i("MicroMsg.RegByMobileRegAIOUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.gwe != null)
     {
-      this.fev.dismiss();
-      this.fev = null;
+      this.gwe.dismiss();
+      this.gwe = null;
     }
-    if (paramInt2 == -75) {
-      com.tencent.mm.ui.base.h.h(this, q.j.alpha_version_tip_reg, q.j.reg_username_exist_title);
-    }
-    label656:
-    label934:
-    label946:
-    do
+    if (paramInt2 == -75)
     {
-      Object localObject1;
-      Object localObject2;
-      do
-      {
-        int i;
-        do
-        {
-          return;
-          if (paramm.getType() != 145) {
-            break label656;
-          }
-          i = ((com.tencent.mm.modelfriend.a)paramm).rN();
-          if (i != 12) {
-            break;
-          }
-          if ((paramInt2 == -41) || (paramInt2 == -59))
-          {
-            paramString = com.tencent.mm.i.a.eI(paramString);
-            if (paramString != null)
-            {
-              paramString.a(this, null, null);
-              return;
-            }
-            com.tencent.mm.ui.base.h.h(this, q.j.regbymobile_reg_mobile_format_err_msg, q.j.regbymobile_reg_mobile_format_err_title);
-            return;
-          }
-          this.foD = ar.Zt(this.foD);
-          this.fnY = (this.fqo + this.foD);
-          this.fog = ((com.tencent.mm.modelfriend.a)paramm).NW();
-          if ((paramInt2 == -36) || (paramInt2 == -35) || (paramInt2 == -3))
-          {
-            paramm = ((com.tencent.mm.modelfriend.a)paramm).NL();
-            if (!bk.bl(paramm)) {
-              this.foD = paramm.trim();
-            }
-            com.tencent.mm.plugin.b.a.qi("RE200_100");
-            paramm = new StringBuilder();
-            g.DN();
-            paramm = paramm.append(com.tencent.mm.kernel.a.Df()).append(",").append(getClass().getName()).append(",RE200_200,");
-            g.DN();
-            com.tencent.mm.plugin.b.a.d(true, com.tencent.mm.kernel.a.gd("RE200_200") + ",1");
-            paramString = com.tencent.mm.i.a.eI(paramString);
-            if (paramString != null)
-            {
-              paramString.a(this, new RegByMobileRegAIOUI.11(this), new RegByMobileRegAIOUI.13(this));
-              return;
-            }
-            Yd();
-            com.tencent.mm.plugin.b.a.qj("RE200_250");
-            this.fqw = false;
-            return;
-          }
-          if (paramInt2 == -355)
-          {
-            z.e(this, paramString, 30846);
-            return;
-          }
-          if (paramInt2 == -34)
-          {
-            com.tencent.mm.ui.base.h.b(this, getString(q.j.bind_mcontact_err_freq_limit), "", true);
-            return;
-          }
-        } while (com.tencent.mm.plugin.account.a.a.eUS.a(this, paramInt1, paramInt2, paramString));
-        Toast.makeText(this, getString(q.j.bind_mcontact_verify_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-        if (i == 14)
-        {
-          if ((paramInt2 != 0) && (paramString != null)) {
-            break label946;
-          }
-          if (((com.tencent.mm.modelfriend.a)paramm).NM() != 1) {
-            break;
-          }
-          localObject1 = this.fqo + this.foD;
-          localObject2 = ((com.tencent.mm.modelfriend.a)paramm).NO();
-          String str = ((com.tencent.mm.modelfriend.a)paramm).NN();
-          Intent localIntent = new Intent(this, RegByMobileSendSmsUI.class);
-          localIntent.putExtra("regsession_id", this.fog);
-          localIntent.putExtra("key_reg_style", 1);
-          localIntent.putExtra("from_mobile", (String)localObject1);
-          localIntent.putExtra("to_mobile", (String)localObject2);
-          localIntent.putExtra("verify_code", str);
-          localIntent.putExtra("kintent_nickname", this.fqs.getText().toString());
-          localIntent.putExtra("kintent_password", this.fqp.getText().toString());
-          localIntent.putExtra("kintent_hasavatar", this.fqq);
-          startActivity(localIntent);
-        }
-        if ((com.tencent.mm.plugin.account.a.a.eUS.a(this, paramInt1, paramInt2, paramString)) || (paramm.getType() != 701)) {
-          break label934;
-        }
-        paramString = com.tencent.mm.i.a.eI(paramString);
-      } while ((paramString == null) || (!paramString.a(this, null, null)));
+      com.tencent.mm.ui.base.h.h(this, 2131296532, 2131302378);
+      AppMethodBeat.o(125385);
       return;
-      this.fqB = ((com.tencent.mm.modelfriend.a)paramm).NQ();
-      this.fqC = ((com.tencent.mm.modelfriend.a)paramm).NR();
-      this.fqD = ((com.tencent.mm.modelfriend.a)paramm).NS();
-      this.fqE = ((com.tencent.mm.modelfriend.a)paramm).NT();
-      if (this.fqy == null)
+    }
+    if (paramm.getType() == 145)
+    {
+      int i = ((com.tencent.mm.modelfriend.a)paramm).Ac();
+      if (i == 12)
       {
-        this.fqy = new s(this, this.fqA);
-        this.fqy.Yx();
+        if ((paramInt2 == -41) || (paramInt2 == -59))
+        {
+          paramString = com.tencent.mm.h.a.kO(paramString);
+          if (paramString != null)
+          {
+            paramString.a(this, null, null);
+            AppMethodBeat.o(125385);
+            return;
+          }
+          com.tencent.mm.ui.base.h.h(this, 2131302425, 2131302426);
+          AppMethodBeat.o(125385);
+          return;
+        }
+        this.gFX = av.apy(this.gFX);
+        this.gFs = (this.gHM + this.gFX);
+        this.gFA = ((com.tencent.mm.modelfriend.a)paramm).agK();
+        if ((paramInt2 == -36) || (paramInt2 == -35) || (paramInt2 == -3))
+        {
+          paramm = ((com.tencent.mm.modelfriend.a)paramm).agz();
+          if (!bo.isNullOrNil(paramm)) {
+            this.gFX = paramm.trim();
+          }
+          com.tencent.mm.plugin.b.a.xC("RE200_100");
+          paramm = new StringBuilder();
+          com.tencent.mm.kernel.g.RJ();
+          paramm = paramm.append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",RE200_200,");
+          com.tencent.mm.kernel.g.RJ();
+          com.tencent.mm.plugin.b.a.g(true, com.tencent.mm.kernel.a.mx("RE200_200") + ",1");
+          paramString = com.tencent.mm.h.a.kO(paramString);
+          if (paramString != null)
+          {
+            paramString.a(this, new RegByMobileRegAIOUI.9(this), new RegByMobileRegAIOUI.10(this));
+            AppMethodBeat.o(125385);
+            return;
+          }
+          arN();
+          com.tencent.mm.plugin.b.a.xD("RE200_250");
+          AppMethodBeat.o(125385);
+          return;
+        }
+        if (paramInt2 == -355)
+        {
+          z.f(this, paramString, 30846);
+          this.gDn.cXw = this.gGv;
+          this.gDn.cRH = 5L;
+          this.gDn.ake();
+          AppMethodBeat.o(125385);
+          return;
+        }
+        if (paramInt2 == -34)
+        {
+          com.tencent.mm.ui.base.h.b(this, getString(2131297570), "", true);
+          AppMethodBeat.o(125385);
+          return;
+        }
+        if (com.tencent.mm.plugin.account.a.a.gmP.a(this, paramInt1, paramInt2, paramString))
+        {
+          AppMethodBeat.o(125385);
+          return;
+        }
+        Toast.makeText(this, getString(2131297614, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
       }
-      if (this.fiN == null)
+      if (i == 14)
       {
-        localObject1 = ((LayoutInflater)getSystemService("layout_inflater")).inflate(q.g.reg_mobile_verify_progress_dialog_view, null);
-        this.fiX = ((ProgressBar)((View)localObject1).findViewById(q.f.progress_dialog_bar));
-        localObject2 = (TextView)((View)localObject1).findViewById(q.f.verify_mobile_number);
-        this.fiN = com.tencent.mm.ui.base.h.a(this, false, getString(q.j.bind_mcontact_title_bind), (View)localObject1, "", "", null, null);
-        this.fqo = ar.Zv(this.countryCode);
-        ((TextView)localObject2).setText(this.fqo + " " + this.fqm.getText().toString());
+        if ((paramInt2 != 0) && (paramString != null)) {
+          break label840;
+        }
+        if (((com.tencent.mm.modelfriend.a)paramm).agA() != 1) {
+          break label785;
+        }
+        localObject = this.gHM + this.gFX;
+        String str1 = ((com.tencent.mm.modelfriend.a)paramm).agC();
+        String str2 = ((com.tencent.mm.modelfriend.a)paramm).agB();
+        Intent localIntent = new Intent(this, RegByMobileSendSmsUI.class);
+        localIntent.putExtra("regsession_id", this.gFA);
+        localIntent.putExtra("key_reg_style", 1);
+        localIntent.putExtra("from_mobile", (String)localObject);
+        localIntent.putExtra("to_mobile", str1);
+        localIntent.putExtra("verify_code", str2);
+        localIntent.putExtra("kintent_nickname", this.gHS.getText().toString());
+        localIntent.putExtra("kintent_password", this.gHP.getText().toString());
+        localIntent.putExtra("kintent_hasavatar", this.gHQ);
+        localIntent.putExtra("reg_3d_app_type", this.gGv);
+        localIntent.putExtra("reg_3d_app_ticket", this.gHX);
+        startActivity(localIntent);
       }
-      for (;;)
+      while (com.tencent.mm.plugin.account.a.a.gmP.a(this, paramInt1, paramInt2, paramString))
       {
-        this.progress = 0;
-        this.fiX.setIndeterminate(false);
-        this.fjc.sendEmptyMessage(10);
-        break label656;
-        break;
-        this.fiN.show();
+        AppMethodBeat.o(125385);
+        return;
+        label785:
+        this.gId = ((com.tencent.mm.modelfriend.a)paramm).agE();
+        this.gIe = ((com.tencent.mm.modelfriend.a)paramm).agF();
+        this.gIf = ((com.tencent.mm.modelfriend.a)paramm).agG();
+        this.gIg = ((com.tencent.mm.modelfriend.a)paramm).agH();
+        arO();
       }
+      label840:
       if (paramInt2 == -41)
       {
-        com.tencent.mm.ui.base.h.h(this, q.j.regbymobile_reg_mobile_format_err_msg, q.j.regbymobile_reg_mobile_format_err_title);
+        com.tencent.mm.ui.base.h.h(this, 2131302425, 2131302426);
+        AppMethodBeat.o(125385);
         return;
       }
       if (paramInt2 == -34)
       {
-        com.tencent.mm.ui.base.h.b(this, getString(q.j.bind_mcontact_err_freq_limit), "", true);
+        com.tencent.mm.ui.base.h.b(this, getString(2131297570), "", true);
+        AppMethodBeat.o(125385);
         return;
       }
-    } while (com.tencent.mm.plugin.account.a.a.eUS.a(this, paramInt1, paramInt2, paramString));
-    Toast.makeText(this, getString(q.j.bind_mcontact_verify_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      if (com.tencent.mm.plugin.account.a.a.gmP.a(this, paramInt1, paramInt2, paramString))
+      {
+        AppMethodBeat.o(125385);
+        return;
+      }
+      Toast.makeText(this, getString(2131297614, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      AppMethodBeat.o(125385);
+      return;
+    }
+    if (paramm.getType() == 755) {
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        localObject = (com.tencent.mm.plugin.account.model.g)paramm;
+        if (((com.tencent.mm.plugin.account.model.g)localObject).rr.fsW.fta == null) {
+          break label1282;
+        }
+      }
+    }
+    label1282:
+    for (Object localObject = ((cjy)((com.tencent.mm.plugin.account.model.g)localObject).rr.fsW.fta).xvp;; localObject = "")
+    {
+      this.gHX = ((String)localObject);
+      xy(this.gHM + this.gFX);
+      break;
+      if (paramInt2 != -7) {
+        break;
+      }
+      this.gDn.cXw = this.gGv;
+      this.gDn.cRH = 7L;
+      this.gDn.ake();
+      com.tencent.mm.ui.base.h.a(this, getString(2131299641), getString(2131297087), getString(2131300536), getString(2131296888), true, new RegByMobileRegAIOUI.11(this), null);
+      break;
+      if (((paramm.getType() != 701) && (paramm.getType() != 252)) || (paramInt1 != 0) || (paramInt2 != 0)) {
+        break;
+      }
+      this.gDn.cXw = this.gGv;
+      this.gDn.cRH = 12L;
+      this.gDn.ake();
+      l.aqv();
+      z.wz(r.Zn());
+      w.cs(this);
+      z.showAddrBookUploadConfirm(this, new RegByMobileRegAIOUI.13(this), false, 2);
+      AppMethodBeat.o(125385);
+      return;
+      if ((paramm.getType() == 252) || (paramm.getType() == 701))
+      {
+        paramString = com.tencent.mm.h.a.kO(paramString);
+        if ((paramString != null) && (paramString.a(this, null, null)))
+        {
+          AppMethodBeat.o(125385);
+          return;
+        }
+      }
+      AppMethodBeat.o(125385);
+      return;
+    }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileRegAIOUI
  * JD-Core Version:    0.7.0.1
  */

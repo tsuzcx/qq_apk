@@ -4,50 +4,11 @@ public final class a
 {
   public static final class a
   {
-    public static final int action_container = 2131825879;
-    public static final int action_divider = 2131825886;
-    public static final int action_image = 2131825880;
-    public static final int action_text = 2131825881;
-    public static final int actions = 2131825893;
-    public static final int async = 2131820771;
-    public static final int blocking = 2131820772;
-    public static final int chronometer = 2131825890;
-    public static final int forever = 2131820773;
-    public static final int icon = 2131820860;
-    public static final int icon_group = 2131824280;
-    public static final int info = 2131825891;
-    public static final int italic = 2131820774;
-    public static final int line1 = 2131820626;
-    public static final int line3 = 2131820627;
-    public static final int normal = 2131820690;
-    public static final int notification_background = 2131825892;
-    public static final int notification_main_column = 2131825888;
-    public static final int notification_main_column_container = 2131825887;
-    public static final int right_icon = 2131824212;
-    public static final int right_side = 2131825889;
-    public static final int tag_transition_group = 2131820659;
-    public static final int text = 2131820660;
-    public static final int text2 = 2131820661;
-    public static final int time = 2131822341;
-    public static final int title = 2131820664;
-  }
-  
-  public static final class b
-  {
-    public static final int[] FontFamily = { 2130772333, 2130772334, 2130772335, 2130772336, 2130772337, 2130772338 };
-    public static final int[] FontFamilyFont = { 16844082, 16844083, 16844095, 2130772339, 2130772340, 2130772341 };
-    public static final int FontFamilyFont_android_font = 0;
-    public static final int FontFamilyFont_android_fontStyle = 2;
-    public static final int FontFamilyFont_android_fontWeight = 1;
-    public static final int FontFamilyFont_font = 4;
-    public static final int FontFamilyFont_fontStyle = 3;
-    public static final int FontFamilyFont_fontWeight = 5;
-    public static final int FontFamily_fontProviderAuthority = 0;
-    public static final int FontFamily_fontProviderCerts = 3;
-    public static final int FontFamily_fontProviderFetchStrategy = 4;
-    public static final int FontFamily_fontProviderFetchTimeout = 5;
-    public static final int FontFamily_fontProviderPackage = 1;
-    public static final int FontFamily_fontProviderQuery = 2;
+    public static final int[] ColorStateListItem = { 16843173, 16843551, 2130772307 };
+    public static final int[] FontFamily = { 2130772436, 2130772437, 2130772438, 2130772439, 2130772440, 2130772441 };
+    public static final int[] FontFamilyFont = { 16844082, 16844083, 16844095, 16844143, 16844144, 2130772442, 2130772443, 2130772444, 2130772445, 2130772446 };
+    public static final int[] GradientColor = { 16843165, 16843166, 16843169, 16843170, 16843171, 16843172, 16843265, 16843275, 16844048, 16844049, 16844050, 16844051 };
+    public static final int[] GradientColorItem = { 16843173, 16844052 };
   }
 }
 

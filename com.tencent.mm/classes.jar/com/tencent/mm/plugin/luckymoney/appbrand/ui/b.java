@@ -5,15 +5,15 @@ import com.tencent.mm.ui.MMActivity;
 
 public abstract interface b
 {
+  public abstract void Sp(String paramString);
+  
   public abstract void a(Class paramClass, Intent paramIntent, d.a parama);
   
-  public abstract void b(int paramInt, Intent paramIntent);
+  public abstract MMActivity bMN();
   
-  public abstract MMActivity bfn();
+  public abstract void bMO();
   
-  public abstract void bfo();
-  
-  public abstract void error(String paramString);
+  public abstract void e(int paramInt, Intent paramIntent);
 }
 
 

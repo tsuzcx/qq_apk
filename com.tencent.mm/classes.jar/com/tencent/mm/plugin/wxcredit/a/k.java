@@ -1,24 +1,33 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class k
 {
-  public double rQI;
-  public int rQN;
-  public double rQO;
-  public double rQP;
-  public int rQQ;
-  public double rQR;
-  public double rQS;
-  public boolean rQT;
-  public int rQU;
-  public String rQV;
-  public String rQW;
-  public String rQX;
-  public String rQY;
-  public String rQZ;
-  public String rRa;
-  public String rRb;
-  public j rRc = new j();
+  public String qkc;
+  public int vHE;
+  public double vHF;
+  public double vHG;
+  public int vHH;
+  public double vHI;
+  public double vHJ;
+  public boolean vHK;
+  public int vHL;
+  public String vHM;
+  public String vHN;
+  public String vHO;
+  public String vHP;
+  public String vHQ;
+  public String vHR;
+  public j vHS;
+  public double vHz;
+  
+  public k()
+  {
+    AppMethodBeat.i(48671);
+    this.vHS = new j();
+    AppMethodBeat.o(48671);
+  }
 }
 
 

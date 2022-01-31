@@ -1,27 +1,32 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
 import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.wxpay.a.f;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.bpw;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletLqtDetailUI$14
-  implements Runnable
+  implements View.OnClickListener
 {
   WalletLqtDetailUI$14(WalletLqtDetailUI paramWalletLqtDetailUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)WalletLqtDetailUI.d(this.qil).getLayoutParams();
-    localLayoutParams.topMargin = Math.max(this.qil.findViewById(a.f.lqt_detail_root).getHeight() - this.qil.findViewById(a.f.lqt_detail_inner_container).getBottom() - a.fromDPToPix(this.qil, 20) - a.fromDPToPix(this.qil, 20), a.fromDPToPix(this.qil, 50));
-    WalletLqtDetailUI.d(this.qil).setLayoutParams(localLayoutParams);
-    WalletLqtDetailUI.d(this.qil).setVisibility(0);
+    AppMethodBeat.i(45538);
+    if (!bo.isNullOrNil(WalletLqtDetailUI.e(this.tPQ).xEb))
+    {
+      e.m(this.tPQ, WalletLqtDetailUI.e(this.tPQ).xEb, false);
+      h.qsU.e(17084, new Object[] { Integer.valueOf(1) });
+    }
+    AppMethodBeat.o(45538);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtDetailUI.14
  * JD-Core Version:    0.7.0.1
  */

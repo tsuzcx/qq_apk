@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.record.ui;
 
-import com.tencent.mm.R.l;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class RecordMsgFileUI$6
   implements Runnable
@@ -12,8 +10,10 @@ final class RecordMsgFileUI$6
   
   public final void run()
   {
-    RecordMsgFileUI.g(this.nue);
-    h.bC(this.nue.mController.uMN, this.nue.getString(R.l.download_fail));
+    AppMethodBeat.i(24258);
+    RecordMsgFileUI.g(this.pZN);
+    h.bO(this.pZN.getContext(), this.pZN.getString(2131299004));
+    AppMethodBeat.o(24258);
   }
 }
 

@@ -12,15 +12,31 @@ public class SmileyPanel
     super(paramContext, paramAttributeSet);
   }
   
-  public void aN(boolean paramBoolean) {}
+  public void AA() {}
   
-  public void i(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void AB() {}
+  
+  public void AC() {}
+  
+  public void AD() {}
+  
+  public void AE() {}
+  
+  public void Ay() {}
+  
+  public void Az() {}
+  
+  public void bo(boolean paramBoolean) {}
+  
+  public void j(boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void onPause() {}
   
   public void onResume() {}
   
   public void refresh() {}
+  
+  public void set16029ExtraInfo(String paramString) {}
   
   public void setDefaultEmojiByDetail(String paramString) {}
   
@@ -31,18 +47,6 @@ public class SmileyPanel
   public void setSendButtonEnable(boolean paramBoolean) {}
   
   public void setTalkerName(String paramString) {}
-  
-  public void si() {}
-  
-  public void sj() {}
-  
-  public void sk() {}
-  
-  public void sl() {}
-  
-  public void sm() {}
-  
-  public void sn() {}
 }
 
 

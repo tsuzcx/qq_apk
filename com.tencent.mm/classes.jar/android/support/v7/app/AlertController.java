@@ -15,7 +15,6 @@ import android.os.Message;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.NestedScrollView.b;
 import android.support.v7.a.a.a;
-import android.support.v7.a.a.j;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,92 +41,92 @@ import java.lang.ref.WeakReference;
 
 public final class AlertController
 {
-  CharSequence BM;
-  Message NA;
-  Drawable NB;
-  public Button NC;
-  CharSequence ND;
-  Message NE;
-  Drawable NF;
-  NestedScrollView NG;
+  CharSequence Cv;
+  final e MZ;
+  int NA;
+  int NB;
+  int NC;
+  int ND;
+  int NE;
+  int NF;
+  boolean NG;
   int NH = 0;
-  TextView NI;
-  View NJ;
-  ListAdapter NK;
-  int NL = -1;
-  int NM;
-  int NN;
-  int NO;
-  int NP;
-  int NQ;
-  int NR;
-  boolean NS;
-  int NT = 0;
-  final View.OnClickListener NU = new View.OnClickListener()
+  final View.OnClickListener NI = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
-      if ((paramAnonymousView == AlertController.this.Nu) && (AlertController.this.Nw != null)) {
-        paramAnonymousView = Message.obtain(AlertController.this.Nw);
+      if ((paramAnonymousView == AlertController.this.Nj) && (AlertController.this.Nl != null)) {
+        paramAnonymousView = Message.obtain(AlertController.this.Nl);
       }
       for (;;)
       {
         if (paramAnonymousView != null) {
           paramAnonymousView.sendToTarget();
         }
-        AlertController.this.mHandler.obtainMessage(1, AlertController.this.Nj).sendToTarget();
+        AlertController.this.mHandler.obtainMessage(1, AlertController.this.MZ).sendToTarget();
         return;
-        if ((paramAnonymousView == AlertController.this.Ny) && (AlertController.this.NA != null)) {
-          paramAnonymousView = Message.obtain(AlertController.this.NA);
-        } else if ((paramAnonymousView == AlertController.this.NC) && (AlertController.this.NE != null)) {
-          paramAnonymousView = Message.obtain(AlertController.this.NE);
+        if ((paramAnonymousView == AlertController.this.Nn) && (AlertController.this.Np != null)) {
+          paramAnonymousView = Message.obtain(AlertController.this.Np);
+        } else if ((paramAnonymousView == AlertController.this.Nr) && (AlertController.this.Nt != null)) {
+          paramAnonymousView = Message.obtain(AlertController.this.Nt);
         } else {
           paramAnonymousView = null;
         }
       }
     }
   };
-  final i Nj;
-  final Window Nk;
-  final int Nl;
-  CharSequence Nm;
-  ListView Nn;
-  int No;
-  int Np;
-  int Nq;
-  int Nr;
-  int Ns;
-  boolean Nt = false;
-  public Button Nu;
-  CharSequence Nv;
-  Message Nw;
-  Drawable Nx;
-  public Button Ny;
-  CharSequence Nz;
-  TextView ee;
-  Drawable kc;
-  ImageView li;
+  final Window Na;
+  final int Nb;
+  CharSequence Nc;
+  int Nd;
+  int Ne;
+  int Nf;
+  int Ng;
+  int Nh;
+  boolean Ni = false;
+  public Button Nj;
+  CharSequence Nk;
+  Message Nl;
+  Drawable Nm;
+  public Button Nn;
+  CharSequence No;
+  Message Np;
+  Drawable Nq;
+  public Button Nr;
+  CharSequence Ns;
+  Message Nt;
+  Drawable Nu;
+  NestedScrollView Nv;
+  int Nw = 0;
+  TextView Nx;
+  View Ny;
+  int Nz = -1;
+  TextView fc;
+  Drawable la;
   final Context mContext;
   Handler mHandler;
+  ListView mListView;
   View mView;
+  ImageView me;
+  ListAdapter xw;
   
-  public AlertController(Context paramContext, i parami, Window paramWindow)
+  public AlertController(Context paramContext, e parame, Window paramWindow)
   {
     this.mContext = paramContext;
-    this.Nj = parami;
-    this.Nk = paramWindow;
-    this.mHandler = new b(parami);
-    paramContext = paramContext.obtainStyledAttributes(null, a.j.AlertDialog, a.a.alertDialogStyle, 0);
-    this.NM = paramContext.getResourceId(a.j.AlertDialog_android_layout, 0);
-    this.NN = paramContext.getResourceId(a.j.AlertDialog_buttonPanelSideLayout, 0);
-    this.NO = paramContext.getResourceId(a.j.AlertDialog_listLayout, 0);
-    this.NP = paramContext.getResourceId(a.j.AlertDialog_multiChoiceItemLayout, 0);
-    this.NQ = paramContext.getResourceId(a.j.AlertDialog_singleChoiceItemLayout, 0);
-    this.NR = paramContext.getResourceId(a.j.AlertDialog_listItemLayout, 0);
-    this.NS = paramContext.getBoolean(a.j.AlertDialog_showTitle, true);
-    this.Nl = paramContext.getDimensionPixelSize(a.j.AlertDialog_buttonIconDimen, 0);
+    this.MZ = parame;
+    this.Na = paramWindow;
+    this.mHandler = new b(parame);
+    paramContext = paramContext.obtainStyledAttributes(null, a.a.AlertDialog, 2130772216, 0);
+    this.NA = paramContext.getResourceId(0, 0);
+    this.NB = paramContext.getResourceId(1, 0);
+    this.NC = paramContext.getResourceId(2, 0);
+    this.ND = paramContext.getResourceId(3, 0);
+    this.NE = paramContext.getResourceId(4, 0);
+    this.NF = paramContext.getResourceId(5, 0);
+    this.NG = paramContext.getBoolean(6, true);
+    this.Nb = paramContext.getDimensionPixelSize(7, 0);
     paramContext.recycle();
-    parami.et();
+    parame.eS();
   }
   
   static void a(View paramView1, View paramView2, View paramView3)
@@ -164,7 +163,7 @@ public final class AlertController
     paramButton.setLayoutParams(localLayoutParams);
   }
   
-  static boolean aL(View paramView)
+  static boolean aS(View paramView)
   {
     if (paramView.onCheckIsTextEditor()) {
       return true;
@@ -178,7 +177,7 @@ public final class AlertController
     {
       int j = i - 1;
       i = j;
-      if (aL(paramView.getChildAt(j))) {
+      if (aS(paramView.getChildAt(j))) {
         return true;
       }
     }
@@ -223,122 +222,122 @@ public final class AlertController
     default: 
       throw new IllegalArgumentException("Button does not exist");
     case -1: 
-      this.Nv = paramCharSequence;
-      this.Nw = paramMessage;
-      this.Nx = paramDrawable;
+      this.Nk = paramCharSequence;
+      this.Nl = paramMessage;
+      this.Nm = paramDrawable;
       return;
     case -2: 
-      this.Nz = paramCharSequence;
-      this.NA = paramMessage;
-      this.NB = paramDrawable;
+      this.No = paramCharSequence;
+      this.Np = paramMessage;
+      this.Nq = paramDrawable;
       return;
     }
-    this.ND = paramCharSequence;
-    this.NE = paramMessage;
-    this.NF = paramDrawable;
+    this.Ns = paramCharSequence;
+    this.Nt = paramMessage;
+    this.Nu = paramDrawable;
   }
   
   public final void setIcon(int paramInt)
   {
-    this.kc = null;
-    this.NH = paramInt;
-    if (this.li != null)
+    this.la = null;
+    this.Nw = paramInt;
+    if (this.me != null)
     {
       if (paramInt != 0)
       {
-        this.li.setVisibility(0);
-        this.li.setImageResource(this.NH);
+        this.me.setVisibility(0);
+        this.me.setImageResource(this.Nw);
       }
     }
     else {
       return;
     }
-    this.li.setVisibility(8);
+    this.me.setVisibility(8);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
-    this.BM = paramCharSequence;
-    if (this.NI != null) {
-      this.NI.setText(paramCharSequence);
+    this.Cv = paramCharSequence;
+    if (this.Nx != null) {
+      this.Nx.setText(paramCharSequence);
     }
   }
   
   public static class RecycleListView
     extends ListView
   {
-    final int OB;
-    final int OC;
+    final int Op;
+    final int Oq;
     
     public RecycleListView(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.RecycleListView);
-      this.OC = paramContext.getDimensionPixelOffset(a.j.RecycleListView_paddingBottomNoButtons, -1);
-      this.OB = paramContext.getDimensionPixelOffset(a.j.RecycleListView_paddingTopNoTitle, -1);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.RecycleListView);
+      this.Oq = paramContext.getDimensionPixelOffset(0, -1);
+      this.Op = paramContext.getDimensionPixelOffset(1, -1);
     }
   }
   
   public static final class a
   {
-    public CharSequence BM;
-    public Cursor JM;
-    public final LayoutInflater Lu;
-    public int NH = 0;
-    public View NJ;
-    public ListAdapter NK;
-    public int NL = -1;
-    public int NY = 0;
-    public CharSequence NZ;
-    public CharSequence Nm;
-    public int No;
-    public int Np;
-    public int Nq;
-    public int Nr;
-    public int Ns;
-    public boolean Nt = false;
-    public Drawable Oa;
-    public DialogInterface.OnClickListener Ob;
-    public CharSequence Oc;
-    public Drawable Od;
-    public DialogInterface.OnClickListener Oe;
-    public CharSequence Of;
-    public Drawable Og;
-    public DialogInterface.OnClickListener Oh;
-    public DialogInterface.OnCancelListener Oi;
-    public DialogInterface.OnDismissListener Oj;
-    public DialogInterface.OnKeyListener Ok;
-    public CharSequence[] Ol;
-    public DialogInterface.OnClickListener Om;
-    public boolean[] On;
-    public boolean Oo;
-    public boolean Op;
-    public DialogInterface.OnMultiChoiceClickListener Oq;
-    public String Or;
-    public String Os;
-    public AdapterView.OnItemSelectedListener Ot;
-    public boolean Ou = true;
-    public Drawable kc;
+    public CharSequence Cv;
+    public Cursor Js;
+    public int NM = 0;
+    public CharSequence NN;
+    public Drawable NO;
+    public DialogInterface.OnClickListener NP;
+    public CharSequence NQ;
+    public Drawable NR;
+    public DialogInterface.OnClickListener NS;
+    public CharSequence NT;
+    public Drawable NU;
+    public DialogInterface.OnClickListener NV;
+    public DialogInterface.OnCancelListener NW;
+    public DialogInterface.OnDismissListener NX;
+    public DialogInterface.OnKeyListener NY;
+    public CharSequence[] NZ;
+    public CharSequence Nc;
+    public int Nd;
+    public int Ne;
+    public int Nf;
+    public int Ng;
+    public int Nh;
+    public boolean Ni = false;
+    public int Nw = 0;
+    public View Ny;
+    public int Nz = -1;
+    public DialogInterface.OnClickListener Oa;
+    public boolean[] Ob;
+    public boolean Oc;
+    public boolean Od;
+    public DialogInterface.OnMultiChoiceClickListener Oe;
+    public String Of;
+    public String Og;
+    public AdapterView.OnItemSelectedListener Oh;
+    public boolean Oi = true;
+    public Drawable la;
     public boolean mCancelable;
     public final Context mContext;
+    public final LayoutInflater mInflater;
     public View mView;
+    public ListAdapter xw;
     
     public a(Context paramContext)
     {
       this.mContext = paramContext;
       this.mCancelable = true;
-      this.Lu = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+      this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     }
   }
   
-  private static final class b
+  static final class b
     extends Handler
   {
-    private WeakReference<DialogInterface> OA;
+    private WeakReference<DialogInterface> Oo;
     
     public b(DialogInterface paramDialogInterface)
     {
-      this.OA = new WeakReference(paramDialogInterface);
+      this.Oo = new WeakReference(paramDialogInterface);
     }
     
     public final void handleMessage(Message paramMessage)
@@ -351,14 +350,14 @@ public final class AlertController
       case -3: 
       case -2: 
       case -1: 
-        ((DialogInterface.OnClickListener)paramMessage.obj).onClick((DialogInterface)this.OA.get(), paramMessage.what);
+        ((DialogInterface.OnClickListener)paramMessage.obj).onClick((DialogInterface)this.Oo.get(), paramMessage.what);
         return;
       }
       ((DialogInterface)paramMessage.obj).dismiss();
     }
   }
   
-  private static final class c
+  static final class c
     extends ArrayAdapter<CharSequence>
   {
     public c(Context paramContext, int paramInt, CharSequence[] paramArrayOfCharSequence)

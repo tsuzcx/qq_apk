@@ -2,54 +2,71 @@ package com.tencent.mm.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.OnLayoutChangedLinearLayout;
 
 public class KeyboardLinearLayout
   extends OnLayoutChangedLinearLayout
 {
-  public String TAG = "MicroMsg.KeyboardLinearLayout";
-  private boolean mHasInit = false;
+  public String TAG;
+  private boolean mHasInit;
   private int mHeight;
-  private boolean uKK;
-  private a uKL;
+  private boolean yYM;
+  private KeyboardLinearLayout.a yYN;
   
   public KeyboardLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(105972);
+    this.TAG = "MicroMsg.KeyboardLinearLayout";
+    this.mHasInit = false;
     this.mHasInit = false;
     this.mHeight = 0;
-    this.uKK = false;
+    this.yYM = false;
     this.TAG += getId();
+    AppMethodBeat.o(105972);
   }
   
   public KeyboardLinearLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.TAG = "MicroMsg.KeyboardLinearLayout";
+    this.mHasInit = false;
   }
   
-  public void CB(int paramInt)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(105973);
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    rM(paramInt4);
+    AppMethodBeat.o(105973);
+  }
+  
+  protected void rM(int paramInt)
+  {
+    AppMethodBeat.i(105974);
     if (!this.mHasInit)
     {
       this.mHasInit = true;
       this.mHeight = paramInt;
-      y.i(this.TAG, "init height:%d", new Object[] { Integer.valueOf(this.mHeight) });
-      if (this.uKL != null) {
-        this.uKL.rD(-1);
+      ab.i(this.TAG, "init height:%d", new Object[] { Integer.valueOf(this.mHeight) });
+      if (this.yYN != null) {
+        this.yYN.sJ(-1);
       }
-      if ((this.mHasInit) && (!this.uKK) && (this.mHeight - paramInt > 100))
+      if ((this.mHasInit) && (!this.yYM) && (this.mHeight - paramInt > 100))
       {
-        this.uKK = true;
-        rD(-3);
-        y.w(this.TAG, "show keyboard!! mHeight: " + this.mHeight + " b: " + paramInt);
+        this.yYM = true;
+        sJ(-3);
+        ab.w(this.TAG, "show keyboard!! mHeight: " + this.mHeight + " b: " + paramInt);
       }
-      if ((this.mHasInit) && (this.uKK) && (this.mHeight - paramInt <= 100))
+      if ((this.mHasInit) && (this.yYM) && (this.mHeight - paramInt <= 100))
       {
-        this.uKK = false;
-        rD(-2);
-        y.w(this.TAG, "hide keyboard!! mHeight: " + this.mHeight + " b: " + paramInt);
+        this.yYM = false;
+        sJ(-2);
+        ab.w(this.TAG, "hide keyboard!! mHeight: " + this.mHeight + " b: " + paramInt);
       }
+      AppMethodBeat.o(105974);
       return;
     }
     if (this.mHeight < paramInt) {}
@@ -60,32 +77,23 @@ public class KeyboardLinearLayout
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void sJ(int paramInt)
   {
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    CB(paramInt4);
-  }
-  
-  public void rD(int paramInt)
-  {
-    if (this.uKL != null) {
-      this.uKL.rD(paramInt);
+    AppMethodBeat.i(105975);
+    if (this.yYN != null) {
+      this.yYN.sJ(paramInt);
     }
+    AppMethodBeat.o(105975);
   }
   
-  public void setOnkbdStateListener(a parama)
+  public void setOnkbdStateListener(KeyboardLinearLayout.a parama)
   {
-    this.uKL = parama;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void rD(int paramInt);
+    this.yYN = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.KeyboardLinearLayout
  * JD-Core Version:    0.7.0.1
  */

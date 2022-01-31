@@ -5,12 +5,12 @@ public final class c$cf
 {
   public c$cf()
   {
-    super("getPaymentOrderRequest", "getPaymentOrderRequest", 116, true);
+    super("getInstallState", "get_install_state", 25, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.c.cf
  * JD-Core Version:    0.7.0.1
  */

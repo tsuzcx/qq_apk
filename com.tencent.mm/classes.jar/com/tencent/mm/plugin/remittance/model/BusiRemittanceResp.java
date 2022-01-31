@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.remittance.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.protocal.c.jy;
-import com.tencent.mm.protocal.c.za;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.adh;
+import com.tencent.mm.protocal.protobuf.mk;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 import java.util.List;
 import org.json.JSONObject;
@@ -13,33 +14,59 @@ import org.json.JSONObject;
 public class BusiRemittanceResp
   implements Parcelable
 {
-  public static final Parcelable.Creator<BusiRemittanceResp> CREATOR = new BusiRemittanceResp.1();
-  public int nxL = 0;
-  public String nxM = "";
-  public String nxN = "";
-  public int nxO;
-  public String nxP;
-  public String nxQ;
-  public List<za> nxR = new LinkedList();
-  public jy nxS;
-  public int nxT = 0;
-  public int nxU = 0;
-  public int nxV = 400;
+  public static final Parcelable.Creator<BusiRemittanceResp> CREATOR;
+  public int qiM;
+  public String qiN;
+  public String qiO;
+  public int qiP;
+  public String qiQ;
+  public String qiR;
+  public List<adh> qiS;
+  public mk qiT;
+  public int qiU;
+  public int qiV;
+  public int qiW;
   
-  BusiRemittanceResp() {}
+  static
+  {
+    AppMethodBeat.i(44726);
+    CREATOR = new BusiRemittanceResp.1();
+    AppMethodBeat.o(44726);
+  }
+  
+  BusiRemittanceResp()
+  {
+    AppMethodBeat.i(44722);
+    this.qiM = 0;
+    this.qiN = "";
+    this.qiO = "";
+    this.qiS = new LinkedList();
+    this.qiU = 0;
+    this.qiV = 0;
+    this.qiW = 400;
+    AppMethodBeat.o(44722);
+  }
   
   protected BusiRemittanceResp(Parcel paramParcel)
   {
-    this.nxL = paramParcel.readInt();
-    this.nxM = paramParcel.readString();
-    this.nxN = paramParcel.readString();
-    this.nxO = paramParcel.readInt();
-    this.nxP = paramParcel.readString();
-    this.nxQ = paramParcel.readString();
-    this.nxT = paramParcel.readInt();
-    this.nxU = paramParcel.readInt();
-    this.nxV = paramParcel.readInt();
-    this.nxR = new LinkedList();
+    AppMethodBeat.i(44724);
+    this.qiM = 0;
+    this.qiN = "";
+    this.qiO = "";
+    this.qiS = new LinkedList();
+    this.qiU = 0;
+    this.qiV = 0;
+    this.qiW = 400;
+    this.qiM = paramParcel.readInt();
+    this.qiN = paramParcel.readString();
+    this.qiO = paramParcel.readString();
+    this.qiP = paramParcel.readInt();
+    this.qiQ = paramParcel.readString();
+    this.qiR = paramParcel.readString();
+    this.qiU = paramParcel.readInt();
+    this.qiV = paramParcel.readInt();
+    this.qiW = paramParcel.readInt();
+    this.qiS = new LinkedList();
     int j = paramParcel.readInt();
     int i = 0;
     for (;;)
@@ -55,61 +82,71 @@ public class BusiRemittanceResp
         }
         try
         {
-          za localza = new za();
-          localza.aH(arrayOfByte1);
-          this.nxR.add(localza);
+          adh localadh = new adh();
+          localadh.parseFrom(arrayOfByte1);
+          this.qiS.add(localadh);
           i += 1;
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            y.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException, "", new Object[0]);
+            ab.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException, "", new Object[0]);
           }
         }
       }
     }
     i = paramParcel.readInt();
-    byte[] arrayOfByte2;
     if (i > 0)
     {
-      arrayOfByte2 = new byte[i];
+      byte[] arrayOfByte2 = new byte[i];
       paramParcel.readByteArray(arrayOfByte2);
-      this.nxS = new jy();
+      this.qiT = new mk();
+      try
+      {
+        this.qiT.parseFrom(arrayOfByte2);
+        AppMethodBeat.o(44724);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ab.printErrStackTrace("MicroMsg.BusiRemittanceResp", paramParcel, "", new Object[0]);
+      }
     }
-    try
-    {
-      this.nxS.aH(arrayOfByte2);
-      return;
-    }
-    catch (Exception paramParcel)
-    {
-      y.printErrStackTrace("MicroMsg.BusiRemittanceResp", paramParcel, "", new Object[0]);
-    }
+    AppMethodBeat.o(44724);
   }
   
   BusiRemittanceResp(JSONObject paramJSONObject)
   {
-    this.nxL = paramJSONObject.optInt("show_photo", 0);
-    this.nxM = paramJSONObject.optString("photo_url", "");
-    this.nxN = paramJSONObject.optString("favor_desc", "");
-    this.nxO = paramJSONObject.optInt("scan_scene", 0);
-    this.nxP = paramJSONObject.optString("favor_req_sign", "");
-    this.nxQ = paramJSONObject.optString("favor_req_extend", "");
-    this.nxT = paramJSONObject.optInt("get_favor_flag", 0);
-    this.nxU = paramJSONObject.optInt("photo_style", 0);
-    this.nxV = paramJSONObject.optInt("get_favor_interval", 400);
-    this.nxR = b.u(paramJSONObject.optJSONArray("favor_list"));
+    AppMethodBeat.i(44723);
+    this.qiM = 0;
+    this.qiN = "";
+    this.qiO = "";
+    this.qiS = new LinkedList();
+    this.qiU = 0;
+    this.qiV = 0;
+    this.qiW = 400;
+    this.qiM = paramJSONObject.optInt("show_photo", 0);
+    this.qiN = paramJSONObject.optString("photo_url", "");
+    this.qiO = paramJSONObject.optString("favor_desc", "");
+    this.qiP = paramJSONObject.optInt("scan_scene", 0);
+    this.qiQ = paramJSONObject.optString("favor_req_sign", "");
+    this.qiR = paramJSONObject.optString("favor_req_extend", "");
+    this.qiU = paramJSONObject.optInt("get_favor_flag", 0);
+    this.qiV = paramJSONObject.optInt("photo_style", 0);
+    this.qiW = paramJSONObject.optInt("get_favor_interval", 400);
+    this.qiS = b.z(paramJSONObject.optJSONArray("favor_list"));
     paramJSONObject = paramJSONObject.optJSONObject("favor_comm_resp");
     if (paramJSONObject != null)
     {
-      this.nxS = new jy();
-      this.nxS.sEL = paramJSONObject.optString("default_fav_compose_id");
-      this.nxS.sEJ = b.u(paramJSONObject.optJSONArray("favor_info_list"));
-      this.nxS.sEM = paramJSONObject.optString("favor_resp_sign");
-      this.nxS.sEN = paramJSONObject.optString("no_compose_wording");
-      this.nxS.sEK = b.t(paramJSONObject.optJSONArray("favor_compose_result_list"));
+      this.qiT = new mk();
+      this.qiT.wAU = paramJSONObject.optString("default_fav_compose_id");
+      this.qiT.wAS = b.z(paramJSONObject.optJSONArray("favor_info_list"));
+      this.qiT.wAV = paramJSONObject.optString("favor_resp_sign");
+      this.qiT.wAW = paramJSONObject.optString("no_compose_wording");
+      this.qiT.wAT = b.y(paramJSONObject.optJSONArray("favor_compose_result_list"));
     }
+    AppMethodBeat.o(44723);
   }
   
   public int describeContents()
@@ -119,27 +156,28 @@ public class BusiRemittanceResp
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.nxL);
-    paramParcel.writeString(this.nxM);
-    paramParcel.writeString(this.nxN);
-    paramParcel.writeInt(this.nxO);
-    paramParcel.writeString(this.nxP);
-    paramParcel.writeString(this.nxQ);
-    paramParcel.writeInt(this.nxT);
-    paramParcel.writeInt(this.nxU);
-    paramParcel.writeInt(this.nxV);
-    paramParcel.writeInt(this.nxR.size());
-    if (this.nxR.size() > 0)
+    AppMethodBeat.i(44725);
+    paramParcel.writeInt(this.qiM);
+    paramParcel.writeString(this.qiN);
+    paramParcel.writeString(this.qiO);
+    paramParcel.writeInt(this.qiP);
+    paramParcel.writeString(this.qiQ);
+    paramParcel.writeString(this.qiR);
+    paramParcel.writeInt(this.qiU);
+    paramParcel.writeInt(this.qiV);
+    paramParcel.writeInt(this.qiW);
+    paramParcel.writeInt(this.qiS.size());
+    if (this.qiS.size() > 0)
     {
       paramInt = 0;
       for (;;)
       {
-        if (paramInt < this.nxR.size())
+        if (paramInt < this.qiS.size())
         {
-          Object localObject1 = (za)this.nxR.get(paramInt);
+          Object localObject1 = (adh)this.qiS.get(paramInt);
           try
           {
-            localObject1 = ((za)localObject1).toByteArray();
+            localObject1 = ((adh)localObject1).toByteArray();
             paramParcel.writeInt(localObject1.length);
             if (localObject1.length > 0) {
               paramParcel.writeByteArray((byte[])localObject1);
@@ -150,7 +188,7 @@ public class BusiRemittanceResp
           {
             for (;;)
             {
-              y.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException1, "", new Object[0]);
+              ab.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException1, "", new Object[0]);
               localObject2 = new byte[0];
             }
           }
@@ -160,20 +198,21 @@ public class BusiRemittanceResp
     Object localObject2 = new byte[0];
     try
     {
-      byte[] arrayOfByte = this.nxS.toByteArray();
+      byte[] arrayOfByte = this.qiT.toByteArray();
       localObject2 = arrayOfByte;
     }
     catch (Exception localException2)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException2, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException2, "", new Object[0]);
       }
     }
     paramParcel.writeInt(localObject2.length);
     if (localObject2.length > 0) {
       paramParcel.writeByteArray((byte[])localObject2);
     }
+    AppMethodBeat.o(44725);
   }
 }
 

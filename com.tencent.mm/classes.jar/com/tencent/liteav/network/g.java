@@ -4,91 +4,117 @@ import android.content.Context;
 import android.os.Handler;
 import com.tencent.liteav.basic.e.b;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class g
 {
-  private String a = "";
-  private String b = "";
-  private int c = 0;
-  private String d = "";
+  private String a;
+  private String b;
+  private int c;
+  private String d;
   private Handler e;
   
   public g(Context paramContext)
   {
+    AppMethodBeat.i(67535);
+    this.a = "";
+    this.b = "";
+    this.c = 0;
+    this.d = "";
     if (paramContext != null) {
       this.e = new Handler(paramContext.getMainLooper());
     }
+    AppMethodBeat.o(67535);
   }
   
   private String a(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(67540);
     if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0))
     {
-      paramString1 = null;
-      return paramString1;
+      AppMethodBeat.o(67540);
+      return null;
     }
-    String str = paramString1.toLowerCase();
+    paramString1 = paramString1.toLowerCase();
     paramString2 = paramString2.split("[?&]");
     int j = paramString2.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label112;
-      }
-      paramString1 = paramString2[i];
-      if (paramString1.indexOf("=") != -1)
+      Object localObject1 = paramString2[i];
+      if (localObject1.indexOf("=") != -1)
       {
-        paramString1 = paramString1.split("[=]");
-        if (paramString1.length == 2)
+        Object localObject2 = localObject1.split("[=]");
+        if (localObject2.length == 2)
         {
-          Object localObject = paramString1[0];
-          paramString1 = paramString1[1];
-          if ((localObject != null) && (localObject.toLowerCase().equalsIgnoreCase(str))) {
-            break;
+          localObject1 = localObject2[0];
+          localObject2 = localObject2[1];
+          if ((localObject1 != null) && (localObject1.toLowerCase().equalsIgnoreCase(paramString1)))
+          {
+            AppMethodBeat.o(67540);
+            return localObject2;
           }
         }
       }
       i += 1;
     }
-    label112:
+    AppMethodBeat.o(67540);
     return "";
   }
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, g.a parama)
   {
+    AppMethodBeat.i(67539);
     new g.2(this, "getRTMPAccUrl", paramString2, paramString4, paramString3, paramString1, paramInt, parama).start();
+    AppMethodBeat.o(67539);
   }
   
   private boolean a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
   {
-    if (paramBoolean) {
-      if ((paramString1 == null) || (paramString1.isEmpty()) || (paramString2 == null) || (paramString2.isEmpty()) || (paramString3 == null) || (paramString3.isEmpty())) {}
-    }
-    while ((paramString1 != null) && (paramString2 != null) && (paramString3 != null))
+    AppMethodBeat.i(67537);
+    if (paramBoolean)
     {
-      return true;
+      if ((paramString1 != null) && (!paramString1.isEmpty()) && (paramString2 != null) && (!paramString2.isEmpty()) && (paramString3 != null) && (!paramString3.isEmpty()))
+      {
+        AppMethodBeat.o(67537);
+        return true;
+      }
+      AppMethodBeat.o(67537);
       return false;
     }
+    if ((paramString1 != null) && (paramString2 != null) && (paramString3 != null))
+    {
+      AppMethodBeat.o(67537);
+      return true;
+    }
+    AppMethodBeat.o(67537);
     return false;
   }
   
   private long e()
   {
-    return b.a().a("Network", "AccRetryCountWithoutSecret");
+    AppMethodBeat.i(67538);
+    long l = b.a().a("Network", "AccRetryCountWithoutSecret");
+    AppMethodBeat.o(67538);
+    return l;
   }
   
   public int a(String paramString, int paramInt, g.a parama)
   {
+    AppMethodBeat.i(67536);
     this.a = "";
     this.b = "";
     this.c = 0;
     this.d = "";
-    if ((paramString == null) || (paramString.isEmpty())) {
+    if ((paramString == null) || (paramString.isEmpty()))
+    {
+      AppMethodBeat.o(67536);
       return -1;
     }
     String str1 = TXCCommonUtil.getStreamIDByStreamUrl(paramString);
-    if ((str1 == null) || (str1.isEmpty())) {
+    if ((str1 == null) || (str1.isEmpty()))
+    {
+      AppMethodBeat.o(67536);
       return -2;
     }
     String str2 = a("bizid", paramString);
@@ -97,10 +123,13 @@ public class g
     if (e() <= 0L) {}
     for (boolean bool = true;; bool = false)
     {
-      if (!a(bool, str2, paramString, str3)) {
+      if (!a(bool, str2, paramString, str3))
+      {
+        AppMethodBeat.o(67536);
         return -3;
       }
       a(str1, str2, str3, paramString, paramInt, new g.1(this, str1, str2, str3, paramString, parama));
+      AppMethodBeat.o(67536);
       return 0;
     }
   }

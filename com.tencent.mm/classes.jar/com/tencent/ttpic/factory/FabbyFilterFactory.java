@@ -1,38 +1,39 @@
 package com.tencent.ttpic.factory;
 
 import com.tencent.filter.BaseFilter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FabbyFilterFactory
 {
   public static BaseFilter createFilter(String paramString)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (paramString == null) {
-      return localObject2;
+    Object localObject = null;
+    AppMethodBeat.i(81919);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(81919);
+      return null;
     }
     FabbyFilterFactory.FILTER_MODEL[] arrayOfFILTER_MODEL = FabbyFilterFactory.FILTER_MODEL.values();
     int j = arrayOfFILTER_MODEL.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      localObject2 = localObject1;
-      if (i >= j) {
-        break;
-      }
       FabbyFilterFactory.FILTER_MODEL localFILTER_MODEL = arrayOfFILTER_MODEL[i];
       if (localFILTER_MODEL.name.equals(paramString))
       {
-        localObject2 = TTPicFilterFactoryLocal.creatFilterById(localFILTER_MODEL.filterId);
-        localObject1 = localObject2;
-        if (localObject2 != null)
+        BaseFilter localBaseFilter = TTPicFilterFactoryLocal.creatFilterById(localFILTER_MODEL.filterId);
+        localObject = localBaseFilter;
+        if (localBaseFilter != null)
         {
-          ((BaseFilter)localObject2).setEffectIndex(localFILTER_MODEL.effectIndex);
-          localObject1 = localObject2;
+          localBaseFilter.setEffectIndex(localFILTER_MODEL.effectIndex);
+          localObject = localBaseFilter;
         }
       }
       i += 1;
     }
+    AppMethodBeat.o(81919);
+    return localObject;
   }
 }
 

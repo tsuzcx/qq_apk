@@ -1,8 +1,19 @@
 package com.tencent.mm.compatible.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public enum a
 {
-  private static volatile a.a duJ = new a.1();
+  private static volatile a.a emz;
+  
+  static
+  {
+    AppMethodBeat.i(92909);
+    emy = new a("INSTANCE");
+    emA = new a[] { emy };
+    emz = new a.1();
+    AppMethodBeat.o(92909);
+  }
   
   private a() {}
   
@@ -10,7 +21,7 @@ public enum a
   {
     try
     {
-      duJ = parama;
+      emz = parama;
       return;
     }
     finally
@@ -20,9 +31,18 @@ public enum a
     }
   }
   
-  public static void bq(long paramLong)
+  public static void ga(long paramLong)
   {
-    duJ.br(paramLong);
+    AppMethodBeat.i(92907);
+    emz.w(853L, paramLong);
+    AppMethodBeat.o(92907);
+  }
+  
+  public static void gb(long paramLong)
+  {
+    AppMethodBeat.i(92908);
+    emz.w(650L, paramLong);
+    AppMethodBeat.o(92908);
   }
 }
 

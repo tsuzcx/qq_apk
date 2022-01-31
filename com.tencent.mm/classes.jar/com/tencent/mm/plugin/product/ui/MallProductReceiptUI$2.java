@@ -4,9 +4,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.b.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 final class MallProductReceiptUI$2
@@ -16,21 +17,23 @@ final class MallProductReceiptUI$2
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = MallProductReceiptUI.c(this.mUe);
-    if ((paramAdapterView.mSh != null) && (paramInt < paramAdapterView.mSh.size())) {}
-    for (paramAdapterView = (String)paramAdapterView.mSh.get(paramInt);; paramAdapterView = null)
+    AppMethodBeat.i(44091);
+    paramAdapterView = MallProductReceiptUI.c(this.pwk);
+    if ((paramAdapterView.puo != null) && (paramInt < paramAdapterView.puo.size())) {}
+    for (paramAdapterView = (String)paramAdapterView.puo.get(paramInt);; paramAdapterView = null)
     {
-      y.d("MicroMsg.MallProductReceiptUI", "onItemClick receipt = " + paramAdapterView);
-      if (!bk.bl(paramAdapterView)) {
-        MallProductReceiptUI.a(this.mUe).setText(paramAdapterView);
+      ab.d("MicroMsg.MallProductReceiptUI", "onItemClick receipt = ".concat(String.valueOf(paramAdapterView)));
+      if (!bo.isNullOrNil(paramAdapterView)) {
+        MallProductReceiptUI.a(this.pwk).setText(paramAdapterView);
       }
+      AppMethodBeat.o(44091);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MallProductReceiptUI.2
  * JD-Core Version:    0.7.0.1
  */

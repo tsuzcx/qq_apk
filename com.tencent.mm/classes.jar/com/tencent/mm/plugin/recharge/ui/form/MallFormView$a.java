@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recharge.ui.form;
 
 public abstract interface MallFormView$a
 {
-  public abstract void gG(boolean paramBoolean);
+  public abstract void onInputValidChange(boolean paramBoolean);
 }
 
 

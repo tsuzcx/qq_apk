@@ -1,9 +1,11 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
+import com.tencent.liteav.basic.d.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
-  extends com.tencent.liteav.basic.d.d
+  extends g
 {
   private float r = 2.0F;
   private int s;
@@ -16,25 +18,32 @@ public class d
   
   void a(float paramFloat)
   {
+    AppMethodBeat.i(67054);
     this.r = paramFloat;
     a(this.s, this.r / this.e);
     a(this.t, this.r / this.f);
+    AppMethodBeat.o(67054);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(67053);
     super.a(paramInt1, paramInt2);
     a(this.r);
+    AppMethodBeat.o(67053);
   }
   
   public boolean b()
   {
+    AppMethodBeat.i(67052);
     if (super.b())
     {
       this.s = GLES20.glGetUniformLocation(this.a, "texelWidthOffset");
       this.t = GLES20.glGetUniformLocation(this.a, "texelHeightOffset");
+      AppMethodBeat.o(67052);
       return true;
     }
+    AppMethodBeat.o(67052);
     return false;
   }
 }

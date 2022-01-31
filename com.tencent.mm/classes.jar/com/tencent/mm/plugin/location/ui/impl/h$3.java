@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.location.ui.impl;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class h$3
   implements View.OnClickListener
@@ -11,10 +12,12 @@ final class h$3
   
   public final void onClick(View paramView)
   {
-    y.d("MicroMsg.TrackMapUI", "newpoi old go back onclick");
-    this.lKp.bMJ = 0;
-    this.lKp.beX();
-    this.lKp.bff();
+    AppMethodBeat.i(113697);
+    ab.d("MicroMsg.TrackMapUI", "newpoi old go back onclick");
+    this.ohE.cud = 0;
+    this.ohE.bMt();
+    this.ohE.bMD();
+    AppMethodBeat.o(113697);
   }
 }
 

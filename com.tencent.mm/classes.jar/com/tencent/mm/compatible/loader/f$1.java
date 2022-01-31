@@ -1,24 +1,26 @@
 package com.tencent.mm.compatible.loader;
 
 import android.os.Process;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bf;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bj;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class f$1
-  extends bf<String>
+  extends bj<String>
 {
   public f$1(f paramf)
   {
     super(2000L, null, (byte)0);
   }
   
-  private static String zz()
+  private static String Mc()
   {
+    AppMethodBeat.i(93036);
     for (;;)
     {
-      String str = bk.am(ae.getContext(), Process.myPid());
+      String str = bo.az(ah.getContext(), Process.myPid());
       if (str != null) {
         break;
       }
@@ -28,9 +30,10 @@ public final class f$1
       }
       catch (InterruptedException localInterruptedException)
       {
-        y.printErrStackTrace("MicroMsg.ProfileFactoryImpl", localInterruptedException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.ProfileFactoryImpl", localInterruptedException, "", new Object[0]);
       }
     }
+    AppMethodBeat.o(93036);
     return localInterruptedException;
   }
 }

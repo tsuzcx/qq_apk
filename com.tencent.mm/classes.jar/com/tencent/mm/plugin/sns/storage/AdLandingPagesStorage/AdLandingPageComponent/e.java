@@ -1,17 +1,10 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public final class e
-  extends s
+  extends l
 {
-  public List<s> aPf = new ArrayList();
-  
-  protected final List<s> bEY()
-  {
-    return this.aPf;
-  }
+  public String knR;
+  public String knc;
 }
 
 

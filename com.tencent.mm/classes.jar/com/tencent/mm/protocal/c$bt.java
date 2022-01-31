@@ -5,7 +5,7 @@ public final class c$bt
 {
   public c$bt()
   {
-    super("getGameCommInfo", "getGameCommInfo", 241, false);
+    super("getBrandWCPayBindCardRequest", "get_brand_WCPay_bind_card_request", 58, true);
   }
 }
 

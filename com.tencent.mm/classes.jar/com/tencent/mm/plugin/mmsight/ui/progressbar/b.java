@@ -5,39 +5,49 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.PointF;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  ValueAnimator hsF;
-  PointF mrA;
-  float mrB = 0.0F;
-  float mrC = 0.0F;
-  float mrD = 0.0F;
-  float mrE = 0.0F;
-  Path mrF;
-  private Paint mrG = null;
-  a mrr;
-  a mrs;
-  boolean mrt = false;
-  public b.a mru;
-  PointF mrv;
-  PointF mrw;
-  PointF mrx;
-  PointF mry;
-  PointF mrz;
-  float progress = 0.0F;
+  ValueAnimator ggX;
+  a oRf;
+  a oRg;
+  boolean oRh;
+  public b.a oRi;
+  PointF oRj;
+  PointF oRk;
+  PointF oRl;
+  PointF oRm;
+  PointF oRn;
+  PointF oRo;
+  float oRp;
+  float oRq;
+  float oRr;
+  float oRs;
+  Path oRt;
+  private Paint oRu;
+  float progress;
   
   public b(a parama1, a parama2, b.a parama)
   {
-    this.mrr = parama1;
-    this.mrs = parama2;
-    this.mru = parama;
-    this.mrC = (MMSightProgressBar.jGD * 2.0F);
-    this.mrD = (-MMSightProgressBar.jGD * 0.5F);
-    this.mrF = new Path();
-    this.mrG = new Paint();
-    this.mrG.setAntiAlias(true);
-    this.mrG.setStyle(Paint.Style.FILL);
+    AppMethodBeat.i(55343);
+    this.progress = 0.0F;
+    this.oRh = false;
+    this.oRp = 0.0F;
+    this.oRq = 0.0F;
+    this.oRr = 0.0F;
+    this.oRs = 0.0F;
+    this.oRu = null;
+    this.oRf = parama1;
+    this.oRg = parama2;
+    this.oRi = parama;
+    this.oRq = (MMSightProgressBar.lQb * 2.0F);
+    this.oRr = (-MMSightProgressBar.lQb * 0.5F);
+    this.oRt = new Path();
+    this.oRu = new Paint();
+    this.oRu.setAntiAlias(true);
+    this.oRu.setStyle(Paint.Style.FILL);
+    AppMethodBeat.o(55343);
   }
 }
 

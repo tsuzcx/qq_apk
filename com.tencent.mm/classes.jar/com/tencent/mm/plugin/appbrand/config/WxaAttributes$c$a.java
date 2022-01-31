@@ -2,25 +2,27 @@ package com.tencent.mm.plugin.appbrand.config;
 
 public final class WxaAttributes$c$a
 {
-  public boolean fKF;
-  public boolean fKG;
-  public int fKH;
-  public int fPO;
-  public boolean fPP;
-  public int fPQ;
-  public int fPR;
-  public int fPY;
-  public int fPZ;
-  public int fQa;
-  public int fQb;
-  public int fQc;
-  public int fQd;
-  public boolean fQe;
-  public boolean fQn;
-  public int fRm;
-  public int fRn;
-  public int fRo;
-  public int fRp;
+  public boolean bDE;
+  public int bDG;
+  public int bDp;
+  public int bDq;
+  public int bDr;
+  public int bDs;
+  public int bDt;
+  public int bDu;
+  public boolean bDv;
+  public boolean bDw;
+  public boolean hdS;
+  public boolean hdT;
+  public int hdU;
+  public int hiR;
+  public boolean hiS;
+  public int hiV;
+  public int hiW;
+  public int hjY;
+  public int hjZ;
+  public int hka;
+  public int hkb;
 }
 
 

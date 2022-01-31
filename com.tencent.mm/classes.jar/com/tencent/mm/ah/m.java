@@ -1,194 +1,138 @@
 package com.tencent.mm.ah;
 
-import com.tencent.mm.model.bg;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.Looper;
+import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.h.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ui.base.h;
 import junit.framework.Assert;
 
-public abstract class m
+public final class m
+  implements f
 {
-  public boolean aSd = false;
-  public e edc;
-  public long edd = bk.UZ();
-  public int ede = -1;
-  private s edf;
-  f edg;
-  public boolean edh;
-  public q edi;
-  private int limit = -99;
-  int priority = 0;
+  private Context context;
+  private ProgressDialog fsw;
+  private Runnable fsx;
+  private Runnable fsy;
+  private String path;
   
-  public boolean KA()
+  public m(Context paramContext, String paramString)
   {
-    return Ka() == 1;
+    AppMethodBeat.i(77946);
+    this.fsx = null;
+    this.fsy = null;
+    this.context = paramContext;
+    this.path = paramString;
+    this.fsw = null;
+    g.Rc().a(157, this);
+    AppMethodBeat.o(77946);
   }
   
-  public final q KB()
+  public final boolean a(Runnable paramRunnable1, Runnable paramRunnable2)
   {
-    return this.edi;
-  }
-  
-  public final int KC()
-  {
-    if (this.edi == null) {
-      return 0;
-    }
-    return this.edi.hashCode();
-  }
-  
-  public int Ka()
-  {
-    return 1;
-  }
-  
-  public boolean Kx()
-  {
-    return false;
-  }
-  
-  public boolean Ky()
-  {
-    return this.limit <= 0;
-  }
-  
-  public boolean Kz()
-  {
-    return false;
-  }
-  
-  public abstract int a(e parame, f paramf);
-  
-  public int a(e parame, final q paramq, final k paramk)
-  {
-    c(parame);
-    this.edi = paramq;
-    paramk = bg.a(paramk);
-    int i = bg.HT();
-    if (i != 0) {
-      return i;
-    }
-    if (this.limit == -99)
+    AppMethodBeat.i(77948);
+    if ((this.context != null) && (this.path != null) && (this.path.length() > 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.limit = Ka();
-      y.i("MicroMsg.NetSceneBase", "initilized security limit count to " + this.limit);
+      Assert.assertTrue(bool);
+      this.fsx = paramRunnable1;
+      this.fsy = paramRunnable2;
+      paramRunnable1 = new l(this.path);
+      g.Rc().a(paramRunnable1, 0);
+      ab.i("MicroMsg.ProcessUploadHDHeadImg", "post is null ? %B", new Object[] { Boolean.FALSE });
+      AppMethodBeat.o(77948);
+      return true;
     }
-    if (Ka() > 1) {
-      switch (2.edm[b(paramq).ordinal()])
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  {
+    AppMethodBeat.i(77949);
+    ab.i("MicroMsg.ProcessUploadHDHeadImg", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    g.Rc().b(157, this);
+    if ((this.fsw != null) && (this.fsw.isShowing()) && ((this.context instanceof Activity)) && (!((Activity)this.context).isFinishing())) {}
+    try
+    {
+      this.fsw.dismiss();
+      if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-      default: 
-        Assert.assertTrue("invalid security verification status", false);
+        Toast.makeText(this.context, 2131303505, 0).show();
+        if (this.fsx != null) {
+          new ak(Looper.getMainLooper()).post(this.fsx);
+        }
+        AppMethodBeat.o(77949);
+        return;
       }
     }
-    while (Ky())
+    catch (IllegalArgumentException paramm)
     {
-      y.e("MicroMsg.NetSceneBase", "dispatch failed, scene limited for security, current limit=" + Ka());
-      a(a.edo);
-      this.ede = -1;
-      return this.ede;
-      Assert.assertTrue("scene security verification not passed, type=" + paramq.getType() + ", uri=" + paramq.getUri() + ", CHECK NOW", false);
-      continue;
-      y.e("MicroMsg.NetSceneBase", "scene security verification not passed, type=" + paramq.getType() + ", uri=" + paramq.getUri());
-      this.limit -= 1;
-      a(a.edn);
-      this.ede = -1;
-      return this.ede;
-    }
-    this.limit -= 1;
-    u localu = new u(paramq);
-    if ((this.edf != null) && (!Kz())) {
-      this.edf.cancel();
-    }
-    this.edf = new s(paramq, paramk, this, this.edg, parame);
-    this.ede = parame.a(localu, this.edf);
-    y.i("MicroMsg.NetSceneBase", "dispatcher send, %s", new Object[] { Integer.valueOf(this.ede) });
-    if (this.ede < 0)
-    {
-      y.i("MicroMsg.NetSceneBase", "dispatcher send, %s, ThreadID:%s, getType:%s", new Object[] { Integer.valueOf(this.ede), Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(paramq.getType()) });
-      new ah().post(new Runnable()
+      for (;;)
       {
-        public final void run()
+        ab.e("MicroMsg.ProcessUploadHDHeadImg", "dismiss dialog err" + paramm.getMessage());
+      }
+      if (this.fsy != null) {
+        new ak(Looper.getMainLooper()).post(this.fsy);
+      }
+      if ((paramString != null) && (paramString.length() > 0))
+      {
+        paramString = a.kO(paramString);
+        if (paramString != null)
         {
-          y.i("MicroMsg.NetSceneBase", "dispatcher send, %s, ThreadID:%s, getType:%s", new Object[] { Integer.valueOf(m.this.ede), Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(paramq.getType()) });
-          paramk.a(-1, 3, -1, "send to network failed", paramq, null);
-          y.i("MicroMsg.NetSceneBase", "dispatcher send, %s, ThreadID:%s, getType:%s", new Object[] { Integer.valueOf(m.this.ede), Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(paramq.getType()) });
+          paramString.a(this.context, null, null);
+          AppMethodBeat.o(77949);
+          return;
         }
-      });
-      return 99999999;
+      }
+      if ((paramInt1 == 4) && (paramInt2 == -4))
+      {
+        Toast.makeText(this.context, 2131298682, 0).show();
+        AppMethodBeat.o(77949);
+        return;
+      }
+      Toast.makeText(this.context, 2131303504, 0).show();
+      AppMethodBeat.o(77949);
     }
-    parame = this.edf;
-    parame.handler.postDelayed(parame.edV, 330000L);
-    return this.ede;
   }
   
-  public void a(a parama) {}
-  
-  public boolean a(m paramm)
+  public final boolean v(Runnable paramRunnable)
   {
-    return false;
-  }
-  
-  public b b(q paramq)
-  {
-    return b.edq;
-  }
-  
-  public boolean b(m paramm)
-  {
-    return false;
-  }
-  
-  public final void c(e parame)
-  {
-    this.edd = bk.UZ();
-    this.edc = parame;
-  }
-  
-  public void cancel()
-  {
-    y.i("MicroMsg.NetSceneBase", "cancel: %d, hash:%d, type:%d", new Object[] { Integer.valueOf(this.ede), Integer.valueOf(hashCode()), Integer.valueOf(getType()) });
-    this.aSd = true;
-    if (this.edf != null) {
-      this.edf.cancel();
-    }
-    if ((this.ede != -1) && (this.edc != null))
+    AppMethodBeat.i(77947);
+    if ((this.context != null) && (this.path != null) && (this.path.length() > 0))
     {
-      int i = this.ede;
-      this.ede = -1;
-      this.edc.cancel(i);
+      bool = true;
+      Assert.assertTrue(bool);
+      this.fsx = paramRunnable;
+      Object localObject = this.context;
+      this.context.getString(2131297087);
+      this.fsw = h.b((Context)localObject, this.context.getString(2131303506), true, null);
+      localObject = new l(this.path);
+      g.Rc().a((com.tencent.mm.ai.m)localObject, 0);
+      if (paramRunnable != null) {
+        break label131;
+      }
     }
-  }
-  
-  public String getInfo()
-  {
-    return "";
-  }
-  
-  public abstract int getType();
-  
-  public final void reset()
-  {
-    this.edd = bk.UZ();
-    this.ede = -1;
-    this.limit = -99;
-  }
-  
-  protected static enum a
-  {
-    private a() {}
-  }
-  
-  protected static enum b
-  {
-    private b() {}
+    label131:
+    for (boolean bool = true;; bool = false)
+    {
+      ab.i("MicroMsg.ProcessUploadHDHeadImg", "post is null ? %B", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(77947);
+      return true;
+      bool = false;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ah.m
  * JD-Core Version:    0.7.0.1
  */

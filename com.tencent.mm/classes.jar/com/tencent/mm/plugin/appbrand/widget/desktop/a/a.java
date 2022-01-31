@@ -6,23 +6,25 @@ import android.view.View;
 
 public abstract interface a
 {
-  public abstract boolean J(RecyclerView.v paramv);
+  public abstract boolean O(RecyclerView.v paramv);
   
-  public abstract boolean K(RecyclerView.v paramv);
+  public abstract boolean P(RecyclerView.v paramv);
   
-  public abstract boolean L(RecyclerView.v paramv);
+  public abstract void a(RecyclerView.v paramv, View paramView, Object paramObject, int paramInt);
   
-  public abstract void a(RecyclerView.v paramv, View paramView);
+  public abstract boolean a(RecyclerView.v paramv, Object paramObject);
   
   public abstract View b(RecyclerView paramRecyclerView, RecyclerView.v paramv);
   
-  public abstract void ba(Object paramObject);
+  public abstract void b(int paramInt1, int paramInt2, Object paramObject, boolean paramBoolean);
   
-  public abstract void c(Object paramObject, boolean paramBoolean);
+  public abstract void bn(Object paramObject);
+  
+  public abstract void cz(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.a.a
  * JD-Core Version:    0.7.0.1
  */

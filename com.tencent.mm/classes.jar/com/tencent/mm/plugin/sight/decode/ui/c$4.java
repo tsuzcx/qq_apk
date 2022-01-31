@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sight.decode.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class c$4
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class c$4
   
   public final void run()
   {
-    this.ofW.dismiss();
+    AppMethodBeat.i(70284);
+    this.qUl.dismiss();
+    AppMethodBeat.o(70284);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.c.4
  * JD-Core Version:    0.7.0.1
  */

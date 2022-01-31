@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import android.os.Looper;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.Vector;
 
 final class c$2
@@ -13,17 +14,18 @@ final class c$2
   public final void run()
   {
     int i = 1;
-    c localc = this.jtu;
-    ae localae = this.jtv;
-    if (localc.jtr == null)
+    AppMethodBeat.i(19091);
+    c localc = this.lCT;
+    ae localae = this.lCU;
+    if (localc.lCQ == null)
     {
-      y.w("MicroMsg.exdevice.ExDeviceTaskService", "dispathcer is null, now try to reset it");
-      if (localc.jts == null) {
-        break label94;
+      ab.w("MicroMsg.exdevice.ExDeviceTaskService", "dispathcer is null, now try to reset it");
+      if (localc.lCR == null) {
+        break label106;
       }
-      y.i("MicroMsg.exdevice.ExDeviceTaskService", "prepare dispatcher is not null. not prepare it");
-      localc.jts.aLs();
-      new am(Looper.getMainLooper(), new c.1(localc), true).S(100L, 100L);
+      ab.i("MicroMsg.exdevice.ExDeviceTaskService", "prepare dispatcher is not null. not prepare it");
+      localc.lCR.bpG();
+      new ap(Looper.getMainLooper(), new c.1(localc), true).ag(100L, 100L);
     }
     for (;;)
     {
@@ -31,17 +33,19 @@ final class c$2
       if (i == 0) {
         break;
       }
-      localae.a(localc.jtr, localc);
+      localae.a(localc.lCQ, localc);
+      AppMethodBeat.o(19091);
       return;
-      label94:
-      y.e("MicroMsg.exdevice.ExDeviceTaskService", "prepare dispatcher is null");
+      label106:
+      ab.e("MicroMsg.exdevice.ExDeviceTaskService", "prepare dispatcher is null");
     }
-    localc.jtt.add(localae);
+    localc.lCS.add(localae);
+    AppMethodBeat.o(19091);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.c.2
  * JD-Core Version:    0.7.0.1
  */

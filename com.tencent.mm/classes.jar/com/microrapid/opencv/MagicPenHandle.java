@@ -2,11 +2,21 @@ package com.microrapid.opencv;
 
 import android.graphics.Bitmap;
 import com.tencent.filter.QImage;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MagicPenHandle
 {
-  private final long aVf = nativeMagicPen();
-  private boolean aVg = false;
+  private final long blO;
+  private boolean blP;
+  
+  public MagicPenHandle()
+  {
+    AppMethodBeat.i(86267);
+    this.blP = false;
+    this.blO = nativeMagicPen();
+    this.blP = true;
+    AppMethodBeat.o(86267);
+  }
   
   private native void nativeAddCenterToList(long paramLong, float paramFloat1, float paramFloat2);
   
@@ -72,17 +82,19 @@ public class MagicPenHandle
   
   protected void finalize()
   {
-    if (this.aVg)
+    AppMethodBeat.i(86266);
+    if (this.blP)
     {
-      nativeDispose(this.aVf);
-      this.aVg = false;
+      nativeDispose(this.blO);
+      this.blP = false;
     }
     super.finalize();
+    AppMethodBeat.o(86266);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.microrapid.opencv.MagicPenHandle
  * JD-Core Version:    0.7.0.1
  */

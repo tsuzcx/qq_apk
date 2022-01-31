@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.bag;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class WebViewBagBgView$1
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class WebViewBagBgView$1
   
   public final void run()
   {
-    WebViewBagBgView.a(this.rsq);
-    this.rsq.invalidate();
+    AppMethodBeat.i(8197);
+    WebViewBagBgView.a(this.viv);
+    this.viv.invalidate();
+    AppMethodBeat.o(8197);
   }
 }
 

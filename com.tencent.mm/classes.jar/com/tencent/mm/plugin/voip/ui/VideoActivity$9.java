@@ -1,32 +1,17 @@
 package com.tencent.mm.plugin.voip.ui;
 
-import android.app.Notification.Builder;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.os.Message;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
-import com.tencent.mm.plugin.notification.b.a;
-import com.tencent.mm.plugin.voip.a.d;
-import com.tencent.mm.plugin.voip.widget.VoipForegroundService;
-import com.tencent.mm.plugin.voip.widget.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VideoActivity$9
-  extends ah
+  implements Runnable
 {
   VideoActivity$9(VideoActivity paramVideoActivity) {}
   
-  public final void handleMessage(Message paramMessage)
+  public final void run()
   {
-    super.handleMessage(paramMessage);
-    paramMessage = new Intent();
-    paramMessage.setClass(ae.getContext(), VoipForegroundService.class);
-    paramMessage = PendingIntent.getService(ae.getContext(), 0, paramMessage, 134217728);
-    paramMessage = d.a(new Notification.Builder(ae.getContext()).setContentIntent(paramMessage).setOngoing(true));
-    paramMessage.icon = b.bSL();
-    ((a)g.t(a.class)).getNotification().a(40, paramMessage, false);
+    AppMethodBeat.i(4795);
+    VideoActivity.e(this.tCq);
+    AppMethodBeat.o(4795);
   }
 }
 

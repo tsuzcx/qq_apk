@@ -1,16 +1,14 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
 import android.content.Context;
-import com.tencent.mm.R.l;
-import com.tencent.mm.bh.d;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bi.d;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.n.a;
 import com.tencent.mm.pluginsdk.ui.applet.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.aw;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.base.h;
 
@@ -21,37 +19,41 @@ final class b$2$1
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
+    AppMethodBeat.i(25346);
     if (paramBoolean1)
     {
-      au.Hx();
-      paramString2 = c.Fw().abl(this.pwi.username);
+      com.tencent.mm.model.aw.aaz();
+      paramString2 = c.YA().arw(this.sXO.username);
       paramString1 = paramString2;
-      if ((int)paramString2.dBe == 0)
+      if ((int)paramString2.euF == 0)
       {
-        paramString2 = this.pwj;
-        au.Hx();
+        paramString2 = this.sXP;
+        com.tencent.mm.model.aw.aaz();
         paramString1 = paramString2;
-        if (!c.Fw().V(paramString2))
+        if (!c.YA().Y(paramString2))
         {
-          y.e("MicroMsg.FMessageConversationUI", "canAddContact fail, insert fail");
+          ab.e("MicroMsg.FMessageConversationUI", "canAddContact fail, insert fail");
+          AppMethodBeat.o(25346);
           return;
         }
       }
-      s.q(paramString1);
-      d.RY().du(this.pwi.username, 1);
-      h.bC(b.a(this.pwk.pwh), b.a(this.pwk.pwh).getString(R.l.app_added));
-      b.a(this.pwk.pwh, this.pwi.username);
+      t.q(paramString1);
+      d.ali().eD(this.sXO.username, 1);
+      h.bO(b.a(this.sXQ.sXN), b.a(this.sXQ.sXN).getString(2131296540));
+      b.a(this.sXQ.sXN, this.sXO.username);
     }
     for (;;)
     {
-      this.pwk.pwh.notifyDataSetChanged();
+      this.sXQ.sXN.notifyDataSetChanged();
+      AppMethodBeat.o(25346);
       return;
       if (!paramBoolean2) {
         break;
       }
-      d.RY().du(this.pwi.username, 2);
+      d.ali().eD(this.sXO.username, 2);
     }
-    y.e("MicroMsg.FMessageConversationUI", "canAddContact fail, username = " + this.pwi.username);
+    ab.e("MicroMsg.FMessageConversationUI", "canAddContact fail, username = " + this.sXO.username);
+    AppMethodBeat.o(25346);
   }
 }
 

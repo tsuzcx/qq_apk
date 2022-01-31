@@ -8,34 +8,43 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.tencent.mm.plugin.emoji.f.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class MMCopiableTextView
   extends EditText
   implements View.OnLongClickListener
 {
-  private final String TAG = "MicroMsg.MMCopiableTextView";
-  private int hxB;
-  private int jjF;
+  private final String TAG;
+  private int jpL;
+  private int lsx;
   
   public MMCopiableTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(53855);
+    this.TAG = "MicroMsg.MMCopiableTextView";
     init();
+    AppMethodBeat.o(53855);
   }
   
   public MMCopiableTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(53856);
+    this.TAG = "MicroMsg.MMCopiableTextView";
     init();
+    AppMethodBeat.o(53856);
   }
   
   private void init()
   {
+    AppMethodBeat.i(53857);
     setOnLongClickListener(this);
     setLongClickable(true);
+    AppMethodBeat.o(53857);
   }
   
   protected boolean getDefaultEditable()
@@ -47,28 +56,30 @@ public class MMCopiableTextView
   
   public boolean onLongClick(View paramView)
   {
+    AppMethodBeat.i(53858);
     paramView = getEditableText().toString();
-    if ((!bk.bl(paramView)) && (this.hxB > 0) && (this.jjF > 0) && (this.jjF > this.hxB))
+    if ((!bo.isNullOrNil(paramView)) && (this.jpL > 0) && (this.lsx > 0) && (this.lsx > this.jpL))
     {
-      ClipboardManager localClipboardManager = (ClipboardManager)getContext().getSystemService("clipboard");
+      ClipboardManager localClipboardManager = (ClipboardManager)ah.getContext().getSystemService("clipboard");
       if (localClipboardManager != null)
       {
-        localClipboardManager.setText(paramView.substring(this.hxB, this.jjF).trim());
-        y.i("MicroMsg.MMCopiableTextView", "copy text :%s", new Object[] { localClipboardManager.getText() });
+        localClipboardManager.setText(paramView.substring(this.jpL, this.lsx).trim());
+        ab.i("MicroMsg.MMCopiableTextView", "copy text :%s", new Object[] { localClipboardManager.getText() });
       }
-      Toast.makeText(getContext(), f.h.app_copy_ok, 0).show();
+      Toast.makeText(getContext(), 2131296896, 0).show();
     }
+    AppMethodBeat.o(53858);
     return false;
   }
   
   public void setEndIndex(int paramInt)
   {
-    this.jjF = paramInt;
+    this.lsx = paramInt;
   }
   
   public void setStartIndex(int paramInt)
   {
-    this.hxB = paramInt;
+    this.jpL = paramInt;
   }
 }
 

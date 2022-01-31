@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wxcredit.ui;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletWXCreditOpenUI$1
   implements CompoundButton.OnCheckedChangeListener
@@ -11,7 +12,9 @@ final class WalletWXCreditOpenUI$1
   
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    WalletWXCreditOpenUI.a(this.rRU).setEnabled(paramBoolean);
+    AppMethodBeat.i(48750);
+    WalletWXCreditOpenUI.a(this.vIK).setEnabled(paramBoolean);
+    AppMethodBeat.o(48750);
   }
 }
 

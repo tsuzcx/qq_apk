@@ -1,108 +1,136 @@
 package com.tencent.mm.plugin.freewifi;
 
 import android.net.Uri;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.g.b;
 import com.tencent.mm.plugin.freewifi.model.j;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.protocal.c.ad;
-import com.tencent.mm.protocal.c.rh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.protocal.protobuf.ad;
+import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class h
 {
-  private String aRC;
-  private b kmC = j.aUj();
+  private b mIo;
+  private String userAgent;
   
-  private void Di(String paramString)
+  private h()
   {
-    if (("0".equals(paramString)) || ("1".equals(paramString))) {}
-    try
-    {
-      this.kmC.dj(a.kmG.key, paramString);
-      return;
-    }
-    catch (Exception paramString) {}
+    AppMethodBeat.i(20583);
+    this.mIo = j.bAL();
+    AppMethodBeat.o(20583);
   }
   
-  private void Dj(String paramString)
+  private void Oq(String paramString)
   {
-    if (!m.isEmpty(paramString)) {}
-    try
-    {
-      Uri.parse(paramString);
-      this.kmC.dj(a.kmH.key, paramString);
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
-  private void Dk(String paramString)
-  {
-    if (!m.isEmpty(paramString)) {}
-    try
-    {
-      Uri.parse(paramString);
-      this.kmC.dj(a.kmI.key, paramString);
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
-  private void aTo()
-  {
-    try
-    {
-      String str = this.kmC.DA(a.kmD.key);
-      if ((!m.isEmpty(str)) && (Integer.valueOf(str).intValue() < Integer.valueOf(a.kmD.kmJ).intValue()))
+    AppMethodBeat.i(20593);
+    if (("0".equals(paramString)) || ("1".equals(paramString))) {
+      try
       {
-        rn(Integer.valueOf(a.kmE.kmJ).intValue());
-        ro(Integer.valueOf(a.kmF.kmJ).intValue());
-        Dj(a.kmH.kmJ);
-        Di(a.kmG.kmJ);
-        Dk(a.kmI.kmJ);
-        rm(Integer.valueOf(a.kmD.kmJ).intValue());
+        this.mIo.ex(h.a.mIs.key, paramString);
+        AppMethodBeat.o(20593);
+        return;
+      }
+      catch (Exception paramString) {}
+    }
+    AppMethodBeat.o(20593);
+  }
+  
+  private void Or(String paramString)
+  {
+    AppMethodBeat.i(20595);
+    if (!m.isEmpty(paramString)) {
+      try
+      {
+        Uri.parse(paramString);
+        this.mIo.ex(h.a.mIt.key, paramString);
+        AppMethodBeat.o(20595);
+        return;
+      }
+      catch (Exception paramString) {}
+    }
+    AppMethodBeat.o(20595);
+  }
+  
+  private void Os(String paramString)
+  {
+    AppMethodBeat.i(20597);
+    if (!m.isEmpty(paramString)) {
+      try
+      {
+        Uri.parse(paramString);
+        this.mIo.ex(h.a.mIu.key, paramString);
+        AppMethodBeat.o(20597);
+        return;
+      }
+      catch (Exception paramString) {}
+    }
+    AppMethodBeat.o(20597);
+  }
+  
+  private void bzT()
+  {
+    try
+    {
+      AppMethodBeat.i(20585);
+      try
+      {
+        String str = this.mIo.OI(h.a.mIp.key);
+        if ((!m.isEmpty(str)) && (Integer.valueOf(str).intValue() < Integer.valueOf(h.a.mIp.mIv).intValue()))
+        {
+          wh(Integer.valueOf(h.a.mIq.mIv).intValue());
+          wi(Integer.valueOf(h.a.mIr.mIv).intValue());
+          Or(h.a.mIt.mIv);
+          Oq(h.a.mIs.mIv);
+          Os(h.a.mIu.mIv);
+          wg(Integer.valueOf(h.a.mIp.mIv).intValue());
+        }
+        AppMethodBeat.o(20585);
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ab.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "updateDiskDbCacheIfLowerThanDefault exception. " + m.f(localException));
+          AppMethodBeat.o(20585);
+        }
       }
       return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        y.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "updateDiskDbCacheIfLowerThanDefault exception. " + m.g(localException));
-      }
     }
     finally {}
   }
   
-  private void rm(int paramInt)
+  private void wg(int paramInt)
   {
     try
     {
-      if (paramInt > Integer.valueOf(a.kmD.kmJ).intValue()) {
-        j.aUj().dj(a.kmD.key, String.valueOf(paramInt));
+      AppMethodBeat.i(20587);
+      if (paramInt > Integer.valueOf(h.a.mIp.mIv).intValue()) {
+        j.bAL().ex(h.a.mIp.key, String.valueOf(paramInt));
       }
+      AppMethodBeat.o(20587);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
-  private static void rn(int paramInt)
+  private static void wh(int paramInt)
   {
+    AppMethodBeat.i(20589);
     if (paramInt > 0) {
-      j.aUj().dj(a.kmE.key, String.valueOf(paramInt));
+      j.bAL().ex(h.a.mIq.key, String.valueOf(paramInt));
     }
+    AppMethodBeat.o(20589);
   }
   
-  private void ro(int paramInt)
+  private void wi(int paramInt)
   {
+    AppMethodBeat.i(20591);
     if (paramInt > 0) {
-      this.kmC.dj(a.kmF.key, String.valueOf(paramInt));
+      this.mIo.ex(h.a.mIr.key, String.valueOf(paramInt));
     }
+    AppMethodBeat.o(20591);
   }
   
   public final void a(ad paramad)
@@ -111,199 +139,213 @@ public final class h
     {
       try
       {
-        aTo();
-        if ((paramad == null) || (paramad.ssM == null))
+        AppMethodBeat.i(20584);
+        bzT();
+        if ((paramad == null) || (paramad.wlr == null))
         {
-          y.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config is null.");
+          ab.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config is null.");
+          AppMethodBeat.o(20584);
           return;
         }
-        this.kmC.aUJ();
-        if (paramad.ssM.version == -1)
+        this.mIo.bBj();
+        if (paramad.wlr.version == -1)
         {
-          this.kmC.aUK();
-          y.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "all local config data deleted.");
-          this.kmC.aUJ();
+          this.mIo.axH();
+          ab.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "all local config data deleted.");
+          this.mIo.bBj();
+          AppMethodBeat.o(20584);
           continue;
         }
-        if (paramad.ssM.version <= aTp()) {
-          continue;
+        if (paramad.wlr.version <= bzU()) {
+          break label384;
         }
       }
       finally {}
-      y.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version is %d, local version is %d.", new Object[] { Integer.valueOf(paramad.ssM.version), Integer.valueOf(aTp()) });
-      y.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version = %d " + paramad.ssM.version);
-      y.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpConnectTimeoutMillis = %d " + paramad.ssM.sPj);
-      y.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpReadTimeoutMillis = %d " + paramad.ssM.sPk);
-      y.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingUrl = %s " + paramad.ssM.bHH);
-      y.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingEnabled = %s " + paramad.ssM.bHG);
-      y.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.ThreeTwoBlackUrl = %s " + paramad.ssM.sPl);
-      rn(paramad.ssM.sPj);
-      ro(paramad.ssM.sPk);
-      Dj(paramad.ssM.bHH);
-      Di(paramad.ssM.bHG);
-      Dk(paramad.ssM.sPl);
-      rm(paramad.ssM.version);
-      y.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "local config data changed.");
-      this.kmC.aUJ();
+      ab.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version is %d, local version is %d.", new Object[] { Integer.valueOf(paramad.wlr.version), Integer.valueOf(bzU()) });
+      ab.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.version = %d " + paramad.wlr.version);
+      ab.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpConnectTimeoutMillis = %d " + paramad.wlr.wNA);
+      ab.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.httpReadTimeoutMillis = %d " + paramad.wlr.wNB);
+      ab.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingUrl = %s " + paramad.wlr.coW);
+      ab.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.pingEnabled = %s " + paramad.wlr.coV);
+      ab.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "resp.config.ThreeTwoBlackUrl = %s " + paramad.wlr.wNC);
+      wh(paramad.wlr.wNA);
+      wi(paramad.wlr.wNB);
+      Or(paramad.wlr.coW);
+      Oq(paramad.wlr.coV);
+      Os(paramad.wlr.wNC);
+      wg(paramad.wlr.version);
+      ab.i("MicroMsg.FreeWifi.FreeWifiConfigHelper", "local config data changed.");
+      this.mIo.bBj();
+      label384:
+      AppMethodBeat.o(20584);
     }
   }
   
-  /* Error */
-  public final int aTp()
+  public final int bzU()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 149	com/tencent/mm/plugin/freewifi/h:aTo	()V
-    //   6: aload_0
-    //   7: getfield 25	com/tencent/mm/plugin/freewifi/h:kmC	Lcom/tencent/mm/plugin/freewifi/g/b;
-    //   10: getstatic 79	com/tencent/mm/plugin/freewifi/h$a:kmD	Lcom/tencent/mm/plugin/freewifi/h$a;
-    //   13: getfield 49	com/tencent/mm/plugin/freewifi/h$a:key	Ljava/lang/String;
-    //   16: invokevirtual 83	com/tencent/mm/plugin/freewifi/g/b:DA	(Ljava/lang/String;)Ljava/lang/String;
-    //   19: astore_2
-    //   20: aload_2
-    //   21: invokestatic 62	com/tencent/mm/plugin/freewifi/m:isEmpty	(Ljava/lang/String;)Z
-    //   24: ifeq +20 -> 44
-    //   27: getstatic 79	com/tencent/mm/plugin/freewifi/h$a:kmD	Lcom/tencent/mm/plugin/freewifi/h$a;
-    //   30: getfield 96	com/tencent/mm/plugin/freewifi/h$a:kmJ	Ljava/lang/String;
-    //   33: invokestatic 89	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   36: invokevirtual 93	java/lang/Integer:intValue	()I
-    //   39: istore_1
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: iload_1
-    //   43: ireturn
-    //   44: aload_2
-    //   45: invokestatic 89	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   48: invokevirtual 93	java/lang/Integer:intValue	()I
-    //   51: istore_1
-    //   52: goto -12 -> 40
-    //   55: astore_2
-    //   56: getstatic 79	com/tencent/mm/plugin/freewifi/h$a:kmD	Lcom/tencent/mm/plugin/freewifi/h$a;
-    //   59: getfield 96	com/tencent/mm/plugin/freewifi/h$a:kmJ	Ljava/lang/String;
-    //   62: invokestatic 89	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   65: invokevirtual 93	java/lang/Integer:intValue	()I
-    //   68: istore_1
-    //   69: goto -29 -> 40
-    //   72: astore_2
-    //   73: aload_0
-    //   74: monitorexit
-    //   75: aload_2
-    //   76: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	77	0	this	h
-    //   39	30	1	i	int
-    //   19	26	2	str	String
-    //   55	1	2	localException	Exception
-    //   72	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   6	40	55	java/lang/Exception
-    //   44	52	55	java/lang/Exception
-    //   2	6	72	finally
-    //   6	40	72	finally
-    //   44	52	72	finally
-    //   56	69	72	finally
+    for (;;)
+    {
+      String str;
+      try
+      {
+        AppMethodBeat.i(20586);
+        bzT();
+      }
+      finally {}
+      try
+      {
+        str = this.mIo.OI(h.a.mIp.key);
+        if (!m.isEmpty(str)) {
+          continue;
+        }
+        i = Integer.valueOf(h.a.mIp.mIv).intValue();
+        AppMethodBeat.o(20586);
+      }
+      catch (Exception localException)
+      {
+        i = Integer.valueOf(h.a.mIp.mIv).intValue();
+        AppMethodBeat.o(20586);
+        continue;
+      }
+      return i;
+      i = Integer.valueOf(str).intValue();
+      AppMethodBeat.o(20586);
+    }
   }
   
-  public final int aTq()
+  public final int bzV()
   {
-    aTo();
+    AppMethodBeat.i(20588);
+    bzT();
+    int i;
     try
     {
-      String str = this.kmC.DA(a.kmE.key);
-      if (m.isEmpty(str)) {
-        return Integer.valueOf(a.kmE.kmJ).intValue();
+      String str = this.mIo.OI(h.a.mIq.key);
+      if (m.isEmpty(str))
+      {
+        i = Integer.valueOf(h.a.mIq.mIv).intValue();
+        AppMethodBeat.o(20588);
+        return i;
       }
-      int i = Integer.valueOf(str).intValue();
+      i = Integer.valueOf(str).intValue();
+      AppMethodBeat.o(20588);
       return i;
     }
-    catch (Exception localException) {}
-    return Integer.valueOf(a.kmE.kmJ).intValue();
+    catch (Exception localException)
+    {
+      i = Integer.valueOf(h.a.mIq.mIv).intValue();
+      AppMethodBeat.o(20588);
+    }
+    return i;
   }
   
-  public final int aTr()
+  public final int bzW()
   {
-    aTo();
+    AppMethodBeat.i(20590);
+    bzT();
+    int i;
     try
     {
-      String str = this.kmC.DA(a.kmF.key);
-      if (m.isEmpty(str)) {
-        return Integer.valueOf(a.kmF.kmJ).intValue();
+      String str = this.mIo.OI(h.a.mIr.key);
+      if (m.isEmpty(str))
+      {
+        i = Integer.valueOf(h.a.mIr.mIv).intValue();
+        AppMethodBeat.o(20590);
+        return i;
       }
-      int i = Integer.valueOf(str).intValue();
+      i = Integer.valueOf(str).intValue();
+      AppMethodBeat.o(20590);
       return i;
     }
-    catch (Exception localException) {}
-    return Integer.valueOf(a.kmF.kmJ).intValue();
+    catch (Exception localException)
+    {
+      i = Integer.valueOf(h.a.mIr.mIv).intValue();
+      AppMethodBeat.o(20590);
+    }
+    return i;
   }
   
-  public final String aTs()
+  public final String bzX()
   {
-    aTo();
+    AppMethodBeat.i(20592);
+    bzT();
     try
     {
-      if ("0".equals(this.kmC.DA(a.kmG.key))) {
+      if ("0".equals(this.mIo.OI(h.a.mIs.key)))
+      {
+        AppMethodBeat.o(20592);
         return "0";
       }
+      AppMethodBeat.o(20592);
       return "1";
     }
-    catch (Exception localException) {}
-    return a.kmG.kmJ;
-  }
-  
-  public final String aTt()
-  {
-    aTo();
-    try
+    catch (Exception localException)
     {
-      String str = this.kmC.DA(a.kmH.key);
-      if (m.isEmpty(str)) {
-        return a.kmH.kmJ;
-      }
-      Uri.parse(str);
+      String str = h.a.mIs.mIv;
+      AppMethodBeat.o(20592);
       return str;
     }
-    catch (Exception localException) {}
-    return a.kmH.kmJ;
   }
   
-  public final String aTu()
+  public final String bzY()
   {
-    aTo();
+    AppMethodBeat.i(20594);
+    bzT();
     try
     {
-      String str = this.kmC.DA(a.kmI.key);
-      if (m.isEmpty(str)) {
-        return a.kmI.kmJ;
+      String str1 = this.mIo.OI(h.a.mIt.key);
+      if (m.isEmpty(str1))
+      {
+        str1 = h.a.mIt.mIv;
+        AppMethodBeat.o(20594);
+        return str1;
       }
-      Uri.parse(str);
-      return str;
+      Uri.parse(str1);
+      AppMethodBeat.o(20594);
+      return str1;
     }
-    catch (Exception localException) {}
-    return a.kmI.kmJ;
+    catch (Exception localException)
+    {
+      String str2 = h.a.mIt.mIv;
+      AppMethodBeat.o(20594);
+      return str2;
+    }
+  }
+  
+  public final String bzZ()
+  {
+    AppMethodBeat.i(20596);
+    bzT();
+    try
+    {
+      String str1 = this.mIo.OI(h.a.mIu.key);
+      if (m.isEmpty(str1))
+      {
+        str1 = h.a.mIu.mIv;
+        AppMethodBeat.o(20596);
+        return str1;
+      }
+      Uri.parse(str1);
+      AppMethodBeat.o(20596);
+      return str1;
+    }
+    catch (Exception localException)
+    {
+      String str2 = h.a.mIu.mIv;
+      AppMethodBeat.o(20596);
+      return str2;
+    }
   }
   
   public final String getUserAgent()
   {
-    if (m.isEmpty(this.aRC)) {
-      this.aRC = s.aX(ae.getContext(), null).toLowerCase();
+    AppMethodBeat.i(20598);
+    if (m.isEmpty(this.userAgent)) {
+      this.userAgent = u.bD(ah.getContext(), null).toLowerCase();
     }
-    return this.aRC;
-  }
-  
-  static enum a
-  {
-    String key;
-    String kmJ;
-    
-    private a(String paramString1, String paramString2)
-    {
-      this.key = paramString1;
-      this.kmJ = paramString2;
-    }
+    String str = this.userAgent;
+    AppMethodBeat.o(20598);
+    return str;
   }
 }
 

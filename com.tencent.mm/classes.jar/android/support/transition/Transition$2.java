@@ -2,7 +2,7 @@ package android.support.transition;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.support.v4.f.a;
+import android.support.v4.e.a;
 import java.util.ArrayList;
 
 final class Transition$2
@@ -12,13 +12,13 @@ final class Transition$2
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.st.remove(paramAnimator);
-    Transition.c(this.su).remove(paramAnimator);
+    this.tu.remove(paramAnimator);
+    Transition.c(this.tv).remove(paramAnimator);
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    Transition.c(this.su).add(paramAnimator);
+    Transition.c(this.tv).add(paramAnimator);
   }
 }
 

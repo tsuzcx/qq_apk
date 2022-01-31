@@ -1,30 +1,27 @@
 package com.tencent.mm.plugin.masssend.ui;
 
-import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.modelcontrol.d;
-import com.tencent.mm.plugin.mmsight.model.l;
-import com.tencent.mm.protocal.c.avn;
-import com.tencent.mm.sdk.platformtools.ai;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.masssend.a.f;
 
 final class MassSendMsgUI$15
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  MassSendMsgUI$15(MassSendMsgUI paramMassSendMsgUI, String paramString, int paramInt) {}
+  MassSendMsgUI$15(MassSendMsgUI paramMassSendMsgUI, f paramf) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    VideoTransPara localVideoTransPara = d.Nl().Nm();
-    avn localavn = new avn();
-    localavn.tra = true;
-    if (l.a(this.kjY, localVideoTransPara, localavn, new MassSendMsgUI.15.1(this))) {
-      l.b(this.kjY, localVideoTransPara, localavn, new MassSendMsgUI.15.2(this));
-    }
-    ai.d(new MassSendMsgUI.15.3(this));
+    AppMethodBeat.i(153549);
+    aw.Rc().a(this.oBE);
+    AppMethodBeat.o(153549);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.MassSendMsgUI.15
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ public abstract interface g
 {
   public abstract void a(long paramLong1, long paramLong2, long paramLong3, ArrayList<b> paramArrayList, long paramLong4, HashSet<String> paramHashSet);
   
-  public abstract void cz(int paramInt1, int paramInt2);
+  public abstract void dX(int paramInt1, int paramInt2);
 }
 
 

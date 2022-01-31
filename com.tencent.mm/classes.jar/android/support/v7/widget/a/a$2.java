@@ -14,66 +14,66 @@ final class a$2
 {
   a$2(a parama) {}
   
-  public final void Z(boolean paramBoolean)
+  public final void ac(boolean paramBoolean)
   {
     if (!paramBoolean) {
       return;
     }
-    this.aoa.e(null, 0);
+    this.aqr.e(null, 0);
   }
   
   public final boolean h(MotionEvent paramMotionEvent)
   {
-    this.aoa.anW.onTouchEvent(paramMotionEvent);
+    this.aqr.aqn.onTouchEvent(paramMotionEvent);
     int i = paramMotionEvent.getActionMasked();
     Object localObject;
     if (i == 0)
     {
-      this.aoa.fC = paramMotionEvent.getPointerId(0);
-      this.aoa.anF = paramMotionEvent.getX();
-      this.aoa.anG = paramMotionEvent.getY();
-      localObject = this.aoa;
-      if (((a)localObject).fB != null) {
-        ((a)localObject).fB.recycle();
+      this.aqr.mActivePointerId = paramMotionEvent.getPointerId(0);
+      this.aqr.apW = paramMotionEvent.getX();
+      this.aqr.apX = paramMotionEvent.getY();
+      localObject = this.aqr;
+      if (((a)localObject).mVelocityTracker != null) {
+        ((a)localObject).mVelocityTracker.recycle();
       }
-      ((a)localObject).fB = VelocityTracker.obtain();
-      if (this.aoa.anE == null)
+      ((a)localObject).mVelocityTracker = VelocityTracker.obtain();
+      if (this.aqr.apV == null)
       {
-        a locala = this.aoa;
-        if (locala.anQ.isEmpty()) {
+        a locala = this.aqr;
+        if (locala.aqh.isEmpty()) {
           break label349;
         }
         View localView = locala.k(paramMotionEvent);
-        i = locala.anQ.size() - 1;
+        i = locala.aqh.size() - 1;
         if (i < 0) {
           break label349;
         }
-        localObject = (a.c)locala.anQ.get(i);
-        if (((a.c)localObject).ahi.aie != localView) {
+        localObject = (a.c)locala.aqh.get(i);
+        if (((a.c)localObject).ajy.aku != localView) {
           break label342;
         }
         label168:
         if (localObject != null)
         {
-          locala = this.aoa;
-          locala.anF -= ((a.c)localObject).aoq;
-          locala = this.aoa;
-          locala.anG -= ((a.c)localObject).aor;
-          this.aoa.b(((a.c)localObject).ahi, true);
-          if (this.aoa.anC.remove(((a.c)localObject).ahi.aie)) {
-            this.aoa.anN.a(this.aoa.acI, ((a.c)localObject).ahi);
+          locala = this.aqr;
+          locala.apW -= ((a.c)localObject).mX;
+          locala = this.aqr;
+          locala.apX -= ((a.c)localObject).mY;
+          this.aqr.b(((a.c)localObject).ajy, true);
+          if (this.aqr.apT.remove(((a.c)localObject).ajy.aku)) {
+            this.aqr.aqe.a(this.aqr.adt, ((a.c)localObject).ajy);
           }
-          this.aoa.e(((a.c)localObject).ahi, ((a.c)localObject).anO);
-          this.aoa.a(paramMotionEvent, this.aoa.anP, 0);
+          this.aqr.e(((a.c)localObject).ajy, ((a.c)localObject).aqf);
+          this.aqr.a(paramMotionEvent, this.aqr.aqg, 0);
         }
       }
     }
     for (;;)
     {
-      if (this.aoa.fB != null) {
-        this.aoa.fB.addMovement(paramMotionEvent);
+      if (this.aqr.mVelocityTracker != null) {
+        this.aqr.mVelocityTracker.addMovement(paramMotionEvent);
       }
-      if (this.aoa.anE == null) {
+      if (this.aqr.apV == null) {
         break label426;
       }
       return true;
@@ -85,14 +85,14 @@ final class a$2
       break label168;
       if ((i == 3) || (i == 1))
       {
-        this.aoa.fC = -1;
-        this.aoa.e(null, 0);
+        this.aqr.mActivePointerId = -1;
+        this.aqr.e(null, 0);
       }
-      else if (this.aoa.fC != -1)
+      else if (this.aqr.mActivePointerId != -1)
       {
-        int j = paramMotionEvent.findPointerIndex(this.aoa.fC);
+        int j = paramMotionEvent.findPointerIndex(this.aqr.mActivePointerId);
         if (j >= 0) {
-          this.aoa.a(i, paramMotionEvent, j);
+          this.aqr.a(i, paramMotionEvent, j);
         }
       }
     }
@@ -103,11 +103,11 @@ final class a$2
   public final void i(MotionEvent paramMotionEvent)
   {
     int i = 0;
-    this.aoa.anW.onTouchEvent(paramMotionEvent);
-    if (this.aoa.fB != null) {
-      this.aoa.fB.addMovement(paramMotionEvent);
+    this.aqr.aqn.onTouchEvent(paramMotionEvent);
+    if (this.aqr.mVelocityTracker != null) {
+      this.aqr.mVelocityTracker.addMovement(paramMotionEvent);
     }
-    if (this.aoa.fC == -1) {}
+    if (this.aqr.mActivePointerId == -1) {}
     int j;
     do
     {
@@ -117,11 +117,11 @@ final class a$2
       {
         return;
         j = paramMotionEvent.getActionMasked();
-        k = paramMotionEvent.findPointerIndex(this.aoa.fC);
+        k = paramMotionEvent.findPointerIndex(this.aqr.mActivePointerId);
         if (k >= 0) {
-          this.aoa.a(j, paramMotionEvent, k);
+          this.aqr.a(j, paramMotionEvent, k);
         }
-        localv = this.aoa.anE;
+        localv = this.aqr.apV;
       } while (localv == null);
       switch (j)
       {
@@ -134,30 +134,30 @@ final class a$2
       case 3: 
         for (;;)
         {
-          this.aoa.e(null, 0);
-          this.aoa.fC = -1;
+          this.aqr.e(null, 0);
+          this.aqr.mActivePointerId = -1;
           return;
           if (k < 0) {
             break;
           }
-          this.aoa.a(paramMotionEvent, this.aoa.anP, k);
-          this.aoa.G(localv);
-          this.aoa.acI.removeCallbacks(this.aoa.anR);
-          this.aoa.anR.run();
-          this.aoa.acI.invalidate();
+          this.aqr.a(paramMotionEvent, this.aqr.aqg, k);
+          this.aqr.M(localv);
+          this.aqr.adt.removeCallbacks(this.aqr.aqi);
+          this.aqr.aqi.run();
+          this.aqr.adt.invalidate();
           return;
-          if (this.aoa.fB != null) {
-            this.aoa.fB.clear();
+          if (this.aqr.mVelocityTracker != null) {
+            this.aqr.mVelocityTracker.clear();
           }
         }
       }
       j = paramMotionEvent.getActionIndex();
-    } while (paramMotionEvent.getPointerId(j) != this.aoa.fC);
+    } while (paramMotionEvent.getPointerId(j) != this.aqr.mActivePointerId);
     if (j == 0) {
       i = 1;
     }
-    this.aoa.fC = paramMotionEvent.getPointerId(i);
-    this.aoa.a(paramMotionEvent, this.aoa.anP, j);
+    this.aqr.mActivePointerId = paramMotionEvent.getPointerId(i);
+    this.aqr.a(paramMotionEvent, this.aqr.aqg, j);
   }
 }
 

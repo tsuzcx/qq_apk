@@ -3,9 +3,7 @@ package com.tencent.mm.plugin.game.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameLibraryUI$6
   implements View.OnClickListener
@@ -14,21 +12,23 @@ final class GameLibraryUI$6
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(112036);
     int i = 6;
     if ((paramView.getTag() instanceof String))
     {
-      c.a(paramView, this.lcP);
+      com.tencent.mm.plugin.game.f.c.a(paramView, this.nAK);
       i = 7;
     }
     for (;;)
     {
-      b.a(this.lcP, 11, 1113, 1, i, GameLibraryUI.e(this.lcP), null);
+      com.tencent.mm.game.report.c.a(this.nAK, 11, 1113, 1, i, GameLibraryUI.e(this.nAK), null);
+      AppMethodBeat.o(112036);
       return;
-      paramView = new Intent(this.lcP, GameCategoryUI.class);
+      paramView = new Intent(this.nAK, GameCategoryUI.class);
       paramView.putExtra("extra_type", 2);
-      paramView.putExtra("extra_category_name", this.lcP.getString(g.i.game_library_more_game));
+      paramView.putExtra("extra_category_name", this.nAK.getString(2131300389));
       paramView.putExtra("game_report_from_scene", 1113);
-      this.lcP.startActivity(paramView);
+      this.nAK.startActivity(paramView);
     }
   }
 }

@@ -1,19 +1,22 @@
 package com.tencent.mm.ui.transmit;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelappbrand.i;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.model.j;
 
 final class SendAppMessageWrapperUI$2
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnCancelListener
 {
-  SendAppMessageWrapperUI$2(SendAppMessageWrapperUI paramSendAppMessageWrapperUI, String paramString, View paramView) {}
+  SendAppMessageWrapperUI$2(SendAppMessageWrapperUI paramSendAppMessageWrapperUI, j paramj) {}
   
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    ((i)g.r(i.class)).b(this.fVG, this.val$view);
+    AppMethodBeat.i(154014);
+    this.zJg.dlb();
+    this.AAH.setResult(-1);
+    this.AAH.finish();
+    AppMethodBeat.o(154014);
   }
 }
 

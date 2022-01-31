@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.a;
 
-public abstract interface a
-  extends com.tencent.mm.kernel.c.a
+public final class a
 {
-  public abstract void cF(boolean paramBoolean);
+  public static long gSo;
+  public static long gSp;
 }
 
 

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.expt.b;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$3
   implements f
@@ -11,10 +12,12 @@ final class a$3
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.ExptService", "scene[%d] errType[%d] errCode[%d] errMsg[%s]", new Object[] { Integer.valueOf(paramm.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(73488);
+    ab.i("MicroMsg.ExptService", "scene[%d] errType[%d] errCode[%d] errMsg[%s]", new Object[] { Integer.valueOf(paramm.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramm instanceof b)) {
-      a.d(this.jIq);
+      a.d(this.mbZ);
     }
+    AppMethodBeat.o(73488);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet.balance.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletBalanceManagerUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,15 +11,17 @@ final class WalletBalanceManagerUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (WalletBalanceManagerUI.a(this.qhk))
+    AppMethodBeat.i(45426);
+    if (WalletBalanceManagerUI.a(this.tOJ))
     {
-      this.qhk.XM();
-      this.qhk.showDialog(1000);
+      this.tOJ.hideVKB();
+      this.tOJ.showDialog(1000);
     }
     for (;;)
     {
+      AppMethodBeat.o(45426);
       return true;
-      this.qhk.finish();
+      this.tOJ.finish();
     }
   }
 }

@@ -1,24 +1,35 @@
 package com.tencent.mm.plugin.notification;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.plugin.notification.d.f;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  a mIs = new a();
+  a piz;
   
-  public n createApplication()
+  public Plugin()
   {
-    return this.mIs;
+    AppMethodBeat.i(23097);
+    this.piz = new a();
+    AppMethodBeat.o(23097);
   }
   
-  public ar createSubCore()
+  public o createApplication()
   {
-    return f.bpH();
+    return this.piz;
+  }
+  
+  public at createSubCore()
+  {
+    AppMethodBeat.i(23098);
+    f localf = f.bYn();
+    AppMethodBeat.o(23098);
+    return localf;
   }
   
   public b getContactWidgetFactory()

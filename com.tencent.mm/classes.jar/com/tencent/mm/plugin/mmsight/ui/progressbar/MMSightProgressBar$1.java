@@ -4,11 +4,12 @@ import android.animation.ValueAnimator;
 import android.os.Looper;
 import android.os.Message;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.List;
 
 final class MMSightProgressBar$1
-  extends ah
+  extends ak
 {
   MMSightProgressBar$1(MMSightProgressBar paramMMSightProgressBar, Looper paramLooper)
   {
@@ -17,20 +18,22 @@ final class MMSightProgressBar$1
   
   public final void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.what == 233) && (MMSightProgressBar.a(this.mrl)) && (MMSightProgressBar.b(this.mrl).size() > 0) && (MMSightProgressBar.b(this.mrl).size() < 5))
+    AppMethodBeat.i(55335);
+    if ((paramMessage.what == 233) && (MMSightProgressBar.a(this.oQZ)) && (MMSightProgressBar.b(this.oQZ).size() > 0) && (MMSightProgressBar.b(this.oQZ).size() < 5))
     {
-      paramMessage = (a)MMSightProgressBar.b(this.mrl).get(MMSightProgressBar.b(this.mrl).size() - 1);
-      int i = MMSightProgressBar.aRm()[MMSightProgressBar.b(this.mrl).size()];
-      a locala = new a(MMSightProgressBar.b(this.mrl).size(), MMSightProgressBar.c(this.mrl), MMSightProgressBar.d(this.mrl), i);
-      MMSightProgressBar.a(this.mrl, new b(paramMessage, locala, new MMSightProgressBar.1.1(this)));
-      paramMessage = MMSightProgressBar.g(this.mrl);
-      paramMessage.hsF = ValueAnimator.ofFloat(new float[] { 0.0F, 100.0F });
-      paramMessage.hsF.addUpdateListener(new b.1(paramMessage));
-      paramMessage.hsF.addListener(new b.2(paramMessage));
-      paramMessage.hsF.setInterpolator(new AccelerateDecelerateInterpolator());
-      paramMessage.hsF.setDuration(2000L);
-      paramMessage.hsF.start();
+      paramMessage = (a)MMSightProgressBar.b(this.oQZ).get(MMSightProgressBar.b(this.oQZ).size() - 1);
+      int i = MMSightProgressBar.bxB()[MMSightProgressBar.b(this.oQZ).size()];
+      a locala = new a(MMSightProgressBar.b(this.oQZ).size(), MMSightProgressBar.c(this.oQZ), MMSightProgressBar.d(this.oQZ), i);
+      MMSightProgressBar.a(this.oQZ, new b(paramMessage, locala, new MMSightProgressBar.1.1(this)));
+      paramMessage = MMSightProgressBar.g(this.oQZ);
+      paramMessage.ggX = ValueAnimator.ofFloat(new float[] { 0.0F, 100.0F });
+      paramMessage.ggX.addUpdateListener(new b.1(paramMessage));
+      paramMessage.ggX.addListener(new b.2(paramMessage));
+      paramMessage.ggX.setInterpolator(new AccelerateDecelerateInterpolator());
+      paramMessage.ggX.setDuration(2000L);
+      paramMessage.ggX.start();
     }
+    AppMethodBeat.o(55335);
   }
 }
 

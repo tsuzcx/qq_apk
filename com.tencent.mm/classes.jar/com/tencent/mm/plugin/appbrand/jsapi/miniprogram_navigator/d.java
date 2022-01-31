@@ -1,12 +1,25 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.u;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class d
-  extends a<com.tencent.mm.plugin.appbrand.d>
+  extends u<r>
 {
-  public static final int CTRL_INDEX = 251;
-  public static final String NAME = "navigateToMiniProgram";
+  static final int CTRL_INDEX = 191;
+  public static final String NAME = "exitMiniProgram";
+  
+  public final String h(r paramr)
+  {
+    AppMethodBeat.i(101979);
+    paramr.getRuntime().finish();
+    paramr = j("ok", null);
+    AppMethodBeat.o(101979);
+    return paramr;
+  }
 }
 
 

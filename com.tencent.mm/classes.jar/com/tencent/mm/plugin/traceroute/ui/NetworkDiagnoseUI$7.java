@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.traceroute.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NetworkDiagnoseUI$7
   implements DialogInterface.OnClickListener
@@ -10,8 +11,10 @@ final class NetworkDiagnoseUI$7
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NetworkDiagnoseUI.e(this.pJy);
-    this.pJy.finish();
+    AppMethodBeat.i(26033);
+    NetworkDiagnoseUI.e(this.tnM);
+    this.tnM.finish();
+    AppMethodBeat.o(26033);
   }
 }
 

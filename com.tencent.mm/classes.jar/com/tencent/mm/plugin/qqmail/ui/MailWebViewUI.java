@@ -1,117 +1,123 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.qqmail.b.c;
-import com.tencent.mm.plugin.qqmail.b.f;
-import com.tencent.mm.plugin.qqmail.b.g;
 import com.tencent.mm.plugin.qqmail.b.v.a;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.n;
-import java.util.Map;
+import com.tencent.xweb.t;
 
 public class MailWebViewUI
   extends MMActivity
 {
-  private String bvy;
-  private d eMh = new d(this);
-  private ah handler;
-  private long nfq;
-  private MMWebView niQ;
-  private v.a niR = new v.a()
-  {
-    public final void onError(int paramAnonymousInt, String paramAnonymousString)
-    {
-      MailWebViewUI.a(MailWebViewUI.this).post(new MailWebViewUI.1.2(this, paramAnonymousString));
-    }
-    
-    public final void onSuccess(String paramAnonymousString, Map paramAnonymousMap)
-    {
-      MailWebViewUI.a(MailWebViewUI.this).post(new MailWebViewUI.1.1(this, paramAnonymousString));
-    }
-  };
+  private String bWJ;
+  private d evl;
+  private ak handler;
+  private long pKF;
+  private MMWebView pOd;
+  private v.a pOe;
   
-  protected final int getLayoutId()
+  public MailWebViewUI()
   {
-    return b.g.qqmail_webview;
+    AppMethodBeat.i(68401);
+    this.pOe = new MailWebViewUI.1(this);
+    this.evl = new d(this);
+    AppMethodBeat.o(68401);
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
+    return 2130970486;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(68407);
     boolean bool = getIntent().getBooleanExtra("singleColumn", false);
-    this.niQ = MMWebView.a.cO(this.mController.uMN);
-    this.niQ.setBackgroundDrawable(a.g(this, b.c.navpage));
-    ((FrameLayout)findViewById(b.f.container)).addView(this.niQ);
-    this.niQ.getSettings().setJavaScriptEnabled(true);
+    this.pOd = MMWebView.a.iI(getContext());
+    this.pOd.setBackgroundDrawable(a.k(this, 2131690310));
+    ((FrameLayout)findViewById(2131821084)).addView(this.pOd);
+    this.pOd.getSettings().setJavaScriptEnabled(true);
     if (Boolean.valueOf(bool).booleanValue())
     {
-      MMWebView localMMWebView = this.niQ;
+      MMWebView localMMWebView = this.pOd;
       if (Build.VERSION.SDK_INT >= 8) {
         localMMWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
       }
     }
-    this.niQ.getSettings().cSo();
-    this.niQ.getSettings().setSupportZoom(true);
-    this.niQ.getSettings().setBuiltInZoomControls(true);
-    this.niQ.setWebViewClient(new MailWebViewUI.3(this));
-    this.niQ.setWebChromeClient(new MailWebViewUI.4(this));
-    this.niQ.cJS();
+    this.pOd.getSettings().dYt();
+    this.pOd.getSettings().setSupportZoom(true);
+    this.pOd.getSettings().setBuiltInZoomControls(true);
+    this.pOd.setWebViewClient(new MailWebViewUI.3(this));
+    this.pOd.setWebChromeClient(new MailWebViewUI.4(this));
+    this.pOd.dOL();
     setBackBtn(new MailWebViewUI.5(this));
+    AppMethodBeat.o(68407);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(68404);
     super.onCreate(paramBundle);
-    this.handler = new ah();
+    this.handler = new ak();
     initView();
     paramBundle = getIntent().getStringExtra("title");
     if (paramBundle != null) {
       setMMTitle(paramBundle);
     }
-    this.eMh.connect(new Runnable()
-    {
-      public final void run()
-      {
-        MailWebViewUI.b(MailWebViewUI.this);
-      }
-    });
+    this.evl.connect(new MailWebViewUI.2(this));
+    AppMethodBeat.o(68404);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    this.niQ.setVisibility(8);
-    this.niQ.destroy();
-    this.niQ = null;
-    this.eMh.release();
+    AppMethodBeat.i(68406);
+    this.pOd.setVisibility(8);
+    this.pOd.destroy();
+    this.pOd = null;
+    this.evl.release();
     super.onDestroy();
+    AppMethodBeat.o(68406);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(68403);
     super.onPause();
     WebView.disablePlatformNotifications();
+    AppMethodBeat.o(68403);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(68402);
     super.onResume();
     WebView.enablePlatformNotifications();
+    AppMethodBeat.o(68402);
   }
   
-  protected void onStop()
+  public void onStop()
   {
-    this.niQ.stopLoading();
+    AppMethodBeat.i(68405);
+    this.pOd.stopLoading();
     super.onStop();
+    AppMethodBeat.o(68405);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

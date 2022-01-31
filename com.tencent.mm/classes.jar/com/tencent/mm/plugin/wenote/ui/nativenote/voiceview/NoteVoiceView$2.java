@@ -6,14 +6,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.h;
 import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.t;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,76 +23,82 @@ final class NoteVoiceView$2
   
   public final void onClick(View paramView)
   {
-    if ((com.tencent.mm.r.a.bk(paramView.getContext())) || (com.tencent.mm.r.a.bi(paramView.getContext()))) {
+    AppMethodBeat.i(27211);
+    if ((com.tencent.mm.r.a.bO(paramView.getContext())) || (com.tencent.mm.r.a.bM(paramView.getContext())))
+    {
+      AppMethodBeat.o(27211);
       return;
     }
-    if ((!f.zF()) && (!bk.bl(NoteVoiceView.h(this.rNL))))
+    if ((!f.Mi()) && (!bo.isNullOrNil(NoteVoiceView.h(this.vEp))))
     {
-      s.gM(paramView.getContext());
+      t.ii(paramView.getContext());
+      AppMethodBeat.o(27211);
       return;
     }
-    if (!bk.aM(NoteVoiceView.h(this.rNL), "").equals(NoteVoiceView.i(this.rNL).path))
+    if (!bo.bf(NoteVoiceView.h(this.vEp), "").equals(NoteVoiceView.i(this.vEp).path))
     {
-      NoteVoiceView.j(this.rNL);
+      NoteVoiceView.j(this.vEp);
+      AppMethodBeat.o(27211);
       return;
     }
-    if (NoteVoiceView.i(this.rNL).aQk())
+    if (NoteVoiceView.i(this.vEp).bwz())
     {
-      paramView = this.rNL;
-      y.i("MicroMsg.NoteVoiceView", "pause play");
-      localObject = paramView.rNJ;
-      y.i("MicroMsg.RecordVoiceHelper", "pause play");
-      ag.Zn("keep_app_silent");
-      if (((a)localObject).jZC == null) {
-        y.w("MicroMsg.RecordVoiceHelper", "pause play error, player is null");
+      paramView = this.vEp;
+      ab.i("MicroMsg.NoteVoiceView", "pause play");
+      localObject = paramView.vEn;
+      ab.i("MicroMsg.RecordVoiceHelper", "pause play");
+      aj.apl("keep_app_silent");
+      if (((a)localObject).mtU == null) {
+        ab.w("MicroMsg.RecordVoiceHelper", "pause play error, player is null");
       }
       for (;;)
       {
-        localObject = paramView.rNK;
+        localObject = paramView.vEo;
         ((NoteVoiceView.a)localObject).isPaused = true;
         ((NoteVoiceView.a)localObject).removeMessages(4096);
-        NoteVoiceView.c(((NoteVoiceView.a)localObject).rNL).setImageResource(R.k.voicepost_beginicon);
-        NoteVoiceView.c(((NoteVoiceView.a)localObject).rNL).setContentDescription(((NoteVoiceView.a)localObject).rNL.getContext().getResources().getString(R.l.app_play));
-        paramView.kdB.setKeepScreenOn(false);
+        NoteVoiceView.c(((NoteVoiceView.a)localObject).vEp).setImageResource(2131232175);
+        NoteVoiceView.c(((NoteVoiceView.a)localObject).vEp).setContentDescription(((NoteVoiceView.a)localObject).vEp.getContext().getResources().getString(2131297039));
+        paramView.myl.setKeepScreenOn(false);
+        AppMethodBeat.o(27211);
         return;
-        if (((a)localObject).jZC.pause())
+        if (((a)localObject).mtU.pause())
         {
-          localObject = ((a)localObject).dhm.iterator();
+          localObject = ((a)localObject).callbacks.iterator();
           while (((Iterator)localObject).hasNext()) {
             ((Iterator)localObject).next();
           }
         }
       }
     }
-    paramView = this.rNL;
-    y.i("MicroMsg.NoteVoiceView", "resume play");
-    Object localObject = paramView.rNJ;
-    y.i("MicroMsg.RecordVoiceHelper", "resume play");
-    ag.Zm("keep_app_silent");
+    paramView = this.vEp;
+    ab.i("MicroMsg.NoteVoiceView", "resume play");
+    Object localObject = paramView.vEn;
+    ab.i("MicroMsg.RecordVoiceHelper", "resume play");
+    aj.apk("keep_app_silent");
     int i;
-    if (((a)localObject).jZC == null)
+    if (((a)localObject).mtU == null)
     {
-      y.w("MicroMsg.RecordVoiceHelper", "resum play error, player is null");
+      ab.w("MicroMsg.RecordVoiceHelper", "resum play error, player is null");
       i = 0;
     }
     boolean bool;
     do
     {
-      localObject = paramView.rNK;
+      localObject = paramView.vEo;
       ((NoteVoiceView.a)localObject).isPaused = false;
       ((NoteVoiceView.a)localObject).sendEmptyMessage(4096);
-      NoteVoiceView.c(((NoteVoiceView.a)localObject).rNL).setImageResource(R.k.voicepost_pauseicon);
-      NoteVoiceView.c(((NoteVoiceView.a)localObject).rNL).setContentDescription(((NoteVoiceView.a)localObject).rNL.getContext().getResources().getString(R.l.app_pause));
-      paramView.kdB.setKeepScreenOn(true);
-      if (i != 0) {
-        break;
+      NoteVoiceView.c(((NoteVoiceView.a)localObject).vEp).setImageResource(2131232176);
+      NoteVoiceView.c(((NoteVoiceView.a)localObject).vEp).setContentDescription(((NoteVoiceView.a)localObject).vEp.getContext().getResources().getString(2131297021));
+      paramView.myl.setKeepScreenOn(true);
+      if (i == 0) {
+        NoteVoiceView.j(this.vEp);
       }
-      NoteVoiceView.j(this.rNL);
+      AppMethodBeat.o(27211);
       return;
-      bool = ((a)localObject).jZC.ub();
+      bool = ((a)localObject).mtU.Eo();
       i = bool;
     } while (!bool);
-    localObject = ((a)localObject).dhm.iterator();
+    localObject = ((a)localObject).callbacks.iterator();
     for (;;)
     {
       i = bool;
@@ -106,7 +111,7 @@ final class NoteVoiceView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.NoteVoiceView.2
  * JD-Core Version:    0.7.0.1
  */

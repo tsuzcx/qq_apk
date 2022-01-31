@@ -1,71 +1,73 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
 import android.content.Context;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bt;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.bv;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.account.friend.a.ao;
 import com.tencent.mm.plugin.account.friend.a.ap;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.p;
 
 public abstract class d
-  extends r<com.tencent.mm.plugin.account.friend.a.ao>
-  implements com.tencent.mm.ag.d.a
+  extends p<ao>
+  implements com.tencent.mm.ah.d.a
 {
-  public d(Context paramContext, com.tencent.mm.plugin.account.friend.a.ao paramao)
+  public d(Context paramContext, ao paramao)
   {
     super(paramContext, paramao);
   }
   
-  public static void pT(String paramString)
+  public static void xp(String paramString)
   {
-    if (bk.bl(paramString)) {
-      y.w("MicroMsg.QQFriendAdapterBase", "deal add friend failed. username is null.");
+    if (bo.isNullOrNil(paramString)) {
+      ab.w("MicroMsg.QQFriendAdapterBase", "deal add friend failed. username is null.");
     }
     Object localObject;
     do
     {
       return;
-      localObject = ((ap)((com.tencent.mm.plugin.account.a.a.a)g.t(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).pR(paramString);
+      localObject = ((ap)((com.tencent.mm.plugin.account.a.a.a)g.G(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).xn(paramString);
       if (localObject != null)
       {
-        ((com.tencent.mm.plugin.account.friend.a.ao)localObject).fgX = 2;
-        ((ap)((com.tencent.mm.plugin.account.a.a.a)g.t(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).a(((com.tencent.mm.plugin.account.friend.a.ao)localObject).fgW, (com.tencent.mm.plugin.account.friend.a.ao)localObject);
+        ((ao)localObject).gyF = 2;
+        ((ap)((com.tencent.mm.plugin.account.a.a.a)g.G(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).a(((ao)localObject).gyE, (ao)localObject);
       }
-      localObject = ((j)g.r(j.class)).Fw().abl(paramString);
+      localObject = ((j)g.E(j.class)).YA().arw(paramString);
       if (localObject == null)
       {
-        y.w("MicroMsg.QQFriendAdapterBase", "[cpan] dealAddFriend failed. contact is null.");
+        ab.w("MicroMsg.QQFriendAdapterBase", "[cpan] dealAddFriend failed. contact is null.");
         return;
       }
-      if (bk.bl(((com.tencent.mm.h.c.ao)localObject).field_username)) {
+      if (bo.isNullOrNil(((aq)localObject).field_username)) {
         ((ad)localObject).setUsername(paramString);
       }
-      if ((int)((com.tencent.mm.n.a)localObject).dBe != 0) {
+      if ((int)((com.tencent.mm.n.a)localObject).euF != 0) {
         break;
       }
-      ((j)g.r(j.class)).Fw().W((ad)localObject);
-    } while (bk.bl(((com.tencent.mm.h.c.ao)localObject).field_username));
-    for (paramString = ((j)g.r(j.class)).Fw().abl(((com.tencent.mm.h.c.ao)localObject).field_username);; paramString = (String)localObject)
+      ((j)g.E(j.class)).YA().Z((ad)localObject);
+    } while (bo.isNullOrNil(((aq)localObject).field_username));
+    for (paramString = ((j)g.E(j.class)).YA().arw(((aq)localObject).field_username);; paramString = (String)localObject)
     {
-      if ((int)paramString.dBe <= 0)
+      if ((int)paramString.euF <= 0)
       {
-        y.e("MicroMsg.QQFriendAdapterBase", "addContact : insert contact failed");
+        ab.e("MicroMsg.QQFriendAdapterBase", "addContact : insert contact failed");
         return;
       }
-      s.q(paramString);
-      bt.If().d(26, new Object[0]);
+      t.q(paramString);
+      bv.abc().c(26, new Object[0]);
       return;
     }
   }
   
   public void a(d.a parama) {}
   
-  public void pA(String paramString) {}
+  public void wQ(String paramString) {}
 }
 
 

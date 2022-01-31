@@ -6,9 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.jg.JgClassChecked;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.RECEIVERCHECK})
 public class InstallReceiver
@@ -16,24 +17,29 @@ public class InstallReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramContext == null) || (paramIntent == null)) {
+    AppMethodBeat.i(15839);
+    if ((paramContext == null) || (paramIntent == null))
+    {
+      AppMethodBeat.o(15839);
       return;
     }
     String str = paramIntent.getAction();
-    y.i("MicroMsg.InstallReceiver", "action:[%s]", new Object[] { str });
-    if ((bk.bl(str)) || (!str.equals("com.android.vending.INSTALL_REFERRER")))
+    ab.i("MicroMsg.InstallReceiver", "action:[%s]", new Object[] { str });
+    if ((bo.isNullOrNil(str)) || (!str.equals("com.android.vending.INSTALL_REFERRER")))
     {
-      y.e("MicroMsg.InstallReceiver", "action is null or nil, or not the installed action");
+      ab.e("MicroMsg.InstallReceiver", "action is null or nil, or not the installed action");
+      AppMethodBeat.o(15839);
       return;
     }
     str = "";
     try
     {
       paramIntent = paramIntent.getStringExtra("referrer");
-      y.i("MicroMsg.InstallReceiver", "get referer:[%s]", new Object[] { paramIntent });
-      if (bk.bl(paramIntent))
+      ab.i("MicroMsg.InstallReceiver", "get referer:[%s]", new Object[] { paramIntent });
+      if (bo.isNullOrNil(paramIntent))
       {
-        y.e("MicroMsg.InstallReceiver", "get referer is null or nil");
+        ab.e("MicroMsg.InstallReceiver", "get referer is null or nil");
+        AppMethodBeat.o(15839);
         return;
       }
     }
@@ -41,11 +47,12 @@ public class InstallReceiver
     {
       for (;;)
       {
-        y.e("MicroMsg.InstallReceiver", "%s", new Object[] { bk.j(paramIntent) });
+        ab.e("MicroMsg.InstallReceiver", "%s", new Object[] { bo.l(paramIntent) });
         paramIntent = str;
       }
-      y.d("MicroMsg.InstallReceiver", "[PREF] write installreferer = " + paramIntent);
-      paramContext.getSharedPreferences(ae.cqR(), 0).edit().putString("installreferer", paramIntent).commit();
+      ab.d("MicroMsg.InstallReceiver", "[PREF] write installreferer = ".concat(String.valueOf(paramIntent)));
+      paramContext.getSharedPreferences(ah.dsP(), 0).edit().putString("installreferer", paramIntent).commit();
+      AppMethodBeat.o(15839);
     }
   }
 }

@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.webview.fts.ui;
 
 public abstract interface a$b
 {
-  public abstract void ah(float paramFloat);
+  public abstract void aEX();
   
-  public abstract void ai(float paramFloat);
+  public abstract void aEY();
   
-  public abstract void akl();
+  public abstract void aEZ();
   
-  public abstract void akm();
+  public abstract void aFa();
   
-  public abstract void akn();
+  public abstract void aFb();
   
-  public abstract void ako();
+  public abstract void aw(float paramFloat);
   
-  public abstract void akp();
+  public abstract void ax(float paramFloat);
   
-  public abstract boolean bNK();
-  
-  public abstract int f(int paramInt, float paramFloat);
-  
-  public abstract void g(int paramInt, float paramFloat);
+  public abstract boolean cJx();
   
   public abstract int getCurrentPosition();
+  
+  public abstract int h(int paramInt, float paramFloat);
+  
+  public abstract void i(int paramInt, float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

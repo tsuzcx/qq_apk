@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.freewifi.model;
 
 public abstract interface FreeWifiNetworkReceiver$b
 {
-  public abstract void rs(int paramInt);
+  public abstract void wm(int paramInt);
 }
 
 

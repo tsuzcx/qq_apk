@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.recharge.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RechargeUI$12
   implements View.OnClickListener
@@ -10,9 +11,11 @@ final class RechargeUI$12
   
   public final void onClick(View paramView)
   {
-    if ((RechargeUI.b(this.nrE)) && (RechargeUI.c(this.nrE))) {
-      RechargeUI.d(this.nrE);
+    AppMethodBeat.i(44318);
+    if ((RechargeUI.b(this.pWS)) && (RechargeUI.c(this.pWS))) {
+      RechargeUI.d(this.pWS);
     }
+    AppMethodBeat.o(44318);
   }
 }
 

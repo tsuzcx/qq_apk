@@ -1,64 +1,63 @@
 package com.tencent.mm.plugin.webview.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.auv;
-import com.tencent.mm.protocal.c.ava;
-import com.tencent.mm.protocal.c.avb;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bpf;
+import com.tencent.mm.protocal.protobuf.bpg;
 
 public final class aa
   extends m
   implements k
 {
-  String appId;
-  String bMB;
-  private f dIJ;
-  final b dmK;
+  private f eGj;
+  public final b rr;
   
-  public aa(String paramString1, String paramString2, auv paramauv)
+  public aa(String paramString)
   {
-    this.appId = paramString1;
-    this.bMB = paramString2;
-    paramString2 = new b.a();
-    paramString2.ecH = new ava();
-    paramString2.ecI = new avb();
-    paramString2.uri = "/cgi-bin/mmbiz-bin/usrmsg/mmbizjsapi_uploadcdninfo";
-    paramString2.ecG = 1034;
-    paramString2.ecJ = 0;
-    paramString2.ecK = 0;
-    this.dmK = paramString2.Kt();
-    paramString2 = (ava)this.dmK.ecE.ecN;
-    paramString2.bOL = paramString1;
-    paramString2.tqH = paramauv;
+    AppMethodBeat.i(6637);
+    b.a locala = new b.a();
+    locala.fsX = new bpf();
+    locala.fsY = new bpg();
+    locala.uri = "/cgi-bin/mmbiz-bin/qrconnect_authorize";
+    locala.funcId = 2543;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ((bpf)this.rr.fsV.fta).xvQ = paramString;
+    AppMethodBeat.o(6637);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dIJ = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneUploadCdnInfo", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.dIJ.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(6639);
+    this.eGj = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(6639);
+    return i;
   }
   
   public final int getType()
   {
-    return 1034;
+    return 2543;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(6638);
+    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(6638);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.aa
  * JD-Core Version:    0.7.0.1
  */

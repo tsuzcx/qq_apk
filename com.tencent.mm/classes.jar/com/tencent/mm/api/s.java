@@ -2,19 +2,27 @@ package com.tencent.mm.api;
 
 import android.content.Context;
 
-public final class s
+public abstract class s
 {
-  public static s.a bve;
+  public static s.b bWe;
+  protected s.a bWd;
   
-  public static SmileyPanel ay(Context paramContext)
+  public void Aa() {}
+  
+  public abstract void a(n paramn);
+  
+  public void a(s.a parama)
   {
-    return bve.az(paramContext);
+    this.bWd = parama;
   }
   
-  public static r so()
-  {
-    return bve.sp();
-  }
+  public abstract c aV(Context paramContext);
+  
+  public abstract void onDestroy();
+  
+  public abstract boolean zY();
+  
+  public abstract p zZ();
 }
 
 

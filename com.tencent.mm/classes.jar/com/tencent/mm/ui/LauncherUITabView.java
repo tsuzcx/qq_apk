@@ -9,319 +9,413 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class LauncherUITabView
   extends RelativeLayout
   implements c
 {
-  private Matrix aqv = new Matrix();
-  protected int jQL = 0;
-  private long ldT = 0L;
-  private boolean uLA = false;
-  private int uLB = 0;
-  private boolean uLC = false;
-  private int uLL;
-  private Bitmap uLM;
-  private ImageView uLN;
-  protected a uLO;
-  protected a uLP;
-  protected a uLQ;
-  protected a uLR;
-  private c.a uLd;
-  private int uLt = -1;
-  protected View.OnClickListener uLv = new LauncherUITabView.1(this);
-  private ah uLw = new LauncherUITabView.2(this);
-  private int uLx = 0;
-  private int uLy = 0;
-  private int uLz = 0;
+  private Matrix asO;
+  protected int eSO;
+  private long nBO;
+  private ak yZA;
+  private int yZB;
+  private int yZC;
+  private int yZD;
+  private boolean yZE;
+  private int yZG;
+  private boolean yZH;
+  private int yZQ;
+  private Bitmap yZR;
+  private ImageView yZS;
+  protected a yZT;
+  protected a yZU;
+  protected a yZV;
+  protected a yZW;
+  private c.a yZh;
+  private int yZx;
+  protected View.OnClickListener yZz;
   
   public LauncherUITabView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(29517);
+    this.eSO = 0;
+    this.asO = new Matrix();
+    this.nBO = 0L;
+    this.yZx = -1;
+    this.yZz = new LauncherUITabView.1(this);
+    this.yZA = new LauncherUITabView.2(this);
+    this.yZB = 0;
+    this.yZC = 0;
+    this.yZD = 0;
+    this.yZG = 0;
+    this.yZE = false;
+    this.yZH = false;
     init();
+    AppMethodBeat.o(29517);
   }
   
   public LauncherUITabView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(29518);
+    this.eSO = 0;
+    this.asO = new Matrix();
+    this.nBO = 0L;
+    this.yZx = -1;
+    this.yZz = new LauncherUITabView.1(this);
+    this.yZA = new LauncherUITabView.2(this);
+    this.yZB = 0;
+    this.yZC = 0;
+    this.yZD = 0;
+    this.yZG = 0;
+    this.yZE = false;
+    this.yZH = false;
     init();
+    AppMethodBeat.o(29518);
   }
   
-  private a FN(int paramInt)
+  private a Oe(int paramInt)
   {
+    AppMethodBeat.i(29519);
     a locala = new a();
-    locala.uLT = new MMTabView(getContext(), paramInt);
-    locala.uLT.setTag(Integer.valueOf(paramInt));
-    locala.uLT.setOnClickListener(this.uLv);
+    locala.yZY = new MMTabView(getContext(), paramInt);
+    locala.yZY.setTag(Integer.valueOf(paramInt));
+    locala.yZY.setOnClickListener(this.yZz);
+    AppMethodBeat.o(29519);
+    return locala;
+  }
+  
+  private void dCn()
+  {
+    AppMethodBeat.i(29524);
+    this.yZS = new ImageView(getContext());
+    this.yZS.setImageMatrix(this.asO);
+    this.yZS.setScaleType(ImageView.ScaleType.MATRIX);
+    this.yZS.setId(2307142);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, a.fromDPToPix(getContext(), 3));
+    localLayoutParams.addRule(8, 2307141);
+    addView(this.yZS, localLayoutParams);
+    AppMethodBeat.o(29524);
+  }
+  
+  private a f(LinearLayout paramLinearLayout)
+  {
+    AppMethodBeat.i(29520);
+    a locala = Oe(0);
+    locala.yZY.setText(2131301391);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131428762));
+    localLayoutParams.weight = 1.0F;
+    paramLinearLayout.addView(locala.yZY, localLayoutParams);
+    AppMethodBeat.o(29520);
+    return locala;
+  }
+  
+  private a g(LinearLayout paramLinearLayout)
+  {
+    AppMethodBeat.i(29521);
+    a locala = Oe(1);
+    locala.yZY.setText(2131301392);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131428762));
+    localLayoutParams.weight = 1.0F;
+    paramLinearLayout.addView(locala.yZY, localLayoutParams);
+    AppMethodBeat.o(29521);
+    return locala;
+  }
+  
+  private a h(LinearLayout paramLinearLayout)
+  {
+    AppMethodBeat.i(29522);
+    a locala = Oe(2);
+    locala.yZY.setText(2131301390);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131428762));
+    localLayoutParams.weight = 1.0F;
+    paramLinearLayout.addView(locala.yZY, localLayoutParams);
+    AppMethodBeat.o(29522);
+    return locala;
+  }
+  
+  private a i(LinearLayout paramLinearLayout)
+  {
+    AppMethodBeat.i(29523);
+    a locala = Oe(3);
+    locala.yZY.setText(2131301424);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131428762));
+    localLayoutParams.weight = 1.0F;
+    paramLinearLayout.addView(locala.yZY, localLayoutParams);
+    AppMethodBeat.o(29523);
     return locala;
   }
   
   private void init()
   {
+    AppMethodBeat.i(29525);
     LinearLayout localLinearLayout = new LinearLayout(getContext());
-    localLinearLayout.setBackgroundResource(R.e.white);
+    localLinearLayout.setBackgroundResource(2131690709);
     localLinearLayout.setId(2307141);
     localLinearLayout.setOrientation(0);
     addView(localLinearLayout, new RelativeLayout.LayoutParams(-1, -2));
-    this.uLN = new ImageView(getContext());
-    this.uLN.setImageMatrix(this.aqv);
-    this.uLN.setScaleType(ImageView.ScaleType.MATRIX);
-    this.uLN.setId(2307142);
-    Object localObject = new RelativeLayout.LayoutParams(-1, a.fromDPToPix(getContext(), 3));
-    ((RelativeLayout.LayoutParams)localObject).addRule(8, 2307141);
-    addView(this.uLN, (ViewGroup.LayoutParams)localObject);
-    localObject = FN(0);
-    ((a)localObject).uLT.setText(R.l.main_chat);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(R.f.topTabbarHeight));
-    localLayoutParams.weight = 1.0F;
-    localLinearLayout.addView(((a)localObject).uLT, localLayoutParams);
-    this.uLO = ((a)localObject);
-    localObject = FN(1);
-    ((a)localObject).uLT.setText(R.l.main_contact);
-    localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(R.f.topTabbarHeight));
-    localLayoutParams.weight = 1.0F;
-    localLinearLayout.addView(((a)localObject).uLT, localLayoutParams);
-    this.uLP = ((a)localObject);
-    localObject = FN(2);
-    ((a)localObject).uLT.setText(R.l.main_addcontact);
-    localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(R.f.topTabbarHeight));
-    localLayoutParams.weight = 1.0F;
-    localLinearLayout.addView(((a)localObject).uLT, localLayoutParams);
-    this.uLQ = ((a)localObject);
-    localObject = FN(3);
-    ((a)localObject).uLT.setText(R.l.main_more);
-    localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(R.f.topTabbarHeight));
-    localLayoutParams.weight = 1.0F;
-    localLinearLayout.addView(((a)localObject).uLT, localLayoutParams);
-    this.uLR = ((a)localObject);
+    dCn();
+    this.yZT = f(localLinearLayout);
+    this.yZU = g(localLinearLayout);
+    this.yZV = h(localLinearLayout);
+    this.yZW = i(localLinearLayout);
+    AppMethodBeat.o(29525);
   }
   
-  public final void FH(int paramInt)
+  public final void NU(int paramInt)
   {
-    y.d("MicroMsg.LauncherUITabView", "updateMainTabUnread %d", new Object[] { Integer.valueOf(paramInt) });
-    this.uLx = paramInt;
+    AppMethodBeat.i(29527);
+    ab.d("MicroMsg.LauncherUITabView", "updateMainTabUnread %d", new Object[] { Integer.valueOf(paramInt) });
+    this.yZB = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.uLO.uLT.setUnread(getContext().getString(R.l.unread_count_overt_100));
+        this.yZT.yZY.setUnread(getContext().getString(2131304422));
+        AppMethodBeat.o(29527);
         return;
       }
-      this.uLO.uLT.setUnread(String.valueOf(paramInt));
+      this.yZT.yZY.setUnread(String.valueOf(paramInt));
+      AppMethodBeat.o(29527);
       return;
     }
-    this.uLO.uLT.setUnread(null);
+    this.yZT.yZY.setUnread(null);
+    AppMethodBeat.o(29527);
   }
   
-  public final void FI(int paramInt)
+  public final void NV(int paramInt)
   {
-    this.uLy = paramInt;
+    AppMethodBeat.i(29529);
+    this.yZC = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.uLP.uLT.setUnread(getContext().getString(R.l.unread_count_overt_100));
+        this.yZU.yZY.setUnread(getContext().getString(2131304422));
+        AppMethodBeat.o(29529);
         return;
       }
-      this.uLP.uLT.setUnread(String.valueOf(paramInt));
+      this.yZU.yZY.setUnread(String.valueOf(paramInt));
+      AppMethodBeat.o(29529);
       return;
     }
-    this.uLP.uLT.setUnread(null);
+    this.yZU.yZY.setUnread(null);
+    AppMethodBeat.o(29529);
   }
   
-  public final void FJ(int paramInt)
+  public final void NW(int paramInt)
   {
-    this.uLz = paramInt;
+    AppMethodBeat.i(29530);
+    this.yZD = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.uLQ.uLT.setUnread(getContext().getString(R.l.unread_count_overt_100));
+        this.yZV.yZY.setUnread(getContext().getString(2131304422));
+        AppMethodBeat.o(29530);
         return;
       }
-      this.uLQ.uLT.setUnread(String.valueOf(paramInt));
+      this.yZV.yZY.setUnread(String.valueOf(paramInt));
+      AppMethodBeat.o(29530);
       return;
     }
-    this.uLQ.uLT.setUnread(null);
+    this.yZV.yZY.setUnread(null);
+    AppMethodBeat.o(29530);
   }
   
-  public final void FK(int paramInt)
+  public final void NX(int paramInt)
   {
-    this.uLB = paramInt;
+    AppMethodBeat.i(29531);
+    this.yZG = paramInt;
     if (paramInt > 0)
     {
       if (paramInt > 99)
       {
-        this.uLR.uLT.setUnread(getContext().getString(R.l.unread_count_overt_100));
+        this.yZW.yZY.setUnread(getContext().getString(2131304422));
+        AppMethodBeat.o(29531);
         return;
       }
-      this.uLR.uLT.setUnread(String.valueOf(paramInt));
+      this.yZW.yZY.setUnread(String.valueOf(paramInt));
+      AppMethodBeat.o(29531);
       return;
     }
-    this.uLR.uLT.setUnread(null);
+    this.yZW.yZY.setUnread(null);
+    AppMethodBeat.o(29531);
   }
   
-  public final void cxS()
+  public final void dAP()
   {
-    if ((this.uLO == null) || (this.uLP == null) || (this.uLQ == null) || (this.uLR == null)) {
+    AppMethodBeat.i(29528);
+    if ((this.yZT == null) || (this.yZU == null) || (this.yZV == null) || (this.yZW == null))
+    {
+      AppMethodBeat.o(29528);
       return;
     }
-    this.uLO.uLT.czG();
-    this.uLP.uLT.czG();
-    this.uLQ.uLT.czG();
-    this.uLR.uLT.czG();
+    this.yZT.yZY.dCA();
+    this.yZU.yZY.dCA();
+    this.yZV.yZY.dCA();
+    this.yZW.yZY.dCA();
+    AppMethodBeat.o(29528);
   }
   
   public int getContactTabUnread()
   {
-    return this.uLy;
+    return this.yZC;
   }
   
   public int getCurIdx()
   {
-    return this.jQL;
+    return this.eSO;
   }
   
   public int getFriendTabUnread()
   {
-    return this.uLz;
+    return this.yZD;
   }
   
   public int getMainTabUnread()
   {
-    return this.uLx;
+    return this.yZB;
   }
   
   public boolean getSettingsPoint()
   {
-    return this.uLC;
+    return this.yZH;
   }
   
   public int getSettingsTabUnread()
   {
-    return this.uLB;
+    return this.yZG;
   }
   
   public boolean getShowFriendPoint()
   {
-    return this.uLA;
+    return this.yZE;
   }
   
-  public final void i(int paramInt, float paramFloat)
+  public final void k(int paramInt, float paramFloat)
   {
-    this.aqv.setTranslate(this.uLL * (paramInt + paramFloat), 0.0F);
-    this.uLN.setImageMatrix(this.aqv);
-  }
-  
-  public final void mH(boolean paramBoolean)
-  {
-    this.uLA = paramBoolean;
-    this.uLQ.uLT.mV(paramBoolean);
-  }
-  
-  public final void mI(boolean paramBoolean)
-  {
-    this.uLC = paramBoolean;
-    this.uLR.uLT.mV(paramBoolean);
+    AppMethodBeat.i(29534);
+    this.asO.setTranslate(this.yZQ * (paramInt + paramFloat), 0.0F);
+    this.yZS.setImageMatrix(this.asO);
+    AppMethodBeat.o(29534);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(29526);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    y.d("MicroMsg.LauncherUITabView", "on layout, width %d", new Object[] { Integer.valueOf(paramInt3 - paramInt1) });
-    this.uLL = ((paramInt3 - paramInt1) / 4);
-    paramInt2 = this.uLL;
-    if ((this.uLM == null) || (this.uLM.getWidth() != paramInt2)) {
-      if (this.uLM != null) {
-        break label173;
+    ab.d("MicroMsg.LauncherUITabView", "on layout, width %d", new Object[] { Integer.valueOf(paramInt3 - paramInt1) });
+    this.yZQ = ((paramInt3 - paramInt1) / 4);
+    paramInt2 = this.yZQ;
+    if ((this.yZR == null) || (this.yZR.getWidth() != paramInt2)) {
+      if (this.yZR != null) {
+        break label185;
       }
     }
-    label173:
-    for (paramInt1 = -1;; paramInt1 = this.uLM.getWidth())
+    label185:
+    for (paramInt1 = -1;; paramInt1 = this.yZR.getWidth())
     {
-      y.w("MicroMsg.LauncherUITabView", "sharp width changed, from %d to %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      this.uLM = Bitmap.createBitmap(paramInt2, a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
-      new Canvas(this.uLM).drawColor(getResources().getColor(R.e.wechat_green));
-      i(this.jQL, 0.0F);
-      this.uLN.setImageBitmap(this.uLM);
-      setTo(this.jQL);
+      ab.w("MicroMsg.LauncherUITabView", "sharp width changed, from %d to %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      this.yZR = Bitmap.createBitmap(paramInt2, a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
+      new Canvas(this.yZR).drawColor(getResources().getColor(2131690701));
+      k(this.eSO, 0.0F);
+      this.yZS.setImageBitmap(this.yZR);
+      setTo(this.eSO);
+      AppMethodBeat.o(29526);
       return;
     }
+  }
+  
+  public final void qa(boolean paramBoolean)
+  {
+    AppMethodBeat.i(29532);
+    this.yZE = paramBoolean;
+    this.yZV.yZY.qs(paramBoolean);
+    AppMethodBeat.o(29532);
+  }
+  
+  public final void qb(boolean paramBoolean)
+  {
+    AppMethodBeat.i(29533);
+    this.yZH = paramBoolean;
+    this.yZW.yZY.qs(paramBoolean);
+    AppMethodBeat.o(29533);
   }
   
   public void setOnTabClickListener(c.a parama)
   {
-    this.uLd = parama;
+    this.yZh = parama;
   }
   
   public void setTo(int paramInt)
   {
-    this.jQL = paramInt;
-    MMTabView localMMTabView = this.uLO.uLT;
+    AppMethodBeat.i(29535);
+    this.eSO = paramInt;
+    MMTabView localMMTabView = this.yZT.yZY;
     if (paramInt == 0)
     {
-      localColorStateList = getResources().getColorStateList(R.e.wechat_green);
+      localColorStateList = getResources().getColorStateList(2131690701);
       localMMTabView.setTextColor(localColorStateList);
-      localMMTabView = this.uLP.uLT;
+      localMMTabView = this.yZU.yZY;
       if (paramInt != 1) {
-        break label150;
+        break label162;
       }
-      localColorStateList = getResources().getColorStateList(R.e.wechat_green);
-      label57:
+      localColorStateList = getResources().getColorStateList(2131690701);
+      label63:
       localMMTabView.setTextColor(localColorStateList);
-      localMMTabView = this.uLQ.uLT;
+      localMMTabView = this.yZV.yZY;
       if (paramInt != 2) {
-        break label164;
+        break label176;
       }
-      localColorStateList = getResources().getColorStateList(R.e.wechat_green);
-      label86:
+      localColorStateList = getResources().getColorStateList(2131690701);
+      label92:
       localMMTabView.setTextColor(localColorStateList);
-      localMMTabView = this.uLR.uLT;
+      localMMTabView = this.yZW.yZY;
       if (paramInt != 3) {
-        break label178;
+        break label190;
       }
     }
-    label150:
-    label164:
-    label178:
-    for (ColorStateList localColorStateList = getResources().getColorStateList(R.e.wechat_green);; localColorStateList = getResources().getColorStateList(R.e.launcher_tab_text_selector))
+    label162:
+    label176:
+    label190:
+    for (ColorStateList localColorStateList = getResources().getColorStateList(2131690701);; localColorStateList = getResources().getColorStateList(2131690759))
     {
       localMMTabView.setTextColor(localColorStateList);
-      this.ldT = System.currentTimeMillis();
-      this.uLt = this.jQL;
+      this.nBO = System.currentTimeMillis();
+      this.yZx = this.eSO;
+      AppMethodBeat.o(29535);
       return;
-      localColorStateList = getResources().getColorStateList(R.e.launcher_tab_text_selector);
+      localColorStateList = getResources().getColorStateList(2131690759);
       break;
-      localColorStateList = getResources().getColorStateList(R.e.launcher_tab_text_selector);
-      break label57;
-      localColorStateList = getResources().getColorStateList(R.e.launcher_tab_text_selector);
-      break label86;
+      localColorStateList = getResources().getColorStateList(2131690759);
+      break label63;
+      localColorStateList = getResources().getColorStateList(2131690759);
+      break label92;
     }
   }
   
   protected final class a
   {
-    MMTabView uLT;
+    MMTabView yZY;
     
     protected a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.LauncherUITabView
  * JD-Core Version:    0.7.0.1
  */

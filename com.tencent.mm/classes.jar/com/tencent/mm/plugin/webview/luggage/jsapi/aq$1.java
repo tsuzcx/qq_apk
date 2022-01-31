@@ -1,39 +1,54 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mm.a.g;
-import com.tencent.mm.as.a.c.i;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.modelsfs.FileOp;
-import com.tencent.mm.plugin.emoji.model.EmojiLogic;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.File;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 final class aq$1
-  implements i
+  implements Runnable
 {
-  aq$1(aq paramaq, String paramString, Context paramContext, aw.a parama) {}
+  aq$1(aq paramaq, JSONObject paramJSONObject, bh.a parama) {}
   
-  public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
+  public final void run()
   {
-    y.i("MicroMsg.JsApiShareEmotion", "imageLoaderListener onImageLoadComplete %s", new Object[] { paramString });
-    if ((paramBitmap != null) && (paramVarArgs != null) && (paramVarArgs.length > 0) && (paramVarArgs[0] != null) && ((paramVarArgs[0] instanceof String)) && (paramString.equals(this.rdp)))
+    AppMethodBeat.i(6354);
+    Object localObject = this.bBa.optJSONArray("appIdArray");
+    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
     {
-      paramString = new File(paramVarArgs[0].toString());
-      if (paramString.exists())
-      {
-        paramView = g.m(paramString);
-        au.Hx();
-        paramBitmap = EmojiLogic.J(c.FL(), "", paramView);
-        FileOp.r(paramString.getAbsolutePath(), paramBitmap);
-        aq.a(this.rdS, this.val$context, paramView, this.iRN);
-        return;
-      }
+      aq.b((JSONArray)localObject, this.law);
+      AppMethodBeat.o(6354);
+      return;
     }
-    this.iRN.e("fail", null);
+    long l = this.bBa.optLong("download_id", -1L);
+    localObject = this.bBa.optString("appid");
+    FileDownloadTaskInfo localFileDownloadTaskInfo;
+    if (l > 0L)
+    {
+      localFileDownloadTaskInfo = f.bjl().iA(l);
+      localObject = localFileDownloadTaskInfo;
+      if (localFileDownloadTaskInfo == null) {
+        localObject = new FileDownloadTaskInfo();
+      }
+      aq.b((FileDownloadTaskInfo)localObject, this.law);
+      AppMethodBeat.o(6354);
+      return;
+    }
+    if (!bo.isNullOrNil((String)localObject))
+    {
+      localFileDownloadTaskInfo = f.bjl().JH((String)localObject);
+      localObject = localFileDownloadTaskInfo;
+      if (localFileDownloadTaskInfo == null) {
+        localObject = new FileDownloadTaskInfo();
+      }
+      aq.b((FileDownloadTaskInfo)localObject, this.law);
+      AppMethodBeat.o(6354);
+      return;
+    }
+    this.law.c("fail", null);
+    AppMethodBeat.o(6354);
   }
 }
 

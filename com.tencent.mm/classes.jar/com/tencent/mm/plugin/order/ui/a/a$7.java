@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.order.ui.a;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.model.MallOrderDetailObject.HelpCenter;
 import com.tencent.mm.plugin.order.model.MallTransactionObject;
 
@@ -13,12 +14,18 @@ final class a$7
   
   public final void onClick(View paramView)
   {
-    if (paramView.getTag() == null) {}
-    while (!(paramView.getTag() instanceof MallOrderDetailObject.HelpCenter)) {
+    AppMethodBeat.i(43892);
+    if (paramView.getTag() == null)
+    {
+      AppMethodBeat.o(43892);
       return;
     }
-    paramView = (MallOrderDetailObject.HelpCenter)paramView.getTag();
-    a.a(this.val$context, paramView.url, this.mOH);
+    if ((paramView.getTag() instanceof MallOrderDetailObject.HelpCenter))
+    {
+      paramView = (MallOrderDetailObject.HelpCenter)paramView.getTag();
+      a.a(this.val$context, paramView.url, this.poX);
+    }
+    AppMethodBeat.o(43892);
   }
 }
 

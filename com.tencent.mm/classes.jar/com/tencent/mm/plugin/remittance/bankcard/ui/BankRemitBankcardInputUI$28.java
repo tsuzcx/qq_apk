@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class BankRemitBankcardInputUI$28
-  implements n.a
+  implements p.a
 {
   BankRemitBankcardInputUI$28(BankRemitBankcardInputUI paramBankRemitBankcardInputUI) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.e("MicroMsg.BankRemitBankcardInputUI", "net error: %s", new Object[] { paramm });
+    AppMethodBeat.i(44545);
+    ab.e("MicroMsg.BankRemitBankcardInputUI", "net error: %s", new Object[] { paramm });
+    AppMethodBeat.o(44545);
   }
 }
 

@@ -5,12 +5,12 @@ public final class c$z
 {
   public c$z()
   {
-    super("chooseInvoice", "chooseInvoice", 202, true);
+    super("chooseCard", "choose_card", 70, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.protocal.c.z
  * JD-Core Version:    0.7.0.1
  */

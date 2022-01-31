@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class EmojiStoreV2SingleProductUI$6$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class EmojiStoreV2SingleProductUI$6$1
   
   public final void run()
   {
-    EmojiStoreV2SingleProductUI.c(this.jiJ.jiI).notifyDataSetInvalidated();
+    AppMethodBeat.i(53749);
+    EmojiStoreV2SingleProductUI.c(this.lrA.lrz).notifyDataSetInvalidated();
+    AppMethodBeat.o(53749);
   }
 }
 

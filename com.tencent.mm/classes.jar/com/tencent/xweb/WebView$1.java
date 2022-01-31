@@ -2,6 +2,7 @@ package com.tencent.xweb;
 
 import android.view.View;
 import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebView$1
   implements View.OnLongClickListener
@@ -10,9 +11,14 @@ final class WebView$1
   
   public final boolean onLongClick(View paramView)
   {
-    if (this.xhi.wjs != null) {
-      return this.xhi.wjs.onLongClick(this.xhi);
+    AppMethodBeat.i(151427);
+    if (this.BEk.ACZ != null)
+    {
+      boolean bool = this.BEk.ACZ.onLongClick(this.BEk);
+      AppMethodBeat.o(151427);
+      return bool;
     }
+    AppMethodBeat.o(151427);
     return false;
   }
 }

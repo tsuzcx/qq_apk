@@ -1,55 +1,83 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import android.content.res.Resources;
-import android.util.SparseIntArray;
-import com.tencent.mm.plugin.appbrand.i;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.b;
-import com.tencent.mm.plugin.appbrand.v.c;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.plugin.appbrand.jsapi.c.a;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.r;
+import com.tencent.mm.plugin.appbrand.report.model.i;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.f;
 
-final class a
+public final class a
+  extends com.tencent.mm.plugin.appbrand.c
 {
-  private static final SparseIntArray gWA = new a.1();
-  private static final Set<String> gWB = new HashSet();
+  private final com.tencent.mm.plugin.appbrand.o iBh;
+  private final h iBi;
+  private final com.tencent.mm.plugin.appbrand.jsapi.p.a iBj;
   
-  static
+  public a(com.tencent.mm.plugin.appbrand.o paramo, h paramh)
   {
-    gWA.put("requestPayment".hashCode(), y.j.app_brand_jsapi_ban_banner_hint_api_name_pay);
-    gWA.put("playVoice".hashCode(), y.j.app_brand_jsapi_ban_banner_hint_api_name_play);
-    gWA.put("operateMusicPlayer".hashCode(), y.j.app_brand_jsapi_ban_banner_hint_api_name_play);
-    gWA.put("shareAppMessage".hashCode(), y.j.app_brand_jsapi_ban_banner_hint_api_name_share);
-    gWA.put("onShareAppMessage".hashCode(), y.j.app_brand_jsapi_ban_banner_hint_api_name_share);
-    gWA.put("shareAppMessageDirectly".hashCode(), y.j.app_brand_jsapi_ban_banner_hint_api_name_share);
-    gWA.put("shareTimeline".hashCode(), y.j.app_brand_jsapi_ban_banner_hint_api_name_share);
-    gWA.put("onMenuShareTimeline".hashCode(), y.j.app_brand_jsapi_ban_banner_hint_api_name_share);
-    gWA.put("launchMiniProgram".hashCode(), y.j.app_brand_jsapi_ban_banner_hint_api_name_launch);
-    gWB.add("requestPayment");
-    gWB.add("playVoice");
-    gWB.add("operateMusicPlayer");
-    gWB.add("shareAppMessage");
-    gWB.add("onShareAppMessage");
-    gWB.add("shareAppMessageDirectly");
-    gWB.add("shareTimeline");
-    gWB.add("onMenuShareTimeline");
-    gWB.add("launchMiniProgram");
-    gWB.add("makeVoIPCall");
-    gWB.add("addCard");
-    gWB.add("chooseContact");
-    gWB.add("openCard");
-    gWB.add("openOfflinePayView");
+    super(paramo, paramh, paramo.wO());
+    AppMethodBeat.i(132501);
+    this.iBj = new com.tencent.mm.plugin.appbrand.jsapi.p.a();
+    this.iBh = paramo;
+    this.iBi = paramh;
+    AppMethodBeat.o(132501);
   }
   
-  static void a(i parami, b paramb)
+  public final void G(int paramInt, String paramString)
   {
-    if ((parami == null) || (paramb == null)) {}
-    while (!gWB.contains(paramb.getName())) {
-      return;
+    AppMethodBeat.i(132503);
+    super.G(paramInt, paramString);
+    this.iBj.X(paramInt, paramString);
+    AppMethodBeat.o(132503);
+  }
+  
+  public final void a(m paramm, String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(132504);
+    super.a(paramm, paramString1, paramInt, paramString2);
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      if (((f.IS_FLAVOR_RED) || (d.whL) || (d.whK)) && ("fail:internal error invalid js component".equals(paramString2)))
+      {
+        paramm = new ClassCastException(String.format("Mismatch api(%s) component", new Object[] { paramm.getName() }));
+        AppMethodBeat.o(132504);
+        throw paramm;
+      }
+      this.iBj.X(paramInt, paramString2);
     }
-    paramb = ae.getResources().getString(gWA.get(paramb.getName().hashCode()));
-    c.runOnUiThread(new a.2(parami, ae.getResources().getString(y.j.app_brand_jsapi_ban_banner_hint_format_wording, new Object[] { paramb })));
+    AppMethodBeat.o(132504);
+  }
+  
+  public final boolean a(m paramm, String paramString, int paramInt, c.a parama)
+  {
+    AppMethodBeat.i(132502);
+    com.tencent.mm.plugin.appbrand.jsapi.p.a locala = this.iBj;
+    Object localObject2 = this.iBi;
+    ??? = this.iBh.atT();
+    if ((??? == null) || (((r)???).getCurrentPage() == null)) {
+      ??? = "";
+    }
+    for (;;)
+    {
+      if (!i.EI(paramm.getName())) {
+        localObject2 = new com.tencent.mm.plugin.appbrand.jsapi.p.c((h)localObject2, paramm, paramString, bo.yB(), (String)???);
+      }
+      synchronized (locala.hXR)
+      {
+        locala.hXR.put(paramInt, localObject2);
+        boolean bool = super.a(paramm, paramString, paramInt, parama);
+        AppMethodBeat.o(132502);
+        return bool;
+        ??? = ((r)???).getCurrentPage().getCurrentUrl();
+      }
+    }
   }
 }
 

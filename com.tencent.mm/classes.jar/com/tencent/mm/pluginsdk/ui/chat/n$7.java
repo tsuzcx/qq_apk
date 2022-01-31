@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui.chat;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.kvdata.VoiceInputBehavior;
 
 final class n$7
@@ -11,11 +12,13 @@ final class n$7
   
   public final void onClick(View paramView)
   {
-    this.shE.reset();
+    AppMethodBeat.i(27978);
+    this.vZW.reset();
     paramView = new VoiceInputBehavior();
     paramView.clear = 1;
     n.c(paramView);
-    this.shE.Eq(4);
+    this.vZW.Mo(4);
+    AppMethodBeat.o(27978);
   }
 }
 

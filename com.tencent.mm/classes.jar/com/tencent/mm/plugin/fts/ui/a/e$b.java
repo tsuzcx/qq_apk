@@ -9,9 +9,9 @@ public final class e$b
   extends a.a
 {
   public View contentView;
-  public ImageView doU;
-  public TextView iCG;
-  public View kCO;
+  public ImageView egq;
+  public TextView kHN;
+  public View mYK;
   
   public e$b(e parame)
   {

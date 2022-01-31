@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class ShuffleView$5
@@ -15,19 +16,22 @@ final class ShuffleView$5
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    ShuffleView.e(this.lPv).remove(ShuffleView.w(this.lPv));
-    if (ShuffleView.x(this.lPv) != null) {
-      ShuffleView.x(this.lPv).start();
+    AppMethodBeat.i(42230);
+    ShuffleView.e(this.omN).remove(ShuffleView.w(this.omN));
+    if (ShuffleView.x(this.omN) != null) {
+      ShuffleView.x(this.omN).start();
     }
-    ShuffleView.f(this.lPv, ShuffleView.f(this.lPv));
-    if (ShuffleView.d(this.lPv) > 0)
+    ShuffleView.f(this.omN, ShuffleView.f(this.omN));
+    if (ShuffleView.d(this.omN) > 0)
     {
-      ShuffleView.e(this.lPv, ShuffleView.y(this.lPv));
-      ShuffleView.b(this.lPv, (View)ShuffleView.e(this.lPv).get(ShuffleView.f(this.lPv)));
+      ShuffleView.e(this.omN, ShuffleView.y(this.omN));
+      ShuffleView.b(this.omN, (View)ShuffleView.e(this.omN).get(ShuffleView.f(this.omN)));
+      AppMethodBeat.o(42230);
       return;
     }
-    ShuffleView.b(this.lPv, null);
-    ShuffleView.e(this.lPv, 0);
+    ShuffleView.b(this.omN, null);
+    ShuffleView.e(this.omN, 0);
+    AppMethodBeat.o(42230);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}

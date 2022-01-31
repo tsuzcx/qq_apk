@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.profile.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.ui.contact.m.a;
+import com.tencent.mm.ui.contact.n.a;
 import java.util.List;
 
 final class b$1
@@ -13,15 +14,17 @@ final class b$1
   
   public final void b(j paramj)
   {
-    if (paramj.aYY == 0)
+    AppMethodBeat.i(23334);
+    if (paramj.bpE == 0)
     {
-      b.a(this.mVG, paramj.kxh);
-      if (b.a(this.mVG) != null) {
-        b.c(this.mVG).t(paramj.ktu.bVk, b.b(this.mVG).size(), true);
+      b.a(this.pyn, paramj.mSW);
+      if (b.a(this.pyn) != null) {
+        b.c(this.pyn).w(paramj.mPi.query, b.b(this.pyn).size(), true);
       }
     }
-    this.mVG.clearCache();
-    this.mVG.notifyDataSetChanged();
+    this.pyn.clearCache();
+    this.pyn.notifyDataSetChanged();
+    AppMethodBeat.o(23334);
   }
 }
 

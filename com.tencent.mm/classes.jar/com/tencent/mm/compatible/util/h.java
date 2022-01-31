@@ -2,284 +2,342 @@ package com.tencent.mm.compatible.util;
 
 import android.annotation.TargetApi;
 import android.os.Environment;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.e.ac;
 import com.tencent.mm.compatible.e.k;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
 
 public final class h
 {
-  private static Boolean dzT = null;
-  private static Boolean dzU = null;
-  private static Boolean dzV = null;
+  private static Boolean etg = null;
+  private static Boolean eth = null;
+  private static Boolean eti = null;
+  
+  /* Error */
+  @java.lang.Deprecated
+  public static boolean Mn()
+  {
+    // Byte code:
+    //   0: ldc 23
+    //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: getstatic 12	com/tencent/mm/compatible/util/h:etg	Ljava/lang/Boolean;
+    //   8: ifnonnull +58 -> 66
+    //   11: new 31	java/io/FileInputStream
+    //   14: dup
+    //   15: new 33	java/io/File
+    //   18: dup
+    //   19: invokestatic 39	android/os/Environment:getRootDirectory	()Ljava/io/File;
+    //   22: ldc 41
+    //   24: invokespecial 45	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: invokespecial 48	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   30: astore_2
+    //   31: aload_2
+    //   32: astore_1
+    //   33: new 50	java/util/Properties
+    //   36: dup
+    //   37: invokespecial 52	java/util/Properties:<init>	()V
+    //   40: astore_3
+    //   41: aload_2
+    //   42: astore_1
+    //   43: aload_3
+    //   44: aload_2
+    //   45: invokevirtual 56	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   48: aload_2
+    //   49: astore_1
+    //   50: aload_3
+    //   51: ldc 58
+    //   53: invokevirtual 62	java/util/Properties:containsKey	(Ljava/lang/Object;)Z
+    //   56: invokestatic 68	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   59: putstatic 12	com/tencent/mm/compatible/util/h:etg	Ljava/lang/Boolean;
+    //   62: aload_2
+    //   63: invokevirtual 71	java/io/FileInputStream:close	()V
+    //   66: getstatic 12	com/tencent/mm/compatible/util/h:etg	Ljava/lang/Boolean;
+    //   69: invokevirtual 74	java/lang/Boolean:booleanValue	()Z
+    //   72: istore_0
+    //   73: ldc 23
+    //   75: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   78: iload_0
+    //   79: ireturn
+    //   80: astore_3
+    //   81: aconst_null
+    //   82: astore_2
+    //   83: aload_2
+    //   84: astore_1
+    //   85: ldc 79
+    //   87: aload_3
+    //   88: ldc 81
+    //   90: iconst_0
+    //   91: anewarray 4	java/lang/Object
+    //   94: invokestatic 87	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   97: aload_2
+    //   98: astore_1
+    //   99: getstatic 90	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   102: putstatic 12	com/tencent/mm/compatible/util/h:etg	Ljava/lang/Boolean;
+    //   105: aload_2
+    //   106: ifnull -40 -> 66
+    //   109: aload_2
+    //   110: invokevirtual 71	java/io/FileInputStream:close	()V
+    //   113: goto -47 -> 66
+    //   116: astore_1
+    //   117: goto -51 -> 66
+    //   120: astore_2
+    //   121: aconst_null
+    //   122: astore_1
+    //   123: aload_1
+    //   124: ifnull +7 -> 131
+    //   127: aload_1
+    //   128: invokevirtual 71	java/io/FileInputStream:close	()V
+    //   131: ldc 23
+    //   133: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   136: aload_2
+    //   137: athrow
+    //   138: astore_1
+    //   139: goto -73 -> 66
+    //   142: astore_1
+    //   143: goto -12 -> 131
+    //   146: astore_2
+    //   147: goto -24 -> 123
+    //   150: astore_3
+    //   151: goto -68 -> 83
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   72	7	0	bool	boolean
+    //   32	67	1	localFileInputStream1	java.io.FileInputStream
+    //   116	1	1	localException1	java.lang.Exception
+    //   122	6	1	localObject1	Object
+    //   138	1	1	localException2	java.lang.Exception
+    //   142	1	1	localException3	java.lang.Exception
+    //   30	80	2	localFileInputStream2	java.io.FileInputStream
+    //   120	17	2	localObject2	Object
+    //   146	1	2	localObject3	Object
+    //   40	11	3	localProperties	java.util.Properties
+    //   80	8	3	localException4	java.lang.Exception
+    //   150	1	3	localException5	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   11	31	80	java/lang/Exception
+    //   109	113	116	java/lang/Exception
+    //   11	31	120	finally
+    //   62	66	138	java/lang/Exception
+    //   127	131	142	java/lang/Exception
+    //   33	41	146	finally
+    //   43	48	146	finally
+    //   50	62	146	finally
+    //   85	97	146	finally
+    //   99	105	146	finally
+    //   33	41	150	java/lang/Exception
+    //   43	48	150	java/lang/Exception
+    //   50	62	150	java/lang/Exception
+  }
+  
+  /* Error */
+  public static boolean Mo()
+  {
+    // Byte code:
+    //   0: ldc 93
+    //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: getstatic 14	com/tencent/mm/compatible/util/h:eth	Ljava/lang/Boolean;
+    //   8: ifnonnull +65 -> 73
+    //   11: new 31	java/io/FileInputStream
+    //   14: dup
+    //   15: new 33	java/io/File
+    //   18: dup
+    //   19: invokestatic 39	android/os/Environment:getRootDirectory	()Ljava/io/File;
+    //   22: ldc 41
+    //   24: invokespecial 45	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: invokespecial 48	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   30: astore_2
+    //   31: aload_2
+    //   32: astore_1
+    //   33: new 50	java/util/Properties
+    //   36: dup
+    //   37: invokespecial 52	java/util/Properties:<init>	()V
+    //   40: astore_3
+    //   41: aload_2
+    //   42: astore_1
+    //   43: aload_3
+    //   44: aload_2
+    //   45: invokevirtual 56	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   48: aload_2
+    //   49: astore_1
+    //   50: aload_3
+    //   51: ldc 58
+    //   53: ldc 95
+    //   55: invokevirtual 99	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   58: ldc 101
+    //   60: invokevirtual 107	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   63: invokestatic 68	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   66: putstatic 14	com/tencent/mm/compatible/util/h:eth	Ljava/lang/Boolean;
+    //   69: aload_2
+    //   70: invokevirtual 71	java/io/FileInputStream:close	()V
+    //   73: getstatic 14	com/tencent/mm/compatible/util/h:eth	Ljava/lang/Boolean;
+    //   76: invokevirtual 74	java/lang/Boolean:booleanValue	()Z
+    //   79: istore_0
+    //   80: ldc 93
+    //   82: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: iload_0
+    //   86: ireturn
+    //   87: astore_3
+    //   88: aconst_null
+    //   89: astore_2
+    //   90: aload_2
+    //   91: astore_1
+    //   92: ldc 79
+    //   94: aload_3
+    //   95: ldc 81
+    //   97: iconst_0
+    //   98: anewarray 4	java/lang/Object
+    //   101: invokestatic 87	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   104: aload_2
+    //   105: astore_1
+    //   106: getstatic 90	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   109: putstatic 14	com/tencent/mm/compatible/util/h:eth	Ljava/lang/Boolean;
+    //   112: aload_2
+    //   113: ifnull -40 -> 73
+    //   116: aload_2
+    //   117: invokevirtual 71	java/io/FileInputStream:close	()V
+    //   120: goto -47 -> 73
+    //   123: astore_1
+    //   124: goto -51 -> 73
+    //   127: astore_2
+    //   128: aconst_null
+    //   129: astore_1
+    //   130: aload_1
+    //   131: ifnull +7 -> 138
+    //   134: aload_1
+    //   135: invokevirtual 71	java/io/FileInputStream:close	()V
+    //   138: ldc 93
+    //   140: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   143: aload_2
+    //   144: athrow
+    //   145: astore_1
+    //   146: goto -73 -> 73
+    //   149: astore_1
+    //   150: goto -12 -> 138
+    //   153: astore_2
+    //   154: goto -24 -> 130
+    //   157: astore_3
+    //   158: goto -68 -> 90
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   79	7	0	bool	boolean
+    //   32	74	1	localFileInputStream1	java.io.FileInputStream
+    //   123	1	1	localException1	java.lang.Exception
+    //   129	6	1	localObject1	Object
+    //   145	1	1	localException2	java.lang.Exception
+    //   149	1	1	localException3	java.lang.Exception
+    //   30	87	2	localFileInputStream2	java.io.FileInputStream
+    //   127	17	2	localObject2	Object
+    //   153	1	2	localObject3	Object
+    //   40	11	3	localProperties	java.util.Properties
+    //   87	8	3	localException4	java.lang.Exception
+    //   157	1	3	localException5	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   11	31	87	java/lang/Exception
+    //   116	120	123	java/lang/Exception
+    //   11	31	127	finally
+    //   69	73	145	java/lang/Exception
+    //   134	138	149	java/lang/Exception
+    //   33	41	153	finally
+    //   43	48	153	finally
+    //   50	69	153	finally
+    //   92	104	153	finally
+    //   106	112	153	finally
+    //   33	41	157	java/lang/Exception
+    //   43	48	157	java/lang/Exception
+    //   50	69	157	java/lang/Exception
+  }
+  
+  public static int Mp()
+  {
+    return 4;
+  }
   
   public static File getDataDirectory()
   {
-    if (bk.bl(q.dyn.dxx)) {
-      return Environment.getDataDirectory();
+    AppMethodBeat.i(93081);
+    if (bo.isNullOrNil(ac.erF.epv))
+    {
+      localFile = Environment.getDataDirectory();
+      AppMethodBeat.o(93081);
+      return localFile;
     }
-    return new File(q.dyn.dxx);
+    File localFile = new File(ac.erF.epv);
+    AppMethodBeat.o(93081);
+    return localFile;
   }
   
   public static File getDownloadCacheDirectory()
   {
-    if (bk.bl(q.dyn.dxA)) {
-      return Environment.getDownloadCacheDirectory();
+    AppMethodBeat.i(93083);
+    if (bo.isNullOrNil(ac.erF.epy))
+    {
+      localFile = Environment.getDownloadCacheDirectory();
+      AppMethodBeat.o(93083);
+      return localFile;
     }
-    return new File(q.dyn.dxA);
+    File localFile = new File(ac.erF.epy);
+    AppMethodBeat.o(93083);
+    return localFile;
   }
   
   public static File getExternalStorageDirectory()
   {
-    if (bk.bl(q.dyn.dxv)) {
-      return Environment.getExternalStorageDirectory();
+    AppMethodBeat.i(93079);
+    if (bo.isNullOrNil(ac.erF.ept))
+    {
+      localFile = Environment.getExternalStorageDirectory();
+      AppMethodBeat.o(93079);
+      return localFile;
     }
-    return new File(q.dyn.dxv);
+    File localFile = new File(ac.erF.ept);
+    AppMethodBeat.o(93079);
+    return localFile;
   }
   
   @TargetApi(8)
   public static File getExternalStoragePublicDirectory(String paramString)
   {
-    if (bk.bl(q.dyn.dxw)) {
-      return Environment.getExternalStoragePublicDirectory(paramString);
+    AppMethodBeat.i(93080);
+    if (bo.isNullOrNil(ac.erF.epu))
+    {
+      paramString = Environment.getExternalStoragePublicDirectory(paramString);
+      AppMethodBeat.o(93080);
+      return paramString;
     }
-    return new File(q.dyn.dxw);
+    paramString = new File(ac.erF.epu);
+    AppMethodBeat.o(93080);
+    return paramString;
   }
   
   public static String getExternalStorageState()
   {
-    if (bk.bl(q.dyn.dxz)) {
-      return Environment.getExternalStorageState();
+    AppMethodBeat.i(93084);
+    if (bo.isNullOrNil(ac.erF.epx))
+    {
+      str = Environment.getExternalStorageState();
+      AppMethodBeat.o(93084);
+      return str;
     }
-    return q.dyn.dxz;
+    String str = ac.erF.epx;
+    AppMethodBeat.o(93084);
+    return str;
   }
   
   public static File getRootDirectory()
   {
-    if (bk.bl(q.dyn.dxy)) {
-      return Environment.getRootDirectory();
+    AppMethodBeat.i(93082);
+    if (bo.isNullOrNil(ac.erF.epw))
+    {
+      localFile = Environment.getRootDirectory();
+      AppMethodBeat.o(93082);
+      return localFile;
     }
-    return new File(q.dyn.dxy);
-  }
-  
-  /* Error */
-  @java.lang.Deprecated
-  public static boolean zK()
-  {
-    // Byte code:
-    //   0: getstatic 12	com/tencent/mm/compatible/util/h:dzT	Ljava/lang/Boolean;
-    //   3: ifnonnull +58 -> 61
-    //   6: new 90	java/io/FileInputStream
-    //   9: dup
-    //   10: new 43	java/io/File
-    //   13: dup
-    //   14: invokestatic 83	android/os/Environment:getRootDirectory	()Ljava/io/File;
-    //   17: ldc 92
-    //   19: invokespecial 95	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   22: invokespecial 98	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   25: astore_1
-    //   26: aload_1
-    //   27: astore_0
-    //   28: new 100	java/util/Properties
-    //   31: dup
-    //   32: invokespecial 102	java/util/Properties:<init>	()V
-    //   35: astore_2
-    //   36: aload_1
-    //   37: astore_0
-    //   38: aload_2
-    //   39: aload_1
-    //   40: invokevirtual 106	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   43: aload_1
-    //   44: astore_0
-    //   45: aload_2
-    //   46: ldc 108
-    //   48: invokevirtual 112	java/util/Properties:containsKey	(Ljava/lang/Object;)Z
-    //   51: invokestatic 118	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   54: putstatic 12	com/tencent/mm/compatible/util/h:dzT	Ljava/lang/Boolean;
-    //   57: aload_1
-    //   58: invokevirtual 121	java/io/FileInputStream:close	()V
-    //   61: getstatic 12	com/tencent/mm/compatible/util/h:dzT	Ljava/lang/Boolean;
-    //   64: invokevirtual 124	java/lang/Boolean:booleanValue	()Z
-    //   67: ireturn
-    //   68: astore_2
-    //   69: aconst_null
-    //   70: astore_1
-    //   71: aload_1
-    //   72: astore_0
-    //   73: ldc 126
-    //   75: aload_2
-    //   76: ldc 128
-    //   78: iconst_0
-    //   79: anewarray 4	java/lang/Object
-    //   82: invokestatic 134	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   85: aload_1
-    //   86: astore_0
-    //   87: iconst_0
-    //   88: invokestatic 118	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   91: putstatic 12	com/tencent/mm/compatible/util/h:dzT	Ljava/lang/Boolean;
-    //   94: aload_1
-    //   95: ifnull -34 -> 61
-    //   98: aload_1
-    //   99: invokevirtual 121	java/io/FileInputStream:close	()V
-    //   102: goto -41 -> 61
-    //   105: astore_0
-    //   106: goto -45 -> 61
-    //   109: astore_1
-    //   110: aconst_null
-    //   111: astore_0
-    //   112: aload_0
-    //   113: ifnull +7 -> 120
-    //   116: aload_0
-    //   117: invokevirtual 121	java/io/FileInputStream:close	()V
-    //   120: aload_1
-    //   121: athrow
-    //   122: astore_0
-    //   123: goto -62 -> 61
-    //   126: astore_0
-    //   127: goto -7 -> 120
-    //   130: astore_1
-    //   131: goto -19 -> 112
-    //   134: astore_2
-    //   135: goto -64 -> 71
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   27	60	0	localFileInputStream1	java.io.FileInputStream
-    //   105	1	0	localException1	java.lang.Exception
-    //   111	6	0	localObject1	Object
-    //   122	1	0	localException2	java.lang.Exception
-    //   126	1	0	localException3	java.lang.Exception
-    //   25	74	1	localFileInputStream2	java.io.FileInputStream
-    //   109	12	1	localObject2	Object
-    //   130	1	1	localObject3	Object
-    //   35	11	2	localProperties	java.util.Properties
-    //   68	8	2	localException4	java.lang.Exception
-    //   134	1	2	localException5	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   6	26	68	java/lang/Exception
-    //   98	102	105	java/lang/Exception
-    //   6	26	109	finally
-    //   57	61	122	java/lang/Exception
-    //   116	120	126	java/lang/Exception
-    //   28	36	130	finally
-    //   38	43	130	finally
-    //   45	57	130	finally
-    //   73	85	130	finally
-    //   87	94	130	finally
-    //   28	36	134	java/lang/Exception
-    //   38	43	134	java/lang/Exception
-    //   45	57	134	java/lang/Exception
-  }
-  
-  /* Error */
-  public static boolean zL()
-  {
-    // Byte code:
-    //   0: getstatic 14	com/tencent/mm/compatible/util/h:dzU	Ljava/lang/Boolean;
-    //   3: ifnonnull +65 -> 68
-    //   6: new 90	java/io/FileInputStream
-    //   9: dup
-    //   10: new 43	java/io/File
-    //   13: dup
-    //   14: invokestatic 83	android/os/Environment:getRootDirectory	()Ljava/io/File;
-    //   17: ldc 92
-    //   19: invokespecial 95	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   22: invokespecial 98	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   25: astore_1
-    //   26: aload_1
-    //   27: astore_0
-    //   28: new 100	java/util/Properties
-    //   31: dup
-    //   32: invokespecial 102	java/util/Properties:<init>	()V
-    //   35: astore_2
-    //   36: aload_1
-    //   37: astore_0
-    //   38: aload_2
-    //   39: aload_1
-    //   40: invokevirtual 106	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   43: aload_1
-    //   44: astore_0
-    //   45: aload_2
-    //   46: ldc 108
-    //   48: ldc 138
-    //   50: invokevirtual 142	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   53: ldc 144
-    //   55: invokevirtual 150	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   58: invokestatic 118	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   61: putstatic 14	com/tencent/mm/compatible/util/h:dzU	Ljava/lang/Boolean;
-    //   64: aload_1
-    //   65: invokevirtual 121	java/io/FileInputStream:close	()V
-    //   68: getstatic 14	com/tencent/mm/compatible/util/h:dzU	Ljava/lang/Boolean;
-    //   71: invokevirtual 124	java/lang/Boolean:booleanValue	()Z
-    //   74: ireturn
-    //   75: astore_2
-    //   76: aconst_null
-    //   77: astore_1
-    //   78: aload_1
-    //   79: astore_0
-    //   80: ldc 126
-    //   82: aload_2
-    //   83: ldc 128
-    //   85: iconst_0
-    //   86: anewarray 4	java/lang/Object
-    //   89: invokestatic 134	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   92: aload_1
-    //   93: astore_0
-    //   94: iconst_0
-    //   95: invokestatic 118	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   98: putstatic 14	com/tencent/mm/compatible/util/h:dzU	Ljava/lang/Boolean;
-    //   101: aload_1
-    //   102: ifnull -34 -> 68
-    //   105: aload_1
-    //   106: invokevirtual 121	java/io/FileInputStream:close	()V
-    //   109: goto -41 -> 68
-    //   112: astore_0
-    //   113: goto -45 -> 68
-    //   116: astore_1
-    //   117: aconst_null
-    //   118: astore_0
-    //   119: aload_0
-    //   120: ifnull +7 -> 127
-    //   123: aload_0
-    //   124: invokevirtual 121	java/io/FileInputStream:close	()V
-    //   127: aload_1
-    //   128: athrow
-    //   129: astore_0
-    //   130: goto -62 -> 68
-    //   133: astore_0
-    //   134: goto -7 -> 127
-    //   137: astore_1
-    //   138: goto -19 -> 119
-    //   141: astore_2
-    //   142: goto -64 -> 78
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   27	67	0	localFileInputStream1	java.io.FileInputStream
-    //   112	1	0	localException1	java.lang.Exception
-    //   118	6	0	localObject1	Object
-    //   129	1	0	localException2	java.lang.Exception
-    //   133	1	0	localException3	java.lang.Exception
-    //   25	81	1	localFileInputStream2	java.io.FileInputStream
-    //   116	12	1	localObject2	Object
-    //   137	1	1	localObject3	Object
-    //   35	11	2	localProperties	java.util.Properties
-    //   75	8	2	localException4	java.lang.Exception
-    //   141	1	2	localException5	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   6	26	75	java/lang/Exception
-    //   105	109	112	java/lang/Exception
-    //   6	26	116	finally
-    //   64	68	129	java/lang/Exception
-    //   123	127	133	java/lang/Exception
-    //   28	36	137	finally
-    //   38	43	137	finally
-    //   45	64	137	finally
-    //   80	92	137	finally
-    //   94	101	137	finally
-    //   28	36	141	java/lang/Exception
-    //   38	43	141	java/lang/Exception
-    //   45	64	141	java/lang/Exception
+    File localFile = new File(ac.erF.epw);
+    AppMethodBeat.o(93082);
+    return localFile;
   }
 }
 

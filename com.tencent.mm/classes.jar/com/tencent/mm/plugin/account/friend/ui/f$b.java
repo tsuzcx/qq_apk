@@ -4,36 +4,38 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.plugin.account.friend.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f$b
 {
   String account;
-  ImageView dpY;
-  TextView eXu;
-  int fdX;
-  View fdZ;
-  TextView feg;
-  TextView feh;
-  TextView fei;
-  ProgressBar fej;
+  ImageView ehv;
+  TextView gpr;
+  int gvH;
+  View gvJ;
+  TextView gvP;
+  TextView gvQ;
+  TextView gvR;
+  ProgressBar gvS;
   int status;
   
   public f$b(f paramf, View paramView)
   {
-    this.feg = ((TextView)paramView.findViewById(a.d.friend_item_catalog));
-    this.dpY = ((ImageView)paramView.findViewById(a.d.friend_item_avatar_iv));
-    this.feh = ((TextView)paramView.findViewById(a.d.friend_item_nickname));
-    this.fei = ((TextView)paramView.findViewById(a.d.friend_item_wx_nickname));
-    this.fdZ = paramView.findViewById(a.d.friend_item_action_view);
-    this.eXu = ((TextView)paramView.findViewById(a.d.friend_item_status_tv));
-    this.fej = ((ProgressBar)paramView.findViewById(a.d.friend_item_status_pb));
-    this.fdZ.setOnClickListener(new f.b.1(this, paramf));
+    AppMethodBeat.i(108605);
+    this.gvP = ((TextView)paramView.findViewById(2131824297));
+    this.ehv = ((ImageView)paramView.findViewById(2131824298));
+    this.gvQ = ((TextView)paramView.findViewById(2131824299));
+    this.gvR = ((TextView)paramView.findViewById(2131824300));
+    this.gvJ = paramView.findViewById(2131824301);
+    this.gpr = ((TextView)paramView.findViewById(2131824302));
+    this.gvS = ((ProgressBar)paramView.findViewById(2131824303));
+    this.gvJ.setOnClickListener(new f.b.1(this, paramf));
+    AppMethodBeat.o(108605);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.f.b
  * JD-Core Version:    0.7.0.1
  */

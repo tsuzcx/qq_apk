@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.facedetectaction.b;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.k;
 import com.tencent.mm.modelsfs.FileOp;
-import com.tencent.mm.plugin.facedetect.model.o;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.facedetect.model.p;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.youtu.ytcommon.YTCommonExInterface;
 import com.tencent.youtu.ytfacetrace.YTFaceTraceInterface;
@@ -18,32 +19,35 @@ import java.io.InputStream;
 
 public class b
 {
-  public int jWb;
-  public YTPoseDetectInterface.PoseDetectOnFrame jWc = null;
-  a jWd;
+  public int mqt;
+  public YTPoseDetectInterface.PoseDetectOnFrame mqu = null;
+  b.a mqv;
   public int status = -1;
   
   static
   {
-    k.b("YTCommonEx", b.class.getClassLoader());
-    k.b("YTFaceTrace", b.class.getClassLoader());
-    k.b("YTNextCV", b.class.getClassLoader());
-    k.b("YTPoseDetect", b.class.getClassLoader());
+    AppMethodBeat.i(686);
+    k.a("YTCommonEx", b.class.getClassLoader());
+    k.a("YTFaceTrace", b.class.getClassLoader());
+    k.a("YTNextCV", b.class.getClassLoader());
+    k.a("YTPoseDetect", b.class.getClassLoader());
     YTCommonExInterface.setIsEnabledLog(true);
     YTCommonExInterface.setIsEnabledNativeLog(true);
+    AppMethodBeat.o(686);
   }
   
-  final boolean e(MMActivity paramMMActivity)
+  final boolean f(MMActivity paramMMActivity)
   {
-    y.i("MicroMsg.FaceCheckActionEngine", "initYoutuInstance()");
+    AppMethodBeat.i(685);
+    ab.i("MicroMsg.FaceCheckActionEngine", "initYoutuInstance()");
     for (;;)
     {
       try
       {
-        InputStream localInputStream1 = ae.getContext().getAssets().open("face_detect" + File.separator + "ufdmtcc.bin");
-        InputStream localInputStream2 = ae.getContext().getAssets().open("face_detect" + File.separator + "ufat.bin");
+        InputStream localInputStream1 = ah.getContext().getAssets().open("face_detect" + File.separator + "ufdmtcc.bin");
+        InputStream localInputStream2 = ah.getContext().getAssets().open("face_detect" + File.separator + "ufat.bin");
         arrayOfByte2 = new byte[localInputStream1.available()];
-        y.i("MicroMsg.FaceCheckActionEngine", "load ufat.bin or ufdmtcc.bin failed" + localIOException1.getMessage());
+        ab.i("MicroMsg.FaceCheckActionEngine", "load ufat.bin or ufdmtcc.bin failed" + localIOException1.getMessage());
       }
       catch (IOException localIOException1)
       {
@@ -66,41 +70,42 @@ public class b
           localInputStream2.read(arrayOfByte1);
           localInputStream1.close();
           localInputStream2.close();
-          if (!FileOp.bK(o.aOF()))
+          if (!FileOp.cN(p.buJ()))
           {
-            y.i("MicroMsg.FaceCheckActionEngine", "initYoutuInstance copy post detect model file");
-            o.n(ae.getContext(), "face_detect" + File.separator + "PE.dat", o.aOF());
+            ab.i("MicroMsg.FaceCheckActionEngine", "initYoutuInstance copy post detect model file");
+            p.p(ah.getContext(), "face_detect" + File.separator + "PE.dat", p.buJ());
           }
-          y.i("MicroMsg.FaceCheckActionEngine", "YTPoseDetectInterface.initModel FielPath: %s", new Object[] { o.aOF() });
-          i = YTPoseDetectInterface.initModel(o.aOF());
-          y.i("MicroMsg.FaceCheckActionEngine", "YTPoseDetectInterface.initModel ret: %s", new Object[] { Integer.valueOf(i) });
+          ab.i("MicroMsg.FaceCheckActionEngine", "YTPoseDetectInterface.initModel FielPath: %s", new Object[] { p.buJ() });
+          i = YTPoseDetectInterface.initModel(p.buJ());
+          ab.i("MicroMsg.FaceCheckActionEngine", "YTPoseDetectInterface.initModel ret: %s", new Object[] { Integer.valueOf(i) });
           if (i == 0) {
-            break label288;
+            break label293;
           }
-          y.i("MicroMsg.FaceCheckActionEngine", "YTPoseDetectInterface.initModel failed，return:" + i);
+          ab.i("MicroMsg.FaceCheckActionEngine", "YTPoseDetectInterface.initModel failed，return:".concat(String.valueOf(i)));
           i = 0;
           if (i == 0) {
             break;
           }
           YTCommonExInterface.setAppBrightness(paramMMActivity, 255);
           this.status = 1;
+          AppMethodBeat.o(685);
           return true;
         }
         catch (IOException localIOException3)
         {
-          break label260;
+          break label265;
         }
         localIOException1 = localIOException1;
         arrayOfByte1 = null;
         arrayOfByte2 = null;
       }
-      label260:
+      label265:
       continue;
-      label288:
+      label293:
       i = YTFaceTraceInterface.initModel(arrayOfByte2, arrayOfByte1);
       if (i != 0)
       {
-        y.i("MicroMsg.FaceCheckActionEngine", "YTFaceTraceInterface.initModel failed，return:" + i);
+        ab.i("MicroMsg.FaceCheckActionEngine", "YTFaceTraceInterface.initModel failed，return:".concat(String.valueOf(i)));
         i = 0;
       }
       else
@@ -108,17 +113,13 @@ public class b
         i = 1;
       }
     }
+    AppMethodBeat.o(685);
     return false;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(byte[][] paramArrayOfByte, int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.b.b
  * JD-Core Version:    0.7.0.1
  */

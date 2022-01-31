@@ -1,35 +1,41 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.Map;
 
 public final class m$f
 {
-  public String aVr;
-  public String obd;
+  public String blZ;
+  public String qPm;
   public String userName;
   
-  public static f MB(String paramString)
+  public static f Zj(String paramString)
   {
-    paramString = bn.s(paramString, "bizprofile");
-    if (paramString != null) {
+    AppMethodBeat.i(24676);
+    Map localMap = br.F(paramString, "bizprofile");
+    if (localMap != null) {}
+    for (;;)
+    {
       try
       {
-        f localf = new f();
-        localf.aVr = bk.pm((String)paramString.get(".bizprofile.nickname"));
-        localf.userName = bk.pm((String)paramString.get(".bizprofile.username"));
-        localf.obd = bk.pm((String)paramString.get(".bizprofile.showchat"));
-        return localf;
+        paramString = new f();
+        paramString.blZ = bo.nullAsNil((String)localMap.get(".bizprofile.nickname"));
+        paramString.userName = bo.nullAsNil((String)localMap.get(".bizprofile.username"));
+        paramString.qPm = bo.nullAsNil((String)localMap.get(".bizprofile.showchat"));
+        AppMethodBeat.o(24676);
+        return paramString;
       }
       catch (Exception paramString)
       {
-        y.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
-        return null;
+        ab.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
+        paramString = null;
+        continue;
       }
+      paramString = null;
     }
-    return null;
   }
 }
 

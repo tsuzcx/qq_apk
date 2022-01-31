@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.wallet_core.ui.MMScrollView.b;
 
 final class WalletCardImportUI$1
@@ -9,13 +10,15 @@ final class WalletCardImportUI$1
 {
   WalletCardImportUI$1(WalletCardImportUI paramWalletCardImportUI) {}
   
-  public final void kD(boolean paramBoolean)
+  public final void nK(boolean paramBoolean)
   {
+    AppMethodBeat.i(47265);
     if (paramBoolean) {}
     for (int i = 8;; i = 0)
     {
-      y.d("MicroMsg.WalletCardElmentUI", "onSizeChanged : " + paramBoolean);
-      WalletCardImportUI.b(this.qCx).post(new WalletCardImportUI.1.1(this, i));
+      ab.d("MicroMsg.WalletCardElmentUI", "onSizeChanged : ".concat(String.valueOf(paramBoolean)));
+      WalletCardImportUI.b(this.uph).post(new WalletCardImportUI.1.1(this, i));
+      AppMethodBeat.o(47265);
       return;
     }
   }

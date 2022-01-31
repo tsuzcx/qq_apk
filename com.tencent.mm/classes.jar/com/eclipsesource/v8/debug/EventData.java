@@ -2,6 +2,7 @@ package com.eclipsesource.v8.debug;
 
 import com.eclipsesource.v8.Releasable;
 import com.eclipsesource.v8.V8Object;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EventData
   implements Releasable
@@ -10,14 +11,18 @@ public class EventData
   
   EventData(V8Object paramV8Object)
   {
+    AppMethodBeat.i(74849);
     this.v8Object = paramV8Object.twin();
+    AppMethodBeat.o(74849);
   }
   
   public void release()
   {
+    AppMethodBeat.i(74850);
     if (!this.v8Object.isReleased()) {
       this.v8Object.release();
     }
+    AppMethodBeat.o(74850);
   }
 }
 

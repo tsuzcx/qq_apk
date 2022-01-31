@@ -1,6 +1,7 @@
 package com.google.android.gms.auth;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class UserRecoverableAuthException
   extends GoogleAuthException
@@ -15,10 +16,15 @@ public class UserRecoverableAuthException
   
   public Intent getIntent()
   {
-    if (this.mIntent == null) {
+    AppMethodBeat.i(76961);
+    if (this.mIntent == null)
+    {
+      AppMethodBeat.o(76961);
       return null;
     }
-    return new Intent(this.mIntent);
+    Intent localIntent = new Intent(this.mIntent);
+    AppMethodBeat.o(76961);
+    return localIntent;
   }
 }
 

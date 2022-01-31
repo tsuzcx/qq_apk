@@ -1,37 +1,16 @@
 package com.tencent.filter.a;
 
-import android.graphics.Bitmap;
-import com.tencent.filter.BaseFilter;
-import com.tencent.filter.GLSLRender;
-import com.tencent.filter.art.a;
-import com.tencent.filter.m.k;
-import com.tencent.view.b;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.filter.m.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ce
-  extends BaseFilter
+  extends ab
 {
   public ce()
   {
-    super(GLSLRender.bcE);
-  }
-  
-  public final void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
-  {
-    a locala = new a(GLSLRender.bcE);
-    Object localObject = new HashMap();
-    ((Map)localObject).put("intensity", Float.valueOf(0.65F));
-    locala.setParameterDic((Map)localObject);
-    setNextFilter(locala, null);
-    localObject = new x();
-    boolean bool = b.xdb;
-    b.xdb = true;
-    Bitmap localBitmap = b.pe("filter/egWeizhidao/eftMeiwei/meiwei_lf.png");
-    b.xdb = bool;
-    ((BaseFilter)localObject).addParam(new m.k("inputImageTexture2", localBitmap, 33986, true));
-    locala.setNextFilter((BaseFilter)localObject, null);
-    super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.i(86538);
+    addParam(new m.o("inputImageTexture2", "sh/zhahuang_lf.png", 33986));
+    AppMethodBeat.o(86538);
   }
 }
 

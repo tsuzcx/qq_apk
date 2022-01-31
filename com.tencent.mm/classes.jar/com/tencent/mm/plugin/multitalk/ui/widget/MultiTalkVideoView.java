@@ -9,13 +9,14 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.mm.plugin.multitalk.a.m;
-import com.tencent.mm.plugin.multitalk.a.m.a;
-import com.tencent.mm.plugin.multitalk.a.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.multitalk.model.m;
+import com.tencent.mm.plugin.multitalk.model.m.a;
+import com.tencent.mm.plugin.multitalk.model.p;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.MMTextureView;
 import java.util.Map;
 
@@ -23,93 +24,87 @@ public class MultiTalkVideoView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  private static final int[] mwE = { 452984831, 369098751, 268435455, 369098751, 268435455, 184549375, 268435455, 184549375, 100663295 };
-  private SurfaceTexture aTk;
-  private int fvV;
-  private int fvW;
+  private static final int[] oWv = { 452984831, 369098751, 268435455, 369098751, 268435455, 184549375, 268435455, 184549375, 100663295 };
+  private SurfaceTexture bbI;
+  private int fbH;
+  private int fbI;
   private int index;
-  private Paint mwF;
-  private MultiTalkVideoView.a mwG = MultiTalkVideoView.a.mwK;
+  private Paint kMA;
+  private MultiTalkVideoView.a oWw;
   private int position;
   private String username;
   
   public MultiTalkVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(54228);
+    this.oWw = MultiTalkVideoView.a.oWA;
     initView();
+    AppMethodBeat.o(54228);
   }
   
   public MultiTalkVideoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(54229);
+    this.oWw = MultiTalkVideoView.a.oWA;
     initView();
+    AppMethodBeat.o(54229);
   }
   
-  private void blT()
+  private void bTT()
   {
-    if ((this.aTk == null) || (this.fvV == 0) || (this.fvW == 0)) {
+    AppMethodBeat.i(54237);
+    if ((this.bbI == null) || (this.fbH == 0) || (this.fbI == 0))
+    {
+      AppMethodBeat.o(54237);
       return;
     }
     Canvas localCanvas = lockCanvas(null);
     if (localCanvas == null)
     {
-      y.e("MicroMsg.MT.MultiTalkVideoView", "getCanvasError canvas is null");
+      ab.e("MicroMsg.MT.MultiTalkVideoView", "getCanvasError canvas is null");
+      AppMethodBeat.o(54237);
       return;
     }
     localCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
     localCanvas.drawColor(-14737113);
-    localCanvas.drawColor(mwE[this.index]);
+    localCanvas.drawColor(oWv[this.index]);
     try
     {
       unlockCanvasAndPost(localCanvas);
+      AppMethodBeat.o(54237);
       return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.MT.MultiTalkVideoView", localException, "drawNone unlockCanvasAndPost crash", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.MT.MultiTalkVideoView", localException, "drawNone unlockCanvasAndPost crash", new Object[0]);
+      AppMethodBeat.o(54237);
     }
   }
   
-  private boolean blU()
+  private boolean bTU()
   {
-    return this.mwG == MultiTalkVideoView.a.mwI;
+    return this.oWw == MultiTalkVideoView.a.oWy;
   }
   
   private void initView()
   {
-    this.mwF = new Paint();
-    this.mwF.setColor(-16777216);
-    this.mwF.setFilterBitmap(false);
-    this.mwF.setTextSize(40.0F);
+    AppMethodBeat.i(54230);
+    this.kMA = new Paint();
+    this.kMA.setColor(-16777216);
+    this.kMA.setFilterBitmap(false);
+    this.kMA.setTextSize(40.0F);
     setSurfaceTextureListener(this);
+    AppMethodBeat.o(54230);
   }
   
-  public final void IO(String paramString)
+  public final void UE(String paramString)
   {
-    y.i("MicroMsg.MT.MultiTalkVideoView", "changeUser from %s to %s", new Object[] { this.username, paramString });
+    AppMethodBeat.i(54238);
+    ab.i("MicroMsg.MT.MultiTalkVideoView", "changeUser from %s to %s", new Object[] { this.username, paramString });
     this.username = paramString;
-  }
-  
-  public final void aqU()
-  {
-    if (blU()) {
-      p.blG().a(this, false);
-    }
-    for (;;)
-    {
-      return;
-      if (!blV()) {
-        break;
-      }
-      m.a locala = (m.a)p.blG().muN.get(getUsername());
-      if (locala != null) {}
-      for (Bitmap localBitmap = locala.muQ; localBitmap != null; localBitmap = null)
-      {
-        c(localBitmap, locala.angle, locala.muy);
-        return;
-      }
-    }
-    blT();
+    AppMethodBeat.o(54238);
   }
   
   /* Error */
@@ -118,136 +113,157 @@ public class MultiTalkVideoView
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: invokevirtual 157	com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkVideoView:blV	()Z
-    //   6: istore 5
-    //   8: iload 5
-    //   10: ifne +6 -> 16
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: return
-    //   16: invokestatic 148	com/tencent/mm/plugin/multitalk/a/p:blG	()Lcom/tencent/mm/plugin/multitalk/a/m;
+    //   2: ldc 154
+    //   4: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: invokevirtual 157	com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkVideoView:bTV	()Z
+    //   11: ifne +11 -> 22
+    //   14: ldc 154
+    //   16: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: aload_0
-    //   20: aload_1
-    //   21: iload_2
-    //   22: iload_3
-    //   23: iload 4
-    //   25: invokevirtual 194	com/tencent/mm/plugin/multitalk/a/m:a	(Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkVideoView;[IIII)Z
-    //   28: pop
-    //   29: goto -16 -> 13
-    //   32: astore_1
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: aload_1
-    //   36: athrow
+    //   20: monitorexit
+    //   21: return
+    //   22: invokestatic 163	com/tencent/mm/plugin/multitalk/model/p:bTG	()Lcom/tencent/mm/plugin/multitalk/model/m;
+    //   25: aload_0
+    //   26: aload_1
+    //   27: iload_2
+    //   28: iload_3
+    //   29: iload 4
+    //   31: invokevirtual 169	com/tencent/mm/plugin/multitalk/model/m:a	(Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkVideoView;[IIII)Z
+    //   34: pop
+    //   35: ldc 154
+    //   37: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   40: goto -21 -> 19
+    //   43: astore_1
+    //   44: aload_0
+    //   45: monitorexit
+    //   46: aload_1
+    //   47: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	37	0	this	MultiTalkVideoView
-    //   0	37	1	paramArrayOfInt	int[]
-    //   0	37	2	paramInt1	int
-    //   0	37	3	paramInt2	int
-    //   0	37	4	paramInt3	int
-    //   6	3	5	bool	boolean
+    //   0	48	0	this	MultiTalkVideoView
+    //   0	48	1	paramArrayOfInt	int[]
+    //   0	48	2	paramInt1	int
+    //   0	48	3	paramInt2	int
+    //   0	48	4	paramInt3	int
     // Exception table:
     //   from	to	target	type
-    //   2	8	32	finally
-    //   16	29	32	finally
+    //   2	19	43	finally
+    //   22	40	43	finally
   }
   
-  public final void blP()
+  public final void bTP()
   {
-    if (blU()) {
-      p.blG().a(this, true);
+    AppMethodBeat.i(54233);
+    if (bTU()) {
+      p.bTG().a(this, true);
     }
+    AppMethodBeat.o(54233);
   }
   
-  public final void blQ()
+  public final void bTQ()
   {
-    if (bk.bl(getUsername())) {
+    AppMethodBeat.i(54234);
+    if (bo.isNullOrNil(getUsername()))
+    {
+      AppMethodBeat.o(54234);
       return;
     }
-    y.i("MicroMsg.MT.MultiTalkVideoView", "changeToAvatar %s from %s", new Object[] { getUsername(), this.mwG.name() });
-    this.mwG = MultiTalkVideoView.a.mwI;
-    blP();
+    ab.i("MicroMsg.MT.MultiTalkVideoView", "changeToAvatar %s from %s", new Object[] { getUsername(), this.oWw.name() });
+    this.oWw = MultiTalkVideoView.a.oWy;
+    bTP();
+    AppMethodBeat.o(54234);
   }
   
-  public final void blR()
+  public final void bTR()
   {
-    y.i("MicroMsg.MT.MultiTalkVideoView", "changeToVideo %s from %s", new Object[] { getUsername(), this.mwG.name() });
-    this.mwG = MultiTalkVideoView.a.mwJ;
+    AppMethodBeat.i(54235);
+    ab.i("MicroMsg.MT.MultiTalkVideoView", "changeToVideo %s from %s", new Object[] { getUsername(), this.oWw.name() });
+    this.oWw = MultiTalkVideoView.a.oWz;
+    AppMethodBeat.o(54235);
   }
   
-  public final void blS()
+  public final void bTS()
   {
-    y.i("MicroMsg.MT.MultiTalkVideoView", "changeToNone %s from %s", new Object[] { getUsername(), this.mwG.name() });
-    this.mwG = MultiTalkVideoView.a.mwK;
+    AppMethodBeat.i(54236);
+    ab.i("MicroMsg.MT.MultiTalkVideoView", "changeToNone %s from %s", new Object[] { getUsername(), this.oWw.name() });
+    this.oWw = MultiTalkVideoView.a.oWA;
     this.username = null;
-    blT();
+    bTT();
+    AppMethodBeat.o(54236);
   }
   
-  public final boolean blV()
+  public final boolean bTV()
   {
-    return this.mwG == MultiTalkVideoView.a.mwJ;
+    return this.oWw == MultiTalkVideoView.a.oWz;
   }
   
-  public final void c(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public final void d(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    if (paramBitmap != null) {}
-    int i;
-    int j;
-    Canvas localCanvas;
-    try
-    {
-      if (paramBitmap.isRecycled()) {
-        y.e("MicroMsg.MT.MultiTalkVideoView", "DrawBitmap, bitmap is null or recycled");
-      }
-      for (;;)
-      {
-        return;
-        i = paramBitmap.getWidth();
-        j = paramBitmap.getHeight();
-        if ((this.aTk != null) && (this.fvV != 0) && (this.fvW != 0))
-        {
-          localCanvas = lockCanvas(null);
-          if (localCanvas != null) {
-            break;
-          }
-          y.e("MicroMsg.MT.MultiTalkVideoView", "%s getCanvasError", new Object[] { this.username });
-        }
-      }
-      localMatrix = new Matrix();
-    }
-    finally {}
-    Matrix localMatrix;
-    if (paramInt1 == OpenGlRender.FLAG_Angle270) {
-      localMatrix.setRotate(270.0F, i / 2, j / 2);
-    }
     for (;;)
     {
-      for (;;)
+      int i;
+      int j;
+      try
       {
-        if (paramInt2 == OpenGlRender.FLAG_Mirror)
+        AppMethodBeat.i(54232);
+        if ((paramBitmap == null) || (paramBitmap.isRecycled()))
         {
-          localMatrix.postScale(-1.0F, 1.0F);
-          localMatrix.postTranslate(i, 0.0F);
+          ab.e("MicroMsg.MT.MultiTalkVideoView", "DrawBitmap, bitmap is null or recycled");
+          AppMethodBeat.o(54232);
+          return;
         }
-        localMatrix.postScale(localCanvas.getWidth() / j, localCanvas.getHeight() / i);
-        localCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-        if (!paramBitmap.isRecycled()) {
-          localCanvas.drawBitmap(paramBitmap, localMatrix, this.mwF);
-        }
-        try
+        i = paramBitmap.getWidth();
+        j = paramBitmap.getHeight();
+        if ((this.bbI == null) || (this.fbH == 0) || (this.fbI == 0))
         {
-          unlockCanvasAndPost(localCanvas);
+          AppMethodBeat.o(54232);
+          continue;
         }
-        catch (Exception paramBitmap)
-        {
-          y.printErrStackTrace("MicroMsg.MT.MultiTalkVideoView", paramBitmap, "drawBitmap unlockCanvasAndPost crash", new Object[0]);
-        }
+        localCanvas = lockCanvas(null);
       }
-      break;
-      if (paramInt1 == OpenGlRender.FLAG_Angle90) {
-        localMatrix.setRotate(90.0F, i / 2, j / 2);
+      finally {}
+      Canvas localCanvas;
+      if (localCanvas == null)
+      {
+        ab.e("MicroMsg.MT.MultiTalkVideoView", "%s getCanvasError", new Object[] { this.username });
+        AppMethodBeat.o(54232);
+      }
+      else
+      {
+        Matrix localMatrix = new Matrix();
+        if (paramInt1 == OpenGlRender.FLAG_Angle270) {
+          localMatrix.setRotate(270.0F, i / 2, j / 2);
+        }
+        for (;;)
+        {
+          for (;;)
+          {
+            if (paramInt2 == OpenGlRender.FLAG_Mirror)
+            {
+              localMatrix.postScale(-1.0F, 1.0F);
+              localMatrix.postTranslate(i, 0.0F);
+            }
+            localMatrix.postScale(localCanvas.getWidth() / j, localCanvas.getHeight() / i);
+            localCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+            if (!paramBitmap.isRecycled()) {
+              localCanvas.drawBitmap(paramBitmap, localMatrix, this.kMA);
+            }
+            try
+            {
+              unlockCanvasAndPost(localCanvas);
+              AppMethodBeat.o(54232);
+            }
+            catch (Exception paramBitmap)
+            {
+              ab.printErrStackTrace("MicroMsg.MT.MultiTalkVideoView", paramBitmap, "drawBitmap unlockCanvasAndPost crash", new Object[0]);
+              AppMethodBeat.o(54232);
+            }
+          }
+          if (paramInt1 == OpenGlRender.FLAG_Angle90) {
+            localMatrix.setRotate(90.0F, i / 2, j / 2);
+          }
+        }
       }
     }
   }
@@ -270,28 +286,32 @@ public class MultiTalkVideoView
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     boolean bool = false;
+    AppMethodBeat.i(54240);
     String str = this.username;
     if (paramSurfaceTexture != null) {
       bool = true;
     }
-    y.i("MicroMsg.MT.MultiTalkVideoView", "onSurfaceTextureAvailable %s %b %d %d", new Object[] { str, Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.aTk = paramSurfaceTexture;
-    this.fvV = paramInt1;
-    this.fvW = paramInt2;
-    cBe();
-    e.post(new MultiTalkVideoView.1(this), "onSurfaceTextureAvailable_refreshView");
+    ab.i("MicroMsg.MT.MultiTalkVideoView", "onSurfaceTextureAvailable %s %b %d %d", new Object[] { str, Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.bbI = paramSurfaceTexture;
+    this.fbH = paramInt1;
+    this.fbI = paramInt2;
+    dEs();
+    d.post(new MultiTalkVideoView.1(this), "onSurfaceTextureAvailable_refreshView");
+    AppMethodBeat.o(54240);
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
+    AppMethodBeat.i(54242);
     String str = this.username;
     if (paramSurfaceTexture != null) {}
     for (boolean bool = true;; bool = false)
     {
-      y.i("MicroMsg.MT.MultiTalkVideoView", "onSurfaceTextureDestroyed %s %b", new Object[] { str, Boolean.valueOf(bool) });
-      this.aTk = null;
-      this.fvW = 0;
-      this.fvV = 0;
+      ab.i("MicroMsg.MT.MultiTalkVideoView", "onSurfaceTextureDestroyed %s %b", new Object[] { str, Boolean.valueOf(bool) });
+      this.bbI = null;
+      this.fbI = 0;
+      this.fbH = 0;
+      AppMethodBeat.o(54242);
       return false;
     }
   }
@@ -299,24 +319,54 @@ public class MultiTalkVideoView
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     boolean bool = false;
+    AppMethodBeat.i(54241);
     String str = this.username;
     if (paramSurfaceTexture != null) {
       bool = true;
     }
-    y.i("MicroMsg.MT.MultiTalkVideoView", "onSurfaceTextureSizeChanged %s %b %d %d", new Object[] { str, Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.fvV = paramInt1;
-    this.fvW = paramInt2;
-    e.post(new MultiTalkVideoView.2(this), "onSurfaceTextureSizeChanged_refreshView");
+    ab.i("MicroMsg.MT.MultiTalkVideoView", "onSurfaceTextureSizeChanged %s %b %d %d", new Object[] { str, Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.fbH = paramInt1;
+    this.fbI = paramInt2;
+    d.post(new MultiTalkVideoView.2(this), "onSurfaceTextureSizeChanged_refreshView");
+    AppMethodBeat.o(54241);
   }
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
     boolean bool = false;
+    AppMethodBeat.i(54243);
     String str = this.username;
     if (paramSurfaceTexture != null) {
       bool = true;
     }
-    y.v("MicroMsg.MT.MultiTalkVideoView", "onSurfaceTextureUpdated %s %b", new Object[] { str, Boolean.valueOf(bool) });
+    ab.v("MicroMsg.MT.MultiTalkVideoView", "onSurfaceTextureUpdated %s %b", new Object[] { str, Boolean.valueOf(bool) });
+    AppMethodBeat.o(54243);
+  }
+  
+  public final void refreshView()
+  {
+    AppMethodBeat.i(54239);
+    if (bTU())
+    {
+      p.bTG().a(this, false);
+      AppMethodBeat.o(54239);
+      return;
+    }
+    if (bTV())
+    {
+      m.a locala = (m.a)p.bTG().oUC.get(getUsername());
+      if (locala != null) {}
+      for (Bitmap localBitmap = locala.oUE;; localBitmap = null)
+      {
+        if (localBitmap != null) {
+          d(localBitmap, locala.angle, locala.oUn);
+        }
+        AppMethodBeat.o(54239);
+        return;
+      }
+    }
+    bTT();
+    AppMethodBeat.o(54239);
   }
   
   public void setIndex(int paramInt)

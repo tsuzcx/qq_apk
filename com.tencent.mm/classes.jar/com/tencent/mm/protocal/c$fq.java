@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$fq
+final class c$fq
   extends c.g
 {
-  public c$fq()
+  c$fq()
   {
-    super("openUrlByExtBrowser", "open_url_by_ext_browser", 55, false);
+    super("openGameWebView", "openGameWebView", 287, false);
   }
 }
 

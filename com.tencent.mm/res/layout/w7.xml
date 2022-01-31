@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/bgz" android:background="@drawable/at6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageButton android:id="@id/bh0" android:background="@null" android:padding="@dimen/mq" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/la" android:layout_weight="1.0" />
-    <ImageButton android:id="@id/bh1" android:background="@null" android:padding="@dimen/mq" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/l9" android:layout_weight="1.0" />
-    <ImageButton android:id="@id/bh2" android:background="@null" android:padding="@dimen/mq" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/l_" android:layout_weight="1.0" />
+    <TextView android:id="@id/bkx" android:paddingLeft="@dimen/ft" android:paddingRight="@dimen/dj" android:layout_width="fill_parent" android:text="@string/bfg" style="@style/mo" />
+    <LinearLayout android:orientation="vertical" android:id="@id/nw" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.honey_pay.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 final class HoneyPayGiveCardUI$2
@@ -11,7 +12,9 @@ final class HoneyPayGiveCardUI$2
   
   public final void onClick(View paramView)
   {
-    HoneyPayGiveCardUI.b(this.llB).d(this.llB);
+    AppMethodBeat.i(41860);
+    HoneyPayGiveCardUI.b(this.nIX).d(this.nIX);
+    AppMethodBeat.o(41860);
   }
 }
 

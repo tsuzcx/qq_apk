@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.model;
 
 public abstract interface ac$a
 {
-  public abstract void iU(boolean paramBoolean);
+  public abstract void lb(boolean paramBoolean);
 }
 
 

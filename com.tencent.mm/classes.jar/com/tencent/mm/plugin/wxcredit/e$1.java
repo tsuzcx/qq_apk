@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.wxcredit;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.wxcredit.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.c;
 import com.tencent.mm.wallet_core.d.g;
@@ -17,42 +18,41 @@ final class e$1
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt1 == 0)
+    AppMethodBeat.i(48625);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      bool1 = bool2;
-      if (paramInt2 == 0)
+      if ((paramm instanceof b))
       {
-        if ((paramm instanceof b))
-        {
-          paramString = (b)paramm;
-          e.a(this.rQD).putString("KEY_SESSION_KEY", paramString.token);
-          e.b(this.rQD).putString("key_pre_name", paramString.name);
-          e.c(this.rQD).putString("key_pre_indentity", paramString.rQG);
-          e.d(this.rQD).putBoolean("key_has_indentity_info", paramString.rQH);
-        }
-        this.rQD.a(this.gfb, 0, e.e(this.rQD));
-        bool1 = true;
+        paramString = (b)paramm;
+        e.a(this.vHu).putString("KEY_SESSION_KEY", paramString.token);
+        e.b(this.vHu).putString("key_pre_name", paramString.name);
+        e.c(this.vHu).putString("key_pre_indentity", paramString.vHx);
+        e.d(this.vHu).putBoolean("key_has_indentity_info", paramString.vHy);
       }
+      this.vHu.a(this.hwZ, 0, e.e(this.vHu));
+      AppMethodBeat.o(48625);
+      return true;
     }
-    return bool1;
+    AppMethodBeat.o(48625);
+    return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
     int i = 0;
-    e.f(this.rQD).putString("key_pwd1", (String)paramVarArgs[0]);
-    i locali = this.wBd;
+    AppMethodBeat.i(48626);
+    e.f(this.vHu).putString("key_pwd1", (String)paramVarArgs[0]);
+    i locali = this.AXB;
     String str = (String)paramVarArgs[0];
     if (paramVarArgs[1] == null) {}
     for (;;)
     {
-      locali.a(new b(str, i, e.g(this.rQD).getString("key_bank_type")), true, 1);
+      locali.a(new b(str, i, e.g(this.vHu).getString("key_bank_type")), true, 1);
+      AppMethodBeat.o(48626);
       return true;
-      i = bk.ZR((String)paramVarArgs[1]);
+      i = bo.apV((String)paramVarArgs[1]);
     }
   }
 }

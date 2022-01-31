@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.downloader_app.ui;
 
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$1
   implements Runnable
@@ -10,7 +11,9 @@ final class b$1
   
   public final void run()
   {
-    this.iTV.agL.notifyChanged();
+    AppMethodBeat.i(136281);
+    this.lcW.ajb.notifyChanged();
+    AppMethodBeat.o(136281);
   }
 }
 

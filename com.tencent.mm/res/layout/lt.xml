@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@null" android:paddingLeft="@dimen/kl" android:paddingTop="@dimen/mq" android:paddingRight="@dimen/kl" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/lh"
+<com.tencent.mm.ui.chatting.ChatFooterCustom android:orientation="horizontal" android:id="@id/aor" android:background="@drawable/b_0" android:layout_width="fill_parent" android:layout_height="@dimen/g9"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <TextView android:textColor="@color/ta" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/cj" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" style="@style/ks" />
-        <TextView android:textSize="@dimen/my" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ant" android:layout_width="fill_parent" android:layout_height="0.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/kr" />
+    <LinearLayout android:gravity="center" android:id="@id/aos" android:background="@color/a1" android:layout_width="@dimen/eq" android:layout_height="fill_parent">
+        <ImageView android:id="@id/aot" android:layout_width="@dimen/g6" android:layout_height="@dimen/g6" android:src="@drawable/jd" android:scaleType="fitXY" android:contentDescription="@string/ak9" />
     </LinearLayout>
-    <Button android:layout_gravity="center|right" android:id="@id/ao_" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no" style="@style/mw" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/aou" android:background="@color/a1" android:layout_width="0.0px" android:layout_height="fill_parent" android:weightSum="3.0" android:layout_weight="1.0">
+        <include layout="@layout/ls" />
+        <include layout="@layout/ls" />
+        <include layout="@layout/ls" />
+        <include layout="@layout/ls" />
+        <include layout="@layout/ls" />
+        <include layout="@layout/ls" />
+    </LinearLayout>
+    <ImageView android:id="@id/aov" android:background="@color/a1" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/w_" />
+</com.tencent.mm.ui.chatting.ChatFooterCustom>

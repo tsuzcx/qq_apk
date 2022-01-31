@@ -1,17 +1,20 @@
 package com.tencent.mm.ui.tools;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class AddFavoriteUI$11
-  extends ah
+  extends ak
 {
   AddFavoriteUI$11(AddFavoriteUI paramAddFavoriteUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    AddFavoriteUI.d(this.vYd);
-    AddFavoriteUI.f(this.vYd);
+    AppMethodBeat.i(34753);
+    AddFavoriteUI.d(this.Aqp);
+    AddFavoriteUI.f(this.Aqp);
+    AppMethodBeat.o(34753);
   }
 }
 

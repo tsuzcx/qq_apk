@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.webview.stub;
 
-import com.tencent.mm.h.a.km;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.la;
 import com.tencent.mm.sdk.b.c;
 
 final class WebviewScanImageActivity$1
-  extends c<km>
+  extends c<la>
 {
   WebviewScanImageActivity$1(WebviewScanImageActivity paramWebviewScanImageActivity)
   {
     super(0);
-    this.udX = km.class.getName().hashCode();
+    AppMethodBeat.i(7334);
+    this.__eventId = la.class.getName().hashCode();
+    AppMethodBeat.o(7334);
   }
 }
 

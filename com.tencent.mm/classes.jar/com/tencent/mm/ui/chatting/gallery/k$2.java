@@ -5,20 +5,21 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.n;
 import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.modelvideo.t;
+import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.protocal.c.bwa;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.platformtools.ah;
+import com.tencent.mm.protocal.protobuf.cii;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.chatting.a;
-import com.tencent.mm.ui.chatting.a.a;
 import com.tencent.mm.ui.chatting.a.b;
 
 final class k$2
@@ -28,80 +29,87 @@ final class k$2
   
   public final void onClick(final View paramView)
   {
-    com.tencent.mm.modelvideo.s locals;
-    bwa localbwa;
+    AppMethodBeat.i(32383);
     if ((paramView.getTag() != null) && ((paramView.getTag() instanceof bi)))
     {
       bi localbi = (bi)paramView.getTag();
-      a.a(a.a.vgc, localbi);
-      locals = u.oe(localbi.field_imgPath);
-      localbwa = locals.eHQ;
-      if ((localbwa == null) || (com.tencent.mm.platformtools.ah.bl(localbwa.dSP))) {
-        break label398;
-      }
-      o.Sr();
-      paramView = t.nT(localbi.field_imgPath);
-      localIntent = new Intent();
-      localIntent.putExtra("IsAd", false);
-      localIntent.putExtra("KStremVideoUrl", localbwa.dSP);
-      localIntent.putExtra("KThumUrl", localbwa.dSU);
-      localIntent.putExtra("KThumbPath", paramView);
-      localIntent.putExtra("KMediaId", "fakeid_" + localbi.field_msgId);
-      localIntent.putExtra("KMediaVideoTime", localbwa.sWK);
-      localIntent.putExtra("KMediaTitle", localbwa.dSR);
-      localIntent.putExtra("StreamWording", localbwa.dSS);
-      localIntent.putExtra("StremWebUrl", localbwa.dST);
-      localObject = localbi.field_talker;
-      bool = com.tencent.mm.model.s.fn((String)localObject);
-      if (!bool) {
-        break label382;
-      }
-      paramView = bd.iI(localbi.field_content);
-      localIntent.putExtra("KSta_StremVideoAduxInfo", localbwa.dSV);
-      localIntent.putExtra("KSta_StremVideoPublishId", localbwa.dSW);
-      localIntent.putExtra("KSta_SourceType", 1);
-      if (!bool) {
-        break label388;
-      }
-      i = a.b.vgl.value;
-      localIntent.putExtra("KSta_Scene", i);
-      localIntent.putExtra("KSta_FromUserName", paramView);
-      localIntent.putExtra("KSta_ChatName", (String)localObject);
-      localIntent.putExtra("KSta_MsgId", localbi.field_msgSvrId);
-      localIntent.putExtra("KSta_SnsStatExtStr", locals.bYN);
-      if (bool) {
-        localIntent.putExtra("KSta_ChatroomMembercount", m.gM((String)localObject));
-      }
-      d.b(this.vxz.vuf.vtJ.mController.uMN, "sns", ".ui.VideoAdPlayerUI", localIntent);
-    }
-    label382:
-    while ((localbwa == null) || (bk.bl(localbwa.dSS)) || (bk.bl(localbwa.dST))) {
-      for (;;)
+      com.tencent.mm.ui.chatting.a.a(com.tencent.mm.ui.chatting.a.a.zuZ, localbi);
+      s locals = u.vr(localbi.field_imgPath);
+      cii localcii = locals.fXG;
+      Object localObject;
+      if ((localcii != null) && (!ah.isNullOrNil(localcii.fiO)))
       {
-        Intent localIntent;
-        boolean bool;
+        o.alE();
+        paramView = com.tencent.mm.modelvideo.t.vg(localbi.field_imgPath);
+        Intent localIntent = new Intent();
+        localIntent.putExtra("KFromTimeLine", false);
+        localIntent.putExtra("KStremVideoUrl", localcii.fiO);
+        localIntent.putExtra("KThumUrl", localcii.fiT);
+        localIntent.putExtra("KThumbPath", paramView);
+        localIntent.putExtra("KMediaId", "fakeid_" + localbi.field_msgId);
+        localIntent.putExtra("KMediaVideoTime", localcii.wUJ);
+        localIntent.putExtra("KMediaTitle", localcii.fiQ);
+        localIntent.putExtra("StreamWording", localcii.fiR);
+        localIntent.putExtra("StremWebUrl", localcii.fiS);
+        localObject = localbi.field_talker;
+        boolean bool = com.tencent.mm.model.t.lA((String)localObject);
+        if (bool)
+        {
+          paramView = bf.pu(localbi.field_content);
+          localIntent.putExtra("KSta_StremVideoAduxInfo", localcii.fiU);
+          localIntent.putExtra("KSta_StremVideoPublishId", localcii.fiV);
+          localIntent.putExtra("KSta_SourceType", 1);
+          if (!bool) {
+            break label428;
+          }
+        }
+        label428:
+        for (int i = a.b.zvi.value;; i = a.b.zvh.value)
+        {
+          localIntent.putExtra("KSta_Scene", i);
+          localIntent.putExtra("KSta_FromUserName", paramView);
+          localIntent.putExtra("KSta_ChatName", (String)localObject);
+          localIntent.putExtra("KSta_MsgId", localbi.field_msgSvrId);
+          localIntent.putExtra("KSta_SnsStatExtStr", locals.cGU);
+          if (bool) {
+            localIntent.putExtra("KSta_ChatroomMembercount", n.nv((String)localObject));
+          }
+          if (((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(com.tencent.mm.plugin.expt.a.a.a.lRW, 0) <= 0) {
+            break label438;
+          }
+          d.b(this.zNL.zKg.zJK.getContext(), "sns", ".ui.SnsAdStreamVideoPlayUI", localIntent);
+          ab.i("MicroMsg.ImageGalleryViewHolder", "use new stream video play UI");
+          AppMethodBeat.o(32383);
+          return;
+          paramView = (View)localObject;
+          break;
+        }
+        label438:
+        d.b(this.zNL.zKg.zJK.getContext(), "sns", ".ui.VideoAdPlayerUI", localIntent);
+        AppMethodBeat.o(32383);
         return;
-        paramView = (View)localObject;
-        continue;
-        int i = a.b.vgk.value;
+      }
+      if ((localcii != null) && (!bo.isNullOrNil(localcii.fiR)) && (!bo.isNullOrNil(localcii.fiS)))
+      {
+        ab.i("MicroMsg.ImageGalleryViewHolder", "moreBtn click,opening " + localcii.fiS);
+        paramView = new Intent();
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("key_snsad_statextstr", locals.cGU);
+        paramView.putExtra("jsapiargs", (Bundle)localObject);
+        paramView.putExtra("rawUrl", localcii.fiS);
+        paramView.putExtra("useJs", true);
+        new ak(Looper.getMainLooper()).post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(32382);
+            d.b(k.2.this.zNL.zKg.zJK.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+            AppMethodBeat.o(32382);
+          }
+        });
       }
     }
-    label388:
-    label398:
-    y.i("MicroMsg.ImageGalleryViewHolder", "moreBtn click,opening " + localbwa.dST);
-    paramView = new Intent();
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("key_snsad_statextstr", locals.bYN);
-    paramView.putExtra("jsapiargs", (Bundle)localObject);
-    paramView.putExtra("rawUrl", localbwa.dST);
-    paramView.putExtra("useJs", true);
-    new com.tencent.mm.sdk.platformtools.ah(Looper.getMainLooper()).post(new Runnable()
-    {
-      public final void run()
-      {
-        d.b(k.2.this.vxz.vuf.vtJ.mController.uMN, "webview", ".ui.tools.WebViewUI", paramView);
-      }
-    });
+    AppMethodBeat.o(32383);
   }
 }
 

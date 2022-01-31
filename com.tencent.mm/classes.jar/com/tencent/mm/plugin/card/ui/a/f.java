@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.card.ui.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.c.lv;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.oj;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
@@ -13,29 +14,43 @@ public final class f
     super(paramMMActivity);
   }
   
-  public final boolean aCG()
+  public final boolean beQ()
   {
-    return this.ixx;
+    return this.kyA;
   }
   
-  public final boolean aCH()
+  public final boolean beR()
   {
-    return (this.ikk.isNormal()) && (super.aCH()) && ((this.ikk.azs()) || (!bk.bl(this.ikk.azy().code)));
+    AppMethodBeat.i(88721);
+    if ((this.klk.isNormal()) && (super.beR()) && ((this.klk.baY()) || (!bo.isNullOrNil(this.klk.bbe().code))))
+    {
+      AppMethodBeat.o(88721);
+      return true;
+    }
+    AppMethodBeat.o(88721);
+    return false;
   }
   
-  public final boolean aCI()
+  public final boolean beS()
   {
     return true;
   }
   
-  public final boolean aCL()
+  public final boolean beV()
   {
-    return (this.ikk.isNormal()) && (super.aCL());
+    AppMethodBeat.i(88722);
+    if ((this.klk.isNormal()) && (super.beV()))
+    {
+      AppMethodBeat.o(88722);
+      return true;
+    }
+    AppMethodBeat.o(88722);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.f
  * JD-Core Version:    0.7.0.1
  */

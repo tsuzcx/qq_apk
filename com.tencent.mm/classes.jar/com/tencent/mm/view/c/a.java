@@ -1,98 +1,105 @@
 package com.tencent.mm.view.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.emoji.b.d;
-import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
-import com.tencent.mm.pluginsdk.ui.chat.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ad;
+import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.x;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import com.tencent.mm.view.e.a.a;
+import java.util.ArrayList;
 
 public final class a
 {
-  private final String TAG = "MicroMsg.emoji.SmileyPanel.SmileyPanelInfo";
-  public int hxB;
-  public String iZD;
-  public int qPB;
-  public int qPC;
-  public com.tencent.mm.view.f.a wvQ;
-  public com.tencent.mm.view.e.a wyA;
-  public int wyB;
-  public int wyC;
-  public int wyD;
-  public boolean wyE = false;
-  public int wyF;
+  public com.tencent.mm.view.f.a AQS;
+  public com.tencent.mm.view.e.a ATS;
+  public int ATT;
+  public int ATU;
+  public int ATV;
+  public boolean ATW;
+  public int ATX;
+  private final String TAG;
+  public int jpL;
+  public String liu;
+  public int uEJ;
+  public int uEK;
   
   public a(EmojiGroupInfo paramEmojiGroupInfo, int paramInt1, int paramInt2, com.tencent.mm.view.f.a parama, com.tencent.mm.view.e.a parama1, boolean paramBoolean)
   {
-    if ((paramEmojiGroupInfo == null) || (bk.bl(paramEmojiGroupInfo.field_productID)))
+    AppMethodBeat.i(63015);
+    this.TAG = "MicroMsg.emoji.SmileyPanel.SmileyPanelInfo";
+    this.ATW = false;
+    if ((paramEmojiGroupInfo == null) || (bo.isNullOrNil(paramEmojiGroupInfo.field_productID)))
     {
-      y.i("MicroMsg.emoji.SmileyPanel.SmileyPanelInfo", "catch invalid Smiley Tab want add??!!");
+      ab.i("MicroMsg.emoji.SmileyPanel.SmileyPanelInfo", "catch invalid Smiley Tab want add??!!");
+      AppMethodBeat.o(63015);
       return;
     }
-    this.wyA = parama1;
-    this.wvQ = parama;
-    this.iZD = paramEmojiGroupInfo.field_productID;
-    this.hxB = paramInt1;
-    this.wyF = paramInt2;
-    int i;
-    if ((paramBoolean) || (paramEmojiGroupInfo.field_productID.equalsIgnoreCase(String.valueOf(EmojiGroupInfo.uCQ))))
+    this.ATS = parama1;
+    this.AQS = parama;
+    this.liu = paramEmojiGroupInfo.field_productID;
+    this.jpL = paramInt1;
+    this.ATX = paramInt2;
+    if ((paramBoolean) || (paramEmojiGroupInfo.field_productID.equalsIgnoreCase(String.valueOf(EmojiGroupInfo.yPd))))
     {
-      parama = this.wvQ;
+      parama = this.AQS;
       if (paramEmojiGroupInfo != null) {
         if (paramEmojiGroupInfo.field_productID.equals("TAG_DEFAULT_TAB"))
         {
-          paramInt2 = com.tencent.mm.cd.e.csH().asw();
-          parama.cMh();
-          i = paramInt2;
-          if (parama.wzG) {
-            i = paramInt2 - 1;
-          }
-          this.wyB = i;
-          paramEmojiGroupInfo = this.wvQ;
-          parama = this.iZD;
-          if ((paramEmojiGroupInfo.hxU > 0) && (!bk.bl(parama))) {
-            break label561;
+          paramInt2 = com.tencent.mm.cd.e.dve().aRA();
+          parama.dRF();
+          this.ATT = paramInt2;
+          paramEmojiGroupInfo = this.AQS;
+          parama = this.liu;
+          if ((paramEmojiGroupInfo.jqe > 0) && (!bo.isNullOrNil(parama))) {
+            break label552;
           }
           paramInt2 = 1;
-          label173:
-          this.qPB = paramInt2;
-          paramEmojiGroupInfo = this.wvQ;
-          parama = this.iZD;
-          if (!bk.bl(parama)) {
-            break label676;
+          label166:
+          this.uEJ = paramInt2;
+          paramEmojiGroupInfo = this.AQS;
+          parama = this.liu;
+          if (!bo.isNullOrNil(parama)) {
+            break label667;
           }
           paramInt2 = 0;
-          label199:
-          this.qPC = paramInt2;
-          this.wvQ.a(this);
+          label192:
+          this.uEK = paramInt2;
+          this.AQS.a(this);
         }
       }
     }
     for (;;)
     {
-      this.wyE = paramBoolean;
-      y.i("MicroMsg.emoji.SmileyPanel.SmileyPanelInfo", "smiley panel tab: productId: %s, startIndex: %d mAllEmojiNums: %d mRow:%d mCol:%d mSpacing:%d ", new Object[] { this.iZD, Integer.valueOf(paramInt1), Integer.valueOf(this.wyB), Integer.valueOf(this.qPB), Integer.valueOf(this.qPC), Integer.valueOf(this.wyC) });
+      this.ATW = paramBoolean;
+      ab.i("MicroMsg.emoji.SmileyPanel.SmileyPanelInfo", "smiley panel tab: productId: %s, startIndex: %d mAllEmojiNums: %d mRow:%d mCol:%d mSpacing:%d ", new Object[] { this.liu, Integer.valueOf(paramInt1), Integer.valueOf(this.ATT), Integer.valueOf(this.uEJ), Integer.valueOf(this.uEK), Integer.valueOf(this.ATU) });
+      AppMethodBeat.o(63015);
       return;
-      if (paramEmojiGroupInfo.field_productID.equals(String.valueOf(EmojiGroupInfo.uCR)))
+      if (paramEmojiGroupInfo.field_productID.equals(String.valueOf(EmojiGroupInfo.yPe)))
       {
         if (com.tencent.mm.view.f.a.isSDCardAvailable())
         {
-          if ((!bk.bl(parama.seQ)) && ((ad.aaU(parama.seQ)) || (s.hb(parama.seQ))))
-          {
-            paramInt2 = ((d)g.t(d.class)).getProvider().fc(false) + 1;
-            break;
-          }
-          paramInt2 = ((d)g.t(d.class)).getProvider().fc(true) + 1;
+          paramInt2 = parama.dRv();
           break;
         }
         paramInt2 = 0;
         break;
       }
-      if (paramEmojiGroupInfo.field_productID.equalsIgnoreCase(String.valueOf(EmojiGroupInfo.uCQ)))
+      if (paramEmojiGroupInfo.field_productID.equals("capture"))
+      {
+        if (parama.mScene == ChatFooterPanel.vQm) {}
+        for (boolean bool = true;; bool = false)
+        {
+          i = com.tencent.mm.emoji.a.d.Oz().ci(bool).size();
+          paramInt2 = i;
+          if (!com.tencent.mm.view.f.a.RR(parama.mScene)) {
+            break;
+          }
+          paramInt2 = i + 1;
+          break;
+        }
+      }
+      if (paramEmojiGroupInfo.field_productID.equalsIgnoreCase(String.valueOf(EmojiGroupInfo.yPd)))
       {
         if (com.tencent.mm.view.f.a.isSDCardAvailable())
         {
@@ -102,13 +109,13 @@ public final class a
         paramInt2 = 0;
         break;
       }
-      if (com.tencent.mm.view.f.a.d(paramEmojiGroupInfo))
+      if (com.tencent.mm.view.f.a.e(paramEmojiGroupInfo))
       {
         paramInt2 = 1;
         if (paramEmojiGroupInfo != null)
         {
           if (paramEmojiGroupInfo.field_count <= 0) {
-            break label477;
+            break label468;
           }
           paramInt2 = paramEmojiGroupInfo.field_count;
         }
@@ -124,28 +131,28 @@ public final class a
           }
           paramInt2 = 0;
           break;
-          label477:
-          paramInt2 = ((d)g.t(d.class)).getProvider().AE(paramEmojiGroupInfo.field_productID);
+          label468:
+          paramInt2 = ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().KF(paramEmojiGroupInfo.field_productID);
           paramEmojiGroupInfo.field_count = paramInt2;
           long l = System.currentTimeMillis();
-          ((d)g.t(d.class)).getProvider().a(paramEmojiGroupInfo);
-          y.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+          ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().a(paramEmojiGroupInfo);
+          ab.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
         }
       }
       paramInt2 = 1;
       break;
-      label561:
+      label552:
       if (parama.equals("TAG_STORE_TAB"))
       {
         paramInt2 = 1;
-        break label173;
+        break label166;
       }
       if (parama.equals("TAG_DEFAULT_TAB"))
       {
-        i = (paramEmojiGroupInfo.hxU - paramEmojiGroupInfo.wzz) / paramEmojiGroupInfo.afb(parama);
-        label604:
-        if (!bk.bl(parama)) {
-          break label656;
+        i = (paramEmojiGroupInfo.jqe - paramEmojiGroupInfo.AUU) / paramEmojiGroupInfo.avS(parama);
+        label595:
+        if (!bo.isNullOrNil(parama)) {
+          break label647;
         }
         paramInt2 = 0;
       }
@@ -161,112 +168,109 @@ public final class a
         }
         paramInt2 = 1;
         break;
-        i = paramEmojiGroupInfo.hxU / paramEmojiGroupInfo.afb(parama);
-        break label604;
-        label656:
+        i = paramEmojiGroupInfo.jqe / paramEmojiGroupInfo.avS(parama);
+        break label595;
+        label647:
         if (parama.equals("TAG_DEFAULT_TAB")) {
           paramInt2 = 3;
         } else {
           paramInt2 = 2;
         }
       }
-      label676:
+      label667:
       if (parama.equals("TAG_DEFAULT_TAB"))
       {
-        if (paramEmojiGroupInfo.cMd())
+        if (x.gN(paramEmojiGroupInfo.zF))
         {
           paramInt2 = 7;
-          break label199;
+          break label192;
         }
-        paramInt2 = paramEmojiGroupInfo.cLU() / paramEmojiGroupInfo.wzt;
-        break label199;
+        paramInt2 = paramEmojiGroupInfo.aRI() / paramEmojiGroupInfo.AUO;
+        break label192;
       }
-      if (paramEmojiGroupInfo.hxU <= 0)
+      if (paramEmojiGroupInfo.jqe <= 0)
       {
         paramInt2 = 0;
-        break label199;
+        break label192;
       }
       if (parama.equals("TAG_STORE_TAB"))
       {
         paramInt2 = 3;
-        break label199;
+        break label192;
       }
-      i = paramEmojiGroupInfo.cLU() / paramEmojiGroupInfo.wzq;
+      int i = paramEmojiGroupInfo.aRI() / paramEmojiGroupInfo.AUL;
       paramInt2 = i;
-      if (paramEmojiGroupInfo.cMd())
+      if (x.gN(paramEmojiGroupInfo.zF))
       {
         paramInt2 = i;
         if (i > 4) {
           paramInt2 = 4;
         }
       }
-      y.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "return calc Col Nums: %d", new Object[] { Integer.valueOf(paramInt2) });
-      break label199;
-      this.wyB = 1;
-      this.qPB = 1;
-      this.qPC = 1;
-      this.wvQ.a(this);
+      ab.d("MicroMsg.emoji.SmileyPanel.SmileyPanelStg", "return calc Col Nums: %d", new Object[] { Integer.valueOf(paramInt2) });
+      break label192;
+      this.ATT = 1;
+      this.uEJ = 1;
+      this.uEK = 1;
+      this.AQS.a(this);
     }
   }
   
-  public final int asD()
+  private boolean dRd()
   {
-    return this.qPB * this.qPC;
+    AppMethodBeat.i(63016);
+    boolean bool = "TAG_DEFAULT_TAB".equals(this.liu);
+    AppMethodBeat.o(63016);
+    return bool;
   }
   
-  public final int cLI()
+  public final int aRG()
   {
-    int i;
-    if (asD() <= 0) {
-      i = 0;
-    }
-    int j;
-    do
+    return this.uEJ * this.uEK;
+  }
+  
+  public final int dRe()
+  {
+    return this.uEJ * this.uEK;
+  }
+  
+  public final int dRf()
+  {
+    AppMethodBeat.i(63017);
+    if (aRG() <= 0)
     {
-      return i;
-      if (!"TAG_DEFAULT_TAB".equals(this.iZD)) {
-        break;
-      }
-      j = (int)Math.ceil(this.wyB / (asD() - 1));
-      i = j;
-    } while (!this.wvQ.cMh());
-    return j + 1;
-    return (int)Math.ceil(this.wyB / asD());
-  }
-  
-  public final ChatFooterPanel.a cLJ()
-  {
-    com.tencent.mm.view.e.a locala = this.wyA;
-    if (locala.wyV == null) {
-      return null;
+      AppMethodBeat.o(63017);
+      return 0;
     }
-    return locala.wyV.getTextOpListener();
+    if (dRd())
+    {
+      i = (int)Math.ceil(this.ATT / (aRG() - 1));
+      if (this.AQS.dRF())
+      {
+        AppMethodBeat.o(63017);
+        return i + 1;
+      }
+      AppMethodBeat.o(63017);
+      return i;
+    }
+    int i = (int)Math.ceil(this.ATT / aRG());
+    AppMethodBeat.o(63017);
+    return i;
   }
   
   public final int getColumnWidth()
   {
-    return this.wvQ.cLU() / (this.wvQ.cLU() / this.wvQ.wzq);
-  }
-  
-  public final j getSmileyPanelCallback()
-  {
-    com.tencent.mm.view.e.a locala = this.wyA;
-    if (locala.wyV == null) {
-      return null;
+    AppMethodBeat.i(63018);
+    int i = this.AQS.aRI();
+    int j = this.AQS.AUL;
+    if ((i == 0) || (j == 0) || (i / j == 0))
+    {
+      AppMethodBeat.o(63018);
+      return j;
     }
-    return locala.wyV.getSmileyPanelCallback();
-  }
-  
-  public final int getType()
-  {
-    String str = this.iZD;
-    if (str.equals("TAG_DEFAULT_TAB")) {
-      return 20;
-    }
-    if (str.equals(String.valueOf(EmojiGroupInfo.uCR))) {
-      return 25;
-    }
-    return 23;
+    i /= i / j;
+    AppMethodBeat.o(63018);
+    return i;
   }
 }
 

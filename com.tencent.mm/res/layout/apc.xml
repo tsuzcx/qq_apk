@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bjv" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/qm"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dxx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <TextView android:textColor="@color/a23" android:gravity="center" android:id="@id/bel" android:padding="@dimen/kl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kp" android:text="@string/e_u" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/bjw" android:background="@color/iz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/dxy" android:visibility="gone" android:layout_width="@dimen/a47" android:layout_height="@dimen/a47" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/dxz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/app" android:scaleType="center" android:layout_centerInParent="true" />
-    <include layout="@layout/apx" />
-</RelativeLayout>
+    <ImageView style="@style/qn" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/ap8" /> //暂时注掉
+<include layout="@layout/apd" />
+        <TextView android:textColor="@color/s4" android:gravity="center|left" android:id="@id/e2l" android:text="@string/bt0" android:drawableLeft="@raw/chatfrom_voice_playing_new" android:drawablePadding="20.0dip" style="@style/qu" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/qq" />
+    </LinearLayout>
+</LinearLayout>

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletConfirmCardIDUI$4
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class WalletConfirmCardIDUI$4
   
   public final void onClick(View paramView)
   {
-    this.qDr.VH();
+    AppMethodBeat.i(47368);
+    this.uqm.hideTenpayKB();
+    AppMethodBeat.o(47368);
   }
 }
 

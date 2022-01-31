@@ -4,240 +4,299 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.SparseArray;
-import com.tencent.mm.h.a.hk;
-import com.tencent.mm.h.a.hk.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.e.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
-import com.tencent.mm.plugin.l.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.emotion.q;
-import com.tencent.mm.storage.emotion.s;
+import com.tencent.mm.plugin.emoji.b.d;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.emotion.SmileyInfo;
+import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
 import java.util.ArrayList;
 
 public class e
 {
-  private static e ukZ = null;
+  private static e yuD = null;
   private String country;
-  private String[] ula;
-  private String[] ulb;
-  private String[] ulc;
-  private ArrayList<s> uld = new ArrayList();
-  private SparseArray<s> ule = new SparseArray();
+  private String[] yuE;
+  private String[] yuF;
+  private String[] yuG;
+  private ArrayList<SmileyPanelConfigInfo> yuH;
+  private SparseArray<SmileyPanelConfigInfo> yuI;
   
   public e(Context paramContext)
   {
-    this.ula = paramContext.getResources().getStringArray(a.a.merge_smiley_code_smiley);
-    this.ulb = paramContext.getResources().getStringArray(a.a.merge_smiley_softbank_emoji);
-    this.ulc = paramContext.getResources().getStringArray(a.a.merge_smiley_unicode_emoji);
-    this.uld.clear();
-    this.ule.clear();
-    csG();
-    this.country = x.cqJ();
+    AppMethodBeat.i(62666);
+    this.yuH = new ArrayList();
+    this.yuI = new SparseArray();
+    this.yuE = paramContext.getResources().getStringArray(2131755036);
+    this.yuF = paramContext.getResources().getStringArray(2131755037);
+    this.yuG = paramContext.getResources().getStringArray(2131755038);
+    this.yuH.clear();
+    this.yuI.clear();
+    dvc();
+    this.country = aa.dsG();
+    if (!ah.dsT()) {
+      dvd();
+    }
+    AppMethodBeat.o(62666);
   }
   
-  private void csG()
+  private void dvc()
   {
     int k = 0;
-    if ((this.ula != null) && (this.ulb != null))
+    AppMethodBeat.i(62667);
+    if ((this.yuE != null) && (this.yuG != null))
     {
-      int m = this.ula.length;
+      int m = this.yuE.length;
       int j = 0;
       int i = 0;
-      s locals;
+      SmileyPanelConfigInfo localSmileyPanelConfigInfo;
       while (j < m)
       {
-        locals = new s(i, this.ula[j]);
-        this.uld.add(locals);
-        this.ule.put(i, locals);
+        localSmileyPanelConfigInfo = new SmileyPanelConfigInfo(i, this.yuE[j]);
+        this.yuH.add(localSmileyPanelConfigInfo);
+        this.yuI.put(i, localSmileyPanelConfigInfo);
         j += 1;
         i += 1;
       }
-      m = this.ulb.length;
+      m = this.yuG.length;
       j = k;
       while (j < m)
       {
-        locals = new s(i, this.ulb[j]);
-        this.uld.add(locals);
-        this.ule.put(i, locals);
+        localSmileyPanelConfigInfo = new SmileyPanelConfigInfo(i, this.yuG[j]);
+        this.yuH.add(localSmileyPanelConfigInfo);
+        this.yuI.put(i, localSmileyPanelConfigInfo);
         j += 1;
         i += 1;
       }
     }
+    AppMethodBeat.o(62667);
   }
   
-  public static e csH()
+  public static e dve()
   {
-    if (ukZ == null) {}
+    AppMethodBeat.i(62670);
+    if (yuD == null) {}
     try
     {
-      ukZ = new e(ae.getContext());
-      return ukZ;
+      yuD = new e(ah.getContext());
+      e locale = yuD;
+      AppMethodBeat.o(62670);
+      return locale;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(62670);
+    }
   }
   
-  public int asv()
+  public int aRA()
   {
-    y.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo " + bk.csb());
-    this.uld.clear();
-    Object localObject = ((PluginEmoji)g.t(PluginEmoji.class)).getEmojiMgr().aHi();
-    if ((localObject == null) || (((ArrayList)localObject).isEmpty()))
+    AppMethodBeat.i(62669);
+    if (this.yuH == null)
     {
-      localObject = ((com.tencent.mm.plugin.emoji.b.d)g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aHk();
-      localObject = com.tencent.mm.u.b.a.b(new com.tencent.mm.vfs.b("assets:///panel/" + (String)localObject));
+      AppMethodBeat.o(62669);
+      return 0;
+    }
+    int i = this.yuH.size();
+    AppMethodBeat.o(62669);
+    return i;
+  }
+  
+  public int aRz()
+  {
+    AppMethodBeat.i(62668);
+    ab.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo " + bo.dtY());
+    this.yuH.clear();
+    ArrayList localArrayList1 = ((PluginEmoji)g.G(PluginEmoji.class)).getProvider().bkV();
+    if ((localArrayList1 == null) || (localArrayList1.isEmpty())) {
+      localArrayList1 = a.b(new com.tencent.mm.vfs.b("assets:///panel/".concat(String.valueOf(((d)g.G(d.class)).getProvider().bkY()))));
     }
     for (;;)
     {
-      if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+      if ((localArrayList1 != null) && (!localArrayList1.isEmpty()))
       {
-        ArrayList localArrayList = f.csI().csL();
-        int k = ((ArrayList)localObject).size();
+        ArrayList localArrayList2 = f.dvf().dvj();
+        int k = localArrayList1.size();
         int j = 0;
-        int i = 0;
+        i = 0;
         if (j < k)
         {
-          s locals = (s)((ArrayList)localObject).get(j);
-          String str = locals.field_key;
-          if ((str.startsWith("[")) && (!localArrayList.contains(str))) {
-            y.i("MicroMsg.MergerSmileyManager", "no smiley info. key:%s", new Object[] { str });
+          SmileyPanelConfigInfo localSmileyPanelConfigInfo = (SmileyPanelConfigInfo)localArrayList1.get(j);
+          String str = localSmileyPanelConfigInfo.field_key;
+          if ((str.startsWith("[")) && (!localArrayList2.contains(str))) {
+            ab.i("MicroMsg.MergerSmileyManager", "no smiley info. key:%s", new Object[] { str });
           }
           for (;;)
           {
             j += 1;
             break;
-            this.uld.add(locals);
-            this.ule.put(i, locals);
+            this.yuH.add(localSmileyPanelConfigInfo);
+            this.yuI.put(i, localSmileyPanelConfigInfo);
             i += 1;
           }
         }
-        return 0;
       }
-      csG();
-      y.i("MicroMsg.MergerSmileyManager", "smiley panel list is null.");
-      return -1;
+      for (int i = 0;; i = -1)
+      {
+        AppMethodBeat.o(62668);
+        return i;
+        dvc();
+        ab.i("MicroMsg.MergerSmileyManager", "smiley panel list is null.");
+      }
     }
   }
   
-  public int asw()
+  public final boolean dvd()
   {
-    if (this.uld == null) {
-      return 0;
+    AppMethodBeat.i(151742);
+    ab.i("MicroMsg.MergerSmileyManager", "checkNewSmiley ");
+    ArrayList localArrayList = ((PluginEmoji)g.G(PluginEmoji.class)).getProvider().bkV();
+    if ((localArrayList == null) || (localArrayList.isEmpty()))
+    {
+      aRz();
+      AppMethodBeat.o(151742);
+      return true;
     }
-    return this.uld.size();
+    aRz();
+    AppMethodBeat.o(151742);
+    return false;
   }
   
   public String getText(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.uld.size()))
+    AppMethodBeat.i(62672);
+    if ((paramInt < 0) || (paramInt >= this.yuH.size()))
     {
-      y.w("MicroMsg.MergerSmileyManager", "get text, error index");
+      ab.w("MicroMsg.MergerSmileyManager", "get text, error index");
+      AppMethodBeat.o(62672);
       return "";
     }
-    s locals = (s)this.uld.get(paramInt);
-    if (locals != null)
+    Object localObject = (SmileyPanelConfigInfo)this.yuH.get(paramInt);
+    if (localObject != null)
     {
-      q localq = f.csI().aaw(locals.field_key);
-      if (localq != null)
+      SmileyInfo localSmileyInfo = f.dvf().aqG(((SmileyPanelConfigInfo)localObject).field_key);
+      if (localSmileyInfo != null)
       {
-        if ((this.country.equals("zh_CN")) && (!bk.bl(localq.field_cnValue))) {
-          return localq.field_cnValue;
+        if ((this.country.equals("zh_CN")) && (!bo.isNullOrNil(localSmileyInfo.field_cnValue)))
+        {
+          localObject = localSmileyInfo.field_cnValue;
+          AppMethodBeat.o(62672);
+          return localObject;
         }
-        if (((this.country.equals("zh_TW")) || (this.country.equals("zh_HK"))) && (!bk.bl(localq.field_twValue))) {
-          return localq.field_twValue;
+        if (((this.country.equals("zh_TW")) || (this.country.equals("zh_HK"))) && (!bo.isNullOrNil(localSmileyInfo.field_twValue)))
+        {
+          localObject = localSmileyInfo.field_twValue;
+          AppMethodBeat.o(62672);
+          return localObject;
         }
-        return localq.field_enValue;
+        localObject = localSmileyInfo.field_enValue;
+        AppMethodBeat.o(62672);
+        return localObject;
       }
-      return locals.field_key;
+      localObject = ((SmileyPanelConfigInfo)localObject).field_key;
+      AppMethodBeat.o(62672);
+      return localObject;
     }
+    AppMethodBeat.o(62672);
     return "";
   }
   
-  public Drawable mW(int paramInt)
+  public Drawable qA(int paramInt)
   {
-    if (this.ule == null)
+    AppMethodBeat.i(62671);
+    if (this.yuI == null)
     {
-      y.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley panel map is null.");
+      ab.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley panel map is null.");
+      AppMethodBeat.o(62671);
       return null;
     }
-    Object localObject1 = (s)this.ule.get(paramInt);
+    Object localObject1 = (SmileyPanelConfigInfo)this.yuI.get(paramInt);
     if (localObject1 == null)
     {
-      y.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley info is null.");
+      ab.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley info is null.");
+      AppMethodBeat.o(62671);
       return null;
     }
-    Object localObject2 = f.csI().aaw(((s)localObject1).field_key);
+    Object localObject2 = f.dvf().aqG(((SmileyPanelConfigInfo)localObject1).field_key);
     if (localObject2 != null)
     {
-      f.csI();
-      paramInt = ((q)localObject2).field_position;
+      f.dvf();
+      paramInt = ((SmileyInfo)localObject2).field_position;
       if (paramInt >= 0) {}
-      for (localObject1 = b.csC().mW(paramInt);; localObject1 = f.aav(((q)localObject2).field_fileName)) {
+      for (localObject1 = b.duW().qA(paramInt);; localObject1 = f.aqF(((SmileyInfo)localObject2).field_fileName))
+      {
+        AppMethodBeat.o(62671);
         return localObject1;
       }
     }
-    localObject2 = b.csC();
-    localObject1 = ((s)localObject1).field_key;
-    if (bk.bl((String)localObject1))
+    localObject2 = b.duW();
+    localObject1 = ((SmileyPanelConfigInfo)localObject1).field_key;
+    if (bo.isNullOrNil((String)localObject1))
     {
-      y.i("MicroMsg.EmojiHelper", "getEmoji item failed. key is null.");
+      ab.i("MicroMsg.EmojiHelper", "getEmoji item failed. key is null.");
       localObject1 = null;
     }
     for (;;)
     {
-      localObject1 = b.csC().a((c)localObject1, true);
+      localObject1 = b.duW().a((c)localObject1, true);
       break;
       paramInt = ((String)localObject1).codePointAt(0);
-      if (((b)localObject2).Fi(paramInt) != null) {
-        localObject1 = ((b)localObject2).Fi(paramInt);
+      if (((b)localObject2).Nn(paramInt) != null) {
+        localObject1 = ((b)localObject2).Nn(paramInt);
       } else {
-        localObject1 = ((b)localObject2).fg(paramInt, 0);
+        localObject1 = ((b)localObject2).hn(paramInt, 0);
       }
     }
   }
   
-  public String mX(int paramInt)
+  public String qB(int paramInt)
   {
+    AppMethodBeat.i(62674);
     if (paramInt < 0)
     {
-      y.w("MicroMsg.MergerSmileyManager", "get emoji text, error index down");
+      ab.w("MicroMsg.MergerSmileyManager", "get emoji text, error index down");
+      AppMethodBeat.o(62674);
       return "";
     }
-    Object localObject1 = new hk();
-    com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject1);
-    if (((hk)localObject1).bPp.bIY == 1) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      Object localObject2 = csH().ulb[paramInt].split(" ");
-      localObject1 = Character.toChars(Integer.decode(localObject2[0]).intValue());
-      localObject2 = Character.toChars(Integer.decode(localObject2[1]).intValue());
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append((char[])localObject1);
-      localStringBuilder.append((char[])localObject2);
-      return localStringBuilder.toString();
-    }
-    return csH().ulb[paramInt];
+    Object localObject2 = dve().yuG[paramInt].split(" ");
+    Object localObject1 = Character.toChars(Integer.decode(localObject2[0]).intValue());
+    localObject2 = Character.toChars(Integer.decode(localObject2[1]).intValue());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((char[])localObject1);
+    localStringBuilder.append((char[])localObject2);
+    localObject1 = localStringBuilder.toString();
+    AppMethodBeat.o(62674);
+    return localObject1;
   }
   
-  public String mY(int paramInt)
+  public String qC(int paramInt)
   {
+    AppMethodBeat.i(62673);
     if (paramInt < 0)
     {
-      y.w("MicroMsg.MergerSmileyManager", "get text, error index");
+      ab.w("MicroMsg.MergerSmileyManager", "get text, error index");
+      AppMethodBeat.o(62673);
       return "";
     }
-    s locals = (s)this.uld.get(paramInt);
-    if (locals != null) {
-      return locals.field_key;
+    Object localObject = (SmileyPanelConfigInfo)this.yuH.get(paramInt);
+    if (localObject != null)
+    {
+      localObject = ((SmileyPanelConfigInfo)localObject).field_key;
+      AppMethodBeat.o(62673);
+      return localObject;
     }
+    AppMethodBeat.o(62673);
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.cd.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,35 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
-import android.content.Intent;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity.a;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.r;
+import org.json.JSONObject;
 
 final class g$1
-  implements MMActivity.a
+  implements Runnable
 {
-  g$1(g paramg, o paramo, int paramInt) {}
+  g$1(g paramg, d paramd, int paramInt, JSONObject paramJSONObject) {}
   
-  public final void c(int paramInt1, int paramInt2, Intent paramIntent)
+  public final void run()
   {
-    if (paramInt1 != (this.gzs.hashCode() & 0xFFFF)) {
-      return;
-    }
-    this.gzs.gzr = false;
-    if (paramIntent != null) {}
-    for (paramInt1 = paramIntent.getIntExtra("key_err_code", 1);; paramInt1 = 1)
+    AppMethodBeat.i(141749);
+    r localr = this.hVN.getRuntime().atj();
+    if (localr.getPageCount() <= 1)
     {
-      y.i("MicroMsg.JsApiRequestVirtualPayment", "resultCode:%d,result:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-      if (paramInt2 == -1)
-      {
-        if (paramInt1 == 0)
-        {
-          y.i("MicroMsg.JsApiRequestVirtualPayment", "requestIAP ok");
-          this.gcp.C(this.dIS, this.gzs.h("ok", null));
-          return;
-        }
-        HashMap localHashMap = new HashMap();
-        paramIntent = bk.pm(paramIntent.getStringExtra("key_err_msg"));
-        localHashMap.put("errCode", Integer.valueOf(paramInt1));
-        y.i("MicroMsg.JsApiRequestVirtualPayment", "requestVirtualPayment errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), paramIntent });
-        this.gcp.C(this.dIS, this.gzs.h("fail " + paramIntent, localHashMap));
-        return;
-      }
-      paramIntent = new HashMap();
-      paramIntent.put("cancelScene", Integer.valueOf(paramInt1));
-      this.gcp.C(this.dIS, this.gzs.h("cancel", paramIntent));
+      this.hVN.h(this.bAX, this.hVO.j("fail cannot navigate back at first page", null));
+      AppMethodBeat.o(141749);
       return;
     }
+    localr.pa(this.bBa.optInt("delta", 1));
+    this.hVN.h(this.bAX, this.hVO.j("ok", null));
+    AppMethodBeat.o(141749);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l.g.1
  * JD-Core Version:    0.7.0.1
  */

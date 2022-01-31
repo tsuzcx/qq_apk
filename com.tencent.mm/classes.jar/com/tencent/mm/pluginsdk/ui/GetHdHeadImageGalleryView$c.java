@@ -1,5 +1,6 @@
 package com.tencent.mm.pluginsdk.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.o;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
 
@@ -8,11 +9,13 @@ final class GetHdHeadImageGalleryView$c
 {
   private GetHdHeadImageGalleryView$c(GetHdHeadImageGalleryView paramGetHdHeadImageGalleryView) {}
   
-  public final void aBS()
+  public final void bdW()
   {
-    if (GetHdHeadImageGalleryView.a(this.rZC) != null) {
-      GetHdHeadImageGalleryView.a(this.rZC).dismiss();
+    AppMethodBeat.i(79685);
+    if (GetHdHeadImageGalleryView.a(this.vQD) != null) {
+      GetHdHeadImageGalleryView.a(this.vQD).dismiss();
     }
+    AppMethodBeat.o(79685);
   }
 }
 

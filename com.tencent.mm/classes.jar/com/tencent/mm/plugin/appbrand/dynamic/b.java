@@ -2,49 +2,66 @@ package com.tencent.mm.plugin.appbrand.dynamic;
 
 import android.os.HandlerThread;
 import android.os.Looper;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class b
 {
-  private static ah fTA;
-  private static ah fTB = new ah(Looper.getMainLooper());
-  private static ah fTz;
+  private static ak hna;
+  private static ak hnb;
+  private static ak hnc;
   
   static
   {
-    HandlerThread localHandlerThread = e.aap("DynamicPage#WorkerThread");
+    AppMethodBeat.i(10659);
+    HandlerThread localHandlerThread = d.aqu("DynamicPage#WorkerThread");
     localHandlerThread.start();
-    fTz = new ah(localHandlerThread.getLooper());
-    localHandlerThread = e.aap("DynamicPage#IPCThread");
+    hna = new ak(localHandlerThread.getLooper());
+    localHandlerThread = d.aqu("DynamicPage#IPCThread");
     localHandlerThread.start();
-    fTA = new ah(localHandlerThread.getLooper());
+    hnb = new ak(localHandlerThread.getLooper());
+    hnc = new ak(Looper.getMainLooper());
+    AppMethodBeat.o(10659);
   }
   
-  public static boolean h(Runnable paramRunnable, long paramLong)
+  public static boolean C(Runnable paramRunnable)
   {
-    if (paramRunnable == null) {
+    AppMethodBeat.i(10656);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(10656);
       return false;
     }
-    return fTz.postDelayed(paramRunnable, paramLong);
+    boolean bool = hna.post(paramRunnable);
+    AppMethodBeat.o(10656);
+    return bool;
   }
   
-  public static boolean u(Runnable paramRunnable)
+  public static boolean D(Runnable paramRunnable)
   {
-    if (paramRunnable == null) {
+    AppMethodBeat.i(10658);
+    boolean bool = hnc.post(paramRunnable);
+    AppMethodBeat.o(10658);
+    return bool;
+  }
+  
+  public static boolean l(Runnable paramRunnable, long paramLong)
+  {
+    AppMethodBeat.i(10657);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(10657);
       return false;
     }
-    return fTz.post(paramRunnable);
-  }
-  
-  public static boolean v(Runnable paramRunnable)
-  {
-    return fTB.post(paramRunnable);
+    boolean bool = hna.postDelayed(paramRunnable, paramLong);
+    AppMethodBeat.o(10657);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b
  * JD-Core Version:    0.7.0.1
  */

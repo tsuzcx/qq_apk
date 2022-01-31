@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ConversationWithAppBrandListView$13
   implements Runnable
@@ -9,8 +10,10 @@ final class ConversationWithAppBrandListView$13
   
   public final void run()
   {
-    y.i("MicroMsg.ConversationWithAppBrandListView", "[CheckShowTipTask]");
-    ConversationWithAppBrandListView.l(this.vRV);
+    AppMethodBeat.i(34280);
+    ab.i("MicroMsg.ConversationWithAppBrandListView", "[CheckShowTipTask]");
+    ConversationWithAppBrandListView.l(this.AjJ);
+    AppMethodBeat.o(34280);
   }
 }
 

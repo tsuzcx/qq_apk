@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.i;
 
@@ -14,35 +15,41 @@ final class FindMContactAddUI$8
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(108521);
     paramView = new StringBuilder();
-    g.DN();
-    paramView = paramView.append(com.tencent.mm.kernel.a.Df()).append(",").append(this.fhv.getClass().getName()).append(",R300_300_AddAllButton,");
-    g.DN();
-    com.tencent.mm.plugin.b.a.qk(com.tencent.mm.kernel.a.gd("R300_300_AddAllButton") + ",3");
-    if (FindMContactAddUI.e(this.fhv) == 2)
+    g.RJ();
+    paramView = paramView.append(com.tencent.mm.kernel.a.QX()).append(",").append(this.gzd.getClass().getName()).append(",R300_300_AddAllButton,");
+    g.RJ();
+    com.tencent.mm.plugin.b.a.xE(com.tencent.mm.kernel.a.mx("R300_300_AddAllButton") + ",3");
+    if (FindMContactAddUI.e(this.gzd) == 2)
     {
-      FindMContactAddUI.c(this.fhv).cu(true);
-      FindMContactAddUI.c(this.fhv).notifyDataSetChanged();
-      FindMContactAddUI.f(this.fhv).setVisibility(8);
-      if (FindMContactAddUI.g(this.fhv) != null) {
-        FindMContactAddUI.g(this.fhv).setVisibility(0);
+      FindMContactAddUI.c(this.gzd).dw(true);
+      FindMContactAddUI.c(this.gzd).notifyDataSetChanged();
+      FindMContactAddUI.f(this.gzd).setVisibility(8);
+      if (FindMContactAddUI.g(this.gzd) != null)
+      {
+        FindMContactAddUI.g(this.gzd).setVisibility(0);
+        AppMethodBeat.o(108521);
       }
     }
-    do
+    else
     {
-      return;
-      if (FindMContactAddUI.e(this.fhv) == 1)
+      if (FindMContactAddUI.e(this.gzd) == 1)
       {
-        FindMContactAddUI.c(this.fhv).cu(true);
-        FindMContactAddUI.c(this.fhv).notifyDataSetChanged();
-        FindMContactAddUI.i(this.fhv);
+        FindMContactAddUI.c(this.gzd).dw(true);
+        FindMContactAddUI.c(this.gzd).notifyDataSetChanged();
+        FindMContactAddUI.i(this.gzd);
+        AppMethodBeat.o(108521);
         return;
       }
-      FindMContactAddUI.c(this.fhv).cu(true);
-      FindMContactAddUI.c(this.fhv).notifyDataSetChanged();
-      FindMContactAddUI.f(this.fhv).setVisibility(8);
-    } while (FindMContactAddUI.g(this.fhv) == null);
-    FindMContactAddUI.g(this.fhv).setVisibility(0);
+      FindMContactAddUI.c(this.gzd).dw(true);
+      FindMContactAddUI.c(this.gzd).notifyDataSetChanged();
+      FindMContactAddUI.f(this.gzd).setVisibility(8);
+      if (FindMContactAddUI.g(this.gzd) != null) {
+        FindMContactAddUI.g(this.gzd).setVisibility(0);
+      }
+    }
+    AppMethodBeat.o(108521);
   }
 }
 

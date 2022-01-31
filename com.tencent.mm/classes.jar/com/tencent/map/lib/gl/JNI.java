@@ -4,10 +4,14 @@ import android.graphics.Rect;
 import com.tencent.map.lib.basemap.data.GeoPoint;
 import com.tencent.map.lib.mapstructure.AnnocationText;
 import com.tencent.map.lib.mapstructure.AnnocationTextResult;
+import com.tencent.map.lib.mapstructure.CircleInfo;
 import com.tencent.map.lib.mapstructure.CityTrafficInfo;
 import com.tencent.map.lib.mapstructure.MaskLayer;
 import com.tencent.map.lib.mapstructure.Polygon2D;
-import com.tencent.tencentmap.mapsdk.a.jr;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.hi;
+import com.tencent.tencentmap.mapsdk.maps.a.it;
+import java.util.ArrayList;
 
 public class JNI
 {
@@ -20,29 +24,47 @@ public class JNI
   
   public Object callback(int paramInt1, int paramInt2, String paramString, byte[] paramArrayOfByte)
   {
-    return this.a.a(paramInt1, paramInt2, paramString, paramArrayOfByte);
+    AppMethodBeat.i(98021);
+    paramString = this.a.a(paramInt1, paramInt2, paramString, paramArrayOfByte);
+    AppMethodBeat.o(98021);
+    return paramString;
   }
   
   public int callbackGetGLContext()
   {
-    return this.a.b();
+    AppMethodBeat.i(98022);
+    int i = this.a.c();
+    AppMethodBeat.o(98022);
+    return i;
   }
+  
+  public native boolean checkMapLoadFinishedTask(long paramLong, int paramInt);
   
   public void destory()
   {
+    AppMethodBeat.i(98014);
     this.a.a();
     this.a = null;
+    AppMethodBeat.o(98014);
   }
   
-  public void initCallback(jr paramjr, JNICallback.a parama, JNICallback.h paramh, JNICallback.e parame, JNICallback.g paramg, long paramLong)
+  public native int getIndoorOutlineZoom(long paramLong, String paramString);
+  
+  public native String getMapEngineRenderStatus(long paramLong);
+  
+  public void initCallback(it paramit, JNICallback.a parama, JNICallback.h paramh, JNICallback.e parame, JNICallback.g paramg, hi paramhi, JNICallback.i parami, long paramLong)
   {
-    this.a = new JNICallback(paramjr, parama, paramh, parame, paramg);
+    AppMethodBeat.i(147024);
+    this.a = new JNICallback(paramit, parama, paramh, parame, paramg, paramhi, parami);
     nativeSetCallback(paramLong);
+    AppMethodBeat.o(147024);
   }
+  
+  public native int nativeAddCircle(long paramLong, CircleInfo paramCircleInfo);
   
   public native int nativeAddHeatTileOverlay(long paramLong, int paramInt, boolean paramBoolean);
   
-  public native int nativeAddMarker(long paramLong, String paramString, double paramDouble1, double paramDouble2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt);
+  public native int nativeAddMarker(long paramLong, String paramString, double paramDouble1, double paramDouble2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt1, int paramInt2);
   
   public native int nativeAddMaskLayer(long paramLong, MaskLayer paramMaskLayer);
   
@@ -70,7 +92,9 @@ public class JNI
   
   public native AnnocationTextResult nativeCreateAnnotationTextBitmap(long paramLong, AnnocationText paramAnnocationText);
   
-  public native int nativeCreateLine(long paramLong, int[] paramArrayOfInt1, int[] paramArrayOfInt2, GeoPoint[] paramArrayOfGeoPoint, String paramString, float paramFloat1, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt2, boolean paramBoolean5, int[] paramArrayOfInt3, int[] paramArrayOfInt4, float paramFloat2, int[] paramArrayOfInt5, float paramFloat3);
+  public native int nativeCreateLine(long paramLong, int[] paramArrayOfInt1, int[] paramArrayOfInt2, GeoPoint[] paramArrayOfGeoPoint, String paramString, float paramFloat1, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt2, boolean paramBoolean5, int[] paramArrayOfInt3, int[] paramArrayOfInt4, float paramFloat2, int[] paramArrayOfInt5, float paramFloat3, int paramInt3);
+  
+  public native void nativeDeleteCircle(long paramLong, int paramInt);
   
   public native void nativeDeleteIcons(long paramLong, int[] paramArrayOfInt, int paramInt);
   
@@ -118,6 +142,8 @@ public class JNI
   
   public native int nativeGetMapMode(long paramLong);
   
+  public native ArrayList nativeGetPoisInScreen(long paramLong);
+  
   public native float nativeGetRotate(long paramLong);
   
   public native double nativeGetScale(long paramLong);
@@ -146,6 +172,7 @@ public class JNI
   
   public native int nativeIsCityHasTraffic(long paramLong, String paramString);
   
+  @Deprecated
   public native boolean nativeIsMapDrawFinished(long paramLong);
   
   public native void nativeLineClearPoint(long paramLong1, long paramLong2, GeoPoint paramGeoPoint, int paramInt);
@@ -288,11 +315,13 @@ public class JNI
   
   public native void nativeUnlockEngine(long paramLong);
   
+  public native void nativeUpdateCircle(long paramLong, int paramInt, CircleInfo paramCircleInfo);
+  
   public native void nativeUpdateFrame(long paramLong, double paramDouble);
   
   public native void nativeUpdateMapResource(long paramLong, String paramString);
   
-  public native void nativeUpdateMarkerInfo(long paramLong, int paramInt1, String paramString, double paramDouble1, double paramDouble2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt2);
+  public native void nativeUpdateMarkerInfo(long paramLong, int paramInt1, String paramString, double paramDouble1, double paramDouble2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt2, int paramInt3);
   
   public native void nativeUpdateMaskLayer(long paramLong, int paramInt1, int paramInt2);
   
@@ -308,51 +337,70 @@ public class JNI
   
   public native void nativeZoomToSpanForNavigation(long paramLong, GeoPoint paramGeoPoint, int paramInt1, int paramInt2, boolean paramBoolean);
   
+  public void onMapLoaded()
+  {
+    AppMethodBeat.i(147027);
+    this.a.b();
+    AppMethodBeat.o(147027);
+  }
+  
   public void setHandDrawTileLoadCallback(JNICallback.b paramb)
   {
+    AppMethodBeat.i(98017);
     if (this.a != null) {
       this.a.a(paramb);
     }
+    AppMethodBeat.o(98017);
   }
   
   public void setHandDrawTileWriteCallback(JNICallback.c paramc)
   {
+    AppMethodBeat.i(98018);
     if (this.a != null) {
       this.a.a(paramc);
     }
+    AppMethodBeat.o(98018);
   }
   
   public void setHeatTileLoadCallback(JNICallback.d paramd)
   {
+    AppMethodBeat.i(98015);
     if (this.a != null) {
       this.a.a(paramd);
     }
+    AppMethodBeat.o(98015);
   }
   
   public void setMapCallbackGetGLContext(JNICallback.f paramf)
   {
+    AppMethodBeat.i(98020);
     if (this.a != null) {
       this.a.a(paramf);
     }
+    AppMethodBeat.o(98020);
   }
   
-  public void setTileWriteCallback(JNICallback.k paramk)
+  public void setTileWriteCallback(JNICallback.l paraml)
   {
+    AppMethodBeat.i(147026);
+    if (this.a != null) {
+      this.a.a(paraml);
+    }
+    AppMethodBeat.o(147026);
+  }
+  
+  public void setWorldTileLoadCallback(JNICallback.k paramk)
+  {
+    AppMethodBeat.i(147025);
     if (this.a != null) {
       this.a.a(paramk);
     }
-  }
-  
-  public void setWorldTileLoadCallback(JNICallback.j paramj)
-  {
-    if (this.a != null) {
-      this.a.a(paramj);
-    }
+    AppMethodBeat.o(147025);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.map.lib.gl.JNI
  * JD-Core Version:    0.7.0.1
  */

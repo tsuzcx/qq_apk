@@ -2,163 +2,329 @@ package com.tencent.mm.ui.widget.textview;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
-import android.text.Layout;
 import android.text.Spannable;
 import android.text.TextPaint;
-import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.view.ViewTreeObserver.OnScrollChangedListener;
+import android.view.accessibility.AccessibilityManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import com.tencent.mm.ui.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ak;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.c;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public final class a
 {
-  public boolean cbz = true;
-  TextView lh;
+  a.b AMN;
+  private a.b AMO;
+  a.g AMQ;
+  public a.d AMS;
+  View AMT;
+  public a.f AMU;
+  View.OnTouchListener AMV;
+  private Spannable AMW;
+  private com.tencent.mm.ui.widget.c.a AMX;
+  int AMY;
+  int AMZ;
+  private int ANa;
+  int ANb;
+  int ANc;
+  private c ANd;
+  int ANe;
+  public int ANf;
+  private ViewTreeObserver.OnScrollChangedListener ANg;
+  boolean ANh;
+  boolean ANi;
+  public boolean ANj;
+  public boolean ANk;
+  boolean ANl;
+  boolean ANm;
+  boolean ANn;
+  final Runnable ANo;
+  final Runnable ANp;
+  public a.e ANq;
+  ArrayList<a.c> ANr;
+  private View.OnAttachStateChangeListener Vt;
+  private ViewTreeObserver.OnGlobalLayoutListener ZD;
+  View.OnTouchListener kjL;
+  View.OnClickListener lPx;
   Context mContext;
-  private int[] pls = new int[2];
-  ViewTreeObserver.OnPreDrawListener qS;
-  ViewTreeObserver.OnScrollChangedListener wsj;
-  public b wsk;
-  public b wsl;
-  a.d wsm = new a.d(this);
-  public a.c wsn;
-  Spannable wso;
-  com.tencent.mm.ui.widget.b.a wsp;
-  int wsq;
-  int wsr;
-  private int wss;
-  int wst;
-  int wsu;
-  private c wsv;
-  boolean wsw;
-  final Runnable wsx = new a.1(this);
+  private boolean mVI;
+  private ViewTreeObserver.OnPreDrawListener rP;
+  int[] sfd;
+  int[] zzX;
   
   public a(a.a parama)
   {
-    this.lh = parama.lh;
-    this.wsp = parama.wsz;
-    this.mContext = this.lh.getContext();
-    this.wss = parama.wss;
-    this.wst = parama.wst;
-    this.wsu = ap.fromDPToPix(this.mContext, parama.wsA);
-    this.lh.setText(this.lh.getText(), TextView.BufferType.SPANNABLE);
-    this.lh.setOnLongClickListener(new a.2(this));
-    this.lh.setOnTouchListener(new a.3(this));
-    this.lh.setOnClickListener(new a.4(this));
-    this.lh.addOnAttachStateChangeListener(new a.5(this));
-    this.qS = new a.6(this);
-    this.lh.getViewTreeObserver().addOnPreDrawListener(this.qS);
-    this.wsj = new ViewTreeObserver.OnScrollChangedListener()
+    AppMethodBeat.i(113143);
+    this.AMQ = new a.g(this);
+    this.ANh = false;
+    this.mVI = true;
+    this.ANi = false;
+    this.ANj = true;
+    this.ANk = true;
+    this.ANl = true;
+    this.ANm = false;
+    this.ANn = false;
+    this.sfd = new int[2];
+    this.ANo = new a.1(this);
+    this.ANp = new a.5(this);
+    this.zzX = new int[2];
+    this.AMT = parama.AMT;
+    this.AMU = parama.AMU;
+    this.lPx = parama.lPx;
+    this.AMV = parama.AMV;
+    this.AMX = parama.ANt;
+    this.mContext = this.AMT.getContext();
+    this.ANa = parama.ANa;
+    this.ANb = parama.ANb;
+    View localView = this.AMT;
+    int i;
+    float f;
+    if ((localView instanceof NeatTextView))
     {
-      public final void onScrollChanged()
-      {
-        if ((!a.this.wsw) && (!a.this.cbz))
-        {
-          a.this.wsw = true;
-          if (a.this.wsp != null) {
-            a.this.wsp.cCw();
-          }
-          if (a.this.wsk != null) {
-            a.this.wsk.wsB.dismiss();
-          }
-          if (a.this.wsl != null) {
-            a.this.wsl.wsB.dismiss();
-          }
-        }
+      i = ((NeatTextView)localView).getLineHeight();
+      this.ANe = i;
+      if (this.ANc != 0) {
+        break label345;
       }
-    };
-    this.lh.getViewTreeObserver().addOnScrollChangedListener(this.wsj);
+      parama = this.AMT;
+      if (!(parama instanceof NeatTextView)) {
+        break label322;
+      }
+      f = ((NeatTextView)parama).getTextSize();
+    }
+    label221:
+    for (this.ANc = ((int)f);; this.ANc = al.fromDPToPix(this.mContext, parama.ANu))
+    {
+      this.Vt = new a.6(this);
+      this.rP = new a.7(this);
+      this.ANg = new a.8(this);
+      this.ZD = new ViewTreeObserver.OnGlobalLayoutListener()
+      {
+        public final void onGlobalLayout()
+        {
+          AppMethodBeat.i(113126);
+          ak.d("SelectableTextHelper", "onGlobalLayout", new Object[0]);
+          if (a.this.AMU != null)
+          {
+            a.this.dPQ();
+            a.this.ANj = true;
+            a.this.ANk = true;
+            a.this.dPP();
+          }
+          AppMethodBeat.o(113126);
+        }
+      };
+      this.kjL = new a.10(this);
+      init();
+      AppMethodBeat.o(113143);
+      return;
+      if ((localView instanceof TextView))
+      {
+        i = ((TextView)localView).getLineHeight();
+        break;
+      }
+      i = 0;
+      break;
+      if ((parama instanceof TextView))
+      {
+        f = ((TextView)parama).getTextSize();
+        break label221;
+      }
+      f = 0.0F;
+      break label221;
+    }
   }
   
-  public final void a(b paramb)
+  private void a(a.b paramb)
   {
-    Object localObject = this.lh.getLayout();
-    int i;
-    int j;
-    if (b.b(paramb))
+    AppMethodBeat.i(113149);
+    if (paramb == null)
     {
-      i = this.wsm.aiH;
-      if (localObject == null) {
-        break label172;
-      }
-      j = (int)((Layout)localObject).getPaint().getFontMetrics().descent + ((Layout)localObject).getLineBaseline(((Layout)localObject).getLineForOffset(i));
-      i = (int)((Layout)localObject).getPrimaryHorizontal(i);
+      AppMethodBeat.o(113149);
+      return;
+    }
+    if (a.b.b(paramb)) {}
+    for (int i = this.AMQ.akX; (i < 0) || (i > b.fz(this.AMT).length()); i = this.AMQ.Fe)
+    {
+      AppMethodBeat.o(113149);
+      return;
+    }
+    Object localObject = b.fA(this.AMT);
+    int j;
+    if (localObject != null)
+    {
+      j = (int)((TextPaint)localObject).getFontMetrics().descent + b.au(this.AMT, b.av(this.AMT, i));
+      i = (int)b.aw(this.AMT, i);
     }
     for (;;)
     {
-      paramb.wsy.lh.getLocationInWindow(paramb.wsH);
-      if (paramb.wsC) {}
+      paramb.ANs.AMT.getLocationInWindow(paramb.ANA);
+      if (paramb.ANv) {}
       for (int k = paramb.mWidth;; k = 0)
       {
         int n = i;
         int m = j;
-        if (!paramb.wsC)
+        if (!paramb.ANv)
         {
-          localObject = paramb.fQ(i, j);
+          localObject = paramb.ia(i, j);
           n = localObject[0];
           m = localObject[1];
         }
-        paramb.wsB.showAtLocation(paramb.wsy.lh, 0, n - k + paramb.getExtraX(), m + paramb.getExtraY());
-        return;
-        i = this.wsm.Eo;
-        break;
+        try
+        {
+          paramb.mPopupWindow.showAtLocation(paramb.ANs.AMT, 0, n - k + paramb.dQa(), m + paramb.dQb());
+          AppMethodBeat.o(113149);
+          return;
+        }
+        catch (Exception paramb)
+        {
+          ak.e("SelectableTextHelper", "error! message: %s.", new Object[] { paramb.getMessage() });
+          AppMethodBeat.o(113149);
+          return;
+        }
       }
-      label172:
       i = 0;
       j = 0;
     }
   }
   
-  public final void cKI()
+  private int aL(int paramInt, boolean paramBoolean)
   {
-    this.cbz = true;
-    if (this.wsk != null) {
-      this.wsk.wsB.dismiss();
-    }
-    if (this.wsl != null) {
-      this.wsl.wsB.dismiss();
-    }
-    if (this.wsp != null) {
-      this.wsp.cCw();
-    }
-  }
-  
-  public final void cKJ()
-  {
-    this.wsm.wsI = null;
-    if ((this.wso != null) && (this.wsv != null))
+    AppMethodBeat.i(113156);
+    if (this.ANr != null)
     {
-      this.wso.removeSpan(this.wsv);
-      this.wsv = null;
+      Iterator localIterator = this.ANr.iterator();
+      while (localIterator.hasNext())
+      {
+        a.c localc = (a.c)localIterator.next();
+        if (localc.ws(paramInt))
+        {
+          if (paramBoolean)
+          {
+            paramInt = localc.start;
+            AppMethodBeat.o(113156);
+            return paramInt;
+          }
+          paramInt = localc.end;
+          AppMethodBeat.o(113156);
+          return paramInt;
+        }
+      }
     }
+    AppMethodBeat.o(113156);
+    return paramInt;
   }
   
-  public final void cKK()
+  private boolean dPR()
+  {
+    AppMethodBeat.i(138213);
+    AccessibilityManager localAccessibilityManager = (AccessibilityManager)this.mContext.getSystemService("accessibility");
+    if ((localAccessibilityManager.isEnabled()) && (localAccessibilityManager.isTouchExplorationEnabled()))
+    {
+      AppMethodBeat.o(138213);
+      return true;
+    }
+    AppMethodBeat.o(138213);
+    return false;
+  }
+  
+  public final void dPP()
+  {
+    AppMethodBeat.i(113146);
+    dPT();
+    dPU();
+    if (this.AMU != null) {
+      this.AMU.dismiss();
+    }
+    AppMethodBeat.o(113146);
+  }
+  
+  public final void dPQ()
+  {
+    AppMethodBeat.i(113147);
+    this.AMQ.AND = null;
+    if ((this.AMW != null) && (this.ANd != null))
+    {
+      this.AMW.removeSpan(this.ANd);
+      this.ANd = null;
+    }
+    AppMethodBeat.o(113147);
+  }
+  
+  public final void dPS()
+  {
+    AppMethodBeat.i(113150);
+    if (!dPR())
+    {
+      a(this.AMN);
+      a(this.AMO);
+    }
+    AppMethodBeat.o(113150);
+  }
+  
+  public final void dPT()
+  {
+    AppMethodBeat.i(113151);
+    if (this.AMN != null) {
+      this.AMN.mPopupWindow.dismiss();
+    }
+    if (this.AMO != null) {
+      this.AMO.mPopupWindow.dismiss();
+    }
+    AppMethodBeat.o(113151);
+  }
+  
+  public final void dPU()
+  {
+    AppMethodBeat.i(113152);
+    if (this.AMX != null) {
+      this.AMX.dGj();
+    }
+    AppMethodBeat.o(113152);
+  }
+  
+  public final void dPV()
+  {
+    AppMethodBeat.i(113153);
+    if (this.AMU != null) {
+      this.AMU.eW(this.AMT);
+    }
+    AppMethodBeat.o(113153);
+  }
+  
+  public final void dPW()
   {
     int j = 16;
-    int k;
+    AppMethodBeat.i(113154);
     int i;
-    if (this.wsp != null)
+    int m;
+    if (this.AMX != null)
     {
-      this.lh.getLocationInWindow(this.pls);
-      Layout localLayout = this.lh.getLayout();
-      int m = (int)localLayout.getPrimaryHorizontal(this.wsm.aiH) + this.pls[0];
-      k = localLayout.getLineTop(localLayout.getLineForOffset(this.wsm.aiH)) + this.pls[1] - 16;
-      i = m;
-      if (m <= 0) {
+      int[] arrayOfInt = new int[2];
+      this.AMT.getLocationInWindow(arrayOfInt);
+      int k = (int)b.aw(this.AMT, this.AMQ.akX) + arrayOfInt[0];
+      i = b.ax(this.AMT, b.av(this.AMT, this.AMQ.akX));
+      m = arrayOfInt[1] + i - 16;
+      i = k;
+      if (k <= 0) {
         i = 16;
       }
-      if (k >= 0) {
-        break label131;
+      if (m >= 0) {
+        break label140;
       }
     }
     for (;;)
@@ -168,279 +334,138 @@ public final class a
       }
       for (;;)
       {
-        this.wsp.ch(i, j);
+        this.AMX.dq(i, j);
+        AppMethodBeat.o(113154);
         return;
       }
-      label131:
-      j = k;
+      label140:
+      j = m;
     }
   }
   
-  public final void fP(int paramInt1, int paramInt2)
+  public final void destroy()
   {
+    AppMethodBeat.i(113145);
+    this.ANh = false;
+    this.mVI = true;
+    this.ANi = false;
+    this.AMT.removeCallbacks(this.ANo);
+    this.AMT.getViewTreeObserver().removeOnScrollChangedListener(this.ANg);
+    this.AMT.getViewTreeObserver().removeOnPreDrawListener(this.rP);
+    this.AMT.getViewTreeObserver().removeOnGlobalLayoutListener(this.ZD);
+    this.AMT.removeOnAttachStateChangeListener(this.Vt);
+    this.ANj = true;
+    this.ANk = true;
+    dPP();
+    dPQ();
+    this.AMN = null;
+    this.AMO = null;
+    if (this.AMU != null) {
+      this.AMU.dismiss();
+    }
+    AppMethodBeat.o(113145);
+  }
+  
+  final void hY(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(113148);
+    dPQ();
+    if ((b.fz(this.AMT) instanceof Spannable)) {
+      this.AMW = ((Spannable)b.fz(this.AMT));
+    }
+    if ((this.AMW == null) || (paramInt1 >= b.fz(this.AMT).length()))
+    {
+      this.AMQ.akX = 0;
+      this.AMQ.Fe = 0;
+      AppMethodBeat.o(113148);
+      return;
+    }
+    hZ(paramInt1, paramInt2);
+    AppMethodBeat.o(113148);
+  }
+  
+  public final void hZ(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(113155);
     if (paramInt1 != -1) {
-      this.wsm.aiH = paramInt1;
+      this.AMQ.akX = aL(paramInt1, true);
     }
     if (paramInt2 != -1) {
-      this.wsm.Eo = paramInt2;
+      this.AMQ.Fe = aL(paramInt2, false);
     }
-    if (this.wsm.aiH > this.wsm.Eo)
+    if ((this.AMQ.akX < 0) || (this.AMQ.akX > b.fz(this.AMT).length()))
     {
-      paramInt1 = this.wsm.aiH;
-      this.wsm.aiH = this.wsm.Eo;
-      this.wsm.Eo = paramInt1;
+      AppMethodBeat.o(113155);
+      return;
     }
-    if (this.wso != null)
+    if ((this.AMQ.Fe < 0) || (this.AMQ.Fe > b.fz(this.AMT).length()))
     {
-      this.wsm.wsI = this.wso.subSequence(this.wsm.aiH, this.wsm.Eo).toString();
-      if (this.wsv == null) {
-        this.wsv = new c(this.lh, this.mContext.getResources().getColor(this.wss), this.wsm.aiH, this.wsm.Eo);
+      AppMethodBeat.o(113155);
+      return;
+    }
+    if (this.AMQ.akX > this.AMQ.Fe)
+    {
+      paramInt1 = this.AMQ.akX;
+      this.AMQ.akX = this.AMQ.Fe;
+      this.AMQ.Fe = paramInt1;
+    }
+    if (this.AMW != null)
+    {
+      this.AMQ.AND = this.AMW.subSequence(this.AMQ.akX, this.AMQ.Fe).toString();
+      if (this.ANd == null) {
+        break label314;
       }
-      if (this.wsv != null)
-      {
-        localObject = this.wsv;
-        paramInt1 = this.wsm.aiH;
-        paramInt2 = this.wsm.Eo;
-        ((c)localObject).start = paramInt1;
-        ((c)localObject).end = paramInt2;
+      this.ANd.setPosition(this.AMQ.akX, this.AMQ.Fe);
+    }
+    for (;;)
+    {
+      paramInt1 = b.av(this.AMT, this.AMQ.akX);
+      paramInt1 = b.aA(this.AMT, paramInt1);
+      this.AMW.setSpan(this.ANd, paramInt1, this.AMQ.Fe, 17);
+      if (this.AMS != null) {
+        this.AMS.ad(this.AMQ.AND);
       }
-      Object localObject = this.lh.getLayout();
-      paramInt1 = ((Layout)localObject).getLineStart(((Layout)localObject).getLineForOffset(this.wsm.aiH));
-      this.wso.setSpan(this.wsv, paramInt1, this.wsm.Eo, 17);
-      if (this.wsn != null) {
-        this.wsn.P(this.wsm.wsI);
-      }
+      AppMethodBeat.o(113155);
+      return;
+      label314:
+      this.ANd = new c(this.AMT, this.mContext.getResources().getColor(this.ANa), this.AMQ.akX, this.AMQ.Fe);
     }
   }
   
-  private final class b
-    extends View
+  public final void init()
   {
-    private int dsI = 25;
-    private int mHeight = this.rJp * 2;
-    private Paint mPaint;
-    int mWidth = this.rJp * 2;
-    private int rJp = a.this.wsu / 2;
-    public PopupWindow wsB;
-    boolean wsC;
-    private int wsD;
-    private int wsE;
-    private int wsF;
-    private int wsG;
-    int[] wsH = new int[2];
-    
-    b(boolean paramBoolean)
+    AppMethodBeat.i(113144);
+    if (!this.mVI)
     {
-      super();
-      this.wsC = paramBoolean;
-      this.mPaint = new Paint(1);
-      this.mPaint.setColor(a.this.mContext.getResources().getColor(a.this.wst));
-      this.wsB = new PopupWindow(this);
-      this.wsB.setClippingEnabled(false);
-      this.wsB.setWidth(this.mWidth + this.dsI * 2);
-      this.wsB.setHeight(this.mHeight + this.dsI / 2);
-      invalidate();
+      ak.d("SelectableTextHelper", "not destroy, isReInit: %s.", new Object[] { Boolean.valueOf(this.ANh) });
+      this.ANh = true;
+      AppMethodBeat.o(113144);
+      return;
     }
-    
-    private void cKL()
+    ak.d("SelectableTextHelper", "not init yet, need to init.", new Object[0]);
+    this.ANh = false;
+    this.mVI = false;
+    this.ANi = false;
+    if (this.AMU == null) {
+      b.a(this.AMT, b.fz(this.AMT), TextView.BufferType.SPANNABLE);
+    }
+    this.AMN = new a.b(this, true);
+    if (this.AMU != null)
     {
-      if (!this.wsC) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.wsC = bool;
-        invalidate();
-        return;
-      }
+      this.AMN.dQc();
+      this.AMN.setTouchInterceptor(new a.11(this));
+      this.AMN.setOnDismissListener(new a.12(this));
     }
-    
-    private void cKM()
-    {
-      a.this.lh.getLocationInWindow(this.wsH);
-      Object localObject = a.this.lh.getLayout();
-      if (localObject != null)
-      {
-        i = (int)((Layout)localObject).getPaint().getFontMetrics().descent;
-        if (this.wsC) {
-          this.wsB.update((int)((Layout)localObject).getPrimaryHorizontal(a.this.wsm.aiH) - this.mWidth + getExtraX(), ((Layout)localObject).getLineBaseline(((Layout)localObject).getLineForOffset(a.this.wsm.aiH)) + i + getExtraY(), -1, -1);
-        }
-      }
-      else
-      {
-        return;
-      }
-      localObject = fQ((int)((Layout)localObject).getPrimaryHorizontal(a.this.wsm.Eo), ((Layout)localObject).getLineBaseline(((Layout)localObject).getLineForOffset(a.this.wsm.Eo)) + i);
-      int i = localObject[0];
-      int j = localObject[1];
-      this.wsB.update(i + getExtraX(), j + getExtraY(), -1, -1);
-    }
-    
-    final int[] fQ(int paramInt1, int paramInt2)
-    {
-      int j = paramInt1;
-      int i = paramInt2;
-      if (paramInt1 == 0)
-      {
-        j = paramInt1;
-        i = paramInt2;
-        if (a.this.wsm.Eo > 1)
-        {
-          a.this.lh.getLocationInWindow(this.wsH);
-          Layout localLayout = a.this.lh.getLayout();
-          j = paramInt1;
-          i = paramInt2;
-          if (localLayout != null)
-          {
-            paramInt1 = (int)localLayout.getPaint().getFontMetrics().descent;
-            j = (int)localLayout.getLineWidth(localLayout.getLineForOffset(a.this.wsm.Eo - 1));
-            i = localLayout.getLineBaseline(localLayout.getLineForOffset(a.this.wsm.Eo - 1)) + paramInt1;
-          }
-        }
-      }
-      return new int[] { j, i };
-    }
-    
-    public final int getExtraX()
-    {
-      return this.wsH[0] - this.dsI + a.this.lh.getPaddingLeft();
-    }
-    
-    public final int getExtraY()
-    {
-      return this.wsH[1] + a.this.lh.getPaddingTop();
-    }
-    
-    protected final void onDraw(Canvas paramCanvas)
-    {
-      paramCanvas.drawCircle(this.rJp + this.dsI, this.rJp, this.rJp, this.mPaint);
-      if (this.wsC)
-      {
-        paramCanvas.drawRect(this.rJp + this.dsI, 0.0F, this.rJp * 2 + this.dsI, this.rJp, this.mPaint);
-        return;
-      }
-      paramCanvas.drawRect(this.dsI, 0.0F, this.rJp + this.dsI, this.rJp, this.mPaint);
-    }
-    
-    public final boolean onTouchEvent(MotionEvent paramMotionEvent)
-    {
-      switch (paramMotionEvent.getAction())
-      {
-      default: 
-        return true;
-      case 0: 
-        this.wsF = a.this.wsm.aiH;
-        this.wsG = a.this.wsm.Eo;
-        this.wsD = ((int)paramMotionEvent.getX());
-        this.wsE = ((int)paramMotionEvent.getY());
-        return true;
-      case 1: 
-      case 3: 
-        a.this.cKK();
-        return true;
-      }
-      a.this.wsp.cCw();
-      int i = (int)paramMotionEvent.getRawX();
-      int j = (int)paramMotionEvent.getRawY();
-      int n = i + this.wsD - this.mWidth;
-      int k = this.wsE;
-      int m = this.mHeight;
-      a.this.lh.getLocationInWindow(this.wsH);
-      if (this.wsC) {}
-      int i1;
-      Layout localLayout;
-      for (i = a.this.wsm.aiH;; i = a.this.wsm.Eo)
-      {
-        i1 = k + j - m - this.wsH[1];
-        paramMotionEvent = a.this.lh;
-        localLayout = paramMotionEvent.getLayout();
-        if (localLayout != null) {
-          break;
-        }
-        j = -1;
-        label212:
-        if (j == i) {
-          break label599;
-        }
-        a.this.cKJ();
-        if (!this.wsC) {
-          break label525;
-        }
-        if (j <= this.wsG) {
-          break label513;
-        }
-        paramMotionEvent = a.a(a.this, false);
-        cKL();
-        paramMotionEvent.cKL();
-        this.wsF = this.wsG;
-        a.this.fP(this.wsG, j);
-        paramMotionEvent.cKM();
-        label280:
-        cKM();
-        return true;
-      }
-      k = localLayout.getLineForVertical(i1);
-      if (b.a(localLayout, i))
-      {
-        j = (int)localLayout.getPrimaryHorizontal(i - 1);
-        m = (int)localLayout.getLineRight(k);
-        if (n <= m - (m - j) / 2) {}
-      }
-      for (j = i - 1;; j = i)
-      {
-        m = localLayout.getLineForOffset(j);
-        int i2 = localLayout.getLineTop(m);
-        int i3 = localLayout.getLineBottom(m);
-        int i4 = (i3 - i2) / 2;
-        if (k == m + 1)
-        {
-          j = m;
-          if (i1 - i3 < i4) {}
-        }
-        else
-        {
-          if ((k != m - 1) || (i2 - i1 >= i4)) {
-            break label601;
-          }
-        }
-        label513:
-        label525:
-        label599:
-        label601:
-        for (j = m;; j = k)
-        {
-          k = localLayout.getOffsetForHorizontal(j, n);
-          if ((k < paramMotionEvent.getText().length() - 1) && (b.a(localLayout, k + 1)))
-          {
-            m = (int)localLayout.getPrimaryHorizontal(k);
-            j = (int)localLayout.getLineRight(j);
-            if (n > j - (j - m) / 2)
-            {
-              j = k + 1;
-              break label212;
-              a.this.fP(j, -1);
-              break label280;
-              if (j < this.wsF)
-              {
-                paramMotionEvent = a.a(a.this, true);
-                paramMotionEvent.cKL();
-                cKL();
-                this.wsG = this.wsF;
-                a.this.fP(j, this.wsF);
-                paramMotionEvent.cKM();
-              }
-              for (;;)
-              {
-                cKM();
-                return true;
-                a.this.fP(this.wsF, j);
-              }
-            }
-          }
-          j = k;
-          break label212;
-          break;
-        }
-      }
-    }
+    this.AMO = new a.b(this, false);
+    this.AMT.setOnLongClickListener(new a.2(this));
+    this.AMT.setOnTouchListener(this.kjL);
+    this.AMT.setOnClickListener(new a.3(this));
+    this.AMT.addOnAttachStateChangeListener(this.Vt);
+    this.AMT.getViewTreeObserver().addOnPreDrawListener(this.rP);
+    this.AMT.getViewTreeObserver().addOnScrollChangedListener(this.ANg);
+    this.AMT.getViewTreeObserver().addOnGlobalLayoutListener(this.ZD);
+    this.AMT.getViewTreeObserver().addOnGlobalLayoutListener(new a.4(this));
+    AppMethodBeat.o(113144);
   }
 }
 

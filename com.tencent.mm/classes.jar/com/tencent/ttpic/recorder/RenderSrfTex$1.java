@@ -1,6 +1,7 @@
 package com.tencent.ttpic.recorder;
 
 import com.tencent.filter.BaseFilter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.gles.GlUtil;
 import com.tencent.ttpic.gles.WindowSurface;
 import com.tencent.ttpic.util.FrameRateUtil;
@@ -12,12 +13,15 @@ class RenderSrfTex$1
   
   public void run()
   {
+    AppMethodBeat.i(83707);
     if (FrameRateUtil.mRecordStartTime == -1L)
     {
       FrameRateUtil.mRecordStartTime = System.currentTimeMillis();
       FrameRateUtil.mFrameCount = 0;
     }
-    if ((RenderSrfTex.access$000(this.this$0) > 0L) && (System.currentTimeMillis() - FrameRateUtil.mRecordStartTime < FrameRateUtil.mFrameCount * RenderSrfTex.access$000(this.this$0))) {
+    if ((RenderSrfTex.access$000(this.this$0) > 0L) && (System.currentTimeMillis() - FrameRateUtil.mRecordStartTime < FrameRateUtil.mFrameCount * RenderSrfTex.access$000(this.this$0)))
+    {
+      AppMethodBeat.o(83707);
       return;
     }
     FrameRateUtil.mFrameCount += 1;
@@ -29,11 +33,12 @@ class RenderSrfTex$1
     }
     RenderSrfTex.access$700(this.this$0).swapBuffers();
     GlUtil.checkGlError("draw_E");
+    AppMethodBeat.o(83707);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.ttpic.recorder.RenderSrfTex.1
  * JD-Core Version:    0.7.0.1
  */

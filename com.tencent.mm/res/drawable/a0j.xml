@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:topLeftRadius="0.0dip" android:topRightRadius="0.0dip" android:bottomLeftRadius="2.0dip" android:bottomRightRadius="2.0dip" />
-    <solid android:color="@color/a23" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@raw/scan_detail_movie_icon_hl" />
+    <item android:drawable="@raw/scan_detail_movie_icon" />
+</selector>

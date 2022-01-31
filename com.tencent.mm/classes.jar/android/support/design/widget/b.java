@@ -1,38 +1,40 @@
 package android.support.design.widget;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import android.support.design.a.a;
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityManager;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public abstract class b<B extends b<B>>
 {
-  static final Handler eP;
-  private static final boolean eQ;
-  final ViewGroup eR;
-  final b.e eS;
-  private final b.b eT;
-  private List<Object<B>> eU;
-  private final AccessibilityManager eV;
-  final l.a eW;
+  private static final boolean fP;
+  static final Handler sHandler;
+  final ViewGroup fQ;
+  final b.e fR;
+  private final b.b fS;
+  private List<Object<B>> fT;
+  private final AccessibilityManager fU;
+  final l.a fV;
   
   static
   {
     if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT <= 19)) {}
     for (boolean bool = true;; bool = false)
     {
-      eQ = bool;
-      eP = new Handler(Looper.getMainLooper(), new Handler.Callback()
+      fP = bool;
+      sHandler = new Handler(Looper.getMainLooper(), new Handler.Callback()
       {
         public final boolean handleMessage(Message paramAnonymousMessage)
         {
@@ -42,44 +44,44 @@ public abstract class b<B extends b<B>>
             return false;
           case 0: 
             paramAnonymousMessage = (b)paramAnonymousMessage.obj;
-            if (paramAnonymousMessage.eS.getParent() == null)
+            if (paramAnonymousMessage.fR.getParent() == null)
             {
-              localObject = paramAnonymousMessage.eS.getLayoutParams();
+              localObject = paramAnonymousMessage.fR.getLayoutParams();
               if ((localObject instanceof CoordinatorLayout.d))
               {
                 localObject = (CoordinatorLayout.d)localObject;
                 b.a locala = new b.a(paramAnonymousMessage);
-                locala.jX = n.n(0.1F);
-                locala.jY = n.n(0.6F);
-                locala.jV = 0;
-                locala.jR = new b.5(paramAnonymousMessage);
+                locala.kV = SwipeDismissBehavior.o(0.1F);
+                locala.kW = SwipeDismissBehavior.o(0.6F);
+                locala.kT = 0;
+                locala.kP = new b.5(paramAnonymousMessage);
                 ((CoordinatorLayout.d)localObject).a(locala);
-                ((CoordinatorLayout.d)localObject).hT = 80;
+                ((CoordinatorLayout.d)localObject).iQ = 80;
               }
-              paramAnonymousMessage.eR.addView(paramAnonymousMessage.eS);
+              paramAnonymousMessage.fQ.addView(paramAnonymousMessage.fR);
             }
-            paramAnonymousMessage.eS.setOnAttachStateChangeListener(new b.6(paramAnonymousMessage));
-            if (q.al(paramAnonymousMessage.eS)) {
-              if (paramAnonymousMessage.ap()) {
-                paramAnonymousMessage.am();
+            paramAnonymousMessage.fR.setOnAttachStateChangeListener(new b.6(paramAnonymousMessage));
+            if (t.as(paramAnonymousMessage.fR)) {
+              if (paramAnonymousMessage.aT()) {
+                paramAnonymousMessage.aQ();
               }
             }
             for (;;)
             {
               return true;
-              paramAnonymousMessage.an();
+              paramAnonymousMessage.aR();
               continue;
-              paramAnonymousMessage.eS.setOnLayoutChangeListener(new b.7(paramAnonymousMessage));
+              paramAnonymousMessage.fR.setOnLayoutChangeListener(new b.7(paramAnonymousMessage));
             }
           }
           Object localObject = (b)paramAnonymousMessage.obj;
           int i = paramAnonymousMessage.arg1;
-          if ((((b)localObject).ap()) && (((b)localObject).eS.getVisibility() == 0)) {
+          if ((((b)localObject).aT()) && (((b)localObject).fR.getVisibility() == 0)) {
             if (Build.VERSION.SDK_INT >= 12)
             {
               paramAnonymousMessage = new ValueAnimator();
-              paramAnonymousMessage.setIntValues(new int[] { 0, ((b)localObject).eS.getHeight() });
-              paramAnonymousMessage.setInterpolator(a.el);
+              paramAnonymousMessage.setIntValues(new int[] { 0, ((b)localObject).fR.getHeight() });
+              paramAnonymousMessage.setInterpolator(a.fj);
               paramAnonymousMessage.setDuration(250L);
               paramAnonymousMessage.addListener(new b.2((b)localObject, i));
               paramAnonymousMessage.addUpdateListener(new b.3((b)localObject));
@@ -89,13 +91,13 @@ public abstract class b<B extends b<B>>
           for (;;)
           {
             return true;
-            paramAnonymousMessage = AnimationUtils.loadAnimation(((b)localObject).eS.getContext(), a.a.design_snackbar_out);
-            paramAnonymousMessage.setInterpolator(a.el);
+            paramAnonymousMessage = AnimationUtils.loadAnimation(((b)localObject).fR.getContext(), 2131034158);
+            paramAnonymousMessage.setInterpolator(a.fj);
             paramAnonymousMessage.setDuration(250L);
             paramAnonymousMessage.setAnimationListener(new b.4((b)localObject, i));
-            ((b)localObject).eS.startAnimation(paramAnonymousMessage);
+            ((b)localObject).fR.startAnimation(paramAnonymousMessage);
             continue;
-            ((b)localObject).ao();
+            ((b)localObject).aS();
           }
         }
       });
@@ -103,95 +105,95 @@ public abstract class b<B extends b<B>>
     }
   }
   
-  final void am()
+  final void aQ()
   {
     if (Build.VERSION.SDK_INT >= 12)
     {
-      int i = this.eS.getHeight();
-      if (eQ) {
-        q.p(this.eS, i);
+      int i = this.fR.getHeight();
+      if (fP) {
+        t.q(this.fR, i);
       }
       for (;;)
       {
         localObject = new ValueAnimator();
         ((ValueAnimator)localObject).setIntValues(new int[] { i, 0 });
-        ((ValueAnimator)localObject).setInterpolator(a.el);
+        ((ValueAnimator)localObject).setInterpolator(a.fj);
         ((ValueAnimator)localObject).setDuration(250L);
         ((ValueAnimator)localObject).addListener(new b.8(this));
         ((ValueAnimator)localObject).addUpdateListener(new b.9(this, i));
         ((ValueAnimator)localObject).start();
         return;
-        this.eS.setTranslationY(i);
+        this.fR.setTranslationY(i);
       }
     }
-    Object localObject = AnimationUtils.loadAnimation(this.eS.getContext(), a.a.design_snackbar_in);
-    ((Animation)localObject).setInterpolator(a.el);
+    Object localObject = AnimationUtils.loadAnimation(this.fR.getContext(), 2131034157);
+    ((Animation)localObject).setInterpolator(a.fj);
     ((Animation)localObject).setDuration(250L);
     ((Animation)localObject).setAnimationListener(new b.10(this));
-    this.eS.startAnimation((Animation)localObject);
+    this.fR.startAnimation((Animation)localObject);
   }
   
-  final void an()
+  final void aR()
   {
-    l locall = l.aT();
-    l.a locala = this.eW;
+    l locall = l.bD();
+    l.a locala = this.fV;
     synchronized (locall.mLock)
     {
       if (locall.d(locala)) {
-        locall.b(locall.jF);
+        locall.b(locall.kD);
       }
-      if (this.eU != null)
+      if (this.fT != null)
       {
-        int i = this.eU.size() - 1;
+        int i = this.fT.size() - 1;
         if (i >= 0)
         {
-          this.eU.get(i);
+          this.fT.get(i);
           i -= 1;
         }
       }
     }
   }
   
-  final void ao()
+  final void aS()
   {
-    l locall = l.aT();
-    l.a locala = this.eW;
+    l locall = l.bD();
+    l.a locala = this.fV;
     synchronized (locall.mLock)
     {
       if (locall.d(locala))
       {
-        locall.jF = null;
-        if ((locall.jG != null) && (locall.jG != null))
+        locall.kD = null;
+        if ((locall.kE != null) && (locall.kE != null))
         {
-          locall.jF = locall.jG;
-          locall.jG = null;
-          if ((l.a)locall.jF.jI.get() == null) {
-            locall.jF = null;
+          locall.kD = locall.kE;
+          locall.kE = null;
+          if ((l.a)locall.kD.kG.get() == null) {
+            locall.kD = null;
           }
         }
       }
-      if (this.eU != null)
+      if (this.fT != null)
       {
-        int i = this.eU.size() - 1;
+        int i = this.fT.size() - 1;
         if (i >= 0)
         {
-          this.eU.get(i);
+          this.fT.get(i);
           i -= 1;
         }
       }
     }
     if (Build.VERSION.SDK_INT < 11) {
-      this.eS.setVisibility(8);
+      this.fR.setVisibility(8);
     }
-    ??? = this.eS.getParent();
+    ??? = this.fR.getParent();
     if ((??? instanceof ViewGroup)) {
-      ((ViewGroup)???).removeView(this.eS);
+      ((ViewGroup)???).removeView(this.fR);
     }
   }
   
-  final boolean ap()
+  final boolean aT()
   {
-    return !this.eV.isEnabled();
+    return !this.fU.isEnabled();
   }
 }
 

@@ -1,7 +1,8 @@
 package com.tencent.mm.pluginsdk.ui.preference;
 
-import com.tencent.mm.h.a.iv;
-import com.tencent.mm.h.a.iv.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.je;
+import com.tencent.mm.g.a.je.a;
 import com.tencent.mm.pluginsdk.c.a;
 import com.tencent.mm.sdk.b.b;
 
@@ -10,11 +11,13 @@ final class FMessageListView$1
 {
   FMessageListView$1(FMessageListView paramFMessageListView) {}
   
-  public final void j(b paramb)
+  public final void i(b paramb)
   {
-    if (((paramb instanceof iv)) && (!FMessageListView.a(this.sip))) {
-      FMessageListView.a(this.sip, ((iv)paramb).bRa.bGt);
+    AppMethodBeat.i(28037);
+    if (((paramb instanceof je)) && (!FMessageListView.a(this.waO))) {
+      FMessageListView.a(this.waO, ((je)paramb).cyC.cnC);
     }
+    AppMethodBeat.o(28037);
   }
 }
 

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.label.a.a;
 import com.tencent.mm.plugin.label.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.listview.AnimatedExpandableListView;
 import java.util.ArrayList;
 
@@ -13,39 +14,41 @@ final class SnsLabelUI$10
   
   public final void run()
   {
-    SnsLabelUI.a(this.oZN, (ArrayList)a.bdA().bdv());
-    if (SnsLabelUI.j(this.oZN) == null) {
-      SnsLabelUI.a(this.oZN, new ArrayList());
+    AppMethodBeat.i(39020);
+    SnsLabelUI.a(this.rSh, (ArrayList)a.bKV().bKQ());
+    if (SnsLabelUI.k(this.rSh) == null) {
+      SnsLabelUI.a(this.rSh, new ArrayList());
     }
-    if (!bk.bl(this.oZQ)) {
-      if (!SnsLabelUI.j(this.oZN).contains(this.oZQ)) {
-        SnsLabelUI.j(this.oZN).add(this.oZQ);
+    if (!bo.isNullOrNil(this.rSk)) {
+      if (!SnsLabelUI.k(this.rSh).contains(this.rSk)) {
+        SnsLabelUI.k(this.rSh).add(this.rSk);
       }
     }
-    for (int i = SnsLabelUI.j(this.oZN).indexOf(this.oZQ);; i = -1)
+    for (int i = SnsLabelUI.k(this.rSh).indexOf(this.rSk);; i = -1)
     {
-      SnsLabelUI.a(this.oZN).Q(SnsLabelUI.j(this.oZN));
-      SnsLabelUI.k(this.oZN);
-      SnsLabelUI.a(this.oZN).oZT = SnsLabelUI.l(this.oZN);
-      if ((!bk.bl(this.oZQ)) && (i != -1))
+      SnsLabelUI.a(this.rSh).S(SnsLabelUI.k(this.rSh));
+      SnsLabelUI.l(this.rSh);
+      SnsLabelUI.a(this.rSh).rSq = SnsLabelUI.m(this.rSh);
+      if ((!bo.isNullOrNil(this.rSk)) && (i != -1))
       {
-        if (SnsLabelUI.l(this.oZN) != 2) {
-          break label236;
+        if (SnsLabelUI.m(this.rSh) != 2) {
+          break label246;
         }
-        SnsLabelUI.a(this.oZN).oZV.add(this.oZQ);
-        SnsLabelUI.a(this.oZN).oZX.clear();
+        SnsLabelUI.a(this.rSh).rSs.add(this.rSk);
+        SnsLabelUI.a(this.rSh).rSu.clear();
       }
       for (;;)
       {
-        SnsLabelUI.a(this.oZN).notifyDataSetChanged();
-        SnsLabelUI.g(this.oZN).expandGroup(SnsLabelUI.l(this.oZN));
-        SnsLabelUI.m(this.oZN);
+        SnsLabelUI.a(this.rSh).notifyDataSetChanged();
+        SnsLabelUI.g(this.rSh).expandGroup(SnsLabelUI.m(this.rSh));
+        SnsLabelUI.n(this.rSh);
+        AppMethodBeat.o(39020);
         return;
-        label236:
-        if (SnsLabelUI.l(this.oZN) == 3)
+        label246:
+        if (SnsLabelUI.m(this.rSh) == 3)
         {
-          SnsLabelUI.a(this.oZN).oZW.add(this.oZQ);
-          SnsLabelUI.a(this.oZN).oZY.clear();
+          SnsLabelUI.a(this.rSh).rSt.add(this.rSk);
+          SnsLabelUI.a(this.rSh).rSv.clear();
         }
       }
     }
@@ -53,7 +56,7 @@ final class SnsLabelUI$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsLabelUI.10
  * JD-Core Version:    0.7.0.1
  */

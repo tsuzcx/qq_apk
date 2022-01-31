@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class StartUnbindQQ$3
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class StartUnbindQQ$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StartUnbindQQ.b(this.feJ);
+    AppMethodBeat.i(13764);
+    StartUnbindQQ.b(this.gws);
+    AppMethodBeat.o(13764);
   }
 }
 

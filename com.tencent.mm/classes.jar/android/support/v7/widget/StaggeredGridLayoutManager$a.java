@@ -4,22 +4,22 @@ import java.util.Arrays;
 
 final class StaggeredGridLayoutManager$a
 {
-  int El;
-  boolean aen;
-  boolean aeo;
-  int[] akA;
-  boolean akz;
+  int Fb;
+  boolean agA;
+  boolean agB;
+  boolean amS;
+  int[] amT;
   int mPosition;
   
   final void reset()
   {
     this.mPosition = -1;
-    this.El = -2147483648;
-    this.aen = false;
-    this.akz = false;
-    this.aeo = false;
-    if (this.akA != null) {
-      Arrays.fill(this.akA, -1);
+    this.Fb = -2147483648;
+    this.agA = false;
+    this.amS = false;
+    this.agB = false;
+    if (this.amT != null) {
+      Arrays.fill(this.amT, -1);
     }
   }
 }

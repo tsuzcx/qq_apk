@@ -4,8 +4,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxcredit.a.l;
-import com.tencent.mm.plugin.wxpay.a.g;
 import java.util.List;
 
 final class WalletWXCreditChangeAmountUI$11
@@ -13,16 +13,24 @@ final class WalletWXCreditChangeAmountUI$11
 {
   WalletWXCreditChangeAmountUI$11(WalletWXCreditChangeAmountUI paramWalletWXCreditChangeAmountUI) {}
   
-  private l Dz(int paramInt)
+  private l Lr(int paramInt)
   {
-    return (l)WalletWXCreditChangeAmountUI.j(this.rRF).get(paramInt);
+    AppMethodBeat.i(48700);
+    l locall = (l)WalletWXCreditChangeAmountUI.j(this.vIv).get(paramInt);
+    AppMethodBeat.o(48700);
+    return locall;
   }
   
   public final int getCount()
   {
-    if (WalletWXCreditChangeAmountUI.j(this.rRF) != null) {
-      return WalletWXCreditChangeAmountUI.j(this.rRF).size();
+    AppMethodBeat.i(48699);
+    if (WalletWXCreditChangeAmountUI.j(this.vIv) != null)
+    {
+      int i = WalletWXCreditChangeAmountUI.j(this.vIv).size();
+      AppMethodBeat.o(48699);
+      return i;
     }
+    AppMethodBeat.o(48699);
     return 0;
   }
   
@@ -33,20 +41,22 @@ final class WalletWXCreditChangeAmountUI$11
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramView = (CheckedTextView)View.inflate(this.rRF, a.g.wallet_list_dialog_item_singlechoice, null);
-    paramViewGroup = Dz(paramInt);
+    AppMethodBeat.i(48701);
+    paramView = (CheckedTextView)View.inflate(this.vIv, 2130971195, null);
+    paramViewGroup = Lr(paramInt);
     paramView.setText(paramViewGroup.desc);
-    if (paramViewGroup.rRd != 0) {}
+    if (paramViewGroup.vHT != 0) {}
     for (boolean bool = true;; bool = false)
     {
       paramView.setChecked(bool);
+      AppMethodBeat.o(48701);
       return paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditChangeAmountUI.11
  * JD-Core Version:    0.7.0.1
  */

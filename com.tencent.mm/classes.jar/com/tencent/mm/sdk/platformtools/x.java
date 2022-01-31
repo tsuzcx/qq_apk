@@ -1,261 +1,263 @@
 package com.tencent.mm.sdk.platformtools;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.LocaleList;
+import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import java.util.Locale;
+import android.view.Display;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cb.a;
 
-public final class x
+public class x
 {
-  public static Locale ueU;
+  public static int ynb = -1;
+  public static int ync = -1;
+  private static boolean ynd = false;
+  private static int yne = -1;
+  private static int ynf = -1;
   
-  static
+  public static int at(Activity paramActivity)
   {
-    if (Build.VERSION.SDK_INT < 24) {}
-    for (ueU = Locale.getDefault();; ueU = LocaleList.getDefault().get(0))
+    AppMethodBeat.i(115203);
+    Rect localRect = new Rect();
+    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    int i = localRect.top;
+    AppMethodBeat.o(115203);
+    return i;
+  }
+  
+  public static final int av(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(115195);
+    if (paramInt > 0)
     {
-      Locale.setDefault(ueU);
-      return;
+      paramInt += 230;
+      if (!gM(paramContext))
+      {
+        AppMethodBeat.o(115195);
+        return paramInt * 3;
+      }
+      paramInt = a.fromDPToPix(paramContext, paramInt);
+      ynf = paramInt;
+      AppMethodBeat.o(115195);
+      return paramInt;
     }
-  }
-  
-  public static boolean Zh(String paramString)
-  {
-    if (bk.bl(paramString)) {}
-    while ((!paramString.equalsIgnoreCase("zh_TW")) && (!paramString.equalsIgnoreCase("zh_HK")) && (!paramString.equalsIgnoreCase("zh_CN")) && (!paramString.equalsIgnoreCase("en")) && (!paramString.equalsIgnoreCase("th")) && (!paramString.equals("id")) && (!paramString.equals("vi")) && (!paramString.equalsIgnoreCase("pt")) && (!paramString.equalsIgnoreCase("es")) && (!paramString.equalsIgnoreCase("ru")) && (!paramString.equalsIgnoreCase("ar")) && (!paramString.equalsIgnoreCase("ja")) && (!paramString.equalsIgnoreCase("it")) && (!paramString.equalsIgnoreCase("ko")) && (!paramString.equalsIgnoreCase("ms")) && (!paramString.equalsIgnoreCase("tr")) && (!paramString.equalsIgnoreCase("de")) && (!paramString.equalsIgnoreCase("fr")) && (!paramString.equalsIgnoreCase("my")) && (!paramString.equalsIgnoreCase("lo"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static Locale Zi(String paramString)
-  {
-    if (paramString.equals("zh_TW")) {
-      return Locale.TAIWAN;
-    }
-    if (paramString.equals("zh_HK")) {
-      return new Locale("zh", "HK");
-    }
-    if (paramString.equals("en")) {
-      return Locale.ENGLISH;
-    }
-    if (paramString.equals("zh_CN")) {
-      return Locale.CHINA;
-    }
-    if ((paramString.equalsIgnoreCase("th")) || (paramString.equalsIgnoreCase("id")) || (paramString.equalsIgnoreCase("vi")) || (paramString.equalsIgnoreCase("pt")) || (paramString.equalsIgnoreCase("es")) || (paramString.equalsIgnoreCase("ru")) || (paramString.equalsIgnoreCase("ar")) || (paramString.equalsIgnoreCase("ja")) || (paramString.equalsIgnoreCase("it")) || (paramString.equalsIgnoreCase("ko")) || (paramString.equalsIgnoreCase("ms")) || (paramString.equalsIgnoreCase("tr")) || (paramString.equalsIgnoreCase("de")) || (paramString.equalsIgnoreCase("fr")) || (paramString.equalsIgnoreCase("my")) || (paramString.equalsIgnoreCase("lo"))) {
-      return new Locale(paramString);
-    }
-    y.e("MicroMsg.LocaleUtil", "transLanguageToLocale country = " + paramString);
-    return Locale.ENGLISH;
-  }
-  
-  private static String Zj(String paramString)
-  {
-    String str1 = Locale.getDefault().getLanguage().trim();
-    String str2 = str1 + "_" + Locale.getDefault().getCountry().trim();
-    if (str1.equals("en")) {
-      paramString = str1;
-    }
-    do
+    if (ynf > 0)
     {
-      return paramString;
-      if (str2.equals("zh_TW")) {
-        return "zh_TW";
-      }
-      if (str2.equals("zh_HK")) {
-        return "zh_HK";
-      }
-      if (str2.equals("zh_CN")) {
-        return "zh_CN";
-      }
-      if (str1.equals("th")) {
-        return "th";
-      }
-      if (str1.equals("id")) {
-        return "id";
-      }
-      if (str2.equals("in_ID")) {
-        return "id";
-      }
-      if (str1.equals("vi")) {
-        return "vi";
-      }
-      if (str1.equals("pt")) {
-        return "pt";
-      }
-      if (str1.equals("es")) {
-        return "es";
-      }
-      if (str1.equals("ru")) {
-        return "ru";
-      }
-      if (str1.equals("ar")) {
-        return "ar";
-      }
-      if (str1.equals("ja")) {
-        return "ja";
-      }
-      if (str1.equals("it")) {
-        return "it";
-      }
-      if (str1.equals("ko")) {
-        return "ko";
-      }
-      if (str1.equals("ms")) {
-        return "ms";
-      }
-      if (str1.equals("tr")) {
-        return "tr";
-      }
-      if (str1.equals("de")) {
-        return "de";
-      }
-      if (str1.equals("fr")) {
-        return "fr";
-      }
-      if (str1.equals("my")) {
-        return "my";
-      }
-    } while (!str1.equals("lo"));
-    return "lo";
-  }
-  
-  public static void a(Context paramContext, Locale paramLocale)
-  {
-    paramContext = paramContext.getResources();
-    Configuration localConfiguration = paramContext.getConfiguration();
-    DisplayMetrics localDisplayMetrics = paramContext.getDisplayMetrics();
-    localConfiguration.locale = paramLocale;
-    paramContext.updateConfiguration(localConfiguration, localDisplayMetrics);
-    Resources.getSystem().updateConfiguration(localConfiguration, localDisplayMetrics);
-  }
-  
-  public static void a(SharedPreferences paramSharedPreferences, String paramString)
-  {
-    if (paramSharedPreferences.edit().putString("language_key", paramString).commit())
+      paramInt = ynf;
+      AppMethodBeat.o(115195);
+      return paramInt;
+    }
+    if (!gM(paramContext))
     {
-      bg.setProperty("language_key", paramString);
-      y.w("MicroMsg.LocaleUtil", "save application lang as:" + paramString);
-      return;
+      AppMethodBeat.o(115195);
+      return 690;
     }
-    y.e("MicroMsg.LocaleUtil", "saving application lang failed");
+    paramInt = a.fromDPToPix(paramContext, 230);
+    ynf = paramInt;
+    AppMethodBeat.o(115195);
+    return paramInt;
   }
   
-  public static String c(Locale paramLocale)
+  public static final int aw(Context paramContext, int paramInt)
   {
-    String str2 = paramLocale.getLanguage();
-    String str1 = str2;
-    if (str2.equals("zh")) {
-      str1 = str2 + "_" + paramLocale.getCountry().toUpperCase();
+    AppMethodBeat.i(115196);
+    paramInt = f(paramContext, paramInt, 0);
+    AppMethodBeat.o(115196);
+    return paramInt;
+  }
+  
+  public static int[] dh(Context paramContext)
+  {
+    AppMethodBeat.i(115202);
+    if (paramContext == null) {
+      paramContext = ah.getContext();
     }
-    return str1;
-  }
-  
-  public static boolean cqF()
-  {
-    String str = cqJ();
-    return (str.equals("zh_CN")) || (str.equals("zh_TW")) || (str.equals("zh_HK"));
-  }
-  
-  public static boolean cqG()
-  {
-    return cqJ().equals("zh_CN");
-  }
-  
-  public static boolean cqH()
-  {
-    return (cqJ().equals("zh_TW")) || (cqJ().equals("zh_HK"));
-  }
-  
-  public static String cqI()
-  {
-    return Locale.getDefault().getCountry().trim();
-  }
-  
-  public static String cqJ()
-  {
-    String str = bk.pm(bg.getProperty("language_key"));
-    if ((str.length() > 0) && (!str.equals("language_default"))) {
-      return str;
-    }
-    return Zj("en");
-  }
-  
-  public static String d(SharedPreferences paramSharedPreferences)
-  {
-    paramSharedPreferences = bk.pm(paramSharedPreferences.getString("language_key", null));
-    if ((paramSharedPreferences.length() > 0) && (!paramSharedPreferences.equals("language_default")))
+    for (;;)
     {
-      bg.setProperty("language_key", paramSharedPreferences);
-      return paramSharedPreferences;
-    }
-    paramSharedPreferences = Zj("en");
-    bg.setProperty("language_key", paramSharedPreferences);
-    return paramSharedPreferences;
-  }
-  
-  public static String e(SharedPreferences paramSharedPreferences)
-  {
-    paramSharedPreferences = bk.pm(paramSharedPreferences.getString("language_key", null));
-    if (!bk.bl(paramSharedPreferences)) {
-      return paramSharedPreferences;
-    }
-    return "language_default";
-  }
-  
-  public static String fB(Context paramContext)
-  {
-    paramContext = e(paramContext.getSharedPreferences(ae.cqR(), 0));
-    String str = cqJ();
-    if (paramContext.equalsIgnoreCase("language_default")) {
-      return str;
-    }
-    return paramContext;
-  }
-  
-  public static String g(Context paramContext, int paramInt1, int paramInt2)
-  {
-    String[] arrayOfString1 = paramContext.getResources().getStringArray(paramInt1);
-    String str = e(paramContext.getSharedPreferences(ae.cqR(), 0));
-    if (str == null) {
-      return paramContext.getString(paramInt2);
-    }
-    String[] arrayOfString2 = w.nUs;
-    int j = arrayOfString2.length;
-    int i = 0;
-    paramInt1 = 0;
-    while (i < j)
-    {
-      if (arrayOfString2[i].equals(str)) {
-        return arrayOfString1[paramInt1];
+      int[] arrayOfInt = new int[2];
+      if ((paramContext instanceof Activity))
+      {
+        DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+        ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+        arrayOfInt[0] = localDisplayMetrics.widthPixels;
+        arrayOfInt[1] = localDisplayMetrics.heightPixels;
       }
-      i += 1;
-      paramInt1 += 1;
+      for (;;)
+      {
+        AppMethodBeat.o(115202);
+        return arrayOfInt;
+        paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+        arrayOfInt[0] = paramContext.getWidth();
+        arrayOfInt[1] = paramContext.getHeight();
+      }
     }
-    return paramContext.getString(paramInt2);
   }
   
-  public static Locale initLanguage(Context paramContext)
+  public static void dss()
   {
-    Object localObject = d(paramContext.getSharedPreferences(ae.cqR(), 0));
-    if (((String)localObject).equals("language_default"))
+    ynd = false;
+  }
+  
+  public static final int f(Context paramContext, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(115197);
+    int i = av(paramContext, paramInt2);
+    ab.e("MicroMsg.KeyBordUtil", "getValidPanelHeight(): minPanelHeight= %d, isOpenIm=%b", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
+    if (!gN(paramContext))
     {
-      a(paramContext, Locale.ENGLISH);
-      return Locale.getDefault();
+      paramInt2 = (int)(i / 1.5D);
+      i = dh(paramContext)[0];
+      paramInt1 = paramInt2;
+      if (paramInt2 > i / 2) {
+        paramInt1 = i / 2;
+      }
+      AppMethodBeat.o(115197);
+      return paramInt1;
     }
-    localObject = Zi((String)localObject);
-    a(paramContext, (Locale)localObject);
-    return localObject;
+    paramInt2 = paramInt1;
+    if (paramInt1 <= 0) {
+      paramInt2 = gJ(paramContext);
+    }
+    paramInt1 = gK(paramContext);
+    if (paramInt2 > paramInt1)
+    {
+      AppMethodBeat.o(115197);
+      return paramInt1;
+    }
+    if (paramInt2 < i)
+    {
+      AppMethodBeat.o(115197);
+      return i;
+    }
+    AppMethodBeat.o(115197);
+    return paramInt2;
+  }
+  
+  public static final int gI(Context paramContext)
+  {
+    AppMethodBeat.i(115192);
+    if (!ynd)
+    {
+      if (!gM(paramContext))
+      {
+        i = ah.dsQ().getInt("com.tencent.mm.compatible.util.keybord.height", 690);
+        AppMethodBeat.o(115192);
+        return i;
+      }
+      i = ah.dsQ().getInt("com.tencent.mm.compatible.util.keybord.height", a.fromDPToPix(paramContext, 230));
+      ynb = i;
+      AppMethodBeat.o(115192);
+      return i;
+    }
+    int i = av(paramContext, 0);
+    AppMethodBeat.o(115192);
+    return i;
+  }
+  
+  public static final int gJ(Context paramContext)
+  {
+    AppMethodBeat.i(115193);
+    if (!ynd)
+    {
+      if (ynb > 0)
+      {
+        i = ynb;
+        AppMethodBeat.o(115193);
+        return i;
+      }
+      i = gI(paramContext);
+      AppMethodBeat.o(115193);
+      return i;
+    }
+    int i = av(paramContext, 0);
+    AppMethodBeat.o(115193);
+    return i;
+  }
+  
+  public static final int gK(Context paramContext)
+  {
+    AppMethodBeat.i(115194);
+    if (!ynd)
+    {
+      if (yne > 0)
+      {
+        i = yne;
+        AppMethodBeat.o(115194);
+        return i;
+      }
+      if (!gM(paramContext))
+      {
+        AppMethodBeat.o(115194);
+        return 1140;
+      }
+      i = a.fromDPToPix(paramContext, 380);
+      yne = i;
+      AppMethodBeat.o(115194);
+      return i;
+    }
+    int i = av(paramContext, 0);
+    AppMethodBeat.o(115194);
+    return i;
+  }
+  
+  public static final int gL(Context paramContext)
+  {
+    AppMethodBeat.i(115198);
+    int i = f(paramContext, -1, 0);
+    AppMethodBeat.o(115198);
+    return i;
+  }
+  
+  public static final boolean gM(Context paramContext)
+  {
+    AppMethodBeat.i(115199);
+    Context localContext = paramContext;
+    if (paramContext == null) {
+      localContext = ah.getContext();
+    }
+    if (localContext != null)
+    {
+      AppMethodBeat.o(115199);
+      return true;
+    }
+    AppMethodBeat.o(115199);
+    return false;
+  }
+  
+  public static boolean gN(Context paramContext)
+  {
+    AppMethodBeat.i(115200);
+    if (gO(paramContext) == 1)
+    {
+      AppMethodBeat.o(115200);
+      return true;
+    }
+    AppMethodBeat.o(115200);
+    return false;
+  }
+  
+  private static int gO(Context paramContext)
+  {
+    int i = 1;
+    AppMethodBeat.i(115201);
+    paramContext = dh(paramContext);
+    if (paramContext[0] < paramContext[1]) {}
+    for (;;)
+    {
+      AppMethodBeat.o(115201);
+      return i;
+      i = 2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.x
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.media.music.a.a;
-import com.tencent.mm.plugin.n.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.i.c;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class JsApiOperateMusicPlayer$OperateMusicPlayer$1
   implements Runnable
@@ -11,50 +12,52 @@ final class JsApiOperateMusicPlayer$OperateMusicPlayer$1
   
   public final void run()
   {
-    String str1 = new StringBuilder().append(this.giR.bOL).append(this.giL).append(this.giM).toString().hashCode();
-    String str2 = this.giM;
-    String str3 = this.giM;
-    String str4 = this.dYK;
-    String str5 = this.giN;
-    String str6 = this.giO;
-    String str7 = this.giP;
-    String str8 = this.giL;
-    String str9 = com.tencent.mm.compatible.util.e.bkH;
-    String str10 = c.FG() + this.giM.hashCode();
-    String str11 = this.giQ;
-    com.tencent.mm.av.e locale = new com.tencent.mm.av.e();
-    locale.euv = 7;
-    locale.euC = str2;
-    locale.euO = str3;
-    locale.euz = str4;
-    locale.euA = str5;
-    locale.euF = str6;
-    locale.euE = str7;
-    locale.euD = str8;
-    locale.euI = str9;
-    locale.euK = "";
-    locale.euH = str10;
-    locale.eux = str1;
-    locale.euy = 0.0F;
-    locale.euB = str11;
-    locale.euw = 1;
-    locale.euG = null;
-    locale.euN = str1;
-    locale.euT = true;
-    com.tencent.mm.av.a.b(locale);
-    a.a.amd().a(JsApiOperateMusicPlayer.OperateMusicPlayer.b(this.giR), this.giR.bOL);
-    a.a.amd().gNh = this.giR.bOL;
-    a.a.amd().gNi = locale.eux;
-    y.i("MicroMsg.JsApiOperateMusicPlayer", "startPlayMusic");
-    this.giR.action = -1;
-    this.giR.errorMsg = "";
-    this.giR.error = false;
-    JsApiOperateMusicPlayer.OperateMusicPlayer.c(this.giR);
+    AppMethodBeat.i(130719);
+    String str1 = new StringBuilder().append(this.hCl.cwc).append(this.hCf).append(this.hCg).toString().hashCode();
+    String str2 = this.hCg;
+    String str3 = this.hCg;
+    String str4 = this.cbK;
+    String str5 = this.hCh;
+    String str6 = this.hCi;
+    String str7 = this.hCj;
+    String str8 = this.hCf;
+    String str9 = com.tencent.mm.compatible.util.e.eQz;
+    String str10 = c.YK() + this.hCg.hashCode();
+    String str11 = this.hCk;
+    com.tencent.mm.aw.e locale = new com.tencent.mm.aw.e();
+    locale.fKh = 7;
+    locale.fKo = str2;
+    locale.fKA = str3;
+    locale.fKl = str4;
+    locale.fKm = str5;
+    locale.fKr = str6;
+    locale.fKq = str7;
+    locale.fKp = str8;
+    locale.fKu = str9;
+    locale.fKw = "";
+    locale.fKt = str10;
+    locale.fKj = str1;
+    locale.fKk = 0.0F;
+    locale.fKn = str11;
+    locale.fKi = 1;
+    locale.fKs = null;
+    locale.fKz = str1;
+    locale.fKF = true;
+    com.tencent.mm.aw.a.b(locale);
+    a.a.aHK().a(JsApiOperateMusicPlayer.OperateMusicPlayer.b(this.hCl), this.hCl.cwc);
+    a.a.aHK().ipb = this.hCl.cwc;
+    a.a.aHK().ipc = locale.fKj;
+    ab.i("MicroMsg.JsApiOperateMusicPlayer", "startPlayMusic");
+    this.hCl.action = -1;
+    this.hCl.errorMsg = "";
+    this.hCl.error = false;
+    JsApiOperateMusicPlayer.OperateMusicPlayer.c(this.hCl);
+    AppMethodBeat.o(130719);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiOperateMusicPlayer.OperateMusicPlayer.1
  * JD-Core Version:    0.7.0.1
  */

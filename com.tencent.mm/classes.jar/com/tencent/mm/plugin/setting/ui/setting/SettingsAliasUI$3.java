@@ -3,11 +3,9 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class SettingsAliasUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -16,14 +14,17 @@ final class SettingsAliasUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    SettingsAliasUI.a(this.nUa, SettingsAliasUI.c(this.nUa).getText().toString().trim());
-    if (q.Gj().equalsIgnoreCase(SettingsAliasUI.d(this.nUa)))
+    AppMethodBeat.i(127187);
+    SettingsAliasUI.a(this.qIa, SettingsAliasUI.c(this.qIa).getText().toString().trim());
+    if (r.Zn().equalsIgnoreCase(SettingsAliasUI.d(this.qIa)))
     {
-      this.nUa.XM();
-      this.nUa.finish();
+      this.qIa.hideVKB();
+      this.qIa.finish();
+      AppMethodBeat.o(127187);
       return true;
     }
-    h.a(this.nUa.mController.uMN, this.nUa.getString(a.i.modify_username_confirm, new Object[] { SettingsAliasUI.d(this.nUa) }), this.nUa.getString(a.i.confirm_username), new SettingsAliasUI.3.1(this), null);
+    h.a(this.qIa.getContext(), this.qIa.getString(2131301616, new Object[] { SettingsAliasUI.d(this.qIa) }), this.qIa.getString(2131298507), new SettingsAliasUI.3.1(this), null);
+    AppMethodBeat.o(127187);
     return true;
   }
 }

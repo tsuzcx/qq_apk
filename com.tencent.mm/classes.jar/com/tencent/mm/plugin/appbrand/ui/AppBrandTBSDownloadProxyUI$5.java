@@ -1,21 +1,37 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v7.app.AppCompatActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.model.u.a;
+import com.tencent.mm.pluginsdk.ui.tools.m;
+import com.tencent.mm.ui.base.p;
 
 final class AppBrandTBSDownloadProxyUI$5
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
   AppBrandTBSDownloadProxyUI$5(AppBrandTBSDownloadProxyUI paramAppBrandTBSDownloadProxyUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.AppBrandTBSDownloadProxyUI", "cancle loading download background");
-    paramDialogInterface = new Intent();
-    this.hed.setResult(2, paramDialogInterface);
-    this.hed.finish();
+    AppMethodBeat.i(133104);
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(366L, 2L, 1L, false);
+    u.a.oZ(false);
+    m.kS(2);
+    if ((this.iOQ.isFinishing()) || (this.iOQ.activityHasDestroyed()))
+    {
+      AppMethodBeat.o(133104);
+      return;
+    }
+    paramDialogInterface = this.iOQ;
+    AppCompatActivity localAppCompatActivity = this.iOQ.getContext();
+    this.iOQ.getContext().getString(2131297087);
+    paramDialogInterface.tipDialog = com.tencent.mm.ui.base.h.b(localAppCompatActivity, this.iOQ.getContext().getString(2131296886), true, null);
+    this.iOQ.tipDialog.setOnCancelListener(new AppBrandTBSDownloadProxyUI.5.1(this));
+    AppBrandTBSDownloadProxyUI.b(this.iOQ);
+    AppBrandTBSDownloadProxyUI.c(this.iOQ);
+    AppMethodBeat.o(133104);
   }
 }
 

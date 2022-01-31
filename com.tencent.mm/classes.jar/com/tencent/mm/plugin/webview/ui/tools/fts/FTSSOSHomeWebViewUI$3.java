@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FTSSOSHomeWebViewUI$3
   implements a.a
 {
@@ -7,13 +9,17 @@ final class FTSSOSHomeWebViewUI$3
   
   public final void onAnimationEnd()
   {
-    FTSSOSHomeWebViewUI.a(this.ruD).Ff(4);
-    FTSSOSHomeWebViewUI.v(this.ruD);
+    AppMethodBeat.i(153287);
+    FTSSOSHomeWebViewUI.a(this.vkS).sendMessage(4);
+    FTSSOSHomeWebViewUI.s(this.vkS);
+    AppMethodBeat.o(153287);
   }
   
   public final void onAnimationStart()
   {
-    FTSSOSHomeWebViewUI.w(this.ruD);
+    AppMethodBeat.i(153288);
+    FTSSOSHomeWebViewUI.t(this.vkS);
+    AppMethodBeat.o(153288);
   }
 }
 

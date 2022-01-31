@@ -1,33 +1,30 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.mm.plugin.appbrand.app.e;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.config.q;
-import com.tencent.mm.plugin.appbrand.config.s.b;
-import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.sdk.platformtools.al;
 
-final class f
+public final class f
 {
-  final QualitySession fPC;
-  final int fPF;
-  final WxaAttributes gKm;
-  final f.a gKn;
-  
-  f(String paramString, int paramInt, f.a parama, QualitySession paramQualitySession)
+  public static void a(Context paramContext, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
-    this.fPF = paramInt;
-    this.gKm = e.aaT().d(paramString, new String[0]);
-    this.gKn = parama;
-    this.fPC = paramQualitySession;
-    if (this.gKm == null) {
-      y.e("MicroMsg.AppBrand.Launching.ContactSilentSyncProcess", " <init> get NULL record by username %s", new Object[] { paramString });
+    AppMethodBeat.i(131771);
+    paramContext = new f.1(paramContext, paramAppBrandInitConfigWC, paramAppBrandStatObject);
+    if (al.isMainThread())
+    {
+      paramContext.run();
+      AppMethodBeat.o(131771);
+      return;
     }
+    al.d(paramContext);
+    AppMethodBeat.o(131771);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.f
  * JD-Core Version:    0.7.0.1
  */

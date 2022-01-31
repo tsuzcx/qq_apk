@@ -1,28 +1,34 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.wearable.CapabilityApi.GetCapabilityResult;
+import com.google.android.gms.wearable.CapabilityInfo;
 
-public class zzy
-  extends zza
+public final class zzy
+  implements CapabilityApi.GetCapabilityResult
 {
-  public static final Parcelable.Creator<zzy> CREATOR = new zzz();
-  public final int statusCode;
+  private final CapabilityInfo zzbv;
+  private final Status zzp;
   
-  public zzy(int paramInt)
+  public zzy(Status paramStatus, CapabilityInfo paramCapabilityInfo)
   {
-    this.statusCode = paramInt;
+    this.zzp = paramStatus;
+    this.zzbv = paramCapabilityInfo;
   }
   
-  public void writeToParcel(Parcel paramParcel, int paramInt)
+  public final CapabilityInfo getCapability()
   {
-    zzz.zza(this, paramParcel, paramInt);
+    return this.zzbv;
+  }
+  
+  public final Status getStatus()
+  {
+    return this.zzp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzy
  * JD-Core Version:    0.7.0.1
  */

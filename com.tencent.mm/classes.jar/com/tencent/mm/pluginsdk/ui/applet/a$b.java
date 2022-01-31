@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 public abstract interface a$b
 {
-  public abstract boolean pE(String paramString);
+  public abstract boolean wU(String paramString);
 }
 
 

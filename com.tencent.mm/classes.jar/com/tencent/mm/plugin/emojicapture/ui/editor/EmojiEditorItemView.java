@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
-import a.k;
+import a.f.b.j;
+import a.l;
+import a.v;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.RectF;
@@ -11,29 +12,23 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import com.tencent.mm.plugin.emoji.PluginEmoji;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.view.EmojiStatusView;
+import com.tencent.mm.media.editor.a.a;
+import com.tencent.mm.media.editor.a.f;
+import com.tencent.mm.media.editor.c.c;
+import com.tencent.mm.plugin.emojicapture.c.c.a;
 import com.tencent.mm.plugin.emojicapture.c.c.b;
-import com.tencent.mm.plugin.emojicapture.e.f;
-import com.tencent.mm.plugin.emojicapture.model.a.a;
-import com.tencent.mm.plugin.gif.MMAnimateView;
-import com.tencent.mm.plugin.gif.MMGIFException;
-import com.tencent.mm.plugin.gif.d;
 import com.tencent.mm.plugin.gif.h;
-import com.tencent.mm.pluginsdk.a.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.o;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.io.IOException;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/EmojiEditorItemView;", "Lcom/tencent/mm/emoji/view/EmojiStatusView;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "presenter", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IPresenter;", "createEditorData", "Lcom/tencent/mm/media/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "handleRemove", "", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "setEditing", "editing", "setImageDrawable", "drawable", "Landroid/graphics/drawable/Drawable;", "setValidArea", "bounds", "Landroid/graphics/RectF;", "radius", "", "plugin-emojicapture_release"})
 public final class EmojiEditorItemView
-  extends MMAnimateView
+  extends EmojiStatusView
   implements c.b
 {
-  private final String TAG = "MicroMsg.EmojiEditorItemView";
-  private EmojiInfo hNs;
-  private final com.tencent.mm.plugin.emojicapture.c.c.a jpr = (com.tencent.mm.plugin.emojicapture.c.c.a)new com.tencent.mm.plugin.emojicapture.e.b((c.b)this);
+  private final String TAG;
+  private final c.a lyO;
   
   public EmojiEditorItemView(Context paramContext)
   {
@@ -48,208 +43,155 @@ public final class EmojiEditorItemView
   public EmojiEditorItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayerType(1, null);
+    AppMethodBeat.i(3103);
+    this.TAG = "MicroMsg.EmojiEditorItemView";
+    this.lyO = ((c.a)new com.tencent.mm.plugin.emojicapture.e.b((c.b)this));
+    AppMethodBeat.o(3103);
   }
   
-  public final void a(RectF paramRectF, float paramFloat)
+  public final com.tencent.mm.media.editor.a.b UH()
   {
-    a.d.b.g.k(paramRectF, "bounds");
-    this.jpr.a(paramRectF, paramFloat);
-  }
-  
-  public final a aKU()
-  {
-    if (this.hNs == null) {
+    AppMethodBeat.i(3102);
+    if (getEmojiInfo() == null)
+    {
+      AppMethodBeat.o(3102);
       return null;
     }
     Object localObject;
     if ((getDrawable() instanceof BitmapDrawable))
     {
       localObject = getDrawable();
-      if (localObject == null) {
-        throw new k("null cannot be cast to non-null type android.graphics.drawable.BitmapDrawable");
+      if (localObject == null)
+      {
+        localObject = new v("null cannot be cast to non-null type android.graphics.drawable.BitmapDrawable");
+        AppMethodBeat.o(3102);
+        throw ((Throwable)localObject);
       }
-      return (a)new com.tencent.mm.plugin.emojicapture.model.a.b(((BitmapDrawable)localObject).getBitmap(), this.jpr.aJW().aqv);
+      localObject = (com.tencent.mm.media.editor.a.b)new com.tencent.mm.media.editor.a.d(((BitmapDrawable)localObject).getBitmap(), this.lyO.getTouchTracker().asO);
+      AppMethodBeat.o(3102);
+      return localObject;
     }
     float f = 1.0F;
-    if ((getDrawable() instanceof d))
+    if ((getDrawable() instanceof com.tencent.mm.plugin.gif.d))
     {
       localObject = getDrawable();
-      if (localObject == null) {
-        throw new k("null cannot be cast to non-null type com.tencent.mm.plugin.gif.MMGIFDrawable");
+      if (localObject == null)
+      {
+        localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.gif.MMGIFDrawable");
+        AppMethodBeat.o(3102);
+        throw ((Throwable)localObject);
       }
-      f = ((d)localObject).getEmojiDensityScale();
+      f = ((com.tencent.mm.plugin.gif.d)localObject).getEmojiDensityScale();
     }
     for (;;)
     {
       localObject = new Matrix();
       ((Matrix)localObject).setScale(f, f);
-      ((Matrix)localObject).postConcat(this.jpr.aJW().aqv);
-      EmojiInfo localEmojiInfo = this.hNs;
+      ((Matrix)localObject).postConcat(this.lyO.getTouchTracker().asO);
+      EmojiInfo localEmojiInfo = getEmojiInfo();
       if (localEmojiInfo == null) {
-        a.d.b.g.cUk();
+        j.ebi();
       }
-      return (a)new com.tencent.mm.plugin.emojicapture.model.a.c(localEmojiInfo, (Matrix)localObject);
+      localObject = (com.tencent.mm.media.editor.a.b)new f(localEmojiInfo, (Matrix)localObject);
+      AppMethodBeat.o(3102);
+      return localObject;
       if ((getDrawable() instanceof h))
       {
         localObject = getDrawable();
-        if (localObject == null) {
-          throw new k("null cannot be cast to non-null type com.tencent.mm.plugin.gif.MMWXGFDrawable");
+        if (localObject == null)
+        {
+          localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.gif.MMWXGFDrawable");
+          AppMethodBeat.o(3102);
+          throw ((Throwable)localObject);
         }
         f = ((h)localObject).getEmojiDensityScale();
       }
     }
   }
   
-  public final EmojiInfo getEmojiInfo()
+  public final a UI()
   {
-    return this.hNs;
+    return null;
+  }
+  
+  public final void a(RectF paramRectF, float paramFloat)
+  {
+    AppMethodBeat.i(3096);
+    j.q(paramRectF, "bounds");
+    this.lyO.a(paramRectF, paramFloat);
+    AppMethodBeat.o(3096);
+  }
+  
+  public final boolean bpe()
+  {
+    return false;
   }
   
   public final EditorItemContainer getItemContainer()
   {
-    if ((getParent() instanceof EditorItemContainer))
+    AppMethodBeat.i(3098);
+    Object localObject = getParent();
+    j.p(localObject, "parent");
+    if ((((ViewParent)localObject).getParent() instanceof EditorItemContainer))
     {
-      ViewParent localViewParent = getParent();
-      if (localViewParent == null) {
-        throw new k("null cannot be cast to non-null type com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer");
+      localObject = getParent();
+      j.p(localObject, "parent");
+      localObject = ((ViewParent)localObject).getParent();
+      if (localObject == null)
+      {
+        localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer");
+        AppMethodBeat.o(3098);
+        throw ((Throwable)localObject);
       }
-      return (EditorItemContainer)localViewParent;
+      localObject = (EditorItemContainer)localObject;
+      AppMethodBeat.o(3098);
+      return localObject;
     }
+    AppMethodBeat.o(3098);
     return null;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    a.d.b.g.k(paramCanvas, "canvas");
+    AppMethodBeat.i(3101);
+    j.q(paramCanvas, "canvas");
     paramCanvas.save();
-    this.jpr.h(paramCanvas);
+    this.lyO.h(paramCanvas);
     Drawable localDrawable = getDrawable();
     if (localDrawable != null) {
       localDrawable.draw(paramCanvas);
     }
     paramCanvas.restore();
-    this.jpr.i(paramCanvas);
+    this.lyO.i(paramCanvas);
+    AppMethodBeat.o(3101);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    a.d.b.g.k(paramMotionEvent, "event");
-    return this.jpr.A(paramMotionEvent);
+    AppMethodBeat.i(3100);
+    j.q(paramMotionEvent, "event");
+    boolean bool = this.lyO.K(paramMotionEvent);
+    AppMethodBeat.o(3100);
+    return bool;
   }
   
   public final void setEditing(boolean paramBoolean)
   {
-    this.jpr.setEditing(paramBoolean);
-  }
-  
-  public final void setEmojiInfo(EmojiInfo paramEmojiInfo)
-  {
-    a.d.b.g.k(paramEmojiInfo, "info");
-    this.hNs = paramEmojiInfo;
-    Object localObject = paramEmojiInfo.cwL();
-    if ((paramEmojiInfo.cwH() == EmojiGroupInfo.uCR) || (paramEmojiInfo.cwH() == EmojiInfo.uCY) || (paramEmojiInfo.cwH() == EmojiInfo.uCX))
-    {
-      localObject = getContext();
-      com.tencent.mm.plugin.emojicapture.model.c.a locala = com.tencent.mm.plugin.emojicapture.model.c.jko;
-      setImageBitmap(paramEmojiInfo.t((Context)localObject, com.tencent.mm.plugin.emojicapture.model.c.aKd()));
-      return;
-    }
-    if (paramEmojiInfo.cwC())
-    {
-      b(EmojiInfo.bv(getContext(), paramEmojiInfo.getName()), paramEmojiInfo.getName());
-      return;
-    }
-    if ((paramEmojiInfo.cwI() & EmojiInfo.uDo) == EmojiInfo.uDo)
-    {
-      paramEmojiInfo = this.hNs;
-      localObject = com.tencent.mm.kernel.g.t(PluginEmoji.class);
-      a.d.b.g.j(localObject, "MMKernel.plugin(PluginEmoji::class.java)");
-      localObject = ((PluginEmoji)localObject).getProvider().a(this.hNs);
-      a.d.b.g.j(localObject, "MMKernel.plugin(PluginEm…ecodeEmojiData(emojiInfo)");
-      this.hNs = paramEmojiInfo;
-      try
-      {
-        if (!bk.bE((byte[])localObject)) {
-          if (o.bz((byte[])localObject))
-          {
-            paramEmojiInfo = com.tencent.mm.kernel.g.t(PluginEmoji.class);
-            a.d.b.g.j(paramEmojiInfo, "MMKernel.plugin(PluginEmoji::class.java)");
-            paramEmojiInfo = ((PluginEmoji)paramEmojiInfo).getProvider();
-            a.d.b.g.j(paramEmojiInfo, "MMKernel.plugin(PluginEmoji::class.java).provider");
-            if (paramEmojiInfo.aHs())
-            {
-              paramEmojiInfo = (com.tencent.mm.plugin.gif.b)new h((byte[])localObject);
-              if (!paramEmojiInfo.isRunning()) {
-                paramEmojiInfo.reset();
-              }
-              setImageDrawable((Drawable)paramEmojiInfo);
-              return;
-            }
-          }
-        }
-      }
-      catch (MMGIFException paramEmojiInfo)
-      {
-        for (;;)
-        {
-          a(paramEmojiInfo);
-          if (paramEmojiInfo.getErrorCode() != 103) {
-            break label348;
-          }
-          y.d(this.TAG, "setMMGIFFileByteArray D_GIF_ERR_NOT_GIF_FILE");
-          paramEmojiInfo = com.tencent.mm.sdk.platformtools.c.bu((byte[])localObject);
-          if (paramEmojiInfo == null) {
-            break;
-          }
-          paramEmojiInfo.setDensity(getEmojiDensity());
-          setImageBitmap(paramEmojiInfo);
-          return;
-          y.v(this.TAG, "set with gif");
-          paramEmojiInfo = (com.tencent.mm.plugin.gif.b)new d((byte[])localObject);
-        }
-        y.w(this.TAG, "setMMGIFFileByteArray failed bitmap is null. bytes %s", new Object[] { ((byte[])localObject).toString() });
-        paramEmojiInfo = this.hNs;
-        if (paramEmojiInfo != null) {
-          paramEmojiInfo.cwA();
-        }
-        init();
-        return;
-        y.e(this.TAG, "setMMGIFFileByteArray failed. %s", new Object[] { paramEmojiInfo.toString() });
-        paramEmojiInfo = this.hNs;
-        if (paramEmojiInfo != null) {
-          paramEmojiInfo.cwA();
-        }
-        init();
-        return;
-      }
-      catch (IOException paramEmojiInfo)
-      {
-        for (;;)
-        {
-          y.e(this.TAG, "setMMGIFFileByteArray failed. %s", new Object[] { paramEmojiInfo.toString() });
-        }
-      }
-      catch (NullPointerException paramEmojiInfo)
-      {
-        for (;;)
-        {
-          label348:
-          y.e(this.TAG, "setMMGIFFileByteArray failed. %s", new Object[] { paramEmojiInfo.toString() });
-        }
-      }
-    }
-    du((String)localObject, "");
+    AppMethodBeat.i(3097);
+    this.lyO.setEditing(paramBoolean);
+    AppMethodBeat.o(3097);
   }
   
   public final void setImageDrawable(Drawable paramDrawable)
   {
+    AppMethodBeat.i(3099);
     super.setImageDrawable(paramDrawable);
     if (paramDrawable != null)
     {
-      this.jpr.cF(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
+      this.lyO.ee(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
       paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
     }
+    AppMethodBeat.o(3099);
   }
 }
 

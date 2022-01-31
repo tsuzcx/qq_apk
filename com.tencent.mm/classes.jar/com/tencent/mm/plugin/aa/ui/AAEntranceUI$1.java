@@ -1,13 +1,8 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.aa.a.h;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AAEntranceUI$1
   implements View.OnClickListener
@@ -16,14 +11,9 @@ final class AAEntranceUI$1
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent();
-    paramView.putExtra("key_from_scene", 1);
-    paramView.putExtra("Select_Conv_Type", 3);
-    paramView.putExtra("select_is_ret", false);
-    paramView.putExtra("mutil_select_is_ret", false);
-    paramView.putExtra("Select_block_List", q.Gj());
-    paramView.putExtra("recent_remittance_contact_list", h.Vs());
-    d.b(this.eXp.mController.uMN, "remittance", ".ui.SelectRemittanceContactUI", paramView, 1);
+    AppMethodBeat.i(40708);
+    AAEntranceUI.a(this.gpn);
+    AppMethodBeat.o(40708);
   }
 }
 

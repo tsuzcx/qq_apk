@@ -26,17 +26,25 @@ public abstract interface V8Context
   
   public abstract V8Array executeArrayScript(String paramString1, String paramString2, int paramInt);
   
+  public abstract V8Array executeArrayScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
+  
   public abstract boolean executeBooleanFunction(String paramString, V8Array paramV8Array);
   
   public abstract boolean executeBooleanScript(String paramString);
   
   public abstract boolean executeBooleanScript(String paramString1, String paramString2, int paramInt);
   
+  public abstract boolean executeBooleanScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
+  
+  public abstract String executeDebugScript(String paramString1, String paramString2);
+  
   public abstract double executeDoubleFunction(String paramString, V8Array paramV8Array);
   
   public abstract double executeDoubleScript(String paramString);
   
   public abstract double executeDoubleScript(String paramString1, String paramString2, int paramInt);
+  
+  public abstract double executeDoubleScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
   
   public abstract Object executeFunction(String paramString, V8Array paramV8Array);
   
@@ -45,6 +53,8 @@ public abstract interface V8Context
   public abstract int executeIntegerScript(String paramString);
   
   public abstract int executeIntegerScript(String paramString1, String paramString2, int paramInt);
+  
+  public abstract int executeIntegerScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
   
   public abstract Object executeJSFunction(String paramString);
   
@@ -56,9 +66,13 @@ public abstract interface V8Context
   
   public abstract V8Object executeObjectScript(String paramString1, String paramString2, int paramInt);
   
+  public abstract V8Object executeObjectScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
+  
   public abstract Object executeScript(String paramString);
   
   public abstract Object executeScript(String paramString1, String paramString2, int paramInt);
+  
+  public abstract Object executeScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
   
   public abstract String executeStringFunction(String paramString, V8Array paramV8Array);
   
@@ -66,11 +80,15 @@ public abstract interface V8Context
   
   public abstract String executeStringScript(String paramString1, String paramString2, int paramInt);
   
+  public abstract String executeStringScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
+  
   public abstract void executeVoidFunction(String paramString, V8Array paramV8Array);
   
   public abstract void executeVoidScript(String paramString);
   
   public abstract void executeVoidScript(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void executeVoidScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
   
   public abstract Object get(String paramString);
   
@@ -95,6 +113,8 @@ public abstract interface V8Context
   public abstract int getType(String paramString);
   
   public abstract boolean isReleased();
+  
+  public abstract SharedV8ArrayBuffer newSharedV8ArrayBuffer(ByteBuffer paramByteBuffer);
   
   public abstract V8Array newV8Array();
   
@@ -124,7 +144,7 @@ public abstract interface V8Context
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.eclipsesource.v8.V8Context
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,39 @@
 package com.tencent.mm.plugin.wallet_core.d;
 
 import android.database.Cursor;
-import com.tencent.mm.plugin.wallet_core.model.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.model.ac;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.j;
 import java.util.ArrayList;
 
 public final class f
-  extends i<x>
+  extends j<ac>
 {
-  public static final String[] dXp = { i.a(x.buS, "WalletKindInfo") };
-  public e dXw;
+  public static final String[] SQL_CREATE;
+  public e db;
+  
+  static
+  {
+    AppMethodBeat.i(47076);
+    SQL_CREATE = new String[] { j.getCreateSQLs(ac.info, "WalletKindInfo") };
+    AppMethodBeat.o(47076);
+  }
   
   public f(e parame)
   {
-    super(parame, x.buS, "WalletKindInfo", null);
-    this.dXw = parame;
+    super(parame, ac.info, "WalletKindInfo", null);
+    this.db = parame;
   }
   
-  public final ArrayList<x> bWp()
+  public final ArrayList<ac> cVk()
   {
     ArrayList localArrayList = null;
-    Cursor localCursor = this.dXw.a("select * from WalletKindInfo", null, 2);
-    if (localCursor == null) {
+    AppMethodBeat.i(47075);
+    Cursor localCursor = this.db.a("select * from WalletKindInfo", null, 2);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(47075);
       return null;
     }
     if (localCursor.moveToFirst())
@@ -30,12 +41,13 @@ public final class f
       localArrayList = new ArrayList();
       do
       {
-        x localx = new x();
-        localx.d(localCursor);
-        localArrayList.add(localx);
+        ac localac = new ac();
+        localac.convertFrom(localCursor);
+        localArrayList.add(localac);
       } while (localCursor.moveToNext());
     }
     localCursor.close();
+    AppMethodBeat.o(47075);
     return localArrayList;
   }
 }

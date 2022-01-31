@@ -2,42 +2,56 @@ package com.tencent.soter.core.b;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyGenParameterSpec.Builder;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.security.spec.AlgorithmParameterSpec;
 
 @TargetApi(23)
 final class a$b
   extends a
 {
-  private KeyGenParameterSpec.Builder wOx = null;
+  private KeyGenParameterSpec.Builder BlV;
   
   public a$b(String paramString, int paramInt)
   {
-    this.wOx = new KeyGenParameterSpec.Builder(paramString, paramInt);
+    AppMethodBeat.i(73006);
+    this.BlV = null;
+    this.BlV = new KeyGenParameterSpec.Builder(paramString, paramInt);
+    AppMethodBeat.o(73006);
   }
   
   @SuppressLint({"WrongConstant"})
-  public final a N(String... paramVarArgs)
+  public final a W(String... paramVarArgs)
   {
-    this.wOx.setDigests(paramVarArgs);
+    AppMethodBeat.i(73008);
+    this.BlV.setDigests(paramVarArgs);
+    AppMethodBeat.o(73008);
     return this;
   }
   
   @SuppressLint({"WrongConstant"})
-  public final a O(String... paramVarArgs)
+  public final a X(String... paramVarArgs)
   {
-    this.wOx.setSignaturePaddings(paramVarArgs);
+    AppMethodBeat.i(73009);
+    this.BlV.setSignaturePaddings(paramVarArgs);
+    AppMethodBeat.o(73009);
     return this;
   }
   
-  public final AlgorithmParameterSpec cPo()
+  public final AlgorithmParameterSpec dVj()
   {
-    return this.wOx.build();
+    AppMethodBeat.i(73007);
+    KeyGenParameterSpec localKeyGenParameterSpec = this.BlV.build();
+    AppMethodBeat.o(73007);
+    return localKeyGenParameterSpec;
   }
   
-  public final a cPp()
+  public final a dVk()
   {
-    this.wOx.setUserAuthenticationRequired(true);
+    AppMethodBeat.i(73010);
+    this.BlV.setUserAuthenticationRequired(true);
+    AppMethodBeat.o(73010);
     return this;
   }
 }

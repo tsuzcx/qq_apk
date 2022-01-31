@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.card.ui;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CardShopUI$4
   extends BroadcastReceiver
@@ -11,10 +12,12 @@ final class CardShopUI$4
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
+    AppMethodBeat.i(88632);
     paramContext = paramIntent.getAction();
-    if ((paramContext != null) && (paramContext.equals("android.intent.action.LOCALE_CHANGED")) && (CardShopUI.aCk())) {
-      CardShopUI.e(this.iwP);
+    if ((paramContext != null) && (paramContext.equals("android.intent.action.LOCALE_CHANGED")) && (CardShopUI.beu())) {
+      CardShopUI.e(this.kxT);
     }
+    AppMethodBeat.o(88632);
   }
 }
 

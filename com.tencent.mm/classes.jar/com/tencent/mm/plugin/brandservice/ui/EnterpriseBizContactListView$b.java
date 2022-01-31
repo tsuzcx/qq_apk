@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui;
 
 public abstract interface EnterpriseBizContactListView$b
 {
-  public abstract boolean axC();
+  public abstract boolean aWA();
 }
 
 

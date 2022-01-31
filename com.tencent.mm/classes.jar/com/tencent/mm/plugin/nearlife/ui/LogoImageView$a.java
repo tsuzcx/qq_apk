@@ -1,27 +1,30 @@
 package com.tencent.mm.plugin.nearlife.ui;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class LogoImageView$a
   implements Runnable
 {
-  private ah handler;
+  private ak handler;
   private String url;
   
-  LogoImageView$a(String paramString, ah paramah)
+  LogoImageView$a(String paramString, ak paramak)
   {
     this.url = paramString;
-    this.handler = paramah;
+    this.handler = paramak;
   }
   
   public final void run()
   {
-    byte[] arrayOfByte = bk.ZV(this.url);
+    AppMethodBeat.i(22969);
+    byte[] arrayOfByte = bo.apZ(this.url);
     Message localMessage = Message.obtain();
     localMessage.obj = arrayOfByte;
     this.handler.sendMessage(localMessage);
+    AppMethodBeat.o(22969);
   }
 }
 

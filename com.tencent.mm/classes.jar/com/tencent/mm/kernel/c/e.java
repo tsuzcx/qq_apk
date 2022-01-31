@@ -1,32 +1,38 @@
 package com.tencent.mm.kernel.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class e<T extends a>
   implements b, c<T>
 {
-  private T dNc;
+  private T eKN;
   
   public e(T paramT)
   {
-    this.dNc = paramT;
+    this.eKN = paramT;
   }
   
-  public final T EA()
+  public final T SE()
   {
-    return this.dNc;
+    return this.eKN;
   }
   
-  public final void Ey()
+  public final void xM()
   {
-    if ((this.dNc instanceof b)) {
-      ((b)this.dNc).Ey();
+    AppMethodBeat.i(51937);
+    if ((this.eKN instanceof b)) {
+      ((b)this.eKN).xM();
     }
+    AppMethodBeat.o(51937);
   }
   
-  public final void Ez()
+  public final void xN()
   {
-    if ((this.dNc instanceof b)) {
-      ((b)this.dNc).Ez();
+    AppMethodBeat.i(51938);
+    if ((this.eKN instanceof b)) {
+      ((b)this.eKN).xN();
     }
+    AppMethodBeat.o(51938);
   }
 }
 

@@ -11,7 +11,7 @@ public abstract interface e
   
   public abstract boolean b(Activity paramActivity, Runnable paramRunnable);
   
-  public abstract boolean d(Intent paramIntent);
+  public abstract boolean n(Intent paramIntent);
 }
 
 

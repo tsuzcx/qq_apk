@@ -8,14 +8,12 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.c;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.sharecard.model.r;
 import com.tencent.mm.plugin.card.ui.a.g;
 import com.tencent.mm.plugin.card.ui.n;
+import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.d.j;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
@@ -24,182 +22,195 @@ import java.util.Iterator;
 public final class x
   extends i
 {
-  MMActivity hxN;
-  private View iyA;
-  private ImageView iyB;
-  private TextView iyC;
-  private TextView iyD;
-  private ImageView iyE;
-  View iyF;
-  private LinearLayout iyG;
-  private View.OnClickListener iyH = new x.1(this);
-  private boolean iyy = false;
-  private View iyz;
+  MMActivity jpX;
+  private boolean kBF;
+  private View kBG;
+  private View kBH;
+  private ImageView kBI;
+  private TextView kBJ;
+  private TextView kBK;
+  private ImageView kBL;
+  View kBM;
+  private LinearLayout kBN;
+  private View.OnClickListener kBO;
   
-  public final void aCU()
+  public x()
   {
-    this.iyz.setVisibility(8);
+    AppMethodBeat.i(88785);
+    this.kBF = false;
+    this.kBO = new x.1(this);
+    AppMethodBeat.o(88785);
+  }
+  
+  public final void bfq()
+  {
+    AppMethodBeat.i(88788);
+    this.kBG.setVisibility(8);
+    AppMethodBeat.o(88788);
   }
   
   public final void initView()
   {
-    this.iyz = findViewById(a.d.share_users_info_header_layout);
-    this.iyA = findViewById(a.d.share_users_top_layout);
-    this.iyB = ((ImageView)findViewById(a.d.share_user_avatar));
-    this.iyC = ((TextView)findViewById(a.d.share_user_name));
-    this.iyD = ((TextView)findViewById(a.d.share_user_tips));
-    this.iyE = ((ImageView)findViewById(a.d.share_user_select_arrowhead));
-    this.iyz.setVisibility(8);
-    this.iyF = findViewById(a.d.share_users_bottom_layout);
-    this.iyG = ((LinearLayout)findViewById(a.d.share_users_container_layout));
-    this.iyF.setVisibility(8);
-    this.hxN = this.iya.aBH();
+    AppMethodBeat.i(88786);
+    this.kBG = findViewById(2131822071);
+    this.kBH = findViewById(2131822363);
+    this.kBI = ((ImageView)findViewById(2131822365));
+    this.kBJ = ((TextView)findViewById(2131822366));
+    this.kBK = ((TextView)findViewById(2131822367));
+    this.kBL = ((ImageView)findViewById(2131822368));
+    this.kBG.setVisibility(8);
+    this.kBM = findViewById(2131822369);
+    this.kBN = ((LinearLayout)findViewById(2131822370));
+    this.kBM.setVisibility(8);
+    this.jpX = this.kBh.bdy();
+    AppMethodBeat.o(88786);
   }
   
   public final void update()
   {
-    Object localObject4 = this.iya.aBE();
-    Object localObject3 = com.tencent.mm.plugin.card.sharecard.a.b.yr(((com.tencent.mm.plugin.card.base.b)localObject4).azC());
-    Object localObject1 = this.iya.aBJ();
+    AppMethodBeat.i(88787);
+    Object localObject4 = this.kBh.bdv();
+    Object localObject3 = com.tencent.mm.plugin.card.sharecard.a.b.HS(((com.tencent.mm.plugin.card.base.b)localObject4).bbi());
+    Object localObject1 = this.kBh.bdA();
     Object localObject2;
     Object localObject5;
     Object localObject6;
-    label349:
+    label347:
     int i;
-    if (((g)localObject1).aCD())
+    if (((g)localObject1).beN())
     {
-      this.iyz.setVisibility(0);
-      if (com.tencent.mm.plugin.card.sharecard.a.b.yq(((com.tencent.mm.plugin.card.base.b)localObject4).azC()) > 1) {
-        this.iyA.setOnClickListener(this.iya.aBI());
+      this.kBG.setVisibility(0);
+      if (com.tencent.mm.plugin.card.sharecard.a.b.HR(((com.tencent.mm.plugin.card.base.b)localObject4).bbi()) > 1) {
+        this.kBH.setOnClickListener(this.kBh.bdz());
       }
       for (;;)
       {
-        localObject4 = this.iya.aBE();
-        if (!this.iya.aBF()) {
+        localObject4 = this.kBh.bdv();
+        if (!this.kBh.bdw()) {
           break;
         }
-        this.iyB.setVisibility(8);
-        this.iyC.setVisibility(8);
-        this.iyD.setVisibility(0);
-        this.iyE.setImageResource(a.c.card_select_arrow_up);
-        this.iyD.setText(this.hxN.getString(a.g.card_share_card_select_tips));
-        if (!this.iya.aBF()) {
-          break label879;
+        this.kBI.setVisibility(8);
+        this.kBJ.setVisibility(8);
+        this.kBK.setVisibility(0);
+        this.kBL.setImageResource(2130838167);
+        this.kBK.setText(this.jpX.getString(2131298043));
+        if (!this.kBh.bdw()) {
+          break label881;
         }
-        this.iyF.setVisibility(0);
-        if ((this.iyG.getChildCount() != 0) || (localObject3 == null)) {
-          break label749;
+        this.kBM.setVisibility(0);
+        if ((this.kBN.getChildCount() != 0) || (localObject3 == null)) {
+          break label751;
         }
-        localObject1 = (LayoutInflater)this.hxN.getSystemService("layout_inflater");
+        localObject1 = (LayoutInflater)this.jpX.getSystemService("layout_inflater");
         localObject2 = ((ArrayList)localObject3).iterator();
         for (;;)
         {
           if (!((Iterator)localObject2).hasNext()) {
-            break label736;
+            break label733;
           }
           localObject3 = (r)((Iterator)localObject2).next();
-          localObject4 = ((LayoutInflater)localObject1).inflate(a.e.share_user_info_item, this.iyG, false);
-          Object localObject7 = (ImageView)((View)localObject4).findViewById(a.d.user_avatar_img);
-          localObject5 = (TextView)((View)localObject4).findViewById(a.d.user_name);
-          localObject6 = (TextView)((View)localObject4).findViewById(a.d.share_count);
-          if (!TextUtils.isEmpty(((r)localObject3).ipb))
+          localObject4 = ((LayoutInflater)localObject1).inflate(2130970727, this.kBN, false);
+          Object localObject7 = (ImageView)((View)localObject4).findViewById(2131827763);
+          localObject5 = (TextView)((View)localObject4).findViewById(2131824605);
+          localObject6 = (TextView)((View)localObject4).findViewById(2131827766);
+          if (!TextUtils.isEmpty(((r)localObject3).kqi))
           {
-            com.tencent.mm.pluginsdk.ui.a.b.a((ImageView)localObject7, ((r)localObject3).ipb);
-            localObject7 = l.yU(((r)localObject3).ipb);
+            a.b.c((ImageView)localObject7, ((r)localObject3).kqi);
+            localObject7 = l.ID(((r)localObject3).kqi);
             if (TextUtils.isEmpty((CharSequence)localObject7)) {
               break;
             }
-            ((TextView)localObject5).setText(j.e(this.hxN, (CharSequence)localObject7, this.hxN.getResources().getDimensionPixelOffset(com.tencent.mm.plugin.card.a.b.SmallestTextSize)));
+            ((TextView)localObject5).setText(j.f(this.jpX, (CharSequence)localObject7, this.jpX.getResources().getDimensionPixelOffset(2131427862)));
           }
-          ((TextView)localObject6).setText("x " + ((r)localObject3).share_count);
+          ((TextView)localObject6).setText("x " + ((r)localObject3).kqj);
           ((View)localObject4).setTag(localObject3);
-          ((View)localObject4).setOnClickListener(this.iyH);
-          localObject5 = (ImageView)((View)localObject4).findViewById(a.d.user_avatar_select);
-          localObject6 = (ImageView)((View)localObject4).findViewById(a.d.user_avatar_mask);
-          if (!((r)localObject3).ipd) {
-            break label719;
+          ((View)localObject4).setOnClickListener(this.kBO);
+          localObject5 = (ImageView)((View)localObject4).findViewById(2131827765);
+          localObject6 = (ImageView)((View)localObject4).findViewById(2131827764);
+          if (!((r)localObject3).kql) {
+            break label716;
           }
           ((ImageView)localObject5).setVisibility(0);
           ((ImageView)localObject6).setVisibility(0);
-          label437:
-          this.iyG.addView((View)localObject4);
+          label434:
+          this.kBN.addView((View)localObject4);
         }
-        this.iyE.setVisibility(8);
-        this.iyF.setVisibility(8);
-        this.iyG.removeAllViews();
-        this.iya.aBG();
+        this.kBL.setVisibility(8);
+        this.kBM.setVisibility(8);
+        this.kBN.removeAllViews();
+        this.kBh.bdx();
       }
-      this.iyB.setVisibility(0);
-      this.iyC.setVisibility(0);
-      this.iyD.setVisibility(8);
-      if (com.tencent.mm.plugin.card.sharecard.a.b.yq(((com.tencent.mm.plugin.card.base.b)localObject4).azC()) <= 1)
+      this.kBI.setVisibility(0);
+      this.kBJ.setVisibility(0);
+      this.kBK.setVisibility(8);
+      if (com.tencent.mm.plugin.card.sharecard.a.b.HR(((com.tencent.mm.plugin.card.base.b)localObject4).bbi()) <= 1)
       {
-        this.iyE.setVisibility(8);
-        label534:
+        this.kBL.setVisibility(8);
+        label531:
         if ((localObject3 == null) || (((ArrayList)localObject3).size() <= 0)) {
-          break label1063;
+          break label1070;
         }
         i = 0;
-        label549:
+        label546:
         if (i >= ((ArrayList)localObject3).size()) {
-          break label1063;
+          break label1070;
         }
         localObject1 = (r)((ArrayList)localObject3).get(i);
-        if (!((r)localObject1).ipd) {
-          break label701;
+        if (!((r)localObject1).kql) {
+          break label698;
         }
       }
     }
-    label1058:
-    label1063:
-    for (localObject1 = ((r)localObject1).ipb;; localObject1 = "")
+    label1065:
+    label1070:
+    for (localObject1 = ((r)localObject1).kqi;; localObject1 = "")
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject2 = localObject1;
-        if (!TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject4).azD())) {
-          localObject2 = ((com.tencent.mm.plugin.card.base.b)localObject4).azD();
+        if (!TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject4).bbj())) {
+          localObject2 = ((com.tencent.mm.plugin.card.base.b)localObject4).bbj();
         }
       }
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         break;
       }
-      com.tencent.mm.pluginsdk.ui.a.b.a(this.iyB, (String)localObject2);
-      localObject1 = this.hxN.getString(a.g.card_share_card_users, new Object[] { l.yU((String)localObject2) });
-      this.iyC.setText(j.e(this.hxN, (CharSequence)localObject1, this.hxN.getResources().getDimensionPixelOffset(com.tencent.mm.plugin.card.a.b.NormalTextSize)));
+      a.b.c(this.kBI, (String)localObject2);
+      localObject1 = this.jpX.getString(2131298048, new Object[] { l.ID((String)localObject2) });
+      this.kBJ.setText(j.f(this.jpX, (CharSequence)localObject1, this.jpX.getResources().getDimensionPixelOffset(2131427809)));
       break;
-      this.iyE.setVisibility(0);
-      this.iyE.setImageResource(a.c.card_select_arrow_down);
-      break label534;
-      label701:
+      this.kBL.setVisibility(0);
+      this.kBL.setImageResource(2130838166);
+      break label531;
+      label698:
       i += 1;
-      break label549;
+      break label546;
       ((TextView)localObject5).setText("");
-      break label349;
-      label719:
+      break label347;
+      label716:
       ((ImageView)localObject5).setVisibility(8);
       ((ImageView)localObject6).setVisibility(8);
-      break label437;
-      label736:
-      this.iyG.invalidate();
-      this.iyy = true;
-      label748:
+      break label434;
+      label733:
+      this.kBN.invalidate();
+      this.kBF = true;
+      AppMethodBeat.o(88787);
       return;
-      label749:
+      label751:
       i = 0;
-      if (i < this.iyG.getChildCount())
+      if (i < this.kBN.getChildCount())
       {
-        localObject2 = this.iyG.getChildAt(i);
-        if ((localObject3 == null) || (((ArrayList)localObject3).size() < this.iyG.getChildCount())) {
-          break label1058;
+        localObject2 = this.kBN.getChildAt(i);
+        if ((localObject3 == null) || (((ArrayList)localObject3).size() < this.kBN.getChildCount())) {
+          break label1065;
         }
       }
       for (localObject1 = (r)((ArrayList)localObject3).get(i);; localObject1 = null)
       {
-        localObject4 = (ImageView)((View)localObject2).findViewById(a.d.user_avatar_select);
-        localObject2 = (ImageView)((View)localObject2).findViewById(a.d.user_avatar_mask);
-        if ((localObject1 != null) && (((r)localObject1).ipd))
+        localObject4 = (ImageView)((View)localObject2).findViewById(2131827765);
+        localObject2 = (ImageView)((View)localObject2).findViewById(2131827764);
+        if ((localObject1 != null) && (((r)localObject1).kql))
         {
           ((ImageView)localObject4).setVisibility(0);
           ((ImageView)localObject2).setVisibility(0);
@@ -211,36 +222,37 @@ public final class x
           ((ImageView)localObject4).setVisibility(8);
           ((ImageView)localObject2).setVisibility(8);
         }
-        this.iyG.invalidate();
+        this.kBN.invalidate();
         break;
-        label879:
-        this.iyF.setVisibility(8);
-        this.iyG.removeAllViews();
+        label881:
+        this.kBM.setVisibility(8);
+        this.kBN.removeAllViews();
         break;
-        if (((g)localObject1).aCD()) {
-          break label748;
-        }
-        this.iyz.setVisibility(0);
-        this.iyB.setVisibility(0);
-        this.iyC.setVisibility(0);
-        this.iyD.setVisibility(8);
-        this.iyE.setVisibility(8);
-        localObject2 = "";
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty(""))
+        if (!((g)localObject1).beN())
         {
+          this.kBG.setVisibility(0);
+          this.kBI.setVisibility(0);
+          this.kBJ.setVisibility(0);
+          this.kBK.setVisibility(8);
+          this.kBL.setVisibility(8);
+          localObject2 = "";
           localObject1 = localObject2;
-          if (!TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject4).azD())) {
-            localObject1 = ((com.tencent.mm.plugin.card.base.b)localObject4).azD();
+          if (TextUtils.isEmpty(""))
+          {
+            localObject1 = localObject2;
+            if (!TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject4).bbj())) {
+              localObject1 = ((com.tencent.mm.plugin.card.base.b)localObject4).bbj();
+            }
           }
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            a.b.c(this.kBI, (String)localObject1);
+            localObject1 = this.jpX.getString(2131298048, new Object[] { l.ID((String)localObject1) });
+            this.kBJ.setText(j.f(this.jpX, (CharSequence)localObject1, this.jpX.getResources().getDimensionPixelOffset(2131427809)));
+          }
+          this.kBF = true;
         }
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          com.tencent.mm.pluginsdk.ui.a.b.a(this.iyB, (String)localObject1);
-          localObject1 = this.hxN.getString(a.g.card_share_card_users, new Object[] { l.yU((String)localObject1) });
-          this.iyC.setText(j.e(this.hxN, (CharSequence)localObject1, this.hxN.getResources().getDimensionPixelOffset(com.tencent.mm.plugin.card.a.b.NormalTextSize)));
-        }
-        this.iyy = true;
+        AppMethodBeat.o(88787);
         return;
       }
     }
@@ -248,7 +260,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.x
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.net.Uri;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.net.URLDecoder;
 import java.util.HashMap;
 
@@ -15,16 +16,18 @@ final class JsApiScanCode$1$1
   
   public final void run()
   {
-    this.ghu.ahD();
-    if (this.ghu.actionCode == 26)
+    AppMethodBeat.i(130555);
+    this.hzF.aBk();
+    if (this.hzF.actionCode == 26)
     {
-      Uri localUri = Uri.parse(this.ghu.ghy);
+      Uri localUri = Uri.parse(this.hzF.hzJ);
       String str = localUri.getQueryParameter("username");
-      if (this.ghw.gbW.getRuntime().aaa().bFn.equals(str)) {
-        this.ghv.put("path", URLDecoder.decode(bk.pm(localUri.getQueryParameter("path"))));
+      if (this.hzH.hxC.getRuntime().atS().username.equals(str)) {
+        this.hzG.put("path", URLDecoder.decode(bo.nullAsNil(localUri.getQueryParameter("path"))));
       }
     }
-    this.ghw.gbW.C(this.ghw.dIS, this.ghw.ght.h("ok", this.ghv));
+    this.hzH.hxC.h(this.hzH.bAX, this.hzH.hzE.j("ok", this.hzG));
+    AppMethodBeat.o(130555);
   }
 }
 

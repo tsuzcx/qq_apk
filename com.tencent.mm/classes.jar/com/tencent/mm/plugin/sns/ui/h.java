@@ -3,42 +3,51 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
   extends LinearLayout
 {
   private Context context;
-  private int hYe = 0;
-  private LinearLayout oNA;
-  private int oNz = 6;
+  private int jRS;
+  private int rFi;
+  private LinearLayout rFj;
   
   public h(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(38162);
+    this.jRS = 0;
+    this.rFi = 6;
     this.context = paramContext;
     setOrientation(1);
+    AppMethodBeat.o(38162);
   }
   
   public final void addView(View paramView)
   {
-    if (this.hYe % this.oNz == 0)
+    AppMethodBeat.i(38163);
+    if (this.jRS % this.rFi == 0)
     {
-      this.oNA = new LinearLayout(this.context);
-      this.oNA.setOrientation(0);
-      this.oNA.addView(paramView);
-      super.addView(this.oNA);
+      this.rFj = new LinearLayout(this.context);
+      this.rFj.setOrientation(0);
+      this.rFj.addView(paramView);
+      super.addView(this.rFj);
     }
     for (;;)
     {
-      this.hYe += 1;
+      this.jRS += 1;
+      AppMethodBeat.o(38163);
       return;
-      this.oNA.addView(paramView);
+      this.rFj.addView(paramView);
     }
   }
   
   public final void setLineMaxCounte(int paramInt)
   {
-    this.oNz = paramInt;
+    if (paramInt > 0) {
+      this.rFi = paramInt;
+    }
   }
 }
 

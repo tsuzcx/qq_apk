@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingRight="@dimen/hn" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<ScrollView android:background="@color/vz" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/my" android:textColor="@color/t7" android:ellipsize="end" android:id="@id/dhs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip" android:singleLine="true" />
-    <TextView android:textSize="@dimen/my" android:textColor="@color/mn" android:ellipsize="end" android:gravity="right" android:id="@id/dht" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:singleLine="true" android:layout_weight="1.0" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="43.0dip" android:paddingTop="33.0dip" android:paddingRight="43.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:gravity="center" android:id="@id/dmh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/als" />
+            <TextView android:id="@id/dmi" android:text="@string/f60" style="@style/a0c" />
+            <TextView android:id="@id/dmj" android:visibility="gone" android:text="@string/f1q" style="@style/a0d" />
+            <LinearLayout android:orientation="vertical" android:id="@id/dmk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:id="@id/dml" android:visibility="gone" android:layout_marginTop="20.0dip" android:text="@string/f8l" style="@style/nq" />
+                <TextView android:id="@id/dmm" android:visibility="gone" android:layout_marginTop="5.0dip" android:text="@string/duk" style="@style/a0d" />
+                <Button android:id="@id/dmn" android:visibility="gone" android:layout_marginTop="20.0dip" android:text="@string/e7h" style="@style/nq" />
+                <TextView android:id="@id/dmo" android:visibility="gone" android:layout_marginTop="5.0dip" android:layout_marginBottom="20.0dip" android:text="@string/e7i" style="@style/a0d" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

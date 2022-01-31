@@ -1,25 +1,22 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.snackbar.a.b;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsAdNativeLandingPagesUI$5
-  implements a.b
+  implements View.OnClickListener
 {
   SnsAdNativeLandingPagesUI$5(SnsAdNativeLandingPagesUI paramSnsAdNativeLandingPagesUI) {}
   
-  public final void amw()
+  public final void onClick(View paramView)
   {
-    try
-    {
-      AdLandingPagesProxy.getInstance().favEditTag();
-      return;
+    AppMethodBeat.i(154484);
+    if (this.rMW.keyboardState() == 1) {
+      this.rMW.hideVKB();
     }
-    catch (Exception localException)
-    {
-      y.e("MicroMsg.SnsAdNativeLandingPagesUI", "favorite edittag fail, ex = " + localException.getMessage());
-    }
+    this.rMW.bdV();
+    AppMethodBeat.o(154484);
   }
 }
 

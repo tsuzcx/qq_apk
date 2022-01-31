@@ -3,8 +3,9 @@ package com.tencent.ttpic.glmodel;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.BitmapUtils;
 import com.tencent.ttpic.util.Maths;
-import com.tencent.ttpic.util.VideoBitmapUtil;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -22,16 +23,23 @@ public class Sphere
   private static final int NUM_FLOATS_PER_VERTEX = 3;
   private static final int PER_FLOAT_BYTE = 4;
   private static final int VERTEX_MAGIC_NUMBER = 5;
-  private final List<FloatBuffer> mColorBuffer = new ArrayList();
-  private final List<float[]> mColors = new ArrayList();
-  private final List<FloatBuffer> mTextureBuffer = new ArrayList();
-  private final int[] mTextures = new int[1];
+  private final List<FloatBuffer> mColorBuffer;
+  private final List<float[]> mColors;
+  private final List<FloatBuffer> mTextureBuffer;
+  private final int[] mTextures;
   private final int mTotalNumStrips;
-  private final List<FloatBuffer> mVertexBuffer = new ArrayList();
-  private final List<float[]> mVertices = new ArrayList();
+  private final List<FloatBuffer> mVertexBuffer;
+  private final List<float[]> mVertices;
   
   public Sphere(int paramInt, float paramFloat)
   {
+    AppMethodBeat.i(83268);
+    this.mVertexBuffer = new ArrayList();
+    this.mColors = new ArrayList();
+    this.mColorBuffer = new ArrayList();
+    this.mVertices = new ArrayList();
+    this.mTextureBuffer = new ArrayList();
+    this.mTextures = new int[1];
     paramInt = Math.max(1, Math.min(5, paramInt));
     this.mTotalNumStrips = (Maths.power(2, paramInt - 1) * 5);
     int m = Maths.power(2, paramInt) * 3;
@@ -115,10 +123,12 @@ public class Sphere
       this.mTextureBuffer.add(localObject);
       paramInt += 1;
     }
+    AppMethodBeat.o(83268);
   }
   
   public void draw(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(83271);
     GLES20.glActiveTexture(33984);
     GLES20.glBindTexture(3553, this.mTextures[0]);
     GLES20.glTexParameterf(3553, 10241, 9729.0F);
@@ -139,10 +149,12 @@ public class Sphere
       paramInt4 += 1;
     }
     GLES20.glFinish();
+    AppMethodBeat.o(83271);
   }
   
   public void draw(GL10 paramGL10)
   {
+    AppMethodBeat.i(83269);
     paramGL10.glBindTexture(3553, this.mTextures[0]);
     paramGL10.glEnableClientState(32884);
     paramGL10.glEnableClientState(32888);
@@ -157,25 +169,28 @@ public class Sphere
     }
     paramGL10.glDisableClientState(32884);
     paramGL10.glDisableClientState(32888);
+    AppMethodBeat.o(83269);
   }
   
   public void loadGLTexture(Bitmap paramBitmap)
   {
+    AppMethodBeat.i(83270);
     if (this.mTextures[0] <= 0) {
       GLES20.glGenTextures(1, this.mTextures, 0);
     }
-    if (VideoBitmapUtil.isLegal(paramBitmap))
+    if (BitmapUtils.isLegal(paramBitmap))
     {
       GLES20.glBindTexture(3553, this.mTextures[0]);
       GLES20.glTexParameterf(3553, 10241, 9728.0F);
       GLES20.glTexParameterf(3553, 10240, 9729.0F);
       GLUtils.texImage2D(3553, 0, paramBitmap, 0);
     }
+    AppMethodBeat.o(83270);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.ttpic.glmodel.Sphere
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.pluginsdk.ui.chat.ChattingUILayout android:orientation="vertical" android:id="@id/v_" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:longClickable="true" style="@style/p1"
+<LinearLayout android:orientation="vertical" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/ahc" android:layout="@layout/aa" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/ahd" android:layout="@layout/k9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.pluginsdk.ui.chat.ChattingContent android:id="@id/ahe" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <include layout="@layout/k5" />
-        <com.tencent.mm.ui.chatting.view.MMChattingListView android:id="@id/ahf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ViewStub android:id="@id/ahg" android:layout="@layout/mw" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ViewStub android:id="@id/ahh" android:layout="@layout/my" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ViewStub android:id="@id/ahi" android:layout="@layout/mx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ViewStub android:id="@id/ahj" android:layout="@layout/au5" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/ahk" android:layout="@layout/aeo" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/ahl" android:layout="@layout/amh" android:inflatedId="@id/ahm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ViewStub android:id="@id/ahn" android:layout="@layout/aw7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ViewStub android:id="@id/aho" android:layout="@layout/aw9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <LinearLayout android:gravity="center" android:layout_gravity="right" android:id="@id/ahp" android:background="@drawable/hq" android:paddingTop="8.0dip" android:paddingRight="14.0dip" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ko">
-            <ImageView android:paddingTop="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@raw/chatting_tips_icon" android:contentDescription="@null" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/a1y" android:id="@id/ahq" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/ahr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </com.tencent.mm.pluginsdk.ui.chat.ChattingContent>
-    <com.tencent.mm.pluginsdk.ui.chat.ChatFooter android:id="@id/ahs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/aht" android:layout="@layout/kc" android:layout_width="fill_parent" android:layout_height="49.0dip" />
-    <ViewStub android:id="@id/ahu" android:layout="@layout/mz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</com.tencent.mm.pluginsdk.ui.chat.ChattingUILayout>
+    <ListView android:id="@id/ajk" android:background="@color/zm" android:focusable="true" android:visibility="visible" android:layout_height="wrap_content" android:transcriptMode="disabled" style="@style/fr" />
+    <RelativeLayout android:id="@id/aat" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/jh" android:id="@id/aau" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ahp" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

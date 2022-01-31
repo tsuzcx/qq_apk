@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$1
   implements View.OnClickListener
@@ -11,9 +12,11 @@ final class b$1
   
   public final void onClick(View paramView)
   {
-    if (this.nhI.getVisibility() == 0) {
-      this.nhI.performClick();
+    AppMethodBeat.i(68282);
+    if (this.pMV.getVisibility() == 0) {
+      this.pMV.performClick();
     }
+    AppMethodBeat.o(68282);
   }
 }
 

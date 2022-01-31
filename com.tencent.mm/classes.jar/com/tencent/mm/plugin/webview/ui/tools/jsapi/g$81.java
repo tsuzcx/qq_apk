@@ -1,23 +1,48 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.h.a.fi;
-import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.sdk.b.a;
+import android.os.Bundle;
+import android.os.RemoteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.protocal.protobuf.cvs;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class g$81
-  implements Runnable
+  implements w.a
 {
-  g$81(g paramg, WebViewJSSDKFileItem paramWebViewJSSDKFileItem, String paramString) {}
+  g$81(g paramg, long paramLong) {}
   
-  public final void run()
+  public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.b paramb, m paramm)
   {
-    fi localfi = new fi();
-    localfi.bMc.op = 1;
-    localfi.bMc.fileName = this.rAi.fileName;
-    localfi.bMc.bBp = true;
-    localfi.bMc.bMf = new g.81.1(this);
-    localfi.bMc.bMg = new g.81.2(this);
-    a.udP.m(localfi);
+    AppMethodBeat.i(9145);
+    ab.i("MicroMsg.MsgHandler", "doUxSearchOpLog rsp errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    paramString = (cvs)paramb.fsW.fta;
+    paramb = new Bundle();
+    paramb.putLong("reqId", this.vjL);
+    paramb.putInt("ret", paramInt2);
+    if (paramString.yec != null)
+    {
+      paramString.yec.dqj();
+      paramb.putString("json", paramString.yec.dqj());
+    }
+    try
+    {
+      if (g.l(this.vqm) != null) {
+        g.l(this.vqm).e(147, paramb);
+      }
+      AppMethodBeat.o(9145);
+      return 0;
+    }
+    catch (RemoteException paramString)
+    {
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.MsgHandler", paramString, "", new Object[0]);
+      }
+    }
   }
 }
 

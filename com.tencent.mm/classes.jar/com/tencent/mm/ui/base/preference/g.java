@@ -2,7 +2,7 @@ package com.tencent.mm.ui.base.preference;
 
 public abstract interface g
 {
-  public abstract void WP(String paramString);
+  public abstract void amx(String paramString);
 }
 
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fav.b.a;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fts.a.a.h;
@@ -10,8 +11,8 @@ import com.tencent.mm.plugin.fts.a.c;
 import com.tencent.mm.plugin.fts.a.d;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -22,14 +23,22 @@ import java.util.List;
 public final class b
   extends com.tencent.mm.plugin.fts.a.b
 {
-  com.tencent.mm.plugin.fts.a.m dBO;
-  private com.tencent.mm.plugin.fts.a.j kal;
-  a kam;
-  e kan;
-  private j.a kao = new b.1(this);
+  com.tencent.mm.plugin.fts.a.m ezf;
+  private com.tencent.mm.plugin.fts.a.j muH;
+  a muI;
+  e muJ;
+  private k.a muK;
+  
+  public b()
+  {
+    AppMethodBeat.i(5312);
+    this.muK = new b.1(this);
+    AppMethodBeat.o(5312);
+  }
   
   private int a(String[] paramArrayOfString, int[] paramArrayOfInt, long paramLong1, int paramInt, long paramLong2, String paramString)
   {
+    AppMethodBeat.i(5315);
     int j = 0;
     String str2 = paramArrayOfString[0];
     String str1 = paramArrayOfString[1];
@@ -41,13 +50,13 @@ public final class b
       if (str2.length() > 0)
       {
         if (!str2.equalsIgnoreCase(str1)) {
-          break label178;
+          break label190;
         }
         str1 = null;
         paramArrayOfString = null;
       }
     }
-    label178:
+    label190:
     for (;;)
     {
       if ((str1 != null) && (str1.equalsIgnoreCase(paramArrayOfString))) {
@@ -55,7 +64,7 @@ public final class b
       }
       for (;;)
       {
-        this.kam.a(paramArrayOfInt[0], paramLong1, paramString, paramLong2, str2, paramInt);
+        this.muI.a(paramArrayOfInt[0], paramLong1, paramString, paramLong2, str2, paramInt);
         j = 1;
         i = j;
         if (str1 != null)
@@ -63,34 +72,43 @@ public final class b
           i = j;
           if (str1.length() > 0)
           {
-            this.kam.a(paramArrayOfInt[1], paramLong1, paramString, paramLong2, str1, paramInt);
+            this.muI.a(paramArrayOfInt[1], paramLong1, paramString, paramLong2, str1, paramInt);
             i = 2;
           }
         }
         if ((paramArrayOfString != null) && (paramArrayOfString.length() > 0))
         {
-          this.kam.a(paramArrayOfInt[2], paramLong1, paramString, paramLong2, paramArrayOfString, paramInt);
+          this.muI.a(paramArrayOfInt[2], paramLong1, paramString, paramLong2, paramArrayOfString, paramInt);
           i += 1;
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(5315);
           return i;
         }
-        return i;
       }
     }
   }
   
-  protected final boolean BB()
+  public final boolean Pp()
   {
-    ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().d(this.kao);
-    this.kam = null;
-    this.dBO = null;
+    AppMethodBeat.i(5314);
+    ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().remove(this.muK);
+    this.muI = null;
+    this.ezf = null;
+    AppMethodBeat.o(5314);
     return true;
   }
   
   public final com.tencent.mm.plugin.fts.a.a.a a(i parami)
   {
-    if (parami.kwX == 1) {}
-    for (parami = new b.f(this, parami);; parami = new e(parami)) {
-      return this.dBO.a(-65536, parami);
+    AppMethodBeat.i(5311);
+    if (parami.hdl == 1) {}
+    for (parami = new b.f(this, parami);; parami = new e(parami))
+    {
+      parami = this.ezf.a(-65536, parami);
+      AppMethodBeat.o(5311);
+      return parami;
     }
   }
   
@@ -99,24 +117,27 @@ public final class b
     return "FTS5SearchFavoriteLogic";
   }
   
-  protected final boolean onCreate()
+  public final boolean onCreate()
   {
-    if (!((n)com.tencent.mm.kernel.g.t(n.class)).isFTSContextReady())
+    AppMethodBeat.i(5313);
+    if (!((n)com.tencent.mm.kernel.g.G(n.class)).isFTSContextReady())
     {
-      y.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "Create Fail!");
+      ab.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "Create Fail!");
+      AppMethodBeat.o(5313);
       return false;
     }
-    y.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "Create Success!");
-    this.dBO = ((n)com.tencent.mm.kernel.g.t(n.class)).getFTSTaskDaemon();
-    this.kam = ((a)((n)com.tencent.mm.kernel.g.t(n.class)).getFTSIndexStorage(256));
-    this.kal = ((n)com.tencent.mm.kernel.g.t(n.class)).getFTSMainDB();
-    this.kan = ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().aQt();
-    this.dBO.a(131122, new b.a(this, (byte)0));
-    ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().c(this.kao);
+    ab.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "Create Success!");
+    this.ezf = ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSTaskDaemon();
+    this.muI = ((a)((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexStorage(256));
+    this.muH = ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSMainDB();
+    this.muJ = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().bwI();
+    this.ezf.a(131122, new b.a(this, (byte)0));
+    ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().add(this.muK);
+    AppMethodBeat.o(5313);
     return true;
   }
   
-  private final class e
+  final class e
     extends h
   {
     e(i parami)
@@ -124,38 +145,45 @@ public final class b
       super();
     }
     
-    protected final void a(com.tencent.mm.plugin.fts.a.a.j paramj)
+    public final void a(com.tencent.mm.plugin.fts.a.a.j paramj)
     {
-      paramj.kwi = com.tencent.mm.plugin.fts.a.a.g.aF(this.kwT.bVk, true);
+      AppMethodBeat.i(5309);
+      paramj.mRX = com.tencent.mm.plugin.fts.a.a.g.aU(this.mSJ.query, true);
       Object localObject1 = new HashMap();
-      Object localObject2 = b.this.kam.a(paramj.kwi, c.kuO, null, false, false);
+      Object localObject2 = b.this.muI.a(paramj.mRX, c.mQB, null, false, false);
       while (((Cursor)localObject2).moveToNext())
       {
-        com.tencent.mm.plugin.fts.a.a.m localm = new com.tencent.mm.plugin.fts.a.a.m().j((Cursor)localObject2);
-        l locall = (l)((HashMap)localObject1).get(Long.valueOf(localm.kxk));
-        if ((locall == null) || (d.e(c.kvh, localm.kwf, locall.kwf) < 0)) {
-          ((HashMap)localObject1).put(Long.valueOf(localm.kxk), localm);
+        com.tencent.mm.plugin.fts.a.a.m localm = new com.tencent.mm.plugin.fts.a.a.m().i((Cursor)localObject2);
+        l locall = (l)((HashMap)localObject1).get(Long.valueOf(localm.mSZ));
+        if ((locall == null) || (d.f(c.mQU, localm.mRU, locall.mRU) < 0)) {
+          ((HashMap)localObject1).put(Long.valueOf(localm.mSZ), localm);
         }
         if (Thread.interrupted())
         {
           ((Cursor)localObject2).close();
-          throw new InterruptedException();
+          paramj = new InterruptedException();
+          AppMethodBeat.o(5309);
+          throw paramj;
         }
       }
       ((Cursor)localObject2).close();
-      if (Thread.interrupted()) {
-        throw new InterruptedException();
+      if (Thread.interrupted())
+      {
+        paramj = new InterruptedException();
+        AppMethodBeat.o(5309);
+        throw paramj;
       }
-      paramj.kxh = new ArrayList(((HashMap)localObject1).size());
+      paramj.mSW = new ArrayList(((HashMap)localObject1).size());
       localObject1 = ((HashMap)localObject1).values().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (com.tencent.mm.plugin.fts.a.a.m)((Iterator)localObject1).next();
-        paramj.kxh.add(localObject2);
+        paramj.mSW.add(localObject2);
       }
-      if (this.kwT.kxe != null) {
-        Collections.sort(paramj.kxh, this.kwT.kxe);
+      if (this.mSJ.mST != null) {
+        Collections.sort(paramj.mSW, this.mSJ.mST);
       }
+      AppMethodBeat.o(5309);
     }
     
     public final String getName()

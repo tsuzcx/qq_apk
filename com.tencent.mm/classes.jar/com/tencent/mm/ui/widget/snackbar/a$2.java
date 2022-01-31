@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$2
   implements View.OnTouchListener
@@ -12,11 +13,13 @@ final class a$2
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((b.akH()) && (this.wpS.wpO.isShowing()))
+    AppMethodBeat.i(112975);
+    if ((b.Pk()) && (this.AKw.AKs.isShowing()))
     {
-      b.nZ(false);
-      this.wpS.mHandler.postDelayed(new a.2.1(this), 100L);
+      b.rJ(false);
+      this.AKw.mHandler.postDelayed(new a.2.1(this), 100L);
     }
+    AppMethodBeat.o(112975);
     return true;
   }
 }

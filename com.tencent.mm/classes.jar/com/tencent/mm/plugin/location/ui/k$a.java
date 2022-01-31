@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.location.ui;
 
 public abstract interface k$a
 {
-  public abstract void GF(String paramString);
+  public abstract void Si(String paramString);
   
-  public abstract void GG(String paramString);
+  public abstract void Sj(String paramString);
   
-  public abstract void beu();
+  public abstract void bLO();
   
-  public abstract void bev();
+  public abstract void bLP();
   
-  public abstract void bew();
+  public abstract void bLQ();
 }
 
 

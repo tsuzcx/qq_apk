@@ -2,12 +2,11 @@ package com.tencent.mm.plugin.webview.fts;
 
 import android.net.Uri;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.protocal.c.avi;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bbt;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,75 +15,90 @@ import org.json.JSONObject;
 
 final class b$b
 {
-  String bOE;
-  boolean eyC = false;
-  String jfE;
-  long qZk;
-  long qZl;
-  private String qZm = null;
+  String cvV;
+  boolean fOq = false;
+  private String hRx = null;
+  String low;
   int scene;
   int type;
+  long uOR;
+  long uOS;
   
   private b$b(b paramb) {}
   
-  final String caz()
+  final String daz()
   {
-    if (this.qZm == null) {
-      this.qZm = "";
+    AppMethodBeat.i(5683);
+    if (this.hRx == null) {
+      this.hRx = "";
     }
     try
     {
-      JSONArray localJSONArray = new JSONObject(this.bOE).optJSONObject("data").optJSONObject("hotwords").optJSONArray("items");
+      localObject = new JSONObject(this.cvV).optJSONObject("data").optJSONObject("hotwords").optJSONArray("items");
       ArrayList localArrayList = new ArrayList();
       int i = 0;
-      while (i < localJSONArray.length())
+      while (i < ((JSONArray)localObject).length())
       {
-        localArrayList.add(Uri.encode(localJSONArray.optJSONObject(i).optString("hotword")));
+        localArrayList.add(Uri.encode(((JSONArray)localObject).optJSONObject(i).optString("hotword")));
         i += 1;
       }
-      this.qZm = TextUtils.join("|", localArrayList);
+      this.hRx = TextUtils.join("|", localArrayList);
     }
     catch (Exception localException)
     {
-      label93:
-      break label93;
+      Object localObject;
+      label99:
+      break label99;
     }
-    return this.qZm;
+    localObject = this.hRx;
+    AppMethodBeat.o(5683);
+    return localObject;
   }
   
-  final void eD(int paramInt1, int paramInt2)
+  final void gH(int paramInt1, int paramInt2)
   {
-    avi localavi = new avi();
-    au.Hx();
-    Object localObject1 = c.FJ();
-    Object localObject2 = b.p(paramInt1, paramInt2, false);
-    if (!((String)localObject2).equals(b.p(paramInt1, paramInt2, true))) {
-      this.eyC = true;
+    AppMethodBeat.i(5684);
+    bbt localbbt = new bbt();
+    Object localObject1 = com.tencent.mm.plugin.record.b.YN();
+    Object localObject2 = b.s(paramInt1, paramInt2, false);
+    if (!((String)localObject2).equals(b.s(paramInt1, paramInt2, true))) {
+      this.fOq = true;
     }
     localObject1 = new File((String)localObject1, (String)localObject2);
-    localObject2 = e.c(((File)localObject1).getAbsolutePath(), 0, (int)((File)localObject1).length());
-    if (localObject2 != null) {}
-    try
-    {
-      localavi.aH((byte[])localObject2);
-      this.scene = localavi.scene;
-      this.bOE = localavi.sEb;
-      this.qZk = localavi.tqP;
-      this.qZl = localavi.tqQ;
-      this.jfE = localavi.sFF;
-      this.type = localavi.hQR;
-      y.i("MicroMsg.FTS.FTSWebViewLogic", "load bizCacheFile %s %d", new Object[] { ((File)localObject1).getAbsolutePath(), Integer.valueOf(localObject2.length) });
-      return;
+    localObject2 = e.i(((File)localObject1).getAbsolutePath(), 0, (int)((File)localObject1).length());
+    if (localObject2 != null) {
+      try
+      {
+        localbbt.parseFrom((byte[])localObject2);
+        this.scene = localbbt.scene;
+        this.cvV = localbbt.wAa;
+        this.uOR = localbbt.xqP;
+        this.uOS = localbbt.xqQ;
+        this.low = localbbt.wBZ;
+        this.type = localbbt.jKs;
+        ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "load bizCacheFile %s %d", new Object[] { ((File)localObject1).getAbsolutePath(), Integer.valueOf(localObject2.length) });
+        AppMethodBeat.o(5684);
+        return;
+      }
+      catch (IOException localIOException) {}
     }
-    catch (IOException localIOException) {}
+    AppMethodBeat.o(5684);
   }
   
   final boolean isAvailable()
   {
-    if (this.eyC) {}
-    while ((bk.bl(this.bOE)) || (System.currentTimeMillis() / 1000L - this.qZl > this.qZk)) {
+    AppMethodBeat.i(5682);
+    if (this.fOq)
+    {
+      AppMethodBeat.o(5682);
       return false;
     }
+    if ((bo.isNullOrNil(this.cvV)) || (System.currentTimeMillis() / 1000L - this.uOS > this.uOR))
+    {
+      AppMethodBeat.o(5682);
+      return false;
+    }
+    AppMethodBeat.o(5682);
     return true;
   }
 }

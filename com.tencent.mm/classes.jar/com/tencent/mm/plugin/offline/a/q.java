@@ -1,47 +1,50 @@
 package com.tencent.mm.plugin.offline.a;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.offline.c.a;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.d;
-import com.tencent.mm.wallet_core.tenpay.model.j;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class q
-  extends j
+  extends m
 {
-  public n mLu;
-  public com.tencent.mm.plugin.wallet_core.c.y mLv;
-  public com.tencent.mm.wallet_core.c.c mLw;
-  public com.tencent.mm.wallet_core.c.c mLx;
+  public n plL;
+  public com.tencent.mm.plugin.wallet_core.c.ab plM;
+  public com.tencent.mm.wallet_core.c.d plN;
+  public com.tencent.mm.wallet_core.c.d plO;
   
   public q(int paramInt)
   {
-    this.mLu = new n(System.currentTimeMillis(), paramInt);
-    D(this.mLu.mLt);
-    this.mLv = new com.tencent.mm.plugin.wallet_core.c.y(null, 8);
-    aB(this.mLv.mLt);
-    aC(this.mLv.qma);
+    AppMethodBeat.i(43416);
+    this.plL = new n(System.currentTimeMillis(), paramInt);
+    setRequestData(this.plL.plK);
+    this.plM = new com.tencent.mm.plugin.wallet_core.c.ab(null, 8);
+    addRequestData(this.plM.plK);
+    setWXRequestData(this.plM.tVp);
+    AppMethodBeat.o(43416);
   }
   
-  private static com.tencent.mm.wallet_core.c.c Y(JSONObject paramJSONObject)
+  private static com.tencent.mm.wallet_core.c.d aj(JSONObject paramJSONObject)
   {
-    com.tencent.mm.wallet_core.c.c localc = new com.tencent.mm.wallet_core.c.c();
-    localc.aox = ae.getContext().getString(a.i.wallet_data_err);
-    String str = ae.getContext().getString(a.i.wallet_data_err);
+    AppMethodBeat.i(43418);
+    com.tencent.mm.wallet_core.c.d locald = new com.tencent.mm.wallet_core.c.d();
+    locald.errMsg = ah.getContext().getString(2131305032);
+    String str = ah.getContext().getString(2131305032);
     try
     {
       i = paramJSONObject.getInt("retcode");
       paramJSONObject = paramJSONObject.optString("retmsg");
       if (i != 0)
       {
-        com.tencent.mm.sdk.platformtools.y.w("MicroMsg.NetSceneTenpayWxOfflineUserBindQuery", "hy: resolve busi error: retCode is error");
+        com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.NetSceneTenpayWxOfflineUserBindQuery", "hy: resolve busi error: retCode is error");
         if (i != -10089)
         {
-          localc.f(1000, i, paramJSONObject, 2);
-          return localc;
+          locald.e(1000, i, paramJSONObject, 2);
+          AppMethodBeat.o(43418);
+          return locald;
         }
       }
     }
@@ -49,25 +52,26 @@ public final class q
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.y.w("MicroMsg.NetSceneTenpayWxOfflineUserBindQuery", "hy: json resolve error: error when resolving error code : " + paramJSONObject.toString());
-        paramJSONObject = str;
+        com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.NetSceneTenpayWxOfflineUserBindQuery", "hy: json resolve error: error when resolving error code : " + paramJSONObject.toString());
         int i = -10089;
+        paramJSONObject = str;
+        continue;
+        locald.e(1000, 2, paramJSONObject, 2);
+        continue;
+        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NetSceneTenpayWxOfflineUserBindQuery", "hy: all's OK");
       }
-      localc.f(1000, 2, paramJSONObject, 2);
-      return localc;
     }
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.NetSceneTenpayWxOfflineUserBindQuery", "hy: all's OK");
-    return localc;
   }
   
   public static boolean isEnabled()
   {
+    AppMethodBeat.i(43419);
     boolean bool2 = false;
-    Object localObject = com.tencent.mm.model.c.c.IX().fJ("100337");
+    Object localObject = com.tencent.mm.model.c.c.abU().me("100337");
     boolean bool1 = bool2;
     if (((com.tencent.mm.storage.c)localObject).isValid())
     {
-      localObject = ((com.tencent.mm.storage.c)localObject).ctr();
+      localObject = ((com.tencent.mm.storage.c)localObject).dvN();
       bool1 = bool2;
       if (((Map)localObject).containsKey("enabled"))
       {
@@ -77,33 +81,17 @@ public final class q
         }
       }
     }
-    com.tencent.mm.sdk.platformtools.y.v("MicroMsg.NetSceneTenpayWxOfflineUserBindQuery", "isUserBindQueryEnabled: " + bool1);
+    com.tencent.mm.sdk.platformtools.ab.v("MicroMsg.NetSceneTenpayWxOfflineUserBindQuery", "isUserBindQueryEnabled: ".concat(String.valueOf(bool1)));
+    AppMethodBeat.o(43419);
     return bool1;
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
     return 1742;
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    if (paramInt != 0) {}
-    do
-    {
-      return;
-      paramString = paramJSONObject.optJSONObject("queryuser_resp");
-      this.mLw = Y(paramString);
-      this.mLu.a(this.mLw.errCode, this.mLw.aox, paramString);
-      paramJSONObject = paramJSONObject.optJSONObject("bindquerynew_resp");
-      this.mLx = Y(paramJSONObject);
-      this.mLv.a(this.mLx.errCode, this.mLx.aox, paramJSONObject);
-      paramString = paramString.optString("card_list");
-    } while (paramString == null);
-    a.Kq(paramString);
-  }
-  
-  public final int aEC()
+  public final int getTenpayCgicmd()
   {
     return 1742;
   }
@@ -111,6 +99,30 @@ public final class q
   public final String getUri()
   {
     return "/cgi-bin/mmpay-bin/tenpay/offlineuserbindquery";
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(43417);
+    if (paramInt != 0)
+    {
+      AppMethodBeat.o(43417);
+      return;
+    }
+    paramString = paramJSONObject.optJSONObject("queryuser_resp");
+    this.plN = aj(paramString);
+    this.plL.onGYNetEnd(this.plN.errCode, this.plN.errMsg, paramString);
+    paramJSONObject = paramJSONObject.optJSONObject("bindquerynew_resp");
+    this.plO = aj(paramJSONObject);
+    this.plM.onGYNetEnd(this.plO.errCode, this.plO.errMsg, paramJSONObject);
+    if (paramString != null)
+    {
+      paramString = paramString.optString("card_list");
+      if (paramString != null) {
+        a.Ws(paramString);
+      }
+    }
+    AppMethodBeat.o(43417);
   }
 }
 

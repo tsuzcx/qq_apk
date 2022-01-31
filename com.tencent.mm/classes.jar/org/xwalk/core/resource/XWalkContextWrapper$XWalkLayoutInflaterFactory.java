@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.LayoutInflater.Factory;
 import android.view.View;
 import android.view.ViewStub;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.xwalk.core.Log;
 
 final class XWalkContextWrapper$XWalkLayoutInflaterFactory
@@ -17,22 +18,34 @@ final class XWalkContextWrapper$XWalkLayoutInflaterFactory
   
   private View createView(String paramString1, String paramString2, AttributeSet paramAttributeSet)
   {
+    AppMethodBeat.i(86211);
+    Object localObject = null;
     try
     {
       paramString1 = this.layoutInflater.createView(paramString1, paramString2, paramAttributeSet);
+      AppMethodBeat.o(86211);
       return paramString1;
     }
     catch (ClassNotFoundException paramString1)
     {
-      return null;
+      for (;;)
+      {
+        paramString1 = localObject;
+      }
     }
-    catch (InflateException paramString1) {}
-    return null;
+    catch (InflateException paramString1)
+    {
+      for (;;)
+      {
+        paramString1 = localObject;
+      }
+    }
   }
   
   public final View inflateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
     Object localObject = null;
+    AppMethodBeat.i(86210);
     if (paramString.indexOf(".") == -1)
     {
       if (paramString.equals("WebView")) {
@@ -43,25 +56,29 @@ final class XWalkContextWrapper$XWalkLayoutInflaterFactory
         paramContext = createView(paramString, "android.widget.", paramAttributeSet);
       }
       localObject = paramContext;
-      if (paramContext == null) {
-        localObject = createView(paramString, "android.view.", paramAttributeSet);
-      }
+      if (paramContext != null) {}
+    }
+    for (localObject = createView(paramString, "android.view.", paramAttributeSet);; localObject = this.layoutInflater.createView(paramString, null, paramAttributeSet))
+    {
+      AppMethodBeat.o(86210);
       return localObject;
     }
-    return this.layoutInflater.createView(paramString, null, paramAttributeSet);
   }
   
   public final View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    Context localContext2 = null;
-    Context localContext1 = null;
+    AppMethodBeat.i(86209);
+    localContext2 = null;
+    localContext1 = null;
     try
     {
       paramContext = inflateView(paramString, paramContext, paramAttributeSet);
+      paramAttributeSet = paramContext;
       localContext1 = paramContext;
       localContext2 = paramContext;
       if ((paramContext instanceof ViewStub))
       {
+        paramAttributeSet = paramContext;
         localContext1 = paramContext;
         localContext2 = paramContext;
         if (Build.VERSION.SDK_INT >= 21)
@@ -69,20 +86,28 @@ final class XWalkContextWrapper$XWalkLayoutInflaterFactory
           localContext1 = paramContext;
           localContext2 = paramContext;
           ((ViewStub)paramContext).setLayoutInflater(this.layoutInflater);
+          paramAttributeSet = paramContext;
         }
       }
-      return paramContext;
     }
     catch (ClassNotFoundException paramContext)
     {
-      Log.w("XWalkLib", String.format("[XWalkContextWrapper] class not found. name:%s. Use default Inflate.", new Object[] { paramString }));
-      return localContext1;
+      for (;;)
+      {
+        Log.w("XWalkLib", String.format("[XWalkContextWrapper] class not found. name:%s. Use default Inflate.", new Object[] { paramString }));
+        paramAttributeSet = localContext1;
+      }
     }
     catch (InflateException paramContext)
     {
-      Log.w("XWalkLib", String.format("[XWalkContextWrapper] Inflate failed. name:%s. Use default Inflate.", new Object[] { paramString }));
+      for (;;)
+      {
+        Log.w("XWalkLib", String.format("[XWalkContextWrapper] Inflate failed. name:%s. Use default Inflate.", new Object[] { paramString }));
+        paramAttributeSet = localContext2;
+      }
     }
-    return localContext2;
+    AppMethodBeat.o(86209);
+    return paramAttributeSet;
   }
 }
 

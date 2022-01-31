@@ -24,12 +24,12 @@ public class Util
 {
   private static String processName = "";
   
-  private static String am(Context paramContext, int paramInt)
+  private static String az(Context paramContext, int paramInt)
   {
     if (Process.myUid() >= 99000) {
       return "ISOLATE_PROCESS";
     }
-    if (!bl(processName)) {
+    if (!isNullOrNil(processName)) {
       return processName;
     }
     Object localObject = paramContext;
@@ -57,12 +57,7 @@ public class Util
     }
   }
   
-  public static final boolean bl(String paramString)
-  {
-    return (paramString == null) || (paramString.length() == 0);
-  }
-  
-  public static final int hs(Context paramContext)
+  public static final int iT(Context paramContext)
   {
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("recovery-info", 0);
     int j = localSharedPreferences.getInt("KeySafeModeUUID", -1);
@@ -102,7 +97,7 @@ public class Util
         }
         localStringBuffer.append((String)localObject);
         localStringBuffer.append(Build.MANUFACTURER + Build.MODEL);
-        i = ("A" + o(localStringBuffer.toString().getBytes()).substring(0, 15)).hashCode();
+        i = ("A" + w(localStringBuffer.toString().getBytes()).substring(0, 15)).hashCode();
         localSharedPreferences.edit().putInt("KeySafeModeUUID", i).commit();
         return i;
         paramContext = paramContext.getConnectionInfo();
@@ -111,17 +106,22 @@ public class Util
     }
   }
   
-  public static String ht(Context paramContext)
+  public static String iU(Context paramContext)
   {
-    return am(paramContext, Process.myPid());
+    return az(paramContext, Process.myPid());
   }
   
-  public static String ik(long paramLong)
+  public static final boolean isNullOrNil(String paramString)
+  {
+    return (paramString == null) || (paramString.length() == 0);
+  }
+  
+  public static String oW(long paramLong)
   {
     return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date(paramLong));
   }
   
-  private static final String o(byte[] paramArrayOfByte)
+  private static final String w(byte[] paramArrayOfByte)
   {
     char[] arrayOfChar = new char[16];
     char[] tmp8_6 = arrayOfChar;

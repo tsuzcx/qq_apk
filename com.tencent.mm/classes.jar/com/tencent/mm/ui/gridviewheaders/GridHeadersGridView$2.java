@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.gridviewheaders;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GridHeadersGridView$2
   implements Runnable
@@ -9,17 +10,19 @@ final class GridHeadersGridView$2
   
   public final void run()
   {
-    this.vWW.alA = -1;
-    this.vWX.setPressed(false);
-    this.vWW.setPressed(false);
-    if (!this.vWW.uTo) {
-      this.vWY.run();
+    AppMethodBeat.i(107362);
+    this.Ape.anS = -1;
+    this.Apf.setPressed(false);
+    this.Ape.setPressed(false);
+    if (!this.Ape.zhO) {
+      this.Apg.run();
     }
+    AppMethodBeat.o(107362);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.GridHeadersGridView.2
  * JD-Core Version:    0.7.0.1
  */

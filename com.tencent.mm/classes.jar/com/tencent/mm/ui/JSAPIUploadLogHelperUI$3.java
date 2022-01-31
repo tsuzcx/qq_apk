@@ -2,59 +2,63 @@ package com.tencent.mm.ui;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.aj;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.b.c;
 
 final class JSAPIUploadLogHelperUI$3
-  implements aj
+  implements al
 {
   JSAPIUploadLogHelperUI$3(JSAPIUploadLogHelperUI paramJSAPIUploadLogHelperUI, ProgressDialog paramProgressDialog, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public final void hK(int paramInt)
+  public final void kw(int paramInt)
   {
+    AppMethodBeat.i(29440);
     if (paramInt < 0)
     {
-      y.e("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi, error happened, percent:%d", new Object[] { Integer.valueOf(paramInt) });
-      au.a(null);
-      if (this.noC != null) {
-        this.noC.dismiss();
+      ab.e("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi, error happened, percent:%d", new Object[] { Integer.valueOf(paramInt) });
+      aw.a(null);
+      if (this.pTQ != null) {
+        this.pTQ.dismiss();
       }
-      ??? = com.tencent.mm.ui.base.h.h(this.uKI, R.l.upload_fail, R.l.app_tip);
+      ??? = com.tencent.mm.ui.base.h.h(this.yYK, 2131304443, 2131297087);
       if (??? != null) {
-        ((c)???).setOnDismissListener(this.uKJ);
+        ((c)???).setOnDismissListener(this.yYL);
       }
-      synchronized (JSAPIUploadLogHelperUI.access$000())
+      synchronized (JSAPIUploadLogHelperUI.Qj())
       {
-        JSAPIUploadLogHelperUI.bp(false);
+        JSAPIUploadLogHelperUI.qn(false);
+        AppMethodBeat.o(29440);
         return;
       }
     }
     if (paramInt >= 100)
     {
-      y.i("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi done.");
-      au.a(null);
-      if (this.noC != null) {
-        this.noC.dismiss();
+      ab.i("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi done.");
+      aw.a(null);
+      if (this.pTQ != null) {
+        this.pTQ.dismiss();
       }
-      ??? = com.tencent.mm.ui.base.h.h(this.uKI, R.l.upload_success, R.l.app_tip);
+      ??? = com.tencent.mm.ui.base.h.h(this.yYK, 2131304447, 2131297087);
       if (??? != null) {
-        ((c)???).setOnDismissListener(this.uKJ);
+        ((c)???).setOnDismissListener(this.yYL);
       }
       long l = System.currentTimeMillis() / 1000L;
-      com.tencent.mm.plugin.report.service.h.nFQ.f(12975, new Object[] { Long.valueOf(l) });
-      synchronized (JSAPIUploadLogHelperUI.access$000())
+      com.tencent.mm.plugin.report.service.h.qsU.e(12975, new Object[] { Long.valueOf(l) });
+      synchronized (JSAPIUploadLogHelperUI.Qj())
       {
-        JSAPIUploadLogHelperUI.bp(false);
+        JSAPIUploadLogHelperUI.qn(false);
+        AppMethodBeat.o(29440);
         return;
       }
     }
-    y.i("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi, ipxx progress:%d", new Object[] { Integer.valueOf(paramInt) });
-    if (this.noC != null) {
-      this.noC.setMessage(this.uKI.getString(R.l.upload_ing) + paramInt + "%");
+    ab.i("MicroMsg.JSAPIUploadLogHelperUI", "uploadLog call by jsapi, ipxx progress:%d", new Object[] { Integer.valueOf(paramInt) });
+    if (this.pTQ != null) {
+      this.pTQ.setMessage(this.yYK.getString(2131304444) + paramInt + "%");
     }
+    AppMethodBeat.o(29440);
   }
 }
 

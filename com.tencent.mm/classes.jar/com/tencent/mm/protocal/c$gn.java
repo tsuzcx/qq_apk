@@ -5,7 +5,7 @@ final class c$gn
 {
   c$gn()
   {
-    super("recordVideo", "recordVideo", 251, true);
+    super("operateBackgroundAudio", "operateBackgroundAudio", 261, false);
   }
 }
 

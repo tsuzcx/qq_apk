@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 import java.util.HashMap;
@@ -11,17 +12,19 @@ final class InviteFriendUI$1$3
 {
   InviteFriendUI$1$3(InviteFriendUI.1 param1, HashMap paramHashMap) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    Iterator localIterator = this.fhU.keySet().iterator();
+    AppMethodBeat.i(108573);
+    Iterator localIterator = this.gzB.keySet().iterator();
     while (localIterator.hasNext()) {
       paraml.add((String)localIterator.next());
     }
+    AppMethodBeat.o(108573);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.InviteFriendUI.1.3
  * JD-Core Version:    0.7.0.1
  */

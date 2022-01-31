@@ -4,7 +4,7 @@ import com.google.android.exoplayer2.Format;
 
 public abstract interface c
 {
-  public static final c aGJ = new c.1();
+  public static final c aNE = new c.1();
   
   public abstract boolean g(Format paramFormat);
   

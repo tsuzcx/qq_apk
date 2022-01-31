@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.content.Context;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.luggage.e;
 import com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter;
 import com.tencent.mm.ui.base.l;
@@ -17,22 +17,27 @@ public final class i
   
   public final void a(Context paramContext, e parame)
   {
-    if (!parame.rbH.isShown())
+    AppMethodBeat.i(6441);
+    if (!parame.uRq.isShown())
     {
-      parame.rbH.reset();
-      parame.rbH.cgS();
-      parame.rbH.show();
+      parame.uRq.reset();
+      parame.uRq.dgZ();
+      parame.uRq.show();
     }
+    h.qsU.cT(982, 8);
+    AppMethodBeat.o(6441);
   }
   
   public final void a(Context paramContext, e parame, l paraml)
   {
-    paraml.a(31, paramContext.getString(R.l.wv_search_content), R.k.bottomsheet_icon_search);
+    AppMethodBeat.i(6440);
+    paraml.a(31, paramContext.getString(2131306034), 2131231034);
+    AppMethodBeat.o(6440);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.b.i
  * JD-Core Version:    0.7.0.1
  */

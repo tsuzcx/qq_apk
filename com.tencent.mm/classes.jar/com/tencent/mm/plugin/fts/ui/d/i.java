@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.fts.ui.d;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.fts.a.c.c;
 import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashSet;
 import java.util.List;
 
@@ -19,59 +20,72 @@ public final class i
     super(paramContext, paramb, paramInt);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.a.a a(ah paramah, HashSet<String> paramHashSet)
+  public final com.tencent.mm.plugin.fts.a.a.a a(ak paramak, HashSet<String> paramHashSet)
   {
+    AppMethodBeat.i(62081);
     com.tencent.mm.plugin.fts.a.a.i locali = new com.tencent.mm.plugin.fts.a.a.i();
-    locali.bVk = this.bVk;
-    locali.handler = paramah;
-    locali.kxd = paramHashSet;
-    locali.kxf = this;
-    locali.kxe = c.kxF;
-    return ((n)g.t(n.class)).search(4, locali);
+    locali.query = this.query;
+    locali.handler = paramak;
+    locali.mSS = paramHashSet;
+    locali.mSU = this;
+    locali.mST = c.mTu;
+    paramak = ((n)g.G(n.class)).search(4, locali);
+    AppMethodBeat.o(62081);
+    return paramak;
   }
   
   public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt1, int paramInt2, l paraml, e.a parama)
   {
+    AppMethodBeat.i(62084);
     com.tencent.mm.plugin.fts.ui.a.j localj = new com.tencent.mm.plugin.fts.ui.a.j(paramInt2);
-    localj.fYx = paraml;
-    localj.kwi = parama.kwi;
-    localj.cU(paraml.type, paraml.kwf);
+    localj.hrL = paraml;
+    localj.mRX = parama.mRX;
+    localj.es(paraml.type, paraml.mRU);
+    AppMethodBeat.o(62084);
     return localj;
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
+  public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
-    int i = paramInt - parama.kxK - 1;
+    AppMethodBeat.i(62083);
+    int i = paramInt - parama.mTy - 1;
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (i < parama.kxO.size())
+    if (i < parama.mTC.size())
     {
       localObject1 = localObject2;
       if (i >= 0) {
-        localObject1 = a(262144, paramInt, (l)parama.kxO.get(i), parama);
+        localObject1 = a(262144, paramInt, (l)parama.mTC.get(i), parama);
       }
     }
-    if (localObject1 != null) {
-      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject1).kxW = (i + 1);
+    if (localObject1 != null)
+    {
+      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject1).mTJ = (i + 1);
+      if (i == parama.mTC.size() - 1) {
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject1).mTH = false;
+      }
     }
+    AppMethodBeat.o(62083);
     return localObject1;
   }
   
-  protected final void a(com.tencent.mm.plugin.fts.a.a.j paramj, HashSet<String> paramHashSet)
+  public final void a(com.tencent.mm.plugin.fts.a.a.j paramj, HashSet<String> paramHashSet)
   {
-    if (bA(paramj.kxh))
+    AppMethodBeat.i(62082);
+    if (bU(paramj.mSW))
     {
       paramHashSet = new e.a();
       paramHashSet.businessType = -6;
-      paramHashSet.kwi = paramj.kwi;
-      paramHashSet.kxO = paramj.kxh;
-      if (paramHashSet.kxO.size() > 3)
+      paramHashSet.mRX = paramj.mRX;
+      paramHashSet.mTC = paramj.mSW;
+      if (paramHashSet.mTC.size() > 3)
       {
-        paramHashSet.kxN = true;
-        paramHashSet.kxO = paramHashSet.kxO.subList(0, 3);
+        paramHashSet.mTB = true;
+        paramHashSet.mTC = paramHashSet.mTC.subList(0, 3);
       }
-      this.kzW.add(paramHashSet);
+      this.mVO.add(paramHashSet);
     }
+    AppMethodBeat.o(62082);
   }
   
   public final int getType()
@@ -81,7 +95,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.d.i
  * JD-Core Version:    0.7.0.1
  */

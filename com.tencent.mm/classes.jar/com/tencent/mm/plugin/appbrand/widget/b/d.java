@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.widget.b;
 
 import android.content.Context;
-import com.tencent.mm.plugin.appbrand.y.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
   extends b
@@ -9,12 +9,14 @@ public final class d
   public d(Context paramContext)
   {
     super(paramContext);
-    setContentView(y.h.app_brand_wifi_progress_dialog);
+    AppMethodBeat.i(134252);
+    setContentView(2130968752);
+    AppMethodBeat.o(134252);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.b.d
  * JD-Core Version:    0.7.0.1
  */

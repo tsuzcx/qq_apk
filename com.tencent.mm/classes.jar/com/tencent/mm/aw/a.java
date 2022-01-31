@@ -1,64 +1,151 @@
 package com.tencent.mm.aw;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bgo;
-import com.tencent.mm.protocal.c.bgp;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.kh;
+import com.tencent.mm.g.a.kh.b;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class a
-  extends m
-  implements k
 {
-  private b dmK;
-  private f dmL;
-  boolean evb = false;
-  int evc = 0;
-  
-  public a(int paramInt, String paramString)
+  public static final void KP()
   {
-    Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bgo();
-    ((b.a)localObject).ecI = new bgp();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/pushnewtips";
-    ((b.a)localObject).ecG = 597;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (bgo)this.dmK.ecE.ecN;
-    ((bgo)localObject).tBk = paramInt;
-    ((bgo)localObject).tBl = 1;
-    ((bgo)localObject).sCH = paramString;
-    this.evc = paramInt;
+    AppMethodBeat.i(137241);
+    al.d(new a.1());
+    AppMethodBeat.o(137241);
   }
   
-  public final int a(e parame, f paramf)
+  public static final void KQ()
   {
-    y.d("MicroMsg.NetScenePushNewTips", "doScene");
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    AppMethodBeat.i(137242);
+    al.d(new a.2());
+    AppMethodBeat.o(137242);
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public static final void a(e parame)
   {
-    if ((paramInt2 != 0) || (paramInt3 != 0))
+    AppMethodBeat.i(137245);
+    al.d(new a.5(parame));
+    AppMethodBeat.o(137245);
+  }
+  
+  public static c aiA()
+  {
+    AppMethodBeat.i(137253);
+    Object localObject = new kh();
+    ((kh)localObject).czU.action = 8;
+    com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+    localObject = ((kh)localObject).czV.cAa;
+    AppMethodBeat.o(137253);
+    return localObject;
+  }
+  
+  public static final void aiu()
+  {
+    AppMethodBeat.i(137243);
+    al.d(new a.3());
+    AppMethodBeat.o(137243);
+  }
+  
+  public static final void aiv()
+  {
+    AppMethodBeat.i(137244);
+    al.d(new a.4());
+    AppMethodBeat.o(137244);
+  }
+  
+  public static boolean aiw()
+  {
+    AppMethodBeat.i(137246);
+    kh localkh = new kh();
+    localkh.czU.action = -3;
+    com.tencent.mm.sdk.b.a.ymk.l(localkh);
+    boolean bool = localkh.czV.cmX;
+    AppMethodBeat.o(137246);
+    return bool;
+  }
+  
+  public static boolean aix()
+  {
+    AppMethodBeat.i(137247);
+    kh localkh = new kh();
+    localkh.czU.action = 10;
+    com.tencent.mm.sdk.b.a.ymk.l(localkh);
+    boolean bool = localkh.czV.cmX;
+    AppMethodBeat.o(137247);
+    return bool;
+  }
+  
+  public static boolean aiy()
+  {
+    AppMethodBeat.i(137248);
+    kh localkh = new kh();
+    localkh.czU.action = 9;
+    com.tencent.mm.sdk.b.a.ymk.l(localkh);
+    boolean bool = localkh.czV.cmX;
+    AppMethodBeat.o(137248);
+    return bool;
+  }
+  
+  public static e aiz()
+  {
+    AppMethodBeat.i(137249);
+    Object localObject = new kh();
+    ((kh)localObject).czU.action = -2;
+    com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+    localObject = ((kh)localObject).czV.czW;
+    AppMethodBeat.o(137249);
+    return localObject;
+  }
+  
+  public static void b(e parame)
+  {
+    AppMethodBeat.i(137250);
+    al.d(new Runnable()
     {
-      y.e("MicroMsg.NetScenePushNewTips", "errType:" + paramInt2 + " errCode:" + paramInt3);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    this.evb = ((bgp)((b)paramq).ecF.ecN).tBm;
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      public final void run()
+      {
+        AppMethodBeat.i(137237);
+        kh localkh = new kh();
+        localkh.czU.action = 0;
+        localkh.czU.czW = this.fKa;
+        com.tencent.mm.sdk.b.a.ymk.l(localkh);
+        AppMethodBeat.o(137237);
+      }
+    });
+    AppMethodBeat.o(137250);
   }
   
-  public final int getType()
+  public static void c(e parame)
   {
-    return 597;
+    AppMethodBeat.i(137251);
+    al.d(new a.8(parame));
+    AppMethodBeat.o(137251);
+  }
+  
+  public static boolean d(e parame)
+  {
+    if (parame == null) {
+      return false;
+    }
+    switch (parame.fKh)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean lN(int paramInt)
+  {
+    AppMethodBeat.i(137252);
+    kh localkh = new kh();
+    localkh.czU.action = 7;
+    localkh.czU.position = paramInt;
+    com.tencent.mm.sdk.b.a.ymk.l(localkh);
+    boolean bool = localkh.czV.cmX;
+    AppMethodBeat.o(137252);
+    return bool;
   }
 }
 

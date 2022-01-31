@@ -10,7 +10,7 @@ final class d$1
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.woG.vAB = null;
+    this.AJg.zRa = null;
   }
 }
 

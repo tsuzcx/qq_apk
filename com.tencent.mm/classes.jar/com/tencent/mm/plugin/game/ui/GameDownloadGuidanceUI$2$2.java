@@ -1,24 +1,26 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.plugin.game.model.ac;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameDownloadGuidanceUI$2$2
   implements Runnable
 {
-  GameDownloadGuidanceUI$2$2(GameDownloadGuidanceUI.2 param2, ac paramac) {}
+  GameDownloadGuidanceUI$2$2(GameDownloadGuidanceUI.2 param2, com.tencent.mm.plugin.game.model.ab paramab) {}
   
   public final void run()
   {
+    AppMethodBeat.i(111881);
     try
     {
-      this.laD.laC.a(this.laE, 1);
+      this.nyz.nyy.a(this.nyA, 1);
+      AppMethodBeat.o(111881);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.GameDownloadGuidanceUI", "GameDownloadGuidanceUI crash, %s", new Object[] { localException.getMessage() });
-      this.laD.laC.finish();
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.GameDownloadGuidanceUI", "GameDownloadGuidanceUI crash, %s", new Object[] { localException.getMessage() });
+      this.nyz.nyy.finish();
+      AppMethodBeat.o(111881);
     }
   }
 }

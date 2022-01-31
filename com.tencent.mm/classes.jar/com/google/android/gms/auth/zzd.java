@@ -1,17 +1,13 @@
 package com.google.android.gms.auth;
 
-import com.google.android.gms.internal.zzacm;
+import android.os.Parcelable.Creator;
 
-public class zzd
-{
-  public static zzacm zzb(String... paramVarArgs)
-  {
-    return new zzacm("Auth", paramVarArgs);
-  }
-}
+public final class zzd
+  implements Parcelable.Creator<AccountChangeEvent>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.gms.auth.zzd
  * JD-Core Version:    0.7.0.1
  */

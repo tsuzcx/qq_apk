@@ -1,31 +1,30 @@
 package com.tencent.mm.ui.contact;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.n;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 
 public class ContactRemarkImagePreviewUI
   extends MMActivity
 {
-  private MMGestureGallery itv;
+  private View AbK;
+  private String AbL;
+  private boolean AbM;
+  private boolean AbN;
+  private ContactRemarkImagePreviewUI.a AbO;
+  private MMGestureGallery kuC;
   private String username;
-  private View vKk;
-  private String vKl;
-  private boolean vKm;
-  private boolean vKn;
-  private ContactRemarkImagePreviewUI.a vKo;
   
-  private void nx(boolean paramBoolean)
+  private void rg(boolean paramBoolean)
   {
+    AppMethodBeat.i(33623);
     if (paramBoolean)
     {
       Intent localIntent = new Intent();
@@ -33,67 +32,87 @@ public class ContactRemarkImagePreviewUI
       setResult(-1, localIntent);
     }
     finish();
+    AppMethodBeat.o(33623);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.contact_remark_image_preview;
+    return 2130969266;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.vKk = findViewById(R.h.container_ll);
-    this.itv = ((MMGestureGallery)findViewById(R.h.gallery));
-    setMMTitle(R.l.mod_remark_preview_image_title);
-    this.itv.setVerticalFadingEdgeEnabled(false);
-    this.itv.setHorizontalFadingEdgeEnabled(false);
-    k.bO(this.itv);
-    this.vKo = new ContactRemarkImagePreviewUI.a(this);
-    this.vKo.imagePath = this.vKl;
-    this.itv.setAdapter(this.vKo);
-    this.itv.setOnItemClickListener(new ContactRemarkImagePreviewUI.3(this));
-    addIconOptionMenu(0, R.k.actionbar_icon_dark_more, new ContactRemarkImagePreviewUI.1(this));
+    AppMethodBeat.i(33622);
+    this.AbK = findViewById(2131822806);
+    this.kuC = ((MMGestureGallery)findViewById(2131822137));
+    setMMTitle(2131301613);
+    this.kuC.setVerticalFadingEdgeEnabled(false);
+    this.kuC.setHorizontalFadingEdgeEnabled(false);
+    n.cn(this.kuC);
+    this.AbO = new ContactRemarkImagePreviewUI.a(this);
+    this.AbO.imagePath = this.AbL;
+    this.kuC.setAdapter(this.AbO);
+    this.kuC.setOnItemClickListener(new ContactRemarkImagePreviewUI.3(this));
+    addIconOptionMenu(0, 2131230740, new ContactRemarkImagePreviewUI.1(this));
     setBackBtn(new ContactRemarkImagePreviewUI.2(this));
+    AppMethodBeat.o(33622);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(33619);
     super.onCreate(paramBundle);
     this.username = getIntent().getStringExtra("Contact_User");
-    this.vKl = getIntent().getStringExtra("remark_image_path");
-    this.vKm = getIntent().getBooleanExtra("view_temp_remark_image", false);
-    this.vKn = getIntent().getBooleanExtra("view_only", false);
-    if (bk.bl(this.username))
+    this.AbL = getIntent().getStringExtra("remark_image_path");
+    this.AbM = getIntent().getBooleanExtra("view_temp_remark_image", false);
+    this.AbN = getIntent().getBooleanExtra("view_only", false);
+    if (bo.isNullOrNil(this.username))
     {
       finish();
+      AppMethodBeat.o(33619);
       return;
     }
     initView();
+    AppMethodBeat.o(33619);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(33621);
     super.onDestroy();
+    AppMethodBeat.o(33621);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(33625);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      nx(false);
+      rg(false);
+      AppMethodBeat.o(33625);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(33625);
+    return bool;
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(33620);
     super.onPause();
+    AppMethodBeat.o(33620);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ContactRemarkImagePreviewUI
  * JD-Core Version:    0.7.0.1
  */

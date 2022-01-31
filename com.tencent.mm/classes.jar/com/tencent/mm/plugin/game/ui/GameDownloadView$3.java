@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.plugin.game.model.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.k;
 
 final class GameDownloadView$3
   implements Runnable
@@ -9,7 +10,9 @@ final class GameDownloadView$3
   
   public final void run()
   {
-    GameDownloadView.e(this.laJ).a(GameDownloadView.c(this.laJ), GameDownloadView.d(this.laJ), GameDownloadView.b(this.laJ).kOM, GameDownloadView.b(this.laJ));
+    AppMethodBeat.i(111894);
+    GameDownloadView.e(this.nyF).a(GameDownloadView.c(this.nyF), GameDownloadView.d(this.nyF), GameDownloadView.b(this.nyF).nmJ, GameDownloadView.b(this.nyF));
+    AppMethodBeat.o(111894);
   }
 }
 

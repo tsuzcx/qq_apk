@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.d;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.page.v;
 
 public final class e
-  extends a<o>
+  extends a<v>
 {
-  private static final int CTRL_INDEX = 77;
-  private static final String NAME = "setKeyboardValue";
+  private static final int CTRL_INDEX = 119;
+  private static final String NAME = "removeTextArea";
 }
 
 

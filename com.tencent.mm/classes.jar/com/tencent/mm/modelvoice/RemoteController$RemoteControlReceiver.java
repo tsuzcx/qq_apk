@@ -3,48 +3,56 @@ package com.tencent.mm.modelvoice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class RemoteController$RemoteControlReceiver
   extends BroadcastReceiver
 {
-  private static am byQ;
-  private static RemoteController.a eKd;
+  private static ap caS;
+  private static RemoteController.a fZF;
   
-  public static void SY()
+  public static void amj()
   {
-    eKd = null;
-    if (byQ != null)
+    AppMethodBeat.i(116586);
+    fZF = null;
+    if (caS != null)
     {
-      byQ.stopTimer();
-      byQ = null;
+      caS.stopTimer();
+      caS = null;
     }
+    AppMethodBeat.o(116586);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    do
+    AppMethodBeat.i(116585);
+    if (paramIntent == null)
     {
+      AppMethodBeat.o(116585);
       return;
-      if (!"android.intent.action.MEDIA_BUTTON".equals(paramIntent.getAction()))
-      {
-        y.d("MicroMsg.RemoteControlReceiver", "unknown action, ignore" + paramIntent.getAction());
-        return;
-      }
-      if ((byQ == null) && (eKd != null))
-      {
-        y.d("MicroMsg.RemoteControlReceiver", "got remote key event down");
-        byQ = new am(new RemoteController.RemoteControlReceiver.1(this), true);
-      }
-    } while (byQ == null);
-    byQ.S(1000L, 1000L);
+    }
+    if (!"android.intent.action.MEDIA_BUTTON".equals(paramIntent.getAction()))
+    {
+      ab.d("MicroMsg.RemoteControlReceiver", "unknown action, ignore" + paramIntent.getAction());
+      AppMethodBeat.o(116585);
+      return;
+    }
+    if ((caS == null) && (fZF != null))
+    {
+      ab.d("MicroMsg.RemoteControlReceiver", "got remote key event down");
+      caS = new ap(new RemoteController.RemoteControlReceiver.1(this), true);
+    }
+    if (caS != null) {
+      caS.ag(1000L, 1000L);
+    }
+    AppMethodBeat.o(116585);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelvoice.RemoteController.RemoteControlReceiver
  * JD-Core Version:    0.7.0.1
  */

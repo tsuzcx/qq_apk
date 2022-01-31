@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.game.luggage;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameLuggageEntrance$3
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class GameLuggageEntrance$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.kMk.finish();
+    AppMethodBeat.i(135800);
+    this.njf.finish();
+    AppMethodBeat.o(135800);
     return false;
   }
 }

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.remittance.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RemittanceMsgAlertActivity$2
   implements DialogInterface.OnDismissListener
@@ -10,7 +11,9 @@ final class RemittanceMsgAlertActivity$2
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.nDX.finish();
+    AppMethodBeat.i(45082);
+    this.qqQ.finish();
+    AppMethodBeat.o(45082);
   }
 }
 

@@ -1,208 +1,160 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Paint;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.luggage.l.a.d;
-import com.tencent.luggage.l.a.e;
-import com.tencent.mm.sdk.platformtools.bk;
+import a.f.b.j;
+import a.l;
+import com.tencent.luggage.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
 
-@SuppressLint({"ViewConstructor"})
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageTrimLogic;", "", "()V", "TAG", "", "mCanTrim", "", "canTrimThisPage", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "canTrimThisPageWrapped", "getTrimPages", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageTrimLogic$RuntimeTrimmedPages;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "onPageReload", "", "setCanTrim", "can", "RuntimeTrimmedPages", "luggage-wechat-full-sdk_release"})
 public final class u
-  extends t
 {
-  private af gTF;
-  private u.a gUN;
-  private u.b gUO;
-  private boolean gUP = false;
-  private LinearLayout gUQ;
-  private TextView gUR;
-  private View gUS;
-  private ImageView gUT;
-  private ImageView gUU;
-  private ImageView gUV;
-  private long gUW = 0L;
+  private static boolean ixd;
+  public static final u ixe;
   
-  public u(Context paramContext, af paramaf)
+  static
   {
-    super(paramContext);
-    this.gTF = paramaf;
-    this.gUQ = ((LinearLayout)LayoutInflater.from(getContext()).inflate(a.e.app_brand_pulldown_webview_background, this, false));
-    paramContext = this.gUQ;
-    paramaf = paramaf.getWrapperView();
-    this.gUB = paramContext;
-    this.gUC = new FrameLayout(getContext());
-    this.gUC.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.gUC.addView(paramContext);
-    this.QR = paramaf;
-    this.gUD = new FrameLayout(getContext());
-    this.gUD.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.gUD.addView(paramaf);
-    addView(this.gUC);
-    addView(this.gUD);
-    this.gUR = ((TextView)findViewById(a.d.app_brand_pulldown_background_text));
-    this.gUS = findViewById(a.d.app_brand_pulldown_background_loading);
-    this.gUT = ((ImageView)findViewById(a.d.app_brand_pulldown_background_loading0));
-    this.gUU = ((ImageView)findViewById(a.d.app_brand_pulldown_background_loading1));
-    this.gUV = ((ImageView)findViewById(a.d.app_brand_pulldown_background_loading2));
+    AppMethodBeat.i(102480);
+    ixe = new u();
+    ixd = true;
+    AppMethodBeat.o(102480);
   }
   
-  private static AnimationDrawable e(int paramInt, float[] paramArrayOfFloat)
+  private static u.a G(i parami)
   {
-    AnimationDrawable localAnimationDrawable = new AnimationDrawable();
-    localAnimationDrawable.setOneShot(false);
-    localAnimationDrawable.addFrame(h(paramInt, paramArrayOfFloat[0]), 0);
-    localAnimationDrawable.addFrame(h(paramInt, paramArrayOfFloat[1]), 300);
-    localAnimationDrawable.addFrame(h(paramInt, paramArrayOfFloat[2]), 300);
-    localAnimationDrawable.addFrame(h(paramInt, paramArrayOfFloat[3]), 300);
-    return localAnimationDrawable;
-  }
-  
-  private static Drawable h(int paramInt, float paramFloat)
-  {
-    ShapeDrawable localShapeDrawable = new ShapeDrawable(new OvalShape());
-    localShapeDrawable.setIntrinsicHeight(32);
-    localShapeDrawable.setIntrinsicWidth(32);
-    localShapeDrawable.getPaint().setColor(paramInt);
-    localShapeDrawable.getPaint().setAlpha((int)(255.0F * paramFloat));
-    return localShapeDrawable;
-  }
-  
-  public final void aX(String paramString, int paramInt)
-  {
-    setBackgroundTextStyle(paramString);
-    setPullDownBackgroundColor(paramInt);
-  }
-  
-  protected final boolean agD()
-  {
-    return this.gTF.agD();
-  }
-  
-  protected final void anA()
-  {
-    ((AnimationDrawable)this.gUT.getDrawable()).start();
-    ((AnimationDrawable)this.gUU.getDrawable()).start();
-    ((AnimationDrawable)this.gUV.getDrawable()).start();
-    if (this.gUN != null) {
-      this.gUN.anr();
-    }
-    this.gUW = System.currentTimeMillis();
-  }
-  
-  protected final void anB()
-  {
-    ((AnimationDrawable)this.gUT.getDrawable()).stop();
-    ((AnimationDrawable)this.gUT.getDrawable()).selectDrawable(0);
-    ((AnimationDrawable)this.gUU.getDrawable()).stop();
-    ((AnimationDrawable)this.gUU.getDrawable()).selectDrawable(0);
-    ((AnimationDrawable)this.gUV.getDrawable()).stop();
-    ((AnimationDrawable)this.gUV.getDrawable()).selectDrawable(0);
-  }
-  
-  public final void anC()
-  {
-    long l = System.currentTimeMillis() - this.gUW;
-    if (l < 1000L)
+    AppMethodBeat.i(102479);
+    u.a locala = (u.a)parami.V(u.a.class);
+    if (locala == null)
     {
-      postDelayed(new u.1(this), 1000L - l);
-      return;
+      locala = new u.a(parami);
+      parami.a((k)locala);
     }
-    anz();
-  }
-  
-  public final void cT(boolean paramBoolean)
-  {
-    this.gUP = paramBoolean;
-    setNeedStay(paramBoolean);
-    View localView = this.gUS;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
+    for (parami = locala;; parami = locala)
     {
-      localView.setVisibility(i);
-      return;
+      AppMethodBeat.o(102479);
+      return parami;
     }
   }
   
-  protected final int getStayHeight()
+  public static final void e(v paramv)
   {
-    return this.gUQ.getHeight();
-  }
-  
-  protected final void lZ(int paramInt)
-  {
-    if (this.gUO != null) {
-      this.gUO.kU(paramInt);
-    }
-    if (!this.gUP) {
-      return;
-    }
-    int i = paramInt;
-    if (paramInt > this.gUQ.getHeight()) {
-      i = this.gUQ.getHeight();
-    }
-    this.gUQ.setTranslationY(i - this.gUQ.getHeight());
-  }
-  
-  public final void setBackgroundTextStyle(String paramString)
-  {
-    if ("light".equals(paramString))
+    AppMethodBeat.i(102477);
+    j.q(paramv, "page");
+    if (paramv.getRuntime() == null)
     {
-      this.gUT.setImageDrawable(e(-1, new float[] { 0.2F, 0.6F, 0.4F, 0.2F }));
-      this.gUU.setImageDrawable(e(-1, new float[] { 0.2F, 0.2F, 0.6F, 0.4F }));
-      this.gUV.setImageDrawable(e(-1, new float[] { 0.2F, 0.4F, 0.2F, 0.6F }));
-      this.gUR.setTextColor(-1);
-      this.gUR.setAlpha(0.4F);
-    }
-    while ((!"dark".equals(paramString)) && ("ignore".equals(paramString))) {
+      AppMethodBeat.o(102477);
       return;
     }
-    this.gUT.setImageDrawable(e(-16777216, new float[] { 0.1F, 0.4F, 0.2F, 0.1F }));
-    this.gUU.setImageDrawable(e(-16777216, new float[] { 0.1F, 0.1F, 0.4F, 0.2F }));
-    this.gUV.setImageDrawable(e(-16777216, new float[] { 0.1F, 0.2F, 0.1F, 0.4F }));
-    this.gUR.setTextColor(-16777216);
-    this.gUR.setAlpha(0.2F);
-  }
-  
-  public final void setHeadViewHeight(int paramInt)
-  {
-    if (paramInt <= this.gUQ.getHeight()) {
-      return;
-    }
-    this.gUQ.getLayoutParams().height = paramInt;
-    this.gUQ.requestLayout();
-  }
-  
-  public final void setOnPullDownListener(u.a parama)
-  {
-    this.gUN = parama;
-  }
-  
-  public final void setOnPullDownOffsetListener(u.b paramb)
-  {
-    this.gUO = paramb;
-  }
-  
-  public final void setPullDownText(String paramString)
-  {
-    if (bk.bl(paramString))
+    try
     {
-      this.gUR.setVisibility(8);
+      i locali = paramv.getRuntime();
+      j.p(locali, "page.runtime");
+      G(locali).remove(paramv);
+      AppMethodBeat.o(102477);
       return;
     }
-    this.gUR.setVisibility(0);
-    this.gUR.setText(paramString);
+    catch (Exception paramv)
+    {
+      d.w("Luggage.AppBrandPageTrimLogic[wxa_reload]", "onPageReload ".concat(String.valueOf(paramv)));
+      AppMethodBeat.o(102477);
+    }
+  }
+  
+  public static final void eC(boolean paramBoolean)
+  {
+    ixd = paramBoolean;
+  }
+  
+  public static final boolean f(v paramv)
+  {
+    AppMethodBeat.i(102478);
+    j.q(paramv, "page");
+    try
+    {
+      if (!ixd) {
+        break label306;
+      }
+      localObject = (CharSequence)paramv.getURL();
+      if (localObject == null) {
+        break label333;
+      }
+      if (((CharSequence)localObject).length() != 0) {
+        break label168;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject;
+        label168:
+        label306:
+        d.w("Luggage.AppBrandPageTrimLogic[wxa_reload]", "canTrimThisPage ".concat(String.valueOf(localException)));
+        boolean bool = false;
+        continue;
+        int i = 1;
+        continue;
+        bool = false;
+      }
+    }
+    if (i == 0)
+    {
+      localObject = paramv.getRuntime();
+      if ((localObject != null) && (!((i)localObject).isResumed()))
+      {
+        localObject = paramv.getRuntime();
+        if (localObject == null) {
+          j.ebi();
+        }
+        bool = ((i)localObject).atC();
+        if (bool) {
+          bool = true;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (bool)
+      {
+        localObject = paramv.getRuntime();
+        j.p(localObject, "page.runtime");
+        G((i)localObject).add(paramv);
+        d.i("Luggage.AppBrandPageTrimLogic[wxa_reload]", "page trimmed, appId[" + paramv.getAppId() + "] path[" + paramv.getURL() + ']');
+      }
+      AppMethodBeat.o(102478);
+      return bool;
+      i = 0;
+      break;
+      localObject = paramv.aJj();
+      if ((localObject == null) || (((o)localObject).isInBackground() != true)) {
+        break label338;
+      }
+      if ((!(paramv.aJj() instanceof h)) && (paramv.getRuntime() != null))
+      {
+        localObject = paramv.getRuntime();
+        j.p(localObject, "page.runtime");
+        if ((((i)localObject).atj() != null) && (paramv.aJj() != null))
+        {
+          localObject = paramv.aJj();
+          if (localObject == null) {
+            j.ebi();
+          }
+          i = ((o)localObject).aIT();
+          localObject = paramv.getRuntime();
+          j.p(localObject, "page.runtime");
+          localObject = ((i)localObject).atj();
+          j.p(localObject, "page.runtime.pageContainer");
+          int j = ((r)localObject).getPageCount();
+          if (i < j - 5)
+          {
+            bool = true;
+            continue;
+          }
+        }
+      }
+      bool = false;
+    }
   }
 }
 

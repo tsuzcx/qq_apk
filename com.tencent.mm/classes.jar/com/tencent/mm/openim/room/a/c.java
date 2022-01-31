@@ -1,25 +1,28 @@
 package com.tencent.mm.openim.room.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 
 public final class c
 {
-  private int dmX = 0;
-  public int dmY;
+  private int eey = 0;
+  public int eez;
   
-  public final void jH(int paramInt)
+  public final void mD(int paramInt)
   {
-    this.dmX |= paramInt;
+    this.eey |= paramInt;
   }
   
-  final void jI(int paramInt)
+  final void mE(int paramInt)
   {
-    this.dmX &= (paramInt ^ 0xFFFFFFFF);
-    if (this.dmX == 0)
+    AppMethodBeat.i(78980);
+    this.eey &= (paramInt ^ 0xFFFFFFFF);
+    if (this.eey == 0)
     {
-      WXHardCoderJNI.stopPerformace(WXHardCoderJNI.hcUpdateChatroomEnable, this.dmY);
-      this.dmY = 0;
+      WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcUpdateChatroomEnable, this.eez);
+      this.eez = 0;
     }
+    AppMethodBeat.o(78980);
   }
 }
 

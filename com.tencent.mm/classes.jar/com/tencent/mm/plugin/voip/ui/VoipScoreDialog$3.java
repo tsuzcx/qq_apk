@@ -1,23 +1,19 @@
 package com.tencent.mm.plugin.voip.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.voip.a.e;
-import com.tencent.mm.ui.widget.a.c;
-import com.tencent.mm.ui.widget.snackbar.b;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoipScoreDialog$3
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   VoipScoreDialog$3(VoipScoreDialog paramVoipScoreDialog) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    VoipScoreDialog.b(this.pXr, 3);
-    b.a(this.pXr, null, this.pXr.getString(a.e.voip_score_dialog_dismiss_message), new VoipScoreDialog.3.1(this));
-    if (VoipScoreDialog.a(this.pXr) != null) {
-      VoipScoreDialog.a(this.pXr).dismiss();
-    }
+    AppMethodBeat.i(4858);
+    this.tCU.finish();
+    AppMethodBeat.o(4858);
   }
 }
 

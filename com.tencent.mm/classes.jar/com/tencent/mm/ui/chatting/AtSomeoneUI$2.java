@@ -1,35 +1,38 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.mm.ui.tools.n.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.tools.q.b;
 
 final class AtSomeoneUI$2
-  implements n.b
+  implements q.b
 {
   AtSomeoneUI$2(AtSomeoneUI paramAtSomeoneUI) {}
   
-  public final void Wl() {}
+  public final void apN() {}
   
-  public final void Wm() {}
+  public final void apO() {}
   
-  public final void Wn() {}
+  public final void apP() {}
   
-  public final void Wo() {}
+  public final void apQ() {}
   
-  public final boolean pB(String paramString)
+  public final boolean wR(String paramString)
   {
     return false;
   }
   
-  public final void pC(String paramString)
+  public final void wS(String paramString)
   {
-    AtSomeoneUI.a locala = AtSomeoneUI.a(this.vhx);
-    locala.drv = paramString;
+    AppMethodBeat.i(30388);
+    AtSomeoneUI.a locala = AtSomeoneUI.a(this.zwr);
+    locala.ejd = paramString;
     locala.a(null, null);
+    AppMethodBeat.o(30388);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.AtSomeoneUI.2
  * JD-Core Version:    0.7.0.1
  */

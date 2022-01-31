@@ -1,13 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/z4" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/dl" android:paddingRight="@dimen/li" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/cuo" android:layout_width="@dimen/la" android:layout_height="@dimen/la">
-        <com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView android:id="@id/cup" android:layout_width="@dimen/la" android:layout_height="@dimen/la" android:scaleType="fitXY" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/cuq" android:background="@null" android:layout_width="@dimen/mo" android:layout_height="@dimen/mo" android:src="@drawable/app" android:scaleType="centerInside" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <FrameLayout android:id="@id/cur" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/li" android:layout_marginRight="@dimen/mq" android:layout_weight="1.0">
-        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/rr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:progressDrawable="@drawable/u_" android:minHeight="@dimen/a5b" style="?android:attr/progressBarStyleHorizontal" />
-        <TextView android:textSize="@dimen/k9" android:layout_gravity="center_vertical" android:id="@id/bpg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/e_p" />
-    </FrameLayout>
-    <ImageButton android:id="@id/as3" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/p6" />
-</LinearLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

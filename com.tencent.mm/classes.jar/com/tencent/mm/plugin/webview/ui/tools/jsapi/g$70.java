@@ -1,45 +1,27 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.app.ProgressDialog;
-import com.tencent.mm.plugin.webview.model.ag;
-import com.tencent.mm.plugin.webview.model.d.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.snackbar.a.c;
 
 final class g$70
-  implements d.b
+  implements a.c
 {
-  g$70(g paramg, String paramString1, String paramString2, i parami) {}
+  g$70(g paramg) {}
   
-  public final void b(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  public final void cPa() {}
+  
+  public final void onHide()
   {
-    y.i("MicroMsg.MsgHandler", this.gQZ + " on cdn finish,  is success : %s, mediaid : %s, local id is : %s, mediaUrl : %s", new Object[] { Boolean.valueOf(paramBoolean), paramString2, paramString1, paramString3 });
-    if ((!bk.bl(paramString1)) && (paramString1.equals(this.rec)))
-    {
-      com.tencent.mm.plugin.webview.modeltools.g.ccK().a(this);
-      if (g.k(this.rzi) != null)
-      {
-        g.k(this.rzi).dismiss();
-        g.a(this.rzi, null);
-      }
-      if (!paramBoolean) {
-        g.a(this.rzi, this.rzk, this.gQZ + ":fail", null);
-      }
-    }
-    else
-    {
-      return;
-    }
-    paramString1 = new HashMap();
-    paramString1.put("serverId", paramString2);
-    paramString1.put("mediaUrl", paramString3);
-    g.a(this.rzi, this.rzk, this.gQZ + ":ok", paramString1);
+    AppMethodBeat.i(9132);
+    this.vqm.a(g.k(this.vqm), "send_app_msg:ok", null);
+    AppMethodBeat.o(9132);
   }
+  
+  public final void onShow() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.70
  * JD-Core Version:    0.7.0.1
  */

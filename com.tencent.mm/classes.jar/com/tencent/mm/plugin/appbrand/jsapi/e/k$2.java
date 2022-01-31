@@ -1,23 +1,31 @@
 package com.tencent.mm.plugin.appbrand.jsapi.e;
 
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.page.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.a.c.a;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class k$2
   implements Runnable
 {
-  k$2(k paramk, i parami) {}
+  k$2(k paramk) {}
   
   public final void run()
   {
-    long l = System.currentTimeMillis() - this.grJ.grI;
-    if (l < 3000L)
+    AppMethodBeat.i(74748);
+    if (this.hNh.hNg == null)
     {
-      ai.l(new k.2.1(this), 3000L - l);
+      AppMethodBeat.o(74748);
       return;
     }
-    a.t(this.fAy).lX(this.grJ.giU);
+    long l = System.currentTimeMillis() - this.hNh.hNf;
+    if (l < 3000L)
+    {
+      al.p(new k.2.1(this), 3000L - l);
+      AppMethodBeat.o(74748);
+      return;
+    }
+    this.hNh.hNg.dismiss();
+    AppMethodBeat.o(74748);
   }
 }
 

@@ -1,69 +1,83 @@
 package com.google.android.exoplayer2.f.c;
 
 import com.google.android.exoplayer2.f.d;
-import com.google.android.exoplayer2.i.t;
+import com.google.android.exoplayer2.i.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.List;
 
 final class b
   implements d
 {
-  private final com.google.android.exoplayer2.f.a[] aOM;
-  private final long[] aON;
+  private final com.google.android.exoplayer2.f.a[] aWg;
+  private final long[] aWh;
   
   public b(com.google.android.exoplayer2.f.a[] paramArrayOfa, long[] paramArrayOfLong)
   {
-    this.aOM = paramArrayOfa;
-    this.aON = paramArrayOfLong;
+    this.aWg = paramArrayOfa;
+    this.aWh = paramArrayOfLong;
   }
   
-  public final int S(long paramLong)
+  public final int ab(long paramLong)
   {
-    int i = t.a(this.aON, paramLong);
-    if (i < this.aON.length) {
+    AppMethodBeat.i(95643);
+    int i = x.a(this.aWh, paramLong, false, false);
+    if (i < this.aWh.length)
+    {
+      AppMethodBeat.o(95643);
       return i;
     }
+    AppMethodBeat.o(95643);
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> T(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> ac(long paramLong)
   {
-    int i = t.a(this.aON, paramLong, false);
-    if ((i == -1) || (this.aOM[i] == null)) {
-      return Collections.emptyList();
+    AppMethodBeat.i(95645);
+    int i = x.a(this.aWh, paramLong, false);
+    if ((i == -1) || (this.aWg[i] == null))
+    {
+      localList = Collections.emptyList();
+      AppMethodBeat.o(95645);
+      return localList;
     }
-    return Collections.singletonList(this.aOM[i]);
+    List localList = Collections.singletonList(this.aWg[i]);
+    AppMethodBeat.o(95645);
+    return localList;
   }
   
-  public final long dn(int paramInt)
+  public final long dT(int paramInt)
   {
     boolean bool2 = true;
+    AppMethodBeat.i(95644);
     if (paramInt >= 0)
     {
       bool1 = true;
-      com.google.android.exoplayer2.i.a.aB(bool1);
-      if (paramInt >= this.aON.length) {
-        break label39;
+      com.google.android.exoplayer2.i.a.checkArgument(bool1);
+      if (paramInt >= this.aWh.length) {
+        break label53;
       }
     }
-    label39:
+    label53:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      com.google.android.exoplayer2.i.a.aB(bool1);
-      return this.aON[paramInt];
+      com.google.android.exoplayer2.i.a.checkArgument(bool1);
+      long l = this.aWh[paramInt];
+      AppMethodBeat.o(95644);
+      return l;
       bool1 = false;
       break;
     }
   }
   
-  public final int nk()
+  public final int pH()
   {
-    return this.aON.length;
+    return this.aWh.length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.f.c.b
  * JD-Core Version:    0.7.0.1
  */

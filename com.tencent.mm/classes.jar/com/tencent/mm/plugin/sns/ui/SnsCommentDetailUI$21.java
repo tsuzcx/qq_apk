@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.graphics.BitmapFactory;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
 import com.tencent.mm.plugin.sns.storage.b;
@@ -12,26 +12,28 @@ final class SnsCommentDetailUI$21
 {
   SnsCommentDetailUI$21(SnsCommentDetailUI paramSnsCommentDetailUI, PhotosContent paramPhotosContent, b paramb, TagImageView paramTagImageView) {}
   
-  public final void Op(String paramString)
+  public final void abi(String paramString)
   {
-    MaskImageView localMaskImageView = (MaskImageView)this.oWZ.findViewById(i.f.media_icon);
+    AppMethodBeat.i(38801);
+    MaskImageView localMaskImageView = (MaskImageView)this.rPx.findViewById(2131828139);
     if (localMaskImageView != null)
     {
       localMaskImageView.setVisibility(0);
       localMaskImageView.setImageBitmap(BitmapFactory.decodeFile(paramString));
-      float f1 = i.a(this.oXa.oBn, 1, this.oXa.oBj, this.oXa.oBk);
-      float f2 = i.a(this.oXa.oBo, 1, this.oXa.oBj, this.oXa.oBk);
-      float f3 = i.a(this.oXa.oBp, 1, this.oXa.oBj, this.oXa.oBk);
-      float f4 = i.a(this.oXa.oBq, 1, this.oXa.oBj, this.oXa.oBk);
+      float f1 = i.a(this.rPy.rqx, 1, this.rPy.rqt, this.rPy.rqu);
+      float f2 = i.a(this.rPy.rqy, 1, this.rPy.rqt, this.rPy.rqu);
+      float f3 = i.a(this.rPy.rqz, 1, this.rPy.rqt, this.rPy.rqu);
+      float f4 = i.a(this.rPy.rqA, 1, this.rPy.rqt, this.rPy.rqu);
       paramString = new FrameLayout.LayoutParams((int)f1, (int)f2);
-      paramString.setMargins((int)(this.oXb.getRight() - f3 - f1), (int)(this.oXb.getBottom() - f4 - f2), 0, 0);
+      paramString.setMargins((int)(this.rPz.getRight() - f3 - f1), (int)(this.rPz.getBottom() - f4 - f2), 0, 0);
       localMaskImageView.setLayoutParams(paramString);
     }
+    AppMethodBeat.o(38801);
   }
   
-  public final void bCF() {}
+  public final void coe() {}
   
-  public final void bFl() {}
+  public final void cqU() {}
 }
 
 

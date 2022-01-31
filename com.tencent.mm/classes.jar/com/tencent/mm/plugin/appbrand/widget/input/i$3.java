@@ -1,58 +1,47 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.d.f.a;
-import com.tencent.mm.plugin.appbrand.jsapi.l;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.pointers.PBool;
 import java.lang.ref.WeakReference;
-import org.json.JSONObject;
 
-public final class i$3
-  implements ae
+final class i$3
+  implements Runnable
 {
-  public i$3(i parami, WeakReference paramWeakReference, c paramc, int paramInt, String paramString) {}
+  i$3(i parami, PBool paramPBool) {}
   
-  public final void a(String paramString, int paramInt, ae.a parama)
+  public final void run()
   {
-    for (;;)
+    AppMethodBeat.i(141603);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.AppBrandInputInvokeHandler", "ensureInputFocusedWithSoftKeyboard, before run checkForInput");
+    this.jlx.value = true;
+    if (this.jlw.jlj == null) {}
+    for (v localv = null; (localv == null) || (this.jlw.jll == null); localv = (v)this.jlw.jlj.get())
     {
-      try
-      {
-        q localq = (q)this.gro.get();
-        if (localq == null) {
-          return;
-        }
-        JSONObject localJSONObject = new JSONObject().put("value", paramString).put("keyCode", ((aa)this.htx.arH()).getLastKeyPressed()).put("inputId", this.grq).put("cursor", paramInt);
-        if (ae.a.hvK.equals(parama))
-        {
-          paramString = new f.a();
-          paramString.a(localq.getRuntime().Zy(), localq.hashCode()).dispatch();
-          paramString.tL(localJSONObject.put("data", this.hty).toString());
-          paramString.dispatch();
-          return;
-        }
-        switch (i.5.htz[parama.ordinal()])
-        {
-        case 2: 
-          if (!bk.bl(paramString))
-          {
-            localq.i(paramString, localJSONObject.toString(), 0);
-            return;
-            paramString = "onKeyboardConfirm";
-            continue;
-          }
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        return;
-      }
-      paramString = null;
-      continue;
-      paramString = "onKeyboardComplete";
+      AppMethodBeat.o(141603);
+      return;
     }
+    if (o.s(localv) != this.jlw)
+    {
+      AppMethodBeat.o(141603);
+      return;
+    }
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.AppBrandInputInvokeHandler", "ensureInputFocusedWithSoftKeyboard, run checkForInput");
+    h.aQF().c(localv.iuy);
+    aj.cW(this.jlw.jll);
+    if ((this.jlw.jlm != null) && (this.jlw.jlm.b(null))) {
+      this.jlw.jlm.hide();
+    }
+    this.jlw.jll.a(this.jlw.jle);
+    this.jlw.jll.setFocusable(true);
+    this.jlw.jll.setFocusableInTouchMode(true);
+    this.jlw.jlm.jnn = this.jlw.jll;
+    this.jlw.jll.requestFocus();
+    aj.cW(this.jlw.jll);
+    if (this.jlw.jlm != null) {
+      this.jlw.jlm.show();
+    }
+    AppMethodBeat.o(141603);
   }
 }
 

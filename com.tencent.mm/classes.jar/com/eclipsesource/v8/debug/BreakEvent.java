@@ -1,6 +1,7 @@
 package com.eclipsesource.v8.debug;
 
 import com.eclipsesource.v8.V8Object;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class BreakEvent
   extends EventData
@@ -16,17 +17,26 @@ public class BreakEvent
   
   public int getSourceColumn()
   {
-    return this.v8Object.executeIntegerFunction("sourceColumn", null);
+    AppMethodBeat.i(74823);
+    int i = this.v8Object.executeIntegerFunction("sourceColumn", null);
+    AppMethodBeat.o(74823);
+    return i;
   }
   
   public int getSourceLine()
   {
-    return this.v8Object.executeIntegerFunction("sourceLine", null);
+    AppMethodBeat.i(74822);
+    int i = this.v8Object.executeIntegerFunction("sourceLine", null);
+    AppMethodBeat.o(74822);
+    return i;
   }
   
   public String getSourceLineText()
   {
-    return this.v8Object.executeStringFunction("sourceLineText", null);
+    AppMethodBeat.i(74824);
+    String str = this.v8Object.executeStringFunction("sourceLineText", null);
+    AppMethodBeat.o(74824);
+    return str;
   }
 }
 

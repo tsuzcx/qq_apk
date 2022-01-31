@@ -1,138 +1,162 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.text.TextPaint;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 final class TextViewMultilineEllipse$a
 {
-  boolean oSL = false;
-  ArrayList<int[]> oSM = new ArrayList();
-  float oSN;
-  float oSO;
-  float oSP;
+  boolean rKD;
+  ArrayList<int[]> rKE;
+  float rKF;
+  float rKG;
+  float rKH;
+  
+  public TextViewMultilineEllipse$a()
+  {
+    AppMethodBeat.i(39843);
+    this.rKD = false;
+    this.rKE = new ArrayList();
+    AppMethodBeat.o(39843);
+  }
+  
+  public final int a(String paramString, int paramInt, TextPaint paramTextPaint)
+  {
+    AppMethodBeat.i(39844);
+    paramInt = a(paramString, null, null, -1, paramInt, paramTextPaint);
+    AppMethodBeat.o(39844);
+    return paramInt;
+  }
   
   public final int a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, TextPaint paramTextPaint)
   {
-    this.oSM.clear();
-    this.oSL = false;
-    this.oSN = 0.0F;
-    this.oSO = 0.0F;
-    this.oSP = 0.0F;
-    int i;
+    AppMethodBeat.i(39845);
+    this.rKE.clear();
+    this.rKD = false;
+    this.rKF = 0.0F;
+    this.rKG = 0.0F;
+    this.rKH = 0.0F;
     if (paramInt2 == -1)
     {
-      this.oSM.add(new int[] { 0, paramString1.length() });
-      i = (int)(paramTextPaint.measureText(paramString1) + 0.5F);
+      this.rKE.add(new int[] { 0, paramString1.length() });
+      paramInt1 = (int)(paramTextPaint.measureText(paramString1) + 0.5F);
+      AppMethodBeat.o(39845);
+      return paramInt1;
     }
-    label288:
-    label486:
-    do
+    if (paramString2 != null) {
+      this.rKG = paramTextPaint.measureText(paramString2);
+    }
+    if (paramString3 != null) {
+      this.rKH = paramTextPaint.measureText(paramString3);
+    }
+    int k = -1;
+    float f1 = 0.0F;
+    int n = 1;
+    int i = 0;
+    int m = paramInt2;
+    paramInt2 = i;
+    if (paramInt2 < paramString1.length())
     {
-      return i;
-      if (paramString2 != null) {
-        this.oSO = paramTextPaint.measureText(paramString2);
+      i = k;
+      if (k == -1) {
+        i = paramInt2;
       }
-      if (paramString3 != null) {
-        this.oSP = paramTextPaint.measureText(paramString3);
+      if (this.rKE.size() == paramInt1) {
+        this.rKD = true;
       }
-      int m = -1;
-      float f1 = 0.0F;
-      int n = 1;
-      int j = 0;
-      i = paramInt2;
-      paramInt2 = j;
-      if (paramInt2 < paramString1.length())
+    }
+    else
+    {
+      if (this.rKD)
       {
-        j = m;
-        if (m == -1) {
-          j = paramInt2;
-        }
-        if (this.oSM.size() == paramInt1) {
-          this.oSL = true;
-        }
+        paramString2 = (int[])this.rKE.get(this.rKE.size() - 1);
+        this.rKF = paramTextPaint.measureText(paramString1.substring(paramString2[0], paramString2[1] + 1));
+      }
+      if (this.rKE.size() != 0) {
+        break label575;
+      }
+      AppMethodBeat.o(39845);
+      return 0;
+    }
+    float f2 = paramTextPaint.measureText(paramString1.charAt(paramInt2));
+    k = 0;
+    int j;
+    label303:
+    int i2;
+    int i1;
+    if (paramString1.charAt(paramInt2) == '\n')
+    {
+      k = 1;
+      this.rKE.add(new int[] { i, paramInt2 - 1 });
+      j = paramInt2;
+      if (k == 0) {
+        break label501;
+      }
+      paramInt2 = -1;
+      f2 = 0.0F;
+      i2 = n;
+      f1 = f2;
+      k = paramInt2;
+      i1 = m;
+      if (this.rKE.size() == paramInt1 - 1)
+      {
+        i1 = (int)(m - (this.rKG + this.rKH));
+        i2 = 0;
+        k = paramInt2;
+        f1 = f2;
+      }
+    }
+    for (;;)
+    {
+      paramInt2 = j + 1;
+      n = i2;
+      m = i1;
+      break;
+      j = paramInt2;
+      if (f1 + f2 < m) {
+        break label303;
+      }
+      k = 1;
+      if (paramString1.charAt(paramInt2) != ' ')
+      {
+        j = paramInt2;
+        if (n != 0) {}
       }
       else
       {
-        if (this.oSL)
-        {
-          paramString2 = (int[])this.oSM.get(this.oSM.size() - 1);
-          this.oSN = paramTextPaint.measureText(paramString1.substring(paramString2[0], paramString2[1] + 1));
-        }
-        if (this.oSM.size() != 0) {
-          continue;
-        }
-        return 0;
+        j = paramInt2 - 1;
+        this.rKE.add(new int[] { i, j });
+        break label303;
       }
-      float f2 = paramTextPaint.measureText(paramString1.charAt(paramInt2));
-      m = 0;
-      int k;
-      int i2;
-      int i1;
-      if (paramString1.charAt(paramInt2) == '\n')
+      while (paramString1.charAt(j) != ' ') {
+        j -= 1;
+      }
+      this.rKE.add(new int[] { i, j });
+      break label303;
+      label501:
+      f2 = f1 + f2;
+      i2 = n;
+      f1 = f2;
+      k = i;
+      i1 = m;
+      if (j == paramString1.length() - 1)
       {
-        m = 1;
-        this.oSM.add(new int[] { j, paramInt2 - 1 });
-        k = paramInt2;
-        if (m == 0) {
-          break label486;
-        }
-        paramInt2 = -1;
-        f2 = 0.0F;
+        this.rKE.add(new int[] { i, j });
         i2 = n;
         f1 = f2;
-        m = paramInt2;
-        i1 = i;
-        if (this.oSM.size() == paramInt1 - 1)
-        {
-          i1 = (int)(i - (this.oSO + this.oSP));
-          i2 = 0;
-          m = paramInt2;
-          f1 = f2;
-        }
+        k = i;
+        i1 = m;
       }
-      for (;;)
-      {
-        paramInt2 = k + 1;
-        n = i2;
-        i = i1;
-        break;
-        k = paramInt2;
-        if (f1 + f2 < i) {
-          break label288;
-        }
-        m = 1;
-        if (paramString1.charAt(paramInt2) != ' ')
-        {
-          k = paramInt2;
-          if (n != 0) {}
-        }
-        else
-        {
-          k = paramInt2 - 1;
-          this.oSM.add(new int[] { j, k });
-          break label288;
-        }
-        while (paramString1.charAt(k) != ' ') {
-          k -= 1;
-        }
-        this.oSM.add(new int[] { j, k });
-        break label288;
-        f2 = f1 + f2;
-        i2 = n;
-        f1 = f2;
-        m = j;
-        i1 = i;
-        if (k == paramString1.length() - 1)
-        {
-          this.oSM.add(new int[] { j, k });
-          i2 = n;
-          f1 = f2;
-          m = j;
-          i1 = i;
-        }
-      }
-    } while (this.oSM.size() != 1);
-    return (int)(paramTextPaint.measureText(paramString1) + 0.5F);
+    }
+    label575:
+    if (this.rKE.size() == 1)
+    {
+      paramInt1 = (int)(paramTextPaint.measureText(paramString1) + 0.5F);
+      AppMethodBeat.o(39845);
+      return paramInt1;
+    }
+    AppMethodBeat.o(39845);
+    return m;
   }
 }
 

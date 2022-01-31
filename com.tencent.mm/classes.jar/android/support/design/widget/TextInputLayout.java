@@ -17,19 +17,18 @@ import android.graphics.drawable.DrawableContainer;
 import android.os.Build.VERSION;
 import android.os.Parcelable;
 import android.os.Parcelable.ClassLoaderCreator;
-import android.support.design.a.f;
-import android.support.design.a.h;
-import android.support.design.a.j;
-import android.support.design.a.k;
+import android.support.design.a.a;
+import android.support.v4.content.b;
 import android.support.v4.view.AbsSavedState;
+import android.support.v4.view.t;
 import android.support.v4.widget.Space;
-import android.support.v4.widget.s;
-import android.support.v7.a.a.c;
+import android.support.v4.widget.q;
+import android.support.v4.widget.u;
+import android.support.v7.appcompat.R.color;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.ax;
-import android.support.v7.widget.bg;
-import android.support.v7.widget.h;
-import android.support.v7.widget.y;
+import android.support.v7.widget.az;
+import android.support.v7.widget.bi;
+import android.support.v7.widget.x;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
@@ -52,49 +51,49 @@ import android.widget.TextView;
 
 public class TextInputLayout
   extends LinearLayout
-  implements bg
+  implements bi
 {
-  private final Rect hc = new Rect();
-  final f hd = new f(this);
-  private ValueAnimator jQ;
-  boolean lA;
-  private TextView lB;
-  private int lC;
-  private int lD;
-  private int lE;
-  private boolean lF;
-  private boolean lG;
-  private Drawable lH;
-  private CharSequence lI;
-  private CheckableImageButton lJ;
-  private boolean lK;
-  private Drawable lL;
-  private Drawable lM;
-  private ColorStateList lN;
-  private boolean lO;
-  private PorterDuff.Mode lP;
-  private boolean lQ;
-  private ColorStateList lR;
-  private ColorStateList lS;
-  private boolean lT;
-  private boolean lU;
-  private boolean lV;
-  private boolean lW;
-  private boolean lX;
-  private final FrameLayout lm;
-  EditText ln;
-  private CharSequence lo;
-  private boolean lp;
-  private CharSequence lq;
-  private Paint lr;
-  private LinearLayout ls;
-  private int lt;
-  private Typeface lu;
-  private boolean lv;
-  TextView lw;
-  private int lx;
-  private boolean ly;
-  private CharSequence lz;
+  private final Rect hV = new Rect();
+  final f hW = new f(this);
+  private ValueAnimator kO;
+  private boolean mA;
+  private boolean mB;
+  private Drawable mC;
+  private CharSequence mD;
+  private CheckableImageButton mE;
+  EditText mEditText;
+  private boolean mF;
+  private Drawable mG;
+  private Drawable mH;
+  private ColorStateList mI;
+  private boolean mJ;
+  private PorterDuff.Mode mK;
+  private boolean mL;
+  private ColorStateList mM;
+  private ColorStateList mN;
+  private boolean mO;
+  private boolean mP;
+  private boolean mQ;
+  private boolean mR;
+  private boolean mS;
+  private final FrameLayout mi;
+  private CharSequence mj;
+  private boolean mk;
+  private CharSequence ml;
+  private Paint mm;
+  private LinearLayout mn;
+  private int mo;
+  private Typeface mp;
+  private boolean mq;
+  TextView mr;
+  private int ms;
+  private boolean mt;
+  private CharSequence mu;
+  boolean mv;
+  private TextView mw;
+  private int mx;
+  private int my;
+  private int mz;
   
   public TextInputLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -104,58 +103,58 @@ public class TextInputLayout
   public TextInputLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    o.G(paramContext);
+    n.F(paramContext);
     setOrientation(1);
     setWillNotDraw(false);
     setAddStatesFromChildren(true);
-    this.lm = new FrameLayout(paramContext);
-    this.lm.setAddStatesFromChildren(true);
-    addView(this.lm);
-    this.hd.b(a.el);
-    f localf = this.hd;
-    localf.gJ = new AccelerateInterpolator();
-    localf.az();
-    this.hd.A(8388659);
-    paramContext = ax.a(paramContext, paramAttributeSet, a.k.TextInputLayout, paramInt, a.j.Widget_Design_TextInputLayout);
-    this.lp = paramContext.getBoolean(a.k.TextInputLayout_hintEnabled, true);
-    setHint(paramContext.getText(a.k.TextInputLayout_android_hint));
-    this.lU = paramContext.getBoolean(a.k.TextInputLayout_hintAnimationEnabled, true);
-    if (paramContext.hasValue(a.k.TextInputLayout_android_textColorHint))
+    this.mi = new FrameLayout(paramContext);
+    this.mi.setAddStatesFromChildren(true);
+    addView(this.mi);
+    this.hW.b(a.fj);
+    f localf = this.hW;
+    localf.hC = new AccelerateInterpolator();
+    localf.bh();
+    this.hW.z(8388659);
+    paramContext = az.a(paramContext, paramAttributeSet, a.a.TextInputLayout, paramInt, 2131493843);
+    this.mk = paramContext.getBoolean(3, true);
+    setHint(paramContext.getText(1));
+    this.mP = paramContext.getBoolean(10, true);
+    if (paramContext.hasValue(0))
     {
-      paramAttributeSet = paramContext.getColorStateList(a.k.TextInputLayout_android_textColorHint);
-      this.lS = paramAttributeSet;
-      this.lR = paramAttributeSet;
+      paramAttributeSet = paramContext.getColorStateList(0);
+      this.mN = paramAttributeSet;
+      this.mM = paramAttributeSet;
     }
-    if (paramContext.getResourceId(a.k.TextInputLayout_hintTextAppearance, -1) != -1) {
-      setHintTextAppearance(paramContext.getResourceId(a.k.TextInputLayout_hintTextAppearance, 0));
+    if (paramContext.getResourceId(2, -1) != -1) {
+      setHintTextAppearance(paramContext.getResourceId(2, 0));
     }
-    this.lx = paramContext.getResourceId(a.k.TextInputLayout_errorTextAppearance, 0);
-    boolean bool1 = paramContext.getBoolean(a.k.TextInputLayout_errorEnabled, false);
-    boolean bool2 = paramContext.getBoolean(a.k.TextInputLayout_counterEnabled, false);
-    setCounterMaxLength(paramContext.getInt(a.k.TextInputLayout_counterMaxLength, -1));
-    this.lD = paramContext.getResourceId(a.k.TextInputLayout_counterTextAppearance, 0);
-    this.lE = paramContext.getResourceId(a.k.TextInputLayout_counterOverflowTextAppearance, 0);
-    this.lG = paramContext.getBoolean(a.k.TextInputLayout_passwordToggleEnabled, false);
-    this.lH = paramContext.getDrawable(a.k.TextInputLayout_passwordToggleDrawable);
-    this.lI = paramContext.getText(a.k.TextInputLayout_passwordToggleContentDescription);
-    if (paramContext.hasValue(a.k.TextInputLayout_passwordToggleTint))
+    this.ms = paramContext.getResourceId(5, 0);
+    boolean bool1 = paramContext.getBoolean(4, false);
+    boolean bool2 = paramContext.getBoolean(6, false);
+    setCounterMaxLength(paramContext.getInt(7, -1));
+    this.my = paramContext.getResourceId(8, 0);
+    this.mz = paramContext.getResourceId(9, 0);
+    this.mB = paramContext.getBoolean(11, false);
+    this.mC = paramContext.getDrawable(12);
+    this.mD = paramContext.getText(13);
+    if (paramContext.hasValue(14))
     {
-      this.lO = true;
-      this.lN = paramContext.getColorStateList(a.k.TextInputLayout_passwordToggleTint);
+      this.mJ = true;
+      this.mI = paramContext.getColorStateList(14);
     }
-    if (paramContext.hasValue(a.k.TextInputLayout_passwordToggleTintMode))
+    if (paramContext.hasValue(15))
     {
-      this.lQ = true;
-      this.lP = q.T(paramContext.getInt(a.k.TextInputLayout_passwordToggleTintMode, -1));
+      this.mL = true;
+      this.mK = p.R(paramContext.getInt(15, -1));
     }
-    paramContext.alZ.recycle();
+    paramContext.aoo.recycle();
     setErrorEnabled(bool1);
     setCounterEnabled(bool2);
-    bg();
-    if (android.support.v4.view.q.P(this) == 0) {
-      android.support.v4.view.q.n(this, 1);
+    bR();
+    if (t.S(this) == 0) {
+      t.o(this, 1);
     }
-    android.support.v4.view.q.a(this, new TextInputLayout.a(this));
+    t.a(this, new TextInputLayout.a(this));
   }
   
   private static void a(ViewGroup paramViewGroup, boolean paramBoolean)
@@ -175,129 +174,131 @@ public class TextInputLayout
   
   private void a(TextView paramTextView)
   {
-    if (this.ls != null)
+    if (this.mn != null)
     {
-      this.ls.removeView(paramTextView);
-      int i = this.lt - 1;
-      this.lt = i;
+      this.mn.removeView(paramTextView);
+      int i = this.mo - 1;
+      this.mo = i;
       if (i == 0) {
-        this.ls.setVisibility(8);
+        this.mn.setVisibility(8);
       }
     }
   }
   
   private void a(TextView paramTextView, int paramInt)
   {
-    if (this.ls == null)
+    if (this.mn == null)
     {
-      this.ls = new LinearLayout(getContext());
-      this.ls.setOrientation(0);
-      addView(this.ls, -1, -2);
+      this.mn = new LinearLayout(getContext());
+      this.mn.setOrientation(0);
+      addView(this.mn, -1, -2);
       Space localSpace = new Space(getContext());
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, 0, 1.0F);
-      this.ls.addView(localSpace, localLayoutParams);
-      if (this.ln != null) {
-        bb();
+      this.mn.addView(localSpace, localLayoutParams);
+      if (this.mEditText != null) {
+        bL();
       }
     }
-    this.ls.setVisibility(0);
-    this.ls.addView(paramTextView, paramInt);
-    this.lt += 1;
+    this.mn.setVisibility(0);
+    this.mn.addView(paramTextView, paramInt);
+    this.mo += 1;
   }
   
-  private void ba()
+  private void bK()
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.lm.getLayoutParams();
-    if (this.lp)
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.mi.getLayoutParams();
+    if (this.mk)
     {
-      if (this.lr == null) {
-        this.lr = new Paint();
+      if (this.mm == null) {
+        this.mm = new Paint();
       }
-      this.lr.setTypeface(this.hd.aw());
-      this.lr.setTextSize(this.hd.gm);
+      this.mm.setTypeface(this.hW.ba());
+      this.mm.setTextSize(this.hW.hg);
     }
-    for (int i = (int)-this.lr.ascent();; i = 0)
+    for (int i = (int)-this.mm.ascent();; i = 0)
     {
       if (i != localLayoutParams.topMargin)
       {
         localLayoutParams.topMargin = i;
-        this.lm.requestLayout();
+        this.mi.requestLayout();
       }
       return;
     }
   }
   
-  private void bb()
+  private void bL()
   {
-    android.support.v4.view.q.d(this.ls, android.support.v4.view.q.T(this.ln), 0, android.support.v4.view.q.U(this.ln), this.ln.getPaddingBottom());
+    t.d(this.mn, t.W(this.mEditText), 0, t.X(this.mEditText), this.mEditText.getPaddingBottom());
   }
   
-  private void bc()
+  private void bM()
   {
-    if (this.ln == null) {}
-    Drawable localDrawable1;
+    if (this.mEditText == null) {}
+    Drawable localDrawable2;
     do
     {
       return;
-      localDrawable1 = this.ln.getBackground();
-    } while (localDrawable1 == null);
-    int i = Build.VERSION.SDK_INT;
-    if ((i == 21) || (i == 22))
-    {
-      Drawable localDrawable2 = this.ln.getBackground();
-      if ((localDrawable2 != null) && (!this.lV))
-      {
-        Drawable localDrawable3 = localDrawable2.getConstantState().newDrawable();
-        if ((localDrawable2 instanceof DrawableContainer)) {
-          this.lV = g.a((DrawableContainer)localDrawable2, localDrawable3.getConstantState());
-        }
-        if (!this.lV)
-        {
-          android.support.v4.view.q.a(this.ln, localDrawable3);
-          this.lV = true;
-        }
-      }
+      localDrawable2 = this.mEditText.getBackground();
+    } while (localDrawable2 == null);
+    bN();
+    Drawable localDrawable1 = localDrawable2;
+    if (x.o(localDrawable2)) {
+      localDrawable1 = localDrawable2.mutate();
     }
-    if (y.m(localDrawable1)) {
-      localDrawable1 = localDrawable1.mutate();
-    }
-    for (;;)
+    if ((this.mt) && (this.mr != null))
     {
-      if ((this.ly) && (this.lw != null))
-      {
-        localDrawable1.setColorFilter(h.a(this.lw.getCurrentTextColor(), PorterDuff.Mode.SRC_IN));
-        return;
-      }
-      if ((this.lF) && (this.lB != null))
-      {
-        localDrawable1.setColorFilter(h.a(this.lB.getCurrentTextColor(), PorterDuff.Mode.SRC_IN));
-        return;
-      }
-      android.support.v4.a.a.a.e(localDrawable1);
-      this.ln.refreshDrawableState();
+      localDrawable1.setColorFilter(android.support.v7.widget.g.a(this.mr.getCurrentTextColor(), PorterDuff.Mode.SRC_IN));
       return;
     }
+    if ((this.mA) && (this.mw != null))
+    {
+      localDrawable1.setColorFilter(android.support.v7.widget.g.a(this.mw.getCurrentTextColor(), PorterDuff.Mode.SRC_IN));
+      return;
+    }
+    android.support.v4.graphics.drawable.a.d(localDrawable1);
+    this.mEditText.refreshDrawableState();
   }
   
-  private void bd()
+  private void bN()
   {
-    if (this.ln == null) {}
+    int i = Build.VERSION.SDK_INT;
+    if ((i != 21) && (i != 22)) {}
+    Drawable localDrawable2;
+    do
+    {
+      Drawable localDrawable1;
+      do
+      {
+        return;
+        localDrawable1 = this.mEditText.getBackground();
+      } while ((localDrawable1 == null) || (this.mQ));
+      localDrawable2 = localDrawable1.getConstantState().newDrawable();
+      if ((localDrawable1 instanceof DrawableContainer)) {
+        this.mQ = g.a((DrawableContainer)localDrawable1, localDrawable2.getConstantState());
+      }
+    } while (this.mQ);
+    t.a(this.mEditText, localDrawable2);
+    this.mQ = true;
+  }
+  
+  private void bO()
+  {
+    if (this.mEditText == null) {}
     Drawable[] arrayOfDrawable;
     do
     {
       do
       {
         return;
-        if ((this.lG) && ((bf()) || (this.lK))) {}
-        for (int i = 1; i != 0; i = 0)
+        if (bQ())
         {
-          if (this.lJ == null)
+          if (this.mE == null)
           {
-            this.lJ = ((CheckableImageButton)LayoutInflater.from(getContext()).inflate(a.h.design_text_input_password_icon, this.lm, false));
-            this.lJ.setImageDrawable(this.lH);
-            this.lJ.setContentDescription(this.lI);
-            this.lm.addView(this.lJ);
-            this.lJ.setOnClickListener(new View.OnClickListener()
+            this.mE = ((CheckableImageButton)LayoutInflater.from(getContext()).inflate(2130969317, this.mi, false));
+            this.mE.setImageDrawable(this.mC);
+            this.mE.setContentDescription(this.mD);
+            this.mi.addView(this.mE);
+            this.mE.setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
@@ -305,174 +306,232 @@ public class TextInputLayout
               }
             });
           }
-          if ((this.ln != null) && (android.support.v4.view.q.X(this.ln) <= 0)) {
-            this.ln.setMinimumHeight(android.support.v4.view.q.X(this.lJ));
+          if ((this.mEditText != null) && (t.aa(this.mEditText) <= 0)) {
+            this.mEditText.setMinimumHeight(t.aa(this.mE));
           }
-          this.lJ.setVisibility(0);
-          this.lJ.setChecked(this.lK);
-          if (this.lL == null) {
-            this.lL = new ColorDrawable();
+          this.mE.setVisibility(0);
+          this.mE.setChecked(this.mF);
+          if (this.mG == null) {
+            this.mG = new ColorDrawable();
           }
-          this.lL.setBounds(0, 0, this.lJ.getMeasuredWidth(), 1);
-          arrayOfDrawable = android.support.v4.widget.o.c(this.ln);
-          if (arrayOfDrawable[2] != this.lL) {
-            this.lM = arrayOfDrawable[2];
+          this.mG.setBounds(0, 0, this.mE.getMeasuredWidth(), 1);
+          arrayOfDrawable = q.c(this.mEditText);
+          if (arrayOfDrawable[2] != this.mG) {
+            this.mH = arrayOfDrawable[2];
           }
-          android.support.v4.widget.o.a(this.ln, arrayOfDrawable[0], arrayOfDrawable[1], this.lL, arrayOfDrawable[3]);
-          this.lJ.setPadding(this.ln.getPaddingLeft(), this.ln.getPaddingTop(), this.ln.getPaddingRight(), this.ln.getPaddingBottom());
+          q.a(this.mEditText, arrayOfDrawable[0], arrayOfDrawable[1], this.mG, arrayOfDrawable[3]);
+          this.mE.setPadding(this.mEditText.getPaddingLeft(), this.mEditText.getPaddingTop(), this.mEditText.getPaddingRight(), this.mEditText.getPaddingBottom());
           return;
         }
-        if ((this.lJ != null) && (this.lJ.getVisibility() == 0)) {
-          this.lJ.setVisibility(8);
+        if ((this.mE != null) && (this.mE.getVisibility() == 0)) {
+          this.mE.setVisibility(8);
         }
-      } while (this.lL == null);
-      arrayOfDrawable = android.support.v4.widget.o.c(this.ln);
-    } while (arrayOfDrawable[2] != this.lL);
-    android.support.v4.widget.o.a(this.ln, arrayOfDrawable[0], arrayOfDrawable[1], this.lM, arrayOfDrawable[3]);
-    this.lL = null;
+      } while (this.mG == null);
+      arrayOfDrawable = q.c(this.mEditText);
+    } while (arrayOfDrawable[2] != this.mG);
+    q.a(this.mEditText, arrayOfDrawable[0], arrayOfDrawable[1], this.mH, arrayOfDrawable[3]);
+    this.mG = null;
   }
   
-  private boolean bf()
+  private boolean bP()
   {
-    return (this.ln != null) && ((this.ln.getTransformationMethod() instanceof PasswordTransformationMethod));
+    return (this.mEditText != null) && ((this.mEditText.getTransformationMethod() instanceof PasswordTransformationMethod));
   }
   
-  private void bg()
+  private boolean bQ()
   {
-    if ((this.lH != null) && ((this.lO) || (this.lQ)))
+    return (this.mB) && ((bP()) || (this.mF));
+  }
+  
+  private void bR()
+  {
+    if ((this.mC != null) && ((this.mJ) || (this.mL)))
     {
-      this.lH = android.support.v4.a.a.a.f(this.lH).mutate();
-      if (this.lO) {
-        android.support.v4.a.a.a.a(this.lH, this.lN);
+      this.mC = android.support.v4.graphics.drawable.a.e(this.mC).mutate();
+      if (this.mJ) {
+        android.support.v4.graphics.drawable.a.a(this.mC, this.mI);
       }
-      if (this.lQ) {
-        android.support.v4.a.a.a.a(this.lH, this.lP);
+      if (this.mL) {
+        android.support.v4.graphics.drawable.a.a(this.mC, this.mK);
       }
-      if ((this.lJ != null) && (this.lJ.getDrawable() != this.lH)) {
-        this.lJ.setImageDrawable(this.lH);
+      if ((this.mE != null) && (this.mE.getDrawable() != this.mC)) {
+        this.mE.setImageDrawable(this.mC);
       }
     }
   }
   
-  private void o(float paramFloat)
+  private static boolean d(int[] paramArrayOfInt)
   {
-    if (this.hd.gf == paramFloat) {
+    boolean bool2 = false;
+    int j = paramArrayOfInt.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (paramArrayOfInt[i] == 16842908) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  private void p(float paramFloat)
+  {
+    if (this.hW.gZ == paramFloat) {
       return;
     }
-    if (this.jQ == null)
+    if (this.kO == null)
     {
-      this.jQ = new ValueAnimator();
-      this.jQ.setInterpolator(a.ek);
-      this.jQ.setDuration(200L);
-      this.jQ.addUpdateListener(new TextInputLayout.5(this));
+      this.kO = new ValueAnimator();
+      this.kO.setInterpolator(a.fi);
+      this.kO.setDuration(200L);
+      this.kO.addUpdateListener(new TextInputLayout.5(this));
     }
-    this.jQ.setFloatValues(new float[] { this.hd.gf, paramFloat });
-    this.jQ.start();
+    this.kO.setFloatValues(new float[] { this.hW.gZ, paramFloat });
+    this.kO.start();
+  }
+  
+  private void s(boolean paramBoolean)
+  {
+    int i;
+    if (this.mB)
+    {
+      i = this.mEditText.getSelectionEnd();
+      if (!bP()) {
+        break label66;
+      }
+      this.mEditText.setTransformationMethod(null);
+    }
+    for (this.mF = true;; this.mF = false)
+    {
+      this.mE.setChecked(this.mF);
+      if (paramBoolean) {
+        this.mE.jumpDrawablesToCurrentState();
+      }
+      this.mEditText.setSelection(i);
+      return;
+      label66:
+      this.mEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+    }
   }
   
   private void setEditText(EditText paramEditText)
   {
-    if (this.ln != null) {
+    if (this.mEditText != null) {
       throw new IllegalArgumentException("We already have an EditText, can only have one");
     }
-    this.ln = paramEditText;
-    if (!bf()) {
-      this.hd.a(this.ln.getTypeface());
+    this.mEditText = paramEditText;
+    if (!bP()) {
+      this.hW.a(this.mEditText.getTypeface());
     }
-    paramEditText = this.hd;
-    float f = this.ln.getTextSize();
-    if (paramEditText.gl != f)
+    paramEditText = this.hW;
+    float f = this.mEditText.getTextSize();
+    if (paramEditText.hf != f)
     {
-      paramEditText.gl = f;
-      paramEditText.az();
+      paramEditText.hf = f;
+      paramEditText.bh();
     }
-    int i = this.ln.getGravity();
-    this.hd.A(i & 0xFFFFFF8F | 0x30);
-    this.hd.z(i);
-    this.ln.addTextChangedListener(new TextInputLayout.1(this));
-    if (this.lR == null) {
-      this.lR = this.ln.getHintTextColors();
+    int i = this.mEditText.getGravity();
+    this.hW.z(i & 0xFFFFFF8F | 0x30);
+    this.hW.y(i);
+    this.mEditText.addTextChangedListener(new TextInputLayout.1(this));
+    if (this.mM == null) {
+      this.mM = this.mEditText.getHintTextColors();
     }
-    if ((this.lp) && (TextUtils.isEmpty(this.lq)))
+    if ((this.mk) && (TextUtils.isEmpty(this.ml)))
     {
-      this.lo = this.ln.getHint();
-      setHint(this.lo);
-      this.ln.setHint(null);
+      this.mj = this.mEditText.getHint();
+      setHint(this.mj);
+      this.mEditText.setHint(null);
     }
-    if (this.lB != null) {
-      S(this.ln.getText().length());
+    if (this.mw != null) {
+      Q(this.mEditText.getText().length());
     }
-    if (this.ls != null) {
-      bb();
+    if (this.mn != null) {
+      bL();
     }
-    bd();
+    bO();
     d(false, true);
   }
   
   private void setHintInternal(CharSequence paramCharSequence)
   {
-    this.lq = paramCharSequence;
-    this.hd.setText(paramCharSequence);
+    this.ml = paramCharSequence;
+    this.hW.setText(paramCharSequence);
   }
   
   private void t(boolean paramBoolean)
   {
-    int i;
-    if (this.lG)
-    {
-      i = this.ln.getSelectionEnd();
-      if (!bf()) {
-        break label66;
-      }
-      this.ln.setTransformationMethod(null);
+    if ((this.kO != null) && (this.kO.isRunning())) {
+      this.kO.cancel();
     }
-    for (this.lK = true;; this.lK = false)
+    if ((paramBoolean) && (this.mP)) {
+      p(1.0F);
+    }
+    for (;;)
     {
-      this.lJ.setChecked(this.lK);
-      if (paramBoolean) {
-        this.lJ.jumpDrawablesToCurrentState();
-      }
-      this.ln.setSelection(i);
+      this.mO = false;
       return;
-      label66:
-      this.ln.setTransformationMethod(PasswordTransformationMethod.getInstance());
+      this.hW.h(1.0F);
     }
   }
   
-  final void S(int paramInt)
+  private void u(boolean paramBoolean)
   {
-    boolean bool2 = this.lF;
-    if (this.lC == -1)
+    if ((this.kO != null) && (this.kO.isRunning())) {
+      this.kO.cancel();
+    }
+    if ((paramBoolean) && (this.mP)) {
+      p(0.0F);
+    }
+    for (;;)
     {
-      this.lB.setText(String.valueOf(paramInt));
-      this.lF = false;
-      if ((this.ln != null) && (bool2 != this.lF))
+      this.mO = true;
+      return;
+      this.hW.h(0.0F);
+    }
+  }
+  
+  final void Q(int paramInt)
+  {
+    boolean bool2 = this.mA;
+    if (this.mx == -1)
+    {
+      this.mw.setText(String.valueOf(paramInt));
+      this.mA = false;
+      if ((this.mEditText != null) && (bool2 != this.mA))
       {
         d(false, false);
-        bc();
+        bM();
       }
       return;
     }
     boolean bool1;
     label67:
     TextView localTextView;
-    if (paramInt > this.lC)
+    if (paramInt > this.mx)
     {
       bool1 = true;
-      this.lF = bool1;
-      if (bool2 != this.lF)
+      this.mA = bool1;
+      if (bool2 != this.mA)
       {
-        localTextView = this.lB;
-        if (!this.lF) {
+        localTextView = this.mw;
+        if (!this.mA) {
           break label151;
         }
       }
     }
     label151:
-    for (int i = this.lE;; i = this.lD)
+    for (int i = this.mz;; i = this.my)
     {
-      android.support.v4.widget.o.b(localTextView, i);
-      this.lB.setText(getContext().getString(android.support.design.a.i.character_counter_pattern, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.lC) }));
+      q.b(localTextView, i);
+      this.mw.setText(getContext().getString(2131306135, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mx) }));
       break;
       bool1 = false;
       break label67;
@@ -485,9 +544,9 @@ public class TextInputLayout
     {
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(paramLayoutParams);
       localLayoutParams.gravity = (localLayoutParams.gravity & 0xFFFFFF8F | 0x10);
-      this.lm.addView(paramView, localLayoutParams);
-      this.lm.setLayoutParams(paramLayoutParams);
-      ba();
+      this.mi.addView(paramView, localLayoutParams);
+      this.mi.setLayoutParams(paramLayoutParams);
+      bK();
       setEditText((EditText)paramView);
       return;
     }
@@ -496,107 +555,66 @@ public class TextInputLayout
   
   final void d(boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool = isEnabled();
+    int j = 1;
+    boolean bool1 = isEnabled();
     int i;
-    int k;
-    int j;
-    if ((this.ln != null) && (!TextUtils.isEmpty(this.ln.getText())))
+    boolean bool2;
+    if ((this.mEditText != null) && (!TextUtils.isEmpty(this.mEditText.getText())))
     {
       i = 1;
-      int[] arrayOfInt = getDrawableState();
-      k = arrayOfInt.length;
-      j = 0;
-      label42:
-      if (j >= k) {
-        break label219;
-      }
-      if (arrayOfInt[j] != 16842908) {
-        break label210;
-      }
-      j = 1;
-      label63:
+      bool2 = d(getDrawableState());
       if (TextUtils.isEmpty(getError())) {
-        break label225;
+        break label144;
       }
-      k = 1;
-      label76:
-      if (this.lR != null) {
-        this.hd.c(this.lR);
+      label50:
+      if (this.mM != null) {
+        this.hW.c(this.mM);
       }
-      if ((!bool) || (!this.lF) || (this.lB == null)) {
-        break label231;
+      if ((!bool1) || (!this.mA) || (this.mw == null)) {
+        break label150;
       }
-      this.hd.b(this.lB.getTextColors());
-      label127:
-      if ((i == 0) && ((!isEnabled()) || ((j == 0) && (k == 0)))) {
-        break label294;
+      this.hW.b(this.mw.getTextColors());
+      label101:
+      if ((i == 0) && ((!isEnabled()) || ((!bool2) && (j == 0)))) {
+        break label202;
       }
-      if ((paramBoolean2) || (this.lT))
-      {
-        if ((this.jQ != null) && (this.jQ.isRunning())) {
-          this.jQ.cancel();
-        }
-        if ((!paramBoolean1) || (!this.lU)) {
-          break label283;
-        }
-        o(1.0F);
-        this.lT = false;
+      if ((paramBoolean2) || (this.mO)) {
+        t(paramBoolean1);
       }
     }
-    label210:
-    label219:
-    label225:
-    label231:
-    while ((!paramBoolean2) && (this.lT)) {
-      for (;;)
-      {
-        return;
-        i = 0;
-        break;
-        j += 1;
-        break label42;
-        j = 0;
-        break label63;
-        k = 0;
-        break label76;
-        if ((bool) && (j != 0) && (this.lS != null))
-        {
-          this.hd.b(this.lS);
-          break label127;
-        }
-        if (this.lR == null) {
-          break label127;
-        }
-        this.hd.b(this.lR);
-        break label127;
-        this.hd.h(1.0F);
-      }
-    }
-    label283:
-    label294:
-    if ((this.jQ != null) && (this.jQ.isRunning())) {
-      this.jQ.cancel();
-    }
-    if ((paramBoolean1) && (this.lU)) {
-      o(0.0F);
-    }
-    for (;;)
+    label144:
+    label150:
+    label202:
+    while ((!paramBoolean2) && (this.mO))
     {
-      this.lT = true;
       return;
-      this.hd.h(0.0F);
+      i = 0;
+      break;
+      j = 0;
+      break label50;
+      if ((bool1) && (bool2) && (this.mN != null))
+      {
+        this.hW.b(this.mN);
+        break label101;
+      }
+      if (this.mM == null) {
+        break label101;
+      }
+      this.hW.b(this.mM);
+      break label101;
     }
+    u(paramBoolean1);
   }
   
   public void dispatchProvideAutofillStructure(ViewStructure paramViewStructure, int paramInt)
   {
-    if ((this.lo == null) || (this.ln == null))
+    if ((this.mj == null) || (this.mEditText == null))
     {
       super.dispatchProvideAutofillStructure(paramViewStructure, paramInt);
       return;
     }
-    CharSequence localCharSequence = this.ln.getHint();
-    this.ln.setHint(this.lo);
+    CharSequence localCharSequence = this.mEditText.getHint();
+    this.mEditText.setHint(this.mj);
     try
     {
       super.dispatchProvideAutofillStructure(paramViewStructure, paramInt);
@@ -604,49 +622,49 @@ public class TextInputLayout
     }
     finally
     {
-      this.ln.setHint(localCharSequence);
+      this.mEditText.setHint(localCharSequence);
     }
   }
   
   protected void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
-    this.lX = true;
+    this.mS = true;
     super.dispatchRestoreInstanceState(paramSparseArray);
-    this.lX = false;
+    this.mS = false;
   }
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.lp) {
-      this.hd.draw(paramCanvas);
+    if (this.mk) {
+      this.hW.draw(paramCanvas);
     }
   }
   
   protected void drawableStateChanged()
   {
     boolean bool2 = true;
-    if (this.lW) {
+    if (this.mR) {
       return;
     }
-    this.lW = true;
+    this.mR = true;
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
-    if ((android.support.v4.view.q.al(this)) && (isEnabled()))
+    if ((t.as(this)) && (isEnabled()))
     {
       d(bool2, false);
-      bc();
-      if (this.hd == null) {
+      bM();
+      if (this.hW == null) {
         break label85;
       }
     }
     label85:
-    for (boolean bool1 = this.hd.setState(arrayOfInt) | false;; bool1 = false)
+    for (boolean bool1 = this.hW.setState(arrayOfInt) | false;; bool1 = false)
     {
       if (bool1) {
         invalidate();
       }
-      this.lW = false;
+      this.mR = false;
       return;
       bool2 = false;
       break;
@@ -655,63 +673,63 @@ public class TextInputLayout
   
   public int getCounterMaxLength()
   {
-    return this.lC;
+    return this.mx;
   }
   
   public EditText getEditText()
   {
-    return this.ln;
+    return this.mEditText;
   }
   
   public CharSequence getError()
   {
-    if (this.lv) {
-      return this.lz;
+    if (this.mq) {
+      return this.mu;
     }
     return null;
   }
   
   public CharSequence getHint()
   {
-    if (this.lp) {
-      return this.lq;
+    if (this.mk) {
+      return this.ml;
     }
     return null;
   }
   
   public CharSequence getPasswordVisibilityToggleContentDescription()
   {
-    return this.lI;
+    return this.mD;
   }
   
   public Drawable getPasswordVisibilityToggleDrawable()
   {
-    return this.lH;
+    return this.mC;
   }
   
   public Typeface getTypeface()
   {
-    return this.lu;
+    return this.mp;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.lp) && (this.ln != null))
+    if ((this.mk) && (this.mEditText != null))
     {
-      Rect localRect = this.hc;
-      s.a(this, this.ln, localRect);
-      paramInt1 = localRect.left + this.ln.getCompoundPaddingLeft();
-      paramInt3 = localRect.right - this.ln.getCompoundPaddingRight();
-      this.hd.b(paramInt1, localRect.top + this.ln.getCompoundPaddingTop(), paramInt3, localRect.bottom - this.ln.getCompoundPaddingBottom());
-      this.hd.c(paramInt1, getPaddingTop(), paramInt3, paramInt4 - paramInt2 - getPaddingBottom());
-      this.hd.az();
+      Rect localRect = this.hV;
+      u.a(this, this.mEditText, localRect);
+      paramInt1 = localRect.left + this.mEditText.getCompoundPaddingLeft();
+      paramInt3 = localRect.right - this.mEditText.getCompoundPaddingRight();
+      this.hW.c(paramInt1, localRect.top + this.mEditText.getCompoundPaddingTop(), paramInt3, localRect.bottom - this.mEditText.getCompoundPaddingBottom());
+      this.hW.d(paramInt1, getPaddingTop(), paramInt3, paramInt4 - paramInt2 - getPaddingBottom());
+      this.hW.bh();
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    bd();
+    bO();
     super.onMeasure(paramInt1, paramInt2);
   }
   
@@ -723,10 +741,10 @@ public class TextInputLayout
       return;
     }
     paramParcelable = (TextInputLayout.SavedState)paramParcelable;
-    super.onRestoreInstanceState(paramParcelable.EA);
-    setError(paramParcelable.ma);
-    if (paramParcelable.mb) {
-      t(true);
+    super.onRestoreInstanceState(paramParcelable.Fo);
+    setError(paramParcelable.mV);
+    if (paramParcelable.mW) {
+      s(true);
     }
     requestLayout();
   }
@@ -734,75 +752,75 @@ public class TextInputLayout
   public Parcelable onSaveInstanceState()
   {
     TextInputLayout.SavedState localSavedState = new TextInputLayout.SavedState(super.onSaveInstanceState());
-    if (this.ly) {
-      localSavedState.ma = getError();
+    if (this.mt) {
+      localSavedState.mV = getError();
     }
-    localSavedState.mb = this.lK;
+    localSavedState.mW = this.mF;
     return localSavedState;
   }
   
   public void setCounterEnabled(boolean paramBoolean)
   {
-    if (this.lA != paramBoolean)
+    if (this.mv != paramBoolean)
     {
       if (!paramBoolean) {
         break label151;
       }
-      this.lB = new AppCompatTextView(getContext());
-      this.lB.setId(a.f.textinput_counter);
-      if (this.lu != null) {
-        this.lB.setTypeface(this.lu);
+      this.mw = new AppCompatTextView(getContext());
+      this.mw.setId(2131820678);
+      if (this.mp != null) {
+        this.mw.setTypeface(this.mp);
       }
-      this.lB.setMaxLines(1);
+      this.mw.setMaxLines(1);
     }
     for (;;)
     {
       try
       {
-        android.support.v4.widget.o.b(this.lB, this.lD);
-        a(this.lB, -1);
-        if (this.ln == null)
+        q.b(this.mw, this.my);
+        a(this.mw, -1);
+        if (this.mEditText == null)
         {
-          S(0);
-          this.lA = paramBoolean;
+          Q(0);
+          this.mv = paramBoolean;
           return;
         }
       }
       catch (Exception localException)
       {
-        android.support.v4.widget.o.b(this.lB, android.support.v7.a.a.i.TextAppearance_AppCompat_Caption);
-        this.lB.setTextColor(android.support.v4.content.b.i(getContext(), a.c.error_color_material));
+        q.b(this.mw, 2131493607);
+        this.mw.setTextColor(b.m(getContext(), R.color.error_color_material));
         continue;
-        S(this.ln.getText().length());
+        Q(this.mEditText.getText().length());
         continue;
       }
       label151:
-      a(this.lB);
-      this.lB = null;
+      a(this.mw);
+      this.mw = null;
     }
   }
   
   public void setCounterMaxLength(int paramInt)
   {
-    if (this.lC != paramInt)
+    if (this.mx != paramInt)
     {
       if (paramInt <= 0) {
         break label39;
       }
-      this.lC = paramInt;
-      if (this.lA) {
-        if (this.ln != null) {
+      this.mx = paramInt;
+      if (this.mv) {
+        if (this.mEditText != null) {
           break label47;
         }
       }
     }
     label39:
     label47:
-    for (paramInt = 0;; paramInt = this.ln.getText().length())
+    for (paramInt = 0;; paramInt = this.mEditText.getText().length())
     {
-      S(paramInt);
+      Q(paramInt);
       return;
-      this.lC = -1;
+      this.mx = -1;
       break;
     }
   }
@@ -817,11 +835,11 @@ public class TextInputLayout
   {
     boolean bool2 = true;
     boolean bool1;
-    if ((android.support.v4.view.q.al(this)) && (isEnabled()) && ((this.lw == null) || (!TextUtils.equals(this.lw.getText(), paramCharSequence))))
+    if ((t.as(this)) && (isEnabled()) && ((this.mr == null) || (!TextUtils.equals(this.mr.getText(), paramCharSequence))))
     {
       bool1 = true;
-      this.lz = paramCharSequence;
-      if (!this.lv)
+      this.mu = paramCharSequence;
+      if (!this.mq)
       {
         if (!TextUtils.isEmpty(paramCharSequence)) {
           setErrorEnabled(true);
@@ -833,25 +851,25 @@ public class TextInputLayout
           break label185;
         }
         label70:
-        this.ly = bool2;
-        this.lw.animate().cancel();
-        if (!this.ly) {
+        this.mt = bool2;
+        this.mr.animate().cancel();
+        if (!this.mt) {
           break label201;
         }
-        this.lw.setText(paramCharSequence);
-        this.lw.setVisibility(0);
+        this.mr.setText(paramCharSequence);
+        this.mr.setVisibility(0);
         if (!bool1) {
           break label190;
         }
-        if (this.lw.getAlpha() == 1.0F) {
-          this.lw.setAlpha(0.0F);
+        if (this.mr.getAlpha() == 1.0F) {
+          this.mr.setAlpha(0.0F);
         }
-        this.lw.animate().alpha(1.0F).setDuration(200L).setInterpolator(a.eo).setListener(new TextInputLayout.2(this)).start();
+        this.mr.animate().alpha(1.0F).setDuration(200L).setInterpolator(a.fl).setListener(new TextInputLayout.2(this)).start();
       }
     }
     for (;;)
     {
-      bc();
+      bM();
       d(bool1, false);
       return;
       bool1 = false;
@@ -860,18 +878,18 @@ public class TextInputLayout
       bool2 = false;
       break label70;
       label190:
-      this.lw.setAlpha(1.0F);
+      this.mr.setAlpha(1.0F);
       continue;
       label201:
-      if (this.lw.getVisibility() == 0) {
+      if (this.mr.getVisibility() == 0) {
         if (bool1)
         {
-          this.lw.animate().alpha(0.0F).setDuration(200L).setInterpolator(a.em).setListener(new TextInputLayout.3(this, paramCharSequence)).start();
+          this.mr.animate().alpha(0.0F).setDuration(200L).setInterpolator(a.fk).setListener(new TextInputLayout.3(this, paramCharSequence)).start();
         }
         else
         {
-          this.lw.setText(paramCharSequence);
-          this.lw.setVisibility(4);
+          this.mr.setText(paramCharSequence);
+          this.mr.setVisibility(4);
         }
       }
     }
@@ -880,27 +898,27 @@ public class TextInputLayout
   public void setErrorEnabled(boolean paramBoolean)
   {
     i = 1;
-    if (this.lv != paramBoolean)
+    if (this.mq != paramBoolean)
     {
-      if (this.lw != null) {
-        this.lw.animate().cancel();
+      if (this.mr != null) {
+        this.mr.animate().cancel();
       }
       if (!paramBoolean) {
         break label172;
       }
-      this.lw = new AppCompatTextView(getContext());
-      this.lw.setId(a.f.textinput_error);
-      if (this.lu != null) {
-        this.lw.setTypeface(this.lu);
+      this.mr = new AppCompatTextView(getContext());
+      this.mr.setId(2131820679);
+      if (this.mp != null) {
+        this.mr.setTypeface(this.mp);
       }
     }
     try
     {
-      android.support.v4.widget.o.b(this.lw, this.lx);
+      q.b(this.mr, this.ms);
       if (Build.VERSION.SDK_INT < 23) {
         break label202;
       }
-      int j = this.lw.getTextColors().getDefaultColor();
+      int j = this.mr.getTextColors().getDefaultColor();
       if (j != -65281) {
         break label202;
       }
@@ -915,35 +933,35 @@ public class TextInputLayout
     }
     if (i != 0)
     {
-      android.support.v4.widget.o.b(this.lw, android.support.v7.a.a.i.TextAppearance_AppCompat_Caption);
-      this.lw.setTextColor(android.support.v4.content.b.i(getContext(), a.c.error_color_material));
+      q.b(this.mr, 2131493607);
+      this.mr.setTextColor(b.m(getContext(), R.color.error_color_material));
     }
-    this.lw.setVisibility(4);
-    android.support.v4.view.q.S(this.lw);
-    a(this.lw, 0);
+    this.mr.setVisibility(4);
+    t.V(this.mr);
+    a(this.mr, 0);
     for (;;)
     {
-      this.lv = paramBoolean;
+      this.mq = paramBoolean;
       return;
       label172:
-      this.ly = false;
-      bc();
-      a(this.lw);
-      this.lw = null;
+      this.mt = false;
+      bM();
+      a(this.mr);
+      this.mr = null;
     }
   }
   
   public void setErrorTextAppearance(int paramInt)
   {
-    this.lx = paramInt;
-    if (this.lw != null) {
-      android.support.v4.widget.o.b(this.lw, paramInt);
+    this.ms = paramInt;
+    if (this.mr != null) {
+      q.b(this.mr, paramInt);
     }
   }
   
   public void setHint(CharSequence paramCharSequence)
   {
-    if (this.lp)
+    if (this.mk)
     {
       setHintInternal(paramCharSequence);
       sendAccessibilityEvent(2048);
@@ -952,49 +970,49 @@ public class TextInputLayout
   
   public void setHintAnimationEnabled(boolean paramBoolean)
   {
-    this.lU = paramBoolean;
+    this.mP = paramBoolean;
   }
   
   public void setHintEnabled(boolean paramBoolean)
   {
     CharSequence localCharSequence;
-    if (paramBoolean != this.lp)
+    if (paramBoolean != this.mk)
     {
-      this.lp = paramBoolean;
-      localCharSequence = this.ln.getHint();
-      if (this.lp) {
+      this.mk = paramBoolean;
+      localCharSequence = this.mEditText.getHint();
+      if (this.mk) {
         break label73;
       }
-      if ((!TextUtils.isEmpty(this.lq)) && (TextUtils.isEmpty(localCharSequence))) {
-        this.ln.setHint(this.lq);
+      if ((!TextUtils.isEmpty(this.ml)) && (TextUtils.isEmpty(localCharSequence))) {
+        this.mEditText.setHint(this.ml);
       }
       setHintInternal(null);
     }
     for (;;)
     {
-      if (this.ln != null) {
-        ba();
+      if (this.mEditText != null) {
+        bK();
       }
       return;
       label73:
       if (!TextUtils.isEmpty(localCharSequence))
       {
-        if (TextUtils.isEmpty(this.lq)) {
+        if (TextUtils.isEmpty(this.ml)) {
           setHint(localCharSequence);
         }
-        this.ln.setHint(null);
+        this.mEditText.setHint(null);
       }
     }
   }
   
   public void setHintTextAppearance(int paramInt)
   {
-    this.hd.B(paramInt);
-    this.lS = this.hd.go;
-    if (this.ln != null)
+    this.hW.A(paramInt);
+    this.mN = this.hW.hi;
+    if (this.mEditText != null)
     {
       d(false, false);
-      ba();
+      bK();
     }
   }
   
@@ -1010,16 +1028,16 @@ public class TextInputLayout
   
   public void setPasswordVisibilityToggleContentDescription(CharSequence paramCharSequence)
   {
-    this.lI = paramCharSequence;
-    if (this.lJ != null) {
-      this.lJ.setContentDescription(paramCharSequence);
+    this.mD = paramCharSequence;
+    if (this.mE != null) {
+      this.mE.setContentDescription(paramCharSequence);
     }
   }
   
   public void setPasswordVisibilityToggleDrawable(int paramInt)
   {
     if (paramInt != 0) {}
-    for (Drawable localDrawable = android.support.v7.c.a.b.g(getContext(), paramInt);; localDrawable = null)
+    for (Drawable localDrawable = android.support.v7.c.a.a.k(getContext(), paramInt);; localDrawable = null)
     {
       setPasswordVisibilityToggleDrawable(localDrawable);
       return;
@@ -1028,57 +1046,57 @@ public class TextInputLayout
   
   public void setPasswordVisibilityToggleDrawable(Drawable paramDrawable)
   {
-    this.lH = paramDrawable;
-    if (this.lJ != null) {
-      this.lJ.setImageDrawable(paramDrawable);
+    this.mC = paramDrawable;
+    if (this.mE != null) {
+      this.mE.setImageDrawable(paramDrawable);
     }
   }
   
   public void setPasswordVisibilityToggleEnabled(boolean paramBoolean)
   {
-    if (this.lG != paramBoolean)
+    if (this.mB != paramBoolean)
     {
-      this.lG = paramBoolean;
-      if ((!paramBoolean) && (this.lK) && (this.ln != null)) {
-        this.ln.setTransformationMethod(PasswordTransformationMethod.getInstance());
+      this.mB = paramBoolean;
+      if ((!paramBoolean) && (this.mF) && (this.mEditText != null)) {
+        this.mEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
       }
-      this.lK = false;
-      bd();
+      this.mF = false;
+      bO();
     }
   }
   
   public void setPasswordVisibilityToggleTintList(ColorStateList paramColorStateList)
   {
-    this.lN = paramColorStateList;
-    this.lO = true;
-    bg();
+    this.mI = paramColorStateList;
+    this.mJ = true;
+    bR();
   }
   
   public void setPasswordVisibilityToggleTintMode(PorterDuff.Mode paramMode)
   {
-    this.lP = paramMode;
-    this.lQ = true;
-    bg();
+    this.mK = paramMode;
+    this.mL = true;
+    bR();
   }
   
   public void setTypeface(Typeface paramTypeface)
   {
-    if (((this.lu != null) && (!this.lu.equals(paramTypeface))) || ((this.lu == null) && (paramTypeface != null)))
+    if (((this.mp != null) && (!this.mp.equals(paramTypeface))) || ((this.mp == null) && (paramTypeface != null)))
     {
-      this.lu = paramTypeface;
-      this.hd.a(paramTypeface);
-      if (this.lB != null) {
-        this.lB.setTypeface(paramTypeface);
+      this.mp = paramTypeface;
+      this.hW.a(paramTypeface);
+      if (this.mw != null) {
+        this.mw.setTypeface(paramTypeface);
       }
-      if (this.lw != null) {
-        this.lw.setTypeface(paramTypeface);
+      if (this.mr != null) {
+        this.mr.setTypeface(paramTypeface);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.design.widget.TextInputLayout
  * JD-Core Version:    0.7.0.1
  */

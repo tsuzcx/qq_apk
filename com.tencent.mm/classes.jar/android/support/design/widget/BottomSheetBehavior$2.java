@@ -1,14 +1,12 @@
 package android.support.design.widget;
 
-import android.support.v4.c.a;
-import android.support.v4.view.q;
-import android.support.v4.widget.r;
-import android.support.v4.widget.r.a;
+import android.support.v4.b.a;
+import android.support.v4.widget.t.a;
 import android.view.View;
 import java.lang.ref.WeakReference;
 
 final class BottomSheetBehavior$2
-  extends r.a
+  extends t.a
 {
   BottomSheetBehavior$2(BottomSheetBehavior paramBottomSheetBehavior) {}
   
@@ -17,76 +15,76 @@ final class BottomSheetBehavior$2
     int j = 3;
     int i;
     if (paramFloat2 < 0.0F) {
-      i = this.fI.fo;
+      i = this.gC.gm;
     }
-    while (this.fI.ft.x(paramView.getLeft(), i))
+    while (this.gC.gq.y(paramView.getLeft(), i))
     {
-      this.fI.v(2);
-      q.b(paramView, new BottomSheetBehavior.b(this.fI, paramView, j));
+      this.gC.u(2);
+      android.support.v4.view.t.b(paramView, new BottomSheetBehavior.b(this.gC, paramView, j));
       return;
-      if ((this.fI.fq) && (this.fI.a(paramView, paramFloat2)))
+      if ((this.gC.go) && (this.gC.a(paramView, paramFloat2)))
       {
-        i = this.fI.fx;
+        i = this.gC.gu;
         j = 5;
       }
       else if (paramFloat2 == 0.0F)
       {
         i = paramView.getTop();
-        if (Math.abs(i - this.fI.fo) < Math.abs(i - this.fI.fp))
+        if (Math.abs(i - this.gC.gm) < Math.abs(i - this.gC.gn))
         {
-          i = this.fI.fo;
+          i = this.gC.gm;
         }
         else
         {
-          i = this.fI.fp;
+          i = this.gC.gn;
           j = 4;
         }
       }
       else
       {
-        i = this.fI.fp;
+        i = this.gC.gn;
         j = 4;
       }
     }
-    this.fI.v(j);
+    this.gC.u(j);
   }
   
-  public final void a(View paramView, int paramInt1, int paramInt2)
+  public final int aY()
   {
-    this.fI.w(paramInt2);
-  }
-  
-  public final int au()
-  {
-    if (this.fI.fq) {
-      return this.fI.fx - this.fI.fo;
+    if (this.gC.go) {
+      return this.gC.gu - this.gC.gm;
     }
-    return this.fI.fp - this.fI.fo;
+    return this.gC.gn - this.gC.gm;
+  }
+  
+  public final void b(View paramView, int paramInt1, int paramInt2)
+  {
+    this.gC.v(paramInt2);
   }
   
   public final boolean b(View paramView, int paramInt)
   {
-    if (this.fI.mState == 1) {
+    if (this.gC.mState == 1) {
       return false;
     }
-    if (this.fI.fE) {
+    if (this.gC.gy) {
       return false;
     }
-    if ((this.fI.mState == 3) && (this.fI.fC == paramInt))
+    if ((this.gC.mState == 3) && (this.gC.mActivePointerId == paramInt))
     {
-      View localView = (View)this.fI.fz.get();
+      View localView = (View)this.gC.gv.get();
       if ((localView != null) && (localView.canScrollVertically(-1))) {
         return false;
       }
     }
-    return (this.fI.fy != null) && (this.fI.fy.get() == paramView);
+    return (this.gC.mViewRef != null) && (this.gC.mViewRef.get() == paramView);
   }
   
   public final int c(View paramView, int paramInt)
   {
-    int j = this.fI.fo;
-    if (this.fI.fq) {}
-    for (int i = this.fI.fx;; i = this.fI.fp) {
+    int j = this.gC.gm;
+    if (this.gC.go) {}
+    for (int i = this.gC.gu;; i = this.gC.gn) {
       return a.clamp(paramInt, j, i);
     }
   }
@@ -96,10 +94,10 @@ final class BottomSheetBehavior$2
     return paramView.getLeft();
   }
   
-  public final void x(int paramInt)
+  public final void w(int paramInt)
   {
     if (paramInt == 1) {
-      this.fI.v(1);
+      this.gC.u(1);
     }
   }
 }

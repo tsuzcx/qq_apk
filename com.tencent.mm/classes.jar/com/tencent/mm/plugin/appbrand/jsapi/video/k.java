@@ -1,59 +1,115 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
-import android.content.Context;
-import android.view.GestureDetector;
-import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class k
+  implements f.c
 {
-  int Cv = 0;
-  float gCn = 0.0F;
-  View gES;
-  k.a gET = k.a.gFb;
-  GestureDetector gEU;
-  b gEV;
-  float gEW = 0.0F;
-  int gEX = -1;
-  int gEY = 0;
-  Runnable gEZ = new k.1(this);
-  Context mContext;
+  AppBrandVideoView idQ;
+  private e idR;
+  ap idS;
+  int idT;
+  int idU;
+  ap idl;
   
-  public k(Context paramContext, View paramView, b paramb)
+  public k(AppBrandVideoView paramAppBrandVideoView, e parame)
   {
-    this.mContext = paramContext;
-    this.gEV = paramb;
-    this.gES = paramView;
-    this.gEU = new GestureDetector(this.mContext, new k.2(this));
-    this.gCn = l.cn(paramContext);
+    AppMethodBeat.i(126572);
+    this.idU = 0;
+    this.idQ = paramAppBrandVideoView;
+    this.idR = parame;
+    this.idR.a(this);
+    AppMethodBeat.o(126572);
   }
   
-  public static abstract interface b
+  final void a(ai paramai, JSONObject paramJSONObject)
   {
-    public abstract void ah(float paramFloat);
-    
-    public abstract void ai(float paramFloat);
-    
-    public abstract void akl();
-    
-    public abstract void akm();
-    
-    public abstract void akn();
-    
-    public abstract void ako();
-    
-    public abstract void akp();
-    
-    public abstract boolean akq();
-    
-    public abstract boolean akr();
-    
-    public abstract boolean aks();
-    
-    public abstract int f(int paramInt, float paramFloat);
-    
-    public abstract void g(int paramInt, float paramFloat);
-    
-    public abstract int getCurrentPosition();
+    AppMethodBeat.i(126576);
+    if ((!(paramai instanceof k.l)) && (!(paramai instanceof k.i))) {
+      ab.i("MicroMsg.JsApiVideoCallback", "dispatchEvent event %s", new Object[] { paramai.getName() });
+    }
+    this.idR.b(paramai.BN(paramJSONObject.toString()));
+    AppMethodBeat.o(126576);
+  }
+  
+  final JSONObject aFD()
+  {
+    AppMethodBeat.i(126577);
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("data", this.idQ.getCookieData());
+    AppMethodBeat.o(126577);
+    return localJSONObject;
+  }
+  
+  final void aFE()
+  {
+    AppMethodBeat.i(126578);
+    if (this.idS != null) {
+      this.idS.stopTimer();
+    }
+    AppMethodBeat.o(126578);
+  }
+  
+  final void aFF()
+  {
+    AppMethodBeat.i(126579);
+    if (this.idl != null) {
+      this.idl.stopTimer();
+    }
+    AppMethodBeat.o(126579);
+  }
+  
+  public final void c(int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    AppMethodBeat.i(126575);
+    try
+    {
+      ab.i("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange videoPlayerId=%d isFullScreen=%b direction:%d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) });
+      JSONObject localJSONObject = aFD();
+      localJSONObject.put("fullScreen", paramBoolean);
+      localJSONObject.put("videoPlayerId", paramInt1);
+      localJSONObject.put("direction", paramInt2);
+      a(new k.e((byte)0), localJSONObject);
+      AppMethodBeat.o(126575);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      ab.e("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange e=%s", new Object[] { localJSONException });
+      AppMethodBeat.o(126575);
+    }
+  }
+  
+  public final void clean()
+  {
+    AppMethodBeat.i(126574);
+    this.idR.b(this);
+    aFE();
+    aFF();
+    AppMethodBeat.o(126574);
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(126573);
+    ab.d("MicroMsg.JsApiVideoCallback", "onDestroy clean");
+    clean();
+    this.idQ.setCallback(null);
+    AppMethodBeat.o(126573);
+  }
+  
+  static final class b
+    extends ai
+  {
+    private static final int CTRL_INDEX = 131;
+    private static final String NAME = "onVideoClickDanmuBtn";
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.modelvoice;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.bi;
 
 final class e$1
@@ -9,7 +10,9 @@ final class e$1
   
   public final void run()
   {
-    this.eJU.D(this.dUy);
+    AppMethodBeat.i(116565);
+    this.fZw.J(this.fkH);
+    AppMethodBeat.o(116565);
   }
 }
 

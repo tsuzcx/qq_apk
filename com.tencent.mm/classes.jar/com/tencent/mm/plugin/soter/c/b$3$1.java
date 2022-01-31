@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.soter.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.soter.a.b.a;
 import com.tencent.soter.a.b.e;
 import com.tencent.soter.core.c.j;
@@ -11,13 +12,15 @@ final class b$3$1
   
   public final void run()
   {
-    j localj = (j)this.psb.wPx;
-    this.psc.psa.psf.errCode = 0;
-    this.psc.psa.psf.aox = "OK";
-    this.psc.psa.psf.pso = 1;
-    this.psc.psa.psf.bYt = localj.wPi;
-    this.psc.psa.psf.psp = localj.signature;
-    this.psc.psa.bKK();
+    AppMethodBeat.i(73866);
+    j localj = (j)this.sod.BmW;
+    this.soe.soc.soh.errCode = 0;
+    this.soe.soc.soh.errMsg = "OK";
+    this.soe.soc.soh.sop = 1;
+    this.soe.soc.soh.cGu = localj.BmG;
+    this.soe.soc.soh.soq = localj.signature;
+    this.soe.soc.cxW();
+    AppMethodBeat.o(73866);
   }
 }
 

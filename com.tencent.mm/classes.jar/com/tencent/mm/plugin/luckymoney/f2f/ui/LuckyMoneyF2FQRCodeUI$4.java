@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.luckymoney.f2f.ui;
 import android.animation.ValueAnimator;
 import android.util.Pair;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.luckymoney.f2f.a;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Queue;
 
 final class LuckyMoneyF2FQRCodeUI$4
@@ -16,37 +16,39 @@ final class LuckyMoneyF2FQRCodeUI$4
   
   public final void a(ValueAnimator paramValueAnimator, View paramView)
   {
+    AppMethodBeat.i(42173);
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     if (f == 0.0F)
     {
-      LuckyMoneyF2FQRCodeUI.a(this.lOE, paramView.getTranslationX());
-      LuckyMoneyF2FQRCodeUI.b(this.lOE, paramView.getTranslationY());
-      paramView.findViewById(a.f.lucky_money_f2f_single_card).setVisibility(0);
+      LuckyMoneyF2FQRCodeUI.a(this.olY, paramView.getTranslationX());
+      LuckyMoneyF2FQRCodeUI.b(this.olY, paramView.getTranslationY());
+      paramView.findViewById(2131825665).setVisibility(0);
     }
-    paramView.setTranslationX((1.0F - f) * LuckyMoneyF2FQRCodeUI.A(this.lOE));
-    paramView.setTranslationY((1.0F - f) * LuckyMoneyF2FQRCodeUI.B(this.lOE) - (LuckyMoneyF2FQRCodeUI.c(this.lOE).getHeight() + LuckyMoneyF2FQRCodeUI.B(this.lOE) * 8.0F) * f);
+    paramView.setTranslationX((1.0F - f) * LuckyMoneyF2FQRCodeUI.A(this.olY));
+    paramView.setTranslationY((1.0F - f) * LuckyMoneyF2FQRCodeUI.B(this.olY) - (LuckyMoneyF2FQRCodeUI.c(this.olY).getHeight() + LuckyMoneyF2FQRCodeUI.B(this.olY) * 8.0F) * f);
     paramView.setScaleX(0.5F * f + 1.0F);
     paramView.setScaleY(0.5F * f + 1.0F);
-    paramValueAnimator = (Pair)LuckyMoneyF2FQRCodeUI.f(this.lOE).peek();
-    if ((paramValueAnimator != null) && (!bk.bl(LuckyMoneyF2FQRCodeUI.C(this.lOE))) && (LuckyMoneyF2FQRCodeUI.C(this.lOE).equals(paramValueAnimator.first))) {
-      LuckyMoneyF2FQRCodeUI.D(this.lOE).setAlpha(f);
+    paramValueAnimator = (Pair)LuckyMoneyF2FQRCodeUI.f(this.olY).peek();
+    if ((paramValueAnimator != null) && (!bo.isNullOrNil(LuckyMoneyF2FQRCodeUI.C(this.olY))) && (LuckyMoneyF2FQRCodeUI.C(this.olY).equals(paramValueAnimator.first))) {
+      LuckyMoneyF2FQRCodeUI.D(this.olY).setAlpha(f);
     }
-    y.i("LuckyMoneyF2FQRCodeUI", "fireworkBottomLayer %f", new Object[] { Float.valueOf(f) });
+    ab.i("LuckyMoneyF2FQRCodeUI", "fireworkBottomLayer %f", new Object[] { Float.valueOf(f) });
     if (f >= 0.9F)
     {
       paramView.setAlpha((1.0F - f) * 10.0F);
-      LuckyMoneyF2FQRCodeUI.E(this.lOE).setAlpha(1.0F - (1.0F - f) * 10.0F);
-      LuckyMoneyF2FQRCodeUI.E(this.lOE).setScaleX(f);
-      LuckyMoneyF2FQRCodeUI.E(this.lOE).setScaleY(f);
-      LuckyMoneyF2FQRCodeUI.E(this.lOE).setVisibility(0);
+      LuckyMoneyF2FQRCodeUI.E(this.olY).setAlpha(1.0F - (1.0F - f) * 10.0F);
+      LuckyMoneyF2FQRCodeUI.E(this.olY).setScaleX(f);
+      LuckyMoneyF2FQRCodeUI.E(this.olY).setScaleY(f);
+      LuckyMoneyF2FQRCodeUI.E(this.olY).setVisibility(0);
     }
     if (f == 1.0F)
     {
-      LuckyMoneyF2FQRCodeUI.F(this.lOE).eE("packet_received.m4a");
-      LuckyMoneyF2FQRCodeUI.c(this.lOE).removeView(LuckyMoneyF2FQRCodeUI.c(this.lOE).getExitView());
-      LuckyMoneyF2FQRCodeUI.G(this.lOE);
-      LuckyMoneyF2FQRCodeUI.H(this.lOE).start();
+      LuckyMoneyF2FQRCodeUI.F(this.olY).kJ("packet_received.m4a");
+      LuckyMoneyF2FQRCodeUI.c(this.olY).removeView(LuckyMoneyF2FQRCodeUI.c(this.olY).getExitView());
+      LuckyMoneyF2FQRCodeUI.G(this.olY);
+      LuckyMoneyF2FQRCodeUI.H(this.olY).start();
     }
+    AppMethodBeat.o(42173);
   }
 }
 

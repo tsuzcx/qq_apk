@@ -1,36 +1,40 @@
 package com.tencent.mm.plugin.label.ui;
 
 import android.os.Message;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class ContactLabelManagerUI$1
-  extends ah
+  extends ak
 {
   ContactLabelManagerUI$1(ContactLabelManagerUI paramContactLabelManagerUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(22584);
     int i = paramMessage.what;
-    y.d("MicroMsg.Label.ContactLabelManagerUI", "handleMessage:%d", new Object[] { Integer.valueOf(i) });
+    ab.d("MicroMsg.Label.ContactLabelManagerUI", "handleMessage:%d", new Object[] { Integer.valueOf(i) });
     switch (i)
     {
-    default: 
-      return;
-    case 5001: 
-      ContactLabelManagerUI.a(this.lBw);
-      return;
-    case 5002: 
-      this.lBw.Gp(this.lBw.getString(R.l.app_waiting));
-      return;
     }
-    this.lBw.bdC();
+    for (;;)
+    {
+      AppMethodBeat.o(22584);
+      return;
+      ContactLabelManagerUI.a(this.nYI);
+      AppMethodBeat.o(22584);
+      return;
+      this.nYI.RS(this.nYI.getString(2131297112));
+      AppMethodBeat.o(22584);
+      return;
+      this.nYI.hideLoading();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.ContactLabelManagerUI.1
  * JD-Core Version:    0.7.0.1
  */

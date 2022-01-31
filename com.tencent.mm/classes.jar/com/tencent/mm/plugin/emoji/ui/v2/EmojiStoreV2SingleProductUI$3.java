@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 
@@ -13,9 +14,11 @@ final class EmojiStoreV2SingleProductUI$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (EmojiStoreV2SingleProductUI.p(this.jiI) != null) {
-      g.DO().dJT.c(EmojiStoreV2SingleProductUI.p(this.jiI));
+    AppMethodBeat.i(53746);
+    if (EmojiStoreV2SingleProductUI.p(this.lrz) != null) {
+      g.RK().eHt.a(EmojiStoreV2SingleProductUI.p(this.lrz));
     }
+    AppMethodBeat.o(53746);
   }
 }
 

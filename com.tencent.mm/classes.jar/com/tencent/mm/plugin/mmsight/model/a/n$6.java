@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class n$6
   implements Runnable
@@ -11,32 +12,39 @@ final class n$6
   
   public final void run()
   {
-    boolean bool = this.mkk.bjF();
-    y.i("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "stopImpl result: %s", new Object[] { Boolean.valueOf(bool) });
-    if (bool) {
-      if (this.mkk.mki != null)
+    AppMethodBeat.i(76635);
+    boolean bool = this.oJA.Xs();
+    ab.i("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "stopImpl result: %s", new Object[] { Boolean.valueOf(bool) });
+    if (bool)
+    {
+      if (this.oJA.fcA != null)
       {
-        y.i("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "call stopCallback");
-        ai.d(this.mkk.mki);
+        ab.i("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "call stopCallback");
+        al.d(this.oJA.fcA);
+        AppMethodBeat.o(76635);
       }
     }
-    do
+    else
     {
-      return;
-      SightVideoJNI.releaseBigSightDataBufferLock(this.mkk.eIz);
-    } while (this.mkk.mjJ == null);
-    ai.d(new Runnable()
-    {
-      public final void run()
-      {
-        n.6.this.mkk.mjJ.Zf();
+      SightVideoJNI.releaseBigSightDataBufferLock(this.oJA.eRm);
+      if (this.oJA.fcz != null) {
+        al.d(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(76634);
+            n.6.this.oJA.fcz.asO();
+            AppMethodBeat.o(76634);
+          }
+        });
       }
-    });
+    }
+    AppMethodBeat.o(76635);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.n.6
  * JD-Core Version:    0.7.0.1
  */

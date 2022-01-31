@@ -1,6 +1,6 @@
 package com.tencent.mm.kernel.api;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import java.util.HashMap;
 
 public abstract interface a

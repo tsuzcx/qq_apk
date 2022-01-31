@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.container;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$2
   implements ValueAnimator.AnimatorUpdateListener
@@ -11,8 +12,10 @@ final class c$2
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
+    AppMethodBeat.i(126282);
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     this.val$view.setY(f);
+    AppMethodBeat.o(126282);
   }
 }
 

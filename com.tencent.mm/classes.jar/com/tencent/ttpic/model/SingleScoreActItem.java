@@ -2,6 +2,7 @@ package com.tencent.ttpic.model;
 
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.BenchUtil;
 import java.util.ArrayList;
@@ -10,18 +11,29 @@ import java.util.List;
 public class SingleScoreActItem
   extends FrameSourceItem
 {
-  private static final String TAG = SingleScoreActItem.class.getSimpleName();
-  private SizeI bitSize = new SizeI(130, 170);
+  private static final String TAG;
+  private SizeI bitSize;
   protected CaptureActItem captureActItem;
+  
+  static
+  {
+    AppMethodBeat.i(83523);
+    TAG = SingleScoreActItem.class.getSimpleName();
+    AppMethodBeat.o(83523);
+  }
   
   public SingleScoreActItem(CaptureActItem paramCaptureActItem, BaseFilter paramBaseFilter)
   {
     super(paramBaseFilter);
+    AppMethodBeat.i(83517);
+    this.bitSize = new SizeI(130, 170);
     this.captureActItem = paramCaptureActItem;
+    AppMethodBeat.o(83517);
   }
   
   private List<Integer> getBitList(int paramInt)
   {
+    AppMethodBeat.i(83521);
     ArrayList localArrayList = new ArrayList();
     while (paramInt > 0)
     {
@@ -31,11 +43,13 @@ public class SingleScoreActItem
     if (localArrayList.isEmpty()) {
       localArrayList.add(Integer.valueOf(0));
     }
+    AppMethodBeat.o(83521);
     return localArrayList;
   }
   
   private void updateNumPosition(BaseFilter paramBaseFilter, CanvasItem paramCanvasItem, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(83522);
     float f = paramCanvasItem.itemRect.height * 1.0F / this.bitSize.height;
     int i = (int)(this.bitSize.width * f);
     int j = (int)(f * this.bitSize.height);
@@ -43,12 +57,14 @@ public class SingleScoreActItem
     paramInt2 = paramCanvasItem.itemRect.y + j;
     paramInt1 = paramCanvasItem.itemRect.x + i * paramInt1 + k;
     paramBaseFilter.setPositions(AlgoUtils.calPositions(paramInt1, paramInt2, i + paramInt1, paramInt2 - j, paramInt3, paramInt4));
+    AppMethodBeat.o(83522);
   }
   
   public void clear() {}
   
   public void draw(h paramh, CanvasItem paramCanvasItem, long paramLong)
   {
+    AppMethodBeat.i(83518);
     BenchUtil.benchStart(getClass().getSimpleName() + "[draw]");
     List localList = getBitList(getScore(paramCanvasItem));
     int j = localList.size();
@@ -66,6 +82,7 @@ public class SingleScoreActItem
       i += 1;
     }
     BenchUtil.benchEnd(getClass().getSimpleName() + "[draw]");
+    AppMethodBeat.o(83518);
   }
   
   public int getOrigHeight(int paramInt)
@@ -80,12 +97,18 @@ public class SingleScoreActItem
   
   protected int getScore(CanvasItem paramCanvasItem)
   {
-    return this.captureActItem.getScore(paramCanvasItem);
+    AppMethodBeat.i(83519);
+    int i = this.captureActItem.getScore(paramCanvasItem);
+    AppMethodBeat.o(83519);
+    return i;
   }
   
   protected int[] getScoreTexture(CanvasItem paramCanvasItem)
   {
-    return this.captureActItem.getScoreTexture(paramCanvasItem);
+    AppMethodBeat.i(83520);
+    paramCanvasItem = this.captureActItem.getScoreTexture(paramCanvasItem);
+    AppMethodBeat.o(83520);
+    return paramCanvasItem;
   }
   
   public int getTexture(CanvasItem paramCanvasItem, long paramLong)

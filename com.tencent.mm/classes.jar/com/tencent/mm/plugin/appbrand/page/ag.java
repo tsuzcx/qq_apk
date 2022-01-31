@@ -1,19 +1,12 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.net.http.SslCertificate;
-import android.webkit.WebResourceResponse;
-
 public abstract interface ag
 {
-  public abstract boolean a(SslCertificate paramSslCertificate);
-  
-  public abstract void anD();
-  
-  public abstract WebResourceResponse vO(String paramString);
+  public abstract void c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ag
  * JD-Core Version:    0.7.0.1
  */

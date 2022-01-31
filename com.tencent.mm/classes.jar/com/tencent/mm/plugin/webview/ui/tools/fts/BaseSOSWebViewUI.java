@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -7,20 +8,20 @@ import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView;
 import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView.a;
 import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView.b;
-import com.tencent.mm.plugin.fts.ui.widget.a.b;
+import com.tencent.mm.plugin.fts.ui.widget.a.c;
 import com.tencent.mm.plugin.websearch.api.h;
 import com.tencent.mm.plugin.webview.stub.d;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.webview.ui.tools.l;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.fts.widget.SOSEditTextView;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,173 +37,173 @@ public class BaseSOSWebViewUI
   extends BaseSearchWebViewUI
   implements FTSEditTextView.a
 {
-  protected ImageButton mBP;
-  protected View nRR;
-  private boolean rsV;
-  View rts;
-  protected SOSEditTextView rtt;
-  private List<BaseSOSWebViewUI.c> rtu;
-  protected int rtv = 0;
-  private e rtw;
-  private com.tencent.mm.plugin.webview.fts.d.a rtx;
-  boolean rty;
-  boolean rtz;
+  protected ImageButton pbT;
+  protected View qFP;
+  private List<BaseSOSWebViewUI.c> vjA;
+  protected int vjB = 0;
+  private e vjC;
+  private com.tencent.mm.plugin.webview.fts.d.a vjD;
+  boolean vjE;
+  boolean vjF;
+  private boolean vjb;
+  View vjy;
+  protected SOSEditTextView vjz;
   
-  protected static boolean cfs()
+  public final String KH(int paramInt)
   {
-    return true;
-  }
-  
-  protected static boolean cft()
-  {
-    return true;
-  }
-  
-  public final String CO(int paramInt)
-  {
-    for (;;)
+    AppMethodBeat.i(8378);
+    try
     {
-      Object localObject1;
-      Object localObject3;
-      int i;
-      try
+      Object localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("key", "educationTab");
+      Object localObject2 = this.igU.s(2, (Bundle)localObject1);
+      localObject1 = ((Bundle)localObject2).getString("result");
+      localObject2 = ((Bundle)localObject2).getString("result_1");
+      if (localObject2 == null) {}
+      for (;;)
       {
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putString("key", "educationTab");
-        localObject3 = this.gGn.o(2, (Bundle)localObject1);
-        localObject1 = ((Bundle)localObject3).getString("result");
-        localObject3 = ((Bundle)localObject3).getString("result_1");
-        if (localObject3 != null) {
-          break label119;
-        }
         localObject1 = new JSONObject((String)localObject1).optJSONArray("items");
         if (localObject1 != null) {
-          break label125;
+          break;
         }
+        AppMethodBeat.o(8378);
         return "";
+        localObject1 = localObject2;
       }
-      catch (Exception localException) {}
-      if (i < ((JSONArray)localObject1).length())
+      int i = 0;
+      while (i < ((JSONArray)localObject1).length())
       {
-        localObject3 = ((JSONArray)localObject1).optJSONObject(i);
-        if (((JSONObject)localObject3).optInt("businessType") == paramInt)
+        localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+        if (((JSONObject)localObject2).optInt("businessType") == paramInt)
         {
-          localObject1 = ((JSONObject)localObject3).optString("hotword");
+          localObject1 = ((JSONObject)localObject2).optString("hotword");
+          AppMethodBeat.o(8378);
           return localObject1;
         }
         i += 1;
       }
-      else
+      return "";
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(8378);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.b paramb)
+  {
+    AppMethodBeat.i(8366);
+    ab.i("MicroMsg.WebSearch.BaseSOSWebViewUI", "onEditTextChange %s %s %s", new Object[] { paramString1, paramString2, paramb });
+    if ((paramb == FTSEditTextView.b.naZ) || (paramb == FTSEditTextView.b.nba))
+    {
+      this.handler.post(new BaseSOSWebViewUI.18(this));
+      AppMethodBeat.o(8366);
+      return;
+    }
+    if (paramb == FTSEditTextView.b.nbb)
+    {
+      if (this.vjz.naN.hasFocus())
       {
-        return "";
-        label119:
-        Object localObject2 = localObject3;
-        continue;
-        label125:
-        i = 0;
+        this.vjz.bDk();
+        AppMethodBeat.o(8366);
+        return;
       }
+      this.vjz.bDj();
     }
+    AppMethodBeat.o(8366);
   }
   
-  public void a(String paramString1, String paramString2, List<a.b> paramList, FTSEditTextView.b paramb)
+  public void aMf()
   {
-    y.i("MicroMsg.FTS.BaseSOSWebViewUI", "onEditTextChange %s %s %s", new Object[] { paramString1, paramString2, paramb });
-    if ((paramb == FTSEditTextView.b.kEB) || (paramb == FTSEditTextView.b.kEC)) {
-      this.handler.post(new BaseSOSWebViewUI.17(this));
+    AppMethodBeat.i(8360);
+    super.aMf();
+    this.vjb = getIntent().getBooleanExtra("ftsneedkeyboard", false);
+    this.vjy = findViewById(2131828195);
+    this.vjz = ((SOSEditTextView)findViewById(2131828197));
+    this.vjz.setFtsEditTextListener(this);
+    this.vjz.setHint(getHint());
+    this.qFP = findViewById(2131822887);
+    this.qFP.setOnClickListener(new BaseSOSWebViewUI.1(this));
+    this.pbT = ((ImageButton)findViewById(2131826460));
+    this.pbT.setOnClickListener(new BaseSOSWebViewUI.12(this));
+    this.pOd.setWebViewClient(new BaseSOSWebViewUI.b(this, (byte)0));
+    this.pOd.setOnTouchListener(new BaseSOSWebViewUI.13(this));
+    if (this.vjb) {
+      getContentView().postDelayed(new BaseSOSWebViewUI.14(this), 128L);
     }
-    while (paramb != FTSEditTextView.b.kED) {
-      return;
+    if (this.vgh != null) {
+      this.vgh.op(true);
     }
-    if (this.rtt.kEp.hasFocus())
-    {
-      this.rtt.aWD();
-      return;
-    }
-    this.rtt.aWC();
+    this.pOd.setOnLongClickListener(new BaseSOSWebViewUI.15(this));
+    this.vjD.uQS = this.uQS;
+    AppMethodBeat.o(8360);
   }
   
-  public final void aWb()
+  public boolean aMm()
   {
-    if (!this.rtt.kEp.hasFocus())
-    {
-      this.rtt.aWy();
-      showVKB();
-    }
-  }
-  
-  protected final int aZY()
-  {
-    return this.scene;
-  }
-  
-  protected void aoX()
-  {
-    super.aoX();
-    this.rsV = getIntent().getBooleanExtra("ftsneedkeyboard", false);
-    this.rts = findViewById(R.h.search_input_layout);
-    this.rtt = ((SOSEditTextView)findViewById(R.h.sos_edittext));
-    this.rtt.setFtsEditTextListener(this);
-    this.rtt.setHint(getHint());
-    this.nRR = findViewById(R.h.cancel_btn);
-    this.nRR.setOnClickListener(new BaseSOSWebViewUI.1(this));
-    this.mBP = ((ImageButton)findViewById(R.h.back_btn));
-    this.mBP.setOnClickListener(new BaseSOSWebViewUI.11(this));
-    this.niQ.setWebViewClient(new BaseSOSWebViewUI.b(this, (byte)0));
-    this.niQ.setOnTouchListener(new BaseSOSWebViewUI.12(this));
-    if (this.rsV) {
-      this.mController.contentView.postDelayed(new BaseSOSWebViewUI.13(this), 128L);
-    }
-    if (this.rpn != null) {
-      this.rpn.lh(true);
-    }
-    this.niQ.setOnLongClickListener(new BaseSOSWebViewUI.14(this));
-    this.rtx.rbk = this.rbk;
-  }
-  
-  public boolean apb()
-  {
-    this.rtt.kEp.clearFocus();
-    XM();
+    AppMethodBeat.i(8369);
+    this.vjz.naN.clearFocus();
+    hideVKB();
     if (getTotalQuery().length() > 0)
     {
       this.handler.post(new BaseSOSWebViewUI.2(this));
-      XM();
-      this.rty = true;
+      hideVKB();
+      this.vjE = true;
+      AppMethodBeat.o(8369);
+      return true;
     }
+    AppMethodBeat.o(8369);
     return true;
+  }
+  
+  public final boolean aYR()
+  {
+    return false;
+  }
+  
+  public final void aZy()
+  {
+    AppMethodBeat.i(8370);
+    cJO();
+    AppMethodBeat.o(8370);
   }
   
   protected final void b(int paramInt, String paramString, Map<String, Object> paramMap)
   {
-    y.v("MicroMsg.FTS.BaseSOSWebViewUI", "adding history cgi params type %d, inEditQuery %s, params %s", new Object[] { Integer.valueOf(paramInt), paramString, paramMap });
-    this.rtQ = paramInt;
-    if (this.rtu == null) {
-      this.rtu = new ArrayList();
+    AppMethodBeat.i(8377);
+    ab.v("MicroMsg.WebSearch.BaseSOSWebViewUI", "adding history cgi params type %d, inEditQuery %s, params %s", new Object[] { Integer.valueOf(paramInt), paramString, paramMap });
+    int i = this.vjX;
+    this.vjX = paramInt;
+    if (i != paramInt) {
+      dfv();
+    }
+    if (this.vjA == null) {
+      this.vjA = new ArrayList();
     }
     BaseSOSWebViewUI.c localc1;
     BaseSOSWebViewUI.c localc2;
     if (getTotalQuery().length() > 0)
     {
       localc1 = new BaseSOSWebViewUI.c(this);
-      localc1.type = this.rtQ;
-      localc1.iSZ = new ArrayList(this.rtt.getTagList());
-      localc1.rtK = this.rtt.getInEditTextQuery();
-      localc1.rtJ = this.rtt.getTotalQuery();
-      if (this.rtu.size() == 0) {
-        this.rtu.add(localc1);
+      localc1.type = this.vjX;
+      localc1.lbK = new ArrayList(this.vjz.getTagList());
+      localc1.vjP = this.vjz.getInEditTextQuery();
+      localc1.vjO = this.vjz.getTotalQuery();
+      if (this.vjA.size() == 0) {
+        this.vjA.add(localc1);
       }
     }
-    else if ((this.rtu != null) && (!this.rtu.isEmpty()))
+    else if ((this.vjA != null) && (!this.vjA.isEmpty()))
     {
-      localc1 = (BaseSOSWebViewUI.c)this.rtu.get(0);
+      localc1 = (BaseSOSWebViewUI.c)this.vjA.get(0);
       localc2 = new BaseSOSWebViewUI.c(this);
       localc2.type = paramInt;
-      localc2.rtJ = paramString;
-      localc2.rtL = paramMap;
+      localc2.vjO = paramString;
+      localc2.vjQ = paramMap;
       if (localc1 != null)
       {
         if (localc1 != localc2) {
-          break label269;
+          break label297;
         }
         paramInt = 1;
       }
@@ -210,17 +211,18 @@ public class BaseSOSWebViewUI
     for (;;)
     {
       if (paramInt != 0) {
-        localc1.rtL = paramMap;
+        localc1.vjQ = paramMap;
       }
+      AppMethodBeat.o(8377);
       return;
-      if (localc1.equals((BaseSOSWebViewUI.c)this.rtu.get(0))) {
+      if (localc1.equals((BaseSOSWebViewUI.c)this.vjA.get(0))) {
         break;
       }
-      this.rtu.add(0, localc1);
+      this.vjA.add(0, localc1);
       break;
-      label269:
+      label297:
       paramString = (BaseSOSWebViewUI.c)localc2;
-      if ((paramString.type == localc1.type) && (paramString.rtJ.trim().equals(localc1.rtJ.trim()))) {
+      if ((paramString.type == localc1.type) && (paramString.vjO.trim().equals(localc1.vjO.trim()))) {
         paramInt = 1;
       } else {
         paramInt = 0;
@@ -228,89 +230,70 @@ public class BaseSOSWebViewUI
     }
   }
   
-  protected final void bOb()
+  public final void bCE()
   {
-    XM();
-    if ((this.rtu != null) && (this.rtu.size() > 1))
+    AppMethodBeat.i(8365);
+    if (!this.vjz.naN.hasFocus())
     {
-      this.rtu.remove(0);
-      BaseSOSWebViewUI.c localc = (BaseSOSWebViewUI.c)this.rtu.get(0);
-      this.rtt.n(localc.rtK, localc.iSZ);
-      this.handler.post(new BaseSOSWebViewUI.15(this, localc));
+      this.vjz.bDf();
+      showVKB();
+    }
+    AppMethodBeat.o(8365);
+  }
+  
+  protected final void cJO()
+  {
+    AppMethodBeat.i(8363);
+    hideVKB();
+    dfI();
+    if ((this.vjA != null) && (this.vjA.size() > 1))
+    {
+      this.vjA.remove(0);
+      BaseSOSWebViewUI.c localc = (BaseSOSWebViewUI.c)this.vjA.get(0);
+      this.vjz.o(localc.vjP, localc.lbK);
+      this.handler.post(new BaseSOSWebViewUI.16(this, localc));
+      AppMethodBeat.o(8363);
       return;
     }
-    if (this.rty)
+    if (this.vjE)
     {
-      cfn();
+      dfw();
+      AppMethodBeat.o(8363);
       return;
     }
     finish();
+    AppMethodBeat.o(8363);
   }
   
-  protected final void cdU()
-  {
-    bOb();
-  }
-  
-  protected final boolean ceb()
+  public final boolean deq()
   {
     return false;
   }
   
-  protected final boolean cer()
+  public final boolean dez()
   {
     return true;
   }
   
-  protected final boolean cey()
+  public final SOSEditTextView dfA()
   {
-    return false;
+    return this.vjz;
   }
   
-  protected void cfl() {}
-  
-  protected void cfm() {}
-  
-  protected void cfn()
+  protected final e dfB()
   {
-    this.rtt.n("", null);
-    XM();
-    this.handler.post(new BaseSOSWebViewUI.16(this));
-    this.rtu = null;
-    this.rty = false;
-    this.rtw.onDestroy();
+    return this.vjC;
   }
   
-  protected void cfo() {}
-  
-  protected String cfp()
+  protected final int dfC()
   {
-    return "";
+    return this.vjX;
   }
   
-  protected int cfq()
+  public final JSONArray dfD()
   {
-    return 0;
-  }
-  
-  public final SOSEditTextView cfr()
-  {
-    return this.rtt;
-  }
-  
-  protected final e cfu()
-  {
-    return this.rtw;
-  }
-  
-  protected final int cfv()
-  {
-    return this.rtQ;
-  }
-  
-  public final JSONArray cfw()
-  {
-    Object localObject = this.rtt.getTagList();
+    AppMethodBeat.i(8375);
+    Object localObject = this.vjz.getTagList();
     JSONArray localJSONArray = new JSONArray();
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
@@ -319,41 +302,88 @@ public class BaseSOSWebViewUI
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("tagName", locala.rtH);
-        localJSONObject.put("tagType", locala.rtI);
+        localJSONObject.put("tagName", locala.smP);
+        localJSONObject.put("tagType", locala.aBY);
         localJSONObject.put("userName", locala.userName);
         localJSONArray.put(localJSONObject);
       }
       catch (JSONException localJSONException) {}
     }
+    AppMethodBeat.o(8375);
     return localJSONArray;
   }
   
-  protected boolean cfx()
+  public boolean dfE()
+  {
+    return false;
+  }
+  
+  protected boolean dfF()
   {
     return true;
   }
   
-  public String getHint()
+  protected void dfu() {}
+  
+  protected void dfv() {}
+  
+  protected void dfw()
+  {
+    AppMethodBeat.i(8364);
+    this.vjz.o("", null);
+    hideVKB();
+    this.handler.post(new BaseSOSWebViewUI.17(this));
+    this.vjA = null;
+    this.vjE = false;
+    this.vjC.onDestroy();
+    AppMethodBeat.o(8364);
+  }
+  
+  protected void dfx() {}
+  
+  protected String dfy()
+  {
+    return "";
+  }
+  
+  protected int dfz()
+  {
+    return 0;
+  }
+  
+  protected String getHint()
   {
     return null;
   }
   
   protected final String getInEditTextQuery()
   {
-    return this.rtt.getInEditTextQuery();
+    AppMethodBeat.i(8374);
+    String str = this.vjz.getInEditTextQuery();
+    AppMethodBeat.o(8374);
+    return str;
+  }
+  
+  protected final int getScene()
+  {
+    return this.scene;
   }
   
   public final String getSessionId()
   {
-    return this.bIB;
+    return this.cpW;
   }
   
   protected final String getTotalQuery()
   {
-    if (this.rtt != null) {
-      return this.rtt.getTotalQuery();
+    AppMethodBeat.i(8373);
+    if (this.vjz != null)
+    {
+      String str = this.vjz.getTotalQuery();
+      AppMethodBeat.o(8373);
+      return str;
     }
+    AppMethodBeat.o(8373);
     return "";
   }
   
@@ -362,16 +392,19 @@ public class BaseSOSWebViewUI
     return this.type;
   }
   
-  public void gn(boolean paramBoolean)
+  public void hQ(boolean paramBoolean)
   {
-    if ((paramBoolean) && (!bk.bl(getTotalQuery()))) {
-      this.handler.post(new BaseSOSWebViewUI.18(this));
+    AppMethodBeat.i(8367);
+    if ((paramBoolean) && (!bo.isNullOrNil(getTotalQuery()))) {
+      this.handler.post(new BaseSOSWebViewUI.19(this));
     }
+    AppMethodBeat.o(8367);
   }
   
-  protected void i(int paramInt, Bundle paramBundle)
+  public void l(int paramInt, Bundle paramBundle)
   {
     int i = 0;
+    AppMethodBeat.i(8372);
     Object localObject1;
     Object localObject2;
     Object localObject3;
@@ -379,8 +412,8 @@ public class BaseSOSWebViewUI
     switch (paramInt)
     {
     default: 
-      super.i(paramInt, paramBundle);
-    case 144: 
+      super.l(paramInt, paramBundle);
+      AppMethodBeat.o(8372);
       return;
     case 128: 
       paramBundle.getString("fts_key_json_data");
@@ -393,6 +426,7 @@ public class BaseSOSWebViewUI
         ((Map)localObject1).put(localObject3, paramBundle.get((String)localObject3));
       }
       this.handler.post(new BaseSOSWebViewUI.3(this, (Map)localObject1));
+      AppMethodBeat.o(8372);
       return;
     case 119: 
       localObject1 = paramBundle.getString("fts_key_json_data");
@@ -400,32 +434,36 @@ public class BaseSOSWebViewUI
       bool = paramBundle.getBoolean("fts_key_new_query", true);
       paramBundle = paramBundle.getBundle("fts_key_data");
       this.handler.post(new BaseSOSWebViewUI.4(this, paramBundle, (String)localObject1, bool, (String)localObject2));
+      AppMethodBeat.o(8372);
       return;
     case 143: 
       paramBundle = paramBundle.getString("data");
       this.handler.post(new BaseSOSWebViewUI.5(this, paramBundle));
+      AppMethodBeat.o(8372);
       return;
     case 120: 
       paramInt = paramBundle.getInt("fts_key_ret", 0);
       paramBundle = paramBundle.getString("fts_key_data");
       this.handler.post(new BaseSOSWebViewUI.6(this, paramInt, paramBundle));
+      AppMethodBeat.o(8372);
       return;
     case 121: 
       localObject1 = paramBundle.getString("fts_key_json_data");
       paramInt = paramBundle.getInt("fts_key_teach_request_type", 0);
       i = paramBundle.getInt("fts_key_is_cache_data", 0);
       this.handler.post(new BaseSOSWebViewUI.7(this, paramInt, (String)localObject1, i));
+      AppMethodBeat.o(8372);
       return;
     case 122: 
       localObject1 = paramBundle.getString("fts_key_new_query");
       localObject2 = paramBundle.getString("fts_key_custom_query");
       bool = paramBundle.getBoolean("fts_key_need_keyboard", false);
       localObject3 = paramBundle.getString("fts_key_tag_list");
-      y.i("MicroMsg.FTS.BaseSOSWebViewUI", "onFTSSearchQueryChange: totalQuery: %s isInputChange %b", new Object[] { localObject1, Boolean.valueOf(bool) });
+      ab.i("MicroMsg.WebSearch.BaseSOSWebViewUI", "onFTSSearchQueryChange: totalQuery: %s isInputChange %b", new Object[] { localObject1, Boolean.valueOf(bool) });
       paramBundle = new ArrayList();
       try
       {
-        if (!bk.bl((String)localObject3))
+        if (!bo.isNullOrNil((String)localObject3))
         {
           localObject3 = new JSONArray((String)localObject3);
           paramInt = i;
@@ -433,8 +471,8 @@ public class BaseSOSWebViewUI
           {
             JSONObject localJSONObject = ((JSONArray)localObject3).getJSONObject(paramInt);
             BaseSOSWebViewUI.a locala = new BaseSOSWebViewUI.a(this);
-            locala.rtH = localJSONObject.getString("tagName");
-            locala.rtI = localJSONObject.getInt("tagType");
+            locala.smP = localJSONObject.getString("tagName");
+            locala.aBY = localJSONObject.getInt("tagType");
             locala.userName = localJSONObject.getString("userName");
             paramBundle.add(locala);
             paramInt += 1;
@@ -444,153 +482,196 @@ public class BaseSOSWebViewUI
       }
       catch (Exception localException)
       {
-        if (this.rtt != null)
+        if (this.vjz != null)
         {
           if (paramBundle.size() > 0) {
-            this.rtt.n((String)localObject2, paramBundle);
+            this.vjz.o((String)localObject2, paramBundle);
           }
         }
         else
         {
           if (!bool) {
-            break label665;
+            break label723;
           }
           this.handler.post(new BaseSOSWebViewUI.8(this));
-          if (this.rtt != null) {
-            this.rtt.aWy();
+          if (this.vjz != null) {
+            this.vjz.bDf();
           }
-          ceA();
+          deG();
         }
         for (;;)
         {
-          com.tencent.mm.plugin.webview.fts.b.a.a.caH();
-          com.tencent.mm.plugin.webview.fts.b.a.a.RI(getTotalQuery());
+          com.tencent.mm.plugin.webview.fts.b.a.a.daG();
+          com.tencent.mm.plugin.webview.fts.b.a.a.agL(getTotalQuery());
+          AppMethodBeat.o(8372);
           return;
-          this.rtt.n((String)localObject1, paramBundle);
+          this.vjz.o((String)localObject1, paramBundle);
           break;
-          if (this.rtt != null) {
-            this.rtt.kEp.clearFocus();
+          if (this.vjz != null) {
+            this.vjz.naN.clearFocus();
           }
         }
       }
     case 124: 
       this.handler.post(new BaseSOSWebViewUI.9(this, paramBundle));
+      AppMethodBeat.o(8372);
       return;
     case 125: 
       localObject1 = paramBundle.getString("fts_key_sns_id");
       paramInt = paramBundle.getInt("fts_key_status", 0);
       this.handler.post(new BaseSOSWebViewUI.10(this, (String)localObject1, paramInt));
+      AppMethodBeat.o(8372);
       return;
     case 60: 
-      if (!cfx())
+      if (!dfF())
       {
-        y.w("MicroMsg.FTS.BaseSOSWebViewUI", "current state is not search");
+        ab.w("MicroMsg.WebSearch.BaseSOSWebViewUI", "current state is not search");
+        AppMethodBeat.o(8372);
         return;
       }
-      this.rtw.b(paramBundle, this.scene);
+      this.vjC.b(paramBundle, this.scene);
+      AppMethodBeat.o(8372);
       return;
     case 100001: 
-      this.rtw.aa(paramBundle);
+      this.vjC.ar(paramBundle);
+      AppMethodBeat.o(8372);
       return;
     case 61: 
-      this.rtw.ab(paramBundle);
+      this.vjC.as(paramBundle);
+      AppMethodBeat.o(8372);
       return;
     case 62: 
-      label665:
-      this.rtw.ac(paramBundle);
+      this.vjC.at(paramBundle);
+      AppMethodBeat.o(8372);
+      return;
+    case 138: 
+      paramBundle = paramBundle.getString("fts_key_data");
+      if (!bo.isNullOrNil(paramBundle))
+      {
+        if ("index".equals(paramBundle))
+        {
+          this.vjB = 1;
+          AppMethodBeat.o(8372);
+          return;
+        }
+        if ("result".equals(paramBundle))
+        {
+          this.vjB = 2;
+          AppMethodBeat.o(8372);
+          return;
+        }
+        if ("suggestion".equals(paramBundle))
+        {
+          this.vjB = 3;
+          AppMethodBeat.o(8372);
+          return;
+        }
+        if ("teach".equals(paramBundle))
+        {
+          this.vjB = 4;
+          AppMethodBeat.o(8372);
+          return;
+        }
+        if ("local".equals(paramBundle))
+        {
+          this.vjB = 5;
+          AppMethodBeat.o(8372);
+          return;
+        }
+        this.vjB = 0;
+        AppMethodBeat.o(8372);
+        return;
+      }
+      this.vjB = 0;
+      AppMethodBeat.o(8372);
+      return;
+    case 144: 
+      label723:
+      AppMethodBeat.o(8372);
       return;
     }
-    paramBundle = paramBundle.getString("fts_key_data");
-    if (!bk.bl(paramBundle))
-    {
-      if ("index".equals(paramBundle))
-      {
-        this.rtv = 1;
-        return;
-      }
-      if ("result".equals(paramBundle))
-      {
-        this.rtv = 2;
-        return;
-      }
-      if ("suggestion".equals(paramBundle))
-      {
-        this.rtv = 3;
-        return;
-      }
-      if ("teach".equals(paramBundle))
-      {
-        this.rtv = 4;
-        return;
-      }
-      if ("local".equals(paramBundle))
-      {
-        this.rtv = 5;
-        return;
-      }
-      this.rtv = 0;
-      return;
-    }
-    this.rtv = 0;
+    paramInt = paramBundle.getInt("ret");
+    long l = paramBundle.getLong("reqId");
+    paramBundle = paramBundle.getString("json", "");
+    this.handler.post(new BaseSOSWebViewUI.11(this, paramInt, l, paramBundle));
+    AppMethodBeat.o(8372);
   }
   
   public void onBackPressed()
   {
-    bOb();
+    AppMethodBeat.i(8376);
+    cJO();
+    AppMethodBeat.o(8376);
   }
   
   public void onClickClearTextBtn(View paramView)
   {
-    if (this.rtt != null)
+    AppMethodBeat.i(8368);
+    if (this.vjz != null)
     {
-      if (!this.rtt.kEp.hasFocus())
+      if (!this.vjz.naN.hasFocus())
       {
-        this.rtt.aWy();
+        this.vjz.bDf();
         showVKB();
       }
-      this.rtt.setHint(getHint());
+      this.vjz.setHint(getHint());
     }
+    AppMethodBeat.o(8368);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(8359);
     super.onCreate(paramBundle);
     getSupportActionBar().hide();
-    this.rtx = new com.tencent.mm.plugin.webview.fts.d.a(this.niQ);
-    this.rtw = new e(((h)com.tencent.mm.kernel.g.r(h.class)).a(this.mController.uMN, this.rtx));
+    this.vjD = new com.tencent.mm.plugin.webview.fts.d.a(this.pOd);
+    this.vjC = new e(((h)g.E(h.class)).a(getContext(), this.vjD));
+    AppMethodBeat.o(8359);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(8371);
     try
     {
-      if (this.gGn != null)
+      if (this.igU != null)
       {
         Bundle localBundle = new Bundle();
         localBundle.putInt("webview_id", hashCode());
-        this.gGn.i(1, localBundle);
+        this.igU.r(1, localBundle);
       }
-      this.rtw.onDestroy();
+      this.vjC.onDestroy();
     }
     catch (RemoteException localRemoteException)
     {
-      label44:
-      break label44;
+      label51:
+      break label51;
     }
-    XM();
+    hideVKB();
     super.onDestroy();
+    AppMethodBeat.o(8371);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(8362);
     super.onPause();
-    this.rtw.onPause();
+    this.vjC.onPause();
+    AppMethodBeat.o(8362);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(8361);
     super.onResume();
-    this.rtw.onResume();
+    this.vjC.onResume();
+    AppMethodBeat.o(8361);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

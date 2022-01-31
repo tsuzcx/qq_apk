@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:weightSum="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0dip" android:textColor="#ff949494" android:gravity="center|left" android:id="@id/bel" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="12.0dip" android:textColor="#ff949494" android:gravity="center|right" android:id="@id/fn8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

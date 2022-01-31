@@ -5,12 +5,12 @@ public final class c$gp
 {
   public c$gp()
   {
-    super("removeSearchWAWidgetView", "", 10000, false);
+    super("operateVideoPlayer", "", 10000, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.gp
  * JD-Core Version:    0.7.0.1
  */

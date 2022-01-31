@@ -1,5 +1,6 @@
 package com.tencent.mapsdk.raster.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 public final class IndoorBuilding
@@ -39,10 +40,15 @@ public final class IndoorBuilding
   
   public final String toString()
   {
-    if ((this.mBuidlingId == null) || (this.mLevels == null) || (this.mLevels.size() <= this.mActiveLevelIndex)) {
+    AppMethodBeat.i(101186);
+    if ((this.mBuidlingId == null) || (this.mLevels == null) || (this.mLevels.size() <= this.mActiveLevelIndex))
+    {
+      AppMethodBeat.o(101186);
       return null;
     }
-    return this.mBuidlingId + "_" + ((IndoorLevel)this.mLevels.get(this.mActiveLevelIndex)).getName();
+    String str = this.mBuidlingId + "_" + ((IndoorLevel)this.mLevels.get(this.mActiveLevelIndex)).getName();
+    AppMethodBeat.o(101186);
+    return str;
   }
 }
 

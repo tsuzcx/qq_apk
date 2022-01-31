@@ -8,23 +8,20 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.game.d.ac;
-import com.tencent.mm.plugin.game.d.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.d.ad;
+import com.tencent.mm.plugin.game.d.as;
 import com.tencent.mm.plugin.game.e.a;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.c;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.game.model.d;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class GameBestSellingMore
   extends LinearLayout
   implements View.OnClickListener
 {
-  private ImageView kXA;
-  private e kXy;
-  private TextView kXz;
+  private d nvA;
+  private TextView nvB;
+  private ImageView nvC;
   
   public GameBestSellingMore(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,35 +30,44 @@ public class GameBestSellingMore
   
   public void onClick(View paramView)
   {
-    if ((this.kXy == null) || (this.kXy.kOu == null) || (this.kXy.kOu.kTo == null) || (bk.bl(this.kXy.kOu.kTo.kTQ))) {
+    AppMethodBeat.i(111734);
+    if ((this.nvA == null) || (this.nvA.nmr == null) || (this.nvA.nmr.nro == null) || (bo.isNullOrNil(this.nvA.nmr.nro.nrQ)))
+    {
+      AppMethodBeat.o(111734);
       return;
     }
-    int i = c.an(getContext(), this.kXy.kOu.kTo.kTQ);
-    b.a(getContext(), 10, 1022, 999, i, null, GameIndexListView.getSourceScene(), a.fy(this.kXy.kOu.kSs));
+    int i = com.tencent.mm.plugin.game.f.c.ax(getContext(), this.nvA.nmr.nro.nrQ);
+    com.tencent.mm.game.report.c.a(getContext(), 10, 1022, 999, i, null, GameIndexListView.getSourceScene(), a.lR(this.nvA.nmr.nqt));
+    AppMethodBeat.o(111734);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111732);
     super.onFinishInflate();
-    this.kXz = ((TextView)findViewById(g.e.more_game_text));
-    this.kXA = ((ImageView)findViewById(g.e.more_game_arrow));
+    this.nvB = ((TextView)findViewById(2131824428));
+    this.nvC = ((ImageView)findViewById(2131824429));
     setOnClickListener(this);
+    AppMethodBeat.o(111732);
   }
   
-  public void setData(e parame)
+  public void setData(d paramd)
   {
-    this.kXy = parame;
-    if ((parame == null) || (parame.kOu == null) || (parame.kOu.kTo == null) || (bk.bl(parame.kOu.kTo.kTx)))
+    AppMethodBeat.i(111733);
+    this.nvA = paramd;
+    if ((paramd == null) || (paramd.nmr == null) || (paramd.nmr.nro == null) || (bo.isNullOrNil(paramd.nmr.nro.nrx)))
     {
-      this.kXz.setVisibility(8);
-      this.kXA.setVisibility(8);
+      this.nvB.setVisibility(8);
+      this.nvC.setVisibility(8);
       setPadding(0, 0, 0, 0);
+      AppMethodBeat.o(111733);
       return;
     }
-    setPadding(getResources().getDimensionPixelSize(g.c.GameLargePadding), 0, getResources().getDimensionPixelSize(g.c.GameLargePadding), getResources().getDimensionPixelSize(g.c.GameLargePadding));
-    this.kXz.setVisibility(0);
-    this.kXA.setVisibility(0);
-    this.kXz.setText(parame.kOu.kTo.kTx);
+    setPadding(getResources().getDimensionPixelSize(2131427724), 0, getResources().getDimensionPixelSize(2131427724), getResources().getDimensionPixelSize(2131427724));
+    this.nvB.setVisibility(0);
+    this.nvC.setVisibility(0);
+    this.nvB.setText(paramd.nmr.nro.nrx);
+    AppMethodBeat.o(111733);
   }
 }
 

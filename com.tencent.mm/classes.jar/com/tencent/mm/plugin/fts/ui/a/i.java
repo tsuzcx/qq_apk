@@ -3,49 +3,51 @@ package com.tencent.mm.plugin.fts.ui.a;
 import android.content.Context;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.a.f;
 import com.tencent.mm.plugin.fts.ui.b.c;
-import com.tencent.mm.plugin.fts.ui.n.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class i
   extends a
 {
-  public boolean kDj;
-  public CharSequence kDk;
-  private i.b kDl = new i.b(this);
-  private i.a kDm = new i.a(this);
-  public String kwY;
+  public String mSN;
+  public boolean mZf;
+  public CharSequence mZg;
+  private i.b mZh;
+  private i.a mZi;
   
   public i(int paramInt)
   {
     super(19, paramInt);
-    this.kxT = false;
+    AppMethodBeat.i(61998);
+    this.mZh = new i.b(this);
+    this.mZi = new i.a(this);
+    this.mTH = false;
+    AppMethodBeat.o(61998);
   }
   
-  public final a.b BD()
+  public final a.b Pr()
   {
-    return this.kDl;
+    return this.mZh;
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
-    parama = TextUtils.ellipsize(this.kwi.kwJ[0], b.c.kAg, 200.0F, TextUtils.TruncateAt.MIDDLE);
-    paramVarArgs = TextUtils.ellipsize(this.kwi.kwJ[1], b.c.kAg, 400.0F, TextUtils.TruncateAt.MIDDLE);
-    if (bk.bl(this.kwY))
+    AppMethodBeat.i(61999);
+    parama = TextUtils.ellipsize(this.mRX.mSz[0], b.c.mVY, 200.0F, TextUtils.TruncateAt.MIDDLE);
+    paramVarArgs = TextUtils.ellipsize(this.mRX.mSz[1], b.c.mVY, 400.0F, TextUtils.TruncateAt.MIDDLE);
+    if (bo.isNullOrNil(this.mSN))
     {
-      this.kDk = TextUtils.concat(new CharSequence[] { paramContext.getString(n.g.search_talker_message_info_1), f.d(parama, parama.length()), paramContext.getString(n.g.search_talker_message_info_2), f.d(paramVarArgs, paramVarArgs.length()), paramContext.getString(n.g.search_talker_message_info_3) });
+      this.mZg = TextUtils.concat(new CharSequence[] { paramContext.getString(2131303024), f.j(parama, parama.length()), paramContext.getString(2131303025), f.j(paramVarArgs, paramVarArgs.length()), paramContext.getString(2131303026) });
+      AppMethodBeat.o(61999);
       return;
     }
-    this.kDk = TextUtils.concat(new CharSequence[] { paramContext.getString(n.g.search_talker_message_info_4), f.d(parama, parama.length()), paramContext.getString(n.g.search_talker_message_info_2), f.d(paramVarArgs, paramVarArgs.length()), paramContext.getString(n.g.search_talker_message_info_3) });
-  }
-  
-  protected final a.a afK()
-  {
-    return this.kDm;
+    this.mZg = TextUtils.concat(new CharSequence[] { paramContext.getString(2131303027), f.j(parama, parama.length()), paramContext.getString(2131303025), f.j(paramVarArgs, paramVarArgs.length()), paramContext.getString(2131303026) });
+    AppMethodBeat.o(61999);
   }
 }
 

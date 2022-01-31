@@ -1,11 +1,12 @@
 package com.tencent.mm.modelvideo;
 
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.sdk.e.l;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Map;
 
 public final class m$5
@@ -15,29 +16,32 @@ public final class m$5
   
   public final void run()
   {
-    synchronized (m.a(this.eGO))
+    AppMethodBeat.i(50741);
+    synchronized (m.a(this.fWE))
     {
-      Object localObject2 = (String)m.b(this.eGO).get(Long.valueOf(this.eGN));
-      y.i("MicroMsg.SightMassSendService", "cancel item, massSendId %d, cdnClientId %s", new Object[] { Long.valueOf(this.eGN), localObject2 });
+      Object localObject2 = (String)m.b(this.fWE).get(Long.valueOf(this.fWD));
+      ab.i("MicroMsg.SightMassSendService", "cancel item, massSendId %d, cdnClientId %s", new Object[] { Long.valueOf(this.fWD), localObject2 });
       if ("done_upload_cdn_client_id".equals(localObject2))
       {
-        y.w("MicroMsg.SightMassSendService", "doing mass send cgi, ignore cancel!");
+        ab.w("MicroMsg.SightMassSendService", "doing mass send cgi, ignore cancel!");
+        AppMethodBeat.o(50741);
         return;
       }
-      if (!bk.bl((String)localObject2))
+      if (!bo.isNullOrNil((String)localObject2))
       {
-        m.b(this.eGO).put(Long.valueOf(this.eGN), "");
-        f.Nd().lL((String)localObject2);
-        this.eGO.d(this.eGN, 0, 0);
+        m.b(this.fWE).put(Long.valueOf(this.fWD), "");
+        f.afO().sI((String)localObject2);
+        this.fWE.d(this.fWD, 0, 0);
       }
-      localObject2 = o.Sr();
-      long l = this.eGN;
-      if (((t)localObject2).dXo.delete("videoinfo2", "masssendid= ?", new String[] { String.valueOf(l) }) > 0)
+      localObject2 = o.alE();
+      long l = this.fWD;
+      if (((t)localObject2).fnw.delete("videoinfo2", "masssendid= ?", new String[] { String.valueOf(l) }) > 0)
       {
-        t.a.a locala = new t.a.a("DELETE_" + l, t.a.b.eIa, t.a.c.eId, 3, l);
-        ((t)localObject2).ebu.bV(locala);
-        ((t)localObject2).ebu.doNotify();
+        t.a.a locala = new t.a.a("DELETE_".concat(String.valueOf(l)), t.a.b.fXQ, t.a.c.fXT, 3, l);
+        ((t)localObject2).frK.cy(locala);
+        ((t)localObject2).frK.doNotify();
       }
+      AppMethodBeat.o(50741);
       return;
     }
   }

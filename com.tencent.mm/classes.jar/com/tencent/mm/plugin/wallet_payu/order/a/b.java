@@ -1,53 +1,61 @@
 package com.tencent.mm.plugin.wallet_payu.order.a;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.beb;
-import com.tencent.mm.protocal.c.bec;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.s;
+import com.tencent.mm.protocal.protobuf.blv;
+import com.tencent.mm.protocal.protobuf.blw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.c.u;
 
 public final class b
-  extends s
+  extends u
 {
-  private com.tencent.mm.ah.b dmK;
-  private f dmL;
+  private f callback;
+  private com.tencent.mm.ai.b rr;
   
   public b(String paramString)
   {
+    AppMethodBeat.i(48418);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new beb();
-    ((b.a)localObject).ecI = new bec();
+    ((b.a)localObject).fsX = new blv();
+    ((b.a)localObject).fsY = new blw();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/payudeluserroll";
-    ((b.a)localObject).ecG = 1544;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (beb)this.dmK.ecE.ecN;
-    if (!bk.bl(paramString)) {
-      ((beb)localObject).mPI = paramString;
+    ((b.a)localObject).funcId = 1544;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (blv)this.rr.fsV.fta;
+    if (!bo.isNullOrNil(paramString)) {
+      ((blv)localObject).ppY = paramString;
     }
+    AppMethodBeat.o(48418);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void e(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    y.d("MicroMsg.NetScenePayUDelUserRoll", "errType:" + paramInt1 + ",errCode:" + paramInt2 + ",errMsg" + paramString);
-    this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    AppMethodBeat.i(48420);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(48420);
+    return i;
   }
   
   public final int getType()
   {
     return 1544;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  {
+    AppMethodBeat.i(142599);
+    ab.d("MicroMsg.NetScenePayUDelUserRoll", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(142599);
   }
 }
 

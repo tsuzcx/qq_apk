@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class SnsAdNativeLandingTestUI$1
   implements View.OnClickListener
@@ -12,10 +13,12 @@ final class SnsAdNativeLandingTestUI$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(38702);
     paramView = new Intent();
     paramView.putExtra("Select_Conv_Type", 259);
     paramView.putExtra("select_is_ret", true);
-    d.a(this.oVg, ".ui.transmit.SelectConversationUI", paramView, 0, new SnsAdNativeLandingTestUI.1.1(this));
+    d.a(this.rNi, ".ui.transmit.SelectConversationUI", paramView, 0, new SnsAdNativeLandingTestUI.1.1(this));
+    AppMethodBeat.o(38702);
   }
 }
 

@@ -1,63 +1,75 @@
 package com.tencent.xweb.xwalk;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.xwalk.core.Log;
 import org.xwalk.core.WebViewExtension;
 import org.xwalk.core.WebViewExtensionListener;
 
 final class XWalkWebFactory$a
 {
-  private static boolean jEt = false;
-  private static boolean xjO = false;
-  private static boolean xkG = false;
+  private static boolean BHs = false;
+  private static boolean BIl = false;
+  private static boolean lNR = false;
   
   public static boolean hasInited()
   {
-    return jEt;
+    return lNR;
   }
   
   public static boolean hasInitedCallback()
   {
-    return xjO;
+    return BHs;
   }
   
   public static void initCallback(WebViewExtensionListener paramWebViewExtensionListener)
   {
-    if (xjO) {
+    AppMethodBeat.i(85398);
+    if (BHs)
+    {
+      AppMethodBeat.o(85398);
       return;
     }
     Log.i("XWebViewHelper", "initCallback");
     WebViewExtension.SetExtension(paramWebViewExtensionListener);
-    xjO = true;
-  }
-  
-  public static boolean iq(Context paramContext)
-  {
-    if (jEt) {
-      return jEt;
-    }
-    Log.i("XWebViewHelper", "preInit");
-    if (h.eL(paramContext))
-    {
-      Log.i("XWebViewHelper", "preInit finished");
-      jEt = true;
-      xkG = true;
-    }
-    for (;;)
-    {
-      return jEt;
-      Log.i("XWebViewHelper", "preInit xwalk is not available");
-    }
+    BHs = true;
+    AppMethodBeat.o(85398);
   }
   
   public static boolean isCoreReady()
   {
-    return xkG;
+    return BIl;
+  }
+  
+  public static boolean jX(Context paramContext)
+  {
+    AppMethodBeat.i(85397);
+    boolean bool;
+    if (lNR)
+    {
+      bool = lNR;
+      AppMethodBeat.o(85397);
+      return bool;
+    }
+    Log.i("XWebViewHelper", "preInit");
+    if (j.fL(paramContext))
+    {
+      Log.i("XWebViewHelper", "preInit finished");
+      lNR = true;
+      BIl = true;
+    }
+    for (;;)
+    {
+      bool = lNR;
+      AppMethodBeat.o(85397);
+      return bool;
+      Log.i("XWebViewHelper", "preInit xwalk is not available");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.xwalk.XWalkWebFactory.a
  * JD-Core Version:    0.7.0.1
  */

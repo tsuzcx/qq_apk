@@ -1,19 +1,28 @@
 package com.google.android.exoplayer2.metadata;
 
 import com.google.android.exoplayer2.Format;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$1
   implements c
 {
   public final boolean g(Format paramFormat)
   {
-    paramFormat = paramFormat.aus;
-    return ("application/id3".equals(paramFormat)) || ("application/x-emsg".equals(paramFormat)) || ("application/x-scte35".equals(paramFormat));
+    AppMethodBeat.i(95347);
+    paramFormat = paramFormat.awK;
+    if (("application/id3".equals(paramFormat)) || ("application/x-emsg".equals(paramFormat)) || ("application/x-scte35".equals(paramFormat)))
+    {
+      AppMethodBeat.o(95347);
+      return true;
+    }
+    AppMethodBeat.o(95347);
+    return false;
   }
   
   public final a h(Format paramFormat)
   {
-    paramFormat = paramFormat.aus;
+    AppMethodBeat.i(95348);
+    paramFormat = paramFormat.awK;
     int i = -1;
     switch (paramFormat.hashCode())
     {
@@ -23,7 +32,9 @@ final class c$1
       switch (i)
       {
       default: 
-        throw new IllegalArgumentException("Attempted to create decoder for unsupported format");
+        paramFormat = new IllegalArgumentException("Attempted to create decoder for unsupported format");
+        AppMethodBeat.o(95348);
+        throw paramFormat;
         if (paramFormat.equals("application/id3"))
         {
           i = 0;
@@ -40,9 +51,15 @@ final class c$1
         break;
       }
     }
-    return new com.google.android.exoplayer2.metadata.id3.a();
-    return new com.google.android.exoplayer2.metadata.emsg.a();
-    return new com.google.android.exoplayer2.metadata.scte35.a();
+    paramFormat = new com.google.android.exoplayer2.metadata.id3.a();
+    AppMethodBeat.o(95348);
+    return paramFormat;
+    paramFormat = new com.google.android.exoplayer2.metadata.emsg.a();
+    AppMethodBeat.o(95348);
+    return paramFormat;
+    paramFormat = new com.google.android.exoplayer2.metadata.scte35.a();
+    AppMethodBeat.o(95348);
+    return paramFormat;
   }
 }
 

@@ -1,492 +1,214 @@
 package com.tencent.mm.ui.chatting;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.ts;
-import com.tencent.mm.h.a.ts.b;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Display;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.View.OnKeyListener;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.MMListPopupWindow;
+import com.tencent.mm.ui.base.o;
 import java.util.List;
 
 public final class g
+  implements View.OnKeyListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener
 {
-  private static int vhZ = 1;
-  private static int vib = 2;
-  private static int vic = 3;
+  private int height;
+  private Context mContext;
+  private int mCount;
+  private LayoutInflater mInflater;
+  AdapterView.OnItemClickListener zxo;
+  private ViewGroup zxp;
+  private b zxq;
+  private MMListPopupWindow zxr;
+  private int zxs;
+  private int zxt;
+  com.tencent.mm.aj.j zxu;
+  private boolean zxv;
   
-  public static int a(com.tencent.mm.ae.g.a parama, boolean paramBoolean)
+  public g(Context paramContext, ViewGroup paramViewGroup)
   {
-    g.a locala = e(parama);
-    switch (parama.dSr)
+    AppMethodBeat.i(30501);
+    this.zxo = null;
+    this.mContext = null;
+    this.zxp = null;
+    this.zxq = null;
+    this.zxs = 2131493701;
+    this.zxu = null;
+    this.zxv = true;
+    this.mContext = paramContext;
+    this.zxp = paramViewGroup;
+    this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    dGj();
+    this.zxq = new b((byte)0);
+    AppMethodBeat.o(30501);
+  }
+  
+  private int b(ListAdapter paramListAdapter)
+  {
+    AppMethodBeat.i(30505);
+    int n = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int i1 = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int i2 = paramListAdapter.getCount();
+    int j = 0;
+    int i = 0;
+    View localView = null;
+    int k = 0;
+    if (j < i2)
     {
+      int m = paramListAdapter.getItemViewType(j);
+      if (m == i) {
+        break label139;
+      }
+      localView = null;
+      i = m;
     }
+    label139:
     for (;;)
     {
-      return R.k.c2c_aa_icon_check;
-      if ((paramBoolean) || (locala.srB == 1))
-      {
-        if ((locala.vid <= 0) || (locala.vie < 0) || (locala.vif < 0)) {}
+      if (this.zxp == null) {
+        this.zxp = new FrameLayout(this.mContext);
       }
-      else {
-        switch (locala.vid)
-        {
-        default: 
-          break;
-        case 1: 
-        case 2: 
-          return R.k.c2c_aa_icon_default;
-        case 3: 
-          return R.k.c2c_aa_icon_check;
-        case 4: 
-          return R.k.c2c_aa_icon_close;
-          if (locala.srB != 2) {
-            break label191;
-          }
-          if ((locala.vid > 0) && (locala.vig >= 0L)) {
-            switch (locala.vid)
-            {
-            }
-          }
-          break;
-        }
-      }
-    }
-    return R.k.c2c_aa_icon_default;
-    return R.k.c2c_aa_icon_check;
-    return R.k.c2c_aa_icon_close;
-    label191:
-    return R.k.c2c_aa_icon_check;
-  }
-  
-  public static String a(int paramInt1, int paramInt2, boolean paramBoolean, com.tencent.mm.ae.g.a parama)
-  {
-    Context localContext = ae.getContext();
-    if (paramInt1 == 5) {
-      return localContext.getString(R.l.lucky_money_chatting_expired);
-    }
-    if (paramInt1 == 4)
-    {
-      if (paramBoolean) {
-        return localContext.getString(R.l.lucky_money_chatting_all_received);
-      }
-      return localContext.getString(R.l.lucky_money_chatting_received_receiver);
-    }
-    if (paramInt1 == 3)
-    {
-      if (paramInt2 == 2)
-      {
-        if (paramBoolean) {
-          return parama.dSd;
-        }
-        return localContext.getString(R.l.lucky_money_chatting_received_receiver);
-      }
-      if (paramBoolean) {
-        return parama.dSd;
-      }
-      return parama.dSe;
-    }
-    if (paramBoolean) {
-      return parama.dSd;
-    }
-    return parama.dSe;
-  }
-  
-  public static String b(com.tencent.mm.ae.g.a parama, boolean paramBoolean)
-  {
-    for (;;)
-    {
-      int i1;
-      int i7;
-      long l;
-      int i3;
-      int i2;
-      int n;
-      int i;
-      int j;
-      int k;
-      int m;
-      try
-      {
-        str = q.Gj();
-        if (parama.dSr <= 0)
-        {
-          if (paramBoolean) {
-            return parama.dSd;
-          }
-          return parama.dSe;
-        }
-        i1 = 0;
-        int i8 = 0;
-        int i4 = -1;
-        int i5 = -1;
-        int i6 = -1;
-        i7 = 0;
-        l = -1L;
-        Object localObject = parama.dSq;
-        ts localts = new ts();
-        localts.cdW.cdY = ((String)localObject);
-        a.udP.m(localts);
-        if (parama.dSr != 2)
-        {
-          i3 = i6;
-          i2 = i5;
-          n = i4;
-          if (parama.dSr != 3) {
-            break label685;
-          }
-        }
-        i = i6;
-        j = i5;
-        k = i4;
-        m = i8;
-        if (!bk.dk(parama.dSv))
-        {
-          localObject = parama.dSv.iterator();
-          i = i6;
-          j = i5;
-          k = i4;
-          m = i8;
-          if (((Iterator)localObject).hasNext())
-          {
-            arrayOfString = ((String)((Iterator)localObject).next()).split(",");
-            if ((arrayOfString.length != 4) || (!arrayOfString[0].equals(str))) {
-              continue;
-            }
-            k = bk.getInt(arrayOfString[1], -1);
-            j = bk.getInt(arrayOfString[2], -1);
-            i = bk.getInt(arrayOfString[3], -1);
-            m = 1;
-          }
-        }
-        i3 = i;
-        i2 = j;
-        n = k;
-        i1 = m;
-        if (bk.dk(parama.dSx)) {
-          break label685;
-        }
-        localObject = parama.dSx.iterator();
-        i3 = i;
-        i2 = j;
-        n = k;
-        i1 = m;
-        if (!((Iterator)localObject).hasNext()) {
-          break label685;
-        }
-        String[] arrayOfString = ((String)((Iterator)localObject).next()).split(",");
-        if ((arrayOfString.length != 3) || (!arrayOfString[0].equals(str))) {
-          continue;
-        }
-        l = bk.getLong(arrayOfString[1], -1L);
-        n = bk.getInt(arrayOfString[2], -1);
-        i1 = 1;
-        i2 = j;
-        i3 = i;
-        j = i1;
-        i = n;
-        if (localts.cdX.status == vic) {
-          return ae.getContext().getString(R.l.aa_msg_receiver_stop_receive);
-        }
-        if (localts.cdX.status == vib) {
-          return ae.getContext().getString(R.l.aa_msg_expired);
-        }
-        n = parama.dSr;
-        switch (n)
-        {
-        }
-      }
-      catch (Exception localException)
-      {
-        String str;
-        y.e("MicroMsg.C2CAppMsgUtil", "getC2CDescFromAppMsgContent, error: %s", new Object[] { localException.getMessage() });
-        continue;
-      }
-      if (paramBoolean)
-      {
-        return parama.dSd;
-        if (paramBoolean) {
-          return parama.dSd;
-        }
-        return parama.dSe;
-        if ((!str.equals(parama.dSA)) && (!paramBoolean))
-        {
-          if (m == 0) {
-            break label751;
-          }
-          break label701;
-          return ae.getContext().getString(R.l.aa_msg_receiver_wait_receive);
-          return ae.getContext().getString(R.l.aa_msg_receiver_part_receive, new Object[] { Integer.valueOf(i2 - i3) });
-          return ae.getContext().getString(R.l.aa_msg_receiver_all_receive);
-          return ae.getContext().getString(R.l.aa_msg_receiver_stop_receive);
-          return ae.getContext().getString(R.l.aa_msg_payer_need_pay, new Object[] { Float.valueOf((float)l / 100.0F) });
-          return ae.getContext().getString(R.l.aa_msg_payer_has_pay, new Object[] { Float.valueOf((float)l / 100.0F) });
-          return ae.getContext().getString(R.l.aa_msg_payer_refund, new Object[] { Float.valueOf((float)l / 100.0F) });
-          return ae.getContext().getString(R.l.aa_msg_payer_not_need_pay);
-          str = ae.getContext().getString(R.l.aa_msg_payer_not_need_pay);
-          return str;
-        }
-      }
-      else
-      {
-        return parama.dSe;
-        label685:
-        i = -1;
-        j = i7;
-        k = n;
-        m = i1;
-        continue;
-      }
-      label701:
-      if ((k > 0) && (i2 >= 0) && (i3 >= 0))
-      {
-        switch (k)
-        {
-        }
-        continue;
-        label751:
-        if (j != 0) {
-          if ((i > 0) && (l >= 0L)) {
-            switch (i)
-            {
-            }
-          }
-        }
-      }
+      localView = paramListAdapter.getView(j, localView, this.zxp);
+      localView.measure(n, i1);
+      k = Math.max(k, localView.getMeasuredWidth());
+      j += 1;
+      break;
+      AppMethodBeat.o(30505);
+      return k;
     }
   }
   
-  public static int c(com.tencent.mm.ae.g.a parama, boolean paramBoolean)
+  @SuppressLint({"WrongCall"})
+  public final boolean a(com.tencent.mm.aj.j paramj, int paramInt1, int paramInt2)
   {
-    if (parama == null)
+    AppMethodBeat.i(30502);
+    if ((!isShowing()) && (paramj != null) && (paramj.fwr != null) && (paramj.fwr.size() > 0))
     {
-      if (paramBoolean) {
-        return R.g.aa_chatto_bg;
-      }
-      return R.g.aa_chatfrom_bg;
+      this.zxv = false;
+      this.zxu = paramj;
+      this.mCount = paramj.fwr.size();
+      this.zxq.notifyDataSetChanged();
+      this.height = ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay().getHeight();
+      TextView localTextView = (TextView)((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2130970429, null);
+      paramj = g.a.a(this.mContext, localTextView.getPaint(), paramj.fwr, paramInt1);
+      this.zxt = (paramInt2 - this.zxq.getCount() * this.mContext.getResources().getDimensionPixelSize(2131427853) - this.mContext.getResources().getDimensionPixelSize(2131427665));
+      ab.d("MicroMsg.ChatFooterCustomSubmenu", "showPointY=" + paramInt2 + "verticalOffset=" + this.zxt);
+      this.zxr = new MMListPopupWindow(this.mContext, null, 0);
+      this.zxr.setOnDismissListener(this);
+      this.zxr.ahl = this.zxo;
+      this.zxr.setAdapter(this.zxq);
+      this.zxr.setModal(true);
+      this.zxr.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130840491));
+      this.zxr.setAnimationStyle(this.zxs);
+      this.zxr.agY = paramj.jqo;
+      this.zxr.setVerticalOffset(this.zxt);
+      this.zxr.ahj = this.zxp;
+      this.zxr.setContentWidth(b(this.zxq));
+      this.zxr.iD();
+      this.zxr.show();
+      this.zxr.zkP.setOnKeyListener(this);
+      this.zxr.zkP.setDivider(new ColorDrawable(this.mContext.getResources().getColor(2131690471)));
+      this.zxr.zkP.setSelector(this.mContext.getResources().getDrawable(2130839962));
+      this.zxr.zkP.setDividerHeight(1);
+      this.zxr.zkP.setVerticalScrollBarEnabled(false);
+      this.zxr.zkP.setHorizontalScrollBarEnabled(false);
+      AppMethodBeat.o(30502);
+      return true;
     }
-    Object localObject = parama.dSq;
-    ts localts = new ts();
-    localts.cdW.cdY = ((String)localObject);
-    a.udP.m(localts);
-    if ((localts.cdX.status == vic) || (localts.cdX.status == vib))
-    {
-      if (paramBoolean) {
-        return R.g.aa_chatto_done_bg;
-      }
-      return R.g.aa_chatfrom_done_bg;
-    }
-    localObject = e(parama);
-    switch (parama.dSr)
-    {
-    }
-    while (paramBoolean)
-    {
-      return R.g.aa_chatto_bg;
-      if ((paramBoolean) || (((g.a)localObject).srB == 1)) {
-        if ((((g.a)localObject).vid <= 0) || (((g.a)localObject).vie < 0) || (((g.a)localObject).vif < 0)) {
-          break;
-        }
-      } else {
-        switch (((g.a)localObject).vid)
-        {
-        default: 
-          break;
-        case 1: 
-        case 2: 
-          if (paramBoolean) {
-            return R.g.aa_chatto_bg;
-          }
-          return R.g.aa_chatfrom_bg;
-        case 3: 
-        case 4: 
-          if (paramBoolean) {
-            return R.g.aa_chatto_done_bg;
-          }
-          return R.g.aa_chatfrom_done_bg;
-          if (((g.a)localObject).srB == 2)
-          {
-            if ((((g.a)localObject).vid > 0) && (((g.a)localObject).vig >= 0L)) {
-              switch (((g.a)localObject).vid)
-              {
-              default: 
-                break;
-              case 1: 
-                if (paramBoolean) {
-                  return R.g.aa_chatto_bg;
-                }
-                return R.g.aa_chatfrom_bg;
-              case 2: 
-              case 3: 
-              case 4: 
-                if (paramBoolean) {
-                  return R.g.aa_chatto_done_bg;
-                }
-                return R.g.aa_chatfrom_done_bg;
-              }
-            }
-          }
-          else
-          {
-            if (paramBoolean) {
-              return R.g.aa_chatto_bg;
-            }
-            return R.g.aa_chatfrom_bg;
-          }
-          break;
-        }
-      }
-    }
-    return R.g.aa_chatfrom_bg;
+    AppMethodBeat.o(30502);
+    return false;
   }
   
-  public static int d(com.tencent.mm.ae.g.a parama, boolean paramBoolean)
+  public final boolean dGj()
   {
-    if (parama == null) {}
-    Object localObject;
-    do
+    AppMethodBeat.i(30504);
+    if (isShowing())
     {
-      do
-      {
-        return -12479656;
-        localObject = parama.dSq;
-        ts localts = new ts();
-        localts.cdW.cdY = ((String)localObject);
-        a.udP.m(localts);
-        if ((localts.cdX.status == vic) || (localts.cdX.status == vib)) {
-          return -8868722;
-        }
-        localObject = e(parama);
-        switch (parama.dSr)
-        {
-        default: 
-          return -12479656;
-        }
-        if ((!paramBoolean) && (((g.a)localObject).srB != 1)) {
-          break;
-        }
-      } while ((((g.a)localObject).vid <= 0) || (((g.a)localObject).vie < 0) || (((g.a)localObject).vif < 0));
-      switch (((g.a)localObject).vid)
-      {
-      case 1: 
-      case 2: 
-      default: 
-        return -12479656;
-      }
-      return -8868722;
-    } while ((((g.a)localObject).srB != 2) || (((g.a)localObject).vid <= 0) || (((g.a)localObject).vig < 0L));
-    switch (((g.a)localObject).vid)
-    {
-    case 1: 
-    default: 
-      return -12479656;
+      this.zxr.dismiss();
+      AppMethodBeat.o(30504);
+      return true;
     }
-    return -8868722;
+    AppMethodBeat.o(30504);
+    return false;
   }
   
-  public static g.a e(com.tencent.mm.ae.g.a parama)
+  public final boolean isShowing()
   {
-    String str = q.Gj();
-    if ((parama.dSr == 2) || (parama.dSr == 3))
+    AppMethodBeat.i(30503);
+    if ((this.zxr != null) && (this.zxr.gMK.isShowing()))
     {
-      Object localObject;
-      if (!bk.dk(parama.dSv))
-      {
-        localObject = parama.dSv.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String[] arrayOfString = ((String)((Iterator)localObject).next()).split(",");
-          if ((arrayOfString.length == 4) && (arrayOfString[0].equals(str))) {
-            return new g.a(bk.getInt(arrayOfString[1], -1), bk.getInt(arrayOfString[2], -1), bk.getInt(arrayOfString[3], -1));
-          }
-        }
-      }
-      if (!bk.dk(parama.dSx))
-      {
-        parama = parama.dSx.iterator();
-        while (parama.hasNext())
-        {
-          localObject = ((String)parama.next()).split(",");
-          if ((localObject.length == 3) && (localObject[0].equals(str)))
-          {
-            long l = bk.getLong(localObject[1], -1L);
-            return new g.a(bk.getInt(localObject[2], -1), l);
-          }
-        }
-      }
+      AppMethodBeat.o(30503);
+      return true;
     }
-    return new g.a();
+    AppMethodBeat.o(30503);
+    return false;
   }
   
-  public static int s(int paramInt1, int paramInt2, boolean paramBoolean)
+  public final void onDismiss() {}
+  
+  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  
+  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt1 == 5)
-    {
-      if (paramBoolean) {
-        return R.g.c2c_chatto_done_bg;
-      }
-      return R.g.c2c_chatfrom_done_bg;
-    }
-    if (paramInt1 == 4)
-    {
-      if (paramBoolean) {
-        return R.g.c2c_chatto_done_bg;
-      }
-      return R.g.c2c_chatfrom_done_bg;
-    }
-    if (paramInt1 == 3)
-    {
-      if (paramInt2 == 2)
-      {
-        if (paramBoolean) {
-          return R.g.c2c_chatto_bg;
-        }
-        return R.g.c2c_chatfrom_done_bg;
-      }
-      if (paramBoolean) {
-        return R.g.c2c_chatto_bg;
-      }
-      return R.g.c2c_chatfrom_bg;
-    }
-    if (paramBoolean) {
-      return R.g.c2c_chatto_bg;
-    }
-    return R.g.c2c_chatfrom_bg;
+    return false;
   }
   
-  public static int t(int paramInt1, int paramInt2, boolean paramBoolean)
+  final class b
+    extends BaseAdapter
   {
-    int j = -1;
-    int i;
-    if (paramInt1 == 5) {
-      i = R.g.lucky_money_opened_icon;
-    }
-    do
+    private b() {}
+    
+    private com.tencent.mm.aj.j Pm(int paramInt)
     {
-      do
+      AppMethodBeat.i(30498);
+      com.tencent.mm.aj.j localj = (com.tencent.mm.aj.j)g.b(g.this).fwr.get(paramInt);
+      AppMethodBeat.o(30498);
+      return localj;
+    }
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(30497);
+      int i = g.a(g.this);
+      AppMethodBeat.o(30497);
+      return i;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(30499);
+      if (paramView == null) {}
+      for (paramView = (TextView)g.c(g.this).inflate(2130970429, paramViewGroup, false);; paramView = (TextView)paramView)
       {
-        do
-        {
-          return i;
-          if (paramInt1 == 4) {
-            return R.g.lucky_money_opened_icon;
-          }
-          i = j;
-        } while (paramInt1 != 3);
-        if (paramInt2 != 2) {
-          break;
-        }
-        i = j;
-      } while (paramBoolean);
-      return R.g.lucky_money_opened_icon;
-      i = j;
-    } while (paramBoolean);
-    return R.g.lucky_money_opened_icon;
+        paramViewGroup = Pm(paramInt);
+        paramView.setTag(paramViewGroup);
+        paramView.setText(com.tencent.mm.pluginsdk.ui.d.j.b(g.d(g.this), paramViewGroup.name));
+        AppMethodBeat.o(30499);
+        return paramView;
+      }
+    }
   }
 }
 

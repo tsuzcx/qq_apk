@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.exdevice.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.service.c.a;
 
-public final class d$4
+final class d$4
   extends c.a
 {
-  public d$4(d paramd, Runnable paramRunnable)
+  d$4(d paramd, Runnable paramRunnable)
   {
     super(0);
   }
   
   public final void onServiceConnected()
   {
-    this.jtH.run();
+    AppMethodBeat.i(19100);
+    this.val$run.run();
+    AppMethodBeat.o(19100);
   }
 }
 

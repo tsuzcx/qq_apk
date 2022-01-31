@@ -4,13 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.d.b;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.c.fx;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.hi;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.sortview.BaseSortView;
 import com.tencent.mm.ui.base.sortview.c.a;
 import com.tencent.mm.ui.base.sortview.d;
@@ -22,41 +20,43 @@ final class BankRemitSortView$1
   
   public final View a(d paramd, View paramView, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = this.nxJ.getContext();
+    AppMethodBeat.i(44698);
+    Object localObject = this.qiK.getContext();
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from((Context)localObject).inflate(a.g.bank_remit_sort_item, null);
-      paramView = new BankRemitSortView.a(this.nxJ, (byte)0);
-      paramView.nxK = ((TextView)localView.findViewById(a.f.catalogTV));
-      paramView.nvx = ((TextView)localView.findViewById(a.f.brsb_item_title));
-      paramView.nvv = ((CdnImageView)localView.findViewById(a.f.brsb_item_icon));
+      localView = LayoutInflater.from((Context)localObject).inflate(2130968834, null);
+      paramView = new BankRemitSortView.a(this.qiK, (byte)0);
+      paramView.qiL = ((TextView)localView.findViewById(2131821732));
+      paramView.qgt = ((TextView)localView.findViewById(2131821735));
+      paramView.qgr = ((CdnImageView)localView.findViewById(2131821734));
       localView.setTag(paramView);
     }
     paramView = (BankRemitSortView.a)localView.getTag();
-    localObject = (fx)paramd.data;
-    if (localObject != null)
-    {
-      if ((this.nxJ.vee) && (paramBoolean1)) {
-        if (paramd.vem.equals("☆"))
+    localObject = (hi)paramd.data;
+    if (localObject != null) {
+      if ((this.qiK.zsE) && (paramBoolean1)) {
+        if (paramd.zsM.equals("☆"))
         {
-          paramView.nxK.setText(a.i.bank_remit_select_bank_freq_bank_title);
-          paramView.nxK.setVisibility(0);
+          paramView.qiL.setText(2131297510);
+          paramView.qiL.setVisibility(0);
+          label162:
+          paramView.qgr.setUseSdcardCache(true);
+          paramView.qgr.hV(((hi)localObject).qfY, b.WX(((hi)localObject).qfY));
+          paramView.qgt.setText(((hi)localObject).nLq);
         }
       }
-      for (;;)
-      {
-        paramView.nvv.setUseSdcardCache(true);
-        paramView.nvv.fT(((fx)localObject).nve, b.KR(((fx)localObject).nve));
-        paramView.nvx.setText(((fx)localObject).lnT);
-        return localView;
-        paramView.nxK.setText(paramd.vem);
-        break;
-        paramView.nxK.setVisibility(8);
-      }
     }
-    y.w("MicroMsg.BankcardSortView", "elem is null: %s", new Object[] { Integer.valueOf(paramInt) });
-    return localView;
+    for (;;)
+    {
+      AppMethodBeat.o(44698);
+      return localView;
+      paramView.qiL.setText(paramd.zsM);
+      break;
+      paramView.qiL.setVisibility(8);
+      break label162;
+      ab.w("MicroMsg.BankcardSortView", "elem is null: %s", new Object[] { Integer.valueOf(paramInt) });
+    }
   }
 }
 

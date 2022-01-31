@@ -9,173 +9,196 @@ import android.view.ViewTreeObserver;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ae.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
 import com.tencent.mm.app.b;
-import com.tencent.mm.as.g;
-import com.tencent.mm.as.o;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.at.g;
+import com.tencent.mm.at.o;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.d;
 import com.tencent.mm.ui.MMImageView;
-import com.tencent.tinker.loader.app.ApplicationLike;
+import com.tencent.tinker.entry.ApplicationLike;
 
 final class i$a
   extends c.a
 {
-  public static final int vCE = (int)com.tencent.mm.cb.a.getDensity(b.applicationLike.getApplication()) * 64;
-  public TextView eXO;
-  public TextView eXP;
-  public TextView pmh;
-  public int vBZ = 0;
-  public MMImageView vBn;
-  public View vCC;
-  public boolean vCD;
+  public static final int zTH;
+  public TextView gpL;
+  public TextView gpM;
+  public View iDQ;
+  public TextView sfX;
+  public MMImageView zRM;
+  public int zSN = 0;
+  public boolean zTG;
   
-  public final void a(Context paramContext, g.a parama, String paramString, boolean paramBoolean)
+  static
   {
-    Y(this.igg, this.vBZ);
+    AppMethodBeat.i(32918);
+    zTH = (int)com.tencent.mm.cb.a.getDensity(b.bXD.getApplication()) * 64;
+    AppMethodBeat.o(32918);
+  }
+  
+  public final a B(View paramView, boolean paramBoolean)
+  {
+    AppMethodBeat.i(32916);
+    super.eV(paramView);
+    this.zTG = paramBoolean;
+    this.ekh = ((TextView)this.ngZ.findViewById(2131820587));
+    this.mCC = ((CheckBox)paramView.findViewById(2131820579));
+    this.jbK = this.ngZ.findViewById(2131820586);
+    this.qFY = ((TextView)this.ngZ.findViewById(2131821122));
+    this.zRM = ((MMImageView)this.ngZ.findViewById(2131822662));
+    this.gpL = ((TextView)this.ngZ.findViewById(2131822663));
+    this.gpM = ((TextView)this.ngZ.findViewById(2131822664));
+    this.sfX = ((TextView)this.ngZ.findViewById(2131822665));
+    this.iDQ = this.ngZ.findViewById(2131822661);
+    this.zSN = c.io(ah.getContext());
+    AppMethodBeat.o(32916);
+    return this;
+  }
+  
+  public final void a(Context paramContext, j.b paramb, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(32917);
+    ar(this.jYu, this.zSN);
     Object localObject1;
-    switch (parama.type)
+    int i;
+    switch (paramb.type)
     {
     default: 
-      this.eXO.setText(parama.description);
-      this.eXP.setText(parama.dRL);
-      this.vBn.setVisibility(0);
+      this.gpL.setText(paramb.description);
+      this.gpM.setText(paramb.fhK);
+      this.zRM.setVisibility(0);
       if (paramBoolean)
       {
-        paramContext = o.ON();
-        parama = o.OJ().F(paramString, true);
-        paramString = this.vBn;
-        localObject1 = new com.tencent.mm.as.a.a.c.a();
-        ((com.tencent.mm.as.a.a.c.a)localObject1).erk = 1;
-        localObject1 = ((com.tencent.mm.as.a.a.c.a)localObject1).bn(vCE, vCE);
-        ((com.tencent.mm.as.a.a.c.a)localObject1).eru = R.k.app_attach_file_icon_webpage;
-        ((com.tencent.mm.as.a.a.c.a)localObject1).erD = true;
-        paramContext.a(parama, paramString, ((com.tencent.mm.as.a.a.c.a)localObject1).OV());
+        paramContext = o.ahG();
+        paramb = o.ahC().J(paramString, true);
+        paramString = this.zRM;
+        localObject1 = new com.tencent.mm.at.a.a.c.a();
+        ((com.tencent.mm.at.a.a.c.a)localObject1).fHt = 1;
+        i = zTH;
+        localObject1 = ((com.tencent.mm.at.a.a.c.a)localObject1).cx(i, i);
+        ((com.tencent.mm.at.a.a.c.a)localObject1).eNY = 2131230829;
+        ((com.tencent.mm.at.a.a.c.a)localObject1).eOk = true;
+        paramContext.a(paramb, paramString, ((com.tencent.mm.at.a.a.c.a)localObject1).ahY());
+        AppMethodBeat.o(32917);
         return;
       }
       break;
     case 16: 
-      this.eXO.setText(parama.description);
-      this.eXP.setText(parama.dRL);
-      this.vBn.setVisibility(0);
+      this.gpL.setText(paramb.description);
+      this.gpM.setText(paramb.fhK);
+      this.zRM.setVisibility(0);
       if (paramBoolean)
       {
-        paramContext = o.OJ().a(paramString, com.tencent.mm.cb.a.getDensity(paramContext), false);
-        if ((paramContext != null) && (!paramContext.isRecycled()))
-        {
-          paramContext = com.tencent.mm.sdk.platformtools.c.a(paramContext, false, paramContext.getWidth() / 2);
-          this.vBn.setImageBitmap(paramContext);
-          return;
-        }
-        paramContext = o.ON();
-        parama = parama.thumburl;
-        paramString = this.vBn;
-        localObject1 = new com.tencent.mm.as.a.a.c.a().bn(vCE, vCE);
-        ((com.tencent.mm.as.a.a.c.a)localObject1).eru = R.k.app_attach_file_icon_webpage;
-        ((com.tencent.mm.as.a.a.c.a)localObject1).erD = true;
-        paramContext.a(parama, paramString, ((com.tencent.mm.as.a.a.c.a)localObject1).OV());
+        paramContext = o.ahG();
+        paramb = paramb.thumburl;
+        paramString = this.zRM;
+        localObject1 = new com.tencent.mm.at.a.a.c.a();
+        i = zTH;
+        localObject1 = ((com.tencent.mm.at.a.a.c.a)localObject1).cx(i, i);
+        ((com.tencent.mm.at.a.a.c.a)localObject1).eNY = 2131230829;
+        ((com.tencent.mm.at.a.a.c.a)localObject1).eOk = true;
+        paramContext.a(paramb, paramString, ((com.tencent.mm.at.a.a.c.a)localObject1).ahY());
+        AppMethodBeat.o(32917);
         return;
       }
-      this.vBn.setImageResource(R.g.nosdcard_app);
+      this.zRM.setImageResource(2130839820);
+      AppMethodBeat.o(32917);
       return;
     case 34: 
-      if ((parama.title != null) && (parama.title.length() > 0))
+      if ((paramb.title != null) && (paramb.title.length() > 0))
       {
-        this.eXO.setVisibility(0);
-        this.eXO.setText(parama.title);
-        if (!bk.bl(parama.dRU))
+        this.gpL.setVisibility(0);
+        this.gpL.setText(paramb.title);
+        if (!bo.isNullOrNil(paramb.fhT))
         {
-          this.eXO.setTextColor(bk.bq(parama.dRU, paramContext.getResources().getColor(R.e.black)));
-          this.eXP.setMaxLines(2);
-          this.eXP.setVisibility(0);
-          this.eXP.setText(parama.description);
-          if (bk.bl(parama.dRV)) {
-            break label599;
+          this.gpL.setTextColor(bo.bS(paramb.fhT, paramContext.getResources().getColor(2131689763)));
+          this.gpM.setMaxLines(2);
+          this.gpM.setVisibility(0);
+          this.gpM.setText(paramb.description);
+          if (bo.isNullOrNil(paramb.fhU)) {
+            break label605;
           }
-          this.eXP.setTextColor(bk.bq(parama.dRV, paramContext.getResources().getColor(R.e.grey_background_text_color)));
-          label428:
-          if (bk.bl(parama.dRQ)) {
-            break label619;
+          this.gpM.setTextColor(bo.bS(paramb.fhU, paramContext.getResources().getColor(2131690143)));
+          label410:
+          if (bo.isNullOrNil(paramb.fhP)) {
+            break label624;
           }
-          this.pmh.setText(parama.dRQ);
-          label449:
-          if (!paramBoolean) {
-            break label719;
-          }
-          paramString = o.OJ().a(paramString, com.tencent.mm.cb.a.getDensity(paramContext), false);
-          if ((paramString == null) || (paramString.isRecycled())) {
-            break label632;
-          }
-          localObject1 = com.tencent.mm.sdk.platformtools.c.a(paramString, false, paramString.getWidth() / 2);
-          this.vBn.setImageBitmap((Bitmap)localObject1);
+          this.sfX.setText(paramb.fhP);
         }
       }
       for (;;)
       {
-        if (bk.bl(parama.dRT)) {
-          break label698;
+        if (paramBoolean)
+        {
+          Object localObject2;
+          com.tencent.mm.at.a.a.c.a locala;
+          if (!bo.isNullOrNil(paramb.fhS))
+          {
+            paramString = o.ahG();
+            localObject1 = paramb.thumburl;
+            localObject2 = this.zRM;
+            locala = new com.tencent.mm.at.a.a.c.a();
+            i = zTH;
+            locala = locala.cx(i, i);
+            locala.eNY = 2131230829;
+            locala.eOk = true;
+            paramString.a((String)localObject1, (ImageView)localObject2, locala.ahY());
+            paramString = o.ahG();
+            paramb = paramb.fhS;
+            localObject1 = new ImageView(paramContext);
+            localObject2 = new com.tencent.mm.at.a.a.c.a();
+            ((com.tencent.mm.at.a.a.c.a)localObject2).eNM = true;
+            paramString.a(paramb, (ImageView)localObject1, ((com.tencent.mm.at.a.a.c.a)localObject2).ahY(), new i.a.1(this, paramContext));
+            AppMethodBeat.o(32917);
+            return;
+            this.gpL.setTextColor(paramContext.getResources().getColor(2131689763));
+            break;
+            this.gpL.setVisibility(8);
+            break;
+            label605:
+            this.gpM.setTextColor(paramContext.getResources().getColor(2131690143));
+            break label410;
+            label624:
+            this.sfX.setText(2131298217);
+            continue;
+          }
+          paramString = o.ahC().a(paramString, com.tencent.mm.cb.a.getDensity(paramContext), false);
+          if ((paramString != null) && (!paramString.isRecycled()))
+          {
+            paramb = d.a(paramString, false, paramString.getWidth() / 2);
+            this.zRM.setImageBitmap(paramb);
+          }
+          for (;;)
+          {
+            this.iDQ.getViewTreeObserver().addOnPreDrawListener(new i.a.2(this, paramContext, paramString));
+            AppMethodBeat.o(32917);
+            return;
+            localObject1 = o.ahG();
+            paramb = paramb.thumburl;
+            localObject2 = this.zRM;
+            locala = new com.tencent.mm.at.a.a.c.a();
+            i = zTH;
+            locala = locala.cx(i, i);
+            locala.eNY = 2131230829;
+            locala.eOk = true;
+            ((com.tencent.mm.at.a.a)localObject1).a(paramb, (ImageView)localObject2, locala.ahY());
+          }
         }
-        paramString = o.ON();
-        parama = parama.dRT;
-        localObject1 = new ImageView(paramContext);
-        Object localObject2 = new com.tencent.mm.as.a.a.c.a();
-        ((com.tencent.mm.as.a.a.c.a)localObject2).erf = true;
-        paramString.a(parama, (ImageView)localObject1, ((com.tencent.mm.as.a.a.c.a)localObject2).OV(), new i.a.1(this, paramContext));
-        return;
-        this.eXO.setTextColor(paramContext.getResources().getColor(R.e.black));
-        break;
-        this.eXO.setVisibility(8);
-        break;
-        label599:
-        this.eXP.setTextColor(paramContext.getResources().getColor(R.e.grey_background_text_color));
-        break label428;
-        label619:
-        this.pmh.setText(R.l.chatting_item_coupon_card);
-        break label449;
-        label632:
-        localObject1 = o.ON();
-        localObject2 = parama.thumburl;
-        MMImageView localMMImageView = this.vBn;
-        com.tencent.mm.as.a.a.c.a locala = new com.tencent.mm.as.a.a.c.a().bn(vCE, vCE);
-        locala.eru = R.k.app_attach_file_icon_webpage;
-        locala.erD = true;
-        ((com.tencent.mm.as.a.a)localObject1).a((String)localObject2, localMMImageView, locala.OV());
       }
-      label698:
-      this.vCC.getViewTreeObserver().addOnPreDrawListener(new i.a.2(this, paramContext, paramString));
-      return;
-      label719:
-      this.vBn.setImageBitmap(BitmapFactory.decodeResource(paramContext.getResources(), R.g.nosdcard_app));
+      this.zRM.setImageBitmap(BitmapFactory.decodeResource(paramContext.getResources(), 2130839820));
+      AppMethodBeat.o(32917);
       return;
     }
-    this.vBn.setImageResource(R.g.nosdcard_app);
-  }
-  
-  public final a t(View paramView, boolean paramBoolean)
-  {
-    super.dN(paramView);
-    this.vCD = paramBoolean;
-    this.dsz = ((TextView)this.kKz.findViewById(R.h.chatting_time_tv));
-    this.khV = ((CheckBox)paramView.findViewById(R.h.chatting_checkbox));
-    this.hoY = this.kKz.findViewById(R.h.chatting_maskview);
-    this.nSa = ((TextView)this.kKz.findViewById(R.h.chatting_user_tv));
-    this.vBn = ((MMImageView)this.kKz.findViewById(R.h.appmsg_coupon_card_icon));
-    this.eXO = ((TextView)this.kKz.findViewById(R.h.appmsg_coupon_card_title));
-    this.eXP = ((TextView)this.kKz.findViewById(R.h.appmsg_coupon_card_desc));
-    this.pmh = ((TextView)this.kKz.findViewById(R.h.appmsg_coupon_card_bottom_title));
-    this.vCC = this.kKz.findViewById(R.h.appmsg_coupon_card_content);
-    this.vBZ = c.gT(ae.getContext());
-    return this;
+    this.zRM.setImageResource(2130839820);
+    AppMethodBeat.o(32917);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.i.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,32 @@
 package android.support.v7.g;
 
-import android.support.v7.widget.RecyclerView.a;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.text.method.TransformationMethod;
+import android.view.View;
+import java.util.Locale;
 
 public final class a
-  implements d
+  implements TransformationMethod
 {
-  private final RecyclerView.a Sw;
+  private Locale GH;
   
-  public a(RecyclerView.a parama)
+  public a(Context paramContext)
   {
-    this.Sw = parama;
+    this.GH = paramContext.getResources().getConfiguration().locale;
   }
   
-  public final void A(int paramInt1, int paramInt2)
+  public final CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
   {
-    this.Sw.ak(paramInt1, paramInt2);
+    if (paramCharSequence != null) {
+      return paramCharSequence.toString().toUpperCase(this.GH);
+    }
+    return null;
   }
   
-  public final void B(int paramInt1, int paramInt2)
-  {
-    this.Sw.ai(paramInt1, paramInt2);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    this.Sw.c(paramInt1, paramInt2, paramObject);
-  }
-  
-  public final void z(int paramInt1, int paramInt2)
-  {
-    this.Sw.aj(paramInt1, paramInt2);
-  }
+  public final void onFocusChanged(View paramView, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, Rect paramRect) {}
 }
 
 

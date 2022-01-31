@@ -2,15 +2,13 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.m.e;
 import com.tencent.mm.m.g;
 import com.tencent.mm.plugin.ipcall.b.c;
-import com.tencent.mm.protocal.c.ams;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.protocal.protobuf.ash;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class IPCallShareCouponUI$6
   implements MenuItem.OnMenuItemClickListener
@@ -19,41 +17,43 @@ final class IPCallShareCouponUI$6
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = c.bdt();
+    AppMethodBeat.i(22324);
+    paramMenuItem = c.bKP();
     int i;
-    if ((paramMenuItem != null) && (!bk.bl(paramMenuItem.tiN))) {
-      if (g.AA().getInt("WCOWebPayListSwitch", 0) > 0)
+    if ((paramMenuItem != null) && (!bo.isNullOrNil(paramMenuItem.xhz))) {
+      if (g.Nq().getInt("WCOWebPayListSwitch", 0) > 0)
       {
         i = 1;
         if (i == 0) {
-          break label128;
+          break label134;
         }
         i = 1;
-        label38:
+        label44:
         if (i == 0) {
-          break label133;
+          break label139;
         }
         paramMenuItem = new String[3];
-        paramMenuItem[0] = this.lyX.getString(R.l.ip_call_webview_recharge_title);
-        paramMenuItem[1] = this.lyX.getString(R.l.ip_call_help);
-        paramMenuItem[2] = this.lyX.getString(R.l.ip_call_agreement);
-        IPCallShareCouponUI.a(this.lyX, true);
+        paramMenuItem[0] = this.nWj.getString(2131300906);
+        paramMenuItem[1] = this.nWj.getString(2131300849);
+        paramMenuItem[2] = this.nWj.getString(2131300828);
+        IPCallShareCouponUI.a(this.nWj, true);
       }
     }
     for (;;)
     {
-      h.a(this.lyX.mController.uMN, null, paramMenuItem, null, false, new IPCallShareCouponUI.6.1(this));
+      h.a(this.nWj.getContext(), null, paramMenuItem, null, false, new IPCallShareCouponUI.6.1(this));
+      AppMethodBeat.o(22324);
       return true;
       i = 0;
       break;
-      label128:
+      label134:
       i = 0;
-      break label38;
-      label133:
+      break label44;
+      label139:
       paramMenuItem = new String[2];
-      paramMenuItem[0] = this.lyX.getString(R.l.ip_call_help);
-      paramMenuItem[1] = this.lyX.getString(R.l.ip_call_agreement);
-      IPCallShareCouponUI.a(this.lyX, false);
+      paramMenuItem[0] = this.nWj.getString(2131300849);
+      paramMenuItem[1] = this.nWj.getString(2131300828);
+      IPCallShareCouponUI.a(this.nWj, false);
     }
   }
 }

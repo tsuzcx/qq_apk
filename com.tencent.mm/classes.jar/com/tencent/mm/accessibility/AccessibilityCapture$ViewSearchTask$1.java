@@ -1,6 +1,7 @@
 package com.tencent.mm.accessibility;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Field;
 
 class AccessibilityCapture$ViewSearchTask$1
@@ -10,13 +11,21 @@ class AccessibilityCapture$ViewSearchTask$1
   
   public boolean match(View paramView)
   {
+    AppMethodBeat.i(118626);
     try
     {
-      int i = ((Integer)AccessibilityCapture.access$900().get(paramView)).intValue();
-      int j = this.val$id;
-      return i == j;
+      if (((Integer)AccessibilityCapture.access$900().get(paramView)).intValue() == this.val$id)
+      {
+        AppMethodBeat.o(118626);
+        return true;
+      }
+      AppMethodBeat.o(118626);
+      return false;
     }
-    catch (IllegalAccessException paramView) {}
+    catch (IllegalAccessException paramView)
+    {
+      AppMethodBeat.o(118626);
+    }
     return false;
   }
 }

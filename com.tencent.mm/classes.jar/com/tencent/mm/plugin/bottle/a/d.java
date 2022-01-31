@@ -1,76 +1,122 @@
 package com.tencent.mm.plugin.bottle.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.c.acw;
-import com.tencent.mm.protocal.c.acx;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bw;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.ak;
+import com.tencent.mm.storage.be;
+import com.tencent.mm.storage.be.a;
+import java.util.HashMap;
 
 public final class d
-  extends m
-  implements k
+  implements at
 {
-  private final b dmK;
-  private f dmL;
+  private static HashMap<Integer, h.d> baseDBFactories;
+  private be.a fmb;
+  private b jRZ;
+  
+  static
+  {
+    AppMethodBeat.i(18543);
+    HashMap localHashMap = new HashMap();
+    baseDBFactories = localHashMap;
+    localHashMap.put(Integer.valueOf("THROWBOTTLEINFO_TABLE".hashCode()), new d.1());
+    AppMethodBeat.o(18543);
+  }
   
   public d()
   {
-    Object localObject = new b.a();
-    ((b.a)localObject).ecH = new acw();
-    ((b.a)localObject).ecI = new acx();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getbottlecount";
-    ((b.a)localObject).ecG = 152;
-    ((b.a)localObject).ecJ = 49;
-    ((b.a)localObject).ecK = 1000000049;
-    ((b.a)localObject).ecL = false;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (acw)this.dmK.ecE.ecN;
-    ((acw)localObject).hPY = com.tencent.mm.model.q.Gj();
-    ((acw)localObject).tbx = ((int)bk.UX());
-  }
-  
-  public final int a(e parame, f paramf)
-  {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    paramq = (acx)this.dmK.ecF.ecN;
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    AppMethodBeat.i(18538);
+    this.fmb = new be.a()
     {
-      c.og(paramq.tbz);
-      c.of(paramq.tby);
-    }
-    for (;;)
-    {
-      y.d("MicroMsg.NetSceneGetBottleCount", "onGYNetEnd type:" + paramInt2 + " code:" + paramInt3 + " ret:" + paramq.sze + " pickCnt:" + paramq.tbz + " throwCnt:" + paramq.tby);
-      this.dmL.onSceneEnd(0, paramq.sze, paramString, this);
-      return;
-      if ((paramq.sze == -2002) || (paramq.sze == -56))
+      public final void a(ak paramAnonymousak, be paramAnonymousbe)
       {
-        c.og(0);
-        c.of(0);
+        AppMethodBeat.i(18537);
+        if (paramAnonymousak == null)
+        {
+          AppMethodBeat.o(18537);
+          return;
+        }
+        if ("_USER_FOR_THROWBOTTLE_".equals(paramAnonymousak.field_username))
+        {
+          paramAnonymousak.setUsername("");
+          AppMethodBeat.o(18537);
+          return;
+        }
+        if ((1 != paramAnonymousak.field_isSend) && (ad.nM(paramAnonymousak.field_username)) && (!paramAnonymousbe.OU(paramAnonymousak.field_username))) {
+          c.GG(paramAnonymousak.field_username);
+        }
+        AppMethodBeat.o(18537);
       }
-    }
+    };
+    AppMethodBeat.o(18538);
   }
   
-  public final int getType()
+  private static d aWi()
   {
-    return 152;
+    AppMethodBeat.i(18539);
+    aw.aat();
+    d locald2 = (d)bw.pF("plugin.bottle");
+    d locald1 = locald2;
+    if (locald2 == null)
+    {
+      locald1 = new d();
+      aw.aat().a("plugin.bottle", locald1);
+    }
+    AppMethodBeat.o(18539);
+    return locald1;
   }
+  
+  public static b aWj()
+  {
+    AppMethodBeat.i(18540);
+    g.RJ().QQ();
+    if (aWi().jRZ == null)
+    {
+      localObject = aWi();
+      aw.aaz();
+      ((d)localObject).jRZ = new b(com.tencent.mm.model.c.Rq());
+    }
+    Object localObject = aWi().jRZ;
+    AppMethodBeat.o(18540);
+    return localObject;
+  }
+  
+  public final void clearPluginData(int paramInt) {}
+  
+  public final HashMap<Integer, h.d> getBaseDBFactories()
+  {
+    return baseDBFactories;
+  }
+  
+  public final void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(18542);
+    c.aWh();
+    aw.aaz();
+    com.tencent.mm.model.c.YF().c(this.fmb);
+    AppMethodBeat.o(18542);
+  }
+  
+  public final void onAccountRelease()
+  {
+    AppMethodBeat.i(18541);
+    aw.aaz();
+    com.tencent.mm.model.c.YF().d(this.fmb);
+    AppMethodBeat.o(18541);
+  }
+  
+  public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.bottle.a.d
  * JD-Core Version:    0.7.0.1
  */

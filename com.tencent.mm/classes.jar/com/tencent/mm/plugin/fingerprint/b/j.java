@@ -1,105 +1,121 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
-import com.tencent.mm.h.a.ll;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ma;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fingerprint.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class j
-  extends com.tencent.mm.sdk.b.c<ll>
+  extends com.tencent.mm.sdk.b.c<ma>
 {
-  private String bMX = "";
-  boolean kkX = false;
-  private j.a klq;
-  ll klr;
-  private com.tencent.mm.pluginsdk.wallet.k kls = null;
-  private Runnable klt = null;
+  private String cnI;
+  boolean mFK;
+  private j.a mGe;
+  ma mGf;
+  private com.tencent.mm.pluginsdk.wallet.l mGg;
+  private Runnable mGh;
   
   public j()
   {
-    this.udX = ll.class.getName().hashCode();
+    AppMethodBeat.i(41491);
+    this.mGg = null;
+    this.mGh = null;
+    this.mFK = false;
+    this.cnI = "";
+    this.__eventId = ma.class.getName().hashCode();
+    AppMethodBeat.o(41491);
   }
   
-  public static void aTc()
+  public static void bzx()
   {
-    a.aSf();
-    if (a.aSg() != null)
+    AppMethodBeat.i(41493);
+    a.byD();
+    if (a.byE() != null)
     {
-      a.aSf();
-      a.aSg();
+      a.byD();
+      a.byE();
       c.abort();
-      a.aSf();
-      a.aSg();
+      a.byD();
+      a.byE();
       c.release();
-      a.aSf();
-      a.aSg();
-      if (((com.tencent.mm.pluginsdk.k)g.r(com.tencent.mm.pluginsdk.k.class)).type() != 2) {
-        break label78;
+      a.byD();
+      a.byE();
+      if (((com.tencent.mm.pluginsdk.l)g.E(com.tencent.mm.pluginsdk.l.class)).type() != 2) {
+        break label88;
       }
     }
-    label78:
+    label88:
     for (boolean bool = true;; bool = false)
     {
-      y.i("MicroMsg.OpenFingerPrintAuthEventListener", "stopIdentify() isSoter: %b", new Object[] { Boolean.valueOf(bool) });
+      ab.i("MicroMsg.OpenFingerPrintAuthEventListener", "stopIdentify() isSoter: %b", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(41493);
       return;
     }
   }
   
-  final void U(int paramInt, String paramString)
+  final void S(int paramInt, String paramString)
   {
-    y.i("MicroMsg.OpenFingerPrintAuthEventListener", "onFail()");
-    a.aSf();
-    a.aSg();
-    ll localll = this.klr;
-    ((com.tencent.mm.pluginsdk.k)g.r(com.tencent.mm.pluginsdk.k.class)).a(localll, paramInt, paramString);
-    if (this.kkX) {
-      this.klr = null;
+    AppMethodBeat.i(41495);
+    ab.i("MicroMsg.OpenFingerPrintAuthEventListener", "onFail()");
+    a.byD();
+    a.byE();
+    c.a(this.mGf, paramInt, paramString);
+    if (this.mFK) {
+      this.mGf = null;
     }
-    y.i("MicroMsg.OpenFingerPrintAuthEventListener", "callback OpenFingerPrintAuthEvent onFail()");
+    ab.i("MicroMsg.OpenFingerPrintAuthEventListener", "callback OpenFingerPrintAuthEvent onFail()");
+    AppMethodBeat.o(41495);
   }
   
-  final boolean gk(boolean paramBoolean)
+  final boolean hM(boolean paramBoolean)
   {
-    aTc();
-    a.aSf();
-    a.aSg();
-    if (!c.aSD())
+    AppMethodBeat.i(41494);
+    bzx();
+    a.byD();
+    a.byE();
+    if (!c.byY())
     {
-      y.e("MicroMsg.OpenFingerPrintAuthEventListener", "no fingerprints enrolled, use settings to enroll fingerprints first");
+      ab.e("MicroMsg.OpenFingerPrintAuthEventListener", "no fingerprints enrolled, use settings to enroll fingerprints first");
       release();
-      this.kkX = true;
-      U(1, "");
+      this.mFK = true;
+      S(1, "");
+      AppMethodBeat.o(41494);
       return false;
     }
-    a.aSf();
-    a.aSg();
-    if (c.a(this.klq, paramBoolean) != 0)
+    a.byD();
+    a.byE();
+    if (c.a(this.mGe, paramBoolean) != 0)
     {
-      y.e("MicroMsg.OpenFingerPrintAuthEventListener", "failed to start identify");
+      ab.e("MicroMsg.OpenFingerPrintAuthEventListener", "failed to start identify");
       release();
-      this.kkX = true;
-      U(1, "");
+      this.mFK = true;
+      S(1, "");
+      AppMethodBeat.o(41494);
       return false;
     }
-    y.i("MicroMsg.OpenFingerPrintAuthEventListener", "startIdentify()");
+    ab.i("MicroMsg.OpenFingerPrintAuthEventListener", "startIdentify()");
+    AppMethodBeat.o(41494);
     return true;
   }
   
   public final void release()
   {
-    a.aSf();
-    if (a.aSg() != null)
+    AppMethodBeat.i(41492);
+    a.byD();
+    if (a.byE() != null)
     {
-      a.aSf();
-      a.aSg();
+      a.byD();
+      a.byE();
       c.release();
     }
-    this.klr = null;
+    this.mGf = null;
+    AppMethodBeat.o(41492);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.j
  * JD-Core Version:    0.7.0.1
  */

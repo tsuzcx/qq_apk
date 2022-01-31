@@ -1,53 +1,55 @@
 package com.tencent.mm.plugin.location.ui;
 
-import com.tencent.mm.modelgeo.a.a;
-import com.tencent.mm.plugin.p.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b.a;
+import com.tencent.mm.plugin.k.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$1
-  implements a.a
+  implements b.a
 {
   e$1(e parame) {}
   
   public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    if (!paramBoolean) {
-      return false;
-    }
-    if (e.a(this.lFj)) {
-      return false;
-    }
-    y.d("MicroMsg.MyPoiPoint", "new location comes! slat : %f, slng: %f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1) });
-    e.b(this.lFj);
-    e.a(this.lFj, paramDouble2);
-    e.b(this.lFj, paramFloat2);
-    e.c(this.lFj, paramFloat1);
-    if (e.c(this.lFj) != null)
+    AppMethodBeat.i(113456);
+    if (!paramBoolean)
     {
-      if (e.d(this.lFj)) {
-        break label204;
+      AppMethodBeat.o(113456);
+      return false;
+    }
+    ab.d("MicroMsg.MyPoiPoint", "new location comes! slat : %f, slng: %f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1) });
+    e.a(this.ocx);
+    e.a(this.ocx, paramDouble2);
+    e.b(this.ocx, paramFloat2);
+    e.c(this.ocx, paramFloat1);
+    if (e.b(this.ocx) != null)
+    {
+      if (e.c(this.ocx)) {
+        break label207;
       }
-      e.e(this.lFj);
-      e.c(this.lFj).addPinView(this.lFj, e.f(this.lFj), e.g(this.lFj));
+      e.d(this.ocx);
+      e.b(this.ocx).addPinView(this.ocx, e.e(this.ocx), e.f(this.ocx));
     }
     for (;;)
     {
-      if (e.h(this.lFj) != null) {
-        e.h(this.lFj).a(paramBoolean, paramFloat1, paramFloat2, paramInt, paramDouble1, paramDouble2, paramDouble3);
+      if (e.g(this.ocx) != null) {
+        e.g(this.ocx).a(paramBoolean, paramFloat1, paramFloat2, paramInt, paramDouble1, paramDouble2, paramDouble3);
       }
-      this.lFj.invalidate();
-      this.lFj.postInvalidate();
-      this.lFj.requestLayout();
-      e.i(this.lFj);
+      this.ocx.invalidate();
+      this.ocx.postInvalidate();
+      this.ocx.requestLayout();
+      e.h(this.ocx);
+      AppMethodBeat.o(113456);
       return true;
-      label204:
-      e.c(this.lFj).updateLocaitonPinLayout(this.lFj, e.f(this.lFj), e.g(this.lFj));
+      label207:
+      e.b(this.ocx).updateLocaitonPinLayout(this.ocx, e.e(this.ocx), e.f(this.ocx));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.e.1
  * JD-Core Version:    0.7.0.1
  */

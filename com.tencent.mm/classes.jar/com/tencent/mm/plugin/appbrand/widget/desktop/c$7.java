@@ -3,10 +3,11 @@ package com.tencent.mm.plugin.appbrand.widget.desktop;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.support.v7.widget.RecyclerView.v;
-import android.support.v7.widget.ar;
+import android.support.v7.widget.as;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 
 final class c$7
@@ -16,22 +17,28 @@ final class c$7
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
-    y.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemoveImpl onAnimationCancel");
+    AppMethodBeat.i(133783);
+    ab.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemoveImpl onAnimationCancel");
+    AppMethodBeat.o(133783);
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    y.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemoveImpl onAnimationEnd, pos: %d", new Object[] { Integer.valueOf(this.ffJ) });
-    this.abL.setListener(null);
+    AppMethodBeat.i(133782);
+    ab.v("MicroMsg.AppBrandDesktopRecyclerItemAnimator", "alvinluo animateRemoveImpl onAnimationEnd, pos: %d", new Object[] { Integer.valueOf(this.gxr) });
+    this.acw.setListener(null);
     this.val$view.setAlpha(1.0F);
-    this.hpW.w(this.abK);
-    this.hpW.abE.remove(this.abK);
-    this.hpW.gB();
+    this.jed.B(this.acv);
+    this.jed.acp.remove(this.acv);
+    this.jed.hB();
+    AppMethodBeat.o(133782);
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    this.hpW.y(this.abK);
+    AppMethodBeat.i(133781);
+    this.jed.D(this.acv);
+    AppMethodBeat.o(133781);
   }
 }
 

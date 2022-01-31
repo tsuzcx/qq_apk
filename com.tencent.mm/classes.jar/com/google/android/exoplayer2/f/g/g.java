@@ -2,32 +2,41 @@ package com.google.android.exoplayer2.f.g;
 
 import android.text.TextUtils;
 import com.google.android.exoplayer2.f.b;
-import com.google.android.exoplayer2.i.j;
+import com.google.android.exoplayer2.i.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class g
   extends b
 {
-  private final f aPX = new f();
-  private final j aPY = new j();
-  private final e.a aPZ = new e.a();
-  private final a aQa = new a();
-  private final List<d> aQb = new ArrayList();
+  private final f aXr;
+  private final m aXs;
+  private final e.a aXt;
+  private final a aXu;
+  private final List<d> aXv;
   
   public g()
   {
     super("WebvttDecoder");
+    AppMethodBeat.i(95740);
+    this.aXr = new f();
+    this.aXs = new m();
+    this.aXt = new e.a();
+    this.aXu = new a();
+    this.aXv = new ArrayList();
+    AppMethodBeat.o(95740);
   }
   
-  private static int i(j paramj)
+  private static int G(m paramm)
   {
+    AppMethodBeat.i(95741);
     int j = 0;
     int i = -1;
     while (i == -1)
     {
-      j = paramj.position;
-      String str = paramj.readLine();
+      j = paramm.position;
+      String str = paramm.readLine();
       if (str == null) {
         i = 0;
       } else if ("STYLE".equals(str)) {
@@ -38,13 +47,16 @@ public final class g
         i = 3;
       }
     }
-    paramj.setPosition(j);
+    paramm.setPosition(j);
+    AppMethodBeat.o(95741);
     return i;
   }
   
-  private static void j(j paramj)
+  private static void H(m paramm)
   {
-    while (!TextUtils.isEmpty(paramj.readLine())) {}
+    AppMethodBeat.i(95742);
+    while (!TextUtils.isEmpty(paramm.readLine())) {}
+    AppMethodBeat.o(95742);
   }
 }
 

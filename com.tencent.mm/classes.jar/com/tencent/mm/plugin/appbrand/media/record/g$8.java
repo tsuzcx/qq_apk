@@ -1,17 +1,21 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
-public final class g$8
-  implements Runnable
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
+
+final class g$8
+  implements ap.a
 {
-  public g$8(g paramg) {}
+  g$8(g paramg) {}
   
-  public final void run()
+  public final boolean onTimerExpired()
   {
-    synchronized (g.f(this.gNX))
-    {
-      g.h(this.gNX);
-      return;
-    }
+    AppMethodBeat.i(141597);
+    ab.i("MicroMsg.Record.AudioRecordMgr", "timer, onTimerExpired to stop record");
+    this.ipI.Et();
+    AppMethodBeat.o(141597);
+    return true;
   }
 }
 

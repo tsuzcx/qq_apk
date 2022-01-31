@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$2$1$1$1$1
   implements Runnable
@@ -9,7 +10,9 @@ final class a$2$1$1$1$1
   
   public final void run()
   {
-    this.krf.kre.krb.kqY.setVisibility(0);
+    AppMethodBeat.i(20921);
+    this.mMS.mMR.mMO.mML.setVisibility(0);
+    AppMethodBeat.o(20921);
   }
 }
 

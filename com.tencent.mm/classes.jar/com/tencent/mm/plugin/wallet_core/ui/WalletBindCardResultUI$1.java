@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import com.tencent.mm.h.a.tm;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vh;
 import com.tencent.mm.sdk.b.c;
 
 final class WalletBindCardResultUI$1
-  extends c<tm>
+  extends c<vh>
 {
   WalletBindCardResultUI$1(WalletBindCardResultUI paramWalletBindCardResultUI)
   {
-    this.udX = tm.class.getName().hashCode();
+    AppMethodBeat.i(47185);
+    this.__eventId = vh.class.getName().hashCode();
+    AppMethodBeat.o(47185);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletBindCardResultUI.1
  * JD-Core Version:    0.7.0.1
  */

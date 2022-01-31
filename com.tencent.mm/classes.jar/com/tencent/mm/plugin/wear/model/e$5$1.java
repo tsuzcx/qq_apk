@@ -1,41 +1,42 @@
 package com.tencent.mm.plugin.wear.model;
 
-import com.tencent.mm.h.a.li;
-import com.tencent.mm.h.a.li.a;
-import com.tencent.mm.protocal.c.cjl;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.lx;
+import com.tencent.mm.g.a.lx.a;
+import com.tencent.mm.protocal.protobuf.cwy;
 import java.util.ArrayList;
 
 final class e$5$1
   implements Runnable
 {
-  e$5$1(e.5 param5, li paramli) {}
+  e$5$1(e.5 param5, lx paramlx) {}
   
   public final void run()
   {
-    a.bYL().qRw.Rf(this.qRX.bUs.talker);
-    Object localObject1 = a.bYL().qRw.Re(this.qRX.bUs.talker);
+    AppMethodBeat.i(26303);
+    a.cYy().uGE.agc(this.uHf.cBX.talker);
+    Object localObject1 = a.cYy().uGE.agb(this.uHf.cBX.talker);
     Object localObject2 = new ArrayList();
     ((ArrayList)localObject2).add(Integer.valueOf(((f)localObject1).id));
-    a.bYL().qRA.a(new com.tencent.mm.plugin.wear.model.f.i((ArrayList)localObject2));
-    if (this.qRX.bUs.talker.equals("gh_43f2581f6fd6"))
+    a.cYy().uGI.a(new com.tencent.mm.plugin.wear.model.f.i((ArrayList)localObject2));
+    if (this.uHf.cBX.talker.equals("gh_43f2581f6fd6"))
     {
-      localObject1 = a.bYL().qRu.qRL.qSA;
+      localObject1 = a.cYy().uGC.uGT.uHH;
       if (localObject1 != null)
       {
-        localObject2 = a.bYL().qRx;
-        if ((localObject1 == null) || (!((b)localObject2).qRE) || (!b.Rd(((cjl)localObject1).tXi))) {
-          break label154;
+        localObject2 = a.cYy().uGF;
+        if ((localObject1 != null) && (((b)localObject2).uGM) && (b.aga(((cwy)localObject1).yeC))) {}
+        for (int i = 1; i != 0; i = 0)
+        {
+          a.cYy();
+          b.a((cwy)localObject1);
+          AppMethodBeat.o(26303);
+          return;
         }
+        a.cYy().uGF.connect();
       }
     }
-    label154:
-    for (int i = 1; i != 0; i = 0)
-    {
-      a.bYL();
-      b.a((cjl)localObject1);
-      return;
-    }
-    a.bYL().qRx.connect();
+    AppMethodBeat.o(26303);
   }
 }
 

@@ -2,25 +2,25 @@ package com.tencent.mm.plugin.game.f;
 
 public final class e$a
 {
-  final boolean erD;
-  final boolean erd;
-  final boolean erf;
-  final boolean lgA;
-  final boolean lgB;
-  final int lgC;
-  final int lgD;
-  final boolean lgz;
+  final boolean eNK;
+  final boolean eNM;
+  final boolean eOk;
+  final int iWq;
+  final boolean nEu;
+  final boolean nEv;
+  final boolean nEw;
+  final int nEx;
   
   private e$a(e.a.a parama)
   {
-    this.erd = parama.erd;
-    this.erf = parama.erf;
-    this.erD = parama.erD;
-    this.lgz = parama.lgz;
-    this.lgA = parama.lgA;
-    this.lgB = parama.lgB;
-    this.lgC = parama.lgC;
-    this.lgD = parama.lgD;
+    this.eNK = parama.eNK;
+    this.eNM = parama.eNM;
+    this.eOk = parama.eOk;
+    this.nEu = parama.nEu;
+    this.nEv = parama.nEv;
+    this.nEw = parama.nEw;
+    this.nEx = parama.nEx;
+    this.iWq = parama.iWq;
   }
 }
 

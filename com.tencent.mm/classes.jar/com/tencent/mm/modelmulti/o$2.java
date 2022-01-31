@@ -1,33 +1,25 @@
 package com.tencent.mm.modelmulti;
 
-import java.util.Queue;
+import com.tencent.mars.comm.WakerLock.IAutoUnlockCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class o$2
-  implements Runnable
+  implements WakerLock.IAutoUnlockCallback
 {
-  o$2(o paramo, o.c paramc) {}
+  o$2(o paramo) {}
   
-  public final void run()
+  public final void autoUnlockCallback()
   {
-    if (this.etO != null)
-    {
-      if (!(this.etO instanceof o.f)) {
-        break label43;
-      }
-      o.b(this.etN).add(this.etO);
-    }
-    for (;;)
-    {
-      o.a(this.etN, null);
-      return;
-      label43:
-      o.c(this.etN).add(this.etO);
-    }
+    AppMethodBeat.i(146145);
+    ab.e("MicroMsg.SyncService", "ERROR: %s auto unlock syncWakerLock", new Object[] { o.a(this.fJA) });
+    o.b(o.a(this.fJA));
+    AppMethodBeat.o(146145);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelmulti.o.2
  * JD-Core Version:    0.7.0.1
  */

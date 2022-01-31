@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools.fts;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$3
   implements Animator.AnimatorListener
@@ -11,26 +12,30 @@ final class d$3
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
-    this.rvK.isAnimating = false;
+    this.vma.isAnimating = false;
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.rvK.isAnimating = false;
-    if (this.rvK.rvu != null) {
-      this.rvK.rvu.onAnimationEnd();
+    AppMethodBeat.i(8601);
+    this.vma.isAnimating = false;
+    if (this.vma.vlK != null) {
+      this.vma.vlK.onAnimationEnd();
     }
+    AppMethodBeat.o(8601);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    this.rvK.isAnimating = true;
-    if (this.rvK.rvu != null) {
-      this.rvK.rvu.onAnimationStart();
+    AppMethodBeat.i(8600);
+    this.vma.isAnimating = true;
+    if (this.vma.vlK != null) {
+      this.vma.vlK.onAnimationStart();
     }
-    this.rvK.rvl.setVisibility(0);
+    this.vma.vlA.setVisibility(0);
+    AppMethodBeat.o(8600);
   }
 }
 

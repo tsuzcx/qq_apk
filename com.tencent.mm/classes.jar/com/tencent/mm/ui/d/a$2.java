@@ -2,11 +2,12 @@ package com.tencent.mm.ui.d;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.b.b;
 import com.tencent.mm.model.b.b.b;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$2
   implements View.OnClickListener
@@ -15,11 +16,13 @@ final class a$2
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.ChattingMonitoredBanner", "hy: user required close the banner");
-    this.uSG.Gg(2);
-    au.Hx().FZ().c(b.b.dYq);
-    au.Hx().FZ().c(b.b.dYr);
-    this.uSG.setVisibility(8);
+    AppMethodBeat.i(29990);
+    ab.i("MicroMsg.ChattingMonitoredBanner", "hy: user required close the banner");
+    this.zhh.Ox(2);
+    aw.aaz().Za().c(b.b.fou);
+    aw.aaz().Za().c(b.b.fow);
+    this.zhh.setVisibility(8);
+    AppMethodBeat.o(29990);
   }
 }
 

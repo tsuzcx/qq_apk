@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/abr" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/lj" android:textColor="#ff999999" android:id="@id/da5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:layout_marginBottom="4.0dip" />
-    <View android:background="#ffd4d4d4" android:layout_width="fill_parent" android:layout_height="2.0px" />
-    <com.tencent.mm.plugin.product.ui.MaxGridView android:gravity="center" android:id="@id/da6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:horizontalSpacing="16.0dip" android:verticalSpacing="12.0dip" android:stretchMode="columnWidth" android:numColumns="3" />
+    <TextView android:textSize="@dimen/dq" android:textColor="@color/a6i" android:gravity="center_vertical" android:id="@id/cz" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/n_" android:paddingRight="@dimen/m1" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m0" />
 </LinearLayout>

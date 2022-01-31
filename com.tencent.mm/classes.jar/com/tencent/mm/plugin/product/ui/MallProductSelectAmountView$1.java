@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.product.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallProductSelectAmountView$1
   implements View.OnClickListener
@@ -11,20 +12,23 @@ final class MallProductSelectAmountView$1
   
   public final void onClick(View paramView)
   {
-    if (MallProductSelectAmountView.a(this.mUm) + 1 > MallProductSelectAmountView.b(this.mUm)) {
-      if (MallProductSelectAmountView.c(this.mUm) != null) {
-        MallProductSelectAmountView.c(this.mUm).dC(MallProductSelectAmountView.a(this.mUm), MallProductSelectAmountView.d(this.mUm));
-      }
-    }
-    do
+    AppMethodBeat.i(44095);
+    if (MallProductSelectAmountView.a(this.pws) + 1 > MallProductSelectAmountView.b(this.pws))
     {
-      return;
-      MallProductSelectAmountView.e(this.mUm);
-      if (MallProductSelectAmountView.f(this.mUm)) {
-        MallProductSelectAmountView.g(this.mUm).setText(MallProductSelectAmountView.a(this.mUm));
+      if (MallProductSelectAmountView.c(this.pws) != null) {
+        MallProductSelectAmountView.c(this.pws).fi(MallProductSelectAmountView.a(this.pws), MallProductSelectAmountView.d(this.pws));
       }
-    } while (MallProductSelectAmountView.c(this.mUm) == null);
-    MallProductSelectAmountView.c(this.mUm).ex(MallProductSelectAmountView.a(this.mUm));
+      AppMethodBeat.o(44095);
+      return;
+    }
+    MallProductSelectAmountView.e(this.pws);
+    if (MallProductSelectAmountView.f(this.pws)) {
+      MallProductSelectAmountView.g(this.pws).setText(MallProductSelectAmountView.a(this.pws));
+    }
+    if (MallProductSelectAmountView.c(this.pws) != null) {
+      MallProductSelectAmountView.c(this.pws).gz(MallProductSelectAmountView.a(this.pws));
+    }
+    AppMethodBeat.o(44095);
   }
 }
 

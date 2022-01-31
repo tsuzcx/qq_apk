@@ -9,10 +9,11 @@ public final class d$a
   extends a.a
 {
   public View contentView;
-  public ImageView doU;
-  public TextView eXO;
-  public TextView fYB;
-  public TextView fYC;
+  public ImageView egq;
+  public TextView gpL;
+  public TextView hrP;
+  public TextView hrQ;
+  public View hrR;
   
   public d$a(d paramd)
   {
@@ -21,7 +22,7 @@ public final class d$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,43 @@
 package com.google.android.exoplayer2;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 
 public final class e
   extends Exception
 {
-  public final int atb;
+  public final int avt;
   public final int type;
   
   private e(int paramInt1, Throwable paramThrowable, int paramInt2)
   {
     super(null, paramThrowable);
     this.type = paramInt1;
-    this.atb = paramInt2;
+    this.avt = paramInt2;
   }
   
   public static e a(IOException paramIOException)
   {
-    return new e(0, paramIOException, -1);
+    AppMethodBeat.i(94772);
+    paramIOException = new e(0, paramIOException, -1);
+    AppMethodBeat.o(94772);
+    return paramIOException;
   }
   
-  public static e a(Exception paramException, int paramInt)
+  static e a(RuntimeException paramRuntimeException)
   {
-    return new e(1, paramException, paramInt);
+    AppMethodBeat.i(94773);
+    paramRuntimeException = new e(2, paramRuntimeException, -1);
+    AppMethodBeat.o(94773);
+    return paramRuntimeException;
   }
   
-  static e b(RuntimeException paramRuntimeException)
+  public static e b(Exception paramException, int paramInt)
   {
-    return new e(2, paramRuntimeException, -1);
+    AppMethodBeat.i(94771);
+    paramException = new e(1, paramException, paramInt);
+    AppMethodBeat.o(94771);
+    return paramException;
   }
 }
 

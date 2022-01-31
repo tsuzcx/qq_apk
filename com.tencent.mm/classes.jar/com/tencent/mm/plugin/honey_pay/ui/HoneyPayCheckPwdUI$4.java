@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.wallet_core.c.p.a;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 
 final class HoneyPayCheckPwdUI$4
-  implements n.a
+  implements p.a
 {
   HoneyPayCheckPwdUI$4(HoneyPayCheckPwdUI paramHoneyPayCheckPwdUI) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (HoneyPayCheckPwdUI.e(this.llm) != null) {
-      HoneyPayCheckPwdUI.e(this.llm).bvr();
+    AppMethodBeat.i(41838);
+    if (HoneyPayCheckPwdUI.e(this.nII) != null) {
+      HoneyPayCheckPwdUI.e(this.nII).cfK();
     }
-    this.llm.bka();
+    this.nII.hideProgress();
+    AppMethodBeat.o(41838);
   }
 }
 

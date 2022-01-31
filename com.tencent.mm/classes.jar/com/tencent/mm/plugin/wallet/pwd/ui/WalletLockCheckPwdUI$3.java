@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
-import com.tencent.mm.plugin.wallet.pwd.a.j;
-import com.tencent.mm.plugin.wallet_core.c.r;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet.pwd.a.q;
+import com.tencent.mm.plugin.wallet_core.c.u;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
 
@@ -11,46 +11,59 @@ final class WalletLockCheckPwdUI$3
 {
   WalletLockCheckPwdUI$3(WalletLockCheckPwdUI paramWalletLockCheckPwdUI) {}
   
-  public final void gG(boolean paramBoolean)
+  public final void onInputValidChange(boolean paramBoolean)
   {
     int i = 8;
-    if ((!paramBoolean) || (WalletLockCheckPwdUI.b(this.qps) == null)) {}
-    do
+    AppMethodBeat.i(46339);
+    if (paramBoolean)
     {
-      return;
-      if (WalletLockCheckPwdUI.b(this.qps).equals("action.close_wallet_lock"))
+      if (WalletLockCheckPwdUI.b(this.tZF) == null)
       {
-        WalletLockCheckPwdUI.c(this.qps);
+        AppMethodBeat.o(46339);
         return;
       }
-      if (WalletLockCheckPwdUI.b(this.qps).equals("action.verify_paypwd"))
+      if (WalletLockCheckPwdUI.b(this.tZF).equals("action.close_wallet_lock"))
       {
-        if (WalletLockCheckPwdUI.d(this.qps) == 1) {
+        WalletLockCheckPwdUI.c(this.tZF);
+        AppMethodBeat.o(46339);
+        return;
+      }
+      if (WalletLockCheckPwdUI.b(this.tZF).equals("action.verify_paypwd"))
+      {
+        if (WalletLockCheckPwdUI.d(this.tZF) == 1) {
           i = 6;
         }
         for (;;)
         {
-          WalletLockCheckPwdUI.a(this.qps, new r(WalletLockCheckPwdUI.e(this.qps).getText(), i, this.qps.bTO()));
-          this.qps.a(WalletLockCheckPwdUI.f(this.qps), true, false);
+          WalletLockCheckPwdUI.a(this.tZF, new u(WalletLockCheckPwdUI.e(this.tZF).getText(), i, this.tZF.getPayReqKey()));
+          this.tZF.doSceneForceProgress(WalletLockCheckPwdUI.f(this.tZF));
+          AppMethodBeat.o(46339);
           return;
-          if (WalletLockCheckPwdUI.d(this.qps) != 2) {
+          if (WalletLockCheckPwdUI.d(this.tZF) != 2) {
             i = -1;
           }
         }
       }
-      if (WalletLockCheckPwdUI.b(this.qps).equals("action.touchlock_verify_by_paypwd"))
+      if (WalletLockCheckPwdUI.b(this.tZF).equals("action.touchlock_verify_by_paypwd"))
       {
-        j localj = new j(WalletLockCheckPwdUI.e(this.qps).getText());
-        this.qps.a(localj, true, false);
+        q localq = new q(WalletLockCheckPwdUI.e(this.tZF).getText());
+        this.tZF.doSceneForceProgress(localq);
+        AppMethodBeat.o(46339);
         return;
       }
-    } while (!WalletLockCheckPwdUI.b(this.qps).equals("action.touchlock_need_verify_paypwd"));
-    if (WalletLockCheckPwdUI.d(this.qps) == 2) {}
+      if (WalletLockCheckPwdUI.b(this.tZF).equals("action.touchlock_need_verify_paypwd")) {
+        if (WalletLockCheckPwdUI.d(this.tZF) != 2) {
+          break label280;
+        }
+      }
+    }
     for (;;)
     {
-      WalletLockCheckPwdUI.a(this.qps, new r(WalletLockCheckPwdUI.e(this.qps).getText(), i, this.qps.bTO()));
-      this.qps.a(WalletLockCheckPwdUI.f(this.qps), true, false);
+      WalletLockCheckPwdUI.a(this.tZF, new u(WalletLockCheckPwdUI.e(this.tZF).getText(), i, this.tZF.getPayReqKey()));
+      this.tZF.doSceneForceProgress(WalletLockCheckPwdUI.f(this.tZF));
+      AppMethodBeat.o(46339);
       return;
+      label280:
       i = -1;
     }
   }

@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class JsApiGetABTestConfig
-  extends a<o>
+  extends u<r>
 {
   public static final int CTRL_INDEX = 527;
   public static final String NAME = "getABTestConfig";

@@ -1,58 +1,54 @@
 package com.tencent.mm.plugin.wallet_core.ui.view;
 
-import b.a.a.c;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import android.graphics.Paint;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WalletSuccPageAwardWidget$10
-  implements WalletScratchShakeView.a
+  implements Runnable
 {
   WalletSuccPageAwardWidget$10(WalletSuccPageAwardWidget paramWalletSuccPageAwardWidget) {}
   
-  public final void bXl()
+  public final void run()
   {
-    y.i("MicroMsg.WalletSuccPageAwardWidget", "onFinishScratchOrShake");
-    if (WalletSuccPageAwardWidget.j(this.qJe).xpp != 0) {
-      WalletSuccPageAwardWidget.bXs();
-    }
-  }
-  
-  public final void kN(boolean paramBoolean)
-  {
-    int i = 2;
-    y.i("MicroMsg.WalletSuccPageAwardWidget", "onStartScratchOrShake, isScratch: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    Object localObject = this.qJe;
-    int j;
-    if (paramBoolean)
+    AppMethodBeat.i(47954);
+    try
     {
-      j = 1;
-      WalletSuccPageAwardWidget.a((WalletSuccPageAwardWidget)localObject, j, false);
-      if (!paramBoolean) {
-        break label103;
+      if ((WalletSuccPageAwardWidget.s(this.uxM).getVisibility() == 0) && (WalletSuccPageAwardWidget.t(this.uxM).getRight() > 0) && (WalletSuccPageAwardWidget.s(this.uxM).getLeft() > 0) && (WalletSuccPageAwardWidget.t(this.uxM).getRight() >= WalletSuccPageAwardWidget.s(this.uxM).getLeft()) && (!bo.aa(WalletSuccPageAwardWidget.t(this.uxM).getText())))
+      {
+        float f = WalletSuccPageAwardWidget.t(this.uxM).getTextSize();
+        ab.i("MicroMsg.WalletSuccPageAwardWidget", "nameTv size exceed, nameTv.getRight(): %s, button.getLeft(): %s", new Object[] { Integer.valueOf(WalletSuccPageAwardWidget.t(this.uxM).getRight()), Integer.valueOf(WalletSuccPageAwardWidget.s(this.uxM).getLeft()) });
+        Object localObject = new Paint();
+        ((Paint)localObject).setTextSize(f);
+        String str2 = WalletSuccPageAwardWidget.t(this.uxM).getText().toString();
+        f = WalletSuccPageAwardWidget.s(this.uxM).getLeft() - WalletSuccPageAwardWidget.t(this.uxM).getLeft();
+        int i = 1;
+        while ((((Paint)localObject).measureText(str2.substring(0, str2.length() - i - 1)) > f) && (i <= str2.length() - 1)) {
+          i += 1;
+        }
+        ab.i("MicroMsg.WalletSuccPageAwardWidget", "nameTv, exceed len, final search count: %s, text.length: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(str2.length()) });
+        String str1 = str2.substring(0, str2.length() - i - 1);
+        localObject = str1;
+        if (str2.length() > 9)
+        {
+          localObject = str1;
+          if (str1.length() < 9) {
+            localObject = str2.substring(0, 9);
+          }
+        }
+        WalletSuccPageAwardWidget.t(this.uxM).setText((CharSequence)localObject);
+        WalletSuccPageAwardWidget.t(this.uxM).append("...");
       }
-      localObject = h.nFQ;
-      if (!WalletSuccPageAwardWidget.e(this.qJe)) {
-        break label98;
-      }
-    }
-    for (;;)
-    {
-      ((h)localObject).f(15225, new Object[] { Integer.valueOf(5), Integer.valueOf(i) });
-      WalletSuccPageAwardWidget.f(this.qJe);
+      AppMethodBeat.o(47954);
       return;
-      j = 2;
-      break;
-      label98:
-      i = 1;
     }
-    label103:
-    localObject = h.nFQ;
-    if (WalletSuccPageAwardWidget.e(this.qJe)) {}
-    for (;;)
+    catch (Exception localException)
     {
-      ((h)localObject).f(15225, new Object[] { Integer.valueOf(4), Integer.valueOf(i) });
-      break;
-      i = 1;
+      ab.printErrStackTrace("MicroMsg.WalletSuccPageAwardWidget", localException, "calc nameTv len error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(47954);
     }
   }
 }

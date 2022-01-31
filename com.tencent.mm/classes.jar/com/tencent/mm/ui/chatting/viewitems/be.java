@@ -1,39 +1,49 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import com.tencent.mm.ui.base.a.a;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-abstract class be
-  extends ClickableSpan
-  implements a
+final class be
 {
-  private boolean vIo;
-  private int vIp;
-  private int vIq;
-  
-  public be(int paramInt1, int paramInt2)
-  {
-    this.vIp = paramInt1;
-    this.vIq = paramInt2;
-  }
-  
-  public final void mf(boolean paramBoolean)
-  {
-    this.vIo = paramBoolean;
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    if (this.vIo) {}
-    for (int i = this.vIq;; i = this.vIp)
-    {
-      paramTextPaint.setColor(i);
-      paramTextPaint.setUnderlineText(false);
-      return;
-    }
-  }
+  View zYX;
+  ImageView zYY;
+  View zYZ;
+  ImageView zZA;
+  ImageView zZB;
+  ImageView zZC;
+  View zZD;
+  ImageView zZE;
+  TextView zZF;
+  LinearLayout zZG;
+  TextView zZH;
+  ImageView zZa;
+  TextView zZb;
+  View zZc;
+  ImageView zZd;
+  View zZe;
+  View zZf;
+  TextView zZg;
+  TextView zZh;
+  TextView zZi;
+  View zZj;
+  LinearLayout zZk;
+  TextView zZl;
+  TextView zZm;
+  TextView zZn;
+  TextView zZo;
+  View zZp;
+  LinearLayout zZq;
+  View zZr;
+  LinearLayout zZs;
+  LinearLayout zZt;
+  View zZu;
+  LinearLayout zZv;
+  LinearLayout zZw;
+  View zZx;
+  TextView zZy;
+  TextView zZz;
 }
 
 

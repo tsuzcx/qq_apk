@@ -1,45 +1,51 @@
 package com.tencent.mm.plugin.voip.model.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.protocal.c.bvf;
-import com.tencent.mm.protocal.c.cfv;
-import com.tencent.mm.protocal.c.cfw;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.protocal.protobuf.cfw;
+import com.tencent.mm.protocal.protobuf.ctg;
+import com.tencent.mm.protocal.protobuf.cth;
 
 public final class k
-  extends n<cfv, cfw>
+  extends n<ctg, cth>
 {
-  public k(bvf parambvf)
+  public k(cfw paramcfw)
   {
+    AppMethodBeat.i(4730);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new cfv();
-    ((b.a)localObject).ecI = new cfw();
+    ((b.a)localObject).fsX = new ctg();
+    ((b.a)localObject).fsY = new cth();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipspeedtest";
-    ((b.a)localObject).ecG = 765;
-    ((b.a)localObject).ecJ = 765;
-    ((b.a)localObject).ecK = 1000000765;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (cfv)this.dmK.ecE.ecN;
-    ((cfv)localObject).sST = parambvf.sST;
-    ((cfv)localObject).tLL = parambvf.tLL;
-    ((cfv)localObject).sNU = parambvf.sNU;
-    ((cfv)localObject).tLM = parambvf.tLM;
-    ((cfv)localObject).tLN = parambvf.tLN;
-    ((cfv)localObject).tLO = parambvf.tLO;
-    ((cfv)localObject).tLP = parambvf.tLP;
-    ((cfv)localObject).tLQ = parambvf.tLQ;
-    ((cfv)localObject).tLR = parambvf.tLR;
-    ((cfv)localObject).tLS = parambvf.tLS;
-    ((cfv)localObject).tLT = parambvf.tLT;
-    ((cfv)localObject).tLU = parambvf.tLU;
-    ((cfv)localObject).tLV = parambvf.tLV;
+    ((b.a)localObject).funcId = 765;
+    ((b.a)localObject).reqCmdId = 765;
+    ((b.a)localObject).respCmdId = 1000000765;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (ctg)this.rr.fsV.fta;
+    ((ctg)localObject).wQP = paramcfw.wQP;
+    ((ctg)localObject).xQo = paramcfw.xQo;
+    ((ctg)localObject).wLO = paramcfw.wLO;
+    ((ctg)localObject).xQp = paramcfw.xQp;
+    ((ctg)localObject).xQq = paramcfw.xQq;
+    ((ctg)localObject).xQr = paramcfw.xQr;
+    ((ctg)localObject).xQs = paramcfw.xQs;
+    ((ctg)localObject).xQt = paramcfw.xQt;
+    ((ctg)localObject).xQu = paramcfw.xQu;
+    ((ctg)localObject).xQv = paramcfw.xQv;
+    ((ctg)localObject).xQw = paramcfw.xQw;
+    ((ctg)localObject).xQx = paramcfw.xQx;
+    ((ctg)localObject).xQy = paramcfw.xQy;
+    AppMethodBeat.o(4730);
   }
   
-  public final f bRy()
+  public final f cOp()
   {
-    return new k.1(this);
+    AppMethodBeat.i(4731);
+    k.1 local1 = new k.1(this);
+    AppMethodBeat.o(4731);
+    return local1;
   }
   
   public final int getType()

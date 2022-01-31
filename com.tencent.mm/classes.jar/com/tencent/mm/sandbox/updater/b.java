@@ -1,89 +1,103 @@
 package com.tencent.mm.sandbox.updater;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.e.q;
 import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.protocal.c.alm;
-import com.tencent.mm.protocal.c.gc;
 import com.tencent.mm.protocal.d;
+import com.tencent.mm.protocal.protobuf.aqz;
+import com.tencent.mm.protocal.protobuf.hq;
 import com.tencent.mm.sandbox.monitor.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class b
   extends c
 {
-  private String[] bHW;
-  private byte[] cbM;
-  private byte[] eNt;
-  private byte[] eNv;
-  private int tdG = 0;
-  private int uck = 0;
-  private final int ucl = 5;
-  private com.tencent.mm.sandbox.b.a ucm;
-  private b.a ucn = null;
-  private com.tencent.mm.sandbox.b.a uco = new b.1(this);
+  private String[] bDK;
+  private byte[] cKp;
+  private byte[] gcZ;
+  private byte[] gdd;
   private int uin;
+  private int xbE;
+  private final int ykA;
+  private com.tencent.mm.sandbox.b.a ykB;
+  private b.a ykC;
+  private com.tencent.mm.sandbox.b.a ykD;
+  private int ykz;
   
   public b(int paramInt1, String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String[] paramArrayOfString, boolean paramBoolean)
   {
     super(paramInt1, paramString, paramInt2, paramBoolean);
-    this.bHW = paramArrayOfString;
+    AppMethodBeat.i(28851);
+    this.ykz = 0;
+    this.ykA = 5;
+    this.xbE = 0;
+    this.ykC = null;
+    this.ykD = new b.1(this);
+    this.bDK = paramArrayOfString;
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
-      this.bHW = new String[] { "short.weixin.qq.com" };
+      this.bDK = new String[] { "short.weixin.qq.com" };
     }
     this.uin = paramInt3;
-    this.eNt = paramArrayOfByte1;
-    this.cbM = paramArrayOfByte2;
+    this.gcZ = paramArrayOfByte1;
+    this.cKp = paramArrayOfByte2;
+    AppMethodBeat.o(28851);
   }
   
   public final void a(com.tencent.mm.sandbox.b.a parama)
   {
-    this.ucm = parama;
-    int i = this.uck + 1;
-    this.uck = i;
+    AppMethodBeat.i(28852);
+    this.ykB = parama;
+    int i = this.ykz + 1;
+    this.ykz = i;
     if (i > 1000)
     {
-      y.d("MicroMsg.NetSceneGetUpdatePack", "doSceneCnt > DOSCENE_LIMIT, return");
-      this.ucm.b(-1, -1, null);
+      ab.d("MicroMsg.NetSceneGetUpdatePack", "doSceneCnt > DOSCENE_LIMIT, return");
+      this.ykB.b(-1, -1, null);
+      AppMethodBeat.o(28852);
       return;
     }
-    if (!f.bs(this.ubS))
+    if (!f.gc(this.ykh))
     {
-      y.e("MicroMsg.NetSceneGetUpdatePack", "SDCard full, packSize=[%s]", new Object[] { Integer.valueOf(this.ubS) });
+      ab.e("MicroMsg.NetSceneGetUpdatePack", "SDCard full, packSize=[%s]", new Object[] { Integer.valueOf(this.ykh) });
       parama.b(-1, -1, null);
+      AppMethodBeat.o(28852);
       return;
     }
-    parama = new alm();
-    Object localObject = new gc();
-    ((gc)localObject).sAl = d.spa;
-    ((gc)localObject).pyo = 0;
-    ((gc)localObject).jwX = this.uin;
-    ((gc)localObject).sAk = com.tencent.mm.bv.b.bk(q.zg().getBytes());
-    if (((gc)localObject).sAk.oY.length >= 16) {
-      ((gc)localObject).sAk = ((gc)localObject).sAk.EB(16);
+    parama = new aqz();
+    Object localObject = new hq();
+    ((hq)localObject).wur = d.whH;
+    ((hq)localObject).Scene = 0;
+    ((hq)localObject).lGw = this.uin;
+    ((hq)localObject).wuq = com.tencent.mm.bv.b.bL(q.LK().getBytes());
+    if (((hq)localObject).wuq.pW.length >= 16) {
+      ((hq)localObject).wuq = ((hq)localObject).wuq.Mz(16);
     }
-    ((gc)localObject).sAm = com.tencent.mm.bv.b.bk(d.dOM.getBytes());
-    if (((gc)localObject).sAm.oY.length >= 132) {
-      ((gc)localObject).sAm = ((gc)localObject).sAm.EB(132);
+    ((hq)localObject).wus = com.tencent.mm.bv.b.bL(d.eQs.getBytes());
+    if (((hq)localObject).wus.pW.length >= 132) {
+      ((hq)localObject).wus = ((hq)localObject).wus.Mz(132);
     }
-    ((gc)localObject).sAj = com.tencent.mm.bv.b.bk(this.eNt);
-    if (((gc)localObject).sAj.oY.length >= 36) {
-      ((gc)localObject).sAj = ((gc)localObject).sAj.EB(36);
+    ((hq)localObject).wup = com.tencent.mm.bv.b.bL(this.gcZ);
+    if (((hq)localObject).wup.pW.length >= 36) {
+      ((hq)localObject).wup = ((hq)localObject).wup.Mz(36);
     }
-    parama.tEX = ((gc)localObject);
-    parama.thp = this.ubR;
-    parama.ndg = this.ubT;
-    parama.ndf = this.ubS;
-    localObject = new b.a(this, this.bHW[(this.tdG / 5)], this.uco);
-    this.ucn = ((b.a)localObject);
-    ((b.a)localObject).execute(new alm[] { parama });
+    parama.setBaseRequest((hq)localObject);
+    parama.xgd = this.ykg;
+    parama.pIy = this.yki;
+    parama.pIx = this.ykh;
+    localObject = new b.a(this, this.bDK[(this.xbE / 5)], this.ykD);
+    this.ykC = ((b.a)localObject);
+    ((b.a)localObject).execute(new aqz[] { parama });
+    AppMethodBeat.o(28852);
   }
   
   public final void cancel()
   {
-    y.i("MicroMsg.NetSceneGetUpdatePack", "do cancel, updateType = " + this.ubR);
-    if ((this.ucn != null) && (!this.ucn.isCancelled())) {
-      this.ucn.cancel(true);
+    AppMethodBeat.i(28853);
+    ab.i("MicroMsg.NetSceneGetUpdatePack", "do cancel, updateType = " + this.ykg);
+    if ((this.ykC != null) && (!this.ykC.isCancelled())) {
+      this.ykC.cancel(true);
     }
+    AppMethodBeat.o(28853);
   }
 }
 

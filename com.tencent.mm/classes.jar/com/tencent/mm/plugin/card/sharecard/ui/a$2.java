@@ -2,11 +2,10 @@ package com.tencent.mm.plugin.card.sharecard.ui;
 
 import android.view.View;
 import android.view.View.OnLongClickListener;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.p;
-import com.tencent.mm.protocal.c.lv;
+import com.tencent.mm.protocal.protobuf.oj;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
@@ -17,11 +16,13 @@ final class a$2
   
   public final boolean onLongClick(View paramView)
   {
-    if (paramView.getId() == a.d.code_text)
+    AppMethodBeat.i(88090);
+    if (paramView.getId() == 2131822013)
     {
-      p.P(this.ipt.hxN, this.ipt.ikk.azy().code);
-      h.bC(this.ipt.hxN, this.ipt.hxN.getString(a.g.app_copy_ok));
+      p.xJ(this.kqA.klk.bbe().code);
+      h.bO(this.kqA.jpX, this.kqA.jpX.getString(2131296896));
     }
+    AppMethodBeat.o(88090);
     return false;
   }
 }

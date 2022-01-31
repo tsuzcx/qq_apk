@@ -1,5 +1,7 @@
 package com.tencent.mm.modelstat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class c$1$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class c$1$1
   
   public final void run()
   {
-    c.a(this.eCn.eCm);
+    AppMethodBeat.i(78657);
+    c.a(this.fSe.fSd);
+    AppMethodBeat.o(78657);
   }
 }
 

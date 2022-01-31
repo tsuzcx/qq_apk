@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:id="@id/ekn" android:background="@color/ry" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView android:id="@id/v0" android:layout_width="100.0dip" android:layout_height="100.0dip" android:scaleType="centerCrop" />
-        <ImageView android:id="@id/jj" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</LinearLayout>
+    <TextView android:textColor="@color/rz" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/eko" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{Content}" android:drawableLeft="@raw/seller_warning" android:drawablePadding="10.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/ekp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <TextView android:textColor="@color/a0s" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:background="@null" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="agree" />
+    </LinearLayout>
+</RelativeLayout>

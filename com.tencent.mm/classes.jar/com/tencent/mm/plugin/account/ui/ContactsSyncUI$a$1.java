@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.w.a;
 
 final class ContactsSyncUI$a$1
@@ -8,11 +9,13 @@ final class ContactsSyncUI$a$1
 {
   ContactsSyncUI$a$1(ContactsSyncUI.a parama) {}
   
-  public final void k(Bundle paramBundle)
+  public final void t(Bundle paramBundle)
   {
-    ContactsSyncUI localContactsSyncUI = this.flm.flj;
-    localContactsSyncUI.flh = paramBundle;
+    AppMethodBeat.i(124744);
+    ContactsSyncUI localContactsSyncUI = this.gCD.gCA;
+    localContactsSyncUI.gCy = paramBundle;
     localContactsSyncUI.finish();
+    AppMethodBeat.o(124744);
   }
 }
 

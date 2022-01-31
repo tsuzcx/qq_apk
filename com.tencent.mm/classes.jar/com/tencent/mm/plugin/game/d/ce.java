@@ -1,96 +1,97 @@
 package com.tencent.mm.plugin.game.d;
 
-import d.a.a.b;
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
 
 public final class ce
   extends com.tencent.mm.bv.a
 {
-  public String bGw;
-  public String kSY;
-  public LinkedList<ck> kVy = new LinkedList();
+  public String Title;
+  public String npU;
+  public String nqa;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(111640);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.bGw == null) {
-        throw new b("Not all required fields were included: Title");
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.nqa == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: IconURL");
+        AppMethodBeat.o(111640);
+        throw paramVarArgs;
       }
-      if (this.kSY == null) {
-        throw new b("Not all required fields were included: Detail");
+      if (this.nqa != null) {
+        paramVarArgs.e(1, this.nqa);
       }
-      if (this.bGw != null) {
-        paramVarArgs.d(1, this.bGw);
+      if (this.Title != null) {
+        paramVarArgs.e(2, this.Title);
       }
-      paramVarArgs.d(2, 8, this.kVy);
-      if (this.kSY != null) {
-        paramVarArgs.d(3, this.kSY);
+      if (this.npU != null) {
+        paramVarArgs.e(3, this.npU);
       }
+      AppMethodBeat.o(111640);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.bGw == null) {
-        break label435;
+      if (this.nqa == null) {
+        break label382;
       }
     }
-    label435:
-    for (paramInt = d.a.a.b.b.a.e(1, this.bGw) + 0;; paramInt = 0)
+    label382:
+    for (int i = e.a.a.b.b.a.f(1, this.nqa) + 0;; i = 0)
     {
-      int i = paramInt + d.a.a.a.c(2, 8, this.kVy);
       paramInt = i;
-      if (this.kSY != null) {
-        paramInt = i + d.a.a.b.b.a.e(3, this.kSY);
+      if (this.Title != null) {
+        paramInt = i + e.a.a.b.b.a.f(2, this.Title);
       }
-      return paramInt;
+      i = paramInt;
+      if (this.npU != null) {
+        i = paramInt + e.a.a.b.b.a.f(3, this.npU);
+      }
+      AppMethodBeat.o(111640);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.kVy.clear();
-        paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        if (this.bGw == null) {
-          throw new b("Not all required fields were included: Title");
+        if (this.nqa == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: IconURL");
+          AppMethodBeat.o(111640);
+          throw paramVarArgs;
         }
-        if (this.kSY != null) {
-          break;
-        }
-        throw new b("Not all required fields were included: Detail");
+        AppMethodBeat.o(111640);
+        return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         ce localce = (ce)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(111640);
           return -1;
         case 1: 
-          localce.bGw = ((d.a.a.a.a)localObject1).xpH.readString();
+          localce.nqa = locala.CLY.readString();
+          AppMethodBeat.o(111640);
           return 0;
         case 2: 
-          paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ck();
-            localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((ck)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-            localce.kVy.add(localObject1);
-            paramInt += 1;
-          }
+          localce.Title = locala.CLY.readString();
+          AppMethodBeat.o(111640);
+          return 0;
         }
-        localce.kSY = ((d.a.a.a.a)localObject1).xpH.readString();
+        localce.npU = locala.CLY.readString();
+        AppMethodBeat.o(111640);
         return 0;
       }
+      AppMethodBeat.o(111640);
       return -1;
     }
   }

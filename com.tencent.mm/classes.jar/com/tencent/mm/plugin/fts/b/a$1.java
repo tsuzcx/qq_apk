@@ -1,47 +1,56 @@
 package com.tencent.mm.plugin.fts.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.fts.a.m;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import java.util.HashMap;
 import java.util.HashSet;
 
 final class a$1
-  implements m.b
+  implements n.b
 {
   a$1(a parama) {}
   
-  public final void a(int paramInt, com.tencent.mm.sdk.e.m paramm, Object paramObject)
+  public final void a(int paramInt, n paramn, Object paramObject)
   {
-    paramm = (String)paramObject;
-    if (!a.Ea(paramm)) {
-      y.i("MicroMsg.FTS.FTS5SearchContactLogic", "onConversationChangeListener filterByUsername %s", new Object[] { paramm });
-    }
-    do
+    AppMethodBeat.i(136650);
+    paramn = (String)paramObject;
+    if (!a.Pk(paramn))
     {
-      do
-      {
-        return;
-        paramObject = ((j)g.r(j.class)).Fw().abf(paramm);
-        if ((paramObject != null) && ((!a.F(paramObject)) || (paramObject.cua())))
-        {
-          y.i("MicroMsg.FTS.FTS5SearchContactLogic", "onContactChangedListener hit cache and filter contact %s", new Object[] { paramm });
-          return;
-        }
-        switch (paramInt)
-        {
-        case 4: 
-        default: 
-          return;
-        }
-      } while (a.b(this.kyt).containsKey(paramm));
-      a.e(this.kyt).a(65556, new a.h(this.kyt, paramm));
+      ab.i("MicroMsg.FTS.FTS5SearchContactLogic", "onConversationChangeListener filterByUsername %s", new Object[] { paramn });
+      AppMethodBeat.o(136650);
       return;
-    } while ((a.c(this.kyt).contains(paramm)) || (a.b(this.kyt).containsKey(paramm)));
-    a.e(this.kyt).a(65556, new a.i(this.kyt, paramm));
+    }
+    paramObject = ((j)g.E(j.class)).YA().arq(paramn);
+    if ((paramObject != null) && ((!a.G(paramObject)) || (paramObject.dwz())))
+    {
+      ab.i("MicroMsg.FTS.FTS5SearchContactLogic", "onContactChangedListener hit cache and filter contact %s", new Object[] { paramn });
+      AppMethodBeat.o(136650);
+      return;
+    }
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(136650);
+      return;
+      if (!a.b(this.mUg).containsKey(paramn))
+      {
+        a.e(this.mUg).a(65556, new a.h(this.mUg, paramn));
+        AppMethodBeat.o(136650);
+        return;
+        if ((!a.c(this.mUg).contains(paramn)) && (!a.b(this.mUg).containsKey(paramn))) {
+          a.e(this.mUg).a(65556, new a.i(this.mUg, paramn));
+        }
+      }
+    }
   }
 }
 

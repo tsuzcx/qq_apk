@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.label.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.label.e;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.storage.ai;
 import java.util.ArrayList;
 
@@ -13,41 +14,46 @@ final class ContactLabelEditUI$12
   
   public final void run()
   {
-    ArrayList localArrayList = e.bdz().aba(ContactLabelEditUI.i(this.lBl));
+    AppMethodBeat.i(22552);
+    ArrayList localArrayList = e.bKU().arl(ContactLabelEditUI.j(this.nYx));
     if (localArrayList == null)
     {
-      y.w("MicroMsg.Label.ContactLabelEditUI", "result is null");
+      ab.w("MicroMsg.Label.ContactLabelEditUI", "result is null");
+      AppMethodBeat.o(22552);
       return;
     }
     if (localArrayList != null)
     {
-      ContactLabelEditUI.a(this.lBl, localArrayList);
-      if (ContactLabelEditUI.j(this.lBl) != null) {
-        break label101;
+      ContactLabelEditUI.a(this.nYx, localArrayList);
+      if (ContactLabelEditUI.k(this.nYx) != null) {
+        break label119;
       }
-      ContactLabelEditUI.b(this.lBl, new ArrayList());
+      ContactLabelEditUI.b(this.nYx, new ArrayList());
     }
     for (;;)
     {
-      ContactLabelEditUI.j(this.lBl).addAll(localArrayList);
-      if (ContactLabelEditUI.k(this.lBl) == null) {
-        break;
+      ContactLabelEditUI.k(this.nYx).addAll(localArrayList);
+      if (ContactLabelEditUI.l(this.nYx) != null) {
+        ContactLabelEditUI.l(this.nYx).sendEmptyMessage(6001);
       }
-      ContactLabelEditUI.k(this.lBl).sendEmptyMessage(6001);
+      AppMethodBeat.o(22552);
       return;
-      label101:
-      ContactLabelEditUI.j(this.lBl).clear();
+      label119:
+      ContactLabelEditUI.k(this.nYx).clear();
     }
   }
   
   public final String toString()
   {
-    return super.toString() + "|initView";
+    AppMethodBeat.i(22553);
+    String str = super.toString() + "|initView";
+    AppMethodBeat.o(22553);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.ContactLabelEditUI.12
  * JD-Core Version:    0.7.0.1
  */

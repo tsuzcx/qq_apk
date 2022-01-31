@@ -1,25 +1,17 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ConversationWithAppBrandListView$3
-  implements AppBrandRecentView.e
+  implements Runnable
 {
   ConversationWithAppBrandListView$3(ConversationWithAppBrandListView paramConversationWithAppBrandListView) {}
   
-  public final void mH(int paramInt)
+  public final void run()
   {
-    y.i("MicroMsg.ConversationWithAppBrandListView", "alvinluo onDone MyAppBrand size: %d", new Object[] { Integer.valueOf(paramInt) });
-    if (paramInt <= 0) {
-      ConversationWithAppBrandListView.b(this.vRV, true);
-    }
-    for (;;)
-    {
-      ConversationWithAppBrandListView.a(this.vRV, paramInt);
-      return;
-      ConversationWithAppBrandListView.b(this.vRV, false);
-    }
+    AppMethodBeat.i(34268);
+    this.AjJ.setSelection(0);
+    AppMethodBeat.o(34268);
   }
 }
 

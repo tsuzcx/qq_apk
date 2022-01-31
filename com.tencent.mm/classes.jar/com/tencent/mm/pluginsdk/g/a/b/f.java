@@ -1,27 +1,31 @@
 package com.tencent.mm.pluginsdk.g.a.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 
 public final class f
   extends IOException
 {
   public final int httpStatusCode;
-  public final IOException rXk;
+  public final IOException vOc;
   
   public f(int paramInt, IOException paramIOException)
   {
     this.httpStatusCode = paramInt;
-    this.rXk = paramIOException;
+    this.vOc = paramIOException;
   }
   
   public final String toString()
   {
-    return "UnknownConnectionError{httpStatusCode=" + this.httpStatusCode + ", realException=" + this.rXk + '}';
+    AppMethodBeat.i(79566);
+    String str = "UnknownConnectionError{httpStatusCode=" + this.httpStatusCode + ", realException=" + this.vOc + '}';
+    AppMethodBeat.o(79566);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.g.a.b.f
  * JD-Core Version:    0.7.0.1
  */

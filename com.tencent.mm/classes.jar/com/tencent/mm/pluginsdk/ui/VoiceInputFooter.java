@@ -7,11 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.cb.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.kvdata.VoiceInputBehavior;
 import com.tencent.mm.plugin.report.kvdata.log_13905;
 import com.tencent.mm.plugin.report.service.h;
@@ -20,8 +16,10 @@ import com.tencent.mm.pluginsdk.ui.chat.e;
 import com.tencent.mm.pluginsdk.ui.chat.e.b;
 import com.tencent.mm.pluginsdk.ui.chat.n;
 import com.tencent.mm.pluginsdk.ui.chat.n.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.BasePanelKeybordLayout;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.ui.widget.MMEditText;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,116 +27,153 @@ import java.util.List;
 public class VoiceInputFooter
   extends BasePanelKeybordLayout
 {
-  private MMActivity bER;
-  ChatFooterPanel jpC;
-  LinearLayout mqY;
-  MMEditText pdp = null;
-  n saW;
-  ImageButton saX;
-  private ImageButton saY;
-  private boolean saZ = false;
-  private boolean sba = false;
-  private final int sbb = 1;
-  private final int sbc = 2;
-  private a sbd;
+  private MMActivity cmc;
+  private ChatFooterPanel eys;
+  MMEditText kju;
+  LinearLayout oQN;
+  n vSd;
+  ImageButton vSe;
+  private ImageButton vSf;
+  private boolean vSg;
+  private boolean vSh;
+  private final int vSi;
+  private final int vSj;
+  private VoiceInputFooter.a vSk;
   
   public VoiceInputFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.bER = ((MMActivity)paramContext);
-    paramContext = (ViewGroup)com.tencent.mm.ui.y.gt(this.bER).inflate(R.i.voice_input_ui_footer, this);
-    this.saY = ((ImageButton)paramContext.findViewById(R.h.album_voiceinput_mode_iv));
-    this.saY.setOnClickListener(new VoiceInputFooter.3(this));
-    this.saX = ((ImageButton)paramContext.findViewById(R.h.album_comment_mode_iv));
-    this.saX.setOnClickListener(new VoiceInputFooter.4(this));
-    if (e.sgr == null)
+    AppMethodBeat.i(27560);
+    this.kju = null;
+    this.vSg = false;
+    this.vSh = false;
+    this.vSi = 1;
+    this.vSj = 2;
+    this.cmc = ((MMActivity)paramContext);
+    paramContext = (ViewGroup)w.hM(this.cmc).inflate(2130971091, this);
+    this.vSf = ((ImageButton)paramContext.findViewById(2131828761));
+    this.vSf.setOnClickListener(new VoiceInputFooter.3(this));
+    this.vSe = ((ImageButton)paramContext.findViewById(2131825850));
+    this.vSe.setOnClickListener(new VoiceInputFooter.4(this));
+    if (e.vYI == null)
     {
-      this.jpC = new d(this.bER);
+      this.eys = new d(this.cmc);
+      AppMethodBeat.o(27560);
       return;
     }
-    this.jpC = e.sgr.cX(getContext());
-    this.jpC.setEntranceScene(ChatFooterPanel.rZu);
-    this.jpC.setVisibility(8);
-    this.mqY = ((LinearLayout)findViewById(R.h.root));
-    this.mqY.setOnClickListener(null);
-    this.mqY.addView(this.jpC, -1, 0);
-    this.jpC.sk();
-    this.jpC.aN(false);
-    this.jpC.setOnTextOperationListener(new VoiceInputFooter.5(this));
+    this.eys = e.vYI.dK(getContext());
+    this.eys.setEntranceScene(ChatFooterPanel.vQl);
+    this.eys.setVisibility(8);
+    this.oQN = ((LinearLayout)findViewById(2131821003));
+    this.oQN.setOnClickListener(null);
+    this.oQN.addView(this.eys, -1, 0);
+    this.eys.Az();
+    this.eys.bo(false);
+    this.eys.onResume();
+    this.eys.setOnTextOperationListener(new VoiceInputFooter.5(this));
+    AppMethodBeat.o(27560);
   }
   
-  private static void jdMethod_if(int paramInt)
+  private static void kS(int paramInt)
   {
+    AppMethodBeat.i(27567);
     VoiceInputBehavior localVoiceInputBehavior = new VoiceInputBehavior();
     if (paramInt == 1) {
       localVoiceInputBehavior.smileIconClick = 1;
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.VoiceInputFooter", "report cancel = %s send = %s click = %s longClick = %s longClickTime = %s textClick = %s textChangeCount = %s textChangeTime = %s textChangeReturn = %s voiceInputTime = %s fail = %s clear = %s smileIconClick = %s voiceIconClick = %s fullScreenVoiceLongClick = %s fullScreenVoiceLongClickTime = %s", new Object[] { Integer.valueOf(localVoiceInputBehavior.cancel), Integer.valueOf(localVoiceInputBehavior.send), Integer.valueOf(localVoiceInputBehavior.click), Integer.valueOf(localVoiceInputBehavior.longClick), Long.valueOf(localVoiceInputBehavior.longClickTime), Integer.valueOf(localVoiceInputBehavior.textClick), Integer.valueOf(localVoiceInputBehavior.textChangeCount), Long.valueOf(localVoiceInputBehavior.textChangeTime), Integer.valueOf(localVoiceInputBehavior.textChangeReturn), Long.valueOf(localVoiceInputBehavior.voiceInputTime), Integer.valueOf(localVoiceInputBehavior.fail), Integer.valueOf(localVoiceInputBehavior.clear), Integer.valueOf(localVoiceInputBehavior.smileIconClick), Integer.valueOf(localVoiceInputBehavior.voiceIconClick), Integer.valueOf(localVoiceInputBehavior.fullScreenVoiceLongClick), Long.valueOf(localVoiceInputBehavior.fullScreenVoiceLongClickTime) });
+      ab.i("MicroMsg.VoiceInputFooter", "report cancel = %s send = %s click = %s longClick = %s longClickTime = %s textClick = %s textChangeCount = %s textChangeTime = %s textChangeReturn = %s voiceInputTime = %s fail = %s clear = %s smileIconClick = %s voiceIconClick = %s fullScreenVoiceLongClick = %s fullScreenVoiceLongClickTime = %s", new Object[] { Integer.valueOf(localVoiceInputBehavior.cancel), Integer.valueOf(localVoiceInputBehavior.send), Integer.valueOf(localVoiceInputBehavior.click), Integer.valueOf(localVoiceInputBehavior.longClick), Long.valueOf(localVoiceInputBehavior.longClickTime), Integer.valueOf(localVoiceInputBehavior.textClick), Integer.valueOf(localVoiceInputBehavior.textChangeCount), Long.valueOf(localVoiceInputBehavior.textChangeTime), Integer.valueOf(localVoiceInputBehavior.textChangeReturn), Long.valueOf(localVoiceInputBehavior.voiceInputTime), Integer.valueOf(localVoiceInputBehavior.fail), Integer.valueOf(localVoiceInputBehavior.clear), Integer.valueOf(localVoiceInputBehavior.smileIconClick), Integer.valueOf(localVoiceInputBehavior.voiceIconClick), Integer.valueOf(localVoiceInputBehavior.fullScreenVoiceLongClick), Long.valueOf(localVoiceInputBehavior.fullScreenVoiceLongClickTime) });
       log_13905 locallog_13905 = new log_13905();
       locallog_13905.viOp_ = localVoiceInputBehavior;
-      h.nFQ.c(13905, locallog_13905);
-      do
-      {
-        return;
-      } while (paramInt != 2);
+      h.qsU.c(13905, locallog_13905);
+      AppMethodBeat.o(27567);
+      return;
+      if (paramInt != 2) {
+        break;
+      }
       localVoiceInputBehavior.voiceIconClick = 1;
     }
+    AppMethodBeat.o(27567);
   }
   
-  public final boolean bJX()
+  final void aRm()
   {
-    return this.jpC.getVisibility() == 0;
+    AppMethodBeat.i(27564);
+    this.vSh = false;
+    this.eys.onPause();
+    this.eys.setVisibility(8);
+    AppMethodBeat.o(27564);
   }
   
-  public final boolean cmA()
+  public final boolean bad()
   {
-    return this.saW.getVisibility() == 0;
-  }
-  
-  final void cmB()
-  {
-    this.saZ = false;
-    if (this.saW != null)
+    AppMethodBeat.i(27561);
+    if (this.eys.getVisibility() == 0)
     {
-      this.saW.pause();
-      this.saW.setVisibility(8);
-      this.saY.setImageResource(R.g.voiceinputui_setmode_voice_btn);
-      int i = a.ab(this.bER, R.f.voice_input_album_voiceinput_padding);
-      this.saY.setPadding(0, 0, i, 0);
-      this.saX.setVisibility(0);
-      if (this.sbd != null) {
-        this.sbd.lR(false);
+      AppMethodBeat.o(27561);
+      return true;
+    }
+    AppMethodBeat.o(27561);
+    return false;
+  }
+  
+  public final boolean dnq()
+  {
+    AppMethodBeat.i(27562);
+    if (this.vSd.getVisibility() == 0)
+    {
+      AppMethodBeat.o(27562);
+      return true;
+    }
+    AppMethodBeat.o(27562);
+    return false;
+  }
+  
+  final void dnr()
+  {
+    AppMethodBeat.i(27563);
+    this.vSg = false;
+    if (this.vSd != null)
+    {
+      this.vSd.pause();
+      this.vSd.setVisibility(8);
+      this.vSf.setImageResource(2130840704);
+      this.vSe.setVisibility(0);
+      if (this.vSk != null) {
+        this.vSk.pe(false);
       }
     }
+    AppMethodBeat.o(27563);
   }
   
-  protected List<View> getPanelView()
+  public List<View> getPanelView()
   {
+    AppMethodBeat.i(27565);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jpC);
-    localArrayList.add(this.saW);
+    localArrayList.add(this.eys);
+    localArrayList.add(this.vSd);
+    AppMethodBeat.o(27565);
     return localArrayList;
   }
   
-  final void hideSmileyPanel()
+  public final void release()
   {
-    this.sba = false;
-    this.jpC.onPause();
-    this.jpC.setVisibility(8);
+    AppMethodBeat.i(27566);
+    if (this.eys != null)
+    {
+      this.eys.Ay();
+      this.eys.destroy();
+    }
+    if (this.vSd != null) {
+      this.vSd.destroy();
+    }
+    AppMethodBeat.o(27566);
   }
   
-  public void setVoiceInputFooterListener(a parama)
+  public void setVoiceInputFooterListener(VoiceInputFooter.a parama)
   {
-    this.sbd = parama;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void cmC();
-    
-    public abstract void lR(boolean paramBoolean);
+    this.vSk = parama;
   }
 }
 

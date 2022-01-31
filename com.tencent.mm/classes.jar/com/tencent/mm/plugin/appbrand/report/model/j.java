@@ -1,192 +1,228 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.i;
 import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.page.s;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.page.z;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.d;
+import com.tencent.mm.plugin.appbrand.report.f;
 import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class j
 {
-  private static final j gYO = new j(true, null);
+  private static final j iHe;
   public String appId;
   public int apptype;
-  public int bFu;
-  public String bFv;
-  public String bFw;
-  public String bIB;
-  public int caB;
-  public String caC;
-  public int cau;
-  public com.tencent.mm.plugin.appbrand.i fzT;
-  public int gXG;
-  public long gYL;
-  private final boolean gYN;
-  private final h gYP;
-  boolean gYQ = false;
-  public String gYR;
-  public long gYS;
-  public String gYT;
-  public int gYU;
-  public String gYV;
-  public long gYW;
-  public int gYX;
-  public int gYY;
-  public String gYZ;
+  public int bDc;
+  public int cJb;
+  public String cJc;
+  public int cmE;
+  public String cmF;
+  public String cmG;
+  public String cpW;
+  public i gRG;
+  public int hiJ;
+  public int iFX;
+  public long iHc;
+  private final boolean iHd;
+  boolean iHf = false;
+  public String iHg;
+  public long iHh;
+  public String iHi;
+  public int iHj;
+  public String iHk;
+  public long iHl;
+  public int iHm;
+  public int iHn;
+  public String iHo;
+  public String iHp;
+  private final h ioE;
   public int scene;
+  
+  static
+  {
+    AppMethodBeat.i(132636);
+    iHe = new j(true, null);
+    AppMethodBeat.o(132636);
+  }
   
   private j(boolean paramBoolean, h paramh)
   {
-    this.gYN = paramBoolean;
-    this.gYP = paramh;
+    this.iHd = paramBoolean;
+    this.ioE = paramh;
   }
   
-  public static j a(n paramn, String paramString, h paramh)
+  public static j a(o paramo, String paramString, h paramh)
   {
+    AppMethodBeat.i(132631);
     paramh = new j(false, paramh);
-    paramh.bIB = paramString;
-    paramString = paramn.aab();
+    paramh.cpW = paramString;
+    paramString = paramo.wS().bDh;
     paramh.scene = paramString.scene;
-    paramh.bFv = paramString.bFv;
-    paramh.appId = paramn.mAppId;
-    paramh.fzT = paramn;
-    paramh.bFu = (paramn.aaa().fPS.fEM + 1);
-    paramh.cau = paramn.aaa().fPS.fEN;
-    paramh.gXG = paramString.gXG;
-    paramh.caB = paramString.caB;
-    paramh.caC = paramString.caC;
+    paramh.cmF = paramString.cmF;
+    paramh.appId = paramo.mAppId;
+    paramh.gRG = paramo;
+    paramh.cmE = (paramo.atS().gXd + 1);
+    paramh.bDc = paramo.atS().bDc;
+    paramh.iFX = paramString.iFX;
+    paramh.cJb = paramString.cJb;
+    paramh.cJc = paramString.cJc;
+    AppMethodBeat.o(132631);
     return paramh;
   }
   
-  public static j aor()
+  public static j aLp()
   {
-    return gYO;
+    return iHe;
   }
   
-  final void i(s params)
+  final void IE()
   {
-    Object localObject = params.getRuntime().aaa();
-    if (localObject != null)
+    AppMethodBeat.i(132635);
+    if (this.iHd)
     {
-      this.cau = ((com.tencent.mm.plugin.appbrand.config.i)localObject).fPS.fEN;
-      this.gYX = WxaCommLibRuntimeReader.abQ().fEN;
+      AppMethodBeat.o(132635);
+      return;
     }
-    this.gYW = params.gUj.gYk;
-    this.gYL = Math.max(0L, params.gUj.gYl);
-    localObject = params.gUj;
-    long l1 = ((c)localObject).gYi.gXN;
-    long l2 = ((c)localObject).gYk;
-    long l3 = ((c)localObject).gYl;
-    label243:
-    int i;
-    if (l1 <= 0L)
+    j.1 local1 = new j.1(this, new Object[] { Integer.valueOf(this.scene), this.cmF, this.cpW, this.appId, Integer.valueOf(this.bDc), Integer.valueOf(this.cmE), Integer.valueOf(this.iFX), this.cmG, this.iHg, Long.valueOf(this.iHc), Long.valueOf(this.iHh), this.iHi, Integer.valueOf(this.iHj), this.iHk, Long.valueOf(this.iHl), Integer.valueOf(this.iHm), Integer.valueOf(this.cJb), this.cJc, Integer.valueOf(this.iHn), this.iHo, Integer.valueOf(this.apptype), Integer.valueOf(this.hiJ), this.iHp });
+    if (this.iHf)
     {
-      y.i("MicroMsg.AppBrandPageViewStatistics", "foregroundMs invalid(%d), loadStart %d, loadCost %d, [%s/%s]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), ((c)localObject).mAppId, ((c)localObject).gYj });
-      if ((l2 > 0L) && (l3 > 0L) && (l1 == 0L))
+      local1.run();
+      try
       {
-        l1 = bk.UY() - l2;
-        this.gYS = l1;
-        this.bFw = params.getURL();
-        this.gYZ = params.ahc();
-        this.gYR = com.tencent.mm.plugin.appbrand.report.c.cv(ae.getContext());
-        localObject = this.gYP.g(params);
-        if (localObject != null) {
-          break label337;
-        }
-        y.e("MicroMsg.AppBrand.Report.kv_13536", "visitNode (%s) not found, maybe page switching to quickly", new Object[] { params.ahc() });
-        localObject = null;
-        if (localObject != null) {
-          break label347;
-        }
-        i = 0;
-        label250:
-        this.gYU = i;
-        if (localObject != null) {
-          break label356;
-        }
-        localObject = null;
-        label263:
-        this.gYV = ((String)localObject);
-        if (!this.gYP.wd(this.gYZ)) {
-          break label366;
-        }
-        i = 1;
-        label287:
-        this.gYY = i;
-        params = params.getRuntime();
-        if (params != null) {
-          break label371;
-        }
-        params = null;
-        label303:
-        if (params == null) {
-          break label379;
-        }
-        this.apptype = params.bFB;
+        KVCommCrossProcessReceiver.chN();
+        AppMethodBeat.o(132635);
+        return;
       }
+      catch (Exception localException)
+      {
+        ab.printErrStackTrace("MicroMsg.AppBrand.Report.kv_13536", localException, "sendKV", new Object[0]);
+        AppMethodBeat.o(132635);
+        return;
+      }
+    }
+    com.tencent.mm.plugin.appbrand.t.e.aNS().ac(localException);
+    AppMethodBeat.o(132635);
+  }
+  
+  public final void k(z paramz)
+  {
+    AppMethodBeat.i(132632);
+    l(paramz);
+    IE();
+    AppMethodBeat.o(132632);
+  }
+  
+  final void l(z paramz)
+  {
+    Object localObject3 = null;
+    AppMethodBeat.i(132633);
+    Object localObject1 = paramz.getRuntime().atR();
+    if (localObject1 != null)
+    {
+      this.bDc = ((com.tencent.mm.plugin.appbrand.config.h)localObject1).hiX.gXf;
+      this.iHm = WxaCommLibRuntimeReader.avI().gXf;
+    }
+    this.iHl = paramz.ixF.iGC;
+    this.iHc = paramz.ixF.aLe();
+    this.iHh = paramz.ixF.aLg();
+    this.cmG = paramz.hzM;
+    this.iHo = paramz.iuB;
+    this.iHg = com.tencent.mm.plugin.appbrand.report.e.cZ(ah.getContext());
+    this.iFX = paramz.getRuntime().wS().bDh.iFX;
+    localObject1 = this.ioE.h(paramz);
+    Object localObject2;
+    int i;
+    if (localObject1 == null)
+    {
+      ab.e("MicroMsg.AppBrand.Report.kv_13536", "visitNode (%s) not found, maybe page switching to quickly", new Object[] { paramz.iuB });
+      localObject2 = null;
+      localObject1 = null;
+      if (localObject2 != null) {
+        break label309;
+      }
+      i = 0;
+      label163:
+      this.iHj = i;
+      if (localObject2 != null) {
+        break label318;
+      }
+      localObject2 = null;
+      label176:
+      this.iHk = ((String)localObject2);
+      if (localObject1 != null) {
+        break label328;
+      }
+      localObject1 = null;
+      label188:
+      this.iHi = ((String)localObject1);
+      if (!this.ioE.EH(this.iHo)) {
+        break label336;
+      }
+      i = 1;
+      label211:
+      this.iHn = i;
+      localObject1 = paramz.getRuntime();
+      if (localObject1 != null) {
+        break label341;
+      }
+      localObject1 = localObject3;
+      label228:
+      if (localObject1 == null) {
+        break label349;
+      }
+      this.apptype = ((AppBrandInitConfigWC)localObject1).bCV;
     }
     for (;;)
     {
       this.apptype += 1000;
+      this.hiJ = paramz.getRuntime().atS().hiJ;
+      paramz = n.yc(paramz.getAppId()).gRe;
+      if (!bo.isNullOrNil(paramz)) {
+        this.iHp = paramz;
+      }
+      AppMethodBeat.o(132633);
       return;
-      l1 = Math.max(0L, l1);
+      localObject2 = ((h.a)localObject1).iGS;
+      localObject1 = ((h.a)localObject1).iGT;
       break;
-      label337:
-      localObject = ((h.a)localObject).gYB;
-      break label243;
-      label347:
-      i = ((h.c)localObject).type;
-      break label250;
-      label356:
-      localObject = ((h.c)localObject).path;
-      break label263;
-      label366:
+      label309:
+      i = ((h.c)localObject2).type;
+      break label163;
+      label318:
+      localObject2 = ((h.c)localObject2).path;
+      break label176;
+      label328:
+      localObject1 = ((h.b)localObject1).path;
+      break label188;
+      label336:
       i = 0;
-      break label287;
-      label371:
-      params = params.ZA();
-      break label303;
-      label379:
-      this.apptype = d.vZ(this.appId);
-      y.i("MicroMsg.AppBrand.Report.kv_13536", "prepareCommonFields null = initConfig! apptype:%s", new Object[] { Integer.valueOf(this.apptype) });
+      break label211;
+      label341:
+      localObject1 = ((o)localObject1).atS();
+      break label228;
+      label349:
+      this.apptype = f.EE(this.appId);
+      ab.i("MicroMsg.AppBrand.Report.kv_13536", "prepareCommonFields null = initConfig! apptype:%s", new Object[] { Integer.valueOf(this.apptype) });
     }
   }
   
   public final String toString()
   {
-    return "kv_13536{scene=" + this.scene + ", sceneNote='" + this.bFv + '\'' + ", sessionId='" + this.bIB + '\'' + ", appId='" + this.appId + '\'' + ", appVersion=" + this.cau + ", appState=" + this.bFu + ", usedState=" + this.gXG + ", pagePath='" + this.bFw + '\'' + ", networkType='" + this.gYR + '\'' + ", costTime=" + this.gYL + ", stayTime=" + this.gYS + ", referPagePath='" + this.gYT + '\'' + ", targetAction=" + this.gYU + ", targetPagePath='" + this.gYV + '\'' + ", clickTimestamp=" + this.gYW + ", publicLibVersion=" + this.gYX + ", preScene=" + this.caB + ", preSceneNote='" + this.caC + '\'' + ", isEntrance=" + this.gYY + ", apptype=" + this.apptype + '}';
-  }
-  
-  final void wn()
-  {
-    if (this.gYN) {
-      return;
-    }
-    y.i("MicroMsg.AppBrand.Report.kv_13536", "report " + toString());
-    j.1 local1 = new j.1(this, new Object[] { Integer.valueOf(this.scene), this.bFv, this.bIB, this.appId, Integer.valueOf(this.cau), Integer.valueOf(this.bFu), Integer.valueOf(this.gXG), this.bFw, this.gYR, Long.valueOf(this.gYL), Long.valueOf(this.gYS), this.gYT, Integer.valueOf(this.gYU), this.gYV, Long.valueOf(this.gYW), Integer.valueOf(this.gYX), Integer.valueOf(this.caB), this.caC, Integer.valueOf(this.gYY), this.gYZ, Integer.valueOf(this.apptype) });
-    if (this.gYQ)
-    {
-      local1.run();
-      try
-      {
-        KVCommCrossProcessReceiver.bwU();
-        return;
-      }
-      catch (Exception localException)
-      {
-        y.printErrStackTrace("MicroMsg.AppBrand.Report.kv_13536", localException, "sendKV", new Object[0]);
-        return;
-      }
-    }
-    com.tencent.mm.plugin.appbrand.v.c.DS().O(localException);
+    AppMethodBeat.i(132634);
+    String str = "kv_13536{scene=" + this.scene + ", sceneNote='" + this.cmF + '\'' + ", sessionId='" + this.cpW + '\'' + ", appId='" + this.appId + '\'' + ", appVersion=" + this.bDc + ", appState=" + this.cmE + ", usedState=" + this.iFX + ", pagePath='" + this.cmG + '\'' + ", networkType='" + this.iHg + '\'' + ", costTime=" + this.iHc + ", stayTime=" + this.iHh + ", referPagePath='" + this.iHi + '\'' + ", targetAction=" + this.iHj + ", targetPagePath='" + this.iHk + '\'' + ", clickTimestamp=" + this.iHl + ", publicLibVersion=" + this.iHm + ", preScene=" + this.cJb + ", preSceneNote='" + this.cJc + '\'' + ", isEntrance=" + this.iHn + ", apptype=" + this.apptype + ", systemRecentsReason=" + this.hiJ + ", referAction=" + this.iHp + '}';
+    AppMethodBeat.o(132634);
+    return str;
   }
 }
 

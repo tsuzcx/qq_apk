@@ -1,64 +1,59 @@
 package com.tencent.mm.ui.tools;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.jg.JgClassChecked;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.m.e;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelsimple.aa;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity.a;
-import com.tencent.mm.protocal.c.pp;
-import com.tencent.mm.sdk.platformtools.MMBitmapFactory.DecodeResultLogger;
-import com.tencent.mm.sdk.platformtools.MMBitmapFactory.KVStatHelper;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.o;
-import com.tencent.mm.sdk.platformtools.t;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.st;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.r;
+import com.tencent.mm.sdk.platformtools.w;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.e.h;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.e.j;
 import java.io.File;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140422", reviewer=20, vComment={com.jg.EType.ACTIVITYCHECK})
 public class ShareToTimeLineUI
   extends AutoLoginActivity
-  implements f
+  implements com.tencent.mm.ai.f
 {
-  private ProgressDialog dnm = null;
+  private Intent Axw;
+  private ProgressDialog eeN = null;
   private Intent intent;
-  private Intent weG;
   
-  private void M(String paramString1, String paramString2, int paramInt)
+  private void V(String paramString1, String paramString2, int paramInt)
   {
+    AppMethodBeat.i(34985);
     Intent localIntent = new Intent();
     ArrayList localArrayList = new ArrayList();
-    if (!bk.bl(paramString1))
+    if (!bo.isNullOrNil(paramString1))
     {
       localIntent.putExtra("sns_kemdia_path", paramString1);
       localIntent.putExtra("KFilterId", -1);
       localArrayList.add(paramString1);
     }
-    if (!bk.bl(paramString2)) {
-      localIntent.putExtra(e.h.uHV, paramString2);
+    if (!bo.isNullOrNil(paramString2)) {
+      localIntent.putExtra(e.j.yVi, paramString2);
     }
-    if ((paramInt == 4) && (bk.bl(paramString1)) && (!bk.bl(paramString2))) {
+    if ((paramInt == 4) && (bo.isNullOrNil(paramString1)) && (!bo.isNullOrNil(paramString2))) {
       localArrayList.add(paramString2);
     }
-    if ((au.Hz()) && (!au.CW()))
+    if ((aw.aaB()) && (!aw.QP()))
     {
       localIntent.putExtra("K_go_to_SnsTimeLineUI", true);
       localIntent.putExtra("Ksnsupload_source", 12);
@@ -66,7 +61,7 @@ public class ShareToTimeLineUI
         localIntent.putExtra("KBlockAdd", true);
       }
       localIntent.setClassName(this, "com.tencent.mm.plugin.sns.ui.SnsUploadUI");
-      this.weG = localIntent;
+      this.Axw = localIntent;
       paramString1 = null;
       switch (paramInt)
       {
@@ -75,17 +70,18 @@ public class ShareToTimeLineUI
       {
         if (paramString1 != null)
         {
-          au.Dk().a(837, this);
-          com.tencent.mm.kernel.g.Dk().a(paramString1, 0);
+          aw.Rc().a(837, this);
+          com.tencent.mm.kernel.g.Rc().a(paramString1, 0);
           showDialog();
         }
+        AppMethodBeat.o(34985);
         return;
-        paramString1 = new com.tencent.mm.modelsimple.d(5, localArrayList, czt());
+        paramString1 = new com.tencent.mm.modelsimple.f(5, localArrayList, getCallerPackage());
         continue;
-        paramString1 = new com.tencent.mm.modelsimple.d(1, localArrayList, czt());
+        paramString1 = new com.tencent.mm.modelsimple.f(1, localArrayList, getCallerPackage());
       }
     }
-    if (!bk.bl(paramString1))
+    if (!bo.isNullOrNil(paramString1))
     {
       paramString2 = new Intent(this, ShareToTimeLineUI.class);
       paramString2.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(paramString1)));
@@ -97,335 +93,258 @@ public class ShareToTimeLineUI
     for (;;)
     {
       finish();
+      AppMethodBeat.o(34985);
       return;
-      cIO();
+      dNC();
     }
   }
   
-  private static boolean aef(String paramString)
+  private static boolean auV(String paramString)
   {
-    boolean bool1;
-    if ((paramString == null) || (paramString.length() == 0)) {
-      bool1 = false;
-    }
-    MMBitmapFactory.DecodeResultLogger localDecodeResultLogger;
-    boolean bool2;
-    do
+    AppMethodBeat.i(34984);
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      do
-      {
-        return bool1;
-        localDecodeResultLogger = new MMBitmapFactory.DecodeResultLogger();
-        bool2 = o.a(paramString, localDecodeResultLogger);
-        bool1 = bool2;
-      } while (bool2);
-      bool1 = bool2;
-    } while (localDecodeResultLogger.getDecodeResult() < 2000);
-    paramString = MMBitmapFactory.KVStatHelper.getKVStatString(paramString, 4, localDecodeResultLogger);
-    com.tencent.mm.plugin.report.service.h.nFQ.aC(12712, paramString);
-    return bool2;
-  }
-  
-  private ArrayList<String> ar(Bundle paramBundle)
-  {
-    Object localObject1 = paramBundle.getParcelableArrayList("android.intent.extra.STREAM");
-    if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
-    {
-      paramBundle = new ArrayList();
-      localObject1 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (Uri)((Iterator)localObject1).next();
-        if ((localObject2 != null) && (bk.m((Uri)localObject2)) && (((Uri)localObject2).getScheme() != null))
-        {
-          localObject2 = bk.h(this, (Uri)localObject2);
-          if (!bk.bl((String)localObject2)) {
-            if (aef((String)localObject2))
-            {
-              y.i("MicroMsg.ShareToTimeLine", "multisend file path: " + (String)localObject2);
-              paramBundle.add(localObject2);
-            }
-            else
-            {
-              y.w("MicroMsg.ShareToTimeLine", "not image: " + (String)localObject2);
-            }
-          }
-        }
-        else
-        {
-          y.e("MicroMsg.ShareToTimeLine", "unaccepted uri: " + localObject2);
-        }
-      }
-      if (paramBundle.size() > 0) {
-        return paramBundle;
-      }
-      return null;
+      AppMethodBeat.o(34984);
+      return false;
     }
-    y.e("MicroMsg.ShareToTimeLine", "getParcelableArrayList failed");
-    return null;
+    boolean bool = r.aoX(paramString);
+    AppMethodBeat.o(34984);
+    return bool;
   }
   
-  private void cIO()
+  private void dNC()
   {
-    Toast.makeText(this, R.l.shareimg_to_timeline_get_res_fail, 1).show();
+    AppMethodBeat.i(34987);
+    Toast.makeText(this, 2131303679, 1).show();
+    AppMethodBeat.o(34987);
   }
   
-  private void cJk()
+  private void dNZ()
   {
+    AppMethodBeat.i(34983);
     Intent localIntent = getIntent();
     if (localIntent == null)
     {
-      y.e("MicroMsg.ShareToTimeLine", "launch : fail, intent is null");
-      cIO();
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.ShareToTimeLine", "launch : fail, intent is null");
+      dNC();
       finish();
+      AppMethodBeat.o(34983);
       return;
     }
     Object localObject1 = localIntent.getAction();
-    Object localObject2 = t.al(localIntent);
-    if (bk.bl((String)localObject1))
+    Object localObject2 = w.aL(localIntent);
+    if (bo.isNullOrNil((String)localObject1))
     {
-      y.e("MicroMsg.ShareToTimeLine", "launch : fail, action is null");
-      cIO();
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.ShareToTimeLine", "launch : fail, action is null");
+      dNC();
       finish();
+      AppMethodBeat.o(34983);
       return;
     }
-    String str1 = t.j(localIntent, e.h.uHV);
+    String str1 = w.n(localIntent, e.j.yVi);
     String str2 = getIntent().resolveType(this);
-    if (bk.bl(str2))
+    if (bo.isNullOrNil(str2))
     {
-      cIO();
+      dNC();
       finish();
+      AppMethodBeat.o(34983);
       return;
     }
     if (!str2.contains("image"))
     {
-      cIO();
+      dNC();
       finish();
+      AppMethodBeat.o(34983);
       return;
     }
     if ((((String)localObject1).equals("android.intent.action.SEND")) && (localObject2 != null))
     {
-      y.i("MicroMsg.ShareToTimeLine", "send signal: " + (String)localObject1);
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ShareToTimeLine", "send signal: ".concat(String.valueOf(localObject1)));
       localObject1 = ((Bundle)localObject2).getParcelable("android.intent.extra.STREAM");
       if ((localObject1 == null) || (!(localObject1 instanceof Uri)))
       {
         if (localIntent.getBooleanExtra("Ksnsupload_empty_img", false))
         {
-          M(null, str1, 4);
+          V(null, str1, 4);
+          AppMethodBeat.o(34983);
           return;
         }
-        cIO();
+        dNC();
         finish();
+        AppMethodBeat.o(34983);
         return;
       }
       localObject2 = (Uri)localObject1;
-      if (!bk.m((Uri)localObject2))
+      if (!bo.o((Uri)localObject2))
       {
-        y.e("MicroMsg.ShareToTimeLine", "deal : fail, not accept, %s", new Object[] { localObject2 });
-        cIO();
+        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.ShareToTimeLine", "deal : fail, not accept, %s", new Object[] { localObject2 });
+        dNC();
         finish();
+        AppMethodBeat.o(34983);
         return;
       }
-      localObject1 = bk.h(this, (Uri)localObject2);
-      if (!bk.bl((String)localObject1)) {
-        break label482;
+      localObject1 = bo.h(this, (Uri)localObject2);
+      if ((!bo.isNullOrNil((String)localObject1)) && (new com.tencent.mm.vfs.b((String)localObject1).exists())) {
+        break label415;
       }
-      localObject1 = com.tencent.mm.pluginsdk.i.d.a(getContentResolver(), (Uri)localObject2, 2);
+      localObject1 = com.tencent.mm.pluginsdk.i.e.a(getContentResolver(), (Uri)localObject2, 2);
     }
-    label482:
+    label415:
     for (;;)
     {
-      if ((bk.bl((String)localObject1)) || (!bk.aae((String)localObject1)))
+      if ((bo.isNullOrNil((String)localObject1)) || (!bo.aqi((String)localObject1)))
       {
         if (localIntent.getBooleanExtra("Ksnsupload_empty_img", false))
         {
-          M((String)localObject1, str1, 4);
+          V((String)localObject1, str1, 4);
+          AppMethodBeat.o(34983);
           return;
         }
-        cIO();
+        dNC();
         finish();
+        AppMethodBeat.o(34983);
         return;
       }
-      if (aef((String)localObject1))
+      if (auV((String)localObject1))
       {
-        M((String)localObject1, str1, 0);
+        V((String)localObject1, str1, 0);
+        AppMethodBeat.o(34983);
         return;
       }
-      cIO();
+      dNC();
       finish();
+      AppMethodBeat.o(34983);
       return;
-      if ((((String)localObject1).equals("android.intent.action.SEND_MULTIPLE")) && (localObject2 != null) && (((Bundle)localObject2).containsKey("android.intent.extra.STREAM")))
-      {
-        y.i("MicroMsg.ShareToTimeLine", "send multi: " + (String)localObject1);
-        localObject1 = ar((Bundle)localObject2);
-        if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
-        {
-          cIO();
-          finish();
-          return;
-        }
-        if (((ArrayList)localObject1).size() > 1)
-        {
-          localObject1 = new Intent();
-          ((Intent)localObject1).putExtra("sharePictureTo", "sns");
-          ((Intent)localObject1).setClassName(this, "com.tencent.mm.ui.transmit.SelectNoSupportUI");
-          this.weG = ((Intent)localObject1);
-          startActivity(this.weG);
-          finish();
-          return;
-        }
-        f((ArrayList)localObject1, str1);
-        return;
-      }
-      y.e("MicroMsg.ShareToTimeLine", "launch : fail, uri is null");
-      cIO();
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.ShareToTimeLine", "launch : fail, uri is null");
+      dNC();
       finish();
+      AppMethodBeat.o(34983);
       return;
     }
-  }
-  
-  private void f(ArrayList<String> paramArrayList, String paramString)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0))
-    {
-      finish();
-      return;
-    }
-    if (paramArrayList.size() > 9) {
-      paramArrayList.subList(9, paramArrayList.size()).clear();
-    }
-    if ((au.Hz()) && (!au.CW()))
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putStringArrayListExtra("sns_kemdia_path_list", paramArrayList);
-      if (!bk.bl(paramString)) {
-        ((Intent)localObject).putExtra(e.h.uHV, paramString);
-      }
-      ((Intent)localObject).putExtra("K_go_to_SnsTimeLineUI", true);
-      ((Intent)localObject).putExtra("Ksnsupload_source", 12);
-      ((Intent)localObject).setClassName(this, "com.tencent.mm.plugin.sns.ui.SnsUploadUI");
-      this.weG = ((Intent)localObject);
-      paramArrayList = new com.tencent.mm.modelsimple.d(1, paramArrayList, czt());
-      au.Dk().a(837, this);
-      com.tencent.mm.kernel.g.Dk().a(paramArrayList, 0);
-      showDialog();
-      return;
-    }
-    paramString = new Intent(this, ShareToTimeLineUI.class);
-    Object localObject = new ArrayList(paramArrayList.size());
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      ((ArrayList)localObject).add(Uri.fromFile(new File((String)paramArrayList.next())));
-    }
-    paramString.putParcelableArrayListExtra("android.intent.extra.STREAM", (ArrayList)localObject);
-    paramString.setAction("android.intent.action.SEND_MULTIPLE");
-    paramString.addFlags(32768).addFlags(268435456);
-    paramString.setType("image/*");
-    MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class).addFlags(268435456).addFlags(32768), paramString);
-    finish();
   }
   
   private void showDialog()
   {
-    getString(R.l.app_tip);
-    this.dnm = com.tencent.mm.ui.base.h.b(this, getString(R.l.app_waiting), true, new ShareToTimeLineUI.1(this));
+    AppMethodBeat.i(34988);
+    getString(2131297087);
+    this.eeN = h.b(this, getString(2131297112), true, new ShareToTimeLineUI.1(this));
+    AppMethodBeat.o(34988);
   }
   
-  protected final void a(AutoLoginActivity.a parama, Intent paramIntent)
+  public final boolean O(Intent paramIntent)
   {
-    switch (ShareToTimeLineUI.2.hSj[parama.ordinal()])
+    return true;
+  }
+  
+  public final void a(AutoLoginActivity.a parama, Intent paramIntent)
+  {
+    AppMethodBeat.i(34989);
+    switch (2.jLR[parama.ordinal()])
     {
     default: 
       finish();
+      AppMethodBeat.o(34989);
       return;
     }
     this.intent = paramIntent;
-    int i = bk.getInt(com.tencent.mm.m.g.AA().getValue("SystemShareControlBitset"), 0);
-    y.i("MicroMsg.ShareToTimeLine", "now permission = %d", new Object[] { Integer.valueOf(i) });
+    int i = bo.getInt(com.tencent.mm.m.g.Nq().getValue("SystemShareControlBitset"), 0);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ShareToTimeLine", "now permission = %d", new Object[] { Integer.valueOf(i) });
     if ((i & 0x2) > 0)
     {
-      y.e("MicroMsg.ShareToTimeLine", "now allowed to share to friend");
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.ShareToTimeLine", "now allowed to share to friend");
       finish();
+      AppMethodBeat.o(34989);
       return;
     }
-    parama = t.j(paramIntent, "android.intent.extra.TEXT");
-    y.i("MicroMsg.ShareToTimeLine", "postLogin, text = %s", new Object[] { parama });
-    if (!bk.bl(parama))
+    parama = w.n(paramIntent, "android.intent.extra.TEXT");
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ShareToTimeLine", "postLogin, text = %s", new Object[] { parama });
+    if (!bo.isNullOrNil(parama))
     {
       parama = String.format("weixin://dl/business/systemshare/?txt=%s", new Object[] { URLEncoder.encode(parama) });
       showDialog();
-      au.Dk().a(1200, this);
-      parama = new aa(parama, 15, null);
-      au.Dk().a(parama, 0);
+      aw.Rc().a(1200, this);
+      parama = new com.tencent.mm.modelsimple.ab(parama, 15, null);
+      aw.Rc().a(parama, 0);
+      AppMethodBeat.o(34989);
       return;
     }
-    cJk();
+    dNZ();
+    AppMethodBeat.o(34989);
   }
   
-  protected final boolean boC()
+  public final boolean bXc()
   {
-    if ((!au.Hz()) || (au.CW()))
+    AppMethodBeat.i(34982);
+    if ((!aw.aaB()) || (aw.QP()))
     {
-      y.w("MicroMsg.ShareToTimeLine", "not login");
-      cJk();
+      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.ShareToTimeLine", "not login");
+      dNZ();
+      AppMethodBeat.o(34982);
       return true;
     }
+    AppMethodBeat.o(34982);
     return false;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    au.Dk().b(837, this);
+    AppMethodBeat.i(34986);
+    aw.Rc().b(837, this);
     super.onDestroy();
+    AppMethodBeat.o(34986);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.ShareToTimeLine", "onSceneEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    au.Dk().b(1200, this);
-    if ((this.dnm != null) && (this.dnm.isShowing())) {
-      this.dnm.dismiss();
+    AppMethodBeat.i(34990);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ShareToTimeLine", "onSceneEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    aw.Rc().b(1200, this);
+    if ((this.eeN != null) && (this.eeN.isShowing())) {
+      this.eeN.dismiss();
     }
-    if ((paramm instanceof aa))
+    if ((paramm instanceof com.tencent.mm.modelsimple.ab))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        cJk();
+        dNZ();
+        AppMethodBeat.o(34990);
         return;
       }
-      cIO();
+      dNC();
     }
     for (;;)
     {
       finish();
-      return;
-      if (!(paramm instanceof com.tencent.mm.modelsimple.d)) {
-        break;
-      }
+      do
+      {
+        AppMethodBeat.o(34990);
+        return;
+      } while (!(paramm instanceof com.tencent.mm.modelsimple.f));
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        if (paramm.edi == null) {
+        if (paramm.getReqResp() == null) {
           continue;
         }
-        paramString = (pp)((b)paramm.edi).ecF.ecN;
-        if ((paramString != null) && (!bk.bl(paramString.sNw)))
+        paramString = (st)((com.tencent.mm.ai.b)paramm.getReqResp()).fsW.fta;
+        if ((paramString != null) && (!bo.isNullOrNil(paramString.wLm)))
         {
           paramm = new Intent();
-          paramm.putExtra("rawUrl", paramString.sNw);
+          paramm.putExtra("rawUrl", paramString.wLm);
           paramm.putExtra("showShare", false);
           paramm.putExtra("show_bottom", false);
           paramm.putExtra("needRedirect", false);
-          com.tencent.mm.br.d.b(this, "webview", ".ui.tools.WebViewUI", paramm);
+          d.b(this, "webview", ".ui.tools.WebViewUI", paramm);
           continue;
         }
       }
-      startActivity(this.weG);
+      startActivity(this.Axw);
     }
   }
   
-  protected final boolean w(Intent paramIntent)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return true;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

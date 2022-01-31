@@ -8,14 +8,17 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.mapsdk.raster.model.LatLng;
-import com.tencent.tencentmap.mapsdk.dynamic.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.a.i;
+import com.tencent.tencentmap.mapsdk.a.w;
+import com.tencent.tencentmap.mapsdk.dynamic.b;
 
 public class MapView
   extends FrameLayout
   implements IMapView
 {
-  private c mMapProvider;
-  private int mMapType = 1;
+  private b mMapProvider;
+  private int mMapType;
   private Projection mProjection;
   private UiSettings mUiSettings;
   private IMapView mapView;
@@ -28,22 +31,28 @@ public class MapView
   public MapView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(101294);
+    this.mMapType = 1;
     init(null);
+    AppMethodBeat.o(101294);
   }
   
   public MapView(Context paramContext, TencentMapOptions paramTencentMapOptions)
   {
     super(paramContext);
+    AppMethodBeat.i(101295);
+    this.mMapType = 1;
     init(paramTencentMapOptions);
+    AppMethodBeat.o(101295);
   }
   
   private void init(TencentMapOptions paramTencentMapOptions)
   {
+    AppMethodBeat.i(101296);
     Context localContext = getContext();
-    this.mMapProvider = new c();
-    if (paramTencentMapOptions != null) {
-      this.mMapProvider.a(paramTencentMapOptions.getMapType());
-    }
+    this.mMapProvider = new b();
+    w.a(localContext.getApplicationContext());
+    i.a(localContext.getApplicationContext());
     this.mapView = this.mMapProvider.a(localContext.getApplicationContext(), paramTencentMapOptions);
     if (this.mapView != null)
     {
@@ -53,45 +62,68 @@ public class MapView
     if ((localContext instanceof MapActivity)) {
       ((MapActivity)localContext).setMapView(this);
     }
+    AppMethodBeat.o(101296);
   }
   
-  public void addView(View paramView, MapView.LayoutParams paramLayoutParams)
+  public void addView(View paramView, LayoutParams paramLayoutParams)
   {
-    if ((this.mapView == null) || (paramLayoutParams == null)) {
+    AppMethodBeat.i(101297);
+    if ((this.mapView == null) || (paramLayoutParams == null))
+    {
+      AppMethodBeat.o(101297);
       return;
     }
     this.mapView.addView(paramView, paramLayoutParams);
+    AppMethodBeat.o(101297);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(101301);
     this.mapView.dispatchTouchEvent(paramMotionEvent);
-    return super.dispatchTouchEvent(paramMotionEvent);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(101301);
+    return bool;
   }
   
   public TencentMap getMap()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101298);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101298);
       return null;
     }
-    return this.mapView.getMap();
+    TencentMap localTencentMap = this.mapView.getMap();
+    AppMethodBeat.o(101298);
+    return localTencentMap;
   }
   
   @Deprecated
   public LatLng getMapCenter()
   {
-    if ((this.mapView == null) || (this.mapView.getMap() == null)) {
+    AppMethodBeat.i(101313);
+    if ((this.mapView == null) || (this.mapView.getMap() == null))
+    {
+      AppMethodBeat.o(101313);
       return null;
     }
-    return this.mapView.getMap().getMapCenter();
+    LatLng localLatLng = this.mapView.getMap().getMapCenter();
+    AppMethodBeat.o(101313);
+    return localLatLng;
   }
   
   public MapController getMapController()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101312);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101312);
       return null;
     }
-    return this.mapView.getMapController();
+    MapController localMapController = this.mapView.getMapController();
+    AppMethodBeat.o(101312);
+    return localMapController;
   }
   
   public View getMapView()
@@ -101,42 +133,64 @@ public class MapView
   
   public Projection getProjection()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101311);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101311);
       return null;
     }
-    return this.mapView.getProjection();
+    Projection localProjection = this.mapView.getProjection();
+    AppMethodBeat.o(101311);
+    return localProjection;
   }
   
   public UiSettings getUiSettings()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101314);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101314);
       return null;
     }
-    return this.mapView.getUiSettings();
+    UiSettings localUiSettings = this.mapView.getUiSettings();
+    AppMethodBeat.o(101314);
+    return localUiSettings;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101299);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101299);
       return;
     }
     this.mapView.onCreate(paramBundle);
+    AppMethodBeat.o(101299);
   }
   
   public void onDestroy()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101308);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101308);
       return;
     }
     this.mapView.onDestroy();
+    AppMethodBeat.o(101308);
   }
   
   public void onDestroyView()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101307);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101307);
       return;
     }
     this.mapView.onDestroyView();
+    AppMethodBeat.o(101307);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -146,74 +200,150 @@ public class MapView
   
   public void onLowMemory()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101310);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101310);
       return;
     }
     this.mapView.onLowMemory();
+    AppMethodBeat.o(101310);
   }
   
   public void onPause()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101304);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101304);
       return;
     }
     this.mapView.onPause();
+    AppMethodBeat.o(101304);
   }
   
   public void onRestart()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101306);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101306);
       return;
     }
     this.mapView.onRestart();
+    AppMethodBeat.o(101306);
   }
   
   public void onResume()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101303);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101303);
       return;
     }
     this.mapView.onResume();
+    AppMethodBeat.o(101303);
   }
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101309);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101309);
       return;
     }
     this.mapView.onSaveInstanceState(paramBundle);
+    AppMethodBeat.o(101309);
+  }
+  
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(101316);
+    if (this.mapView != null) {
+      this.mapView.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+    AppMethodBeat.o(101316);
   }
   
   public void onStart()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101302);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101302);
       return;
     }
     this.mapView.onStart();
+    AppMethodBeat.o(101302);
   }
   
   public void onStop()
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101305);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101305);
       return;
     }
     this.mapView.onStop();
+    AppMethodBeat.o(101305);
+  }
+  
+  public void onSurfaceChanged(Object paramObject, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(150424);
+    if (this.mapView != null) {
+      this.mapView.onSurfaceChanged(paramObject, paramInt1, paramInt2);
+    }
+    AppMethodBeat.o(150424);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.mapView != null) {
-      return this.mapView.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.i(101300);
+    if (this.mapView != null)
+    {
+      bool = this.mapView.onTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(101300);
+      return bool;
     }
-    return super.onTouchEvent(paramMotionEvent);
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(101300);
+    return bool;
   }
   
   public void updateViewLayout(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (this.mapView == null) {
+    AppMethodBeat.i(101315);
+    if (this.mapView == null)
+    {
+      AppMethodBeat.o(101315);
       return;
     }
     this.mapView.updateViewLayout(paramView, paramLayoutParams);
+    AppMethodBeat.o(101315);
+  }
+  
+  public static class LayoutParams
+    extends ViewGroup.LayoutParams
+  {
+    public static final int BOTTOM_CENTER = 81;
+    public static final int CENTER = 17;
+    public int alignment = 17;
+    public int height = 0;
+    public LatLng point = null;
+    public int width = 0;
+    
+    public LayoutParams(int paramInt1, int paramInt2, LatLng paramLatLng, int paramInt3)
+    {
+      super(paramInt2);
+      this.width = paramInt1;
+      this.height = paramInt2;
+      this.point = paramLatLng;
+      this.alignment = paramInt3;
+    }
   }
 }
 

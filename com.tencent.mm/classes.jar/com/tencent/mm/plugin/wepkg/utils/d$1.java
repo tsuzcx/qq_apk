@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wepkg.utils;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wepkg.model.WepkgCrossProcessTask;
 import com.tencent.mm.plugin.wepkg.model.a;
 
@@ -10,10 +11,12 @@ final class d$1
   
   public final void run()
   {
-    this.rPw.Zu();
-    if (this.rPE != null) {
-      this.rPE.a(this.rPw);
+    AppMethodBeat.i(63649);
+    this.vGn.ata();
+    if (this.vGw != null) {
+      this.vGw.a(this.vGn);
     }
+    AppMethodBeat.o(63649);
   }
 }
 

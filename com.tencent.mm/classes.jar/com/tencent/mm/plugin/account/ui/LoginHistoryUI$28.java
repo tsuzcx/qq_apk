@@ -1,13 +1,17 @@
 package com.tencent.mm.plugin.account.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class LoginHistoryUI$28
   implements ResizeLayout.a
 {
   LoginHistoryUI$28(LoginHistoryUI paramLoginHistoryUI) {}
   
-  public final void XO()
+  public final void aru()
   {
-    LoginHistoryUI.c(this.fnc).post(new LoginHistoryUI.28.1(this));
+    AppMethodBeat.i(124937);
+    LoginHistoryUI.c(this.gEw).post(new LoginHistoryUI.28.1(this));
+    AppMethodBeat.o(124937);
   }
 }
 

@@ -4,13 +4,13 @@ import android.os.Looper;
 
 public abstract interface g
 {
-  public abstract void a(m.b paramb);
+  public abstract void add(k.a parama);
   
-  public abstract void a(m.b paramb, Looper paramLooper);
+  public abstract void add(k.a parama, Looper paramLooper);
   
-  public abstract void b(int paramInt, m paramm, Object paramObject);
+  public abstract void doNotify(String paramString);
   
-  public abstract void b(m.b paramb);
+  public abstract void remove(k.a parama);
 }
 
 

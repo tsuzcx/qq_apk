@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.backup.j;
 
-import com.tencent.mm.h.a.ad;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ae;
 import com.tencent.mm.sdk.b.c;
 
 final class b$3
-  extends c<ad>
+  extends c<ae>
 {
   b$3(b paramb)
   {
-    this.udX = ad.class.getName().hashCode();
+    AppMethodBeat.i(18105);
+    this.__eventId = ae.class.getName().hashCode();
+    AppMethodBeat.o(18105);
   }
 }
 

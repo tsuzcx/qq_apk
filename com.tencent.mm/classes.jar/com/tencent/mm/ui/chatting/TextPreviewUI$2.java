@@ -2,6 +2,7 @@ package com.tencent.mm.ui.chatting;
 
 import android.view.View;
 import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.CustomScrollView.a;
 
 final class TextPreviewUI$2
@@ -11,36 +12,38 @@ final class TextPreviewUI$2
   
   public final void a(ScrollView paramScrollView, int paramInt1, int paramInt2)
   {
-    TextPreviewUI.f(this.vnn);
+    AppMethodBeat.i(31044);
+    TextPreviewUI.f(this.zCJ);
     int i;
     if (paramScrollView.getChildAt(0).getMeasuredHeight() == paramScrollView.getHeight() + paramScrollView.getScrollY())
     {
       i = 1;
       if (i != 0) {
-        TextPreviewUI.a(this.vnn, paramScrollView.getScrollY());
+        TextPreviewUI.a(this.zCJ, paramScrollView.getScrollY());
       }
-      if ((paramScrollView.getScrollY() > 0) && ((paramScrollView.getScrollY() < TextPreviewUI.g(this.vnn) - 10) || (TextPreviewUI.g(this.vnn) <= 0))) {
-        break label107;
+      if ((paramScrollView.getScrollY() > 0) && ((paramScrollView.getScrollY() < TextPreviewUI.g(this.zCJ) - 10) || (TextPreviewUI.g(this.zCJ) <= 0))) {
+        break label119;
       }
-      TextPreviewUI.h(this.vnn);
+      TextPreviewUI.h(this.zCJ);
     }
-    label107:
-    while (!TextPreviewUI.i(this.vnn))
+    label119:
+    while (!TextPreviewUI.i(this.zCJ))
     {
-      TextPreviewUI.b(this.vnn, paramInt1 - paramInt2);
+      TextPreviewUI.b(this.zCJ, paramInt1 - paramInt2);
+      AppMethodBeat.o(31044);
       return;
       i = 0;
       break;
     }
     if (paramInt2 > paramInt1) {
-      TextPreviewUI.h(this.vnn);
+      TextPreviewUI.h(this.zCJ);
     }
     for (;;)
     {
-      TextPreviewUI.a(this.vnn, false);
+      TextPreviewUI.a(this.zCJ, false);
       break;
       if (paramInt2 < paramInt1) {
-        TextPreviewUI.j(this.vnn);
+        TextPreviewUI.j(this.zCJ);
       }
     }
   }

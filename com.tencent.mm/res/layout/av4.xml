@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/eav" android:background="@drawable/a3d" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:layout_gravity="center" android:id="@id/eaw" android:background="@drawable/pd" android:visibility="gone" android:layout_width="73.0dip" android:layout_height="73.0dip" android:scaleType="fitXY" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:contentDescription="@string/enk" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/v4">
+        <ImageView android:id="@id/ax3" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/lq" android:layout_height="@dimen/lq" android:layout_marginRight="@dimen/dp" />
+        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/n_" android:singleLine="true" style="@style/v6" />
+        <TextView android:id="@id/ame" android:visibility="gone" android:text="@string/f4r" style="@style/v8" />
+        <ImageView android:id="@id/ax4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a66" />
+        <ImageView android:id="@id/c_6" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/lq" android:layout_height="@dimen/lq" android:layout_marginRight="@dimen/dp" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="0.0dip" style="@style/v4">
+        <TextView android:id="@id/a9c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="summary" style="@style/v5" />
+    </LinearLayout>
+</LinearLayout>

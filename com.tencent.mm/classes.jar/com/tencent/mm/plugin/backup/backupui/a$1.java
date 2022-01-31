@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.backup.backupui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.b.d;
 import com.tencent.mm.plugin.backup.b.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$1
   implements View.OnClickListener
@@ -13,19 +14,23 @@ final class a$1
   
   public final void onClick(View paramView)
   {
-    int i = d.atq();
-    y.i(a.access$100(), "backupbanner onclick, backupMode[%d]", new Object[] { Integer.valueOf(i) });
+    AppMethodBeat.i(17710);
+    int i = d.aSO();
+    ab.i(a.access$100(), "backupbanner onclick, backupMode[%d]", new Object[] { Integer.valueOf(i) });
     switch (i)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(17710);
       return;
-    case 1: 
-      i = com.tencent.mm.plugin.backup.backuppcmodel.b.auw().atn().hFu;
-      y.i(a.access$100(), "backupbanner onclick, backupPcState[%d]", new Object[] { Integer.valueOf(i) });
+      i = com.tencent.mm.plugin.backup.backuppcmodel.b.aTX().aSL().jyN;
+      ab.i(a.access$100(), "backupbanner onclick, backupPcState[%d]", new Object[] { Integer.valueOf(i) });
       switch (i)
       {
       default: 
-        y.i(a.access$100(), "click backup banner, BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.auw().atn().hFu) });
+        ab.i(a.access$100(), "click backup banner, BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.aTX().aSL().jyN) });
+        AppMethodBeat.o(17710);
         return;
       case -4: 
       case 4: 
@@ -36,35 +41,30 @@ final class a$1
       case 22: 
       case 23: 
       case 28: 
-        y.i(a.access$100(), "click backup banner skipToBackupPcUI,BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.auw().atn().hFu) });
-        a.a(this.hNe, false);
+        ab.i(a.access$100(), "click backup banner skipToBackupPcUI,BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.aTX().aSL().jyN) });
+        a.a(this.jGH, false);
+        AppMethodBeat.o(17710);
         return;
       }
-      y.i(a.access$100(), "click backup banner skipToBackupPcUI,BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.auw().atn().hFu) });
-      a.a(this.hNe, true);
+      ab.i(a.access$100(), "click backup banner skipToBackupPcUI,BackupPcState[%d]", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.aTX().aSL().jyN) });
+      a.a(this.jGH, true);
+      AppMethodBeat.o(17710);
       return;
+      i = com.tencent.mm.plugin.backup.d.b.aTr().aSL().jyN;
+      ab.i(a.access$100(), "backupbanner onclick, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
+      switch (i)
+      {
+      default: 
+        ab.i(a.access$100(), "click backup banner,backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
+      }
     }
-    i = com.tencent.mm.plugin.backup.d.b.atS().atn().hFu;
-    y.i(a.access$100(), "backupbanner onclick, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
-    switch (i)
-    {
-    default: 
-      y.i(a.access$100(), "click backup banner,backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
-      return;
-    case -4: 
-    case 4: 
-    case 5: 
-    case 12: 
-    case 22: 
-    case 23: 
-    case 28: 
-    case 52: 
-      y.i(a.access$100(), "click backup banner skipToBackupMoveRecoverUI, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
-      a.b(this.hNe, false);
-      return;
-    }
-    y.i(a.access$100(), "click backup banner skipToBackupMoveRecoverUI, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
-    a.b(this.hNe, true);
+    ab.i(a.access$100(), "click backup banner skipToBackupMoveRecoverUI, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
+    a.b(this.jGH, false);
+    AppMethodBeat.o(17710);
+    return;
+    ab.i(a.access$100(), "click backup banner skipToBackupMoveRecoverUI, backupMoveState[%d]", new Object[] { Integer.valueOf(i) });
+    a.b(this.jGH, true);
+    AppMethodBeat.o(17710);
   }
 }
 

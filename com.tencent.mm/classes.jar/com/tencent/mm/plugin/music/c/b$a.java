@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.music.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$a
   implements Runnable
 {
@@ -12,9 +14,11 @@ final class b$a
   
   public final void run()
   {
-    if (this.myA.myz != null) {
-      this.myA.myz.uH(this.action);
+    AppMethodBeat.i(137465);
+    if (this.oYH.oYG != null) {
+      this.oYH.oYG.Ad(this.action);
     }
+    AppMethodBeat.o(137465);
   }
 }
 

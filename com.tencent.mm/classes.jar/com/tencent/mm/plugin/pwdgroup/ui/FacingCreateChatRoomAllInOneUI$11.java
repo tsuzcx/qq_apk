@@ -1,27 +1,32 @@
 package com.tencent.mm.plugin.pwdgroup.ui;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class FacingCreateChatRoomAllInOneUI$11
-  extends ah
+  extends ak
 {
   FacingCreateChatRoomAllInOneUI$11(FacingCreateChatRoomAllInOneUI paramFacingCreateChatRoomAllInOneUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(23993);
     switch (paramMessage.what)
     {
-    default: 
-    case 10001: 
-      do
-      {
-        return;
-      } while (FacingCreateChatRoomAllInOneUI.b(this.nbo) == null);
-      FacingCreateChatRoomAllInOneUI.b(this.nbo).setData(FacingCreateChatRoomAllInOneUI.c(this.nbo));
-      return;
     }
-    FacingCreateChatRoomAllInOneUI.d(this.nbo);
+    for (;;)
+    {
+      AppMethodBeat.o(23993);
+      return;
+      if (FacingCreateChatRoomAllInOneUI.b(this.pGF) != null)
+      {
+        FacingCreateChatRoomAllInOneUI.b(this.pGF).setData(FacingCreateChatRoomAllInOneUI.c(this.pGF));
+        AppMethodBeat.o(23993);
+        return;
+        FacingCreateChatRoomAllInOneUI.d(this.pGF);
+      }
+    }
   }
 }
 

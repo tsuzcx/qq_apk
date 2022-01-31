@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 
 public final class GetMessageFromWX
@@ -16,7 +17,9 @@ public final class GetMessageFromWX
     
     public Req(Bundle paramBundle)
     {
+      AppMethodBeat.i(128308);
       fromBundle(paramBundle);
+      AppMethodBeat.o(128308);
     }
     
     public boolean checkArgs()
@@ -26,9 +29,11 @@ public final class GetMessageFromWX
     
     public void fromBundle(Bundle paramBundle)
     {
+      AppMethodBeat.i(128310);
       super.fromBundle(paramBundle);
       this.lang = paramBundle.getString("_wxapi_getmessage_req_lang");
       this.country = paramBundle.getString("_wxapi_getmessage_req_country");
+      AppMethodBeat.o(128310);
     }
     
     public int getType()
@@ -38,15 +43,17 @@ public final class GetMessageFromWX
     
     public void toBundle(Bundle paramBundle)
     {
+      AppMethodBeat.i(128309);
       super.toBundle(paramBundle);
       paramBundle.putString("_wxapi_getmessage_req_lang", this.lang);
       paramBundle.putString("_wxapi_getmessage_req_country", this.country);
+      AppMethodBeat.o(128309);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.GetMessageFromWX
  * JD-Core Version:    0.7.0.1
  */

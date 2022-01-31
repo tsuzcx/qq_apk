@@ -1,24 +1,20 @@
 package com.tencent.mm.plugin.voip.model;
 
-import com.tencent.mm.plugin.voip.ui.b;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class r$4
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  r$4(r paramr, String paramString) {}
+  r$4(Context paramContext) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.pTG.pTr != null)
-    {
-      o localo = this.pTG.pTr;
-      String str = this.val$tips;
-      if (localo.pRU != null)
-      {
-        localo.pSz = str;
-        localo.pRU.Qa(str);
-      }
-    }
+    AppMethodBeat.i(4579);
+    r.fh(this.val$context);
+    AppMethodBeat.o(4579);
   }
 }
 

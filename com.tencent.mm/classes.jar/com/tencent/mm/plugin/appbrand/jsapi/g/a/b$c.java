@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 public final class b$c
 {
   public String data;
-  public String gum;
-  public boolean gun;
+  public String hPe;
+  public boolean hPf;
   public int height;
   public int left;
   public int top;

@@ -1,174 +1,191 @@
 package com.tencent.mm.sandbox.a;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.c.i;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelsimple.ad;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.sandbox.SubCoreSandBox;
-import com.tencent.mm.protocal.c.alk;
-import com.tencent.mm.protocal.c.all;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aqx;
+import com.tencent.mm.protocal.protobuf.aqy;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.g;
 import java.util.LinkedList;
 
 public final class a
   extends m
-  implements k, com.tencent.mm.plugin.w.b
+  implements k, com.tencent.mm.plugin.p.b
 {
-  public final com.tencent.mm.ah.b dmK;
-  private f dmL;
+  private f callback;
+  public final com.tencent.mm.ai.b rr;
   
   public a(int paramInt)
   {
+    AppMethodBeat.i(28779);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new alk();
-    ((b.a)localObject).ecI = new all();
+    ((b.a)localObject).fsX = new aqx();
+    ((b.a)localObject).fsY = new aqy();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getupdateinfo";
-    ((b.a)localObject).ecG = 113;
-    ((b.a)localObject).ecJ = 35;
-    ((b.a)localObject).ecK = 1000000035;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (alk)this.dmK.ecE.ecN;
-    ((alk)localObject).thp = paramInt;
-    ((alk)localObject).sss = com.tencent.mm.sdk.platformtools.e.bvj;
-    if ((10012 == com.tencent.mm.platformtools.ae.eSP) && (com.tencent.mm.platformtools.ae.eSQ > 0)) {
-      ((alk)localObject).sss = com.tencent.mm.platformtools.ae.eSQ;
+    ((b.a)localObject).funcId = 113;
+    ((b.a)localObject).reqCmdId = 35;
+    ((b.a)localObject).respCmdId = 1000000035;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (aqx)this.rr.fsV.fta;
+    ((aqx)localObject).xgd = paramInt;
+    ((aqx)localObject).wkX = g.bWu;
+    if ((10012 == com.tencent.mm.platformtools.ae.gkK) && (com.tencent.mm.platformtools.ae.gkL > 0)) {
+      ((aqx)localObject).wkX = com.tencent.mm.platformtools.ae.gkL;
     }
     switch (paramInt)
     {
     }
     for (;;)
     {
-      y.i("MicroMsg.NetSceneGetUpdateInfo", "summerupdate dkchan NetSceneGetUpdateInfo updateType:%d channel:%d release:%d, stack[%s]", new Object[] { Integer.valueOf(((alk)localObject).thp), Integer.valueOf(((alk)localObject).sss), Integer.valueOf(com.tencent.mm.sdk.platformtools.e.bvj), bk.csb() });
+      ab.i("MicroMsg.NetSceneGetUpdateInfo", "summerupdate dkchan NetSceneGetUpdateInfo updateType:%d channel:%d release:%d, stack[%s]", new Object[] { Integer.valueOf(((aqx)localObject).xgd), Integer.valueOf(((aqx)localObject).wkX), Integer.valueOf(g.bWu), bo.dtY() });
+      AppMethodBeat.o(28779);
       return;
-      h.nFQ.a(405L, 3L, 1L, true);
+      h.qsU.idkeyStat(405L, 3L, 1L, true);
       continue;
-      h.nFQ.a(405L, 4L, 1L, true);
+      h.qsU.idkeyStat(405L, 4L, 1L, true);
       continue;
-      h.nFQ.a(405L, 5L, 1L, true);
+      h.qsU.idkeyStat(405L, 5L, 1L, true);
       continue;
-      h.nFQ.a(405L, 6L, 1L, true);
+      h.qsU.idkeyStat(405L, 6L, 1L, true);
     }
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final int bSp()
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    return ((aqy)this.rr.fsW.fta).xge;
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final String[] bSq()
   {
-    y.i("MicroMsg.NetSceneGetUpdateInfo", "summertoken GetUpdateInfo onGYNetEnd errType[%d], errCode[%d], errMsg[%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      h.nFQ.a(405L, 7L, 1L, true);
-    }
-    for (;;)
-    {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      paramString = cpD();
-      if (paramString == null) {
-        break label266;
-      }
-      paramq = i.cf(paramString);
-      if (paramq == null) {
-        break;
-      }
-      paramInt1 = paramq.versionCode;
-      y.i("MicroMsg.NetSceneGetUpdateInfo", "summertoken patchVersionCode[%d]", new Object[] { Integer.valueOf(paramInt1) });
-      au.Dk().a(new ad(com.tencent.mm.sdk.platformtools.ae.getPackageName(), paramInt1), 0);
-      h.nFQ.a(405L, 13L, 1L, true);
-      return;
-      h.nFQ.a(405L, 8L, 1L, true);
-      if (paramInt2 == 4)
-      {
-        h.nFQ.a(405L, 9L, 1L, true);
-        if (paramInt3 == -16) {
-          h.nFQ.a(405L, 10L, 1L, true);
-        } else if (paramInt3 == -17) {
-          h.nFQ.a(405L, 11L, 1L, true);
-        } else if (paramInt3 == -18) {
-          h.nFQ.a(405L, 12L, 1L, true);
-        }
-      }
-    }
-    y.i("MicroMsg.NetSceneGetUpdateInfo", "summertoken patchInfo is null patchXml[%s]", new Object[] { paramString });
-    return;
-    label266:
-    y.w("MicroMsg.NetSceneGetUpdateInfo", "summertoken patchXml is null!");
-    h.nFQ.a(405L, 14L, 1L, true);
-  }
-  
-  public final int bko()
-  {
-    return ((all)this.dmK.ecF.ecN).thq;
-  }
-  
-  public final String[] bkp()
-  {
-    all localall = (all)this.dmK.ecF.ecN;
-    String[] arrayOfString = new String[localall.thv.size()];
+    AppMethodBeat.i(28782);
+    aqy localaqy = (aqy)this.rr.fsW.fta;
+    String[] arrayOfString = new String[localaqy.xgj.size()];
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
-      arrayOfString[i] = ((bml)localall.thv.get(i)).tFO;
+      arrayOfString[i] = ((bwc)localaqy.xgj.get(i)).xJE;
       i += 1;
     }
+    AppMethodBeat.o(28782);
     return arrayOfString;
   }
   
-  public final all bkq()
+  public final aqy bSr()
   {
     int i = 1;
-    all localall;
-    if (SubCoreSandBox.nGl)
+    aqy localaqy;
+    if (SubCoreSandBox.qto)
     {
-      localall = (all)this.dmK.ecF.ecN;
-      localall.thx = 1;
-      localall.thy = "http://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=page/android_exp__index";
-      if (!SubCoreSandBox.nGm) {
+      localaqy = (aqy)this.rr.fsW.fta;
+      localaqy.xgl = 1;
+      localaqy.xgm = "http://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=page/android_exp__index";
+      if (!SubCoreSandBox.qtp) {
         break label58;
       }
     }
     for (;;)
     {
-      localall.thz = i;
-      return (all)this.dmK.ecF.ecN;
+      localaqy.xgn = i;
+      return (aqy)this.rr.fsW.fta;
       label58:
       i = 0;
     }
   }
   
-  public final int cpB()
+  public final int doScene(e parame, f paramf)
   {
-    return ((all)this.dmK.ecF.ecN).ths;
+    AppMethodBeat.i(28780);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(28780);
+    return i;
   }
   
-  public final String cpC()
+  public final int drp()
   {
-    return ((all)this.dmK.ecF.ecN).thr;
+    return ((aqy)this.rr.fsW.fta).xgg;
   }
   
-  public final String cpD()
+  public final String drq()
   {
-    all localall = (all)this.dmK.ecF.ecN;
-    y.d("MicroMsg.NetSceneGetUpdateInfo", "summertoken getPatchInfo[%s], stack[%s]", new Object[] { localall.thw, bk.csb() });
-    return localall.thw;
+    return ((aqy)this.rr.fsW.fta).xgf;
+  }
+  
+  public final String drr()
+  {
+    AppMethodBeat.i(28783);
+    Object localObject = (aqy)this.rr.fsW.fta;
+    ab.d("MicroMsg.NetSceneGetUpdateInfo", "summertoken getPatchInfo[%s], stack[%s]", new Object[] { ((aqy)localObject).xgk, bo.dtY() });
+    localObject = ((aqy)localObject).xgk;
+    AppMethodBeat.o(28783);
+    return localObject;
   }
   
   public final int getType()
   {
     return 11;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(28781);
+    ab.i("MicroMsg.NetSceneGetUpdateInfo", "summertoken GetUpdateInfo onGYNetEnd errType[%d], errCode[%d], errMsg[%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      h.qsU.idkeyStat(405L, 7L, 1L, true);
+    }
+    for (;;)
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      paramString = drr();
+      if (paramString == null) {
+        break label285;
+      }
+      paramq = i.dq(paramString);
+      if (paramq == null) {
+        break;
+      }
+      paramInt1 = paramq.versionCode;
+      ab.i("MicroMsg.NetSceneGetUpdateInfo", "summertoken patchVersionCode[%d]", new Object[] { Integer.valueOf(paramInt1) });
+      aw.Rc().a(new com.tencent.mm.modelsimple.ae(ah.getPackageName(), paramInt1), 0);
+      h.qsU.idkeyStat(405L, 13L, 1L, true);
+      AppMethodBeat.o(28781);
+      return;
+      h.qsU.idkeyStat(405L, 8L, 1L, true);
+      if (paramInt2 == 4)
+      {
+        h.qsU.idkeyStat(405L, 9L, 1L, true);
+        if (paramInt3 == -16) {
+          h.qsU.idkeyStat(405L, 10L, 1L, true);
+        } else if (paramInt3 == -17) {
+          h.qsU.idkeyStat(405L, 11L, 1L, true);
+        } else if (paramInt3 == -18) {
+          h.qsU.idkeyStat(405L, 12L, 1L, true);
+        }
+      }
+    }
+    ab.i("MicroMsg.NetSceneGetUpdateInfo", "summertoken patchInfo is null patchXml[%s]", new Object[] { paramString });
+    AppMethodBeat.o(28781);
+    return;
+    label285:
+    ab.w("MicroMsg.NetSceneGetUpdateInfo", "summertoken patchXml is null!");
+    h.qsU.idkeyStat(405L, 14L, 1L, true);
+    AppMethodBeat.o(28781);
   }
 }
 

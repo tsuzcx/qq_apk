@@ -1,17 +1,35 @@
 package com.tencent.mm.plugin.collect.ui;
 
 import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.tools.l;
+import com.tencent.mm.ui.widget.b.d;
 
 final class CollectMainUI$20
-  implements Runnable
+  implements View.OnLongClickListener
 {
   CollectMainUI$20(CollectMainUI paramCollectMainUI) {}
   
-  public final void run()
+  public final boolean onLongClick(View paramView)
   {
-    int[] arrayOfInt = new int[2];
-    CollectMainUI.j(this.iLP).getLocationInWindow(arrayOfInt);
-    CollectMainUI.pA(arrayOfInt[1]);
+    AppMethodBeat.i(41278);
+    if (CollectMainUI.b(this.kSz) == 0)
+    {
+      paramView = new l(this.kSz.getContext());
+      paramView.sao = new CollectMainUI.20.1(this);
+      paramView.sap = new CollectMainUI.20.2(this);
+      paramView.cwt();
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(41278);
+      return true;
+      paramView = new d(this.kSz.getContext(), 1, false);
+      paramView.sao = new CollectMainUI.20.3(this);
+      paramView.sap = new CollectMainUI.20.4(this);
+      paramView.crd();
+    }
   }
 }
 

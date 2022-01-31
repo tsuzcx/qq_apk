@@ -1,22 +1,27 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.honey_pay.a.l;
-import com.tencent.mm.protocal.c.apg;
-import com.tencent.mm.protocal.c.bhg;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.protocal.protobuf.avf;
+import com.tencent.mm.protocal.protobuf.bpq;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class HoneyPayProxyUI$3
-  implements n.a
+  implements p.a
 {
   HoneyPayProxyUI$3(HoneyPayProxyUI paramHoneyPayProxyUI, l paraml) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i(this.llT.TAG, "state: %s", new Object[] { Integer.valueOf(this.llU.ljR.sQe.state) });
-    HoneyPayProxyUI.a(this.llT, this.llU.ljR);
-    this.llT.finish();
+    AppMethodBeat.i(41926);
+    if (this.nJq.nHn.wOz != null) {
+      ab.i(this.nJp.TAG, "state: %s", new Object[] { Integer.valueOf(this.nJq.nHn.wOz.state) });
+    }
+    HoneyPayProxyUI.a(this.nJp, this.nJq.nHn);
+    this.nJp.finish();
+    AppMethodBeat.o(41926);
   }
 }
 

@@ -2,9 +2,10 @@ package com.tencent.ttpic.cache;
 
 import android.graphics.Bitmap;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.BitmapUtils;
 import com.tencent.ttpic.config.MediaConfig;
 import com.tencent.ttpic.model.StickerItem;
-import com.tencent.ttpic.util.VideoBitmapUtil;
 import com.tencent.ttpic.util.VideoGlobalContext;
 import java.io.File;
 import java.util.Map;
@@ -12,7 +13,14 @@ import java.util.Map;
 public class ImagePreLoader3D
   extends PreLoader
 {
-  private static final String TAG = ImagePreLoader3D.class.getSimpleName();
+  private static final String TAG;
+  
+  static
+  {
+    AppMethodBeat.i(81773);
+    TAG = ImagePreLoader3D.class.getSimpleName();
+    AppMethodBeat.o(81773);
+  }
   
   public ImagePreLoader3D(Map<String, Bitmap> paramMap, String paramString, StickerItem paramStickerItem, int paramInt)
   {
@@ -23,6 +31,7 @@ public class ImagePreLoader3D
   
   public void preloadNewImages(int paramInt)
   {
+    AppMethodBeat.i(81772);
     this.frontIndex = paramInt;
     this.rearIndex = ((this.frontIndex + this.capacity) % this.item.frames);
     paramInt = this.frontIndex;
@@ -35,8 +44,8 @@ public class ImagePreLoader3D
         if (!this.cache.containsKey(localObject1))
         {
           localObject2 = this.dataPath + File.separator + this.item.subFolder + File.separator + (String)localObject2;
-          localObject2 = VideoBitmapUtil.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject2, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
-          if (VideoBitmapUtil.isLegal((Bitmap)localObject2)) {
+          localObject2 = BitmapUtils.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject2, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+          if (BitmapUtils.isLegal((Bitmap)localObject2)) {
             this.cache.put(localObject1, localObject2);
           }
         }
@@ -44,21 +53,23 @@ public class ImagePreLoader3D
         break;
       }
     }
+    AppMethodBeat.o(81772);
   }
   
   public void prepareImages()
   {
     int i = 0;
+    AppMethodBeat.i(81771);
     this.frontIndex = 0;
     if ((i < this.capacity) && (i < this.item.frames))
     {
       String str = this.item.id + "_" + i + ".png";
       Object localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + str;
-      localObject = VideoBitmapUtil.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+      localObject = BitmapUtils.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
       if (TextUtils.isEmpty(this.materialId)) {}
       for (;;)
       {
-        if ((VideoBitmapUtil.isLegal((Bitmap)localObject)) && (!this.cache.containsKey(str))) {
+        if ((BitmapUtils.isLegal((Bitmap)localObject)) && (!this.cache.containsKey(str))) {
           this.cache.put(str, localObject);
         }
         this.rearIndex = i;
@@ -67,6 +78,7 @@ public class ImagePreLoader3D
         str = this.materialId + File.separator + str;
       }
     }
+    AppMethodBeat.o(81771);
   }
 }
 

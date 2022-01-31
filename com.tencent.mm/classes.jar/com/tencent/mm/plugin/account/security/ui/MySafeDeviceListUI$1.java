@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.security.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MySafeDeviceListUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class MySafeDeviceListUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    MySafeDeviceListUI.a(this.fkm);
+    AppMethodBeat.i(69872);
+    MySafeDeviceListUI.a(this.gBD);
+    AppMethodBeat.o(69872);
     return true;
   }
 }

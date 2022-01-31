@@ -1,26 +1,39 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fav.a.ae;
+import com.tencent.mm.plugin.fav.a.x;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.List;
 
 final class FavoriteIndexUI$17
-  implements AdapterView.OnItemLongClickListener
+  implements Runnable
 {
   FavoriteIndexUI$17(FavoriteIndexUI paramFavoriteIndexUI) {}
   
-  public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void run()
   {
-    if (paramInt < this.kee.kba.getHeaderViewsCount())
+    AppMethodBeat.i(74243);
+    long l = System.currentTimeMillis();
+    List localList = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().bwP();
+    if (localList != null)
     {
-      y.w("MicroMsg.FavoriteIndexUI", "on header view long click, ignore");
-      return true;
+      ab.i("MicroMsg.FavoriteIndexUI", "initInvalidFavItem getInvalid favitems , size = %d,start time = %s", new Object[] { Integer.valueOf(localList.size()), Long.valueOf(l) });
+      if (localList.size() == 0)
+      {
+        AppMethodBeat.o(74243);
+        return;
+      }
+      int j = localList.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().z((com.tencent.mm.plugin.fav.a.g)localList.get(i));
+        i += 1;
+      }
+      ab.i("MicroMsg.FavoriteIndexUI", "initInvalidFavItem  cost time = %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     }
-    FavoriteIndexUI.d(this.kee).a(paramView, paramInt, paramLong, this.kee, FavoriteIndexUI.c(this.kee));
-    return true;
+    AppMethodBeat.o(74243);
   }
 }
 

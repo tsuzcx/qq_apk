@@ -6,12 +6,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.model.MallOrderDetailObject.a;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.h;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 final class MallOrderDetailInfoUI$a
@@ -19,14 +16,20 @@ final class MallOrderDetailInfoUI$a
 {
   private MallOrderDetailInfoUI$a(MallOrderDetailInfoUI paramMallOrderDetailInfoUI) {}
   
-  private MallOrderDetailObject.a vI(int paramInt)
+  private MallOrderDetailObject.a Bg(int paramInt)
   {
-    return (MallOrderDetailObject.a)MallOrderDetailInfoUI.e(this.mQG).get(paramInt);
+    AppMethodBeat.i(43805);
+    MallOrderDetailObject.a locala = (MallOrderDetailObject.a)MallOrderDetailInfoUI.e(this.pqU).get(paramInt);
+    AppMethodBeat.o(43805);
+    return locala;
   }
   
   public final int getCount()
   {
-    return MallOrderDetailInfoUI.e(this.mQG).size();
+    AppMethodBeat.i(43804);
+    int i = MallOrderDetailInfoUI.e(this.pqU).size();
+    AppMethodBeat.o(43804);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -36,88 +39,87 @@ final class MallOrderDetailInfoUI$a
   
   public final int getItemViewType(int paramInt)
   {
-    return vI(paramInt).type;
+    AppMethodBeat.i(43807);
+    paramInt = Bg(paramInt).type;
+    AppMethodBeat.o(43807);
+    return paramInt;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    MallOrderDetailObject.a locala = vI(paramInt);
-    Object localObject;
+    AppMethodBeat.i(43806);
+    MallOrderDetailObject.a locala = Bg(paramInt);
     switch (locala.type)
     {
     default: 
       if (paramView == null)
       {
-        paramViewGroup = View.inflate(this.mQG, a.g.mall_order_action_list_item, null);
-        localObject = new MallOrderDetailInfoUI.b(this.mQG, (byte)0);
-        ((MallOrderDetailInfoUI.b)localObject).iwq = ((TextView)paramViewGroup.findViewById(a.f.order_action_item_title_tv));
-        ((MallOrderDetailInfoUI.b)localObject).ixt = ((TextView)paramViewGroup.findViewById(a.f.order_action_item_subtitle_tv));
-        ((MallOrderDetailInfoUI.b)localObject).ixu = ((TextView)paramViewGroup.findViewById(a.f.order_action_item_divider_tv));
-        ((MallOrderDetailInfoUI.b)localObject).hNa = paramViewGroup.findViewById(a.f.order_action_item_content_layout);
-        paramViewGroup.setTag(localObject);
-        ((MallOrderDetailInfoUI.b)localObject).iwq.setText(locala.name);
+        paramView = View.inflate(this.pqU, 2130970089, null);
+        paramViewGroup = new MallOrderDetailInfoUI.b(this.pqU, (byte)0);
+        paramViewGroup.kxu = ((TextView)paramView.findViewById(2131825967));
+        paramViewGroup.kyw = ((TextView)paramView.findViewById(2131825968));
+        paramViewGroup.kyx = ((TextView)paramView.findViewById(2131825964));
+        paramViewGroup.jIo = paramView.findViewById(2131825966);
+        paramView.setTag(paramViewGroup);
+        paramViewGroup.kxu.setText(locala.name);
         if (!TextUtils.isEmpty(locala.value)) {
-          break label450;
+          break label432;
         }
-        ((MallOrderDetailInfoUI.b)localObject).ixt.setVisibility(4);
-        label162:
-        if (!locala.ilA) {
-          break label475;
+        paramViewGroup.kyw.setVisibility(4);
+        label153:
+        if (!locala.kmy) {
+          break label455;
         }
-        ((MallOrderDetailInfoUI.b)localObject).ixu.setVisibility(0);
+        paramViewGroup.kyx.setVisibility(0);
       }
       break;
     }
     for (;;)
     {
-      paramView = paramViewGroup;
       if (paramInt + 1 < getCount())
       {
-        paramView = vI(paramInt + 1);
-        MallOrderDetailInfoUI.b(((MallOrderDetailInfoUI.b)localObject).hNa, paramView);
-        paramView = paramViewGroup;
+        locala = Bg(paramInt + 1);
+        MallOrderDetailInfoUI.b(paramViewGroup.jIo, locala);
       }
-      do
+      AppMethodBeat.o(43806);
+      return paramView;
+      paramView = View.inflate(this.pqU, 2130970091, null);
+      paramViewGroup = paramView.findViewById(2131825966);
+      MallOrderDetailInfoUI.a(this.pqU, (CheckedTextView)paramView.findViewById(2131825970));
+      MallOrderDetailInfoUI.b(this.pqU, (CheckedTextView)paramView.findViewById(2131825969));
+      MallOrderDetailInfoUI.f(this.pqU).setOnClickListener(this.pqU.pqT);
+      MallOrderDetailInfoUI.g(this.pqU).setOnClickListener(this.pqU.pqT);
+      if (paramInt + 1 < getCount()) {
+        MallOrderDetailInfoUI.b(paramViewGroup, Bg(paramInt + 1));
+      }
+      AppMethodBeat.o(43806);
+      return paramView;
+      paramView = View.inflate(this.pqU, 2130970090, null);
+      paramViewGroup = (TextView)paramView.findViewById(2131825969);
+      View localView = paramView.findViewById(2131825966);
+      if (bo.getInt(locala.value, 0) >= 0)
       {
-        return paramView;
-        paramViewGroup = View.inflate(this.mQG, a.g.mall_order_action_list_item_to_be_reted, null);
-        localObject = paramViewGroup.findViewById(a.f.order_action_item_content_layout);
-        MallOrderDetailInfoUI.a(this.mQG, (CheckedTextView)paramViewGroup.findViewById(a.f.order_action_item_good_tv));
-        MallOrderDetailInfoUI.b(this.mQG, (CheckedTextView)paramViewGroup.findViewById(a.f.order_action_item_bad_tv));
-        MallOrderDetailInfoUI.f(this.mQG).setOnClickListener(this.mQG.mQF);
-        MallOrderDetailInfoUI.g(this.mQG).setOnClickListener(this.mQG.mQF);
-        paramView = paramViewGroup;
-      } while (paramInt + 1 >= getCount());
-      MallOrderDetailInfoUI.b((View)localObject, vI(paramInt + 1));
-      return paramViewGroup;
-      paramViewGroup = View.inflate(this.mQG, a.g.mall_order_action_list_item_reted, null);
-      paramView = (TextView)paramViewGroup.findViewById(a.f.order_action_item_bad_tv);
-      localObject = paramViewGroup.findViewById(a.f.order_action_item_content_layout);
-      if (bk.getInt(locala.value, 0) >= 0)
-      {
-        paramView.setText(a.i.mall_order_detail_rated_good);
-        paramView.setCompoundDrawablesWithIntrinsicBounds(0, 0, a.h.mall_order_detail_good, 0);
+        paramViewGroup.setText(2131301454);
+        paramViewGroup.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2131231623, 0);
       }
       for (;;)
       {
-        paramView = paramViewGroup;
-        if (paramInt + 1 >= getCount()) {
-          break;
+        if (paramInt + 1 < getCount()) {
+          MallOrderDetailInfoUI.b(localView, Bg(paramInt + 1));
         }
-        MallOrderDetailInfoUI.b((View)localObject, vI(paramInt + 1));
-        return paramViewGroup;
-        paramView.setText(a.i.mall_order_detail_rated_bad);
-        paramView.setCompoundDrawablesWithIntrinsicBounds(0, 0, a.h.mall_order_detail_bad, 0);
+        AppMethodBeat.o(43806);
+        return paramView;
+        paramViewGroup.setText(2131301453);
+        paramViewGroup.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2131231619, 0);
       }
-      localObject = (MallOrderDetailInfoUI.b)paramView.getTag();
-      paramViewGroup = paramView;
+      paramViewGroup = (MallOrderDetailInfoUI.b)paramView.getTag();
       break;
-      label450:
-      ((MallOrderDetailInfoUI.b)localObject).ixt.setVisibility(0);
-      ((MallOrderDetailInfoUI.b)localObject).ixt.setText(locala.value);
-      break label162;
-      label475:
-      ((MallOrderDetailInfoUI.b)localObject).ixu.setVisibility(8);
+      label432:
+      paramViewGroup.kyw.setVisibility(0);
+      paramViewGroup.kyw.setText(locala.value);
+      break label153;
+      label455:
+      paramViewGroup.kyx.setVisibility(8);
     }
   }
   
@@ -128,7 +130,7 @@ final class MallOrderDetailInfoUI$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.MallOrderDetailInfoUI.a
  * JD-Core Version:    0.7.0.1
  */

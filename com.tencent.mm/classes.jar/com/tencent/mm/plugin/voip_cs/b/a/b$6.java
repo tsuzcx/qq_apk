@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.voip_cs.b.a;
 
 import android.widget.ImageButton;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.voip_cs.ui.VoipCSMainUI;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$6
   implements Runnable
@@ -12,15 +13,19 @@ final class b$6
   
   public final void run()
   {
-    y.i("MicroMsg.voipcs.VoipCSViewManager", "dismiss button");
-    if (b.j(this.qeI).isFinishing()) {
+    AppMethodBeat.i(135323);
+    ab.i("MicroMsg.voipcs.VoipCSViewManager", "dismiss button");
+    if (b.j(this.tLv).isFinishing())
+    {
+      AppMethodBeat.o(135323);
       return;
     }
-    b.k(this.qeI).setVisibility(8);
-    b.l(this.qeI).setVisibility(8);
-    b.m(this.qeI).setVisibility(8);
-    b.n(this.qeI);
-    b.o(this.qeI);
+    b.k(this.tLv).setVisibility(8);
+    b.l(this.tLv).setVisibility(8);
+    b.m(this.tLv).setVisibility(8);
+    b.n(this.tLv);
+    b.o(this.tLv);
+    AppMethodBeat.o(135323);
   }
 }
 

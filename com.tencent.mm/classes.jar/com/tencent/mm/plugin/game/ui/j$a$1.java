@@ -1,28 +1,31 @@
 package com.tencent.mm.plugin.game.ui;
 
 import android.widget.ImageView;
-import com.tencent.mm.plugin.z.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.s.a;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
 
 final class j$a$1
-  implements j.a
+  implements k.a
 {
   j$a$1(String paramString, float paramFloat, ImageView paramImageView) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
+    AppMethodBeat.i(111906);
     if (this.val$appId.equals(paramString))
     {
-      paramString = g.b(this.val$appId, 1, this.gco);
+      paramString = g.b(this.val$appId, 1, this.bBF);
       if (paramString != null)
       {
-        this.jxK.setImageBitmap(paramString);
-        a.brn().d(this);
+        this.lHj.setImageBitmap(paramString);
+        a.cac().remove(this);
       }
     }
+    AppMethodBeat.o(111906);
   }
 }
 

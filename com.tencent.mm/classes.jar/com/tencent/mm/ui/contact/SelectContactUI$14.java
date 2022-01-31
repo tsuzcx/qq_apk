@@ -1,38 +1,20 @@
 package com.tencent.mm.ui.contact;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.h;
 
 final class SelectContactUI$14
   implements View.OnClickListener
 {
-  SelectContactUI$14(SelectContactUI paramSelectContactUI) {}
+  SelectContactUI$14(SelectContactUI paramSelectContactUI, int paramInt1, int paramInt2, String paramString) {}
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.vNB.getIntent());
-    paramView.setClass(this.vNB.mController.uMN, OpenIMSelectContactUI.class);
-    paramView.removeExtra("titile");
-    paramView.putExtra("openim_appid", "3552365301");
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = SelectContactUI.c(this.vNB).iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (ad.aaU(str)) {
-        localArrayList.add(str);
-      }
-    }
-    paramView.putExtra("already_select_contact", bk.c(localArrayList, ","));
-    this.vNB.startActivityForResult(paramView, 5);
+    AppMethodBeat.i(33863);
+    h.d(this.Afg, this.Afg.getString(this.Afk, new Object[] { Integer.valueOf(this.Afl) }), "", this.Afg.getString(2131296474), this.Afg.getString(2131296888), new SelectContactUI.14.1(this), null);
+    AppMethodBeat.o(33863);
   }
 }
 

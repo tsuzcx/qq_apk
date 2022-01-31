@@ -7,57 +7,80 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
-import com.tencent.mm.ac.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class VoiceSearchEditText
   extends EditText
 {
   private Context context;
-  public String hyx = "";
-  private View.OnClickListener nXW;
-  final Drawable vbG = getResources().getDrawable(a.f.voicesearch_enter_btn);
-  final Drawable vbH = null;
-  final Drawable vbI = getResources().getDrawable(a.f.search_clear);
-  private VoiceSearchEditText.a vbJ;
-  private boolean vbK = true;
-  private boolean vbL = false;
-  private boolean vbM = false;
+  public String jqH;
+  private View.OnClickListener qMg;
+  final Drawable zqc;
+  final Drawable zqd;
+  final Drawable zqe;
+  private VoiceSearchEditText.a zqf;
+  private boolean zqg;
+  private boolean zqh;
+  private boolean zqi;
   
   public VoiceSearchEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(107091);
+    this.jqH = "";
+    this.zqc = getResources().getDrawable(2130840709);
+    this.zqd = null;
+    this.zqe = getResources().getDrawable(2130840216);
+    this.zqg = true;
+    this.zqh = false;
+    this.zqi = false;
     init(paramContext);
+    AppMethodBeat.o(107091);
   }
   
   public VoiceSearchEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(107092);
+    this.jqH = "";
+    this.zqc = getResources().getDrawable(2130840709);
+    this.zqd = null;
+    this.zqe = getResources().getDrawable(2130840216);
+    this.zqg = true;
+    this.zqh = false;
+    this.zqi = false;
     init(paramContext);
+    AppMethodBeat.o(107092);
   }
   
-  private void cBr()
+  private void dEG()
   {
-    this.vbK = true;
-    if (this.vbL)
+    AppMethodBeat.i(107095);
+    this.zqg = true;
+    if (this.zqh)
     {
-      setCompoundDrawables(this.vbH, getCompoundDrawables()[1], this.vbG, getCompoundDrawables()[3]);
+      setCompoundDrawables(this.zqd, getCompoundDrawables()[1], this.zqc, getCompoundDrawables()[3]);
+      AppMethodBeat.o(107095);
       return;
     }
     if (getText().toString().length() > 0)
     {
-      setCompoundDrawables(this.vbH, getCompoundDrawables()[1], this.vbI, getCompoundDrawables()[3]);
+      setCompoundDrawables(this.zqd, getCompoundDrawables()[1], this.zqe, getCompoundDrawables()[3]);
+      AppMethodBeat.o(107095);
       return;
     }
-    setCompoundDrawables(this.vbH, getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
+    setCompoundDrawables(this.zqd, getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
+    AppMethodBeat.o(107095);
   }
   
   private void init(Context paramContext)
   {
+    AppMethodBeat.i(107094);
     this.context = paramContext;
-    this.vbL = false;
-    this.vbG.setBounds(0, 0, this.vbG.getIntrinsicWidth(), this.vbG.getIntrinsicHeight());
-    this.vbI.setBounds(0, 0, this.vbI.getIntrinsicWidth(), this.vbI.getIntrinsicHeight());
-    cBr();
+    this.zqh = false;
+    this.zqc.setBounds(0, 0, this.zqc.getIntrinsicWidth(), this.zqc.getIntrinsicHeight());
+    this.zqe.setBounds(0, 0, this.zqe.getIntrinsicWidth(), this.zqe.getIntrinsicHeight());
+    dEG();
     setOnTouchListener(new VoiceSearchEditText.1(this));
     addTextChangedListener(new VoiceSearchEditText.2(this));
     setOnFocusChangeListener(new VoiceSearchEditText.3(this));
@@ -65,13 +88,14 @@ public class VoiceSearchEditText
     {
       paramContext = ((Activity)paramContext).getCurrentFocus();
       if ((paramContext == null) || (paramContext != this)) {
-        break label131;
+        break label141;
       }
     }
-    label131:
-    for (this.vbM = true;; this.vbM = false)
+    label141:
+    for (this.zqi = true;; this.zqi = false)
     {
       requestFocus();
+      AppMethodBeat.o(107094);
       return;
     }
   }
@@ -80,14 +104,16 @@ public class VoiceSearchEditText
   
   public void setOnContentClearListener(VoiceSearchEditText.a parama)
   {
-    this.vbJ = parama;
+    this.zqf = parama;
   }
   
   public void setOnSearchClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.nXW = paramOnClickListener;
-    this.vbL = true;
-    cBr();
+    AppMethodBeat.i(107093);
+    this.qMg = paramOnClickListener;
+    this.zqh = true;
+    dEG();
+    AppMethodBeat.o(107093);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.pwd.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,24 +10,29 @@ import org.json.JSONObject;
 public final class c
   extends a
 {
-  public String token = "";
+  public String token;
   
   public c(String paramString)
   {
+    AppMethodBeat.i(48504);
+    this.token = "";
     HashMap localHashMap = new HashMap();
     localHashMap.put("pin", paramString);
-    D(localHashMap);
+    setRequestData(localHashMap);
+    AppMethodBeat.o(48504);
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    y.d("MicroMsg.NetScenePayUCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
-    this.token = paramJSONObject.optString("payu_reference");
-  }
-  
-  public final int bUM()
+  public final int cTa()
   {
     return 3;
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(48505);
+    ab.d("MicroMsg.NetScenePayUCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    this.token = paramJSONObject.optString("payu_reference");
+    AppMethodBeat.o(48505);
   }
 }
 

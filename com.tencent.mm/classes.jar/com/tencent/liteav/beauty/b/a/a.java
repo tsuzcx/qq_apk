@@ -3,7 +3,8 @@ package com.tencent.liteav.beauty.b.a;
 import android.opengl.GLES20;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.beauty.b.h;
-import com.tencent.liteav.beauty.b.o;
+import com.tencent.liteav.beauty.b.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
   extends com.tencent.liteav.beauty.b.b
@@ -21,14 +22,15 @@ public class a
   private d s = null;
   private e t = null;
   private h u = null;
-  private o v = null;
+  private q v = null;
   private b w = null;
   private String x = "TXCBeauty2Filter";
   private int y = 0;
   private int z = 0;
   
-  private boolean c(int paramInt1, int paramInt2)
+  private boolean d(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(146365);
     this.F = paramInt1;
     this.G = paramInt2;
     this.H = paramInt1;
@@ -46,6 +48,7 @@ public class a
       if (!this.w.a())
       {
         TXCLog.e(this.x, "mBeautyBlendFilter init failed!!, break init");
+        AppMethodBeat.o(146365);
         return false;
       }
     }
@@ -57,6 +60,7 @@ public class a
       if (!this.s.a())
       {
         TXCLog.e(this.x, "m_horizontalFilter init failed!!, break init");
+        AppMethodBeat.o(146365);
         return false;
       }
     }
@@ -73,6 +77,7 @@ public class a
           break;
         }
         TXCLog.e(this.x, "m_verticalFilter init failed!!, break init");
+        AppMethodBeat.o(146365);
         return false;
       }
     }
@@ -84,49 +89,59 @@ public class a
       if (!this.u.a())
       {
         TXCLog.e(this.x, "m_gammaFilter init failed!!, break init");
+        AppMethodBeat.o(146365);
         return false;
       }
     }
     this.u.a(this.H, this.I);
     if (this.v == null)
     {
-      this.v = new o();
+      this.v = new q();
       this.v.a(true);
       if (!this.v.a())
       {
         TXCLog.e(this.x, "mSharpenFilter init failed!!, break init");
+        AppMethodBeat.o(146365);
         return false;
       }
     }
     this.v.a(paramInt1, paramInt2);
+    AppMethodBeat.o(146365);
     return true;
   }
   
   private void g(int paramInt)
   {
+    AppMethodBeat.i(66970);
     this.B = (1.0F - paramInt / 50.0F);
     if (this.u != null) {
       this.u.a(this.B);
     }
+    AppMethodBeat.o(66970);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((this.e == paramInt1) && (this.f == paramInt2)) {
+    AppMethodBeat.i(66966);
+    if ((this.e == paramInt1) && (this.f == paramInt2))
+    {
+      AppMethodBeat.o(66966);
       return;
     }
     this.e = paramInt1;
     this.f = paramInt2;
-    c(paramInt1, paramInt2);
+    d(paramInt1, paramInt2);
+    AppMethodBeat.o(66966);
   }
   
   public int b(int paramInt)
   {
+    AppMethodBeat.i(66972);
     if (1.0F != this.E) {
       GLES20.glViewport(0, 0, this.H, this.I);
     }
     int i = this.s.b(paramInt);
-    int j = this.t.b(i, paramInt);
+    int j = this.t.c(i, paramInt);
     if (1.0F != this.E) {
       GLES20.glViewport(0, 0, this.F, this.G);
     }
@@ -134,56 +149,72 @@ public class a
     if (this.D > 0.7F) {
       i = this.v.b(j);
     }
-    return this.w.b(i, paramInt);
-  }
-  
-  public boolean b(int paramInt1, int paramInt2)
-  {
-    return c(paramInt1, paramInt2);
+    paramInt = this.w.c(i, paramInt);
+    AppMethodBeat.o(66972);
+    return paramInt;
   }
   
   public void c(int paramInt)
   {
+    AppMethodBeat.i(66967);
     if (this.t != null) {
       this.t.a(paramInt / 10.0F);
     }
     this.y = paramInt;
     g(paramInt);
+    AppMethodBeat.o(66967);
+  }
+  
+  public boolean c(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(66973);
+    boolean bool = d(paramInt1, paramInt2);
+    AppMethodBeat.o(66973);
+    return bool;
   }
   
   public void d(int paramInt)
   {
+    AppMethodBeat.i(66968);
     if (this.w != null) {
       this.w.a(paramInt / 10.0F);
     }
     this.z = paramInt;
+    AppMethodBeat.o(66968);
   }
   
   public void e()
   {
+    AppMethodBeat.i(66975);
     super.e();
     q();
+    AppMethodBeat.o(66975);
   }
   
   public void e(int paramInt)
   {
+    AppMethodBeat.i(66969);
     if (this.w != null) {
       this.w.b(paramInt / 10.0F);
     }
     this.A = paramInt;
+    AppMethodBeat.o(66969);
   }
   
   public void f(int paramInt)
   {
+    AppMethodBeat.i(66971);
     this.D = (0.7F + paramInt / 12.0F);
-    TXCLog.i(this.x, "set mSharpenLevel " + paramInt);
+    TXCLog.i(this.x, "set mSharpenLevel ".concat(String.valueOf(paramInt)));
     if (this.v != null) {
       this.v.a(this.D);
     }
+    AppMethodBeat.o(66971);
   }
   
   void q()
   {
+    AppMethodBeat.i(66974);
     if (this.w != null)
     {
       this.w.d();
@@ -209,6 +240,7 @@ public class a
       this.v.d();
       this.v = null;
     }
+    AppMethodBeat.o(66974);
   }
 }
 

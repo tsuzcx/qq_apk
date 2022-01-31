@@ -7,7 +7,8 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
-import com.tencent.tencentmap.mapsdk.a.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.a.i;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -16,53 +17,76 @@ public final class BitmapDescriptorFactory
 {
   public static BitmapDescriptor defaultMarker()
   {
-    return fromAsset("marker.png");
+    AppMethodBeat.i(101159);
+    BitmapDescriptor localBitmapDescriptor = fromAsset("marker.png");
+    AppMethodBeat.o(101159);
+    return localBitmapDescriptor;
   }
   
   public static BitmapDescriptor fromAsset(String paramString)
   {
+    AppMethodBeat.i(101157);
     try
     {
-      paramString = BitmapDescriptorFactory.class.getResourceAsStream("/assets/" + paramString);
+      paramString = BitmapDescriptorFactory.class.getResourceAsStream("/assets/".concat(String.valueOf(paramString)));
       Bitmap localBitmap = BitmapFactory.decodeStream(paramString);
       paramString.close();
       paramString = fromBitmap(localBitmap);
+      AppMethodBeat.o(101157);
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(101157);
+    }
     return null;
   }
   
   public static BitmapDescriptor fromBitmap(Bitmap paramBitmap)
   {
-    if (paramBitmap == null) {
+    AppMethodBeat.i(101160);
+    if (paramBitmap == null)
+    {
+      AppMethodBeat.o(101160);
       return null;
     }
-    return new BitmapDescriptor(paramBitmap);
+    paramBitmap = new BitmapDescriptor(paramBitmap);
+    AppMethodBeat.o(101160);
+    return paramBitmap;
   }
   
   public static BitmapDescriptor fromFile(String paramString)
   {
+    AppMethodBeat.i(101158);
     try
     {
       paramString = new FileInputStream(new File(paramString));
       Bitmap localBitmap = BitmapFactory.decodeStream(paramString);
       paramString.close();
       paramString = fromBitmap(localBitmap);
+      AppMethodBeat.o(101158);
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(101158);
+    }
     return null;
   }
   
   public static BitmapDescriptor fromPath(String paramString)
   {
+    AppMethodBeat.i(101156);
     try
     {
       paramString = fromBitmap(BitmapFactory.decodeFile(paramString));
+      AppMethodBeat.o(101156);
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(101156);
+    }
     return null;
   }
   
@@ -70,104 +94,123 @@ public final class BitmapDescriptorFactory
   public static BitmapDescriptor fromResource(int paramInt)
   {
     // Byte code:
-    //   0: invokestatic 83	com/tencent/tencentmap/mapsdk/a/j:a	()Landroid/content/Context;
-    //   3: astore_1
-    //   4: aload_1
-    //   5: ifnull +26 -> 31
-    //   8: aload_1
-    //   9: invokevirtual 89	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   12: iload_0
-    //   13: invokevirtual 95	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
-    //   16: astore_1
-    //   17: aload_1
-    //   18: invokestatic 46	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   21: invokestatic 55	com/tencent/mapsdk/raster/model/BitmapDescriptorFactory:fromBitmap	(Landroid/graphics/Bitmap;)Lcom/tencent/mapsdk/raster/model/BitmapDescriptor;
-    //   24: astore_2
-    //   25: aload_1
-    //   26: invokestatic 100	com/tencent/tencentmap/mapsdk/a/k:a	(Ljava/io/Closeable;)V
-    //   29: aload_2
-    //   30: areturn
-    //   31: aconst_null
-    //   32: invokestatic 100	com/tencent/tencentmap/mapsdk/a/k:a	(Ljava/io/Closeable;)V
-    //   35: aconst_null
-    //   36: areturn
-    //   37: astore_1
-    //   38: aconst_null
-    //   39: astore_1
-    //   40: aload_1
-    //   41: invokestatic 100	com/tencent/tencentmap/mapsdk/a/k:a	(Ljava/io/Closeable;)V
-    //   44: aconst_null
-    //   45: areturn
-    //   46: astore_1
-    //   47: aconst_null
-    //   48: astore_2
-    //   49: aload_2
-    //   50: invokestatic 100	com/tencent/tencentmap/mapsdk/a/k:a	(Ljava/io/Closeable;)V
-    //   53: aload_1
-    //   54: athrow
-    //   55: astore_2
-    //   56: aload_1
-    //   57: astore_3
-    //   58: aload_2
-    //   59: astore_1
-    //   60: aload_3
-    //   61: astore_2
-    //   62: goto -13 -> 49
-    //   65: astore_2
-    //   66: goto -26 -> 40
+    //   0: ldc 91
+    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 97	com/tencent/tencentmap/mapsdk/a/i:a	()Landroid/content/Context;
+    //   8: astore_1
+    //   9: aload_1
+    //   10: ifnull +31 -> 41
+    //   13: aload_1
+    //   14: invokevirtual 103	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   17: iload_0
+    //   18: invokevirtual 109	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   21: astore_1
+    //   22: aload_1
+    //   23: invokestatic 54	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   26: invokestatic 63	com/tencent/mapsdk/raster/model/BitmapDescriptorFactory:fromBitmap	(Landroid/graphics/Bitmap;)Lcom/tencent/mapsdk/raster/model/BitmapDescriptor;
+    //   29: astore_2
+    //   30: aload_1
+    //   31: invokestatic 114	com/tencent/tencentmap/mapsdk/a/j:a	(Ljava/io/Closeable;)V
+    //   34: ldc 91
+    //   36: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   39: aload_2
+    //   40: areturn
+    //   41: aconst_null
+    //   42: invokestatic 114	com/tencent/tencentmap/mapsdk/a/j:a	(Ljava/io/Closeable;)V
+    //   45: ldc 91
+    //   47: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   50: aconst_null
+    //   51: areturn
+    //   52: astore_1
+    //   53: aconst_null
+    //   54: astore_1
+    //   55: aload_1
+    //   56: invokestatic 114	com/tencent/tencentmap/mapsdk/a/j:a	(Ljava/io/Closeable;)V
+    //   59: ldc 91
+    //   61: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: aconst_null
+    //   65: areturn
+    //   66: astore_1
+    //   67: aconst_null
+    //   68: astore_2
+    //   69: aload_2
+    //   70: invokestatic 114	com/tencent/tencentmap/mapsdk/a/j:a	(Ljava/io/Closeable;)V
+    //   73: ldc 91
+    //   75: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   78: aload_1
+    //   79: athrow
+    //   80: astore_2
+    //   81: aload_1
+    //   82: astore_3
+    //   83: aload_2
+    //   84: astore_1
+    //   85: aload_3
+    //   86: astore_2
+    //   87: goto -18 -> 69
+    //   90: astore_2
+    //   91: goto -36 -> 55
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	69	0	paramInt	int
-    //   3	23	1	localObject1	Object
-    //   37	1	1	localException1	Exception
-    //   39	2	1	localCloseable	java.io.Closeable
-    //   46	11	1	localObject2	Object
-    //   59	1	1	localObject3	Object
-    //   24	26	2	localBitmapDescriptor	BitmapDescriptor
-    //   55	4	2	localObject4	Object
-    //   61	1	2	localObject5	Object
-    //   65	1	2	localException2	Exception
-    //   57	4	3	localObject6	Object
+    //   0	94	0	paramInt	int
+    //   8	23	1	localObject1	Object
+    //   52	1	1	localException1	Exception
+    //   54	2	1	localCloseable	java.io.Closeable
+    //   66	16	1	localObject2	Object
+    //   84	1	1	localObject3	Object
+    //   29	41	2	localBitmapDescriptor	BitmapDescriptor
+    //   80	4	2	localObject4	Object
+    //   86	1	2	localObject5	Object
+    //   90	1	2	localException2	Exception
+    //   82	4	3	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   0	4	37	java/lang/Exception
-    //   8	17	37	java/lang/Exception
-    //   0	4	46	finally
-    //   8	17	46	finally
-    //   17	25	55	finally
-    //   17	25	65	java/lang/Exception
+    //   5	9	52	java/lang/Exception
+    //   13	22	52	java/lang/Exception
+    //   5	9	66	finally
+    //   13	22	66	finally
+    //   22	30	80	finally
+    //   22	30	90	java/lang/Exception
   }
   
   public static BitmapDescriptor fromView(View paramView)
   {
-    Object localObject = null;
+    AppMethodBeat.i(101154);
     try
     {
-      Context localContext = j.a();
-      if (localContext != null)
+      Object localObject = i.a();
+      if (localObject != null)
       {
-        localObject = new FrameLayout(localContext);
+        localObject = new FrameLayout((Context)localObject);
         ((FrameLayout)localObject).addView(paramView);
         ((FrameLayout)localObject).destroyDrawingCache();
-        localObject = fromBitmap(getViewBitmap((View)localObject));
+        paramView = fromBitmap(getViewBitmap((View)localObject));
+        AppMethodBeat.o(101154);
+        return paramView;
       }
-      return localObject;
+      AppMethodBeat.o(101154);
+      return null;
     }
-    catch (Exception paramView) {}
+    catch (Exception paramView)
+    {
+      AppMethodBeat.o(101154);
+    }
     return null;
   }
   
   private static Bitmap getViewBitmap(View paramView)
   {
+    AppMethodBeat.i(101155);
     paramView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
     paramView.layout(0, 0, paramView.getMeasuredWidth(), paramView.getMeasuredHeight());
     paramView.buildDrawingCache();
-    return paramView.getDrawingCache().copy(Bitmap.Config.ARGB_8888, false);
+    paramView = paramView.getDrawingCache().copy(Bitmap.Config.ARGB_8888, false);
+    AppMethodBeat.o(101155);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.BitmapDescriptorFactory
  * JD-Core Version:    0.7.0.1
  */

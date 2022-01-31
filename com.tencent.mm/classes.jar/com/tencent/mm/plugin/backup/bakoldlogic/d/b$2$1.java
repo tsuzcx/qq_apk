@@ -1,40 +1,48 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.d;
 
-import com.tencent.mm.h.a.pr;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.qy;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.al.a;
 import com.tencent.mm.vfs.e;
 
 final class b$2$1
-  implements ai.a
+  implements al.a
 {
   b$2$1(b.2 param2) {}
   
-  public final boolean JS()
+  public final boolean acS()
   {
-    y.i("MicroMsg.BakOldTempDbModel", "bakoldRecoverFromTempDb doInBackground start");
-    y.cqL();
-    b.avU();
-    e.K(com.tencent.mm.plugin.backup.bakoldlogic.a.a.avo(), true);
-    a locala = this.hPu.hPr.avQ();
+    AppMethodBeat.i(18007);
+    ab.i("MicroMsg.BakOldTempDbModel", "bakoldRecoverFromTempDb doInBackground start");
+    ab.dsI();
+    b.aVx();
+    e.O(com.tencent.mm.plugin.backup.bakoldlogic.a.a.aUR(), true);
+    a locala = this.jIW.jIT.aVt();
     locala.handler.post(new a.2(locala));
-    y.i("MicroMsg.BakOldTempDbModel", "bakoldRecoverFromTempDb doInBackground end");
-    y.cqL();
+    ab.i("MicroMsg.BakOldTempDbModel", "bakoldRecoverFromTempDb doInBackground end");
+    ab.dsI();
+    AppMethodBeat.o(18007);
     return true;
   }
   
-  public final boolean JT()
+  public final boolean acT()
   {
-    y.i("MicroMsg.BakOldTempDbModel", "bakoldRecoverFromTempDb onPostExecute");
-    this.hPu.hPt.run();
-    com.tencent.mm.sdk.b.a.udP.m(new pr());
+    AppMethodBeat.i(18006);
+    ab.i("MicroMsg.BakOldTempDbModel", "bakoldRecoverFromTempDb onPostExecute");
+    this.jIW.jIV.run();
+    com.tencent.mm.sdk.b.a.ymk.l(new qy());
+    AppMethodBeat.o(18006);
     return false;
   }
   
   public final String toString()
   {
-    return super.toString() + "|bakoldRecoverFromTempDb";
+    AppMethodBeat.i(18008);
+    String str = super.toString() + "|bakoldRecoverFromTempDb";
+    AppMethodBeat.o(18008);
+    return str;
   }
 }
 

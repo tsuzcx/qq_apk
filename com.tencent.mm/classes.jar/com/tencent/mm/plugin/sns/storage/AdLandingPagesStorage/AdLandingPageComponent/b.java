@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 public final class b
   extends l
 {
-  public String Bo;
-  public String bIW;
-  public String bOL;
+  public String Ca;
   public String channelId;
+  public String cqq;
+  public String cwc;
   public String downloadUrl;
   public long fileSize;
-  public String oCe;
-  public boolean oCf = true;
-  public int oCg;
-  public String oCh;
-  public String oCi = "";
-  public String oCj = "";
-  public String oCk = "";
-  public String oCl = "";
-  public String oCm = "";
-  public String oCn = "";
-  public String oCo = "";
-  public String oCp = "";
-  public String oCq = "";
-  public String oCr;
+  public String rrD;
+  public boolean rrE = true;
+  public int rrF;
+  public String rrG;
+  public String rrH = "";
+  public String rrI = "";
+  public String rrJ = "";
+  public String rrK = "";
+  public String rrL = "";
+  public String rrM = "";
+  public String rrN = "";
+  public String rrO = "";
+  public String rrP = "";
+  public String rrQ;
 }
 
 

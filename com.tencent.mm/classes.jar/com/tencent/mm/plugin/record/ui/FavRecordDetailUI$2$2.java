@@ -2,12 +2,10 @@ package com.tencent.mm.plugin.record.ui;
 
 import android.content.Intent;
 import android.view.MenuItem;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.s;
 
 final class FavRecordDetailUI$2$2
   implements n.d
@@ -16,37 +14,40 @@ final class FavRecordDetailUI$2$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(24206);
     switch (paramMenuItem.getItemId())
     {
-    case 1: 
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(24206);
       return;
-    case 0: 
       paramMenuItem = new Intent();
       paramMenuItem.putExtra("Select_Conv_Type", 3);
       paramMenuItem.putExtra("scene_from", 1);
       paramMenuItem.putExtra("mutil_select_is_ret", true);
-      paramMenuItem.putExtra("select_fav_local_id", FavRecordDetailUI.b(this.ntG.ntD).field_localId);
-      d.c(this.ntG.ntD, ".ui.transmit.SelectConversationUI", paramMenuItem, 4097);
-      com.tencent.mm.plugin.fav.a.h.f(FavRecordDetailUI.b(this.ntG.ntD).field_localId, 1, 0);
+      paramMenuItem.putExtra("select_fav_local_id", FavRecordDetailUI.b(this.pZo.pZl).field_localId);
+      d.b(this.pZo.pZl, ".ui.transmit.SelectConversationUI", paramMenuItem, 4097);
+      com.tencent.mm.plugin.fav.a.h.i(FavRecordDetailUI.b(this.pZo.pZl).field_localId, 1, 0);
+      AppMethodBeat.o(24206);
       return;
-    case 2: 
-      com.tencent.mm.ui.base.h.a(this.ntG.ntD.mController.uMN, this.ntG.ntD.getString(R.l.app_delete_tips), "", new FavRecordDetailUI.2.2.1(this), null);
+      com.tencent.mm.ui.base.h.a(this.pZo.pZl.getContext(), this.pZo.pZl.getString(2131296902), "", new FavRecordDetailUI.2.2.1(this), null);
+      AppMethodBeat.o(24206);
       return;
-    case 3: 
       paramMenuItem = new Intent();
       paramMenuItem.putExtra("key_fav_scene", 2);
-      paramMenuItem.putExtra("key_fav_item_id", FavRecordDetailUI.a(this.ntG.ntD));
-      b.a(this.ntG.ntD.mController.uMN, ".ui.FavTagEditUI", paramMenuItem);
+      paramMenuItem.putExtra("key_fav_item_id", FavRecordDetailUI.a(this.pZo.pZl));
+      b.b(this.pZo.pZl.getContext(), ".ui.FavTagEditUI", paramMenuItem);
+      AppMethodBeat.o(24206);
       return;
-    case 4: 
       paramMenuItem = new Intent();
       paramMenuItem.putExtra("key_fav_scene", 1);
-      paramMenuItem.putExtra("key_fav_item_id", FavRecordDetailUI.b(this.ntG.ntD).field_localId);
-      b.a(this.ntG.ntD.mController.uMN, ".ui.FavTagEditUI", paramMenuItem);
+      paramMenuItem.putExtra("key_fav_item_id", FavRecordDetailUI.b(this.pZo.pZl).field_localId);
+      b.b(this.pZo.pZl.getContext(), ".ui.FavTagEditUI", paramMenuItem);
+      AppMethodBeat.o(24206);
       return;
+      com.tencent.mm.plugin.fav.ui.g.a(this.pZo.pZl, FavRecordDetailUI.a(this.pZo.pZl), FavRecordDetailUI.d(this.pZo.pZl));
     }
-    com.tencent.mm.plugin.fav.ui.g.a(this.ntG.ntD, FavRecordDetailUI.a(this.ntG.ntD), FavRecordDetailUI.d(this.ntG.ntD));
   }
 }
 

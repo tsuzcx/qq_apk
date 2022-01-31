@@ -4,16 +4,17 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.Checkable;
 import android.widget.ImageButton;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MMRadioImageButton
   extends ImageButton
   implements Checkable
 {
-  private boolean dB = true;
-  private boolean fQ;
-  private boolean uXF;
-  private MMRadioImageButton.a uXG;
-  private MMRadioImageButton.a uXH;
+  private boolean eD = true;
+  private boolean gK;
+  private boolean zlX;
+  private MMRadioImageButton.a zlY;
+  private MMRadioImageButton.a zlZ;
   
   public MMRadioImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,82 +28,88 @@ public class MMRadioImageButton
   
   public boolean isChecked()
   {
-    return this.fQ;
+    return this.gK;
   }
   
   public boolean performClick()
   {
+    AppMethodBeat.i(106761);
     toggle();
+    AppMethodBeat.o(106761);
     return false;
   }
   
   public void setCheckable(boolean paramBoolean)
   {
-    this.dB = paramBoolean;
+    this.eD = paramBoolean;
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    if (this.fQ != paramBoolean)
+    AppMethodBeat.i(106762);
+    if (this.gK != paramBoolean)
     {
-      this.fQ = paramBoolean;
-      setSelected(this.fQ);
+      this.gK = paramBoolean;
+      setSelected(this.gK);
       refreshDrawableState();
-      if (!this.uXF) {}
+      if (this.zlX)
+      {
+        AppMethodBeat.o(106762);
+        return;
+      }
+      this.zlX = true;
+      if (this.zlY != null) {
+        this.zlY.a(this);
+      }
+      if (this.zlZ != null) {
+        this.zlZ.a(this);
+      }
+      this.zlX = false;
     }
-    else
-    {
-      return;
-    }
-    this.uXF = true;
-    if (this.uXG != null) {
-      this.uXG.a(this);
-    }
-    if (this.uXH != null) {
-      this.uXH.a(this);
-    }
-    this.uXF = false;
+    AppMethodBeat.o(106762);
   }
   
   public void setOnMMRadioButtonCheckedChangeListener(MMRadioImageButton.a parama)
   {
-    this.uXG = parama;
+    this.zlY = parama;
   }
   
   public void setOnOtherMMRadioButtonCheckedChangeListener(MMRadioImageButton.a parama)
   {
-    this.uXH = parama;
+    this.zlZ = parama;
   }
   
   public void toggle()
   {
-    boolean bool;
-    if (this.dB) {
+    AppMethodBeat.i(106760);
+    if (this.eD)
+    {
       if (!isChecked())
       {
-        if (this.fQ) {
-          break label29;
+        if (!this.gK) {}
+        for (boolean bool = true;; bool = false)
+        {
+          setChecked(bool);
+          AppMethodBeat.o(106760);
+          return;
         }
-        bool = true;
-        setChecked(bool);
       }
     }
-    label29:
-    do
+    else
     {
-      return;
-      bool = false;
-      break;
-      if (this.uXG != null) {
-        this.uXG.b(this);
+      if (this.zlY != null) {
+        this.zlY.b(this);
       }
-    } while (this.uXH == null);
-    this.uXH.b(this);
+      if (this.zlZ != null) {
+        this.zlZ.b(this);
+      }
+    }
+    AppMethodBeat.o(106760);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMRadioImageButton
  * JD-Core Version:    0.7.0.1
  */

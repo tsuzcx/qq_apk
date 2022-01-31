@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.welab.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WelabMainUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class WelabMainUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.rEW.XM();
-    this.rEW.finish();
+    AppMethodBeat.i(80616);
+    this.vvF.hideVKB();
+    this.vvF.finish();
+    AppMethodBeat.o(80616);
     return true;
   }
 }

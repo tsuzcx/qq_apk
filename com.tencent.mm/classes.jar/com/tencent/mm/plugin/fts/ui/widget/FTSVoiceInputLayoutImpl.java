@@ -5,173 +5,215 @@ import android.content.Context;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.ui.n.d;
-import com.tencent.mm.plugin.fts.ui.n.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.at;
 
 @TargetApi(16)
 public class FTSVoiceInputLayoutImpl
   extends VoiceInputLayout
 {
-  private View.OnLongClickListener aqp = new FTSVoiceInputLayoutImpl.1(this);
-  private View kFk;
-  private TextView kFl;
-  private c kFm;
-  private boolean kFn = false;
-  private long kFo;
-  private FTSVoiceInputLayoutImpl.a kFp;
-  private View.OnTouchListener kFq = new FTSVoiceInputLayoutImpl.2(this);
-  private View.OnClickListener kFr = new FTSVoiceInputLayoutImpl.3(this);
-  
-  public FTSVoiceInputLayoutImpl(Context paramContext)
-  {
-    super(paramContext);
-    init(paramContext);
-  }
+  private View.OnLongClickListener asI;
+  private View nbZ;
+  private TextView nca;
+  private b ncb;
+  private boolean ncc;
+  private boolean ncd;
+  private long nce;
+  private View.OnTouchListener ncf;
   
   public FTSVoiceInputLayoutImpl(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(62190);
+    this.ncc = false;
+    this.ncd = false;
+    this.asI = new FTSVoiceInputLayoutImpl.2(this);
+    this.ncf = new FTSVoiceInputLayoutImpl.3(this);
     init(paramContext);
+    AppMethodBeat.o(62190);
   }
   
   public FTSVoiceInputLayoutImpl(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(62189);
+    this.ncc = false;
+    this.ncd = false;
+    this.asI = new FTSVoiceInputLayoutImpl.2(this);
+    this.ncf = new FTSVoiceInputLayoutImpl.3(this);
     init(paramContext);
+    AppMethodBeat.o(62189);
+  }
+  
+  private void bDA()
+  {
+    AppMethodBeat.i(62194);
+    runOnUiThread(new FTSVoiceInputLayoutImpl.4(this));
+    bDI();
+    AppMethodBeat.o(62194);
+  }
+  
+  private static boolean bDB()
+  {
+    AppMethodBeat.i(62195);
+    int i = g.Rc().adt();
+    if ((i == 4) || (i == 6))
+    {
+      AppMethodBeat.o(62195);
+      return true;
+    }
+    AppMethodBeat.o(62195);
+    return false;
+  }
+  
+  private static boolean bDC()
+  {
+    AppMethodBeat.i(62196);
+    if (((h)g.RI().Rj()).SD())
+    {
+      boolean bool = bDB();
+      AppMethodBeat.o(62196);
+      return bool;
+    }
+    if (at.isConnected(ah.getContext())) {}
+    for (int i = 6; i == 6; i = 0)
+    {
+      AppMethodBeat.o(62196);
+      return true;
+    }
+    AppMethodBeat.o(62196);
+    return false;
   }
   
   private void init(Context paramContext)
   {
-    View localView = inflate(paramContext, n.e.fts_voice_input_layout, this);
-    this.kFk = localView.findViewById(n.d.voice_search_start_btn);
-    this.kFk.setLayerType(1, null);
-    this.kFm = new c(paramContext);
-    this.kFk.setBackground(this.kFm);
-    this.kFk.setEnabled(true);
-    this.kFk.setOnTouchListener(this.kFq);
-    this.kFk.setOnLongClickListener(this.aqp);
-    this.kFl = ((TextView)localView.findViewById(n.d.fts_voice_search_hint));
-    localView.findViewById(n.d.fts_voice_close_btn1).setOnClickListener(this.kFr);
+    AppMethodBeat.i(62191);
+    View localView = inflate(paramContext, 2130969677, this);
+    this.nbZ = localView.findViewById(2131824403);
+    this.nbZ.setLayerType(1, null);
+    this.ncb = new b(paramContext);
+    this.nbZ.setBackground(this.ncb);
+    this.nbZ.setEnabled(true);
+    this.nbZ.setOnTouchListener(this.ncf);
+    this.nbZ.setOnLongClickListener(this.asI);
+    this.nca = ((TextView)localView.findViewById(2131824404));
     reset(true);
-    if (isInEditMode()) {}
-    for (;;)
+    if (isInEditMode())
     {
+      AppMethodBeat.o(62191);
       return;
-      int i;
-      if (((h)g.DM().Dr()).Ex())
-      {
-        i = g.Dk().KG();
-        if ((i == 4) || (i == 6)) {
-          i = 1;
-        }
-      }
-      while (i == 0)
-      {
-        runOnUiThread(new FTSVoiceInputLayoutImpl.4(this));
-        I(12, -1, -1);
-        return;
-        i = 0;
-        continue;
-        if (aq.isConnected(ae.getContext())) {}
-        for (i = 6;; i = 0)
-        {
-          if (i != 6) {
-            break label215;
-          }
-          i = 1;
-          break;
-        }
-        label215:
-        i = 0;
-      }
     }
+    if (!bDC()) {
+      bDA();
+    }
+    AppMethodBeat.o(62191);
   }
   
   private static void runOnUiThread(Runnable paramRunnable)
   {
+    AppMethodBeat.i(62201);
     if (Thread.currentThread() != Looper.getMainLooper().getThread())
     {
-      ai.d(paramRunnable);
+      al.d(paramRunnable);
+      AppMethodBeat.o(62201);
       return;
     }
     paramRunnable.run();
+    AppMethodBeat.o(62201);
   }
   
-  protected final void aWS()
+  public final void B(boolean paramBoolean1, boolean paramBoolean2)
   {
+    AppMethodBeat.i(62193);
+    ab.d("MicroMsg.FTSVoiceInputLayoutImpl", "directStart currentState = %s longUp = %s clickUp = %s", new Object[] { Integer.valueOf(this.currentState), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    if (this.currentState == 1)
+    {
+      if ((!paramBoolean1) && (!paramBoolean2))
+      {
+        bDF();
+        AppMethodBeat.o(62193);
+        return;
+      }
+      if ((paramBoolean1) && (!paramBoolean2))
+      {
+        this.ncb.bDo();
+        AppMethodBeat.o(62193);
+      }
+    }
+    else if (this.currentState == 2)
+    {
+      if (!paramBoolean2)
+      {
+        bDG();
+        AppMethodBeat.o(62193);
+        return;
+      }
+      this.ncb.bDo();
+      amT();
+      if (this.nbV != null)
+      {
+        this.nbV.bDz();
+        AppMethodBeat.o(62193);
+      }
+    }
+    else
+    {
+      if ((!paramBoolean1) && (!paramBoolean2))
+      {
+        amT();
+        AppMethodBeat.o(62193);
+        return;
+      }
+      if ((paramBoolean1) && (!paramBoolean2)) {
+        this.ncb.bDo();
+      }
+    }
+    AppMethodBeat.o(62193);
+  }
+  
+  protected final void bDD()
+  {
+    AppMethodBeat.i(62197);
     runOnUiThread(new FTSVoiceInputLayoutImpl.5(this));
+    AppMethodBeat.o(62197);
   }
   
-  protected final void aWT()
+  protected final void bDE()
   {
+    AppMethodBeat.i(62198);
     runOnUiThread(new FTSVoiceInputLayoutImpl.6(this));
+    AppMethodBeat.o(62198);
   }
   
   protected final void onReset()
   {
+    AppMethodBeat.i(62199);
     runOnUiThread(new FTSVoiceInputLayoutImpl.7(this));
+    AppMethodBeat.o(62199);
   }
   
-  protected final void rH(int paramInt)
+  public void setFTSVoiceDetectListener(FTSVoiceInputLayoutImpl.a parama)
   {
+    AppMethodBeat.i(62192);
+    super.setVoiceDetectListener(parama);
+    AppMethodBeat.o(62192);
+  }
+  
+  protected final void wF(int paramInt)
+  {
+    AppMethodBeat.i(62200);
     runOnUiThread(new FTSVoiceInputLayoutImpl.8(this, paramInt));
-  }
-  
-  public void setCloseListener(FTSVoiceInputLayoutImpl.a parama)
-  {
-    this.kFp = parama;
-  }
-  
-  public final void y(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    y.d("MicroMsg.VoiceInputLayoutImp", "directStart currentState = %s longUp = %s clickUp = %s", new Object[] { Integer.valueOf(this.kFU), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-    if (this.kFU == 1) {
-      if ((!paramBoolean1) && (!paramBoolean2)) {
-        aWV();
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((!paramBoolean1) || (paramBoolean2));
-        this.kFm.aWU();
-        return;
-        if (this.kFU != 2) {
-          break;
-        }
-        if (!paramBoolean2)
-        {
-          aWW();
-          return;
-        }
-        this.kFm.aWU();
-        TG();
-      } while (this.kFa == null);
-      this.kFa.aWR();
-      return;
-      if ((!paramBoolean1) && (!paramBoolean2))
-      {
-        TG();
-        return;
-      }
-    } while ((!paramBoolean1) || (paramBoolean2));
-    this.kFm.aWU();
+    AppMethodBeat.o(62200);
   }
 }
 

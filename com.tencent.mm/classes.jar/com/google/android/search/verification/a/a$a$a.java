@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$a$a
   implements a
@@ -18,6 +19,7 @@ final class a$a$a
   public final boolean a(Intent paramIntent, Bundle paramBundle)
   {
     boolean bool = true;
+    AppMethodBeat.i(94129);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     for (;;)
@@ -37,7 +39,7 @@ final class a$a$a
             localParcel2.readException();
             int i = localParcel2.readInt();
             if (i == 0) {
-              break label129;
+              break label144;
             }
             return bool;
           }
@@ -53,9 +55,10 @@ final class a$a$a
       {
         localParcel2.recycle();
         localParcel1.recycle();
+        AppMethodBeat.o(94129);
       }
       continue;
-      label129:
+      label144:
       bool = false;
     }
   }
@@ -67,6 +70,7 @@ final class a$a$a
   
   public final int getVersion()
   {
+    AppMethodBeat.i(94130);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -81,12 +85,13 @@ final class a$a$a
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(94130);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.search.verification.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

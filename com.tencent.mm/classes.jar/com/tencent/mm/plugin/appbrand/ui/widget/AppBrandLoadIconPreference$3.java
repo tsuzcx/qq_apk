@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.ui.widget;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView;
 
 final class AppBrandLoadIconPreference$3
@@ -9,9 +10,11 @@ final class AppBrandLoadIconPreference$3
   
   public final void run()
   {
-    if ((this.hkP) && (AppBrandLoadIconPreference.c(this.hkO) != null)) {
-      AppBrandLoadIconPreference.c(this.hkO).aqT();
+    AppMethodBeat.i(93758);
+    if ((this.iOp) && (AppBrandLoadIconPreference.c(this.iXi) != null)) {
+      AppBrandLoadIconPreference.c(this.iXi).aOx();
     }
+    AppMethodBeat.o(93758);
   }
 }
 

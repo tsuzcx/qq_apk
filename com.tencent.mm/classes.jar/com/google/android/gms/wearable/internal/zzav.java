@@ -1,25 +1,14 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
-
-public class zzav
-  extends zza
+final class zzav
 {
-  public static final Parcelable.Creator<zzav> CREATOR = new zzaw();
-  public final int statusCode;
-  public final zzo zzbUy;
+  final int zzcj;
+  final int zzg;
   
-  public zzav(int paramInt, zzo paramzzo)
+  zzav(int paramInt1, int paramInt2)
   {
-    this.statusCode = paramInt;
-    this.zzbUy = paramzzo;
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    zzaw.zza(this, paramParcel, paramInt);
+    this.zzg = paramInt1;
+    this.zzcj = paramInt2;
   }
 }
 

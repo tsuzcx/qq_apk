@@ -4,99 +4,116 @@ import android.content.Context;
 import com.tencent.tinker.lib.d.c;
 import com.tencent.tinker.loader.TinkerRuntimeException;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
+import com.tencent.tinker.loader.shareutil.SharePatchInfo;
 import java.io.File;
 
 public class a
 {
-  private static a wWh;
-  public static boolean wWi = false;
+  private static a BsK;
+  public static boolean BsL = false;
+  public final File BsM;
+  final com.tencent.tinker.lib.b.b BsN;
+  public final c BsO;
+  public final com.tencent.tinker.lib.d.d BsP;
+  public final File BsQ;
+  public final File BsR;
+  public final boolean BsS;
+  public d BsT;
+  public boolean BsU = false;
   public final Context context;
-  public final boolean prD;
+  public final boolean snC;
   public int tinkerFlags;
   final boolean tinkerLoadVerifyFlag;
-  public final File wWj;
-  final com.tencent.tinker.lib.b.b wWk;
-  public final c wWl;
-  public final com.tencent.tinker.lib.d.d wWm;
-  public final File wWn;
-  public final File wWo;
-  public final boolean wWp;
-  public d wWq;
-  public boolean wWr = false;
   
   private a(Context paramContext, int paramInt, c paramc, com.tencent.tinker.lib.d.d paramd, com.tencent.tinker.lib.b.b paramb, File paramFile1, File paramFile2, File paramFile3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     this.context = paramContext;
-    this.wWk = paramb;
-    this.wWl = paramc;
-    this.wWm = paramd;
+    this.BsN = paramb;
+    this.BsO = paramc;
+    this.BsP = paramd;
     this.tinkerFlags = paramInt;
-    this.wWj = paramFile1;
-    this.wWn = paramFile2;
-    this.wWo = paramFile3;
-    this.prD = paramBoolean1;
+    this.BsM = paramFile1;
+    this.BsQ = paramFile2;
+    this.BsR = paramFile3;
+    this.snC = paramBoolean1;
     this.tinkerLoadVerifyFlag = paramBoolean3;
-    this.wWp = paramBoolean2;
+    this.BsS = paramBoolean2;
   }
   
   public static void a(a parama)
   {
-    if (wWh != null) {
+    if (BsK != null) {
       throw new TinkerRuntimeException("Tinker instance is already set.");
     }
-    wWh = parama;
+    BsK = parama;
   }
   
-  public static a hN(Context paramContext)
+  private void awT(String paramString)
   {
-    if (!wWi) {
+    if ((this.BsM == null) || (paramString == null)) {
+      return;
+    }
+    SharePatchFileUtil.cO(this.BsM.getAbsolutePath() + "/" + paramString);
+  }
+  
+  public static a jo(Context paramContext)
+  {
+    if (!BsL) {
       throw new TinkerRuntimeException("you must install tinker before get tinker sInstance");
     }
     try
     {
-      if (wWh == null) {
-        wWh = new a(paramContext).cQI();
+      if (BsK == null) {
+        BsK = new a(paramContext).dWx();
       }
-      return wWh;
+      return BsK;
     }
     finally {}
   }
   
-  public final void Z(File paramFile)
+  public final void ai(File paramFile)
   {
-    if ((this.wWj == null) || (paramFile == null) || (!paramFile.exists())) {}
+    if ((this.BsM == null) || (paramFile == null) || (!paramFile.exists())) {
+      return;
+    }
+    awT(SharePatchFileUtil.axb(SharePatchFileUtil.q(paramFile)));
+  }
+  
+  public final void bIo()
+  {
+    if (this.BsM == null) {}
+    File localFile1;
+    File localFile2;
+    SharePatchInfo localSharePatchInfo;
     do
     {
       return;
-      paramFile = SharePatchFileUtil.agk(SharePatchFileUtil.ai(paramFile));
-    } while ((this.wWj == null) || (paramFile == null));
-    SharePatchFileUtil.bL(this.wWj.getAbsolutePath() + "/" + paramFile);
-  }
-  
-  public final void bbj()
-  {
-    if (this.wWj == null) {
-      return;
-    }
-    if (this.wWr) {
-      com.tencent.tinker.lib.f.a.e("Tinker.Tinker", "it is not safety to clean patch when tinker is loaded, you should kill all your process after clean!", new Object[0]);
-    }
-    SharePatchFileUtil.k(this.wWj);
+      localFile1 = SharePatchFileUtil.awZ(this.BsM.getAbsolutePath());
+      if (!localFile1.exists())
+      {
+        com.tencent.tinker.lib.f.a.w("Tinker.Tinker", "try to clean patch while patch info file does not exist.", new Object[0]);
+        return;
+      }
+      localFile2 = SharePatchFileUtil.axa(this.BsM.getAbsolutePath());
+      localSharePatchInfo = SharePatchInfo.l(localFile1, localFile2);
+    } while (localSharePatchInfo == null);
+    localSharePatchInfo.BvX = true;
+    SharePatchInfo.a(localFile1, localSharePatchInfo, localFile2);
   }
   
   public static final class a
   {
+    private File BsM;
+    public com.tencent.tinker.lib.b.b BsN;
+    public c BsO;
+    public com.tencent.tinker.lib.d.d BsP;
+    private File BsQ;
+    private File BsR;
+    private final boolean BsV;
+    private final boolean BsW;
+    public Boolean BsX;
     private final Context context;
     public int status = -1;
-    private File wWj;
-    public com.tencent.tinker.lib.b.b wWk;
-    public c wWl;
-    public com.tencent.tinker.lib.d.d wWm;
-    private File wWn;
-    private File wWo;
-    private final boolean wWs;
-    private final boolean wWt;
-    public Boolean wWu;
     
     public a(Context paramContext)
     {
@@ -104,37 +121,37 @@ public class a
         throw new TinkerRuntimeException("Context must not be null.");
       }
       this.context = paramContext;
-      this.wWs = com.tencent.tinker.lib.f.b.ie(paramContext);
-      this.wWt = com.tencent.tinker.lib.f.b.hR(paramContext);
-      this.wWj = SharePatchFileUtil.hX(paramContext);
-      if (this.wWj == null)
+      this.BsV = com.tencent.tinker.lib.f.b.jH(paramContext);
+      this.BsW = com.tencent.tinker.lib.f.b.js(paramContext);
+      this.BsM = SharePatchFileUtil.jy(paramContext);
+      if (this.BsM == null)
       {
         com.tencent.tinker.lib.f.a.e("Tinker.Tinker", "patchDirectory is null!", new Object[0]);
         return;
       }
-      this.wWn = SharePatchFileUtil.agi(this.wWj.getAbsolutePath());
-      this.wWo = SharePatchFileUtil.agj(this.wWj.getAbsolutePath());
-      com.tencent.tinker.lib.f.a.w("Tinker.Tinker", "tinker patch directory: %s", new Object[] { this.wWj });
+      this.BsQ = SharePatchFileUtil.awZ(this.BsM.getAbsolutePath());
+      this.BsR = SharePatchFileUtil.axa(this.BsM.getAbsolutePath());
+      com.tencent.tinker.lib.f.a.w("Tinker.Tinker", "tinker patch directory: %s", new Object[] { this.BsM });
     }
     
-    public final a cQI()
+    public final a dWx()
     {
       if (this.status == -1) {
         this.status = 7;
       }
-      if (this.wWl == null) {
-        this.wWl = new com.tencent.tinker.lib.d.a(this.context);
+      if (this.BsO == null) {
+        this.BsO = new com.tencent.tinker.lib.d.a(this.context);
       }
-      if (this.wWm == null) {
-        this.wWm = new com.tencent.tinker.lib.d.b(this.context);
+      if (this.BsP == null) {
+        this.BsP = new com.tencent.tinker.lib.d.b(this.context);
       }
-      if (this.wWk == null) {
-        this.wWk = new com.tencent.tinker.lib.b.a(this.context);
+      if (this.BsN == null) {
+        this.BsN = new com.tencent.tinker.lib.b.a(this.context);
       }
-      if (this.wWu == null) {
-        this.wWu = Boolean.valueOf(false);
+      if (this.BsX == null) {
+        this.BsX = Boolean.FALSE;
       }
-      return new a(this.context, this.status, this.wWl, this.wWm, this.wWk, this.wWj, this.wWn, this.wWo, this.wWs, this.wWt, this.wWu.booleanValue(), (byte)0);
+      return new a(this.context, this.status, this.BsO, this.BsP, this.BsN, this.BsM, this.BsQ, this.BsR, this.BsV, this.BsW, this.BsX.booleanValue(), (byte)0);
     }
   }
 }

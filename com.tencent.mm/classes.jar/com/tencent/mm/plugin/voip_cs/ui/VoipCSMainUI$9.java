@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.voip_cs.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoipCSMainUI$9
   implements DialogInterface.OnClickListener
@@ -10,8 +11,10 @@ final class VoipCSMainUI$9
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(135397);
     paramDialogInterface.dismiss();
-    this.qeX.AB(3);
+    this.tLK.Ic(3);
+    AppMethodBeat.o(135397);
   }
 }
 

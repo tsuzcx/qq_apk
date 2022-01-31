@@ -7,13 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.c.apc;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.protocal.protobuf.avb;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -21,23 +18,37 @@ import java.util.List;
 final class BankRemitHistoryUI$a
   extends BaseAdapter
 {
-  private SimpleDateFormat nwJ = new SimpleDateFormat(this.nwG.mController.uMN.getString(a.i.bank_remit_history_date_format_pattern));
+  private SimpleDateFormat pYf;
   
-  private BankRemitHistoryUI$a(BankRemitHistoryUI paramBankRemitHistoryUI) {}
-  
-  private String ce(long paramLong)
+  private BankRemitHistoryUI$a(BankRemitHistoryUI paramBankRemitHistoryUI)
   {
-    return this.nwJ.format(new Date(1000L * paramLong));
+    AppMethodBeat.i(44614);
+    this.pYf = new SimpleDateFormat(this.qhI.getContext().getString(2131297494));
+    AppMethodBeat.o(44614);
+  }
+  
+  private String ha(long paramLong)
+  {
+    AppMethodBeat.i(44618);
+    String str = this.pYf.format(new Date(1000L * paramLong));
+    AppMethodBeat.o(44618);
+    return str;
   }
   
   public final int getCount()
   {
-    return BankRemitHistoryUI.i(this.nwG).size();
+    AppMethodBeat.i(44615);
+    int i = BankRemitHistoryUI.i(this.qhI).size();
+    AppMethodBeat.o(44615);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return BankRemitHistoryUI.i(this.nwG).get(paramInt);
+    AppMethodBeat.i(44616);
+    Object localObject = BankRemitHistoryUI.i(this.qhI).get(paramInt);
+    AppMethodBeat.o(44616);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -47,15 +58,16 @@ final class BankRemitHistoryUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(44617);
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.nwG.mController.uMN).inflate(a.g.bank_remit_history_item, paramViewGroup, false);
-      localView.setTag(new BankRemitHistoryUI.b(this.nwG, localView));
+      localView = LayoutInflater.from(this.qhI.getContext()).inflate(2130968823, paramViewGroup, false);
+      localView.setTag(new BankRemitHistoryUI.b(this.qhI, localView));
     }
     paramView = (BankRemitHistoryUI.b)localView.getTag();
-    paramViewGroup = (apc)getItem(paramInt);
-    String str = ce(paramViewGroup.tkY);
+    paramViewGroup = (avb)getItem(paramInt);
+    String str = ha(paramViewGroup.xkr);
     if (paramInt == 0) {
       paramInt = 1;
     }
@@ -63,42 +75,44 @@ final class BankRemitHistoryUI$a
     {
       if (paramInt != 0)
       {
-        paramView.nwK.setText(str);
-        paramView.nwK.setVisibility(0);
+        paramView.qhL.setText(str);
+        paramView.qhL.setVisibility(0);
+        label104:
+        paramView.qhO.setUrl(paramViewGroup.qfY);
+        paramView.hsI.setText(paramViewGroup.title);
+        paramView.qhM.setText(paramViewGroup.xks);
+        paramView.gpp.setText(paramViewGroup.xkq);
+        if (bo.isNullOrNil(paramViewGroup.xkt)) {
+          break label251;
+        }
+        if (!bo.isNullOrNil(paramViewGroup.xku)) {
+          paramView.qhN.setTextColor(Color.parseColor(paramViewGroup.xku));
+        }
+        paramView.qhN.setText(paramViewGroup.xkt);
+        paramView.qhN.setVisibility(0);
       }
       for (;;)
       {
-        paramView.nwN.setUrl(paramViewGroup.nve);
-        paramView.gaI.setText(paramViewGroup.title);
-        paramView.nwL.setText(paramViewGroup.tkZ);
-        paramView.eXs.setText(paramViewGroup.tkX);
-        if (bk.bl(paramViewGroup.tla)) {
-          break label245;
-        }
-        if (!bk.bl(paramViewGroup.tlb)) {
-          paramView.nwM.setTextColor(Color.parseColor(paramViewGroup.tlb));
-        }
-        paramView.nwM.setText(paramViewGroup.tla);
-        paramView.nwM.setVisibility(0);
+        AppMethodBeat.o(44617);
         return localView;
-        if (str.equals(ce(((apc)getItem(paramInt - 1)).tkY))) {
-          break label257;
+        if (str.equals(ha(((avb)getItem(paramInt - 1)).xkr))) {
+          break label263;
         }
         paramInt = 1;
         break;
-        paramView.nwK.setVisibility(8);
+        paramView.qhL.setVisibility(8);
+        break label104;
+        label251:
+        paramView.qhN.setVisibility(8);
       }
-      label245:
-      paramView.nwM.setVisibility(8);
-      return localView;
-      label257:
+      label263:
       paramInt = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitHistoryUI.a
  * JD-Core Version:    0.7.0.1
  */

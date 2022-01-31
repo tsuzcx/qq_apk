@@ -1,5 +1,7 @@
 package com.google.android.exoplayer2;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class w$1
   extends w
 {
@@ -10,20 +12,26 @@ final class w$1
   
   public final w.a a(int paramInt, w.a parama, boolean paramBoolean)
   {
-    throw new IndexOutOfBoundsException();
+    AppMethodBeat.i(95754);
+    parama = new IndexOutOfBoundsException();
+    AppMethodBeat.o(95754);
+    throw parama;
   }
   
-  public final w.b a(int paramInt, w.b paramb, long paramLong)
+  public final w.b a(int paramInt, w.b paramb, boolean paramBoolean, long paramLong)
   {
-    throw new IndexOutOfBoundsException();
+    AppMethodBeat.i(95753);
+    paramb = new IndexOutOfBoundsException();
+    AppMethodBeat.o(95753);
+    throw paramb;
   }
   
-  public final int kV()
+  public final int ne()
   {
     return 0;
   }
   
-  public final int kW()
+  public final int nf()
   {
     return 0;
   }

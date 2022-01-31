@@ -1,100 +1,96 @@
 package com.google.android.exoplayer2.h;
 
-import android.net.Uri;
 import com.google.android.exoplayer2.i.a;
-import java.util.Arrays;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.InputStream;
 
 public final class i
+  extends InputStream
 {
-  public final byte[] aQU;
-  public final long aQV;
-  public final long aQW;
-  public final int flags;
-  public final String key;
-  public final long position;
-  public final Uri uri;
+  private final g aBo;
+  private final j aQI;
+  private final byte[] aYv;
+  long aYw;
+  private boolean closed;
+  private boolean opened;
   
-  public i(Uri paramUri)
+  public i(g paramg, j paramj)
   {
-    this(paramUri, (byte)0);
+    AppMethodBeat.i(95795);
+    this.opened = false;
+    this.closed = false;
+    this.aBo = paramg;
+    this.aQI = paramj;
+    this.aYv = new byte[1];
+    AppMethodBeat.o(95795);
   }
   
-  public i(Uri paramUri, byte paramByte)
+  public final void close()
   {
-    this(paramUri, 0L, 0L, -1L, 1);
-  }
-  
-  public i(Uri paramUri, long paramLong1, long paramLong2)
-  {
-    this(paramUri, paramLong1, paramLong1, paramLong2, 0);
-  }
-  
-  private i(Uri paramUri, long paramLong1, long paramLong2, long paramLong3, int paramInt)
-  {
-    this(paramUri, null, paramLong1, paramLong2, paramLong3, null, paramInt);
-  }
-  
-  private i(Uri paramUri, byte[] paramArrayOfByte, long paramLong1, long paramLong2, long paramLong3, String paramString, int paramInt)
-  {
-    if (paramLong1 >= 0L)
+    AppMethodBeat.i(95799);
+    if (!this.closed)
     {
-      bool = true;
-      a.aB(bool);
-      if (paramLong2 < 0L) {
-        break label103;
-      }
-      bool = true;
-      label28:
-      a.aB(bool);
-      if ((paramLong3 <= 0L) && (paramLong3 != -1L)) {
-        break label109;
-      }
+      this.aBo.close();
+      this.closed = true;
     }
-    label103:
-    label109:
+    AppMethodBeat.o(95799);
+  }
+  
+  final void qo()
+  {
+    AppMethodBeat.i(95800);
+    if (!this.opened)
+    {
+      this.aBo.a(this.aQI);
+      this.opened = true;
+    }
+    AppMethodBeat.o(95800);
+  }
+  
+  public final int read()
+  {
+    AppMethodBeat.i(95796);
+    if (read(this.aYv) == -1)
+    {
+      AppMethodBeat.o(95796);
+      return -1;
+    }
+    int i = this.aYv[0];
+    AppMethodBeat.o(95796);
+    return i & 0xFF;
+  }
+  
+  public final int read(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(95797);
+    int i = read(paramArrayOfByte, 0, paramArrayOfByte.length);
+    AppMethodBeat.o(95797);
+    return i;
+  }
+  
+  public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(95798);
+    if (!this.closed) {}
     for (boolean bool = true;; bool = false)
     {
-      a.aB(bool);
-      this.uri = paramUri;
-      this.aQU = paramArrayOfByte;
-      this.aQV = paramLong1;
-      this.position = paramLong2;
-      this.aQW = paramLong3;
-      this.key = paramString;
-      this.flags = paramInt;
-      return;
-      bool = false;
-      break;
-      bool = false;
-      break label28;
+      a.checkState(bool);
+      qo();
+      paramInt1 = this.aBo.read(paramArrayOfByte, paramInt1, paramInt2);
+      if (paramInt1 != -1) {
+        break;
+      }
+      AppMethodBeat.o(95798);
+      return -1;
     }
-  }
-  
-  public final i U(long paramLong)
-  {
-    long l = -1L;
-    if (this.aQW == -1L) {}
-    while ((paramLong == 0L) && (this.aQW == l))
-    {
-      return this;
-      l = this.aQW - paramLong;
-    }
-    return new i(this.uri, this.aQU, this.aQV + paramLong, this.position + paramLong, l, this.key, this.flags);
-  }
-  
-  public final boolean nR()
-  {
-    return (this.flags & 0x1) == 1;
-  }
-  
-  public final String toString()
-  {
-    return "DataSpec[" + this.uri + ", " + Arrays.toString(this.aQU) + ", " + this.aQV + ", " + this.position + ", " + this.aQW + ", " + this.key + ", " + this.flags + "]";
+    this.aYw += paramInt1;
+    AppMethodBeat.o(95798);
+    return paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.exoplayer2.h.i
  * JD-Core Version:    0.7.0.1
  */

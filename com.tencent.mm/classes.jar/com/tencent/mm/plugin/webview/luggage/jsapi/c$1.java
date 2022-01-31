@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
-import com.tencent.luggage.e.a.a;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.b.a;
-import com.tencent.mm.protocal.c.aqz;
-import com.tencent.mm.protocal.c.aro;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.axe;
+import com.tencent.mm.protocal.protobuf.axt;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class c$1
   implements b.a
@@ -16,33 +17,39 @@ final class c$1
   
   public final void a(int paramInt1, int paramInt2, String paramString, b paramb)
   {
-    y.i("MicroMsg.JsApiAuthorize", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(6279);
+    ab.i("MicroMsg.JsApiAuthorize", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      this.kNj.a("fail", null);
+      this.njN.a("fail", null);
+      AppMethodBeat.o(6279);
       return;
     }
-    paramString = (aro)paramb.ecF.ecN;
-    if ((paramString == null) || (paramString.tnb == null))
+    paramString = (axt)paramb.fsW.fta;
+    if ((paramString == null) || (paramString.xmS == null))
     {
-      this.kNj.a("fail", null);
+      this.njN.a("fail", null);
+      AppMethodBeat.o(6279);
       return;
     }
-    paramInt1 = paramString.tnb.bLB;
-    paramb = paramString.tnb.bLC;
-    y.i("MicroMsg.JsApiAuthorize", "jsErrcode = %d", new Object[] { Integer.valueOf(paramInt1) });
+    paramInt1 = paramString.xmS.csV;
+    paramb = paramString.xmS.csW;
+    ab.i("MicroMsg.JsApiAuthorize", "jsErrcode = %d", new Object[] { Integer.valueOf(paramInt1) });
     if (paramInt1 == -12000)
     {
-      ai.d(new c.1.1(this, paramString.tab, paramString.kVn, paramString.suv));
+      al.d(new c.1.1(this, paramString.wYt, paramString.ntp, paramString.wnz));
+      AppMethodBeat.o(6279);
       return;
     }
     if (paramInt1 == 0)
     {
-      this.kNj.a("", null);
+      this.njN.a("", null);
+      AppMethodBeat.o(6279);
       return;
     }
-    y.e("MicroMsg.JsApiAuthorize", "ERROR = %s", new Object[] { paramb });
-    this.kNj.a("fail", null);
+    ab.e("MicroMsg.JsApiAuthorize", "ERROR = %s", new Object[] { paramb });
+    this.njN.a("fail", null);
+    AppMethodBeat.o(6279);
   }
 }
 

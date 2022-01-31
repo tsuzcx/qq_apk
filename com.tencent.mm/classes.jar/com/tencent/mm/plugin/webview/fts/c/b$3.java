@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.webview.fts.c;
 
 import android.content.Context;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.ui.WebSearchWebVideoViewControlBar;
 import com.tencent.mm.plugin.webview.fts.ui.FtsVideoWrapper;
 import com.tencent.mm.plugin.webview.fts.ui.FtsWebVideoView;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.lang.ref.WeakReference;
 
 final class b$3
@@ -14,100 +15,120 @@ final class b$3
 {
   b$3(b paramb, FtsWebVideoView paramFtsWebVideoView) {}
   
-  public final void ajc()
+  public final void aDk()
   {
-    com.tencent.mm.plugin.webview.fts.ui.b localb = this.rbo.rbl;
-    Object localObject1 = localb.BT(localb.gVp);
-    float[] arrayOfFloat = localb.gVm;
-    if ((localObject1 == null) || (((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject1).gVz == null) || (arrayOfFloat == null)) {}
-    do
+    AppMethodBeat.i(5936);
+    com.tencent.mm.plugin.webview.fts.ui.b localb = this.uQW.uQT;
+    Object localObject1 = localb.JN(localb.iyC);
+    float[] arrayOfFloat = localb.iyz;
+    if ((localObject1 == null) || (((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject1).iyQ == null) || (arrayOfFloat == null))
     {
+      AppMethodBeat.o(5936);
       return;
-      localObject1 = (View)((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject1).gVz.get();
-    } while (localObject1 == null);
-    if (localb.gVp != localb.gVl)
+    }
+    localObject1 = (View)((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject1).iyQ.get();
+    if (localObject1 != null)
     {
-      Object localObject2 = localb.BT(localb.gVl);
-      if ((localObject2 != null) && (((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject2).gVz != null))
+      if (localb.iyC != localb.iyy)
       {
-        localObject2 = (View)((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject2).gVz.get();
-        if (localObject2 != null) {
-          localb.a(localb.gVl, arrayOfFloat, ((View)localObject2).getVisibility());
+        Object localObject2 = localb.JN(localb.iyy);
+        if ((localObject2 != null) && (((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject2).iyQ != null))
+        {
+          localObject2 = (View)((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject2).iyQ.get();
+          if (localObject2 != null) {
+            localb.a(localb.iyy, arrayOfFloat, ((View)localObject2).getVisibility());
+          }
         }
       }
+      int i = localb.iyC;
+      localb.iyy = -1;
+      localb.iyC = -1;
+      if (localb.uQN != null)
+      {
+        localb.uQN.aDk();
+        localb.uQN = null;
+      }
+      localb.a(i, arrayOfFloat, ((View)localObject1).getVisibility());
     }
-    int i = localb.gVp;
-    localb.gVl = -1;
-    localb.gVp = -1;
-    if (localb.rbf != null)
-    {
-      localb.rbf.ajc();
-      localb.rbf = null;
-    }
-    localb.a(i, arrayOfFloat, ((View)localObject1).getVisibility());
+    AppMethodBeat.o(5936);
   }
   
-  public final void caM()
+  public final void daM()
   {
-    FtsWebVideoView localFtsWebVideoView = this.rbn;
-    if ((!localFtsWebVideoView.dnJ) && (localFtsWebVideoView.getSystemVolume() == 0)) {
+    AppMethodBeat.i(5938);
+    FtsWebVideoView localFtsWebVideoView = this.uQV;
+    if ((!localFtsWebVideoView.efg) && (localFtsWebVideoView.getSystemVolume() == 0)) {
       localFtsWebVideoView.setMute(true);
     }
+    AppMethodBeat.o(5938);
   }
   
-  public final void caN()
+  public final void daN()
   {
-    FtsWebVideoView localFtsWebVideoView = this.rbn;
-    if ((localFtsWebVideoView.dnJ) && (localFtsWebVideoView.getSystemVolume() > 0)) {
+    AppMethodBeat.i(5939);
+    FtsWebVideoView localFtsWebVideoView = this.uQV;
+    if ((localFtsWebVideoView.efg) && (localFtsWebVideoView.getSystemVolume() > 0)) {
       localFtsWebVideoView.setMute(false);
     }
+    AppMethodBeat.o(5939);
+  }
+  
+  public final boolean onBackPressed()
+  {
+    AppMethodBeat.i(5937);
+    if (this.uQV.aEQ())
+    {
+      this.uQV.ok(false);
+      AppMethodBeat.o(5937);
+      return true;
+    }
+    AppMethodBeat.o(5937);
+    return false;
+  }
+  
+  public final void onBackground()
+  {
+    AppMethodBeat.i(5934);
+    FtsWebVideoView localFtsWebVideoView = this.uQV;
+    ab.i("MicroMsg.FtsWebVideoView", "onUIPause");
+    localFtsWebVideoView.uQi.alo();
+    AppMethodBeat.o(5934);
   }
   
   public final void onDestroy()
   {
-    FtsWebVideoView localFtsWebVideoView = this.rbn;
-    y.i("MicroMsg.FtsWebVideoView", "onUIDestroy");
-    y.i("MicroMsg.FtsWebVideoView", "clean");
+    AppMethodBeat.i(5935);
+    FtsWebVideoView localFtsWebVideoView = this.uQV;
+    ab.i("MicroMsg.FtsWebVideoView", "onUIDestroy");
+    ab.i("MicroMsg.FtsWebVideoView", "clean");
     localFtsWebVideoView.stop();
-    localFtsWebVideoView.raB.akT();
-    WebSearchWebVideoViewControlBar localWebSearchWebVideoViewControlBar = localFtsWebVideoView.raC;
-    if (localWebSearchWebVideoViewControlBar.gEg != null) {
-      localWebSearchWebVideoViewControlBar.gEg.stopTimer();
+    localFtsWebVideoView.uQi.aEM();
+    WebSearchWebVideoViewControlBar localWebSearchWebVideoViewControlBar = localFtsWebVideoView.uQj;
+    if (localWebSearchWebVideoViewControlBar.idl != null) {
+      localWebSearchWebVideoViewControlBar.idl.stopTimer();
     }
-    if (localWebSearchWebVideoViewControlBar.gEf != null) {
-      localWebSearchWebVideoViewControlBar.gEf.stopTimer();
+    if (localWebSearchWebVideoViewControlBar.idk != null) {
+      localWebSearchWebVideoViewControlBar.idk.stopTimer();
     }
     try
     {
-      localFtsWebVideoView.getContext().unregisterReceiver(localFtsWebVideoView.raV);
+      localFtsWebVideoView.getContext().unregisterReceiver(localFtsWebVideoView.uQD);
+      AppMethodBeat.o(5935);
       return;
     }
-    catch (Exception localException) {}
-  }
-  
-  public final void pY()
-  {
-    FtsWebVideoView localFtsWebVideoView = this.rbn;
-    y.i("MicroMsg.FtsWebVideoView", "onUIResume");
-    localFtsWebVideoView.raB.Sf();
-  }
-  
-  public final void qa()
-  {
-    FtsWebVideoView localFtsWebVideoView = this.rbn;
-    y.i("MicroMsg.FtsWebVideoView", "onUIPause");
-    localFtsWebVideoView.raB.Se();
-  }
-  
-  public final boolean qc()
-  {
-    boolean bool = false;
-    if (this.rbn.ake())
+    catch (Exception localException)
     {
-      this.rbn.lb(false);
-      bool = true;
+      AppMethodBeat.o(5935);
     }
-    return bool;
+  }
+  
+  public final void onForeground()
+  {
+    AppMethodBeat.i(5933);
+    FtsWebVideoView localFtsWebVideoView = this.uQV;
+    ab.i("MicroMsg.FtsWebVideoView", "onUIResume");
+    localFtsWebVideoView.uQi.alp();
+    AppMethodBeat.o(5933);
   }
 }
 

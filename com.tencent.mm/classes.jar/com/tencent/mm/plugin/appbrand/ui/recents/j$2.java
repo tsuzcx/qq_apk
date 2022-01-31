@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.appbrand.ui.recents;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.compat.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class j$2
   implements View.OnClickListener
@@ -13,8 +14,10 @@ final class j$2
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.AppBrandListRecentsListWAGameHeader", "Invoke H5 click listener, invoke h5");
-    ((a)g.r(a.class)).R(this.hjk.fyk, this.hjl);
+    AppMethodBeat.i(133471);
+    ab.i("MicroMsg.AppBrandListRecentsListWAGameHeader", "Invoke H5 click listener, invoke h5");
+    ((a)g.E(a.class)).U(this.iUR.gQx, this.iUS);
+    AppMethodBeat.o(133471);
   }
 }
 

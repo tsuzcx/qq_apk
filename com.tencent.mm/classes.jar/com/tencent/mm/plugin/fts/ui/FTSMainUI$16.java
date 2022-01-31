@@ -1,34 +1,55 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.d;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.a.lq;
+import com.tencent.mm.plugin.websearch.api.aa;
+import com.tencent.mm.plugin.websearch.api.an;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 final class FTSMainUI$16
-  implements Runnable
+  implements View.OnClickListener
 {
   FTSMainUI$16(FTSMainUI paramFTSMainUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    Object localObject = com.tencent.mm.model.c.c.IX().fJ("100441");
-    Map localMap;
-    if (((com.tencent.mm.storage.c)localObject).isValid())
+    AppMethodBeat.i(61886);
+    FTSMainUI localFTSMainUI = this.mYi;
+    paramView = (String)paramView.getTag();
+    if (System.currentTimeMillis() - localFTSMainUI.iod > 1000L)
     {
-      localMap = ((com.tencent.mm.storage.c)localObject).ctr();
-      if (localMap != null) {
-        break label87;
+      localFTSMainUI.iod = System.currentTimeMillis();
+      if (!aa.Je(0))
+      {
+        ab.e("MicroMsg.FTS.FTSMainUI", "fts h5 template not avail");
+        AppMethodBeat.o(61886);
+        return;
       }
+      Intent localIntent = aa.cZp();
+      localIntent.putExtra("ftsbizscene", 15);
+      localIntent.putExtra("ftsQuery", paramView);
+      localIntent.putExtra("title", paramView);
+      localIntent.putExtra("isWebwx", paramView);
+      localIntent.putExtra("ftscaneditable", false);
+      Object localObject = aa.d(15, false, 2);
+      ((Map)localObject).put("query", paramView);
+      ((Map)localObject).put("sceneActionType", "2");
+      localIntent.putExtra("rawUrl", aa.F((Map)localObject));
+      localObject = new lq();
+      ((lq)localObject).cBH.scene = 0;
+      a.ymk.l((b)localObject);
+      localIntent.putExtra("ftsInitToSearch", true);
+      d.b(localFTSMainUI.getContext(), "webview", ".ui.tools.fts.FTSSOSHomeWebViewUI", localIntent);
+      an.bz(15, paramView);
     }
-    label87:
-    for (localObject = "";; localObject = localMap.toString())
-    {
-      y.i("MicroMsg.FTS.FTSMainUI", "widget switch conf is %s", new Object[] { localObject });
-      FTSMainUI.a(this.kCm, "1".equals(localMap.get("isOpen")));
-      FTSMainUI.b(this.kCm, bk.ZS((String)localMap.get("searchBarWaitTimeoutMs")));
-      return;
-    }
+    AppMethodBeat.o(61886);
   }
 }
 

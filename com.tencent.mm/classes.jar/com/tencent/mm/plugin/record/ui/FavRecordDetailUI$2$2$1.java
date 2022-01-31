@@ -2,12 +2,10 @@ package com.tencent.mm.plugin.record.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.gf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gi;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class FavRecordDetailUI$2$2$1
   implements DialogInterface.OnClickListener
@@ -16,12 +14,14 @@ final class FavRecordDetailUI$2$2$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = h.b(this.ntH.ntG.ntD.mController.uMN, this.ntH.ntG.ntD.getString(R.l.app_delete_tips), false, null);
-    gf localgf = new gf();
-    localgf.bNF.type = 12;
-    localgf.bNF.bIr = FavRecordDetailUI.a(this.ntH.ntG.ntD);
-    localgf.bNF.bNK = new FavRecordDetailUI.2.2.1.1(this, paramDialogInterface);
-    a.udP.m(localgf);
+    AppMethodBeat.i(24205);
+    paramDialogInterface = h.b(this.pZp.pZo.pZl.getContext(), this.pZp.pZo.pZl.getString(2131296902), false, null);
+    gi localgi = new gi();
+    localgi.cuX.type = 12;
+    localgi.cuX.cpM = FavRecordDetailUI.a(this.pZp.pZo.pZl);
+    localgi.cuX.cvc = new FavRecordDetailUI.2.2.1.1(this, paramDialogInterface);
+    a.ymk.l(localgi);
+    AppMethodBeat.o(24205);
   }
 }
 

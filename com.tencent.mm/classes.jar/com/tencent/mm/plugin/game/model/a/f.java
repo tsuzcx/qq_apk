@@ -1,157 +1,208 @@
 package com.tencent.mm.plugin.game.model.a;
 
-import android.database.Cursor;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.game.report.api.a;
+import com.tencent.mm.game.report.api.b;
+import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
+import com.tencent.mm.plugin.game.api.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public final class f
-  extends i<c>
 {
-  public static final String[] dXp = { i.a(c.buS, "GameSilentDownload") };
-  
-  public f(e parame)
+  static void O(String paramString, int paramInt1, int paramInt2)
   {
-    super(parame, c.buS, "GameSilentDownload", null);
+    AppMethodBeat.i(111520);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(111520);
+      return;
+    }
+    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.f.bjl().JH(paramString);
+    if ((localFileDownloadTaskInfo != null) && (localFileDownloadTaskInfo.id > 0L))
+    {
+      long l = localFileDownloadTaskInfo.id;
+      String str = localFileDownloadTaskInfo.url;
+      if (localFileDownloadTaskInfo.jyU == 0L) {}
+      for (int i = 0;; i = (int)(localFileDownloadTaskInfo.kYX * 100L / localFileDownloadTaskInfo.jyU))
+      {
+        a(paramString, l, str, i, paramInt1, paramInt2, false, false, false, false, false, "");
+        AppMethodBeat.o(111520);
+        return;
+      }
+    }
+    a(paramString, 0L, "", 0, paramInt1, paramInt2, false, false, false, false, false, "");
+    AppMethodBeat.o(111520);
   }
   
-  public final c EQ(String paramString)
+  public static void Qh(String paramString)
   {
-    if (bk.bl(paramString))
+    AppMethodBeat.i(111518);
+    if (bo.isNullOrNil(paramString))
     {
-      y.i("MicroMsg.GameSilentDownloadStorage", "getDownloadInfo: appid is null");
-      return null;
+      AppMethodBeat.o(111518);
+      return;
     }
-    Cursor localCursor = rawQuery(String.format("select * from %s where %s=?", new Object[] { "GameSilentDownload", "appId" }), new String[] { paramString });
-    if (localCursor == null)
+    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.f.bjl().JH(paramString);
+    Object localObject = ((e)com.tencent.mm.kernel.g.E(e.class)).bEU().Qi(paramString);
+    if ((localFileDownloadTaskInfo != null) && (localFileDownloadTaskInfo.id > 0L))
     {
-      y.i("MicroMsg.GameSilentDownloadStorage", "cursor is null");
-      return null;
+      if (localObject != null)
+      {
+        l = localFileDownloadTaskInfo.id;
+        String str = localFileDownloadTaskInfo.url;
+        if (localFileDownloadTaskInfo.jyU == 0L) {}
+        for (i = 0;; i = (int)(localFileDownloadTaskInfo.kYX * 100L / localFileDownloadTaskInfo.jyU))
+        {
+          a(paramString, l, str, i, 3, 0, ((d)localObject).field_noWifi, ((d)localObject).field_noSdcard, ((d)localObject).field_noEnoughSpace, ((d)localObject).field_lowBattery, ((d)localObject).field_continueDelay, "");
+          AppMethodBeat.o(111518);
+          return;
+        }
+      }
+      long l = localFileDownloadTaskInfo.id;
+      localObject = localFileDownloadTaskInfo.url;
+      if (localFileDownloadTaskInfo.jyU == 0L) {}
+      for (int i = 0;; i = (int)(localFileDownloadTaskInfo.kYX * 100L / localFileDownloadTaskInfo.jyU))
+      {
+        a(paramString, l, (String)localObject, i, 3, 0, false, false, false, false, false, "");
+        AppMethodBeat.o(111518);
+        return;
+      }
     }
-    if (localCursor.moveToFirst())
+    if (localObject != null)
     {
-      paramString = new c();
-      paramString.d(localCursor);
-      localCursor.close();
-      return paramString;
+      a(paramString, 0L, "", 0, 3, 0, ((d)localObject).field_noWifi, ((d)localObject).field_noSdcard, ((d)localObject).field_noEnoughSpace, ((d)localObject).field_lowBattery, ((d)localObject).field_continueDelay, "");
+      AppMethodBeat.o(111518);
+      return;
     }
-    y.i("MicroMsg.GameSilentDownloadStorage", "getDownloadInfo appid:%s, no record in DB", new Object[] { paramString });
-    localCursor.close();
-    return null;
+    a(paramString, 0L, "", 0, 3, 0, false, false, false, false, false, "");
+    AppMethodBeat.o(111518);
   }
   
-  public final boolean ER(String paramString)
+  private static void a(String paramString1, long paramLong, String paramString2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, String paramString3)
   {
-    if (bk.bl(paramString)) {
-      y.i("MicroMsg.GameSilentDownloadStorage", "updateWifiState: appid is null");
-    }
-    do
+    AppMethodBeat.i(111521);
+    ab.i("MicroMsg.GameSilentDownloadReporter", "reportInfo, appId:%s, downloadId:%d, downloadUrl:%s, downloadedPct:%d, finishType:%d, errCode:%d, noWifi:%b, noSdcard:%b, noEnoughSpace:%b, lowBattery:%b, continueDelay:%b", new Object[] { paramString1, Long.valueOf(paramLong), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Boolean.valueOf(paramBoolean4), Boolean.valueOf(paramBoolean5) });
+    try
     {
-      return false;
-      paramString = EQ(paramString);
-    } while (paramString == null);
-    paramString.field_noWifi = false;
-    boolean bool = super.c(paramString, new String[0]);
-    y.i("MicroMsg.GameSilentDownloadStorage", "updateWifiState, ret:%b", new Object[] { Boolean.valueOf(bool) });
-    return bool;
+      if (bo.isNullOrNil(paramString2)) {
+        break label363;
+      }
+      str1 = URLEncoder.encode(paramString2, "UTF-8");
+      paramString2 = str1;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+    {
+      String str4;
+      for (;;)
+      {
+        String str1;
+        str2 = paramString2;
+        str4 = paramString3;
+      }
+    }
+    str1 = paramString2;
+    str4 = paramString3;
+    try
+    {
+      if (!bo.isNullOrNil(paramString3))
+      {
+        str4 = URLEncoder.encode(paramString3, "UTF-8");
+        str1 = paramString2;
+      }
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException2)
+    {
+      for (;;)
+      {
+        int i;
+        int j;
+        label162:
+        int k;
+        label170:
+        int m;
+        label178:
+        int n;
+        label315:
+        label321:
+        label327:
+        label333:
+        String str2;
+        String str3 = paramString2;
+        str4 = paramString3;
+      }
+    }
+    if (paramBoolean1)
+    {
+      i = 1;
+      if (!paramBoolean2) {
+        break label315;
+      }
+      j = 1;
+      if (!paramBoolean3) {
+        break label321;
+      }
+      k = 1;
+      if (!paramBoolean4) {
+        break label327;
+      }
+      m = 1;
+      if (!paramBoolean5) {
+        break label333;
+      }
+    }
+    for (n = 1;; n = 0)
+    {
+      paramString1 = q(new Object[] { paramString1, Long.valueOf(paramLong), str1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), str4 });
+      a.ezM.a(new b(15547, paramString1));
+      AppMethodBeat.o(111521);
+      return;
+      i = 0;
+      break;
+      j = 0;
+      break label162;
+      k = 0;
+      break label170;
+      m = 0;
+      break label178;
+    }
   }
   
-  public final boolean ES(String paramString)
+  static void aj(String paramString, int paramInt1, int paramInt2)
   {
-    if (bk.bl(paramString)) {
-      y.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardAvailableState: appid is null");
-    }
-    do
+    AppMethodBeat.i(111519);
+    if (bo.isNullOrNil(paramString))
     {
-      return false;
-      paramString = EQ(paramString);
-    } while (paramString == null);
-    paramString.field_noSdcard = false;
-    boolean bool = super.c(paramString, new String[0]);
-    y.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardAvailableState, ret:%b", new Object[] { Boolean.valueOf(bool) });
-    return bool;
+      AppMethodBeat.o(111519);
+      return;
+    }
+    if (((e)com.tencent.mm.kernel.g.E(e.class)).bEU().Qi(paramString) != null) {
+      O(paramString, paramInt1, paramInt2);
+    }
+    AppMethodBeat.o(111519);
   }
   
-  public final boolean ET(String paramString)
+  private static String q(Object... paramVarArgs)
   {
-    if (bk.bl(paramString)) {
-      y.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardSpaceState: appid is null");
-    }
-    do
+    AppMethodBeat.i(111522);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < 11)
     {
-      return false;
-      paramString = EQ(paramString);
-    } while (paramString == null);
-    paramString.field_noEnoughSpace = false;
-    boolean bool = super.c(paramString, new String[0]);
-    y.i("MicroMsg.GameSilentDownloadStorage", "updateSdcardSpaceState, ret:%b", new Object[] { Boolean.valueOf(bool) });
-    return bool;
-  }
-  
-  public final boolean EU(String paramString)
-  {
-    if (bk.bl(paramString)) {
-      y.i("MicroMsg.GameSilentDownloadStorage", "updateBatteryState: appid is null");
+      localStringBuilder.append(String.valueOf(paramVarArgs[i])).append(',');
+      i += 1;
     }
-    do
-    {
-      return false;
-      paramString = EQ(paramString);
-    } while (paramString == null);
-    paramString.field_lowBattery = false;
-    boolean bool = super.c(paramString, new String[0]);
-    y.i("MicroMsg.GameSilentDownloadStorage", "updateBatteryState, ret:%b", new Object[] { Boolean.valueOf(bool) });
-    return bool;
-  }
-  
-  public final boolean EV(String paramString)
-  {
-    if (bk.bl(paramString)) {
-      y.i("MicroMsg.GameSilentDownloadStorage", "updateDelayState: appid is null");
-    }
-    do
-    {
-      return false;
-      paramString = EQ(paramString);
-    } while (paramString == null);
-    paramString.field_continueDelay = false;
-    boolean bool = super.c(paramString, new String[0]);
-    y.i("MicroMsg.GameSilentDownloadStorage", "updateDelayState, ret:%b", new Object[] { Boolean.valueOf(bool) });
-    return bool;
-  }
-  
-  public final boolean F(String paramString, long paramLong)
-  {
-    if ((bk.bl(paramString)) || (paramLong < 0L))
-    {
-      y.i("MicroMsg.GameSilentDownloadStorage", "updateNextCheckTime: appid is null");
-      return false;
-    }
-    boolean bool = gk("GameSilentDownload", String.format("update %s set %s=%s where %s='%s'", new Object[] { "GameSilentDownload", "nextCheckTime", String.valueOf(paramLong), "appId", paramString }));
-    y.i("MicroMsg.GameSilentDownloadStorage", "updateNextCheckTime ret:%b", new Object[] { Boolean.valueOf(bool) });
-    return bool;
-  }
-  
-  public final boolean aH(String paramString, boolean paramBoolean)
-  {
-    if (bk.bl(paramString)) {
-      y.i("MicroMsg.GameSilentDownloadStorage", "updateRunningState: appid is null");
-    }
-    do
-    {
-      return false;
-      paramString = EQ(paramString);
-    } while (paramString == null);
-    paramString.field_isRunning = paramBoolean;
-    paramBoolean = super.c(paramString, new String[0]);
-    y.i("MicroMsg.GameSilentDownloadStorage", "updateRunningState, ret:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    return paramBoolean;
+    localStringBuilder.append(String.valueOf(paramVarArgs[11]));
+    paramVarArgs = localStringBuilder.toString();
+    AppMethodBeat.o(111522);
+    return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.a.f
  * JD-Core Version:    0.7.0.1
  */

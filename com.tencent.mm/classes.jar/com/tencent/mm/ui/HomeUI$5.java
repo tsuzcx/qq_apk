@@ -1,16 +1,22 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.h.a.bb;
-import com.tencent.mm.sdk.b.a;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.story.g.i;
 
 final class HomeUI$5
-  implements Runnable
+  implements View.OnClickListener
 {
   HomeUI$5(HomeUI paramHomeUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    a.udP.m(new bb());
+    AppMethodBeat.i(29345);
+    paramView = i.sFa;
+    i.cDJ().cWC = System.currentTimeMillis();
+    HomeUI.l(this.yYw);
+    AppMethodBeat.o(29345);
   }
 }
 

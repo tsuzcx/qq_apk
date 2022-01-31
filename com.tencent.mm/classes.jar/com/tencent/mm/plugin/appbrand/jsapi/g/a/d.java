@@ -4,98 +4,78 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.luggage.h.a.b;
-import com.tencent.luggage.h.a.c;
-import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.mapsdk.raster.model.Marker;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
   extends LinearLayout
-  implements g, h
+  implements h
 {
   private Context context;
-  private ImageView guM;
-  private double guN = -1.0D;
-  private double guO = -1.0D;
-  private double guP = -1.0D;
-  private double guQ = -1.0D;
-  private float guR = 900.0F;
-  private float guS = 900.0F;
-  private float guT = 0.0F;
-  private boolean guU;
-  Marker guj;
+  private ImageView hPH;
+  double hPI;
+  double hPJ;
+  double hPK;
+  double hPL;
+  float hPM;
+  float hPN;
+  private float hPO;
+  boolean hPP;
+  Marker hPb;
   
   public d(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(51235);
+    this.hPI = -1.0D;
+    this.hPJ = -1.0D;
+    this.hPK = -1.0D;
+    this.hPL = -1.0D;
+    this.hPM = 900.0F;
+    this.hPN = 900.0F;
+    this.hPO = 0.0F;
     this.context = paramContext;
-    this.guM = ((ImageView)View.inflate(this.context, a.c.default_tencent_map_location_point, this).findViewById(a.b.tp_location_point));
-    this.guM.requestFocus();
+    this.hPH = ((ImageView)View.inflate(this.context, 2130969298, this).findViewById(2131823362));
+    this.hPH.requestFocus();
+    AppMethodBeat.o(51235);
+  }
+  
+  private void au(float paramFloat)
+  {
+    AppMethodBeat.i(51237);
+    if (this.hPb != null)
+    {
+      ab.v("MicroMsg.AppbrandMapLocationPoint", "updateRotation rotation:%f", new Object[] { Float.valueOf(paramFloat) });
+      this.hPb.setRotation(paramFloat);
+    }
+    AppMethodBeat.o(51237);
   }
   
   private float getHeading()
   {
-    if (this.guU) {
-      return this.guR;
+    if (this.hPP) {
+      return this.hPM;
     }
-    return this.guT;
+    return this.hPO;
   }
   
-  public final void G(float paramFloat1, float paramFloat2)
+  public final void N(float paramFloat1, float paramFloat2)
   {
-    this.guT = paramFloat2;
-    paramFloat1 = getHeading();
-    if (this.guj != null)
-    {
-      y.d("MicroMsg.AppbrandMapLocationPoint", "updateRotation rotation:%f", new Object[] { Float.valueOf(paramFloat1) });
-      this.guj.setRotation(paramFloat1);
-    }
-  }
-  
-  public final void a(double paramDouble1, double paramDouble2, String paramString, double paramDouble3)
-  {
-    if ((this.guP == -1.0D) && (this.guQ == -1.0D))
-    {
-      this.guP = paramDouble1;
-      this.guN = paramDouble1;
-      this.guQ = paramDouble2;
-      this.guO = paramDouble2;
-      if ((this.guP != -1.0D) && (this.guQ != -1.0D)) {
-        this.guU = e.a(this.guQ, this.guP, paramDouble2, paramDouble1, paramString, paramDouble3);
-      }
-      if ((this.guS != 900.0F) && (this.guR != 900.0F)) {
-        break label180;
-      }
-      float f = (float)e.f(paramDouble1, paramDouble2);
-      this.guR = f;
-      this.guS = f;
-    }
-    for (;;)
-    {
-      if (this.guj != null) {
-        this.guj.setPosition(new LatLng(paramDouble1, paramDouble2));
-      }
-      return;
-      this.guP = this.guN;
-      this.guQ = this.guO;
-      this.guO = paramDouble2;
-      this.guN = paramDouble1;
-      break;
-      label180:
-      this.guS = this.guR;
-      this.guR = ((float)e.f(paramDouble1, paramDouble2));
-    }
+    AppMethodBeat.i(51236);
+    this.hPO = paramFloat2;
+    au(getHeading());
+    AppMethodBeat.o(51236);
   }
   
   public final double getLatitude()
   {
-    return this.guN;
+    return this.hPI;
   }
   
   public final double getLongitude()
   {
-    return this.guO;
+    return this.hPJ;
   }
 }
 

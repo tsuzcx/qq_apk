@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.wxcredit.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxcredit.b;
 import com.tencent.mm.wallet_core.a;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 final class WalletWXCreditOpenNotifyUI$2
   implements View.OnClickListener
@@ -14,9 +14,11 @@ final class WalletWXCreditOpenNotifyUI$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(48741);
     paramView = new Bundle();
-    paramView.putParcelable("key_bankcard", this.rRR.BX.getParcelable("key_bankcard"));
-    a.a(this.rRR, b.class, paramView);
+    paramView.putParcelable("key_bankcard", this.vIH.getInput().getParcelable("key_bankcard"));
+    a.a(this.vIH, b.class, paramView);
+    AppMethodBeat.o(48741);
   }
 }
 

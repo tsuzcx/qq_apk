@@ -1,5 +1,6 @@
 package com.tencent.ytcommon.auth;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.TimerTask;
 
 final class Auth$2
@@ -7,8 +8,10 @@ final class Auth$2
 {
   public final void run()
   {
+    AppMethodBeat.i(2);
     Log.d("log_print_java", "flush in java ");
     Auth.access$100();
+    AppMethodBeat.o(2);
   }
 }
 

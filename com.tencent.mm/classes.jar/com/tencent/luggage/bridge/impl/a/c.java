@@ -2,28 +2,36 @@ package com.tencent.luggage.bridge.impl.a;
 
 import android.graphics.Bitmap;
 import android.graphics.Rect;
-import com.tencent.mm.plugin.appbrand.d.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.e.a.c;
 
 public class c
   extends a
 {
-  public Bitmap b(String paramString, Rect paramRect, a.b paramb)
+  public Bitmap b(String paramString, Rect paramRect, a.c paramc)
   {
     return null;
   }
   
   public boolean match(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    do
+    AppMethodBeat.i(90767);
+    if ((paramString == null) || (paramString.length() == 0))
     {
+      AppMethodBeat.o(90767);
       return false;
-      paramString = paramString.toLowerCase();
-    } while ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")));
-    return true;
+    }
+    paramString = paramString.toLowerCase();
+    if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+    {
+      AppMethodBeat.o(90767);
+      return true;
+    }
+    AppMethodBeat.o(90767);
+    return false;
   }
   
-  public final String pU()
+  public final String tX()
   {
     return "NetworkImageReader";
   }

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class AppBrandOpenWeRunSettingUI$4
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class AppBrandOpenWeRunSettingUI$4
   
   public final void run()
   {
-    this.hdj.finish();
+    AppMethodBeat.i(132997);
+    this.iNa.finish();
+    AppMethodBeat.o(132997);
   }
 }
 

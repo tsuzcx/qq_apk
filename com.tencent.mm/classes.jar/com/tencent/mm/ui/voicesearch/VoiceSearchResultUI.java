@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.voicesearch;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -8,18 +9,16 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bo;
-import com.tencent.mm.model.bp;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.model.br;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.q;
 import com.tencent.mm.model.r;
 import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,23 +29,26 @@ import java.util.Map;
 public class VoiceSearchResultUI
   extends MMActivity
 {
-  private int ewz = 2;
-  private TextView iCZ;
-  private int jLF = -1;
+  private String ABA = null;
+  private b ABL;
+  private String[] ABM;
+  private boolean ABN = false;
+  boolean ABO = false;
+  private ListView ABy;
+  private int cFd = 2;
+  private TextView kIg;
+  private int mfJ = -1;
   int showType = 1;
-  private ListView wiG;
-  private String wiI = null;
-  private b wiT;
-  private String[] wiU;
-  private boolean wiV = false;
-  boolean wiW = false;
   
-  private static String[] L(String[] paramArrayOfString)
+  private static String[] U(String[] paramArrayOfString)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
+    AppMethodBeat.i(35373);
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
+    {
+      AppMethodBeat.o(35373);
       return paramArrayOfString;
     }
-    y.d("MicroMsg.VoiceSearchResultUI", "oldlist.length " + paramArrayOfString.length);
+    ab.d("MicroMsg.VoiceSearchResultUI", "oldlist.length " + paramArrayOfString.length);
     HashMap localHashMap = new HashMap();
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfString.length;
@@ -54,30 +56,33 @@ public class VoiceSearchResultUI
     while (i < j)
     {
       String str1 = paramArrayOfString[i];
-      String str2 = r.gV(str1);
-      y.d("MicroMsg.VoiceSearchResultUI", "displayname " + str2);
-      if ((!localHashMap.containsValue(str2)) || (!s.fn(str1)))
+      String str2 = s.nE(str1);
+      ab.d("MicroMsg.VoiceSearchResultUI", "displayname ".concat(String.valueOf(str2)));
+      if ((!localHashMap.containsValue(str2)) || (!t.lA(str1)))
       {
-        y.d("MicroMsg.VoiceSearchResultUI", "username " + str1);
+        ab.d("MicroMsg.VoiceSearchResultUI", "username ".concat(String.valueOf(str1)));
         localHashMap.put(str2, str1);
         localArrayList.add(str1);
       }
       i += 1;
     }
-    return (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    paramArrayOfString = (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    AppMethodBeat.o(35373);
+    return paramArrayOfString;
   }
   
-  private void M(String[] paramArrayOfString)
+  private void V(String[] paramArrayOfString)
   {
+    AppMethodBeat.i(35378);
     ArrayList localArrayList = new ArrayList();
-    if ((paramArrayOfString != null) && (this.wiT != null))
+    if ((paramArrayOfString != null) && (this.ABL != null))
     {
       int j = paramArrayOfString.length;
       int i = 0;
       while (i < j)
       {
         String str = paramArrayOfString[i];
-        if (this.wiT.aev(str)) {
+        if (this.ABL.avi(str)) {
           localArrayList.add(str);
         }
         i += 1;
@@ -85,32 +90,34 @@ public class VoiceSearchResultUI
     }
     if (localArrayList.size() == 0)
     {
-      this.iCZ.setVisibility(0);
-      if (this.wiI != null) {
-        this.iCZ.setText(this.wiI);
+      this.kIg.setVisibility(0);
+      if (this.ABA != null) {
+        this.kIg.setText(this.ABA);
       }
     }
     for (;;)
     {
-      if (this.wiT != null)
+      if (this.ABL != null)
       {
-        paramArrayOfString = this.wiT;
-        paramArrayOfString.ves = ((String[])localArrayList.toArray(new String[localArrayList.size()]));
-        paramArrayOfString.wiK = null;
-        paramArrayOfString.bcS();
-        paramArrayOfString.jy(false);
+        paramArrayOfString = this.ABL;
+        paramArrayOfString.zsR = ((String[])localArrayList.toArray(new String[localArrayList.size()]));
+        paramArrayOfString.sIj = null;
+        paramArrayOfString.bKb();
+        paramArrayOfString.lE(false);
       }
+      AppMethodBeat.o(35378);
       return;
-      this.iCZ.setText(getString(R.l.address_empty_voicesearch_tip));
+      this.kIg.setText(getString(2131296463));
       continue;
-      this.iCZ.setVisibility(8);
+      this.kIg.setVisibility(8);
     }
   }
   
-  static boolean aew(String paramString)
+  static boolean avj(String paramString)
   {
+    AppMethodBeat.i(35377);
     Cursor[] arrayOfCursor = new Cursor[2];
-    arrayOfCursor[0] = au.Hx().dUh.b(s.dUT, null, paramString);
+    arrayOfCursor[0] = aw.aaz().fkq.b(t.flc, null, paramString);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     try
@@ -119,10 +126,10 @@ public class VoiceSearchResultUI
       {
         String str = arrayOfCursor[0].getString(arrayOfCursor[0].getColumnIndex("username"));
         localArrayList1.add(str);
-        if (!s.fn(str)) {
+        if (!t.lA(str)) {
           localArrayList2.add(str);
         }
-        y.d("MicroMsg.VoiceSearchResultUI", "block user " + str);
+        ab.d("MicroMsg.VoiceSearchResultUI", "block user ".concat(String.valueOf(str)));
       }
       int i;
       int j;
@@ -130,92 +137,99 @@ public class VoiceSearchResultUI
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.VoiceSearchResultUI", localException, "", new Object[0]);
-      arrayOfCursor[1] = au.Hx().dUi.a(paramString, "@micromsg.with.all.biz.qq.com", localArrayList1, localArrayList2);
+      ab.printErrStackTrace("MicroMsg.VoiceSearchResultUI", localException, "", new Object[0]);
+      arrayOfCursor[1] = aw.aaz().fkr.a(paramString, "@micromsg.with.all.biz.qq.com", localArrayList1, localArrayList2);
       i = arrayOfCursor[1].getCount();
       j = arrayOfCursor[0].getCount();
       arrayOfCursor[0].close();
       arrayOfCursor[1].close();
-      y.d("MicroMsg.VoiceSearchResultUI", "contactCount " + i + " conversationCount " + j);
-      if (i + j <= 1) {
+      ab.d("MicroMsg.VoiceSearchResultUI", "contactCount " + i + " conversationCount " + j);
+      if (i + j <= 1)
+      {
+        AppMethodBeat.o(35377);
         return true;
       }
+      AppMethodBeat.o(35377);
     }
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.voice_search_result;
+    return 2130971101;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.wiG = ((ListView)findViewById(R.h.voice_search_resultlist));
-    this.iCZ = ((TextView)findViewById(R.h.empty_voicesearch_tip_tv));
-    this.wiU = getIntent().getStringArrayExtra("VoiceSearchResultUI_Resultlist");
-    this.wiI = getIntent().getStringExtra("VoiceSearchResultUI_Error");
-    this.jLF = getIntent().getIntExtra("VoiceSearchResultUI_VoiceId", -1);
+    AppMethodBeat.i(35372);
+    this.ABy = ((ListView)findViewById(2131828799));
+    this.kIg = ((TextView)findViewById(2131821075));
+    this.ABM = getIntent().getStringArrayExtra("VoiceSearchResultUI_Resultlist");
+    this.ABA = getIntent().getStringExtra("VoiceSearchResultUI_Error");
+    this.mfJ = getIntent().getIntExtra("VoiceSearchResultUI_VoiceId", -1);
     this.showType = getIntent().getIntExtra("VoiceSearchResultUI_ShowType", 1);
     int i;
     LinkedList localLinkedList;
     if (this.showType == 1)
     {
       i = 2;
-      this.ewz = i;
-      this.wiW = getIntent().getBooleanExtra("VoiceSearchResultUI_IsVoiceControl", false);
-      y.i("MicroMsg.VoiceSearchResultUI", "showType = %s, isVoiceControl = %s", new Object[] { Integer.valueOf(this.showType), Boolean.valueOf(this.wiW) });
-      this.wiT = new b(getApplicationContext(), this.showType);
-      this.wiT.nP(false);
+      this.cFd = i;
+      this.ABO = getIntent().getBooleanExtra("VoiceSearchResultUI_IsVoiceControl", false);
+      ab.i("MicroMsg.VoiceSearchResultUI", "showType = %s, isVoiceControl = %s", new Object[] { Integer.valueOf(this.showType), Boolean.valueOf(this.ABO) });
+      this.ABL = new b(getApplicationContext(), this.showType);
+      this.ABL.rz(false);
       localLinkedList = new LinkedList();
       switch (this.showType)
       {
       case 1: 
       default: 
-        label208:
-        if (this.wiT != null) {
-          this.wiT.ej(localLinkedList);
+        label216:
+        if (this.ABL != null) {
+          this.ABL.ft(localLinkedList);
         }
-        this.wiG.setAdapter(this.wiT);
-        this.iCZ.setVisibility(8);
-        y.d("MicroMsg.VoiceSearchResultUI", "voiceId  " + this.jLF);
+        this.ABy.setAdapter(this.ABL);
+        this.kIg.setVisibility(8);
+        ab.d("MicroMsg.VoiceSearchResultUI", "voiceId  " + this.mfJ);
         if (this.showType == 2)
         {
           setMMTitle("");
-          this.wiU = L(this.wiU);
+          this.ABM = U(this.ABM);
         }
         break;
       }
     }
     for (;;)
     {
-      setMMTitle(getString(R.l.voice_search_result));
+      setMMTitle(getString(2131304590));
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
+          AppMethodBeat.i(35369);
           StringBuilder localStringBuilder;
           if (!VoiceSearchResultUI.a(VoiceSearchResultUI.this))
           {
-            paramAnonymousMenuItem = h.nFQ;
+            paramAnonymousMenuItem = h.qsU;
             localStringBuilder = new StringBuilder().append(VoiceSearchResultUI.b(VoiceSearchResultUI.this)).append(",").append(VoiceSearchResultUI.c(VoiceSearchResultUI.this)).append(",");
             if (VoiceSearchResultUI.d(VoiceSearchResultUI.this) != null) {
-              break label112;
+              break label122;
             }
           }
-          label112:
+          label122:
           for (int i = 0;; i = VoiceSearchResultUI.d(VoiceSearchResultUI.this).length)
           {
-            paramAnonymousMenuItem.aC(10452, i + ",0");
+            paramAnonymousMenuItem.kvStat(10452, i + ",0");
             if (VoiceSearchResultUI.e(VoiceSearchResultUI.this)) {
               VoiceSearchResultUI.this.moveTaskToBack(true);
             }
             VoiceSearchResultUI.this.finish();
+            AppMethodBeat.o(35369);
             return true;
           }
         }
       });
-      this.wiG.setOnItemClickListener(new VoiceSearchResultUI.2(this));
-      M(this.wiU);
+      this.ABy.setOnItemClickListener(new VoiceSearchResultUI.2(this));
+      V(this.ABM);
+      AppMethodBeat.o(35372);
       return;
       i = 1;
       break;
@@ -230,11 +244,11 @@ public class VoiceSearchResultUI
       localLinkedList.add("voiceinputapp");
       localLinkedList.add("linkedinplugin");
       localLinkedList.add("notifymessage");
-      i = q.Gu();
+      i = r.Zy();
       if ((i & 0x1) != 0) {
         localLinkedList.add("qqmail");
       }
-      if ((!s.GY()) || ((i & 0x2) != 0)) {
+      if ((!t.aaa()) || ((i & 0x2) != 0)) {
         localLinkedList.add("tmessage");
       }
       if ((i & 0x20) != 0) {
@@ -249,69 +263,85 @@ public class VoiceSearchResultUI
       if ((0x80000 & i) != 0) {
         localLinkedList.add("newsapp");
       }
-      if (((0x40000 & i) != 0) || (!s.GX())) {
+      if (((0x40000 & i) != 0) || (!t.ZZ())) {
         localLinkedList.add("blogapp");
       }
       if ((i & 0x10000) != 0) {
         localLinkedList.add("masssendapp");
       }
       localLinkedList.add("voiceinputapp");
-      break label208;
-      setMMTitle(getString(R.l.voice_search_result));
+      break label216;
+      setMMTitle(getString(2131304590));
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(35371);
     super.onCreate(paramBundle);
     initView();
-    this.wiV = false;
+    this.ABN = false;
+    AppMethodBeat.o(35371);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(35374);
     super.onDestroy();
-    this.wiT.bcS();
+    this.ABL.bKb();
+    AppMethodBeat.o(35374);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(35376);
     if (4 == paramInt)
     {
       h localh;
       StringBuilder localStringBuilder;
-      if (!this.wiV)
+      if (!this.ABN)
       {
-        localh = h.nFQ;
-        localStringBuilder = new StringBuilder().append(this.ewz).append(",").append(this.jLF).append(",");
-        if (this.wiU != null) {
-          break label103;
+        localh = h.qsU;
+        localStringBuilder = new StringBuilder().append(this.cFd).append(",").append(this.mfJ).append(",");
+        if (this.ABM != null) {
+          break label115;
         }
       }
-      label103:
-      for (int i = 0;; i = this.wiU.length)
+      label115:
+      for (int i = 0;; i = this.ABM.length)
       {
-        localh.aC(10452, i + ",0");
-        if (!this.wiW) {
+        localh.kvStat(10452, i + ",0");
+        if (!this.ABO) {
           break;
         }
         moveTaskToBack(true);
         finish();
+        AppMethodBeat.o(35376);
         return true;
       }
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(35376);
+    return bool;
   }
   
   public void onPause()
   {
+    AppMethodBeat.i(35375);
     super.onPause();
-    this.wiV = true;
+    this.ABN = true;
+    AppMethodBeat.o(35375);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.voicesearch.VoiceSearchResultUI
  * JD-Core Version:    0.7.0.1
  */

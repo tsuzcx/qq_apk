@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import com.tencent.mm.protocal.c.ms;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.utils.c;
+import com.tencent.mm.protocal.protobuf.ps;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class RemittanceF2fDynamicCodeUI$2
-  implements n.a
+  implements p.a
 {
   RemittanceF2fDynamicCodeUI$2(RemittanceF2fDynamicCodeUI paramRemittanceF2fDynamicCodeUI, com.tencent.mm.plugin.remittance.model.m paramm) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    RemittanceF2fDynamicCodeUI.a(this.nDP, this.nDR.nyp.iHs);
-    RemittanceF2fDynamicCodeUI.b(this.nDP, this.nDR.nyp.sKo);
-    RemittanceF2fDynamicCodeUI.a(this.nDP, this.nDR.nyp.sKp);
-    RemittanceF2fDynamicCodeUI.b(this.nDP);
+    AppMethodBeat.i(45052);
+    RemittanceF2fDynamicCodeUI.a(this.qqI, this.qqK.qjp.kNw);
+    RemittanceF2fDynamicCodeUI.b(this.qqI, c.IK(this.qqK.qjp.wIa));
+    RemittanceF2fDynamicCodeUI.b(this.qqI, this.qqK.qjp.wHY);
+    RemittanceF2fDynamicCodeUI.a(this.qqI, this.qqK.qjp.wHZ);
+    RemittanceF2fDynamicCodeUI.b(this.qqI);
+    AppMethodBeat.o(45052);
   }
 }
 

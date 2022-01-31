@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
-import a.d.b.g;
+import a.f.b.j;
+import a.l;
 import android.content.Context;
 import android.graphics.RectF;
 import android.util.AttributeSet;
@@ -9,79 +10,67 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.emojicapture.a.d;
-import com.tencent.mm.plugin.emojicapture.a.e;
-import com.tencent.mm.plugin.emojicapture.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "clearActive", "Ljava/lang/Runnable;", "currActiveItem", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/IEditorItemView;", "deleteView", "Landroid/widget/TextView;", "deletingItem", "editorMask", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorOutsideView;", "itemLayout", "Landroid/view/ViewGroup;", "stateChangeListener", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer$OnStateChangeListener;", "getStateChangeListener", "()Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer$OnStateChangeListener;", "setStateChangeListener", "(Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer$OnStateChangeListener;)V", "validAreaView", "Landroid/view/View;", "validRect", "Landroid/graphics/RectF;", "activeDeleteView", "", "active", "", "addEditorItem", "itemView", "createTextItem", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/TextEditorItemView;", "deleteCheck", "event", "Landroid/view/MotionEvent;", "dispatchTouchEvent", "ev", "getAllEmojiMd5", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getAllItemViews", "", "getAttachedText", "getTextItem", "getValidRect", "handleItemTouch", "onInterceptTouchEvent", "onTouchEvent", "pause", "removeAllItems", "requestEditing", "editing", "resume", "setEditing", "setValidRect", "left", "", "top", "right", "bottom", "toggleDeleteView", "show", "Companion", "OnStateChangeListener", "plugin-emojicapture_release"})
 public final class EditorItemContainer
   extends RelativeLayout
 {
-  public static final a jpZ = new a((byte)0);
-  private final String TAG = "MicroMsg.EditorItemContainer";
-  public View jpS;
-  private TextView jpT;
-  private EditorItemContainer.b jpU;
-  private final RectF jpV = new RectF();
-  public a jpW;
-  public Runnable jpX = (Runnable)new c(this);
-  public a jpY;
+  public static final EditorItemContainer.a lzK;
+  private final String TAG;
+  private View lzB;
+  private TextView lzC;
+  public final ViewGroup lzD;
+  public final EditorOutsideView lzE;
+  private EditorItemContainer.b lzF;
+  private final RectF lzG;
+  private a lzH;
+  private Runnable lzI;
+  private a lzJ;
+  
+  static
+  {
+    AppMethodBeat.i(3092);
+    lzK = new EditorItemContainer.a((byte)0);
+    AppMethodBeat.o(3092);
+  }
   
   public EditorItemContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
+    AppMethodBeat.i(3091);
+    AppMethodBeat.o(3091);
   }
   
   public EditorItemContainer(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    View.inflate(paramContext, a.e.emoji_capture_editor_item_container, (ViewGroup)this);
-    paramContext = findViewById(a.d.editor_valid_area);
-    g.j(paramContext, "findViewById(R.id.editor_valid_area)");
-    this.jpS = paramContext;
-    paramContext = findViewById(a.d.editor_delete_view);
-    g.j(paramContext, "findViewById(R.id.editor_delete_view)");
-    this.jpT = ((TextView)paramContext);
+    AppMethodBeat.i(3090);
+    this.TAG = "MicroMsg.EditorItemContainer";
+    this.lzG = new RectF();
+    this.lzI = ((Runnable)new EditorItemContainer.c(this));
+    View.inflate(paramContext, 2130969358, (ViewGroup)this);
+    paramContext = findViewById(2131823546);
+    j.p(paramContext, "findViewById(R.id.editor_valid_area)");
+    this.lzB = paramContext;
+    paramContext = findViewById(2131823549);
+    j.p(paramContext, "findViewById(R.id.editor_delete_view)");
+    this.lzC = ((TextView)paramContext);
+    paramContext = findViewById(2131823547);
+    j.p(paramContext, "findViewById(R.id.emoji_capture_editor_layout)");
+    this.lzD = ((ViewGroup)paramContext);
+    paramContext = findViewById(2131823548);
+    j.p(paramContext, "findViewById(R.id.emoji_capture_editor_mask)");
+    this.lzE = ((EditorOutsideView)paramContext);
+    AppMethodBeat.o(3090);
   }
   
-  private final void fz(boolean paramBoolean)
+  private final boolean b(a parama, MotionEvent paramMotionEvent)
   {
-    this.jpT.setActivated(paramBoolean);
-    if (paramBoolean)
-    {
-      this.jpT.setText(a.f.editor_item_release_to_delete);
-      return;
-    }
-    this.jpT.setText(a.f.editor_item_drag_to_delete);
-  }
-  
-  public final void a(a parama, boolean paramBoolean)
-  {
-    g.k(parama, "itemView");
-    if (paramBoolean) {
-      if ((g.e(parama, this.jpW) ^ true))
-      {
-        a locala = this.jpW;
-        if (locala != null) {
-          locala.setEditing(false);
-        }
-        this.jpW = parama;
-      }
-    }
-    for (;;)
-    {
-      parama.setEditing(paramBoolean);
-      return;
-      if (g.e(parama, this.jpW)) {
-        this.jpW = null;
-      }
-    }
-  }
-  
-  public final boolean a(a parama, MotionEvent paramMotionEvent)
-  {
+    AppMethodBeat.i(3089);
     int j = paramMotionEvent.getPointerCount();
     float f = 0.0F;
     int i = 0;
@@ -91,67 +80,149 @@ public final class EditorItemContainer
       i += 1;
     }
     boolean bool;
-    if (f / j > this.jpT.getTop())
+    if (f / j > this.lzC.getTop())
     {
       bool = true;
       if (!bool) {
-        break label87;
+        break label99;
       }
-      fz(true);
-      if (this.jpY == null) {
-        this.jpY = parama;
+      ha(true);
+      if (this.lzJ == null) {
+        this.lzJ = parama;
       }
     }
-    label87:
-    do
+    for (;;)
     {
+      AppMethodBeat.o(3089);
       return bool;
       bool = false;
       break;
-      fz(false);
-    } while (this.jpY == null);
-    this.jpY = null;
-    return bool;
+      label99:
+      ha(false);
+      if (this.lzJ != null) {
+        this.lzJ = null;
+      }
+    }
   }
   
-  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  private final void gZ(boolean paramBoolean)
   {
-    return super.dispatchTouchEvent(paramMotionEvent);
-  }
-  
-  public final void fy(boolean paramBoolean)
-  {
-    Object localObject = this.jpT;
+    AppMethodBeat.i(3087);
+    Object localObject = this.lzC;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
       ((TextView)localObject).setVisibility(i);
-      if (this.jpU != null)
+      if (this.lzF != null)
       {
-        localObject = this.jpU;
+        localObject = this.lzF;
         if (localObject == null) {
-          g.cUk();
+          j.ebi();
         }
-        ((EditorItemContainer.b)localObject).fx(paramBoolean);
+        ((EditorItemContainer.b)localObject).gY(paramBoolean);
       }
+      AppMethodBeat.o(3087);
       return;
     }
   }
   
+  private final void ha(boolean paramBoolean)
+  {
+    AppMethodBeat.i(3088);
+    this.lzC.setActivated(paramBoolean);
+    if (paramBoolean)
+    {
+      this.lzC.setText(2131299079);
+      AppMethodBeat.o(3088);
+      return;
+    }
+    this.lzC.setText(2131299078);
+    AppMethodBeat.o(3088);
+  }
+  
+  public final void a(a parama, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(3075);
+    j.q(parama, "itemView");
+    j.q(paramMotionEvent, "event");
+    switch (paramMotionEvent.getActionMasked())
+    {
+    default: 
+      AppMethodBeat.o(3075);
+      return;
+    case 0: 
+      removeCallbacks(this.lzI);
+      a(parama, true);
+      AppMethodBeat.o(3075);
+      return;
+    case 2: 
+      b(parama, paramMotionEvent);
+      gZ(true);
+      AppMethodBeat.o(3075);
+      return;
+    }
+    this.lzD.bringChildToFront((View)getTextItem());
+    if (this.lzJ != null) {
+      post((Runnable)new EditorItemContainer.d(this));
+    }
+    for (;;)
+    {
+      gZ(false);
+      break;
+      if (this.lzH != null) {
+        postDelayed(this.lzI, 1500L);
+      }
+    }
+  }
+  
+  public final void a(a parama, boolean paramBoolean)
+  {
+    AppMethodBeat.i(3086);
+    j.q(parama, "itemView");
+    if (paramBoolean) {
+      if ((j.e(parama, this.lzH) ^ true))
+      {
+        a locala = this.lzH;
+        if (locala != null) {
+          locala.setEditing(false);
+        }
+        this.lzH = parama;
+      }
+    }
+    for (;;)
+    {
+      parama.setEditing(paramBoolean);
+      AppMethodBeat.o(3086);
+      return;
+      if (j.e(parama, this.lzH)) {
+        this.lzH = null;
+      }
+    }
+  }
+  
+  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(3077);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(3077);
+    return bool;
+  }
+  
   public final ArrayList<String> getAllEmojiMd5()
   {
+    AppMethodBeat.i(3081);
     ArrayList localArrayList = new ArrayList();
-    int j = getChildCount();
+    int j = this.lzD.getChildCount();
     int i = 0;
     while (i < j)
     {
-      Object localObject = getChildAt(i);
+      Object localObject = this.lzD.getChildAt(i);
       if ((localObject instanceof EmojiEditorItemView))
       {
         localObject = ((EmojiEditorItemView)localObject).getEmojiInfo();
         if (localObject != null)
         {
-          localObject = ((EmojiInfo)localObject).Wv();
+          localObject = ((EmojiInfo)localObject).Al();
           if (localObject != null) {
             localArrayList.add(localObject);
           }
@@ -159,113 +230,148 @@ public final class EditorItemContainer
       }
       i += 1;
     }
+    AppMethodBeat.o(3081);
     return localArrayList;
   }
   
   public final List<a> getAllItemViews()
   {
+    AppMethodBeat.i(3082);
     List localList = (List)new ArrayList();
     int i = 0;
-    int j = getChildCount();
+    int j = this.lzD.getChildCount();
     while (i < j)
     {
-      View localView = getChildAt(i);
+      View localView = this.lzD.getChildAt(i);
       if ((localView instanceof a)) {
         localList.add(localView);
       }
       i += 1;
     }
+    AppMethodBeat.o(3082);
     return localList;
   }
   
   public final String getAttachedText()
   {
-    TextEditorItemView localTextEditorItemView = getTextItem();
-    if (localTextEditorItemView == null) {}
-    while (localTextEditorItemView.getText() == null) {
+    AppMethodBeat.i(3080);
+    Object localObject = getTextItem();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(3080);
       return null;
     }
-    return String.valueOf(localTextEditorItemView.getText());
+    if (((TextEditorItemView)localObject).getText() == null)
+    {
+      AppMethodBeat.o(3080);
+      return null;
+    }
+    localObject = String.valueOf(((TextEditorItemView)localObject).getText());
+    AppMethodBeat.o(3080);
+    return localObject;
   }
   
   public final EditorItemContainer.b getStateChangeListener()
   {
-    return this.jpU;
+    return this.lzF;
   }
   
   public final TextEditorItemView getTextItem()
   {
-    int j = getChildCount();
+    AppMethodBeat.i(3079);
+    int j = this.lzD.getChildCount();
     int i = 0;
     while (i < j)
     {
-      View localView = getChildAt(i);
-      if ((localView instanceof TextEditorItemView)) {
-        return (TextEditorItemView)localView;
+      Object localObject = this.lzD.getChildAt(i);
+      if ((localObject instanceof TextEditorItemView))
+      {
+        localObject = (TextEditorItemView)localObject;
+        AppMethodBeat.o(3079);
+        return localObject;
       }
       i += 1;
     }
+    AppMethodBeat.o(3079);
     return null;
   }
   
   public final RectF getValidRect()
   {
-    this.jpV.set(this.jpS.getLeft(), this.jpS.getTop(), this.jpS.getRight(), this.jpS.getBottom());
-    return this.jpV;
+    AppMethodBeat.i(3084);
+    this.lzG.set(this.lzB.getLeft(), this.lzB.getTop(), this.lzB.getRight(), this.lzB.getBottom());
+    RectF localRectF = this.lzG;
+    AppMethodBeat.o(3084);
+    return localRectF;
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    g.k(paramMotionEvent, "ev");
-    if ((paramMotionEvent.getActionMasked() == 0) && (!this.jpV.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))) {
+    AppMethodBeat.i(3076);
+    j.q(paramMotionEvent, "ev");
+    if ((paramMotionEvent.getActionMasked() == 0) && (!this.lzG.contains(paramMotionEvent.getX(), paramMotionEvent.getY())))
+    {
+      AppMethodBeat.o(3076);
       return true;
     }
-    return super.onInterceptTouchEvent(paramMotionEvent);
+    boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(3076);
+    return bool;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(3078);
     if ((paramMotionEvent != null) && (paramMotionEvent.getActionMasked() == 0))
     {
-      if (!this.jpV.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+      if (!this.lzG.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
+      {
+        AppMethodBeat.o(3078);
         return false;
       }
-      if (this.jpW != null)
+      if (this.lzH != null)
       {
-        a locala = this.jpW;
+        a locala = this.lzH;
         if (locala == null) {
-          g.cUk();
+          j.ebi();
         }
         a(locala, false);
       }
     }
-    return super.onTouchEvent(paramMotionEvent);
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(3078);
+    return bool;
+  }
+  
+  public final void pause()
+  {
+    AppMethodBeat.i(3083);
+    int j = this.lzD.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      View localView = this.lzD.getChildAt(i);
+      if ((localView instanceof a)) {
+        ((a)localView).pause();
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(3083);
+  }
+  
+  public final void setEditing(a parama)
+  {
+    AppMethodBeat.i(3085);
+    j.q(parama, "itemView");
+    removeCallbacks(this.lzI);
+    a(parama, true);
+    postDelayed(this.lzI, 1500L);
+    AppMethodBeat.o(3085);
   }
   
   public final void setStateChangeListener(EditorItemContainer.b paramb)
   {
-    this.jpU = paramb;
-  }
-  
-  public static final class a {}
-  
-  static final class c
-    implements Runnable
-  {
-    c(EditorItemContainer paramEditorItemContainer) {}
-    
-    public final void run()
-    {
-      if (EditorItemContainer.c(this.jqa) != null)
-      {
-        EditorItemContainer localEditorItemContainer = this.jqa;
-        a locala = EditorItemContainer.c(this.jqa);
-        if (locala == null) {
-          g.cUk();
-        }
-        localEditorItemContainer.a(locala, false);
-      }
-    }
+    this.lzF = paramb;
   }
 }
 

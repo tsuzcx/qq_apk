@@ -2,41 +2,18 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.xweb.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebViewUI$30
   implements MenuItem.OnMenuItemClickListener
 {
-  WebViewUI$30(WebViewUI paramWebViewUI, String paramString) {}
+  WebViewUI$30(WebViewUI paramWebViewUI) {}
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    try
-    {
-      bool = this.rpH.gGn.isSDCardAvailable();
-    }
-    catch (Exception paramMenuItem)
-    {
-      for (;;)
-      {
-        try
-        {
-          s.a(this.rpH, this.gGE, b.cSe().getCookie(this.gGE), bool);
-          return true;
-        }
-        catch (Exception paramMenuItem)
-        {
-          boolean bool;
-          y.e("MicroMsg.WebViewUI", "save to sdcard failed : %s", new Object[] { paramMenuItem.getMessage() });
-        }
-        paramMenuItem = paramMenuItem;
-        y.e("MicroMsg.WebViewUI", "onMenuItemClick fail, ex = " + paramMenuItem.getMessage());
-        bool = false;
-      }
-    }
+    AppMethodBeat.i(7852);
+    this.vgz.aYo();
+    AppMethodBeat.o(7852);
     return true;
   }
 }

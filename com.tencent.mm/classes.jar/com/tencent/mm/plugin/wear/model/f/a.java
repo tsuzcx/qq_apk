@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wear.model.f;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.e.r;
 
 public final class a
@@ -12,10 +13,12 @@ public final class a
   
   protected final void send()
   {
-    com.tencent.mm.plugin.wear.model.a.bYL();
-    r.b(20009, null, false);
-    com.tencent.mm.plugin.wear.model.a.bYL();
-    r.b(20017, null, false);
+    AppMethodBeat.i(26442);
+    com.tencent.mm.plugin.wear.model.a.cYy();
+    r.a(20009, null, false);
+    com.tencent.mm.plugin.wear.model.a.cYy();
+    r.a(20017, null, false);
+    AppMethodBeat.o(26442);
   }
 }
 

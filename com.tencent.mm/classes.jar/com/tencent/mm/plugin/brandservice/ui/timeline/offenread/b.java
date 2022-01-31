@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
-import com.tencent.mm.protocal.c.bxq;
+import com.tencent.mm.protocal.protobuf.cke;
 
 public final class b
-  extends bxq
+  extends cke
 {
-  public long hFF;
-  public boolean ihG;
+  public boolean jZt;
+  public long jzc;
   public int position;
   public int type;
   
@@ -22,7 +22,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.b
  * JD-Core Version:    0.7.0.1
  */

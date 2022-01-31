@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.card.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -14,9 +15,10 @@ final class m$1
   
   public final void run()
   {
-    synchronized (this.ilm.ilh)
+    AppMethodBeat.i(87759);
+    synchronized (this.kmk.kmf)
     {
-      Object localObject2 = (Set)this.ilm.ilh.get(this.ill);
+      Object localObject2 = (Set)this.kmk.kmf.get(this.kmj);
       if ((localObject2 != null) && (((Set)localObject2).size() > 0))
       {
         ??? = new HashSet();
@@ -26,16 +28,17 @@ final class m$1
         {
           localObject2 = (m.a)((Iterator)???).next();
           if (localObject2 != null) {
-            ((m.a)localObject2).a(this.elN, this.dAu);
+            ((m.a)localObject2).a(this.fCf, this.etW);
           }
         }
       }
     }
+    AppMethodBeat.o(87759);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.card.b.m.1
  * JD-Core Version:    0.7.0.1
  */

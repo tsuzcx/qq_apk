@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="drawable" name="a5_">false</item>
-    <item type="drawable" name="a5a">false</item>
-    <item type="drawable" name="a5b">false</item>
-    <item type="drawable" name="a5c">false</item>
-    <item type="drawable" name="a5d">false</item>
+    <item type="drawable" name="abm">false</item>
+    <item type="drawable" name="abq">false</item>
+    <item type="drawable" name="abn">false</item>
+    <item type="drawable" name="abp">false</item>
+    <item type="drawable" name="abo">false</item>
 </resources>

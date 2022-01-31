@@ -6,13 +6,13 @@ import android.widget.TextView;
 
 final class CardListSelectedUI$d
 {
-  public TextView fcy;
-  public TextView icl;
-  public TextView ivO;
-  public ImageView ivS;
-  public TextView ivT;
-  public View ivU;
-  public ImageView ivV;
+  public TextView gui;
+  public TextView jTb;
+  public TextView kwS;
+  public ImageView kwW;
+  public TextView kwX;
+  public View kwY;
+  public ImageView kwZ;
   
   CardListSelectedUI$d(CardListSelectedUI paramCardListSelectedUI) {}
 }

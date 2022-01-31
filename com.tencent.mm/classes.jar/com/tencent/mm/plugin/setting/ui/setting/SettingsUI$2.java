@@ -3,11 +3,12 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SettingsUI$2
   implements DialogInterface.OnClickListener
@@ -16,16 +17,18 @@ final class SettingsUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    h.nFQ.f(11545, new Object[] { Integer.valueOf(3) });
-    y.i("MicroMsg.SettingsUI", "reprot: MM_LightPushCloseWechat == OP_LogoutConfirm");
-    h.nFQ.a(99L, 145L, 1L, false);
-    if ((g.Dk() != null) && (g.Dk().edx != null)) {
-      g.Dk().edx.bP(false);
+    AppMethodBeat.i(127561);
+    h.qsU.e(11545, new Object[] { Integer.valueOf(3) });
+    ab.i("MicroMsg.SettingsUI", "reprot: MM_LightPushCloseWechat == OP_LogoutConfirm");
+    h.qsU.idkeyStat(99L, 145L, 1L, false);
+    if ((g.Rc() != null) && (g.Rc().ftA != null)) {
+      g.Rc().ftA.cR(false);
     }
-    if (SettingsUI.g(this.nWB) != null) {
-      SettingsUI.g(this.nWB).dismiss();
+    if (SettingsUI.f(this.qKL) != null) {
+      SettingsUI.f(this.qKL).dismiss();
     }
-    SettingsUI.h(this.nWB);
+    SettingsUI.g(this.qKL);
+    AppMethodBeat.o(127561);
   }
 }
 

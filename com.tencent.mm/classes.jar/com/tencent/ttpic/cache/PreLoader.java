@@ -1,9 +1,9 @@
 package com.tencent.ttpic.cache;
 
 import android.graphics.Bitmap;
+import com.tencent.ttpic.baseutils.BitmapUtils;
 import com.tencent.ttpic.model.StickerItem;
 import com.tencent.ttpic.thread.VideoThreadPool;
-import com.tencent.ttpic.util.VideoBitmapUtil;
 import com.tencent.ttpic.util.VideoMaterialUtil;
 import java.io.File;
 import java.util.Map;
@@ -39,7 +39,7 @@ public abstract class PreLoader
       Bitmap localBitmap = (Bitmap)this.cache.remove(???);
       synchronized (LOCK_IMAGE_PRE_LOADER)
       {
-        if (VideoBitmapUtil.isLegal(localBitmap)) {
+        if (BitmapUtils.isLegal(localBitmap)) {
           localBitmap.recycle();
         }
         paramInt1 = (paramInt1 + 1) % this.item.frames;

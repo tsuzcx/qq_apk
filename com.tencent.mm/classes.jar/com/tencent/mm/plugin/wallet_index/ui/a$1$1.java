@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.wallet_index.ui;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_index.b.a.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,44 +17,46 @@ final class a$1$1
   
   public final void a(com.tencent.mm.plugin.wallet_index.c.b paramb, com.tencent.mm.plugin.wallet_index.b.a.b paramb1)
   {
-    y.d("MicroMsg.GoogleWallet", "Query inventory finished.");
-    if ((paramb.isFailure()) || (paramb1 == null)) {
-      y.w("MicroMsg.GoogleWallet", "Failed to query inventory: " + paramb);
-    }
-    for (;;)
+    AppMethodBeat.i(48218);
+    ab.d("MicroMsg.GoogleWallet", "Query inventory finished.");
+    if ((paramb.cXe()) || (paramb1 == null))
     {
+      ab.w("MicroMsg.GoogleWallet", "Failed to query inventory: ".concat(String.valueOf(paramb)));
+      AppMethodBeat.o(48218);
       return;
-      y.d("MicroMsg.GoogleWallet", "Query inventory was successful.");
-      a.a(this.qLE.qLD, paramb1);
-      paramb = a.b(this.qLE.qLD);
-      ArrayList localArrayList = new ArrayList(paramb1.qKX.keySet());
-      paramb.qLJ.clear();
-      paramb.qLJ.addAll(localArrayList);
-      paramb = new ArrayList(paramb1.qKX.values());
-      if (paramb.size() > 0)
+    }
+    ab.d("MicroMsg.GoogleWallet", "Query inventory was successful.");
+    a.a(this.uAA.uAz, paramb1);
+    paramb = a.c(this.uAA.uAz);
+    ArrayList localArrayList = new ArrayList(paramb1.uzT.keySet());
+    paramb.uAF.clear();
+    paramb.uAF.addAll(localArrayList);
+    paramb = new ArrayList(paramb1.uzT.values());
+    if (paramb.size() > 0)
+    {
+      paramb = paramb.iterator();
+      while (paramb.hasNext())
       {
-        paramb = paramb.iterator();
-        while (paramb.hasNext())
-        {
-          paramb1 = (com.tencent.mm.plugin.wallet_index.b.a.c)paramb.next();
-          y.i("MicroMsg.GoogleWallet", "do NetSceneVerifyPurchase. productId:" + paramb1.iZD + ",billNo:" + paramb1.qLc);
-          g.DQ();
-          g.DO().dJT.a(a.b(this.qLE.qLD).a(paramb1, true), 0);
-        }
+        paramb1 = (com.tencent.mm.plugin.wallet_index.b.a.c)paramb.next();
+        ab.i("MicroMsg.GoogleWallet", "do NetSceneVerifyPurchase. productId:" + paramb1.liu + ",billNo:" + paramb1.uzY);
+        g.RM();
+        g.RK().eHt.a(a.c(this.uAA.uAz).a(paramb1, true), 0);
       }
-      else
-      {
-        y.d("MicroMsg.GoogleWallet", "purchases is null. consume null ");
-        if (!this.liW) {
-          y.d("MicroMsg.GoogleWallet", "unknown_purchase");
-        }
-        for (paramb = com.tencent.mm.plugin.wallet_index.c.b.aP(5, ""); a.c(this.qLE.qLD) != null; paramb = com.tencent.mm.plugin.wallet_index.c.b.aP(0, ""))
-        {
-          a.c(this.qLE.qLD).a(paramb, null);
-          return;
-          y.d("MicroMsg.GoogleWallet", "result ok");
-        }
+      AppMethodBeat.o(48218);
+      return;
+    }
+    ab.d("MicroMsg.GoogleWallet", "purchases is null. consume null ");
+    if (!this.nGl) {
+      ab.d("MicroMsg.GoogleWallet", "unknown_purchase");
+    }
+    for (paramb = com.tencent.mm.plugin.wallet_index.c.b.bu(5, "");; paramb = com.tencent.mm.plugin.wallet_index.c.b.bu(0, ""))
+    {
+      if (a.d(this.uAA.uAz) != null) {
+        a.d(this.uAA.uAz).a(paramb, null);
       }
+      AppMethodBeat.o(48218);
+      return;
+      ab.d("MicroMsg.GoogleWallet", "result ok");
     }
   }
 }

@@ -1,5 +1,7 @@
 package com.tencent.mm.pluginsdk.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class k$1$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class k$1$1
   
   public final void run()
   {
-    this.rTt.rTs.onPostExecute(this.Du);
+    AppMethodBeat.i(79215);
+    this.vKr.vKq.onPostExecute(this.Ec);
+    AppMethodBeat.o(79215);
   }
 }
 

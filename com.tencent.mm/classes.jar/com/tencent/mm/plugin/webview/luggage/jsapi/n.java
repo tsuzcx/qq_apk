@@ -1,36 +1,45 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.e.a;
-import com.tencent.luggage.e.a.a;
-import com.tencent.mm.pluginsdk.wallet.g;
-import com.tencent.mm.pluginsdk.wallet.h;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.a.d.1;
+import com.tencent.mm.plugin.webview.luggage.i;
+import java.util.Iterator;
+import java.util.Set;
+import org.json.JSONObject;
 
 public class n
-  extends ax<com.tencent.mm.plugin.webview.luggage.e>
+  extends bi
 {
-  public final void a(Context paramContext, String paramString, aw.a parama) {}
+  public final void a(Context paramContext, String paramString, bh.a parama) {}
   
-  public final int aGj()
+  public final void b(a.a parama)
+  {
+    AppMethodBeat.i(153118);
+    JSONObject localJSONObject = parama.byF.bxK;
+    String str = localJSONObject.optString("eventName");
+    localJSONObject = localJSONObject.optJSONObject("data");
+    Object localObject = i.dbp();
+    if (localObject != null)
+    {
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((com.tencent.luggage.d.n)((Iterator)localObject).next()).bzs.a(new d.1(str, localJSONObject));
+      }
+    }
+    parama.a("", null);
+    AppMethodBeat.o(153118);
+  }
+  
+  public final int bjL()
   {
     return 0;
   }
   
-  public final void b(a<com.tencent.mm.plugin.webview.luggage.e>.a parama)
-  {
-    y.i("MicroMsg.JsApiGetBrandWCPayRequest", "invokeInOwn");
-    MMActivity localMMActivity = (MMActivity)((com.tencent.mm.plugin.webview.luggage.e)parama.big).mContext;
-    g localg = new g(parama.bih.bhk);
-    parama = new n.1(this, parama);
-    h.a(localMMActivity, localg, hashCode() & 0xFFFF, parama);
-  }
-  
   public final String name()
   {
-    return "getBrandWCPayRequest";
+    return "dispatchEvent";
   }
 }
 

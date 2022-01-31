@@ -5,76 +5,120 @@ import android.content.Intent;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.g.c;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.BitSet;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public final class d
 {
-  private static Map<Integer, String> kow = new HashMap() {};
+  private static Map<Integer, String> mKj;
   
-  public static int Dt(String paramString)
+  static
   {
-    if (bk.bl(paramString)) {
-      y.d("MicroMsg.FreeWifi.FreeWifiManager", "Illegal SSID");
-    }
-    c localc;
-    do
+    AppMethodBeat.i(20716);
+    mKj = new d.1();
+    AppMethodBeat.o(20716);
+  }
+  
+  private static WifiConfiguration D(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(20703);
+    WifiConfiguration localWifiConfiguration = new WifiConfiguration();
+    localWifiConfiguration.SSID = ("\"" + paramString1 + "\"");
+    localWifiConfiguration.status = 2;
+    switch (paramInt)
     {
+    default: 
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "unsupport encrypt type : %d", new Object[] { Integer.valueOf(paramInt) });
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(20703);
+      return localWifiConfiguration;
+      localWifiConfiguration.wepKeys = new String[] { "\"" + paramString2 + "\"" };
+      localWifiConfiguration.allowedKeyManagement.set(0);
+      continue;
+      localWifiConfiguration.preSharedKey = ("\"" + paramString2 + "\"");
+      localWifiConfiguration.allowedKeyManagement.set(1);
+    }
+  }
+  
+  public static int OB(String paramString)
+  {
+    AppMethodBeat.i(20699);
+    if (bo.isNullOrNil(paramString))
+    {
+      ab.d("MicroMsg.FreeWifi.FreeWifiManager", "Illegal SSID");
+      AppMethodBeat.o(20699);
       return 0;
-      localc = j.aUi().DC(paramString);
-    } while ((localc == null) || (!paramString.equalsIgnoreCase(localc.field_ssid)));
-    if ((localc.field_connectState == 2) && (localc.field_expiredTime > 0L) && (localc.field_expiredTime - bk.UX() <= 0L))
-    {
-      localc.field_connectState = 1;
-      boolean bool = j.aUi().c(localc, new String[0]);
-      y.i("MicroMsg.FreeWifi.FreeWifiManager", "Expired, re-auth, expired time : %d, current time : %d, ret : %b", new Object[] { Long.valueOf(localc.field_expiredTime), Long.valueOf(bk.UX()), Boolean.valueOf(bool) });
     }
-    return localc.field_connectState;
+    c localc = j.bAK().OK(paramString);
+    if ((localc != null) && (paramString.equalsIgnoreCase(localc.field_ssid)))
+    {
+      if ((localc.field_connectState == 2) && (localc.field_expiredTime > 0L) && (localc.field_expiredTime - bo.aox() <= 0L))
+      {
+        localc.field_connectState = 1;
+        boolean bool = j.bAK().update(localc, new String[0]);
+        ab.i("MicroMsg.FreeWifi.FreeWifiManager", "Expired, re-auth, expired time : %d, current time : %d, ret : %b", new Object[] { Long.valueOf(localc.field_expiredTime), Long.valueOf(bo.aox()), Boolean.valueOf(bool) });
+      }
+      int i = localc.field_connectState;
+      AppMethodBeat.o(20699);
+      return i;
+    }
+    AppMethodBeat.o(20699);
+    return 0;
   }
   
-  public static boolean Du(String paramString)
+  public static boolean OC(String paramString)
   {
-    y.i("MicroMsg.FreeWifi.FreeWifiManager", "check is wechat free wifi, ssid : %s", new Object[] { paramString });
-    if (bk.bl(paramString)) {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "ssid is null or nil");
-    }
-    String str;
-    do
+    AppMethodBeat.i(20700);
+    ab.i("MicroMsg.FreeWifi.FreeWifiManager", "check is wechat free wifi, ssid : %s", new Object[] { paramString });
+    if (bo.isNullOrNil(paramString))
     {
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "ssid is null or nil");
+      AppMethodBeat.o(20700);
       return false;
-      str = aTX();
-    } while ((bk.bl(str)) || (!str.equals(paramString)));
-    return true;
+    }
+    String str = at.gX(ah.getContext());
+    if ((!bo.isNullOrNil(str)) && (str.equals(paramString)))
+    {
+      AppMethodBeat.o(20700);
+      return true;
+    }
+    AppMethodBeat.o(20700);
+    return false;
   }
   
-  public static int Dv(String paramString)
+  public static int OD(String paramString)
   {
-    WifiManager localWifiManager = (WifiManager)ae.getContext().getSystemService("wifi");
+    AppMethodBeat.i(20701);
+    WifiManager localWifiManager = (WifiManager)ah.getContext().getSystemService("wifi");
     if (localWifiManager == null)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork, get wifi manager failed");
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork, get wifi manager failed");
+      AppMethodBeat.o(20701);
       return -11;
     }
-    int i = Dx(paramString);
+    int i = OF(paramString);
     if (i > 0) {
-      y.i("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork, the network has exsited, just enable it");
+      ab.i("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork, the network has exsited, just enable it");
     }
     for (;;)
     {
       boolean bool = localWifiManager.enableNetwork(i, true);
-      y.i("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork netid : %d, result : %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
+      ab.i("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork netid : %d, result : %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
       if (!bool) {
         break;
       }
+      AppMethodBeat.o(20701);
       return 0;
       WifiConfiguration localWifiConfiguration = new WifiConfiguration();
       localWifiConfiguration.allowedAuthAlgorithms.clear();
@@ -83,238 +127,212 @@ public final class d
       localWifiConfiguration.allowedPairwiseCiphers.clear();
       localWifiConfiguration.allowedProtocols.clear();
       localWifiConfiguration.SSID = ("\"" + paramString + "\"");
-      y.i("MicroMsg.FreeWifi.FreeWifiManager", "check is the same ssid is exist, %b", new Object[] { Boolean.valueOf(Dw(paramString)) });
+      ab.i("MicroMsg.FreeWifi.FreeWifiManager", "check is the same ssid is exist, %b", new Object[] { Boolean.valueOf(OE(paramString)) });
       localWifiConfiguration.allowedKeyManagement.set(0);
       localWifiConfiguration.wepTxKeyIndex = 0;
       i = localWifiManager.addNetwork(localWifiConfiguration);
     }
+    AppMethodBeat.o(20701);
     return -14;
   }
   
-  public static boolean Dw(String paramString)
+  public static boolean OE(String paramString)
   {
-    int i = Dx(paramString);
-    y.i("MicroMsg.FreeWifi.FreeWifiManager", "get network id by ssid :%s, netid is %d", new Object[] { paramString, Integer.valueOf(i) });
+    AppMethodBeat.i(20706);
+    int i = OF(paramString);
+    ab.i("MicroMsg.FreeWifi.FreeWifiManager", "get network id by ssid :%s, netid is %d", new Object[] { paramString, Integer.valueOf(i) });
     if (i == -1)
     {
-      y.i("MicroMsg.FreeWifi.FreeWifiManager", "ssid is not exist : %s", new Object[] { paramString });
+      ab.i("MicroMsg.FreeWifi.FreeWifiManager", "ssid is not exist : %s", new Object[] { paramString });
+      AppMethodBeat.o(20706);
       return false;
     }
-    WifiManager localWifiManager = (WifiManager)ae.getContext().getSystemService("wifi");
+    WifiManager localWifiManager = (WifiManager)ah.getContext().getSystemService("wifi");
     boolean bool = localWifiManager.removeNetwork(i);
     localWifiManager.saveConfiguration();
-    y.i("MicroMsg.FreeWifi.FreeWifiManager", "remove ssid : %s, ret = %b", new Object[] { paramString, Boolean.valueOf(bool) });
+    ab.i("MicroMsg.FreeWifi.FreeWifiManager", "remove ssid : %s, ret = %b", new Object[] { paramString, Boolean.valueOf(bool) });
+    AppMethodBeat.o(20706);
     return bool;
   }
   
-  private static int Dx(String paramString)
+  private static int OF(String paramString)
   {
-    if (bk.bl(paramString))
+    AppMethodBeat.i(20707);
+    if (bo.isNullOrNil(paramString))
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "null or nill ssid");
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "null or nill ssid");
+      AppMethodBeat.o(20707);
       return -1;
     }
-    Object localObject = ((WifiManager)ae.getContext().getSystemService("wifi")).getConfiguredNetworks();
+    Object localObject = ((WifiManager)ah.getContext().getSystemService("wifi")).getConfiguredNetworks();
     if (localObject == null)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi list is null");
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi list is null");
+      AppMethodBeat.o(20707);
       return -1;
     }
-    y.i("MicroMsg.FreeWifi.FreeWifiManager", "get wificonfiguration list size : %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
+    ab.i("MicroMsg.FreeWifi.FreeWifiManager", "get wificonfiguration list size : %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       WifiConfiguration localWifiConfiguration = (WifiConfiguration)((Iterator)localObject).next();
-      if (localWifiConfiguration.SSID.equals("\"" + paramString + "\"")) {
-        return localWifiConfiguration.networkId;
+      if (localWifiConfiguration.SSID.equals("\"" + paramString + "\""))
+      {
+        int i = localWifiConfiguration.networkId;
+        AppMethodBeat.o(20707);
+        return i;
       }
     }
+    AppMethodBeat.o(20707);
     return -1;
   }
   
   public static void a(String paramString, int paramInt, Intent paramIntent)
   {
-    y.i("MicroMsg.FreeWifi.FreeWifiManager", "sessionKey=%s, step=%d, method=FreeWifiManager.updateConnectState, desc=it changes the connect state of the model to %s. state=%d", new Object[] { m.B(paramIntent), Integer.valueOf(m.C(paramIntent)), rr(paramInt), Integer.valueOf(paramInt) });
-    paramIntent = j.aUi().DC(paramString);
+    AppMethodBeat.i(20709);
+    ab.i("MicroMsg.FreeWifi.FreeWifiManager", "sessionKey=%s, step=%d, method=FreeWifiManager.updateConnectState, desc=it changes the connect state of the model to %s. state=%d", new Object[] { m.U(paramIntent), Integer.valueOf(m.V(paramIntent)), wl(paramInt), Integer.valueOf(paramInt) });
+    paramIntent = j.bAK().OK(paramString);
     if (paramIntent != null)
     {
       paramIntent.field_connectState = paramInt;
-      y.i("MicroMsg.FreeWifi.FreeWifiManager", "update %s, connect state : %d, return : %b", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(j.aUi().c(paramIntent, new String[0])) });
+      ab.i("MicroMsg.FreeWifi.FreeWifiManager", "update %s, connect state : %d, return : %b", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(j.bAK().update(paramIntent, new String[0])) });
     }
+    AppMethodBeat.o(20709);
   }
   
-  public static boolean aTU()
+  public static WifiInfo bAA()
   {
-    WifiManager localWifiManager = (WifiManager)ae.getContext().getSystemService("wifi");
-    if (localWifiManager == null)
-    {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi manager failed");
-      return false;
-    }
-    return localWifiManager.setWifiEnabled(true);
-  }
-  
-  public static String aTV()
-  {
-    if (aq.getNetType(ae.getContext()) == 0)
-    {
-      Object localObject = aTY();
-      if ((localObject != null) && (((WifiInfo)localObject).getBSSID() != null))
-      {
-        localObject = ((WifiInfo)localObject).getBSSID();
-        y.i("MicroMsg.FreeWifi.FreeWifiManager", "getConnectWifiMacAddress, get bssid now : %s", new Object[] { localObject });
-        return localObject;
-      }
-    }
-    return null;
-  }
-  
-  public static int aTW()
-  {
-    if (aq.getNetType(ae.getContext()) == 0)
-    {
-      WifiInfo localWifiInfo = aTY();
-      if (localWifiInfo != null)
-      {
-        int i = localWifiInfo.getRssi();
-        y.i("MicroMsg.FreeWifi.FreeWifiManager", "getConnectWifiSignal, get rssi now : %d", new Object[] { Integer.valueOf(i) });
-        return i;
-      }
-    }
-    return 0;
-  }
-  
-  public static String aTX()
-  {
-    int i = aq.getNetType(ae.getContext());
-    y.i("MicroMsg.FreeWifi.FreeWifiManager", "networkType = %d", new Object[] { Integer.valueOf(i) });
-    if (i == 0)
-    {
-      Object localObject = aTY();
-      if ((localObject != null) && (((WifiInfo)localObject).getSSID() != null))
-      {
-        localObject = ((WifiInfo)localObject).getSSID().replace("\"", "");
-        y.i("MicroMsg.FreeWifi.FreeWifiManager", "get ssid now : %s", new Object[] { localObject });
-        return localObject;
-      }
-    }
-    return null;
-  }
-  
-  public static WifiInfo aTY()
-  {
-    Object localObject = (WifiManager)ae.getContext().getSystemService("wifi");
+    AppMethodBeat.i(20712);
+    Object localObject = (WifiManager)ah.getContext().getSystemService("wifi");
     if (localObject == null)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi manager failed");
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi manager failed");
+      AppMethodBeat.o(20712);
       return null;
     }
     try
     {
       localObject = ((WifiManager)localObject).getConnectionInfo();
+      AppMethodBeat.o(20712);
       return localObject;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "getConnectionInfo failed : %s", new Object[] { localException.getMessage() });
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "getConnectionInfo failed : %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(20712);
     }
     return null;
   }
   
-  public static String aTZ()
+  public static String bAB()
   {
-    Object localObject = (WifiManager)ae.getContext().getSystemService("wifi");
-    if (localObject == null)
-    {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi manager failed");
-      localObject = "";
-    }
-    for (;;)
-    {
-      return localObject;
-      try
-      {
-        localObject = ((WifiManager)localObject).getConnectionInfo();
-        if (localObject == null) {
-          return "";
-        }
-        String str = ((WifiInfo)localObject).getBSSID();
-        localObject = str;
-        if (str == null) {
-          return "";
-        }
-      }
-      catch (Exception localException)
-      {
-        y.e("MicroMsg.FreeWifi.FreeWifiManager", "getConnectWifiBssid failed : %s", new Object[] { localException.getMessage() });
-      }
-    }
-    return "";
+    AppMethodBeat.i(20713);
+    String str = at.gY(ah.getContext());
+    AppMethodBeat.o(20713);
+    return str;
   }
   
-  public static String aUa()
+  public static String bAC()
   {
-    Object localObject = (WifiManager)ae.getContext().getSystemService("wifi");
-    if (localObject == null)
+    AppMethodBeat.i(156900);
+    String str = at.gX(ah.getContext());
+    AppMethodBeat.o(156900);
+    return str;
+  }
+  
+  public static boolean bAx()
+  {
+    AppMethodBeat.i(20705);
+    WifiManager localWifiManager = (WifiManager)ah.getContext().getSystemService("wifi");
+    if (localWifiManager == null)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi manager failed");
-      return "";
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi manager failed");
+      AppMethodBeat.o(20705);
+      return false;
     }
-    try
+    boolean bool = localWifiManager.setWifiEnabled(true);
+    AppMethodBeat.o(20705);
+    return bool;
+  }
+  
+  public static String bAy()
+  {
+    AppMethodBeat.i(20710);
+    if (at.getNetType(ah.getContext()) == 0)
     {
-      localObject = ((WifiManager)localObject).getConnectionInfo();
-      if (localObject == null) {
-        return "";
+      Object localObject = bAA();
+      if ((localObject != null) && (((WifiInfo)localObject).getBSSID() != null))
+      {
+        localObject = ((WifiInfo)localObject).getBSSID();
+        ab.i("MicroMsg.FreeWifi.FreeWifiManager", "getConnectWifiMacAddress, get bssid now : %s", new Object[] { localObject });
+        AppMethodBeat.o(20710);
+        return localObject;
       }
-      localObject = ((WifiInfo)localObject).getSSID();
-      if (localObject == null) {
-        return "";
-      }
-      localObject = m.Dm((String)localObject);
-      return localObject;
     }
-    catch (Exception localException)
+    AppMethodBeat.o(20710);
+    return null;
+  }
+  
+  public static int bAz()
+  {
+    AppMethodBeat.i(20711);
+    if (at.getNetType(ah.getContext()) == 0)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "getConnectWifiBssid failed : %s", new Object[] { localException.getMessage() });
+      WifiInfo localWifiInfo = bAA();
+      if (localWifiInfo != null)
+      {
+        int i = localWifiInfo.getRssi();
+        ab.i("MicroMsg.FreeWifi.FreeWifiManager", "getConnectWifiSignal, get rssi now : %d", new Object[] { Integer.valueOf(i) });
+        AppMethodBeat.o(20711);
+        return i;
+      }
     }
-    return "";
+    AppMethodBeat.o(20711);
+    return 0;
   }
   
   public static int c(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    y.i("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork by encrypt, ssid is : %s, password : %s, cryptType :%d, hideSSID = %b", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    if (bk.bl(paramString1))
+    AppMethodBeat.i(20702);
+    ab.i("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork by encrypt, ssid is : %s, password : %s, cryptType :%d, hideSSID = %b", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if (bo.isNullOrNil(paramString1))
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork by encrypt alg failed, ssid is null");
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork by encrypt alg failed, ssid is null");
+      AppMethodBeat.o(20702);
       return -12;
     }
-    if (paramInt == 0) {
-      return Dv(paramString1);
-    }
-    if (bk.bl(paramString2))
+    if (paramInt == 0)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "encrypt type is not none, while password is null");
+      paramInt = OD(paramString1);
+      AppMethodBeat.o(20702);
+      return paramInt;
+    }
+    if (bo.isNullOrNil(paramString2))
+    {
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "encrypt type is not none, while password is null");
+      AppMethodBeat.o(20702);
       return -15;
     }
-    WifiManager localWifiManager = (WifiManager)ae.getContext().getSystemService("wifi");
+    WifiManager localWifiManager = (WifiManager)ah.getContext().getSystemService("wifi");
     if (localWifiManager == null)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork by encrypt alg, get wifi manager failed");
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork by encrypt alg, get wifi manager failed");
+      AppMethodBeat.o(20702);
       return -11;
     }
-    label130:
+    label162:
     Object localObject;
-    if (com.tencent.mm.compatible.util.d.gF(21)) {
-      if (bk.bl(paramString1))
+    if (com.tencent.mm.compatible.util.d.fv(21)) {
+      if (bo.isNullOrNil(paramString1))
       {
-        y.e("MicroMsg.FreeWifi.FreeWifiManager", "null or nill ssid");
-        break label267;
+        ab.e("MicroMsg.FreeWifi.FreeWifiManager", "null or nill ssid");
+        break label305;
         localObject = null;
-        label133:
+        label165:
         if (localObject != null) {
-          break label324;
+          break label362;
         }
-        paramString1 = w(paramString1, paramString2, paramInt);
+        paramString1 = D(paramString1, paramString2, paramInt);
         paramString1.hiddenSSID = paramBoolean;
         paramInt = localWifiManager.addNetwork(paramString1);
         localWifiManager.saveConfiguration();
@@ -323,29 +341,30 @@ public final class d
     for (;;)
     {
       paramBoolean = localWifiManager.enableNetwork(paramInt, true);
-      y.i("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork by encrypt alg, netid : %d, result : %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+      ab.i("MicroMsg.FreeWifi.FreeWifiManager", "addWifiNetWork by encrypt alg, netid : %d, result : %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
       if (!paramBoolean) {
-        break label573;
+        break label612;
       }
+      AppMethodBeat.o(20702);
       return 0;
-      localObject = ((WifiManager)ae.getContext().getSystemService("wifi")).getConfiguredNetworks();
+      localObject = ((WifiManager)ah.getContext().getSystemService("wifi")).getConfiguredNetworks();
       if (localObject == null)
       {
-        y.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi list is null");
-        break label130;
+        ab.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi list is null");
+        break label162;
       }
-      y.i("MicroMsg.FreeWifi.FreeWifiManager", "get wificonfiguration list size : %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
+      ab.i("MicroMsg.FreeWifi.FreeWifiManager", "get wificonfiguration list size : %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
       Iterator localIterator = ((List)localObject).iterator();
-      label267:
+      label305:
       if (!localIterator.hasNext()) {
-        break label130;
+        break label162;
       }
       localObject = (WifiConfiguration)localIterator.next();
       if (!((WifiConfiguration)localObject).SSID.equals("\"" + paramString1 + "\"")) {
         break;
       }
-      break label133;
-      label324:
+      break label165;
+      label362:
       if (localObject != null)
       {
         ((WifiConfiguration)localObject).SSID = ("\"" + paramString1 + "\"");
@@ -353,7 +372,7 @@ public final class d
         switch (paramInt)
         {
         default: 
-          y.e("MicroMsg.FreeWifi.FreeWifiManager", "unsupport encrypt type : %d", new Object[] { Integer.valueOf(paramInt) });
+          ab.e("MicroMsg.FreeWifi.FreeWifiManager", "unsupport encrypt type : %d", new Object[] { Integer.valueOf(paramInt) });
         }
       }
       for (;;)
@@ -367,67 +386,55 @@ public final class d
         ((WifiConfiguration)localObject).preSharedKey = ("\"" + paramString2 + "\"");
         ((WifiConfiguration)localObject).allowedKeyManagement.set(1);
       }
-      int i = Dx(paramString1);
+      int i = OF(paramString1);
       if (i > 0) {
-        y.i("MicroMsg.FreeWifi.FreeWifiManager", "this network has exist : %s, try to remove it : %b", new Object[] { paramString1, Boolean.valueOf(localWifiManager.removeNetwork(i)) });
+        ab.i("MicroMsg.FreeWifi.FreeWifiManager", "this network has exist : %s, try to remove it : %b", new Object[] { paramString1, Boolean.valueOf(localWifiManager.removeNetwork(i)) });
       }
-      paramString1 = w(paramString1, paramString2, paramInt);
+      paramString1 = D(paramString1, paramString2, paramInt);
       paramString1.hiddenSSID = paramBoolean;
       paramInt = localWifiManager.addNetwork(paramString1);
       localWifiManager.saveConfiguration();
     }
-    label573:
+    label612:
+    AppMethodBeat.o(20702);
     return -14;
   }
   
   public static int getNetworkType()
   {
-    return aq.getNetType(ae.getContext());
+    AppMethodBeat.i(156901);
+    int i = at.getNetType(ah.getContext());
+    AppMethodBeat.o(156901);
+    return i;
   }
   
   public static boolean isWifiEnabled()
   {
-    WifiManager localWifiManager = (WifiManager)ae.getContext().getSystemService("wifi");
+    AppMethodBeat.i(20704);
+    WifiManager localWifiManager = (WifiManager)ah.getContext().getSystemService("wifi");
     if (localWifiManager == null)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi manager failed");
+      ab.e("MicroMsg.FreeWifi.FreeWifiManager", "get wifi manager failed");
+      AppMethodBeat.o(20704);
       return false;
     }
     boolean bool = localWifiManager.isWifiEnabled();
-    y.i("MicroMsg.FreeWifi.FreeWifiManager", "is wifi enalbe now : %b", new Object[] { Boolean.valueOf(bool) });
+    ab.i("MicroMsg.FreeWifi.FreeWifiManager", "is wifi enalbe now : %b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(20704);
     return bool;
   }
   
-  public static void release() {}
-  
-  public static String rr(int paramInt)
+  public static String wl(int paramInt)
   {
-    String str2 = (String)kow.get(Integer.valueOf(paramInt));
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  private static WifiConfiguration w(String paramString1, String paramString2, int paramInt)
-  {
-    WifiConfiguration localWifiConfiguration = new WifiConfiguration();
-    localWifiConfiguration.SSID = ("\"" + paramString1 + "\"");
-    localWifiConfiguration.status = 2;
-    switch (paramInt)
+    AppMethodBeat.i(20708);
+    String str = (String)mKj.get(Integer.valueOf(paramInt));
+    if (str == null)
     {
-    default: 
-      y.e("MicroMsg.FreeWifi.FreeWifiManager", "unsupport encrypt type : %d", new Object[] { Integer.valueOf(paramInt) });
-      return localWifiConfiguration;
-    case 1: 
-      localWifiConfiguration.wepKeys = new String[] { "\"" + paramString2 + "\"" };
-      localWifiConfiguration.allowedKeyManagement.set(0);
-      return localWifiConfiguration;
+      AppMethodBeat.o(20708);
+      return "";
     }
-    localWifiConfiguration.preSharedKey = ("\"" + paramString2 + "\"");
-    localWifiConfiguration.allowedKeyManagement.set(1);
-    return localWifiConfiguration;
+    AppMethodBeat.o(20708);
+    return str;
   }
 }
 

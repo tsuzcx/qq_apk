@@ -9,106 +9,116 @@ final class b$3
   public final void run()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 23	com/tencent/mm/ipcinvoker/b$3:dGy	Lcom/tencent/mm/ipcinvoker/b$a;
-    //   4: getfield 38	com/tencent/mm/ipcinvoker/b$a:dGA	Landroid/content/ServiceConnection;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: ifnonnull +22 -> 31
-    //   12: ldc 40
-    //   14: ldc 42
-    //   16: iconst_1
-    //   17: anewarray 4	java/lang/Object
-    //   20: dup
-    //   21: iconst_0
-    //   22: aload_0
-    //   23: getfield 25	com/tencent/mm/ipcinvoker/b$3:dGw	Ljava/lang/String;
-    //   26: aastore
-    //   27: invokestatic 48	com/tencent/mm/ipcinvoker/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   30: return
-    //   31: invokestatic 54	com/tencent/mm/ipcinvoker/e:getContext	()Landroid/content/Context;
-    //   34: aload_1
-    //   35: invokevirtual 60	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
-    //   38: aload_0
-    //   39: getfield 21	com/tencent/mm/ipcinvoker/b$3:dGx	Lcom/tencent/mm/ipcinvoker/b;
-    //   42: invokestatic 64	com/tencent/mm/ipcinvoker/b:a	(Lcom/tencent/mm/ipcinvoker/b;)Ljava/util/Map;
-    //   45: astore_1
-    //   46: aload_1
-    //   47: monitorenter
+    //   0: ldc 33
+    //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: getfield 23	com/tencent/mm/ipcinvoker/b$3:eEb	Lcom/tencent/mm/ipcinvoker/b$a;
+    //   9: getfield 45	com/tencent/mm/ipcinvoker/b$a:serviceConnection	Landroid/content/ServiceConnection;
+    //   12: astore_1
+    //   13: aload_1
+    //   14: ifnonnull +27 -> 41
+    //   17: ldc 47
+    //   19: ldc 49
+    //   21: iconst_1
+    //   22: anewarray 4	java/lang/Object
+    //   25: dup
+    //   26: iconst_0
+    //   27: aload_0
+    //   28: getfield 25	com/tencent/mm/ipcinvoker/b$3:eDZ	Ljava/lang/String;
+    //   31: aastore
+    //   32: invokestatic 54	com/tencent/mm/ipcinvoker/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   35: ldc 33
+    //   37: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   40: return
+    //   41: invokestatic 63	com/tencent/mm/ipcinvoker/e:getContext	()Landroid/content/Context;
+    //   44: aload_1
+    //   45: invokevirtual 69	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
     //   48: aload_0
-    //   49: getfield 21	com/tencent/mm/ipcinvoker/b$3:dGx	Lcom/tencent/mm/ipcinvoker/b;
-    //   52: invokestatic 64	com/tencent/mm/ipcinvoker/b:a	(Lcom/tencent/mm/ipcinvoker/b;)Ljava/util/Map;
-    //   55: aload_0
-    //   56: getfield 25	com/tencent/mm/ipcinvoker/b$3:dGw	Ljava/lang/String;
-    //   59: invokeinterface 70 2 0
-    //   64: pop
-    //   65: aload_1
-    //   66: monitorexit
-    //   67: aload_0
-    //   68: getfield 23	com/tencent/mm/ipcinvoker/b$3:dGy	Lcom/tencent/mm/ipcinvoker/b$a;
-    //   71: astore_1
-    //   72: aload_1
-    //   73: monitorenter
-    //   74: aload_0
-    //   75: getfield 23	com/tencent/mm/ipcinvoker/b$3:dGy	Lcom/tencent/mm/ipcinvoker/b$a;
-    //   78: aconst_null
-    //   79: putfield 74	com/tencent/mm/ipcinvoker/b$a:dGz	Lcom/tencent/mm/ipcinvoker/b/a;
-    //   82: aload_0
-    //   83: getfield 23	com/tencent/mm/ipcinvoker/b$3:dGy	Lcom/tencent/mm/ipcinvoker/b$a;
-    //   86: iconst_0
-    //   87: putfield 78	com/tencent/mm/ipcinvoker/b$a:dGB	Z
-    //   90: aload_0
-    //   91: getfield 23	com/tencent/mm/ipcinvoker/b$3:dGy	Lcom/tencent/mm/ipcinvoker/b$a;
-    //   94: aconst_null
-    //   95: putfield 38	com/tencent/mm/ipcinvoker/b$a:dGA	Landroid/content/ServiceConnection;
-    //   98: aload_1
-    //   99: monitorexit
-    //   100: return
-    //   101: astore_2
-    //   102: aload_1
-    //   103: monitorexit
-    //   104: aload_2
-    //   105: athrow
-    //   106: astore_1
-    //   107: ldc 40
-    //   109: ldc 80
-    //   111: iconst_2
-    //   112: anewarray 4	java/lang/Object
-    //   115: dup
-    //   116: iconst_0
-    //   117: aload_0
-    //   118: getfield 25	com/tencent/mm/ipcinvoker/b$3:dGw	Ljava/lang/String;
-    //   121: aastore
-    //   122: dup
-    //   123: iconst_1
-    //   124: aload_1
-    //   125: invokestatic 86	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   128: aastore
-    //   129: invokestatic 89	com/tencent/mm/ipcinvoker/h/b:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   132: goto -94 -> 38
-    //   135: astore_2
-    //   136: aload_1
-    //   137: monitorexit
-    //   138: aload_2
-    //   139: athrow
+    //   49: getfield 21	com/tencent/mm/ipcinvoker/b$3:eEa	Lcom/tencent/mm/ipcinvoker/b;
+    //   52: invokestatic 73	com/tencent/mm/ipcinvoker/b:a	(Lcom/tencent/mm/ipcinvoker/b;)Ljava/util/Map;
+    //   55: astore_1
+    //   56: aload_1
+    //   57: monitorenter
+    //   58: aload_0
+    //   59: getfield 21	com/tencent/mm/ipcinvoker/b$3:eEa	Lcom/tencent/mm/ipcinvoker/b;
+    //   62: invokestatic 73	com/tencent/mm/ipcinvoker/b:a	(Lcom/tencent/mm/ipcinvoker/b;)Ljava/util/Map;
+    //   65: aload_0
+    //   66: getfield 25	com/tencent/mm/ipcinvoker/b$3:eDZ	Ljava/lang/String;
+    //   69: invokeinterface 79 2 0
+    //   74: pop
+    //   75: aload_1
+    //   76: monitorexit
+    //   77: aload_0
+    //   78: getfield 23	com/tencent/mm/ipcinvoker/b$3:eEb	Lcom/tencent/mm/ipcinvoker/b$a;
+    //   81: astore_1
+    //   82: aload_1
+    //   83: monitorenter
+    //   84: aload_0
+    //   85: getfield 23	com/tencent/mm/ipcinvoker/b$3:eEb	Lcom/tencent/mm/ipcinvoker/b$a;
+    //   88: aconst_null
+    //   89: putfield 83	com/tencent/mm/ipcinvoker/b$a:eEc	Lcom/tencent/mm/ipcinvoker/b/a;
+    //   92: aload_0
+    //   93: getfield 23	com/tencent/mm/ipcinvoker/b$3:eEb	Lcom/tencent/mm/ipcinvoker/b$a;
+    //   96: iconst_0
+    //   97: putfield 87	com/tencent/mm/ipcinvoker/b$a:eEd	Z
+    //   100: aload_0
+    //   101: getfield 23	com/tencent/mm/ipcinvoker/b$3:eEb	Lcom/tencent/mm/ipcinvoker/b$a;
+    //   104: aconst_null
+    //   105: putfield 45	com/tencent/mm/ipcinvoker/b$a:serviceConnection	Landroid/content/ServiceConnection;
+    //   108: aload_1
+    //   109: monitorexit
+    //   110: ldc 33
+    //   112: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   115: return
+    //   116: astore_1
+    //   117: ldc 47
+    //   119: ldc 89
+    //   121: iconst_2
+    //   122: anewarray 4	java/lang/Object
+    //   125: dup
+    //   126: iconst_0
+    //   127: aload_0
+    //   128: getfield 25	com/tencent/mm/ipcinvoker/b$3:eDZ	Ljava/lang/String;
+    //   131: aastore
+    //   132: dup
+    //   133: iconst_1
+    //   134: aload_1
+    //   135: invokestatic 95	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   138: aastore
+    //   139: invokestatic 98	com/tencent/mm/ipcinvoker/h/b:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   142: goto -94 -> 48
+    //   145: astore_2
+    //   146: aload_1
+    //   147: monitorexit
+    //   148: ldc 33
+    //   150: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   153: aload_2
+    //   154: athrow
+    //   155: astore_2
+    //   156: aload_1
+    //   157: monitorexit
+    //   158: ldc 33
+    //   160: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   163: aload_2
+    //   164: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	140	0	this	3
-    //   106	31	1	localException	java.lang.Exception
-    //   101	4	2	localObject2	Object
-    //   135	4	2	localObject3	Object
+    //   0	165	0	this	3
+    //   116	41	1	localException	java.lang.Exception
+    //   145	9	2	localObject2	Object
+    //   155	9	2	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   74	100	101	finally
-    //   102	104	101	finally
-    //   31	38	106	java/lang/Exception
-    //   48	67	135	finally
-    //   136	138	135	finally
+    //   41	48	116	java/lang/Exception
+    //   58	77	145	finally
+    //   146	148	145	finally
+    //   84	110	155	finally
+    //   156	158	155	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.b.3
  * JD-Core Version:    0.7.0.1
  */

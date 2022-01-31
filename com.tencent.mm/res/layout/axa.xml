@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/ei3" wallet:layoutRes="@layout/axb" wallet:infoIvVisibility="dx" wallet:titleTvVisibility="dx" style="@style/gd"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" />
+<LinearLayout android:gravity="top" android:orientation="horizontal" android:background="@color/a6q" android:paddingLeft="@dimen/a50" android:paddingRight="@dimen/a50" android:paddingBottom="@dimen/ll" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/d4k" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/ll" android:layout_marginRight="8.0dip" />
+    <LinearLayout android:gravity="top" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ll" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:ellipsize="end" android:id="@id/d4l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:ellipsize="end" android:id="@id/d4p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:singleLine="true" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center|right|top" android:layout_gravity="right" android:orientation="vertical" android:paddingTop="@dimen/ll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ll">
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/d4m" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <ImageView android:id="@id/d4q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/boz" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/h6" android:id="@id/d4r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginTop="4.0dip" android:text="@string/eqz" />
+    </LinearLayout>
+</LinearLayout>

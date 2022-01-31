@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.support.v7.widget.RecyclerView.v;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recentview.BaseAppBrandRecentView.c;
 
 final class AppBrandDesktopHalfItemView$2
@@ -15,10 +16,12 @@ final class AppBrandDesktopHalfItemView$2
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    if ((AppBrandDesktopHalfItemView.g(this.hry) != null) && (AppBrandDesktopHalfItemView.g(this.hry).hrA != null) && (AppBrandDesktopHalfItemView.g(this.hry).hrA.aie != null) && ((AppBrandDesktopHalfItemView.g(this.hry).hrA instanceof BaseAppBrandRecentView.c))) {
-      ((BaseAppBrandRecentView.c)AppBrandDesktopHalfItemView.g(this.hry).hrA).eXr.setVisibility(0);
+    AppMethodBeat.i(134126);
+    if ((AppBrandDesktopHalfItemView.g(this.jhV) != null) && (AppBrandDesktopHalfItemView.g(this.jhV).jhX != null) && (AppBrandDesktopHalfItemView.g(this.jhV).jhX.aku != null) && ((AppBrandDesktopHalfItemView.g(this.jhV).jhX instanceof BaseAppBrandRecentView.c))) {
+      ((BaseAppBrandRecentView.c)AppBrandDesktopHalfItemView.g(this.jhV).jhX).titleTv.setVisibility(0);
     }
-    AppBrandDesktopHalfItemView.j(this.hry);
+    AppBrandDesktopHalfItemView.j(this.jhV);
+    AppMethodBeat.o(134126);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}

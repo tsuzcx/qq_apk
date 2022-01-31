@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.talkroom.component;
 
 import android.os.IBinder;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$a$a
   implements e
@@ -18,26 +19,9 @@ final class e$a$a
     return this.mRemote;
   }
   
-  public final void bFy()
+  public final int cHq()
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-      this.mRemote.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public final int bMr()
-  {
+    AppMethodBeat.i(25711);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -52,11 +36,33 @@ final class e$a$a
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(25711);
     }
   }
   
-  public final void bMs()
+  public final void crn()
   {
+    AppMethodBeat.i(25708);
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
+      this.mRemote.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+      AppMethodBeat.o(25708);
+    }
+  }
+  
+  public final void ctY()
+  {
+    AppMethodBeat.i(25709);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -70,11 +76,13 @@ final class e$a$a
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(25709);
     }
   }
   
   public final void release()
   {
+    AppMethodBeat.i(25710);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -88,11 +96,13 @@ final class e$a$a
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(25710);
     }
   }
   
   public final void start()
   {
+    AppMethodBeat.i(25712);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -106,6 +116,7 @@ final class e$a$a
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(25712);
     }
   }
 }

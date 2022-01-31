@@ -11,8 +11,8 @@ final class TextInputLayout$3
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.lY.lw.setText(this.lZ);
-    this.lY.lw.setVisibility(4);
+    this.mT.mr.setText(this.mU);
+    this.mT.mr.setVisibility(4);
   }
 }
 

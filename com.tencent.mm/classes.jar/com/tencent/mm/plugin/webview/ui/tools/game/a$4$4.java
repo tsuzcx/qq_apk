@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$4$4
   implements Runnable
@@ -9,7 +10,9 @@ final class a$4$4
   
   public final void run()
   {
-    this.rwf.rwe.rvX.T(this.byv);
+    AppMethodBeat.i(8653);
+    this.vmx.vmw.vmn.al(this.cax);
+    AppMethodBeat.o(8653);
   }
 }
 

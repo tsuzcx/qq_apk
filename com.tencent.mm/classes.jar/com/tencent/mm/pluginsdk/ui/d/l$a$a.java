@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.d;
 
 public abstract interface l$a$a
 {
-  public abstract void hb(boolean paramBoolean);
+  public abstract void iL(boolean paramBoolean);
 }
 
 

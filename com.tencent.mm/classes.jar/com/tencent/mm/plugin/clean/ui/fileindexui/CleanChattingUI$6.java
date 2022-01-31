@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.database.Cursor;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.List;
 
 final class CleanChattingUI$6
@@ -12,28 +13,37 @@ final class CleanChattingUI$6
   
   public final void run()
   {
-    if (!CleanChattingUI.c(this.iDb))
+    AppMethodBeat.i(18785);
+    if (!CleanChattingUI.c(this.kIi))
     {
-      y.i("MicroMsg.CleanChattingUI", "load contact cursor now");
-      CleanChattingUI.d(this.iDb);
-      ai.d(new CleanChattingUI.6.1(this));
-      Cursor localCursor = com.tencent.mm.plugin.h.b.ayE().ayF().ayP();
-      if (localCursor != null) {
-        while (localCursor.moveToNext())
-        {
-          c localc = new c();
-          localc.username = localCursor.getString(0);
-          localc.size = localCursor.getLong(1);
-          CleanChattingUI.f(this.iDb).add(localc);
+      ab.i("MicroMsg.CleanChattingUI", "load contact cursor now");
+      CleanChattingUI.d(this.kIi);
+      al.d(new CleanChattingUI.6.1(this));
+      try
+      {
+        Cursor localCursor = com.tencent.mm.plugin.f.b.bak().bal().baw();
+        if (localCursor != null) {
+          while (localCursor.moveToNext())
+          {
+            c localc = new c();
+            localc.username = localCursor.getString(0);
+            localc.size = localCursor.getLong(1);
+            CleanChattingUI.f(this.kIi).add(localc);
+          }
         }
+        AppMethodBeat.o(18785);
       }
-      ai.d(new CleanChattingUI.6.2(this));
+      catch (NullPointerException localNullPointerException)
+      {
+        ab.printErrStackTrace("MicroMsg.CleanChattingUI", localNullPointerException, "", new Object[0]);
+        al.d(new CleanChattingUI.6.2(this));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.CleanChattingUI.6
  * JD-Core Version:    0.7.0.1
  */

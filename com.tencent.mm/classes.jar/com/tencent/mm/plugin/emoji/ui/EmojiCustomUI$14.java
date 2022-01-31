@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.emoji.ui;
 
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class EmojiCustomUI$14
-  implements j.a
+  implements k.a
 {
   EmojiCustomUI$14(EmojiCustomUI paramEmojiCustomUI) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
-    if ((!bk.bl(paramString)) && ((paramString.length() == 32) || (paramString.equals("event_update_emoji"))) && (EmojiCustomUI.e(this.jcS) != null))
+    AppMethodBeat.i(53312);
+    if ((!bo.isNullOrNil(paramString)) && ((paramString.length() == 32) || (paramString.equals("event_update_emoji"))) && (EmojiCustomUI.f(this.llF) != null))
     {
-      EmojiCustomUI.e(this.jcS).aJc();
-      EmojiCustomUI.e(this.jcS).notifyDataSetChanged();
+      EmojiCustomUI.f(this.llF).bmC();
+      EmojiCustomUI.f(this.llF).notifyDataSetChanged();
     }
+    AppMethodBeat.o(53312);
   }
 }
 

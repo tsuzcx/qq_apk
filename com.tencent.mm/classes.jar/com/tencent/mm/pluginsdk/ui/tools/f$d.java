@@ -1,8 +1,38 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-public abstract interface f$d
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class f$d
+  implements Runnable
 {
-  public abstract void Sh();
+  ImageView cuM;
+  Bitmap nfX;
+  
+  private f$d(f paramf) {}
+  
+  public final void run()
+  {
+    AppMethodBeat.i(79940);
+    if (this.cuM != null)
+    {
+      if ((this.nfX == null) || (!this.nfX.isRecycled())) {
+        break label63;
+      }
+      f.c.l(this.cuM);
+    }
+    for (;;)
+    {
+      this.cuM = null;
+      this.nfX = null;
+      this.weP.weL.cr(this);
+      AppMethodBeat.o(79940);
+      return;
+      label63:
+      f.c.d(this.cuM, this.nfX);
+    }
+  }
 }
 
 

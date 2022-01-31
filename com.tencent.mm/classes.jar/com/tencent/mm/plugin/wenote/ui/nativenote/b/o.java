@@ -1,140 +1,154 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote.b;
 
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.h;
 import com.tencent.mm.plugin.wenote.model.a.c;
 import com.tencent.mm.plugin.wenote.model.a.l;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 import com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.NoteVoiceView;
 import com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.NoteVoiceView.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class o
   extends i
 {
-  private LinearLayout fmL;
-  private final ah rGl = new o.2(this);
-  public LinearLayout rMI;
-  public LinearLayout rMJ;
-  public ImageView rML;
-  private TextView rMM;
-  private TextView rMN;
-  private l rMO;
-  public NoteVoiceView rND;
+  private LinearLayout gEf;
+  public LinearLayout vDm;
+  public LinearLayout vDn;
+  public ImageView vDp;
+  private TextView vDq;
+  private TextView vDr;
+  private l vDs;
+  public NoteVoiceView vEh;
+  private final ak vwU;
   
   public o(View paramView, k paramk)
   {
     super(paramView, paramk);
-    this.fmL = ((LinearLayout)paramView.findViewById(R.h.note_voice_ll));
-    this.rMI = ((LinearLayout)paramView.findViewById(R.h.note_voice_record_ll));
-    this.rMJ = ((LinearLayout)paramView.findViewById(R.h.note_voice_play_ll));
-    this.rML = ((ImageView)paramView.findViewById(R.h.note_voice_record_red_point));
-    this.rMM = ((TextView)paramView.findViewById(R.h.note_voice_recording_tips));
-    this.rMN = ((TextView)paramView.findViewById(R.h.note_voice_recording_tips_time));
-    this.rND = ((NoteVoiceView)paramView.findViewById(R.h.note_editor_voice_player));
-    this.rND.setVoiceHelper(com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.cjx());
-    this.fmL.setVisibility(0);
-    this.rMI.setVisibility(8);
-    this.rMJ.setVisibility(0);
-    this.bNu.setVisibility(8);
-    this.rNa.setVisibility(8);
-    this.fmL.setOnClickListener(new o.1(this));
+    AppMethodBeat.i(27186);
+    this.vwU = new o.2(this);
+    this.gEf = ((LinearLayout)paramView.findViewById(2131826584));
+    this.vDm = ((LinearLayout)paramView.findViewById(2131826585));
+    this.vDn = ((LinearLayout)paramView.findViewById(2131826589));
+    this.vDp = ((ImageView)paramView.findViewById(2131826586));
+    this.vDq = ((TextView)paramView.findViewById(2131826587));
+    this.vDr = ((TextView)paramView.findViewById(2131826588));
+    this.vEh = ((NoteVoiceView)paramView.findViewById(2131826590));
+    this.vEh.setVoiceHelper(com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.djZ());
+    this.gEf.setVisibility(0);
+    this.vDm.setVisibility(8);
+    this.vDn.setVisibility(0);
+    this.cuM.setVisibility(8);
+    this.vDE.setVisibility(8);
+    this.gEf.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(27184);
+        if ((o.a(o.this) != null) && (o.a(o.this).vxk.booleanValue())) {
+          o.a(o.this).vxl = Boolean.TRUE;
+        }
+        AppMethodBeat.o(27184);
+      }
+    });
+    AppMethodBeat.o(27186);
   }
   
   public final void a(c paramc, int paramInt1, int paramInt2)
   {
-    this.rMO = ((l)paramc);
-    if (this.rMO.rGJ)
+    AppMethodBeat.i(27187);
+    this.vDs = ((l)paramc);
+    if (this.vDs.vxs)
     {
-      this.fmL.setBackgroundResource(0);
-      this.rMJ.setVisibility(0);
-      this.rMI.setVisibility(8);
-      this.fmL.setPadding(0, 0, 0, 0);
-      if (!paramc.rGu) {
-        break label583;
+      this.gEf.setBackgroundResource(0);
+      this.vDn.setVisibility(0);
+      this.vDm.setVisibility(8);
+      this.gEf.setPadding(0, 0, 0, 0);
+      if (!paramc.vxd) {
+        break label591;
       }
     }
-    label294:
-    label307:
-    label583:
+    label306:
+    label319:
+    label591:
     for (int i = 1;; i = 0)
     {
-      Object localObject1 = this.rND;
-      Object localObject2 = this.rMO.bTY;
-      int j = this.rMO.bNM;
-      int k = this.rMO.bNN;
-      ((NoteVoiceView)localObject1).path = bk.aM((String)localObject2, "");
-      ((NoteVoiceView)localObject1).bNM = j;
+      Object localObject1 = this.vEh;
+      Object localObject2 = this.vDs.cBD;
+      int j = this.vDs.cve;
+      int k = this.vDs.cvf;
+      ((NoteVoiceView)localObject1).path = bo.bf((String)localObject2, "");
+      ((NoteVoiceView)localObject1).cve = j;
       ((NoteVoiceView)localObject1).duration = k;
       if (i != 0)
       {
-        ((NoteVoiceView)localObject1).hoY.setVisibility(0);
-        if (!((NoteVoiceView)localObject1).path.equals(((NoteVoiceView)localObject1).rNJ.path)) {
-          break label307;
+        ((NoteVoiceView)localObject1).jbK.setVisibility(0);
+        if (!((NoteVoiceView)localObject1).path.equals(((NoteVoiceView)localObject1).vEn.path)) {
+          break label319;
         }
-        if (!((NoteVoiceView)localObject1).rNJ.aQk()) {
-          break label217;
+        if (!((NoteVoiceView)localObject1).vEn.bwz()) {
+          break label229;
         }
-        y.i("MicroMsg.NoteVoiceView", "updateInfo .isPlay()");
-        localObject2 = ((NoteVoiceView)localObject1).rNK;
-        ((NoteVoiceView)localObject1).rNJ.ue();
-        ((NoteVoiceView.a)localObject2).lK(true);
+        ab.i("MicroMsg.NoteVoiceView", "updateInfo .isPlay()");
+        localObject2 = ((NoteVoiceView)localObject1).vEo;
+        ((NoteVoiceView)localObject1).vEn.Er();
+        ((NoteVoiceView.a)localObject2).oV(true);
       }
       for (;;)
       {
         super.a(paramc, paramInt1, paramInt2);
+        AppMethodBeat.o(27187);
         return;
-        ((NoteVoiceView)localObject1).hoY.setVisibility(8);
+        ((NoteVoiceView)localObject1).jbK.setVisibility(8);
         break;
-        label217:
-        localObject2 = ((NoteVoiceView)localObject1).rNJ;
-        if (((com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a)localObject2).jZC == null) {
-          y.w("MicroMsg.RecordVoiceHelper", "check is pause, but player is null");
+        label229:
+        localObject2 = ((NoteVoiceView)localObject1).vEn;
+        if (((com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a)localObject2).mtU == null) {
+          ab.w("MicroMsg.RecordVoiceHelper", "check is pause, but player is null");
         }
-        for (boolean bool = false;; bool = ((com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a)localObject2).jZC.uf())
+        for (boolean bool = false;; bool = ((com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a)localObject2).mtU.Ds())
         {
           if (!bool) {
-            break label294;
+            break label306;
           }
-          y.i("MicroMsg.NoteVoiceView", "updateInfo .isPause()");
-          localObject2 = ((NoteVoiceView)localObject1).rNK;
-          ((NoteVoiceView)localObject1).rNJ.ue();
-          ((NoteVoiceView.a)localObject2).lK(false);
+          ab.i("MicroMsg.NoteVoiceView", "updateInfo .isPause()");
+          localObject2 = ((NoteVoiceView)localObject1).vEo;
+          ((NoteVoiceView)localObject1).vEn.Er();
+          ((NoteVoiceView.a)localObject2).oV(false);
           break;
         }
-        ((NoteVoiceView)localObject1).rNK.Du(k);
+        ((NoteVoiceView)localObject1).vEo.vY(k);
         continue;
-        ((NoteVoiceView)localObject1).rNK.Du(k);
+        ((NoteVoiceView)localObject1).vEo.vY(k);
         continue;
-        this.fmL.setBackgroundResource(R.g.wenote_voice_basecard_bg);
-        this.fmL.setPadding(26, 7, 0, 7);
-        this.rMJ.setVisibility(8);
-        this.rMI.setVisibility(0);
-        localObject1 = this.rML;
+        this.gEf.setBackgroundResource(2130840953);
+        this.gEf.setPadding(26, 7, 0, 7);
+        this.vDn.setVisibility(8);
+        this.vDm.setVisibility(0);
+        localObject1 = this.vDp;
         if (((ImageView)localObject1).getAnimation() != null) {
           ((ImageView)localObject1).startAnimation(((ImageView)localObject1).getAnimation());
         }
         for (;;)
         {
-          if (!this.rMO.rGB.booleanValue()) {
-            break label520;
+          if (!this.vDs.vxk.booleanValue()) {
+            break label529;
           }
-          this.rGl.sendEmptyMessage(4096);
-          this.rMM.setText(R.l.favorite_wenote_voice_recording);
-          localObject1 = " " + com.tencent.mm.bj.a.x(ae.getContext(), this.rMO.rGW).toString();
-          this.rMN.setText((CharSequence)localObject1);
+          this.vwU.sendEmptyMessage(4096);
+          this.vDq.setText(2131299862);
+          localObject1 = " " + com.tencent.mm.bk.a.C(ah.getContext(), this.vDs.vxE).toString();
+          this.vDr.setText((CharSequence)localObject1);
           break;
           localObject2 = new AlphaAnimation(1.0F, 0.0F);
           ((Animation)localObject2).setDuration(500L);
@@ -143,14 +157,14 @@ public final class o
           ((Animation)localObject2).setRepeatMode(2);
           ((ImageView)localObject1).startAnimation((Animation)localObject2);
         }
-        this.rMM.setText(R.l.favorite_wenote_voice_downloading);
-        localObject1 = " " + com.tencent.mm.bj.a.x(ae.getContext(), (int)com.tencent.mm.bj.a.ck(this.rMO.bNN)).toString();
-        this.rMN.setText((CharSequence)localObject1);
+        this.vDq.setText(2131299861);
+        localObject1 = " " + com.tencent.mm.bk.a.C(ah.getContext(), (int)com.tencent.mm.bk.a.hi(this.vDs.cvf)).toString();
+        this.vDr.setText((CharSequence)localObject1);
       }
     }
   }
   
-  public final int cjv()
+  public final int djX()
   {
     return 4;
   }

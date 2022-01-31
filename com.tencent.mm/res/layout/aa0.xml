@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/ih" android:paddingLeft="@dimen/md" android:paddingTop="@dimen/du" android:paddingRight="@dimen/md" android:paddingBottom="@dimen/du" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/ct_" android:layout_width="42.0dip" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="top" android:id="@id/ok" android:layout_width="@dimen/ew" android:layout_height="@dimen/ew" android:layout_marginTop="@dimen/mx" android:layout_marginRight="@dimen/md" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/mv" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/a4e" android:textColor="@color/v0" android:id="@id/azl" android:layout_width="0.0dip" android:maxWidth="140.0dip" android:layout_weight="1.0" style="@style/ks" />
-            <TextView android:textSize="@dimen/a4e" android:textColor="@color/v0" android:gravity="right" android:layout_gravity="right" android:id="@id/azm" android:paddingRight="4.0dip" android:minWidth="65.0dip" style="@style/kq" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/a4d" android:textColor="@color/fc" android:gravity="center|left" android:id="@id/aua" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" android:singleLine="false" android:lineSpacingExtra="2.0dip" style="@style/kr" />
-    </LinearLayout>
+    <ImageView android:id="@id/cta" android:layout_width="0.0dip" android:layout_height="6.0dip" android:scaleType="fitCenter" android:layout_weight="1.0" />
+    <ImageView android:id="@id/ctb" android:layout_width="0.0dip" android:layout_height="6.0dip" android:scaleType="fitCenter" android:layout_weight="1.0" />
+    <ImageView android:id="@id/ctc" android:layout_width="0.0dip" android:layout_height="6.0dip" android:scaleType="fitCenter" android:layout_weight="1.0" />
 </LinearLayout>

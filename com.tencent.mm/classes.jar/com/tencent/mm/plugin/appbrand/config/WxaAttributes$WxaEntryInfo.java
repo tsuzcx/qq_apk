@@ -3,24 +3,34 @@ package com.tencent.mm.plugin.appbrand.config;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class WxaAttributes$WxaEntryInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WxaEntryInfo> CREATOR = new Parcelable.Creator() {};
-  public String fRq;
+  public static final Parcelable.Creator<WxaEntryInfo> CREATOR;
+  public String hkc;
   public String iconUrl;
   public String title;
   public String username;
+  
+  static
+  {
+    AppMethodBeat.i(96165);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(96165);
+  }
   
   public WxaAttributes$WxaEntryInfo() {}
   
   protected WxaAttributes$WxaEntryInfo(Parcel paramParcel)
   {
+    AppMethodBeat.i(96164);
     this.username = paramParcel.readString();
     this.title = paramParcel.readString();
-    this.fRq = paramParcel.readString();
+    this.hkc = paramParcel.readString();
     this.iconUrl = paramParcel.readString();
+    AppMethodBeat.o(96164);
   }
   
   public final int describeContents()
@@ -30,10 +40,12 @@ public final class WxaAttributes$WxaEntryInfo
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(96163);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.title);
-    paramParcel.writeString(this.fRq);
+    paramParcel.writeString(this.hkc);
     paramParcel.writeString(this.iconUrl);
+    AppMethodBeat.o(96163);
   }
 }
 

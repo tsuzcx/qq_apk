@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class j$3
   implements Runnable
@@ -9,13 +10,15 @@ final class j$3
   
   public final void run()
   {
-    j localj = this.fIm;
-    int j = this.zQ;
-    int k = this.fIn;
-    if ((this.fIo & t.adq())) {}
+    AppMethodBeat.i(129549);
+    j localj = this.hbe;
+    int j = this.Au;
+    int k = this.hbf;
+    if ((this.hbg & t.axy())) {}
     for (int i = 2;; i = 0)
     {
-      j.a(localj, j, k, i | 0x1, this.fIp, this.fIo, this.fIq);
+      j.a(localj, j, k, i | 0x1, this.hbh, this.hbg, this.hbi);
+      AppMethodBeat.o(129549);
       return;
     }
   }

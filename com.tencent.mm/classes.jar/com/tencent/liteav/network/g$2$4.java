@@ -1,5 +1,7 @@
 package com.tencent.liteav.network;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class g$2$4
   implements Runnable
 {
@@ -7,9 +9,11 @@ class g$2$4
   
   public void run()
   {
+    AppMethodBeat.i(67479);
     if (this.c.f != null) {
       this.c.f.a(this.a, this.b, null);
     }
+    AppMethodBeat.o(67479);
   }
 }
 

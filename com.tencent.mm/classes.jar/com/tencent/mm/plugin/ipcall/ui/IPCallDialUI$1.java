@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class IPCallDialUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class IPCallDialUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.lvH.finish();
+    AppMethodBeat.i(22124);
+    this.nSW.finish();
+    AppMethodBeat.o(22124);
     return true;
   }
 }

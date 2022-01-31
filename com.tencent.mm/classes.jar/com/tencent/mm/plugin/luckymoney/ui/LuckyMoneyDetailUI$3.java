@@ -1,16 +1,25 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.MMEditText.a;
 
 final class LuckyMoneyDetailUI$3
-  implements View.OnClickListener
+  implements MMEditText.a
 {
   LuckyMoneyDetailUI$3(LuckyMoneyDetailUI paramLuckyMoneyDetailUI) {}
   
-  public final void onClick(View paramView)
+  public final void bNU()
   {
-    LuckyMoneyDetailUI.o(this.lVz).setVisibility(0);
+    AppMethodBeat.i(42648);
+    if (LuckyMoneyDetailUI.t(this.otz).getVisibility() == 0)
+    {
+      LuckyMoneyDetailUI.t(this.otz).setVisibility(8);
+      AppMethodBeat.o(42648);
+      return;
+    }
+    this.otz.getContext().finish();
+    AppMethodBeat.o(42648);
   }
 }
 

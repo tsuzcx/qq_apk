@@ -1,28 +1,22 @@
 package com.tencent.mm.ui.transmit;
 
-import android.content.Intent;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.b;
-import com.tencent.mm.ui.chatting.gallery.ImageGalleryUI;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.c.a.b;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.modelappbrand.i;
 
 final class SelectConversationUI$6
-  implements c.a.b
+  implements DialogInterface.OnDismissListener
 {
-  SelectConversationUI$6(SelectConversationUI paramSelectConversationUI) {}
+  SelectConversationUI$6(SelectConversationUI paramSelectConversationUI, String paramString, View paramView) {}
   
-  public final void aSe()
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    Intent localIntent = new Intent(this.whw.mController.uMN, ImageGalleryUI.class);
-    localIntent.putExtra("img_gallery_msg_id", SelectConversationUI.i(this.whw));
-    localIntent.putExtra("img_gallery_msg_svr_id", SelectConversationUI.j(this.whw).field_msgSvrId);
-    localIntent.putExtra("img_gallery_talker", SelectConversationUI.j(this.whw).field_talker);
-    localIntent.putExtra("img_gallery_chatroom_name", SelectConversationUI.j(this.whw).field_talker);
-    localIntent.putExtra("img_preview_only", true);
-    this.whw.startActivity(localIntent);
-    b.gJ(this.whw.mController.uMN);
+    AppMethodBeat.i(35130);
+    ((i)g.E(i.class)).a(this.hpi, this.val$view);
+    AppMethodBeat.o(35130);
   }
 }
 

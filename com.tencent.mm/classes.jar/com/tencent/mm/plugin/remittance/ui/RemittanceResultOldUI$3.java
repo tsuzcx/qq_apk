@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.remittance.ui;
 
 import android.content.Intent;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class RemittanceResultOldUI$3
   implements Runnable
@@ -11,20 +12,24 @@ final class RemittanceResultOldUI$3
   
   public final void run()
   {
-    if ((RemittanceResultOldUI.c(this.nEx) == 33) || (RemittanceResultOldUI.c(this.nEx) == 32))
+    AppMethodBeat.i(45147);
+    if ((RemittanceResultOldUI.c(this.qrw) == 33) || (RemittanceResultOldUI.c(this.qrw) == 32))
     {
-      this.nEx.finish();
+      this.qrw.finish();
+      AppMethodBeat.o(45147);
       return;
     }
-    if ((!bk.bl(RemittanceResultOldUI.d(this.nEx))) && (!RemittanceResultOldUI.e(this.nEx)))
+    if ((!bo.isNullOrNil(RemittanceResultOldUI.d(this.qrw))) && (!RemittanceResultOldUI.e(this.qrw)))
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("Chat_User", RemittanceResultOldUI.d(this.nEx));
+      localIntent.putExtra("Chat_User", RemittanceResultOldUI.d(this.qrw));
       localIntent.putExtra("finish_direct", false);
-      d.e(this.nEx, ".ui.chatting.ChattingUI", localIntent);
+      d.f(this.qrw, ".ui.chatting.ChattingUI", localIntent);
+      AppMethodBeat.o(45147);
       return;
     }
-    this.nEx.finish();
+    this.qrw.finish();
+    AppMethodBeat.o(45147);
   }
 }
 

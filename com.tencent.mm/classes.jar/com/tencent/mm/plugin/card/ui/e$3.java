@@ -1,44 +1,45 @@
 package com.tencent.mm.plugin.card.ui;
 
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.c;
 import com.tencent.mm.plugin.card.d.d;
 import com.tencent.mm.plugin.card.ui.view.g;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class e$3
-  extends ah
+  extends ak
 {
   e$3(e parame) {}
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(88337);
     if ((paramMessage.obj != null) && ((paramMessage.obj instanceof e.c)))
     {
       paramMessage = (e.c)paramMessage.obj;
-      if (paramMessage.isZ != e.b.isX) {
-        break label71;
-      }
-      if (this.isQ.iss != null)
+      if (paramMessage.kug == e.b.kue)
       {
-        d.a(this.isQ.isl, paramMessage.aox, false);
-        this.isQ.iss.aCX();
+        if (this.ktX.ktz != null)
+        {
+          d.a(this.ktX.kts, paramMessage.errMsg, false);
+          this.ktX.ktz.bft();
+          AppMethodBeat.o(88337);
+        }
+      }
+      else if (paramMessage.kug == e.b.kuc)
+      {
+        if (this.ktX.ktz != null)
+        {
+          this.ktX.ktz.d(c.kBZ);
+          AppMethodBeat.o(88337);
+        }
+      }
+      else if (this.ktX.ktz != null) {
+        this.ktX.ktz.d(paramMessage.kuh);
       }
     }
-    label71:
-    do
-    {
-      do
-      {
-        return;
-        if (paramMessage.isZ != e.b.isV) {
-          break;
-        }
-      } while (this.isQ.iss == null);
-      this.isQ.iss.d(c.iyS);
-      return;
-    } while (this.isQ.iss == null);
-    this.isQ.iss.d(paramMessage.ita);
+    AppMethodBeat.o(88337);
   }
 }
 

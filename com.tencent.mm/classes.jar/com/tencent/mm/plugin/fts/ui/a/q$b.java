@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.b.a.v;
+import com.tencent.mm.model.t;
 import com.tencent.mm.openim.a.b;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
-import com.tencent.mm.plugin.fts.ui.n.c;
-import com.tencent.mm.plugin.fts.ui.n.d;
-import com.tencent.mm.plugin.fts.ui.n.e;
+import com.tencent.mm.plugin.fts.ui.m;
 
 public final class q$b
   extends com.tencent.mm.plugin.fts.a.d.a.a.b
@@ -25,54 +25,60 @@ public final class q$b
   
   public final View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(n.e.fts_contact_item, paramViewGroup, false);
-    paramViewGroup = (q.a)this.kDS.kDR;
-    paramViewGroup.doU = ((ImageView)paramContext.findViewById(n.d.avatar_iv));
-    paramViewGroup.eXO = ((TextView)paramContext.findViewById(n.d.title_tv));
-    paramViewGroup.eXP = ((TextView)paramContext.findViewById(n.d.desc_tv));
-    paramViewGroup.contentView = paramContext.findViewById(n.d.search_item_content_layout);
+    AppMethodBeat.i(62029);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969650, paramViewGroup, false);
+    paramViewGroup = (q.a)this.mZO.mZN;
+    paramViewGroup.egq = ((ImageView)paramContext.findViewById(2131821210));
+    paramViewGroup.gpL = ((TextView)paramContext.findViewById(2131821212));
+    paramViewGroup.gpM = ((TextView)paramContext.findViewById(2131821007));
+    paramViewGroup.hrR = paramContext.findViewById(2131821148);
     paramContext.setTag(paramViewGroup);
+    AppMethodBeat.o(62029);
     return paramContext;
   }
   
   public final void a(Context paramContext, a.a parama, com.tencent.mm.plugin.fts.a.d.a.a parama1, Object... paramVarArgs)
   {
+    AppMethodBeat.i(62030);
     parama = (q.a)parama;
     parama1 = (q)parama1;
-    com.tencent.mm.plugin.fts.ui.m.k(parama.contentView, this.kDS.kxT);
+    m.p(parama.hrR, this.mZO.mTH);
     if ((parama1.username != null) && (parama1.username.length() > 0))
     {
-      com.tencent.mm.pluginsdk.ui.a.b.a(parama.doU, parama1.username);
-      if (!s.hb(parama1.username)) {
-        break label128;
+      com.tencent.mm.pluginsdk.ui.a.b.c(parama.egq, parama1.username);
+      if (!t.nK(parama1.username)) {
+        break label137;
       }
-      com.tencent.mm.plugin.fts.ui.m.a(((b)com.tencent.mm.kernel.g.r(b.class)).a(paramContext, parama1.ieA), parama.eXO);
+      m.a(((b)com.tencent.mm.kernel.g.E(b.class)).a(paramContext, parama1.jVn), parama.gpL);
     }
     for (;;)
     {
-      parama.eXO.setMaxWidth(com.tencent.mm.cb.a.fromDPToPix(paramContext, 200));
-      com.tencent.mm.plugin.fts.ui.m.a(parama1.ieB, parama.eXP);
+      parama.gpL.setMaxWidth(com.tencent.mm.cb.a.fromDPToPix(paramContext, 200));
+      m.a(parama1.jVo, parama.gpM);
+      AppMethodBeat.o(62030);
       return;
-      parama.doU.setImageResource(n.c.default_avatar);
+      parama.egq.setImageResource(2130838493);
       break;
-      label128:
-      com.tencent.mm.plugin.fts.ui.m.a(parama1.ieA, parama.eXO);
+      label137:
+      m.a(parama1.jVn, parama.gpL);
     }
   }
   
   public final boolean a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)
   {
+    AppMethodBeat.i(62031);
     paramVarArgs = (q)paramVarArgs;
-    a(this.kDS.kwi.kwG, paramVarArgs.fYx);
+    a(this.mZO.mRX.mSw, paramVarArgs.hrL);
     Intent localIntent = new Intent().putExtra("Chat_User", paramVarArgs.username).putExtra("finish_direct", true);
-    if (s.hb(paramVarArgs.username))
+    if (t.nK(paramVarArgs.username))
     {
-      com.tencent.mm.h.b.a.m localm = new com.tencent.mm.h.b.a.m();
-      localm.ciU = paramVarArgs.username;
-      localm.ciV = 3L;
-      localm.QX();
+      v localv = new v();
+      localv.fq(paramVarArgs.username);
+      localv.cTE = 3L;
+      localv.ake();
     }
-    d.e(paramContext, ".ui.chatting.ChattingUI", localIntent);
+    d.f(paramContext, ".ui.chatting.ChattingUI", localIntent);
+    AppMethodBeat.o(62031);
     return true;
   }
 }

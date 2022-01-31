@@ -5,61 +5,79 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.ViewGroup;
 import android.widget.Button;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.k;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.j;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.l;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.sdk.platformtools.bo;
 import org.json.JSONObject;
 
 public final class t
-  extends l
+  extends k
 {
-  public t(Context paramContext, k paramk, ViewGroup paramViewGroup)
+  public t(Context paramContext, j paramj, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramk, paramViewGroup);
+    super(paramContext, paramj, paramViewGroup);
   }
   
-  private boolean bFA()
+  private boolean cro()
   {
-    return ((k)bFt()).oCB == 1;
+    AppMethodBeat.i(37242);
+    if (((j)cri()).rrZ == 1)
+    {
+      AppMethodBeat.o(37242);
+      return true;
+    }
+    AppMethodBeat.o(37242);
+    return false;
   }
   
-  private boolean bFz()
+  private boolean crp()
   {
-    return ((k)bFt()).oCA == 1;
+    AppMethodBeat.i(37243);
+    if (((j)cri()).rsa == 1)
+    {
+      AppMethodBeat.o(37243);
+      return true;
+    }
+    AppMethodBeat.o(37243);
+    return false;
   }
   
   public final void b(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
+    AppMethodBeat.i(37241);
     Intent localIntent = new Intent();
     localIntent.putExtra("sns_landig_pages_from_source", 14);
-    localIntent.putExtra("sns_landig_pages_origin_from_source", bFt().oDu);
+    localIntent.putExtra("sns_landig_pages_origin_from_source", crc().rtf);
     localIntent.putExtra("sns_landing_pages_xml", "");
     String str2;
     String str1;
     JSONObject localJSONObject;
-    if (bFA())
+    if (crp())
     {
       localIntent.putExtra("sns_landing_pages_canvasid", paramString1);
       localIntent.putExtra("sns_landing_pages_canvas_ext", paramString2);
-      if (bFz())
+      if (cro())
       {
         paramString1 = new int[2];
-        this.oFR.getLocationOnScreen(paramString1);
+        this.rvr.getLocationOnScreen(paramString1);
         localIntent.putExtra("img_gallery_top", paramString1[1]);
         localIntent.putExtra("img_gallery_left", paramString1[0]);
-        localIntent.putExtra("img_gallery_width", this.oFR.getWidth());
-        localIntent.putExtra("img_gallery_height", this.oFR.getHeight());
+        localIntent.putExtra("img_gallery_width", this.rvr.getWidth());
+        localIntent.putExtra("img_gallery_height", this.rvr.getHeight());
       }
-      localIntent.putExtra("sns_landing_pages_need_enter_and_exit_animation", bFz());
+      localIntent.putExtra("sns_landing_pages_need_enter_and_exit_animation", cro());
       localIntent.putExtra("sns_landing_pages_extra", "");
       localIntent.putExtra("sns_landing_pages_no_store", paramInt);
-      localIntent.putExtra("sns_landing_pages_ux_info", bFt().ovV);
-      localIntent.putExtra("sns_landing_is_native_sight_ad", bFt().oDv);
-      if (((paramContext instanceof Activity)) && (bFA()) && (bFt().oDw == 2))
+      localIntent.putExtra("sns_landing_pages_ux_info", crc().cFe);
+      localIntent.putExtra("sns_landing_is_native_sight_ad", crc().rtg);
+      if (((paramContext instanceof Activity)) && (crp()) && (crc().rth == 2))
       {
         str2 = ((Activity)paramContext).getIntent().getStringExtra("sns_landing_pages_sessionId");
         paramString2 = ((Activity)paramContext).getIntent().getStringExtra("sns_landing_pages_ad_buffer");
-        if (!bk.bl(str2))
+        if (!bo.isNullOrNil(str2))
         {
           str1 = String.valueOf(System.currentTimeMillis() / 1000L);
           localJSONObject = new JSONObject();
@@ -71,8 +89,8 @@ public final class t
       try
       {
         localJSONObject.put("sessionId", str1);
-        localJSONObject.put("cid", bFt().oDg);
-        if (bk.bl(paramString2)) {
+        localJSONObject.put("cid", cri().rsI);
+        if (bo.isNullOrNil(paramString2)) {
           continue;
         }
         paramString1 = paramString2;
@@ -94,8 +112,9 @@ public final class t
         localIntent.putExtra("sns_landing_pages_share_sns_id", paramString2);
       }
       d.b(paramContext, "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", localIntent);
+      AppMethodBeat.o(37241);
       return;
-      localIntent.putExtra("sns_landing_pages_pageid", bk.ZS(paramString1));
+      localIntent.putExtra("sns_landing_pages_pageid", bo.apW(paramString1));
       break;
       paramString1 = "";
     }
@@ -103,7 +122,9 @@ public final class t
   
   protected final void e(Button paramButton)
   {
+    AppMethodBeat.i(37240);
     paramButton.setOnClickListener(new t.1(this));
+    AppMethodBeat.o(37240);
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.tencentmap.mapsdk.a;
 
 public abstract interface ah$f
 {
-  public abstract boolean a();
+  public abstract boolean onIndoorBuildingDeactivated();
   
-  public abstract boolean a(py parampy);
+  public abstract boolean onIndoorBuildingFocused();
   
-  public abstract boolean d();
+  public abstract boolean onIndoorLevelActivated(cu paramcu);
 }
 
 

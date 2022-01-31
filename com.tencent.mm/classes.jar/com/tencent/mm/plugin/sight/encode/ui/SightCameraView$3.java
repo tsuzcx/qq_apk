@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sight.encode.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SightCameraView$3
   implements Runnable
 {
@@ -9,7 +11,10 @@ final class SightCameraView$3
   
   public final String toString()
   {
-    return super.toString() + "|cancelRecord";
+    AppMethodBeat.i(25110);
+    String str = super.toString() + "|cancelRecord";
+    AppMethodBeat.o(25110);
+    return str;
   }
 }
 

@@ -1,47 +1,29 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import android.os.Looper;
-import com.tencent.mm.modelgeo.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
 {
-  public static void wn()
+  public static void IE()
   {
+    AppMethodBeat.i(21006);
     try
     {
-      c localc = c.aVa();
-      d.1 local1 = new d.1();
-      if (!localc.isRunning)
-      {
-        localc.isRunning = true;
-        localc.krY = com.tencent.mm.modelgeo.c.Ob();
-        if (localc.krY == null)
-        {
-          y.e(c.TAG, "doGeoLocation fail, iGetLocation is null");
-          return;
-        }
-        if (localc.krZ == null) {
-          localc.krZ = new c.1(localc, local1);
-        }
-        if (localc.ksa == null) {
-          localc.ksa = new ah(Looper.myLooper());
-        }
-        localc.ksa.postDelayed(new c.2(localc), 20000L);
-        localc.krY.a(localc.krZ);
-        return;
-      }
+      c.bBz().a(new d.1());
+      AppMethodBeat.o(21006);
+      return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiLocationReporter", "report location error. " + localException.getMessage());
+      ab.e("MicroMsg.FreeWifi.FreeWifiLocationReporter", "report location error. " + localException.getMessage());
+      AppMethodBeat.o(21006);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
-import com.tencent.mm.plugin.webview.ui.tools.f.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.ui.tools.k.b;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class H5GameWebViewUI$1
-  implements f.b
+  implements k.b
 {
   H5GameWebViewUI$1(H5GameWebViewUI paramH5GameWebViewUI) {}
   
-  public final String cdK()
+  public final String aYZ()
   {
-    return H5GameWebViewUI.a(this.rwE).getUrl();
+    AppMethodBeat.i(8776);
+    String str = H5GameWebViewUI.a(this.vnx).getUrl();
+    AppMethodBeat.o(8776);
+    return str;
   }
 }
 

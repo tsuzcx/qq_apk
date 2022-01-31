@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.wepkg;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wepkg.model.WepkgVersion;
-import com.tencent.mm.plugin.wepkg.model.e;
 import com.tencent.mm.plugin.wepkg.utils.a;
 import com.tencent.mm.plugin.wepkg.utils.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$3$1
   implements Runnable
@@ -14,28 +14,34 @@ final class c$3$1
   
   public final void run()
   {
+    AppMethodBeat.i(63366);
     try
     {
-      y.i("MicroMsg.WePkgPlugin", "load url from net");
-      c.d(this.rOb.rNZ);
-      c.b(this.rOb.rNZ);
-      int i = c.cjK();
+      ab.i("MicroMsg.Wepkg.WePkgPlugin", "load url from net");
+      c.d(this.vEL.vEJ);
+      c.e(this.vEL.vEJ);
+      int i = c.dkm();
       if (i > 1)
       {
-        if (c.e(this.rOb.rNZ) != null) {
-          a.b("whiteScreen", c.f(this.rOb.rNZ), c.e(this.rOb.rNZ).dCD, c.e(this.rOb.rNZ).version, -1L, 0L, null);
+        if (c.f(this.vEL.vEJ) != null) {
+          a.b("whiteScreen", c.g(this.vEL.vEJ), c.f(this.vEL.vEJ).ezY, c.f(this.vEL.vEJ).version, -1L, 0L, null);
         }
-        h.nFQ.a(859L, 13L, 1L, false);
-        String str = d.Vq(c.f(this.rOb.rNZ));
-        b.vW(str);
-        e.Vf(str);
-        c.cjL();
+        h.qsU.idkeyStat(859L, 13L, 1L, false);
+        String str = d.akM(c.g(this.vEL.vEJ));
+        b.Ey(str);
+        com.tencent.mm.plugin.wepkg.model.b.dkA().ee(str, 1);
+        c.dkn();
+        AppMethodBeat.o(63366);
         return;
       }
-      c.Dw(i + 1);
+      c.Lo(i + 1);
+      AppMethodBeat.o(63366);
       return;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(63366);
+    }
   }
 }
 

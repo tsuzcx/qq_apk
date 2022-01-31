@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.wenote.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class h
   extends o
 {
   public h()
   {
-    this.kgC = "";
-    this.rGI = "";
-    this.bTY = "";
+    this.mBq = "";
+    this.vxr = "";
+    this.cBD = "";
     this.type = -1;
   }
   
-  public final String chA()
+  public final String dhQ()
   {
-    return super.chA();
+    AppMethodBeat.i(26682);
+    String str = super.dhQ();
+    AppMethodBeat.o(26682);
+    return str;
   }
   
   public final int getType()

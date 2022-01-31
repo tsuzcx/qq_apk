@@ -15,6 +15,8 @@ public abstract interface Circle
   
   public abstract String getId();
   
+  public abstract int getLevel();
+  
   public abstract double getRadius();
   
   public abstract int getStrokeColor();
@@ -36,6 +38,8 @@ public abstract interface Circle
   public abstract void setCenter(LatLng paramLatLng);
   
   public abstract void setFillColor(int paramInt);
+  
+  public abstract void setLevel(int paramInt);
   
   public abstract void setRadius(double paramDouble);
   

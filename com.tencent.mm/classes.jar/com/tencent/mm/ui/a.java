@@ -1,159 +1,93 @@
 package com.tencent.mm.ui;
 
-import android.os.Bundle;
-import android.view.KeyEvent;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.preference.h;
-import com.tencent.mm.ui.base.preference.i;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract class a
-  extends i
-  implements o
+public final class a
 {
-  private Bundle oUg;
-  private boolean uGi;
-  private boolean uGj;
-  private boolean uGk;
-  private boolean uGl;
-  protected boolean uGm = false;
-  protected boolean uGn = false;
-  protected boolean uGo;
+  public TextView gpL;
+  private ImageView lzc;
+  private ImageView tit;
+  private View vlC;
+  public TextView yTn;
+  public ImageView yTo;
+  public ImageView yTp;
+  private ImageView yTq;
+  public ImageView yTr;
+  private View yTs;
   
-  protected abstract void cxD();
-  
-  protected abstract void cxE();
-  
-  protected abstract void cxF();
-  
-  protected abstract void cxG();
-  
-  protected abstract void cxH();
-  
-  protected abstract void cxI();
-  
-  public final void cxM()
+  public a(View paramView)
   {
-    cxK();
-    this.uGk = true;
-  }
-  
-  public final void cxO()
-  {
-    this.uGn = true;
-  }
-  
-  public final void cxP()
-  {
-    if (!this.uGm) {
-      return;
-    }
-    if (this.uGj)
-    {
-      cxD();
-      this.uGj = false;
+    AppMethodBeat.i(105936);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    if (localLayoutParams == null) {
+      localLayoutParams = new ViewGroup.LayoutParams(-2, -1);
     }
     for (;;)
     {
-      long l = System.currentTimeMillis();
-      if (this.uGk)
-      {
-        cxL();
-        this.uGk = false;
-      }
-      if (!this.vdv)
-      {
-        int i = xj();
-        if (i != -1)
-        {
-          this.vdd.addPreferencesFromResource(i);
-          this.vdv = true;
-        }
-      }
-      cxE();
-      y.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
-      this.uGl = true;
-      this.uGm = false;
+      paramView.setLayoutParams(localLayoutParams);
+      this.gpL = ((TextView)paramView.findViewById(2131820981));
+      this.yTn = ((TextView)paramView.findViewById(2131820982));
+      this.tit = ((ImageView)paramView.findViewById(2131820984));
+      this.yTo = ((ImageView)paramView.findViewById(2131820983));
+      this.yTp = ((ImageView)paramView.findViewById(2131820985));
+      this.yTq = ((ImageView)paramView.findViewById(2131820986));
+      this.vlC = paramView.findViewById(2131820979);
+      this.lzc = ((ImageView)paramView.findViewById(2131820980));
+      this.yTr = ((ImageView)paramView.findViewById(2131820987));
+      this.yTs = paramView;
+      AppMethodBeat.o(105936);
       return;
-      if (this.uGi)
-      {
-        cxI();
-        cxD();
-        y.v("MicroMsg.INIT", "KEVIN tab onRecreate ");
-        this.uGi = false;
-      }
+      localLayoutParams.width = -2;
+      localLayoutParams.height = -1;
     }
   }
   
-  public void onActivityCreated(Bundle paramBundle)
+  public final void b(View.OnClickListener paramOnClickListener)
   {
-    super.onActivityCreated(paramBundle);
-    this.oUg = paramBundle;
-    this.uGj = true;
+    AppMethodBeat.i(105940);
+    this.vlC.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(105940);
   }
   
-  public void onDestroy()
+  public final void pY(boolean paramBoolean)
   {
-    cxI();
-    super.onDestroy();
-  }
-  
-  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 0)) {
-      return false;
-    }
-    return super.onKeyDown(paramInt, paramKeyEvent);
-  }
-  
-  public void onPause()
-  {
-    super.onPause();
-    this.uGo = true;
-    if (this.uGo)
+    AppMethodBeat.i(105938);
+    ImageView localImageView = this.tit;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      if (!this.uGl) {
-        this.uGo = false;
-      }
-    }
-    else {
+      localImageView.setVisibility(i);
+      AppMethodBeat.o(105938);
       return;
     }
-    long l = System.currentTimeMillis();
-    cxG();
-    y.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
-    this.uGl = false;
-    this.uGo = false;
   }
   
-  public void onResume()
+  public final void pZ(boolean paramBoolean)
   {
-    super.onResume();
-    cxN();
-    LauncherUI localLauncherUI = LauncherUI.cyX();
-    if ((localLauncherUI == null) || (!localLauncherUI.uKT)) {}
-    do
+    AppMethodBeat.i(105939);
+    ImageView localImageView = this.yTq;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      return;
-      this.uGm = true;
-    } while (!this.uGn);
-    cxP();
-    this.uGn = false;
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-    LauncherUI localLauncherUI = LauncherUI.cyX();
-    if ((localLauncherUI == null) || (!localLauncherUI.uKT)) {
+      localImageView.setVisibility(i);
+      AppMethodBeat.o(105939);
       return;
     }
-    cxF();
   }
   
-  public void onStop()
+  public final void setTitle(CharSequence paramCharSequence)
   {
-    super.onStop();
-    cxH();
+    AppMethodBeat.i(105937);
+    this.gpL.setText(paramCharSequence);
+    if (com.tencent.mm.cb.a.gt(this.gpL.getContext())) {
+      this.gpL.setTextSize(0, com.tencent.mm.cb.a.ap(this.gpL.getContext(), 2131427493) * com.tencent.mm.cb.a.gr(this.gpL.getContext()));
+    }
+    AppMethodBeat.o(105937);
   }
 }
 

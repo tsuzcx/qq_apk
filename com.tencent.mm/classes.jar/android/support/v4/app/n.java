@@ -1,196 +1,245 @@
 package android.support.v4.app;
 
-import android.os.Bundle;
-import android.os.Parcelable;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.support.v4.view.t;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public abstract class n
-  extends android.support.v4.view.n
 {
-  private final j wr;
-  private o ws = null;
-  private Fragment wt = null;
-  private ArrayList<Fragment.SavedState> wv = new ArrayList();
-  private ArrayList<Fragment> ww = new ArrayList();
-  
-  public n(j paramj)
+  protected static void a(List<View> paramList, View paramView)
   {
-    this.wr = paramj;
+    int k = paramList.size();
+    if (a(paramList, paramView, k)) {}
+    for (;;)
+    {
+      return;
+      paramList.add(paramView);
+      int i = k;
+      while (i < paramList.size())
+      {
+        paramView = (View)paramList.get(i);
+        if ((paramView instanceof ViewGroup))
+        {
+          paramView = (ViewGroup)paramView;
+          int m = paramView.getChildCount();
+          int j = 0;
+          while (j < m)
+          {
+            View localView = paramView.getChildAt(j);
+            if (!a(paramList, localView, k)) {
+              paramList.add(localView);
+            }
+            j += 1;
+          }
+        }
+        i += 1;
+      }
+    }
   }
   
-  public final void a(Parcelable paramParcelable, ClassLoader paramClassLoader)
+  private static boolean a(List<View> paramList, View paramView, int paramInt)
   {
-    if (paramParcelable != null)
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
     {
-      paramParcelable = (Bundle)paramParcelable;
-      paramParcelable.setClassLoader(paramClassLoader);
-      paramClassLoader = paramParcelable.getParcelableArray("states");
-      this.wv.clear();
-      this.ww.clear();
-      int i;
-      if (paramClassLoader != null)
+      boolean bool1 = bool2;
+      if (i < paramInt)
       {
-        i = 0;
-        while (i < paramClassLoader.length)
+        if (paramList.get(i) == paramView) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  static ArrayList<String> b(ArrayList<View> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int j = paramArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      View localView = (View)paramArrayList.get(i);
+      localArrayList.add(t.ai(localView));
+      t.a(localView, null);
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  protected static void b(View paramView, Rect paramRect)
+  {
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    paramRect.set(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
+  }
+  
+  public static boolean h(List paramList)
+  {
+    return (paramList == null) || (paramList.isEmpty());
+  }
+  
+  public abstract Object a(Object paramObject1, Object paramObject2, Object paramObject3);
+  
+  final void a(View paramView, final ArrayList<View> paramArrayList1, final ArrayList<View> paramArrayList2, final ArrayList<String> paramArrayList, Map<String, String> paramMap)
+  {
+    final int k = paramArrayList2.size();
+    final ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < k)
+    {
+      Object localObject = (View)paramArrayList1.get(i);
+      String str = t.ai((View)localObject);
+      localArrayList.add(str);
+      int j;
+      if (str != null)
+      {
+        t.a((View)localObject, null);
+        localObject = (String)paramMap.get(str);
+        j = 0;
+      }
+      for (;;)
+      {
+        if (j < k)
         {
-          this.wv.add((Fragment.SavedState)paramClassLoader[i]);
+          if (((String)localObject).equals(paramArrayList.get(j))) {
+            t.a((View)paramArrayList2.get(j), str);
+          }
+        }
+        else
+        {
+          i += 1;
+          break;
+        }
+        j += 1;
+      }
+    }
+    w.a(paramView, new Runnable()
+    {
+      public final void run()
+      {
+        int i = 0;
+        while (i < k)
+        {
+          t.a((View)paramArrayList2.get(i), (String)paramArrayList.get(i));
+          t.a((View)paramArrayList1.get(i), (String)localArrayList.get(i));
           i += 1;
         }
       }
-      paramClassLoader = paramParcelable.keySet().iterator();
-      while (paramClassLoader.hasNext())
-      {
-        Object localObject = (String)paramClassLoader.next();
-        if (((String)localObject).startsWith("f"))
-        {
-          i = Integer.parseInt(((String)localObject).substring(1));
-          localObject = this.wr.d(paramParcelable, (String)localObject);
-          if (localObject != null)
-          {
-            while (this.ww.size() <= i) {
-              this.ww.add(null);
-            }
-            ((Fragment)localObject).setMenuVisibility(false);
-            this.ww.set(i, localObject);
-          }
-        }
-      }
-    }
+    });
   }
   
-  public final void a(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public abstract void a(ViewGroup paramViewGroup, Object paramObject);
+  
+  public abstract void a(Object paramObject, Rect paramRect);
+  
+  public abstract void a(Object paramObject, View paramView);
+  
+  public abstract void a(Object paramObject, View paramView, ArrayList<View> paramArrayList);
+  
+  public abstract void a(Object paramObject1, Object paramObject2, ArrayList<View> paramArrayList1, Object paramObject3, ArrayList<View> paramArrayList2, Object paramObject4, ArrayList<View> paramArrayList3);
+  
+  public abstract void a(Object paramObject, ArrayList<View> paramArrayList);
+  
+  public abstract void a(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
+  
+  final void a(ArrayList<View> paramArrayList, View paramView)
   {
-    paramObject = (Fragment)paramObject;
-    if (this.ws == null) {
-      this.ws = this.wr.bP();
-    }
-    while (this.wv.size() <= paramInt) {
-      this.wv.add(null);
-    }
-    ArrayList localArrayList = this.wv;
-    if (paramObject.isAdded()) {}
-    for (paramViewGroup = this.wr.e(paramObject);; paramViewGroup = null)
+    boolean bool;
+    if (paramView.getVisibility() == 0)
     {
-      localArrayList.set(paramInt, paramViewGroup);
-      this.ww.set(paramInt, null);
-      this.ws.a(paramObject);
+      if (!(paramView instanceof ViewGroup)) {
+        break label126;
+      }
+      paramView = (ViewGroup)paramView;
+      if (Build.VERSION.SDK_INT < 21) {
+        break label45;
+      }
+      bool = paramView.isTransitionGroup();
+      if (!bool) {
+        break label95;
+      }
+      paramArrayList.add(paramView);
+    }
+    for (;;)
+    {
       return;
-    }
-  }
-  
-  public final boolean a(View paramView, Object paramObject)
-  {
-    return ((Fragment)paramObject).getView() == paramView;
-  }
-  
-  public abstract Fragment ae(int paramInt);
-  
-  public final Object b(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.ww.size() > paramInt)
-    {
-      localFragment = (Fragment)this.ww.get(paramInt);
-      if (localFragment != null) {
-        return localFragment;
-      }
-    }
-    if (this.ws == null) {
-      this.ws = this.wr.bP();
-    }
-    Fragment localFragment = ae(paramInt);
-    if (this.wv.size() > paramInt)
-    {
-      Fragment.SavedState localSavedState = (Fragment.SavedState)this.wv.get(paramInt);
-      if (localSavedState != null) {
-        localFragment.setInitialSavedState(localSavedState);
-      }
-    }
-    while (this.ww.size() <= paramInt) {
-      this.ww.add(null);
-    }
-    localFragment.setMenuVisibility(false);
-    localFragment.setUserVisibleHint(false);
-    this.ww.set(paramInt, localFragment);
-    this.ws.a(paramViewGroup.getId(), localFragment);
-    return localFragment;
-  }
-  
-  public final void cc()
-  {
-    if (this.ws != null)
-    {
-      this.ws.commitNowAllowingStateLoss();
-      this.ws = null;
-    }
-  }
-  
-  public final Parcelable cd()
-  {
-    Object localObject1 = null;
-    Object localObject2;
-    if (this.wv.size() > 0)
-    {
-      localObject1 = new Bundle();
-      localObject2 = new Fragment.SavedState[this.wv.size()];
-      this.wv.toArray((Object[])localObject2);
-      ((Bundle)localObject1).putParcelableArray("states", (Parcelable[])localObject2);
-    }
-    int i = 0;
-    while (i < this.ww.size())
-    {
-      Fragment localFragment = (Fragment)this.ww.get(i);
-      localObject2 = localObject1;
-      if (localFragment != null)
+      label45:
+      Boolean localBoolean = (Boolean)paramView.getTag(2131820673);
+      if (((localBoolean != null) && (localBoolean.booleanValue())) || (paramView.getBackground() != null) || (t.ai(paramView) != null))
       {
-        localObject2 = localObject1;
-        if (localFragment.isAdded())
+        bool = true;
+        break;
+      }
+      bool = false;
+      break;
+      label95:
+      int j = paramView.getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        a(paramArrayList, paramView.getChildAt(i));
+        i += 1;
+      }
+    }
+    label126:
+    paramArrayList.add(paramView);
+  }
+  
+  final void a(Map<String, View> paramMap, View paramView)
+  {
+    if (paramView.getVisibility() == 0)
+    {
+      String str = t.ai(paramView);
+      if (str != null) {
+        paramMap.put(str, paramView);
+      }
+      if ((paramView instanceof ViewGroup))
+      {
+        paramView = (ViewGroup)paramView;
+        int j = paramView.getChildCount();
+        int i = 0;
+        while (i < j)
         {
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = new Bundle();
-          }
-          localObject1 = "f" + i;
-          this.wr.a((Bundle)localObject2, (String)localObject1, localFragment);
+          a(paramMap, paramView.getChildAt(i));
+          i += 1;
         }
       }
-      i += 1;
-      localObject1 = localObject2;
-    }
-    return localObject1;
-  }
-  
-  public final void e(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup.getId() == -1) {
-      throw new IllegalStateException("ViewPager with adapter " + this + " requires a view id");
     }
   }
   
-  public final void j(Object paramObject)
-  {
-    paramObject = (Fragment)paramObject;
-    if (paramObject != this.wt)
-    {
-      if (this.wt != null)
-      {
-        this.wt.setMenuVisibility(false);
-        this.wt.setUserVisibleHint(false);
-      }
-      if (paramObject != null)
-      {
-        paramObject.setMenuVisibility(true);
-        paramObject.setUserVisibleHint(true);
-      }
-      this.wt = paramObject;
-    }
-  }
+  public abstract Object b(Object paramObject1, Object paramObject2, Object paramObject3);
+  
+  public abstract void b(Object paramObject, View paramView);
+  
+  public abstract void b(Object paramObject, View paramView, ArrayList<View> paramArrayList);
+  
+  public abstract void b(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
+  
+  public abstract void c(Object paramObject, View paramView);
+  
+  public abstract boolean g(Object paramObject);
+  
+  public abstract Object h(Object paramObject);
+  
+  public abstract Object i(Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v4.app.n
  * JD-Core Version:    0.7.0.1
  */

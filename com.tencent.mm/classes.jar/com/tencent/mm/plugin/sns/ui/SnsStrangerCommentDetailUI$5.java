@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsStrangerCommentDetailUI$5
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class SnsStrangerCommentDetailUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    SnsStrangerCommentDetailUI.b(this.pdJ);
+    AppMethodBeat.i(39315);
+    SnsStrangerCommentDetailUI.b(this.rWw);
+    AppMethodBeat.o(39315);
     return true;
   }
 }

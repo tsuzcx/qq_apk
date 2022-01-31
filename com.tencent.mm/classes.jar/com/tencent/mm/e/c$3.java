@@ -2,7 +2,8 @@ package com.tencent.mm.e;
 
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mm.z.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.y.a;
 
 final class c$3
   implements ValueAnimator.AnimatorUpdateListener
@@ -11,13 +12,15 @@ final class c$3
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
+    AppMethodBeat.i(116153);
     int i = ((Integer)paramValueAnimator.getAnimatedValue("bg_alpha")).intValue();
     int j = ((Integer)paramValueAnimator.getAnimatedValue("alpha")).intValue();
-    c.a(this.bAK);
-    a.hg(j);
-    c.a(this.bAK);
-    a.hh(i);
-    this.bAK.tQ();
+    c.a(this.cdH);
+    a.jw(j);
+    c.a(this.cdH);
+    a.jx(i);
+    this.cdH.CI();
+    AppMethodBeat.o(116153);
   }
 }
 

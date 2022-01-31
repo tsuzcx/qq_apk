@@ -10,7 +10,7 @@ public class JNICrashHandler
   private static void onCrash()
   {
     RecoveryLog.i("Recovery.JNICrashHandler", "onCrash", new Object[0]);
-    Recovery.cOt();
+    Recovery.dUi();
   }
   
   public static native void testSignal(int paramInt);

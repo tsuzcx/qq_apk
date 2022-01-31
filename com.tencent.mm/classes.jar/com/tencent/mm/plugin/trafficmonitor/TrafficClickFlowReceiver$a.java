@@ -1,18 +1,23 @@
 package com.tencent.mm.plugin.trafficmonitor;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class TrafficClickFlowReceiver$a
 {
-  public String pKe;
   public long time;
+  public String tos;
   
   public final String toString()
   {
-    return "ClickObject{ui='" + this.pKe + '\'' + ", time=" + this.time + '}';
+    AppMethodBeat.i(114767);
+    String str = "ClickObject{ui='" + this.tos + '\'' + ", time=" + this.time + '}';
+    AppMethodBeat.o(114767);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.TrafficClickFlowReceiver.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.qqmail.b;
 
 public abstract interface n$a
 {
-  public abstract void btt();
+  public abstract void cdD();
 }
 
 

@@ -1,6 +1,7 @@
 package org.xwalk.core;
 
 import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -11,69 +12,89 @@ public class WebViewExtension
   private static WebViewExtensionInterface mWebViewExtensionInterface;
   private static WebViewExtensionListener mWebViewExtensionListener;
   private static WebViewExtension sInstance;
-  private ReflectMethod SetExtensionMethod = new ReflectMethod(null, "SetExtension", new Class[0]);
+  private ReflectMethod SetExtensionMethod;
   private Object bridge;
-  private ArrayList<Object> constructorParams = new ArrayList();
-  private ArrayList<Object> constructorTypes = new ArrayList();
+  private ArrayList<Object> constructorParams;
+  private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
   private ReflectMethod postWrapperMethod;
   
   static
   {
+    AppMethodBeat.i(85534);
     if (!WebViewExtension.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
+      AppMethodBeat.o(85534);
       return;
     }
   }
   
   public WebViewExtension()
   {
+    AppMethodBeat.i(85528);
+    this.SetExtensionMethod = new ReflectMethod(null, "SetExtension", new Class[0]);
+    this.constructorTypes = new ArrayList();
+    this.constructorParams = new ArrayList();
     reflectionInit();
+    AppMethodBeat.o(85528);
   }
   
   public static void SetExtension(WebViewExtensionListener paramWebViewExtensionListener)
   {
+    AppMethodBeat.i(85529);
     Log.i("XWalkLib.WebViewExtension", "SetExtension WebViewExtensionInterface");
     mWebViewExtensionListener = paramWebViewExtensionListener;
     try
     {
       updateExtension(true);
+      AppMethodBeat.o(85529);
       return;
     }
     catch (Exception paramWebViewExtensionListener)
     {
       Log.i("XWalkLib.WebViewExtension", "SetExtension refelction not ready, updateExtension when available:" + paramWebViewExtensionListener.getMessage());
+      AppMethodBeat.o(85529);
     }
   }
   
   public static boolean addFilterResources(Resources paramResources, Map<Long, Integer> paramMap)
   {
-    return invokeExtensionMethod("AddFilterResources", new Object[] { paramResources, paramMap });
+    AppMethodBeat.i(85531);
+    boolean bool = invokeExtensionMethod("AddFilterResources", new Object[] { paramResources, paramMap });
+    AppMethodBeat.o(85531);
+    return bool;
   }
   
   private static WebViewExtension getInstance()
   {
+    AppMethodBeat.i(85527);
     if (sInstance == null) {
       sInstance = new WebViewExtension();
     }
-    return sInstance;
+    WebViewExtension localWebViewExtension = sInstance;
+    AppMethodBeat.o(85527);
+    return localWebViewExtension;
   }
   
   public static boolean invokeExtensionMethod(String paramString, Object... paramVarArgs)
   {
+    AppMethodBeat.i(85532);
     if (mWebViewExtensionListener != null)
     {
       mWebViewExtensionListener.onMiscCallBack(paramString, paramVarArgs);
+      AppMethodBeat.o(85532);
       return true;
     }
-    Log.e("XWalkLib.WebViewExtension", "InvokeExtensionMethod interface is null,method:" + paramString);
+    Log.e("XWalkLib.WebViewExtension", "InvokeExtensionMethod interface is null,method:".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(85532);
     return false;
   }
   
   public static void updateExtension(boolean paramBoolean)
   {
+    AppMethodBeat.i(85530);
     if ((mWebViewExtensionListener != null) && ((paramBoolean == true) || (mWebViewExtensionInterface == null)))
     {
       getInstance();
@@ -81,6 +102,7 @@ public class WebViewExtension
       mWebViewExtensionInterface = new WebViewExtension.1();
       getInstance().SetExtensionMethod.invoke(new Object[] { mWebViewExtensionInterface.getBridge() });
     }
+    AppMethodBeat.o(85530);
   }
   
   protected Object getBridge()
@@ -90,11 +112,13 @@ public class WebViewExtension
   
   void reflectionInit()
   {
+    AppMethodBeat.i(85533);
     XWalkCoreWrapper.initEmbeddedMode();
     this.coreWrapper = XWalkCoreWrapper.getInstance();
     if (this.coreWrapper == null)
     {
       XWalkCoreWrapper.reserveReflectObject(this);
+      AppMethodBeat.o(85533);
       return;
     }
     int j = this.constructorTypes.size();
@@ -108,7 +132,7 @@ public class WebViewExtension
         localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
         this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
       }
-      label127:
+      label137:
       do
       {
         for (;;)
@@ -116,12 +140,14 @@ public class WebViewExtension
           i += 1;
           break;
           if (!(localObject2 instanceof Class)) {
-            break label127;
+            break label137;
           }
           localObject1[i] = ((Class)localObject2);
         }
       } while ($assertionsDisabled);
-      throw new AssertionError();
+      localObject1 = new AssertionError();
+      AppMethodBeat.o(85533);
+      throw ((Throwable)localObject1);
     }
     localObject1[j] = Object.class;
     this.constructorParams.add(this);
@@ -133,9 +159,13 @@ public class WebViewExtension
         this.postWrapperMethod.invoke(new Object[0]);
       }
       this.SetExtensionMethod.init(this.bridge, null, "SetExtensionSuper", new Class[] { this.coreWrapper.getBridgeClass("WebViewExtensionInterfaceBridge") });
+      AppMethodBeat.o(85533);
       return;
     }
-    catch (UnsupportedOperationException localUnsupportedOperationException) {}
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      AppMethodBeat.o(85533);
+    }
   }
 }
 

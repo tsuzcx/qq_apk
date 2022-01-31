@@ -8,23 +8,23 @@ import junit.framework.Assert;
 
 public abstract class a<_Callback>
 {
+  protected f AOi;
   private LinkedList<b> a = new LinkedList();
-  protected d bww;
-  public f wtn;
+  protected d bYe;
   
   public a()
   {
-    this(g.cLe());
+    this(g.dQu());
   }
   
   public a(d paramd)
   {
     Assert.assertNotNull(paramd);
-    this.bww = paramd;
-    this.wtn = new f(paramd, null);
+    this.bYe = paramd;
+    this.AOi = new f(paramd, null);
   }
   
-  public final b a(b paramb)
+  protected final b a(b paramb)
   {
     try
     {
@@ -38,31 +38,17 @@ public abstract class a<_Callback>
     }
   }
   
-  public final void b(b paramb)
-  {
-    if (paramb == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        this.a.remove(paramb);
-      }
-      finally {}
-    }
-  }
-  
-  public final LinkedList<b> cKT()
+  protected final void b(b paramb)
   {
     try
     {
-      LinkedList localLinkedList = new LinkedList(this.a);
-      return localLinkedList;
+      this.a.remove(paramb);
+      return;
     }
     finally
     {
-      localObject = finally;
-      throw localObject;
+      paramb = finally;
+      throw paramb;
     }
   }
   
@@ -78,6 +64,25 @@ public abstract class a<_Callback>
       param_Callback = finally;
       throw param_Callback;
     }
+  }
+  
+  public final LinkedList<b> dQj()
+  {
+    try
+    {
+      LinkedList localLinkedList = dQk();
+      return localLinkedList;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  protected final LinkedList<b> dQk()
+  {
+    return new LinkedList(this.a);
   }
   
   public final int size()

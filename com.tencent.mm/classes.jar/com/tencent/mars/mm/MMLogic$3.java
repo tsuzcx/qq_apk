@@ -1,8 +1,8 @@
 package com.tencent.mars.mm;
 
-import com.tencent.mm.network.aa;
-import com.tencent.mm.network.y;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.network.ab;
+import com.tencent.mm.network.z;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class MMLogic$3
   implements Runnable
@@ -11,11 +11,11 @@ final class MMLogic$3
   
   public final void run()
   {
-    y localy = aa.Uw();
-    if (bk.bl(this.val$_info)) {}
+    z localz = ab.anH();
+    if (bo.isNullOrNil(this.val$_info)) {}
     for (byte[] arrayOfByte = null;; arrayOfByte = this.val$_info.getBytes())
     {
-      localy.onPush(268369923, arrayOfByte);
+      localz.onPush(268369923, arrayOfByte);
       return;
     }
   }

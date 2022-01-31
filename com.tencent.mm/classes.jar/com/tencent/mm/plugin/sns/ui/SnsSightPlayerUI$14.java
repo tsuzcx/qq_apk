@@ -4,6 +4,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
 
 final class SnsSightPlayerUI$14
@@ -13,13 +14,15 @@ final class SnsSightPlayerUI$14
   
   public final void run()
   {
+    AppMethodBeat.i(39268);
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    this.pdk.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-    if ((SnsSightPlayerUI.g(this.pdk) instanceof VideoSightView)) {
-      ((VideoSightView)SnsSightPlayerUI.g(this.pdk)).setDrawableWidth(localDisplayMetrics.widthPixels);
+    this.rVT.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+    if ((SnsSightPlayerUI.g(this.rVT) instanceof VideoSightView)) {
+      ((VideoSightView)SnsSightPlayerUI.g(this.rVT)).setDrawableWidth(localDisplayMetrics.widthPixels);
     }
-    ((View)SnsSightPlayerUI.g(this.pdk)).requestLayout();
-    ((View)SnsSightPlayerUI.g(this.pdk)).postInvalidate();
+    ((View)SnsSightPlayerUI.g(this.rVT)).requestLayout();
+    ((View)SnsSightPlayerUI.g(this.rVT)).postInvalidate();
+    AppMethodBeat.o(39268);
   }
 }
 

@@ -4,11 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import com.tencent.mm.plugin.map.a.e;
-import com.tencent.mm.plugin.map.a.f;
-import com.tencent.mm.plugin.map.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMGridPaper;
 import com.tencent.mm.ui.base.i;
 import java.util.ArrayList;
@@ -16,104 +14,116 @@ import java.util.Iterator;
 
 public final class b
 {
-  private int avatarSize = 0;
-  private i lEA = null;
-  private MMGridPaper lEB = null;
-  private a lEC = null;
-  private ViewGroup lED = null;
-  private RelativeLayout lEE = null;
-  private ArrayList<String> lEF = null;
-  private Context mContext = null;
+  private Context mContext;
+  private i obN;
+  private MMGridPaper obO;
+  private a obP;
+  private ViewGroup obQ;
+  private RelativeLayout obR;
+  private ArrayList<String> obS;
+  private int obT;
   
   private b(Context paramContext)
   {
+    AppMethodBeat.i(113423);
+    this.obN = null;
+    this.obO = null;
+    this.obP = null;
+    this.obQ = null;
+    this.obR = null;
+    this.mContext = null;
+    this.obS = null;
+    this.obT = 0;
     this.mContext = paramContext;
-    this.lEA = new i(this.mContext, a.i.trackDialog);
-    this.lED = ((ViewGroup)((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(a.f.avatars_dialog, null));
-    this.lEB = ((MMGridPaper)this.lED.findViewById(a.e.dialog_content));
-    this.lEB.cAI();
-    this.lEB.setDialogMode(true);
-    this.lEB.cAH();
-    this.lEB.setMaxRow(3);
-    this.lEB.setMaxCol(3);
-    this.lEB.setHeaderView(null);
-    this.lEB.cAI();
-    this.lEB.setItemWidthInDp(70);
-    this.lEB.setItemHeightInDp(70);
-    this.lEA.setCanceledOnTouchOutside(true);
-    this.lEA.setContentView(this.lED);
-    this.lEC = new a();
-    this.lEB.setGridPaperAdapter(this.lEC);
+    this.obN = new i(this.mContext, 2131493912);
+    this.obQ = ((ViewGroup)((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2130968798, null));
+    this.obO = ((MMGridPaper)this.obQ.findViewById(2131821600));
+    this.obO.dDT();
+    this.obO.setDialogMode(true);
+    this.obO.dDS();
+    this.obO.setMaxRow(3);
+    this.obO.setMaxCol(3);
+    this.obO.setHeaderView(null);
+    this.obO.dDT();
+    this.obO.setItemWidthInDp(70);
+    this.obO.setItemHeightInDp(70);
+    this.obN.setCanceledOnTouchOutside(true);
+    this.obN.setContentView(this.obQ);
+    this.obP = new a();
+    this.obO.setGridPaperAdapter(this.obP);
+    AppMethodBeat.o(113423);
   }
   
   public static void b(Context paramContext, ArrayList<String> paramArrayList)
   {
-    y.d("MicroMsg.AvatarsDialog", "showDialog, username.size = %d", new Object[] { Integer.valueOf(paramArrayList.size()) });
+    AppMethodBeat.i(113424);
+    ab.d("MicroMsg.AvatarsDialog", "showDialog, username.size = %d", new Object[] { Integer.valueOf(paramArrayList.size()) });
     paramContext = new b(paramContext);
-    paramContext.lEF = new ArrayList();
+    paramContext.obS = new ArrayList();
     paramArrayList = paramArrayList.iterator();
     String str;
     while (paramArrayList.hasNext())
     {
       str = (String)paramArrayList.next();
-      paramContext.lEF.add(str);
+      paramContext.obS.add(str);
     }
     int i;
-    if (paramContext.lEF.size() < 3)
+    if (paramContext.obS.size() < 3)
     {
-      paramContext.lEB.setMaxCol(paramContext.lEF.size());
-      paramArrayList = paramContext.lEB.getLayoutParams();
-      paramContext.avatarSize = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 70);
+      paramContext.obO.setMaxCol(paramContext.obS.size());
+      paramArrayList = paramContext.obO.getLayoutParams();
+      paramContext.obT = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 70);
       i = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 8);
-      if (paramContext.lEF.size() <= 0) {
-        break label433;
+      if (paramContext.obS.size() <= 0) {
+        break label443;
       }
-      if (paramContext.lEF.size() >= 3) {
-        break label366;
+      if (paramContext.obS.size() >= 3) {
+        break label376;
       }
-      int j = paramContext.avatarSize;
-      int k = paramContext.lEF.size();
-      i = i * (paramContext.lEF.size() - 1) + j * k;
+      int j = paramContext.obT;
+      int k = paramContext.obS.size();
+      i = i * (paramContext.obS.size() - 1) + j * k;
     }
     for (;;)
     {
-      label187:
-      str = BackwardSupportUtil.b.fo(paramContext.mContext);
-      y.d("MicroMsg.AvatarsDialog", "calculateGridWidth, result = %d, mUsername.size = %d, avatarSize = %d, densityType = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramContext.lEF.size()), Integer.valueOf(paramContext.avatarSize), str });
+      label192:
+      str = BackwardSupportUtil.b.gB(paramContext.mContext);
+      ab.d("MicroMsg.AvatarsDialog", "calculateGridWidth, result = %d, mUsername.size = %d, avatarSize = %d, densityType = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramContext.obS.size()), Integer.valueOf(paramContext.obT), str });
       paramArrayList.width = i;
-      paramContext.avatarSize = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 70);
+      paramContext.obT = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 70);
       i = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 15);
-      if (paramContext.lEF.size() > 0) {
-        if (paramContext.lEF.size() <= 3)
+      if (paramContext.obS.size() > 0) {
+        if (paramContext.obS.size() <= 3)
         {
-          i += paramContext.avatarSize;
-          label298:
-          y.d("MicroMsg.AvatarsDialog", "calculateGridHeight, result = %d", new Object[] { Integer.valueOf(i) });
+          i += paramContext.obT;
+          label303:
+          ab.d("MicroMsg.AvatarsDialog", "calculateGridHeight, result = %d", new Object[] { Integer.valueOf(i) });
         }
       }
       for (;;)
       {
         paramArrayList.height = i;
-        paramContext.lEB.setLayoutParams(paramArrayList);
-        paramContext.lEB.requestLayout();
-        paramContext.lEC.E(paramContext.lEF);
-        paramContext.lEA.show();
+        paramContext.obO.setLayoutParams(paramArrayList);
+        paramContext.obO.requestLayout();
+        paramContext.obP.F(paramContext.obS);
+        paramContext.obN.show();
+        AppMethodBeat.o(113424);
         return;
-        paramContext.lEB.setMaxCol(3);
+        paramContext.obO.setMaxCol(3);
         break;
-        label366:
-        i = i * 2 + paramContext.avatarSize * 3;
-        break label187;
-        if (paramContext.lEF.size() <= 6)
+        label376:
+        i = i * 2 + paramContext.obT * 3;
+        break label192;
+        if (paramContext.obS.size() <= 6)
         {
-          i += paramContext.avatarSize * 2;
-          break label298;
+          i += paramContext.obT * 2;
+          break label303;
         }
-        i = i * 2 + paramContext.avatarSize * 3 + com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 10);
-        break label298;
+        i = i * 2 + paramContext.obT * 3 + com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 10);
+        break label303;
         i = 0;
       }
-      label433:
+      label443:
       i = 0;
     }
   }

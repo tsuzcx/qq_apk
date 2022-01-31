@@ -1,112 +1,80 @@
 package com.tencent.mm.ui.chatting.h;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.support.v7.widget.RecyclerView.v;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.as.o;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.chatting.a.c.e;
-import com.tencent.mm.ui.chatting.d.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.cb;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.bi;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 
 public final class a
-  extends b
+  extends com.tencent.mm.ay.a
 {
-  private int hkM = -1;
-  private com.tencent.mm.as.a.a.c vyz;
+  public String zOS;
+  public long zOT = 0L;
   
-  public a(Context paramContext)
+  public a(Map<String, String> paramMap, bi parambi)
   {
-    super(paramContext);
-    paramContext = new com.tencent.mm.as.a.a.c.a();
-    paramContext.eru = R.k.app_brand_app_default_icon_for_tail;
-    paramContext.bn(com.tencent.mm.cb.a.fromDPToPix(ae.getContext(), 50), com.tencent.mm.cb.a.fromDPToPix(ae.getContext(), 50)).erd = true;
-    this.vyz = paramContext.OV();
+    super(paramMap, parambi);
   }
   
-  private static PackageInfo getPackageInfo(Context paramContext, String paramString)
+  public final boolean Zh()
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      paramString = null;
-    }
-    while (paramString == null)
+    AppMethodBeat.i(32503);
+    if (this.values == null)
     {
-      return null;
-      paramString = g.by(paramString, true);
-      if (paramString == null) {
-        paramString = null;
-      } else {
-        paramString = paramString.field_packageName;
+      ab.e("MicroMsg.InvokeMessageNewXmlMsg", "[parseXml] values == null ");
+      AppMethodBeat.o(32503);
+      return false;
+    }
+    if (this.values.containsKey(".sysmsg.invokeMessage.preContent")) {
+      this.zOS = ((String)this.values.get(".sysmsg.invokeMessage.preContent"));
+    }
+    if (this.values.containsKey(".sysmsg.invokeMessage.timestamp")) {
+      this.zOT = bo.apW((String)this.values.get(".sysmsg.invokeMessage.timestamp"));
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.values.keySet().iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (str.startsWith(".sysmsg.invokeMessage.text"))
+      {
+        if (localStringBuilder.length() > 0) {
+          localStringBuilder.insert(0, (String)this.values.get(str));
+        } else {
+          localStringBuilder.append((String)this.values.get(str));
+        }
+      }
+      else
+      {
+        if ((!str.startsWith(".sysmsg.invokeMessage.link.text")) || (bo.isNullOrNil((String)this.values.get(str)))) {
+          break label359;
+        }
+        str = (String)this.values.get(str);
+        localStringBuilder.append(str);
+        this.fLn.add(str);
+        i = str.length();
       }
     }
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-      return paramContext;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      y.printErrStackTrace("MicroMsg.AppBrandHistoryListPresenter", paramContext, "", new Object[0]);
-    }
-    return null;
-  }
-  
-  public final String VE()
-  {
-    return "";
-  }
-  
-  public final void a(com.tencent.mm.ui.chatting.a.c.a parama, int paramInt)
-  {
-    parama = (a.b)parama;
-    a.a locala = (a.a)Ha(paramInt);
-    if (bk.bl(locala.desc)) {
-      parama.eXP.setVisibility(8);
-    }
+    label359:
     for (;;)
     {
-      o.ON().a(locala.imagePath, parama.doU, this.vyz);
-      return;
-      parama.eXP.setVisibility(0);
-      parama.eXP.setText(bk.aM(locala.desc, ""));
+      break;
+      this.fLo.addFirst(Integer.valueOf(localStringBuilder.length() - i));
+      this.fLp.add(Integer.valueOf(localStringBuilder.length()));
+      this.fLl = localStringBuilder.toString();
+      if ((cb.abq() - this.zOT >= 300000L) && (!bo.isNullOrNil(this.zOS))) {
+        d.post(new a.1(this), "[checkExpired]");
+      }
+      AppMethodBeat.o(32503);
+      return true;
     }
-  }
-  
-  public final void cFN()
-  {
-    y.i("MicroMsg.AppBrandHistoryListPresenter", "[loadData] isFirst:%s", new Object[] { Boolean.valueOf(true) });
-    this.vyD.cFR();
-    com.tencent.mm.plugin.appbrand.u.c.a(this.drJ, new a.1(this));
-  }
-  
-  public final c.e cFO()
-  {
-    return new a.2(this);
-  }
-  
-  public final String cFQ()
-  {
-    return "";
-  }
-  
-  public final int getType()
-  {
-    return 33;
-  }
-  
-  public final RecyclerView.v q(ViewGroup paramViewGroup)
-  {
-    return new a.b(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.appbrand_history_list_item, paramViewGroup, false));
   }
 }
 

@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.wallet.balance.a.a;
 
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.protocal.c.bgm;
-import com.tencent.mm.protocal.c.bgn;
-import com.tencent.mm.wallet_core.c.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.protocal.protobuf.bhe;
+import com.tencent.mm.protocal.protobuf.bhf;
 
 public final class e
-  extends a<bgn>
-  implements g
+  extends a<bhf>
 {
-  public e(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public e(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(45231);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bgm();
-    ((b.a)localObject).ecI = new bgn();
-    ((b.a)localObject).ecG = 1276;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/purchasefund";
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    localObject = ((b.a)localObject).Kt();
-    bgm localbgm = (bgm)((b)localObject).ecE.ecN;
-    localbgm.tBg = paramString1;
-    localbgm.tBh = paramInt1;
-    localbgm.sOy = paramInt2;
-    localbgm.tBi = paramString2;
-    this.dmK = ((b)localObject);
+    ((b.a)localObject).fsX = new bhe();
+    ((b.a)localObject).fsY = new bhf();
+    ((b.a)localObject).funcId = 2585;
+    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/onclickpurchase";
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    localObject = ((b.a)localObject).ado();
+    bhe localbhe = (bhe)((b)localObject).fsV.fta;
+    localbhe.wMx = paramInt1;
+    localbhe.uha = paramInt2;
+    localbhe.tNy = ab.cQT();
+    this.rr = ((b)localObject);
+    AppMethodBeat.o(45231);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.a.a.e
  * JD-Core Version:    0.7.0.1
  */

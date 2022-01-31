@@ -14,13 +14,13 @@ public class MediaBrowserCompat$MediaItem
   implements Parcelable
 {
   public static final Parcelable.Creator<MediaItem> CREATOR = new MediaBrowserCompat.MediaItem.1();
-  private final MediaDescriptionCompat AY;
-  private final int wg;
+  private final MediaDescriptionCompat BK;
+  private final int wy;
   
   MediaBrowserCompat$MediaItem(Parcel paramParcel)
   {
-    this.wg = paramParcel.readInt();
-    this.AY = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
+    this.wy = paramParcel.readInt();
+    this.BK = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
   }
   
   private MediaBrowserCompat$MediaItem(MediaDescriptionCompat paramMediaDescriptionCompat, int paramInt)
@@ -28,11 +28,11 @@ public class MediaBrowserCompat$MediaItem
     if (paramMediaDescriptionCompat == null) {
       throw new IllegalArgumentException("description cannot be null");
     }
-    if (TextUtils.isEmpty(paramMediaDescriptionCompat.BL)) {
+    if (TextUtils.isEmpty(paramMediaDescriptionCompat.Cu)) {
       throw new IllegalArgumentException("description must have a non-empty media id");
     }
-    this.wg = paramInt;
-    this.AY = paramMediaDescriptionCompat;
+    this.wy = paramInt;
+    this.BK = paramMediaDescriptionCompat;
   }
   
   public static List<MediaItem> j(List<?> paramList)
@@ -65,21 +65,21 @@ public class MediaBrowserCompat$MediaItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("MediaItem{");
-    localStringBuilder.append("mFlags=").append(this.wg);
-    localStringBuilder.append(", mDescription=").append(this.AY);
+    localStringBuilder.append("mFlags=").append(this.wy);
+    localStringBuilder.append(", mDescription=").append(this.BK);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.wg);
-    this.AY.writeToParcel(paramParcel, paramInt);
+    paramParcel.writeInt(this.wy);
+    this.BK.writeToParcel(paramParcel, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v4.media.MediaBrowserCompat.MediaItem
  * JD-Core Version:    0.7.0.1
  */

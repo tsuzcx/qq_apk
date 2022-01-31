@@ -2,10 +2,11 @@ package com.tencent.mm.chatroom.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.u;
@@ -17,22 +18,24 @@ final class SeeAccessVerifyInfoUI$2
   
   public final void onClick(View paramView)
   {
-    ad localad = ((j)g.r(j.class)).Fw().abl(bk.pm(SeeAccessVerifyInfoUI.a(this.dqZ)));
+    AppMethodBeat.i(104262);
+    ad localad = ((j)g.E(j.class)).YA().arw(bo.nullAsNil(SeeAccessVerifyInfoUI.a(this.eiF)));
     String str = localad.field_nickname;
     paramView = null;
-    if (SeeAccessVerifyInfoUI.b(this.dqZ) != null) {
-      paramView = SeeAccessVerifyInfoUI.b(this.dqZ).gV(SeeAccessVerifyInfoUI.a(this.dqZ));
+    if (SeeAccessVerifyInfoUI.b(this.eiF) != null) {
+      paramView = SeeAccessVerifyInfoUI.b(this.eiF).nE(SeeAccessVerifyInfoUI.a(this.eiF));
     }
     Object localObject = paramView;
-    if (bk.bl(paramView)) {
-      localObject = localad.Bq();
+    if (bo.isNullOrNil(paramView)) {
+      localObject = localad.Of();
     }
-    SeeAccessVerifyInfoUI.a(this.dqZ, SeeAccessVerifyInfoUI.a(this.dqZ), (String)localObject, str, false);
+    SeeAccessVerifyInfoUI.a(this.eiF, SeeAccessVerifyInfoUI.a(this.eiF), (String)localObject, str, false);
+    AppMethodBeat.o(104262);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SeeAccessVerifyInfoUI.2
  * JD-Core Version:    0.7.0.1
  */

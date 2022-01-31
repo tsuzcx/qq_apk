@@ -3,15 +3,16 @@ package com.tencent.mm.plugin.recharge.ui.form;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.recharge.model.b;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,75 +20,77 @@ import java.util.List;
 
 public final class c$b
 {
-  public List<String[]> nqf;
-  public com.tencent.mm.plugin.recharge.model.a nqg = null;
-  public MallFormView nrP = null;
-  public d nrQ;
-  boolean nrR = false;
+  public List<String[]> pVt;
+  public com.tencent.mm.plugin.recharge.model.a pVu = null;
+  public MallFormView pXd = null;
+  public d pXe;
+  boolean pXf = false;
   
   public c$b(MallFormView paramMallFormView)
   {
-    this.nrP = paramMallFormView;
+    this.pXd = paramMallFormView;
   }
   
-  public final void ip(boolean paramBoolean)
+  public final void kr(boolean paramBoolean)
   {
-    y.d(c.access$100(), "needSetInput: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    Object localObject1 = com.tencent.mm.plugin.recharge.a.a.bva().bvb();
+    AppMethodBeat.i(44373);
+    ab.d(c.access$100(), "needSetInput: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    Object localObject1 = com.tencent.mm.plugin.recharge.a.a.cfm().cfn();
     Object localObject2;
     com.tencent.mm.plugin.recharge.model.a locala;
     if (localObject1 == null)
     {
       localObject2 = new ArrayList();
-      locala = com.tencent.mm.plugin.recharge.a.a.bvc();
+      locala = com.tencent.mm.plugin.recharge.a.a.cfo();
       localObject1 = localObject2;
       if (locala != null)
       {
         ((List)localObject2).add(locala);
-        com.tencent.mm.plugin.recharge.a.a.bva().a(locala);
+        com.tencent.mm.plugin.recharge.a.a.cfm().a(locala);
         localObject1 = localObject2;
       }
     }
     for (;;)
     {
-      this.nrQ.ce((List)localObject1);
+      this.pXe.cH((List)localObject1);
       if ((localObject1 != null) && (((List)localObject1).size() > 0) && (paramBoolean))
       {
-        this.nqg = ((com.tencent.mm.plugin.recharge.model.a)((List)localObject1).get(0));
-        setInput(this.nqg);
+        this.pVu = ((com.tencent.mm.plugin.recharge.model.a)((List)localObject1).get(0));
+        setInput(this.pVu);
       }
+      AppMethodBeat.o(44373);
       return;
-      localObject2 = (String)g.DP().Dz().get(6, null);
+      localObject2 = (String)g.RL().Ru().get(6, null);
       int i = 0;
       if (i < ((List)localObject1).size())
       {
         locala = (com.tencent.mm.plugin.recharge.model.a)((List)localObject1).get(i);
-        if ((!bk.bl(locala.npv)) && (locala.npv.equals(localObject2))) {
-          if ((bk.bl(locala.name)) || (!locala.name.equals(this.nrP.getContext().getString(a.i.wallet_recharge_me))))
+        if ((!bo.isNullOrNil(locala.pUJ)) && (locala.pUJ.equals(localObject2))) {
+          if ((bo.isNullOrNil(locala.name)) || (!locala.name.equals(this.pXd.getContext().getString(2131305571))))
           {
-            locala.name = this.nrP.getContext().getString(a.i.wallet_recharge_me);
-            label239:
-            break label294;
+            locala.name = this.pXd.getContext().getString(2131305571);
+            label247:
+            break label302;
           }
         }
         for (;;)
         {
-          com.tencent.mm.plugin.recharge.a.a.bva().ce((List)localObject1);
+          com.tencent.mm.plugin.recharge.a.a.cfm().cH((List)localObject1);
           do
           {
             i += 1;
             break;
-          } while ((bk.bl(locala.npv)) || (!bk.bl(locala.name)) || (this.nqf == null));
-          Iterator localIterator = this.nqf.iterator();
-          label294:
+          } while ((bo.isNullOrNil(locala.pUJ)) || (!bo.isNullOrNil(locala.name)) || (this.pVt == null));
+          Iterator localIterator = this.pVt.iterator();
+          label302:
           if (localIterator.hasNext())
           {
             String[] arrayOfString = (String[])localIterator.next();
-            if (!locala.npv.equals(b.qa(arrayOfString[2]))) {
-              break label239;
+            if (!locala.pUJ.equals(b.xw(arrayOfString[2]))) {
+              break label247;
             }
             locala.name = arrayOfString[1];
-            y.i(c.access$100(), "add name: %s", new Object[] { arrayOfString[1] });
+            ab.i(c.access$100(), "add name: %s", new Object[] { arrayOfString[1] });
           }
         }
       }
@@ -96,83 +99,94 @@ public final class c$b
   
   public final void setInput(com.tencent.mm.plugin.recharge.model.a parama)
   {
-    this.nqg = parama;
+    AppMethodBeat.i(44372);
+    this.pVu = parama;
     if (parama != null)
     {
-      if ((bk.bl(this.nrP.getText())) || (!this.nrP.getText().equals(parama.npv))) {
-        this.nrP.getContentEditText().setText(b.LB(parama.npv));
+      if ((bo.isNullOrNil(this.pXd.getText())) || (!this.pXd.getText().equals(parama.pUJ))) {
+        this.pXd.getContentEditText().setText(b.XL(parama.pUJ));
       }
-      this.nrP.getContentEditText().setSelection(this.nrP.getContentEditText().getText().length());
-      y.d(c.access$100(), "editTv.setText %s, name: %s, location: %s, type: %s", new Object[] { parama.npv, parama.name, parama.npw, Integer.valueOf(parama.bIl) });
-      Context localContext = this.nrP.getContext();
-      if (this.nqg.bIl == 3)
+      this.pXd.getContentEditText().setSelection(this.pXd.getContentEditText().getText().length());
+      ab.d(c.access$100(), "editTv.setText %s, name: %s, location: %s, type: %s", new Object[] { parama.pUJ, parama.name, parama.pUK, Integer.valueOf(parama.cpG) });
+      Context localContext = this.pXd.getContext();
+      if (this.pVu.cpG == 3)
       {
-        this.nrP.getTipsTv().setText(this.nqg.name);
-        this.nrP.getTipsTv().setTextColor(localContext.getResources().getColor(a.c.recharge_product_item_bg_clicked));
-      }
-      do
-      {
+        this.pXd.getTipsTv().setText(this.pVu.name);
+        this.pXd.getTipsTv().setTextColor(localContext.getResources().getColor(2131690382));
+        AppMethodBeat.o(44372);
         return;
-        if (this.nqg.bIl == 1)
+      }
+      if (this.pVu.cpG == 1)
+      {
+        if (!bo.isNullOrNil(this.pVu.name))
         {
-          if (!bk.bl(this.nqg.name))
-          {
-            str = this.nqg.name;
-            parama = str;
-            if (!bk.bl(this.nqg.npw)) {
-              parama = str + localContext.getString(a.i.wallet_recharge_dest_wrapper, new Object[] { this.nqg.npw });
-            }
-            this.nrP.getTipsTv().setText(parama);
-            this.nrP.getTipsTv().setTextColor(localContext.getResources().getColor(a.c.normal_text_color));
-            return;
-          }
-          String str = localContext.getString(a.i.wallet_recharge_not_in_contact);
+          str = this.pVu.name;
           parama = str;
-          if (!bk.bl(this.nqg.npw)) {
-            parama = str + localContext.getString(a.i.wallet_recharge_dest_wrapper, new Object[] { this.nqg.npw });
+          if (!bo.isNullOrNil(this.pVu.pUK)) {
+            parama = str + localContext.getString(2131305563, new Object[] { this.pVu.pUK });
           }
-          this.nrP.getTipsTv().setText(parama);
-          this.nrP.getTipsTv().setTextColor(localContext.getResources().getColor(a.c.recharge_err_text_color));
+          this.pXd.getTipsTv().setText(parama);
+          this.pXd.getTipsTv().setTextColor(localContext.getResources().getColor(2131690322));
+          AppMethodBeat.o(44372);
           return;
         }
-        if (this.nqg.bIl == 2)
+        String str = localContext.getString(2131305573);
+        parama = str;
+        if (!bo.isNullOrNil(this.pVu.pUK)) {
+          parama = str + localContext.getString(2131305563, new Object[] { this.pVu.pUK });
+        }
+        this.pXd.getTipsTv().setText(parama);
+        this.pXd.getTipsTv().setTextColor(localContext.getResources().getColor(2131690374));
+        AppMethodBeat.o(44372);
+        return;
+      }
+      if (this.pVu.cpG == 2)
+      {
+        if (!bo.isNullOrNil(this.pVu.pUK))
         {
-          if (!bk.bl(this.nqg.npw))
+          this.pXd.getTipsTv().setText(this.pVu.pUK);
+          this.pXd.getTipsTv().setTextColor(localContext.getResources().getColor(2131690322));
+          AppMethodBeat.o(44372);
+          return;
+        }
+        this.pXd.getTipsTv().setText("");
+        this.pXd.getTipsTv().setTextColor(localContext.getResources().getColor(2131690374));
+        AppMethodBeat.o(44372);
+        return;
+      }
+      if (this.pVu.cpG == 0)
+      {
+        if (!bo.isNullOrNil(this.pVu.pUK))
+        {
+          if (!bo.isNullOrNil(this.pVu.name))
           {
-            this.nrP.getTipsTv().setText(this.nqg.npw);
-            this.nrP.getTipsTv().setTextColor(localContext.getResources().getColor(a.c.normal_text_color));
+            this.pXd.getTipsTv().setText(this.pVu.name + localContext.getString(2131305563, new Object[] { this.pVu.pUK }));
+            this.pXd.getTipsTv().setTextColor(localContext.getResources().getColor(2131690374));
+            AppMethodBeat.o(44372);
             return;
           }
-          this.nrP.getTipsTv().setText("");
-          this.nrP.getTipsTv().setTextColor(localContext.getResources().getColor(a.c.recharge_err_text_color));
+          this.pXd.getTipsTv().setText(this.pVu.pUK);
+          this.pXd.getTipsTv().setTextColor(localContext.getResources().getColor(2131690322));
+          AppMethodBeat.o(44372);
           return;
         }
-      } while (this.nqg.bIl != 0);
-      if (!bk.bl(this.nqg.npw))
-      {
-        if (!bk.bl(this.nqg.name))
+        if (!bo.isNullOrNil(this.pVu.name))
         {
-          this.nrP.getTipsTv().setText(this.nqg.name + localContext.getString(a.i.wallet_recharge_dest_wrapper, new Object[] { this.nqg.npw }));
-          this.nrP.getTipsTv().setTextColor(localContext.getResources().getColor(a.c.recharge_err_text_color));
+          this.pXd.getTipsTv().setText(this.pVu.name);
+          this.pXd.getTipsTv().setTextColor(localContext.getResources().getColor(2131690374));
+          AppMethodBeat.o(44372);
           return;
         }
-        this.nrP.getTipsTv().setText(this.nqg.npw);
-        this.nrP.getTipsTv().setTextColor(localContext.getResources().getColor(a.c.normal_text_color));
-        return;
+        this.pXd.getTipsTv().setText("");
+        this.pXd.getTipsTv().setTextColor(localContext.getResources().getColor(2131690322));
       }
-      if (!bk.bl(this.nqg.name))
-      {
-        this.nrP.getTipsTv().setText(this.nqg.name);
-        this.nrP.getTipsTv().setTextColor(localContext.getResources().getColor(a.c.recharge_err_text_color));
-        return;
-      }
-      this.nrP.getTipsTv().setText("");
-      this.nrP.getTipsTv().setTextColor(localContext.getResources().getColor(a.c.normal_text_color));
+      AppMethodBeat.o(44372);
       return;
     }
-    this.nrP.getContentEditText().setText("");
-    y.d(c.access$100(), "editTv.setText null");
-    this.nrP.getTipsTv().setText("");
+    this.pXd.getContentEditText().setText("");
+    ab.d(c.access$100(), "editTv.setText null");
+    this.pXd.getTipsTv().setText("");
+    AppMethodBeat.o(44372);
   }
 }
 

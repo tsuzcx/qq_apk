@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class JsApiChooseMedia$a$3
   implements DialogInterface.OnCancelListener
@@ -11,9 +12,11 @@ final class JsApiChooseMedia$a$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    y.e("MicroMsg.JsApiChooseMedia", "cancel chooseMedia, and finish process!");
-    JsApiChooseMedia.a.e(this.gvN).aYY = 0;
-    JsApiChooseMedia.a.a(this.gvN, JsApiChooseMedia.a.e(this.gvN));
+    AppMethodBeat.i(131170);
+    ab.e("MicroMsg.JsApiChooseMedia", "cancel chooseMedia, and finish process!");
+    JsApiChooseMedia.a.e(this.hRe).bpE = 0;
+    JsApiChooseMedia.a.a(this.hRe, JsApiChooseMedia.a.e(this.hRe));
+    AppMethodBeat.o(131170);
   }
 }
 

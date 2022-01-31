@@ -4,6 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AddFriendSearchPreference$3
   implements View.OnTouchListener
@@ -12,9 +13,11 @@ final class AddFriendSearchPreference$3
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(25494);
     if (paramMotionEvent.getAction() == 1) {
-      AddFriendSearchPreference.c(this.pxC).onClick(paramView);
+      AddFriendSearchPreference.c(this.sZq).onClick(paramView);
     }
+    AppMethodBeat.o(25494);
     return true;
   }
 }

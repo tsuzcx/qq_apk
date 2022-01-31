@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/p1"
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a6q" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="@dimen/ci"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/cr2" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@null" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:footerDividersEnabled="false" android:overScrollMode="never" />
+    <TextView android:textSize="@dimen/cm" android:textColor="@color/x7" android:gravity="center|left" android:id="@id/cpq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="@dimen/cm" android:textColor="@color/x7" android:gravity="center" android:id="@id/cpr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" />
+    <TextView android:textSize="@dimen/cm" android:textColor="@color/x7" android:layout_gravity="right" android:id="@id/cps" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
 </RelativeLayout>

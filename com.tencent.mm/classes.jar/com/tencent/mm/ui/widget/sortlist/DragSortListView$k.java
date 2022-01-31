@@ -4,122 +4,137 @@ import android.graphics.Point;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DragSortListView$k
   extends DragSortListView.m
 {
-  private int drq;
-  private float wrW;
-  private float wrX;
-  private float wrY;
-  private int wrZ = -1;
-  private int wsa = -1;
-  private int wsb;
+  private float AMA;
+  private float AMB;
+  private float AMC;
+  private int AMD = -1;
+  private int AME = -1;
+  private int AMF;
+  private int eiY;
   
   private DragSortListView$k(DragSortListView paramDragSortListView, int paramInt)
   {
     super(paramDragSortListView, paramInt, (byte)0);
   }
   
-  public final void aQ(float paramFloat)
+  public final void bB(float paramFloat)
   {
+    AppMethodBeat.i(113056);
     paramFloat = 1.0F - paramFloat;
-    int j = this.wrD.getFirstVisiblePosition();
-    View localView = this.wrD.getChildAt(this.drq - j);
-    float f1;
-    if (DragSortListView.n(this.wrD))
+    int j = this.AMh.getFirstVisiblePosition();
+    View localView = this.AMh.getChildAt(this.eiY - j);
+    Object localObject;
+    int i;
+    if (DragSortListView.n(this.AMh))
     {
-      f1 = (float)(SystemClock.uptimeMillis() - this.mStartTime) / 1000.0F;
-      if (f1 != 0.0F) {}
-    }
-    do
-    {
-      do
+      float f1 = (float)(SystemClock.uptimeMillis() - this.mStartTime) / 1000.0F;
+      if (f1 == 0.0F)
       {
+        AppMethodBeat.o(113056);
         return;
-        float f2 = DragSortListView.o(this.wrD);
-        int k = this.wrD.getWidth();
-        localObject = this.wrD;
-        float f3 = DragSortListView.o(this.wrD);
-        if (DragSortListView.o(this.wrD) > 0.0F) {}
-        for (i = 1;; i = -1)
-        {
-          DragSortListView.a((DragSortListView)localObject, i * f1 * k + f3);
-          this.wrW += f2 * f1;
-          DragSortListView.d(this.wrD).x = ((int)this.wrW);
-          if ((this.wrW >= k) || (this.wrW <= -k)) {
-            break;
-          }
-          this.mStartTime = SystemClock.uptimeMillis();
-          DragSortListView.f(this.wrD);
-          return;
+      }
+      float f2 = DragSortListView.o(this.AMh);
+      int k = this.AMh.getWidth();
+      localObject = this.AMh;
+      float f3 = DragSortListView.o(this.AMh);
+      if (DragSortListView.o(this.AMh) > 0.0F) {}
+      for (i = 1;; i = -1)
+      {
+        DragSortListView.a((DragSortListView)localObject, i * f1 * k + f3);
+        this.AMA += f2 * f1;
+        DragSortListView.d(this.AMh).x = ((int)this.AMA);
+        if ((this.AMA >= k) || (this.AMA <= -k)) {
+          break;
         }
-        if (localView != null)
-        {
-          if (this.wrZ == -1)
-          {
-            this.wrZ = DragSortListView.b(this.wrD, this.drq, localView);
-            this.wrX = (localView.getHeight() - this.wrZ);
-          }
-          i = Math.max((int)(this.wrX * paramFloat), 1);
-          localObject = localView.getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject).height = (i + this.wrZ);
-          localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-      } while (this.wsb == this.drq);
-      localView = this.wrD.getChildAt(this.wsb - j);
-    } while (localView == null);
-    if (this.wsa == -1)
-    {
-      this.wsa = DragSortListView.b(this.wrD, this.wsb, localView);
-      this.wrY = (localView.getHeight() - this.wsa);
+        this.mStartTime = SystemClock.uptimeMillis();
+        DragSortListView.f(this.AMh);
+        AppMethodBeat.o(113056);
+        return;
+      }
     }
-    int i = Math.max((int)(this.wrY * paramFloat), 1);
-    Object localObject = localView.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).height = (i + this.wsa);
-    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (localView != null)
+    {
+      if (this.AMD == -1)
+      {
+        this.AMD = DragSortListView.b(this.AMh, this.eiY, localView);
+        this.AMB = (localView.getHeight() - this.AMD);
+      }
+      i = Math.max((int)(this.AMB * paramFloat), 1);
+      localObject = localView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).height = (i + this.AMD);
+      localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    if (this.AMF != this.eiY)
+    {
+      localView = this.AMh.getChildAt(this.AMF - j);
+      if (localView != null)
+      {
+        if (this.AME == -1)
+        {
+          this.AME = DragSortListView.b(this.AMh, this.AMF, localView);
+          this.AMC = (localView.getHeight() - this.AME);
+        }
+        i = Math.max((int)(this.AMC * paramFloat), 1);
+        localObject = localView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).height = (i + this.AME);
+        localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+    }
+    AppMethodBeat.o(113056);
   }
   
   public final void onStart()
   {
     int i = -1;
-    this.wrZ = -1;
-    this.wsa = -1;
-    this.drq = DragSortListView.l(this.wrD);
-    this.wsb = DragSortListView.m(this.wrD);
-    DragSortListView.a(this.wrD, 1);
-    this.wrW = DragSortListView.d(this.wrD).x;
-    if (DragSortListView.n(this.wrD))
+    AppMethodBeat.i(113055);
+    this.AMD = -1;
+    this.AME = -1;
+    this.eiY = DragSortListView.l(this.AMh);
+    this.AMF = DragSortListView.m(this.AMh);
+    DragSortListView.a(this.AMh, 1);
+    this.AMA = DragSortListView.d(this.AMh).x;
+    if (DragSortListView.n(this.AMh))
     {
-      float f = this.wrD.getWidth() * 2.0F;
-      if (DragSortListView.o(this.wrD) == 0.0F)
+      float f = this.AMh.getWidth() * 2.0F;
+      if (DragSortListView.o(this.AMh) == 0.0F)
       {
-        DragSortListView localDragSortListView = this.wrD;
-        if (this.wrW < 0.0F) {
+        DragSortListView localDragSortListView = this.AMh;
+        if (this.AMA < 0.0F) {}
+        for (;;)
+        {
           DragSortListView.a(localDragSortListView, i * f);
+          AppMethodBeat.o(113055);
+          return;
+          i = 1;
         }
       }
-      do
+      f *= 2.0F;
+      if ((DragSortListView.o(this.AMh) < 0.0F) && (DragSortListView.o(this.AMh) > -f))
       {
+        DragSortListView.a(this.AMh, -f);
+        AppMethodBeat.o(113055);
         return;
-        i = 1;
-        break;
-        f *= 2.0F;
-        if ((DragSortListView.o(this.wrD) < 0.0F) && (DragSortListView.o(this.wrD) > -f))
-        {
-          DragSortListView.a(this.wrD, -f);
-          return;
-        }
-      } while ((DragSortListView.o(this.wrD) <= 0.0F) || (DragSortListView.o(this.wrD) >= f));
-      DragSortListView.a(this.wrD, f);
+      }
+      if ((DragSortListView.o(this.AMh) > 0.0F) && (DragSortListView.o(this.AMh) < f)) {
+        DragSortListView.a(this.AMh, f);
+      }
+      AppMethodBeat.o(113055);
       return;
     }
-    DragSortListView.p(this.wrD);
+    DragSortListView.p(this.AMh);
+    AppMethodBeat.o(113055);
   }
   
   public final void onStop()
   {
-    DragSortListView.q(this.wrD);
+    AppMethodBeat.i(113057);
+    DragSortListView.q(this.AMh);
+    AppMethodBeat.o(113057);
   }
 }
 

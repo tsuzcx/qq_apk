@@ -1,34 +1,13 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.wallet.a.p;
-import com.tencent.mm.plugin.wallet.balance.b;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.a;
-import com.tencent.mm.wallet_core.ui.e;
-import java.util.ArrayList;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.protocal.protobuf.agl;
+import com.tencent.mm.vending.c.a;
 
 final class WalletBalanceManagerUI$8
-  implements View.OnClickListener
+  implements a<Object, a.a<agl>>
 {
   WalletBalanceManagerUI$8(WalletBalanceManagerUI paramWalletBalanceManagerUI) {}
-  
-  public final void onClick(View paramView)
-  {
-    p.bTK();
-    paramView = p.bTL().bWb();
-    if ((paramView == null) || (paramView.size() == 0))
-    {
-      y.i("MicroMsg.WalletBalanceManagerUI", "mBankcardList is empty, do bind card to fetch");
-      WalletBalanceManagerUI.b(this.qhk);
-      return;
-    }
-    y.i("MicroMsg.WalletBalanceManagerUI", "mBankcardList is valid, to do fetch");
-    a.a(this.qhk, b.class, null, null);
-    e.Jc(15);
-  }
 }
 
 

@@ -4,228 +4,278 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.util.Base64;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
-import com.github.henryye.nativeiv.bitmap.NativeBitmapStruct;
-import com.tencent.magicbrush.a.d.f;
-import com.tencent.magicbrush.a.e.b;
+import com.tencent.magicbrush.MBRuntime;
+import com.tencent.magicbrush.a.c.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-public class a
-  implements b
+public final class a
+  implements IMBImageHandler
 {
-  com.tencent.magicbrush.handler.a blW;
-  private com.tencent.magicbrush.handler.b blX;
-  private List<a.a> blY;
-  private a.a blZ;
-  private int bma = Runtime.getRuntime().availableProcessors() + 1;
-  private ExecutorService bmb = null;
-  public e.b bmc;
-  private boolean bmd = false;
-  private ConcurrentLinkedQueue<String> bme = null;
+  private List<a.d> bKT;
+  private a.d bKU;
+  private boolean bKV;
+  private ConcurrentLinkedQueue<String> bKW;
+  public a.a bKX;
+  private MBRuntime mbRuntime;
   
-  public a(com.tencent.magicbrush.handler.a parama, com.tencent.magicbrush.handler.b paramb)
+  public a(MBRuntime paramMBRuntime, com.tencent.magicbrush.handler.a parama)
   {
-    if ((parama == null) || (paramb == null)) {
-      throw new IllegalArgumentException("DefaultImageHandlerImpl accept null parameter");
+    AppMethodBeat.i(115971);
+    this.bKV = false;
+    this.bKW = null;
+    this.bKX = null;
+    if (parama == null)
+    {
+      paramMBRuntime = new IllegalArgumentException("DefaultImageHandlerImpl accept null parameter");
+      AppMethodBeat.o(115971);
+      throw paramMBRuntime;
     }
-    this.blW = parama;
-    this.blX = paramb;
-    this.blY = new LinkedList();
+    this.mbRuntime = paramMBRuntime;
+    this.bKT = new LinkedList();
+    a(new a.c(this), false);
+    a(new a.b(this), false);
+    AppMethodBeat.o(115971);
   }
   
-  public final void a(a.a parama, boolean paramBoolean)
+  private static int aa(float paramFloat)
   {
+    float f;
+    if (paramFloat >= 0.0F)
+    {
+      f = paramFloat;
+      if (paramFloat <= 1.0F) {}
+    }
+    else
+    {
+      f = 0.92F;
+    }
+    return (int)(100.0F * f);
+  }
+  
+  private static Bitmap.CompressFormat fL(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return Bitmap.CompressFormat.PNG;
+    case 1: 
+      return Bitmap.CompressFormat.WEBP;
+    }
+    return Bitmap.CompressFormat.JPEG;
+  }
+  
+  public final void a(a.d paramd, boolean paramBoolean)
+  {
+    AppMethodBeat.i(115979);
     if (!paramBoolean)
     {
-      this.blY.add(parama);
+      this.bKT.add(paramd);
+      AppMethodBeat.o(115979);
       return;
     }
-    this.blZ = parama;
+    this.bKU = paramd;
+    AppMethodBeat.o(115979);
   }
   
-  public Bitmap getBitmap(int paramInt1, int paramInt2)
+  public final String encodeToBase64(Bitmap paramBitmap, int paramInt, float paramFloat)
   {
-    return com.tencent.magicbrush.b.a.qN().bml.aS(paramInt1, paramInt2);
-  }
-  
-  public final void init()
-  {
-    int i = Math.max(this.bma, 5);
-    this.bmb = Executors.newFixedThreadPool(i);
-    if (this.bmc != null) {
-      this.bmc.c(new Object[] { Integer.valueOf(i) });
+    AppMethodBeat.i(115974);
+    if ((paramBitmap == null) || (paramBitmap.getWidth() == 0) || (paramBitmap.getHeight() == 0) || (paramBitmap.isRecycled()))
+    {
+      AppMethodBeat.o(115974);
+      return null;
     }
+    Bitmap.CompressFormat localCompressFormat = fL(paramInt);
+    paramInt = aa(paramFloat);
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    boolean bool = paramBitmap.compress(localCompressFormat, paramInt, localByteArrayOutputStream);
+    try
+    {
+      localByteArrayOutputStream.close();
+      if ((!bool) || (localByteArrayOutputStream.size() <= 0))
+      {
+        c.c.e("MagicBrush.DefaultImageHandlerImpl", "base64_encode Bitmap compress error.", new Object[0]);
+        AppMethodBeat.o(115974);
+        return null;
+      }
+    }
+    catch (IOException paramBitmap)
+    {
+      for (;;)
+      {
+        c.c.e("MagicBrush.DefaultImageHandlerImpl", "base64_encode IOException e %s", new Object[] { paramBitmap.toString() });
+        bool = false;
+      }
+      paramBitmap = Base64.encodeToString(localByteArrayOutputStream.toByteArray(), 2);
+      AppMethodBeat.o(115974);
+    }
+    return paramBitmap;
   }
+  
+  public final byte[] encodeToBuffer(Bitmap paramBitmap, int paramInt, float paramFloat)
+  {
+    AppMethodBeat.i(115975);
+    if ((paramBitmap == null) || (paramBitmap.getWidth() == 0) || (paramBitmap.getHeight() == 0) || (paramBitmap.isRecycled()))
+    {
+      AppMethodBeat.o(115975);
+      return null;
+    }
+    Bitmap.CompressFormat localCompressFormat = fL(paramInt);
+    paramInt = aa(paramFloat);
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    boolean bool = paramBitmap.compress(localCompressFormat, paramInt, localByteArrayOutputStream);
+    try
+    {
+      localByteArrayOutputStream.close();
+      if ((!bool) || (localByteArrayOutputStream.size() <= 0))
+      {
+        c.c.e("MagicBrush.DefaultImageHandlerImpl", "encodeToBuffer Bitmap compress error.", new Object[0]);
+        AppMethodBeat.o(115975);
+        return null;
+      }
+    }
+    catch (IOException paramBitmap)
+    {
+      for (;;)
+      {
+        c.c.e("MagicBrush.DefaultImageHandlerImpl", "encodeToBuffer IOException e %s", new Object[] { paramBitmap.toString() });
+        bool = false;
+      }
+      paramBitmap = localByteArrayOutputStream.toByteArray();
+      AppMethodBeat.o(115975);
+    }
+    return paramBitmap;
+  }
+  
+  public final Bitmap getBitmap(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(115973);
+    Bitmap localBitmap = com.tencent.magicbrush.b.a.yw().bLj.bP(paramInt1, paramInt2);
+    AppMethodBeat.o(115973);
+    return localBitmap;
+  }
+  
+  public final void init() {}
   
   public final void loadBitmapAsync(String paramString)
   {
+    AppMethodBeat.i(115978);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      paramString = new a.b(paramString, null, (byte)0);
-      this.blW.g(paramString);
+      AppMethodBeat.o(115978);
       return;
     }
-    paramString = new a.c(this, paramString, (byte)0);
-    this.bmb.execute(paramString);
+    paramString = new a.e(this.mbRuntime, this, paramString);
+    b.bLe.bLg.execute(paramString);
+    AppMethodBeat.o(115978);
   }
   
-  public final IBitmap<NativeBitmapStruct> loadBitmapSync(String paramString)
+  public final IBitmap loadBitmapSync(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
+    AppMethodBeat.i(115977);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(115977);
       return null;
     }
-    Object localObject1 = this.blY.iterator();
-    a.a locala;
+    Object localObject1 = this.bKT.iterator();
+    a.d locald;
     do
     {
       if (!((Iterator)localObject1).hasNext()) {
         break;
       }
-      locala = (a.a)((Iterator)localObject1).next();
-    } while (!locala.bs(paramString));
+      locald = (a.d)((Iterator)localObject1).next();
+    } while (!locald.bL(paramString));
     for (;;)
     {
-      if (locala == null) {
-        locala = this.blZ;
+      if (locald == null) {
+        locald = this.bKU;
       }
       for (;;)
       {
-        if (locala == null)
+        if (locald == null)
         {
-          d.f.e("DefaultImageHandlerImpl", "No fit decoder found for %s", new Object[] { paramString });
+          c.c.e("MagicBrush.DefaultImageHandlerImpl", "No fit decoder found for %s", new Object[] { paramString });
+          AppMethodBeat.o(115977);
           return null;
         }
         for (;;)
         {
           try {}catch (Exception localException)
           {
-            d.f.e("DefaultImageHandlerImpl", "ImageDecoder(%s) decode path[%s] error %s", new Object[] { locala, paramString, localException.toString() });
+            a.a locala;
+            c.c.e("MagicBrush.DefaultImageHandlerImpl", "ImageDecoder(%s) decode path[%s] error %s", new Object[] { locald, paramString, localException.toString() });
             paramString = null;
+            continue;
+            IBitmap localIBitmap = locala.a(paramString, localException);
+            paramString = localIBitmap;
             continue;
           }
           try
           {
-            if (this.bmd)
+            if (this.bKV)
             {
-              if (this.bme == null) {
-                this.bme = new ConcurrentLinkedQueue();
+              if (this.bKW == null) {
+                this.bKW = new ConcurrentLinkedQueue();
               }
-              this.bme.add(paramString);
+              this.bKW.add(paramString);
             }
-            localObject1 = locala.bt(paramString);
-            localObject1 = com.tencent.magicbrush.a.a.qE().a(paramString, (InputStream)localObject1);
-            paramString = (String)localObject1;
-            return paramString;
+            localObject1 = locald.bM(paramString);
+            locala = ((a)locald.bKY).bKX;
+            if (locala == null)
+            {
+              paramString = null;
+              AppMethodBeat.o(115977);
+              return paramString;
+            }
           }
-          finally {}
+          finally
+          {
+            AppMethodBeat.o(115977);
+          }
         }
       }
-      locala = null;
+      locald = null;
     }
   }
   
   public final void release()
   {
+    AppMethodBeat.i(115972);
     try
     {
-      Object localObject1 = this.bmb.shutdownNow();
-      if (!((List)localObject1).isEmpty())
+      if (this.bKX != null)
       {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          Runnable localRunnable = (Runnable)((Iterator)localObject1).next();
-          if ((localRunnable != null) && ((localRunnable instanceof a.c))) {
-            a.c.a((a.c)localRunnable);
-          }
-        }
+        this.bKX.destroy();
+        this.bKX = null;
       }
-    }
-    finally {}
-  }
-  
-  public void releaseBitmap(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
       return;
     }
-    paramBitmap.recycle();
+    finally
+    {
+      AppMethodBeat.o(115972);
+    }
   }
   
-  public final String toDataURL(Bitmap paramBitmap, String paramString, float paramFloat)
+  public final void releaseBitmap(Bitmap paramBitmap)
   {
-    d.f.i("DefaultImageHandlerImpl", "toDataURL() called with: bitmap = [" + paramBitmap + "], type = [" + paramString + "], encoderOptions = [" + paramFloat + "]", new Object[0]);
-    if ((paramBitmap == null) || (paramBitmap.getWidth() == 0) || (paramBitmap.getHeight() == 0)) {
-      return "data:,";
-    }
-    if ("image/webp".equals(paramString)) {
-      paramString = Bitmap.CompressFormat.WEBP;
-    }
-    ByteArrayOutputStream localByteArrayOutputStream;
-    for (;;)
+    AppMethodBeat.i(115976);
+    if (paramBitmap == null)
     {
-      float f;
-      if (paramFloat >= 0.0F)
-      {
-        f = paramFloat;
-        if (paramFloat <= 1.0F) {}
-      }
-      else
-      {
-        f = 0.92F;
-      }
-      int i = (int)(100.0F * f);
-      localByteArrayOutputStream = new ByteArrayOutputStream();
-      boolean bool = paramBitmap.compress(paramString, i, localByteArrayOutputStream);
-      try
-      {
-        localByteArrayOutputStream.close();
-        if ((!bool) || (localByteArrayOutputStream.size() <= 0))
-        {
-          d.f.e("DefaultImageHandlerImpl", "dataurl_encode Bitmap compress error.", new Object[0]);
-          return "data:,";
-          if (("image/jpeg".equals(paramString)) || ("image/jpg".equals(paramString)))
-          {
-            paramString = Bitmap.CompressFormat.JPEG;
-            continue;
-          }
-          paramString = Bitmap.CompressFormat.PNG;
-        }
-      }
-      catch (IOException paramBitmap)
-      {
-        for (;;)
-        {
-          d.f.e("DefaultImageHandlerImpl", "dataurl_encode IOException e %s", new Object[] { paramBitmap.toString() });
-          bool = false;
-        }
-        paramBitmap = new StringBuilder();
-        paramBitmap.append("data:image/");
-        if (paramString != Bitmap.CompressFormat.PNG) {
-          break label285;
-        }
-      }
+      AppMethodBeat.o(115976);
+      return;
     }
-    paramBitmap.append("png");
-    for (;;)
-    {
-      paramBitmap.append(";base64,");
-      paramBitmap.append(Base64.encodeToString(localByteArrayOutputStream.toByteArray(), 2));
-      return paramBitmap.toString();
-      label285:
-      if (paramString == Bitmap.CompressFormat.JPEG) {
-        paramBitmap.append("jpeg");
-      } else {
-        paramBitmap.append("webp");
-      }
-    }
+    c.c.i("MagicBrush.DefaultImageHandlerImpl", "recycle because releaseBitmap", new Object[0]);
+    paramBitmap.recycle();
+    AppMethodBeat.o(115976);
   }
 }
 

@@ -1,72 +1,77 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.plugin.appbrand.app.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.app.g;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import com.tencent.mm.plugin.appbrand.config.q;
+import com.tencent.mm.plugin.appbrand.config.r;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.j.a;
+import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
-public abstract class d<_DataSource extends j>
+public abstract class d<_DataSource extends k>
   extends a
   implements View.OnClickListener
 {
-  private final Class hgK;
-  private final int hgL;
-  private final int hgM;
-  private final int hgN;
-  private final int hgO = -1;
-  private final com.tencent.mm.plugin.appbrand.ui.widget.a hgP;
-  protected final int hgQ = 4;
-  private ViewGroup hgR;
-  private AppBrandNearbyShowcaseView hgS;
-  private volatile List<LocalUsageInfo> hgT;
-  private final ViewTreeObserver.OnPreDrawListener hgU = new d.1(this);
-  private final j.a hgV = new d.4(this);
+  private final int eln;
+  private final int elo;
+  private final int elp;
+  private final int elq = -1;
+  private final Class iSp;
+  private final com.tencent.mm.plugin.appbrand.ui.widget.a iSq;
+  protected final int iSr = 4;
+  private ViewGroup iSs;
+  protected AppBrandNearbyShowcaseView iSt;
+  private volatile List<LocalUsageInfo> iSu;
+  private ImageView iSv;
+  private final ViewTreeObserver.OnPreDrawListener iSw = new d.1(this);
+  private final k.a iSx = new d.4(this);
   private Activity mActivity;
-  private boolean wz;
+  private boolean wM;
   
   d(Class<_DataSource> paramClass, Activity paramActivity, ViewGroup paramViewGroup)
   {
     this.mActivity = paramActivity;
-    this.hgK = paramClass;
-    this.hgL = com.tencent.mm.cb.a.fromDPToPix(paramActivity, 25);
-    this.hgM = com.tencent.mm.cb.a.fromDPToPix(paramActivity, 19);
-    this.hgN = com.tencent.mm.cb.a.fromDPToPix(paramActivity, 2);
-    this.hgP = new com.tencent.mm.plugin.appbrand.ui.widget.a(this.hgL, this.hgN);
-    this.hgR = ((ViewGroup)LayoutInflater.from(paramActivity).inflate(y.h.app_brand_recents_list_header_folder_entrance, paramViewGroup, false));
-    this.hgR.setOnClickListener(this);
-    ((TextView)this.hgR.findViewById(y.g.title)).setText(getTitle());
-    this.hgS = ((AppBrandNearbyShowcaseView)this.hgR.findViewById(y.g.nearby_icon_showcase));
-    this.hgS.setIconLayerCount(4);
-    this.hgS.setIconSize(this.hgL + this.hgN * 2);
-    this.hgS.setIconGap(this.hgM);
+    this.iSp = paramClass;
+    this.eln = com.tencent.mm.cb.a.fromDPToPix(paramActivity, 25);
+    this.elo = com.tencent.mm.cb.a.fromDPToPix(paramActivity, 19);
+    this.elp = com.tencent.mm.cb.a.fromDPToPix(paramActivity, 2);
+    this.iSq = new com.tencent.mm.plugin.appbrand.ui.widget.a(this.eln, this.elp);
+    this.iSs = ((ViewGroup)LayoutInflater.from(paramActivity).inflate(2130968717, paramViewGroup, false));
+    this.iSs.setOnClickListener(this);
+    ((TextView)this.iSs.findViewById(2131820680)).setText(getTitle());
+    this.iSv = ((ImageView)this.iSs.findViewById(2131821353));
+    this.iSt = ((AppBrandNearbyShowcaseView)this.iSs.findViewById(2131821351));
+    this.iSt.setIconLayerCount(4);
+    this.iSt.setIconSize(this.eln + this.elp * 2);
+    this.iSt.setIconGap(this.elo);
   }
   
-  public final void apJ()
+  public final void aNd()
   {
-    this.wz = true;
-    dF(true);
-    this.hgR.getViewTreeObserver().addOnPreDrawListener(this.hgU);
+    this.wM = true;
+    eR(true);
+    this.iSs.getViewTreeObserver().addOnPreDrawListener(this.iSw);
   }
   
-  public final View apK()
+  public final View aNe()
   {
-    return this.hgR;
+    return this.iSs;
   }
   
-  protected abstract List<LocalUsageInfo> apM();
+  protected abstract List<LocalUsageInfo> aNg();
   
   protected final Activity getActivity()
   {
@@ -79,13 +84,29 @@ public abstract class d<_DataSource extends j>
   
   public final void onDetached()
   {
-    this.wz = false;
-    this.hgR.getViewTreeObserver().removeOnPreDrawListener(this.hgU);
-    e.aaT().d(this.hgV);
-    ((j)e.G(this.hgK)).d(this.hgV);
+    this.wM = false;
+    this.iSs.getViewTreeObserver().removeOnPreDrawListener(this.iSw);
+    g.auF().remove(this.iSx);
+    ((k)g.w(this.iSp)).remove(this.iSx);
   }
   
   public final void onResume() {}
+  
+  public final void pF(int paramInt)
+  {
+    if (this.iSv != null) {
+      this.iSv.setVisibility(paramInt);
+    }
+    TextView localTextView = (TextView)this.iSs.findViewById(2131820680);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localTextView.getLayoutParams();
+    localLayoutParams.leftMargin = this.iSs.getResources().getDimensionPixelOffset(2131428015);
+    localTextView.setLayoutParams(localLayoutParams);
+  }
+  
+  public final void pG(int paramInt)
+  {
+    this.iSs.setBackgroundResource(paramInt);
+  }
 }
 
 

@@ -9,8 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,85 +21,101 @@ public class PreviewContactView
   extends LinearLayout
 {
   private final Context context;
-  private List<String> list = new ArrayList();
-  private TableLayout oSr;
-  private final Map<Integer, View> oSs = new HashMap();
+  private List<String> list;
+  private TableLayout rKk;
+  private final Map<Integer, View> rKl;
   @SuppressLint({"UseSparseArrays"})
-  private final Map<Integer, TableRow> oSt = new HashMap();
-  private int oSu = 5;
+  private final Map<Integer, TableRow> rKm;
+  private int rKn;
   
   public PreviewContactView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(38509);
+    this.list = new ArrayList();
+    this.rKl = new HashMap();
+    this.rKm = new HashMap();
+    this.rKn = 5;
     this.context = paramContext;
-    this.oSr = ((TableLayout)LayoutInflater.from(this.context).inflate(i.g.sns_preview_view, this, true).findViewById(i.f.content));
+    this.rKk = ((TableLayout)LayoutInflater.from(this.context).inflate(2130970856, this, true).findViewById(2131820946));
+    AppMethodBeat.o(38509);
   }
   
-  public void setImageClick(PreviewContactView.a parama) {}
+  public void setImageClick(a parama) {}
   
   public void setLineNum(int paramInt)
   {
-    this.oSu = paramInt;
+    AppMethodBeat.i(38510);
+    this.rKn = paramInt;
     setList(this.list);
+    AppMethodBeat.o(38510);
   }
   
   public void setList(List<String> paramList)
   {
-    if (paramList == null) {}
-    do
+    AppMethodBeat.i(38511);
+    if (paramList == null)
     {
+      AppMethodBeat.o(38511);
       return;
-      this.list = paramList;
-      this.oSr.removeAllViews();
-    } while (paramList.size() == 0);
+    }
+    this.list = paramList;
+    this.rKk.removeAllViews();
+    if (paramList.size() == 0)
+    {
+      AppMethodBeat.o(38511);
+      return;
+    }
     int m = paramList.size();
     int j = 0;
     int i = 0;
-    label38:
     TableRow localTableRow;
     if (i < m)
     {
-      localTableRow = (TableRow)this.oSt.get(Integer.valueOf(j));
+      localTableRow = (TableRow)this.rKm.get(Integer.valueOf(j));
       if (localTableRow != null) {
-        break label264;
+        break label284;
       }
       localTableRow = new TableRow(this.context);
-      this.oSt.put(Integer.valueOf(j), localTableRow);
+      this.rKm.put(Integer.valueOf(j), localTableRow);
     }
-    label264:
+    label284:
     for (;;)
     {
       localTableRow.removeAllViews();
       int k = 0;
-      while ((k < this.oSu) && (i < m))
+      while ((k < this.rKn) && (i < m))
       {
-        Object localObject2 = (View)this.oSs.get(Integer.valueOf(i));
+        Object localObject2 = (View)this.rKl.get(Integer.valueOf(i));
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = View.inflate(this.context, i.g.sns_preview_contact_view, null);
-          this.oSs.put(Integer.valueOf(i), localObject1);
+          localObject1 = View.inflate(this.context, 2130970855, null);
+          this.rKl.put(Integer.valueOf(i), localObject1);
         }
         localObject2 = (String)paramList.get(i);
-        ImageView localImageView = (ImageView)((View)localObject1).findViewById(i.f.iv);
+        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131822812);
         localImageView.setBackgroundDrawable(null);
-        a.b.a(localImageView, (String)localObject2);
+        a.b.c(localImageView, (String)localObject2);
         ((View)localObject1).setTag(Integer.valueOf(0));
         ((View)localObject1).setClickable(false);
         localTableRow.addView((View)localObject1);
         k += 1;
         i += 1;
       }
-      this.oSr.addView(localTableRow);
+      this.rKk.addView(localTableRow);
       j += 1;
-      break label38;
       break;
+      AppMethodBeat.o(38511);
+      return;
     }
   }
+  
+  static abstract class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.PreviewContactView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.wenote.ui.nativenote.voiceview;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.f;
 import com.tencent.mm.plugin.wenote.model.k;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.t;
 
 final class NoteEditorVoiceBaseView$1
   implements View.OnClickListener
@@ -15,37 +16,40 @@ final class NoteEditorVoiceBaseView$1
   
   public final void onClick(View paramView)
   {
-    String str2 = NoteEditorVoiceBaseView.a(this.rNF);
-    String str1;
-    if (a.cjx().aQk())
+    AppMethodBeat.i(27188);
+    String str2 = NoteEditorVoiceBaseView.a(this.vEj);
+    if (a.djZ().bwz()) {}
+    for (String str1 = "true";; str1 = "false")
     {
-      str1 = "true";
-      y.i("MicroMsg.NoteEditorVoiceBaseView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str2, str1, a.cjx().path });
-      if ((!com.tencent.mm.r.a.bk(NoteEditorVoiceBaseView.b(this.rNF))) && (!com.tencent.mm.r.a.bi(NoteEditorVoiceBaseView.b(this.rNF)))) {
-        break label81;
+      ab.i("MicroMsg.NoteEditorVoiceBaseView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str2, str1, a.djZ().path });
+      if ((!com.tencent.mm.r.a.bO(NoteEditorVoiceBaseView.b(this.vEj))) && (!com.tencent.mm.r.a.bM(NoteEditorVoiceBaseView.b(this.vEj)))) {
+        break;
       }
-    }
-    label81:
-    do
-    {
-      return;
-      str1 = "false";
-      break;
-      if ((!f.zF()) && (!bk.bl(NoteEditorVoiceBaseView.a(this.rNF))))
-      {
-        s.gM(paramView.getContext());
-        return;
-      }
-    } while (k.chy().ibC);
-    if ((bk.aM(NoteEditorVoiceBaseView.a(this.rNF), "").equals(a.cjx().path)) && (a.cjx().aQk()))
-    {
-      paramView = this.rNF;
-      y.d("MicroMsg.NoteEditorVoiceBaseView", "stop play");
-      paramView.bvP();
-      a.cjx().stopPlay();
+      AppMethodBeat.o(27188);
       return;
     }
-    NoteEditorVoiceBaseView.c(this.rNF);
+    if ((!f.Mi()) && (!bo.isNullOrNil(NoteEditorVoiceBaseView.a(this.vEj))))
+    {
+      t.ii(paramView.getContext());
+      AppMethodBeat.o(27188);
+      return;
+    }
+    if (k.dhL().mwK)
+    {
+      AppMethodBeat.o(27188);
+      return;
+    }
+    if ((bo.bf(NoteEditorVoiceBaseView.a(this.vEj), "").equals(a.djZ().path)) && (a.djZ().bwz()))
+    {
+      paramView = this.vEj;
+      ab.d("MicroMsg.NoteEditorVoiceBaseView", "stop play");
+      paramView.cgf();
+      a.djZ().stopPlay();
+      AppMethodBeat.o(27188);
+      return;
+    }
+    NoteEditorVoiceBaseView.c(this.vEj);
+    AppMethodBeat.o(27188);
   }
 }
 

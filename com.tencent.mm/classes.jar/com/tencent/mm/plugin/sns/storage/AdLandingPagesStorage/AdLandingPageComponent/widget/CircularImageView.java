@@ -24,126 +24,158 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View.MeasureSpec;
 import android.widget.ImageView;
-import com.tencent.mm.plugin.sns.i.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.a;
 
 public class CircularImageView
   extends ImageView
 {
-  private static final String TAG = CircularImageView.class.getSimpleName();
+  private static final String TAG;
   private int borderWidth;
-  private boolean fmm;
-  private Paint gaZ = new Paint();
-  private boolean oJS;
-  private boolean oJT;
-  private int oJU;
-  private int oJV;
-  private boolean oJW;
-  private float oJX;
-  private BitmapShader oJY;
-  private Bitmap oJZ;
-  private Paint oKa;
-  private Paint oKb;
-  private ColorFilter oKc;
+  private boolean gDG;
+  private Paint paint;
+  private boolean rzM;
+  private boolean rzN;
+  private int rzO;
+  private int rzP;
+  private boolean rzQ;
+  private BitmapShader rzR;
+  private Bitmap rzS;
+  private Paint rzT;
+  private Paint rzU;
+  private ColorFilter rzV;
   private int shadowColor;
   private float shadowDx;
   private float shadowDy;
+  private float shadowRadius;
+  
+  static
+  {
+    AppMethodBeat.i(37681);
+    TAG = CircularImageView.class.getSimpleName();
+    AppMethodBeat.o(37681);
+  }
   
   public CircularImageView(Context paramContext)
   {
-    this(paramContext, null, i.l.CircularImageViewStyle_circularImageViewDefault);
+    this(paramContext, null, 0);
   }
   
   public CircularImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, i.l.CircularImageViewStyle_circularImageViewDefault);
+    this(paramContext, paramAttributeSet, 0);
   }
   
   public CircularImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.gaZ.setAntiAlias(true);
-    this.oKa = new Paint();
-    this.oKa.setAntiAlias(true);
-    this.oKa.setStyle(Paint.Style.STROKE);
-    this.oKb = new Paint();
-    this.oKb.setAntiAlias(true);
+    AppMethodBeat.i(37665);
+    this.paint = new Paint();
+    this.paint.setAntiAlias(true);
+    this.rzT = new Paint();
+    this.rzT.setAntiAlias(true);
+    this.rzT.setStyle(Paint.Style.STROKE);
+    this.rzU = new Paint();
+    this.rzU.setAntiAlias(true);
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(1, null);
     }
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, i.l.CircularImageView, paramInt, 0);
-    this.oJS = paramAttributeSet.getBoolean(i.l.CircularImageView_civ_border, false);
-    this.oJT = paramAttributeSet.getBoolean(i.l.CircularImageView_civ_selector, false);
-    this.oJW = paramAttributeSet.getBoolean(i.l.CircularImageView_civ_shadow, false);
-    if (this.oJS)
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, i.a.CircularImageView, paramInt, 0);
+    this.rzM = paramAttributeSet.getBoolean(0, false);
+    this.rzN = paramAttributeSet.getBoolean(3, false);
+    this.rzQ = paramAttributeSet.getBoolean(7, false);
+    if (this.rzM)
+    {
+      setBorderWidth(paramAttributeSet.getDimensionPixelOffset(2, (int)(paramContext.getResources().getDisplayMetrics().density * 2.0F + 0.5F)));
+      setBorderColor(paramAttributeSet.getColor(1, -1));
+    }
+    if (this.rzN)
     {
       paramInt = (int)(paramContext.getResources().getDisplayMetrics().density * 2.0F + 0.5F);
-      setBorderWidth(paramAttributeSet.getDimensionPixelOffset(i.l.CircularImageView_civ_borderWidth, paramInt));
-      setBorderColor(paramAttributeSet.getColor(i.l.CircularImageView_civ_borderColor, -1));
+      setSelectorColor(paramAttributeSet.getColor(4, 0));
+      setSelectorStrokeWidth(paramAttributeSet.getDimensionPixelOffset(6, paramInt));
+      setSelectorStrokeColor(paramAttributeSet.getColor(5, -16776961));
     }
-    if (this.oJT)
+    if (this.rzQ)
     {
-      paramInt = (int)(paramContext.getResources().getDisplayMetrics().density * 2.0F + 0.5F);
-      setSelectorColor(paramAttributeSet.getColor(i.l.CircularImageView_civ_selectorColor, 0));
-      setSelectorStrokeWidth(paramAttributeSet.getDimensionPixelOffset(i.l.CircularImageView_civ_selectorStrokeWidth, paramInt));
-      setSelectorStrokeColor(paramAttributeSet.getColor(i.l.CircularImageView_civ_selectorStrokeColor, -16776961));
-    }
-    if (this.oJW)
-    {
-      this.oJX = paramAttributeSet.getFloat(i.l.CircularImageView_civ_shadowRadius, 4.0F);
-      this.shadowDx = paramAttributeSet.getFloat(i.l.CircularImageView_civ_shadowDx, 0.0F);
-      this.shadowDy = paramAttributeSet.getFloat(i.l.CircularImageView_civ_shadowDy, 2.0F);
-      this.shadowColor = paramAttributeSet.getColor(i.l.CircularImageView_civ_shadowColor, -16777216);
+      this.shadowRadius = paramAttributeSet.getFloat(8, 4.0F);
+      this.shadowDx = paramAttributeSet.getFloat(9, 0.0F);
+      this.shadowDy = paramAttributeSet.getFloat(10, 2.0F);
+      this.shadowColor = paramAttributeSet.getColor(11, -16777216);
       setShadowEnabled(true);
     }
     paramAttributeSet.recycle();
+    AppMethodBeat.o(37665);
   }
   
-  private void bFS()
+  private void crM()
   {
-    if (this.oJZ == null) {}
-    do
+    AppMethodBeat.i(37680);
+    if (this.rzS == null)
     {
+      AppMethodBeat.o(37680);
       return;
-      this.oJY = new BitmapShader(this.oJZ, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-    } while ((this.oJU == this.oJZ.getWidth()) && (this.oJU == this.oJZ.getHeight()));
-    Matrix localMatrix = new Matrix();
-    float f = this.oJU / this.oJZ.getWidth();
-    localMatrix.setScale(f, f);
-    this.oJY.setLocalMatrix(localMatrix);
+    }
+    Object localObject = this.rzS;
+    Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
+    this.rzR = new BitmapShader((Bitmap)localObject, localTileMode, localTileMode);
+    if ((this.rzO != this.rzS.getWidth()) || (this.rzO != this.rzS.getHeight()))
+    {
+      localObject = new Matrix();
+      float f = this.rzO / this.rzS.getWidth();
+      ((Matrix)localObject).setScale(f, f);
+      this.rzR.setLocalMatrix((Matrix)localObject);
+    }
+    AppMethodBeat.o(37680);
   }
   
   private static Bitmap drawableToBitmap(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {}
-    int i;
-    int j;
-    do
+    AppMethodBeat.i(37679);
+    if (paramDrawable == null)
     {
+      AppMethodBeat.o(37679);
       return null;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return ((BitmapDrawable)paramDrawable).getBitmap();
-      }
-      i = paramDrawable.getIntrinsicWidth();
-      j = paramDrawable.getIntrinsicHeight();
-    } while ((i <= 0) || (j <= 0));
+    }
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      AppMethodBeat.o(37679);
+      return paramDrawable;
+    }
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    if ((i <= 0) || (j <= 0))
+    {
+      AppMethodBeat.o(37679);
+      return null;
+    }
     try
     {
       Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
       Canvas localCanvas = new Canvas(localBitmap);
       paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
       paramDrawable.draw(localCanvas);
+      AppMethodBeat.o(37679);
       return localBitmap;
     }
-    catch (OutOfMemoryError paramDrawable) {}
+    catch (OutOfMemoryError paramDrawable)
+    {
+      AppMethodBeat.o(37679);
+    }
     return null;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(37673);
+    boolean bool;
     if (!isClickable())
     {
-      this.fmm = false;
-      return super.onTouchEvent(paramMotionEvent);
+      this.gDG = false;
+      bool = super.onTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(37673);
+      return bool;
     }
     switch (paramMotionEvent.getAction())
     {
@@ -151,67 +183,78 @@ public class CircularImageView
     for (;;)
     {
       invalidate();
-      return super.dispatchTouchEvent(paramMotionEvent);
-      this.fmm = true;
+      bool = super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(37673);
+      return bool;
+      this.gDG = true;
       continue;
-      this.fmm = false;
+      this.gDG = false;
     }
   }
   
   public boolean isSelected()
   {
-    return this.fmm;
+    return this.gDG;
   }
   
   public void onDraw(Canvas paramCanvas)
   {
     int j = 0;
-    if (this.oJZ == null) {}
-    while ((this.oJZ.getHeight() == 0) || (this.oJZ.getWidth() == 0)) {
+    AppMethodBeat.i(37672);
+    if (this.rzS == null)
+    {
+      AppMethodBeat.o(37672);
       return;
     }
-    int k = this.oJU;
+    if ((this.rzS.getHeight() == 0) || (this.rzS.getWidth() == 0))
+    {
+      AppMethodBeat.o(37672);
+      return;
+    }
+    int k = this.rzO;
     int i;
     if (getWidth() < getHeight())
     {
       i = getWidth();
-      this.oJU = i;
-      if (k != this.oJU) {
-        bFS();
+      this.rzO = i;
+      if (k != this.rzO) {
+        crM();
       }
-      this.gaZ.setShader(this.oJY);
-      i = this.oJU / 2;
-      if ((!this.oJT) || (!this.fmm)) {
-        break label199;
+      this.paint.setShader(this.rzR);
+      i = this.rzO / 2;
+      if ((!this.rzN) || (!this.gDG)) {
+        break label224;
       }
-      j = this.oJV;
-      i = (this.oJU - j * 2) / 2;
-      this.gaZ.setColorFilter(this.oKc);
-      paramCanvas.drawCircle(i + j, i + j, (this.oJU - j * 2) / 2 + j - 4.0F, this.oKb);
+      j = this.rzP;
+      i = (this.rzO - j * 2) / 2;
+      this.paint.setColorFilter(this.rzV);
+      paramCanvas.drawCircle(i + j, i + j, (this.rzO - j * 2) / 2 + j - 4.0F, this.rzU);
     }
     for (;;)
     {
-      paramCanvas.drawCircle(i + j, i + j, (this.oJU - j * 2) / 2, this.gaZ);
+      paramCanvas.drawCircle(i + j, i + j, (this.rzO - j * 2) / 2, this.paint);
+      AppMethodBeat.o(37672);
       return;
       i = getHeight();
       break;
-      label199:
-      if (this.oJS)
+      label224:
+      if (this.rzM)
       {
         j = this.borderWidth;
-        i = (this.oJU - j * 2) / 2;
-        this.gaZ.setColorFilter(null);
-        paramCanvas.drawArc(new RectF(j / 2 + 0, j / 2 + 0, this.oJU - j / 2, this.oJU - j / 2), 360.0F, 360.0F, false, this.oKa);
+        i = (this.rzO - j * 2) / 2;
+        this.paint.setColorFilter(null);
+        paramCanvas.drawArc(new RectF(j / 2 + 0, j / 2 + 0, this.rzO - j / 2, this.rzO - j / 2), 360.0F, 360.0F, false, this.rzT);
       }
       else
       {
-        this.gaZ.setColorFilter(null);
+        this.paint.setColorFilter(null);
       }
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(37678);
     int i = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     if (i == 1073741824)
@@ -219,110 +262,131 @@ public class CircularImageView
       i = View.MeasureSpec.getMode(paramInt2);
       paramInt2 = View.MeasureSpec.getSize(paramInt2);
       if (i != 1073741824) {
-        break label58;
+        break label70;
       }
     }
     for (;;)
     {
       setMeasuredDimension(paramInt1, paramInt2 + 2);
+      AppMethodBeat.o(37678);
       return;
       if (i == -2147483648) {
         break;
       }
-      paramInt1 = this.oJU;
+      paramInt1 = this.rzO;
       break;
-      label58:
+      label70:
       if (i != -2147483648) {
-        paramInt2 = this.oJU;
+        paramInt2 = this.rzO;
       }
     }
   }
   
   public void setBorderColor(int paramInt)
   {
-    if (this.oKa != null) {
-      this.oKa.setColor(paramInt);
+    AppMethodBeat.i(37667);
+    if (this.rzT != null) {
+      this.rzT.setColor(paramInt);
     }
     invalidate();
+    AppMethodBeat.o(37667);
   }
   
   public void setBorderWidth(int paramInt)
   {
+    AppMethodBeat.i(37666);
     this.borderWidth = paramInt;
-    if (this.oKa != null) {
-      this.oKa.setStrokeWidth(paramInt);
+    if (this.rzT != null) {
+      this.rzT.setStrokeWidth(paramInt);
     }
     requestLayout();
     invalidate();
+    AppMethodBeat.o(37666);
   }
   
   public void setIconModeEnabled(boolean paramBoolean) {}
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
+    AppMethodBeat.i(37677);
     super.setImageBitmap(paramBitmap);
-    this.oJZ = paramBitmap;
-    if (this.oJU > 0) {
-      bFS();
+    this.rzS = paramBitmap;
+    if (this.rzO > 0) {
+      crM();
     }
+    AppMethodBeat.o(37677);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
+    AppMethodBeat.i(37676);
     super.setImageDrawable(paramDrawable);
-    this.oJZ = drawableToBitmap(getDrawable());
-    if (this.oJU > 0) {
-      bFS();
+    this.rzS = drawableToBitmap(getDrawable());
+    if (this.rzO > 0) {
+      crM();
     }
+    AppMethodBeat.o(37676);
   }
   
   public void setImageResource(int paramInt)
   {
+    AppMethodBeat.i(37675);
     super.setImageResource(paramInt);
-    this.oJZ = drawableToBitmap(getDrawable());
-    if (this.oJU > 0) {
-      bFS();
+    this.rzS = drawableToBitmap(getDrawable());
+    if (this.rzO > 0) {
+      crM();
     }
+    AppMethodBeat.o(37675);
   }
   
   public void setImageURI(Uri paramUri)
   {
+    AppMethodBeat.i(37674);
     super.setImageURI(paramUri);
-    this.oJZ = drawableToBitmap(getDrawable());
-    if (this.oJU > 0) {
-      bFS();
+    this.rzS = drawableToBitmap(getDrawable());
+    if (this.rzO > 0) {
+      crM();
     }
+    AppMethodBeat.o(37674);
   }
   
   public void setSelectorColor(int paramInt)
   {
-    this.oKc = new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    AppMethodBeat.i(37668);
+    this.rzV = new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
     invalidate();
+    AppMethodBeat.o(37668);
   }
   
   public void setSelectorStrokeColor(int paramInt)
   {
-    if (this.oKb != null) {
-      this.oKb.setColor(paramInt);
+    AppMethodBeat.i(37670);
+    if (this.rzU != null) {
+      this.rzU.setColor(paramInt);
     }
     invalidate();
+    AppMethodBeat.o(37670);
   }
   
   public void setSelectorStrokeWidth(int paramInt)
   {
-    this.oJV = paramInt;
+    AppMethodBeat.i(37669);
+    this.rzP = paramInt;
     requestLayout();
     invalidate();
+    AppMethodBeat.o(37669);
   }
   
   public void setShadowEnabled(boolean paramBoolean)
   {
-    this.oJW = paramBoolean;
-    if (this.oJW) {}
-    for (float f = this.oJX;; f = 0.0F)
+    AppMethodBeat.i(37671);
+    this.rzQ = paramBoolean;
+    if (this.rzQ) {}
+    for (float f = this.shadowRadius;; f = 0.0F)
     {
-      this.oKa.setShadowLayer(f, this.shadowDx, this.shadowDy, this.shadowColor);
-      this.oKb.setShadowLayer(f, this.shadowDx, this.shadowDy, this.shadowColor);
+      this.rzT.setShadowLayer(f, this.shadowDx, this.shadowDy, this.shadowColor);
+      this.rzU.setShadowLayer(f, this.shadowDx, this.shadowDy, this.shadowColor);
+      AppMethodBeat.o(37671);
       return;
     }
   }

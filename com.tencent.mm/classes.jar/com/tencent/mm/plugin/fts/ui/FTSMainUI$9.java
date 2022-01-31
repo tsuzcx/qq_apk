@@ -1,38 +1,81 @@
 package com.tencent.mm.plugin.fts.ui;
 
 import android.view.View;
-import com.tencent.mm.plugin.fts.a.e;
-import com.tencent.mm.plugin.websearch.api.WidgetData;
-import com.tencent.mm.plugin.websearch.api.i;
-import com.tencent.mm.plugin.websearch.api.o;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.ui.widget.FTSLocalPageRelevantView;
+import com.tencent.mm.plugin.websearch.api.d;
+import com.tencent.mm.protocal.protobuf.bti;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.List;
 
 final class FTSMainUI$9
-  implements o
+  implements d
 {
   FTSMainUI$9(FTSMainUI paramFTSMainUI) {}
   
-  public final void m(String paramString, List<WidgetData> paramList)
+  public final void a(boolean paramBoolean, bti parambti, String paramString1, String paramString2)
   {
-    if (FTSMainUI.a(this.kCm)) {
-      FTSMainUI.b(this.kCm).setVisibility(0);
-    }
-    if (!this.kCm.bVk.equals(paramString)) {}
-    while ((paramList == null) || (paramList.isEmpty())) {
+    AppMethodBeat.i(61874);
+    if (!this.mYi.query.equals(paramString2))
+    {
+      ab.i("MicroMsg.FTS.FTSMainUI", "IRelevantSearchCallback callback with query %s, current query is %s ", new Object[] { paramString2, this.mYi.query });
+      AppMethodBeat.o(61874);
       return;
     }
-    if ((FTSMainUI.a(this.kCm)) && (FTSMainUI.j(this.kCm) != null))
+    if (paramBoolean)
     {
-      FTSMainUI.j(this.kCm).c(paramList, e.kvx, this.kCm.bVk);
-      FTSMainUI.j(this.kCm).show();
-      FTSMainUI.i(this.kCm).setVisibility(0);
+      if (FTSMainUI.b(this.mYi).getVisibility() == 0)
+      {
+        FTSLocalPageRelevantView localFTSLocalPageRelevantView = FTSMainUI.f(this.mYi);
+        int i;
+        if ((parambti == null) || (parambti.wrp == null))
+        {
+          ab.w("MicroMsg.FTS.FTSLocalPageRelevantView", "configRelevantDatas param nil!");
+          i = 0;
+        }
+        while (i != 0)
+        {
+          FTSMainUI.f(this.mYi).setVisibility(0);
+          AppMethodBeat.o(61874);
+          return;
+          List localList = FTSLocalPageRelevantView.bX(parambti.wrp);
+          if (localList.size() <= 0)
+          {
+            ab.w("MicroMsg.FTS.FTSLocalPageRelevantView", "configRelevantDatas size 0 items!");
+            i = 0;
+          }
+          else
+          {
+            localFTSLocalPageRelevantView.query = paramString2;
+            localFTSLocalPageRelevantView.hng = paramString1;
+            localFTSLocalPageRelevantView.nbe = parambti.wrp;
+            if (localFTSLocalPageRelevantView.jja == null)
+            {
+              localFTSLocalPageRelevantView.jja = new LinearLayout(localFTSLocalPageRelevantView.getContext());
+              localFTSLocalPageRelevantView.jja.setOrientation(1);
+              parambti = (LinearLayout.LayoutParams)localFTSLocalPageRelevantView.getLayoutParams();
+              parambti.width = -1;
+              parambti.height = -2;
+              localFTSLocalPageRelevantView.addView(localFTSLocalPageRelevantView.jja, parambti);
+            }
+            localFTSLocalPageRelevantView.b(localList, localFTSLocalPageRelevantView.jja);
+            localFTSLocalPageRelevantView.requestLayout();
+            i = 1;
+          }
+        }
+      }
     }
-    FTSMainUI.s(this.kCm);
+    else {
+      FTSMainUI.f(this.mYi).setVisibility(8);
+    }
+    AppMethodBeat.o(61874);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSMainUI.9
  * JD-Core Version:    0.7.0.1
  */

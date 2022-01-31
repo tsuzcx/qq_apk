@@ -1,6 +1,7 @@
 package com.tencent.smtt.sdk;
 
 import android.webkit.ValueCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.jscore.interfaces.IX5JsValue;
 
 class c
@@ -10,11 +11,13 @@ class c
   
   public void a(IX5JsValue paramIX5JsValue)
   {
+    AppMethodBeat.i(63909);
     ValueCallback localValueCallback = this.a;
     if (paramIX5JsValue == null) {}
     for (paramIX5JsValue = null;; paramIX5JsValue = new JsValue(this.b, paramIX5JsValue))
     {
       localValueCallback.onReceiveValue(paramIX5JsValue);
+      AppMethodBeat.o(63909);
       return;
     }
   }

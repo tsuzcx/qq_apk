@@ -8,14 +8,14 @@ public final class c
     super(paramString, paramInt1, paramInt2);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
-    return 2533;
+    return 2849;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/sns_aa_cancelpay";
+    return "/cgi-bin/mmpay-bin/tenpay/dc_cancelpay";
   }
 }
 

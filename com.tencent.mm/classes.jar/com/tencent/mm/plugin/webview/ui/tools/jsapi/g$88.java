@@ -1,21 +1,78 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.plugin.webview.model.ag;
-import com.tencent.mm.plugin.webview.model.d.b;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fo;
+import com.tencent.mm.g.a.fo.b;
+import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Map;
 
 final class g$88
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  g$88(g paramg, d.b paramb, String paramString, i parami) {}
+  g$88(g paramg, WebViewJSSDKFileItem paramWebViewJSSDKFileItem, i parami) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void run()
   {
-    com.tencent.mm.plugin.webview.modeltools.g.ccK().a(this.rAc);
-    com.tencent.mm.plugin.webview.modeltools.g.ccK();
-    ag.Sh(this.rAb);
-    g.a(this.rzi, this.rzk, "downloadVoice:fail", null);
+    AppMethodBeat.i(155009);
+    final fo localfo = new fo();
+    localfo.ctE.op = 1;
+    localfo.ctE.filePath = this.vrl.hgj;
+    localfo.ctE.duration = bo.getInt((String)this.uZa.pJb.get("duration"), 60);
+    localfo.ctE.caX = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(155008);
+        ab.i("MicroMsg.MsgHandler", "onVoiceRecordEnd, localId(%s).", new Object[] { g.88.this.vrl.ctV });
+        for (;;)
+        {
+          try
+          {
+            g.H(g.88.this.vqm);
+            localBundle = new Bundle();
+            localBundle.putString("localId", g.88.this.vrl.ctV);
+            localStringBuilder = new StringBuilder("onVoiceRecordEnd:");
+            if (localfo.ctF.ctG != 2) {
+              break label185;
+            }
+            if (localfo.ctF.ctG != 3) {
+              break label191;
+            }
+          }
+          catch (Exception localException)
+          {
+            Bundle localBundle;
+            StringBuilder localStringBuilder;
+            String str1;
+            ab.e("MicroMsg.MsgHandler", "callback stop record failed");
+            AppMethodBeat.o(155008);
+            return;
+          }
+          localBundle.putString("recordResult", str1);
+          if (g.l(g.88.this.vqm) != null)
+          {
+            g.l(g.88.this.vqm).e(2008, localBundle);
+            AppMethodBeat.o(155008);
+            return;
+          }
+          ab.e("MicroMsg.MsgHandler", "callbacker is null");
+          AppMethodBeat.o(155008);
+          return;
+          label185:
+          String str2 = "ok";
+          continue;
+          label191:
+          str2 = "fail";
+        }
+      }
+    };
+    a.ymk.l(localfo);
+    AppMethodBeat.o(155009);
   }
 }
 

@@ -5,13 +5,10 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -21,10 +18,10 @@ import java.util.List;
 public class BizInfoPayInfoIconPreference
   extends Preference
 {
-  private LayoutInflater Lu;
-  private LinearLayout mVA;
-  private List<String> mVB;
-  private int mVC = -1;
+  private LayoutInflater mInflater;
+  private LinearLayout pyh;
+  private List<String> pyi;
+  private int pyj;
   
   public BizInfoPayInfoIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,101 +31,121 @@ public class BizInfoPayInfoIconPreference
   public BizInfoPayInfoIconPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.Lu = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.i(23316);
+    this.pyj = -1;
+    this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(23316);
   }
   
-  private void aZ()
+  private void Bu(int paramInt)
   {
-    if (this.mVA == null) {}
-    for (;;)
+    AppMethodBeat.i(23322);
+    ImageView localImageView = (ImageView)this.mInflater.inflate(2130969218, null);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(a.fromDPToPix(this.mContext, 20), a.fromDPToPix(this.mContext, 20));
+    localLayoutParams.rightMargin = a.fromDPToPix(this.mContext, 6);
+    localImageView.setImageResource(paramInt);
+    this.pyh.addView(localImageView, localLayoutParams);
+    AppMethodBeat.o(23322);
+  }
+  
+  private void Xa(String paramString)
+  {
+    AppMethodBeat.i(23323);
+    CdnImageView localCdnImageView = new CdnImageView(this.mContext);
+    localCdnImageView.setUrl(paramString);
+    paramString = new LinearLayout.LayoutParams(a.fromDPToPix(this.mContext, 20), a.fromDPToPix(this.mContext, 20));
+    paramString.rightMargin = a.fromDPToPix(this.mContext, 6);
+    this.pyh.addView(localCdnImageView, paramString);
+    AppMethodBeat.o(23323);
+  }
+  
+  private void bJ()
+  {
+    AppMethodBeat.i(23321);
+    if (this.pyh == null)
     {
+      AppMethodBeat.o(23321);
       return;
-      this.mVA.removeAllViews();
-      if (this.mVC >= 0)
+    }
+    this.pyh.removeAllViews();
+    if (this.pyj >= 0)
+    {
+      int i = this.pyj;
+      int j = 0;
+      if (j < 5)
       {
-        int i = this.mVC;
-        int j = 0;
-        label29:
-        if (j < 5)
-        {
-          if (i > 0) {
-            break label52;
-          }
-          vU(R.k.biz_info_brand_unselect);
+        if (i <= 0) {
+          Bu(2131230984);
         }
         for (;;)
         {
           j += 1;
-          break label29;
           break;
-          label52:
           if (i <= 10)
           {
-            vU(R.k.biz_info_brand_half_selected);
+            Bu(2131230982);
             i -= 20;
           }
           else
           {
-            vU(R.k.biz_info_brand_selected);
+            Bu(2131230983);
             i -= 20;
           }
         }
       }
-      if (this.mVB != null)
-      {
-        Iterator localIterator = this.mVB.iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (String)localIterator.next();
-          CdnImageView localCdnImageView = new CdnImageView(this.mContext);
-          localCdnImageView.setUrl((String)localObject);
-          localObject = new LinearLayout.LayoutParams(a.fromDPToPix(this.mContext, 20), a.fromDPToPix(this.mContext, 20));
-          ((LinearLayout.LayoutParams)localObject).rightMargin = a.fromDPToPix(this.mContext, 6);
-          this.mVA.addView(localCdnImageView, (ViewGroup.LayoutParams)localObject);
-        }
+      AppMethodBeat.o(23321);
+      return;
+    }
+    if (this.pyi != null)
+    {
+      Iterator localIterator = this.pyi.iterator();
+      while (localIterator.hasNext()) {
+        Xa((String)localIterator.next());
       }
     }
+    AppMethodBeat.o(23321);
   }
   
-  private void vU(int paramInt)
+  public final void Bt(int paramInt)
   {
-    ImageView localImageView = (ImageView)this.Lu.inflate(R.i.contact_info_biz_info_icon, null);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(a.fromDPToPix(this.mContext, 20), a.fromDPToPix(this.mContext, 20));
-    localLayoutParams.rightMargin = a.fromDPToPix(this.mContext, 6);
-    localImageView.setImageResource(paramInt);
-    this.mVA.addView(localImageView, localLayoutParams);
+    AppMethodBeat.i(23319);
+    if (paramInt == this.pyj)
+    {
+      AppMethodBeat.o(23319);
+      return;
+    }
+    this.pyj = paramInt;
+    bJ();
+    AppMethodBeat.o(23319);
   }
   
-  public final void bX(List<String> paramList)
+  public final void cA(List<String> paramList)
   {
-    this.mVB = paramList;
-    aZ();
+    AppMethodBeat.i(23320);
+    this.pyi = paramList;
+    bJ();
+    AppMethodBeat.o(23320);
   }
   
   public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(23318);
     super.onBindView(paramView);
-    this.mVA = ((LinearLayout)paramView.findViewById(R.h.summary));
-    aZ();
+    this.pyh = ((LinearLayout)paramView.findViewById(2131821890));
+    bJ();
+    AppMethodBeat.o(23318);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(23317);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    this.Lu.inflate(R.i.contact_info_pay_info_icon, localViewGroup);
+    this.mInflater.inflate(2130969253, localViewGroup);
+    AppMethodBeat.o(23317);
     return paramViewGroup;
-  }
-  
-  public final void vT(int paramInt)
-  {
-    if (paramInt == this.mVC) {
-      return;
-    }
-    this.mVC = paramInt;
-    aZ();
   }
 }
 

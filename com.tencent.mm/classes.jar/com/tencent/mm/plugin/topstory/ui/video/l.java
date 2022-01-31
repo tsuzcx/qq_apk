@@ -1,60 +1,75 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.n.a;
 import com.tencent.mm.plugin.topstory.ui.PluginTopStoryUI;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tinkerboots.sdk.b.a;
 
 public final class l
 {
-  private n.a iAF = new l.1(this);
-  public boolean pFL = false;
-  com.tencent.mm.plugin.topstory.a.c pFM;
-  public int pFN = bOn();
+  private n.a kDL;
+  public int qCf;
+  public boolean tjk;
+  com.tencent.mm.plugin.topstory.a.c tjl;
   
   public l()
   {
-    g.DO().a(this.iAF);
+    AppMethodBeat.i(1743);
+    this.kDL = new l.1(this);
+    this.tjk = false;
+    this.qCf = cvE();
+    g.RK().a(this.kDL);
+    AppMethodBeat.o(1743);
   }
   
-  public static int bOn()
+  public static int cvE()
   {
-    if (!a.isConnected(ae.getContext())) {
+    AppMethodBeat.i(1745);
+    if (!a.isConnected(ah.getContext()))
+    {
+      AppMethodBeat.o(1745);
       return 0;
     }
-    if (a.isWifi(ae.getContext()))
+    if (a.isWifi(ah.getContext()))
     {
-      if (((PluginTopStoryUI)g.t(PluginTopStoryUI.class)).getTopStoryCommand().pDH) {
+      if (((PluginTopStoryUI)g.G(PluginTopStoryUI.class)).getTopStoryCommand().tfB)
+      {
+        AppMethodBeat.o(1745);
         return 2;
       }
+      AppMethodBeat.o(1745);
       return 1;
     }
+    AppMethodBeat.o(1745);
     return 2;
   }
   
-  public final boolean aIq()
+  public final void aEM()
   {
-    return this.pFN == 1;
+    AppMethodBeat.i(1744);
+    g.RK().b(this.kDL);
+    this.tjl = null;
+    this.qCf = 0;
+    this.tjk = false;
+    AppMethodBeat.o(1744);
   }
   
-  public final void akT()
+  public final boolean blP()
   {
-    g.DO().b(this.iAF);
-    this.pFM = null;
-    this.pFN = 0;
-    this.pFL = false;
+    return this.qCf == 1;
   }
   
-  public final boolean bOm()
+  public final boolean cJZ()
   {
-    return this.pFN == 2;
+    return this.qCf == 2;
   }
   
   public final boolean isConnected()
   {
-    return this.pFN != 0;
+    return this.qCf != 0;
   }
 }
 

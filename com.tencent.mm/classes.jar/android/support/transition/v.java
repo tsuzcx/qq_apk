@@ -8,20 +8,20 @@ import android.util.Property;
 
 final class v
 {
-  private static final y rp = new w();
+  private static final y so = new w();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      rp = new x();
+      so = new x();
       return;
     }
   }
   
   static PropertyValuesHolder a(Property<?, PointF> paramProperty, Path paramPath)
   {
-    return rp.a(paramProperty, paramPath);
+    return so.a(paramProperty, paramPath);
   }
 }
 

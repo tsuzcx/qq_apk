@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wenote.ui.nativenote;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NoteEditorUI$8
   implements DialogInterface.OnCancelListener
@@ -11,11 +12,13 @@ final class NoteEditorUI$8
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (NoteEditorUI.ac(this.rLT) != null)
+    AppMethodBeat.i(27003);
+    if (NoteEditorUI.ac(this.vCx) != null)
     {
-      NoteEditorUI.ac(this.rLT).dismiss();
-      NoteEditorUI.ad(this.rLT);
+      NoteEditorUI.ac(this.vCx).dismiss();
+      NoteEditorUI.ad(this.vCx);
     }
+    AppMethodBeat.o(27003);
   }
 }
 

@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class SettingsUI$6
   implements f
@@ -14,17 +15,19 @@ final class SettingsUI$6
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    g.Dk().b(281, SettingsUI.l(this.nWB));
-    SettingsUI.m(this.nWB);
-    if (SettingsUI.n(this.nWB) != null)
+    AppMethodBeat.i(127565);
+    g.Rc().b(281, SettingsUI.k(this.qKL));
+    SettingsUI.l(this.qKL);
+    if (SettingsUI.m(this.qKL) != null)
     {
-      SettingsUI.n(this.nWB).stopTimer();
-      SettingsUI.o(this.nWB);
+      SettingsUI.m(this.qKL).stopTimer();
+      SettingsUI.n(this.qKL);
     }
-    if (SettingsUI.p(this.nWB) != null) {
-      SettingsUI.p(this.nWB).dismiss();
+    if (SettingsUI.o(this.qKL) != null) {
+      SettingsUI.o(this.qKL).dismiss();
     }
-    SettingsUI.q(this.nWB);
+    SettingsUI.p(this.qKL);
+    AppMethodBeat.o(127565);
   }
 }
 

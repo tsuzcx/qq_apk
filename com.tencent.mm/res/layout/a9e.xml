@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<ScrollView android:background="@color/vy" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ih" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="47.0dip">
-        <ImageView android:id="@id/coz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ahr" />
-        <LinearLayout android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/fc" android:id="@id/bhb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            <TextView android:textColor="@color/oq" android:id="@id/cp0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/iv" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/lr" android:paddingRight="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/d6">
+            <com.tencent.mm.ui.base.MaxListView android:id="@id/cmo" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:divider="#00000000" android:dividerHeight="0.0dip" android:choiceMode="singleChoice" />
+            <include android:id="@id/cmp" android:visibility="gone" layout="@layout/b4v" />
+            <TextView android:textSize="@dimen/fl" android:textColor="@color/t7" android:gravity="center|left" android:id="@id/cmq" android:background="@drawable/l8" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m0" android:text="@string/e9k" />
         </LinearLayout>
-        <ImageView android:id="@id/cp1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mm_submenu_normal" />
-    </LinearLayout>
-</LinearLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/w6" android:gravity="bottom" android:id="@id/cmr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="18.0dip" android:text="@string/ci4" android:layout_below="@id/iv" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</ScrollView>

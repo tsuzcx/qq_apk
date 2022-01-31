@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.canvas.action.arg.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.d;
 import java.util.Map;
@@ -7,21 +8,34 @@ import java.util.Map;
 public final class c
   extends a<BaseDrawActionArg>
 {
-  private static com.tencent.mm.plugin.appbrand.canvas.c fMi = new com.tencent.mm.plugin.appbrand.canvas.c();
-  private static c fMj = new c();
+  private static com.tencent.mm.plugin.appbrand.canvas.c hfs;
+  private static c hft;
   
-  public static c adI()
+  static
   {
-    return fMj;
+    AppMethodBeat.i(103635);
+    hfs = new com.tencent.mm.plugin.appbrand.canvas.c();
+    hft = new c();
+    AppMethodBeat.o(103635);
   }
   
-  public final <T> T rM(String paramString)
+  public static c aya()
   {
-    paramString = (d)fMi.fLo.get(paramString);
-    if (paramString == null) {
+    return hft;
+  }
+  
+  public final <T> T zC(String paramString)
+  {
+    AppMethodBeat.i(103634);
+    paramString = (d)hfs.heA.get(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(103634);
       return null;
     }
-    return paramString.adE();
+    paramString = paramString.axW();
+    AppMethodBeat.o(103634);
+    return paramString;
   }
 }
 

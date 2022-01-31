@@ -2,40 +2,41 @@ package com.tencent.mm.plugin.appbrand.ui.recents;
 
 import android.view.View;
 
-abstract class a
+public abstract class a
+  implements l
 {
-  a hgJ;
+  a.a iSl;
   
-  public abstract void apJ();
+  public abstract void aNd();
   
-  public abstract View apK();
+  public abstract View aNe();
   
-  protected final boolean apL()
+  protected final boolean aNf()
   {
-    if (apK() == null) {}
-    while (apK().getVisibility() != 0) {
+    if (aNe() == null) {}
+    while (aNe().getVisibility() != 0) {
       return false;
     }
     return true;
   }
   
-  protected final void dF(boolean paramBoolean)
+  protected final void eR(boolean paramBoolean)
   {
-    if (apK() == null) {}
+    if (aNe() == null) {}
     for (;;)
     {
       return;
       if (paramBoolean) {
-        if (apK().getVisibility() != 0) {
-          apK().setVisibility(0);
+        if (aNe().getVisibility() != 0) {
+          aNe().setVisibility(0);
         }
       }
-      while (this.hgJ != null)
+      while (this.iSl != null)
       {
-        this.hgJ.a(this, apK(), paramBoolean);
+        this.iSl.a(this, aNe(), paramBoolean);
         return;
-        if (apK().getVisibility() != 8) {
-          apK().setVisibility(8);
+        if (aNe().getVisibility() != 8) {
+          aNe().setVisibility(8);
         }
       }
     }
@@ -45,10 +46,9 @@ abstract class a
   
   public abstract void onResume();
   
-  static abstract interface a
-  {
-    public abstract void a(a parama, View paramView, boolean paramBoolean);
-  }
+  public abstract void pF(int paramInt);
+  
+  public abstract void pG(int paramInt);
 }
 
 

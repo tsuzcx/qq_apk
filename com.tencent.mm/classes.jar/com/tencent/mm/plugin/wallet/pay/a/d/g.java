@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.wallet.pay.a.d;
 
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.p;
+import com.tencent.mm.plugin.wallet_core.model.u;
 
 public final class g
-  extends e
+  extends f
 {
-  public g(p paramp, Orders paramOrders)
+  public g(u paramu, Orders paramOrders)
   {
-    super(paramp, paramOrders);
+    super(paramu, paramOrders);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
-    return 1592;
+    return 2689;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/sns_tf_verify";
+    return "/cgi-bin/mmpay-bin/seb_ff_verify";
   }
 }
 

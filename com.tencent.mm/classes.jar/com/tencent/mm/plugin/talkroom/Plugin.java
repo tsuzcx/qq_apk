@@ -1,28 +1,37 @@
 package com.tencent.mm.plugin.talkroom;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
   public Plugin()
   {
-    com.tencent.mm.sdk.b.a.udP.c(new Plugin.1(this));
-    com.tencent.mm.sdk.b.a.udP.c(new Plugin.b((byte)0));
-    com.tencent.mm.sdk.b.a.udP.c(new Plugin.a(this, (byte)0));
-    com.tencent.mm.sdk.b.a.udP.c(new Plugin.c(this, (byte)0));
+    AppMethodBeat.i(25689);
+    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.1(this));
+    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.b((byte)0));
+    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.a(this, (byte)0));
+    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.c(this, (byte)0));
+    AppMethodBeat.o(25689);
   }
   
-  public n createApplication()
+  public o createApplication()
   {
-    return new a();
+    AppMethodBeat.i(25690);
+    a locala = new a();
+    AppMethodBeat.o(25690);
+    return locala;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new com.tencent.mm.plugin.talkroom.model.b();
+    AppMethodBeat.i(25691);
+    com.tencent.mm.plugin.talkroom.model.b localb = new com.tencent.mm.plugin.talkroom.model.b();
+    AppMethodBeat.o(25691);
+    return localb;
   }
   
   public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()

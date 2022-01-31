@@ -4,22 +4,33 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.mars.smc.IDKey;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 class GroupIDKeyDataInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<GroupIDKeyDataInfo> CREATOR = new Parcelable.Creator() {};
-  ArrayList<IDKey> nFf = new ArrayList();
-  public boolean nFg;
+  public static final Parcelable.Creator<GroupIDKeyDataInfo> CREATOR;
+  ArrayList<IDKey> qsh;
+  public boolean qsi;
+  
+  static
+  {
+    AppMethodBeat.i(72699);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(72699);
+  }
   
   protected GroupIDKeyDataInfo(Parcel paramParcel)
   {
-    paramParcel.readTypedList(this.nFf, IDKey.CREATOR);
+    AppMethodBeat.i(72698);
+    this.qsh = new ArrayList();
+    paramParcel.readTypedList(this.qsh, IDKey.CREATOR);
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.nFg = bool;
+      this.qsi = bool;
+      AppMethodBeat.o(72698);
       return;
       bool = false;
     }
@@ -27,8 +38,11 @@ class GroupIDKeyDataInfo
   
   GroupIDKeyDataInfo(ArrayList<IDKey> paramArrayList)
   {
-    this.nFf = paramArrayList;
-    this.nFg = false;
+    AppMethodBeat.i(72696);
+    this.qsh = new ArrayList();
+    this.qsh = paramArrayList;
+    this.qsi = false;
+    AppMethodBeat.o(72696);
   }
   
   public int describeContents()
@@ -38,11 +52,13 @@ class GroupIDKeyDataInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeTypedList(this.nFf);
-    if (this.nFg) {}
+    AppMethodBeat.i(72697);
+    paramParcel.writeTypedList(this.qsh);
+    if (this.qsi) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
+      AppMethodBeat.o(72697);
       return;
     }
   }

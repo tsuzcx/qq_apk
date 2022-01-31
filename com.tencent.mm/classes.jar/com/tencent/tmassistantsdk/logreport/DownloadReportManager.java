@@ -2,6 +2,7 @@ package com.tencent.tmassistantsdk.logreport;
 
 import android.net.Proxy;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tmassistantsdk.protocol.jce.DownloadChunkLogInfo;
 import com.tencent.tmassistantsdk.storage.table.BaseLogTable;
 import com.tencent.tmassistantsdk.storage.table.DownloadLogTable;
@@ -18,10 +19,12 @@ public class DownloadReportManager
   {
     try
     {
+      AppMethodBeat.i(75808);
       if (mInstance == null) {
         mInstance = new DownloadReportManager();
       }
       DownloadReportManager localDownloadReportManager = mInstance;
+      AppMethodBeat.o(75808);
       return localDownloadReportManager;
     }
     finally {}
@@ -29,6 +32,7 @@ public class DownloadReportManager
   
   public DownloadChunkLogInfo createNewChunkLogInfo(byte paramByte)
   {
+    AppMethodBeat.i(75809);
     TMLog.i("DownloadReportManager", "createNewChunkLogInfo");
     DownloadChunkLogInfo localDownloadChunkLogInfo = new DownloadChunkLogInfo();
     localDownloadChunkLogInfo.type = paramByte;
@@ -39,13 +43,17 @@ public class DownloadReportManager
     {
       localDownloadChunkLogInfo.isWap = ((byte)i);
       localDownloadChunkLogInfo.startTime = System.currentTimeMillis();
+      AppMethodBeat.o(75809);
       return localDownloadChunkLogInfo;
     }
   }
   
   protected BaseLogTable getLogTable()
   {
-    return DownloadLogTable.getInstance();
+    AppMethodBeat.i(75810);
+    DownloadLogTable localDownloadLogTable = DownloadLogTable.getInstance();
+    AppMethodBeat.o(75810);
+    return localDownloadLogTable;
   }
   
   protected byte getReportType()
@@ -55,7 +63,7 @@ public class DownloadReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.logreport.DownloadReportManager
  * JD-Core Version:    0.7.0.1
  */

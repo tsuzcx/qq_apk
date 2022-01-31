@@ -1,36 +1,33 @@
 package com.tencent.mm.plugin.wallet.balance.a.a;
 
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.protocal.c.bhl;
-import com.tencent.mm.protocal.c.bhm;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.protocal.protobuf.bmm;
+import com.tencent.mm.protocal.protobuf.bmn;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class g
-  extends a<bhm>
+  extends a<bmn>
 {
-  private b eWr;
-  private bhl qfq = null;
-  
   public g()
   {
+    AppMethodBeat.i(45233);
     b.a locala = new b.a();
-    locala.ecH = new bhl();
-    locala.ecI = new bhm();
-    locala.ecG = 1211;
-    locala.uri = "/cgi-bin/mmpay-bin/qryusrfunddetail";
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.eWr = locala.Kt();
-    this.qfq = ((bhl)this.eWr.ecE.ecN);
-    this.qfq.time_stamp = ((int)System.currentTimeMillis());
-    this.dmK = locala.Kt();
+    locala.fsX = new bmm();
+    locala.fsY = new bmn();
+    locala.funcId = 2796;
+    locala.uri = "/cgi-bin/mmpay-bin/planindex";
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ab.i("MicroMsg.CgiLqtPlanIndex", "isfirstclick: %s");
+    AppMethodBeat.o(45233);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.a.a.g
  * JD-Core Version:    0.7.0.1
  */

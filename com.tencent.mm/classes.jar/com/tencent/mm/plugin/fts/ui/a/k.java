@@ -1,39 +1,46 @@
 package com.tencent.mm.plugin.fts.ui.a;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class k
   extends a
 {
-  public String kDu;
-  private k.b kDv = new k.b(this);
-  private k.a kDw = new k.a(this);
+  public String mZq;
+  private k.b mZr;
+  private k.a mZs;
   
   public k(int paramInt)
   {
     super(0, paramInt);
+    AppMethodBeat.i(62007);
+    this.mZr = new k.b(this);
+    this.mZs = new k.a(this);
+    AppMethodBeat.o(62007);
   }
   
-  public a.b BD()
+  public a.b Pr()
   {
-    return this.kDv;
+    return this.mZr;
   }
   
   public void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
-    this.kDu = bk.aM(m.rF(this.kxU), "");
-    y.i("MicroMsg.FTS.FTSHeaderDataItem", "fillingDataItem: header=%s", new Object[] { this.kDu });
+    AppMethodBeat.i(62008);
+    this.mZq = bo.bf(m.wA(this.lox), "");
+    ab.i("MicroMsg.FTS.FTSHeaderDataItem", "fillingDataItem: header=%s", new Object[] { this.mZq });
+    AppMethodBeat.o(62008);
   }
   
-  protected a.a afK()
+  public a.a bCW()
   {
-    return this.kDw;
+    return this.mZs;
   }
 }
 

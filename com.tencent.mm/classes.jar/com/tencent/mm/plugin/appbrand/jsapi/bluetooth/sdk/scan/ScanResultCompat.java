@@ -6,44 +6,56 @@ import android.bluetooth.le.ScanResult;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 
 public class ScanResultCompat
   implements Parcelable
 {
-  public static final Parcelable.Creator<ScanResultCompat> CREATOR = new ScanResultCompat.1();
-  private BluetoothDevice gof;
-  public f gog;
-  public int goh;
-  private long goi;
+  public static final Parcelable.Creator<ScanResultCompat> CREATOR;
+  private BluetoothDevice hIc;
+  public f hId;
+  public int hIe;
+  private long hIf;
+  
+  static
+  {
+    AppMethodBeat.i(94334);
+    CREATOR = new ScanResultCompat.1();
+    AppMethodBeat.o(94334);
+  }
   
   public ScanResultCompat(BluetoothDevice paramBluetoothDevice, f paramf, int paramInt, long paramLong)
   {
-    this.gof = paramBluetoothDevice;
-    this.gog = paramf;
-    this.goh = paramInt;
-    this.goi = paramLong;
+    this.hIc = paramBluetoothDevice;
+    this.hId = paramf;
+    this.hIe = paramInt;
+    this.hIf = paramLong;
   }
   
   @TargetApi(21)
   ScanResultCompat(ScanResult paramScanResult)
   {
-    this.gof = paramScanResult.getDevice();
-    this.gog = new f(paramScanResult.getScanRecord());
-    this.goh = paramScanResult.getRssi();
-    this.goi = System.currentTimeMillis();
+    AppMethodBeat.i(94328);
+    this.hIc = paramScanResult.getDevice();
+    this.hId = new f(paramScanResult.getScanRecord());
+    this.hIe = paramScanResult.getRssi();
+    this.hIf = System.currentTimeMillis();
+    AppMethodBeat.o(94328);
   }
   
   private ScanResultCompat(Parcel paramParcel)
   {
+    AppMethodBeat.i(94329);
     if (paramParcel.readInt() == 1) {
-      this.gof = ((BluetoothDevice)BluetoothDevice.CREATOR.createFromParcel(paramParcel));
+      this.hIc = ((BluetoothDevice)BluetoothDevice.CREATOR.createFromParcel(paramParcel));
     }
     if (paramParcel.readInt() == 1) {
-      this.gog = f.O(paramParcel.createByteArray());
+      this.hId = f.ai(paramParcel.createByteArray());
     }
-    this.goh = paramParcel.readInt();
-    this.goi = paramParcel.readLong();
+    this.hIe = paramParcel.readInt();
+    this.hIf = paramParcel.readLong();
+    AppMethodBeat.o(94329);
   }
   
   public int describeContents()
@@ -53,56 +65,73 @@ public class ScanResultCompat
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(94332);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(94332);
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (ScanResultCompat)paramObject;
-    } while ((d.equals(this.gof, paramObject.gof)) && (this.goh == paramObject.goh) && (d.equals(this.gog, paramObject.gog)) && (this.goi == paramObject.goi));
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(94332);
+      return false;
+    }
+    paramObject = (ScanResultCompat)paramObject;
+    if ((d.equals(this.hIc, paramObject.hIc)) && (this.hIe == paramObject.hIe) && (d.equals(this.hId, paramObject.hId)) && (this.hIf == paramObject.hIf))
+    {
+      AppMethodBeat.o(94332);
+      return true;
+    }
+    AppMethodBeat.o(94332);
     return false;
   }
   
   public final BluetoothDevice getDevice()
   {
-    if (this.gof != null) {
-      return this.gof;
+    if (this.hIc != null) {
+      return this.hIc;
     }
     return null;
   }
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { this.gof, Integer.valueOf(this.goh), this.gog, Long.valueOf(this.goi) });
+    AppMethodBeat.i(94331);
+    int i = Arrays.hashCode(new Object[] { this.hIc, Integer.valueOf(this.hIe), this.hId, Long.valueOf(this.hIf) });
+    AppMethodBeat.o(94331);
+    return i;
   }
   
   public String toString()
   {
-    return "ScanResult{mDevice=" + this.gof + ", mScanRecord=" + d.toString(this.gog) + ", mRssi=" + this.goh + ", mTimestampNanos=" + this.goi + '}';
+    AppMethodBeat.i(94333);
+    String str = "ScanResult{mDevice=" + this.hIc + ", mScanRecord=" + d.toString(this.hId) + ", mRssi=" + this.hIe + ", mTimestampNanos=" + this.hIf + '}';
+    AppMethodBeat.o(94333);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.gof != null)
+    AppMethodBeat.i(94330);
+    if (this.hIc != null)
     {
       paramParcel.writeInt(1);
-      this.gof.writeToParcel(paramParcel, paramInt);
-      if (this.gog == null) {
-        break label69;
+      this.hIc.writeToParcel(paramParcel, paramInt);
+      if (this.hId == null) {
+        break label79;
       }
       paramParcel.writeInt(1);
-      paramParcel.writeByteArray(this.gog.mBytes);
+      paramParcel.writeByteArray(this.hId.mBytes);
     }
     for (;;)
     {
-      paramParcel.writeInt(this.goh);
-      paramParcel.writeLong(this.goi);
+      paramParcel.writeInt(this.hIe);
+      paramParcel.writeLong(this.hIf);
+      AppMethodBeat.o(94330);
       return;
       paramParcel.writeInt(0);
       break;
-      label69:
+      label79:
       paramParcel.writeInt(0);
     }
   }

@@ -6,7 +6,8 @@ import android.view.View.OnTouchListener;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AdVideoPlayerLoadingBar$1
   implements View.OnTouchListener
@@ -15,46 +16,50 @@ final class AdVideoPlayerLoadingBar$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(117915);
     if (paramMotionEvent.getAction() == 0)
     {
-      y.i("MicroMsg.VideoPlayerLoadingBar", "ontouch down");
-      this.ofC.guU = false;
-      this.ofC.ofx = paramMotionEvent.getX();
-      if (this.ofC.ofn != null) {
-        this.ofC.ofn.akz();
+      ab.i("MicroMsg.VideoPlayerLoadingBar", "ontouch down");
+      this.qTQ.hPP = false;
+      this.qTQ.qTL = paramMotionEvent.getX();
+      if (this.qTQ.qTB != null) {
+        this.qTQ.qTB.aFf();
       }
     }
-    do
+    for (;;)
     {
+      AppMethodBeat.o(117915);
       return true;
+      int i;
       if (paramMotionEvent.getAction() == 2)
       {
         float f = paramMotionEvent.getX();
-        paramView = (FrameLayout.LayoutParams)this.ofC.ofq.getLayoutParams();
+        paramView = (FrameLayout.LayoutParams)this.qTQ.qTE.getLayoutParams();
         i = paramView.leftMargin;
-        int j = (int)(f - this.ofC.ofx);
-        paramView.leftMargin = AdVideoPlayerLoadingBar.a(this.ofC, j + i);
-        this.ofC.ofq.setLayoutParams(paramView);
-        i = this.ofC.getCurrentTimeByBarPoint();
-        if (this.ofC.ofu > 0)
+        int j = (int)(f - this.qTQ.qTL);
+        paramView.leftMargin = AdVideoPlayerLoadingBar.a(this.qTQ, j + i);
+        this.qTQ.qTE.setLayoutParams(paramView);
+        i = this.qTQ.getCurrentTimeByBarPoint();
+        if (this.qTQ.qTI > 0)
         {
-          paramView = (FrameLayout.LayoutParams)this.ofC.ofo.getLayoutParams();
-          paramView.width = ((int)(i * 1.0D / this.ofC.ofu * this.ofC.getBarLen()));
-          this.ofC.ofo.setLayoutParams(paramView);
+          paramView = (FrameLayout.LayoutParams)this.qTQ.qTC.getLayoutParams();
+          paramView.width = ((int)(i * 1.0D / this.qTQ.qTI * this.qTQ.getBarLen()));
+          this.qTQ.qTC.setLayoutParams(paramView);
         }
-        this.ofC.ofs.setText(AdVideoPlayerLoadingBar.lC(i / 60) + ":" + AdVideoPlayerLoadingBar.lC(i % 60));
-        this.ofC.guU = true;
-        return true;
+        this.qTQ.qTG.setText(AdVideoPlayerLoadingBar.ol(i / 60) + ":" + AdVideoPlayerLoadingBar.ol(i % 60));
+        this.qTQ.hPP = true;
       }
-    } while (!this.ofC.guU);
-    int i = this.ofC.getCurrentTimeByBarPoint();
-    if (this.ofC.ofn != null)
-    {
-      y.i("MicroMsg.VideoPlayerLoadingBar", "current time : " + i);
-      this.ofC.ofn.lE(i);
+      else if (this.qTQ.hPP)
+      {
+        i = this.qTQ.getCurrentTimeByBarPoint();
+        if (this.qTQ.qTB != null)
+        {
+          ab.i("MicroMsg.VideoPlayerLoadingBar", "current time : ".concat(String.valueOf(i)));
+          this.qTQ.qTB.on(i);
+        }
+        this.qTQ.hPP = false;
+      }
     }
-    this.ofC.guU = false;
-    return true;
   }
 }
 

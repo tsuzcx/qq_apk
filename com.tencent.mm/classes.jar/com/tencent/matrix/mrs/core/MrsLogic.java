@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.matrix.d.b;
+import com.tencent.matrix.g.c;
 import java.util.TimeZone;
 
 public final class MrsLogic
@@ -15,6 +15,24 @@ public final class MrsLogic
   private static PhoneInfo phoneInfo;
   
   static native void collectData(String paramString, byte[] paramArrayOfByte);
+  
+  static String getCryptKey(MatrixUploadDataSlice paramMatrixUploadDataSlice)
+  {
+    if (mrsCallback == null) {
+      return "";
+    }
+    return mrsCallback.getCryptKey(paramMatrixUploadDataSlice);
+  }
+  
+  static String getHost(MatrixUploadDataSlice paramMatrixUploadDataSlice)
+  {
+    if (mrsCallback == null)
+    {
+      c.w("MrsLogic", "callback is null", new Object[0]);
+      return "";
+    }
+    return mrsCallback.getHost(paramMatrixUploadDataSlice);
+  }
   
   static PhoneInfo getPhoneInfo()
   {
@@ -50,23 +68,36 @@ public final class MrsLogic
     }
     catch (Exception localException)
     {
-      b.printErrStackTrace("MrsLogic", localException, "jni callback exception", new Object[0]);
+      c.printErrStackTrace("MrsLogic", localException, "jni callback exception", new Object[0]);
       return null;
     }
     String str = mrsCallback.getPublicSharePath();
     return str;
   }
   
-  static void init(long paramLong, String paramString, boolean paramBoolean)
+  static String getUrl(MatrixUploadDataSlice paramMatrixUploadDataSlice)
+  {
+    if (mrsCallback == null)
+    {
+      c.w("MrsLogic", "callback is null", new Object[0]);
+      return "";
+    }
+    return mrsCallback.getUrl(paramMatrixUploadDataSlice);
+  }
+  
+  static void init(long paramLong1, String paramString, boolean paramBoolean, long paramLong2)
   {
     onCreate();
     onForeground(true);
     setTimeZone(TimeZone.getDefault().getRawOffset() / 3600000);
-    setClientVersion(paramLong);
+    setClientVersion(paramLong1);
     setRevision(paramString);
     setDebugFlag(paramBoolean);
     setPhoneInfo(getPhoneInfo());
+    setPublishType(paramLong2);
   }
+  
+  static native boolean isNeed2Report(String paramString);
   
   private static String limitRevision(String paramString)
   {
@@ -85,24 +116,6 @@ public final class MrsLogic
   
   static native void onForeground(boolean paramBoolean);
   
-  static void onMrsReportDataReady(byte[] paramArrayOfByte)
-  {
-    try
-    {
-      if (mrsCallback == null) {
-        throw new RuntimeException("onMrsReportDataReady, but mrsCallback is null");
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      b.printErrStackTrace("MrsLogic", paramArrayOfByte, "jni callback exception", new Object[0]);
-      return;
-    }
-    mrsCallback.onMrsReportDataReady(paramArrayOfByte);
-  }
-  
-  static native void onReportResp(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
-  
   static boolean onRequestGetMrsStrategy(byte[] paramArrayOfByte)
   {
     try
@@ -113,7 +126,7 @@ public final class MrsLogic
     }
     catch (Exception paramArrayOfByte)
     {
-      b.printErrStackTrace("MrsLogic", paramArrayOfByte, "jni callback exception", new Object[0]);
+      c.printErrStackTrace("MrsLogic", paramArrayOfByte, "jni callback exception", new Object[0]);
       return false;
     }
     boolean bool = mrsCallback.onRequestGetMrsStrategy(paramArrayOfByte);
@@ -130,7 +143,7 @@ public final class MrsLogic
     }
     catch (Exception paramString)
     {
-      b.printErrStackTrace("MrsLogic", paramString, "jni callback exception", new Object[0]);
+      c.printErrStackTrace("MrsLogic", paramString, "jni callback exception", new Object[0]);
       return;
     }
     Intent localIntent = new Intent();
@@ -161,11 +174,15 @@ public final class MrsLogic
   
   static native void setPhoneInfo(PhoneInfo paramPhoneInfo);
   
+  static native void setPublishType(long paramLong);
+  
   static native void setRevision(String paramString);
   
   public static native void setTimeZone(int paramInt);
   
   static native void setUin(long paramLong);
+  
+  public static native void uploadMatrixIssue(MatrixUploadIssue paramMatrixUploadIssue);
   
   public static class PhoneInfo
   {

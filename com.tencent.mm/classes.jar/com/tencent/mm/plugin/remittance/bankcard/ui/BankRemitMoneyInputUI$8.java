@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet_core.ui.m.a;
+import com.tencent.mm.plugin.wallet_core.ui.o.a;
 import com.tencent.mm.plugin.wallet_core.ui.view.a;
-import com.tencent.mm.plugin.wxpay.a.i;
 
 final class BankRemitMoneyInputUI$8
-  implements m.a
+  implements o.a
 {
   BankRemitMoneyInputUI$8(BankRemitMoneyInputUI paramBankRemitMoneyInputUI) {}
   
-  public final void aEP()
+  public final void dj(View paramView)
   {
-    a.a(this.nxh, this.nxh.getString(a.i.bank_remit_remittance_desc_text), BankRemitMoneyInputUI.h(this.nxh), this.nxh.getString(a.i.remittance_desc_max_words_count_tip), 20, new BankRemitMoneyInputUI.8.1(this), new BankRemitMoneyInputUI.8.2(this));
-    h.nFQ.f(14673, new Object[] { Integer.valueOf(4) });
+    AppMethodBeat.i(44640);
+    a.a(this.qij, this.qij.getString(2131297508), BankRemitMoneyInputUI.j(this.qij), this.qij.getString(2131302541), 20, new BankRemitMoneyInputUI.8.1(this), new BankRemitMoneyInputUI.8.2(this));
+    h.qsU.e(14673, new Object[] { Integer.valueOf(4) });
+    AppMethodBeat.o(44640);
   }
 }
 

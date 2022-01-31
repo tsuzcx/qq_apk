@@ -1,6 +1,7 @@
 package com.tencent.mm.pluginsdk.i;
 
 import android.media.MediaRecorder;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.a.a.a;
 
 final class b$1
@@ -10,9 +11,11 @@ final class b$1
   
   public final void run()
   {
-    if (this.rYn.mjf != null) {
-      this.rYn.mjf.setOrientationHint(this.jTi);
+    AppMethodBeat.i(27463);
+    if (this.vPe.oJm != null) {
+      this.vPe.oJm.setOrientationHint(this.mnE);
     }
+    AppMethodBeat.o(27463);
   }
 }
 

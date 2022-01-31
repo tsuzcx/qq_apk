@@ -18,154 +18,314 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 import java.util.List;
 
 public class ExdeviceStepChartView
   extends View
 {
-  Paint gaZ;
-  private int jGA = 2147483647;
-  private final float jGB = 10.0F;
-  private final float jGC = 2.5F;
-  private final int jGD = (int)j(1, 2.5F);
-  private final float jGE = 4.0F;
-  private final int jGF = (int)j(1, 4.0F);
-  private final float jGG = 1.8F;
-  private final int jGH = (int)j(1, 1.8F);
-  private final float jGI = 1.0F;
-  private final int jGJ = (int)j(1, 1.0F);
-  private final float jGK = 8.0F;
-  private final int jGL = (int)j(1, 8.0F);
-  private final float jGM = 22.0F;
-  private final int jGN = (int)j(1, 22.0F);
-  private final float jGO = 67.0F;
-  private final int jGP = (int)j(1, 67.0F);
-  private final float jGQ = 40.0F;
-  private final int jGR = (int)j(1, 40.0F);
-  private final float jGS = 22.0F;
-  private final int jGT = (int)j(1, 22.0F);
-  private final float jGU = 55.0F;
-  private final int jGV = (int)j(1, 55.0F);
-  private final float jGW = 35.0F;
-  private final int jGX = (int)j(1, 35.0F);
-  private final float jGY = 45.0F;
-  private final int jGZ = (int)j(1, 45.0F);
-  private final int jGo = -1;
-  private final int jGp = -1;
-  private final int jGq = getResources().getColor(R.e.exdevice_step_chart_background_line_color);
-  private final float jGr = 12.0F;
-  private final float jGs = 28.0F;
-  private final float jGt = 33.0F;
-  private final float jGu = 12.0F;
-  private final float jGv = 12.0F;
-  private final int jGw = getResources().getColor(R.e.exdevice_step_chart_date_text_color);
-  private final int jGx = -1;
-  private final int jGy = getResources().getColor(R.e.exdevice_step_chart_date_text_color);
-  private final int jGz = -1;
-  private int jHA = 0;
-  private final Typeface jHB = Typeface.create(Typeface.DEFAULT_BOLD, 0);
-  private final Typeface jHC = Typeface.create(Typeface.DEFAULT_BOLD, 1);
-  private int jHD = 0;
-  private int jHE = 0;
-  private int[] jHF = { 0, 0, 0, 0, 0, 0, 0 };
-  private final int jHG = 7;
-  private float[] jHH = new float[7];
-  private float[] jHI = new float[7];
-  private boolean[] jHJ = new boolean[7];
-  Path jHK;
-  Path jHL;
-  List<String> jHM;
-  private boolean jHN = false;
-  PathEffect jHO = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
-  private int jHP;
-  private boolean jHQ;
-  private final float jHa = 8.0F;
-  private final float jHb = (int)j(1, 8.0F);
-  private final float jHc = 8.0F;
-  private final float jHd = (int)j(1, 8.0F);
-  private final int jHe = 2;
-  private final int jHf = (int)j(1, 2.0F);
-  private final int jHg = 15;
-  private final int jHh = (int)j(1, 15.0F);
-  private final float jHi = 33.0F;
-  private final int jHj = (int)j(1, 33.0F);
-  private final float jHk = 8.0F;
-  private final int jHl = (int)j(1, 8.0F);
-  private final float jHm = 35.0F;
-  private final int jHn = (int)j(1, 35.0F);
-  private final float jHo = 10.0F;
-  private final int jHp = (int)j(1, 10.0F);
-  private final float jHq = 58.0F;
-  private final int jHr = (int)j(1, 58.0F);
-  private final int jHs = (int)j(1, 1.0F);
-  private final int jHt = 102;
-  private final int jHu = 102;
-  private final int jHv = 153;
-  private final int jHw = 102;
-  private final int jHx = 102;
-  private final int jHy = 102;
-  private final int jHz = 204;
-  private int jsq = 0;
-  private int jsr = 0;
+  private int jgD;
+  private int jgE;
+  private final int lPM;
+  private final int lPN;
+  private final int lPO;
+  private final float lPP;
+  private final float lPQ;
+  private final float lPR;
+  private final float lPS;
+  private final float lPT;
+  private final int lPU;
+  private final int lPV;
+  private final int lPW;
+  private final int lPX;
+  private int lPY;
+  private final float lPZ;
+  private final float lQA;
+  private final float lQB;
+  private final int lQC;
+  private final int lQD;
+  private final int lQE;
+  private final int lQF;
+  private final float lQG;
+  private final int lQH;
+  private final float lQI;
+  private final int lQJ;
+  private final float lQK;
+  private final int lQL;
+  private final float lQM;
+  private final int lQN;
+  private final float lQO;
+  private final int lQP;
+  private final int lQQ;
+  private final int lQR;
+  private final int lQS;
+  private final int lQT;
+  private final int lQU;
+  private final int lQV;
+  private final int lQW;
+  private final int lQX;
+  private int lQY;
+  private final Typeface lQZ;
+  private final float lQa;
+  private final int lQb;
+  private final float lQc;
+  private final int lQd;
+  private final float lQe;
+  private final int lQf;
+  private final float lQg;
+  private final int lQh;
+  private final float lQi;
+  private final int lQj;
+  private final float lQk;
+  private final int lQl;
+  private final float lQm;
+  private final int lQn;
+  private final float lQo;
+  private final int lQp;
+  private final float lQq;
+  private final int lQr;
+  private final float lQs;
+  private final int lQt;
+  private final float lQu;
+  private final int lQv;
+  private final float lQw;
+  private final int lQx;
+  private final float lQy;
+  private final float lQz;
+  private final Typeface lRa;
+  private int lRb;
+  private int lRc;
+  private int[] lRd;
+  private final int lRe;
+  private float[] lRf;
+  private float[] lRg;
+  private boolean[] lRh;
+  Path lRi;
+  Path lRj;
+  List<String> lRk;
+  private boolean lRl;
+  PathEffect lRm;
+  private int lRn;
+  private boolean lRo;
+  Paint paint;
   List<Point> points;
   private int startY;
   
   public ExdeviceStepChartView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    aMS();
+    AppMethodBeat.i(20223);
+    this.lPM = -1;
+    this.lPN = -1;
+    this.lPO = getResources().getColor(2131690000);
+    this.lPP = 12.0F;
+    this.lPQ = 28.0F;
+    this.lPR = 33.0F;
+    this.lPS = 12.0F;
+    this.lPT = 12.0F;
+    this.lPU = getResources().getColor(2131690001);
+    this.lPV = -1;
+    this.lPW = getResources().getColor(2131690001);
+    this.lPX = -1;
+    this.lPY = 2147483647;
+    this.jgD = 0;
+    this.jgE = 0;
+    this.lPZ = 10.0F;
+    this.lQa = 2.5F;
+    this.lQb = ((int)l(1, 2.5F));
+    this.lQc = 4.0F;
+    this.lQd = ((int)l(1, 4.0F));
+    this.lQe = 1.8F;
+    this.lQf = ((int)l(1, 1.8F));
+    this.lQg = 1.0F;
+    this.lQh = ((int)l(1, 1.0F));
+    this.lQi = 8.0F;
+    this.lQj = ((int)l(1, 8.0F));
+    this.lQk = 22.0F;
+    this.lQl = ((int)l(1, 22.0F));
+    this.lQm = 67.0F;
+    this.lQn = ((int)l(1, 67.0F));
+    this.lQo = 40.0F;
+    this.lQp = ((int)l(1, 40.0F));
+    this.lQq = 22.0F;
+    this.lQr = ((int)l(1, 22.0F));
+    this.lQs = 55.0F;
+    this.lQt = ((int)l(1, 55.0F));
+    this.lQu = 35.0F;
+    this.lQv = ((int)l(1, 35.0F));
+    this.lQw = 45.0F;
+    this.lQx = ((int)l(1, 45.0F));
+    this.lQy = 8.0F;
+    this.lQz = ((int)l(1, 8.0F));
+    this.lQA = 8.0F;
+    this.lQB = ((int)l(1, 8.0F));
+    this.lQC = 2;
+    this.lQD = ((int)l(1, 2.0F));
+    this.lQE = 15;
+    this.lQF = ((int)l(1, 15.0F));
+    this.lQG = 33.0F;
+    this.lQH = ((int)l(1, 33.0F));
+    this.lQI = 8.0F;
+    this.lQJ = ((int)l(1, 8.0F));
+    this.lQK = 35.0F;
+    this.lQL = ((int)l(1, 35.0F));
+    this.lQM = 10.0F;
+    this.lQN = ((int)l(1, 10.0F));
+    this.lQO = 58.0F;
+    this.lQP = ((int)l(1, 58.0F));
+    this.lQQ = ((int)l(1, 1.0F));
+    this.lQR = 102;
+    this.lQS = 102;
+    this.lQT = 153;
+    this.lQU = 102;
+    this.lQV = 102;
+    this.lQW = 102;
+    this.lQX = 204;
+    this.lQY = 0;
+    this.lQZ = Typeface.create(Typeface.DEFAULT_BOLD, 0);
+    this.lRa = Typeface.create(Typeface.DEFAULT_BOLD, 1);
+    this.lRb = 0;
+    this.lRc = 0;
+    this.lRd = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+    this.lRe = 7;
+    this.lRf = new float[7];
+    this.lRg = new float[7];
+    this.lRh = new boolean[7];
+    this.lRl = false;
+    this.lRm = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
+    brg();
+    AppMethodBeat.o(20223);
   }
   
   public ExdeviceStepChartView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    aMS();
+    AppMethodBeat.i(20224);
+    this.lPM = -1;
+    this.lPN = -1;
+    this.lPO = getResources().getColor(2131690000);
+    this.lPP = 12.0F;
+    this.lPQ = 28.0F;
+    this.lPR = 33.0F;
+    this.lPS = 12.0F;
+    this.lPT = 12.0F;
+    this.lPU = getResources().getColor(2131690001);
+    this.lPV = -1;
+    this.lPW = getResources().getColor(2131690001);
+    this.lPX = -1;
+    this.lPY = 2147483647;
+    this.jgD = 0;
+    this.jgE = 0;
+    this.lPZ = 10.0F;
+    this.lQa = 2.5F;
+    this.lQb = ((int)l(1, 2.5F));
+    this.lQc = 4.0F;
+    this.lQd = ((int)l(1, 4.0F));
+    this.lQe = 1.8F;
+    this.lQf = ((int)l(1, 1.8F));
+    this.lQg = 1.0F;
+    this.lQh = ((int)l(1, 1.0F));
+    this.lQi = 8.0F;
+    this.lQj = ((int)l(1, 8.0F));
+    this.lQk = 22.0F;
+    this.lQl = ((int)l(1, 22.0F));
+    this.lQm = 67.0F;
+    this.lQn = ((int)l(1, 67.0F));
+    this.lQo = 40.0F;
+    this.lQp = ((int)l(1, 40.0F));
+    this.lQq = 22.0F;
+    this.lQr = ((int)l(1, 22.0F));
+    this.lQs = 55.0F;
+    this.lQt = ((int)l(1, 55.0F));
+    this.lQu = 35.0F;
+    this.lQv = ((int)l(1, 35.0F));
+    this.lQw = 45.0F;
+    this.lQx = ((int)l(1, 45.0F));
+    this.lQy = 8.0F;
+    this.lQz = ((int)l(1, 8.0F));
+    this.lQA = 8.0F;
+    this.lQB = ((int)l(1, 8.0F));
+    this.lQC = 2;
+    this.lQD = ((int)l(1, 2.0F));
+    this.lQE = 15;
+    this.lQF = ((int)l(1, 15.0F));
+    this.lQG = 33.0F;
+    this.lQH = ((int)l(1, 33.0F));
+    this.lQI = 8.0F;
+    this.lQJ = ((int)l(1, 8.0F));
+    this.lQK = 35.0F;
+    this.lQL = ((int)l(1, 35.0F));
+    this.lQM = 10.0F;
+    this.lQN = ((int)l(1, 10.0F));
+    this.lQO = 58.0F;
+    this.lQP = ((int)l(1, 58.0F));
+    this.lQQ = ((int)l(1, 1.0F));
+    this.lQR = 102;
+    this.lQS = 102;
+    this.lQT = 153;
+    this.lQU = 102;
+    this.lQV = 102;
+    this.lQW = 102;
+    this.lQX = 204;
+    this.lQY = 0;
+    this.lQZ = Typeface.create(Typeface.DEFAULT_BOLD, 0);
+    this.lRa = Typeface.create(Typeface.DEFAULT_BOLD, 1);
+    this.lRb = 0;
+    this.lRc = 0;
+    this.lRd = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+    this.lRe = 7;
+    this.lRf = new float[7];
+    this.lRg = new float[7];
+    this.lRh = new boolean[7];
+    this.lRl = false;
+    this.lRm = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
+    brg();
+    AppMethodBeat.o(20224);
   }
   
-  private void aMS()
+  private void a(Canvas paramCanvas, List<String> paramList)
   {
-    this.gaZ = new Paint();
-    this.jHK = new Path();
-    this.jHL = new Path();
-    this.points = new LinkedList();
-    this.jHM = new LinkedList();
-    aMT();
-  }
-  
-  private void aMT()
-  {
-    int i = 0;
-    if (i < 7)
+    AppMethodBeat.i(20227);
+    if ((paramList != null) && (paramList.size() == 7))
     {
-      if (i == 6) {
-        this.jHJ[i] = true;
-      }
-      for (;;)
+      this.paint.reset();
+      this.paint.setAntiAlias(true);
+      this.paint.setStrokeWidth(0.0F);
+      this.paint.setTextSize(l(2, 12.0F));
+      this.paint.setAlpha(153);
+      int i = 0;
+      if (i < paramList.size())
       {
-        i += 1;
-        break;
-        this.jHJ[i] = false;
+        if (i == 0)
+        {
+          this.paint.setTextAlign(Paint.Align.LEFT);
+          label94:
+          if (this.lRh[i] == 0) {
+            break label176;
+          }
+          this.paint.setColor(-1);
+        }
+        for (;;)
+        {
+          paramCanvas.drawText((String)paramList.get(i), ((Point)this.points.get(i)).x, this.jgE - this.lQF, this.paint);
+          i += 1;
+          break;
+          this.paint.setTextAlign(Paint.Align.CENTER);
+          break label94;
+          label176:
+          this.paint.setColor(this.lPU);
+        }
       }
     }
+    AppMethodBeat.o(20227);
   }
   
-  private void aMU()
+  private int aI(float paramFloat)
   {
-    this.gaZ.reset();
-    this.gaZ.setAntiAlias(true);
-    this.gaZ.setStrokeWidth(this.jGH);
-    this.gaZ.setStyle(Paint.Style.STROKE);
-    this.gaZ.setColor(-1);
-  }
-  
-  private int aq(float paramFloat)
-  {
-    this.jGA = 2147483647;
+    AppMethodBeat.i(20232);
+    this.lPY = 2147483647;
     int i;
     if (this.points.size() > 0) {
       i = 0;
@@ -175,150 +335,156 @@ public class ExdeviceStepChartView
       if (i < this.points.size())
       {
         if (i != 0) {
-          break label86;
+          break label100;
         }
-        if ((paramFloat >= ((Point)this.points.get(i)).x + this.jHD / 2) || (paramFloat <= 0.0F)) {
-          break label250;
+        if ((paramFloat >= ((Point)this.points.get(i)).x + this.lRb / 2) || (paramFloat <= 0.0F)) {
+          break label264;
         }
-        this.jGA = i;
+        this.lPY = i;
         invalidate();
       }
       for (;;)
       {
-        return this.jGA;
-        label86:
+        i = this.lPY;
+        AppMethodBeat.o(20232);
+        return i;
+        label100:
         if ((i > 0) && (i < this.points.size() - 1))
         {
-          if ((paramFloat >= ((Point)this.points.get(i)).x + this.jHD / 2) || (paramFloat <= ((Point)this.points.get(i)).x - this.jHD / 2)) {
+          if ((paramFloat >= ((Point)this.points.get(i)).x + this.lRb / 2) || (paramFloat <= ((Point)this.points.get(i)).x - this.lRb / 2)) {
             break;
           }
-          this.jGA = i;
+          this.lPY = i;
           invalidate();
         }
         else if (i == this.points.size() - 1)
         {
-          if ((paramFloat >= this.jsq) || (paramFloat <= ((Point)this.points.get(i)).x - this.jHD / 2)) {
+          if ((paramFloat >= this.jgD) || (paramFloat <= ((Point)this.points.get(i)).x - this.lRb / 2)) {
             break;
           }
-          this.jGA = i;
+          this.lPY = i;
           invalidate();
         }
         else
         {
-          this.jGA = 2147483647;
+          this.lPY = 2147483647;
         }
       }
-      label250:
+      label264:
       i += 1;
     }
   }
   
-  private void b(Canvas paramCanvas, List<String> paramList)
+  private void brg()
   {
-    if ((paramList != null) && (paramList.size() == 7))
+    AppMethodBeat.i(20228);
+    this.paint = new Paint();
+    this.lRi = new Path();
+    this.lRj = new Path();
+    this.points = new LinkedList();
+    this.lRk = new LinkedList();
+    brh();
+    AppMethodBeat.o(20228);
+  }
+  
+  private void brh()
+  {
+    int i = 0;
+    if (i < 7)
     {
-      this.gaZ.reset();
-      this.gaZ.setAntiAlias(true);
-      this.gaZ.setStrokeWidth(0.0F);
-      this.gaZ.setTextSize(j(2, 12.0F));
-      this.gaZ.setAlpha(153);
-      int i = 0;
-      if (i < paramList.size())
+      if (i == 6) {
+        this.lRh[i] = true;
+      }
+      for (;;)
       {
-        if (i == 0)
-        {
-          this.gaZ.setTextAlign(Paint.Align.LEFT);
-          label88:
-          if (this.jHJ[i] == 0) {
-            break label170;
-          }
-          this.gaZ.setColor(-1);
-        }
-        for (;;)
-        {
-          paramCanvas.drawText((String)paramList.get(i), ((Point)this.points.get(i)).x, this.jsr - this.jHh, this.gaZ);
-          i += 1;
-          break;
-          this.gaZ.setTextAlign(Paint.Align.CENTER);
-          break label88;
-          label170:
-          this.gaZ.setColor(this.jGw);
-        }
+        i += 1;
+        break;
+        this.lRh[i] = false;
       }
     }
+  }
+  
+  private void bri()
+  {
+    AppMethodBeat.i(20229);
+    this.paint.reset();
+    this.paint.setAntiAlias(true);
+    this.paint.setStrokeWidth(this.lQf);
+    this.paint.setStyle(Paint.Style.STROKE);
+    this.paint.setColor(-1);
+    AppMethodBeat.o(20229);
   }
   
   private void c(Canvas paramCanvas, boolean paramBoolean)
   {
     int i = 0;
+    AppMethodBeat.i(20225);
     if (paramBoolean)
     {
-      this.jHL.reset();
-      this.jHL.moveTo(((Point)this.points.get(0)).x, ((Point)this.points.get(0)).y);
+      this.lRj.reset();
+      this.lRj.moveTo(((Point)this.points.get(0)).x, ((Point)this.points.get(0)).y);
       i = 0;
       while (i < this.points.size())
       {
-        this.jHL.lineTo(((Point)this.points.get(i)).x, ((Point)this.points.get(i)).y);
+        this.lRj.lineTo(((Point)this.points.get(i)).x, ((Point)this.points.get(i)).y);
         i += 1;
       }
-      this.jHL.lineTo(this.jHH[(this.jHH.length - 1)], this.jsr - this.jGX - 1);
-      this.jHL.lineTo(this.jGL, this.jsr - this.jGX - 1);
-      this.jHL.lineTo(this.jGL, this.jHI[0]);
-      paramCanvas.drawPath(this.jHL, this.gaZ);
+      this.lRj.lineTo(this.lRf[(this.lRf.length - 1)], this.jgE - this.lQv - 1);
+      this.lRj.lineTo(this.lQj, this.jgE - this.lQv - 1);
+      this.lRj.lineTo(this.lQj, this.lRg[0]);
+      paramCanvas.drawPath(this.lRj, this.paint);
+      AppMethodBeat.o(20225);
       return;
     }
-    this.jHL.reset();
-    this.jHL.moveTo(((Point)this.points.get(0)).x, ((Point)this.points.get(0)).y);
-    label251:
+    this.lRj.reset();
+    this.lRj.moveTo(((Point)this.points.get(0)).x, ((Point)this.points.get(0)).y);
     if (i < this.points.size())
     {
-      if (i <= 0) {
-        break label493;
+      if (i > 0) {
+        if (((Point)this.points.get(i - 1)).y == this.jgE - this.lQp)
+        {
+          this.paint.reset();
+          DashPathEffect localDashPathEffect = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
+          this.paint.setPathEffect(localDashPathEffect);
+          this.paint.setAntiAlias(true);
+          this.paint.setStrokeWidth(this.lQf);
+          this.paint.setStyle(Paint.Style.STROKE);
+          this.paint.setColor(-1);
+        }
       }
-      if (((Point)this.points.get(i - 1)).y != this.jsr - this.jGR) {
-        break label486;
+      for (;;)
+      {
+        this.lRj.lineTo(((Point)this.points.get(i)).x, ((Point)this.points.get(i)).y);
+        paramCanvas.drawPath(this.lRj, this.paint);
+        this.lRj.reset();
+        this.lRj.moveTo(((Point)this.points.get(i)).x, ((Point)this.points.get(i)).y);
+        i += 1;
+        break;
+        bri();
+        continue;
+        bri();
       }
-      this.gaZ.reset();
-      DashPathEffect localDashPathEffect = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
-      this.gaZ.setPathEffect(localDashPathEffect);
-      this.gaZ.setAntiAlias(true);
-      this.gaZ.setStrokeWidth(this.jGH);
-      this.gaZ.setStyle(Paint.Style.STROKE);
-      this.gaZ.setColor(-1);
     }
-    for (;;)
-    {
-      this.jHL.lineTo(((Point)this.points.get(i)).x, ((Point)this.points.get(i)).y);
-      paramCanvas.drawPath(this.jHL, this.gaZ);
-      this.jHL.reset();
-      this.jHL.moveTo(((Point)this.points.get(i)).x, ((Point)this.points.get(i)).y);
-      i += 1;
-      break label251;
-      break;
-      label486:
-      aMU();
-      continue;
-      label493:
-      aMU();
-    }
+    AppMethodBeat.o(20225);
   }
   
   private void getData()
   {
     int n = 0;
+    AppMethodBeat.i(20231);
     this.points.clear();
-    View localView = findViewById(R.h.exdevice_rank_step_chart);
-    this.jsq = localView.getWidth();
-    this.jsr = localView.getHeight();
-    this.jHD = ((this.jsq - this.jGL - this.jGN) / 6);
-    this.jHE = ((this.jsr - this.jGP - this.jGR) / 2);
+    View localView = findViewById(2131823811);
+    this.jgD = localView.getWidth();
+    this.jgE = localView.getHeight();
+    this.lRb = ((this.jgD - this.lQj - this.lQl) / 6);
+    this.lRc = ((this.jgE - this.lQn - this.lQp) / 2);
     int i = 0;
-    while (i < this.jHH.length)
+    while (i < this.lRf.length)
     {
-      this.jHH[i] = (this.jGL + this.jHD * i);
+      this.lRf[i] = (this.lQj + this.lRb * i);
       i += 1;
     }
-    i = this.jHF.length;
+    i = this.lRd.length;
     int k = i;
     if (i > 7) {
       k = 7;
@@ -327,15 +493,15 @@ public class ExdeviceStepChartView
     int m;
     for (int j = 0; i < k; j = m)
     {
-      if (this.jHF[i] > 100000) {
-        this.jHF[i] = 100000;
+      if (this.lRd[i] > 100000) {
+        this.lRd[i] = 100000;
       }
-      if (this.jHF[i] < 0) {
-        this.jHF[i] = 0;
+      if (this.lRd[i] < 0) {
+        this.lRd[i] = 0;
       }
       m = j;
-      if (this.jHF[i] > j) {
-        m = this.jHF[i];
+      if (this.lRd[i] > j) {
+        m = this.lRd[i];
       }
       i += 1;
     }
@@ -344,19 +510,19 @@ public class ExdeviceStepChartView
     }
     for (;;)
     {
-      this.jHA = ((this.jsr - this.jGP - this.jGR) * 10000 / i);
-      this.jHA = (this.jsr - this.jGR - this.jHA);
+      this.lQY = ((this.jgE - this.lQn - this.lQp) * 10000 / i);
+      this.lQY = (this.jgE - this.lQp - this.lQY);
       j = n;
       for (;;)
       {
         if (j < k)
         {
-          this.jHI[j] = (this.jsr - this.jGR - this.jHF[j] / i * (this.jsr - this.jGP - this.jGR));
-          this.points.add(new Point((int)this.jHH[j], (int)this.jHI[j]));
+          this.lRg[j] = (this.jgE - this.lQp - this.lRd[j] / i * (this.jgE - this.lQn - this.lQp));
+          this.points.add(new Point((int)this.lRf[j], (int)this.lRg[j]));
           j += 1;
           continue;
           if ((j <= 15000) || (j > 100000)) {
-            break label405;
+            break label417;
           }
           i = j;
           if (j / 5000.0D <= j / 5000.0F) {
@@ -366,86 +532,92 @@ public class ExdeviceStepChartView
           break;
         }
       }
+      AppMethodBeat.o(20231);
       return;
-      label405:
+      label417:
       i = 0;
     }
   }
   
-  private float j(int paramInt, float paramFloat)
+  private float l(int paramInt, float paramFloat)
   {
+    AppMethodBeat.i(20226);
     Object localObject = getContext();
     if (localObject == null) {}
-    for (localObject = Resources.getSystem();; localObject = ((Context)localObject).getResources()) {
-      return TypedValue.applyDimension(paramInt, paramFloat, ((Resources)localObject).getDisplayMetrics());
+    for (localObject = Resources.getSystem();; localObject = ((Context)localObject).getResources())
+    {
+      paramFloat = TypedValue.applyDimension(paramInt, paramFloat, ((Resources)localObject).getDisplayMetrics());
+      AppMethodBeat.o(20226);
+      return paramFloat;
     }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(20230);
     getData();
     super.onDraw(paramCanvas);
     int i;
     Object localObject;
     float f;
-    if (!this.jHN)
+    if (!this.lRl)
     {
-      this.gaZ.reset();
-      this.gaZ.setAntiAlias(true);
-      this.gaZ.setColor(-1);
-      this.gaZ.setStrokeWidth(0.0F);
-      this.gaZ.setStyle(Paint.Style.FILL);
+      this.paint.reset();
+      this.paint.setAntiAlias(true);
+      this.paint.setColor(-1);
+      this.paint.setStrokeWidth(0.0F);
+      this.paint.setStyle(Paint.Style.FILL);
       i = 0;
       if (i < this.points.size())
       {
         localObject = (Point)this.points.get(i);
         if (i == this.points.size() - 1) {
-          paramCanvas.drawCircle(((Point)localObject).x, ((Point)localObject).y, this.jGF, this.gaZ);
+          paramCanvas.drawCircle(((Point)localObject).x, ((Point)localObject).y, this.lQd, this.paint);
         }
         for (;;)
         {
           i += 1;
           break;
-          paramCanvas.drawCircle(((Point)localObject).x, ((Point)localObject).y, this.jGD, this.gaZ);
+          paramCanvas.drawCircle(((Point)localObject).x, ((Point)localObject).y, this.lQb, this.paint);
         }
       }
-      if (this.jGA != 2147483647)
+      if (this.lPY != 2147483647)
       {
-        i = this.jGA;
-        this.gaZ.reset();
-        this.gaZ.setColor(this.jGw);
-        this.gaZ.setAntiAlias(true);
-        this.gaZ.setStrokeWidth(0.0F);
-        this.gaZ.setTextSize(j(2, 12.0F));
-        this.gaZ.setTextAlign(Paint.Align.CENTER);
+        i = this.lPY;
+        this.paint.reset();
+        this.paint.setColor(this.lPU);
+        this.paint.setAntiAlias(true);
+        this.paint.setStrokeWidth(0.0F);
+        this.paint.setTextSize(l(2, 12.0F));
+        this.paint.setTextAlign(Paint.Align.CENTER);
         if ((i >= 0) && (i <= 6))
         {
           if (i == 0) {
-            this.gaZ.setTextAlign(Paint.Align.LEFT);
+            this.paint.setTextAlign(Paint.Align.LEFT);
           }
           if (i == 6) {
-            this.gaZ.setTextAlign(Paint.Align.RIGHT);
+            this.paint.setTextAlign(Paint.Align.RIGHT);
           }
-          if (!this.jHQ)
+          if (!this.lRo)
           {
-            this.jHP = (((Point)this.points.get(i)).y - this.jHr);
-            this.startY = this.jHP;
-            this.jHQ = true;
+            this.lRn = (((Point)this.points.get(i)).y - this.lQP);
+            this.startY = this.lRn;
+            this.lRo = true;
           }
-          if (this.jHQ)
+          if (this.lRo)
           {
             f = (float)(this.startY / 8.0D);
-            if (this.jHP > 0) {
-              this.gaZ.setAlpha((this.startY - this.jHP) * 255 / this.startY);
+            if (this.lRn > 0) {
+              this.paint.setAlpha((this.startY - this.lRn) * 255 / this.startY);
             }
-            paramCanvas.drawText(this.jHF[i], ((Point)this.points.get(i)).x, this.jHP + this.jHr, this.gaZ);
-            if (this.jHP <= 0) {
-              break label1241;
+            paramCanvas.drawText(this.lRd[i], ((Point)this.points.get(i)).x, this.lRn + this.lQP, this.paint);
+            if (this.lRn <= 0) {
+              break label1253;
             }
-            if (this.jHP / this.startY > 1.0F / f) {
-              break label1214;
+            if (this.lRn / this.startY > 1.0F / f) {
+              break label1226;
             }
-            this.jHP -= 1;
+            this.lRn -= 1;
             invalidate();
           }
         }
@@ -453,108 +625,113 @@ public class ExdeviceStepChartView
     }
     for (;;)
     {
-      i = this.jGA;
+      i = this.lPY;
       if ((i >= 0) && (i <= 6)) {
-        this.jHJ[i] = true;
+        this.lRh[i] = true;
       }
-      this.gaZ.reset();
-      this.jHK.reset();
+      this.paint.reset();
+      this.lRi.reset();
       localObject = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
-      this.gaZ.setPathEffect((PathEffect)localObject);
-      this.gaZ.setColor(this.jGq);
-      this.gaZ.setStrokeWidth(this.jGJ);
-      this.gaZ.setAlpha(102);
-      this.gaZ.setStyle(Paint.Style.STROKE);
-      if ((this.jHA != 0) && (!this.jHN))
+      this.paint.setPathEffect((PathEffect)localObject);
+      this.paint.setColor(this.lPO);
+      this.paint.setStrokeWidth(this.lQh);
+      this.paint.setAlpha(102);
+      this.paint.setStyle(Paint.Style.STROKE);
+      if ((this.lQY != 0) && (!this.lRl))
       {
-        this.jHK.moveTo(this.jGL, this.jHA);
-        this.jHK.lineTo(this.jsq - this.jGT, this.jHA);
-        paramCanvas.drawPath(this.jHK, this.gaZ);
+        this.lRi.moveTo(this.lQj, this.lQY);
+        this.lRi.lineTo(this.jgD - this.lQr, this.lQY);
+        paramCanvas.drawPath(this.lRi, this.paint);
       }
-      this.gaZ.reset();
-      this.jHK.reset();
-      this.gaZ.setColor(this.jGq);
-      this.gaZ.setStrokeWidth(this.jGJ);
-      this.gaZ.setStyle(Paint.Style.STROKE);
-      this.gaZ.setAlpha(102);
-      this.jHK.reset();
-      this.jHK.moveTo(this.jHb, this.jsr - this.jGX);
-      this.jHK.lineTo(this.jsq - this.jHd, this.jsr - this.jGX);
-      this.jHK.moveTo(this.jHb, this.jGZ);
-      this.jHK.lineTo(this.jsq - this.jHd, this.jGZ);
-      paramCanvas.drawPath(this.jHK, this.gaZ);
-      if (!this.jHN)
+      this.paint.reset();
+      this.lRi.reset();
+      this.paint.setColor(this.lPO);
+      this.paint.setStrokeWidth(this.lQh);
+      this.paint.setStyle(Paint.Style.STROKE);
+      this.paint.setAlpha(102);
+      this.lRi.reset();
+      this.lRi.moveTo(this.lQz, this.jgE - this.lQv);
+      this.lRi.lineTo(this.jgD - this.lQB, this.jgE - this.lQv);
+      this.lRi.moveTo(this.lQz, this.lQx);
+      this.lRi.lineTo(this.jgD - this.lQB, this.lQx);
+      paramCanvas.drawPath(this.lRi, this.paint);
+      if (!this.lRl)
       {
-        this.gaZ.reset();
-        this.gaZ.setColor(this.jGy);
-        this.gaZ.setAntiAlias(true);
-        this.gaZ.setAlpha(102);
-        this.gaZ.setStrokeWidth(0.0F);
-        this.gaZ.setTextSize(j(2, 12.0F));
-        this.gaZ.setTextAlign(Paint.Align.RIGHT);
-        paramCanvas.drawText(getResources().getString(R.l.exdevice_profile_step_chart_1w_tips), this.jsq - this.jHf, (float)(this.jHA + this.gaZ.getTextSize() * 0.34D), this.gaZ);
+        this.paint.reset();
+        this.paint.setColor(this.lPW);
+        this.paint.setAntiAlias(true);
+        this.paint.setAlpha(102);
+        this.paint.setStrokeWidth(0.0F);
+        this.paint.setTextSize(l(2, 12.0F));
+        this.paint.setTextAlign(Paint.Align.RIGHT);
+        paramCanvas.drawText(getResources().getString(2131299451), this.jgD - this.lQD, (float)(this.lQY + this.paint.getTextSize() * 0.34D), this.paint);
       }
-      this.gaZ.reset();
-      this.gaZ.setColor(-1);
-      this.gaZ.setAntiAlias(true);
-      this.gaZ.setStrokeWidth(0.0F);
-      this.gaZ.setTypeface(this.jHB);
-      this.gaZ.setTextSize(j(2, 28.0F));
-      paramCanvas.drawText(getResources().getString(R.l.exdevice_profile_step_chart_step_tips), this.jHl, this.jHj, this.gaZ);
-      this.gaZ.setTextAlign(Paint.Align.RIGHT);
-      this.gaZ.setTextSize(j(2, 33.0F));
-      paramCanvas.drawText(this.jHF[(this.jHF.length - 1)], this.jsq - this.jHp, this.jHn, this.gaZ);
+      this.paint.reset();
+      this.paint.setColor(-1);
+      this.paint.setAntiAlias(true);
+      this.paint.setStrokeWidth(0.0F);
+      this.paint.setTypeface(this.lQZ);
+      this.paint.setTextSize(l(2, 28.0F));
+      paramCanvas.drawText(getResources().getString(2131299453), this.lQJ, this.lQH, this.paint);
+      this.paint.setTextAlign(Paint.Align.RIGHT);
+      this.paint.setTextSize(l(2, 33.0F));
+      paramCanvas.drawText(this.lRd[(this.lRd.length - 1)], this.jgD - this.lQN, this.lQL, this.paint);
       if (this.points.size() > 2)
       {
-        this.gaZ.reset();
-        this.gaZ.setAntiAlias(true);
-        this.gaZ.setStrokeWidth(0.0F);
-        this.gaZ.setAlpha(102);
-        this.gaZ.setStyle(Paint.Style.FILL_AND_STROKE);
-        localObject = new LinearGradient(0.0F, 0.0F, 0.0F, this.jsr - this.jGX, -1, 16777215, Shader.TileMode.REPEAT);
-        this.gaZ.setShader((Shader)localObject);
-        this.gaZ.setColor(-1);
+        this.paint.reset();
+        this.paint.setAntiAlias(true);
+        this.paint.setStrokeWidth(0.0F);
+        this.paint.setAlpha(102);
+        this.paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        localObject = new LinearGradient(0.0F, 0.0F, 0.0F, this.jgE - this.lQv, -1, 16777215, Shader.TileMode.REPEAT);
+        this.paint.setShader((Shader)localObject);
+        this.paint.setColor(-1);
         c(paramCanvas, true);
-        aMU();
-        if (!this.jHN) {
+        bri();
+        if (!this.lRl) {
           c(paramCanvas, false);
         }
       }
-      b(paramCanvas, this.jHM);
+      a(paramCanvas, this.lRk);
+      AppMethodBeat.o(20230);
       return;
-      label1214:
-      this.jHP = ((int)(this.jHP - this.jHP / this.startY * f));
+      label1226:
+      this.lRn = ((int)(this.lRn - this.lRn / this.startY * f));
       break;
-      label1241:
-      this.jHQ = false;
+      label1253:
+      this.lRo = false;
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(20233);
     float f = paramMotionEvent.getX();
     paramMotionEvent.getY();
-    y.i("MicroMsg.exdevice.ExdeviceStepChartView", "mOnTouchLinePsition:" + this.jGA);
+    ab.i("MicroMsg.exdevice.ExdeviceStepChartView", "mOnTouchLinePsition:" + this.lPY);
     switch (paramMotionEvent.getAction())
     {
     default: 
-      y.d("MicroMsg.exdevice.ExdeviceStepChartView", "default");
+      ab.d("MicroMsg.exdevice.ExdeviceStepChartView", "default");
+      AppMethodBeat.o(20233);
       return false;
     case 0: 
-      y.d("MicroMsg.exdevice.ExdeviceStepChartView", "ACTION_DOWN");
+      ab.d("MicroMsg.exdevice.ExdeviceStepChartView", "ACTION_DOWN");
+      AppMethodBeat.o(20233);
       return true;
     }
-    y.d("MicroMsg.exdevice.ExdeviceStepChartView", "ACTION_UP");
-    this.jGA = aq(f);
-    aMT();
-    this.jHQ = false;
+    ab.d("MicroMsg.exdevice.ExdeviceStepChartView", "ACTION_UP");
+    this.lPY = aI(f);
+    brh();
+    this.lRo = false;
     invalidate();
+    AppMethodBeat.o(20233);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceStepChartView
  * JD-Core Version:    0.7.0.1
  */

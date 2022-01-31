@@ -1,5 +1,6 @@
 package oicq.wlogin_sdk.request;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import oicq.wlogin_sdk.a.a;
 import oicq.wlogin_sdk.a.f;
 import oicq.wlogin_sdk.a.g;
@@ -9,45 +10,48 @@ public final class h
 {
   public h(i parami)
   {
-    this.xqq = 2064;
-    this.xqr = 3;
-    this.xqt = parami;
+    this.CMD = 2064;
+    this.CME = 3;
+    this.CMG = parami;
   }
   
-  public final int z(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final int J(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(96437);
     f localf = new f();
     g localg = new g();
-    int i = super.Z(paramArrayOfByte, paramInt1 + 2);
-    super.cUC();
+    paramInt2 = super.aa(paramArrayOfByte, paramInt1 + 2);
+    super.erb();
     int j = paramInt1 + 5;
-    switch (i)
+    switch (paramInt2)
     {
     case 3: 
     case 4: 
     default: 
-      y(paramArrayOfByte, j, this.xqf - j - 1);
-      return i;
-    case 2: 
-      paramInt2 = localf.B(paramArrayOfByte, j, this.xqf - j);
+      I(paramArrayOfByte, j, this.CMs - j - 1);
       paramInt1 = paramInt2;
-      if (paramInt2 >= 0)
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(96437);
+      return paramInt1;
+      int i = localf.M(paramArrayOfByte, j, this.CMs - j);
+      paramInt1 = i;
+      if (i >= 0)
       {
-        this.xqt.xqy = localf;
-        paramInt2 = localg.B(paramArrayOfByte, j, this.xqf - j);
-        paramInt1 = paramInt2;
-        if (paramInt2 >= 0)
+        this.CMG.CML = localf;
+        i = localg.M(paramArrayOfByte, j, this.CMs - j);
+        paramInt1 = i;
+        if (i >= 0)
         {
-          this.xqt.xqz = localg;
-          return i;
+          this.CMG.CMM = localg;
+          paramInt1 = paramInt2;
+          continue;
+          super.I(paramArrayOfByte, j, this.CMs - j - 1);
+          paramInt1 = paramInt2;
         }
       }
-      break;
-    case 5: 
-      super.y(paramArrayOfByte, j, this.xqf - j - 1);
-      return i;
     }
-    return paramInt1;
   }
 }
 

@@ -8,60 +8,65 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.i;
-import com.tencent.mm.plugin.sns.model.ap;
-import com.tencent.mm.plugin.sns.model.ap.b;
+import com.tencent.mm.plugin.sns.model.aq;
+import com.tencent.mm.plugin.sns.model.aq.b;
 import com.tencent.mm.plugin.sns.storage.h;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.ui.d.b;
-import com.tencent.mm.plugin.sns.ui.widget.c;
+import com.tencent.mm.plugin.sns.ui.widget.SnsAvatarImageView;
+import com.tencent.mm.plugin.sns.ui.widget.d;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.d.k;
 import com.tencent.mm.pluginsdk.ui.d.o;
-import com.tencent.mm.protocal.c.btd;
+import com.tencent.mm.protocal.protobuf.cds;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.widget.b.a;
+import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.widget.c.a;
 import java.util.LinkedList;
 
 final class SnsCommentDetailUI$b
   extends BaseAdapter
 {
   Activity activity;
-  String bJQ;
-  public LinkedList<btd> oXs;
-  LinkedList<btd> oXt;
+  String crk;
+  public LinkedList<cds> rPQ;
+  LinkedList<cds> rPR;
   
-  public SnsCommentDetailUI$b(LinkedList<btd> paramLinkedList1, LinkedList<btd> paramLinkedList2, Activity paramActivity, String paramString)
+  public SnsCommentDetailUI$b(LinkedList<cds> paramLinkedList1, LinkedList<cds> paramLinkedList2, Activity paramActivity, String paramString)
   {
-    this.oXs = paramLinkedList2;
-    this.oXt = paramActivity;
+    this.rPQ = paramLinkedList2;
+    this.rPR = paramActivity;
     this.activity = paramString;
     Object localObject;
-    this.bJQ = localObject;
+    this.crk = localObject;
   }
   
   public final int getCount()
   {
-    int j = 0;
     int i = 0;
-    if (this.oXt.size() > 0) {
-      if (this.oXs == null) {
-        i += 1;
+    AppMethodBeat.i(38831);
+    if (this.rPR.size() > 0)
+    {
+      if (this.rPQ == null) {}
+      for (;;)
+      {
+        AppMethodBeat.o(38831);
+        return i + 1;
+        i = this.rPQ.size();
       }
     }
-    do
+    if (this.rPQ == null)
     {
-      return i;
-      i = this.oXs.size();
-      break;
-      i = j;
-    } while (this.oXs == null);
-    return this.oXs.size();
+      AppMethodBeat.o(38831);
+      return 0;
+    }
+    i = this.rPQ.size();
+    AppMethodBeat.o(38831);
+    return i;
   }
   
   public final Object getItem(int paramInt)
@@ -76,169 +81,174 @@ final class SnsCommentDetailUI$b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(38832);
     int i = paramInt;
-    Object localObject2;
-    if (this.oXt.size() > 0)
+    if (this.rPR.size() > 0)
     {
       if (paramInt == 0)
       {
-        localObject2 = SnsCommentDetailUI.H(this.oWW);
-        return localObject2;
+        paramView = SnsCommentDetailUI.H(this.rPu);
+        AppMethodBeat.o(38832);
+        return paramView;
       }
       i = paramInt - 1;
     }
-    btd localbtd = (btd)this.oXs.get(i);
+    cds localcds = (cds)this.rPQ.get(i);
+    View localView;
     if ((paramView == null) || (!(paramView.getTag() instanceof SnsCommentDetailUI.b.a)))
     {
-      paramView = com.tencent.mm.ui.y.gt(this.activity).inflate(i.g.sns_comment_detail_item, null);
-      paramView.setOnTouchListener(SnsCommentDetailUI.I(this.oWW));
+      localView = w.hM(this.activity).inflate(2130970818, null);
+      localView.setOnTouchListener(SnsCommentDetailUI.I(this.rPu));
       paramViewGroup = new SnsCommentDetailUI.b.a(this);
-      paramViewGroup.doU = ((ImageView)paramView.findViewById(i.f.album_comment_avatar_iv));
-      paramViewGroup.doU.setOnClickListener(SnsCommentDetailUI.J(this.oWW));
-      paramViewGroup.mYa = ((TextView)paramView.findViewById(i.f.album_comment_nick_tv));
-      paramViewGroup.mYa.setOnTouchListener(new aa());
-      paramViewGroup.mYa.setOnClickListener(new SnsCommentDetailUI.b.2(this));
-      paramViewGroup.igx = ((TextView)paramView.findViewById(i.f.album_comment_time_tv));
-      paramViewGroup.fuN = ((TextView)paramView.findViewById(i.f.album_comment_content_tv));
-      paramViewGroup.fuN.setOnTouchListener(new aa());
-      paramViewGroup.oXv = ((SnsTranslateResultView)paramView.findViewById(i.f.sns_translate_result_view));
-      paramViewGroup.oXv.setVisibility(8);
-      if (SnsCommentDetailUI.C(this.oWW) != 10) {
-        break label1240;
+      paramViewGroup.egq = ((ImageView)localView.findViewById(2131827959));
+      paramViewGroup.egq.setOnClickListener(SnsCommentDetailUI.J(this.rPu));
+      paramViewGroup.pAN = ((TextView)localView.findViewById(2131827961));
+      paramViewGroup.pAN.setOnTouchListener(new aa());
+      paramViewGroup.pAN.setOnClickListener(new SnsCommentDetailUI.b.2(this));
+      paramViewGroup.timeTv = ((TextView)localView.findViewById(2131827960));
+      paramViewGroup.gMp = ((TextView)localView.findViewById(2131827962));
+      paramViewGroup.gMp.setOnTouchListener(new aa());
+      paramViewGroup.rPT = ((SnsTranslateResultView)localView.findViewById(2131827943));
+      paramViewGroup.rPT.setVisibility(8);
+      if (SnsCommentDetailUI.C(this.rPu) != 10) {
+        break label1282;
       }
-      paramView.findViewById(i.f.comment_view_parent).setBackgroundResource(i.e.friendactivity_comment_detail_list_golden);
+      localView.findViewById(2131827956).setBackgroundResource(2130838907);
     }
-    label287:
-    label449:
+    label325:
     label1105:
-    label1240:
+    label1234:
     for (;;)
     {
-      paramViewGroup.oXw = localbtd;
-      paramViewGroup.userName = localbtd.sxM;
-      Object localObject1;
-      label357:
+      paramViewGroup.rPU = localcds;
+      paramViewGroup.userName = localcds.Username;
+      ((SnsAvatarImageView)paramViewGroup.egq).dw(localcds.Username, 3);
+      ((SnsAvatarImageView)paramViewGroup.egq).setWeakContext(this.activity);
+      label482:
       long l;
-      if (SnsCommentDetailUI.C(this.oWW) == 10)
+      if (SnsCommentDetailUI.C(this.rPu) == 10)
       {
         paramInt = 3;
-        SnsCommentDetailUI.C(this.oWW);
-        g.DQ();
-        localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abj(paramViewGroup.userName);
-        if ((i != 0) || (!this.oXt.isEmpty())) {
-          break label1073;
+        SnsCommentDetailUI.C(this.rPu);
+        g.RM();
+        paramView = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().aru(paramViewGroup.userName);
+        if ((i != 0) || (!this.rPR.isEmpty())) {
+          break label1116;
         }
-        if (SnsCommentDetailUI.C(this.oWW) != 10) {
-          break label1063;
-        }
-        paramView.setBackgroundResource(i.e.friendactivity_comment_detail_list_golden_arror);
-        if (i != 0) {
+        if (SnsCommentDetailUI.C(this.rPu) != 10) {
           break label1105;
         }
-        paramView.findViewById(i.f.sns_comment_left_icon).setVisibility(0);
-        paramView.findViewById(i.f.sns_comment_line).setVisibility(8);
-        if (SnsCommentDetailUI.C(this.oWW) == 10) {
-          ((ImageView)paramView.findViewById(i.f.sns_comment_left_icon)).setImageResource(i.i.friendactivity_writeicon_golden);
+        localView.setBackgroundResource(2130838908);
+        if (i != 0) {
+          break label1150;
         }
-        a.b.p(paramViewGroup.doU, localbtd.sxM);
-        paramViewGroup.doU.setTag(localbtd.sxM);
-        if (localObject1 == null) {
-          break label1130;
+        localView.findViewById(2131827958).setVisibility(0);
+        localView.findViewById(2131827957).setVisibility(8);
+        if (SnsCommentDetailUI.C(this.rPu) == 10) {
+          ((ImageView)localView.findViewById(2131827958)).setImageResource(2131231370);
         }
-        localObject1 = ((ad)localObject1).Bq();
-        Object localObject3 = h.OA(SnsCommentDetailUI.o(this.oWW));
-        localObject2 = paramView;
-        if (localObject3 == null) {
-          break;
+        a.b.u(paramViewGroup.egq, localcds.Username);
+        paramViewGroup.egq.setTag(localcds.Username);
+        if (paramView == null) {
+          break label1175;
         }
-        paramViewGroup.fuN.setText(localbtd.kVs + " ");
-        localObject2 = c.a(this.oWW, localbtd, SnsCommentDetailUI.K(this.oWW), ((n)localObject3).field_type, ((n)localObject3).field_userName, 2);
-        paramViewGroup.mYa.setText((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
-        com.tencent.mm.pluginsdk.ui.d.j.h(paramViewGroup.mYa, paramInt);
-        localObject3 = new k(paramViewGroup.mYa.getText());
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.SnsCommentDetailUI", "test %s,%s", new Object[] { localbtd.sxM, localObject1 });
-        ((k)localObject3).a(new o(localbtd.sxM, SnsCommentDetailUI.K(this.oWW), paramInt), (CharSequence)localObject1, 0);
-        paramViewGroup.mYa.setText((CharSequence)localObject3, TextView.BufferType.SPANNABLE);
-        paramViewGroup.igx.setText(ay.l(this.activity, localbtd.mPL * 1000L));
-        paramViewGroup.fuN.setText((CharSequence)localObject2, TextView.BufferType.SPANNABLE);
-        paramViewGroup.fuN.setVisibility(0);
-        SnsCommentDetailUI.L(this.oWW).c(paramView, SnsCommentDetailUI.B(this.oWW).poM, SnsCommentDetailUI.B(this.oWW).poz);
-        SnsCommentDetailUI.L(this.oWW).c(paramViewGroup.fuN, SnsCommentDetailUI.B(this.oWW).poM, SnsCommentDetailUI.B(this.oWW).poz);
-        if (localbtd.tJu == 0) {
-          break label1158;
-        }
-        l = localbtd.tJu;
-        localObject2 = ap.eK(SnsCommentDetailUI.o(this.oWW), String.valueOf(l));
-        if ((ap.cr((String)localObject2, 4)) && (paramViewGroup.oXv != null))
+        paramView = paramView.Of();
+        Object localObject = h.abu(SnsCommentDetailUI.o(this.rPu));
+        if (localObject != null)
         {
-          localObject2 = ap.NJ((String)localObject2);
-          if (localObject2 == null) {
-            break label1191;
+          paramViewGroup.gMp.setText(localcds.ntu + " ");
+          localObject = d.a(this.rPu, localcds, SnsCommentDetailUI.K(this.rPu), ((n)localObject).field_type, ((n)localObject).field_userName, 2);
+          paramViewGroup.pAN.setText(paramView, TextView.BufferType.SPANNABLE);
+          com.tencent.mm.pluginsdk.ui.d.j.k(paramViewGroup.pAN, paramInt);
+          k localk = new k(paramViewGroup.pAN.getText());
+          ab.i("MicroMsg.SnsCommentDetailUI", "test %s,%s", new Object[] { localcds.Username, paramView });
+          localk.a(new o(localcds.Username, SnsCommentDetailUI.K(this.rPu), paramInt), paramView, 0);
+          paramViewGroup.pAN.setText(localk, TextView.BufferType.SPANNABLE);
+          paramViewGroup.timeTv.setText(ax.m(this.activity, localcds.CreateTime * 1000L));
+          paramViewGroup.gMp.setText((CharSequence)localObject, TextView.BufferType.SPANNABLE);
+          paramViewGroup.gMp.setVisibility(0);
+          SnsCommentDetailUI.L(this.rPu).c(localView, SnsCommentDetailUI.B(this.rPu).sjE, SnsCommentDetailUI.B(this.rPu).sjr);
+          SnsCommentDetailUI.L(this.rPu).c(paramViewGroup.gMp, SnsCommentDetailUI.B(this.rPu).sjE, SnsCommentDetailUI.B(this.rPu).sjr);
+          if (localcds.xNY == 0) {
+            break label1201;
           }
-          paramViewGroup.oXv.setVisibility(0);
-          if (!((ap.b)localObject2).dYj) {
-            break label1180;
+          l = localcds.xNY;
+          localObject = aq.gm(SnsCommentDetailUI.o(this.rPu), String.valueOf(l));
+          if ((aq.dn((String)localObject, 4)) && (paramViewGroup.rPT != null))
+          {
+            localObject = aq.aaD((String)localObject);
+            if (localObject == null) {
+              break label1234;
+            }
+            paramViewGroup.rPT.setVisibility(0);
+            if (!((aq.b)localObject).fon) {
+              break label1223;
+            }
+            if (((aq.b)localObject).frX) {
+              break label1211;
+            }
+            paramViewGroup.rPT.a((aq.b)localObject, 2, ((aq.b)localObject).result, ((aq.b)localObject).fwM, ((aq.b)localObject).riA);
           }
-          if (((ap.b)localObject2).ebE) {
-            break label1168;
+          label891:
+          localView.setClickable(true);
+          ab.d("MicroMsg.SnsCommentDetailUI", "position " + localcds.Username + " self " + SnsCommentDetailUI.M(this.rPu) + " commentid " + localcds.xNY + " snsid " + SnsCommentDetailUI.o(this.rPu));
+          if (!SnsCommentDetailUI.M(this.rPu).equals(localcds.Username)) {
+            break label1246;
           }
-          paramViewGroup.oXv.a((ap.b)localObject2, 2, ((ap.b)localObject2).result, ((ap.b)localObject2).egI, ((ap.b)localObject2).otI);
-        }
-        label864:
-        paramView.setClickable(true);
-        com.tencent.mm.sdk.platformtools.y.d("MicroMsg.SnsCommentDetailUI", "position " + localbtd.sxM + " self " + SnsCommentDetailUI.M(this.oWW) + " commentid " + localbtd.tJu + " snsid " + SnsCommentDetailUI.o(this.oWW));
-        if (!SnsCommentDetailUI.M(this.oWW).equals(localbtd.sxM)) {
-          break label1203;
         }
       }
-      for (paramViewGroup.aQK = localbtd;; paramViewGroup.aQK = new Object[] { Integer.valueOf(i), localbtd, localbtd.sxM, localObject1 })
+      label1116:
+      label1246:
+      for (paramViewGroup.info = localcds;; paramViewGroup.info = new Object[] { Integer.valueOf(i), localcds, localcds.Username, paramView })
       {
-        localObject1 = new l(SnsCommentDetailUI.o(this.oWW), localbtd, localbtd.sxM, localbtd.kVs, paramViewGroup.fuN, 2);
-        ((l)localObject1).tag = paramViewGroup;
-        paramView.setTag(localObject1);
-        paramViewGroup.fuN.setTag(localObject1);
-        paramView.setOnClickListener(SnsCommentDetailUI.N(this.oWW));
-        paramViewGroup.fuN.setOnClickListener(SnsCommentDetailUI.N(this.oWW));
-        return paramView;
+        paramView = new l(SnsCommentDetailUI.k(this.rPu), SnsCommentDetailUI.o(this.rPu), localcds, localcds.Username, localcds.ntu, paramViewGroup.gMp, 2);
+        paramView.tag = paramViewGroup;
+        localView.setTag(paramView);
+        paramViewGroup.gMp.setTag(paramView);
+        localView.setOnClickListener(SnsCommentDetailUI.N(this.rPu));
+        paramViewGroup.gMp.setOnClickListener(SnsCommentDetailUI.N(this.rPu));
+        AppMethodBeat.o(38832);
+        return localView;
         paramViewGroup = (SnsCommentDetailUI.b.a)paramView.getTag();
+        localView = paramView;
         break;
         paramInt = 2;
-        break label287;
-        paramView.setBackgroundResource(i.e.sns_comment_detail_headitem_bg);
-        break label357;
-        if (SnsCommentDetailUI.C(this.oWW) == 10)
+        break label325;
+        localView.setBackgroundResource(2130840385);
+        break label394;
+        if (SnsCommentDetailUI.C(this.rPu) == 10)
         {
-          paramView.setBackgroundResource(i.e.sns_comment_detail_item_bg_golden);
-          break label357;
+          localView.setBackgroundResource(2130840390);
+          break label394;
         }
-        paramView.setBackgroundResource(i.e.sns_comment_detail_item_bg);
-        break label357;
-        paramView.findViewById(i.f.sns_comment_left_icon).setVisibility(4);
-        paramView.findViewById(i.f.sns_comment_line).setVisibility(0);
-        break label413;
-        label1130:
-        if (localbtd.tqh != null)
-        {
-          localObject1 = localbtd.tqh;
-          break label449;
-        }
-        localObject1 = localbtd.sxM;
+        localView.setBackgroundResource(2130840389);
+        break label394;
+        label1150:
+        localView.findViewById(2131827958).setVisibility(4);
+        localView.findViewById(2131827957).setVisibility(0);
         break label449;
-        l = localbtd.tJx;
-        break label770;
-        paramViewGroup.oXv.setVisibility(8);
-        break label864;
-        paramViewGroup.oXv.yV(2);
-        break label864;
-        paramViewGroup.oXv.setVisibility(8);
-        break label864;
+        if (localcds.Nickname != null)
+        {
+          paramView = localcds.Nickname;
+          break label482;
+        }
+        paramView = localcds.Username;
+        break label482;
+        l = localcds.xOa;
+        break label797;
+        paramViewGroup.rPT.setVisibility(8);
+        break label891;
+        paramViewGroup.rPT.Fc(2);
+        break label891;
+        paramViewGroup.rPT.setVisibility(8);
+        break label891;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI.b
  * JD-Core Version:    0.7.0.1
  */

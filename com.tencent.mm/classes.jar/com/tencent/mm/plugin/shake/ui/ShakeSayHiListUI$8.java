@@ -4,22 +4,26 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.tools.l;
 
 final class ShakeSayHiListUI$8
   implements AdapterView.OnItemLongClickListener
 {
-  ShakeSayHiListUI$8(ShakeSayHiListUI paramShakeSayHiListUI, j paramj) {}
+  ShakeSayHiListUI$8(ShakeSayHiListUI paramShakeSayHiListUI, l paraml) {}
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt < ShakeSayHiListUI.d(this.odv).getHeaderViewsCount())
+    AppMethodBeat.i(24881);
+    if (paramInt < ShakeSayHiListUI.d(this.qRC).getHeaderViewsCount())
     {
-      y.w("MicroMsg.SayHiListUI", "on header view long click, ignore");
+      ab.w("MicroMsg.SayHiListUI", "on header view long click, ignore");
+      AppMethodBeat.o(24881);
       return true;
     }
-    this.hZt.a(paramView, paramInt, paramLong, this.odv, ShakeSayHiListUI.f(this.odv));
+    this.jSq.a(paramView, paramInt, paramLong, this.qRC, ShakeSayHiListUI.f(this.qRC));
+    AppMethodBeat.o(24881);
     return true;
   }
 }

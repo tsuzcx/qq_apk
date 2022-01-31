@@ -2,36 +2,47 @@ package com.tencent.c.a.a;
 
 import android.content.Context;
 import android.telephony.TelephonyManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
-  static b.a bte;
-  Integer btf = null;
-  String btg = null;
+  static b.a bUq;
+  Integer bUr;
+  String bUs;
   
   public b(Context paramContext)
   {
+    AppMethodBeat.i(125746);
+    this.bUr = null;
+    this.bUs = null;
     try
     {
-      am(paramContext);
+      aK(paramContext);
       TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
       if (localTelephonyManager != null) {
-        this.btf = Integer.valueOf(localTelephonyManager.getNetworkType());
+        this.bUr = Integer.valueOf(localTelephonyManager.getNetworkType());
       }
-      this.btg = s.aw(paramContext);
+      this.bUs = s.aU(paramContext);
+      AppMethodBeat.o(125746);
       return;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      s.zV();
+      AppMethodBeat.o(125746);
+    }
   }
   
-  private static b.a am(Context paramContext)
+  private static b.a aK(Context paramContext)
   {
     try
     {
-      if (bte == null) {
-        bte = new b.a(paramContext.getApplicationContext(), (byte)0);
+      AppMethodBeat.i(125745);
+      if (bUq == null) {
+        bUq = new b.a(paramContext.getApplicationContext(), (byte)0);
       }
-      paramContext = bte;
+      paramContext = bUq;
+      AppMethodBeat.o(125745);
       return paramContext;
     }
     finally {}
@@ -39,7 +50,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.c.a.a.b
  * JD-Core Version:    0.7.0.1
  */

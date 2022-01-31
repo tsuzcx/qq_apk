@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.TextView;
 import com.tencent.mm.plugin.websearch.ui.WebSearchVideoPlayerSeekBar;
 
@@ -14,12 +15,20 @@ public abstract class g
   
   public abstract void hide();
   
+  public void init()
+  {
+    super.init();
+    setBackgroundColor(Color.parseColor("#40000000"));
+  }
+  
   public void setCurrentPlaySecond(int paramInt)
   {
     this.mPosition = paramInt;
-    this.ofs.setText(lC(paramInt / 60) + ":" + lC(paramInt % 60));
-    BI(BH(paramInt));
+    this.qTG.setText(ol(paramInt / 60) + ":" + ol(paramInt % 60));
+    Jy(Jx(paramInt));
   }
+  
+  public abstract void show();
 }
 
 

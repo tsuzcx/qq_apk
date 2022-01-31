@@ -2,17 +2,16 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
 import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.q;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
 import com.tencent.mm.modelsfs.FileOp;
-import com.tencent.mm.plugin.emoji.e.f;
+import com.tencent.mm.plugin.emoji.e.h;
 import com.tencent.mm.plugin.emoji.model.EmojiLogic;
 import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.at;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.d;
@@ -20,68 +19,73 @@ import java.io.File;
 import org.json.JSONObject;
 
 public class b
-  extends ax<com.tencent.mm.plugin.webview.luggage.e>
+  extends bi<com.tencent.mm.plugin.webview.luggage.e>
 {
-  private static void a(Context paramContext, String paramString1, String paramString2, aw.a parama)
+  private static void a(Context paramContext, String paramString1, String paramString2, bh.a parama)
   {
-    au.Hx();
-    String str = EmojiLogic.J(com.tencent.mm.model.c.FL(), "", paramString1);
-    EmojiInfo localEmojiInfo2 = i.getEmojiStorageMgr().uBb.acC(paramString1);
+    AppMethodBeat.i(6275);
+    String str = EmojiLogic.M(com.tencent.mm.plugin.emoji.h.b.YP(), "", paramString1);
+    EmojiInfo localEmojiInfo2 = i.getEmojiStorageMgr().yNn.asP(paramString1);
     EmojiInfo localEmojiInfo1 = localEmojiInfo2;
     if (localEmojiInfo2 == null)
     {
       localEmojiInfo1 = localEmojiInfo2;
-      if (com.tencent.mm.a.e.bK(str)) {
-        if (!o.Za(str)) {
-          break label177;
+      if (com.tencent.mm.a.e.cN(str)) {
+        if (!com.tencent.mm.sdk.platformtools.r.aoY(str)) {
+          break label185;
         }
       }
     }
-    label177:
-    for (int i = EmojiInfo.uDb;; i = EmojiInfo.uDa)
+    label185:
+    for (int i = EmojiInfo.yPo;; i = EmojiInfo.yPn)
     {
       localEmojiInfo1 = new EmojiInfo();
       localEmojiInfo1.field_md5 = paramString1;
-      localEmojiInfo1.field_catalog = EmojiInfo.uCT;
+      localEmojiInfo1.field_catalog = EmojiInfo.yPg;
       localEmojiInfo1.field_type = i;
-      localEmojiInfo1.field_size = com.tencent.mm.a.e.bJ(str);
+      localEmojiInfo1.field_size = com.tencent.mm.a.e.cM(str);
       localEmojiInfo1.field_temp = 1;
       localEmojiInfo1.field_thumbUrl = paramString2;
-      i.getEmojiStorageMgr().uBb.o(localEmojiInfo1);
+      i.getEmojiStorageMgr().yNn.H(localEmojiInfo1);
       if (localEmojiInfo1 == null) {
-        break label193;
+        break label207;
       }
-      boolean bool = i.aHP().a(paramContext, localEmojiInfo1, 18, q.Gj());
-      y.i("MicroMsg.JsApiAddToEmotion", "doAddAction %b", new Object[] { Boolean.valueOf(bool) });
+      boolean bool = i.blp().a(paramContext, localEmojiInfo1, 18, com.tencent.mm.model.r.Zn());
+      ab.i("MicroMsg.JsApiAddToEmotion", "doAddAction %b", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
         break;
       }
-      parama.e(null, null);
+      parama.c(null, null);
+      AppMethodBeat.o(6275);
       return;
     }
-    parama.e("fail", null);
+    parama.c("fail", null);
+    AppMethodBeat.o(6275);
     return;
-    label193:
-    parama.e("fail", null);
+    label207:
+    parama.c("fail", null);
+    AppMethodBeat.o(6275);
   }
   
-  public final void a(Context paramContext, String paramString, aw.a parama)
+  public final void a(Context paramContext, String paramString, bh.a parama)
   {
-    y.i("MicroMsg.JsApiAddToEmotion", "invoke");
-    paramString = com.tencent.mm.plugin.webview.luggage.d.c.tJ(paramString);
+    AppMethodBeat.i(6274);
+    ab.i("MicroMsg.JsApiAddToEmotion", "invoke");
+    paramString = com.tencent.mm.plugin.webview.luggage.c.b.BJ(paramString);
     if (paramString == null)
     {
-      y.e("MicroMsg.JsApiAddToEmotion", "bundle is null");
-      parama.e("null_data", null);
+      ab.e("MicroMsg.JsApiAddToEmotion", "bundle is null");
+      parama.c("null_data", null);
+      AppMethodBeat.o(6274);
       return;
     }
     Object localObject1 = paramString.optString("base64DataString");
     String str = paramString.optString("thumbUrl");
     paramString = paramString.optString("url");
     Object localObject2;
-    if (!bk.bl((String)localObject1))
+    if (!bo.isNullOrNil((String)localObject1))
     {
-      y.i("MicroMsg.JsApiAddToEmotion", "doAddToEmoticon use base64DataString");
+      ab.i("MicroMsg.JsApiAddToEmotion", "doAddToEmoticon use base64DataString");
       int i = ((String)localObject1).indexOf(";base64,");
       paramString = "";
       if (i != -1) {
@@ -90,60 +94,64 @@ public class b
       try
       {
         paramString = Base64.decode(paramString, 0);
-        if (bk.bE(paramString))
+        if (bo.ce(paramString))
         {
-          parama.e("fail", null);
+          parama.c("fail", null);
+          AppMethodBeat.o(6274);
           return;
         }
       }
       catch (Exception paramContext)
       {
-        y.e("MicroMsg.JsApiAddToEmotion", "doAddToEmoticon error:" + paramContext.getMessage());
-        parama.e("fail", null);
+        ab.e("MicroMsg.JsApiAddToEmotion", "doAddToEmoticon error:" + paramContext.getMessage());
+        parama.c("fail", null);
+        AppMethodBeat.o(6274);
         return;
       }
-      localObject1 = g.o(paramString);
-      au.Hx();
-      localObject2 = EmojiLogic.J(com.tencent.mm.model.c.FL(), "", (String)localObject1);
-      if ((!com.tencent.mm.a.e.bK((String)localObject2)) || (!g.bQ((String)localObject2).equalsIgnoreCase((String)localObject1))) {
+      localObject1 = g.w(paramString);
+      localObject2 = EmojiLogic.M(com.tencent.mm.plugin.emoji.h.b.YP(), "", (String)localObject1);
+      if ((!com.tencent.mm.a.e.cN((String)localObject2)) || (!g.getMD5((String)localObject2).equalsIgnoreCase((String)localObject1))) {
         com.tencent.mm.a.e.b((String)localObject2, paramString, paramString.length);
       }
       a(paramContext, (String)localObject1, str, parama);
+      AppMethodBeat.o(6274);
       return;
     }
-    if (!bk.bl(paramString))
+    if (!bo.isNullOrNil(paramString))
     {
-      y.i("MicroMsg.JsApiAddToEmotion", "doAddToEmoticon use url:%s", new Object[] { paramString });
-      localObject1 = new File(paramContext.getCacheDir(), g.o(paramString.getBytes()));
+      ab.i("MicroMsg.JsApiAddToEmotion", "doAddToEmoticon use url:%s", new Object[] { paramString });
+      localObject1 = new File(paramContext.getCacheDir(), g.w(paramString.getBytes()));
       if (((File)localObject1).exists())
       {
-        paramString = g.m((File)localObject1);
-        au.Hx();
-        localObject2 = EmojiLogic.J(com.tencent.mm.model.c.FL(), "", paramString);
-        if (!FileOp.bK((String)localObject2)) {
-          FileOp.r(((File)localObject1).getAbsolutePath(), (String)localObject2);
+        paramString = g.r((File)localObject1);
+        localObject2 = EmojiLogic.M(com.tencent.mm.plugin.emoji.h.b.YP(), "", paramString);
+        if (!FileOp.cN((String)localObject2)) {
+          FileOp.C(((File)localObject1).getAbsolutePath(), (String)localObject2);
         }
         a(paramContext, paramString, str, parama);
+        AppMethodBeat.o(6274);
         return;
       }
       localObject2 = new c.a();
-      ((c.a)localObject2).erf = true;
-      ((c.a)localObject2).erh = ((File)localObject1).getAbsolutePath();
-      ((c.a)localObject2).erJ = new Object[] { ((File)localObject1).getAbsolutePath() };
-      localObject1 = ((c.a)localObject2).OV();
-      i.aHr().a(paramString, null, (com.tencent.mm.as.a.a.c)localObject1, new b.1(this, paramString, paramContext, str, parama));
+      ((c.a)localObject2).eNM = true;
+      ((c.a)localObject2).eNO = ((File)localObject1).getAbsolutePath();
+      ((c.a)localObject2).eOi = new Object[] { ((File)localObject1).getAbsolutePath() };
+      localObject1 = ((c.a)localObject2).ahY();
+      i.bld().a(paramString, null, (c)localObject1, new b.1(this, paramString, paramContext, str, parama));
+      AppMethodBeat.o(6274);
       return;
     }
-    y.e("MicroMsg.JsApiAddToEmotion", "doAddToEmoticon base64DataString is null and url is null");
-    parama.e("base64DataString_and_url_is_null", null);
+    ab.e("MicroMsg.JsApiAddToEmotion", "doAddToEmoticon base64DataString is null and url is null");
+    parama.c("base64DataString_and_url_is_null", null);
+    AppMethodBeat.o(6274);
   }
   
-  public final int aGj()
+  public final void b(com.tencent.luggage.d.a<com.tencent.mm.plugin.webview.luggage.e>.a parama) {}
+  
+  public final int bjL()
   {
     return 2;
   }
-  
-  public final void b(com.tencent.luggage.e.a<com.tencent.mm.plugin.webview.luggage.e>.a parama) {}
   
   public final String name()
   {

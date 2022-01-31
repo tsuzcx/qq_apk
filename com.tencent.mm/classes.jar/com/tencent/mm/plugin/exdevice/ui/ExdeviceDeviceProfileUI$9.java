@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class ExdeviceDeviceProfileUI$9
@@ -12,7 +12,9 @@ final class ExdeviceDeviceProfileUI$9
   
   public final void onClick(View paramView)
   {
-    h.a(this.jDf, this.jDf.getString(R.l.exdevice_edit_remark_name_title), ExdeviceDeviceProfileUI.d(this.jDf), "", 50, ExdeviceDeviceProfileUI.e(this.jDf));
+    AppMethodBeat.i(19946);
+    h.a(this.lMD, this.lMD.getString(2131299410), ExdeviceDeviceProfileUI.d(this.lMD), "", 50, ExdeviceDeviceProfileUI.e(this.lMD));
+    AppMethodBeat.o(19946);
   }
 }
 

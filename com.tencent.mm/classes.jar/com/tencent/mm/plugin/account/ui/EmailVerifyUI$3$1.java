@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.z;
 import com.tencent.mm.ui.base.h;
@@ -14,12 +15,14 @@ final class EmailVerifyUI$3$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new z(EmailVerifyUI.a(this.flA.flz), EmailVerifyUI.b(this.flA.flz));
-    g.Dk().a(paramDialogInterface, 0);
-    EmailVerifyUI localEmailVerifyUI1 = this.flA.flz;
-    EmailVerifyUI localEmailVerifyUI2 = this.flA.flz;
-    this.flA.flz.getString(q.j.app_tip);
-    EmailVerifyUI.a(localEmailVerifyUI1, h.b(localEmailVerifyUI2, this.flA.flz.getString(q.j.regby_email_verify_code_sending), true, new EmailVerifyUI.3.1.1(this, paramDialogInterface)));
+    AppMethodBeat.i(124760);
+    paramDialogInterface = new z(EmailVerifyUI.a(this.gCR.gCQ), EmailVerifyUI.b(this.gCR.gCQ));
+    g.Rc().a(paramDialogInterface, 0);
+    EmailVerifyUI localEmailVerifyUI1 = this.gCR.gCQ;
+    EmailVerifyUI localEmailVerifyUI2 = this.gCR.gCQ;
+    this.gCR.gCQ.getString(2131297087);
+    EmailVerifyUI.a(localEmailVerifyUI1, h.b(localEmailVerifyUI2, this.gCR.gCQ.getString(2131302403), true, new EmailVerifyUI.3.1.1(this, paramDialogInterface)));
+    AppMethodBeat.o(124760);
   }
 }
 

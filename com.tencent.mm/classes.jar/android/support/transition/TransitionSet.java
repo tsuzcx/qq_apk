@@ -4,7 +4,7 @@ import android.animation.TimeInterpolator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
-import android.support.v4.content.a.c;
+import android.support.v4.content.a.g;
 import android.util.AndroidRuntimeException;
 import android.util.AttributeSet;
 import android.view.View;
@@ -16,130 +16,130 @@ public class TransitionSet
   extends Transition
 {
   private boolean mStarted = false;
-  ArrayList<Transition> sE = new ArrayList();
-  private boolean sF = true;
-  private int sG;
+  ArrayList<Transition> tG = new ArrayList();
+  private boolean tH = true;
+  private int tI;
   
   public TransitionSet() {}
   
   public TransitionSet(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, ad.rJ);
-    V(c.a(paramContext, (XmlResourceParser)paramAttributeSet, "transitionOrdering", 0, 0));
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, ac.sK);
+    U(g.a(paramContext, (XmlResourceParser)paramAttributeSet, "transitionOrdering", 0, 0));
     paramContext.recycle();
   }
   
-  public final void C(View paramView)
+  public final void F(View paramView)
   {
-    super.C(paramView);
-    int j = this.sE.size();
+    super.F(paramView);
+    int j = this.tG.size();
     int i = 0;
     while (i < j)
     {
-      ((Transition)this.sE.get(i)).C(paramView);
+      ((Transition)this.tG.get(i)).F(paramView);
       i += 1;
     }
   }
   
-  public final void D(View paramView)
+  public final void G(View paramView)
   {
-    super.D(paramView);
-    int j = this.sE.size();
+    super.G(paramView);
+    int j = this.tG.size();
     int i = 0;
     while (i < j)
     {
-      ((Transition)this.sE.get(i)).D(paramView);
+      ((Transition)this.tG.get(i)).G(paramView);
       i += 1;
     }
   }
   
-  public final TransitionSet V(int paramInt)
+  public final TransitionSet U(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      throw new AndroidRuntimeException("Invalid parameter for TransitionSet ordering: " + paramInt);
+      throw new AndroidRuntimeException("Invalid parameter for TransitionSet ordering: ".concat(String.valueOf(paramInt)));
     case 1: 
-      this.sF = false;
+      this.tH = false;
       return this;
     }
-    this.sF = true;
+    this.tH = true;
     return this;
   }
   
-  public final Transition W(int paramInt)
+  public final Transition V(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.sE.size())) {
+    if ((paramInt < 0) || (paramInt >= this.tG.size())) {
       return null;
     }
-    return (Transition)this.sE.get(paramInt);
+    return (Transition)this.tG.get(paramInt);
   }
   
   public final void a(Transition.b paramb)
   {
     super.a(paramb);
-    int j = this.sE.size();
+    int j = this.tG.size();
     int i = 0;
     while (i < j)
     {
-      ((Transition)this.sE.get(i)).a(paramb);
+      ((Transition)this.tG.get(i)).a(paramb);
       i += 1;
     }
   }
   
-  public final void a(ag paramag)
+  public final void a(af paramaf)
   {
-    super.a(paramag);
-    int j = this.sE.size();
+    super.a(paramaf);
+    int j = this.tG.size();
     int i = 0;
     while (i < j)
     {
-      ((Transition)this.sE.get(i)).a(paramag);
+      ((Transition)this.tG.get(i)).a(paramaf);
       i += 1;
     }
   }
   
-  public final void a(ai paramai)
+  public final void a(ah paramah)
   {
-    if (z(paramai.view))
+    if (C(paramah.view))
     {
-      Iterator localIterator = this.sE.iterator();
+      Iterator localIterator = this.tG.iterator();
       while (localIterator.hasNext())
       {
         Transition localTransition = (Transition)localIterator.next();
-        if (localTransition.z(paramai.view))
+        if (localTransition.C(paramah.view))
         {
-          localTransition.a(paramai);
-          paramai.sM.add(localTransition);
+          localTransition.a(paramah);
+          paramah.tO.add(localTransition);
         }
       }
     }
   }
   
-  protected final void a(ViewGroup paramViewGroup, aj paramaj1, aj paramaj2, ArrayList<ai> paramArrayList1, ArrayList<ai> paramArrayList2)
+  protected final void a(ViewGroup paramViewGroup, ai paramai1, ai paramai2, ArrayList<ah> paramArrayList1, ArrayList<ah> paramArrayList2)
   {
-    long l1 = this.rO;
-    int j = this.sE.size();
+    long l1 = this.sP;
+    int j = this.tG.size();
     int i = 0;
     if (i < j)
     {
-      Transition localTransition = (Transition)this.sE.get(i);
-      if ((l1 > 0L) && ((this.sF) || (i == 0)))
+      Transition localTransition = (Transition)this.tG.get(i);
+      if ((l1 > 0L) && ((this.tH) || (i == 0)))
       {
-        long l2 = localTransition.rO;
+        long l2 = localTransition.sP;
         if (l2 <= 0L) {
           break label104;
         }
-        localTransition.h(l2 + l1);
+        localTransition.e(l2 + l1);
       }
       for (;;)
       {
-        localTransition.a(paramViewGroup, paramaj1, paramaj2, paramArrayList1, paramArrayList2);
+        localTransition.a(paramViewGroup, paramai1, paramai2, paramArrayList1, paramArrayList2);
         i += 1;
         break;
         label104:
-        localTransition.h(l1);
+        localTransition.e(l1);
       }
     }
   }
@@ -149,40 +149,26 @@ public class TransitionSet
     return (TransitionSet)super.a(paramTimeInterpolator);
   }
   
-  public final void b(ai paramai)
+  public final void b(ah paramah)
   {
-    if (z(paramai.view))
+    if (C(paramah.view))
     {
-      Iterator localIterator = this.sE.iterator();
+      Iterator localIterator = this.tG.iterator();
       while (localIterator.hasNext())
       {
         Transition localTransition = (Transition)localIterator.next();
-        if (localTransition.z(paramai.view))
+        if (localTransition.C(paramah.view))
         {
-          localTransition.b(paramai);
-          paramai.sM.add(localTransition);
+          localTransition.b(paramah);
+          paramah.tO.add(localTransition);
         }
       }
     }
   }
   
-  public final Transition bA()
+  protected final void cn()
   {
-    TransitionSet localTransitionSet = (TransitionSet)super.bA();
-    localTransitionSet.sE = new ArrayList();
-    int j = this.sE.size();
-    int i = 0;
-    while (i < j)
-    {
-      localTransitionSet.d(((Transition)this.sE.get(i)).bA());
-      i += 1;
-    }
-    return localTransitionSet;
-  }
-  
-  protected final void bz()
-  {
-    if (this.sE.isEmpty())
+    if (this.tG.isEmpty())
     {
       start();
       end();
@@ -191,66 +177,80 @@ public class TransitionSet
     {
       return;
       Object localObject = new TransitionSet.a(this);
-      Iterator localIterator = this.sE.iterator();
+      Iterator localIterator = this.tG.iterator();
       while (localIterator.hasNext()) {
         ((Transition)localIterator.next()).a((Transition.c)localObject);
       }
-      this.sG = this.sE.size();
-      if (!this.sF)
+      this.tI = this.tG.size();
+      if (!this.tH)
       {
         int i = 1;
-        while (i < this.sE.size())
+        while (i < this.tG.size())
         {
-          ((Transition)this.sE.get(i - 1)).a(new TransitionSet.1(this, (Transition)this.sE.get(i)));
+          ((Transition)this.tG.get(i - 1)).a(new TransitionSet.1(this, (Transition)this.tG.get(i)));
           i += 1;
         }
-        localObject = (Transition)this.sE.get(0);
+        localObject = (Transition)this.tG.get(0);
         if (localObject != null) {
-          ((Transition)localObject).bz();
+          ((Transition)localObject).cn();
         }
       }
       else
       {
-        localObject = this.sE.iterator();
+        localObject = this.tG.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((Transition)((Iterator)localObject).next()).bz();
+          ((Transition)((Iterator)localObject).next()).cn();
         }
       }
     }
   }
   
+  public final Transition co()
+  {
+    TransitionSet localTransitionSet = (TransitionSet)super.co();
+    localTransitionSet.tG = new ArrayList();
+    int j = this.tG.size();
+    int i = 0;
+    while (i < j)
+    {
+      localTransitionSet.d(((Transition)this.tG.get(i)).co());
+      i += 1;
+    }
+    return localTransitionSet;
+  }
+  
   public final TransitionSet d(Transition paramTransition)
   {
-    this.sE.add(paramTransition);
-    paramTransition.se = this;
+    this.tG.add(paramTransition);
+    paramTransition.te = this;
     if (this.mDuration >= 0L) {
-      paramTransition.g(this.mDuration);
+      paramTransition.d(this.mDuration);
     }
     return this;
   }
   
-  final void d(ai paramai)
+  final void d(ah paramah)
   {
-    super.d(paramai);
-    int j = this.sE.size();
+    super.d(paramah);
+    int j = this.tG.size();
     int i = 0;
     while (i < j)
     {
-      ((Transition)this.sE.get(i)).d(paramai);
+      ((Transition)this.tG.get(i)).d(paramah);
       i += 1;
     }
   }
   
-  public final TransitionSet i(long paramLong)
+  public final TransitionSet f(long paramLong)
   {
-    super.g(paramLong);
+    super.d(paramLong);
     if (this.mDuration >= 0L)
     {
-      int j = this.sE.size();
+      int j = this.tG.size();
       int i = 0;
       while (i < j)
       {
-        ((Transition)this.sE.get(i)).g(paramLong);
+        ((Transition)this.tG.get(i)).d(paramLong);
         i += 1;
       }
     }
@@ -261,9 +261,9 @@ public class TransitionSet
   {
     String str = super.toString(paramString);
     int i = 0;
-    while (i < this.sE.size())
+    while (i < this.tG.size())
     {
-      str = str + "\n" + ((Transition)this.sE.get(i)).toString(new StringBuilder().append(paramString).append("  ").toString());
+      str = str + "\n" + ((Transition)this.tG.get(i)).toString(new StringBuilder().append(paramString).append("  ").toString());
       i += 1;
     }
     return str;

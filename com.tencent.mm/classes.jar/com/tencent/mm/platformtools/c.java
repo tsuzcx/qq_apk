@@ -1,96 +1,104 @@
 package com.tencent.mm.platformtools;
 
 import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class c
 {
-  private n eRh;
-  private o eRi;
-  private p eRj;
-  private l eRk;
-  private m eRl;
-  private k eRm;
+  private n gjc;
+  private o gjd;
+  private p gje;
+  private l gjf;
+  private m gjg;
+  private k gjh;
   
   private static void a(d paramd)
   {
+    AppMethodBeat.i(124516);
     if (paramd != null)
     {
-      Iterator localIterator = paramd.eRn.iterator();
+      Iterator localIterator = paramd.gji.iterator();
       while (localIterator.hasNext())
       {
         Integer localInteger = (Integer)localIterator.next();
-        g.Dk().b(localInteger.intValue(), paramd);
+        g.Rc().b(localInteger.intValue(), paramd);
       }
       paramd.activity = null;
     }
+    AppMethodBeat.o(124516);
   }
   
   public final boolean a(Activity paramActivity, ag paramag)
   {
-    if ((paramag.type == 0) || (paramag.action == 0)) {
+    AppMethodBeat.i(124515);
+    if ((paramag.type == 0) || (paramag.action == 0))
+    {
+      AppMethodBeat.o(124515);
       return false;
     }
-    if (this.eRm == null) {
-      this.eRm = new k(paramActivity);
+    if (this.gjh == null) {
+      this.gjh = new k(paramActivity);
     }
-    if (this.eRm.a(paramag)) {
+    if (this.gjh.a(paramag))
+    {
+      AppMethodBeat.o(124515);
       return true;
     }
     switch (paramag.type)
     {
     default: 
-      y.e("MicroMsg.BaseErrorHelper", "Unkown error type");
-      return false;
-    case 1: 
-      if (this.eRh == null) {
-        this.eRh = new n(paramActivity);
-      }
-      this.eRh.a(paramag);
-      return false;
-    case 2: 
-      if (this.eRi == null) {
-        this.eRi = new o(paramActivity);
-      }
-      this.eRi.a(paramag);
-      return false;
-    case 3: 
-      if (this.eRj == null) {
-        this.eRj = new p(paramActivity);
-      }
-      this.eRj.a(paramag);
-      return false;
-    case 4: 
-      if (this.eRk == null) {
-        this.eRk = new l(paramActivity);
-      }
-      this.eRk.a(paramag);
-      return false;
-    case 5: 
-      if (this.eRl == null) {
-        this.eRl = new m(paramActivity);
-      }
-      this.eRl.a(paramag);
-      return false;
+      ab.e("MicroMsg.BaseErrorHelper", "Unkown error type");
     }
-    if (this.eRm == null) {
-      this.eRm = new k(paramActivity);
+    for (;;)
+    {
+      AppMethodBeat.o(124515);
+      return false;
+      if (this.gjc == null) {
+        this.gjc = new n(paramActivity);
+      }
+      this.gjc.a(paramag);
+      continue;
+      if (this.gjd == null) {
+        this.gjd = new o(paramActivity);
+      }
+      this.gjd.a(paramag);
+      continue;
+      if (this.gje == null) {
+        this.gje = new p(paramActivity);
+      }
+      this.gje.a(paramag);
+      continue;
+      if (this.gjf == null) {
+        this.gjf = new l(paramActivity);
+      }
+      this.gjf.a(paramag);
+      continue;
+      if (this.gjg == null) {
+        this.gjg = new m(paramActivity);
+      }
+      this.gjg.a(paramag);
+      continue;
+      if (this.gjh == null) {
+        this.gjh = new k(paramActivity);
+      }
+      this.gjh.a(paramag);
     }
-    this.eRm.a(paramag);
-    return false;
   }
   
   public final void close()
   {
-    a(this.eRh);
-    a(this.eRi);
-    a(this.eRj);
-    a(this.eRk);
-    a(this.eRl);
-    a(this.eRm);
+    AppMethodBeat.i(124517);
+    a(this.gjc);
+    a(this.gjd);
+    a(this.gje);
+    a(this.gjf);
+    a(this.gjg);
+    a(this.gjh);
+    AppMethodBeat.o(124517);
   }
 }
 

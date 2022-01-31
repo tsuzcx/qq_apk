@@ -3,10 +3,11 @@ package com.tencent.mm.console.a;
 import android.content.Context;
 import android.os.Looper;
 import android.os.Process;
-import com.tencent.mm.h.a.fn;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bs;
 import java.util.Calendar;
 
@@ -15,17 +16,24 @@ public final class h
 {
   static
   {
+    AppMethodBeat.i(16139);
     com.tencent.mm.pluginsdk.cmd.b.a(new h(), new String[] { "//sport" });
+    AppMethodBeat.o(16139);
   }
   
   public static void init() {}
   
-  public final boolean a(Context paramContext, String[] paramArrayOfString)
+  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    if (y.getLogLevel() > 1) {
+    AppMethodBeat.i(16138);
+    if (ab.getLogLevel() > 1)
+    {
+      AppMethodBeat.o(16138);
       return false;
     }
-    if (paramArrayOfString.length < 2) {
+    if (paramArrayOfString.length < 2)
+    {
+      AppMethodBeat.o(16138);
       return true;
     }
     paramContext = paramArrayOfString[1];
@@ -40,6 +48,7 @@ public final class h
     }
     for (;;)
     {
+      AppMethodBeat.o(16138);
       return true;
       if (!paramContext.equals("setdevicestep")) {
         break;
@@ -62,25 +71,23 @@ public final class h
       i = 3;
       break;
       i = Integer.valueOf(paramArrayOfString[2]).intValue();
-      long l1 = bk.crX() / 10000L;
-      ((com.tencent.mm.plugin.sport.b.b)g.r(com.tencent.mm.plugin.sport.b.b.class)).O(202, l1);
-      ((com.tencent.mm.plugin.sport.b.b)g.r(com.tencent.mm.plugin.sport.b.b.class)).O(201, i);
+      bo.dtU();
       paramContext = Calendar.getInstance();
       paramContext.set(11, 0);
       paramContext.set(12, 0);
       paramContext.set(13, 0);
-      l1 = paramContext.getTimeInMillis();
+      long l1 = paramContext.getTimeInMillis();
       long l2 = System.currentTimeMillis();
-      ((com.tencent.mm.plugin.sport.b.b)g.r(com.tencent.mm.plugin.sport.b.b.class)).b("", "gh_43f2581f6fd6", (int)(l1 / 1000L), (int)(l2 / 1000L), i, bs.cwc());
+      ((com.tencent.mm.plugin.sport.a.b)g.E(com.tencent.mm.plugin.sport.a.b.class)).b("", "gh_43f2581f6fd6", (int)(l1 / 1000L), (int)(l2 / 1000L), i, bs.dyO());
       continue;
-      ((com.tencent.mm.plugin.sport.b.b)g.r(com.tencent.mm.plugin.sport.b.b.class)).bKZ();
+      ((com.tencent.mm.plugin.sport.a.b)g.E(com.tencent.mm.plugin.sport.a.b.class)).cyv();
       Process.killProcess(Process.myPid());
       continue;
-      paramContext = new fn();
-      paramContext.bMr.action = 2;
-      paramContext.bMr.bMu = Integer.valueOf(paramArrayOfString[2]).intValue();
-      paramContext.bMr.bMv = 1L;
-      com.tencent.mm.sdk.b.a.udP.a(paramContext, Looper.getMainLooper());
+      paramContext = new fq();
+      paramContext.ctM.action = 2;
+      paramContext.ctM.ctP = Integer.valueOf(paramArrayOfString[2]).intValue();
+      paramContext.ctM.aJH = 1L;
+      com.tencent.mm.sdk.b.a.ymk.a(paramContext, Looper.getMainLooper());
       continue;
       paramContext = Calendar.getInstance();
       paramContext.add(5, -1);
@@ -93,7 +100,7 @@ public final class h
       paramContext.set(12, 0);
       paramContext.set(13, 0);
       l2 = paramContext.getTimeInMillis();
-      ((com.tencent.mm.plugin.sport.b.b)g.r(com.tencent.mm.plugin.sport.b.b.class)).a(l2, l1, null);
+      ((com.tencent.mm.plugin.sport.a.b)g.E(com.tencent.mm.plugin.sport.a.b.class)).a(l2, l1, null);
     }
   }
 }

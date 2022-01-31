@@ -1,6 +1,7 @@
 package com.tencent.toybrick.b;
 
 import android.support.v7.widget.RecyclerView.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.toybrick.c.b;
 import com.tencent.toybrick.c.c;
 import com.tencent.toybrick.c.d;
@@ -8,27 +9,29 @@ import com.tencent.toybrick.c.e;
 
 public final class a
 {
-  private static RecyclerView.n xal;
+  private static RecyclerView.n BwR;
   
   static
   {
+    AppMethodBeat.i(113179);
     RecyclerView.n localn = new RecyclerView.n();
-    xal = localn;
-    localn.bS(d.xau);
-    xal.bS(e.xau);
-    xal.bS(com.tencent.toybrick.c.a.xau);
-    xal.bS(b.xau);
-    xal.bS(c.xau);
+    BwR = localn;
+    localn.aB(d.Bxa, 10);
+    BwR.aB(e.Bxa, 10);
+    BwR.aB(com.tencent.toybrick.c.a.Bxa, 10);
+    BwR.aB(b.Bxa, 10);
+    BwR.aB(c.Bxa, 10);
+    AppMethodBeat.o(113179);
   }
   
-  public static RecyclerView.n cQY()
+  public static RecyclerView.n dWN()
   {
-    return xal;
+    return BwR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.toybrick.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.plugin.base.model.b;
 
 final class NewBizInfoSettingUI$7
@@ -10,10 +11,15 @@ final class NewBizInfoSettingUI$7
   
   public final void run()
   {
-    if (this.nad.isFinishing()) {
+    AppMethodBeat.i(23919);
+    if (this.pDY.isFinishing())
+    {
+      AppMethodBeat.o(23919);
       return;
     }
-    b.T(this.nad, NewBizInfoSettingUI.a(this.nad).field_username);
+    b.Y(this.pDY, NewBizInfoSettingUI.a(this.pDY).field_username);
+    b.x(this.pDY);
+    AppMethodBeat.o(23919);
   }
 }
 

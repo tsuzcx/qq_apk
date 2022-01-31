@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import com.tencent.mm.h.a.ar;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.ui.base.preference.Preference.b;
 
 final class k$4
-  extends c<ar>
+  implements Preference.b
 {
-  k$4(k paramk)
+  k$4(k paramk) {}
+  
+  public final boolean cbH()
   {
-    this.udX = ar.class.getName().hashCode();
+    return false;
   }
 }
 

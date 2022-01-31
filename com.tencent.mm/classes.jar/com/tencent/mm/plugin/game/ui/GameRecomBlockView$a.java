@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.game.ui;
 final class GameRecomBlockView$a
 {
   public String appId;
-  public String bYM;
+  public String cGT;
   public String jumpUrl;
-  public String kOo;
-  public int kRc;
+  public String nml;
+  public int npg;
   
   public GameRecomBlockView$a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
   {
     this.appId = paramString1;
-    this.kRc = paramInt;
+    this.npg = paramInt;
     this.jumpUrl = paramString2;
-    this.kOo = paramString3;
-    this.bYM = paramString4;
+    this.nml = paramString3;
+    this.cGT = paramString4;
   }
 }
 

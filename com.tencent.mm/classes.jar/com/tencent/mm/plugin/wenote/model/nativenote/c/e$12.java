@@ -4,10 +4,11 @@ import android.text.Editable;
 import android.text.Spanned;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.i;
 import com.tencent.mm.plugin.wenote.model.nativenote.a.a;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class e$12
   implements View.OnClickListener
@@ -17,55 +18,63 @@ public final class e$12
   public final void onClick(View paramView)
   {
     Object localObject1 = null;
-    y.i("NoteSelectManager", "select");
-    this.rKn.ciP();
-    if (!e.ciX())
+    AppMethodBeat.i(26869);
+    ab.i("NoteSelectManager", "select");
+    this.vAR.dji();
+    if (!e.djy())
     {
-      y.e("NoteSelectManager", "select: not init");
+      ab.e("NoteSelectManager", "select: not init");
+      AppMethodBeat.o(26869);
       return;
     }
-    if (this.rKn.ciI() != 1)
+    if (this.vAR.djb() != 1)
     {
-      y.e("NoteSelectManager", "select: not insert");
-      e.h(this.rKn);
+      ab.e("NoteSelectManager", "select: not insert");
+      e.h(this.vAR);
+      AppMethodBeat.o(26869);
       return;
     }
-    if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(e.i(this.rKn).ebL) == null)
+    if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(e.i(this.vAR).chT) == null)
     {
-      y.e("NoteSelectManager", "select: item is null");
-      e.h(this.rKn);
+      ab.e("NoteSelectManager", "select: item is null");
+      e.h(this.vAR);
+      AppMethodBeat.o(26869);
       return;
     }
-    paramView = e.a(this.rKn);
+    paramView = e.a(this.vAR);
     if (paramView == null)
     {
-      y.e("NoteSelectManager", "select: recyclerView is null");
-      e.h(this.rKn);
+      ab.e("NoteSelectManager", "select: recyclerView is null");
+      e.h(this.vAR);
+      AppMethodBeat.o(26869);
       return;
     }
-    paramView = f.ds(f.f(paramView, e.i(this.rKn).ebL));
+    paramView = f.ey(f.f(paramView, e.i(this.vAR).chT));
     if (paramView == null)
     {
-      y.e("NoteSelectManager", "select: rteInfo is null");
-      e.h(this.rKn);
+      ab.e("NoteSelectManager", "select: rteInfo is null");
+      e.h(this.vAR);
+      AppMethodBeat.o(26869);
       return;
     }
     Object localObject2;
-    if (paramView.rJB != null)
+    if (paramView.vAf != null)
     {
-      localObject2 = paramView.rJB.getText();
+      localObject2 = paramView.vAf.getText();
       if (localObject2 == null)
       {
-        y.e("NoteSelectManager", "select: text is null");
-        e.h(this.rKn);
+        ab.e("NoteSelectManager", "select: text is null");
+        e.h(this.vAR);
+        AppMethodBeat.o(26869);
         return;
       }
       if (((Editable)localObject2).length() > 0)
       {
-        paramView.rJB.aj(e.i(this.rKn).startOffset, true);
+        paramView.vAf.ay(e.i(this.vAR).startOffset, true);
+        AppMethodBeat.o(26869);
         return;
       }
-      localObject2 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(e.i(this.rKn).ebL - 1);
+      localObject2 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(e.i(this.vAR).chT - 1);
       paramView = (View)localObject2;
       if (localObject2 != null)
       {
@@ -74,9 +83,9 @@ public final class e$12
           paramView = null;
         }
       }
-      localObject2 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(e.i(this.rKn).ebL + 1);
+      localObject2 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(e.i(this.vAR).chT + 1);
       if ((localObject2 == null) || (((com.tencent.mm.plugin.wenote.model.a.c)localObject2).getType() != -2)) {
-        break label590;
+        break label668;
       }
     }
     for (;;)
@@ -84,53 +93,58 @@ public final class e$12
       if (paramView != null) {
         if (paramView.getType() == 1)
         {
-          paramView = a.Uw(((i)paramView).content);
+          paramView = a.ajK(((i)paramView).content);
           if (paramView == null)
           {
-            y.e("NoteSelectManager", "select: spanned is null");
-            e.h(this.rKn);
+            ab.e("NoteSelectManager", "select: spanned is null");
+            e.h(this.vAR);
+            AppMethodBeat.o(26869);
             return;
           }
-          this.rKn.A(e.i(this.rKn).ebL - 1, paramView.length(), e.i(this.rKn).ebL, 0);
+          this.vAR.G(e.i(this.vAR).chT - 1, paramView.length(), e.i(this.vAR).chT, 0);
         }
       }
       for (;;)
       {
-        e.e(this.rKn);
-        this.rKn.S(true, true);
+        e.e(this.vAR);
+        this.vAR.ac(true, true);
+        AppMethodBeat.o(26869);
         return;
-        this.rKn.A(e.i(this.rKn).ebL - 1, 0, e.i(this.rKn).ebL, 0);
+        this.vAR.G(e.i(this.vAR).chT - 1, 0, e.i(this.vAR).chT, 0);
         continue;
         if (localObject1 == null) {
           break;
         }
         if (localObject1.getType() == 1) {
-          this.rKn.A(e.i(this.rKn).ebL, 0, e.i(this.rKn).ebL + 1, 0);
+          this.vAR.G(e.i(this.vAR).chT, 0, e.i(this.vAR).chT + 1, 0);
         } else {
-          this.rKn.A(e.i(this.rKn).ebL, 0, e.i(this.rKn).ebL + 1, 1);
+          this.vAR.G(e.i(this.vAR).chT, 0, e.i(this.vAR).chT + 1, 1);
         }
       }
-      y.e("NoteSelectManager", "select: no neighbor");
-      e.h(this.rKn);
+      ab.e("NoteSelectManager", "select: no neighbor");
+      e.h(this.vAR);
+      AppMethodBeat.o(26869);
       return;
-      if ((paramView.rJC != null) && (paramView.rJD != null))
+      if ((paramView.vAg != null) && (paramView.vAh != null))
       {
-        e.e(this.rKn);
-        this.rKn.A(e.i(this.rKn).ebL, 0, e.i(this.rKn).ebL, 1);
-        this.rKn.S(true, true);
+        e.e(this.vAR);
+        this.vAR.G(e.i(this.vAR).chT, 0, e.i(this.vAR).chT, 1);
+        this.vAR.ac(true, true);
+        AppMethodBeat.o(26869);
         return;
       }
-      y.e("NoteSelectManager", "select: rteInfo invalid");
-      e.h(this.rKn);
+      ab.e("NoteSelectManager", "select: rteInfo invalid");
+      e.h(this.vAR);
+      AppMethodBeat.o(26869);
       return;
-      label590:
+      label668:
       localObject1 = localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.c.e.12
  * JD-Core Version:    0.7.0.1
  */

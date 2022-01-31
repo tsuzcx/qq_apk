@@ -1,33 +1,36 @@
 package com.tencent.mm.modelstat;
 
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.o;
 
 final class c$1
-  implements am.a
+  implements ap.a
 {
   c$1(c paramc) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    boolean bool2 = true;
-    boolean bool3 = l.fr(ae.getContext());
-    String str = c.bD(ae.getContext());
-    if (!bk.bl(str)) {}
+    AppMethodBeat.i(78658);
+    boolean bool2 = o.gE(ah.getContext());
+    String str = c.ci(ah.getContext());
+    if (!bo.isNullOrNil(str)) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      y.d("MicroMsg.ClickFlowStatReceiver", "monitorHandler ScreenOn:%s isTop:%s top:%s ", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1), str });
-      if ((!bool3) || (!bool1))
-      {
-        c.b(this.eCm).post(new c.1.1(this));
-        bool2 = false;
+      ab.d("MicroMsg.ClickFlowStatReceiver", "monitorHandler ScreenOn:%s isTop:%s top:%s ", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), str });
+      if ((bool2) && (bool1)) {
+        break;
       }
-      return bool2;
+      c.b(this.fSd).post(new c.1.1(this));
+      AppMethodBeat.o(78658);
+      return false;
     }
+    AppMethodBeat.o(78658);
+    return true;
   }
 }
 

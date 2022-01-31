@@ -4,56 +4,60 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkInfo;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class FreeWifiNetworkReceiver
   extends BroadcastReceiver
 {
-  public FreeWifiNetworkReceiver.b koK;
-  public FreeWifiNetworkReceiver.a koL;
+  public FreeWifiNetworkReceiver.b mKx;
+  public FreeWifiNetworkReceiver.a mKy;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {
-      y.e("MicroMsg.FreeWifi.WifiStateChangedReceiver", "intent is null");
-    }
-    do
+    AppMethodBeat.i(20729);
+    if (paramIntent == null)
     {
-      do
+      ab.e("MicroMsg.FreeWifi.WifiStateChangedReceiver", "intent is null");
+      AppMethodBeat.o(20729);
+      return;
+    }
+    paramContext = paramIntent.getAction();
+    ab.i("MicroMsg.FreeWifi.WifiStateChangedReceiver", "FreeWifiNetworkReceiver action : %s", new Object[] { paramContext });
+    if (bo.isNullOrNil(paramContext))
+    {
+      ab.e("MicroMsg.FreeWifi.WifiStateChangedReceiver", "action is null");
+      AppMethodBeat.o(20729);
+      return;
+    }
+    if (paramContext.equals("android.net.wifi.WIFI_STATE_CHANGED"))
+    {
+      int i = paramIntent.getIntExtra("wifi_state", 0);
+      ab.i("MicroMsg.FreeWifi.WifiStateChangedReceiver", "now wifi state : %d", new Object[] { Integer.valueOf(i) });
+      if (this.mKx != null) {
+        this.mKx.wm(i);
+      }
+      AppMethodBeat.o(20729);
+      return;
+    }
+    if (paramContext.equals("android.net.wifi.STATE_CHANGE"))
+    {
+      paramContext = paramIntent.getParcelableExtra("networkInfo");
+      if (paramContext != null)
       {
-        do
-        {
-          int i;
-          do
-          {
-            return;
-            paramContext = paramIntent.getAction();
-            y.i("MicroMsg.FreeWifi.WifiStateChangedReceiver", "FreeWifiNetworkReceiver action : %s", new Object[] { paramContext });
-            if (bk.bl(paramContext))
-            {
-              y.e("MicroMsg.FreeWifi.WifiStateChangedReceiver", "action is null");
-              return;
-            }
-            if (!paramContext.equals("android.net.wifi.WIFI_STATE_CHANGED")) {
-              break;
-            }
-            i = paramIntent.getIntExtra("wifi_state", 0);
-            y.i("MicroMsg.FreeWifi.WifiStateChangedReceiver", "now wifi state : %d", new Object[] { Integer.valueOf(i) });
-          } while (this.koK == null);
-          this.koK.rs(i);
-          return;
-        } while (!paramContext.equals("android.net.wifi.STATE_CHANGE"));
-        paramContext = paramIntent.getParcelableExtra("networkInfo");
-      } while (paramContext == null);
-      paramContext = (NetworkInfo)paramContext;
-    } while ((paramContext == null) || (this.koL == null));
-    this.koL.a(paramContext.getState());
+        paramContext = (NetworkInfo)paramContext;
+        if ((paramContext != null) && (this.mKy != null)) {
+          this.mKy.a(paramContext.getState());
+        }
+      }
+    }
+    AppMethodBeat.o(20729);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.model.FreeWifiNetworkReceiver
  * JD-Core Version:    0.7.0.1
  */

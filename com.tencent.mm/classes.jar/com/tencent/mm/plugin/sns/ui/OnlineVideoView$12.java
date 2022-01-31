@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.widget.ProgressBar;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 final class OnlineVideoView$12
@@ -11,20 +12,22 @@ final class OnlineVideoView$12
   
   public final void run()
   {
-    if ((OnlineVideoView.h(this.oRM) != null) && (OnlineVideoView.h(this.oRM).getVisibility() != 8)) {
-      OnlineVideoView.h(this.oRM).setVisibility(8);
+    AppMethodBeat.i(38401);
+    if ((OnlineVideoView.g(this.rJD) != null) && (OnlineVideoView.g(this.rJD).getVisibility() != 8)) {
+      OnlineVideoView.g(this.rJD).setVisibility(8);
     }
-    if (OnlineVideoView.i(this.oRM) != null)
+    if (OnlineVideoView.h(this.rJD) != null)
     {
-      if (OnlineVideoView.i(this.oRM).getVisibility() != 0) {
-        OnlineVideoView.i(this.oRM).setVisibility(0);
+      if (OnlineVideoView.h(this.rJD).getVisibility() != 0) {
+        OnlineVideoView.h(this.rJD).setVisibility(0);
       }
-      y.i("MicroMsg.OnlineVideoView", "%d update progress %d %d", new Object[] { Integer.valueOf(this.oRM.hashCode()), Integer.valueOf(this.ejr), Integer.valueOf(this.epd) });
-      if ((OnlineVideoView.i(this.oRM).getMax() != this.epd) && (this.epd > 0)) {
-        OnlineVideoView.i(this.oRM).setMax(this.epd);
+      ab.i("MicroMsg.OnlineVideoView", "%d update progress %d %d", new Object[] { Integer.valueOf(this.rJD.hashCode()), Integer.valueOf(this.fzv), Integer.valueOf(this.fFB) });
+      if ((OnlineVideoView.h(this.rJD).getMax() != this.fFB) && (this.fFB > 0)) {
+        OnlineVideoView.h(this.rJD).setMax(this.fFB);
       }
-      OnlineVideoView.i(this.oRM).setProgress(this.ejr);
+      OnlineVideoView.h(this.rJD).setProgress(this.fzv);
     }
+    AppMethodBeat.o(38401);
   }
 }
 

@@ -10,7 +10,7 @@ final class i$7
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.lKF.lIf = false;
+    this.ohX.ofs = false;
   }
 }
 

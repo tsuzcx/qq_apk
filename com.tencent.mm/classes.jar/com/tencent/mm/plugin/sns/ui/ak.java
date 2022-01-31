@@ -1,30 +1,27 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.tencent.mm.h.a.pv;
-import com.tencent.mm.h.a.pv.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.rd;
+import com.tencent.mm.g.a.rd.b;
 import com.tencent.mm.memory.n;
-import com.tencent.mm.plugin.sns.h.f;
-import com.tencent.mm.plugin.sns.i.f;
 import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.ax;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ay;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.c.aui;
-import com.tencent.mm.protocal.c.buw;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.bap;
+import com.tencent.mm.protocal.protobuf.cfm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.vfs.e;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -33,59 +30,79 @@ import java.util.List;
 public final class ak
   implements y
 {
-  MMActivity bER;
-  String bIW = "";
-  private boolean bJy = false;
-  private String desc = "";
-  ProgressDialog dnm = null;
-  ProgressBar frw;
-  private View hNa = null;
-  private int oOs;
-  private com.tencent.mm.modelsns.b oOy = null;
-  private boolean oQL = false;
-  private Bitmap oQM = null;
-  private com.tencent.mm.sdk.b.c oQZ = new ak.1(this);
-  ax oRa = null;
-  com.tencent.mm.plugin.sight.decode.a.a oTM;
-  com.tencent.mm.plugin.sight.decode.ui.c oTN = null;
-  String thumbPath = "";
-  String videoPath = "";
+  MMActivity cmc;
+  private boolean cqS;
+  String cqq;
+  private String desc;
+  ProgressDialog eeN;
+  private View jIo;
+  ProgressBar progressBar;
+  private int rGd;
+  private com.tencent.mm.modelsns.b rGj;
+  private com.tencent.mm.sdk.b.c rIL;
+  ay rIM;
+  private boolean rIx;
+  private Bitmap rIy;
+  com.tencent.mm.plugin.sight.decode.a.a rLK;
+  com.tencent.mm.plugin.sight.decode.ui.c rLL;
+  String thumbPath;
+  String videoPath;
   
   public ak(MMActivity paramMMActivity)
   {
-    this.bER = paramMMActivity;
+    AppMethodBeat.i(38600);
+    this.jIo = null;
+    this.thumbPath = "";
+    this.videoPath = "";
+    this.cqq = "";
+    this.cqS = false;
+    this.rIx = false;
+    this.rIy = null;
+    this.rLL = null;
+    this.rGj = null;
+    this.rIL = new ak.1(this);
+    this.rIM = null;
+    this.desc = "";
+    this.eeN = null;
+    this.cmc = paramMMActivity;
+    AppMethodBeat.o(38600);
   }
   
-  public final void E(Bundle paramBundle)
+  public final void V(Bundle paramBundle)
   {
-    this.oOy = com.tencent.mm.modelsns.b.i(this.bER.getIntent());
-    this.thumbPath = this.bER.getIntent().getStringExtra("KSightThumbPath");
-    this.videoPath = this.bER.getIntent().getStringExtra("KSightPath");
-    this.bIW = this.bER.getIntent().getStringExtra("sight_md5");
-    this.oOs = this.bER.getIntent().getIntExtra("Ksnsupload_source", 0);
-    paramBundle = new pv();
-    paramBundle.bZp.type = 2;
-    com.tencent.mm.sdk.b.a.udP.m(paramBundle);
-    if (bk.bl(this.videoPath))
+    AppMethodBeat.i(38601);
+    this.rGj = com.tencent.mm.modelsns.b.w(this.cmc.getIntent());
+    this.thumbPath = this.cmc.getIntent().getStringExtra("KSightThumbPath");
+    this.videoPath = this.cmc.getIntent().getStringExtra("KSightPath");
+    this.cqq = this.cmc.getIntent().getStringExtra("sight_md5");
+    this.rGd = this.cmc.getIntent().getIntExtra("Ksnsupload_source", 0);
+    paramBundle = new rd();
+    paramBundle.cHE.type = 2;
+    com.tencent.mm.sdk.b.a.ymk.l(paramBundle);
+    if (bo.isNullOrNil(this.videoPath))
     {
-      this.videoPath = bk.aM(paramBundle.bZq.bZu, "");
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.SightWidget", "videoPath is null %s", new Object[] { this.videoPath });
+      this.videoPath = bo.bf(paramBundle.cHF.cHJ, "");
+      ab.e("MicroMsg.SightWidget", "videoPath is null %s", new Object[] { this.videoPath });
     }
-    if (bk.bl(this.bIW)) {}
-    for (paramBundle = bk.aM(paramBundle.bZq.bZs, "");; paramBundle = this.bIW)
+    if (bo.isNullOrNil(this.cqq)) {}
+    for (paramBundle = bo.bf(paramBundle.cHF.cHH, "");; paramBundle = this.cqq)
     {
-      this.bIW = paramBundle;
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.SightWidget", "oncreate thumb path %s videopath %s md5 %s", new Object[] { this.thumbPath, this.videoPath, this.bIW });
-      com.tencent.mm.sdk.b.a.udP.c(this.oQZ);
+      this.cqq = paramBundle;
+      ab.i("MicroMsg.SightWidget", "oncreate thumb path %s videopath %s md5 %s", new Object[] { this.thumbPath, this.videoPath, this.cqq });
+      com.tencent.mm.sdk.b.a.ymk.c(this.rIL);
+      AppMethodBeat.o(38601);
       return;
     }
   }
   
-  public final void F(Bundle paramBundle) {}
+  public final void W(Bundle paramBundle) {}
   
-  public final boolean a(int paramInt1, int paramInt2, org.c.d.i parami, String paramString1, List<String> paramList1, aui paramaui, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
+  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bap parambap, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
-    if (this.oRa != null) {
+    AppMethodBeat.i(38603);
+    if (this.rIM != null)
+    {
+      AppMethodBeat.o(38603);
       return false;
     }
     this.desc = paramString1;
@@ -93,131 +110,142 @@ public final class ak
     if (paramList1 != null)
     {
       new LinkedList();
-      paramString2 = com.tencent.mm.model.s.Ha();
+      paramString2 = com.tencent.mm.model.t.aac();
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
         String str = (String)paramList1.next();
         if (!paramString2.contains(str))
         {
-          buw localbuw = new buw();
-          localbuw.hPY = str;
-          parami.add(localbuw);
+          cfm localcfm = new cfm();
+          localcfm.jJA = str;
+          parami.add(localcfm);
         }
       }
     }
-    this.oRa = new ax(15);
-    paramPInt.value = this.oRa.avS;
-    if (paramInt3 > com.tencent.mm.plugin.sns.c.a.omJ) {
-      this.oRa.xS(3);
+    this.rIM = new ay(15);
+    paramPInt.value = this.rIM.ayi;
+    if (paramInt3 > com.tencent.mm.plugin.sns.c.a.raX) {
+      this.rIM.DS(3);
     }
-    paramString1 = this.oRa.NR(paramString1);
+    paramString1 = this.rIM.aaL(paramString1);
     new LinkedList();
-    paramString1.a(paramaui).am(parami).xU(paramInt1).xV(paramInt2).cx(paramList2);
+    paramString1.a(parambap).av(parami).DU(paramInt1).DV(paramInt2).dc(paramList2);
     if (paramBoolean) {
-      this.oRa.xX(1);
+      this.rIM.DX(1);
     }
     for (;;)
     {
-      this.oRa.cx(paramList2).xU(paramInt1);
-      this.oRa.xW(this.oOs);
-      this.oRa.f(null, null, null, paramInt4, paramInt5);
-      if (!e.bK(this.videoPath)) {
+      this.rIM.dc(paramList2).DU(paramInt1);
+      this.rIM.DW(this.rGd);
+      this.rIM.g(null, null, null, paramInt4, paramInt5);
+      if (!e.cN(this.videoPath)) {
         break;
       }
-      bIa();
+      cus();
+      AppMethodBeat.o(38603);
       return true;
-      this.oRa.xX(0);
+      this.rIM.DX(0);
     }
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.SightWidget", "commit file is not exist " + this.videoPath);
-    parami = this.bER;
-    this.bER.getString(i.j.app_tip);
-    this.dnm = com.tencent.mm.ui.base.h.b(parami, this.bER.getString(i.j.sns_sight_send_wait), true, new ak.3(this));
+    ab.i("MicroMsg.SightWidget", "commit file is not exist " + this.videoPath);
+    parami = this.cmc;
+    this.cmc.getString(2131297087);
+    this.eeN = h.b(parami, this.cmc.getString(2131303961), true, new ak.3(this));
+    AppMethodBeat.o(38603);
     return true;
   }
   
-  public final boolean bHq()
+  public final boolean ctu()
   {
     return true;
   }
   
-  public final View bHr()
+  public final View ctv()
   {
-    this.hNa = View.inflate(this.bER, i.g.upload_sight_widget, null);
-    this.oTM = ((com.tencent.mm.plugin.sight.decode.a.a)this.hNa.findViewById(i.f.image));
-    this.oTM.setDrawableWidth(com.tencent.mm.cb.a.fromDPToPix(this.bER, 90));
-    this.frw = ((ProgressBar)this.hNa.findViewById(i.f.load_progress));
-    Object localObject = new DisplayMetrics();
-    this.bER.getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-    this.hNa.findViewById(i.f.chatting_click_area).setOnClickListener(new ak.2(this));
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.SightWidget", "videoPath " + this.videoPath + " thumbPath " + this.thumbPath + " " + e.aeQ(this.videoPath) + " " + e.aeQ(this.thumbPath));
-    if (e.bK(this.videoPath))
+    AppMethodBeat.i(38602);
+    this.jIo = View.inflate(this.cmc, 2130971054, null);
+    this.rLK = ((com.tencent.mm.plugin.sight.decode.a.a)this.jIo.findViewById(2131820629));
+    this.rLK.setDrawableWidth(com.tencent.mm.cb.a.fromDPToPix(this.cmc, 90));
+    this.progressBar = ((ProgressBar)this.jIo.findViewById(2131824014));
+    this.cmc.getResources().getDisplayMetrics();
+    this.jIo.findViewById(2131822580).setOnClickListener(new ak.2(this));
+    ab.i("MicroMsg.SightWidget", "videoPath " + this.videoPath + " thumbPath " + this.thumbPath + " " + e.avI(this.videoPath) + " " + e.avI(this.thumbPath));
+    if (e.cN(this.videoPath))
     {
-      this.oTM.aW(this.videoPath, false);
-      this.frw.setVisibility(8);
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.SightWidget", "videopath exist videopath %s md5 %s", new Object[] { this.videoPath, this.bIW });
+      this.rLK.bl(this.videoPath, false);
+      this.progressBar.setVisibility(8);
+      ab.i("MicroMsg.SightWidget", "videopath exist videopath %s md5 %s", new Object[] { this.videoPath, this.cqq });
     }
     for (;;)
     {
-      return this.hNa;
-      localObject = com.tencent.mm.plugin.sns.data.i.Na(this.thumbPath);
+      Object localObject = this.jIo;
+      AppMethodBeat.o(38602);
+      return localObject;
+      localObject = com.tencent.mm.plugin.sns.data.i.ZH(this.thumbPath);
       if (localObject != null)
       {
-        this.oQM = ((n)localObject).Fd();
-        if (com.tencent.mm.plugin.sns.data.i.s(this.oQM)) {
-          this.oTM.setThumbBmp(this.oQM);
+        this.rIy = ((n)localObject).XS();
+        if (com.tencent.mm.plugin.sns.data.i.A(this.rIy)) {
+          this.rLK.setThumbBmp(this.rIy);
         }
       }
-      this.frw.setVisibility(0);
+      this.progressBar.setVisibility(0);
     }
   }
   
-  public final boolean bHs()
+  public final boolean ctw()
   {
-    if (this.dnm != null) {
-      this.dnm.dismiss();
+    AppMethodBeat.i(38605);
+    if (this.eeN != null) {
+      this.eeN.dismiss();
     }
-    com.tencent.mm.sdk.b.a.udP.d(this.oQZ);
-    if (com.tencent.mm.plugin.sns.data.i.s(this.oQM)) {
-      this.oQM.recycle();
+    com.tencent.mm.sdk.b.a.ymk.d(this.rIL);
+    if (com.tencent.mm.plugin.sns.data.i.A(this.rIy)) {
+      this.rIy.recycle();
     }
+    AppMethodBeat.o(38605);
     return false;
   }
   
-  final void bIa()
+  final void cus()
   {
-    if (this.oQL) {
+    AppMethodBeat.i(38604);
+    if (this.rIx)
+    {
+      AppMethodBeat.o(38604);
       return;
     }
-    if (!this.oRa.q(this.videoPath, this.thumbPath, this.desc, this.bIW))
+    if (!this.rIM.t(this.videoPath, this.thumbPath, this.desc, this.cqq))
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.SightWidget", "videopath " + e.aeQ(this.videoPath) + " thumb: " + e.aeQ(this.thumbPath));
-      com.tencent.mm.ui.base.s.makeText(this.bER, i.j.sendrequest_send_fail, 0).show();
+      ab.i("MicroMsg.SightWidget", "videopath " + e.avI(this.videoPath) + " thumb: " + e.avI(this.thumbPath));
+      com.tencent.mm.ui.base.t.makeText(this.cmc, 2131303126, 0).show();
+      AppMethodBeat.o(38604);
       return;
     }
-    Object localObject = new pv();
-    ((pv)localObject).bZp.type = 0;
-    ((pv)localObject).bZp.bZr = true;
-    com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject);
-    this.oQL = true;
-    int i = this.oRa.commit();
-    if (this.oOy != null)
+    Object localObject = new rd();
+    ((rd)localObject).cHE.type = 0;
+    ((rd)localObject).cHE.cHG = true;
+    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
+    this.rIx = true;
+    int i = this.rIM.commit();
+    if (this.rGj != null)
     {
-      this.oOy.jf(i);
-      f.ozP.c(this.oOy);
+      this.rGj.lX(i);
+      g.roZ.c(this.rGj);
     }
-    af.bDM().oSY = 0L;
+    ag.cpm().rKV = 0L;
     localObject = new Intent();
     ((Intent)localObject).putExtra("sns_resume_state", false);
     ((Intent)localObject).putExtra("sns_timeline_NeedFirstLoadint", true);
-    ((Intent)localObject).setClass(this.bER, SnsTimeLineUI.class);
+    ((Intent)localObject).setClass(this.cmc, SnsTimeLineUI.class);
     ((Intent)localObject).addFlags(67108864);
-    this.bER.startActivity((Intent)localObject);
-    this.bER.setResult(-1);
-    this.bER.finish();
+    this.cmc.startActivity((Intent)localObject);
+    this.cmc.setResult(-1);
+    this.cmc.finish();
+    AppMethodBeat.o(38604);
   }
   
-  public final boolean d(int paramInt, Intent paramIntent)
+  public final boolean j(int paramInt, Intent paramIntent)
   {
     return false;
   }

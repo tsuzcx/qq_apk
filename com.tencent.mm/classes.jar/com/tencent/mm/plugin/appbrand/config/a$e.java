@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import com.tencent.luggage.j.g;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import org.json.JSONObject;
 
 public final class a$e
 {
-  public ArrayList<a.f> bTS = new ArrayList();
-  public String color;
-  public String fNP;
-  public String fNQ;
-  public String fNR;
-  public String fNS;
+  public final String desc;
+  public final String name;
   
-  public final boolean sf(String paramString)
+  public a$e(String paramString, JSONObject paramJSONObject)
   {
-    Iterator localIterator = this.bTS.iterator();
-    while (localIterator.hasNext()) {
-      if (((a.f)localIterator.next()).url.equals(g.bi(paramString))) {
-        return true;
-      }
-    }
-    return false;
+    AppMethodBeat.i(86876);
+    this.name = paramString;
+    this.desc = paramJSONObject.getString("desc");
+    AppMethodBeat.o(86876);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(86877);
+    String str = "Permission{name='" + this.name + '\'' + ", desc='" + this.desc + '\'' + '}';
+    AppMethodBeat.o(86877);
+    return str;
   }
 }
 

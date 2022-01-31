@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 final class MailAddrsViewControl$b$b
 {
-  TextView fhD;
-  TextView nif;
-  CheckBox nix;
+  TextView gzk;
+  CheckBox pNK;
+  TextView pNs;
   
   private MailAddrsViewControl$b$b(MailAddrsViewControl.b paramb) {}
 }

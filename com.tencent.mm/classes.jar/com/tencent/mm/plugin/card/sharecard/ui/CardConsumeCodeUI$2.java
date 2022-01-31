@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.card.sharecard.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.b.j;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.model.am;
@@ -9,9 +10,11 @@ final class CardConsumeCodeUI$2
 {
   CardConsumeCodeUI$2(CardConsumeCodeUI paramCardConsumeCodeUI) {}
   
-  public final void oT(int paramInt)
+  public final void td(int paramInt)
   {
-    am.aAE().I(CardConsumeCodeUI.a(this.ipJ).azB(), paramInt, 1);
+    AppMethodBeat.i(88099);
+    am.bcp().W(CardConsumeCodeUI.a(this.kqR).bbh(), paramInt, 1);
+    AppMethodBeat.o(88099);
   }
 }
 

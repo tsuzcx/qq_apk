@@ -1,117 +1,140 @@
 package com.tencent.mm.plugin.backup.i;
 
-import d.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
 import java.util.LinkedList;
 
 public final class n
   extends com.tencent.mm.bv.a
 {
   public String ID;
-  public long hQi;
-  public long hQj;
-  public long hQk;
-  public m hQl;
-  public long hQm;
-  public int hQn;
+  public long jJK;
+  public long jJL;
+  public long jJM;
+  public m jJN;
+  public long jJO;
+  public int jJP;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(18061);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.ID == null) {
-        throw new b("Not all required fields were included: ID");
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.ID == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ID");
+        AppMethodBeat.o(18061);
+        throw paramVarArgs;
       }
       if (this.ID != null) {
-        paramVarArgs.d(1, this.ID);
+        paramVarArgs.e(1, this.ID);
       }
-      paramVarArgs.Y(2, this.hQi);
-      paramVarArgs.Y(3, this.hQj);
-      paramVarArgs.Y(4, this.hQk);
-      if (this.hQl != null)
+      paramVarArgs.am(2, this.jJK);
+      paramVarArgs.am(3, this.jJL);
+      paramVarArgs.am(4, this.jJM);
+      if (this.jJN != null)
       {
-        paramVarArgs.gD(5, this.hQl.btq());
-        this.hQl.a(paramVarArgs);
+        paramVarArgs.iQ(5, this.jJN.computeSize());
+        this.jJN.writeFields(paramVarArgs);
       }
-      paramVarArgs.Y(6, this.hQm);
-      paramVarArgs.gB(7, this.hQn);
+      paramVarArgs.am(6, this.jJO);
+      paramVarArgs.aO(7, this.jJP);
+      AppMethodBeat.o(18061);
       return 0;
     }
     if (paramInt == 1) {
       if (this.ID == null) {
-        break label551;
+        break label655;
       }
     }
-    label551:
-    for (paramInt = d.a.a.b.b.a.e(1, this.ID) + 0;; paramInt = 0)
+    label655:
+    for (paramInt = e.a.a.b.b.a.f(1, this.ID) + 0;; paramInt = 0)
     {
-      int i = paramInt + d.a.a.a.X(2, this.hQi) + d.a.a.a.X(3, this.hQj) + d.a.a.a.X(4, this.hQk);
+      int i = paramInt + e.a.a.b.b.a.p(2, this.jJK) + e.a.a.b.b.a.p(3, this.jJL) + e.a.a.b.b.a.p(4, this.jJM);
       paramInt = i;
-      if (this.hQl != null) {
-        paramInt = i + d.a.a.a.gA(5, this.hQl.btq());
+      if (this.jJN != null) {
+        paramInt = i + e.a.a.a.iP(5, this.jJN.computeSize());
       }
-      return paramInt + d.a.a.a.X(6, this.hQm) + d.a.a.a.gy(7, this.hQn);
+      i = e.a.a.b.b.a.p(6, this.jJO);
+      int j = e.a.a.b.b.a.bl(7, this.jJP);
+      AppMethodBeat.o(18061);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        if (this.ID != null) {
-          break;
+        if (this.ID == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ID");
+          AppMethodBeat.o(18061);
+          throw paramVarArgs;
         }
-        throw new b("Not all required fields were included: ID");
+        AppMethodBeat.o(18061);
+        return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (d.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
         n localn = (n)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
+          AppMethodBeat.o(18061);
           return -1;
         case 1: 
-          localn.ID = ((d.a.a.a.a)localObject1).xpH.readString();
+          localn.ID = ((e.a.a.a.a)localObject1).CLY.readString();
+          AppMethodBeat.o(18061);
           return 0;
         case 2: 
-          localn.hQi = ((d.a.a.a.a)localObject1).xpH.oE();
+          localn.jJK = ((e.a.a.a.a)localObject1).CLY.sm();
+          AppMethodBeat.o(18061);
           return 0;
         case 3: 
-          localn.hQj = ((d.a.a.a.a)localObject1).xpH.oE();
+          localn.jJL = ((e.a.a.a.a)localObject1).CLY.sm();
+          AppMethodBeat.o(18061);
           return 0;
         case 4: 
-          localn.hQk = ((d.a.a.a.a)localObject1).xpH.oE();
+          localn.jJM = ((e.a.a.a.a)localObject1).CLY.sm();
+          AppMethodBeat.o(18061);
           return 0;
         case 5: 
-          paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
+          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new m();
-            localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((m)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-            localn.hQl = ((m)localObject1);
+            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((m)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
+            localn.jJN = ((m)localObject1);
             paramInt += 1;
           }
+          AppMethodBeat.o(18061);
+          return 0;
         case 6: 
-          localn.hQm = ((d.a.a.a.a)localObject1).xpH.oE();
+          localn.jJO = ((e.a.a.a.a)localObject1).CLY.sm();
+          AppMethodBeat.o(18061);
           return 0;
         }
-        localn.hQn = ((d.a.a.a.a)localObject1).xpH.oD();
+        localn.jJP = ((e.a.a.a.a)localObject1).CLY.sl();
+        AppMethodBeat.o(18061);
         return 0;
       }
+      AppMethodBeat.o(18061);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.n
  * JD-Core Version:    0.7.0.1
  */

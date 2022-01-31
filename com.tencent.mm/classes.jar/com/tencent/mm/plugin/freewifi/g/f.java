@@ -1,28 +1,38 @@
 package com.tencent.mm.plugin.freewifi.g;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.protocal.c.zk;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 
 public final class f
-  extends i<e>
+  extends j<e>
 {
-  public static final String[] dXp = { i.a(e.buS, "FreeWifiLog"), "CREATE INDEX IF NOT EXISTS idx_FreeWifiLog_key  on FreeWifiLog  (  id )" };
-  public static LinkedHashMap<String, Class> kqA = new f.1();
+  public static final String[] SQL_CREATE;
+  public static LinkedHashMap<String, Class> mMm;
+  
+  static
+  {
+    AppMethodBeat.i(20888);
+    SQL_CREATE = new String[] { j.getCreateSQLs(e.info, "FreeWifiLog"), "CREATE INDEX IF NOT EXISTS idx_FreeWifiLog_key  on FreeWifiLog  (  id )" };
+    mMm = new f.1();
+    AppMethodBeat.o(20888);
+  }
   
   public f(com.tencent.mm.sdk.e.e parame)
   {
-    super(parame, e.buS, "FreeWifiLog", null);
+    super(parame, e.info, "FreeWifiLog", null);
   }
   
   public final boolean a(String paramString1, int paramInt, String paramString2, long paramLong)
   {
-    y.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "save. id=%s, protocolNumber=%d, logContent=%s, createTime=%d", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2, Long.valueOf(paramLong) });
-    if (m.isEmpty(paramString1)) {
+    AppMethodBeat.i(20887);
+    ab.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "save. id=%s, protocolNumber=%d, logContent=%s, createTime=%d", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2, Long.valueOf(paramLong) });
+    if (m.isEmpty(paramString1))
+    {
+      AppMethodBeat.o(20887);
       return false;
     }
     Cursor localCursor = rawQuery("select * from FreeWifiLog where id = '" + paramString1 + "'", new String[0]);
@@ -35,42 +45,24 @@ public final class f
       locale.field_createTime = paramLong;
       if (localCursor.getCount() == 0)
       {
-        bool = b(locale);
-        y.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "insert ret" + bool);
+        bool = insert(locale);
+        ab.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "insert ret".concat(String.valueOf(bool)));
         return bool;
       }
-      boolean bool = c(locale, new String[0]);
-      y.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "update ret" + bool);
+      boolean bool = update(locale, new String[0]);
+      ab.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "update ret".concat(String.valueOf(bool)));
       return bool;
     }
     catch (Exception paramString1)
     {
-      y.e("MicroMsg.FreeWifi.FreeWifiLogStorage", m.g(paramString1));
+      ab.e("MicroMsg.FreeWifi.FreeWifiLogStorage", m.f(paramString1));
       return false;
     }
     finally
     {
       localCursor.close();
+      AppMethodBeat.o(20887);
     }
-  }
-  
-  public final LinkedList<zk> aUM()
-  {
-    Cursor localCursor = rawQuery("select id, protocolNumber, logContent, createTime from FreeWifiLog", new String[0]);
-    LinkedList localLinkedList = new LinkedList();
-    while ((localCursor != null) && (localCursor.moveToNext()))
-    {
-      zk localzk = new zk();
-      localzk.id = localCursor.getString(0);
-      localzk.kpu = localCursor.getInt(1);
-      localzk.sYJ = localCursor.getString(2);
-      localzk.sYK = localCursor.getLong(3);
-      localLinkedList.add(localzk);
-    }
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    return localLinkedList;
   }
 }
 

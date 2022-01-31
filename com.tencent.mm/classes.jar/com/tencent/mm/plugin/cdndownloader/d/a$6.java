@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.cdndownloader.d;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$6
   implements Runnable
@@ -9,10 +10,12 @@ final class a$6
   
   public final void run()
   {
-    synchronized ()
+    AppMethodBeat.i(898);
+    synchronized (a.access$800())
     {
-      y.i("MicroMsg.CDNDownloadClient", "queryDownloadTaskSync, notify after 10000ms");
-      a.Tb().notifyAll();
+      ab.i("MicroMsg.CDNDownloadClient", "queryDownloadTaskSync, notify after 10000ms");
+      a.access$800().notifyAll();
+      AppMethodBeat.o(898);
       return;
     }
   }

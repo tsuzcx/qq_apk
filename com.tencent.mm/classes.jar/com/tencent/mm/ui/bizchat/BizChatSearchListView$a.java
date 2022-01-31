@@ -2,7 +2,7 @@ package com.tencent.mm.ui.bizchat;
 
 public abstract interface BizChatSearchListView$a
 {
-  public abstract boolean axC();
+  public abstract boolean aWA();
 }
 
 

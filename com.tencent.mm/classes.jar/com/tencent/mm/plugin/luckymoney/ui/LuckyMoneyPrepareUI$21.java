@@ -1,17 +1,26 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.luckymoney.model.ao;
 
 final class LuckyMoneyPrepareUI$21
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  LuckyMoneyPrepareUI$21(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
+  LuckyMoneyPrepareUI$21(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI, m paramm) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LuckyMoneyPrepareUI.u(this.lXg).setVisibility(8);
-    this.lXg.bgc();
+    AppMethodBeat.i(142075);
+    if (ao.k(this.ckS))
+    {
+      this.owL.finish();
+      AppMethodBeat.o(142075);
+      return;
+    }
+    AppMethodBeat.o(142075);
   }
 }
 

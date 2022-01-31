@@ -1,36 +1,42 @@
 package com.tencent.mm.plugin.fts.b;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.h;
 import java.util.LinkedList;
 
 final class e$a
   extends com.tencent.mm.plugin.fts.a.a.a
 {
-  int kzx;
-  int kzy;
+  int mVn;
+  int mVo;
   
   private e$a(e parame) {}
   
-  public final String afJ()
+  public final String aAn()
   {
-    return String.format("{topHitsUpdateCount: %d deleteExpiredCount: %d}", new Object[] { Integer.valueOf(this.kzy), Integer.valueOf(this.kzx) });
+    AppMethodBeat.i(136778);
+    String str = String.format("{topHitsUpdateCount: %d deleteExpiredCount: %d}", new Object[] { Integer.valueOf(this.mVo), Integer.valueOf(this.mVn) });
+    AppMethodBeat.o(136778);
+    return str;
   }
   
   public final boolean execute()
   {
-    this.kzy = this.kzz.kzv.aVT();
+    AppMethodBeat.i(136777);
+    this.mVo = this.mVp.mVl.bCw();
     long l = System.currentTimeMillis();
-    com.tencent.mm.plugin.fts.c.e locale = this.kzz.kzv;
-    Object localObject = String.format("SELECT docid FROM %s WHERE timestamp < ? OR score = 0;", new Object[] { locale.aVs() });
-    localObject = locale.kuE.rawQuery((String)localObject, new String[] { String.valueOf(l - 5184000000L) });
+    com.tencent.mm.plugin.fts.c.e locale = this.mVp.mVl;
+    Object localObject = String.format("SELECT docid FROM %s WHERE timestamp < ? OR score = 0;", new Object[] { locale.bBR() });
+    localObject = locale.mQr.rawQuery((String)localObject, new String[] { String.valueOf(l - 5184000000L) });
     LinkedList localLinkedList = new LinkedList();
     while (((Cursor)localObject).moveToNext()) {
       localLinkedList.add(Long.valueOf(((Cursor)localObject).getLong(0)));
     }
     ((Cursor)localObject).close();
-    locale.by(localLinkedList);
-    this.kzx = localLinkedList.size();
+    locale.bS(localLinkedList);
+    this.mVn = localLinkedList.size();
+    AppMethodBeat.o(136777);
     return true;
   }
   
@@ -41,7 +47,7 @@ final class e$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.ui.widget.snackbar;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Queue;
 
 final class SnackContainer$2
@@ -11,27 +12,32 @@ final class SnackContainer$2
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    this.wqa.removeAllViews();
-    if (!SnackContainer.b(this.wqa).isEmpty()) {
-      SnackContainer.c((SnackContainer.a)SnackContainer.b(this.wqa).poll());
+    AppMethodBeat.i(112993);
+    this.AKD.removeAllViews();
+    if (!SnackContainer.b(this.AKD).isEmpty()) {
+      SnackContainer.d((SnackContainer.a)SnackContainer.b(this.AKD).poll());
     }
-    if (!this.wqa.isEmpty())
+    if (!this.AKD.isEmpty())
     {
-      SnackContainer.a(this.wqa, (SnackContainer.a)SnackContainer.b(this.wqa).peek());
+      SnackContainer.a(this.AKD, (SnackContainer.a)SnackContainer.b(this.AKD).peek());
+      AppMethodBeat.o(112993);
       return;
     }
-    this.wqa.setVisibility(8);
+    this.AKD.setVisibility(8);
+    AppMethodBeat.o(112993);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    if ((!this.wqa.isEmpty()) && (SnackContainer.b(this.wqa).peek() != null) && (((SnackContainer.a)SnackContainer.b(this.wqa).peek()).wqg != null))
+    AppMethodBeat.i(112992);
+    if ((!this.AKD.isEmpty()) && (SnackContainer.b(this.AKD).peek() != null) && (((SnackContainer.a)SnackContainer.b(this.AKD).peek()).AKJ != null))
     {
-      b.nZ(false);
-      ((SnackContainer.a)SnackContainer.b(this.wqa).peek()).wqg.bSd();
+      b.rJ(false);
+      ((SnackContainer.a)SnackContainer.b(this.AKD).peek()).AKJ.cPa();
     }
+    AppMethodBeat.o(112992);
   }
 }
 

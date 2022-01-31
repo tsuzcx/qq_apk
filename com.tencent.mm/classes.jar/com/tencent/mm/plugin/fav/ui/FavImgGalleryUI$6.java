@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavImgGalleryUI$6
-  implements DialogInterface.OnCancelListener
+  implements MenuItem.OnMenuItemClickListener
 {
   FavImgGalleryUI$6(FavImgGalleryUI paramFavImgGalleryUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    FavImgGalleryUI.c(this.kbW);
+    AppMethodBeat.i(74005);
+    this.mwu.finish();
+    AppMethodBeat.o(74005);
+    return true;
   }
 }
 

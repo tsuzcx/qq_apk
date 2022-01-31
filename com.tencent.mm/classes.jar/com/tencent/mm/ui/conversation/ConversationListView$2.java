@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.conversation;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ConversationListView$2
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class ConversationListView$2
   
   public final void run()
   {
-    this.vQR.setSelection(1);
+    AppMethodBeat.i(34211);
+    this.AiQ.smoothScrollToPositionFromTop(0, 0, 300);
+    AppMethodBeat.o(34211);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.ConversationListView.2
  * JD-Core Version:    0.7.0.1
  */

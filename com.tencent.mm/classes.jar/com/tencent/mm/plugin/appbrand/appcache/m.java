@@ -1,28 +1,16 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class m
-  implements t.b
+final class m
 {
-  private static final ConcurrentHashMap<String, Boolean> fCm = new ConcurrentHashMap();
+  static final z.a gUk;
   
-  public static void qT(String paramString)
+  static
   {
-    if (bk.bl(paramString)) {
-      return;
-    }
-    fCm.put(paramString, Boolean.valueOf(true));
-  }
-  
-  public final t.a a(a parama)
-  {
-    if ((ak.class == parama.getClass()) || (ae.class == parama.getClass()) || (af.class == parama.getClass())) {
-      return new m.a(parama, (byte)0);
-    }
-    return null;
+    AppMethodBeat.i(59438);
+    gUk = new m.1();
+    AppMethodBeat.o(59438);
   }
 }
 

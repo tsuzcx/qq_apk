@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.wallet_payu.bind.model;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet.bind.a;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardDetailUI;
 import com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUBankcardDetailUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUCheckPwdUI;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.t;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 
@@ -18,33 +18,45 @@ public class d
 {
   public final g a(MMActivity paramMMActivity, i parami)
   {
-    if ((paramMMActivity instanceof WalletPayUCheckPwdUI)) {
-      return new d.1(this, paramMMActivity, parami);
+    AppMethodBeat.i(48352);
+    if ((paramMMActivity instanceof WalletPayUCheckPwdUI))
+    {
+      paramMMActivity = new d.1(this, paramMMActivity, parami);
+      AppMethodBeat.o(48352);
+      return paramMMActivity;
     }
-    return super.a(paramMMActivity, parami);
+    paramMMActivity = super.a(paramMMActivity, parami);
+    AppMethodBeat.o(48352);
+    return paramMMActivity;
   }
   
   public final void a(Activity paramActivity, int paramInt, Bundle paramBundle)
   {
-    if ((paramActivity instanceof WalletBankcardDetailUI)) {
+    AppMethodBeat.i(48351);
+    if ((paramActivity instanceof WalletBankcardDetailUI))
+    {
       b(paramActivity, WalletPayUCheckPwdUI.class, paramBundle);
-    }
-    while (!(paramActivity instanceof WalletPayUCheckPwdUI)) {
+      AppMethodBeat.o(48351);
       return;
     }
-    b(paramActivity, paramBundle);
+    if ((paramActivity instanceof WalletPayUCheckPwdUI)) {
+      b(paramActivity, paramBundle);
+    }
+    AppMethodBeat.o(48351);
   }
   
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
-    if (this.kke.getInt("key_errcode_payu", -1) == 0) {
-      s.makeText(paramActivity, a.i.wallet_order_info_result_success, 0).show();
+    AppMethodBeat.i(48350);
+    if (this.mEJ.getInt("key_errcode_payu", -1) == 0) {
+      t.makeText(paramActivity, 2131305355, 0).show();
     }
     for (;;)
     {
       d(paramActivity, "mall", ".ui.MallIndexUI");
+      AppMethodBeat.o(48350);
       return;
-      s.makeText(paramActivity, a.i.wallet_err_wording_comm_failed, 0).show();
+      t.makeText(paramActivity, 2131305060, 0).show();
     }
   }
   
@@ -53,14 +65,16 @@ public class d
     return false;
   }
   
-  protected final void d(Activity paramActivity, Bundle paramBundle)
+  public final void d(Activity paramActivity, Bundle paramBundle)
   {
+    AppMethodBeat.i(48349);
     b(paramActivity, WalletPayUBankcardDetailUI.class, paramBundle);
+    AppMethodBeat.o(48349);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.model.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.plugin.webview.model.ag;
-import com.tencent.mm.plugin.webview.model.d.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.permission.a;
 
 final class g$65
-  implements DialogInterface.OnCancelListener
+  implements a
 {
-  g$65(g paramg, d.b paramb, String paramString, i parami) {}
+  g$65(g paramg, i parami) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void eb(boolean paramBoolean)
   {
-    com.tencent.mm.plugin.webview.modeltools.g.ccK().a(this.rAc);
-    com.tencent.mm.plugin.webview.modeltools.g.ccK();
-    ag.Sh(this.rAb);
-    g.a(this.rzi, this.rzk, "downloadImage:fail", null);
+    AppMethodBeat.i(154986);
+    if (paramBoolean)
+    {
+      this.vqm.a(this.uZa, "install_download_task:ok", null);
+      AppMethodBeat.o(154986);
+      return;
+    }
+    this.vqm.a(this.uZa, "install_download_task:fail", null);
+    AppMethodBeat.o(154986);
   }
 }
 

@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bt;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.bv;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.account.a.a.a;
+import com.tencent.mm.plugin.account.friend.a.ao;
 import com.tencent.mm.plugin.account.friend.a.ap;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 
@@ -15,62 +18,67 @@ final class e$2
 {
   e$2(e parame) {}
   
-  public final void T(String paramString, boolean paramBoolean)
+  public final void X(String paramString, boolean paramBoolean)
   {
+    AppMethodBeat.i(108591);
     if (paramBoolean)
     {
-      com.tencent.mm.plugin.account.friend.a.ao localao = ((ap)((a)g.t(a.class)).getQQListStg()).pR(paramString);
+      ao localao = ((ap)((a)g.G(a.class)).getQQListStg()).xn(paramString);
       if (localao == null) {
-        break label99;
+        break label109;
       }
-      localao.Xo();
-      y.d("MicroMsg.QQFriendAdapter", "user " + paramString + " qq " + localao.fgW);
-      ((ap)((a)g.t(a.class)).getQQListStg()).a(localao.fgW, localao);
+      localao.aqS();
+      ab.d("MicroMsg.QQFriendAdapter", "user " + paramString + " qq " + localao.gyE);
+      ((ap)((a)g.G(a.class)).getQQListStg()).a(localao.gyE, localao);
     }
     for (;;)
     {
-      this.fie.notifyDataSetChanged();
+      this.gzL.notifyDataSetChanged();
+      AppMethodBeat.o(108591);
       return;
-      label99:
-      y.w("MicroMsg.QQFriendAdapter", "[cpan] dealFail failed. qqlist is null. username is :%s", new Object[] { paramString });
+      label109:
+      ab.w("MicroMsg.QQFriendAdapter", "[cpan] dealFail failed. qqlist is null. username is :%s", new Object[] { String.valueOf(paramString) });
     }
   }
   
-  public final void pS(String paramString)
+  public final void xo(String paramString)
   {
-    Object localObject = (ap)((a)g.t(a.class)).getQQListStg();
-    com.tencent.mm.plugin.account.friend.a.ao localao = ((ap)localObject).pR(paramString);
+    AppMethodBeat.i(108590);
+    Object localObject = (ap)((a)g.G(a.class)).getQQListStg();
+    ao localao = ((ap)localObject).xn(paramString);
     if (localao == null)
     {
-      y.w("MicroMsg.QQFriendAdapter", "[cpan] dealSucc failed. qqlist is null. username is :%s", new Object[] { paramString });
+      ab.w("MicroMsg.QQFriendAdapter", "[cpan] dealSucc failed. qqlist is null. username is :%s", new Object[] { String.valueOf(paramString) });
+      AppMethodBeat.o(108590);
       return;
     }
-    localao.fgX = 2;
-    ((ap)localObject).a(localao.fgW, localao);
-    this.fie.notifyDataSetChanged();
-    localObject = ((j)g.r(j.class)).Fw().abl(paramString);
+    localao.gyF = 2;
+    ((ap)localObject).a(localao.gyE, localao);
+    this.gzL.notifyDataSetChanged();
+    localObject = ((j)g.E(j.class)).YA().arw(paramString);
     if (localObject != null) {
-      if (((((com.tencent.mm.h.c.ao)localObject).field_conRemark == null) || (((com.tencent.mm.h.c.ao)localObject).field_conRemark.equals(""))) && (localao != null) && (localao.Xl() != null) && (!localao.Xl().equals(""))) {
-        s.b((ad)localObject, localao.Xl());
+      if (((((aq)localObject).field_conRemark == null) || (((aq)localObject).field_conRemark.equals(""))) && (localao != null) && (localao.aqP() != null) && (!localao.aqP().equals(""))) {
+        t.b((ad)localObject, localao.aqP());
       }
     }
     for (;;)
     {
-      bt.If().d(26, new Object[0]);
+      bv.abc().c(26, new Object[0]);
+      AppMethodBeat.o(108590);
       return;
-      localao = ((ap)((a)g.t(a.class)).getQQListStg()).pR(paramString);
+      localao = ((ap)((a)g.G(a.class)).getQQListStg()).xn(paramString);
       if (localao != null)
       {
-        localao.Xo();
-        y.d("MicroMsg.QQFriendAdapter", "user " + paramString + " qq " + localao.fgW);
-        ((ap)((a)g.t(a.class)).getQQListStg()).a(localao.fgW, localao);
+        localao.aqS();
+        ab.d("MicroMsg.QQFriendAdapter", "user " + paramString + " qq " + localao.gyE);
+        ((ap)((a)g.G(a.class)).getQQListStg()).a(localao.gyE, localao);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.e.2
  * JD-Core Version:    0.7.0.1
  */

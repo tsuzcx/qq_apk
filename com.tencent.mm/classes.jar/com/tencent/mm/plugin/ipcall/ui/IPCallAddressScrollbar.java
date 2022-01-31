@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import com.tencent.mm.R.i;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 
 public class IPCallAddressScrollbar
@@ -13,21 +12,21 @@ public class IPCallAddressScrollbar
     super(paramContext, paramAttributeSet);
   }
   
-  protected int getToastLayoutId()
+  public final void Kr()
   {
-    return R.i.show_head_toast;
+    this.nSx = new String[] { "↑", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
+    this.nSv = 1.3F;
+    this.nSw = 66;
   }
   
-  protected final void xZ()
+  public int getToastLayoutId()
   {
-    this.lvg = new String[] { "↑", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-    this.lve = 1.3F;
-    this.lvf = 79;
+    return 2130970734;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallAddressScrollbar
  * JD-Core Version:    0.7.0.1
  */

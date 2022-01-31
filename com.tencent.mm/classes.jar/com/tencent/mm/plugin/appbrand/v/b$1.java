@@ -1,23 +1,25 @@
 package com.tencent.mm.plugin.appbrand.v;
 
-import com.tencent.mm.plugin.appbrand.jsapi.q;
-import com.tencent.mm.sdk.platformtools.ay.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.d.a.l.b;
+import com.tencent.mm.d.a.t.a;
 
 final class b$1
-  implements ay.a
+  implements l.b
 {
-  b$1(b paramb) {}
+  b$1(b paramb, t.a parama, long paramLong) {}
   
-  public final void aqt()
+  public final void dO(String paramString)
   {
-    y.i("MicroMsg.AppBrandUserCaptureScreenMonitor", "onScreenShot callback");
-    q.f(this.hld.geu);
+    AppMethodBeat.i(140990);
+    System.currentTimeMillis();
+    this.jxm.a(this.jxl, this.bBo);
+    AppMethodBeat.o(140990);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.v.b.1
  * JD-Core Version:    0.7.0.1
  */

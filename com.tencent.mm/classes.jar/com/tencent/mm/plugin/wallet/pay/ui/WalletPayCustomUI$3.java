@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
-import com.tencent.mm.plugin.wallet_core.ui.n.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.ui.p.a;
 
 final class WalletPayCustomUI$3
-  implements n.a
+  implements p.a
 {
   WalletPayCustomUI$3(WalletPayCustomUI paramWalletPayCustomUI) {}
   
-  public final void bqo()
+  public final void bYU()
   {
-    this.qmU.finish();
+    AppMethodBeat.i(46011);
+    this.tWl.finish();
+    AppMethodBeat.o(46011);
   }
 }
 

@@ -1,16 +1,24 @@
 package com.tencent.mm.plugin.downloader_app;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.plugin.downloader_app.c.c;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pointers.PBool;
 
 final class a$5
-  implements h.d
+  implements DialogInterface.OnClickListener
 {
-  a$5(a parama) {}
+  a$5(a parama, DialogInterface.OnClickListener paramOnClickListener, PBool paramPBool, String paramString) {}
   
-  public final String[] rK()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return c.dXp;
+    AppMethodBeat.i(136009);
+    if (this.kZT != null) {
+      this.kZT.onClick(paramDialogInterface, paramInt);
+    }
+    this.kZR.value = true;
+    com.tencent.mm.plugin.downloader_app.c.a.a(15, 1502, 1, 3, this.val$appId, "", "");
+    AppMethodBeat.o(136009);
   }
 }
 

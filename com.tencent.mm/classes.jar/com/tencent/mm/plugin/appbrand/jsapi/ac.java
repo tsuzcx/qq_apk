@@ -1,79 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.luggage.j.h;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONObject;
 
-public class ac
-  extends b
+public final class ac
+  extends JsApiUploadWeRunData
 {
-  private c fLx;
-  private String gfR;
-  private Map<String, Object> gfS;
-  int gfT;
+  public static final int CTRL_INDEX = 324;
+  public static final String NAME = "addWeRunData";
   
-  public ac b(c paramc, int paramInt)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    e(paramc);
-    this.gfT = paramInt;
-    return this;
-  }
-  
-  public final void dispatch()
-  {
-    if (this.fLx == null) {
+    AppMethodBeat.i(130391);
+    ab.d("MicroMsg.JsApiAddWeRunData", "JsApiAddWeRunData!");
+    if (paramJSONObject == null)
+    {
+      paramc.h(paramInt, j("fail:data is null", null));
+      ab.e("MicroMsg.JsApiAddWeRunData", "data is null");
+      AppMethodBeat.o(130391);
       return;
     }
-    this.fLx.a(this);
-  }
-  
-  public ac e(c paramc)
-  {
-    if (paramc == null) {
-      return this;
-    }
-    this.fLx = paramc;
-    this.gfT = 0;
-    return this;
-  }
-  
-  final String getData()
-  {
-    if (this.gfR != null) {
-      return this.gfR;
-    }
-    if (this.gfS != null)
-    {
-      h.c(this.gfS);
-      return new JSONObject(this.gfS).toString();
-    }
-    return null;
-  }
-  
-  public final ac l(String paramString, Object paramObject)
-  {
-    if (this.gfS == null) {
-      this.gfS = new HashMap();
-    }
-    this.gfS.put(paramString, paramObject);
-    return this;
-  }
-  
-  public ac p(Map<String, Object> paramMap)
-  {
-    if (paramMap == null) {
-      return this;
-    }
-    h.c(paramMap);
-    this.gfS = paramMap;
-    return this;
-  }
-  
-  public ac tM(String paramString)
-  {
-    this.gfR = paramString;
-    return this;
+    a(this, paramc, paramInt, paramJSONObject.optInt("step"), true);
+    AppMethodBeat.o(130391);
   }
 }
 

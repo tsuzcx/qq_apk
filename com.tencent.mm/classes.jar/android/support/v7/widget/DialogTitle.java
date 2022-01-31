@@ -2,9 +2,11 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.a.a.j;
+import android.support.v4.widget.q;
+import android.support.v7.a.a.a;
 import android.text.Layout;
 import android.util.AttributeSet;
+import android.view.ActionMode.Callback;
 import android.widget.TextView;
 
 public class DialogTitle
@@ -31,8 +33,8 @@ public class DialogTitle
       {
         setSingleLine(false);
         setMaxLines(2);
-        localObject = getContext().obtainStyledAttributes(null, a.j.TextAppearance, 16842817, 16973892);
-        i = ((TypedArray)localObject).getDimensionPixelSize(a.j.TextAppearance_android_textSize, 0);
+        localObject = getContext().obtainStyledAttributes(null, a.a.TextAppearance, 16842817, 16973892);
+        i = ((TypedArray)localObject).getDimensionPixelSize(0, 0);
         if (i != 0) {
           setTextSize(0, i);
         }
@@ -40,6 +42,11 @@ public class DialogTitle
         super.onMeasure(paramInt1, paramInt2);
       }
     }
+  }
+  
+  public void setCustomSelectionActionModeCallback(ActionMode.Callback paramCallback)
+  {
+    super.setCustomSelectionActionModeCallback(q.a(this, paramCallback));
   }
 }
 

@@ -1,29 +1,32 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.widget.TextView;
-import com.tencent.mm.model.q;
-import com.tencent.mm.ui.r.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
+import com.tencent.mm.ui.p.a;
 
 final class FacebookFriendUI$5
-  implements r.a
+  implements p.a
 {
   FacebookFriendUI$5(FacebookFriendUI paramFacebookFriendUI, TextView paramTextView) {}
   
-  public final void Wp()
+  public final void apT()
   {
-    if ((q.GL()) && (FacebookFriendUI.a(this.flO)))
+    AppMethodBeat.i(124811);
+    if ((r.ZP()) && (FacebookFriendUI.a(this.gDg)))
     {
-      if (FacebookFriendUI.b(this.flO).getCount() != 0) {
-        break label46;
+      if (FacebookFriendUI.b(this.gDg).getCount() != 0) {
+        break label56;
       }
-      this.flP.setVisibility(0);
+      this.gDh.setVisibility(0);
     }
     for (;;)
     {
-      FacebookFriendUI.c(this.flO);
+      FacebookFriendUI.c(this.gDg);
+      AppMethodBeat.o(124811);
       return;
-      label46:
-      this.flP.setVisibility(8);
+      label56:
+      this.gDh.setVisibility(8);
     }
   }
 }

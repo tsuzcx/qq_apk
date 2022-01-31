@@ -4,14 +4,14 @@ import com.tencent.tinker.a.a.b.a;
 
 public final class m
 {
+  protected final a Bpu;
+  public int Bpv;
+  private int Bpw;
   private int type = -1;
-  protected final a wSN;
-  public int wSO;
-  private int wSP;
   
   public m(a parama, int paramInt)
   {
-    this.wSN = parama;
+    this.Bpu = parama;
     this.type = paramInt;
   }
   
@@ -20,112 +20,112 @@ public final class m
     this(new k.1(paramk), paramInt);
   }
   
-  private void Jy(int paramInt)
+  private void St(int paramInt)
   {
-    if (cQn() != paramInt) {
-      throw new IllegalStateException(String.format("Expected %x but was %x", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(cQn()) }));
+    if (dWb() != paramInt) {
+      throw new IllegalStateException(String.format("Expected %x but was %x", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(dWb()) }));
     }
   }
   
-  public final int cQn()
+  public final int dWb()
   {
     if (this.type == -1)
     {
-      int i = this.wSN.readByte() & 0xFF;
+      int i = this.Bpu.readByte() & 0xFF;
       this.type = (i & 0x1F);
-      this.wSP = ((i & 0xE0) >> 5);
+      this.Bpw = ((i & 0xE0) >> 5);
     }
     return this.type;
   }
   
-  public final int cQo()
+  public final int dWc()
   {
-    Jy(28);
+    St(28);
     this.type = -1;
-    return o.b(this.wSN);
+    return o.b(this.Bpu);
   }
   
-  public final int cQp()
+  public final int dWd()
   {
-    Jy(29);
+    St(29);
     this.type = -1;
-    this.wSO = o.b(this.wSN);
-    return o.b(this.wSN);
+    this.Bpv = o.b(this.Bpu);
+    return o.b(this.Bpu);
   }
   
-  public final int cQq()
+  public final int dWe()
   {
-    return o.b(this.wSN);
+    return o.b(this.Bpu);
   }
   
-  public final int cQr()
+  public final int dWf()
   {
-    Jy(23);
+    St(23);
     this.type = -1;
-    return l.a(this.wSN, this.wSP, false);
+    return l.a(this.Bpu, this.Bpw, false);
   }
   
-  public final int cQs()
+  public final int dWg()
   {
-    Jy(24);
+    St(24);
     this.type = -1;
-    return l.a(this.wSN, this.wSP, false);
+    return l.a(this.Bpu, this.Bpw, false);
   }
   
-  public final int cQt()
+  public final int dWh()
   {
-    Jy(25);
+    St(25);
     this.type = -1;
-    return l.a(this.wSN, this.wSP, false);
+    return l.a(this.Bpu, this.Bpw, false);
   }
   
-  public final int cQu()
+  public final int dWi()
   {
-    Jy(27);
+    St(27);
     this.type = -1;
-    return l.a(this.wSN, this.wSP, false);
+    return l.a(this.Bpu, this.Bpw, false);
   }
   
-  public final int cQv()
+  public final int dWj()
   {
-    Jy(26);
+    St(26);
     this.type = -1;
-    return l.a(this.wSN, this.wSP, false);
+    return l.a(this.Bpu, this.Bpw, false);
   }
   
-  public final void cQw()
+  public final void dWk()
   {
-    Jy(30);
+    St(30);
     this.type = -1;
   }
   
   public final boolean readBoolean()
   {
-    Jy(31);
+    St(31);
     this.type = -1;
-    return this.wSP != 0;
+    return this.Bpw != 0;
   }
   
   public final byte readByte()
   {
-    Jy(0);
+    St(0);
     this.type = -1;
-    return (byte)l.a(this.wSN, this.wSP);
+    return (byte)l.a(this.Bpu, this.Bpw);
   }
   
   public final char readChar()
   {
-    Jy(3);
+    St(3);
     this.type = -1;
-    return (char)l.a(this.wSN, this.wSP, false);
+    return (char)l.a(this.Bpu, this.Bpw, false);
   }
   
   public final double readDouble()
   {
-    Jy(17);
+    St(17);
     this.type = -1;
-    a locala = this.wSN;
-    int i = this.wSP;
+    a locala = this.Bpu;
+    int i = this.Bpw;
     long l = 0L;
     while (i >= 0)
     {
@@ -137,24 +137,24 @@ public final class m
   
   public final float readFloat()
   {
-    Jy(16);
+    St(16);
     this.type = -1;
-    return Float.intBitsToFloat(l.a(this.wSN, this.wSP, true));
+    return Float.intBitsToFloat(l.a(this.Bpu, this.Bpw, true));
   }
   
   public final int readInt()
   {
-    Jy(4);
+    St(4);
     this.type = -1;
-    return l.a(this.wSN, this.wSP);
+    return l.a(this.Bpu, this.Bpw);
   }
   
   public final long readLong()
   {
-    Jy(6);
+    St(6);
     this.type = -1;
-    a locala = this.wSN;
-    int j = this.wSP;
+    a locala = this.Bpu;
+    int j = this.Bpw;
     long l = 0L;
     int i = j;
     while (i >= 0)
@@ -167,16 +167,16 @@ public final class m
   
   public final short readShort()
   {
-    Jy(2);
+    St(2);
     this.type = -1;
-    return (short)l.a(this.wSN, this.wSP);
+    return (short)l.a(this.Bpu, this.Bpw);
   }
   
   public final void skipValue()
   {
     int j = 0;
     int i = 0;
-    switch (cQn())
+    switch (dWb())
     {
     case 1: 
     case 5: 
@@ -218,38 +218,38 @@ public final class m
       readDouble();
       return;
     case 23: 
-      cQr();
+      dWf();
       return;
     case 24: 
-      cQs();
+      dWg();
       return;
     case 25: 
-      cQt();
+      dWh();
       return;
     case 27: 
-      cQu();
+      dWi();
       return;
     case 26: 
-      cQv();
+      dWj();
       return;
     case 28: 
-      j = cQo();
+      j = dWc();
       while (i < j)
       {
         skipValue();
         i += 1;
       }
     case 29: 
-      int k = cQp();
+      int k = dWd();
       i = j;
       while (i < k)
       {
-        o.b(this.wSN);
+        o.b(this.Bpu);
         skipValue();
         i += 1;
       }
     case 30: 
-      cQw();
+      dWk();
       return;
     }
     readBoolean();
@@ -257,7 +257,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.a.a.m
  * JD-Core Version:    0.7.0.1
  */

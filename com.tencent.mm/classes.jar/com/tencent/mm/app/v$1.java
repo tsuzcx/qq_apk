@@ -1,43 +1,36 @@
 package com.tencent.mm.app;
 
-import android.content.res.Resources;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.pe;
-import com.tencent.mm.model.s;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.pluginsdk.model.app.l;
-import com.tencent.mm.pluginsdk.ui.applet.q.a;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cn.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class v$1
-  implements q.a
+  implements ap.a
 {
-  v$1(v paramv, WXMediaMessage paramWXMediaMessage, String paramString1, String paramString2, String paramString3, MMActivity paramMMActivity) {}
+  v$1(v paramv) {}
   
-  public final void a(boolean paramBoolean, String paramString, int paramInt)
+  public final boolean onTimerExpired()
   {
-    if (!paramBoolean) {
-      return;
-    }
-    l.a(this.bya, this.val$appId, this.byb, this.bxX, 3, null);
-    if (!bk.bl(paramString))
+    AppMethodBeat.i(153473);
+    String str = bo.ch(ah.getContext());
+    if ((str != null) && (str.toLowerCase().startsWith(ah.getPackageName())))
     {
-      pe localpe = new pe();
-      localpe.bYQ.bYR = this.bxX;
-      localpe.bYQ.content = paramString;
-      localpe.bYQ.type = s.hW(this.bxX);
-      localpe.bYQ.flags = 0;
-      a.udP.m(localpe);
+      ab.i("MicroMsg.TempAppForegroundNotifyDeprecated", "onTimerExpired, top activity belongs to mm, skip kill tools");
+      AppMethodBeat.o(153473);
+      return false;
     }
-    com.tencent.mm.ui.base.h.bC(this.byc, this.byc.getResources().getString(R.l.app_shared));
-    com.tencent.mm.plugin.report.service.h.nFQ.aC(10910, "2");
+    ab.i("MicroMsg.TempAppForegroundNotifyDeprecated", "onTimerExpired, kill tools process");
+    d.awm("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
+    AppMethodBeat.o(153473);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.v.1
  * JD-Core Version:    0.7.0.1
  */

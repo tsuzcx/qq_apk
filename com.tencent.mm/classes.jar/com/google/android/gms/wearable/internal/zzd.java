@@ -2,66 +2,100 @@ package com.google.android.gms.wearable.internal;
 
 import android.content.IntentFilter;
 import android.os.IBinder;
+import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
+import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import javax.annotation.Nullable;
 
-public class zzd
-  implements Parcelable.Creator<zzc>
+@SafeParcelable.Class(creator="AddListenerRequestCreator")
+@SafeParcelable.Reserved({1})
+public final class zzd
+  extends AbstractSafeParcelable
 {
-  static void zza(zzc paramzzc, Parcel paramParcel, int paramInt)
+  public static final Parcelable.Creator<zzd> CREATOR;
+  @SafeParcelable.Field(getter="getListenerAsBinder", id=2, type="android.os.IBinder")
+  private final zzem zzaz;
+  @SafeParcelable.Field(id=3)
+  private final IntentFilter[] zzba;
+  @Nullable
+  @SafeParcelable.Field(id=4)
+  private final String zzbb;
+  @Nullable
+  @SafeParcelable.Field(id=5)
+  private final String zzbc;
+  
+  static
   {
-    int i = com.google.android.gms.common.internal.safeparcel.zzc.zzaZ(paramParcel);
-    com.google.android.gms.common.internal.safeparcel.zzc.zza(paramParcel, 2, paramzzc.zzAg(), false);
-    com.google.android.gms.common.internal.safeparcel.zzc.zza(paramParcel, 3, paramzzc.zzbTC, paramInt, false);
-    com.google.android.gms.common.internal.safeparcel.zzc.zza(paramParcel, 4, paramzzc.zzbTD, false);
-    com.google.android.gms.common.internal.safeparcel.zzc.zza(paramParcel, 5, paramzzc.zzbTE, false);
-    com.google.android.gms.common.internal.safeparcel.zzc.zzJ(paramParcel, i);
+    AppMethodBeat.i(71186);
+    CREATOR = new zze();
+    AppMethodBeat.o(71186);
   }
   
-  public zzc zzkN(Parcel paramParcel)
+  @SafeParcelable.Constructor
+  zzd(@SafeParcelable.Param(id=2) IBinder paramIBinder, @SafeParcelable.Param(id=3) IntentFilter[] paramArrayOfIntentFilter, @SafeParcelable.Param(id=4) @Nullable String paramString1, @SafeParcelable.Param(id=5) @Nullable String paramString2)
   {
-    int i = zzb.zzaY(paramParcel);
-    String str2 = null;
-    String str1 = null;
-    IntentFilter[] arrayOfIntentFilter = null;
-    IBinder localIBinder = null;
-    while (paramParcel.dataPosition() < i)
-    {
-      int j = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(j))
-      {
-      default: 
-        zzb.zzb(paramParcel, j);
-        break;
-      case 2: 
-        localIBinder = zzb.zzr(paramParcel, j);
-        break;
-      case 3: 
-        arrayOfIntentFilter = (IntentFilter[])zzb.zzb(paramParcel, j, IntentFilter.CREATOR);
-        break;
-      case 4: 
-        str1 = zzb.zzq(paramParcel, j);
-        break;
-      case 5: 
-        str2 = zzb.zzq(paramParcel, j);
+    AppMethodBeat.i(71183);
+    if (paramIBinder != null) {
+      if (paramIBinder == null) {
+        paramIBinder = localIInterface;
       }
     }
-    if (paramParcel.dataPosition() != i) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + i, paramParcel);
+    for (this.zzaz = paramIBinder;; this.zzaz = null)
+    {
+      this.zzba = paramArrayOfIntentFilter;
+      this.zzbb = paramString1;
+      this.zzbc = paramString2;
+      AppMethodBeat.o(71183);
+      return;
+      localIInterface = paramIBinder.queryLocalInterface("com.google.android.gms.wearable.internal.IWearableListener");
+      if ((localIInterface instanceof zzem))
+      {
+        paramIBinder = (zzem)localIInterface;
+        break;
+      }
+      paramIBinder = new zzeo(paramIBinder);
+      break;
     }
-    return new zzc(localIBinder, arrayOfIntentFilter, str1, str2);
   }
   
-  public zzc[] zzpm(int paramInt)
+  public zzd(zzhk paramzzhk)
   {
-    return new zzc[paramInt];
+    AppMethodBeat.i(71184);
+    this.zzaz = paramzzhk;
+    this.zzba = paramzzhk.zze();
+    this.zzbb = paramzzhk.zzf();
+    this.zzbc = null;
+    AppMethodBeat.o(71184);
+  }
+  
+  public final void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    AppMethodBeat.i(71185);
+    int i = SafeParcelWriter.beginObjectHeader(paramParcel);
+    if (this.zzaz == null) {}
+    for (IBinder localIBinder = null;; localIBinder = this.zzaz.asBinder())
+    {
+      SafeParcelWriter.writeIBinder(paramParcel, 2, localIBinder, false);
+      SafeParcelWriter.writeTypedArray(paramParcel, 3, this.zzba, paramInt, false);
+      SafeParcelWriter.writeString(paramParcel, 4, this.zzbb, false);
+      SafeParcelWriter.writeString(paramParcel, 5, this.zzbc, false);
+      SafeParcelWriter.finishObjectHeader(paramParcel, i);
+      AppMethodBeat.o(71185);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzd
  * JD-Core Version:    0.7.0.1
  */

@@ -4,28 +4,33 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AdLandingViewPager$LayoutParams
   extends ViewGroup.LayoutParams
 {
-  float Hr = 0.0F;
-  public boolean Ht;
-  boolean Hu;
-  int Hv;
+  public boolean Hb;
+  boolean Hc;
+  int Hd;
   public int gravity;
   int position;
+  float widthFactor;
   
   public AdLandingViewPager$LayoutParams()
   {
     super(-1, -1);
+    this.widthFactor = 0.0F;
   }
   
   public AdLandingViewPager$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, AdLandingViewPager.bFK());
+    AppMethodBeat.i(37505);
+    this.widthFactor = 0.0F;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, AdLandingViewPager.access$400());
     this.gravity = paramContext.getInteger(0, 48);
     paramContext.recycle();
+    AppMethodBeat.o(37505);
   }
 }
 

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.fingerprint.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FingerPrintEntranceUI$1
   implements DialogInterface.OnClickListener
@@ -11,9 +12,11 @@ final class FingerPrintEntranceUI$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.FingerPrintEntranceUI", "user click the button to set system fingerprint");
-    FingerPrintEntranceUI.a(this.kmk);
-    this.kmk.finish();
+    AppMethodBeat.i(41655);
+    ab.i("MicroMsg.FingerPrintEntranceUI", "user click the button to set system fingerprint");
+    FingerPrintEntranceUI.a(this.mHa);
+    this.mHa.finish();
+    AppMethodBeat.o(41655);
   }
 }
 

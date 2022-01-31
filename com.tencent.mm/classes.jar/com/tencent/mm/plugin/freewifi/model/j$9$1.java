@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.freewifi.model;
 
 import android.net.wifi.ScanResult;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.k.b;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.protocal.c.bmv;
-import com.tencent.mm.protocal.c.cy;
+import com.tencent.mm.protocal.protobuf.bwo;
+import com.tencent.mm.protocal.protobuf.dh;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,34 +16,38 @@ final class j$9$1
 {
   j$9$1(j.9 param9, String paramString) {}
   
-  public final void bx(List<ScanResult> paramList)
+  public final void bR(List<ScanResult> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
+    AppMethodBeat.i(20747);
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      AppMethodBeat.o(20747);
       return;
     }
-    bmv localbmv = new bmv();
-    localbmv.tGb = new LinkedList();
+    bwo localbwo = new bwo();
+    localbwo.xJT = new LinkedList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       localObject = (ScanResult)paramList.next();
       if (localObject != null)
       {
-        cy localcy = new cy();
-        localcy.mac = ((ScanResult)localObject).BSSID;
-        localcy.swm = ((ScanResult)localObject).level;
-        localcy.ssid = ((ScanResult)localObject).SSID;
-        localbmv.tGb.add(localcy);
+        dh localdh = new dh();
+        localdh.mac = ((ScanResult)localObject).BSSID;
+        localdh.wpy = ((ScanResult)localObject).level;
+        localdh.ssid = ((ScanResult)localObject).SSID;
+        localbwo.xJT.add(localdh);
       }
     }
-    paramList = m.aTB();
-    Object localObject = com.tencent.mm.plugin.freewifi.k.aTx();
-    ((k.a)localObject).iGw = paramList;
-    ((k.a)localObject).kmS = k.b.knk.knD;
-    ((k.a)localObject).kmT = k.b.knk.name;
-    ((k.a)localObject).bUR = 8;
-    ((k.a)localObject).aTz().aTy();
-    new com.tencent.mm.plugin.freewifi.d.k(this.kpg, localbmv, 8, paramList).b(null);
+    paramList = m.bAg();
+    Object localObject = com.tencent.mm.plugin.freewifi.k.bAc();
+    ((k.a)localObject).kMp = paramList;
+    ((k.a)localObject).mIF = k.b.mIX.mJq;
+    ((k.a)localObject).mIG = k.b.mIX.name;
+    ((k.a)localObject).cCy = 8;
+    ((k.a)localObject).bAe().bAd();
+    new com.tencent.mm.plugin.freewifi.d.k(this.mKT, localbwo, 8, paramList).c(null);
+    AppMethodBeat.o(20747);
   }
 }
 

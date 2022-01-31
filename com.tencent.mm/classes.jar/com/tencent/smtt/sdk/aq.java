@@ -1,43 +1,44 @@
 package com.tencent.smtt.sdk;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.smtt.utils.TbsLog;
+import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.File;
+import java.io.FileFilter;
 
-class aq
-  extends Handler
+final class aq
+  implements FileFilter
 {
-  aq(an paraman, Looper paramLooper)
+  public final boolean accept(File paramFile)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    QbSdk.setTBSInstallingStatus(true);
-    switch (paramMessage.what)
+    AppMethodBeat.i(139271);
+    paramFile = paramFile.getName();
+    if (paramFile == null)
     {
+      AppMethodBeat.o(139271);
+      return false;
     }
-    for (;;)
+    if (paramFile.endsWith(".jar_is_first_load_dex_flag_file"))
     {
-      QbSdk.setTBSInstallingStatus(false);
-      super.handleMessage(paramMessage);
-      return;
-      TbsLog.i("TbsInstaller", "TbsInstaller--handleMessage--MSG_INSTALL_TBS_CORE");
-      Object[] arrayOfObject = (Object[])paramMessage.obj;
-      an.a(this.a, (Context)arrayOfObject[0], (String)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue());
-      continue;
-      TbsLog.i("TbsInstaller", "TbsInstaller--handleMessage--MSG_COPY_TBS_CORE");
-      arrayOfObject = (Object[])paramMessage.obj;
-      an.a(this.a, (Context)arrayOfObject[0], (Context)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue());
-      continue;
-      TbsLog.i("TbsInstaller", "TbsInstaller--handleMessage--MSG_INSTALL_TBS_CORE_EX");
-      arrayOfObject = (Object[])paramMessage.obj;
-      this.a.b((Context)arrayOfObject[0], (Bundle)arrayOfObject[1]);
+      AppMethodBeat.o(139271);
+      return false;
     }
+    if ((Build.VERSION.SDK_INT >= 21) && (paramFile.endsWith(".dex")))
+    {
+      AppMethodBeat.o(139271);
+      return false;
+    }
+    if ((Build.VERSION.SDK_INT >= 26) && (paramFile.endsWith(".prof")))
+    {
+      AppMethodBeat.o(139271);
+      return false;
+    }
+    if ((Build.VERSION.SDK_INT >= 26) && (paramFile.equals("oat")))
+    {
+      AppMethodBeat.o(139271);
+      return false;
+    }
+    AppMethodBeat.o(139271);
+    return true;
   }
 }
 

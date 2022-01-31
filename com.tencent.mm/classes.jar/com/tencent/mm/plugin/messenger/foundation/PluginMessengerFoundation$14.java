@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
-import com.tencent.mm.ay.h;
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.az.i;
+import com.tencent.mm.cg.h.d;
 
 final class PluginMessengerFoundation$14
   implements h.d
 {
   PluginMessengerFoundation$14(PluginMessengerFoundation paramPluginMessengerFoundation) {}
   
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return h.dXp;
+    return i.SQL_CREATE;
   }
 }
 

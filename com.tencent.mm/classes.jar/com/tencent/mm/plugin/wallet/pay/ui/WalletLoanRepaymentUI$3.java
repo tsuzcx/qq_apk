@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.wallet.pay.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.plugin.wallet_core.ui.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.ui.q;
 
 final class WalletLoanRepaymentUI$3
   implements DialogInterface.OnCancelListener
@@ -11,17 +12,19 @@ final class WalletLoanRepaymentUI$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.qmQ.qgo != null)
+    AppMethodBeat.i(45993);
+    if (this.tWh.tVM != null)
     {
-      this.qmQ.qgo.cancel();
-      this.qmQ.setResult(0);
-      this.qmQ.finish();
+      this.tWh.tVM.cancel();
+      this.tWh.setResult(0);
+      this.tWh.finish();
     }
+    AppMethodBeat.o(45993);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletLoanRepaymentUI.3
  * JD-Core Version:    0.7.0.1
  */

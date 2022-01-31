@@ -1,30 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a;
 
-import android.content.res.Resources;
-import android.os.CountDownTimer;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.y.j;
+import a.l;
 
-final class c$a
-  extends CountDownTimer
-{
-  public c$a(c paramc)
-  {
-    super(60000L, 1000L);
-  }
-  
-  public final void onFinish()
-  {
-    this.gkx.aig();
-  }
-  
-  public final void onTick(long paramLong)
-  {
-    this.gkx.gkp.setText(this.gkx.gkh.getContentView().getResources().getString(y.j.app_brand_get_phone_number_repeat_send_after_second, new Object[] { paramLong / 1000L }));
-  }
-}
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetPhoneNumberNew$Companion;", "", "()V", "CTRL_INDEX", "", "CTRL_INDEX$annotations", "getCTRL_INDEX", "()I", "NAME", "", "NAME$annotations", "getNAME", "()Ljava/lang/String;", "TAG", "plugin-appbrand-integration_release"})
+public final class c$a {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar

@@ -5,7 +5,7 @@ public final class c$gw
 {
   public c$gw()
   {
-    super("reportSearchRealTimeStatistics", "", 10000, false);
+    super("preloadSearchWeapp", "preloadSearchWeapp", 10000, false);
   }
 }
 

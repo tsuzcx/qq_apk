@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WepkgMainProcessService$1
   extends Handler
@@ -15,17 +16,19 @@ final class WepkgMainProcessService$1
   
   public final void handleMessage(Message paramMessage)
   {
-    WepkgMainProcessTask localWepkgMainProcessTask = WepkgMainProcessService.aj(paramMessage.getData());
+    AppMethodBeat.i(63480);
+    WepkgMainProcessTask localWepkgMainProcessTask = WepkgMainProcessService.aB(paramMessage.getData());
     Messenger localMessenger = paramMessage.replyTo;
     int i = paramMessage.what;
-    localWepkgMainProcessTask.geD = localMessenger;
+    localWepkgMainProcessTask.hwC = localMessenger;
     localWepkgMainProcessTask.mTaskId = i;
-    localWepkgMainProcessTask.Zu();
+    localWepkgMainProcessTask.ata();
+    AppMethodBeat.o(63480);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.ipc.WepkgMainProcessService.1
  * JD-Core Version:    0.7.0.1
  */

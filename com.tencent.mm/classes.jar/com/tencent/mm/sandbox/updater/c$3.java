@@ -1,10 +1,11 @@
 package com.tencent.mm.sandbox.updater;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
 import com.tencent.mm.a.g;
-import com.tencent.mm.protocal.c.bly;
+import com.tencent.mm.protocal.protobuf.bvk;
 import com.tencent.mm.sandbox.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.File;
 
 final class c$3
@@ -12,72 +13,86 @@ final class c$3
 {
   c$3(c paramc) {}
   
-  public final void b(int paramInt1, int paramInt2, bly parambly)
+  public final void b(int paramInt1, int paramInt2, bvk parambvk)
   {
+    AppMethodBeat.i(28859);
     if (paramInt1 != 0)
     {
-      y.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene error. netRet=" + paramInt1);
+      ab.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene error. netRet=".concat(String.valueOf(paramInt1)));
       if (paramInt1 == -2) {
-        new File(this.ucx.SV()).delete();
+        new File(this.ykM.amg()).delete();
       }
-      c.e(this.ucx);
-      this.ucx.a(c.b(this.ucx));
+      c.e(this.ykM);
+      this.ykM.a(c.b(this.ykM));
+      AppMethodBeat.o(28859);
       return;
     }
-    y.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene success");
+    ab.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene success");
     try
     {
-      if (e.bJ(this.ucx.SV()) < c.f(this.ucx))
+      if (e.cM(this.ykM.amg()) < c.f(this.ykM))
       {
-        y.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene continue;");
-        this.ucx.a(c.b(this.ucx));
+        ab.i("MicroMsg.NetSceneGetUpdatePackFromCDN", "scene continue;");
+        this.ykM.a(c.b(this.ykM));
+        AppMethodBeat.o(28859);
         return;
       }
+      if (c.g(this.ykM))
+      {
+        if (!c.h(this.ykM).equalsIgnoreCase(g.getMD5(this.ykM.amg())))
+        {
+          ab.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "pack md5 check error");
+          new File(this.ykM.amg()).delete();
+          c.b(this.ykM).b(2, -1, parambvk);
+          AppMethodBeat.o(28859);
+          return;
+        }
+        c.a(this.ykM, parambvk);
+        AppMethodBeat.o(28859);
+        return;
+      }
+      if (!c.i(this.ykM).equalsIgnoreCase(g.getMD5(this.ykM.amg())))
+      {
+        ab.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "update pack check error");
+        new File(this.ykM.amg()).delete();
+        c.b(this.ykM).b(-1, -1, parambvk);
+        AppMethodBeat.o(28859);
+        return;
+      }
+      e.h(com.tencent.mm.sandbox.monitor.c.ykf, c.j(this.ykM) + ".temp", c.k(this.ykM) + ".apk");
+      c.b(this.ykM).b(200, 0, parambvk);
+      AppMethodBeat.o(28859);
+      return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "error occured during pack processing");
-      y.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", localException, "", new Object[0]);
-      c.b(this.ucx).b(-1, -1, parambly);
-      return;
+      ab.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "error occured during pack processing");
+      ab.printErrStackTrace("MicroMsg.NetSceneGetUpdatePackFromCDN", localException, "", new Object[0]);
+      c.b(this.ykM).b(-1, -1, parambvk);
+      AppMethodBeat.o(28859);
     }
-    if (c.g(this.ucx))
-    {
-      if (!c.h(this.ucx).equalsIgnoreCase(g.bQ(this.ucx.SV())))
-      {
-        y.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "pack md5 check error");
-        new File(this.ucx.SV()).delete();
-        c.b(this.ucx).b(2, -1, parambly);
-        return;
-      }
-      c.a(this.ucx, parambly);
-      return;
-    }
-    if (!c.i(this.ucx).equalsIgnoreCase(g.bQ(this.ucx.SV())))
-    {
-      y.e("MicroMsg.NetSceneGetUpdatePackFromCDN", "update pack check error");
-      new File(this.ucx.SV()).delete();
-      c.b(this.ucx).b(-1, -1, parambly);
-      return;
-    }
-    e.f(com.tencent.mm.sandbox.monitor.c.ubQ, c.j(this.ucx) + ".temp", c.k(this.ucx) + ".apk");
-    c.b(this.ucx).b(200, 0, parambly);
   }
   
-  public final void cy(int paramInt1, int paramInt2)
+  public final void dW(int paramInt1, int paramInt2)
   {
-    y.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "progress, total=" + paramInt1 + ", offset=" + paramInt2);
-    c.b(this.ucx).cy(paramInt1, paramInt2);
+    AppMethodBeat.i(28858);
+    ab.d("MicroMsg.NetSceneGetUpdatePackFromCDN", "progress, total=" + paramInt1 + ", offset=" + paramInt2);
+    c.b(this.ykM).dW(paramInt1, paramInt2);
+    AppMethodBeat.o(28858);
   }
   
-  public final void hm(long paramLong)
+  public final void nJ(long paramLong)
   {
-    c.b(this.ucx).hm(paramLong);
+    AppMethodBeat.i(28860);
+    c.b(this.ykM).nJ(paramLong);
+    AppMethodBeat.o(28860);
   }
   
-  public final void hn(long paramLong)
+  public final void nK(long paramLong)
   {
-    c.b(this.ucx).hn(paramLong);
+    AppMethodBeat.i(28861);
+    c.b(this.ykM).nK(paramLong);
+    AppMethodBeat.o(28861);
   }
 }
 

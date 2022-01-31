@@ -1,42 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.r;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.u;
+import com.tencent.mm.plugin.appbrand.t.a.a;
+import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class b
-  extends a
+  extends u
 {
-  private static final int CTRL_INDEX = 471;
-  private static final String NAME = "hideStatusBar";
+  public static final int CTRL_INDEX = 425;
+  public static final String NAME = "getBatteryInfo";
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  public final String a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
   {
-    if ((paramc instanceof o)) {}
-    for (paramJSONObject = ((o)paramc).E(q.class);; paramJSONObject = (q)paramc)
-    {
-      a(paramJSONObject.gTS, paramc, paramInt);
-      return;
-    }
-  }
-  
-  final void a(com.tencent.mm.plugin.appbrand.page.a.c paramc, com.tencent.mm.plugin.appbrand.jsapi.c paramc1, int paramInt)
-  {
-    if (!ai.isMainThread())
-    {
-      ai.d(new b.1(this, paramc, paramc1, paramInt));
-      return;
-    }
-    paramc.ahh();
-    paramc1.C(paramInt, h("ok", null));
+    AppMethodBeat.i(126405);
+    paramc = a.iYk.aOb();
+    paramJSONObject = new HashMap();
+    paramJSONObject.put("level", Integer.valueOf(paramc.iYu));
+    paramJSONObject.put("isCharging", Boolean.valueOf(paramc.iYt));
+    paramc = j("ok", paramJSONObject);
+    AppMethodBeat.o(126405);
+    return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.r.b
  * JD-Core Version:    0.7.0.1
  */

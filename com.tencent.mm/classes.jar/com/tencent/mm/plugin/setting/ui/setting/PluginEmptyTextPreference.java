@@ -5,47 +5,55 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class PluginEmptyTextPreference
   extends Preference
 {
   private Context context;
-  private TextView dqa = null;
+  private TextView ehx;
   private String text;
   
-  public PluginEmptyTextPreference(Context paramContext, int paramInt)
+  public PluginEmptyTextPreference(Context paramContext)
   {
     this(paramContext, null, 0);
-    this.text = paramContext.getString(paramInt);
+    AppMethodBeat.i(126975);
+    this.text = paramContext.getString(2131303373);
+    AppMethodBeat.o(126975);
   }
   
   public PluginEmptyTextPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(126976);
+    this.ehx = null;
     this.context = paramContext;
-    setLayoutResource(a.g.plugin_text2_preference);
+    setLayoutResource(2130970421);
+    AppMethodBeat.o(126976);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(126978);
     super.onBindView(paramView);
-    this.dqa = ((TextView)paramView.findViewById(a.f.empty_tv));
-    this.dqa.setText(this.text);
+    this.ehx = ((TextView)paramView.findViewById(2131821495));
+    this.ehx.setText(this.text);
+    AppMethodBeat.o(126978);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(126977);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    View.inflate(this.context, a.g.plugin_text2_preference, null);
+    View.inflate(this.context, 2130970421, null);
+    AppMethodBeat.o(126977);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.PluginEmptyTextPreference
  * JD-Core Version:    0.7.0.1
  */

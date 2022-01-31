@@ -2,13 +2,13 @@ package com.tencent.tinker.loader;
 
 public class TinkerResourcesKey
 {
-  private static final class V17 {}
+  static final class V17 {}
   
-  private static final class V19 {}
+  static final class V19 {}
   
-  private static final class V24 {}
+  static final class V24 {}
   
-  private static final class V7 {}
+  static final class V7 {}
 }
 
 

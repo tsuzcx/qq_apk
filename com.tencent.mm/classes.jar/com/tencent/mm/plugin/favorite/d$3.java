@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.favorite;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.c.yl;
-import com.tencent.mm.ui.widget.a.c.a.b;
+import com.tencent.mm.protocal.protobuf.acs;
+import com.tencent.mm.ui.widget.b.c.a.b;
 
 final class d$3
   implements c.a.b
 {
   d$3(Context paramContext, g paramg) {}
   
-  public final void aSe()
+  public final void byw()
   {
-    d.f(this.val$context, this.jYv, new yl());
+    AppMethodBeat.i(20501);
+    d.f(this.val$context, this.msP, new acs());
+    AppMethodBeat.o(20501);
   }
 }
 

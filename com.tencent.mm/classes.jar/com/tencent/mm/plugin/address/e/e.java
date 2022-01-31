@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.address.e;
 
 import android.util.Log;
-import com.tencent.mm.plugin.o.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.j.a.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,16 +11,20 @@ public final class e
 {
   public static String a(b paramb)
   {
+    AppMethodBeat.i(17014);
     JSONObject localJSONObject = new JSONObject();
-    if (paramb == null) {
-      return localJSONObject.toString();
+    if (paramb == null)
+    {
+      paramb = localJSONObject.toString();
+      AppMethodBeat.o(17014);
+      return paramb;
     }
     try
     {
       localJSONObject.put("type", paramb.type);
       if ((paramb.type != null) && (paramb.type.equals("1")))
       {
-        localJSONObject.put("title", paramb.lnQ);
+        localJSONObject.put("title", paramb.nLn);
         localJSONObject.put("taxNumber", "");
         localJSONObject.put("companyAddress", "");
         localJSONObject.put("telephone", "");
@@ -28,48 +33,50 @@ public final class e
       }
       for (;;)
       {
-        return localJSONObject.toString();
+        paramb = localJSONObject.toString();
+        AppMethodBeat.o(17014);
+        return paramb;
         localJSONObject.put("title", paramb.title);
-        if (paramb.lnR == null) {
+        if (paramb.nLo == null) {
           break;
         }
-        localJSONObject.put("taxNumber", paramb.lnR);
-        if (paramb.lnX == null) {
-          break label246;
+        localJSONObject.put("taxNumber", paramb.nLo);
+        if (paramb.nLu == null) {
+          break label268;
         }
-        localJSONObject.put("companyAddress", paramb.lnX);
-        if (paramb.lnV == null) {
-          break label258;
+        localJSONObject.put("companyAddress", paramb.nLu);
+        if (paramb.nLs == null) {
+          break label280;
         }
-        localJSONObject.put("telephone", paramb.lnV);
-        if (paramb.lnT == null) {
-          break label270;
+        localJSONObject.put("telephone", paramb.nLs);
+        if (paramb.nLq == null) {
+          break label292;
         }
-        localJSONObject.put("bankName", paramb.lnT);
-        if (paramb.lnS == null) {
-          break label282;
+        localJSONObject.put("bankName", paramb.nLq);
+        if (paramb.nLp == null) {
+          break label304;
         }
-        localJSONObject.put("bankAccount", paramb.lnS);
+        localJSONObject.put("bankAccount", paramb.nLp);
       }
     }
     catch (JSONException paramb)
     {
       for (;;)
       {
-        y.e("MicroMsg.InvoiceUtil", "put json value error : %s", new Object[] { Log.getStackTraceString(paramb) });
+        ab.e("MicroMsg.InvoiceUtil", "put json value error : %s", new Object[] { Log.getStackTraceString(paramb) });
         continue;
         localJSONObject.put("taxNumber", "");
         continue;
-        label246:
+        label268:
         localJSONObject.put("companyAddress", "");
         continue;
-        label258:
+        label280:
         localJSONObject.put("telephone", "");
         continue;
-        label270:
+        label292:
         localJSONObject.put("bankName", "");
         continue;
-        label282:
+        label304:
         localJSONObject.put("bankAccount", "");
       }
     }

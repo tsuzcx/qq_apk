@@ -1,40 +1,58 @@
 package com.tencent.mm.plugin.wallet.pwd;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet_core.model.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet.pwd.a.n;
+import com.tencent.mm.plugin.wallet.pwd.a.p;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.wallet_core.d.g;
+import com.tencent.mm.wallet_core.d.i;
 
 final class a$4
-  extends com.tencent.mm.wallet_core.d.g
+  extends g
 {
-  a$4(a parama, MMActivity paramMMActivity, com.tencent.mm.wallet_core.d.i parami)
+  a$4(a parama, MMActivity paramMMActivity, i parami)
   {
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final CharSequence getTips(int paramInt)
   {
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramm instanceof com.tencent.mm.plugin.wallet.pwd.a.g)))
+    AppMethodBeat.i(46133);
+    String str = this.hwZ.getString(2131305692);
+    AppMethodBeat.o(46133);
+    return str;
+  }
+  
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(46131);
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramm instanceof n)))
     {
-      paramString = (com.tencent.mm.plugin.wallet.pwd.a.g)paramm;
-      a.e(this.qoe).putString("kreq_token", paramString.token);
+      paramString = (n)paramm;
+      a.e(this.tXB).putString("kreq_token", paramString.getToken());
+      AppMethodBeat.o(46131);
       return true;
     }
+    AppMethodBeat.o(46131);
     return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
-    paramVarArgs = (p)paramVarArgs[1];
+    AppMethodBeat.i(46132);
+    paramVarArgs = (u)paramVarArgs[1];
     paramVarArgs.flag = "3";
-    this.wBd.a(new com.tencent.mm.plugin.wallet.pwd.a.i(paramVarArgs), true, 1);
+    this.AXB.a(new p(paramVarArgs), true, 1);
+    AppMethodBeat.o(46132);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.4
  * JD-Core Version:    0.7.0.1
  */

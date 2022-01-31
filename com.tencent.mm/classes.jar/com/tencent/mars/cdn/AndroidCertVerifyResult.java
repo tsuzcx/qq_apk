@@ -9,6 +9,7 @@ import java.util.List;
 public class AndroidCertVerifyResult
 {
   private final List<X509Certificate> mCertificateChain;
+  private final boolean mIsIssuedByHostMatched;
   private final boolean mIsIssuedByKnownRoot;
   private final int mStatus;
   
@@ -17,6 +18,7 @@ public class AndroidCertVerifyResult
     this.mStatus = paramInt;
     this.mIsIssuedByKnownRoot = false;
     this.mCertificateChain = Collections.emptyList();
+    this.mIsIssuedByHostMatched = false;
   }
   
   public AndroidCertVerifyResult(int paramInt, boolean paramBoolean, List<X509Certificate> paramList)
@@ -24,6 +26,15 @@ public class AndroidCertVerifyResult
     this.mStatus = paramInt;
     this.mIsIssuedByKnownRoot = paramBoolean;
     this.mCertificateChain = new ArrayList(paramList);
+    this.mIsIssuedByHostMatched = false;
+  }
+  
+  public AndroidCertVerifyResult(int paramInt, boolean paramBoolean1, List<X509Certificate> paramList, boolean paramBoolean2)
+  {
+    this.mStatus = paramInt;
+    this.mIsIssuedByKnownRoot = paramBoolean1;
+    this.mCertificateChain = new ArrayList(paramList);
+    this.mIsIssuedByHostMatched = paramBoolean2;
   }
   
   public byte[][] getCertificateChainEncoded()
@@ -48,6 +59,11 @@ public class AndroidCertVerifyResult
   public int getStatus()
   {
     return this.mStatus;
+  }
+  
+  public boolean isIssuedByHostMatched()
+  {
+    return this.mIsIssuedByHostMatched;
   }
   
   public boolean isIssuedByKnownRoot()

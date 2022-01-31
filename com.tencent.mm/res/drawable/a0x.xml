@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:bottomLeftRadius="3.0dip" android:bottomRightRadius="3.0dip" />
-    <solid android:color="@color/a23" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@raw/radar_member_bg_pressed" />
+    <item android:state_pressed="false" android:drawable="@raw/radar_member_bg" />
+</selector>

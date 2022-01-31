@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class r$a$4
   implements Runnable
 {
@@ -7,22 +9,23 @@ final class r$a$4
   
   public final void run()
   {
-    if ((this.pGG.pGD.pGu != null) && (this.pGG.pGD.pEp != null))
+    AppMethodBeat.i(1826);
+    if ((this.tkb.tjY.tjP != null) && (this.tkb.tjY.thM != null))
     {
-      com.tencent.mm.plugin.topstory.a.b.a locala = this.pGG.pGD.pEp.bNt().pGq;
-      if ((locala != null) && (locala.pDq == 0L)) {
-        locala.pDq = (System.currentTimeMillis() - locala.pDe);
+      com.tencent.mm.plugin.topstory.a.b.a locala = this.tkb.tjY.thM.cJd().tjL;
+      if ((locala != null) && (locala.tff == 0L)) {
+        locala.tff = (System.currentTimeMillis() - locala.teT);
       }
-      this.pGG.pGD.pGu.V(this.BF, this.pGH);
-      if (this.pGH != 0) {
-        com.tencent.mm.plugin.websearch.api.a.a.jdMethod_if(9);
+      this.tkb.tjY.tjP.ad(this.Cq, this.qac);
+      if (this.qac != 0)
+      {
+        com.tencent.mm.plugin.websearch.api.a.a.kS(9);
+        AppMethodBeat.o(1826);
+        return;
       }
+      com.tencent.mm.plugin.websearch.api.a.a.kS(27);
     }
-    else
-    {
-      return;
-    }
-    com.tencent.mm.plugin.websearch.api.a.a.jdMethod_if(27);
+    AppMethodBeat.o(1826);
   }
 }
 

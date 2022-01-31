@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.order.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.model.i;
 import com.tencent.mm.ui.base.h.c;
 import java.util.List;
@@ -9,19 +10,23 @@ final class MallOrderRecordListUI$2$1
 {
   MallOrderRecordListUI$2$1(MallOrderRecordListUI.2 param2, int paramInt) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(43850);
     switch (paramInt)
     {
     }
-    i locali;
-    do
+    for (;;)
     {
+      AppMethodBeat.o(43850);
       return;
-      locali = (i)this.mQV.mQU.mQQ.get(this.kX);
-    } while (locali == null);
-    String str = locali.mPI;
-    this.mQV.mQU.en(str, locali.mQb);
+      i locali = (i)this.pri.prh.prd.get(this.lU);
+      if (locali != null)
+      {
+        String str = locali.ppY;
+        this.pri.prh.fI(str, locali.pqq);
+      }
+    }
   }
 }
 

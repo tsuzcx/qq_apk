@@ -1,33 +1,48 @@
 package com.tencent.mm.ui.applet;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 final class b$c
 {
-  private LinkedList<String> dtH = null;
-  private int maxSize = 40;
+  private LinkedList<String> elu;
+  private int maxSize;
   
-  public b$c(b paramb) {}
+  public b$c(b paramb)
+  {
+    AppMethodBeat.i(106224);
+    this.elu = null;
+    this.maxSize = 40;
+    this.elu = new LinkedList();
+    AppMethodBeat.o(106224);
+  }
   
   final boolean contains(String paramString)
   {
-    return this.dtH.contains(paramString);
+    AppMethodBeat.i(106226);
+    boolean bool = this.elu.contains(paramString);
+    AppMethodBeat.o(106226);
+    return bool;
   }
   
-  final void qh(String paramString)
+  final void xB(String paramString)
   {
-    if (this.dtH.contains(paramString)) {}
-    do
+    AppMethodBeat.i(106225);
+    if (this.elu.contains(paramString))
     {
+      AppMethodBeat.o(106225);
       return;
-      this.dtH.add(paramString);
-    } while (this.dtH.size() < this.maxSize);
-    this.dtH.removeFirst();
+    }
+    this.elu.add(paramString);
+    if (this.elu.size() >= this.maxSize) {
+      this.elu.removeFirst();
+    }
+    AppMethodBeat.o(106225);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.applet.b.c
  * JD-Core Version:    0.7.0.1
  */

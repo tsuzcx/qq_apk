@@ -2,18 +2,21 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.q;
+import com.tencent.mm.modelsimple.s;
 
 final class MobileLoginOrForceReg$17$1
   implements DialogInterface.OnCancelListener
 {
-  MobileLoginOrForceReg$17$1(MobileLoginOrForceReg.17 param17, q paramq) {}
+  MobileLoginOrForceReg$17$1(MobileLoginOrForceReg.17 param17, s params) {}
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.Dk().c(this.fmo);
+    AppMethodBeat.i(125218);
+    g.Rc().a(this.gDI);
+    AppMethodBeat.o(125218);
   }
 }
 

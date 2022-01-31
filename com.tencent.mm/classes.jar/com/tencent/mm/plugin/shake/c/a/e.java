@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.shake.c.a;
 
 public final class e
 {
-  public String bZd = "";
+  public String cHo = "";
   public String color = "";
-  public int end_time;
-  public String iln = "";
-  public String ilp = "";
-  public String ilq = "";
-  public String ilr = "";
-  public String imA = "";
-  public int imX = 0;
-  public int nZo = 0;
-  public int nZr = 0;
-  public String nZs = "";
-  public String nZt = "";
-  public String nZu = "";
-  public String nZv = "";
-  public String nZw = "";
-  public boolean nZx;
+  public String kml = "";
+  public String kmm = "";
+  public String kmn = "";
+  public String kmo = "";
+  public int kmq;
+  public int knS = 0;
+  public String knw = "";
+  public int qNB = 0;
+  public String qNC = "";
+  public String qND = "";
+  public String qNE = "";
+  public String qNF = "";
+  public String qNG = "";
+  public boolean qNH;
+  public int qNy = 0;
   public String title = "";
 }
 

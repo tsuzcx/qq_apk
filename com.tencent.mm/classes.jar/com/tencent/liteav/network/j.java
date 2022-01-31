@@ -3,7 +3,10 @@ package com.tencent.liteav.network;
 import android.content.Context;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.datareport.TXCDRExtInfo;
+import com.tencent.liteav.basic.datareport.a;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
+import com.tencent.liteav.basic.util.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,127 +34,142 @@ public class j
   private long t;
   private long u;
   private long v;
-  private boolean w = true;
+  private boolean w;
   
   public j(Context paramContext)
   {
+    AppMethodBeat.i(67573);
+    this.w = true;
     this.a = paramContext.getApplicationContext();
-    this.b = com.tencent.liteav.basic.util.a.a(this.a);
+    this.b = b.b(this.a);
     this.d = "Android";
     i.a().a(this.a);
     a();
+    AppMethodBeat.o(67573);
   }
   
   private boolean b(String paramString)
   {
-    return (paramString == null) || (paramString.length() == 0);
+    AppMethodBeat.i(67579);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(67579);
+      return true;
+    }
+    AppMethodBeat.o(67579);
+    return false;
   }
   
   private boolean c(String paramString)
   {
-    return Pattern.compile("[0-9]*").matcher(paramString).matches();
+    AppMethodBeat.i(67580);
+    boolean bool = Pattern.compile("[0-9]*").matcher(paramString).matches();
+    AppMethodBeat.o(67580);
+    return bool;
   }
   
   private void e()
   {
+    AppMethodBeat.i(67574);
     long l1 = this.p;
     long l2 = this.q;
     a();
     this.n = l1;
     this.o = l2;
+    AppMethodBeat.o(67574);
   }
   
   private void f()
   {
-    if ((this.f == 0L) || (b(this.b)) || (b(this.e))) {}
-    label562:
-    label577:
-    label592:
-    label595:
+    AppMethodBeat.i(67578);
+    if ((this.f == 0L) || (b(this.b)) || (b(this.e)))
+    {
+      AppMethodBeat.o(67578);
+      return;
+    }
+    String str1 = TXCCommonUtil.getStreamIDByStreamUrl(this.e);
+    long l5 = System.currentTimeMillis() - this.f;
+    long l1 = 0L;
+    long l2 = 0L;
+    if (this.p > this.n) {
+      l1 = this.p - this.n;
+    }
+    if (this.q > this.o) {
+      l2 = this.q - this.o;
+    }
+    long l4 = 0L;
+    long l3 = 0L;
+    if (this.v > 0L)
+    {
+      l4 = this.r / this.v;
+      l3 = this.s / this.v;
+    }
+    String str2 = TXCDRApi.txCreateToken();
+    TXCDRExtInfo localTXCDRExtInfo = new TXCDRExtInfo();
+    localTXCDRExtInfo.report_common = false;
+    localTXCDRExtInfo.report_status = false;
+    localTXCDRExtInfo.url = this.e;
+    TXCDRApi.InitEvent(this.a, str2, a.T, a.al, localTXCDRExtInfo);
+    TXCDRApi.txSetEventValue(str2, a.T, "str_user_id", this.b);
+    TXCDRApi.txSetEventValue(str2, a.T, "str_stream_id", str1);
+    TXCDRApi.txSetEventValue(str2, a.T, "str_access_id", this.c);
+    TXCDRApi.txSetEventValue(str2, a.T, "str_platform", this.d);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_server_type", this.g);
+    TXCDRApi.txSetEventValue(str2, a.T, "str_server_addr", this.h);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_dns_timecost", this.i);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_connect_timecost", this.j);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_handshake_timecost", this.k);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_push_type", this.l);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_totaltime", l5);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_block_count", this.m);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_video_drop", l1);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_audio_drop", l2);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_video_que_avg", l4);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_audio_que_avg", l3);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_video_que_max", this.t);
+    TXCDRApi.txSetEventIntValue(str2, a.T, "u32_audio_que_max", this.u);
+    TXCDRApi.nativeReportEvent(str2, a.T);
+    float f2 = 0.0F;
+    float f3 = 0.0F;
+    float f1;
+    if (l5 > 0L)
+    {
+      if (this.m == 0L) {
+        f2 = 0.0F;
+      }
+    }
+    else
+    {
+      if (this.v <= 0L) {
+        break label607;
+      }
+      if (this.r != 0L) {
+        break label577;
+      }
+      f1 = 0.0F;
+      label492:
+      if (this.s != 0L) {
+        break label592;
+      }
+      f3 = 0.0F;
+    }
     for (;;)
     {
-      return;
-      String str1 = TXCCommonUtil.getStreamIDByStreamUrl(this.e);
-      long l5 = System.currentTimeMillis() - this.f;
-      long l1 = 0L;
-      long l2 = 0L;
-      if (this.p > this.n) {
-        l1 = this.p - this.n;
-      }
-      if (this.q > this.o) {
-        l2 = this.q - this.o;
-      }
-      long l4 = 0L;
-      long l3 = 0L;
-      if (this.v > 0L)
-      {
-        l4 = this.r / this.v;
-        l3 = this.s / this.v;
-      }
-      String str2 = TXCDRApi.txCreateToken();
-      TXCDRExtInfo localTXCDRExtInfo = new TXCDRExtInfo();
-      localTXCDRExtInfo.report_common = false;
-      localTXCDRExtInfo.report_status = false;
-      localTXCDRExtInfo.url = this.e;
-      TXCDRApi.InitEvent(this.a, str2, com.tencent.liteav.basic.datareport.a.T, com.tencent.liteav.basic.datareport.a.al, localTXCDRExtInfo);
-      TXCDRApi.txSetEventValue(str2, com.tencent.liteav.basic.datareport.a.T, "str_user_id", this.b);
-      TXCDRApi.txSetEventValue(str2, com.tencent.liteav.basic.datareport.a.T, "str_stream_id", str1);
-      TXCDRApi.txSetEventValue(str2, com.tencent.liteav.basic.datareport.a.T, "str_access_id", this.c);
-      TXCDRApi.txSetEventValue(str2, com.tencent.liteav.basic.datareport.a.T, "str_platform", this.d);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_server_type", this.g);
-      TXCDRApi.txSetEventValue(str2, com.tencent.liteav.basic.datareport.a.T, "str_server_addr", this.h);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_dns_timecost", this.i);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_connect_timecost", this.j);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_handshake_timecost", this.k);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_push_type", this.l);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_totaltime", l5);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_block_count", this.m);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_video_drop", l1);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_audio_drop", l2);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_video_que_avg", l4);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_audio_que_avg", l3);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_video_que_max", this.t);
-      TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.T, "u32_audio_que_max", this.u);
-      TXCDRApi.nativeReportEvent(str2, com.tencent.liteav.basic.datareport.a.T);
-      float f2 = 0.0F;
-      float f3 = 0.0F;
-      float f1;
-      if (l5 > 0L)
-      {
-        if (this.m == 0L) {
-          f2 = 0.0F;
-        }
-      }
-      else
-      {
-        if (this.v <= 0L) {
-          break label592;
-        }
-        if (this.r != 0L) {
-          break label562;
-        }
-        f1 = 0.0F;
-        label482:
-        if (this.s != 0L) {
-          break label577;
-        }
-        f3 = 0.0F;
-      }
-      for (;;)
-      {
-        if ((!this.w) || (b(this.c)) || (this.k == -1L)) {
-          break label595;
-        }
+      if ((this.w) && (!b(this.c)) && (this.k != -1L)) {
         i.a().a(this.c, this.g, l5, this.k, f2, f1, f3);
-        return;
-        f2 = (float)this.m * 60000.0F / (float)l5;
-        break;
-        f1 = (float)this.r / (float)this.v;
-        break label482;
-        f3 = (float)this.s / (float)this.v;
-        continue;
-        f1 = 0.0F;
       }
+      AppMethodBeat.o(67578);
+      return;
+      f2 = (float)this.m * 60000.0F / (float)l5;
+      break;
+      label577:
+      f1 = (float)this.r / (float)this.v;
+      break label492;
+      label592:
+      f3 = (float)this.s / (float)this.v;
+      continue;
+      label607:
+      f1 = 0.0F;
     }
   }
   
@@ -213,41 +231,47 @@ public class j
   public void a(boolean paramBoolean, String paramString)
   {
     int i1 = 0;
+    AppMethodBeat.i(67577);
     this.h = paramString;
-    if (paramBoolean) {
-      this.g = 1L;
-    }
-    String str;
-    do
+    if (paramBoolean)
     {
-      do
-      {
-        return;
-      } while (paramString == null);
-      i2 = paramString.indexOf(":");
-      str = paramString;
+      this.g = 1L;
+      AppMethodBeat.o(67577);
+      return;
+    }
+    if (paramString != null)
+    {
+      int i2 = paramString.indexOf(":");
+      String str = paramString;
       if (i2 != -1) {
         str = paramString.substring(0, i2);
       }
-    } while (str == null);
-    paramString = str.split("[.]");
-    int i2 = paramString.length;
-    while (i1 < i2)
-    {
-      if (!c(paramString[i1]))
+      if (str != null)
       {
-        this.g = 3L;
-        return;
+        paramString = str.split("[.]");
+        i2 = paramString.length;
+        while (i1 < i2)
+        {
+          if (!c(paramString[i1]))
+          {
+            this.g = 3L;
+            AppMethodBeat.o(67577);
+            return;
+          }
+          i1 += 1;
+        }
+        this.g = 2L;
       }
-      i1 += 1;
     }
-    this.g = 2L;
+    AppMethodBeat.o(67577);
   }
   
   public void b()
   {
+    AppMethodBeat.i(67575);
     this.f = System.currentTimeMillis();
     this.c = i.a().b();
+    AppMethodBeat.o(67575);
   }
   
   public void b(long paramLong1, long paramLong2)
@@ -265,8 +289,10 @@ public class j
   
   public void c()
   {
+    AppMethodBeat.i(67576);
     f();
     e();
+    AppMethodBeat.o(67576);
   }
   
   public void d()
@@ -276,7 +302,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,17 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class WxaMenuHelper$a
 {
-  static WxaMenuHelper gPD = new WxaMenuHelper((byte)0);
+  static WxaMenuHelper iro;
+  
+  static
+  {
+    AppMethodBeat.i(132260);
+    iro = new WxaMenuHelper((byte)0);
+    AppMethodBeat.o(132260);
+  }
 }
 
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.card.sharecard.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.b;
 import com.tencent.mm.plugin.report.service.h;
@@ -13,26 +14,28 @@ final class ShareCardListUI$3
   
   public final void onClick(View paramView)
   {
-    ShareCardListUI.c(this.iqI);
-    if (b.aAS())
+    AppMethodBeat.i(88167);
+    ShareCardListUI.c(this.krQ);
+    if (b.bcD())
     {
-      ShareCardListUI.c(this.iqI);
-      if (b.aAR()) {
-        ShareCardListUI.a(this.iqI, 2);
+      ShareCardListUI.c(this.krQ);
+      if (b.bcC()) {
+        ShareCardListUI.a(this.krQ, 2);
       }
     }
     for (;;)
     {
-      h.nFQ.f(11582, new Object[] { "OperChangeOtherCity ", Integer.valueOf(0), Integer.valueOf(0), "", "", "" });
-      am.aAx().putValue("key_share_card_show_type", Integer.valueOf(ShareCardListUI.d(this.iqI)));
-      ShareCardListUI.e(this.iqI);
-      ShareCardListUI.f(this.iqI).aZ();
-      ShareCardListUI.c(this.iqI);
-      b.ioB = true;
+      h.qsU.e(11582, new Object[] { "OperChangeOtherCity ", Integer.valueOf(0), Integer.valueOf(0), "", "", "" });
+      am.bci().putValue("key_share_card_show_type", Integer.valueOf(ShareCardListUI.d(this.krQ)));
+      ShareCardListUI.e(this.krQ);
+      ShareCardListUI.f(this.krQ).bJ();
+      ShareCardListUI.c(this.krQ);
+      b.kpI = true;
+      AppMethodBeat.o(88167);
       return;
-      ShareCardListUI.c(this.iqI);
-      if (b.aAR()) {
-        ShareCardListUI.a(this.iqI, 3);
+      ShareCardListUI.c(this.krQ);
+      if (b.bcC()) {
+        ShareCardListUI.a(this.krQ, 3);
       }
     }
   }

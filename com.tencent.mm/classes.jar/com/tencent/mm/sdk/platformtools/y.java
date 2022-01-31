@@ -1,354 +1,311 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Process;
-import android.util.Log;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.nio.ByteBuffer;
 
 public final class y
 {
-  private static final String SYS_INFO;
-  private static int level = 6;
-  private static a ueV;
-  private static a ueW;
+  private ByteBuffer byteBuffer;
+  private boolean yng;
   
-  static
+  private int Nc(int paramInt)
   {
-    Object localObject = new a()
+    AppMethodBeat.i(52027);
+    if (this.byteBuffer.limit() - this.byteBuffer.position() > paramInt)
     {
-      private Handler handler = new Handler(Looper.getMainLooper());
-      
-      public final void appenderClose() {}
-      
-      public final void appenderFlush(boolean paramAnonymousBoolean) {}
-      
-      public final int getLogLevel()
-      {
-        return y.level;
-      }
-      
-      public final void logD(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4) {}
-      
-      public final void logE(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4) {}
-      
-      public final void logF(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4)
-      {
-        if (y.level > 5) {}
-      }
-      
-      public final void logI(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4) {}
-      
-      public final void logV(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4) {}
-      
-      public final void logW(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4) {}
-      
-      public final void moveLogsFromCacheDirToLogDir() {}
-    };
-    ueV = (a)localObject;
-    ueW = (a)localObject;
-    localObject = new StringBuilder();
-    try
+      AppMethodBeat.o(52027);
+      return 0;
+    }
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(this.byteBuffer.limit() + 4096);
+    localByteBuffer.put(this.byteBuffer.array(), 0, this.byteBuffer.position());
+    this.byteBuffer = localByteBuffer;
+    AppMethodBeat.o(52027);
+    return 0;
+  }
+  
+  private static int bZ(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      i = -1;
+    }
+    do
     {
-      ((StringBuilder)localObject).append("VERSION.RELEASE:[" + Build.VERSION.RELEASE);
-      ((StringBuilder)localObject).append("] VERSION.CODENAME:[" + Build.VERSION.CODENAME);
-      ((StringBuilder)localObject).append("] VERSION.INCREMENTAL:[" + Build.VERSION.INCREMENTAL);
-      ((StringBuilder)localObject).append("] BOARD:[" + Build.BOARD);
-      ((StringBuilder)localObject).append("] DEVICE:[" + Build.DEVICE);
-      ((StringBuilder)localObject).append("] DISPLAY:[" + Build.DISPLAY);
-      ((StringBuilder)localObject).append("] FINGERPRINT:[" + Build.FINGERPRINT);
-      ((StringBuilder)localObject).append("] HOST:[" + Build.HOST);
-      ((StringBuilder)localObject).append("] MANUFACTURER:[" + Build.MANUFACTURER);
-      ((StringBuilder)localObject).append("] MODEL:[" + Build.MODEL);
-      ((StringBuilder)localObject).append("] PRODUCT:[" + Build.PRODUCT);
-      ((StringBuilder)localObject).append("] TAGS:[" + Build.TAGS);
-      ((StringBuilder)localObject).append("] TYPE:[" + Build.TYPE);
-      ((StringBuilder)localObject).append("] USER:[" + Build.USER + "]");
-      SYS_INFO = ((StringBuilder)localObject).toString();
+      return i;
+      if (paramArrayOfByte[0] != 123) {
+        return -2;
+      }
+    } while (paramArrayOfByte[(paramArrayOfByte.length - 1)] == 125);
+    return -3;
+  }
+  
+  public final void Nb(int paramInt)
+  {
+    AppMethodBeat.i(52023);
+    ByteBuffer localByteBuffer = this.byteBuffer;
+    localByteBuffer.position(localByteBuffer.position() + paramInt);
+    AppMethodBeat.o(52023);
+  }
+  
+  public final int Nd(int paramInt)
+  {
+    AppMethodBeat.i(52028);
+    if (!this.yng)
+    {
+      Exception localException = new Exception("Buffer For Parse");
+      AppMethodBeat.o(52028);
+      throw localException;
+    }
+    Nc(4);
+    this.byteBuffer.putInt(paramInt);
+    AppMethodBeat.o(52028);
+    return 0;
+  }
+  
+  public final int ape(String paramString)
+  {
+    AppMethodBeat.i(52031);
+    if (!this.yng)
+    {
+      paramString = new Exception("Buffer For Parse");
+      AppMethodBeat.o(52031);
+      throw paramString;
+    }
+    byte[] arrayOfByte = null;
+    if (paramString != null) {
+      arrayOfByte = paramString.getBytes();
+    }
+    paramString = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramString = new byte[0];
+    }
+    if (paramString.length > 3072)
+    {
+      paramString = new Exception("Buffer String Length Error");
+      AppMethodBeat.o(52031);
+      throw paramString;
+    }
+    Nc(paramString.length + 2);
+    this.byteBuffer.putShort((short)paramString.length);
+    if (paramString.length > 0) {
+      this.byteBuffer.put(paramString);
+    }
+    AppMethodBeat.o(52031);
+    return 0;
+  }
+  
+  public final int ca(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(52018);
+    if (bZ(paramArrayOfByte) != 0)
+    {
+      this.byteBuffer = null;
+      AppMethodBeat.o(52018);
+      return -1;
+    }
+    this.byteBuffer = ByteBuffer.wrap(paramArrayOfByte);
+    this.byteBuffer.position(1);
+    this.yng = false;
+    AppMethodBeat.o(52018);
+    return 0;
+  }
+  
+  public final int cb(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(52030);
+    if (!this.yng)
+    {
+      paramArrayOfByte = new Exception("Buffer For Parse");
+      AppMethodBeat.o(52030);
+      throw paramArrayOfByte;
+    }
+    byte[] arrayOfByte = null;
+    if (paramArrayOfByte != null) {
+      arrayOfByte = paramArrayOfByte;
+    }
+    paramArrayOfByte = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramArrayOfByte = new byte[0];
+    }
+    if (paramArrayOfByte.length > 3072)
+    {
+      paramArrayOfByte = new Exception("Buffer String Length Error");
+      AppMethodBeat.o(52030);
+      throw paramArrayOfByte;
+    }
+    Nc(paramArrayOfByte.length + 2);
+    this.byteBuffer.putShort((short)paramArrayOfByte.length);
+    if (paramArrayOfByte.length > 0) {
+      this.byteBuffer.put(paramArrayOfByte);
+    }
+    AppMethodBeat.o(52030);
+    return 0;
+  }
+  
+  public final void dst()
+  {
+    AppMethodBeat.i(52024);
+    Exception localException;
+    if (this.yng)
+    {
+      localException = new Exception("Buffer For Build");
+      AppMethodBeat.o(52024);
+      throw localException;
+    }
+    int i = this.byteBuffer.getShort();
+    if (i > 3072)
+    {
+      this.byteBuffer = null;
+      localException = new Exception("Buffer String Length Error");
+      AppMethodBeat.o(52024);
+      throw localException;
+    }
+    if (i == 0)
+    {
+      AppMethodBeat.o(52024);
       return;
     }
-    catch (Throwable localThrowable)
+    this.byteBuffer.position(i + this.byteBuffer.position());
+    AppMethodBeat.o(52024);
+  }
+  
+  public final boolean dsu()
+  {
+    AppMethodBeat.i(52025);
+    if (this.byteBuffer.limit() - this.byteBuffer.position() <= 1)
     {
-      for (;;)
-      {
-        printErrStackTrace("MicroMsg.SDK.Log", localThrowable, "", new Object[0]);
-      }
+      AppMethodBeat.o(52025);
+      return true;
     }
+    AppMethodBeat.o(52025);
+    return false;
   }
   
-  public static void Fc(int paramInt)
+  public final int dsv()
   {
-    level = paramInt;
+    AppMethodBeat.i(52026);
+    this.byteBuffer = ByteBuffer.allocate(4096);
+    this.byteBuffer.put((byte)123);
+    this.yng = true;
+    AppMethodBeat.o(52026);
+    return 0;
   }
   
-  public static void a(a parama)
+  public final byte[] dsw()
   {
-    ueW = parama;
-  }
-  
-  public static void appenderClose()
-  {
-    if (ueW != null) {
-      ueW.appenderClose();
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if ((ueW != null) && (ueW.getLogLevel() <= 1))
+    AppMethodBeat.i(52032);
+    if (!this.yng)
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      paramString2 = paramString2 + "  " + bk.csb();
-      ueW.logI(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
+      localObject = new Exception("Buffer For Parse");
+      AppMethodBeat.o(52032);
+      throw ((Throwable)localObject);
     }
+    Nc(1);
+    this.byteBuffer.put((byte)125);
+    Object localObject = new byte[this.byteBuffer.position()];
+    System.arraycopy(this.byteBuffer.array(), 0, localObject, 0, localObject.length);
+    AppMethodBeat.o(52032);
+    return localObject;
   }
   
-  public static a cqK()
+  public final byte[] getBuffer()
   {
-    return ueW;
-  }
-  
-  public static void cqL()
-  {
-    if (ueW != null) {
-      ueW.appenderFlush(false);
-    }
-  }
-  
-  public static void cqM()
-  {
-    if (ueW != null) {
-      ueW.appenderFlush(true);
-    }
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    d(paramString1, paramString2, null);
-  }
-  
-  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if ((ueW != null) && (ueW.getLogLevel() <= 1)) {
-      if (paramVarArgs != null) {
-        break label67;
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(52021);
+    if (this.yng)
     {
-      paramVarArgs = paramString2;
-      if (paramString2 == null) {
-        paramVarArgs = "";
-      }
-      ueW.logD(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
-      return;
-      label67:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      localObject = new Exception("Buffer For Build");
+      AppMethodBeat.o(52021);
+      throw ((Throwable)localObject);
     }
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    e(paramString1, paramString2, null);
-  }
-  
-  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if ((ueW != null) && (ueW.getLogLevel() <= 4)) {
-      if (paramVarArgs != null) {
-        break label67;
-      }
-    }
-    for (;;)
+    int i = this.byteBuffer.getShort();
+    if (i > 3072)
     {
-      paramVarArgs = paramString2;
-      if (paramString2 == null) {
-        paramVarArgs = "";
-      }
-      ueW.logE(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
-      return;
-      label67:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      this.byteBuffer = null;
+      localObject = new Exception("Buffer String Length Error");
+      AppMethodBeat.o(52021);
+      throw ((Throwable)localObject);
     }
-  }
-  
-  public static void f(String paramString1, String paramString2)
-  {
-    f(paramString1, paramString2, null);
-  }
-  
-  public static void f(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if ((ueW != null) && (ueW.getLogLevel() <= 5)) {
-      if (paramVarArgs != null) {
-        break label58;
-      }
-    }
-    for (;;)
+    if (i == 0)
     {
-      ueW.logF(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
-      return;
-      label58:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      AppMethodBeat.o(52021);
+      return new byte[0];
     }
+    Object localObject = new byte[i];
+    this.byteBuffer.get((byte[])localObject, 0, i);
+    AppMethodBeat.o(52021);
+    return localObject;
   }
   
-  public static int getLogLevel()
+  public final int getInt()
   {
-    if (ueW != null) {
-      return ueW.getLogLevel();
-    }
-    return 6;
-  }
-  
-  public static String getSysInfo()
-  {
-    return SYS_INFO;
-  }
-  
-  public static void i(String paramString1, String paramString2)
-  {
-    i(paramString1, paramString2, null);
-  }
-  
-  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if ((ueW != null) && (ueW.getLogLevel() <= 2)) {
-      if (paramVarArgs != null) {
-        break label67;
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(52019);
+    if (this.yng)
     {
-      paramVarArgs = paramString2;
-      if (paramString2 == null) {
-        paramVarArgs = "";
-      }
-      ueW.logI(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
-      return;
-      label67:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      Exception localException = new Exception("Buffer For Build");
+      AppMethodBeat.o(52019);
+      throw localException;
     }
+    int i = this.byteBuffer.getInt();
+    AppMethodBeat.o(52019);
+    return i;
   }
   
-  public static void l(String paramString1, String paramString2, Object... paramVarArgs)
+  public final long getLong()
   {
-    if ((ueW != null) && (ueW.getLogLevel() <= 2))
+    AppMethodBeat.i(52020);
+    if (this.yng)
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      paramString2 = paramString2 + "  " + bk.csb();
-      ueW.logI(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
+      Exception localException = new Exception("Buffer For Build");
+      AppMethodBeat.o(52020);
+      throw localException;
     }
+    long l = this.byteBuffer.getLong();
+    AppMethodBeat.o(52020);
+    return l;
   }
   
-  public static void moveLogsFromCacheDirToLogDir()
+  public final String getString()
   {
-    if (ueW != null) {
-      ueW.moveLogsFromCacheDirToLogDir();
-    }
-  }
-  
-  public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    if ((ueW != null) && (ueW.getLogLevel() <= 4)) {
-      if (paramVarArgs != null) {
-        break label94;
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(52022);
+    if (this.yng)
     {
-      paramVarArgs = paramString2;
-      if (paramString2 == null) {
-        paramVarArgs = "";
-      }
-      paramThrowable = paramVarArgs + "  " + Log.getStackTraceString(paramThrowable);
-      ueW.logE(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramThrowable);
-      return;
-      label94:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      localObject = new Exception("Buffer For Build");
+      AppMethodBeat.o(52022);
+      throw ((Throwable)localObject);
     }
-  }
-  
-  public static void v(String paramString1, String paramString2)
-  {
-    v(paramString1, paramString2, null);
-  }
-  
-  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if ((ueW != null) && (ueW.getLogLevel() <= 0)) {
-      if (paramVarArgs != null) {
-        break label66;
-      }
-    }
-    for (;;)
+    int i = this.byteBuffer.getShort();
+    if (i > 3072)
     {
-      paramVarArgs = paramString2;
-      if (paramString2 == null) {
-        paramVarArgs = "";
-      }
-      ueW.logV(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
-      return;
-      label66:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      this.byteBuffer = null;
+      localObject = new Exception("Buffer String Length Error");
+      AppMethodBeat.o(52022);
+      throw ((Throwable)localObject);
     }
-  }
-  
-  public static void w(String paramString1, String paramString2)
-  {
-    w(paramString1, paramString2, null);
-  }
-  
-  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if ((ueW != null) && (ueW.getLogLevel() <= 3)) {
-      if (paramVarArgs != null) {
-        break label67;
-      }
-    }
-    for (;;)
+    if (i == 0)
     {
-      paramVarArgs = paramString2;
-      if (paramString2 == null) {
-        paramVarArgs = "";
-      }
-      ueW.logW(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
-      return;
-      label67:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      AppMethodBeat.o(52022);
+      return "";
     }
+    Object localObject = new byte[i];
+    this.byteBuffer.get((byte[])localObject, 0, i);
+    localObject = new String((byte[])localObject, "UTF-8");
+    AppMethodBeat.o(52022);
+    return localObject;
   }
   
-  public static abstract interface a
+  public final int nN(long paramLong)
   {
-    public abstract void appenderClose();
-    
-    public abstract void appenderFlush(boolean paramBoolean);
-    
-    public abstract int getLogLevel();
-    
-    public abstract void logD(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
-    
-    public abstract void logE(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
-    
-    public abstract void logF(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
-    
-    public abstract void logI(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
-    
-    public abstract void logV(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
-    
-    public abstract void logW(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
-    
-    public abstract void moveLogsFromCacheDirToLogDir();
+    AppMethodBeat.i(52029);
+    if (!this.yng)
+    {
+      Exception localException = new Exception("Buffer For Parse");
+      AppMethodBeat.o(52029);
+      throw localException;
+    }
+    Nc(8);
+    this.byteBuffer.putLong(paramLong);
+    AppMethodBeat.o(52029);
+    return 0;
   }
 }
 

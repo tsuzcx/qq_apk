@@ -1,33 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/a24" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="vertical" style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
-        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a3e" android:layout_weight="0.5" />
-        <EditText android:id="@id/b5u" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
+    <LinearLayout android:orientation="vertical" android:id="@id/b6v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/b6w" android:background="@color/vy" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
     </LinearLayout>
-    <View android:background="@color/qf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip">
-        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a3d" android:layout_weight="0.5" />
-        <EditText android:id="@id/b5v" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
+    <LinearLayout android:orientation="vertical" android:id="@id/b6x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1">
+        <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:paddingBottom="@dimen/l6" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.4">
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l5" android:text="@string/cnw" />
+            <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l5" android:text="@string/cnv" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.6">
+            <Button android:id="@id/b6y" android:text="@string/cnt" style="@style/nq" />
+        </LinearLayout>
     </LinearLayout>
-    <View android:background="@color/qf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip">
-        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a3a" android:layout_weight="0.5" />
-        <EditText android:id="@id/b5w" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
-    </LinearLayout>
-    <View android:background="@color/qf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip">
-        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a3_" android:layout_weight="0.5" />
-        <EditText android:id="@id/b5x" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
-    </LinearLayout>
-    <View android:background="@color/qf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip">
-        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a3b" android:layout_weight="0.5" />
-        <EditText android:id="@id/b5y" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
-    </LinearLayout>
-    <View android:background="@color/qf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="@dimen/li" android:layout_marginRight="30.0dip">
-        <TextView android:textColor="@color/fd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a39" android:layout_weight="0.5" />
-        <EditText android:id="@id/b5z" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.5" style="@style/kg" />
-    </LinearLayout>
-</LinearLayout>
+</FrameLayout>

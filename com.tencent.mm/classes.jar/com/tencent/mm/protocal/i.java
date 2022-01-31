@@ -1,389 +1,587 @@
 package com.tencent.mm.protocal;
 
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.normsg.a.b;
-import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.c.avp;
-import com.tencent.mm.protocal.c.avq;
-import com.tencent.mm.protocal.c.avr;
-import com.tencent.mm.protocal.c.blm;
-import com.tencent.mm.protocal.c.bly;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.bzo;
-import com.tencent.mm.protocal.c.eq;
-import com.tencent.mm.protocal.c.ez;
-import com.tencent.mm.protocal.c.fb;
-import com.tencent.mm.protocal.c.fc;
-import com.tencent.mm.protocal.c.ga;
-import com.tencent.mm.protocal.c.gd;
-import com.tencent.mm.protocal.c.uq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.storage.bs;
-import java.io.IOException;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class i
+public abstract interface i
+  extends IInterface
 {
-  public static final class a
-    extends i.f
-    implements k.b
+  public abstract boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong);
+  
+  public abstract byte[] adB();
+  
+  public abstract byte[] adD();
+  
+  public abstract String adE();
+  
+  public abstract byte[] adR();
+  
+  public abstract String adS();
+  
+  public abstract String adT();
+  
+  public abstract int adU();
+  
+  public abstract int getCmdId();
+  
+  public abstract String getErrMsg();
+  
+  public abstract int getHeadExtFlags();
+  
+  public abstract int getRetCode();
+  
+  public abstract int getUin();
+  
+  public abstract byte[] jN(int paramInt);
+  
+  public abstract void setErrMsg(String paramString);
+  
+  public abstract void setRetCode(int paramInt);
+  
+  public static abstract class a
+    extends Binder
+    implements i
   {
-    public fb spu = new fb();
-    public String username;
-    
-    public final byte[] HG()
+    public a()
     {
-      int j = -1;
-      a.gb("");
-      int k = this.spI;
-      int i;
-      Object localObject1;
-      Object localObject2;
-      if (k == 12)
-      {
-        i = 1;
-        com.tencent.mm.sdk.platformtools.y.d("MicroMsg.AutoReq", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-        this.spM = y.cph();
-        if ((10002 == com.tencent.mm.platformtools.ae.eSP) && (com.tencent.mm.platformtools.ae.eSQ > 0))
-        {
-          com.tencent.mm.platformtools.ae.eSQ = 0;
-          y.K("", "", 0);
-        }
-        localObject1 = this.spu.syM;
-        ((blm)localObject1).tEX = k.a(this);
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.AutoReq", "summerauth autoauth toProtoBuf[%d]", new Object[] { Integer.valueOf(this.spE) });
-        ((ez)localObject1).ljr = com.tencent.mm.compatible.e.q.zf();
-        ((ez)localObject1).syF = b.mGK.vr(i);
-        ((ez)localObject1).syG = 0;
-        ((ez)localObject1).syH = a.Df();
-        ((ez)localObject1).ffk = bk.fU(com.tencent.mm.sdk.platformtools.ae.getContext());
-        ((ez)localObject1).hQc = d.DEVICE_NAME;
-        ((ez)localObject1).syI = bs.cwc();
-        ((ez)localObject1).jxi = x.cqJ();
-        ((ez)localObject1).jxh = bk.crV();
-        ((ez)localObject1).sss = com.tencent.mm.sdk.platformtools.e.bvj;
-        g.DQ();
-        localObject2 = (String)g.DP().dKo.get(18);
-        com.tencent.mm.sdk.platformtools.y.d("MicroMsg.AutoReq", "summerecdh ksid:%s, flag:%d", new Object[] { localObject2, Integer.valueOf(((ez)localObject1).syE.sAf) });
-        ((ez)localObject1).syE.sAd.sBT = new bmk().bs(bk.ZM((String)localObject2));
+      attachInterface(this, "com.tencent.mm.protocal.IMMBaseResp_AIDL");
+    }
+    
+    public static i J(IBinder paramIBinder)
+    {
+      if (paramIBinder == null) {
+        return null;
       }
-      for (;;)
+      IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+      if ((localIInterface != null) && ((localIInterface instanceof i))) {
+        return (i)localIInterface;
+      }
+      return new a(paramIBinder);
+    }
+    
+    public IBinder asBinder()
+    {
+      return this;
+    }
+    
+    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+    {
+      switch (paramInt1)
       {
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 1598968902: 
+        paramParcel2.writeString("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        return true;
+      case 1: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        boolean bool = a(paramParcel1.readInt(), paramParcel1.createByteArray(), paramParcel1.createByteArray(), paramParcel1.readLong());
+        paramParcel2.writeNoException();
+        if (bool) {}
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          paramParcel2.writeInt(paramInt1);
+          return true;
+        }
+      case 2: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramParcel1 = adB();
+        paramParcel2.writeNoException();
+        paramParcel2.writeByteArray(paramParcel1);
+        return true;
+      case 3: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        setRetCode(paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        return true;
+      case 4: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramInt1 = getRetCode();
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 5: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramInt1 = getHeadExtFlags();
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 6: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramParcel1 = getErrMsg();
+        paramParcel2.writeNoException();
+        paramParcel2.writeString(paramParcel1);
+        return true;
+      case 7: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        setErrMsg(paramParcel1.readString());
+        paramParcel2.writeNoException();
+        return true;
+      case 8: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramParcel1 = jN(paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        paramParcel2.writeByteArray(paramParcel1);
+        return true;
+      case 9: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramParcel1 = adR();
+        paramParcel2.writeNoException();
+        paramParcel2.writeByteArray(paramParcel1);
+        return true;
+      case 10: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramParcel1 = adD();
+        paramParcel2.writeNoException();
+        paramParcel2.writeByteArray(paramParcel1);
+        return true;
+      case 11: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramInt1 = getUin();
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 12: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramParcel1 = adE();
+        paramParcel2.writeNoException();
+        paramParcel2.writeString(paramParcel1);
+        return true;
+      case 13: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramInt1 = getCmdId();
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 14: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramParcel1 = adS();
+        paramParcel2.writeNoException();
+        paramParcel2.writeString(paramParcel1);
+        return true;
+      case 15: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+        paramParcel1 = adT();
+        paramParcel2.writeNoException();
+        paramParcel2.writeString(paramParcel1);
+        return true;
+      }
+      paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+      paramInt1 = adU();
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    }
+    
+    static final class a
+      implements i
+    {
+      private IBinder mRemote;
+      
+      a(IBinder paramIBinder)
+      {
+        this.mRemote = paramIBinder;
+      }
+      
+      /* Error */
+      public final boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong)
+      {
+        // Byte code:
+        //   0: iconst_1
+        //   1: istore 6
+        //   3: ldc 21
+        //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   8: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   11: astore 7
+        //   13: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   16: astore 8
+        //   18: aload 7
+        //   20: ldc 35
+        //   22: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   25: aload 7
+        //   27: iload_1
+        //   28: invokevirtual 42	android/os/Parcel:writeInt	(I)V
+        //   31: aload 7
+        //   33: aload_2
+        //   34: invokevirtual 46	android/os/Parcel:writeByteArray	([B)V
+        //   37: aload 7
+        //   39: aload_3
+        //   40: invokevirtual 46	android/os/Parcel:writeByteArray	([B)V
+        //   43: aload 7
+        //   45: lload 4
+        //   47: invokevirtual 50	android/os/Parcel:writeLong	(J)V
+        //   50: aload_0
+        //   51: getfield 18	com/tencent/mm/protocal/i$a$a:mRemote	Landroid/os/IBinder;
+        //   54: iconst_1
+        //   55: aload 7
+        //   57: aload 8
+        //   59: iconst_0
+        //   60: invokeinterface 56 5 0
+        //   65: pop
+        //   66: aload 8
+        //   68: invokevirtual 59	android/os/Parcel:readException	()V
+        //   71: aload 8
+        //   73: invokevirtual 63	android/os/Parcel:readInt	()I
+        //   76: istore_1
+        //   77: iload_1
+        //   78: ifeq +21 -> 99
+        //   81: aload 8
+        //   83: invokevirtual 66	android/os/Parcel:recycle	()V
+        //   86: aload 7
+        //   88: invokevirtual 66	android/os/Parcel:recycle	()V
+        //   91: ldc 21
+        //   93: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   96: iload 6
+        //   98: ireturn
+        //   99: iconst_0
+        //   100: istore 6
+        //   102: goto -21 -> 81
+        //   105: astore_2
+        //   106: aload 8
+        //   108: invokevirtual 66	android/os/Parcel:recycle	()V
+        //   111: aload 7
+        //   113: invokevirtual 66	android/os/Parcel:recycle	()V
+        //   116: ldc 21
+        //   118: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   121: aload_2
+        //   122: athrow
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	123	0	this	a
+        //   0	123	1	paramInt	int
+        //   0	123	2	paramArrayOfByte1	byte[]
+        //   0	123	3	paramArrayOfByte2	byte[]
+        //   0	123	4	paramLong	long
+        //   1	100	6	bool	boolean
+        //   11	101	7	localParcel1	Parcel
+        //   16	91	8	localParcel2	Parcel
+        // Exception table:
+        //   from	to	target	type
+        //   18	77	105	finally
+      }
+      
+      public final byte[] adB()
+      {
+        AppMethodBeat.i(58818);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
         try
         {
-          localObject2 = b.mGK.boP();
-          if (localObject2 == null) {
-            continue;
-          }
-          i = localObject2.length;
-          com.tencent.mm.sdk.platformtools.y.d("MicroMsg.AutoReq", "[tomys] ccd set on auto auth, len: %s", new Object[] { Integer.valueOf(i) });
-          ((ez)localObject1).tpt = new bmk().bs((byte[])localObject2);
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(2, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
         }
-        catch (Throwable localThrowable)
+        finally
         {
-          uq localuq;
-          Object localObject4;
-          Object localObject3;
-          int m;
-          com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.AutoReq", localThrowable, "cc throws exception.", new Object[0]);
-          continue;
-          i = localObject4.length;
-          continue;
-          j = localObject3.length;
-          continue;
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58818);
         }
-        localObject2 = this.spu.syL;
-        localuq = new uq();
-        localuq.sRn = 713;
-        localObject4 = new PByteArray();
-        localObject3 = new PByteArray();
-        k = MMProtocalJni.generateECKey(localuq.sRn, (PByteArray)localObject4, (PByteArray)localObject3);
-        localObject4 = ((PByteArray)localObject4).value;
-        localObject3 = ((PByteArray)localObject3).value;
-        bm((byte[])localObject3);
-        m = localuq.sRn;
-        if (localObject4 != null) {
-          continue;
-        }
-        i = -1;
-        if (localObject3 != null) {
-          continue;
-        }
-        com.tencent.mm.sdk.platformtools.y.d("MicroMsg.AutoReq", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), bk.bD((byte[])localObject4), bk.bD((byte[])localObject3) });
-        localuq.syK = new bmk().bs((byte[])localObject4);
-        ((fc)localObject2).syO = localuq;
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.AutoReq", "summerauth auto IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d]", new Object[] { ((ez)localObject1).ljr, ((ez)localObject1).syF, ((ez)localObject1).syH, ((ez)localObject1).ffk, ((ez)localObject1).hQc, ((ez)localObject1).syI, ((ez)localObject1).jxi, ((ez)localObject1).jxh, Integer.valueOf(((ez)localObject1).sss), Integer.valueOf(com.tencent.mm.sdk.platformtools.e.bvj), Integer.valueOf(com.tencent.mm.sdk.platformtools.e.ueh) });
+      }
+      
+      public final byte[] adD()
+      {
+        AppMethodBeat.i(58826);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
         try
         {
-          localObject1 = this.spu.toByteArray();
-          return localObject1;
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(10, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
         }
-        catch (IOException localIOException)
+        finally
         {
-          com.tencent.mm.sdk.platformtools.y.e("MicroMsg.AutoReq", "summerauth toProtoBuf :%s", new Object[] { bk.j(localIOException) });
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58826);
         }
-        g.DQ();
-        i = g.DP().dKo.Fl(46);
-        break;
-        i = -1;
       }
-      return null;
-    }
-    
-    public final int HH()
-    {
-      return 702;
-    }
-    
-    public final String getUri()
-    {
-      return "/cgi-bin/micromsg-bin/autoauth";
-    }
-  }
-  
-  public static final class b
-    extends i.g
-    implements k.c
-  {
-    public final int A(byte[] paramArrayOfByte)
-    {
-      try
+      
+      public final String adE()
       {
-        this.spz = ((bzo)this.spz.aH(paramArrayOfByte));
-        k.a(this, this.spz.tFx);
-        this.dDD = 0;
-        if ((this.spz.tFx.sze == 0) && ((this.spz.tPv == null) || (this.spz.tPv.jwX == 0) || (bk.bE(aa.a(this.spz.tPv.syh)))))
-        {
-          com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
-          this.spz.tFx.sze = -1;
-        }
-        paramArrayOfByte = this.spP;
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.MMAuth", "summerauthkick auto errmsg[%s]", new Object[] { paramArrayOfByte });
-        a.gb(paramArrayOfByte);
-        return this.spz.tFx.sze;
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { bk.j(paramArrayOfByte) });
-        this.spz.tFx.sze = -1;
-      }
-      return -1;
-    }
-  }
-  
-  public static abstract interface c
-  {
-    public abstract int HC();
-    
-    public abstract void a(i.f paramf, i.g paramg, int paramInt1, int paramInt2, String paramString);
-    
-    public abstract com.tencent.mm.network.q bh(int paramInt1, int paramInt2);
-    
-    public static final class a
-    {
-      public static i.c spv;
-    }
-  }
-  
-  public static final class d
-    extends i.f
-    implements k.b
-  {
-    public avq spw = new avq();
-    public boolean spx = false;
-    
-    public final byte[] HG()
-    {
-      int j = -1;
-      a.gb("");
-      int k = this.spI;
-      int i;
-      Object localObject1;
-      Object localObject2;
-      if (k == 16)
-      {
-        i = 1;
-        com.tencent.mm.sdk.platformtools.y.d("MicroMsg.ManualReq", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-        if ((10002 == com.tencent.mm.platformtools.ae.eSP) && (com.tencent.mm.platformtools.ae.eSQ > 0))
-        {
-          com.tencent.mm.platformtools.ae.eSQ = 0;
-          y.K("", "", 0);
-        }
-        this.spM = y.cph();
-        localObject1 = this.spw.trk;
-        ((blm)localObject1).tEX = k.a(this);
-        ((avp)localObject1).ljr = com.tencent.mm.compatible.e.q.zf();
-        ((avp)localObject1).syF = b.mGK.vr(i);
-        ((avp)localObject1).syG = 0;
-        ((avp)localObject1).syH = a.Df();
-        ((avp)localObject1).ffk = bk.fU(com.tencent.mm.sdk.platformtools.ae.getContext());
-        ((avp)localObject1).hQc = d.DEVICE_NAME;
-        ((avp)localObject1).syI = bs.cwc();
-        ((avp)localObject1).jxi = x.cqJ();
-        ((avp)localObject1).jxh = bk.crV();
-        ((avp)localObject1).sss = com.tencent.mm.sdk.platformtools.e.bvj;
-        if ((10012 == com.tencent.mm.platformtools.ae.eSP) && (com.tencent.mm.platformtools.ae.eSQ > 0)) {
-          ((avp)localObject1).sss = com.tencent.mm.platformtools.ae.eSQ;
-        }
-        ((avp)localObject1).sEd = d.soU;
-        ((avp)localObject1).sEc = d.soV;
-        ((avp)localObject1).trf = d.soW;
-        ((avp)localObject1).sRp = com.tencent.mm.compatible.e.q.getSimCountryIso();
-        g.DQ();
-        localObject2 = (String)g.DP().dKo.get(18);
-        com.tencent.mm.sdk.platformtools.y.d("MicroMsg.ManualReq", "summerauth ksid:%s authreq flag:%d", new Object[] { localObject2, Integer.valueOf(((avp)localObject1).syE.sAf) });
-        ((avp)localObject1).syE.sAd.sBT = new bmk().bs(bk.ZM((String)localObject2));
-      }
-      for (;;)
-      {
+        AppMethodBeat.i(58828);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
         try
         {
-          localObject2 = b.mGK.boP();
-          if (localObject2 == null) {
-            continue;
-          }
-          i = localObject2.length;
-          com.tencent.mm.sdk.platformtools.y.d("MicroMsg.ManualReq", "[tomys] ccd set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
-          ((avp)localObject1).tpt = new bmk().bs((byte[])localObject2);
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(12, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          String str = localParcel2.readString();
+          return str;
         }
-        catch (Throwable localThrowable)
+        finally
         {
-          uq localuq;
-          Object localObject4;
-          Object localObject3;
-          int m;
-          com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.ManualReq", localThrowable, "cc throws exception.", new Object[0]);
-          continue;
-          i = localObject4.length;
-          continue;
-          j = localObject3.length;
-          continue;
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58828);
         }
-        localObject2 = this.spw.trj;
-        ((avr)localObject2).sBt = new bmk().bs(bk.crT());
-        localuq = new uq();
-        localuq.sRn = 713;
-        localObject4 = new PByteArray();
-        localObject3 = new PByteArray();
-        k = MMProtocalJni.generateECKey(localuq.sRn, (PByteArray)localObject4, (PByteArray)localObject3);
-        localObject4 = ((PByteArray)localObject4).value;
-        localObject3 = ((PByteArray)localObject3).value;
-        bm((byte[])localObject3);
-        m = localuq.sRn;
-        if (localObject4 != null) {
-          continue;
-        }
-        i = -1;
-        if (localObject3 != null) {
-          continue;
-        }
-        com.tencent.mm.sdk.platformtools.y.d("MicroMsg.ManualReq", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), bk.bD((byte[])localObject4), bk.bD((byte[])localObject3) });
-        localuq.syK = new bmk().bs((byte[])localObject4);
-        ((avr)localObject2).syO = localuq;
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.ManualReq", "summerauth manual IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d] DeviceBrand:%s DeviceModel:%s OSType:%s RealCountry:%s", new Object[] { ((avp)localObject1).ljr, ((avp)localObject1).syF, ((avp)localObject1).syH, ((avp)localObject1).ffk, ((avp)localObject1).hQc, ((avp)localObject1).syI, ((avp)localObject1).jxi, ((avp)localObject1).jxh, Integer.valueOf(((avp)localObject1).sss), Integer.valueOf(com.tencent.mm.sdk.platformtools.e.bvj), Integer.valueOf(com.tencent.mm.sdk.platformtools.e.ueh), ((avp)localObject1).sEd, ((avp)localObject1).sEc, ((avp)localObject1).trf, ((avp)localObject1).sRp });
+      }
+      
+      public final byte[] adR()
+      {
+        AppMethodBeat.i(58825);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
         try
         {
-          localObject1 = this.spw.toByteArray();
-          return localObject1;
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(9, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
         }
-        catch (IOException localIOException)
+        finally
         {
-          com.tencent.mm.sdk.platformtools.y.e("MicroMsg.ManualReq", "summerauth toProtoBuf :%s", new Object[] { bk.j(localIOException) });
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58825);
         }
-        if (this.spx)
+      }
+      
+      public final String adS()
+      {
+        AppMethodBeat.i(58830);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
         {
-          i = 3;
-          break;
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(14, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          String str = localParcel2.readString();
+          return str;
         }
-        g.DQ();
-        i = g.DP().dKo.Fl(46);
-        break;
-        i = -1;
-      }
-      return null;
-    }
-    
-    public final int HH()
-    {
-      return 701;
-    }
-    
-    public final String getUri()
-    {
-      return "/cgi-bin/micromsg-bin/manualauth";
-    }
-  }
-  
-  public static final class e
-    extends i.g
-    implements k.c
-  {
-    public final int A(byte[] paramArrayOfByte)
-    {
-      try
-      {
-        this.spz = ((bzo)this.spz.aH(paramArrayOfByte));
-        k.a(this, this.spz.tFx);
-        this.dDD = 0;
-        if ((this.spz.tFx.sze == 0) && ((this.spz.tPv == null) || (this.spz.tPv.jwX == 0) || (bk.bE(aa.a(this.spz.tPv.syh)))))
+        finally
         {
-          com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
-          this.spz.tFx.sze = -1;
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58830);
         }
-        paramArrayOfByte = this.spP;
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.MMAuth", "summerauthkick manual errmsg[%s]", new Object[] { paramArrayOfByte });
-        a.gb(paramArrayOfByte);
-        return this.spz.tFx.sze;
       }
-      catch (IOException paramArrayOfByte)
+      
+      public final String adT()
       {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { bk.j(paramArrayOfByte) });
-        this.spz.tFx.sze = -1;
+        AppMethodBeat.i(58831);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(15, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          String str = localParcel2.readString();
+          return str;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58831);
+        }
       }
-      return -1;
-    }
-  }
-  
-  public static abstract class f
-    extends k.d
-    implements k.b
-  {
-    public byte[] spy;
-    
-    public final void bm(byte[] paramArrayOfByte)
-    {
-      if (paramArrayOfByte != null) {}
-      for (;;)
+      
+      public final int adU()
       {
-        this.spy = paramArrayOfByte;
-        return;
-        paramArrayOfByte = new byte[0];
+        AppMethodBeat.i(58832);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(16, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58832);
+        }
       }
-    }
-    
-    public abstract String getUri();
-  }
-  
-  public static abstract class g
-    extends k.e
-    implements k.c
-  {
-    public int dDD = 0;
-    public byte[] eNt;
-    public String eNw;
-    public byte[] spA;
-    public bzo spz = new bzo();
-    
-    public final void bn(byte[] paramArrayOfByte)
-    {
-      if (paramArrayOfByte != null) {}
-      for (;;)
+      
+      public final IBinder asBinder()
       {
-        this.eNt = paramArrayOfByte;
-        return;
-        paramArrayOfByte = new byte[0];
+        return this.mRemote;
+      }
+      
+      public final int getCmdId()
+      {
+        AppMethodBeat.i(58829);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(13, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58829);
+        }
+      }
+      
+      public final String getErrMsg()
+      {
+        AppMethodBeat.i(58822);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(6, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          String str = localParcel2.readString();
+          return str;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58822);
+        }
+      }
+      
+      public final int getHeadExtFlags()
+      {
+        AppMethodBeat.i(58821);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(5, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58821);
+        }
+      }
+      
+      public final int getRetCode()
+      {
+        AppMethodBeat.i(58820);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(4, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58820);
+        }
+      }
+      
+      public final int getUin()
+      {
+        AppMethodBeat.i(58827);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          this.mRemote.transact(11, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58827);
+        }
+      }
+      
+      public final byte[] jN(int paramInt)
+      {
+        AppMethodBeat.i(58824);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          localParcel1.writeInt(paramInt);
+          this.mRemote.transact(8, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58824);
+        }
+      }
+      
+      public final void setErrMsg(String paramString)
+      {
+        AppMethodBeat.i(58823);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          localParcel1.writeString(paramString);
+          this.mRemote.transact(7, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58823);
+        }
+      }
+      
+      public final void setRetCode(int paramInt)
+      {
+        AppMethodBeat.i(58819);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          localParcel1.writeInt(paramInt);
+          this.mRemote.transact(3, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(58819);
+        }
       }
     }
   }

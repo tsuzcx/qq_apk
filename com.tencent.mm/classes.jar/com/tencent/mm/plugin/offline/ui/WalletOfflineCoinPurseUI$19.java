@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.offline.ui;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.d;
 
 final class WalletOfflineCoinPurseUI$19
   implements Runnable
@@ -11,14 +12,16 @@ final class WalletOfflineCoinPurseUI$19
   
   public final void run()
   {
-    int i = this.mNz.intValue();
-    Bitmap localBitmap = c.a(this.ara, i, i, true, false);
-    this.izf.setImageBitmap(localBitmap);
+    AppMethodBeat.i(43525);
+    int i = this.pnO.intValue();
+    Bitmap localBitmap = d.a(this.val$bitmap, i, i, true, false);
+    this.kCm.setImageBitmap(localBitmap);
+    AppMethodBeat.o(43525);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.19
  * JD-Core Version:    0.7.0.1
  */

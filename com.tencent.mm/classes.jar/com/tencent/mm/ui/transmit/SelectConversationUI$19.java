@@ -1,42 +1,23 @@
 package com.tencent.mm.ui.transmit;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.widget.TextView;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.m;
-import com.tencent.mm.ui.contact.n;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.ui.widget.b.c.a.b;
 
 final class SelectConversationUI$19
-  implements MenuItem.OnMenuItemClickListener
+  implements c.a.b
 {
-  SelectConversationUI$19(SelectConversationUI paramSelectConversationUI) {}
+  SelectConversationUI$19(SelectConversationUI paramSelectConversationUI, String paramString) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void byw()
   {
-    paramMenuItem = this.whw;
-    boolean bool;
-    if (!SelectConversationUI.a(this.whw))
-    {
-      bool = true;
-      SelectConversationUI.a(paramMenuItem, bool);
-      this.whw.cHE().nz(SelectConversationUI.a(this.whw));
-      this.whw.vLN.nz(SelectConversationUI.a(this.whw));
-      SelectConversationUI.k(this.whw);
-      paramMenuItem = SelectConversationUI.m(this.whw);
-      if (SelectConversationUI.a(this.whw)) {
-        break label102;
-      }
-    }
-    label102:
-    for (int i = SelectConversationUI.l(this.whw);; i = R.l.select_more_contact)
-    {
-      paramMenuItem.setText(i);
-      return true;
-      bool = false;
-      break;
-    }
+    AppMethodBeat.i(35142);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("rawUrl", this.val$url);
+    localIntent.putExtra("showShare", false);
+    d.b(this.AAp.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+    AppMethodBeat.o(35142);
   }
 }
 

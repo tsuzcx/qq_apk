@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.friend.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMWizardActivity;
 
 final class FindMContactAddUI$13
@@ -12,16 +13,19 @@ final class FindMContactAddUI$13
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((FindMContactAddUI.k(this.fhv) != null) && (FindMContactAddUI.k(this.fhv).contains("2")))
+    AppMethodBeat.i(108525);
+    if ((FindMContactAddUI.k(this.gzd) != null) && (FindMContactAddUI.k(this.gzd).contains("2")))
     {
-      paramDialogInterface = new Intent(this.fhv, FindMContactInviteUI.class);
-      paramDialogInterface.putExtra("regsetinfo_ticket", FindMContactAddUI.l(this.fhv));
-      paramDialogInterface.putExtra("login_type", FindMContactAddUI.m(this.fhv));
-      paramDialogInterface.putExtra("regsetinfo_NextStyle", FindMContactAddUI.e(this.fhv));
-      MMWizardActivity.C(this.fhv, paramDialogInterface);
+      paramDialogInterface = new Intent(this.gzd, FindMContactInviteUI.class);
+      paramDialogInterface.putExtra("regsetinfo_ticket", FindMContactAddUI.l(this.gzd));
+      paramDialogInterface.putExtra("login_type", FindMContactAddUI.m(this.gzd));
+      paramDialogInterface.putExtra("regsetinfo_NextStyle", FindMContactAddUI.e(this.gzd));
+      MMWizardActivity.J(this.gzd, paramDialogInterface);
+      AppMethodBeat.o(108525);
       return;
     }
-    FindMContactAddUI.n(this.fhv);
+    FindMContactAddUI.n(this.gzd);
+    AppMethodBeat.o(108525);
   }
 }
 

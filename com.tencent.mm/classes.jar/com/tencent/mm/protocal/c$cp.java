@@ -5,7 +5,7 @@ public final class c$cp
 {
   public c$cp()
   {
-    super("getSearchImageList", "", 10000, false);
+    super("getRouteUrl", "getRouteUrl", 235, false);
   }
 }
 

@@ -1,21 +1,25 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.applet.q.a;
 
 final class LaunchAAUI$7
-  implements View.OnClickListener
+  implements q.a
 {
   LaunchAAUI$7(LaunchAAUI paramLaunchAAUI) {}
   
-  public final void onClick(View paramView)
+  public final void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    LaunchAAUI.i(this.eZt);
+    AppMethodBeat.i(40829);
+    if (paramBoolean) {
+      LaunchAAUI.j(this.grm);
+    }
+    AppMethodBeat.o(40829);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAUI.7
  * JD-Core Version:    0.7.0.1
  */

@@ -4,35 +4,35 @@ import android.graphics.Rect;
 import android.view.View;
 
 final class ViewPager$4
-  implements m
+  implements p
 {
-  private final Rect ec = new Rect();
+  private final Rect mTempRect = new Rect();
   
   ViewPager$4(ViewPager paramViewPager) {}
   
-  public final y a(View paramView, y paramy)
+  public final ab a(View paramView, ab paramab)
   {
-    paramView = q.a(paramView, paramy);
+    paramView = t.a(paramView, paramab);
     if (paramView.isConsumed()) {
       return paramView;
     }
-    paramy = this.ec;
-    paramy.left = paramView.getSystemWindowInsetLeft();
-    paramy.top = paramView.getSystemWindowInsetTop();
-    paramy.right = paramView.getSystemWindowInsetRight();
-    paramy.bottom = paramView.getSystemWindowInsetBottom();
+    paramab = this.mTempRect;
+    paramab.left = paramView.getSystemWindowInsetLeft();
+    paramab.top = paramView.getSystemWindowInsetTop();
+    paramab.right = paramView.getSystemWindowInsetRight();
+    paramab.bottom = paramView.getSystemWindowInsetBottom();
     int i = 0;
-    int j = this.Hp.getChildCount();
+    int j = this.Ha.getChildCount();
     while (i < j)
     {
-      y localy = q.b(this.Hp.getChildAt(i), paramView);
-      paramy.left = Math.min(localy.getSystemWindowInsetLeft(), paramy.left);
-      paramy.top = Math.min(localy.getSystemWindowInsetTop(), paramy.top);
-      paramy.right = Math.min(localy.getSystemWindowInsetRight(), paramy.right);
-      paramy.bottom = Math.min(localy.getSystemWindowInsetBottom(), paramy.bottom);
+      ab localab = t.b(this.Ha.getChildAt(i), paramView);
+      paramab.left = Math.min(localab.getSystemWindowInsetLeft(), paramab.left);
+      paramab.top = Math.min(localab.getSystemWindowInsetTop(), paramab.top);
+      paramab.right = Math.min(localab.getSystemWindowInsetRight(), paramab.right);
+      paramab.bottom = Math.min(localab.getSystemWindowInsetBottom(), paramab.bottom);
       i += 1;
     }
-    return paramView.f(paramy.left, paramy.top, paramy.right, paramy.bottom);
+    return paramView.f(paramab.left, paramab.top, paramab.right, paramab.bottom);
   }
 }
 

@@ -1,13 +1,11 @@
 package com.tencent.mm.ui.contact;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextPaint;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
@@ -15,19 +13,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.plugin.messenger.foundation.a.a.l;
 import com.tencent.mm.pluginsdk.ui.d.j;
 import com.tencent.mm.pluginsdk.ui.d.k;
-import com.tencent.mm.pluginsdk.ui.tools.h.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.ui.tools.g.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.bv;
@@ -38,80 +31,97 @@ import java.util.ArrayList;
 
 public class ModRemarkNameUI
   extends MMActivity
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
-  private String bVI;
-  private ad dnp;
-  private String fGK = "";
-  private int fhj = 9;
-  private ArrayList<String> mVS;
-  private String mWy;
-  private MMTagPanel mZk;
-  private bv nlZ;
-  private TextView vKA;
-  private View vKB;
-  private View vKC;
-  private TextView vKK;
-  private EditText vMB;
-  private int vMC;
-  private String vMD = "";
-  private TextView vME = null;
-  private EditText vMF = null;
-  private TextView vMG = null;
-  private String vMH = "";
-  private boolean vMI = false;
-  private ModRemarkNameUI.a vMJ = new ModRemarkNameUI.a(this, (byte)0);
-  private View vMK;
+  private TextView Aca;
+  private View Acb;
+  private View Acc;
+  private TextView Ack;
+  private EditText Aed;
+  private int Aee;
+  private String Aef;
+  private TextView Aeg;
+  private EditText Aeh;
+  private TextView Aei;
+  private String Aej;
+  private boolean Aek;
+  private ModRemarkNameUI.a Ael;
+  private View Aem;
+  private TextView Aen;
+  private String cDt;
+  private ad contact;
+  private int gyR;
+  private String hKa;
+  private MMTagPanel pCL;
+  private bv pRo;
+  private ArrayList<String> pyL;
+  private String pzu;
   
-  protected final int getLayoutId()
+  public ModRemarkNameUI()
   {
-    return R.i.mod_remark_name;
+    AppMethodBeat.i(33752);
+    this.Aef = "";
+    this.hKa = "";
+    this.Aeg = null;
+    this.Aeh = null;
+    this.Aei = null;
+    this.Aej = "";
+    this.Aek = false;
+    this.gyR = 9;
+    this.Ael = new ModRemarkNameUI.a(this, (byte)0);
+    AppMethodBeat.o(33752);
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
-    this.bVI = getIntent().getStringExtra("Contact_User");
-    if ((this.bVI != null) && (this.bVI.length() > 0))
+    return 2130970295;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(33754);
+    this.cDt = getIntent().getStringExtra("Contact_User");
+    if ((this.cDt != null) && (this.cDt.length() > 0))
     {
-      au.Hx();
-      this.dnp = com.tencent.mm.model.c.Fw().abl(this.bVI);
-      au.Hx();
-      this.nlZ = com.tencent.mm.model.c.Fx().Id(this.bVI);
-      if ((this.dnp == null) || (ah.bl(this.dnp.field_username)))
+      aw.aaz();
+      this.contact = com.tencent.mm.model.c.YA().arw(this.cDt);
+      aw.aaz();
+      this.pRo = com.tencent.mm.model.c.YB().TM(this.cDt);
+      if ((this.contact == null) || (ah.isNullOrNil(this.contact.field_username)))
       {
-        this.dnp = new ad(this.bVI);
-        this.dnp.dk(ah.pm(this.vMD));
-        this.dnp.df(ah.pm(this.fGK));
+        this.contact = new ad(this.cDt);
+        this.contact.jp(ah.nullAsNil(this.Aef));
+        this.contact.jn(ah.nullAsNil(this.hKa));
       }
     }
-    this.vMB = ((EditText)findViewById(R.h.contact_info_mod_remark_name_et));
+    this.Aed = ((EditText)findViewById(2131823224));
     Object localObject1 = new ModRemarkNameUI.1(this);
-    Object localObject2 = new h.a();
-    ((h.a)localObject2).smK = ((MMEditText.b)localObject1);
-    this.vMB.addTextChangedListener((TextWatcher)localObject2);
-    com.tencent.mm.ui.tools.a.c.d(this.vMB).Ig(100).a(null);
-    if ((this.dnp != null) && (this.vMC != 3))
+    Object localObject2 = new g.a();
+    ((g.a)localObject2).wff = ((MMEditText.b)localObject1);
+    this.Aed.addTextChangedListener((TextWatcher)localObject2);
+    com.tencent.mm.ui.tools.b.c.d(this.Aed).QS(100).a(null);
+    if ((this.contact != null) && (this.Aee != 3))
     {
-      if (this.vMC == 4)
+      if (this.Aee == 4)
       {
-        this.vMB.setText(j.a(this, ah.pm(this.vMD), this.vMB.getTextSize()));
-        this.vMB.setSelection(this.vMB.getText().length());
+        this.Aed.setText(j.b(this, ah.nullAsNil(this.Aef), this.Aed.getTextSize()));
+        this.Aed.setSelection(this.Aed.getText().length());
       }
     }
     else
     {
-      if (this.vMC != 0) {
-        break label1106;
+      if (this.Aee != 0) {
+        break label1118;
       }
-      setMMTitle(R.l.contact_info_mod_remarkname);
-      localObject1 = com.tencent.mm.plugin.account.b.getAddrUploadStg().pH(this.dnp.field_username);
-      if ((localObject1 != null) && (!ah.bl(((com.tencent.mm.plugin.account.friend.a.a)localObject1).Wx())) && (!((com.tencent.mm.plugin.account.friend.a.a)localObject1).Wx().equals(this.vMB.getText()))) {
-        break label976;
+      setMMTitle(2131298670);
+      localObject1 = com.tencent.mm.plugin.account.a.getAddrUploadStg().wX(this.contact.field_username);
+      if ((localObject1 != null) && (!ah.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject1).apZ())) && (!((com.tencent.mm.plugin.account.friend.a.a)localObject1).apZ().equals(this.Aed.getText()))) {
+        break label988;
       }
-      label320:
-      addTextOptionMenu(0, getString(R.l.app_save), new ModRemarkNameUI.2(this));
-      if ((this.vMB == null) || (this.vMB.getText().toString().trim().length() <= 0)) {
-        break label1239;
+      label326:
+      addTextOptionMenu(0, getString(2131297063), new ModRemarkNameUI.2(this));
+      if ((this.Aed == null) || (this.Aed.getText().toString().trim().length() <= 0)) {
+        break label1251;
       }
       enableOptionMenu(true);
     }
@@ -121,104 +131,107 @@ public class ModRemarkNameUI
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
+          AppMethodBeat.i(33746);
           ModRemarkNameUI.this.finish();
+          AppMethodBeat.o(33746);
           return true;
         }
       });
-      this.vME = ((TextView)findViewById(R.h.contact_info_remark_desc_tv));
-      this.vMF = ((EditText)findViewById(R.h.contact_info_mod_remark_desc_et));
-      this.vMG = ((TextView)findViewById(R.h.wordcount));
-      this.vKC = findViewById(R.h.contact_info_mod_remark_desc_container);
-      com.tencent.mm.ui.tools.a.c.d(this.vMF).Ig(800).a(null);
-      this.vMG.setText(com.tencent.mm.ui.tools.f.bi(800, this.vMF.getEditableText().toString()));
-      this.vMF.append(j.a(this, ah.pm(this.vMH), this.vMF.getTextSize()));
-      this.vME.append(j.a(this, ah.pm(this.vMH), this.vME.getTextSize()));
-      if (this.nlZ != null)
+      this.Aeg = ((TextView)findViewById(2131823235));
+      this.Aeh = ((EditText)findViewById(2131823233));
+      this.Aei = ((TextView)findViewById(2131823234));
+      this.Acc = findViewById(2131823232);
+      com.tencent.mm.ui.tools.b.c.d(this.Aeh).QS(800).a(null);
+      this.Aei.setText(com.tencent.mm.ui.tools.f.bO(800, this.Aeh.getEditableText().toString()));
+      this.Aeh.append(j.b(this, ah.nullAsNil(this.Aej), this.Aeh.getTextSize()));
+      this.Aeg.append(j.b(this, ah.nullAsNil(this.Aej), this.Aeg.getTextSize()));
+      if (this.pRo != null)
       {
-        this.vMF.setText(j.a(this, ah.pm(this.nlZ.field_conDescription), this.vMF.getTextSize()));
-        this.vME.setText(j.a(this, ah.pm(this.nlZ.field_conDescription), this.vMF.getTextSize()));
+        this.Aeh.setText(j.b(this, ah.nullAsNil(this.pRo.field_conDescription), this.Aeh.getTextSize()));
+        this.Aeg.setText(j.b(this, ah.nullAsNil(this.pRo.field_conDescription), this.Aeh.getTextSize()));
       }
-      this.vMF.addTextChangedListener(new ModRemarkNameUI.b(this, (byte)0));
-      this.vME.setOnClickListener(new ModRemarkNameUI.4(this));
+      this.Aeh.addTextChangedListener(new ModRemarkNameUI.b(this, (byte)0));
+      this.Aeg.setOnClickListener(new ModRemarkNameUI.4(this));
+      AppMethodBeat.o(33754);
       return;
-      if (!ah.bl(this.dnp.field_conRemark))
+      if (!ah.isNullOrNil(this.contact.field_conRemark))
       {
-        if ((this.vMC == 0) && (!ah.bl(this.fGK)))
+        if ((this.Aee == 0) && (!ah.isNullOrNil(this.hKa)))
         {
-          this.vMB.setText(j.a(this, this.fGK, this.vMB.getTextSize()));
+          this.Aed.setText(j.b(this, this.hKa, this.Aed.getTextSize()));
           break;
         }
-        this.vMB.setText(j.a(this, ah.pm(this.dnp.field_conRemark), this.vMB.getTextSize()));
+        this.Aed.setText(j.b(this, ah.nullAsNil(this.contact.field_conRemark), this.Aed.getTextSize()));
         break;
       }
-      if (!ah.bl(this.fGK))
+      if (!ah.isNullOrNil(this.hKa))
       {
-        this.vMB.setText(j.a(this, ah.pm(this.fGK), this.vMB.getTextSize()));
+        this.Aed.setText(j.b(this, ah.nullAsNil(this.hKa), this.Aed.getTextSize()));
         break;
       }
-      if (!ah.bl(this.dnp.field_nickname))
+      if (!ah.isNullOrNil(this.contact.field_nickname))
       {
-        if ((this.vMC == 0) && (!ah.bl(this.vMD)) && (!com.tencent.mm.n.a.gR(this.dnp.field_type)))
+        if ((this.Aee == 0) && (!ah.isNullOrNil(this.Aef)) && (!com.tencent.mm.n.a.je(this.contact.field_type)))
         {
-          this.vMB.setText(j.a(this, ah.pm(this.vMD), this.vMB.getTextSize()));
+          this.Aed.setText(j.b(this, ah.nullAsNil(this.Aef), this.Aed.getTextSize()));
           break;
         }
-        this.vMB.setText(j.a(this, ah.pm(this.dnp.field_nickname), this.vMB.getTextSize()));
+        this.Aed.setText(j.b(this, ah.nullAsNil(this.contact.field_nickname), this.Aed.getTextSize()));
         break;
       }
-      if (!ah.bl(this.vMD))
+      if (!ah.isNullOrNil(this.Aef))
       {
-        this.vMB.setText(j.a(this, ah.pm(this.vMD), this.vMB.getTextSize()));
+        this.Aed.setText(j.b(this, ah.nullAsNil(this.Aef), this.Aed.getTextSize()));
         break;
       }
-      localObject1 = this.dnp.field_nickname;
-      if ((ah.bl((String)localObject1)) || (((String)localObject1).length() > 50)) {}
+      localObject1 = this.contact.field_nickname;
+      if ((ah.isNullOrNil((String)localObject1)) || (((String)localObject1).length() > 50)) {}
       for (int i = 0;; i = 1)
       {
         if (i == 0) {
-          break label964;
+          break label976;
         }
-        this.vMB.setText(j.a(this, ah.pm(this.dnp.Bq()), this.vMB.getTextSize()));
+        this.Aed.setText(j.b(this, ah.nullAsNil(this.contact.Of()), this.Aed.getTextSize()));
         break;
       }
-      label964:
-      this.vMB.setText("");
-      break;
       label976:
-      this.vKA = ((TextView)findViewById(R.h.mode_remark_mobile_name));
-      this.vKB = findViewById(R.h.mod_remark_mobile_name_area);
-      this.vKB.setVisibility(0);
-      this.vKA.setText(ah.pm(getString(R.l.contact_info_set_reamrk_mobile_name, new Object[] { ((com.tencent.mm.plugin.account.friend.a.a)localObject1).Wx() })));
-      localObject2 = new k(getString(R.l.write_contact_remark));
-      ((k)localObject2).setSpan(new c(((com.tencent.mm.plugin.account.friend.a.a)localObject1).Wx()), 0, ((k)localObject2).length(), 17);
-      this.vKA.append(" ");
-      this.vKA.append((CharSequence)localObject2);
-      this.vKA.setMovementMethod(LinkMovementMethod.getInstance());
-      break label320;
-      label1106:
-      if (this.vMC == 3)
+      this.Aed.setText("");
+      break;
+      label988:
+      this.Aca = ((TextView)findViewById(2131823227));
+      this.Acb = findViewById(2131823226);
+      this.Acb.setVisibility(0);
+      this.Aca.setText(ah.nullAsNil(getString(2131298753, new Object[] { ((com.tencent.mm.plugin.account.friend.a.a)localObject1).apZ() })));
+      localObject2 = new k(getString(2131305994));
+      ((k)localObject2).setSpan(new ModRemarkNameUI.c(this, ((com.tencent.mm.plugin.account.friend.a.a)localObject1).apZ()), 0, ((k)localObject2).length(), 17);
+      this.Aca.append(" ");
+      this.Aca.append((CharSequence)localObject2);
+      this.Aca.setMovementMethod(LinkMovementMethod.getInstance());
+      break label326;
+      label1118:
+      if (this.Aee == 3)
       {
-        setMMTitle(R.l.tag_rename);
-        this.vMB.setHint("");
-        if (!ah.bl(this.vMD)) {
-          this.vMB.setText(this.vMD);
+        setMMTitle(2131304227);
+        this.Aed.setHint("");
+        if (!ah.isNullOrNil(this.Aef)) {
+          this.Aed.setText(this.Aef);
         }
-        localObject1 = (TextView)findViewById(R.h.contact_info_mod_remark_name_hint_tv);
-        ((TextView)localObject1).setText(R.l.set_tag_name);
+        localObject1 = (TextView)findViewById(2131823223);
+        ((TextView)localObject1).setText(2131303137);
         ((TextView)localObject1).setVisibility(0);
-        findViewById(R.h.mod_remark_name_desc).setVisibility(8);
-        break label320;
+        findViewById(2131826324).setVisibility(8);
+        break label326;
       }
-      if (this.vMC != 4) {
-        break label320;
+      if (this.Aee != 4) {
+        break label326;
       }
-      setMMTitle(R.l.room_my_displayname);
-      this.vMB.setHint("");
-      localObject1 = (TextView)findViewById(R.h.contact_info_mod_remark_name_hint_tv);
-      ((TextView)localObject1).setText(R.l.room_self_nick_name_tip);
+      setMMTitle(2131302740);
+      this.Aed.setHint("");
+      localObject1 = (TextView)findViewById(2131823223);
+      ((TextView)localObject1).setText(2131302790);
       ((TextView)localObject1).setVisibility(0);
-      break label320;
-      label1239:
+      break label326;
+      label1251:
       enableOptionMenu(false);
     }
   }
@@ -226,126 +239,125 @@ public class ModRemarkNameUI
   public void onCreate(Bundle paramBundle)
   {
     int j = 0;
+    AppMethodBeat.i(33753);
     super.onCreate(paramBundle);
-    this.fhj = getIntent().getIntExtra("Contact_Scene", 9);
-    this.vMC = getIntent().getIntExtra("Contact_mode_name_type", 0);
-    this.vMD = ah.pm(getIntent().getStringExtra("Contact_Nick"));
-    this.fGK = ah.pm(getIntent().getStringExtra("Contact_RemarkName"));
-    this.vMI = getIntent().getBooleanExtra("Contact_ModStrangerRemark", true);
+    this.gyR = getIntent().getIntExtra("Contact_Scene", 9);
+    this.Aee = getIntent().getIntExtra("Contact_mode_name_type", 0);
+    this.Aef = ah.nullAsNil(getIntent().getStringExtra("Contact_Nick"));
+    this.hKa = ah.nullAsNil(getIntent().getStringExtra("Contact_RemarkName"));
+    this.Aek = getIntent().getBooleanExtra("Contact_ModStrangerRemark", true);
     initView();
-    this.vMK = findViewById(R.h.contact_info_mod_label_con);
+    this.Aen = ((TextView)findViewById(2131823228));
+    this.Aem = findViewById(2131826323);
     int i;
-    if (this.vMC != 0)
+    if (this.Aee != 0)
     {
-      this.vMK.setVisibility(8);
-      this.mZk = ((MMTagPanel)findViewById(R.h.contact_info_mod_label_et));
-      this.mZk.setPanelClickable(false);
-      this.vKK = ((TextView)findViewById(R.h.contact_info_label_tv));
-      this.vKK.setText(R.l.mod_label_hint);
-      this.mZk.setOnClickListener(this.vMJ);
-      this.vKK.setOnClickListener(this.vMJ);
-      if ((this.dnp == null) || (!ad.aaU(this.dnp.field_username))) {
-        break label231;
+      this.Aem.setVisibility(8);
+      this.Aen.setVisibility(8);
+      this.pCL = ((MMTagPanel)findViewById(2131823230));
+      this.pCL.setPanelClickable(false);
+      this.Ack = ((TextView)findViewById(2131823229));
+      this.Ack.setText(2131301604);
+      this.pCL.setOnClickListener(this.Ael);
+      this.Ack.setOnClickListener(this.Ael);
+      if ((this.contact == null) || (!ad.arf(this.contact.field_username))) {
+        break label274;
       }
       i = 1;
-      label208:
-      if ((i != 0) && (this.vMB != null)) {
-        break label236;
-      }
     }
     for (;;)
     {
-      return;
-      this.vMK.setVisibility(0);
-      break;
-      label231:
-      i = 0;
-      break label208;
-      label236:
-      paramBundle = (ViewGroup)this.vMB.getParent();
-      int k = paramBundle.getChildCount();
-      i = j;
-      while (i < k)
+      if (i != 0)
       {
-        View localView = paramBundle.getChildAt(i);
-        j = localView.getId();
-        if ((j != R.h.contact_info_mod_remark_name_hint_tv) && (j != R.h.contact_info_mod_remark_name_et)) {
-          localView.setVisibility(8);
+        if (this.Aed == null)
+        {
+          AppMethodBeat.o(33753);
+          return;
+          this.Aem.setVisibility(0);
+          this.Aen.setVisibility(0);
+          break;
+          label274:
+          i = 0;
+          continue;
         }
-        i += 1;
+        paramBundle = (ViewGroup)this.Aed.getParent();
+        int k = paramBundle.getChildCount();
+        i = j;
+        while (i < k)
+        {
+          View localView = paramBundle.getChildAt(i);
+          j = localView.getId();
+          if ((j != 2131823223) && (j != 2131823224)) {
+            localView.setVisibility(8);
+          }
+          i += 1;
+        }
       }
     }
+    AppMethodBeat.o(33753);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(33758);
     super.onDestroy();
+    AppMethodBeat.o(33758);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(33755);
     super.onResume();
-    au.Hx();
-    this.nlZ = com.tencent.mm.model.c.Fx().Id(this.bVI);
-    if (this.nlZ != null)
+    aw.aaz();
+    this.pRo = com.tencent.mm.model.c.YB().TM(this.cDt);
+    if (this.pRo != null)
     {
-      this.mWy = this.nlZ.field_contactLabels;
-      this.mVS = ((ArrayList)com.tencent.mm.plugin.label.a.a.bdA().Gm(this.mWy));
+      this.pzu = this.pRo.field_contactLabels;
+      this.pyL = ((ArrayList)com.tencent.mm.plugin.label.a.a.bKV().RP(this.pzu));
     }
-    if (!ah.bl(this.mWy))
+    if (!ah.isNullOrNil(this.pzu))
     {
-      this.mZk.setVisibility(0);
-      this.vKK.setVisibility(8);
-      if ((this.mVS != null) && (!this.mVS.isEmpty())) {
-        this.mZk.a(this.mVS, this.mVS);
+      this.pCL.setVisibility(0);
+      this.Ack.setVisibility(8);
+      if ((this.pyL != null) && (!this.pyL.isEmpty()))
+      {
+        this.pCL.a(this.pyL, this.pyL);
+        AppMethodBeat.o(33755);
       }
-      return;
     }
-    this.mZk.setVisibility(8);
-    this.vKK.setVisibility(0);
+    else
+    {
+      this.pCL.setVisibility(8);
+      this.Ack.setVisibility(0);
+    }
+    AppMethodBeat.o(33755);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    y.i("MiroMsg.ModRemarkName", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.i(33759);
+    ab.i("MiroMsg.ModRemarkName", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (paramm.getType() == 44)
     {
       if ((paramInt1 != 0) && (paramInt2 < 0))
       {
-        y.d("MiroMsg.ModRemarkName", "addRoomCard Error!");
-        Toast.makeText(this, getString(R.l.room_save_to_group_card_fail, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+        ab.d("MiroMsg.ModRemarkName", "addRoomCard Error!");
+        Toast.makeText(this, getString(2131302779, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
       }
       finish();
     }
+    AppMethodBeat.o(33759);
   }
   
-  private final class c
-    extends ClickableSpan
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    public String fGK;
-    
-    public c(String paramString)
-    {
-      this.fGK = paramString;
-    }
-    
-    public final void onClick(View paramView)
-    {
-      ModRemarkNameUI.a(ModRemarkNameUI.this).setText(j.a(ModRemarkNameUI.this, ah.pm(this.fGK), ModRemarkNameUI.a(ModRemarkNameUI.this).getTextSize()));
-      ModRemarkNameUI.a(ModRemarkNameUI.this).setSelection(ModRemarkNameUI.a(ModRemarkNameUI.this).getText().length());
-      ModRemarkNameUI.l(ModRemarkNameUI.this).setVisibility(8);
-    }
-    
-    public final void updateDrawState(TextPaint paramTextPaint)
-    {
-      paramTextPaint.setColor(ModRemarkNameUI.this.getResources().getColor(R.e.blue_text_color));
-      paramTextPaint.setUnderlineText(false);
-    }
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ModRemarkNameUI
  * JD-Core Version:    0.7.0.1
  */

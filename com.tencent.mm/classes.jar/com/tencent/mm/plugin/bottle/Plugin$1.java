@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.bottle;
 
 import android.content.Context;
-import com.tencent.mm.plugin.bottle.ui.e;
 import com.tencent.mm.pluginsdk.b.a;
 import com.tencent.mm.pluginsdk.b.b;
 
@@ -10,9 +9,9 @@ final class Plugin$1
 {
   Plugin$1(Plugin paramPlugin) {}
   
-  public final a Y(Context paramContext, String paramString)
+  public final a ab(Context paramContext, String paramString)
   {
-    return new e(paramContext);
+    return null;
   }
 }
 

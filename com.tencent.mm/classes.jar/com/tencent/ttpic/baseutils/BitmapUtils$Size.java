@@ -1,5 +1,7 @@
 package com.tencent.ttpic.baseutils;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class BitmapUtils$Size
 {
   public int height;
@@ -13,7 +15,10 @@ public class BitmapUtils$Size
   
   public String toString()
   {
-    return "Size{width=" + this.width + ", height=" + this.height + '}';
+    AppMethodBeat.i(49598);
+    String str = "Size{width=" + this.width + ", height=" + this.height + '}';
+    AppMethodBeat.o(49598);
+    return str;
   }
 }
 

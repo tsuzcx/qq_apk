@@ -9,11 +9,11 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.TYPE})
 @interface URISpanHandlerSet$a
 {
-  URISpanHandlerSet.PRIORITY tB() default URISpanHandlerSet.PRIORITY.NORMAL;
+  URISpanHandlerSet.PRIORITY Cg() default URISpanHandlerSet.PRIORITY.NORMAL;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.plugin.URISpanHandlerSet.a
  * JD-Core Version:    0.7.0.1
  */

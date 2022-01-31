@@ -1,9 +1,12 @@
 package com.tencent.liteav.audio;
 
 import android.content.Context;
+import com.tencent.liteav.audio.impl.Record.a;
 import com.tencent.liteav.audio.impl.Record.f;
 import com.tencent.liteav.audio.impl.Record.h;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
 
@@ -11,11 +14,11 @@ public class TXCAudioUGCRecorder
   implements h
 {
   private static final String TAG = "AudioCenter:TXCAudioUGCRecorder";
-  static TXCAudioUGCRecorder instance = new TXCAudioUGCRecorder();
-  protected int mAECType = TXEAudioDef.TXE_AEC_NONE;
-  private com.tencent.liteav.audio.impl.Record.a mBGMRecorder = null;
-  protected int mBits = com.tencent.liteav.basic.a.a.h;
-  protected int mChannels = com.tencent.liteav.basic.a.a.f;
+  static TXCAudioUGCRecorder instance;
+  protected int mAECType = 0;
+  private a mBGMRecorder = null;
+  protected int mBits = 16;
+  protected int mChannels = 1;
   protected Context mContext;
   private boolean mCurBGMRecordFlag = false;
   private long mEffectorObj = 0L;
@@ -24,15 +27,21 @@ public class TXCAudioUGCRecorder
   protected boolean mIsMute = false;
   private boolean mIsPause = false;
   private long mLastPTS = 0L;
-  protected int mReverbType = TXEAudioDef.TXE_REVERB_TYPE_0;
-  protected int mSampleRate = com.tencent.liteav.basic.a.a.e;
+  protected int mReverbType = 0;
+  protected int mSampleRate = 48000;
   private float mSpeedRate = 1.0F;
-  private int mVoiceEnvironment;
-  private int mVoiceKind;
+  private int mVoiceEnvironment = -1;
+  private int mVoiceKind = -1;
   private float mVolume = 1.0F;
-  private WeakReference<e> mWeakRecordListener;
+  private WeakReference<d> mWeakRecordListener;
   
-  static {}
+  static
+  {
+    AppMethodBeat.i(66500);
+    b.f();
+    instance = new TXCAudioUGCRecorder();
+    AppMethodBeat.o(66500);
+  }
   
   public static TXCAudioUGCRecorder getInstance()
   {
@@ -45,10 +54,11 @@ public class TXCAudioUGCRecorder
     {
       try
       {
+        AppMethodBeat.i(66497);
         uninitEffector();
         this.mEffectorObj = nativeCreateEffector(this.mSampleRate, this.mChannels, this.mBits);
         bool = false;
-        if ((!this.mIsEarphoneOn) && (this.mAECType != TXEAudioDef.TXE_AEC_SYSTEM))
+        if ((!this.mIsEarphoneOn) && (this.mAECType != 1))
         {
           nativeSetReverbType(this.mEffectorObj, this.mReverbType);
           nativeSetChangerType(this.mEffectorObj, this.mVoiceKind, this.mVoiceEnvironment);
@@ -57,6 +67,7 @@ public class TXCAudioUGCRecorder
           nativeSetSpeedRate(this.mEffectorObj, this.mSpeedRate);
           nativeEnableEncoder(this.mEffectorObj, true);
           this.mLastPTS = 0L;
+          AppMethodBeat.o(66497);
           return;
         }
       }
@@ -93,18 +104,16 @@ public class TXCAudioUGCRecorder
   {
     try
     {
+      AppMethodBeat.i(66498);
       if (this.mEffectorObj > 0L)
       {
         nativeDestroyEffector(this.mEffectorObj);
         this.mEffectorObj = 0L;
       }
+      AppMethodBeat.o(66498);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   /* Error */
@@ -113,44 +122,49 @@ public class TXCAudioUGCRecorder
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 10
-    //   4: ldc 154
-    //   6: invokestatic 160	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   9: aload_0
-    //   10: getfield 88	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
-    //   13: lstore_1
-    //   14: lload_1
-    //   15: lconst_0
-    //   16: lcmp
-    //   17: ifgt +6 -> 23
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: return
-    //   23: aload_0
-    //   24: aload_0
-    //   25: getfield 88	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
-    //   28: invokespecial 162	com/tencent/liteav/audio/TXCAudioUGCRecorder:nativeClearCache	(J)V
-    //   31: goto -11 -> 20
-    //   34: astore_3
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: aload_3
-    //   38: athrow
+    //   2: ldc 146
+    //   4: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: ldc 10
+    //   9: ldc 147
+    //   11: invokestatic 152	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   14: aload_0
+    //   15: getfield 81	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
+    //   18: lconst_0
+    //   19: lcmp
+    //   20: ifgt +11 -> 31
+    //   23: ldc 146
+    //   25: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: return
+    //   31: aload_0
+    //   32: aload_0
+    //   33: getfield 81	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
+    //   36: invokespecial 154	com/tencent/liteav/audio/TXCAudioUGCRecorder:nativeClearCache	(J)V
+    //   39: ldc 146
+    //   41: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   44: goto -16 -> 28
+    //   47: astore_1
+    //   48: aload_0
+    //   49: monitorexit
+    //   50: aload_1
+    //   51: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	39	0	this	TXCAudioUGCRecorder
-    //   13	2	1	l	long
-    //   34	4	3	localObject	Object
+    //   0	52	0	this	TXCAudioUGCRecorder
+    //   47	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	14	34	finally
-    //   23	31	34	finally
+    //   2	28	47	finally
+    //   31	44	47	finally
   }
   
   public void enableBGMRecord(boolean paramBoolean)
   {
-    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "enableBGMRecord: " + paramBoolean);
+    AppMethodBeat.i(66486);
+    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "enableBGMRecord: ".concat(String.valueOf(paramBoolean)));
     this.mEnableBGMRecord = paramBoolean;
+    AppMethodBeat.o(66486);
   }
   
   public int getChannels()
@@ -159,39 +173,46 @@ public class TXCAudioUGCRecorder
   }
   
   /* Error */
-  public e getListener()
+  public d getListener()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 185	com/tencent/liteav/audio/TXCAudioUGCRecorder:mWeakRecordListener	Ljava/lang/ref/WeakReference;
-    //   6: ifnull +18 -> 24
-    //   9: aload_0
-    //   10: getfield 185	com/tencent/liteav/audio/TXCAudioUGCRecorder:mWeakRecordListener	Ljava/lang/ref/WeakReference;
-    //   13: invokevirtual 191	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   16: checkcast 193	com/tencent/liteav/audio/e
-    //   19: astore_1
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: aload_1
-    //   23: areturn
-    //   24: aconst_null
-    //   25: astore_1
-    //   26: goto -6 -> 20
-    //   29: astore_1
+    //   2: ldc 174
+    //   4: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 176	com/tencent/liteav/audio/TXCAudioUGCRecorder:mWeakRecordListener	Ljava/lang/ref/WeakReference;
+    //   11: ifnull +23 -> 34
+    //   14: aload_0
+    //   15: getfield 176	com/tencent/liteav/audio/TXCAudioUGCRecorder:mWeakRecordListener	Ljava/lang/ref/WeakReference;
+    //   18: invokevirtual 182	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   21: checkcast 184	com/tencent/liteav/audio/d
+    //   24: astore_1
+    //   25: ldc 174
+    //   27: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: aload_0
     //   31: monitorexit
     //   32: aload_1
-    //   33: athrow
+    //   33: areturn
+    //   34: aconst_null
+    //   35: astore_1
+    //   36: ldc 174
+    //   38: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   41: goto -11 -> 30
+    //   44: astore_1
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: aload_1
+    //   48: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	34	0	this	TXCAudioUGCRecorder
-    //   19	7	1	locale	e
-    //   29	4	1	localObject	Object
+    //   0	49	0	this	TXCAudioUGCRecorder
+    //   24	12	1	locald	d
+    //   44	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	20	29	finally
+    //   2	30	44	finally
+    //   36	41	44	finally
   }
   
   /* Error */
@@ -202,38 +223,41 @@ public class TXCAudioUGCRecorder
     //   1: lstore_1
     //   2: aload_0
     //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 88	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
-    //   8: lstore_3
-    //   9: lload_3
-    //   10: lconst_0
-    //   11: lcmp
-    //   12: ifgt +7 -> 19
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: lload_1
-    //   18: lreturn
-    //   19: aload_0
-    //   20: aload_0
-    //   21: getfield 88	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
-    //   24: invokespecial 197	com/tencent/liteav/audio/TXCAudioUGCRecorder:nativeGetPcmCacheLen	(J)J
-    //   27: lstore_1
-    //   28: goto -13 -> 15
-    //   31: astore 5
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: aload 5
-    //   37: athrow
+    //   4: ldc 187
+    //   6: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: aload_0
+    //   10: getfield 81	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
+    //   13: lconst_0
+    //   14: lcmp
+    //   15: ifgt +12 -> 27
+    //   18: ldc 187
+    //   20: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   23: aload_0
+    //   24: monitorexit
+    //   25: lload_1
+    //   26: lreturn
+    //   27: aload_0
+    //   28: aload_0
+    //   29: getfield 81	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
+    //   32: invokespecial 189	com/tencent/liteav/audio/TXCAudioUGCRecorder:nativeGetPcmCacheLen	(J)J
+    //   35: lstore_1
+    //   36: ldc 187
+    //   38: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   41: goto -18 -> 23
+    //   44: astore_3
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: aload_3
+    //   48: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	38	0	this	TXCAudioUGCRecorder
-    //   1	27	1	l1	long
-    //   8	2	3	l2	long
-    //   31	5	5	localObject	Object
+    //   0	49	0	this	TXCAudioUGCRecorder
+    //   1	35	1	l	long
+    //   44	4	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   4	9	31	finally
-    //   19	28	31	finally
+    //   4	23	44	finally
+    //   27	41	44	finally
   }
   
   public int getSampleRate()
@@ -243,25 +267,36 @@ public class TXCAudioUGCRecorder
   
   public boolean isRecording()
   {
-    if (this.mBGMRecorder != null) {
-      return this.mBGMRecorder.b();
+    AppMethodBeat.i(66488);
+    if (this.mBGMRecorder != null)
+    {
+      bool = this.mBGMRecorder.b();
+      AppMethodBeat.o(66488);
+      return bool;
     }
-    return f.a().c();
+    boolean bool = f.a().c();
+    AppMethodBeat.o(66488);
+    return bool;
   }
   
   public void onAudioRecordError(int paramInt, String paramString)
   {
+    AppMethodBeat.i(66495);
     TXCLog.e("AudioCenter:TXCAudioUGCRecorder", "sys audio record error: " + paramInt + ", " + paramString);
     f.a().a(null);
-    e locale = getListener();
-    if (locale != null) {
-      locale.a(paramInt, paramString);
+    d locald = getListener();
+    if (locald != null) {
+      locald.a(paramInt, paramString);
     }
+    AppMethodBeat.o(66495);
   }
   
   public void onAudioRecordPCM(byte[] paramArrayOfByte, int paramInt, long paramLong)
   {
-    if (this.mIsPause) {
+    AppMethodBeat.i(66496);
+    if (this.mIsPause)
+    {
+      AppMethodBeat.o(66496);
       return;
     }
     if (this.mEffectorObj > 0L)
@@ -279,43 +314,64 @@ public class TXCAudioUGCRecorder
       }
       finally
       {
-        try
+        for (;;)
         {
-          do
+          try
           {
             paramArrayOfByte = nativeReadOneFrame(this.mEffectorObj);
             if (paramArrayOfByte != null)
             {
               this.mLastPTS = l;
-              e locale = getListener();
-              if (locale != null) {
-                locale.b(paramArrayOfByte, l, this.mSampleRate, this.mChannels, this.mBits);
+              d locald = getListener();
+              if (locald != null) {
+                locald.b(paramArrayOfByte, l, this.mSampleRate, this.mChannels, this.mBits);
               }
             }
-            l = ((float)l + 1024000 / this.mSampleRate * this.mSpeedRate);
-          } while (paramArrayOfByte != null);
-          return;
+          }
+          finally
+          {
+            AppMethodBeat.o(66496);
+          }
+          try
+          {
+            l += (1024000.0F / this.mSampleRate * this.mSpeedRate);
+            if (paramArrayOfByte == null)
+            {
+              AppMethodBeat.o(66496);
+              return;
+            }
+          }
+          finally
+          {
+            AppMethodBeat.o(66496);
+          }
         }
-        finally {}
         paramArrayOfByte = finally;
+        AppMethodBeat.o(66496);
       }
     }
     TXCLog.e("AudioCenter:TXCAudioUGCRecorder", "effectorObj is null");
+    AppMethodBeat.o(66496);
   }
   
   public void onAudioRecordStart()
   {
+    AppMethodBeat.i(66493);
     TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "sys audio record start");
+    AppMethodBeat.o(66493);
   }
   
   public void onAudioRecordStop()
   {
+    AppMethodBeat.i(66494);
     TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "sys audio record stop");
     f.a().a(null);
+    AppMethodBeat.o(66494);
   }
   
   public void pause()
   {
+    AppMethodBeat.i(66477);
     TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "pause");
     this.mIsPause = true;
     if ((!this.mEnableBGMRecord) && (isRecording()))
@@ -323,10 +379,12 @@ public class TXCAudioUGCRecorder
       TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "停止系统录音");
       f.a().b();
     }
+    AppMethodBeat.o(66477);
   }
   
   public void resume()
   {
+    AppMethodBeat.i(66478);
     TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "resume");
     this.mIsPause = false;
     if ((!this.mEnableBGMRecord) && (!isRecording()))
@@ -337,34 +395,91 @@ public class TXCAudioUGCRecorder
       f.a().a(this);
       f.a().a(this.mContext, this.mSampleRate, this.mChannels, this.mBits, this.mAECType);
     }
+    AppMethodBeat.o(66478);
   }
   
   public void sendCustomPCMData(byte[] paramArrayOfByte) {}
   
   public void setAECType(int paramInt, Context paramContext)
   {
-    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setAECType: " + paramInt);
+    AppMethodBeat.i(66484);
+    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setAECType: ".concat(String.valueOf(paramInt)));
     this.mAECType = paramInt;
     if (paramContext != null) {
       this.mContext = paramContext.getApplicationContext();
     }
+    AppMethodBeat.o(66484);
   }
   
+  /* Error */
   public void setChangerType(int paramInt1, int paramInt2)
   {
-    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setChangerType: " + paramInt1 + " " + paramInt2);
-    this.mVoiceKind = paramInt1;
-    this.mVoiceEnvironment = paramInt2;
-    if (this.mEffectorObj <= 0L) {
-      return;
-    }
-    nativeSetChangerType(this.mEffectorObj, paramInt1, paramInt2);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 309
+    //   5: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: ldc 10
+    //   10: new 211	java/lang/StringBuilder
+    //   13: dup
+    //   14: ldc_w 311
+    //   17: invokespecial 216	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   20: iload_1
+    //   21: invokevirtual 220	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   24: ldc_w 313
+    //   27: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: iload_2
+    //   31: invokevirtual 220	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: invokestatic 152	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   40: aload_0
+    //   41: iload_1
+    //   42: putfield 97	com/tencent/liteav/audio/TXCAudioUGCRecorder:mVoiceKind	I
+    //   45: aload_0
+    //   46: iload_2
+    //   47: putfield 99	com/tencent/liteav/audio/TXCAudioUGCRecorder:mVoiceEnvironment	I
+    //   50: aload_0
+    //   51: getfield 81	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
+    //   54: lconst_0
+    //   55: lcmp
+    //   56: ifgt +12 -> 68
+    //   59: ldc_w 309
+    //   62: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: aload_0
+    //   66: monitorexit
+    //   67: return
+    //   68: aload_0
+    //   69: aload_0
+    //   70: getfield 81	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
+    //   73: iload_1
+    //   74: iload_2
+    //   75: invokespecial 118	com/tencent/liteav/audio/TXCAudioUGCRecorder:nativeSetChangerType	(JII)V
+    //   78: ldc_w 309
+    //   81: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   84: goto -19 -> 65
+    //   87: astore_3
+    //   88: aload_0
+    //   89: monitorexit
+    //   90: aload_3
+    //   91: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	92	0	this	TXCAudioUGCRecorder
+    //   0	92	1	paramInt1	int
+    //   0	92	2	paramInt2	int
+    //   87	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	65	87	finally
+    //   68	84	87	finally
   }
   
   public void setChannels(int paramInt)
   {
-    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setChannels: " + paramInt);
+    AppMethodBeat.i(66481);
+    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setChannels: ".concat(String.valueOf(paramInt)));
     this.mChannels = paramInt;
+    AppMethodBeat.o(66481);
   }
   
   public void setEarphoneOn(boolean paramBoolean)
@@ -373,7 +488,8 @@ public class TXCAudioUGCRecorder
     {
       try
       {
-        TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setEarphoneOn: " + paramBoolean);
+        AppMethodBeat.i(66487);
+        TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setEarphoneOn: ".concat(String.valueOf(paramBoolean)));
         this.mIsEarphoneOn = paramBoolean;
         if (this.mEffectorObj > 0L)
         {
@@ -381,13 +497,14 @@ public class TXCAudioUGCRecorder
           if (!paramBoolean)
           {
             paramBoolean = bool;
-            if (this.mAECType != TXEAudioDef.TXE_AEC_SYSTEM) {
+            if (this.mAECType != 1) {
               nativeMixBGM(this.mEffectorObj, paramBoolean);
             }
           }
         }
         else
         {
+          AppMethodBeat.o(66487);
           return;
         }
       }
@@ -396,49 +513,79 @@ public class TXCAudioUGCRecorder
     }
   }
   
-  public void setListener(e parame)
+  /* Error */
+  public void setListener(d paramd)
   {
-    if (parame == null) {}
-    for (;;)
-    {
-      try
-      {
-        this.mWeakRecordListener = null;
-        return;
-      }
-      finally {}
-      this.mWeakRecordListener = new WeakReference(parame);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 323
+    //   5: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_1
+    //   9: ifnonnull +17 -> 26
+    //   12: aload_0
+    //   13: aconst_null
+    //   14: putfield 176	com/tencent/liteav/audio/TXCAudioUGCRecorder:mWeakRecordListener	Ljava/lang/ref/WeakReference;
+    //   17: ldc_w 323
+    //   20: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   23: aload_0
+    //   24: monitorexit
+    //   25: return
+    //   26: aload_0
+    //   27: new 178	java/lang/ref/WeakReference
+    //   30: dup
+    //   31: aload_1
+    //   32: invokespecial 326	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   35: putfield 176	com/tencent/liteav/audio/TXCAudioUGCRecorder:mWeakRecordListener	Ljava/lang/ref/WeakReference;
+    //   38: ldc_w 323
+    //   41: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   44: goto -21 -> 23
+    //   47: astore_1
+    //   48: aload_0
+    //   49: monitorexit
+    //   50: aload_1
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	52	0	this	TXCAudioUGCRecorder
+    //   0	52	1	paramd	d
+    // Exception table:
+    //   from	to	target	type
+    //   2	8	47	finally
+    //   12	23	47	finally
+    //   26	44	47	finally
   }
   
   public void setMute(boolean paramBoolean)
   {
-    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setMute: " + paramBoolean);
+    AppMethodBeat.i(66485);
+    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setMute: ".concat(String.valueOf(paramBoolean)));
     this.mIsMute = paramBoolean;
+    AppMethodBeat.o(66485);
   }
   
   public void setReverbType(int paramInt)
   {
     try
     {
-      TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setReverbType: " + paramInt);
+      AppMethodBeat.i(66483);
+      TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setReverbType: ".concat(String.valueOf(paramInt)));
       this.mReverbType = paramInt;
       if (this.mEffectorObj > 0L) {
         nativeSetReverbType(this.mEffectorObj, paramInt);
       }
+      AppMethodBeat.o(66483);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public void setSampleRate(int paramInt)
   {
-    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setSampleRate: " + paramInt);
+    AppMethodBeat.i(66482);
+    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setSampleRate: ".concat(String.valueOf(paramInt)));
     this.mSampleRate = paramInt;
+    AppMethodBeat.o(66482);
   }
   
   /* Error */
@@ -447,50 +594,50 @@ public class TXCAudioUGCRecorder
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 10
-    //   4: new 166	java/lang/StringBuilder
-    //   7: dup
-    //   8: ldc_w 323
-    //   11: invokespecial 171	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   14: fload_1
-    //   15: invokevirtual 326	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   18: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   21: invokestatic 160	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   24: aload_0
-    //   25: fload_1
-    //   26: putfield 100	com/tencent/liteav/audio/TXCAudioUGCRecorder:mSpeedRate	F
-    //   29: aload_0
-    //   30: getfield 88	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
-    //   33: lstore_2
-    //   34: lload_2
-    //   35: lconst_0
-    //   36: lcmp
-    //   37: ifgt +6 -> 43
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: return
+    //   2: ldc_w 341
+    //   5: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: ldc 10
+    //   10: ldc_w 343
+    //   13: fload_1
+    //   14: invokestatic 346	java/lang/String:valueOf	(F)Ljava/lang/String;
+    //   17: invokevirtual 169	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   20: invokestatic 152	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: aload_0
+    //   24: fload_1
+    //   25: putfield 93	com/tencent/liteav/audio/TXCAudioUGCRecorder:mSpeedRate	F
+    //   28: aload_0
+    //   29: getfield 81	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
+    //   32: lconst_0
+    //   33: lcmp
+    //   34: ifgt +12 -> 46
+    //   37: ldc_w 341
+    //   40: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: aload_0
-    //   44: aload_0
-    //   45: getfield 88	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
-    //   48: aload_0
-    //   49: getfield 100	com/tencent/liteav/audio/TXCAudioUGCRecorder:mSpeedRate	F
-    //   52: invokespecial 138	com/tencent/liteav/audio/TXCAudioUGCRecorder:nativeSetSpeedRate	(JF)V
-    //   55: goto -15 -> 40
-    //   58: astore 4
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: aload 4
-    //   64: athrow
+    //   44: monitorexit
+    //   45: return
+    //   46: aload_0
+    //   47: aload_0
+    //   48: getfield 81	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
+    //   51: aload_0
+    //   52: getfield 93	com/tencent/liteav/audio/TXCAudioUGCRecorder:mSpeedRate	F
+    //   55: invokespecial 129	com/tencent/liteav/audio/TXCAudioUGCRecorder:nativeSetSpeedRate	(JF)V
+    //   58: ldc_w 341
+    //   61: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: goto -21 -> 43
+    //   67: astore_2
+    //   68: aload_0
+    //   69: monitorexit
+    //   70: aload_2
+    //   71: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	65	0	this	TXCAudioUGCRecorder
-    //   0	65	1	paramFloat	float
-    //   33	2	2	l	long
-    //   58	5	4	localObject	Object
+    //   0	72	0	this	TXCAudioUGCRecorder
+    //   0	72	1	paramFloat	float
+    //   67	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	34	58	finally
-    //   43	55	58	finally
+    //   2	43	67	finally
+    //   46	64	67	finally
   }
   
   /* Error */
@@ -499,96 +646,106 @@ public class TXCAudioUGCRecorder
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 10
-    //   4: new 166	java/lang/StringBuilder
-    //   7: dup
-    //   8: ldc_w 329
-    //   11: invokespecial 171	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   14: fload_1
-    //   15: invokevirtual 326	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   18: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   21: invokestatic 160	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   24: aload_0
-    //   25: fload_1
-    //   26: putfield 92	com/tencent/liteav/audio/TXCAudioUGCRecorder:mVolume	F
-    //   29: aload_0
-    //   30: getfield 88	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
-    //   33: lstore_2
-    //   34: lload_2
-    //   35: lconst_0
-    //   36: lcmp
-    //   37: ifgt +6 -> 43
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: return
+    //   2: ldc_w 348
+    //   5: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: ldc 10
+    //   10: ldc_w 350
+    //   13: fload_1
+    //   14: invokestatic 346	java/lang/String:valueOf	(F)Ljava/lang/String;
+    //   17: invokevirtual 169	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   20: invokestatic 152	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: aload_0
+    //   24: fload_1
+    //   25: putfield 85	com/tencent/liteav/audio/TXCAudioUGCRecorder:mVolume	F
+    //   28: aload_0
+    //   29: getfield 81	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
+    //   32: lconst_0
+    //   33: lcmp
+    //   34: ifgt +12 -> 46
+    //   37: ldc_w 348
+    //   40: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: aload_0
-    //   44: aload_0
-    //   45: getfield 88	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
-    //   48: fload_1
-    //   49: invokespecial 135	com/tencent/liteav/audio/TXCAudioUGCRecorder:nativeSetVolume	(JF)V
-    //   52: goto -12 -> 40
-    //   55: astore 4
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: aload 4
-    //   61: athrow
+    //   44: monitorexit
+    //   45: return
+    //   46: aload_0
+    //   47: aload_0
+    //   48: getfield 81	com/tencent/liteav/audio/TXCAudioUGCRecorder:mEffectorObj	J
+    //   51: fload_1
+    //   52: invokespecial 126	com/tencent/liteav/audio/TXCAudioUGCRecorder:nativeSetVolume	(JF)V
+    //   55: ldc_w 348
+    //   58: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   61: goto -18 -> 43
+    //   64: astore_2
+    //   65: aload_0
+    //   66: monitorexit
+    //   67: aload_2
+    //   68: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	62	0	this	TXCAudioUGCRecorder
-    //   0	62	1	paramFloat	float
-    //   33	2	2	l	long
-    //   55	5	4	localObject	Object
+    //   0	69	0	this	TXCAudioUGCRecorder
+    //   0	69	1	paramFloat	float
+    //   64	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	34	55	finally
-    //   43	52	55	finally
+    //   2	43	64	finally
+    //   46	61	64	finally
   }
   
   public int startRecord(Context paramContext)
   {
+    AppMethodBeat.i(66475);
     TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "startRecord");
+    boolean bool;
     if (isRecording())
     {
       if (this.mEnableBGMRecord == this.mCurBGMRecordFlag)
       {
         TXCLog.e("AudioCenter:TXCAudioUGCRecorder", "startRecord failed! recorder is still running!");
+        AppMethodBeat.o(66475);
         return -1;
       }
       TXCLog.e("AudioCenter:TXCAudioUGCRecorder", "recorder is still running. will restart record! bgm record flag = " + this.mEnableBGMRecord);
       stopRecord();
-      if (this.mCurBGMRecordFlag) {
-        break label165;
+      if (!this.mCurBGMRecordFlag)
+      {
+        bool = true;
+        enableBGMRecord(bool);
       }
     }
-    label165:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      enableBGMRecord(bool);
       if (paramContext != null) {
         this.mContext = paramContext.getApplicationContext();
       }
       initEffector();
       if (!this.mEnableBGMRecord) {
-        break;
+        break label188;
       }
       TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "录制BGM");
       this.mCurBGMRecordFlag = true;
-      this.mBGMRecorder = new com.tencent.liteav.audio.impl.Record.a();
+      this.mBGMRecorder = new a();
       this.mBGMRecorder.a(this);
       setEarphoneOn(true);
       this.mBGMRecorder.a(this.mContext, this.mSampleRate, this.mChannels, this.mBits);
-      return 0;
     }
-    TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "录制人声");
-    this.mCurBGMRecordFlag = false;
-    setEarphoneOn(false);
-    f.a().a(this);
-    f.a().a(this.mContext, this.mSampleRate, this.mChannels, this.mBits, this.mAECType);
-    return 0;
+    for (;;)
+    {
+      AppMethodBeat.o(66475);
+      return 0;
+      bool = false;
+      break;
+      label188:
+      TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "录制人声");
+      this.mCurBGMRecordFlag = false;
+      setEarphoneOn(false);
+      f.a().a(this);
+      f.a().a(this.mContext, this.mSampleRate, this.mChannels, this.mBits, this.mAECType);
+    }
   }
   
   public int stopRecord()
   {
+    AppMethodBeat.i(66476);
     TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "stopRecord");
     if (this.mBGMRecorder != null)
     {
@@ -599,12 +756,13 @@ public class TXCAudioUGCRecorder
     enableBGMRecord(false);
     this.mIsPause = false;
     uninitEffector();
+    AppMethodBeat.o(66476);
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCAudioUGCRecorder
  * JD-Core Version:    0.7.0.1
  */

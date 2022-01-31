@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui.chat;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.o;
 
 final class i$1
@@ -11,15 +12,17 @@ final class i$1
   
   public final void onClick(View paramView)
   {
-    if ((this.sgB.sgA != null) && (this.sgB.sgw != null)) {
-      this.sgB.sgA.WL(this.sgB.sgw.sgu);
+    AppMethodBeat.i(27955);
+    if ((this.vYT.vYS != null) && (this.vYT.vYO != null)) {
+      this.vYT.vYS.ams(this.vYT.vYO.vYL);
     }
-    this.sgB.sgx.dismiss();
+    this.vYT.vYP.dismiss();
+    AppMethodBeat.o(27955);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.i.1
  * JD-Core Version:    0.7.0.1
  */

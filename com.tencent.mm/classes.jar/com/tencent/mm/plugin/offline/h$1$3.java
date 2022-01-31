@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.offline;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.c;
 
@@ -12,7 +13,9 @@ final class h$1$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.mKe.mKd.a(this.gGJ, 0, h.n(this.mKe.mKd));
+    AppMethodBeat.i(43326);
+    this.pkt.pks.a(this.val$activity, 0, h.n(this.pkt.pks));
+    AppMethodBeat.o(43326);
   }
 }
 

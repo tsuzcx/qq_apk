@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.View;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMPullDownView.c;
 
 final class ExdeviceRankInfoUI$2
@@ -9,11 +10,18 @@ final class ExdeviceRankInfoUI$2
 {
   ExdeviceRankInfoUI$2(ExdeviceRankInfoUI paramExdeviceRankInfoUI) {}
   
-  public final boolean aEW()
+  public final boolean bim()
   {
-    View localView = ExdeviceRankInfoUI.q(this.jFV).getChildAt(ExdeviceRankInfoUI.q(this.jFV).getChildCount() - 1);
-    int i = ExdeviceRankInfoUI.q(this.jFV).getCount();
-    return (i > 0) && (localView != null) && (localView.getBottom() <= ExdeviceRankInfoUI.q(this.jFV).getHeight()) && (ExdeviceRankInfoUI.q(this.jFV).getLastVisiblePosition() == i - 1);
+    AppMethodBeat.i(20135);
+    View localView = ExdeviceRankInfoUI.q(this.lPt).getChildAt(ExdeviceRankInfoUI.q(this.lPt).getChildCount() - 1);
+    int i = ExdeviceRankInfoUI.q(this.lPt).getCount();
+    if ((i > 0) && (localView != null) && (localView.getBottom() <= ExdeviceRankInfoUI.q(this.lPt).getHeight()) && (ExdeviceRankInfoUI.q(this.lPt).getLastVisiblePosition() == i - 1))
+    {
+      AppMethodBeat.o(20135);
+      return true;
+    }
+    AppMethodBeat.o(20135);
+    return false;
   }
 }
 

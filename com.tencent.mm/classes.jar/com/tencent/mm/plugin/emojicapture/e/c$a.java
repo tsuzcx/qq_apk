@@ -1,18 +1,9 @@
 package com.tencent.mm.plugin.emojicapture.e;
 
-import a.d.a.b;
-import a.d.b.h;
-import a.n;
+import a.l;
 
-final class c$a
-  extends h
-  implements b<Boolean, n>
-{
-  c$a(b paramb)
-  {
-    super(1);
-  }
-}
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/presenter/EditorPresenter$Companion;", "", "()V", "TAG", "", "plugin-emojicapture_release"})
+public final class c$a {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar

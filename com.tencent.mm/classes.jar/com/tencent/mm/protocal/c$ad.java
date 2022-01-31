@@ -5,12 +5,12 @@ public final class c$ad
 {
   public c$ad()
   {
-    super("clearBounceBackground", "clearBounceBackground", 189, false);
+    super("chooseInvoice", "chooseInvoice", 202, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ad
  * JD-Core Version:    0.7.0.1
  */

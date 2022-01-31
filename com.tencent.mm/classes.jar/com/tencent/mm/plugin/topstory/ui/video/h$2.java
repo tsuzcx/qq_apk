@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import com.tencent.mm.plugin.topstory.ui.b.f;
-import com.tencent.mm.plugin.topstory.ui.b.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -10,10 +9,12 @@ final class h$2
 {
   h$2(h paramh) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.ak(0, b.g.video_share_to_sns, b.f.bottomsheet_icon_moment);
-    paraml.ak(1, b.g.video_share_to_friend, b.f.bottomsheet_icon_transmit);
+    AppMethodBeat.i(1714);
+    paraml.aw(0, 2131304539, 2131231024);
+    paraml.aw(1, 2131304538, 2131231038);
+    AppMethodBeat.o(1714);
   }
 }
 

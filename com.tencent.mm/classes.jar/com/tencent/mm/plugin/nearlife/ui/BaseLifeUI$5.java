@@ -3,90 +3,103 @@ package com.tencent.mm.plugin.nearlife.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
-import com.tencent.mm.ui.tools.n;
-import com.tencent.mm.ui.tools.n.b;
+import com.tencent.mm.ui.tools.q;
+import com.tencent.mm.ui.tools.q.b;
 
 final class BaseLifeUI$5
-  implements n.b
+  implements q.b
 {
   BaseLifeUI$5(BaseLifeUI paramBaseLifeUI) {}
   
-  public final void Wl()
+  public final void apN()
   {
-    y.d("MicroMsg.BaseLifeUI", "search helper onQuitSearch");
-    this.mEV.fiq = false;
-    this.mEV.lIy.setAdapter(BaseLifeUI.f(this.mEV));
-    BaseLifeUI.f(this.mEV).notifyDataSetChanged();
-    BaseLifeUI.g(this.mEV).vj(BaseLifeUI.f(this.mEV).mEu);
-    if ((!BaseLifeUI.f(this.mEV).bol()) && (BaseLifeUI.h(this.mEV) != null)) {
-      BaseLifeUI.h(this.mEV).setVisibility(0);
+    AppMethodBeat.i(22943);
+    ab.d("MicroMsg.BaseLifeUI", "search helper onQuitSearch");
+    this.pfa.gzX = false;
+    this.pfa.ofL.setAdapter(BaseLifeUI.f(this.pfa));
+    BaseLifeUI.f(this.pfa).notifyDataSetChanged();
+    BaseLifeUI.g(this.pfa).AH(BaseLifeUI.f(this.pfa).pex);
+    if ((!BaseLifeUI.f(this.pfa).bWK()) && (BaseLifeUI.h(this.pfa) != null)) {
+      BaseLifeUI.h(this.pfa).setVisibility(0);
     }
-    this.mEV.lIy.setOnTouchListener(null);
-    BaseLifeUI.e(this.mEV);
-    BaseLifeUI.a(this.mEV, BaseLifeUI.f(this.mEV));
+    this.pfa.ofL.setOnTouchListener(null);
+    BaseLifeUI.e(this.pfa);
+    BaseLifeUI.a(this.pfa, BaseLifeUI.f(this.pfa));
+    AppMethodBeat.o(22943);
   }
   
-  public final void Wm()
+  public final void apO()
   {
-    y.d("MicroMsg.BaseLifeUI", "search helper onEnterSearch");
-    this.mEV.mEP = true;
-    BaseLifeUI.i(this.mEV).setHint(this.mEV.getString(R.l.near_life_search_hint));
-    this.mEV.fiq = true;
-    BaseLifeUI.b(this.mEV).boj();
-    this.mEV.lIy.setAdapter(BaseLifeUI.b(this.mEV));
-    BaseLifeUI.b(this.mEV).notifyDataSetChanged();
-    this.mEV.lIy.cAP();
-    BaseLifeUI.g(this.mEV).vj(BaseLifeUI.b(this.mEV).mEu);
-    if (BaseLifeUI.h(this.mEV) != null) {
-      BaseLifeUI.h(this.mEV).setVisibility(8);
+    AppMethodBeat.i(22944);
+    ab.d("MicroMsg.BaseLifeUI", "search helper onEnterSearch");
+    this.pfa.peS = true;
+    BaseLifeUI.i(this.pfa).setHint(this.pfa.getString(2131301745));
+    this.pfa.gzX = true;
+    BaseLifeUI.b(this.pfa).bWI();
+    this.pfa.ofL.setAdapter(BaseLifeUI.b(this.pfa));
+    BaseLifeUI.b(this.pfa).notifyDataSetChanged();
+    this.pfa.ofL.dDZ();
+    BaseLifeUI.g(this.pfa).AH(BaseLifeUI.b(this.pfa).pex);
+    if (BaseLifeUI.h(this.pfa) != null) {
+      BaseLifeUI.h(this.pfa).setVisibility(8);
     }
-    this.mEV.lIy.setOnTouchListener(new View.OnTouchListener()
+    this.pfa.ofL.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        BaseLifeUI.5.this.mEV.XM();
+        AppMethodBeat.i(22940);
+        BaseLifeUI.5.this.pfa.hideVKB();
+        AppMethodBeat.o(22940);
         return false;
       }
     });
-    BaseLifeUI.a(this.mEV, BaseLifeUI.b(this.mEV));
+    BaseLifeUI.a(this.pfa, BaseLifeUI.b(this.pfa));
+    AppMethodBeat.o(22944);
   }
   
-  public final void Wn()
+  public final void apP()
   {
-    y.d("MicroMsg.BaseLifeUI", "click clear");
-    if (BaseLifeUI.c(this.mEV) != null)
+    AppMethodBeat.i(22941);
+    ab.d("MicroMsg.BaseLifeUI", "click clear");
+    if (BaseLifeUI.c(this.pfa) != null)
     {
-      au.Dk().c(BaseLifeUI.c(this.mEV));
-      BaseLifeUI.d(this.mEV);
+      aw.Rc().a(BaseLifeUI.c(this.pfa));
+      BaseLifeUI.d(this.pfa);
     }
-    BaseLifeUI.b(this.mEV).boj();
-    BaseLifeUI.e(this.mEV);
+    BaseLifeUI.b(this.pfa).bWI();
+    BaseLifeUI.e(this.pfa);
+    AppMethodBeat.o(22941);
   }
   
-  public final void Wo() {}
+  public final void apQ() {}
   
-  public final boolean pB(String paramString)
+  public final boolean wR(String paramString)
   {
-    y.d("MicroMsg.BaseLifeUI", "search key click");
-    BaseLifeUI.b(this.mEV, paramString);
+    AppMethodBeat.i(22945);
+    ab.d("MicroMsg.BaseLifeUI", "search key click");
+    BaseLifeUI.b(this.pfa, paramString);
+    AppMethodBeat.o(22945);
     return false;
   }
   
-  public final void pC(String paramString)
+  public final void wS(String paramString)
   {
-    y.d("MicroMsg.BaseLifeUI", "onSearchBarChange  %s", new Object[] { paramString });
-    if (bk.bl(paramString))
+    AppMethodBeat.i(22942);
+    ab.d("MicroMsg.BaseLifeUI", "onSearchBarChange  %s", new Object[] { paramString });
+    if (bo.isNullOrNil(paramString))
     {
-      Wn();
+      apP();
+      AppMethodBeat.o(22942);
       return;
     }
-    BaseLifeUI.a(this.mEV, paramString);
+    BaseLifeUI.a(this.pfa, paramString);
+    AppMethodBeat.o(22942);
   }
 }
 

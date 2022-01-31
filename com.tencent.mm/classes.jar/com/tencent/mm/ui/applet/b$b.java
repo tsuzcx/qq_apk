@@ -2,9 +2,9 @@ package com.tencent.mm.ui.applet;
 
 public abstract interface b$b
 {
-  public abstract int WL();
+  public abstract int aqn();
   
-  public abstract String jX(int paramInt);
+  public abstract String mS(int paramInt);
 }
 
 

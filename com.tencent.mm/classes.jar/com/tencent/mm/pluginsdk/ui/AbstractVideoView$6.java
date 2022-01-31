@@ -1,5 +1,6 @@
 package com.tencent.mm.pluginsdk.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.ui.b;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar;
 
@@ -8,14 +9,16 @@ final class AbstractVideoView$6
 {
   AbstractVideoView$6(AbstractVideoView paramAbstractVideoView) {}
   
-  public final void akz() {}
+  public final void aFf() {}
   
-  public final void lE(int paramInt)
+  public final void on(int paramInt)
   {
-    if (this.rYV.y(paramInt, true)) {
-      this.rYV.ce(false);
+    AppMethodBeat.i(117939);
+    if (this.vPL.d(paramInt, true)) {
+      this.vPL.dh(false);
     }
-    this.rYV.rYC.setIsPlay(true);
+    this.vPL.vPr.setIsPlay(true);
+    AppMethodBeat.o(117939);
   }
 }
 

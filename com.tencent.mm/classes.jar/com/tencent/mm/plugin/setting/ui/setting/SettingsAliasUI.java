@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,143 +8,153 @@ import android.text.Editable;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.modelsimple.r;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.g;
-import com.tencent.mm.plugin.setting.a.i;
+import com.tencent.mm.model.r;
+import com.tencent.mm.modelsimple.t;
 import com.tencent.mm.plugin.setting.b;
 import com.tencent.mm.plugin.setting.model.d;
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.q.b;
 
 public class SettingsAliasUI
   extends MMActivity
   implements f
 {
-  private String cMT;
-  private ProgressDialog dnm = null;
-  private ImageView doU;
-  private TextView doV;
-  private TextView frb;
-  private EditText nTW;
-  private d nTX;
-  private boolean nTY = false;
-  private TextView nTZ;
-  private f nTf = null;
+  private String dCJ;
+  private ProgressDialog eeN = null;
+  private ImageView egq;
+  private TextView egr;
+  private TextView gIE;
+  private EditText qHW;
+  private d qHX;
+  private boolean qHY = false;
+  private TextView qHZ;
+  private f qHf = null;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.settings_alias;
+    return 2130970689;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(a.i.modify_username);
-    this.doU = ((ImageView)findViewById(a.f.avatar_iv));
-    this.doV = ((TextView)findViewById(a.f.nickname_tv));
-    this.frb = ((TextView)findViewById(a.f.username_tv));
-    this.nTZ = ((TextView)findViewById(a.f.modify_username_detail_message));
-    this.nTW = ((EditText)findViewById(a.f.regbyqqreg_account_et));
-    String str = q.Gj();
-    if (!ad.aaX(str))
+    AppMethodBeat.i(127194);
+    setMMTitle(2131301615);
+    this.egq = ((ImageView)findViewById(2131821210));
+    this.egr = ((TextView)findViewById(2131823254));
+    this.gIE = ((TextView)findViewById(2131827077));
+    this.qHZ = ((TextView)findViewById(2131827603));
+    this.qHW = ((EditText)findViewById(2131827602));
+    String str = r.Zn();
+    if (!ad.ari(str))
     {
-      this.nTW.setText(q.Gj());
-      this.frb.setText(getString(a.i.app_account, new Object[] { str }));
+      this.qHW.setText(r.Zn());
+      this.gIE.setText(getString(2131296536, new Object[] { str }));
     }
-    this.nTW.setSelection(this.nTW.getText().length());
-    this.nTW.setFocusable(true);
-    this.nTW.setFocusableInTouchMode(true);
-    this.nTW.addTextChangedListener(new SettingsAliasUI.1(this));
-    this.doV.setText(j.a(this, bk.pm(q.Gl()), this.doV.getTextSize()));
-    a.b.a(this.doU, str);
+    this.qHW.setSelection(this.qHW.getText().length());
+    this.qHW.setFocusable(true);
+    this.qHW.setFocusableInTouchMode(true);
+    this.qHW.addTextChangedListener(new SettingsAliasUI.1(this));
+    this.egr.setText(j.b(this, bo.nullAsNil(r.Zp()), this.egr.getTextSize()));
+    a.b.c(this.egq, str);
     setBackBtn(new SettingsAliasUI.2(this));
-    a(0, getString(a.i.app_save), new SettingsAliasUI.3(this), s.b.uNx);
+    addTextOptionMenu(0, getString(2131297063), new SettingsAliasUI.3(this), null, q.b.zby);
     enableOptionMenu(false);
+    AppMethodBeat.o(127194);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127191);
     super.onCreate(paramBundle);
-    this.nTY = getIntent().getBooleanExtra("KFromSetAliasTips", false);
+    this.qHY = getIntent().getBooleanExtra("KFromSetAliasTips", false);
     initView();
-    g.Dk().a(177, this);
+    g.Rc().a(177, this);
+    AppMethodBeat.o(127191);
   }
   
   public void onDestroy()
   {
-    if (this.nTX != null) {
-      g.Dk().c(this.nTX);
+    AppMethodBeat.i(127193);
+    if (this.qHX != null) {
+      g.Rc().a(this.qHX);
     }
-    g.Dk().b(177, this);
+    g.Rc().b(177, this);
     super.onDestroy();
+    AppMethodBeat.o(127193);
   }
   
   public void onPause()
   {
+    AppMethodBeat.i(127192);
     super.onPause();
+    AppMethodBeat.o(127192);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
     int i = 1;
+    AppMethodBeat.i(127195);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (this.nTY) {
-        com.tencent.mm.plugin.report.service.h.nFQ.aC(10358, "1");
+      if (this.qHY) {
+        com.tencent.mm.plugin.report.service.h.qsU.kvStat(10358, "1");
       }
-      XM();
-      g.DP().Dz().o(42, this.cMT);
-      paramString = g.Dk();
+      hideVKB();
+      g.RL().Ru().set(42, this.dCJ);
+      paramString = g.Rc();
       paramm = new SettingsAliasUI.5(this);
-      this.nTf = paramm;
+      this.qHf = paramm;
       paramString.a(255, paramm);
-      paramString = new r(1);
-      g.Dk().a(paramString, 0);
-    }
-    for (;;)
-    {
+      paramString = new t(1);
+      g.Rc().a(paramString, 0);
+      AppMethodBeat.o(127195);
       return;
-      if (this.dnm != null)
-      {
-        this.dnm.dismiss();
-        this.dnm = null;
-      }
-      if (b.eUS.a(this.mController.uMN, paramInt1, paramInt2, paramString)) {
-        paramInt1 = i;
-      }
-      while (paramInt1 != 0)
-      {
-        return;
-        switch (paramInt1)
-        {
-        }
-        do
-        {
-          paramInt1 = 0;
-          break;
-        } while ((paramInt2 != -7) && (paramInt2 != -10));
-        com.tencent.mm.ui.base.h.h(this.mController.uMN, a.i.reg_username_exist_tip, a.i.modify_username_failed);
-        paramInt1 = i;
-      }
     }
+    if (this.eeN != null)
+    {
+      this.eeN.dismiss();
+      this.eeN = null;
+    }
+    if (b.gmP.a(getContext(), paramInt1, paramInt2, paramString)) {
+      paramInt1 = i;
+    }
+    while (paramInt1 != 0)
+    {
+      AppMethodBeat.o(127195);
+      return;
+      switch (paramInt1)
+      {
+      }
+      do
+      {
+        paramInt1 = 0;
+        break;
+      } while ((paramInt2 != -7) && (paramInt2 != -10));
+      com.tencent.mm.ui.base.h.h(getContext(), 2131302377, 2131301619);
+      paramInt1 = i;
+    }
+    AppMethodBeat.o(127195);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsAliasUI
  * JD-Core Version:    0.7.0.1
  */

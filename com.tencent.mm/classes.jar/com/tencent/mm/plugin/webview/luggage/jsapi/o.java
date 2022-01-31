@@ -1,144 +1,69 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.e.a;
-import com.tencent.luggage.e.a.a;
-import com.tencent.luggage.e.e;
-import com.tencent.luggage.e.n;
-import com.tencent.mm.pluginsdk.model.app.p;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONArray;
+import com.tencent.luggage.d.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.c.b;
+import com.tencent.mm.plugin.webview.luggage.e;
+import com.tencent.mm.plugin.webview.model.al;
+import com.tencent.mm.plugin.webview.model.d.b;
+import com.tencent.mm.plugin.webview.modeltools.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.h;
 import org.json.JSONObject;
 
 public class o
-  extends aw<n>
+  extends bi<e>
 {
-  public final void a(Context paramContext, String paramString, aw.a parama) {}
+  private ProgressDialog eeN = null;
   
-  public final int aGj()
+  public final void a(Context paramContext, String paramString, bh.a parama)
   {
-    return 0;
-  }
-  
-  public final void b(a<n>.a parama)
-  {
-    int i = 0;
-    y.i("Micromsg.JsApiGetInstallState", "invokeInOwn");
-    Object localObject1 = parama.bih.bhk;
-    Object localObject3 = ((n)parama.big).mContext;
-    JSONArray localJSONArray = ((JSONObject)localObject1).optJSONArray("packageName");
-    Object localObject4;
-    JSONObject localJSONObject;
-    int m;
-    int j;
-    int k;
-    if (localJSONArray != null)
+    AppMethodBeat.i(153121);
+    Object localObject = b.BJ(paramString);
+    if (localObject == null)
     {
-      localObject4 = new JSONObject();
-      localJSONObject = new JSONObject();
-      m = 0;
-      i = 0;
-      j = i;
-      k = i;
+      ab.i("MicroMsg.JsApiDownLoadImage", "data is null");
+      parama.c("invalid_data", null);
+      AppMethodBeat.o(153121);
+      return;
     }
-    for (;;)
+    paramString = ((JSONObject)localObject).optString("preVerifyAppId");
+    String str = ((JSONObject)localObject).optString("serverId");
+    if (bo.getInt(((JSONObject)localObject).optString("isShowProgressTips", "0"), 0) == 1) {}
+    for (int i = 1;; i = 0)
     {
-      try
-      {
-        if (m >= localJSONArray.length()) {
-          continue;
-        }
-        j = i;
-        String str = localJSONArray.optString(m);
-        j = i;
-        localObject1 = p.getPackageInfo((Context)localObject3, str);
-        if (localObject1 == null)
-        {
-          n = 0;
-          break label473;
-          j = i;
-          y.i("Micromsg.JsApiGetInstallState", "getInstallState, packageName = " + str + ", version = " + n + ", versionName = " + (String)localObject1);
-          k = i;
-          if (i == 0)
-          {
-            k = i;
-            if (n > 0) {
-              k = 1;
-            }
-          }
-          j = k;
-          ((JSONObject)localObject4).put(str, n);
-          j = k;
-          localJSONObject.put(str, localObject1);
-          m += 1;
-          i = k;
-          break;
-        }
-        j = i;
-        int n = ((PackageInfo)localObject1).versionCode;
-      }
-      catch (Exception localException)
-      {
-        k = j;
-        localObject2 = new HashMap();
-        ((HashMap)localObject2).put("result", ((JSONObject)localObject4).toString());
-        ((HashMap)localObject2).put("versionName", localJSONObject.toString());
-        if (k == 0) {
-          continue;
-        }
-        parama.c("get_install_state:yes", (Map)localObject2);
-        return;
-        parama.a("get_install_state:no", null);
-        return;
-      }
-      j = i;
-      localObject1 = ((PackageInfo)localObject1).versionName;
-      continue;
-      localObject4 = ((JSONObject)localObject2).optString("packageName");
-      if (bk.bl((String)localObject4))
-      {
-        y.i("Micromsg.JsApiGetInstallState", "packageName is null or nil");
-        parama.a("get_install_state:no_null_packageName", null);
-        return;
-      }
-      localObject3 = p.getPackageInfo((Context)localObject3, (String)localObject4);
-      if (localObject3 == null) {
-        if (localObject3 != null) {
-          break label419;
-        }
-      }
-      label419:
-      for (Object localObject2 = "null";; localObject2 = ((PackageInfo)localObject3).versionName)
-      {
-        y.i("Micromsg.JsApiGetInstallState", "doGetInstallState, packageName = " + (String)localObject4 + ", version = " + i + ", versionName = " + (String)localObject2);
-        if (localObject3 != null) {
-          break label429;
-        }
-        parama.a("get_install_state:no", null);
-        return;
-        i = ((PackageInfo)localObject3).versionCode;
+      ab.i("MicroMsg.JsApiDownLoadImage", "doDownLoadImage, appid is : %s, media id is : %s", new Object[] { paramString, str });
+      if ((!bo.isNullOrNil(paramString)) && (!bo.isNullOrNil(str))) {
         break;
       }
-      label429:
-      localObject3 = new HashMap();
-      ((Map)localObject3).put("versionName", localObject2);
-      parama.c("get_install_state:yes_" + i, (Map)localObject3);
+      parama.c("missing arguments", null);
+      AppMethodBeat.o(153121);
       return;
-      label473:
-      if (localObject2 == null) {
-        localObject2 = "null";
-      }
     }
+    localObject = new o.1(this, str, parama);
+    g.dcD().a(paramString, str, (d.b)localObject);
+    ab.i("MicroMsg.JsApiDownLoadImage", "doDownLoadImage, add cdn download task result : %b", new Object[] { Boolean.TRUE });
+    if (i != 0)
+    {
+      paramContext.getString(2131297087);
+      this.eeN = h.b(paramContext, paramContext.getString(2131306015), true, new o.2(this, (d.b)localObject, str, parama));
+    }
+    AppMethodBeat.o(153121);
+  }
+  
+  public final void b(a<e>.a parama) {}
+  
+  public final int bjL()
+  {
+    return 2;
   }
   
   public final String name()
   {
-    return "getInstallState";
+    return "downloadImage";
   }
 }
 

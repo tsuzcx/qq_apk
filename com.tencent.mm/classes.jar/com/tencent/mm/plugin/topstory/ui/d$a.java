@@ -1,29 +1,32 @@
 package com.tencent.mm.plugin.topstory.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.f.h;
 import java.io.File;
 
 final class d$a
   implements Runnable
 {
-  String pDM;
+  String tfJ;
   
   public d$a(String paramString)
   {
-    this.pDM = paramString;
+    this.tfJ = paramString;
   }
   
   public final void run()
   {
-    File localFile = new File(com.tencent.mm.compatible.util.e.bkH + "topstory/trace.info");
+    AppMethodBeat.i(1532);
+    File localFile = new File(com.tencent.mm.compatible.util.e.eQz + "topstory/trace.info");
     if ((localFile.exists()) && (localFile.length() > 2048L)) {
       localFile.delete();
     }
     if (!localFile.getParentFile().exists()) {
       localFile.getParentFile().mkdirs();
     }
-    this.pDM = ("Trace:\n" + h.g("yyyy-MM-dd HH:mm:ss", System.currentTimeMillis() / 1000L) + "\n" + this.pDM);
-    com.tencent.mm.a.e.e(localFile.getAbsolutePath(), this.pDM.getBytes());
+    this.tfJ = ("Trace:\n" + h.formatTime("yyyy-MM-dd HH:mm:ss", System.currentTimeMillis() / 1000L) + "\n" + this.tfJ);
+    com.tencent.mm.a.e.e(localFile.getAbsolutePath(), this.tfJ.getBytes());
+    AppMethodBeat.o(1532);
   }
 }
 

@@ -1,48 +1,51 @@
 package com.tencent.mm.plugin.exdevice.f.b.a;
 
-import com.tencent.mm.h.c.cd;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.ci;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class e
-  extends cd
+  extends ci
 {
-  public static c.a buS;
+  public static c.a info;
   
   static
   {
+    AppMethodBeat.i(19489);
     c.a locala = new c.a();
-    locala.ujL = new Field[5];
+    locala.yrK = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "rankID";
-    locala.ujN.put("rankID", "TEXT");
+    locala.yrM.put("rankID", "TEXT");
     localStringBuilder.append(" rankID TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "appusername";
-    locala.ujN.put("appusername", "TEXT");
+    locala.yrM.put("appusername", "TEXT");
     localStringBuilder.append(" appusername TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "username";
-    locala.ujN.put("username", "TEXT");
+    locala.yrM.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "timestamp";
-    locala.ujN.put("timestamp", "INTEGER default '0' ");
+    locala.yrM.put("timestamp", "INTEGER default '0' ");
     localStringBuilder.append(" timestamp INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "liketips";
-    locala.ujN.put("liketips", "TEXT default '' ");
+    locala.yrM.put("liketips", "TEXT default '' ");
     localStringBuilder.append(" liketips TEXT default '' ");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(19489);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

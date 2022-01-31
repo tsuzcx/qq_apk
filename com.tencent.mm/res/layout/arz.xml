@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/e44" android:layout_width="73.0dip" android:layout_height="73.0dip"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:paddingTop="@dimen/ll" android:paddingBottom="@dimen/ll" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.TagImageView android:id="@id/e45" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <View android:id="@id/e46" android:background="@color/y1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/c0y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" android:layout_centerInParent="true" />
-    <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/mr" android:textColor="@color/a23" android:ellipsize="end" android:gravity="center" android:id="@id/e47" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/eff" android:singleLine="false" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <ImageView android:gravity="center_horizontal" android:id="@id/awy" android:src="@drawable/aex" style="@style/r1" />
+    <TextView android:id="@id/ax0" android:layout_marginTop="@dimen/dl" style="@style/r2" />
+    <TextView android:textColor="#fffd8f44" android:id="@id/ecn" android:visibility="gone" style="@style/r2" />
+</LinearLayout>

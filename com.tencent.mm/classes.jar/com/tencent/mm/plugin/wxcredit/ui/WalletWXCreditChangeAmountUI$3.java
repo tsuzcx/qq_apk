@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.wxcredit.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.c;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 final class WalletWXCreditChangeAmountUI$3
   implements DialogInterface.OnClickListener
@@ -13,18 +13,21 @@ final class WalletWXCreditChangeAmountUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = a.aj(this.rRF);
+    AppMethodBeat.i(48691);
+    paramDialogInterface = a.aM(this.vIv);
     if (paramDialogInterface != null)
     {
-      paramDialogInterface.b(this.rRF, this.rRF.BX);
+      paramDialogInterface.b(this.vIv, this.vIv.getInput());
+      AppMethodBeat.o(48691);
       return;
     }
-    this.rRF.finish();
+    this.vIv.finish();
+    AppMethodBeat.o(48691);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditChangeAmountUI.3
  * JD-Core Version:    0.7.0.1
  */

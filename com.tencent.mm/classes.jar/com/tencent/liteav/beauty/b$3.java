@@ -1,5 +1,7 @@
 package com.tencent.liteav.beauty;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class b$3
   implements Runnable
 {
@@ -7,12 +9,14 @@ class b$3
   
   public void run()
   {
+    AppMethodBeat.i(66825);
     if (this.a > 0) {
       a.a().c();
     }
     if ((b.e(this.b) != null) && (this.a >= 0)) {
-      b.e(this.b).e(this.a);
+      b.e(this.b).f(this.a);
     }
+    AppMethodBeat.o(66825);
   }
 }
 

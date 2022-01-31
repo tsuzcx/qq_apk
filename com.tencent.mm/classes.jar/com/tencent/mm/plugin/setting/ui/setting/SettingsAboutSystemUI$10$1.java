@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.app.Dialog;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsAboutSystemUI$10$1
   implements Runnable
@@ -10,8 +11,10 @@ final class SettingsAboutSystemUI$10$1
   
   public final void run()
   {
-    ((Dialog)this.nTy.nTq.getTag()).dismiss();
-    SettingsAboutSystemUI.e(this.nTy.nTp);
+    AppMethodBeat.i(127120);
+    ((Dialog)this.qHy.qHq.getTag()).dismiss();
+    SettingsAboutSystemUI.e(this.qHy.qHp);
+    AppMethodBeat.o(127120);
   }
 }
 

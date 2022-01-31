@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.ListViewInScrollView android:id="@id/cod" android:background="@null" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/ye" android:transcriptMode="disabled" android:cacheColorHint="@android:color/transparent" android:divider="@color/x_" android:dividerHeight="@dimen/fn" android:layout_weight="1.0" android:headerDividersEnabled="true" style="@style/p1"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:id="@id/bep" android:layout_height="130.0dip" android:layout_margin="10.0dip" style="@style/mu" />
+    <TextView android:textColor="@color/h6" android:gravity="right" android:id="@id/bsi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
+</LinearLayout>

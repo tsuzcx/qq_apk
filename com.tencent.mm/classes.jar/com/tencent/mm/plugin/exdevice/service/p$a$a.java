@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.service;
 
 import android.os.IBinder;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class p$a$a
   implements p
@@ -13,8 +14,14 @@ final class p$a$a
     this.mRemote = paramIBinder;
   }
   
-  public final o aMj()
+  public final IBinder asBinder()
   {
+    return this.mRemote;
+  }
+  
+  public final o bqw()
+  {
+    AppMethodBeat.i(19621);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -29,11 +36,13 @@ final class p$a$a
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(19621);
     }
   }
   
-  public final l aMk()
+  public final l bqx()
   {
+    AppMethodBeat.i(19622);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -48,17 +57,13 @@ final class p$a$a
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(19622);
     }
-  }
-  
-  public final IBinder asBinder()
-  {
-    return this.mRemote;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.p.a.a
  * JD-Core Version:    0.7.0.1
  */

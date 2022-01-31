@@ -1,25 +1,30 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
-import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.d;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.g;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class d$1
-  implements AdLandingPagesProxy.d
+  implements AdLandingPagesProxy.g
 {
   d$1(d paramd) {}
   
-  public final void bCF()
+  public final void coe()
   {
-    if (d.a(this.oKl) != null) {
-      ai.d(new d.1.1(this));
+    AppMethodBeat.i(37688);
+    if (d.a(this.rBU) != null) {
+      al.d(new d.1.1(this));
     }
+    AppMethodBeat.o(37688);
   }
   
-  public final void bCG()
+  public final void cof()
   {
-    if (d.a(this.oKl) != null) {
-      ai.d(new d.1.2(this));
+    AppMethodBeat.i(37689);
+    if (d.a(this.rBU) != null) {
+      al.d(new d.1.2(this));
     }
+    AppMethodBeat.o(37689);
   }
 }
 

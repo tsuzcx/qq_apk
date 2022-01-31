@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/c8" android:paddingBottom="@dimen/t1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t3" android:layout_marginTop="@dimen/t2" android:layout_marginRight="@dimen/t3"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/db" />
+    <LinearLayout android:id="@id/v_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/t1" android:layout_marginEnd="@dimen/t1">
+        <android.support.constraint.ConstraintLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/dq" android:textColor="#e6000000" android:ellipsize="end" android:id="@id/va" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:minHeight="24.0dip" android:maxLines="1" android:layout_marginStart="16.0dip" app:layout_constraintStart_toEndOf="@id/vb" app:layout_constraintTop_toTopOf="dn" />
+            <ImageView android:id="@id/vb" android:layout_width="@dimen/sz" android:layout_height="@dimen/sz" android:layout_marginTop="@dimen/t1" android:layout_marginBottom="@dimen/t1" android:layout_marginStart="0.0dip" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintStart_toStartOf="dn" app:layout_constraintTop_toTopOf="dn" />
+            <TextView android:textSize="@dimen/ko" android:textColor="#80000000" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/vc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:minHeight="20.0dip" android:maxLines="1" android:layout_marginStart="64.0dip" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintStart_toEndOf="@id/vb" app:layout_constraintTop_toBottomOf="@id/va" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>

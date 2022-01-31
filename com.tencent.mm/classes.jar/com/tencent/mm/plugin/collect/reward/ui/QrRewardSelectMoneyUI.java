@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.collect.reward.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,15 +10,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.collect.reward.a.f;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMGridView;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,112 +23,141 @@ import java.util.List;
 public class QrRewardSelectMoneyUI
   extends QrRewardBaseUI
 {
-  private int bUR;
-  private String gis;
-  private String iIA;
-  private String iIC;
-  private String iID;
-  private String iIE;
-  private String iIF;
-  private String iIG;
-  private int iIH;
-  private String iIy;
-  private List<Integer> iJo = new ArrayList();
-  private ImageView iJp;
-  private TextView iJq;
-  private TextView iJr;
-  private TextView iJs;
-  private TextView iJt;
-  private MMGridView iJu;
-  private TextView iJv;
-  private QrRewardSelectMoneyUI.a iJw;
-  private String iJx;
-  private String iJy;
+  private int cCy;
+  private String hBM;
+  private List<Integer> kPU;
+  private ImageView kPV;
+  private TextView kPW;
+  private TextView kPX;
+  private TextView kPY;
+  private TextView kPZ;
+  private String kPd;
+  private String kPf;
+  private String kPh;
+  private String kPi;
+  private String kPj;
+  private String kPk;
+  private String kPl;
+  private int kPm;
+  private MMGridView kQa;
+  private TextView kQb;
+  private QrRewardSelectMoneyUI.a kQc;
+  private String kQd;
+  private String kQe;
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public QrRewardSelectMoneyUI()
   {
-    if ((paramm instanceof f))
-    {
-      paramString = (f)paramm;
-      paramString.a(new QrRewardSelectMoneyUI.5(this, paramString)).b(new QrRewardSelectMoneyUI.4(this, paramString)).c(new QrRewardSelectMoneyUI.3(this, paramString));
-      vN(0);
-    }
-    return true;
+    AppMethodBeat.i(41141);
+    this.kPU = new ArrayList();
+    AppMethodBeat.o(41141);
   }
   
-  protected boolean convertActivityFromTranslucent()
+  public boolean convertActivityFromTranslucent()
   {
     return false;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.qr_reward_select_money_ui;
+    return 2130970492;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.iJp = ((ImageView)findViewById(a.f.qrsm_avatar_iv));
-    this.iJq = ((TextView)findViewById(a.f.qrsm_reward_amt_tv));
-    this.iJr = ((TextView)findViewById(a.f.qrsm_name_tv));
-    this.iJs = ((TextView)findViewById(a.f.qrsm_desc_tv));
-    this.iJt = ((TextView)findViewById(a.f.qrsm_reward_money_title_tv));
-    this.iJu = ((MMGridView)findViewById(a.f.qrsm_money_layout));
-    this.iJv = ((TextView)findViewById(a.f.qrsm_other_reward_money_tv));
-    this.iJw = new QrRewardSelectMoneyUI.a(this, (byte)0);
-    this.iJu.setAdapter(this.iJw);
-    this.iJu.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    AppMethodBeat.i(41143);
+    this.kPV = ((ImageView)findViewById(2131826962));
+    this.kPW = ((TextView)findViewById(2131826968));
+    this.kPX = ((TextView)findViewById(2131826963));
+    this.kPY = ((TextView)findViewById(2131826964));
+    this.kPZ = ((TextView)findViewById(2131826965));
+    this.kQa = ((MMGridView)findViewById(2131826966));
+    this.kQb = ((TextView)findViewById(2131826967));
+    this.kQc = new QrRewardSelectMoneyUI.a(this, (byte)0);
+    this.kQa.setAdapter(this.kQc);
+    this.kQa.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
+        AppMethodBeat.i(41131);
         paramAnonymousInt = ((Integer)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt)).intValue();
         QrRewardSelectMoneyUI.a(QrRewardSelectMoneyUI.this, paramAnonymousInt, 1);
+        AppMethodBeat.o(41131);
       }
     });
-    this.iJv.setOnClickListener(new View.OnClickListener()
+    this.kQb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
+        AppMethodBeat.i(41132);
         QrRewardSelectMoneyUI.a(QrRewardSelectMoneyUI.this, 0, 2);
+        AppMethodBeat.o(41132);
       }
     });
+    AppMethodBeat.o(41143);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(41146);
     if (paramInt1 == 1)
     {
       if (paramInt2 == -1)
       {
-        y.i("MicroMsg.QrRewardSelectMoneyUI", "pay succ");
+        ab.i("MicroMsg.QrRewardSelectMoneyUI", "pay succ");
         finish();
+        AppMethodBeat.o(41146);
       }
-      return;
     }
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    else {
+      super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
+    AppMethodBeat.o(41146);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(41142);
     super.onCreate(paramBundle);
-    kh(1516);
-    setMMTitle(a.i.qr_reward_main_title);
-    vN(4);
-    this.iJx = getIntent().getStringExtra("key_qrcode_url");
-    this.bUR = getIntent().getIntExtra("key_channel", 0);
-    this.gis = getIntent().getStringExtra("key_web_url");
-    y.i("MicroMsg.QrRewardSelectMoneyUI", "do scan code");
-    a(new f(this.iJx, this.bUR, this.gis), true, true);
+    addSceneEndListener(1516);
+    setMMTitle(2131302217);
+    setContentViewVisibility(4);
+    this.kQd = getIntent().getStringExtra("key_qrcode_url");
+    this.cCy = getIntent().getIntExtra("key_channel", 0);
+    this.hBM = getIntent().getStringExtra("key_web_url");
+    ab.i("MicroMsg.QrRewardSelectMoneyUI", "do scan code");
+    doSceneProgress(new f(this.kQd, this.cCy, this.hBM));
     initView();
     int i = getIntent().getIntExtra("key_scene", 0);
-    y.d("MicroMsg.QrRewardSelectMoneyUI", "scene: %s", new Object[] { Integer.valueOf(i) });
-    h.nFQ.f(14721, new Object[] { Integer.valueOf(2), Integer.valueOf(i) });
+    ab.d("MicroMsg.QrRewardSelectMoneyUI", "scene: %s", new Object[] { Integer.valueOf(i) });
+    h.qsU.e(14721, new Object[] { Integer.valueOf(2), Integer.valueOf(i) });
+    AppMethodBeat.o(41142);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(41145);
     super.onDestroy();
-    ki(1516);
+    removeSceneEndListener(1516);
+    AppMethodBeat.o(41145);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(41144);
+    if ((paramm instanceof f))
+    {
+      paramString = (f)paramm;
+      paramString.a(new QrRewardSelectMoneyUI.5(this, paramString)).b(new QrRewardSelectMoneyUI.4(this, paramString)).c(new QrRewardSelectMoneyUI.3(this, paramString));
+      setContentViewVisibility(0);
+    }
+    AppMethodBeat.o(41144);
+    return true;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

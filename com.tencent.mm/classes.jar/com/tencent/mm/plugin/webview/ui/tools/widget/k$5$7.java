@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 
 final class k$5$7
@@ -9,11 +10,13 @@ final class k$5$7
   
   public final void run()
   {
-    if (this.rCx.rCv.rvZ != null)
+    AppMethodBeat.i(9931);
+    if (this.vsJ.vsH.vmp != null)
     {
-      this.rCx.rCv.rvZ.TO(this.val$message);
-      this.rCx.rCv.rvZ.a(this.rpU, this.rpV, this.rpW, this.elS, this.rpX, this.rpY);
+      this.vsJ.vsH.vmp.aiY(this.val$message);
+      this.vsJ.vsH.vmp.a(this.gSO, this.vdF, this.vdG, this.fCk, this.vdH, this.vdI);
     }
+    AppMethodBeat.o(9931);
   }
 }
 

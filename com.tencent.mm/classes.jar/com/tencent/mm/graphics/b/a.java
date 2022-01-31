@@ -2,9 +2,9 @@ package com.tencent.mm.graphics.b;
 
 public abstract interface a
 {
-  public abstract void BJ();
+  public abstract void Pv();
   
-  public abstract void BK();
+  public abstract void Pw();
 }
 
 

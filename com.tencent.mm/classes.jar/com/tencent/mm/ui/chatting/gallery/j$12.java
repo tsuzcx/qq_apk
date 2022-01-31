@@ -1,11 +1,11 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.widget.ProgressBar;
-import com.tencent.mm.model.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.HashMap;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class j$12
   implements Runnable
@@ -14,39 +14,33 @@ final class j$12
   
   public final void run()
   {
-    j.h(this.vwT);
-    j.a(this.vwT, j.i(this.vwT));
-    j.d(this.vwT).bH(false);
-    j.j(this.vwT);
-    if (j.c(this.vwT))
+    AppMethodBeat.i(32327);
+    for (;;)
     {
-      j.b(this.vwT, bk.UY());
-      j.f(this.vwT).cGJ();
-      j.f(this.vwT).reset();
-      j.a(this.vwT, false);
-      j.k(this.vwT);
-    }
-    u.f(j.a(this.vwT), 0, j.c(this.vwT));
-    if (j.l(this.vwT) != null)
-    {
-      j.a locala = (j.a)j.l(this.vwT).get(j.a(this.vwT));
-      if (locala != null)
+      try
       {
-        k localk = this.vwT.vtH.cFV();
-        localk.cGH().vxj.stop();
-        j.a(this.vwT, 0);
-        this.vwT.a(localk, locala.bFH, locala.pos);
-        this.vwT.HF(0);
-        if (localk.cGH().vxr.getVisibility() != 8) {
-          localk.cGH().vxr.setVisibility(8);
+        if (!bo.isNullOrNil(this.zNd.zJI.dJY().dKP().zNt.getVideoPath())) {
+          continue;
         }
+        i = u.D(j.f(this.zNd).fVl, j.a(this.zNd));
+        j.f(this.zNd).mj(i);
       }
+      catch (Exception localException)
+      {
+        int i;
+        ab.printErrStackTrace("MicroMsg.Imagegallery.handler.video", localException, "start timer error[%s]", new Object[] { localException.toString() });
+        continue;
+      }
+      j.m(this.zNd).ag(500L, 500L);
+      AppMethodBeat.o(32327);
+      return;
+      i = this.zNd.zJI.dJY().dKP().zNt.getCurrentPosition() / 1000;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.j.12
  * JD-Core Version:    0.7.0.1
  */

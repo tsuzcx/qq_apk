@@ -1,121 +1,139 @@
 package com.tencent.mm.plugin.sight.encode.ui;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.a.a.a;
-import com.tencent.mm.ui.contact.a.a.b;
-import com.tencent.mm.ui.contact.a.d;
-import com.tencent.mm.ui.contact.l;
-import com.tencent.mm.ui.contact.o;
+import com.tencent.mm.ui.contact.m;
+import com.tencent.mm.ui.contact.p;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class c
-  extends o
+  extends p
 {
-  public static boolean ohU = true;
-  public static boolean ohV = false;
-  List<String> ohS = null;
-  boolean ohT = true;
+  public static boolean qWh = true;
+  public static boolean qWi = false;
+  List<String> qWf;
+  boolean qWg;
   
-  public c(l paraml)
+  public c(m paramm)
   {
-    super(paraml, new ArrayList(), true, true);
+    super(paramm, new ArrayList(), true, true);
+    AppMethodBeat.i(25064);
+    this.qWg = true;
+    this.qWg = true;
+    this.qWf = null;
+    AppMethodBeat.o(25064);
   }
   
-  public static boolean MJ(String paramString)
+  public static boolean Zq(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(25068);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(25068);
       return false;
     }
-    return paramString.endsWith("@sns.tencent");
+    boolean bool = paramString.endsWith("@sns.tencent");
+    AppMethodBeat.o(25068);
+    return bool;
   }
   
-  public static boolean MK(String paramString)
+  public static boolean Zr(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(25069);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(25069);
       return false;
     }
-    return paramString.endsWith("@search.tencent");
+    boolean bool = paramString.endsWith("@search.tencent");
+    AppMethodBeat.o(25069);
+    return bool;
   }
   
-  public static boolean ML(String paramString)
+  public static boolean Zs(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(25070);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(25070);
       return false;
     }
-    return paramString.endsWith("@draft.tencent");
+    boolean bool = paramString.endsWith("@draft.tencent");
+    AppMethodBeat.o(25070);
+    return bool;
   }
   
-  public final boolean bBJ()
+  public final void aW(List<String> paramList)
   {
-    return this.ohT;
+    AppMethodBeat.i(25066);
+    clearCache();
+    this.qWf = paramList;
+    notifyDataSetChanged();
+    AppMethodBeat.o(25066);
+  }
+  
+  public final boolean cni()
+  {
+    return this.qWg;
   }
   
   public final int getCount()
   {
-    if (this.ohS == null) {
+    AppMethodBeat.i(25065);
+    if (this.qWf == null)
+    {
+      AppMethodBeat.o(25065);
       return 0;
     }
-    return this.ohS.size();
+    int i = this.qWf.size();
+    AppMethodBeat.o(25065);
+    return i;
   }
   
-  protected final a jQ(int paramInt)
+  public final a mM(int paramInt)
   {
-    if (this.ohS == null) {
+    AppMethodBeat.i(25067);
+    if (this.qWf == null)
+    {
+      AppMethodBeat.o(25067);
       return null;
     }
     if ((paramInt < 0) || (paramInt >= getCount()))
     {
-      y.e("MicroMsg.MainSightSelectContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+      ab.e("MicroMsg.MainSightSelectContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(25067);
       return null;
     }
-    a locala = new a(paramInt);
-    Object localObject = (String)this.ohS.get(paramInt);
-    if (MJ((String)localObject)) {
+    c.a locala = new c.a(this, paramInt);
+    Object localObject = (String)this.qWf.get(paramInt);
+    if (Zq((String)localObject)) {
       localObject = new ad("@sns.tencent");
     }
     for (;;)
     {
-      locala.dnp = ((ad)localObject);
-      locala.vLJ = this.ohT;
+      locala.contact = ((ad)localObject);
+      locala.Adl = this.qWg;
+      AppMethodBeat.o(25067);
       return locala;
-      if (MK((String)localObject))
+      if (Zr((String)localObject))
       {
         localObject = new ad("@search.tencent");
       }
-      else if (ML((String)localObject))
+      else if (Zs((String)localObject))
       {
         localObject = new ad("@draft.tencent");
       }
       else
       {
-        au.Hx();
-        localObject = com.tencent.mm.model.c.Fw().abl((String)this.ohS.get(paramInt));
+        aw.aaz();
+        localObject = com.tencent.mm.model.c.YA().arw((String)this.qWf.get(paramInt));
       }
-    }
-  }
-  
-  public final class a
-    extends d
-  {
-    public a(int paramInt)
-    {
-      super();
-    }
-    
-    protected final a.a VA()
-    {
-      return new c.a.a(this);
-    }
-    
-    public final a.b Vz()
-    {
-      return new c.a.b(this);
     }
   }
 }

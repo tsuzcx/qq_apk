@@ -4,56 +4,72 @@ import android.app.KeyguardManager;
 import android.content.Context;
 import android.os.Looper;
 import android.os.PowerManager;
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class e
 {
-  com.tencent.mm.sdk.b.c dji = new e.11(this);
-  am fjC = new am(Looper.getMainLooper(), new e.7(this), true);
-  com.tencent.mm.sdk.b.c gOo = new e.6(this);
-  g.a jJv = new e.2(this);
-  com.tencent.mm.sdk.b.c lRT = new e.3(this);
-  com.tencent.mm.sdk.b.c peY = new e.1(this);
-  private PowerManager qRO;
-  private KeyguardManager qRP;
-  com.tencent.mm.sdk.b.c qRQ = new e.4(this);
-  com.tencent.mm.sdk.b.c qRR = new e.5(this);
-  com.tencent.mm.sdk.b.c qRS = new e.8(this);
-  com.tencent.mm.sdk.b.c qRT = new e.9(this);
-  com.tencent.mm.sdk.b.c qRU = new e.10(this);
+  ap bAz;
+  com.tencent.mm.sdk.b.c eaA;
+  com.tencent.mm.sdk.b.c ipZ;
+  h.a mdz;
+  com.tencent.mm.sdk.b.c opW;
+  com.tencent.mm.sdk.b.c rXQ;
+  private PowerManager uGW;
+  private KeyguardManager uGX;
+  com.tencent.mm.sdk.b.c uGY;
+  com.tencent.mm.sdk.b.c uGZ;
+  com.tencent.mm.sdk.b.c uHa;
+  com.tencent.mm.sdk.b.c uHb;
+  com.tencent.mm.sdk.b.c uHc;
   
   public e()
   {
-    y.i("MicroMsg.Wear.WearLogic", "Create!");
-    this.peY.cqo();
-    this.qRQ.cqo();
-    this.qRR.cqo();
-    this.gOo.cqo();
-    this.qRS.cqo();
-    this.qRT.cqo();
-    this.qRU.cqo();
-    this.dji.cqo();
-    this.lRT.cqo();
-    this.fjC.S(1800000L, 1800000L);
-    this.qRO = ((PowerManager)ae.getContext().getSystemService("power"));
-    this.qRP = ((KeyguardManager)ae.getContext().getSystemService("keyguard"));
-    au.Hx();
-    com.tencent.mm.model.c.Fy().a(this.jJv, null);
+    AppMethodBeat.i(26318);
+    this.rXQ = new e.1(this);
+    this.uGY = new e.4(this);
+    this.uGZ = new e.5(this);
+    this.ipZ = new e.6(this);
+    this.bAz = new ap(Looper.getMainLooper(), new e.7(this), true);
+    this.uHa = new e.8(this);
+    this.uHb = new e.9(this);
+    this.uHc = new e.10(this);
+    this.eaA = new e.11(this);
+    this.mdz = new e.2(this);
+    this.opW = new e.3(this);
+    ab.i("MicroMsg.Wear.WearLogic", "Create!");
+    this.rXQ.alive();
+    this.uGY.alive();
+    this.uGZ.alive();
+    this.ipZ.alive();
+    this.uHa.alive();
+    this.uHb.alive();
+    this.uHc.alive();
+    this.eaA.alive();
+    this.opW.alive();
+    this.bAz.ag(1800000L, 1800000L);
+    this.uGW = ((PowerManager)ah.getContext().getSystemService("power"));
+    this.uGX = ((KeyguardManager)ah.getContext().getSystemService("keyguard"));
+    aw.aaz();
+    com.tencent.mm.model.c.YC().a(this.mdz, null);
+    AppMethodBeat.o(26318);
   }
   
-  public static void p(String paramString, int paramInt, boolean paramBoolean)
+  public static void s(String paramString, int paramInt, boolean paramBoolean)
   {
-    a.bYL().qRA.a(new com.tencent.mm.plugin.wear.model.f.j(paramString, paramInt, paramBoolean));
+    AppMethodBeat.i(26319);
+    a.cYy().uGI.a(new com.tencent.mm.plugin.wear.model.f.j(paramString, paramInt, paramBoolean));
+    AppMethodBeat.o(26319);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e
  * JD-Core Version:    0.7.0.1
  */

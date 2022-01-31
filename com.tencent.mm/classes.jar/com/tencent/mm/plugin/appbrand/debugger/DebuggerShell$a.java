@@ -4,7 +4,7 @@ import android.content.Intent;
 
 public abstract interface DebuggerShell$a
 {
-  public abstract void l(Intent paramIntent);
+  public abstract void B(Intent paramIntent);
   
   public abstract String name();
 }

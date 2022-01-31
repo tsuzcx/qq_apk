@@ -1,27 +1,34 @@
 package com.tencent.mm.plugin.wear.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class f
 {
-  public String bIW = "";
+  public String cqq = "";
   public int id = 0;
-  public int qSd = 0;
-  f.a qSe;
   public String talker = "";
+  public int uHk = 0;
+  f.a uHl;
   
   protected final Object clone()
   {
+    AppMethodBeat.i(26330);
     f localf = new f();
     localf.id = this.id;
     localf.talker = this.talker;
-    localf.bIW = this.bIW;
-    localf.qSd = this.qSd;
-    localf.qSe = this.qSe;
+    localf.cqq = this.cqq;
+    localf.uHk = this.uHk;
+    localf.uHl = this.uHl;
+    AppMethodBeat.o(26330);
     return localf;
   }
   
   public final String toString()
   {
-    return "WearNotification [talker=" + this.talker + ", id=" + this.id + ", md5=" + this.bIW + ", ignoreInWatch=" + this.qSd + ", status=" + this.qSe + "]";
+    AppMethodBeat.i(26331);
+    String str = "WearNotification [talker=" + this.talker + ", id=" + this.id + ", md5=" + this.cqq + ", ignoreInWatch=" + this.uHk + ", status=" + this.uHl + "]";
+    AppMethodBeat.o(26331);
+    return str;
   }
 }
 

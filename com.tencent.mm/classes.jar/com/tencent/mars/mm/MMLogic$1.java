@@ -1,6 +1,6 @@
 package com.tencent.mars.mm;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMLogic$1
   implements Runnable
@@ -12,7 +12,7 @@ final class MMLogic$1
     int i = MMLogic.access$100(this.val$item.actionId);
     if (i == 0)
     {
-      y.e("C2Java", "ActionId Can not convert");
+      ab.e("C2Java", "ActionId Can not convert");
       return;
     }
     this.val$item.actionId = i;

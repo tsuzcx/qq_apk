@@ -8,15 +8,15 @@ import java.util.WeakHashMap;
 public class b<K, V>
   implements Iterable<Map.Entry<K, V>>
 {
-  public b.c<K, V> bJ;
-  public b.c<K, V> bK;
-  public WeakHashMap<f<K, V>, Boolean> bL = new WeakHashMap();
+  public b.c<K, V> bN;
+  public b.c<K, V> bO;
+  public WeakHashMap<b.f<K, V>, Boolean> bP = new WeakHashMap();
   public int mSize = 0;
   
-  public final b<K, V>.d N()
+  public final b<K, V>.d af()
   {
     b.d locald = new b.d(this, (byte)0);
-    this.bL.put(locald, Boolean.valueOf(false));
+    this.bP.put(locald, Boolean.FALSE);
     return locald;
   }
   
@@ -24,21 +24,21 @@ public class b<K, V>
   {
     paramK = new b.c(paramK, paramV);
     this.mSize += 1;
-    if (this.bK == null)
+    if (this.bO == null)
     {
-      this.bJ = paramK;
-      this.bK = this.bJ;
+      this.bN = paramK;
+      this.bO = this.bN;
       return paramK;
     }
-    this.bK.bN = paramK;
-    paramK.bO = this.bK;
-    this.bK = paramK;
+    this.bO.bR = paramK;
+    paramK.bS = this.bO;
+    this.bO = paramK;
     return paramK;
   }
   
   protected b.c<K, V> d(K paramK)
   {
-    for (b.c localc = this.bJ; (localc != null) && (!localc.bM.equals(paramK)); localc = localc.bN) {}
+    for (b.c localc = this.bN; (localc != null) && (!localc.bQ.equals(paramK)); localc = localc.bR) {}
     return localc;
   }
   
@@ -69,8 +69,8 @@ public class b<K, V>
   
   public Iterator<Map.Entry<K, V>> iterator()
   {
-    b.a locala = new b.a(this.bJ, this.bK);
-    this.bL.put(locala, Boolean.valueOf(false));
+    b.a locala = new b.a(this.bN, this.bO);
+    this.bP.put(locala, Boolean.FALSE);
     return locala;
   }
   
@@ -91,30 +91,30 @@ public class b<K, V>
       return null;
     }
     this.mSize -= 1;
-    if (!this.bL.isEmpty())
+    if (!this.bP.isEmpty())
     {
-      Iterator localIterator = this.bL.keySet().iterator();
+      Iterator localIterator = this.bP.keySet().iterator();
       while (localIterator.hasNext()) {
-        ((f)localIterator.next()).c(paramK);
+        ((b.f)localIterator.next()).c(paramK);
       }
     }
-    if (paramK.bO != null)
+    if (paramK.bS != null)
     {
-      paramK.bO.bN = paramK.bN;
-      if (paramK.bN == null) {
+      paramK.bS.bR = paramK.bR;
+      if (paramK.bR == null) {
         break label134;
       }
-      paramK.bN.bO = paramK.bO;
+      paramK.bR.bS = paramK.bS;
     }
     for (;;)
     {
-      paramK.bN = null;
-      paramK.bO = null;
+      paramK.bR = null;
+      paramK.bS = null;
       return paramK.mValue;
-      this.bJ = paramK.bN;
+      this.bN = paramK.bR;
       break;
       label134:
-      this.bK = paramK.bO;
+      this.bO = paramK.bS;
     }
   }
   
@@ -133,60 +133,10 @@ public class b<K, V>
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
-  
-  private static abstract class e<K, V>
-    implements b.f<K, V>, Iterator<Map.Entry<K, V>>
-  {
-    b.c<K, V> bN;
-    b.c<K, V> bS;
-    
-    e(b.c<K, V> paramc1, b.c<K, V> paramc2)
-    {
-      this.bS = paramc2;
-      this.bN = paramc1;
-    }
-    
-    private b.c<K, V> O()
-    {
-      if ((this.bN == this.bS) || (this.bS == null)) {
-        return null;
-      }
-      return a(this.bN);
-    }
-    
-    abstract b.c<K, V> a(b.c<K, V> paramc);
-    
-    abstract b.c<K, V> b(b.c<K, V> paramc);
-    
-    public final void c(b.c<K, V> paramc)
-    {
-      if ((this.bS == paramc) && (paramc == this.bN))
-      {
-        this.bN = null;
-        this.bS = null;
-      }
-      if (this.bS == paramc) {
-        this.bS = b(this.bS);
-      }
-      if (this.bN == paramc) {
-        this.bN = O();
-      }
-    }
-    
-    public boolean hasNext()
-    {
-      return this.bN != null;
-    }
-  }
-  
-  static abstract interface f<K, V>
-  {
-    public abstract void c(b.c<K, V> paramc);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.arch.a.b.b
  * JD-Core Version:    0.7.0.1
  */

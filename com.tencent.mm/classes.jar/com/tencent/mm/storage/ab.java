@@ -2,8 +2,8 @@ package com.tencent.mm.storage;
 
 public final class ab
 {
-  public static int unv = 3;
-  public static int unw = 10;
+  public static int yxm = 3;
+  public static int yxn = 10;
 }
 
 

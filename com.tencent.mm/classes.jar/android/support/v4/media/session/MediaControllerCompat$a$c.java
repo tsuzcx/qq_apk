@@ -8,18 +8,18 @@ import java.util.List;
 class MediaControllerCompat$a$c
   extends a.a
 {
-  private final WeakReference<MediaControllerCompat.a> Ck;
+  private final WeakReference<MediaControllerCompat.a> CT;
   
   MediaControllerCompat$a$c(MediaControllerCompat.a parama)
   {
-    this.Ck = new WeakReference(parama);
+    this.CT = new WeakReference(parama);
   }
   
   public final void A(boolean paramBoolean) {}
   
   public final void B(boolean paramBoolean)
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       locala.a(11, Boolean.valueOf(paramBoolean), null);
     }
@@ -27,7 +27,7 @@ class MediaControllerCompat$a$c
   
   public void a(MediaMetadataCompat paramMediaMetadataCompat)
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       locala.a(3, paramMediaMetadataCompat, null);
     }
@@ -35,14 +35,14 @@ class MediaControllerCompat$a$c
   
   public void a(ParcelableVolumeInfo paramParcelableVolumeInfo)
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       if (paramParcelableVolumeInfo == null) {
         break label55;
       }
     }
     label55:
-    for (paramParcelableVolumeInfo = new MediaControllerCompat.f(paramParcelableVolumeInfo.CB, paramParcelableVolumeInfo.CC, paramParcelableVolumeInfo.CD, paramParcelableVolumeInfo.CE, paramParcelableVolumeInfo.CF);; paramParcelableVolumeInfo = null)
+    for (paramParcelableVolumeInfo = new MediaControllerCompat.f(paramParcelableVolumeInfo.Dk, paramParcelableVolumeInfo.Dl, paramParcelableVolumeInfo.Dm, paramParcelableVolumeInfo.Dn, paramParcelableVolumeInfo.Do);; paramParcelableVolumeInfo = null)
     {
       locala.a(4, paramParcelableVolumeInfo, null);
       return;
@@ -51,39 +51,39 @@ class MediaControllerCompat$a$c
   
   public final void a(PlaybackStateCompat paramPlaybackStateCompat)
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       locala.a(2, paramPlaybackStateCompat, null);
     }
   }
   
-  public final void ak(int paramInt)
+  public final void ai(int paramInt)
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       locala.a(9, Integer.valueOf(paramInt), null);
     }
   }
   
-  public final void al(int paramInt)
+  public final void aj(int paramInt)
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       locala.a(12, Integer.valueOf(paramInt), null);
     }
   }
   
-  public final void b(String paramString, Bundle paramBundle)
+  public final void d(String paramString, Bundle paramBundle)
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       locala.a(1, paramString, paramBundle);
     }
   }
   
-  public final void cE()
+  public final void dh()
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       locala.a(13, null, null);
     }
@@ -91,7 +91,7 @@ class MediaControllerCompat$a$c
   
   public void onExtrasChanged(Bundle paramBundle)
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       locala.a(7, paramBundle, null);
     }
@@ -99,7 +99,7 @@ class MediaControllerCompat$a$c
   
   public void onQueueChanged(List<MediaSessionCompat.QueueItem> paramList)
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       locala.a(5, paramList, null);
     }
@@ -107,7 +107,7 @@ class MediaControllerCompat$a$c
   
   public void onQueueTitleChanged(CharSequence paramCharSequence)
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       locala.a(6, paramCharSequence, null);
     }
@@ -115,7 +115,7 @@ class MediaControllerCompat$a$c
   
   public void onSessionDestroyed()
   {
-    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.Ck.get();
+    MediaControllerCompat.a locala = (MediaControllerCompat.a)this.CT.get();
     if (locala != null) {
       locala.a(8, null, null);
     }
@@ -123,7 +123,7 @@ class MediaControllerCompat$a$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.media.session.MediaControllerCompat.a.c
  * JD-Core Version:    0.7.0.1
  */

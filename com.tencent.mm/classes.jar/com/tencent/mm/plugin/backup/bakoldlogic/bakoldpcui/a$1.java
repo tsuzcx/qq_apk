@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
-import com.tencent.mm.h.a.ls;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.mi;
 import com.tencent.mm.sdk.b.c;
 
 final class a$1
-  extends c<ls>
+  extends c<mi>
 {
   a$1(a parama)
   {
-    this.udX = ls.class.getName().hashCode();
+    AppMethodBeat.i(17899);
+    this.__eventId = mi.class.getName().hashCode();
+    AppMethodBeat.o(17899);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.a.1
  * JD-Core Version:    0.7.0.1
  */

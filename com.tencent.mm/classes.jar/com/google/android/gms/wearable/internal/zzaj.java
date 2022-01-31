@@ -1,53 +1,47 @@
 package com.google.android.gms.wearable.internal;
 
-import com.google.android.gms.common.data.DataHolder;
-import com.google.android.gms.common.data.zzc;
-import com.google.android.gms.wearable.DataEvent;
-import com.google.android.gms.wearable.DataItem;
+import android.content.IntentFilter;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.common.internal.Preconditions;
+import com.google.android.gms.wearable.ChannelApi;
+import com.google.android.gms.wearable.ChannelApi.ChannelListener;
+import com.google.android.gms.wearable.ChannelApi.OpenChannelResult;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class zzaj
-  extends zzc
-  implements DataEvent
+  implements ChannelApi
 {
-  private final int zzaZk;
-  
-  public zzaj(DataHolder paramDataHolder, int paramInt1, int paramInt2)
+  public final PendingResult<Status> addListener(GoogleApiClient paramGoogleApiClient, ChannelApi.ChannelListener paramChannelListener)
   {
-    super(paramDataHolder, paramInt1);
-    this.zzaZk = paramInt2;
+    AppMethodBeat.i(70998);
+    Preconditions.checkNotNull(paramGoogleApiClient, "client is null");
+    Preconditions.checkNotNull(paramChannelListener, "listener is null");
+    paramGoogleApiClient = zzb.zza(paramGoogleApiClient, new zzal(new IntentFilter[] { zzgj.zzc("com.google.android.gms.wearable.CHANNEL_EVENT") }), paramChannelListener);
+    AppMethodBeat.o(70998);
+    return paramGoogleApiClient;
   }
   
-  public final DataItem getDataItem()
+  public final PendingResult<ChannelApi.OpenChannelResult> openChannel(GoogleApiClient paramGoogleApiClient, String paramString1, String paramString2)
   {
-    return new zzaq(this.zzaBi, this.zzaDL, this.zzaZk);
+    AppMethodBeat.i(70997);
+    Preconditions.checkNotNull(paramGoogleApiClient, "client is null");
+    Preconditions.checkNotNull(paramString1, "nodeId is null");
+    Preconditions.checkNotNull(paramString2, "path is null");
+    paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzak(this, paramGoogleApiClient, paramString1, paramString2));
+    AppMethodBeat.o(70997);
+    return paramGoogleApiClient;
   }
   
-  public final int getType()
+  public final PendingResult<Status> removeListener(GoogleApiClient paramGoogleApiClient, ChannelApi.ChannelListener paramChannelListener)
   {
-    return getInteger("event_type");
-  }
-  
-  public final String toString()
-  {
-    String str1;
-    if (getType() == 1) {
-      str1 = "changed";
-    }
-    for (;;)
-    {
-      String str2 = String.valueOf(getDataItem());
-      return String.valueOf(str1).length() + 32 + String.valueOf(str2).length() + "DataEventRef{ type=" + str1 + ", dataitem=" + str2 + " }";
-      if (getType() == 2) {
-        str1 = "deleted";
-      } else {
-        str1 = "unknown";
-      }
-    }
-  }
-  
-  public final DataEvent zzUu()
-  {
-    return new zzai(this);
+    AppMethodBeat.i(70999);
+    Preconditions.checkNotNull(paramGoogleApiClient, "client is null");
+    Preconditions.checkNotNull(paramChannelListener, "listener is null");
+    paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzan(paramGoogleApiClient, paramChannelListener, null));
+    AppMethodBeat.o(70999);
+    return paramGoogleApiClient;
   }
 }
 

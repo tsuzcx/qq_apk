@@ -2,10 +2,9 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.c.ut;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.storage.emotion.EmojiInfo;
 
 final class EmojiStoreV2SingleProductDialogUI$1
   implements DialogInterface.OnClickListener
@@ -14,11 +13,12 @@ final class EmojiStoreV2SingleProductDialogUI$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new com.tencent.mm.plugin.emoji.f.h(EmojiStoreV2SingleProductDialogUI.a(this.jif).syc, (byte)0);
-    g.DO().dJT.a(paramDialogInterface, 0);
-    if (EmojiStoreV2SingleProductDialogUI.a(this.jif) != null) {
-      com.tencent.mm.plugin.report.service.h.nFQ.f(12787, new Object[] { Integer.valueOf(EmojiStoreV2SingleProductDialogUI.b(this.jif)), Integer.valueOf(2), EmojiStoreV2SingleProductDialogUI.a(this.jif).jnU, Long.valueOf(EmojiStoreV2SingleProductDialogUI.c(this.jif)), EmojiStoreV2SingleProductDialogUI.a(this.jif).sRs, EmojiStoreV2SingleProductDialogUI.a(this.jif).syc, Integer.valueOf(EmojiStoreV2SingleProductDialogUI.d(this.jif)) });
+    AppMethodBeat.i(53730);
+    EmojiStoreV2SingleProductDialogUI.a(this.lqW);
+    if (EmojiStoreV2SingleProductDialogUI.b(this.lqW) != null) {
+      h.qsU.e(12787, new Object[] { Integer.valueOf(EmojiStoreV2SingleProductDialogUI.c(this.lqW)), Integer.valueOf(2), EmojiStoreV2SingleProductDialogUI.b(this.lqW).field_md5, Long.valueOf(EmojiStoreV2SingleProductDialogUI.d(this.lqW)), EmojiStoreV2SingleProductDialogUI.b(this.lqW).field_designerID, EmojiStoreV2SingleProductDialogUI.b(this.lqW).field_groupId, Integer.valueOf(EmojiStoreV2SingleProductDialogUI.e(this.lqW)) });
     }
+    AppMethodBeat.o(53730);
   }
 }
 

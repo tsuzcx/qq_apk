@@ -1,14 +1,17 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.mm.h.a.mi;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.nc;
 import com.tencent.mm.sdk.b.c;
 
 final class ChatFooterCustom$b
-  extends c<mi>
+  extends c<nc>
 {
   private ChatFooterCustom$b(ChatFooterCustom paramChatFooterCustom)
   {
-    this.udX = mi.class.getName().hashCode();
+    AppMethodBeat.i(30470);
+    this.__eventId = nc.class.getName().hashCode();
+    AppMethodBeat.o(30470);
   }
 }
 

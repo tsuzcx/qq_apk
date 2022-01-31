@@ -1,6 +1,7 @@
 package com.tencent.mm.pluginsdk.ui;
 
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AbstractVideoView$11
   implements Runnable
@@ -9,9 +10,11 @@ final class AbstractVideoView$11
   
   public final void run()
   {
-    if ((this.rYV.rYB != null) && (this.rYV.rYB.getVisibility() != 8)) {
-      this.rYV.rYB.setVisibility(8);
+    AppMethodBeat.i(117944);
+    if ((this.vPL.vPq != null) && (this.vPL.vPq.getVisibility() != 8)) {
+      this.vPL.vPq.setVisibility(8);
     }
+    AppMethodBeat.o(117944);
   }
 }
 

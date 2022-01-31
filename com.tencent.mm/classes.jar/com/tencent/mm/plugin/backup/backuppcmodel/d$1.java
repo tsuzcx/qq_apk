@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.backup.backuppcmodel;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.backup.b.e;
 import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.plugin.backup.c.a;
 import com.tencent.mm.plugin.backup.g.b.d;
 import com.tencent.mm.plugin.backup.i.f;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class d$1
   implements b.d
@@ -18,118 +19,120 @@ final class d$1
   
   public final void a(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
-    int i;
-    if (paramArrayOfByte == null)
+    AppMethodBeat.i(17521);
+    if (paramArrayOfByte == null) {}
+    for (int i = 0;; i = paramArrayOfByte.length)
     {
-      i = 0;
-      y.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify isLocal[%b], type[%d], seq[%d], buflen[%d]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+      ab.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify isLocal[%b], type[%d], seq[%d], buflen[%d]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
       if ((!paramBoolean) || (10011 != paramInt1)) {
-        break label74;
+        break;
       }
-      d.a(this.hKO);
-    }
-    for (;;)
-    {
+      d.a(this.jEr);
+      AppMethodBeat.o(17521);
       return;
-      i = paramArrayOfByte.length;
-      break;
-      label74:
-      if (paramInt1 == 5)
+    }
+    if (paramInt1 == 5)
+    {
+      ab.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify receive cancelReq.");
+      this.jEr.c(true, false, -100);
+      h.qsU.idkeyStat(400L, 52L, 1L, false);
+      this.jEr.rr(5);
+      AppMethodBeat.o(17521);
+      return;
+    }
+    i = b.aTX().aTY().jEa;
+    if ((2 != i) && (4 != i))
+    {
+      ab.e("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify cmdmode error[%d]", new Object[] { Integer.valueOf(b.aTX().aTY().jEa) });
+      AppMethodBeat.o(17521);
+      return;
+    }
+    long l;
+    if (paramInt1 == 10)
+    {
+      paramArrayOfByte = (f)g.a(new f(), paramArrayOfByte);
+      if (paramArrayOfByte != null) {}
+      for (l = paramArrayOfByte.jFD;; l = -1L)
       {
-        y.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify receive cancelReq.");
-        this.hKO.a(true, false, -100);
-        h.nFQ.a(400L, 52L, 1L, false);
-        this.hKO.nC(5);
+        ab.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify receive heartbeatResp, ack[%d]", new Object[] { Long.valueOf(l) });
+        AppMethodBeat.o(17521);
         return;
       }
-      i = b.auw().aux().hKx;
-      if ((2 != i) && (4 != i))
+    }
+    Object localObject;
+    if (paramInt1 == 18)
+    {
+      localObject = new com.tencent.mm.plugin.backup.i.c();
+      try
       {
-        y.e("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify cmdmode error[%d]", new Object[] { Integer.valueOf(b.auw().aux().hKx) });
-        return;
-      }
-      long l;
-      if (paramInt1 == 10)
-      {
-        paramArrayOfByte = (f)g.a(new f(), paramArrayOfByte);
-        if (paramArrayOfByte != null) {}
-        for (l = paramArrayOfByte.hMb;; l = -1L)
+        ((com.tencent.mm.plugin.backup.i.c)localObject).parseFrom(paramArrayOfByte);
+        ab.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify receive commandResp, cmd[%d]", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.i.c)localObject).jJg) });
+        if (((com.tencent.mm.plugin.backup.i.c)localObject).jJg == 9)
         {
-          y.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify receive heartbeatResp, ack[%d]", new Object[] { Long.valueOf(l) });
-          return;
-        }
-      }
-      Object localObject;
-      if (paramInt1 == 18)
-      {
-        localObject = new com.tencent.mm.plugin.backup.i.c();
-        try
-        {
-          ((com.tencent.mm.plugin.backup.i.c)localObject).aH(paramArrayOfByte);
-          y.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify receive commandResp, cmd[%d]", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.i.c)localObject).hPE) });
-          if (((com.tencent.mm.plugin.backup.i.c)localObject).hPE != 9) {
-            continue;
-          }
-          paramInt1 = com.tencent.mm.plugin.backup.g.b.auS();
+          paramInt1 = com.tencent.mm.plugin.backup.g.b.aUu();
           if (paramInt1 == 1)
           {
-            com.tencent.mm.plugin.backup.g.b.nH(2);
-            y.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify reconnect success");
-            this.hKO.nC(20);
-            com.tencent.mm.plugin.backup.g.b.auR();
-            b.auw().atn().hFu = 23;
-            this.hKO.nt(23);
-            com.tencent.mm.plugin.backup.g.b.nH(0);
+            com.tencent.mm.plugin.backup.g.b.rv(2);
+            ab.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify reconnect success");
+            this.jEr.rr(20);
+            com.tencent.mm.plugin.backup.g.b.aUt();
+            b.aTX().aSL().jyN = 23;
+            this.jEr.rf(23);
+            com.tencent.mm.plugin.backup.g.b.rv(0);
+            AppMethodBeat.o(17521);
             return;
           }
         }
-        catch (Exception paramArrayOfByte)
-        {
-          for (;;)
-          {
-            y.printErrStackTrace("MicroMsg.BackupPcRecoverServer", paramArrayOfByte, "onBackupPcRecoverServerNotify buf to BackupCommandResponse error.", new Object[0]);
-          }
-          y.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify reconnect is started, ignore. state[%d]", new Object[] { Integer.valueOf(paramInt1) });
-          return;
-        }
       }
-      else if (paramInt1 == 17)
+      catch (Exception paramArrayOfByte)
       {
-        localObject = new com.tencent.mm.plugin.backup.i.b();
-        try
+        for (;;)
         {
-          ((com.tencent.mm.plugin.backup.i.b)localObject).aH(paramArrayOfByte);
-          y.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify receive commandReq, cmd[%d]", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.i.b)localObject).hPE) });
-          if (((com.tencent.mm.plugin.backup.i.b)localObject).hPE == 10)
+          ab.printErrStackTrace("MicroMsg.BackupPcRecoverServer", paramArrayOfByte, "onBackupPcRecoverServerNotify buf to BackupCommandResponse error.", new Object[0]);
+        }
+        ab.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify reconnect is started, ignore. state[%d]", new Object[] { Integer.valueOf(paramInt1) });
+        AppMethodBeat.o(17521);
+        return;
+      }
+    }
+    if (paramInt1 == 17)
+    {
+      localObject = new com.tencent.mm.plugin.backup.i.b();
+      try
+      {
+        ((com.tencent.mm.plugin.backup.i.b)localObject).parseFrom(paramArrayOfByte);
+        ab.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify receive commandReq, cmd[%d]", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.i.b)localObject).jJg) });
+        if (((com.tencent.mm.plugin.backup.i.b)localObject).jJg == 10)
+        {
+          paramInt1 = b.aTX().aSL().jyN;
+          ab.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify pc request disconnect, backupPcState[%d]", new Object[] { Integer.valueOf(paramInt1) });
+          if ((paramInt1 == 22) || (paramInt1 == 23))
           {
-            paramInt1 = b.auw().atn().hFu;
-            y.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify pc request disconnect, backupPcState[%d]", new Object[] { Integer.valueOf(paramInt1) });
-            if ((paramInt1 == 22) || (paramInt1 == 23))
-            {
-              this.hKO.a(true, false, -4);
-              b.auw().atT().stop();
-              h.nFQ.a(400L, 52L, 1L, false);
-              this.hKO.nC(5);
-              l = 0L;
-              if (d.b(this.hKO) != 0L) {
-                l = bk.co(d.b(this.hKO));
-              }
-              h.nFQ.f(13737, new Object[] { Integer.valueOf(3), Long.valueOf(d.c(this.hKO)), Long.valueOf(l), Integer.valueOf(2) });
-              y.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify recover transfer disconnect, recoverDataSize:%d, recoverCostTime:%d", new Object[] { Long.valueOf(d.c(this.hKO)), Long.valueOf(l) });
-              return;
+            this.jEr.c(true, false, -4);
+            b.aTX().aTs().stop();
+            h.qsU.idkeyStat(400L, 52L, 1L, false);
+            this.jEr.rr(5);
+            l = 0L;
+            if (d.b(this.jEr) != 0L) {
+              l = bo.hl(d.b(this.jEr));
             }
+            h.qsU.e(13737, new Object[] { Integer.valueOf(3), Long.valueOf(d.c(this.jEr)), Long.valueOf(l), Integer.valueOf(2) });
+            ab.i("MicroMsg.BackupPcRecoverServer", "onBackupPcRecoverServerNotify recover transfer disconnect, recoverDataSize:%d, recoverCostTime:%d", new Object[] { Long.valueOf(d.c(this.jEr)), Long.valueOf(l) });
           }
         }
-        catch (Exception paramArrayOfByte)
+        AppMethodBeat.o(17521);
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        for (;;)
         {
-          for (;;)
-          {
-            y.printErrStackTrace("MicroMsg.BackupPcRecoverServer", paramArrayOfByte, "onBackupPcRecoverServerNotify buf to BackupCommandRequest error.", new Object[0]);
-          }
+          ab.printErrStackTrace("MicroMsg.BackupPcRecoverServer", paramArrayOfByte, "onBackupPcRecoverServerNotify buf to BackupCommandRequest error.", new Object[0]);
         }
       }
     }
-    au.DS().O(new d.1.1(this, paramInt1, paramArrayOfByte, paramInt2));
+    aw.RO().ac(new d.1.1(this, paramInt1, paramArrayOfByte, paramInt2));
+    AppMethodBeat.o(17521);
   }
 }
 

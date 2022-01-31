@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.canvas;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.widget.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$2
   implements Runnable
@@ -10,12 +11,14 @@ final class b$2
   
   public final void run()
   {
-    boolean bool = this.fLj.fKW;
-    this.fLj.fKW = false;
-    y.i("MicroMsg.DrawActionDelegateImpl", "preStae %b, hasChanged %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.fLj.fKP) });
-    if ((bool) && (this.fLj.fKP)) {
-      this.fLj.fKU.adB();
+    AppMethodBeat.i(103141);
+    boolean bool = this.hev.mPause;
+    this.hev.mPause = false;
+    ab.i("MicroMsg.DrawActionDelegateImpl", "preStae %b, hasChanged %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.hev.hed) });
+    if ((bool) && (this.hev.hed)) {
+      this.hev.hei.axT();
     }
+    AppMethodBeat.o(103141);
   }
 }
 

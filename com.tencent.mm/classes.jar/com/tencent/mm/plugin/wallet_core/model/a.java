@@ -1,17 +1,28 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.al;
 
-public final class a
+public abstract class a
 {
-  public String bQZ;
-  public String iHx;
-  public String lRE;
-  public String lRF;
+  private Runnable ueT = new a.1(this);
   
-  public final boolean bUO()
+  protected abstract void a(a parama);
+  
+  public final void b(a parama)
   {
-    return (!bk.bl(this.bQZ)) && (!bk.bl(this.lRE)) && (!bk.bl(this.lRF)) && (!bk.bl(this.iHx));
+    a(parama);
+  }
+  
+  protected abstract void bOR();
+  
+  public void release()
+  {
+    al.ae(this.ueT);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void r(Object... paramVarArgs);
   }
 }
 

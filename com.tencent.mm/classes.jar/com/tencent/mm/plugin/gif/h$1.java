@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.gif;
 
 import android.os.SystemClock;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class h$1
   implements Runnable
@@ -9,12 +10,14 @@ final class h$1
   
   public final void run()
   {
-    if ((!h.a(this.liD)) && ((this.liD.isRunning()) || (h.b(this.liD) == 0)) && (SystemClock.uptimeMillis() >= h.c(this.liD)))
+    AppMethodBeat.i(62425);
+    if ((!h.a(this.nFY)) && ((this.nFY.isRunning()) || (h.b(this.nFY) == 0)) && (SystemClock.uptimeMillis() >= h.c(this.nFY)))
     {
-      h.a(this.liD, System.currentTimeMillis());
-      h.d(this.liD);
-      this.liD.invalidateSelf();
+      h.a(this.nFY, System.currentTimeMillis());
+      h.d(this.nFY);
+      this.nFY.invalidateSelf();
     }
+    AppMethodBeat.o(62425);
   }
 }
 

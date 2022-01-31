@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LaunchAAByPersonAmountSelectUI$7
   implements AbsListView.OnScrollListener
@@ -12,14 +13,16 @@ final class LaunchAAByPersonAmountSelectUI$7
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
+    AppMethodBeat.i(40796);
     if (paramInt == 1) {
-      this.eYG.VH();
+      this.gqx.hideTenpayKB();
     }
+    AppMethodBeat.o(40796);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAByPersonAmountSelectUI.7
  * JD-Core Version:    0.7.0.1
  */

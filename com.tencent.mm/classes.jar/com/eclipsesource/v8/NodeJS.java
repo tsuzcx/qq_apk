@@ -1,5 +1,6 @@
 package com.eclipsesource.v8;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.PrintWriter;
 
@@ -25,80 +26,97 @@ public class NodeJS
   
   public static NodeJS createNodeJS()
   {
-    return createNodeJS(null);
+    AppMethodBeat.i(74993);
+    NodeJS localNodeJS = createNodeJS(null);
+    AppMethodBeat.o(74993);
+    return localNodeJS;
   }
   
   /* Error */
   public static NodeJS createNodeJS(File paramFile)
   {
     // Byte code:
-    //   0: ldc 8
-    //   2: invokestatic 72	com/eclipsesource/v8/V8:createV8Runtime	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8;
-    //   5: astore_2
-    //   6: new 2	com/eclipsesource/v8/NodeJS
-    //   9: dup
-    //   10: aload_2
-    //   11: invokespecial 74	com/eclipsesource/v8/NodeJS:<init>	(Lcom/eclipsesource/v8/V8;)V
-    //   14: astore_3
+    //   0: ldc 78
+    //   2: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 8
+    //   7: invokestatic 84	com/eclipsesource/v8/V8:createV8Runtime	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8;
+    //   10: astore_2
+    //   11: new 2	com/eclipsesource/v8/NodeJS
+    //   14: dup
     //   15: aload_2
-    //   16: new 76	com/eclipsesource/v8/NodeJS$1
-    //   19: dup
-    //   20: aload_3
-    //   21: invokespecial 79	com/eclipsesource/v8/NodeJS$1:<init>	(Lcom/eclipsesource/v8/NodeJS;)V
-    //   24: ldc 20
-    //   26: invokevirtual 83	com/eclipsesource/v8/V8:registerJavaMethod	(Lcom/eclipsesource/v8/JavaVoidCallback;Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
-    //   29: pop
-    //   30: ldc 23
-    //   32: ldc 26
-    //   34: invokestatic 87	com/eclipsesource/v8/NodeJS:createTemporaryScriptFile	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
-    //   37: astore_1
-    //   38: aload_2
-    //   39: aload_1
-    //   40: invokevirtual 93	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   43: invokevirtual 97	com/eclipsesource/v8/V8:createNodeRuntime	(Ljava/lang/String;)V
-    //   46: aload_1
-    //   47: invokevirtual 101	java/io/File:delete	()Z
-    //   50: pop
-    //   51: aload_0
-    //   52: ifnull +8 -> 60
-    //   55: aload_3
+    //   16: invokespecial 86	com/eclipsesource/v8/NodeJS:<init>	(Lcom/eclipsesource/v8/V8;)V
+    //   19: astore_3
+    //   20: aload_2
+    //   21: new 88	com/eclipsesource/v8/NodeJS$1
+    //   24: dup
+    //   25: aload_3
+    //   26: invokespecial 91	com/eclipsesource/v8/NodeJS$1:<init>	(Lcom/eclipsesource/v8/NodeJS;)V
+    //   29: ldc 20
+    //   31: invokevirtual 95	com/eclipsesource/v8/V8:registerJavaMethod	(Lcom/eclipsesource/v8/JavaVoidCallback;Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   34: pop
+    //   35: ldc 23
+    //   37: ldc 26
+    //   39: invokestatic 99	com/eclipsesource/v8/NodeJS:createTemporaryScriptFile	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   42: astore_1
+    //   43: aload_2
+    //   44: aload_1
+    //   45: invokevirtual 105	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   48: invokevirtual 109	com/eclipsesource/v8/V8:createNodeRuntime	(Ljava/lang/String;)V
+    //   51: aload_1
+    //   52: invokevirtual 113	java/io/File:delete	()Z
+    //   55: pop
     //   56: aload_0
-    //   57: invokevirtual 105	com/eclipsesource/v8/NodeJS:exec	(Ljava/io/File;)V
+    //   57: ifnull +8 -> 65
     //   60: aload_3
-    //   61: areturn
-    //   62: astore_0
-    //   63: aload_1
-    //   64: invokevirtual 101	java/io/File:delete	()Z
-    //   67: pop
-    //   68: aload_0
-    //   69: athrow
-    //   70: astore_0
-    //   71: new 107	java/lang/RuntimeException
-    //   74: dup
-    //   75: aload_0
-    //   76: invokespecial 110	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
-    //   79: athrow
+    //   61: aload_0
+    //   62: invokevirtual 117	com/eclipsesource/v8/NodeJS:exec	(Ljava/io/File;)V
+    //   65: ldc 78
+    //   67: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   70: aload_3
+    //   71: areturn
+    //   72: astore_0
+    //   73: aload_1
+    //   74: invokevirtual 113	java/io/File:delete	()Z
+    //   77: pop
+    //   78: ldc 78
+    //   80: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: aload_0
+    //   84: athrow
+    //   85: astore_0
+    //   86: new 119	java/lang/RuntimeException
+    //   89: dup
+    //   90: aload_0
+    //   91: invokespecial 122	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
+    //   94: astore_0
+    //   95: ldc 78
+    //   97: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: aload_0
+    //   101: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	80	0	paramFile	File
-    //   37	27	1	localFile	File
-    //   5	34	2	localV8	V8
-    //   14	47	3	localNodeJS	NodeJS
+    //   0	102	0	paramFile	File
+    //   42	32	1	localFile	File
+    //   10	34	2	localV8	V8
+    //   19	52	3	localNodeJS	NodeJS
     // Exception table:
     //   from	to	target	type
-    //   38	46	62	finally
-    //   30	38	70	java/io/IOException
-    //   46	51	70	java/io/IOException
-    //   63	70	70	java/io/IOException
+    //   43	51	72	finally
+    //   35	43	85	java/io/IOException
+    //   51	56	85	java/io/IOException
+    //   73	85	85	java/io/IOException
   }
   
   private V8Function createScriptExecutionCallback(File paramFile)
   {
-    return new V8Function(this.v8, new NodeJS.2(this, paramFile));
+    AppMethodBeat.i(75001);
+    paramFile = new V8Function(this.v8, new NodeJS.2(this, paramFile));
+    AppMethodBeat.o(75001);
+    return paramFile;
   }
   
   private static File createTemporaryScriptFile(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(75003);
     File localFile = File.createTempFile(paramString2, ".js.tmp");
     paramString2 = new PrintWriter(localFile, "UTF-8");
     try
@@ -109,6 +127,7 @@ public class NodeJS
     finally
     {
       paramString2.close();
+      AppMethodBeat.o(75003);
     }
   }
   
@@ -119,150 +138,171 @@ public class NodeJS
   
   private void safeRelease(Releasable paramReleasable)
   {
+    AppMethodBeat.i(75002);
     if (paramReleasable != null) {
       paramReleasable.release();
     }
+    AppMethodBeat.o(75002);
   }
   
   /* Error */
   public void exec(File paramFile)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: aload_1
-    //   2: invokespecial 147	com/eclipsesource/v8/NodeJS:createScriptExecutionCallback	(Ljava/io/File;)Lcom/eclipsesource/v8/V8Function;
-    //   5: astore 4
-    //   7: aload_0
-    //   8: getfield 46	com/eclipsesource/v8/NodeJS:v8	Lcom/eclipsesource/v8/V8;
-    //   11: ldc 17
-    //   13: invokevirtual 151	com/eclipsesource/v8/V8:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
-    //   16: astore_3
-    //   17: new 153	com/eclipsesource/v8/V8Array
-    //   20: dup
-    //   21: aload_0
-    //   22: getfield 46	com/eclipsesource/v8/NodeJS:v8	Lcom/eclipsesource/v8/V8;
-    //   25: invokespecial 154	com/eclipsesource/v8/V8Array:<init>	(Lcom/eclipsesource/v8/V8;)V
-    //   28: astore_2
-    //   29: aload_2
-    //   30: aload 4
-    //   32: invokevirtual 158	com/eclipsesource/v8/V8Array:push	(Lcom/eclipsesource/v8/V8Value;)Lcom/eclipsesource/v8/V8Array;
-    //   35: pop
-    //   36: aload_3
-    //   37: ldc 11
-    //   39: aload_2
-    //   40: invokevirtual 164	com/eclipsesource/v8/V8Object:executeObjectFunction	(Ljava/lang/String;Lcom/eclipsesource/v8/V8Array;)Lcom/eclipsesource/v8/V8Object;
-    //   43: pop
-    //   44: aload_0
-    //   45: aload_3
-    //   46: invokespecial 166	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   0: ldc 161
+    //   2: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: aload_1
+    //   7: invokespecial 163	com/eclipsesource/v8/NodeJS:createScriptExecutionCallback	(Ljava/io/File;)Lcom/eclipsesource/v8/V8Function;
+    //   10: astore 4
+    //   12: aload_0
+    //   13: getfield 46	com/eclipsesource/v8/NodeJS:v8	Lcom/eclipsesource/v8/V8;
+    //   16: ldc 17
+    //   18: invokevirtual 167	com/eclipsesource/v8/V8:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   21: astore_3
+    //   22: new 169	com/eclipsesource/v8/V8Array
+    //   25: dup
+    //   26: aload_0
+    //   27: getfield 46	com/eclipsesource/v8/NodeJS:v8	Lcom/eclipsesource/v8/V8;
+    //   30: invokespecial 170	com/eclipsesource/v8/V8Array:<init>	(Lcom/eclipsesource/v8/V8;)V
+    //   33: astore_2
+    //   34: aload_2
+    //   35: aload 4
+    //   37: invokevirtual 174	com/eclipsesource/v8/V8Array:push	(Lcom/eclipsesource/v8/V8Value;)Lcom/eclipsesource/v8/V8Array;
+    //   40: pop
+    //   41: aload_3
+    //   42: ldc 11
+    //   44: aload_2
+    //   45: invokevirtual 180	com/eclipsesource/v8/V8Object:executeObjectFunction	(Ljava/lang/String;Lcom/eclipsesource/v8/V8Array;)Lcom/eclipsesource/v8/V8Object;
+    //   48: pop
     //   49: aload_0
-    //   50: aload_2
-    //   51: invokespecial 166	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   50: aload_3
+    //   51: invokespecial 182	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
     //   54: aload_0
-    //   55: aload 4
-    //   57: invokespecial 166	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-    //   60: return
-    //   61: astore_1
-    //   62: aconst_null
-    //   63: astore_2
-    //   64: aconst_null
-    //   65: astore_3
-    //   66: aload_0
-    //   67: aload_3
-    //   68: invokespecial 166	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-    //   71: aload_0
-    //   72: aload_2
-    //   73: invokespecial 166	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   55: aload_2
+    //   56: invokespecial 182	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   59: aload_0
+    //   60: aload 4
+    //   62: invokespecial 182	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   65: ldc 161
+    //   67: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   70: return
+    //   71: astore_1
+    //   72: aconst_null
+    //   73: astore_2
+    //   74: aconst_null
+    //   75: astore_3
     //   76: aload_0
-    //   77: aload 4
-    //   79: invokespecial 166	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-    //   82: aload_1
-    //   83: athrow
-    //   84: astore_1
-    //   85: aconst_null
-    //   86: astore_2
-    //   87: goto -21 -> 66
-    //   90: astore_1
-    //   91: goto -25 -> 66
+    //   77: aload_3
+    //   78: invokespecial 182	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   81: aload_0
+    //   82: aload_2
+    //   83: invokespecial 182	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   86: aload_0
+    //   87: aload 4
+    //   89: invokespecial 182	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   92: ldc 161
+    //   94: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: aload_1
+    //   98: athrow
+    //   99: astore_1
+    //   100: aconst_null
+    //   101: astore_2
+    //   102: goto -26 -> 76
+    //   105: astore_1
+    //   106: goto -30 -> 76
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	94	0	this	NodeJS
-    //   0	94	1	paramFile	File
-    //   28	59	2	localV8Array	V8Array
-    //   16	52	3	localV8Object	V8Object
-    //   5	73	4	localV8Function	V8Function
+    //   0	109	0	this	NodeJS
+    //   0	109	1	paramFile	File
+    //   33	69	2	localV8Array	V8Array
+    //   21	57	3	localV8Object	V8Object
+    //   10	78	4	localV8Function	V8Function
     // Exception table:
     //   from	to	target	type
-    //   7	17	61	finally
-    //   17	29	84	finally
-    //   29	44	90	finally
+    //   12	22	71	finally
+    //   22	34	99	finally
+    //   34	49	105	finally
   }
   
   /* Error */
   public String getNodeVersion()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 44	com/eclipsesource/v8/NodeJS:nodeVersion	Ljava/lang/String;
-    //   4: ifnull +8 -> 12
-    //   7: aload_0
-    //   8: getfield 44	com/eclipsesource/v8/NodeJS:nodeVersion	Ljava/lang/String;
-    //   11: areturn
+    //   0: ldc 184
+    //   2: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: getfield 44	com/eclipsesource/v8/NodeJS:nodeVersion	Ljava/lang/String;
+    //   9: ifnull +15 -> 24
     //   12: aload_0
-    //   13: getfield 46	com/eclipsesource/v8/NodeJS:v8	Lcom/eclipsesource/v8/V8;
-    //   16: ldc 17
-    //   18: invokevirtual 151	com/eclipsesource/v8/V8:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
-    //   21: astore_3
-    //   22: aload_3
-    //   23: ldc 32
-    //   25: invokevirtual 168	com/eclipsesource/v8/V8Object:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
-    //   28: astore_2
-    //   29: aload_0
-    //   30: aload_2
-    //   31: ldc 14
-    //   33: invokevirtual 172	com/eclipsesource/v8/V8Object:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   36: putfield 44	com/eclipsesource/v8/NodeJS:nodeVersion	Ljava/lang/String;
-    //   39: aload_0
-    //   40: aload_3
-    //   41: invokespecial 166	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-    //   44: aload_0
-    //   45: aload_2
-    //   46: invokespecial 166	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-    //   49: aload_0
-    //   50: getfield 44	com/eclipsesource/v8/NodeJS:nodeVersion	Ljava/lang/String;
-    //   53: areturn
-    //   54: astore_1
-    //   55: aconst_null
-    //   56: astore_2
-    //   57: aconst_null
-    //   58: astore_3
-    //   59: aload_0
-    //   60: aload_3
-    //   61: invokespecial 166	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-    //   64: aload_0
-    //   65: aload_2
-    //   66: invokespecial 166	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-    //   69: aload_1
-    //   70: athrow
-    //   71: astore_1
-    //   72: aconst_null
-    //   73: astore_2
-    //   74: goto -15 -> 59
-    //   77: astore_1
-    //   78: goto -19 -> 59
+    //   13: getfield 44	com/eclipsesource/v8/NodeJS:nodeVersion	Ljava/lang/String;
+    //   16: astore_1
+    //   17: ldc 184
+    //   19: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   22: aload_1
+    //   23: areturn
+    //   24: aload_0
+    //   25: getfield 46	com/eclipsesource/v8/NodeJS:v8	Lcom/eclipsesource/v8/V8;
+    //   28: ldc 17
+    //   30: invokevirtual 167	com/eclipsesource/v8/V8:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   33: astore_3
+    //   34: aload_3
+    //   35: ldc 32
+    //   37: invokevirtual 185	com/eclipsesource/v8/V8Object:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   40: astore_2
+    //   41: aload_0
+    //   42: aload_2
+    //   43: ldc 14
+    //   45: invokevirtual 189	com/eclipsesource/v8/V8Object:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   48: putfield 44	com/eclipsesource/v8/NodeJS:nodeVersion	Ljava/lang/String;
+    //   51: aload_0
+    //   52: aload_3
+    //   53: invokespecial 182	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   56: aload_0
+    //   57: aload_2
+    //   58: invokespecial 182	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   61: aload_0
+    //   62: getfield 44	com/eclipsesource/v8/NodeJS:nodeVersion	Ljava/lang/String;
+    //   65: astore_1
+    //   66: ldc 184
+    //   68: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   71: aload_1
+    //   72: areturn
+    //   73: astore_1
+    //   74: aconst_null
+    //   75: astore_2
+    //   76: aconst_null
+    //   77: astore_3
+    //   78: aload_0
+    //   79: aload_3
+    //   80: invokespecial 182	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   83: aload_0
+    //   84: aload_2
+    //   85: invokespecial 182	com/eclipsesource/v8/NodeJS:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+    //   88: ldc 184
+    //   90: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: aload_1
+    //   94: athrow
+    //   95: astore_1
+    //   96: aconst_null
+    //   97: astore_2
+    //   98: goto -20 -> 78
+    //   101: astore_1
+    //   102: goto -24 -> 78
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	81	0	this	NodeJS
-    //   54	16	1	localObject1	Object
-    //   71	1	1	localObject2	Object
-    //   77	1	1	localObject3	Object
-    //   28	46	2	localV8Object1	V8Object
-    //   21	40	3	localV8Object2	V8Object
+    //   0	105	0	this	NodeJS
+    //   16	56	1	str	String
+    //   73	21	1	localObject1	Object
+    //   95	1	1	localObject2	Object
+    //   101	1	1	localObject3	Object
+    //   40	58	2	localV8Object1	V8Object
+    //   33	47	3	localV8Object2	V8Object
     // Exception table:
     //   from	to	target	type
-    //   12	22	54	finally
-    //   22	29	71	finally
-    //   29	39	77	finally
+    //   24	34	73	finally
+    //   34	41	95	finally
+    //   41	51	101	finally
   }
   
   public V8 getRuntime()
@@ -272,18 +312,25 @@ public class NodeJS
   
   public boolean handleMessage()
   {
+    AppMethodBeat.i(74996);
     this.v8.checkThread();
-    return this.v8.pumpMessageLoop();
+    boolean bool = this.v8.pumpMessageLoop();
+    AppMethodBeat.o(74996);
+    return bool;
   }
   
   public boolean isRunning()
   {
+    AppMethodBeat.i(74998);
     this.v8.checkThread();
-    return this.v8.isRunning();
+    boolean bool = this.v8.isRunning();
+    AppMethodBeat.o(74998);
+    return bool;
   }
   
   public void release()
   {
+    AppMethodBeat.i(74997);
     this.v8.checkThread();
     if (!this.require.isReleased()) {
       this.require.release();
@@ -291,10 +338,12 @@ public class NodeJS
     if (!this.v8.isReleased()) {
       this.v8.release();
     }
+    AppMethodBeat.o(74997);
   }
   
   public V8Object require(File paramFile)
   {
+    AppMethodBeat.i(74999);
     this.v8.checkThread();
     V8Array localV8Array = new V8Array(this.v8);
     try
@@ -306,12 +355,13 @@ public class NodeJS
     finally
     {
       localV8Array.release();
+      AppMethodBeat.o(74999);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.eclipsesource.v8.NodeJS
  * JD-Core Version:    0.7.0.1
  */

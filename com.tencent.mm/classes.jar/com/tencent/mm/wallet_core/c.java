@@ -4,20 +4,24 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.br.d;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.wallet_core.c.r;
 import com.tencent.mm.wallet_core.d.i;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import java.lang.ref.WeakReference;
 
 public abstract class c
 {
-  public Bundle kke = new Bundle();
-  protected c.a wAe;
+  public WeakReference<Context> AVC = new WeakReference(null);
+  protected WeakReference<c.a> CT;
+  public Bundle mEJ = new Bundle();
   
-  private static String cl(Object paramObject)
+  private static String cR(Object paramObject)
   {
     if (paramObject == null) {
       return "";
@@ -34,34 +38,37 @@ public abstract class c
     return String.format("Value: %s, ", new Object[] { paramObject.toString() });
   }
   
-  public final void A(Object... paramVarArgs)
+  private String t(Object... paramVarArgs)
   {
+    int i = 0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.format("this %s, procname %s", new Object[] { this, aTh() }));
-    if (paramVarArgs.length <= 0) {
-      y.w("MicroMsg.ProcessManager", "vals is null, use '' as value");
-    }
-    for (paramVarArgs = localStringBuilder.toString();; paramVarArgs = localStringBuilder.toString())
+    localStringBuilder.append(String.format("this %s, procname %s", new Object[] { this, bzC() }));
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
     {
-      y.i("MicroMsg.ProcessManager", "__CURRENT__ %s", new Object[] { paramVarArgs });
-      return;
-      int j = paramVarArgs.length - 1;
-      int i = 0;
-      while (i < j)
-      {
-        localStringBuilder.append(cl(paramVarArgs[i])).append(',');
-        i += 1;
-      }
-      localStringBuilder.append(cl(paramVarArgs[j]));
+      ab.w("MicroMsg.ProcessManager", "vals is null, use '' as value");
+      return localStringBuilder.toString();
     }
+    int j = paramVarArgs.length - 1;
+    while (i < j)
+    {
+      localStringBuilder.append(cR(paramVarArgs[i])).append(',');
+      i += 1;
+    }
+    localStringBuilder.append(cR(paramVarArgs[j]));
+    return localStringBuilder.toString();
   }
   
-  public void E(Activity paramActivity)
+  public void B(Activity paramActivity)
   {
-    A(new Object[] { "finishActivity", paramActivity });
+    G(new Object[] { "finishActivity", paramActivity });
     if ((!paramActivity.isFinishing()) && ((paramActivity instanceof MMActivity))) {
       ((MMActivity)paramActivity).finish();
     }
+  }
+  
+  public final void G(Object... paramVarArgs)
+  {
+    ab.i("MicroMsg.ProcessManager", "__CURRENT__ %s", new Object[] { t(paramVarArgs) });
   }
   
   public int a(MMActivity paramMMActivity, int paramInt)
@@ -81,21 +88,16 @@ public abstract class c
   
   public abstract void a(Activity paramActivity, int paramInt, Bundle paramBundle);
   
-  public final void a(Activity paramActivity, Class<?> paramClass, int paramInt)
+  protected final void a(Activity paramActivity, Class<?> paramClass, int paramInt)
   {
-    A(new Object[] { "finishActivity", paramActivity, paramClass, "errCode " + paramInt });
-    paramClass = new Intent(paramActivity, paramClass);
-    paramClass.putExtra("process_id", getClass().hashCode());
-    paramClass.addFlags(67108864);
-    paramActivity.startActivity(paramClass);
-    this.kke.putInt("key_err_code", paramInt);
+    b(paramActivity, paramClass, null, paramInt);
   }
   
-  public final void a(Activity paramActivity, Class<?> paramClass, int paramInt, Intent paramIntent, boolean paramBoolean)
+  protected final void a(Activity paramActivity, Class<?> paramClass, int paramInt, Intent paramIntent, boolean paramBoolean)
   {
-    A(new Object[] { "endProcess2", paramActivity, paramClass, Integer.valueOf(paramInt), paramIntent, Boolean.valueOf(paramBoolean) });
-    if (this.wAe != null) {
-      paramIntent = this.wAe.m(paramInt, this.kke);
+    G(new Object[] { "endProcess2", paramActivity, paramClass, Integer.valueOf(paramInt), paramIntent, Boolean.valueOf(paramBoolean) });
+    if (this.CT.get() != null) {
+      paramIntent = ((c.a)this.CT.get()).p(paramInt, this.mEJ);
     }
     for (;;)
     {
@@ -121,8 +123,8 @@ public abstract class c
         localIntent.addFlags(67108864);
         localIntent.putExtra("key_process_is_end", true);
         paramActivity.startActivity(localIntent);
-        if (this.kke != null) {
-          this.kke.clear();
+        if (this.mEJ != null) {
+          this.mEJ.clear();
         }
         a.remove(getClass().hashCode());
         return;
@@ -132,51 +134,51 @@ public abstract class c
     }
   }
   
-  public final void a(Activity paramActivity, Class<?> paramClass, int paramInt, boolean paramBoolean)
+  protected final void a(Activity paramActivity, Class<?> paramClass, int paramInt, boolean paramBoolean)
   {
     a(paramActivity, paramClass, paramInt, null, paramBoolean);
   }
   
-  public final void a(Activity paramActivity, Class<?> paramClass, Intent paramIntent)
+  protected final void a(Activity paramActivity, Class<?> paramClass, Intent paramIntent)
   {
     a(paramActivity, paramClass, -1, paramIntent, true);
   }
   
   public final void a(Activity paramActivity, Class<?> paramClass, Bundle paramBundle, int paramInt)
   {
-    A(new Object[] { "startActivityForResult1", paramActivity, paramClass, paramBundle, Integer.valueOf(paramInt) });
+    G(new Object[] { "startActivityForResult1", paramActivity, paramClass, paramBundle, Integer.valueOf(paramInt) });
     paramClass = new Intent(paramActivity, paramClass);
     paramClass.putExtra("process_id", getClass().hashCode());
     paramClass.addFlags(67108864);
     paramActivity.startActivityForResult(paramClass, paramInt);
     if (paramBundle != null) {
-      this.kke.putAll(paramBundle);
+      this.mEJ.putAll(paramBundle);
     }
   }
   
   public final void a(Activity paramActivity, Class<?> paramClass, Bundle paramBundle1, Bundle paramBundle2)
   {
-    A(new Object[] { "startActivity1", paramActivity, paramClass, paramBundle1 });
+    G(new Object[] { "startActivity1", paramActivity, paramClass, paramBundle1 });
     paramClass = new Intent(paramActivity, paramClass);
     paramClass.putExtra("process_id", getClass().hashCode());
     if (paramBundle2 != null)
     {
       paramClass.putExtras(paramBundle2);
-      y.d("MicroMsg.ProcessManager", "put bundle: %s", new Object[] { paramClass.getExtras().toString() });
+      ab.d("MicroMsg.ProcessManager", "put bundle: %s", new Object[] { paramClass.getExtras().toString() });
     }
     paramActivity.startActivity(paramClass);
     if (paramBundle1 != null) {
-      this.kke.putAll(paramBundle1);
+      this.mEJ.putAll(paramBundle1);
     }
-    y.d("MicroMsg.ProcessManager", "bankcard tag :" + cMm());
+    ab.d("MicroMsg.ProcessManager", "bankcard tag :" + dRO());
   }
   
   public final void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, Intent paramIntent, boolean paramBoolean)
   {
-    A(new Object[] { "endProcess3", paramActivity, paramString1, paramString2, Integer.valueOf(paramInt), paramIntent, Boolean.valueOf(paramBoolean) });
+    G(new Object[] { "endProcess3", paramActivity, paramString1, paramString2, Integer.valueOf(paramInt), paramIntent, Boolean.valueOf(paramBoolean) });
     Intent localIntent1 = null;
-    if (this.wAe != null) {
-      localIntent1 = this.wAe.m(paramInt, this.kke);
+    if (this.CT.get() != null) {
+      localIntent1 = ((c.a)this.CT.get()).p(paramInt, this.mEJ);
     }
     Intent localIntent2;
     if (paramIntent != null)
@@ -200,8 +202,8 @@ public abstract class c
       localIntent2.addFlags(67108864);
       localIntent2.putExtra("key_process_is_end", true);
       d.b(paramActivity, paramString1, paramString2, localIntent2);
-      if (this.kke != null) {
-        this.kke.clear();
+      if (this.mEJ != null) {
+        this.mEJ.clear();
       }
       a.remove(getClass().hashCode());
       return;
@@ -210,132 +212,171 @@ public abstract class c
     }
   }
   
-  public final void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  protected final void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
     a(paramActivity, paramString1, paramString2, paramInt, null, paramBoolean);
   }
   
   public final void a(Activity paramActivity, String paramString1, String paramString2, Bundle paramBundle)
   {
-    A(new Object[] { "startActivity3", paramActivity, paramString1, paramString2, paramBundle });
-    Class localClass = d.fZ(paramString1, paramString2);
+    G(new Object[] { "startActivity3", paramActivity, paramString1, paramString2, paramBundle });
+    Class localClass = d.ia(paramString1, paramString2);
     if (localClass != null)
     {
       b(paramActivity, localClass, paramBundle);
       return;
     }
-    y.e("MicroMsg.ProcessManager", " Class Not Found! can't startActivity to " + paramString1 + paramString2);
+    ab.e("MicroMsg.ProcessManager", " Class Not Found! can't startActivity to " + paramString1 + paramString2);
   }
   
-  public final void a(c.a parama)
+  public final void a(c.a parama, Context paramContext)
   {
-    this.wAe = parama;
+    this.CT = new WeakReference(parama);
+    this.AVC = new WeakReference(paramContext);
   }
+  
+  public void a(WalletBaseUI paramWalletBaseUI) {}
   
   public boolean a(WalletBaseUI paramWalletBaseUI, int paramInt, String paramString)
   {
     return false;
   }
   
-  public abstract String aTh();
-  
-  public final void ak(Activity paramActivity)
+  public final c aM(Bundle paramBundle)
   {
-    A(new Object[] { "endProcess1", paramActivity });
-    if ((!paramActivity.isFinishing()) && ((paramActivity instanceof MMActivity))) {
-      ((MMActivity)paramActivity).finish();
-    }
-    if (this.kke != null) {
-      this.kke.clear();
-    }
-    a.remove(getClass().hashCode());
-  }
-  
-  public final c au(Bundle paramBundle)
-  {
-    this.kke.putAll(paramBundle);
+    this.mEJ.putAll(paramBundle);
     return this;
   }
   
-  public abstract void b(Activity paramActivity, int paramInt);
+  public final void aN(Activity paramActivity)
+  {
+    G(new Object[] { "specEndProcess", paramActivity });
+    if ((!paramActivity.isFinishing()) && ((paramActivity instanceof MMActivity))) {
+      ((MMActivity)paramActivity).finish();
+    }
+    if (this.mEJ != null) {
+      this.mEJ.clear();
+    }
+    a.remove(getClass().hashCode());
+    cRJ();
+  }
+  
+  public final void aO(Activity paramActivity)
+  {
+    G(new Object[] { "endProcess1", paramActivity });
+    if ((!paramActivity.isFinishing()) && ((paramActivity instanceof MMActivity))) {
+      ((MMActivity)paramActivity).finish();
+    }
+    if (this.mEJ != null) {
+      this.mEJ.clear();
+    }
+    a.remove(getClass().hashCode());
+  }
   
   public abstract void b(Activity paramActivity, Bundle paramBundle);
   
   public final void b(Activity paramActivity, Class<?> paramClass, Bundle paramBundle)
   {
-    A(new Object[] { "startActivity1", paramActivity, paramClass, paramBundle });
+    G(new Object[] { "startActivity1", paramActivity, paramClass, paramBundle });
     paramClass = new Intent(paramActivity, paramClass);
     paramClass.putExtra("process_id", getClass().hashCode());
     paramActivity.startActivity(paramClass);
     if (paramBundle != null) {
-      this.kke.putAll(paramBundle);
+      this.mEJ.putAll(paramBundle);
     }
-    y.d("MicroMsg.ProcessManager", "bankcard tag :" + cMm());
+    ab.d("MicroMsg.ProcessManager", "bankcard tag :" + dRO());
   }
   
-  public final boolean bXd()
+  protected final void b(Activity paramActivity, Class<?> paramClass, Bundle paramBundle, int paramInt)
   {
-    return this.kke.getBoolean("key_is_oversea", false);
+    G(new Object[] { "finishActivity", paramActivity, paramClass, "errCode ".concat(String.valueOf(paramInt)) });
+    paramClass = new Intent(paramActivity, paramClass);
+    paramClass.putExtra("process_id", getClass().hashCode());
+    paramClass.addFlags(67108864);
+    if (paramBundle != null) {
+      paramClass.putExtras(paramBundle);
+    }
+    paramActivity.startActivity(paramClass);
+    this.mEJ.putInt("key_err_code", paramInt);
   }
   
-  public final void c(Activity paramActivity, Class<?> paramClass)
+  public void b(WalletBaseUI paramWalletBaseUI) {}
+  
+  public abstract String bzC();
+  
+  protected final void c(Activity paramActivity, Class<?> paramClass)
   {
     a(paramActivity, paramClass, -1, null, true);
   }
   
   public abstract boolean c(Activity paramActivity, Bundle paramBundle);
   
-  public final int cMm()
+  public void cRJ() {}
+  
+  public final boolean cWe()
   {
-    return this.kke.getInt("key_support_bankcard", 1);
+    return this.mEJ.getBoolean("key_is_oversea", false);
   }
   
-  public final boolean cMn()
+  protected final void d(Activity paramActivity, String paramString1, String paramString2)
+  {
+    a(paramActivity, paramString1, paramString2, -1, true);
+  }
+  
+  public final void dRN()
+  {
+    this.CT = null;
+    this.AVC = null;
+  }
+  
+  public final int dRO()
+  {
+    return this.mEJ.getInt("key_support_bankcard", 1);
+  }
+  
+  public final boolean dRP()
   {
     boolean bool = false;
-    if (this.kke.getInt("key_pay_flag", 0) == 2) {
+    if (this.mEJ.getInt("key_pay_flag", 0) == 2) {
       bool = true;
     }
     return bool;
   }
   
-  public final boolean cMo()
+  public final boolean dRQ()
   {
-    return this.kke.getInt("key_pay_flag", 0) == 1;
+    return this.mEJ.getInt("key_pay_flag", 0) == 1;
   }
   
-  public final boolean cMp()
+  public final boolean dRR()
   {
     boolean bool = false;
-    if (this.kke.getInt("key_pay_flag", 0) == 3) {
+    if (this.mEJ.getInt("key_pay_flag", 0) == 3) {
       bool = true;
     }
     return bool;
   }
   
-  public final boolean cMq()
+  public final boolean dRS()
   {
     boolean bool2 = false;
-    String str = this.kke.getString("key_bank_username");
-    y.i("MicroMsg.ProcessManager", "follow bank account : isFollow " + this.kke.getBoolean("key_is_follow_bank_username", false) + ", username : " + str);
+    String str = this.mEJ.getString("key_bank_username");
+    ab.i("MicroMsg.ProcessManager", "follow bank account : isFollow " + this.mEJ.getBoolean("key_is_follow_bank_username", false) + ", username : " + str);
     boolean bool1 = bool2;
-    if (this.kke.getBoolean("key_is_follow_bank_username", false))
+    if (this.mEJ.getBoolean("key_is_follow_bank_username", false))
     {
       bool1 = bool2;
-      if (!bk.bl(str))
+      if (!bo.isNullOrNil(str))
       {
-        com.tencent.mm.kernel.g.DQ();
-        com.tencent.mm.kernel.g.DO().dJT.a(new com.tencent.mm.wallet_core.c.p(str), 0);
+        com.tencent.mm.kernel.g.RM();
+        com.tencent.mm.kernel.g.RK().eHt.a(new r(str), 0);
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  public final void d(Activity paramActivity, String paramString1, String paramString2)
-  {
-    a(paramActivity, paramString1, paramString2, -1, true);
-  }
+  public abstract void e(Activity paramActivity, int paramInt);
   
   public boolean h(Activity paramActivity, Bundle paramBundle)
   {
@@ -344,12 +385,12 @@ public abstract class c
   
   public final void l(Activity paramActivity, Bundle paramBundle)
   {
-    A(new Object[] { "endProcess1", paramActivity });
-    if ((!paramActivity.isFinishing()) && ((paramActivity instanceof MMActivity))) {
+    G(new Object[] { "endProcess1", paramActivity });
+    if (!paramActivity.isFinishing()) {
       ((MMActivity)paramActivity).finish();
     }
-    if (this.wAe != null) {
-      this.wAe.m(0, paramBundle);
+    if (this.CT.get() != null) {
+      ((c.a)this.CT.get()).p(0, paramBundle);
     }
     paramBundle.clear();
     a.remove(getClass().hashCode());

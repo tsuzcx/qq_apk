@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.ui.widget.b.d.a;
 
 final class RemittanceF2fDynamicCodeUI$8
   implements d.a
@@ -11,7 +11,7 @@ final class RemittanceF2fDynamicCodeUI$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceF2fDynamicCodeUI.8
  * JD-Core Version:    0.7.0.1
  */

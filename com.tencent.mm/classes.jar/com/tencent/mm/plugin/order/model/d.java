@@ -1,63 +1,72 @@
 package com.tencent.mm.plugin.order.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class d
   extends com.tencent.mm.bv.a
 {
-  public String mPC;
   public int month;
+  public String ppS;
   public int year;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(56617);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.gB(1, this.year);
-      paramVarArgs.gB(2, this.month);
-      if (this.mPC != null) {
-        paramVarArgs.d(3, this.mPC);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aO(1, this.year);
+      paramVarArgs.aO(2, this.month);
+      if (this.ppS != null) {
+        paramVarArgs.e(3, this.ppS);
       }
-      paramInt = 0;
+      AppMethodBeat.o(56617);
+      return 0;
     }
-    int i;
-    do
+    if (paramInt == 1)
     {
-      return paramInt;
-      if (paramInt != 1) {
-        break;
-      }
-      i = d.a.a.a.gy(1, this.year) + 0 + d.a.a.a.gy(2, this.month);
+      int i = e.a.a.b.b.a.bl(1, this.year) + 0 + e.a.a.b.b.a.bl(2, this.month);
       paramInt = i;
-    } while (this.mPC == null);
-    return i + d.a.a.b.b.a.e(3, this.mPC);
+      if (this.ppS != null) {
+        paramInt = i + e.a.a.b.b.a.f(3, this.ppS);
+      }
+      AppMethodBeat.o(56617);
+      return paramInt;
+    }
     if (paramInt == 2)
     {
-      paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
+      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.eqQ();
         }
       }
+      AppMethodBeat.o(56617);
       return 0;
     }
     if (paramInt == 3)
     {
-      d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
       d locald = (d)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
+        AppMethodBeat.o(56617);
         return -1;
       case 1: 
-        locald.year = locala.xpH.oD();
+        locald.year = locala.CLY.sl();
+        AppMethodBeat.o(56617);
         return 0;
       case 2: 
-        locald.month = locala.xpH.oD();
+        locald.month = locala.CLY.sl();
+        AppMethodBeat.o(56617);
         return 0;
       }
-      locald.mPC = locala.xpH.readString();
+      locald.ppS = locala.CLY.readString();
+      AppMethodBeat.o(56617);
       return 0;
     }
+    AppMethodBeat.o(56617);
     return -1;
   }
 }

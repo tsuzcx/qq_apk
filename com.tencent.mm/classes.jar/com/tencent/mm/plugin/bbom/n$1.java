@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.ui.MMAppMgr;
 
 final class n$1
@@ -10,8 +11,10 @@ final class n$1
   
   public final void run()
   {
-    au.hold();
-    MMAppMgr.mU(true);
+    AppMethodBeat.i(18271);
+    aw.hold();
+    MMAppMgr.qr(true);
+    AppMethodBeat.o(18271);
   }
 }
 

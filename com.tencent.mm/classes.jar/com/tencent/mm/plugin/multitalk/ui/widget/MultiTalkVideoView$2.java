@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.multitalk.ui.widget;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MultiTalkVideoView$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class MultiTalkVideoView$2
   
   public final void run()
   {
-    this.mwH.aqU();
+    AppMethodBeat.i(54224);
+    this.oWx.refreshView();
+    AppMethodBeat.o(54224);
   }
 }
 

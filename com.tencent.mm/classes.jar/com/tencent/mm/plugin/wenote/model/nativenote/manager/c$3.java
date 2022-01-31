@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.manager;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.i;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,14 +12,17 @@ final class c$3
   
   public final void run()
   {
+    AppMethodBeat.i(26716);
     int i;
-    synchronized (this.rHC)
+    synchronized (this.vyj)
     {
-      if (c.d(this.rHC) == null) {
+      if (c.d(this.vyj) == null)
+      {
+        AppMethodBeat.o(26716);
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = c.d(this.rHC).iterator();
+      Iterator localIterator = c.d(this.vyj).iterator();
       i = 0;
       while (localIterator.hasNext())
       {
@@ -30,8 +34,9 @@ final class c$3
         }
       }
     }
-    c.a(this.rHC, com.tencent.mm.plugin.wenote.b.c.UE(localObject.toString()));
-    c.b(this.rHC, i);
+    c.a(this.vyj, com.tencent.mm.plugin.wenote.b.c.ajU(localObject.toString()));
+    c.b(this.vyj, i);
+    AppMethodBeat.o(26716);
   }
 }
 

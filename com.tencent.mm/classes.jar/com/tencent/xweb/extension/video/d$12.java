@@ -1,5 +1,6 @@
 package com.tencent.xweb.extension.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
 
 final class d$12
@@ -7,18 +8,22 @@ final class d$12
 {
   d$12(d paramd) {}
   
-  public final void aT(float paramFloat)
+  public final void aFf()
   {
-    double d = d.a(this.xiF) * paramFloat / 100.0D;
-    this.xiF.e(d, false);
-    d.b(this.xiF).evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_Seek(%f);", new Object[] { Double.valueOf(d) }), new d.12.1(this));
-    this.xiF.cSA();
+    AppMethodBeat.i(84586);
+    this.BFR.dYI();
+    this.BFR.dYJ();
+    AppMethodBeat.o(84586);
   }
   
-  public final void akz()
+  public final void bE(float paramFloat)
   {
-    this.xiF.cSB();
-    this.xiF.cSC();
+    AppMethodBeat.i(84587);
+    double d = d.a(this.BFR) * paramFloat / 100.0D;
+    this.BFR.f(d, false);
+    d.b(this.BFR).evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_Seek(%f);", new Object[] { Double.valueOf(d) }), new d.12.1(this));
+    this.BFR.dYH();
+    AppMethodBeat.o(84587);
   }
 }
 

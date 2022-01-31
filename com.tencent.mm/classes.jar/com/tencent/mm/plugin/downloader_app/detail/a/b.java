@@ -4,47 +4,44 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.e.a.a;
-import com.tencent.luggage.e.e;
-import com.tencent.luggage.e.n;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.downloader_app.b.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.aw;
-import com.tencent.mm.plugin.webview.luggage.jsapi.aw.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.e;
+import com.tencent.luggage.d.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class b
-  extends aw<n>
+  extends bh<n>
 {
-  public final void a(Context paramContext, String paramString, aw.a parama) {}
-  
-  public final int aGj()
-  {
-    return 0;
-  }
+  public final void a(Context paramContext, String paramString, bh.a parama) {}
   
   public final void b(a.a parama)
   {
-    y.i("MicroMsg.JsApiImagePreview", "invokeInOwn");
-    Object localObject1 = parama.bih.bhk.optString("current");
-    Object localObject2 = parama.bih.bhk.optJSONArray("urls");
+    AppMethodBeat.i(136069);
+    ab.i("MicroMsg.JsApiImagePreview", "invokeInOwn");
+    Object localObject1 = parama.byF.bxK.optString("current");
+    Object localObject2 = parama.byF.bxK.optJSONArray("urls");
     Object localObject3 = new ArrayList();
     if ((localObject2 == null) || (((JSONArray)localObject2).length() == 0))
     {
-      y.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
+      ab.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
       parama.a("invalid_url", null);
+      AppMethodBeat.o(136069);
       return;
     }
     int i = 0;
     if (i < ((JSONArray)localObject2).length())
     {
       String str = ((JSONArray)localObject2).optString(i);
-      if ((bk.bl(str)) || (str.equalsIgnoreCase("null"))) {
-        y.e("MicroMsg.JsApiImagePreview", "null url, i = %d", new Object[] { Integer.valueOf(i) });
+      if ((bo.isNullOrNil(str)) || (str.equalsIgnoreCase("null"))) {
+        ab.e("MicroMsg.JsApiImagePreview", "null url, i = %d", new Object[] { Integer.valueOf(i) });
       }
       for (;;)
       {
@@ -54,7 +51,7 @@ public class b
       }
     }
     localObject2 = (String[])((ArrayList)localObject3).toArray(new String[((ArrayList)localObject3).size()]);
-    if (bk.bl((String)localObject1)) {
+    if (bo.isNullOrNil((String)localObject1)) {
       localObject1 = localObject2[0];
     }
     for (;;)
@@ -64,12 +61,18 @@ public class b
       ((Intent)localObject3).putExtra("urlList", (String[])localObject2);
       ((Intent)localObject3).putExtra("type", -255);
       ((Intent)localObject3).putExtra("isFromWebView", true);
-      localObject1 = (Activity)((n)parama.big).mContext;
+      localObject1 = (Activity)((n)parama.byE).mContext;
       d.b((Context)localObject1, "subapp", ".ui.gallery.GestureGalleryUI", (Intent)localObject3);
-      ((Activity)localObject1).overridePendingTransition(b.a.in_no_slide, b.a.in_no_slide);
+      ((Activity)localObject1).overridePendingTransition(2131034195, 2131034195);
       parama.a("", null);
+      AppMethodBeat.o(136069);
       return;
     }
+  }
+  
+  public final int bjL()
+  {
+    return 0;
   }
   
   public final String name()

@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera.a;
 
 import android.graphics.Rect;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.qbar.QbarNative;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -12,22 +13,25 @@ final class b$1
   
   public final void run()
   {
-    if (this.gpr.gpj.compareAndSet(false, true))
+    AppMethodBeat.i(130978);
+    if (this.hJv.hJn.compareAndSet(false, true))
     {
-      byte[] arrayOfByte1 = this.gpm;
-      if ((270 == this.gpn) || (90 == this.gpn))
+      byte[] arrayOfByte1 = this.hJq;
+      if ((270 == this.hJr) || (90 == this.hJr))
       {
-        byte[] arrayOfByte2 = new byte[this.gpm.length];
-        QbarNative.a(arrayOfByte2, this.gpm, this.gpo, this.gpp);
-        arrayOfByte1 = new byte[this.gpm.length];
-        QbarNative.a(arrayOfByte1, arrayOfByte2, this.gpp, this.gpo);
+        byte[] arrayOfByte2 = new byte[this.hJq.length];
+        QbarNative.a(arrayOfByte2, this.hJq, this.hJs, this.hJt);
+        arrayOfByte1 = new byte[this.hJq.length];
+        QbarNative.a(arrayOfByte1, arrayOfByte2, this.hJt, this.hJs);
         QbarNative.nativeRelease();
       }
-      this.gpr.b(arrayOfByte1, this.gpo, this.gpp, this.gpn);
-      this.gpr.gpj.set(false);
+      this.hJv.a(arrayOfByte1, this.hJs, this.hJt, this.hJr);
+      this.hJv.hJn.set(false);
+      AppMethodBeat.o(130978);
       return;
     }
-    y.d("MicroMsg.appbrand.ScanDecoder", "decode isDecoding");
+    ab.d("MicroMsg.appbrand.ScanDecoder", "decode isDecoding");
+    AppMethodBeat.o(130978);
   }
 }
 

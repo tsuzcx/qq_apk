@@ -1,59 +1,69 @@
 package com.tencent.mm.plugin.facedetect.b;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.c.bwm;
-import com.tencent.mm.protocal.c.bwn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ciu;
+import com.tencent.mm.protocal.protobuf.civ;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class q
   extends m
   implements k
 {
-  private b dmK;
-  private f dmL;
-  public boolean jNc = false;
-  public boolean jNd = false;
+  private f callback;
+  public boolean mhl;
+  public boolean mhm;
+  private b rr;
   
   public q(int paramInt)
   {
+    AppMethodBeat.i(95);
+    this.mhl = false;
+    this.mhm = false;
     b.a locala = new b.a();
-    locala.ecH = new bwm();
-    locala.ecI = new bwn();
+    locala.fsX = new ciu();
+    locala.fsY = new civ();
     locala.uri = "/cgi-bin/micromsg-bin/switchopface";
-    locala.ecG = 938;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    ((bwm)this.dmK.ecE.ecN).ssq = paramInt;
+    locala.funcId = getType();
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ((ciu)this.rr.fsV.fta).OpCode = paramInt;
+    AppMethodBeat.o(95);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    paramq = (bwn)((b)paramq).ecF.ecN;
-    this.jNc = paramq.tMT;
-    this.jNd = paramq.tMU;
-    y.i("MicroMsg.NetSceneFaceSwitchOpFace", "hy: NetSceneFaceSwitchOpFace errType: %d, errCode: %d, errMsg: %s, hasBio: %b, isOpen: %b", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Boolean.valueOf(this.jNc), Boolean.valueOf(this.jNd) });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
+    AppMethodBeat.i(96);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(96);
+    return i;
   }
   
   public final int getType()
   {
     return 938;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(97);
+    paramq = (civ)((b)paramq).fsW.fta;
+    this.mhl = paramq.xTd;
+    this.mhm = paramq.xTe;
+    ab.i("MicroMsg.NetSceneFaceSwitchOpFace", "hy: NetSceneFaceSwitchOpFace errType: %d, errCode: %d, errMsg: %s, hasBio: %b, isOpen: %b", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Boolean.valueOf(this.mhl), Boolean.valueOf(this.mhm) });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(97);
   }
 }
 

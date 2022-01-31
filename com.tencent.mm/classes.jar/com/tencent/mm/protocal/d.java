@@ -6,80 +6,100 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.f;
 import junit.framework.Assert;
 
 public final class d
   extends e
 {
   public static final String DEVICE_NAME;
-  public static String dOM = "android-" + Build.VERSION.SDK_INT;
-  public static final String soU = Build.BRAND;
-  public static final String soV = Build.MODEL + Build.CPU_ABI;
-  public static String soW = "android-" + Build.VERSION.SDK_INT;
-  public static final String soX = "android-" + Build.MANUFACTURER;
-  public static String soY = Build.VERSION.SDK_INT;
-  public static long soZ;
-  public static int spa;
-  public static boolean spb = coU();
-  public static boolean spc = coT();
-  public static boolean spd = coR();
-  public static boolean spe = coS();
-  public static int spf = 5;
-  public static final byte[] spg = null;
-  public static final byte[] sph = null;
-  public static final byte[] spi = null;
+  public static String eQs;
+  public static final String whB;
+  public static final String whC;
+  public static String whD;
+  public static final String whE;
+  public static String whF;
+  public static long whG;
+  public static int whH;
+  public static boolean whI;
+  public static boolean whJ;
+  public static boolean whK;
+  public static boolean whL;
+  public static int whM;
+  public static final byte[] whN;
+  public static final byte[] whO;
+  public static final byte[] whP;
   
   static
   {
+    AppMethodBeat.i(58789);
+    eQs = "android-" + Build.VERSION.SDK_INT;
+    whB = Build.BRAND;
+    whC = Build.MODEL + Build.CPU_ABI;
+    whD = "android-" + Build.VERSION.SDK_INT;
+    whE = "android-" + Build.MANUFACTURER;
+    whF = Build.VERSION.SDK_INT;
     DEVICE_NAME = Build.MANUFACTURER + "-" + Build.MODEL;
-    soZ = 0L;
-    spa = Integer.decode(com.tencent.mm.sdk.platformtools.d.CLIENT_VERSION).intValue();
-    Assert.assertNotNull(com.tencent.mm.sdk.platformtools.d.CLIENT_VERSION);
+    whG = 0L;
+    whH = Integer.decode(f.CLIENT_VERSION).intValue();
+    Assert.assertNotNull(f.CLIENT_VERSION);
     try
     {
-      int i = ae.getContext().getPackageManager().getApplicationInfo(ae.getPackageName(), 128).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
-      if ((i > spa) && (i - spa < 255) && ((i & 0xFF) >= 48)) {
-        spa = i;
+      int i = ah.getContext().getPackageManager().getApplicationInfo(ah.getPackageName(), 128).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
+      if ((i > whH) && (i - whH < 255) && ((i & 0xFF) >= 48)) {
+        whH = i;
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.b("MicroMsg.ConstantsProtocal", "", new Object[] { localException });
+        ab.a("MicroMsg.ConstantsProtocal", "", new Object[] { localException });
       }
     }
+    whI = dqr();
+    whJ = dqq();
+    whK = dqo();
+    whL = dqp();
+    whM = 5;
+    whN = null;
+    whO = null;
+    whP = null;
+    AppMethodBeat.o(58789);
   }
   
-  public static void EC(int paramInt)
+  public static void MA(int paramInt)
   {
-    spa = paramInt;
-    spd = coR();
-    spb = coU();
-    spc = coT();
-    spe = coS();
+    AppMethodBeat.i(58788);
+    whH = paramInt;
+    whK = dqo();
+    whI = dqr();
+    whJ = dqq();
+    whL = dqp();
+    AppMethodBeat.o(58788);
   }
   
-  private static boolean coR()
+  private static boolean dqo()
   {
-    return ((spa & 0xFF) >= 0) && ((spa & 0xFF) <= 47);
+    return ((whH & 0xFF) >= 0) && ((whH & 0xFF) <= 47);
   }
   
-  private static boolean coS()
+  private static boolean dqp()
   {
-    return ((spa & 0xFF) >= 0) && ((spa & 0xFF) <= 15);
+    return ((whH & 0xFF) >= 0) && ((whH & 0xFF) <= 15);
   }
   
-  private static boolean coT()
+  private static boolean dqq()
   {
-    return ((spa & 0xFF) >= 96) && ((spa & 0xFF) <= 255);
+    return ((whH & 0xFF) >= 96) && ((whH & 0xFF) <= 255);
   }
   
-  private static boolean coU()
+  private static boolean dqr()
   {
-    return ((spa & 0xFF) >= 48) && ((spa & 0xFF) <= 95);
+    return ((whH & 0xFF) >= 48) && ((whH & 0xFF) <= 95);
   }
 }
 

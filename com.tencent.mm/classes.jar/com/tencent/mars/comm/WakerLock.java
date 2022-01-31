@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import com.tencent.mm.jni.a.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public class WakerLock
 {
@@ -15,14 +15,14 @@ public class WakerLock
   private IAutoUnlockCallback autoUnlockCallback = null;
   private Context context;
   private String mCreatePosStackLine = null;
-  private ah mHandler = null;
+  private ak mHandler = null;
   private Runnable mReleaser = new Runnable()
   {
     public void run()
     {
       if (WakerLock.this.wakeLock.isHeld())
       {
-        y.w("MicroMsg.WakerLock", "unlock by fucking handler! [%d,%d] @[%s]", new Object[] { Integer.valueOf(WakerLock.this.hashCode()), Integer.valueOf(WakerLock.this.wakeLock.hashCode()), WakerLock.this.mCreatePosStackLine });
+        ab.w("MicroMsg.WakerLock", "unlock by fucking handler! [%d,%d] @[%s]", new Object[] { Integer.valueOf(WakerLock.this.hashCode()), Integer.valueOf(WakerLock.this.wakeLock.hashCode()), WakerLock.this.mCreatePosStackLine });
         WakerLock.this.unLock();
         if (WakerLock.this.autoUnlockCallback != null) {
           WakerLock.this.autoUnlockCallback.autoUnlockCallback();
@@ -36,9 +36,9 @@ public class WakerLock
   {
     this.wakeLock = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(1, paramString);
     this.wakeLock.setReferenceCounted(false);
-    this.mHandler = new ah(paramContext.getMainLooper());
+    this.mHandler = new ak(paramContext.getMainLooper());
     this.context = paramContext;
-    y.i("MicroMsg.WakerLock", "init [%d,%d] @[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), this.mCreatePosStackLine });
+    ab.i("MicroMsg.WakerLock", "init [%d,%d] @[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), this.mCreatePosStackLine });
   }
   
   public WakerLock(Context paramContext, String paramString, IAutoUnlockCallback paramIAutoUnlockCallback)
@@ -65,7 +65,7 @@ public class WakerLock
   
   protected void finalize()
   {
-    y.i("MicroMsg.WakerLock", "finalize unlock [%d,%d] @[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), this.mCreatePosStackLine });
+    ab.i("MicroMsg.WakerLock", "finalize unlock [%d,%d] @[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), this.mCreatePosStackLine });
     unLock();
     super.finalize();
   }
@@ -85,12 +85,12 @@ public class WakerLock
     try
     {
       boolean bool = this.wakeLock.isHeld();
-      y.i("MicroMsg.WakerLock", "check is held [%d,%d] :%b caller:[%s] @[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), Boolean.valueOf(bool), getCallerStack(), getCreatePosStackLine() });
+      ab.i("MicroMsg.WakerLock", "check is held [%d,%d] :%b caller:[%s] @[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), Boolean.valueOf(bool), getCallerStack(), getCreatePosStackLine() });
       return bool;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.WakerLock", localException, "", new Object[] { "" });
+      ab.printErrStackTrace("MicroMsg.WakerLock", localException, "", new Object[] { "" });
     }
     return false;
   }
@@ -113,7 +113,7 @@ public class WakerLock
         unLock();
       }
       a.a(this, paramString);
-      y.i("MicroMsg.WakerLock", "lock [%d,%d] traceMsg:[%s] @[%s] limit time:%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), paramString, getCreatePosStackLine(), Long.valueOf(paramLong) });
+      ab.i("MicroMsg.WakerLock", "lock [%d,%d] traceMsg:[%s] @[%s] limit time:%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), paramString, getCreatePosStackLine(), Long.valueOf(paramLong) });
       this.wakeLock.acquire();
       if (paramLong == -1L)
       {
@@ -125,7 +125,7 @@ public class WakerLock
     }
     catch (Exception paramString)
     {
-      y.printErrStackTrace("MicroMsg.WakerLock", paramString, "", new Object[] { "" });
+      ab.printErrStackTrace("MicroMsg.WakerLock", paramString, "", new Object[] { "" });
     }
   }
   
@@ -140,7 +140,7 @@ public class WakerLock
     {
       this.mHandler.removeCallbacks(this.mReleaser);
       a.c(this);
-      y.i("MicroMsg.WakerLock", "unlock [%d,%d] caller:[%s] @[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), getCallerStack(), getCreatePosStackLine() });
+      ab.i("MicroMsg.WakerLock", "unlock [%d,%d] caller:[%s] @[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), getCallerStack(), getCreatePosStackLine() });
     }
     try
     {
@@ -149,7 +149,7 @@ public class WakerLock
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.WakerLock", localException, "", new Object[] { "" });
+      ab.printErrStackTrace("MicroMsg.WakerLock", localException, "", new Object[] { "" });
     }
   }
   

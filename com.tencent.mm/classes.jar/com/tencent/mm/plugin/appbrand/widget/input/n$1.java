@@ -1,13 +1,33 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+
 final class n$1
-  implements e.a
+  implements Runnable
 {
-  n$1(int paramInt) {}
+  n$1(n paramn) {}
   
-  public final boolean a(z paramz)
+  public final void run()
   {
-    return (paramz.getWidget() != null) && (((aa)paramz.getWidget()).getInputId() == this.grq);
+    int i = 0;
+    AppMethodBeat.i(126663);
+    if (n.b(this.jmf) == null)
+    {
+      AppMethodBeat.o(126663);
+      return;
+    }
+    ab.i("MicroMsg.AppBrandUIdRootFrameLayout", "hideInactivePanelView, mPanel %s", new Object[] { n.b(this.jmf).getClass().getSimpleName() });
+    while (i < this.jmf.getChildCount())
+    {
+      View localView = this.jmf.getChildAt(i);
+      if ((localView != null) && (localView != n.c(this.jmf)) && (localView != n.b(this.jmf))) {
+        n.cM(localView);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(126663);
   }
 }
 

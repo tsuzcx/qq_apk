@@ -1,44 +1,75 @@
 package com.tencent.mm.app;
 
-import com.tencent.mm.loader.a.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.tinker.loader.TinkerRuntimeException;
-import com.tencent.tinker.loader.app.ApplicationLike;
-import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
-import java.util.HashMap;
+import android.os.Handler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class j
+public abstract interface j
 {
-  static ApplicationLike applicationLike;
-  static String bwx = "";
-  long bwA;
-  long bwB;
-  String bwy;
-  String bwz;
+  public abstract void onAppBackground(String paramString);
   
-  public j(ApplicationLike paramApplicationLike)
-  {
-    applicationLike = paramApplicationLike;
-    b.applicationLike = paramApplicationLike;
-  }
+  public abstract void onAppForeground(String paramString);
   
-  static void a(ApplicationLike paramApplicationLike)
+  public static abstract class a
+    implements j
   {
-    if (paramApplicationLike == null) {}
-    for (;;)
+    j wrapper = new j()
     {
-      return;
-      if ((paramApplicationLike == null) || (paramApplicationLike.getApplication() == null)) {
-        throw new TinkerRuntimeException("tinkerApplication is null");
-      }
-      paramApplicationLike = paramApplicationLike.getTinkerResultIntent();
-      if ((paramApplicationLike != null) && (ShareIntentUtil.aA(paramApplicationLike) == 0)) {}
-      for (paramApplicationLike = ShareIntentUtil.aG(paramApplicationLike); paramApplicationLike != null; paramApplicationLike = null)
+      public final void onAppBackground(final String paramAnonymousString)
       {
-        a.dON = (String)paramApplicationLike.get("patch.rev");
-        y.w("MicroMsg.MMApplicationLikeImpl", "application set patch rev:%s", new Object[] { a.dON });
-        return;
+        AppMethodBeat.i(146098);
+        if (j.a.this.getHandler() != null)
+        {
+          j.a.this.getHandler().post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(146096);
+              j.a.this.onAppBackground(paramAnonymousString);
+              AppMethodBeat.o(146096);
+            }
+          });
+          AppMethodBeat.o(146098);
+          return;
+        }
+        j.a.this.onAppBackground(paramAnonymousString);
+        AppMethodBeat.o(146098);
       }
+      
+      public final void onAppForeground(final String paramAnonymousString)
+      {
+        AppMethodBeat.i(146097);
+        if (j.a.this.getHandler() != null)
+        {
+          j.a.this.getHandler().post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(146095);
+              j.a.this.onAppForeground(paramAnonymousString);
+              AppMethodBeat.o(146095);
+            }
+          });
+          AppMethodBeat.o(146097);
+          return;
+        }
+        j.a.this.onAppForeground(paramAnonymousString);
+        AppMethodBeat.o(146097);
+      }
+    };
+    
+    public void alive()
+    {
+      AppForegroundDelegate.bXk.a(this.wrapper);
+    }
+    
+    public void dead()
+    {
+      AppForegroundDelegate.bXk.b(this.wrapper);
+    }
+    
+    Handler getHandler()
+    {
+      return null;
     }
   }
 }

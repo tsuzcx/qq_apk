@@ -1,7 +1,7 @@
 package com.tencent.liteav.videodecoder;
 
 import android.view.Surface;
-import com.tencent.liteav.basic.f.b;
+import com.tencent.liteav.basic.structs.TXSNALPacket;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 
@@ -9,11 +9,11 @@ public abstract interface a
 {
   public abstract int config(Surface paramSurface);
   
-  public abstract void decode(b paramb);
+  public abstract void decode(TXSNALPacket paramTXSNALPacket);
   
   public abstract boolean isHevc();
   
-  public abstract void setListener(d paramd);
+  public abstract void setListener(c paramc);
   
   public abstract void setNotifyListener(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference);
   
@@ -23,7 +23,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.a
  * JD-Core Version:    0.7.0.1
  */

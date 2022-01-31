@@ -1,86 +1,66 @@
 package com.tencent.mm.plugin.record.b;
 
-import android.database.Cursor;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gi;
+import com.tencent.mm.g.a.gi.b;
+import com.tencent.mm.plugin.fav.a.ae;
+import com.tencent.mm.plugin.fav.a.x;
+import com.tencent.mm.plugin.record.ui.a.b;
+import com.tencent.mm.sdk.b.a;
 
 public final class g
-  extends i<com.tencent.mm.plugin.record.a.g>
-  implements com.tencent.mm.plugin.record.a.e
 {
-  private com.tencent.mm.sdk.e.e dXw;
-  
-  public g(com.tencent.mm.sdk.e.e parame)
+  public static String a(b paramb)
   {
-    super(parame, com.tencent.mm.plugin.record.a.g.buS, "RecordMessageInfo", null);
-    this.dXw = parame;
+    AppMethodBeat.i(24163);
+    gi localgi = new gi();
+    localgi.cuX.type = 2;
+    localgi.cuX.cuZ = paramb.cuL;
+    a.ymk.l(localgi);
+    paramb = localgi.cuY.path;
+    AppMethodBeat.o(24163);
+    return paramb;
   }
   
-  public final List<com.tencent.mm.plugin.record.a.g> bvu()
+  public static String b(b paramb)
   {
-    LinkedList localLinkedList = new LinkedList();
-    Cursor localCursor = aAn();
-    if (localCursor != null)
+    AppMethodBeat.i(24164);
+    gi localgi = new gi();
+    localgi.cuX.type = 2;
+    localgi.cuX.cuZ = paramb.cuL;
+    a.ymk.l(localgi);
+    paramb = localgi.cuY.thumbPath;
+    AppMethodBeat.o(24164);
+    return paramb;
+  }
+  
+  public static boolean c(b paramb)
+  {
+    AppMethodBeat.i(24165);
+    gi localgi = new gi();
+    localgi.cuX.type = 14;
+    localgi.cuX.cuZ = paramb.cuL;
+    a.ymk.l(localgi);
+    if (localgi.cuY.ret == 1)
     {
-      localCursor.moveToFirst();
-      for (;;)
-      {
-        if (!localCursor.isAfterLast())
-        {
-          com.tencent.mm.plugin.record.a.g localg = new com.tencent.mm.plugin.record.a.g();
-          try
-          {
-            localg.d(localCursor);
-            localLinkedList.add(localg);
-            localCursor.moveToNext();
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              y.e("MicroMsg.RecordMsgStorage", "convert recordInfo Exception: " + localException.getMessage());
-            }
-          }
-        }
-      }
-      localCursor.close();
+      AppMethodBeat.o(24165);
+      return true;
     }
-    y.d("MicroMsg.RecordMsgStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
-    return localLinkedList;
+    AppMethodBeat.o(24165);
+    return false;
   }
   
-  public final com.tencent.mm.plugin.record.a.g wA(int paramInt)
+  public static com.tencent.mm.plugin.fav.a.g kY(long paramLong)
   {
-    Object localObject2 = null;
-    Object localObject1 = "SELECT * FROM RecordMessageInfo WHERE localId=" + paramInt;
-    y.d("MicroMsg.RecordMsgStorage", "get by local id, sql[%s], local[%d]", new Object[] { localObject1, Integer.valueOf(paramInt) });
-    Cursor localCursor = this.dXw.a((String)localObject1, null, 2);
-    localObject1 = localObject2;
-    if (localCursor != null)
-    {
-      localObject1 = localObject2;
-      if (localCursor.moveToFirst())
-      {
-        localObject1 = new com.tencent.mm.plugin.record.a.g();
-        ((com.tencent.mm.plugin.record.a.g)localObject1).d(localCursor);
-      }
-    }
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    return localObject1;
-  }
-  
-  public final void wz(int paramInt)
-  {
-    y.d("MicroMsg.RecordMsgStorage", "delete record msg item, local id %d, result %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.dXw.delete("RecordMessageInfo", "localId=?", new String[] { String.valueOf(paramInt) })) });
+    AppMethodBeat.i(24166);
+    com.tencent.mm.plugin.fav.a.g localg = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kb(paramLong);
+    AppMethodBeat.o(24166);
+    return localg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.g
  * JD-Core Version:    0.7.0.1
  */

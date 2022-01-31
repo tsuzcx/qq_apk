@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ap$1
   implements View.OnClickListener
@@ -11,27 +12,23 @@ final class ap$1
   
   public final void onClick(View paramView)
   {
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof ap.c)))
+    AppMethodBeat.i(39049);
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof ap.c))) {}
+    for (paramView = null; paramView == null; paramView = (ap.c)paramView.getTag())
     {
-      paramView = null;
-      if (paramView != null) {
-        break label42;
-      }
-      y.w("MicroMsg.Sns.AnimatedExpandableListAdapter", "dividerIv tag is null.");
-    }
-    label42:
-    while (ap.a(this.paa) == null)
-    {
+      ab.w("MicroMsg.Sns.AnimatedExpandableListAdapter", "dividerIv tag is null.");
+      AppMethodBeat.o(39049);
       return;
-      paramView = (ap.c)paramView.getTag();
-      break;
     }
-    ap.a(this.paa).a(paramView);
+    if (ap.a(this.rSz) != null) {
+      ap.a(this.rSz).a(paramView);
+    }
+    AppMethodBeat.o(39049);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ap.1
  * JD-Core Version:    0.7.0.1
  */

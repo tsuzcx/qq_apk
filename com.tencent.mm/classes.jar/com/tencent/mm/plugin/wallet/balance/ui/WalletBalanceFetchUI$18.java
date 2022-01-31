@@ -1,25 +1,46 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.wallet_core.model.b;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.d;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WalletBalanceFetchUI$18
-  implements MenuItem.OnMenuItemClickListener
+  implements TextWatcher
 {
-  WalletBalanceFetchUI$18(WalletBalanceFetchUI paramWalletBalanceFetchUI, b paramb) {}
+  WalletBalanceFetchUI$18(WalletBalanceFetchUI paramWalletBalanceFetchUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void afterTextChanged(Editable paramEditable)
   {
-    paramMenuItem = new d(this.qgO.mController.uMN, 1, false);
-    paramMenuItem.phH = new WalletBalanceFetchUI.18.1(this);
-    paramMenuItem.phI = new WalletBalanceFetchUI.18.2(this);
-    paramMenuItem.cfU();
-    return true;
+    AppMethodBeat.i(45378);
+    if (paramEditable.toString().startsWith(".")) {
+      paramEditable.insert(0, "0");
+    }
+    String str = paramEditable.toString();
+    int i = str.indexOf(".");
+    str.length();
+    int j = str.lastIndexOf(".");
+    int k = str.length();
+    if ((i >= 0) && (k - i > 3)) {
+      paramEditable.delete(i + 3, k);
+    }
+    for (;;)
+    {
+      WalletBalanceFetchUI.a(this.tOj, bo.getDouble(paramEditable.toString(), 0.0D));
+      WalletBalanceFetchUI.i(this.tOj);
+      WalletBalanceFetchUI.cRc();
+      WalletBalanceFetchUI.j(this.tOj);
+      AppMethodBeat.o(45378);
+      return;
+      if (j != i) {
+        paramEditable.delete(j, k);
+      }
+    }
   }
+  
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

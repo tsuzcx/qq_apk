@@ -2,6 +2,7 @@ package com.tencent.liteav.videoencoder;
 
 import android.opengl.GLES20;
 import com.tencent.liteav.beauty.b.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class b$2
   implements Runnable
@@ -10,6 +11,7 @@ class b$2
   
   public void run()
   {
+    AppMethodBeat.i(67438);
     if ((b.b(this.f) == null) || (b.b(this.f).n() != this.a) || (b.b(this.f).o() != this.b))
     {
       if (b.b(this.f) != null)
@@ -23,6 +25,7 @@ class b$2
         b.a(this.f).b();
         b.a(this.f, null);
         b.a(this.f, null);
+        AppMethodBeat.o(67438);
         return;
       }
       b.b(this.f).a(true);
@@ -32,7 +35,8 @@ class b$2
     GLES20.glViewport(0, 0, this.a, this.b);
     int i = b.b(this.f).q();
     GLES20.glFlush();
-    this.f.a(i, b.c(this.f).width, b.c(this.f).height, this.e);
+    this.f.a(i, this.a, this.b, this.e);
+    AppMethodBeat.o(67438);
   }
 }
 

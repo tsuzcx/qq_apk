@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.walletlock.fingerprint.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FingerprintWalletLockUI$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class FingerprintWalletLockUI$1
   
   public final void onClick(View paramView)
   {
-    FingerprintWalletLockUI.g(this.qPy);
+    AppMethodBeat.i(51498);
+    FingerprintWalletLockUI.g(this.uEG);
+    AppMethodBeat.o(51498);
   }
 }
 

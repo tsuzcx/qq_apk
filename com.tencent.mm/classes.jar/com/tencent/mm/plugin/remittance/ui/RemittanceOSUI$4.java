@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.remittance.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.model.aa;
 
 final class RemittanceOSUI$4
@@ -11,7 +12,9 @@ final class RemittanceOSUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.nEf.LR(this.nEg.nyt);
+    AppMethodBeat.i(45095);
+    this.qrd.Yn(this.qre.qjt);
+    AppMethodBeat.o(45095);
   }
 }
 

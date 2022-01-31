@@ -1,76 +1,70 @@
 package com.tencent.mm.ui.chatting.k.a;
 
-import android.os.Bundle;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.text.Spannable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.e.b.a;
-import com.tencent.mm.ui.chatting.e.d;
-import com.tencent.mm.ui.chatting.e.d.a;
-import com.tencent.mm.ui.chatting.e.d.d;
-import com.tencent.mm.ui.chatting.view.MMChattingListView;
-import org.xwalk.core.Log;
+import com.tencent.mm.ui.widget.MMTextView.a;
 
-public abstract class a
-  implements b.a
+public class a
 {
-  com.tencent.mm.ui.chatting.c.a byx;
-  public d vzL;
-  int vzM;
-  int vzN;
-  long vzO;
-  long vzP;
-  int vzQ = 3;
-  long vzx;
-  long vzy;
+  private static volatile a zPP;
+  private static final al zPQ;
   
-  public a(com.tencent.mm.ui.chatting.c.a parama, d paramd)
+  static
   {
-    this.byx = parama;
-    this.vzL = paramd;
+    AppMethodBeat.i(32683);
+    zPP = null;
+    zPQ = new al();
+    AppMethodBeat.o(32683);
   }
   
-  protected final void HH(int paramInt)
+  public static void a(CharSequence paramCharSequence, bi parambi)
   {
-    this.vzQ = 3;
-    this.byx.GT(paramInt);
-    this.byx.getListView().postDelayed(new a.2(this, paramInt), 200L);
+    AppMethodBeat.i(32681);
+    a(paramCharSequence, parambi, 1);
+    AppMethodBeat.o(32681);
   }
   
-  protected abstract com.tencent.mm.ui.chatting.k.e a(d.a parama, Bundle paramBundle, d.d paramd);
-  
-  public void a(d.a parama, boolean paramBoolean, Bundle paramBundle)
+  private static void a(CharSequence paramCharSequence, bi parambi, int paramInt)
   {
-    Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[onLoad] action:" + parama + " isBlock:" + paramBoolean + " username:" + this.byx.getTalkerUserName());
-    if (bk.bl(this.byx.getTalkerUserName()))
-    {
-      Log.w("MicroMsg.ChattingLoader.AbstractDataPresenter", "[onLoad] username is null!");
-      return;
+    AppMethodBeat.i(32680);
+    if ((paramCharSequence instanceof Spannable)) {
+      zPQ.ac(new a.b(paramCharSequence, parambi, paramInt));
     }
-    com.tencent.mm.plugin.report.service.g.wI(13);
-    ((com.tencent.mm.ui.chatting.b.b.g)this.byx.ac(com.tencent.mm.ui.chatting.b.b.g.class)).cDp();
-    this.vzL.a(parama, paramBoolean, new a.1(this, paramBundle, parama));
+    AppMethodBeat.o(32680);
   }
   
-  public void a(MMChattingListView paramMMChattingListView, d.d<bi> paramd)
+  public static a dLf()
   {
-    com.tencent.mm.plugin.report.service.g.wJ(13);
-    paramMMChattingListView.getBaseAdapter().notifyDataSetChanged();
-    ((com.tencent.mm.ui.chatting.b.b.g)this.byx.ac(com.tencent.mm.ui.chatting.b.b.g.class)).cDq();
-    if (paramd.vyj == d.a.vyd) {
-      this.byx.vtz.btn();
+    AppMethodBeat.i(32679);
+    if (zPP == null) {
+      try
+      {
+        if (zPP == null) {
+          zPP = new a();
+        }
+        a locala1 = zPP;
+        return locala1;
+      }
+      finally
+      {
+        AppMethodBeat.o(32679);
+      }
     }
+    a locala2 = zPP;
+    AppMethodBeat.o(32679);
+    return locala2;
   }
   
-  public String toString()
+  public static MMTextView.a dLg()
   {
-    return getClass().getName();
+    return a.a.zPR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.k.a.a
  * JD-Core Version:    0.7.0.1
  */

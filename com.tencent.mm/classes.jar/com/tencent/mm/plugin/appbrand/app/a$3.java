@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.mm.plugin.appbrand.appusage.a.c;
+import com.tencent.mm.plugin.appbrand.appusage.a.b;
 
 final class a$3
-  implements a.a<c>
+  implements a.a<b>
 {}
 
 

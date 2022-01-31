@@ -1,11 +1,6 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class k$2
   implements Runnable
@@ -14,29 +9,9 @@ final class k$2
   
   public final void run()
   {
-    a locala = k.c(this.vTA);
-    y.i("MicroMsg.BannerHelper", "destroyBanner");
-    a.es(locala.vOV);
-    a.es(locala.vOW);
-    a.es(locala.vOX);
-    a.es(locala.vOY);
-    Iterator localIterator = locala.vOZ.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if (localb != null) {
-        localb.destroy();
-      }
-    }
-    au.b(locala.nIV);
-    com.tencent.mm.sdk.b.a.udP.d(locala.vPa);
-    com.tencent.mm.sdk.b.a.udP.d(locala.vPb);
-    if (au.DK())
-    {
-      au.Hx();
-      c.b(locala);
-    }
-    locala.context = null;
+    AppMethodBeat.i(34574);
+    k.a(this.AlJ, 0);
+    AppMethodBeat.o(34574);
   }
 }
 

@@ -1,61 +1,67 @@
 package com.tencent.mm.plugin.remittance.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.mr;
-import com.tencent.mm.protocal.c.ms;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n;
+import com.tencent.mm.protocal.protobuf.pr;
+import com.tencent.mm.protocal.protobuf.ps;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.p;
 import java.net.URLDecoder;
 
 public final class m
-  extends n
+  extends p
 {
-  private final String TAG = "MicroMsg.NetSceneF2fDynamicCode";
-  public ms nyp;
+  private final String TAG;
+  public ps qjp;
   
   public m(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
+    AppMethodBeat.i(44750);
+    this.TAG = "MicroMsg.NetSceneF2fDynamicCode";
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new mr();
-    ((b.a)localObject).ecI = new ms();
-    ((b.a)localObject).ecG = 2736;
+    ((b.a)localObject).fsX = new pr();
+    ((b.a)localObject).fsY = new ps();
+    ((b.a)localObject).funcId = 2736;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/f2fdynamiccode";
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (mr)this.dmK.ecE.ecN;
-    ((mr)localObject).amount = paramInt;
-    ((mr)localObject).ipb = paramString1;
-    ((mr)localObject).nzl = paramString2;
-    ((mr)localObject).sKn = URLDecoder.decode(paramString3);
-    ((mr)localObject).nyV = paramString4;
-    ((mr)localObject).nyW = paramString5;
-    ((mr)localObject).nzo = paramString6;
-    ((mr)localObject).nickname = paramString7;
-    ((mr)localObject).nyK = paramString8;
-    y.i("MicroMsg.NetSceneF2fDynamicCode", "amount: %s, username: %s, transfer_code_id: %s", new Object[] { Integer.valueOf(paramInt), paramString1, URLDecoder.decode(paramString3) });
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (pr)this.rr.fsV.fta;
+    ((pr)localObject).okH = paramInt;
+    ((pr)localObject).kqi = paramString1;
+    ((pr)localObject).qkn = paramString2;
+    ((pr)localObject).wHX = URLDecoder.decode(paramString3);
+    ((pr)localObject).qjV = paramString4;
+    ((pr)localObject).qjW = paramString5;
+    ((pr)localObject).qkq = paramString6;
+    ((pr)localObject).nickname = paramString7;
+    ((pr)localObject).qjK = paramString8;
+    ab.i("MicroMsg.NetSceneF2fDynamicCode", "amount: %s, username: %s, transfer_code_id: %s", new Object[] { Integer.valueOf(paramInt), paramString1, URLDecoder.decode(paramString3) });
+    AppMethodBeat.o(44750);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    y.i("MicroMsg.NetSceneF2fDynamicCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.nyp = ((ms)((b)paramq).ecF.ecN);
-    y.i("MicroMsg.NetSceneF2fDynamicCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.nyp.iHq), this.nyp.iHr });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    AppMethodBeat.i(44751);
+    ab.i("MicroMsg.NetSceneF2fDynamicCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.qjp = ((ps)((b)paramq).fsW.fta);
+    ab.i("MicroMsg.NetSceneF2fDynamicCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.qjp.cnK), this.qjp.kNv });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
+    AppMethodBeat.o(44751);
   }
   
-  protected final void f(q paramq)
+  public final void e(q paramq)
   {
-    paramq = (ms)((b)paramq).ecF.ecN;
-    this.wAx = paramq.iHq;
-    this.wAy = paramq.iHr;
+    paramq = (ps)((b)paramq).fsW.fta;
+    this.AXb = paramq.cnK;
+    this.AXc = paramq.kNv;
   }
   
   public final int getType()

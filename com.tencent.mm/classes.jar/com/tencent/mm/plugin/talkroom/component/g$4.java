@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.talkroom.component;
 
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bj;
 
 final class g$4
-  extends bf<Integer>
+  extends bj<Integer>
 {
   g$4(g paramg, Integer paramInteger)
   {

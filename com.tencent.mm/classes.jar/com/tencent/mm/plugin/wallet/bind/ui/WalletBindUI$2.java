@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.wallet.bind.ui;
 
-import com.tencent.mm.plugin.wallet_core.model.ae;
-import com.tencent.mm.plugin.wallet_core.ui.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.model.ak;
+import com.tencent.mm.plugin.wallet_core.ui.s;
 
 final class WalletBindUI$2
   implements Runnable
@@ -10,27 +11,31 @@ final class WalletBindUI$2
   
   public final void run()
   {
-    if (WalletBindUI.a(this.qkw)) {}
+    AppMethodBeat.i(45796);
+    if (WalletBindUI.a(this.tTw))
+    {
+      AppMethodBeat.o(45796);
+      return;
+    }
+    if (WalletBindUI.b(this.tTw) == 4)
+    {
+      ak localak = new ak();
+      WalletBindUI.d(this.tTw).a(new WalletBindUI.2.1(this), localak.cUj());
+    }
     for (;;)
     {
+      if (!WalletBindUI.a(this.tTw)) {
+        WalletBindUI.e(this.tTw);
+      }
+      AppMethodBeat.o(45796);
       return;
-      if (WalletBindUI.b(this.qkw) == 4)
-      {
-        ae localae = new ae();
-        WalletBindUI.d(this.qkw).a(new WalletBindUI.2.1(this), localae.bVJ());
-      }
-      while (!WalletBindUI.a(this.qkw))
-      {
-        WalletBindUI.e(this.qkw);
-        return;
-        WalletBindUI.c(this.qkw);
-      }
+      WalletBindUI.c(this.tTw);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.ui.WalletBindUI.2
  * JD-Core Version:    0.7.0.1
  */

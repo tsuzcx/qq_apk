@@ -11,7 +11,7 @@ public final class a
     super(paramAuthen, paramOrders, paramBoolean);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
     return 1527;
   }

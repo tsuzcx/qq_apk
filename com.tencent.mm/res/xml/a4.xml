@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/ov" />
+    <com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference android:key="contact_info_header_normal" android:layout="@layout/ra" />
+    <PreferenceSmallCategory android:key="contact_info_category_1" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/axd" android:key="contact_info_district" android:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b21" android:key="contact_info_signature" android:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b3f" android:key="contact_info_source" android:layout="@layout/afi" />
+    <com.tencent.mm.pluginsdk.ui.preference.SnsPreference android:title="@string/b22" android:key="contact_info_sns" android:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/ayl" android:key="contact_info_invite_source" android:layout="@layout/afi" />
+    <com.tencent.mm.plugin.profile.ui.ContactMoreInfoPreference android:title="@string/azq" android:key="contact_info_more" android:layout="@layout/afi" />
+    <com.tencent.mm.plugin.profile.ui.ContactSocialInfoPreference android:title="@string/b29" android:key="contact_info_social" android:layout="@layout/afi" />
+    <com.tencent.mm.plugin.profile.ui.FriendPreference android:title="@string/cci" android:key="contact_info_facebook" android:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b3v" android:key="contact_info_verifyuser" android:layout="@layout/afi" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/ato" android:key="contact_info_linkedin_account" android:widgetLayout="@layout/ad5" android:layout="@layout/ab8" />
+    <com.tencent.mm.plugin.profile.ui.NormalUserFooterPreference android:key="contact_info_footer_normal" android:layout="@layout/r4" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/e2p" android:key="contact_info_linkedin_install" android:widgetLayout="@layout/ad5" android:layout="@layout/a5v" />
-    <Preference android:title="@string/e2v" android:key="contact_info_linkedin_uninstall" android:layout="@layout/a84" />
-    <PreferenceCategory />
+    <com.tencent.mm.ui.base.preference.TextPreference android:key="contact_info_hint" />
 </PreferenceScreen>

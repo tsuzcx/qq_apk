@@ -1,14 +1,21 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.p.a;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class d$e$7
-  implements DialogInterface.OnClickListener
+  implements p.a
 {
-  d$e$7(d.e parame) {}
+  d$e$7(d.e parame, d.c paramc) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public final void i(String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(153928);
+    al.d(new d.e.7.1(this, paramBitmap));
+    AppMethodBeat.o(153928);
+  }
 }
 
 

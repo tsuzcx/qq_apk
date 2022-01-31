@@ -1,9 +1,9 @@
 package com.tencent.mm.ui.mogic;
 
-import android.support.v4.os.e;
+import android.support.v4.os.d;
 
 final class WxViewPager$SavedState$1
-  implements e<WxViewPager.SavedState>
+  implements d<WxViewPager.SavedState>
 {}
 
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SightSettingsUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class SightSettingsUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.mqM.finish();
+    AppMethodBeat.i(55280);
+    this.oQB.finish();
+    AppMethodBeat.o(55280);
     return false;
   }
 }

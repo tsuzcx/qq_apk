@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout style="@style/p1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/bmn" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ko" android:layout_marginRight="@dimen/ko" android:text="@string/br7" style="@style/n0" />
-</FrameLayout>
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

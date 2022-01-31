@@ -1,5 +1,9 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
 final class TextEditorItemView$d
   implements Runnable
 {
@@ -7,7 +11,9 @@ final class TextEditorItemView$d
   
   public final void run()
   {
-    TextEditorItemView.e(this.jqJ);
+    AppMethodBeat.i(3112);
+    TextEditorItemView.c(this.lAu);
+    AppMethodBeat.o(3112);
   }
 }
 

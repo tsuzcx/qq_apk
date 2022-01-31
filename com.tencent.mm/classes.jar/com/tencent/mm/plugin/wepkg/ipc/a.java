@@ -11,9 +11,9 @@ import android.os.Parcelable.Creator;
 public abstract interface a
   extends IInterface
 {
-  public abstract void m(Message paramMessage);
+  public abstract void C(Bundle paramBundle);
   
-  public abstract void t(Bundle paramBundle);
+  public abstract void s(Message paramMessage);
   
   public static abstract class a
     extends Binder
@@ -24,7 +24,7 @@ public abstract interface a
       attachInterface(this, "com.tencent.mm.plugin.wepkg.ipc.IWepkgMainProcessService");
     }
     
-    public static a J(IBinder paramIBinder)
+    public static a H(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -58,7 +58,7 @@ public abstract interface a
         if (paramParcel1.readInt() != 0) {
           paramParcel2 = (Message)Message.CREATOR.createFromParcel(paramParcel1);
         }
-        m(paramParcel2);
+        s(paramParcel2);
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.wepkg.ipc.IWepkgMainProcessService");
@@ -66,7 +66,7 @@ public abstract interface a
       if (paramParcel1.readInt() != 0) {
         localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      t((Bundle)localObject1);
+      C((Bundle)localObject1);
       paramParcel2.writeNoException();
       if (localObject1 != null)
       {
@@ -83,7 +83,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.ipc.a
  * JD-Core Version:    0.7.0.1
  */

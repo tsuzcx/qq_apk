@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
-import com.tencent.mm.aa.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.z.b.c;
 import org.json.JSONObject;
 
 public final class g
@@ -11,14 +12,17 @@ public final class g
     super("onWidgetResume", -2);
   }
   
-  public final JSONObject rB()
+  public final JSONObject toJSONObject()
   {
-    return new JSONObject();
+    AppMethodBeat.i(10916);
+    JSONObject localJSONObject = new JSONObject();
+    AppMethodBeat.o(10916);
+    return localJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.g
  * JD-Core Version:    0.7.0.1
  */

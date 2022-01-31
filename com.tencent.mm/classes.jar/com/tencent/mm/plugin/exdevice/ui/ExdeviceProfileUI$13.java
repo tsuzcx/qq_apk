@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceProfileUI$13
   implements View.OnClickListener
@@ -10,12 +11,14 @@ final class ExdeviceProfileUI$13
   
   public final void onClick(View paramView)
   {
-    ExdeviceProfileUI.B(this.jEM);
+    AppMethodBeat.i(20035);
+    ExdeviceProfileUI.B(this.lOl);
+    AppMethodBeat.o(20035);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI.13
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -12,26 +11,31 @@ import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.widget.Gallery;
 import android.widget.LinearLayout;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.al;
-import com.tencent.mm.h.a.do;
-import com.tencent.mm.h.a.do.b;
-import com.tencent.mm.h.a.mz;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.an;
+import com.tencent.mm.g.a.dr;
+import com.tencent.mm.g.a.dr.b;
+import com.tencent.mm.g.a.la;
+import com.tencent.mm.g.a.nw;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
+import com.tencent.mm.plugin.recordvideo.jumper.VideoCaptureReportInfo;
+import com.tencent.mm.plugin.sns.data.i;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ao;
 import com.tencent.mm.plugin.sns.model.b.b;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
 import com.tencent.mm.plugin.sns.storage.v;
-import com.tencent.mm.protocal.c.awd;
+import com.tencent.mm.protocal.protobuf.bcs;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMNewPhotoEditUI;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.ui.base.f;
 import com.tencent.mm.vfs.e;
 import java.util.ArrayList;
@@ -41,34 +45,37 @@ public abstract class FlipView
   extends LinearLayout
   implements View.OnTouchListener, b.b
 {
-  private int bIj;
-  private int bIk;
-  Context context;
-  private long dXA = 0L;
-  protected ah handler;
+  private Context context;
+  private int cpE;
+  private int cpF;
+  private long ePF = 0L;
+  protected ak handler;
   protected int infoType = -1;
-  private c kbV = new FlipView.5(this);
-  private double oOB = 0.0D;
-  private double oOC = 0.0D;
-  protected u oOD;
-  protected s.a oOE;
-  protected int oOF;
-  protected int oOG;
-  private boolean oOH = false;
-  private long oOI = 0L;
-  private boolean oOJ = false;
-  private com.tencent.mm.ui.widget.a.d oOK;
-  private String oOL;
-  private String oOM;
-  private String oON;
-  private String oOO;
-  private boolean oOP = false;
-  private FlipView.a oOQ = new FlipView.a(this);
-  float oOR = 0.0F;
-  float oOS = 0.0F;
-  boolean oOT = false;
-  float oOU = 1.0F;
-  private c oOV = new FlipView.6(this);
+  private c mwt = new FlipView.6(this);
+  private String rGA;
+  private String rGB;
+  private boolean rGC = false;
+  private FlipView.a rGD = new FlipView.a(this);
+  float rGE = 0.0F;
+  float rGF = 0.0F;
+  boolean rGG = false;
+  float rGH = 1.0F;
+  private c rGI = new c() {};
+  private double rGm = 0.0D;
+  private double rGn = 0.0D;
+  protected u rGo;
+  protected s.a rGp;
+  protected int rGq;
+  protected int rGr;
+  private boolean rGs = false;
+  private long rGt = 0L;
+  private boolean rGu = false;
+  private com.tencent.mm.ui.widget.b.d rGv;
+  private String rGw;
+  private String rGx;
+  private String rGy;
+  private String rGz;
+  protected az rbm = az.yNU;
   
   public FlipView(Context paramContext)
   {
@@ -82,298 +89,320 @@ public abstract class FlipView
     init(paramContext);
   }
   
+  private void ctx()
+  {
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    ((Activity)this.context).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+    this.rGq = localDisplayMetrics.widthPixels;
+    this.rGr = localDisplayMetrics.heightPixels;
+  }
+  
   /* Error */
-  public static String g(String paramString, Context paramContext)
+  public static String h(String paramString, Context paramContext)
   {
     // Byte code:
     //   0: iconst_1
     //   1: istore_2
     //   2: aload_0
-    //   3: ifnull +109 -> 112
+    //   3: ifnull +114 -> 117
     //   6: aload_0
-    //   7: ldc 172
-    //   9: invokevirtual 178	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   12: ifne +100 -> 112
-    //   15: new 180	java/lang/StringBuilder
-    //   18: dup
-    //   19: invokespecial 181	java/lang/StringBuilder:<init>	()V
-    //   22: getstatic 186	com/tencent/mm/compatible/util/e:dzD	Ljava/lang/String;
-    //   25: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: ldc 192
-    //   30: iconst_3
-    //   31: anewarray 194	java/lang/Object
-    //   34: dup
-    //   35: iconst_0
-    //   36: ldc 196
-    //   38: aastore
-    //   39: dup
-    //   40: iconst_1
-    //   41: aload_0
-    //   42: invokevirtual 200	java/lang/String:hashCode	()I
-    //   45: invokestatic 206	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   48: aastore
-    //   49: dup
-    //   50: iconst_2
-    //   51: ldc 208
-    //   53: aastore
-    //   54: invokestatic 212	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   57: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   63: astore 7
-    //   65: new 218	java/io/File
-    //   68: dup
-    //   69: invokestatic 224	com/tencent/mm/sdk/platformtools/ae:getContext	()Landroid/content/Context;
-    //   72: invokevirtual 230	android/content/Context:getCacheDir	()Ljava/io/File;
-    //   75: new 180	java/lang/StringBuilder
-    //   78: dup
-    //   79: ldc 232
-    //   81: invokespecial 234	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   84: invokestatic 240	java/lang/System:currentTimeMillis	()J
-    //   87: invokevirtual 243	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   90: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   93: invokespecial 246	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   96: invokevirtual 249	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   99: astore 6
-    //   101: aload_0
-    //   102: aload 6
-    //   104: invokestatic 255	com/tencent/mm/vfs/e:r	(Ljava/lang/String;Ljava/lang/String;)J
-    //   107: lconst_0
-    //   108: lcmp
-    //   109: ifge +5 -> 114
-    //   112: aconst_null
-    //   113: areturn
-    //   114: aload 6
-    //   116: invokestatic 261	com/tencent/mm/sdk/platformtools/MMNativeJpeg:isProgressive	(Ljava/lang/String;)Z
-    //   119: ifeq +227 -> 346
-    //   122: aload 6
-    //   124: invokestatic 265	com/tencent/mm/sdk/platformtools/MMNativeJpeg:decodeAsBitmap	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   127: astore 5
-    //   129: aload 5
-    //   131: ifnull +208 -> 339
-    //   134: aload 7
-    //   136: iconst_0
-    //   137: invokestatic 268	com/tencent/mm/vfs/e:I	(Ljava/lang/String;Z)Ljava/io/OutputStream;
-    //   140: astore_3
-    //   141: aload_3
-    //   142: astore 4
-    //   144: aload 5
-    //   146: getstatic 274	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   149: bipush 80
-    //   151: aload_3
-    //   152: invokevirtual 280	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   155: pop
+    //   7: ldc_w 308
+    //   10: invokevirtual 314	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   13: ifne +104 -> 117
+    //   16: new 316	java/lang/StringBuilder
+    //   19: dup
+    //   20: invokespecial 317	java/lang/StringBuilder:<init>	()V
+    //   23: getstatic 322	com/tencent/mm/compatible/util/e:esr	Ljava/lang/String;
+    //   26: invokevirtual 326	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: ldc_w 328
+    //   32: iconst_3
+    //   33: anewarray 330	java/lang/Object
+    //   36: dup
+    //   37: iconst_0
+    //   38: ldc_w 332
+    //   41: aastore
+    //   42: dup
+    //   43: iconst_1
+    //   44: aload_0
+    //   45: invokevirtual 336	java/lang/String:hashCode	()I
+    //   48: invokestatic 342	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   51: aastore
+    //   52: dup
+    //   53: iconst_2
+    //   54: ldc_w 344
+    //   57: aastore
+    //   58: invokestatic 348	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   61: invokevirtual 326	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: invokevirtual 352	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: astore 7
+    //   69: new 354	java/io/File
+    //   72: dup
+    //   73: invokestatic 360	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
+    //   76: invokevirtual 364	android/content/Context:getCacheDir	()Ljava/io/File;
+    //   79: new 316	java/lang/StringBuilder
+    //   82: dup
+    //   83: ldc_w 366
+    //   86: invokespecial 368	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   89: invokestatic 374	java/lang/System:currentTimeMillis	()J
+    //   92: invokevirtual 377	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   95: invokevirtual 352	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokespecial 380	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   101: invokevirtual 383	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   104: astore 6
+    //   106: aload_0
+    //   107: aload 6
+    //   109: invokestatic 389	com/tencent/mm/vfs/e:C	(Ljava/lang/String;Ljava/lang/String;)J
+    //   112: lconst_0
+    //   113: lcmp
+    //   114: ifge +5 -> 119
+    //   117: aconst_null
+    //   118: areturn
+    //   119: aload 6
+    //   121: invokestatic 394	com/tencent/mm/sdk/platformtools/MMNativeJpeg:isProgressive	(Ljava/lang/String;)Z
+    //   124: ifeq +229 -> 353
+    //   127: aload 6
+    //   129: invokestatic 398	com/tencent/mm/sdk/platformtools/MMNativeJpeg:decodeAsBitmap	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   132: astore 5
+    //   134: aload 5
+    //   136: ifnull +210 -> 346
+    //   139: aload 7
+    //   141: iconst_0
+    //   142: invokestatic 402	com/tencent/mm/vfs/e:M	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   145: astore_3
+    //   146: aload_3
+    //   147: astore 4
+    //   149: aload 5
+    //   151: getstatic 408	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   154: bipush 80
     //   156: aload_3
-    //   157: ifnull +7 -> 164
-    //   160: aload_3
-    //   161: invokevirtual 285	java/io/OutputStream:close	()V
-    //   164: aload 6
-    //   166: invokestatic 288	com/tencent/mm/vfs/e:deleteFile	(Ljava/lang/String;)Z
-    //   169: pop
-    //   170: iload_2
-    //   171: ifne +14 -> 185
-    //   174: aload_0
-    //   175: aload 7
-    //   177: invokestatic 255	com/tencent/mm/vfs/e:r	(Ljava/lang/String;Ljava/lang/String;)J
-    //   180: lconst_0
-    //   181: lcmp
-    //   182: iflt -70 -> 112
-    //   185: aload_1
-    //   186: new 290	android/content/Intent
-    //   189: dup
-    //   190: ldc_w 292
-    //   193: aload 7
-    //   195: invokestatic 296	com/tencent/mm/vfs/e:aeP	(Ljava/lang/String;)Landroid/net/Uri;
-    //   198: invokespecial 299	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
-    //   201: invokevirtual 303	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
-    //   204: aload 7
-    //   206: areturn
-    //   207: astore 5
-    //   209: aconst_null
-    //   210: astore_3
-    //   211: aload_3
-    //   212: astore 4
-    //   214: ldc_w 305
-    //   217: aload 5
-    //   219: ldc 172
-    //   221: iconst_0
-    //   222: anewarray 194	java/lang/Object
-    //   225: invokestatic 311	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   228: aload_3
-    //   229: ifnull +7 -> 236
-    //   232: aload_3
-    //   233: invokevirtual 285	java/io/OutputStream:close	()V
-    //   236: aload 6
-    //   238: invokestatic 288	com/tencent/mm/vfs/e:deleteFile	(Ljava/lang/String;)Z
-    //   241: pop
-    //   242: iconst_0
-    //   243: istore_2
-    //   244: goto -74 -> 170
-    //   247: astore 5
-    //   249: aconst_null
-    //   250: astore_3
-    //   251: aload_3
-    //   252: astore 4
-    //   254: ldc_w 305
-    //   257: aload 5
-    //   259: ldc 172
-    //   261: iconst_0
-    //   262: anewarray 194	java/lang/Object
-    //   265: invokestatic 311	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   268: aload_3
-    //   269: ifnull +7 -> 276
-    //   272: aload_3
-    //   273: invokevirtual 285	java/io/OutputStream:close	()V
-    //   276: aload 6
-    //   278: invokestatic 288	com/tencent/mm/vfs/e:deleteFile	(Ljava/lang/String;)Z
-    //   281: pop
-    //   282: iconst_0
-    //   283: istore_2
-    //   284: goto -114 -> 170
-    //   287: astore_0
-    //   288: aconst_null
-    //   289: astore 4
-    //   291: aload 4
-    //   293: ifnull +8 -> 301
-    //   296: aload 4
-    //   298: invokevirtual 285	java/io/OutputStream:close	()V
-    //   301: aload 6
-    //   303: invokestatic 288	com/tencent/mm/vfs/e:deleteFile	(Ljava/lang/String;)Z
-    //   306: pop
-    //   307: aload_0
-    //   308: athrow
-    //   309: astore_3
-    //   310: goto -146 -> 164
-    //   313: astore_3
-    //   314: goto -78 -> 236
-    //   317: astore_3
-    //   318: goto -42 -> 276
-    //   321: astore_1
-    //   322: goto -21 -> 301
-    //   325: astore_0
-    //   326: goto -35 -> 291
-    //   329: astore 5
-    //   331: goto -80 -> 251
-    //   334: astore 5
-    //   336: goto -125 -> 211
-    //   339: aconst_null
-    //   340: astore_3
-    //   341: iconst_0
-    //   342: istore_2
-    //   343: goto -187 -> 156
-    //   346: iconst_0
-    //   347: istore_2
-    //   348: goto -178 -> 170
+    //   157: invokevirtual 414	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   160: pop
+    //   161: aload_3
+    //   162: ifnull +7 -> 169
+    //   165: aload_3
+    //   166: invokevirtual 419	java/io/OutputStream:close	()V
+    //   169: aload 6
+    //   171: invokestatic 422	com/tencent/mm/vfs/e:deleteFile	(Ljava/lang/String;)Z
+    //   174: pop
+    //   175: iload_2
+    //   176: ifne +14 -> 190
+    //   179: aload_0
+    //   180: aload 7
+    //   182: invokestatic 389	com/tencent/mm/vfs/e:C	(Ljava/lang/String;Ljava/lang/String;)J
+    //   185: lconst_0
+    //   186: lcmp
+    //   187: iflt -70 -> 117
+    //   190: aload_1
+    //   191: new 424	android/content/Intent
+    //   194: dup
+    //   195: ldc_w 426
+    //   198: aload 7
+    //   200: invokestatic 430	com/tencent/mm/vfs/e:avH	(Ljava/lang/String;)Landroid/net/Uri;
+    //   203: invokespecial 433	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+    //   206: invokevirtual 437	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
+    //   209: aload 7
+    //   211: areturn
+    //   212: astore 5
+    //   214: aconst_null
+    //   215: astore_3
+    //   216: aload_3
+    //   217: astore 4
+    //   219: ldc_w 439
+    //   222: aload 5
+    //   224: ldc_w 308
+    //   227: iconst_0
+    //   228: anewarray 330	java/lang/Object
+    //   231: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   234: aload_3
+    //   235: ifnull +7 -> 242
+    //   238: aload_3
+    //   239: invokevirtual 419	java/io/OutputStream:close	()V
+    //   242: aload 6
+    //   244: invokestatic 422	com/tencent/mm/vfs/e:deleteFile	(Ljava/lang/String;)Z
+    //   247: pop
+    //   248: iconst_0
+    //   249: istore_2
+    //   250: goto -75 -> 175
+    //   253: astore 5
+    //   255: aconst_null
+    //   256: astore_3
+    //   257: aload_3
+    //   258: astore 4
+    //   260: ldc_w 439
+    //   263: aload 5
+    //   265: ldc_w 308
+    //   268: iconst_0
+    //   269: anewarray 330	java/lang/Object
+    //   272: invokestatic 445	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   275: aload_3
+    //   276: ifnull +7 -> 283
+    //   279: aload_3
+    //   280: invokevirtual 419	java/io/OutputStream:close	()V
+    //   283: aload 6
+    //   285: invokestatic 422	com/tencent/mm/vfs/e:deleteFile	(Ljava/lang/String;)Z
+    //   288: pop
+    //   289: iconst_0
+    //   290: istore_2
+    //   291: goto -116 -> 175
+    //   294: astore_0
+    //   295: aconst_null
+    //   296: astore 4
+    //   298: aload 4
+    //   300: ifnull +8 -> 308
+    //   303: aload 4
+    //   305: invokevirtual 419	java/io/OutputStream:close	()V
+    //   308: aload 6
+    //   310: invokestatic 422	com/tencent/mm/vfs/e:deleteFile	(Ljava/lang/String;)Z
+    //   313: pop
+    //   314: aload_0
+    //   315: athrow
+    //   316: astore_3
+    //   317: goto -148 -> 169
+    //   320: astore_3
+    //   321: goto -79 -> 242
+    //   324: astore_3
+    //   325: goto -42 -> 283
+    //   328: astore_1
+    //   329: goto -21 -> 308
+    //   332: astore_0
+    //   333: goto -35 -> 298
+    //   336: astore 5
+    //   338: goto -81 -> 257
+    //   341: astore 5
+    //   343: goto -127 -> 216
+    //   346: aconst_null
+    //   347: astore_3
+    //   348: iconst_0
+    //   349: istore_2
+    //   350: goto -189 -> 161
+    //   353: iconst_0
+    //   354: istore_2
+    //   355: goto -180 -> 175
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	351	0	paramString	String
-    //   0	351	1	paramContext	Context
-    //   1	347	2	i	int
-    //   140	133	3	localOutputStream1	java.io.OutputStream
-    //   309	1	3	localException1	java.lang.Exception
-    //   313	1	3	localException2	java.lang.Exception
-    //   317	1	3	localException3	java.lang.Exception
-    //   340	1	3	localObject	Object
-    //   142	155	4	localOutputStream2	java.io.OutputStream
-    //   127	18	5	localBitmap	android.graphics.Bitmap
-    //   207	11	5	localFileNotFoundException1	java.io.FileNotFoundException
-    //   247	11	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   329	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   334	1	5	localFileNotFoundException2	java.io.FileNotFoundException
-    //   99	203	6	str1	String
-    //   63	142	7	str2	String
+    //   0	358	0	paramString	String
+    //   0	358	1	paramContext	Context
+    //   1	354	2	i	int
+    //   145	135	3	localOutputStream1	java.io.OutputStream
+    //   316	1	3	localException1	java.lang.Exception
+    //   320	1	3	localException2	java.lang.Exception
+    //   324	1	3	localException3	java.lang.Exception
+    //   347	1	3	localObject	Object
+    //   147	157	4	localOutputStream2	java.io.OutputStream
+    //   132	18	5	localBitmap	android.graphics.Bitmap
+    //   212	11	5	localFileNotFoundException1	java.io.FileNotFoundException
+    //   253	11	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   336	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   341	1	5	localFileNotFoundException2	java.io.FileNotFoundException
+    //   104	205	6	str1	String
+    //   67	143	7	str2	String
     // Exception table:
     //   from	to	target	type
-    //   122	129	207	java/io/FileNotFoundException
-    //   134	141	207	java/io/FileNotFoundException
-    //   122	129	247	java/lang/OutOfMemoryError
-    //   134	141	247	java/lang/OutOfMemoryError
-    //   122	129	287	finally
-    //   134	141	287	finally
-    //   160	164	309	java/lang/Exception
-    //   232	236	313	java/lang/Exception
-    //   272	276	317	java/lang/Exception
-    //   296	301	321	java/lang/Exception
-    //   144	156	325	finally
-    //   214	228	325	finally
-    //   254	268	325	finally
-    //   144	156	329	java/lang/OutOfMemoryError
-    //   144	156	334	java/io/FileNotFoundException
+    //   127	134	212	java/io/FileNotFoundException
+    //   139	146	212	java/io/FileNotFoundException
+    //   127	134	253	java/lang/OutOfMemoryError
+    //   139	146	253	java/lang/OutOfMemoryError
+    //   127	134	294	finally
+    //   139	146	294	finally
+    //   165	169	316	java/lang/Exception
+    //   238	242	320	java/lang/Exception
+    //   279	283	324	java/lang/Exception
+    //   303	308	328	java/lang/Exception
+    //   149	161	332	finally
+    //   219	234	332	finally
+    //   260	275	332	finally
+    //   149	161	336	java/lang/OutOfMemoryError
+    //   149	161	341	java/io/FileNotFoundException
   }
   
   private void init(Context paramContext)
   {
     this.context = paramContext;
-    this.handler = new ah();
-    paramContext = new DisplayMetrics();
-    ((Activity)this.context).getWindowManager().getDefaultDisplay().getMetrics(paramContext);
-    this.oOF = paramContext.widthPixels;
-    this.oOG = paramContext.heightPixels;
-    com.tencent.mm.sdk.b.a.udP.c(this.kbV);
-    com.tencent.mm.sdk.b.a.udP.c(this.oOV);
+    this.handler = new ak();
+    ctx();
+    com.tencent.mm.sdk.b.a.ymk.c(this.mwt);
+    com.tencent.mm.sdk.b.a.ymk.c(this.rGI);
   }
   
-  public final void Ni(String paramString) {}
-  
-  public final void Pa(String paramString)
+  public final void E(bcs parambcs)
   {
-    if (e.bK(paramString))
+    if (parambcs == null) {}
+    String str;
+    do
     {
-      Intent localIntent = new Intent();
-      y.i("MicroMsg.FlipView", "edit image path:%s", new Object[] { paramString });
-      localIntent.putExtra("before_photo_edit", paramString);
-      localIntent.putExtra("from_scene", 293);
-      localIntent.putExtra("after_photo_edit", "");
-      localIntent.putExtra("Retr_Compress_Type", 0);
-      localIntent.putExtra("Retr_Msg_Type", 0);
-      localIntent.putExtra("Retr_FromMainTimeline", bHt());
-      localIntent.setClass(this.context, MMNewPhotoEditUI.class);
-      this.context.startActivity(localIntent);
+      return;
+      str = ao.gl(ag.getAccSnsPath(), parambcs.Id);
+      parambcs = i.l(parambcs);
+    } while (!e.cN(str + parambcs));
+    abU(str + parambcs);
+  }
+  
+  public final void ZU(String paramString) {}
+  
+  public final void abU(String paramString)
+  {
+    if (e.cN(paramString))
+    {
+      paramString = RecordConfigProvider.fS(paramString, "");
+      if (this.rbm != null)
+      {
+        localObject = new VideoCaptureReportInfo();
+        if (this.rbm.equals(az.yNO)) {
+          ((VideoCaptureReportInfo)localObject).mhr = 2;
+        }
+        if ((this.rbm.equals(az.yNN)) || (this.rbm.equals(az.yNM))) {
+          ((VideoCaptureReportInfo)localObject).mhr = 1;
+        }
+        paramString.qbE = ((VideoCaptureReportInfo)localObject);
+      }
+      Object localObject = com.tencent.mm.plugin.recordvideo.jumper.a.qbG;
+      com.tencent.mm.plugin.recordvideo.jumper.a.a(getContext(), 0, paramString, 1, 2);
     }
   }
   
-  public final void bCt() {}
+  public void bp(String paramString, boolean paramBoolean) {}
   
-  public abstract boolean bHt();
+  public void bq(String paramString, boolean paramBoolean) {}
   
-  public void ba(String paramString, boolean paramBoolean) {}
+  public final void cnV() {}
   
-  public void bb(String paramString, boolean paramBoolean) {}
+  public abstract boolean cty();
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      y.d("MicroMsg.FlipView", "onTouchEvent down");
-      this.oOB = paramMotionEvent.getX();
-      this.oOC = paramMotionEvent.getY();
-      this.dXA = System.currentTimeMillis();
-      if (f.J(paramMotionEvent) == 1) {
-        this.oOH = false;
+      ab.d("MicroMsg.FlipView", "onTouchEvent down");
+      this.rGm = paramMotionEvent.getX();
+      this.rGn = paramMotionEvent.getY();
+      this.ePF = System.currentTimeMillis();
+      if (f.T(paramMotionEvent) == 1) {
+        this.rGs = false;
       }
     }
-    if (f.J(paramMotionEvent) > 1) {
-      this.oOH = true;
+    if (f.T(paramMotionEvent) > 1) {
+      this.rGs = true;
     }
-    if ((paramMotionEvent.getAction() == 1) && (!this.oOH))
+    if ((paramMotionEvent.getAction() == 1) && (!this.rGs))
     {
-      y.d("MicroMsg.FlipView", "onTouchEvent up " + (System.currentTimeMillis() - this.dXA));
-      long l = bk.UZ();
-      y.d("MicroMsg.FlipView", "deltTime: " + (l - this.oOI));
-      if (l - this.oOI < 300L)
+      ab.d("MicroMsg.FlipView", "onTouchEvent up " + (System.currentTimeMillis() - this.ePF));
+      long l = bo.yB();
+      ab.d("MicroMsg.FlipView", "deltTime: " + (l - this.rGt));
+      if (l - this.rGt < 300L)
       {
-        this.handler.removeCallbacks(this.oOQ);
+        this.handler.removeCallbacks(this.rGD);
         this.handler.post(new FlipView.1(this));
         return super.dispatchTouchEvent(paramMotionEvent);
       }
-      this.oOI = l;
-      if ((System.currentTimeMillis() - this.dXA < 500L) && (Math.abs(paramMotionEvent.getX() - this.oOB) <= 10.0D) && (Math.abs(paramMotionEvent.getY() - this.oOC) <= 10.0D) && (paramMotionEvent.getY() > 110.0F) && (paramMotionEvent.getY() < this.oOG - 100))
+      this.rGt = l;
+      if ((System.currentTimeMillis() - this.ePF < 500L) && (Math.abs(paramMotionEvent.getX() - this.rGm) <= 10.0D) && (Math.abs(paramMotionEvent.getY() - this.rGn) <= 10.0D) && (paramMotionEvent.getY() > 110.0F) && (paramMotionEvent.getY() < this.rGr - 100))
       {
-        FlipView.a locala = this.oOQ;
+        FlipView.a locala = this.rGD;
         float f1 = paramMotionEvent.getX();
         float f2 = paramMotionEvent.getY();
         locala.x = f1;
         locala.y = f2;
-        this.handler.postDelayed(this.oOQ, 10L);
+        this.handler.postDelayed(this.rGD, 10L);
       }
     }
     return super.dispatchTouchEvent(paramMotionEvent);
@@ -383,106 +412,94 @@ public abstract class FlipView
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    n localn = af.bDF().OB(paramString2);
+    n localn = ag.cpf().abv(paramString2);
     if (localn == null)
     {
-      y.e("MicroMsg.FlipView", "error!!show long click Alert snsInfo is null!!");
+      ab.e("MicroMsg.FlipView", "error!!show long click Alert snsInfo is null!!");
       return;
     }
     if (localn.field_type == 21)
     {
-      if (!localn.field_userName.equals(q.Gj()))
+      if (!localn.field_userName.equals(r.Zn()))
       {
-        localArrayList1.add(this.context.getString(i.j.sns_expose_sns));
+        localArrayList1.add(this.context.getString(2131303814));
         localArrayList2.add(Integer.valueOf(3));
       }
-      label96:
-      if ((this.oOK == null) || (!this.oOP)) {
-        break label688;
+      if ((this.rGv == null) || (!this.rGC)) {
+        break label586;
       }
-      this.oOP = false;
+      this.rGC = false;
     }
     for (;;)
     {
-      this.oOK.phH = new FlipView.2(this, localArrayList1, localArrayList2);
-      this.oOK.wmU = new FlipView.3(this);
-      this.oOK.phI = new FlipView.4(this, paramString2, paramString1, paramString3);
-      this.oOK.cfU();
-      if ((!this.oOJ) || (true != paramBoolean)) {
+      this.rGv.sao = new FlipView.2(this, localArrayList1, localArrayList2, paramString2, paramString3);
+      this.rGv.AGQ = new FlipView.3(this);
+      this.rGv.sap = new FlipView.4(this, paramString2, paramString1, paramString3);
+      this.rGv.crd();
+      if ((!this.rGu) || (true != paramBoolean)) {
         break;
       }
-      g.DQ();
-      if (g.DO().dJT.KG() == 0) {
+      g.RM();
+      if (g.RK().eHt.adt() == 0) {
         break;
       }
-      this.oOL = paramString1;
-      this.oOM = paramString2;
-      this.oON = paramString3;
-      paramString2 = new mz();
-      paramString2.bWF.filePath = paramString1;
-      com.tencent.mm.sdk.b.a.udP.m(paramString2);
+      this.rGw = paramString1;
+      this.rGx = paramString2;
+      this.rGy = paramString3;
+      paramString2 = new nw();
+      paramString2.cEv.filePath = paramString1;
+      com.tencent.mm.sdk.b.a.ymk.l(paramString2);
       return;
-      localArrayList1.add(this.context.getString(i.j.sns_post_to));
+      localArrayList1.add(this.context.getString(2131303934));
       localArrayList2.add(Integer.valueOf(1));
-      if (com.tencent.mm.br.d.SP("favorite"))
+      if (com.tencent.mm.bq.d.ahR("favorite"))
       {
-        localArrayList1.add(this.context.getString(i.j.plugin_favorite_opt));
+        localArrayList1.add(this.context.getString(2131302102));
         localArrayList2.add(Integer.valueOf(2));
       }
       if ((localn.field_type == 15) || (localn.field_type == 5))
       {
-        localArrayList1.add(this.context.getString(i.j.save_video_to_local));
+        localArrayList1.add(this.context.getString(2131302872));
         localArrayList2.add(Integer.valueOf(0));
-        label361:
-        do localdo = new do();
-        localdo.bJZ.bJQ = paramString2;
-        com.tencent.mm.sdk.b.a.udP.m(localdo);
-        if (localdo.bKa.bJy)
-        {
-          localArrayList1.add(this.context.getString(i.j.app_open));
-          localArrayList2.add(Integer.valueOf(5));
-        }
-        if ((!v.OT(paramString2)) && (localn.field_type == 1))
-        {
-          localArrayList1.add(this.context.getString(i.j.chatting_image_long_click_photo_edit));
-          localArrayList2.add(Integer.valueOf(6));
-        }
-        if (this.oOO == null) {
-          break label96;
-        }
-        if (!com.tencent.mm.plugin.scanner.a.wM(this.bIj)) {
-          break label601;
-        }
-        localArrayList1.add(this.context.getString(i.j.sns_scan_image));
       }
       for (;;)
       {
+        dr localdr = new dr();
+        localdr.crt.crk = paramString2;
+        com.tencent.mm.sdk.b.a.ymk.l(localdr);
+        if (localdr.cru.cqS)
+        {
+          localArrayList1.add(this.context.getString(2131297019));
+          localArrayList2.add(Integer.valueOf(5));
+        }
+        if ((!v.abN(paramString2)) && (localn.field_type == 1))
+        {
+          localArrayList1.add(this.context.getString(2131298194));
+          localArrayList2.add(Integer.valueOf(6));
+        }
+        if (this.rGz == null) {
+          break;
+        }
+        localArrayList1.add("");
         localArrayList2.add(Integer.valueOf(4));
         break;
         if (localn.field_type == 1)
         {
-          localArrayList1.add(this.context.getString(i.j.save_img_to_local));
+          localArrayList1.add(this.context.getString(2131302869));
           localArrayList2.add(Integer.valueOf(0));
-          break label361;
         }
-        localArrayList1.add(this.context.getString(i.j.sns_save_to_sns));
-        localArrayList2.add(Integer.valueOf(0));
-        break label361;
-        label601:
-        if (com.tencent.mm.plugin.scanner.a.aD(this.bIj, this.oOO)) {
-          localArrayList1.add(this.context.getString(i.j.sns_scan_wxcode_image));
-        } else if (com.tencent.mm.plugin.scanner.a.wL(this.bIj)) {
-          localArrayList1.add(this.context.getString(i.j.sns_scan_barcode_image));
-        } else {
-          localArrayList1.add(this.context.getString(i.j.sns_scan_image));
+        else
+        {
+          localArrayList1.add(this.context.getString(2131303939));
+          localArrayList2.add(Integer.valueOf(0));
         }
       }
-      label688:
-      this.oOK = new com.tencent.mm.ui.widget.a.d(this.context, 1, false);
+      label586:
+      this.rGv = new com.tencent.mm.ui.widget.b.d(this.context, 1, false);
     }
   }
   
-  public awd getCntMedia()
+  public bcs getCntMedia()
   {
     return null;
   }
@@ -495,30 +512,30 @@ public abstract class FlipView
   
   protected final void onDestroy()
   {
-    com.tencent.mm.sdk.b.a.udP.d(this.kbV);
-    com.tencent.mm.sdk.b.a.udP.d(this.oOV);
+    com.tencent.mm.sdk.b.a.ymk.d(this.mwt);
+    com.tencent.mm.sdk.b.a.ymk.d(this.rGI);
   }
   
   protected void onPause()
   {
-    this.oOL = null;
-    this.oOM = "";
-    this.oON = null;
-    if (this.oOO != null)
+    this.rGw = null;
+    this.rGx = "";
+    this.rGy = null;
+    if (this.rGz != null)
     {
-      al localal = new al();
-      localal.bGD.activity = ((Activity)this.context);
-      localal.bGD.bGE = this.oOO;
-      com.tencent.mm.sdk.b.a.udP.m(localal);
-      this.oOO = null;
-      this.bIk = 0;
-      this.bIj = 0;
+      an localan = new an();
+      localan.cnQ.activity = ((Activity)this.context);
+      localan.cnQ.cnR = this.rGz;
+      com.tencent.mm.sdk.b.a.ymk.l(localan);
+      this.rGz = null;
+      this.cpF = 0;
+      this.cpE = 0;
     }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!f.cAr()) {}
+    if (!f.dDB()) {}
     return false;
   }
   
@@ -529,12 +546,12 @@ public abstract class FlipView
   
   public void setNeedScanImage(boolean paramBoolean)
   {
-    this.oOJ = paramBoolean;
+    this.rGu = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.FlipView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,17 @@ package com.davemorrissey.labs.subscaleview.b;
 import com.davemorrissey.labs.subscaleview.c.b;
 import com.davemorrissey.labs.subscaleview.c.e;
 import com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
   implements com.davemorrissey.labs.subscaleview.c.d
 {
   public final b a(SubsamplingScaleImageView paramSubsamplingScaleImageView, com.davemorrissey.labs.subscaleview.a.d paramd, e parame)
   {
-    return new c.a(paramSubsamplingScaleImageView, paramd, parame);
+    AppMethodBeat.i(115635);
+    paramSubsamplingScaleImageView = new c.a(paramSubsamplingScaleImageView, paramd, parame);
+    AppMethodBeat.o(115635);
+    return paramSubsamplingScaleImageView;
   }
 }
 

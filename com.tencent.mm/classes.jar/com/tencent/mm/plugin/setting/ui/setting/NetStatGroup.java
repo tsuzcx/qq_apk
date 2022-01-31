@@ -6,15 +6,13 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.setting.a.d;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class NetStatGroup
   extends LinearLayout
 {
-  LinearLayout nRW;
-  final TextView nRX;
+  LinearLayout qFU;
+  final TextView qFV;
   
   public NetStatGroup(Context paramContext)
   {
@@ -24,15 +22,17 @@ public class NetStatGroup
   public NetStatGroup(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    View.inflate(paramContext, a.g.netstat_group, this);
-    this.nRW = ((LinearLayout)findViewById(a.f.group));
-    this.nRX = ((TextView)findViewById(a.f.date));
-    this.nRX.setTextSize(0, paramContext.getResources().getDimensionPixelSize(a.d.HintTextSize));
+    AppMethodBeat.i(126965);
+    View.inflate(paramContext, 2130970350, this);
+    this.qFU = ((LinearLayout)findViewById(2131826210));
+    this.qFV = ((TextView)findViewById(2131820789));
+    this.qFV.setTextSize(0, paramContext.getResources().getDimensionPixelSize(2131427758));
+    AppMethodBeat.o(126965);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.NetStatGroup
  * JD-Core Version:    0.7.0.1
  */

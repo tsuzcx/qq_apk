@@ -1,5 +1,7 @@
 package com.tencent.smtt.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class i
   implements Runnable
 {
@@ -7,7 +9,9 @@ class i
   
   public void run()
   {
+    AppMethodBeat.i(63985);
     this.b.c.onReceiveValue(Boolean.valueOf(this.a));
+    AppMethodBeat.o(63985);
   }
 }
 

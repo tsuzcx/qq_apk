@@ -1,66 +1,83 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.s;
 
 @a(7)
 public class IPCallFeedbackDialogUI
   extends MMActivity
 {
-  private g lws;
+  private g nTH;
   
   public void finish()
   {
-    y.i("MicroMsg.IPCallFeedbackDialogUI", "finish");
-    if ((this.lws != null) && (this.lws.isShowing()))
+    AppMethodBeat.i(22178);
+    ab.i("MicroMsg.IPCallFeedbackDialogUI", "finish");
+    if ((this.nTH != null) && (this.nTH.isShowing()))
     {
-      this.lws.dismiss();
-      this.lws = null;
+      this.nTH.dismiss();
+      this.nTH = null;
     }
     super.finish();
+    AppMethodBeat.o(22178);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
     return -1;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(22174);
     super.onCreate(paramBundle);
-    y.i("MicroMsg.IPCallFeedbackDialogUI", "onCreate");
-    this.lws = new g(this, this.mController.uMN, getIntent().getIntExtra("IPCallFeedbackDialogUI_KRoomId", 0), getIntent().getLongExtra("IPCallFeedbackDialogUI_KCallseq", 0L));
-    this.lws.setOnDismissListener(new IPCallFeedbackDialogUI.1(this));
-    this.lws.getWindow().setSoftInputMode(16);
-    this.lws.show();
+    ab.i("MicroMsg.IPCallFeedbackDialogUI", "onCreate");
+    this.nTH = new g(this, getContext(), getIntent().getIntExtra("IPCallFeedbackDialogUI_KRoomId", 0), getIntent().getLongExtra("IPCallFeedbackDialogUI_KCallseq", 0L));
+    this.nTH.setOnDismissListener(new IPCallFeedbackDialogUI.1(this));
+    this.nTH.getWindow().setSoftInputMode(16);
+    this.nTH.show();
+    AppMethodBeat.o(22174);
   }
   
   public void onDestroy()
   {
-    y.d("MicroMsg.IPCallFeedbackDialogUI", "onDestroy");
+    AppMethodBeat.i(22177);
+    ab.d("MicroMsg.IPCallFeedbackDialogUI", "onDestroy");
     super.onDestroy();
+    AppMethodBeat.o(22177);
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
-    y.d("MicroMsg.IPCallFeedbackDialogUI", "onNewIntent");
+    AppMethodBeat.i(22176);
+    ab.d("MicroMsg.IPCallFeedbackDialogUI", "onNewIntent");
     super.onNewIntent(paramIntent);
+    AppMethodBeat.o(22176);
   }
   
   public void onResume()
   {
-    y.d("MicroMsg.IPCallFeedbackDialogUI", "onResume");
+    AppMethodBeat.i(22175);
+    ab.d("MicroMsg.IPCallFeedbackDialogUI", "onResume");
     super.onResume();
+    AppMethodBeat.o(22175);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallFeedbackDialogUI
  * JD-Core Version:    0.7.0.1
  */

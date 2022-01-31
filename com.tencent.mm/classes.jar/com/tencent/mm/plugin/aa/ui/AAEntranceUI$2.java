@@ -1,18 +1,19 @@
 package com.tencent.mm.plugin.aa.ui;
 
 import android.content.Intent;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AAEntranceUI$2
   implements a.a
 {
   AAEntranceUI$2(AAEntranceUI paramAAEntranceUI) {}
   
-  public final void Vx()
+  public final void aoW()
   {
-    Intent localIntent = new Intent(this.eXp.mController.uMN, AAQueryListUI.class);
-    this.eXp.startActivity(localIntent);
+    AppMethodBeat.i(40709);
+    Intent localIntent = new Intent(this.gpn.getContext(), AAQueryListUI.class);
+    this.gpn.startActivity(localIntent);
+    AppMethodBeat.o(40709);
   }
 }
 

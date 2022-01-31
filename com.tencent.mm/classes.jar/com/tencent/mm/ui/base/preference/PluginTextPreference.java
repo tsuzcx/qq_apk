@@ -6,19 +6,18 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.ac.a.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ad.a.a;
 
 public final class PluginTextPreference
   extends Preference
 {
-  private TextView dqa = null;
-  private ImageView mXR = null;
+  private TextView ehx;
+  private ImageView pAE;
   private String text;
   private int textColor;
-  public int vdA;
   public int visibility;
+  public int zsa;
   
   public PluginTextPreference(Context paramContext)
   {
@@ -33,28 +32,36 @@ public final class PluginTextPreference
   public PluginTextPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(a.h.mm_preference_content_plugin_text);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.PluginTextPreference);
-    this.vdA = paramContext.getResourceId(a.m.PluginTextPreference_plugin_icon, 0);
-    this.text = paramContext.getString(a.m.PluginTextPreference_plugin_text);
-    this.textColor = paramContext.getColor(a.m.PluginTextPreference_plugin_text_color, -7039852);
+    AppMethodBeat.i(107250);
+    this.pAE = null;
+    this.ehx = null;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.PluginTextPreference);
+    setLayoutResource(paramContext.getResourceId(1, 2130970213));
+    this.zsa = paramContext.getResourceId(0, 0);
+    this.text = paramContext.getString(2);
+    this.textColor = paramContext.getColor(3, -7039852);
     paramContext.recycle();
+    AppMethodBeat.o(107250);
   }
   
-  public final void GC(int paramInt)
+  public final void OV(int paramInt)
   {
+    AppMethodBeat.i(107251);
     this.text = this.mContext.getString(paramInt);
+    AppMethodBeat.o(107251);
   }
   
   protected final void onBindView(View paramView)
   {
+    AppMethodBeat.i(107252);
     super.onBindView(paramView);
-    this.mXR = ((ImageView)paramView.findViewById(a.g.image_iv));
-    this.mXR.setImageResource(this.vdA);
-    this.mXR.setVisibility(this.visibility);
-    this.dqa = ((TextView)paramView.findViewById(a.g.text_tv));
-    this.dqa.setText(this.text);
-    this.dqa.setTextColor(this.textColor);
+    this.pAE = ((ImageView)paramView.findViewById(2131822243));
+    this.pAE.setImageResource(this.zsa);
+    this.pAE.setVisibility(this.visibility);
+    this.ehx = ((TextView)paramView.findViewById(2131821551));
+    this.ehx.setText(this.text);
+    this.ehx.setTextColor(this.textColor);
+    AppMethodBeat.o(107252);
   }
 }
 

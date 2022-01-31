@@ -6,6 +6,7 @@ import android.net.wifi.WifiManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class NetworkSignalUtil
 {
@@ -15,36 +16,50 @@ public class NetworkSignalUtil
   
   public static void InitNetworkSignalUtil(Context paramContext)
   {
+    AppMethodBeat.i(92746);
     context = paramContext;
-    ((TelephonyManager)paramContext.getSystemService("phone")).listen(new PhoneStateListener()
+    try
     {
-      public void onSignalStrengthsChanged(SignalStrength paramAnonymousSignalStrength)
+      ((TelephonyManager)context.getSystemService("phone")).listen(new PhoneStateListener()
       {
-        super.onSignalStrengthsChanged(paramAnonymousSignalStrength);
-        NetworkSignalUtil.calSignalStrength(paramAnonymousSignalStrength);
-      }
-    }, 256);
+        public final void onSignalStrengthsChanged(SignalStrength paramAnonymousSignalStrength)
+        {
+          AppMethodBeat.i(92789);
+          super.onSignalStrengthsChanged(paramAnonymousSignalStrength);
+          NetworkSignalUtil.access$000(paramAnonymousSignalStrength);
+          AppMethodBeat.o(92789);
+        }
+      }, 256);
+      AppMethodBeat.o(92746);
+      return;
+    }
+    catch (ArrayIndexOutOfBoundsException paramContext)
+    {
+      AppMethodBeat.o(92746);
+    }
   }
   
   private static void calSignalStrength(SignalStrength paramSignalStrength)
   {
+    AppMethodBeat.i(92748);
     int i;
     long l;
     if (paramSignalStrength.isGsm())
     {
       i = paramSignalStrength.getGsmSignalStrength();
       if ((!paramSignalStrength.isGsm()) || (i != 99)) {
-        break label45;
+        break label55;
       }
       l = 0L;
     }
     for (;;)
     {
       strength = l;
+      AppMethodBeat.o(92748);
       return;
       i = (paramSignalStrength.getCdmaDbm() + 113) / 2;
       break;
-      label45:
+      label55:
       l = (i * 3.225807F);
       strength = l;
       if (l > 100L) {}
@@ -52,12 +67,12 @@ public class NetworkSignalUtil
       {
         strength = l;
         if (l >= 0L) {
-          break label90;
+          break label100;
         }
         l = 0L;
         break;
       }
-      label90:
+      label100:
       l = strength;
     }
   }
@@ -74,6 +89,7 @@ public class NetworkSignalUtil
   
   public static long getWifiSignalStrength()
   {
+    AppMethodBeat.i(92747);
     WifiInfo localWifiInfo = ((WifiManager)context.getSystemService("wifi")).getConnectionInfo();
     if ((localWifiInfo != null) && (localWifiInfo.getBSSID() != null))
     {
@@ -86,8 +102,11 @@ public class NetworkSignalUtil
       if (i < 0) {
         j = 0;
       }
-      return j * 10;
+      long l = j * 10;
+      AppMethodBeat.o(92747);
+      return l;
     }
+    AppMethodBeat.o(92747);
     return 0L;
   }
 }

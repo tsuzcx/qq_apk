@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.voip_cs.b.a;
 
 import android.os.Message;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class b$b
   implements Runnable
@@ -11,16 +13,18 @@ final class b$b
   
   public final void run()
   {
-    this.qeI.qeH = b.Qg(this.qeI.qeG);
+    AppMethodBeat.i(135328);
+    this.tLv.tLu = b.aeN(this.tLv.tLt);
     Message localMessage = new Message();
     localMessage.what = 12;
-    b.t(this.qeI).sendMessage(localMessage);
-    e.remove(this.qeI.qeF);
+    b.t(this.tLv).sendMessage(localMessage);
+    d.ysm.remove(this.tLv.tLs);
+    AppMethodBeat.o(135328);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.b.a.b.b
  * JD-Core Version:    0.7.0.1
  */

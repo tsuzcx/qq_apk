@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/a4" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="48.0dip"
+<LinearLayout style="@style/gf"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_width="16.0dip" android:layout_height="16.0dip" style="@style/yo" />
-    <TextView android:textSize="@dimen/nj" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/chh" />
+    <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gh">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/au4" style="@style/gp" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/av1" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/av2" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+            <RelativeLayout android:orientation="horizontal" android:id="@id/an8" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewTo android:layout_gravity="right" android:id="@id/aso" android:background="@null" android:layout_marginLeft="@dimen/a0p" android:layout_marginRight="@dimen/a0p" style="@style/hj" />
+                <ProgressBar android:id="@id/asp" android:visibility="gone" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" android:indeterminateDrawable="@drawable/z1" android:layout_centerInParent="true" />
+                <TextView android:textSize="@dimen/nq" android:textColor="@color/a6q" android:gravity="right" android:id="@id/asq" android:background="@drawable/emoji_app_msg_mask" android:padding="@dimen/ne" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:shadowColor="@color/la" android:layout_alignLeft="@id/aso" android:layout_alignRight="@id/aso" android:layout_alignBottom="@id/aso" />
+                <ImageView android:id="@id/asr" android:background="@null" android:visibility="gone" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" android:src="@drawable/emoji_download_btn" android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/m2" />
 </LinearLayout>

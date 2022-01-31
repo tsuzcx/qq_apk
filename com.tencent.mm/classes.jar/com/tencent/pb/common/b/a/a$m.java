@@ -7,56 +7,56 @@ import com.google.a.a.e;
 public final class a$m
   extends e
 {
-  private static volatile m[] wGC;
+  private static volatile m[] Bed;
+  public String Bee = "";
   public String nickname = "";
-  public int sqW = 0;
-  public String wGD = "";
+  public int wjE = 0;
   
   public a$m()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
-  public static m[] cNX()
+  public static m[] dTJ()
   {
-    if (wGC == null) {}
-    synchronized (c.aUH)
+    if (Bed == null) {}
+    synchronized (c.bgX)
     {
-      if (wGC == null) {
-        wGC = new m[0];
+      if (Bed == null) {
+        Bed = new m[0];
       }
-      return wGC;
+      return Bed;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.sqW != 0) {
-      paramb.aM(1, this.sqW);
+    if (this.wjE != 0) {
+      paramb.bk(1, this.wjE);
     }
     if (!this.nickname.equals("")) {
-      paramb.d(2, this.nickname);
+      paramb.e(2, this.nickname);
     }
-    if (!this.wGD.equals("")) {
-      paramb.d(3, this.wGD);
+    if (!this.Bee.equals("")) {
+      paramb.e(3, this.Bee);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
-    if (this.sqW != 0) {
-      i = j + b.aO(1, this.sqW);
+    if (this.wjE != 0) {
+      i = j + b.bm(1, this.wjE);
     }
     j = i;
     if (!this.nickname.equals("")) {
-      j = i + b.e(2, this.nickname);
+      j = i + b.f(2, this.nickname);
     }
     i = j;
-    if (!this.wGD.equals("")) {
-      i = j + b.e(3, this.wGD);
+    if (!this.Bee.equals("")) {
+      i = j + b.f(3, this.Bee);
     }
     return i;
   }

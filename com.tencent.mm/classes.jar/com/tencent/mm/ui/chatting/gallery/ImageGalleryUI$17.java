@@ -1,41 +1,29 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.view.View;
-import android.widget.CheckBox;
-import com.tencent.mm.ui.base.MMViewPager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ImageGalleryUI$17
   implements Runnable
 {
-  ImageGalleryUI$17(ImageGalleryUI paramImageGalleryUI) {}
+  ImageGalleryUI$17(ImageGalleryUI paramImageGalleryUI, int paramInt) {}
   
   public final void run()
   {
-    if (ImageGalleryUI.f(this.vww) == null) {}
-    c.b localb;
-    do
+    AppMethodBeat.i(153876);
+    if (ImageGalleryUI.j(this.zME) == null)
     {
-      do
-      {
-        return;
-        if ((h.a.cGc().khC) && (ImageGalleryUI.j(this.vww) != null))
-        {
-          ImageGalleryUI.j(this.vww).setChecked(h.a.cGc().bx(ImageGalleryUI.f(this.vww).cFU()));
-          ImageGalleryUI.k(this.vww).setOnClickListener(this.vww);
-        }
-      } while (this.vww.kJC.getCurrentItem() != 100000);
-      this.vww.cGw();
-      localb = c.bk(ImageGalleryUI.f(this.vww).GW(100000));
-      if ((!this.vww.vwe) && (localb == c.b.vup)) {
-        ImageGalleryUI.f(this.vww).Ho(100000);
-      }
-    } while (localb != c.b.vuq);
-    ImageGalleryUI.f(this.vww).Hs(100000);
+      AppMethodBeat.o(153876);
+      return;
+    }
+    c localc = ImageGalleryUI.j(this.zME);
+    int i = this.gxr;
+    localc.zJQ.pause(i);
+    AppMethodBeat.o(153876);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.ImageGalleryUI.17
  * JD-Core Version:    0.7.0.1
  */

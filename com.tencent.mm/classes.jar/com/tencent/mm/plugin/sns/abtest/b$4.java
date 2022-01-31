@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.sns.abtest;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class b$4
   implements Animation.AnimationListener
@@ -11,15 +12,17 @@ final class b$4
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    ai.d(new b.4.1(this));
-    this.ojV.ojT = false;
+    AppMethodBeat.i(35674);
+    al.d(new b.4.1(this));
+    this.qYg.qYe = false;
+    AppMethodBeat.o(35674);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    this.ojV.ojT = true;
+    this.qYg.qYe = true;
   }
 }
 

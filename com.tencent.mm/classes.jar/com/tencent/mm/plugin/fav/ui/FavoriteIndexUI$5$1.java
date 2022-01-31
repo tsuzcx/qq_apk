@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavoriteIndexUI$5$1
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   FavoriteIndexUI$5$1(FavoriteIndexUI.5 param5) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.kei.kbH.dismiss();
-  }
-  
-  public final String toString()
-  {
-    return super.toString() + "|batchAddFavTags";
+    AppMethodBeat.i(74223);
+    FavoriteIndexUI.a(this.myQ.myP, 4105);
+    AppMethodBeat.o(74223);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavoriteIndexUI.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,121 +2,136 @@ package com.tencent.mm.plugin.location.model;
 
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import com.tencent.mm.as.o;
-import com.tencent.mm.h.c.cs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.o;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.pluginsdk.location.a;
 import com.tencent.mm.pluginsdk.location.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bi;
 import com.tencent.mm.storage.bi.b;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 
 public final class j
   implements a
 {
-  int h = 300;
-  HashMap<Long, WeakReference<ImageView>> lDj = new HashMap();
-  HashMap<Long, bi.b> lDk = new HashMap();
-  HashMap<Long, WeakReference<ProgressBar>> lDl = new HashMap();
-  HashMap<Long, WeakReference<ImageView>> lDm = new HashMap();
-  HashMap<bi.b, bi> lDn = new HashMap();
-  HashMap<Long, Integer> lDo = new HashMap();
-  HashSet<Long> lDp = new HashSet();
-  int w = 300;
+  int h;
+  HashMap<Long, Integer> oaA;
+  HashSet<Long> oaB;
+  HashMap<Long, WeakReference<ImageView>> oav;
+  HashMap<Long, bi.b> oaw;
+  HashMap<Long, WeakReference<ProgressBar>> oax;
+  HashMap<Long, WeakReference<ImageView>> oay;
+  HashMap<bi.b, bi> oaz;
+  int w;
   
   public j()
   {
+    AppMethodBeat.i(113326);
+    this.oav = new HashMap();
+    this.oaw = new HashMap();
+    this.oax = new HashMap();
+    this.oay = new HashMap();
+    this.oaz = new HashMap();
+    this.oaA = new HashMap();
+    this.oaB = new HashSet();
+    this.w = 300;
+    this.h = 300;
     start();
+    AppMethodBeat.o(113326);
   }
   
   public final void a(b paramb)
   {
-    if (paramb == null) {}
-    label4:
-    do
+    AppMethodBeat.i(113329);
+    if (paramb == null)
     {
-      do
+      AppMethodBeat.o(113329);
+      return;
+    }
+    if (!this.oaw.containsKey(Long.valueOf(paramb.itemId)))
+    {
+      AppMethodBeat.o(113329);
+      return;
+    }
+    paramb = (bi.b)this.oaw.get(Long.valueOf(paramb.itemId));
+    paramb = (bi)this.oaz.remove(paramb);
+    if (paramb == null)
+    {
+      AppMethodBeat.o(113329);
+      return;
+    }
+    this.oav.get(Long.valueOf(paramb.field_msgId));
+    if ((paramb != null) && ((paramb.dGX < 0) || (paramb.dGX > 5)))
+    {
+      paramb.ia(0);
+      paramb.ia(paramb.dGX + 1);
+      if (com.tencent.mm.kernel.g.RG())
       {
-        do
-        {
-          break label4;
-          do
-          {
-            return;
-          } while (!this.lDk.containsKey(Long.valueOf(paramb.itemId)));
-          paramb = (bi.b)this.lDk.get(Long.valueOf(paramb.itemId));
-          paramb = (bi)this.lDn.remove(paramb);
-        } while (paramb == null);
-        this.lDj.get(Long.valueOf(paramb.field_msgId));
-      } while ((paramb == null) || ((paramb.cQL >= 0) && (paramb.cQL <= 5)));
-      paramb.fM(0);
-      paramb.fM(paramb.cQL + 1);
-    } while (!com.tencent.mm.kernel.g.DK());
-    ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bhO().a(paramb.field_msgId, paramb);
-    y.i("MicroMsg.StaticMapMsgLogic", "on error count %d", new Object[] { Integer.valueOf(paramb.cQL) });
+        ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().a(paramb.field_msgId, paramb);
+        ab.i("MicroMsg.StaticMapMsgLogic", "on error count %d", new Object[] { Integer.valueOf(paramb.dGX) });
+      }
+    }
+    AppMethodBeat.o(113329);
   }
   
   public final void a(String paramString, b paramb)
   {
-    if (paramb == null) {}
-    label4:
-    WeakReference localWeakReference;
-    do
+    AppMethodBeat.i(113328);
+    if (paramb == null)
     {
-      do
-      {
-        break label4;
-        do
-        {
-          return;
-        } while (!this.lDk.containsKey(Long.valueOf(paramb.itemId)));
-        paramb = (bi.b)this.lDk.get(Long.valueOf(paramb.itemId));
-        paramb = (bi)this.lDn.remove(paramb);
-      } while (paramb == null);
-      localWeakReference = (WeakReference)this.lDj.get(Long.valueOf(paramb.field_msgId));
-    } while ((localWeakReference == null) || (localWeakReference.get() == null) || (!this.lDo.containsKey(Long.valueOf(paramb.field_msgId))));
-    int i = ((Integer)this.lDo.remove(Long.valueOf(paramb.field_msgId))).intValue();
+      AppMethodBeat.o(113328);
+      return;
+    }
+    if (!this.oaw.containsKey(Long.valueOf(paramb.itemId)))
+    {
+      AppMethodBeat.o(113328);
+      return;
+    }
+    paramb = (bi.b)this.oaw.get(Long.valueOf(paramb.itemId));
+    paramb = (bi)this.oaz.remove(paramb);
+    if (paramb == null)
+    {
+      AppMethodBeat.o(113328);
+      return;
+    }
+    WeakReference localWeakReference = (WeakReference)this.oav.get(Long.valueOf(paramb.field_msgId));
+    if ((localWeakReference == null) || (localWeakReference.get() == null))
+    {
+      AppMethodBeat.o(113328);
+      return;
+    }
+    if (!this.oaA.containsKey(Long.valueOf(paramb.field_msgId)))
+    {
+      AppMethodBeat.o(113328);
+      return;
+    }
+    int i = ((Integer)this.oaA.remove(Long.valueOf(paramb.field_msgId))).intValue();
     if (paramb.field_isSend == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ((ImageView)localWeakReference.get()).setImageBitmap(o.OJ().a(paramb.field_msgId, paramString, i, this.w, this.h, bool));
-      paramString = (WeakReference)this.lDl.remove(Long.valueOf(paramb.field_msgId));
+      ((ImageView)localWeakReference.get()).setImageBitmap(o.ahC().a(paramb.field_msgId, paramString, i, this.w, this.h, bool));
+      paramString = (WeakReference)this.oax.remove(Long.valueOf(paramb.field_msgId));
       if ((paramString != null) && (paramString.get() != null)) {
         ((ProgressBar)paramString.get()).setVisibility(8);
       }
-      paramString = (WeakReference)this.lDm.remove(Long.valueOf(paramb.field_msgId));
-      if ((paramString == null) || (paramString.get() == null)) {
-        break;
+      paramString = (WeakReference)this.oay.remove(Long.valueOf(paramb.field_msgId));
+      if ((paramString != null) && (paramString.get() != null)) {
+        ((ImageView)paramString.get()).setVisibility(0);
       }
-      ((ImageView)paramString.get()).setVisibility(0);
+      AppMethodBeat.o(113328);
       return;
     }
   }
   
-  public final void start()
+  final void start()
   {
-    k localk = l.bdV();
-    if (this != null)
-    {
-      Iterator localIterator = localk.dhm.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-      } while (!equals((a)localIterator.next()));
-    }
-    do
-    {
-      return;
-      localk.dhm.add(this);
-      y.i("MicroMsg.StaticMapServer", "addMapCallBack " + localk.dhm.size());
-    } while (localk.dhm.size() != 1);
-    localk.start();
+    AppMethodBeat.i(113327);
+    l.bLp().a(this);
+    AppMethodBeat.o(113327);
   }
 }
 

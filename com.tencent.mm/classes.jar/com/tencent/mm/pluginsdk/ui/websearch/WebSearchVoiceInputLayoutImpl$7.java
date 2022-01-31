@@ -1,6 +1,7 @@
 package com.tencent.mm.pluginsdk.ui.websearch;
 
-import com.tencent.mm.pluginsdk.ui.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.k;
 
 final class WebSearchVoiceInputLayoutImpl$7
   implements Runnable
@@ -9,7 +10,9 @@ final class WebSearchVoiceInputLayoutImpl$7
   
   public final void run()
   {
-    WebSearchVoiceInputLayoutImpl.b(this.snR).DW(this.kFu);
+    AppMethodBeat.i(28227);
+    WebSearchVoiceInputLayoutImpl.b(this.wgp).LT(this.nci);
+    AppMethodBeat.o(28227);
   }
 }
 

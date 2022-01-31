@@ -1,54 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.os.Build.VERSION;
-import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.r;
 
-final class ag
-  extends s
+public final class ag
+  extends a<r>
 {
-  private static final int CTRL_INDEX = 97;
-  private static final String NAME = "getPublicLibVersion";
-  
-  public final String a(c paramc, JSONObject paramJSONObject)
-  {
-    boolean bool2 = true;
-    paramJSONObject = (com.tencent.mm.plugin.appbrand.config.i)paramc.D(com.tencent.mm.plugin.appbrand.config.i.class);
-    if (paramJSONObject == null) {
-      return h("fail", null);
-    }
-    paramc = new HashMap();
-    if (paramJSONObject.fPS.fEM != 0)
-    {
-      bool1 = true;
-      paramc.put("appDebug", Boolean.valueOf(bool1));
-      paramc.put("appMd5", bk.pm(paramJSONObject.fPS.bIW));
-      paramc.put("appVersion", Integer.valueOf(paramJSONObject.fPS.fEN));
-      paramJSONObject = WxaCommLibRuntimeReader.abQ();
-      if (paramJSONObject.fEM == 0) {
-        break label229;
-      }
-    }
-    label229:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramc.put("libDebug", Boolean.valueOf(bool1));
-      paramc.put("libMd5", bk.pm(paramJSONObject.bIW));
-      paramc.put("libVersion", Integer.valueOf(paramJSONObject.fEN));
-      paramc.put("clientVersion", Integer.valueOf(com.tencent.mm.protocal.d.spa));
-      paramc.put("system", "android");
-      paramc.put("systemVersion", Integer.valueOf(Build.VERSION.SDK_INT));
-      paramc.put("x5Version", Integer.valueOf(com.tencent.xweb.x5.sdk.d.getTbsVersion(ae.getContext())));
-      return h("ok", paramc);
-      bool1 = false;
-      break;
-    }
-  }
+  public static final int CTRL_INDEX = 286;
+  public static final String NAME = "chooseInvoiceTitle";
 }
 
 

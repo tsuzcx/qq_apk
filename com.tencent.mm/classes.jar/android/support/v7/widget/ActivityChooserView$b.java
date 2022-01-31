@@ -21,23 +21,23 @@ final class ActivityChooserView$b
   
   public final void onClick(View paramView)
   {
-    if (paramView == this.YX.YN)
+    if (paramView == this.ZI.Zy)
     {
-      this.YX.fW();
-      paramView = this.YX.YH.YY.fP();
-      int i = this.YX.YH.YY.a(paramView);
-      paramView = this.YX.YH.YY.bi(i);
+      this.ZI.gT();
+      paramView = this.ZI.Zs.ZJ.gJ();
+      int i = this.ZI.Zs.ZJ.a(paramView);
+      paramView = this.ZI.Zs.ZJ.bg(i);
       if (paramView != null)
       {
         paramView.addFlags(524288);
-        this.YX.getContext().startActivity(paramView);
+        this.ZI.getContext().startActivity(paramView);
       }
       return;
     }
-    if (paramView == this.YX.YL)
+    if (paramView == this.ZI.Zw)
     {
-      this.YX.YU = false;
-      this.YX.bj(this.YX.YV);
+      this.ZI.ZF = false;
+      this.ZI.bh(this.ZI.ZG);
       return;
     }
     throw new IllegalArgumentException();
@@ -45,11 +45,11 @@ final class ActivityChooserView$b
   
   public final void onDismiss()
   {
-    if (this.YX.UT != null) {
-      this.YX.UT.onDismiss();
+    if (this.ZI.VG != null) {
+      this.ZI.VG.onDismiss();
     }
-    if (this.YX.YQ != null) {
-      this.YX.YQ.E(false);
+    if (this.ZI.ZB != null) {
+      this.ZI.ZB.E(false);
     }
   }
   
@@ -60,42 +60,42 @@ final class ActivityChooserView$b
     default: 
       throw new IllegalArgumentException();
     case 1: 
-      this.YX.bj(2147483647);
+      this.ZI.bh(2147483647);
     }
     do
     {
       return;
-      this.YX.fW();
-      if (!this.YX.YU) {
+      this.ZI.gT();
+      if (!this.ZI.ZF) {
         break;
       }
     } while (paramInt <= 0);
-    paramView = this.YX.YH.YY;
+    paramView = this.ZI.Zs.ZJ;
     for (;;)
     {
-      synchronized (paramView.Yu)
+      synchronized (paramView.Zf)
       {
-        paramView.fQ();
-        d.a locala1 = (d.a)paramView.Yv.get(paramInt);
-        d.a locala2 = (d.a)paramView.Yv.get(0);
+        paramView.gL();
+        c.a locala1 = (c.a)paramView.Zg.get(paramInt);
+        c.a locala2 = (c.a)paramView.Zg.get(0);
         if (locala2 != null)
         {
           f = locala2.weight - locala1.weight + 5.0F;
-          paramView.a(new d.c(new ComponentName(locala1.resolveInfo.activityInfo.packageName, locala1.resolveInfo.activityInfo.name), System.currentTimeMillis(), f));
+          paramView.a(new c.c(new ComponentName(locala1.resolveInfo.activityInfo.packageName, locala1.resolveInfo.activityInfo.name), System.currentTimeMillis(), f));
           return;
         }
       }
       float f = 1.0F;
     }
-    if (this.YX.YH.Za) {}
+    if (this.ZI.Zs.ZL) {}
     for (;;)
     {
-      ??? = this.YX.YH.YY.bi(paramInt);
+      ??? = this.ZI.Zs.ZJ.bg(paramInt);
       if (??? == null) {
         break;
       }
       ???.addFlags(524288);
-      this.YX.getContext().startActivity(???);
+      this.ZI.getContext().startActivity(???);
       return;
       paramInt += 1;
     }
@@ -103,12 +103,12 @@ final class ActivityChooserView$b
   
   public final boolean onLongClick(View paramView)
   {
-    if (paramView == this.YX.YN)
+    if (paramView == this.ZI.Zy)
     {
-      if (this.YX.YH.getCount() > 0)
+      if (this.ZI.Zs.getCount() > 0)
       {
-        this.YX.YU = true;
-        this.YX.bj(this.YX.YV);
+        this.ZI.ZF = true;
+        this.ZI.bh(this.ZI.ZG);
       }
       return true;
     }
@@ -117,7 +117,7 @@ final class ActivityChooserView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v7.widget.ActivityChooserView.b
  * JD-Core Version:    0.7.0.1
  */

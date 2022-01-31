@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.wxpaysdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.plugin.wxpaysdk.a.a;
+import com.tencent.mm.plugin.wxpaysdk.api.a;
 
 public class PluginWxPaySdk
   extends f
@@ -10,19 +11,25 @@ public class PluginWxPaySdk
 {
   public void configure(g paramg)
   {
-    paramg.Ex();
+    AppMethodBeat.i(56664);
+    paramg.SD();
+    AppMethodBeat.o(56664);
   }
   
   public void dependency() {}
   
   public void execute(g paramg)
   {
-    paramg.Ex();
+    AppMethodBeat.i(56665);
+    paramg.SD();
+    AppMethodBeat.o(56665);
   }
   
   public void installed()
   {
+    AppMethodBeat.i(56663);
     alias(PluginWxPaySdk.class);
+    AppMethodBeat.o(56663);
   }
   
   public String name()

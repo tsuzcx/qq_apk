@@ -2,11 +2,8 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class GameMessageUI$5
   implements View.OnClickListener
@@ -15,12 +12,14 @@ final class GameMessageUI$5
   
   public final void onClick(View paramView)
   {
-    if (!bk.bl(GameMessageUI.f(this.lee)))
+    AppMethodBeat.i(112104);
+    if (!bo.isNullOrNil(GameMessageUI.f(this.nBZ)))
     {
-      int i = c.an(this.lee.mController.uMN, GameMessageUI.f(this.lee));
-      b.a(this.lee.mController.uMN, 13, 1302, 1, i, GameMessageUI.g(this.lee), null);
+      int i = com.tencent.mm.plugin.game.f.c.ax(this.nBZ.getContext(), GameMessageUI.f(this.nBZ));
+      com.tencent.mm.game.report.c.a(this.nBZ.getContext(), 13, 1302, 1, i, GameMessageUI.g(this.nBZ), null);
     }
-    GameMessageUI.h(this.lee);
+    GameMessageUI.h(this.nBZ);
+    AppMethodBeat.o(112104);
   }
 }
 

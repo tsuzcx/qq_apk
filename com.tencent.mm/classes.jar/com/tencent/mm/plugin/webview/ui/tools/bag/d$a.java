@@ -7,49 +7,54 @@ import android.view.LayoutInflater;
 import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$a
   extends FrameLayout
 {
-  ImageView hok;
-  Vibrator hpm;
-  private ImageView jEm;
-  d.a.a rrI;
+  ImageView iCl;
+  Vibrator jbU;
+  private ImageView lNK;
+  d.a.a vhN;
   
   public d$a(Context paramContext)
   {
     super(paramContext);
-    this.hpm = ((Vibrator)paramContext.getSystemService("vibrator"));
-    LayoutInflater.from(paramContext).inflate(R.i.webview_bag_indicator, this);
-    this.jEm = ((ImageView)findViewById(R.h.bg));
-    this.hok = ((ImageView)findViewById(R.h.icon));
+    AppMethodBeat.i(8158);
+    this.jbU = ((Vibrator)paramContext.getSystemService("vibrator"));
+    LayoutInflater.from(paramContext).inflate(2130971300, this);
+    this.lNK = ((ImageView)findViewById(2131829530));
+    this.iCl = ((ImageView)findViewById(2131820929));
+    AppMethodBeat.o(8158);
   }
   
-  final void aa(float paramFloat1, float paramFloat2)
+  final void ak(float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(8160);
     ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat1, paramFloat2, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setFillAfter(true);
     localScaleAnimation.setDuration(50L);
-    this.jEm.startAnimation(localScaleAnimation);
+    this.lNK.startAnimation(localScaleAnimation);
+    AppMethodBeat.o(8160);
   }
   
   protected final void onConfigurationChanged(Configuration paramConfiguration)
   {
+    AppMethodBeat.i(8159);
     super.onConfigurationChanged(paramConfiguration);
     d.a.a locala;
-    if ((this.rrI != null) && (paramConfiguration != null))
+    if ((this.vhN != null) && (paramConfiguration != null))
     {
-      locala = this.rrI;
+      locala = this.vhN;
       if (paramConfiguration.orientation != 2) {
-        break label39;
+        break label51;
       }
     }
-    label39:
+    label51:
     for (boolean bool = true;; bool = false)
     {
       locala.onChange(bool);
+      AppMethodBeat.o(8159);
       return;
     }
   }

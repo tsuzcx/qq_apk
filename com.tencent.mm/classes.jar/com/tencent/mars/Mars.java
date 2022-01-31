@@ -2,13 +2,26 @@ package com.tencent.mars;
 
 import android.content.Context;
 import com.tencent.mars.comm.PlatformComm;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.app.j.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Mars
 {
+  private static final j.a appForegroundListener = new j.a()
+  {
+    public final void onAppBackground(String paramAnonymousString)
+    {
+      BaseEvent.onForeground(false);
+    }
+    
+    public final void onAppForeground(String paramAnonymousString)
+    {
+      BaseEvent.onForeground(true);
+    }
+  };
   private static volatile boolean hasInitialized = false;
   private static ArrayList<String[]> libModules = new ArrayList();
   
@@ -26,7 +39,7 @@ public class Mars
       try
       {
         String[] arrayOfString = new String[0];
-        y.i(paramString, "loaded modules: " + Arrays.toString(paramArrayList.toArray(arrayOfString)));
+        ab.i(paramString, "loaded modules: " + Arrays.toString(paramArrayList.toArray(arrayOfString)));
         Arrays.sort(arrayOfString);
         libModules.add(arrayOfString);
         j = 0;
@@ -122,9 +135,9 @@ public class Mars
     }
   }
   
-  public static void init(Context paramContext, ah paramah)
+  public static void init(Context paramContext, ak paramak)
   {
-    PlatformComm.init(paramContext, paramah);
+    PlatformComm.init(paramContext, paramak);
     hasInitialized = true;
   }
   
@@ -140,20 +153,26 @@ public class Mars
   
   public static void onCreate(boolean paramBoolean)
   {
-    if ((paramBoolean) && (hasInitialized))
-    {
+    if ((paramBoolean) && (hasInitialized)) {
       BaseEvent.onCreate();
-      return;
     }
-    if (!paramBoolean)
+    for (;;)
     {
-      BaseEvent.onCreate();
+      appForegroundListener.alive();
       return;
+      if (paramBoolean) {
+        break;
+      }
+      BaseEvent.onCreate();
     }
     throw new IllegalStateException("function MarsCore.init must be executed before Mars.onCreate when application firststartup.");
   }
   
-  public static void onDestroy() {}
+  public static void onDestroy()
+  {
+    BaseEvent.onDestroy();
+    appForegroundListener.dead();
+  }
 }
 
 

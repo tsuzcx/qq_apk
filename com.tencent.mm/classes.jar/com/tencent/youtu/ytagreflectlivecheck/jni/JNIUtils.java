@@ -1,6 +1,7 @@
 package com.tencent.youtu.ytagreflectlivecheck.jni;
 
 import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.DataPack;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.FullPack;
 import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.RawImgData;
@@ -19,29 +20,37 @@ public class JNIUtils
   
   public static Timeval getTimeval()
   {
+    AppMethodBeat.i(123169);
     long l = System.nanoTime() / 1000L;
-    return new Timeval(l / 1000000L, (int)(l % 1000000L));
+    Timeval localTimeval = new Timeval(l / 1000000L, (int)(l % 1000000L));
+    AppMethodBeat.o(123169);
+    return localTimeval;
   }
   
   private static ColorImgData translation(RawImgData paramRawImgData)
   {
+    AppMethodBeat.i(123174);
     ColorImgData localColorImgData = new ColorImgData();
     localColorImgData.setImage(new String(Base64.encode(paramRawImgData.frameBuffer, 2)));
     localColorImgData.setCapture_time(paramRawImgData.captureTime);
     localColorImgData.setX(paramRawImgData.x);
     localColorImgData.setY(paramRawImgData.y);
+    AppMethodBeat.o(123174);
     return localColorImgData;
   }
   
   private static FaceFrame translation(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(123172);
     FaceFrame localFaceFrame = new FaceFrame();
     localFaceFrame.setImage(new String(Base64.encode(paramArrayOfByte, 2)));
+    AppMethodBeat.o(123172);
     return localFaceFrame;
   }
   
   private static PersonLive translation(DataPack paramDataPack, byte[] paramArrayOfByte, String paramString)
   {
+    AppMethodBeat.i(123171);
     PersonLive localPersonLive = new PersonLive();
     localPersonLive.setReflect_data(translation(paramDataPack, 0));
     localPersonLive.setColor_data(paramString);
@@ -49,11 +58,13 @@ public class JNIUtils
     paramDataPack = new ArrayList();
     paramDataPack.add(translation(paramArrayOfByte));
     localPersonLive.setFrames(paramDataPack);
+    AppMethodBeat.o(123171);
     return localPersonLive;
   }
   
   public static PersonLiveReq translation(FullPack paramFullPack, String paramString)
   {
+    AppMethodBeat.i(123170);
     PersonLiveReq localPersonLiveReq = new PersonLiveReq();
     localPersonLiveReq.setApp_id("starimeliu");
     localPersonLiveReq.setBusiness_name("starimeliu");
@@ -61,11 +72,13 @@ public class JNIUtils
     localPersonLiveReq.setLivedata(translation(paramFullPack.AGin, paramFullPack.frames, paramString));
     localPersonLiveReq.setLive_type(2);
     localPersonLiveReq.setReq_type("live");
+    AppMethodBeat.o(123170);
     return localPersonLiveReq;
   }
   
   private static ReflectColorData translation(DataPack paramDataPack, int paramInt)
   {
+    AppMethodBeat.i(123173);
     ReflectColorData localReflectColorData = new ReflectColorData();
     ArrayList localArrayList = new ArrayList();
     paramInt = 0;
@@ -85,19 +98,20 @@ public class JNIUtils
     try
     {
       localReflectColorData.setLog(new String(paramDataPack.log, "UTF-8"));
-      label126:
+      label131:
       localReflectColorData.setConfig_begin(paramDataPack.config_begin);
+      AppMethodBeat.o(123173);
       return localReflectColorData;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      break label126;
+      break label131;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.jni.JNIUtils
  * JD-Core Version:    0.7.0.1
  */

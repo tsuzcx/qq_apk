@@ -3,19 +3,21 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelsns.SnsAdClick;
 import com.tencent.mm.plugin.sns.a.b.a.a;
 import com.tencent.mm.plugin.sns.a.b.h;
-import com.tencent.mm.plugin.sns.a.b.j;
-import com.tencent.mm.plugin.sns.a.b.j.a;
+import com.tencent.mm.plugin.sns.a.b.k;
+import com.tencent.mm.plugin.sns.a.b.k.a;
 import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class VideoAdPlayerUI$4
   implements View.OnClickListener
@@ -24,40 +26,51 @@ final class VideoAdPlayerUI$4
   
   public final void onClick(View paramView)
   {
-    if (VideoAdPlayerUI.q(this.pkW) != 0) {
-      j.a(j.a.olS, this.pkW.pkG, this.pkW.pkF, VideoAdPlayerUI.r(this.pkW), VideoAdPlayerUI.q(this.pkW), VideoAdPlayerUI.s(this.pkW), VideoAdPlayerUI.t(this.pkW), VideoAdPlayerUI.u(this.pkW), VideoAdPlayerUI.v(this.pkW), VideoAdPlayerUI.w(this.pkW), VideoAdPlayerUI.x(this.pkW));
+    AppMethodBeat.i(39916);
+    if (VideoAdPlayerUI.q(this.sdl) != 0) {
+      k.a(k.a.rag, this.sdl.rNA, this.sdl.rNz, VideoAdPlayerUI.r(this.sdl), VideoAdPlayerUI.q(this.sdl), VideoAdPlayerUI.s(this.sdl), VideoAdPlayerUI.t(this.sdl), VideoAdPlayerUI.u(this.sdl), VideoAdPlayerUI.v(this.sdl), VideoAdPlayerUI.w(this.sdl), VideoAdPlayerUI.x(this.sdl));
     }
-    if (VideoAdPlayerUI.e(this.pkW) != 0)
+    if (VideoAdPlayerUI.e(this.sdl) != 0)
     {
-      int j = VideoAdPlayerUI.a(this.pkW).olx.omv;
+      int j = VideoAdPlayerUI.a(this.sdl).qZJ.raJ;
       int i = j;
-      if (VideoAdPlayerUI.b(this.pkW))
+      if (VideoAdPlayerUI.b(this.sdl))
       {
         i = j;
-        if (VideoAdPlayerUI.a(this.pkW).olx.omz != 0L) {
-          i = j + (int)(bk.cp(VideoAdPlayerUI.a(this.pkW).olx.omz) / 1000L);
+        if (VideoAdPlayerUI.a(this.sdl).qZJ.raN != 0L) {
+          i = j + (int)(bo.av(VideoAdPlayerUI.a(this.sdl).qZJ.raN) / 1000L);
         }
       }
-      paramView = new com.tencent.mm.modelstat.i(13228, "1,1," + i + "," + VideoAdPlayerUI.f(this.pkW) + "," + VideoAdPlayerUI.g(this.pkW) + "," + bk.UX() + "," + VideoAdPlayerUI.h(this.pkW) + "," + VideoAdPlayerUI.i(this.pkW), (int)bk.UX());
-      g.DQ();
-      g.DO().dJT.a(paramView, 0);
+      paramView = new com.tencent.mm.modelstat.i(13228, "1,1," + i + "," + VideoAdPlayerUI.f(this.sdl) + "," + VideoAdPlayerUI.g(this.sdl) + "," + bo.aox() + "," + VideoAdPlayerUI.h(this.sdl) + "," + VideoAdPlayerUI.i(this.sdl), (int)bo.aox());
+      g.RM();
+      g.RK().eHt.a(paramView, 0);
     }
-    this.pkW.finish();
-    paramView = new Intent();
+    this.sdl.finish();
+    Intent localIntent = new Intent();
     Bundle localBundle = new Bundle();
-    localBundle.putString("key_snsad_statextstr", VideoAdPlayerUI.y(this.pkW));
-    paramView.putExtra("jsapiargs", localBundle);
-    paramView.putExtra("rawUrl", VideoAdPlayerUI.z(this.pkW));
-    paramView.putExtra("useJs", true);
-    if (VideoAdPlayerUI.A(this.pkW)) {
-      com.tencent.mm.plugin.sns.data.i.a(new SnsAdClick(0, 6, VideoAdPlayerUI.B(this.pkW).field_snsId, 18, 0));
+    localBundle.putString("key_snsad_statextstr", VideoAdPlayerUI.y(this.sdl));
+    String str = VideoAdPlayerUI.z(this.sdl);
+    paramView = str;
+    if (VideoAdPlayerUI.A(this.sdl))
+    {
+      paramView = str;
+      if (!TextUtils.isEmpty(this.sdl.rNz)) {
+        paramView = com.tencent.mm.plugin.sns.data.i.gg(str, this.sdl.rNz);
+      }
     }
-    new ah(Looper.getMainLooper()).post(new VideoAdPlayerUI.4.1(this, paramView));
+    localIntent.putExtra("jsapiargs", localBundle);
+    localIntent.putExtra("rawUrl", paramView);
+    localIntent.putExtra("useJs", true);
+    if (VideoAdPlayerUI.A(this.sdl)) {
+      com.tencent.mm.plugin.sns.data.i.a(new SnsAdClick(0, 6, VideoAdPlayerUI.B(this.sdl).field_snsId, 18, 0));
+    }
+    new ak(Looper.getMainLooper()).post(new VideoAdPlayerUI.4.1(this, localIntent));
+    AppMethodBeat.o(39916);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.VideoAdPlayerUI.4
  * JD-Core Version:    0.7.0.1
  */

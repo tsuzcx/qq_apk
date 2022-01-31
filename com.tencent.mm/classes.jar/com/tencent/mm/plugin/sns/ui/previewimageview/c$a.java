@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.ui.previewimageview;
 
 public abstract interface c$a
 {
-  public abstract void dV(int paramInt1, int paramInt2);
+  public abstract void fH(int paramInt1, int paramInt2);
   
   public abstract void removeItem(int paramInt);
 }

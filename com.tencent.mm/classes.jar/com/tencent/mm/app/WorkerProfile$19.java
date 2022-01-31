@@ -1,27 +1,23 @@
 package com.tencent.mm.app;
 
-import com.tencent.mm.h.a.lb;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.pq;
 import com.tencent.mm.sdk.b.c;
 
 final class WorkerProfile$19
-  extends c<lb>
+  extends c<pq>
 {
   WorkerProfile$19(WorkerProfile paramWorkerProfile)
   {
-    this.udX = lb.class.getName().hashCode();
-  }
-  
-  private boolean tv()
-  {
-    au.Dk().a(1145, new WorkerProfile.19.1(this));
-    au.Dk().a(new com.tencent.mm.modelappbrand.p(5), 0);
-    return true;
+    super(0);
+    AppMethodBeat.i(15502);
+    this.__eventId = pq.class.getName().hashCode();
+    AppMethodBeat.o(15502);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.WorkerProfile.19
  * JD-Core Version:    0.7.0.1
  */

@@ -2,17 +2,17 @@ package com.tencent.mm.c;
 
 public final class i$a
 {
-  String bvA;
-  public String bvB;
-  public String bvC;
+  String bWL;
+  public String bWM;
+  public String bWN;
   public int size;
   public String url;
   
   public i$a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    this.bvA = paramString1;
-    this.bvB = paramString2;
-    this.bvC = paramString3;
+    this.bWL = paramString1;
+    this.bWM = paramString2;
+    this.bWN = paramString3;
     this.size = paramInt;
     this.url = paramString4;
   }

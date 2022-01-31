@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.SightParams;
 import com.tencent.mm.plugin.mmsight.model.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SightCaptureUI$1
   implements Runnable
@@ -12,9 +13,11 @@ final class SightCaptureUI$1
   
   public final void run()
   {
-    y.i("MicroMsg.SightCaptureUI", "connect cost %sms", new Object[] { Long.valueOf(bk.cp(this.kKd)) });
-    j.c(SightCaptureUI.a(this.mqB).mfr);
-    SightCaptureUI.b(this.mqB);
+    AppMethodBeat.i(55180);
+    ab.i("MicroMsg.SightCaptureUI", "connect cost %sms", new Object[] { Long.valueOf(bo.av(this.ngG)) });
+    j.d(SightCaptureUI.a(this.oQf).fcu);
+    SightCaptureUI.b(this.oQf);
+    AppMethodBeat.o(55180);
   }
 }
 

@@ -6,15 +6,15 @@ import android.widget.TextView;
 
 final class GameBlockView$a
 {
-  public ViewGroup kXG;
-  public TextView kXH;
-  public GameDownloadView kXI;
-  public ImageView kXr;
-  public TextView kXs;
+  public ViewGroup nvI;
+  public TextView nvJ;
+  public GameDownloadView nvK;
+  public ImageView nvt;
+  public TextView nvu;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameBlockView.a
  * JD-Core Version:    0.7.0.1
  */

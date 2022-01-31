@@ -1,7 +1,9 @@
 package com.tencent.luggage.webview;
 
+import android.content.Context;
 import android.view.View;
 import com.tencent.luggage.bridge.s;
+import com.tencent.luggage.d.k;
 import java.util.Map;
 
 public abstract interface a
@@ -23,11 +25,15 @@ public abstract interface a
   
   public abstract void loadUrl(String paramString, Map<String, String> paramMap);
   
+  public abstract void setContext(Context paramContext);
+  
+  public abstract void setWebCore(k paramk);
+  
   public abstract void stopLoading();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.luggage.webview.a
  * JD-Core Version:    0.7.0.1
  */

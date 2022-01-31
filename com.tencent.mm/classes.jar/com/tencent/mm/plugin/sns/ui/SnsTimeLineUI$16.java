@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.g;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.statusbar.c.a;
 
 final class SnsTimeLineUI$16
-  implements Runnable
+  implements c.a
 {
   SnsTimeLineUI$16(SnsTimeLineUI paramSnsTimeLineUI) {}
   
-  public final void run()
+  public final void pB(int paramInt)
   {
-    if (SnsTimeLineUI.a(this.pfC) == null) {}
-    while (!SnsTimeLineUI.n(this.pfC)) {
-      return;
-    }
-    af.bDC().pause();
+    AppMethodBeat.i(39468);
+    SnsTimeLineUI.s(this.rYv).setPadding(0, paramInt, 0, 0);
+    AppMethodBeat.o(39468);
   }
 }
 

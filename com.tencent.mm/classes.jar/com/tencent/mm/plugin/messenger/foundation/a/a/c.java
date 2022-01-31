@@ -4,15 +4,15 @@ import java.util.List;
 
 public abstract interface c
 {
-  public abstract long Ho(String paramString);
+  public abstract long Ta(String paramString);
   
-  public abstract long Hp(String paramString);
+  public abstract long Tb(String paramString);
   
-  public abstract boolean L(String paramString, long paramLong);
+  public abstract boolean ad(String paramString, long paramLong);
   
-  public abstract boolean M(String paramString, long paramLong);
+  public abstract boolean ae(String paramString, long paramLong);
   
-  public abstract List<String> bhS();
+  public abstract List<String> bPU();
 }
 
 

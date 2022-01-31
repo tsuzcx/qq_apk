@@ -4,30 +4,32 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.plugin.luckymoney.b.a;
-import com.tencent.mm.plugin.luckymoney.b.o;
-import com.tencent.mm.plugin.luckymoney.b.t;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.ac;
+import com.tencent.mm.plugin.luckymoney.model.e;
+import com.tencent.mm.plugin.luckymoney.model.x;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class LuckyMoneyBusiReceiveUI$7
   implements View.OnClickListener
 {
-  LuckyMoneyBusiReceiveUI$7(LuckyMoneyBusiReceiveUI paramLuckyMoneyBusiReceiveUI, t paramt) {}
+  LuckyMoneyBusiReceiveUI$7(LuckyMoneyBusiReceiveUI paramLuckyMoneyBusiReceiveUI, ac paramac) {}
   
   public final void onClick(View paramView)
   {
-    LuckyMoneyBusiReceiveUI.k(this.lUZ).setVisibility(4);
-    LuckyMoneyBusiReceiveUI.l(this.lUZ).setVisibility(8);
-    LuckyMoneyBusiReceiveUI.m(this.lUZ).setVisibility(8);
-    if ((this.lVb.lQh != null) && (!bk.bl(this.lVb.lQh.lPF))) {}
-    for (paramView = this.lVb.lQh.lPF;; paramView = this.lUZ.getString(a.i.lucky_money_share_friends_tips))
+    AppMethodBeat.i(42624);
+    LuckyMoneyBusiReceiveUI.k(this.osi).setVisibility(4);
+    LuckyMoneyBusiReceiveUI.l(this.osi).setVisibility(8);
+    LuckyMoneyBusiReceiveUI.m(this.osi).setVisibility(8);
+    if ((this.osk.onF != null) && (!bo.isNullOrNil(this.osk.onF.onb))) {}
+    for (paramView = this.osk.onF.onb;; paramView = this.osi.getString(2131301321))
     {
-      LuckyMoneyBusiReceiveUI.n(this.lUZ).setText(paramView);
-      LuckyMoneyBusiReceiveUI.o(this.lUZ).setText(this.lVb.lQS);
-      LuckyMoneyBusiReceiveUI.p(this.lUZ).setVisibility(0);
-      LuckyMoneyBusiReceiveUI.n(this.lUZ).setOnClickListener(new LuckyMoneyBusiReceiveUI.7.1(this));
-      o.a(LuckyMoneyBusiReceiveUI.k(this.lUZ), new LuckyMoneyBusiReceiveUI.7.2(this));
+      LuckyMoneyBusiReceiveUI.n(this.osi).setText(paramView);
+      LuckyMoneyBusiReceiveUI.o(this.osi).setText(this.osk.ooH);
+      LuckyMoneyBusiReceiveUI.p(this.osi).setVisibility(0);
+      LuckyMoneyBusiReceiveUI.n(this.osi).setOnClickListener(new LuckyMoneyBusiReceiveUI.7.1(this));
+      x.a(LuckyMoneyBusiReceiveUI.k(this.osi), new LuckyMoneyBusiReceiveUI.7.2(this));
+      AppMethodBeat.o(42624);
       return;
     }
   }

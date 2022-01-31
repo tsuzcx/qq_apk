@@ -1,28 +1,35 @@
 package com.tencent.mm.plugin.talkroom.component;
 
-import com.tencent.mm.f.b.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.c.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class f$1
   implements c.a
 {
   f$1(f paramf) {}
   
-  public final void aU(int paramInt1, int paramInt2) {}
+  public final void bS(int paramInt1, int paramInt2) {}
   
-  public final void r(byte[] paramArrayOfByte, int paramInt)
+  public final void s(byte[] paramArrayOfByte, int paramInt)
   {
-    y.d("MicroMsg.MicRecoder", "pcm len: " + paramInt);
-    if (paramInt <= 0) {
-      y.e("MicroMsg.MicRecoder", "pcm data too low");
-    }
-    do
+    AppMethodBeat.i(25713);
+    ab.d("MicroMsg.MicRecoder", "pcm len: ".concat(String.valueOf(paramInt)));
+    if (paramInt <= 0)
     {
+      ab.e("MicroMsg.MicRecoder", "pcm data too low");
+      AppMethodBeat.o(25713);
       return;
-      f.a(this.pzM, paramArrayOfByte, paramInt);
-      paramInt = f.a(this.pzM).Send(paramArrayOfByte, (short)paramInt);
-    } while (paramInt >= 0);
-    y.e("MicroMsg.MicRecoder", "send failed, ret: " + paramInt);
+    }
+    f.a(this.tby, paramArrayOfByte, paramInt);
+    paramInt = f.a(this.tby).Send(paramArrayOfByte, (short)paramInt);
+    if (paramInt < 0)
+    {
+      ab.e("MicroMsg.MicRecoder", "send failed, ret: ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(25713);
+      return;
+    }
+    AppMethodBeat.o(25713);
   }
 }
 

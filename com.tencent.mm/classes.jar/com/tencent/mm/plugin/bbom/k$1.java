@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.bh.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bi.d;
 import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.p;
+import com.tencent.mm.model.q;
 
 final class k$1
   extends a
 {
   public final void execute(g paramg)
   {
-    new p(d.class);
+    AppMethodBeat.i(18262);
+    new q(d.class);
+    AppMethodBeat.o(18262);
   }
 }
 

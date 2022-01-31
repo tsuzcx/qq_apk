@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.zero.a;
 
-import com.tencent.mm.protocal.c.qv;
+import com.tencent.mm.protocal.protobuf.ud;
 
 public abstract interface f
 {
-  public abstract void a(qv paramqv, byte[] paramArrayOfByte, boolean paramBoolean);
+  public abstract void a(ud paramud, byte[] paramArrayOfByte, boolean paramBoolean);
   
-  public abstract void bp(Object paramObject);
+  public abstract void bT(Object paramObject);
   
-  public abstract void bq(Object paramObject);
+  public abstract void bU(Object paramObject);
   
-  public abstract void br(Object paramObject);
+  public abstract void bV(Object paramObject);
 }
 
 

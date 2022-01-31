@@ -1,105 +1,122 @@
 package com.tencent.mm.plugin.wallet.pay;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet.pay.a.a;
-import com.tencent.mm.plugin.wallet_core.c.t;
-import com.tencent.mm.plugin.wallet_core.model.Authen;
-import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet.pay.a.e.a;
+import com.tencent.mm.plugin.wallet.pay.a.e.d;
+import com.tencent.mm.plugin.wallet.pay.a.e.e;
+import com.tencent.mm.plugin.wallet.pay.a.e.f;
+import com.tencent.mm.plugin.wallet.pay.a.e.g;
+import com.tencent.mm.plugin.wallet.pay.a.e.h;
+import com.tencent.mm.plugin.wallet.pay.a.e.j;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.plugin.wallet_core.model.q;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.d.g;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.pluginsdk.wallet.PayInfo;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.tenpay.model.n;
+import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 final class b$17
-  extends g
+  extends b.a
 {
-  b$17(b paramb, MMActivity paramMMActivity, i parami)
+  b$17(b paramb, WalletBaseUI paramWalletBaseUI, com.tencent.mm.wallet_core.d.i parami)
   {
-    super(paramMMActivity, parami);
+    super(paramb, paramWalletBaseUI, parami);
   }
   
-  private void bTP()
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.PayProcess", "directToNext()");
-    boolean bool = this.qlV.kke.getBoolean("key_balance_change_phone_need_confirm_phone", false);
-    Authen localAuthen = (Authen)this.qlV.kke.getParcelable("key_authen");
-    Orders localOrders = (Orders)this.qlV.kke.getParcelable("key_orders");
-    Object localObject = (Bankcard)this.qlV.kke.getParcelable("key_bankcard");
-    ElementQuery localElementQuery = o.bVA().Qp(((Bankcard)localObject).field_bankcardType);
-    this.qlV.kke.putParcelable("elemt_query", localElementQuery);
-    if (!bool)
+    AppMethodBeat.i(45888);
+    if (!super.onSceneEnd(paramInt1, paramInt2, paramString, paramm))
     {
-      localAuthen.qqU = "";
-      localAuthen.mOb = ((Bankcard)localObject).field_bankcardType;
-      localAuthen.mOc = ((Bankcard)localObject).field_bindSerial;
-      localObject = ((Bankcard)localObject).field_mobile;
-      this.qlV.kke.putString("key_mobile", (String)localObject);
-      if ((localElementQuery == null) || (localElementQuery.quZ) || (localElementQuery.qva))
+      if (((paramm instanceof j)) && (paramInt1 == 0) && (paramInt2 == 0))
       {
-        y.i("MicroMsg.PayProcess", "hy: need rewrite cvv or validThru");
-        this.qlV.a(this.gfb, 0, this.qlV.kke);
-        return;
+        paramString = (j)paramm;
+        if (paramString.isPaySuccess) {
+          b.n(this.tVh).putParcelable("key_orders", paramString.tVr);
+        }
+        paramString = paramString.plg;
+        if (paramString != null) {
+          b.o(this.tVh).putParcelable("key_realname_guide_helper", paramString);
+        }
+        this.tVh.a(this.hwZ, 0, b.p(this.tVh));
+        AppMethodBeat.o(45888);
+        return true;
       }
-      this.wBd.a(a.b(localAuthen, localOrders, this.qlV.kke.getBoolean("key_isbalance", false)), true);
-      return;
-    }
-    localAuthen.mOb = ((Bankcard)localObject).field_bankcardType;
-    localAuthen.mOc = ((Bankcard)localObject).field_bindSerial;
-    this.qlV.a(this.gfb, 0, this.qlV.kke);
-  }
-  
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramm instanceof com.tencent.mm.plugin.wallet.pay.a.a.c)))
-    {
-      y.i("MicroMsg.PayProcess", "onSceneEnd for select bank card, forward");
-      this.qlV.a(this.gfb, 0, this.qlV.kke);
-      bool1 = true;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (paramInt1 != 0);
-        bool1 = bool2;
-      } while (paramInt2 != 0);
-      bool1 = bool2;
-    } while (!(paramm instanceof t));
-    y.i("MicroMsg.PayProcess", "onSceneEnd for select bank card, directToNext");
-    bTP();
-    return false;
-  }
-  
-  public final boolean m(Object... paramVarArgs)
-  {
-    y.i("MicroMsg.PayProcess", "onNext for select bank card");
-    this.qlV.kke.putInt("key_err_code", 0);
-    paramVarArgs = (Bankcard)this.qlV.kke.getParcelable("key_bankcard");
-    if (paramVarArgs != null)
-    {
-      if (o.bVA().Qp(paramVarArgs.field_bankcardType) != null)
-      {
-        bTP();
-        return false;
-      }
-      this.wBd.a(new t("", "", null), true, 1);
+      AppMethodBeat.o(45888);
       return false;
     }
-    y.i("MicroMsg.PayProcess", "directToBindNew()");
-    this.qlV.kke.putInt("key_pay_flag", 2);
-    this.qlV.a(this.gfb, 0, this.qlV.kke);
-    return false;
+    AppMethodBeat.o(45888);
+    return true;
+  }
+  
+  public final boolean p(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(45889);
+    u localu = (u)paramVarArgs[0];
+    Orders localOrders = (Orders)b.q(this.tVh).getParcelable("key_orders");
+    if ((localu == null) || (localOrders == null))
+    {
+      ab.e("MicroMsg.CgiManager", "empty verify or orders");
+      paramVarArgs = null;
+    }
+    for (;;)
+    {
+      if (paramVarArgs != null) {
+        this.AXB.a(paramVarArgs, true, 1);
+      }
+      AppMethodBeat.o(45889);
+      return true;
+      PayInfo localPayInfo = localu.pVo;
+      paramVarArgs = "";
+      if (localPayInfo != null)
+      {
+        ab.i("MicroMsg.CgiManager", "get reqKey from payInfo");
+        paramVarArgs = localPayInfo.cnI;
+      }
+      Object localObject = paramVarArgs;
+      if (bo.isNullOrNil(paramVarArgs))
+      {
+        ab.i("MicroMsg.CgiManager", "get reqKey from orders");
+        localObject = localOrders.cnI;
+      }
+      if (bo.isNullOrNil((String)localObject))
+      {
+        ab.i("MicroMsg.CgiManager", "empty reqKey!");
+        paramVarArgs = new j(localu, localOrders);
+      }
+      else
+      {
+        if (localPayInfo != null) {
+          ab.d("MicroMsg.CgiManager", "reqKey: %s, %s", new Object[] { localPayInfo.cnI, localOrders.cnI });
+        }
+        ab.i("MicroMsg.CgiManager", "verifyreg reqKey: %s", new Object[] { localObject });
+        ab.i("MicroMsg.CgiManager", "verifyreg go new split cgi");
+        if (((String)localObject).startsWith("sns_aa_")) {
+          paramVarArgs = new a(localu, localOrders);
+        } else if (((String)localObject).startsWith("sns_tf_")) {
+          paramVarArgs = new h(localu, localOrders);
+        } else if (((String)localObject).startsWith("sns_ff_")) {
+          paramVarArgs = new com.tencent.mm.plugin.wallet.pay.a.e.c(localu, localOrders);
+        } else if (((String)localObject).startsWith("ts_")) {
+          paramVarArgs = new d(localu, localOrders);
+        } else if (((String)localObject).startsWith("sns_")) {
+          paramVarArgs = new f(localu, localOrders);
+        } else if (((String)localObject).startsWith("up_")) {
+          paramVarArgs = new com.tencent.mm.plugin.wallet.pay.a.e.i(localu, localOrders);
+        } else if (((String)localObject).startsWith("seb_ff_")) {
+          paramVarArgs = new e(localu, localOrders);
+        } else if (((String)localObject).startsWith("tax_")) {
+          paramVarArgs = new g(localu, localOrders);
+        } else if (((String)localObject).startsWith("dc_")) {
+          paramVarArgs = new com.tencent.mm.plugin.wallet.pay.a.e.b(localu, localOrders);
+        } else {
+          paramVarArgs = new j(localu, localOrders);
+        }
+      }
+    }
   }
 }
 

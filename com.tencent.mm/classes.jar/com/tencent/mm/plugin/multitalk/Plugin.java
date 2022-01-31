@@ -1,22 +1,26 @@
 package com.tencent.mm.plugin.multitalk;
 
-import com.tencent.mm.model.ar;
-import com.tencent.mm.plugin.multitalk.a.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
+import com.tencent.mm.plugin.multitalk.model.p;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
     return null;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    return new p();
+    AppMethodBeat.i(53878);
+    p localp = new p();
+    AppMethodBeat.o(53878);
+    return localp;
   }
   
   public b getContactWidgetFactory()

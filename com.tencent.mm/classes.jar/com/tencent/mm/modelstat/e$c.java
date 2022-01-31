@@ -1,35 +1,48 @@
 package com.tencent.mm.modelstat;
 
 import android.net.wifi.WifiManager;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.List;
 
 final class e$c
 {
-  WifiManager bci;
-  int eCN = 0;
-  int eDo = 0;
-  boolean eDp = false;
-  List<String> eDq = new ArrayList();
-  long startTime = 0L;
-  Thread thread = com.tencent.mm.sdk.f.e.b(new e.c.1(this), "MicroMsg.IndoorReporter_WIFI_Scan");
+  WifiManager bsO;
+  int fSE;
+  int fTf;
+  boolean fTg;
+  List<String> fTh;
+  long startTime;
+  Thread thread;
   
-  e$c(e parame) {}
-  
-  public final String Rr()
+  e$c(e parame)
   {
-    this.eDp = false;
+    AppMethodBeat.i(78724);
+    this.fTf = 0;
+    this.fSE = 0;
+    this.fTg = false;
+    this.startTime = 0L;
+    this.fTh = new ArrayList();
+    this.thread = d.h(new e.c.1(this), "MicroMsg.IndoorReporter_WIFI_Scan");
+    AppMethodBeat.o(78724);
+  }
+  
+  public final String akA()
+  {
+    AppMethodBeat.i(78725);
+    this.fTg = false;
     try
     {
       if ((this.thread != null) && (this.thread.isAlive())) {
         this.thread.join(500L);
       }
-      String str = this.eDq.size() + ";#";
+      String str = this.fTh.size() + ";#";
       int i = 0;
-      while (i < this.eDq.size())
+      while (i < this.fTh.size())
       {
-        str = str + (String)this.eDq.get(i) + "#";
+        str = str + (String)this.fTh.get(i) + "#";
         i += 1;
       }
     }
@@ -37,8 +50,9 @@ final class e$c
     {
       for (;;)
       {
-        y.e("MicroMsg.IndoorReporter", "stop, join Thread failed:%s ", new Object[] { localException.getMessage() });
+        ab.e("MicroMsg.IndoorReporter", "stop, join Thread failed:%s ", new Object[] { localException.getMessage() });
       }
+      AppMethodBeat.o(78725);
       return localException;
     }
   }

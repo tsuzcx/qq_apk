@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ui.widget.RoundedCornerRelativeLayout android:id="@id/e67" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/e68" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:layout_alignParentLeft="true" />
-    <include android:id="@id/e69" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" layout="@layout/apu" />
-    <LinearLayout android:orientation="vertical" android:id="@id/e6_" android:paddingLeft="20.0dip" android:paddingTop="20.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-        <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/a25" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/e6a" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/a25" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/e6b" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/e6c" android:paddingLeft="18.0dip" android:paddingTop="16.0dip" android:paddingRight="18.0dip" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/a25" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/e6d" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
-        <TextView android:textSize="15.0sp" android:textColor="@color/a25" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/e6e" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
-    </LinearLayout>
-</com.tencent.mm.plugin.sns.ui.widget.RoundedCornerRelativeLayout>
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:gravity="center" android:id="@id/edx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/n_" android:text="@string/e7r" android:singleLine="false" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <EditText android:textColor="@color/w_" android:id="@id/edy" android:paddingRight="25.0dip" style="@style/ml" />
+        <TextView android:textSize="@dimen/ko" android:textColor="@color/md" android:layout_gravity="bottom|center|right" android:id="@id/b8l" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="4.0dip" />
+    </FrameLayout>
+</LinearLayout>

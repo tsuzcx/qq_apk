@@ -7,9 +7,9 @@ import com.tencent.mm.plugin.music.f.c.a;
 public abstract interface b
   extends a
 {
-  public abstract AudioTrack Q(int paramInt1, int paramInt2, int paramInt3);
+  public abstract AudioTrack ab(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract MediaPlayer bmX();
+  public abstract MediaPlayer bVt();
 }
 
 

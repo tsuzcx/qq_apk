@@ -5,7 +5,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.ListView;
-import com.tencent.mm.R.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MainSightSelectContactView$1
   implements Runnable
@@ -14,43 +14,46 @@ final class MainSightSelectContactView$1
   
   public final void run()
   {
-    if ((MainSightSelectContactView.a(this.oiv) == MainSightSelectContactView.b(this.oiv).getCount()) && (MainSightSelectContactView.c(this.oiv).getViewHeight() >= MainSightSelectContactView.d(this.oiv))) {}
-    int i;
-    label225:
-    do
+    AppMethodBeat.i(25083);
+    if ((MainSightSelectContactView.a(this.qWI) == MainSightSelectContactView.b(this.qWI).getCount()) && (MainSightSelectContactView.c(this.qWI).getViewHeight() >= MainSightSelectContactView.d(this.qWI)))
     {
+      AppMethodBeat.o(25083);
       return;
-      if (MainSightSelectContactView.e(this.oiv) != null) {
-        MainSightSelectContactView.f(this.oiv).removeFooterView(MainSightSelectContactView.e(this.oiv));
-      }
-      i = MainSightSelectContactView.d(this.oiv);
-      if ((MainSightSelectContactView.d(this.oiv) < 0) || (MainSightSelectContactView.d(this.oiv) > MainSightSelectContactView.c(this.oiv).getViewHeight())) {
-        i = MainSightSelectContactView.c(this.oiv).getViewHeight();
-      }
-      MainSightSelectContactView.a(this.oiv, MainSightSelectContactView.b(this.oiv).getCount());
-      MainSightSelectContactView.b(this.oiv, i);
-      int j = 0;
-      int k = 0;
-      for (;;)
+    }
+    if (MainSightSelectContactView.e(this.qWI) != null) {
+      MainSightSelectContactView.f(this.qWI).removeFooterView(MainSightSelectContactView.e(this.qWI));
+    }
+    int i = MainSightSelectContactView.d(this.qWI);
+    if ((MainSightSelectContactView.d(this.qWI) < 0) || (MainSightSelectContactView.d(this.qWI) > MainSightSelectContactView.c(this.qWI).getViewHeight())) {
+      i = MainSightSelectContactView.c(this.qWI).getViewHeight();
+    }
+    MainSightSelectContactView.a(this.qWI, MainSightSelectContactView.b(this.qWI).getCount());
+    MainSightSelectContactView.b(this.qWI, i);
+    int j = 0;
+    int k = 0;
+    Object localObject;
+    while (j < MainSightSelectContactView.b(this.qWI).getCount())
+    {
+      localObject = MainSightSelectContactView.b(this.qWI).getView(j, null, MainSightSelectContactView.f(this.qWI));
+      ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
+      k += ((View)localObject).getMeasuredHeight();
+      if (k >= i)
       {
-        if (j >= MainSightSelectContactView.b(this.oiv).getCount()) {
-          break label225;
-        }
-        localObject = MainSightSelectContactView.b(this.oiv).getView(j, null, MainSightSelectContactView.f(this.oiv));
-        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-        k += ((View)localObject).getMeasuredHeight();
-        if (k >= i) {
-          break;
-        }
-        j += 1;
+        AppMethodBeat.o(25083);
+        return;
       }
-      i -= k;
-    } while (i <= 0);
-    MainSightSelectContactView.a(this.oiv, new View(this.oiv.getContext()));
-    Object localObject = new AbsListView.LayoutParams(-1, i);
-    MainSightSelectContactView.e(this.oiv).setLayoutParams((ViewGroup.LayoutParams)localObject);
-    MainSightSelectContactView.e(this.oiv).setBackgroundResource(R.e.black);
-    MainSightSelectContactView.f(this.oiv).addFooterView(MainSightSelectContactView.e(this.oiv));
+      j += 1;
+    }
+    i -= k;
+    if (i > 0)
+    {
+      MainSightSelectContactView.a(this.qWI, new View(this.qWI.getContext()));
+      localObject = new AbsListView.LayoutParams(-1, i);
+      MainSightSelectContactView.e(this.qWI).setLayoutParams((ViewGroup.LayoutParams)localObject);
+      MainSightSelectContactView.e(this.qWI).setBackgroundResource(2131689763);
+      MainSightSelectContactView.f(this.qWI).addFooterView(MainSightSelectContactView.e(this.qWI));
+    }
+    AppMethodBeat.o(25083);
   }
 }
 

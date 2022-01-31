@@ -1,37 +1,54 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class k$a
 {
-  private static final Pattern fsW = Pattern.compile(".*#.*wechat_redirect");
-  private String rfY = null;
+  private static final Pattern hpo;
+  private String keN = null;
+  
+  static
+  {
+    AppMethodBeat.i(9965);
+    hpo = Pattern.compile(".*#.*wechat_redirect");
+    AppMethodBeat.o(9965);
+  }
   
   public k$a(String paramString)
   {
-    this.rfY = paramString;
+    this.keN = paramString;
   }
   
-  public final int TB(String paramString)
+  public final int agV(String paramString)
   {
-    if (bk.bl(paramString)) {
-      y.e("MicroMsg.MMWebViewClient", "getReason fail, url is null");
-    }
-    while (paramString.equals(this.rfY)) {
+    AppMethodBeat.i(9964);
+    if (bo.isNullOrNil(paramString))
+    {
+      ab.e("MicroMsg.MMWebViewClient", "getReason fail, url is null");
+      AppMethodBeat.o(9964);
       return 0;
     }
-    if (fsW.matcher(paramString).find()) {
+    if (paramString.equals(this.keN))
+    {
+      AppMethodBeat.o(9964);
+      return 0;
+    }
+    if (hpo.matcher(paramString).find())
+    {
+      AppMethodBeat.o(9964);
       return 2;
     }
+    AppMethodBeat.o(9964);
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.k.a
  * JD-Core Version:    0.7.0.1
  */

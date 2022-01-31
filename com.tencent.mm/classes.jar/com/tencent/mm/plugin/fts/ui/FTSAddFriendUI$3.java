@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fts.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSAddFriendUI$3
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class FTSAddFriendUI$3
   
   public final void onClick(View paramView)
   {
-    FTSAddFriendUI.a(this.kAI);
+    AppMethodBeat.i(61727);
+    FTSAddFriendUI.a(this.mWA);
+    AppMethodBeat.o(61727);
   }
 }
 

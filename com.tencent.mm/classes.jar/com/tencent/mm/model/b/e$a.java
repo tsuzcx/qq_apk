@@ -2,9 +2,9 @@ package com.tencent.mm.model.b;
 
 public abstract interface e$a
 {
-  public abstract void IM();
+  public abstract void abJ();
   
-  public abstract void IN();
+  public abstract void abK();
 }
 
 

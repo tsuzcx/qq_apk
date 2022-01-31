@@ -1,16 +1,12 @@
 package com.tencent.mm.plugin.record.ui;
 
-import com.tencent.mm.ui.tools.MMGestureGallery.c;
+import android.util.Pair;
+import com.tencent.mm.vending.g.d.b;
 
 final class RecordMsgImageUI$5
-  implements MMGestureGallery.c
+  implements d.b<Pair<String, String>>
 {
-  RecordMsgImageUI$5(RecordMsgImageUI paramRecordMsgImageUI) {}
-  
-  public final void aRg()
-  {
-    RecordMsgImageUI.d(this.nuo);
-  }
+  RecordMsgImageUI$5(RecordMsgImageUI paramRecordMsgImageUI, RecordMsgImageUI.b paramb) {}
 }
 
 

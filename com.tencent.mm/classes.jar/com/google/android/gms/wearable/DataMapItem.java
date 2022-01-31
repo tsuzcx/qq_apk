@@ -2,40 +2,54 @@ package com.google.android.gms.wearable;
 
 import android.net.Uri;
 import android.util.Base64;
-import com.google.android.gms.internal.zzblc;
-import com.google.android.gms.internal.zzblc.zza;
-import com.google.android.gms.internal.zzbld;
-import com.google.android.gms.internal.zzbxs;
+import com.google.android.gms.common.internal.Asserts;
+import com.google.android.gms.common.util.VisibleForTesting;
+import com.google.android.gms.internal.wearable.zze;
+import com.google.android.gms.internal.wearable.zzf;
+import com.google.android.gms.internal.wearable.zzg;
+import com.google.android.gms.internal.wearable.zzs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@VisibleForTesting
 public class DataMapItem
 {
-  private final Uri mUri;
-  private final DataMap zzbSX;
+  private final Uri uri;
+  private final DataMap zzr;
   
   private DataMapItem(DataItem paramDataItem)
   {
-    this.mUri = paramDataItem.getUri();
-    this.zzbSX = zza((DataItem)paramDataItem.freeze());
+    AppMethodBeat.i(70863);
+    this.uri = paramDataItem.getUri();
+    this.zzr = zza((DataItem)paramDataItem.freeze());
+    AppMethodBeat.o(70863);
   }
   
   public static DataMapItem fromDataItem(DataItem paramDataItem)
   {
-    if (paramDataItem == null) {
-      throw new IllegalStateException("provided dataItem is null");
-    }
-    return new DataMapItem(paramDataItem);
+    AppMethodBeat.i(70862);
+    Asserts.checkNotNull(paramDataItem, "dataItem must not be null");
+    paramDataItem = new DataMapItem(paramDataItem);
+    AppMethodBeat.o(70862);
+    return paramDataItem;
   }
   
-  private DataMap zza(DataItem paramDataItem)
+  private static DataMap zza(DataItem paramDataItem)
   {
-    if ((paramDataItem.getData() == null) && (paramDataItem.getAssets().size() > 0)) {
-      throw new IllegalArgumentException("Cannot create DataMapItem from a DataItem  that wasn't made with DataMapItem.");
+    AppMethodBeat.i(70864);
+    if ((paramDataItem.getData() == null) && (paramDataItem.getAssets().size() > 0))
+    {
+      paramDataItem = new IllegalArgumentException("Cannot create DataMapItem from a DataItem  that wasn't made with DataMapItem.");
+      AppMethodBeat.o(70864);
+      throw paramDataItem;
     }
-    if (paramDataItem.getData() == null) {
-      return new DataMap();
+    if (paramDataItem.getData() == null)
+    {
+      paramDataItem = new DataMap();
+      AppMethodBeat.o(70864);
+      return paramDataItem;
     }
     try
     {
@@ -43,7 +57,7 @@ public class DataMapItem
       j = paramDataItem.getAssets().size();
       i = 0;
     }
-    catch (zzbxs localzzbxs)
+    catch (zzs localzzs)
     {
       for (;;)
       {
@@ -51,19 +65,22 @@ public class DataMapItem
         int j;
         int i;
         Object localObject2 = String.valueOf(paramDataItem.getUri());
-        String str = String.valueOf(Base64.encodeToString(paramDataItem.getData(), 0));
+        String str = Base64.encodeToString(paramDataItem.getData(), 0);
         new StringBuilder(String.valueOf(localObject2).length() + 50 + String.valueOf(str).length()).append("Unable to parse datamap from dataItem. uri=").append((String)localObject2).append(", data=").append(str);
         paramDataItem = String.valueOf(paramDataItem.getUri());
-        throw new IllegalStateException(String.valueOf(paramDataItem).length() + 44 + "Unable to parse datamap from dataItem.  uri=" + paramDataItem, localzzbxs);
-        localzzbxs.add(Asset.createFromRef(((DataItemAsset)localObject2).getId()));
+        paramDataItem = new IllegalStateException(String.valueOf(paramDataItem).length() + 44 + "Unable to parse datamap from dataItem.  uri=" + paramDataItem, localzzs);
+        AppMethodBeat.o(70864);
+        throw paramDataItem;
+        localzzs.add(Asset.createFromRef(((DataItemAsset)localObject2).getId()));
         i += 1;
       }
-      DataMap localDataMap = zzblc.zza(new zzblc.zza(zzbld.zzS(paramDataItem.getData()), localzzbxs));
+      DataMap localDataMap = zze.zza(new zzf(zzg.zza(paramDataItem.getData()), localzzs));
+      AppMethodBeat.o(70864);
       return localDataMap;
     }
     catch (NullPointerException localNullPointerException)
     {
-      break label159;
+      break label180;
     }
     if (i < j)
     {
@@ -71,24 +88,26 @@ public class DataMapItem
       if (localObject2 == null)
       {
         localObject1 = String.valueOf(paramDataItem);
-        throw new IllegalStateException(String.valueOf(localObject1).length() + 64 + "Cannot find DataItemAsset referenced in data at " + i + " for " + (String)localObject1);
+        localObject1 = new IllegalStateException(String.valueOf(localObject1).length() + 64 + "Cannot find DataItemAsset referenced in data at " + i + " for " + (String)localObject1);
+        AppMethodBeat.o(70864);
+        throw ((Throwable)localObject1);
       }
     }
   }
   
   public DataMap getDataMap()
   {
-    return this.zzbSX;
+    return this.zzr;
   }
   
   public Uri getUri()
   {
-    return this.mUri;
+    return this.uri;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.DataMapItem
  * JD-Core Version:    0.7.0.1
  */

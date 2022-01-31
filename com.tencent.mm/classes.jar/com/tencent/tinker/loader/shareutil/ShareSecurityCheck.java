@@ -9,23 +9,23 @@ import java.util.HashMap;
 
 public class ShareSecurityCheck
 {
-  private static String hXW = null;
+  private static String Bwj = null;
+  public final HashMap<String, String> Bwk;
+  private final HashMap<String, String> Bwl;
   private final Context mContext;
-  public final HashMap<String, String> wZE;
-  private final HashMap<String, String> wZF;
   
   public ShareSecurityCheck(Context paramContext)
   {
     this.mContext = paramContext;
-    this.wZE = new HashMap();
-    this.wZF = new HashMap();
-    if (hXW == null)
+    this.Bwk = new HashMap();
+    this.Bwl = new HashMap();
+    if (Bwj == null)
     {
       paramContext = this.mContext;
       try
       {
-        paramContext = SharePatchFileUtil.ac(paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 64).signatures[0].toByteArray());
-        hXW = paramContext;
+        paramContext = SharePatchFileUtil.ct(paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 64).signatures[0].toByteArray());
+        Bwj = paramContext;
         if (paramContext == null) {
           throw new TinkerRuntimeException("get public key md5 is null");
         }
@@ -36,9 +36,9 @@ public class ShareSecurityCheck
       }
       finally
       {
-        SharePatchFileUtil.S(null);
+        SharePatchFileUtil.V(null);
       }
-      SharePatchFileUtil.S(null);
+      SharePatchFileUtil.V(null);
     }
   }
   
@@ -50,7 +50,7 @@ public class ShareSecurityCheck
       while (i >= 0) {
         try
         {
-          boolean bool = hXW.equals(SharePatchFileUtil.ac(paramArrayOfCertificate[i].getEncoded()));
+          boolean bool = Bwj.equals(SharePatchFileUtil.ct(paramArrayOfCertificate[i].getEncoded()));
           if (bool) {
             return true;
           }
@@ -66,11 +66,11 @@ public class ShareSecurityCheck
   }
   
   /* Error */
-  public final boolean al(File paramFile)
+  public final boolean at(File paramFile)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 107	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:ae	(Ljava/io/File;)Z
+    //   1: invokestatic 107	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:an	(Ljava/io/File;)Z
     //   4: ifne +5 -> 9
     //   7: iconst_0
     //   8: ireturn
@@ -103,26 +103,26 @@ public class ShareSecurityCheck
     //   71: invokevirtual 142	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   74: ifeq -49 -> 25
     //   77: aload_0
-    //   78: getfield 30	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:wZE	Ljava/util/HashMap;
+    //   78: getfield 30	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:Bwk	Ljava/util/HashMap;
     //   81: aload 6
     //   83: aload 4
     //   85: aload 5
-    //   87: invokestatic 146	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:b	(Ljava/util/jar/JarFile;Ljava/util/jar/JarEntry;)Ljava/lang/String;
-    //   90: invokevirtual 150	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   87: invokestatic 145	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/jar/JarFile;Ljava/util/jar/JarEntry;)Ljava/lang/String;
+    //   90: invokevirtual 149	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   93: pop
     //   94: aload 5
-    //   96: invokevirtual 154	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
+    //   96: invokevirtual 153	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
     //   99: astore 5
     //   101: aload 5
     //   103: ifnull +14 -> 117
     //   106: aload_1
     //   107: aload 5
-    //   109: invokestatic 156	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:a	(Ljava/io/File;[Ljava/security/cert/Certificate;)Z
+    //   109: invokestatic 155	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:a	(Ljava/io/File;[Ljava/security/cert/Certificate;)Z
     //   112: istore_2
     //   113: iload_2
     //   114: ifne -89 -> 25
     //   117: aload 4
-    //   119: invokevirtual 159	java/util/jar/JarFile:close	()V
+    //   119: invokevirtual 158	java/util/jar/JarFile:close	()V
     //   122: iconst_0
     //   123: ireturn
     //   124: astore_3
@@ -131,7 +131,7 @@ public class ShareSecurityCheck
     //   129: pop
     //   130: goto -8 -> 122
     //   133: aload 4
-    //   135: invokevirtual 159	java/util/jar/JarFile:close	()V
+    //   135: invokevirtual 158	java/util/jar/JarFile:close	()V
     //   138: iconst_1
     //   139: ireturn
     //   140: astore_3
@@ -144,7 +144,7 @@ public class ShareSecurityCheck
     //   152: astore_3
     //   153: new 68	com/tencent/tinker/loader/TinkerRuntimeException
     //   156: dup
-    //   157: ldc 161
+    //   157: ldc 160
     //   159: iconst_2
     //   160: anewarray 4	java/lang/Object
     //   163: dup
@@ -155,10 +155,10 @@ public class ShareSecurityCheck
     //   170: dup
     //   171: iconst_1
     //   172: aload_1
-    //   173: invokevirtual 165	java/io/File:length	()J
-    //   176: invokestatic 171	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   173: invokevirtual 164	java/io/File:length	()J
+    //   176: invokestatic 170	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   179: aastore
-    //   180: invokestatic 175	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   180: invokestatic 174	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   183: aload 4
     //   185: invokespecial 78	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   188: athrow
@@ -170,7 +170,7 @@ public class ShareSecurityCheck
     //   197: aload 4
     //   199: ifnull +8 -> 207
     //   202: aload 4
-    //   204: invokevirtual 159	java/util/jar/JarFile:close	()V
+    //   204: invokevirtual 158	java/util/jar/JarFile:close	()V
     //   207: aload_3
     //   208: athrow
     //   209: astore 4
@@ -229,12 +229,12 @@ public class ShareSecurityCheck
     //   106	113	230	java/lang/Exception
   }
   
-  public final HashMap<String, String> cQO()
+  public final HashMap<String, String> dWD()
   {
-    if (!this.wZF.isEmpty()) {
-      return this.wZF;
+    if (!this.Bwl.isEmpty()) {
+      return this.Bwl;
     }
-    Object localObject = (String)this.wZE.get("assets/package_meta.txt");
+    Object localObject = (String)this.Bwk.get("assets/package_meta.txt");
     if (localObject == null) {
       return null;
     }
@@ -248,12 +248,12 @@ public class ShareSecurityCheck
       {
         arrayOfString = arrayOfString.split("=", 2);
         if ((arrayOfString != null) && (arrayOfString.length >= 2)) {
-          this.wZF.put(arrayOfString[0].trim(), arrayOfString[1].trim());
+          this.Bwl.put(arrayOfString[0].trim(), arrayOfString[1].trim());
         }
       }
       i += 1;
     }
-    return this.wZF;
+    return this.Bwl;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bj;
 
 final class WebViewUI$2
-  extends bf<String>
+  extends bj<String>
 {
   WebViewUI$2(WebViewUI paramWebViewUI, String paramString)
   {
-    super(1000L, paramString, (byte)0);
+    super(500L, paramString, (byte)0);
   }
 }
 

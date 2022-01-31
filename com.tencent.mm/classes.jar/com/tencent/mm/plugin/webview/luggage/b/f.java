@@ -1,10 +1,8 @@
 package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.content.Context;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.plugin.webview.ui.tools.bag.h;
 import com.tencent.mm.ui.base.l;
 
 public final class f
@@ -17,32 +15,38 @@ public final class f
   
   public final void a(Context paramContext, e parame)
   {
-    paramContext = parame.cba();
+    AppMethodBeat.i(6434);
+    paramContext = parame.dbd();
     if (paramContext != null)
     {
-      if (!paramContext.ceZ()) {
-        paramContext.lo(false);
+      if (!paramContext.dfg())
+      {
+        paramContext.ow(false);
+        com.tencent.mm.plugin.report.service.h.qsU.cT(982, 4);
+        AppMethodBeat.o(6434);
+        return;
       }
+      paramContext.ow(true);
+      com.tencent.mm.plugin.report.service.h.qsU.cT(982, 5);
     }
-    else {
-      return;
-    }
-    paramContext.lo(true);
+    AppMethodBeat.o(6434);
   }
   
   public final void a(Context paramContext, e parame, l paraml)
   {
-    h localh = parame.cba();
-    if ((parame.caZ()) && (localh != null))
+    AppMethodBeat.i(6433);
+    com.tencent.mm.plugin.webview.ui.tools.bag.h localh = parame.dbd();
+    if ((parame.dbc()) && (localh != null))
     {
-      if (!localh.ceZ()) {
-        paraml.a(35, paramContext.getString(R.l.readerapp_minimize), R.k.bottomsheet_icon_webview_minimize);
+      if (!localh.dfg())
+      {
+        paraml.a(35, paramContext.getString(2131302297), 2131231041);
+        AppMethodBeat.o(6433);
+        return;
       }
+      paraml.a(35, paramContext.getString(2131302287), 2131231039);
     }
-    else {
-      return;
-    }
-    paraml.a(35, paramContext.getString(R.l.readerapp_cancel_minimize), R.k.bottomsheet_icon_webview_cancel_minimize);
+    AppMethodBeat.o(6433);
   }
 }
 

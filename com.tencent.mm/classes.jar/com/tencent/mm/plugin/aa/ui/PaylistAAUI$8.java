@@ -4,42 +4,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.ui.widget.a.e.a;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.widget.b.e.a;
 
 final class PaylistAAUI$8
   implements a.a
 {
   PaylistAAUI$8(PaylistAAUI paramPaylistAAUI) {}
   
-  public final void Vx()
+  public final void aoW()
   {
-    int i = a.i.urge_aa_confirm_msg;
-    if (!s.fn(PaylistAAUI.a(this.eZM))) {
-      i = a.i.urge_aa_confirm_msg_single;
-    }
-    for (;;)
+    AppMethodBeat.i(40873);
+    if (!t.lA(PaylistAAUI.a(this.grF))) {}
+    for (int i = 2131304450;; i = 2131304449)
     {
-      e.a locala = new e.a(this.eZM);
-      locala.aeF(this.eZM.getString(a.i.urge_aa_confirm_msg_title));
-      View localView = y.gt(this.eZM).inflate(a.g.urge_aa_dialog_centerview, null);
-      ImageView localImageView = (ImageView)localView.findViewById(a.f.image);
-      TextView localTextView = (TextView)localView.findViewById(a.f.text);
-      localImageView.setImageResource(a.e.paylist_urge_atall_hint);
+      e.a locala = new e.a(this.grF);
+      locala.aj(this.grF.getString(2131304451));
+      View localView = w.hM(this.grF).inflate(2130971055, null);
+      ImageView localImageView = (ImageView)localView.findViewById(2131820629);
+      TextView localTextView = (TextView)localView.findViewById(2131820676);
+      localImageView.setImageResource(2130839908);
       localTextView.setText(i);
-      locala.ek(localView);
-      locala.Iu(a.i.app_send);
-      locala.wnw = this.eZM.getString(a.i.app_cancel);
-      locala.wny = false;
+      locala.fv(localView);
+      locala.Rm(2131297067);
+      locala.AHt = this.grF.getString(2131296888);
+      locala.AHv = false;
       locala.a(new PaylistAAUI.8.1(this), new PaylistAAUI.8.2(this));
       locala.show();
-      h.nFQ.f(13721, new Object[] { Integer.valueOf(4), Integer.valueOf(7) });
+      h.qsU.e(13721, new Object[] { Integer.valueOf(4), Integer.valueOf(7) });
+      AppMethodBeat.o(40873);
       return;
     }
   }

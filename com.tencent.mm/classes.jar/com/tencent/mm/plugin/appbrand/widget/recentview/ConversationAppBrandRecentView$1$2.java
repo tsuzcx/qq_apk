@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.appbrand.widget.recentview;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 import com.tencent.mm.plugin.appbrand.appusage.af;
 import com.tencent.mm.plugin.appbrand.appusage.ag;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.n.d;
 
 final class ConversationAppBrandRecentView$1$2
@@ -15,26 +16,28 @@ final class ConversationAppBrandRecentView$1$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    if (ConversationAppBrandRecentView.c(this.hDi.hDh) != null) {
-      ConversationAppBrandRecentView.c(this.hDi.hDh).a(paramMenuItem, this.hrS.position, this.hrS);
+    AppMethodBeat.i(134357);
+    if (ConversationAppBrandRecentView.c(this.jvJ.jvI) != null) {
+      ConversationAppBrandRecentView.c(this.jvJ.jvI).a(paramMenuItem, this.jio.position, this.jio);
     }
-    if ((paramMenuItem.getItemId() == 1) && (this.hrS.position >= 0))
+    if ((paramMenuItem.getItemId() == 1) && (this.jio.position >= 0))
     {
-      ConversationAppBrandRecentView.d(this.hDi.hDh);
-      y.i("MicroMsg.ConversationAppBrandRecentView", "[onItemLongClick] Delete position:%s, mType: %s", new Object[] { Integer.valueOf(this.hrS.position), this.hDi.hDh.hrp });
-      if (this.hDi.hDh.hrp != AppBrandRecentView.f.hBX) {
-        break label213;
+      ConversationAppBrandRecentView.d(this.jvJ.jvI);
+      ab.i("MicroMsg.ConversationAppBrandRecentView", "[onItemLongClick] Delete position:%s, mType: %s", new Object[] { Integer.valueOf(this.jio.position), this.jvJ.jvI.jhO });
+      if (this.jvJ.jvI.jhO != AppBrandRecentView.f.juq) {
+        break label223;
       }
-      ((ag)g.r(ag.class)).as(this.hrS.hqw.username, this.hrS.hqw.fJy);
+      ((ag)g.E(ag.class)).aF(this.jio.jfk.username, this.jio.jfk.hcr);
     }
     for (;;)
     {
-      y.i("MicroMsg.ConversationAppBrandRecentView", "alvinluo Delete %s, pos: %d", new Object[] { this.hrS.hqw.nickname, Integer.valueOf(this.hrS.position) });
-      this.hDi.hDh.ni(this.hrS.position);
+      ab.i("MicroMsg.ConversationAppBrandRecentView", "alvinluo Delete %s, pos: %d", new Object[] { this.jio.jfk.nickname, Integer.valueOf(this.jio.position) });
+      this.jvJ.jvI.qP(this.jio.position);
+      AppMethodBeat.o(134357);
       return;
-      label213:
-      if (this.hDi.hDh.hrp == AppBrandRecentView.f.hBY) {
-        ((af)g.r(af.class)).ar(this.hrS.hqw.username, this.hrS.hqw.fJy);
+      label223:
+      if (this.jvJ.jvI.jhO == AppBrandRecentView.f.jur) {
+        ((af)g.E(af.class)).aE(this.jio.jfk.username, this.jio.jfk.hcr);
       }
     }
   }

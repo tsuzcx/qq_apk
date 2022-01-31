@@ -11,29 +11,30 @@ import android.view.MenuItem.OnActionExpandListener;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.SubMenu;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class m
   implements MenuItem
 {
-  private int Th;
-  private int To;
-  public String gis;
+  private int TR;
+  private int TY;
+  public String hBM;
   private int iconId;
   private Intent intent;
-  public CharSequence kDf = null;
   private Context mContext;
-  public boolean tMS = false;
+  public CharSequence mZb = null;
   private CharSequence title;
-  private int uWE;
-  private Drawable uWF;
-  public ContextMenu.ContextMenuInfo uWG;
-  private MenuItem.OnMenuItemClickListener uWH;
+  public boolean xTc = false;
+  private int zkX;
+  private Drawable zkY;
+  public ContextMenu.ContextMenuInfo zkZ;
+  private MenuItem.OnMenuItemClickListener zla;
   
   public m(Context paramContext, int paramInt1, int paramInt2)
   {
     this.mContext = paramContext;
-    this.To = paramInt1;
-    this.Th = paramInt2;
+    this.TY = paramInt1;
+    this.TR = paramInt2;
   }
   
   public final boolean collapseActionView()
@@ -63,19 +64,26 @@ public final class m
   
   public final int getGroupId()
   {
-    return this.Th;
+    return this.TR;
   }
   
   public final Drawable getIcon()
   {
-    if (this.uWF == null)
+    AppMethodBeat.i(112556);
+    if (this.zkY == null)
     {
-      if ((this.iconId != 0) && (this.mContext != null)) {
-        return this.mContext.getResources().getDrawable(this.iconId);
+      if ((this.iconId != 0) && (this.mContext != null))
+      {
+        localDrawable = this.mContext.getResources().getDrawable(this.iconId);
+        AppMethodBeat.o(112556);
+        return localDrawable;
       }
+      AppMethodBeat.o(112556);
       return null;
     }
-    return this.uWF;
+    Drawable localDrawable = this.zkY;
+    AppMethodBeat.o(112556);
+    return localDrawable;
   }
   
   public final Intent getIntent()
@@ -85,12 +93,12 @@ public final class m
   
   public final int getItemId()
   {
-    return this.To;
+    return this.TY;
   }
   
   public final ContextMenu.ContextMenuInfo getMenuInfo()
   {
-    return this.uWG;
+    return this.zkZ;
   }
   
   public final char getNumericShortcut()
@@ -110,14 +118,21 @@ public final class m
   
   public final CharSequence getTitle()
   {
+    AppMethodBeat.i(112555);
     if (this.title == null)
     {
-      if ((this.uWE != 0) && (this.mContext != null)) {
-        return this.mContext.getString(this.uWE);
+      if ((this.zkX != 0) && (this.mContext != null))
+      {
+        localObject = this.mContext.getString(this.zkX);
+        AppMethodBeat.o(112555);
+        return localObject;
       }
+      AppMethodBeat.o(112555);
       return null;
     }
-    return this.title;
+    Object localObject = this.title;
+    AppMethodBeat.o(112555);
+    return localObject;
   }
   
   public final CharSequence getTitleCondensed()
@@ -157,9 +172,14 @@ public final class m
   
   public final boolean performClick()
   {
-    if (this.uWH != null) {
-      return this.uWH.onMenuItemClick(this);
+    AppMethodBeat.i(112557);
+    if (this.zla != null)
+    {
+      boolean bool = this.zla.onMenuItemClick(this);
+      AppMethodBeat.o(112557);
+      return bool;
     }
+    AppMethodBeat.o(112557);
     return false;
   }
   
@@ -206,7 +226,7 @@ public final class m
   
   public final MenuItem setIcon(Drawable paramDrawable)
   {
-    this.uWF = paramDrawable;
+    this.zkY = paramDrawable;
     return this;
   }
   
@@ -228,7 +248,7 @@ public final class m
   
   public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    this.uWH = paramOnMenuItemClickListener;
+    this.zla = paramOnMenuItemClickListener;
     return this;
   }
   
@@ -246,7 +266,7 @@ public final class m
   
   public final MenuItem setTitle(int paramInt)
   {
-    this.uWE = paramInt;
+    this.zkX = paramInt;
     return this;
   }
   
@@ -268,7 +288,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.m
  * JD-Core Version:    0.7.0.1
  */

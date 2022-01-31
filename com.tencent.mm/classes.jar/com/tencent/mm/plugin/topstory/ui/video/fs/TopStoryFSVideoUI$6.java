@@ -1,8 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
-import android.app.ProgressDialog;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.topstory.ui.video.e;
 
 final class TopStoryFSVideoUI$6
   implements Runnable
@@ -11,19 +10,18 @@ final class TopStoryFSVideoUI$6
   
   public final void run()
   {
-    TopStoryFSVideoUI.b(this.pHz).setVisibility(4);
-    TopStoryFSVideoUI.c(this.pHz).setVisibility(4);
-    this.pHz.pFa.smoothScrollBy(0, 3);
-    if (TopStoryFSVideoUI.d(this.pHz) != null)
-    {
-      TopStoryFSVideoUI.d(this.pHz).dismiss();
-      TopStoryFSVideoUI.e(this.pHz);
-    }
+    AppMethodBeat.i(1958);
+    i locali = this.tkZ.tkM;
+    int i = locali.getFootersCount();
+    int j = locali.getItemCount();
+    locali.cJy();
+    locali.aq(j - i, i);
+    AppMethodBeat.o(1958);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.TopStoryFSVideoUI.6
  * JD-Core Version:    0.7.0.1
  */

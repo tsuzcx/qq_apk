@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.location.ui;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RedirectUI$1
   implements Runnable
@@ -9,7 +10,9 @@ final class RedirectUI$1
   
   public final void run()
   {
-    RedirectUI.a(this.lFI, this.val$intent, this.kek, this.kel);
+    AppMethodBeat.i(113473);
+    RedirectUI.a(this.ocV, this.val$intent, this.myV, this.myW);
+    AppMethodBeat.o(113473);
   }
 }
 

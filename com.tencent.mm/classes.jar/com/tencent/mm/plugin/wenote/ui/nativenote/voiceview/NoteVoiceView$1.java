@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote.voiceview;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class NoteVoiceView$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class NoteVoiceView$1
   
   public final void run()
   {
-    NoteVoiceView.g(this.rNL).aRr();
+    AppMethodBeat.i(27210);
+    NoteVoiceView.g(this.vEp).Vf();
+    AppMethodBeat.o(27210);
   }
 }
 

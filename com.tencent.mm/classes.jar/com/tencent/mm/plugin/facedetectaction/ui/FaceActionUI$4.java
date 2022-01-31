@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.facedetectaction.ui;
 
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.al;
 
 final class FaceActionUI$4
   implements Runnable
@@ -12,12 +13,14 @@ final class FaceActionUI$4
   
   public final void run()
   {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)FaceActionUI.m(this.jWU).getLayoutParams();
-    int i = (int)(FaceActionUI.l(this.jWU).getHeight() * 0.4D) + (int)(FaceActionUI.l(this.jWU).getWidth() * 0.35D) + ap.fromDPToPix(this.jWU, 30);
+    AppMethodBeat.i(721);
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)FaceActionUI.m(this.mrl).getLayoutParams();
+    int i = (int)(FaceActionUI.l(this.mrl).getHeight() * 0.4D) + (int)(FaceActionUI.l(this.mrl).getWidth() * 0.35D) + al.fromDPToPix(this.mrl, 30);
     localMarginLayoutParams.topMargin = i;
-    y.i("MicroMsg.FaceActionUI", "topMargin：%d", new Object[] { Integer.valueOf(i) });
-    FaceActionUI.m(this.jWU).setLayoutParams(localMarginLayoutParams);
-    FaceActionUI.m(this.jWU).setVisibility(0);
+    ab.i("MicroMsg.FaceActionUI", "topMargin：%d", new Object[] { Integer.valueOf(i) });
+    FaceActionUI.m(this.mrl).setLayoutParams(localMarginLayoutParams);
+    FaceActionUI.m(this.mrl).setVisibility(0);
+    AppMethodBeat.o(721);
   }
 }
 

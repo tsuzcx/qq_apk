@@ -4,6 +4,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebViewStubTempUI$1
   extends ResultReceiver
@@ -15,20 +16,24 @@ final class WebViewStubTempUI$1
   
   protected final void onReceiveResult(int paramInt, Bundle paramBundle)
   {
+    AppMethodBeat.i(7218);
     switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      this.rkp.onClick(null, 0);
-      return;
     }
-    this.rkq.onClick(null, 0);
+    for (;;)
+    {
+      AppMethodBeat.o(7218);
+      return;
+      this.uZJ.onClick(null, 0);
+      AppMethodBeat.o(7218);
+      return;
+      this.uZK.onClick(null, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.stub.WebViewStubTempUI.1
  * JD-Core Version:    0.7.0.1
  */

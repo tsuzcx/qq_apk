@@ -1,7 +1,8 @@
 package com.tencent.mm.ui.conversation;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.header.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ConversationWithAppBrandListView$9
   implements Runnable
@@ -10,11 +11,13 @@ final class ConversationWithAppBrandListView$9
   
   public final void run()
   {
-    if (ConversationWithAppBrandListView.c(this.vRV) != null)
+    AppMethodBeat.i(34275);
+    if (ConversationWithAppBrandListView.c(this.AjJ) != null)
     {
-      y.i("MicroMsg.ConversationWithAppBrandListView", "alvinluo scrollToFirstPage");
-      ConversationWithAppBrandListView.c(this.vRV).arw();
+      ab.i("MicroMsg.ConversationWithAppBrandListView", "alvinluo scrollToFirstPage");
+      ConversationWithAppBrandListView.c(this.AjJ).aQi();
     }
+    AppMethodBeat.o(34275);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
 
 public class WXEmojiSharedObject
@@ -25,20 +26,25 @@ public class WXEmojiSharedObject
   
   public boolean checkArgs()
   {
+    AppMethodBeat.i(128296);
     if ((TextUtils.isEmpty(this.packageid)) || (TextUtils.isEmpty(this.thumburl)) || (TextUtils.isEmpty(this.url)) || (this.packageflag == -1))
     {
       Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, packageid or thumburl is invalid");
+      AppMethodBeat.o(128296);
       return false;
     }
+    AppMethodBeat.o(128296);
     return true;
   }
   
   public void serialize(Bundle paramBundle)
   {
+    AppMethodBeat.i(128294);
     paramBundle.putString("_wxemojisharedobject_thumburl", this.thumburl);
     paramBundle.putInt("_wxemojisharedobject_packageflag", this.packageflag);
     paramBundle.putString("_wxemojisharedobject_packageid", this.packageid);
     paramBundle.putString("_wxemojisharedobject_url", this.url);
+    AppMethodBeat.o(128294);
   }
   
   public int type()
@@ -48,10 +54,12 @@ public class WXEmojiSharedObject
   
   public void unserialize(Bundle paramBundle)
   {
+    AppMethodBeat.i(128295);
     this.thumburl = paramBundle.getString("_wxwebpageobject_thumburl");
     this.packageflag = paramBundle.getInt("_wxwebpageobject_packageflag");
     this.packageid = paramBundle.getString("_wxwebpageobject_packageid");
     this.url = paramBundle.getString("_wxwebpageobject_url");
+    AppMethodBeat.o(128295);
   }
 }
 

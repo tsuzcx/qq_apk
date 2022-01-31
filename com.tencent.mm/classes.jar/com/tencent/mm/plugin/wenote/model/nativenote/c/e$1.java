@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wenote.model.nativenote.c;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 final class e$1
@@ -13,42 +13,42 @@ final class e$1
   
   public final void run()
   {
-    RecyclerView localRecyclerView = e.a(this.rKn);
-    if (localRecyclerView == null) {
+    AppMethodBeat.i(26858);
+    RecyclerView localRecyclerView = e.a(this.vAR);
+    if (localRecyclerView == null)
+    {
+      AppMethodBeat.o(26858);
       return;
     }
     int i = 0;
-    label15:
-    Object localObject;
-    c localc;
     if (i < localRecyclerView.getChildCount())
     {
-      localObject = localRecyclerView.getChildAt(i);
-      localc = f.ds((View)localObject);
+      Object localObject = localRecyclerView.getChildAt(i);
+      c localc = f.ey((View)localObject);
       if (localc != null)
       {
-        if (localc.rJB == null) {
-          break label68;
+        if (localc.vAf == null) {
+          break label80;
         }
-        if (this.rKm) {
-          localc.rJB.postInvalidate();
+        if (this.vAQ) {
+          localc.vAf.postInvalidate();
         }
       }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label15;
-      break;
-      label68:
-      if ((localc.rJC != null) && (localc.rJD != null))
+      for (;;)
       {
-        LinearLayout localLinearLayout1 = (LinearLayout)((View)localObject).findViewById(R.h.other_cover_view);
-        LinearLayout localLinearLayout2 = (LinearLayout)((View)localObject).findViewById(R.h.other_up_cover_view);
-        localObject = (LinearLayout)((View)localObject).findViewById(R.h.other_down_cover_view);
-        this.rKn.a(localLinearLayout1, localLinearLayout2, (View)localObject, localc.rJC.getPosInDataList());
+        i += 1;
+        break;
+        label80:
+        if ((localc.vAg != null) && (localc.vAh != null))
+        {
+          LinearLayout localLinearLayout1 = (LinearLayout)((View)localObject).findViewById(2131826601);
+          LinearLayout localLinearLayout2 = (LinearLayout)((View)localObject).findViewById(2131826570);
+          localObject = (LinearLayout)((View)localObject).findViewById(2131826602);
+          this.vAR.a(localLinearLayout1, localLinearLayout2, (View)localObject, localc.vAg.getPosInDataList());
+        }
       }
     }
+    AppMethodBeat.o(26858);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.view.KeyEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter;
 import com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter.a;
@@ -13,48 +14,58 @@ final class WebViewUI$15
   
   public final void a(WebViewSearchContentInputFooter paramWebViewSearchContentInputFooter)
   {
+    AppMethodBeat.i(7831);
     if (paramWebViewSearchContentInputFooter.getVisibility() == 0) {
       b(paramWebViewSearchContentInputFooter);
     }
+    AppMethodBeat.o(7831);
   }
   
   public final void b(WebViewSearchContentInputFooter paramWebViewSearchContentInputFooter)
   {
-    this.rpH.niQ.clearMatches();
+    AppMethodBeat.i(7834);
+    this.vgz.pOd.clearMatches();
     paramWebViewSearchContentInputFooter.reset();
-    this.rpH.rnD.q(0, 0, true);
-    WebViewUI.c(this.rpH, false);
-    this.rpH.niQ.findAllAsync(paramWebViewSearchContentInputFooter.getSearchContent());
+    this.vgz.ves.t(0, 0, true);
+    WebViewUI.a(this.vgz, false);
+    this.vgz.pOd.findAllAsync(paramWebViewSearchContentInputFooter.getSearchContent());
+    AppMethodBeat.o(7834);
   }
   
   public final boolean c(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(7835);
     if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
-      h.nFQ.a(480L, 6L, 1L, false);
+      h.qsU.idkeyStat(480L, 6L, 1L, false);
     }
+    AppMethodBeat.o(7835);
     return false;
   }
   
-  public final void cbg()
+  public final void dbj()
   {
-    WebViewUI.c(this.rpH, 0);
-    this.rpH.niQ.clearMatches();
-    this.rpH.rnD.cgS();
+    AppMethodBeat.i(7830);
+    WebViewUI.b(this.vgz, 0);
+    this.vgz.pOd.clearMatches();
+    this.vgz.ves.dgZ();
+    AppMethodBeat.o(7830);
   }
   
-  public final void cbh()
+  public final void dbk()
   {
-    h.nFQ.a(480L, 5L, 1L, false);
-    this.rpH.niQ.findNext(false);
+    AppMethodBeat.i(7832);
+    h.qsU.idkeyStat(480L, 5L, 1L, false);
+    this.vgz.pOd.findNext(false);
+    AppMethodBeat.o(7832);
   }
   
-  public final void cbi()
+  public final void dbl()
   {
-    h.nFQ.a(480L, 4L, 1L, false);
-    this.rpH.niQ.findNext(true);
+    AppMethodBeat.i(7833);
+    h.qsU.idkeyStat(480L, 4L, 1L, false);
+    this.vgz.pOd.findNext(true);
+    AppMethodBeat.o(7833);
   }
-  
-  public final void onShow() {}
 }
 
 

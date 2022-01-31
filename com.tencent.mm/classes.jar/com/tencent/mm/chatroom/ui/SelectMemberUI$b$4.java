@@ -3,7 +3,8 @@ package com.tencent.mm.chatroom.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import java.util.HashSet;
 
 final class SelectMemberUI$b$4
@@ -13,21 +14,26 @@ final class SelectMemberUI$b$4
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(104416);
     int i = ((Integer)paramView.getTag()).intValue();
-    paramView = this.dsg.go(i);
-    if (this.dsg.dsb.xT().contains(paramView.dnp.field_username)) {
-      return;
-    }
-    if (this.dsg.dsb.drY.contains(paramView.dnp.field_username))
+    paramView = this.ejO.iD(i);
+    if (this.ejO.ejJ.Kl().contains(paramView.contact.field_username))
     {
-      this.dsg.dsb.drY.remove(paramView.dnp.field_username);
-      this.dsi.dsm.setImageResource(a.h.checkbox_unselected);
-      this.dsg.dsb.u(i, false);
+      AppMethodBeat.o(104416);
       return;
     }
-    this.dsg.dsb.drY.add(paramView.dnp.field_username);
-    this.dsi.dsm.setImageResource(a.h.checkbox_selected);
-    this.dsg.dsb.u(i, true);
+    if (this.ejO.ejJ.ejG.contains(paramView.contact.field_username))
+    {
+      this.ejO.ejJ.ejG.remove(paramView.contact.field_username);
+      this.ejQ.ejU.setImageResource(2131231142);
+      this.ejO.ejJ.v(i, false);
+      AppMethodBeat.o(104416);
+      return;
+    }
+    this.ejO.ejJ.ejG.add(paramView.contact.field_username);
+    this.ejQ.ejU.setImageResource(2131231137);
+    this.ejO.ejJ.v(i, true);
+    AppMethodBeat.o(104416);
   }
 }
 

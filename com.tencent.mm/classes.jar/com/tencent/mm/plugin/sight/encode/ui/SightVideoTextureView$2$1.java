@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.sight.encode.ui;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SightVideoTextureView$2$1
   implements MediaPlayer.OnCompletionListener
@@ -11,8 +12,10 @@ final class SightVideoTextureView$2$1
   
   public final void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    y.i("MicroMsg.SightVideoTextureView", "complete playing %s ", new Object[] { this.oiX.oiW });
-    this.oiX.oiV.bBU();
+    AppMethodBeat.i(25118);
+    ab.i("MicroMsg.SightVideoTextureView", "complete playing %s ", new Object[] { this.qXk.qXj });
+    this.qXk.qXi.cnv();
+    AppMethodBeat.o(25118);
   }
 }
 

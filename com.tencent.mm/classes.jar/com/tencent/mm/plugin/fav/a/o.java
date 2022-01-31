@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.fav.a;
 
 public abstract interface o
 {
-  public abstract void CL(String paramString);
+  public abstract void NN(String paramString);
   
-  public abstract void CM(String paramString);
+  public abstract void NO(String paramString);
   
   public abstract void c(c paramc);
   
-  public abstract void fS(boolean paramBoolean);
+  public abstract void hw(boolean paramBoolean);
   
   public abstract void pauseDownload(String paramString);
   

@@ -1,5 +1,7 @@
 package com.tencent.mm.memory.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class QPictureView$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class QPictureView$1
   
   public final void run()
   {
-    QPictureView.a(this.dPC);
+    AppMethodBeat.i(115498);
+    QPictureView.a(this.ffb);
+    AppMethodBeat.o(115498);
   }
 }
 

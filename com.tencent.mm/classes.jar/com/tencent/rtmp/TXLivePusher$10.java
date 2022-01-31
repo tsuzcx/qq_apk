@@ -1,5 +1,7 @@
 package com.tencent.rtmp;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class TXLivePusher$10
   implements Runnable
 {
@@ -7,9 +9,11 @@ class TXLivePusher$10
   
   public void run()
   {
+    AppMethodBeat.i(65930);
     if (TXLivePusher.access$800(this.this$0)) {
       TXLivePusher.access$900(this.this$0);
     }
+    AppMethodBeat.o(65930);
   }
 }
 

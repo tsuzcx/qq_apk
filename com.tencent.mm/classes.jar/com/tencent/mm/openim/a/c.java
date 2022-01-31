@@ -1,6 +1,7 @@
 package com.tencent.mm.openim.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 import java.util.List;
 import org.json.JSONArray;
@@ -9,40 +10,40 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public List<c.a> ePL = new LinkedList();
+  public List<c.a> gfG;
   
-  public final c oT(String paramString)
+  public c()
   {
-    for (;;)
+    AppMethodBeat.i(128608);
+    this.gfG = new LinkedList();
+    AppMethodBeat.o(128608);
+  }
+  
+  public final c wl(String paramString)
+  {
+    AppMethodBeat.i(128609);
+    try
     {
-      int i;
-      try
+      paramString = new JSONObject(paramString).optJSONArray("custom_info");
+      if (paramString == null)
       {
-        paramString = new JSONObject(paramString).optJSONArray("custom_info");
-        if (paramString != null) {
-          break label81;
-        }
+        AppMethodBeat.o(128609);
         return this;
       }
-      catch (JSONException paramString)
+      int i = 0;
+      while (i < paramString.length())
       {
-        JSONObject localJSONObject;
-        c.a locala;
-        y.printErrStackTrace("MicroMsg.OpenIMCustomDetail", paramString, "parse", new Object[0]);
-      }
-      if (i < paramString.length())
-      {
-        localJSONObject = paramString.getJSONObject(i);
-        locala = new c.a();
-        this.ePL.add(locala.g(localJSONObject));
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        c.a locala = new c.a();
+        this.gfG.add(locala.n(localJSONObject));
         i += 1;
       }
-      else
-      {
-        return this;
-        label81:
-        i = 0;
-      }
+      return this;
+    }
+    catch (JSONException paramString)
+    {
+      ab.printErrStackTrace("MicroMsg.OpenIMCustomDetail", paramString, "parse", new Object[0]);
+      AppMethodBeat.o(128609);
     }
   }
 }

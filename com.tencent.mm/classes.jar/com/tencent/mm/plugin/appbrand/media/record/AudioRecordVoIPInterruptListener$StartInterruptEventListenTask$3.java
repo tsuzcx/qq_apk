@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
-import com.tencent.mm.h.a.td;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ux;
 import com.tencent.mm.sdk.b.c;
 
 final class AudioRecordVoIPInterruptListener$StartInterruptEventListenTask$3
-  extends c<td>
+  extends c<ux>
 {
   AudioRecordVoIPInterruptListener$StartInterruptEventListenTask$3(AudioRecordVoIPInterruptListener.StartInterruptEventListenTask paramStartInterruptEventListenTask)
   {
-    this.udX = td.class.getName().hashCode();
+    AppMethodBeat.i(132171);
+    this.__eventId = ux.class.getName().hashCode();
+    AppMethodBeat.o(132171);
   }
 }
 

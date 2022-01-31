@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.voip.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VideoActivity$5
   implements DialogInterface.OnClickListener
@@ -11,7 +11,9 @@ final class VideoActivity$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.pWM.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.i(4792);
+    paramDialogInterface.dismiss();
+    AppMethodBeat.o(4792);
   }
 }
 

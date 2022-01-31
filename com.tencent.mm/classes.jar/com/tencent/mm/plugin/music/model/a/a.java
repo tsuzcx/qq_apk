@@ -1,25 +1,38 @@
 package com.tencent.mm.plugin.music.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.music.cache.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
 public final class a
   implements b
 {
-  public final void bmH()
+  public final void bVP()
   {
-    long l1 = ((Long)g.DP().Dz().get(ac.a.uvA, Long.valueOf(0L))).longValue();
+    AppMethodBeat.i(104908);
+    long l1 = ((Long)g.RL().Ru().get(ac.a.yFH, Long.valueOf(0L))).longValue();
     long l2 = System.currentTimeMillis();
-    if (l2 - l1 < gNB.longValue())
+    if (l2 - l1 < cfj.longValue())
     {
-      y.e("MicroMsg.PieceCacheCleanController", "don't scanMusic because the time is in one day");
+      ab.e("MicroMsg.PieceCacheCleanController", "don't scanMusic because the time is in one day");
+      AppMethodBeat.o(104908);
       return;
     }
-    g.DP().Dz().c(ac.a.uvA, Long.valueOf(l2));
-    com.tencent.mm.sdk.f.e.a(new a.1(this), "ScanMusicThread", 1);
+    g.RL().Ru().set(ac.a.yFH, Long.valueOf(l2));
+    d.f(new a.1(this), "ScanMusicThread");
+    AppMethodBeat.o(104908);
+  }
+  
+  public final void bVa()
+  {
+    AppMethodBeat.i(156833);
+    bVP();
+    AppMethodBeat.o(156833);
   }
 }
 

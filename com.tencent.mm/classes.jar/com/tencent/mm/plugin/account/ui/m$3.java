@@ -10,7 +10,7 @@ final class m$3
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.fpl.fex = null;
+    this.gGI.gwg = null;
   }
 }
 

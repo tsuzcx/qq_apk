@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceRankInfoUI$6
   implements View.OnClickListener
@@ -11,14 +12,16 @@ final class ExdeviceRankInfoUI$6
   
   public final void onClick(View paramView)
   {
-    com.tencent.mm.plugin.sport.b.d.jdMethod_if(24);
+    AppMethodBeat.i(20140);
+    com.tencent.mm.plugin.sport.a.d.kS(24);
     paramView = new Intent();
     paramView.putExtra("Select_Talker_Name", "gh_43f2581f6fd6");
     paramView.putExtra("Select_block_List", "gh_43f2581f6fd6");
     paramView.putExtra("Select_Conv_Type", 3);
     paramView.putExtra("mutil_select_is_ret", true);
     paramView.putExtra("Select_Send_Card", true);
-    com.tencent.mm.br.d.c(this.jFV, ".ui.transmit.SelectConversationUI", paramView, 3);
+    com.tencent.mm.bq.d.b(this.lPt, ".ui.transmit.SelectConversationUI", paramView, 3);
+    AppMethodBeat.o(20140);
   }
 }
 

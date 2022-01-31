@@ -2,6 +2,7 @@ package com.tencent.mm.wallet_core.ui.formview;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletFormView$2
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class WalletFormView$2
   
   public final void onClick(View paramView)
   {
-    this.wDc.bvr();
+    AppMethodBeat.i(49411);
+    this.AZr.cfK();
+    AppMethodBeat.o(49411);
   }
 }
 

@@ -22,8 +22,8 @@ public final class a
     if (paramInputStream2 == null) {
       return 2;
     }
-    paramInputStream1 = b.G(paramInputStream1);
-    Object localObject2 = b.G(paramInputStream2);
+    paramInputStream1 = b.H(paramInputStream1);
+    Object localObject2 = b.H(paramInputStream2);
     int m = paramInputStream1.length;
     int i = localObject2.length;
     paramInputStream2 = new DataInputStream(new ByteArrayInputStream((byte[])localObject2, 0, i));

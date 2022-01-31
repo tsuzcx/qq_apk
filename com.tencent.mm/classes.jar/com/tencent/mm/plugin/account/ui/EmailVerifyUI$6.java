@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.MMAutoSwitchEditTextView;
 
 final class EmailVerifyUI$6
@@ -12,20 +13,22 @@ final class EmailVerifyUI$6
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    EmailVerifyUI.b(this.flz, EmailVerifyUI.e(this.flz).getText());
-    if ((!bk.bl(EmailVerifyUI.f(this.flz))) && (EmailVerifyUI.f(this.flz).length() == 12)) {
-      EmailVerifyUI.a(this.flz, EmailVerifyUI.f(this.flz));
+    AppMethodBeat.i(124764);
+    EmailVerifyUI.b(this.gCQ, EmailVerifyUI.e(this.gCQ).getText());
+    if ((!bo.isNullOrNil(EmailVerifyUI.f(this.gCQ))) && (EmailVerifyUI.f(this.gCQ).length() == 12)) {
+      EmailVerifyUI.a(this.gCQ, EmailVerifyUI.f(this.gCQ));
     }
     for (;;)
     {
+      AppMethodBeat.o(124764);
       return true;
-      this.flz.enableOptionMenu(false);
+      this.gCQ.enableOptionMenu(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.EmailVerifyUI.6
  * JD-Core Version:    0.7.0.1
  */

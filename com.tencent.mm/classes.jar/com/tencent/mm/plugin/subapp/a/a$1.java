@@ -1,42 +1,47 @@
 package com.tencent.mm.plugin.subapp.a;
 
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.protocal.c.alz;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.ccj;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.aro;
+import com.tencent.mm.protocal.protobuf.cpq;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import java.util.LinkedList;
 
 final class a$1
-  implements am.a
+  implements ap.a
 {
   a$1(a parama) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (this.pvs.pvr < 0) {
+    AppMethodBeat.i(25220);
+    if (this.sWW.sWV < 0)
+    {
+      AppMethodBeat.o(25220);
       return false;
     }
-    alz localalz = (alz)this.pvs.dmK.ecF.ecN;
+    aro localaro = (aro)this.sWW.rr.fsW.fta;
     try
     {
-      Object localObject1 = (ccj)localalz.tig.get(this.pvs.pvr);
-      if ((localObject1 != null) && (((ccj)localObject1).tRF != null) && (((ccj)localObject1).tRF.tFM != null) && (((ccj)localObject1).tRE != null) && (((ccj)localObject1).tRE.tFM != null))
+      Object localObject1 = (cpq)localaro.xgT.get(this.sWW.sWV);
+      if ((localObject1 != null) && (((cpq)localObject1).xYB != null) && (((cpq)localObject1).xYB.getBuffer() != null) && (((cpq)localObject1).xYA != null) && (((cpq)localObject1).xYA.getBuffer() != null))
       {
-        y.d("MicroMsg.NetSceneGetVUserInfo", "onGYNetEnd ver:" + localalz.hQQ + " idx:" + this.pvs.pvr + " id:" + Integer.toHexString(((ccj)localObject1).bxH) + " size:" + ((ccj)localObject1).tRE.tFK + " hdsize:" + ((ccj)localObject1).tRF.tFK);
-        a.a(((ccj)localObject1).bxH, true, ((ccj)localObject1).tRF.tFM.toByteArray());
-        a.a(((ccj)localObject1).bxH, false, ((ccj)localObject1).tRE.tFM.toByteArray());
+        ab.d("MicroMsg.NetSceneGetVUserInfo", "onGYNetEnd ver:" + localaro.Version + " idx:" + this.sWW.sWV + " id:" + Integer.toHexString(((cpq)localObject1).ID) + " size:" + ((cpq)localObject1).xYA.getILen() + " hdsize:" + ((cpq)localObject1).xYB.getILen());
+        a.a(((cpq)localObject1).ID, true, ((cpq)localObject1).xYB.getBuffer().toByteArray());
+        a.a(((cpq)localObject1).ID, false, ((cpq)localObject1).xYA.getBuffer().toByteArray());
       }
-      localObject1 = this.pvs;
-      ((a)localObject1).pvr -= 1;
+      localObject1 = this.sWW;
+      ((a)localObject1).sWV -= 1;
+      AppMethodBeat.o(25220);
       return true;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.e("MicroMsg.NetSceneGetVUserInfo", "get item :" + this.pvs.pvr + " not Found");
+        ab.e("MicroMsg.NetSceneGetVUserInfo", "get item :" + this.sWW.sWV + " not Found");
         Object localObject2 = null;
       }
     }

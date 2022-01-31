@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class InviteRecommendChoiceUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class InviteRecommendChoiceUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.fmh.XM();
-    this.fmh.finish();
+    AppMethodBeat.i(124901);
+    this.gDB.hideVKB();
+    this.gDB.finish();
+    AppMethodBeat.o(124901);
     return true;
   }
 }

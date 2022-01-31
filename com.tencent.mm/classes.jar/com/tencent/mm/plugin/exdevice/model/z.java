@@ -1,67 +1,78 @@
 package com.tencent.mm.plugin.exdevice.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.agi;
-import com.tencent.mm.protocal.c.agj;
-import com.tencent.mm.protocal.c.agk;
-import com.tencent.mm.protocal.c.agl;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.alb;
+import com.tencent.mm.protocal.protobuf.alc;
+import com.tencent.mm.protocal.protobuf.ald;
+import com.tencent.mm.protocal.protobuf.ale;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 
 public final class z
   extends m
   implements k
 {
-  private f dIJ = null;
-  b jvQ = null;
-  private String jwc = "";
+  private f eGj;
+  private String lFB;
+  b lFp;
   
-  public z(LinkedList<agj> paramLinkedList, String paramString1, String paramString2)
+  public z(LinkedList<alc> paramLinkedList, String paramString1, String paramString2)
   {
-    this.jwc = paramString2;
+    AppMethodBeat.i(19355);
+    this.lFB = "";
+    this.lFp = null;
+    this.eGj = null;
+    this.lFB = paramString2;
     paramString2 = new b.a();
-    paramString2.ecH = new agk();
-    paramString2.ecI = new agl();
+    paramString2.fsX = new ald();
+    paramString2.fsY = new ale();
     paramString2.uri = "/cgi-bin/micromsg-bin/getharddeviceoperticket";
-    paramString2.ecG = 543;
-    paramString2.ecJ = 0;
-    paramString2.ecK = 0;
-    this.jvQ = paramString2.Kt();
-    paramString2 = (agk)this.jvQ.ecE.ecN;
-    if (!bk.bl(paramString1))
+    paramString2.funcId = 543;
+    paramString2.reqCmdId = 0;
+    paramString2.respCmdId = 0;
+    this.lFp = paramString2.ado();
+    paramString2 = (ald)this.lFp.fsV.fta;
+    if (!bo.isNullOrNil(paramString1))
     {
-      agi localagi = new agi();
-      localagi.sAD = paramString1;
-      paramString2.ted = localagi;
+      alb localalb = new alb();
+      localalb.wuS = paramString1;
+      paramString2.xcc = localalb;
     }
-    paramString2.tec = paramLinkedList;
+    paramString2.xcb = paramLinkedList;
+    AppMethodBeat.o(19355);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dIJ = paramf;
-    return a(parame, this.jvQ, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.exdevice.NetsceneGetHardDeviceOperTicket", "GetHardDeviceOperTicket onGYNetEnd netId = %s, errType = %s, errCode = %s, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.dIJ != null) {
-      this.dIJ.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
+    AppMethodBeat.i(19356);
+    this.eGj = paramf;
+    int i = dispatch(parame, this.lFp, this);
+    AppMethodBeat.o(19356);
+    return i;
   }
   
   public final int getType()
   {
     return 543;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(19357);
+    ab.i("MicroMsg.exdevice.NetsceneGetHardDeviceOperTicket", "GetHardDeviceOperTicket onGYNetEnd netId = %s, errType = %s, errCode = %s, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.eGj != null) {
+      this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(19357);
   }
 }
 

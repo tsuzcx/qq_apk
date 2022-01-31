@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.sight.decode.a;
 
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class b$3
   implements Runnable
@@ -11,8 +12,10 @@ public final class b$3
   
   public final void run()
   {
-    y.i("MicroMsg.SightPlayController", "SeekToFrame   %f  %s", new Object[] { Double.valueOf(this.oeZ), bk.csb().toString() });
-    b.a(this.oeY, this.oeZ);
+    AppMethodBeat.i(70228);
+    ab.i("MicroMsg.SightPlayController", "SeekToFrame   %f  %s", new Object[] { Double.valueOf(this.qTo), bo.dtY().toString() });
+    b.a(this.qTn, this.qTo);
+    AppMethodBeat.o(70228);
   }
 }
 

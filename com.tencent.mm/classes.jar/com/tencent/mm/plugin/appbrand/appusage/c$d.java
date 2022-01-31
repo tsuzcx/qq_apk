@@ -1,15 +1,20 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "onTimerExpired"})
 final class c$d
-  implements am.a
+  implements ap.a
 {
   c$d(c paramc) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    this.fHT.a(z.b.fJG);
+    AppMethodBeat.i(134494);
+    this.haL.a(z.b.hcz);
+    AppMethodBeat.o(134494);
     return false;
   }
 }

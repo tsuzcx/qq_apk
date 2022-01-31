@@ -4,7 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 final class b$a
-  extends n<b.e>
+  extends SwipeDismissBehavior<b.e>
 {
   b$a(b paramb) {}
   
@@ -16,11 +16,11 @@ final class b$a
     for (;;)
     {
       return super.a(paramCoordinatorLayout, parame, paramMotionEvent);
-      if (paramCoordinatorLayout.b(parame, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+      if (paramCoordinatorLayout.d(parame, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
       {
-        l.aT().a(this.eX.eW);
+        l.bD().a(this.fW.fV);
         continue;
-        l.aT().b(this.eX.eW);
+        l.bD().b(this.fW.fV);
       }
     }
   }

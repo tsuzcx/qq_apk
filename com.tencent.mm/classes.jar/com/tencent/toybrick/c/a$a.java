@@ -3,37 +3,35 @@ package com.tencent.toybrick.c;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ci.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
 public final class a$a
   extends com.tencent.toybrick.f.a
 {
-  public TextView eXr;
-  public TextView mXQ;
-  public ImageView xaA;
-  public ImageView xaB;
-  public MMSwitchBtn xaC;
-  public TextView xaz;
+  public TextView Bxf;
+  public ImageView Bxg;
+  public ImageView Bxh;
+  public MMSwitchBtn Bxi;
+  public TextView pAD;
+  public TextView titleTv;
   
   public a$a(final a parama, View paramView)
   {
     super(paramView);
-    this.eXr = ((TextView)paramView.findViewById(16908310));
-    this.xaB = ((ImageView)paramView.findViewById(a.f.left_icon));
-    this.xaz = ((TextView)paramView.findViewById(a.f.text_prospect));
-    this.xaA = ((ImageView)paramView.findViewById(a.f.image_prospect));
-    this.mXQ = ((TextView)paramView.findViewById(a.f.summary));
-    this.xaC = ((MMSwitchBtn)paramView.findViewById(a.f.checkbox));
-    this.xaC.setSwitchListener(new MMSwitchBtn.a()
+    AppMethodBeat.i(113196);
+    this.titleTv = ((TextView)paramView.findViewById(16908310));
+    this.Bxh = ((ImageView)paramView.findViewById(2131822804));
+    this.Bxf = ((TextView)paramView.findViewById(2131822410));
+    this.Bxg = ((ImageView)paramView.findViewById(2131822805));
+    this.pAD = ((TextView)paramView.findViewById(2131821890));
+    this.Bxi = ((MMSwitchBtn)paramView.findViewById(2131820950));
+    this.Bxi.setSwitchListener(new MMSwitchBtn.a()
     {
-      public final void cr(boolean paramAnonymousBoolean)
-      {
-        a locala = a.a.this.xay;
-        locala = a.a.this.xay;
-      }
+      public final void onStatusChange(boolean paramAnonymousBoolean) {}
     });
+    AppMethodBeat.o(113196);
   }
 }
 

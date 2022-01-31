@@ -12,8 +12,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.b.a.a;
-import android.support.v7.a.a.b;
+import android.support.v4.a.a.a;
 import android.util.SparseArray;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyCharacterMap.KeyData;
@@ -21,6 +20,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.view.ViewConfiguration;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,47 +30,48 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class h
   implements a
 {
-  private static final int[] Vu = { 1, 4, 5, 3, 2, 0 };
-  public ArrayList<j> VA;
-  private ArrayList<j> VB;
-  private boolean VC;
-  public int VD = 0;
-  private ContextMenu.ContextMenuInfo VE;
-  CharSequence VF;
-  Drawable VG;
-  View VH;
-  private boolean VI = false;
-  private boolean VJ = false;
-  private boolean VK = false;
-  boolean VL = false;
-  private boolean VM = false;
-  private ArrayList<j> VN = new ArrayList();
-  private CopyOnWriteArrayList<WeakReference<o>> VO = new CopyOnWriteArrayList();
-  j VP;
-  public boolean VQ;
-  private boolean Vv;
-  private boolean Vw;
-  public a Vx;
-  private ArrayList<j> Vy;
-  private boolean Vz;
-  ArrayList<j> dU;
-  public final Context mContext;
+  private static final int[] Wj = { 1, 4, 5, 3, 2, 0 };
+  boolean WA = false;
+  private boolean WB = false;
+  private ArrayList<j> WC = new ArrayList();
+  private CopyOnWriteArrayList<WeakReference<o>> WD = new CopyOnWriteArrayList();
+  j WE;
+  private boolean WF = false;
+  public boolean WG;
+  private boolean Wk;
+  private boolean Wl;
+  public a Wm;
+  private ArrayList<j> Wn;
+  private boolean Wo;
+  public ArrayList<j> Wp;
+  private ArrayList<j> Wq;
+  private boolean Wr;
+  public int Ws = 0;
+  private ContextMenu.ContextMenuInfo Wt;
+  CharSequence Wu;
+  Drawable Wv;
+  View Ww;
+  private boolean Wx = false;
+  private boolean Wy = false;
+  private boolean Wz = false;
+  protected final Context mContext;
+  ArrayList<j> mItems;
   private final Resources mResources;
   
   public h(Context paramContext)
   {
     this.mContext = paramContext;
     this.mResources = paramContext.getResources();
-    this.dU = new ArrayList();
-    this.Vy = new ArrayList();
-    this.Vz = true;
-    this.VA = new ArrayList();
-    this.VB = new ArrayList();
-    this.VC = true;
-    if ((this.mResources.getConfiguration().keyboard != 1) && (this.mResources.getBoolean(a.b.abc_config_showMenuShortcutsWhenKeyboardPresent))) {}
+    this.mItems = new ArrayList();
+    this.Wn = new ArrayList();
+    this.Wo = true;
+    this.Wp = new ArrayList();
+    this.Wq = new ArrayList();
+    this.Wr = true;
+    if ((this.mResources.getConfiguration().keyboard != 1) && (android.support.v4.view.u.d(ViewConfiguration.get(this.mContext), this.mContext))) {}
     for (;;)
     {
-      this.Vw = bool;
+      this.Wl = bool;
       return;
       bool = false;
     }
@@ -78,7 +79,7 @@ public class h
   
   private j a(int paramInt, KeyEvent paramKeyEvent)
   {
-    ArrayList localArrayList = this.VN;
+    ArrayList localArrayList = this.WC;
     localArrayList.clear();
     a(localArrayList, paramInt, paramKeyEvent);
     if (localArrayList.isEmpty())
@@ -93,7 +94,7 @@ public class h
     if (m == 1) {
       return (j)localArrayList.get(0);
     }
-    boolean bool = ff();
+    boolean bool = fV();
     int i = 0;
     label84:
     if (i < m)
@@ -132,20 +133,20 @@ public class h
   
   private void a(List<j> paramList, int paramInt, KeyEvent paramKeyEvent)
   {
-    boolean bool = ff();
+    boolean bool = fV();
     int m = paramKeyEvent.getModifiers();
     KeyCharacterMap.KeyData localKeyData = new KeyCharacterMap.KeyData();
     if ((!paramKeyEvent.getKeyData(localKeyData)) && (paramInt != 67)) {
       return;
     }
-    int n = this.dU.size();
+    int n = this.mItems.size();
     int i = 0;
     label49:
     j localj;
     int j;
     if (i < n)
     {
-      localj = (j)this.dU.get(i);
+      localj = (j)this.mItems.get(i);
       if (localj.hasSubMenu()) {
         ((h)localj.getSubMenu()).a(paramList, paramInt, paramKeyEvent);
       }
@@ -181,12 +182,46 @@ public class h
     }
   }
   
+  private boolean a(u paramu, o paramo)
+  {
+    boolean bool = false;
+    if (this.WD.isEmpty()) {
+      return false;
+    }
+    if (paramo != null) {
+      bool = paramo.a(paramu);
+    }
+    paramo = this.WD.iterator();
+    while (paramo.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)paramo.next();
+      o localo = (o)localWeakReference.get();
+      if (localo == null)
+      {
+        this.WD.remove(localWeakReference);
+      }
+      else
+      {
+        if (bool) {
+          break label100;
+        }
+        bool = localo.a(paramu);
+      }
+    }
+    label100:
+    for (;;)
+    {
+      break;
+      return bool;
+    }
+  }
+  
   private static int b(ArrayList<j> paramArrayList, int paramInt)
   {
     int i = paramArrayList.size() - 1;
     while (i >= 0)
     {
-      if (((j)paramArrayList.get(i)).TU <= paramInt) {
+      if (((j)paramArrayList.get(i)).UF <= paramInt) {
         return i + 1;
       }
       i -= 1;
@@ -194,50 +229,80 @@ public class h
     return 0;
   }
   
-  private void n(int paramInt, boolean paramBoolean)
+  private void dispatchSaveInstanceState(Bundle paramBundle)
   {
-    if ((paramInt < 0) || (paramInt >= this.dU.size())) {}
+    if (this.WD.isEmpty()) {
+      return;
+    }
+    SparseArray localSparseArray = new SparseArray();
+    Iterator localIterator = this.WD.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (WeakReference)localIterator.next();
+      o localo = (o)((WeakReference)localObject).get();
+      if (localo == null)
+      {
+        this.WD.remove(localObject);
+      }
+      else
+      {
+        int i = localo.getId();
+        if (i > 0)
+        {
+          localObject = localo.onSaveInstanceState();
+          if (localObject != null) {
+            localSparseArray.put(i, localObject);
+          }
+        }
+      }
+    }
+    paramBundle.putSparseParcelableArray("android:menu:presenters", localSparseArray);
+  }
+  
+  private void h(int paramInt, boolean paramBoolean)
+  {
+    if ((paramInt < 0) || (paramInt >= this.mItems.size())) {}
     do
     {
       return;
-      this.dU.remove(paramInt);
+      this.mItems.remove(paramInt);
     } while (!paramBoolean);
-    q(true);
+    p(true);
   }
   
-  public final void T(boolean paramBoolean)
+  public final void V(boolean paramBoolean)
   {
-    if (this.VM) {
+    if (this.WB) {
       return;
     }
-    this.VM = true;
-    Iterator localIterator = this.VO.iterator();
+    this.WB = true;
+    Iterator localIterator = this.WD.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       o localo = (o)localWeakReference.get();
       if (localo == null) {
-        this.VO.remove(localWeakReference);
+        this.WD.remove(localWeakReference);
       } else {
         localo.a(this, paramBoolean);
       }
     }
-    this.VM = false;
+    this.WB = false;
   }
   
-  public MenuItem a(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
+  protected MenuItem a(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
   {
     int i = (0xFFFF0000 & paramInt3) >> 16;
-    if ((i < 0) || (i >= Vu.length)) {
+    if ((i < 0) || (i >= Wj.length)) {
       throw new IllegalArgumentException("order does not contain a valid category.");
     }
-    i = Vu[i] << 16 | 0xFFFF & paramInt3;
-    paramCharSequence = new j(this, paramInt1, paramInt2, paramInt3, i, paramCharSequence, this.VD);
-    if (this.VE != null) {
-      paramCharSequence.Wb = this.VE;
+    i = Wj[i] << 16 | 0xFFFF & paramInt3;
+    paramCharSequence = new j(this, paramInt1, paramInt2, paramInt3, i, paramCharSequence, this.Ws);
+    if (this.Wt != null) {
+      paramCharSequence.WR = this.Wt;
     }
-    this.dU.add(b(this.dU, i), paramCharSequence);
-    q(true);
+    this.mItems.add(b(this.mItems, i), paramCharSequence);
+    p(true);
     return paramCharSequence;
   }
   
@@ -246,40 +311,40 @@ public class h
     Resources localResources = this.mResources;
     if (paramView != null)
     {
-      this.VH = paramView;
-      this.VF = null;
-      this.VG = null;
-      q(false);
+      this.Ww = paramView;
+      this.Wu = null;
+      this.Wv = null;
+      p(false);
       return;
     }
     if (paramInt1 > 0)
     {
-      this.VF = localResources.getText(paramInt1);
+      this.Wu = localResources.getText(paramInt1);
       label47:
       if (paramInt2 <= 0) {
         break label83;
       }
-      this.VG = android.support.v4.content.b.g(this.mContext, paramInt2);
+      this.Wv = android.support.v4.content.b.k(this.mContext, paramInt2);
     }
     for (;;)
     {
-      this.VH = null;
+      this.Ww = null;
       break;
       if (paramCharSequence == null) {
         break label47;
       }
-      this.VF = paramCharSequence;
+      this.Wu = paramCharSequence;
       break label47;
       label83:
       if (paramDrawable != null) {
-        this.VG = paramDrawable;
+        this.Wv = paramDrawable;
       }
     }
   }
   
   public void a(a parama)
   {
-    this.Vx = parama;
+    this.Wm = parama;
   }
   
   public final void a(o paramo)
@@ -289,95 +354,66 @@ public class h
   
   public final void a(o paramo, Context paramContext)
   {
-    this.VO.add(new WeakReference(paramo));
+    this.WD.add(new WeakReference(paramo));
     paramo.a(paramContext, this);
-    this.VC = true;
+    this.Wr = true;
   }
   
   public final boolean a(MenuItem paramMenuItem, o paramo, int paramInt)
   {
     boolean bool2 = false;
-    boolean bool1 = false;
-    paramMenuItem = (j)paramMenuItem;
-    if ((paramMenuItem == null) || (!paramMenuItem.isEnabled())) {
-      bool1 = false;
+    Object localObject = (j)paramMenuItem;
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      if (((j)localObject).isEnabled()) {
+        break label33;
+      }
+      bool1 = bool2;
     }
-    boolean bool3;
-    Object localObject;
-    label95:
+    label33:
+    label101:
     do
     {
       return bool1;
-      bool3 = paramMenuItem.fp();
-      localObject = paramMenuItem.VY;
-      if ((localObject != null) && (((android.support.v4.view.b)localObject).hasSubMenu())) {}
+      bool1 = ((j)localObject).gg();
+      paramMenuItem = ((j)localObject).WO;
+      if ((paramMenuItem != null) && (paramMenuItem.hasSubMenu())) {}
       for (int i = 1;; i = 0)
       {
-        if (!paramMenuItem.fw()) {
-          break label95;
+        if (!((j)localObject).gp()) {
+          break label101;
         }
-        bool2 = paramMenuItem.expandActionView() | bool3;
+        bool2 = ((j)localObject).expandActionView() | bool1;
         bool1 = bool2;
         if (!bool2) {
           break;
         }
-        T(true);
+        V(true);
         return bool2;
       }
-      if ((!paramMenuItem.hasSubMenu()) && (i == 0)) {
-        break label289;
-      }
-      if ((paramInt & 0x4) == 0) {
-        T(false);
-      }
-      if (!paramMenuItem.hasSubMenu()) {
-        paramMenuItem.b(new u(this.mContext, this, paramMenuItem));
-      }
-      paramMenuItem = (u)paramMenuItem.getSubMenu();
-      if (i != 0) {
-        ((android.support.v4.view.b)localObject).onPrepareSubMenu(paramMenuItem);
-      }
-      if (!this.VO.isEmpty()) {
+      if ((!((j)localObject).hasSubMenu()) && (i == 0)) {
         break;
       }
-      bool2 = bool3 | bool1;
+      if ((paramInt & 0x4) == 0) {
+        V(false);
+      }
+      if (!((j)localObject).hasSubMenu()) {
+        ((j)localObject).b(new u(this.mContext, this, (j)localObject));
+      }
+      localObject = (u)((j)localObject).getSubMenu();
+      if (i != 0) {
+        paramMenuItem.onPrepareSubMenu((SubMenu)localObject);
+      }
+      bool2 = a((u)localObject, paramo) | bool1;
       bool1 = bool2;
     } while (bool2);
-    T(true);
+    V(true);
     return bool2;
-    bool1 = bool2;
-    if (paramo != null) {
-      bool1 = paramo.a(paramMenuItem);
+    if ((paramInt & 0x1) == 0) {
+      V(true);
     }
-    paramo = this.VO.iterator();
-    label220:
-    while (paramo.hasNext())
-    {
-      localObject = (WeakReference)paramo.next();
-      o localo = (o)((WeakReference)localObject).get();
-      if (localo == null)
-      {
-        this.VO.remove(localObject);
-      }
-      else
-      {
-        if (bool1) {
-          break label303;
-        }
-        bool1 = localo.a(paramMenuItem);
-      }
-    }
-    label289:
-    label303:
-    for (;;)
-    {
-      break label220;
-      break;
-      if ((paramInt & 0x1) == 0) {
-        T(true);
-      }
-      return bool3;
-    }
+    return bool1;
   }
   
   public MenuItem add(int paramInt)
@@ -465,106 +501,45 @@ public class h
   
   public final void b(o paramo)
   {
-    Iterator localIterator = this.VO.iterator();
+    Iterator localIterator = this.WD.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       o localo = (o)localWeakReference.get();
       if ((localo == null) || (localo == paramo)) {
-        this.VO.remove(localWeakReference);
+        this.WD.remove(localWeakReference);
       }
     }
   }
   
   public final void c(Bundle paramBundle)
   {
-    if (!this.VO.isEmpty())
-    {
-      SparseArray localSparseArray = new SparseArray();
-      Iterator localIterator = this.VO.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (WeakReference)localIterator.next();
-        o localo = (o)((WeakReference)localObject).get();
-        if (localo == null)
-        {
-          this.VO.remove(localObject);
-        }
-        else
-        {
-          int i = localo.getId();
-          if (i > 0)
-          {
-            localObject = localo.onSaveInstanceState();
-            if (localObject != null) {
-              localSparseArray.put(i, localObject);
-            }
-          }
-        }
-      }
-      paramBundle.putSparseParcelableArray("android:menu:presenters", localSparseArray);
-    }
+    dispatchSaveInstanceState(paramBundle);
   }
   
   public void clear()
   {
-    if (this.VP != null) {
-      h(this.VP);
+    if (this.WE != null) {
+      h(this.WE);
     }
-    this.dU.clear();
-    q(true);
+    this.mItems.clear();
+    p(true);
   }
   
   public void clearHeader()
   {
-    this.VG = null;
-    this.VF = null;
-    this.VH = null;
-    q(false);
+    this.Wv = null;
+    this.Wu = null;
+    this.Ww = null;
+    p(false);
   }
   
   public void close()
   {
-    T(true);
+    V(true);
   }
   
   public final void d(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getSparseParcelableArray("android:menu:presenters");
-    if ((paramBundle == null) || (this.VO.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.VO.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (WeakReference)localIterator.next();
-        o localo = (o)((WeakReference)localObject).get();
-        if (localo == null)
-        {
-          this.VO.remove(localObject);
-        }
-        else
-        {
-          int i = localo.getId();
-          if (i > 0)
-          {
-            localObject = (Parcelable)paramBundle.get(i);
-            if (localObject != null) {
-              localo.onRestoreInstanceState((Parcelable)localObject);
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  boolean d(h paramh, MenuItem paramMenuItem)
-  {
-    return (this.Vx != null) && (this.Vx.a(paramh, paramMenuItem));
-  }
-  
-  public final void e(Bundle paramBundle)
   {
     Object localObject1 = null;
     int j = size();
@@ -593,17 +568,53 @@ public class h
         }
       }
       if (localMenuItem.hasSubMenu()) {
-        ((u)localMenuItem.getSubMenu()).e(paramBundle);
+        ((u)localMenuItem.getSubMenu()).d(paramBundle);
       }
       i += 1;
       localObject1 = localObject3;
     }
     if (localObject1 != null) {
-      paramBundle.putSparseParcelableArray(fe(), localObject1);
+      paramBundle.putSparseParcelableArray(fT(), localObject1);
     }
   }
   
-  public final void f(Bundle paramBundle)
+  boolean d(h paramh, MenuItem paramMenuItem)
+  {
+    return (this.Wm != null) && (this.Wm.a(paramh, paramMenuItem));
+  }
+  
+  public final void dispatchRestoreInstanceState(Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getSparseParcelableArray("android:menu:presenters");
+    if ((paramBundle == null) || (this.WD.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.WD.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (WeakReference)localIterator.next();
+        o localo = (o)((WeakReference)localObject).get();
+        if (localo == null)
+        {
+          this.WD.remove(localObject);
+        }
+        else
+        {
+          int i = localo.getId();
+          if (i > 0)
+          {
+            localObject = (Parcelable)paramBundle.get(i);
+            if (localObject != null) {
+              localo.onRestoreInstanceState((Parcelable)localObject);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public final void e(Bundle paramBundle)
   {
     if (paramBundle == null) {}
     do
@@ -612,7 +623,7 @@ public class h
       do
       {
         return;
-        SparseArray localSparseArray = paramBundle.getSparseParcelableArray(fe());
+        SparseArray localSparseArray = paramBundle.getSparseParcelableArray(fT());
         int j = size();
         i = 0;
         while (i < j)
@@ -623,7 +634,7 @@ public class h
             localView.restoreHierarchyState(localSparseArray);
           }
           if (localMenuItem.hasSubMenu()) {
-            ((u)localMenuItem.getSubMenu()).f(paramBundle);
+            ((u)localMenuItem.getSubMenu()).e(paramBundle);
           }
           i += 1;
         }
@@ -634,39 +645,50 @@ public class h
     paramBundle.expandActionView();
   }
   
-  protected String fe()
+  protected String fT()
   {
     return "android:menu:actionviewstates";
   }
   
-  boolean ff()
+  public boolean fU()
   {
-    return this.Vv;
+    return this.WF;
   }
   
-  public boolean fg()
+  boolean fV()
   {
-    return this.Vw;
+    return this.Wk;
   }
   
-  public final void fh()
+  public boolean fW()
   {
-    if (!this.VI)
+    return this.Wl;
+  }
+  
+  public final void fX()
+  {
+    if (!this.Wx)
     {
-      this.VI = true;
-      this.VJ = false;
-      this.VK = false;
+      this.Wx = true;
+      this.Wy = false;
+      this.Wz = false;
     }
   }
   
-  public final void fi()
+  public final void fY()
   {
-    this.VI = false;
-    if (this.VJ)
+    this.Wx = false;
+    if (this.Wy)
     {
-      this.VJ = false;
-      q(this.VK);
+      this.Wy = false;
+      p(this.Wz);
     }
+  }
+  
+  final void fZ()
+  {
+    this.Wo = true;
+    p(true);
   }
   
   public MenuItem findItem(int paramInt)
@@ -675,7 +697,7 @@ public class h
     int i = 0;
     while (i < j)
     {
-      Object localObject = (j)this.dU.get(i);
+      Object localObject = (j)this.mItems.get(i);
       if (((j)localObject).getItemId() == paramInt) {}
       MenuItem localMenuItem;
       do
@@ -692,106 +714,14 @@ public class h
     return null;
   }
   
-  final void fj()
-  {
-    this.Vz = true;
-    q(true);
-  }
-  
-  final void fk()
-  {
-    this.VC = true;
-    q(true);
-  }
-  
-  public final ArrayList<j> fl()
-  {
-    if (!this.Vz) {
-      return this.Vy;
-    }
-    this.Vy.clear();
-    int j = this.dU.size();
-    int i = 0;
-    while (i < j)
-    {
-      j localj = (j)this.dU.get(i);
-      if (localj.isVisible()) {
-        this.Vy.add(localj);
-      }
-      i += 1;
-    }
-    this.Vz = false;
-    this.VC = true;
-    return this.Vy;
-  }
-  
-  public final void fm()
-  {
-    ArrayList localArrayList = fl();
-    if (!this.VC) {
-      return;
-    }
-    Object localObject = this.VO.iterator();
-    int i = 0;
-    while (((Iterator)localObject).hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-      o localo = (o)localWeakReference.get();
-      if (localo == null) {
-        this.VO.remove(localWeakReference);
-      } else {
-        i = localo.V() | i;
-      }
-    }
-    if (i != 0)
-    {
-      this.VA.clear();
-      this.VB.clear();
-      int k = localArrayList.size();
-      i = 0;
-      if (i < k)
-      {
-        localObject = (j)localArrayList.get(i);
-        if (((j)localObject).ft()) {
-          this.VA.add(localObject);
-        }
-        for (;;)
-        {
-          int j;
-          i += 1;
-          break;
-          this.VB.add(localObject);
-        }
-      }
-    }
-    else
-    {
-      this.VA.clear();
-      this.VB.clear();
-      this.VB.addAll(fl());
-    }
-    this.VC = false;
-  }
-  
-  public final ArrayList<j> fn()
-  {
-    fm();
-    return this.VB;
-  }
-  
-  public h fo()
-  {
-    return this;
-  }
-  
   public boolean g(j paramj)
   {
     boolean bool2 = false;
-    if (this.VO.isEmpty()) {
+    if (this.WD.isEmpty()) {
       return bool2;
     }
-    fh();
-    Iterator localIterator = this.VO.iterator();
+    fX();
+    Iterator localIterator = this.WD.iterator();
     boolean bool1 = false;
     for (;;)
     {
@@ -802,7 +732,7 @@ public class h
         o localo = (o)localWeakReference.get();
         if (localo == null)
         {
-          this.VO.remove(localWeakReference);
+          this.WD.remove(localWeakReference);
         }
         else
         {
@@ -815,37 +745,123 @@ public class h
     }
     for (;;)
     {
-      fi();
+      fY();
       bool2 = bool1;
       if (!bool1) {
         break;
       }
-      this.VP = paramj;
+      this.WE = paramj;
       return bool1;
       break label29;
     }
   }
   
+  final void ga()
+  {
+    this.Wr = true;
+    p(true);
+  }
+  
+  public final ArrayList<j> gb()
+  {
+    if (!this.Wo) {
+      return this.Wn;
+    }
+    this.Wn.clear();
+    int j = this.mItems.size();
+    int i = 0;
+    while (i < j)
+    {
+      j localj = (j)this.mItems.get(i);
+      if (localj.isVisible()) {
+        this.Wn.add(localj);
+      }
+      i += 1;
+    }
+    this.Wo = false;
+    this.Wr = true;
+    return this.Wn;
+  }
+  
+  public final void gd()
+  {
+    ArrayList localArrayList = gb();
+    if (!this.Wr) {
+      return;
+    }
+    Object localObject = this.WD.iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+      o localo = (o)localWeakReference.get();
+      if (localo == null) {
+        this.WD.remove(localWeakReference);
+      } else {
+        i = localo.aG() | i;
+      }
+    }
+    if (i != 0)
+    {
+      this.Wp.clear();
+      this.Wq.clear();
+      int k = localArrayList.size();
+      i = 0;
+      if (i < k)
+      {
+        localObject = (j)localArrayList.get(i);
+        if (((j)localObject).gl()) {
+          this.Wp.add(localObject);
+        }
+        for (;;)
+        {
+          int j;
+          i += 1;
+          break;
+          this.Wq.add(localObject);
+        }
+      }
+    }
+    else
+    {
+      this.Wp.clear();
+      this.Wq.clear();
+      this.Wq.addAll(gb());
+    }
+    this.Wr = false;
+  }
+  
+  public final ArrayList<j> ge()
+  {
+    gd();
+    return this.Wq;
+  }
+  
   public MenuItem getItem(int paramInt)
   {
-    return (MenuItem)this.dU.get(paramInt);
+    return (MenuItem)this.mItems.get(paramInt);
+  }
+  
+  public h gf()
+  {
+    return this;
   }
   
   public boolean h(j paramj)
   {
     boolean bool1 = false;
     boolean bool2 = bool1;
-    if (!this.VO.isEmpty())
+    if (!this.WD.isEmpty())
     {
-      if (this.VP != paramj) {
+      if (this.WE != paramj) {
         bool2 = bool1;
       }
     }
     else {
       return bool2;
     }
-    fh();
-    Iterator localIterator = this.VO.iterator();
+    fX();
+    Iterator localIterator = this.WD.iterator();
     bool1 = false;
     for (;;)
     {
@@ -856,7 +872,7 @@ public class h
         o localo = (o)localWeakReference.get();
         if (localo == null)
         {
-          this.VO.remove(localWeakReference);
+          this.WD.remove(localWeakReference);
         }
         else
         {
@@ -869,12 +885,12 @@ public class h
     }
     for (;;)
     {
-      fi();
+      fY();
       bool2 = bool1;
       if (!bool1) {
         break;
       }
-      this.VP = null;
+      this.WE = null;
       return bool1;
       break label41;
     }
@@ -882,14 +898,14 @@ public class h
   
   public boolean hasVisibleItems()
   {
-    if (this.VQ) {
+    if (this.WG) {
       return true;
     }
     int j = size();
     int i = 0;
     while (i < j)
     {
-      if (((j)this.dU.get(i)).isVisible()) {
+      if (((j)this.mItems.get(i)).isVisible()) {
         return true;
       }
       i += 1;
@@ -900,6 +916,40 @@ public class h
   public boolean isShortcutKey(int paramInt, KeyEvent paramKeyEvent)
   {
     return a(paramInt, paramKeyEvent) != null;
+  }
+  
+  public void p(boolean paramBoolean)
+  {
+    if (!this.Wx)
+    {
+      if (paramBoolean)
+      {
+        this.Wo = true;
+        this.Wr = true;
+      }
+      if (!this.WD.isEmpty())
+      {
+        fX();
+        Iterator localIterator = this.WD.iterator();
+        while (localIterator.hasNext())
+        {
+          WeakReference localWeakReference = (WeakReference)localIterator.next();
+          o localo = (o)localWeakReference.get();
+          if (localo == null) {
+            this.WD.remove(localWeakReference);
+          } else {
+            localo.n(paramBoolean);
+          }
+        }
+        fY();
+      }
+    }
+    do
+    {
+      return;
+      this.Wy = true;
+    } while (!paramBoolean);
+    this.Wz = true;
   }
   
   public boolean performIdentifierAction(int paramInt1, int paramInt2)
@@ -915,43 +965,9 @@ public class h
       bool = a(paramKeyEvent, null, paramInt2);
     }
     if ((paramInt2 & 0x2) != 0) {
-      T(true);
+      V(true);
     }
     return bool;
-  }
-  
-  public void q(boolean paramBoolean)
-  {
-    if (!this.VI)
-    {
-      if (paramBoolean)
-      {
-        this.Vz = true;
-        this.VC = true;
-      }
-      if (!this.VO.isEmpty())
-      {
-        fh();
-        Iterator localIterator = this.VO.iterator();
-        while (localIterator.hasNext())
-        {
-          WeakReference localWeakReference = (WeakReference)localIterator.next();
-          o localo = (o)localWeakReference.get();
-          if (localo == null) {
-            this.VO.remove(localWeakReference);
-          } else {
-            localo.o(paramBoolean);
-          }
-        }
-        fi();
-      }
-    }
-    do
-    {
-      return;
-      this.VJ = true;
-    } while (!paramBoolean);
-    this.VK = true;
   }
   
   public void removeGroup(int paramInt)
@@ -959,20 +975,20 @@ public class h
     int j = size();
     int i = 0;
     if (i < j) {
-      if (((j)this.dU.get(i)).getGroupId() != paramInt) {}
+      if (((j)this.mItems.get(i)).getGroupId() != paramInt) {}
     }
     for (;;)
     {
       label30:
       if (i >= 0)
       {
-        int k = this.dU.size();
+        int k = this.mItems.size();
         j = 0;
         for (;;)
         {
-          if ((j < k - i) && (((j)this.dU.get(i)).getGroupId() == paramInt))
+          if ((j < k - i) && (((j)this.mItems.get(i)).getGroupId() == paramInt))
           {
-            n(i, false);
+            h(i, false);
             j += 1;
             continue;
             i += 1;
@@ -981,7 +997,7 @@ public class h
             break label30;
           }
         }
-        q(true);
+        p(true);
       }
     }
   }
@@ -991,11 +1007,11 @@ public class h
     int j = size();
     int i = 0;
     if (i < j) {
-      if (((j)this.dU.get(i)).getItemId() != paramInt) {}
+      if (((j)this.mItems.get(i)).getItemId() != paramInt) {}
     }
     for (;;)
     {
-      n(i, true);
+      h(i, true);
       return;
       i += 1;
       break;
@@ -1005,27 +1021,32 @@ public class h
   
   public void setGroupCheckable(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int j = this.dU.size();
+    int j = this.mItems.size();
     int i = 0;
     while (i < j)
     {
-      j localj = (j)this.dU.get(i);
+      j localj = (j)this.mItems.get(i);
       if (localj.getGroupId() == paramInt)
       {
-        localj.U(paramBoolean2);
+        localj.W(paramBoolean2);
         localj.setCheckable(paramBoolean1);
       }
       i += 1;
     }
   }
   
+  public void setGroupDividerEnabled(boolean paramBoolean)
+  {
+    this.WF = paramBoolean;
+  }
+  
   public void setGroupEnabled(int paramInt, boolean paramBoolean)
   {
-    int j = this.dU.size();
+    int j = this.mItems.size();
     int i = 0;
     while (i < j)
     {
-      j localj = (j)this.dU.get(i);
+      j localj = (j)this.mItems.get(i);
       if (localj.getGroupId() == paramInt) {
         localj.setEnabled(paramBoolean);
       }
@@ -1035,13 +1056,13 @@ public class h
   
   public void setGroupVisible(int paramInt, boolean paramBoolean)
   {
-    int k = this.dU.size();
+    int k = this.mItems.size();
     int j = 0;
     int i = 0;
     if (j < k)
     {
-      j localj = (j)this.dU.get(j);
-      if ((localj.getGroupId() != paramInt) || (!localj.W(paramBoolean))) {
+      j localj = (j)this.mItems.get(j);
+      if ((localj.getGroupId() != paramInt) || (!localj.Y(paramBoolean))) {
         break label74;
       }
       i = 1;
@@ -1052,7 +1073,7 @@ public class h
       j += 1;
       break;
       if (i != 0) {
-        q(true);
+        p(true);
       }
       return;
     }
@@ -1060,13 +1081,13 @@ public class h
   
   public void setQwertyMode(boolean paramBoolean)
   {
-    this.Vv = paramBoolean;
-    q(false);
+    this.Wk = paramBoolean;
+    p(false);
   }
   
   public int size()
   {
-    return this.dU.size();
+    return this.mItems.size();
   }
   
   public static abstract interface a

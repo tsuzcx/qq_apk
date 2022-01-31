@@ -1,8 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.app.Activity;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMEditText.a;
 
 final class LuckyMoneyBusiDetailUI$9
@@ -10,19 +9,22 @@ final class LuckyMoneyBusiDetailUI$9
 {
   LuckyMoneyBusiDetailUI$9(LuckyMoneyBusiDetailUI paramLuckyMoneyBusiDetailUI) {}
   
-  public final void bgg()
+  public final void bNU()
   {
-    if (LuckyMoneyBusiDetailUI.f(this.lUH).getVisibility() == 0)
+    AppMethodBeat.i(42591);
+    if (LuckyMoneyBusiDetailUI.f(this.orQ).getVisibility() == 0)
     {
-      LuckyMoneyBusiDetailUI.f(this.lUH).setVisibility(8);
+      LuckyMoneyBusiDetailUI.f(this.orQ).setVisibility(8);
+      AppMethodBeat.o(42591);
       return;
     }
-    this.lUH.mController.uMN.finish();
+    this.orQ.getContext().finish();
+    AppMethodBeat.o(42591);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBusiDetailUI.9
  * JD-Core Version:    0.7.0.1
  */

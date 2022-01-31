@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.talkroom.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 
 final class TalkRoomUI$17
@@ -14,16 +15,18 @@ final class TalkRoomUI$17
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    au.Hx();
-    int i = bk.a((Integer)c.Dz().get(144641, null), 0);
-    au.Hx();
-    c.Dz().o(144641, Integer.valueOf(i + 1));
-    this.pCk.onBackPressed();
+    AppMethodBeat.i(25924);
+    aw.aaz();
+    int i = bo.a((Integer)c.Ru().get(144641, null), 0);
+    aw.aaz();
+    c.Ru().set(144641, Integer.valueOf(i + 1));
+    this.tdT.onBackPressed();
+    AppMethodBeat.o(25924);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomUI.17
  * JD-Core Version:    0.7.0.1
  */

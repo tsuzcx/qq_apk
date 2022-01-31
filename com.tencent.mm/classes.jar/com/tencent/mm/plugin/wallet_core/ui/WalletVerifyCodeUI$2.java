@@ -1,16 +1,14 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import com.tencent.mm.wallet_core.c.l.a;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 final class WalletVerifyCodeUI$2
-  implements l.a
+  implements DialogInterface.OnClickListener
 {
   WalletVerifyCodeUI$2(WalletVerifyCodeUI paramWalletVerifyCodeUI) {}
   
-  public final void bXc()
-  {
-    this.qHg.bXb();
-  }
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

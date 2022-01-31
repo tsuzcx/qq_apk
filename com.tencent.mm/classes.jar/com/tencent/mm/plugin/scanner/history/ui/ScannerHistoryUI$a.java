@@ -6,101 +6,100 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.a.g;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.scanner.a.j;
-import com.tencent.mm.plugin.scanner.history.a.b;
-import com.tencent.mm.plugin.scanner.util.o.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.plugin.scanner.model.k;
+import com.tencent.mm.plugin.scanner.util.q.a;
 import com.tencent.mm.pluginsdk.f.h;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.r;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.p;
 
 final class ScannerHistoryUI$a
-  extends r<com.tencent.mm.plugin.scanner.history.a.a>
+  extends p<com.tencent.mm.plugin.scanner.history.a.a>
 {
   public ScannerHistoryUI$a(ScannerHistoryUI paramScannerHistoryUI)
   {
     super(paramScannerHistoryUI, new com.tencent.mm.plugin.scanner.history.a.a());
-    mR(true);
+    AppMethodBeat.i(80807);
+    qp(true);
+    AppMethodBeat.o(80807);
+  }
+  
+  public final void Ku()
+  {
+    AppMethodBeat.i(80808);
+    setCursor(com.tencent.mm.plugin.scanner.e.chX().cib().getAll());
+    notifyDataSetChanged();
+    AppMethodBeat.o(80808);
+  }
+  
+  public final void Kv()
+  {
+    AppMethodBeat.i(80809);
+    bKb();
+    Ku();
+    AppMethodBeat.o(80809);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(80810);
     Object localObject = (com.tencent.mm.plugin.scanner.history.a.a)getItem(paramInt);
-    o.a locala;
-    int i;
-    c.a locala1;
-    String str;
     if (paramView == null)
     {
-      paramView = View.inflate(this.nGx.mController.uMN, R.i.scan_history_item_layout, null);
-      paramViewGroup = new ScannerHistoryUI.b(this.nGx, (byte)0);
-      paramViewGroup.hic = ((ImageView)paramView.findViewById(R.h.item_icon));
-      paramViewGroup.iwq = ((TextView)paramView.findViewById(R.h.item_title));
-      paramViewGroup.iwr = ((TextView)paramView.findViewById(R.h.item_time));
-      paramViewGroup.iws = ((TextView)paramView.findViewById(R.h.item_desc));
+      paramView = View.inflate(this.qtO.getContext(), 2130970602, null);
+      paramViewGroup = new ScannerHistoryUI.b(this.qtO, (byte)0);
+      paramViewGroup.iTH = ((ImageView)paramView.findViewById(2131823589));
+      paramViewGroup.kxu = ((TextView)paramView.findViewById(2131823680));
+      paramViewGroup.kxv = ((TextView)paramView.findViewById(2131824193));
+      paramViewGroup.kxw = ((TextView)paramView.findViewById(2131826402));
       paramView.setTag(paramViewGroup);
-      locala = j.cm(((com.tencent.mm.plugin.scanner.history.a.a)localObject).field_xmlContent, ((com.tencent.mm.plugin.scanner.history.a.a)localObject).field_funcType);
-      paramViewGroup.iwq.setText(locala.field_title);
+      q.a locala = k.dg(((com.tencent.mm.plugin.scanner.history.a.a)localObject).field_xmlContent, ((com.tencent.mm.plugin.scanner.history.a.a)localObject).field_funcType);
+      paramViewGroup.kxu.setText(locala.field_title);
       long l = ((com.tencent.mm.plugin.scanner.history.a.a)localObject).field_ScanTime;
-      paramViewGroup.iwr.setText(h.c(this.nGx, l, true));
-      paramViewGroup.iws.setText(locala.field_subtitle);
-      i = this.nGx.getResources().getDimensionPixelSize(R.f.scan_history_icon_size);
-      paramViewGroup.hic.setImageResource(R.g.pic_thumb_bg);
-      y.d("MicroMsg.ScannerHistoryUI", "ScannerHistoryUI getView () position : " + paramInt + " logo_url :  " + locala.field_thumburl);
+      paramViewGroup.kxv.setText(h.c(this.qtO, l, true));
+      paramViewGroup.kxw.setText(locala.field_subtitle);
+      int i = this.qtO.getResources().getDimensionPixelSize(2131428648);
+      paramViewGroup.iTH.setImageResource(2130839944);
+      ab.d("MicroMsg.ScannerHistoryUI", "ScannerHistoryUI getView () position : " + paramInt + " logo_url :  " + locala.field_thumburl);
       if (TextUtils.isEmpty(locala.field_thumburl)) {
-        break label424;
+        break label423;
       }
-      locala1 = new c.a();
-      locala1.eri = e.bkH;
-      o.OO();
-      locala1.erB = null;
-      localObject = com.tencent.mm.plugin.scanner.c.bxd();
-      str = locala.field_thumburl;
-      if (!au.DK()) {
-        break label416;
+      c.a locala1 = new c.a();
+      locala1.eNP = com.tencent.mm.compatible.util.e.eQz;
+      o.ahH();
+      locala1.eOd = null;
+      localObject = com.tencent.mm.plugin.scanner.e.chX();
+      String str = locala.field_thumburl;
+      if (!com.tencent.mm.kernel.g.RG()) {
+        break label415;
       }
+      localObject = String.format("%s/scanbook_%s", new Object[] { ((com.tencent.mm.plugin.scanner.e)localObject).eHR + "image/scan/img", com.tencent.mm.a.g.w(str.getBytes()) });
+      label327:
+      locala1.eNO = ((String)localObject);
+      locala1.eNM = true;
+      locala1.eOk = false;
+      locala1.eNK = true;
+      locala1.eNT = i;
+      locala1.eNS = i;
+      locala1.eNY = 2130839944;
+      localObject = locala1.ahY();
+      o.ahG().a(locala.field_thumburl, paramViewGroup.iTH, (c)localObject);
     }
-    label416:
-    for (localObject = String.format("%s/scanbook_%s", new Object[] { ((com.tencent.mm.plugin.scanner.c)localObject).dKt + "image/scan/img", g.o(str.getBytes()) });; localObject = "")
+    for (;;)
     {
-      locala1.erh = ((String)localObject);
-      locala1.erf = true;
-      locala1.erD = false;
-      locala1.erd = true;
-      locala1.erm = i;
-      locala1.erl = i;
-      locala1.eru = R.g.pic_thumb_bg;
-      localObject = locala1.OV();
-      o.ON().a(locala.field_thumburl, paramViewGroup.hic, (com.tencent.mm.as.a.a.c)localObject);
+      AppMethodBeat.o(80810);
       return paramView;
       paramViewGroup = (ScannerHistoryUI.b)paramView.getTag();
       break;
+      label415:
+      localObject = "";
+      break label327;
+      label423:
+      paramViewGroup.iTH.setImageResource(2130839944);
     }
-    label424:
-    paramViewGroup.hic.setImageResource(R.g.pic_thumb_bg);
-    return paramView;
-  }
-  
-  public final void yc()
-  {
-    setCursor(com.tencent.mm.plugin.scanner.c.bxe().aAn());
-    notifyDataSetChanged();
-  }
-  
-  protected final void yd()
-  {
-    bcS();
-    yc();
   }
 }
 

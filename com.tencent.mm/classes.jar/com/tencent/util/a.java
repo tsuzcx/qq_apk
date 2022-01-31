@@ -1,104 +1,81 @@
 package com.tencent.util;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public final class a
+public class a
 {
-  private static final float[] tz = new float[16];
-  private static final String[] xct = { "orientation" };
-  private static final String[] xcu = { "_data" };
-  private static final float[] xcv = new float[32];
+  private static int COUNT;
+  private static final String TAG;
+  private static Map<String, Long> startTimeMap;
+  private static Map<String, List<Long>> totalTimeMap;
   
-  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2, Matrix paramMatrix)
+  static
   {
-    Object localObject2 = null;
-    Canvas localCanvas = new Canvas();
-    Object localObject1;
-    if (paramMatrix.isIdentity()) {
-      localObject1 = Bitmap.createBitmap(paramInt1, paramInt2, paramBitmap.getConfig());
+    AppMethodBeat.i(86572);
+    TAG = a.class.getSimpleName();
+    startTimeMap = new HashMap();
+    totalTimeMap = new HashMap();
+    COUNT = 10;
+    AppMethodBeat.o(86572);
+  }
+  
+  public static void axk(String paramString)
+  {
+    AppMethodBeat.i(86570);
+    if ((TextUtils.isEmpty(paramString)) || (startTimeMap.get(paramString) == null))
+    {
+      AppMethodBeat.o(86570);
+      return;
+    }
+    Object localObject = (List)totalTimeMap.get(paramString);
+    if (localObject == null)
+    {
+      localObject = new ArrayList();
+      totalTimeMap.put(paramString, localObject);
     }
     for (;;)
     {
-      ((Bitmap)localObject1).setDensity(paramBitmap.getDensity());
-      localCanvas.setBitmap((Bitmap)localObject1);
-      localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramInt1 + 0, paramInt2 + 0), new RectF(0.0F, 0.0F, paramInt1, paramInt2), (Paint)localObject2);
-      return localObject1;
-      localObject1 = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
-      paramMatrix.mapRect((RectF)localObject1);
-      try
+      ((List)localObject).add(Long.valueOf(System.currentTimeMillis() - ((Long)startTimeMap.get(paramString)).longValue()));
+      if (((List)localObject).size() >= COUNT)
       {
-        Bitmap localBitmap = Bitmap.createBitmap(Math.round(((RectF)localObject1).width()), Math.round(((RectF)localObject1).height()), paramBitmap.getConfig());
-        localCanvas.translate(-((RectF)localObject1).left, -((RectF)localObject1).top);
-        localCanvas.concat(paramMatrix);
-        Paint localPaint = new Paint(2);
-        localObject2 = localPaint;
-        localObject1 = localBitmap;
-        if (!paramMatrix.rectStaysRect())
-        {
-          localPaint.setAntiAlias(true);
-          localObject2 = localPaint;
-          localObject1 = localBitmap;
-        }
+        new StringBuilder("[time]").append(paramString).append(": ").append(getTotalTime((List)localObject) / ((List)localObject).size()).append("ms");
+        ((List)localObject).clear();
       }
-      catch (OutOfMemoryError paramBitmap) {}
+      AppMethodBeat.o(86570);
+      return;
     }
-    return null;
   }
   
-  public static Bitmap e(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public static void benchStart(String paramString)
   {
-    j = 1;
-    l = System.currentTimeMillis();
-    k = paramBitmap.getWidth();
-    m = paramBitmap.getHeight();
-    i = 0;
-    try
+    AppMethodBeat.i(86569);
+    if (TextUtils.isEmpty(paramString))
     {
-      localObject = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      i = 1;
+      AppMethodBeat.o(86569);
+      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError1)
-    {
-      Bitmap localBitmap1;
-      for (;;)
-      {
-        try
-        {
-          Bitmap localBitmap2 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.RGB_565);
-          Object localObject = localBitmap2;
-          i = j;
-          if ((i != 0) && (localObject != null)) {
-            break;
-          }
-          return null;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2) {}
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        localBitmap1 = null;
-      }
-      Canvas localCanvas = new Canvas(localBitmap1);
-      localCanvas.translate((paramInt1 - k) / 2, (paramInt2 - m) / 2);
-      localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, new Paint(2));
-      g.h("BitmapUtils", "crop bitmap - " + (System.currentTimeMillis() - l));
-      return localBitmap1;
-    }
-    if (i != 0) {}
+    startTimeMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    AppMethodBeat.o(86569);
   }
   
-  public static boolean recycle(Bitmap paramBitmap)
+  private static long getTotalTime(List<Long> paramList)
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    AppMethodBeat.i(86571);
+    if (paramList == null)
     {
-      paramBitmap.recycle();
-      return true;
+      AppMethodBeat.o(86571);
+      return 0L;
     }
-    return false;
+    paramList = paramList.iterator();
+    for (long l = 0L; paramList.hasNext(); l = ((Long)paramList.next()).longValue() + l) {}
+    AppMethodBeat.o(86571);
+    return l;
   }
 }
 

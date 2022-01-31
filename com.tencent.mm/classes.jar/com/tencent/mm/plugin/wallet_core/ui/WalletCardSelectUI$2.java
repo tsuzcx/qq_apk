@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletCardSelectUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class WalletCardSelectUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.qCL.finish();
+    AppMethodBeat.i(47297);
+    this.upv.finish();
+    AppMethodBeat.o(47297);
     return true;
   }
 }

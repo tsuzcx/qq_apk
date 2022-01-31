@@ -1,96 +1,110 @@
 package com.tencent.mm.plugin.product.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class n
   extends com.tencent.mm.bv.a
 {
-  public String bOL;
-  public int bcw;
-  public String mTc;
+  public int bsY;
+  public String cwc;
   public String name;
+  public String pvi;
   public String username;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(56639);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.bOL != null) {
-        paramVarArgs.d(1, this.bOL);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.cwc != null) {
+        paramVarArgs.e(1, this.cwc);
       }
       if (this.name != null) {
-        paramVarArgs.d(2, this.name);
+        paramVarArgs.e(2, this.name);
       }
-      if (this.mTc != null) {
-        paramVarArgs.d(3, this.mTc);
+      if (this.pvi != null) {
+        paramVarArgs.e(3, this.pvi);
       }
       if (this.username != null) {
-        paramVarArgs.d(4, this.username);
+        paramVarArgs.e(4, this.username);
       }
-      paramVarArgs.gB(5, this.bcw);
+      paramVarArgs.aO(5, this.bsY);
+      AppMethodBeat.o(56639);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.bOL == null) {
-        break label379;
+      if (this.cwc == null) {
+        break label438;
       }
     }
-    label379:
-    for (int i = d.a.a.b.b.a.e(1, this.bOL) + 0;; i = 0)
+    label438:
+    for (int i = e.a.a.b.b.a.f(1, this.cwc) + 0;; i = 0)
     {
       paramInt = i;
       if (this.name != null) {
-        paramInt = i + d.a.a.b.b.a.e(2, this.name);
+        paramInt = i + e.a.a.b.b.a.f(2, this.name);
       }
       i = paramInt;
-      if (this.mTc != null) {
-        i = paramInt + d.a.a.b.b.a.e(3, this.mTc);
+      if (this.pvi != null) {
+        i = paramInt + e.a.a.b.b.a.f(3, this.pvi);
       }
       paramInt = i;
       if (this.username != null) {
-        paramInt = i + d.a.a.b.b.a.e(4, this.username);
+        paramInt = i + e.a.a.b.b.a.f(4, this.username);
       }
-      return paramInt + d.a.a.a.gy(5, this.bcw);
+      i = e.a.a.b.b.a.bl(5, this.bsY);
+      AppMethodBeat.o(56639);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        AppMethodBeat.o(56639);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         n localn = (n)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(56639);
           return -1;
         case 1: 
-          localn.bOL = locala.xpH.readString();
+          localn.cwc = locala.CLY.readString();
+          AppMethodBeat.o(56639);
           return 0;
         case 2: 
-          localn.name = locala.xpH.readString();
+          localn.name = locala.CLY.readString();
+          AppMethodBeat.o(56639);
           return 0;
         case 3: 
-          localn.mTc = locala.xpH.readString();
+          localn.pvi = locala.CLY.readString();
+          AppMethodBeat.o(56639);
           return 0;
         case 4: 
-          localn.username = locala.xpH.readString();
+          localn.username = locala.CLY.readString();
+          AppMethodBeat.o(56639);
           return 0;
         }
-        localn.bcw = locala.xpH.oD();
+        localn.bsY = locala.CLY.sl();
+        AppMethodBeat.o(56639);
         return 0;
       }
+      AppMethodBeat.o(56639);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.c.n
  * JD-Core Version:    0.7.0.1
  */

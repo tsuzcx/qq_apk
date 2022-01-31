@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 
 final class FindMContactInviteUI$12$1
@@ -13,17 +14,19 @@ final class FindMContactInviteUI$12$1
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (FindMContactInviteUI.a(this.fhy.fhx) != null)
+    AppMethodBeat.i(108549);
+    if (FindMContactInviteUI.a(this.gzg.gzf) != null)
     {
-      FindMContactInviteUI.a(this.fhy.fhx).dismiss();
-      FindMContactInviteUI.a(this.fhy.fhx, null);
+      FindMContactInviteUI.a(this.gzg.gzf).dismiss();
+      FindMContactInviteUI.a(this.gzg.gzf, null);
     }
-    if (FindMContactInviteUI.k(this.fhy.fhx) != null)
+    if (FindMContactInviteUI.k(this.gzg.gzf) != null)
     {
-      g.Dk().b(432, FindMContactInviteUI.k(this.fhy.fhx));
-      FindMContactInviteUI.a(this.fhy.fhx, null);
+      g.Rc().b(432, FindMContactInviteUI.k(this.gzg.gzf));
+      FindMContactInviteUI.a(this.gzg.gzf, null);
     }
-    FindMContactInviteUI.l(this.fhy.fhx);
+    FindMContactInviteUI.l(this.gzg.gzf);
+    AppMethodBeat.o(108549);
   }
 }
 

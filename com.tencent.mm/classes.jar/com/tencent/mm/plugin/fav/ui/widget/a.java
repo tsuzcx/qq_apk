@@ -6,59 +6,79 @@ import android.view.ViewStub;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.ui.n.a;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.plugin.fav.ui.n.i;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.aa;
 
 public final class a
 {
-  public Button fks;
-  public TextView iCY;
-  public long kjh = b.aPL();
-  public boolean kjj = false;
-  public View kjk;
-  public a.a kjl;
+  public Button gBJ;
+  public TextView kIf;
+  public long mDN;
+  public boolean mDP;
+  public View mDQ;
+  public a.a mDR;
   
-  public final void aRZ()
+  public a()
   {
-    this.iCY.setText(this.iCY.getContext().getString(n.i.fav_clean_capacity_info, new Object[] { b.ev(this.kjh) }));
-    this.fks.setEnabled(false);
+    AppMethodBeat.i(74666);
+    this.mDP = false;
+    this.mDN = b.bvZ();
+    AppMethodBeat.o(74666);
+  }
+  
+  public final void byq()
+  {
+    AppMethodBeat.i(74669);
+    this.kIf.setText(this.kIf.getContext().getString(2131299662, new Object[] { b.jS(this.mDN) }));
+    this.gBJ.setEnabled(false);
+    AppMethodBeat.o(74669);
   }
   
   public final void hide()
   {
-    if (!this.kjj) {}
-    while (this.kjk.getVisibility() == 8) {
+    AppMethodBeat.i(74668);
+    if (!this.mDP)
+    {
+      AppMethodBeat.o(74668);
       return;
     }
-    this.kjk.setVisibility(8);
-    this.kjk.startAnimation(AnimationUtils.loadAnimation(this.kjk.getContext(), n.a.fast_faded_out));
+    if (this.mDQ.getVisibility() != 8)
+    {
+      this.mDQ.setVisibility(8);
+      this.mDQ.startAnimation(AnimationUtils.loadAnimation(this.mDQ.getContext(), 2131034182));
+    }
+    AppMethodBeat.o(74668);
   }
   
   public final void show()
   {
-    if (!this.kjj) {
-      if (this.kjk != null) {}
-    }
-    while (this.kjk.getVisibility() == 0)
+    AppMethodBeat.i(74667);
+    if (!this.mDP)
     {
-      return;
-      if ((this.kjk instanceof ViewStub)) {
-        this.kjk = ((ViewStub)this.kjk).inflate();
+      if (this.mDQ == null)
+      {
+        AppMethodBeat.o(74667);
+        return;
       }
-      this.iCY = ((TextView)this.kjk.findViewById(n.e.fav_clean_delete_info_tv));
-      if (!x.cqF()) {
-        this.iCY.setTextSize(1, 14.0F);
+      if ((this.mDQ instanceof ViewStub)) {
+        this.mDQ = ((ViewStub)this.mDQ).inflate();
       }
-      this.fks = ((Button)this.kjk.findViewById(n.e.fav_clean_del_btn));
-      aRZ();
-      this.fks.setOnClickListener(new a.1(this));
-      this.kjj = true;
+      this.kIf = ((TextView)this.mDQ.findViewById(2131823996));
+      if (!aa.dsC()) {
+        this.kIf.setTextSize(1, 14.0F);
+      }
+      this.gBJ = ((Button)this.mDQ.findViewById(2131823997));
+      byq();
+      this.gBJ.setOnClickListener(new a.1(this));
+      this.mDP = true;
     }
-    this.kjk.setVisibility(0);
-    this.kjk.startAnimation(AnimationUtils.loadAnimation(this.kjk.getContext(), n.a.fast_faded_in));
+    if (this.mDQ.getVisibility() != 0)
+    {
+      this.mDQ.setVisibility(0);
+      this.mDQ.startAnimation(AnimationUtils.loadAnimation(this.mDQ.getContext(), 2131034181));
+    }
+    AppMethodBeat.o(74667);
   }
 }
 

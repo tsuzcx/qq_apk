@@ -5,7 +5,7 @@ public final class c$kk
 {
   public c$kk()
   {
-    super("cache", "cache", 150, false);
+    super("stopScanWXDevice", "stopScanWXDevice", 122, true);
   }
 }
 
